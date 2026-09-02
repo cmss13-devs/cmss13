@@ -545,3 +545,13 @@
   - code_imp: Some sounds will now be emitted from the emitting object rather than
       the ground position. This especially makes a difference for sounds originating
       from your character, which won't be shifted when you move due to delay.
+2026-08-31:
+  JackieEstegado:
+  - bugfix: Fixed some acid holes on maps having the wrong orientation.
+  Red-byte3D:
+  - code_imp: Switched Valkyrie's rage ability from XENO_ACTION_CLICK to XENO_ACTION_QUEUE
+      this basically means that the ability no longer has to be chosen and will use
+      on your next clicking, meaning you can indirectly use it without clicking the
+      ability.
+  Venuska1117:
+  - balance: Acided Handrails no longer drop debris.

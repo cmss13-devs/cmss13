@@ -526,6 +526,22 @@
 #define XENO_NEURO_TIER_4   1.75
 #define XENO_NEURO_TIER_5   2
 
+// Pheromone strength
+#define XENO_PHERO_STRENGTH_NONE 0
+#define XENO_PHERO_STRENGTH_VERY_WEAK 0.5
+#define XENO_PHERO_STRENGTH_WEAK 1
+#define XENO_PHERO_STRENGTH_NORMAL 2
+#define XENO_PHERO_STRENGTH_HIVELORD 2.5 // Apparently hivelords have slightly better pheromones, even though they're marked as "normal"
+#define XENO_PHERO_STRENGTH_STRONG 3
+#define XENO_PHERO_STRENGTH_VERY_STRONG 4
+#define XENO_PHERO_STRENGTH_OVERWHELMING 6
+
+// Pheromone types
+#define XENO_PHERO_RECOVERY "recovery"
+#define XENO_PHERO_FRENZY "frenzy"
+#define XENO_PHERO_WARDING "warding"
+#define ALL_XENO_PHEROMONES list(XENO_PHERO_RECOVERY, XENO_PHERO_FRENZY, XENO_PHERO_WARDING)
+
 // Pheremone strength modifiers
 #define XENO_PHERO_MOD_VERY_SMALL  0.25
 #define XENO_PHERO_MOD_SMALL   0.5

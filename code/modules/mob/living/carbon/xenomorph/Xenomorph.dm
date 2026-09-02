@@ -249,6 +249,7 @@
 	var/datum/behavior_delegate/behavior_delegate = null // Holds behavior delegate. Governs all 'unique' hooked behavior of the Xeno. Set by caste datums and strains.
 	var/datum/action/xeno_action/activable/selected_ability // Our currently selected ability
 	var/datum/action/xeno_action/activable/queued_action // Action to perform on the next click.
+	var/queued_action_timer = TIMER_ID_NULL
 	var/is_zoomed = FALSE
 	var/list/spit_types
 	/// Caste-based spit windup
@@ -773,7 +774,7 @@
 	l_store = null
 	ammo = null
 	selected_ability = null
-	queued_action = null
+	clear_queued_action()
 
 	QDEL_NULL(strain)
 	QDEL_NULL(behavior_delegate)
@@ -1100,11 +1101,11 @@
 	// Also recalculate received pheros now
 	for(var/capped_aura in received_phero_caps)
 		switch(capped_aura)
-			if("frenzy")
+			if(XENO_PHERO_FRENZY)
 				frenzy_new = min(frenzy_new, received_phero_caps[capped_aura])
-			if("warding")
+			if(XENO_PHERO_WARDING)
 				warding_new = min(warding_new, received_phero_caps[capped_aura])
-			if("recovery")
+			if(XENO_PHERO_RECOVERY)
 				recovery_new = min(recovery_new, received_phero_caps[capped_aura])
 
 /mob/living/carbon/xenomorph/proc/recalculate_maturation()

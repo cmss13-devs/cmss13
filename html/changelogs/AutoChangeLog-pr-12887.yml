@@ -1,0 +1,6 @@
+author: "Antlers"
+delete-after: True
+changes:
+  - code_imp: "Added pheromone unit tests to the repo's CI suite"
+  - code_imp: "Added new defines for pheromone types and strength"
+  - bugfix: "Banished xenomorphs will no longer receive pheromones from their former hive, and vice versa"

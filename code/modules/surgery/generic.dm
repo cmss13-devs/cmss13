@@ -355,7 +355,6 @@
 		/obj/item/clothing/mask/cigarette,
 		/obj/item/tool/weldingtool,
 		)
-	preop_sound = 'sound/surgery/cautery1.ogg'
 	success_sound = 'sound/surgery/cautery2.ogg'
 	failure_sound = 'sound/items/welder.ogg'
 

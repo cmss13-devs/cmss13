@@ -291,7 +291,7 @@
                 "llcm\\target\\i686-pc-windows-msvc\\debug\\llcm.dll",
                 "llcm.dll",
                 "-force"
-            ],
+            ]
         },
         {
             "type": "shell",
@@ -301,7 +301,7 @@
                 "llcm\\target\\i686-pc-windows-msvc\\release\\llcm.dll",
                 "llcm.dll",
                 "-force"
-            ],
+            ]
         },
         {
             "type": "shell",
@@ -349,6 +349,6 @@
                 "kind": "build",
                 "isDefault": true
             }
-        },
+        }
     ]
 }

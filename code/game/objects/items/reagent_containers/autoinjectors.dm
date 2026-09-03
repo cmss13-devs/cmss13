@@ -73,7 +73,7 @@
 	. = ..()
 	if(uses_left >= 0)
 		if(istype(src, /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison))
-			. += SPAN_NOTICE("It is currently loaded with [reagents.total_volume / amount_per_transfer_from_this]/[volume / amount_per_transfer_from_this] injections of ... Something? You don't know what's in this.")
+			. += SPAN_NOTICE("It is currently loaded with [reagents.total_volume / amount_per_transfer_from_this]/[volume / amount_per_transfer_from_this] injections of ... Something? You don't know what's in it.")
 		else if(volume == amount_per_transfer_from_this) //one-use autoinjectors
 			. += SPAN_NOTICE("It is currently loaded with a single injection of [amount_per_transfer_from_this]u [capitalize(chemname)].")
 			if(istype(src, /obj/item/reagent_container/hypospray/autoinjector/yautja)) //this is a yautja crystal
@@ -353,7 +353,6 @@
 	maptext_label = "EzDx"
 
 
-
 //MARINE AUTOINJECTORS
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use
 	name = "EZ autoinjector"
@@ -493,6 +492,7 @@
 	display_maptext = TRUE
 	maptext_label = "Zzz"
 	cannot_refill = TRUE
+	skilllock = SKILL_MEDICAL_MEDIC
 
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate/Initialize()
 	. = ..()
@@ -502,7 +502,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency
 	name = "emergency EZ autoinjector (HIGH DOSE CAUTION)"
-	desc = "A massive ez autoinjector that injects a special cocktail of chemicals to be used in life-threatening situations. It doesn't require any training to administer. WARNING: DO NOT USE IF THE PATIENT HAS BICARIDINE, KELOTANE, OR OXYCODONE IN THEIR SYSTEM AS THE PATIENT *WILL* OVERDOSE!"
+	desc = "A massive ez autoinjector that injects a special cocktail of chemicals to be used in life-threatening situations. WARNING: DO NOT USE IF THE PATIENT HAS BICARIDINE, KELOTANE, OR OXYCODONE IN THEIR SYSTEM AS THE PATIENT *WILL* OVERDOSE!"
 	icon_state = "empty_emergency"
 	chemname = "emergency mix"
 	autoinjector_type = "autoinjector_single"
@@ -586,8 +586,8 @@
 	injectSFX = 'sound/items/pred_crystal_inject.ogg'
 	autoinjector_type = "thwei"
 	injectVOL = 15
-	amount_per_transfer_from_this = REAGENTS_OVERDOSE
-	volume = REAGENTS_OVERDOSE
+	amount_per_transfer_from_this = 15
+	volume = 15
 	uses_left = 1
 	black_market_value = 25
 	cannot_refill = TRUE

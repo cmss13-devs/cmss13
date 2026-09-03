@@ -116,17 +116,17 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		else
 			custom_preop_sound = 'sound/surgery/suture1.ogg'
 
-	else if((tool.type in SURGERY_TOOLS_SUTURE) || (tool.type in SURGERY_TOOLS_MEND_BLOODVESSEL))
+	else if((tool.type in SURGERY_TOOLS_SUTURE) && (tool.type in SURGERY_TOOLS_MEND_BLOODVESSEL))
 		if(held_tool == /obj/item/tool/surgery/FixOVein)
 			custom_preop_sound = 'sound/handling/bottle_cap_unscrew.ogg'
 		else
 			custom_preop_sound = 'sound/surgery/suture1.ogg'
 
 	else
-		if((tool.type in SURGERY_TOOLS_CAUTERIZE) || (tool.type in SURGERY_TOOLS_MEDICOMP_CLAMP_WOUND))
+		if((tool.type in SURGERY_TOOLS_CAUTERIZE) && (tool.type in SURGERY_TOOLS_MEDICOMP_CLAMP_WOUND))
 			if(held_tool == /obj/item/clothing/mask/cigarette || /obj/item/tool/lighter)
 				custom_preop_sound = 'sound/surgery/cigarettelighter.ogg'
-			else if (held_tool == /obj/item/tool/weldingtool)
+			else if(held_tool == /obj/item/tool/weldingtool)
 				custom_preop_sound = 'sound/surgery/weldingtool.ogg'
 			else
 				custom_preop_sound = 'sound/surgery/cautery1.ogg'

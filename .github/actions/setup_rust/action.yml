@@ -11,7 +11,7 @@ runs:
       run: |
         source dependencies.sh
         echo "RUST_VERSION_REQUIRED=$RUST_TOOLCHAIN_VERSION" >> $GITHUB_ENV
-        echo "RUST_REQUIRED_TARGET=$RUST_BUILD_TARGET"
+        echo "RUST_REQUIRED_TARGET=$RUST_BUILD_TARGET" >> $GITHUB_ENV
     - name: Install rust toolchain
       uses: actions-rust-lang/setup-rust-toolchain@v1
       with:

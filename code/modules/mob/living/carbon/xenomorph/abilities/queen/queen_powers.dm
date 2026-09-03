@@ -624,6 +624,7 @@
 	to_chat(target_xeno, FONT_SIZE_LARGE(SPAN_XENOWARNING("The [user_xeno] has banished you from the hive! Other xenomorphs may now attack you freely, but your link to the hivemind remains, preventing you from harming other sisters.")))
 
 	target_xeno.banished = TRUE
+	target_xeno.hive.remove_from_evo_list(target_xeno)
 	target_xeno.hud_update_banished()
 	target_xeno.lock_evolve = TRUE
 	user_xeno.hive.banished_ckeys[target_xeno.name] = target_xeno.ckey

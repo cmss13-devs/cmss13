@@ -12,16 +12,16 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	set desc = "Evolve into a higher form."
 	set category = "Alien.Essentials"
 
-	do_evolve()
+	attempt_to_evolve()
 
-/mob/living/carbon/xenomorph/proc/do_evolve()
-	if(!evolve_checks())
-		return
-	var/mob/living/carbon/human/user = hauled_mob?.resolve()
-	if(user)
-		to_chat(src, "Release [user] before evolving!")
+///We become candidate for t2 or t3 or evolve instantly to t1
+/mob/living/carbon/xenomorph/proc/attempt_to_evolve()
+	if(!attempt_to_evolve_check())
 		return
 
+	if(src in hive.evolving_xenos)
+		do_evolve()
+		return
 	var/list/castes_available = caste.evolves_to.Copy()
 
 	// Also offer queen to any tier 1 that can evolve at all if there isn't a queen
@@ -33,7 +33,6 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		castes_available = caste.early_evolves_to.Copy()
 
 	castes_available -= hive.blacklisted_castes
-
 	for(var/caste in castes_available)
 		if(GLOB.xeno_datum_list[caste].minimum_evolve_time > ROUND_TIME)
 			castes_available -= caste
@@ -41,6 +40,9 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(!length(castes_available))
 		to_chat(src, SPAN_WARNING("The Hive is not capable of supporting any castes we can evolve to yet."))
 		return
+
+	//REMOVETHIS LATER
+	castes_available = XENO_T2_CASTES + XENO_T3_CASTES
 
 	var/castepick
 	if((client.prefs && client.prefs.no_radials_preference) || !hive.evolution_menu_images)
@@ -51,7 +53,18 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 			fancy_caste_list[caste] = hive.evolution_menu_images[caste]
 
 		castepick = show_radial_menu(src, client?.get_eye(), fancy_caste_list)
-	if(!castepick) //Changed my mind
+	if(!castepick) //This way we can opt out
+		hive.remove_from_evo_list(src)
+		return
+
+	if(Check_WO())
+		if(castepick != XENO_CASTE_QUEEN) //Prevent evolutions into T2s and T3s in WO
+			to_chat(src, SPAN_WARNING ("The Hive can only support evolving into Queens!"))
+			return
+		on_mob_jump()
+		forceMove(get_turf(pick(GLOB.queen_spawns)))
+	else if(hardcore)
+		to_chat(src, SPAN_WARNING("Nuh-uhh."))
 		return
 
 	if(SEND_SIGNAL(src, COMSIG_XENO_TRY_EVOLVE, castepick) & COMPONENT_OVERRIDE_EVOLVE)
@@ -60,29 +73,33 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(castepick in hive.blacklisted_castes)
 		to_chat(src, SPAN_WARNING("The Hive cannot support this caste!"))
 		return
-
 	var/datum/caste_datum/caste_datum = GLOB.xeno_datum_list[castepick]
-	if(caste_datum && caste_datum.minimum_evolve_time > ROUND_TIME)
-		to_chat(src, SPAN_WARNING("The Hive cannot support this caste yet! ([floor((caste_datum.minimum_evolve_time - ROUND_TIME) / 10)] seconds remaining)"))
+	if(caste_datum == desired_caste) //we picked the same choicde do not want message spam
 		return
-
-	if(hive.restricted_castes && (castepick in hive.restricted_castes))
-		var/max_num = hive.restricted_castes[castepick]
-		if(hive.get_caste_count(castepick) >= max_num)
-			to_chat(src, SPAN_WARNING("The Hive has reached capacity for this caste!"))
+	if(evolution_threshold && castepick != XENO_CASTE_QUEEN) //Does the caste have an evolution timer? Then check it
+		if(evolution_stored < evolution_threshold)
+			to_chat(src, SPAN_WARNING("We must wait before evolving. Currently at: [evolution_stored] / [evolution_threshold]."))
 			return
+	if(desired_caste && desired_caste.tier != 1) //updates our position in lists and what we want to evolve to
+		hive.remove_from_evo_list(src)
+		return
+	desired_caste = caste_datum
+	if(caste_datum.tier == 1) //t1 evos do not need to go into queue
+		do_evolve()
+		return
+	hive.add_to_evo_list(src)
 
+
+/mob/living/carbon/xenomorph/proc/do_evolve()
 	if(!evolve_checks())
 		return
-
-	if(!hive.living_xeno_queen && castepick != XENO_CASTE_QUEEN && !islarva(src) && !hive.allow_no_queen_evo)
-		if(hive.xeno_queen_timer > world.time)
-			to_chat(src, SPAN_WARNING("The Hive is shaken by the death of the last Queen. We can't find the strength to evolve."))
-		else
-			to_chat(src, SPAN_XENONOTICE("The hive currently has no Queen! We can't find the strength to evolve."))
+	var/mob/living/carbon/human/user = hauled_mob?.resolve()
+	if(user)
+		to_chat(src, "Release [user] before evolving!")
 		return
 
-	if(castepick == XENO_CASTE_QUEEN) //Special case for dealing with queenae
+
+	if(desired_caste.type == XENO_CASTE_QUEEN) //Special case for dealing with queenae
 		if(SSticker.mode && hive.xeno_queen_timer > world.time)
 			to_chat(src, SPAN_WARNING("We must wait about [DisplayTimeText(hive.xeno_queen_timer - world.time, 1)] for the hive to recover from the previous Queen's death."))
 			return
@@ -96,51 +113,39 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 			to_chat(src, SPAN_WARNING("We require more plasma! Currently at: [plasma_stored] / [required_plasma]."))
 			return
 
-	if(Check_WO())
-		if(castepick != XENO_CASTE_QUEEN) //Prevent evolutions into T2s and T3s in WO
-			to_chat(src, SPAN_WARNING ("The Hive can only support evolving into Queens!"))
-			return
-		on_mob_jump()
-		forceMove(get_turf(pick(GLOB.queen_spawns)))
-	else if(hardcore)
-		to_chat(src, SPAN_WARNING("Nuh-uhh."))
-		return
-
-	if(evolution_threshold && castepick != XENO_CASTE_QUEEN) //Does the caste have an evolution timer? Then check it
-		if(evolution_stored < evolution_threshold)
-			to_chat(src, SPAN_WARNING("We must wait before evolving. Currently at: [evolution_stored] / [evolution_threshold]."))
-			return
-
 	var/mob/living/carbon/xenomorph/xeno_type = null
-	xeno_type = GLOB.RoleAuthority.get_caste_by_text(castepick)
+	xeno_type = desired_caste.type
 
 	if(isnull(xeno_type))
-		to_chat(src, SPAN_WARNING("[castepick] is not a valid caste! If you're seeing this message, tell a coder!"))
+		to_chat(src, SPAN_WARNING("[xeno_type] is not a valid caste! If you're seeing this message, tell a coder!"))
+		return
+	if(!(desired_caste.tier < 2)) //evolving as larva and into queen does not need cocoon
+		cocoon()
+		return
+	finish_evolving()
+
+/mob/living/carbon/xenomorph/proc/finish_evolving(obj/effect/alien/resin/special/evolution_pod/pod)
+	if(desired_caste.tier in list(2,3) && loc != pod) //we have exited the pod
 		return
 
 	// Used for restricting benos to evolve to drone/queen when they're the only potential queen
 	var/potential_queens = hive.get_potential_queen_count()
 
-	if(!can_evolve(castepick, potential_queens))
-		return
-	to_chat(src, SPAN_XENONOTICE("It looks like the hive can support our evolution to [SPAN_BOLD(castepick)]!"))
 
 	visible_message(SPAN_XENONOTICE("[src] begins to twist and contort."),
 	SPAN_XENONOTICE("We begin to twist and contort."))
 	xeno_jitter(25)
 	evolving = TRUE
 	var/level_to_switch_to = get_vision_level()
-
-	if(!do_after(src, 2.5 SECONDS, INTERRUPT_INCAPACITATED|INTERRUPT_CHANGED_LYING, BUSY_ICON_HOSTILE)) // Can evolve while moving, resist or rest to cancel it.
-		to_chat(src, SPAN_WARNING("We quiver, but nothing happens. Our evolution has ceased for now..."))
-		evolving = FALSE
-		return
+	if(!pod) //we do not want this when inside of the pod
+		if(!do_after(src, 2.5 SECONDS, INTERRUPT_INCAPACITATED|INTERRUPT_CHANGED_LYING, BUSY_ICON_HOSTILE)) // Can evolve while moving, resist or rest to cancel it.
+			to_chat(src, SPAN_WARNING("We quiver, but nothing happens. Our evolution has ceased for now..."))
+			evolving = FALSE
+			return
 
 	evolving = FALSE
 
-	if(!isturf(loc)) //qdel'd or moved into something
-		return
-	if(castepick == XENO_CASTE_QUEEN) //Do another check after the tick.
+	if(desired_caste.caste_type == XENO_CASTE_QUEEN) //Do another check after the tick.
 		if(jobban_isbanned(src, XENO_CASTE_QUEEN))
 			to_chat(src, SPAN_WARNING("You are jobbanned from the Queen role."))
 			return
@@ -150,8 +155,6 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		if(!hive.allow_queen_evolve)
 			to_chat(src, SPAN_WARNING("We can't find the strength to evolve into a Queen."))
 			return
-	else if(!can_evolve(castepick, potential_queens))
-		return
 
 	// subtract the threshold, keep the stored amount
 	evolution_stored -= evolution_threshold
@@ -160,7 +163,10 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	var/obj/item/organ/xeno/organ = locate() in src
 	if(!isnull(organ))
 		qdel(organ)
-
+	if(pod)
+		forceMove(pod.loc)
+	var/mob/living/carbon/xenomorph/xeno_type = null
+	xeno_type = GLOB.RoleAuthority.get_caste_by_text(desired_caste.caste_type)
 	//From there, the new xeno exists, hopefully
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src)
 	new_xeno.creation_time = creation_time
@@ -168,7 +174,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(!istype(new_xeno))
 		//Something went horribly wrong!
 		to_chat(src, SPAN_WARNING("Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!"))
-		stack_trace("Xeno evolution failed: [src] attempted to evolve into \'[castepick]\'")
+		stack_trace("Xeno evolution failed: [src] attempted to evolve into \'[xeno_type.type]\'")
 		if(new_xeno)
 			qdel(new_xeno)
 		return
@@ -234,13 +240,70 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	// Intentionally de/re-evolving to mess with the stats gathered. We don't track t2/3 because it's a legit strategy to open
 	// With a t1 into drone before de-evoing later to go t1 into another caste once survs are dead/capped
 	if(new_xeno.ckey && !((new_xeno.caste.caste_type in XENO_T1_CASTES) && (new_xeno.ckey in GLOB.deevolved_ckeys) && !(new_xeno.datum_flags & DF_VAR_EDITED)))
-		var/caste_cleaned_key = lowertext(replacetext(castepick, " ", "_"))
+		var/caste_cleaned_key = lowertext(replacetext(new_xeno.caste.caste_type, " ", "_"))
 		if(!SSticker.mode?.round_stats.castes_evolved[caste_cleaned_key])
 			SSticker.mode?.round_stats.castes_evolved[caste_cleaned_key] = 1
 		else
 			SSticker.mode?.round_stats.castes_evolved[caste_cleaned_key] += 1
 
 	SEND_SIGNAL(src, COMSIG_XENO_EVOLVE_TO_NEW_CASTE, new_xeno)
+
+/mob/living/carbon/xenomorph/proc/cocoon()
+
+	var/mob/living/carbon/human/user = hauled_mob?.resolve() //doublecheck
+	if(user)
+		to_chat(src, "Release [user] before evolving!")
+		return
+	var/obj/effect/alien/weeds/supplier_weeds = locate(/obj/effect/alien/weeds) in loc
+	var/pod_path
+
+	if(supplier_weeds.hivenumber != hivenumber)
+		to_chat(src, SPAN_XENOBOLDNOTICE("The weeds here do not belong to us!"))
+		return
+
+	var/timer = min(10 SECONDS + 0.4 SECONDS * (1 - health / maxHealth), 30 SECONDS)
+	if(desired_caste.tier == 2)
+		if(!supplier_weeds)
+			to_chat(src, SPAN_XENOBOLDNOTICE("There are no weeds here! We need weeds to create cocoon."))
+			return
+		pod_path = /obj/effect/alien/resin/special/evolution_pod/tier_two
+
+	if(desired_caste.tier == 3)
+		if(!supplier_weeds || supplier_weeds.weed_strength < WEED_LEVEL_HIVE)
+			to_chat(src, SPAN_XENOBOLDNOTICE("The weeds here are not strong enough to suport our cocoon."))
+			return
+		pod_path = /obj/effect/alien/resin/special/evolution_pod/tier_three
+	if(!pod_path)
+		return //how?
+
+	to_chat(src, "We begin secreeting our cocoon.")
+	if(do_after(src, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		var/obj/effect/alien/resin/special/evolution_pod/pod = new pod_path(loc)
+		forceMove(pod)
+		addtimer(CALLBACK(src, PROC_REF(finish_evolving), pod), timer)
+
+
+
+/mob/living/carbon/xenomorph/proc/attempt_to_evolve_check()
+	if(!check_state(TRUE))
+		return FALSE
+
+	if(hivenumber == XENO_HIVE_YAUTJA_BADBLOOD)
+		to_chat(src, SPAN_WARNING("Our connection to the hive was broken! We cannot evolve!"))
+		return FALSE
+	if(lock_evolve || (hive.evolution_locked && !islarva(src)))
+		if(banished)
+			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
+		else
+			to_chat(src, SPAN_WARNING("We can't evolve."))
+		return FALSE
+	if(jobban_isbanned(src, JOB_XENOMORPH))//~who so genius to do this is?
+		to_chat(src, SPAN_WARNING("You are jobbanned from aliens and cannot evolve. How did you even become an alien?"))
+		return FALSE
+	if(isnull(caste.evolves_to) || !length(caste.evolves_to))
+		to_chat(src, SPAN_WARNING("We are already the apex of form and function. Go forth and spread the hive!"))
+		return FALSE
+	return TRUE
 
 /mob/living/carbon/xenomorph/proc/evolve_checks()
 	if(!check_state(TRUE))
@@ -281,8 +344,8 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		to_chat(src, SPAN_WARNING("We are already the apex of form and function. Go forth and spread the hive!"))
 		return FALSE
 
-	if(health < maxHealth)
-		to_chat(src, SPAN_WARNING("We must be at full health to evolve."))
+	if(health < 0.25 * maxHealth)
+		to_chat(src, SPAN_WARNING("We must not be near death to evolve."))
 		return FALSE
 
 	if(fortify || crest_defense || stealth || HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES) || HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES))

@@ -202,6 +202,18 @@
 		"evasion" = XENO_HIVE_STATMOD_FLAT_NONE,
 	)
 
+	///Candidates for becoming t2 xenos
+	var/list/tier_two_candidates = list()
+
+	///Candidates for becoming t3 xenos
+	var/list/tier_three_candidates = list()
+
+	///Candidates for becoming the queen
+	var/list/queen_candidates = list()
+
+	///Currently offered to evolve
+	var/list/evolving_xenos = list()
+
 /datum/hive_status/New()
 	hive_ui = new(src)
 	mark_ui = new(src)
@@ -535,6 +547,9 @@
 
 		if(xeno.caste && xeno.counts_for_slots && (xeno.caste.caste_type == caste_to_check))
 			caste_count++
+		//we also count as having the slot if we are being offered to evolve into it
+		if(xeno.desired_caste == caste_to_check && (xeno in evolving_xenos))
+			caste_count++
 
 	return caste_count
 
@@ -729,9 +744,16 @@
 			GUARANTEED_SLOTS = list(),
 		),
 	)
+	var/evolving_to_tier_3 = 0
+	var/evolving_to_tier_2 = 0
+	for(var/mob/living/carbon/xenomorph/xeno in evolving_xenos)
+		if(xeno.desired_caste.tier == 2)
+			evolving_to_tier_2 ++
+		if(xeno.desired_caste.tier == 3)
+			evolving_to_tier_3 ++
 
-	var/used_tier_2_slots = length(tier_2_xenos)
-	var/used_tier_3_slots = length(tier_3_xenos)
+	var/used_tier_2_slots = length(tier_2_xenos) + evolving_to_tier_2
+	var/used_tier_3_slots = length(tier_3_xenos) + evolving_to_tier_3
 
 	for(var/caste_path in free_slots)
 		var/slots_free = free_slots[caste_path]
@@ -785,10 +807,10 @@
 		return TRUE
 	return FALSE
 
-/datum/hive_status/proc/add_construction(obj/effect/alien/resin/construction/S)
-	if(!S || !S.template)
+/datum/hive_status/proc/add_construction(obj/effect/alien/resin/construction/structure)
+	if(!structure || !structure.template)
 		return FALSE
-	var/name_ref = initial(S.template.name)
+	var/name_ref = initial(structure.template.name)
 	if(!hive_constructions[name_ref])
 		hive_constructions[name_ref] = list()
 	if(length(hive_constructions[name_ref]) >= hive_structures_limit[name_ref])
@@ -796,29 +818,31 @@
 	hive_constructions[name_ref] += src
 	return TRUE
 
-/datum/hive_status/proc/remove_construction(obj/effect/alien/resin/construction/S)
-	if(!S || !S.template)
+/datum/hive_status/proc/remove_construction(obj/effect/alien/resin/construction/structure)
+	if(!structure || !structure.template)
 		return FALSE
-	var/name_ref = initial(S.template.name)
+	var/name_ref = initial(structure.template.name)
 	hive_constructions[name_ref] -= src
 	return TRUE
 
-/datum/hive_status/proc/add_special_structure(obj/effect/alien/resin/special/S)
-	if(!S)
+/datum/hive_status/proc/add_special_structure(obj/effect/alien/resin/special/structure)
+	if(!structure)
 		return FALSE
-	var/name_ref = initial(S.name)
+	if(istype(structure, /obj/effect/alien/resin/special/evolution_pod))
+		return TRUE
+	var/name_ref = initial(structure.name)
 	if(!hive_structures[name_ref])
 		hive_structures[name_ref] = list()
 	if(length(hive_structures[name_ref]) >= hive_structures_limit[name_ref])
 		return FALSE
-	hive_structures[name_ref] += S
+	hive_structures[name_ref] += structure
 	return TRUE
 
-/datum/hive_status/proc/remove_special_structure(obj/effect/alien/resin/special/S)
-	if(!S)
+/datum/hive_status/proc/remove_special_structure(obj/effect/alien/resin/special/structure)
+	if(!structure)
 		return FALSE
-	var/name_ref = initial(S.name)
-	hive_structures[name_ref] -= S
+	var/name_ref = initial(structure.name)
+	hive_structures[name_ref] -= structure
 	return TRUE
 
 /datum/hive_status/proc/has_special_structure(name_ref)
@@ -833,12 +857,12 @@
 	var/shipside_humans_weighted_count = 0
 	var/xenos_count = 0
 	for(var/name_ref in hive_structures)
-		for(var/obj/effect/alien/resin/special/S in hive_structures[name_ref])
-			if(get_area(S) == hijacked_dropship)
+		for(var/obj/effect/alien/resin/special/structure in hive_structures[name_ref])
+			if(get_area(structure) == hijacked_dropship)
 				continue
-			S.hijack_delete = TRUE
-			hive_structures[name_ref] -= S
-			qdel(S)
+			structure.hijack_delete = TRUE
+			hive_structures[name_ref] -= structure
+			qdel(structure)
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
 		if(get_area(xeno) != hijacked_dropship && xeno.loc && is_ground_level(xeno.loc.z))
 			if(isfacehugger(xeno) || islesserdrone(xeno))
@@ -1195,6 +1219,114 @@
 	for(var/i = 1 to partial_larva)
 		partial_larva--
 		stored_larva++
+
+/datum/hive_status/proc/add_to_evo_list(mob/living/carbon/xenomorph/xeno)
+	if(!xeno.desired_caste)
+		return
+	switch(xeno.desired_caste.tier)
+		if(2)
+			tier_two_candidates |= xeno
+		if(3)
+			tier_three_candidates |= xeno
+		if(0)
+			queen_candidates |= xeno
+	if(xeno.desired_caste)
+		to_chat(xeno, "You are now candidate to evolve into [xeno.desired_caste.caste_type].")
+	offer_evolutions()
+
+
+/datum/hive_status/proc/remove_from_evo_list(mob/living/carbon/xenomorph/xeno)
+	if(xeno in evolving_xenos)
+		evolving_xenos -= xeno
+		if(xeno.desired_caste)
+			to_chat(xeno, "You are no longer ready to evolve into [xeno.desired_caste], you can choose to try evolving again.")
+		offer_evolutions()
+		return
+
+	if(!xeno.desired_caste)
+		return
+
+	switch(xeno.desired_caste.tier)
+		if(2)
+			tier_two_candidates -= xeno
+		if(3)
+			tier_three_candidates -= xeno
+		if(0)
+			queen_candidates -= xeno
+	to_chat(xeno, "You are no longer candidate to evolve into [xeno.desired_caste.caste_type].")
+
+/datum/hive_status/proc/offer_evolutions()
+	var/found_candidate = FALSE
+	var/slots = get_tier_slots()
+	if(!living_xeno_queen)
+		for(var/mob/living/carbon/xenomorph/picked_queen in evolving_xenos)
+			if(picked_queen.desired_caste.caste_type == XENO_CASTE_QUEEN)
+				return //someone is already offered to be a queen
+		if(length(queen_candidates))
+			offer_evolution_to(pick(queen_candidates))
+			return //we do not have a queen, evolutions are not offered
+
+	//we first offer the guaranteed slots
+	for(var/caste in XENO_T2_CASTES)
+		if(slots[TIER_2][GUARANTEED_SLOTS][caste])
+			var/list/caste_candidates = list()
+			for(var/mob/living/carbon/xenomorph/xeno in tier_two_candidates)
+				if(xeno.desired_caste.type == caste)
+					caste_candidates |= xeno
+			if(length(caste_candidates))
+				offer_evolution_to(pick(caste_candidates))
+				found_candidate = TRUE
+	for(var/caste in XENO_T3_CASTES)
+		if(slots[TIER_3][GUARANTEED_SLOTS][caste])
+			var/list/caste_candidates = list()
+			for(var/mob/living/carbon/xenomorph/xeno in tier_three_candidates)
+				if(xeno.desired_caste.type == caste)
+					caste_candidates |= xeno
+			if(length(caste_candidates))
+				offer_evolution_to(pick(caste_candidates))
+				found_candidate = TRUE
+
+	//then we go into offering slots per tier
+	if(slots[TIER_3])
+		var/list/caste_candidates = list()
+		for(var/mob/living/carbon/xenomorph/xeno in tier_three_candidates)
+			if(xeno.desired_caste.tier == 3)
+				caste_candidates |= xeno
+		if(length(caste_candidates))
+			offer_evolution_to(pick(caste_candidates))
+			found_candidate = TRUE
+
+	if(slots[TIER_2])
+		var/list/caste_candidates = list()
+		for(var/mob/living/carbon/xenomorph/xeno in tier_two_candidates)
+			if(xeno.desired_caste.tier == 2)
+				caste_candidates |= xeno
+		if(length(caste_candidates))
+			offer_evolution_to(pick(caste_candidates))
+			found_candidate = TRUE
+
+	if(found_candidate) //we repeat untill none can evolve
+		offer_evolutions()
+
+/datum/hive_status/proc/offer_evolution_to(mob/living/carbon/xenomorph/offered_xeno)
+	evolving_xenos |= offered_xeno //we move them to the list of xenos who are offered evolution to take up slot
+	switch(offered_xeno.desired_caste.tier)
+		if(2)
+			tier_two_candidates -= offered_xeno
+		if(3)
+			tier_three_candidates -= offered_xeno
+		if(0)
+			queen_candidates -= offered_xeno
+
+	offered_xeno.allow_evolution()
+
+
+
+
+
+
+
+
 
 /datum/hive_status/corrupted
 	name = FACTION_XENOMORPH_CORRUPTED

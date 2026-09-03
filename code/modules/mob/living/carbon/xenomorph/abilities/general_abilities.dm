@@ -490,7 +490,7 @@
 /datum/action/xeno_action/onclick/evolve/action_activate()
 	. = ..()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	xeno.do_evolve()
+	xeno.attempt_to_evolve()
 
 /datum/action/xeno_action/onclick/evolve/can_use_action()
 	if(!owner)

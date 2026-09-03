@@ -280,7 +280,7 @@
                 "$rustc"
             ],
             "group": {
-                "kind": "build",
+                "kind": "build"
             }
         },
         {

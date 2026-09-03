@@ -168,6 +168,10 @@
 	/// List of references to hive pylons active in the game world
 	var/list/active_endgame_pylons
 
+
+	// This just checks if the objective has been captured, used for granting buffs and abilities.
+	var/tunnel_used = FALSE
+	var/objective_captured = FALSE
 	/*Stores the image()'s for the xeno evolution radial menu
 	To add an image for your caste - add an icon to icons/mob/xenos/radial_xenos.dmi
 	Icon size should be 32x32, to make them fit within the radial menu border size your icon 22x22 and leave 10px transparent border.
@@ -1860,3 +1864,22 @@
 	desc = "Attack the enemy here!"
 	icon_state = "attack"
 
+/datum/hive_status/proc/enable_objective_reward()
+	if(objective_captured)
+		return
+	objective_captured = TRUE
+
+	for(var/mob/living/carbon/xenomorph/hive_xeno as anything in totalXenos)
+		apply_reward(hive_xeno)
+
+	RegisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN, PROC_REF(on_xeno_spawned))
+
+/datum/hive_status/proc/on_xeno_spawned(datum/source, mob/living/carbon/xenomorph/new_xeno)
+	SIGNAL_HANDLER
+	if(new_xeno.hive != src)
+		return
+	apply_reward(new_xeno)
+
+/datum/hive_status/proc/apply_reward(mob/living/carbon/xenomorph/xeno)
+	xeno.damage_modifier += XENO_DAMAGE_MOD_SMALL
+	xeno.recalculate_damage()

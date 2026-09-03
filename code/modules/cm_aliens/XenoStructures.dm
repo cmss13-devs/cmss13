@@ -1468,3 +1468,77 @@
 
 	// We've done our duty, now die pls
 	qdel(src)
+
+/obj/effect/alien/resin/xeno_objective
+
+	name = "alien mass"
+	desc = "a large disgusting throbbing mass of acid and resin, it disgusts you."
+	icon = 'icons/obj/structures/alien/structures96x96.dmi'
+	icon_state = "objective_captured"
+	var/hive_number = XENO_HIVE_NORMAL
+	health = 10000
+	pixel_x = -4
+	pixel_y = -8
+	density = TRUE
+	plane = FLOOR_PLANE
+	can_block_movement = TRUE
+	bound_height = 64
+	bound_width = 96
+	var/capture_radius = 3 // 3 so its 7 by 7
+	var/capture_progress = 0 // startsz from 0
+	var/capture_required = 60 // currently its 60 seconds but i will probably have to fiddle with this
+
+
+/obj/effect/alien/resin/xeno_objective/Initialize(mapload, hivenumber)
+	. = ..()
+	var/area/objective_area = get_area(src)
+
+	if(hivenumber)
+		hive_number = hivenumber
+
+	marine_announcement("ALERT.\n\nEXTREME ENERGY INFLUX DETECTED IN [objective_area].\n\nCAUTION IS ADVISED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
+
+	START_PROCESSING(SSobj, src)
+
+
+/obj/effect/alien/resin/xeno_objective/Destroy()
+	STOP_PROCESSING(SSobj, src)
+
+	return ..()
+
+// Get the actual center for capturing
+/obj/effect/alien/resin/xeno_objective/proc/get_center_turf()
+	return locate(x + 1, y+ 1, z)
+
+
+/obj/effect/alien/resin/xeno_objective/process(delta_time)
+	var/turf/center = get_center_turf()
+
+	if(!center)
+		return
+
+	var/xenos_present = FALSE
+	for(var/mob/living/carbon/xenomorph/nearby_xeno in view(capture_radius, center))
+		if(nearby_xeno.stat == DEAD)
+			continue
+		if(!nearby_xeno.ally_of_hivenumber(hive_number))
+			continue
+		xenos_present = TRUE
+		break
+
+	if(!xenos_present)
+		return
+
+	capture_progress += delta_time
+
+	if(capture_progress >= capture_required)
+		captured()
+
+
+/obj/effect/alien/resin/xeno_objective/proc/captured()
+	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
+	if(hive)
+		hive.enable_objective_reward()
+
+	xeno_announcement(SPAN_XENOANNOUNCE("We have claimed our objective. For the hive."), hive_number, XENO_GENERAL_ANNOUNCE)
+	qdel(src)

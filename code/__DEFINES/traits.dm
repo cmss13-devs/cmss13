@@ -260,7 +260,7 @@
 /// Mob is resistant to xenomorph weeds
 #define TRAIT_WEED_RESISTANT "weed_resistant"
 /// Mob can open xeno doors and hugger/traps ignore them
-#define TRAIT_XENO_RECOGNIZED "screech_resistant"
+#define TRAIT_XENO_RECOGNIZED "xeno_recognized"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transferred to them

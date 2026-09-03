@@ -41,7 +41,7 @@
 	)
 
 	time = 4 SECONDS
-	preop_sound = 'sound/surgery/saw.ogg'
+	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
 	success_sound = 'sound/effects/crack1.ogg'
 	failure_sound = 'sound/effects/crackandbleed.ogg'
 

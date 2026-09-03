@@ -107,6 +107,7 @@
 	desc = "reconnect the muscles and abort the amputation"
 	tools = SURGERY_TOOLS_SUTURE
 	time = 3 SECONDS
+	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
 	success_sound = 'sound/surgery/suture2.ogg'
 	failure_sound = 'sound/surgery/retractor1.ogg'
 
@@ -159,7 +160,8 @@
 		/obj/item/tool/hatchet,
 		/obj/item/attachable/bayonet
 		)
-	//success_sound is handled in the use_custom_success_sound proc in surgery_step.dm
+	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
+	success_sound = 'sound/effects/bone_break4.ogg'
 	failure_sound = 'sound/effects/circsawfail1.ogg'
 
 /datum/surgery_step/saw_off_limb/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -273,6 +275,7 @@
 	desc = "mend the torn blood vessels in the stump"
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 4 SECONDS
+	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
 	success_sound = 'sound/surgery/hemostat2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
@@ -320,7 +323,8 @@
 	desc = "stitch the stump closed"
 	tools = SURGERY_TOOLS_SUTURE
 	time = 3 SECONDS
-	//success_sound is handled in the use_custom_success_sound proc in surgery_step.dm
+	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
+	success_sound = 'sound/surgery/suture2.ogg'
 	failure_sound = 'sound/surgery/retractor1.ogg'
 
 /datum/surgery_step/close_amputation/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -361,7 +365,8 @@
 	desc = "cut through the jammed clamps on the prosthesis"
 	tools = SURGERY_TOOLS_SEVER_BONE
 	time = 5 SECONDS
-	//success_sound is handled in the use_custom_success_sound proc in surgery_step.dm
+	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
+	success_sound = 'sound/effects/buckle.ogg'
 	failure_sound = 'sound/effects/circsawfail3.ogg'
 
 /datum/surgery_step/sever_prosthetic_clamps/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

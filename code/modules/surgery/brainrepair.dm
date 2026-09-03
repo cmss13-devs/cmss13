@@ -123,6 +123,7 @@
 	desc = "mend the hematoma"
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 5 SECONDS
+	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
 	success_sound = 'sound/surgery/hemostat2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 

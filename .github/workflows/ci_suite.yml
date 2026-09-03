@@ -103,9 +103,9 @@ jobs:
 
   compile_llcm:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') )
+    runs-on: windows-latest
     steps:
     - name: Compile LLCM
-      runs-on: windows-latest
       timeout-minutes: 30
       steps:
         - uses: actions/checkout@v6
@@ -130,7 +130,6 @@ jobs:
         fi
 
         echo "Compiled LLCM matches the existing binary."
-
 
   run_llcm_tests:
     name: Run LLCM Tests

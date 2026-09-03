@@ -971,7 +971,9 @@
 	for(var/trait in new_hive.hive_inherited_traits)
 		ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
-	organ.hivenumber = new_hivenumber
+	if(!QDELETED(organ))
+		organ.hivenumber = new_hivenumber
+
 	if(new_hivenumber == XENO_HIVE_FORSAKEN)
 		update_minimap_see_humans()
 

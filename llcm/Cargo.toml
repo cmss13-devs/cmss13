@@ -1,0 +1,14 @@
+[package]
+name = "llcm"
+version = "0.1.0"
+edition = "2021"
+description = "Dedicated offloaded task library for the CM13 Space Station 13 codebase"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+thiserror = "2.0.20"
+
+[features]
+allow_non_32bit = []

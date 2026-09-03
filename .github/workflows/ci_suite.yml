@@ -116,20 +116,20 @@ jobs:
         cd llcm
         cargo build --release --target ${{env.RUST_REQUIRED_TARGET}}
     - name: Verify completed LLCM
-      shell: bash
+      shell: pwsh
       run: |
-        NEW_FILE = "llcm/target/${{ env.RUST_REQUIRED_TARGET }}/debug/llcm.dll"
-        EXISTING_FILE = "llcm.dll"
+        $newFile="llcm/target/${{ env.RUST_REQUIRED_TARGET }}/release/llcm.dll"
+        $existingFile="llcm.dll"
 
-        NEW_HASH=$(sha256sum "$NEW_FILE" | cut -d ' ' -f1)
-        EXISTING_HASH=$(sha256sum "$EXISTING_FILE" | cut -d ' ' -f1)
+        $newHash=$(Get-FileHash $newFile -Algorithm SHA256).Hash
+        $existingHash=$(Get-FileHash $existingFile -Algorithm SHA256).Hash
 
-        if [ "$NEW_HASH" != "$EXISTING_HASH" ]; then
-          echo "ERROR: Compiled LLCM does not match the existing binary."
-          exit 1
-        fi
+        if ($newHash -ne $existingHash) {
+            Write-Error "Compiled LLCM does not match the existing binary."
+            exit 1
+        }
 
-        echo "Compiled LLCM matches the existing binary."
+        Write-Host "Compiled LLCM matches the existing binary."
 
   run_llcm_tests:
     name: Run LLCM Tests

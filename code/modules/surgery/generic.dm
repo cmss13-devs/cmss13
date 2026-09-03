@@ -684,7 +684,7 @@
 	tools = SURGERY_TOOLS_BONE_MEND
 	time = 3 SECONDS
 	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
-	//success_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
+	//success_sound is handled in the use_custom_success_sound proc in surgery_step.dm
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 //Use materials to mend bones, same as /datum/surgery_step/mend_bones

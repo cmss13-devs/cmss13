@@ -108,7 +108,7 @@
 	tools = SURGERY_TOOLS_SUTURE
 	time = 3 SECONDS
 	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
-	//success_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
+	//success_sound is handled in the use_custom_success_sound proc in surgery_step.dm
 	failure_sound = 'sound/surgery/retractor1.ogg'
 
 /datum/surgery_step/abort_amputation/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)

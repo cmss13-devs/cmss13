@@ -285,10 +285,20 @@
         },
         {
             "type": "shell",
-            "label": "llcm: move dll artifact",
+            "label": "llcm: move dll debug artifact",
             "command": "cp",
             "args": [
                 "llcm\\target\\i686-pc-windows-msvc\\debug\\llcm.dll",
+                "llcm.dll",
+                "-force"
+            ],
+        },
+        {
+            "type": "shell",
+            "label": "llcm: move dll release artifact",
+            "command": "cp",
+            "args": [
+                "llcm\\target\\i686-pc-windows-msvc\\release\\llcm.dll",
                 "llcm.dll",
                 "-force"
             ],
@@ -306,7 +316,7 @@
         {
             "label": "llcm: cargo development build (win32)",
             "dependsOrder": "sequence",
-            "dependsOn": ["llcm: build development library", "llcm: move dmlib artifact", "llcm: move dll artifact"],
+            "dependsOn": ["llcm: build development library", "llcm: move dmlib artifact", "llcm: move dll debug artifact"],
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -334,7 +344,7 @@
         {
             "label": "llcm: cargo release build (win32)",
             "dependsOrder": "sequence",
-            "dependsOn": ["llcm: build release library", "llcm: move dmlib artifact", "llcm: move dll artifact"],
+            "dependsOn": ["llcm: build release library", "llcm: move dmlib artifact", "llcm: move dll release artifact"],
             "group": {
                 "kind": "build",
                 "isDefault": true

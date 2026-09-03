@@ -313,7 +313,7 @@
             }
         },
         {
-            "label": "llcm: cargo release build (win32, all features)",
+            "label": "llcm: build release library",
             "args": [
                 "build",
                 "--release",
@@ -330,6 +330,15 @@
                 "$rustc"
             ],
             "group": "build"
-        }
+        },
+        {
+            "label": "llcm: cargo release build (win32)",
+            "dependsOrder": "sequence",
+            "dependsOn": ["llcm: build release library", "llcm: move dmlib artifact", "llcm: move dll artifact"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
     ]
 }

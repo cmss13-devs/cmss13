@@ -17,4 +17,7 @@ crate-type = ["cdylib"]
 thiserror = "2.0.20"
 
 [features]
+all = []
+default = []
+
 allow_non_32bit = []

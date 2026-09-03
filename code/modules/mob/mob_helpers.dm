@@ -423,8 +423,10 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 				return DURATION_MULTIPLIER_TIER_1
 // Surgeon
 		if(SKILL_SURGERY)
-			if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_EXPERT))
+			if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_MAX)) //let's put that old EXPERT speed here.
 				return 0.6
+			if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_EXPERT)) //this was 0.6 at one point... Many surgery steps can't complete their sounds in time.
+				return 0.8
 			if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_TRAINED))
 				return 1
 			else if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_NOVICE))

@@ -75,11 +75,13 @@
 			SPAN_NOTICE("[user] finishes making a bloodless incision on [target]'s [surgery.affected_limb.display_name] with [tool]."))
 
 		surgery.status += 3 //A laser scalpel may cauterise as it cuts.
+		playsound(get_turf(target), 'sound/surgery/laserscalpel2.ogg', vol = 40, sound_range = 1) //good laser scalpels who make bloodless incisions get the true success sound.
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You finish the incision on [target]'s [surgery.affected_limb.display_name]."),
 			SPAN_NOTICE("[user] finishes the incision on your [surgery.affected_limb.display_name]."),
 			SPAN_NOTICE("[user] finishes the incision on [target]'s [surgery.affected_limb.display_name]."))
+		playsound(get_turf(target), 'sound/surgery/scalpel2.ogg', vol = 40, sound_range = 1) //bad laser scalpels get the normal scalpel sound :(
 
 		if(!(surgery.affected_limb.status & LIMB_SYNTHSKIN))
 			var/datum/effects/bleeding/external/incision_bleed = new(target, surgery.affected_limb, 10)
@@ -678,7 +680,6 @@
 	desc = "repair the damaged bones"
 	tools = SURGERY_TOOLS_BONE_MEND
 	time = 3 SECONDS
-	success_sound = 'sound/handling/bandage.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 //Use materials to mend bones, same as /datum/surgery_step/mend_bones

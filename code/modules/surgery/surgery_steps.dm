@@ -25,6 +25,7 @@
 	///preop means "in Progress" sound. Var is only used if all tools use the same sound. Otherwise, use custom_preop_sound
 	var/preop_sound
 	var/custom_preop_sound
+	var/custom_success_sound
 	///Sound of success
 	var/success_sound
 	///failure >:(
@@ -133,6 +134,56 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 
 	if(held_tool == tool.type)
 		playsound(get_turf(target), custom_preop_sound, vol = 40, sound_range = 1)
+
+
+/datum/surgery_step/proc/use_custom_success_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+	var/held_tool = tool.type
+	if(tool.type in SURGERY_TOOLS_INCISION)
+		if(held_tool == /obj/item/tool/surgery/scalpel/manager)
+			custom_success_sound = 'sound/surgery/retractor2.ogg'
+		else if(held_tool == /obj/item/tool/surgery/scalpel/laser)
+			if(istype(src, /datum/surgery_step/incision))
+			custom_success_sound = null //it gets its own set of sounds within the surgery_step proc depending on whether it made a bloodless incision or not.
+			else
+				custom_preop_sound = 'sound/surgery/scalpel1.ogg'
+		else
+			custom_preop_sound = 'sound/surgery/scalpel1.ogg'
+
+
+	else if(tool.type in SURGERY_TOOLS_SEVER_BONE)
+		if(istype(src, /datum/surgery_step/sever_prosthetic_clamps))
+			custom_success_sound = 'sound/effects/buckle.ogg'
+		else
+			custom_success_sound = 'sound/surgery/hemostat2.ogg'
+
+	else if(tool.type in SURGERY_TOOLS_BONE_MEND)
+		if(held_tool == /obj/item/tool/screwdriver)
+			custom_success_sound = 'sound/items/Screwdriver2.ogg'
+		else
+			custom_success_sound = 'sound/surgery/bonegel.ogg'
+
+	else if(tool.type in SURGERY_TOOLS_APPLY_GRAFT)
+		if(held_tool == /obj/item/tool/surgery/synthgraft)
+			custom_success_sound = 'sound/surgery/suture2.ogg'
+		else if(held_tool == /obj/item/stack/medical/ointment)
+			custom_success_sound = 'sound/handling/ointment_spreading.ogg'
+		else
+			custom_success_sound = 'sound/handling/bandage.ogg'
+
+	else if(tool.type in SURGERY_TOOLS_MEDICOMP_STABILIZE_WOUND)
+		if((held_tool == /obj/item/tool/surgery/FixOVein) || (held_tool == /obj/item/tool/surgery/bonegel))
+			custom_success_sound = 'sound/surgery/bonegel.ogg'
+		else
+			custom_success_sound = 'sound/surgery/suture2.ogg'
+
+	else if((tool.type in SURGERY_TOOLS_SUTURE) || (tool.type in SURGERY_TOOLS_MEND_BLOODVESSEL))
+		if(held_tool == /obj/item/tool/surgery/FixOVein)
+			custom_success_sound = 'sound/surgery/bonegel.ogg'
+		else
+			custom_success_sound = 'sound/surgery/suture2.ogg'
+
+	if(held_tool == tool.type)
+		playsound(get_turf(target), custom_success_sound, vol = 40, sound_range = 1)
 
 ///The proc that actually performs the step.
 /datum/surgery_step/proc/attempt_step(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
@@ -331,9 +382,12 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 
 /// Plays the selected success sound
 /datum/surgery_step/proc/play_success_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	if(!success_sound)
+	if(success_sound)
+		playsound(get_turf(target), preop_sound, vol = 40, sound_range = 1)
+	else if (!success_sound)
+		use_custom_preop_sound(user, target, target_zone, tool, surgery)
+	else if (!custom_success_sound) //for examples like laser scalpels not making cautery sizzle noises after not making a bloodless incisions.
 		return
-	playsound(get_turf(target), success_sound, vol = 40, sound_range = 1)
 
 /**This is used for failed-step narration and relevant failure changes, often damage etc. If it returns TRUE, the step succeeds anyway.
 tool_type may be a typepath or simply '1'. Note that a first step done on help-intent doesn't call failure(), it just ends harmlessly.**/

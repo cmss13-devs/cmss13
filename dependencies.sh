@@ -10,9 +10,6 @@ export BYOND_MINOR=1687
 #rust_g git tag
 export RUST_G_VERSION=7.0.0
 
-# rust toolchain version for llcm
-export RUST_TOOLCHAIN_VERSION="1.100.0,nightly"
-
 # rust build target for llcm
 export RUST_BUILD_TARGET="i686-pc-windows-msvc"
 

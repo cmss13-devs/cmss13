@@ -115,6 +115,19 @@ jobs:
           cd llcm
           cargo build --target ${{env.RUST_REQUIRED_TARGET}}
 
+  run_llcm_tests:
+    name: Run LLCM Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+      - name: Setup Rust Toolchain
+        uses: ./.github/actions/setup_rust
+      - name: Cargo Test
+        run: |
+          cd llcm
+          cargo test --target ${{env.RUST_REQUIRED_TARGET}}
+
   find_all_maps:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Find Maps to Test

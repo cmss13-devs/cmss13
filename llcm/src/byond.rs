@@ -16,6 +16,7 @@ thread_local! {
     static RETURN_STRING: RefCell<CString> = RefCell::new(CString::default());
 }
 
+#[allow(dead_code)]
 pub unsafe fn parse_args<'a>(argc: c_int, argv: *const *const c_char) -> Vec<Cow<'a, str>> {
     if argc == 0 || argv.is_null() {
         return Vec::new();

@@ -271,7 +271,7 @@
             "args": [
                 "build",
                 "--target",
-                "i686-pc-windows-msvc",
+                "i686-pc-windows-msvc"
             ],
             "options": {
                 "cwd": "llcm"

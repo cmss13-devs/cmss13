@@ -107,6 +107,7 @@
 	desc = "reconnect the muscles and abort the amputation"
 	tools = SURGERY_TOOLS_SUTURE
 	time = 3 SECONDS
+	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
 	success_sound = 'sound/surgery/suture2.ogg'
 	failure_sound = 'sound/surgery/retractor1.ogg'
 
@@ -159,6 +160,7 @@
 		/obj/item/tool/hatchet,
 		/obj/item/attachable/bayonet
 		)
+	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
 	success_sound = 'sound/effects/bone_break4.ogg'
 	failure_sound = 'sound/effects/circsawfail1.ogg'
 
@@ -273,6 +275,7 @@
 	desc = "mend the torn blood vessels in the stump"
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 4 SECONDS
+	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
 	success_sound = 'sound/surgery/hemostat2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
@@ -320,6 +323,7 @@
 	desc = "stitch the stump closed"
 	tools = SURGERY_TOOLS_SUTURE
 	time = 3 SECONDS
+	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
 	success_sound = 'sound/surgery/suture2.ogg'
 	failure_sound = 'sound/surgery/retractor1.ogg'
 
@@ -361,6 +365,7 @@
 	desc = "cut through the jammed clamps on the prosthesis"
 	tools = SURGERY_TOOLS_SEVER_BONE
 	time = 5 SECONDS
+	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
 	success_sound = 'sound/effects/buckle.ogg'
 	failure_sound = 'sound/effects/circsawfail3.ogg'
 

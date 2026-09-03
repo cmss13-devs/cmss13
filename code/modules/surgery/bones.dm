@@ -38,6 +38,7 @@
 	desc = "repair the fractured bones"
 	tools = SURGERY_TOOLS_BONE_MEND
 	time = 3 SECONDS
+	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
 	success_sound = 'sound/handling/bandage.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 

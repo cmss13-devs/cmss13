@@ -45,6 +45,7 @@
 	desc = "stabilize the wounds"
 	tools = SURGERY_TOOLS_MEDICOMP_STABILIZE_WOUND
 	time = 5 SECONDS
+	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
 	success_sound = 'sound/handling/ointment_spreading.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
@@ -152,6 +153,7 @@
 	desc = "clamp the wounds"
 	tools = SURGERY_TOOLS_MEDICOMP_CLAMP_WOUND
 	time = 10 SECONDS
+	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
 	success_sound = 'sound/surgery/cautery2.ogg'
 	failure_sound = 'sound/items/welder.ogg'
 

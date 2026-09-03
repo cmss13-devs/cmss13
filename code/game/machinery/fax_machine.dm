@@ -870,18 +870,18 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 		forceMove(deployedfax)
 		return
 	return ..()
-/obj/item/device/fax_backpack/set_to_table(obj/structure/surface/target, mob/user)
-	if(!ishuman(user))
+/obj/item/device/fax_backpack/set_to_table(obj/structure/surface/target)
+	if(!ishuman(usr))
 		return
 	var/deployturf = get_turf(target)
-	to_chat(user,  SPAN_NOTICE("You begin to deploy [src]..."))
-	if(do_after(user, 4.5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		to_chat(user, SPAN_NOTICE("You deploy [src]."))
+	to_chat(usr,  SPAN_NOTICE("You begin to deploy [src]..."))
+	if(do_after(usr, 4.5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		to_chat(usr, SPAN_NOTICE("You deploy [src]."))
 		var/obj/structure/machinery/faxmachine/backpack/deployedfax = new(deployturf, machine_id_tag)
 		deployedfax.faxbag = src
 		transfer_label_component(deployedfax)
 		playsound(src.loc, 'sound/machines/print.ogg', 40, 1)
-		user.drop_held_item(src)
+		usr.drop_held_item(src)
 		forceMove(deployedfax)
 		return
 /obj/structure/machinery/faxmachine/backpack/MouseDrop(over_object, src_location, over_location) //Drag the deployed fax onto you to pick it up.

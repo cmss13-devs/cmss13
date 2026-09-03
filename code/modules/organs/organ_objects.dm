@@ -203,7 +203,7 @@
 	return TRUE
 
 /obj/item/organ/xeno/proc/handle_organ_planting(turf/target, mob/user)
-	if(!can_build_gland(target))
+	if(!can_build_gland(target, user))
 		return
 
 	var/list/buildables = list()
@@ -244,7 +244,7 @@
 		var/list/buildables_list = list()
 		for(var/obj/effect/alien/resin/chem_producer/producer as anything in buildables)
 			buildables_list[initial(producer.name)] = producer
-		to_construct = tgui_input_list(src, "Construct a gland", "Construct", buildables_list)
+		to_construct = tgui_input_list(user, "Construct a gland", "Construct", buildables_list)
 	else
 		var/list/buildables_list = list()
 		var/list/buildables_map = list()

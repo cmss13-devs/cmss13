@@ -32,6 +32,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	COOLDOWN_DECLARE(announcement_cooldown)
 	var/list/research_computers = list()
 
+	/// Maximum contract level that can be obtained via the research terminals.
 	var/max_contract_level = 2
 
 /datum/chemical_data/proc/update_credits(change)

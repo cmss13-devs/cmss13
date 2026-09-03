@@ -36,6 +36,13 @@
 	SIGNAL_HANDLER
 	collecting_from = null
 
+/obj/structure/machinery/chem_extractor/power_change(area/master_area)
+	. = ..()
+	if(stat & NOPOWER)
+		STOP_PROCESSING(SSxeno_botany, src)
+	else
+		START_PROCESSING(SSxeno_botany, src)
+
 /obj/structure/machinery/chem_extractor/process()
 	if(!collecting_from)
 		var/producer = locate(/obj/effect/alien/resin/chem_producer) in get_turf(src)

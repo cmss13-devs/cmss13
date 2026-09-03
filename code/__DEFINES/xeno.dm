@@ -841,19 +841,19 @@
 /// Organ belongs to a brute caste (defender evo tree)
 #define XENO_ORGAN_HARDENED (1<<4)
 /// Organ belongs to a fast caste (runner evo tree)
-#define XENO_ORGAN_TACHYCARDIA (1<<4)
+#define XENO_ORGAN_TACHYCARDIA (1<<5)
 
 /// Organ belongs to a fragile caste (boiler)
 /// Obtaining it is very difficult and essentially
 /// requires a corrupted hive that evolves a boiler
-#define XENO_ORGAN_FRAGILE (1<<5)
+#define XENO_ORGAN_FRAGILE (1<<6)
 
 /// Organ taken from a low-tier caste
-#define XENO_ORGAN_WEAK (1<<6)
+#define XENO_ORGAN_WEAK (1<<7)
 /// Organ taken from a high-tier caste
-#define XENO_ORGAN_STRONG (1<<7)
+#define XENO_ORGAN_STRONG (1<<8)
 /// Organ taken from a royal-tier caste
-#define XENO_ORGAN_ROYAL (1<<8)
+#define XENO_ORGAN_ROYAL (1<<9)
 
 /// Determines how fast xeno botany chems produce.
 #define XENO_BOTANY_RATE 10 SECONDS

@@ -259,7 +259,7 @@
 #define TRAIT_IRON_TEETH "t_iron_teeth"
 /// Mob is resistant to xenomorph weeds
 #define TRAIT_WEED_RESISTANT "weed_resistant"
-/// Mob is resistant to queen screeches
+/// Mob can open xeno doors and hugger/traps ignore them
 #define TRAIT_XENO_RECOGNIZED "screech_resistant"
 
 // -- ability traits --

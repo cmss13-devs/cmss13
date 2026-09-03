@@ -37,7 +37,7 @@
 		reagents.add_reagent(chem, production_amt, safety = TRUE)
 
 
-/obj/effect/alin/resin/chem_producer/Destroy(force)
+/obj/effect/alien/resin/chem_producer/Destroy(force)
 	STOP_PROCESSING(SSxeno_botany, src)
 	return ..()
 

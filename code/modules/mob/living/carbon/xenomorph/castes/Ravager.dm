@@ -33,6 +33,8 @@
 
 	minimum_evolve_time = 15 MINUTES
 
+	organ_type = /obj/item/organ/xeno/ravager
+
 	minimap_icon = "ravager"
 
 /mob/living/carbon/xenomorph/ravager
@@ -42,14 +44,12 @@
 	icon = 'icons/mob/xenos/castes/tier_3/ravager.dmi'
 	icon_size = 64
 	icon_state = "Ravager Walking"
-	plasma_types = list(PLASMA_CATECHOLAMINE)
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3
 	pixel_x = -16
 	old_x = -16
 	claw_type = CLAW_TYPE_VERY_SHARP
-	organ_value = 3000
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_XENO_FRENZY
 
 	base_actions = list(
@@ -72,6 +72,14 @@
 
 	skull = /obj/item/skull/ravager
 	pelt = /obj/item/pelt/ravager
+
+/obj/item/organ/xeno/ravager
+	name = "ravager heart"
+	icon_state = "heart_t3"
+	item_state = "heart_t3"
+	research_value = 3000
+
+	xeno_organ_flags = XENO_ORGAN_STRONG|XENO_ORGAN_TACHYCARDIA|XENO_ORGAN_HARDENED
 
 /mob/living/carbon/xenomorph/ravager/get_examine_text(mob/user)
 	. = ..()

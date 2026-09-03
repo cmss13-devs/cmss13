@@ -7,6 +7,8 @@
 	var/behavior = RESEARCH_UPGRADE_EXCLUDE_BUY // should this be on the list?
 	/// the price of the upgrade, refer to this: 500 is a runner, 8k is queen. T3 is usually 3k, woyer is 2k.
 	var/value_upgrade = 1000
+	/// how much royal biomatter is needed to purchase this
+	var/royal_value_upgrade = 0
 	///In which tab the upgrade should be.
 	var/upgrade_type
 	///Path to the item, upgrade, if any.
@@ -95,17 +97,44 @@
 	clearance_req = 1
 
 /datum/research_upgrades/machinery/autoharvest
-	name = "Auto-Harvest Botany Upgrade"
-	desc = "Research upgrade for hydroponics system, technology on this disk automatically shakes the plant once it is ready to be harvested."
+	name = "Chemical Extractor"
+	desc = "A chemical extractor that can be used to extract chemicals from a specified vessel. Sends them to the tagged chemical network. These ones are configured for research."
 	behavior = RESEARCH_UPGRADE_ITEM
-	value_upgrade = 250
-	item_reference = /obj/item/research_upgrades/autoharvest
+	value_upgrade = 1000
+	item_reference = /obj/item/chem_extractor
 	upgrade_type = ITEM_MACHINERY_UPGRADE
 	clearance_req = 2
 
 /datum/research_upgrades/item
 	name = "Items"
 	behavior = RESEARCH_UPGRADE_CATEGORY
+
+/datum/research_upgrades/item/biological_decoding
+	name = "Xenobiological Decoding"
+	desc = "Decode the foreign and unknown xenobiological biomatter to acquire an exotic"
+	clearance_req = 6
+	value_upgrade = 5000
+	change_purchase = 5000
+	royal_value_upgrade = 1
+	behavior = RESEARCH_UPGRADE_ITEM
+	upgrade_type = ITEM_ACCESSORY_UPGRADE
+
+/datum/research_upgrades/item/biological_decoding/on_purchase(turf/machine_loc)
+	var/datum/reagent/generated/endgame_chem = new /datum/reagent/generated
+	endgame_chem.id = "tau-[length(GLOB.chemical_gen_classes_list["tau"])]"
+	endgame_chem.generate_name()
+	endgame_chem.gen_tier = 4
+	endgame_chem.add_property(pick(PROPERTY_XENOMORPHIC_LIST), 0)
+	endgame_chem.generate_stats()
+	endgame_chem.credit_reward = 10
+	endgame_chem.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["X3"])
+
+	GLOB.chemical_gen_classes_list["tau"] += endgame_chem.id
+	GLOB.chemical_reagents_list[endgame_chem.id] = endgame_chem
+	endgame_chem.generate_assoc_recipe(null, list(endgame_chem.reagent_recipe_hint), list(endgame_chem.reagent_recipe_hint))
+
+	new /obj/item/paper/research_notes(machine_loc, GLOB.chemical_reagents_list[endgame_chem.id], "synthesis", TRUE)
+
 
 /datum/research_upgrades/item/research_credits
 	name = "Research Contract Reroll"
@@ -229,3 +258,4 @@
 	change_purchase = -100
 	minimum_price = 100
 	item_reference = /obj/item/clothing/accessory/health/research_plate/anti_decay
+

@@ -1,0 +1,4 @@
+author: "Watermelon914"
+delete-after: True
+changes:
+  - balance: "Reworked research gameplay loop to be more xeno-body focused. Hydroponic chemicals still exist but are no longer generated as part of recipes, and are not a research target anymore. Xenomorph organs can be cultivated into weed nodes and glands by placing them on the floor and then placing them on weeds. These glands produce chemicals which can then be extracted, which are necessary to research the more lategame chemicals."

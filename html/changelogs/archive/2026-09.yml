@@ -38,3 +38,15 @@
   - rscdel: Removed the Smartgun autofire system.
   Orchidfox:
   - qol: RTO bag moved to SL mandatory gear
+2026-09-03:
+  Antlers:
+  - code_imp: Added pheromone unit tests to the repo's CI suite
+  - code_imp: Added new defines for pheromone types and strength
+  - bugfix: Banished xenomorphs will no longer receive pheromones from their former
+      hive, and vice versa
+  Kashargul:
+  - code_imp: update tgui dependencies
+  Mary-Marilyn:
+  - soundadd: Added new pulse rifle sounds for the MK1
+  fira:
+  - code_imp: Optimized human wound overlays by bundling updates

@@ -257,6 +257,10 @@
 #define TRAIT_SPEC(spec_type) "t_spec_[spec_type]"
 /// If the mob won't drop items held in face slot when downed
 #define TRAIT_IRON_TEETH "t_iron_teeth"
+/// Mob is resistant to xenomorph weeds
+#define TRAIT_WEED_RESISTANT "weed_resistant"
+/// Mob can open xeno doors and hugger/traps ignore them
+#define TRAIT_XENO_RECOGNIZED "xeno_recognized"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transferred to them
@@ -552,3 +556,5 @@ GLOBAL_LIST(trait_name_map)
 #define TURF_Z_TRANSPARENT_TRAIT "turf_z_transparent"
 /// traits from wall hiding
 #define WALL_HIDING_TRAIT "wallhiding"
+/// traits from reagents
+#define TRAIT_SOURCE_REAGENT(reagent_id) "reagent_[reagent_id]"

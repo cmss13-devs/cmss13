@@ -15,7 +15,6 @@ macro_rules! feature_dm_exists {
 fn main() {
     let mut f = File::create("target/llcm.dm").unwrap();
 
-    // header
     writeln!(
         f,
         "{}",

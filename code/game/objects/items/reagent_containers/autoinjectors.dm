@@ -80,7 +80,7 @@
 				if(isyautja(user)) //is a yautja looking at it or not?
 					. += SPAN_NOTICE("It is currently loaded with a single injection of [amount_per_transfer_from_this]u [capitalize(chemname)].")
 				else
-					. += SPAN_NOTICE("You do not know how many injections this has or what is in it.")
+					. += SPAN_NOTICE("You do not know how many injections it has or what is in it.")
 		else
 			. += SPAN_NOTICE("It is currently loaded with [reagents.total_volume / amount_per_transfer_from_this]/[volume / amount_per_transfer_from_this] injections of [amount_per_transfer_from_this]u [capitalize(chemname)].")
 
@@ -91,7 +91,7 @@
 				if(isyautja(user)) //is a yautja looking at it or not?
 					. += SPAN_WARNING("It is spent and will soon disintegrate.")
 				else
-					. += SPAN_NOTICE("You do not know how many injections this has or what is in it.")
+					. += SPAN_NOTICE("You do not know how many injections it has or what is in it.")
 			else
 				. += SPAN_WARNING("It is spent and it has no means of refilling. It must be disposed of.")
 		else if(istype(src, /obj/item/reagent_container/hypospray/autoinjector/ez) || istype(src, /obj/item/reagent_container/hypospray/autoinjector/tutorial))

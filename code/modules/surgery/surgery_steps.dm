@@ -100,27 +100,25 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		if(held_tool == /obj/item/tool/screwdriver)
 			custom_preop_sound = 'sound/items/Screwdriver.ogg'
 		else
-			custom_preop_sound = 'sound/surgery/bonegel.ogg'
+			custom_preop_sound = 'sound/handling/bottle_cap_unscrew.ogg'
 
 	else if(tool.type in SURGERY_TOOLS_APPLY_GRAFT)
 		if(held_tool == /obj/item/tool/surgery/synthgraft)
 			custom_preop_sound = 'sound/surgery/suture1.ogg'
 		else if(held_tool == /obj/item/stack/medical/ointment)
-			custom_preop_sound = 'sound/surgery/fixovein.ogg'
+			custom_preop_sound = 'sound/handling/bottle_cap_unscrew.ogg'
 		else
 			custom_preop_sound = 'sound/handling/clothingrustle1.ogg'
 
 	else if(tool.type in SURGERY_TOOLS_MEDICOMP_STABILIZE_WOUND)
-		if(held_tool == /obj/item/tool/surgery/FixOVein)
-			custom_preop_sound = 'sound/surgery/fixovein.ogg'
-		else if(held_tool == /obj/item/tool/surgery/bonegel)
-			custom_preop_sound = 'sound/surgery/bonegel.ogg'
+		if(held_tool == /obj/item/tool/surgery/FixOVein || held_tool == /obj/item/tool/surgery/bonegel)
+			custom_preop_sound = 'sound/handling/bottle_cap_unscrew.ogg'
 		else
 			custom_preop_sound = 'sound/surgery/suture1.ogg'
 
 	else if((tool.type in SURGERY_TOOLS_SUTURE) || (tool.type in SURGERY_TOOLS_MEND_BLOODVESSEL))
 		if(held_tool == /obj/item/tool/surgery/FixOVein)
-			custom_preop_sound = 'sound/surgery/fixovein.ogg'
+			custom_preop_sound = 'sound/handling/bottle_cap_unscrew.ogg'
 		else
 			custom_preop_sound = 'sound/surgery/suture1.ogg'
 

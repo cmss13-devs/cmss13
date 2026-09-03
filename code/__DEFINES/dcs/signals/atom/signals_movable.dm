@@ -19,6 +19,9 @@
 #define COMSIG_MOVABLE_XENO_START_PULLING "movable_xeno_start_pulling"
 	#define COMPONENT_ALLOW_PULL (1<<0)
 
+#define COMSIG_MOVABLE_PRE_PICKUP "movable_pre_pickup"
+	#define COMPONENT_PICKUP_CANCELED_ACID (1<<0)
+
 #define COMSIG_MOVABLE_PULLED "movable_pulled"
 	#define COMPONENT_IGNORE_ANCHORED (1<<0)
 
@@ -35,9 +38,6 @@
 #define COMSIG_MOVABLE_UPDATE_GLIDE_SIZE "movable_glide_size"
 
 #define COMSIG_MOVABLE_TURF_ENTER "movable_turf_enter"
-
-/// Called when a movable atom enters an obj's contents (obj/entered, atom/old_loc)
-#define COMSIG_MOVABLE_ENTERED_OBJ "atom_entered"
 
 #define COMSIG_MOVABLE_PREBUCKLE "prebuckle" // this is the last chance to interrupt and block a buckle before it finishes
 	#define COMPONENT_BLOCK_BUCKLE	(1<<0)

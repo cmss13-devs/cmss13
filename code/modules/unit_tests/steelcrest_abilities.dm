@@ -73,7 +73,7 @@
 	fortify_ability.use_ability()
 	fortify_ability.use_ability()
 
-	TEST_ASSERT(xeno_defender.fortify, "xeno unfortified espite being on cooldown")
+	TEST_ASSERT(xeno_defender.fortify, "xeno unfortified despite being on cooldown")
 
 /datum/unit_test/fortify_dropped_on_unconscious/Run()
 	var/mob/living/carbon/xenomorph/defender/xeno_defender = allocate(/mob/living/carbon/xenomorph/defender)

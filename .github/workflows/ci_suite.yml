@@ -104,7 +104,7 @@ jobs:
   compile_llcm:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Compile LLCM
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v6
@@ -117,7 +117,7 @@ jobs:
 
   run_llcm_tests:
     name: Run LLCM Tests
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v6

@@ -74,7 +74,7 @@
 
 /datum/tutorial/xenomorph/basic/proc/on_xeno_emit_pheromone(emitter, pheromone)
 	SIGNAL_HANDLER
-	if(!(pheromone == "recovery"))
+	if(!(pheromone == XENO_PHERO_RECOVERY))
 		message_to_player("These are not recovery pheromones. Click your ability again to stop emitting, and choose <b>Recovery</b> instead.")
 	else if(xeno.health > WAITING_HEALTH_THRESHOLD)
 		reach_health_threshold()

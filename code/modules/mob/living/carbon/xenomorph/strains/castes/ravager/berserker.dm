@@ -22,7 +22,7 @@
 	ravager.health_modifier -= XENO_HEALTH_MOD_MED
 	ravager.armor_modifier += XENO_ARMOR_MOD_VERY_SMALL
 	ravager.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
-	ravager.received_phero_caps["frenzy"] = 2.9 // Moderate
+	ravager.received_phero_caps[XENO_PHERO_FRENZY] = 2.9 // Moderate
 
 	ravager.recalculate_everything()
 
@@ -388,6 +388,6 @@
 				bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]"),
 				SPAN_XENONOTICE("ATTACK!!!! Wait- we're not allowed to attack hosts anymore..."))
 				return XENO_ATTACK_ACTION
-		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] fumbles stupidly for a moment, then slashes [target_carbon]!"), null, null, CHAT_TYPE_XENO_COMBAT)
-		bound_xeno.visible_message(SPAN_HIGHDANGER("Your oversized claws and small mind get in the way of restraining, slashing [target_carbon]!"), null, null, CHAT_TYPE_XENO_COMBAT)
+		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] fumbles stupidly for a moment, then slashes [target_carbon]!"),
+			SPAN_HIGHDANGER("Your oversized claws and small mind get in the way of restraining, slashing [target_carbon]!"), message_flags=CHAT_TYPE_XENO_COMBAT)
 		return INTENT_HARM

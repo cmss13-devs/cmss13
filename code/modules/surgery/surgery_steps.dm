@@ -104,6 +104,14 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 			to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site! Take it off!"))
 			return
 
+		if(surgery_limb.status & LIMB_SPLINTED && surgery.invasiveness != SURGERY_DEPTH_SURFACE)
+			if(surgery_limb.status & LIMB_SPLINTED_INDESTRUCTIBLE)
+				to_chat(user, SPAN_WARNING("The splint [target] is wearing on their [surgery_limb.display_name] restricts your access to the surgical site, and must be manually removed!"))
+				return
+			surgery_limb.status &= ~LIMB_SPLINTED
+			playsound(get_turf(target), 'sound/items/splintbreaks.ogg', 20)
+			user.visible_message(SPAN_DANGER("The splint on [target]'s [surgery_limb.display_name] comes apart!"))
+
 	var/step_duration = time
 	var/self_surgery
 	var/tool_modifier

@@ -30,7 +30,7 @@
 
 	organ_type = null
 
-	aura_strength = 1
+	aura_strength = XENO_PHERO_STRENGTH_WEAK
 
 	minimap_icon = "lesser_drone"
 

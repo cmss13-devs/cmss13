@@ -83,8 +83,8 @@
 		pass_flags.flags_can_pass_all = NONE
 		pass_flags.flags_can_pass_front = NONE
 		pass_flags.flags_can_pass_behind = PASS_OVER^(PASS_OVER_ACID_SPRAY|PASS_OVER_THROW_MOB)
-	flags_can_pass_front_temp = PASS_OVER_THROW_MOB
-	flags_can_pass_behind_temp = PASS_OVER_THROW_MOB
+	flags_can_pass_front_temp = PASS_FLAGS_UNWIRED
+	flags_can_pass_behind_temp = PASS_FLAGS_UNWIRED
 
 /obj/structure/barricade/get_examine_text(mob/user)
 	. = ..()
@@ -268,8 +268,8 @@
 				update_health(-50)
 				can_wire = FALSE
 				is_wired = TRUE
-				flags_can_pass_front_temp &= ~(PASS_OVER_THROW_MOB|PASS_ACID_GRENADE)
-				flags_can_pass_behind_temp &= ~(PASS_OVER_THROW_MOB|PASS_ACID_GRENADE)
+				flags_can_pass_front_temp &= ~PASS_FLAGS_UNWIRED
+				flags_can_pass_behind_temp &= ~PASS_FLAGS_UNWIRED
 				climbable = FALSE
 				update_icon()
 		return
@@ -289,8 +289,8 @@
 				update_health(50)
 				can_wire = TRUE
 				is_wired = FALSE
-				flags_can_pass_front_temp |= PASS_OVER_THROW_MOB|PASS_ACID_GRENADE
-				flags_can_pass_behind_temp |= PASS_OVER_THROW_MOB|PASS_ACID_GRENADE
+				flags_can_pass_front_temp |= PASS_FLAGS_UNWIRED
+				flags_can_pass_behind_temp |= PASS_FLAGS_UNWIRED
 				climbable = TRUE
 				update_icon()
 				new/obj/item/stack/barbed_wire( src.loc )
@@ -321,7 +321,9 @@
 
 	return TRUE
 
-/obj/structure/barricade/deconstruct(disassembled = TRUE)
+/obj/structure/barricade/deconstruct(disassembled = TRUE, debris = TRUE)
+	if(!debris)
+		return ..()
 	if(disassembled)
 		if(is_wired)
 			new /obj/item/stack/barbed_wire(loc)
@@ -394,7 +396,7 @@
 
 	update_health(damage)
 
-/obj/structure/barricade/proc/take_acid_damage(damage)
+/obj/structure/barricade/corrosive_acid_act(damage)
 	take_damage(damage * burn_multiplier)
 
 /obj/structure/barricade/update_health(damage, nomessage)

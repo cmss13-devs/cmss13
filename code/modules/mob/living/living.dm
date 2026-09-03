@@ -221,6 +221,8 @@
 	if(back && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
 		update_inv_back()
 
+	if(. && nutrition && stat != DEAD)
+		nutrition -= HUNGER_FACTOR/5
 
 
 /mob/proc/resist_grab(moving_resist)

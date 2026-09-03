@@ -34,7 +34,7 @@
 	tacklestrength_min = 3
 	tacklestrength_max = 4
 
-	aura_strength = 2
+	aura_strength = XENO_PHERO_STRENGTH_NORMAL
 
 	minimum_evolve_time = 1 MINUTES
 

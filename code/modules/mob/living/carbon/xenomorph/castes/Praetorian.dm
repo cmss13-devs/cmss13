@@ -19,7 +19,7 @@
 	spit_types = list(/datum/ammo/xeno/acid/praetorian)
 	acid_level = 2
 
-	aura_strength = 3
+	aura_strength = XENO_PHERO_STRENGTH_STRONG
 
 	tackle_min = 2
 	tackle_max = 5

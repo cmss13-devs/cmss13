@@ -29,7 +29,9 @@
             "command": "tools/build/build.sh",
             "windows": {
                 "command": ".\\tools\\build\\build.bat",
-                "args": ["-DRUNTIME_MAP"]
+                "args": [
+                    "-DRUNTIME_MAP"
+                ]
             },
             "options": {
                 "env": {
@@ -53,7 +55,9 @@
             "command": "tools/build/build.sh",
             "windows": {
                 "command": ".\\tools\\build\\build.bat",
-                "args": ["-DQUICK_START"]
+                "args": [
+                    "-DQUICK_START"
+                ]
             },
             "options": {
                 "env": {
@@ -77,7 +81,9 @@
             "command": "tools/build/build.sh",
             "windows": {
                 "command": ".\\tools\\build\\build.bat",
-                "args": ["-DTESTING"]
+                "args": [
+                    "-DTESTING"
+                ]
             },
             "options": {
                 "env": {
@@ -101,7 +107,10 @@
             "command": "tools/build/build.sh",
             "windows": {
                 "command": ".\\tools\\build\\build.bat",
-                "args": ["-DRUNTIME_MAP", "-DQUICK_START"]
+                "args": [
+                    "-DRUNTIME_MAP",
+                    "-DQUICK_START"
+                ]
             },
             "options": {
                 "env": {
@@ -125,7 +134,10 @@
             "command": "tools/build/build.sh",
             "windows": {
                 "command": ".\\tools\\build\\build.bat",
-                "args": ["-DTESTING", "-DQUICK_START"]
+                "args": [
+                    "-DTESTING",
+                    "-DQUICK_START"
+                ]
             },
             "options": {
                 "env": {
@@ -149,7 +161,10 @@
             "command": "tools/build/build.sh",
             "windows": {
                 "command": ".\\tools\\build\\build.bat",
-                "args": ["-DRUNTIME_MAP", "-DTESTING"]
+                "args": [
+                    "-DRUNTIME_MAP",
+                    "-DTESTING"
+                ]
             },
             "options": {
                 "env": {
@@ -173,7 +188,11 @@
             "command": "tools/build/build.sh",
             "windows": {
                 "command": ".\\tools\\build\\build.bat",
-                "args": ["-DRUNTIME_MAP", "-DTESTING", "-DQUICK_START"]
+                "args": [
+                    "-DRUNTIME_MAP",
+                    "-DTESTING",
+                    "-DQUICK_START"
+                ]
             },
             "options": {
                 "env": {
@@ -244,6 +263,73 @@
             ],
             "group": "build",
             "label": "tgui: rebuild tgfont"
+        },
+        {
+            "type": "shell",
+            "label": "llcm: build development library",
+            "command": "cargo",
+            "args": [
+                "build",
+                "--target",
+                "i686-pc-windows-msvc",
+            ],
+            "options": {
+                "cwd": "llcm"
+            },
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": {
+                "kind": "build",
+            }
+        },
+        {
+            "type": "shell",
+            "label": "llcm: move dll artifact",
+            "command": "cp",
+            "args": [
+                "llcm\\target\\i686-pc-windows-msvc\\debug\\llcm.dll",
+                "llcm.dll",
+                "-force"
+            ],
+        },
+        {
+            "type": "shell",
+            "label": "llcm: move dmlib artifact",
+            "command": "cp",
+            "args": [
+                "llcm\\target\\llcm.dm",
+                "code\\__DEFINES\\__llcm.dm",
+                "-force"
+            ]
+        },
+        {
+            "label": "llcm: cargo development build (win32)",
+            "dependsOrder": "sequence",
+            "dependsOn": ["llcm: build development library", "llcm: move dmlib artifact", "llcm: move dll artifact"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "llcm: cargo release build (win32, all features)",
+            "args": [
+                "build",
+                "--release",
+                "--target",
+                "i686-pc-windows-msvc",
+                "--features",
+                "all"
+            ],
+            "options": {
+                "cwd": "llcm"
+            },
+            "command": "cargo",
+            "problemMatcher": [
+                "$rustc"
+            ],
+            "group": "build"
         }
     ]
 }

@@ -99,7 +99,7 @@
 		target_mob.Stun(0.7)
 		target_mob.visible_message(SPAN_DANGER("[target_mob] falls prone."))
 
-/datum/ammo/xeno/toxin/on_hit_mob(mob/target_mob,obj/projectile/P)
+/datum/ammo/xeno/toxin/on_hit_mob(mob/target_mob,obj/projectile/projectile)
 	if(ishuman(target_mob))
 		var/mob/living/carbon/human/human = target_mob
 		if(human.status_flags & XENO_HOST)
@@ -133,7 +133,7 @@
 	accuracy = HIT_ACCURACY_TIER_5*2
 	max_range = 6 - 1
 
-/datum/ammo/xeno/toxin/queen/on_hit_mob(mob/target_mob,obj/projectile/P)
+/datum/ammo/xeno/toxin/queen/on_hit_mob(mob/target_mob,obj/projectile/projectile)
 	neuro_callback.Invoke(target_mob, effect_power, drain_power, TRUE, TRUE, FALSE)
 
 /datum/ammo/xeno/toxin/shotgun
@@ -172,13 +172,13 @@
 	penetration = ARMOR_PENETRATION_TIER_2
 	shell_speed = AMMO_SPEED_TIER_3
 
-/datum/ammo/xeno/acid/on_shield_block(mob/target_mob, obj/projectile/P)
-	burst(target_mob,P,damage_type)
+/datum/ammo/xeno/acid/on_shield_block(mob/target_mob, obj/projectile/projectile)
+	burst(target_mob,projectile,damage_type)
 
-/datum/ammo/xeno/acid/on_hit_mob(mob/target_mob, obj/projectile/P)
+/datum/ammo/xeno/acid/on_hit_mob(mob/target_mob, obj/projectile/projectile)
 	if(iscarbon(target_mob))
-		var/mob/living/carbon/C = target_mob
-		if(C.status_flags & XENO_HOST && HAS_TRAIT(C, TRAIT_NESTED) || C.stat == DEAD || HAS_TRAIT(C, TRAIT_HAULED))
+		var/mob/living/carbon/carbon = target_mob
+		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD || HAS_TRAIT(carbon, TRAIT_HAULED))
 			return FALSE
 	..()
 
@@ -188,7 +188,7 @@
 	damage = 30
 	max_range = 6
 
-/datum/ammo/xeno/acid/spatter/on_hit_mob(mob/target_mob, obj/projectile/P)
+/datum/ammo/xeno/acid/spatter/on_hit_mob(mob/target_mob, obj/projectile/projectile)
 	. = ..()
 	if(. == FALSE)
 		return
@@ -196,7 +196,7 @@
 	if(acid_effect)
 		acid_effect.prolong_duration()
 		return
-	new /datum/effects/acid(target_mob, P.firer)
+	new /datum/effects/acid(target_mob, projectile.firer)
 
 /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit
 	name = "Corrosive spit"
@@ -238,7 +238,9 @@
 	shell_speed = AMMO_SPEED_TIER_2
 	flags_ammo_behavior = AMMO_HITS_TARGET_TURF|AMMO_ACIDIC
 	var/direct_stun = 1
+	///indirect spread of acid is cross either either x or +
 	var/list/indirect_spreads = list(list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST), list(NORTH, WEST, EAST, SOUTH))
+	///direct hit spreads acid in the whole o around the hit
 	var/list/direct_spread = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
 
 

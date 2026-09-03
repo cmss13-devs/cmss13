@@ -161,7 +161,7 @@
 		/obj/item/attachable/bayonet
 		)
 	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
-	success_sound = 'sound/effects/bone_break4.ogg'
+	//success_sound is handled in the use_custom_success_sound proc in surgery_step.dm
 	failure_sound = 'sound/effects/circsawfail1.ogg'
 
 /datum/surgery_step/saw_off_limb/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -324,7 +324,7 @@
 	tools = SURGERY_TOOLS_SUTURE
 	time = 3 SECONDS
 	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
-	success_sound = 'sound/surgery/suture2.ogg'
+	//success_sound is handled in the use_custom_success_sound proc in surgery_step.dm
 	failure_sound = 'sound/surgery/retractor1.ogg'
 
 /datum/surgery_step/close_amputation/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -366,7 +366,7 @@
 	tools = SURGERY_TOOLS_SEVER_BONE
 	time = 5 SECONDS
 	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
-	success_sound = 'sound/effects/buckle.ogg'
+	//success_sound is handled in the use_custom_success_sound proc in surgery_step.dm
 	failure_sound = 'sound/effects/circsawfail3.ogg'
 
 /datum/surgery_step/sever_prosthetic_clamps/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

@@ -31,7 +31,7 @@
 	tools = SURGERY_TOOLS_INCISION
 	time = 2 SECONDS
 	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
-	success_sound = 'sound/surgery/scalpel2.ogg'
+	//success_sound is handled in the use_custom_success_sound proc in surgery_step.dm
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/incision/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -357,7 +357,7 @@
 		/obj/item/tool/weldingtool,
 		)
 	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
-	success_sound = 'sound/surgery/cautery2.ogg'
+	//success_sound is handled in the use_custom_success_sound proc in surgery_step.dm
 	failure_sound = 'sound/items/welder.ogg'
 
 /datum/surgery_step/cauterize/tool_check(mob/user, obj/item/tool, datum/surgery/surgery)

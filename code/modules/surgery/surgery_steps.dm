@@ -86,7 +86,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		if(held_tool == /obj/item/tool/surgery/scalpel/manager)
 			custom_preop_sound = 'sound/surgery/ims.ogg'
 		else if(held_tool == /obj/item/tool/surgery/scalpel/laser)
-			custom_preop_sound = 'sound/surgery/laserscalpel.ogg'
+			custom_preop_sound = 'sound/surgery/laserscalpel1.ogg'
 		else
 			custom_preop_sound = 'sound/surgery/scalpel1.ogg'
 

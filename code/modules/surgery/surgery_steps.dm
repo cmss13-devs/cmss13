@@ -143,7 +143,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 			custom_success_sound = 'sound/surgery/retractor2.ogg'
 		else if(held_tool == /obj/item/tool/surgery/scalpel/laser)
 			if(istype(src, /datum/surgery_step/incision))
-			custom_success_sound = null //it gets its own set of sounds within the surgery_step proc depending on whether it made a bloodless incision or not.
+				custom_success_sound = null //it gets its own set of sounds within the surgery_step proc depending on whether it made a bloodless incision or not.
 			else
 				custom_preop_sound = 'sound/surgery/scalpel1.ogg'
 		else
@@ -154,7 +154,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		if(istype(src, /datum/surgery_step/sever_prosthetic_clamps))
 			custom_success_sound = 'sound/effects/buckle.ogg'
 		else
-			custom_success_sound = 'sound/surgery/hemostat2.ogg'
+			custom_success_sound = 'sound/effects/hemostat2.ogg'
 
 	else if(tool.type in SURGERY_TOOLS_BONE_MEND)
 		if(held_tool == /obj/item/tool/screwdriver)
@@ -176,7 +176,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		else
 			custom_success_sound = 'sound/surgery/suture2.ogg'
 
-	else if((tool.type in SURGERY_TOOLS_SUTURE) || (tool.type in SURGERY_TOOLS_MEND_BLOODVESSEL))
+	else if((tool.type in SURGERY_TOOLS_SUTURE))
 		if(held_tool == /obj/item/tool/surgery/FixOVein)
 			custom_success_sound = 'sound/surgery/bonegel.ogg'
 		else

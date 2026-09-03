@@ -38,6 +38,7 @@
 	desc = "repair the fractured bones"
 	tools = SURGERY_TOOLS_BONE_MEND
 	time = 3 SECONDS
+	//success_sound is handled in the use_custom_success_sound proc in surgery_step.dm
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 //Use materials to repair bones, same as /datum/surgery_step/mend_encased

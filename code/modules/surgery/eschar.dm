@@ -56,7 +56,7 @@
 	desc = "graft and seal the exposed flesh"
 	tools = SURGERY_TOOLS_APPLY_GRAFT
 	time = 3 SECONDS
-	success_sound = 'sound/handling/bandage.ogg'
+	//success_sound is handled in the use_custom_success_sound proc in surgery_step.dm
 	failure_sound = 'sound/surgery/organ2.ogg'
 	var/use_stack = 1 //uses one stack of burn heal stuff.
 

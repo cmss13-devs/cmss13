@@ -328,6 +328,8 @@
 		if(target.pain.reduction_pain < surgery.pain_reduction_required) //if patient is not under the proper anesthesia
 			target.emote("pain")
 
+	if(tool.hitsound)
+		playsound(target.loc, tool.hitsound, 25, TRUE)
 	target.apply_damage(15, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] violently retracted skin in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
 	return TRUE //Failing to finish this step doesn't fail it, it just means you do it a lot more violently.
@@ -463,7 +465,7 @@
 	time = 4 SECONDS
 	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
 	success_sound = 'sound/surgery/hemostat2.ogg'
-	failure_sound = 'sound/effects/circsawfail1.ogg'
+	failure_sound = 'sound/effects/bone_break4.ogg'
 
 
 /datum/surgery_step/saw_encased/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)

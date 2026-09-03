@@ -26,6 +26,7 @@
 	var/preop_sound
 	var/custom_preop_sound
 	var/custom_success_sound
+	var/custom_failure_sound
 	///Sound of success
 	var/success_sound
 	///failure >:(
@@ -83,7 +84,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 ///This is for surgery steps that have different sounds for different tools after initiating a step because hearing a bone saw while you're using a fire-axe to chop away at a ribcage was a thing of the past.
 /datum/surgery_step/proc/use_custom_preop_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/held_tool = tool.type
-	if(tool.type in SURGERY_TOOLS_INCISION)
+	if((tool.type in SURGERY_TOOLS_INCISION) && (!istype(src, /datum/surgery_step/cut_muscle))) //cut_muscle uses its own playsound.
 		if(held_tool == /obj/item/tool/surgery/scalpel/manager)
 			custom_preop_sound = 'sound/surgery/ims.ogg'
 		else if(held_tool == /obj/item/tool/surgery/scalpel/laser)
@@ -91,7 +92,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		else
 			custom_preop_sound = 'sound/surgery/scalpel1.ogg'
 
-	else if(tool.type in SURGERY_TOOLS_SEVER_BONE)
+	else if((tool.type in SURGERY_TOOLS_SEVER_BONE) && (!istype(src, /datum/surgery_step/saw_off_limb))) //saw_off_limb its own playsound.
 		if(held_tool == /obj/item/tool/surgery/circular_saw)
 			custom_preop_sound = 'sound/surgery/saw.ogg'
 		else
@@ -149,12 +150,11 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		else
 			custom_preop_sound = 'sound/surgery/scalpel1.ogg'
 
-
 	else if(tool.type in SURGERY_TOOLS_SEVER_BONE)
 		if(istype(src, /datum/surgery_step/sever_prosthetic_clamps))
 			custom_success_sound = 'sound/effects/buckle.ogg'
 		else
-			custom_success_sound = 'sound/effects/hemostat2.ogg'
+			custom_success_sound = 'sound/surgery/hemostat2.ogg'
 
 	else if(tool.type in SURGERY_TOOLS_BONE_MEND)
 		if(held_tool == /obj/item/tool/screwdriver)
@@ -372,8 +372,10 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 /datum/surgery_step/proc/play_preop_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(preop_sound)
 		playsound(get_turf(target), preop_sound, vol = 40, sound_range = 1)
-	else
+	else if (!preop_sound)
 		use_custom_preop_sound(user, target, target_zone, tool, surgery)
+	else if (!custom_preop_sound)
+		return
 
 ///This is used for end-step narration and relevant success changes - whatever the step is meant to do, if it isn't just flavour. tool_type may be a typepath or simply '1'.
 /datum/surgery_step/proc/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

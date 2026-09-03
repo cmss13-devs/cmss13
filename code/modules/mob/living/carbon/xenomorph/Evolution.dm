@@ -125,12 +125,8 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	finish_evolving()
 
 /mob/living/carbon/xenomorph/proc/finish_evolving(obj/effect/alien/resin/special/evolution_pod/pod)
-	if(desired_caste.tier in list(2,3) && loc != pod) //we have exited the pod
+	if(desired_caste.tier in list(2,3) && loc != pod) //we have exited the pod prematurly
 		return
-
-	// Used for restricting benos to evolve to drone/queen when they're the only potential queen
-	var/potential_queens = hive.get_potential_queen_count()
-
 
 	visible_message(SPAN_XENONOTICE("[src] begins to twist and contort."),
 	SPAN_XENONOTICE("We begin to twist and contort."))
@@ -165,6 +161,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		qdel(organ)
 	if(pod)
 		forceMove(pod.loc)
+		pod.update_icon()
 	var/mob/living/carbon/xenomorph/xeno_type = null
 	xeno_type = GLOB.RoleAuthority.get_caste_by_text(desired_caste.caste_type)
 	//From there, the new xeno exists, hopefully

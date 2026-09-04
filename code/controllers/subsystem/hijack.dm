@@ -1215,4 +1215,5 @@ SUBSYSTEM_DEF(hijack)
 
 /// Announces that the station is abandoning the ship after it has been overrun
 /datum/controller/subsystem/hijack/proc/announce_station_undocking()
-	announcement_helper("[MAIN_SHIP_NAME], [spaceport.undocking_message]", spaceport.name, GLOB.player_list, sound('sound/misc/notice2.ogg'))
+	shipwide_ai_announcement(spaceport.undocking_message, spaceport.name, sound('sound/misc/notice2.ogg'))
+	xeno_announcement(SPAN_XENOANNOUNCE("My children. The hosts beyond have severed their passage to this metal hive. No more will come to oppose you."), "everything", SPAN_ANNOUNCEMENT_HEADER_BLUE("Queen Mother Psychic Directive"))

@@ -108,6 +108,8 @@
 	TEST_ASSERT(!QDELETED(existing_node), "the stronger node was uprooted")
 	TEST_ASSERT_EQUAL(xeno_weeder.plasma_stored, weeds_ability.plasma_cost, "plasma was spent against stronger weeds node")
 
+	qdel(existing_node)
+
 /datum/unit_test/plant_weeds_blocked_by_enemy_node/Run()
 	var/mob/living/carbon/xenomorph/drone/xeno_weeder = allocate(/mob/living/carbon/xenomorph/drone)
 	var/datum/action/xeno_action/onclick/plant_weeds/weeds_ability = get_action(xeno_weeder, /datum/action/xeno_action/onclick/plant_weeds)

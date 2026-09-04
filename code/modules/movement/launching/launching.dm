@@ -243,7 +243,8 @@
 		LM.invoke_end_throw_callbacks(src)
 		if(isturf(loc))
 			var/turf/hit_turf = loc
-			hit_turf.hitby(src)
+			SEND_SIGNAL(hit_turf, COMSIG_TURF_LAUNCHED_LANDING, src)
+			SEND_SIGNAL(src, COMSIG_MOVABLE_LAUNCHED_LANDED, hit_turf)
 	QDEL_NULL(launch_metadata)
 
 /atom/movable/proc/throw_random_direction(range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS)

@@ -106,3 +106,6 @@
 #define COMSIG_HUMAN_AIMED_SHOT_START "human_aimed_shot_start"
 /// From From sniper aimed_shot/use_ability()
 #define COMSIG_HUMAN_AIMED_SHOT_END "human_aimed_shot_end"
+
+//from /mob/living/carbon/human/proc/handle_haul()
+#define COMSIG_HUMAN_HAULED "human_hauled"

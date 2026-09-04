@@ -40,3 +40,6 @@
 
 ///from /turf/proc/afterShuttleMove() : (/turf/old_turf)
 #define COMSIG_TURF_AFTER_SHUTTLE_MOVE "turf_after_shuttle_move"
+
+///from /turf/proc/launched_landing(atom/movable/launched)
+#define COMSIG_TURF_LAUNCHED_LANDING "turf_launched_landing"

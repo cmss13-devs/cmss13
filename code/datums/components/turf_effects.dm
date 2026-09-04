@@ -57,7 +57,8 @@
 	if(parent_mob.client)
 		step_delay = parent_mob.client.move_delay
 	else if(isliving(parent))
-		step_delay = parent:move_delay
+		var/mob/living/living_parent = parent
+		step_delay = living_parent.move_delay
 
 	step_delay = max(world.tick_lag, step_delay)
 	addtimer(CALLBACK(src, PROC_REF(update)), step_delay * 0.6, TIMER_UNIQUE|TIMER_OVERRIDE)
@@ -100,14 +101,21 @@
 	RegisterSignal(parent, COMSIG_LIVING_SET_BODY_POSITION, PROC_REF(handle_set_body_position))
 	RegisterSignal(parent, COMSIG_LIVING_SET_BUCKLED, PROC_REF(handle_buckle_change))
 	RegisterSignal(parent, COMSIG_MOB_UNHAULED, PROC_REF(handle_buckle_change))
+	RegisterSignal(parent, COMSIG_LIVING_LAYER_UPDATED, PROC_REF(handle_layer_update))
+	RegisterSignal(parent, COMSIG_HUMAN_HAULED, PROC_REF(handle_hauled))
+	RegisterSignal(parent, COMSIG_MOVABLE_LAUNCHED_LANDED, PROC_REF(handle_landed))
 
 /datum/component/turf_effect/water/UnregisterFromParent(datum/source, force)
 	. = ..()
-	UnregisterSignal(parent, COMSIG_MOVABLE_MOVED)
-	UnregisterSignal(parent, COMSIG_LIVING_SET_LYING_ANGLE)
-	UnregisterSignal(parent, COMSIG_LIVING_SET_BODY_POSITION)
-	UnregisterSignal(parent, COMSIG_LIVING_SET_BUCKLED)
-	UnregisterSignal(parent, COMSIG_MOB_UNHAULED)
+	UnregisterSignal(parent, list(
+		COMSIG_MOVABLE_MOVED,
+		COMSIG_LIVING_SET_LYING_ANGLE,
+		COMSIG_LIVING_SET_BODY_POSITION,
+		COMSIG_LIVING_SET_BUCKLED,
+		COMSIG_MOB_UNHAULED,
+		COMSIG_LIVING_LAYER_UPDATED,
+		COMSIG_HUMAN_HAULED,
+		COMSIG_MOVABLE_LAUNCHED_LANDED))
 
 /datum/component/turf_effect/water/proc/handle_position_change(parent_source, oldloc, direction, forced)
 	SIGNAL_HANDLER	//simple checks if to remove, if it were a water turf then the comp already has inherited
@@ -148,6 +156,25 @@
 		water_depth = open_buckled_turf.depth
 
 	effect_turf = unbuckled_turf
+	update_hidden()
+	update()
+
+/datum/component/turf_effect/water/proc/handle_layer_update(new_layer)
+	SIGNAL_HANDLER
+
+	if(!hidden && ismob(parent))
+		var/mob/parent_mob = parent
+		parent_mob.layer = UNDER_WATER_MOB_LAYER
+
+/datum/component/turf_effect/water/proc/handle_hauled(xenomorph)
+	SIGNAL_HANDLER
+
+	update_hidden()
+
+/datum/component/turf_effect/water/proc/handle_landed(atom/movable/launchee, turf/landed_upon)
+	SIGNAL_HANDLER
+
+	effect_turf = landed_upon
 	update_hidden()
 	update()
 

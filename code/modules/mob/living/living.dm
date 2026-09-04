@@ -644,11 +644,8 @@
 	else if (body_position == LYING_DOWN && stat == DEAD)
 		layer = LYING_DEAD_MOB_LAYER // Dead mobs should layer under living ones
 	else if(body_position == LYING_DOWN && layer == initial(layer)) //to avoid things like hiding larvas.
-		var/datum/component/turf_effect/water/found_component = GetComponent(/datum/component/turf_effect/water)
-		if(found_component)
-			layer = UNDER_WATER_MOB_LAYER
-		else
-			layer = LYING_LIVING_MOB_LAYER
+		layer = LYING_LIVING_MOB_LAYER
+	SEND_SIGNAL(src, COMSIG_LIVING_LAYER_UPDATED, layer)
 
 /// Called when mob changes from a standing position into a prone while lacking the ability to stand up at the moment.
 /mob/living/proc/on_fall()

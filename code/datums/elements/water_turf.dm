@@ -18,7 +18,7 @@
 		return ELEMENT_INCOMPATIBLE
 
 	RegisterSignal(open_target, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
-	RegisterSignal(open_target, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
+	RegisterSignal(open_target, COMSIG_TURF_LAUNCHED_LANDING, PROC_REF(on_landed_on))
 
 /datum/element/water_turf/Detach(datum/source, ...)
 	UnregisterSignal(source, list(COMSIG_TURF_ENTERED, COMSIG_ATOM_HITBY))
@@ -35,13 +35,7 @@
 		var/soundname = source.depth >= DEPTH_COAST_INTERMEDIATE ? "shallowwading" : (source.depth >= DEPTH_SHALLOW ? "wading":"deepwading")
 		playsound(src, soundname, 10, 1, 10, falloff=1)
 
-/datum/element/water_turf/proc/on_hit(turf/open/hit_turf, atom/movable/mover)
+/datum/element/water_turf/proc/on_landed_on(turf/open/hit_turf, atom/movable/mover)
 	SIGNAL_HANDLER
 	if(hit_turf.depth && !hit_turf.covered)
 		new /obj/effect/water_splash(hit_turf, TRUE)	//SPLASHHH!! something hit the water!
-
-		var/datum/component/turf_effect/water/found_component = mover.GetComponent(/datum/component/turf_effect/water)
-		if(found_component)	//this is in case the mob flew over water turfs to get here, in which case we need to unhide their component and update()
-			found_component.hidden = FALSE
-			found_component.effect_turf = hit_turf
-			found_component.update()

@@ -4,6 +4,12 @@
 	if(mapload)
 		addtimer(CALLBACK(src, PROC_REF(announce_incoming)), rand(2 MINUTES, 3 MINUTES))
 
+
+/obj/effect/landmark/xeno_objective_spawn/Destroy()
+	GLOB.xeno_objective_landmarks -= src
+	return ..()
+
+
 /obj/effect/landmark/xeno_objective_spawn/proc/announce_incoming()
 	if(!length(GLOB.xeno_objective_landmarks))
 		return

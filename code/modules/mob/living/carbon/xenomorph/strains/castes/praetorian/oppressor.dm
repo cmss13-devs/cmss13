@@ -103,52 +103,20 @@
 	for(var/distance in 0 to max_distance)
 		temp = get_step(turf, facing)
 		if(facing in GLOB.diagonals) // check if it goes through corners
-			var/reverse_face = GLOB.reverse_dir[facing]
-			var/turf/back_left = get_step(temp, turn(reverse_face, 45))
-			var/turf/back_right = get_step(temp, turn(reverse_face, -45))
-			if((!back_left ||  back_left.density) && (!back_right || back_right.density) || (locate(/obj/structure/girder) in back_left) && (locate(/obj/structure/girder) in back_right))
+			var/left_dir = turn(facing, 45)
+			var/right_dir = turn(facing, -45)
+			var/turf/back_left = get_step(turf, left_dir)
+			var/turf/back_right = get_step(turf, right_dir)
+			if((!back_left ||  back_left.density) && (!back_right || back_right.density))
 				break
+			if((abduct_blocked_tile(back_left, left_dir, right_dir) || abduct_blocked_tile(temp, right_dir) == 1) && (abduct_blocked_tile(back_right, right_dir, left_dir) || abduct_blocked_tile(temp, left_dir) == 1))
+				break
+
 		if(!temp || temp.density || temp.opacity)
 			break
-		var/blocked = FALSE
-		var/allow_one_more_step = FALSE
-		for(var/obj/structure in temp)
-			if(!structure.can_block_movement)
-				continue
-			if(!structure.density && !structure.opacity)
-				continue
-			if(istype(structure, /obj/structure/girder))
-				blocked = TRUE
-				continue
-			if(istype(structure, /obj/structure/window/reinforced))
-				var/obj/structure/window/reinforced/pane_glass = structure
-				var/pane_facing = pane_glass.dir
-				if(pane_facing & turn(facing, 180))
-					blocked = TRUE
-				else if(pane_facing == facing)
-					allow_one_more_step = TRUE
-				continue
-			if(istype(structure, /obj/structure/surface/table))
-				var/obj/structure/surface/table/flip_table = structure
-				var/table_facing = flip_table.dir
-				if(flip_table.flipped)
-					if(table_facing & turn(facing, 180))
-						blocked = TRUE
-					else if(table_facing == facing)
-						allow_one_more_step = TRUE
-				continue
-			if(istype(structure, /obj/structure/barricade))
-				var/obj/structure/barricade/cade = structure
-				var/cade_facing = cade.dir
-				if(cade_facing & turn(facing, 180))
-					blocked = TRUE
-				else if(cade_facing == facing)
-					allow_one_more_step = TRUE
-				continue
-			if(structure.pass_flags.flags_can_pass_all & PASS_HIGH_OVER)
-				continue
-			blocked = TRUE
-		if(blocked)
+
+		allow_one_more_step = FALSE
+		if(abduct_blocked_tile(temp, facing) == 1)
 			break
 
 		turf = temp
@@ -243,6 +211,55 @@
 		addtimer(CALLBACK(src, /datum/action/xeno_action/activable/prae_abduct/proc/remove_tail_overlay, target, tail_image), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.
 
 	return ..()
+
+/datum/action/xeno_action/activable/prae_abduct/proc/abduct_blocked_tile(turf/T, direction, next_direction = direction)
+	if(!istype(T))
+		return 1
+
+	//0 - the way is clear, nothing blocks
+	//1 - there is an obstacle in the way
+	//2 - there will be an obstacle in the way
+	var/blocked = 0
+	for(var/obj/structure in T)
+		if(!structure.can_block_movement)
+			continue
+		if(!structure.density && !structure.opacity)
+			continue
+		if(istype(structure, /obj/structure/girder))
+			blocked = 1
+			break
+		if(istype(structure, /obj/structure/window/reinforced))
+			var/obj/structure/window/reinforced/pane_glass = structure
+			var/pane_facing = pane_glass.dir
+			if(pane_facing & turn(direction, 180))
+				blocked = 1
+			else if(pane_facing & next_direction)
+				blocked = 2
+				allow_one_more_step = TRUE
+			continue
+		if(istype(structure, /obj/structure/surface/table))
+			var/obj/structure/surface/table/flip_table = structure
+			var/table_facing = flip_table.dir
+			if(flip_table.flipped)
+				if(table_facing & turn(direction, 180))
+					blocked = 1
+				else if(table_facing & next_direction)
+					blocked = 2
+					allow_one_more_step = TRUE
+			continue
+		if(istype(structure, /obj/structure/barricade))
+			var/obj/structure/barricade/cade = structure
+			var/cade_facing = cade.dir
+			if(cade_facing & turn(direction, 180))
+				blocked = 1
+			else if(cade_facing & next_direction)
+				blocked = 2
+				allow_one_more_step = TRUE
+			continue
+		if(structure.pass_flags.flags_can_pass_all & PASS_HIGH_OVER)
+			continue
+		blocked = 1
+	return blocked
 
 /datum/action/xeno_action/activable/prae_abduct/proc/remove_tail_overlay(mob/living/carbon/human/overlayed_human, image/tail_image)
 	overlayed_human.overlays -= tail_image

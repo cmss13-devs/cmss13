@@ -87,6 +87,7 @@
 		XENO_STRUCTURE_RECOVERY = 6,
 		XENO_STRUCTURE_PLASMA_TREE = 3,
 		XENO_STRUCTURE_PYLON = 2,
+		XENO_STRUCTURE_COCOON = 10000, //if more xenos evolved then this and you did not clean the cocoon how does the map look like?
 	)
 
 	var/list/hive_structure_types = list(
@@ -828,8 +829,6 @@
 /datum/hive_status/proc/add_special_structure(obj/effect/alien/resin/special/structure)
 	if(!structure)
 		return FALSE
-	if(istype(structure, /obj/effect/alien/resin/special/evolution_pod))
-		return TRUE
 	var/name_ref = initial(structure.name)
 	if(!hive_structures[name_ref])
 		hive_structures[name_ref] = list()

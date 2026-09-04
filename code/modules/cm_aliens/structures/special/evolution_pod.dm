@@ -1,28 +1,44 @@
 /obj/effect/alien/resin/special/evolution_pod
-	name = "Evolution pod"
+	name = "evolution pod"
 	icon = 'icons/mob/xenos/cocoons.dmi'
 	var/icon_prefix = "t2"
 	icon_state = "t2_cocoon"
 	var/mob/living/carbon/xenomorph/occupant
-	var/open = FALSE
+	var/open = FALSE //if we did open voluntarly
+	var/exploading = FALSE
+	var/exploaded = FALSE
 
 /obj/effect/alien/resin/special/evolution_pod/update_icon()
 	. = ..()
 	if(open)
 		icon_state = "[icon_prefix]_cocoon_hatch"
 		return
-	if(!occupant && icon_state != "[icon_prefix]_cocoon_bursting") //so we do not trigger the animation more then once
-		icon_state = "[icon_prefix]_cocoon_bursting"
+	if(!occupant && exploading && !exploaded) //so we do not trigger the animation more then once
+		icon_state = "[icon_prefix]_cocoon_explode"
+		exploaded = TRUE
+		return
+	if(!open && !exploaded)
+		icon_state = "t2_cocoon" //first update icon is called on init and occupant is not in we need to update it afterwards
+/obj/effect/alien/resin/special/evolution_pod/Destroy()
+	. = ..()
+	if(occupant) //this should not be possible but better safe then sorry
+		burst_open()
 
-/obj/effect/alien/resin/special/evolution_pod/update_health(damage)
-	if(occupant && health - damage < 100)
+
+/obj/effect/alien/resin/special/evolution_pod/healthcheck()
+	if(occupant && health < 100 && !open) //first time the hp would go low we instead eject the occupant and set fixed health of the pod
 		burst_open()
 		return
 	. = ..()
 
 /obj/effect/alien/resin/special/evolution_pod/proc/burst_open()
-	occupant.forceMove(src.loc)
-	occupant = null
+	health = 100
+	if(occupant)
+		occupant.forceMove(get_turf(src))
+		occupant.hive.remove_from_evo_list(occupant)
+		UnregisterSignal(occupant, COMSIG_PARENT_QDELETING)
+		occupant = null
+	exploading = TRUE
 	update_icon()
 
 
@@ -30,10 +46,13 @@
 /obj/effect/alien/resin/special/evolution_pod/proc/enter_pod(mob/living/carbon/xenomorph/xeno)
 	xeno.forceMove(src)
 	occupant = xeno
+	update_icon()
 	RegisterSignal(occupant, COMSIG_PARENT_QDELETING, PROC_REF(open_pod))
 
 /obj/effect/alien/resin/special/evolution_pod/proc/open_pod()
+	UnregisterSignal(occupant, COMSIG_PARENT_QDELETING)
 	open = TRUE
+	occupant = null
 	update_icon()
 
 
@@ -41,10 +60,8 @@
 
 
 /obj/effect/alien/resin/special/evolution_pod/tier_two
-	name = "Tier two evolution pod"
 
 /obj/effect/alien/resin/special/evolution_pod/tier_three
-	name = "Tier three evolution pod"
 	icon_prefix = "t3"
 
 

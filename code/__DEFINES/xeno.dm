@@ -637,6 +637,7 @@
 #define XENO_STRUCTURE_RECOVERY  "recovery node"
 #define XENO_STRUCTURE_PLASMA_TREE "plasma tree"
 #define XENO_STRUCTURE_NEST  "thick resin nest"
+#define XENO_STRUCTURE_COCOON "evolution pod"
 
 #define RESIN_TRAP_EMPTY 0
 #define RESIN_TRAP_HUGGER 1

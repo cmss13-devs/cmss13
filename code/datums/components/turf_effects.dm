@@ -27,7 +27,7 @@
 */
 /datum/component/turf_effect/proc/update()
 	if(!hidden)
-		Destroy()
+		qdel(src)
 
 /////////////////////////////// WATER TURF EFFECT ///////////////////////////////////
 
@@ -83,8 +83,8 @@
 		if(found_obj == the_water || found_obj == the_splash)
 			movable_parent.vis_contents -= found_obj
 
-	the_water.Destroy()
-	the_splash.Destroy()
+	qdel(the_water)
+	qdel(the_splash)
 	. = ..() //we need to do this last
 
 /datum/component/turf_effect/water/InheritComponent(datum/component/component, i_am_original, turf/input_turf, y_offset)
@@ -124,7 +124,7 @@
 	var/obj/effect/blocker/water/water_blocker = locate(/obj/effect/blocker/water/) in moved_to_turf.contents
 
 	if(moved_to_turf.depth >= DEPTH_LAND || (moved_to_turf.covered && water_blocker == null) || (moved_to_turf.covered && water_blocker && !water_blocker.dispersing))
-		Destroy()
+		qdel(src)
 		return
 
 /datum/component/turf_effect/water/proc/handle_resting_change()
@@ -214,7 +214,7 @@
 		var/dispersed_waterblocker = effect_turf.turf_flags & TURF_WATERLIKE
 
 		if(!water_depth || (effect_turf.covered && !dispersed_waterblocker) || (catwalk && !dispersed_waterblocker))
-			Destroy()
+			qdel(src)
 			return
 
 		animate(affected_carbon, pixel_y = water_depth, 0.2 SECONDS)	//if there is a meaningful difference in depth, change layerings and animate the mob "down" to where it should be

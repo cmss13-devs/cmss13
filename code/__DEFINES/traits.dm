@@ -142,6 +142,12 @@
 /// Example trait
 // #define TRAIT_X "t_x"
 
+//-- atom/movable traits --
+/// Apply this trait when a movable atom is launched
+#define TRAIT_LAUNCHED "launched"
+/// Apply this trait when a movable atom is rebounding
+#define TRAIT_REBOUNDING "rebounding"
+
 //-- mob traits --
 /// Apply this to make a mob not dense, and remove it when you want it to no longer make them undense, other sources of undensity will still apply. Always define a unique source when adding a new instance of this!
 #define TRAIT_UNDENSE "undense"
@@ -371,6 +377,10 @@ GLOBAL_LIST_INIT(mob_traits, list(
 	quirks have it's own panel so we don't need them here.
 */
 GLOBAL_LIST_INIT(traits_by_type, list(
+	/atom/movable = list(
+		"TRAIT_LAUNCHED" = TRAIT_LAUNCHED,
+		"TRAIT_REBOUNDING" = TRAIT_REBOUNDING,
+	),
 	/mob = list(
 		"TRAIT_KNOCKEDOUT" = TRAIT_KNOCKEDOUT,
 		"TRAIT_IMMOBILIZED" = TRAIT_IMMOBILIZED,
@@ -558,3 +568,7 @@ GLOBAL_LIST(trait_name_map)
 #define WALL_HIDING_TRAIT "wallhiding"
 /// traits from reagents
 #define TRAIT_SOURCE_REAGENT(reagent_id) "reagent_[reagent_id]"
+/// traits from being launched
+#define LAUNCHED_TRAIT "launched"
+/// traits from rebounding
+#define REBOUNDING_TRAIT "rebounding"

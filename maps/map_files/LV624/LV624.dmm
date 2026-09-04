@@ -1851,6 +1851,10 @@
 "ahf" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/north_jungle)
+"ahg" = (
+/obj/effect/landmark/xeno_objective_spawn,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/west_barrens)
 "ahh" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_casing,
@@ -1864,6 +1868,10 @@
 /obj/item/attachable/suppressor,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
+"ahj" = (
+/obj/effect/landmark/xeno_objective_spawn,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "ahk" = (
 /obj/structure/surface/table/reinforced{
 	flipped = 1
@@ -13444,10 +13452,6 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_central_jungle)
-"hwc" = (
-/obj/effect/landmark/xeno_objective_spawn,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "hwR" = (
 /turf/open/gm/coast/east,
 /area/lv624/ground/river/central_river)
@@ -20144,10 +20148,6 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
-"vgZ" = (
-/obj/effect/landmark/xeno_objective_spawn,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/west_barrens)
 "vhx" = (
 /obj/structure/girder,
 /turf/open/gm/dirt,
@@ -34043,7 +34043,7 @@ jTP
 xwr
 akl
 xwr
-vgZ
+ahg
 xwr
 oyx
 oyx
@@ -38055,7 +38055,7 @@ xwr
 xwr
 xwr
 xwr
-vgZ
+ahg
 xwr
 xwr
 cEn
@@ -58446,7 +58446,7 @@ xch
 xch
 rGZ
 xch
-hwc
+ahj
 eGg
 xch
 bEq

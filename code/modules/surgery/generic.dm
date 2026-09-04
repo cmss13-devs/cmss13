@@ -57,9 +57,9 @@
 
 	if(tool_type == /obj/item/tool/surgery/scalpel/manager)
 		user.affected_message(target,
-			SPAN_NOTICE("You have constructed a prepared, bloodless incision in [target]'s [surgery.affected_limb.display_name]."),
-			SPAN_NOTICE("[user] has constructed a prepared, bloodless incision your [surgery.affected_limb.display_name]."),
-			SPAN_NOTICE("[user] has constructed a prepared, bloodless incision in [target]'s [surgery.affected_limb.display_name]."))
+			SPAN_NOTICE("You have constructed a prepared incision in [target]'s [surgery.affected_limb.display_name] that is now bleeding."),
+			SPAN_NOTICE("[user] has constructed a prepared incision in your [surgery.affected_limb.display_name] that is now bleeding."),
+			SPAN_NOTICE("[user] has constructed a prepared incision in [target]'s [surgery.affected_limb.display_name] that is now bleeding."))
 
 		surgery.status += 6 //IMS completes all steps.
 		surgery.affected_limb.surgery_status |= (INCISION_WIDENED | INCISION_CLAMPED)

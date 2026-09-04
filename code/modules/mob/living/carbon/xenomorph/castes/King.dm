@@ -77,7 +77,7 @@
 
 /mob/living/carbon/xenomorph/king/Destroy()
 	UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)
-
+	hive.living_xeno_king = null
 	return ..()
 
 /mob/living/carbon/xenomorph/king/Initialize()
@@ -134,7 +134,6 @@
 	icon = 'icons/mob/xenos/castes/tier_4/rogueking.dmi'
 
 /mob/living/carbon/xenomorph/king/death(cause, gibbed)
-	hive.living_xeno_king = null
 	. = ..()
 	if(hive)
 		hive.setup_banned_allies()

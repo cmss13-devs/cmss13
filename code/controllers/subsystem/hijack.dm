@@ -158,7 +158,7 @@ SUBSYSTEM_DEF(hijack)
 	return ..()
 
 /datum/controller/subsystem/hijack/fire(resumed = FALSE)
-	if(!SSticker?.mode?.is_in_endgame)
+	if(!SSticker?.mode?.is_in_endgame || SSticker.current_state != GAME_STATE_PLAYING)
 		return
 
 	if(hijack_status < HIJACK_OBJECTIVES_STARTED)

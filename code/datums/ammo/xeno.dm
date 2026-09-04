@@ -208,15 +208,21 @@
 
 /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/on_hit_mob(mob/target_mob, obj/projectile/projectile)
 	. = ..()
-	new/obj/effect/xenomorph/spray/no_stun/dissolver(target_mob.loc)
+	if(istype(projectile.firer, /mob/living/carbon/xenomorph))
+		var/mob/living/carbon/xenomorph/xeno = projectile.firer
+		new/obj/effect/xenomorph/spray/no_stun/dissolver(target_mob.loc, create_cause_data(src), xeno.hive.hivenumber)
 
 /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/on_hit_obj(obj/target_object, obj/projectile/proj_hit)
 	. = ..()
-	new/obj/effect/xenomorph/spray/no_stun/dissolver(target_object.loc)
+	if(istype(proj_hit.firer, /mob/living/carbon/xenomorph))
+		var/mob/living/carbon/xenomorph/xeno = proj_hit.firer
+		new/obj/effect/xenomorph/spray/no_stun/dissolver(target_object.loc, create_cause_data(src), xeno.hive.hivenumber)
 
 /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/on_hit_turf(turf/target_turf, obj/projectile/projectile)
 	. = ..()
-	new/obj/effect/xenomorph/spray/no_stun/dissolver(target_turf)
+	if(istype(projectile.firer, /mob/living/carbon/xenomorph))
+		var/mob/living/carbon/xenomorph/xeno = projectile.firer
+		new/obj/effect/xenomorph/spray/no_stun/dissolver(target_turf, create_cause_data(src), xeno.hive.hivenumber)
 
 /datum/ammo/xeno/acid/spatter/dissolver_enzymatic_breath
 	name = "Enzymatic breath"
@@ -263,28 +269,28 @@
 
 /datum/ammo/xeno/acid/dissolver_acid_blob/on_hit_obj(obj/target_object, obj/projectile/proj_hit)
 	. = ..()
-	spread_acid(target_object.loc, pick(indirect_spreads))
+	spread_acid(target_object.loc, pick(indirect_spreads), proj_hit.firer)
 
 /datum/ammo/xeno/acid/dissolver_acid_blob/on_hit_turf(turf/target_turf, obj/projectile/projectile)
 	. = ..()
 	if(istype(target_turf, /turf/closed))
 		return
-	spread_acid(target_turf, pick(indirect_spreads))
+	spread_acid(target_turf, pick(indirect_spreads), projectile.firer)
 
 /datum/ammo/xeno/acid/dissolver_acid_blob/do_at_max_range(obj/projectile/projectile)
 	. = ..()
 	if(istype(projectile.loc, /turf/closed))
 		return
-	spread_acid(projectile.loc, pick(indirect_spreads))
+	spread_acid(projectile.loc, pick(indirect_spreads), projectile.firer)
 
-/datum/ammo/xeno/acid/dissolver_acid_blob/proc/spread_acid(location, list/directions)
+/datum/ammo/xeno/acid/dissolver_acid_blob/proc/spread_acid(location, list/directions, mob/living/carbon/xenomorph/firer)
 	new/obj/effect/xenomorph/spray/no_stun/dissolver(location)
 	var/turf/spread_location
 	for(var/direction in directions)
 		spread_location = get_step(location, direction)
 		if(istype(spread_location,/turf/closed))
 			continue
-		new/obj/effect/xenomorph/spray/no_stun/dissolver(spread_location)
+		new/obj/effect/xenomorph/spray/no_stun/dissolver(spread_location, create_cause_data(src), firer.hive.hivenumber)
 
 /datum/ammo/xeno/acid/praetorian
 	name = "acid splash"

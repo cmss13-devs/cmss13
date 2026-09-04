@@ -135,9 +135,9 @@
 	name = "Survivor - Solaris United States Colonial Marine Corps Recruiter"
 	assignment = "USCM Recruiter"
 	job_title = JOB_RECRUITER
-	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_3)
+	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_2)
 	minimap_icon = "recruiter"
-	minimap_background = "background_officer"
+	minimap_background = "background_shipside"
 	skills = /datum/skills/civilian/survivor/uscm_recruiter
 	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)

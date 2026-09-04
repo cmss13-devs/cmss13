@@ -37,17 +37,24 @@
 	icon_state = base_state
 
 /obj/structure/catwalk/attackby(obj/item/W as obj, mob/user as mob)
+	var/turf/my_turf = get_turf(src)
 	if (HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		if(covered)
 			var/obj/item/stack/catwalk/R = new(usr.loc)
 			R.add_to_stacks(usr)
 			covered = 0
+			if(my_turf.turf_flags & TURF_WATER && istype(my_turf, /turf/open))
+				var/turf/open/my_open_turf = my_turf
+				my_open_turf.become_water(initial(my_open_turf.depth), initial(my_open_turf.water_type))
 			return
 	if(istype(W, /obj/item/stack/catwalk))
 		if(!covered)
 			var/obj/item/stack/catwalk/E = W
 			E.use(1)
 			covered = 1
+			if(my_turf.turf_flags & TURF_WATER && istype(my_turf, /turf/open))
+				var/turf/open/my_open_turf = my_turf
+				my_open_turf.stop_being_water()
 			return
 	var/turf/T = get_turf(src)
 	T.attackby(W, user)

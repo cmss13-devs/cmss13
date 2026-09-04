@@ -17,9 +17,7 @@
 
 /turf/open/Initialize(mapload, ...)
 	. = ..()
-	if(depth < DEPTH_LAND && !covered)
-		RegisterSignal(src, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
-		RegisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
+	update_water_element()
 	update_icon()
 
 /turf/open/update_icon()
@@ -148,39 +146,18 @@
 			if(3)
 				. += "Well Done."
 
-/turf/open/proc/on_enter(turf/source, atom/movable/mover)
-	SIGNAL_HANDLER
-	if(iscarbon(mover))
-		mover.AddComponent(/datum/component/turf_effect/water, src, depth)
-	if(!isliving(mover))
-		return
-	var/mob/living/living_mover = mover
-	if(living_mover.m_intent == MOVE_INTENT_RUN)	//walking doesnt make sounds from moving through water
-		var/soundname = depth >= DEPTH_COAST_INTERMEDIATE ? "shallowwading" : (depth >= DEPTH_SHALLOW ? "wading":"deepwading")
-		playsound(src, soundname, 10, 1, 10, falloff=1)
-
-/turf/open/proc/on_hit(atom/hit_thing, atom/movable/mover)
-	SIGNAL_HANDLER
-	if(depth && !covered)
-		new /obj/effect/water_splash(src, TRUE)	//SPLASHHH!! something hit the water!
-
-		var/datum/component/turf_effect/water/found_component = mover.GetComponent(/datum/component/turf_effect/water)
-		if(found_component)	//this is in case the mob flew over water turfs to get here, in which case we need to unhide their component and update()
-			found_component.hidden = FALSE
-			found_component.effect_turf = src
-			found_component.update()
+/turf/open/proc/update_water_element(force=null)
+	if(force == TRUE || force == null && depth < DEPTH_LAND && !covered)
+		AddElement(/datum/element/water_turf)
+	else
+		RemoveElement(/datum/element/water_turf)
 
 /turf/open/proc/set_covered(setting)
 	if(setting)
 		covered = TRUE
-		if(depth < DEPTH_LAND)
-			UnregisterSignal(src, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
-			UnregisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
 	else
 		covered = FALSE
-		if(depth < DEPTH_LAND)
-			RegisterSignal(src, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
-			RegisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
+	update_water_element()
 	update_overlays()
 
 /turf/open/proc/become_water(set_depth, set_type)
@@ -197,8 +174,7 @@
 		if(found_object.layer == UNDERFLOOR_OBJ_LAYER)
 			found_object.layer = UNDER_WATER_TURF_LAYER + 0.005
 	update_icon()	//some turfs overlay themselves with a catwalk, we need to update the layer of that overlay
-	RegisterSignal(src, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
-	RegisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
+	update_water_element(TRUE)
 
 /turf/open/proc/stop_being_water()
 	depth = DEPTH_LAND
@@ -209,8 +185,7 @@
 		if(found_object.layer == UNDER_WATER_TURF_LAYER + 0.005)
 			found_object.layer = UNDERFLOOR_OBJ_LAYER
 	update_icon()
-	UnregisterSignal(src, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
-	UnregisterSignal(src, COMSIG_ATOM_HITBY, PROC_REF(on_hit))
+	update_water_element(FALSE)
 
 // Black & invisible to the mouse. used by vehicle interiors
 /turf/open/void

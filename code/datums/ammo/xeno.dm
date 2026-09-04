@@ -223,6 +223,7 @@
 	spit_cost = 55
 	damage = 10
 	bonus_projectiles_amount = 4
+	max_range = 5
 	scatter = SCATTER_AMOUNT_DISSOLVER
 	bonus_projectiles_type = /datum/ammo/xeno/acid/spatter/dissolver_enzymatic_breath/spread
 	spit_windup = 1 SECONDS
@@ -237,6 +238,7 @@
 	spit_windup = 1.2 SECONDS
 	shell_speed = AMMO_SPEED_TIER_2
 	flags_ammo_behavior = AMMO_HITS_TARGET_TURF|AMMO_ACIDIC
+	max_range = 6
 	var/direct_stun = 1
 	///indirect spread of acid is cross either either x or +
 	var/list/indirect_spreads = list(list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST), list(NORTH, WEST, EAST, SOUTH))
@@ -252,9 +254,10 @@
 		return
 
 	var/mob/living/carbon/human/human = target_mob
-	human.KnockDown(direct_stun)
+
 	var/datum/effects/acid/acid_effect = locate() in target_mob.effects_list
 	if(acid_effect)
+		human.KnockDown(direct_stun)
 		acid_effect.enhance_acid()
 
 

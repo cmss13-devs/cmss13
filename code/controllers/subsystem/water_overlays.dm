@@ -151,4 +151,4 @@ SUBSYSTEM_DEF(water_overlays)
 						var/icon/special_mask = icon(SSwater_overlays.water_overlay_icon_paths["[texture_size]"], special_mob_masks[mob_type])
 						special_icon.AddAlphaMask(special_mask)
 						SSwater_overlays.water_overlay_icons["[texture_size]_[found_type]_[toxic]_[found_depth]_[mob_type]"] = special_icon
-
+			toxic = toxic == 0 ? -1 : (toxic == -1 ? 1 : INFINITY)

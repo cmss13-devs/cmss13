@@ -411,6 +411,8 @@ Make sure their actual health updates immediately.*/
 	switch(locator.tracker_type)
 		if(TRACKER_QUEEN)
 			tracking_atom = hive.living_xeno_queen
+		if(TRACKER_KING)
+			tracking_atom = hive.living_xeno_king
 		if(TRACKER_HIVE)
 			tracking_atom = hive.hive_location
 		if(TRACKER_LEADER)

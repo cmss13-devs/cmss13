@@ -9,6 +9,7 @@
 
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/mob/living/carbon/xenomorph/queen/living_xeno_queen
+	var/mob/living/carbon/xenomorph/king/living_xeno_king
 	var/egg_planting_range = 15
 
 	/// Toggles for the hive that are reset on queen death unless hive_flags_locked

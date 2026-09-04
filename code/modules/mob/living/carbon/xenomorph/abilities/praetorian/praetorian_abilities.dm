@@ -15,7 +15,6 @@
 	// Config
 	var/damage = 45
 	var/shield_regen_threshold = 2
-	var/should_spin_instead = FALSE
 
 /datum/action/xeno_action/activable/pounce/prae_dash
 	name = "Dash"
@@ -250,7 +249,7 @@
 	plasma_cost = 80
 
 	var/activation_delay = 1 SECONDS
-	var/prime_delay = 1 SECONDS
+	var/prime_delay = 1.25 SECONDS
 
 /datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/acid_ball_user = owner
@@ -278,7 +277,7 @@
 	var/obj/item/explosive/grenade/xeno_acid_grenade/grenade = new /obj/item/explosive/grenade/xeno_acid_grenade
 	grenade.cause_data = create_cause_data(initial(acid_ball_user.caste_type), acid_ball_user)
 	grenade.forceMove(get_turf(acid_ball_user))
-	grenade.throw_atom(target_atom, 5, SPEED_SLOW, acid_ball_user, TRUE)
+	grenade.throw_atom(target_atom, 5, SPEED_AVERAGE, acid_ball_user, TRUE, launch_type = HIGH_LAUNCH, pass_flags = PASS_ACID_GRENADE)
 	addtimer(CALLBACK(grenade, TYPE_PROC_REF(/obj/item/explosive, prime)), prime_delay)
 
 	return ..()

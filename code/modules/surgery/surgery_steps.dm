@@ -92,7 +92,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		else
 			custom_preop_sound = 'sound/surgery/scalpel1.ogg'
 
-	else if((tool.type in SURGERY_TOOLS_SEVER_BONE) && (!istype(src, /datum/surgery_step/saw_off_limb))) //saw_off_limb its own playsound.
+	else if((tool.type in SURGERY_TOOLS_SEVER_BONE) && (!istype(src, /datum/surgery_step/saw_off_limb))) //saw_off_limb has its own playsound.
 		if(held_tool == /obj/item/tool/surgery/circular_saw)
 			custom_preop_sound = 'sound/surgery/saw.ogg'
 		else
@@ -102,34 +102,41 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		if(held_tool == /obj/item/tool/screwdriver)
 			custom_preop_sound = 'sound/items/Screwdriver.ogg'
 		else
-			custom_preop_sound = 'sound/handling/bottle_cap_unscrew.ogg'
+			custom_preop_sound = 'sound/surgery/bonegel.ogg'
 
 	else if(tool.type in SURGERY_TOOLS_APPLY_GRAFT)
 		if(held_tool == /obj/item/tool/surgery/synthgraft)
 			custom_preop_sound = 'sound/surgery/suture1.ogg'
 		else if(held_tool == /obj/item/stack/medical/ointment)
-			custom_preop_sound = 'sound/handling/bottle_cap_unscrew.ogg'
+			custom_preop_sound = 'sound/handling/bottle_cap_screw.ogg'
 		else
 			custom_preop_sound = 'sound/handling/clothingrustle1.ogg'
 
 	else if(tool.type in SURGERY_TOOLS_MEDICOMP_STABILIZE_WOUND)
-		if(held_tool == /obj/item/tool/surgery/FixOVein || held_tool == /obj/item/tool/surgery/bonegel)
-			custom_preop_sound = 'sound/handling/bottle_cap_unscrew.ogg'
+		if(held_tool == /obj/item/tool/surgery/bonegel)
+			custom_preop_sound = 'sound/surgery/bonegel.ogg'
 		else
 			custom_preop_sound = 'sound/surgery/suture1.ogg'
 
 	else if((tool.type in SURGERY_TOOLS_SUTURE) && (tool.type in SURGERY_TOOLS_MEND_BLOODVESSEL))
 		if(held_tool == /obj/item/tool/surgery/FixOVein)
-			custom_preop_sound = 'sound/handling/bottle_cap_unscrew.ogg'
+			custom_preop_sound = 'sound/surgery/fixovein.ogg'
 		else
 			custom_preop_sound = 'sound/surgery/suture1.ogg'
 
 	else
+		var/tools_lit = list(
+			/obj/item/tool/lighter,
+			/obj/item/clothing/mask/cigarette,
+			/obj/item/tool/weldingtool,
+			)
 		if((tool.type in SURGERY_TOOLS_CAUTERIZE) && (tool.type in SURGERY_TOOLS_MEDICOMP_CLAMP_WOUND))
-			if(held_tool == /obj/item/clothing/mask/cigarette || /obj/item/tool/lighter)
-				custom_preop_sound = 'sound/surgery/cigarettelighter.ogg'
-			else if(held_tool == /obj/item/tool/weldingtool)
-				custom_preop_sound = 'sound/surgery/weldingtool.ogg'
+			if(tool.type in tools_lit)
+				if(tool.heat_source)
+					if((held_tool == /obj/item/clothing/mask/cigarette || held_tool == /obj/item/tool/lighter))
+						custom_preop_sound = 'sound/surgery/cigarettelighter.ogg'
+					else if(held_tool == /obj/item/tool/weldingtool)
+						custom_preop_sound = 'sound/surgery/weldingtool.ogg'
 			else
 				custom_preop_sound = 'sound/surgery/cautery1.ogg'
 
@@ -139,18 +146,8 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 
 /datum/surgery_step/proc/use_custom_success_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/held_tool = tool.type
-	if(tool.type in SURGERY_TOOLS_INCISION)
-		if(held_tool == /obj/item/tool/surgery/scalpel/manager)
-			custom_success_sound = 'sound/surgery/retractor2.ogg'
-		else if(held_tool == /obj/item/tool/surgery/scalpel/laser)
-			if(istype(src, /datum/surgery_step/incision))
-				custom_success_sound = null //it gets its own set of sounds within the surgery_step proc depending on whether it made a bloodless incision or not.
-			else
-				custom_preop_sound = 'sound/surgery/scalpel1.ogg'
-		else
-			custom_preop_sound = 'sound/surgery/scalpel1.ogg'
 
-	else if(tool.type in SURGERY_TOOLS_SEVER_BONE)
+	if(tool.type in SURGERY_TOOLS_SEVER_BONE)
 		if(istype(src, /datum/surgery_step/sever_prosthetic_clamps))
 			custom_success_sound = 'sound/effects/buckle.ogg'
 		else
@@ -160,7 +157,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		if(held_tool == /obj/item/tool/screwdriver)
 			custom_success_sound = 'sound/items/Screwdriver2.ogg'
 		else
-			custom_success_sound = 'sound/surgery/bonegel.ogg'
+			custom_success_sound = 'sound/handling/bottle_cap_screw.ogg'
 
 	else if(tool.type in SURGERY_TOOLS_APPLY_GRAFT)
 		if(held_tool == /obj/item/tool/surgery/synthgraft)
@@ -171,14 +168,14 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 			custom_success_sound = 'sound/handling/bandage.ogg'
 
 	else if(tool.type in SURGERY_TOOLS_MEDICOMP_STABILIZE_WOUND)
-		if((held_tool == /obj/item/tool/surgery/FixOVein) || (held_tool == /obj/item/tool/surgery/bonegel))
-			custom_success_sound = 'sound/surgery/bonegel.ogg'
+		if(held_tool == /obj/item/tool/surgery/bonegel)
+			custom_success_sound = 'sound/handling/bottle_cap_screw.ogg'
 		else
 			custom_success_sound = 'sound/surgery/suture2.ogg'
 
 	else if((tool.type in SURGERY_TOOLS_SUTURE))
 		if(held_tool == /obj/item/tool/surgery/FixOVein)
-			custom_success_sound = 'sound/surgery/bonegel.ogg'
+			custom_success_sound = 'sound/surgery/hemostat2.ogg'
 		else
 			custom_success_sound = 'sound/surgery/suture2.ogg'
 
@@ -385,9 +382,9 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 /// Plays the selected success sound
 /datum/surgery_step/proc/play_success_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(success_sound)
-		playsound(get_turf(target), preop_sound, vol = 40, sound_range = 1)
+		playsound(get_turf(target), success_sound, vol = 40, sound_range = 1)
 	else if (!success_sound)
-		use_custom_preop_sound(user, target, target_zone, tool, surgery)
+		use_custom_success_sound(user, target, target_zone, tool, surgery)
 	else if (!custom_success_sound) //for examples like laser scalpels not making cautery sizzle noises after not making a bloodless incisions.
 		return
 

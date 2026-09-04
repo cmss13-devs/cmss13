@@ -24,7 +24,7 @@
 	desc = "mend the damaged blood vessel"
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 5 SECONDS
-	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
+	//preop_sound is handled in surgery_step/proc/use_custom_preop_sound in surgery_steps.dm
 	success_sound = 'sound/surgery/hemostat2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 

@@ -38,8 +38,8 @@
 	desc = "repair the fractured bones"
 	tools = SURGERY_TOOLS_BONE_MEND
 	time = 3 SECONDS
-	//success_sound is handled in the use_custom_success_sound proc in surgery_step.dm
-	//preop_sound is handled in the use_custom_preop_sound proc in surgery_step.dm
+	//preop_sound is handled in surgery_step/proc/use_custom_preop_sound in surgery_steps.dm
+	//success_sound is handled in surgery_step/proc/use_custom_success_sound in surgery_steps.dm
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 //Use materials to repair bones, same as /datum/surgery_step/mend_encased
@@ -75,7 +75,6 @@
 				SPAN_NOTICE("[user] begins to drive reinforcing pins into [target]'s [surgery.affected_bone] with [tool]."))
 
 			target.custom_pain("You can feel something grinding in your [surgery.affected_bone]!", 1)
-			playsound(target.loc, 'sound/items/Screwdriver.ogg', 25, TRUE)
 	else
 		if(tool_type == /obj/item/tool/surgery/bonegel)
 			user.affected_message(target,
@@ -141,7 +140,7 @@
 
 	if(tool_type != /obj/item/tool/surgery/bonegel)
 		to_chat(user, SPAN_NOTICE("The metal rods used on [target]'s [surgery.affected_limb.display_name] fall loose from their [surgery.affected_limb]."))
-		var/obj/item/stack/rods/rods = new /obj/item/stack/rods(get_turf(target))
+		var/obj/item/stack/rods/rods = new /obj/item/stack/rods(target.loc)
 		rods.amount = 2 //Refund 2 rods on failure
 		rods.update_icon()
 
@@ -202,7 +201,7 @@
 
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_BONES)
 	if(surgery.affected_limb.status & LIMB_SPLINTED_INDESTRUCTIBLE)
-		new /obj/item/stack/medical/splint/nano(get_turf(target), 1)
+		new /obj/item/stack/medical/splint/nano(target.loc, 1)
 
 	surgery.affected_limb.status &= ~(LIMB_SPLINTED|LIMB_SPLINTED_INDESTRUCTIBLE|LIMB_BROKEN)
 	surgery.affected_limb.perma_injury = 0

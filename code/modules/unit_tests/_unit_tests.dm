@@ -96,6 +96,7 @@
 #include "tgui_create_message.dm"
 #include "timer_sanity.dm"
 #include "tutorials.dm"
+#include "weed_tests.dm"
 #include "xeno_strains.dm"
 #include "movement\collisions_can_pass_flags.dm"
 #include "movement\collisions_cardinal.dm"

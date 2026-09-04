@@ -401,14 +401,6 @@
 
 	damage_state_prefix = caste_type
 
-	//putting the organ in for research
-	if(organ_value != 0)
-		var/obj/item/organ/xeno/organ = new() //give
-		organ.forceMove(src)
-		organ.research_value = organ_value
-		organ.caste_origin = caste_type
-		organ.icon_state = get_organ_icon()
-
 	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_HIVEMIND)) // The hive may alter this list
 
 	var/datum/hive_status/hive = GLOB.hive_datum[src.hivenumber]

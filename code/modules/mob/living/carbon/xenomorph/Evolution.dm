@@ -275,7 +275,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	to_chat(src, "We begin secreeting our cocoon.")
 	if(do_after(src, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		var/obj/effect/alien/resin/special/evolution_pod/pod = new pod_path(loc)
-		forceMove(pod)
+		pod.enter_pod(src)
 		addtimer(CALLBACK(src, PROC_REF(finish_evolving), pod), timer)
 
 

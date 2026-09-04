@@ -528,6 +528,7 @@
 				continue
 			if(!hive.living_xeno_queen && hive.xeno_queen_timer < world.time)
 				var/time_remaining = (QUEEN_DEATH_COUNTDOWN + hive.xeno_queen_timer) - world.time
+				hive.offer_evolutions() //we are ready for new queen to evolve, lets check if there is a candidate
 				if(time_remaining <= 59 SECONDS)
 					var/seconds_left = round(time_remaining / 10)
 					xeno_message("The Hive is ready for a new Queen to evolve. The Hive will collapse in [seconds_left] seconds without a Queen.", 3, hive.hivenumber)

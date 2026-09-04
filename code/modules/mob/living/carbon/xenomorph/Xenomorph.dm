@@ -1205,6 +1205,7 @@
 /mob/living/carbon/xenomorph/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE, transfer = FALSE)
 	. = ..()
 	if(. && !can_reenter_corpse && !transfer && stat != DEAD && !QDELETED(src) && !should_block_game_interaction(src))
+		hive.remove_from_evo_list(src)
 		handle_ghost_message()
 	if(selected_ability)
 		selected_ability.action_deselect()

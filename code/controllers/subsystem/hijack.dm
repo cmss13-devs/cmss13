@@ -1212,3 +1212,7 @@ SUBSYSTEM_DEF(hijack)
 	hijack_status = HIJACK_OBJECTIVES_DOCKED
 	shipwide_ai_announcement(spaceport.docking_message, spaceport.name, sound('sound/misc/notice2.ogg'))
 	SSshuttle.action_load(shuttle, stationary)
+
+/// Announces that the station is abandoning the ship after it has been overrun
+/datum/controller/subsystem/hijack/proc/announce_station_undocking()
+	announcement_helper("[MAIN_SHIP_NAME], [spaceport.undocking_message]", spaceport.name, GLOB.player_list, sound('sound/misc/notice2.ogg'))

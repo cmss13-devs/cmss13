@@ -677,6 +677,8 @@
 
 	if(!num_humans && num_xenos)
 		round_finished = MODE_INFESTATION_X_MAJOR //No humans remain alive.
+		if(SShijack?.hijack_status == HIJACK_OBJECTIVES_DOCKED)
+			SShijack.announce_station_undocking()
 	else if(num_humans && !num_xenos)
 		if(SSticker.mode?.is_in_endgame)
 			round_finished = MODE_INFESTATION_X_MINOR //Evacuation successfully took place.

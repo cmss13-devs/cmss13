@@ -1287,7 +1287,7 @@
 				found_candidate = TRUE
 
 	//then we go into offering slots per tier
-	if(slots[TIER_3])
+	if(slots[TIER_3][OPEN_SLOTS] > 0)
 		var/list/caste_candidates = list()
 		for(var/mob/living/carbon/xenomorph/xeno in tier_three_candidates)
 			if(xeno.desired_caste.tier == 3)
@@ -1296,7 +1296,7 @@
 			offer_evolution_to(pick(caste_candidates))
 			found_candidate = TRUE
 
-	if(slots[TIER_2])
+	if(slots[TIER_2][OPEN_SLOTS] > 0)
 		var/list/caste_candidates = list()
 		for(var/mob/living/carbon/xenomorph/xeno in tier_two_candidates)
 			if(xeno.desired_caste.tier == 2)

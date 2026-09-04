@@ -36,13 +36,13 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	for(var/caste in castes_available)
 		if(GLOB.xeno_datum_list[caste].minimum_evolve_time > ROUND_TIME)
 			castes_available -= caste
-
+	castes_available = XENO_T2_CASTES + XENO_T3_CASTES //REMOVE AFTER TESTING!
 	if(!length(castes_available))
 		to_chat(src, SPAN_WARNING("The Hive is not capable of supporting any castes we can evolve to yet."))
 		return
 
 	//REMOVETHIS LATER
-	castes_available = XENO_T2_CASTES + XENO_T3_CASTES
+
 
 	var/castepick
 	if((client.prefs && client.prefs.no_radials_preference) || !hive.evolution_menu_images)
@@ -253,16 +253,15 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return
 	var/obj/effect/alien/weeds/supplier_weeds = locate(/obj/effect/alien/weeds) in loc
 	var/pod_path
-
+	if(!supplier_weeds)
+		to_chat(src, SPAN_XENOBOLDNOTICE("There are no weeds here! We need weeds to create cocoon."))
+		return
 	if(supplier_weeds.hivenumber != hivenumber)
 		to_chat(src, SPAN_XENOBOLDNOTICE("The weeds here do not belong to us!"))
 		return
 
 	var/timer = min(10 SECONDS + 0.4 SECONDS * (1 - health / maxHealth), 30 SECONDS)
 	if(desired_caste.tier == 2)
-		if(!supplier_weeds)
-			to_chat(src, SPAN_XENOBOLDNOTICE("There are no weeds here! We need weeds to create cocoon."))
-			return
 		pod_path = /obj/effect/alien/resin/special/evolution_pod/tier_two
 
 	if(desired_caste.tier == 3)

@@ -160,7 +160,7 @@
 	var/show_age_prefix = TRUE
 	var/show_name_numbers = TRUE
 	var/show_only_numbers = FALSE
-	var/evolution_stored = 0 //How much evolution they have stored
+	var/evolution_stored = 10000 //How much evolution they have stored SET TO ZERO AFTER TESTING IS DONE!
 	var/evolution_threshold = 200
 	var/tier = 1 //This will track their "tier" to restrict/limit evolutions
 	var/time_of_birth

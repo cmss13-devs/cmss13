@@ -67,7 +67,7 @@
 
 	update_icon()
 	update_neighbours()
-	if(node && node.loc)
+	if(node && node.loc && !QDELETED(src))
 		if(get_dist(node, src) >= node.node_range)
 			SEND_SIGNAL(parent, COMSIG_WEEDNODE_GROWTH_COMPLETE)
 		else if(!hibernate && do_spread)

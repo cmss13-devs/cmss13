@@ -2,8 +2,9 @@
 	name = "evolution pod"
 	icon = 'icons/mob/xenos/cocoons.dmi'
 	icon_state = "t2_cocoon"
-	pixel_x = -32
-	pixel_y = -32
+	pixel_x = -16
+	pixel_y = -16
+
 
 	var/icon_prefix = ""
 
@@ -75,11 +76,15 @@
 
 /obj/effect/alien/resin/special/evolution_pod/tier_two
 	icon_prefix = "t2"
+	pixel_x = -16
+	pixel_y = -16
 	health = 550
 	maxhealth = 550
 
 /obj/effect/alien/resin/special/evolution_pod/tier_three
 	icon_prefix = "t3"
+	pixel_x = -32
+	pixel_y = -32
 	health = 650
 	maxhealth = 650
 

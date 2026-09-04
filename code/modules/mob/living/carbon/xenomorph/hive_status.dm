@@ -1239,7 +1239,9 @@
 		evolving_xenos -= xeno
 		if(xeno.desired_caste)
 			to_chat(xeno, "You are no longer ready to evolve into [xeno.desired_caste.caste_type], you can choose to try evolving again.")
+		xeno.desired_caste = null
 		offer_evolutions()
+
 		return
 
 	if(!xeno.desired_caste)
@@ -1252,6 +1254,7 @@
 			tier_three_candidates -= xeno
 		if(0)
 			queen_candidates -= xeno
+	xeno.desired_caste = null
 	to_chat(xeno, "You are no longer candidate to evolve into [xeno.desired_caste.caste_type].")
 
 /datum/hive_status/proc/offer_evolutions()

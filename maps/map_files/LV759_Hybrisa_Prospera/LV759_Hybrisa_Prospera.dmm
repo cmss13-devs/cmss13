@@ -102370,11 +102370,11 @@
 	pixel_x = 7;
 	pixel_y = 10
 	},
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/weapon/gun/pistol/heavy,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/weapon/gun/pistol/deagle,
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
@@ -146036,7 +146036,8 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds2{
 	id = "sh_dropship2";
-	name = "\improper WY-LWI StarGlider SG-200 airlock"
+	name = "\improper WY-LWI StarGlider SG-200 airlock";
+	dir = 2
 	},
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/spaceport/starglider)
@@ -156454,9 +156455,6 @@
 /turf/open/floor/kutjevo/grey,
 /area/lv759/indoors/recycling_plant/garage)
 "woF" = (
-/obj/effect/acid_hole{
-	explo_proof = 1
-	},
 /obj/structure/blocker/invisible_wall,
 /turf/closed/shuttle/dropship_wy/StarGlider{
 	icon_state = "79";

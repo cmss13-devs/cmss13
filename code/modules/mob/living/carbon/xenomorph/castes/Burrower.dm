@@ -35,6 +35,8 @@
 
 	minimap_icon = "burrower"
 
+	organ_type = /obj/item/organ/xeno/burrower
+
 /mob/living/carbon/xenomorph/burrower
 	caste_type = XENO_CASTE_BURROWER
 	name = XENO_CASTE_BURROWER
@@ -42,16 +44,15 @@
 	icon = 'icons/mob/xenos/castes/tier_2/burrower.dmi'
 	icon_size = 64
 	icon_state = "Burrower Walking"
+	plasma_types = list(PLASMA_PHEROMONE)
 	layer = MOB_LAYER
 	plasma_stored = 100
-	plasma_types = list(PLASMA_PURPLE)
 	pixel_x = -12
 	old_x = -12
 	xenonid_pixel_x = -16
 	base_pixel_x = 0
 	base_pixel_y = -20
 	tier = 2
-	organ_value = 1500
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/toggle_seethrough,
@@ -84,6 +85,14 @@
 
 	skull = /obj/item/skull/burrower
 	pelt = /obj/item/pelt/burrower
+
+/obj/item/organ/xeno/burrower
+	name = "burrower heart"
+	icon_state = "heart_t2"
+	item_state = "heart_t2"
+	research_value = 1500
+
+	xeno_organ_flags = XENO_ORGAN_STRONG|XENO_ORGAN_SUPPORT
 
 /mob/living/carbon/xenomorph/burrower/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
@@ -280,23 +289,6 @@
 	for(var/X in actions)
 		var/datum/action/act = X
 		act.update_button_icon()
-
-/mob/living/carbon/xenomorph/proc/rename_tunnel(obj/structure/tunnel/tunnel_target in oview(1))
-	set name = "Rename Tunnel"
-	set desc = "Rename the tunnel."
-	set category = null
-
-	if(!istype(tunnel_target))
-		return
-
-	var/new_name = strip_html(input("Change the description of the tunnel:", "Tunnel Description") as text|null)
-	new_name = replace_non_alphanumeric_plus(new_name)
-	if(new_name)
-		new_name = "[new_name] ([get_area_name(tunnel_target)])"
-		log_admin("[key_name(src)] has renamed the tunnel \"[tunnel_target.tunnel_desc]\" as \"[new_name]\".")
-		msg_admin_niche("[src]/([key_name(src)]) has renamed the tunnel \"[tunnel_target.tunnel_desc]\" as \"[new_name]\".")
-		tunnel_target.tunnel_desc = "[new_name]"
-	return
 
 
 /datum/action/xeno_action/onclick/tremor/use_ability(atom/target)

@@ -2,8 +2,8 @@
   "name": "tgui-dev-server",
   "version": "6.0.0",
   "dependencies": {
-    "axios": "^1.13.2",
-    "source-map": "^0.7.6",
+    "axios": "^1.20.0",
+    "source-map": "^0.8.0",
     "stacktrace-parser": "^0.1.11"
   },
   "private": true,

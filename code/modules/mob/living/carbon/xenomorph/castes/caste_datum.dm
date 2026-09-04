@@ -48,10 +48,10 @@
 	var/spit_windup = FALSE
 
 	///The strength of our aura. Zero means we can't emit one
-	var/aura_strength = 0
+	var/aura_strength = XENO_PHERO_STRENGTH_NONE
 
 	///"Evolving" removed for the time being
-	var/aura_allowed = list("frenzy", "warding", "recovery")
+	var/aura_allowed = list(XENO_PHERO_FRENZY, XENO_PHERO_WARDING, XENO_PHERO_RECOVERY)
 
 	///Adjust pixel size. 0.x is smaller, 1.x is bigger, percentage based.
 	var/adjust_size_x = 1
@@ -133,6 +133,10 @@
 	var/minimap_leadered_overlay = "xenoleader"
 
 	var/royal_caste = FALSE
+
+	var/organ_type = /obj/item/organ/xeno;
+	/// Time taken to regenerate the organ
+	var/organ_regen_time = 5 MINUTES
 
 
 /datum/caste_datum/can_vv_modify()

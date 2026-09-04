@@ -636,20 +636,12 @@ SUBSYSTEM_DEF(minimaps)
 	pixel_x = MINIMAP_PIXEL_FROM_WORLD(movable_loc.x) + minimap.x_offset
 	pixel_y = MINIMAP_PIXEL_FROM_WORLD(movable_loc.y) + minimap.y_offset
 
+	UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
+
 ///Used to handle minimap tracking inside other movables
 /atom/movable/proc/override_minimap_tracking()
 	var/image/blip = SSminimaps.images_by_source[src]
 	blip.RegisterSignal(loc, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/image, minimap_on_move))
-	RegisterSignal(loc, COMSIG_ATOM_EXITED, PROC_REF(cancel_override_minimap_tracking))
-
-///Stops minimap override tracking
-/atom/movable/proc/cancel_override_minimap_tracking(atom/movable/source, atom/movable/mover)
-	SIGNAL_HANDLER
-	if(mover != src)
-		return
-	var/image/blip = SSminimaps.images_by_source[src]
-	blip?.UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
-	UnregisterSignal(source, COMSIG_ATOM_EXITED)
 
 
 /**
@@ -1094,6 +1086,10 @@ SUBSYSTEM_DEF(minimaps)
 	/// Is this a CIC map
 	var/is_cic_minimap = FALSE
 
+	var/list/atom/movable/screen/drawing_tools = list()
+
+	var/list/atom/movable/screen/minimap_tool/drawing_actions = list()
+
 /datum/action/minimap/New(Target, new_minimap_flags, new_marker_flags)
 	. = ..()
 	locator = new
@@ -1101,6 +1097,7 @@ SUBSYSTEM_DEF(minimaps)
 		minimap_flags = new_minimap_flags
 	if(new_marker_flags)
 		marker_flags = new_marker_flags
+	drawing_tools += list(/atom/movable/screen/minimap_tool/up/simple, /atom/movable/screen/minimap_tool/down/simple, /atom/movable/screen/minimap_tool/change_map)
 
 /datum/action/minimap/Destroy()
 	map = null
@@ -1136,6 +1133,12 @@ SUBSYSTEM_DEF(minimaps)
 		if(map in owner.client.screen)
 			to_chat(owner, SPAN_WARNING("You already have a minimap open!"))
 			return FALSE
+		var/list/atom/movable/screen/actions = list()
+		map = SSminimaps.fetch_minimap_object(owner.z, map.minimap_flags, map.live, FALSE, map.drawing)
+		for(var/path in drawing_tools)
+			actions += new path(null, owner.z, minimap_flags, map, null)
+		drawing_actions = actions
+		owner.client.add_to_screen(drawing_actions)
 		owner.client.add_to_screen(map)
 		owner.client.add_to_screen(locator)
 		// Apply ceiling protection overlay if client has preference enabled
@@ -1160,6 +1163,7 @@ SUBSYSTEM_DEF(minimaps)
 	else
 		owner.client.remove_from_screen(map)
 		owner.client.remove_from_screen(locator)
+		owner.client.remove_from_screen(drawing_actions)
 		map.stop_polling -= owner
 		// Hide ceiling protection toggle action when minimap closes
 		for(var/datum/action/minimap_ceiling/ceiling_action in owner.actions)
@@ -1169,6 +1173,8 @@ SUBSYSTEM_DEF(minimaps)
 		locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
 	minimap_displayed = force_state
 	return TRUE
+
+
 
 ///Overrides the minimap locator to a given atom
 /datum/action/minimap/proc/override_locator(atom/movable/to_track)
@@ -1183,7 +1189,7 @@ SUBSYSTEM_DEF(minimaps)
 		if(to_track)
 			RegisterSignal(to_track, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/datum/action/minimap, clear_locator_override))
 			if(owner && owner.loc == to_track)
-				RegisterSignal(to_track, COMSIG_ATOM_EXITED, TYPE_PROC_REF(/datum/action/minimap, on_exit_check))
+				RegisterSignal(to_track, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/datum/action/minimap, on_exit_check))
 		if(owner)
 			RegisterSignal(new_track, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_owner_z_change))
 			var/turf/old_turf = get_turf(tracking)
@@ -1195,7 +1201,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(to_track)
 		RegisterSignal(to_track, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/datum/action/minimap, clear_locator_override))
 		if(owner.loc == to_track)
-			RegisterSignal(to_track, COMSIG_ATOM_EXITED, TYPE_PROC_REF(/datum/action/minimap, on_exit_check))
+			RegisterSignal(to_track, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/datum/action/minimap, on_exit_check))
 	RegisterSignal(new_track, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_owner_z_change))
 	var/turf/old_turf = get_turf(tracking)
 	if(old_turf.z != new_track.z)
@@ -1205,18 +1211,17 @@ SUBSYSTEM_DEF(minimaps)
 	locator.update(new_track)
 
 ///checks if we should clear override if the owner exits this atom
-/datum/action/minimap/proc/on_exit_check(datum/source, atom/movable/mover)
+/datum/action/minimap/proc/on_exit_check(atom/movable/source, oldloc, direction, Forced)
 	SIGNAL_HANDLER
-	if(mover && mover != owner)
-		return
-	clear_locator_override()
+	if(source.loc != oldloc)
+		clear_locator_override()
 
 ///CLears the locator override in case the override target is deleted
 /datum/action/minimap/proc/clear_locator_override()
 	SIGNAL_HANDLER
 	if(!locator_override)
 		return
-	UnregisterSignal(locator_override, list(COMSIG_PARENT_QDELETING, COMSIG_ATOM_EXITED))
+	UnregisterSignal(locator_override, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED))
 	if(owner)
 		UnregisterSignal(locator_override, COMSIG_MOVABLE_Z_CHANGED)
 		RegisterSignal(owner, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_owner_z_change))
@@ -2126,6 +2131,57 @@ SUBSYSTEM_DEF(minimaps)
 
 	owner.move_tacmap_up()
 	return TRUE
+
+/atom/movable/screen/minimap_tool/up/simple
+
+/atom/movable/screen/minimap_tool/up/simple/clicked(mob/user, list/modifiers)
+	if(!SSmapping.same_z_map(linked_map.target, linked_map.target+1))
+		return
+	var/atom/movable/screen/minimap/new_linked_map = SSminimaps.fetch_minimap_object(linked_map.target+1, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+	update_shown_map(user, new_linked_map)
+
+
+/atom/movable/screen/minimap_tool/proc/update_shown_map(mob/user, atom/movable/screen/minimap/new_linked_map)
+	user.client.remove_from_screen(linked_map)
+	user.client.add_to_screen(new_linked_map)
+	for(var/datum/action/minimap/user_map in user.actions)
+		user_map.map = new_linked_map
+	for(var/atom/movable/screen/minimap_tool/tool in user.client.screen)
+		tool.linked_map = new_linked_map
+
+/atom/movable/screen/minimap_tool/down/simple/clicked(mob/user, list/modifiers)
+	if(!SSmapping.same_z_map(linked_map.target, linked_map.target-1))
+		return
+	var/atom/movable/screen/minimap/new_linked_map = SSminimaps.fetch_minimap_object(linked_map.target-1, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+	update_shown_map(user, new_linked_map)
+
+/atom/movable/screen/minimap_tool/change_map
+	desc = "Switch ground / ship map."
+	screen_loc = "15,7"
+	icon_state = "update"
+
+/atom/movable/screen/minimap_tool/change_map/clicked(mob/user, list/mods)
+	var/atom/movable/screen/minimap/new_linked_map
+	if(SSmapping.level_has_any_trait(linked_map.target, list(ZTRAIT_GROUND)))
+		if(SSmapping.level_has_any_trait(user.z, list(ZTRAIT_MARINE_MAIN_SHIP)))
+			new_linked_map = SSminimaps.fetch_minimap_object(user.z, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+			for(var/datum/action/minimap/map in user.actions)
+				user.client.add_to_screen(map.locator)
+		else
+			new_linked_map = SSminimaps.fetch_minimap_object(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)[1], linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+			for(var/datum/action/minimap/map in user.actions)
+				user.client.remove_from_screen(map.locator)
+	else
+		if(SSmapping.level_has_any_trait(user.z, list(ZTRAIT_GROUND)))
+			new_linked_map = SSminimaps.fetch_minimap_object(user.z, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+			for(var/datum/action/minimap/map in user.actions)
+				user.client.add_to_screen(map.locator)
+		else
+			new_linked_map = SSminimaps.fetch_minimap_object(SSmapping.levels_by_trait(ZTRAIT_GROUND)[1] , linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+			for(var/datum/action/minimap/map in user.actions)
+				user.client.remove_from_screen(map.locator)
+
+	update_shown_map(user, new_linked_map)
 
 /atom/movable/screen/minimap_tool/down
 	icon_state = "down"

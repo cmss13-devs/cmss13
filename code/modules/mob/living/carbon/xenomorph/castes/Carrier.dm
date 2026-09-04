@@ -34,13 +34,15 @@
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 
-	aura_strength = 2
+	aura_strength = XENO_PHERO_STRENGTH_NORMAL
 	hugger_throw_delay = 5 DECISECONDS
 	egg_cooldown = 25 SECONDS
 
 	minimum_evolve_time = 5 MINUTES
 
 	minimap_icon = "carrier"
+
+	organ_type = /obj/item/organ/xeno/carrier
 
 /mob/living/carbon/xenomorph/carrier
 	caste_type = XENO_CASTE_CARRIER
@@ -49,7 +51,7 @@
 	icon_size = 64
 	icon_xeno = 'icons/mob/xenos/castes/tier_2/carrier.dmi'
 	icon_state = "Carrier Walking"
-	plasma_types = list(PLASMA_PURPLE)
+	plasma_types = list(PLASMA_PHEROMONE)
 
 	drag_delay = 6 //pulling a big dead xeno is hard
 	var/huggers_reserved = 0
@@ -58,7 +60,6 @@
 	tier = 2
 	pixel_x = -16 //Needed for 2x2
 	old_x = -16
-	organ_value = 1000
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/toggle_seethrough,
@@ -100,6 +101,14 @@
 	var/eggs_max = 0
 	var/laid_egg = 0
 	var/hugger_retrieve_timer = 5 DECISECONDS
+
+/obj/item/organ/xeno/carrier
+	name = "carrier heart"
+	icon_state = "heart_t2"
+	item_state = "heart_t2"
+	research_value = 1000
+
+	xeno_organ_flags = XENO_ORGAN_STRONG|XENO_ORGAN_SUPPORT
 
 /mob/living/carbon/xenomorph/carrier/proc/update_hugger_overlays()
 	if(!hugger_overlays_icon)

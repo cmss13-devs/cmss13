@@ -44,11 +44,24 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	return INITIALIZE_HINT_LATELOAD
 
-/turf/open_space/Enter(atom/movable/mover, atom/forget)
+/turf/open_space/Enter(atom/movable/mover, atom/old_loc)
 	. = ..()
-	if(. && !mover.throwing && isliving(mover) && check_blocked())
+
+	if(!isliving(mover))
+		return
+
+	if(. && mover.move_intentionally)
+		var/mob/living/climber = mover
+		if(climber.a_intent == INTENT_HARM)
+			. = TRUE
+		else
+			. = FALSE
+			climb_down(climber)
+
+	if(. && !HAS_TRAIT(mover, TRAIT_LAUNCHED) && check_blocked())
 		to_chat(mover, SPAN_WARNING("It would be too dangerous to go that way."))
-		return FALSE
+		. = FALSE
+
 
 /turf/open_space/Entered(atom/movable/entered_movable, atom/old_loc)
 	. = ..()

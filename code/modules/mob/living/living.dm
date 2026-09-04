@@ -22,6 +22,9 @@
 	initialize_stamina()
 	GLOB.living_mob_list += src
 
+	if(!(mob_flags & MOB_ABSTRACT))
+		SSmapgrids.track_movable(src)
+
 /mob/living/Destroy()
 	GLOB.living_player_list -= src
 	GLOB.living_mob_list -= src
@@ -218,6 +221,8 @@
 	if(back && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
 		update_inv_back()
 
+	if(. && nutrition && stat != DEAD)
+		nutrition -= HUNGER_FACTOR/5
 
 
 /mob/proc/resist_grab(moving_resist)
@@ -330,7 +335,7 @@
 	if(buckled || now_pushing)
 		return
 
-	if(throwing)
+	if(HAS_TRAIT(src, TRAIT_LAUNCHED))
 		launch_impact(moving_atom)
 		return
 

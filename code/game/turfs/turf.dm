@@ -168,6 +168,12 @@
 		update_vis_contents()
 
 /turf/Destroy(force)
+	linked_pylons = null
+	weeds = null
+	autocells = null
+	opacity_sources = null
+	baseturfs = null
+
 	if(hybrid_lights_affecting)
 		for(var/atom/movable/lighting_mask/mask as anything in hybrid_lights_affecting)
 			LAZYREMOVE(mask.affecting_turfs, src)
@@ -249,8 +255,10 @@
 	return
 
 // Handles whether an atom is able to enter the src turf
-/turf/Enter(atom/movable/mover, atom/forget)
-	if (!mover || !isturf(mover.loc))
+/turf/Enter(atom/movable/mover, atom/oldloc)
+	if(QDELETED(mover))
+		return FALSE // Prevent anything deleted from moving to limit side effects
+	if(!isturf(oldloc))
 		return FALSE
 
 	var/override = SEND_SIGNAL(mover, COMSIG_MOVABLE_TURF_ENTER, src)
@@ -270,66 +278,54 @@
 
 	var/blocking_dir = 0 // The directions that the mover's path is being blocked by
 
-	var/obstacle
-	var/turf/T
-	var/atom/A
-
-	T = mover.loc
-	blocking_dir |= T.BlockedExitDirs(mover, fdir)
+	blocking_dir |= oldloc.BlockedExitDirs(mover, fdir)
 	if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-		mover.Collide(T)
+		mover.Collide(oldloc)
 		return FALSE
-	for (obstacle in T) //First, check objects to block exit
-		if (mover == obstacle || forget == obstacle)
+	for (var/atom/movable/obstacle as anything in oldloc) //First, check objects to block exit
+		if (mover == obstacle)
 			continue
-		A = obstacle
-		if (!istype(A) || !A.can_block_movement)
+		if (!obstacle.can_block_movement)
 			continue
-		blocking_dir |= A.BlockedExitDirs(mover, fdir)
+		blocking_dir |= obstacle.BlockedExitDirs(mover, fdir)
 		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-			mover.Collide(A)
+			mover.Collide(obstacle)
 			return FALSE
 
 	// if we are thrown, moved, dragged, or in any other way abused by code - check our diagonals
 	if(!mover.move_intentionally)
 		// Check objects in adjacent turf EAST/WEST
 		if(fd1 && fd1 != fdir)
-			T = get_step(mover, fd1)
+			var/turf/T = get_step(mover, fd1)
 			if (T.BlockedExitDirs(mover, fd2) || T.BlockedPassDirs(mover, fd1))
 				blocking_dir |= fd1
 				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 					mover.Collide(T)
 					return FALSE
-			for(obstacle in T)
-				if(forget == obstacle)
+			for(var/atom/movable/obstacle as anything in T)
+				if (!obstacle.can_block_movement)
 					continue
-				A = obstacle
-				if (!istype(A) || !A.can_block_movement)
-					continue
-				if (A.BlockedExitDirs(mover, fd2) || A.BlockedPassDirs(mover, fd1))
+				if (obstacle.BlockedExitDirs(mover, fd2) || obstacle.BlockedPassDirs(mover, fd1))
 					blocking_dir |= fd1
 					if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-						mover.Collide(A)
+						mover.Collide(obstacle)
 						return FALSE
 
 		// Check for borders in adjacent turf NORTH/SOUTH
 		if(fd2 && fd2 != fdir)
-			T = get_step(mover, fd2)
+			var/turf/T = get_step(mover, fd2)
 			if (T.BlockedExitDirs(mover, fd1) || T.BlockedPassDirs(mover, fd2))
 				blocking_dir |= fd2
 				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 					mover.Collide(T)
 					return FALSE
-			for(obstacle in T)
-				if(forget == obstacle)
+			for(var/atom/movable/obstacle as anything in T)
+				if (!obstacle.can_block_movement)
 					continue
-				A = obstacle
-				if (!istype(A) || !A.can_block_movement)
-					continue
-				if (A.BlockedExitDirs(mover, fd1) || A.BlockedPassDirs(mover, fd2))
+				if (obstacle.BlockedExitDirs(mover, fd1) || obstacle.BlockedPassDirs(mover, fd2))
 					blocking_dir |= fd2
 					if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-						mover.Collide(A)
+						mover.Collide(obstacle)
 						return FALSE
 					break
 
@@ -338,42 +334,31 @@
 	if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 		mover.Collide(src)
 		return FALSE
-	for(obstacle in src) //Then, check atoms in the target turf
-		if(forget == obstacle)
+	for(var/atom/movable/obstacle as anything in src) //Then, check atoms in the target turf
+		if (!obstacle.can_block_movement)
 			continue
-		A = obstacle
-		if (!istype(A) || !A.can_block_movement)
-			continue
-		blocking_dir |= A.BlockedPassDirs(mover, fdir)
+		blocking_dir |= obstacle.BlockedPassDirs(mover, fdir)
 		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-			if(!mover.Collide(A))
+			if(!mover.Collide(obstacle))
 				return FALSE
-
-	if(mover.move_intentionally && istype(src, /turf/open_space) && istype(mover,/mob/living))
-		var/turf/open_space/space = src
-		var/mob/living/climber = mover
-		if(climber.a_intent == INTENT_HARM)
-			return TRUE
-		space.climb_down(climber)
-		return FALSE
-
 
 	return TRUE //Nothing found to block so return success!
 
-/turf/Entered(atom/movable/A)
+/turf/Entered(atom/movable/entered_movable, atom/OldLoc)
 	SHOULD_CALL_PARENT(TRUE)
 
 	..() // Shouldn't do anything but to satisfy lint
 
-	if(!istype(A))
-		return
+	if(QDELETED(entered_movable))
+		return // Shouldn't be needed, we already fence it in Enter, but just in case
 
-	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, A)
-	SEND_SIGNAL(A, COMSIG_MOVABLE_TURF_ENTERED, src)
+	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, entered_movable)
+	SEND_SIGNAL(entered_movable, COMSIG_MOVABLE_TURF_ENTERED, src)
 
 	// Let explosions know that the atom entered
-	for(var/datum/automata_cell/explosion/E in autocells)
-		E.on_turf_entered(A)
+	if(OldLoc != src)
+		for(var/datum/automata_cell/explosion/cell as anything in autocells)
+			cell.on_turf_entered(entered_movable)
 
 /turf/proc/is_plating()
 	return 0
@@ -479,7 +464,8 @@
 	//if(src.type == new_turf_path) // Put this back if shit starts breaking
 	// return src
 
-	var/pylons = linked_pylons
+	var/list/pylons = linked_pylons
+	var/list/cells = autocells
 
 	var/list/old_baseturfs = baseturfs
 	var/old_ref = weak_reference
@@ -498,22 +484,24 @@
 
 	changing_turf = TRUE
 	qdel(src) //Just get the side effects and call Destroy
-	var/turf/W = new path(src)
+	var/turf/new_self = new path(src)
 
-	W.weak_reference = old_ref
+	new_self.weak_reference = old_ref
 
 	for(var/datum/callback/callback as anything in post_change_callbacks)
-		callback.InvokeAsync(W)
+		callback.InvokeAsync(new_self)
 
 	if(new_baseturfs)
-		W.baseturfs = new_baseturfs
+		new_self.baseturfs = new_baseturfs
 	else
-		W.baseturfs = old_baseturfs
+		new_self.baseturfs = old_baseturfs
 
-	W.linked_pylons = pylons
+	new_self.linked_pylons = pylons
+	if(length(cells))
+		LAZYOR(new_self.autocells, cells)
 
-	W.hybrid_lights_affecting = old_hybrid_lights_affecting
-	W.dynamic_lumcount = dynamic_lumcount
+	new_self.hybrid_lights_affecting = old_hybrid_lights_affecting
+	new_self.dynamic_lumcount = dynamic_lumcount
 
 	lighting_corner_NE = old_lighting_corner_NE
 	lighting_corner_SE = old_lighting_corner_SE
@@ -524,21 +512,21 @@
 	if(SSlighting.initialized)
 		recalculate_directional_opacity()
 
-		W.static_lighting_object = old_lighting_object
+		new_self.static_lighting_object = old_lighting_object
 
 		if(static_lighting_object && !static_lighting_object.needs_update)
 			static_lighting_object.update()
 
 	//Since the old turf was removed from hybrid_lights_affecting, readd the new turf here
-	if(W.hybrid_lights_affecting)
-		for(var/atom/movable/lighting_mask/mask as anything in W.hybrid_lights_affecting)
-			LAZYADD(mask.affecting_turfs, W)
+	if(new_self.hybrid_lights_affecting)
+		for(var/atom/movable/lighting_mask/mask as anything in new_self.hybrid_lights_affecting)
+			LAZYADD(mask.affecting_turfs, new_self)
 
-	if(W.directional_opacity != old_directional_opacity)
-		W.reconsider_lights()
+	if(new_self.directional_opacity != old_directional_opacity)
+		new_self.reconsider_lights()
 
-	W.levelupdate()
-	return W
+	new_self.levelupdate()
+	return new_self
 
 //If you modify this function, ensure it works correctly with lateloaded map templates.
 /turf/proc/AfterChange(flags, oldType) //called after a turf has been replaced in ChangeTurf()
@@ -692,9 +680,9 @@
 	return
 
 /turf/proc/get_cell(type)
-	for(var/datum/automata_cell/C in autocells)
-		if(istype(C, type))
-			return C
+	for(var/datum/automata_cell/existing_cell as anything in autocells)
+		if(istype(existing_cell, type))
+			return existing_cell
 	return null
 
 //////////////////////////////////////////////////////////
@@ -870,6 +858,19 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(T.dir != dir)
 		T.setDir(dir)
 	return T
+
+/turf/open/shuttle/dropship/copyTurf(turf/open/shuttle/dropship/turfazoid)
+	if(turfazoid.type != type)
+		turfazoid.ChangeTurf(type)
+	if(turfazoid.icon_state != icon_state)
+		turfazoid.icon_state = icon_state
+	if(turfazoid.icon != icon)
+		turfazoid.icon = icon
+	if(turfazoid.dir != dir)
+		turfazoid.setDir(dir)
+	if(turfazoid.linked_door != linked_door)
+		turfazoid.linked_door = linked_door
+	return turfazoid
 
 /turf/proc/remove_flag(flag)
 	turf_flags &= ~flag

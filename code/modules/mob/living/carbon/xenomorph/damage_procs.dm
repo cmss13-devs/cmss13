@@ -16,7 +16,7 @@
 			return
 		programmer.visible_message(SPAN_NOTICE("[programmer] reprograms \the [src]'s IFF tag."), SPAN_NOTICE("You reprogram \the [src]'s IFF tag."), max_distance = 3)
 		return
-	if(stat == DEAD)
+	if(stat == DEAD || hive.is_ally(user))
 		if(!istype(item, /obj/item/reagent_container/syringe))
 			var/datum/surgery/current_surgery = active_surgeries[user.zone_selected]
 			if(current_surgery)
@@ -46,7 +46,7 @@
 
 /mob/living/carbon/xenomorph/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 
-	if(body_position == LYING_DOWN && direction)
+	if(body_position == LYING_DOWN && direction > 0)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
 	if(severity >= 30)

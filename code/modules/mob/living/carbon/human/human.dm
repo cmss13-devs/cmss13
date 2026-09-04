@@ -151,7 +151,7 @@
 			. += "Self Destruct Status: [SShijack.get_sd_eta()]"
 
 /mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
-	if(body_position == LYING_DOWN && direction)
+	if(body_position == LYING_DOWN && direction > 0)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
 	var/b_loss = 0
@@ -322,19 +322,6 @@
 		observer.client.add_to_screen(s_active.storage_start)
 		observer.client.add_to_screen(s_active.storage_continue)
 		observer.client.add_to_screen(s_active.storage_end)
-
-// called when something steps onto a human
-// this handles mulebots and vehicles
-/mob/living/carbon/human/Crossed(atom/movable/AM)
-	..()
-	if(istype(AM, /obj/structure/machinery/bot/mulebot))
-		var/obj/structure/machinery/bot/mulebot/MB = AM
-		MB.RunOver(src)
-
-	if(istype(AM, /obj/vehicle))
-		var/obj/vehicle/V = AM
-		V.RunOver(src)
-
 
 //gets assignment from ID or ID inside PDA or PDA itself
 //Useful when player do something with computers

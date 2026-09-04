@@ -1342,7 +1342,8 @@
 
 
 	addtimer(CALLBACK(src, PROC_REF(failed_to_evolve)), 3 MINUTES)
-///If we evolve we cease to exist
+
+///If we evolve we cease to exist, if we are in a pod after the 3 minute timer it allows us to finish evolving
 /mob/living/carbon/xenomorph/proc/failed_to_evolve()
-	if(istype(loc, /obj/effect/alien/resin/special/evolution_pod))
+	if(!istype(loc, /obj/effect/alien/resin/special/evolution_pod))
 		hive.remove_from_evo_list(src)

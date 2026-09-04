@@ -124,20 +124,25 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return
 	finish_evolving()
 
-/mob/living/carbon/xenomorph/proc/finish_evolving(obj/effect/alien/resin/special/evolution_pod/pod)
-	if(desired_caste.tier in list(2,3) && loc != pod) //we have exited the pod prematurly
-		return
+/mob/living/carbon/xenomorph/proc/finish_evolving()
+	if(desired_caste.tier in list(2,3))
+		if(istype(loc, /obj/effect/alien/resin/special/evolution_pod))
+			forceMove(get_turf(loc)) //we get forced out of the pod
+		else
+			return
 
 	visible_message(SPAN_XENONOTICE("[src] begins to twist and contort."),
 	SPAN_XENONOTICE("We begin to twist and contort."))
 	xeno_jitter(25)
 	evolving = TRUE
 	var/level_to_switch_to = get_vision_level()
-	if(!pod) //we do not want this when inside of the pod
+	if(!(desired_caste.tier in list(2,3))) //we do not want this when inside of the pod
 		if(!do_after(src, 2.5 SECONDS, INTERRUPT_INCAPACITATED|INTERRUPT_CHANGED_LYING, BUSY_ICON_HOSTILE)) // Can evolve while moving, resist or rest to cancel it.
 			to_chat(src, SPAN_WARNING("We quiver, but nothing happens. Our evolution has ceased for now..."))
 			evolving = FALSE
 			return
+
+
 
 	evolving = FALSE
 
@@ -159,9 +164,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	var/obj/item/organ/xeno/organ = locate() in src
 	if(!isnull(organ))
 		qdel(organ)
-	if(pod)
-		forceMove(pod.loc)
-		pod.update_icon()
+
 	var/mob/living/carbon/xenomorph/xeno_type = null
 	xeno_type = GLOB.RoleAuthority.get_caste_by_text(desired_caste.caste_type)
 	//From there, the new xeno exists, hopefully
@@ -273,10 +276,10 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return //how?
 
 	to_chat(src, "We begin secreeting our cocoon.")
-	if(do_after(src, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(do_after(src, 5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 		var/obj/effect/alien/resin/special/evolution_pod/pod = new pod_path(loc)
 		pod.enter_pod(src)
-		addtimer(CALLBACK(src, PROC_REF(finish_evolving), pod), timer)
+		addtimer(CALLBACK(src, PROC_REF(finish_evolving)), timer)
 
 
 

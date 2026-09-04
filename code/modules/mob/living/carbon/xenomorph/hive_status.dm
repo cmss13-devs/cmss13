@@ -1238,7 +1238,7 @@
 	if(xeno in evolving_xenos)
 		evolving_xenos -= xeno
 		if(xeno.desired_caste)
-			to_chat(xeno, "You are no longer ready to evolve into [xeno.desired_caste], you can choose to try evolving again.")
+			to_chat(xeno, "You are no longer ready to evolve into [xeno.desired_caste.caste_type], you can choose to try evolving again.")
 		offer_evolutions()
 		return
 

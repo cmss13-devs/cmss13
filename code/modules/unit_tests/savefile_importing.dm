@@ -1,5 +1,5 @@
 /**
- * The job of this unit test is to ensure that save files are correctly imported from BYOND to JSON.
+ * The job of this unit test is to ensure that save files are correctly imported from BYOND to a Tree.
  * It's a rather convoluted process and so this test ensures that something didn't fuck up somewhere.
  */
 /datum/unit_test/byond_save_trees
@@ -12,13 +12,13 @@
 
 /datum/unit_test/byond_save_trees/proc/setup()
 	var/path_byond_file = "data/byond_save_tree_test.sav"
-	var/path_json_file = "data/byond_save_tree_test.json"
+	var/path_tree_file = "data/byond_save_tree_test_tree.sav"
 	if(fexists(path_byond_file))
 		fdel(path_byond_file)
-	if(fexists(path_json_file))
-		fdel(path_json_file)
+	if(fexists(path_tree_file))
+		fdel(path_tree_file)
 	test_savefile = new /savefile(path_byond_file)
-	byond_save_tree = new /datum/byond_save_tree(path_json_file)
+	byond_save_tree = new /datum/byond_save_tree(path_tree_file)
 
 	var_string = random_name()
 	basic_list = list(rand(), rand(), rand(), "3", "6", "null", "\proper house")
@@ -36,17 +36,17 @@
 /datum/unit_test/byond_save_trees/Run()
 	setup()
 
-	// first, we import the file to json
+	// first, we import the file to a tree
 	byond_save_tree.import_byond_savefile(test_savefile)
 
 	// now we seperate out the different values
 	var/byond_basic_list = json_encode(basic_list)
-	var/json_basic_list = json_encode(byond_save_tree.get_entry("basic_list"))
-	TEST_ASSERT_EQUAL(byond_basic_list, json_basic_list, "didn't convert basic list correctly")
+	var/tree_basic_list = json_encode(byond_save_tree.get_entry("basic_list"))
+	TEST_ASSERT_EQUAL(byond_basic_list, tree_basic_list, "didn't convert basic list correctly")
 
 	var/byond_assoc_list = json_encode(assoc_list)
-	var/json_assoc_list = json_encode(byond_save_tree.get_entry("assoc_list"))
-	TEST_ASSERT_EQUAL(byond_assoc_list, json_assoc_list, "didn't convert associative list correctly")
+	var/tree_assoc_list = json_encode(byond_save_tree.get_entry("assoc_list"))
+	TEST_ASSERT_EQUAL(byond_assoc_list, tree_assoc_list, "didn't convert associative list correctly")
 
 	var/null_value = byond_save_tree.get_entry("null_value")
 	var/default_value = byond_save_tree.get_entry("this_key_doesnt_exist", "defval")

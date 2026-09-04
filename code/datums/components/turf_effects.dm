@@ -164,7 +164,7 @@
 				the_splash.icon_state = null
 			hidden = HIDDEN_OFFSET
 			return
-		else if(input_carbon.buckled || input_carbon.throwing)
+		else if(input_carbon.buckled || HAS_TRAIT(input_carbon, TRAIT_LAUNCHED))
 			if(!hidden) //if it wasnt hidden before but now is
 				input_carbon.layer = initial(input_carbon.layer )
 				input_carbon.plane = initial(input_carbon.plane)

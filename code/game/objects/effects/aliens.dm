@@ -397,7 +397,7 @@
 			ticks_left = 10
 	handle_weather()
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(handle_weather))
-	RegisterSignal(acid_t, COMSIG_ITEM_PICKUP, PROC_REF(attempt_pickup))
+	RegisterSignal(acid_t, COMSIG_MOVABLE_PRE_PICKUP, PROC_REF(attempt_pickup))
 	RegisterSignal(acid_t, COMSIG_MOVABLE_MOVED, PROC_REF(move_acid))
 	RegisterSignal(acid_t, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
 	START_PROCESSING(SSoldeffects, src)
@@ -420,10 +420,10 @@
 		return
 	forceMove(new_loc)
 
-/// Called by COMSIG_ITEM_PICKUP when an item is attempted to be picked up but has acid
+/// Called by COMSIG_MOVABLE_PRE_PICKUP to signal that acid_t can't be picked up because of acid
 /obj/effect/xenomorph/acid/proc/attempt_pickup()
 	SIGNAL_HANDLER
-	return COMSIG_ITEM_PICKUP_CANCELLED
+	return COMPONENT_PICKUP_CANCELED_ACID
 
 /obj/effect/xenomorph/acid/proc/handle_weather()
 	SIGNAL_HANDLER
@@ -444,7 +444,7 @@
 		visible_message(SPAN_XENOWARNING("Acid on \The [acid_t] subsides!"))
 		return NONE
 	var/obj/structure/barricade/cade = acid_t
-	cade.take_acid_damage(barricade_damage)
+	cade.corrosive_acid_act(barricade_damage)
 	return (5 SECONDS)
 
 /obj/effect/xenomorph/acid/proc/handle_flashlight()
@@ -743,11 +743,11 @@
 
 /obj/effect/xenomorph/acid_damage_delay/boiler_landmine/deal_damage()
 	var/total_hits = 0
-	for (var/obj/structure/barricade/B in loc)
-		B.take_acid_damage(damage*(1.15 + 0.55 * empowered))
+	for(var/obj/structure/barricade/cade in loc)
+		cade.corrosive_acid_act(damage*(1.15 + 0.55 * empowered))
 
-	for (var/mob/living/carbon/human in loc)
-		if (human.stat == DEAD)
+	for(var/mob/living/carbon/human in loc)
+		if(human.stat == DEAD)
 			continue
 
 		if(human.ally_of_hivenumber(hivenumber))

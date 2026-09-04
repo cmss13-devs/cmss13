@@ -573,8 +573,6 @@ class PresetsPage extends Component {
   }
 
   async componentDidMount() {
-    // This warning is generally considered OK to ignore in this context
-    // eslint-disable-next-line react/no-did-mount-set-state
     this.setState({
       presets: await this.getPresets(),
     });

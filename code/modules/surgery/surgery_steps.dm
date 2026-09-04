@@ -104,13 +104,13 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 			to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site! Take it off!"))
 			return
 
-	if(surgery_limb.status & LIMB_SPLINTED && surgery.invasiveness != SURGERY_DEPTH_SURFACE)
-		if(surgery_limb.status & LIMB_SPLINTED_INDESTRUCTIBLE)
-			to_chat(user, SPAN_WARNING("The splint [target] is wearing on their [surgery_limb.display_name] restricts your access to the surgical site, and must be manually removed!"))
-			return
-		surgery_limb.status &= ~LIMB_SPLINTED
-		playsound(get_turf(target), 'sound/items/splintbreaks.ogg', 20)
-		user.visible_message(SPAN_DANGER("The splint on [target]'s [surgery_limb.display_name] comes apart!"))
+		if(surgery_limb.status & LIMB_SPLINTED && surgery.invasiveness != SURGERY_DEPTH_SURFACE)
+			if(surgery_limb.status & LIMB_SPLINTED_INDESTRUCTIBLE)
+				to_chat(user, SPAN_WARNING("The splint [target] is wearing on their [surgery_limb.display_name] restricts your access to the surgical site, and must be manually removed!"))
+				return
+			surgery_limb.status &= ~LIMB_SPLINTED
+			playsound(get_turf(target), 'sound/items/splintbreaks.ogg', 20)
+			user.visible_message(SPAN_DANGER("The splint on [target]'s [surgery_limb.display_name] comes apart!"))
 
 	var/step_duration = time
 	var/self_surgery
@@ -206,7 +206,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 			advance = TRUE
 			play_failure_sound(user, target, target_zone, tool, surgery)
 
-	else if(target.stat == CONSCIOUS && prob(pain_failure_chance)) //Pain can cause a step to fail.
+	else if(target.stat == CONSCIOUS && prob(pain_failure_chance) && !isxeno(target)) //Pain can cause a step to fail.
 		do_after(user, max(rand(step_duration * 0.1, step_duration * 0.5), 0.5), INTERRUPT_ALL|INTERRUPT_DIFF_INTENT,
 				BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL) //Brief do_after so that the pain interrupt doesn't happen instantly.
 		to_chat(user, SPAN_DANGER("[target] moved during the surgery! Use anesthetics or painkillers!"))

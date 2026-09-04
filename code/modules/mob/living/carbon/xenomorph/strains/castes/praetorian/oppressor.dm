@@ -28,7 +28,6 @@
 	prae.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL
 	prae.small_explosives_stun = FALSE
 	prae.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
-	prae.plasma_types = list(PLASMA_NEUROTOXIN, PLASMA_CHITIN)
 	prae.claw_type = CLAW_TYPE_SHARP
 
 	prae.recalculate_everything()

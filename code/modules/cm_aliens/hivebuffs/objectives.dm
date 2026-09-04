@@ -102,12 +102,12 @@
 /obj/effect/xenomorph/queen_bombard
 	name = "???"
 	desc = ""
-	icon_state = "queen_bombard"
+	icon_state = "boiler_bombard"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 	var/damage = 20
-	var/time_before_smoke = 35
-	var/time_before_damage = 25
+	var/time_before_smoke = 2.5 SECONDS
+	var/time_before_damage = 1.5 SECONDS
 	var/smoke_duration = 9
 	var/smoke_type = /obj/effect/particle_effect/smoke/xeno_burn
 

@@ -34,6 +34,10 @@
 #define SS13LIB_QUERY_CODE "ss13hub"
 #endif
 
+#ifndef SS13LIB_AUTH_TICKET_CODE
+#define SS13LIB_AUTH_TICKET_CODE "ss13"
+#endif
+
 #define SS13LIB_PREFLIGHT_CODE "ss13hub_preflight"
 
 #define SS13LIB_INFO_CODE "ss13hub_info"

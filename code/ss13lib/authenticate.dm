@@ -5,7 +5,8 @@
 /datum/ss13lib/proc/handle_client(client/new_client, connection_params)
 	SS13LIB_INFO_LOG("handle_client: [new_client.key] from [new_client.address]")
 	var/params_list = params2list(connection_params)
-	var/auth_ticket = params_list["auth_ticket"]
+
+	var/auth_ticket = params_list[SS13LIB_AUTH_TICKET_CODE]
 
 	var/launcher_port = params_list["launcher_port"]
 	var/launcher_key = params_list["launcher_key"]

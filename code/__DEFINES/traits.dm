@@ -272,8 +272,7 @@
 // -- specific ability traits --
 #define TRAIT_ABILITY_POUNCE_CHARGE "t_ability_pounce_charge"
 #define TRAIT_ABILITY_PRE_EMPOWER "t_ability_pre_empower"
-#define TRAIT_ABILITY_EMPOWER "t_ability_empower"
-#define TRAIT_ABILITY_FULL_EMPOWER "t_ability_full_empower"
+#define TRAIT_ABILITY_SUPER_EMPOWER "t_ability_super_empower"
 /// Used by shielder to check stance.
 #define TRAIT_ABILITY_ENCLOSED_PLATES "t_ability_enclosed_plates"
 /// Used by shielder for reflective plates.

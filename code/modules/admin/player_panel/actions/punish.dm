@@ -280,6 +280,7 @@
 
 	target_mob.client.prefs.real_name = new_name
 	target_mob.client.prefs.save_character()
+	target_mob.client.prefs.savefile?.save()
 
 	message_admins("[user.ckey] has reset [target_mob.ckey]'s name.")
 
@@ -342,4 +343,4 @@
 	target_client.prefs.human_name_ban = TRUE
 
 	target_client.prefs.save_character()
-	target_client.prefs.save_preferences()
+	target_client.prefs.save_preferences() // This one writes to disk

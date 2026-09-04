@@ -7,97 +7,97 @@
 //this will mean that savefile_version will still be over SAVEFILE_VERSION_MIN, meaning
 //this savefile update doesn't run everytime we load from the savefile.
 //This is mainly for format changes, such as the bitflags in toggles changing order or something.
-//if a file can't be updated, return 0 to delete it and start again
-//if a file was updated, return 1
-/datum/preferences/proc/savefile_update(savefile/S)
+//if a file can't be updated, returns FALSE to delete it and start again
+//if a file was updated, returns TRUE
+/datum/preferences/proc/savefile_update()
 	if(!isnum(savefile_version) || savefile_version < SAVEFILE_VERSION_MIN) //lazily delete everything + additional files so they can be saved in the new format
 		for(var/ckey in GLOB.preferences_datums)
 			var/datum/preferences/D = GLOB.preferences_datums[ckey]
 			if(D == src)
-				var/delpath = "data/player_saves/[copytext(ckey,1,2)]/[ckey]/"
+				var/delpath = "data/player_saves/[ckey[1]]/[ckey]/"
 				if(delpath && fexists(delpath))
 					fdel(delpath)
 				break
-		return 0
+		return FALSE
 
 	if(savefile_version < 12) //we've split toggles into toggles_sound and toggles_chat
-		S["toggles_sound"] << TOGGLES_SOUND_DEFAULT
-		S["toggles_chat"] << TOGGLES_CHAT_DEFAULT
+		savefile.set_entry("toggles_sound", TOGGLES_SOUND_DEFAULT)
+		savefile.set_entry("toggles_chat", TOGGLES_CHAT_DEFAULT)
 
 	if(savefile_version < 13)
 		var/sound_toggles
-		S["toggles_sound"] >> sound_toggles
+		sound_toggles = savefile.get_entry("toggles_sound")
 		sound_toggles |= SOUND_INTERNET
-		S["toggles_sound"] << sound_toggles
+		savefile.set_entry("toggles_sound", sound_toggles)
 
 	if(savefile_version < 14) //toggle unnest flashing on by default
 		var/flash_toggles
-		S["toggles_flashing"] >> flash_toggles
+		flash_toggles = savefile.get_entry("toggles_flashing")
 		flash_toggles |= FLASH_UNNEST
-		S["toggles_flashing"] << flash_toggles
+		savefile.set_entry("toggles_flashing", flash_toggles)
 
 	if(savefile_version < 15) //toggles on membership publicity by default because forgot to six months ago
 		var/pref_toggles
-		S["toggle_prefs"] >> pref_toggles
+		pref_toggles = savefile.get_entry("toggle_prefs")
 		pref_toggles |= TOGGLE_MEMBER_PUBLIC
-		S["toggle_prefs"] << pref_toggles
+		savefile.set_entry("toggle_prefs", pref_toggles)
 
 	if(savefile_version < 16) //toggle unpool flashing on by default
 		var/flash_toggles_two
-		S["toggles_flashing"] >> flash_toggles_two
+		flash_toggles_two = savefile.get_entry("toggles_flashing")
 		flash_toggles_two |= FLASH_POOLSPAWN
-		S["toggles_flashing"] << flash_toggles_two
+		savefile.set_entry("toggles_flashing", flash_toggles_two)
 
 	if(savefile_version < 17) //toggle middle click swap hands on by default
 		var/pref_middle_click_swap
-		S["toggle_prefs"] >> pref_middle_click_swap
+		pref_middle_click_swap = savefile.get_entry("toggle_prefs")
 		pref_middle_click_swap |= TOGGLE_MIDDLE_MOUSE_SWAP_HANDS
-		S["toggle_prefs"] << pref_middle_click_swap
+		savefile.set_entry("toggle_prefs", pref_middle_click_swap)
 
 	if(savefile_version < 17) //remove omniglots
 		var/list/language_traits = list()
-		S["traits"] >> language_traits
+		language_traits = savefile.get_entry("traits")
 		if(LAZYLEN(language_traits) > 1)
 			language_traits = null
-		S["traits"] << language_traits
+		savefile.set_entry("traits", language_traits)
 
 	if(savefile_version < 18) // adds ambient occlusion by default
 		var/pref_toggles
-		S["toggle_prefs"] >> pref_toggles
+		pref_toggles = savefile.get_entry("toggle_prefs")
 		pref_toggles |= TOGGLE_AMBIENT_OCCLUSION
-		S["toggle_prefs"] << pref_toggles
+		savefile.set_entry("toggle_prefs", pref_toggles)
 
 	if(savefile_version < 19) // toggles vending to hand by default
 		var/pref_toggle_vend_item_tohand
-		S["toggle_prefs"] >> pref_toggle_vend_item_tohand
+		pref_toggle_vend_item_tohand = savefile.get_entry("toggle_prefs")
 		pref_toggle_vend_item_tohand |= TOGGLE_VEND_ITEM_TO_HAND
-		S["toggle_prefs"] << pref_toggle_vend_item_tohand
+		savefile.set_entry("toggle_prefs", pref_toggle_vend_item_tohand)
 
 	if(savefile_version < 20) // adds midi and atmospheric sounds on by default
 		var/sound_toggles
-		S["toggles_sound"] >> sound_toggles
+		sound_toggles = savefile.get_entry("toggles_sound")
 		sound_toggles |= (SOUND_ADMIN_MEME|SOUND_ADMIN_ATMOSPHERIC)
-		S["toggles_sound"] << sound_toggles
+		savefile.set_entry("toggles_sound", sound_toggles)
 
 	if(savefile_version < 21)
 		var/pref_toggles
-		S["toggle_prefs"] >> pref_toggles
+		pref_toggles = savefile.get_entry("toggle_prefs")
 		if(pref_toggles & TOGGLE_ALTERNATING_DUAL_WIELD)
 			dual_wield_pref = DUAL_WIELD_SWAP
 		else
 			dual_wield_pref = DUAL_WIELD_FIRE
-		S["dual_wield_pref"] << dual_wield_pref
+		savefile.set_entry("dual_wield_pref", dual_wield_pref)
 
 	if(savefile_version < 22)
 		var/sound_toggles
-		S["toggles_sound"] >> sound_toggles
+		sound_toggles = savefile.get_entry("toggles_sound")
 		sound_toggles |= SOUND_OBSERVER_ANNOUNCEMENTS
-		S["toggles_sound"] << sound_toggles
+		savefile.set_entry("toggles_sound", sound_toggles)
 
 	if(savefile_version < 23)
 		var/ethnicity
 		var/skin_color = "pale2"
-		S["ethnicity"] >> ethnicity
+		ethnicity = savefile.get_entry("ethnicity")
 		switch(ethnicity)
 			if("anglo")
 				skin_color = "pale2"
@@ -139,50 +139,50 @@
 				skin_color = "dark2"
 			if("polynesian")
 				skin_color = "tan3"
-		S["skin_color"] << skin_color
+		savefile.set_entry("skin_color", skin_color)
 
 	if(savefile_version < 24) // adds fax machine sounds on by default
 		var/sound_toggles
-		S["toggles_sound"] >> sound_toggles
+		sound_toggles = savefile.get_entry("toggles_sound")
 		sound_toggles |= (SOUND_FAX_MACHINE)
-		S["toggles_sound"] << sound_toggles
+		savefile.set_entry("toggles_sound", sound_toggles)
 
 	if(savefile_version < 25) //renemes nanotrasen to wy
 		var/relation
-		S["nanotrasen_relation"] >> relation
-		S["weyland_yutani_relation"] << relation
+		relation = savefile.get_entry("nanotrasen_relation")
+		savefile.set_entry("weyland_yutani_relation", relation)
 
 	if(savefile_version < 26)
 		// Removes TOGGLE_MIDDLE_MOUSE_CLICK (1<<2) and replaces it with a new pref
 		var/toggle_prefs = 0
-		S["toggle_prefs"] >> toggle_prefs
+		toggle_prefs = savefile.get_entry("toggle_prefs")
 		if(toggle_prefs & (1<<2))
-			S["xeno_ability_click_mode"] << XENO_ABILITY_CLICK_MIDDLE
+			savefile.set_entry("xeno_ability_click_mode", XENO_ABILITY_CLICK_MIDDLE)
 		else
-			S["xeno_ability_click_mode"] << XENO_ABILITY_CLICK_SHIFT
+			savefile.set_entry("xeno_ability_click_mode", XENO_ABILITY_CLICK_SHIFT)
 
 	if(savefile_version < 27)
 		// Gives staff afk protection by default.
-		S["toggles_admin"] << TOGGLES_ADMIN_DEFAULT
+		savefile.set_entry("toggles_admin", TOGGLES_ADMIN_DEFAULT)
 		// Updates default chat settings to enable FF logs for new staff.
 		var/chat_settings = 0
-		S["toggles_chat"] >> chat_settings
+		chat_settings = savefile.get_entry("toggles_chat")
 		chat_settings &= ~CHAT_ATTACKLOGS
 		chat_settings |= CHAT_FFATTACKLOGS
-		S["toggles_chat"] << chat_settings
+		savefile.set_entry("toggles_chat", chat_settings)
 
 	if(savefile_version < 28)
 		var/tutorial_string = ""
-		S["completed_tutorials"] >> tutorial_string
+		tutorial_string = savefile.get_entry("completed_tutorials")
 		tutorial_savestring_to_list(tutorial_string)
 		if("requisitions_line" in completed_tutorials)
 			completed_tutorials -= "requisitions_line"
 			completed_tutorials += "marine_req_1"
-		S["completed_tutorials"] << tutorial_list_to_savestring()
+		savefile.set_entry("completed_tutorials", tutorial_list_to_savestring())
 
 	if(savefile_version < 29)
 		var/hair_style = ""
-		S["hair_style_name"] >> hair_style
+		hair_style = savefile.get_entry("hair_style_name")
 
 		switch(hair_style)
 			if("Shoulder-length Hair Alt")
@@ -190,20 +190,20 @@
 			if("Long Hair Alt")
 				hair_style = "Longer Fringe"
 
-		S["hair_style_name"] << hair_style
+		savefile.set_entry("hair_style_name", hair_style)
 
 	if(savefile_version < 30)
 		var/be_special = 0
-		S["be_special"] >> be_special
+		be_special = savefile.get_entry("be_special")
 		be_special &= ~BE_KING
-		S["be_special"] << be_special
+		savefile.set_entry("be_special", be_special)
 
 	if(savefile_version < 31)
 		for(var/i in 1 to MAX_SAVE_SLOTS)
-			S.cd = "/character[i]"
+			var/character_tree_key = "character[i]"
+			var/list/character_data = savefile.get_entry(character_tree_key, list())
 
-			var/list/existing_gear
-			S["gear"] >> existing_gear
+			var/list/existing_gear = character_data["gear"]
 
 			var/list/new_list = list()
 			for(var/entry in existing_gear)
@@ -213,48 +213,46 @@
 
 				new_list += "[gear.type]"
 
-			S["gear"] = new_list
-
-		S.cd = "/"
+			character_data["gear"] = new_list
 
 	if(savefile_version < 32)
 		var/pref_toggles
-		S["toggle_prefs"] >> pref_toggles
+		pref_toggles = savefile.get_entry("toggle_prefs")
 		pref_toggles |= TOGGLE_LEADERSHIP_SPOKEN_ORDERS // Enables it by default for new saves
-		S["toggle_prefs"] << pref_toggles
+		savefile.set_entry("toggle_prefs", pref_toggles)
 
 	if(savefile_version < 33)
 		var/pref_toggles
-		S["toggle_prefs"] >> pref_toggles
+		pref_toggles = savefile.get_entry("toggle_prefs")
 		pref_toggles |= TOGGLE_COCKING_TO_HAND // enabled by default for new saves
-		S["toggle_prefs"] << pref_toggles
+		savefile.set_entry("toggle_prefs", pref_toggles)
 
 	if(savefile_version < 34)
 		var/pref_toggles
-		S["toggle_prefs"] >> pref_toggles
+		pref_toggles = savefile.get_entry("toggle_prefs")
 		pref_toggles |= TOGGLE_WIELD_ASSIST // enabled by default for new saves
-		S["toggle_prefs"] << pref_toggles
+		savefile.set_entry("toggle_prefs", pref_toggles)
 
 	if(savefile_version < 35) // we have removed Tab from the default binds, allow users to bind it back if they want. needs to be async after logging in
 		updated_from = savefile_version
 
 	if(savefile_version < 36)
 		var/toggles_insert
-		S["toggles_insert"] >> toggles_insert
+		toggles_insert = savefile.get_entry("toggles_insert")
 		toggles_insert |= (PLAY_INSERT_STANDARD|PLAY_INSERT_CORPORATE|PLAY_INSERT_LEADER|PLAY_INSERT_MEDIC|PLAY_INSERT_ENGINEER|PLAY_INSERT_SPECIALIST|PLAY_INSERT_SMARTGUNNER|PLAY_INSERT_SYNTH|PLAY_INSERT_CO) // enabled by default for new saves
-		S["toggles_insert"] << toggles_insert
+		savefile.set_entry("toggles_insert", toggles_insert)
 
 	if(savefile_version < 37)
 		var/toggles_insert
-		S["toggles_sound"] >> toggles_insert
+		toggles_insert = savefile.get_entry("toggles_sound")
 		toggles_insert |= (SOUND_ROUND_END)
-		S["toggles_sound"] << toggles_insert
+		savefile.set_entry("toggles_sound", toggles_insert)
 
 	if(updated_from)
 		RegisterSignal(owner, COMSIG_CLIENT_LOGGED_IN, PROC_REF(handle_logged_in))
 
 	savefile_version = SAVEFILE_VERSION_MAX
-	return 1
+	return TRUE
 
 /datum/preferences/proc/handle_logged_in()
 	SIGNAL_HANDLER
@@ -275,11 +273,16 @@
 			owner?.update_special_keybinds()
 			save_preferences()
 
-/datum/preferences/proc/load_path(ckey,filename="preferences.sav")
+/datum/preferences/proc/load_path(ckey, filename="preferences.sav2")
 	if(!ckey)
 		return
-	path = "data/player_saves/[copytext(ckey,1,2)]/[ckey]/[filename]"
+	path = "data/player_saves/[ckey[1]]/[ckey]/[filename]"
 	savefile_version = SAVEFILE_VERSION_MAX
+
+/datum/preferences/proc/load_savefile()
+	if(!path)
+		CRASH("Attempted to load savefile without first loading a path!")
+	savefile = new /datum/byond_save_tree(path)
 
 /proc/sanitize_keybindings(value)
 	var/list/base_bindings = sanitize_islist(value, list())
@@ -301,163 +304,164 @@
 	return volume_preferences
 
 /datum/preferences/proc/load_preferences()
-	if(!path)
-		return 0
-	if(!fexists(path))
-		load_preferences_sanitize() // Ensure a new player gets same defaults as returning players
-		return 0
-	var/savefile/S = new /savefile(path)
-	if(!S)
-		return 0
-	S.cd = "/"
+	if(!savefile)
+		stack_trace("Attempted to load the preferences of [owner] without a savefile; did you forget to call load_savefile?")
+		load_savefile()
+		if(!savefile)
+			stack_trace("Failed to load the savefile for [owner] after manually calling load_savefile; something is very wrong.")
+			return FALSE
 
-	S["version"] >> savefile_version
+	//if(!fexists(path))
+	//	load_preferences_sanitize() // Ensure a new player gets same defaults as returning players
+	//	return FALSE
+
+	savefile_version = savefile.get_entry("version")
 	//Conversion
 	if(!savefile_version || !isnum(savefile_version) || savefile_version != SAVEFILE_VERSION_MAX)
-		if(!savefile_update(S))  //handles updates
+		if(!savefile_update())  //handles updates
 			savefile_version = SAVEFILE_VERSION_MAX
-			save_preferences()
 			save_character()
-			return 0
+			save_preferences() // This one writes to disk
+			return FALSE
 
 	//general preferences
-	S["ooccolor"] >> ooccolor
-	S["lastchangelog"] >> lastchangelog
-	S["be_special"] >> be_special
-	S["default_slot"] >> default_slot
-	S["toggles_chat"] >> toggles_chat
-	S["chat_display_preferences"] >> chat_display_preferences
-	S["toggles_ghost"] >> toggles_ghost
-	S["toggles_langchat"] >> toggles_langchat
-	S["toggles_sound"] >> toggles_sound
-	S["volume_preferences"] >> volume_preferences
-	S["toggle_prefs"] >> toggle_prefs
-	S["xeno_ability_click_mode"] >> xeno_ability_click_mode
-	S["dual_wield_pref"] >> dual_wield_pref
-	S["toggles_flashing"] >> toggles_flashing
-	S["toggles_ert"] >> toggles_ert
-	S["toggles_survivor"] >> toggles_survivor
-	S["toggles_insert"] >> toggles_insert
-	S["toggles_ert_pred"] >> toggles_ert_pred
-	S["toggles_admin"] >> toggles_admin
-	S["UI_style"] >> UI_style
-	S["tgui_say"] >> tgui_say
-	S["UI_style_color"] >> UI_style_color
-	S["UI_style_alpha"] >> UI_style_alpha
-	S["item_animation_pref_level"] >> item_animation_pref_level
-	S["pain_overlay_pref_level"] >> pain_overlay_pref_level
-	S["flash_overlay_pref"] >> flash_overlay_pref
-	S["crit_overlay_pref"] >> crit_overlay_pref
-	S["allow_flashing_lights_pref"] >> allow_flashing_lights_pref
-	S["stylesheet"] >> stylesheet
-	S["window_skin"] >> window_skin
-	S["fps"] >> fps
-	S["ghost_vision_pref"] >> ghost_vision_pref
-	S["ghost_orbit"] >> ghost_orbit
-	S["auto_observe"] >> auto_observe
-	S["CMTV_toggle_optout"] >> CMTV_toggle_optout
+	ooccolor = savefile.get_entry("ooccolor")
+	lastchangelog = savefile.get_entry("lastchangelog")
+	be_special = savefile.get_entry("be_special")
+	default_slot = savefile.get_entry("default_slot")
+	toggles_chat = savefile.get_entry("toggles_chat")
+	chat_display_preferences = savefile.get_entry("chat_display_preferences")
+	toggles_ghost = savefile.get_entry("toggles_ghost")
+	toggles_langchat = savefile.get_entry("toggles_langchat")
+	toggles_sound = savefile.get_entry("toggles_sound")
+	volume_preferences = savefile.get_entry("volume_preferences")
+	toggle_prefs = savefile.get_entry("toggle_prefs")
+	xeno_ability_click_mode = savefile.get_entry("xeno_ability_click_mode")
+	dual_wield_pref = savefile.get_entry("dual_wield_pref")
+	toggles_flashing = savefile.get_entry("toggles_flashing")
+	toggles_ert = savefile.get_entry("toggles_ert")
+	toggles_survivor = savefile.get_entry("toggles_survivor")
+	toggles_insert = savefile.get_entry("toggles_insert")
+	toggles_ert_pred = savefile.get_entry("toggles_ert_pred")
+	toggles_admin = savefile.get_entry("toggles_admin")
+	UI_style = savefile.get_entry("UI_style")
+	tgui_say = savefile.get_entry("tgui_say")
+	UI_style_color = savefile.get_entry("UI_style_color")
+	UI_style_alpha = savefile.get_entry("UI_style_alpha")
+	item_animation_pref_level = savefile.get_entry("item_animation_pref_level")
+	pain_overlay_pref_level = savefile.get_entry("pain_overlay_pref_level")
+	flash_overlay_pref = savefile.get_entry("flash_overlay_pref")
+	crit_overlay_pref = savefile.get_entry("crit_overlay_pref")
+	allow_flashing_lights_pref = savefile.get_entry("allow_flashing_lights_pref")
+	stylesheet = savefile.get_entry("stylesheet")
+	window_skin = savefile.get_entry("window_skin")
+	fps = savefile.get_entry("fps")
+	ghost_vision_pref = savefile.get_entry("ghost_vision_pref")
+	ghost_orbit = savefile.get_entry("ghost_orbit")
+	auto_observe = savefile.get_entry("auto_observe")
+	CMTV_toggle_optout = savefile.get_entry("CMTV_toggle_optout")
 
-	S["human_name_ban"] >> human_name_ban
+	human_name_ban = savefile.get_entry("human_name_ban")
 
-	S["xeno_prefix"] >> xeno_prefix
-	S["xeno_postfix"] >> xeno_postfix
-	S["xeno_name_ban"] >> xeno_name_ban
-	S["playtime_perks"] >> playtime_perks
-	S["skip_playtime_ranks"] >> skip_playtime_ranks
-	S["show_queen_name"] >> show_queen_name
-	S["show_minimap_ceiling_protection"] >> show_minimap_ceiling_protection
-	S["xeno_vision_level_pref"] >> xeno_vision_level_pref
-	S["xeno_defensive_grab_pref"] >> xeno_defensive_grab_pref
-	S["view_controller"] >> View_MC
-	S["observer_huds"] >> observer_huds
-	S["pref_special_job_options"] >> pref_special_job_options
-	S["pref_job_slots"] >> pref_job_slots
+	xeno_prefix = savefile.get_entry("xeno_prefix")
+	xeno_postfix = savefile.get_entry("xeno_postfix")
+	xeno_name_ban = savefile.get_entry("xeno_name_ban")
+	playtime_perks = savefile.get_entry("playtime_perks")
+	skip_playtime_ranks = savefile.get_entry("skip_playtime_ranks")
+	show_queen_name = savefile.get_entry("show_queen_name")
+	show_minimap_ceiling_protection = savefile.get_entry("show_minimap_ceiling_protection")
+	xeno_vision_level_pref = savefile.get_entry("xeno_vision_level_pref")
+	xeno_defensive_grab_pref = savefile.get_entry("xeno_defensive_grab_pref")
+	View_MC = savefile.get_entry("view_controller")
+	observer_huds = savefile.get_entry("observer_huds")
+	pref_special_job_options = savefile.get_entry("pref_special_job_options")
+	pref_job_slots = savefile.get_entry("pref_job_slots")
 
-	S["synth_name"] >> synthetic_name
-	S["synth_type"] >> synthetic_type
-	S["synth_specialisation"] >> synth_specialisation
-	S["pred_name"] >> predator_name
-	S["pred_gender"] >> predator_gender
-	S["pred_age"] >> predator_age
-	S["pred_use_legacy"] >> predator_use_legacy
-	S["pred_use_unique"] >> predator_use_unique
-	S["pred_trans_type"] >> predator_translator_type
-	S["pred_invis_sound"] >> predator_invisibility_sound
-	S["pred_mask_type"] >> predator_mask_type
-	S["pred_accessory_type"] >> predator_accessory_type
-	S["pred_armor_type"] >> predator_armor_type
-	S["pred_boot_type"] >> predator_boot_type
-	S["pred_mask_mat"] >> predator_mask_material
-	S["pred_armor_mat"] >> predator_armor_material
-	S["pred_greave_mat"] >> predator_greave_material
-	S["pred_caster_mat"] >> predator_caster_material
-	S["pred_bracer_mat"] >> predator_bracer_material
-	S["pred_cape_color"] >> predator_cape_color
-	S["pred_h_style"] >> predator_h_style
-	S["pred_skin_color"] >> predator_skin_color
-	S["pred_flavor_text"] >> predator_flavor_text
+	synthetic_name = savefile.get_entry("synth_name")
+	synthetic_type = savefile.get_entry("synth_type")
+	synth_specialisation = savefile.get_entry("synth_specialisation")
+	predator_name = savefile.get_entry("pred_name")
+	predator_gender = savefile.get_entry("pred_gender")
+	predator_age = savefile.get_entry("pred_age")
+	predator_use_legacy = savefile.get_entry("pred_use_legacy")
+	predator_use_unique = savefile.get_entry("pred_use_unique")
+	predator_translator_type = savefile.get_entry("pred_trans_type")
+	predator_invisibility_sound = savefile.get_entry("pred_invis_sound")
+	predator_mask_type = savefile.get_entry("pred_mask_type")
+	predator_accessory_type = savefile.get_entry("pred_accessory_type")
+	predator_armor_type = savefile.get_entry("pred_armor_type")
+	predator_boot_type = savefile.get_entry("pred_boot_type")
+	predator_mask_material = savefile.get_entry("pred_mask_mat")
+	predator_armor_material = savefile.get_entry("pred_armor_mat")
+	predator_greave_material = savefile.get_entry("pred_greave_mat")
+	predator_caster_material = savefile.get_entry("pred_caster_mat")
+	predator_bracer_material = savefile.get_entry("pred_bracer_mat")
+	predator_cape_color = savefile.get_entry("pred_cape_color")
+	predator_h_style = savefile.get_entry("pred_h_style")
+	predator_skin_color = savefile.get_entry("pred_skin_color")
+	predator_flavor_text = savefile.get_entry("pred_flavor_text")
 
-	S["commander_status"] >> commander_status
-	S["co_sidearm"] >> commander_sidearm
-	S["co_affiliation"] >> affiliation
-	S["co_command_path"] >> co_career_path
-	S["yautja_status"] >> yautja_status
-	S["synth_status"] >> synth_status
+	commander_status = savefile.get_entry("commander_status")
+	commander_sidearm = savefile.get_entry("co_sidearm")
+	affiliation = savefile.get_entry("co_affiliation")
+	co_career_path = savefile.get_entry("co_command_path")
+	yautja_status = savefile.get_entry("yautja_status")
+	synth_status = savefile.get_entry("synth_status")
 
-	S["fax_name_uscm"] >> fax_name_uscm
-	S["fax_name_pvst"] >> fax_name_pvst
-	S["fax_name_wy"] >> fax_name_wy
-	S["fax_name_upp"] >> fax_name_upp
-	S["fax_name_twe"] >> fax_name_twe
-	S["fax_name_cmb"] >> fax_name_cmb
-	S["fax_name_press"] >> fax_name_press
-	S["fax_name_clf"] >> fax_name_clf
+	fax_name_uscm = savefile.get_entry("fax_name_uscm")
+	fax_name_pvst = savefile.get_entry("fax_name_pvst")
+	fax_name_wy = savefile.get_entry("fax_name_wy")
+	fax_name_upp = savefile.get_entry("fax_name_upp")
+	fax_name_twe = savefile.get_entry("fax_name_twe")
+	fax_name_cmb = savefile.get_entry("fax_name_cmb")
+	fax_name_press = savefile.get_entry("fax_name_press")
+	fax_name_clf = savefile.get_entry("fax_name_clf")
 
-	S["ff_log_color"] >> ff_log_color
-	S["ffd_log_color"] >> ffd_log_color
+	ff_log_color = savefile.get_entry("ff_log_color")
+	ffd_log_color = savefile.get_entry("ffd_log_color")
 
-	S["lang_chat_disabled"] >> lang_chat_disabled
-	S["show_permission_errors"] >> show_permission_errors
-	S["hear_vox"] >> hear_vox
-	S["hide_statusbar"] >> hide_statusbar
-	S["no_radials_preference"] >> no_radials_preference
-	S["no_radial_labels_preference"] >> no_radial_labels_preference
-	S["hotkeys"] >> hotkeys
+	lang_chat_disabled = savefile.get_entry("lang_chat_disabled")
+	show_permission_errors = savefile.get_entry("show_permission_errors")
+	hear_vox = savefile.get_entry("hear_vox")
+	hide_statusbar = savefile.get_entry("hide_statusbar")
+	no_radials_preference = savefile.get_entry("no_radials_preference")
+	no_radial_labels_preference = savefile.get_entry("no_radial_labels_preference")
+	hotkeys = savefile.get_entry("hotkeys")
 
-	S["custom_cursors"] >> custom_cursors
-	S["autofit_viewport"] >> auto_fit_viewport
-	S["adaptive_zoom"] >> adaptive_zoom
-	S["tooltips"] >> tooltips
-	S["key_bindings"] >> key_bindings
+	custom_cursors = savefile.get_entry("custom_cursors")
+	auto_fit_viewport = savefile.get_entry("autofit_viewport")
+	adaptive_zoom = savefile.get_entry("adaptive_zoom")
+	tooltips = savefile.get_entry("tooltips")
+	key_bindings = savefile.get_entry("key_bindings")
 
-	S["custom_keybinds"] >> custom_keybinds
+	custom_keybinds = savefile.get_entry("custom_keybinds")
 
-	S["tgui_lock"] >> tgui_lock
-	S["tgui_fancy"] >> tgui_fancy
-	S["window_scale"] >> window_scale
+	tgui_lock = savefile.get_entry("tgui_lock")
+	tgui_fancy = savefile.get_entry("tgui_fancy")
+	window_scale = savefile.get_entry("window_scale")
 
 	var/tutorial_string = ""
-	S["completed_tutorials"] >> tutorial_string
+	tutorial_string = savefile.get_entry("completed_tutorials")
 	tutorial_savestring_to_list(tutorial_string)
 
 	var/list/remembered_key_bindings
-	S["remembered_key_bindings"] >> remembered_key_bindings
+	remembered_key_bindings = savefile.get_entry("remembered_key_bindings")
 	remembered_key_bindings = sanitize_islist(remembered_key_bindings, null)
 
-	S["lastchangelog"] >> lastchangelog
+	lastchangelog = savefile.get_entry("lastchangelog")
 
-	S["job_loadout"] >> loadout
-	S["job_loadout_names"] >> loadout_slot_names
+	loadout = savefile.get_entry("job_loadout")
+	loadout_slot_names = savefile.get_entry("job_loadout_names")
 
-	S["show_cooldown_messages"] >> show_cooldown_messages
+	show_cooldown_messages = savefile.get_entry("show_cooldown_messages")
 
-	S["chem_presets"] >> chem_presets
+	chem_presets = savefile.get_entry("chem_presets")
 
 	//Sanitize
 	load_preferences_sanitize()
 
 	check_keybindings()
-	S["key_bindings"] << key_bindings
+	savefile.set_entry("key_bindings", key_bindings)
 
 	if(remembered_key_bindings)
 		for(var/i in GLOB.keybindings_by_name)
@@ -473,7 +477,7 @@
 					for(var/bound_key in instance.hotkey_keys)
 						LAZYADD(key_bindings[bound_key], list(instance.name))
 
-	S["remembered_key_bindings"] << GLOB.keybindings_by_name
+	savefile.set_entry("remembered_key_bindings", GLOB.keybindings_by_name)
 
 	load_custom_keybinds()
 
@@ -482,7 +486,7 @@
 	else
 		owner.typing_indicators = TRUE
 
-	return 1
+	return TRUE
 
 /datum/preferences/proc/load_preferences_sanitize()
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
@@ -602,240 +606,230 @@
 		custom_keybinds.len = KEYBIND_CUSTOM_MAX
 
 /datum/preferences/proc/save_preferences()
-	if(!path)
-		return FALSE
-	var/savefile/S = new /savefile(path)
-	if(!S)
-		return FALSE
-	S.cd = "/"
+	if(!savefile)
+		CRASH("Attempted to save the preferences of [owner] without a savefile. This should have been handled by load_preferences()")
 
-	S["version"] << savefile_version
+	savefile.set_entry("version", savefile_version)
 
 	//general preferences
-	S["ooccolor"] << ooccolor
-	S["lastchangelog"] << lastchangelog
-	S["UI_style"] << UI_style
-	S["UI_style_color"] << UI_style_color
-	S["UI_style_alpha"] << UI_style_alpha
-	S["tgui_say"] << tgui_say
-	S["item_animation_pref_level"] << item_animation_pref_level
-	S["pain_overlay_pref_level"] << pain_overlay_pref_level
-	S["flash_overlay_pref"] << flash_overlay_pref
-	S["crit_overlay_pref"] << crit_overlay_pref
-	S["allow_flashing_lights_pref"] << allow_flashing_lights_pref
-	S["stylesheet"] << stylesheet
-	S["be_special"] << be_special
-	S["default_slot"] << default_slot
-	S["toggles_chat"] << toggles_chat
-	S["chat_display_preferences"] << chat_display_preferences
-	S["toggles_ghost"] << toggles_ghost
-	S["toggles_langchat"] << toggles_langchat
-	S["toggles_sound"] << toggles_sound
-	S["volume_preferences"] << volume_preferences
-	S["toggle_prefs"] << toggle_prefs
-	S["xeno_ability_click_mode"] << xeno_ability_click_mode
-	S["dual_wield_pref"] << dual_wield_pref
-	S["toggles_flashing"] << toggles_flashing
-	S["toggles_ert"] << toggles_ert
-	S["toggles_survivor"] << toggles_survivor
-	S["toggles_insert"] << toggles_insert
-	S["toggles_ert_pred"] << toggles_ert_pred
-	S["toggles_admin"] << toggles_admin
-	S["window_skin"] << window_skin
-	S["fps"] << fps
-	S["ghost_vision_pref"] << ghost_vision_pref
-	S["ghost_orbit"] << ghost_orbit
-	S["auto_observe"] << auto_observe
-	S["CMTV_toggle_optout"] << CMTV_toggle_optout
+	savefile.set_entry("ooccolor", ooccolor)
+	savefile.set_entry("lastchangelog", lastchangelog)
+	savefile.set_entry("UI_style", UI_style)
+	savefile.set_entry("UI_style_color", UI_style_color)
+	savefile.set_entry("UI_style_alpha", UI_style_alpha)
+	savefile.set_entry("tgui_say", tgui_say)
+	savefile.set_entry("item_animation_pref_level", item_animation_pref_level)
+	savefile.set_entry("pain_overlay_pref_level", pain_overlay_pref_level)
+	savefile.set_entry("flash_overlay_pref", flash_overlay_pref)
+	savefile.set_entry("crit_overlay_pref", crit_overlay_pref)
+	savefile.set_entry("allow_flashing_lights_pref", allow_flashing_lights_pref)
+	savefile.set_entry("stylesheet", stylesheet)
+	savefile.set_entry("be_special", be_special)
+	savefile.set_entry("default_slot", default_slot)
+	savefile.set_entry("toggles_chat", toggles_chat)
+	savefile.set_entry("chat_display_preferences", chat_display_preferences)
+	savefile.set_entry("toggles_ghost", toggles_ghost)
+	savefile.set_entry("toggles_langchat", toggles_langchat)
+	savefile.set_entry("toggles_sound", toggles_sound)
+	savefile.set_entry("volume_preferences", volume_preferences)
+	savefile.set_entry("toggle_prefs", toggle_prefs)
+	savefile.set_entry("xeno_ability_click_mode", xeno_ability_click_mode)
+	savefile.set_entry("dual_wield_pref", dual_wield_pref)
+	savefile.set_entry("toggles_flashing", toggles_flashing)
+	savefile.set_entry("toggles_ert", toggles_ert)
+	savefile.set_entry("toggles_survivor", toggles_survivor)
+	savefile.set_entry("toggles_insert", toggles_insert)
+	savefile.set_entry("toggles_ert_pred", toggles_ert_pred)
+	savefile.set_entry("toggles_admin", toggles_admin)
+	savefile.set_entry("window_skin", window_skin)
+	savefile.set_entry("fps", fps)
+	savefile.set_entry("ghost_vision_pref", ghost_vision_pref)
+	savefile.set_entry("ghost_orbit", ghost_orbit)
+	savefile.set_entry("auto_observe", auto_observe)
+	savefile.set_entry("CMTV_toggle_optout", CMTV_toggle_optout)
 
-	S["human_name_ban"] << human_name_ban
+	savefile.set_entry("human_name_ban", human_name_ban)
 
-	S["xeno_prefix"] << xeno_prefix
-	S["xeno_postfix"] << xeno_postfix
-	S["xeno_name_ban"] << xeno_name_ban
-	S["xeno_vision_level_pref"] << xeno_vision_level_pref
-	S["xeno_defensive_grab_pref"] << xeno_defensive_grab_pref
-	S["playtime_perks"] << playtime_perks
-	S["skip_playtime_ranks"] << skip_playtime_ranks
-	S["show_queen_name"] << show_queen_name
-	S["show_minimap_ceiling_protection"] << show_minimap_ceiling_protection
+	savefile.set_entry("xeno_prefix", xeno_prefix)
+	savefile.set_entry("xeno_postfix", xeno_postfix)
+	savefile.set_entry("xeno_name_ban", xeno_name_ban)
+	savefile.set_entry("xeno_vision_level_pref", xeno_vision_level_pref)
+	savefile.set_entry("xeno_defensive_grab_pref", xeno_defensive_grab_pref)
+	savefile.set_entry("playtime_perks", playtime_perks)
+	savefile.set_entry("skip_playtime_ranks", skip_playtime_ranks)
+	savefile.set_entry("show_queen_name", show_queen_name)
+	savefile.set_entry("show_minimap_ceiling_protection", show_minimap_ceiling_protection)
 
-	S["view_controller"] << View_MC
-	S["observer_huds"] << observer_huds
-	S["pref_special_job_options"] << pref_special_job_options
-	S["pref_job_slots"] << pref_job_slots
+	savefile.set_entry("view_controller", View_MC)
+	savefile.set_entry("observer_huds", observer_huds)
+	savefile.set_entry("pref_special_job_options", pref_special_job_options)
+	savefile.set_entry("pref_job_slots", pref_job_slots)
 
-	S["synth_name"] << synthetic_name
-	S["synth_type"] << synthetic_type
-	S["synth_specialisation"] << synth_specialisation
-	S["pred_name"] << predator_name
-	S["pred_gender"] << predator_gender
-	S["pred_age"] << predator_age
-	S["pred_use_legacy"] << predator_use_legacy
-	S["pred_use_unique"] << predator_use_unique
-	S["pred_trans_type"] << predator_translator_type
-	S["pred_invis_sound"] << predator_invisibility_sound
-	S["pred_mask_type"] << predator_mask_type
-	S["pred_accessory_type"] << predator_accessory_type
-	S["pred_armor_type"] << predator_armor_type
-	S["pred_boot_type"] << predator_boot_type
-	S["pred_mask_mat"] << predator_mask_material
-	S["pred_armor_mat"] << predator_armor_material
-	S["pred_greave_mat"] << predator_greave_material
-	S["pred_caster_mat"] << predator_caster_material
-	S["pred_bracer_mat"] << predator_bracer_material
-	S["pred_cape_color"] << predator_cape_color
-	S["pred_h_style"] << predator_h_style
-	S["pred_skin_color"] << predator_skin_color
-	S["pred_flavor_text"] << predator_flavor_text
+	savefile.set_entry("synth_name", synthetic_name)
+	savefile.set_entry("synth_type", synthetic_type)
+	savefile.set_entry("synth_specialisation", synth_specialisation)
+	savefile.set_entry("pred_name", predator_name)
+	savefile.set_entry("pred_gender", predator_gender)
+	savefile.set_entry("pred_age", predator_age)
+	savefile.set_entry("pred_use_legacy", predator_use_legacy)
+	savefile.set_entry("pred_use_unique", predator_use_unique)
+	savefile.set_entry("pred_trans_type", predator_translator_type)
+	savefile.set_entry("pred_invis_sound", predator_invisibility_sound)
+	savefile.set_entry("pred_mask_type", predator_mask_type)
+	savefile.set_entry("pred_accessory_type", predator_accessory_type)
+	savefile.set_entry("pred_armor_type", predator_armor_type)
+	savefile.set_entry("pred_boot_type", predator_boot_type)
+	savefile.set_entry("pred_mask_mat", predator_mask_material)
+	savefile.set_entry("pred_armor_mat", predator_armor_material)
+	savefile.set_entry("pred_greave_mat", predator_greave_material)
+	savefile.set_entry("pred_caster_mat", predator_caster_material)
+	savefile.set_entry("pred_bracer_mat", predator_bracer_material)
+	savefile.set_entry("pred_cape_color", predator_cape_color)
+	savefile.set_entry("pred_h_style", predator_h_style)
+	savefile.set_entry("pred_skin_color", predator_skin_color)
+	savefile.set_entry("pred_flavor_text", predator_flavor_text)
 
-	S["commander_status"] << commander_status
-	S["co_sidearm"] << commander_sidearm
-	S["co_command_path"] << co_career_path
-	S["co_affiliation"] << affiliation
-	S["yautja_status"] << yautja_status
-	S["synth_status"] << synth_status
+	savefile.set_entry("commander_status", commander_status)
+	savefile.set_entry("co_sidearm", commander_sidearm)
+	savefile.set_entry("co_command_path", co_career_path)
+	savefile.set_entry("co_affiliation", affiliation)
+	savefile.set_entry("yautja_status", yautja_status)
+	savefile.set_entry("synth_status", synth_status)
 
-	S["fax_name_uscm"] << fax_name_uscm
-	S["fax_name_pvst"] << fax_name_pvst
-	S["fax_name_wy"] << fax_name_wy
-	S["fax_name_upp"] << fax_name_upp
-	S["fax_name_twe"] << fax_name_twe
-	S["fax_name_cmb"] << fax_name_cmb
-	S["fax_name_press"] << fax_name_press
-	S["fax_name_clf"] << fax_name_clf
+	savefile.set_entry("fax_name_uscm", fax_name_uscm)
+	savefile.set_entry("fax_name_pvst", fax_name_pvst)
+	savefile.set_entry("fax_name_wy", fax_name_wy)
+	savefile.set_entry("fax_name_upp", fax_name_upp)
+	savefile.set_entry("fax_name_twe", fax_name_twe)
+	savefile.set_entry("fax_name_cmb", fax_name_cmb)
+	savefile.set_entry("fax_name_press", fax_name_press)
+	savefile.set_entry("fax_name_clf", fax_name_clf)
 
-	S["ff_log_color"] << ff_log_color
-	S["ffd_log_color"] << ffd_log_color
+	savefile.set_entry("ff_log_color", ff_log_color)
+	savefile.set_entry("ffd_log_color", ffd_log_color)
 
-	S["lang_chat_disabled"] << lang_chat_disabled
-	S["show_permission_errors"] << show_permission_errors
-	S["key_bindings"] << key_bindings
-	S["hotkeys"] << hotkeys
+	savefile.set_entry("lang_chat_disabled", lang_chat_disabled)
+	savefile.set_entry("show_permission_errors", show_permission_errors)
+	savefile.set_entry("key_bindings", key_bindings)
+	savefile.set_entry("hotkeys", hotkeys)
 
-	S["autofit_viewport"] << auto_fit_viewport
-	S["adaptive_zoom"] << adaptive_zoom
+	savefile.set_entry("autofit_viewport", auto_fit_viewport)
+	savefile.set_entry("adaptive_zoom", adaptive_zoom)
 
-	S["hear_vox"] << hear_vox
+	savefile.set_entry("hear_vox", hear_vox)
 
-	S["hide_statusbar"] << hide_statusbar
-	S["no_radials_preference"] << no_radials_preference
-	S["no_radial_labels_preference"] << no_radial_labels_preference
-	S["custom_cursors"] << custom_cursors
+	savefile.set_entry("hide_statusbar", hide_statusbar)
+	savefile.set_entry("no_radials_preference", no_radials_preference)
+	savefile.set_entry("no_radial_labels_preference", no_radial_labels_preference)
+	savefile.set_entry("custom_cursors", custom_cursors)
 
-	S["completed_tutorials"] << tutorial_list_to_savestring()
+	savefile.set_entry("completed_tutorials", tutorial_list_to_savestring())
 
-	S["lastchangelog"] << lastchangelog
+	savefile.set_entry("lastchangelog", lastchangelog)
 
-	S["job_loadout"] << save_loadout(loadout)
-	S["job_loadout_names"] << loadout_slot_names
+	savefile.set_entry("job_loadout", save_loadout(loadout))
+	savefile.set_entry("job_loadout_names", loadout_slot_names)
 
-	S["tgui_fancy"] << tgui_fancy
-	S["tgui_lock"] << tgui_lock
-	S["window_scale"] << window_scale
+	savefile.set_entry("tgui_fancy", tgui_fancy)
+	savefile.set_entry("tgui_lock", tgui_lock)
+	savefile.set_entry("window_scale", window_scale)
 
-	S["show_cooldown_messages"] << show_cooldown_messages
+	savefile.set_entry("show_cooldown_messages", show_cooldown_messages)
 
-	S["chem_presets"] << chem_presets
+	savefile.set_entry("chem_presets", chem_presets)
 
-	S["custom_keybinds"] << custom_keybinds
+	savefile.set_entry("custom_keybinds", custom_keybinds)
 
+	savefile.save()
 	return TRUE
 
 /datum/preferences/proc/load_character(slot)
-	if(!path)
-		return 0
-	if(!fexists(path))
-		return 0
-	var/savefile/S = new /savefile(path)
-	if(!S)
-		return 0
-	S.cd = "/"
 	if(!slot)
 		slot = default_slot
 	slot = sanitize_integer(slot, 1, MAX_SAVE_SLOTS, initial(default_slot))
 	if(slot != default_slot)
 		default_slot = slot
-		S["default_slot"] << slot
-	S.cd = "/character[slot]"
+		savefile.set_entry("default_slot", slot)
 
-	//Character
-	S["OOC_Notes"] >> metadata
-	S["real_name"] >> real_name
-	S["name_is_always_random"] >> be_random_name
-	S["body_is_always_random"] >> be_random_body
-	S["gender"] >> gender
-	S["age"] >> age
-	S["ethnicity"] >> ethnicity
-	S["skin_color"] >> skin_color
-	S["body_type"] >> body_type
-	S["body_size"] >> body_size
-	S["body_presentation"] >> body_presentation
-	S["language"] >> language
-	S["spawnpoint"] >> spawnpoint
+	var/tree_key = "character[slot]"
+	var/list/save_data = savefile.get_entry(tree_key)
+	if(islist(save_data))
+		//Character
+		metadata = save_data["OOC_Notes"]
+		real_name = save_data["real_name"]
+		be_random_name = save_data["name_is_always_random"]
+		be_random_body = save_data["body_is_always_random"]
+		gender = save_data["gender"]
+		age = save_data["age"]
+		ethnicity = save_data["ethnicity"]
+		skin_color = save_data["skin_color"]
+		body_type = save_data["body_type"]
+		body_size = save_data["body_size"]
+		body_presentation = save_data["body_presentation"]
+		language = save_data["language"]
+		spawnpoint = save_data["spawnpoint"]
 
-	//colors to be consolidated into hex strings (requires some work with dna code)
-	S["hair_red"] >> r_hair
-	S["hair_green"] >> g_hair
-	S["hair_blue"] >> b_hair
-	S["grad_red"] >> r_gradient
-	S["grad_green"] >> g_gradient
-	S["grad_blue"] >> b_gradient
-	S["facial_red"] >> r_facial
-	S["facial_green"] >> g_facial
-	S["facial_blue"] >> b_facial
-	S["skin_red"] >> r_skin
-	S["skin_green"] >> g_skin
-	S["skin_blue"] >> b_skin
-	S["hair_style_name"] >> h_style
-	S["hair_gradient_name"] >> grad_style
-	S["facial_style_name"] >> f_style
-	S["eyes_red"] >> r_eyes
-	S["eyes_green"] >> g_eyes
-	S["eyes_blue"] >> b_eyes
-	S["underwear"] >> underwear
-	S["undershirt"] >> undershirt
-	S["backbag"] >> backbag
-	//S["blood_type"] >> blood_type
+		//colors to be consolidated into hex strings (requires some work with dna code)
+		r_hair = save_data["hair_red"]
+		g_hair = save_data["hair_green"]
+		b_hair = save_data["hair_blue"]
+		r_gradient = save_data["grad_red"]
+		g_gradient = save_data["grad_green"]
+		b_gradient = save_data["grad_blue"]
+		r_facial = save_data["facial_red"]
+		g_facial = save_data["facial_green"]
+		b_facial = save_data["facial_blue"]
+		r_skin = save_data["skin_red"]
+		g_skin = save_data["skin_green"]
+		b_skin = save_data["skin_blue"]
+		h_style = save_data["hair_style_name"]
+		grad_style = save_data["hair_gradient_name"]
+		f_style = save_data["facial_style_name"]
+		r_eyes = save_data["eyes_red"]
+		g_eyes = save_data["eyes_green"]
+		b_eyes = save_data["eyes_blue"]
+		underwear = save_data["underwear"]
+		undershirt = save_data["undershirt"]
+		backbag = save_data["backbag"]
+		//blood_type = save_data["blood_type"]
 
-	//Jobs
-	S["alternate_option"] >> alternate_option
-	S["job_preference_list"] >> job_preference_list
+		//Jobs
+		alternate_option = save_data["alternate_option"]
+		job_preference_list = save_data["job_preference_list"]
 
-	//Flavour Text
-	S["flavor_texts_general"] >> flavor_texts["general"]
-	S["flavor_texts_head"] >> flavor_texts["head"]
-	S["flavor_texts_face"] >> flavor_texts["face"]
-	S["flavor_texts_eyes"] >> flavor_texts["eyes"]
-	S["flavor_texts_torso"] >> flavor_texts["torso"]
-	S["flavor_texts_arms"] >> flavor_texts["arms"]
-	S["flavor_texts_hands"] >> flavor_texts["hands"]
-	S["flavor_texts_legs"] >> flavor_texts["legs"]
-	S["flavor_texts_feet"] >> flavor_texts["feet"]
-	S["flavor_texts_helmet"] >> flavor_texts["helmet"]
-	S["flavor_texts_armor"] >> flavor_texts["armor"]
+		//Flavour Text
+		flavor_texts["general"] = save_data["flavor_texts_general"]
+		flavor_texts["head"] = save_data["flavor_texts_head"]
+		flavor_texts["face"] = save_data["flavor_texts_face"]
+		flavor_texts["eyes"] = save_data["flavor_texts_eyes"]
+		flavor_texts["torso"] = save_data["flavor_texts_torso"]
+		flavor_texts["arms"] = save_data["flavor_texts_arms"]
+		flavor_texts["hands"] = save_data["flavor_texts_hands"]
+		flavor_texts["legs"] = save_data["flavor_texts_legs"]
+		flavor_texts["feet"] = save_data["flavor_texts_feet"]
+		flavor_texts["helmet"] = save_data["flavor_texts_helmet"]
+		flavor_texts["armor"] = save_data["flavor_texts_armor"]
 
+		//Miscellaneous
+		med_record = save_data["med_record"]
+		sec_record = save_data["sec_record"]
+		gen_record = save_data["gen_record"]
+		organ_data = save_data["organ_data"]
+		gear = save_data["gear"]
+		origin = save_data["origin"]
+		faction = save_data["faction"]
+		religion = save_data["religion"]
+		traits = save_data["traits"]
 
-	//Miscellaneous
-	S["med_record"] >> med_record
-	S["sec_record"] >> sec_record
-	S["gen_record"] >> gen_record
-	S["organ_data"] >> organ_data
-	S["gear"] >> gear
-	S["origin"] >> origin
-	S["faction"] >> faction
-	S["religion"] >> religion
-	S["traits"] >> traits
+		preferred_squad = save_data["preferred_squad"]
+		preferred_spec = save_data["preferred_spec"]
+		preferred_armor = save_data["preferred_armor"]
+		night_vision_preference = save_data["night_vision_preference"]
+		weyland_yutani_relation = save_data["weyland_yutani_relation"]
+		//skin_style = save_data["skin_style"]
 
-	S["preferred_squad"] >> preferred_squad
-	S["preferred_spec"] >> preferred_spec
-	S["preferred_armor"] >> preferred_armor
-	S["night_vision_preference"] >> night_vision_preference
-	S["weyland_yutani_relation"] >> weyland_yutani_relation
-	//S["skin_style"] >> skin_style
-
-	S["uplinklocation"] >> uplinklocation
-	S["exploit_record"] >> exploit_record
+		uplinklocation = save_data["uplinklocation"]
+		exploit_record = save_data["exploit_record"]
 
 	//Sanitize
 	metadata = sanitize_text(metadata, initial(metadata))
@@ -874,12 +868,12 @@
 	var/datum/sprite_accessory/HS = GLOB.hair_styles_list[h_style]
 	if(!HS.selectable) // delete this
 		h_style = random_hair_style(gender, species)
-		save_character()
+		//save_character() // TODO: Handle dirty?
 	f_style = sanitize_inlist(f_style, GLOB.facial_hair_styles_list, initial(f_style))
 	var/datum/sprite_accessory/FS = GLOB.facial_hair_styles_list[f_style]
 	if(!FS.selectable) // delete this
 		f_style = random_facial_hair_style(gender, species)
-		save_character()
+		//save_character() // TODO: Handle dirty?
 	r_eyes = sanitize_integer(r_eyes, 0, 255, initial(r_eyes))
 	g_eyes = sanitize_integer(g_eyes, 0, 255, initial(g_eyes))
 	b_eyes = sanitize_integer(b_eyes, 0, 255, initial(b_eyes))
@@ -910,100 +904,102 @@
 
 	if(!origin)
 		origin = ORIGIN_USCM
-	if(!faction)  faction =  "None"
+	if(!faction)
+		faction = "None"
 	if(!religion)
 		religion = RELIGION_AGNOSTICISM
 	if(!preferred_squad)
 		preferred_squad = "None"
 	preferred_spec = sanitize_list(preferred_spec, allow=GLOB.specialist_set_name_dict)
 
-	return 1
+	return TRUE
 
 /datum/preferences/proc/save_character()
 	if(!path)
-		return 0
-	var/savefile/S = new /savefile(path)
-	if(!S)
-		return 0
-	S.cd = "/character[default_slot]"
+		return FALSE
+
+	var/tree_key = "character[default_slot]"
+	if(!savefile.has_entry(tree_key))
+		savefile.set_entry(tree_key, list())
+	var/save_data = savefile.get_entry(tree_key)
 
 	//Character
-	S["OOC_Notes"] << metadata
-	S["real_name"] << real_name
-	S["name_is_always_random"] << be_random_name
-	S["body_is_always_random"] << be_random_body
-	S["gender"] << gender
-	S["age"] << age
-	S["ethnicity"] << ethnicity
-	S["skin_color"] << skin_color
-	S["body_type"] << body_type
-	S["body_size"] << body_size
-	S["body_presentation"] << body_presentation
-	S["language"] << language
-	S["hair_red"] << r_hair
-	S["hair_green"] << g_hair
-	S["hair_blue"] << b_hair
-	S["grad_red"] << r_gradient
-	S["grad_green"] << g_gradient
-	S["grad_blue"] << b_gradient
-	S["facial_red"] << r_facial
-	S["facial_green"] << g_facial
-	S["facial_blue"] << b_facial
-	S["skin_red"] << r_skin
-	S["skin_green"] << g_skin
-	S["skin_blue"] << b_skin
-	S["hair_style_name"] << h_style
-	S["hair_gradient_name"] << grad_style
-	S["facial_style_name"] << f_style
-	S["eyes_red"] << r_eyes
-	S["eyes_green"] << g_eyes
-	S["eyes_blue"] << b_eyes
-	S["underwear"] << underwear
-	S["undershirt"] << undershirt
-	S["backbag"] << backbag
-	//S["blood_type"] << blood_type
-	S["spawnpoint"] << spawnpoint
+	save_data["OOC_Notes"] = metadata
+	save_data["real_name"] = real_name
+	save_data["name_is_always_random"] = be_random_name
+	save_data["body_is_always_random"] = be_random_body
+	save_data["gender"] = gender
+	save_data["age"] = age
+	save_data["ethnicity"] = ethnicity
+	save_data["skin_color"] = skin_color
+	save_data["body_type"] = body_type
+	save_data["body_size"] = body_size
+	save_data["body_presentation"] = body_presentation
+	save_data["language"] = language
+	save_data["hair_red"] = r_hair
+	save_data["hair_green"] = g_hair
+	save_data["hair_blue"] = b_hair
+	save_data["grad_red"] = r_gradient
+	save_data["grad_green"] = g_gradient
+	save_data["grad_blue"] = b_gradient
+	save_data["facial_red"] = r_facial
+	save_data["facial_green"] = g_facial
+	save_data["facial_blue"] = b_facial
+	save_data["skin_red"] = r_skin
+	save_data["skin_green"] = g_skin
+	save_data["skin_blue"] = b_skin
+	save_data["hair_style_name"] = h_style
+	save_data["hair_gradient_name"] = grad_style
+	save_data["facial_style_name"] = f_style
+	save_data["eyes_red"] = r_eyes
+	save_data["eyes_green"] = g_eyes
+	save_data["eyes_blue"] = b_eyes
+	save_data["underwear"] = underwear
+	save_data["undershirt"] = undershirt
+	save_data["backbag"] = backbag
+	//save_data["blood_type"] = blood_type
+	save_data["spawnpoint"] = spawnpoint
 
 	//Jobs
-	S["alternate_option"] << alternate_option
-	S["job_preference_list"] << job_preference_list
+	save_data["alternate_option"] = alternate_option
+	save_data["job_preference_list"] = job_preference_list
 
 	//Flavour Text
-	S["flavor_texts_general"] << flavor_texts["general"]
-	S["flavor_texts_head"] << flavor_texts["head"]
-	S["flavor_texts_face"] << flavor_texts["face"]
-	S["flavor_texts_eyes"] << flavor_texts["eyes"]
-	S["flavor_texts_torso"] << flavor_texts["torso"]
-	S["flavor_texts_arms"] << flavor_texts["arms"]
-	S["flavor_texts_hands"] << flavor_texts["hands"]
-	S["flavor_texts_legs"] << flavor_texts["legs"]
-	S["flavor_texts_feet"] << flavor_texts["feet"]
-	S["flavor_texts_helmet"] << flavor_texts["helmet"]
-	S["flavor_texts_armor"] << flavor_texts["armor"]
+	save_data["flavor_texts_general"] = flavor_texts["general"]
+	save_data["flavor_texts_head"] = flavor_texts["head"]
+	save_data["flavor_texts_face"] = flavor_texts["face"]
+	save_data["flavor_texts_eyes"] = flavor_texts["eyes"]
+	save_data["flavor_texts_torso"] = flavor_texts["torso"]
+	save_data["flavor_texts_arms"] = flavor_texts["arms"]
+	save_data["flavor_texts_hands"] = flavor_texts["hands"]
+	save_data["flavor_texts_legs"] = flavor_texts["legs"]
+	save_data["flavor_texts_feet"] = flavor_texts["feet"]
+	save_data["flavor_texts_helmet"] = flavor_texts["helmet"]
+	save_data["flavor_texts_armor"] = flavor_texts["armor"]
 
 	//Miscellaneous
-	S["med_record"] << med_record
-	S["sec_record"] << sec_record
-	S["gen_record"] << gen_record
-	S["organ_data"] << organ_data
-	S["gear"] << save_gear(gear)
-	S["job_loadout"] << save_loadout(loadout)
-	S["origin"] << origin
-	S["faction"] << faction
-	S["religion"] << religion
-	S["traits"] << traits
+	save_data["med_record"] = med_record
+	save_data["sec_record"] = sec_record
+	save_data["gen_record"] = gen_record
+	save_data["organ_data"] = organ_data
+	save_data["gear"] = save_gear(gear)
+	save_data["job_loadout"] = save_loadout(loadout)
+	save_data["origin"] = origin
+	save_data["faction"] = faction
+	save_data["religion"] = religion
+	save_data["traits"] = traits
 
-	S["weyland_yutani_relation"] << weyland_yutani_relation
-	S["preferred_squad"] << preferred_squad
-	S["preferred_spec"] << preferred_spec
-	S["preferred_armor"] << preferred_armor
-	S["night_vision_preference"] << night_vision_preference
-	//S["skin_style"] << skin_style
+	save_data["weyland_yutani_relation"] = weyland_yutani_relation
+	save_data["preferred_squad"] = preferred_squad
+	save_data["preferred_spec"] = preferred_spec
+	save_data["preferred_armor"] = preferred_armor
+	save_data["night_vision_preference"] = night_vision_preference
+	//save_data["skin_style"] = skin_style
 
-	S["uplinklocation"] << uplinklocation
-	S["exploit_record"] << exploit_record
+	save_data["uplinklocation"] = uplinklocation
+	save_data["exploit_record"] = exploit_record
 
-	return 1
+	return TRUE
 
 /// checks through keybindings for outdated unbound keys and updates them
 /datum/preferences/proc/check_keybindings()
@@ -1079,6 +1075,17 @@
 		custom_key.when_synth = keybind["when_synth"]
 
 		key_to_custom_keybind[keybind["keybinding"]] = custom_key
+
+/datum/preferences/proc/try_savefile_type_migration()
+	load_path(owner.ckey, "preferences.sav") // old save file
+	var/old_path = path
+	load_path(owner.ckey)
+	if(!fexists(old_path))
+		return
+	var/datum/byond_save_tree/byond_save_tree = new(path)
+	byond_save_tree.import_byond_savefile(new /savefile(old_path))
+	byond_save_tree.save()
+	return TRUE
 
 #undef SAVEFILE_VERSION_MAX
 #undef SAVEFILE_VERSION_MIN

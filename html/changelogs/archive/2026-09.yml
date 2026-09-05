@@ -58,3 +58,6 @@
       nodes and glands by placing them on the floor and then placing them on weeds.
       These glands produce chemicals which can then be extracted, which are necessary
       to research the more lategame chemicals.
+2026-09-05:
+  TheDonkified:
+  - refactor: Replace throwing and rebounding datum-level vars with traits

@@ -5,7 +5,7 @@
 	/// The message that will be sent when docking is initiated
 	var/docking_message = "Attention, USCM vessel. We are launching umbilical cords and deploying a squad to investigate the nature of your distress."
 	/// The message that will be sent when the station undocks the ship
-	var/undocking_message = "Boarding operations have failed. This station will make no further recovery attempts. (You should not be seeing this)"
+	var/undocking_message = "Boarding operations have failed. This station will make no further recovery attempts."
 
 	/// The allies that will be spawned by arriving at this station (only one entry chosen randomly per call)
 	var/list/allies

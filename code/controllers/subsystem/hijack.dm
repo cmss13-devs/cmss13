@@ -158,7 +158,13 @@ SUBSYSTEM_DEF(hijack)
 	return ..()
 
 /datum/controller/subsystem/hijack/fire(resumed = FALSE)
-	if(!SSticker?.mode?.is_in_endgame || SSticker.current_state != GAME_STATE_PLAYING)
+	if(!SSticker?.mode?.is_in_endgame)
+		return
+
+	if(SSticker.current_state == GAME_STATE_FINISHED)
+		if(hijack_status == HIJACK_OBJECTIVES_DOCKED && SSticker.mode.round_finished == MODE_INFESTATION_X_MAJOR)
+			announce_station_undocking()
+		can_fire = FALSE
 		return
 
 	if(hijack_status < HIJACK_OBJECTIVES_STARTED)
@@ -1216,4 +1222,4 @@ SUBSYSTEM_DEF(hijack)
 /// Announces that the station is abandoning the ship after it has been overrun
 /datum/controller/subsystem/hijack/proc/announce_station_undocking()
 	shipwide_ai_announcement(spaceport.undocking_message, spaceport.name, sound('sound/misc/notice2.ogg'))
-	xeno_announcement(SPAN_XENOANNOUNCE("My children. The hosts beyond have severed their passage to this metal hive. No more will come to oppose you."), "everything", SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
+	xeno_announcement(SPAN_XENOANNOUNCE("My children. The hosts beyond have severed their passage to this metal hive. No more will come to oppose you."), "everything", SPAN_ANNOUNCEMENT_HEADER_BLUE("Queen Mother Psychic Directive"))

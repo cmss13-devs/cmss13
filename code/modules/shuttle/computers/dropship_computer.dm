@@ -289,8 +289,6 @@
 		shuttleId = pick(alternatives)["id"]
 
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
-	var/hivenumber = XENO_HIVE_NORMAL
-	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	// If the attacking xeno isn't the queen, king or predalien.
 	if(!IS_XENO_DROPSHIP_CAPABLE(xeno))
 	// If the 'about to launch' alarm is playing, a xeno can whack the computer to stop it.

@@ -442,7 +442,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi'
 	icon_state = "m41amk1" //Placeholder.
 	item_state = "m41amk1" //Placeholder.
-	fire_sound = "gun_pulse"
+	fire_sound = "gun_pulse_classic"
 	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
 	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1
@@ -2745,7 +2745,7 @@
 			update_icon()
 		else if (!(flags_gun_features & GUN_BURST_FIRING) || !in_chamber) // Magazine will only unload once burstfire is over
 			var/drop_to_ground = TRUE
-			if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND))
+			if(user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND)
 				drop_to_ground = FALSE
 				unwield(user)
 				user.swap_hand()

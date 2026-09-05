@@ -24,7 +24,6 @@
 
 /datum/xeno_strain/healer/apply_strain(mob/living/carbon/xenomorph/drone/drone)
 	drone.phero_modifier += XENO_PHERO_MOD_LARGE
-	drone.plasma_types += PLASMA_PHEROMONE
 	drone.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
 	drone.tackle_chance_modifier -= 5
 

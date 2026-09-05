@@ -1,0 +1,4 @@
+author: "TheDonkified"
+delete-after: True
+changes:
+  - refactor: "Replace throwing and rebounding datum-level vars with traits"

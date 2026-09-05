@@ -1,7 +1,7 @@
 /datum/tech/arc
 	name = "M540-B Armored Recon Carrier"
 	desc = "Purchase an M540-B Armored Recon Carrier, specialized in assisting groundside command. Able to be driven by Staff Officers, Executive Officers, and Commanding Officers."
-	icon_state = "upgrade"
+	icon_state = "arc"
 
 	required_points = 5
 

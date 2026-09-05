@@ -1566,9 +1566,10 @@
 					return
 				for(var/i = 1 to handfuls)
 					if(length(contents) < storage_slots - 1)
-						var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
+						var/datum/ammo/ammo_listing = GLOB.ammo_list[ammo_dumping.default_ammo]
+						var/obj/item/ammo_magazine/handful/new_handful = new ammo_listing.handful_type()
 						var/transferred_handfuls = min(ammo_dumping.current_rounds, amount_to_dump)
-						new_handful.generate_handful(ammo_dumping.default_ammo, ammo_dumping.caliber, amount_to_dump, transferred_handfuls, ammo_dumping.gun_type)
+						new_handful.generate_handful(ammo_dumping.default_ammo, ammo_dumping.caliber, transferred_handfuls, ammo_dumping.gun_type)
 						ammo_dumping.current_rounds -= transferred_handfuls
 						handle_item_insertion(new_handful, TRUE,user)
 						update_icon(-transferred_handfuls)
@@ -1852,6 +1853,75 @@
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/smg/m39/ap(src)
 
+/obj/item/storage/belt/gun/combat_rig
+	name = "\improper M276 pattern combat sidearm rig"
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version has a holster assembly that allows one to carry the most common pistols. It also contains side pouches that can store most pistol and rifle magazines."
+	icon_state = "mag_holster"
+	storage_slots = 6 // 3 rifle mags + 2 pistol mags + 1 sidearm. Handfuls aren't counted towards limit but occupy slot.
+	holster_slots = list(
+		"1" = list(
+			"icon_x" = 5,
+			"icon_y" = -2))
+	can_hold = list(
+		//sidearms,
+		/obj/item/weapon/gun/flare,
+		/obj/item/weapon/gun/pistol,
+		/obj/item/weapon/gun/revolver,
+		//sidearm ammo,
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/revolver,
+		//longarm ammo,
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/smg,
+		/obj/item/ammo_magazine/sniper,
+		//Handfuls,
+		/obj/item/ammo_magazine/handful,
+	)
+	flags_atom = FPRINT // has gamemode skin
+
+	var/rifle_mags = 0
+	var/pistol_mags = 0
+
+/obj/item/storage/belt/gun/combat_rig/Destroy()
+	rifle_mags = 0
+	pistol_mags = 0
+	. = ..()
+
+/obj/item/storage/belt/gun/combat_rig/can_be_inserted(obj/item/inserted_item, mob/user, stop_messages = FALSE)
+	. = ..()
+	if(!.)
+		return
+
+	if(is_type_in_list(inserted_item, GLOB.sidearm_ammo))
+		if(pistol_mags >= 2)
+			if(!stop_messages)
+				to_chat(user, SPAN_WARNING("[src] can't hold more sidearm magazines."))
+			return FALSE
+		return TRUE
+
+	if(is_type_in_list(inserted_item, GLOB.longarm_ammo))
+		if(rifle_mags >= 3)
+			if(!stop_messages)
+				to_chat(user, SPAN_WARNING("[src] can't hold more longarm magazines."))
+			return FALSE
+		return TRUE
+
+/obj/item/storage/belt/gun/combat_rig/_item_insertion(obj/item/inserted_item, prevent_warning = 0, mob/user)
+	if(is_type_in_list(inserted_item, GLOB.sidearm_ammo))
+		pistol_mags++
+	else if(is_type_in_list(inserted_item, GLOB.longarm_ammo))
+		rifle_mags++
+
+	..()
+
+/obj/item/storage/belt/gun/combat_rig/_item_removal(obj/item/inserted_item, atom/new_location)
+	if(is_type_in_list(inserted_item, GLOB.sidearm_ammo))
+		pistol_mags = max(pistol_mags - 1, 0)
+	else if(is_type_in_list(inserted_item, GLOB.longarm_ammo))
+		rifle_mags = max(rifle_mags - 1, 0)
+
+	..()
+
 /obj/item/storage/belt/gun/m10
 	name = "\improper M276 pattern M10 holster rig"
 	desc = "Special issue variant of the M276 - designed exclusively to securely hold an M10 Auto Pistol and three spare magazines, allowing quick access in close-quarters situations. Ideal for defending against boarding threats, this belt supports rapid deployment of high-rate sidearms while maintaining stability in zero-G environments."
@@ -2102,6 +2172,7 @@
 		/obj/item/weapon/gun/revolver/mateba,
 		/obj/item/ammo_magazine/revolver/mateba/highimpact,
 		/obj/item/ammo_magazine/revolver/mateba,
+		/obj/item/ammo_magazine/handful/revolver,
 	)
 	holster_slots = list(
 		"1" = list(
@@ -2356,6 +2427,11 @@
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/t73/leader())
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/t73_impact(src)
+
+/obj/item/storage/belt/gun/type47/t73/leader/standard/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/t73/leader/standard())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/t73(src)
 
 /obj/item/storage/belt/gun/type47/revolver/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/upp())

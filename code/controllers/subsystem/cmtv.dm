@@ -291,7 +291,7 @@ SUBSYSTEM_DEF(cmtv)
 		return
 
 	RegisterSignal(future_perspective_mob, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_STAT_SET_DEAD, COMSIG_MOB_NESTED, COMSIG_MOB_LOGOUT, COMSIG_MOB_DEATH), PROC_REF(handle_reset_signal))
-	RegisterSignal(future_perspective_mob, COMSIG_MOVABLE_ENTERED_OBJ, PROC_REF(handle_reset_signal_immediate))
+	RegisterSignal(future_perspective_mob, COMSIG_MOVABLE_MOVED, PROC_REF(handle_reset_signal_immediate))
 	RegisterSignal(future_perspective_mob, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(handle_z_change))
 	RegisterSignal(future_perspective_mob.client, COMSIG_CLIENT_EYE_CHANGED, PROC_REF(handle_eye_change))
 	RegisterSignal(future_perspective_mob.client, COMSIG_CLIENT_PIXEL_X_CHANGED, PROC_REF(handle_pixel_x_change))
@@ -329,7 +329,7 @@ SUBSYSTEM_DEF(cmtv)
 		COMSIG_MOB_LOGOUT,
 		COMSIG_MOB_DEATH,
 		COMSIG_MOVABLE_Z_CHANGED,
-		COMSIG_MOVABLE_ENTERED_OBJ,
+		COMSIG_MOVABLE_MOVED,
 	))
 
 	if(current_perspective.client)
@@ -371,10 +371,10 @@ SUBSYSTEM_DEF(cmtv)
 	reset_perspective("Current perspective is no longer eligible (signal)")
 
 /// Reset handler that immediately switches perspective to something generic while we wait
-/datum/controller/subsystem/cmtv/proc/handle_reset_signal_immediate()
+/datum/controller/subsystem/cmtv/proc/handle_reset_signal_immediate(atom/movable/source, oldloc, direct)
 	SIGNAL_HANDLER
-
-	reset_perspective("Current perspective is no longer eligible (instant signal)", instant = TRUE)
+	if(source.loc != oldloc && isobj(source.loc))
+		reset_perspective("Current perspective is no longer eligible (instant signal)", instant = TRUE)
 
 /datum/controller/subsystem/cmtv/proc/handle_eye_change(client/source_client, new_eye)
 	SIGNAL_HANDLER

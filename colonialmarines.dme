@@ -560,6 +560,7 @@
 #include "code\datums\elements\bullet_trait\incendiary.dm"
 #include "code\datums\elements\bullet_trait\knockback_disabled.dm"
 #include "code\datums\elements\bullet_trait\penetrating\heavy.dm"
+#include "code\datums\elements\bullet_trait\penetrating\mob_penetrating.dm"
 #include "code\datums\elements\bullet_trait\penetrating\penetrating.dm"
 #include "code\datums\elements\bullet_trait\penetrating\weak.dm"
 #include "code\datums\elements\effects\copy_appearance.dm"

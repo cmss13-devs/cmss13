@@ -205,6 +205,21 @@
 	max_range = 8
 	spit_windup = 0.8 SECONDS
 	hits_lying_mobs = TRUE
+	var/penetrating_trait = /datum/element/bullet_trait_penetrating/weak/mob_penetrating
+
+/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating/weak/mob_penetrating)
+	))
+/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/two_penetrations
+	penetrating_trait = /datum/element/bullet_trait_penetrating/weak/mob_penetrating/two_penetrations
+	penetration = 15
+
+/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/three_penetrations
+	penetration = 20
+	penetrating_trait = /datum/element/bullet_trait_penetrating/weak/mob_penetrating/three_penetrations
+
 
 /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/on_hit_mob(mob/target_mob, obj/projectile/projectile)
 	. = ..()
@@ -244,18 +259,31 @@
 	spit_windup = 1.2 SECONDS
 	shell_speed = AMMO_SPEED_TIER_2
 	flags_ammo_behavior = AMMO_HITS_TARGET_TURF|AMMO_ACIDIC
-	max_range = 6
+	max_range = 5
+	shrapnel_type = /datum/ammo/xeno/acid/dissolver_spread
 	var/direct_stun = 1
-	///indirect spread of acid is cross either either x or +
-	var/list/indirect_spreads = list(list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST), list(NORTH, WEST, EAST, SOUTH))
-	///direct hit spreads acid in the whole o around the hit
-	var/list/direct_spread = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
+	var/dispersion_angle = 40
+	var/shrapnel_count = 4
 
 
+/datum/ammo/xeno/acid/dissolver_spread
+	name = "Small acid blob"
+	damage = 10
+	max_range = 3
+	var/direct_stun = 1
+
+/datum/ammo/xeno/acid/dissolver_spread/on_hit_mob(mob/target_mob, obj/projectile/projectile)
+	if(!istype(target_mob,/mob/living/carbon/human))
+		return
+	var/mob/living/carbon/human/human = target_mob
+	var/datum/effects/acid/acid_effect = locate() in target_mob.effects_list
+	if(acid_effect)
+		human.KnockDown(direct_stun)
+		acid_effect.enhance_acid()
 
 /datum/ammo/xeno/acid/dissolver_acid_blob/on_hit_mob(mob/target_mob, obj/projectile/projectile)
 	. = ..()
-	spread_acid(target_mob.loc, direct_spread)
+	spread_acid(target_mob.loc, projectile)
 	if(!istype(target_mob,/mob/living/carbon/human))
 		return
 
@@ -269,28 +297,22 @@
 
 /datum/ammo/xeno/acid/dissolver_acid_blob/on_hit_obj(obj/target_object, obj/projectile/proj_hit)
 	. = ..()
-	spread_acid(target_object.loc, pick(indirect_spreads), proj_hit.firer)
+	spread_acid(target_object.loc, proj_hit)
 
 /datum/ammo/xeno/acid/dissolver_acid_blob/on_hit_turf(turf/target_turf, obj/projectile/projectile)
 	. = ..()
 	if(istype(target_turf, /turf/closed))
 		return
-	spread_acid(target_turf, pick(indirect_spreads), projectile.firer)
+	spread_acid(target_turf, projectile)
 
 /datum/ammo/xeno/acid/dissolver_acid_blob/do_at_max_range(obj/projectile/projectile)
 	. = ..()
 	if(istype(projectile.loc, /turf/closed))
 		return
-	spread_acid(projectile.loc, pick(indirect_spreads), projectile.firer)
+	spread_acid(projectile.loc, projectile)
 
-/datum/ammo/xeno/acid/dissolver_acid_blob/proc/spread_acid(location, list/directions, mob/living/carbon/xenomorph/firer)
-	new/obj/effect/xenomorph/spray/no_stun/dissolver(location)
-	var/turf/spread_location
-	for(var/direction in directions)
-		spread_location = get_step(location, direction)
-		if(istype(spread_location,/turf/closed))
-			continue
-		new/obj/effect/xenomorph/spray/no_stun/dissolver(spread_location, create_cause_data(src), firer.hive.hivenumber)
+/datum/ammo/xeno/acid/dissolver_acid_blob/proc/spread_acid(location, obj/projectile/proj_hit)
+	create_shrapnel(location, shrapnel_count, proj_hit.dir , dispersion_angle ,shrapnel_type, create_cause_data(src), FALSE, 100)
 
 /datum/ammo/xeno/acid/praetorian
 	name = "acid splash"

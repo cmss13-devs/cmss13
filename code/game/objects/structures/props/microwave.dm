@@ -7,3 +7,9 @@
 	density = TRUE
 	anchored = TRUE
 	wrenchable = TRUE
+
+/obj/structure/machinery/microwave/yautja
+	name = "microwave"
+	desc = "mw0"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	icon_state = "mwb"

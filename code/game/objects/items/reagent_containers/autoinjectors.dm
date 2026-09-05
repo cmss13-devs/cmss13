@@ -347,7 +347,7 @@
 	maptext_label = "EzDy"
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/dexalin
-	name = "dexaline EZ autoinjector"
+	name = "dexalin EZ autoinjector"
 	chemname = "dexalin"
 	desc = "An EZ autoinjector that injects a common toxin damage-purging medicine."
 	maptext_label = "EzDx"

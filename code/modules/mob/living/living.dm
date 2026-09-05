@@ -335,7 +335,7 @@
 	if(buckled || now_pushing)
 		return
 
-	if(throwing)
+	if(HAS_TRAIT(src, TRAIT_LAUNCHED))
 		launch_impact(moving_atom)
 		return
 

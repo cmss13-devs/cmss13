@@ -146,7 +146,7 @@
 	var/turf/T = get_turf(usr)
 	if(istype(T, /turf/open))
 		var/turf/open/floor = T
-		if(!floor.allow_construction)
+		if(!floor.allow_construction || !floor.validate_deployment(TURF_DEPLOYABLE_GUN))
 			to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
 			return FALSE
 	var/fail = FALSE
@@ -250,7 +250,7 @@
 	var/turf/T = get_turf(user)
 	if(istype(T, /turf/open))
 		var/turf/open/floor = T
-		if(!floor.allow_construction)
+		if(!floor.allow_construction || !floor.validate_deployment(TURF_DEPLOYABLE_GUN))
 			to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
 			return FALSE
 	var/fail = FALSE

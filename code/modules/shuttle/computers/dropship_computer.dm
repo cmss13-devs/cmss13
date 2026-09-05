@@ -289,10 +289,11 @@
 		shuttleId = pick(alternatives)["id"]
 
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
-
-	// If the attacking xeno isn't the queen or predalien.
+	var/hivenumber = XENO_HIVE_NORMAL
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+	// If the attacking xeno isn't the queen, king or predalien.
 	if(!IS_XENO_DROPSHIP_CAPABLE(xeno))
-		// If the 'about to launch' alarm is playing, a xeno can whack the computer to stop it.
+	// If the 'about to launch' alarm is playing, a xeno can whack the computer to stop it.
 		if(dropship.playing_launch_announcement_alarm)
 			stop_playing_launch_announcement_alarm()
 			xeno.animation_attack_on(src)
@@ -302,6 +303,11 @@
 			to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but we can't comprehend their meaning."))
 			playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
 		return XENO_NONCOMBAT_ACTION
+
+	// Only the queen should have the authority to start hijack.
+	if(xeno.caste_type != XENO_CASTE_QUEEN)
+		to_chat(xeno, SPAN_XENODANGER("We shouldn't be tampering with the controls."))
+		return
 
 	if(!is_ground_level(z))
 		// "you" rather than "we" for this one since non-queen castes will have returned above.

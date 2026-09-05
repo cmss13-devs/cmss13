@@ -157,7 +157,7 @@ You must still listen to the queen.
 	. = list()
 	. += "Kills: [kills]/[max_kills]"
 
-/datum/behavior_delegate/predalien_base/on_kill_mob(mob/M)
+/datum/behavior_delegate/predalien_base/on_kill_mob(mob/target_mob)
 	. = ..()
 
 	kills = min(kills + 1, max_kills)
@@ -187,6 +187,9 @@ You must still listen to the queen.
 			if(isyautja(target_human) && yautja_glove)
 				if(HAS_TRAIT(target_human, TRAIT_CLOAKED))
 					yautja_glove.decloak(target_human, TRUE, DECLOAK_PREDALIEN)
+					target_human.add_filter("uncloack", 1, list("type" = "outline", "color" = "#32fff58c", "size" = 1.5))
+					addtimer(CALLBACK(src, PROC_REF(disable_filter), target_human), 3 SECONDS)
+					playsound(target_human.loc, 'sound/effects/pred_force_decloak.ogg', 100, 1, 10)
 
 				yautja_glove.cloak_timer = xeno_cooldown * 0.1
 		else if(isxeno(target_carbon) && xeno.can_not_harm(target_carbon))

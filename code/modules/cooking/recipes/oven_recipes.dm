@@ -1166,7 +1166,7 @@
 	product_type = /obj/item/reagent_container/food/snacks/poppypretzel
 	catalog_category = COOKBOOK_CATEGORY_BREAD
 	steps = list(
-		PCWJ_ADD_ITEM(/obj/item/seeds/poppyseed),
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/grown/poppy),
 		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/dough),
 		PCWJ_USE_OVEN(J_MED, 10 SECONDS),
 	)

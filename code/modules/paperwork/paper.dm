@@ -158,7 +158,7 @@
 			return
 		if(human_target.a_intent != INTENT_HELP)
 			user.visible_message(SPAN_WARNING("[human_target] stops [user] from showing them [src]"),
-			SPAN_WARNING("[human_target] stops you from showing them the [src]."))
+			SPAN_WARNING("[human_target] stops you from showing them [src]."))
 			COOLDOWN_START(src, show_paper_cooldown, 3 SECONDS)
 			return
 

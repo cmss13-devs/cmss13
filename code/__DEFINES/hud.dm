@@ -24,6 +24,7 @@
 #define NOTIFY_ORBIT "orbit"
 #define NOTIFY_JOIN_XENO "join_xeno"
 #define NOTIFY_USCM_TACMAP "uscm_tacmap"
+#define NOTIFY_HUMAN_HUD_ORDER "human_hud_order"
 
 #define INHERENT_HUD_MEDICAL "med"
 #define INHERENT_HUD_SECURITY "sec"

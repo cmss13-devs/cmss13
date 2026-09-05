@@ -46,6 +46,10 @@
 	. = ..()
 	access = get_access(ACCESS_LIST_MARINE_ALL)
 
+/datum/equipment_preset/uscm_co/load_status(mob/living/carbon/human/new_human, client/mob_client)
+	. = ..()
+	give_action(new_human, /datum/action/innate/message_squad)
+
 /datum/equipment_preset/uscm_co/load_race(mob/living/carbon/human/new_human, client/mob_client)
 	..()
 	ADD_TRAIT(new_human, TRAIT_EMOTE_CD_EXEMPT, TRAIT_SOURCE_JOB)

@@ -551,7 +551,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	return
 
 
-/proc/notify_ghosts(message, ghost_sound = null, enter_link = null, enter_text = null, atom/source = null, mutable_appearance/alert_overlay = null, action = NOTIFY_JUMP, flashwindow = FALSE, ignore_mapload = TRUE, ignore_key, header = null, notify_volume = 100, extra_large = FALSE) //Easy notification of ghosts.
+/proc/notify_ghosts(message, ghost_sound = null, enter_link = null, enter_text = null, atom/source = null, mutable_appearance/alert_overlay = null, action = NOTIFY_JUMP, flashwindow = FALSE, ignore_mapload = TRUE, ignore_key, header = null, notify_volume = 100, extra_large = FALSE, announcement_title, mob/living/portrait_owner, override_color_portrait) //Easy notification of ghosts.
 	if(ignore_mapload && SSatoms.initialized != INITIALIZATION_INNEW_REGULAR)	//don't notify for objects created during a map load
 		return
 	for(var/mob/dead/observer/ghost as anything in GLOB.observer_list)
@@ -560,9 +560,9 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 		var/specific_ghost_sound = ghost_sound
 		if(!(ghost.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS))
 			specific_ghost_sound = null
-		ghost.notify_ghost(message, specific_ghost_sound, enter_link, enter_text, source, alert_overlay, action, flashwindow, ignore_mapload, ignore_key, header, notify_volume, extra_large)
+		ghost.notify_ghost(message, specific_ghost_sound, enter_link, enter_text, source, alert_overlay, action, flashwindow, ignore_mapload, ignore_key, header, notify_volume, extra_large, announcement_title, portrait_owner, override_color_portrait)
 
-/mob/dead/observer/proc/notify_ghost(message, ghost_sound, enter_link, enter_text, atom/source, mutable_appearance/alert_overlay, action = NOTIFY_JUMP, flashwindow = FALSE, ignore_mapload = TRUE, ignore_key, header, notify_volume = 100, extra_large = FALSE) //Easy notification of a single ghosts.
+/mob/dead/observer/proc/notify_ghost(message, ghost_sound, enter_link, enter_text, atom/source, mutable_appearance/alert_overlay, action = NOTIFY_JUMP, flashwindow = FALSE, ignore_mapload = TRUE, ignore_key, header, notify_volume = 100, extra_large = FALSE, announcement_title, mob/living/portrait_owner, override_color_portrait) //Easy notification of a single ghosts.
 	if(ignore_mapload && SSatoms.initialized != INITIALIZATION_INNEW_REGULAR)	//don't notify for objects created during a map load
 		return
 	if(!client)
@@ -573,6 +573,8 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	if (source && action == NOTIFY_JUMP)
 		var/turf/T = get_turf(source)
 		track_link = " <a href='byond://?src=[REF(src)];jumptocoord=1;X=[T.x];Y=[T.y];Z=[T.z]'>(Jump)</a>"
+	if (source && action == NOTIFY_HUMAN_HUD_ORDER) //command_alert.dm
+		track_link = " <a href='byond://?src=[REF(src)];humanhudorder=1;announcement_title=[url_encode(announcement_title)];owner=[REF(portrait_owner)];override_color_portrait=[url_encode(override_color_portrait)]'>(Replay)</a>"
 	var/full_enter_link
 	if (enter_link)
 		full_enter_link = "<a href='byond://?src=[REF(src)];[enter_link]'>[(enter_text) ? "[enter_text]" : "(Claim)"]</a>"
@@ -586,6 +588,8 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 		return
 
 	var/atom/movable/screen/alert/notify_action/screen_alert = throw_alert("[REF(source)]_notify_action", /atom/movable/screen/alert/notify_action)
+	if (source && action == NOTIFY_HUMAN_HUD_ORDER)
+		screen_alert.portrait_announce_parameters = track_link
 	if(!screen_alert)
 		return
 	if (header)

@@ -7,11 +7,11 @@
  * enqueues it if a screen text is running and plays i otherwise
  * Arguments:
  * * text: text we want to be displayed
- * * alert_type: typepath for screen text type we want to play here
+ * * alert_type: typepath OR atom for screen text type we want to play here
  * * override_color: the color of the text to use
  */
 /mob/proc/play_screen_text(text, alert_type = /atom/movable/screen/text/screen_text, override_color = "#FFFFFF", cancel_duplicate = FALSE)
-	var/atom/movable/screen/text/screen_text/text_box = new alert_type()
+	var/atom/movable/screen/text/screen_text/text_box = isatom(alert_type) ? alert_type : new alert_type()
 	text_box.text_to_play = text
 	text_box.player = client
 	if(override_color)
@@ -93,8 +93,7 @@
 	fade_out_delay = 10 SECONDS
 	fade_out_time = 3 SECONDS
 
-
-/atom/movable/screen/text/screen_text/chemical_advisory
+	/atom/movable/screen/text/screen_text/chemical_advisory
 	maptext_height = 64
 	maptext_width = 480
 	maptext_x = 0
@@ -168,7 +167,7 @@
  * Clicks are forwarded to master
  * Override makes it so the alert is not replaced until cleared by a clear_alert with clear_override, and it's used for hallucinations.
  */
-/mob/proc/throw_alert(category, type, severity, obj/new_master, override = FALSE)
+/mob/proc/throw_alert(category, type, severity, obj/new_master, override = FALSE, portrait_announce_parameters)
 	if(!category || QDELETED(src))
 		return
 
@@ -281,6 +280,7 @@
 	timeout = 15 SECONDS
 	var/atom/target = null
 	var/action = NOTIFY_JUMP
+	var/list/portrait_announce_parameters
 
 /atom/movable/screen/alert/notify_action/Click()
 	var/mob/dead/observer/ghost_user = usr
@@ -303,7 +303,10 @@
 			ghost_user.join_as_alien()
 		if(NOTIFY_USCM_TACMAP)
 			ghost_user.view_tacmaps()
-
+		if(NOTIFY_HUMAN_HUD_ORDER)
+			var/href_list = params2list(portrait_announce_parameters)
+			href_list["override_color_portrait"] = splittext(href_list["override_color_portrait"], "'")[1]
+			usr.Topic(null, href_list)
 
 /atom/movable/screen/alert/multi_z
 	name = "Look Up"

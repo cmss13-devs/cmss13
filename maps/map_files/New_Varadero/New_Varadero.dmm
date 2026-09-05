@@ -36574,7 +36574,7 @@
 	explo_proof = 1
 	},
 /obj/effect/landmark/nightmare{
-	tag = barback
+	insert_tag = barback
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pontoon_beach)

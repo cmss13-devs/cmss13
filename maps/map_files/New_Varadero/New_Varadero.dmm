@@ -41,6 +41,18 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/predship/tile/hunter_tile_6/west,
 /area/varadero/interior_protected/vessel)
+"aag" = (
+/obj/structure/prop/rock/brown{
+	name = "sturdy rock(s)";
+	desc = "A solidified collection of local minerals. When melted, becomes a substance best known as lava. These look particularly durable.";
+	unacidable = 1;
+	explo_proof = 1
+	},
+/obj/effect/landmark/nightmare{
+	tag = barback
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/pontoon_beach)
 "aah" = (
 /obj/structure/bed/chair/hunter{
 	name = "alien chair";
@@ -163,7 +175,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "aaz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/storage/firstaid/regular/empty,
@@ -195,7 +207,7 @@
 	dir = 1
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "aaB" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice8";
@@ -208,7 +220,7 @@
 	name = "\improper UD-6D - Las Guasimas";
 	icon_state = "48"
 	},
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "aaC" = (
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/gm/coast/east,
@@ -451,7 +463,7 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "abv" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/sky/level4)
@@ -4456,7 +4468,7 @@
 	layer = 3.1
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "anB" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/cobweb2,
@@ -15785,7 +15797,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "aSu" = (
 /obj/structure/platform/metal/kutjevo_smooth{
 	climb_delay = 1
@@ -42947,15 +42959,15 @@
 	name = "\improper UD-6D - Las Guasimas"
 	},
 /turf/open/gm/coast/beachcorner/north_west,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "ckK" = (
 /turf/open/gm/coast/beachcorner/north_east,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "ckL" = (
 /obj/effect/decal/hybrisa/tiretrack,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "ckM" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/sand_white/layer0,
@@ -43189,7 +43201,7 @@
 	color = "#CBF4F0"
 	},
 /turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "clp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/invuln/lattice_prop{
@@ -43207,7 +43219,7 @@
 	},
 /obj/effect/landmark/crap_item,
 /turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "clq" = (
 /obj/effect/decal/hybrisa/tiretrack,
 /obj/effect/decal/cleanable/dirt,
@@ -43225,7 +43237,7 @@
 	dir = 1
 	},
 /turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "clr" = (
 /obj/item/stack/sheet/metal{
 	amount = 1
@@ -43238,7 +43250,7 @@
 	dir = 1
 	},
 /turf/open/gm/coast/beachcorner/north_west,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cls" = (
 /obj/effect/decal/remains/robot,
 /obj/structure/platform_decoration/metal/almayer_smooth/east,
@@ -43542,20 +43554,20 @@
 	icon_state = "104"
 	},
 /turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cmi" = (
 /turf/closed/shuttle/dropship3/tornado{
 	name = "\improper UD-6D - Las Guasimas";
 	icon_state = "103"
 	},
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cmj" = (
 /obj/structure/machinery/door/airlock/dropship_hatch/two{
 	name = "\improper UD-6D - Las Guasimas Emergency Exit Hatch";
 	dir = 2
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cmk" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 4
@@ -43572,7 +43584,7 @@
 	icon_state = "105"
 	},
 /turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cmm" = (
 /obj/structure/shuttle/part/dropship3/transparent/engine_right_exhaust{
 	name = "\improper UD-6D - Las Guasimas"
@@ -43816,7 +43828,7 @@
 	name = "\improper UD-6D - Las Guasimas";
 	icon_state = "24"
 	},
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cmT" = (
 /obj/effect/spawner/random/sentry/midchance,
 /obj/structure/closet/crate/secure/weapon,
@@ -43825,7 +43837,7 @@
 	level = 2
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cmV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/survivor_spawner,
@@ -43833,7 +43845,7 @@
 	icon_state = "trash_8"
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cmW" = (
 /obj/structure/cable/orange{
 	icon_state = "0-9"
@@ -43845,13 +43857,13 @@
 	icon_state = "thermite"
 	},
 /turf/open/floor/plating,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cmX" = (
 /turf/closed/shuttle/dropship3/tornado{
 	name = "\improper UD-6D - Las Guasimas";
 	icon_state = "25"
 	},
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cmY" = (
 /turf/closed/shuttle/dropship3/tornado/transparent{
 	name = "\improper UD-6D - Las Guasimas";
@@ -44129,7 +44141,7 @@
 	name = "\improper UD-6D - Las Guasimas";
 	icon_state = "30"
 	},
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cnJ" = (
 /obj/item/explosive/grenade/incendiary,
 /obj/item/explosive/grenade/incendiary{
@@ -44146,7 +44158,7 @@
 	},
 /obj/structure/closet/crate/explosives,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cnK" = (
 /obj/structure/cable/orange{
 	icon_state = "6-10";
@@ -44159,7 +44171,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/gun/rifle/m41aMK1,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cnL" = (
 /obj/item/explosive/mine/no_iff,
 /obj/item/explosive/mine/no_iff,
@@ -44172,13 +44184,13 @@
 	dir = 4
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cnM" = (
 /turf/closed/shuttle/dropship3/tornado{
 	name = "\improper UD-6D - Las Guasimas";
 	icon_state = "31"
 	},
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cnN" = (
 /obj/structure/prop/hybrisa/misc/fire/fire2{
 	icon = 'icons/effects/fire.dmi';
@@ -44421,7 +44433,7 @@
 	name = "\improper Tornado"
 	},
 /turf/open/gm/coast/east,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cos" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice4";
@@ -44433,7 +44445,7 @@
 	name = "\improper UD-6D - Las Guasimas";
 	icon_state = "47"
 	},
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cot" = (
 /obj/structure/shuttle/part/dropship3/lower_right_wall{
 	name = "\improper UD-6D - Las Guasimas"
@@ -44442,7 +44454,7 @@
 	name = "\improper UD-6D - Las Guasimas"
 	},
 /turf/open/gm/river/ocean/deep_ocean,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cou" = (
 /obj/structure/shuttle/part/dropship3/transparent/engine_right_exhaust{
 	name = "\improper UD-6D - Las Guasimas"
@@ -44792,7 +44804,7 @@
 	},
 /obj/effect/decal/remains/human,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cpi" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/bare_catwalk,
@@ -45104,7 +45116,7 @@
 	icon_state = "mfloor3"
 	},
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cpU" = (
 /obj/structure/prop/rock/brown{
 	name = "sturdy rock(s)";
@@ -45414,7 +45426,7 @@
 	icon_state = "trash_10"
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cqF" = (
 /obj/structure/flora/wood/stick3,
 /turf/open/gm/dirt,
@@ -45637,7 +45649,7 @@
 	pixel_y = -6
 	},
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "crf" = (
 /obj/structure/cable/orange{
 	icon_state = "2-8";
@@ -45657,7 +45669,7 @@
 	},
 /obj/item/storage/surgical_tray/empty,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "crg" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
@@ -45677,7 +45689,7 @@
 	},
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor/plating/platingdmg3,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "crh" = (
 /turf/open/floor/asteroidwarning/northwest,
 /area/varadero/exterior/lz2_near)
@@ -46229,7 +46241,7 @@
 	name = "\improper UD-6D - Las Guasimas";
 	icon_state = "62"
 	},
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "csJ" = (
 /obj/structure/machinery/prop/almayer/CICmap,
 /obj/item/paper{
@@ -46246,7 +46258,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "csK" = (
 /obj/structure/bed/chair/dropship/passenger{
 	icon_state = "hotseat_destroyed";
@@ -46269,7 +46281,7 @@
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "csL" = (
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -46280,7 +46292,7 @@
 	},
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "csM" = (
 /obj/structure/cable{
 	icon_state = "5-8";
@@ -46295,7 +46307,7 @@
 	icon_state = "mfloor3"
 	},
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "csN" = (
 /obj/item/parachute,
 /obj/effect/decal/hybrisa/dirt_2,
@@ -46303,13 +46315,13 @@
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "csO" = (
 /turf/closed/shuttle/dropship3/tornado{
 	name = "\improper UD-6D - Las Guasimas";
 	icon_state = "64"
 	},
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "csP" = (
 /obj/structure/shuttle/part/dropship3/transparent/lower_right_wing{
 	name = "\improper UD-6D - Las Guasimas"
@@ -46522,7 +46534,7 @@
 	name = "\improper UD-6D - Las Guasimas";
 	icon_state = "67"
 	},
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "ctr" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/overwatch/almayer/broken{
@@ -46542,7 +46554,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cts" = (
 /obj/effect/spawner/gibspawner/human,
 /obj/item/paper/crumpled/bloody{
@@ -46557,7 +46569,7 @@
 	icon_state = "trash_8"
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "ctt" = (
 /obj/effect/spawner/random/pills/highchance,
 /obj/effect/decal/cleanable/blood{
@@ -46568,13 +46580,13 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "ctu" = (
 /turf/closed/shuttle/dropship3/tornado{
 	name = "\improper UD-6D - Las Guasimas";
 	icon_state = "69"
 	},
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "ctv" = (
 /obj/structure/shuttle/part/dropship3/transparent/middle_right_wing{
 	name = "\improper UD-6D - Las Guasimas"
@@ -47068,7 +47080,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/strata_decals/grime/grime2,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cut" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8;
@@ -47082,12 +47094,12 @@
 	},
 /obj/item/stack/medical/bruise_pack/random_amount,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cuu" = (
 /turf/closed/shuttle/dropship3/tornado{
 	icon_state = "73"
 	},
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cuv" = (
 /obj/structure/shuttle/part/dropship3/transparent/upper_right_wing{
 	name = "\improper UD-6D - Las Guasimas"
@@ -47449,13 +47461,13 @@
 	name = "\improper UD-6D - Las Guasimas";
 	icon_state = "76"
 	},
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cvo" = (
 /turf/closed/shuttle/dropship3/tornado{
 	name = "\improper UD-6D - Las Guasimas";
 	icon_state = "83"
 	},
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "cvp" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -49365,7 +49377,7 @@
 	name = "\improper UD-6D - Las Guasimas"
 	},
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "czB" = (
 /obj/structure/prop/server_equipment/broken,
 /obj/effect/decal/cleanable/dirt,
@@ -52314,7 +52326,7 @@
 	name = "\improper UD-6D - Las Guasimas";
 	icon_state = "18"
 	},
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "dlr" = (
 /obj/structure/machinery/storm_siren{
 	dir = 4;
@@ -52800,7 +52812,7 @@
 /obj/effect/landmark/survivor_spawner,
 /obj/structure/bed/roller/hospital_empty/bigrollerbloodempty,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "dLn" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -53105,7 +53117,7 @@
 	name = "\improper UD-6D - Las Guasimas"
 	},
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "dYd" = (
 /obj/structure/machinery/storm_siren{
 	dir = 4;
@@ -56392,7 +56404,7 @@
 	can_buckle = 0
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "gyX" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -56687,7 +56699,7 @@
 /obj/effect/spawner/gibspawner/human,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "gLZ" = (
 /obj/structure/filingcabinet{
 	icon_state = "chestdrawer";
@@ -57394,7 +57406,7 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/spawner/gibspawner/human,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "hsx" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -57727,7 +57739,7 @@
 /obj/effect/landmark/corpsespawner/new_varadero/lacn_marine_a/burst,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "hGz" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/shiva/wredfull,
@@ -58357,7 +58369,7 @@
 	icon_state = "mfloor3"
 	},
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "idw" = (
 /turf/open/floor/wood,
 /area/varadero/interior/security)
@@ -58463,7 +58475,7 @@
 	},
 /obj/item/device/defibrillator/low_charge,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "iks" = (
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "mfloor6";
@@ -60424,7 +60436,7 @@
 	color = "#CBF4F0"
 	},
 /turf/open/floor/plating/platingdmg2,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "jFJ" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
@@ -63252,7 +63264,7 @@
 	name = "\improper UD-6D - Las Guasimas";
 	icon_state = "18"
 	},
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "lYi" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cup{
@@ -66677,7 +66689,7 @@
 	icon_state = "106"
 	},
 /turf/open/floor/plating/burnt_platingdmg3,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "oMl" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -67512,7 +67524,7 @@
 	layer = 2.9
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "pth" = (
 /obj/structure/surface/rack,
 /obj/item/tool/pickaxe/plasmacutter,
@@ -68038,7 +68050,7 @@
 /obj/effect/spawner/gibspawner/human,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "pNI" = (
 /obj/item/stack/cable_coil/cut{
 	pixel_x = 6;
@@ -69042,7 +69054,7 @@
 	name = "platform"
 	},
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "qzb" = (
 /obj/structure/window/framed/colony,
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
@@ -69173,7 +69185,7 @@
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "qCI" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -70061,7 +70073,7 @@
 	},
 /obj/effect/spawner/random/tool,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "rjZ" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -72203,7 +72215,7 @@
 	},
 /obj/structure/stairs/perspective,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "sKL" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -72834,7 +72846,7 @@
 	pixel_y = -10
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "tnN" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "\improper Theta-V Research Laboratory";
@@ -74026,7 +74038,7 @@
 	},
 /obj/effect/landmark/crap_item,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "uqW" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/dirt,
@@ -78085,7 +78097,7 @@
 	pixel_y = -8
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/varadero/interior/beach_bar)
+/area/varadero/interior/crashedshuttle)
 "xwk" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/packageWrap,
@@ -95348,7 +95360,7 @@ oGv
 oGv
 lnO
 lTR
-bNm
+aag
 lTR
 lTR
 lTR

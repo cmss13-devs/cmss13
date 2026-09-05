@@ -159,6 +159,13 @@
 
 
 /area/varadero/interior/beach_bar
+	name = "New Varadero - Beach Bar"
+	icon_state = "varadero4"
+	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
+	minimap_color = MINIMAP_AREA_JUNGLE
+	sound_environment = SOUND_ENVIRONMENT_ROOM
+
+/area/varadero/interior/crashedshuttle
 	name = "New Varadero - Crashed UD-6B"
 	icon_state = "varadero4"
 	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)

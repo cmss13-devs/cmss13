@@ -682,7 +682,6 @@
 		return
 	overlays.Cut()
 	if(broken)
-		// TODO: Add overlay for broken pill bottles
 		overlays += "pills_broken"
 	else if(content_watchers || !length(contents))
 		overlays += "pills_open"
@@ -712,6 +711,10 @@
 				. += SPAN_INFO("The [name] feels like it's nearly empty!")
 	else
 		. += SPAN_INFO("The [name] is empty.")
+
+	if (broken)
+		. += SPAN_WARNING("\nThe top has been broken open. It is unusable like this.")
+		. += SPAN_INFO("If you have the know-how, you'd probably be able to bend the top back into place with something that can pinch it.")
 
 /obj/item/storage/pill_bottle/attack_self(mob/living/user)
 	..()
@@ -752,12 +755,13 @@
 	if(inhand.sharp == IS_SHARP_ITEM_ACCURATE)
 		if(src != user.r_hand && src != user.l_hand)
 			to_chat(user, SPAN_WARNING("[src] must be in your hand to do that."))
+			return
 
 		if(broken)
 			to_chat(user, SPAN_WARNING("[src] has already been broken open!"))
 			return
 
-		if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		if(skilllock && skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 			user.visible_message(SPAN_NOTICE("[user] places the tip of [inhand] underneath the lid of [src] and begins torquing the lid off..."), SPAN_WARNING("You place the tip of [inhand] underneath the lid of [src] and begin torquing the lid off, though you could probably just open it normally."))
 		else
 			user.visible_message(SPAN_NOTICE("[user] places the tip of [inhand] underneath the lid of [src] and begins torquing the lid off..."), SPAN_WARNING("You place the tip of [inhand] underneath the lid of [src] and begin torquing the lid off."))
@@ -767,21 +771,60 @@
 			broken = TRUE
 			update_icon()
 
-			desc += SPAN_WARNING("\nThe top has been broken open. It is unusable like this.\n")
 			if(length(contents) > 0)
 				spill_contents(user)
 				user.visible_message(SPAN_WARNING("[user] pops the lid off of [src], spilling its contents everywhere!"), SPAN_WARNING("You pop the lid off of [src], spilling its contents everywhere!"))
 				playsound(loc, 'sound/effects/pillbottle.ogg', 25, 1)
 				playsound(loc, 'sound/effects/pill_spill.ogg', 25, 1)
 			else
-				user.visible_message(SPAN_INFO("[user] pops the lid off of [src]."), SPAN_INFO("You pop the lid off of [src], breaking it in the process."))
+				playsound(loc, 'sound/effects/pillbottle.ogg', 25, 1)
+				user.visible_message(SPAN_NOTICE("[user] pops the lid off of [src]."), SPAN_NOTICE("You pop the lid off of [src], breaking it in the process."))
 		else
 			to_chat(user, SPAN_NOTICE("You stop forcing the lid off of [src]."))
-	else if(broken)
+		return
+
+	if (istype(inhand, /obj/item/tool/wirecutters))
+		if(src != user.r_hand && src != user.l_hand)
+			to_chat(user, SPAN_WARNING("[src] must be in your hand to do that."))
+			return
+
+		if (!broken)
+			to_chat(user, SPAN_WARNING("[src] isn't broken, there's no need to fix it."))
+			return
+
+		if (!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
+			to_chat(user, SPAN_WARNING("You have no idea how to fix this thing."))
+			return
+
+		var/fix_time = 0
+		var/surgery_skill = user.skills.get_skill_level(SKILL_SURGERY)
+		switch (surgery_skill) // Having precise hands helps with bending fiddly plastic
+			if (SKILL_SURGERY_NOVICE)
+				fix_time = 4 SECONDS
+				user.visible_message(SPAN_NOTICE("[user] fiddles with [src] for a moment, before bending the rim back into place with [inhand]."), SPAN_NOTICE("After fiddling with it for a moment, you grip the end of the bent lid of [src] with [inhand] and begin bending the plastic rim into useable form."))
+			if (SKILL_SURGERY_TRAINED)
+				fix_time = 2 SECONDS
+				user.visible_message(SPAN_NOTICE("[user] calmly grips [src] with the tip of [inhand], and begins bending the rim back into place."), SPAN_NOTICE("You precisely place the tip of [inhand] on the bent rim of [src] and begin bending it back into place."))
+			if (SKILL_SURGERY_EXPERT to SKILL_SURGERY_MAX)
+				fix_time = 0
+				user.visible_message(SPAN_NOTICE("In one smooth motion, [user] grips the bent rim of [src] with [inhand] and bends it back into place."), SPAN_NOTICE("In one smooth motion, you grip the rim of [src] with [inhand] and bend it back into place."))
+
+		playsound(loc, 'sound/effects/pop.ogg', 25, 1)
+		if (do_after(user, fix_time, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			broken = FALSE
+			update_icon()
+			if (surgery_skill < SKILL_MEDICAL_MASTER)
+				user.visible_message(SPAN_NOTICE("[user] successfully bends the rim of [src] back into place, fixing it."), SPAN_NOTICE("You succeed in fixing the [src]."))
+		else
+			to_chat(user, "You stop fixing [src].")
+		return
+
+	if (broken)
 		error_broken(user)
 		return
+
 	// If this is a pill bottle, dump its contents into src
-	else if(istype(inhand, /obj/item/storage/pill_bottle))
+	if(istype(inhand, /obj/item/storage/pill_bottle))
 		var/obj/item/storage/pill_bottle/bottle = inhand
 		if((skilllock || bottle.skilllock) && !skillcheck(user, SKILL_MEDICAL, skilllock))
 			error_idlock(user)

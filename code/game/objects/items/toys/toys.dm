@@ -668,7 +668,7 @@
 //Admin plushies
 /obj/item/toy/plush/yautja
 	name = "strange plush"
-	desc = "A plush doll depicting some sort of tall humanoid biped..?"
+	desc = "A plush doll depicting some sort of tall humanoid biped...?"
 	icon_state = "yautja"
 	black_market_value = 100
 

@@ -7297,10 +7297,15 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "aLz" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "LZ1: Nexus Landing Zone"
+	name = "LZ1: Nexus Landing Zone";
+	dwidth = 8;
+	width = 17;
+	dheight = 12;
+	height = 24;
+	zheight = 1
 	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
+/turf/open_space,
+/area/sky)
 "aLF" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/grass/grass1,
@@ -55824,7 +55829,7 @@ ank
 ank
 ank
 ank
-aLz
+ank
 ank
 ank
 ank
@@ -95025,7 +95030,7 @@ qht
 qht
 qht
 qht
-qht
+aLz
 qht
 qht
 qht

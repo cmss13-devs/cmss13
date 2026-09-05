@@ -5,13 +5,13 @@
 
 //NORTH default dir
 /obj/docking_port
-	invisibility = 101
+	invisibility = 0
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "pinonfar"
 
 // resistance_flags = RESIST_ALL
 	anchored = TRUE
-
+	flags_atom = NO_ZFALL
 	/**
 	  * The identifier of the port or ship.
 	  * This will be used in numerous other places like the console,
@@ -40,6 +40,8 @@
 	var/delete_after = FALSE
 	///are we registered in SSshuttles?
 	var/registered = FALSE
+
+	var/multiz_ship = FALSE
 
 ///register to SSshuttles
 /obj/docking_port/proc/register()
@@ -321,10 +323,11 @@
 
 	for(var/xscan = x0; xscan < x1; xscan++)
 		for(var/yscan = y0; yscan < y1; yscan++)
-			var/turf/searchspot = locate(xscan, yscan, src.z)
-			for(var/obj/structure/machinery/landinglight/light in searchspot)
-				landing_lights += light
-				light.linked_port = src
+			for(var/zscan in 0 to 1)
+				var/turf/searchspot = locate(xscan, yscan, src.z - zscan)
+				for(var/obj/structure/machinery/landinglight/light in searchspot)
+					landing_lights += light
+					light.linked_port = src
 
 /obj/docking_port/stationary/proc/turn_on_landing_lights()
 	for(var/obj/structure/machinery/landinglight/light in landing_lights)
@@ -580,24 +583,34 @@
 //this is to check if this shuttle can physically dock at dock S
 /obj/docking_port/mobile/proc/canDock(obj/docking_port/stationary/S)
 	if(!istype(S))
+		to_chat(world, "dock 1")
 		return SHUTTLE_NOT_A_DOCKING_PORT
 
 	if(S.disabled)
+		to_chat(world, "dock 2")
 		return SHUTTLE_DOCK_DISABLED
 
 	if(istype(S, /obj/docking_port/stationary/transit))
+		to_chat(world, "dock 3")
 		return SHUTTLE_CAN_DOCK
 
 	if(dwidth > S.dwidth)
+		to_chat(world, "dock 4")
+		to_chat(world, "dwidth is [dwidth] || s.dwidth is [S.dwidth]")
 		return SHUTTLE_DWIDTH_TOO_LARGE
 
 	if(width-dwidth > S.width-S.dwidth)
+		to_chat(world, "dock 5")
+		to_chat(world, "dwidth is [dwidth] || s.dwidth is [S.dwidth]")
 		return SHUTTLE_WIDTH_TOO_LARGE
 
 	if(dheight > S.dheight)
+		to_chat(world, "dock 6")
 		return SHUTTLE_DHEIGHT_TOO_LARGE
 
 	if(height-dheight > S.height-S.dheight)
+		to_chat(world, "dock 7")
+		to_chat(world, "yolo [height-dheight] >||> [S.height-S.dheight]")
 		return SHUTTLE_HEIGHT_TOO_LARGE
 
 	//check the dock isn't occupied
@@ -605,10 +618,12 @@
 	if(currently_docked)
 		// by someone other than us
 		if(currently_docked != src)
+			to_chat(world, "dock 8")
 			return SHUTTLE_SOMEONE_ELSE_DOCKED
 		else
 		// This isn't an error, per se, but we can't let the shuttle code
 		// attempt to move us where we currently are, it will get weird.
+			to_chat(world, "dock 9")
 			return SHUTTLE_ALREADY_DOCKED
 
 	return SHUTTLE_CAN_DOCK
@@ -786,6 +801,12 @@
 	var/list/turfs = ripple_area(S1)
 	for(var/t in turfs)
 		ripples += new /obj/effect/abstract/ripple/shadow(t, animate_time)
+		if(multiz_ship)
+			var/obj/docking_port/mobile/marine_dropship/our_ship = src
+			if(!our_ship.is_hijacked)
+				var/turf_below = SSmapping.get_turf_below(t)
+				if(turf_below)
+					ripples += new /obj/effect/abstract/ripple/shadow(turf_below, animate_time)
 	return TRUE
 
 /obj/docking_port/mobile/proc/remove_ripples()

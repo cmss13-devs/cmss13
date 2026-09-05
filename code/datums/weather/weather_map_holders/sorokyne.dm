@@ -10,6 +10,7 @@
 		/datum/weather_event/soro/light_rain,
 		/datum/weather_event/soro/monsoon,
 		/datum/weather_event/soro/very_light_rain,
+		/datum/weather_event/acid_rain,
 	)
 
 /datum/weather_ss_map_holder/sorokyne/should_affect_area(area/A)

@@ -10,6 +10,7 @@
 
 	potential_weather_events = list(
 		/datum/weather_event/light_rain/lv522,
+		/datum/weather_event/acid_rain,
 	)
 
 /datum/weather_ss_map_holder/lv522_chances_claim/should_affect_area(area/A)

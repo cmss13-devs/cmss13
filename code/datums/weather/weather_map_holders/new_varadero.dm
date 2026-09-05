@@ -7,6 +7,7 @@
 	potential_weather_events = list(
 		/datum/weather_event/light_rain,
 		/datum/weather_event/monsoon,
+		/datum/weather_event/acid_rain,
 	)
 
 /datum/weather_ss_map_holder/new_varadero/should_affect_area(area/A)

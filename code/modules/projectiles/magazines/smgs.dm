@@ -15,6 +15,7 @@
 /obj/item/ammo_magazine/smg/m39
 	name = "\improper M39 HV magazine (10x20mm)"
 	desc = "A 10x20mm caseless high-velocity submachinegun magazine. Powerful propellant allows the bullet increased velocity and minor penetration capabilities, noticeably improving its efficacy at medium ranges, although it still suffers significantly compared to a rifle bullet."
+	desc_lore = "Antipersonnel rounds are optimized for unarmored targets. Standard M309 HEAP suffers from over-penetration: the high-velocity slug passes through soft tissue without triggering the delayed fuse, as it only detonates after armor impact. Thus, an unarmored victim has significantly higher survival odds than an armored one."
 	caliber = "10x20mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/smgs.dmi'
 	icon_state = "m39_HV"
@@ -29,6 +30,7 @@
 /obj/item/ammo_magazine/smg/m39/ap
 	name = "\improper M39 AP magazine (10x20mm)"
 	desc = "A 10x20mm caseless armor-piercing submachinegun magazine. The bullet tips are made out of high-density material, allowing them to pierce straight through armor, but also reducing the raw stopping power and velocity of the ammunition."
+	desc_lore = "Unlike standard HEAP rounds, AP rounds were developed shortly after the M41A's introduction in 2164. The decision was driven by several critical drawbacks of the HEAP design: prohibitive manufacturing costs, severe transportation hazards due to its volatile explosive filler, and the devastating consequences of friendly fire. Statistics show that over 15% of marine casualties requiring immediate medevac are caused by FF incidents, as HEAP's delayed detonation inflicts catastrophic internal trauma. The AP variant eliminates the depleted uranium tip and explosive payload. While less lethal against unarmored targets, these rounds drastically reduce injury severity in friendly-fire events and offer a cheaper, safer alternative. Consequently, AP ammunition is also standard-issue for low-qualification troops, where ease of logistics and reduced collateral risk are paramount."
 	default_ammo = /datum/ammo/bullet/smg/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 

@@ -32,6 +32,21 @@ const dependencies: Record<string, string> = await Bun.file('dependencies.sh')
     throw new Juke.ExitCode(1);
   });
 
+const define_params_file = 'data/last_define_params.json'
+
+// Have compilation defines changed since last build?
+async function defineParametersChanged(defines: string[]): Promise<boolean> {
+  const defines_string = JSON.stringify(defines);
+  const params_file = Bun.file(define_params_file);
+  if(!await params_file.exists()) {
+    await params_file.write(defines_string);
+    return true;
+  }
+  const last_params = await params_file.text();
+  await params_file.write(defines_string);
+  return last_params !== defines_string;
+}
+
 export const DefineParameter = new Juke.Parameter({
   type: "string[]",
   alias: "D",
@@ -90,9 +105,10 @@ export const DmTarget = new Juke.Target({
     `${DME_NAME}.dme`,
     NamedVersionFile,
   ],
-  outputs: ({ get }) => {
-    if (get(DmVersionParameter)) {
-      return []; // Always rebuild when dm version is provided
+  outputs: async ({ get }) => {
+    if (get(DmVersionParameter) || await defineParametersChanged(get(DefineParameter))) {
+      // Always rebuild when a dm version is provided or CLI defines have changed from last run
+      return [];
     }
     return [`${DME_NAME}.dmb`, `${DME_NAME}.rsc`];
   },

@@ -316,7 +316,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/inaprovaline
 	name = "inaprovaline EZ autoinjector"
-	chemname = "tricordrazine"
+	chemname = "inaprovaline"
 	desc = "An EZ autoinjector that injects an emergency oxygen stabilizer for critical patients."
 	amount_per_transfer_from_this = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
@@ -337,7 +337,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/ez/bicaridine
 	name = "bicaridine EZ autoinjector"
 	chemname = "bicaridine"
-	desc = "An EZ autoinjector that injects a common brute=mending medicine."
+	desc = "An EZ autoinjector that injects a common brute-mending medicine."
 	maptext_label = "EzBi"
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/antitoxin
@@ -406,7 +406,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/dexalin
 	name = "inhaler EZ autoinjector"
-	chemname = "kelotane"
+	chemname = "dexalin"
 	desc = "An EZ one-use autoinjector that injects medicine for marines to self-administer for when they're struggling to breathe. It injects its entire payload immediately."
 	maptext_label = "OuDx"
 
@@ -549,7 +549,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine
 	name = "ultrazine stimpack"
 	chemname = "ultrazine"
-	desc = "An stimpack that injects ultrazine, a special and illegal muscle stimulant. It doesn't require any training to administer. Do not administer more than twice at a time. Highly addictive."
+	desc = "A stimpack that injects ultrazine, a special and illegal muscle stimulant. It doesn't require any training to administer. Do not administer more than twice at a time. Highly addictive."
 	amount_per_transfer_from_this = 5
 	volume = 25
 	uses_left = 5

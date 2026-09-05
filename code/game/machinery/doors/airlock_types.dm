@@ -621,6 +621,29 @@
 	name = "Press Office"
 	req_access = list(ACCESS_PRESS)
 
+/obj/structure/machinery/door/airlock/almayer/generic/shuttle
+	name = "\improper Shuttle Airlock"
+	no_panel = TRUE
+	not_weldable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/generic/shuttle/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(!IS_XENO_DROPSHIP_CAPABLE(xeno))
+		return ..()
+
+	if(!locked)
+		return ..()
+
+	if(xeno.action_busy)
+		return
+
+	to_chat(xeno, SPAN_NOTICE("You try and force the doors open!"))
+	if(do_after(xeno, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		unlock(TRUE)
+		open(TRUE)
+		lock(TRUE)
+
 /obj/structure/machinery/door/airlock/almayer/marine
 	name = "\improper Airlock"
 	icon = 'icons/obj/structures/doors/prepdoor.dmi'
@@ -906,7 +929,7 @@
 	return ..()
 
 /obj/structure/machinery/door/airlock/dropship_hatch/attack_alien(mob/living/carbon/xenomorph/xeno)
-	if(xeno.hive_pos != XENO_QUEEN)
+	if(!IS_XENO_DROPSHIP_CAPABLE(xeno))
 		return ..()
 
 	if(!locked)

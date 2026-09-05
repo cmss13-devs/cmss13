@@ -26,12 +26,7 @@
 /datum/behavior_delegate/runner_acider
 	var/acid_amount = 0
 
-	var/caboom_left = 20
-	var/caboom_trigger
-	var/caboom_last_proc
-
 	var/max_acid = 1000
-	var/caboom_timer = 20
 	var/acid_slash_regen_lying = 8
 	var/acid_slash_regen_standing = 14
 	var/acid_passive_regen = 1
@@ -49,14 +44,6 @@
 	var/melt_acid_cost = 100
 	/// How much acid is required to fill a trap
 	var/fill_acid_cost = 75
-
-	var/list/caboom_sound = list('sound/effects/runner_charging_1.ogg','sound/effects/runner_charging_2.ogg')
-	var/caboom_loop = 1
-
-	var/caboom_acid_ratio = 200
-	var/caboom_burn_damage_ratio = 5
-	var/caboom_burn_range_ratio = 100
-	var/caboom_struct_acid_type = /obj/effect/xenomorph/acid
 
 	var/drool_overlay_active = FALSE
 	var/mutable_appearance/drool_applied_icon
@@ -81,8 +68,9 @@
 	if(acid_amount >= acid_gen_cap)
 		. += "Passive acid generation cap ([acid_gen_cap]) reached"
 	. += "Battle acid generation: [combat_gen_active ? "Active" : "Inactive"]"
-	if(caboom_trigger)
-		. += "FOR THE HIVE!: in [caboom_left] seconds"
+	var/datum/action/xeno_action/activable/acider_for_the_hive/acider_fth = get_action(bound_xeno, /datum/action/xeno_action/activable/acider_for_the_hive)
+	if(acider_fth.caboom_trigger)
+		. += "FOR THE HIVE!: in [acider_fth.caboom_left] seconds"
 
 /datum/behavior_delegate/runner_acider/melee_attack_additional_effects_target(mob/living/carbon/target_mob)
 	if(ishuman(target_mob)) //Will acid be applied to the mob
@@ -112,6 +100,7 @@
 		drool_overlay_active = TRUE //turns the overlay on
 
 /datum/behavior_delegate/runner_acider/on_life()
+	var/datum/action/xeno_action/activable/acider_for_the_hive/acider_fth = get_action(bound_xeno, /datum/action/xeno_action/activable/acider_for_the_hive)
 	if(acid_amount < acid_gen_cap)
 		modify_acid(acid_passive_regen)
 	if(combat_gen_active)
@@ -120,19 +109,19 @@
 		return
 	if(bound_xeno.stat == DEAD)
 		return
-	if(caboom_trigger)
-		var/wt = world.time
-		if(caboom_last_proc)
-			caboom_left -= (wt - caboom_last_proc)/10
-		caboom_last_proc = wt
-		var/amplitude = 50 + 50 * (caboom_timer - caboom_left) / caboom_timer
-		playsound(bound_xeno, caboom_sound[caboom_loop], amplitude, FALSE, 10)
-		caboom_loop++
-		if(caboom_loop > length(caboom_sound))
-			caboom_loop = 1
-	if(caboom_left <= 0)
-		caboom_trigger = FALSE
-		do_caboom()
+	if(acider_fth.caboom_trigger)
+		var/world_time = world.time
+		if(acider_fth.caboom_last_proc)
+			acider_fth.caboom_left -= (world_time - acider_fth.caboom_last_proc)/10
+		acider_fth.caboom_last_proc = world_time
+		var/amplitude = 50 + 50 * (acider_fth.caboom_timer - acider_fth.caboom_left) / acider_fth.caboom_timer
+		playsound(bound_xeno, acider_fth.caboom_sound[acider_fth.caboom_loop], amplitude, FALSE, 10)
+		acider_fth.caboom_loop++
+		if(acider_fth.caboom_loop > length(acider_fth.caboom_sound))
+			acider_fth.caboom_loop = 1
+	if(acider_fth.caboom_left <= 0)
+		acider_fth.caboom_trigger = FALSE
+		acider_fth.do_caboom()
 		return
 
 	var/image/holder = bound_xeno.hud_list[SPECIAL_HUD]
@@ -144,69 +133,10 @@
 	if(acid_amount >= acid_gen_cap)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "cap[percentage_acid_cap]")
 
-/datum/behavior_delegate/runner_acider/handle_death(mob/M)
+/datum/behavior_delegate/runner_acider/handle_death(mob/target_mob)
 	var/image/holder = bound_xeno.hud_list[SPECIAL_HUD]
 	holder.overlays.Cut()
 	STOP_PROCESSING(SSfasteffects, src)
-
-/datum/behavior_delegate/runner_acider/proc/do_caboom()
-	if(!bound_xeno)
-		return
-	var/acid_range = acid_amount / caboom_acid_ratio
-	var/max_burn_damage = acid_amount / caboom_burn_damage_ratio
-	var/burn_range = acid_amount / caboom_burn_range_ratio
-
-	for(var/barricades in dview(acid_range, bound_xeno))
-		if(istype(barricades, /obj/structure/barricade))
-			new caboom_struct_acid_type(get_turf(barricades), barricades)
-			continue
-		if(istype(barricades, /mob))
-			new /datum/effects/acid(barricades, bound_xeno, initial(bound_xeno.caste_type))
-			continue
-	var/x = bound_xeno.x
-	var/y = bound_xeno.y
-	FOR_DVIEW(var/mob/living/target_living, burn_range, bound_xeno, HIDE_INVISIBLE_OBSERVER)
-		if (!isxeno_human(target_living) || bound_xeno.can_not_harm(target_living))
-			continue
-		var/dist = 0
-		// such cheap, much fast
-		var/dx = abs(target_living.x - x)
-		var/dy = abs(target_living.y - y)
-		if(dx>=dy)
-			dist = (0.934*dx) + (0.427*dy)
-		else
-			dist = (0.427*dx) + (0.934*dy)
-		var/damage = floor((burn_range - dist) * max_burn_damage / burn_range)
-		if(isxeno(target_living))
-			damage *= XVX_ACID_DAMAGEMULT
-
-		target_living.apply_damage(damage, BURN)
-	FOR_DVIEW_END
-	FOR_DVIEW(var/turf/T, acid_range, bound_xeno, HIDE_INVISIBLE_OBSERVER)
-		new /obj/effect/particle_effect/smoke/acid_runner_harmless(T)
-	FOR_DVIEW_END
-	playsound(bound_xeno, 'sound/effects/blobattack.ogg', 75)
-	if(bound_xeno.client && bound_xeno.hive)
-		var/datum/hive_status/hive_status = bound_xeno.hive
-		var/turf/spawning_turf = get_turf(bound_xeno)
-		if(!hive_status.hive_location)
-			addtimer(CALLBACK(bound_xeno.hive, TYPE_PROC_REF(/datum/hive_status, respawn_on_turf), bound_xeno.client, spawning_turf), 0.5 SECONDS)
-		else
-			addtimer(CALLBACK(bound_xeno.hive, TYPE_PROC_REF(/datum/hive_status, free_respawn), bound_xeno.client), 5 SECONDS)
-	bound_xeno.gib(create_cause_data("internal acid rupture", src))
-
-/mob/living/carbon/xenomorph/runner/ventcrawl_carry()
-	var/datum/behavior_delegate/runner_acider/behavior_delegates = behavior_delegate
-	if(istype(behavior_delegates) && behavior_delegates.caboom_trigger)
-		to_chat(src, SPAN_XENOWARNING("You cannot ventcrawl when you are about to explode!"))
-		return FALSE
-	return ..()
-
-/mob/living/carbon/xenomorph/runner/get_examine_text(mob/user)
-	. = ..()
-	var/datum/behavior_delegate/runner_acider/behavior = behavior_delegate
-	if(istype(behavior) && isxeno(user))
-		. += "it has [SPAN_GREEN(behavior.acid_amount)] acid!"
 
 /datum/behavior_delegate/runner_acider/proc/combat_gen_end() //This proc is triggerd once the combat acid timer runs out.
 	combat_gen_active = FALSE //turns combat acid off
@@ -252,9 +182,9 @@
 	var/perc_index = 0
 	if(acid_amount > max_acid * 0.8)
 		perc_index = 3
-	else if (acid_amount > max_acid * 0.5)
+	else if(acid_amount > max_acid * 0.5)
 		perc_index = 2
-	else if (acid_amount > max_acid * 0.2)
+	else if(acid_amount > max_acid * 0.2)
 		perc_index = 1
 
 	if(perc_index && bound_runner.stat != DEAD)
@@ -276,7 +206,7 @@
 		to_chat(xeno, SPAN_XENOHIGHDANGER("Can only melt barricades and items!"))
 		return
 	var/datum/behavior_delegate/runner_acider/behavior_delegate = xeno.behavior_delegate
-	if (!istype(behavior_delegate))
+	if(!istype(behavior_delegate))
 		return
 	if(behavior_delegate.acid_amount < acid_cost)
 		to_chat(xeno, SPAN_XENOHIGHDANGER("Not enough acid stored!"))
@@ -288,7 +218,7 @@
 	return ..()
 
 
-/datum/action/xeno_action/activable/acider_for_the_hive/use_ability(atom/affected_atom)
+/datum/action/xeno_action/activable/acider_for_the_hive/use_ability()
 	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if(!istype(xeno))
@@ -303,17 +233,13 @@
 		to_chat(xeno, SPAN_XENOWARNING("We can't activate this here!"))
 		return
 
-	if(!xeno.check_state())
-		return
-
-	if(!action_cooldown_check())
-		return
+	XENO_ACTION_CHECK(xeno)
 
 	var/datum/behavior_delegate/runner_acider/behavior_delegate = xeno.behavior_delegate
 	if(!istype(behavior_delegate))
 		return
 
-	if(behavior_delegate.caboom_trigger)
+	if(caboom_trigger)
 		cancel_ability()
 		return
 
@@ -328,10 +254,10 @@
 	xeno.set_light_color("#22FF22")
 	xeno.set_light_range(3)
 
-	behavior_delegate.caboom_trigger = TRUE
-	behavior_delegate.caboom_left = behavior_delegate.caboom_timer
-	behavior_delegate.caboom_last_proc = 0
-	xeno.set_effect(behavior_delegate.caboom_timer*2, SUPERSLOW)
+	caboom_trigger = TRUE
+	caboom_left = caboom_timer
+	caboom_last_proc = 0
+	xeno.set_effect(caboom_timer*2, SUPERSLOW)
 
 	START_PROCESSING(SSfasteffects, src)
 
@@ -346,34 +272,97 @@
 	if(!istype(behavior_delegate))
 		return
 
-	behavior_delegate.caboom_trigger = FALSE
+	caboom_trigger = FALSE
 	xeno.color = null
 	xeno.set_light_range(0)
 	behavior_delegate.modify_acid(-behavior_delegate.max_acid / 4)
 
 	// Done this way rather than setting to 0 in case something else slowed us
 	// -Original amount set - (time exploding + timer inaccuracy) * how much gets removed per tick / 2
-	xeno.adjust_effect(behavior_delegate.caboom_timer * -2 - (behavior_delegate.caboom_timer - behavior_delegate.caboom_left + 2) * xeno.life_slow_reduction * 0.5, SUPERSLOW)
-
-	to_chat(xeno, SPAN_XENOWARNING("We remove all our explosive acid before it combusted."))
+	xeno.adjust_effect(caboom_timer * -2 - (caboom_timer - caboom_left + 2) * xeno.life_slow_reduction * 0.5, SUPERSLOW)
 
 	STOP_PROCESSING(SSfasteffects, src)
-	button.set_maptext()
+	to_chat(xeno, SPAN_XENOWARNING("We remove all our explosive acid before it combusted."))
 
 /datum/action/xeno_action/activable/acider_for_the_hive/process(delta_time)
 	return update_caboom_maptext()
 
 /datum/action/xeno_action/activable/acider_for_the_hive/proc/update_caboom_maptext()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	var/datum/behavior_delegate/runner_acider/delegate = xeno.behavior_delegate
-	if(!istype(delegate) || !delegate.caboom_trigger || delegate.caboom_left <= 0)
+	var/datum/action/xeno_action/activable/acider_for_the_hive/acider_fth = get_action(xeno, /datum/action/xeno_action/activable/acider_for_the_hive)
+	if(!acider_fth.caboom_trigger || acider_fth.caboom_left <= 0)
 		button.set_maptext()
 		return PROCESS_KILL
 
-	button.set_maptext(SMALL_FONTS_COLOR(7, delegate.caboom_left, "#e69d00"), 19, 2)
+	button.set_maptext(SMALL_FONTS_COLOR(7, acider_fth.caboom_left, "#e69d00"), 19, 2)
 	return
 
+/datum/action/xeno_action/activable/acider_for_the_hive/proc/do_caboom()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!istype(xeno))
+		return
 
+	var/datum/behavior_delegate/runner_acider/behavior_delegate = xeno.behavior_delegate
+	if(!istype(behavior_delegate))
+		return
+
+	var/acid_range = behavior_delegate.acid_amount / caboom_acid_ratio
+	var/max_burn_damage = behavior_delegate.acid_amount / caboom_burn_damage_ratio
+	var/burn_range = behavior_delegate.acid_amount / caboom_burn_range_ratio
+
+	for(var/barricades in dview(acid_range, xeno))
+		if(istype(barricades, /obj/structure/barricade))
+			new caboom_struct_acid_type(get_turf(barricades), barricades)
+			continue
+		if(istype(barricades, /mob))
+			new /datum/effects/acid(barricades, xeno, initial(xeno.caste_type))
+			continue
+	var/x = xeno.x
+	var/y = xeno.y
+	FOR_DVIEW(var/mob/living/target_living, burn_range, xeno, HIDE_INVISIBLE_OBSERVER)
+		if (!isxeno_human(target_living) || xeno.can_not_harm(target_living))
+			continue
+		var/dist = 0
+		// such cheap, much fast
+		var/dx = abs(target_living.x - x)
+		var/dy = abs(target_living.y - y)
+		if(dx>=dy)
+			dist = (0.934*dx) + (0.427*dy)
+		else
+			dist = (0.427*dx) + (0.934*dy)
+		var/damage = floor((burn_range - dist) * max_burn_damage / burn_range)
+		if(isxeno(target_living))
+			damage *= XVX_ACID_DAMAGEMULT
+
+		target_living.apply_damage(damage, BURN)
+	FOR_DVIEW_END
+	FOR_DVIEW(var/turf/target_turf, acid_range, xeno, HIDE_INVISIBLE_OBSERVER)
+		new /obj/effect/particle_effect/smoke/acid_runner_harmless(target_turf)
+	FOR_DVIEW_END
+	playsound(xeno, 'sound/effects/blobattack.ogg', 75)
+	if(xeno.client && xeno.hive)
+		var/datum/hive_status/hive_status = xeno.hive
+		var/turf/spawning_turf = get_turf(xeno)
+		if(!hive_status.hive_location)
+			addtimer(CALLBACK(xeno.hive, TYPE_PROC_REF(/datum/hive_status, respawn_on_turf), xeno.client, spawning_turf), 0.5 SECONDS)
+		else
+			addtimer(CALLBACK(xeno.hive, TYPE_PROC_REF(/datum/hive_status, free_respawn), xeno.client), 5 SECONDS)
+	xeno.gib(create_cause_data("internal acid rupture", src))
+
+
+
+/mob/living/carbon/xenomorph/runner/get_examine_text(mob/user)
+	. = ..()
+	var/datum/behavior_delegate/runner_acider/behavior = behavior_delegate
+	if(istype(behavior) && isxeno(user))
+		. += "it has [SPAN_GREEN(behavior.acid_amount)] acid!"
+
+/mob/living/carbon/xenomorph/runner/ventcrawl_carry()
+	var/datum/action/xeno_action/activable/acider_for_the_hive/acider_fth = get_action(src, /datum/action/xeno_action/activable/acider_for_the_hive)
+	if(acider_fth.caboom_trigger)
+		to_chat(src, SPAN_XENOWARNING("You cannot ventcrawl when you are about to explode!"))
+		return FALSE
+	return ..()
 
 /mob/living/carbon/xenomorph/runner/corrosive_acid(atom/affected_atom, acid_type, plasma_cost)
 	if(!istype(strain, /datum/xeno_strain/acider))

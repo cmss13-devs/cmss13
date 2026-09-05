@@ -93,6 +93,76 @@
 	SEND_SIGNAL(xeno, COMSIG_XENO_PLANT_RESIN_NODE)
 	return ..()
 
+///Toggles automatic weeding
+/datum/action/xeno_action/onclick/autoweeding_toggle/use_ability(atom/atom)
+	if(!linked_planting)
+		for(var/datum/action/xeno_action/onclick/plant_weeds/weed_planting in owner.actions)
+			linked_planting = weed_planting
+			break
+	if(!our_sister)
+		our_sister = owner
+	if(auto_weeding)
+		UnregisterSignal(owner, COMSIG_MOVABLE_MOVED)
+		UnregisterSignal(owner, COMSIG_MOB_DEATH)
+		auto_weeding = FALSE
+		to_chat(owner, SPAN_XENONOTICE("We will no longer automatically plant weeds."))
+		button.icon_state = "template_xeno"
+		return
+	RegisterSignal(owner, COMSIG_MOVABLE_MOVED, PROC_REF(weed_on_move))
+	RegisterSignal(owner, COMSIG_MOB_DEATH, PROC_REF(use_ability))
+	auto_weeding = TRUE
+	button.icon_state = "template_active"
+	to_chat(owner, SPAN_XENONOTICE("We will now automatically plant weeds."))
+	step_counter_x = 0
+	step_counter_y = 0
+	linked_planting.use_ability()
+
+	return ..()
+
+///Used for performing automatic weeding
+/datum/action/xeno_action/onclick/autoweeding_toggle/proc/weed_on_move()
+	var/turf/turf = our_sister.loc
+	if(!linked_planting.action_cooldown_check())
+		return
+	if(!istype(turf))
+		return
+	if(turf.density)
+		return
+	if(turf.is_weedable < FULLY_WEEDABLE)
+		return
+
+	switch(our_sister.last_move_dir)
+		if(NORTH)
+			step_counter_y += 1
+			if(step_counter_y >= 5)
+				step_counter_y = 0
+				count_success = TRUE
+		if(SOUTH)
+			step_counter_y -= 1
+			if(step_counter_y <= -5)
+				step_counter_y = 0
+				count_success = TRUE
+		if(EAST)
+			step_counter_x += 1
+			if(step_counter_x >= 5)
+				step_counter_x = 0
+				count_success = TRUE
+		if(WEST)
+			step_counter_x -= 1
+			if(step_counter_x <= -5)
+				step_counter_x = 0
+				count_success = TRUE
+	if(count_success)
+		count_success = FALSE
+		for(var/obj/effect/alien/weeds/node/preplanted_node in view(4, turf))
+			if(preplanted_node)
+				return
+		if(((our_sister.plasma_stored - linked_planting.plasma_cost) / our_sister.plasma_max * 100) < 20)
+			to_chat(our_sister, SPAN_XENONOTICE("Plasma is too low."))
+			src.use_ability()
+			return
+		linked_planting.use_ability()
+
 /mob/living/carbon/xenomorph/lay_down()
 	if(!can_heal && !resting)
 		to_chat(src, SPAN_WARNING("No time to rest, must KILL!"))

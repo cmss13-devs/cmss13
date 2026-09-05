@@ -31,6 +31,22 @@
 	var/plant_on_semiweedable = FALSE
 	var/node_type = /obj/effect/alien/weeds/node
 
+/datum/action/xeno_action/onclick/autoweeding_toggle
+	name = "Toggle Autoweeding"
+	action_icon_state = "autoweed_toggle"
+	plasma_cost = 0
+	macro_path = /datum/action/xeno_action/verb/verb_toggle_autoweed
+	action_type = XENO_ACTION_CLICK
+	xeno_cooldown = 2 SECONDS
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+
+	var/auto_weeding = FALSE
+	var/datum/action/xeno_action/onclick/plant_weeds/linked_planting
+	var/mob/living/carbon/xenomorph/our_sister
+	var/step_counter_x = 0
+	var/step_counter_y = 0
+	var/count_success = FALSE
+
 // Resting
 /datum/action/xeno_action/onclick/xeno_resting
 	name = "Rest"

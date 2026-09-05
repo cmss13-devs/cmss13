@@ -70,6 +70,7 @@
 		/datum/action/xeno_action/onclick/plant_weeds/lesser, //first macro
 		/datum/action/xeno_action/onclick/choose_resin, //second macro
 		/datum/action/xeno_action/activable/secrete_resin, //third macro
+		/datum/action/xeno_action/onclick/autoweeding_toggle,
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,

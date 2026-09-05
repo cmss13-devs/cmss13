@@ -35,20 +35,23 @@
 /turf/open/void/vehicle,
 /area/space)
 "j" = (
-/obj/structure/interior_wall/box_van,
+/obj/structure/interior_wall/box_van{
+	layer = 2.8
+	},
 /obj/structure/sign/poster/propaganda{
 	pixel_y = 4;
 	pixel_x = 8
 	},
 /obj/effect/vehicle_roof/box_van{
-	icon_state = "roof_4"
+	icon_state = "roof_4";
+	alpha = 25
 	},
 /turf/open/void/vehicle,
 /area/space)
 "n" = (
 /obj/structure/interior_wall/box_van{
 	icon_state = "background_2";
-	alpha = 50;
+	alpha = 25;
 	layer = 5.2;
 	pixel_y = 32
 	},
@@ -64,16 +67,19 @@
 	layer = 3.3
 	},
 /obj/effect/vehicle_roof/box_van{
-	icon_state = "roof_3"
+	icon_state = "roof_3";
+	alpha = 25
 	},
 /turf/open/shuttle/vehicle/med/slate,
 /area/interior/vehicle/box_van)
 "r" = (
 /obj/structure/interior_wall/box_van{
-	icon_state = "exterior_3"
+	icon_state = "exterior_3";
+	layer = 2.8
 	},
 /obj/effect/vehicle_roof/box_van{
-	icon_state = "roof_5"
+	icon_state = "roof_5";
+	alpha = 25
 	},
 /turf/open/void/vehicle,
 /area/space)
@@ -91,28 +97,36 @@
 	pixel_y = 32;
 	tag = "left"
 	},
-/obj/effect/landmark/interior/spawn/vehicle_driver_seat{
-	dir = 4;
-	icon_state = "comfychair_black"
-	},
 /obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield{
 	icon_state = "windshield_viewport_bottom";
-	icon = 'icons/obj/vehicles/interiors/box_van_interior.dmi'
+	icon = 'icons/obj/vehicles/interiors/box_van_interior.dmi';
+	alpha = 50
+	},
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat{
+	dir = 4;
+	icon = 'icons/obj/vehicles/interiors/seats.dmi';
+	icon_state = "vehicle_seat";
+	pixel_x = -1;
+	pixel_y = 5
 	},
 /obj/effect/vehicle_roof/box_van{
-	icon_state = "front_roof_2"
+	icon_state = "front_roof_2";
+	alpha = 25
 	},
 /turf/open/shuttle/vehicle/floor_3_11,
 /area/interior/vehicle/box_van)
 "v" = (
 /obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield{
-	icon = 'icons/obj/vehicles/interiors/box_van_interior.dmi'
+	icon = 'icons/obj/vehicles/interiors/box_van_interior.dmi';
+	alpha = 50
 	},
 /obj/effect/vehicle_roof/box_van{
-	icon_state = "interior_door"
+	icon_state = "interior_door";
+	layer = 2.8
 	},
 /obj/effect/vehicle_roof/box_van{
-	icon_state = "front_roof_1"
+	icon_state = "front_roof_1";
+	alpha = 25
 	},
 /turf/open/void/vehicle,
 /area/space)
@@ -129,8 +143,16 @@
 	name = "right entrance marker";
 	tag = "right"
 	},
-/obj/structure/bed/chair/comfy/black{
-	dir = 4
+/obj/structure/prop/vehicle/rt01/console{
+	pixel_x = 18;
+	icon_state = "vehicle_console_alt"
+	},
+/obj/structure/bed/chair/vehicle/comfy{
+	dir = 4;
+	pixel_y = 10;
+	buckling_x = -3;
+	buckling_y = 10;
+	pixel_x = -1
 	},
 /turf/open/shuttle/vehicle/floor_3_12,
 /area/interior/vehicle/box_van)
@@ -148,7 +170,7 @@
 "J" = (
 /obj/structure/interior_wall/box_van{
 	icon_state = "background_3";
-	alpha = 50;
+	alpha = 25;
 	layer = 5.2;
 	pixel_y = 32
 	},
@@ -167,7 +189,8 @@
 	layer = 4
 	},
 /obj/effect/vehicle_roof/box_van{
-	icon_state = "roof_2"
+	icon_state = "roof_2";
+	alpha = 25
 	},
 /turf/open/shuttle/vehicle/med/slate,
 /area/interior/vehicle/box_van)

@@ -355,6 +355,8 @@
 					monkey_types += /mob/living/carbon/human/monkey
 				if("neaera")
 					monkey_types += /mob/living/carbon/human/neaera
+				if("neaera_alt")
+					monkey_types += /mob/living/carbon/human/neaera_alt
 				if("stok")
 					monkey_types += /mob/living/carbon/human/stok
 				if("yiren")

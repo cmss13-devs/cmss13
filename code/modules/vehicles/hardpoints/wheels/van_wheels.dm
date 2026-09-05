@@ -12,3 +12,11 @@
 	health = 250
 
 	move_delay = VEHICLE_SPEED_VERYFAST
+
+/obj/item/hardpoint/locomotion/van_wheels/rt01
+	name = "RT-01 wheels"
+	desc = "Integral to the movement of the RT-01 Transport vehicle."
+
+	icon_state = "tires_rt01"
+	disp_icon = "rt01"
+	disp_icon_state = "wheels"

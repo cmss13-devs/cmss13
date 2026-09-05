@@ -166,6 +166,7 @@
 
 /obj/structure/filtration/machine_32x64
 	icon = 'icons/obj/structures/props/industrial/32x64.dmi'
+	icon_state = "solo_tank_empty"
 	density = TRUE
 	anchored = TRUE
 	bound_width = 32
@@ -280,3 +281,14 @@
 	name = "Disinfection Filter"
 	desc = "A water filter specifically designed to separate micro-organisms, such as viruses and bacteria, from water."
 	icon_state = "disinfection"
+
+// Fire Colony Silos
+
+/obj/structure/filtration/machine_32x64/destructible
+	name = "silo tank"
+	icon = 'icons/obj/structures/props/industrial/32x64.dmi'
+	icon_state = "solo_tank"
+	density = TRUE
+	anchored = TRUE
+	bound_width = 32
+	bound_height = 64

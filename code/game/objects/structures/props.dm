@@ -666,6 +666,41 @@
 	desc = "Scientists use these suspended nets to superimpose a grid over a patch of ground for study."
 	icon_state = "soil_grid"
 
+/obj/structure/prop/ice_colony/soil_net/attackby(obj/item/W, mob/living/user)
+	// Any sufficiently sharp knife/blade destroys instantly
+	if(W.sharp >= IS_SHARP_ITEM_SIMPLE)
+		user.animation_attack_on(src)
+		to_chat(user, SPAN_WARNING("You cut \the [src] with \the [W]."))
+		playsound(src, 'sound/effects/vegetation_hit.ogg', 25, 1)
+		qdel(src)
+		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
+	else
+		. = ..()
+
+/obj/structure/prop/ice_colony/soil_net/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/vegetation_hit.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION
+
+/obj/structure/prop/ice_colony/soil_net/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/vegetation_hit.ogg', 25, 1)
+	update_health(xeno.melee_damage_upper)
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 /obj/structure/prop/ice_colony/ice_crystal
 	name = "ice crystal"
 	desc = "It is a giant crystal of ice. The chemical process that keeps it frozen despite major seasonal temperature flux is what the United American Greater Argentinian science team is studying here on the Snowball."
@@ -1574,6 +1609,55 @@
 		playsound(loc, initial(emote.sound), 50, FALSE)
 	return TRUE
 
+// Working Joe Storage 64x64
+
+// Prop version, no functionality
+
+/obj/structure/prop/invuln/working_joe/large_storage
+	name = "synthetic storage unit"
+	desc = "A vertical storage bay designed to house inactive Working Joe synthetics, keeping them bagged, preserved, and ready for deployment."
+	icon = 'icons/obj/structures/machinery/working_joe_storage.dmi'
+	icon_state = "working_joe_storage_bluebag1_alt"
+	unslashable = FALSE
+	wrenchable = FALSE
+	bound_height = 32
+	bound_width = 32
+	light_on = 1
+	light_color = "#dcc687"
+	light_range = 2
+	light_power = 1
+	explo_proof = FALSE
+
+/obj/structure/prop/invuln/working_joe/large_storage/no_shell
+	name = "bagged synthetic"
+	desc = "A dormant Working Joe synthetic suspended in protective polymer shrouding, sealed away beneath sterile sheeting."
+	icon_state = "working_joe_storage_noshell"
+	light_on = FALSE
+	light_color = FALSE
+	light_range = FALSE
+	light_power = FALSE
+	explo_proof = FALSE
+
+/obj/effect/working_joe/corpse
+	icon = 'icons/obj/structures/props/working_joe_corpse.dmi'
+	icon_state = "working_joe_corpse"
+	layer = TURF_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/structure/prop/invuln/joey/bag
+	name = "synthetic storage unit"
+	desc = "A vertical storage bay designed to house inactive Working Joe synthetics, keeping them bagged, preserved, and ready for deployment."
+	icon = 'icons/obj/structures/machinery/working_joe_storage.dmi'
+	icon_state = "working_joe_storage_bluebag1_alt"
+	bound_height = 32
+	bound_width = 32
+	light_on = 1
+	light_color = "#dcc687"
+	light_range = 2
+	light_power = 1
+	explo_proof = FALSE
+
 // Body Bag Pile
 
 /obj/structure/prop/body_bag_pile
@@ -1605,3 +1689,123 @@
 	layer = TURF_LAYER
 	plane = FLOOR_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+// Fire Colony
+
+/obj/structure/prop/fire_colony
+	icon = 'icons/obj/structures/props/ice_colony/props.dmi'
+	icon_state = "pyro_tray_1"
+	density = TRUE
+
+/obj/structure/prop/fire_colony/dense
+	projectile_coverage = 10
+	health = 75
+
+/obj/structure/prop/fire_colony/dense/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(xeno.a_intent == INTENT_HARM)
+		if(unslashable)
+			return
+		xeno.animation_attack_on(src)
+		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
+		xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart!"),
+		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		deconstruct(FALSE)
+		return XENO_ATTACK_ACTION
+	else
+		attack_hand(xeno)
+		return XENO_NONCOMBAT_ACTION
+
+/obj/structure/prop/fire_colony/dense/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	if(unslashable)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	deconstruct(FALSE)
+	xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+	SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
+	return TAILSTAB_COOLDOWN_NORMAL
+
+/obj/item/fire_colony
+	icon = 'icons/obj/structures/props/ice_colony/props.dmi'
+	name = "pyrotrinium tray"
+
+/obj/item/fire_colony/pyrotrinium_tray
+	icon = 'icons/obj/structures/props/ice_colony/props.dmi'
+	name = "pyrotrinium tray_1"
+	desc = "It is a tray filled with dark red, clustered pyrotrinium crystals."
+	icon_state = "pyro_tray_empty"
+	w_class = SIZE_MASSIVE
+
+/obj/item/fire_colony/pyrotrinium_tray/tray_1
+	icon_state = "pyro_tray_1"
+
+/obj/item/fire_colony/pyrotrinium_tray/tray_2
+	icon_state = "pyro_tray_2"
+
+/obj/item/fire_colony/pyrotrinium_tray/tray_3
+	icon_state = "pyro_tray_3"
+
+/obj/item/fire_colony/pyrotrinium_tray/tray_4
+	icon_state = "pyro_tray_4"
+
+/obj/item/fire_colony/pyrotrinium_tray/tray_5
+	icon_state = "pyro_tray_5"
+
+/obj/item/fire_colony/pyrotrinium_tray/tray_6
+	icon_state = "pyro_tray_6"
+
+/obj/item/fire_colony/pyrotrinium_tray/tray_7
+	icon_state = "pyro_tray_7"
+
+/obj/item/fire_colony/pyrotrinium_crystal
+	icon = 'icons/obj/structures/props/ice_colony/props.dmi'
+	name = "pyrotrinium crystal"
+	desc = "It is a giant pyrotrinium crystal cluster."
+	icon_state = "pyro_crystal"
+	w_class = SIZE_LARGE
+	black_market_value = 1
+
+/obj/item/fire_colony/pyrotrinium_crystal/crystal_1
+	icon_state = "pyro_crystal_1"
+
+/obj/item/fire_colony/pyrotrinium_crystal/crystal_2
+	icon_state = "pyro_crystal_2"
+
+/obj/item/fire_colony/pyrotrinium_crystal/crystal_3
+	icon_state = "pyro_crystal_3"
+
+/obj/item/fire_colony/pyrotrinium_crystal/crystal_4
+	icon_state = "pyro_crystal_4"
+
+/obj/item/fire_colony/pyrotrinium_crystal/crystal_5
+	icon_state = "pyro_crystal_5"
+
+/obj/item/fire_colony/pyrotrinium_crystal/crystal_6
+	icon_state = "pyro_crystal_6"
+
+/obj/item/fire_colony/pyrotrinium_crystal/crystal_7
+	icon_state = "pyro_crystal_7"
+
+/obj/structure/prop/fire_colony/dense/planter_box/plated/dark
+	icon_state = "planter_box_lava"
+	name = "plated grow box"
+	desc = "The planter box is empty."
+	projectile_coverage = FALSE
+	density = FALSE
+	layer = TURF_LAYER
+	plane = FLOOR_PLANE
+
+/obj/structure/prop/fire_colony/dense/broken_ai_core
+	name = "sabotaged AI core"
+	desc = "The sabotaged central AI core that once coordinated the colony's 'Working Joe' network. It's screens and casing have been torn apart and it's internals deliberately destroyed, leaving it far beyond any practical repair."
+	icon = 'icons/obj/structures/machinery/ai.dmi'
+	icon_state = "hydra-damaged"
+	anchored = TRUE
+	density = TRUE
+	layer = OBJ_LAYER
+	bound_height = 64
+	bound_width = 96
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+	projectile_coverage = TRUE

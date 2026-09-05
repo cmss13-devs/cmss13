@@ -729,7 +729,6 @@
 "acb" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "hybrisacheckpoint_bunker_north";
-	name = "\improper Lockdown";
 	vehicle_resistant = 1
 	},
 /turf/open/hybrisa/street/roadlines4,
@@ -755,7 +754,6 @@
 	},
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "hybrisacheckpoint_bunker_north";
-	name = "\improper Lockdown";
 	vehicle_resistant = 1
 	},
 /turf/open/hybrisa/street/roadlines4,
@@ -3789,7 +3787,6 @@
 "ajW" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/machinery/door/poddoor/almayer/open{
-	name = "\improper Lockdown";
 	id = "hybrisacheckpoint_center";
 	vehicle_resistant = 1;
 	dir = 8
@@ -5209,7 +5206,6 @@
 /area/lv759/indoors/hobosecret)
 "anq" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
-	name = "\improper Lockdown";
 	id = "hybrisacheckpoint_center";
 	vehicle_resistant = 1;
 	dir = 8
@@ -5465,6 +5461,9 @@
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv759/indoors/wy_research_complex/reception)
+"anP" = (
+/turf/closed/wall/hybrisa/colony/engineering/ribbed,
+/area/lv759/indoors/recycling_plant/synthetic_storage)
 "anQ" = (
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
@@ -8676,7 +8675,6 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "awc" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
-	name = "\improper Lockdown";
 	id = "hybrisacheckpoint_center";
 	vehicle_resistant = 1;
 	dir = 8
@@ -19030,7 +19028,6 @@
 "bUv" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "hybrisamining_northeast1";
-	name = "\improper Lockdown";
 	vehicle_resistant = 1;
 	dir = 8
 	},
@@ -28109,7 +28106,6 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "hybrisamining_northeast1";
-	name = "\improper Lockdown";
 	vehicle_resistant = 1;
 	dir = 8
 	},
@@ -40149,7 +40145,6 @@
 /obj/structure/blocker/forcefield/vehicles,
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "hybrisamining_northeast2";
-	name = "\improper Lockdown";
 	vehicle_resistant = 1;
 	dir = 8
 	},
@@ -48146,7 +48141,6 @@
 "gjf" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "hybrisacheckpoint_east";
-	name = "\improper Lockdown";
 	vehicle_resistant = 1
 	},
 /turf/open/floor/prison/cell_stripe/north,
@@ -58894,7 +58888,6 @@
 "hQb" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "hybrisacheckpoint_west";
-	name = "\improper Lockdown";
 	vehicle_resistant = 1;
 	dir = 8
 	},
@@ -62116,7 +62109,6 @@
 /obj/effect/hybrisa/misc/fake/pipes/pipe1{
 	dir = 4
 	},
-/obj/structure/platform/metal/hybrisa/metalplatform6/west,
 /obj/effect/hybrisa/misc/fake/wire/red,
 /obj/effect/hybrisa/misc/fake/wire/yellow{
 	pixel_x = 7
@@ -66890,7 +66882,7 @@
 /area/lv759/indoors/caves/west_caves)
 "iZv" = (
 /obj/structure/blocker/forcefield/vehicles,
-/turf/closed/wall/hybrisa/colony/engineering,
+/turf/closed/wall/hybrisa/colony/engineering/ribbed,
 /area/lv759/indoors/recycling_plant/synthetic_storage)
 "iZy" = (
 /obj/structure/pipes/standard/manifold/hidden/dark{
@@ -75863,7 +75855,7 @@
 	pixel_y = 1
 	},
 /obj/structure/machinery/recharge_station/alt{
-	dir = 8
+	pixel_y = 4
 	},
 /turf/open/floor/prison/darkbrown2/north,
 /area/lv759/indoors/recycling_plant/synthetic_storage)
@@ -86762,7 +86754,6 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "hybrisamining_northeast1";
-	name = "\improper Lockdown";
 	vehicle_resistant = 1;
 	dir = 8
 	},
@@ -107015,7 +107006,6 @@
 "oYS" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "hybrisacheckpoint_west";
-	name = "\improper Lockdown";
 	vehicle_resistant = 1;
 	dir = 8
 	},
@@ -108202,7 +108192,6 @@
 "phV" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "hybrisacheckpoint_bunker";
-	name = "\improper Lockdown";
 	vehicle_resistant = 1
 	},
 /turf/open/hybrisa/street/roadlines4,
@@ -112646,9 +112635,8 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/structure/machinery/cryopod/joe/weyland{
-	pixel_x = 2;
-	pixel_y = 25
+/obj/structure/machinery/cryopod/joe/weyland/alt{
+	pixel_y = 4
 	},
 /turf/open/floor/prison/darkbrown2/north,
 /area/lv759/indoors/recycling_plant/synthetic_storage)
@@ -121861,7 +121849,6 @@
 "rmJ" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "hybrisacheckpoint_northwest";
-	name = "\improper Lockdown";
 	vehicle_resistant = 1
 	},
 /turf/open/floor/prison/cell_stripe/north,
@@ -126506,7 +126493,6 @@
 "rUl" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "hybrisacheckpoint_northwest";
-	name = "\improper Lockdown";
 	vehicle_resistant = 1
 	},
 /turf/open/floor/prison/cell_stripe,
@@ -135093,7 +135079,6 @@
 /area/lv759/outdoors/colony_streets/north_west_street)
 "tgC" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
-	name = "\improper Lockdown";
 	id = "hybrisacheckpoint_northeast";
 	vehicle_resistant = 1
 	},
@@ -145816,9 +145801,8 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/structure/machinery/cryopod/joe/weyland{
-	pixel_y = 25;
-	pixel_x = -1
+/obj/structure/machinery/cryopod/joe/weyland/alt{
+	pixel_y = 4
 	},
 /turf/open/floor/prison/darkbrown2/north,
 /area/lv759/indoors/recycling_plant/synthetic_storage)
@@ -157825,7 +157809,6 @@
 	pixel_x = -6
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
-	name = "\improper Lockdown";
 	id = "hybrisacheckpoint_center";
 	vehicle_resistant = 1;
 	dir = 8
@@ -158429,7 +158412,6 @@
 "wEE" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "hybrisacheckpoint_east";
-	name = "\improper Lockdown";
 	vehicle_resistant = 1
 	},
 /turf/open/floor/prison/cell_stripe,
@@ -158507,7 +158489,6 @@
 /obj/structure/blocker/forcefield/vehicles,
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "hybrisamining_northeast2";
-	name = "\improper Lockdown";
 	vehicle_resistant = 1;
 	dir = 8
 	},
@@ -169082,7 +169063,6 @@
 /area/lv759/outdoors/colony_streets/east_central_street)
 "yjr" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
-	name = "\improper Lockdown";
 	id = "hybrisacheckpoint_northeast";
 	vehicle_resistant = 1
 	},
@@ -222282,7 +222262,7 @@ nrx
 nrx
 nrx
 nrx
-auL
+anP
 pQv
 wen
 lkH
@@ -222534,7 +222514,7 @@ aFe
 xfr
 aFe
 xfr
-auL
+anP
 uLE
 sZS
 gCc
@@ -222786,7 +222766,7 @@ cnV
 cnV
 cnV
 cnV
-auL
+anP
 krP
 mQP
 sUa
@@ -223039,7 +223019,7 @@ eUd
 eUd
 jkQ
 iZv
-auL
+anP
 auL
 auL
 naS

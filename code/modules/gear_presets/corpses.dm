@@ -1986,3 +1986,116 @@
 /datum/equipment_preset/corpse/tyrargo/us_army_medic/burst
 	name = "Corpse - Burst - US Army - Medic"
 	xenovictim = TRUE
+
+// Working Joe Corpse
+
+/datum/equipment_preset/corpse/working_joe
+	name = "Deactivated Working Joe"
+	faction = FACTION_MARINE
+	faction_group = FACTION_LIST_ARES_MARINE
+	assignment = JOB_WORKING_JOE
+	job_title = JOB_WORKING_JOE
+	idtype = /obj/item/card/id/lanyard
+	var/new_bubble_icon = "machine"
+
+/datum/equipment_preset/corpse/working_joe/load_race(mob/living/carbon/human/new_human)
+	new_human.set_species(SYNTH_WORKING_JOE)
+	new_human.r_eyes = 78
+	new_human.g_eyes = 74
+	new_human.b_eyes = 59
+	new_human.h_style = "Bald"
+	new_human.f_style = "Shaved"
+
+/datum/equipment_preset/corpse/working_joe/load_name(mob/living/carbon/human/new_human, randomise)
+	new_human.bubble_icon = new_bubble_icon
+	new_human.age = rand(3, 5)
+	if(faction == FACTION_UPP)
+		new_human.change_real_name(new_human, "Dzho Automaton №[rand(9)][rand(9)][ascii2text(rand(65, 90))][ascii2text(rand(65, 90))]")
+	else
+		new_human.change_real_name(new_human, "Working Joe #[rand(100)][rand(100)]")
+
+/datum/equipment_preset/corpse/working_joe/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/joe(new_human), WEAR_FEET)
+	var/random_gear = rand(1,10)
+	switch(random_gear)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic/seegson(new_human), WEAR_IN_BACK)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/nanopaste(new_human), WEAR_IN_BACK)
+
+/datum/equipment_preset/corpse/working_joe/fireproof
+	name = "Deactivated - Fireproof - Working Joe"
+
+/datum/equipment_preset/corpse/working_joe/fireproof/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
+	var/i = rand(1,2)
+	switch(i)
+		if (1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe/fire(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/fireproof_boots(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/fireproof_gloves(new_human), WEAR_HANDS)
+			new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini(new_human), WEAR_WAIST)
+		if (2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe/fire/overalls(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/fireproof_boots(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/fireproof_gloves(new_human), WEAR_HANDS)
+			new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini(new_human), WEAR_WAIST)
+
+// Dead UPP Spy
+
+/datum/equipment_preset/corpse/upp_spy
+	name = "Corpse - Suspicious Colonist"
+	faction = FACTION_UPP
+
+/datum/equipment_preset/corpse/upp_spy/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/lasalle(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/black(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/document/small(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/black/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/np92/suppressed(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/black_market_hacking_device(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/np92/suppressed(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/np92/suppressed(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest/waistcoat(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big/chrome(new_human), WEAR_EYES)
+
+// Dead Lasalle Bionational - HIG Operative
+
+/datum/equipment_preset/corpse/lb_merc
+	name = "Corpse - Lasalle-Bionational - HIG - Operator"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	assignment = JOB_LB_MERC
+	job_title = JOB_LB_MERC
+	faction = FACTION_LASALLE_BIONATIONAL
+	faction_group = FACTION_LIST_SURVIVOR_LASALLE_BIONATIONAL
+	idtype = /obj/item/card/id/silver/cl/lasalle_bionational
+
+/datum/equipment_preset/corpse/lb_merc/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/lb_merc(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/lasalle(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/lb_merc(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/lb_merc(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/lasalle(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/lasalle_bionational/lb_merc(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/lb_merc(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/fsr(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/lb_merc(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black/five_slot(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/med_small_stack(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/a_m36(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/wy/lb_merc/b92fs_suppressed_near_empty, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/lasalle(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert/wy/near_empty(new_human), WEAR_R_STORE)
+
+/datum/equipment_preset/corpse/lb_merc/burst
+	name = "Corpse - Burst - Lasalle-Bionational - HIG - Operator"
+	xenovictim = TRUE

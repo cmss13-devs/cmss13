@@ -575,3 +575,125 @@
 	basestate = "prison_rwindow"
 	reinforced = TRUE
 	window_type = /obj/structure/window/framed/hybrisa/spaceport/reinforced
+
+
+// Atlan Station
+//grey
+/obj/structure/window_frame/upp_ship/grey
+	icon = 'icons/turf/walls/upp_grey_windows.dmi'
+	icon_state = "uppwall_window0_frame"
+	basestate = "uppwall_window"
+	window_type = /obj/structure/window/framed/upp_ship/grey
+
+/obj/structure/window_frame/upp_ship/grey/reinforced
+	icon_state = "uppwall_window0_frame"
+	basestate = "uppwall_window"
+	reinforced = TRUE
+	window_type = /obj/structure/window/framed/upp_ship/grey/reinforced
+
+/obj/structure/window_frame/upp_ship/grey/reinforced/hull
+	icon_state = "uppwall_window0_frame"
+	basestate = "uppwall_window"
+	unslashable = TRUE
+	unacidable = TRUE
+	window_type = /obj/structure/window/framed/upp_ship/grey/hull
+
+//teal
+/obj/structure/window_frame/upp_ship/grey/teal
+	icon = 'icons/turf/walls/upp_grey_teal_windows.dmi'
+	icon_state = "uppwall_window0_frame"
+	basestate = "uppwall_window"
+	window_type = /obj/structure/window/framed/upp_ship/grey/teal
+
+/obj/structure/window_frame/upp_ship/grey/teal/reinforced
+	icon_state = "uppwall_window0_frame"
+	basestate = "uppwall_window"
+	reinforced = TRUE
+	window_type = /obj/structure/window/framed/upp_ship/grey/teal/reinforced
+
+/obj/structure/window_frame/upp_ship/grey/teal/hull
+	icon_state = "uppwall_window0_frame"
+	basestate = "uppwall_window"
+	unslashable = TRUE
+	unacidable = TRUE
+	window_type = /obj/structure/window/framed/upp_ship/grey/teal/hull
+
+//green
+/obj/structure/window_frame/upp_ship/grey/green
+	icon = 'icons/turf/walls/upp_grey_green_windows.dmi'
+	icon_state = "uppwall_window0_frame"
+	basestate = "uppwall_window"
+	window_type = /obj/structure/window/framed/upp_ship/grey/green
+
+/obj/structure/window_frame/upp_ship/grey/green/reinforced
+	icon_state = "uppwall_window0_frame"
+	basestate = "uppwall_window"
+	reinforced = TRUE
+	window_type = /obj/structure/window/framed/upp_ship/grey/green/reinforced
+
+/obj/structure/window_frame/upp_ship/grey/green/hull
+	icon_state = "uppwall_window0_frame"
+	basestate = "uppwall_window"
+	unslashable = TRUE
+	unacidable = TRUE
+	window_type = /obj/structure/window/framed/upp_ship/grey/green/hull
+
+//blue
+/obj/structure/window_frame/upp_ship/grey/blue
+	icon = 'icons/turf/walls/upp_grey_blue_windows.dmi'
+	icon_state = "uppwall_window0_frame"
+	basestate = "uppwall_window"
+	window_type = /obj/structure/window/framed/upp_ship/grey/blue
+
+/obj/structure/window_frame/upp_ship/grey/blue/reinforced
+	icon_state = "uppwall_window0_frame"
+	basestate = "uppwall_window"
+	reinforced = TRUE
+	window_type = /obj/structure/window/framed/upp_ship/grey/blue/reinforced
+
+/obj/structure/window_frame/upp_ship/grey/blue/hull
+	icon_state = "uppwall_window0_frame"
+	basestate = "uppwall_window"
+	unslashable = TRUE
+	unacidable = TRUE
+	window_type = /obj/structure/window/framed/upp_ship/grey/blue/hull
+
+//orange
+/obj/structure/window_frame/upp_ship/grey/orange
+	icon = 'icons/turf/walls/upp_grey_orange_windows.dmi'
+	icon_state = "uppwall_window0_frame"
+	basestate = "uppwall_window"
+	window_type = /obj/structure/window/framed/upp_ship/grey/orange
+
+/obj/structure/window_frame/upp_ship/grey/orange/reinforced
+	icon_state = "uppwall_window0_frame"
+	basestate = "uppwall_window"
+	reinforced = TRUE
+	window_type = /obj/structure/window/framed/upp_ship/grey/orange/reinforced
+
+/obj/structure/window_frame/upp_ship/grey/orange/hull
+	icon_state = "uppwall_window0_frame"
+	basestate = "uppwall_window"
+	unslashable = TRUE
+	unacidable = TRUE
+	window_type = /obj/structure/window/framed/upp_ship/grey/orange/hull
+
+//red
+/obj/structure/window_frame/upp_ship/grey/red
+	icon = 'icons/turf/walls/upp_grey_red_windows.dmi'
+	icon_state = "uppwall_window0_frame"
+	basestate = "uppwall_window"
+	window_type = /obj/structure/window/framed/upp_ship/grey/red
+
+/obj/structure/window_frame/upp_ship/grey/red/reinforced
+	icon_state = "uppwall_window0_frame"
+	basestate = "uppwall_window"
+	reinforced = TRUE
+	window_type = /obj/structure/window/framed/upp_ship/grey/red/reinforced
+
+/obj/structure/window_frame/upp_ship/grey/red/hull
+	icon_state = "uppwall_window0_frame"
+	basestate = "uppwall_window"
+	unslashable = TRUE
+	unacidable = TRUE
+	window_type = /obj/structure/window/framed/upp_ship/grey/red/hull

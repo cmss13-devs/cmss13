@@ -104,6 +104,11 @@
 	to_chat(usr, SPAN_NOTICE("You set \the [src]'s volume to <b>[volume_setting]</b>."))
 
 /obj/item/device/radio/headset/handle_message_mode(mob/living/speaker as mob, message, channel)
+
+	if((channel in hear_only_channels) && !(channel in channels))
+		to_chat(speaker, SPAN_WARNING("The [channel] channel is hear only. You cannot talk on it."))
+		return null
+
 	if (channel == RADIO_CHANNEL_SPECIAL)
 		if (translate_apollo)
 			var/datum/language/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
@@ -221,13 +226,22 @@
 	translate_hive = FALSE
 
 	tracking_options = length(inbuilt_tracking_options) ? inbuilt_tracking_options.Copy() : list()
+
+	hear_only_channels = list()
+
 	for(var/i in keys)
 		var/obj/item/device/encryptionkey/key = i
 		for(var/ch_name in key.channels)
 			if(ch_name in channels)
 				continue
-			channels += ch_name
-			channels[ch_name] = key.channels[ch_name]
+			if(key.hear_only)
+				hear_only_channels += ch_name
+				hear_only_channels[ch_name] = key.channels[ch_name]
+				secure_radio_connections[ch_name] = SSradio.add_object(src, GLOB.radiochannels[ch_name], RADIO_CHAT)
+			else
+				channels += ch_name
+				channels[ch_name] = key.channels[ch_name]
+				
 		for(var/tracking_option in key.tracking_options)
 			tracking_options[tracking_option] = key.tracking_options[tracking_option]
 		if(key.translate_apollo)
@@ -622,8 +636,8 @@
 
 /obj/item/device/radio/headset/almayer/mcom/po
 	name = "marine pilot radio headset"
-	desc = "Used by Pilot Officers. Channels are as follows: :n - engineering, :m - medical, :j - JTAC, :t - intel."
-	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/po)
+	desc = "Used by Pilot Officers. Channels are as follows:, :n - engineering, :m - medical, :j - JTAC, :t - intel. Hear only channels are as follows: Command."
+	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/po, /obj/item/device/encryptionkey/command/hear)
 	frequency = JTAC_FREQ
 	volume = RADIO_VOLUME_RAISED // raised for DCCs, POs already have their volume boosted with their leadership
 	misc_tracking = TRUE
@@ -635,8 +649,8 @@
 
 /obj/item/device/radio/headset/almayer/mcom/io
 	name = "marine intel radio headset"
-	desc = "Used by Intelligence Officers. Channels are as follows: :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medical, :j - JTAC, :t - intel."
-	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/io)
+	desc = "Used by Intelligence Officers. Channels are as follows: :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medical, :j - JTAC, :t - intel. Hear only channels are as follows: Command."
+	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/io, /obj/item/device/encryptionkey/command/hear)
 	frequency = INTEL_FREQ
 
 /obj/item/device/radio/headset/almayer/mcom/mw

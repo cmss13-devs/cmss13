@@ -497,43 +497,6 @@
 	var/datum/action/xeno_action/onclick/transmute/transmute_action = new()
 	transmute_action.give_to(xeno)
 
-/datum/hivebuff/attack
-	name = "Boon of Aggression"
-	desc = "Increases all xenomorph damage by 5 for 5 minutes."
-	tier = HIVEBUFF_TIER_MINOR
-
-	engage_flavourmessage = "The Queen has imbued us with sharp claws."
-	duration = 5 MINUTES
-	number_of_required_pylons = 1
-	radial_icon = "slash"
-
-/datum/hivebuff/attack/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.damage_modifier += XENO_DAMAGE_MOD_VERY_SMALL
-	xeno.recalculate_damage()
-
-/datum/hivebuff/attack/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
-	xeno.recalculate_damage()
-
-/datum/hivebuff/attack/major
-	name = "Major Boon of Aggression"
-	desc = "Increases all xenomorph damage by 10 for 10 minutes."
-	tier = HIVEBUFF_TIER_MAJOR
-
-	engage_flavourmessage = "The Queen has imbued us with razor-sharp claws."
-	duration = 10 MINUTES
-	number_of_required_pylons = 2
-	cost = 2
-	radial_icon = "slash_m"
-
-/datum/hivebuff/attack/major/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.damage_modifier += XENO_DAMAGE_MOD_SMALL
-	xeno.recalculate_damage()
-
-/datum/hivebuff/attack/major/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-	xeno.recalculate_damage()
-
 
 /datum/hivebuff/boost_structure
 	name = "Boon of Fortification"

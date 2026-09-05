@@ -1851,6 +1851,10 @@
 "ahf" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/north_jungle)
+"ahg" = (
+/obj/effect/landmark/xeno_objective_spawn,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/west_barrens)
 "ahh" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_casing,
@@ -1864,6 +1868,10 @@
 /obj/item/attachable/suppressor,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
+"ahj" = (
+/obj/effect/landmark/xeno_objective_spawn,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
 "ahk" = (
 /obj/structure/surface/table/reinforced{
 	flipped = 1
@@ -34035,7 +34043,7 @@ jTP
 xwr
 akl
 xwr
-xwr
+ahg
 xwr
 oyx
 oyx
@@ -38047,7 +38055,7 @@ xwr
 xwr
 xwr
 xwr
-xwr
+ahg
 xwr
 xwr
 cEn
@@ -58438,7 +58446,7 @@ xch
 xch
 rGZ
 xch
-xch
+ahj
 eGg
 xch
 bEq

@@ -86,9 +86,10 @@
 	current.client.tgui_panel.window.send_message("settings/updateHighlightKeywords", payload.to_list())
 
 	new_character.refresh_huds(current) //inherit the HUDs from the old body
+	new_character.initialize_special_lighting()
 	new_character.aghosted = FALSE //reset aghost and away timer
 	new_character.away_timer = 0
-
+	new_character.reload_fullscreens()
 
 /datum/mind/proc/store_memory(new_text)
 	memory += "[new_text]<BR>"

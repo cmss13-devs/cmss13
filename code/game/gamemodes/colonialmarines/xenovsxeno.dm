@@ -263,9 +263,9 @@
 		round_finished = "The [last_living_hive] has won."
 
 
-///////////////////////////////
-//Checks if the round is over//
-///////////////////////////////
+/**
+ * Checks if the round is over
+ */
 /datum/game_mode/xenovs/check_finished()
 	if(round_finished)
 		return TRUE

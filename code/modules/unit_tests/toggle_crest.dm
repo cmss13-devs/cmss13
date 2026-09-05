@@ -79,7 +79,6 @@
 
 	var/base_ability_speed_modifier = xeno_defender.ability_speed_modifier
 	var/base_armor_deflection_buff = xeno_defender.armor_deflection_buff
-	var/base_mob_size = xeno_defender.mob_size
 
 	toggle_crest_ability.use_ability()
 	toggle_crest_ability.use_ability()

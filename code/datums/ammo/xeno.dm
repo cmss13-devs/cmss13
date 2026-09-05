@@ -237,7 +237,7 @@
 		var/mob/living/carbon/xenomorph/xeno = projectile.firer
 		new/obj/effect/xenomorph/spray/no_stun/dissolver(target_mob.loc, create_cause_data("dissolver corrosive spit", projectile.firer), xeno.hive.hivenumber)
 	else
-		new/obj/effect/xenomorph/spray/no_stun/dissolver(target_mob.loc, create_cause_data("dissolver corrosive spit", projectile.firer), xeno.hive.hivenumber)
+		new/obj/effect/xenomorph/spray/no_stun/dissolver(target_mob.loc, create_cause_data("dissolver corrosive spit", projectile.firer))
 
 /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/on_hit_obj(obj/target_object, obj/projectile/projectile)
 	. = ..()
@@ -245,7 +245,7 @@
 		var/mob/living/carbon/xenomorph/xeno = projectile.firer
 		new/obj/effect/xenomorph/spray/no_stun/dissolver(target_object.loc, create_cause_data("dissolver corrosive spit", projectile.firer), xeno.hive.hivenumber)
 	else
-		new/obj/effect/xenomorph/spray/no_stun/dissolver(target_object.loc, create_cause_data("dissolver corrosive spit", projectile.firer), xeno.hive.hivenumber)
+		new/obj/effect/xenomorph/spray/no_stun/dissolver(target_object.loc, create_cause_data("dissolver corrosive spit", projectile.firer))
 
 /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/on_hit_turf(turf/target_turf, obj/projectile/projectile)
 	. = ..()
@@ -253,7 +253,7 @@
 		var/mob/living/carbon/xenomorph/xeno = projectile.firer
 		new/obj/effect/xenomorph/spray/no_stun/dissolver(target_turf.loc, create_cause_data("dissolver corrosive spit", projectile.firer), xeno.hive.hivenumber)
 	else
-		new/obj/effect/xenomorph/spray/no_stun/dissolver(target_turf.loc, create_cause_data("dissolver corrosive spit", projectile.firer), xeno.hive.hivenumber)
+		new/obj/effect/xenomorph/spray/no_stun/dissolver(target_turf.loc, create_cause_data("dissolver corrosive spit", projectile.firer))
 
 /datum/ammo/xeno/acid/spatter/dissolver_enzymatic_breath
 	name = "Enzymatic breath"

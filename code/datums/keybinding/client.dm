@@ -11,7 +11,7 @@
 	keybind_signal = COMSIG_KB_CLIENT_SWITCHINPUT_DOWN
 
 /datum/keybinding/client/admin_help
-	hotkey_keys = list("Unbound")
+	hotkey_keys = list("F1")
 	classic_keys = list("F1")
 	name = "admin_help"
 	full_name = "Admin Help"

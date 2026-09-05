@@ -46,7 +46,7 @@
 	name = "screenshot as"
 	full_name = "Screenshot As"
 	description = "Save a screenshot as."
-	keybind_signal = COMSIG_KB_CLIENT_SCREENSHOT_DOWN
+	keybind_signal = COMSIG_KB_CLIENT_SCREENSHOT_AS_DOWN
 
 /datum/keybinding/client/screenshot_as/down(client/user)
 	. = ..()

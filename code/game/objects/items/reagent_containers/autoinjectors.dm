@@ -93,7 +93,7 @@
 				else
 					. += SPAN_NOTICE("You do not know how many injections it has or what is in it.")
 			else
-				. += SPAN_WARNING("It is spent and it has no means of refilling. It must be disposed of.")
+				. += SPAN_WARNING("It is spent and it has no means of refilling.")
 		else if(istype(src, /obj/item/reagent_container/hypospray/autoinjector/ez) || istype(src, /obj/item/reagent_container/hypospray/autoinjector/tutorial))
 			. += SPAN_NOTICE("It is empty, but you can refill it at any Wey-Med Plus Dispenser, any Wall-Med, or with an MS-11 Smart Refill Tank.")
 		else if(istype(src, /obj/item/reagent_container/hypospray/autoinjector/standard))

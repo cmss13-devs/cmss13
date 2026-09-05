@@ -149,3 +149,5 @@
 
 	// for multiz looking up
 	var/atom/observed_atom
+
+	var/nutrition = NUTRITION_NORMAL // This should be on /human

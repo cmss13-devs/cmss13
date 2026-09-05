@@ -1,7 +1,0 @@
-author: "Zenith, Aleksh. dimdimich1996"
-delete-after: True
-changes:
-  - rscadd: "adds various new thrall gear & expands their options."
-  - rscadd: "adds the missing snow loadout gear, boots, rain-cover, netting."
-  - imageadd: "adds arc icon for tech-tree."
-  - imagetweak: "palette correction for prey_items.dmi"

@@ -58,4 +58,7 @@ SUBSYSTEM_DEF(interior)
 
 	return TRUE
 
+/// See [/datum/controller/subsystem/interior/proc/in_interior]
+#define SSINTERIOR_TURF_IN_INTERIOR_FAST(loc) (!!SSmapping.used_turfs[loc])
+
 #undef INTERIOR_BORDER_SIZE

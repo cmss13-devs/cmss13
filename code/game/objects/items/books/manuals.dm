@@ -705,67 +705,50 @@
 		"}
 
 
-/obj/item/book/manual/chef_recipes
+/obj/item/chef_recipes //this one isn't actually a book its just pretending
 	name = "Pans and Dishes: Your Way Around the Marine Kitchens"
 	desc = "A huge book containing lots and lots of cooking recipes, perfect for those who wish to actually cook and not only stand in front of the microwave, staring at it."
+	icon = 'icons/obj/items/books.dmi'
 	icon_state = "cooked_book"
 	item_state = "cooked_book"
-	author = "Food Service Specialist Louis Covenant, United Americas"
-	title = "Pans and Dishes: Your Way Around the Marine Kitchens"
 
-	dat = {"<html>
-				<head>
-				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				h3 {font-size: 13px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
-				</style>
-				</head>
-				<body>
+	var/current_category
+	var/list/recipe_list = list()
+	var/search_text = ""
 
-				<h1>Food for New Mess Technicians</h1>
-				This guide is directed to our new Food Service Specialists and for those whose memory aren't their strongest suit.
+/obj/item/chef_recipes/attack_self(mob/user)
+	. = ..()
+	tgui_interact(user)
 
-				<h3>Basics:</h3>
-				Knead an egg and some flour to make dough. Bake that to make a bun or flatten and cut it.
+/obj/item/chef_recipes/tgui_interact(mob/user, datum/tgui/ui)
+	. = ..()
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "cookbook", name)
+		ui.open()
 
-				<h3>Burger:</h3>
-				Put a bun and some meat into the microwave and turn it on. Then wait.
+/obj/item/chef_recipes/ui_data()
+	var/categories = list()
+	for(var/category in GLOB.pcwj_cookbook_lookup)
+		categories += category
+	var/data = list(
+		"categories" = categories,
+		"recipes" = recipe_list,
+		"current_category" = current_category,
+		"search_text" = search_text,
+	)
 
-				<h3>Bread:</h3>
-				Put some dough and an egg into the microwave and then wait.
+	. = data
 
-				<h3>Waffles:</h3>
-				Add two lumps of dough and 10 units of sugar to the microwave and then wait.
+/obj/item/chef_recipes/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	if(..())
+		return
 
-				<h3>Popcorn:</h3>
-				Add 1 corn to the microwave and wait.
-
-				<h3>Meat Steak:</h3>
-				Put a slice of meat, 1 unit of salt, and 1 unit of pepper into the microwave and wait.
-
-				<h3>Meat Pie:</h3>
-				Put a flattened piece of dough and some meat into the microwave and wait.
-
-				<h3>Boiled Spaghetti:</h3>
-				Put the spaghetti (processed flour) and 5 units of water into the microwave and wait.
-
-				<h3>Donuts:</h3>
-				Add some dough and 5 units of sugar to the microwave and wait.
-
-				<h3>Fries:</h3>
-				Add one potato to the processor, then bake them in the microwave.
-
-				<h3>Further recipes</h3>
-				<iframe style="width:100%; height:85vh;" src="https://cm-ss13.com/wiki/Cooking" frameborder="0" id="main_frame"></iframe>
-				</body>
-			</html>
-			"}
-
+	switch(action)
+		if("set_category")
+			current_category = params["name"]
+			search_text = params["search_text"]
+			recipe_list = isnull(current_category) ? list() : GLOB.pcwj_cookbook_lookup[current_category]
 
 /obj/item/book/manual/barman_recipes
 	name = "Barman Recipes: Mixing Drinks and Changing Lives Under the Blitz"

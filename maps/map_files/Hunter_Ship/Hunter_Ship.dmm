@@ -20536,9 +20536,9 @@
 /turf/open/floor/corsat/box,
 /area/yautja_ship/middle_deck/medical)
 "Tx" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
+/obj/structure/machinery/cooking/grill,
+/obj/item/reagent_container/cooking/grill_grate,
+/obj/item/reagent_container/cooking/grill_grate,
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/upper_deck/meeting)
 "Ty" = (

@@ -526,6 +526,22 @@
 #define XENO_NEURO_TIER_4   1.75
 #define XENO_NEURO_TIER_5   2
 
+// Pheromone strength
+#define XENO_PHERO_STRENGTH_NONE 0
+#define XENO_PHERO_STRENGTH_VERY_WEAK 0.5
+#define XENO_PHERO_STRENGTH_WEAK 1
+#define XENO_PHERO_STRENGTH_NORMAL 2
+#define XENO_PHERO_STRENGTH_HIVELORD 2.5 // Apparently hivelords have slightly better pheromones, even though they're marked as "normal"
+#define XENO_PHERO_STRENGTH_STRONG 3
+#define XENO_PHERO_STRENGTH_VERY_STRONG 4
+#define XENO_PHERO_STRENGTH_OVERWHELMING 6
+
+// Pheromone types
+#define XENO_PHERO_RECOVERY "recovery"
+#define XENO_PHERO_FRENZY "frenzy"
+#define XENO_PHERO_WARDING "warding"
+#define ALL_XENO_PHEROMONES list(XENO_PHERO_RECOVERY, XENO_PHERO_FRENZY, XENO_PHERO_WARDING)
+
 // Pheremone strength modifiers
 #define XENO_PHERO_MOD_VERY_SMALL  0.25
 #define XENO_PHERO_MOD_SMALL   0.5
@@ -806,3 +822,38 @@
 #define FACEHUGGER_JUMP_RANGE 1 // dont really want them to hug you immediately as you break down a corner or a door when a carrier stacks them on a tile
 #define EGG_JUMP_RANGE 2 // This is for egg huggers, they are supposed to be scary and leap at people yes.
 #define CARRIER_HUGGER_THROW_RANGE 6
+
+// xeno organ flags
+
+// these organs are automatically assigned
+
+/// Organ is capable of generating plasma
+#define XENO_ORGAN_PLASMA (1<<0)
+/// Organ was taken from a living xenomorph
+#define XENO_ORGAN_FRESH (1<<1)
+
+// these need to be manually added
+
+/// Organ is capable of generating acid (sentinel evo tree)
+#define XENO_ORGAN_ACID (1<<2)
+/// Organ belongs to a support-type caste (drone evo tree)
+#define XENO_ORGAN_SUPPORT (1<<3)
+/// Organ belongs to a brute caste (defender evo tree)
+#define XENO_ORGAN_HARDENED (1<<4)
+/// Organ belongs to a fast caste (runner evo tree)
+#define XENO_ORGAN_TACHYCARDIA (1<<5)
+
+/// Organ belongs to a fragile caste (boiler)
+/// Obtaining it is very difficult and essentially
+/// requires a corrupted hive that evolves a boiler
+#define XENO_ORGAN_FRAGILE (1<<6)
+
+/// Organ taken from a low-tier caste
+#define XENO_ORGAN_WEAK (1<<7)
+/// Organ taken from a high-tier caste
+#define XENO_ORGAN_STRONG (1<<8)
+/// Organ taken from a royal-tier caste
+#define XENO_ORGAN_ROYAL (1<<9)
+
+/// Determines how fast xeno botany chems produce.
+#define XENO_BOTANY_RATE 10 SECONDS

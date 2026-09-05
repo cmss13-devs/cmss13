@@ -181,6 +181,7 @@
 #include "code\__HELPERS\#maths.dm"
 #include "code\__HELPERS\_lists.dm"
 #include "code\__HELPERS\_time.dm"
+#include "code\__HELPERS\_types.dm"
 #include "code\__HELPERS\animations.dm"
 #include "code\__HELPERS\chat.dm"
 #include "code\__HELPERS\cmp.dm"

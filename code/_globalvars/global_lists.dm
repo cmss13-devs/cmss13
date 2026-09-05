@@ -410,16 +410,14 @@ GLOBAL_LIST_INIT(sidearm_ammo, list(
 	return ammo_list
 
 /proc/setup_ammo()
-	var/list/blacklist = list(/datum/ammo/energy, /datum/ammo/energy/yautja, /datum/ammo/energy/yautja/rifle, /datum/ammo/bullet/shotgun, /datum/ammo/xeno)
-	var/list/ammo_list = list()
-	for(var/T in subtypesof(/datum/ammo) - blacklist)
+	. = list()
+	for(var/T in subtypesof_real(/datum/ammo))
 		var/datum/ammo/A = new T
-		ammo_list[A.type] = A
-	return ammo_list
+		.[A.type] = A
 
 /proc/setup_resin_constructions()
 	var/list/resin_constructions_list = list()
-	for (var/T in subtypesof(/datum/resin_construction) - list(/datum/resin_construction/resin_obj, /datum/resin_construction/resin_turf))
+	for (var/T in subtypesof_real(/datum/resin_construction))
 		var/datum/resin_construction/RC = new T
 		resin_constructions_list[T] = RC
 	return sortAssoc(resin_constructions_list)

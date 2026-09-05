@@ -1414,7 +1414,7 @@
 	item_state = "plasmarifle"
 	unacidable = TRUE
 	fire_sound = 'sound/weapons/pred_plasma_shot.ogg'
-	ammo = /datum/ammo/energy/yautja/rifle/bolt
+	ammo = /datum/ammo/energy/yautja/rifle_bolt
 	zoomdevicename = "scope"
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_HUGE
@@ -1472,7 +1472,7 @@
 	return ..()
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/load_into_chamber()
-	ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/bolt]
+	ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle_bolt]
 	charge_time -= 7
 	var/obj/projectile/projectile = create_bullet(ammo, initial(name))
 	projectile.set_light(1)
@@ -1681,7 +1681,7 @@
 					set_fire_delay(FIRE_DELAY_TIER_2 * 8)
 					fire_sound = 'sound/weapons/pulse.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
-					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/sphere/aoe_stun]
+					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/sphere_aoe_stun]
 				if("plasma immobilizers")
 					strength = "stun bolts"
 					charge_cost = 30

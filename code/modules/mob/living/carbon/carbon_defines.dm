@@ -1,3 +1,4 @@
+ABSTRACT_TYPE(/mob/living/carbon)
 /mob/living/carbon
 	gender = MALE
 	mobility_flags = MOBILITY_FLAGS_CARBON_DEFAULT

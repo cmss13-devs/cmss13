@@ -1,3 +1,4 @@
+ABSTRACT_TYPE(/mob)
 /mob
 	density = TRUE
 	layer = MOB_LAYER

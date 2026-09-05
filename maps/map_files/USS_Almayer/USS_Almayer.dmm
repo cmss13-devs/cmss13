@@ -40786,7 +40786,8 @@
 	id = "Containment Cell 3";
 	dir = 2;
 	req_one_access = list(28,206,207);
-	locked = 1
+	locked = 1;
+	queen_pryable = 0
 	},
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
@@ -43050,7 +43051,8 @@
 	id = "Containment Cell 2";
 	dir = 2;
 	req_one_access = list(28,206,207);
-	locked = 1
+	locked = 1;
+	queen_pryable = 0
 	},
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4

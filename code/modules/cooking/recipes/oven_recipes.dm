@@ -1193,7 +1193,7 @@
 	)
 
 /datum/cooking/recipe/maturecheese
-	container_type = /obj/reagent_container/cooking/oven
+	container_type = /obj/item/reagent_container/cooking/oven
 	product_type = /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/mature
 	catalog_category = COOKBOOK_CATEGORY_MISC
 	steps = list(
@@ -1202,7 +1202,7 @@
 	)
 
 /datum/cooking/recipe/verymaturecheese
-	container_type = /obj/reagent_container/cooking/oven
+	container_type = /obj/item/reagent_container/cooking/oven
 	product_type = /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/verymature
 	catalog_category = COOKBOOK_CATEGORY_MISC
 	steps = list(
@@ -1211,7 +1211,7 @@
 	)
 
 /datum/cooking/recipe/extramaturecheese
-	container_type = /obj/reagent_container/cooking/oven
+	container_type = /obj/item/reagent_container/cooking/oven
 	product_type = /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/extramature
 	catalog_category = COOKBOOK_CATEGORY_MISC
 	steps = list(

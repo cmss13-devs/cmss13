@@ -2,7 +2,7 @@
 
 ///Footstep component. Plays footsteps at parents location when it is appropriate.
 /datum/component/footstep
-	dupe_mode = COMPONENT_DUPE_HIGHLANDER
+	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
 	///how many steps before the footstep sound is played
 	var/steps = 0
 	///volume of soundfile see playsound()
@@ -28,6 +28,10 @@
 	drag_sounds = drag_sounds_
 
 	RegisterSignal(parent, list(COMSIG_MOVABLE_MOVED), PROC_REF(play_simplestep))
+
+/datum/component/footstep/InheritComponent(datum/component/C, i_am_original, steps_ = 2, volume_ = 50, range_ = null, falloff_ = 1, footstep_sounds_ = "alien_footstep_large", drag_sounds_ = 'sound/effects/alien_dragsound_large.ogg', vary_ = rand(20000, 25000))
+	. = ..()
+	footstep_sounds = footstep_sounds_
 
 /datum/component/footstep/proc/prepare_step()
 	var/turf/open/T = get_turf(parent)

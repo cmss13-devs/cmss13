@@ -113,11 +113,15 @@
 	icon_state = "beach"
 	baseturfs = /turf/open/gm/coast
 	supports_surgery = FALSE
+	water_type = /turf/open/gm/river/soro
+	turf_flags = TURF_WATER
 
 /turf/open/gm/coast/dirt/north
+	depth = DEPTH_COAST_INTERMEDIATE
 
 /turf/open/gm/coast/dirt/south
 	dir = 1
+	depth = DEPTH_LAND
 
 /turf/open/gm/coast/dirt/west
 	dir = 4
@@ -135,17 +139,21 @@
 
 /turf/open/gm/coast/dirt/beachcorner/south_east
 	dir = 4
+	depth = DEPTH_LAND
 
 /turf/open/gm/coast/dirt/beachcorner/south_west
 	dir = 8
+	depth = DEPTH_LAND
 
 /turf/open/gm/coast/dirt/beachcorner2
 	icon_state = "beachcorner2"
 
 /turf/open/gm/coast/dirt/beachcorner2/north_west
+	depth = DEPTH_COAST_INTERMEDIATE
 
 /turf/open/gm/coast/dirt/beachcorner2/north_east
 	dir = 1
+	depth = DEPTH_COAST_INTERMEDIATE
 
 /turf/open/gm/coast/dirt/beachcorner2/south_west
 	dir = 4
@@ -157,15 +165,20 @@
 	icon = 'icons/turf/floors/tyrargo_map_dirt.dmi'
 	icon_state = "forestbeach"
 	baseturfs = /turf/open/gm/coast
+	depth = DEPTH_COAST_INTERMEDIATE
+	water_type = /turf/open/gm/river/tyrargo
 
 /turf/open/gm/coast/dirt/forestdir/south
 	dir = 1
+	depth = DEPTH_LAND
 
 /turf/open/gm/coast/dirt/forestdir/west
 	dir = 4
+	depth = DEPTH_COAST_SHALLOW
 
 /turf/open/gm/coast/dirt/forestdir/east
 	dir = 8
+	depth = DEPTH_COAST_SHALLOW
 
 /turf/open/gm/coast/dirt/forestbeachcorner
 	icon = 'icons/turf/floors/tyrargo_map_dirt.dmi'
@@ -178,18 +191,23 @@
 
 /turf/open/gm/coast/dirt/forestbeachcorner/south_east
 	dir = 4
+	depth = DEPTH_LAND
 
 /turf/open/gm/coast/dirt/forestbeachcorner/south_west
 	dir = 8
+	depth = DEPTH_LAND
 
 /turf/open/gm/coast/dirt/forestbeachcorner2
 	icon = 'icons/turf/floors/tyrargo_map_dirt.dmi'
 	icon_state = "forestbeachcorner2"
+	water_type = /turf/open/gm/river/tyrargo
 
 /turf/open/gm/coast/dirt/forestbeachcorner2/north_west
+	depth = DEPTH_COAST_INTERMEDIATE
 
 /turf/open/gm/coast/dirt/forestbeachcorner2/north_east
 	dir = 1
+	depth = DEPTH_COAST_INTERMEDIATE
 
 /turf/open/gm/coast/dirt/forestbeachcorner2/south_west
 	dir = 4
@@ -221,8 +239,13 @@
 
 /turf/open/gm/river/soro
 	icon = 'icons/turf/floors/ground_map_dirt.dmi'
+	depth = DEPTH_SHALLOW
+	water_type = /turf/open/gm/river/soro
+	turf_flags = TURF_WATER
 
 /turf/open/gm/river/tyrargo
 	icon = 'icons/turf/floors/tyrargo_map_dirt.dmi'
 	icon_state = "forestseashallow"
-	icon_overlay = "forestriverwater"
+	depth = DEPTH_SHALLOW
+	water_type = /turf/open/gm/river/tyrargo
+	turf_flags = TURF_WATER

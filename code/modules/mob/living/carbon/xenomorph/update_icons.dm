@@ -142,6 +142,21 @@
 	. = ..()
 	update_icons()
 
+/mob/living/carbon/xenomorph/update_effects()
+	remove_overlay(EFFECTS_LAYER)
+
+	var/image/constructed_image
+	for(var/datum/effects/effect in effects_list)
+		if(effect.icon_path && effect.mob_icon_state_path)
+			if(!constructed_image)
+				constructed_image = image("icon" = effect.icon_path, "icon_state" = effect.mob_icon_state_path, "layer"= -EFFECTS_LAYER)
+			else
+				constructed_image.overlays += image("icon" = effect.icon_path, "icon_state" = effect.mob_icon_state_path, "layer"= -EFFECTS_LAYER)
+	if(!constructed_image)
+		return
+	overlays_standing[EFFECTS_LAYER] = constructed_image
+	apply_overlay(EFFECTS_LAYER)
+
 /* ^^^^^^^^^^^^^^ End Icon updates */
 
 /mob/living/carbon/xenomorph/update_inv_pockets()

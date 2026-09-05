@@ -55,10 +55,13 @@
 	TEST_ASSERT_NOTNULL(weeds_ability, "drone did not receive the plant weeds action")
 
 	var/turf/weeder_turf = get_turf(xeno_weeder)
+	var/original_density = weeder_turf.density
 	weeder_turf.density = TRUE
 
 	xeno_weeder.plasma_stored = weeds_ability.plasma_cost
 	weeds_ability.use_ability()
+
+	weeder_turf.density = original_density
 
 	TEST_ASSERT_NULL(locate(/obj/effect/alien/weeds/node) in weeder_turf, "a node was planted on a dense turf")
 	TEST_ASSERT_EQUAL(xeno_weeder.plasma_stored, weeds_ability.plasma_cost, "plasma was spent on a dense turf")
@@ -69,10 +72,13 @@
 	TEST_ASSERT_NOTNULL(weeds_ability, "drone did not receive the plant weeds action")
 
 	var/turf/weeder_turf = get_turf(xeno_weeder)
+	var/original_weedable = weeder_turf.is_weedable
 	weeder_turf.is_weedable = NOT_WEEDABLE
 
 	xeno_weeder.plasma_stored = weeds_ability.plasma_cost
 	weeds_ability.use_ability()
+
+	weeder_turf.is_weedable = original_weedable
 
 	TEST_ASSERT_NULL(locate(/obj/effect/alien/weeds/node) in weeder_turf, "a node was planted on an unweedable turf")
 	TEST_ASSERT_EQUAL(xeno_weeder.plasma_stored, weeds_ability.plasma_cost, "plasma was spent on an unweedable turf")
@@ -84,10 +90,13 @@
 	TEST_ASSERT(!weeds_ability.plant_on_semiweedable, "this test assumes the drone cannot plant on semiweedable turfs")
 
 	var/turf/weeder_turf = get_turf(xeno_weeder)
+	var/original_weedable = weeder_turf.is_weedable
 	weeder_turf.is_weedable = SEMI_WEEDABLE
 
 	xeno_weeder.plasma_stored = weeds_ability.plasma_cost
 	weeds_ability.use_ability()
+
+	weeder_turf.is_weedable = original_weedable
 
 	TEST_ASSERT_NULL(locate(/obj/effect/alien/weeds/node) in weeder_turf, "a node was planted on a semiweedable turf")
 

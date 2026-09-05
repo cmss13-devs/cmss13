@@ -128,25 +128,16 @@
 	if(!client?.prefs.update_slot(player_rank.title))
 		return
 
+	if(player_rank.flags_startup_parameters & ROLE_ADD_TO_SQUAD && player_rank.title != JOB_INTEL)
+		var/datum/equipment_preset/preset = new player_rank.gear_preset
+		var/datum/squad/predicted = GLOB.RoleAuthority.get_eligible_squad(player_rank.title, preset.faction, client?.prefs?.preferred_squad)
+		if(istype(predicted, /datum/squad/marine/cryo))
+			to_chat(src, SPAN_WARNING("[rank] is not available with your current squad preferences."))
+			return
+
 	if(!GLOB.RoleAuthority.assign_role(src, player_rank, latejoin = TRUE))
 		to_chat(src, SPAN_WARNING("[rank] is not available. Please try another."))
 		return
-
-	var/mob/living/carbon/human/test_human = new
-	var/datum/equipment_preset/preset = new player_rank.gear_preset
-	test_human.faction = preset.faction
-	test_human.job = player_rank.title
-	if(player_rank.flags_startup_parameters & ROLE_ADD_TO_SQUAD && test_human.job != JOB_INTEL)
-		GLOB.RoleAuthority.randomize_squad(test_human, force_client=client)
-		if(istype(test_human.assigned_squad, /datum/squad/marine/cryo))
-			test_human.assigned_squad.forget_marine_in_squad(test_human)
-			GLOB.RoleAuthority.free_role(player_rank, force = TRUE)
-			job = null
-			to_chat(src, SPAN_WARNING("[rank] is not available with your current squad preferences."))
-			qdel(test_human)
-			return
-		test_human.assigned_squad.forget_marine_in_squad(test_human)
-	qdel(test_human)
 
 	spawning = TRUE
 	close_spawn_windows()
@@ -166,11 +157,12 @@
 	SSticker.mode.update_gear_scale()
 	SSticker.mode.update_energy_scale()
 
+	var/current_marine_count = get_total_marines()
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
 
 		if(target_squad.dynamic_scaling)
-			target_squad.roles_cap[JOB_SQUAD_ENGI] = engi_slot_formula(length(GLOB.clients))
-			target_squad.roles_cap[JOB_SQUAD_MEDIC] = medic_slot_formula(length(GLOB.clients))
+			target_squad.roles_cap[JOB_SQUAD_ENGI] = engi_slot_formula(current_marine_count)
+			target_squad.roles_cap[JOB_SQUAD_MEDIC] = medic_slot_formula(current_marine_count)
 
 
 	var/latejoin_larva_drop = SSticker.mode.latejoin_larva_drop

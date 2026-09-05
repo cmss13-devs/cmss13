@@ -198,6 +198,19 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(istype(SMJ))
 		SMJ.set_spawn_positions(GLOB.players_preassigned)
 
+	// Set initial squad caps
+	var/datum/job/engi_job = GET_MAPPED_ROLE(JOB_SQUAD_ENGI)
+	if(istype(engi_job))
+		engi_job.set_spawn_positions(GLOB.players_preassigned)
+	var/datum/job/medic_job = GET_MAPPED_ROLE(JOB_SQUAD_MEDIC)
+	if(istype(medic_job))
+		medic_job.set_spawn_positions(GLOB.players_preassigned)
+
+	// Restore kilo and oscar to their caps once we have enough clients
+	for(var/datum/squad/target_squad in squads)
+		if(target_squad.pop_lock && target_squad.pop_lock < length(GLOB.clients))
+			target_squad.roles_cap = target_squad.initial_roles_cap
+
 	// Set survivor starting amount based on marines assigned
 	var/datum/job/SJ = temp_roles_for_mode[JOB_SURVIVOR]
 	if(istype(SJ))
@@ -288,41 +301,26 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	/*===============================================================*/
 
-// Assigns players to squads to check if they should be returned to lobby
+// Checks candidates' squad preferences to see if they should be returned to lobby
 /datum/authority/branch/role/proc/test_squads(list/random_players)
-	var/list/mob/living/carbon/human/test_humans = list()
-	var/list/mob/new_player/player_refs = alist()
+	var/list/simulated_fill = list()
 	for(var/mob/new_player/player in random_players)
 		if(!player || !player.ready || !player.mind || !player.job)
 			continue
 
-		var/mob/living/carbon/human/test_human = new
 		var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[player.job]
-
 		if(!job || !job.gear_preset)
-			qdel(test_human)
+			continue
+		if(!(job.flags_startup_parameters & ROLE_ADD_TO_SQUAD) || job.title == JOB_INTEL)
 			continue
 
 		var/datum/equipment_preset/preset = new job.gear_preset
-		test_human.faction = preset.faction
-		test_human.job = job.title
-		if(job.flags_startup_parameters & ROLE_ADD_TO_SQUAD && test_human.job != JOB_INTEL)
-			test_humans += test_human
-			player_refs[test_human] = player
-			GLOB.RoleAuthority.randomize_squad(test_human, force_client=player.client)
+		var/datum/squad/predicted = get_eligible_squad(job.title, preset.faction, player.client?.prefs?.preferred_squad, FALSE, simulated_fill)
 
-	for(var/mob/living/carbon/human/test_human in test_humans)
-		if(istype(test_human.assigned_squad, /datum/squad/marine/cryo))
-			test_human.assigned_squad.forget_marine_in_squad(test_human)
-			free_role(GLOB.RoleAuthority.roles_for_mode[test_human.job], force = TRUE)
-			unassigned_players += player_refs[test_human]
-			player_refs[test_human].job = null
-		else
-			test_human.assigned_squad.forget_marine_in_squad(test_human)
-		qdel(test_human)
-
-	for(var/datum/squad/squad in squads)
-		squad.roles_in = list()
+		if(istype(predicted, /datum/squad/marine/cryo))
+			free_role(GLOB.RoleAuthority.roles_for_mode[player.job], force = TRUE)
+			unassigned_players += player
+			player.job = null
 /**
 * Assign roles to the players. Return roles that are still avialable.
 * If count is true, return role balancing weight instead.
@@ -595,39 +593,22 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	SEND_SIGNAL(new_human, COMSIG_POST_SPAWN_UPDATE)
 	SSround_recording.recorder.track_player(new_human)
 
-//This proc is a bit of a misnomer, since there's no actual randomization going on.
-/datum/authority/branch/role/proc/randomize_squad(mob/living/carbon/human/human, skip_limit = FALSE, client/force_client = null)
-	if(!human)
-		return
-
-	if(!length(squads))
-		to_chat(human, "Something went wrong with your squad randomizer! Tell a coder!")
-		return //Shit, where's our squad data
-
-	if(human.assigned_squad) //Wait, we already have a squad. Get outta here!
-		return
-
+/datum/authority/branch/role/proc/get_eligible_squad(job_title, faction, list/preferred_squads, skip_limit = FALSE, list/simulated_fill = null)
 	//Deal with IOs first
-	if(human.job == JOB_INTEL)
-		var/datum/squad/intel_squad = get_squad_by_name(SQUAD_MARINE_INTEL)
-		if(!intel_squad || !istype(intel_squad)) //Something went horribly wrong!
-			to_chat(human, "Something went wrong with randomize_squad()! Tell a coder!")
-			return
-		intel_squad.put_marine_in_squad(human)
-		return
+	if(job_title == JOB_INTEL)
+		return get_squad_by_name(SQUAD_MARINE_INTEL)
 
 	var/slot_check
-	if(human.job != "Reinforcements")
-		slot_check = GET_DEFAULT_ROLE(human.job)
+	if(job_title != "Reinforcements")
+		slot_check = GET_DEFAULT_ROLE(job_title)
 
 	//we make a list of squad that is randomized so alpha isn't always lowest squad.
 	var/list/usable_squads = list()
 	for(var/datum/squad/squad in squads)
-		if(squad.roundstart && squad.usable && squad.faction == human.faction && squad.name != "Root")
+		if(squad.roundstart && squad.usable && squad.faction == faction && squad.name != "Root")
 			usable_squads += squad
 
 	var/has_squad_pref = FALSE
-	var/list/preferred_squads = force_client ? force_client.prefs?.preferred_squad : human.client?.prefs?.preferred_squad
 	if(islist(preferred_squads) && length(preferred_squads))
 		var/list/ordered_squads = list()
 		for(var/squad_in_pref in preferred_squads)
@@ -639,22 +620,49 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		usable_squads = ordered_squads
 
 	var/datum/squad/lowest
+	var/lowest_fill
 	for(var/datum/squad/squad in usable_squads)
 		if(slot_check && (slot_check in squad.transfer_only_roles))
 			continue
-		if(slot_check && !isnull(squad.roles_cap[slot_check]) && !skip_limit)
-			if(squad.roles_in[slot_check] >= squad.roles_cap[slot_check])
-				continue
 
-		if(has_squad_pref && squad.put_marine_in_squad(human))
-			return
+		var/fill = slot_check ? ((squad.roles_in[slot_check] || 0) + (simulated_fill?[squad]?[slot_check] || 0)) : 0
+		if(slot_check && !isnull(squad.roles_cap[slot_check]) && !skip_limit && fill >= squad.roles_cap[slot_check])
+			continue
 
-		if(!lowest || (slot_check && lowest.roles_in[slot_check] > squad.roles_in[slot_check]))
+		if(has_squad_pref)
+			if(simulated_fill && slot_check)
+				simulated_fill[squad] = simulated_fill[squad] || list()
+				simulated_fill[squad][slot_check] = (simulated_fill[squad][slot_check] || 0) + 1
+			return squad
+
+		if(!lowest || (slot_check && lowest_fill > fill))
 			lowest = squad
+			lowest_fill = fill
+
 	if(!lowest)
 		lowest = locate(/datum/squad/marine/cryo) in squads
-	lowest.put_marine_in_squad(human)
-	return
+	else if(simulated_fill && slot_check)
+		simulated_fill[lowest] = simulated_fill[lowest] || list()
+		simulated_fill[lowest][slot_check] = (simulated_fill[lowest][slot_check] || 0) + 1
+	return lowest
+
+//This proc is a bit of a misnomer, since there's no actual randomization going on.
+/datum/authority/branch/role/proc/randomize_squad(mob/living/carbon/human/human, skip_limit = FALSE)
+	if(!human)
+		return
+
+	if(!length(squads))
+		to_chat(human, "Something went wrong with your squad randomizer! Tell a coder!")
+		return //Shit, where's our squad data
+
+	if(human.assigned_squad) //Wait, we already have a squad. Get outta here!
+		return
+
+	var/datum/squad/target = get_eligible_squad(human.job, human.faction, human.client?.prefs?.preferred_squad, skip_limit)
+	if(!target)
+		to_chat(human, "Something went wrong with randomize_squad()! Tell a coder!")
+		return
+	target.put_marine_in_squad(human)
 
 /datum/authority/branch/role/proc/prioritize_specialist(mob/living/carbon/human/human)
 	if(!human)

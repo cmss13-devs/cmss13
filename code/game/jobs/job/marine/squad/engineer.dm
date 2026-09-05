@@ -1,3 +1,5 @@
+#define MARINE_TO_TOTAL_SPAWN_RATIO (3/4)
+
 /datum/job/marine/engineer
 	title = JOB_SQUAD_ENGI
 	total_positions = 12
@@ -9,8 +11,8 @@
 
 /datum/job/marine/engineer/set_spawn_positions(count)
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-		if(target_squad && target_squad.dynamic_scaling)
-			target_squad.roles_cap[title] = engi_slot_formula(count)
+		if(target_squad.dynamic_scaling)
+			target_squad.roles_cap[title] = engi_slot_formula(count * MARINE_TO_TOTAL_SPAWN_RATIO)
 
 /datum/job/marine/engineer/get_total_positions(latejoin=0)
 	var/slots = engi_slot_formula(get_total_marines())
@@ -35,3 +37,5 @@ AddTimelock(/datum/job/marine/engineer, list(
 	name = JOB_SQUAD_ENGI
 	icon_state = "engi_spawn"
 	job = /datum/job/marine/engineer
+
+#undef MARINE_TO_TOTAL_SPAWN_RATIO

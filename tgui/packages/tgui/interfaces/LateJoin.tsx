@@ -56,9 +56,9 @@ export const LateJoin = (props, context) => {
       ? 'crtred'
       : 'crtgreen';
   return (
-    <Window theme={theme} width={600} height={700}>
+    <Window theme={theme} width={650} height={750}>
       <Window.Content className="LateJoin" scrollable>
-        {data.HijackInitiated ? (
+        {(data.HijackInitiated === true) ? (
           <Box>
             <Stack
               className="HijackIndicator"

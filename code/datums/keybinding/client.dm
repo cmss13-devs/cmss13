@@ -3,8 +3,8 @@
 	weight = WEIGHT_HIGHEST
 
 /datum/keybinding/client/switch_input
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "switch_input"
 	full_name = "Switch Input to Command Bar"
 	description = "Switch between the map pane and the command bar."

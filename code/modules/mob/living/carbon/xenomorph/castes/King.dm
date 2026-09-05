@@ -135,6 +135,7 @@
 
 /mob/living/carbon/xenomorph/king/death(cause, gibbed)
 	. = ..()
+	hive.living_xeno_king = null
 	if(hive)
 		hive.setup_banned_allies()
 

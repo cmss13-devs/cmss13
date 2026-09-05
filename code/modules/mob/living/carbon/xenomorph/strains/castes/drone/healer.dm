@@ -128,7 +128,7 @@
 	face_atom(target_xeno)
 	adjustBruteLoss(amount * damage_taken_mod)
 	use_plasma(amount * 2)
-	updatehealth() // This is needed only because of using adjustBruteLoss above rather than apply_damage, which is wrong
+	updatehealth()
 	new /datum/effects/heal_over_time(target_xeno, heal_amount = amount)
 	target_xeno.xeno_jitter(1 SECONDS)
 	target_xeno.flick_heal_overlay(5 SECONDS, "#00be6f")

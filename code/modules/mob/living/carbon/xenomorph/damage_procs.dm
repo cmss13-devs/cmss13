@@ -82,7 +82,6 @@
 		f_loss += damage * 0.5
 		apply_damage(b_loss, BRUTE, enviro=enviro)
 		apply_damage(f_loss, BURN, enviro=enviro)
-		updatehealth()
 
 		var/powerfactor_value = round( damage * 0.05 ,1)
 		powerfactor_value = min(powerfactor_value,20)

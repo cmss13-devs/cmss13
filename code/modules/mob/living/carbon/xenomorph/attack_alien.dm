@@ -206,8 +206,6 @@
 
 			SEND_SIGNAL(attacking_xeno, COMSIG_HUMAN_ALIEN_ATTACK, src)
 
-			updatehealth()
-
 		if(INTENT_DISARM)
 			if(attacking_xeno.legcuffed && isyautja(src))
 				to_chat(attacking_xeno, SPAN_XENODANGER("We don't have the dexterity to tackle the headhunter with that thing on our leg!"))

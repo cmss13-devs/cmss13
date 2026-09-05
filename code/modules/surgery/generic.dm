@@ -30,18 +30,18 @@
 	desc = "make an incision"
 	tools = SURGERY_TOOLS_INCISION
 	time = 2 SECONDS
-	preop_sound = 'sound/surgery/scalpel1.ogg'
-	success_sound = 'sound/surgery/scalpel2.ogg'
+	//preop_sound is handled in surgery_step/proc/use_custom_preop_sound in surgery_steps.dm
+	//success_sound is handled uniquely in surgery_step/incision/success
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/incision/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool_type == /obj/item/tool/surgery/scalpel/manager)
 		user.affected_message(target,
-			SPAN_NOTICE("You start to construct a prepared incision in [target]'s [surgery.affected_limb.display_name] with [tool]."),
-			SPAN_NOTICE("[user] starts to construct a prepared incision in your [surgery.affected_limb.display_name] with [tool]."),
-			SPAN_NOTICE("[user] starts to construct a prepared incision in [target]'s [surgery.affected_limb.display_name] with [tool]."))
+			SPAN_NOTICE("You start to simultaneously construct a prepared, bloodless, and widened surgical site in [target]'s [surgery.affected_limb.display_name] with [tool]."),
+			SPAN_NOTICE("[user] starts to simultaneously construct a prepared, bloodless, and widened surgical site in your [surgery.affected_limb.display_name] with [tool]."),
+			SPAN_NOTICE("[user] to simultaneously construct a prepared, bloodless, and widened surgical site in [target]'s [surgery.affected_limb.display_name] with [tool]."))
 
-		target.custom_pain("You feel a horrible, searing pain in your [surgery.affected_limb.display_name] as the flesh is pushed apart!", 1)
+		target.custom_pain("You feel a horrible, searing pain in your [surgery.affected_limb.display_name] as your flesh is sliced, clamped, and pushed apart!", 1)
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You start to make an incision on [target]'s [surgery.affected_limb.display_name] with [tool]."),
@@ -57,10 +57,10 @@
 
 	if(tool_type == /obj/item/tool/surgery/scalpel/manager)
 		user.affected_message(target,
-			SPAN_NOTICE("You have constructed a prepared incision in [target]'s [surgery.affected_limb.display_name] that is now bleeding."),
-			SPAN_NOTICE("[user] has constructed a prepared incision in your [surgery.affected_limb.display_name] that is now bleeding."),
-			SPAN_NOTICE("[user] has constructed a prepared incision in [target]'s [surgery.affected_limb.display_name] that is now bleeding."))
-
+			SPAN_NOTICE("You finish simultaneously constructing a prepared, bloodless, and widened surgical site in [target]'s [surgery.affected_limb.display_name]."),
+			SPAN_NOTICE("[user] finishes simultaneously constructing a prepared, bloodless, and widened surgical site in [surgery.affected_limb.display_name]."),
+			SPAN_NOTICE("[user] has constructed a prepared, bloodless, and widened surgical site in [target]'s [surgery.affected_limb.display_name]."))
+		playsound(target.loc, 'sound/surgery/retractor2.ogg', vol = 40, sound_range = 1)
 		surgery.status += 6 //IMS completes all steps.
 
 		switch(target_zone) //forces application of overlays
@@ -74,13 +74,14 @@
 			SPAN_NOTICE("You finish making a bloodless incision on [target]'s [surgery.affected_limb.display_name] with [tool]."),
 			SPAN_NOTICE("[user] finishes making a bloodless incision on your [surgery.affected_limb.display_name] with [tool]."),
 			SPAN_NOTICE("[user] finishes making a bloodless incision on [target]'s [surgery.affected_limb.display_name] with [tool]."))
-
+		playsound(target.loc, 'sound/surgery/laserscalpel2.ogg', vol = 40, sound_range = 1) //good laser scalpels get the true success noise.
 		surgery.status += 3 //A laser scalpel may cauterise as it cuts.
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You finish the incision on [target]'s [surgery.affected_limb.display_name]."),
 			SPAN_NOTICE("[user] finishes the incision on your [surgery.affected_limb.display_name]."),
 			SPAN_NOTICE("[user] finishes the incision on [target]'s [surgery.affected_limb.display_name]."))
+		playsound(target.loc, 'sound/surgery/scalpel2.ogg', vol = 40, sound_range = 1) //naughty laser scalpels get the normal scalpel sound if they fail to make bloodless incisions.
 
 		if(!(surgery.affected_limb.status & LIMB_SYNTHSKIN))
 			var/datum/effects/bleeding/external/incision_bleed = new(target, surgery.affected_limb, 10)
@@ -145,11 +146,8 @@
 	name = "Clamp Bleeders"
 	desc = "clamp bleeders on the bleeding vessels"
 	//Tools used to clamp bleeders by either clamping them shut or tying them shut. Fixovein is a substitute but also a real surgery tool.
-	tools = list(
-		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_IDEAL,
-		/obj/item/tool/wirecutters = SURGERY_TOOL_MULT_SUBSTITUTE,
-		/obj/item/stack/cable_coil = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
-	)
+	tools = SURGERY_TOOLS_PINCH
+
 	///Tools used to stem bleeders by specifically tying them up. List used for specific messaging as there's two of these.
 	var/ligation_tools = list(/obj/item/stack/cable_coil)
 	time = 2 SECONDS
@@ -192,7 +190,7 @@
 	var/surface_modifier = target.buckled?.surgery_duration_multiplier
 	if(!surface_modifier)
 		surface_modifier = SURGERY_SURFACE_MULT_AWFUL
-		for(var/obj/surface in get_turf(target))
+		for(var/obj/surface in target.loc)
 			if(surface_modifier > surface.surgery_duration_multiplier)
 				surface_modifier = surface.surgery_duration_multiplier
 
@@ -234,19 +232,7 @@
 	desc = "widen the incision"
 	time = 2 SECONDS
 	//Tools used to pry open specifically incisions. Contains INCISION tools at lengthy delays, mainly so surgeons can dramatically slash open incisions with them.
-	tools = list(\
-		/obj/item/tool/surgery/retractor = SURGERY_TOOL_MULT_IDEAL,
-		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_SUBOPTIMAL,
-		/obj/item/tool/crowbar = SURGERY_TOOL_MULT_SUBSTITUTE,
-		/obj/item/tool/wirecutters = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
-		/obj/item/maintenance_jack = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
-		/obj/item/tool/kitchen/utensil/fork = SURGERY_TOOL_MULT_AWFUL,
-		/obj/item/attachable/bayonet = SURGERY_TOOL_MULT_AWFUL,
-		/obj/item/tool/surgery/scalpel = SURGERY_TOOL_MULT_AWFUL,
-		/obj/item/tool/kitchen/knife = SURGERY_TOOL_MULT_AWFUL,
-		/obj/item/weapon/throwing_knife = SURGERY_TOOL_MULT_AWFUL,
-		/obj/item/shard = SURGERY_TOOL_MULT_AWFUL
-		)
+	tools = SURGERY_TOOLS_PRY
 	preop_sound = 'sound/surgery/retractor1.ogg'
 	success_sound = 'sound/surgery/retractor2.ogg'
 	failure_sound = 'sound/surgery/organ1.ogg'
@@ -343,6 +329,8 @@
 		if(target.pain.reduction_pain < surgery.pain_reduction_required) //if patient is not under the proper anesthesia
 			target.emote("pain")
 
+	if(tool.hitsound)
+		playsound(target.loc, tool.hitsound, 25, TRUE)
 	target.apply_damage(15, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] violently retracted skin in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
 	return TRUE //Failing to finish this step doesn't fail it, it just means you do it a lot more violently.
@@ -371,7 +359,7 @@
 		/obj/item/clothing/mask/cigarette,
 		/obj/item/tool/weldingtool,
 		)
-	preop_sound = 'sound/surgery/cautery1.ogg'
+	//preop_sound is handled in surgery_step/proc/use_custom_preop_sound in surgery_steps.dm
 	success_sound = 'sound/surgery/cautery2.ogg'
 	failure_sound = 'sound/items/welder.ogg'
 
@@ -476,9 +464,9 @@
 		/obj/item/tool/kitchen/knife/butcher = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
 	)
 	time = 4 SECONDS
-	preop_sound = 'sound/surgery/saw.ogg'
+	//preop_sound is handled in surgery_step/proc/use_custom_preop_sound in surgery_steps.dm
 	success_sound = 'sound/surgery/hemostat2.ogg'
-	failure_sound = 'sound/effects/circsawfail1.ogg'
+	failure_sound = 'sound/effects/bone_break4.ogg'
 
 
 /datum/surgery_step/saw_encased/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
@@ -696,8 +684,8 @@
 	desc = "repair the damaged bones"
 	tools = SURGERY_TOOLS_BONE_MEND
 	time = 3 SECONDS
-	preop_sound = 'sound/handling/clothingrustle1.ogg'
-	success_sound = 'sound/handling/bandage.ogg'
+	//preop_sound is handled in surgery_step/proc/use_custom_preop_sound in surgery_steps.dm
+	//success_sound is handled in surgery_step/proc/use_custom_success_sound in surgery_steps.dm
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 //Use materials to mend bones, same as /datum/surgery_step/mend_bones
@@ -733,7 +721,6 @@
 			SPAN_NOTICE("[user] begins to screw a reinforcing plate to [target]'s [surgery.affected_limb.encased] with [tool]."))
 
 		target.custom_pain("You can feel something grinding in your [surgery.affected_limb.encased]!", 1)
-		playsound(target.loc, 'sound/items/Screwdriver.ogg', 25, TRUE)
 
 	log_interact(user, target, "[key_name(user)] began mending [key_name(target)]'s [surgery.affected_limb.encased].")
 
@@ -778,6 +765,6 @@
 
 	if(tool_type != /obj/item/tool/surgery/bonegel)
 		to_chat(user, SPAN_NOTICE("The metal rods used on [target]'s [surgery.affected_limb.display_name] fall loose from their [surgery.affected_limb]."))
-		var/obj/item/stack/rods/rods = new /obj/item/stack/rods(get_turf(target))
+		var/obj/item/stack/rods/rods = new /obj/item/stack/rods(target.loc)
 		rods.amount = 2 //Refund 2 rods on failure
 		rods.update_icon()

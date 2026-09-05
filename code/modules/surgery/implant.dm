@@ -209,7 +209,7 @@
 
 		log_interact(user, target, "[key_name(user)] removed something from [key_name(target)]'s [surgery.affected_limb.cavity] with [tool].")
 
-		surgery.affected_limb.hidden.forceMove(get_turf(target))
+		surgery.affected_limb.hidden.forceMove(target.loc)
 		surgery.affected_limb.hidden.blood_color = target.get_blood_color()
 		surgery.affected_limb.hidden.update_icon()
 		surgery.affected_limb.hidden = null
@@ -336,7 +336,7 @@
 				SPAN_NOTICE("[user] extracts [obj] from [target]'s [surgery.affected_limb.display_name]."))
 
 			surgery.affected_limb.implants -= obj
-			obj.forceMove(get_turf(target))
+			obj.forceMove(target.loc)
 
 			if(istype(obj, /obj/item/implant))
 				var/obj/item/implant/imp = obj

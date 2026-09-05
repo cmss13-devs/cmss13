@@ -37,6 +37,8 @@
 			)
 	)
 
+	late_join_ui = new()
+
 	tgui_interact(src)
 
 /mob/new_player/tgui_interact(mob/user, datum/tgui/ui)
@@ -142,7 +144,7 @@
 					tutorial_menu()
 					return FALSE
 
-			late_choices()
+			late_join_ui.tgui_interact(src)
 			return TRUE
 
 		if("late_join_upp")

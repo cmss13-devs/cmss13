@@ -384,6 +384,7 @@
 #include "code\datums\highlight_keywords_payload.dm"
 #include "code\datums\http.dm"
 #include "code\datums\internet_media.dm"
+#include "code\datums\late_join.dm"
 #include "code\datums\lazy_template.dm"
 #include "code\datums\map_config.dm"
 #include "code\datums\mapgrid.dm"

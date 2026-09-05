@@ -62,7 +62,7 @@
 	stamina = new /datum/stamina(src)
 
 /mob/living/carbon/human/Destroy()
-	SSround_recording.recorder.stop_tracking(src)
+	SSround_recording?.recorder?.stop_tracking(src)
 	remove_from_all_mob_huds()
 	despawn_fax_responder()
 	assigned_equipment_preset = null

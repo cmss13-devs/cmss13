@@ -16,6 +16,7 @@ cfg/
 !cfg/.keep
 tmp/
 dmdoc/
+llcm/target
 tools/Runtime Condenser/Input.txt
 tools/Runtime Condenser/Output.txt
 sound/music/*.ogg

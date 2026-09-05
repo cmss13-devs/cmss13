@@ -1,0 +1,18 @@
+# This action is a wrapper around `actions-rust-lang/setup-rust-toolchain` to use the version specified in
+# `dependencies.sh`.
+name: Setup Rust Toolchain
+description: Install Rustup and its associated toolchain using the version specified in `dependencies.sh`
+
+runs:
+  using: composite
+  steps:
+    - name: Configure rustup version
+      shell: bash
+      run: |
+        source dependencies.sh
+        echo "RUST_REQUIRED_TARGET=$RUST_BUILD_TARGET" >> $GITHUB_ENV
+    - name: Install rust toolchain
+      uses: actions-rust-lang/setup-rust-toolchain@v1
+      with:
+        toolchain: nightly
+        target: ${{env.RUST_REQUIRED_TARGET}}

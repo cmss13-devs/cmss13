@@ -1,0 +1,23 @@
+[package]
+name = "llcm"
+version = "0.1.0"
+edition = "2021"
+description = "Dedicated offloaded task library for the CM13 Space Station 13 codebase; forked from and used in companion with rust-g"
+authors = [
+	"cm13 maintainer team",						# current maintainers
+    "rust-g maintainer team",                   # original author
+    "Bjorn Neergaard <bjorn@neersighted.com>",  # original author
+    "Tad Hardesty <tad@platymuus.com>",         # original author
+]
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+thiserror = "2.0.20"
+
+[features]
+all = []
+default = []
+
+allow_non_32bit = []

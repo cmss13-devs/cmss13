@@ -115,6 +115,19 @@
 	plasma_cost = 55
 	ammo = /datum/ammo/xeno/acid/spatter/dissolver_enzymatic_breath
 	ability_primacy = XENO_PRIMARY_ACTION_3
+	var/stack_windup_reduction = 1
+
+/datum/action/xeno_action/activable/xeno_spit/bombard/dissolver/enzymatic_breath/use_ability(atom/affected_atom)
+	var/mob/living/carbon/xenomorph/spitter/xeno = owner
+	var/datum/behavior_delegate/delegate = xeno.behavior_delegate
+	var/datum/behavior_delegate/spitter_dissolver/dissolver_delegate
+	var/initial_windup = xeno.ammo.spit_windup
+	if(istype(delegate, /datum/behavior_delegate/spitter_dissolver))
+		dissolver_delegate = delegate
+		xeno.ammo.spit_windup -= stack_windup_reduction * dissolver_delegate.acid_stored
+	. = ..()
+	xeno.ammo.spit_windup = initial_windup
+
 
 
 /datum/action/xeno_action/onclick/store_acid

@@ -129,12 +129,12 @@
 	target.custom_pain("The pain in your [surgery.affected_limb.cavity] is a living hell!", 1)
 	log_interact(user, target, "[key_name(user)] started to put [tool] inside [key_name(target)]'s [surgery.affected_limb.cavity].")
 
-/datum/surgery_step/place_item/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/place_item/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool.w_class >= SIZE_SMALL)
 		user.affected_message(target,
-			SPAN_NOTICE("You tear some blood vessels trying to fit such a bulky object in [target]'s [surgery.affected_limb.cavity], causing internal bleeding! Blood gushes everywhere!"),
-			SPAN_NOTICE("[user] tears some blood vessels trying to fit such a bulky object in your [surgery.affected_limb.cavity], causing internal bleeding! Blood gushes everywhere!"),
-			SPAN_NOTICE("[user] tears some blood vessels trying to fit such a bulky object in [target]'s [surgery.affected_limb.cavity], causing internal bleeding! Blood gushes everywhere!"))
+			SPAN_NOTICE("You tear some blood vessels trying to fit such a bulky object in [target]'s [surgery.affected_limb.cavity], causing internal bleeding! Blood gushes all over and fills the surgical site!"),
+			SPAN_NOTICE("[user] tears some blood vessels trying to fit such a bulky object in your [surgery.affected_limb.cavity], causing internal bleeding! Blood gushes all over and fills the surgical site!"),
+			SPAN_NOTICE("[user] tears some blood vessels trying to fit such a bulky object in [target]'s [surgery.affected_limb.cavity], causing internal bleeding! Blood gushes all over and fills the surgical site!"))
 
 		target.custom_pain("You feel something rip in your [surgery.affected_limb.cavity]!", 1)
 		if(target.stat == CONSCIOUS)
@@ -147,6 +147,8 @@
 		var/datum/wound/internal_bleeding/int_bleeding = new (0)
 		surgery.affected_limb.add_bleeding(int_bleeding, TRUE)
 		surgery.affected_limb.wounds += int_bleeding
+		surgery.affected_limb.incision_int_bleeding_flag_check()
+		target.update_surgery_overlays()
 		target.apply_damage(5, BRUTE, target_zone)
 		surgery.affected_limb.add_bleeding(null, FALSE, 15)
 	else
@@ -221,15 +223,27 @@
 
 		log_interact(user, target, "[key_name(user)] found nothing inside [key_name(target)]'s [surgery.affected_limb.cavity] with [tool].")
 
-/datum/surgery_step/remove_implant/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/remove_implant/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_WARNING("Your hand slips, scraping tissue inside [target]'s [surgery.affected_limb.cavity] with [tool]!"),
-		SPAN_WARNING("[user]'s hand slips, scraping tissue inside your [surgery.affected_limb.cavity] with [tool]!"),
-		SPAN_WARNING("[user]'s hand slips, scraping tissue inside [target]'s [surgery.affected_limb.cavity] with [tool]!"))
+		SPAN_WARNING("Your hand slips and tears several blood vessels in [target]'s [surgery.affected_limb.cavity], causing internal bleeding! Blood gushes all over and fills the surgical site!"),
+		SPAN_WARNING("[user]'s hand slips and tears several blood vessels in your [surgery.affected_limb.cavity], causing internal bleeding! Blood gushes all over and fills the surgical site!"),
+		SPAN_WARNING("[user]'s hand slips and tears several blood vessels in [target]'s [surgery.affected_limb.cavity], causing internal bleeding! Blood gushes all over and fills the surgical site!"))
 
-	log_interact(user, target, "[key_name(user)] damaged the inside of [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")
+	target.custom_pain("You feel something rip in your [surgery.affected_limb.display_name]!", 1)
+	if(target.stat == CONSCIOUS)
+		to_chat(user, SPAN_WARNING("Blood is gushing out of your [surgery.affected_limb.cavity]! It looks horrifying!"))
+		if(target.pain.reduction_pain < surgery.pain_reduction_required)//if patient is not under the proper anesthesia
+			target.emote("pain")
 
+	user.add_blood(target.get_blood_color(), BLOOD_HANDS) //messy
+	user.add_blood(target.get_blood_color(), BLOOD_BODY) //splish splosh
+	var/datum/wound/internal_bleeding/int_bleeding = new (0)
+	surgery.affected_limb.add_bleeding(int_bleeding, TRUE)
+	surgery.affected_limb.wounds += int_bleeding
 	target.apply_damage(10, BRUTE, target_zone)
+	surgery.affected_limb.incision_int_bleeding_flag_check()
+	target.update_surgery_overlays()
+	log_interact(user, target, "[key_name(user)] failed to remove an embedded implant from [key_name(target)]'s [surgery.affected_limb.cavity].")
 	return FALSE
 
 //------------------------------------
@@ -356,19 +370,32 @@
 
 		log_interact(user, target, "[key_name(user)] found nothing inside [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 
-/datum/surgery_step/remove_embedded/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/remove_embedded/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_WARNING("Your hand slips, scraping tissue inside [target]'s [surgery.affected_limb.display_name] with [tool]!"),
-		SPAN_WARNING("[user]'s hand slips, scraping tissue inside your [surgery.affected_limb.display_name] with [tool]!"),
-		SPAN_WARNING("[user]'s hand slips, scraping tissue inside [target]'s [surgery.affected_limb.display_name] with [tool]!"))
+		SPAN_WARNING("Your hand slips and tears several blood vessels in [target]'s [surgery.affected_limb.cavity], causing internal bleeding! Blood gushes all over and fills the surgical site!"),
+		SPAN_WARNING("[user]'s hand slips and tears several blood vessels in your [surgery.affected_limb.cavity], causing internal bleeding! Blood gushes all over and fills the surgical site!"),
+		SPAN_WARNING("[user]'s hand slips and tears several blood vessels in [target]'s [surgery.affected_limb.cavity], causing internal bleeding! Blood gushes all over and fills the surgical site!"))
 
-	log_interact(user, target, "[key_name(user)] damaged the inside of [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
+	target.custom_pain("You feel something rip in your [surgery.affected_limb.display_name]!", 1)
+	if(target.stat == CONSCIOUS)
+		to_chat(user, SPAN_WARNING("Blood is gushing out of your [surgery.affected_limb.cavity]! It looks horrifying!"))
+		if(target.pain.reduction_pain < surgery.pain_reduction_required)//if patient is not under the proper anesthesia
+			target.emote("pain")
 
+	user.add_blood(target.get_blood_color(), BLOOD_HANDS) //messy
+	user.add_blood(target.get_blood_color(), BLOOD_BODY) //splish splosh
+	var/datum/wound/internal_bleeding/int_bleeding = new (0)
+	surgery.affected_limb.add_bleeding(int_bleeding, TRUE)
+	surgery.affected_limb.wounds += int_bleeding
 	target.apply_damage(10, BRUTE, target_zone)
+	surgery.affected_limb.incision_int_bleeding_flag_check()
+	target.update_surgery_overlays()
+
 	if(length(surgery.affected_limb.implants) && prob(10 + 100 * (tools[tool_type] - 1)))
 		var/obj/item/implant/imp = surgery.affected_limb.implants[1]
 		if(istype(imp))
 			target.visible_message(SPAN_WARNING("Something beeps inside [target]'s [surgery.affected_limb.display_name]!"))
 			playsound(target, 'sound/items/countdown.ogg', 25, TRUE)
 			addtimer(CALLBACK(imp, TYPE_PROC_REF(/obj/item/implant, activate)), 2.5 SECONDS)
+	log_interact(user, target, "[key_name(user)] failed to remove a foreign body from [key_name(target)]'s [surgery.affected_limb.cavity], ending [surgery].")
 	return FALSE

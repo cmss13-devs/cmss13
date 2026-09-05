@@ -42,6 +42,36 @@
 /// Limb has eschar
 #define LIMB_ESCHAR (1<<11)
 
+///////////////////SURGERY FLAGS///////////////////
+//Surgery defines strictly for overlay application.
+
+
+///The surgical site is bleeding.
+#define INCISION_BLEEDING (1<<0)
+
+///The surgical site is not bleeding.
+#define INCISION_CLAMPED (1<<1)
+
+///The incision has not yet been widened.
+#define INCISION_MADE (1<<2)
+
+///The incision has been widened.
+#define INCISION_WIDENED (1<<3)
+
+///The widened incision's skull or ribcage can be mended on this step.
+#define INCISION_BONE_CLOSED (1<<4)
+
+///The widened incision's skull or ribcage cannot be mended on this step.
+#define INCISION_BONE_OPENED (1<<5)
+
+////The widened incision's pelvic bones cannot be mended on this step.
+#define INCISION_PELVIS_HIDDEN (1<<6)
+
+///The widened incision's pelvic bones can be mended on this step.
+#define INCISION_PELVIS_EXPOSED (1<<7)
+
+///The operation is on a limb that is internally bleeding. Can be any step until IB is fixed.
+#define INCISION_INT_BLEEDING (1<<8)
 
 
 ///////////////////WOUND DEFINES///////////////////
@@ -127,25 +157,26 @@
 #define ORDER_FOCUS_MAX_LEVEL   50
 
 //Human Overlays Indexes used in update_icons/////////
-#define BODYPARTS_LAYER 43
-#define DAMAGE_LAYER 42
+#define BODYPARTS_LAYER 44
+#define DAMAGE_LAYER 43
 
-#define UNDERWEAR_LAYER 41
-#define UNDERSHIRT_LAYER 40
-#define MUTANTRACE_LAYER 39
+#define UNDERWEAR_LAYER 42
+#define UNDERSHIRT_LAYER 41
+#define MUTANTRACE_LAYER 40
 
 /// For use by Hunter Flay
-#define FLAY_LAYER 38
-#define UNIFORM_LAYER 37
+#define FLAY_LAYER 39
+#define UNIFORM_LAYER 38
 
 /// bs12 specific. this hack is probably gonna come back to haunt me
-#define TAIL_LAYER 36
+#define TAIL_LAYER 37
 
-#define ID_LAYER 35
-#define SHOES_LAYER 34
-#define GLOVES_LAYER 33
+#define ID_LAYER 36
+#define SHOES_LAYER 35
+#define GLOVES_LAYER 34
 
 /// For splint and gauze overlays
+#define SURGERY_LAYER 33
 #define MEDICAL_LAYER 32
 
 #define SUIT_LAYER 31
@@ -189,7 +220,7 @@
 /// If you're hit by an acid DoT
 #define EFFECTS_LAYER 1
 
-#define TOTAL_LAYERS 43
+#define TOTAL_LAYERS 44
 #define MAX_HEAD_GARB_LAYERS 6
 //////////////////////////////////
 

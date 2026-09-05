@@ -20,3 +20,18 @@
 
 /obj/structure/prop/northpoint/concrete_wall/alt
 	icon_state = "concrete_wall_cmb"
+
+
+/obj/structure/prop/northpoint/iasf_soldier_prop
+	name = "IASF Paratrooper"
+	desc = "Imperial Army Space Force paratrooper. Attached to the 12th Light Brigade, 4th Battalion. They are trying to forget the screams they heard from the other side of the quarantine wall."
+	icon = 'icons/obj/structures/props/northpoint/iasf_human_prop.dmi'
+	icon_state = "twe_empty"
+	layer = 6
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+	density = TRUE
+
+/obj/structure/prop/northpoint/iasf_soldier_prop/alt
+	icon_state = "twe_rifle"

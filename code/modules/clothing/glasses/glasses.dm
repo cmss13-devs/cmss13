@@ -497,7 +497,7 @@
 		"green" = color_matrix_multiply(base_colors, color_matrix_from_string("#2dc404")),
 		"cyan" = color_matrix_multiply(base_colors, color_matrix_from_string("#2ac1db")),
 		"blue" = color_matrix_multiply(base_colors, color_matrix_from_string("#005BF7")),
-		"indigo" = color_matrix_multiply(base_colors, color_matrix_from_string("#b929f7"))
+		"indigo" = color_matrix_multiply(base_colors, color_matrix_from_string("#b929f7")),
 		)
 
 	//Animate the victim's client.

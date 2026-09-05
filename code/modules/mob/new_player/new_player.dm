@@ -150,11 +150,6 @@
 	SSticker.mode.update_gear_scale()
 	SSticker.mode.update_energy_scale()
 
-	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-		if(target_squad)
-			target_squad.roles_cap[JOB_SQUAD_ENGI] = engi_slot_formula(length(GLOB.clients))
-			target_squad.roles_cap[JOB_SQUAD_MEDIC] = medic_slot_formula(length(GLOB.clients))
-
 	var/latejoin_larva_drop = SSticker.mode.latejoin_larva_drop
 
 	if(ROUND_TIME < XENO_ROUNDSTART_LATEJOIN_LARVA_TIME)

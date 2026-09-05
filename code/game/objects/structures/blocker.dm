@@ -182,10 +182,21 @@
 	return FALSE
 
 /obj/structure/blocker/forcefield/human
-	types = list(/mob/living/carbon/human)
+	types = list(/mob/living/carbon/human, /obj/item/weapon)
 	icon_state = "purple_line"
 
 	visible = TRUE
 
 /obj/structure/blocker/forcefield/human/bulletproof/get_projectile_hit_boolean()
 	return TRUE
+
+/obj/structure/blocker/forcefield/all
+	types = list(/mob/living/carbon/human, /mob/living/carbon/xenomorph, /obj/item/weapon)
+	icon_state = "purple_line"
+
+// for fuel pump since it's a large sprite.
+/obj/structure/blocker/fuelpump
+	name = "\improper Fuel Pump"
+	desc = "It is a machine that pumps fuel around the ship."
+	invisibility = 101
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

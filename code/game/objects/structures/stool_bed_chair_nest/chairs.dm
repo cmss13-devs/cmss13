@@ -7,12 +7,13 @@
 	desc = "A rectangular metallic frame sitting on four legs with a back panel. Designed to fit the sitting position, more or less comfortably."
 	icon_state = "chair"
 	buckle_lying = 0
+	foldabletype = /obj/item/weapon/twohanded/folded_metal_chair
 	var/north_layer = FLY_LAYER
 	var/non_north_layer = OBJ_LAYER
 	var/propelled = FALSE //Check for fire-extinguisher-driven chairs
 	var/can_rotate = TRUE
-	var/picked_up_item = /obj/item/weapon/twohanded/folded_metal_chair
 	var/stacked_size = 0
+	var/list/shimmy_data = list()
 
 /obj/structure/bed/chair/Initialize()
 	. = ..()
@@ -37,10 +38,12 @@
 		layer = non_north_layer
 	if(buckled_mob)
 		buckled_mob.setDir(dir)
+		update_shimmy_data(null, TRUE)
+	else
+		update_shimmy_data()
 
 /obj/structure/bed/chair/MouseDrop(atom/over)
-	. = ..()
-	if(!picked_up_item)
+	if(!foldabletype)
 		return
 	var/mob/living/carbon/human/H = over
 	if(usr != H)
@@ -53,14 +56,12 @@
 	if(stacked_size)
 		to_chat(H, SPAN_NOTICE("You cannot fold a chair while its stacked!"))
 		return
-	var/obj/item/weapon/twohanded/folded_metal_chair/FMC = new picked_up_item(loc)
-	if(H.put_in_active_hand(FMC))
-		qdel(src)
-	else if(H.put_in_inactive_hand(FMC))
+	var/obj/item/weapon/twohanded/folded_metal_chair/folded_char = new foldabletype(loc)
+	if(H.put_in_hands(folded_char))
 		qdel(src)
 	else
 		to_chat(H, SPAN_NOTICE("You need a free hand to fold up the chair."))
-		qdel(FMC)
+		qdel(folded_char)
 
 /obj/structure/bed/chair/attack_hand(mob/user)
 	. = ..()
@@ -79,7 +80,7 @@
 			flags_can_pass_all_temp |= PASS_OVER
 			projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 
-/obj/structure/bed/chair/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/bed/chair/attack_alien(mob/living/carbon/xenomorph/found_living)
 	. = ..()
 	if(stacked_size)
 		stack_collapse()
@@ -93,7 +94,7 @@
 	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH) && stacked_size)
 		to_chat(user, SPAN_NOTICE("You'll need to unstack the chairs before you can take one apart."))
 		return FALSE
-	if(istype(I, /obj/item/weapon/twohanded/folded_metal_chair) && picked_up_item)
+	if(istype(I, /obj/item/weapon/twohanded/folded_metal_chair) && foldabletype)
 		if(I.flags_item & WIELDED)
 			return ..()
 		if(locate(/mob/living) in loc)
@@ -141,11 +142,11 @@
 /obj/structure/bed/chair/hitby(atom/movable/AM)
 	. = ..()
 	if(istype(AM, /mob/living) && stacked_size)
-		var/mob/living/M = AM
+		var/mob/living/found_living = AM
 		stack_collapse()
-		if(ishumansynth_strict(M))
-			M.apply_effect(2, STUN)
-			M.apply_effect(2, WEAKEN)
+		if(ishumansynth_strict(found_living))
+			found_living.apply_effect(2, STUN)
+			found_living.apply_effect(2, WEAKEN)
 	else if(stacked_size > 8 && prob(50))
 		stack_collapse()
 
@@ -170,7 +171,7 @@
 		falling_chair.pixel_x = rand(-8, 8)
 		falling_chair.pixel_y = rand(-8, 8)
 		falling_chair.throw_atom(target_turf, rand(2, 5), SPEED_FAST, null, TRUE)
-	var/obj/item/weapon/twohanded/folded_metal_chair/I = new picked_up_item(starting_turf)
+	var/obj/item/weapon/twohanded/folded_metal_chair/I = new foldabletype(starting_turf)
 	I.throw_atom(starting_turf, rand(2, 5), SPEED_FAST, null, TRUE)
 	qdel(src)
 
@@ -219,7 +220,6 @@
 	set name = "Rotate Chair"
 	set category = "Object"
 	set src in oview(1)
-
 	if(CONFIG_GET(flag/ghost_interaction))
 		src.setDir(turn(src.dir, 90))
 		return
@@ -237,16 +237,147 @@
 	setDir(turn(src.dir, 90))
 	return
 
+/obj/structure/bed/chair/do_buckle(mob/living/target, mob/user)
+	. = ..()
+	if(shimmy_data == null)
+		return
+	for(var/obj/found_obj in get_turf(src))
+		if(found_obj == src)
+			continue
+		if(found_obj.buckled_mob && ispath(found_obj.type, /obj/structure/bed/chair))
+			var/obj/structure/bed/chair/found_chair = found_obj
+			found_chair.update_shimmy_data(src)	//we need to update the shimmy other_buckled_chair chair to block walking into this buckled chair
+			found_chair.AddComponent(/datum/component/shimmy_around, approach_dirs = found_chair.shimmy_data[5], internal_dirs = found_chair.shimmy_data[6])
+			if(target.density)
+				target.density = FALSE
+			return	//shimmying is already handled, we dont want to offset shimmiers twice!
+	density = TRUE
+	if(target.density)
+		target.density = FALSE
+	AddComponent(/datum/component/shimmy_around, \
+		north_offset = shimmy_data[1], \
+		south_offset = shimmy_data[2], \
+		east_offset = shimmy_data[3], \
+		west_offset = shimmy_data[4],\
+		extra_delay = 0.5 SECONDS, \
+		approach_dirs = shimmy_data[5],\
+		internal_dirs = shimmy_data[6])
+
+/obj/structure/bed/chair/proc/update_shimmy_data(obj/structure/bed/chair/neighbor = null, force_update = FALSE)
+	if(shimmy_data == null)
+		return	//this chair doesnt shimmy
+	var/approachness
+	switch(dir)
+		if(NORTH, SOUTH)
+			approachness = EAST | WEST
+		if(EAST, WEST)
+			approachness = NORTH | SOUTH
+	var/internalness = NORTH|SOUTH|EAST|WEST
+	if(neighbor && neighbor.buckled_mob)
+		internalness &= ~turn(dir, 180)	//cant walk into filled seats
+		approachness &= !turn(dir, 180)
+	var/offset = 14
+	shimmy_data = list(-offset, -offset, -offset, -offset, approachness, internalness)
+	switch(dir)
+		if(NORTH)
+			shimmy_data[3] = offset
+			shimmy_data[4] = offset
+		if(EAST)
+			shimmy_data[1] = offset
+			shimmy_data[2] = offset
+			shimmy_data[3] = offset
+			shimmy_data[4] = offset
+		if(WEST)
+			shimmy_data[3] = offset
+			shimmy_data[4] = offset
+	if(force_update && buckled_mob)
+		buckled_mob.density = FALSE
+		density = TRUE
+		AddComponent(/datum/component/shimmy_around, \
+			north_offset = shimmy_data[1], \
+			south_offset = shimmy_data[2], \
+			east_offset  = shimmy_data[3], \
+			west_offset  = shimmy_data[4], \
+			extra_delay  = 0.5 SECONDS, \
+			approach_dirs = shimmy_data[5], \
+			internal_dirs = shimmy_data[6])
+
+/obj/structure/bed/chair/unbuckle()
+	if(buckled_mob)
+		buckled_mob.update_density()
+	. = ..()
+	density = FALSE
+
+	var/obj/structure/bed/chair/other_buckled_chair
+	var/list/mob/living/shimmied_mobs = list()
+	var/datum/component/shimmy_around/shimster = GetComponent(/datum/component/shimmy_around)
+	var/list/old_data
+	if(shimster)
+		old_data = list(
+			shimster.north_offset,
+			shimster.south_offset,
+			shimster.east_offset,
+			shimster.west_offset,
+			shimster.additional_offset)
+
+	for(var/obj/structure/bed/chair/found_chair in get_turf(src))
+		if(found_chair == src)
+			continue
+		if(found_chair.buckled_mob)
+			other_buckled_chair = found_chair
+			break
+
+	for(var/mob/living/found_living in get_turf(src))	//any living mobs currently shimmied ??? (have the pixel offsets)
+		if(!found_living.buckled && found_living.pixel_x != initial(found_living.pixel_x) || found_living.pixel_y != initial(found_living.pixel_y))
+			shimmied_mobs += found_living
+
+	if(!other_buckled_chair)	// No other chair is holding anyone → remove all the shimmy offsets from every shimmied mob
+		if(shimster)
+			qdel(shimster)
+		for(var/mob/living/shimmied_living in shimmied_mobs)
+			animate(shimmied_living, pixel_x = initial(shimmied_living.pixel_x), pixel_y = initial(shimmied_living.pixel_y), time = 0)
+			if(shimmied_living.layer != initial(shimmied_living.layer) && shimmied_living.layer != XENO_HIDING_LAYER)	//shimmy component also alters layering
+				shimmied_living.layer = initial(shimmied_living.layer)
+		return
+	else	// At least one other chair is still occupied – we need to either create one and then refresh mobs' offsets - OR just refresh mobs' offsets to whatd they'd be without another buckled chair
+		var/datum/component/shimmy_around/other_buckled_shimster = other_buckled_chair.GetComponent(/datum/component/shimmy_around)
+		if(!other_buckled_shimster)
+			other_buckled_chair.density = TRUE
+			other_buckled_chair.update_shimmy_data(src)
+			other_buckled_chair.AddComponent(/datum/component/shimmy_around, \
+				north_offset = other_buckled_chair.shimmy_data[1], \
+				south_offset = other_buckled_chair.shimmy_data[2], \
+				east_offset  = other_buckled_chair.shimmy_data[3], \
+				west_offset  = other_buckled_chair.shimmy_data[4], \
+				extra_delay  = 0.5 SECONDS, \
+				approach_dirs = other_buckled_chair.shimmy_data[5], \
+				internal_dirs = other_buckled_chair.shimmy_data[6])
+			other_buckled_shimster = other_buckled_chair.GetComponent(/datum/component/shimmy_around)
+		else	//it posses one, we just need to pass in the new approach and internal_dirs values
+			old_data = list(
+				other_buckled_shimster.north_offset,
+				other_buckled_shimster.south_offset,
+				other_buckled_shimster.east_offset,
+				other_buckled_shimster.west_offset,
+				other_buckled_shimster.additional_offset)
+			other_buckled_chair.update_shimmy_data(src)
+			other_buckled_chair.AddComponent(/datum/component/shimmy_around, \
+				approach_dirs = other_buckled_chair.shimmy_data[5], \
+				internal_dirs = other_buckled_chair.shimmy_data[6])
+
+		for(var/mob/living/found_living in shimmied_mobs)	// although we sent the new data, existing shimmied mobs still need to be updated
+			other_buckled_shimster.refresh_mob_offsets(found_living, old_data)
+
 //Chair types
 /obj/structure/bed/chair/bolted
 	desc = "A rectangular metallic frame sitting on four legs with a back panel. Designed to fit the sitting position, more or less comfortably. It appears to be bolted to the ground."
-	picked_up_item = null
+	foldabletype = null
 
 /obj/structure/bed/chair/wood
 	buildstacktype = /obj/item/stack/sheet/wood
 	debris = list(/obj/item/stack/sheet/wood)
 	hit_bed_sound = 'sound/effects/woodhit.ogg'
-	picked_up_item = null
+	foldabletype = null
 
 /obj/structure/bed/chair/wood/normal
 	icon_state = "wooden_chair"
@@ -265,7 +396,7 @@
 	color = rgb(255,255,255)
 	hit_bed_sound = 'sound/weapons/bladeslice.ogg'
 	debris = list()
-	picked_up_item = null
+	foldabletype = null
 
 /obj/structure/bed/chair/comfy/arc
 	non_north_layer = BELOW_OBJ_LAYER
@@ -322,7 +453,8 @@
 /obj/structure/bed/chair/office
 	anchored = FALSE
 	drag_delay = 1 //Pulling something on wheels is easy
-	picked_up_item = null
+	foldabletype = null
+	shimmy_data = null
 
 /obj/structure/bed/chair/office/Initialize(mapload, ...)
 	. = ..()
@@ -353,7 +485,7 @@
 			victim.apply_damage(10, BRUTE, def_zone)
 		occupant.visible_message(SPAN_DANGER("[occupant] crashed into \the [A]!"))
 
-/// Signal handler for COMSIG_MOVABLE_PREBUCKLE to potentially block buckling.
+/// Signal other_buckled_chair for COMSIG_MOVABLE_PREBUCKLE to potentially block buckling.
 /obj/structure/bed/chair/office/proc/check_buckle(obj/bed, mob/buckle_target, mob/user)
 	SIGNAL_HANDLER
 
@@ -372,7 +504,7 @@
 
 /obj/structure/bed/chair/dropship
 	can_rotate = FALSE
-	picked_up_item = null
+	foldabletype = null
 
 /obj/structure/bed/chair/dropship/pilot
 	icon_state = "pilot_chair"
@@ -431,7 +563,7 @@
 		overlays -= chairbar
 
 
-/obj/structure/bed/chair/dropship/passenger/buckle_mob(mob/M, mob/user)
+/obj/structure/bed/chair/dropship/passenger/buckle_mob(mob/found_living, mob/user)
 	if(chair_state != DROPSHIP_CHAIR_UNFOLDED)
 		return
 	..()
@@ -468,7 +600,7 @@
 		chair_state = DROPSHIP_CHAIR_UNFOLDED
 		icon_state = "hotseat"
 
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair/buckle_mob(mob/living/M, mob/living/user)
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair/buckle_mob(mob/living/found_living, mob/living/user)
 	if(chair_state != DROPSHIP_CHAIR_UNFOLDED)
 		return
 	..()
@@ -554,7 +686,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	dir = WEST
-	picked_up_item = null
+	foldabletype = null
 
 /obj/structure/bed/chair/hunter
 	name = "hunter chair"
@@ -564,7 +696,7 @@
 	color = rgb(255,255,255)
 	hit_bed_sound = 'sound/weapons/bladeslice.ogg'
 	debris = list()
-	picked_up_item = null
+	foldabletype = null
 
 /obj/item/weapon/twohanded/folded_metal_chair //used for when someone picks up the chair
 	name = "metal folding chair"
@@ -586,12 +718,12 @@
 	flags_item = TWOHANDED
 	var/placed_object = /obj/structure/bed/chair
 
-/obj/item/weapon/twohanded/folded_metal_chair/attack(mob/living/M as mob, mob/living/user as mob)
+/obj/item/weapon/twohanded/folded_metal_chair/attack(mob/living/found_living as mob, mob/living/user as mob)
 	. = ..()
 	if(!.)
 		return
 	if(flags_item & WIELDED)
-		M.apply_stamina_damage(17, check_zone(user.zone_selected))
+		found_living.apply_stamina_damage(17, check_zone(user.zone_selected))
 	playsound(get_turf(user), 'sound/weapons/metal_chair_clang.ogg', 20, 1)
 	return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 

@@ -6,12 +6,15 @@
  * NOTE: If any part of the Collided proc chain is overriden from obj/structure you must ensure the signal is sent
  */
 /datum/component/shimmy_around
+	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
 	/// The structure that we are bound to
 	var/obj/structure/parent_structure
 	/// Approachable directions bitfield
 	var/approach_dirs = NORTH|SOUTH|EAST|WEST
 	/// Approach directions bitfield that override the mob's layer to be above our structure's
 	var/approach_dirs_layer_override = NORTH|SOUTH|EAST|WEST
+	/// internal movement allowed dirs bitfield
+	var/internal_dirs = NORTH|SOUTH|EAST|WEST
 	/// The pixel_x offset when approaching and facing NORTH
 	var/north_offset = 12
 	/// The pixel_x offset when approaching and facing SOUTH
@@ -28,6 +31,7 @@
 /datum/component/shimmy_around/Initialize(\
 	approach_dirs = NORTH|SOUTH|EAST|WEST,\
 	approach_dirs_layer_override = NORTH|SOUTH|EAST|WEST,\
+	internal_dirs =  NORTH|SOUTH|EAST|WEST,\
 	north_offset = 12,\
 	south_offset = -12,\
 	east_offset = -5,\
@@ -41,6 +45,7 @@
 
 	src.approach_dirs = approach_dirs
 	src.approach_dirs_layer_override = approach_dirs_layer_override
+	src.internal_dirs = internal_dirs
 	src.north_offset = north_offset
 	src.south_offset = south_offset
 	src.east_offset = east_offset
@@ -49,8 +54,39 @@
 	src.extra_delay = extra_delay
 
 /datum/component/shimmy_around/Destroy(force, silent)
-	. = ..()
+	var/turf/my_turf = get_turf(parent_structure)
+	if(my_turf)
+		for(var/mob/living/shimmied_mob in my_turf)	// we need to unshimmy shimmied mobs if this component is seeya byebye
+			if(shimmied_mob.pixel_x != initial(shimmied_mob.pixel_x) || shimmied_mob.pixel_y != initial(shimmied_mob.pixel_y) || shimmied_mob.layer != initial(shimmied_mob.layer))
+				UnregisterSignal(shimmied_mob, list(COMSIG_MOVABLE_PRE_MOVE, COMSIG_MOVABLE_MOVED, COMSIG_LIVING_SHIMMY_LAYER))
+				animate(shimmied_mob, pixel_x = initial(shimmied_mob.pixel_x), pixel_y = initial(shimmied_mob.pixel_y), time = 0)
+				if(shimmied_mob.layer != XENO_HIDING_LAYER)	// leave xeno hide alone
+					shimmied_mob.layer = initial(shimmied_mob.layer)
 	parent_structure = null
+	return ..()
+
+/datum/component/shimmy_around/InheritComponent(datum/component/C, i_am_original,
+	approach_dirs, approach_dirs_layer_override, internal_dirs, north_offset,\
+	south_offset, east_offset, west_offset,	additional_offset, extra_delay)
+	. = ..()
+	if(approach_dirs && src.approach_dirs != approach_dirs)
+		src.approach_dirs =  approach_dirs
+	if(approach_dirs_layer_override && approach_dirs_layer_override != src.approach_dirs_layer_override)
+		src.approach_dirs_layer_override = approach_dirs_layer_override
+	if(internal_dirs && internal_dirs != src.internal_dirs)
+		src.internal_dirs = internal_dirs
+	if(north_offset && north_offset != src.north_offset)
+		src.north_offset = north_offset
+	if(south_offset && south_offset != src.south_offset)
+		src.south_offset = south_offset
+	if(east_offset && east_offset != src.east_offset)
+		src.east_offset = east_offset
+	if(west_offset &&  west_offset != src.west_offset)
+		src.west_offset = west_offset
+	if(additional_offset &&  additional_offset != src.additional_offset)
+		src.additional_offset = additional_offset
+	if(extra_delay && extra_delay != src.extra_delay)
+		src.extra_delay = extra_delay
 
 /datum/component/shimmy_around/RegisterWithParent()
 	RegisterSignal(parent_structure, COMSIG_STRUCTURE_COLLIDED, PROC_REF(on_collide))
@@ -217,80 +253,57 @@
 	SIGNAL_HANDLER
 	return COMSIG_LIVING_SHIMMY_LAYER_CANCEL
 
-/// Signal handler for COMSIG_MOVABLE_PRE_MOVE to prevent movement into us
 /datum/component/shimmy_around/proc/on_mob_pre_move(atom/movable/source, new_loc)
 	SIGNAL_HANDLER
 
 	var/mob/living/mob = source
 	var/animate_time = min(mob.move_delay + extra_delay, MAX_ANIMATE_TIME)
 	var/new_direction = get_dir(mob, new_loc)
-	var/offset_x = mob.pixel_x - initial(mob.pixel_x)
-	var/offset_y = mob.pixel_y - initial(mob.pixel_y)
-	if(additional_offset)
-		// compensate for any additional adjustment we made
-		if(offset_x)
-			offset_x -= parent_structure.pixel_x
-		else if(offset_y)
-			offset_y -= parent_structure.pixel_y
+
+	var/list/offsets = get_compensated_offsets(mob)
+	var/offset_x = offsets[1]
+	var/offset_y = offsets[2]
 
 	// Block movement into parent, but swing around instead
 	if(offset_x)
 		if(offset_x > 0)
 			if(new_direction & WEST)
-				var/extra_offset = additional_offset ? parent_structure.pixel_y : 0
-				animate(mob, time = animate_time, pixel_x = initial(mob.pixel_x), pixel_y = mob.pixel_y + west_offset + extra_offset)
+				if(internal_dirs & WEST)
+					apply_directional_offset(mob, WEST, animate_time)
 				. = COMPONENT_CANCEL_MOVE
 		else
 			if(new_direction & EAST)
-				var/extra_offset = additional_offset ? parent_structure.pixel_y : 0
-				animate(mob, time = animate_time, pixel_x = initial(mob.pixel_x), pixel_y = mob.pixel_y + east_offset + extra_offset)
+				if(internal_dirs & EAST)
+					apply_directional_offset(mob, EAST, animate_time)
 				. = COMPONENT_CANCEL_MOVE
 	else if(offset_y)
 		if(offset_y > 0)
 			if(new_direction & SOUTH)
-				var/extra_offset = additional_offset ? parent_structure.pixel_x : 0
-				animate(mob, time = animate_time, pixel_y = initial(mob.pixel_y), pixel_x = mob.pixel_x + south_offset + extra_offset)
+				if(internal_dirs & SOUTH)
+					apply_directional_offset(mob, SOUTH, animate_time)
 				. = COMPONENT_CANCEL_MOVE
 		else
 			if(new_direction & NORTH)
-				var/extra_offset = additional_offset ? parent_structure.pixel_x : 0
-				animate(mob, time = animate_time, pixel_y = initial(mob.pixel_y), pixel_x = mob.pixel_x + north_offset + extra_offset)
+				if(internal_dirs & NORTH)
+					apply_directional_offset(mob, NORTH, animate_time)
 				. = COMPONENT_CANCEL_MOVE
 
-	// If we are swinging them around, so set dir, delay, and layer as needed
 	if(. == COMPONENT_CANCEL_MOVE)
 		source.dir = new_direction
 		if(extra_delay && mob.client)
 			mob.client.move_delay += extra_delay
-		var/desired_layer = round(parent_structure.layer + 0.05, 0.01) // Byond floats are garbage
-		if(desired_layer == XENO_HIDING_LAYER)
-			desired_layer += 0.01
-		var/layer_changing = mob.plane == parent_structure.plane && (new_direction & approach_dirs_layer_override) && initial(mob.layer) < desired_layer
-		if(layer_changing)
-			RegisterSignal(mob, COMSIG_LIVING_SHIMMY_LAYER, PROC_REF(on_mob_shimmy_layer), override = TRUE) // Override because we're just ensuring its set if not already set
-			if(mob.layer == XENO_HIDING_LAYER && isxeno(mob))
-				var/datum/action/xeno_action/onclick/xenohide/hide = get_action(mob, /datum/action/xeno_action/onclick/xenohide)
-				if(hide)
-					hide.post_attack()
-			mob.layer = desired_layer
-		else
-			UnregisterSignal(mob, COMSIG_LIVING_SHIMMY_LAYER)
-			if(mob.layer != XENO_HIDING_LAYER || !isxeno(mob))
-				mob.layer = initial(mob.layer)
+		update_shimmy_layer(mob, new_direction)
 
 	return .
 
 /// Signal handler for COMSIG_MOVABLE_MOVED to reset their pixel offsets
 /datum/component/shimmy_around/proc/on_mob_move(atom/movable/source, atom/old_loc, dir, forced)
 	SIGNAL_HANDLER
-
 	var/mob/living/mob = source
 	UnregisterSignal(source, list(COMSIG_MOVABLE_PRE_MOVE, COMSIG_MOVABLE_MOVED, COMSIG_LIVING_SHIMMY_LAYER))
-
 	// Undo changes
 	var/animate_time = min(mob.move_delay + extra_delay, MAX_ANIMATE_TIME)
 	animate(mob, time = animate_time, pixel_x = initial(mob.pixel_x), pixel_y = initial(mob.pixel_y))
-
 	// Undo layer change only if we aren't shimmying again
 	if(!(SEND_SIGNAL(mob, COMSIG_LIVING_SHIMMY_LAYER) & COMSIG_LIVING_SHIMMY_LAYER_CANCEL))
 		if(mob.layer != XENO_HIDING_LAYER || !isxeno(mob))
@@ -298,9 +311,115 @@
 				mob.layer = initial(mob.layer)
 			else
 				addtimer(VARSET_CALLBACK(mob, layer, initial(mob.layer)), animate_time * 0.5)
-
 	// Delay them if needed
 	if(extra_delay && mob.client)
 		mob.client.move_delay += extra_delay
 
-#undef MAX_ANIMATE_TIME
+//used when we want to inherit shimmying mobs from another /datum/component/shimmy_around, or if our offsets changed and mobs' need to be refreshed
+/datum/component/shimmy_around/proc/refresh_mob_offsets(mob/living/shimmied_living, list/old_data)
+	if(!shimmied_living || !old_data || shimmied_living.loc != get_turf(parent_structure))
+		return
+
+	// old_data layout you are currently using:
+	// 1 north, 2 south, 3 east, 4 west, 5 additional_offset
+	var/old_north   = old_data[1]
+	var/old_south   = old_data[2]
+	var/old_east    = old_data[3]
+	var/old_west    = old_data[4]
+	var/old_add_off = old_data[5]
+
+	var/delta_x = shimmied_living.pixel_x - initial(shimmied_living.pixel_x)
+	var/delta_y = shimmied_living.pixel_y - initial(shimmied_living.pixel_y)
+	if(old_add_off)
+		if(delta_x)
+			delta_x -= parent_structure.pixel_x
+		if(delta_y)
+			delta_y -= parent_structure.pixel_y
+
+	var/recovered_dir = 0
+	#define OFFSET_TOLERANCE 3
+
+	if(abs(delta_x) > OFFSET_TOLERANCE && abs(delta_y) <= OFFSET_TOLERANCE)
+		if(abs(delta_x - old_north) <= OFFSET_TOLERANCE)
+			recovered_dir = NORTH
+		else if(abs(delta_x - old_south) <= OFFSET_TOLERANCE)
+			recovered_dir = SOUTH
+	else if(abs(delta_y) > OFFSET_TOLERANCE && abs(delta_x) <= OFFSET_TOLERANCE)
+		if(abs(delta_y - old_east) <= OFFSET_TOLERANCE)
+			recovered_dir = EAST
+		else if(abs(delta_y - old_west) <= OFFSET_TOLERANCE)
+			recovered_dir = WEST
+
+	#undef OFFSET_TOLERANCE
+
+	if(!recovered_dir)
+		animate(shimmied_living, pixel_x = initial(shimmied_living.pixel_x), pixel_y = initial(shimmied_living.pixel_y), time = 0)
+		return
+
+	var/animate_time = min(shimmied_living.move_delay + extra_delay, MAX_ANIMATE_TIME)
+	apply_directional_offset(shimmied_living, recovered_dir, animate_time)
+
+	// Re-own the mob
+	RegisterSignal(shimmied_living, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(on_mob_pre_move), override = TRUE)
+	RegisterSignal(shimmied_living, COMSIG_MOVABLE_MOVED, PROC_REF(on_mob_move), override = TRUE)
+
+	update_shimmy_layer(shimmied_living, recovered_dir)
+
+/// Returns the current pixel deltas after stripping any additional_offset the
+/// component previously applied.  Used by both the signal path and refresh.
+/datum/component/shimmy_around/proc/get_compensated_offsets(mob/living/mob)
+	var/offset_x = mob.pixel_x - initial(mob.pixel_x)
+	var/offset_y = mob.pixel_y - initial(mob.pixel_y)
+	if(additional_offset)
+		if(offset_x)
+			offset_x -= parent_structure.pixel_x
+		else if(offset_y)
+			offset_y -= parent_structure.pixel_y
+	return list(offset_x, offset_y)
+
+/// Animate the mob to the visual offset that belongs to the given approach
+/// direction.  Always goes from initial() so it is safe for both a fresh shimmy and a refresh.
+/datum/component/shimmy_around/proc/apply_directional_offset(mob/living/mob, direction, animate_time)
+	switch(direction)
+		if(NORTH)
+			var/extra = additional_offset ? parent_structure.pixel_x : 0
+			animate(mob, time = animate_time,
+				pixel_x = initial(mob.pixel_x) + north_offset + extra,
+				pixel_y = initial(mob.pixel_y))
+		if(SOUTH)
+			var/extra = additional_offset ? parent_structure.pixel_x : 0
+			animate(mob, time = animate_time,
+				pixel_x = initial(mob.pixel_x) + south_offset + extra,
+				pixel_y = initial(mob.pixel_y))
+		if(EAST)
+			var/extra = additional_offset ? parent_structure.pixel_y : 0
+			animate(mob, time = animate_time,
+				pixel_x = initial(mob.pixel_x),
+				pixel_y = initial(mob.pixel_y) + east_offset + extra)
+		if(WEST)
+			var/extra = additional_offset ? parent_structure.pixel_y : 0
+			animate(mob, time = animate_time,
+				pixel_x = initial(mob.pixel_x),
+				pixel_y = initial(mob.pixel_y) + west_offset + extra)
+
+/// Layer override / restore logic shared by the signal path and refresh.
+/datum/component/shimmy_around/proc/update_shimmy_layer(mob/living/mob, direction)
+	var/desired_layer = round(parent_structure.layer + 0.05, 0.01)
+	if(desired_layer == XENO_HIDING_LAYER)
+		desired_layer += 0.01
+
+	var/layer_changing = mob.plane == parent_structure.plane \
+		&& (direction & approach_dirs_layer_override) \
+		&& initial(mob.layer) < desired_layer
+
+	if(layer_changing)
+		RegisterSignal(mob, COMSIG_LIVING_SHIMMY_LAYER, PROC_REF(on_mob_shimmy_layer), override = TRUE)
+		if(mob.layer == XENO_HIDING_LAYER && isxeno(mob))
+			var/datum/action/xeno_action/onclick/xenohide/hide = get_action(mob, /datum/action/xeno_action/onclick/xenohide)
+			if(hide)
+				hide.post_attack()
+		mob.layer = desired_layer
+	else
+		UnregisterSignal(mob, COMSIG_LIVING_SHIMMY_LAYER)
+		if(mob.layer != XENO_HIDING_LAYER || !isxeno(mob))
+			mob.layer = initial(mob.layer)

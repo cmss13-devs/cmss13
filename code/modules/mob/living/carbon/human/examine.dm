@@ -136,11 +136,12 @@
 			if(BODY_TYPE_RIPPED)
 				body_type_description = "muscular"
 
-		if(!skipface && !skipjumpsuit && body_size_description && body_type_description)
+		var/skipbody = wear_suit || (w_uniform && (w_uniform.undershirt || !(w_uniform.flags_jumpsuit & UNIFORM_JACKET_REMOVED)))
+		if(!skipface && !skipbody && body_size_description && body_type_description)
 			msg += "[t_He] [t_seem] to be [SPAN_BOLD(age_description)], with a build that appears [SPAN_BOLD(body_size_description)] and [SPAN_BOLD(body_type_description)].\n"
 		else if(!skipface)
 			msg += "[t_He] [t_seem] to be [SPAN_BOLD(age_description)].\n"
-		else if(!skipjumpsuit && body_size_description && body_type_description)
+		else if(!skipbody && body_size_description && body_type_description)
 			msg += "[capitalize(t_his)] build appears [SPAN_BOLD(body_size_description)] and [SPAN_BOLD(body_type_description)].\n"
 
 	//uniform

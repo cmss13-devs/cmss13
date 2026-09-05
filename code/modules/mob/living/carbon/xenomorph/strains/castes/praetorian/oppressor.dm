@@ -130,16 +130,16 @@
 	if(!targetted_atom || targetted_atom.layer >= FLY_LAYER || !isturf(abduct_user.loc))
 		return
 
-	targets_collided.len = 0
-	targets_added.len = 0
-	telegraph_atom_list.len = 0
+	targets_collided.Cut()
+	targets_added.Cut()
+	telegraph_atom_list.Cut()
 
 	var/list/turf_list = list()
 	var/list/line_turfs = get_line(abduct_user, targetted_atom, FALSE)
 	var/blocked = FALSE
 	var/distance_walked = 0
 
-	for(var/turf/line_turf in line_turfs)
+	for(var/turf/line_turf as anything in line_turfs)
 		if(distance_walked >= max_distance)
 			break
 

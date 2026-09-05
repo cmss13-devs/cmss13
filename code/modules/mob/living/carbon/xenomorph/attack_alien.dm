@@ -207,6 +207,10 @@
 			SEND_SIGNAL(attacking_xeno, COMSIG_HUMAN_ALIEN_ATTACK, src)
 
 		if(INTENT_DISARM)
+			if(HAS_TRAIT(src, TRAIT_NESTED))
+				to_chat(attacking_xeno, SPAN_XENOWARNING("We cannot tackle [src] while they are secured in a nest!"))
+				return XENO_NO_DELAY_ACTION
+
 			if(attacking_xeno.legcuffed && isyautja(src))
 				to_chat(attacking_xeno, SPAN_XENODANGER("We don't have the dexterity to tackle the headhunter with that thing on our leg!"))
 				return XENO_NO_DELAY_ACTION

@@ -206,21 +206,30 @@
 	spit_windup = 0.8 SECONDS
 	hits_lying_mobs = TRUE
 	damage_falloff = 0
-	var/penetrating_trait = /datum/element/bullet_trait_penetrating/weak/mob_penetrating
+/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/one_penetrations
 
-/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/set_bullet_traits()
+/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/one_penetrations/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating/weak/mob_penetrating)
 	))
 /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/two_penetrations
-	penetrating_trait = /datum/element/bullet_trait_penetrating/weak/mob_penetrating/two_penetrations
 	penetration = 15
+
+/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/two_penetrations/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating/weak/mob_penetrating/two_penetrations)
+	))
 
 /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/three_penetrations
 	penetration = 20
-	penetrating_trait = /datum/element/bullet_trait_penetrating/weak/mob_penetrating/three_penetrations
 
+/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/three_penetrations/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating/weak/mob_penetrating/three_penetrations)
+	))
 
 /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/on_hit_mob(mob/target_mob, obj/projectile/projectile)
 	. = ..()

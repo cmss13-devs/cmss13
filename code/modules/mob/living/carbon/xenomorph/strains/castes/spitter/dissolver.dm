@@ -89,7 +89,7 @@
 	plasma_cost = 45
 	ammo = /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	var/list/options_ammo_list = list(/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit, /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/two_penetrations, /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/three_penetrations)
+	var/list/options_ammo_list = list(/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/one_penetrations, /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/two_penetrations, /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/three_penetrations)
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/dissolver/corosive_spit/use_ability()
 	var/mob/living/carbon/xenomorph/spitter/xeno = owner
@@ -97,9 +97,9 @@
 	var/datum/behavior_delegate/spitter_dissolver/dissolver_delegate
 	if(istype(delegate, /datum/behavior_delegate/spitter_dissolver))
 		dissolver_delegate = delegate
-		ammo = options_ammo_list[min(1, dissolver_delegate.acid_stored)]
+		xeno.ammo = GLOB.ammo_list[options_ammo_list[max(1, dissolver_delegate.acid_stored - 2)]]
 	else
-		ammo = /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit
+		xeno.ammo = GLOB.ammo_list[/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit]
 	. = ..()
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/dissolver/acid_blob

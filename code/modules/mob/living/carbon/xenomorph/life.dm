@@ -420,6 +420,8 @@ Make sure their actual health updates immediately.*/
 				tracking_atom = leader
 		if(TRACKER_TUNNEL)
 			tracking_atom = locator.tracking_ref?.resolve()
+		if(TRACKER_LZ)
+			tracking_atom = locator.tracking_ref?.resolve()
 
 	// If the atom can't be found/has been deleted.
 	if(!tracking_atom)

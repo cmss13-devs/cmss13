@@ -115,7 +115,7 @@
 	plasma_cost = 55
 	ammo = /datum/ammo/xeno/acid/spatter/dissolver_enzymatic_breath
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	var/stack_windup_reduction = 1
+	var/stack_windup_reduction = 0.1 SECONDS
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/dissolver/enzymatic_breath/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/spitter/xeno = owner

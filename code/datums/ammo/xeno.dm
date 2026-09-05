@@ -322,7 +322,7 @@
 	spread_acid(projectile.loc, projectile)
 
 /datum/ammo/xeno/acid/dissolver_acid_blob/proc/spread_acid(location, obj/projectile/proj_hit)
-	create_shrapnel(location, shrapnel_count, proj_hit.dir , dispersion_angle ,shrapnel_type, create_cause_data(src), FALSE, 100)
+	create_shrapnel(location, shrapnel_count, proj_hit.dir , dispersion_angle ,shrapnel_type, create_cause_data("dissolver acid blob", proj_hit.firer), FALSE, 100)
 
 /datum/ammo/xeno/acid/praetorian
 	name = "acid splash"

@@ -20,8 +20,6 @@
  * things factory-style, eliminating the need for 20 plates to get things done
  * fast.
  **/
-
-// todo: add these to vendors
 /obj/item/reagent_container/cooking
 	icon = 'icons/obj/items/kitchen_tools.dmi'
 	w_class = SIZE_SMALL

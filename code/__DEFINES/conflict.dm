@@ -12,7 +12,7 @@
 #define HEADSHOT_OVERLAY_HEAVY "heavy_headshot"
 
 // flags_ammo_behaviour
-#define AMMO_EXPLOSIVE (1<<0)
+// (1<<0) was formerly AMMO_EXPLOSIVE. Reuse it only if you must. I encourage you to use components.
 #define AMMO_ACIDIC (1<<1)
 #define AMMO_XENO (1<<2)
 #define AMMO_LASER (1<<3)

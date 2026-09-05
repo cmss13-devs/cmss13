@@ -5,7 +5,6 @@
 
 
 /datum/element/bullet_trait_penetrating/weak/mob_penetrating/handle_passthrough_movables(obj/projectile/bullet, atom/movable/hit_movable, did_hit)
-	. = ..()
 	if(ismob(hit_movable))
 		bullet.damage -= initial(bullet.damage) * inital_portion_lost_per_hit
 	if(bullet.damage > 0)

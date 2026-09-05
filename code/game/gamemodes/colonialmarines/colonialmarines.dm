@@ -33,6 +33,9 @@
 	var/near_lz_protection_delay = 8 MINUTES
 
 
+	var/cultist_round_chance = 100
+
+
 /* Pre-pre-startup */
 /datum/game_mode/colonialmarines/can_start(bypass_checks = FALSE)
 	initialize_special_clamps()
@@ -125,12 +128,10 @@
 			qdel(i)
 			new type_to_spawn(T)
 
-	//desert river test
-	if(!length(round_toxic_river))
-		round_toxic_river = null //No tiles?
-	else
-		round_time_river = rand(-100,100)
-		flags_round_type |= MODE_FOG_ACTIVATED
+	if(prob(cultist_round_chance))
+		cultist_round = TRUE
+
+	flags_round_type |= MODE_FOG_ACTIVATED
 
 	..()
 
@@ -170,6 +171,7 @@
 	. = ..()
 	clear_lz_hazards() // This shouldn't normally do anything, but is here just in case
 
+	activate_cultists() // cultists find out they are cultists
 	// Assumption: Shuttle origin is its center
 	// Assumption: dwidth is atleast 2 and dheight is atleast 4 otherwise there will be overlap
 	var/list/options = list()
@@ -216,6 +218,22 @@
 		options += get_valid_sentry_turfs(right-4, top-1, z, width=5, height=2, structures_to_ignore=structures_to_break)
 		options += get_valid_sentry_turfs(right-1, top-7, z, width=2, height=6, structures_to_ignore=structures_to_break)
 	spawn_lz_sentry(pick(options), structures_to_break)
+
+/datum/game_mode/colonialmarines/proc/activate_cultists()
+	if(!cultist_round)
+		return
+	var/list/survivors = GLOB.spawned_survivors
+	for(var/mob/living/carbon/human/human in survivors)
+		if(human.undefibbable)
+			survivors -= human
+	if(!length(survivors))
+		return
+
+	for(var/mob/living/carbon/human/human in survivors)
+		if(prob(30))
+			human.become_cultist()
+
+
 
 ///Returns a list of non-dense turfs using the given block arguments ignoring the provided structure types
 /datum/game_mode/colonialmarines/proc/get_valid_sentry_turfs(left, bottom, z, width, height, list/structures_to_ignore)

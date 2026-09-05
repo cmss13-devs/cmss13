@@ -527,6 +527,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 			revive_enabled = check_tod() && is_revivable()
 
 		var/holder2_set = 0
+		if(cultist) //used for the new cultists
+			holder4.icon_state = "hudalien"
 		if(hivenumber)
 			holder4.icon_state = "hudalien"
 

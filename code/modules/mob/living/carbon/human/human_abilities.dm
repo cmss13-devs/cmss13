@@ -693,3 +693,16 @@ CULT
 		if(istype(vehicle_chair.vehicle, /obj/vehicle/multitile/arc))
 			var/obj/vehicle/multitile/arc/vehicle = vehicle_chair.vehicle
 			vehicle.toggle_antenna(human_user)
+
+
+
+/datum/action/human_action/activable/burst
+	name = "Initiate chestburst"
+
+/datum/action/human_action/activable/burst/action_activate()
+	. = ..()
+	var/obj/item/alien_embryo/larva_embryo = locate() in owner
+	if(larva_embryo && larva_embryo.stage < 7)
+		larva_embryo.start_bursting(new/mob/living/carbon/xenomorph/larva(owner), owner)
+		remove_from(owner)
+

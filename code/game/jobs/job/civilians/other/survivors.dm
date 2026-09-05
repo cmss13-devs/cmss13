@@ -305,6 +305,10 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	return FALSE
 
 /datum/job/civilian/survivor/synth/handle_equip_gear(mob/living/carbon/human/equipping_human, obj/effect/landmark/survivor_spawner/picked_spawner)
+	if(SSticker.mode.cultist_round)
+		arm_equipment(equipping_human, /datum/equipment_preset/guardian, FALSE, TRUE)
+		return
+
 	if(picked_spawner.synth_equipment) //insert with synth
 		arm_equipment(equipping_human, picked_spawner.synth_equipment, FALSE, TRUE) //use synth equipmnent
 	else //else, use player prefs

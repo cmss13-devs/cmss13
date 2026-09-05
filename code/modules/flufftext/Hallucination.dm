@@ -18,8 +18,18 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	var/hal_screwyhud = 0 //1 - critical, 2 - dead, 3 - oxygen indicator, 4 - toxin indicator
 	var/handling_hal = FALSE
 	var/hal_crit = FALSE
+	var/cultist = FALSE
 	COOLDOWN_DECLARE(give_item_cooldown)
 	COOLDOWN_DECLARE(penlight_assesment_cooldown)
+
+/mob/living/carbon/proc/become_cultist()
+	cultist = TRUE
+	to_chat(src, "Something snaps in you after seeing the xenomorphs in action, they are the gods, you need to spread them across the galaxy.")
+	to_chat(src, SPAN_ALERT("You are not allowed to be openly hostile to humans and you are not allied to xenomorphs either, your goal is to become infected and burst on the Almayer."))
+	var/list/huds_to_add = list(MOB_HUD_XENO_INFECTION, MOB_HUD_XENO_STATUS, STATUS_HUD_XENO_CULTIST)
+	for(var/hud_to_add in huds_to_add)
+		var/datum/mob_hud/hud = GLOB.huds[hud_to_add]
+		hud.add_hud_to(src, src)
 
 /mob/living/carbon/proc/handle_hallucinations()
 	if(handling_hal)

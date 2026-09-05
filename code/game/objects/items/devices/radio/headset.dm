@@ -1462,6 +1462,13 @@
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_MARINE
 
+/obj/item/device/radio/headset/distress/uscm
+	name = "USCM colony headset"
+	desc = "A standard headset used by the USCM. This one seems badly beat up, whatever extra frequencies it once had have been lost."
+	frequency = COLONY_FREQ
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_MARINE
+
 /obj/item/device/radio/headset/almayer/sof/survivor_army
 	name = "US Army headset"
 	desc = "Issued exclusively to Army troopers."

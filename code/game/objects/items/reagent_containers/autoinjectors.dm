@@ -21,9 +21,19 @@
 	starting_vial = null
 	transparent = FALSE
 	skilllock = SKILL_MEDICAL_DEFAULT
+	///If TRUE, nobody can tell what's in this autoinjector without a scanner.
+	var/chemical_unclear = FALSE
+	///If TRUE, it's a strange crystal.
+	var/is_crystal = FALSE
+	///How many uses are left in this autoinjector?
 	var/uses_left = 3
-	var/mixed_chem = FALSE //mini tank will not accept mixed_chem autoinjector types
+	///From full, how many injections are in this autoinjector until it needs to be refilled or disposed?
+	var/max_uses = 3
+	///If TRUE, this autoinjector has more than one reagent in it.
+	var/mixed_chem = FALSE
+	///If TRUE, this autoinjector can't be refilled at all.
 	var/cannot_refill = FALSE
+	///If TRUE, you can see a little bit of text underneath its icon while holding it.
 	var/display_maptext = FALSE
 	var/maptext_label
 
@@ -47,7 +57,7 @@
 	uses_left = UL
 
 
-/obj/item/reagent_container/hypospray/autoinjector/attack(mob/M, mob/user)
+/obj/item/reagent_container/hypospray/autoinjector/attack(mob/person, mob/user)
 	if(uses_left <= 0)
 		return
 	. = ..()
@@ -71,40 +81,43 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/get_examine_text(mob/user)
 	. = ..()
+
+	update_uses_left()
+
 	if(uses_left >= 0)
-		if(istype(src, /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison))
-			. += SPAN_NOTICE("It is currently loaded with [reagents.total_volume / amount_per_transfer_from_this]/[volume / amount_per_transfer_from_this] injections of ... Something? You don't know what's in it.")
-		else if(volume == amount_per_transfer_from_this) //one-use autoinjectors
-			. += SPAN_NOTICE("It is currently loaded with a single injection of [amount_per_transfer_from_this]u [capitalize(chemname)].")
-			if(istype(src, /obj/item/reagent_container/hypospray/autoinjector/yautja)) //this is a yautja crystal
+		if(chemical_unclear)
+			if(max_uses == 1)
+				. += SPAN_NOTICE("It injects its entire payload of... Medicine, you guess? You don't know exactly what's in it.")
+			else
+				. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections of... Medicine, you guess? You don't know exactly what's in it.")
+		else if(max_uses == 1) //one-use autoinjectors
+			. += SPAN_NOTICE("It injects its entire payload of [amount_per_transfer_from_this]u [capitalize(chemname)] at once.")
+			if(is_crystal) //this is a yautja crystal
 				if(isyautja(user)) //is a yautja looking at it or not?
 					. += SPAN_NOTICE("It is currently loaded with a single injection of [amount_per_transfer_from_this]u [capitalize(chemname)].")
-				else
+				else if (uses_left <= 0)
 					. += SPAN_NOTICE("You do not know how many injections it has or what is in it.")
 		else
-			. += SPAN_NOTICE("It is currently loaded with [reagents.total_volume / amount_per_transfer_from_this]/[volume / amount_per_transfer_from_this] injections of [amount_per_transfer_from_this]u [capitalize(chemname)].")
+			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections of [amount_per_transfer_from_this]u [capitalize(chemname)].")
 
 
 	else if(uses_left <= 0)
-		if(cannot_refill == TRUE)
-			if(istype(src, /obj/item/reagent_container/hypospray/autoinjector/yautja)) //this is a yautja crystal
+		if(cannot_refill)
+			if(is_crystal) //this is a yautja crystal
 				if(isyautja(user)) //is a yautja looking at it or not?
 					. += SPAN_WARNING("It is spent and will soon disintegrate.")
 				else
 					. += SPAN_NOTICE("You do not know how many injections it has or what is in it.")
 			else
-				. += SPAN_WARNING("It is spent and it has no means of refilling.")
-		else if(istype(src, /obj/item/reagent_container/hypospray/autoinjector/ez) || istype(src, /obj/item/reagent_container/hypospray/autoinjector/tutorial))
-			. += SPAN_NOTICE("It is empty, but you can refill it at any Wey-Med Plus Dispenser, any Wall-Med, or with an MS-11 Smart Refill Tank.")
-		else if(istype(src, /obj/item/reagent_container/hypospray/autoinjector/standard))
-			. += SPAN_NOTICE("It is empty, but you can refill it at any Wey-Med Plus Dispenser, Wey-Med resupply station, or with an MS-11 Smart Refill Tank.")
+				. += SPAN_WARNING("It is spent and it cannot be refilled.")
 		else
-			. += SPAN_NOTICE("It is empty.")
-	if(!istype(src, /obj/item/reagent_container/hypospray/autoinjector/yautja))
-		if(skilllock == SKILL_MEDICAL_MEDIC)
+			. += SPAN_HELPFUL("It is empty but it can be refilled. Try Wey-Med vends, Wall-Meds, or an MS-11 Smart Refill Tank.") //left ambiguous. w/e.
+
+	if(!is_crystal)
+		if(skilllock >= SKILL_MEDICAL_TRAINED)
 			. += SPAN_NOTICE("It has a lock on it similar to pill bottles. Only those with sufficient medical training can unlock it.")
 		else
-			. += SPAN_NOTICE("It doesn't have a lock on it, so anyone can use it.")
+			. += SPAN_HELPFUL("It doesn't have a lock on it, so anyone can use it.")
 
 
 
@@ -362,6 +375,7 @@
 	autoinjector_type = "autoinjector_single"
 	skilllock = SKILL_MEDICAL_DEFAULT
 	uses_left = 1
+	max_uses = 1
 	display_maptext = TRUE
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
@@ -377,37 +391,37 @@
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine
 	name = "first-aid EZ autoinjector"
 	chemname = "tricordrazine"
-	desc = "An EZ one-use autoinjector that injects medicine for marines to self-administer for treating basic wounds. It injects its entire payload immediately."
+	desc = "An EZ one-use autoinjector that injects medicine for marines to self-administer for treating basic wounds."
 	maptext_label = "OuTc"
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol
 	name = "pain-stop EZ autoinjector"
 	chemname = "tramadol"
-	desc = "An EZ one-use autoinjector that injects medicine for marines to self-administer to alleviate their pain. It injects its entire payload immediately."
+	desc = "An EZ one-use autoinjector that injects medicine for marines to self-administer to alleviate their pain."
 	maptext_label = "OuTr"
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/antitoxin
 	name = "antitoxin EZ autoinjector"
 	chemname = "anti_toxin"
-	desc = "An EZ one-use autoinjector that injects medicine for marines to self-administer for removing toxins. It injects its entire payload immediately."
+	desc = "An EZ one-use autoinjector that injects medicine for marines to self-administer for removing toxins."
 	maptext_label = "OuDy"
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/bicaridine
 	name = "wound care EZ autoinjector"
 	chemname = "bicaridine"
-	desc = "An EZ one-use autoinjector that injects medicine for marines to self-administer for mending serious wounds from the inside out. It injects its entire payload immediately."
+	desc = "An EZ one-use autoinjector that injects medicine for marines to self-administer for mending serious wounds from the inside out."
 	maptext_label = "OuBi"
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/kelotane
 	name = "burn care EZ autoinjector"
 	chemname = "kelotane"
-	desc = "An EZ one-use autoinjector that injects medicine for marines to self-administer for treating serious burns from the inside out. It injects its entire payload immediately."
+	desc = "An EZ one-use autoinjector that injects medicine for marines to self-administer for treating serious burns from the inside out."
 	maptext_label = "OuKl"
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/dexalin
 	name = "inhaler EZ autoinjector"
 	chemname = "dexalin"
-	desc = "An EZ one-use autoinjector that injects medicine for marines to self-administer for when they're struggling to breathe. It injects its entire payload immediately."
+	desc = "An EZ one-use autoinjector that injects medicine for marines to self-administer for when they're struggling to breathe."
 	maptext_label = "OuDx"
 
 //TUTORIAL AUTOINJECTORS
@@ -422,6 +436,7 @@
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	uses_left = 1
+	max_uses = 1
 	maptext_label = "OuTc"
 
 /obj/item/reagent_container/hypospray/autoinjector/tutorial/tramadol
@@ -493,6 +508,7 @@
 	maptext_label = "Zzz"
 	cannot_refill = TRUE
 	skilllock = SKILL_MEDICAL_MEDIC
+	chemical_unclear = TRUE
 
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate/Initialize()
 	. = ..()
@@ -510,12 +526,14 @@
 	volume = (REAGENTS_OVERDOSE-1)*2 + (MED_REAGENTS_OVERDOSE-1) + 1 //dexalin plus is the +1
 	mixed_chem = TRUE
 	uses_left = 1
+	max_uses = 1
 	injectSFX = 'sound/items/air_release.ogg'
 	injectVOL = 70 //limited-supply emergency injector with v.large injection of drugs. Variable sfx freq sometimes rolls too quiet.
 	display_maptext = TRUE //see anaesthetic injector
 	maptext_label = "!!"
 	skilllock = SKILL_MEDICAL_DEFAULT
 	cannot_refill = TRUE
+	chemical_unclear = TRUE
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency/Initialize() //29u bicaridine, 29u kelotane, 19u oxycodone, 1u dexalin +.
 	. = ..()
@@ -534,6 +552,7 @@
 	amount_per_transfer_from_this = 5
 	volume = 5
 	uses_left = 1
+	max_uses = 1
 	injectSFX = 'sound/items/air_release.ogg'
 	mixed_chem = TRUE
 	display_maptext = TRUE
@@ -549,10 +568,11 @@
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine
 	name = "ultrazine stimpack"
 	chemname = "ultrazine"
-	desc = "A stimpack that injects ultrazine, a special and illegal muscle stimulant. It doesn't require any training to administer. Do not administer more than twice at a time. Highly addictive."
+	desc = "A stimpack that injects ultrazine, a special and illegal muscle stimulant. Do not administer more than twice at a time. Highly addictive."
 	amount_per_transfer_from_this = 5
 	volume = 25
 	uses_left = 5
+	max_uses = 5
 	icon_state = "stimpack"
 	autoinjector_type = "+stimpack_custom"
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -576,6 +596,7 @@
 	name = "strange stimpack"
 	desc = "You know what they say, don't jab yourself with suspicious syringes."
 	maptext_label = "???"
+	chemical_unclear = TRUE
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja
 	name = "unusual crystal"
@@ -586,11 +607,13 @@
 	injectSFX = 'sound/items/pred_crystal_inject.ogg'
 	autoinjector_type = "thwei"
 	injectVOL = 15
-	amount_per_transfer_from_this = 15
-	volume = 15
+	amount_per_transfer_from_this = REAGENTS_OVERDOSE
+	volume = REAGENTS_OVERDOSE
 	uses_left = 1
+	max_uses = 1
 	black_market_value = 25
 	cannot_refill = TRUE
+	is_crystal = TRUE
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall
 	name = "orange unusual crystal"
@@ -627,20 +650,21 @@
 	amount_per_transfer_from_this = 15
 	volume = 45
 	uses_left = 0
+	max_uses = 3
 	display_maptext = FALSE
 
 /obj/item/reagent_container/hypospray/autoinjector/research/get_examine_text(mob/user)
 	if(uses_left >= 0)
-		. += SPAN_NOTICE("It is currently loaded with [reagents.total_volume / amount_per_transfer_from_this]/[volume / amount_per_transfer_from_this] injections of [amount_per_transfer_from_this]u of whatever you put in it.")
-		if(volume == amount_per_transfer_from_this)
+		. += SPAN_NOTICE("It is currently loaded with [uses_left / max_uses]/[max_uses] injections of [amount_per_transfer_from_this]u of whatever you put in it.")
+		if(max_uses == 1)
 			. += SPAN_NOTICE("It is currently loaded with a single injection of [amount_per_transfer_from_this]u of whatever you put in it.") //one-use autoinjectors
 	else if(uses_left <= 0)
 		. += SPAN_NOTICE("It is empty, but you can refill it with a pressurized reagent canister pouch.")
 
-	if(skilllock == SKILL_MEDICAL_MEDIC)
+	if(skilllock >= SKILL_MEDICAL_TRAINED)
 		. += SPAN_NOTICE("It has a lock on it similar to pill bottles. Only those with sufficient medical training can unlock it.")
 	else
-		. += SPAN_NOTICE("It doesn't have a lock on it, so anyone can use it.")
+		. += SPAN_HELPFUL("It doesn't have a lock on it, so anyone can use it.")
 
 /obj/item/reagent_container/hypospray/autoinjector/research/verb/flush_autoinjector()
 	set category = "Object"
@@ -692,19 +716,19 @@
 //CUSTOM EZ AUTOINJECTORS
 /obj/item/reagent_container/hypospray/autoinjector/research/ez
 	name = "custom EZ one-use autoinjector (15u)"
-	desc = "A custom-made EZ autoinjector, likely from research. It injects its entire payload immediately."
+	desc = "A custom-made EZ autoinjector, likely from research."
 	icon_state = "empty_research_single"
 	autoinjector_type = "autoinjector_single"
 	amount_per_transfer_from_this = 15
 	skilllock = SKILL_MEDICAL_DEFAULT
 	volume = 15
 	uses_left = 0
+	max_uses = 1
 
 /obj/item/reagent_container/hypospray/autoinjector/research/ez/unit
 	name = "custom EZ one-use autoinjector (1u)"
 	amount_per_transfer_from_this = 1
 	volume = 1
-
 
 /obj/item/reagent_container/hypospray/autoinjector/research/ez/verysmall
 	name = "custom EZ one-use autoinjector (5u)"
@@ -739,13 +763,14 @@
 //REAGENT POUCH AUTOINJECTORS
 /obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch
 	name = "reagent canister pouch autoinjector (15u)"
-	desc = "An autoinjector specifically designed to fit inside and refill only from pressurized reagent canister pouches with filled canisters inside. It uniquely fits up to 6 doses of medicine."
+	desc = "An autoinjector specifically designed to fit inside and refill only from pressurized reagent canister pouches with filled canisters inside."
 	skilllock = SKILL_MEDICAL_MEDIC
 	volume = 90
 	amount_per_transfer_from_this = 15
 	autoinjector_type = "autoinjector_medic"
 	icon_state = "empty_medic"
 	uses_left = 0
+	max_uses = 6
 
 /obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/tiny
 	name = "reagent canister pouch autoinjector (1u)"

@@ -25,10 +25,9 @@
 	user.adminhelp()
 	return TRUE
 
-
 /datum/keybinding/client/screenshot
-	hotkey_keys = list("Unbound")
-	classic_keys = list("F2")
+	hotkey_keys = list("F2")
+	classic_keys = list("Unbound")
 	name = "screenshot"
 	full_name = "Screenshot"
 	description = "Take a screenshot."
@@ -38,7 +37,22 @@
 	. = ..()
 	if(.)
 		return
-	winset(user, null, "command=.screenshot [!user.keys_held[SHIFT_CLICK] ? "auto" : ""]")
+	winset(user, null, "command='.screenshot auto'")
+	return TRUE
+
+/datum/keybinding/client/screenshot_as
+	hotkey_keys = list("Shift+F2")
+	classic_keys = list("Unbound")
+	name = "screenshot as"
+	full_name = "Screenshot As"
+	description = "Save a screenshot as."
+	keybind_signal = COMSIG_KB_CLIENT_SCREENSHOT_DOWN
+
+/datum/keybinding/client/screenshot_as/down(client/user)
+	. = ..()
+	if(.)
+		return
+	winset(user, null, "command=.screenshot")
 	return TRUE
 
 /datum/keybinding/client/toggle_fullscreen

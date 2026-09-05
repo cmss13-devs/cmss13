@@ -302,11 +302,6 @@
 			playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
 		return XENO_NONCOMBAT_ACTION
 
-	// Only the queen should have the authority to start hijack.
-	if(xeno.caste_type != XENO_CASTE_QUEEN)
-		to_chat(xeno, SPAN_XENODANGER("We shouldn't be tampering with the controls."))
-		return
-
 	if(!is_ground_level(z))
 		// "you" rather than "we" for this one since non-queen castes will have returned above.
 		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but you can't comprehend their meaning."))
@@ -338,6 +333,11 @@
 		message_admins("[key_name(xeno)] has locked the dropship '[dropship]'", xeno.x, xeno.y, xeno.z)
 		notify_ghosts(header = "Dropship Locked", message = "[xeno] has locked [dropship]!", source = xeno, action = NOTIFY_ORBIT)
 		SScmtv.spectate_event("Dropship Locked", src)
+		return
+
+	// Only the queen should have the authority to start hijack.
+	if(xeno.caste_type != XENO_CASTE_QUEEN)
+		to_chat(xeno, SPAN_XENODANGER("We shouldn't be tampering with the controls any further."))
 		return
 
 	if(dropship_control_lost)

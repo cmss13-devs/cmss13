@@ -174,7 +174,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/standard/adrenaline
 	name = "epinephrine autoinjector"
 	chemname = "adrenaline"
-	desc = "An autoinjector that injects a nerve stimulant useful in restarting the heart after defibrillation."
+	desc = "An autoinjector that injects a nerve stimulant useful in restarting the heart after defibrillation and treating anaphylaxis. It is also a generic formulation of the registered trademarked EpiPen."
 	amount_per_transfer_from_this = LOWM_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (LOWM_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	maptext_label = "Ep"
@@ -190,7 +190,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol
 	name = "tramadol autoinjector"
 	chemname = "tramadol"
-	desc = "An autoinjector that injects weak but effective painkiller for normal wounds."
+	desc = "An autoinjector that injects weak but effective painkiller for trauma."
 	maptext_label = "Tr"
 
 /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol/random_amount
@@ -338,13 +338,13 @@
 /obj/item/reagent_container/hypospray/autoinjector/ez/tramadol
 	name = "tramadol EZ autoinjector"
 	chemname = "tramadol"
-	desc = "An EZ autoinjector that injects a weak but effective painkiller for normal wounds."
+	desc = "An EZ autoinjector that injects a weak but effective painkiller for trauma."
 	maptext_label = "EzTr"
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/kelotane
 	name = "kelotane EZ autoinjector"
 	chemname = "kelotane"
-	desc = "An EZ autoinjector that injects a common burn-mending medicine."
+	desc = "An EZ autoinjector that injects a common burn-salving medicine."
 	maptext_label = "EzKl"
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/bicaridine
@@ -362,7 +362,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/ez/dexalin
 	name = "dexalin EZ autoinjector"
 	chemname = "dexalin"
-	desc = "An EZ autoinjector that injects a common toxin damage-purging medicine."
+	desc = "An EZ autoinjector that injects a common oxygen damage-purging medicine."
 	maptext_label = "EzDx"
 
 
@@ -384,44 +384,45 @@
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/inaprovaline
 	name = "crit-save EZ autoinjector"
 	chemname = "inaprovaline"
-	desc = "An EZ one-use autoinjector that injects a medicine for marines to self-administer if they think they will pass out."
+	desc = "An EZ one-use autoinjector that injects a medicine for anyone to self-administer if they think they will pass out."
 	amount_per_transfer_from_this = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	maptext_label = "OuIn"
+	volume = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine
 	name = "first-aid EZ autoinjector"
 	chemname = "tricordrazine"
-	desc = "An EZ one-use autoinjector that injects medicine for marines to self-administer for treating basic wounds."
+	desc = "An EZ one-use autoinjector that injects medicine for anyone to self-administer to treat basic wounds."
 	maptext_label = "OuTc"
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol
 	name = "pain-stop EZ autoinjector"
 	chemname = "tramadol"
-	desc = "An EZ one-use autoinjector that injects medicine for marines to self-administer to alleviate their pain."
+	desc = "An EZ one-use autoinjector that injects medicine for anyone to self-administer to alleviate their pain."
 	maptext_label = "OuTr"
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/antitoxin
 	name = "antitoxin EZ autoinjector"
 	chemname = "anti_toxin"
-	desc = "An EZ one-use autoinjector that injects medicine for marines to self-administer for removing toxins."
+	desc = "An EZ one-use autoinjector that injects medicine for anyone to self-administer to remove toxins from their bloodstream if they feel sick."
 	maptext_label = "OuDy"
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/bicaridine
 	name = "wound care EZ autoinjector"
 	chemname = "bicaridine"
-	desc = "An EZ one-use autoinjector that injects medicine for marines to self-administer for mending serious wounds from the inside out."
+	desc = "An EZ one-use autoinjector that injects medicine for anyone to self-administer to mend serious wounds from the inside out."
 	maptext_label = "OuBi"
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/kelotane
 	name = "burn care EZ autoinjector"
 	chemname = "kelotane"
-	desc = "An EZ one-use autoinjector that injects medicine for marines to self-administer for treating serious burns from the inside out."
+	desc = "An EZ one-use autoinjector that injects medicine for anyone to self-administer to treat serious burns from the inside out."
 	maptext_label = "OuKl"
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/dexalin
 	name = "inhaler EZ autoinjector"
 	chemname = "dexalin"
-	desc = "An EZ one-use autoinjector that injects medicine for marines to self-administer for when they're struggling to breathe."
+	desc = "An EZ one-use autoinjector that injects medicine for anyone to self-administer to treat symptoms of oxygen deprivation."
 	maptext_label = "OuDx"
 
 //TUTORIAL AUTOINJECTORS

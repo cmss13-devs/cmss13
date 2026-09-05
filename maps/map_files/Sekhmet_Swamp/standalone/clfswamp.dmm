@@ -1,0 +1,2089 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ak" = (
+/obj/structure/closet,
+/obj/item/clothing/under/colonist/clf,
+/obj/effect/landmark/objective_landmark/far,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/weapon/gun/smg/fp9000,
+/obj/structure/sign/poster/clf{
+	pixel_y = 37;
+	pixel_x = 10
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/sekhmet/int_reg/yard)
+"aD" = (
+/turf/open/gm/coast/dirt/swampdir/south,
+/area/sekhmet/outside/swamp)
+"aQ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/frame/rack{
+	layer = 2.9;
+	color = "#6b675e"
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/sekhmet/int_reg/yard)
+"aU" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/sheet/wood{
+	pixel_y = 2
+	},
+/obj/item/stack/sheet/wood{
+	pixel_y = -9;
+	pixel_x = -2
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/sekhmet/int_reg/yard)
+"bs" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/structure/flag/plantable/clf{
+	pixel_y = 13
+	},
+/turf/open/floor/strata/floor3/east,
+/area/sekhmet/outside/southroad)
+"bu" = (
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	dir = 1;
+	pixel_y = -4
+	},
+/turf/open/auto_turf/swamp_grass/layer0_mud,
+/area/sekhmet/outside/southroad)
+"bz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/largecrate/supply,
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"bL" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/kutjevo/grey,
+/area/sekhmet/int_reg/yard)
+"ch" = (
+/obj/structure/fence/slim/upp,
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/southroad)
+"ct" = (
+/obj/structure/flora/bush/ausbushes/palebush{
+	color = "#fceab2"
+	},
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/southroad)
+"cR" = (
+/obj/structure/fence/slim/upp{
+	layer = 1.9
+	},
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/southroad)
+"dl" = (
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/strata/multi_tiles/west,
+/area/sekhmet/int_reg/yard)
+"dr" = (
+/turf/closed/wall/rock{
+	color = "#797571"
+	},
+/area/sekhmet/caves/south_cave)
+"dy" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	color = "#fceab2"
+	},
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/southroad)
+"ej" = (
+/obj/item/storage/large_holster/katana/full,
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/turf/open/floor/kutjevo/grey,
+/area/sekhmet/int_reg/yard)
+"eH" = (
+/turf/open/floor/strata/multi_tiles/west,
+/area/sekhmet/int_reg/yard)
+"eZ" = (
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	dir = 1;
+	pixel_y = -4
+	},
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/southroad)
+"gt" = (
+/obj/effect/vehicle_spawner/clf_van/fixed{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/grey,
+/area/sekhmet/int_reg/yard)
+"gM" = (
+/obj/structure/flora/grass/tallgrass/swamp/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/swamp_grass/layer0_mud,
+/area/sekhmet/outside/southroad)
+"gY" = (
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	dir = 1;
+	pixel_y = -4
+	},
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	dir = 4
+	},
+/turf/open/auto_turf/swamp_grass/layer0_mud,
+/area/sekhmet/outside/southroad)
+"hX" = (
+/obj/structure/flora/jungle/vines/light_1{
+	color = "#fceab2"
+	},
+/turf/closed/wall/strata_ice/swamp,
+/area/sekhmet/outside/southroad)
+"ia" = (
+/obj/structure/closet/crate/ammo/alt,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/weapon/gun/rifle/mar40/carbine,
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"iO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/item/stack/sheet/metal{
+	pixel_x = -2;
+	pixel_y = -4
+	},
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"jf" = (
+/obj/item/hardpoint/locomotion/van_wheels,
+/turf/open/floor/kutjevo/grey,
+/area/sekhmet/int_reg/yard)
+"jw" = (
+/obj/structure/largecrate/empty/case,
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/southroad)
+"jy" = (
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/outside/southroad)
+"jL" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/landmark/survivor_spawner/clf/soro,
+/turf/open/floor/kutjevo/grey,
+/area/sekhmet/int_reg/yard)
+"jM" = (
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = 12;
+	pixel_y = 23
+	},
+/turf/open/gm/coast/dirt/swampbeachcorner/south_west,
+/area/sekhmet/outside/swamp)
+"jN" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#a39e99";
+	dir = 1;
+	pixel_x = 3;
+	pixel_y = -2
+	},
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/southroad)
+"jS" = (
+/turf/open/gm/dirt/swamp_dirt/variant_2,
+/area/sekhmet/outside/swamp)
+"kc" = (
+/turf/closed/wall/shiva/prefabricated/reinforced,
+/area/sekhmet/int_reg/yard)
+"ke" = (
+/obj/effect/landmark/survivor_spawner/clf/soro,
+/turf/open/auto_turf/swamp_grass/layer0_mud,
+/area/sekhmet/outside/southroad)
+"ko" = (
+/turf/open/auto_turf/swamp_grass/layer0_mud,
+/area/sekhmet/outside/southroad)
+"lf" = (
+/obj/structure/machinery/light/small,
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/int_reg/yard)
+"ln" = (
+/turf/open/floor/kutjevo/grey,
+/area/sekhmet/int_reg/yard)
+"lq" = (
+/obj/structure/flora/jungle/vines/light_1{
+	color = "#fceab2"
+	},
+/turf/open/auto_turf/swamp_grass/layer0_mud,
+/area/sekhmet/outside/southroad)
+"lD" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table/almayer{
+	color = "#8B9490"
+	},
+/obj/item/reagent_container/food/snacks/chips{
+	pixel_x = 7;
+	pixel_y = -7
+	},
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = 6
+	},
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = 6
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_reg/yard)
+"lZ" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#a39e99";
+	pixel_x = 3;
+	pixel_y = -34
+	},
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/southroad)
+"ml" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/item/stack/sheet/wood{
+	pixel_y = 2
+	},
+/obj/item/stack/sheet/metal{
+	pixel_x = -2;
+	pixel_y = -4
+	},
+/turf/open/floor/kutjevo/grey,
+/area/sekhmet/int_reg/yard)
+"mx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/closet/crate/secure/explosives,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/weapon/gun/rifle/m16,
+/obj/item/weapon/gun/rifle/m16{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/turf/open/floor/strata/floor3/east,
+/area/sekhmet/outside/southroad)
+"nq" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#a39e99";
+	pixel_x = 3;
+	pixel_y = -7
+	},
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	dir = 4
+	},
+/turf/open/auto_turf/swamp_grass/layer0_mud,
+/area/sekhmet/outside/southroad)
+"nD" = (
+/turf/closed/wall/rock{
+	color = "#797571"
+	},
+/area/sekhmet/outside/southroad)
+"nS" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/sheet/wood{
+	pixel_x = 1;
+	pixel_y = 4
+	},
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"nT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"on" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/closet/crate/freezer,
+/obj/item/storage/belt/medical/full{
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/obj/item/storage/firstaid/adv,
+/obj/item/roller,
+/obj/item/storage/surgical_tray,
+/obj/item/roller/surgical,
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"ov" = (
+/obj/structure/bed/hybrisa/bunkbed3{
+	dir = 1
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/sekhmet/int_reg/yard)
+"oN" = (
+/obj/structure/sign/banners/clf_flag{
+	pixel_y = 32
+	},
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/floor/kutjevo/grey,
+/area/sekhmet/int_reg/yard)
+"pD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/supply/floodlights,
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"pT" = (
+/obj/item/trash/cigbutt,
+/turf/open/auto_turf/swamp_grass/layer0_mud_alt,
+/area/sekhmet/outside/southroad)
+"qq" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#a39e99";
+	dir = 9;
+	pixel_x = 12;
+	pixel_y = -17
+	},
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/southroad)
+"qL" = (
+/obj/structure/flora/jungle/vines/light_1{
+	color = "#fceab2"
+	},
+/turf/open/auto_turf/swamp_grass/layer0_mud,
+/area/sekhmet/outside/southeast_road)
+"qR" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_reg/yard)
+"rh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/closet/crate/secure/ammo,
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_x = -7;
+	pixel_y = -4
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_y = 8
+	},
+/obj/item/weapon/gun/rifle/mar40/lmg{
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"ry" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/bed/hybrisa/bunkbed3{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/sekhmet/int_reg/yard)
+"rM" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#a39e99";
+	dir = 1;
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/southeast_road)
+"rN" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/southroad)
+"sn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"sz" = (
+/obj/structure/machinery/light/small,
+/turf/open/auto_turf/swamp_grass/layer0_mud,
+/area/sekhmet/outside/southroad)
+"sA" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#a39e99";
+	dir = 4;
+	pixel_x = -6;
+	pixel_y = -21
+	},
+/turf/open/gm/dirt/swamp_dirt,
+/area/sekhmet/outside/swamp)
+"sI" = (
+/obj/item/storage/fancy/cigarettes/arcturian_ace{
+	pixel_x = 8;
+	pixel_y = 12
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/sekhmet/int_reg/yard)
+"sR" = (
+/obj/effect/spawner/random/toolbox,
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/turf/open/floor/kutjevo/grey,
+/area/sekhmet/int_reg/yard)
+"sV" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/kutjevo/grey,
+/area/sekhmet/int_reg/yard)
+"tA" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic_solid/autoname,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_reg/yard)
+"tD" = (
+/obj/structure/fence/slim/upp,
+/obj/structure/flora/jungle/vines/light_1{
+	color = "#fceab2"
+	},
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/southroad)
+"tP" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/area/sekhmet/int_reg/yard)
+"tS" = (
+/obj/structure/pipes/vents/pump,
+/obj/structure/sign/poster/clf{
+	pixel_y = 36;
+	pixel_x = -8
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/sekhmet/int_reg/yard)
+"tX" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/gm/dirt/swamp_dirt,
+/area/sekhmet/outside/swamp)
+"uD" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/floor3/east,
+/area/sekhmet/int_reg/yard)
+"uN" = (
+/obj/structure/barricade/sandbags/wired{
+	color = "#a98c7c";
+	dir = 4
+	},
+/turf/open/auto_turf/swamp_grass/layer0_mud,
+/area/sekhmet/outside/southroad)
+"vv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/sekhmet/int_reg/yard)
+"vI" = (
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_reg/yard)
+"vU" = (
+/obj/structure/flora/jungle/vines/light_1{
+	color = "#fceab2"
+	},
+/turf/closed/wall/rock{
+	color = "#797571"
+	},
+/area/sekhmet/outside/southeast_road)
+"xd" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 1;
+	closed = 0;
+	density = 1
+	},
+/turf/open/auto_turf/swamp_grass/layer0_mud,
+/area/sekhmet/outside/southroad)
+"xm" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/dirt/swamp_dirt,
+/area/sekhmet/outside/swamp)
+"xt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/structure/surface/table/almayer{
+	color = "#8B9490"
+	},
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/weapon/gun/pistol/heavy,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/sekhmet/int_reg/yard)
+"xK" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#72963e";
+	icon_state = "bush3";
+	pixel_x = -15;
+	pixel_y = -6;
+	layer = 4.11
+	},
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/southroad)
+"yh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/item/stack/sheet/wood{
+	pixel_y = -4
+	},
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"yG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"yX" = (
+/obj/item/ammo_magazine/rifle/l42a/abr40,
+/obj/item/ammo_magazine/rifle/l42a/abr40,
+/obj/item/ammo_magazine/rifle/l42a/abr40,
+/obj/item/ammo_magazine/rifle/l42a/abr40,
+/obj/item/ammo_magazine/rifle/l42a/abr40,
+/obj/item/ammo_magazine/rifle/l42a/abr40,
+/obj/item/weapon/gun/rifle/l42a/abr40,
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/turf/open/floor/kutjevo/grey,
+/area/sekhmet/int_reg/yard)
+"zw" = (
+/obj/item/stack/sheet/plasteel/med_large_stack,
+/obj/item/stack/sheet/metal/med_large_stack,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/sekhmet/int_reg/yard)
+"zL" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
+/turf/open/floor/strata/multi_tiles/west,
+/area/sekhmet/int_reg/yard)
+"zQ" = (
+/obj/effect/landmark/survivor_spawner/clf/soro,
+/turf/open/auto_turf/swamp_dirt/layer0,
+/area/sekhmet/outside/southroad)
+"Ag" = (
+/obj/structure/bed/hybrisa/bunkbed3{
+	dir = 8
+	},
+/obj/structure/sign/poster/pinup{
+	pixel_x = -7;
+	pixel_y = 33
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/sekhmet/int_reg/yard)
+"Av" = (
+/turf/closed/wall/shiva/prefabricated/reinforced,
+/area/sekhmet/outside/southroad)
+"AJ" = (
+/obj/structure/flora/jungle/vines/light_1{
+	color = "#fceab2"
+	},
+/turf/closed/wall/rock{
+	color = "#797571"
+	},
+/area/sekhmet/outside/southroad)
+"Bj" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#72963e";
+	icon_state = "bush2";
+	pixel_x = -20;
+	pixel_y = -6
+	},
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/southeast_road)
+"Bk" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/closet,
+/obj/item/defenses/handheld/planted_flag/clf,
+/turf/open/floor/strata/floor3/east,
+/area/sekhmet/int_reg/yard)
+"Cp" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/effect/spawner/random/toolbox,
+/obj/structure/machinery/light/double,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/sekhmet/int_reg/yard)
+"Cv" = (
+/turf/open/gm/dirt/swamp_dirt,
+/area/sekhmet/outside/swamp)
+"CJ" = (
+/obj/item/trash/cigbutt,
+/obj/effect/landmark/survivor_spawner/clf_medic/soro,
+/turf/open/auto_turf/swamp_grass/layer0_mud_alt,
+/area/sekhmet/outside/southroad)
+"Dr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/supply/ammo/shotgun,
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"Dz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/structure/bed/chair{
+	buckling_y = 18;
+	dir = 8;
+	pixel_x = -2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/light/small,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/sekhmet/int_reg/yard)
+"DC" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/southroad)
+"DI" = (
+/turf/closed/wall/strata_ice/swamp,
+/area/sekhmet/outside/southroad)
+"DL" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	color = "#fceab2"
+	},
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/southeast_road)
+"DO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/structure/reagent_dispensers/tank/fuel,
+/turf/open/floor/strata/floor3/east,
+/area/sekhmet/outside/southroad)
+"DT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"Er" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/landmark/survivor_spawner/clf_lead/soro,
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"EA" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/dirt/swamp_dirt,
+/area/sekhmet/outside/swamp)
+"EJ" = (
+/obj/item/trash/cigbutt,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_reg/yard)
+"ET" = (
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/southeast_road)
+"Fk" = (
+/turf/closed/wall/rock{
+	color = "#797571"
+	},
+/area/sekhmet/outside/southeast_road)
+"Fp" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/swamp_dirt/layer0,
+/area/sekhmet/outside/southroad)
+"Fv" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/kutjevo/grey,
+/area/sekhmet/int_reg/yard)
+"FD" = (
+/obj/item/trash/cigbutt,
+/turf/open/floor/kutjevo/grey,
+/area/sekhmet/int_reg/yard)
+"FO" = (
+/obj/item/attachable/heavy_barrel,
+/obj/item/attachable/verticalgrip,
+/obj/item/attachable/verticalgrip,
+/obj/item/attachable/attached_gun/flamer,
+/obj/item/attachable/bayonet,
+/obj/item/attachable/bayonet,
+/obj/structure/closet/crate,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"Ge" = (
+/obj/item/tool/crowbar/red{
+	pixel_x = -8;
+	pixel_y = 10
+	},
+/obj/effect/landmark/survivor_spawner/clf_engi/soro,
+/turf/open/floor/kutjevo/grey,
+/area/sekhmet/int_reg/yard)
+"Gj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/closet/crate/secure/gear,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_y = 9
+	},
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_y = 3
+	},
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_y = -3
+	},
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"Gx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/structure/closet/crate/construction,
+/obj/item/device/m56d_gun/mounted,
+/obj/item/device/m56d_gun/mounted{
+	pixel_y = -5
+	},
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"GL" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/bed/chair,
+/turf/open/floor/kutjevo/grey,
+/area/sekhmet/int_reg/yard)
+"GQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/structure/largecrate/supply/ammo/m56d,
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"Hm" = (
+/obj/structure/machinery/door_control{
+	pixel_x = 1;
+	pixel_y = 31;
+	id = "clf_garage"
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/sekhmet/int_reg/yard)
+"HO" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#a39e99";
+	pixel_x = 5;
+	pixel_y = 19
+	},
+/turf/open/auto_turf/swamp_grass/layer0_mud,
+/area/sekhmet/outside/southroad)
+"If" = (
+/obj/structure/machinery/light/small,
+/turf/open/auto_turf/swamp_grass/layer0_mud,
+/area/sekhmet/int_reg/yard)
+"IA" = (
+/obj/item/trash/candy{
+	pixel_x = -7
+	},
+/turf/open/floor/kutjevo/grey,
+/area/sekhmet/int_reg/yard)
+"IV" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/multi_tiles/west,
+/area/sekhmet/int_reg/yard)
+"Jl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/structure/bed/chair{
+	buckling_y = 18;
+	dir = 8;
+	pixel_x = -2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/sekhmet/int_reg/yard)
+"JQ" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#a39e99";
+	pixel_x = 3;
+	pixel_y = -7
+	},
+/turf/open/auto_turf/swamp_grass/layer0_mud,
+/area/sekhmet/outside/southroad)
+"JX" = (
+/obj/structure/surface/table/almayer{
+	color = "#8B9490"
+	},
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_x = -10;
+	pixel_y = 1
+	},
+/obj/item/ammo_magazine/shotgun/incendiary{
+	pixel_x = 10;
+	pixel_y = -1
+	},
+/obj/item/ammo_magazine/shotgun/incendiary{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/sekhmet/int_reg/yard)
+"JZ" = (
+/obj/structure/surface/table/almayer{
+	color = "#8B9490"
+	},
+/obj/structure/machinery/faxmachine{
+	department = "CLF - Cell 42"
+	},
+/turf/open/floor/kutjevo/grey,
+/area/sekhmet/int_reg/yard)
+"Kb" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/dirt/swamp_dirt/variant_2,
+/area/sekhmet/outside/swamp)
+"Ks" = (
+/obj/structure/surface/table/almayer{
+	color = "#8B9490"
+	},
+/obj/structure/machinery/computer/emails{
+	dir = 1;
+	pixel_x = -1
+	},
+/turf/open/floor/kutjevo/grey,
+/area/sekhmet/int_reg/yard)
+"KC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/structure/surface/table/almayer{
+	color = "#8B9490"
+	},
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/sekhmet/int_reg/yard)
+"Mb" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "clf_garage";
+	name = "Garage Shutters";
+	color = "#8B9490";
+	dir = 2;
+	pixel_y = -2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/sekhmet/int_reg/yard)
+"Md" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/swamp_grass/layer0_mud_alt,
+/area/sekhmet/outside/southroad)
+"Mv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/supply/supplies/flares,
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"MF" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/kutjevo/grey,
+/area/sekhmet/int_reg/yard)
+"Nj" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/sekhmet/int_reg/yard)
+"Nl" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/turf/open/floor/kutjevo/grey,
+/area/sekhmet/int_reg/yard)
+"NT" = (
+/obj/structure/cargo_container/upp_small/container_20/left{
+	layer = 4.11
+	},
+/turf/open/auto_turf/swamp_grass/layer0_mud,
+/area/sekhmet/outside/southroad)
+"Oa" = (
+/obj/structure/machinery/light/small,
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/auto_turf/swamp_grass/layer0_mud,
+/area/sekhmet/outside/southroad)
+"Ol" = (
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/closet,
+/obj/item/clothing/accessory/storage/webbing,
+/obj/item/clothing/accessory/storage/webbing,
+/obj/item/clothing/accessory/storage/webbing,
+/turf/open/floor/strata/floor3/east,
+/area/sekhmet/int_reg/yard)
+"Ov" = (
+/obj/structure/flora/grass/tallgrass/swamp/corner{
+	dir = 10
+	},
+/turf/open/auto_turf/swamp_grass/layer0_mud,
+/area/sekhmet/outside/southroad)
+"Oz" = (
+/turf/open/auto_turf/swamp_dirt/layer0,
+/area/sekhmet/outside/southroad)
+"Ph" = (
+/obj/structure/bed/hybrisa/bunkbed3,
+/turf/open/floor/strata/multi_tiles/west,
+/area/sekhmet/int_reg/yard)
+"PE" = (
+/obj/structure/fence/slim/upp/door,
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/southroad)
+"PH" = (
+/obj/structure/window/framed/shiva/reinforced/grey,
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/int_reg/yard)
+"Qe" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/swamp_grass/layer0_mud,
+/area/sekhmet/outside/southeast_road)
+"QV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/largecrate/supply/supplies/mre/upp,
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"Rc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"Rd" = (
+/obj/structure/machinery/light/small{
+	pixel_x = 16
+	},
+/turf/open/auto_turf/swamp_grass/layer0_mud_alt,
+/area/sekhmet/outside/southroad)
+"Rh" = (
+/obj/item/storage/bag/trash{
+	pixel_x = -4;
+	pixel_y = -9
+	},
+/obj/item/storage/bag/trash{
+	pixel_x = 5;
+	pixel_y = -15
+	},
+/turf/closed/wall/shiva/prefabricated/reinforced,
+/area/sekhmet/int_reg/yard)
+"Ri" = (
+/obj/structure/flora/bush/ausbushes/var3/sunnybush{
+	color = "#fceab2"
+	},
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/southroad)
+"RB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/sheet/wood,
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"RS" = (
+/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/area/sekhmet/int_reg/yard)
+"SB" = (
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 1
+	},
+/turf/open/auto_turf/swamp_grass/layer0_mud_alt,
+/area/sekhmet/outside/southroad)
+"SH" = (
+/obj/structure/closet,
+/obj/item/clothing/under/colonist/clf,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/weapon/gun/smg/fp9000,
+/turf/open/floor/strata/multi_tiles/west,
+/area/sekhmet/int_reg/yard)
+"TQ" = (
+/obj/item/attachable/verticalgrip,
+/obj/item/attachable/verticalgrip,
+/obj/item/attachable/compensator,
+/obj/item/attachable/compensator,
+/obj/item/attachable/compensator,
+/obj/item/attachable/extended_barrel,
+/obj/item/attachable/extended_barrel,
+/obj/item/attachable/flashlight/grip,
+/obj/item/attachable/flashlight/grip,
+/obj/item/attachable/flashlight/grip,
+/obj/item/attachable/bayonet,
+/obj/item/attachable/bayonet,
+/obj/item/attachable/bayonet,
+/obj/item/attachable/attached_gun/flamer,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/closet/crate,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"Uu" = (
+/turf/open/auto_turf/swamp_grass/layer0_mud_alt,
+/area/sekhmet/outside/southroad)
+"Uy" = (
+/mob/living/simple_animal/small/frog/random,
+/turf/open/gm/coast/dirt/swampdir/south,
+/area/sekhmet/outside/swamp)
+"VH" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#a39e99";
+	dir = 4;
+	pixel_x = -1
+	},
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/southroad)
+"VJ" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/auto_turf/swamp_dirt/layer0,
+/area/sekhmet/outside/southroad)
+"VM" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/obj/item/prop/colony/canister{
+	pixel_y = 23
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/sekhmet/int_reg/yard)
+"VU" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/cargo_container/upp_small/container_20/right,
+/turf/open/auto_turf/swamp_grass/layer0_mud,
+/area/sekhmet/outside/southroad)
+"WD" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#a39e99";
+	pixel_x = 2;
+	pixel_y = -7;
+	dir = 10
+	},
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/southroad)
+"WE" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/landmark/survivor_spawner/clf/soro,
+/turf/open/floor/strata/multi_tiles/west,
+/area/sekhmet/int_reg/yard)
+"WP" = (
+/turf/open/gm/coast/dirt/swampbeachcorner/south_east,
+/area/sekhmet/outside/swamp)
+"WV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/plating/kutjevo,
+/area/sekhmet/outside/southroad)
+"Xi" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/swamp_grass/layer0_mud,
+/area/sekhmet/outside/southroad)
+"Xm" = (
+/obj/structure/flora/bush/ausbushes/palebush{
+	color = "#fceab2";
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/southroad)
+"XF" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table/almayer{
+	color = "#8B9490"
+	},
+/obj/item/paper_bin{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/tool/pen/clicky{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/obj/item/device/flashlight/lamp/green{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/turf/open/floor/kutjevo/grey,
+/area/sekhmet/int_reg/yard)
+"Yu" = (
+/obj/structure/surface/table/almayer{
+	color = "#8B9490"
+	},
+/obj/structure/machinery/light{
+	light_power = 0.5
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/obj/item/ashtray/bronze{
+	icon_state = "ashtray_half_br";
+	pixel_x = -10;
+	pixel_y = 10
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/sekhmet/int_reg/yard)
+"Zn" = (
+/turf/open/auto_turf/swamp_grass/layer1,
+/area/sekhmet/outside/southroad)
+"ZY" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/kutjevo/grey,
+/area/sekhmet/int_reg/yard)
+
+(1,1,1) = {"
+Zn
+Oz
+Oz
+Zn
+Ov
+gM
+Zn
+Ri
+Zn
+Zn
+dr
+dr
+dr
+dr
+dr
+dr
+dr
+dr
+dr
+dr
+dr
+dr
+"}
+(2,1,1) = {"
+Zn
+jy
+Oz
+Zn
+Zn
+Zn
+xK
+dy
+Xi
+ko
+dr
+dr
+dr
+dr
+dr
+dr
+dr
+dr
+dr
+dr
+dr
+dr
+"}
+(3,1,1) = {"
+Zn
+jy
+Oz
+Fp
+Zn
+Zn
+dy
+Xi
+DI
+DI
+dr
+dr
+RS
+dr
+dr
+dr
+dr
+dr
+dr
+dr
+dr
+dr
+"}
+(4,1,1) = {"
+Oz
+Zn
+Oz
+Oz
+Zn
+Zn
+Zn
+Zn
+Xi
+tP
+RS
+RS
+RS
+RS
+RS
+RS
+dr
+dr
+dr
+dr
+dr
+dr
+"}
+(5,1,1) = {"
+Fp
+Oz
+Zn
+Oz
+Zn
+Zn
+Oz
+Oz
+Oz
+Mb
+ln
+ln
+gt
+ln
+jf
+RS
+dr
+dr
+dr
+dr
+dr
+dr
+"}
+(6,1,1) = {"
+Zn
+Oz
+Zn
+Zn
+Oz
+Oz
+Oz
+jy
+Oz
+Mb
+Fv
+ln
+ln
+ln
+MF
+RS
+dr
+dr
+dr
+dr
+dr
+dr
+"}
+(7,1,1) = {"
+Zn
+Oz
+Oz
+jy
+Oz
+Zn
+Oz
+Zn
+If
+RS
+Hm
+aQ
+VM
+aU
+Cp
+RS
+RS
+dr
+dr
+dr
+dr
+dr
+"}
+(8,1,1) = {"
+Ri
+Zn
+Oz
+Zn
+Oz
+Fp
+jy
+Oz
+Oz
+Mb
+bL
+ln
+Ge
+FD
+bL
+RS
+dr
+dr
+dr
+dr
+dr
+dr
+"}
+(9,1,1) = {"
+Zn
+Zn
+Zn
+Oz
+jy
+Oz
+zQ
+Fp
+Oz
+Mb
+Nl
+ml
+Nl
+sV
+Nl
+RS
+dr
+dr
+dr
+dr
+dr
+dr
+"}
+(10,1,1) = {"
+Zn
+Zn
+Zn
+Oz
+Zn
+Zn
+Oz
+Zn
+Zn
+Rh
+Uu
+Uu
+ko
+ko
+Xi
+RS
+dr
+dr
+dr
+RS
+dr
+dr
+"}
+(11,1,1) = {"
+Kb
+Zn
+Zn
+Zn
+Oz
+Zn
+Oz
+Oz
+Zn
+cR
+bu
+QV
+TQ
+on
+ko
+RS
+RS
+RS
+RS
+RS
+RS
+dr
+"}
+(12,1,1) = {"
+jM
+Cv
+ct
+Zn
+Oz
+Oz
+Zn
+Zn
+Oz
+cR
+bu
+FO
+DO
+Mv
+sz
+kc
+zL
+dl
+Ol
+kc
+RS
+dr
+"}
+(13,1,1) = {"
+aD
+Cv
+Zn
+Zn
+Fp
+Oz
+Oz
+Zn
+Zn
+cR
+bu
+RB
+pD
+Gx
+ko
+kc
+zw
+WE
+Bk
+kc
+RS
+dr
+"}
+(14,1,1) = {"
+aD
+jS
+EA
+Zn
+Zn
+Oz
+jy
+Oz
+lf
+kc
+Xi
+ko
+Uu
+Uu
+ko
+kc
+tS
+IV
+vv
+Nj
+RS
+dr
+"}
+(15,1,1) = {"
+aD
+EA
+jS
+lZ
+Zn
+Oz
+Oz
+Oz
+jw
+cR
+eZ
+Uu
+Md
+CJ
+Uu
+tA
+ln
+EJ
+xt
+JX
+RS
+dr
+"}
+(16,1,1) = {"
+aD
+Cv
+xm
+nD
+VH
+Zn
+jy
+Oz
+DC
+cR
+eZ
+SB
+Zn
+Zn
+Uu
+vI
+bL
+vI
+KC
+Yu
+RS
+dr
+"}
+(17,1,1) = {"
+Uy
+Cv
+Cv
+nD
+nD
+Zn
+Oz
+Oz
+Zn
+cR
+bu
+Uu
+Uu
+ko
+Zn
+PH
+uD
+vI
+Jl
+Dz
+RS
+dr
+"}
+(18,1,1) = {"
+aD
+jS
+Cv
+jN
+nD
+DC
+Zn
+zQ
+Zn
+kc
+ko
+iO
+DT
+yh
+Zn
+PH
+IA
+ln
+ln
+ln
+RS
+dr
+"}
+(19,1,1) = {"
+aD
+EA
+sA
+WD
+nD
+rN
+Fp
+Oz
+Oz
+PE
+xd
+nT
+bs
+yG
+Rd
+kc
+oN
+qR
+jL
+ej
+RS
+dr
+"}
+(20,1,1) = {"
+WP
+tX
+dy
+Zn
+nD
+Zn
+Oz
+Zn
+Oz
+kc
+ko
+nS
+Er
+sn
+Uu
+kc
+sR
+vI
+lD
+XF
+RS
+dr
+"}
+(21,1,1) = {"
+Cv
+Kb
+Zn
+DI
+nD
+Zn
+Oz
+Zn
+Fp
+cR
+bu
+Uu
+Uu
+Uu
+Uu
+PH
+yX
+bL
+GL
+Ks
+RS
+dr
+"}
+(22,1,1) = {"
+Zn
+Zn
+Zn
+DI
+DI
+Zn
+Oz
+Oz
+Zn
+cR
+bu
+SB
+Uu
+Uu
+Zn
+PH
+ln
+bL
+ln
+JZ
+RS
+dr
+"}
+(23,1,1) = {"
+Zn
+xK
+hX
+hX
+DI
+Zn
+Zn
+jy
+Zn
+cR
+bu
+ko
+pT
+ke
+Zn
+tA
+ln
+ln
+FD
+ZY
+RS
+dr
+"}
+(24,1,1) = {"
+Zn
+ct
+Zn
+hX
+DI
+Zn
+Zn
+Oz
+lf
+kc
+ko
+rh
+bz
+Rc
+nq
+vI
+ln
+vI
+qR
+bL
+RS
+dr
+"}
+(25,1,1) = {"
+dy
+dy
+Xi
+lq
+AJ
+Zn
+Oz
+jy
+Oz
+cR
+bu
+GQ
+mx
+ia
+NT
+kc
+ry
+eH
+eH
+Ph
+RS
+dr
+"}
+(26,1,1) = {"
+dy
+dy
+Zn
+ko
+tD
+Zn
+zQ
+Zn
+Oz
+cR
+bu
+WV
+Gj
+Dr
+VU
+kc
+ak
+WE
+eH
+SH
+RS
+dr
+"}
+(27,1,1) = {"
+ko
+Zn
+Xi
+ko
+tD
+Zn
+Oz
+Oz
+Zn
+cR
+gY
+uN
+JQ
+ko
+Oa
+kc
+Ag
+sI
+eH
+ov
+RS
+dr
+"}
+(28,1,1) = {"
+Xi
+ko
+ko
+Xi
+ch
+dy
+Oz
+Zn
+Fp
+kc
+ch
+ch
+kc
+kc
+kc
+RS
+RS
+RS
+RS
+RS
+RS
+dr
+"}
+(29,1,1) = {"
+nD
+dy
+dy
+dy
+ch
+dy
+Oz
+jy
+Zn
+Zn
+Zn
+Xi
+dr
+dr
+dr
+dr
+RS
+dr
+dr
+RS
+dr
+dr
+"}
+(30,1,1) = {"
+nD
+AJ
+tD
+ch
+Av
+Zn
+Oz
+jy
+Zn
+qq
+Xm
+HO
+dr
+dr
+dr
+dr
+dr
+dr
+dr
+dr
+dr
+dr
+"}
+(31,1,1) = {"
+vU
+vU
+Zn
+Zn
+Zn
+Zn
+Oz
+Oz
+Zn
+dy
+jN
+Xi
+Fk
+Fk
+Fk
+Fk
+Fk
+Fk
+Fk
+Fk
+Fk
+Fk
+"}
+(32,1,1) = {"
+qL
+ET
+ET
+Zn
+Ri
+Zn
+Zn
+Oz
+VJ
+dy
+dy
+Xi
+Fk
+Fk
+Fk
+Fk
+Fk
+Fk
+Fk
+Fk
+Fk
+Fk
+"}
+(33,1,1) = {"
+Qe
+Qe
+rM
+Bj
+ET
+ET
+Oz
+Zn
+Oz
+ET
+DL
+ET
+Fk
+Fk
+Fk
+Fk
+Fk
+Fk
+Fk
+Fk
+Fk
+Fk
+"}

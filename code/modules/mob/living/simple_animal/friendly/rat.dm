@@ -9,6 +9,8 @@
 	health = 10
 	holder_type = /obj/item/holder/rat
 	icon_base = "rat"
+	min_turns_per_move = 2
+	max_turns_per_move = 5
 
 /*
  * Rat types

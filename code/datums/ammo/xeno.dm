@@ -207,14 +207,17 @@
 	hits_lying_mobs = TRUE
 	damage_falloff = 0
 	var/portion_loss_per_hit = 0.55
+
+/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating/weak/mob_penetrating, initial_portion_lost_per_hit = portion_loss_per_hit)
+	))
+
 /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/one_penetrations
 	portion_loss_per_hit = 0.55
 
-/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/one_penetrations/set_bullet_traits()
-	. = ..()
-	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating/weak/mob_penetrating, initial_portion_loss_per_hit = portion_loss_per_hit)
-	))
+
 /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/two_penetrations
 	penetration = 15
 	portion_loss_per_hit = 0.35

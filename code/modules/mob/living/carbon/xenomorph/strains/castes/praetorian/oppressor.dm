@@ -101,8 +101,8 @@
 	var/turf/temp = abduct_user.loc
 	for(var/distance in 0 to max_distance)
 		temp = get_step(turf, facing)
-		if(facing in GLOB.diagonals) // check if it goes through corners
-			var/reverse_face = GLOB.reverse_dir[facing]
+		var/reverse_face = REVERSE_DIR(facing)
+		if(IS_DIAGONAL_DIR(facing)) // check if it goes through corners
 			var/turf/back_left = get_step(temp, turn(reverse_face, 45))
 			var/turf/back_right = get_step(temp, turn(reverse_face, -45))
 			if((!back_left || back_left.density) && (!back_right || back_right.density))
@@ -123,7 +123,7 @@
 			if(istype(structure, /obj/structure/window/reinforced))
 				var/obj/structure/window/reinforced/pane_glass = structure
 				var/pane_facing = pane_glass.dir
-				if(pane_facing == turn(facing, 180))
+				if(pane_facing == reverse_face)
 					blocked = TRUE
 				else if(pane_facing == facing)
 					allow_one_more_step = TRUE
@@ -132,7 +132,7 @@
 				var/obj/structure/surface/table/flip_table = structure
 				var/table_facing = flip_table.dir
 				if(flip_table.flipped)
-					if(table_facing == turn(facing, 180))
+					if(table_facing == reverse_face)
 						blocked = TRUE
 					else if(table_facing == facing)
 						allow_one_more_step = TRUE
@@ -140,7 +140,7 @@
 			if(istype(structure, /obj/structure/barricade))
 				var/obj/structure/barricade/cade = structure
 				var/cade_facing = cade.dir
-				if(cade_facing & turn(facing, 180))
+				if(cade_facing & reverse_face)
 					blocked = TRUE
 				else if(cade_facing == facing)
 					allow_one_more_step = TRUE

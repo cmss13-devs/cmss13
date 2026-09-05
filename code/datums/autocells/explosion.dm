@@ -123,7 +123,7 @@
 		survivor.exploded_atoms |= dying.exploded_atoms
 
 	// Two waves travling towards each other weakens the explosion
-	if(survivor.direction == GLOB.reverse_dir[dying.direction])
+	if(survivor.direction == REVERSE_DIR(dying.direction))
 		survivor.power -= dying.power
 
 	qdel(dying)
@@ -138,7 +138,7 @@
 	if(isnull(direction))
 		return GLOB.alldirs
 
-	var/dir = reflected ? GLOB.reverse_dir[direction] : direction
+	var/dir = reflected ? REVERSE_DIR(direction) : direction
 
 	if(dir in GLOB.cardinals)
 		propagation_dirs += list(dir, turn(dir, 45), turn(dir, -45))
@@ -196,7 +196,7 @@
 	for(var/dir in to_spread)
 		// Diagonals are longer, that should be reflected in the power falloff
 		var/dir_falloff = 1
-		if(dir in GLOB.diagonals)
+		if(IS_DIAGONAL_DIR(dir))
 			dir_falloff = 1.414
 
 		if(isnull(direction))
@@ -232,7 +232,7 @@
 			// Set the direction the explosion is traveling in
 			new_cell.direction = dir
 			//Diagonal cells have a small delay when branching off the center. This helps the explosion look circular
-			if(!direction && (dir in GLOB.diagonals))
+			if(!direction && (IS_DIAGONAL_DIR(dir)))
 				new_cell.delay = 1
 
 			setup_new_cell(new_cell)

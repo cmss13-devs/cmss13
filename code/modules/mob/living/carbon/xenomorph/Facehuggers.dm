@@ -585,7 +585,7 @@
 
 /datum/species/yautja/handle_hugger_attachment(mob/living/carbon/human/target, obj/item/clothing/mask/facehugger/hugger,  mob/living/carbon/xenomorph/facehugger/mob_hugger)
 	var/catch_chance = 50
-	if(target.dir == GLOB.reverse_dir[hugger.dir])
+	if(target.dir == REVERSE_DIR(hugger.dir))
 		catch_chance += 20
 	if(target.body_position == LYING_DOWN)
 		catch_chance -= 50

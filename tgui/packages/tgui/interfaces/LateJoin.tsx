@@ -122,32 +122,22 @@ const RoleSlotInfo = (props: RoleSlotInfoProps) => {
   const roleSlots = 'x' + role.Slots;
 
   return (
-    <Flex
-      direction="row"
-      className="SlotInfo"
-      justify="space-evenly"
-      align="center"
-    >
-      <Flex.Item>
-        <Flex
-          direction="row"
-          align="center"
-          justify="space-evenly"
-          className="SlotInfoRow"
-        >
-          <Flex.Item className="SlotInfoRow big-text">
+    <Flex direction="row" justify="space-around" align="flex-end">
+      <Flex.Item basis="30%">
+        <Flex direction="row" align="center">
+          <Flex.Item basis="60%" className="SlotInfoRow big-text">
             <Icon name="users" />
           </Flex.Item>
-          <Flex.Item className="SlotInfoRow big-text">x{role.Active}</Flex.Item>
+          <Flex.Item basis="40%" className="SlotInfoRow big-text">x{role.Active}</Flex.Item>
         </Flex>
       </Flex.Item>
-      <Flex.Item>
-        <Flex direction="row" align="center" justify="space-evenly">
-          <Flex.Item className="SlotInfoRow big-text">
+      <Flex.Item basis="30%">
+        <Flex direction="row" align="center">
+          <Flex.Item basis="60%" className="SlotInfoRow big-text">
             <Icon name="door-open" />
           </Flex.Item>
-          <Flex.Item className="SlotInfoRow big-text">
-            {infSlots ? <Icon name="infinity" /> : <Box>{roleSlots}</Box>}
+          <Flex.Item basis="40%" className="SlotInfoRow big-text">
+            {infSlots ? <Icon name="infinity" /> : roleSlots}
           </Flex.Item>
         </Flex>
       </Flex.Item>
@@ -175,8 +165,8 @@ const RoleCategory = (props: RoleCategoryProps) => {
                 fluid
                 onClick={() => act(role.Title)}
               >
-                <Flex direction="row" justify="flex-start" align="center">
-                  <Flex.Item grow={1}>
+                <Flex direction="row" align="center">
+                  <Flex.Item basis="55%" className="RoleTitle">
                     <Stack align="center">
                       <Stack.Item>
                         <RoleIcon role={role.Title} />
@@ -186,14 +176,19 @@ const RoleCategory = (props: RoleCategoryProps) => {
                       </Stack.Item>
                     </Stack>
                   </Flex.Item>
-                  <Flex.Item grow={1}>
+                  <Flex.Item basis="40%" className="RoleSlotInfo">
                     <RoleSlotInfo role={role} />
                   </Flex.Item>
-                  <Flex.Item>
-                    <Box className="medium-text">
-                      Join
-                      <Icon name="caret-right" />
-                    </Box>
+                  <Flex.Item basis="15%" className="RoleJoin">
+                    <Flex justify="flex-end">
+                      <Flex.Item>
+                        <Box className="medium-text">
+                          Join
+                          <Icon name="caret-right" />
+                        </Box>
+                      </Flex.Item>
+                    </Flex>
+
                   </Flex.Item>
                 </Flex>
               </Button>

@@ -79,6 +79,9 @@
 	var/minimap_flag = MINIMAP_FLAG_USCM
 	var/drawing = TRUE
 
+/obj/structure/machinery/prop/almayer/CICmap/dumb
+	drawing = FALSE
+
 /obj/structure/machinery/prop/almayer/CICmap/Initialize(mapload, ...)
 	. = ..()
 	AddComponent(/datum/component/tacmap, has_drawing_tools=drawing, minimap_flag=minimap_flag, has_update=drawing, drawing=drawing)

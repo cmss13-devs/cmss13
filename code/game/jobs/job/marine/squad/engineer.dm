@@ -1,3 +1,5 @@
+#define MARINE_TO_TOTAL_SPAWN_RATIO (3/4)
+
 /datum/job/marine/engineer
 	title = JOB_SQUAD_ENGI
 	total_positions = 12
@@ -9,8 +11,8 @@
 
 /datum/job/marine/engineer/set_spawn_positions(count)
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-		if(target_squad)
-			target_squad.roles_cap[title] = engi_slot_formula(count)
+		if(target_squad.dynamic_scaling)
+			target_squad.roles_cap[title] = engi_slot_formula(count * MARINE_TO_TOTAL_SPAWN_RATIO)
 
 /datum/job/marine/engineer/get_total_positions(latejoin=0)
 	var/slots = engi_slot_formula(get_total_marines())
@@ -20,12 +22,7 @@
 	else
 		total_positions_so_far = slots
 
-	if(latejoin)
-		for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-			if(target_squad)
-				target_squad.roles_cap[title] = slots
-
-	return (slots*4)
+	return slots * 2 + calculate_extra_slots(latejoin, slots)
 
 /datum/job/marine/engineer/whiskey
 	title = JOB_WO_SQUAD_ENGINEER
@@ -41,18 +38,4 @@ AddTimelock(/datum/job/marine/engineer, list(
 	icon_state = "engi_spawn"
 	job = /datum/job/marine/engineer
 
-/obj/effect/landmark/start/marine/engineer/alpha
-	icon_state = "engi_spawn_alpha"
-	squad = SQUAD_MARINE_1
-
-/obj/effect/landmark/start/marine/engineer/bravo
-	icon_state = "engi_spawn_bravo"
-	squad = SQUAD_MARINE_2
-
-/obj/effect/landmark/start/marine/engineer/charlie
-	icon_state = "engi_spawn_charlie"
-	squad = SQUAD_MARINE_3
-
-/obj/effect/landmark/start/marine/engineer/delta
-	icon_state = "engi_spawn_delta"
-	squad = SQUAD_MARINE_4
+#undef MARINE_TO_TOTAL_SPAWN_RATIO

@@ -8,6 +8,8 @@
 #define SQUAD_MARINE_3 "Charlie"
 #define SQUAD_MARINE_4 "Delta"
 #define SQUAD_MARINE_5 "Echo"
+#define SQUAD_MARINE_6 "Kilo"
+#define SQUAD_MARINE_7 "Oscar"
 #define SQUAD_MARINE_CRYO "Foxtrot"
 #define SQUAD_MARINE_INTEL "Intel"
 #define SQUAD_SOF "SOF"
@@ -15,6 +17,11 @@
 #define SQUAD_FORECON "FORECON"
 #define SQUAD_SOLAR "Solar Devils"
 #define SQUAD_ARMY "US Army"
+
+// Squad Roles
+#define SQUAD_ROLE_ASSAULT "Assault"
+#define SQUAD_ROLE_SUPPORT "Support"
+#define SQUAD_ROLE_SECURITY "Security"
 
 // Job name defines
 #define JOB_SQUAD_MARINE "Rifleman"

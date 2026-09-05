@@ -93,16 +93,34 @@
 				else
 					src.visible_message(SPAN_DANGER("\The [src] swipes at \the [target]!"),
 					SPAN_DANGER("We swipe at \the [target]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	if(a_intent == INTENT_DISARM)
+		last_target = WEAKREF(target)
+		SEND_SIGNAL(src, COMSIG_AUTOSLASH)
 	return TRUE
 
-/mob/living/carbon/xenomorph/RangedAttack(atom/A)
+/mob/living/carbon/xenomorph/RangedAttack(atom/A, adjust_move = TRUE)
 	. = ..()
 	if (.)
 		return
 	if (client && client.prefs && client.prefs.toggle_prefs & TOGGLE_DIRECTIONAL_ATTACK)
-		next_move += 0.25 SECONDS //Slight delay on missed directional attacks. If it finds a mob in the target tile, this will be overwritten by the attack delay.
+		if(adjust_move) // for teh sake of responsiveness of autoslash, there's already a 0.4 second delay built in
+			next_move += 0.25 SECONDS //Slight delay on missed directional attacks. If it finds a mob in the target tile, this will be overwritten by the attack delay.
 		return UnarmedAttack(get_step(src, Get_Compass_Dir(src, A)), tile_attack = TRUE, ignores_resin = TRUE)
 	return FALSE
+
+/mob/living/carbon/xenomorph/proc/UnarmedAttack_wrapper(atom/target, proximity, click_parameters, tile_attack = FALSE, ignores_resin = FALSE)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	if(next_move <= world.time)
+		target = last_target.resolve()
+		if(target)
+			face_atom(target)
+			if(target.Adjacent(src))
+				return UnarmedAttack(target, 1, click_parameters)
+			else
+				return RangedAttack(target, adjust_move = FALSE)
+	else
+		SEND_SIGNAL(src, COMSIG_AUTOSLASH)
+		return TRUE
 
 /**The parent proc, will default to UnarmedAttack behaviour unless overridden
 Return XENO_ATTACK_ACTION if it does something and the attack should have full attack delay.
@@ -160,3 +178,9 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 //Larva attack, will default to attack_alien behaviour unless overridden
 /atom/proc/attack_larva(mob/living/carbon/xenomorph/larva/user)
 	return attack_alien(user)
+
+/mob/living/carbon/xenomorph/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
+	SIGNAL_HANDLER
+	var/atom/target = get_turf_on_clickcatcher(over_object, src, params)
+	face_atom(target)
+	last_target = WEAKREF(target)

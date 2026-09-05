@@ -389,6 +389,8 @@
 	/// cooldown between throwing facehuggers
 	var/hugger_throw_cooldown = 0
 
+	var/datum/weakref/last_target
+
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	if(old_xeno && old_xeno.hivenumber)
 		src.hivenumber = old_xeno.hivenumber
@@ -553,6 +555,8 @@
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, PROC_REF(handle_screech_act))
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
+	AddComponent(/datum/component/automatedfire/autoslash, 10 + caste.attack_delay + attack_speed_modifier, CALLBACK(src, PROC_REF(UnarmedAttack_wrapper)))
+	RegisterSignal(src, COMSIG_MOB_MOUSEDRAG, PROC_REF(change_target))
 
 /mob/living/carbon/xenomorph/proc/update_minimap_see_humans()
 	var/datum/action/minimap/ref

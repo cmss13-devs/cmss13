@@ -231,7 +231,7 @@
 
 /datum/cooking/recipe/donut
 	container_type = /obj/item/reagent_container/cooking/deep_basket
-	product_type = /obj/item/reagent_container/food/snacks/donut
+	product_type = /obj/item/reagent_container/food/snacks/donut/normal
 	catalog_category = COOKBOOK_CATEGORY_DONUTS
 	steps = list(
 		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/dough),

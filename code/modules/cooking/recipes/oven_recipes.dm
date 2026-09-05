@@ -1191,3 +1191,34 @@
 		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/meatball),
 		PCWJ_USE_OVEN(J_MED, 10 SECONDS),
 	)
+
+/datum/cooking/recipe/maturecheese
+	container_type = /obj/reagent_container/cooking/oven
+	product_type = /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/mature
+	catalog_category = COOKBOOK_CATEGORY_MISC
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/immature),
+		PCWJ_USE_OVEN(J_LO, 30 SECONDS), // read a page titled "How can you create a cheese cave at home?" for this
+	)
+
+/datum/cooking/recipe/verymaturecheese
+	container_type = /obj/reagent_container/cooking/oven
+	product_type = /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/verymature
+	catalog_category = COOKBOOK_CATEGORY_MISC
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/mature),
+		PCWJ_USE_OVEN(J_LO, 30 SECONDS),
+	)
+
+/datum/cooking/recipe/extramaturecheese
+	container_type = /obj/reagent_container/cooking/oven
+	product_type = /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/extramature
+	catalog_category = COOKBOOK_CATEGORY_MISC
+	steps = list(
+		PCWJ_ADD_ITEM(/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/verymature),
+		PCWJ_ADD_REAGENT("sugar", 5),
+		PCWJ_ADD_REAGENT("milk", 5),
+		PCWJ_ADD_REAGENT("sodiumchloride", 1),
+		PCWJ_ADD_REAGENT("leporazine", 10),
+		PCWJ_USE_OVEN(J_LO, 45 SECONDS), // work for it
+	)

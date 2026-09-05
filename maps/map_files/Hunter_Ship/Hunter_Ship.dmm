@@ -19133,12 +19133,9 @@
 /turf/open/predship/mainfloor/direction_1/west,
 /area/yautja_ship/middle_deck/trophy_hall)
 "Qd" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/structure/machinery/microwave/yautja{
-	pixel_y = 10
-	},
+/obj/structure/machinery/cooking/grill,
+/obj/item/reagent_container/cooking/grill_grate,
+/obj/item/reagent_container/cooking/grill_grate,
 /turf/open/floor/corsat/squares,
 /area/yautja_ship/middle_deck/food)
 "Qe" = (
@@ -20541,9 +20538,6 @@
 "Tx" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
-	},
-/obj/structure/machinery/microwave/yautja{
-	pixel_y = 10
 	},
 /turf/open/predship/hunter_grille,
 /area/yautja_ship/upper_deck/meeting)

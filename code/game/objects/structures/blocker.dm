@@ -36,6 +36,15 @@
 	..()
 	icon_state = null
 
+//"Creates a colored tile on the tactical map. Can be used to mark the edge of a map in an area where walls are not located."
+/obj/structure/blocker/invisible_wall/map_edge
+	icon_state = "invisible_wall_edge"
+	opacity = TRUE
+
+/obj/structure/blocker/invisible_wall/map_edge/Initialize(mapload, ...)
+    . = ..()
+    loc.minimap_color = COLOR_WHITE
+
 /obj/structure/blocker/invisible_wall/water
 	desc = "You cannot wade out any further."
 	icon_state = "map_blocker"
@@ -175,6 +184,8 @@
 /obj/structure/blocker/forcefield/multitile_vehicles
 	types = list(/obj/vehicle/multitile/)
 
+/obj/structure/blocker/forcefield/xeno_resin
+	types = list( /obj/effect/alien/weeds)
 
 /obj/structure/blocker/forcefield/multitile_vehicles/handle_vehicle_bump(obj/vehicle/multitile/multitile_vehicle)
 	if(multitile_vehicle.vehicle_flags & VEHICLE_BYPASS_BLOCKERS)

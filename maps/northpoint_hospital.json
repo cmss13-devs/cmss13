@@ -1,0 +1,72 @@
+{
+    "map_name": "Northpoint Hospital",
+    "short_name": "Northpoint",
+    "map_path": "map_files/Northpoint_Hospital",
+    "map_file": "Northpoint_Hospital.dmm",
+    "webmap_url": "LV624",
+
+    "survivor_types": [
+        "/datum/equipment_preset/survivor/hybrisa/civilian",
+        "/datum/equipment_preset/survivor/hybrisa/civilian_office",
+        "/datum/equipment_preset/survivor/hybrisa/weymart",
+        "/datum/equipment_preset/survivor/hybrisa/sanitation",
+        "/datum/equipment_preset/survivor/hybrisa/pizza_galaxy",
+        "/datum/equipment_preset/survivor/hybrisa/fire_fighter",
+        "/datum/equipment_preset/survivor/hybrisa/cuppa_joes",
+        "/datum/equipment_preset/survivor/hybrisa/kelland_miner",
+        "/datum/equipment_preset/survivor/hybrisa/doctor",
+        "/datum/equipment_preset/survivor/hybrisa/paramedic",
+        "/datum/equipment_preset/survivor/hybrisa/scientist_xenobiologist",
+        "/datum/equipment_preset/survivor/hybrisa/scientist_xenoarchaeologist",
+        "/datum/equipment_preset/survivor/hybrisa/nspa_constable",
+        "/datum/equipment_preset/survivor/hybrisa/electrical_engineer",
+        "/datum/equipment_preset/survivor/hybrisa/construction_worker",
+        "/datum/equipment_preset/survivor/hybrisa/heavy_vehicle_operator",
+        "/datum/equipment_preset/survivor/corporate/hybrisa",
+        "/datum/equipment_preset/survivor/hybrisa/wey_po"
+    ],
+	"synth_survivor_types": [
+        "/datum/equipment_preset/synth/survivor/hybrisa/engineer_survivor",
+        "/datum/equipment_preset/synth/survivor/hybrisa/detective",
+        "/datum/equipment_preset/synth/survivor/hybrisa/xenoarchaeologist",
+        "/datum/equipment_preset/synth/survivor/hybrisa/civilian",
+        "/datum/equipment_preset/synth/survivor/hybrisa/paramedic",
+        "/datum/equipment_preset/synth/survivor/hybrisa/exec_bodyguard"
+    ],
+    "colony_joe_types": [
+        "/datum/job/civilian/working_joe/daniel"
+    ],
+    "map_item_type": "/obj/item/map/lazarus_landing_map",
+    "announce_text": "An automated distress signal has been received from Northpoint Hospital, on the border world of XX. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
+    "monkey_types": [
+        "farwa",
+        "monkey",
+        "neaera",
+        "stok"
+    ],
+    "environment_traits": { "Fog": true },
+    "traits": [
+        {
+            "Ground": true,
+            "Up": 1
+        },
+        {
+            "Ground": true,
+            "Down": -1
+        }
+    ],
+    "nightmare_path": "maps/Nightmare/maps/Northpoint_Hospital/",
+    "xvx_hives": {
+        "xeno_hive_alpha": 0,
+        "xeno_hive_bravo": 0,
+        "xeno_hive_charlie": 70
+    },
+    "camouflage": "urban",
+    "gamemodes": [
+        "Distress Signal",
+        "Hunter Games",
+        "Hive Wars",
+        "Faction Clash",
+        "Infection"
+    ]
+}

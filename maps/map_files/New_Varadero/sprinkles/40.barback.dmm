@@ -1,4 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/closed/wall/rock/brown,
+/area/varadero/interior/oob)
 "ac" = (
 /obj/structure/prop/rock/brown{
 	name = "sturdy rock(s)";
@@ -1446,11 +1449,11 @@
 /turf/open/floor/plating/wood_broken4,
 /area/varadero/interior/beach_bar)
 "CI" = (
-/obj/structure/mineral_door/wood/open,
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full";
 	color = "#b29082"
 	},
+/obj/structure/curtain/leather/alt,
 /turf/open/floor/plating/wood,
 /area/varadero/interior/beach_bar)
 "Dp" = (
@@ -1736,7 +1739,7 @@
 	dir = 1;
 	color = "#b29082"
 	},
-/obj/structure/mineral_door/wood,
+/obj/structure/curtain/leather/alt,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/beach_bar)
 "Nj" = (
@@ -2063,7 +2066,7 @@
 	climb_delay = 1
 	},
 /turf/closed/wall/rock/brown,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/interior/oob)
 "Vt" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
@@ -2281,8 +2284,8 @@ qQ
 nx
 nx
 hp
-NB
-NB
+aa
+aa
 hp
 Af
 DW
@@ -2333,8 +2336,8 @@ fe
 wn
 Mi
 JQ
-NB
-NB
+aa
+aa
 "}
 (3,1,1) = {"
 mU
@@ -2372,7 +2375,7 @@ fS
 ur
 fe
 JQ
-NB
+aa
 mR
 "}
 (4,1,1) = {"
@@ -2412,7 +2415,7 @@ fe
 wn
 LG
 va
-NB
+aa
 "}
 (5,1,1) = {"
 iP
@@ -2478,7 +2481,7 @@ oX
 SO
 PW
 nx
-NB
+aa
 nx
 nx
 mR
@@ -2554,9 +2557,9 @@ fO
 nx
 yB
 nx
-NB
-NB
-NB
+aa
+aa
+aa
 oh
 nx
 nx
@@ -2593,8 +2596,8 @@ iU
 oQ
 oQ
 va
-NB
-NB
+aa
+aa
 nx
 nx
 nx
@@ -2633,7 +2636,7 @@ kG
 wn
 JQ
 nx
-NB
+aa
 nx
 pM
 nx
@@ -2665,10 +2668,10 @@ kF
 Tg
 jh
 jh
-NB
-NB
-NB
-NB
+aa
+aa
+aa
+aa
 yj
 JQ
 hp
@@ -2703,10 +2706,10 @@ Pz
 if
 co
 wE
-NB
-NB
-NB
-NB
+aa
+aa
+aa
+aa
 RO
 Te
 PW
@@ -2943,7 +2946,7 @@ fx
 fx
 aI
 qQ
-NB
+aa
 xG
 Uc
 RY
@@ -3142,7 +3145,7 @@ lC
 nx
 nx
 wr
-NB
+aa
 mL
 Mc
 Xu
@@ -3179,9 +3182,9 @@ pM
 nx
 nx
 wr
-NB
+aa
 wr
-NB
+aa
 xG
 Mc
 qQ
@@ -3219,8 +3222,8 @@ va
 nx
 nx
 wr
-NB
-NB
+aa
+aa
 xG
 Mc
 Xu
@@ -3322,12 +3325,12 @@ zt
 oA
 qQ
 nx
-LT
-NB
+aa
+aa
 LT
 LT
 wr
-NB
+aa
 xG
 Mc
 pk
@@ -3362,11 +3365,11 @@ oA
 qQ
 LT
 nx
-NB
-NB
+aa
+aa
 ac
 LT
-NB
+aa
 xG
 Mc
 pk

@@ -9,8 +9,8 @@
 		var/damage = bullet.damage
 		damage = damage - bullet.ammo.damage * inital_portion_lost_per_hit
 		bullet.damage = damage
-	if(bullet.damage > 0)
-		return COMPONENT_BULLET_PASS_THROUGH
+		if(bullet.damage > 0)
+			return COMPONENT_BULLET_PASS_THROUGH
 	return FALSE
 
 /datum/element/bullet_trait_penetrating/weak/mob_penetrating/handle_passthrough_turf(obj/projectile/bullet, turf/closed/wall/hit_wall)

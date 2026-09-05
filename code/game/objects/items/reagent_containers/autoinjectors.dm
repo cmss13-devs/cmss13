@@ -654,6 +654,7 @@
 	display_maptext = FALSE
 
 /obj/item/reagent_container/hypospray/autoinjector/research/get_examine_text(mob/user)
+	. = ..()
 	if(uses_left >= 0)
 		. += SPAN_NOTICE("It is currently loaded with [uses_left / max_uses]/[max_uses] injections of [amount_per_transfer_from_this]u of whatever you put in it.")
 		if(max_uses == 1)

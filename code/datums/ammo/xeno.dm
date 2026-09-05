@@ -205,6 +205,7 @@
 	max_range = 8
 	spit_windup = 0.8 SECONDS
 	hits_lying_mobs = TRUE
+	damage_falloff = 0
 	var/penetrating_trait = /datum/element/bullet_trait_penetrating/weak/mob_penetrating
 
 /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/set_bullet_traits()

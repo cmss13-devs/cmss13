@@ -203,7 +203,7 @@
 	spit_cost =  45
 	damage = 45
 	max_range = 8
-	spit_windup = 0.8 SECONDS
+	spit_windup = 1.2 SECONDS
 	hits_lying_mobs = TRUE
 	damage_falloff = 0
 /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/one_penetrations

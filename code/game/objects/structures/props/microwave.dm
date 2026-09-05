@@ -10,6 +10,6 @@
 
 /obj/structure/machinery/microwave/yautja
 	name = "microwave"
-	desc = "mw0"
+	desc = ""
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
-	icon_state = "mwb"
+	icon_state = "mw0"

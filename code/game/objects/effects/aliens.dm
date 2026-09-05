@@ -581,8 +581,10 @@
 			..(loc)
 		else
 			qdel(src)
+			return
 	else
 		qdel(src)
+		return
 
 	addtimer(CALLBACK(src, PROC_REF(damage_mobs)), time_before_damage)
 	addtimer(CALLBACK(src, PROC_REF(make_smoke)), time_before_smoke)

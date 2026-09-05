@@ -348,6 +348,8 @@
 /obj/item/attackby(obj/item/W, mob/user)
 	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACKED, W, user) & COMPONENT_CANCEL_ITEM_ATTACK)
 		return
+	if(SEND_SIGNAL(W, COMSIG_ITEM_ATTACK_ITEM, src, user) & COMPONENT_CANCEL_ITEM_ATTACK)
+		return
 
 	if(istype(W,/obj/item/storage))
 		var/obj/item/storage/S = W
@@ -1153,6 +1155,8 @@
 
 // formerly in gun_helpers.dm, moved here for universal usage
 /obj/item/proc/unique_action(mob/user)
+	if(SEND_SIGNAL(src, COMSIG_ITEM_UNIQUE_ACTION, user) & COMPONENT_CANCEL_UNIQUE_ACTION) //? Rather pointless right now as unique action is typically overwrited
+		return
 	return
 
 /obj/item/verb/use_unique_action()

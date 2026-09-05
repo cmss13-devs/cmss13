@@ -7,33 +7,37 @@
 /datum/ammo/bullet/revolver
 	name = "revolver bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
-	damage = 72
-	penetration = ARMOR_PENETRATION_TIER_1
+	damage = 85
+	penetration = ARMOR_PENETRATION_TIER_2
 	accuracy = HIT_ACCURACY_TIER_1
+	accurate_range = 7
 	handful_type = /obj/item/ammo_magazine/handful/revolver
 
 /datum/ammo/bullet/revolver/marksman
 	name = "marksman revolver bullet"
-	damage = 55
+	damage = 70
 	shrapnel_chance = 0
 	damage_falloff = 0
 	accurate_range = 12
-	penetration = ARMOR_PENETRATION_TIER_7
+	penetration = ARMOR_PENETRATION_TIER_8
 
 /datum/ammo/bullet/revolver/heavy
 	name = "heavy revolver bullet"
-
-	damage = 35
+	damage = 65
 	penetration = ARMOR_PENETRATION_TIER_4
 	accuracy = HIT_ACCURACY_TIER_3
-	var/add_thing = 1
+	accurate_range = 7
 
-/datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/living/M, obj/projectile/bullet)
-	. = ..()
-	if(!M || !isliving(M))
+/datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/living/living_mob, obj/projectile/fired_projectile)
+	if(fired_projectile.distance_travelled > 5 || isyautja(living_mob) || (isxeno(living_mob) && living_mob.mob_size >= MOB_SIZE_BIG))
 		return
-	M.AddComponent(/datum/component/heavy_buildup, 1, 3)
 
+	if(isxeno(living_mob))
+		to_chat(living_mob, SPAN_XENODANGER("We are shaken by the sudden impact!"))
+	else
+		to_chat(living_mob, SPAN_HIGHDANGER("You are shaken by the sudden impact!"))
+
+	living_mob.AddComponent(/datum/component/heavy_buildup)
 
 
 /datum/ammo/bullet/revolver/incendiary

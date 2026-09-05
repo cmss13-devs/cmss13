@@ -11,6 +11,14 @@
         "/datum/equipment_preset/survivor_antre/doctor",
         "/datum/equipment_preset/survivor_antre/maint_engineer"
     ],
+    "synth_survivor_types": [
+        "/datum/equipment_preset/synth/survivor/white_antre/civilian",
+        "/datum/equipment_preset/synth/survivor/white_antre/engineer",
+        "/datum/equipment_preset/synth/survivor/white_antre/medical",
+        "/datum/equipment_preset/synth/survivor/white_antre/site_security",
+        "/datum/equipment_preset/synth/survivor/white_antre/scientist_xenobiologist",
+        "/datum/equipment_preset/synth/survivor/white_antre/corporate_synth"
+    ],
 	"CO_survivor_types": [
         "/datum/equipment_preset/survivor_antre/director_kadinsky"
     ],

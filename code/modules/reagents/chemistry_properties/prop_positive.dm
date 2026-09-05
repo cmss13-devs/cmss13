@@ -680,7 +680,6 @@
 		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * level, BRUTE)
 		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * level, BURN)
 		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * level, TOX)
-		M.updatehealth()
 
 /datum/chem_property/positive/defibrillating
 	name = PROPERTY_DEFIBRILLATING

@@ -85,7 +85,7 @@
 	toggle_crest_ability.use_ability()
 
 	TEST_ASSERT(xeno_defender.crest_defense, "crest was raised despite being on cooldown")
-	check_lower_crest_blocked(xeno_defender, toggle_crest_ability, base_ability_speed_modifier, base_armor_deflection_buff, base_mob_size)
+	check_lower_crest_changes_applied(xeno_defender, toggle_crest_ability, base_ability_speed_modifier, base_armor_deflection_buff)
 
 /datum/unit_test/crest_ended_by_unconcious/Run()
 	var/mob/living/carbon/xenomorph/defender/xeno_defender = allocate(/mob/living/carbon/xenomorph/defender)

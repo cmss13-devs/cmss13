@@ -992,7 +992,7 @@
 			info += "CLASSIFIED:<I> Clearance level [S.gen_tier] required to read the database entry.</I><BR>\n"
 			icon_state = "paper_wy_partial_report"
 			valid_report = FALSE
-	else if(S.chemclass == CHEM_CLASS_SPECIAL && !GLOB.chemical_data.clearance_x_access && !info_only)
+	else if(S.chemclass >= CHEM_CLASS_XENO_BASIC && S.chemclass <= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.clearance_x_access && !info_only)
 		info += "CLASSIFIED:<I> Clearance level <B>X</B> required to read the database entry.</I><BR>\n"
 		icon_state = "paper_wy_partial_report"
 		valid_report = FALSE
@@ -1020,14 +1020,14 @@
 		info += "<I>No details on this reagent could be found in the database.</I><BR>\n"
 		icon_state = "paper_wy_synthesis"
 		valid_report = FALSE
-	if(S.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[S.id] && !info_only)
+	if(S.chemclass >= CHEM_CLASS_XENO_BASIC && !GLOB.chemical_data.chemical_identified_list[S.id] && !info_only)
 		info += "<BR><I>Saved emission spectrum of [S.name] to the database.</I><BR>\n"
 	info += "<BR><B>Composition Details:</B><BR>\n"
 	if(GLOB.chemical_reactions_list[S.id])
 		var/datum/chemical_reaction/C = GLOB.chemical_reactions_list[S.id]
 		for(var/I in C.required_reagents)
 			var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
-			if(R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only && R.chemclass != CHEM_CLASS_HYDRO)
+			if(R.chemclass >= CHEM_CLASS_XENO_BASIC && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only)
 				info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 				completed = FALSE
 				valid_report = FALSE
@@ -1038,7 +1038,7 @@
 			info += "<BR>Reaction would require the following catalysts:<BR>\n"
 			for(var/I in C.required_catalysts)
 				var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
-				if(R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only)
+				if(R.chemclass >= CHEM_CLASS_XENO_BASIC && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only)
 					info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 					completed = FALSE
 				else
@@ -1057,7 +1057,7 @@
 		if(!S.properties) //Safety for empty reagents
 			completed = FALSE
 			valid_report = FALSE
-		if(S.chemclass == CHEM_CLASS_SPECIAL && GLOB.chemical_data.clearance_x_access)
+		if(S.chemclass >= CHEM_CLASS_XENO_BASIC && S.chemclass <= CHEM_CLASS_SPECIAL && GLOB.chemical_data.clearance_x_access)
 			completed = TRUE
 
 	data = S

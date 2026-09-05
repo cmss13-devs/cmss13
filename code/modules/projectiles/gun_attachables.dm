@@ -2917,6 +2917,7 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_x = 35
 	pixel_shift_y = 19
 	wield_delay_mod = WEAPON_DELAY_FAST
+	collapse_delay = 0.5 SECONDS
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle/stock
 	hud_offset_mod = 7 //Extremely long.
@@ -2933,79 +2934,91 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_mod = -RECOIL_AMOUNT_TIER_4
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
 	//it makes stuff much worse when one handed
-	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
-	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
-	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
-	//but at the same time you are slow when 2 handed
-	aim_speed_mod = CONFIG_GET(number/slowdown_med)
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_9
+	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_6
 
 
-/obj/item/attachable/stock/revolver/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
-	var/obj/item/weapon/gun/revolver/m44/R = G
-	if(!istype(R))
-		return 0
+/obj/item/attachable/stock/revolver/activate_attachment(obj/item/weapon/gun/gun, mob/living/carbon/user, turn_off)
+	var/obj/item/weapon/gun/revolver/m44/revolver = gun
+	if(!istype(revolver))
+		return FALSE
+
+	if(turn_off)
+		return TRUE
+
 
 	if(!user)
-		return 1
+		return TRUE
 
 	if(user.action_busy)
 		return
 
-	if(R.flags_item & WIELDED)
+	if(revolver.flags_item & WIELDED)
 		if(folded)
 			to_chat(user, SPAN_NOTICE("You need a free hand to unfold [src]."))
 		else
 			to_chat(user, SPAN_NOTICE("You need a free hand to fold [src]."))
-		return 0
+		return FALSE
 
-	if(!do_after(user, 15, INTERRUPT_INCAPACITATED|INTERRUPT_NEEDHAND, BUSY_ICON_GENERIC, G, INTERRUPT_DIFF_LOC))
+	if(!do_after(user, collapse_delay, INTERRUPT_INCAPACITATED|INTERRUPT_NEEDHAND, BUSY_ICON_GENERIC, gun, INTERRUPT_DIFF_LOC))
 		return
 
 	playsound(user, activation_sound, 15, 1)
 
 	if(folded)
 		to_chat(user, SPAN_NOTICE("You unfold [src]."))
-		R.flags_equip_slot &= ~SLOT_WAIST
-		R.folded = FALSE
+		revolver.flags_equip_slot &= ~SLOT_WAIST
+		accuracy_mod = HIT_ACCURACY_MULT_TIER_7
+		recoil_mod = -RECOIL_AMOUNT_TIER_4
+		scatter_mod = -SCATTER_AMOUNT_TIER_8
+		accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_9
+		recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
+		scatter_unwielded_mod = SCATTER_AMOUNT_TIER_6
+		melee_mod = -5
+		wield_delay_mod = WEAPON_DELAY_FAST
 		icon_state = "44stock"
 		size_mod = 1
 		hud_offset_mod = 7
-		G.recalculate_attachment_bonuses()
+		gun.recalculate_attachment_bonuses()
 	else
 		to_chat(user, SPAN_NOTICE("You fold [src]."))
-		R.flags_equip_slot |= SLOT_WAIST // Allow to be worn on the belt when folded
-		R.folded = TRUE // We can't shoot anymore, its folded
+		revolver.flags_equip_slot |= SLOT_WAIST // Allow to be worn on the belt when folded
+		accuracy_mod = 0
+		recoil_mod = 0
+		scatter_mod = 0
+		accuracy_unwielded_mod = 0
+		recoil_unwielded_mod = 0
+		scatter_unwielded_mod = 0
+		melee_mod = 0
+		wield_delay_mod = WEAPON_DELAY_NONE
 		icon_state = "44stock_folded"
 		size_mod = 0
 		hud_offset_mod = 4
-		G.recalculate_attachment_bonuses()
+		gun.recalculate_attachment_bonuses()
 	folded = !folded
-	G.update_overlays(src, "stock")
+	gun.update_overlays(src, "stock")
 
 // If it is activated/folded when we attach it, re-apply the things
-/obj/item/attachable/stock/revolver/Attach(obj/item/weapon/gun/G)
+/obj/item/attachable/stock/revolver/Attach(obj/item/weapon/gun/gun)
 	..()
-	var/obj/item/weapon/gun/revolver/m44/R = G
-	if(!istype(R))
-		return 0
+	var/obj/item/weapon/gun/revolver/m44/revolver = gun
+	if(!istype(revolver))
+		return FALSE
 
 	if(folded)
-		R.flags_equip_slot |= SLOT_WAIST
-		R.folded = TRUE
+		revolver.flags_equip_slot |= SLOT_WAIST
 	else
-		R.flags_equip_slot &= ~SLOT_WAIST //Can't wear it on the belt slot with stock on when we attach it first time.
+		revolver.flags_equip_slot &= ~SLOT_WAIST //Can't wear it on the belt slot with stock on when we attach it first time.
 
 // When taking it off we want to undo everything not statwise
 /obj/item/attachable/stock/revolver/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
 	..()
-	var/obj/item/weapon/gun/revolver/m44/R = detaching_gun
-	if(!istype(R))
-		return 0
+	var/obj/item/weapon/gun/revolver/m44/revolver = detaching_gun
+	if(!istype(revolver))
+		return FALSE
 
-	if(folded)
-		R.folded = FALSE
-	else
-		R.flags_equip_slot |= SLOT_WAIST
+	revolver.flags_equip_slot |= SLOT_WAIST
 
 // ======== Underbarrel Attachments ======== //
 

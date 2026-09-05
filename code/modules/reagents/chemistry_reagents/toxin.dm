@@ -36,7 +36,7 @@
 	description = "A powerful poison derived from certain species of mushroom."
 	reagent_state = LIQUID
 	color = "#792300" // rgb: 121, 35, 0
-	chemclass = CHEM_CLASS_HYDRO
+	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/toxin/mutagen
 	name = "Unstable mutagen"
@@ -79,7 +79,7 @@
 	reagent_state = LIQUID
 	color = "#CF3600" // rgb: 207, 54, 0
 	custom_metabolism = AMOUNT_PER_TIME(1, 5 SECONDS)
-	chemclass = CHEM_CLASS_HYDRO
+	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_HYPOXEMIC = 12, PROPERTY_NEUROTOXIC = 4, PROPERTY_HYPNOTIC = 5)
 
 /datum/reagent/toxin/minttoxin
@@ -352,7 +352,7 @@
 	id = "phenol_formaldehyde"
 	description = "Phenol-Formaldehyde Resin is a common molding polymer used in production of many small parts. It has great stress capacity and proven itself over many decades."
 	reagent_state = SOLID
-	chemclass = CHEM_CLASS_HYDRO
+	chemclass = CHEM_CLASS_NONE
 	color = "#909648"
 	properties = list(PROPERTY_TOXIC = 3)
 

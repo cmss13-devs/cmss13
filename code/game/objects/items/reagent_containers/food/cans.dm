@@ -412,6 +412,7 @@
 /obj/item/reagent_container/food/drinks/cans/waterbottle/Initialize()
 	. = ..()
 	reagents.add_reagent("water", 30)
+	reagents.unfillable = TRUE
 	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/drinks/cans/waterbottle/upp
@@ -440,6 +441,7 @@
 /obj/item/reagent_container/food/drinks/cans/coconutmilk/Initialize()
 	. = ..()
 	reagents.add_reagent("coconutmilk", 30)
+	reagents.unfillable = TRUE
 	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/drinks/cans/soylent
@@ -480,6 +482,7 @@
 /obj/item/reagent_container/food/drinks/cans/bugjuice/Initialize()
 	. = ..()
 	reagents.add_reagent("bugjuice", 30)
+	reagents.unfillable = TRUE
 	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/drinks/cans/beer

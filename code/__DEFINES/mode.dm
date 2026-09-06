@@ -72,6 +72,7 @@
 #define ROUNDSTATUS_FOG_DOWN 1
 #define ROUNDSTATUS_PODDOORS_OPEN 2
 
+#define INITIAL_XENO_TO_MARINE_RATIO (1/4)
 #define LATEJOIN_MARINES_PER_LATEJOIN_LARVA_EARLY 4
 #define LATEJOIN_MARINES_PER_LATEJOIN_LARVA 2.5
 
@@ -98,6 +99,21 @@
 #define ROLE_NO_ACCOUNT 32
 #define ROLE_CUSTOM_SPAWN 64
 #define ROLE_HIDDEN 128
+
+//=================================================
+
+#define GET_RANDOM_JOB 0
+#define BE_MARINE 1
+#define RETURN_TO_LOBBY 2
+#define BE_XENOMORPH 3
+
+//=================================================
+
+#define NEVER_PRIORITY 0
+#define HIGH_PRIORITY 1
+#define MED_PRIORITY 2
+#define LOW_PRIORITY 3
+
 //=================================================
 
 //Role defines, specifically lists of roles for job bans, crew manifests and the like.

@@ -85,6 +85,7 @@ GENERAL_PROTECT_DATUM(/datum/json_savefile)
 	if(!json_export_checks(requester))
 		return
 
+	msg_admin_niche("[key_name_admin(requester)] exported preferences.")
 	COOLDOWN_START(src, download_cooldown, DOWNLOAD_COOLDOWN)
 	var/file_name = "[account_name ? "[account_name]_" : ""]preferences_[time2text(world.timeofday, "MMM_DD_YYYY_hh-mm-ss", TIMEZONE_UTC)].json"
 	var/temporary_file_storage = "data/preferences_export_working_directory/[file_name]"

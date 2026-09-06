@@ -262,9 +262,9 @@
 	load_path(owner.ckey)
 	if(!fexists(old_path))
 		return
-	var/datum/byond_save_tree/byond_save_tree = new(path)
-	byond_save_tree.import_byond_savefile(new /savefile(old_path))
-	byond_save_tree.save()
+	var/datum/json_savefile/json_savefile = new(path)
+	json_savefile.import_byond_savefile(new /savefile(old_path))
+	json_savefile.save()
 	return TRUE
 
 /// SIGNAL_HANDLER for COMSIG_CLIENT_LOGGED_IN to perform handle_controlstyle_update
@@ -288,7 +288,7 @@
 			save_preferences()
 
 /// Assigns the path for the provided ckey and filename
-/datum/preferences/proc/load_path(ckey, filename="preferences_tree.sav")
+/datum/preferences/proc/load_path(ckey, filename="preferences.json")
 	if(!ckey)
 		return
 	path = "data/player_saves/[ckey[1]]/[ckey]/[filename]"
@@ -298,7 +298,7 @@
 /datum/preferences/proc/load_savefile()
 	if(!path)
 		CRASH("Attempted to load savefile without first loading a path!")
-	savefile = new /datum/byond_save_tree(path)
+	savefile = new /datum/json_savefile(path)
 
 /datum/preferences/proc/load_preferences()
 	if(!savefile)

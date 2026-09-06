@@ -1,19 +1,19 @@
 #define DOWNLOAD_COOLDOWN 30 SECONDS
 
 /**
- * A savefile implementation that handles all data using an alist.
- * Also can export it using JSON too, fancy.
+ * A savefile implementation that handles all data using json.
+ * Also saves it using JSON too, fancy.
  * If you pass in a null path, it simply acts as a memory tree instead, and cannot be saved.
  */
-/datum/byond_save_tree
+/datum/json_savefile
 	var/path = ""
 	var/alist/tree
 	/// Cooldown that tracks the time between attempts to download the savefile.
 	COOLDOWN_DECLARE(download_cooldown)
 
-GENERAL_PROTECT_DATUM(/datum/byond_save_tree)
+GENERAL_PROTECT_DATUM(/datum/json_savefile)
 
-/datum/byond_save_tree/New(path)
+/datum/json_savefile/New(path)
 	src.path = path
 	tree = alist()
 	if(path && fexists(path))
@@ -22,43 +22,41 @@ GENERAL_PROTECT_DATUM(/datum/byond_save_tree)
 /**
  * Gets an entry from the tree, with an optional default value.
  */
-/datum/byond_save_tree/proc/get_entry(key, default_value)
+/datum/json_savefile/proc/get_entry(key, default_value)
 	return (key in tree) ? tree[key] : default_value
 
 /// Returns whether the key is in the tree
-/datum/byond_save_tree/proc/has_entry(key)
+/datum/json_savefile/proc/has_entry(key)
 	return (key in tree)
 
 /// Sets an entry in the tree to the given value
-/datum/byond_save_tree/proc/set_entry(key, value)
+/datum/json_savefile/proc/set_entry(key, value)
 	tree[key] = value
 
 /// Removes the given key from the tree
-/datum/byond_save_tree/proc/remove_entry(key)
+/datum/json_savefile/proc/remove_entry(key)
 	tree -= key
 
 /// Wipes the entire tree
-/datum/byond_save_tree/proc/wipe()
+/datum/json_savefile/proc/wipe()
 	tree?.Cut()
 
-/datum/byond_save_tree/proc/load()
+/datum/json_savefile/proc/load()
 	if(!path || !fexists(path))
 		return FALSE
 	try
-		var/savefile/data = new(path)
-		data["tree"] >> tree
+		tree = json_decode(rustg_file_read(path))
 		return TRUE
 	catch(var/exception/err)
 		stack_trace("failed to load savefile at '[path]': [err]")
 		return FALSE
 
-/datum/byond_save_tree/proc/save()
+/datum/json_savefile/proc/save()
 	if(path)
-		var/savefile/data = new(path)
-		data["tree"] << tree
+		rustg_file_write(json_encode(tree, JSON_PRETTY_PRINT), path)
 
 /// Traverses the entire dir tree of the given savefile and dynamically assembles the tree from it
-/datum/byond_save_tree/proc/import_byond_savefile(savefile/savefile)
+/datum/json_savefile/proc/import_byond_savefile(savefile/savefile)
 	tree.Cut()
 	var/list/dirs_to_go = list("/" = tree)
 	while(length(dirs_to_go))
@@ -79,8 +77,8 @@ GENERAL_PROTECT_DATUM(/datum/byond_save_tree)
 
 /// Proc that handles generating a JSON file (prettified if 515 and over!) of a user's preferences and showing it to them.
 /// Requester is passed in to the ftp() and tgui_alert() procs, and account_name is just used to generate the filename.
-/// We don't _need_ to pass in account_name since this is reliant on the byond_save_tree datum already knowing what we correspond to, but it's here to help people keep track of their stuff.
-/datum/byond_save_tree/proc/export_json_to_client(mob/requester, account_name)
+/// We don't _need_ to pass in account_name since this is reliant on the json_savefile datum already knowing what we correspond to, but it's here to help people keep track of their stuff.
+/datum/json_savefile/proc/export_json_to_client(mob/requester, account_name)
 	if(!istype(requester) || !path)
 		return
 
@@ -102,7 +100,7 @@ GENERAL_PROTECT_DATUM(/datum/byond_save_tree)
 
 /// Proc that just handles all of the checks for exporting a preferences file, returns TRUE if all checks are passed, FALSE otherwise.
 /// Just done like this to make the code in the export_json_to_client() proc a bit cleaner.
-/datum/byond_save_tree/proc/json_export_checks(mob/requester)
+/datum/json_savefile/proc/json_export_checks(mob/requester)
 	if(!COOLDOWN_FINISHED(src, download_cooldown))
 		tgui_alert(requester, "You must wait [DisplayTimeText(COOLDOWN_TIMELEFT(src, download_cooldown))] before exporting your preferences again!", "Export Preferences JSON")
 		return FALSE
@@ -122,7 +120,7 @@ GENERAL_PROTECT_DATUM(/datum/byond_save_tree)
 	prefs.savefile.export_json_to_client(usr, ckey)
 
 /// Copies the entire tree to another savefile datum, overwriting whatever was in the other datum before.
-/datum/byond_save_tree/proc/copy_to_savefile(datum/byond_save_tree/other_savefile)
+/datum/json_savefile/proc/copy_to_savefile(datum/json_savefile/other_savefile)
 	other_savefile.tree = tree.Copy()
 
 #undef DOWNLOAD_COOLDOWN

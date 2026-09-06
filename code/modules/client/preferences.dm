@@ -28,7 +28,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 /datum/preferences
 	/// The json savefile for this datum
-	var/datum/byond_save_tree/savefile
+	var/datum/json_savefile/savefile
 
 	var/client/owner
 	var/atom/movable/screen/preview/preview_front

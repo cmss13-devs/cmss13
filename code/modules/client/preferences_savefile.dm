@@ -21,83 +21,83 @@
 		return FALSE
 
 	if(savefile_version < 12) //we've split toggles into toggles_sound and toggles_chat
-		savefile.set_entry("toggles_sound", TOGGLES_SOUND_DEFAULT)
-		savefile.set_entry("toggles_chat", TOGGLES_CHAT_DEFAULT)
+		savefile.tree["toggles_sound"] = TOGGLES_SOUND_DEFAULT
+		savefile.tree["toggles_chat"] = TOGGLES_CHAT_DEFAULT
 
 	if(savefile_version < 13)
 		var/sound_toggles
-		sound_toggles = savefile.get_entry("toggles_sound")
+		sound_toggles = savefile.tree["toggles_sound"]
 		sound_toggles |= SOUND_INTERNET
-		savefile.set_entry("toggles_sound", sound_toggles)
+		savefile.tree["toggles_sound"] = sound_toggles
 
 	if(savefile_version < 14) //toggle unnest flashing on by default
 		var/flash_toggles
-		flash_toggles = savefile.get_entry("toggles_flashing")
+		flash_toggles = savefile.tree["toggles_flashing"]
 		flash_toggles |= FLASH_UNNEST
-		savefile.set_entry("toggles_flashing", flash_toggles)
+		savefile.tree["toggles_flashing"] = flash_toggles
 
 	if(savefile_version < 15) //toggles on membership publicity by default because forgot to six months ago
 		var/pref_toggles
-		pref_toggles = savefile.get_entry("toggle_prefs")
+		pref_toggles = savefile.tree["toggle_prefs"]
 		pref_toggles |= TOGGLE_MEMBER_PUBLIC
-		savefile.set_entry("toggle_prefs", pref_toggles)
+		savefile.tree["toggle_prefs"] = pref_toggles
 
 	if(savefile_version < 16) //toggle unpool flashing on by default
 		var/flash_toggles_two
-		flash_toggles_two = savefile.get_entry("toggles_flashing")
+		flash_toggles_two = savefile.tree["toggles_flashing"]
 		flash_toggles_two |= FLASH_POOLSPAWN
-		savefile.set_entry("toggles_flashing", flash_toggles_two)
+		savefile.tree["toggles_flashing"] = flash_toggles_two
 
 	if(savefile_version < 17) //toggle middle click swap hands on by default
 		var/pref_middle_click_swap
-		pref_middle_click_swap = savefile.get_entry("toggle_prefs")
+		pref_middle_click_swap = savefile.tree["toggle_prefs"]
 		pref_middle_click_swap |= TOGGLE_MIDDLE_MOUSE_SWAP_HANDS
-		savefile.set_entry("toggle_prefs", pref_middle_click_swap)
+		savefile.tree["toggle_prefs"] = pref_middle_click_swap
 
 	if(savefile_version < 17) //remove omniglots
 		var/list/language_traits = list()
-		language_traits = savefile.get_entry("traits")
+		language_traits = savefile.tree["traits"]
 		if(LAZYLEN(language_traits) > 1)
 			language_traits = null
-		savefile.set_entry("traits", language_traits)
+		savefile.tree["traits"] = language_traits
 
 	if(savefile_version < 18) // adds ambient occlusion by default
 		var/pref_toggles
-		pref_toggles = savefile.get_entry("toggle_prefs")
+		pref_toggles = savefile.tree["toggle_prefs"]
 		pref_toggles |= TOGGLE_AMBIENT_OCCLUSION
-		savefile.set_entry("toggle_prefs", pref_toggles)
+		savefile.tree["toggle_prefs"] = pref_toggles
 
 	if(savefile_version < 19) // toggles vending to hand by default
 		var/pref_toggle_vend_item_tohand
-		pref_toggle_vend_item_tohand = savefile.get_entry("toggle_prefs")
+		pref_toggle_vend_item_tohand = savefile.tree["toggle_prefs"]
 		pref_toggle_vend_item_tohand |= TOGGLE_VEND_ITEM_TO_HAND
-		savefile.set_entry("toggle_prefs", pref_toggle_vend_item_tohand)
+		savefile.tree["toggle_prefs"] = pref_toggle_vend_item_tohand
 
 	if(savefile_version < 20) // adds midi and atmospheric sounds on by default
 		var/sound_toggles
-		sound_toggles = savefile.get_entry("toggles_sound")
+		sound_toggles = savefile.tree["toggles_sound"]
 		sound_toggles |= (SOUND_ADMIN_MEME|SOUND_ADMIN_ATMOSPHERIC)
-		savefile.set_entry("toggles_sound", sound_toggles)
+		savefile.tree["toggles_sound"] = sound_toggles
 
 	if(savefile_version < 21)
 		var/pref_toggles
-		pref_toggles = savefile.get_entry("toggle_prefs")
+		pref_toggles = savefile.tree["toggle_prefs"]
 		if(pref_toggles & TOGGLE_ALTERNATING_DUAL_WIELD)
 			dual_wield_pref = DUAL_WIELD_SWAP
 		else
 			dual_wield_pref = DUAL_WIELD_FIRE
-		savefile.set_entry("dual_wield_pref", dual_wield_pref)
+		savefile.tree["dual_wield_pref"] = dual_wield_pref
 
 	if(savefile_version < 22)
 		var/sound_toggles
-		sound_toggles = savefile.get_entry("toggles_sound")
+		sound_toggles = savefile.tree["toggles_sound"]
 		sound_toggles |= SOUND_OBSERVER_ANNOUNCEMENTS
-		savefile.set_entry("toggles_sound", sound_toggles)
+		savefile.tree["toggles_sound"] = sound_toggles
 
 	if(savefile_version < 23)
 		var/ethnicity
 		var/skin_color = "pale2"
-		ethnicity = savefile.get_entry("ethnicity")
+		ethnicity = savefile.tree["ethnicity"]
 		switch(ethnicity)
 			if("anglo")
 				skin_color = "pale2"
@@ -139,50 +139,50 @@
 				skin_color = "dark2"
 			if("polynesian")
 				skin_color = "tan3"
-		savefile.set_entry("skin_color", skin_color)
+		savefile.tree["skin_color"] = skin_color
 
 	if(savefile_version < 24) // adds fax machine sounds on by default
 		var/sound_toggles
-		sound_toggles = savefile.get_entry("toggles_sound")
+		sound_toggles = savefile.tree["toggles_sound"]
 		sound_toggles |= (SOUND_FAX_MACHINE)
-		savefile.set_entry("toggles_sound", sound_toggles)
+		savefile.tree["toggles_sound"] = sound_toggles
 
 	if(savefile_version < 25) //renemes nanotrasen to wy
 		var/relation
-		relation = savefile.get_entry("nanotrasen_relation")
-		savefile.set_entry("weyland_yutani_relation", relation)
+		relation = savefile.tree["nanotrasen_relation"]
+		savefile.tree["weyland_yutani_relation"] = relation
 
 	if(savefile_version < 26)
 		// Removes TOGGLE_MIDDLE_MOUSE_CLICK (1<<2) and replaces it with a new pref
 		var/toggle_prefs = 0
-		toggle_prefs = savefile.get_entry("toggle_prefs")
+		toggle_prefs = savefile.tree["toggle_prefs"]
 		if(toggle_prefs & (1<<2))
-			savefile.set_entry("xeno_ability_click_mode", XENO_ABILITY_CLICK_MIDDLE)
+			savefile.tree["xeno_ability_click_mode"] = XENO_ABILITY_CLICK_MIDDLE
 		else
-			savefile.set_entry("xeno_ability_click_mode", XENO_ABILITY_CLICK_SHIFT)
+			savefile.tree["xeno_ability_click_mode"] = XENO_ABILITY_CLICK_SHIFT
 
 	if(savefile_version < 27)
 		// Gives staff afk protection by default.
-		savefile.set_entry("toggles_admin", TOGGLES_ADMIN_DEFAULT)
+		savefile.tree["toggles_admin"] = TOGGLES_ADMIN_DEFAULT
 		// Updates default chat settings to enable FF logs for new staff.
 		var/chat_settings = 0
-		chat_settings = savefile.get_entry("toggles_chat")
+		chat_settings = savefile.tree["toggles_chat"]
 		chat_settings &= ~CHAT_ATTACKLOGS
 		chat_settings |= CHAT_FFATTACKLOGS
-		savefile.set_entry("toggles_chat", chat_settings)
+		savefile.tree["toggles_chat"] = chat_settings
 
 	if(savefile_version < 28)
 		var/tutorial_string = ""
-		tutorial_string = savefile.get_entry("completed_tutorials")
+		tutorial_string = savefile.tree["completed_tutorials"]
 		tutorial_savestring_to_list(tutorial_string)
 		if("requisitions_line" in completed_tutorials)
 			completed_tutorials -= "requisitions_line"
 			completed_tutorials += "marine_req_1"
-		savefile.set_entry("completed_tutorials", tutorial_list_to_savestring())
+		savefile.tree["completed_tutorials"] = tutorial_list_to_savestring()
 
 	if(savefile_version < 29)
 		var/hair_style = ""
-		hair_style = savefile.get_entry("hair_style_name")
+		hair_style = savefile.tree["hair_style_name"]
 
 		switch(hair_style)
 			if("Shoulder-length Hair Alt")
@@ -190,13 +190,13 @@
 			if("Long Hair Alt")
 				hair_style = "Longer Fringe"
 
-		savefile.set_entry("hair_style_name", hair_style)
+		savefile.tree["hair_style_name"] = hair_style
 
 	if(savefile_version < 30)
 		var/be_special = 0
-		be_special = savefile.get_entry("be_special")
+		be_special = savefile.tree["be_special"]
 		be_special &= ~BE_KING
-		savefile.set_entry("be_special", be_special)
+		savefile.tree["be_special"] = be_special
 
 	if(savefile_version < 31)
 		for(var/i in 1 to MAX_SAVE_SLOTS)
@@ -217,36 +217,36 @@
 
 	if(savefile_version < 32)
 		var/pref_toggles
-		pref_toggles = savefile.get_entry("toggle_prefs")
+		pref_toggles = savefile.tree["toggle_prefs"]
 		pref_toggles |= TOGGLE_LEADERSHIP_SPOKEN_ORDERS // Enables it by default for new saves
-		savefile.set_entry("toggle_prefs", pref_toggles)
+		savefile.tree["toggle_prefs"] = pref_toggles
 
 	if(savefile_version < 33)
 		var/pref_toggles
-		pref_toggles = savefile.get_entry("toggle_prefs")
+		pref_toggles = savefile.tree["toggle_prefs"]
 		pref_toggles |= TOGGLE_COCKING_TO_HAND // enabled by default for new saves
-		savefile.set_entry("toggle_prefs", pref_toggles)
+		savefile.tree["toggle_prefs"] = pref_toggles
 
 	if(savefile_version < 34)
 		var/pref_toggles
-		pref_toggles = savefile.get_entry("toggle_prefs")
+		pref_toggles = savefile.tree["toggle_prefs"]
 		pref_toggles |= TOGGLE_WIELD_ASSIST // enabled by default for new saves
-		savefile.set_entry("toggle_prefs", pref_toggles)
+		savefile.tree["toggle_prefs"] = pref_toggles
 
 	if(savefile_version < 35) // we have removed Tab from the default binds, allow users to bind it back if they want. needs to be async after logging in
 		updated_from = savefile_version
 
 	if(savefile_version < 36)
 		var/toggles_insert
-		toggles_insert = savefile.get_entry("toggles_insert")
+		toggles_insert = savefile.tree["toggles_insert"]
 		toggles_insert |= (PLAY_INSERT_STANDARD|PLAY_INSERT_CORPORATE|PLAY_INSERT_LEADER|PLAY_INSERT_MEDIC|PLAY_INSERT_ENGINEER|PLAY_INSERT_SPECIALIST|PLAY_INSERT_SMARTGUNNER|PLAY_INSERT_SYNTH|PLAY_INSERT_CO) // enabled by default for new saves
-		savefile.set_entry("toggles_insert", toggles_insert)
+		savefile.tree["toggles_insert"] = toggles_insert
 
 	if(savefile_version < 37)
 		var/toggles_insert
-		toggles_insert = savefile.get_entry("toggles_sound")
+		toggles_insert = savefile.tree["toggles_sound"]
 		toggles_insert |= (SOUND_ROUND_END)
-		savefile.set_entry("toggles_sound", toggles_insert)
+		savefile.tree["toggles_sound"] = toggles_insert
 
 	if(updated_from)
 		RegisterSignal(owner, COMSIG_CLIENT_LOGGED_IN, PROC_REF(handle_logged_in))
@@ -254,35 +254,235 @@
 	savefile_version = SAVEFILE_VERSION_MAX
 	return TRUE
 
+/// Attempts to load a preferences.sav for the owner and migrate it to a save tree
+/datum/preferences/proc/try_savefile_tree_migration()
+	load_path(owner.ckey, "preferences.sav") // old save file
+	var/old_path = path
+	load_path(owner.ckey)
+	if(!fexists(old_path))
+		return
+	var/datum/byond_save_tree/byond_save_tree = new(path)
+	byond_save_tree.import_byond_savefile(new /savefile(old_path))
+	byond_save_tree.save()
+	return TRUE
+
+/// SIGNAL_HANDLER for COMSIG_CLIENT_LOGGED_IN to perform handle_controlstyle_update
 /datum/preferences/proc/handle_logged_in()
 	SIGNAL_HANDLER
 
 	handle_controlstyle_update(updated_from)
 
 /// Displays savefile updates that require user input
-/datum/preferences/proc/handle_controlstyle_update(savefile_version)
+/datum/preferences/proc/handle_controlstyle_update(updated_from)
 	set waitfor = FALSE
 
-	if(savefile_version == /datum/preferences::savefile_version)
+	if(updated_from == /datum/preferences::savefile_version)
 		return
 
-	if(savefile_version < 34)
+	if(updated_from < 34)
 		var/question = tgui_alert(owner, "Tab is no longer bound to switching between the map and the command bar. Restore this bind?", "Default Bind Changed", list("No", "Yes"))
 		if(question == "Yes")
 			LAZYADD(key_bindings["Tab"], /datum/keybinding/client/switch_input::name)
 			owner?.update_special_keybinds()
 			save_preferences()
 
-/datum/preferences/proc/load_path(ckey, filename="preferences.sav2")
+/// Assigns the path for the provided ckey and filename
+/datum/preferences/proc/load_path(ckey, filename="preferences_tree.sav")
 	if(!ckey)
 		return
 	path = "data/player_saves/[ckey[1]]/[ckey]/[filename]"
 	savefile_version = SAVEFILE_VERSION_MAX
 
+/// Loads the save tree for the assigned path
 /datum/preferences/proc/load_savefile()
 	if(!path)
 		CRASH("Attempted to load savefile without first loading a path!")
 	savefile = new /datum/byond_save_tree(path)
+
+/datum/preferences/proc/load_preferences()
+	if(!savefile)
+		stack_trace("Attempted to load the preferences of [owner] without a savefile; did you forget to call load_savefile?")
+		load_savefile()
+		if(!savefile)
+			stack_trace("Failed to load the savefile for [owner] after manually calling load_savefile; something is very wrong.")
+			return FALSE
+
+	if(!fexists(path))
+		load_preferences_sanitize() // Ensure a new player gets same defaults as returning players
+		return FALSE
+
+	//Conversion
+	savefile_version = savefile.tree["version"]
+	if(!savefile_version || !isnum(savefile_version) || savefile_version != SAVEFILE_VERSION_MAX)
+		if(!savefile_update())  //handles updates
+			savefile_version = SAVEFILE_VERSION_MAX
+			save_character()
+			save_preferences() // This one writes to disk
+			return FALSE
+
+	//general preferences
+	ooccolor = savefile.tree["ooccolor"]
+	lastchangelog = savefile.tree["lastchangelog"]
+	be_special = savefile.tree["be_special"]
+	default_slot = savefile.tree["default_slot"]
+	toggles_chat = savefile.tree["toggles_chat"]
+	chat_display_preferences = savefile.tree["chat_display_preferences"]
+	toggles_ghost = savefile.tree["toggles_ghost"]
+	toggles_langchat = savefile.tree["toggles_langchat"]
+	toggles_sound = savefile.tree["toggles_sound"]
+	volume_preferences = savefile.tree["volume_preferences"]
+	toggle_prefs = savefile.tree["toggle_prefs"]
+	xeno_ability_click_mode = savefile.tree["xeno_ability_click_mode"]
+	dual_wield_pref = savefile.tree["dual_wield_pref"]
+	toggles_flashing = savefile.tree["toggles_flashing"]
+	toggles_ert = savefile.tree["toggles_ert"]
+	toggles_survivor = savefile.tree["toggles_survivor"]
+	toggles_insert = savefile.tree["toggles_insert"]
+	toggles_ert_pred = savefile.tree["toggles_ert_pred"]
+	toggles_admin = savefile.tree["toggles_admin"]
+	UI_style = savefile.tree["UI_style"]
+	tgui_say = savefile.tree["tgui_say"]
+	UI_style_color = savefile.tree["UI_style_color"]
+	UI_style_alpha = savefile.tree["UI_style_alpha"]
+	item_animation_pref_level = savefile.tree["item_animation_pref_level"]
+	pain_overlay_pref_level = savefile.tree["pain_overlay_pref_level"]
+	flash_overlay_pref = savefile.tree["flash_overlay_pref"]
+	crit_overlay_pref = savefile.tree["crit_overlay_pref"]
+	allow_flashing_lights_pref = savefile.tree["allow_flashing_lights_pref"]
+	stylesheet = savefile.tree["stylesheet"]
+	window_skin = savefile.tree["window_skin"]
+	fps = savefile.tree["fps"]
+	ghost_vision_pref = savefile.tree["ghost_vision_pref"]
+	ghost_orbit = savefile.tree["ghost_orbit"]
+	auto_observe = savefile.tree["auto_observe"]
+	CMTV_toggle_optout = savefile.tree["CMTV_toggle_optout"]
+
+	human_name_ban = savefile.tree["human_name_ban"]
+
+	xeno_prefix = savefile.tree["xeno_prefix"]
+	xeno_postfix = savefile.tree["xeno_postfix"]
+	xeno_name_ban = savefile.tree["xeno_name_ban"]
+	playtime_perks = savefile.tree["playtime_perks"]
+	skip_playtime_ranks = savefile.tree["skip_playtime_ranks"]
+	show_queen_name = savefile.tree["show_queen_name"]
+	show_minimap_ceiling_protection = savefile.tree["show_minimap_ceiling_protection"]
+	xeno_vision_level_pref = savefile.tree["xeno_vision_level_pref"]
+	xeno_defensive_grab_pref = savefile.tree["xeno_defensive_grab_pref"]
+	View_MC = savefile.tree["view_controller"]
+	observer_huds = savefile.tree["observer_huds"]
+	pref_special_job_options = savefile.tree["pref_special_job_options"]
+	pref_job_slots = savefile.tree["pref_job_slots"]
+
+	synthetic_name = savefile.tree["synth_name"]
+	synthetic_type = savefile.tree["synth_type"]
+	synth_specialisation = savefile.tree["synth_specialisation"]
+	predator_name = savefile.tree["pred_name"]
+	predator_gender = savefile.tree["pred_gender"]
+	predator_age = savefile.tree["pred_age"]
+	predator_use_legacy = savefile.tree["pred_use_legacy"]
+	predator_use_unique = savefile.tree["pred_use_unique"]
+	predator_translator_type = savefile.tree["pred_trans_type"]
+	predator_invisibility_sound = savefile.tree["pred_invis_sound"]
+	predator_mask_type = savefile.tree["pred_mask_type"]
+	predator_accessory_type = savefile.tree["pred_accessory_type"]
+	predator_armor_type = savefile.tree["pred_armor_type"]
+	predator_boot_type = savefile.tree["pred_boot_type"]
+	predator_mask_material = savefile.tree["pred_mask_mat"]
+	predator_armor_material = savefile.tree["pred_armor_mat"]
+	predator_greave_material = savefile.tree["pred_greave_mat"]
+	predator_caster_material = savefile.tree["pred_caster_mat"]
+	predator_bracer_material = savefile.tree["pred_bracer_mat"]
+	predator_cape_color = savefile.tree["pred_cape_color"]
+	predator_h_style = savefile.tree["pred_h_style"]
+	predator_skin_color = savefile.tree["pred_skin_color"]
+	predator_flavor_text = savefile.tree["pred_flavor_text"]
+
+	commander_status = savefile.tree["commander_status"]
+	commander_sidearm = savefile.tree["co_sidearm"]
+	affiliation = savefile.tree["co_affiliation"]
+	co_career_path = savefile.tree["co_command_path"]
+	yautja_status = savefile.tree["yautja_status"]
+	synth_status = savefile.tree["synth_status"]
+
+	fax_name_uscm = savefile.tree["fax_name_uscm"]
+	fax_name_pvst = savefile.tree["fax_name_pvst"]
+	fax_name_wy = savefile.tree["fax_name_wy"]
+	fax_name_upp = savefile.tree["fax_name_upp"]
+	fax_name_twe = savefile.tree["fax_name_twe"]
+	fax_name_cmb = savefile.tree["fax_name_cmb"]
+	fax_name_press = savefile.tree["fax_name_press"]
+	fax_name_clf = savefile.tree["fax_name_clf"]
+
+	ff_log_color = savefile.tree["ff_log_color"]
+	ffd_log_color = savefile.tree["ffd_log_color"]
+
+	lang_chat_disabled = savefile.tree["lang_chat_disabled"]
+	show_permission_errors = savefile.tree["show_permission_errors"]
+	hear_vox = savefile.tree["hear_vox"]
+	hide_statusbar = savefile.tree["hide_statusbar"]
+	no_radials_preference = savefile.tree["no_radials_preference"]
+	no_radial_labels_preference = savefile.tree["no_radial_labels_preference"]
+	hotkeys = savefile.tree["hotkeys"]
+
+	custom_cursors = savefile.tree["custom_cursors"]
+	auto_fit_viewport = savefile.tree["autofit_viewport"]
+	adaptive_zoom = savefile.tree["adaptive_zoom"]
+	tooltips = savefile.tree["tooltips"]
+	key_bindings = savefile.tree["key_bindings"]
+
+	custom_keybinds = savefile.tree["custom_keybinds"]
+
+	tgui_lock = savefile.tree["tgui_lock"]
+	tgui_fancy = savefile.tree["tgui_fancy"]
+	window_scale = savefile.tree["window_scale"]
+
+	var/tutorial_string = ""
+	tutorial_string = savefile.tree["completed_tutorials"]
+	tutorial_savestring_to_list(tutorial_string)
+
+	var/list/remembered_key_bindings
+	remembered_key_bindings = savefile.tree["remembered_key_bindings"]
+	remembered_key_bindings = sanitize_islist(remembered_key_bindings, null)
+
+	lastchangelog = savefile.tree["lastchangelog"]
+
+	loadout = savefile.tree["job_loadout"]
+	loadout_slot_names = savefile.tree["job_loadout_names"]
+
+	show_cooldown_messages = savefile.tree["show_cooldown_messages"]
+
+	chem_presets = savefile.tree["chem_presets"]
+
+	//Sanitize
+	load_preferences_sanitize()
+
+	check_keybindings()
+	savefile.tree["key_bindings"] = key_bindings
+
+	if(remembered_key_bindings)
+		for(var/i in GLOB.keybindings_by_name)
+			if(!(i in remembered_key_bindings))
+				var/datum/keybinding/instance = GLOB.keybindings_by_name[i]
+				// Classic
+				if(LAZYLEN(instance.classic_keys))
+					for(var/bound_key in instance.classic_keys)
+						LAZYADD(key_bindings[bound_key], list(instance.name))
+
+				// Hotkey
+				if(LAZYLEN(instance.hotkey_keys))
+					for(var/bound_key in instance.hotkey_keys)
+						LAZYADD(key_bindings[bound_key], list(instance.name))
+
+	savefile.tree["remembered_key_bindings"] = GLOB.keybindings_by_name
+
+	load_custom_keybinds()
+
+	if(toggles_chat & SHOW_TYPING)
+		owner.typing_indicators = FALSE
+	else
+		owner.typing_indicators = TRUE
+
+	return TRUE
 
 /proc/sanitize_keybindings(value)
 	var/list/base_bindings = sanitize_islist(value, list())
@@ -303,191 +503,8 @@
 		volume_preferences[i] = num
 	return volume_preferences
 
-/datum/preferences/proc/load_preferences()
-	if(!savefile)
-		stack_trace("Attempted to load the preferences of [owner] without a savefile; did you forget to call load_savefile?")
-		load_savefile()
-		if(!savefile)
-			stack_trace("Failed to load the savefile for [owner] after manually calling load_savefile; something is very wrong.")
-			return FALSE
-
-	//if(!fexists(path))
-	//	load_preferences_sanitize() // Ensure a new player gets same defaults as returning players
-	//	return FALSE
-
-	savefile_version = savefile.get_entry("version")
-	//Conversion
-	if(!savefile_version || !isnum(savefile_version) || savefile_version != SAVEFILE_VERSION_MAX)
-		if(!savefile_update())  //handles updates
-			savefile_version = SAVEFILE_VERSION_MAX
-			save_character()
-			save_preferences() // This one writes to disk
-			return FALSE
-
-	//general preferences
-	ooccolor = savefile.get_entry("ooccolor")
-	lastchangelog = savefile.get_entry("lastchangelog")
-	be_special = savefile.get_entry("be_special")
-	default_slot = savefile.get_entry("default_slot")
-	toggles_chat = savefile.get_entry("toggles_chat")
-	chat_display_preferences = savefile.get_entry("chat_display_preferences")
-	toggles_ghost = savefile.get_entry("toggles_ghost")
-	toggles_langchat = savefile.get_entry("toggles_langchat")
-	toggles_sound = savefile.get_entry("toggles_sound")
-	volume_preferences = savefile.get_entry("volume_preferences")
-	toggle_prefs = savefile.get_entry("toggle_prefs")
-	xeno_ability_click_mode = savefile.get_entry("xeno_ability_click_mode")
-	dual_wield_pref = savefile.get_entry("dual_wield_pref")
-	toggles_flashing = savefile.get_entry("toggles_flashing")
-	toggles_ert = savefile.get_entry("toggles_ert")
-	toggles_survivor = savefile.get_entry("toggles_survivor")
-	toggles_insert = savefile.get_entry("toggles_insert")
-	toggles_ert_pred = savefile.get_entry("toggles_ert_pred")
-	toggles_admin = savefile.get_entry("toggles_admin")
-	UI_style = savefile.get_entry("UI_style")
-	tgui_say = savefile.get_entry("tgui_say")
-	UI_style_color = savefile.get_entry("UI_style_color")
-	UI_style_alpha = savefile.get_entry("UI_style_alpha")
-	item_animation_pref_level = savefile.get_entry("item_animation_pref_level")
-	pain_overlay_pref_level = savefile.get_entry("pain_overlay_pref_level")
-	flash_overlay_pref = savefile.get_entry("flash_overlay_pref")
-	crit_overlay_pref = savefile.get_entry("crit_overlay_pref")
-	allow_flashing_lights_pref = savefile.get_entry("allow_flashing_lights_pref")
-	stylesheet = savefile.get_entry("stylesheet")
-	window_skin = savefile.get_entry("window_skin")
-	fps = savefile.get_entry("fps")
-	ghost_vision_pref = savefile.get_entry("ghost_vision_pref")
-	ghost_orbit = savefile.get_entry("ghost_orbit")
-	auto_observe = savefile.get_entry("auto_observe")
-	CMTV_toggle_optout = savefile.get_entry("CMTV_toggle_optout")
-
-	human_name_ban = savefile.get_entry("human_name_ban")
-
-	xeno_prefix = savefile.get_entry("xeno_prefix")
-	xeno_postfix = savefile.get_entry("xeno_postfix")
-	xeno_name_ban = savefile.get_entry("xeno_name_ban")
-	playtime_perks = savefile.get_entry("playtime_perks")
-	skip_playtime_ranks = savefile.get_entry("skip_playtime_ranks")
-	show_queen_name = savefile.get_entry("show_queen_name")
-	show_minimap_ceiling_protection = savefile.get_entry("show_minimap_ceiling_protection")
-	xeno_vision_level_pref = savefile.get_entry("xeno_vision_level_pref")
-	xeno_defensive_grab_pref = savefile.get_entry("xeno_defensive_grab_pref")
-	View_MC = savefile.get_entry("view_controller")
-	observer_huds = savefile.get_entry("observer_huds")
-	pref_special_job_options = savefile.get_entry("pref_special_job_options")
-	pref_job_slots = savefile.get_entry("pref_job_slots")
-
-	synthetic_name = savefile.get_entry("synth_name")
-	synthetic_type = savefile.get_entry("synth_type")
-	synth_specialisation = savefile.get_entry("synth_specialisation")
-	predator_name = savefile.get_entry("pred_name")
-	predator_gender = savefile.get_entry("pred_gender")
-	predator_age = savefile.get_entry("pred_age")
-	predator_use_legacy = savefile.get_entry("pred_use_legacy")
-	predator_use_unique = savefile.get_entry("pred_use_unique")
-	predator_translator_type = savefile.get_entry("pred_trans_type")
-	predator_invisibility_sound = savefile.get_entry("pred_invis_sound")
-	predator_mask_type = savefile.get_entry("pred_mask_type")
-	predator_accessory_type = savefile.get_entry("pred_accessory_type")
-	predator_armor_type = savefile.get_entry("pred_armor_type")
-	predator_boot_type = savefile.get_entry("pred_boot_type")
-	predator_mask_material = savefile.get_entry("pred_mask_mat")
-	predator_armor_material = savefile.get_entry("pred_armor_mat")
-	predator_greave_material = savefile.get_entry("pred_greave_mat")
-	predator_caster_material = savefile.get_entry("pred_caster_mat")
-	predator_bracer_material = savefile.get_entry("pred_bracer_mat")
-	predator_cape_color = savefile.get_entry("pred_cape_color")
-	predator_h_style = savefile.get_entry("pred_h_style")
-	predator_skin_color = savefile.get_entry("pred_skin_color")
-	predator_flavor_text = savefile.get_entry("pred_flavor_text")
-
-	commander_status = savefile.get_entry("commander_status")
-	commander_sidearm = savefile.get_entry("co_sidearm")
-	affiliation = savefile.get_entry("co_affiliation")
-	co_career_path = savefile.get_entry("co_command_path")
-	yautja_status = savefile.get_entry("yautja_status")
-	synth_status = savefile.get_entry("synth_status")
-
-	fax_name_uscm = savefile.get_entry("fax_name_uscm")
-	fax_name_pvst = savefile.get_entry("fax_name_pvst")
-	fax_name_wy = savefile.get_entry("fax_name_wy")
-	fax_name_upp = savefile.get_entry("fax_name_upp")
-	fax_name_twe = savefile.get_entry("fax_name_twe")
-	fax_name_cmb = savefile.get_entry("fax_name_cmb")
-	fax_name_press = savefile.get_entry("fax_name_press")
-	fax_name_clf = savefile.get_entry("fax_name_clf")
-
-	ff_log_color = savefile.get_entry("ff_log_color")
-	ffd_log_color = savefile.get_entry("ffd_log_color")
-
-	lang_chat_disabled = savefile.get_entry("lang_chat_disabled")
-	show_permission_errors = savefile.get_entry("show_permission_errors")
-	hear_vox = savefile.get_entry("hear_vox")
-	hide_statusbar = savefile.get_entry("hide_statusbar")
-	no_radials_preference = savefile.get_entry("no_radials_preference")
-	no_radial_labels_preference = savefile.get_entry("no_radial_labels_preference")
-	hotkeys = savefile.get_entry("hotkeys")
-
-	custom_cursors = savefile.get_entry("custom_cursors")
-	auto_fit_viewport = savefile.get_entry("autofit_viewport")
-	adaptive_zoom = savefile.get_entry("adaptive_zoom")
-	tooltips = savefile.get_entry("tooltips")
-	key_bindings = savefile.get_entry("key_bindings")
-
-	custom_keybinds = savefile.get_entry("custom_keybinds")
-
-	tgui_lock = savefile.get_entry("tgui_lock")
-	tgui_fancy = savefile.get_entry("tgui_fancy")
-	window_scale = savefile.get_entry("window_scale")
-
-	var/tutorial_string = ""
-	tutorial_string = savefile.get_entry("completed_tutorials")
-	tutorial_savestring_to_list(tutorial_string)
-
-	var/list/remembered_key_bindings
-	remembered_key_bindings = savefile.get_entry("remembered_key_bindings")
-	remembered_key_bindings = sanitize_islist(remembered_key_bindings, null)
-
-	lastchangelog = savefile.get_entry("lastchangelog")
-
-	loadout = savefile.get_entry("job_loadout")
-	loadout_slot_names = savefile.get_entry("job_loadout_names")
-
-	show_cooldown_messages = savefile.get_entry("show_cooldown_messages")
-
-	chem_presets = savefile.get_entry("chem_presets")
-
-	//Sanitize
-	load_preferences_sanitize()
-
-	check_keybindings()
-	savefile.set_entry("key_bindings", key_bindings)
-
-	if(remembered_key_bindings)
-		for(var/i in GLOB.keybindings_by_name)
-			if(!(i in remembered_key_bindings))
-				var/datum/keybinding/instance = GLOB.keybindings_by_name[i]
-				// Classic
-				if(LAZYLEN(instance.classic_keys))
-					for(var/bound_key in instance.classic_keys)
-						LAZYADD(key_bindings[bound_key], list(instance.name))
-
-				// Hotkey
-				if(LAZYLEN(instance.hotkey_keys))
-					for(var/bound_key in instance.hotkey_keys)
-						LAZYADD(key_bindings[bound_key], list(instance.name))
-
-	savefile.set_entry("remembered_key_bindings", GLOB.keybindings_by_name)
-
-	load_custom_keybinds()
-
-	if(toggles_chat & SHOW_TYPING)
-		owner.typing_indicators = FALSE
-	else
-		owner.typing_indicators = TRUE
-
-	return TRUE
-
+/// Sanitizes general preferences (not characters)
+/// Does not alter the save tree
 /datum/preferences/proc/load_preferences_sanitize()
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
 	lastchangelog = sanitize_text(lastchangelog, initial(lastchangelog))
@@ -605,154 +622,158 @@
 	if(length(custom_keybinds) != KEYBIND_CUSTOM_MAX)
 		custom_keybinds.len = KEYBIND_CUSTOM_MAX
 
-/datum/preferences/proc/save_preferences()
+/// Assigns the generals preferences and will by default write to disk
+/datum/preferences/proc/save_preferences(write=TRUE)
 	if(!savefile)
 		CRASH("Attempted to save the preferences of [owner] without a savefile. This should have been handled by load_preferences()")
 
-	savefile.set_entry("version", savefile_version)
+	savefile.tree["version"] = savefile_version
 
 	//general preferences
-	savefile.set_entry("ooccolor", ooccolor)
-	savefile.set_entry("lastchangelog", lastchangelog)
-	savefile.set_entry("UI_style", UI_style)
-	savefile.set_entry("UI_style_color", UI_style_color)
-	savefile.set_entry("UI_style_alpha", UI_style_alpha)
-	savefile.set_entry("tgui_say", tgui_say)
-	savefile.set_entry("item_animation_pref_level", item_animation_pref_level)
-	savefile.set_entry("pain_overlay_pref_level", pain_overlay_pref_level)
-	savefile.set_entry("flash_overlay_pref", flash_overlay_pref)
-	savefile.set_entry("crit_overlay_pref", crit_overlay_pref)
-	savefile.set_entry("allow_flashing_lights_pref", allow_flashing_lights_pref)
-	savefile.set_entry("stylesheet", stylesheet)
-	savefile.set_entry("be_special", be_special)
-	savefile.set_entry("default_slot", default_slot)
-	savefile.set_entry("toggles_chat", toggles_chat)
-	savefile.set_entry("chat_display_preferences", chat_display_preferences)
-	savefile.set_entry("toggles_ghost", toggles_ghost)
-	savefile.set_entry("toggles_langchat", toggles_langchat)
-	savefile.set_entry("toggles_sound", toggles_sound)
-	savefile.set_entry("volume_preferences", volume_preferences)
-	savefile.set_entry("toggle_prefs", toggle_prefs)
-	savefile.set_entry("xeno_ability_click_mode", xeno_ability_click_mode)
-	savefile.set_entry("dual_wield_pref", dual_wield_pref)
-	savefile.set_entry("toggles_flashing", toggles_flashing)
-	savefile.set_entry("toggles_ert", toggles_ert)
-	savefile.set_entry("toggles_survivor", toggles_survivor)
-	savefile.set_entry("toggles_insert", toggles_insert)
-	savefile.set_entry("toggles_ert_pred", toggles_ert_pred)
-	savefile.set_entry("toggles_admin", toggles_admin)
-	savefile.set_entry("window_skin", window_skin)
-	savefile.set_entry("fps", fps)
-	savefile.set_entry("ghost_vision_pref", ghost_vision_pref)
-	savefile.set_entry("ghost_orbit", ghost_orbit)
-	savefile.set_entry("auto_observe", auto_observe)
-	savefile.set_entry("CMTV_toggle_optout", CMTV_toggle_optout)
+	savefile.tree["ooccolor"] = ooccolor
+	savefile.tree["lastchangelog"] = lastchangelog
+	savefile.tree["UI_style"] = UI_style
+	savefile.tree["UI_style_color"] = UI_style_color
+	savefile.tree["UI_style_alpha"] = UI_style_alpha
+	savefile.tree["tgui_say"] = tgui_say
+	savefile.tree["item_animation_pref_level"] = item_animation_pref_level
+	savefile.tree["pain_overlay_pref_level"] = pain_overlay_pref_level
+	savefile.tree["flash_overlay_pref"] = flash_overlay_pref
+	savefile.tree["crit_overlay_pref"] = crit_overlay_pref
+	savefile.tree["allow_flashing_lights_pref"] = allow_flashing_lights_pref
+	savefile.tree["stylesheet"] = stylesheet
+	savefile.tree["be_special"] = be_special
+	savefile.tree["default_slot"] = default_slot
+	savefile.tree["toggles_chat"] = toggles_chat
+	savefile.tree["chat_display_preferences"] = chat_display_preferences
+	savefile.tree["toggles_ghost"] = toggles_ghost
+	savefile.tree["toggles_langchat"] = toggles_langchat
+	savefile.tree["toggles_sound"] = toggles_sound
+	savefile.tree["volume_preferences"] = volume_preferences
+	savefile.tree["toggle_prefs"] = toggle_prefs
+	savefile.tree["xeno_ability_click_mode"] = xeno_ability_click_mode
+	savefile.tree["dual_wield_pref"] = dual_wield_pref
+	savefile.tree["toggles_flashing"] = toggles_flashing
+	savefile.tree["toggles_ert"] = toggles_ert
+	savefile.tree["toggles_survivor"] = toggles_survivor
+	savefile.tree["toggles_insert"] = toggles_insert
+	savefile.tree["toggles_ert_pred"] = toggles_ert_pred
+	savefile.tree["toggles_admin"] = toggles_admin
+	savefile.tree["window_skin"] = window_skin
+	savefile.tree["fps"] = fps
+	savefile.tree["ghost_vision_pref"] = ghost_vision_pref
+	savefile.tree["ghost_orbit"] = ghost_orbit
+	savefile.tree["auto_observe"] = auto_observe
+	savefile.tree["CMTV_toggle_optout"] = CMTV_toggle_optout
 
-	savefile.set_entry("human_name_ban", human_name_ban)
+	savefile.tree["human_name_ban"] = human_name_ban
 
-	savefile.set_entry("xeno_prefix", xeno_prefix)
-	savefile.set_entry("xeno_postfix", xeno_postfix)
-	savefile.set_entry("xeno_name_ban", xeno_name_ban)
-	savefile.set_entry("xeno_vision_level_pref", xeno_vision_level_pref)
-	savefile.set_entry("xeno_defensive_grab_pref", xeno_defensive_grab_pref)
-	savefile.set_entry("playtime_perks", playtime_perks)
-	savefile.set_entry("skip_playtime_ranks", skip_playtime_ranks)
-	savefile.set_entry("show_queen_name", show_queen_name)
-	savefile.set_entry("show_minimap_ceiling_protection", show_minimap_ceiling_protection)
+	savefile.tree["xeno_prefix"] = xeno_prefix
+	savefile.tree["xeno_postfix"] = xeno_postfix
+	savefile.tree["xeno_name_ban"] = xeno_name_ban
+	savefile.tree["xeno_vision_level_pref"] = xeno_vision_level_pref
+	savefile.tree["xeno_defensive_grab_pref"] = xeno_defensive_grab_pref
+	savefile.tree["playtime_perks"] = playtime_perks
+	savefile.tree["skip_playtime_ranks"] = skip_playtime_ranks
+	savefile.tree["show_queen_name"] = show_queen_name
+	savefile.tree["show_minimap_ceiling_protection"] = show_minimap_ceiling_protection
 
-	savefile.set_entry("view_controller", View_MC)
-	savefile.set_entry("observer_huds", observer_huds)
-	savefile.set_entry("pref_special_job_options", pref_special_job_options)
-	savefile.set_entry("pref_job_slots", pref_job_slots)
+	savefile.tree["view_controller"] = View_MC
+	savefile.tree["observer_huds"] = observer_huds
+	savefile.tree["pref_special_job_options"] = pref_special_job_options
+	savefile.tree["pref_job_slots"] = pref_job_slots
 
-	savefile.set_entry("synth_name", synthetic_name)
-	savefile.set_entry("synth_type", synthetic_type)
-	savefile.set_entry("synth_specialisation", synth_specialisation)
-	savefile.set_entry("pred_name", predator_name)
-	savefile.set_entry("pred_gender", predator_gender)
-	savefile.set_entry("pred_age", predator_age)
-	savefile.set_entry("pred_use_legacy", predator_use_legacy)
-	savefile.set_entry("pred_use_unique", predator_use_unique)
-	savefile.set_entry("pred_trans_type", predator_translator_type)
-	savefile.set_entry("pred_invis_sound", predator_invisibility_sound)
-	savefile.set_entry("pred_mask_type", predator_mask_type)
-	savefile.set_entry("pred_accessory_type", predator_accessory_type)
-	savefile.set_entry("pred_armor_type", predator_armor_type)
-	savefile.set_entry("pred_boot_type", predator_boot_type)
-	savefile.set_entry("pred_mask_mat", predator_mask_material)
-	savefile.set_entry("pred_armor_mat", predator_armor_material)
-	savefile.set_entry("pred_greave_mat", predator_greave_material)
-	savefile.set_entry("pred_caster_mat", predator_caster_material)
-	savefile.set_entry("pred_bracer_mat", predator_bracer_material)
-	savefile.set_entry("pred_cape_color", predator_cape_color)
-	savefile.set_entry("pred_h_style", predator_h_style)
-	savefile.set_entry("pred_skin_color", predator_skin_color)
-	savefile.set_entry("pred_flavor_text", predator_flavor_text)
+	savefile.tree["synth_name"] = synthetic_name
+	savefile.tree["synth_type"] = synthetic_type
+	savefile.tree["synth_specialisation"] = synth_specialisation
+	savefile.tree["pred_name"] = predator_name
+	savefile.tree["pred_gender"] = predator_gender
+	savefile.tree["pred_age"] = predator_age
+	savefile.tree["pred_use_legacy"] = predator_use_legacy
+	savefile.tree["pred_use_unique"] = predator_use_unique
+	savefile.tree["pred_trans_type"] = predator_translator_type
+	savefile.tree["pred_invis_sound"] = predator_invisibility_sound
+	savefile.tree["pred_mask_type"] = predator_mask_type
+	savefile.tree["pred_accessory_type"] = predator_accessory_type
+	savefile.tree["pred_armor_type"] = predator_armor_type
+	savefile.tree["pred_boot_type"] = predator_boot_type
+	savefile.tree["pred_mask_mat"] = predator_mask_material
+	savefile.tree["pred_armor_mat"] = predator_armor_material
+	savefile.tree["pred_greave_mat"] = predator_greave_material
+	savefile.tree["pred_caster_mat"] = predator_caster_material
+	savefile.tree["pred_bracer_mat"] = predator_bracer_material
+	savefile.tree["pred_cape_color"] = predator_cape_color
+	savefile.tree["pred_h_style"] = predator_h_style
+	savefile.tree["pred_skin_color"] = predator_skin_color
+	savefile.tree["pred_flavor_text"] = predator_flavor_text
 
-	savefile.set_entry("commander_status", commander_status)
-	savefile.set_entry("co_sidearm", commander_sidearm)
-	savefile.set_entry("co_command_path", co_career_path)
-	savefile.set_entry("co_affiliation", affiliation)
-	savefile.set_entry("yautja_status", yautja_status)
-	savefile.set_entry("synth_status", synth_status)
+	savefile.tree["commander_status"] = commander_status
+	savefile.tree["co_sidearm"] = commander_sidearm
+	savefile.tree["co_command_path"] = co_career_path
+	savefile.tree["co_affiliation"] = affiliation
+	savefile.tree["yautja_status"] = yautja_status
+	savefile.tree["synth_status"] = synth_status
 
-	savefile.set_entry("fax_name_uscm", fax_name_uscm)
-	savefile.set_entry("fax_name_pvst", fax_name_pvst)
-	savefile.set_entry("fax_name_wy", fax_name_wy)
-	savefile.set_entry("fax_name_upp", fax_name_upp)
-	savefile.set_entry("fax_name_twe", fax_name_twe)
-	savefile.set_entry("fax_name_cmb", fax_name_cmb)
-	savefile.set_entry("fax_name_press", fax_name_press)
-	savefile.set_entry("fax_name_clf", fax_name_clf)
+	savefile.tree["fax_name_uscm"] = fax_name_uscm
+	savefile.tree["fax_name_pvst"] = fax_name_pvst
+	savefile.tree["fax_name_wy"] = fax_name_wy
+	savefile.tree["fax_name_upp"] = fax_name_upp
+	savefile.tree["fax_name_twe"] = fax_name_twe
+	savefile.tree["fax_name_cmb"] = fax_name_cmb
+	savefile.tree["fax_name_press"] = fax_name_press
+	savefile.tree["fax_name_clf"] = fax_name_clf
 
-	savefile.set_entry("ff_log_color", ff_log_color)
-	savefile.set_entry("ffd_log_color", ffd_log_color)
+	savefile.tree["ff_log_color"] = ff_log_color
+	savefile.tree["ffd_log_color"] = ffd_log_color
 
-	savefile.set_entry("lang_chat_disabled", lang_chat_disabled)
-	savefile.set_entry("show_permission_errors", show_permission_errors)
-	savefile.set_entry("key_bindings", key_bindings)
-	savefile.set_entry("hotkeys", hotkeys)
+	savefile.tree["lang_chat_disabled"] = lang_chat_disabled
+	savefile.tree["show_permission_errors"] = show_permission_errors
+	savefile.tree["key_bindings"] = key_bindings
+	savefile.tree["hotkeys"] = hotkeys
 
-	savefile.set_entry("autofit_viewport", auto_fit_viewport)
-	savefile.set_entry("adaptive_zoom", adaptive_zoom)
+	savefile.tree["autofit_viewport"] = auto_fit_viewport
+	savefile.tree["adaptive_zoom"] = adaptive_zoom
 
-	savefile.set_entry("hear_vox", hear_vox)
+	savefile.tree["hear_vox"] = hear_vox
 
-	savefile.set_entry("hide_statusbar", hide_statusbar)
-	savefile.set_entry("no_radials_preference", no_radials_preference)
-	savefile.set_entry("no_radial_labels_preference", no_radial_labels_preference)
-	savefile.set_entry("custom_cursors", custom_cursors)
+	savefile.tree["hide_statusbar"] = hide_statusbar
+	savefile.tree["no_radials_preference"] = no_radials_preference
+	savefile.tree["no_radial_labels_preference"] = no_radial_labels_preference
+	savefile.tree["custom_cursors"] = custom_cursors
 
-	savefile.set_entry("completed_tutorials", tutorial_list_to_savestring())
+	savefile.tree["completed_tutorials"] = tutorial_list_to_savestring()
 
-	savefile.set_entry("lastchangelog", lastchangelog)
+	savefile.tree["lastchangelog"] = lastchangelog
 
-	savefile.set_entry("job_loadout", save_loadout(loadout))
-	savefile.set_entry("job_loadout_names", loadout_slot_names)
+	savefile.tree["job_loadout"] = save_loadout(loadout)
+	savefile.tree["job_loadout_names"] = loadout_slot_names
 
-	savefile.set_entry("tgui_fancy", tgui_fancy)
-	savefile.set_entry("tgui_lock", tgui_lock)
-	savefile.set_entry("window_scale", window_scale)
+	savefile.tree["tgui_fancy"] = tgui_fancy
+	savefile.tree["tgui_lock"] = tgui_lock
+	savefile.tree["window_scale"] = window_scale
 
-	savefile.set_entry("show_cooldown_messages", show_cooldown_messages)
+	savefile.tree["show_cooldown_messages"] = show_cooldown_messages
 
-	savefile.set_entry("chem_presets", chem_presets)
+	savefile.tree["chem_presets"] = chem_presets
 
-	savefile.set_entry("custom_keybinds", custom_keybinds)
+	savefile.tree["custom_keybinds"] = custom_keybinds
 
-	savefile.save()
+	if(write)
+		savefile.save()
+
 	return TRUE
 
+/// Attempts to load a character slot, will update default_slot if needed, and sanitizes character values
 /datum/preferences/proc/load_character(slot)
 	if(!slot)
 		slot = default_slot
 	slot = sanitize_integer(slot, 1, MAX_SAVE_SLOTS, initial(default_slot))
 	if(slot != default_slot)
 		default_slot = slot
-		savefile.set_entry("default_slot", slot)
+		savefile.tree["default_slot"] = slot
 
 	var/tree_key = "character[slot]"
-	var/list/save_data = savefile.get_entry(tree_key)
+	var/list/save_data = savefile.tree[tree_key]
 	if(islist(save_data))
 		//Character
 		metadata = save_data["OOC_Notes"]
@@ -865,15 +886,13 @@
 	g_gradient = sanitize_integer(g_gradient, 0, 255, initial(g_gradient))
 	b_gradient = sanitize_integer(b_gradient, 0, 255, initial(b_gradient))
 	grad_style = sanitize_inlist(grad_style, GLOB.hair_gradient_list, initial(grad_style))
-	var/datum/sprite_accessory/HS = GLOB.hair_styles_list[h_style]
-	if(!HS.selectable) // delete this
+	var/datum/sprite_accessory/hair_style_datum = GLOB.hair_styles_list[h_style]
+	if(!hair_style_datum.selectable) // shouldn't be using this hair
 		h_style = random_hair_style(gender, species)
-		//save_character() // TODO: Handle dirty?
 	f_style = sanitize_inlist(f_style, GLOB.facial_hair_styles_list, initial(f_style))
-	var/datum/sprite_accessory/FS = GLOB.facial_hair_styles_list[f_style]
-	if(!FS.selectable) // delete this
+	var/datum/sprite_accessory/facial_style_datum = GLOB.facial_hair_styles_list[f_style]
+	if(!facial_style_datum.selectable) // shouldn't be using this hair
 		f_style = random_facial_hair_style(gender, species)
-		//save_character() // TODO: Handle dirty?
 	r_eyes = sanitize_integer(r_eyes, 0, 255, initial(r_eyes))
 	g_eyes = sanitize_integer(g_eyes, 0, 255, initial(g_eyes))
 	b_eyes = sanitize_integer(b_eyes, 0, 255, initial(b_eyes))
@@ -914,14 +933,15 @@
 
 	return TRUE
 
-/datum/preferences/proc/save_character()
+/// Assigns the save data for the character in default_slot but notably does not write to disk by default
+/datum/preferences/proc/save_character(write=FALSE)
 	if(!path)
 		return FALSE
 
 	var/tree_key = "character[default_slot]"
-	if(!savefile.has_entry(tree_key))
-		savefile.set_entry(tree_key, list())
-	var/save_data = savefile.get_entry(tree_key)
+	if(!(tree_key in savefile.tree))
+		savefile.tree[tree_key] = list()
+	var/save_data = savefile.tree[tree_key]
 
 	//Character
 	save_data["OOC_Notes"] = metadata
@@ -999,6 +1019,9 @@
 	save_data["uplinklocation"] = uplinklocation
 	save_data["exploit_record"] = exploit_record
 
+	if(write)
+		savefile.save()
+
 	return TRUE
 
 /// checks through keybindings for outdated unbound keys and updates them
@@ -1075,17 +1098,6 @@
 		custom_key.when_synth = keybind["when_synth"]
 
 		key_to_custom_keybind[keybind["keybinding"]] = custom_key
-
-/datum/preferences/proc/try_savefile_type_migration()
-	load_path(owner.ckey, "preferences.sav") // old save file
-	var/old_path = path
-	load_path(owner.ckey)
-	if(!fexists(old_path))
-		return
-	var/datum/byond_save_tree/byond_save_tree = new(path)
-	byond_save_tree.import_byond_savefile(new /savefile(old_path))
-	byond_save_tree.save()
-	return TRUE
 
 #undef SAVEFILE_VERSION_MAX
 #undef SAVEFILE_VERSION_MIN

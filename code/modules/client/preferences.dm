@@ -357,7 +357,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 		unlock_content = owner.IsByondMember()
 		load_path(owner.ckey)
 		if(!fexists(path))
-			try_savefile_type_migration()
+			try_savefile_tree_migration()
 		load_savefile()
 		if(load_preferences())
 			if(load_character())
@@ -1077,7 +1077,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/list/slot_options = list(JOB_SLOT_RANDOMISED_TEXT = JOB_SLOT_RANDOMISED_SLOT, JOB_SLOT_CURRENT_TEXT = JOB_SLOT_CURRENT_SLOT)
 	for(var/slot in 1 to MAX_SAVE_SLOTS)
 		var/tree_key = "character[slot]"
-		var/list/save_data = savefile.get_entry(tree_key)
+		var/list/save_data = savefile.tree[tree_key]
 		var/slot_name = save_data?["real_name"]
 		if(slot_name)
 			slot_options["[slot_name] (slot #[slot])"] = slot
@@ -1096,7 +1096,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			return JOB_SLOT_RANDOMISED_TEXT
 		if(1 to MAX_SAVE_SLOTS)
 			var/tree_key = "character[slot_number]"
-			var/list/save_data = savefile.get_entry(tree_key)
+			var/list/save_data = savefile.tree[tree_key]
 			var/name = "EMPTY"
 			if(islist(save_data))
 				name = save_data["real_name"]
@@ -2362,7 +2362,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 		dat += "<b>Select a character slot to load</b><hr>"
 		for(var/i=1, i<=MAX_SAVE_SLOTS, i++)
 			var/tree_key = "character[i]"
-			var/list/save_data = savefile.get_entry(tree_key)
+			var/list/save_data = savefile.tree[tree_key]
 			var/name = save_data?["real_name"]
 			if(!name)
 				name = "Character[i]"

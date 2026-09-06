@@ -2,14 +2,12 @@
 
 /**
  * A savefile implementation that handles all data using an alist.
- * Also exports it using JSON too, fancy.
+ * Also can export it using JSON too, fancy.
  * If you pass in a null path, it simply acts as a memory tree instead, and cannot be saved.
  */
 /datum/byond_save_tree
 	var/path = ""
-	VAR_PRIVATE/alist/tree
-	/// If this is set to true, calling set_entry or remove_entry will automatically call save(), this does not catch modifying a sub-tree, nor do I know how to do that
-	var/auto_save = FALSE
+	var/alist/tree
 	/// Cooldown that tracks the time between attempts to download the savefile.
 	COOLDOWN_DECLARE(download_cooldown)
 
@@ -34,15 +32,10 @@ GENERAL_PROTECT_DATUM(/datum/byond_save_tree)
 /// Sets an entry in the tree to the given value
 /datum/byond_save_tree/proc/set_entry(key, value)
 	tree[key] = value
-	if(auto_save)
-		save()
 
 /// Removes the given key from the tree
 /datum/byond_save_tree/proc/remove_entry(key)
-	if(key)
-		tree -= key
-	if(auto_save)
-		save()
+	tree -= key
 
 /// Wipes the entire tree
 /datum/byond_save_tree/proc/wipe()
@@ -52,7 +45,6 @@ GENERAL_PROTECT_DATUM(/datum/byond_save_tree)
 	if(!path || !fexists(path))
 		return FALSE
 	try
-		//tree = json_decode(rustg_file_read(path))
 		var/savefile/data = new(path)
 		data["tree"] >> tree
 		return TRUE
@@ -62,7 +54,6 @@ GENERAL_PROTECT_DATUM(/datum/byond_save_tree)
 
 /datum/byond_save_tree/proc/save()
 	if(path)
-		//rustg_file_write(json_encode(tree, JSON_PRETTY_PRINT), path)
 		var/savefile/data = new(path)
 		data["tree"] << tree
 
@@ -116,7 +107,7 @@ GENERAL_PROTECT_DATUM(/datum/byond_save_tree)
 		tgui_alert(requester, "You must wait [DisplayTimeText(COOLDOWN_TIMELEFT(src, download_cooldown))] before exporting your preferences again!", "Export Preferences JSON")
 		return FALSE
 
-	if(tgui_alert(requester, "Are you sure you want to export your preferences as a JSON file? This will save to a file on your computer.", "Export Preferences JSON", list("Cancel", "Yes")) == "Yes")
+	if(tgui_alert(requester, "Are you sure you want to export your preferences as a JSON file? This will save to a file on your computer.", "Export Preferences JSON", list("Yes", "Cancel")) == "Yes")
 		return TRUE
 
 	return FALSE

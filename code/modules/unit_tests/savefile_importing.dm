@@ -71,8 +71,8 @@
 	TEST_ASSERT_EQUAL(dir_string, var_string, "didn't traverse dirs correctly")
 
 	var/runtime_check_string = random_name()
-	byond_save_tree.auto_save = TRUE
 	byond_save_tree.set_entry("runtime_saving", runtime_check_string)
+	byond_save_tree.save()
 	var/runtime_read = byond_save_tree.get_entry("runtime_saving")
 	TEST_ASSERT_EQUAL(runtime_check_string, runtime_read, "wrote and read the same key but got different values")
 	byond_save_tree.wipe()
@@ -80,4 +80,4 @@
 	TEST_ASSERT_NULL(runtime_read, "wiped the tree but data remained")
 	byond_save_tree.load()
 	runtime_read = byond_save_tree.get_entry("runtime_saving")
-	TEST_ASSERT_EQUAL(runtime_check_string, runtime_read, "saved and read the same key but got different values, auto save didn't work as expected")
+	TEST_ASSERT_EQUAL(runtime_check_string, runtime_read, "saved and read the same key but got different values, save didn't work as expected")

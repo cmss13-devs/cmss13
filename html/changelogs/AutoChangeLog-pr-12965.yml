@@ -1,4 +1,0 @@
-author: "Nihisohel"
-delete-after: True
-changes:
-  - bugfix: "Base Ravager Empower now processes properly"

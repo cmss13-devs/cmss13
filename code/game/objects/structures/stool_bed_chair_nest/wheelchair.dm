@@ -8,7 +8,6 @@
 	var/bloodiness = 0
 	var/move_delay = 6
 
-
 /obj/structure/bed/chair/wheelchair/handle_rotation()
 	overlays.Cut()
 	var/image/O = image(icon = 'icons/obj/structures/props/furniture/chairs.dmi', icon_state = "w_overlay", layer = FLY_LAYER, dir = src.dir)

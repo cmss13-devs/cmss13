@@ -636,20 +636,12 @@ SUBSYSTEM_DEF(minimaps)
 	pixel_x = MINIMAP_PIXEL_FROM_WORLD(movable_loc.x) + minimap.x_offset
 	pixel_y = MINIMAP_PIXEL_FROM_WORLD(movable_loc.y) + minimap.y_offset
 
+	UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
+
 ///Used to handle minimap tracking inside other movables
 /atom/movable/proc/override_minimap_tracking()
 	var/image/blip = SSminimaps.images_by_source[src]
 	blip.RegisterSignal(loc, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/image, minimap_on_move))
-	RegisterSignal(loc, COMSIG_ATOM_EXITED, PROC_REF(cancel_override_minimap_tracking))
-
-///Stops minimap override tracking
-/atom/movable/proc/cancel_override_minimap_tracking(atom/movable/source, atom/movable/mover)
-	SIGNAL_HANDLER
-	if(mover != src)
-		return
-	var/image/blip = SSminimaps.images_by_source[src]
-	blip?.UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
-	UnregisterSignal(source, COMSIG_ATOM_EXITED)
 
 
 /**
@@ -1197,7 +1189,7 @@ SUBSYSTEM_DEF(minimaps)
 		if(to_track)
 			RegisterSignal(to_track, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/datum/action/minimap, clear_locator_override))
 			if(owner && owner.loc == to_track)
-				RegisterSignal(to_track, COMSIG_ATOM_EXITED, TYPE_PROC_REF(/datum/action/minimap, on_exit_check))
+				RegisterSignal(to_track, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/datum/action/minimap, on_exit_check))
 		if(owner)
 			RegisterSignal(new_track, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_owner_z_change))
 			var/turf/old_turf = get_turf(tracking)
@@ -1209,7 +1201,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(to_track)
 		RegisterSignal(to_track, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/datum/action/minimap, clear_locator_override))
 		if(owner.loc == to_track)
-			RegisterSignal(to_track, COMSIG_ATOM_EXITED, TYPE_PROC_REF(/datum/action/minimap, on_exit_check))
+			RegisterSignal(to_track, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/datum/action/minimap, on_exit_check))
 	RegisterSignal(new_track, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_owner_z_change))
 	var/turf/old_turf = get_turf(tracking)
 	if(old_turf.z != new_track.z)
@@ -1219,18 +1211,17 @@ SUBSYSTEM_DEF(minimaps)
 	locator.update(new_track)
 
 ///checks if we should clear override if the owner exits this atom
-/datum/action/minimap/proc/on_exit_check(datum/source, atom/movable/mover)
+/datum/action/minimap/proc/on_exit_check(atom/movable/source, oldloc, direction, Forced)
 	SIGNAL_HANDLER
-	if(mover && mover != owner)
-		return
-	clear_locator_override()
+	if(source.loc != oldloc)
+		clear_locator_override()
 
 ///CLears the locator override in case the override target is deleted
 /datum/action/minimap/proc/clear_locator_override()
 	SIGNAL_HANDLER
 	if(!locator_override)
 		return
-	UnregisterSignal(locator_override, list(COMSIG_PARENT_QDELETING, COMSIG_ATOM_EXITED))
+	UnregisterSignal(locator_override, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED))
 	if(owner)
 		UnregisterSignal(locator_override, COMSIG_MOVABLE_Z_CHANGED)
 		RegisterSignal(owner, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_owner_z_change))

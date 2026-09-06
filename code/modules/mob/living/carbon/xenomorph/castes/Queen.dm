@@ -37,7 +37,7 @@
 	tackle_max = 6
 	tackle_chance = 55
 
-	aura_strength = 4
+	aura_strength = XENO_PHERO_STRENGTH_VERY_STRONG
 	tacklestrength_min = 5
 	tacklestrength_max = 6
 
@@ -49,6 +49,8 @@
 
 	royal_caste = TRUE
 
+	organ_type = /obj/item/organ/xeno/queen
+	organ_regen_time = 10 MINUTES
 
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:
@@ -272,7 +274,7 @@
 	desc = "A huge, looming alien creature. The biggest and the baddest."
 	icon_size = 64
 	icon_state = "Queen Walking"
-	plasma_types = list(PLASMA_ROYAL,PLASMA_CHITIN,PLASMA_PHEROMONE,PLASMA_NEUROTOXIN)
+	plasma_types = list(PLASMA_ROYAL)
 	attacktext = "bites"
 	attack_sound = null
 	friendly = "nuzzles"
@@ -286,7 +288,6 @@
 	hive_pos = XENO_QUEEN
 	small_explosives_stun = FALSE
 	pull_speed = 3 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
-	organ_value = 8000 // queen is expensive
 	claw_type = CLAW_TYPE_VERY_SHARP
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_NO_IGNITE
 
@@ -385,13 +386,19 @@
 
 	bubble_icon = "alienroyal"
 
+/obj/item/organ/xeno/queen
+	name = "queen heart"
+	icon_state = "heart_t3"
+	item_state = "heart_t3"
+	research_value = 8000
+
+	xeno_organ_flags = XENO_ORGAN_ROYAL|XENO_ORGAN_HARDENED|XENO_ORGAN_TACHYCARDIA|XENO_ORGAN_ACID|XENO_ORGAN_SUPPORT
+
+
 /mob/living/carbon/xenomorph/queen/set_resting(new_resting, silent, instant)
 	if(ovipositor && new_resting)
 		return
 	return ..()
-
-/mob/living/carbon/xenomorph/queen/get_organ_icon()
-	return "heart_t3"
 
 /mob/living/carbon/xenomorph/queen/corrupted
 	AUTOWIKI_SKIP(TRUE)

@@ -145,9 +145,9 @@
 					continue
 				if(get_dist(aura_center, target) > floor(6 + aura_strength * 2))
 					continue
-				if(!HIVE_ALLIED_TO_HIVE(target.hivenumber, hivenumber))
+				if(!HIVE_ALLIED_TO_HIVE(hivenumber, target.hivenumber))
 					continue
-				if(target.banished)
+				if(banished || target.banished)
 					continue
 				if(use_leader_aura)
 					target.affected_by_pheromones(leader_current_aura, leader_aura_strength)
@@ -175,24 +175,24 @@
 				warding_new = strength
 			if(strength > recovery_new)
 				recovery_new = strength
-		if("frenzy")
+		if(XENO_PHERO_FRENZY)
 			if(strength > frenzy_new)
 				frenzy_new = strength
-		if("warding")
+		if(XENO_PHERO_WARDING)
 			if(strength > warding_new)
 				warding_new = strength
-		if("recovery")
+		if(XENO_PHERO_RECOVERY)
 			if(strength > recovery_new)
 				recovery_new = strength
 
 	// Also cap the auras
 	for(var/capped_aura in received_phero_caps)
 		switch(capped_aura)
-			if("frenzy")
+			if(XENO_PHERO_FRENZY)
 				frenzy_new = min(frenzy_new, received_phero_caps[capped_aura])
-			if("warding")
+			if(XENO_PHERO_WARDING)
 				warding_new = min(warding_new, received_phero_caps[capped_aura])
-			if("recovery")
+			if(XENO_PHERO_RECOVERY)
 				recovery_new = min(recovery_new, received_phero_caps[capped_aura])
 
 

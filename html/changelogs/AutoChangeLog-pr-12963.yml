@@ -1,4 +1,0 @@
-author: "Bibby0110"
-delete-after: True
-changes:
-  - bugfix: "Ravagers failing to tackle no longer announces the personal message to everyone surrounding you"

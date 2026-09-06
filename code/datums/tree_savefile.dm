@@ -112,6 +112,15 @@ GENERAL_PROTECT_DATUM(/datum/byond_save_tree)
 
 	return FALSE
 
+/client/verb/export_preferences()
+	set name = "Export Preferences"
+	set desc = "Export your current preferences to a file."
+	set category = "Preferences"
+
+	ASSERT(prefs, "User attempted to export preferences while preferences were null!") // what the fuck
+
+	prefs.savefile.export_json_to_client(usr, ckey)
+
 /// Copies the entire tree to another savefile datum, overwriting whatever was in the other datum before.
 /datum/byond_save_tree/proc/copy_to_savefile(datum/byond_save_tree/other_savefile)
 	other_savefile.tree = tree.Copy()

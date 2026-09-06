@@ -41,6 +41,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/predship/tile/hunter_tile_6/west,
 /area/varadero/interior_protected/vessel)
+"aag" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/backpack/marine/satchel/tech,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/laundry)
 "aah" = (
 /obj/structure/bed/chair/hunter{
 	name = "alien chair";
@@ -12338,6 +12343,7 @@
 	},
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/storage/backpack/marine/satchel/tech,
 /turf/open/floor/asteroidfloor,
 /area/varadero/interior/maintenance/security/south/hangar)
 "aJC" = (
@@ -25627,6 +25633,7 @@
 /obj/item/fuel_cell,
 /obj/item/fuel_cell,
 /obj/item/fuel_cell,
+/obj/item/storage/backpack/marine/satchel/tech,
 /turf/open/floor/asteroidwarning/northwest,
 /area/varadero/interior/comms2)
 "btB" = (
@@ -60852,7 +60859,6 @@
 /turf/open/gm/coast/beachcorner/south_west,
 /area/varadero/exterior/monsoon)
 "jTY" = (
-/obj/item/storage/backpack/marine/satchel/chestrig/LACN,
 /obj/structure/closet/secure_closet/personal,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/bunks)
@@ -70474,7 +70480,7 @@
 /area/varadero/exterior/monsoon)
 "ryG" = (
 /obj/structure/surface/rack,
-/obj/item/storage/backpack/marine/satchel/tech/LACN,
+/obj/item/storage/backpack/marine/satchel/tech,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/bunks)
 "rzg" = (
@@ -76444,6 +76450,7 @@
 /obj/structure/bedsheetbin{
 	icon_state = "linenbin-empty"
 	},
+/obj/item/storage/backpack/marine/satchel/tech,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/bunks)
 "wfK" = (
@@ -92153,7 +92160,7 @@ tXg
 aJk
 cic
 ceo
-aJk
+aag
 hmm
 aHC
 pQw

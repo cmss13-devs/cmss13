@@ -45,7 +45,7 @@
 	role_comm_title = "LACN MP"
 	minimap_icon = "mp"
 	origin_override = ORIGIN_USCM
-	skills = /datum/skills/military/survivor/lacn_MP
+	skills = /datum/skills/lacn/MP
 	paygrades = list(PAY_SHORT_NE6 = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/dogtag
@@ -84,7 +84,7 @@
 	role_comm_title = "LACN FUS"
 	minimap_icon = "private"
 	origin_override = ORIGIN_USCM
-	skills = /datum/skills/military/survivor/lacn_standard
+	skills = /datum/skills/lacn/standard
 	paygrades = list(PAY_SHORT_NE2 = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/dogtag
@@ -102,7 +102,7 @@
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR) // placeholder
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/tech/LACN(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/tech(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
 
 	switch(choice)
@@ -259,7 +259,7 @@
 	minimap_icon = "vc"
 	role_comm_title = "LACN VC"
 	origin_override = ORIGIN_USCM
-	skills = /datum/skills/military/survivor/lacn_vhccrew
+	skills = /datum/skills/lacn/vhccrew
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/dogtag
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_MEDBAY,)
@@ -275,7 +275,7 @@
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR) // placeholder
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/tech/LACN(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/tech(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/hardpoint/locomotion/van_wheels(new_human), WEAR_R_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
 
@@ -304,7 +304,7 @@
 	role_comm_title = "LACN GCM" // GC = groupchat. Done to at least make it somewhat distinct
 	minimap_icon = "engi"
 	origin_override = ORIGIN_USCM
-	skills = /datum/skills/military/survivor/lacn_groundcrew
+	skills = /datum/skills/lacn/groundcrew
 	paygrades = list(PAY_SHORT_NE3 = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/dogtag
@@ -321,7 +321,7 @@
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR) // placeholder
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/tech/LACN(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/tech(new_human), WEAR_BACK)
 
 	switch(choice)
 		if(1)
@@ -366,7 +366,7 @@
 	role_comm_title = "LACN PO"
 	minimap_icon = "wy_pilot"
 	origin_override = ORIGIN_USCM
-	skills = /datum/skills/military/survivor/lacn_pilot
+	skills = /datum/skills/lacn/pilot
 	paygrades = list(PAY_SHORT_NO1 = JOB_PLAYTIME_TIER_0,)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/dogtag

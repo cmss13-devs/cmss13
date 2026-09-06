@@ -228,31 +228,6 @@
 	penetration = 20
 	portion_loss_per_hit = 0.28
 
-
-/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/on_hit_mob(mob/target_mob, obj/projectile/projectile)
-	. = ..()
-	if(istype(projectile.firer, /mob/living/carbon/xenomorph))
-		var/mob/living/carbon/xenomorph/xeno = projectile.firer
-		new/obj/effect/xenomorph/spray/no_stun/dissolver(target_mob.loc, create_cause_data("dissolver corrosive spit", projectile.firer), xeno.hive.hivenumber)
-	else
-		new/obj/effect/xenomorph/spray/no_stun/dissolver(target_mob.loc, create_cause_data("dissolver corrosive spit", projectile.firer))
-
-/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/on_hit_obj(obj/target_object, obj/projectile/projectile)
-	. = ..()
-	if(istype(projectile.firer, /mob/living/carbon/xenomorph))
-		var/mob/living/carbon/xenomorph/xeno = projectile.firer
-		new/obj/effect/xenomorph/spray/no_stun/dissolver(target_object.loc, create_cause_data("dissolver corrosive spit", projectile.firer), xeno.hive.hivenumber)
-	else
-		new/obj/effect/xenomorph/spray/no_stun/dissolver(target_object.loc, create_cause_data("dissolver corrosive spit", projectile.firer))
-
-/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/on_hit_turf(turf/target_turf, obj/projectile/projectile)
-	. = ..()
-	if(istype(projectile.firer, /mob/living/carbon/xenomorph))
-		var/mob/living/carbon/xenomorph/xeno = projectile.firer
-		new/obj/effect/xenomorph/spray/no_stun/dissolver(target_turf.loc, create_cause_data("dissolver corrosive spit", projectile.firer), xeno.hive.hivenumber)
-	else
-		new/obj/effect/xenomorph/spray/no_stun/dissolver(target_turf.loc, create_cause_data("dissolver corrosive spit", projectile.firer))
-
 /datum/ammo/xeno/acid/spatter/dissolver_enzymatic_breath
 	name = "Enzymatic breath"
 	spit_cost = 55

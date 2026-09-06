@@ -100,6 +100,25 @@
 	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/indoors/clf_dropship)
+"an" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 10
+	},
+/turf/open/asphalt/cement/cement14,
+/area/caperiver/outdoors/scrublands/central)
+"ao" = (
+/obj/effect/decal/sand_overlay/sand2,
+/turf/open/asphalt/cement/cement12,
+/area/caperiver/outdoors/scrublands/central)
+"ap" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#ccad8f";
+	dir = 8;
+	pixel_x = 11;
+	pixel_y = 4
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
 "aq" = (
 /obj/structure/bed/chair/vehicle{
 	dir = 1;
@@ -117,9 +136,11 @@
 /obj/effect/decal/hybrisa/warning/redandwhite_S,
 /turf/open/floor/corsat/spiralplate,
 /area/caperiver/indoors/clf_dropship)
-"aJ" = (
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/desert/dirt/desert_transition_edge1/northwest,
+"ar" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/turf/open/desert/dirt/desert_transition_corner1/north,
 /area/caperiver/outdoors/scrublands/central)
 "aL" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_E,
@@ -605,13 +626,6 @@
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/central)
-"jD" = (
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 1
-	},
-/obj/structure/machinery/colony_floodlight,
-/turf/open/asphalt/cement,
-/area/caperiver/outdoors/scrublands/central)
 "jI" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -979,10 +993,6 @@
 	},
 /turf/open/floor/almayer/test_floor5,
 /area/caperiver/indoors/clf_dropship)
-"pT" = (
-/obj/structure/flora/grass/desert/lightgrass_3,
-/turf/open/desert/dirt/desert_transition_corner1/west,
-/area/caperiver/outdoors/scrublands/central)
 "pY" = (
 /obj/item/stack/rods{
 	pixel_x = -8
@@ -1593,13 +1603,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/desert/rock,
 /area/caperiver/indoors/clf_dropship)
-"Af" = (
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 9
-	},
-/obj/structure/machinery/floodlight,
-/turf/open/asphalt/cement/cement2,
-/area/caperiver/outdoors/scrublands/central)
 "AB" = (
 /obj/item/trash/cigbutt,
 /obj/effect/decal/hybrisa/dirt_2,
@@ -1896,13 +1899,6 @@
 	},
 /turf/open/desert/dirt/desert_transition_corner1/north,
 /area/caperiver/outdoors/scrublands/central)
-"Ff" = (
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 4
-	},
-/obj/structure/barricade/sandbags/wired,
-/turf/open/asphalt/cement/cement3,
-/area/caperiver/outdoors/scrublands/central)
 "Fg" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
 /obj/structure/flora/grass/desert/heavygrass_10,
@@ -1953,15 +1949,6 @@
 /obj/structure/flora/grass/desert/lightgrass_4,
 /obj/effect/landmark/survivor_spawner/clf/caperiver,
 /turf/open/desert/dirt/desert_transition_edge1,
-/area/caperiver/outdoors/scrublands/central)
-"Gu" = (
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 9
-	},
-/obj/effect/decal/sand_overlay/sand1/corner1{
-	dir = 1
-	},
-/turf/open/asphalt/cement/cement2,
 /area/caperiver/outdoors/scrublands/central)
 "Gv" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -2109,12 +2096,6 @@
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/desert/dirt/desert_transition_edge1/southeast,
 /area/caperiver/outdoors/scrublands/central)
-"JD" = (
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 1
-	},
-/turf/open/asphalt/cement/cement4,
-/area/caperiver/outdoors/scrublands/central)
 "JE" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -2185,12 +2166,6 @@
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/desert/rock/deep,
-/area/caperiver/outdoors/scrublands/central)
-"Le" = (
-/obj/structure/flora/bush/desert{
-	icon_state = "tree_3"
-	},
-/turf/open/desert/dirt/desert_transition_edge1/north,
 /area/caperiver/outdoors/scrublands/central)
 "Lf" = (
 /obj/structure/flora/grass/desert/lightgrass_8,
@@ -3893,8 +3868,8 @@ Ob
 tk
 fV
 nA
-hM
-hM
+nA
+an
 "}
 (28,1,1) = {"
 Mj
@@ -3913,20 +3888,20 @@ Fg
 hb
 YX
 hM
-hM
 AY
+tk
 Gh
 To
 qh
 tE
 Pz
 Mp
-Ob
-Mb
-JD
+fV
 Mj
 Mj
 Mj
+Mj
+ao
 "}
 (29,1,1) = {"
 Mj
@@ -3945,20 +3920,20 @@ Qq
 WZ
 hM
 hM
-hM
-hM
+ap
+dc
 KB
 bI
 Zy
 Hy
-tk
-Af
-Ff
+fV
 nA
-jD
+Mv
 Mj
 Mj
 Mj
+Mj
+ao
 "}
 (30,1,1) = {"
 Mj
@@ -3977,20 +3952,20 @@ hM
 hM
 hM
 hM
-hM
+ar
 OB
 gh
 SP
 NE
 og
-nA
-Mv
 Mj
 Mj
 Mj
 Mj
 Mj
 Mj
+Mj
+ao
 "}
 (31,1,1) = {"
 Mj
@@ -4008,13 +3983,13 @@ tk
 pZ
 hM
 hM
-hM
+dc
 iF
 qh
-qh
 DJ
-Gu
-Mv
+Hy
+tk
+tk
 Mj
 Mj
 Mj
@@ -4043,9 +4018,9 @@ hM
 uI
 my
 qh
-qh
-Le
-JD
+tE
+Mj
+Mj
 Mj
 Mj
 Mj
@@ -4075,8 +4050,8 @@ YW
 qh
 bI
 qh
-aJ
-pT
+tE
+Mj
 Mj
 Mj
 Mj

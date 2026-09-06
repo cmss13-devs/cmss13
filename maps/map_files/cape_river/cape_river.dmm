@@ -22893,13 +22893,6 @@
 	},
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/caperiver/outdoors/con_am_exterior/south)
-"bte" = (
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 1
-	},
-/obj/structure/machinery/colony_floodlight,
-/turf/open/asphalt/cement,
-/area/caperiver/outdoors/scrublands/central)
 "btf" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/desert/dirt/desert_transition_corner1/west,
@@ -84178,7 +84171,7 @@ aFl
 aEu
 gVy
 aRq
-bte
+aWT
 aFs
 biR
 bjf

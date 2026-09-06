@@ -104,6 +104,9 @@
 	RegisterSignal(parent, COMSIG_LIVING_LAYER_UPDATED, PROC_REF(handle_layer_update))
 	RegisterSignal(parent, COMSIG_HUMAN_HAULED, PROC_REF(handle_hauled))
 	RegisterSignal(parent, COMSIG_MOVABLE_LAUNCHED_LANDED, PROC_REF(handle_landed))
+	if(isxeno(parent))
+		RegisterSignal(parent, COMSIG_XENO_POUNCE_STARTED, PROC_REF(handle_pounce))
+		RegisterSignal(parent, COMSIG_XENO_POUNCE_FINISHED, PROC_REF(handle_pounce))
 
 /datum/component/turf_effect/water/UnregisterFromParent(datum/source, force)
 	. = ..()
@@ -116,6 +119,8 @@
 		COMSIG_LIVING_LAYER_UPDATED,
 		COMSIG_HUMAN_HAULED,
 		COMSIG_MOVABLE_LAUNCHED_LANDED))
+	if(isxeno(parent))
+		UnregisterSignal(parent, list(COMSIG_XENO_POUNCE_STARTED, COMSIG_XENO_POUNCE_FINISHED))
 
 /datum/component/turf_effect/water/proc/handle_position_change(parent_source, oldloc, direction, forced)
 	SIGNAL_HANDLER	//simple checks if to remove, if it were a water turf then the comp already has inherited
@@ -177,6 +182,12 @@
 	effect_turf = landed_upon
 	update_hidden()
 	update()
+
+/datum/component/turf_effect/water/proc/handle_pounce()
+	SIGNAL_HANDLER
+
+	var/my_turf = get_turf(parent)
+	new /obj/effect/water_splash(my_turf, TRUE)
 
 #define HIDDEN_OFFSET 2
 

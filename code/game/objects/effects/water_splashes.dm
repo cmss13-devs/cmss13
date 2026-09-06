@@ -32,23 +32,34 @@
 /obj/effect/water_splash/water_overlay_splash/proc/update_wateroverlay(turf/water_turf, mob/living/carbon/affected_carbon, pixel_y_offset = 0, xeno_resting=FALSE)
 	icon_state = null
 	icon = null
-	if(!(xeno_resting && pixel_y_offset != DEPTH_DEEP) && !isfacehugger(affected_carbon) && !islarva(affected_carbon)) //these dont get splashes
-		var/splash_state
-		var/resting_dir
-		var/found_angle = affected_carbon.get_lying_angle()
-		var/icon/reference = icon(affected_carbon.icon, affected_carbon.icon_state)
-		var/ref_w = reference.Width()
-		if(ishuman(affected_carbon))
-			ref_w = 32
-		var/icon_path_key = ref_w<=32?"32":(ref_w<=48?"48":(ref_w<=64?"64":ref_w<=88?"88":null))
-		if(HAS_TRAIT(affected_carbon, TRAIT_FLOORED) || found_angle != 0)
-			resting_dir = found_angle == 270 ? "_e" : "_w"
+	var/datum/water_overlay_config/config = affected_carbon.water_config
+	if(!config || !config.use_splash)
+		return
+
+	var/is_resting = affected_carbon.resting || affected_carbon.body_position == LYING_DOWN || HAS_TRAIT(affected_carbon, TRAIT_FLOORED)
+	if(is_resting && initial(config.resting_behavior) == WATER_OVERLAY_CONFIG_RESTING_NONE)
+		return
+
+	var/is_immersed = config.immerse_behavior != WATER_OVERLAY_CONFIG_IMMERSE_NONE && (\
+		(config.immerse_behavior == WATER_OVERLAY_CONFIG_IMMERSE_ALWAYS) || \
+		(config.immerse_behavior == WATER_OVERLAY_CONFIG_IMMERSE_WHEN_RESTING_ALWAYS && is_resting) || \
+		(config.immerse_behavior == WATER_OVERLAY_CONFIG_IMMERSE_DEPTHED && pixel_y_offset <= config.immerse_at_depth) || \
+		(config.immerse_behavior == WATER_OVERLAY_CONFIG_IMMERSE_WHEN_RESTING_DEPTHED && is_resting &&  pixel_y_offset <= config.immerse_at_depth))\
+		? TRUE : FALSE
+	var/splash_state
+
+	if(!is_immersed)
+		if(is_resting && config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_ANGLED)
+			var/resting_dir = affected_carbon.get_lying_angle() == 270 ? "e" : "w"
 			if(pixel_y_offset >= DEPTH_COAST_INTERMEDIATE)
-				splash_state = "coast_resting[resting_dir]"
-			else if(pixel_y_offset >= DEPTH_INTERMEDIATE)
-				splash_state = "floating_resting"
-			else	//pixel_y_offset== DEPTH_DEEP -- deep water
-				splash_state = affected_carbon.stat == DEAD ? "empty" : "bubbles"
+				splash_state = "[config.icon_state_key]_resting_coast_[resting_dir]"
+			else if(pixel_y_offset <= DEPTH_SHALLOW)
+				splash_state = "[config.icon_state_key]_resting_deep_[resting_dir]"
+		else if(is_resting && config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_SOME)
+			if(pixel_y_offset >= DEPTH_COAST_INTERMEDIATE)
+				splash_state = "[config.icon_state_key]_resting_coast"
+			else if(pixel_y_offset <= DEPTH_SHALLOW)
+				splash_state = "[config.icon_state_key]_resting_deep"
 		else
 			if(pixel_y_offset == DEPTH_COAST_SHALLOW) //shallow coast
 				splash_state = "coast_shallow"
@@ -59,11 +70,10 @@
 			else if(pixel_y_offset == DEPTH_INTERMEDIATE)	//intermediate depth
 				splash_state = "intermediate"
 			else //pixel_y_offset== DEPTH_DEEP -- deep water
-				if(xeno_resting || isrunner(affected_carbon))	//runner literally underwater at this depth :P
-					splash_state = affected_carbon.stat == DEAD ? "empty" : "bubbles"
-				else
-					splash_state = "deep"
-		icon = SSwater_overlays.water_overlay_icon_paths[icon_path_key]
-		icon_state = splash_state
+				splash_state = "deep"
+	else
+		splash_state = affected_carbon.stat == DEAD ? "empty" : "bubbles"
+	icon = SSwater_overlays.get_icon_path(config.icon_size)
+	icon_state = splash_state
 
 

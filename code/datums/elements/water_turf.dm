@@ -33,7 +33,7 @@
 	var/mob/living/living_mover = mover
 	if(living_mover.m_intent == MOVE_INTENT_RUN)	//walking doesnt make sounds from moving through water
 		var/soundname = source.depth >= DEPTH_COAST_INTERMEDIATE ? "shallowwading" : (source.depth >= DEPTH_SHALLOW ? "wading":"deepwading")
-		playsound(src, soundname, 10, 1, 10, falloff=1)
+		playsound(source, soundname, 10, 1, 10, falloff=1)
 
 /datum/element/water_turf/proc/on_landed_on(turf/open/hit_turf, atom/movable/mover)
 	SIGNAL_HANDLER

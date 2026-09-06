@@ -61,3 +61,20 @@
 2026-09-05:
   TheDonkified:
   - refactor: Replace throwing and rebounding datum-level vars with traits
+2026-09-06:
+  Nihisohel:
+  - bugfix: Synthetic USCM Recruiters no longer have the habit of picking up a random
+      potato and throwing it on their shoulder to show off
+  Puckaboo2:
+  - spellcheck: Kills some 'this the stick' and 'the the stick'  grammar errors.
+  - spellcheck: More spell checks.
+  fira:
+  - bugfix: Many sources of Xeno heal (except healer which already worked) are now
+      instantaneous instead of incurring an up to 2 seconds random delay, visually
+      and for mob effects.
+  - bugfix: Dealing damage with VV is now instantaneous.
+  - code_imp: MedHUD HP bar will now only update when it needs to.
+  - code_imp: MedHUD Status (death state, larva, etc) and revival minimap icon will
+      not update on taking damage anymore. It still updates every 2 seconds or during
+      major events.
+  - code_imp: Optimized minimap marker logic.

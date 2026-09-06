@@ -414,6 +414,10 @@
 			if(initial(buff.tier) == HIVEBUFF_TIER_MAJOR)
 				major_available = TRUE
 
+	if(!xeno.ovipositor)
+		to_chat(xeno, SPAN_XENONOTICE("You need to be on oviposition to purchase boons!"))
+		return
+
 	if(!length(buffs))
 		to_chat(xeno, SPAN_XENONOTICE("No boons are available to us!"))
 		return
@@ -443,6 +447,10 @@
 
 	if(!selection)
 		return FALSE
+
+	if(!xeno.ovipositor) //so you do not go off ovi with the radial being open or something
+		to_chat(xeno, SPAN_XENONOTICE("You need to be on oviposition to purchase boons!"))
+		return
 
 	if(!buffs[selection])
 		to_chat(xeno, "This selection is impossible!")

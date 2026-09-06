@@ -2350,7 +2350,8 @@
 	name = "\improper Lockdown";
 	emp_proof = 1;
 	pixel_y = -32;
-	dir = 2
+	dir = 2;
+	density = 0
 	},
 /turf/open/hybrisa/street/underground_unweedable,
 /area/northpoint/indoors/main)
@@ -2799,7 +2800,9 @@
 /turf/open/floor/hybrisa/wood/whitewood,
 /area/northpoint/indoors/main)
 "aij" = (
-/obj/structure/machinery/door/airlock/hybrisa/medical_solid,
+/obj/structure/machinery/door/airlock/hybrisa/medical_solid{
+	req_one_access = list(100)
+	},
 /turf/open/floor/corsat/marked,
 /area/northpoint/indoors/main)
 "aik" = (
@@ -5170,6 +5173,14 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/hybrisa/metal/grated,
 /area/northpoint/oob)
+"aoz" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/colony_floodlight/street{
+	pixel_y = 12;
+	layer = 6.1
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/northpoint/outdoors/urban_cave/lz2_west)
 "aoA" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -8966,7 +8977,7 @@
 	density = 0;
 	pixel_y = 16
 	},
-/turf/open/shuttle/escapepod/floor2,
+/turf/open/floor/plating/kutjevo,
 /area/northpoint/indoors/power)
 "azQ" = (
 /obj/effect/decal/warning_stripes{
@@ -9077,20 +9088,10 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/surface/rack,
 /obj/item/fuel_cell/used,
-/obj/item/fuel_cell/used,
-/obj/item/fuel_cell/used,
-/obj/item/fuel_cell/used,
 /turf/open/floor/kutjevo/colors/orange/edge/north,
 /area/northpoint/indoors/power)
 "aAh" = (
 /obj/structure/machinery/fuelcell_recycler/full,
-/turf/open/floor/kutjevo/colors/orange/edge/north,
-/area/northpoint/indoors/power)
-"aAi" = (
-/obj/effect/decal/hybrisa/dirt,
-/obj/structure/surface/rack,
-/obj/item/fuel_cell,
-/obj/item/fuel_cell,
 /turf/open/floor/kutjevo/colors/orange/edge/north,
 /area/northpoint/indoors/power)
 "aAj" = (
@@ -15063,7 +15064,7 @@
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /obj/structure/prop/tyrargo/large_tents/small_closed/back{
 	layer = 6.6;
-	pixel_y = -8
+	pixel_y = 0
 	},
 /turf/open/hybrisa/street/underground_unweedable,
 /area/northpoint/oob)
@@ -24592,6 +24593,9 @@
 	},
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/outdoors/streets/lz1)
+"bvK" = (
+/turf/open/shuttle/escapepod/floor2,
+/area/northpoint/indoors/power)
 "bvL" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
 /obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
@@ -32368,7 +32372,6 @@
 /obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/tyrargo/illuminator{
 	pixel_y = 0;
-	pixel_x = 2;
 	layer = 5.98
 	},
 /turf/open/hybrisa/street/cement2/unweedable,
@@ -72103,7 +72106,7 @@ bSB
 teW
 sTV
 aHH
-srq
+aoz
 aHC
 vrb
 tZo
@@ -78408,7 +78411,7 @@ vtI
 aAq
 aAn
 aWL
-aAi
+aAg
 suE
 aRA
 aRp
@@ -78870,7 +78873,7 @@ aRp
 aSI
 vtI
 azP
-azh
+bvK
 azh
 ayS
 aAk

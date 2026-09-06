@@ -350,17 +350,18 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	macros = new(owner, src)
 
 	var/loaded = FALSE
-	if(!IsGuestKey(owner.key))
-		unlock_content = owner.IsByondMember()
-		load_path(owner.ckey)
-		if(!fexists(path))
-			try_savefile_tree_migration()
-		load_savefile()
-		if(load_preferences())
-			if(load_character())
-				loaded = TRUE
+	if(istype(owner))
+		if(!IsGuestKey(owner.key))
+			unlock_content = owner.IsByondMember()
+			load_path(owner.ckey)
+			if(!fexists(path))
+				try_savefile_tree_migration()
+			load_savefile()
+			if(load_preferences())
+				if(load_character())
+					loaded = TRUE
 
-	owner.tgui_say?.load()
+		owner.tgui_say?.load()
 
 	if(!ooccolor)
 		ooccolor = CONFIG_GET(string/ooc_color_default)

@@ -3210,12 +3210,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/hybrisa/street/roadlines4,
 /area/northpoint/oob)
-"ajb" = (
-/obj/structure/girder/reinforced,
-/obj/structure/girder/reinforced,
-/obj/structure/blocker/invisible_wall,
-/turf/open/asphalt/brown,
-/area/northpoint/oob)
 "ajc" = (
 /obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_3{
 	pixel_y = -3;
@@ -18856,11 +18850,6 @@
 /obj/effect/decal/hybrisa/road/lines3,
 /turf/open/asphalt/brown,
 /area/northpoint/outdoors/hospital_exterior/north)
-"ben" = (
-/obj/effect/decal/hybrisa/road/lines3,
-/obj/item/storage/backpack/rmc/light,
-/turf/open/asphalt/brown,
-/area/northpoint/oob)
 "beo" = (
 /obj/effect/decal/hybrisa/road/roadmiddle{
 	dir = 1;
@@ -32588,13 +32577,6 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetblackdeco,
 /area/northpoint/indoors/main)
-"bQv" = (
-/obj/effect/decal/hybrisa/doubleroad/lines3{
-	pixel_y = 0
-	},
-/obj/item/clothing/accessory/storage/webbing/iasf,
-/turf/open/hybrisa/street/sidewalkcenter,
-/area/northpoint/oob)
 "bQw" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -52065,16 +52047,6 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/hybrisa/metal/grated/west,
 /area/northpoint/landing_zone_1)
-"dtV" = (
-/obj/effect/decal/hybrisa/road/corner{
-	dir = 8
-	},
-/turf/open/hybrisa/street/asphalt,
-/area/northpoint/oob)
-"dtZ" = (
-/obj/item/clothing/under/marine/veteran/royal_marine/iasf,
-/turf/open/hybrisa/street/asphalt,
-/area/northpoint/oob)
 "duV" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/effect/decal/medical_decals{
@@ -52213,11 +52185,6 @@
 "dFe" = (
 /turf/open/hybrisa/street/sidewalkcenter/east,
 /area/northpoint/outdoors/road/lz1_south_west)
-"dFs" = (
-/obj/effect/decal/hybrisa/road/corner,
-/obj/item/storage/backpack/rmc/medium,
-/turf/open/hybrisa/street/asphalt,
-/area/northpoint/oob)
 "dFG" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /turf/open/asphalt/brown,
@@ -52313,13 +52280,6 @@
 "dKL" = (
 /turf/open/floor/plating,
 /area/northpoint/outdoors/urban_cave/lz2_west)
-"dKS" = (
-/obj/effect/decal/hybrisa/road/corner{
-	dir = 1
-	},
-/obj/item/storage/backpack/rmc/frame,
-/turf/open/hybrisa/street/asphalt,
-/area/northpoint/oob)
 "dLp" = (
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 4;
@@ -52747,10 +52707,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/northpoint/outdoors/urban_cave/lz2_west)
-"egL" = (
-/obj/item/clothing/suit/storage/marine/veteran/royal_marine/light/iasf,
-/turf/open/hybrisa/street/asphalt,
-/area/northpoint/oob)
 "ehg" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/cement2,
@@ -54859,10 +54815,6 @@
 "gGn" = (
 /turf/closed/wall/hybrisa/colony/engineering/reinforced,
 /area/northpoint/landing_zone_2)
-"gGH" = (
-/obj/item/clothing/accessory/storage/webbing/iasf,
-/turf/open/hybrisa/street/asphalt,
-/area/northpoint/oob)
 "gGL" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -55045,15 +54997,6 @@
 	layer = 6.1
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt/unweedable,
-/area/northpoint/oob)
-"gUy" = (
-/obj/effect/decal/hybrisa/road/road_stop{
-	dir = 1;
-	icon_state = "stop_decal5";
-	pixel_y = 4
-	},
-/obj/item/clothing/under/marine/officer/royal_marine/iasf,
-/turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
 "gVR" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -59015,13 +58958,6 @@
 	},
 /turf/open/hybrisa/street/sidewalk/south,
 /area/northpoint/outdoors/hospital_exterior/central)
-"lFB" = (
-/obj/effect/decal/hybrisa/doubleroad/lines3{
-	pixel_y = 0
-	},
-/obj/item/storage/belt/marine/rmc,
-/turf/open/hybrisa/street/sidewalkcenter,
-/area/northpoint/oob)
 "lFZ" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/generic{
@@ -59320,13 +59256,6 @@
 /obj/structure/prop/hybrisa/misc/pole_stump/traffic,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/outdoors/urban_cave/lz2_south)
-"lXU" = (
-/obj/effect/decal/hybrisa/doubleroad/lines2{
-	pixel_y = 1
-	},
-/obj/item/weapon/gun/rifle/rmc_f90,
-/turf/open/hybrisa/street/sidewalkcenter/north,
-/area/northpoint/oob)
 "lYu" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/hybrisa/street/sidewalk/north,
@@ -61475,12 +61404,6 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/outdoors/road/lz2_south/weedkiller)
-"oKe" = (
-/obj/effect/decal/hybrisa/road/corner{
-	dir = 4
-	},
-/turf/open/hybrisa/street/asphalt,
-/area/northpoint/oob)
 "oKg" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -63240,11 +63163,6 @@
 	},
 /turf/open/floor/prison/blue/southeast,
 /area/northpoint/indoors/emer_dep)
-"qTh" = (
-/obj/effect/decal/hybrisa/road/lines3,
-/obj/item/storage/backpack/general_belt/rmc,
-/turf/open/asphalt/brown,
-/area/northpoint/oob)
 "qTK" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 4;
@@ -63301,11 +63219,6 @@
 /obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/landing_zone_1)
-"rbe" = (
-/obj/effect/decal/hybrisa/road/lines2,
-/obj/item/weapon/gun/smg/p90/twe,
-/turf/open/asphalt/brown,
-/area/northpoint/oob)
 "rbf" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "white_broken_docdecal3";
@@ -64388,10 +64301,6 @@
 	},
 /turf/open/floor/strata/multi_tiles,
 /area/northpoint/outdoors/urban_cave/east)
-"sqV" = (
-/obj/item/clothing/head/helmet/marine/veteran/iasf_beret/tl,
-/turf/open/hybrisa/street/asphalt,
-/area/northpoint/oob)
 "srq" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/sidewalk/west,
@@ -66104,10 +66013,6 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/asphalt/brown,
 /area/northpoint/outdoors/road/lz2_south)
-"uAS" = (
-/obj/item/clothing/head/helmet/marine/veteran/iasf_beret,
-/turf/open/hybrisa/street/asphalt,
-/area/northpoint/oob)
 "uCk" = (
 /obj/structure/prop/northpoint/concrete_wall/wired,
 /obj/structure/blocker/invisible_wall/map_edge{
@@ -66710,9 +66615,6 @@
 	},
 /turf/open/floor/hybrisa/wood/redwood,
 /area/northpoint/indoors/main)
-"vqV" = (
-/turf/open/floor/corsat/marked,
-/area/northpoint/oob)
 "vqW" = (
 /obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
@@ -68376,10 +68278,6 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/outdoors/streets/lz1)
-"xIt" = (
-/obj/item/storage/backpack/rmc/heavy,
-/turf/open/hybrisa/street/asphalt,
-/area/northpoint/oob)
 "xIz" = (
 /obj/structure/largecrate/random/barrel/medical,
 /turf/open/floor/prison/floor_plate/southwest,
@@ -68410,13 +68308,6 @@
 /obj/item/shard,
 /turf/open/asphalt/brown,
 /area/northpoint/outdoors/road/lz2_west)
-"xMW" = (
-/obj/effect/decal/hybrisa/doubleroad/lines2{
-	pixel_y = 1
-	},
-/obj/item/storage/belt/medical/rmc,
-/turf/open/hybrisa/street/sidewalkcenter/north,
-/area/northpoint/oob)
 "xOp" = (
 /obj/structure/prop/hybrisa/vehicles/Meridian/Black/damage_4{
 	icon_state = "meridian_black_damage_4"
@@ -68969,11 +68860,11 @@ pKY
 pKY
 pKY
 pKY
-dWN
-xMW
-lFB
-qTh
-mVu
+pKY
+pKY
+pKY
+pKY
+pKY
 pKY
 pKY
 pKY
@@ -69124,11 +69015,11 @@ pKY
 pKY
 pKY
 pKY
-rbe
-lXU
-bQv
-ben
-toj
+pKY
+pKY
+pKY
+pKY
+pKY
 pKY
 pKY
 pKY
@@ -69279,11 +69170,11 @@ pKY
 pKY
 pKY
 pKY
-oKe
-sqV
-egL
-dFs
-vqV
+pKY
+pKY
+pKY
+pKY
+pKY
 pKY
 pKY
 pKY
@@ -69434,11 +69325,11 @@ pKY
 pKY
 pKY
 pKY
-lDw
-uAS
-gUy
-xIt
-vqV
+pKY
+pKY
+pKY
+pKY
+pKY
 pKY
 pKY
 pKY
@@ -69589,11 +69480,11 @@ pKY
 pKY
 pKY
 pKY
-dtV
-gGH
-dtZ
-dKS
-vqV
+pKY
+pKY
+pKY
+pKY
+pKY
 pKY
 pKY
 pKY
@@ -75878,7 +75769,7 @@ uag
 nVy
 gux
 axj
-ajb
+ajh
 aiJ
 aAv
 iHA

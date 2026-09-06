@@ -131,7 +131,7 @@
 	name = "Street Areas"
 	icon_state = "iso1"
 	ceiling = CEILING_NO_PROTECTION
-	minimap_color = MINIMAP_AREA_CELL_VIP
+	minimap_color = MINIMAP_AREA_CELL_MED
 
 /area/northpoint/outdoors/streets/lz1
 	name = "NorHos - LZ1 Streets"
@@ -139,6 +139,7 @@
 
 /area/northpoint/outdoors/streets/lzstreets
 	name = "NorHos - LZ1 / LZ2 Connection Streets"
+	minimap_color = MINIMAP_AREA_COLONY_STREETS
 
 /area/northpoint/outdoors/streets/north_carpark
 	name = "NorHos - North Carpark/Entrance"
@@ -147,6 +148,50 @@
 /area/northpoint/outdoors/streets/south_carpark
 	name = "NorHos - South Carpark/Entrance"
 	requires_power = FALSE
+
+// --
+
+/area/northpoint/outdoors/road
+	name = "Road Areas"
+	icon_state = "sec_prison"
+	ceiling = CEILING_NO_PROTECTION
+	minimap_color = MINIMAP_AREA_COLONY_STREETS
+
+/area/northpoint/outdoors/road/lz1
+	name = "NorHos - LZ1 Streets"
+	linked_lz = DROPSHIP_LZ1
+
+/area/northpoint/outdoors/road/south_east
+	name = "NorHos - Exterior Streets - Southeast"
+
+/area/northpoint/outdoors/road/east
+	name = "NorHos - Exterior Streets - East"
+
+/area/northpoint/outdoors/road/north_east
+	name = "NorHos - Exterior Streets - Northeast"
+
+/area/northpoint/outdoors/road/central
+	name = "NorHos - Internal Road - Central"
+
+/area/northpoint/outdoors/road/south
+	name = "NorHos - Exterior Streets - South"
+
+/area/northpoint/outdoors/road/lz2_south
+	name = "NorHos - Logistics LZ - Exterior Streets - South"
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+
+/area/northpoint/outdoors/road/lz2_south/weedkiller
+	linked_lz = DROPSHIP_LZ2
+
+/area/northpoint/outdoors/road/lz2_west
+	name = "NorHos - Logistics LZ - Exterior Streets - West"
+
+/area/northpoint/outdoors/road/lz1_south_west
+	name = "NorHos - Medical LZ - Exterior Streets - South-West"
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+
+/area/northpoint/outdoors/urban_cave/lz1_south_west/weedkiller
+	linked_lz = DROPSHIP_LZ1
 
 // --
 
@@ -161,7 +206,7 @@
 	name = "Exterior Hospital Areas"
 	icon_state = "valley"
 	ceiling = CEILING_NO_PROTECTION
-	minimap_color = MINIMAP_AREA_COLONY_STREETS
+	minimap_color = MINIMAP_DIRT
 
 /area/northpoint/outdoors/hospital_exterior/west
 	name = "NorHos - West Hospital Grounds"
@@ -185,7 +230,7 @@
 	icon_state = "cave"
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	ceiling_muffle = FALSE
-	minimap_color = MINIMAP_AREA_COLONY_STREETS
+	minimap_color = MINIMAP_DIRT
 	unoviable_timer = FALSE
 
 /area/northpoint/outdoors/urban_cave/south_east

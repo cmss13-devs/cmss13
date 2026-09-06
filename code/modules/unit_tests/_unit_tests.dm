@@ -109,6 +109,7 @@
 #include "pheromones\transmit_hive.dm"
 #include "pheromones\transmit_permutation.dm"
 #include "pheromones\pheromone_helpers.dm"
+#include "helpers\unsorted.dm"
 
 // Unit tests backend
 #include "focus_only_tests.dm"

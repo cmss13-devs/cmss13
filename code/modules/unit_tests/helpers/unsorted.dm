@@ -20,8 +20,6 @@
 		/datum/to_check/other_child = "other child"
 	)
 
-CONSTANT(get_matching_paths_test_constants, /datum/get_matching_paths_test_constants)
-
 /datum/unit_test/get_matching_paths_TEST_base_type/Run()
 	test_get_matching_paths(
 		new /datum/to_check(),
@@ -51,7 +49,7 @@ CONSTANT(get_matching_paths_test_constants, /datum/get_matching_paths_test_const
 	)
 
 /datum/unit_test/proc/test_get_matching_paths(datum/to_check/to_check, list/expected_matching, expected_highest_matching)
-	var/datum/matching_paths/result = get_matching_paths(to_check, get_matching_paths_test_constants.typecache)
+	var/datum/matching_paths/result = get_matching_paths(to_check, /datum/get_matching_paths_test_constants::typecache)
 	TEST_ASSERT_EQUAL(LAZYLEN(result.matching), LAZYLEN(expected_matching), "get_matching_paths returned an unexpected list of matching paths: to_check=[WRAP_BRACKETS(to_check)]")
 	for (var/path in expected_matching)
 		TEST_ASSERT(path in result.matching, "Expected [WRAP_BRACKETS(path)] to be in matching paths: to_check=[WRAP_BRACKETS(to_check)]")

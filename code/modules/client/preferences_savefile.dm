@@ -252,6 +252,7 @@
 		RegisterSignal(owner, COMSIG_CLIENT_LOGGED_IN, PROC_REF(handle_logged_in))
 
 	savefile_version = SAVEFILE_VERSION_MAX
+	save_preferences()
 	return TRUE
 
 /// Attempts to load a preferences.sav for the owner and migrate it to a save tree

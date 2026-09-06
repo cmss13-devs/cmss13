@@ -100,6 +100,7 @@
 	name = "NorHos - Main Hospital"
 	icon_state = "medbay2"
 	minimap_color = MINIMAP_AREA_COLONY_HOSPITAL
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 // --
 
@@ -114,6 +115,7 @@
 	name = "NorHos - Office"
 	icon_state = "captain"
 	minimap_color = MINIMAP_AREA_COLONY_SPACE_PORT
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 // --
 
@@ -155,6 +157,8 @@
 	name = "Road Areas"
 	icon_state = "sec_prison"
 	ceiling = CEILING_NO_PROTECTION
+	ceiling_muffle = FALSE
+	unoviable_timer = FALSE
 	minimap_color = MINIMAP_AREA_COLONY_STREETS
 
 /area/northpoint/outdoors/road/lz1
@@ -163,12 +167,15 @@
 
 /area/northpoint/outdoors/road/south_east
 	name = "NorHos - Exterior Streets - Southeast"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 /area/northpoint/outdoors/road/east
 	name = "NorHos - Exterior Streets - East"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 /area/northpoint/outdoors/road/north_east
 	name = "NorHos - Exterior Streets - Northeast"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 /area/northpoint/outdoors/road/central
 	name = "NorHos - Internal Road - Central"
@@ -178,7 +185,6 @@
 
 /area/northpoint/outdoors/road/lz2_south
 	name = "NorHos - Logistics LZ - Exterior Streets - South"
-	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 
 /area/northpoint/outdoors/road/lz2_south/weedkiller
 	linked_lz = DROPSHIP_LZ2
@@ -188,7 +194,6 @@
 
 /area/northpoint/outdoors/road/lz1_south_west
 	name = "NorHos - Medical LZ - Exterior Streets - South-West"
-	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 
 /area/northpoint/outdoors/urban_cave/lz1_south_west/weedkiller
 	linked_lz = DROPSHIP_LZ1
@@ -228,26 +233,29 @@
 /area/northpoint/outdoors/urban_cave
 	name = "Urban Cave Areas"
 	icon_state = "cave"
-	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	ceiling = CEILING_NO_PROTECTION
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_DIRT
 	unoviable_timer = FALSE
 
 /area/northpoint/outdoors/urban_cave/south_east
 	name = "NorHos - Exterior Streets - Southeast"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 /area/northpoint/outdoors/urban_cave/east
 	name = "NorHos - Exterior Streets - East"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 /area/northpoint/outdoors/urban_cave/north_east
 	name = "NorHos - Exterior Streets - Northeast"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 /area/northpoint/outdoors/urban_cave/south
 	name = "NorHos - Exterior Streets - South"
 
 /area/northpoint/outdoors/urban_cave/lz2_south
 	name = "NorHos - Logistics LZ - Exterior Streets - South"
-	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/northpoint/outdoors/urban_cave/lz2_south/weedkiller
 	linked_lz = DROPSHIP_LZ2
@@ -257,7 +265,7 @@
 
 /area/northpoint/outdoors/urban_cave/lz1_south_west
 	name = "NorHos - Medical LZ - Exterior Streets - South-West"
-	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/northpoint/outdoors/urban_cave/lz1_south_west/weedkiller
 	linked_lz = DROPSHIP_LZ1

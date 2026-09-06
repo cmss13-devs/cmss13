@@ -23,7 +23,7 @@
 	if(is_resting && initial(config.resting_behavior) == WATER_OVERLAY_CONFIG_RESTING_NONE)
 		return
 
-	// Immersion checks that mean "fully covered → use the immersed key later"
+	var/key = ""
 	var/should_immerse = FALSE
 	switch(initial(config.immerse_behavior))
 		if(WATER_OVERLAY_CONFIG_IMMERSE_NONE)
@@ -37,15 +37,12 @@
 		if(WATER_OVERLAY_CONFIG_IMMERSE_WHEN_RESTING_DEPTHED)
 			should_immerse = is_resting && (pixel_y_offset <= initial(config.immerse_at_depth))
 
-	// ----- build the key -----
-	var/key = ""
-
 	if(should_immerse)
 		key = "_immersed"
 	else if(is_resting)
 		switch(initial(config.resting_behavior))
 			if(WATER_OVERLAY_CONFIG_RESTING_USE_DEFAULT)
-				// keep the normal standing key (handled below)
+				key = ""
 			if(WATER_OVERLAY_CONFIG_RESTING_SOME)
 				key = "_[initial(config.icon_state_key)]_resting"
 			if(WATER_OVERLAY_CONFIG_RESTING_ANGLED)
@@ -55,23 +52,18 @@
 				else if(angle == 90)
 					key = "_[initial(config.icon_state_key)]_resting_w"
 				else
-					// fallback if angle is unexpected
 					key = "_[initial(config.icon_state_key)]_resting"
-	else
-		// standing
+	else	//we're standing
 		if(initial(config.special_culling_mask) && initial(config.icon_state_key))
 			key = "_[initial(config.icon_state_key)]"
 
-	// ----- toxic handling (unchanged) -----
 	var/toxic_key = 0
 	if(istype(water_turf, /turf/open/gm/river/desert) || istype(water_turf, /turf/open/desert/desert_shore))
 		var/turf/open/gm/river/desert/toxic_turf = water_turf
 		toxic_key = toxic_turf.toxic
 
-	// ----- final appearance -----
 	var/icon_size = initial(config.icon_size)
 	var/icon_key = "[icon_size]_[water_turf.water_type]_[toxic_key]_[pixel_y_offset][key]"
-
 	var/mutable_appearance/final_texture = mutable_appearance(SSwater_overlays.water_overlay_icons[icon_key])
 	final_texture.color = water_turf.color
 	overlays += final_texture

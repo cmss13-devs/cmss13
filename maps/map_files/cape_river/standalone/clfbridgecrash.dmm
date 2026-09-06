@@ -142,6 +142,24 @@
 	},
 /turf/open/desert/dirt/desert_transition_corner1/north,
 /area/caperiver/outdoors/scrublands/central)
+"as" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/prison/cell_stripe/west,
+/area/caperiver/outdoors/scrublands/central)
+"at" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/prison/cell_stripe/east,
+/area/caperiver/outdoors/scrublands/central)
 "aL" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_E,
 /obj/effect/decal/hybrisa/dirt,
@@ -268,7 +286,7 @@
 /obj/structure/barricade/sandbags/wired{
 	dir = 1
 	},
-/turf/open/floor/prison/cell_stripe,
+/turf/open/floor/prison,
 /area/caperiver/outdoors/scrublands/central)
 "ee" = (
 /obj/effect/spawner/gibspawner/xeno,
@@ -3303,8 +3321,8 @@ Mj
 Mj
 Mj
 Mj
-Mj
-tk
+as
+to
 Ig
 vE
 bO
@@ -3495,8 +3513,8 @@ Mj
 Mj
 Mj
 Mj
-sW
-tk
+at
+to
 BH
 rb
 sW

@@ -887,7 +887,8 @@
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has shed her ovipositor, evolution progress paused."), 3, hivenumber)
 
 	for(var/datum/hivebuff/buff in hive.active_hivebuffs)
-		buff._on_cease()
+		if(!buff.works_oviless)
+			buff._on_cease()
 
 	// Close tacmap drawing tools if open, and reopen the regular minimap
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)

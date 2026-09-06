@@ -414,14 +414,6 @@
 			if(initial(buff.tier) == HIVEBUFF_TIER_MAJOR)
 				major_available = TRUE
 
-	if(!xeno.ovipositor)
-		to_chat(xeno, SPAN_XENONOTICE("You need to be on oviposition to purchase boons!"))
-		return
-
-	if(!length(buffs))
-		to_chat(xeno, SPAN_XENONOTICE("No boons are available to us!"))
-		return
-
 	var/selection
 	var/list/radial_images_tiers = list(HIVEBUFF_TIER_MINOR = image('icons/ui_icons/hivebuff_radial.dmi', "minor"), HIVEBUFF_TIER_MAJOR = image('icons/ui_icons/hivebuff_radial.dmi', "major"))
 
@@ -448,13 +440,16 @@
 	if(!selection)
 		return FALSE
 
-	if(!xeno.ovipositor) //so you do not go off ovi with the radial being open or something
-		to_chat(xeno, SPAN_XENONOTICE("You need to be on oviposition to purchase boons!"))
-		return
+
 
 	if(!buffs[selection])
 		to_chat(xeno, "This selection is impossible!")
 		return FALSE
+
+	var/datum/hivebuff/hivebuff = buffs[selection]
+	if(!xeno.ovipositor && !hivebuff.works_oviless) //so you do not go off ovi with the radial being open or something
+		to_chat(xeno, SPAN_XENONOTICE("You need to be on oviposition to purchase boons!"))
+		return
 
 	if(buffs[selection].must_select_pylon)
 		var/list/pylon_to_area_dictionary = list()

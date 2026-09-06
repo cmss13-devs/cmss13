@@ -134,6 +134,7 @@
 	icon_state = "iso1"
 	ceiling = CEILING_NO_PROTECTION
 	minimap_color = MINIMAP_AREA_CELL_MED
+	requires_power = FALSE
 
 /area/northpoint/outdoors/streets/lz1
 	name = "NorHos - LZ1 Streets"
@@ -158,7 +159,7 @@
 	icon_state = "sec_prison"
 	ceiling = CEILING_NO_PROTECTION
 	ceiling_muffle = FALSE
-	unoviable_timer = FALSE
+	requires_power = FALSE
 	minimap_color = MINIMAP_AREA_COLONY_STREETS
 
 /area/northpoint/outdoors/road/lz1
@@ -168,14 +169,17 @@
 /area/northpoint/outdoors/road/south_east
 	name = "NorHos - Exterior Streets - Southeast"
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+	unoviable_timer = FALSE
 
 /area/northpoint/outdoors/road/east
 	name = "NorHos - Exterior Streets - East"
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+	unoviable_timer = FALSE
 
 /area/northpoint/outdoors/road/north_east
 	name = "NorHos - Exterior Streets - Northeast"
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+	unoviable_timer = FALSE
 
 /area/northpoint/outdoors/road/central
 	name = "NorHos - Internal Road - Central"

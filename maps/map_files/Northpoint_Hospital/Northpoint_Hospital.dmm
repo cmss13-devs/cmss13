@@ -6987,10 +6987,7 @@
 "atA" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
-	pixel_x = 10;
-	pixel_y = 20
-	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/northpoint/outdoors/urban_cave/lz1_south_west/weedkiller)
 "atB" = (
@@ -38752,22 +38749,9 @@
 /turf/open/hybrisa/street/sidewalkcorner/west,
 /area/northpoint/outdoors/streets/lz1)
 "cgh" = (
-/obj/structure/sign/poster/ad{
-	layer = 4;
-	pixel_x = 12;
-	pixel_y = 32
-	},
-/turf/open/hybrisa/street/cement1,
-/area/northpoint/outdoors/streets/lz1)
-"cgi" = (
-/obj/structure/sign/poster/ad{
-	layer = 4;
-	pixel_x = -7;
-	pixel_y = 34
-	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/cement1,
-/area/northpoint/outdoors/streets/lz1)
+/area/northpoint/outdoors/road/lz1)
 "cgj" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_14";
@@ -40305,7 +40289,8 @@
 	pixel_y = 28;
 	pixel_x = 20
 	},
-/turf/open/hybrisa/street/sidewalk/southwest,
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/northpoint/outdoors/hospital_exterior/west)
 "cjO" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
@@ -60252,13 +60237,7 @@
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/outdoors/urban_cave/lz2_west)
 "njp" = (
-/obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
-	pixel_x = -4;
-	pixel_y = 20
-	},
+/obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/prison/floor_plate/southwest,
@@ -62938,8 +62917,9 @@
 /obj/item/trash/cigbutt,
 /obj/item/trash/cigbutt,
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/prison/floor_plate/southwest,
-/area/northpoint/outdoors/urban_cave/lz1_south_west/weedkiller)
+/area/northpoint/outdoors/road/lz1)
 "qDX" = (
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
@@ -72272,7 +72252,7 @@ bus
 bui
 aWP
 aYu
-aSz
+aSZ
 aUh
 con
 cof
@@ -79840,7 +79820,7 @@ cbw
 cbr
 cbj
 bch
-cgi
+bbM
 bbM
 aZo
 aYl

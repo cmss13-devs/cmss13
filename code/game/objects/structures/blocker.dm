@@ -42,8 +42,8 @@
 	opacity = TRUE
 
 /obj/structure/blocker/invisible_wall/map_edge/Initialize(mapload, ...)
-    . = ..()
-    loc.minimap_color = COLOR_WHITE
+	. = ..()
+	loc.minimap_color = COLOR_WHITE
 
 /obj/structure/blocker/invisible_wall/water
 	desc = "You cannot wade out any further."

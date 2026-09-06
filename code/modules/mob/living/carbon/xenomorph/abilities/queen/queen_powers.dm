@@ -414,6 +414,10 @@
 			if(initial(buff.tier) == HIVEBUFF_TIER_MAJOR)
 				major_available = TRUE
 
+	if(!length(buffs))
+		to_chat(xeno, SPAN_XENONOTICE("No boons are available to us!"))
+		return
+
 	var/selection
 	var/list/radial_images_tiers = list(HIVEBUFF_TIER_MINOR = image('icons/ui_icons/hivebuff_radial.dmi', "minor"), HIVEBUFF_TIER_MAJOR = image('icons/ui_icons/hivebuff_radial.dmi', "major"))
 

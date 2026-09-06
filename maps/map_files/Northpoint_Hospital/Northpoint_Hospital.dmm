@@ -2253,6 +2253,12 @@
 "agH" = (
 /turf/open/floor/prison/darkpurple2/northeast,
 /area/northpoint/indoors/res)
+"agI" = (
+/obj/structure/sign/safety/biolab{
+	pixel_x = 32
+	},
+/turf/open/floor/almayer/silver2/southeast,
+/area/northpoint/indoors/res)
 "agJ" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 1
@@ -3337,6 +3343,16 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/outdoors/urban_cave/north_east)
+"ajv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/machinery/light/blue,
+/turf/open/floor/prison/bright_clean2/southwest,
+/area/northpoint/indoors/res)
 "ajw" = (
 /obj/item/stack/sheet/metal,
 /turf/open/asphalt/brown,
@@ -4590,6 +4606,10 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer/plate,
 /area/northpoint/oob)
+"amX" = (
+/obj/structure/closet/l3closet/virology,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/northpoint/indoors/res)
 "amY" = (
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/northpoint/outdoors/urban_cave/south_east)
@@ -7089,6 +7109,17 @@
 	},
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/outdoors/urban_cave/north_east)
+"auh" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/machinery/shower{
+	pixel_y = 0;
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/northpoint/indoors/res)
 "aui" = (
 /obj/effect/decal/hybrisa/doubleroad/lines4{
 	pixel_x = 4
@@ -7116,6 +7147,11 @@
 	},
 /turf/open/floor/prison/darkbrown2/east,
 /area/northpoint/landing_zone_2)
+"aul" = (
+/obj/structure/closet/l3closet/virology,
+/obj/structure/machinery/light/blue,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/northpoint/indoors/res)
 "aum" = (
 /obj/effect/decal/remains/robot,
 /turf/open/hybrisa/street/sidewalkcorner/north,
@@ -8096,6 +8132,10 @@
 	},
 /turf/open/asphalt/brown,
 /area/northpoint/outdoors/urban_cave/north_east)
+"axx" = (
+/obj/item/stool,
+/turf/open/floor/prison/southwest,
+/area/northpoint/indoors/res)
 "axy" = (
 /obj/structure/largecrate/random/barrel/white,
 /obj/structure/machinery/camera/autoname{
@@ -8457,6 +8497,12 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/outdoors/urban_cave/north_east)
+"ayC" = (
+/obj/item/stool{
+	pixel_y = 22
+	},
+/turf/open/floor/prison/southwest,
+/area/northpoint/indoors/res)
 "ayD" = (
 /obj/structure/largecrate/random/barrel/brown,
 /turf/open/floor/prison,
@@ -10653,6 +10699,17 @@
 /obj/effect/antre/border,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/northpoint/indoors/res)
+"aEg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = 20
+	},
+/turf/open/floor/prison/bright_clean2/southwest,
+/area/northpoint/indoors/res)
 "aEh" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -10727,6 +10784,19 @@
 	dir = 8
 	},
 /obj/effect/antre/border{
+	dir = 1
+	},
+/turf/open/floor/prison/bright_clean2/southwest,
+/area/northpoint/indoors/res)
+"aEn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/machinery/light/blue{
 	dir = 1
 	},
 /turf/open/floor/prison/bright_clean2/southwest,
@@ -12159,6 +12229,16 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/outdoors/urban_cave/lz2_west)
+"aHJ" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/machinery/shower{
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/northpoint/indoors/res)
 "aHK" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/item/device/flashlight/flare/on{
@@ -12499,6 +12579,13 @@
 	},
 /turf/open/hybrisa/street/cement3,
 /area/northpoint/outdoors/urban_cave/lz2_west)
+"aID" = (
+/obj/structure/closet/l3closet/virology,
+/obj/structure/machinery/light/blue{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/northpoint/indoors/res)
 "aIE" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -12812,6 +12899,12 @@
 /obj/item/trash/cigbutt,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/outdoors/urban_cave/lz1_south_west)
+"aJy" = (
+/obj/structure/sign/safety/biolab{
+	pixel_x = 32
+	},
+/turf/open/floor/almayer/silver2/northeast,
+/area/northpoint/indoors/res)
 "aJz" = (
 /obj/effect/decal/large_stain{
 	pixel_y = 20;
@@ -12920,6 +13013,16 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/outdoors/urban_cave/south_east)
+"aJO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
+/turf/open/floor/prison/bright_clean2/southwest,
+/area/northpoint/indoors/res)
 "aJP" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -80486,14 +80589,14 @@ aRw
 aRo
 bKZ
 bKZ
-cqx
+aJy
 cpt
 cpt
 cpt
 cpt
 cpt
 cpt
-cpm
+agI
 bKZ
 bKZ
 jOl
@@ -80952,7 +81055,7 @@ aRy
 aRp
 ryj
 hNg
-aBO
+aEg
 agq
 uOi
 uOi
@@ -81107,12 +81210,12 @@ aRz
 aRp
 nMp
 hNg
-aCa
+aEn
 aBC
 aBN
 agq
 aBC
-aBI
+ajv
 hNg
 oKH
 dPF
@@ -81262,12 +81365,12 @@ aRA
 aRp
 qPj
 hNg
-aQU
+amX
 fiq
 aBO
 abP
 fiq
-aQU
+amX
 hNg
 bwb
 uqL
@@ -81418,10 +81521,10 @@ aRp
 qPj
 hNg
 hNg
-qVH
+ayC
 aBO
 abP
-qVH
+axx
 hNg
 hNg
 crq
@@ -81572,12 +81675,12 @@ aRA
 aRp
 fak
 hNg
-aQU
+aHJ
 qVH
 aBO
 abP
 qVH
-aQU
+auh
 hNg
 hqB
 hex
@@ -81727,12 +81830,12 @@ aRA
 aRp
 tHk
 hNg
-aQU
+aHJ
 qVH
 aBO
 abP
 qVH
-aQU
+auh
 hNg
 hqB
 hqB
@@ -81882,12 +81985,12 @@ aRA
 aRp
 gPz
 hNg
-aQU
+aHJ
 qVH
 aBO
 abP
 qVH
-aQU
+auh
 hNg
 hqB
 hqB
@@ -82038,10 +82141,10 @@ aRp
 gPz
 hNg
 hNg
-qVH
+ayC
 aBO
 abP
-qVH
+axx
 hNg
 hNg
 hqB
@@ -82192,12 +82295,12 @@ aRA
 pBy
 hNg
 hNg
-aQU
+aID
 fiq
 aBO
 abP
 fiq
-aQU
+aul
 hNg
 hNg
 hNg
@@ -82501,7 +82604,7 @@ aRI
 aRA
 pBy
 hNg
-aBO
+aJO
 agq
 aBC
 aBC

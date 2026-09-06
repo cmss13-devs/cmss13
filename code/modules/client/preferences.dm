@@ -344,9 +344,6 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/list/key_to_custom_keybind = list()
 
 /datum/preferences/New(client/owner)
-	if(!istype(owner))
-		CRASH("attempted to create a preferences datum without a client!")
-
 	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 
 	src.owner = owner

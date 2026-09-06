@@ -1627,6 +1627,7 @@
 	light_range = 2
 	light_power = 1
 	explo_proof = FALSE
+	unacidable = FALSE
 
 /obj/structure/prop/invuln/working_joe/large_storage/no_shell
 	name = "bagged synthetic"

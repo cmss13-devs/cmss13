@@ -487,6 +487,31 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fire_colony/interior/seegson/synthetic_storage)
+"abt" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 1;
+	pixel_y = -32
+	},
+/obj/item/lightstick/red/spoke/planted{
+	icon_state = "lightstick_red_variant1";
+	pixel_y = -32
+	},
+/turf/open/fire_colony/basalt/basalt0,
+/area/fire_colony/exterior/landing_pad_external)
+"abu" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 1;
+	pixel_y = -32
+	},
+/turf/open/fire_colony/brock,
+/area/fire_colony/exterior/landing_pad_external)
+"abv" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 1;
+	pixel_y = -32
+	},
+/turf/open/fire_colony/basalt/basalt0,
+/area/fire_colony/exterior/landing_pad_external)
 "abw" = (
 /obj/effect/lava/edges/basalt/side_rock{
 	dir = 1
@@ -496,10 +521,57 @@
 	},
 /turf/open/fire_colony/basalt/glowing/basalt2,
 /area/fire_colony/exterior/underground/excavation/south)
+"abx" = (
+/obj/structure/machinery/landinglight{
+	dir = 1;
+	pixel_y = -32
+	},
+/obj/item/lightstick/red/spoke/planted{
+	icon_state = "lightstick_red_variant1";
+	pixel_y = -32;
+	layer = 2
+	},
+/turf/open/fire_colony/brock,
+/area/fire_colony/exterior/landing_pad_external)
 "aby" = (
 /obj/effect/lava/edges/basalt/l_piece,
 /turf/open/fire_colony/basalt/glowing/basalt1,
 /area/fire_colony/exterior/clearing/pass)
+"abz" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 1;
+	pixel_y = -32
+	},
+/turf/open/fire_colony/basalt/basalt0,
+/area/fire_colony/exterior/landing_pad_external)
+"abA" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 1;
+	pixel_y = -32
+	},
+/obj/item/lightstick/red/spoke/planted{
+	icon_state = "lightstick_red_variant1";
+	pixel_y = -32
+	},
+/turf/open/fire_colony/brock,
+/area/fire_colony/exterior/landing_pad_external)
+"abB" = (
+/obj/structure/machinery/power/smes/buildable,
+/turf/open/floor/platebot,
+/area/fire_colony/interior/seegson/engineering/generator_room)
+"abC" = (
+/obj/effect/decal/warning_stripes/worn/corner{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/warning_stripes/worn/corner{
+	dir = 8
+	},
+/turf/open/floor/strata/seeg3/north,
+/area/fire_colony/interior/seegson/engineering/generator_room)
 "abD" = (
 /turf/closed/wall/lava/solaris_dark,
 /area/fire_colony/interior/epsilon_facility)
@@ -1211,14 +1283,6 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/corsat/spiralplate,
 /area/fire_colony/exterior/landing_pad)
-"aez" = (
-/obj/structure/surface/table/almayer{
-	color = "#848484"
-	},
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/spawner/random/toolbox,
-/turf/open/floor/strata/seeg4/north,
-/area/fire_colony/interior/seegson/engineering/generator_room)
 "aeC" = (
 /obj/effect/blocker/lava,
 /turf/open/fire_colony/hot_lava/L_piece/east,
@@ -1284,7 +1348,10 @@
 /area/fire_colony/interior/seegson/engineering/generator_room)
 "aeT" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/floor/strata/seeg3/northeast,
+/obj/effect/decal/warning_stripes/worn{
+	dir = 1
+	},
+/turf/open/floor/strata/seeg3/north,
 /area/fire_colony/interior/seegson/engineering/generator_room)
 "aeU" = (
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -1706,7 +1773,10 @@
 /obj/effect/decal/warning_stripes/worn{
 	dir = 8
 	},
-/turf/open/floor/strata/seeg4,
+/obj/effect/decal/warning_stripes/worn{
+	dir = 4
+	},
+/turf/open/floor/strata/floor2,
 /area/fire_colony/interior/seegson/engineering/generator_room)
 "agx" = (
 /obj/effect/lava/edges/basalt/side_rock,
@@ -2191,6 +2261,10 @@
 /obj/effect/decal/warning_stripes/worn{
 	dir = 4
 	},
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /turf/open/floor/strata/seeg4/west,
 /area/fire_colony/interior/seegson/engineering/generator_room)
 "aiw" = (
@@ -9750,15 +9824,6 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/corsat/spiralplate,
 /area/fire_colony/exterior/landing_pad)
-"bae" = (
-/obj/structure/machinery/landinglight/delayone{
-	dir = 1
-	},
-/obj/effect/decal/warning_stripes/worn,
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/floor/corsat/spiralplate,
-/area/fire_colony/exterior/landing_pad)
 "baf" = (
 /obj/structure/machinery/landinglight/delaytwo,
 /obj/structure/machinery/landinglight/delaythree{
@@ -11276,13 +11341,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/fire_colony/exterior/landing_pad)
 "bhK" = (
-/obj/structure/machinery/landinglight/delaythree{
-	dir = 1
-	},
 /obj/effect/decal/warning_stripes/worn,
-/obj/item/lightstick/red/spoke/planted{
-	icon_state = "lightstick_red_variant1"
-	},
 /turf/open/floor/corsat/spiralplate,
 /area/fire_colony/exterior/landing_pad)
 "bhL" = (
@@ -21147,14 +21206,6 @@
 /obj/structure/fence/slim/blue/door,
 /turf/open/floor/plating/fire_colony/warnplate/west,
 /area/fire_colony/exterior/clearing/south)
-"dwA" = (
-/obj/effect/decal/warning_stripes/worn/corner{
-	dir = 1;
-	pixel_x = 1
-	},
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/floor/strata/sand3/west,
-/area/fire_colony/interior/mining)
 "dwC" = (
 /obj/effect/lava/edges/basalt/side_rock{
 	dir = 4
@@ -26614,16 +26665,6 @@
 	},
 /turf/open/fire_colony/dirt,
 /area/fire_colony/exterior/underground/excavation/south)
-"eKt" = (
-/obj/structure/machinery/landinglight{
-	dir = 1
-	},
-/obj/effect/decal/warning_stripes/worn,
-/obj/item/lightstick/red/spoke/planted{
-	icon_state = "lightstick_red_variant1"
-	},
-/turf/open/floor/corsat/spiralplate,
-/area/fire_colony/exterior/landing_pad)
 "eKD" = (
 /obj/effect/lava/edges/basalt/l_piece,
 /turf/open/fire_colony/basalt/glowing/basalt2,
@@ -32031,8 +32072,7 @@
 /area/fire_colony/exterior/clearing/north_east)
 "fVA" = (
 /obj/effect/decal/warning_stripes/worn{
-	dir = 8;
-	pixel_x = 1
+	dir = 8
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/strata/multi_tiles/west,
@@ -39983,11 +40023,11 @@
 /turf/open/fire_colony/basalt/glowing/basalt9,
 /area/fire_colony/exterior/clearing/north)
 "hMf" = (
-/obj/structure/machinery/fuelcell_recycler/full,
 /obj/structure/machinery/light{
 	dir = 4;
 	pixel_y = -16
 	},
+/obj/structure/machinery/power/smes/buildable,
 /turf/open/floor/platebot,
 /area/fire_colony/interior/seegson/engineering/generator_room)
 "hMh" = (
@@ -44009,12 +44049,11 @@
 /turf/open/fire_colony/brock,
 /area/fire_colony/exterior/valley/west)
 "iNs" = (
-/obj/effect/decal/warning_stripes/worn/corner{
-	dir = 4;
-	pixel_x = 1
-	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/floor/strata/sand3/west,
+/obj/effect/decal/warning_stripes/worn{
+	dir = 8
+	},
+/turf/open/floor/strata/multi_tiles/west,
 /area/fire_colony/interior/mining)
 "iNt" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -58945,14 +58984,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/fire_colony/interior/dorms/dorms_p)
-"mxF" = (
-/obj/structure/machinery/landinglight/delaytwo{
-	dir = 1
-	},
-/obj/effect/decal/warning_stripes/worn,
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/floor/corsat/spiralplate,
-/area/fire_colony/exterior/landing_pad)
 "mxN" = (
 /obj/effect/lava/edges/basalt/side_rock{
 	dir = 1
@@ -59877,17 +59908,6 @@
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/strata/floor2,
 /area/fire_colony/interior/hydroponics/south)
-"mIG" = (
-/obj/structure/machinery/landinglight/delayone{
-	dir = 1
-	},
-/obj/effect/decal/warning_stripes/worn,
-/obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/obj/item/lightstick/red/spoke/planted{
-	icon_state = "lightstick_red_variant1"
-	},
-/turf/open/floor/corsat/spiralplate,
-/area/fire_colony/exterior/landing_pad)
 "mIM" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -61205,6 +61225,9 @@
 /obj/structure/machinery/light,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/machinery/power/apc/no_power/west,
+/obj/effect/decal/warning_stripes/worn/corner{
+	dir = 4
+	},
 /turf/open/floor/strata/sand4/east,
 /area/fire_colony/interior/mining)
 "mYe" = (
@@ -75576,9 +75599,6 @@
 /turf/open/fire_colony/basalt/basalt0,
 /area/fire_colony/exterior/underground/excavation/south)
 "qvw" = (
-/obj/structure/machinery/landinglight/delaytwo{
-	dir = 1
-	},
 /obj/effect/decal/warning_stripes/worn,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -81535,6 +81555,11 @@
 	dir = 1
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/effect/decal/warning_stripes/worn/corner{
+	dir = 1
+	},
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /turf/open/floor/strata/sand4,
 /area/fire_colony/interior/mining)
 "rMx" = (
@@ -95828,18 +95853,14 @@
 /turf/open/fire_colony/brock,
 /area/fire_colony/exterior/underground/caves/south_west)
 "vmw" = (
-/obj/structure/machinery/fuelcell_recycler/full{
-	pixel_x = 2;
-	pixel_y = 5
-	},
-/obj/effect/decal/warning_stripes/worn{
-	pixel_x = 1
-	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/structure/prop/hybrisa/signs/high_voltage/small{
 	pixel_y = 33
 	},
-/turf/open/floor/strata/sand1,
+/obj/structure/machinery/power/smes/buildable{
+	pixel_y = 3
+	},
+/turf/open/floor/platebot,
 /area/fire_colony/interior/mining)
 "vmx" = (
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
@@ -100330,7 +100351,8 @@
 	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/item/lightstick/red/spoke/planted{
-	icon_state = "lightstick_red_variant1"
+	icon_state = "lightstick_red_variant1";
+	layer = 2
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/fire_colony/exterior/landing_pad)
@@ -101972,17 +101994,12 @@
 /turf/open/fire_colony/hot_lava/side/north,
 /area/fire_colony/exterior/underground/caves/south_west)
 "wKU" = (
-/obj/structure/machinery/fuelcell_recycler/full{
-	pixel_x = 2;
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes/worn{
-	dir = 1;
-	pixel_x = 1
-	},
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
-/turf/open/floor/strata/sand1,
+/obj/structure/machinery/power/smes/buildable{
+	pixel_y = 3
+	},
+/turf/open/floor/platebot,
 /area/fire_colony/interior/mining)
 "wLb" = (
 /obj/structure/platform_decoration/stone/lava,
@@ -102224,8 +102241,7 @@
 /area/fire_colony/exterior/clearing/south_west)
 "wOj" = (
 /obj/effect/decal/warning_stripes/worn{
-	dir = 8;
-	pixel_x = 1
+	dir = 8
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/fire_colony/interior/mining)
@@ -107470,9 +107486,6 @@
 /turf/open/fire_colony/basalt/basalt10,
 /area/fire_colony/exterior/underground/excavation/south)
 "yer" = (
-/obj/structure/machinery/landinglight/delaythree{
-	dir = 1
-	},
 /obj/effect/decal/warning_stripes/worn,
 /obj/effect/decal/hybrisa/dirt/above_turf_decal,
 /turf/open/floor/corsat/spiralplate,
@@ -109870,7 +109883,7 @@ aaQ
 aaQ
 aOf
 rMu
-dwA
+iNs
 wOj
 fVA
 wOj
@@ -141518,7 +141531,7 @@ kzW
 pmk
 oHJ
 agw
-msp
+abC
 kJf
 doO
 doO
@@ -141719,7 +141732,7 @@ geW
 chf
 kzW
 oHJ
-aez
+agb
 aeT
 iPD
 snh
@@ -142128,7 +142141,7 @@ aeg
 aWZ
 afL
 hMf
-agb
+abB
 akm
 aiy
 aeg
@@ -147269,7 +147282,7 @@ aaQ
 tSm
 iyj
 lJR
-nne
+abt
 bhK
 qLn
 baw
@@ -147471,7 +147484,7 @@ mbN
 uMt
 kIa
 sMP
-aZE
+abu
 qvw
 baw
 baw
@@ -147673,8 +147686,8 @@ aaQ
 mbN
 nne
 evP
-nne
-bae
+abv
+qvw
 baw
 gTh
 qLn
@@ -147875,8 +147888,8 @@ aaQ
 qiv
 tKs
 uwJ
-aZE
-eKt
+abx
+bhK
 baw
 qLn
 qLn
@@ -148077,7 +148090,7 @@ aZE
 nne
 nne
 gRt
-nDi
+abz
 yer
 baw
 qLn
@@ -148279,8 +148292,8 @@ aaQ
 nne
 hsb
 iyj
-aZE
-mxF
+abu
+yer
 baw
 baw
 baw
@@ -148481,8 +148494,8 @@ lWi
 biJ
 tKs
 nne
-aZE
-mIG
+abA
+yer
 baw
 baw
 baw

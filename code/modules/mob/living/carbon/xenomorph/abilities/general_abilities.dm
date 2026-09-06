@@ -465,6 +465,9 @@
 	var/spitting = FALSE
 	var/sound_to_play = "acid_spit"
 	var/aim_turf = FALSE
+	///should we pick where the mouse is aiming when windup ends
+	var/retarget_after_windup = FALSE
+	var/new_target
 
 /datum/action/xeno_action/activable/xeno_spit/queen_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_3

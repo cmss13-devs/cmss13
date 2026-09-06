@@ -911,6 +911,32 @@
 			return FALSE
 	return TRUE
 
+/datum/action/xeno_action/activable/xeno_spit/on_select(mob/user)
+	. = ..()
+	if(retarget_after_windup)
+		RegisterSignal(owner, COMSIG_MOB_MOUSEDRAG, PROC_REF(change_target))
+		RegisterSignal(owner, COMSIG_MOB_MOUSEDOWN, PROC_REF(on_mouse_down))
+
+/datum/action/xeno_action/activable/xeno_spit/proc/on_mouse_down(mob/source, atom/target, turf, skin_ctl, params)
+	SIGNAL_HANDLER
+
+	var/list/mods = params2list(params)
+	source.click(target, mods)
+
+/datum/action/xeno_action/activable/xeno_spit/on_deselect()
+	if(retarget_after_windup)
+
+		UnregisterSignal(owner, COMSIG_MOB_MOUSEDRAG)
+		UnregisterSignal(owner, COMSIG_MOB_MOUSEDOWN)
+
+
+/datum/action/xeno_action/activable/xeno_spit/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
+	SIGNAL_HANDLER
+	var/possible_new_target = get_turf_on_clickcatcher(over_object, owner, params)
+	if(possible_new_target)
+		new_target = possible_new_target
+		owner?.face_atom(new_target)
+
 /datum/action/xeno_action/activable/xeno_spit/use_ability(atom/atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	var/spit_target = aim_turf ? get_turf(atom) : atom
@@ -947,7 +973,11 @@
 		if (!do_after(xeno, xeno.ammo.spit_windup, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			to_chat(xeno, SPAN_XENODANGER("We decide to cancel our spit."))
 			spitting = FALSE
+			new_target = null
 			return
+		if(retarget_after_windup && new_target)
+			spit_target = new_target
+			new_target = null
 	plasma_cost = xeno.ammo.spit_cost
 
 	if(!check_and_use_plasma_owner())

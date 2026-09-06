@@ -35,6 +35,7 @@
 /datum/action/xeno_action/activable/xeno_spit/bombard/dissolver
 	xeno_cooldown = 11 SECONDS
 	cooldown_duration = 11 SECONDS
+	retarget_after_windup = TRUE
 	var/stored_cooldown = 1 SECONDS
 	action_types_to_cd = list(
 		/datum/action/xeno_action/activable/xeno_spit/bombard/dissolver/corosive_spit,

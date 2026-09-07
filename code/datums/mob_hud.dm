@@ -664,22 +664,22 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		var/has_recovery_aura = FALSE
 		var/has_warding_aura = FALSE
 		switch(current_aura)
-			if("frenzy")
+			if(XENO_PHERO_FRENZY)
 				has_frenzy_aura = TRUE
-			if("recovery")
+			if(XENO_PHERO_RECOVERY)
 				has_recovery_aura = TRUE
-			if("warding")
+			if(XENO_PHERO_WARDING)
 				has_warding_aura = TRUE
 			if("all")
 				has_frenzy_aura = TRUE
 				has_recovery_aura = TRUE
 				has_warding_aura = TRUE
 		switch(leader_current_aura)
-			if("frenzy")
+			if(XENO_PHERO_FRENZY)
 				has_frenzy_aura = TRUE
-			if("recovery")
+			if(XENO_PHERO_RECOVERY)
 				has_recovery_aura = TRUE
-			if("warding")
+			if(XENO_PHERO_WARDING)
 				has_warding_aura = TRUE
 			if("all")
 				has_frenzy_aura = TRUE

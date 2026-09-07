@@ -3359,13 +3359,6 @@
 	},
 /turf/open/hybrisa/street/cement2,
 /area/northpoint/outdoors/hospital_exterior/east)
-"ajq" = (
-/obj/structure/prop/hybrisa/misc/stoneplanterseats{
-	pixel_x = -27;
-	pixel_y = 4
-	},
-/turf/open/hybrisa/street/cement3,
-/area/northpoint/outdoors/hospital_exterior/east)
 "ajr" = (
 /obj/item/shard,
 /turf/open/hybrisa/street/asphalt,
@@ -6489,10 +6482,6 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/northpoint/landing_zone_2/ceiling)
-"asd" = (
-/obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/turf/open/auto_turf/tyrargo_grass/layer1,
-/area/northpoint/outdoors/streets/lz1)
 "ase" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/effect/decal/hybrisa/dirt,
@@ -7775,12 +7764,6 @@
 	},
 /turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/northpoint/indoors/emer_dep)
-"awA" = (
-/obj/effect/decal/hybrisa/grate{
-	dir = 4
-	},
-/turf/open/auto_turf/tyrargo_grass/layer1,
-/area/northpoint/outdoors/streets/lz1)
 "awB" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/microwave,
@@ -14918,9 +14901,6 @@
 	},
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/indoors/comms/com_bravo_2)
-"aOW" = (
-/turf/closed/wall/hybrisa/colony/reinforced/hull,
-/area/northpoint/indoors/sec_prep)
 "aOX" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/barricade/handrail/hybrisa/road/plastic/blue,
@@ -16467,13 +16447,6 @@
 "aVo" = (
 /turf/open/floor/almayer/silver/north,
 /area/northpoint/indoors/main)
-"aVp" = (
-/obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/prop/hybrisa/misc/redmeter{
-	pixel_y = 32
-	},
-/turf/open/floor/corsat,
-/area/northpoint/indoors/main)
 "aVq" = (
 /turf/open/floor/prison/ramptop/east,
 /area/northpoint/indoors/comms/com_bravo_1)
@@ -17060,8 +17033,11 @@
 /area/northpoint/indoors/main)
 "aXI" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
 /turf/open/hybrisa/street/sidewalk/north,
-/area/northpoint/outdoors/hospital_exterior/west)
+/area/northpoint/oob)
 "aXJ" = (
 /turf/open/floor/prison/blue/west,
 /area/northpoint/indoors/emer_dep)
@@ -17105,12 +17081,6 @@
 	},
 /turf/open/hybrisa/street/asphalt/unweedable,
 /area/northpoint/oob)
-"aXS" = (
-/obj/effect/decal/hybrisa/grate{
-	dir = 1
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0,
-/area/northpoint/outdoors/hospital_exterior/central)
 "aXT" = (
 /turf/open/floor/kutjevo/plate,
 /area/northpoint/indoors/emer_dep)
@@ -17208,9 +17178,6 @@
 "aYt" = (
 /turf/open/floor/prison/whitegreencorner/east,
 /area/northpoint/indoors/emer_dep)
-"aYu" = (
-/turf/closed/wall/strata_outpost,
-/area/northpoint/indoors/comms/com_alpha_1)
 "aYv" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /turf/open/hybrisa/street/asphalt,
@@ -17378,6 +17345,9 @@
 "aZc" = (
 /obj/effect/decal/hybrisa/road/corner{
 	dir = 8
+	},
+/obj/item/stack/rods{
+	pixel_y = 14
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/outdoors/streets/lz1)
@@ -18206,7 +18176,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/outdoors/streets/north_carpark)
 "bch" = (
-/turf/closed/wall/hybrisa/colony/engineering,
+/turf/closed/wall/hybrisa/colony/engineering/reinforced,
 /area/northpoint/indoors/emer_dep)
 "bci" = (
 /obj/structure/flora/wood/stick4,
@@ -24452,7 +24422,7 @@
 /obj/structure/prop/hybrisa/signs/high_voltage{
 	pixel_x = 17
 	},
-/turf/closed/wall/strata_outpost,
+/turf/closed/wall/strata_outpost/reinforced,
 /area/northpoint/indoors/comms/com_alpha_1)
 "buT" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -36806,11 +36776,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/northpoint/landing_zone_1/ceiling)
-"caG" = (
-/obj/effect/decal/cleanable/blood/xeno,
-/obj/effect/decal/hybrisa/dirt,
-/turf/open/hybrisa/street/asphalt,
-/area/northpoint/outdoors/streets/lz1)
 "caH" = (
 /obj/effect/decal/hybrisa/road/corner{
 	dir = 8
@@ -39283,8 +39248,17 @@
 	layer = 4
 	},
 /obj/structure/barricade/handrail/hybrisa/road/plastic/blue,
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_5{
+	icon_state = "meridian_wy_damage_5";
+	pixel_y = 2;
+	explo_proof = 1;
+	unacidable = 1
+	},
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
 /turf/open/hybrisa/street/cement3,
-/area/northpoint/outdoors/hospital_exterior/west)
+/area/northpoint/oob)
 "chm" = (
 /obj/structure/flora/wood/stick4,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
@@ -39677,8 +39651,21 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/vehicles/car_pileup{
+	pixel_y = 1
+	},
+/obj/structure/prop/hybrisa/vehicles/Meridian/Red/damage_5{
+	pixel_x = -3;
+	icon_state = "meridian_red_damage_5";
+	pixel_y = -7;
+	explo_proof = 1;
+	unacidable = 1
+	},
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
 /turf/open/hybrisa/street/sidewalk/west,
-/area/northpoint/outdoors/hospital_exterior/west)
+/area/northpoint/oob)
 "cig" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/sidewalkfull,
@@ -41014,15 +41001,6 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/northpoint/outdoors/streets/lz1)
-"clb" = (
-/obj/effect/decal/hybrisa/road/road_stop{
-	dir = 8;
-	icon_state = "stop_decal5"
-	},
-/obj/effect/decal/hybrisa/dirt,
-/obj/effect/decal/hybrisa/dirt,
-/turf/open/hybrisa/street/asphalt,
-/area/northpoint/outdoors/streets/lz1)
 "clc" = (
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -41072,23 +41050,6 @@
 /obj/structure/largecrate/empty/case/double,
 /turf/open/hybrisa/street/cement2,
 /area/northpoint/outdoors/streets/lz1)
-"clj" = (
-/obj/effect/decal/hybrisa/road/lines4,
-/obj/effect/decal/hybrisa/road/lines2,
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal2"
-	},
-/obj/effect/decal/hybrisa/dirt,
-/turf/open/hybrisa/street/asphalt,
-/area/northpoint/outdoors/streets/lz1)
-"clk" = (
-/obj/effect/decal/hybrisa/road/lines2,
-/obj/effect/decal/hybrisa/road/lines1,
-/obj/effect/decal/hybrisa/road/road_edge,
-/obj/effect/decal/hybrisa/dirt,
-/obj/effect/decal/hybrisa/dirt,
-/turf/open/hybrisa/street/asphalt,
-/area/northpoint/outdoors/streets/lz1)
 "cll" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/effect/decal/hybrisa/dirt,
@@ -41116,6 +41077,7 @@
 "clq" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/ammo_casing/cartridge,
+/obj/item/shard,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/outdoors/streets/lz1)
 "clr" = (
@@ -41173,12 +41135,8 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/outdoors/streets/lz1)
 "clx" = (
-/obj/effect/decal/hybrisa/doubleroad/lines3{
-	pixel_y = 0
-	},
 /obj/effect/decal/hybrisa/road/lines2,
-/obj/effect/decal/hybrisa/dirt,
-/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/outdoors/streets/lz1)
 "cly" = (
@@ -41245,11 +41203,13 @@
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/effect/decal/hybrisa/dirt,
+/obj/item/shard,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/outdoors/streets/lz1)
 "clH" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/hybrisa/street/sidewalk/southwest,
 /area/northpoint/outdoors/streets/lz1)
 "clI" = (
@@ -41374,12 +41334,6 @@
 /obj/item/trash/cigbutt,
 /turf/open/hybrisa/street/cement3,
 /area/northpoint/outdoors/streets/lz1)
-"cmc" = (
-/obj/effect/decal/hybrisa/dirt_2,
-/obj/item/trash/cigbutt,
-/obj/structure/machinery/light/small,
-/turf/open/floor/corsat,
-/area/northpoint/indoors/main)
 "cmd" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/ramptop,
@@ -42125,8 +42079,8 @@
 /obj/effect/decal/hybrisa/grate{
 	dir = 1
 	},
-/turf/open/auto_turf/tyrargo_grass/layer1,
-/area/northpoint/outdoors/hospital_exterior/central)
+/turf/closed/wall/strata_ice/forest,
+/area/northpoint/oob)
 "cnV" = (
 /obj/structure/platform/metal/almayer_smooth,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
@@ -46733,14 +46687,6 @@
 	},
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/outdoors/streets/north_carpark)
-"cAj" = (
-/obj/structure/sign/safety/medical{
-	pixel_x = 34;
-	pixel_y = 32
-	},
-/obj/effect/decal/hybrisa/dirt,
-/turf/open/hybrisa/street/sidewalk/northeast,
-/area/northpoint/outdoors/streets/north_carpark)
 "cAk" = (
 /obj/effect/decal/medical_decals{
 	dir = 1;
@@ -50628,7 +50574,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/up,
-/turf/closed/wall/hybrisa/spaceport,
+/turf/closed/wall/hybrisa/spaceport/reinforced,
 /area/northpoint/indoors/res)
 "cJE" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -54067,8 +54013,12 @@
 /area/northpoint/outdoors/hospital_exterior/east)
 "cTe" = (
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/vehicles/car_pileup,
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
-/area/northpoint/outdoors/hospital_exterior/west)
+/area/northpoint/oob)
 "cTf" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
@@ -54443,6 +54393,7 @@
 	pixel_x = 5;
 	pixel_y = 23
 	},
+/obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/oob)
 "cTV" = (
@@ -54464,8 +54415,11 @@
 "cTZ" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
 /turf/open/hybrisa/street/sidewalkcorner/east,
-/area/northpoint/outdoors/hospital_exterior/west)
+/area/northpoint/oob)
 "cUa" = (
 /obj/item/tool/warning_cone{
 	pixel_x = 4;
@@ -54850,7 +54804,7 @@
 "cUW" = (
 /obj/structure/platform_decoration/metal/almayer_smooth,
 /obj/structure/flora/wood/stick2,
-/turf/open/auto_turf/tyrargo_grass/layer0,
+/turf/open/auto_turf/tyrargo_grass/layer1,
 /area/northpoint/outdoors/hospital_exterior/central)
 "cUX" = (
 /obj/structure/platform/metal/almayer_smooth,
@@ -55469,11 +55423,31 @@
 /obj/structure/prop/tyrargo/traffic_signal,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
+"cWH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/northpoint/indoors/res)
 "cWI" = (
 /obj/structure/fence/slim/dark/door{
 	dir = 4
 	},
 /turf/open/hybrisa/street/cement1,
+/area/northpoint/oob)
+"cWJ" = (
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/oob)
+"cWK" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
 /area/northpoint/oob)
 "cWL" = (
 /obj/structure/blocker/invisible_wall/map_edge,
@@ -55710,7 +55684,7 @@
 "cXq" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/closed/wall/hybrisa/colony/hospital/reinforced/hull,
-/area/northpoint/indoors/emer_dep)
+/area/northpoint/oob)
 "cXr" = (
 /turf/closed/wall/hybrisa/colony/hospital/reinforced/hull,
 /area/northpoint/indoors/emer_dep)
@@ -55760,9 +55734,351 @@
 	},
 /turf/open/hybrisa/street/cement2/unweedable,
 /area/northpoint/oob)
+"cXx" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/oob)
+"cXy" = (
+/obj/structure/flora/wood/stick2,
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/northpoint/oob)
+"cXz" = (
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/northpoint/oob)
+"cXA" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_5{
+	icon_state = "meridian_wy_damage_5";
+	pixel_y = 2;
+	explo_proof = 1;
+	unacidable = 1
+	},
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_5{
+	icon_state = "meridian_wy_damage_5";
+	pixel_y = 15;
+	explo_proof = 1;
+	unacidable = 1
+	},
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
+/turf/open/hybrisa/street/sidewalk/southwest,
+/area/northpoint/oob)
+"cXB" = (
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck/fire_truck{
+	pixel_x = -39;
+	dir = 1;
+	pixel_y = 0;
+	icon_state = "small_firetruck_red_damage_2";
+	explo_proof = 1;
+	unacidable = 1;
+	density = 0
+	},
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/oob)
+"cXC" = (
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
+/obj/structure/prop/hybrisa/vehicles/Meridian/Red/damage_3{
+	icon_state = "meridian_red_damage_3";
+	explo_proof = 1;
+	unacidable = 1
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/northpoint/oob)
+"cXD" = (
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/northpoint/oob)
+"cXE" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/vehicles/Meridian/Turquoise/damage_1{
+	pixel_y = 8;
+	layer = 5.11;
+	icon_state = "meridian_turquoise_damage_1";
+	acid_damage = 1;
+	explo_proof = 1
+	},
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_5{
+	icon_state = "meridian_wy_damage_5";
+	pixel_y = 2;
+	explo_proof = 1;
+	unacidable = 1
+	},
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/northpoint/oob)
+"cXF" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
+/turf/open/hybrisa/street/sidewalkfull,
+/area/northpoint/oob)
+"cXG" = (
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
+/turf/open/hybrisa/street/sidewalkfull,
+/area/northpoint/oob)
+"cXH" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
+/obj/structure/prop/hybrisa/vehicles/car_pileup{
+	pixel_y = -17
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/northpoint/oob)
+"cXI" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
+/turf/open/hybrisa/street/sidewalkcorner,
+/area/northpoint/oob)
+"cXJ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/northpoint/oob)
+"cXK" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
+/obj/structure/prop/hybrisa/vehicles/Meridian/Turquoise/damage_1{
+	pixel_y = 19;
+	layer = 5.11;
+	icon_state = "meridian_turquoise_damage_1";
+	acid_damage = 1;
+	explo_proof = 1
+	},
+/obj/structure/prop/hybrisa/vehicles/Meridian/Red/damage_3{
+	icon_state = "meridian_red_damage_3";
+	explo_proof = 1;
+	unacidable = 1
+	},
+/obj/structure/prop/hybrisa/misc/fire/fire1{
+	color = "#ffa700";
+	layer = 7;
+	light_color = "#FF7700";
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/northpoint/oob)
+"cXL" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/northpoint/oob)
+"cXM" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/northpoint/oob)
+"cXN" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/closed/wall/strata_ice/forest,
+/area/northpoint/oob)
+"cXO" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/northpoint/outdoors/hospital_exterior/central)
+"cXP" = (
+/turf/closed/wall/mineral/bone_resin,
+/area/northpoint/oob)
+"cXQ" = (
+/obj/structure/platform/metal/almayer_smooth/east,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/outdoors/hospital_exterior/central)
+"cXR" = (
+/obj/structure/platform_decoration/metal/almayer_smooth,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/outdoors/hospital_exterior/central)
+"cXS" = (
+/obj/structure/platform/metal/almayer_smooth,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/outdoors/hospital_exterior/central)
+"cXT" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/outdoors/streets/lz1)
+"cXU" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/item/shard,
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/outdoors/streets/lz1)
+"cXV" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/shard,
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/outdoors/streets/lz1)
+"cXW" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_3{
+	layer = 5.1;
+	icon_state = "meridian_wy_damage_3";
+	explo_proof = 1;
+	unacidable = 1
+	},
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_3{
+	pixel_y = -5;
+	layer = 3.9;
+	icon_state = "meridian_wy_damage_3";
+	unacidable = 1;
+	explo_proof = 1;
+	pixel_x = -27
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1;
+	pixel_x = -7
+	},
+/obj/effect/decal/hybrisa/road/road_edge,
+/obj/effect/decal/hybrisa/road/lines4,
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/oob)
+"cXX" = (
+/obj/structure/blocker/invisible_wall,
+/obj/effect/decal/hybrisa/road/road_edge,
+/obj/effect/decal/hybrisa/road/lines1,
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/oob)
+"cXY" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/prop/hybrisa/vehicles/Meridian/Orange/damage_2{
+	dir = 1;
+	pixel_x = 6;
+	icon_state = "meridian_orange_damage_2"
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1;
+	pixel_x = -7
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/oob)
+"cXZ" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 4;
+	pixel_y = 7
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/outdoors/streets/lz1)
+"cYa" = (
+/obj/structure/flora/bush/ausbushes/var3/sunnybush,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/northpoint/outdoors/streets/lz1)
+"cYb" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/obj/item/shard,
+/obj/item/stack/rods{
+	pixel_y = 14
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/outdoors/streets/lz1)
+"cYc" = (
+/obj/item/shard,
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/outdoors/streets/lz1)
+"cYd" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/closed/wall/strata_ice/forest,
+/area/northpoint/outdoors/streets/lz1)
+"cYe" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/rods{
+	pixel_y = 14
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/outdoors/streets/lz1)
+"cYf" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/outdoors/streets/lz1)
+"cYg" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 4;
+	pixel_y = 7
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 4;
+	pixel_y = 7
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/outdoors/streets/lz1)
+"cYh" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/item/shard,
+/turf/open/hybrisa/street/asphalt,
+/area/northpoint/outdoors/streets/lz1)
+"cYi" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/closed/wall/mineral/bone_resin,
+/area/northpoint/oob)
+"cYj" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/closed/wall/mineral/bone_resin,
+/area/northpoint/oob)
 "cYk" = (
 /turf/open/hybrisa/street/sidewalk,
 /area/northpoint/outdoors/urban_cave/lz2_south)
+"cYl" = (
+/turf/open/floor/plating/platingdmg2,
+/area/northpoint/outdoors/hospital_exterior/east)
 "cZi" = (
 /obj/structure/prop/hybrisa/vehicles/Meridian/Light_Blue/damage_3{
 	dir = 1;
@@ -57438,8 +57754,8 @@
 /obj/effect/decal/hybrisa/grate{
 	dir = 4
 	},
-/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
-/area/northpoint/outdoors/streets/lz1)
+/turf/closed/wall/strata_ice/forest,
+/area/northpoint/oob)
 "eQv" = (
 /obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
@@ -62586,8 +62902,20 @@
 	layer = 4
 	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/vehicles/car_pileup{
+	pixel_x = 5
+	},
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_5{
+	icon_state = "meridian_wy_damage_5";
+	pixel_y = 2;
+	explo_proof = 1;
+	unacidable = 1
+	},
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
 /turf/open/hybrisa/street/cement3,
-/area/northpoint/outdoors/hospital_exterior/west)
+/area/northpoint/oob)
 "lgx" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt{
 	color = "#140400";
@@ -63281,9 +63609,6 @@
 	pixel_x = -8;
 	pixel_y = 7
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 28
-	},
 /turf/open/floor/strata/orange_edge,
 /area/northpoint/indoors/main)
 "lUU" = (
@@ -63753,9 +64078,8 @@
 /obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
 	dir = 1
 	},
-/obj/structure/flora/wood/stick4,
-/turf/open/auto_turf/tyrargo_grass/layer1,
-/area/northpoint/outdoors/hospital_exterior/central)
+/turf/closed/wall/strata_ice/forest,
+/area/northpoint/oob)
 "mCg" = (
 /obj/effect/decal/strata_decals/grime/grime3{
 	pixel_x = -10
@@ -66504,12 +66828,6 @@
 	icon_state = "0,4"
 	},
 /area/northpoint/oob)
-"pYR" = (
-/obj/effect/decal/hybrisa/grate{
-	dir = 4
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0,
-/area/northpoint/outdoors/streets/lz1)
 "pZc" = (
 /obj/effect/decal/hybrisa/trash{
 	pixel_y = 12
@@ -67019,8 +67337,11 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
 /turf/open/hybrisa/street/sidewalk/southeast,
-/area/northpoint/outdoors/hospital_exterior/west)
+/area/northpoint/oob)
 "qDO" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_15"
@@ -68556,8 +68877,11 @@
 /area/northpoint/indoors/emer_dep)
 "sDY" = (
 /obj/structure/barricade/handrail/strata,
+/obj/structure/blocker/invisible_wall/map_edge{
+	opacity = 0
+	},
 /turf/open/hybrisa/street/sidewalk,
-/area/northpoint/outdoors/hospital_exterior/west)
+/area/northpoint/oob)
 "sEN" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/sidewalkcorner,
@@ -76225,12 +76549,12 @@ sPf
 bxg
 bxg
 bxg
-aYu
-aYu
-aYu
-aYu
+bxg
+bxg
+bxg
+bxg
 aYC
-aYu
+bxg
 cjN
 aUh
 con
@@ -76385,7 +76709,7 @@ buz
 bus
 bui
 aWP
-aYu
+bxg
 aSZ
 aUh
 con
@@ -76535,12 +76859,12 @@ bva
 gOW
 bxg
 bxg
-aYu
+bxg
 buA
 bus
 bui
 bmS
-aYu
+bxg
 cjO
 aUh
 con
@@ -76690,12 +77014,12 @@ bvb
 buT
 buQ
 pQW
-aYu
+bxg
 buB
 but
 bui
 btV
-aYu
+bxg
 cou
 aUh
 bwh
@@ -76845,12 +77169,12 @@ bvb
 buU
 aSv
 qDO
-aYu
+bxg
 buC
 bus
 bui
 btW
-aYu
+bxg
 cov
 aUh
 cjA
@@ -77000,12 +77324,12 @@ bvc
 buV
 cfN
 kqx
-aYu
+bxg
 buD
 bus
 buj
 btX
-aYu
+bxg
 cjP
 cjG
 cjB
@@ -77155,12 +77479,12 @@ bvd
 buT
 gJY
 nBF
-aYu
+bxg
 buE
 buv
 buk
 btY
-aYu
+bxg
 cjQ
 cjG
 cjC
@@ -77308,14 +77632,14 @@ tFT
 aGt
 aGr
 kMJ
-aYu
-aYu
-aYu
+bxg
+bxg
+bxg
 buF
 buw
 bul
 btZ
-aYu
+bxg
 cjR
 cor
 chY
@@ -77463,14 +77787,14 @@ oaI
 baB
 lSZ
 buW
-aYu
+bxg
 buL
 buK
 but
 bux
 bum
 bua
-aYu
+bxg
 cow
 cjG
 cgO
@@ -77625,7 +77949,7 @@ but
 bux
 bun
 bub
-aYu
+bxg
 cox
 cos
 cgO
@@ -77780,7 +78104,7 @@ but
 buy
 buo
 bud
-aYu
+bxg
 coy
 aUh
 cjD
@@ -77935,7 +78259,7 @@ but
 buy
 bup
 buf
-aYu
+bxg
 coz
 aUh
 coo
@@ -78083,14 +78407,14 @@ bvy
 bvp
 qjz
 buX
-aYu
+bxg
 buO
 aYD
 but
 bux
 bum
 bug
-aYu
+bxg
 coz
 aUh
 cjE
@@ -78245,7 +78569,7 @@ but
 bux
 bun
 dtw
-aYu
+bxg
 cjS
 aUh
 aTX
@@ -78400,7 +78724,7 @@ buG
 bCW
 buq
 buh
-aYu
+bxg
 coA
 aUh
 cgO
@@ -78548,14 +78872,14 @@ tFT
 aAr
 ccI
 buY
-aYu
+bxg
 buP
 buK
 buH
-aYu
-aYu
-aYu
-aYu
+bxg
+bxg
+bxg
+bxg
 cjT
 aUh
 aTX
@@ -78703,11 +79027,11 @@ tFT
 clW
 clO
 aCy
-aYu
-aYu
+bxg
+bxg
 buI
 buI
-aYu
+bxg
 ckP
 cky
 cjY
@@ -79338,11 +79662,11 @@ chM
 ciu
 cnZ
 cnT
-ciu
-ciu
+cXJ
+cXH
 cif
-chM
-aSZ
+cXE
+cXA
 cTv
 chk
 che
@@ -79492,10 +79816,10 @@ cjF
 aSu
 aSu
 aTy
-ciK
-ciK
-civ
-cig
+cXL
+cXK
+cXI
+cXF
 cTZ
 qDt
 lgn
@@ -79647,13 +79971,13 @@ cop
 aSj
 coe
 aSo
-cgt
-aSo
+cXM
+cXz
 aXI
-aUu
+cXG
 sDY
-aSj
-bmc
+cXB
+cWK
 cTe
 chg
 cha
@@ -79802,14 +80126,14 @@ chn
 aSo
 rwl
 rwl
-rwl
-rwl
-rwl
-aXE
-aXE
-aSo
-chn
-aSj
+ack
+ack
+ack
+ack
+ack
+cXz
+cXx
+cWJ
 dbv
 aSQ
 aUh
@@ -79960,10 +80284,10 @@ aDI
 aDE
 aDz
 aDu
-aXE
-aXE
-aSo
-cgu
+ack
+ack
+cXC
+cXy
 aSj
 cSQ
 aSQ
@@ -80116,9 +80440,9 @@ aDF
 aDs
 aXA
 aDo
-rwl
-aSi
-aSo
+ack
+cXD
+cXz
 cgt
 xeI
 aSQ
@@ -80719,11 +81043,11 @@ clZ
 qIm
 cll
 clp
-rEn
+cYf
 aYR
+cYb
 aYR
-aYR
-aYJ
+cXT
 aYF
 aYz
 cjV
@@ -80874,11 +81198,11 @@ buX
 qIm
 aYZ
 rEn
-clp
-aYS
-aYS
-aYS
-aYJ
+cnj
+bXU
+bXH
+cXV
+cXU
 aYF
 aYr
 cfw
@@ -81029,11 +81353,11 @@ cma
 cjJ
 clG
 aZc
-clp
-aYZ
-aYX
-aYQ
-aYJ
+bYd
+bXX
+bXI
+bXu
+cXT
 aYF
 aYr
 aYr
@@ -81183,11 +81507,11 @@ caN
 aYF
 cgg
 clH
-qwA
-rEn
-clj
-aYY
-aYT
+aYZ
+bYe
+akr
+bXJ
+cXW
 aYK
 ckJ
 ckh
@@ -81338,11 +81662,11 @@ aZw
 aZo
 kMS
 clI
-clw
-rEn
-clk
-aYW
-aYP
+cYh
+bXw
+akr
+bXK
+cXX
 aYI
 ckH
 cki
@@ -81494,11 +81818,11 @@ ptD
 hBO
 clJ
 clx
-aYO
-cll
-aYX
-aYQ
-aYJ
+bYf
+bXW
+bXL
+cXY
+cXT
 ckI
 ckj
 rwl
@@ -81649,10 +81973,10 @@ lvv
 aZm
 aZg
 cly
-caG
-aYR
-clb
-aYR
+bYg
+bXX
+bXM
+bXw
 aYJ
 ckK
 ckk
@@ -81804,10 +82128,10 @@ cKi
 aZm
 aZi
 clz
-clp
-rEn
-rEn
-aYO
+cYg
+bXY
+bXN
+cXZ
 aYJ
 ckL
 ckl
@@ -81960,8 +82284,8 @@ aZm
 cMI
 rEn
 clq
-rEn
-aYO
+cYe
+cYc
 aYO
 aYJ
 ckM
@@ -83667,8 +83991,8 @@ cfU
 rpE
 aYU
 axG
-aYL
-arY
+cYa
+cBR
 eQa
 rwl
 mHt
@@ -83821,9 +84145,9 @@ cfU
 clB
 rBA
 aYU
-axO
-asd
-pYR
+cYd
+cBR
+eQa
 rwl
 mHt
 cxZ
@@ -83976,9 +84300,9 @@ aYy
 clC
 cls
 azz
-aYU
-awA
-aXk
+cBR
+eQa
+rwl
 mHt
 cxZ
 cTl
@@ -84130,9 +84454,9 @@ rwl
 aZk
 kzV
 qHh
-aYU
-pYR
-aXk
+eQa
+eQa
+rwl
 mHt
 vBM
 ljc
@@ -84284,8 +84608,8 @@ lTi
 rwl
 clN
 aYU
-arY
-pYR
+cBR
+eQa
 rwl
 cxY
 cyL
@@ -84297,8 +84621,8 @@ iUJ
 qSE
 rwl
 cnU
-aVG
-aRI
+cXN
+aRH
 cQx
 cQM
 cTJ
@@ -84438,9 +84762,9 @@ aYa
 sTR
 rwl
 axO
-bax
-pYR
-aXk
+cBR
+eQa
+rwl
 cyZ
 cyL
 cyb
@@ -84449,11 +84773,11 @@ aDL
 rLM
 iUJ
 qSE
-aXk
+rwl
 cnU
-aRI
-aWg
-aRI
+cBR
+cXO
+aRH
 cUs
 cOy
 cUa
@@ -84592,9 +84916,9 @@ aXX
 bCD
 kfS
 rwl
-aZl
-pYR
-aXk
+cBR
+eQa
+rwl
 czd
 cza
 cTl
@@ -84603,10 +84927,10 @@ cyG
 iZP
 iUJ
 qSE
-aXk
+rwl
 cnU
-aRI
-aRI
+cBR
+aRH
 aRI
 aVG
 cQx
@@ -84758,10 +85082,10 @@ rLM
 cyv
 cwk
 rwl
-aXS
+cnU
+cBR
+cBR
 aRH
-aRH
-aRI
 aRI
 aVw
 aTP
@@ -84911,12 +85235,12 @@ uYB
 iZP
 cyv
 qSE
-aXk
-aXS
-aRH
-aRH
+rwl
+cnU
+cBR
+cBR
 aUZ
-aRH
+aRI
 aYp
 aVw
 cUt
@@ -85065,11 +85389,11 @@ aDL
 cxI
 cyv
 qSE
-aXk
-aXS
-aUZ
-aRI
-aRI
+rwl
+cnU
+cBR
+cBR
+aRH
 aRI
 cUW
 cnR
@@ -85220,11 +85544,11 @@ cwg
 cbO
 cwk
 rwl
-aXS
-aRH
-aRH
+cnU
+cBR
+cBR
 aRI
-aRI
+aRH
 aRI
 vOJ
 aXK
@@ -85374,13 +85698,13 @@ cwZ
 cwZ
 aXL
 rwl
-aXS
+cnU
+cBR
+aUU
 aRH
-aWw
 aRI
 aRI
-aRH
-aRH
+aRI
 cUX
 aXK
 aXK
@@ -85529,12 +85853,12 @@ aXl
 aXl
 aXl
 rwl
-aRI
-aRI
-aRI
+cBR
+cBR
+aRH
 aVK
-vnG
-kUK
+cXR
+cXQ
 kUK
 iUh
 cUH
@@ -85688,7 +86012,7 @@ rwl
 owh
 cVc
 aRI
-vOJ
+cXS
 aXK
 aXK
 aXW
@@ -85896,7 +86220,7 @@ aRL
 aQL
 aQK
 aPX
-bKZ
+aPI
 aQn
 aQS
 rvp
@@ -85906,7 +86230,7 @@ ryg
 erS
 aQn
 aQS
-bKZ
+aPI
 aQN
 aQN
 aQv
@@ -86050,18 +86374,18 @@ aRP
 aRL
 aQK
 aPX
-bKZ
-bKZ
-bKZ
-bKZ
-bKZ
+aPI
+aPI
+aPI
+aPI
+aPI
 aEr
 aBv
 apf
 bKZ
-bKZ
-bKZ
-bKZ
+aPI
+aPI
+aPI
 aQN
 aQN
 bvY
@@ -86126,10 +86450,10 @@ bbR
 afK
 bbR
 bbR
-rwl
-rwl
-rwl
-rwl
+aXE
+aXE
+aXE
+aXE
 aXY
 aYb
 aXE
@@ -86204,8 +86528,8 @@ aRU
 aRI
 cLF
 aRG
-bKZ
-bKZ
+aPI
+aPI
 cqB
 cpn
 cpn
@@ -86216,8 +86540,8 @@ aBf
 cpp
 cpn
 cpc
-bKZ
-bKZ
+aPI
+aPI
 cgi
 bvU
 bvW
@@ -86281,8 +86605,8 @@ rwl
 rwl
 rwl
 bHr
-rwl
-rwl
+aXE
+aXE
 bGD
 bGn
 bGh
@@ -86359,7 +86683,7 @@ aRH
 aRI
 cLF
 aRG
-bKZ
+aPI
 cqH
 aco
 cpf
@@ -86372,7 +86696,7 @@ cJf
 cpf
 cpd
 aDA
-bKZ
+aPI
 cgi
 bvU
 bvO
@@ -86514,7 +86838,7 @@ aRI
 cLH
 cLF
 aRG
-bKZ
+aPI
 cJE
 cpf
 cqw
@@ -86527,7 +86851,7 @@ cJg
 cJc
 cpf
 bCx
-bKZ
+aPI
 cnq
 bvU
 bvO
@@ -86619,9 +86943,9 @@ rwl
 rwl
 rwl
 rwl
-rwl
-rwl
-rwl
+aXE
+aXE
+aXE
 gvE
 aRI
 aRI
@@ -86669,7 +86993,7 @@ aRH
 aRI
 cLF
 aRG
-bKZ
+aPI
 cJF
 cJA
 cpo
@@ -86682,7 +87006,7 @@ cpr
 cJd
 cJa
 bCx
-bKZ
+aPI
 cnr
 bvU
 bvO
@@ -86776,7 +87100,7 @@ axh
 awS
 awD
 awu
-rwl
+aXE
 cUJ
 cUu
 cUu
@@ -86824,7 +87148,7 @@ aRI
 aRI
 cLF
 aRG
-bKZ
+aPI
 cJG
 cJC
 cpo
@@ -86837,7 +87161,7 @@ cps
 cpo
 cpj
 cIY
-bKZ
+aPI
 cNe
 bvU
 bvO
@@ -86931,7 +87255,7 @@ aYa
 nKc
 awE
 bxk
-rwl
+aXE
 oGN
 cUA
 cSn
@@ -86979,7 +87303,7 @@ aRH
 aRI
 cLF
 aRG
-bKZ
+aPI
 cJI
 cJC
 cJd
@@ -86992,7 +87316,7 @@ cJh
 cpo
 cpj
 cIY
-bKZ
+aPI
 cNf
 bvU
 bvO
@@ -87134,20 +87458,20 @@ aRI
 cLH
 cLF
 aRG
-bKZ
+aPI
 cJG
 cqC
 cJd
-aPI
+nmS
 cpV
 cJt
 cpD
 cpy
-aPI
+nmS
 cpo
 cpi
 cIY
-bKZ
+aPI
 cNg
 bvU
 bvO
@@ -87289,20 +87613,20 @@ aRH
 aRI
 cLF
 aRG
-bKZ
+aPI
 cJJ
 cqC
 cJd
-aPI
-aPI
-aPI
-aPI
-aPI
-aPI
+nmS
+nmS
+nmS
+nmS
+nmS
+nmS
 cpo
 cpi
 bCx
-bKZ
+aPI
 bwa
 bvU
 bvO
@@ -87444,7 +87768,7 @@ aRI
 aRI
 cLF
 aRG
-bKZ
+aPI
 cJK
 cpz
 cpo
@@ -87457,7 +87781,7 @@ cJi
 cJd
 cJb
 bCx
-bKZ
+aPI
 wQL
 bvU
 bvO
@@ -87599,7 +87923,7 @@ aRH
 aRI
 cLF
 aRG
-bKZ
+aPI
 cqI
 cpf
 cpz
@@ -87612,7 +87936,7 @@ cJd
 cJb
 cpf
 bCx
-bKZ
+aPI
 wcK
 bvU
 bvO
@@ -87754,7 +88078,7 @@ aRI
 cLH
 cLF
 aRG
-bKZ
+aPI
 cqJ
 acn
 cJy
@@ -87767,7 +88091,7 @@ cJb
 cpf
 cpl
 cpb
-bKZ
+aPI
 mdg
 eNv
 aQe
@@ -87848,8 +88172,8 @@ bEh
 bDW
 aXq
 noO
-aXE
-aXE
+ack
+ack
 bDq
 aXv
 aXj
@@ -87909,8 +88233,8 @@ aRH
 aRI
 cLF
 aRG
-bKZ
-bKZ
+aPI
+aPI
 cqx
 cJz
 cpf
@@ -87921,8 +88245,8 @@ cpf
 cpf
 cpl
 cpm
-bKZ
-bKZ
+aPI
+aPI
 qfp
 eNv
 bvX
@@ -88002,10 +88326,10 @@ rwl
 bEi
 aXj
 bDO
-aXE
-aXE
-aXE
-aXE
+ack
+ack
+ack
+ack
 bDh
 bDb
 bCN
@@ -88065,7 +88389,7 @@ aRI
 cLF
 aRw
 aRo
-bKZ
+aPI
 cJD
 aJy
 cpt
@@ -88075,8 +88399,8 @@ cpt
 cpt
 cpt
 agI
-bKZ
-bKZ
+aPI
+aPI
 jOl
 bwa
 eNv
@@ -88157,10 +88481,10 @@ rwl
 bEj
 aXj
 aXq
-aXE
-aXE
-aXE
-aXE
+ack
+ack
+ack
+ack
 bDi
 bDc
 bCO
@@ -88221,16 +88545,16 @@ cLF
 aRx
 aRw
 aRo
-bKZ
-bKZ
+aPI
+aPI
 aPN
 aPN
 aQU
 aQU
 aPN
 aPN
-bKZ
-bKZ
+aPI
+aPI
 bwa
 aiv
 bwa
@@ -88313,8 +88637,8 @@ cVh
 bxx
 bDP
 noO
-aXE
-aXE
+ack
+ack
 bDr
 aXv
 aXj
@@ -88481,7 +88805,7 @@ cMq
 cxJ
 bxk
 awy
-cXr
+ack
 cUS
 cUF
 cXs
@@ -88606,8 +88930,8 @@ bIh
 bHX
 bHJ
 bHz
-aXE
-aXE
+ack
+ack
 bGK
 bGw
 bxv
@@ -88617,8 +88941,8 @@ aXv
 aXj
 bFe
 bER
-aXE
-aXE
+ack
+ack
 bEl
 bDa
 bxk
@@ -88636,7 +88960,7 @@ awF
 bCD
 aXq
 awz
-cXr
+ack
 cUT
 cXt
 ssk
@@ -88760,10 +89084,10 @@ aXE
 aXE
 aXE
 aXE
-aXE
-aXE
-aXE
-aXE
+ack
+ack
+ack
+ack
 bGx
 bDa
 aXq
@@ -88771,9 +89095,9 @@ bFT
 aXv
 aXj
 bFf
-aXE
-aXE
-aXE
+ack
+ack
+ack
 bEm
 bDY
 bDR
@@ -88791,7 +89115,7 @@ aXs
 aXs
 aXZ
 awB
-cXr
+ack
 cUU
 cUG
 otG
@@ -88915,10 +89239,10 @@ bVE
 bdR
 bVO
 bVG
-aXE
-aXE
-aXE
-aXE
+ack
+ack
+ack
+ack
 aXq
 bDa
 bGc
@@ -88926,9 +89250,9 @@ bFU
 bxt
 aXj
 bFg
-aXE
-aXE
-aXE
+ack
+ack
+ack
 bEn
 bDZ
 aXq
@@ -88946,10 +89270,10 @@ aXX
 aXY
 aYb
 rwl
-cXr
-cXr
-cXr
-cXr
+ack
+ack
+ack
+ack
 cXq
 czV
 swa
@@ -89071,8 +89395,8 @@ bbl
 cLb
 bVG
 bVB
-aXE
-aXE
+ack
+ack
 bGL
 bGw
 bxx
@@ -89082,8 +89406,8 @@ bxu
 bxx
 bFh
 bES
-aXE
-aXE
+ack
+ack
 bEo
 bEa
 aXq
@@ -89105,7 +89429,7 @@ cwN
 cwl
 cbj
 cbj
-cXr
+ack
 czV
 rqz
 swa
@@ -89243,8 +89567,8 @@ bEp
 aXj
 bDS
 bDG
-aXE
-aXE
+ack
+ack
 mku
 aXv
 bxv
@@ -89260,7 +89584,7 @@ cwO
 cwm
 cvV
 cvz
-cXr
+ack
 dkA
 rqz
 rqz
@@ -89296,9 +89620,9 @@ nxy
 nxy
 nxy
 nxy
-aOW
-aOW
-aOW
+lNw
+lNw
+lNw
 cBR
 aRH
 aUZ
@@ -89397,10 +89721,10 @@ aGK
 uvw
 bxx
 bDO
-aXE
-aXE
-aXE
-aXE
+ack
+ack
+ack
+ack
 bDh
 bxv
 bxk
@@ -89415,7 +89739,7 @@ cwP
 cwn
 cvW
 cvA
-cXr
+ack
 sZm
 cXn
 cXl
@@ -89453,7 +89777,7 @@ aCt
 cry
 crk
 cLP
-aOW
+lNw
 cBR
 cBR
 aRH
@@ -89552,10 +89876,10 @@ aGK
 uvw
 bxv
 aXq
-aXE
-aXE
-aXE
-aXE
+ack
+ack
+ack
+ack
 aXv
 bxv
 aXq
@@ -89570,7 +89894,7 @@ rwl
 cwo
 cvW
 cvB
-cXr
+ack
 uEx
 pOO
 ssk
@@ -89608,7 +89932,7 @@ aRQ
 crz
 cra
 cqZ
-aOW
+lNw
 cBR
 cBR
 cBR
@@ -89708,8 +90032,8 @@ uvw
 bEb
 bxk
 bDH
-aXE
-aXE
+ack
+ack
 mku
 bDo
 bDa
@@ -89725,7 +90049,7 @@ cwQ
 cwp
 cvW
 cvC
-cXr
+ack
 cWI
 cWI
 gRa
@@ -89763,7 +90087,7 @@ aRQ
 aRQ
 aRQ
 cra
-aOW
+lNw
 cBR
 cBR
 cBR
@@ -89880,7 +90204,7 @@ cMj
 cwq
 cvX
 cvE
-cXr
+ack
 mVu
 hwf
 iYT
@@ -89918,7 +90242,7 @@ crO
 crA
 aRQ
 acl
-aOW
+lNw
 cBR
 cBR
 aUZ
@@ -90029,13 +90353,13 @@ cyz
 cvW
 cyg
 cxO
-aXE
-aXE
+ack
+ack
 cwR
 cwr
 cvW
 cvF
-cXr
+ack
 cUe
 czV
 cXm
@@ -90073,7 +90397,7 @@ crm
 anu
 crl
 anu
-aOW
+lNw
 cBR
 aRH
 aRI
@@ -90184,13 +90508,13 @@ cyA
 cMs
 cyh
 aXE
-aXE
-aXE
+ack
+ack
 aXE
 cws
 cvY
 cbj
-cXr
+ack
 cUf
 cTT
 utR
@@ -90228,7 +90552,7 @@ anu
 crm
 crm
 anu
-aOW
+lNw
 cBR
 aUU
 aRI
@@ -90345,7 +90669,7 @@ cbj
 cwt
 cvY
 cvG
-cXr
+ack
 cUg
 cTU
 cXe
@@ -90383,7 +90707,7 @@ anu
 anu
 crn
 anu
-aOW
+lNw
 iYT
 aRH
 aRI
@@ -90500,7 +90824,7 @@ cbj
 cwu
 cvY
 cvH
-cXr
+ack
 cWQ
 cXo
 cTy
@@ -91182,15 +91506,15 @@ bKZ
 bKZ
 bKZ
 bKZ
-bKZ
-bKZ
+aPI
+aPI
 cDg
 aEi
 aEo
 cCL
-bKZ
-bKZ
-bKZ
+aPI
+aPI
+aPI
 cHv
 aEL
 cFz
@@ -91262,9 +91586,9 @@ bxv
 bxk
 bJc
 rwl
-aXE
-aXE
-aXE
+cXr
+cXr
+cXr
 rwl
 rwl
 rwl
@@ -91274,8 +91598,8 @@ cwT
 cwT
 rwl
 rwl
-aXE
-aXE
+ack
+ack
 aVu
 aWv
 aVG
@@ -91338,12 +91662,12 @@ cFH
 aPN
 aPN
 cFp
-bKZ
+aPI
 cDh
 aEi
 aEo
 cIl
-bKZ
+aPI
 agH
 cHP
 cHw
@@ -91417,9 +91741,9 @@ bxx
 bFX
 aXv
 bHa
-aXE
-aXE
-aXE
+cXr
+cXr
+cXr
 cyD
 cyt
 cym
@@ -91429,8 +91753,8 @@ aXv
 aXq
 cwz
 bHa
-aXE
-aXE
+ack
+ack
 rwl
 rwl
 rwl
@@ -91493,12 +91817,12 @@ cFI
 cIO
 aPN
 cFq
-bKZ
+aPI
 cDj
 aEi
 aEo
 cIl
-bKZ
+aPI
 aqK
 cHQ
 cHx
@@ -91653,7 +91977,7 @@ cDk
 aEi
 aEo
 cIm
-bKZ
+aPI
 arn
 cHQ
 cHx
@@ -92188,9 +92512,9 @@ bJq
 bJs
 bJq
 bJk
-rwl
-rwl
-rwl
+aXE
+aXE
+aXE
 aXq
 eEO
 aXX
@@ -92273,7 +92597,7 @@ cDn
 aEi
 aEo
 cIr
-bKZ
+aPI
 aqK
 cHQ
 cHy
@@ -92343,7 +92667,7 @@ bJv
 bJt
 bJk
 bJl
-rwl
+aXE
 aVN
 ajp
 aRs
@@ -92428,7 +92752,7 @@ cIC
 aEi
 aEo
 cIs
-bKZ
+aPI
 aBz
 cHS
 cHz
@@ -92496,9 +92820,9 @@ rwl
 rwl
 rwl
 rwl
-rwl
-rwl
-rwl
+aXE
+aXE
+aXE
 aVN
 aVN
 aRs
@@ -92563,8 +92887,8 @@ bPd
 bOU
 bOK
 nmS
-bKZ
-bKZ
+aPI
+aPI
 cpR
 aEi
 aEo
@@ -92583,9 +92907,9 @@ cDp
 aEi
 aEo
 cCN
-bKZ
-bKZ
-bKZ
+aPI
+aPI
+aPI
 cHA
 aFj
 nmS
@@ -92653,7 +92977,7 @@ arW
 arU
 aTF
 arS
-rwl
+aXE
 aRD
 aRR
 aRt
@@ -92718,8 +93042,8 @@ bOW
 bOV
 bOL
 nmS
-bKZ
-bKZ
+aPI
+aPI
 cpR
 aEi
 aEo
@@ -92873,8 +93197,8 @@ bPe
 bOW
 bOM
 nmS
-bKZ
-bKZ
+aPI
+aPI
 cJw
 aEi
 cJm
@@ -93028,8 +93352,8 @@ bPf
 bOX
 bON
 nmS
-bKZ
-bKZ
+aPI
+aPI
 cpR
 aEi
 aEo
@@ -93183,8 +93507,8 @@ bPg
 bOW
 bOM
 nmS
-bKZ
-bKZ
+aPI
+aPI
 cpR
 aEi
 aEo
@@ -94061,8 +94385,8 @@ aTs
 aTs
 cVb
 aRm
-bzI
-bzI
+cXP
+cXP
 oJW
 cUz
 oJW
@@ -94128,7 +94452,7 @@ cFu
 cFE
 aQU
 cFy
-bKZ
+aPI
 cDp
 dPD
 cHO
@@ -94198,9 +94522,9 @@ bzI
 bzI
 bzI
 bzI
-bzI
-bzI
-aRN
+cXP
+cXP
+cXP
 aRN
 aSV
 cMv
@@ -94215,8 +94539,8 @@ aRt
 aRu
 aRN
 aRm
-bzI
-bzI
+cXP
+cXP
 aiH
 oJW
 aig
@@ -94282,9 +94606,9 @@ cLA
 cLy
 cFG
 cFD
-bKZ
-bKZ
-cDp
+aPI
+aPI
+cWH
 kJc
 cIv
 bKZ
@@ -94354,8 +94678,8 @@ bam
 aZM
 oaF
 eMS
-bzI
-aRn
+cXP
+cXP
 aRn
 aRs
 aTs
@@ -94369,8 +94693,8 @@ aTs
 bmq
 aYn
 aRn
-aRn
-bzI
+cXP
+cXP
 aiT
 vqG
 oJW
@@ -94436,8 +94760,8 @@ bKZ
 aAH
 aAH
 bKZ
-bKZ
-bKZ
+aPI
+aPI
 aQU
 cDs
 kJc
@@ -94510,8 +94834,8 @@ aVy
 mov
 dBz
 bzI
-aRn
-ajq
+cXP
+cXP
 aRs
 aTs
 aTs
@@ -94523,9 +94847,9 @@ hVR
 aTs
 nGt
 aYn
-aRn
-ajq
-bzI
+cXP
+cXP
+cXP
 bBg
 koj
 adn
@@ -94678,8 +95002,8 @@ yhF
 aVd
 bpK
 bot
-cxS
-bzI
+cXP
+cXP
 bzI
 kXm
 eHc
@@ -96128,8 +96452,8 @@ cBR
 cBR
 cBR
 nmS
-bKZ
-bKZ
+aPI
+aPI
 cDp
 aEi
 aEo
@@ -96283,8 +96607,8 @@ cBR
 cBR
 cBR
 nmS
-bKZ
-bKZ
+aPI
+aPI
 cDo
 aEU
 agq
@@ -96438,8 +96762,8 @@ cBR
 cBR
 cBR
 nmS
-bKZ
-bKZ
+aPI
+aPI
 cpR
 cpI
 aEo
@@ -96613,9 +96937,9 @@ aPO
 aPO
 aPO
 bzd
-hNg
-hNg
-hNg
+hqB
+hqB
+hqB
 bzd
 aPO
 aPO
@@ -96768,9 +97092,9 @@ cHd
 cHd
 cGX
 bzd
-bzd
-hNg
-bzd
+hqB
+hqB
+hqB
 bzd
 cGX
 cHd
@@ -96824,9 +97148,9 @@ bbV
 bba
 cAe
 bWO
-oJW
-bzI
-bzI
+cXP
+cXP
+cXP
 bzI
 bzI
 bzI
@@ -96924,7 +97248,7 @@ cHe
 cIw
 cIt
 bzd
-hNg
+hqB
 bzd
 cHK
 cGV
@@ -96978,9 +97302,9 @@ bbD
 bbV
 bba
 bUV
-bbh
-oJW
-bJB
+cXP
+cXP
+cYi
 bKk
 bJX
 bKk
@@ -97079,7 +97403,7 @@ cHe
 cIw
 cGV
 cIg
-hNg
+hqB
 cHV
 cGY
 cGV
@@ -97127,14 +97451,14 @@ sly
 bLF
 brj
 brj
-cAj
+bXO
 cAg
 bbD
 bbV
 bba
 bbv
-baF
-oJW
+cXP
+cXP
 agU
 bKL
 bKy
@@ -97234,7 +97558,7 @@ cHe
 cIw
 cGV
 cIh
-hNg
+hqB
 cHW
 cGY
 cGV
@@ -97280,9 +97604,9 @@ aRn
 bLS
 bLS
 bLG
-oJW
-oJW
-aVj
+cYl
+cXP
+cXP
 oJW
 nFZ
 nFZ
@@ -97389,7 +97713,7 @@ cIy
 cIw
 cGV
 cIi
-hNg
+hqB
 cHX
 cGY
 cGV
@@ -97435,9 +97759,9 @@ bMI
 bLT
 bLT
 bLH
-oJW
-aVp
-bII
+cXP
+cYj
+cYj
 oJW
 ahd
 aha
@@ -97544,7 +97868,7 @@ aPL
 cIw
 cGV
 cIj
-hNg
+hqB
 cHY
 cHL
 cGV
@@ -97590,8 +97914,8 @@ bMJ
 iQp
 bLU
 bLI
-oJW
-cmc
+cXP
+cYj
 oJW
 oJW
 ahe
@@ -97699,7 +98023,7 @@ cIz
 cIw
 aPJ
 cIk
-hNg
+hqB
 cHZ
 cHM
 cGV
@@ -97747,7 +98071,7 @@ bLV
 bLJ
 oJW
 brp
-oJW
+bLC
 ahg
 hbo
 jPI
@@ -97854,7 +98178,7 @@ cHd
 aLt
 aLo
 bzd
-hNg
+hqB
 bzd
 cGY
 cGV
@@ -97902,7 +98226,7 @@ bLW
 bLJ
 oJW
 brl
-oJW
+aWJ
 bco
 ahf
 ahb
@@ -98056,8 +98380,8 @@ bMp
 bLV
 bLJ
 oJW
-aVj
-oJW
+bmU
+aWy
 lUm
 kIZ
 jtr

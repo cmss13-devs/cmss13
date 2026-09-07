@@ -1083,9 +1083,9 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/flashlight/laser_light_combo/lowcaliber
 	name = "VP78 Laser-Light Module"
 	desc = "A Laser-Light module for the VP78 Service Pistol which is currently undergoing limited field testing as part of the USCM's next generation pistol program. All VP78-A1 Pistols come equipped with the module."
-	icon_state = "vplaserlight-small"
+	icon_state = "vplaserlight-small_a"
 	attach_icon = "vplaserlight-small_a"
-	original_state = "vplaserlight-small"
+	original_state = "vplaserlight-small_a"
 	original_attach = "vplaserlight-small_a"
 
 /obj/item/attachable/magnetic_harness

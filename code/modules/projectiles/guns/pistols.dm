@@ -946,14 +946,6 @@
 /obj/item/weapon/gun/pistol/vp78/lowcaliber/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 22,"rail_x" = 10, "rail_y" = 22, "under_x" = 20, "under_y" = 17, "stock_x" = 18, "stock_y" = 14)
 
-/obj/item/weapon/gun/pistol/vp78/lowcaliber/handle_starting_attachment()
-	..()
-	var/obj/item/attachable/flashlight/laser_light_combo/lowcaliber/VP = new(src)
-	VP.flags_attach_features &= ~ATTACH_REMOVABLE
-	VP.hidden = FALSE
-	VP.Attach(src)
-	update_attachable(VP.slot)
-
 /obj/item/weapon/gun/pistol/vp78/lowcaliber/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_10)

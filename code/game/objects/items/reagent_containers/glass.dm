@@ -370,7 +370,7 @@
 
 		//FINALLY, the good shit that actually fills the autoinjector!
 		reagents.trans_id_to(autoinjector, autoinjector.chemname, amount) //fill this bih
-		autoinjector.uses_left = uses
+		autoinjector.uses_left = autoinjector.max_uses
 		autoinjector.update_icon()
 		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		to_chat(user, SPAN_INFO("You successfully refill [autoinjector] with [src]!"))

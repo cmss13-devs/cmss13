@@ -338,43 +338,43 @@
 		/obj/structure/machinery/autodispenser,
 		/obj/structure/machinery/constructable_frame,
 	)
-
+	/// A list of item types that allow reagent refilling.
+	var/list/chem_refill = list(
+		/obj/item/reagent_container/hypospray/autoinjector/standard,
+		/obj/item/reagent_container/hypospray/autoinjector/ez,
+		/obj/item/reagent_container/hypospray/autoinjector/tutorial,
+	)
 /obj/item/reagent_container/glass/minitank/on_reagent_change()
 	update_icon()
 
+/obj/item/reagent_container/glass/minitank/attackby(obj/item/item as obj, mob/user as mob)
+	if(istype(item, /obj/item/reagent_container/hypospray/autoinjector))
+		var/obj/item/reagent_container/hypospray/autoinjector/autoinjector = item
+		var/amount = (autoinjector.reagents.maximum_volume - autoinjector.reagents.total_volume)
 
-/obj/item/reagent_container/glass/minitank/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
-		var/obj/item/reagent_container/hypospray/autoinjector/A = W
-		if(A.mixed_chem)
-			to_chat(user, SPAN_WARNING("The autoinjector doesn't fit into [src]'s valve. It's probably not compatible."))
-			return
-		if(reagents.has_reagent(A.chemname, A.volume))
-			reagents.trans_id_to(A, A.chemname, A.volume)
-			A.uses_left = 3
-			A.update_icon()
-			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
+		if(autoinjector.reagents.total_volume >= autoinjector.reagents.maximum_volume) //Autoinjector is full!
+			to_chat(user, SPAN_NOTICE("[autoinjector] is full."))
+			return FALSE
 		else
-			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. The tank can't refill [A] - it's either incompatible or out of chemicals to fill it with!"))
-			. = ..()
-			return
-		to_chat(user, SPAN_INFO("You successfully refill [A] with [src]!"))
+			if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/research)) //Autoinjector says, "Where's my pouch?"
+				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'Custom PRCP valve detected in [autoinjector]. Compatibility test failed.'"))
+				return FALSE
+			else if(autoinjector.is_crystal || autoinjector.is_stimpack) //These aren't autoinjectors. The tank won't bother for error messages.
+				return FALSE
+			else if(autoinjector.cannot_refill)
+				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'No refill valve detected on [autoinjector].'"))
+				return FALSE
+			else if(!reagents.has_reagent(autoinjector.chemname, amount)) // Not enough reagents in the tank to refill the autoinjector.
+				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'Refill failed. [amount]u [autoinjector.chemname] required to completely refill [autoinjector].'"))
+				return FALSE
 
-/obj/item/reagent_container/glass/minitank/verb/flush_tank()
-	set category = "Object"
-	set name = "Flush Tank"
-	set src in usr
-
-	if(usr.is_mob_incapacitated())
-		return
-	if(src.reagents.total_volume == 0)
-		to_chat(usr, SPAN_WARNING("It's already empty!"))
-		return
-	playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
-	to_chat(usr, SPAN_WARNING("You work the flush valve and successfully flush [src]'s contents!"))
-	reagents.clear_reagents()
-	update_icon() // just to be sure
-	return
+		//FINALLY, the good shit that actually fills the autoinjector!
+		reagents.trans_id_to(autoinjector, autoinjector.chemname, amount) //fill this bih
+		autoinjector.uses_left = autoinjector.max_uses
+		autoinjector.update_icon()
+		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
+		to_chat(user, SPAN_INFO("You successfully refill [autoinjector] with [src]!"))
+		return TRUE
 
 /obj/item/reagent_container/glass/minitank/update_icon()
 	overlays.Cut()

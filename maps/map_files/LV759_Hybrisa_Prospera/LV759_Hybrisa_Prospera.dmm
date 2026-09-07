@@ -156455,9 +156455,6 @@
 /turf/open/floor/kutjevo/grey,
 /area/lv759/indoors/recycling_plant/garage)
 "woF" = (
-/obj/effect/acid_hole{
-	explo_proof = 1
-	},
 /obj/structure/blocker/invisible_wall,
 /turf/closed/shuttle/dropship_wy/StarGlider{
 	icon_state = "79";

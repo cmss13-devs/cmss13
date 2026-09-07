@@ -1,4 +1,4 @@
 author: "MistChristmas"
 delete-after: True
 changes:
-  - bugfix: "Transmute works again"
+  - bugfix: "Add html encoding to Flavour Text"

@@ -25,6 +25,8 @@
 	var/chemical_unclear = FALSE
 	///If TRUE, it's a strange crystal.
 	var/is_crystal = FALSE
+	///if TRUE, this looks like a stimpack.
+	var/is_stimpack = FALSE
 	///How many uses are left in this autoinjector?
 	var/uses_left = 3
 	///From full, how many injections are in this autoinjector until it needs to be refilled or disposed?
@@ -36,6 +38,10 @@
 	///If TRUE, you can see a little bit of text underneath its icon while holding it.
 	var/display_maptext = FALSE
 	var/maptext_label
+	///Typically more than two injections will overdose a patient.
+	var/easily_overdosed = TRUE
+	///Typically more than one injection will overdose a patient.
+	var/very_easily_overdosed = FALSE
 
 	maptext_height = 16
 	maptext_width = 24
@@ -95,11 +101,15 @@
 			if(is_crystal) //this is a yautja crystal
 				if(isyautja(user)) //is a yautja looking at it or not?
 					. += SPAN_NOTICE("It is currently loaded with a single injection of [amount_per_transfer_from_this]u [capitalize(chemname)].")
+					. += SPAN_HELPFUL("You instinctly know to not administer more than one of these within a short period.") //for new yautjas
 				else if (uses_left <= 0)
 					. += SPAN_NOTICE("You do not know how many injections it has or what is in it.")
 		else
 			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections of [amount_per_transfer_from_this]u [capitalize(chemname)].")
-
+		if(easily_overdosed)
+			. += SPAN_WARNING("A warning label says: do not administer more than twice within a short period.")
+		else if(very_easily_overdosed && !is_crystal)
+			. += SPAN_WARNING("A warning label says: do not administer more than once within a short period.")
 
 	else if(uses_left <= 0)
 		if(cannot_refill)
@@ -186,6 +196,8 @@
 	amount_per_transfer_from_this = 1
 	volume = 3
 	maptext_label = "D+"
+	easily_overdosed = FALSE
+
 
 /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol
 	name = "tramadol autoinjector"
@@ -465,6 +477,7 @@
 	volume = 1
 	amount_per_transfer_from_this = 1
 	maptext_label = "OuD+"
+	easily_overdosed = FALSE
 
 /obj/item/reagent_container/hypospray/autoinjector/tutorial/antitoxin //in case we ever want to add toxin damage to the medical tutorial
 	name = "dylovene EZ autoinjector (FOR TRAINING USE ONLY)"
@@ -535,6 +548,8 @@
 	skilllock = SKILL_MEDICAL_DEFAULT
 	cannot_refill = TRUE
 	chemical_unclear = TRUE
+	easily_overdosed = FALSE
+	very_easily_overdosed = TRUE
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency/Initialize() //29u bicaridine, 29u kelotane, 19u oxycodone, 1u dexalin +.
 	. = ..()
@@ -569,7 +584,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine
 	name = "ultrazine stimpack"
 	chemname = "ultrazine"
-	desc = "A stimpack that injects ultrazine, a special and illegal muscle stimulant. Do not administer more than twice at a time. Highly addictive."
+	desc = "A stimpack that injects ultrazine, a special and illegal muscle stimulant. Highly addictive."
 	amount_per_transfer_from_this = 5
 	volume = 25
 	uses_left = 5
@@ -579,6 +594,7 @@
 	skilllock = SKILL_MEDICAL_DEFAULT
 	display_maptext = FALSE //corporate secret
 	cannot_refill = TRUE
+	is_stimpack = TRUE
 
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine/update_icon()
 	. = ..()
@@ -615,6 +631,8 @@
 	black_market_value = 25
 	cannot_refill = TRUE
 	is_crystal = TRUE
+	easily_overdosed = FALSE
+	very_easily_overdosed = TRUE
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall
 	name = "orange unusual crystal"
@@ -653,6 +671,7 @@
 	uses_left = 0
 	max_uses = 3
 	display_maptext = FALSE
+	easily_overdosed = FALSE
 
 /obj/item/reagent_container/hypospray/autoinjector/research/get_examine_text(mob/user)
 	. = ..()
@@ -741,6 +760,7 @@
 	name = "custom EZ one-use autoinjector (10u)"
 	volume = 10
 	amount_per_transfer_from_this = 10
+
 
 /obj/item/reagent_container/hypospray/autoinjector/research/ez/medium
 	name = "custom EZ one-use autoinjector (15u)"

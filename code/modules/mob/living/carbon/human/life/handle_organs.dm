@@ -7,29 +7,33 @@
 	for(var/datum/internal_organ/I as anything in internal_organs)
 		I.process(delta_time)
 
-	for(var/obj/limb/E as anything in limbs_to_process)
-		if(!E)
-			continue
-		if(!E.need_process())
-			E.stop_processing()
+	// Bundle wound overlay updates if they are needed instead of doing it once per limb
+	var/update_wound_overlays = FALSE
+
+	for(var/obj/limb/limb as anything in limbs_to_process)
+		if(!(limb.status & LIMB_DESTROYED))
+			update_wound_overlays = TRUE
+
+		if(!limb.need_process())
+			limb.stop_processing()
 			continue
 		else
-			E.process()
+			limb.process()
 
 			if(body_position == STANDING_UP && world.time - l_move_time < 15)
 			// Moving around with fractured ribs won't do you any good
-				if(E.is_broken() && E.internal_organs && prob(15))
-					var/datum/internal_organ/I = pick(E.internal_organs)
-					custom_pain("You feel broken bones moving in your [E.display_name]!", 1)
+				if(limb.is_broken() && limb.internal_organs && prob(15))
+					var/datum/internal_organ/organ = pick(limb.internal_organs)
+					custom_pain("You feel broken bones moving in your [limb.display_name]!", 1)
 					var/damage = rand(3,5)
-					I.take_damage(damage)
+					organ.take_damage(damage)
 					pain.apply_pain(damage * PAIN_ORGAN_DAMAGE_MULTIPLIER)
-				if(E.is_broken() && prob(2))
+				if(limb.is_broken() && prob(2))
 					var/damage = rand(3,5)
 					var/datum/wound/internal_bleeding/internal_bleed = new
-					E.add_bleeding(internal_bleed, TRUE, damage)
-					E.wounds += internal_bleed
-					custom_pain("You feel broken bones cutting at you in your [E.display_name]!", 1)
+					limb.add_bleeding(internal_bleed, TRUE, damage)
+					limb.wounds += internal_bleed
+					custom_pain("You feel broken bones cutting at you in your [limb.display_name]!", 1)
 					pain.apply_pain(damage * 1.5)
 
 	if(body_position == STANDING_UP && !buckled && prob(2))
@@ -59,3 +63,7 @@
 				emote("pain")
 			custom_pain("You can't stand on broken legs!", 1)
 			apply_effect(5, WEAKEN)
+
+	// Essentially limbs want to update damage overlays each individually. We update them all at same time to optimize.
+	if(update_wound_overlays)
+		update_damage_overlays()

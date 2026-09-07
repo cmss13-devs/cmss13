@@ -1,0 +1,4 @@
+author: "Fira, antlersss"
+delete-after: True
+changes:
+  - balance: "Sentries and mounted guns like M56D and M2C cannot be deployed inside tents anymore."

@@ -35,7 +35,7 @@
 /datum/game_mode/extended/declare_completion()
 	announce_ending()
 	var/musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
-	world << musical_track
+	send_end_round_music(musical_track)
 
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.game_mode = name

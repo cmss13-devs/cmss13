@@ -4,10 +4,12 @@
 	name = GAMEMODE_HIVE_WARS
 	config_tag = GAMEMODE_HIVE_WARS
 	required_players = 4 //Need at least 4 players
-	xeno_required_num = 4 //Need at least four xenos.
 	monkey_amount = 0.2 // Amount of monkeys per player
 	static_comms_amount = 0
 	flags_round_type = MODE_NO_SPAWN|MODE_NO_LATEJOIN|MODE_XVX|MODE_RANDOM_HIVE
+
+	var/xeno_required_num = 4 //Need at least four xenos.
+	var/xeno_starting_num = 0 //To clamp starting xenos.
 
 	var/list/structures_to_delete = list(/obj/effect/alien/weeds, /turf/closed/wall/resin, /obj/structure/mineral_door/resin, /obj/structure/bed/nest, /obj/item, /obj/structure/tunnel, /obj/structure/machinery/defenses/sentry/premade)
 	var/list/hives = list()
@@ -33,6 +35,86 @@
 	if(!initialize_starting_xenomorph_list(hives, bypass_checks))
 		hives.Cut()
 		return FALSE
+	return TRUE
+
+//===================================================\\
+
+			//XENOMORPH INITIALIZE\\
+
+//===================================================\\
+
+//If we are selecting xenomorphs, we NEED them to play the round. This is the expected behavior.
+//If this is an optional behavior, just override this proc or make an override here.
+/datum/game_mode/xenovs/proc/initialize_starting_xenomorph_list(list/hives = list(XENO_HIVE_NORMAL), bypass_checks = FALSE)
+	var/list/datum/mind/possible_xenomorphs = get_players_for_role(JOB_XENOMORPH)
+	var/list/datum/mind/possible_queens = get_players_for_role(JOB_XENOMORPH_QUEEN)
+	if(length(possible_xenomorphs) < xeno_required_num && !bypass_checks) //We don't have enough aliens, we don't consider people rolling for only Queen.
+		to_world("<h2 style=\"color:red\">Not enough players have chosen to be a xenomorph in their character setup. <b>Aborting</b>.</h2>")
+		return
+
+	//Minds are not transferred at this point, so we have to clean out those who may be already picked to play.
+	for(var/datum/mind/A in possible_queens)
+		var/mob/living/original = A.current
+		var/client/client = GLOB.directory[A.ckey]
+		if(jobban_isbanned(original, XENO_CASTE_QUEEN) || !can_play_special_job(client, XENO_CASTE_QUEEN))
+			LAZYREMOVE(possible_queens, A)
+
+	if(LAZYLEN(possible_queens)) // Pink one of the people who want to be Queen and put them in
+		for(var/hive in hives)
+			var/new_queen = pick(possible_queens)
+			if(new_queen)
+				setup_new_xeno(new_queen)
+				picked_queens += list(GLOB.hive_datum[hive] = new_queen)
+				LAZYREMOVE(possible_xenomorphs, new_queen)
+
+	for(var/datum/mind/A in possible_xenomorphs)
+		if(A.roundstart_picked)
+			LAZYREMOVE(possible_xenomorphs, A)
+
+	for(var/hive in hives)
+		xenomorphs[GLOB.hive_datum[hive]] = list()
+
+	var/datum/mind/new_xeno
+	var/current_index = 1
+	var/remaining_slots = 0
+	for(var/i in 1 to xeno_starting_num) //While we can still pick someone for the role.
+		if(current_index > LAZYLEN(hives))
+			current_index = 1
+
+		var/datum/hive_status/hive = GLOB.hive_datum[hives[current_index]]
+		if(LAZYLEN(possible_xenomorphs)) //We still have candidates
+			new_xeno = pick(possible_xenomorphs)
+			LAZYREMOVE(possible_xenomorphs, new_xeno)
+
+			if(!new_xeno)
+				hive.stored_larva++
+				hive.hive_ui.update_burrowed_larva()
+				continue  //Looks like we didn't get anyone. Keep going.
+
+			setup_new_xeno(new_xeno)
+
+			xenomorphs[hive] += new_xeno
+		else //Out of candidates, fill the xeno hive with burrowed larva
+			remaining_slots = floor((xeno_starting_num - i))
+			break
+
+		current_index++
+
+
+	if(remaining_slots)
+		var/larva_per_hive = floor(remaining_slots / LAZYLEN(hives))
+		for(var/hivenumb in hives)
+			var/datum/hive_status/hive = GLOB.hive_datum[hivenumb]
+			hive.stored_larva = larva_per_hive
+
+	/*
+	Our list is empty. This can happen if we had someone ready as alien and predator, and predators are picked first.
+	So they may have been removed from the list, oh well.
+	*/
+	if(LAZYLEN(xenomorphs) < xeno_required_num && LAZYLEN(picked_queens) != LAZYLEN(hives) && !bypass_checks)
+		to_world("<h2 style=\"color:red\">Could not find any candidates after initial alien list pass. <b>Aborting</b>.</h2>")
+		return
+
 	return TRUE
 
 /datum/game_mode/xenovs/announce()
@@ -278,9 +360,7 @@
 	var/musical_track
 	musical_track = pick('sound/theme/neutral_melancholy1.ogg', 'sound/theme/neutral_melancholy2.ogg')
 
-	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
-	S.status = SOUND_STREAM
-	sound_to(world, S)
+	send_end_round_music(musical_track)
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.game_mode = name
 		GLOB.round_statistics.round_length = world.time

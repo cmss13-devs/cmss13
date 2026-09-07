@@ -30,11 +30,9 @@ type Data = {
   output_color: string | null;
   input_container: string | null;
   memory:
-    | Record<number, Record<string, { name: string; amount?: number }>>
-    | string;
+    Record<number, Record<string, { name: string; amount?: number }>> | string;
   box:
-    | Record<number, Record<string, { name: string; amount?: number }>>
-    | string;
+    Record<number, Record<string, { name: string; amount?: number }>> | string;
 };
 
 export const Autodispenser = () => {

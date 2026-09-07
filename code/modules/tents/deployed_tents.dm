@@ -50,8 +50,19 @@
 /// Handler for callback of COMSIG_MOVABLE_TURF_ENTERED (turf changed)
 /obj/structure/tent/proc/register_turf_signals()
 	SIGNAL_HANDLER
-	for(var/turf/turf in locs)
+	for(var/turf/turf as anything in locs) // Make sure to change that and overriding if the tent can one day move.
 		RegisterSignal(turf, COMSIG_TURF_ENTERED, PROC_REF(movable_entering_tent), override = TRUE)
+		RegisterSignal(turf, COMSIG_TURF_PRE_DEPLOYMENT, PROC_REF(filter_turf_deployment), override = TRUE)
+
+/// Prevents deployment of sentries and mounted guns in the tent
+/obj/structure/tent/proc/filter_turf_deployment(turf/source, deployable_type)
+	SIGNAL_HANDLER
+	switch(deployable_type)
+		if(TURF_DEPLOYABLE_GUN)
+			return COMPONENT_TURF_PRE_DEPLOYMENT_BLOCKED
+		if(TURF_DEPLOYABLE_SENTRY)
+			return COMPONENT_TURF_PRE_DEPLOYMENT_BLOCKED
+	return NO_FLAGS
 
 /obj/structure/tent/proc/movable_entering_tent(turf/hooked, atom/movable/subject)
 	SIGNAL_HANDLER

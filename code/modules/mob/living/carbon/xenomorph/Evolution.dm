@@ -156,11 +156,6 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	// subtract the threshold, keep the stored amount
 	evolution_stored -= evolution_threshold
 
-	// don't drop their organ
-	var/obj/item/organ/xeno/organ = locate() in src
-	if(!isnull(organ))
-		qdel(organ)
-
 	//From there, the new xeno exists, hopefully
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src)
 	new_xeno.creation_time = creation_time
@@ -326,7 +321,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(tier == 0 || tier == 4)
 		to_chat(src, SPAN_XENOWARNING("We can't transmute."))
 		return
-	if(fortify || crest_defense || stealth)
+	if(fortify || crest_defense || stealth || HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES) || HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES))
 		to_chat(src, SPAN_XENOWARNING("We can't transmute while in this stance."))
 		return
 	if(lock_evolve)
@@ -358,6 +353,9 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(!newcaste)
 		return
 
+	if(!can_transmute(newcaste))
+		return
+
 	transmute(newcaste, "We transmute into a new form.")
 
 // The queen de-evo, but on yourself.
@@ -377,6 +375,10 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(health < maxHealth)
 		to_chat(src, SPAN_XENOWARNING("We are too weak to deevolve, we must regain our health first."))
 		return
+	if(!organ && caste.organ_type)
+		to_chat(src, SPAN_XENOWARNING("We must wait for our organs to regenerate."))
+		return
+
 	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
 		to_chat(src, SPAN_WARNING("Our link to the hive is being suppressed...we should wait a bit."))
 		return FALSE
@@ -436,11 +438,6 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		GLOB.deevolved_ckeys += new_xeno.ckey
 
 /mob/living/carbon/xenomorph/proc/transmute(newcaste, message="We regress into our previous form.")
-	// We have to delete the organ before creating the new xeno because all old_xeno contents are dropped to the ground on Initialize()
-	var/obj/item/organ/xeno/organ = locate() in src
-	if(!isnull(organ))
-		qdel(organ)
-
 	var/level_to_switch_to = get_vision_level()
 	var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(newcaste)
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src)
@@ -451,13 +448,6 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		to_chat(src, SPAN_WARNING("Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!"))
 		if(new_xeno)
 			qdel(new_xeno)
-
-		if(organ_value != 0)
-			organ = new()
-			organ.forceMove(src)
-			organ.research_value = organ_value
-			organ.caste_origin = caste_type
-			organ.icon_state = get_organ_icon()
 		return FALSE
 
 	new_xeno.built_structures = built_structures.Copy()
@@ -508,6 +498,24 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return FALSE
 	else if(tier == 2 && !slots[TIER_3][OPEN_SLOTS] && !slots[TIER_3][GUARANTEED_SLOTS][castepick] && castepick != XENO_CASTE_QUEEN)
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 3, wait for either more aliens to be born or someone to die."))
+		return FALSE
+
+	return TRUE
+
+//checks if transmuting T2 is guaranteed slot holder and prevents them from going over general T2 slot cap
+/mob/living/carbon/xenomorph/proc/can_transmute(caste_pick)
+	if(caste_type == caste_pick)
+		to_chat(src, SPAN_WARNING("We are already [caste_pick]!"))
+		return FALSE
+
+	var/slots = hive.get_tier_slots()
+	/*
+		Find how many player's current caste xenos there are and compare with number of guaranteed slots per that caste.
+		If current caste number is less or equal the guaranteed slots number, it means they are taking the guaranteed free slot and we need to check if there are general/guaranteed slots open for the caste player picked
+		If current caste number is more than guaranteed slots number, it means that xeno takes up a regular slot and we don't need a check. It can transform into anything.
+		if it's not in the free_slots list(null), it means it takes regular slot and can transform into anything.*/
+	if(tier == 2 && (hive.get_caste_count(caste_type) <= hive.free_slots[caste.type]) && !slots[TIER_2][OPEN_SLOTS] && !slots[TIER_2][GUARANTEED_SLOTS][caste_pick])
+		to_chat(src, SPAN_WARNING("We cannot support another Tier 2 of this caste, wait for more sisters to be born or someone to die."))
 		return FALSE
 
 	return TRUE

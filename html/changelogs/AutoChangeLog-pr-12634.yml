@@ -1,4 +1,0 @@
-author: "Venuska1117"
-delete-after: True
-changes:
-  - refactor: "Changes Runner bone_spur code to use get_turf() instead of locate()."

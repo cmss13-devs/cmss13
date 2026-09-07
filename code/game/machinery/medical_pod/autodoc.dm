@@ -137,8 +137,8 @@
 			occupant.apply_damage(-occupant.getOxyLoss(), OXY) // keep them breathing, pretend they get IV dexplus
 			if(filtering)
 				var/filtered = 0
-				for(var/datum/reagent/x in occupant.reagents.reagent_list)
-					occupant.reagents.remove_reagent(x.id, 3) // same as sleeper, may need reducing
+				for(var/datum/reagent/chemical in occupant.reagents.reagent_list)
+					occupant.reagents.remove_reagent(chemical.id, 3) // same as sleeper, may need reducing
 					filtered += 3
 				if(!filtered)
 					filtering = 0

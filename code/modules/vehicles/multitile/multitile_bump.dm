@@ -340,6 +340,11 @@
 			qdel(src)
 	return FALSE
 
+/obj/structure/machinery/fuelpump/handle_vehicle_bump(obj/vehicle/multitile/vehicle)
+	visible_message(SPAN_DANGER("[vehicle] can't destroy [src]!"))
+	playsound(vehicle, 'sound/effects/metal_crash.ogg', 35)
+	return FALSE
+
 /obj/structure/machinery/cm_vending/handle_vehicle_bump(obj/vehicle/multitile/V)
 	visible_message(SPAN_DANGER("\The [V] pushes [src] over!"))
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
@@ -805,7 +810,7 @@
 
 	if(iscrusher(A))
 		var/mob/living/carbon/xenomorph/crusher/C = A
-		if(!C.throwing)
+		if(!HAS_TRAIT(C, TRAIT_LAUNCHED))
 			return
 		var/do_move = TRUE
 		if(health > 0)

@@ -240,7 +240,7 @@
 		ammo.fire_bonus_projectiles(src, gun_damage_mult, projectile_max_range_add, gun_bonus_proj_scatter)
 		bonus_projectile_check = PROJECTILE_ORIGINAL //Mark this projectile as having spawned a set of bonus projectiles.
 
-	path = get_line(starting, target_turf)
+	path = get_line(starting, target_turf, z_level_transitions = TRUE)
 	p_x += clamp((rand()-0.5)*scatter*3, -8, 8)
 	p_y += clamp((rand()-0.5)*scatter*3, -8, 8)
 	update_angle(starting, target_turf)
@@ -978,7 +978,7 @@
 					xeno_jitter(5 DECISECONDS)
 					if(bullet.ammo.sound_miss)
 						playsound_client(client, bullet.ammo.sound_miss, get_turf(src), 75, TRUE)
-					visible_message(SPAN_AVOIDHARM("The [src] darts aside, evading [bullet]!"),
+					visible_message(SPAN_AVOIDHARM("[src] darts aside, evading [bullet]!"),
 						SPAN_AVOIDHARM("You react fast, and [bullet] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
 					return FALSE
 
@@ -1324,8 +1324,8 @@
 	if(bullet.ammo.sound_bounce)
 		playsound(src, bullet.ammo.sound_bounce, 50, 1)
 	var/image/image = image('icons/obj/items/weapons/projectiles.dmi', src, bullet.ammo.ping, 10)
-	var/offset_x = clamp(bullet.pixel_x + pixel_x_offset, -10, 10)
-	var/offset_y = clamp(bullet.pixel_y + pixel_y_offset, -10, 10)
+	var/offset_x = clamp(bullet.pixel_x, -10, 10) + pixel_x_offset
+	var/offset_y = clamp(bullet.pixel_y, -10, 10) + pixel_y_offset
 	image.pixel_x += round(rand(-4,4) + offset_x, 1)
 	image.pixel_y += round(rand(-4,4) + offset_y, 1)
 

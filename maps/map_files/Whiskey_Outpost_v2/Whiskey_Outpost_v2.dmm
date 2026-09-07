@@ -3178,9 +3178,6 @@
 /obj/structure/barricade/metal/wired,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/whiskey_outpost/inside/bunker/bunker/front)
-"ku" = (
-/turf/closed/wall/r_wall,
-/area/space)
 "kv" = (
 /obj/structure/bed/roller,
 /turf/open/floor/white,
@@ -3294,9 +3291,6 @@
 /obj/effect/landmark/start/whiskey/doctor,
 /turf/open/floor/whitegreen/east,
 /area/whiskey_outpost/inside/hospital)
-"kQ" = (
-/turf/open/floor/prison,
-/area/space)
 "kR" = (
 /obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/gm/river,
@@ -5658,7 +5652,7 @@
 	},
 /obj/item/cell/high,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/whiskey_outpost/outside/lane/four_south)
+/area/whiskey_outpost/outside/lane/four_north)
 "vl" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/structure/window/reinforced{
@@ -5729,9 +5723,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison/darkyellow2,
 /area/whiskey_outpost/inside/supply)
-"vB" = (
-/turf/closed/shuttle/dropship,
-/area/whiskey_outpost/outside/lane/four_south)
 "vC" = (
 /obj/vehicle/powerloader,
 /turf/open/floor/prison/floor_marked/southwest,
@@ -7239,7 +7230,7 @@
 /area/whiskey_outpost/inside/bunker/pillbox/two)
 "CR" = (
 /turf/closed/wall/rock/brown,
-/area/whiskey_outpost/outside/lane/four_south)
+/area/whiskey_outpost/outside/lane/four_north)
 "CT" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/dirt,
@@ -8589,13 +8580,6 @@
 /obj/structure/extinguisher_cabinet,
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/hospital/triage)
-"Km" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 8;
-	icon_state = "shuttle_chair"
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/whiskey_outpost/outside/lane/four_south)
 "Kn" = (
 /turf/open/gm/grass/grassbeach/south,
 /area/whiskey_outpost/outside/lane/one_north)
@@ -8902,11 +8886,6 @@
 "Me" = (
 /turf/open/gm/grass/gbcorner/south_west,
 /area/whiskey_outpost/outside/lane/one_south)
-"Mf" = (
-/turf/closed/shuttle/dropship{
-	icon_state = "rasputin2"
-	},
-/area/whiskey_outpost/outside/lane/four_south)
 "Mg" = (
 /obj/structure/holohoop{
 	dir = 4;
@@ -29877,12 +29856,12 @@ mT
 mT
 mT
 mT
-ku
-kQ
-kQ
-kQ
-kQ
-ku
+pq
+Ys
+Ys
+Ys
+Ys
+pq
 mT
 mT
 mT
@@ -30079,12 +30058,12 @@ mT
 mT
 mT
 mT
-ku
-kQ
-kQ
-kQ
-kQ
-ku
+pq
+Ys
+Ys
+Ys
+Ys
+pq
 mT
 mT
 mT
@@ -35200,10 +35179,10 @@ PO
 PO
 yt
 Go
-Km
-Km
+jI
+jI
 vk
-Km
+jI
 jI
 jI
 Go
@@ -35402,10 +35381,10 @@ mT
 PO
 yt
 ZW
-vB
+XY
 CR
-Mf
-vB
+lV
+XY
 LD
 lV
 py

@@ -55,7 +55,7 @@
 			hud_icon_state = "vc"
 		if(JOB_UPP_SUPPLY)
 			hud_icon_state = "log"
-		if(JOB_UPP_COMMISSAR)
+		if(JOB_UPP_COMMISSAR, JOB_UPP_MSS_OFFICER)
 			hud_icon_state = "commi"
 	if(hud_icon_state)
 		var/icon/file_to_use = override_icon_file ? override_icon_file : base_icon_file

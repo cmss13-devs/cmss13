@@ -36,7 +36,7 @@
     "colony_joe_types": [
         "/datum/job/civilian/working_joe/daniel"
     ],
-    "map_item_type": "/obj/item/map/lazarus_landing_map",
+    "map_item_type": "/obj/item/map/northpoint_hospital_map",
     "announce_text": "A distress signal has been received from the colony of New Leeds located on the planet HD-28185, a Three World Empire colony. The ###SHIPNAME### has been directed by Third Fleet Command to investigate. Standby for further updates.",
     "monkey_types": [
         "farwa",

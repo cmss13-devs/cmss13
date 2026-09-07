@@ -158,7 +158,7 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 /obj/item/map/northpoint_hospital_map
 	name = "\improper Northpoint Hospital  map"
 	desc = "An overview of the Northpoint Hospital schematics."
-	html_link = "images/d/da/White_Antre_Research_Facility.png"
+	html_link = "images/e/e1/Northpoint_complete.png"
 
 /obj/item/map/galaxy
 	name = "\improper Galaxy map"

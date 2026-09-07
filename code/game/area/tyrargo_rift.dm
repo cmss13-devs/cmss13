@@ -604,6 +604,7 @@
 	icon_state = "HH_Mines"
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
+	unoviable_timer = FALSE
 
 /area/tyrargo/underground/museum_carpark
 	name = "Museum Carpark - Underground"
@@ -611,6 +612,7 @@
 	icon_state = "auxstorage"
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
+	unoviable_timer = FALSE
 
 /area/tyrargo/underground/power_substation
 	name = "Sewer - Power-Routing Substation"

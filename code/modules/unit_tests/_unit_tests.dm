@@ -79,6 +79,7 @@
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
 // Unit tests
+#include "abstract_xenomorph.dm"
 #include "areas_unpowered.dm"
 #include "autowiki.dm"
 #include "check_runtimes.dm"
@@ -104,6 +105,10 @@
 #include "movement\link_blocked_cardinal.dm"
 #include "movement\link_blocked_diagonal.dm"
 #include "movement\movement_helpers.dm"
+#include "pheromones\transmit_castes.dm"
+#include "pheromones\transmit_hive.dm"
+#include "pheromones\transmit_permutation.dm"
+#include "pheromones\pheromone_helpers.dm"
 
 // Unit tests backend
 #include "focus_only_tests.dm"

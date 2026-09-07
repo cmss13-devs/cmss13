@@ -34,13 +34,15 @@
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 
-	aura_strength = 2
+	aura_strength = XENO_PHERO_STRENGTH_NORMAL
 	hugger_throw_delay = 5 DECISECONDS
 	egg_cooldown = 25 SECONDS
 
 	minimum_evolve_time = 5 MINUTES
 
 	minimap_icon = "carrier"
+
+	organ_type = /obj/item/organ/xeno/carrier
 
 /mob/living/carbon/xenomorph/carrier
 	caste_type = XENO_CASTE_CARRIER
@@ -49,7 +51,7 @@
 	icon_size = 64
 	icon_xeno = 'icons/mob/xenos/castes/tier_2/carrier.dmi'
 	icon_state = "Carrier Walking"
-	plasma_types = list(PLASMA_PURPLE)
+	plasma_types = list(PLASMA_PHEROMONE)
 
 	drag_delay = 6 //pulling a big dead xeno is hard
 	var/huggers_reserved = 0
@@ -58,9 +60,9 @@
 	tier = 2
 	pixel_x = -16 //Needed for 2x2
 	old_x = -16
-	organ_value = 1000
 
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
@@ -99,6 +101,14 @@
 	var/eggs_max = 0
 	var/laid_egg = 0
 	var/hugger_retrieve_timer = 5 DECISECONDS
+
+/obj/item/organ/xeno/carrier
+	name = "carrier heart"
+	icon_state = "heart_t2"
+	item_state = "heart_t2"
+	research_value = 1000
+
+	xeno_organ_flags = XENO_ORGAN_STRONG|XENO_ORGAN_SUPPORT
 
 /mob/living/carbon/xenomorph/carrier/proc/update_hugger_overlays()
 	if(!hugger_overlays_icon)
@@ -218,7 +228,7 @@
 		if(child.stat != DEAD && !child.sterile)
 			huggers_cur++
 			to_chat(src, SPAN_NOTICE("We take a facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
-			update_icons()
+			behavior_delegate?.on_update_icons()
 			qdel(child)
 		else
 			to_chat(src, SPAN_WARNING("This [child.name] looks too unhealthy."))
@@ -242,7 +252,7 @@
 			to_chat(src, SPAN_NOTICE("We take one facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
 		else
 			to_chat(src, SPAN_NOTICE("We take [huggers_to_transfer] facehuggers and carry them for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
-		update_icons()
+		behavior_delegate?.on_update_icons()
 	else
 		to_chat(src, SPAN_WARNING("We can't carry more facehuggers on you."))
 
@@ -300,7 +310,7 @@
 		huggers_cur--
 		put_in_active_hand(child)
 		to_chat(src, SPAN_XENONOTICE("We grab one of the facehugger in our storage. Now sheltering: [huggers_cur] / [huggers_max]."))
-		update_icons()
+		behavior_delegate?.on_update_icons()
 		hugger_retrieve_timer = world.time + 1 SECONDS
 		return
 
@@ -324,7 +334,7 @@
 	if(eggs_cur < eggs_max)
 		if(stat == CONSCIOUS)
 			eggs_cur++
-			update_icons()
+			behavior_delegate?.on_update_icons()
 			to_chat(src, SPAN_NOTICE("We store the egg and carry it for safekeeping. Now sheltering: [eggs_cur] / [eggs_max]."))
 			qdel(E)
 		else
@@ -364,7 +374,7 @@
 			return
 		E = new(src, hivenumber)
 		eggs_cur--
-		update_icons()
+		behavior_delegate?.on_update_icons()
 		put_in_active_hand(E)
 		to_chat(src, SPAN_XENONOTICE("We grab one of the eggs in our storage. Now sheltering: [eggs_cur] / [eggs_max]."))
 		return

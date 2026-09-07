@@ -43,7 +43,6 @@
 	mob_size = MOB_SIZE_XENO
 	hand = 1 //Make right hand active by default. 0 is left hand, mob defines it as null normally
 	see_in_dark = 12
-	recovery_constant = 1.5
 	see_invisible = SEE_INVISIBLE_LIVING
 	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, SPECIAL_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_TAG_SPREAD, XENO_HOSTILE_FREEZE, HUNTER_HUD, NEW_PLAYER_HUD)
 	unacidable = TRUE
@@ -136,6 +135,8 @@
 	var/armor_integrity_last_damage_time = 0
 	var/armor_integrity_immunity_time = 0
 
+	var/melee_vulnerability_mult = 0
+
 	var/pull_multiplier = 1
 	var/aura_strength = 0 // Pheromone strength
 	var/weed_level = WEED_LEVEL_STANDARD
@@ -211,6 +212,8 @@
 	var/plasmapool_modifier = 1
 	var/plasmagain_modifier = 0
 	var/tackle_chance_modifier = 0
+	var/tackle_min_modifier = 0
+	var/tackle_max_modifier = 0
 	var/regeneration_multiplier = 1
 	var/speed_modifier = 0
 	var/phero_modifier = 0
@@ -220,6 +223,9 @@
 	var/evasion_modifier = 0
 	var/attack_speed_modifier = 0
 	var/armor_integrity_modifier = 0
+
+	///Used to add plasma to strain if caste have 0 plasma_max
+	var/add_plasma = 0
 
 	var/list/modifier_sources
 	COOLDOWN_DECLARE(next_strain_reset)
@@ -243,11 +249,13 @@
 	var/datum/behavior_delegate/behavior_delegate = null // Holds behavior delegate. Governs all 'unique' hooked behavior of the Xeno. Set by caste datums and strains.
 	var/datum/action/xeno_action/activable/selected_ability // Our currently selected ability
 	var/datum/action/xeno_action/activable/queued_action // Action to perform on the next click.
+	var/queued_action_timer = TIMER_ID_NULL
 	var/is_zoomed = FALSE
 	var/list/spit_types
 	/// Caste-based spit windup
 	var/spit_windup = FALSE
 	/// Caste-based spit windup duration (if applicable)
+	var/spit_delay = 0
 	var/tileoffset = 0 	// How much your view will be offset in the direction that you zoom?
 	var/viewsize = 0	//What size your view will be changed to when you zoom?
 	var/banished = FALSE // Banished xenos can be attacked by all other xenos
@@ -263,10 +271,11 @@
 
 	// Life reduction variables.
 	var/life_slow_reduction = -1.5
-	//Research organ harvesting.
-	var/organ_removed = FALSE
-	/// value of organ in each caste, e.g. 7k is autodoc larva removal. runner is 500
-	var/organ_value = 0
+
+	/// Organ. Set by caste. A xeno without their organ receives a 0.5x multiplier to max plasma/health.
+	var/obj/item/organ/xeno/organ
+	/// Organ regeneration timer
+	var/organ_regen_timer = TIMER_ID_NULL
 
 	var/obj/item/skull/skull = /obj/item/skull
 	var/obj/item/pelt/pelt = /obj/item/pelt
@@ -291,9 +300,6 @@
 	var/stealth = FALSE
 	var/fortify = FALSE
 	var/crest_defense = FALSE
-	/// 0/FALSE - upright, 1/TRUE - all fours
-	var/agility = FALSE
-	var/ripping_limb = FALSE
 	/// For drones/hivelords. Extends the maximum build range they have
 	var/extra_build_dist = 0
 	/// tiles from self you can plant eggs.
@@ -319,12 +325,15 @@
 	var/obj/effect/alien/resin/fruit/selected_fruit = null
 	var/list/built_structures = list()
 
-	// Designer stuff
+	/// Designer related
 	var/obj/effect/alien/resin/design/selected_design = null
 	var/list/available_design = list()
 	var/list/current_design = list()
 	var/max_design_nodes = 0
 	var/selected_design_mark
+
+	var/front_armor
+	var/side_armor
 
 	var/icon_xeno
 	var/icon_xenonid
@@ -386,14 +395,6 @@
 	else if(hivenumber)
 		src.hivenumber = hivenumber
 
-	//putting the organ in for research
-	if(organ_value != 0)
-		var/obj/item/organ/xeno/organ = new() //give
-		organ.forceMove(src)
-		organ.research_value = organ_value
-		organ.caste_origin = caste_type
-		organ.icon_state = get_organ_icon()
-
 	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_HIVEMIND)) // The hive may alter this list
 
 	var/datum/hive_status/hive = GLOB.hive_datum[src.hivenumber]
@@ -402,6 +403,8 @@
 
 	wound_icon_holder = new(null, src)
 	vis_contents += wound_icon_holder
+
+	AddComponent(/datum/component/seethrough_mob)
 
 	///Handle transferring things from the old Xeno if we have one in the case of evolve, devolve etc.
 	AddComponent(/datum/component/deevolve_cooldown, old_xeno)
@@ -443,6 +446,13 @@
 	if(!caste_type || !GLOB.xeno_datum_list[caste_type])
 		CRASH("Attempted to create a new xenomorph [src] without caste datum.")
 	caste = GLOB.xeno_datum_list[caste_type]
+
+	// Evolving does not regenerate the organ, maintain the timer
+	if(old_xeno && old_xeno.organ_regen_timer != TIMER_ID_NULL)
+		var/regen_time_left = timeleft(old_xeno.organ_regen_timer)
+		organ_regen_timer = addtimer(CALLBACK(src, PROC_REF(finish_organ_regen)), regen_time_left, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT|TIMER_STOPPABLE)
+	else
+		create_xeno_organ()
 
 	//Fire immunity check signals
 	RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_crossed))
@@ -501,7 +511,7 @@
 		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
 
 	//Sight
-	sight |= (SEE_MOBS|SEE_BLACKNESS|SEE_TURFS)
+	sight |= SEE_MOBS
 	see_invisible = SEE_INVISIBLE_LIVING
 	see_in_dark = 12
 
@@ -528,10 +538,14 @@
 
 	if(hive.hivenumber != XENO_HIVE_NORMAL)
 		remove_verb(src, /mob/living/carbon/xenomorph/verb/view_tacmaps)
-	minimap_ref = WEAKREF(new minimap_type(hive_number=hive.hivenumber))
-	var/datum/action/minimap/ref = minimap_ref.resolve()
-	ref.give_to(src, ref)
-	RegisterSignal(hive, COMSIG_XENO_REVEAL_TACMAP, PROC_REF(update_minimap_see_humans))
+
+	if(hive.hivenumber == XENO_HIVE_FORSAKEN)
+		update_minimap_see_humans()
+	else
+		minimap_ref = WEAKREF(new minimap_type(hive_number=hive.hivenumber))
+		var/datum/action/minimap/ref = minimap_ref.resolve()
+		ref.give_to(src, ref)
+		RegisterSignal(hive, COMSIG_XENO_REVEAL_TACMAP, PROC_REF(update_minimap_see_humans))
 
 	creation_time = world.time
 
@@ -541,11 +555,14 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
 
 /mob/living/carbon/xenomorph/proc/update_minimap_see_humans()
-	var/datum/action/minimap/ref = minimap_ref.resolve()
-	ref.remove_from(src)
+	var/datum/action/minimap/ref
+	if(minimap_ref)
+		ref = minimap_ref.resolve()
+		ref.remove_from(src)
 
 	minimap_ref = WEAKREF(new /datum/action/minimap/xeno/see_humans)
 	ref = minimap_ref.resolve()
+	ref.minimap_flags |= get_minimap_flag_for_faction(hive.hivenumber)
 	ref.give_to(src, ref)
 
 /mob/living/carbon/xenomorph/proc/handle_screech_act(mob/self, mob/living/carbon/xenomorph/queen/queen)
@@ -598,6 +615,9 @@
 		. |= COMPONENT_NO_IGNITE
 	if(fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
 		. |= COMPONENT_XENO_FRENZY
+
+/mob/living/carbon/xenomorph/proc/get_reflection_chance(obj/projectile/bullet)
+	return
 
 //Off-load this proc so it can be called freely
 //Since Xenos change names like they change shoes, we need somewhere to hammer in all those legos
@@ -723,7 +743,7 @@
 
 	if(iff_tag)
 		. += SPAN_NOTICE("It has an IFF tag sticking out of its carapace.")
-	if(organ_removed)
+	if(isnull(organ) && !isnull(caste.organ_type))
 		. += "It seems to have its carapace cut open."
 
 /mob/living/carbon/xenomorph/Destroy()
@@ -754,8 +774,12 @@
 	l_store = null
 	ammo = null
 	selected_ability = null
-	queued_action = null
+	clear_queued_action()
 
+	if(organ_regen_timer != TIMER_ID_NULL)
+		deltimer(organ_regen_timer)
+
+	QDEL_NULL(organ)
 	QDEL_NULL(strain)
 	QDEL_NULL(behavior_delegate)
 
@@ -836,6 +860,60 @@
 	. = 1
 
 
+/mob/living/carbon/xenomorph/proc/rename_tunnel(obj/structure/tunnel/tunnel_target in oview(1))
+	set name = "Rename Tunnel"
+	set desc = "Rename the tunnel."
+	set category = null
+
+	if(!istype(tunnel_target))
+		return
+
+	var/new_name = strip_html(input("Change the description of the tunnel:", "Tunnel Description") as text|null)
+	new_name = replace_non_alphanumeric_plus(new_name)
+	if(new_name)
+		new_name = "[new_name] ([get_area_name(tunnel_target)])"
+		log_admin("[key_name(src)] has renamed the tunnel \"[tunnel_target.tunnel_desc]\" as \"[new_name]\".")
+		msg_admin_niche("[src]/([key_name(src)]) has renamed the tunnel \"[tunnel_target.tunnel_desc]\" as \"[new_name]\".")
+		tunnel_target.tunnel_desc = "[new_name]"
+	return
+
+/mob/living/carbon/xenomorph/proc/finish_organ_regen()
+	organ_regen_timer = TIMER_ID_NULL
+	create_xeno_organ()
+
+/// Initializes the xenomorph organ
+/mob/living/carbon/xenomorph/proc/create_xeno_organ()
+	if(organ_regen_timer != TIMER_ID_NULL)
+		deltimer(organ_regen_timer)
+	organ_regen_timer = TIMER_ID_NULL
+	if(!QDELETED(organ))
+		UnregisterSignal(organ, list(COMSIG_PARENT_QDELETING, COMSIG_XENO_ORGAN_REMOVED))
+
+	if(caste.organ_type)
+		var/obj/item/organ/xeno/organ = new caste.organ_type() //give
+		organ.forceMove(src)
+		organ.hivenumber = hivenumber
+		organ.caste_origin = caste_type
+		if(caste.plasma_max > 0)
+			organ.xeno_organ_flags |= XENO_ORGAN_PLASMA
+		RegisterSignal(organ, list(COMSIG_PARENT_QDELETING, COMSIG_XENO_ORGAN_REMOVED), PROC_REF(trigger_regenerate_organ))
+		src.organ = organ
+		recalculate_stats()
+
+/// Regenerates the organ over time, based on caste statistics
+/mob/living/carbon/xenomorph/proc/trigger_regenerate_organ()
+	SIGNAL_HANDLER
+	if(QDELING(src))
+		return
+	if(!QDELETED(organ))
+		UnregisterSignal(organ, list(COMSIG_PARENT_QDELETING, COMSIG_XENO_ORGAN_REMOVED))
+	organ = null
+	if(stat == DEAD || isnull(caste.organ_type))
+		return
+	organ_regen_timer = addtimer(CALLBACK(src, PROC_REF(finish_organ_regen)), caste.organ_regen_time, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT|TIMER_STOPPABLE)
+	recalculate_stats()
+	var/amt_to_death = health - health_threshold_dead
+	adjustBruteLoss(amt_to_death - 5)
 
 /mob/living/carbon/xenomorph/prepare_huds()
 	..()
@@ -855,8 +933,12 @@
 
 // Transfer any observing players over to the xeno's new body (`target`) on evolve/de-evolve.
 /mob/living/carbon/xenomorph/transfer_observers_to(atom/target)
+	if(!istype(target) || target == src || !get_turf(target))
+		return
+
+	. = ..()
+
 	for(var/mob/dead/observer/observer as anything in observers)
-		observer.clean_observe_target()
 		observer.do_observe(target)
 
 /mob/living/carbon/xenomorph/check_improved_pointing()
@@ -888,6 +970,12 @@
 
 	for(var/trait in new_hive.hive_inherited_traits)
 		ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
+
+	if(!QDELETED(organ))
+		organ.hivenumber = new_hivenumber
+
+	if(new_hivenumber == XENO_HIVE_FORSAKEN)
+		update_minimap_see_humans()
 
 	generate_name()
 
@@ -928,8 +1016,8 @@
 	recalculate_tackle()
 
 /mob/living/carbon/xenomorph/proc/recalculate_tackle()
-	tackle_min = caste.tackle_min
-	tackle_max = caste.tackle_max
+	tackle_min = caste.tackle_min + tackle_min_modifier
+	tackle_max = caste.tackle_max + tackle_max_modifier
 	tackle_chance = caste.tackle_chance + tackle_chance_modifier
 	tacklestrength_min = caste.tacklestrength_min
 	tacklestrength_max = caste.tacklestrength_max
@@ -939,6 +1027,8 @@
 	if(hive)
 		new_max_health += hive.hive_stat_modifier_flat["health"]
 		new_max_health *= hive.hive_stat_modifier_multiplier["health"]
+	if(isnull(organ) && !isnull(caste.organ_type))
+		new_max_health *= 0.5
 	if(new_max_health == maxHealth)
 		return
 	var/currentHealthRatio = 1
@@ -950,19 +1040,25 @@
 		health = maxHealth
 
 /mob/living/carbon/xenomorph/proc/recalculate_plasma()
-	if(!plasma_max)
+	var/new_plasma_max = (plasmapool_modifier * caste.plasma_max) + add_plasma
+	if(!plasma_max && new_plasma_max <= 0)
 		return
 
-	var/new_plasma_max = plasmapool_modifier * caste.plasma_max
 	plasma_gain = plasmagain_modifier + caste.plasma_gain
 	if(hive)
 		new_plasma_max += hive.hive_stat_modifier_flat["plasmapool"]
 		new_plasma_max *= hive.hive_stat_modifier_multiplier["plasmapool"]
 		plasma_gain += hive.hive_stat_modifier_flat["plasmagain"]
 		plasma_gain *= hive.hive_stat_modifier_multiplier["plasmagain"]
-	if (new_plasma_max == plasma_max)
+	if(isnull(organ) && !isnull(caste.organ_type))
+		new_plasma_max *= 0.5
+	if(new_plasma_max == plasma_max)
 		return
-	var/plasma_ratio = plasma_stored / plasma_max
+
+	var/plasma_ratio = 0
+	if(plasma_max > 0)
+		plasma_ratio = plasma_stored / plasma_max
+
 	plasma_max = new_plasma_max
 	plasma_stored = floor(plasma_max * plasma_ratio + 0.5) //Restore our plasma ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
 	if(plasma_stored > plasma_max)
@@ -1053,11 +1149,11 @@
 	// Also recalculate received pheros now
 	for(var/capped_aura in received_phero_caps)
 		switch(capped_aura)
-			if("frenzy")
+			if(XENO_PHERO_FRENZY)
 				frenzy_new = min(frenzy_new, received_phero_caps[capped_aura])
-			if("warding")
+			if(XENO_PHERO_WARDING)
 				warding_new = min(warding_new, received_phero_caps[capped_aura])
-			if("recovery")
+			if(XENO_PHERO_RECOVERY)
 				recovery_new = min(recovery_new, received_phero_caps[capped_aura])
 
 /mob/living/carbon/xenomorph/proc/recalculate_maturation()
@@ -1079,13 +1175,16 @@
 	for(var/datum/action/xeno_action/XA in actions)
 		XA.end_cooldown()
 
+	if(QDELETED(organ))
+		create_xeno_organ()
+
 /mob/living/carbon/xenomorph/resist_fire()
 	adjust_fire_stacks(XENO_FIRE_RESIST_AMOUNT, min_stacks = 0)
 	apply_effect(4, WEAKEN)
 	visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"),
 		SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 
-	if(istype(get_turf(src), /turf/open/gm/river))
+	if(istype(get_turf(src), /turf/open/gm/river) || istype(get_turf(src), /turf/open/beach/coastline) || istype(get_turf(src), /turf/open/gm/coast))
 		ExtinguishMob()
 
 	if(fire_stacks > 0)
@@ -1093,9 +1192,6 @@
 
 	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"),
 		SPAN_NOTICE("We extinguish ourselves."), null, 5)
-
-/mob/living/carbon/xenomorph/proc/get_organ_icon()
-	return "heart_t[tier]"
 
 /mob/living/carbon/xenomorph/resist_restraints()
 	if(!legcuffed)
@@ -1116,6 +1212,13 @@
 	drop_inv_item_on_ground(legcuffed)
 
 /mob/living/carbon/xenomorph/IgniteMob(force)
+	// Force xenos out of hiding if something tried to ignite it (like walking over fire)
+	if(layer == XENO_HIDING_LAYER)
+		var/datum/action/xeno_action/onclick/xenohide/hide = get_action(src, /datum/action/xeno_action/onclick/xenohide)
+		if (hide)
+			INVOKE_ASYNC(hide, TYPE_PROC_REF(/datum/action/xeno_action/onclick/xenohide, use_ability))
+			visible_message(SPAN_DANGER("[src] is forced out of hiding by the flames!"), SPAN_DANGER("You are forced out of hiding by the flames!"))
+
 	var/penetrating = fire_reagent?.fire_penetrating && !(fire_immunity & FIRE_IMMUNITY_IGNORE_PEN)
 	if(!force && !penetrating)
 		if((fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
@@ -1242,24 +1345,11 @@
 
 /mob/living/carbon/xenomorph/proc/get_throw_range(obj/item/I)
 	return 1
-/**
- * Checks if user can mount src
- *
- * Arguments:
- * * user - The mob trying to mount
- * * target_mounting - Is the target initiating the mounting process?
- */
-/mob/living/carbon/xenomorph/proc/can_mount(mob/living/user, target_mounting = FALSE)
+
+/mob/living/carbon/xenomorph/can_mount(mob/living/user, target_mounting = FALSE)
 	return FALSE
 
-/**
- * Handles the target trying to ride src
- *
- * Arguments:
- * * target - The mob being put on the back
- * * target_mounting - Is the target initiating the mounting process?
- */
-/mob/living/carbon/xenomorph/proc/carry_target(mob/living/carbon/target, target_mounting = FALSE)
+/mob/living/carbon/xenomorph/carry_target(mob/living/carbon/target, target_mounting = FALSE)
 	if(!ismob(target))
 		return
 	if(target.is_mob_incapacitated())
@@ -1282,6 +1372,3 @@
 	. = ..()
 	if(isxeno(user))
 		return
-	if(!can_mount(user, TRUE))
-		return
-	INVOKE_ASYNC(src, PROC_REF(carry_target), dropping, TRUE) // target_mounting is always true, the runner should never be buckling someone to itself (unless someone wants to make it happen)

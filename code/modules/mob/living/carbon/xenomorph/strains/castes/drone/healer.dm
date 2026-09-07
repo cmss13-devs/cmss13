@@ -24,7 +24,6 @@
 
 /datum/xeno_strain/healer/apply_strain(mob/living/carbon/xenomorph/drone/drone)
 	drone.phero_modifier += XENO_PHERO_MOD_LARGE
-	drone.plasma_types += PLASMA_PHEROMONE
 	drone.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
 	drone.tackle_chance_modifier -= 5
 
@@ -139,7 +138,7 @@
 	healer_delegate.salve_applied_recently = TRUE
 	if(!target_is_healer && !isfacehugger(target_xeno)) // no cheap grinding
 		healer_delegate.modify_transferred(amount * damage_taken_mod)
-	update_icons()
+	behavior_delegate?.on_update_icons()
 	addtimer(CALLBACK(healer_delegate, /datum/behavior_delegate/drone_healer/proc/un_salve), 5 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 
 /datum/behavior_delegate/drone_healer
@@ -175,7 +174,7 @@
 
 /datum/behavior_delegate/drone_healer/proc/un_salve()
 	salve_applied_recently = FALSE
-	bound_xeno.update_icons()
+	bound_xeno.behavior_delegate?.on_update_icons()
 
 /*
 	SACRIFICE
@@ -268,7 +267,6 @@
 		target.gain_health(abs(target.health)) //second, get them out of crit.
 
 	target.gain_health(xeno.health * transfer_mod)
-	target.updatehealth()
 
 	target.clear_debuffs() //third, remove debuffs so they can stand up.
 

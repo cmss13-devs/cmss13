@@ -76,7 +76,7 @@ FIRE ALARM
 /obj/structure/machinery/firealarm/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/structure/machinery/firealarm/bullet_act(BLAH)
+/obj/structure/machinery/firealarm/bullet_act(obj/projectile/bullet)
 	return src.alarm()
 
 /obj/structure/machinery/firealarm/emp_act(severity)

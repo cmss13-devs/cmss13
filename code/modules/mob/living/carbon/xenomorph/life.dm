@@ -3,7 +3,6 @@
 #define XENO_ARMOR_REGEN_DELAY 30 SECONDS
 /mob/living/carbon/xenomorph/Life(delta_time)
 	set invisibility = 0
-	set background = 1
 
 	if(!loc)
 		return
@@ -25,9 +24,7 @@
 		handle_pheromones()
 		handle_regular_status_updates()
 		handle_overwatch() // For new Xeno hivewide overwatch - Fourk, 6/24/19
-		update_icons()
 		handle_luminosity()
-		handle_blood()
 
 		behavior_delegate?.on_life()
 		handle_environment()
@@ -148,9 +145,9 @@
 					continue
 				if(get_dist(aura_center, target) > floor(6 + aura_strength * 2))
 					continue
-				if(!HIVE_ALLIED_TO_HIVE(target.hivenumber, hivenumber))
+				if(!HIVE_ALLIED_TO_HIVE(hivenumber, target.hivenumber))
 					continue
-				if(target.banished)
+				if(banished || target.banished)
 					continue
 				if(use_leader_aura)
 					target.affected_by_pheromones(leader_current_aura, leader_aura_strength)
@@ -178,24 +175,24 @@
 				warding_new = strength
 			if(strength > recovery_new)
 				recovery_new = strength
-		if("frenzy")
+		if(XENO_PHERO_FRENZY)
 			if(strength > frenzy_new)
 				frenzy_new = strength
-		if("warding")
+		if(XENO_PHERO_WARDING)
 			if(strength > warding_new)
 				warding_new = strength
-		if("recovery")
+		if(XENO_PHERO_RECOVERY)
 			if(strength > recovery_new)
 				recovery_new = strength
 
 	// Also cap the auras
 	for(var/capped_aura in received_phero_caps)
 		switch(capped_aura)
-			if("frenzy")
+			if(XENO_PHERO_FRENZY)
 				frenzy_new = min(frenzy_new, received_phero_caps[capped_aura])
-			if("warding")
+			if(XENO_PHERO_WARDING)
 				warding_new = min(warding_new, received_phero_caps[capped_aura])
-			if("recovery")
+			if(XENO_PHERO_RECOVERY)
 				recovery_new = min(recovery_new, received_phero_caps[capped_aura])
 
 
@@ -205,8 +202,6 @@
 			apply_damage(2.5 - warding_aura*0.5, BRUTE) //Warding can heavily lower the impact of bleedout. Halved at 2.5 phero, stopped at 5 phero
 		else
 			apply_damage(-warding_aura, BRUTE)
-
-	updatehealth()
 
 	if(health > 0 && stat != DEAD) //alive and not in crit! Turn on their vision.
 		see_in_dark = 50
@@ -329,7 +324,6 @@ Make sure their actual health updates immediately.*/
 	apply_damage(min(-(maxHealth / 60 + 0.5 + (maxHealth / 60) * recov/2)*(m) + heal_penalty, 0), BURN)
 	apply_damage(min(-(maxHealth * 0.1 + 0.5 + (maxHealth * 0.1) * recov/2)*(m) + heal_penalty, 0), OXY)
 	apply_damage(min(-(maxHealth / 5 + 0.5 + (maxHealth / 5) * recov/2)*(m) + heal_penalty, 0), TOX)
-	updatehealth()
 
 
 /mob/living/carbon/xenomorph/proc/handle_environment()
@@ -342,7 +336,6 @@ Make sure their actual health updates immediately.*/
 	if(caste && !(fire_immunity & FIRE_IMMUNITY_NO_DAMAGE))
 		if(env_temperature > (T0C + 66))
 			apply_damage((env_temperature - (T0C + 66)) / 5, BURN) //Might be too high, check in testing.
-			updatehealth() //Make sure their actual health updates immediately
 			if(prob(20))
 				to_chat(src, SPAN_WARNING("You feel a searing heat!"))
 
@@ -602,6 +595,6 @@ Make sure their actual health updates immediately.*/
 		return TRUE //weeds, yes!
 	if(need_weeds)
 		return FALSE //needs weeds, doesn't have any
-	if(hive && hive.living_xeno_queen && !is_mainship_level(hive.living_xeno_queen.loc.z) && is_mainship_level(loc.z))
+	if((hive && !hive.allow_no_queen_actions) && hive.living_xeno_queen && (!is_mainship_level(hive.living_xeno_queen.loc.z) && is_mainship_level(loc.z)))
 		return FALSE //We are on the ship, but the Queen isn't
 	return TRUE //we have off-weed healing, and either we're on Almayer with the Queen, or we're on non-Almayer, or the Queen is dead, good enough!

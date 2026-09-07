@@ -24,13 +24,6 @@
 	src.icon_state = text("igniter[]", src.on)
 	return
 
-/obj/structure/machinery/igniter/process() //ugh why is this even in process()?
-// if (src.on && !(stat & NOPOWER) )
-// var/turf/location = src.loc
-// if (isturf(location))
-// location.hotspot_expose(1000,500,1)
-	return 1
-
 /obj/structure/machinery/igniter/Initialize(mapload, ...)
 	. = ..()
 	icon_state = "igniter[on]"
@@ -59,20 +52,18 @@
 	..()
 	if ( !(stat & NOPOWER) && disable == 0 )
 		icon_state = "[base_state]"
-// src.sd_set_light(2)
 	else
 		icon_state = "[base_state]-p"
-// src.sd_set_light(0)
 
 /obj/structure/machinery/sparker/attackby(obj/item/W as obj, mob/user as mob)
 	if (HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		add_fingerprint(user)
 		src.disable = !src.disable
 		if (src.disable)
-			user.visible_message(SPAN_DANGER("[user] has disabled the [src]!"), SPAN_DANGER("You disable the connection to the [src]."))
+			user.visible_message(SPAN_DANGER("[user] has disabled [src]!"), SPAN_DANGER("You disable the connection to [src]."))
 			icon_state = "[base_state]-d"
 		if (!src.disable)
-			user.visible_message(SPAN_DANGER("[user] has reconnected the [src]!"), SPAN_DANGER("You fix the connection to the [src]."))
+			user.visible_message(SPAN_DANGER("[user] has reconnected [src]!"), SPAN_DANGER("You fix the connection to [src]."))
 			if(src.powered())
 				icon_state = "[base_state]"
 			else
@@ -98,9 +89,6 @@
 	s.start()
 	src.last_spark = world.time
 	use_power(1000)
-// var/turf/location = src.loc
-// if (isturf(location))
-// location.hotspot_expose(1000,500,1)
 	return 1
 
 /obj/structure/machinery/sparker/emp_act(severity)

@@ -3450,11 +3450,11 @@
 	pixel_y = 28;
 	pixel_x = 16
 	},
-/obj/item/tool/kitchen/utensil/pknife{
+/obj/item/tool/kitchen/utensil/knife/plastic{
 	pixel_x = 13;
 	pixel_y = 1
 	},
-/obj/item/tool/kitchen/utensil/pfork{
+/obj/item/tool/kitchen/utensil/fork/plastic{
 	pixel_x = -5;
 	pixel_y = 5
 	},
@@ -3873,10 +3873,10 @@
 /area/adminlevel/ert_station/pizza_station)
 "Yj" = (
 /obj/structure/surface/table/reinforced/cloth,
-/obj/item/tool/kitchen/utensil/pknife{
+/obj/item/tool/kitchen/utensil/knife/plastic{
 	pixel_x = -6
 	},
-/obj/item/tool/kitchen/utensil/pfork{
+/obj/item/tool/kitchen/utensil/fork/plastic{
 	pixel_y = 3;
 	pixel_x = -3
 	},

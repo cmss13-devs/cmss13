@@ -3,15 +3,15 @@
 	var/icon_name
 
 /datum/body_type/nomuscle
-	name = "No Muscles"
+	name = BODY_TYPE_NOMUSCLE
 	icon_name = "nomuscle"
 
 /datum/body_type/lean
-	name = "Lean"
+	name = BODY_TYPE_LEAN
 	icon_name = "lean"
 
 /datum/body_type/ripped
-	name = "Ripped"
+	name = BODY_TYPE_RIPPED
 	icon_name = "ripped"
 
 /datum/body_size
@@ -19,13 +19,13 @@
 	var/icon_name
 
 /datum/body_size/thin
-	name = "Thin"
+	name = BODY_SIZE_THIN
 	icon_name = "thin"
 
 /datum/body_size/average
-	name = "Average"
+	name = BODY_SIZE_AVERAGE
 	icon_name = "avg"
 
 /datum/body_size/large
-	name = "Large"
+	name = BODY_SIZE_LARGE
 	icon_name = "large"

@@ -76,6 +76,7 @@
 
 /obj/structure/surface/table/Crossed(atom/movable/O)
 	..()
+	// TODO: Replace this with signals or trait checks from xeno
 	if(istype(O,/mob/living/carbon/xenomorph/ravager) || istype(O,/mob/living/carbon/xenomorph/crusher))
 		var/mob/living/carbon/xenomorph/M = O
 		if(!M.stat) //No dead xenos jumpin on the bed~
@@ -522,6 +523,13 @@
 	parts = /obj/item/frame/table/wood/fancy
 	table_prefix = "fwood"
 
+/obj/structure/surface/table/woodentable/fancy/black
+	name = "fancy wooden table"
+	desc = "A nicely crafted dark stained mahogany wood surface resting on four legs. Useful to put stuff on. It's too heavy to flip over."
+	icon_state = "fbwoodtable"
+	parts = /obj/item/frame/table/wood/fancy
+	table_prefix = "fbwood"
+
 /obj/structure/surface/table/woodentable/fancy/flip(direction)
 	return 0 //That is mahogany!
 /*
@@ -717,6 +725,7 @@
 
 /obj/structure/surface/rack/Crossed(atom/movable/O)
 	..()
+	// TODO: Replace this with signals or trait check from xeno
 	if(istype(O,/mob/living/carbon/xenomorph/ravager) || istype(O,/mob/living/carbon/xenomorph/crusher))
 		var/mob/living/carbon/xenomorph/M = O
 		if(!M.stat) //No dead xenos jumpin on the bed~

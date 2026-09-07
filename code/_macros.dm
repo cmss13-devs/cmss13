@@ -99,7 +99,7 @@
 
 #define FLAGS_EQUALS(flag, flags) (((flag) & (flags)) == (flags))
 
-#define IS_DIAGONAL_DIR(dir) (dir & ~(NORTH|SOUTH))
+#define IS_DIAGONAL_DIR(dir) (dir & (NORTH|SOUTH) && dir & (EAST|WEST))
 
 // Inverse direction, taking into account UP|DOWN if necessary.
 #define REVERSE_DIR(dir) ( (((dir) & 85) << 1) | (((dir) & 170) >> 1) )
@@ -110,9 +110,5 @@
 
 #define RECT new /datum/shape/rectangle
 #define SQUARE new /datum/shape/rectangle/square
-#define ELLIPSE new /datum/shape/ellipse
-#define CIRCLE new /datum/shape/ellipse/circle
-#define QTREE new /datum/quadtree
-#define SEARCH_QTREE(qtree, shape_range, flags) qtree.query_range(shape_range, null, flags)
 
 #define HTML_FILE(contents) "<!DOCTYPE html><html><body>[contents]</body></html>"

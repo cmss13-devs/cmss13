@@ -17,9 +17,9 @@
 					fake_attack(src)
 				handle_hallucinations()
 				hallucination -= 2
-			if(2 to 20)
+			if(3 to 20)
 				hallucination -= 2
-			if(0 to 2)
+			if(1 to 3)
 				hallucination = 0
 				halloss = 0
 			if(-INFINITY to 0)
@@ -44,7 +44,7 @@
 		if(!already_in_crit)
 			new /datum/effects/crit/human(src)
 
-	if(IsKnockOut())
+	if(IsKnockOut() || is_admin_slept())
 		blinded = TRUE
 		if(regular_update && halloss > 0)
 			apply_damage(-3, HALLOSS)

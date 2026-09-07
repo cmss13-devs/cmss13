@@ -175,6 +175,7 @@
 	icon_state = "blackgoo"
 
 /obj/effect/decal/cleanable/blackgoo/Crossed(mob/living/carbon/human/H)
+	..()
 	if(!istype(H))
 		return
 	if(H.species.name == "Human")

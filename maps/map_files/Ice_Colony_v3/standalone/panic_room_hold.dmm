@@ -80,6 +80,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
+"aq" = (
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_synth,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
 "ar" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/green/southwest,
@@ -1834,7 +1839,7 @@ XP
 sy
 ce
 YS
-ad
+aq
 dF
 cL
 bi

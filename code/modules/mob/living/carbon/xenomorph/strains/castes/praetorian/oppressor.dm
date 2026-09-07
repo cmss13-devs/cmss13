@@ -28,7 +28,6 @@
 	prae.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL
 	prae.small_explosives_stun = FALSE
 	prae.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
-	prae.plasma_types = list(PLASMA_NEUROTOXIN, PLASMA_CHITIN)
 	prae.claw_type = CLAW_TYPE_SHARP
 
 	prae.recalculate_everything()
@@ -141,7 +140,7 @@
 			if(istype(structure, /obj/structure/barricade))
 				var/obj/structure/barricade/cade = structure
 				var/cade_facing = cade.dir
-				if(cade_facing == turn(facing, 180))
+				if(cade_facing & turn(facing, 180))
 					blocked = TRUE
 				else if(cade_facing == facing)
 					allow_one_more_step = TRUE
@@ -257,7 +256,7 @@
 	if (!isxeno_human(target_atom) || oppressor_user.can_not_harm(target_atom))
 		return
 
-	if (!oppressor_user.check_state() || oppressor_user.agility)
+	if (!oppressor_user.check_state())
 		return
 
 	var/mob/living/carbon/target_carbon = target_atom

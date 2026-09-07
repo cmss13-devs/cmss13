@@ -25,9 +25,16 @@
 		deployed_turret.deployment_system = src
 		ox = pixel_x
 		oy = pixel_y
+	health = deployed_turret.health
 
 /obj/structure/machinery/sentry_holder/Destroy()
 	QDEL_NULL(deployed_turret)
+	. = ..()
+
+/obj/structure/machinery/sentry_holder/update_health(damage, pass_forward = FALSE)
+	pass_forward = !pass_forward
+	if(pass_forward)
+		deployed_turret.update_health(damage, pass_forward)
 	. = ..()
 
 /obj/structure/machinery/sentry_holder/get_examine_text(mob/user)

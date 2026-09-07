@@ -28,7 +28,6 @@
 
 	boiler.tileoffset = 0
 	boiler.viewsize = TRAPPER_VIEWRANGE
-	boiler.plasma_types -= PLASMA_NEUROTOXIN
 	boiler.ammo = GLOB.ammo_list[boiler.caste.spit_types[1]]
 	boiler.armor_modifier -= XENO_ARMOR_MOD_LARGE // no armor
 	boiler.health_modifier -= XENO_HEALTH_MOD_MED
@@ -239,7 +238,7 @@
 /datum/ammo/xeno/acid_shotgun
 	name = "acid ball"
 	ping = null
-	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR|AMMO_ACIDIC
+	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR|AMMO_ACIDIC|AMMO_XENO
 	bonus_projectiles_type = /datum/ammo/xeno/acid_shotgun/spread
 	hit_effect_color = "#FF0000"
 

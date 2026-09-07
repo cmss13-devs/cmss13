@@ -103,7 +103,7 @@
 	var/list/heal_candidates = list()
 
 	for(var/mob/living/carbon/xenomorph/xeno_in_range in orange(src, 1))
-		if(xeno_in_range.health >= xeno_in_range.maxHealth || !xeno_in_range.resting || xeno_in_range.hivenumber != linked_hive.hivenumber)
+		if(xeno_in_range.health >= xeno_in_range.maxHealth || (!xeno_in_range.resting && xeno_in_range.health > 0) || xeno_in_range.hivenumber != linked_hive.hivenumber)
 			continue
 		if(xeno_in_range.stat == DEAD)
 			continue

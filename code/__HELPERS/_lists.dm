@@ -205,3 +205,10 @@
 	for(var/i in 1 to count)
 		retval += to_flatten[i]
 	return retval
+
+/proc/list_all(list/to_check, datum/callback/element_check_callback)
+	ASSERT(islist(to_check), "Can only pass a list to check all elements")
+	for (var/element in to_check)
+		if (!element_check_callback.Invoke(element))
+			return FALSE
+	return TRUE

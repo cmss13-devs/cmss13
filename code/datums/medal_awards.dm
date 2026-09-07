@@ -68,27 +68,9 @@ GLOBAL_LIST_INIT(medal_references, generate_medal_references())
 	return options_list
 
 /proc/get_medal_path(medal_type)
-	switch(medal_type)
-		if(MARINE_RIBBON_COMMENDATION)
-			return /obj/item/clothing/accessory/medal/ribbon/commendation
-		if(MARINE_RIBBON_LEADERSHIP)
-			return /obj/item/clothing/accessory/medal/ribbon/leadership
-		if(MARINE_RIBBON_PROFICIENCY)
-			return /obj/item/clothing/accessory/medal/ribbon/proficiency
-		if(MARINE_MEDAL_PURPLE_HEART)
-			return /obj/item/clothing/accessory/medal/purple_heart
-		if(MARINE_MEDAL_VALOR)
-			return /obj/item/clothing/accessory/medal/silver/valor
-		if(MARINE_MEDAL_SILVER_STAR)
-			return /obj/item/clothing/accessory/medal/silver/star
-		if(MARINE_MEDAL_GALACTIC_CROSS)
-			return /obj/item/clothing/accessory/medal/gold/cross
-		if(MARINE_MEDAL_HONOR)
-			return /obj/item/clothing/accessory/medal/platinum/honor
-		if(WY_MEDAL_AWARD_1)
-			return /obj/item/clothing/accessory/medal/gold/corporate_award
-		if(WY_MEDAL_AWARD_2)
-			return /obj/item/clothing/accessory/medal/gold/corporate_award2
+	for(var/obj/item/clothing/accessory/medal/medal as anything in GLOB.medal_references)
+		if(medal.name == medal_type)
+			return medal.type
 
 /proc/give_medal_award(medal_location, as_admin = FALSE, as_xo = FALSE)
 	if(as_admin && !check_rights(R_ADMIN))
@@ -122,7 +104,7 @@ GLOBAL_LIST_INIT(medal_references, generate_medal_references())
 		return FALSE
 
 	// Write a citation
-	var/citation = strip_html(input("What should the medal citation read?", "Medal Citation", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)
+	var/citation = tgui_input_text(usr, "What should the medal citation read?", "Medal Citation", multiline = TRUE)
 	if(!citation)
 		return FALSE
 
@@ -310,11 +292,10 @@ GLOBAL_LIST_INIT(medal_references, generate_medal_references())
 		to_chat(user, SPAN_WARNING("You must have an authenticated ID Card to award medals."))
 		return
 
-	var/is_xo_medal
-	if(user.job == JOB_XO)
-		is_xo_medal = TRUE
+	var/is_xo = user.job == JOB_XO || user.job == JOB_WO_XO
+	var/is_co = (card.paygrade in GLOB.co_paygrades) || (card.paygrade in GLOB.uscm_highcom_paygrades) || user.job == JOB_WO_CO
 
-	if(!((card.paygrade in GLOB.co_paygrades) || (card.paygrade in GLOB.uscm_highcom_paygrades) || is_xo_medal))
+	if(!is_xo && !is_co)
 		to_chat(user, SPAN_WARNING("Only a Senior Officer can award medals!"))
 		return
 
@@ -373,15 +354,15 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 		return FALSE
 
 	// Write the pheromone
-	var/citation = strip_html(input("What should the pheromone read?", "Jelly Pheromone", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)
+	var/citation = tgui_input_text(usr, "What should the pheromone read?", "Jelly Pheromone", multiline=TRUE)
 	if(!citation)
 		return FALSE
 
 	// Admin: Override attribution
 	var/admin_attribution = null
 	if(as_admin)
-		admin_attribution = strip_html(input("Override the jelly attribution? Press cancel for no attribution.", "Jelly Attribution", "Queen Mother", null) as text|null, MAX_NAME_LEN)
-		if(!admin_attribution) // Its actually "" but this also seems to check that
+		admin_attribution = tgui_input_text(usr, "Override the jelly attribution? Cancel or 'none' for no attribution.", "Jelly Attribution", "Queen Mother", max_length=MAX_NAME_LEN)
+		if(!admin_attribution)
 			admin_attribution = "none"
 
 	// Get mob information
@@ -521,6 +502,9 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 	var/reason
 	var/recommended_by_rank
 
+/datum/medal_recommendation/Destroy(force, ...)
+	GLOB.medal_recommendations -= src
+	return ..()
 
 /proc/add_medal_recommendation(mob/recommendation_giver)
 	// Pick a marine
@@ -651,11 +635,10 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 		to_chat(user, SPAN_WARNING("You must have an authenticated ID Card to award medals."))
 		return
 
-	var/is_xo_medal
-	if(user.job == JOB_XO)
-		is_xo_medal = TRUE
+	var/is_xo = user.job == JOB_XO || user.job == JOB_WO_XO
+	var/is_co = (card.paygrade in GLOB.co_paygrades) || (card.paygrade in GLOB.uscm_highcom_paygrades) || user.job == JOB_WO_CO
 
-	if(!((card.paygrade in GLOB.co_paygrades) || (card.paygrade in GLOB.uscm_highcom_paygrades) || is_xo_medal))
+	if(!is_xo && !is_co)
 		to_chat(user, SPAN_WARNING("Only a Senior Officer can award medals!"))
 		return
 
@@ -683,9 +666,10 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 		if("approve_medal")
 			var/recommendation_ref = params["ref"]
 			var/medal_type = params["medal_type"]
-			if(!(medal_type in GLOB.medal_options["marine_medals_co"]) && !(medal_type in GLOB.medal_options["marine_medals_xo"]))
+			if(is_xo && !(medal_type in GLOB.medal_options["marine_medals_xo"]))
+				to_chat(user, SPAN_WARNING("You cannot award this medal!"))
 				return
-			if((is_xo_medal && !(medal_type in GLOB.medal_options["marine_medals_xo"])) || (!is_xo_medal && !(medal_type in GLOB.medal_options["marine_medals_co"])))
+			if(!is_xo && !(medal_type in GLOB.medal_options["marine_medals_co"]))
 				to_chat(user, SPAN_WARNING("You cannot award this medal!"))
 				return
 			var/datum/medal_recommendation/recommendation = locate(recommendation_ref) in GLOB.medal_recommendations
@@ -694,7 +678,7 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 			if(recommendation.recipient_name == user.real_name)
 				to_chat(user, SPAN_WARNING("You cannot give medals to yourself!"))
 				return
-			if(recommendation.recipient_rank == JOB_CO)
+			if(recommendation.recipient_rank == JOB_CO || recommendation.recipient_rank == JOB_WO_CO)
 				to_chat(user, SPAN_WARNING("You cannot give a ribbon or medal to the Commanding Officer!"))
 				return
 			if(recommendation.recipient_rank == JOB_SYNTH)
@@ -711,7 +695,6 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 				return
 
 			if(give_medal_award_prefilled(actual_loc, user, recommendation.recipient_name, recommendation.recipient_rank, recommendation.recipient_ckey, medal_citation, medal_type, recommendation.recommended_by_ckey, recommendation.recommended_by_name))
-				GLOB.medal_recommendations -= recommendation
 				qdel(recommendation)
 				user.visible_message(SPAN_NOTICE("[actual_loc] prints a medal."))
 				. = TRUE
@@ -724,7 +707,6 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 			var/confirm = tgui_alert(user, "Are you sure you want to deny this medal recommendation?", "Medal Confirmation", list("Yes", "No"))
 			if(confirm != "Yes")
 				return
-			GLOB.medal_recommendations -= recommendation
 			qdel(recommendation)
 			. = TRUE
 

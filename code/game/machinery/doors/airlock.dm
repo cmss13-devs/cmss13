@@ -720,7 +720,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 					airlock_electronics.update_icon()
 					operating = DOOR_OPERATING_IDLE
 
-				msg_admin_niche("[key_name(user)] deconstructed [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z])")
+				msg_admin_niche("[key_name(user)] deconstructed [src] in [ADMIN_VERBOSEJMP(user)]")
 				SEND_SIGNAL(user, COMSIG_MOB_DISASSEMBLE_AIRLOCK, src)
 				deconstruct()
 			construction_busy = FALSE

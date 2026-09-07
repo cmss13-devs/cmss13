@@ -32,7 +32,6 @@ Bonus
 			if(1, 2, 3, 4)
 				to_chat(M, SPAN_NOTICE("[pick("You feel blubbery.", "You feel full.")]"))
 			else
-				M.overeatduration = min(M.overeatduration + 100, 600)
 				M.nutrition = min(M.nutrition + 100, 500)
 
 	return
@@ -74,7 +73,6 @@ Bonus
 				to_chat(M, SPAN_NOTICE("[pick("You feel hungry.", "You crave for food.")]"))
 			else
 				to_chat(M, SPAN_NOTICE("Your stomach rumbles."))
-				M.overeatduration = max(M.overeatduration - 100, 0)
 				M.nutrition = max(M.nutrition - 100, 0)
 
 	return
@@ -113,7 +111,6 @@ Bonus
 		var/mob/living/M = A.affected_mob
 		switch(A.stage)
 			if(4, 5)
-				M.overeatduration = 0
 				M.nutrition = 400
 
 	return

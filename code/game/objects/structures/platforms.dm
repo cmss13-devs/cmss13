@@ -12,8 +12,8 @@
 	throwpass = TRUE //You can throw objects over this, despite its density.
 	layer = OBJ_LAYER
 	breakable = TRUE
-	flags_atom = ON_BORDER
-	unacidable = TRUE
+	flags_atom = ON_BORDER|NO_ZFALL
+	unacidable = FALSE
 	climb_delay = CLIMB_DELAY_SHORT
 	projectile_coverage = PROJECTILE_COVERAGE_NONE
 	var/stat = 0
@@ -157,7 +157,7 @@
 	throwpass = TRUE
 	layer = OBJ_LAYER
 	breakable = FALSE
-	flags_atom = ON_BORDER
+	flags_atom = ON_BORDER|NO_ZFALL
 	unacidable = TRUE
 
 /obj/structure/platform_decoration/Initialize()

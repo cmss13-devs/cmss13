@@ -65,7 +65,7 @@
 		else
 			gift_type = pick(
 			/obj/item/weapon/gun/revolver/mateba,
-			/obj/item/weapon/gun/pistol/heavy,
+			/obj/item/weapon/gun/pistol/deagle,
 			/obj/item/weapon/sword,
 			/obj/item/weapon/energy/sword/green,
 			/obj/item/weapon/energy/sword/red,

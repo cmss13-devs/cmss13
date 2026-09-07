@@ -51,7 +51,8 @@
 	return O
 
 //human -> alien
-/mob/living/carbon/human/proc/Alienize(list/types)
+//checks for ciphering level to change hivenumber
+/mob/living/carbon/human/proc/Alienize(list/types, hivenumber_alienize)
 	if (monkeyizing)
 		return
 	for(var/obj/item/W in src)
@@ -98,19 +99,26 @@
 				new_xeno = new /mob/living/carbon/xenomorph/crusher(loc)
 			if(XENO_CASTE_PRAETORIAN)
 				new_xeno = new /mob/living/carbon/xenomorph/praetorian(loc)
+			if(XENO_CASTE_DESPOILER)
+				new_xeno = new /mob/living/carbon/xenomorph/despoiler(loc)
 			if(XENO_CASTE_QUEEN)
 				new_xeno = new /mob/living/carbon/xenomorph/queen(loc)
 			if(XENO_CASTE_HELLHOUND)
 				new_xeno = new /mob/living/carbon/xenomorph/hellhound(loc)
+			if(XENO_CASTE_PREDALIEN)
+				new_xeno = new /mob/living/carbon/xenomorph/predalien(loc)
 			else
 				new_xeno = new /mob/living/carbon/xenomorph/drone(loc)
 
 	new_xeno.a_intent = INTENT_HARM
 	new_xeno.key = key
+
+	new_xeno.set_hive_and_update(hivenumber_alienize)
+
 	if(new_xeno.client)
 		new_xeno.client.change_view(GLOB.world_view_size)
 
-	to_chat(new_xeno, "<B>You are now an alien.</B>")
+	to_chat(new_xeno, "<B>Our new form ripples with strength that confounds us. We are now... perfection.</B>")
 	qdel(src)
 	return
 

@@ -16,6 +16,7 @@
 	can_be_revived = FALSE
 
 	minimap_icon = "larva"
+	organ_type = null
 
 /datum/caste_datum/larva/predalien
 	caste_type = XENO_CASTE_PREDALIEN_LARVA
@@ -63,9 +64,11 @@
 	if(larva_state == LARVA_STATE_BLOODY && evolution_stored >= evolution_threshold / 2)
 		larva_state = LARVA_STATE_NORMAL
 		generate_name()
+		update_icons()
 	else if(larva_state == LARVA_STATE_NORMAL && evolution_stored >= evolution_threshold)
 		larva_state = LARVA_STATE_MATURE
 		generate_name()
+		update_icons()
 	return ..()
 
 /mob/living/carbon/xenomorph/larva/warn_away_timer()
@@ -112,6 +115,11 @@
 	AUTOWIKI_SKIP(TRUE)
 
 	hivenumber = XENO_HIVE_DELTA
+
+/mob/living/carbon/xenomorph/larva/k_series
+	AUTOWIKI_SKIP(TRUE)
+
+	hivenumber = XENO_HIVE_K_SERIES
 
 /mob/living/carbon/xenomorph/larva/mutated
 	AUTOWIKI_SKIP(TRUE)

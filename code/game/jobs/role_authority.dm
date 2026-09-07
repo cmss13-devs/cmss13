@@ -13,19 +13,9 @@ use roles_by_path as it is an accurate account of every specific role path (with
 */
 GLOBAL_DATUM(RoleAuthority, /datum/authority/branch/role)
 
-#define GET_RANDOM_JOB 0
-#define BE_MARINE 1
-#define RETURN_TO_LOBBY 2
-#define BE_XENOMORPH 3
-
-#define NEVER_PRIORITY 0
-#define HIGH_PRIORITY 1
-#define MED_PRIORITY 2
-#define LOW_PRIORITY 3
+GLOBAL_VAR_INIT(players_preassigned, 0)
 
 #define SHIPSIDE_ROLE_WEIGHT 0.25
-
-GLOBAL_VAR_INIT(players_preassigned, 0)
 
 /proc/guest_jobbans(job)
 	return (job in GLOB.ROLES_COMMAND)
@@ -112,7 +102,6 @@ GLOBAL_VAR_INIT(players_preassigned, 0)
 		squads += S
 		squads_by_type[S.type] = S
 
-//#undef FACTION_TO_JOIN
 
 /*
 Consolidated into a better collection of procs. It was also calling too many loops, and I tried to fix that as well.
@@ -193,19 +182,34 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(istype(XJ))
 		XJ.set_spawn_positions(GLOB.players_preassigned)
 
-	// Limit the number of SQUAD MARINE roles players can roll initially
+	// Limit the number of SQUAD MARINE roles players can roll initially (somereason)
 	var/datum/job/SMJ = GET_MAPPED_ROLE(JOB_SQUAD_MARINE)
 	if(istype(SMJ))
 		SMJ.set_spawn_positions(GLOB.players_preassigned)
+
+	// Set initial squad caps
+	var/datum/job/engi_job = GET_MAPPED_ROLE(JOB_SQUAD_ENGI)
+	if(istype(engi_job))
+		engi_job.set_spawn_positions(GLOB.players_preassigned)
+	var/datum/job/medic_job = GET_MAPPED_ROLE(JOB_SQUAD_MEDIC)
+	if(istype(medic_job))
+		medic_job.set_spawn_positions(GLOB.players_preassigned)
 
 	// Set survivor starting amount based on marines assigned
 	var/datum/job/SJ = temp_roles_for_mode[JOB_SURVIVOR]
 	if(istype(SJ))
 		SJ.set_spawn_positions(GLOB.players_preassigned)
+		SJ.create_landmark_lists()
 
 	var/datum/job/CO_surv_job = temp_roles_for_mode[JOB_CO_SURVIVOR]
 	if(istype(CO_surv_job))
 		CO_surv_job.set_spawn_positions(GLOB.players_preassigned)
+		CO_surv_job.create_landmark_lists()
+
+	var/datum/job/synth_surv_job = temp_roles_for_mode[JOB_SYNTH_SURVIVOR]
+	if(istype(synth_surv_job))
+		synth_surv_job.set_spawn_positions(GLOB.players_preassigned)
+		synth_surv_job.create_landmark_lists()
 
 	var/chance = trim(file2text("data/predchance.txt"))
 	if(chance)
@@ -235,6 +239,16 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	chance += 20
 	fdel("data/predchance.txt")
 	WRITE_FILE(file("data/predchance.txt"), chance)
+
+	var/joe_chance = trim(file2text("data/colonyjoechance.txt"))
+	if(joe_chance)
+		joe_chance = text2num(joe_chance)
+	else
+		joe_chance = 20
+		WRITE_FILE(file("data/colonyjoechance.txt"), joe_chance)
+
+	if(prob(joe_chance) && !Check_WO() && length(SSmapping.configs[GROUND_MAP].colony_joe_types) != 0)
+		SSticker.mode.flags_round_type |= MODE_COLONY_JOE
 
 	// Assign the roles, this time for real, respecting limits we have established.
 	var/list/roles_left = assign_roles(temp_roles_for_mode, unassigned_players)
@@ -371,7 +385,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 /datum/authority/branch/role/proc/assign_role(mob/new_player/M, datum/job/J, latejoin = FALSE)
 	if(ismob(M) && istype(J))
-		if(check_role_entry(M, J, latejoin))
+		if(check_role_entry(M, J, latejoin) && J.assign_landmark(M))
 			M.job = J.title
 			J.current_positions++
 			return TRUE
@@ -461,7 +475,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		new_human.client?.prefs.update_slot(new_job.title, 10 SECONDS)
 
 	if(new_job.job_options && new_human?.client?.prefs?.pref_special_job_options[new_job.title])
-		new_job.handle_job_options(new_human.client.prefs.pref_special_job_options[new_job.title])
+		new_job.handle_job_options(new_human.client.prefs.pref_special_job_options[new_job.title], new_human.client)
 
 	var/job_whitelist = new_job.title
 	var/whitelist_status = new_job.get_whitelist_status(new_human.client)
@@ -711,3 +725,5 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		if(new_squad.roles_in[transfer_marine.job] >= new_squad.roles_cap[transfer_marine.job])
 			return TRUE
 	return FALSE
+
+#undef SHIPSIDE_ROLE_WEIGHT

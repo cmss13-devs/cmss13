@@ -223,6 +223,9 @@
 	if(usr.is_mob_incapacitated() || get_dist(usr, src) > 1 || usr.blinded || !usr.client)
 		return
 
+	// Don't look if click drags are overrided
+	if (usr.client?.prefs.toggle_prefs & TOGGLE_COMBAT_CLICKDRAG_OVERRIDE && !HAS_TRAIT(usr, TRAIT_OVERRIDE_CLICKDRAG) && usr.a_intent & (INTENT_HARM | INTENT_DISARM))
+		return
 
 	if(isliving(usr))
 		var/mob/living/living_usr = usr

@@ -294,7 +294,7 @@ GLOBAL_LIST_INIT(radiochannels, list(
 SUBSYSTEM_DEF(radio)
 	name = "radio"
 	wait = 30 SECONDS
-	flags = SS_KEEP_TIMING|SS_NO_INIT
+	flags = SS_KEEP_TIMING
 	init_order = SS_INIT_RADIO
 	var/list/datum/radio_frequency/frequencies = list()
 
@@ -358,6 +358,14 @@ SUBSYSTEM_DEF(radio)
 		"[HDC_FREQ]" = "hdcradio",
 	)
 
+/datum/controller/subsystem/radio/Initialize()
+	var/default_value = CONFIG_GET(number/announcement_max_clarity)
+	for(var/faction in faction_coms_clarity)
+		faction_coms_clarity[faction] = default_value
+
+	initialized = TRUE
+	return SS_INIT_SUCCESS
+
 /datum/controller/subsystem/radio/fire(resumed)
 	var/decay_rate = CONFIG_GET(number/announcement_clarity_decay)
 	var/clarity_min = CONFIG_GET(number/announcement_min_clarity)
@@ -372,9 +380,6 @@ SUBSYSTEM_DEF(radio)
 			if(current.time >= oldest_time)
 				break
 		codes.Cut(1, index)
-
-		// Decay current clarity
-		faction_coms_clarity[faction] = max(faction_coms_clarity[faction] - decay_rate, clarity_min)
 
 /datum/controller/subsystem/radio/proc/add_object(obj/device as obj, new_frequency as num, filter = null as text|null)
 	var/f_text = num2text(new_frequency)

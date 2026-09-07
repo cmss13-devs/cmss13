@@ -13,28 +13,23 @@
 	var/falloff = 1
 	var/volume_cat = VOLUME_SFX
 	var/range = 0
-	var/list/echo = new /list(18)
+	var/list/echo
+	var/atom/atom //! Tracked atom so we get the exact position even after delay in SSsound firing - replaces x/y/z if applicable
 	var/x //Map coordinates, not sound coordinates
 	var/y
 	var/z
-	var/y_s_offset // Vertical sound offset
-	var/x_s_offset // Horizontal sound offset
+	/// Horizontal sound offset, added to the dynamic offsets calculated using map coordinates above.
+	var/x_s_offset
+	/// Vertical (as in on screen) sound offset, added to the dynamic offsets calculated using map coordinates above. Get it right: Y in sound is up from the ground. Y in game is up on the screen. Game North is Sound Z axis.
+	var/z_s_offset
 
 /datum/sound_template/proc/get_hearers()
-	var/list/hearers_to_return = list()
-	var/datum/shape/rectangle/zone = SQUARE(x, y, range * 2)
-	hearers_to_return += SSquadtree.players_in_range(zone, z)
-
-	var/turf/above = SSmapping.get_turf_above(locate(x, y, z))
-	while(above)
-		hearers_to_return += SSquadtree.players_in_range(zone, above.z)
-		above = SSmapping.get_turf_above(above)
-
-	var/turf/below = SSmapping.get_turf_below(locate(x, y, z))
-	while(below)
-		hearers_to_return += SSquadtree.players_in_range(zone, below.z)
-		below = SSmapping.get_turf_below(below)
-	return hearers_to_return
+	RETURN_TYPE(/list/client)
+	. = list()
+	var/list/atom/movable/all_contents = SSmapgrids.get_movables_in_region(z, x - range, x + range, y - range, y + range)
+	for(var/mob/mob in all_contents)
+		if(mob.client)
+			. += mob.client
 
 /proc/get_free_channel()
 	var/static/cur_chan = 1
@@ -53,7 +48,7 @@
 //status: the regular 4 sound flags
 //falloff: max range till sound volume starts dropping as distance increases
 
-/proc/playsound(atom/source, sound/soundin, vol = 100, vary = FALSE, sound_range, vol_cat = VOLUME_SFX, channel = 0, status, falloff = 1, list/echo, y_s_offset, x_s_offset)
+/proc/playsound(atom/source, sound/soundin, vol = 100, vary = FALSE, sound_range, vol_cat = VOLUME_SFX, channel = 0, status, falloff = 1, list/echo, z_s_offset, x_s_offset)
 	if(isarea(source))
 		error("[source] is an area and is trying to make the sound: [soundin]")
 		return FALSE
@@ -70,11 +65,9 @@
 	template.falloff = falloff
 	template.volume = vol
 	template.volume_cat = vol_cat
-	for(var/pos = 1 to length(echo))
-		if(!echo[pos])
-			continue
-		template.echo[pos] = echo[pos]
-	template.y_s_offset = y_s_offset
+	if(echo)
+		template.echo = echo.Copy()
+	template.z_s_offset = z_s_offset
 	template.x_s_offset = x_s_offset
 	if(vary != FALSE)
 		if(vary > 1)
@@ -85,6 +78,9 @@
 	if(!sound_range)
 		sound_range = floor(0.25*vol) //if no specific range, the max range is equal to a quarter of the volume.
 	template.range = sound_range
+
+	if(ismovable(source))
+		template.atom = source
 
 	var/turf/turf_source = get_turf(source)
 	if(!turf_source || !turf_source.z)
@@ -104,6 +100,7 @@
 		if(vehicle_interior?.ready)
 			extra_interiors |= vehicle_interior
 			if(vehicle_interior.exterior)
+				template.atom = vehicle_interior.exterior
 				var/turf/new_turf_source = get_turf(vehicle_interior.exterior)
 				template.x = new_turf_source.x
 				template.y = new_turf_source.y
@@ -121,12 +118,14 @@
 
 
 //This is the replacement for playsound_local. Use this for sending sounds directly to a client
-/proc/playsound_client(client/client, sound/soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel = 0, status, list/echo, y_s_offset, x_s_offset)
+/proc/playsound_client(client/client, sound/soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel = 0, status, list/echo, z_s_offset, x_s_offset)
 	if(!istype(client) || !client.soundOutput)
 		return FALSE
 
 	var/datum/sound_template/template = new()
 	if(origin)
+		if(isatom(origin))
+			template.atom = origin
 		var/turf/T = get_turf(origin)
 		if(T)
 			template.x = T.x
@@ -148,16 +147,14 @@
 	template.volume_cat = vol_cat
 	template.channel = channel
 	template.status = status
-	for(var/pos = 1 to length(echo))
-		if(!echo[pos])
-			continue
-		template.echo[pos] = echo[pos]
-	template.y_s_offset = y_s_offset
+	if(echo)
+		template.echo = echo.Copy()
+	template.z_s_offset = z_s_offset
 	template.x_s_offset = x_s_offset
 	SSsound.queue(template, list(client))
 
 /// Plays sound to all mobs that are map-level contents of an area
-/proc/playsound_area(area/A, soundin, vol = 100, channel = 0, status, vol_cat = VOLUME_SFX, list/echo, y_s_offset, x_s_offset)
+/proc/playsound_area(area/A, soundin, vol = 100, channel = 0, status, vol_cat = VOLUME_SFX, list/echo, z_s_offset, x_s_offset)
 	if(!isarea(A))
 		return FALSE
 
@@ -167,10 +164,8 @@
 	template.channel = channel
 	template.status = status
 	template.volume_cat = vol_cat
-	for(var/pos = 1 to length(echo))
-		if(!echo[pos])
-			continue
-		template.echo[pos] = echo[pos]
+	if(echo)
+		template.echo = echo.Copy()
 
 	var/list/hearers = list()
 	for(var/mob/living/M in A.contents)
@@ -187,17 +182,15 @@
 
 
 /// Play sound for all on-map clients on a given Z-level. Good for ambient sounds.
-/proc/playsound_z(z, soundin, volume = 100, vol_cat = VOLUME_SFX, echo, y_s_offset, x_s_offset)
+/proc/playsound_z(z, soundin, volume = 100, vol_cat = VOLUME_SFX, list/echo, z_s_offset, x_s_offset)
 	var/datum/sound_template/template = new()
 	template.file = soundin
 	template.volume = volume
 	template.channel = SOUND_CHANNEL_Z
 	template.volume_cat = vol_cat
-	for(var/pos = 1 to length(echo))
-		if(!echo[pos])
-			continue
-		template.echo[pos] = echo[pos]
-	template.y_s_offset = y_s_offset
+	if(echo)
+		template.echo = echo.Copy()
+	template.z_s_offset = z_s_offset
 	template.x_s_offset = x_s_offset
 	var/list/hearers = list()
 	for(var/mob/M in GLOB.player_list)
@@ -311,6 +304,8 @@
 				sound = pick('sound/weapons/gun_silenced_alt_shot1.ogg','sound/weapons/gun_silenced_alt_shot2.ogg','sound/weapons/gun_silenced_alt_shot3.ogg')
 			if("gun_pulse")
 				sound = pick('sound/weapons/gun_m41a_1.ogg','sound/weapons/gun_m41a_2.ogg','sound/weapons/gun_m41a_3.ogg','sound/weapons/gun_m41a_4.ogg','sound/weapons/gun_m41a_5.ogg','sound/weapons/gun_m41a_6.ogg')
+			if("gun_pulse_classic")
+				sound = pick('sound/weapons/rifle_firing_sounds/gun_mk1_1.ogg','sound/weapons/rifle_firing_sounds/gun_mk1_2.ogg','sound/weapons/rifle_firing_sounds/gun_mk1_3.ogg','sound/weapons/rifle_firing_sounds/gun_mk1_4.ogg','sound/weapons/rifle_firing_sounds/gun_mk1_5.ogg','sound/weapons/rifle_firing_sounds/gun_mk1_6.ogg')
 			if("gun_smartgun")
 				sound = pick('sound/weapons/gun_smartgun1.ogg', 'sound/weapons/gun_smartgun2.ogg', 'sound/weapons/gun_smartgun3.ogg', 'sound/weapons/gun_smartgun4.ogg')
 			if("gun_smartgun_rattle")
@@ -382,6 +377,8 @@
 				sound = pick('sound/voice/alien_drool1.ogg','sound/voice/alien_drool2.ogg')
 			if("alien_roar")
 				sound = pick('sound/voice/alien_roar1.ogg','sound/voice/alien_roar2.ogg','sound/voice/alien_roar3.ogg','sound/voice/alien_roar4.ogg','sound/voice/alien_roar5.ogg','sound/voice/alien_roar6.ogg')
+			if("alien_roarhiss")
+				sound = pick('sound/voice/alien_roarhiss1.ogg','sound/voice/alien_roarhiss2.ogg')
 			if("alien_roar_larva")
 				sound = pick('sound/voice/alien_roar_larva1.ogg','sound/voice/alien_roar_larva2.ogg')
 			if("queen")
@@ -430,6 +427,8 @@
 				sound = pick('sound/voice/joe/death_hj_normal.ogg', 'sound/voice/joe/death_hj_silence.ogg',10;'sound/voice/joe/death_hj_tomorrow.ogg')
 			if("upp_wj_death")
 				sound = pick('sound/voice/joe/upp_joe/smert1.ogg', 'sound/voice/joe/upp_joe/smert2.ogg', 'sound/voice/joe/upp_joe/smert3.ogg', 'sound/voice/joe/upp_joe/smert4.ogg', 'sound/voice/joe/upp_joe/smert5.ogg')
+			if("daniel_death")
+				sound = pick('sound/voice/joe/daniel/death1.ogg', 'sound/voice/joe/daniel/death2.ogg', 'sound/voice/joe/daniel/death3.ogg')
 			//misc mobs
 			if("cat_meow")
 				sound = pick('sound/voice/cat_meow_1.ogg','sound/voice/cat_meow_2.ogg','sound/voice/cat_meow_3.ogg','sound/voice/cat_meow_4.ogg','sound/voice/cat_meow_5.ogg','sound/voice/cat_meow_6.ogg','sound/voice/cat_meow_7.ogg')
@@ -453,6 +452,8 @@
 				sound = pick('sound/voice/wy_droid/wy_droid_death1.ogg', 'sound/voice/wy_droid/wy_droid_death2.ogg', 'sound/voice/wy_droid/wy_droid_death3.ogg', 'sound/voice/wy_droid/wy_droid_death4.ogg', 'sound/voice/wy_droid/wy_droid_death5.ogg', 'sound/voice/wy_droid/wy_droid_death6.ogg', 'sound/voice/wy_droid/wy_droid_death7.ogg')
 			if("wy_droid_cloaker_death")
 				sound = pick('sound/voice/wy_droid/wy_stealth_droid_death1.ogg', 'sound/voice/wy_droid/wy_stealth_droid_death2.ogg')
+			if("clown_footstep")
+				sound = pick('sound/effects/clownstep1.ogg', 'sound/effects/clownstep2.ogg')
 	return sound
 
 /client/proc/generate_sound_queues()

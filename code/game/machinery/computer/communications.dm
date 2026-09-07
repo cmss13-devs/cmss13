@@ -102,7 +102,6 @@
 					set_security_level(tmp_alertlevel)
 					if(GLOB.security_level != old_level)
 						//Only notify the admins if an actual change happened
-						log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
 						message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
 				else
 					to_chat(usr, SPAN_WARNING("You are not authorized to do this."))
@@ -159,7 +158,6 @@
 					to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
 					return FALSE
 
-				log_game("[key_name(usr)] has called for an emergency evacuation.")
 				message_admins("[key_name_admin(usr)] has called for an emergency evacuation.")
 				log_ares_security("Initiate Evacuation", "Called for an emergency evacuation.", usr)
 				return TRUE
@@ -185,7 +183,6 @@
 					to_chat(usr, SPAN_WARNING("You are unable to cancel the evacuation right now!"))
 					return FALSE
 
-				log_game("[key_name(usr)] has canceled the emergency evacuation.")
 				message_admins("[key_name_admin(usr)] has canceled the emergency evacuation.")
 				log_ares_security("Cancel Evacuation", "Cancelled the emergency evacuation.", usr)
 				return TRUE

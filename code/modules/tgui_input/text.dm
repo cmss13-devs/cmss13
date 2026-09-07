@@ -30,6 +30,11 @@
 	if(isnull(user.client))
 		return null
 
+	if(user.tgui_open_uis) // to prevent multiple of the same window from being opened, it should work anyway
+		for(var/datum/tgui/ui in user.tgui_open_uis)
+			if(istype(ui.src_object, /datum/tgui_input_text))
+				return null
+
 	// Client does NOT have tgui_input on: Returns regular input
 	/*
 	if(!user.client.prefs.read_preference(/datum/preference/toggle/tgui_input))

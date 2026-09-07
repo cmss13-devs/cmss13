@@ -9446,7 +9446,7 @@
 	},
 /obj/item/prop/alien/hugger,
 /turf/open/floor/brown/northwest,
-/area/lv624/ground/caves/north_central_caves/lake_house_tower)
+/area/lv624/lazarus/comms)
 "aWF" = (
 /obj/effect/spawner/random/toolbox,
 /obj/structure/surface/table/reinforced/prison,

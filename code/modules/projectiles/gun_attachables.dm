@@ -1053,7 +1053,7 @@ Defined in conflicts.dm of the #defines folder.
 	return
 
 /obj/item/attachable/flashlight/laser_light_combo //Unique attachment for the VP78 based on the fact it has a Laser-Light Module in AVP2010
-	name = "VP78 Laser-Light Module"
+	name = "VP78-A1 Laser-Light Module"
 	desc = "A Laser-Light module for the VP78 Service Pistol which is currently undergoing limited field testing as part of the USCM's next generation pistol program. All VP78-A1 Pistols come equipped with the module."
 	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
 	icon_state = "vplaserlight"
@@ -1072,14 +1072,21 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_9
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
 
+	flags_attach_features &= ~ATTACH_REMOVABLE
+	hidden = FALSE
+
 /obj/item/attachable/flashlight/laser_light_combo/attackby(obj/item/combo_light, mob/user)
 	if(HAS_TRAIT(combo_light, TRAIT_TOOL_SCREWDRIVER))
 		to_chat(user, SPAN_NOTICE("You are unable to modify it."))
 	return
 
 /obj/item/attachable/flashlight/laser_light_combo/lowcaliber
+	name = "VP78 Laser-Light Module"
+	desc = "A Laser-Light module for the VP78 Service Pistol which is currently undergoing limited field testing as part of the USCM's next generation pistol program. All VP78-A1 Pistols come equipped with the module."
 	icon_state = "vplaserlight-small"
 	attach_icon = "vplaserlight-small_a"
+	original_state = "vplaserlight-small"
+	original_attach = "vplaserlight-small_a"
 
 /obj/item/attachable/magnetic_harness
 	name = "magnetic harness"

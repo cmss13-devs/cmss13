@@ -861,6 +861,8 @@
 	icon_state = "vp78"
 	item_state = "vp78"
 
+	starting_attachment_types = list(/obj/item/attachable/flashlight/laser_light_combo/lowcaliber)
+
 	fire_sound = 'sound/weapons/gun_vp78_v2.ogg'
 	reload_sound = 'sound/weapons/gun_vp78_reload.ogg'
 	unload_sound = 'sound/weapons/gun_vp78_unload.ogg'
@@ -885,14 +887,6 @@
 	. = ..()
 	AddElement(/datum/element/corp_label/wy)
 
-/obj/item/weapon/gun/pistol/vp78/handle_starting_attachment()
-	..()
-	var/obj/item/attachable/flashlight/laser_light_combo/VP = new(src)
-	VP.flags_attach_features &= ~ATTACH_REMOVABLE
-	VP.hidden = FALSE
-	VP.Attach(src)
-	update_attachable(VP.slot)
-
 /obj/item/weapon/gun/pistol/vp78/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 22,"rail_x" = 10, "rail_y" = 23, "under_x" = 20, "under_y" = 17, "stock_x" = 18, "stock_y" = 14)
 
@@ -911,10 +905,10 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 
 /obj/item/weapon/gun/pistol/vp78/whiteout
-	starting_attachment_types = list(/obj/item/attachable/heavy_barrel, /obj/item/attachable/reflex)
+	starting_attachment_types = list(/obj/item/attachable/flashlight/laser_light_combo, /obj/item/attachable/heavy_barrel, /obj/item/attachable/reflex)
 
 /obj/item/weapon/gun/pistol/vp78/army
-	starting_attachment_types = list(/obj/item/attachable/extended_barrel, /obj/item/attachable/reflex)
+	starting_attachment_types = list(/obj/item/attachable/flashlight/laser_light_combo, /obj/item/attachable/extended_barrel, /obj/item/attachable/reflex)
 
 /obj/item/weapon/gun/pistol/vp78/army/heap
 	current_mag = /obj/item/ammo_magazine/pistol/vp78/heap
@@ -928,6 +922,8 @@
 	icon_state = "vp78-small"
 	item_state = "vp78-small"
 	fire_sound = "m4a3"
+
+	starting_attachment_types = list(/obj/item/attachable/flashlight/laser_light_combo/lowcaliber)
 
 	reload_sound = 'sound/weapons/gun_vp78_reload.ogg'
 	unload_sound = 'sound/weapons/gun_vp78_unload.ogg'
@@ -957,6 +953,12 @@
 	VP.hidden = FALSE
 	VP.Attach(src)
 	update_attachable(VP.slot)
+
+/obj/item/weapon/gun/pistol/vp78/lowcaliber/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_10)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	set_burst_delay(FIRE_DELAY_TIER_11)
 
 //-------------------------------------------------------
 /*

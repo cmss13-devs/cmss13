@@ -191,6 +191,9 @@
 	name = "\improper VP78 magazine (9mm)"
 	desc = "A 9mm pistol magazine for the M4A3."
 	caliber = "9mm"
+	icon_state = "vp78"
+	ammo_band_icon = "+vp78-small_band"
+	ammo_band_icon_empty = "+vp78-small_band_e"
 	max_rounds = 21
 	default_ammo = /datum/ammo/bullet/pistol
 

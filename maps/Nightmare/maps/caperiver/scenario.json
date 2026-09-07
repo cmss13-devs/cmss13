@@ -3,7 +3,7 @@
         "type": "pick", "name": "Cape River Global Event",
         "choices": [
             { "weight": 9, "type": "def", "values": { "lvevent": "none"       } },
-            { "weight": 1, "type": "def", "values": { "lvevent": "clf" } }
+            { "weight": 1, "type": "def", "values": { "lvevent": "clf", "hostile_survivors": true } }
         ]
     }
 

@@ -1089,40 +1089,39 @@
 	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/pouch/pressurized_reagent_canister
-	name = "Pressurized Reagent Canister Pouch"
+	name = "\improper Pressurized Reagent Canister Pouch"
 	max_w_class = SIZE_SMALL
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
 	icon_state = "pressurized_reagent_canister"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser."
-	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/empty)
+	desc = "A pouch that can carry one custom autoinjector and one pressurized reagent canister that you can fill with a reagent tank or chemical dispenser."
+	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/research)
 	var/obj/item/reagent_container/glass/pressurized_canister/inner
 	matter = list("plastic" = 2000, "glass" = 2000)
 	flags_item = NOBLUDGEON
 
-
-/obj/item/storage/pouch/pressurized_reagent_canister/bicaridine
-	name = "Pressurized Reagent Canister Pouch (Bicaridine)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with the reliable brute-mending Bicaridine."
-
-/obj/item/storage/pouch/pressurized_reagent_canister/kelotane
-	name = "Pressurized Reagent Canister Pouch (Kelotane)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with the reliable burn-healing Kelotane."
-
-/obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine
-	name = "Pressurized Reagent Canister Pouch (Tricordrazine)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with the reliable medicine that slowly heals brute, burn, toxin, and oxy damage, Tricordrazine."
+/obj/item/storage/pouch/pressurized_reagent_canister/damage_mend
+	name = "\improper Pressurized Reagent Canister Pouch (Damage Mending Mix)"
+	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with equal parts Bicaridine, Kelotane, and Tricordrazine to quickly heal brute and burn damage accumulated on the field. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone
-	name = "Pressurized Reagent Canister Pouch (Field Anesthetic)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with the most robust painkiller available from your local chem dispenser, Oxycodone."
+	name = "\improper Pressurized Reagent Canister Pouch (Field Anesthetic)"
+	desc = "A pouch that carries a 5u reagent pouch autoinjector and a pressurized reagent canister filled with the most robust painkiller, Oxycodone, that you can refill with a reagent tank or chemical dispenser. The dosage is small to gauge the amount of anesthetic needed for minor or complicated surgeries, and to reduce the occurrences of overdoses."
 
-/obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord
-	name = "Pressurized Reagent Canister Pouch (Tricordrazine Revival Mix)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Tricordrazine for stabilizing and minimizing damage to defibrillated patients."
+/obj/item/storage/pouch/pressurized_reagent_canister/revival_oxy
+	name = "\improper Pressurized Reagent Canister Pouch (Oxycodone Revival Mix)"
+	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with equal-parts Oxycodone, Inaprovaline, and Epinephrine for quickly getting marines in pain crit up and back on their feet. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri
-	name = "Pressurized Reagent Canister Pouch (Peridaxon Revival Mix)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon to stabilize patients and stave off symptoms of post-defibrillation heart damage."
+	name = "\improper Pressurized Reagent Canister Pouch (Peridaxon Revival Mix)"
+	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon for stabilizing defibrillated patients and their damaged organs until they can get to an operating table. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
+
+/obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord
+	name = "\improper Pressurized Reagent Canister Pouch (Tricordrazine Revival Mix)"
+	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with equal-parts Epinephrine, Inaprovaline, and Tricordrazine for stabilizing and minimizing damage to defibrillated patients. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
+
+/obj/item/storage/pouch/pressurized_reagent_canister/surgery_prep
+	name = "\improper Pressurized Reagent Canister Pouch (Surgery Prep Mix)"
+	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with 280u Oxycodone, 160u Dexalin+, and 40u Peridaxon to locally anesthetize patients and prevent them from dying on the table due to the effects of organ damage or suffocating from low blood. You can refill the pouch's canister with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/Initialize()
 	. = ..()
@@ -1130,33 +1129,57 @@
 	//Only add an autoinjector if the canister is empty
 	//Important for the snowflake /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone
 	if(length(contents) == 0)
-		new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/medium(src)
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_with(ragent)
 	inner.reagents.add_reagent(ragent, inner.volume)
 	if(length(contents) > 0)
-		var/obj/item/reagent_container/hypospray/autoinjector/empty/A = contents[1]
-		A.reagents.add_reagent(ragent, A.volume)
-		A.update_uses_left()
-		A.update_icon()
+		var/obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/medium/autoinjector = contents[1]
+		autoinjector.reagents.add_reagent(ragent, autoinjector.volume)
+		autoinjector.update_uses_left()
+		autoinjector.update_icon()
 	update_icon()
 
-/obj/item/storage/pouch/pressurized_reagent_canister/bicaridine/Initialize()
+/obj/item/storage/pouch/pressurized_reagent_canister/damage_mend/Initialize()
 	. = ..()
-	fill_with("bicaridine")
 
-/obj/item/storage/pouch/pressurized_reagent_canister/kelotane/Initialize()
-	. = ..()
-	fill_with("kelotane")
+	//we don't call fill_with because of the complex mix of chemicals we have
+	inner.reagents.add_reagent("bicaridine", inner.volume/3)
+	inner.reagents.add_reagent("kelotane", inner.volume/3)
+	inner.reagents.add_reagent("tricordrazine", inner.volume/3)
+	if(length(contents) > 0)
+		var/obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/medium/autoinjector = contents[1]
+		autoinjector.reagents.add_reagent("bicaridine", autoinjector.volume/3)
+		autoinjector.reagents.add_reagent("kelotane", autoinjector.volume/3)
+		autoinjector.reagents.add_reagent("tricordrazine", autoinjector.volume/3)
+		autoinjector.update_uses_left()
+		autoinjector.update_icon()
+	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone/Initialize()
 	. = ..()
+	if(length(contents))
+		for(var/obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/autoinjector in contents)
+			qdel(autoinjector) //delete current autoinjector because parent spawned a 15u one and we want a 5u one here. If there's a better way of doing this, let me know, please.
+			new /obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/extrasmall(src)
 	fill_with("oxycodone")
+	update_icon()
 
-/obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine/Initialize()
+/obj/item/storage/pouch/pressurized_reagent_canister/revival_oxy/Initialize()
 	. = ..()
-	fill_with("tricordrazine")
+	//we don't call fill_with because of the complex mix of chemicals we have
+	inner.reagents.add_reagent("adrenaline", inner.volume/3)
+	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
+	inner.reagents.add_reagent("oxycodone", inner.volume/3)
+	if(length(contents) > 0)
+		var/obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/medium/autoinjector = contents[1]
+		autoinjector.reagents.add_reagent("adrenaline", autoinjector.volume/3)
+		autoinjector.reagents.add_reagent("inaprovaline", autoinjector.volume/3)
+		autoinjector.reagents.add_reagent("oxycodone", autoinjector.volume/3)
+		autoinjector.update_uses_left()
+		autoinjector.update_icon()
+	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord/Initialize()
 	. = ..()
@@ -1165,12 +1188,12 @@
 	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
 	inner.reagents.add_reagent("tricordrazine", inner.volume/3)
 	if(length(contents) > 0)
-		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
-		A.reagents.add_reagent("adrenaline", A.volume/3)
-		A.reagents.add_reagent("inaprovaline", A.volume/3)
-		A.reagents.add_reagent("tricordrazine", A.volume/3)
-		A.update_uses_left()
-		A.update_icon()
+		var/obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/medium/autoinjector = contents[1]
+		autoinjector.reagents.add_reagent("adrenaline", autoinjector.volume/3)
+		autoinjector.reagents.add_reagent("inaprovaline", autoinjector.volume/3)
+		autoinjector.reagents.add_reagent("tricordrazine", autoinjector.volume/3)
+		autoinjector.update_uses_left()
+		autoinjector.update_icon()
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri/Initialize()
@@ -1180,32 +1203,48 @@
 	inner.reagents.add_reagent("inaprovaline", inner.volume/3)
 	inner.reagents.add_reagent("peridaxon", inner.volume/3)
 	if(length(contents) > 0)
-		var/obj/item/reagent_container/hypospray/autoinjector/empty/medic/A = contents[1]
-		A.reagents.add_reagent("adrenaline", A.volume/3)
-		A.reagents.add_reagent("inaprovaline", A.volume/3)
-		A.reagents.add_reagent("peridaxon", A.volume/3)
-		A.update_uses_left()
-		A.update_icon()
+		var/obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/medium/autoinjector = contents[1]
+		autoinjector.reagents.add_reagent("adrenaline", autoinjector.volume/3)
+		autoinjector.reagents.add_reagent("inaprovaline", autoinjector.volume/3)
+		autoinjector.reagents.add_reagent("peridaxon", autoinjector.volume/3)
+		autoinjector.update_uses_left()
+		autoinjector.update_icon()
 	update_icon()
 
-/obj/item/storage/pouch/pressurized_reagent_canister/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/reagent_container/glass/pressurized_canister))
+/obj/item/storage/pouch/pressurized_reagent_canister/surgery_prep/Initialize()
+	. = ..()
+
+	//My special recipe: tried, tested, and true! -- Puckaboo2
+	inner.reagents.add_reagent("oxycodone", inner.volume*(7/12)) //280u
+	inner.reagents.add_reagent("dexalinp", inner.volume/3) //160u
+	inner.reagents.add_reagent("peridaxon", inner.volume/12) //40u. Peri and Dexalin only need to last long enough to give more blood/fix IB/complete organ repair surgery.
+	if(length(contents) > 0)
+		var/obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/medium/autoinjector = contents[1]
+		autoinjector.reagents.add_reagent("oxycodone", autoinjector.volume*(7/12))
+		autoinjector.reagents.add_reagent("dexalinp", autoinjector.volume/3)
+		autoinjector.reagents.add_reagent("peridaxon", autoinjector.volume/12)
+		autoinjector.update_uses_left()
+		autoinjector.update_icon()
+	update_icon()
+
+/obj/item/storage/pouch/pressurized_reagent_canister/attackby(obj/item/insertable_object, mob/user)
+	if(istype(insertable_object, /obj/item/reagent_container/glass/pressurized_canister))
 		if(inner)
-			to_chat(user, SPAN_WARNING("There already is a container inside [src]!"))
+			to_chat(user, SPAN_WARNING("There already is a canister inside [src]!"))
 		else
-			user.drop_inv_item_to_loc(W, src)
-			inner = W
-			contents -= W
-			to_chat(user, SPAN_NOTICE("You insert [W] into [src]!"))
+			user.drop_inv_item_to_loc(insertable_object, src)
+			inner = insertable_object
+			contents -= insertable_object
+			to_chat(user, SPAN_NOTICE("You insert [insertable_object] into [src]!"))
 			update_icon()
 		return
 
-	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector/empty))
-		var/obj/item/reagent_container/hypospray/autoinjector/A = W
-		fill_autoinjector(A)
+	if(istype(insertable_object, /obj/item/reagent_container/hypospray/autoinjector/research))
+		var/obj/item/reagent_container/hypospray/autoinjector/autoinjector = insertable_object
+		fill_autoinjector(autoinjector)
 		return ..()
-	else if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
-		to_chat(user, SPAN_WARNING("[W] is not compatible with this system!"))
+	else if(istype(insertable_object, /obj/item/reagent_container/hypospray/autoinjector))
+		to_chat(user, SPAN_WARNING("[insertable_object] is incompatible with this system!"))
 	return ..()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_autoinjector(obj/item/reagent_container/hypospray/autoinjector/autoinjector)
@@ -1230,7 +1269,7 @@
 	if(istype(target, /obj/structure/machinery/chem_dispenser))
 		var/obj/structure/machinery/chem_dispenser/cd = target
 		if(!cd.beaker)
-			to_chat(user, SPAN_NOTICE("You unhook the inner container and connect it to [target]."))
+			to_chat(user, SPAN_NOTICE("You unhook the inner canister and connect it to [target]."))
 			inner.forceMove(cd)
 			cd.beaker = inner
 			inner = null
@@ -1310,7 +1349,7 @@
 	if(isxeno(user))
 		return
 	if(!inner)
-		return "[src] has no container inside!"
+		return "[src] has no canister inside!"
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
 		return "[src] contains: [get_reagent_list_text()]"
 	else
@@ -1319,42 +1358,46 @@
 //returns a text listing the reagents (and their volume) in the atom. Used by Attack logs for reagents in pills
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/get_reagent_list_text()
 	if(inner && inner.reagents && LAZYLEN(inner.reagents.reagent_list))
-		var/datum/reagent/R = inner.reagents.reagent_list[1]
-		. = "[R.name]([R.volume]u)"
+		var/datum/reagent/chemical = inner.reagents.reagent_list[1]
+		. = "[chemical.name]([chemical.volume]u)"
 
 		if(length(inner.reagents.reagent_list) < 2)
 			return
 
-		for(var/i in 2 to length(inner.reagents.reagent_list))
-			R = inner.reagents.reagent_list[i]
+		for(var/inventory in 2 to length(inner.reagents.reagent_list))
+			chemical = inner.reagents.reagent_list[inventory]
 
-			if(!R)
+			if(!chemical)
 				continue
 
-			. += "; [R.name]([R.volume]u)"
+			. += "; [chemical.name]([chemical.volume]u)"
 	else
 		. = "No reagents"
 
-/obj/item/storage/pouch/pressurized_reagent_canister/verb/flush_container()
-	set category = "Weapons"
-	set name = "Flush Container"
-	set desc = "Forces the container to empty its reagents."
+/obj/item/storage/pouch/pressurized_reagent_canister/verb/flush_canister()
+	set category = "Object"
+	set name = "Flush Canister In Pouch"
+	set desc = "Forces the reagent canister inside the pouch to empty its reagents."
 	set src in usr
 	if(!inner)
-		to_chat(usr, SPAN_WARNING("There is no container inside this pouch!"))
+		to_chat(usr, SPAN_WARNING("There is no canister inside [src]!"))
+		return
+	if(inner.reagents.total_volume <= 0)
+		to_chat(usr, SPAN_NOTICE("[src] is already empty."))
 		return
 
 	to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 3 seconds..."))
 	if(do_after(usr, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		if(inner)
-			to_chat(usr, SPAN_NOTICE("You flush [src]."))
+			playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
+			to_chat(usr, SPAN_WARNING("You work the flush valve and successfully flush [inner]'s contents!"))
 			inner.reagents.clear_reagents()
 			update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/verb/remove_canister()
-	set category = "Weapons"
+	set category = "Objects"
 	set name = "Remove Canister"
-	set desc = "Removes the Pressurized Canister from the pouch."
+	set desc = "Removes the pressurized reagent canister from the pouch."
 	set src in usr
 	if(!inner)
 		to_chat(usr, SPAN_WARNING("There is no container inside this pouch!"))
@@ -1366,6 +1409,55 @@
 
 	inner = null
 	update_icon()
+
+/obj/item/storage/pouch/pressurized_reagent_canister/verb/flush_autoinjector()
+	set category = "Object"
+	set name = "Flush Autoinjector In Pouch"
+	set desc = "Forces the autoinjector inside the reagent canister pouch to dump whatever reagents it can into the canister and flush the rest."
+	set src in usr
+
+	for(var/obj/item/reagent_container/hypospray/autoinjector/research/autoinjector as anything in contents)
+		if(!autoinjector)
+			to_chat(usr, SPAN_NOTICE("[src] does not have an autoinjector for you to flush."))
+			return FALSE
+		if(!inner) //no tank in pouch, so it acts as flushing an autoinjector in your hand
+			if(autoinjector.reagents.total_volume <= 0)
+				to_chat(usr, SPAN_NOTICE("[autoinjector] is already empty."))
+				return FALSE
+
+			to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 1 second..."))
+
+			if(!do_after(usr, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				to_chat(usr, SPAN_WARNING("You get distracted and stop trying to flush [autoinjector]."))
+				return FALSE
+
+			to_chat(usr, SPAN_NOTICE("You flush [autoinjector] without a canister to dump its contents in."))
+			playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
+			autoinjector.reagents.clear_reagents()
+			autoinjector.uses_left = 0
+			update_icon()
+			return TRUE
+		else
+			if(autoinjector.reagents.total_volume <= 0)
+				to_chat(usr, SPAN_NOTICE("[autoinjector] is already empty."))
+				return FALSE
+
+			to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 1 second..."))
+			if(!do_after(usr, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				to_chat(usr, SPAN_WARNING("You get distracted and stop trying to flush [autoinjector]."))
+				return FALSE
+
+			var/amount = autoinjector.reagents.total_volume + inner.reagents.total_volume
+			if(amount > inner.reagents.maximum_volume)
+				to_chat(usr,SPAN_WARNING("Whatever fits into [inner], you dump [autoinjector]'s contents and flush the rest."))
+			else
+				to_chat(usr,SPAN_WARNING("You dump [autoinjector]'s contents into [inner]."))
+
+			playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
+			autoinjector.reagents.trans_to(inner, autoinjector.reagents.total_volume) //dump the reagents in the autoinjector back in the canister, as a treat. They don't overflow the canister.
+			autoinjector.uses_left = 0
+			update_icon()
+			return TRUE
 
 /obj/item/storage/pouch/document
 	name = "large document pouch"

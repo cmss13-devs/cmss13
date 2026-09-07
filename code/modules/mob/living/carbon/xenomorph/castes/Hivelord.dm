@@ -35,11 +35,12 @@
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 
-	aura_strength = 2.5
+	aura_strength = XENO_PHERO_STRENGTH_HIVELORD
 
 	minimum_evolve_time = 4 MINUTES
 
 	minimap_icon = "hivelord"
+	organ_type = /obj/item/organ/xeno/hivelord
 
 /datum/caste_datum/hivelord/New()
 	. = ..()
@@ -51,15 +52,14 @@
 	name = XENO_CASTE_HIVELORD
 	desc = "A builder of really big hives."
 	icon = 'icons/mob/xenos/castes/tier_2/hivelord.dmi'
+	plasma_types = list(PLASMA_PHEROMONE)
 	icon_size = 64
 	icon_state = "Hivelord Walking"
-	plasma_types = list(PLASMA_PURPLE,PLASMA_PHEROMONE)
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 2
-	organ_value = 1500
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/toggle_seethrough,
@@ -92,6 +92,14 @@
 
 	skull = /obj/item/skull/hivelord
 	pelt = /obj/item/pelt/hivelord
+
+/obj/item/organ/xeno/hivelord
+	name = "hivelord heart"
+	icon_state = "heart_t2"
+	item_state = "heart_t2"
+	research_value = 1500
+
+	xeno_organ_flags = XENO_ORGAN_STRONG|XENO_ORGAN_SUPPORT
 
 /datum/behavior_delegate/hivelord_base
 	name = "Base Hivelord Behavior Delegate"

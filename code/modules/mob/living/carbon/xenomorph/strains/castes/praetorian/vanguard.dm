@@ -157,7 +157,7 @@
 
 /datum/action/xeno_action/activable/pounce/prae_dash/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_PRE_DASH) && !action_cooldown_check() || owner.throwing)
+	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_PRE_DASH) && !action_cooldown_check() || HAS_TRAIT(owner, TRAIT_LAUNCHED))
 		return
 
 	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_PRE_DASH))

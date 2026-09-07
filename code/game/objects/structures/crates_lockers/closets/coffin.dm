@@ -23,7 +23,7 @@
 
 /obj/structure/closet/coffin/predator
 	name = "strange coffin"
-	desc = "It's a burial receptacle for the dearly departed. Seems to have weird markings on the side..?"
+	desc = "It's a burial receptacle for the dearly departed. Seems to have weird markings on the side...?"
 	icon_state = "pred_coffin"
 	icon_closed = "pred_coffin"
 	icon_opened = "pred_coffin_open"

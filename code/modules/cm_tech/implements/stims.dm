@@ -77,19 +77,19 @@
 	overlays += image
 
 /obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant
-	name = "speed stimulant autoinjector"
+	name = "speed stimulant injector"
 	chemname = "speed_stimulant"
 	desc = "A stimpack loaded with an experimental performance enhancement stimulant. Extremely muscle-stimulating. Lasts 5 minutes."
 	maptext_label = "StSp"
 
 /obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant
-	name = "brain stimulant autoinjector"
+	name = "brain stimulant injector"
 	chemname = "brain_stimulant"
 	desc = "A stimpack loaded with an experimental CNS stimulant. Extremely nerve-stimulating. Lasts 5 minutes."
 	maptext_label = "StBr"
 
 /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant
-	name = "redemption stimulant autoinjector"
+	name = "redemption stimulant injector"
 	chemname = "redemption_stimulant"
 	desc = "A stimpack loaded with an experimental bone, organ and muscle stimulant. Significantly increases what a human can take before they go down. Lasts 5 minutes."
 	maptext_label = "StRe"

@@ -1,0 +1,4 @@
+author: "Watermelon914"
+delete-after: True
+changes:
+  - admin: "Admins will stay deadminned when they deadmin through reconnects/reloadadmin"

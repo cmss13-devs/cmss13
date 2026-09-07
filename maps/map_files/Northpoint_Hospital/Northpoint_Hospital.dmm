@@ -16912,6 +16912,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/outdoors/road/central)
 "aXd" = (
+/obj/effect/decal/hybrisa/dirt,
 /obj/structure/flora/tree/tyrargo/tree_2{
 	pixel_x = -24;
 	pixel_y = 16;
@@ -16931,6 +16932,15 @@
 /area/northpoint/outdoors/hospital_exterior/west)
 "aXg" = (
 /turf/open/floor/hybrisa/metal/grated/west,
+/area/northpoint/outdoors/hospital_exterior/central)
+"aXh" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/obj/structure/janitorialcart{
+	pixel_y = 13
+	},
+/turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/outdoors/hospital_exterior/central)
 "aXi" = (
 /turf/open/floor/hybrisa/metal/grated/north,
@@ -54401,6 +54411,16 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/northpoint/outdoors/hospital_exterior/central)
+"cTS" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/misc/graffiti/graffiti4{
+	layer = 2.9
+	},
+/obj/item/tool/mop{
+	pixel_y = 19
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/northpoint/outdoors/hospital_exterior/central)
 "cTT" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
@@ -55449,37 +55469,11 @@
 /obj/structure/prop/tyrargo/traffic_signal,
 /turf/open/hybrisa/street/asphalt,
 /area/northpoint/oob)
-"cWH" = (
-/obj/structure/blocker/invisible_wall/map_edge,
-/obj/structure/prop/northpoint/concrete_wall/wired{
-	dir = 8;
-	layer = 5.99;
-	pixel_y = -4
-	},
-/turf/open/floor/prison/floor_plate/southwest,
-/area/northpoint/oob)
 "cWI" = (
 /obj/structure/fence/slim/dark/door{
 	dir = 4
 	},
 /turf/open/hybrisa/street/cement1,
-/area/northpoint/oob)
-"cWJ" = (
-/obj/structure/blocker/invisible_wall/map_edge,
-/obj/structure/prop/northpoint/concrete_wall/wired{
-	dir = 8;
-	layer = 5.98
-	},
-/turf/open/hybrisa/street/sidewalk,
-/area/northpoint/oob)
-"cWK" = (
-/obj/structure/blocker/invisible_wall/map_edge,
-/obj/structure/prop/northpoint/concrete_wall/wired{
-	dir = 8;
-	layer = 5.97;
-	pixel_y = -14
-	},
-/turf/open/hybrisa/street/sidewalkcorner/north,
 /area/northpoint/oob)
 "cWL" = (
 /obj/structure/blocker/invisible_wall/map_edge,
@@ -55488,7 +55482,7 @@
 	layer = 5.96;
 	pixel_y = -14
 	},
-/turf/open/hybrisa/street/sidewalk/west,
+/turf/open/hybrisa/street/sidewalkfull/unweedable,
 /area/northpoint/oob)
 "cWM" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -55514,7 +55508,7 @@
 	layer = 5.94;
 	pixel_y = -14
 	},
-/turf/open/hybrisa/street/sidewalk/west,
+/turf/open/hybrisa/street/sidewalkfull/unweedable,
 /area/northpoint/oob)
 "cWP" = (
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
@@ -55539,7 +55533,7 @@
 	layer = 5.93;
 	pixel_y = -14
 	},
-/turf/open/hybrisa/street/sidewalk/west,
+/turf/open/hybrisa/street/sidewalkfull/unweedable,
 /area/northpoint/oob)
 "cWS" = (
 /obj/effect/decal/hybrisa/road/lines4,
@@ -55570,7 +55564,7 @@
 	layer = 5.92;
 	pixel_y = -14
 	},
-/turf/open/hybrisa/street/sidewalk/northwest,
+/turf/open/hybrisa/street/sidewalkfull/unweedable,
 /area/northpoint/oob)
 "cWX" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
@@ -55734,6 +55728,37 @@
 	dir = 1
 	},
 /turf/open/hybrisa/street/sidewalk,
+/area/northpoint/oob)
+"cXu" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/reagent_container/glass/bucket{
+	pixel_y = 7;
+	pixel_x = -1
+	},
+/turf/open/hybrisa/street/sidewalk/northeast,
+/area/northpoint/outdoors/hospital_exterior/central)
+"cXv" = (
+/obj/structure/blocker/invisible_wall/map_edge,
+/obj/structure/prop/northpoint/concrete_wall/wired{
+	dir = 8;
+	layer = 5.97;
+	pixel_y = -14
+	},
+/turf/open/hybrisa/street/cement2/unweedable,
+/area/northpoint/oob)
+"cXw" = (
+/obj/structure/blocker/invisible_wall/map_edge,
+/obj/structure/prop/northpoint/concrete_wall/wired{
+	dir = 8;
+	layer = 5.96;
+	pixel_y = -14
+	},
+/obj/structure/prop/northpoint/concrete_wall/wired{
+	dir = 1;
+	layer = 5.8;
+	pixel_y = -14
+	},
+/turf/open/hybrisa/street/cement2/unweedable,
 /area/northpoint/oob)
 "cYk" = (
 /turf/open/hybrisa/street/sidewalk,
@@ -88304,10 +88329,10 @@ awx
 rwl
 cUR
 cUE
-chR
-cXp
-apO
-fDB
+cXw
+cXv
+xla
+aoY
 nmS
 nmS
 aWn
@@ -88456,13 +88481,13 @@ cMq
 cxJ
 bxk
 awy
-rwl
+cXr
 cUS
 cUF
 cXs
 dgd
 dgd
-fru
+bqp
 nmS
 nmS
 aXc
@@ -88631,9 +88656,9 @@ cWR
 cWO
 cWL
 cWL
-cWK
-cWJ
-cWH
+cXp
+apO
+aoY
 aCg
 aTC
 aTC
@@ -88788,7 +88813,7 @@ dAL
 his
 uEx
 dau
-ssk
+bqp
 aCg
 aTR
 aTR
@@ -91410,7 +91435,7 @@ rwl
 rwl
 rwl
 rwl
-aRA
+cTS
 aRw
 aUw
 aUw
@@ -91565,8 +91590,8 @@ aXj
 aXj
 cvi
 rwl
-aRM
-dca
+cXu
+aXh
 dca
 aRy
 aRp

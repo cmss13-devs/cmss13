@@ -206,8 +206,6 @@
 
 			SEND_SIGNAL(attacking_xeno, COMSIG_HUMAN_ALIEN_ATTACK, src)
 
-			updatehealth()
-
 		if(INTENT_DISARM)
 			if(attacking_xeno.legcuffed && isyautja(src))
 				to_chat(attacking_xeno, SPAN_XENODANGER("We don't have the dexterity to tackle the headhunter with that thing on our leg!"))
@@ -1109,13 +1107,13 @@
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
-/obj/structure/machinery/colony_floodlight_switch/antre/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/machinery/colony_floodlight_switch/antre/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(!is_on)
-		to_chat(M, SPAN_WARNING("We stare at the [src] clulessly. It's just some weird metal thing."))
+		to_chat(xeno, SPAN_WARNING("We stare at [src] clulessly. It's just some weird metal thing."))
 		return XENO_NO_DELAY_ACTION
 	if(!damaged)
-		M.animation_attack_on(src)
-		M.visible_message("[M] slashes away at [src]!","We slash and claw at the bright light!", max_distance = 5, message_flags = CHAT_TYPE_XENO_COMBAT)
+		xeno.animation_attack_on(src)
+		xeno.visible_message("[xeno] slashes away at [src]!","We slash and claw at the bright light!", max_distance = 5, message_flags = CHAT_TYPE_XENO_COMBAT)
 		damaged = TRUE
 		alarming = FALSE
 		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
@@ -1126,7 +1124,7 @@
 		playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 		return XENO_ATTACK_ACTION
 	else
-		to_chat(M, SPAN_WARNING("It's already damaged."))
+		to_chat(xeno, SPAN_WARNING("It's already damaged."))
 		return XENO_NO_DELAY_ACTION
 
 /obj/structure/machinery/colony_floodlight/attack_larva(mob/living/carbon/xenomorph/larva/xeno)

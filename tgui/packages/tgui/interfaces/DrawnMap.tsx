@@ -3,11 +3,7 @@ import { Box } from 'tgui/components';
 
 type DrawMapRrops = {
   readonly svgData?: (
-    | string
-    | number
-    | CanvasGradient
-    | CanvasPattern
-    | null
+    string | number | CanvasGradient | CanvasPattern | null
   )[];
   readonly flatImage: string;
   readonly backupImage: string;

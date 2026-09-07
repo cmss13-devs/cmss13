@@ -157,30 +157,30 @@
 	ammo_band_icon_empty = "+vp78_band_e"
 
 /obj/item/ammo_magazine/pistol/vp78/toxin
-	name = "\improper VP78 toxic magazine (.45 ACP)"
+	name = "\improper VP78-A1 toxic magazine (.45 ACP)"
 	desc = "A toxin .45 ACP pistol magazine for the VP78."
 	default_ammo = /datum/ammo/bullet/pistol/acp45/toxin
 	ammo_band_color = AMMO_BAND_COLOR_TOXIN
 
 /obj/item/ammo_magazine/pistol/vp78/penetrating
-	name = "\improper VP78 wall-penetrating magazine (.45 ACP)"
+	name = "\improper VP78-A1 wall-penetrating magazine (.45 ACP)"
 	desc = "A wall-penetrating .45 ACP pistol magazine for the VP78."
 	default_ammo = /datum/ammo/bullet/pistol/acp45/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
 
 /obj/item/ammo_magazine/pistol/vp78/incendiary
-	name = "\improper VP78 incendiary magazine (.45 ACP)"
+	name = "\improper VP78-A1 incendiary magazine (.45 ACP)"
 	desc = "An incendiary .45 ACP pistol magazine for the VP78."
 	default_ammo = /datum/ammo/bullet/pistol/acp45/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
 /obj/item/ammo_magazine/pistol/vp78/heap
-	name = "\improper VP78 high explosive armor piercing magazine (.45 ACP)"
+	name = "\improper VP78-A1 high explosive armor piercing magazine (.45 ACP)"
 	default_ammo = /datum/ammo/bullet/pistol/acp45/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
 /obj/item/ammo_magazine/pistol/vp78/rubber
-	name = "\improper VP78 rubber magazine (.45 ACP)"
+	name = "\improper VP78-A1 rubber magazine (.45 ACP)"
 	desc = "A .45 ACP pistol magazine for the VP78. This one is loaded with rubber bullets."
 	default_ammo = /datum/ammo/bullet/pistol/acp45/rubber
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER

@@ -193,11 +193,13 @@
 	var/captured_message
 
 	switch(target_count)
+		if(0)
+			captured_message = FALSE
 		if(1)
 			captured_message = "slowed one target"
 		if(2)
 			captured_message = "rooted two targets"
-		if(3 to 99) // It's dumb, but it should work.
+		else
 			captured_message = "stunned [target_count] targets"
 
 	if(captured_message)

@@ -44,13 +44,11 @@
 
 	ammo = /datum/ammo/bullet/smartgun
 	actions_types = list(
-		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
-		/datum/action/item_action/smartgun/toggle_ammo_type,
-		/datum/action/item_action/smartgun/toggle_auto_fire,
-		/datum/action/item_action/smartgun/toggle_frontline_mode,
 		/datum/action/item_action/smartgun/toggle_lethal_mode,
+		/datum/action/item_action/smartgun/toggle_ammo_type,
+		/datum/action/item_action/smartgun/toggle_aim_assist,
+		/datum/action/item_action/smartgun/toggle_frontline_mode,
 		/datum/action/item_action/smartgun/toggle_motion_detector,
-		/datum/action/item_action/smartgun/toggle_recoil_compensation,
 	)
 	attachable_allowed = list()
 
@@ -88,14 +86,7 @@
 	var/has_cover = TRUE
 	/// IFF and motion detector faction of the gun
 	var/gun_faction = FACTION_MARINE
-	var/recoil_compensation = 0
-	var/accuracy_improvement = 0
-	var/auto_fire = 0
 	var/motion_detector = 0
-	var/drain = 11
-	var/range = 7
-	var/angle = 2
-	var/list/angle_list = list(180,135,90,60,30)
 	var/obj/item/device/motiondetector/sg/MD
 	var/long_range_cooldown = 2
 	var/recycletime = 120
@@ -103,6 +94,11 @@
 
 	var/lock_range = 2
 	var/aim_assist = FALSE
+	var/aim_assist_drain = 366
+	/// Accuracy penalty applied to aim-assisted shots when you don't directly fire at the target
+	var/aim_assist_accuracy_penalty = HIT_ACCURACY_MULT_TIER_5
+	/// Whether aim assist redirected the current shot
+	var/aim_assist_retargeted = FALSE
 	var/image/autoshot_image
 
 /obj/item/weapon/gun/smartgun/Initialize(mapload, ...)
@@ -148,17 +144,9 @@
 	set_fire_delay(FIRE_DELAY_TIER_SG)
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_8
 	fa_max_scatter = SCATTER_AMOUNT_TIER_9
-	if(accuracy_improvement)
-		accuracy_mult += HIT_ACCURACY_MULT_TIER_3
-	else
-		accuracy_mult += HIT_ACCURACY_MULT_TIER_1
-	if(recoil_compensation)
-		scatter = SCATTER_AMOUNT_TIER_10
-		recoil = RECOIL_OFF
-	else
-		scatter = SCATTER_AMOUNT_TIER_6
-		recoil = RECOIL_AMOUNT_TIER_3
-		damage_mult = BASE_BULLET_DAMAGE_MULT
+	accuracy_mult += HIT_ACCURACY_MULT_TIER_3
+	scatter = SCATTER_AMOUNT_TIER_10
+	recoil = RECOIL_OFF
 	if(!iff_enabled || frontline_enabled)
 		ammo_primary = ammo_primary_alt
 		ammo_secondary = ammo_secondary_alt
@@ -211,14 +199,32 @@
 /obj/item/weapon/gun/smartgun/attackby(obj/item/attacking_object, mob/user)
 	if(istype(attacking_object, /obj/item/smartgun_battery))
 		var/obj/item/smartgun_battery/new_cell = attacking_object
-		visible_message(SPAN_NOTICE("[user] swaps out the power cell in [src]."),
-			SPAN_NOTICE("You swap out the power cell in [src] and drop the old one."))
+		if(battery)
+			visible_message(SPAN_NOTICE("[user] swaps out the power cell in [src]."),
+				SPAN_NOTICE("You swap out the power cell in [src] and drop the old one."))
+			battery.update_icon()
+			battery.forceMove(get_turf(user))
+		else
+			visible_message(SPAN_NOTICE("[user] installs a power cell in [src]."),
+				SPAN_NOTICE("You install a power cell in [src]."))
 		to_chat(user, SPAN_NOTICE("The new cell contains: [new_cell.power_cell.charge] power."))
-		battery.update_icon()
-		battery.forceMove(get_turf(user))
 		battery = new_cell
 		user.drop_inv_item_to_loc(new_cell, src)
 		playsound(src, 'sound/machines/click.ogg', 25, 1)
+		return
+	if(HAS_TRAIT(attacking_object, TRAIT_TOOL_SCREWDRIVER))
+		if(!battery)
+			balloon_alert(user, "no battery installed")
+			return
+
+		var/obj/item/smartgun_battery/removed_cell = battery
+		battery = null
+		removed_cell.update_icon()
+		removed_cell.forceMove(get_turf(user))
+		user.put_in_hands(removed_cell)
+		visible_message(SPAN_NOTICE("[user] unscrews and removes the power cell from [src]."),
+			SPAN_NOTICE("You unscrew and remove the power cell from [src]."))
+		playsound(src, 'sound/items/Screwdriver.ogg', 25, TRUE)
 		return
 
 	return ..()
@@ -285,31 +291,6 @@
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
-
-/datum/action/item_action/smartgun/toggle_auto_fire/New(Target, obj/item/holder)
-	. = ..()
-	name = "Toggle Auto Fire"
-	action_icon_state = "autofire"
-	button.name = name
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
-
-/datum/action/item_action/smartgun/toggle_auto_fire/action_activate()
-	. = ..()
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	G.toggle_auto_fire(usr)
-
-/datum/action/item_action/smartgun/toggle_auto_fire/proc/update_icon()
-	if(!holder_item)
-		return
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(G.auto_fire)
-		action_icon_state = "autofire_off"
-	else
-		action_icon_state = "autofire"
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
-
 /datum/action/item_action/smartgun/toggle_aim_assist/New(Target, obj/item/holder)
 	. = ..()
 	name = "Toggle Aim Assist"
@@ -317,8 +298,6 @@
 
 	update_icon()
 	button.name = name
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/item_action/smartgun/toggle_aim_assist/action_activate()
 	. = ..()
@@ -330,47 +309,11 @@
 		return
 	var/obj/item/weapon/gun/smartgun/smortgun = holder_item
 	if(smortgun.aim_assist)
-		action_icon_state = "aimassist"
-	else
 		action_icon_state = "aimassist_off"
-
-/datum/action/item_action/smartgun/toggle_accuracy_improvement/New(Target, obj/item/holder)
-	. = ..()
-	name = "Toggle Accuracy Improvement"
-	action_icon_state = "accuracy_improvement"
-	button.name = name
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
-
-/datum/action/item_action/smartgun/toggle_accuracy_improvement/action_activate()
-	. = ..()
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	G.toggle_accuracy_improvement(usr)
-	if(G.accuracy_improvement)
-		action_icon_state = "accuracy_improvement_off"
 	else
-		action_icon_state = "accuracy_improvement"
+		action_icon_state = "aimassist"
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
-
-/datum/action/item_action/smartgun/toggle_recoil_compensation/New(Target, obj/item/holder)
-	. = ..()
-	name = "Toggle Recoil Compensation"
-	action_icon_state = "recoil_compensation"
-	button.name = name
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
-
-/datum/action/item_action/smartgun/toggle_recoil_compensation/action_activate()
-	. = ..()
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	G.toggle_recoil_compensation(usr)
-	if(G.recoil_compensation)
-		action_icon_state = "recoil_compensation_off"
-	else
-		action_icon_state = "recoil_compensation"
-	button.overlays.Cut()
-	button.overlays += image ('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/item_action/smartgun/toggle_frontline_mode/New(Target, obj/item/holder)
 	. = ..()
@@ -501,12 +444,10 @@
 	secondary_toggled = FALSE
 	if(iff_enabled)
 		add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))
-		drain += 10
 		MD.iff_signal = gun_faction
 		SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, frontline_enabled)
 	if(!iff_enabled)
 		remove_bullet_trait("iff")
-		drain -= 10
 		MD.iff_signal = null
 		SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, FALSE)
 		recalculate_attachment_bonuses()
@@ -515,24 +456,46 @@
 	set_gun_config_values()
 
 /obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
-	if(aim_assist && !auto_fire)
-		target = get_assist_target(user, target)
-
-	if(!requires_battery)
+	aim_assist_retargeted = FALSE
+	if(loc != user || ((flags_gun_features & GUN_WIELDED_FIRING_ONLY) && !(flags_item & WIELDED)))
 		return ..()
 
-	if(battery)
-		if(!requires_power)
-			return ..()
-		if(drain_battery())
-			return ..()
+	if(aim_assist)
+		var/atom/original_target = target
+		target = get_assist_target(user, target)
+		aim_assist_retargeted = target != original_target
+
+	if(!requires_battery)
+		return ..(target, user, params, reflex, dual_wield)
+
+	if(!battery)
+		balloon_alert(user, "battery required")
+		return
+
+	if(!requires_power)
+		return ..(target, user, params, reflex, dual_wield)
+	if(drain_battery())
+		return ..(target, user, params, reflex, dual_wield)
+
+/obj/item/weapon/gun/smartgun/apply_bullet_scatter(obj/projectile/projectile_to_fire, mob/user, reflex = 0, dual_wield = 0)
+	..()
+	if(!aim_assist_retargeted)
+		return
+	aim_assist_retargeted = FALSE
+
+	projectile_to_fire.accuracy = floor(projectile_to_fire.accuracy * (BASE_ACCURACY_MULT - aim_assist_accuracy_penalty))
 
 /obj/item/weapon/gun/smartgun/proc/drain_battery(override_drain)
-
-	var/actual_drain = (rand(drain / 2, drain) / 25)
-
+	var/shot_drain = 78
+	if(!iff_enabled)
+		shot_drain -= 10
+	if(aim_assist)
+		shot_drain += aim_assist_drain
+	if(motion_detector)
+		shot_drain += 15
 	if(override_drain)
-		actual_drain = (rand(override_drain / 2, override_drain) / 25)
+		shot_drain = override_drain
+	var/actual_drain = (rand(shot_drain / 2, shot_drain) / 25)
 
 	if(battery && battery.power_cell.charge > 0)
 		if(battery.power_cell.charge > actual_drain)
@@ -547,44 +510,10 @@
 		return FALSE
 	return FALSE
 
-/obj/item/weapon/gun/smartgun/proc/toggle_recoil_compensation(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [recoil_compensation? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s recoil compensation.")
-	balloon_alert(user, "recoil compensation [recoil_compensation ? "disabled" : "enabled"]")
-	playsound(loc,'sound/machines/click.ogg', 25, 1)
-	recoil_compensation = !recoil_compensation
-	if(recoil_compensation)
-		drain += 50
-	else
-		drain -= 50
-	recalculate_attachment_bonuses() //Includes set_gun_config_values() as well as attachments.
-
-/obj/item/weapon/gun/smartgun/proc/toggle_accuracy_improvement(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [accuracy_improvement? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s accuracy improvement.")
-	balloon_alert(user, "accuracy improvement [accuracy_improvement ? "disabled" : "enabled"]")
-	playsound(loc,'sound/machines/click.ogg', 25, 1)
-	accuracy_improvement = !accuracy_improvement
-	if(accuracy_improvement)
-		drain += 50
-	else
-		drain -= 50
-	recalculate_attachment_bonuses()
-
-/obj/item/weapon/gun/smartgun/proc/toggle_auto_fire(mob/user)
-	if(!(flags_item & WIELDED))
-		to_chat(user, "[icon2html(src, usr)] You need to wield \the [src] to enable autofire.")
-		return //Have to be actually be wielded.
-	to_chat(user, "[icon2html(src, usr)] You [auto_fire? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s auto fire mode.")
-	balloon_alert(user, "autofire [auto_fire ? "disabled" : "enabled"]")
-	playsound(loc,'sound/machines/click.ogg', 25, 1)
-	auto_fire = !auto_fire
-	var/datum/action/item_action/smartgun/toggle_auto_fire/TAF = locate(/datum/action/item_action/smartgun/toggle_auto_fire) in actions
-	TAF.update_icon()
-	auto_fire()
-
 /obj/item/weapon/gun/smartgun/proc/toggle_aim_assist(mob/user, silent)
 	if(!silent)
-		to_chat(user, "[icon2html(src, user)] You [aim_assist ? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s aim assist.")
-		balloon_alert(user, "aim assist [aim_assist? "disabled" : "enabled"]")
+		to_chat(user, "[icon2html(src, user)] You [aim_assist ? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s aim assist.[aim_assist ? "" : " This substantially increases battery drain."]")
+		balloon_alert(user, "aim assist [aim_assist ? "disabled" : "enabled ++BATTERY DRAIN"]")
 		playsound(loc,'sound/machines/click.ogg', 25, 1)
 
 	aim_assist = !aim_assist
@@ -595,14 +524,12 @@
 		disable_auto_aim(user)
 
 /obj/item/weapon/gun/smartgun/proc/enable_auto_aim(mob/user)
-	drain += 50
 	START_PROCESSING(SSobj, src)
 	var/datum/action/item_action/smartgun/toggle_aim_assist/aim_assist_action = locate(/datum/action/item_action/smartgun/toggle_aim_assist) in actions
 	aim_assist_action.update_icon()
 	recalculate_attachment_bonuses()
 
 /obj/item/weapon/gun/smartgun/proc/disable_auto_aim(mob/user)
-	drain -= 50
 	var/datum/action/item_action/smartgun/toggle_aim_assist/aim_assist_action = locate(/datum/action/item_action/smartgun/toggle_aim_assist) in actions
 	aim_assist_action.update_icon()
 	recalculate_attachment_bonuses()
@@ -617,20 +544,11 @@
 	autoshot_image.pixel_x = -target.pixel_x // -16 is counted by -(-16)
 	autoshot_image.pixel_y = -target.pixel_y
 
-/obj/item/weapon/gun/smartgun/proc/auto_fire()
-	if(auto_fire)
-		drain += 150
-		START_PROCESSING(SSobj, src)
-	else
-		drain -= 150
-
 /obj/item/weapon/gun/smartgun/process()
-	if(!auto_fire && !motion_detector && !aim_assist)
+	if(!motion_detector && !aim_assist)
 		STOP_PROCESSING(SSobj, src)
 	if(aim_assist && last_fired + 1 SECONDS <= world.time)
 		reset_autoshot_image()
-	if(auto_fire)
-		auto_prefire()
 	if(motion_detector)
 		recycletime--
 		if(!recycletime)
@@ -642,20 +560,11 @@
 			return
 		long_range_cooldown = initial(long_range_cooldown)
 		MD.scan()
-
-/obj/item/weapon/gun/smartgun/proc/auto_prefire(warned) //To allow the autofire delay to properly check targets after waiting.
-	if(ishuman(loc) && (flags_item & WIELDED))
-		var/human_user = loc
-		target = get_target(human_user)
-		process_shot(human_user, warned)
-	else
-		auto_fire = FALSE
-		var/datum/action/item_action/smartgun/toggle_auto_fire/TAF = locate(/datum/action/item_action/smartgun/toggle_auto_fire) in actions
-		TAF.update_icon()
-		auto_fire()
-
 /obj/item/weapon/gun/smartgun/proc/get_assist_target(mob/living/user, target)
 	if(!aim_assist)
+		return target
+	if(is_blind(user) || user.blinded || (user.sdisabilities & DISABILITY_BLIND))
+		reset_autoshot_image()
 		return target
 
 	var/dist_unconscious = 9999
@@ -663,37 +572,62 @@
 
 	var/mob/living/unconscious_target = null
 	var/mob/living/conscious_target = null
-	for(var/mob/living/targetted_mob in range(lock_range, target) & oviewers(user.get_maximum_view_range(), user))
-		if(targetted_mob.invisibility)
+
+	for(var/mob/living/targetted_mob in range(lock_range, target))
+		if(targetted_mob.stat == DEAD || targetted_mob.invisibility > user.see_invisible)
 			continue
-		if(HAS_TRAIT(targetted_mob, TRAIT_ABILITY_BURROWED))
+
+		if(HAS_TRAIT(targetted_mob, TRAIT_ABILITY_BURROWED) || targetted_mob.is_ventcrawling)
 			continue
-		if(targetted_mob.is_ventcrawling)
-			continue
-		if(targetted_mob.stat == DEAD)
-			continue // No dead or non living.
 
 		if(iff_enabled && targetted_mob.get_target_lock(user.faction_group))
 			continue
 
-		var/dist = get_dist_sqrd(user, targetted_mob)
+		var/target_obscured = FALSE
+		var/list/turf/path = get_line(user, targetted_mob)
 
-		if(targetted_mob.stat == UNCONSCIOUS && dist_unconscious > dist)
-			dist_unconscious = dist
-			unconscious_target = targetted_mob
-		else if(dist_conscious > dist)
+		for(var/turf/current_turf as anything in path)
+			if(current_turf.opacity)
+				target_obscured = TRUE
+				break
+
+			for(var/atom/movable/obstruction as anything in current_turf.contents)
+				if(obstruction.opacity)
+					target_obscured = TRUE
+					break
+				if(istype(obstruction, /obj/effect/particle_effect/smoke))
+					var/obj/effect/particle_effect/smoke/smoke = obstruction
+					if(smoke.obscuring)
+						target_obscured = TRUE
+						break
+
+			if(target_obscured)
+				break
+
+		if(target_obscured)
+			continue
+
+		var/dist = get_dist_sqrd(target, targetted_mob)
+
+		if(targetted_mob.stat == UNCONSCIOUS)
+			if(dist < dist_unconscious)
+				dist_unconscious = dist
+				unconscious_target = targetted_mob
+		else if(dist < dist_conscious)
 			dist_conscious = dist
 			conscious_target = targetted_mob
 
 	if(conscious_target)
 		set_autoshot_image(conscious_target)
-		. = conscious_target
-	else if(unconscious_target)
+		return conscious_target
+
+	if(unconscious_target)
 		set_autoshot_image(unconscious_target)
-		. = unconscious_target
-	else
-		. = target
-		reset_autoshot_image()
+		return unconscious_target
+
+	reset_autoshot_image()
+
+	return target
 
 /obj/item/weapon/gun/smartgun/wield(mob/living/user)
 	. = ..()
@@ -703,96 +637,6 @@
 	. = ..()
 	user.client?.images -= autoshot_image
 	reset_autoshot_image()
-
-/obj/item/weapon/gun/smartgun/proc/get_target(mob/living/user)
-	var/list/conscious_targets = list()
-	var/list/unconscious_targets = list()
-	var/list/turf/path = list()
-	var/turf/T
-
-	for(var/mob/living/M in orange(range, user)) // orange allows sentry to fire through gas and darkness
-		if((M.stat & DEAD))
-			continue // No dead or non living.
-
-		if(M.get_target_lock(user.faction_group))
-			continue
-		if(angle > 0)
-			var/opp
-			var/adj
-
-			switch(user.dir)
-				if(NORTH)
-					opp = user.x-M.x
-					adj = M.y-user.y
-				if(SOUTH)
-					opp = user.x-M.x
-					adj = user.y-M.y
-				if(EAST)
-					opp = user.y-M.y
-					adj = M.x-user.x
-				if(WEST)
-					opp = user.y-M.y
-					adj = user.x-M.x
-
-			var/r = 9999
-			if(adj != 0)
-				r = abs(opp/adj)
-			var/angledegree = arcsin(r/sqrt(1+(r*r)))
-			if(adj < 0)
-				continue
-
-			if((angledegree*2) > angle_list[angle])
-				continue
-
-		path = get_line(user, M)
-
-		if(length(path))
-			var/blocked = FALSE
-			for(T in path)
-				if(T.density || T.opacity)
-					blocked = TRUE
-					break
-				for(var/obj/structure/S in T)
-					if(S.opacity)
-						blocked = TRUE
-						break
-				for(var/obj/structure/machinery/MA in T)
-					if(MA.opacity)
-						blocked = TRUE
-						break
-				if(blocked)
-					break
-			if(blocked)
-				continue
-			if(M.stat & UNCONSCIOUS)
-				unconscious_targets += M
-			else
-				conscious_targets += M
-
-	if(length(conscious_targets))
-		. = pick(conscious_targets)
-	else if(length(unconscious_targets))
-		. = pick(unconscious_targets)
-
-/obj/item/weapon/gun/smartgun/proc/process_shot(mob/living/user, warned)
-	set waitfor = 0
-
-
-	if(!target)
-		return //Acquire our victim.
-
-	if(!ammo)
-		return
-
-	if(target && (world.time-last_fired >= 3)) //Practical firerate is limited mainly by process delay; this is just to make sure it doesn't fire too soon after a manual shot or slip a shot into an ongoing burst.
-		if(world.time-last_fired >= 300 && !warned) //if we haven't fired for a while, beep first
-			playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
-			addtimer(CALLBACK(src, /obj/item/weapon/gun/smartgun/proc/auto_prefire, TRUE), 3)
-			return
-
-		Fire(target,user)
-
-	target = null
 
 /obj/item/weapon/gun/smartgun/proc/toggle_motion_detector(mob/user)
 	to_chat(user, "[icon2html(src, usr)] You [motion_detector? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s motion detector.")
@@ -805,10 +649,7 @@
 
 /obj/item/weapon/gun/smartgun/proc/motion_detector()
 	if(motion_detector)
-		drain += 15
 		START_PROCESSING(SSobj, src)
-	else
-		drain -= 15
 
 //CO SMARTGUN
 /obj/item/weapon/gun/smartgun/co
@@ -921,19 +762,19 @@
 	SIGNAL_HANDLER
 	linked_human = null
 
-// Normal smartgun but with autoaim option
+
+// Normal smartgun with aim assist enabled by default
 /obj/item/weapon/gun/smartgun/autoaim
 	desc = "The actual firearm in the 4-piece M56A2 Smartgun System. Essentially a heavy, mobile machinegun. This upgraded variant features new, updated tracking software."
+	aim_assist_drain = 83
+	aim_assist_accuracy_penalty = 0
 	actions_types = list(
-		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
+		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_ammo_type,
 		/datum/action/item_action/smartgun/toggle_aim_assist,
 		/datum/action/item_action/smartgun/toggle_frontline_mode,
-		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_motion_detector,
-		/datum/action/item_action/smartgun/toggle_recoil_compensation,
 	)
-
 /obj/item/weapon/gun/smartgun/autoaim/Initialize(mapload, ...)
 	. = ..()
 	toggle_aim_assist(null, TRUE)
@@ -947,13 +788,13 @@
 	can_change_ammo = FALSE //Only one ammo type, no toggling.
 	current_mag = /obj/item/ammo_magazine/smartgun/heap
 	ammo_primary_def = /datum/ammo/bullet/smartgun/heap
+	aim_assist_drain = 83
+	aim_assist_accuracy_penalty = 0
 	actions_types = list(
-		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
+		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_frontline_mode,
 		/datum/action/item_action/smartgun/toggle_aim_assist,
-		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_motion_detector,
-		/datum/action/item_action/smartgun/toggle_recoil_compensation,
 	)
 
 /obj/item/weapon/gun/smartgun/terminator/Initialize(mapload, ...)
@@ -975,14 +816,14 @@
 	drum_cover_overlay = FALSE
 	gun_faction = FACTION_PMC
 	has_cover = FALSE
+	aim_assist_drain = 83
+	aim_assist_accuracy_penalty = 0
 	actions_types = list(
-		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
+		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_ammo_type,
 		/datum/action/item_action/smartgun/toggle_aim_assist,
 		/datum/action/item_action/smartgun/toggle_frontline_mode,
-		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_motion_detector,
-		/datum/action/item_action/smartgun/toggle_recoil_compensation,
 	)
 
 /obj/item/weapon/gun/smartgun/l56a2/Initialize(mapload, ...)
@@ -1005,8 +846,6 @@
 	..()
 	set_burst_amount(BURST_AMOUNT_TIER_3)
 	set_burst_delay(FIRE_DELAY_TIER_SMG)
-	if(!recoil_compensation)
-		scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 	set_fire_delay(FIRE_DELAY_TIER_SMG)
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_10
@@ -1079,22 +918,18 @@
 		balloon_alert(user, "*jammed*")
 		return NONE
 	else if(prob(0.8)) //0.8% chance to malfunction on fire
-		switch(rand(1, 7))
+		switch(rand(1, 5))
 			if(1)
-				toggle_accuracy_improvement(user)
+				toggle_aim_assist(user)
 			if(2)
-				toggle_auto_fire(user)
-			if(3)
 				toggle_frontline_mode(user)
-			if(4)
+			if(3)
 				toggle_motion_detector(user)
-			if(5)
-				toggle_recoil_compensation(user)
-			if(6)
+			if(4)
 				toggle_ammo_type(user)
-			if(7)
+			if(5)
 				toggle_lethal_mode(user)
-		to_chat(user, SPAN_HIGHDANGER("The [src] electronics malfunctions!"))
+		to_chat(user, SPAN_HIGHDANGER("[src]'s electronics malfunctioned!"))
 		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
 		sparks.set_up(5, 3, src)
 		sparks.start()
@@ -1210,12 +1045,10 @@
 /obj/item/weapon/gun/smartgun/pve
 	desc = "The actual firearm in the 4-piece M56A2 Smartgun System. This is a variant used by the Solar Devils Batallion, utilizing a 'frontline only' IFF system that refuses to fire if a friendly would be hit."
 	actions_types = list(
-		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
-		/datum/action/item_action/smartgun/toggle_ammo_type,
-		/datum/action/item_action/smartgun/toggle_auto_fire,
 		/datum/action/item_action/smartgun/toggle_lethal_mode,
+		/datum/action/item_action/smartgun/toggle_ammo_type,
+		/datum/action/item_action/smartgun/toggle_aim_assist,
 		/datum/action/item_action/smartgun/toggle_motion_detector,
-		/datum/action/item_action/smartgun/toggle_recoil_compensation,
 	)
 
 /obj/item/weapon/gun/smartgun/pve/Initialize(mapload, ...)

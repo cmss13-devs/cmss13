@@ -927,6 +927,7 @@
 	desc_lore = "The VP78 is an uncommon sight, even in UA and 3WE space. Only on the market for two years before its the VP78-A1 was comissioned and production switched to the more desired model, only a few thousand of these exist. As such, they've found their way into the hands of novelty collectors and as gifts to teenage kids.\n\nThe slide is engraved with the Weyland-Yutani logo, reminding you who's really in charge."
 	icon_state = "vp78-small"
 	item_state = "vp78-small"
+	fire_sound = "m4a3"
 
 	fire_sound = 'sound/weapons/gun_vp78_v2.ogg'
 	reload_sound = 'sound/weapons/gun_vp78_reload.ogg'

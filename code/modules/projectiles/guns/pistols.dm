@@ -929,11 +929,34 @@
 	item_state = "vp78-small"
 	fire_sound = "m4a3"
 
-	fire_sound = 'sound/weapons/gun_vp78_v2.ogg'
 	reload_sound = 'sound/weapons/gun_vp78_reload.ogg'
 	unload_sound = 'sound/weapons/gun_vp78_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/vp78/lowcaliber
 	force = 7
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor/sleek,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight, // look its kinda strange why you would list these as allowed when the vp-78 has an integrated flashlight, but flashlight attachment code does have a warning for this so yknow whatever really
+		/obj/item/attachable/flashlight/under_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/flashlight/laser_light_combo/lowcaliber,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+	)
+
+/obj/item/weapon/gun/pistol/vp78/lowcaliber/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 22,"rail_x" = 10, "rail_y" = 22, "under_x" = 20, "under_y" = 17, "stock_x" = 18, "stock_y" = 14)
+
+/obj/item/weapon/gun/pistol/vp78/lowcaliber/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/flashlight/laser_light_combo/lowcaliber/VP = new(src)
+	VP.flags_attach_features &= ~ATTACH_REMOVABLE
+	VP.hidden = FALSE
+	VP.Attach(src)
+	update_attachable(VP.slot)
 
 //-------------------------------------------------------
 /*

@@ -1077,6 +1077,10 @@ Defined in conflicts.dm of the #defines folder.
 		to_chat(user, SPAN_NOTICE("You are unable to modify it."))
 	return
 
+/obj/item/attachable/flashlight/laser_light_combo/lowcaliber
+	icon_state = "vplaserlight-small"
+	attach_icon = "vplaserlight-small_a"
+
 /obj/item/attachable/magnetic_harness
 	name = "magnetic harness"
 	desc = "A magnetically attached harness kit that attaches to the rail mount of a weapon. When dropped, the weapon will sling to any set of USCM armor."

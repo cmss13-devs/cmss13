@@ -87,17 +87,18 @@ GENERAL_PROTECT_DATUM(/datum/json_savefile)
 
 	msg_admin_niche("[key_name_admin(requester)] exported preferences.")
 	COOLDOWN_START(src, download_cooldown, DOWNLOAD_COOLDOWN)
-	var/file_name = "[account_name ? "[account_name]_" : ""]preferences_[time2text(world.timeofday, "MMM_DD_YYYY_hh-mm-ss", TIMEZONE_UTC)].json"
+	var/file_name = "[account_name ? "[account_name]_" : ""]preferences.json"
 	var/temporary_file_storage = "data/preferences_export_working_directory/[file_name]"
 
+	fdel(temporary_file_storage)
 	if(!text2file(json_encode(tree, JSON_PRETTY_PRINT), temporary_file_storage))
-		tgui_alert(requester, "Failed to export preferences to JSON! You might need to try again later.", "Export Preferences JSON")
+		tgui_alert_async(requester, "Failed to export preferences to JSON! You might need to try again later.", "Export Preferences JSON")
+		fdel(temporary_file_storage)
 		return
 
 	var/exportable_json = file(temporary_file_storage)
-
 	DIRECT_OUTPUT(requester, ftp(exportable_json, file_name))
-	fdel(temporary_file_storage)
+	fdel(temporary_file_storage) // This probably always fails and we probably should do fdel("data/preferences_export_working_directory/") every boot
 
 /// Proc that just handles all of the checks for exporting a preferences file, returns TRUE if all checks are passed, FALSE otherwise.
 /// Just done like this to make the code in the export_json_to_client() proc a bit cleaner.
@@ -111,6 +112,7 @@ GENERAL_PROTECT_DATUM(/datum/json_savefile)
 
 	return FALSE
 
+/* Disabled for now due to lingering preferences_export_working_directory issue and no import functionality
 /client/verb/export_preferences()
 	set name = "Export Preferences"
 	set desc = "Export your current preferences to a file."
@@ -119,6 +121,7 @@ GENERAL_PROTECT_DATUM(/datum/json_savefile)
 	ASSERT(prefs, "User attempted to export preferences while preferences were null!") // what the fuck
 
 	prefs.savefile.export_json_to_client(usr, ckey)
+*/
 
 /// Copies the entire tree to another savefile datum, overwriting whatever was in the other datum before.
 /datum/json_savefile/proc/copy_to_savefile(datum/json_savefile/other_savefile)

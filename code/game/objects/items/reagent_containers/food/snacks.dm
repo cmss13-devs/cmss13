@@ -72,7 +72,7 @@
 
 	if(istype(M, /mob/living/carbon))
 		var/mob/living/carbon/C = M
-		var/fullness = M.nutrition + (M.reagents.get_reagent_amount("nutriment") * 25)
+		var/fullness = C.nutrition + (M.reagents.get_reagent_amount("nutriment") * 25)
 		if(fullness > NUTRITION_HIGH && world.time < C.overeat_cooldown)
 			to_chat(user, SPAN_WARNING("[user == M ? "You" : "They"] don't feel like eating more right now."))
 			return FALSE

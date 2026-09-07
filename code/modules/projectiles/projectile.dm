@@ -978,7 +978,7 @@
 					xeno_jitter(5 DECISECONDS)
 					if(bullet.ammo.sound_miss)
 						playsound_client(client, bullet.ammo.sound_miss, get_turf(src), 75, TRUE)
-					visible_message(SPAN_AVOIDHARM("The [src] darts aside, evading [bullet]!"),
+					visible_message(SPAN_AVOIDHARM("[src] darts aside, evading [bullet]!"),
 						SPAN_AVOIDHARM("You react fast, and [bullet] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
 					return FALSE
 

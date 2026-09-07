@@ -627,6 +627,11 @@
 		set_stat(CONSCIOUS)
 	regenerate_all_icons()
 
+	// Update HUDs, notably because we were dead during health updates so it's not correct
+	med_hud_set_health()
+	med_hud_set_armor()
+	med_hud_set_status()
+
 	SEND_SIGNAL(src, COMSIG_LIVING_REJUVENATED)
 
 

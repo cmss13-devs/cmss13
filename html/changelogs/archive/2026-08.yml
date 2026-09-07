@@ -394,3 +394,164 @@
 2026-08-16:
   Red-byte3D:
   - imageadd: New ghillie sprite
+2026-08-17:
+  AnCopper:
+  - bugfix: The New Varadero LACN Commander is once again a Commander instead of a
+      LtCol
+  Namen-n:
+  - mapadd: added vehicle restrictions for caves on the LV522 Chances Claim map.
+  Unknownity:
+  - balance: Reinforced Walls now take 8 plasteel sheets to construct instead of 5.
+  - rscadd: Added one marine tip about being able to reinforce reagent and fuel tanks
+      with plasteel.
+  - refactor: Nuked some single letter vars in the girders file.
+2026-08-18:
+  MistChristmas:
+  - bugfix: Custom Hotkeys saving + as Add, and ARROWUP not being saved as North etc
+      for the arrow keys.
+2026-08-19:
+  BOBAMA:
+  - bugfix: generic survivors should no longer spawn during survivor team inserts,  generic
+      survivors should also no longer spawn on top of each other sometimes, and CO
+      survivors should no longer be able to duplicate non-co archetypes.
+2026-08-20:
+  Ammoniacres:
+  - balance: made it so Ravagers have a 25% chance to accidentally slash instead of
+      tackle on disarm intent!
+2026-08-21:
+  Unknownity:
+  - bugfix: Fixes some area oversights in Whiskey Outpost.
+2026-08-22:
+  Bibby0110:
+  - bugfix: Ravagers failing to tackle no longer announces the personal message to
+      everyone surrounding you
+  Drathek:
+  - code_imp: Added more pass flag bitfields for VV and unified them with a couple
+      defines
+  - code_imp: Unified barricade pass flag initialization with a define
+  Nihisohel:
+  - bugfix: Base Ravager Empower now processes properly
+  Rad Chandelier:
+  - rscadd: Adds a check of MRE side dishes before allowing MRE folding into trash;
+      Changes MRE weight class to small
+  - code_imp: All changes ported directly from PvE code
+  - qol: Adds check of MRE food items to allow storage into MRE
+  SpypigDev:
+  - bugfix: Invasive surgery now slices through splints
+  Venuska1117:
+  - bugfix: Made player unable to transmute as bulwark when they have stances active
+      like encasing plates or reflective plates.
+2026-08-24:
+  AnCopper:
+  - rscadd: Added a UPP Ministry of Space Security Officer CO survivor to the Trijent
+      Dam UPP insert.
+  MistChristmas:
+  - rscadd: Disclaimer regarding arrests to CMB Inspection ERTs
+  - bugfix: Transmute works again
+  - bugfix: Xeno surgery is possible again
+  - bugfix: Rav strains no longer claim you have giant oversized claws when you're
+      not the ravager.
+2026-08-25:
+  Drathek:
+  - bugfix: Fixed an exploit where you could stack/unstack acided things on the ground
+  - code_imp: COMSIG_ITEM_PICKUP now fires properly on pickup and COMSIG_MOVABLE_PRE_PICKUP
+      is used to check if pickup/interaction is allowed
+  LC4492:
+  - code_imp: Instead of Vs the thermal tarps are now Ms, following tradition.
+  - imagetweak: Updates the sprites for body, cryo and tarp bags to show an 'empty'
+      version of the sprite when the bag is empty, so it is now visually clear when
+      the bag has someone inside it or not.
+  - imagetweak: Changed 'holocards' on the cryobags from the 2x2 square on top of
+      the bag to recolored versions of the bodybag label, so they are now much bigger,
+      which helps you to notice it better, and now appear similar to a real life triage
+      card attached to the bag.
+  - imagetweak: Change tarps to use their currently unused closed version, of which
+      I've hand-crafted to now have a very smooth 'invisibility' transition, there's
+      also some small details that will make the bag look more 'alive' aswell.
+  - soundtweak: Changed the sounds of when the tarp bags are closed or opened to the
+      same sounds of body and cryo bags, given it just makes more sense.
+  Watermelon914:
+  - bugfix: Fixed gamemode vote not auto-resolving if there's only one option.
+2026-08-26:
+  AnCopper:
+  - bugfix: the UPP MSS CO Survivor now speaks Russian by default
+  Antlers:
+  - balance: Un-nerfs the crusher's melee attack slow after its bugfix, returning
+      it to 3.5 seconds
+  Red-byte3D:
+  - code_imp: Adds stelcrest unit tests
+  larentoun:
+  - bugfix: Using any item should now not immediately disarm the dart - disarming
+      is intended to be done with multitool.
+  - bugfix: Disarmed (inactive) SHARP darts now are truly inactive and safe.
+  - spellcheck: Incendiary dart description now says that's it is incendiary, not
+      explosive.
+  - balance: Disarming SHARP darts with multitool now converts them into usable ammo.
+  - rscadd: Can now use multitool on inactive darts. That means, 5 minute lifespan
+      auto-disarmed darts can now be reused as ammo with multitool.
+2026-08-27:
+  Puckaboo2:
+  - bugfix: Burn overlays now apply to mobs again.
+2026-08-28:
+  Armsdealer9876:
+  - bugfix: Poppy Pretzel recipe now uses poppies instead of seeds
+  JHINgle4ce:
+  - bugfix: fixes valkyrae fake use of retrieve
+  MistChristmas:
+  - bugfix: Bullets affected by reflective walls keeping their boosted damage.
+  - bugfix: Limits the amount of mobs that can stop reflective walls reflecting to
+      mob/living/carbon derivatives
+  Orchidfox:
+  - balance: Sentinel max neuro oxyloss now scales with neuro stacks
+  - balance: Sentinel maximum oxyloss lowered to 40
+  aquariofury:
+  - code_imp: moved rolling pin and spoon out of the contraband list
+  oceany-a11y:
+  - qol: Adds marine snow boot to the synth loadouts.
+  zzzmike:
+  - qol: Makes Cryo-marine-not-taken notice clearer
+2026-08-29:
+  Ansekishoku:
+  - rscadd: A combat sidearm belt that is capable of holding a sidearm, 3 rifle mags
+      and 2 pistol mags.
+  - imageadd: New smartgunner sidearm belt sprites
+2026-08-30:
+  IowaPotatoFarmer:
+  - rscadd: New unique synthetic survivor presets for the White Antre Research Facility.
+  Steelpoint, Drathek:
+  - code_imp: Closets and cm_vending vendors now are not intractable when they are
+      in the same tile as a dense door (allowing them to be hidden in the door's tile)
+  - maptweak: The Combat Information Centre of the USS Almayer has been refurnished
+      and overhauled. The objective of this overhaul is to transform the CIC into
+      a veritable command bunker that provides an improved experience for CIC personnel
+      to better communicate and coordinate amongst each other, whilst also improving
+      the security and personnel inflow of the CIC to diminish the need for non-USCM/civilian
+      personnel from being able to enter and leave the CIC as they please.
+  - maptweak: Two additional Overwatch stations have been installed in the CIC.
+  - maptweak: The CIC armory is now concealed and hidden within the CIC conference
+      room. It can be revealed by pressing the 'armoury' button.
+  - maptweak: The reception to the CIC has been refurbished to permit MP personnel
+      to perform guard duty.
+  - maptweak: The CIC lockdown has been changed from a single overall lockdown, to
+      three different tiers of lockdown. The external blast doors that lead into the
+      general CIC adjacent corridors are now the External Lockdown. The blastdoors
+      that prevent entry into the main CIC area is now the Interior Lockdown, with
+      the final lockdown being reserved for the central command bunker. This will
+      permit CIC staff to better control how they wish to secure the CIC during an
+      emergency.
+  Watermelon914:
+  - server: Added more influxdb stats for player status
+  fira:
+  - code_imp: Some sounds will now be emitted from the emitting object rather than
+      the ground position. This especially makes a difference for sounds originating
+      from your character, which won't be shifted when you move due to delay.
+2026-08-31:
+  JackieEstegado:
+  - bugfix: Fixed some acid holes on maps having the wrong orientation.
+  Red-byte3D:
+  - code_imp: Switched Valkyrie's rage ability from XENO_ACTION_CLICK to XENO_ACTION_QUEUE
+      this basically means that the ability no longer has to be chosen and will use
+      on your next clicking, meaning you can indirectly use it without clicking the
+      ability.
+  Venuska1117:
+  - balance: Acided Handrails no longer drop debris.

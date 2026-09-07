@@ -1,0 +1,80 @@
+2026-09-01:
+  Drathek:
+  - code_imp: Bumped rust_g from 6.0.1 to 7.0.0
+  fira:
+  - rscdel: MULEbots cannot run people over anymore. They still can't really move
+      either way.
+2026-09-02:
+  Mary-Marilyn:
+  - balance: Reduced the M44 revolver's wielded scatter from 3 to 1.
+  - balance: Increased standard M44 ammunition damage from 72 to 85, armor penetration
+      from 5 to 10 and accurate range from 6 to 7 tiles.
+  - balance: Increased M44 marksman ammunition damage from 55 to 70 and armor penetration
+      from 35 to 40.
+  - balance: Increased M44 heavy ammunition damage from 35 to 65 and accurate range
+      from 6 to 7 tiles.
+  - balance: M44 heavy ammunition stuns for 0.5 seconds every third hit and slows
+      for 2s for every hit after that
+  - balance: The M44 sharpshooter stock now folds in 0.5 seconds and no longer slows
+      aiming
+  - balance: The M44 can now be fired with its sharpshooter stock folded.
+  - balance: Reduced M44 heavy and marksman speedloader costs to 5 points across the
+      board
+  - balance: Aim Assist is now available on the standard M56A2 Smartgun. It consumes
+      massive amounts of smartgun energy. The standard smartgun can only fire 750
+      rounds of aim assisted bullets with one DV9 battery.
+  - balance: Aim Assist has a -25% accuracy penalty when not directly clicking on
+      your target (meaning they may dodge the bullet)
+  - balance: Aim assist takes the current tile you're clicking on and automatically
+      snaps your bullet at the target.
+  - rscadd: Added numerous non-helmet options to the smartgun vendor
+  - balance: Removed widespread availability of DV9 batteries. Smartgunners now only
+      have the one that starts in their gun and the spare one from their kit. Recharge
+      them using defib rechargers. (Requistions can still order a DV9 crate)
+  - rscadd: Added functionality to remove the DV9 battery from your smartgun with
+      a screwdriver
+  - qol: Removed the Smartgun accuracy and recoil toggles and made their effects inherent
+      to the gun.
+  - rscdel: Removed the Smartgun autofire system.
+  Orchidfox:
+  - qol: RTO bag moved to SL mandatory gear
+2026-09-03:
+  Antlers:
+  - code_imp: Added pheromone unit tests to the repo's CI suite
+  - code_imp: Added new defines for pheromone types and strength
+  - bugfix: Banished xenomorphs will no longer receive pheromones from their former
+      hive, and vice versa
+  Kashargul:
+  - code_imp: update tgui dependencies
+  Mary-Marilyn:
+  - soundadd: Added new pulse rifle sounds for the MK1
+  fira:
+  - code_imp: Optimized human wound overlays by bundling updates
+2026-09-04:
+  Watermelon914:
+  - balance: Reworked research gameplay loop to be more xeno-body focused. Hydroponic
+      chemicals still exist but are no longer generated as part of recipes, and are
+      not a research target anymore. Xenomorph organs can be cultivated into weed
+      nodes and glands by placing them on the floor and then placing them on weeds.
+      These glands produce chemicals which can then be extracted, which are necessary
+      to research the more lategame chemicals.
+2026-09-05:
+  TheDonkified:
+  - refactor: Replace throwing and rebounding datum-level vars with traits
+2026-09-06:
+  Nihisohel:
+  - bugfix: Synthetic USCM Recruiters no longer have the habit of picking up a random
+      potato and throwing it on their shoulder to show off
+  Puckaboo2:
+  - spellcheck: Kills some 'this the stick' and 'the the stick'  grammar errors.
+  - spellcheck: More spell checks.
+  fira:
+  - bugfix: Many sources of Xeno heal (except healer which already worked) are now
+      instantaneous instead of incurring an up to 2 seconds random delay, visually
+      and for mob effects.
+  - bugfix: Dealing damage with VV is now instantaneous.
+  - code_imp: MedHUD HP bar will now only update when it needs to.
+  - code_imp: MedHUD Status (death state, larva, etc) and revival minimap icon will
+      not update on taking damage anymore. It still updates every 2 seconds or during
+      major events.
+  - code_imp: Optimized minimap marker logic.

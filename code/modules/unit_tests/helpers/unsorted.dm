@@ -22,30 +22,30 @@
 
 /datum/unit_test/get_matching_paths_TEST_base_type/Run()
 	test_get_matching_paths(
-		new /datum/to_check(),
-		list(/datum/to_check),
-		/datum/to_check,
+		to_check = new /datum/to_check(),
+		expected_matching = list(/datum/to_check),
+		expected_highest_matching = /datum/to_check,
 	)
 
 /datum/unit_test/get_matching_paths_TEST_single_nested_type/Run()
 	test_get_matching_paths(
-		new /datum/to_check/child(),
-		list(/datum/to_check, /datum/to_check/child),
-		/datum/to_check/child,
+		to_check = new /datum/to_check/child(),
+		expected_matching = list(/datum/to_check, /datum/to_check/child),
+		expected_highest_matching = /datum/to_check/child,
 	)
 
 /datum/unit_test/get_matching_paths_TEST_double_nested_type/Run()
 	test_get_matching_paths(
-		new /datum/to_check/child/grandchild(),
-		list(/datum/to_check, /datum/to_check/child, /datum/to_check/child/grandchild),
-		/datum/to_check/child/grandchild,
+		to_check = new /datum/to_check/child/grandchild(),
+		expected_matching = list(/datum/to_check, /datum/to_check/child, /datum/to_check/child/grandchild),
+		expected_highest_matching = /datum/to_check/child/grandchild,
 	)
 
 /datum/unit_test/get_matching_paths_TEST_non_matching_type/Run()
 	test_get_matching_paths(
-		new /datum/to_check_not_matching(),
-		list(),
-		null,
+		to_check = new /datum/to_check_not_matching(),
+		expected_matching = list(),
+		expected_highest_matching = null,
 	)
 
 /datum/unit_test/proc/test_get_matching_paths(datum/to_check/to_check, list/expected_matching, expected_highest_matching)

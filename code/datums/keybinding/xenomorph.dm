@@ -102,21 +102,21 @@
 	full_name = "Emit Frenzy pheromone"
 	description = "Increased run speed, damage and chance to knock off headhunter masks."
 	keybind_signal = COMSIG_KB_XENO_EMIT_PHEROMONES_FRENZY
-	pheromone = "frenzy"
+	pheromone = XENO_PHERO_FRENZY
 
 /datum/keybinding/xenomorph/emit_pheromones/warding
 	name = "emit_pheromones_warding"
 	full_name = "Emit Warding pheromone"
 	description = "Increased maximum negative health, and while in critical state, slower off weed bleedout."
 	keybind_signal = COMSIG_KB_XENO_EMIT_PHEROMONES_WARDING
-	pheromone = "warding"
+	pheromone = XENO_PHERO_WARDING
 
 /datum/keybinding/xenomorph/emit_pheromones/recovery
 	name = "emit_pheromones_recovery"
 	full_name = "Emit Recovery pheromone"
 	description = "Increased plasma and health regeneration."
 	keybind_signal = COMSIG_KB_XENO_EMIT_PHEROMONES_RECOVERY
-	pheromone = "recovery"
+	pheromone = XENO_PHERO_RECOVERY
 
 /datum/keybinding/xenomorph/corrosive_acid
 	hotkey_keys = list("Shift+C")

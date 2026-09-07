@@ -1,0 +1,5 @@
+author: "Mary-Marilyn"
+delete-after: True
+changes:
+  - bugfix: "Station ERTs no longer continue spawning after round end."
+  - rscadd: "Added undocking announcements when a station abandons the Almayer."

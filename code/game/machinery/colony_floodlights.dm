@@ -14,6 +14,7 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 	power_machine = TRUE
 	idle_power_usage = 0
 	is_on = FALSE
+	tacmap_icon = "light_switch"
 	var/ispowered = FALSE
 	///All machinery under our control
 	var/list/machinery_list = list()
@@ -59,6 +60,7 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 					other_switch.machinery_type_blacklist |= our_whitelisted
 
 	GLOB.all_breaker_switches += src
+	SSminimaps.add_marker(src, MINIMAP_FLAG_ALL, image('icons/UI_icons/map_blips.dmi', null, tacmap_icon))
 	return INITIALIZE_HINT_ROUNDSTART
 
 /obj/structure/machinery/colony_floodlight_switch/LateInitialize()

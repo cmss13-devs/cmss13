@@ -255,13 +255,13 @@
 //------------------------Special or non common magazines----------------
 
 /datum/supply_packs/ammo_vp78_mag_box
-	name = "Magazine box (VP78, 16x mags)"
+	name = "Magazine box (VP78-A1, 16x mags)"
 	contains = list(
 		/obj/item/ammo_box/magazine/vp78,
 	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "\improper VP78 magazines crate"
+	containername = "\improper VP78-A1 Magazines crate"
 	group = "Ammo"
 
 /datum/supply_packs/ammo_su6_mag_box

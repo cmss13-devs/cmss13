@@ -255,7 +255,7 @@
 		list("M56 Smartgun Drum", 0, /obj/item/ammo_magazine/smartgun, VENDOR_ITEM_REGULAR),
 		list("M56D Drum Magazine",0, /obj/item/ammo_magazine/m56d, VENDOR_ITEM_REGULAR),
 		list("SU-6 Smartpistol Magazine (.45)", floor(scale * 2), /obj/item/ammo_magazine/pistol/smart, VENDOR_ITEM_REGULAR),
-		list("VP78 Magazine", floor(scale * 1.5), /obj/item/ammo_magazine/pistol/vp78, VENDOR_ITEM_REGULAR),
+		list("VP78-A1 Magazine", floor(scale * 1.5), /obj/item/ammo_magazine/pistol/vp78, VENDOR_ITEM_REGULAR),
 
 		list("BUILDING MATERIALS", -1, null, null),
 		list("Cardboard x10", 1, /obj/item/stack/sheet/cardboard/small_stack, VENDOR_ITEM_REGULAR),
@@ -469,7 +469,7 @@
 
 		list("SIDEARMS", -1, null, null),
 		list("88 Mod 4 Combat Pistol", floor(scale * 2), /obj/item/weapon/gun/pistol/mod88, VENDOR_ITEM_REGULAR),
-		list("VP78 Pistol", floor(scale * 1.5), /obj/item/weapon/gun/pistol/vp78, VENDOR_ITEM_REGULAR),
+		list("VP78-A1 Pistol", floor(scale * 1.5), /obj/item/weapon/gun/pistol/vp78, VENDOR_ITEM_REGULAR),
 
 		list("EXPLOSIVES", -1, null, null),
 		list("M12 Blast Grenade", 0, /obj/item/explosive/grenade/high_explosive/pmc, VENDOR_ITEM_REGULAR),
@@ -495,7 +495,7 @@
 		list("NSG 23 Magazine (10x24mm)", floor(scale * 5), /obj/item/ammo_magazine/rifle/nsg23, VENDOR_ITEM_REGULAR),
 		list("M41A MK2 Magazine (10x24mm)", floor(scale * 10), /obj/item/ammo_magazine/rifle, VENDOR_ITEM_REGULAR),
 		list("M39 HV Magazine (10x20mm)", floor(scale * 6), /obj/item/ammo_magazine/smg/m39, VENDOR_ITEM_REGULAR),
-		list("VP78 Magazine (9mm)", 0, /obj/item/ammo_magazine/pistol/vp78, VENDOR_ITEM_REGULAR),
+		list("VP78-A1 Magazine (9mm)", 0, /obj/item/ammo_magazine/pistol/vp78, VENDOR_ITEM_REGULAR),
 		list("ARMOR-PIERCING AMMUNITION", -1, null, null),
 		list("88 Mod 4 AP Magazine (9mm)", floor(scale * 8), /obj/item/ammo_magazine/pistol/mod88, VENDOR_ITEM_REGULAR),
 		list("M4RA AP Magazine (10x24mm)", 0, /obj/item/ammo_magazine/rifle/nsg23/ap, VENDOR_ITEM_REGULAR),

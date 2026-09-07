@@ -46,11 +46,11 @@
 		list("F903A1 Marksman Magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/rmc_f90/marksman, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", 0, null, null, null),
-		list("VP78 Pistol", 20, /obj/item/weapon/gun/pistol/vp78, null, VENDOR_ITEM_REGULAR),
+		list("VP78-A1 Pistol", 20, /obj/item/weapon/gun/pistol/vp78, null, VENDOR_ITEM_REGULAR),
 		list("88 Mod 4 Combat Pistol", 15, /obj/item/weapon/gun/pistol/mod88, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", 0, null, null, null),
-		list("VP78 magazine (9mm)", 5, /obj/item/ammo_magazine/pistol/vp78, null, VENDOR_ITEM_REGULAR),
+		list("VP78-A1 magazine (9mm)", 5, /obj/item/ammo_magazine/pistol/vp78, null, VENDOR_ITEM_REGULAR),
 		list("88M4 AP Magazine (9mm)", 5, /obj/item/ammo_magazine/pistol/mod88, null, VENDOR_ITEM_REGULAR),
 
 		list("ATTACHMENTS", 0, null, null, null),
@@ -85,11 +85,11 @@
 		list("F903A1 Marksman Magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/rmc_f90/marksman, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", -1, null, null),
-		list("VP78 Pistol", 20, /obj/item/weapon/gun/pistol/vp78, null, VENDOR_ITEM_REGULAR),
+		list("VP78-A1 Pistol", 20, /obj/item/weapon/gun/pistol/vp78, null, VENDOR_ITEM_REGULAR),
 		list("88 Mod 4 Combat Pistol", 15, /obj/item/weapon/gun/pistol/mod88, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", -1, null, null),
-		list("VP78 magazine (9mm)", 5, /obj/item/ammo_magazine/pistol/vp78, null, VENDOR_ITEM_REGULAR),
+		list("VP78-A1 magazine (9mm)", 5, /obj/item/ammo_magazine/pistol/vp78, null, VENDOR_ITEM_REGULAR),
 		list("88M4 AP Magazine (9mm)", 5, /obj/item/ammo_magazine/pistol/mod88, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", -1, null, null),

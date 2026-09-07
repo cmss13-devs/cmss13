@@ -96,7 +96,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("M44 Marksman Speed Loader (.44)", 5, /obj/item/ammo_magazine/revolver/marksman, null, VENDOR_ITEM_REGULAR),
 		list("M4A3 HP Magazine", 3, /obj/item/ammo_magazine/pistol/hp, null, VENDOR_ITEM_REGULAR),
 		list("M4A3 AP Magazine", 3, /obj/item/ammo_magazine/pistol/ap, null, VENDOR_ITEM_REGULAR),
-		list("VP78 Magazine", 3, /obj/item/ammo_magazine/pistol/vp78, null, VENDOR_ITEM_REGULAR),
+		list("VP78-A1 Magazine", 3, /obj/item/ammo_magazine/pistol/vp78, null, VENDOR_ITEM_REGULAR),
 		list("SU-6 Smartpistol Magazine (.45)", 6, /obj/item/ammo_magazine/pistol/smart, null, VENDOR_ITEM_REGULAR),
 
 		list("SPECIAL AMMUNITION", 0, null, null, null),
@@ -105,7 +105,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 
 		list("RESTRICTED FIREARMS", 0, null, null, null),
 		list("M240 Incinerator Unit", 18, /obj/item/storage/box/guncase/flamer, null, VENDOR_ITEM_REGULAR),
-		list("VP78 Pistol", 8, /obj/item/storage/box/guncase/vp78, null, VENDOR_ITEM_REGULAR),
+		list("VP78-A1 Pistol", 8, /obj/item/storage/box/guncase/vp78, null, VENDOR_ITEM_REGULAR),
 		list("SU-6 Smart Pistol", 12, /obj/item/storage/box/guncase/smartpistol, null, VENDOR_ITEM_REGULAR),
 		list("M85A1 Grenade Launcher", 18, /obj/item/storage/box/guncase/m85a1, null, VENDOR_ITEM_REGULAR),
 

@@ -65,7 +65,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corporate_security_full, list(
 	list("SIDEARM (CHOOSE 1)", 0, null, null, null),
 	list("ES-4 Electrostatic Pistol", 0, /obj/item/storage/belt/gun/m4a3/wy/es4, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 	list("88 Mod 4 Combat Pistol", 0, /obj/item/storage/belt/gun/m4a3/wy/mod88, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
-	list("VP78 Pistol", 8, /obj/item/storage/belt/gun/m4a3/wy/vp78, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
+	list("VP78-A1 Pistol", 8, /obj/item/storage/belt/gun/m4a3/wy/vp78, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 
 	list("PRIMARY AMMUNITION", 0, null, null, null),
 	list("X21 Shock Slugs", 10, /obj/item/ammo_magazine/shotgun/beanbag/es7, null, VENDOR_ITEM_REGULAR),
@@ -83,7 +83,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corporate_security_full, list(
 	list("SIDEARM AMMUNITION", 0, null, null, null),
 	list("ES-4 Stun Magazine (9mm)", 4, /obj/item/ammo_magazine/pistol/es4, null, VENDOR_ITEM_REGULAR),
 	list("88M4 AP Magazine (9mm)", 4, /obj/item/ammo_magazine/pistol/mod88, null, VENDOR_ITEM_REGULAR),
-	list("VP78 Magazine (9mm)", 6, /obj/item/ammo_magazine/pistol/vp78, null, VENDOR_ITEM_REGULAR),
+	list("VP78-A1 Magazine (9mm)", 6, /obj/item/ammo_magazine/pistol/vp78, null, VENDOR_ITEM_REGULAR),
 
 	list("RAIL ATTACHMENTS (CHOOSE 2)", 0, null, null, null),
 	list("Red-Dot Sight", 0, /obj/item/attachable/reddot, CIVILIAN_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),

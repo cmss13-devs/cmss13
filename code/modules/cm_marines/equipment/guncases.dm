@@ -25,7 +25,7 @@
 
 //------------
 /obj/item/storage/box/guncase/vp78
-	name = "\improper VP78 pistol case"
+	name = "\improper VP78-A1 Pistol case"
 	desc = "A gun case containing the VP78. Comes with two magazines."
 	can_hold = list(/obj/item/weapon/gun/pistol/vp78, /obj/item/ammo_magazine/pistol/vp78)
 	storage_slots = 3

@@ -65,14 +65,14 @@
 	group = "Weapons"
 
 /datum/supply_packs/vp78
-	name = "VP-78 Hand Cannon Crate (x2)"
+	name = "VP78-A1 Hand Cannon Crate (x2)"
 	contains = list(
 		/obj/item/storage/box/guncase/vp78,
 		/obj/item/storage/box/guncase/vp78,
 	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/weapon
-	containername = "VP-78 Hand Cannon Crate"
+	containername = "VP78-A1 Hand Cannon Crate"
 	group = "Weapons"
 
 /datum/supply_packs/gun

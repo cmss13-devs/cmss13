@@ -200,9 +200,10 @@
 	penetration = ARMOR_PENETRATION_TIER_5
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
 
-// Used by VP78 and Auto 9
-/datum/ammo/bullet/pistol/squash
-	name = "squash-head pistol bullet"
+// Used by VP78-A1
+// Formerly known as squash-head 9mm
+/datum/ammo/bullet/pistol/acp45
+	name = ".45 ACP bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	debilitate = list(0,0,0,0,0,0,0,2)
 
@@ -213,59 +214,59 @@
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
 
-/datum/ammo/bullet/pistol/squash/toxin
-	name = "toxic squash-head pistol bullet"
+/datum/ammo/bullet/pistol/acp45/toxin
+	name = "toxic squash-head .45 ACP bullet"
 	var/acid_per_hit = 10
 	var/organic_damage_mult = 3
 
-/datum/ammo/bullet/pistol/squash/toxin/on_hit_mob(mob/M, obj/projectile/P)
+/datum/ammo/bullet/pistol/acp45/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
 	M.AddComponent(/datum/component/status_effect/toxic_buildup, acid_per_hit)
 
-/datum/ammo/bullet/pistol/squash/toxin/on_hit_turf(turf/T, obj/projectile/P)
+/datum/ammo/bullet/pistol/acp45/toxin/on_hit_turf(turf/T, obj/projectile/P)
 	. = ..()
 	if(T.turf_flags & TURF_ORGANIC)
 		P.damage *= organic_damage_mult
 
-/datum/ammo/bullet/pistol/squash/toxin/on_hit_obj(obj/O, obj/projectile/P)
+/datum/ammo/bullet/pistol/acp45/toxin/on_hit_obj(obj/O, obj/projectile/P)
 	. = ..()
 	if(O.flags_obj & OBJ_ORGANIC)
 		P.damage *= organic_damage_mult
 
-/datum/ammo/bullet/pistol/squash/penetrating
-	name = "wall-penetrating squash-head pistol bullet"
+/datum/ammo/bullet/pistol/acp45/penetrating
+	name = "wall-penetrating squash-head .45 ACP bullet"
 	shrapnel_chance = 0
 	penetration = ARMOR_PENETRATION_TIER_10
 
-/datum/ammo/bullet/pistol/squash/penetrating/set_bullet_traits()
+/datum/ammo/bullet/pistol/acp45/penetrating/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
 
-/datum/ammo/bullet/pistol/squash/incendiary
-	name = "incendiary squash-head pistol bullet"
+/datum/ammo/bullet/pistol/acp45/incendiary
+	name = "incendiary squash-head .45 ACP bullet"
 	damage_type = BURN
 	shrapnel_chance = 0
 	flags_ammo_behavior = AMMO_BALLISTIC
 	accuracy = HIT_ACCURACY_TIER_3
 	damage = 35
 
-/datum/ammo/bullet/pistol/squash/incendiary/set_bullet_traits()
+/datum/ammo/bullet/pistol/acp45/incendiary/set_bullet_traits()
 	..()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
 /datum/ammo/bullet/pistol/squash/heap
-	name = "high-explosive armor-piercing pistol bullet"
+	name = "high-explosive armor-piercing .45 ACP bullet"
 
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 	damage = 50
 	penetration = ARMOR_PENETRATION_TIER_10
 
 /datum/ammo/bullet/pistol/squash/rubber
-	name = "rubber squash-head pistol bullet"
+	name = "rubber squash-head .45 ACP bullet"
 	damage_type = BURN
 	shrapnel_chance = 0
 	sound_override = 'sound/weapons/gun_c99.ogg'

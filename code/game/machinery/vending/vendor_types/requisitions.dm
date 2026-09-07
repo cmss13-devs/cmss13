@@ -32,7 +32,7 @@
 		list("M82F Flare Gun", floor(scale * 20), /obj/item/weapon/gun/flare, VENDOR_ITEM_REGULAR),
 
 		list("RESTRICTED FIREARMS", -1, null, null),
-		list("VP78 Pistol", floor(scale * 4), /obj/item/storage/box/guncase/vp78, VENDOR_ITEM_REGULAR),
+		list("VP78-A1 Pistol", floor(scale * 4), /obj/item/storage/box/guncase/vp78, VENDOR_ITEM_REGULAR),
 		list("SU-6 Smart Pistol", floor(scale * 3), /obj/item/storage/box/guncase/smartpistol, VENDOR_ITEM_REGULAR),
 		list("MOU-53 Shotgun", floor(scale * 2), /obj/item/storage/box/guncase/mou53, VENDOR_ITEM_REGULAR),
 		list("XM88 Heavy Rifle", floor(scale * 3), /obj/item/storage/box/guncase/xm88, VENDOR_ITEM_REGULAR),
@@ -289,7 +289,7 @@
 		list("Box Of .458 SOCOM Rounds (.458 SOCOM)", floor(scale * 4), /obj/item/ammo_magazine/lever_action/xm88, VENDOR_ITEM_REGULAR),
 
 		list("RESTRICTED FIREARM AMMUNITION", -1, null, null),
-		list("VP78 Magazine", 11, /obj/item/ammo_magazine/pistol/vp78, VENDOR_ITEM_REGULAR),
+		list("VP78-A1 Magazine", 11, /obj/item/ammo_magazine/pistol/vp78, VENDOR_ITEM_REGULAR),
 		list("SU-6 Smartpistol Magazine (.45)", 13, /obj/item/ammo_magazine/pistol/smart, VENDOR_ITEM_REGULAR),
 		list("M240 Incinerator Tank", floor(scale * 3), /obj/item/ammo_magazine/flamer_tank, VENDOR_ITEM_REGULAR),
 		list("M41AE2 Box Magazine (10x24mm)", floor(scale * 3), /obj/item/ammo_magazine/rifle/lmg, VENDOR_ITEM_REGULAR),

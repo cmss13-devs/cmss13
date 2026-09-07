@@ -436,10 +436,10 @@
 /obj/item/ammo_box/magazine/mod88/empty
 	empty = TRUE
 
-//-----------------------VP78 Pistol Mag Box-----------------------
+//-----------------------VP78-A1 Pistol Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/vp78
-	name = "magazine box (VP78 x 16)"
+	name = "magazine box (VP78-A1 x 16)"
 	icon_state = "base_vp78"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"

@@ -73,7 +73,7 @@
 		/obj/item/weapon/gun/smg/m39 = list("M39", "SMG"),
 		/obj/item/weapon/gun/rifle/m4ra = list("M4RA", "M4RA Battle Rifle"),
 		/obj/item/weapon/gun/rifle/m41a = list("M41", "M41", "M41A", "Mk2", "M4 rifle"),
-		/obj/item/storage/box/guncase/vp78 = list("VP", "VP78"),
+		/obj/item/storage/box/guncase/vp78 = list("VP", "VP78", "VP78-A1"),
 		/obj/item/storage/box/guncase/smartpistol = list("S6 pistol", "SU-6", "Smartpistol"),
 		/obj/item/storage/box/guncase/mou53 = list("MOU", "MOU53", "MOU-53", "Mouse"),
 		/obj/item/storage/box/guncase/xm88 = list("Xm88", "XM88"),

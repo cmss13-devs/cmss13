@@ -856,7 +856,7 @@
 /obj/item/weapon/gun/pistol/vp78
 	name = "\improper VP78-A1 pistol"
 	desc = "A massive, formidable semi-automatic handgun chambered in .45 ACP rounds. A common sight throughout both UA and 3WE space, often held by both Weyland-Yutani PMC units and corporate executives."
-	desc_lore = "Originally chambered in 9mm, a redesign was comissioned by the Weyland-Yutani Paramilitary Division after their unrealistic performance expectations for a round chambered in such caliber were not met. While the up-gunned design is slightly bulkier than its 9mm counterpart, the PMC division was quick to appreciate the reliable and devastating performance of God's caliber.\nThis weapon is also undergoing limited field testing as part of the USCM's next generation pistol program. The slide is engraved with the Weyland-Yutani logo reminding you who's really in charge."
+	desc_lore = "Originally chambered in 9mm, a redesign was comissioned by the Weyland-Yutani Paramilitary Division after their unrealistic performance expectations for a round chambered in such caliber were not met. While the up-gunned design is slightly bulkier than its 9mm counterpart, the PMC division was quick to appreciate the reliable and devastating performance of God's caliber.\n\nThis weapon is also undergoing limited field testing as part of the USCM's next generation pistol program. The slide is engraved with the Weyland-Yutani logo reminding you who's really in charge."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/pistols.dmi'
 	icon_state = "vp78"
 	item_state = "vp78"

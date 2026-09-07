@@ -370,7 +370,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 /obj/item/ammo_magazine/pistol/auto9
 	name = "\improper Auto-9 magazine (9mm)"
 	desc = "A 9mm pistol magazine for the Auto-9 pistol. Squash-head to squash criminal's heads."
-	default_ammo = /datum/ammo/bullet/pistol/squash
+	default_ammo = /datum/ammo/bullet/pistol/acp45 // Technically uses the same rounds as the vp78, because I didn't want to dedicate a whole ammo type for what is essentially VP ammo
 	caliber = "9mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/pistols.dmi'
 	icon_state = "88m4" //PLACEHOLDER

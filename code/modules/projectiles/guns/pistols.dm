@@ -919,6 +919,20 @@
 /obj/item/weapon/gun/pistol/vp78/army/heap
 	current_mag = /obj/item/ammo_magazine/pistol/vp78/heap
 
+//-------------------------------------------------------
+//VP78
+/obj/item/weapon/gun/pistol/vp78/lowcaliber
+	name = "\improper VP78 Pistol"
+	desc = "A formidable semi-automatic handgun chambered in 9mm rounds. This version is a smaller, earlier production model of the ubiquitous VP78-A1."
+	desc_lore = "The VP78 is an uncommon sight, even in UA and 3WE space. Only on the market for two years before its the VP78-A1 was comissioned and production switched to the more desired model, only a few thousand of these exist. As such, they've found their way into the hands of novelty collectors and as gifts to teenage kids.\n\nThe slide is engraved with the Weyland-Yutani logo, reminding you who's really in charge."
+	icon_state = "vp78-small"
+	item_state = "vp78-small"
+
+	fire_sound = 'sound/weapons/gun_vp78_v2.ogg'
+	reload_sound = 'sound/weapons/gun_vp78_reload.ogg'
+	unload_sound = 'sound/weapons/gun_vp78_unload.ogg'
+	current_mag = /obj/item/ammo_magazine/pistol/vp78/lowcaliber
+	force = 7
 
 //-------------------------------------------------------
 /*

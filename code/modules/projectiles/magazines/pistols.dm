@@ -194,37 +194,37 @@
 	max_rounds = 21
 	default_ammo = /datum/ammo/bullet/pistol
 
-/obj/item/ammo_magazine/pistol/hp
+/obj/item/ammo_magazine/pistol/vp78/lowcaliber
 	name = "\improper VP78 hollowpoint magazine (9mm)"
 	desc = "A hollow-point 9mm pistol magazine for the VP78. These hollow-point bullets have noticeably higher stopping power on unarmored targets, and noticeably less on armored targets."
 	default_ammo = /datum/ammo/bullet/pistol/hollow
 	ammo_band_color = AMMO_BAND_COLOR_HOLLOWPOINT
 
-/obj/item/ammo_magazine/pistol/ap
+/obj/item/ammo_magazine/pistol/vp78/lowcaliber
 	name = "\improper VP78 AP magazine (9mm)"
 	desc = "An armor-piercing 9mm pistol magazine for the VP78. These armor-piercing rounds have noticeably higher stopping power on armored targets, and noticeably less on unarmored targets."
 	default_ammo = /datum/ammo/bullet/pistol/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
-/obj/item/ammo_magazine/pistol/rubber
+/obj/item/ammo_magazine/pistol/vp78/lowcaliber
 	name = "\improper VP78 Rubber magazine (9mm)"
 	desc = "A 9mm pistol magazine for the VP78. This one contains rubber bullets."
 	default_ammo = /datum/ammo/bullet/pistol/rubber
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
 
-/obj/item/ammo_magazine/pistol/incendiary
+/obj/item/ammo_magazine/pistol/vp78/lowcaliber
 	name = "\improper VP78 incendiary magazine (9mm)"
 	desc = "An incendiary 9mm pistol magazine for the VP78."
 	default_ammo = /datum/ammo/bullet/pistol/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
-/obj/item/ammo_magazine/pistol/penetrating
+/obj/item/ammo_magazine/pistol/vp78/lowcaliber
 	name = "\improper VP78 wall-penetrating magazine (9mm)"
 	desc = "A wall-penetrating 9mm pistol magazine for the VP78."
 	default_ammo = /datum/ammo/bullet/pistol/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
 
-/obj/item/ammo_magazine/pistol/toxin
+/obj/item/ammo_magazine/pistol/vp78/lowcaliber
 	name = "\improper VP78 toxin magazine (9mm)"
 	desc = "A toxin 9mm pistol magazine for the VP78."
 	default_ammo = /datum/ammo/bullet/pistol/ap/toxin

@@ -347,9 +347,9 @@
 /obj/item/reagent_container/glass/minitank/on_reagent_change()
 	update_icon()
 
-/obj/item/reagent_container/glass/minitank/attackby(obj/item/item as obj, mob/user as mob)
-	if(istype(item, /obj/item/reagent_container/hypospray/autoinjector))
-		var/obj/item/reagent_container/hypospray/autoinjector/autoinjector = item
+/obj/item/reagent_container/glass/minitank/attackby(obj/item/thing as obj, mob/user as mob)
+	if(istype(thing, /obj/item/reagent_container/hypospray/autoinjector))
+		var/obj/item/reagent_container/hypospray/autoinjector/autoinjector = thing
 		var/amount = (autoinjector.reagents.maximum_volume - autoinjector.reagents.total_volume)
 
 		if(autoinjector.reagents.total_volume >= autoinjector.reagents.maximum_volume) //Autoinjector is full!
@@ -357,12 +357,16 @@
 			return FALSE
 		else
 			if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/research)) //Autoinjector says, "Where's my pouch?"
-				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'Custom PRCP valve detected in [autoinjector]. Compatibility test failed.'"))
+				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test with [autoinjector]'s pressurized reagent canister receiver valve failed."))
 				return FALSE
-			else if(autoinjector.is_crystal || autoinjector.is_stimpack) //These aren't autoinjectors. The tank won't bother for error messages.
+			if(autoinjector.is_stimpack) //Wait a minute...
+				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test with [autoinjector]'s stimpack receiver valve failed."))
+				return FALSE
+			if(autoinjector.is_crystal) //Hold up...
+				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test with %ERROR!%'s %UNDEFINED% receiver valve failed.'"))
 				return FALSE
 			else if(autoinjector.cannot_refill)
-				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'No refill valve detected on [autoinjector].'"))
+				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test with [autoinjector]'s custom multi-reagent receiver valve failed.'"))
 				return FALSE
 			else if(!reagents.has_reagent(autoinjector.chemname, amount)) // Not enough reagents in the tank to refill the autoinjector.
 				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'Refill failed. [amount]u [autoinjector.chemname] required to completely refill [autoinjector].'"))

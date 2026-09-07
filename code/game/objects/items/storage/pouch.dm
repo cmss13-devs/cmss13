@@ -1364,8 +1364,8 @@
 		if(length(inner.reagents.reagent_list) < 2)
 			return
 
-		for(var/inventory in 2 to length(inner.reagents.reagent_list))
-			chemical = inner.reagents.reagent_list[inventory]
+		for(var/i in 2 to length(inner.reagents.reagent_list))
+			chemical = inner.reagents.reagent_list[i]
 
 			if(!chemical)
 				continue

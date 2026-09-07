@@ -224,6 +224,8 @@
 		var/datum/action/A = X
 		A.update_button_icon()
 
+	updatehealth()
+
 
 /mob/living/carbon/xenomorph/proc/gain_armor_percent(value)
 	armor_integrity = min(armor_integrity + value, 100)
@@ -714,7 +716,6 @@
 
 	apply_damage(burn_amount, BURN)
 	to_chat(src, SPAN_DANGER("Our flesh, it melts!"))
-	updatehealth()
 	return TRUE
 
 /mob/living/carbon/xenomorph/get_role_name()

@@ -142,7 +142,7 @@
 	gun_type = /obj/item/weapon/gun/pistol/es4
 
 //-------------------------------------------------------
-//VP78
+//VP78-A1 (formerly VP78)
 
 /obj/item/ammo_magazine/pistol/vp78
 	name = "\improper VP78-A1 Magazine (.45 ACP)"
@@ -184,6 +184,51 @@
 	desc = "A .45 ACP pistol magazine for the VP78. This one is loaded with rubber bullets."
 	default_ammo = /datum/ammo/bullet/pistol/acp45/rubber
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
+
+//-------------------------------------------------------
+//VP78-A1 (formerly VP78)
+/obj/item/ammo_magazine/pistol/vp78/lowcaliber
+	name = "\improper VP78 magazine (9mm)"
+	desc = "A 9mm pistol magazine for the M4A3."
+	caliber = "9mm"
+	max_rounds = 21
+	default_ammo = /datum/ammo/bullet/pistol
+
+/obj/item/ammo_magazine/pistol/hp
+	name = "\improper VP78 hollowpoint magazine (9mm)"
+	desc = "A hollow-point 9mm pistol magazine for the VP78. These hollow-point bullets have noticeably higher stopping power on unarmored targets, and noticeably less on armored targets."
+	default_ammo = /datum/ammo/bullet/pistol/hollow
+	ammo_band_color = AMMO_BAND_COLOR_HOLLOWPOINT
+
+/obj/item/ammo_magazine/pistol/ap
+	name = "\improper VP78 AP magazine (9mm)"
+	desc = "An armor-piercing 9mm pistol magazine for the VP78. These armor-piercing rounds have noticeably higher stopping power on armored targets, and noticeably less on unarmored targets."
+	default_ammo = /datum/ammo/bullet/pistol/ap
+	ammo_band_color = AMMO_BAND_COLOR_AP
+
+/obj/item/ammo_magazine/pistol/rubber
+	name = "\improper VP78 Rubber magazine (9mm)"
+	desc = "A 9mm pistol magazine for the VP78. This one contains rubber bullets."
+	default_ammo = /datum/ammo/bullet/pistol/rubber
+	ammo_band_color = AMMO_BAND_COLOR_RUBBER
+
+/obj/item/ammo_magazine/pistol/incendiary
+	name = "\improper VP78 incendiary magazine (9mm)"
+	desc = "An incendiary 9mm pistol magazine for the VP78."
+	default_ammo = /datum/ammo/bullet/pistol/incendiary
+	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
+
+/obj/item/ammo_magazine/pistol/penetrating
+	name = "\improper VP78 wall-penetrating magazine (9mm)"
+	desc = "A wall-penetrating 9mm pistol magazine for the VP78."
+	default_ammo = /datum/ammo/bullet/pistol/ap/penetrating
+	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
+
+/obj/item/ammo_magazine/pistol/toxin
+	name = "\improper VP78 toxin magazine (9mm)"
+	desc = "A toxin 9mm pistol magazine for the VP78."
+	default_ammo = /datum/ammo/bullet/pistol/ap/toxin
+	ammo_band_color = AMMO_BAND_COLOR_TOXIN
 
 //-------------------------------------------------------
 //Beretta 92FS, the gun McClane carries around in Die Hard. Very similar to the service pistol, all around.

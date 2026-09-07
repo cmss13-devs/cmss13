@@ -160,6 +160,12 @@
 	},
 /turf/open/floor/prison/cell_stripe/east,
 /area/caperiver/outdoors/scrublands/central)
+"au" = (
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 4
+	},
+/turf/open/desert/dirt/desert_transition_corner1/north,
+/area/caperiver/outdoors/scrublands/central)
 "aL" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_E,
 /obj/effect/decal/hybrisa/dirt,
@@ -3003,12 +3009,6 @@
 	},
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/central)
-"Zy" = (
-/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 4
-	},
-/turf/open/desert/dirt/desert_transition_edge1/northwest,
-/area/caperiver/outdoors/scrublands/central)
 "ZF" = (
 /obj/structure/shuttle/part/dropship_clf/transparent,
 /obj/effect/decal/cleanable/dirt,
@@ -3939,10 +3939,10 @@ WZ
 hM
 hM
 ap
-dc
+au
 KB
 bI
-Zy
+DJ
 Hy
 fV
 nA

@@ -164,7 +164,7 @@
 	skills = /datum/skills/military/survivor/upp_sl
 
 /datum/equipment_preset/survivor/upp/squad_leader/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/officer (new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP (new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP (new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/beret(new_human), WEAR_HEAD)
@@ -173,6 +173,66 @@
 	add_upp_weapon(new_human)
 
 	..()
+
+/datum/equipment_preset/survivor/upp/mss
+	name = "Survivor - UPP - Ministry of Space Security Officer"
+	paygrades = list(PAY_SHORT_UO4 = JOB_PLAYTIME_TIER_0)
+	idtype = /obj/item/card/id/gold
+	assignment = JOB_UPP_MSS_OFFICER
+	job_title = JOB_UPP_MSS_OFFICER
+	role_comm_title = "MSS-Off."
+	minimap_icon = "upp_plt"
+	skills = /datum/skills/military/survivor/upp_sl/mss
+	languages = list(
+		LANGUAGE_RUSSIAN,
+		LANGUAGE_ENGLISH,
+		LANGUAGE_JAPANESE,
+		LANGUAGE_CHINESE,
+		LANGUAGE_GERMAN,
+		LANGUAGE_SPANISH,
+		LANGUAGE_FRENCH,
+	)
+	access = list(
+		ACCESS_UPP_GENERAL,
+		ACCESS_UPP_MEDICAL,
+		ACCESS_UPP_ENGINEERING,
+		ACCESS_UPP_SECURITY,
+		ACCESS_UPP_ARMORY,
+		ACCESS_UPP_FLIGHT,
+		ACCESS_UPP_RESEARCH,
+		ACCESS_UPP_COMMANDO,
+		ACCESS_UPP_LEADERSHIP,
+		ACCESS_UPP_SENIOR_LEAD,
+	)
+
+/datum/equipment_preset/survivor/upp/mss/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/officer/mss(new_human), WEAR_BODY)
+	var/obj/item/clothing/suit/storage/marine/faction/UPP/officer/mss/mss_jacket = new()
+	mss_jacket.attach_accessory(new_human, new /obj/item/clothing/accessory/patch/upp)
+	mss_jacket.attach_accessory(new_human, new /obj/item/clothing/accessory/patch/upp/alt)
+	new_human.equip_to_slot_or_del(mss_jacket, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/peaked/mss(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/document(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/pill/cyanide(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/camera(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/camera_film(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human.back), WEAR_IN_BACK)
+	var/obj/item/clipboard/clipboard = new(new_human)
+	for(var/paper_number in 1 to 5)
+		clipboard.toppaper = new /obj/item/paper(clipboard)
+	clipboard.haspen = new /obj/item/tool/pen/multicolor/fountain(clipboard)
+	clipboard.update_icon()
+	new_human.equip_to_slot_or_del(clipboard, WEAR_IN_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/brown(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/command(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/t73/leader/standard(new_human), WEAR_WAIST)
+	add_upp_weapon(new_human)
 
 //it's used on all of the above in their spawner.
 /datum/equipment_preset/synth/survivor/upp

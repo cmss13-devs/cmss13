@@ -357,22 +357,20 @@
 			return FALSE
 		else
 			if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/research)) //Autoinjector says, "Where's my pouch?"
-				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'Custom refill valve detected. Compatibility test failed.'"))
+				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'Custom PRCP valve detected in [autoinjector]. Compatibility test failed.'"))
 				return FALSE
 			else if(autoinjector.is_crystal || autoinjector.is_stimpack) //These aren't autoinjectors. The tank won't bother for error messages.
 				return FALSE
 			else if(autoinjector.cannot_refill)
-				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'No refill valve detected.'"))
+				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'No refill valve detected on [autoinjector].'"))
 				return FALSE
 			else if(!reagents.has_reagent(autoinjector.chemname, amount)) // Not enough reagents in the tank to refill the autoinjector.
-				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'Refill failed. I require [amount]u [autoinjector.chemname] to completely refill [autoinjector].'"))
+				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'Refill failed. [amount]u [autoinjector.chemname] required to completely refill [autoinjector].'"))
 				return FALSE
 
 		//FINALLY, the good shit that actually fills the autoinjector!
 		reagents.trans_id_to(autoinjector, autoinjector.chemname, amount) //fill this bih
-		var/uses = autoinjector.max_uses
-		if(autoinjector.max_uses)
-			autoinjector.uses_left = uses
+		autoinjector.uses_left = uses
 		autoinjector.update_icon()
 		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		to_chat(user, SPAN_INFO("You successfully refill [autoinjector] with [src]!"))

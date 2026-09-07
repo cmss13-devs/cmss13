@@ -1,0 +1,4 @@
+author: "labeo0"
+delete-after: True
+changes:
+  - bugfix: "welding goggles tint does not stay when they are taken off"

@@ -814,6 +814,11 @@
 	},
 /turf/open/fire_colony/engineer_ruins/plating/platingdmg1,
 /area/fire_colony/exterior/underground/excavation/north)
+"acl" = (
+/obj/effect/decal/hybrisa/dirt/above_turf_decal,
+/obj/item/weapon/gun/rifle/w_ek_17,
+/turf/open/floor/fire_colony,
+/area/fire_colony/interior/excavation)
 "acm" = (
 /obj/effect/lava/edges/basalt/side_rock{
 	dir = 1
@@ -833,6 +838,10 @@
 	},
 /turf/open/gm/grass/grass1/weedable,
 /area/fire_colony/interior/dorms/north)
+"aco" = (
+/obj/item/ammo_magazine/rifle/w_ek_17,
+/turf/open/floor/fire_colony/grille,
+/area/fire_colony/interior/excavation)
 "acq" = (
 /obj/effect/lava/edges/basalt/l_piece,
 /obj/structure/machinery/weather_siren{
@@ -11152,6 +11161,7 @@
 /obj/item/clothing/gloves/marine/lasalle_security{
 	pixel_y = 3
 	},
+/obj/item/ammo_magazine/rifle/w_ek_17,
 /turf/open/floor/strata/lightblue3,
 /area/fire_colony/interior/excavation)
 "bfD" = (
@@ -51732,7 +51742,7 @@
 /turf/open/floor/plating/fire_colony/grille,
 /area/fire_colony/interior/epsilon_facility)
 "kKI" = (
-/obj/effect/spawner/random/gun/shotgun/lowchance,
+/obj/effect/spawner/random/gun/shotgun/midchance,
 /turf/open/fire_colony/brock,
 /area/fire_colony/exterior/valley/north)
 "kKO" = (
@@ -130264,7 +130274,7 @@ vVN
 odo
 onx
 aaj
-bIr
+aco
 gIY
 jTC
 bfA
@@ -130670,7 +130680,7 @@ aIR
 aaj
 bIr
 brz
-aak
+acl
 bfC
 bci
 aaQ

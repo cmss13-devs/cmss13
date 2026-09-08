@@ -51,8 +51,10 @@
 	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
 
 	if(world.time <= stabbing_xeno.next_move)
+	if(world.time <= stabbing_xeno.next_move)
 		return FALSE
 
+	XENO_ACTION_CHECK_USE_PLASMA(stabbing_xeno)
 	XENO_ACTION_CHECK_USE_PLASMA(stabbing_xeno)
 
 	stabbing_xeno.visible_message(SPAN_XENODANGER("\The [stabbing_xeno] uncoils and wildly throws out its tail!"), SPAN_XENODANGER("We uncoil our tail wildly in front of us!"))
@@ -190,15 +192,15 @@
 				continue
 			targets += target
 
-	var/target_count = LAZYLEN(targets)
-	var/captured_message
-
-	if(target_count == 1)
-		captured_message = "slowed one target"
-	else if(target_count == 2)
-		captured_message = "rooted two targets"
-	else if(target_count >= 3)
-		captured_message = "stunned [target_count] targets"
+	var/target_count = length(targets)
+	var/captured_message = null
+	switch(target_count)
+		if(1)
+			captured_message = "slowed one target"
+		if(2)
+			captured_message = "rooted two targets"
+		if(3 to INFINITY)
+			captured_message = "stunned [target_count] targets"
 
 	if(captured_message)
 		abduct_user.balloon_alert(abduct_user, captured_message, text_color = "#51a16c")
@@ -330,7 +332,7 @@
 	if(!(!infront || infront.density) && !(!right || right.density))
 		temp_turfs += infront_right
 
-	for(var/turf/turfs_to_check in temp_turfs)
+	for(var/turf/turfs_to_check as anything in temp_turfs)
 		if(!istype(turfs_to_check))
 			continue
 

@@ -66,8 +66,6 @@ GLOBAL_DATUM_INIT(late_join_tgui, /datum/late_join, new)
 /datum/late_join/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	var/mob/new_player/user = ui.user
-	if(!istype(user))
-		return
 	var/success = user.AttemptLateSpawn(action)
 	if(success)
 		ui.close()

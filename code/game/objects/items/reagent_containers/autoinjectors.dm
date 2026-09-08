@@ -88,6 +88,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/get_examine_text(mob/user)
 	. = ..()
 
+	var/max_uses = initial(volume) / amount_per_transfer_from_this
 	update_uses_left()
 
 	if(uses_left >= 0)

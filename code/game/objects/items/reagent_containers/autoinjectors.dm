@@ -36,10 +36,6 @@
 	///If TRUE, you can see a little bit of text underneath its icon while holding it.
 	var/display_maptext = FALSE
 	var/maptext_label
-	///Typically more than two injections will overdose a patient.
-	var/easily_overdosed = TRUE
-	///Typically more than one injection will overdose a patient.
-	var/very_easily_overdosed = FALSE
 
 	maptext_height = 16
 	maptext_width = 24
@@ -107,10 +103,6 @@
 					. += SPAN_NOTICE("You do not know how many injections it has or what is in it.")
 		else
 			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections of [amount_per_transfer_from_this]u [capitalize(chemname)].")
-		if(easily_overdosed)
-			. += SPAN_WARNING("A warning label says: do not administer more than twice within a short period.")
-		else if(very_easily_overdosed && !is_crystal)
-			. += SPAN_WARNING("A warning label says: do not administer more than once within a short period.")
 
 	else if(uses_left <= 0)
 		if(cannot_refill)
@@ -197,8 +189,6 @@
 	amount_per_transfer_from_this = 1
 	volume = 3
 	maptext_label = "D+"
-	easily_overdosed = FALSE
-
 
 /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol
 	name = "tramadol autoinjector"
@@ -476,7 +466,6 @@
 	volume = 1
 	amount_per_transfer_from_this = 1
 	maptext_label = "OuD+"
-	easily_overdosed = FALSE
 
 /obj/item/reagent_container/hypospray/autoinjector/tutorial/antitoxin //in case we ever want to add toxin damage to the medical tutorial
 	name = "dylovene EZ autoinjector (FOR TRAINING USE ONLY)"
@@ -546,8 +535,6 @@
 	skilllock = SKILL_MEDICAL_DEFAULT
 	cannot_refill = TRUE
 	chemical_unclear = TRUE
-	easily_overdosed = FALSE
-	very_easily_overdosed = TRUE
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency/Initialize() //29u bicaridine, 29u kelotane, 19u oxycodone, 1u dexalin +.
 	. = ..()
@@ -627,8 +614,6 @@
 	black_market_value = 25
 	cannot_refill = TRUE
 	is_crystal = TRUE
-	easily_overdosed = FALSE
-	very_easily_overdosed = TRUE
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall
 	name = "orange unusual crystal"
@@ -666,7 +651,6 @@
 	volume = 45
 	uses_left = 0
 	display_maptext = FALSE
-	easily_overdosed = FALSE
 
 /obj/item/reagent_container/hypospray/autoinjector/research/get_examine_text(mob/user)
 	. = ..()

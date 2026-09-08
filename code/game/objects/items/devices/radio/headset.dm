@@ -106,7 +106,7 @@
 /obj/item/device/radio/headset/handle_message_mode(mob/living/speaker as mob, message, channel)
 
 	if((channel in hear_only_channels) && !(channel in channels))
-		to_chat(speaker, SPAN_WARNING("The [channel] channel is hear only. You cannot talk on it."))
+		to_chat(speaker, SPAN_WARNING("The [channel] channel is receive only. You cannot talk on it."))
 		return null
 
 	if (channel == RADIO_CHANNEL_SPECIAL)
@@ -636,7 +636,7 @@
 
 /obj/item/device/radio/headset/almayer/mcom/po
 	name = "marine pilot radio headset"
-	desc = "Used by Pilot Officers. Channels are as follows:, :n - engineering, :m - medical, :j - JTAC, :t - intel. Hear only channels are as follows: Command."
+	desc = "Used by Pilot Officers. Channels are as follows:, :n - engineering, :m - medical, :j - JTAC, :t - intel. Receive only channels are as follows: Command."
 	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/po, /obj/item/device/encryptionkey/command/hear)
 	frequency = JTAC_FREQ
 	volume = RADIO_VOLUME_RAISED // raised for DCCs, POs already have their volume boosted with their leadership
@@ -649,7 +649,7 @@
 
 /obj/item/device/radio/headset/almayer/mcom/io
 	name = "marine intel radio headset"
-	desc = "Used by Intelligence Officers. Channels are as follows: :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medical, :j - JTAC, :t - intel. Hear only channels are as follows: Command."
+	desc = "Used by Intelligence Officers. Channels are as follows: :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medical, :j - JTAC, :t - intel. Receive only channels are as follows: Command."
 	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/io, /obj/item/device/encryptionkey/command/hear)
 	frequency = INTEL_FREQ
 

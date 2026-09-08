@@ -1,8 +1,0 @@
-author: "larentoun"
-delete-after: True
-changes:
-  - bugfix: "Using any item should now not immediately disarm the dart - disarming is intended to be done with multitool."
-  - bugfix: "Disarmed (inactive) SHARP darts now are truly inactive and safe."
-  - spellcheck: "Incendiary dart description now says that's it is incendiary, not explosive."
-  - balance: "Disarming SHARP darts with multitool now converts them into usable ammo."
-  - rscadd: "Can now use multitool on inactive darts. That means, 5 minute lifespan auto-disarmed darts can now be reused as ammo with multitool."

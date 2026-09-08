@@ -35,6 +35,8 @@
 
 	minimap_icon = "burrower"
 
+	organ_type = /obj/item/organ/xeno/burrower
+
 /mob/living/carbon/xenomorph/burrower
 	caste_type = XENO_CASTE_BURROWER
 	name = XENO_CASTE_BURROWER
@@ -42,16 +44,15 @@
 	icon = 'icons/mob/xenos/castes/tier_2/burrower.dmi'
 	icon_size = 64
 	icon_state = "Burrower Walking"
+	plasma_types = list(PLASMA_PHEROMONE)
 	layer = MOB_LAYER
 	plasma_stored = 100
-	plasma_types = list(PLASMA_PURPLE)
 	pixel_x = -12
 	old_x = -12
 	xenonid_pixel_x = -16
 	base_pixel_x = 0
 	base_pixel_y = -20
 	tier = 2
-	organ_value = 1500
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/toggle_seethrough,
@@ -84,6 +85,14 @@
 
 	skull = /obj/item/skull/burrower
 	pelt = /obj/item/pelt/burrower
+
+/obj/item/organ/xeno/burrower
+	name = "burrower heart"
+	icon_state = "heart_t2"
+	item_state = "heart_t2"
+	research_value = 1500
+
+	xeno_organ_flags = XENO_ORGAN_STRONG|XENO_ORGAN_SUPPORT
 
 /mob/living/carbon/xenomorph/burrower/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))

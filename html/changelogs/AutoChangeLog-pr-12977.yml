@@ -1,4 +1,0 @@
-author: "Antlers"
-delete-after: True
-changes:
-  - balance: "Un-nerfs the crusher's melee attack slow after its bugfix, returning it to 3.5 seconds"

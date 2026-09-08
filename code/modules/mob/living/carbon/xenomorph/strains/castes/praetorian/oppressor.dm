@@ -189,12 +189,9 @@
 				continue
 			targets += target
 
-	var/target_count = LAZYLEN(targets)
-	var/captured_message
-
+	var/target_count = length(targets)
+	var/captured_message = null
 	switch(target_count)
-		if(0)
-			captured_message = FALSE
 		if(1)
 			captured_message = "slowed one target"
 		if(2)
@@ -332,7 +329,7 @@
 	if(!(!infront || infront.density) && !(!right || right.density))
 		temp_turfs += infront_right
 
-	for(var/turf/turfs_to_check in temp_turfs)
+	for(var/turf/turfs_to_check as anything in temp_turfs)
 		if(!istype(turfs_to_check))
 			continue
 

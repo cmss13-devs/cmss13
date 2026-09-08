@@ -124,7 +124,7 @@
 /datum/unit_test/weed_test/plant_weeds_blocked_by_enemy_node/Run()
 	for(var/foreign_hivenumber in GLOB.hive_datum)
 		if(!prepare_weed_unit_test())
-		return
+			return
 
 		if(foreign_hivenumber == xeno_weeder.hivenumber)
 			continue

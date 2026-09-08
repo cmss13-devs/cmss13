@@ -1089,7 +1089,7 @@
 	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/pouch/pressurized_reagent_canister
-	name = "\improper Pressurized Reagent Canister Pouch"
+	name = "pressurized reagent canister pouch"
 	max_w_class = SIZE_SMALL
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
 	icon_state = "pressurized_reagent_canister"
@@ -1100,28 +1100,28 @@
 	flags_item = NOBLUDGEON
 
 /obj/item/storage/pouch/pressurized_reagent_canister/damage_mend
-	name = "\improper Pressurized Reagent Canister Pouch (Damage Mending Mix)"
+	name = "pressurized reagent canister pouch (Damage Mending Mix)"
 	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with equal parts Bicaridine, Kelotane, and Tricordrazine to quickly heal brute and burn damage accumulated on the field. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone
-	name = "\improper Pressurized Reagent Canister Pouch (Field Anesthetic)"
-	desc = "A pouch that carries a 5u reagent pouch autoinjector and a pressurized reagent canister filled with the most robust painkiller, Oxycodone, that you can refill with a reagent tank or chemical dispenser. The dosage is small to gauge the amount of anesthetic needed for minor or complicated surgeries, and to reduce the occurrences of overdoses."
+	name = "pressurized reagent canister pouch (Field Anesthetic)"
+	desc = "A pouch that carries a 5u reagent pouch autoinjector and a pressurized reagent canister filled with the most robust painkiller, Oxycodone, that you can refill with a reagent tank or chemical dispenser. The dosage is small to gauge the amount of anesthetic needed for minor or complicated surgeries and to reduce the occurrences of overdoses."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_oxy
-	name = "\improper Pressurized Reagent Canister Pouch (Oxycodone Revival Mix)"
-	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with equal-parts Oxycodone, Inaprovaline, and Epinephrine for quickly getting marines in pain crit up and back on their feet. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
+	name = "pressurized reagent canister pouch (Oxycodone Revival Mix)"
+	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with equal parts Oxycodone, Inaprovaline, and Epinephrine for quickly getting marines in pain crit up and back on their feet. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri
-	name = "\improper Pressurized Reagent Canister Pouch (Peridaxon Revival Mix)"
-	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon for stabilizing defibrillated patients and their damaged organs until they can get to an operating table. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
+	name = "pressurized reagent canister pouch (Peridaxon Revival Mix)"
+	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with equal parts Epinephrine, Inaprovaline, and Peridaxon for stabilizing defibrillated patients and their damaged organs until they can get to an operating table. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord
-	name = "\improper Pressurized Reagent Canister Pouch (Tricordrazine Revival Mix)"
-	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with equal-parts Epinephrine, Inaprovaline, and Tricordrazine for stabilizing and minimizing damage to defibrillated patients. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
+	name = "pressurized reagent canister pouch (Tricordrazine Revival Mix)"
+	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with equal parts Epinephrine, Inaprovaline, and Tricordrazine for stabilizing and minimizing damage to defibrillated patients. You can refill 160 units of each reagent with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/surgery_prep
-	name = "\improper Pressurized Reagent Canister Pouch (Surgery Prep Mix)"
-	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with 280u Oxycodone, 160u Dexalin+, and 40u Peridaxon to locally anesthetize patients and prevent them from dying on the table due to the effects of organ damage or suffocating from low blood. You can refill the pouch's canister with a reagent tank or chemical dispenser."
+	name = "pressurized reagent canister pouch (Surgery Prep Mix)"
+	desc = "A pouch that carries a 15u reagent pouch autoinjector and a pressurized reagent canister filled with 280u Oxycodone, 160u Dexalin+, and 40u Peridaxon to locally anesthetize patients and prevent them from dying on the table due to the effects of organ damage or suffocating from exsanguination. You can refill the pouch's canister with a reagent tank or chemical dispenser."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/Initialize()
 	. = ..()

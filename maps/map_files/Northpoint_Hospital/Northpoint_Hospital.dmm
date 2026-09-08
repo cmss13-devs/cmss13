@@ -31217,6 +31217,7 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/northpoint/outdoors/hospital_exterior/east)
 "bMz" = (
@@ -57031,6 +57032,10 @@
 /obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt/unweedable,
 /area/northpoint/oob)
+"cZF" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/northpoint/indoors/res)
 "cZG" = (
 /obj/structure/prop/northpoint/concrete_wall/wired{
 	dir = 8;
@@ -57039,6 +57044,14 @@
 /obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt/unweedable,
 /area/northpoint/oob)
+"cZH" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/northpoint/indoors/res)
+"cZI" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/outdoors/hospital_exterior/south)
 "cZJ" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
 	icon_state = "sunnybush_1"
@@ -57053,11 +57066,19 @@
 /obj/structure/flora/wood/stick3,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/oob)
+"cZM" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/northpoint/outdoors/park)
 "cZN" = (
 /obj/structure/flora/wood/trunk2,
 /obj/structure/blocker/invisible_wall/map_edge,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt/unweedable,
 /area/northpoint/oob)
+"cZO" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/outdoors/urban_cave/south_east)
 "cZP" = (
 /obj/structure/flora/bush/ausbushes/ywflowers,
 /obj/structure/blocker/invisible_wall/map_edge,
@@ -57646,6 +57667,48 @@
 	layer = 5
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/northpoint/outdoors/hospital_exterior/north)
+"dbg" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/outdoors/hospital_exterior/central)
+"dbh" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/northpoint/outdoors/hospital_exterior/central)
+"dbi" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/outdoors/park)
+"dbj" = (
+/obj/structure/flora/wood/stick2,
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/outdoors/hospital_exterior/east)
+"dbk" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/northpoint/outdoors/hospital_exterior/east)
+"dbl" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/northpoint/outdoors/hospital_exterior/east)
+"dbm" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "sunnybush_1"
+	},
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/outdoors/hospital_exterior/north)
+"dbn" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/northpoint/outdoors/hospital_exterior/north)
+"dbo" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/tyrargo_grass/layer0,
 /area/northpoint/outdoors/hospital_exterior/north)
 "dbv" = (
 /obj/structure/barricade/handrail/strata{
@@ -84751,7 +84814,7 @@ aQZ
 aQZ
 aQP
 aQQ
-aQQ
+cZM
 aQQ
 aQQ
 aQQ
@@ -84915,7 +84978,7 @@ aQR
 aQQ
 aQQ
 aQP
-aQP
+dbi
 aQP
 aOh
 aQP
@@ -86167,7 +86230,7 @@ aRE
 aQQ
 aQP
 aQY
-aQQ
+cZM
 aQQ
 aQQ
 aQQ
@@ -86800,7 +86863,7 @@ aQn
 aQd
 aQp
 aQM
-aQp
+cZI
 aPY
 aQx
 aQh
@@ -87620,7 +87683,7 @@ kzA
 beh
 bbB
 bdV
-bdb
+dbn
 bbS
 bbS
 cBR
@@ -87688,7 +87751,7 @@ aRH
 aVt
 aRH
 aVG
-aRI
+dbg
 aRH
 aRH
 aRI
@@ -88133,7 +88196,7 @@ aRH
 aWI
 aRI
 aRI
-aRI
+dbg
 aYp
 aVS
 aRA
@@ -89103,7 +89166,7 @@ aSI
 aRI
 aRH
 aRI
-aRH
+dbh
 aRI
 aRH
 aRI
@@ -92126,7 +92189,7 @@ bcG
 bbS
 bbS
 bdb
-bVM
+dbm
 bdd
 bbB
 bdV
@@ -92516,7 +92579,7 @@ crc
 aRQ
 aRH
 aWT
-aRI
+dbg
 aRI
 aRH
 aRz
@@ -93478,7 +93541,7 @@ arn
 cHQ
 cHx
 aFj
-cFz
+cZF
 aPN
 aFj
 cFz
@@ -93665,7 +93728,7 @@ qTU
 bZR
 bdb
 bdb
-bbS
+dbo
 bde
 bde
 wgo
@@ -95240,7 +95303,7 @@ aYn
 cMM
 aUt
 aRC
-aTE
+dbl
 wjP
 aRB
 aUK
@@ -95293,7 +95356,7 @@ aRC
 aTS
 aRB
 qDj
-aUb
+dbj
 aTE
 aRC
 aTu
@@ -97181,7 +97244,7 @@ aEo
 cEz
 bzd
 cEk
-aaM
+cZH
 aaM
 bzd
 cDP
@@ -97503,7 +97566,7 @@ cDz
 cDc
 bzd
 cCS
-aaM
+cZH
 aaM
 bzd
 bQD
@@ -99321,7 +99384,7 @@ aRl
 aRn
 nGW
 aUK
-aTu
+dbk
 aRB
 aRB
 aRJ
@@ -100734,7 +100797,7 @@ avc
 avc
 bjB
 avc
-hzb
+cZO
 atT
 aqd
 hzb

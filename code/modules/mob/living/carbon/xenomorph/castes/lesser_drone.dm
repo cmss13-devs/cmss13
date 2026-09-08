@@ -127,8 +127,11 @@
 	name = "Base Lesser Drone Behavior Delegate"
 
 /datum/behavior_delegate/lesser_drone_base/on_life()
-	if(bound_xeno.body_position == STANDING_UP && !(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno)))
+	if(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno))
+		return
+	if(bound_xeno.body_position == STANDING_UP)
 		bound_xeno.adjustBruteLoss(5)
+		bound_xeno.updatehealth()
 
 
 /datum/action/xeno_action/onclick/plant_weeds/lesser/use_ability(atom/target_atom)

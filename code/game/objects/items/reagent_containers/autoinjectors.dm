@@ -94,32 +94,19 @@
 				. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections of... Medicine, you guess? You don't know exactly what's in it.")
 		else if(max_uses == 1) //one-use autoinjectors
 			. += SPAN_NOTICE("It injects its entire payload of [amount_per_transfer_from_this]u [capitalize(chemname)] at once.")
-			if(is_crystal) //this is a yautja crystal
-				if(isyautja(user)) //is a yautja looking at it or not?
-					. += SPAN_NOTICE("It is currently loaded with a single injection of [amount_per_transfer_from_this]u [capitalize(chemname)].")
-					. += SPAN_HELPFUL("You instinctly know to not administer more than one of these within a short period.") //for new yautjas
-				else if (uses_left <= 0)
-					. += SPAN_NOTICE("You do not know how many injections it has or what is in it.")
 		else
 			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections of [amount_per_transfer_from_this]u [capitalize(chemname)].")
 
 	else if(uses_left <= 0)
 		if(cannot_refill)
-			if(is_crystal) //this is a yautja crystal
-				if(isyautja(user)) //is a yautja looking at it or not?
-					. += SPAN_WARNING("It is spent and will soon disintegrate.")
-				else
-					. += SPAN_NOTICE("You do not know how many injections it has or what is in it.")
-			else
-				. += SPAN_WARNING("It is spent and it cannot be refilled.")
+			. += SPAN_WARNING("It is spent and it cannot be refilled.")
 		else
 			. += SPAN_HELPFUL("It is empty but it can be refilled. Try Wey-Med vends, Wall-Meds, or an MS-11 Smart Refill Tank.") //left ambiguous. w/e.
 
-	if(!is_crystal)
-		if(skilllock >= SKILL_MEDICAL_TRAINED)
-			. += SPAN_NOTICE("It has a lock on it similar to pill bottles. Only those with sufficient medical training can unlock it.")
-		else
-			. += SPAN_HELPFUL("It doesn't have a lock on it, so anyone can use it.")
+	if(skilllock >= SKILL_MEDICAL_TRAINED)
+		. += SPAN_NOTICE("It has a lock on it similar to pill bottles. Only those with sufficient medical training can unlock it.")
+	else
+		. += SPAN_HELPFUL("It doesn't have a lock on it, so anyone can use it.")
 
 
 
@@ -613,6 +600,16 @@
 	black_market_value = 25
 	cannot_refill = TRUE
 	is_crystal = TRUE
+
+/obj/item/reagent_container/hypospray/autoinjector/yautja/get_examine_text(mob/user)
+	update_uses_left()
+	if(uses_left >= 0)
+		if(isyautja(user))
+			. += SPAN_NOTICE("It is currently loaded with a single injection of [amount_per_transfer_from_this]u [capitalize(chemname)].")
+
+	else if(uses_left <= 0)
+		if(isyautja(user))
+			. += SPAN_NOTICE("It is spent and it will soon disintegrate.")
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall
 	name = "orange unusual crystal"

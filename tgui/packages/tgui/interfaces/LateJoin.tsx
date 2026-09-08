@@ -14,6 +14,8 @@ import {
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
+import { LoadingScreen } from './common/LoadingToolbox';
+
 type RoleInformation = {
   readonly Title: string;
   readonly DisplayTitle: string;
@@ -49,6 +51,16 @@ export const LateJoin = (props, context) => {
   useEffect(() => {
     storage.get('lobby-theme-disabled').then((val) => setThemeDisabled(!!val));
   }, []);
+
+  if (themeDisabled === undefined) {
+    return (
+      <Window width={650} height={750}>
+        <Window.Content>
+          <LoadingScreen />
+        </Window.Content>
+      </Window>
+    );
+  }
 
   const theme = themeDisabled
     ? 'weyland_yutani'
@@ -119,7 +131,7 @@ const RoleSlotInfo = (props: RoleSlotInfoProps) => {
   const { role } = props;
 
   const infSlots = role.Slots === -1;
-  const roleSlots = 'x' + role.Slots;
+  const roleSlots = 'x' + (role.Slots - role.Players);
 
   return (
     <Flex direction="row" justify="space-around" align="flex-end">

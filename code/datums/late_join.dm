@@ -49,7 +49,7 @@ GLOBAL_DATUM_INIT(late_join_tgui, /datum/late_join, new)
 		APPEND_RAW(categorized_roles[role_category], list(
 			"Title" = job_title,
 			"DisplayTitle" = mode_job.disp_title,
-			"Slots" = mode_job.total_positions,
+			"Slots" = mode_job.get_total_positions(TRUE),
 			"Players" = mode_job.current_positions,
 			"Active" = active
 		))

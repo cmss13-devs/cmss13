@@ -9140,6 +9140,7 @@
 /obj/item/stack/sheet/plasteel/med_small_stack,
 /obj/item/stack/sheet/metal/medium_stack,
 /obj/item/stack/sheet/metal/medium_stack,
+/obj/item/stack/sheet/metal/large_stack,
 /turf/open/floor/plating/kutjevo,
 /area/northpoint/indoors/power)
 "aAl" = (
@@ -36493,6 +36494,7 @@
 	},
 /obj/item/stack/sheet/plasteel/small_stack,
 /obj/item/stack/sheet/plasteel/small_stack,
+/obj/item/stack/sheet/metal/med_small_stack,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/northpoint/outdoors/streets/north_carpark)
 "bZA" = (
@@ -72821,6 +72823,7 @@
 /obj/structure/barricade/sandbags/wired{
 	dir = 1
 	},
+/obj/item/stack/sheet/metal/med_small_stack,
 /turf/open/floor/plating,
 /area/northpoint/indoors/comms/com_alpha_2)
 "vFy" = (

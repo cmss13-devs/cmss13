@@ -250,23 +250,23 @@ if [ "$pcre2_support" -eq 1 ]; then
 		st=1
 	fi;
 	part "long list formatting"
-	if $grep -PU '^(\t+)[\w_\/]+ ?= ?list\([^\s)]+( ?= ?[\w\d]+)?,\n' $code_files; then
+	if $grep -PU '^(\t+)[\w_\/]+\s*=\s*list\([^\s)]+(\s*=\s*[\w\d]+)?,\n' $code_files; then
 		echo -e "${RED}ERROR: First item in a long list should be on the next line.${NC}"
 		st=1
 	fi;
-	if $grep -PU '^(\t+)[\w_\/]+ ?= ?list\(.{200,}' $code_files; then
+	if $grep -PU '^(\t+)[\w_\/]+\s*=\s*list\(.{200,}' $code_files; then
 		echo -e "${RED}ERROR: Long lists should be in long list form where the first item is on the next line.${NC}"
 		st=1
 	fi;
-	if $grep -PU '^(\t+)[\w_\/]+ ?= ?list\((\n\1\t(\(.*\)|[^\n\t()])+)*(\n(?!\1\t)(\(.*\)|[^\n\t()])+|\n(?!\1\t\S)\t*(\(.*\)|[^\n\t()])+)+(\n\t*(\(.*\)|[^\n\t()])+)*\s*\)\s*$' $code_files; then
+	if $grep -PU '^(\t+)[\w_\/]+\s*=\s*list\((\n\1\t(\(.*\)|[^\n\t()])+)*(\n(?!\1\t)(\(.*\)|[^\n\t()])+|\n(?!\1\t\S)\t*(\(.*\)|[^\n\t()])+)+(\n\t*(\(.*\)|[^\n\t()])+)*\s*\)\s*$' $code_files; then
 		echo -e "${RED}ERROR: All items in a long list should be indented one more than the opening list line.${NC}"
 		st=1
 	fi;
-	if $grep -PU '/^(\t+)[\w_\/]+ ?= ?list\((?:\n\1\t.+)*\n\1\t(?![^\n]*,(?:\s*(?:\/\/.*|\/\*(?:[^*]|\*[^\/])*\*\/))*\s*$)[^\n]+(\n\s*)\)' $code_files; then
+	if $grep -PU '/^(\t+)[\w_\/]+\s*=\s*list\((?:\n\1\t.+)*\n\1\t(?![^\n]*,(?:\s*(?:\/\/.*|\/\*(?:[^*]|\*[^\/])*\*\/))*\s*$)[^\n]+(\n\s*)\)' $code_files; then
 		echo -e "${RED}ERROR: Last item in a long list should end with a comma.${NC}"
 		st=1
 	fi;
-	if $grep -PU '^(\t+)[\w_\/]+ ?= ?list\((\n\1\t.+)+\)\s*$' $code_files; then
+	if $grep -PU '^(\t+)[\w_\/]+\s*=\s*list\((\n\1\t.+)+\)\s*$' $code_files; then
 		echo -e "${RED}ERROR: The ) in a long list should be on a new line (or is missing a comma, or the ) appeared at the end of a comment).${NC}"
 		st=1
 	fi;

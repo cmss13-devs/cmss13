@@ -356,7 +356,7 @@
 	var/missing_reagents = container.reagents.maximum_volume - container.reagents.total_volume
 	if(missing_reagents <= 0)
 		return TRUE
-	if(!LAZYLEN(chem_refill) || !(container.type in chem_refill || refillable_autoinjectors = FALSE))
+	if(!LAZYLEN(chem_refill) || !(container.type in chem_refill || refillable_autoinjectors == FALSE))
 		to_chat(user, SPAN_WARNING("[src] cannot refill [container]."))
 		return FALSE
 	if(chem_refill_volume < missing_reagents)

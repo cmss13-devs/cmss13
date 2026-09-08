@@ -1,0 +1,5 @@
+author: "Venuska1117"
+delete-after: True
+changes:
+  - refactor: "Updates Vampire code for cleaner look and making it easier to follow."
+  - bugfix: "Added missing cooldown check on vampire headbite and early return check if target is DEAD."

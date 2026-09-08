@@ -196,7 +196,7 @@
 			captured_message = "slowed one target"
 		if(2)
 			captured_message = "rooted two targets"
-		else
+		if(3 to INFINITY)
 			captured_message = "stunned [target_count] targets"
 
 	if(captured_message)

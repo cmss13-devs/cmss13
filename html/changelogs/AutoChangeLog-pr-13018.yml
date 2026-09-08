@@ -1,5 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Many sources of Xeno heal (except healer which already worked) are now instantaneous instead of incurring an up to 2 seconds random delay, visually and for mob effects."
-  - bugfix: "Dealing damage with VV is now instantaneous."

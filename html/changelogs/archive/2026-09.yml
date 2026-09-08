@@ -61,3 +61,72 @@
 2026-09-05:
   TheDonkified:
   - refactor: Replace throwing and rebounding datum-level vars with traits
+2026-09-06:
+  Nihisohel:
+  - bugfix: Synthetic USCM Recruiters no longer have the habit of picking up a random
+      potato and throwing it on their shoulder to show off
+  Puckaboo2:
+  - spellcheck: Kills some 'this the stick' and 'the the stick'  grammar errors.
+  - spellcheck: More spell checks.
+  fira:
+  - bugfix: Many sources of Xeno heal (except healer which already worked) are now
+      instantaneous instead of incurring an up to 2 seconds random delay, visually
+      and for mob effects.
+  - bugfix: Dealing damage with VV is now instantaneous.
+  - code_imp: MedHUD HP bar will now only update when it needs to.
+  - code_imp: MedHUD Status (death state, larva, etc) and revival minimap icon will
+      not update on taking damage anymore. It still updates every 2 seconds or during
+      major events.
+  - code_imp: Optimized minimap marker logic.
+2026-09-07:
+  Drathek:
+  - server: Juke build now checks last_define_params for whether to rebuild dm
+  - balance: Initial slot calculation no longer allows infinite xeno slots to be more
+      accurate to the actual slotting afterwards
+  - balance: Technically squad medic and engineer limit calculations have changed,
+      but should ultimately be the same
+  - code_imp: Removed/Moved some XvX code to specifically XvX files
+  - config: Removed two unnecessary configs xeno_number_divider and surv_number_divider
+  - ui: Some lobby menu buttons are now disabled while the game is starting
+  Drathek PoltavskaPraca:
+  - qol: Admin help is bound by default to F1 again for hotkey set
+  - bugfix: Accessing options and messages and profiling is possible again
+  - bugfix: Fixed incorrect triggering of conflicting keybinding detection for switch
+      input key
+  - bugfix: Screenshot auto is now possible again via hotkeys, broken up into two
+      binds, and is bound to F2/Shift+F2 for the hotkey set
+  MistChristmas:
+  - bugfix: Brig Timers being oversized and flowing off of the maptext
+  ori-disillusion-mirnov:
+  - code_imp: add .sh file for update paths
+  - code_imp: toggle crest unit tests
+  - spellcheck: fixed a typo in steelcrest abilities unit test
+2026-09-08:
+  Detective-Google:
+  - balance: fire resistance boon cost increased from 1 to 2.
+  Fira, antlersss:
+  - balance: Sentries and mounted guns like M56D and M2C cannot be deployed inside
+      tents anymore.
+  Mary-Marilyn:
+  - bugfix: Station ERTs no longer continue spawning after round end.
+  - rscadd: Added undocking announcements when a station abandons the Almayer.
+  MistChristmas:
+  - bugfix: Add html encoding to Flavour Text
+  - code_imp: Add an arugment to get_line to account for objects transitioning z levels.
+      Currently used for throwing and shooting.
+  - bugfix: Being able to throw people off the map on WARF. Being able to shoot xenos
+      on the ground from CIC.
+  Puckaboo2:
+  - spellcheck: Fixed all sentences that end with ".!", "!.", "..?", ".?", "?."
+  Venuska1117:
+  - refactor: Updates Spitter code for cleaner look and making it easier to follow.
+  - refactor: Updates Trapper Boiler code for cleaner look and making it easier to
+      follow.
+  - refactor: Updates Vampire code for cleaner look and making it easier to follow.
+  - bugfix: Added missing cooldown check on vampire headbite and early return check
+      if target is DEAD.
+  - refactor: Changes Carrier single letter vars to use snake_case.
+  Watermelon914:
+  - admin: Admins will stay deadminned when they deadmin through reconnects/reloadadmin
+  labeo0:
+  - bugfix: welding goggles tint does not stay when they are taken off

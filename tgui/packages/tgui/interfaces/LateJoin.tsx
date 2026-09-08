@@ -57,7 +57,7 @@ export const LateJoin = (props, context) => {
       : 'crtgreen';
   return (
     <Window theme={theme} width={650} height={750}>
-      <Window.Content className="LateJoin" scrollable>
+      <Window.Content scrollable>
         {data.EvacInitiated ? (
           <Box>
             <Stack

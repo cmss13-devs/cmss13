@@ -282,13 +282,6 @@
 		/obj/item/reagent_container/glass/bottle/tramadol,
 	)
 
-/obj/structure/machinery/cm_vending/sorted/medical/proc/check_autoinjector_types(obj/item/container as obj, mob/user)
-	///there are SO MANY autoinjectors now. It's not feasible to copy and paste every single one and add a new path for every new autoinjector.
-	var/refillable_autoinjectors = FALSE
-	for(var/obj/item/reagent_container/hypospray/autoinjector in chem_refill)
-		if(istype(autoinjector, container))
-			refillable_autoinjectors = TRUE
-
 /obj/structure/machinery/cm_vending/sorted/medical/Destroy()
 	STOP_PROCESSING(SSslowobj, src)
 	QDEL_NULL(last_health_display)
@@ -305,9 +298,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/medical/ui_data(mob/user)
 	. = ..()
-	var/refillable_autoinjectors
-	check_autoinjector_types()
-	if(LAZYLEN(chem_refill) && refillable_autoinjectors == TRUE)
+	if(LAZYLEN(chem_refill))
 		.["reagents"] = chem_refill_volume
 		.["reagents_max"] = chem_refill_volume_max
 
@@ -351,12 +342,10 @@
 /// Attempts to consume our reagents needed for the container (doesn't actually change the container)
 /// Will return TRUE if reagents were deducted or no reagents were needed
 /obj/structure/machinery/cm_vending/sorted/medical/proc/try_deduct_chem(obj/item/reagent_container/container, mob/user)
-	var/refillable_autoinjectors
-	check_autoinjector_types()
 	var/missing_reagents = container.reagents.maximum_volume - container.reagents.total_volume
 	if(missing_reagents <= 0)
 		return TRUE
-	if(!LAZYLEN(chem_refill) || !(container.type in chem_refill || refillable_autoinjectors = FALSE))
+	if(!LAZYLEN(chem_refill) || !(container.type in chem_refill))
 		to_chat(user, SPAN_WARNING("[src] cannot refill [container]."))
 		return FALSE
 	if(chem_refill_volume < missing_reagents)

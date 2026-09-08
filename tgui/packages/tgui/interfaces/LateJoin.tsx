@@ -1,4 +1,4 @@
-import { classes } from 'common/react';
+import { type BooleanLike, classes } from 'common/react';
 import { storage } from 'common/storage';
 import { useEffect, useState } from 'react';
 import { type ComponentProps } from 'react';
@@ -23,9 +23,9 @@ type RoleInformation = {
 };
 
 type LateJoinData = {
-  HijackInitiated?: boolean;
+  HijackInitiated?: BooleanLike;
   Categories: Object;
-  UPPEnabled: boolean;
+  UPPEnabled: BooleanLike;
 };
 
 // Specific ordering for role categories
@@ -58,7 +58,7 @@ export const LateJoin = (props, context) => {
   return (
     <Window theme={theme} width={650} height={750}>
       <Window.Content className="LateJoin" scrollable>
-        {(data.HijackInitiated === true) ? (
+        {(data.HijackInitiated == true) ? (
           <Box>
             <Stack
               className="HijackIndicator"
@@ -69,7 +69,7 @@ export const LateJoin = (props, context) => {
                 <Icon name="warning" size={2} />
               </Stack.Item>
               <Stack.Item>
-                <h1>HIJACK IN PROGRESS</h1>
+                <h1>EVACUATION IN PROGRESS</h1>
               </Stack.Item>
               <Stack.Item>
                 <Icon name="warning" size={2} />
@@ -125,18 +125,20 @@ const RoleSlotInfo = (props: RoleSlotInfoProps) => {
     <Flex direction="row" justify="space-around" align="flex-end">
       <Flex.Item basis="30%">
         <Flex direction="row" align="center">
-          <Flex.Item basis="60%" className="SlotInfoRow big-text">
+          <Flex.Item basis="60%" className="big-text">
             <Icon name="users" />
           </Flex.Item>
-          <Flex.Item basis="40%" className="SlotInfoRow big-text">x{role.Active}</Flex.Item>
+          <Flex.Item basis="40%" className="big-text">
+            x{role.Active}
+          </Flex.Item>
         </Flex>
       </Flex.Item>
       <Flex.Item basis="30%">
         <Flex direction="row" align="center">
-          <Flex.Item basis="60%" className="SlotInfoRow big-text">
+          <Flex.Item basis="60%" className="big-text">
             <Icon name="door-open" />
           </Flex.Item>
-          <Flex.Item basis="40%" className="SlotInfoRow big-text">
+          <Flex.Item basis="40%" className="big-text">
             {infSlots ? <Icon name="infinity" /> : roleSlots}
           </Flex.Item>
         </Flex>
@@ -160,13 +162,9 @@ const RoleCategory = (props: RoleCategoryProps) => {
         {roles.map((role) => {
           return (
             <Stack.Item key={role.Title}>
-              <Button
-                className="JoinButton"
-                fluid
-                onClick={() => act(role.Title)}
-              >
+              <Button fluid onClick={() => act(role.Title)}>
                 <Flex direction="row" align="center">
-                  <Flex.Item basis="55%" className="RoleTitle">
+                  <Flex.Item basis="55%">
                     <Stack align="center">
                       <Stack.Item>
                         <RoleIcon role={role.Title} />
@@ -176,10 +174,10 @@ const RoleCategory = (props: RoleCategoryProps) => {
                       </Stack.Item>
                     </Stack>
                   </Flex.Item>
-                  <Flex.Item basis="40%" className="RoleSlotInfo">
+                  <Flex.Item basis="40%">
                     <RoleSlotInfo role={role} />
                   </Flex.Item>
-                  <Flex.Item basis="15%" className="RoleJoin">
+                  <Flex.Item basis="15%">
                     <Flex justify="flex-end">
                       <Flex.Item>
                         <Box className="medium-text">
@@ -188,7 +186,6 @@ const RoleCategory = (props: RoleCategoryProps) => {
                         </Box>
                       </Flex.Item>
                     </Flex>
-
                   </Flex.Item>
                 </Flex>
               </Button>

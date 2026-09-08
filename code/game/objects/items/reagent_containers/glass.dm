@@ -362,8 +362,7 @@
 			if(autoinjector.is_stimpack) //Wait a minute...
 				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test with [autoinjector]'s stimpack receiver valve failed."))
 				return FALSE
-			if(autoinjector.is_crystal) //Hold up...
-				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test with %ERROR!%'s %UNDEFINED% receiver valve failed.'"))
+			if(autoinjector.is_crystal) //No error message. It's a crystal, right? It totally doesn't have medicine in it.
 				return FALSE
 			else if(autoinjector.cannot_refill)
 				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test with [autoinjector]'s custom multi-reagent receiver valve failed.'"))

@@ -1,0 +1,5 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - code_imp: "Add an arugment to get_line to account for objects transitioning z levels. Currently used for throwing and shooting."
+  - bugfix: "Being able to throw people off the map on WARF. Being able to shoot xenos on the ground from CIC."

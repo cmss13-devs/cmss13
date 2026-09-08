@@ -213,7 +213,7 @@
 
 /obj/item/clothing/mask/facehugger/Crossed(atom/target)
 	..()
-	
+
 	has_proximity(target)
 
 /obj/item/clothing/mask/facehugger/on_found(mob/finder)
@@ -247,8 +247,8 @@
 
 	// Force reset throw now because [/atom/movable/proc/launch_impact] only does that later on
 	// If we DON'T, step()'s move below can collide, rebound, trigger this proc again, into infinite recursion
-	throwing = FALSE
-	rebounding = FALSE
+	REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
+	REMOVE_TRAIT(src, TRAIT_REBOUNDING, REBOUNDING_TRAIT)
 
 	if(leaping && can_hug(L, hivenumber))
 		attach(L)
@@ -262,13 +262,13 @@
 		return FALSE
 
 	for(var/mob/living/human in loc)
-		if(can_hug(human, hivenumber))
+		if(can_hug(human, hivenumber) && !HAS_TRAIT(human, TRAIT_XENO_RECOGNIZED))
 			attach(human)
 			return TRUE
 
 	var/mob/living/target
 	for(var/mob/living/human in view(range, src))
-		if(!can_hug(human, hivenumber))
+		if(!can_hug(human, hivenumber) || HAS_TRAIT(human, TRAIT_XENO_RECOGNIZED))
 			continue
 		target = human
 		break

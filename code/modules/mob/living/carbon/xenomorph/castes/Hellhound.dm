@@ -29,6 +29,7 @@
 	innate_healing = TRUE
 
 	minimap_icon = "hellhound"
+	organ_type = /obj/item/organ/xeno/hellhound
 
 /mob/living/carbon/xenomorph/hellhound
 	AUTOWIKI_SKIP(TRUE)
@@ -42,7 +43,6 @@
 	pixel_x = -16
 	old_x = -16
 	layer = MOB_LAYER
-	plasma_types = list(PLASMA_CHITIN)
 	tier = 0
 	acid_blood_damage = 0
 	pull_speed = -0.5
@@ -57,7 +57,7 @@
 	slash_verb = "bite"
 	slashes_verb = "rips"
 	slash_sound = 'sound/weapons/bite.ogg'
-	organ_value = 1500
+
 	mob_size = MOB_SIZE_XENO_SMALL
 	var/obj/structure/machinery/camera/camera
 
@@ -78,6 +78,14 @@
 	weed_food_icon = 'icons/mob/xenos/weeds.dmi'
 	weed_food_states = list("Hellhound_1","Hellhound_2","Hellhound_3")
 	weed_food_states_flipped = list("Hellhound_1","Hellhound_2","Hellhound_3")
+
+/obj/item/organ/xeno/hellhound
+	name = "hellhound heart"
+	icon_state = "heart_t2"
+	item_state = "heart_t2"
+	research_value = 1500
+
+	xeno_organ_flags = XENO_ORGAN_STRONG|XENO_ORGAN_TACHYCARDIA
 
 /mob/living/carbon/xenomorph/hellhound/Initialize(mapload, mob/living/carbon/xenomorph/oldXeno, h_number)
 	. = ..(mapload, oldXeno, h_number || XENO_HIVE_YAUTJA)
@@ -109,9 +117,6 @@
 	GLOB.hellhound_list -= src
 	SSmob.living_misc_mobs -= src
 	UnregisterSignal(src, COMSIG_MOB_WEED_SLOWDOWN, PROC_REF(handle_weed_slowdown))
-
-/mob/living/carbon/xenomorph/hellhound/get_organ_icon()
-	return "heart_t3"
 
 /mob/living/carbon/xenomorph/hellhound/rejuvenate()
 	..()

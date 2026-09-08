@@ -432,7 +432,7 @@
 		return ..()
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
-		if (C.ally_of_hivenumber(hivenumber))
+		if (C.ally_of_hivenumber(hivenumber) || HAS_TRAIT(C, TRAIT_XENO_RECOGNIZED))
 			return ..()
 
 /obj/structure/mineral_door/resin/open()

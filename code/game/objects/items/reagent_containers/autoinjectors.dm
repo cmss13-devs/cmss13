@@ -740,7 +740,6 @@
 	skilllock = SKILL_MEDICAL_DEFAULT
 	volume = 15
 	uses_left = 0
-	max_uses = 1
 
 /obj/item/reagent_container/hypospray/autoinjector/research/ez/unit
 	name = "custom EZ one-use autoinjector (1u)"
@@ -788,7 +787,6 @@
 	autoinjector_type = "autoinjector_medic"
 	icon_state = "empty_medic"
 	uses_left = 0
-	max_uses = 6
 
 /obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/tiny
 	name = "reagent canister pouch autoinjector (1u)"

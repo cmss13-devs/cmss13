@@ -350,6 +350,7 @@
 /obj/item/reagent_container/glass/minitank/attackby(obj/item/thing as obj, mob/user as mob)
 	if(istype(thing, /obj/item/reagent_container/hypospray/autoinjector))
 		var/obj/item/reagent_container/hypospray/autoinjector/autoinjector = thing
+		//how much to subtract from the tank to refill the autoinjector
 		var/amount = (autoinjector.reagents.maximum_volume - autoinjector.reagents.total_volume)
 
 		if(autoinjector.reagents.total_volume >= autoinjector.reagents.maximum_volume) //Autoinjector is full!
@@ -368,7 +369,7 @@
 				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test with [autoinjector]'s custom multi-reagent receiver valve failed.'"))
 				return FALSE
 			else if(!reagents.has_reagent(autoinjector.chemname, amount)) // Not enough reagents in the tank to refill the autoinjector.
-				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'Refill failed. [amount]u [autoinjector.chemname] required to completely refill [autoinjector].'"))
+				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'Refill failed. [amount]u [autoinjector.chemname] is required to completely refill [autoinjector].'"))
 				return FALSE
 
 		//FINALLY, the good shit that actually fills the autoinjector!

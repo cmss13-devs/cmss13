@@ -7,6 +7,9 @@
 	var/datum/action/xeno_action/onclick/plant_weeds/weeds_ability
 	var/turf/weeder_turf
 
+/datum/unit_test/weed_test/Run()
+	SHOULD_CALL_PARENT(FALSE)
+
 /datum/unit_test/weed_test/proc/prepare_weed_unit_test()
 	xeno_weeder = allocate(/mob/living/carbon/xenomorph/drone)
 	weeds_ability = get_action(xeno_weeder, /datum/action/xeno_action/onclick/plant_weeds)

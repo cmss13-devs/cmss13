@@ -29,8 +29,6 @@
 	var/is_stimpack = FALSE
 	///How many uses are left in this autoinjector?
 	var/uses_left = 3
-	///From full, how many injections are in this autoinjector until it needs to be refilled or disposed?
-	var/max_uses = 3
 	///If TRUE, this autoinjector has more than one reagent in it.
 	var/mixed_chem = FALSE
 	///If TRUE, this autoinjector can't be refilled at all.
@@ -50,6 +48,8 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/Initialize()
 	. = ..()
+
+	///From full, how many injections are in this autoinjector until it needs to be refilled or disposed?
 	var/max_uses = initial(volume) / amount_per_transfer_from_this
 	if(mixed_chem)
 		return
@@ -62,7 +62,6 @@
 	var/UL = reagents.total_volume / amount_per_transfer_from_this
 	UL = floor(UL) == UL ? UL : floor(UL) + 1
 	uses_left = UL
-
 
 /obj/item/reagent_container/hypospray/autoinjector/attack(mob/person, mob/user)
 	if(uses_left <= 0)

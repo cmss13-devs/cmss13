@@ -165,59 +165,59 @@
 	if(end_turf)
 		end_turf.on_throw_end(src)
 
-
 // Proc for throwing or propelling movable atoms towards a target
-/atom/movable/proc/launch_towards(datum/launch_metadata/LM, tracking = FALSE)
-	if (!istype(LM))
+/atom/movable/proc/launch_towards(datum/launch_metadata/launching_data, tracking = FALSE)
+	if (!istype(launching_data))
 		CRASH("invalid launch_metadata passed to launch_towards")
-	if (!LM.target || !src)
+	if (!launching_data.target || !src)
 		return
 
-	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_THROW, LM.thrower) & COMPONENT_CANCEL_THROW)
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_THROW, launching_data.thrower) & COMPONENT_CANCEL_THROW)
 		return
 
 	// If we already have launch_metadata (from a previous throw), reset it and qdel the old launch_metadata datum
 	if (istype(launch_metadata))
 		qdel(launch_metadata)
-	launch_metadata = LM
+	launch_metadata = launching_data
 
-	if (LM.spin)
-		animation_spin(5, 1 + min(1, LM.range/20))
+	if (launching_data.spin)
+		animation_spin(5, 1 + min(1, launching_data.range/20))
 
 	var/old_speed = cur_speed
-	cur_speed = clamp(LM.speed, MIN_SPEED, MAX_SPEED) // Sanity check, also ~1 sec delay between each launch move is not very reasonable
+	cur_speed = clamp(launching_data.speed, MIN_SPEED, MAX_SPEED) // Sanity check, also ~1 sec delay between each launch move is not very reasonable
 	var/delay = 10/cur_speed - 0.5 // scales delay back to deciseconds for when sleep is called
-	var/pass_flags = LM.pass_flags
+	var/pass_flags = launching_data.pass_flags
 
 	ADD_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
 
 	add_temp_pass_flags(pass_flags)
-	var/turf/start_turf
+	var/turf/start_turf = get_step_towards(src, launching_data.target)
 	var/turf/above = SSmapping.get_turf_above(loc)
+	var/turf/target_turf = get_turf(launching_data.target)
 	var/datum/turf_reservation/reservation = SSmapping.used_turfs[loc]
-	if(reservation && (reservation.is_below(loc, get_turf(LM.target))) || (LM.target.z > z) && istype(above, /turf/open_space))
-		start_turf = above
-	else
-		start_turf = get_step_towards(src, LM.target)
-		if(reservation && reservation.is_below(get_turf(LM.target), loc))
-			start_turf = get_step_towards(src, SSmapping.get_turf_above(LM.target))
-	var/list/turf/path = get_line(start_turf, LM.target)
-	var/last_loc = loc
+	if(reservation)
+		if((reservation.is_below(loc, target_turf)) || (launching_data.target.z > z) && istype(above, /turf/open_space))
+			start_turf = above
+		else if(reservation && reservation.is_below(target_turf, loc))
+			start_turf = get_step_towards(src, SSmapping.get_turf_above(launching_data.target))
 
+	var/list/turf/path = get_line(start_turf, launching_data.target, z_level_transitions = TRUE)
+	var/last_loc = loc
 	var/early_exit = FALSE
-	LM.dist = 0
+
+	launching_data.dist = 0
 	for (var/turf/T in path)
 		if (!src || !HAS_TRAIT(src, TRAIT_LAUNCHED) || loc != last_loc || !isturf(src.loc))
 			break
-		if (!LM || QDELETED(LM))
+		if (!launching_data || QDELETED(launching_data))
 			early_exit = TRUE
 			break
-		if (LM.dist >= LM.range)
+		if (launching_data.dist >= launching_data.range)
 			break
 		if (!Move(T)) // If this returns FALSE, then a collision happened
 			break
 		last_loc = loc
-		if (++LM.dist >= LM.range)
+		if (++launching_data.dist >= launching_data.range)
 			break
 		sleep(delay)
 
@@ -226,21 +226,21 @@
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
-		var/atom/hit_atom = ismob(LM.target) ? null : T // TODO, just check for LM.target, the ismob is to prevent funky behavior with grenades 'n crates
+		var/atom/hit_atom = ismob(launching_data.target) ? null : T // TODO, just check for LM.target, the ismob is to prevent funky behavior with grenades 'n crates
 		if(!hit_atom)
 			for(var/atom/A in T)
-				if(A == LM.target)
+				if(A == launching_data.target)
 					hit_atom = A
 					break
-			if(!hit_atom && tracking && get_dist(src, LM.target) <= 1 && get_dist(start_turf, LM.target) <= 1) // If we missed, but we are tracking and the target is still next to us and the turf we launched from, then we still count it as a hit
-				hit_atom = LM.target
+			if(!hit_atom && tracking && get_dist(src, launching_data.target) <= 1 && get_dist(start_turf, launching_data.target) <= 1) // If we missed, but we are tracking and the target is still next to us and the turf we launched from, then we still count it as a hit
+				hit_atom = launching_data.target
 		launch_impact(hit_atom)
 	if (loc)
 		REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
 		REMOVE_TRAIT(src, TRAIT_REBOUNDING, REBOUNDING_TRAIT)
 		cur_speed = old_speed
 		remove_temp_pass_flags(pass_flags)
-		LM.invoke_end_throw_callbacks(src)
+		launching_data.invoke_end_throw_callbacks(src)
 	QDEL_NULL(launch_metadata)
 
 /atom/movable/proc/throw_random_direction(range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS)

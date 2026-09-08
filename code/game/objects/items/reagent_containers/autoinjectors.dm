@@ -50,6 +50,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/Initialize()
 	. = ..()
+	var/max_uses = initial(volume) / amount_per_transfer_from_this
 	if(mixed_chem)
 		return
 	reagents.add_reagent(chemname, volume)
@@ -387,7 +388,6 @@
 	autoinjector_type = "autoinjector_single"
 	skilllock = SKILL_MEDICAL_DEFAULT
 	uses_left = 1
-	max_uses = 1
 	display_maptext = TRUE
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
@@ -449,7 +449,6 @@
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	uses_left = 1
-	max_uses = 1
 	maptext_label = "OuTc"
 
 /obj/item/reagent_container/hypospray/autoinjector/tutorial/tramadol
@@ -540,7 +539,6 @@
 	volume = (REAGENTS_OVERDOSE-1)*2 + (MED_REAGENTS_OVERDOSE-1) + 1 //dexalin plus is the +1
 	mixed_chem = TRUE
 	uses_left = 1
-	max_uses = 1
 	injectSFX = 'sound/items/air_release.ogg'
 	injectVOL = 70 //limited-supply emergency injector with v.large injection of drugs. Variable sfx freq sometimes rolls too quiet.
 	display_maptext = TRUE //see anaesthetic injector
@@ -568,7 +566,7 @@
 	amount_per_transfer_from_this = 5
 	volume = 5
 	uses_left = 1
-	max_uses = 1
+
 	injectSFX = 'sound/items/air_release.ogg'
 	mixed_chem = TRUE
 	display_maptext = TRUE
@@ -588,7 +586,6 @@
 	amount_per_transfer_from_this = 5
 	volume = 25
 	uses_left = 5
-	max_uses = 5
 	icon_state = "stimpack"
 	autoinjector_type = "+stimpack_custom"
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -627,7 +624,6 @@
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE
 	volume = REAGENTS_OVERDOSE
 	uses_left = 1
-	max_uses = 1
 	black_market_value = 25
 	cannot_refill = TRUE
 	is_crystal = TRUE
@@ -669,7 +665,6 @@
 	amount_per_transfer_from_this = 15
 	volume = 45
 	uses_left = 0
-	max_uses = 3
 	display_maptext = FALSE
 	easily_overdosed = FALSE
 

@@ -225,9 +225,6 @@
 		to_chat(xeno, SPAN_XENOHIGHDANGER("We can only headbite an unconscious, adjacent target!"))
 		return
 
-	if(xeno.stat == UNCONSCIOUS || xeno.stat == DEAD)
-		return
-
 	if(xeno.action_busy)
 		return
 

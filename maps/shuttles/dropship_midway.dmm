@@ -36,6 +36,11 @@
 	pixel_x = -6;
 	pixel_y = -10
 	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	dir = 4;
+	layer = 3.50
+	},
+/obj/structure/overwatch_dummy/midway,
 /turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
 "cV" = (
@@ -74,6 +79,13 @@
 	},
 /turf/closed/shuttle/dropship_midway/wall_50,
 /area/shuttle/drop_midway/midway)
+"ey" = (
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	dir = 4;
+	layer = 3.51
+	},
+/turf/open/shuttle/dropship/midway/grated,
+/area/shuttle/drop_midway/midway)
 "eP" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/body/body_11,
 /turf/template_noop,
@@ -82,7 +94,8 @@
 /obj/structure/machinery/light/blue{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/midway/grated,
+/obj/structure/shuttle/part/decal/dropship_midway/panel_half,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "fw" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/right_02,
@@ -147,10 +160,6 @@
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "hP" = (
-/obj/structure/machinery/prop/almayer/CICmap/midway{
-	pixel_x = -16;
-	pixel_y = -16
-	},
 /obj/structure/machinery/light/blue,
 /turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
@@ -301,6 +310,17 @@
 /obj/structure/machinery/light/blue,
 /turf/open/shuttle/dropship/midway/external,
 /area/shuttle/drop_midway/midway)
+"pM" = (
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = -8;
+	dir = 1
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = +8;
+	dir = 1
+	},
+/turf/open/shuttle/dropship/midway/grated,
+/area/shuttle/drop_midway/midway)
 "qa" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/nose/left_03,
 /turf/template_noop,
@@ -329,6 +349,13 @@
 	pixel_x = 20
 	},
 /turf/open/shuttle/dropship/midway/basic,
+/area/shuttle/drop_midway/midway)
+"qx" = (
+/obj/structure/machinery/prop/almayer/CICmap/midway{
+	pixel_x = -16;
+	pixel_y = -12
+	},
+/turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
 "qE" = (
 /turf/closed/shuttle/dropship_midway/wall_mid_40,
@@ -392,6 +419,15 @@
 	},
 /turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
+"uw" = (
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = +8
+	},
+/turf/open/shuttle/dropship/midway/grated,
+/area/shuttle/drop_midway/midway)
 "ux" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/cockpit/nose_14,
 /turf/template_noop,
@@ -452,6 +488,10 @@
 /obj/docking_port/mobile/marine_dropship/midway,
 /turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
+"xl" = (
+/obj/structure/machinery/light/blue,
+/turf/open/shuttle/dropship/midway/basic,
+/area/shuttle/drop_midway/midway)
 "xI" = (
 /turf/closed/shuttle/dropship_midway/wall_mid_10,
 /area/shuttle/drop_midway/midway)
@@ -482,6 +522,10 @@
 /area/shuttle/drop_midway/midway)
 "zM" = (
 /turf/closed/shuttle/dropship_midway/wall_71,
+/area/shuttle/drop_midway/midway)
+"Aq" = (
+/obj/effect/attach_point/crew_weapon/dropship_midway/floor,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "As" = (
 /turf/closed/shuttle/dropship_midway/wall_20,
@@ -553,6 +597,15 @@
 "Dm" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/nose/left_13,
 /turf/template_noop,
+/area/shuttle/drop_midway/midway)
+"Dw" = (
+/obj/effect/attach_point/crew_weapon/dropship1{
+	pixel_y = 16
+	},
+/obj/structure/shuttle/part/decal/dropship_midway/panel_half{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "DA" = (
 /obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_second,
@@ -705,6 +758,13 @@
 "LM" = (
 /turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
+"LT" = (
+/obj/structure/shuttle/part/decal/dropship_midway/decal,
+/obj/structure/shuttle/part/decal/dropship_midway/platform_decal{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/midway/grated,
+/area/shuttle/drop_midway/midway)
 "Mb" = (
 /obj/structure/shuttle/part/decal/dropship_midway/decal,
 /obj/structure/ladder/multiz/dropship/midway,
@@ -758,6 +818,12 @@
 /obj/item/device/radio/intercom/midway{
 	pixel_y = 28
 	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = +8
+	},
 /turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
 "OZ" = (
@@ -784,7 +850,8 @@
 /obj/structure/machinery/light/blue{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/midway/grated,
+/obj/structure/shuttle/part/decal/dropship_midway/panel_half,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "Qm" = (
 /turf/closed/shuttle/dropship_midway/wall_mid_71,
@@ -818,6 +885,12 @@
 /area/shuttle/drop_midway/midway)
 "RG" = (
 /obj/deployer/shuttle/dropship/gibber,
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = +8
+	},
 /turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
 "RZ" = (
@@ -864,6 +937,18 @@
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/right_23,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
+"Vk" = (
+/obj/deployer/shuttle/dropship/gibber,
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = -8;
+	dir = 1
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = +8;
+	dir = 1
+	},
+/turf/open/shuttle/dropship/midway/grated,
+/area/shuttle/drop_midway/midway)
 "Vr" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_01,
 /turf/template_noop,
@@ -874,6 +959,9 @@
 /obj/structure/machinery/computer/cameras/dropship/midway{
 	pixel_x = -16;
 	pixel_y = -6
+	},
+/obj/deployer/shuttle/dropship/m90_minigun{
+	pixel_x = 16
 	},
 /turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
@@ -1093,17 +1181,17 @@ hK
 WP
 XP
 XY
-LM
+qx
 hC
 sA
 Au
 wm
 OW
-LM
+pM
 fb
-LM
+Dw
 RG
-RG
+Vk
 Gr
 rm
 sk
@@ -1144,8 +1232,8 @@ ci
 GK
 ea
 yX
-hd
-hd
+IH
+IH
 hd
 Rx
 hd
@@ -1169,7 +1257,7 @@ is
 Sl
 Ng
 ks
-Ng
+LT
 LM
 hP
 hH
@@ -1182,8 +1270,8 @@ qr
 DA
 Le
 HK
-hd
-hd
+Aq
+xl
 gc
 lo
 EU
@@ -1196,8 +1284,8 @@ qw
 Mb
 Ct
 Zr
-hd
-hd
+lE
+lE
 hd
 Rx
 hd
@@ -1248,18 +1336,18 @@ jB
 BU
 XO
 VS
-LM
+ey
 cL
 rd
 WJ
 aA
 bx
-LM
-LM
+uw
+pM
 PL
-LM
+Dw
 RG
-RG
+Vk
 Fi
 rP
 Wt

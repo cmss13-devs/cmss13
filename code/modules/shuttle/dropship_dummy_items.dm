@@ -12,12 +12,28 @@
 	icon_state = "deployer"
 	var/obj/docking_port/mobile/marine_dropship/linked_dropship
 	var/item_to_deploy
+	var/obj/linked_item
+	var/obj/linked_item2
 
 /obj/deployer/shuttle/dropship/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	. = ..()
 	if(is_reserved_level(src.z))
 		return
 	if(linked_dropship.is_hijacked)
+		return
+
+/obj/deployer/shuttle/dropship/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
+	if(is_reserved_level(src.z))
+		if(linked_item)
+			linked_item.moveToNullspace()
+		if(linked_item2)
+			linked_item2.moveToNullspace()
+		return
+	if(linked_dropship.is_hijacked)
+		if(linked_item)
+			linked_item.moveToNullspace()
+		if(linked_item2)
+			linked_item2.moveToNullspace()
 		return
 
 /obj/deployer/shuttle/dropship/ramp_button
@@ -37,12 +53,13 @@
 	else
 		for(var/obj/structure/machinery/door_control/shuttle_ramp/original_button in range(8, src.loc))
 			linked_button = new item_to_deploy(SSmapping.get_turf_below(src.loc))
+			linked_item = linked_button
 			linked_button.pixel_y = 16
 			linked_button.layer = FLY_LAYER
 			linked_button.alpha = 215
 			linked_button.linked_dropship = original_button.linked_dropship
 			linked_button.linked_ramp_control = original_button
-			linked_button.linked_single_controller = original_button.linked_single_controller //
+			linked_button.linked_single_controller = original_button.linked_single_controller
 			break
 
 /obj/deployer/shuttle/dropship/belly
@@ -68,6 +85,7 @@
 				lines.loc = final_turf
 			else
 				lines = new item_to_deploy(final_turf)
+				linked_item = lines
 
 /obj/deployer/shuttle/dropship/landing_gear
 	var/offset_x = -16
@@ -89,12 +107,6 @@
 
 /obj/deployer/shuttle/dropship/landing_gear/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
 	. = ..()
-	if(is_reserved_level(src.z))
-		if(land_gear)
-			land_gear.moveToNullspace()
-		if(hatch_big)
-			hatch_big.moveToNullspace()
-		return
 	var/turf/open/t_below = SSmapping.get_turf_below(src.loc)
 	if(t_below)
 		var/turf/open/final_turf = locate(t_below.x + map_offset_x, t_below.y +map_offset_y, t_below.z)
@@ -102,11 +114,13 @@
 			land_gear.loc = final_turf
 		else
 			land_gear = new item_to_deploy(final_turf)
+			linked_item = land_gear
 			land_gear.dir = src.dir
 		if(hatch_big)
 			hatch_big.loc = final_turf
 		else
 			hatch_big = new item_to_deploy2(final_turf)
+			linked_item2 = hatch_big
 			hatch_big.dir = src.dir
 			hatch_big.pixel_x = offset_x
 			hatch_big.pixel_y = offset_y
@@ -140,6 +154,7 @@
 				linked_point.installed_equipment.loc = t_below
 		else
 			linked_point = new item_to_deploy(t_below)
+			linked_item = linked_point
 			linked_point.layer = FLY_LAYER + 0.01
 			linked_point.alpha = 225
 			linked_point.pixel_x = offset_x
@@ -161,10 +176,6 @@
 
 /obj/deployer/shuttle/dropship/hardpoints/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	. = ..()
-	if(is_reserved_level(src.z))
-		if(linked_bottom)
-			linked_bottom.moveToNullspace()
-			return
 	var/turf/open/t_below =  SSmapping.get_turf_below(src.loc)
 	if(t_below)
 		var/turf/open/target_turf = locate(loc.x + map_offset_x, loc.y + map_offset_y, t_below.z)
@@ -172,6 +183,7 @@
 			linked_bottom.loc = target_turf
 		else
 			linked_bottom = new item_to_deploy(target_turf)
+			linked_item = linked_bottom
 			linked_bottom.layer = FLY_LAYER + 0.01
 			for(var/obj/effect/attach_point/attachie in src.loc.contents)
 				linked_bottom.linked_attach_point = attachie
@@ -279,3 +291,35 @@
 
 /obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_fifth
 	mode = "fifth"
+
+/obj/deployer/shuttle/dropship/m90_minigun
+	icon = 'icons/obj/structures/machinery/midway/misc_96x96.dmi'
+	icon_state = "m90_minigun_deployer"
+	item_to_deploy = /obj/structure/dropship_equipment/weapon/m90_minigun
+	invisibility = 0
+	layer = UNDER_TURF_LAYER
+	var/obj/structure/dropship_equipment/weapon/m90_minigun/linked_m90
+
+/obj/structure/dropship_equipment/weapon/m90_minigun
+	name = "\improper Twin-linked m90 miniguns"
+	icon = 'icons/obj/structures/machinery/midway/misc_96x96.dmi'
+	icon_state = "m90_minigun"
+	layer = FLY_LAYER
+	alpha = 225
+	density = FALSE
+	firing_sound = 'sound/effects/gau_incockpit.ogg'
+	skill_required = SKILL_PILOT_TRAINED
+	fire_mission_only = FALSE
+	shorthand = "GAU"
+
+/obj/deployer/shuttle/dropship/m90_minigun/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
+	. = ..()
+	var/turf/turf_below = SSmapping.get_turf_below(src.loc)
+	if(turf_below)
+		if(linked_m90)
+			linked_m90.loc = turf_below
+		else
+			linked_m90 = new item_to_deploy(turf_below)
+			linked_item = linked_m90
+			linked_m90.pixel_x = pixel_x
+			linked_m90.pixel_y = pixel_y

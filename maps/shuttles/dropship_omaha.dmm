@@ -8,16 +8,15 @@
 /turf/template_noop,
 /area/shuttle/drop_omaha/omaha)
 "aT" = (
-/obj/structure/bed/chair/vehicle/omaha_passenger{
-	dir = 8;
-	pixel_x = 8;
-	layer = 3.68
-	},
-/obj/structure/bed/chair/vehicle/omaha_passenger{
-	dir = 8;
-	pixel_x = 8;
-	layer = 3.67;
+/obj/deployer/shuttle/dropship/gibber,
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 4;
+	pixel_x = -8;
 	pixel_y = 16
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 4;
+	pixel_x = -8
 	},
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
@@ -25,16 +24,14 @@
 /turf/closed/shuttle/dropship_omaha,
 /area/shuttle/drop_omaha/omaha)
 "be" = (
-/obj/structure/bed/chair/vehicle/omaha_passenger{
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
 	dir = 4;
-	layer = 3.63;
-	pixel_y = 16;
 	pixel_x = -8
 	},
-/obj/structure/bed/chair/vehicle/omaha_passenger{
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
 	dir = 4;
 	pixel_x = -8;
-	layer = 3.64
+	pixel_y = 16
 	},
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
@@ -43,18 +40,17 @@
 /turf/template_noop,
 /area/shuttle/drop_omaha/omaha)
 "bp" = (
-/obj/structure/bed/chair/vehicle/omaha_passenger{
-	dir = 4;
-	pixel_x = -8;
-	pixel_y = 16;
-	layer = 3.73
-	},
-/obj/structure/bed/chair/vehicle/omaha_passenger{
+/obj/deployer/shuttle/dropship/landing_gear/omaha,
+/obj/deployer/shuttle/dropship/gibber,
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
 	dir = 4;
 	pixel_x = -8
 	},
-/obj/deployer/shuttle/dropship/landing_gear/omaha,
-/obj/deployer/shuttle/dropship/gibber,
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 4;
+	pixel_x = -8;
+	pixel_y = 16
+	},
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
 "bw" = (
@@ -71,16 +67,21 @@
 	},
 /area/shuttle/drop_omaha/omaha)
 "cy" = (
-/obj/structure/shuttle/part/decal/dropship_omaha/panel_half{
-	dir = 4
+/obj/structure/machinery/light{
+	dir = 4;
+	pixel_y = -16;
+	pixel_x = 10
 	},
-/obj/structure/shuttle/part/decal/dropship_omaha/platform_decal{
-	dir = 8
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 8;
+	pixel_x = 8;
+	pixel_y = 16
 	},
-/obj/structure/machinery/light/containment{
-	dir = 8
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 8;
+	pixel_x = 8
 	},
-/turf/open/shuttle/dropship/omaha/basic,
+/turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
 "cV" = (
 /obj/structure/bed/chair/vehicle/omaha_passenger{
@@ -90,16 +91,18 @@
 /turf/open/shuttle/dropship/omaha/basic,
 /area/shuttle/drop_omaha/omaha)
 "cW" = (
-/obj/structure/shuttle/part/decal/dropship_omaha/panel_half{
-	dir = 8
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = 8;
+	dir = 1;
+	layer = 4.01
 	},
-/obj/structure/shuttle/part/decal/dropship_omaha/platform_decal{
-	dir = 4
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = -8;
+	dir = 1;
+	layer = 4.01
 	},
-/obj/structure/machinery/light/containment{
-	dir = 4
-	},
-/turf/open/shuttle/dropship/omaha/basic,
+/obj/structure/machinery/light,
+/turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
 "db" = (
 /obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_33{
@@ -213,16 +216,14 @@
 /turf/open/shuttle/dropship/omaha/basic,
 /area/shuttle/drop_omaha/omaha)
 "gR" = (
-/obj/structure/bed/chair/vehicle/omaha_passenger{
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
 	dir = 4;
 	pixel_x = -8;
-	layer = 3.68
-	},
-/obj/structure/bed/chair/vehicle/omaha_passenger{
-	dir = 4;
-	pixel_x = -8;
-	layer = 3.67;
 	pixel_y = 16
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 4;
+	pixel_x = -8
 	},
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
@@ -252,11 +253,13 @@
 "iO" = (
 /obj/structure/bed/chair/vehicle/omaha_passenger{
 	pixel_x = 8;
-	dir = 1
+	dir = 1;
+	layer = 4.01
 	},
 /obj/structure/bed/chair/vehicle/omaha_passenger{
 	pixel_x = -8;
-	dir = 1
+	dir = 1;
+	layer = 4.01
 	},
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
@@ -324,20 +327,19 @@
 /turf/template_noop,
 /area/shuttle/drop_omaha/omaha)
 "li" = (
-/obj/structure/bed/chair/vehicle/omaha_passenger{
-	dir = 8;
-	pixel_x = 8;
-	pixel_y = 16;
-	layer = 3.73
-	},
-/obj/structure/bed/chair/vehicle/omaha_passenger{
-	dir = 8;
-	pixel_x = 8
-	},
 /obj/deployer/shuttle/dropship/landing_gear/omaha{
 	map_offset_x = -1
 	},
 /obj/deployer/shuttle/dropship/gibber,
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 8;
+	pixel_x = 8;
+	pixel_y = 16
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 8;
+	pixel_x = 8
+	},
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
 "lA" = (
@@ -346,20 +348,6 @@
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = 30
-	},
-/turf/open/shuttle/dropship/omaha/grated,
-/area/shuttle/drop_omaha/omaha)
-"lM" = (
-/obj/structure/bed/chair/vehicle/omaha_passenger{
-	dir = 8;
-	pixel_x = 8;
-	layer = 3.65;
-	pixel_y = 16
-	},
-/obj/structure/bed/chair/vehicle/omaha_passenger{
-	dir = 8;
-	pixel_x = 8;
-	layer = 3.66
 	},
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
@@ -429,20 +417,18 @@
 /turf/template_noop,
 /area/shuttle/drop_omaha/omaha)
 "pG" = (
-/obj/structure/bed/chair/vehicle/omaha_passenger{
-	dir = 8;
-	pixel_x = 8;
-	layer = 3.69;
-	pixel_y = 16
-	},
-/obj/structure/bed/chair/vehicle/omaha_passenger{
-	dir = 8;
-	pixel_x = 8;
-	layer = 3.7
-	},
 /obj/deployer/shuttle/dropship/fuel_attachment_point/omaha{
 	offset_y = 16;
 	offset_x = -16
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 8;
+	pixel_x = 8;
+	pixel_y = 16
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 8;
+	pixel_x = 8
 	},
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
@@ -464,10 +450,11 @@
 "qe" = (
 /obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_first,
 /obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_01,
+/obj/structure/machinery/light,
 /turf/open/shuttle/dropship/omaha/ramp/rampio_01,
 /area/shuttle/drop_omaha/omaha)
 "qz" = (
-/obj/structure/machinery/light/containment,
+/obj/structure/machinery/light,
 /turf/open/shuttle/dropship/omaha/external,
 /area/shuttle/drop_omaha/omaha)
 "qB" = (
@@ -500,7 +487,6 @@
 	pixel_y = -16;
 	layer = 2
 	},
-/obj/structure/machinery/light/containment,
 /turf/open/shuttle/dropship/omaha/basic,
 /area/shuttle/drop_omaha/omaha)
 "sZ" = (
@@ -583,20 +569,18 @@
 /turf/open/shuttle/dropship/omaha/ramp/rampio_30,
 /area/shuttle/drop_omaha/omaha)
 "vX" = (
-/obj/structure/bed/chair/vehicle/omaha_passenger{
-	dir = 4;
-	pixel_x = -8;
-	layer = 3.69;
-	pixel_y = 16
-	},
-/obj/structure/bed/chair/vehicle/omaha_passenger{
-	dir = 4;
-	pixel_x = -8;
-	layer = 3.7
-	},
 /obj/deployer/shuttle/dropship/fuel_attachment_point/omaha{
 	offset_y = 16;
 	offset_x = 16
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 4;
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 4;
+	pixel_x = -8;
+	pixel_y = 16
 	},
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
@@ -605,13 +589,12 @@
 /turf/template_noop,
 /area/shuttle/drop_omaha/omaha)
 "wo" = (
-/obj/structure/bed/chair/vehicle/omaha_passenger{
+/obj/deployer/shuttle/dropship/gibber,
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
 	dir = 4;
 	pixel_x = -8;
-	pixel_y = 16;
-	layer = 3.73
+	pixel_y = 16
 	},
-/obj/deployer/shuttle/dropship/gibber,
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
 "wC" = (
@@ -621,11 +604,13 @@
 "wN" = (
 /obj/structure/bed/chair/vehicle/omaha_passenger{
 	pixel_x = -8;
-	dir = 1
+	dir = 1;
+	layer = 4.01
 	},
 /obj/structure/bed/chair/vehicle/omaha_passenger{
 	pixel_x = 8;
-	dir = 1
+	dir = 1;
+	layer = 4.01
 	},
 /obj/structure/shuttle/part/decal/dropship_omaha/platform_decal{
 	dir = 4
@@ -649,20 +634,6 @@
 	dir = 8
 	},
 /turf/open/shuttle/dropship/omaha/basic,
-/area/shuttle/drop_omaha/omaha)
-"xX" = (
-/obj/structure/bed/chair/vehicle/omaha_passenger{
-	dir = 4;
-	pixel_x = -8;
-	layer = 3.65;
-	pixel_y = 16
-	},
-/obj/structure/bed/chair/vehicle/omaha_passenger{
-	dir = 4;
-	pixel_x = -8;
-	layer = 3.66
-	},
-/turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
 "yd" = (
 /obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_11,
@@ -717,16 +688,14 @@
 	},
 /area/shuttle/drop_omaha/omaha)
 "AM" = (
-/obj/structure/bed/chair/vehicle/omaha_passenger{
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
 	dir = 8;
 	pixel_x = 8;
-	layer = 3.69;
 	pixel_y = 16
 	},
-/obj/structure/bed/chair/vehicle/omaha_passenger{
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
 	dir = 8;
-	pixel_x = 8;
-	layer = 3.7
+	pixel_x = 8
 	},
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
@@ -736,13 +705,12 @@
 	},
 /area/shuttle/drop_omaha/omaha)
 "BA" = (
-/obj/structure/bed/chair/vehicle/omaha_passenger{
+/obj/deployer/shuttle/dropship/gibber,
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
 	dir = 8;
 	pixel_x = 8;
-	pixel_y = 16;
-	layer = 3.73
+	pixel_y = 16
 	},
-/obj/deployer/shuttle/dropship/gibber,
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
 "BC" = (
@@ -758,20 +726,6 @@
 "CE" = (
 /obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_01,
 /turf/template_noop,
-/area/shuttle/drop_omaha/omaha)
-"De" = (
-/obj/structure/bed/chair/vehicle/omaha_passenger{
-	dir = 4;
-	pixel_x = -8;
-	layer = 3.69;
-	pixel_y = 16
-	},
-/obj/structure/bed/chair/vehicle/omaha_passenger{
-	dir = 4;
-	pixel_x = -8;
-	layer = 3.7
-	},
-/turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
 "Dj" = (
 /obj/structure/bed/chair/vehicle/omaha_passenger{
@@ -824,6 +778,17 @@
 	icon_state = "8,14"
 	},
 /area/shuttle/drop_omaha/omaha)
+"DK" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/dropship{
+	pixel_x = -28;
+	pixel_y = -5
+	},
+/obj/structure/dropship_vendor_dummy{
+	pixel_x = -28;
+	pixel_y = -5
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/drop_omaha/omaha)
 "DS" = (
 /obj/structure/bed/chair/vehicle/omaha_pilot{
 	pixel_x = 8;
@@ -849,6 +814,7 @@
 /obj/structure/bed/chair/vehicle/omaha_commander{
 	dir = 4
 	},
+/obj/structure/overwatch_dummy,
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
 "EB" = (
@@ -860,18 +826,16 @@
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
 "ER" = (
-/obj/structure/bed/chair/vehicle/omaha_passenger{
-	dir = 8;
-	pixel_x = 8;
-	layer = 3.72
-	},
-/obj/structure/bed/chair/vehicle/omaha_passenger{
-	dir = 8;
-	pixel_x = 8;
-	pixel_y = 16;
-	layer = 3.71
-	},
 /obj/deployer/shuttle/dropship/gibber,
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 8;
+	pixel_x = 8;
+	pixel_y = 16
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 8;
+	pixel_x = 8
+	},
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
 "Fs" = (
@@ -926,6 +890,11 @@
 /obj/structure/bed/chair/vehicle/omaha_commander{
 	dir = 4;
 	layer = 3.02
+	},
+/obj/structure/machinery/light{
+	dir = 4;
+	pixel_y = -16;
+	pixel_x = 10
 	},
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
@@ -1039,14 +1008,33 @@
 	},
 /turf/open/shuttle/dropship/omaha/basic,
 /area/shuttle/drop_omaha/omaha)
+"NB" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	pixel_y = -16;
+	pixel_x = -11
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 4;
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 4;
+	pixel_x = -8;
+	pixel_y = 16
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/drop_omaha/omaha)
 "NE" = (
 /obj/structure/bed/chair/vehicle/omaha_passenger{
 	pixel_x = 8;
-	dir = 1
+	dir = 1;
+	layer = 4.01
 	},
 /obj/structure/bed/chair/vehicle/omaha_passenger{
 	pixel_x = -8;
-	dir = 1
+	dir = 1;
+	layer = 4.01
 	},
 /obj/structure/shuttle/part/decal/dropship_omaha/platform_decal{
 	dir = 8
@@ -1082,6 +1070,11 @@
 	dir = 4;
 	pixel_x = -16
 	},
+/obj/structure/machinery/light{
+	dir = 8;
+	pixel_y = -16;
+	pixel_x = -11
+	},
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
 "OV" = (
@@ -1091,18 +1084,16 @@
 /turf/template_noop,
 /area/shuttle/drop_omaha/omaha)
 "Pa" = (
-/obj/structure/bed/chair/vehicle/omaha_passenger{
-	dir = 4;
-	pixel_x = -8;
-	layer = 3.72
-	},
-/obj/structure/bed/chair/vehicle/omaha_passenger{
-	dir = 4;
-	pixel_x = -8;
-	pixel_y = 16;
-	layer = 3.71
-	},
 /obj/deployer/shuttle/dropship/gibber,
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 4;
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 4;
+	pixel_x = -8;
+	pixel_y = 16
+	},
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
 "Pc" = (
@@ -1154,11 +1145,13 @@
 "Sh" = (
 /obj/structure/bed/chair/vehicle/omaha_passenger{
 	pixel_x = -8;
-	dir = 1
+	dir = 1;
+	layer = 4.01
 	},
 /obj/structure/bed/chair/vehicle/omaha_passenger{
 	pixel_x = 8;
-	dir = 1
+	dir = 1;
+	layer = 4.01
 	},
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
@@ -1305,7 +1298,7 @@
 	pixel_y = 5
 	},
 /obj/structure/shuttle/part/decal/dropship_omaha/decal,
-/obj/structure/machinery/light/containment,
+/obj/structure/machinery/light,
 /turf/open/shuttle/dropship/omaha/basic,
 /area/shuttle/drop_omaha/omaha)
 "Xk" = (
@@ -1325,6 +1318,9 @@
 /area/shuttle/drop_omaha/omaha)
 "Ya" = (
 /obj/structure/shuttle/part/decal/dropship_omaha/decal,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 27
+	},
 /turf/open/shuttle/dropship/omaha/basic,
 /area/shuttle/drop_omaha/omaha)
 "Yb" = (
@@ -1512,7 +1508,7 @@ qz
 yL
 PQ
 be
-gR
+NB
 vX
 Pa
 bp
@@ -1531,14 +1527,14 @@ Qc
 fj
 TN
 OL
-SR
+DK
 qB
 zv
 EB
 QU
 Zp
-lM
-aT
+AM
+AM
 AM
 ER
 BA
@@ -1567,7 +1563,7 @@ JU
 JU
 Hi
 mP
-cW
+mP
 JU
 wN
 hW
@@ -1621,7 +1617,7 @@ Xk
 qe
 LH
 Dj
-iO
+cW
 Lm
 qT
 tH
@@ -1671,7 +1667,7 @@ iN
 iN
 iN
 Hk
-cy
+Hk
 iN
 NE
 Yt
@@ -1693,10 +1689,10 @@ FF
 tF
 yG
 lA
-xX
 gR
-De
-Pa
+gR
+gR
+aT
 wo
 SR
 yL
@@ -1719,8 +1715,8 @@ Yb
 qz
 Yf
 jK
-lM
-aT
+AM
+cy
 pG
 ER
 li

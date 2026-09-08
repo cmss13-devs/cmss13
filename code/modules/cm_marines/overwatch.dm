@@ -1654,12 +1654,29 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	density = FALSE
 	icon = 'icons/obj/structures/machinery/omaha/modules.dmi'
 	icon_state = "overwatch_module"
+	layer = MOB_LAYER - 0.5
+
+/obj/structure/overwatch_dummy
+	density = FALSE
+	icon = 'icons/obj/structures/machinery/omaha/modules.dmi'
+	icon_state = "overwatch_module_dummy"
+	layer = MOB_LAYER + 0.01
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	unslashable = TRUE
+	unacidable = TRUE
+	pixel_x = -6
+	pixel_y = -10
 
 /obj/structure/machinery/computer/overwatch/almayer/midway
 	name = "Overwatch console"
 	density = FALSE
 	icon = 'icons/obj/structures/machinery/midway/modules.dmi'
 	icon_state = "overwatch_module"
+	layer = MOB_LAYER - 0.5
+
+/obj/structure/overwatch_dummy/midway
+	icon = 'icons/obj/structures/machinery/midway/modules.dmi'
+	icon_state = "overwatch_module_dummy"
 
 /obj/structure/machinery/computer/overwatch/clf
 	faction = FACTION_CLF

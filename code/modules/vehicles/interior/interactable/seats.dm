@@ -500,9 +500,13 @@
 	desc = "A specially designed chair for officers to sit in."
 
 /obj/structure/bed/chair/vehicle/omaha_passenger
-	icon = 'icons/obj/vehicles/interiors/general.dmi'
-	icon_state = "vehicle_seat"
-	layer = 3.74 // im going insane chat
+	icon = 'icons/obj/structures/machinery/omaha/seats.dmi'
+	icon_state = "passenger_chair"
+
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer
+	icon = 'icons/obj/structures/machinery/omaha/seats.dmi'
+	icon_state = "passenger_chair"
+	var/post_init_layer
 
 /obj/structure/bed/chair/vehicle/omaha_passenger/Initialize()
 	. = ..()
@@ -512,11 +516,14 @@
 	addtimer(CALLBACK(src, PROC_REF(setup_buckle_offsets)), 1 SECONDS)
 	handle_rotation()
 
-/obj/structure/bed/chair/vehicle/omaha_passenger/handle_rotation()
-	if(buckled_mob)
-		buckled_mob.setDir(dir)
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer/Initialize()
+	init_pixel_y = pixel_y
+	layer = (3 + (1 - (y / 256))) + ((initial(layer) - 3) / 2)/1000
+	return ..()
 
-/obj/structure/bed/chair/vehicle/omaha_passenger/afterShuttleMove()
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer/handle_rotation()
+	return
+
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer/afterShuttleMove()
 	.=..()
 	pixel_y = init_pixel_y
-	handle_rotation()

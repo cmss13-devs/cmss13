@@ -295,10 +295,22 @@
 /obj/effect/attach_point/crew_weapon/dropship1/floor
 	plane = FLOOR_PLANE
 
+/obj/effect/attach_point/crew_weapon/dropship_omaha
+	ship_tag = DROPSHIP_OMAHA
+
+/obj/effect/attach_point/crew_weapon/dropship_omaha/floor
+	plane = FLOOR_PLANE
+
 /obj/effect/attach_point/crew_weapon/dropship2
 	ship_tag = DROPSHIP_NORMANDY
 
 /obj/effect/attach_point/crew_weapon/dropship2/floor
+	plane = FLOOR_PLANE
+
+/obj/effect/attach_point/crew_weapon/dropship_midway
+	ship_tag = DROPSHIP_MIDWAY
+
+/obj/effect/attach_point/crew_weapon/dropship_midway/floor
 	plane = FLOOR_PLANE
 
 /obj/effect/attach_point/crew_weapon/dropship3

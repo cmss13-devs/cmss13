@@ -7,9 +7,22 @@
 	desc = "An automated weapon rack hooked up to a big storage of standard-issue weapons."
 	icon_state = "guns"
 	req_access = list()
-	req_one_access = list(ACCESS_MARINE_GENERAL, ACCESS_MARINE_PREP)
+	req_one_access = list()
 	hackable = TRUE
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND | VEND_STOCK_DYNAMIC
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/dropship
+	name = "\improper UD-6 Armory"
+	icon = 'icons/obj/structures/machinery/omaha/modules.dmi'
+	icon_state = "armory_module-full"
+	bound_height = 64
+	density = FALSE
+
+/obj/structure/dropship_vendor_dummy
+	icon = 'icons/obj/structures/machinery/omaha/modules.dmi'
+	icon_state = "armory_module_dummy"
+	layer = ABOVE_MOB_LAYER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state

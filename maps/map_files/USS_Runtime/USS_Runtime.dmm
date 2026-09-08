@@ -10,7 +10,7 @@
 "gU" = (/obj/structure/barricade/handrail/no_vault{dir = 8},/turf/open/floor/plating/bare_catwalk,/area/event/dynamic)
 "gX" = (/obj/effect/landmark/start/intel,/turf/open/floor/almayer/plating,/area/event)
 "gY" = (/obj/structure/window/framed/colony/reinforced,/turf/open/floor/almayer/plating,/area/event)
-"id" = (/obj/docking_port/stationary/marine_dropship/almayer_hangar_omaha,/turf/open_space,/area/event/dynamic)
+"id" = (/obj/docking_port/stationary/marine_dropship/almayer_hangar_midway,/turf/open_space,/area/event/dynamic)
 "im" = (/obj/structure/barricade/handrail/no_vault{dir = 8},/turf/open/floor/plating/bare_catwalk,/area/space)
 "io" = (/obj/effect/landmark/late_join,/turf/open/floor/almayer/plating,/area/event)
 "je" = (/obj/structure/ladder/multiz,/turf/open/floor/almayer/plating,/area/event)
@@ -37,7 +37,6 @@
 "qk" = (/obj/structure/window/framed/colony/reinforced/hull,/turf/open/floor/almayer/plating,/area/event)
 "qw" = (/obj/structure/barricade/handrail/no_vault{dir = 4},/turf/open/floor/plating/bare_catwalk,/area/event/dynamic)
 "qZ" = (/obj/effect/landmark/start/senior,/turf/open/floor/almayer/plating,/area/event)
-"rs" = (/obj/effect/decal/cleanable/dirt,/obj/structure/barricade/handrail/no_vault{dir = 1},/turf/open/floor/plating/plating_catwalk/no_build,/area/event/dynamic)
 "rD" = (/obj/structure/machinery/cm_vending/sorted/uniform_supply{req_one_access = null; req_access = null},/turf/open/floor/almayer/plating,/area/event)
 "sN" = (/obj/structure/machinery/chem_simulator{density = 0; pixel_y = 16},/turf/open/floor/almayer/sterile_green_side/west,/area/event/dynamic)
 "tb" = (/obj/effect/landmark/start/maint,/turf/open/floor/almayer/plating,/area/event)
@@ -70,7 +69,6 @@
 "EV" = (/obj/effect/landmark/start/crew_chief,/turf/open/floor/almayer/plating,/area/event)
 "EW" = (/obj/effect/landmark/start/warden,/turf/open/floor/almayer/plating,/area/event)
 "Fb" = (/obj/structure/machinery/chem_master/vial,/turf/open/floor/almayer/dark_sterile,/area/event/dynamic)
-"Gh" = (/obj/effect/decal/cleanable/dirt,/turf/open/floor/plating/plating_catwalk/no_build,/area/event/dynamic)
 "GW" = (/obj/structure/stairs/multiz/up{dir = 1},/turf/open/floor/almayer/plating,/area/event)
 "Iw" = (/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{req_access = null; req_one_access = null; vend_x_offset = 0},/turf/open/floor/almayer/plating,/area/event)
 "JC" = (/turf/open_space,/area/event/dynamic)
@@ -188,8 +186,8 @@ BFBzLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKBFBFfhqwJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCJC
 BFLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKBFBFavqwJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCgUavyIKeKeKeKeKeKe
 BFLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKBFBFavqwJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCgUavyIKeKeKeKeKeKe
 BFLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKBFBFavavJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCgUavyIKeKeKeKeKeKe
-BFLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKBFBFfhqwJCJCJCJCrsJCJCJCJCJCJCJCJCJCJCJCJCgUavyIKeKeKeKeKeKe
-BFLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKBFBFavqwJCJCJCJCGhJCJCJCJCidJCJCJCJCJCJCJCgUavyIKeKeKeKeKeKe
+BFLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKBFBFfhqwJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCgUavyIKeKeKeKeKeKe
+BFLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKBFBFavqwJCJCJCJCJCJCJCJCJCidJCJCJCJCJCJCJCgUavyIKeKeKeKeKeKe
 BFLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKBFBFavqwJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCgUavyIKeKeKeKeKeKe
 BFLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKBzBFBFfhqwJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCgUavyIKeKeKeKeKeKe
 BFLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKBFBFavqwJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCgUavyIKeKeKeKeKeKe

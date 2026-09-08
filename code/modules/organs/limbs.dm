@@ -61,7 +61,7 @@
 	var/image/surgery_flesh_overlay = null
 	var/image/surgery_bone_overlay = null
 	var/image/surgery_ib_overlay = null
-	var/image/surgry_organ_overlay = null
+	var/image/surgery_organ_overlay = null
 	var/image/innards_overlay = null
 
 	var/splint_icon_amount = 1
@@ -110,7 +110,7 @@
 		surgery_flesh_overlay = null
 		surgery_bone_overlay = null
 		surgery_ib_overlay = null
-		surgry_organ_overlay = null
+		surgery_organ_overlay = null
 		innards_overlay = null
 
 
@@ -1481,22 +1481,22 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			if(name == "head" || name == "chest" || name == "groin")
 				for(var/datum/internal_organ/organ as anything in internal_organs)
 					if(name == "head" || name == "chest" )
-						surgry_organ_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +1) // incision, then organs, then bones
+						surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +1) // incision, then organs, then bones
 					else if(name == "groin")
 						if(surgery_status & INCISION_PELVIS_HIDDEN)
-							surgry_organ_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +2)
+							surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +2)
 						if(surgery_status & INCISION_PELVIS_EXPOSED) //organs were moved away
-							surgry_organ_overlay = null
+							surgery_organ_overlay = null
 					else
-						surgry_organ_overlay = null
+						surgery_organ_overlay = null
 
-					surgry_organ_overlay.icon_state = "[organ.name]"
+					surgery_organ_overlay.icon_state = "[organ.name]"
 
 					//Adds prosthetic organs, if any
 					if(organ.robotic == ORGAN_ROBOT)
-						surgry_organ_overlay.icon_state += "_r"
+						surgery_organ_overlay.icon_state += "_r"
 
-					. += surgry_organ_overlay
+					. += surgery_organ_overlay
 
 // SET UP INTERNALLY BLEEDING OVERLAYS
 			if(surgery_status & INCISION_INT_BLEEDING) //internally bleeding limbs can only be identified after widening the incision

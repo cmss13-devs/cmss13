@@ -17,6 +17,7 @@
 	supports_surgery = FALSE
 	is_weedable = NOT_WEEDABLE
 	allow_construction = FALSE
+	minimap_color = MINIMAP_LAVA
 
 /turf/open/fire_colony/hot_lava/Entered(atom/thing)
 	. = ..()
@@ -35,6 +36,9 @@
 				to_chat(person, SPAN_WARNING("You get stuck in the molten lava for a moment!"))
 				new_slowdown += 10
 			person.next_move_slowdown = new_slowdown
+
+/turf/open/fire_colony/hot_lava/lattice
+	icon_state = "full_lattice"
 
 /turf/open/fire_colony/lava_no_burn
 	name = "lava"

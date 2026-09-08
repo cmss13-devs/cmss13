@@ -25,7 +25,7 @@
 	},
 /obj/item/weapon/dart/green{
 	pixel_y = -8;
-	pixel_x = -
+	pixel_x = -4
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/template_noop)

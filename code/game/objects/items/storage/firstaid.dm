@@ -783,7 +783,7 @@
 			to_chat(user, SPAN_NOTICE("You stop forcing the lid off of [src]."))
 		return
 
-	if (istype(inhand, /obj/item/tool/wirecutters))
+	if (istype(inhand, /obj/item/tool/wirecutters) || istype(inhand, /obj/item/tool/surgery/hemostat))
 		if(src != user.r_hand && src != user.l_hand)
 			to_chat(user, SPAN_WARNING("[src] must be in your hand to do that."))
 			return

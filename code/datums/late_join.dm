@@ -46,13 +46,13 @@ GLOBAL_DATUM_INIT(late_join_tgui, /datum/late_join, new)
 			categorized_roles[role_category] = list()
 
 		// Append to the end of the list
-		categorized_roles[role_category][++categorized_roles[role_category].len] = list(
+		APPEND_RAW(categorized_roles[role_category], list(
 			"Title" = job_title,
 			"DisplayTitle" = mode_job.disp_title,
 			"Slots" = mode_job.total_positions,
 			"Players" = mode_job.current_positions,
 			"Active" = active
-		)
+		))
 
 	LAZYADD(data["Categories"], categorized_roles)
 	data["UPPEnabled"] = (GLOB.master_mode == /datum/game_mode/extended/faction_clash/cm_vs_upp::name)

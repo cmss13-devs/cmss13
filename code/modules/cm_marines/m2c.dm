@@ -109,12 +109,13 @@
 	if(!area.allow_construction)
 		to_chat(user, SPAN_WARNING("You can't set up \the [src] here."))
 		return
-	if(OT.density || !isturf(OT) || !OT.allow_construction)
+	if(OT.density || !isturf(OT) || !OT.allow_construction  || !OT.validate_deployment(TURF_DEPLOYABLE_GUN))
 		to_chat(user, SPAN_WARNING("You can't set up \the [src] here."))
 		return FALSE
 	if(rotate_check.density)
 		to_chat(user, SPAN_WARNING("You can't set up \the [src] that way, there's a wall behind you!"))
 		return FALSE
+
 	for(var/obj/structure/potential_blocker in rotate_check)
 		if(potential_blocker.density)
 			to_chat(user, SPAN_WARNING("You can't set up \the [src] that way, there's \a [potential_blocker] behind you!"))

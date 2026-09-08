@@ -211,7 +211,7 @@
 	pixel_y = 30
 	},
 /turf/open/asphalt/cement_sunbleached,
-/area/template_noop)
+/area/kutjevo/interior/complex/North_Garage)
 "sl" = (
 /obj/structure/prop/dam/truck/cargo,
 /turf/open/asphalt/cement_sunbleached,

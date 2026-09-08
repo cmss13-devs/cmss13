@@ -210,6 +210,8 @@
 
 	var/mob/living/carbon/target_carbon = target_atom
 
+	XENO_ACTION_CHECK(xeno)
+
 	if(xeno.can_not_harm(target_carbon))
 		return
 
@@ -233,8 +235,6 @@
 			if(HIVE_ALLIED_TO_HIVE(xeno.hivenumber, embryo.hivenumber))
 				to_chat(xeno, SPAN_WARNING("We should not harm this host! It has a sister inside."))
 				return
-
-	XENO_ACTION_CHECK(xeno)
 
 	xeno.visible_message(SPAN_DANGER("[xeno] grabs [target_carbon]’s head aggressively."),
 	SPAN_XENOWARNING("We grab [target_carbon]’s head aggressively."))

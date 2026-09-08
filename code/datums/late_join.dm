@@ -7,7 +7,7 @@ GLOBAL_DATUM_INIT(late_join_tgui, /datum/late_join, new)
 	. = ..()
 	var/list/data = list()
 
-	LAZYADD(data["HijackInitiated"], SShijack?.evac_status == EVACUATION_STATUS_INITIATED)
+	data["EvacInitiated"] = (SShijack?.evac_status == EVACUATION_STATUS_INITIATED)
 
 	// Build a list of named categories of roles, each containing a list of information on individual roles
 	var/list/list/list/categorized_roles = list()

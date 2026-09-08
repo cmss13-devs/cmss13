@@ -23,7 +23,7 @@ type RoleInformation = {
 };
 
 type LateJoinData = {
-  HijackInitiated?: BooleanLike;
+  EvacInitiated?: BooleanLike;
   Categories: Object;
   UPPEnabled: BooleanLike;
 };
@@ -58,7 +58,7 @@ export const LateJoin = (props, context) => {
   return (
     <Window theme={theme} width={650} height={750}>
       <Window.Content className="LateJoin" scrollable>
-        {(data.HijackInitiated == true) ? (
+        {data.EvacInitiated ? (
           <Box>
             <Stack
               className="HijackIndicator"

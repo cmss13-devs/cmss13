@@ -601,7 +601,7 @@
 	cannot_refill = TRUE
 	is_crystal = TRUE
 
-/obj/item/reagent_container/hypospray/autoinjector/yautja/proc/get_examine_text(mob/user)
+/obj/item/reagent_container/hypospray/autoinjector/yautja/get_examine_text(mob/user)
 	update_uses_left()
 	if(uses_left >= 0)
 		if(isyautja(user))

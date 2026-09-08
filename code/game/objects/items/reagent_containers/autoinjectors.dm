@@ -46,7 +46,6 @@
 	. = ..()
 
 	///From full, how many injections are in this autoinjector until it needs to be refilled or disposed?
-	var/max_uses = initial(volume) / amount_per_transfer_from_this
 	if(mixed_chem)
 		return
 	reagents.add_reagent(chemname, volume)

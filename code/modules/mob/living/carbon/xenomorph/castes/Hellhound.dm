@@ -99,10 +99,10 @@
 	camera = new /obj/structure/machinery/camera/autoname/yautja(src)
 	camera.c_tag = real_name
 
-/mob/living/carbon/xenomorph/hellhound/initialize_pass_flags(datum/pass_flags_container/PF)
+/mob/living/carbon/xenomorph/hellhound/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()
-	if(PF)
-		PF.flags_pass = PASS_FLAGS_CRAWLER
+	if(pass_flags)
+		pass_flags.flags_pass = PASS_FLAGS_CRAWLER
 
 /mob/living/carbon/xenomorph/hellhound/Login()
 	. = ..()

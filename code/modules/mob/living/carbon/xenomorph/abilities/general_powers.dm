@@ -288,10 +288,7 @@
 	if(mods[CLICK_CATCHER])
 		return
 
-	XENO_ACTION_CHECK(xeno)
-
-	if(!xeno.check_state(TRUE))
-		return FALSE
+	XENO_ACTION_CHECK_TRUE(xeno)
 
 	if(ismob(target_atom)) //anticheese : if they click a mob, it will cancel.
 		to_chat(xeno, SPAN_XENOWARNING("We can't place resin markers on living things!"))
@@ -487,7 +484,8 @@
 		to_chat(xeno, SPAN_XENODANGER("We can't [action_text] with that thing on our leg!"))
 		return
 
-	XENO_ACTION_CHECK_USE_PLASMA(xeno)
+	if(!check_and_use_plasma_owner())
+		return
 
 	if(xeno.layer == XENO_HIDING_LAYER) //Xeno is currently hiding, unhide him
 		var/datum/action/xeno_action/onclick/xenohide/hide = get_action(xeno, /datum/action/xeno_action/onclick/xenohide)
@@ -580,6 +578,7 @@
 		return
 
 	if(activation_delay)
+		XENO_ACTION_CHECK(xeno)
 		if(!do_after(xeno, activation_delay_length, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			to_chat(xeno, SPAN_XENOWARNING("We decide to cancel our acid spray."))
 			end_cooldown()
@@ -797,7 +796,7 @@
 				message += "<b>[capitalize_first_letters(structure_name)]</b> - [initial(structure_type.description)]<br>"
 			to_chat(xeno, SPAN_NOTICE(message))
 			return TRUE
-	XENO_ACTION_CHECK(xeno)
+	XENO_ACTION_CHECK_TRUE(xeno)
 	if(!xeno.check_plasma(400))
 		return FALSE
 	var/structure_type = xeno.hive.hive_structure_types[choice]

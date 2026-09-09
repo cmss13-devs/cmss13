@@ -1,5 +1,5 @@
 /datum/unit_test/proc/check_fortify_reverted(mob/living/carbon/xenomorph/xeno_defender, base_deflection, base_explosive, base_size, base_stun, base_flags)
-	TEST_ASSERT(HAS_TRAIT(xeno_defender, TRAIT_ABILITY_FORTIFY), "fortify was not unset")
+	TEST_ASSERT(!HAS_TRAIT(xeno_defender, TRAIT_ABILITY_FORTIFY), "fortify was not unset")
 	TEST_ASSERT_EQUAL(xeno_defender.armor_deflection_buff, base_deflection, "armor deflection buff was not removed")
 	TEST_ASSERT_EQUAL(xeno_defender.armor_explosive_buff, base_explosive, "small explosive armor buff was not removed")
 	TEST_ASSERT_EQUAL(xeno_defender.mob_size, base_size, "mob size was not restored")

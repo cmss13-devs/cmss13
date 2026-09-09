@@ -238,6 +238,7 @@
 	dancer_user.face_atom(target_atom)
 
 	var/damage = get_xeno_damage_slash(target_carbon, rand(dancer_user.melee_damage_lower, dancer_user.melee_damage_upper))
+
 	dancer_user.visible_message(SPAN_DANGER("\The [dancer_user] violently slices [target_atom] with its tail[buffed?" twice":""]!"),
 					SPAN_DANGER("We slice [target_atom] with our tail[buffed?" twice":""]!"))
 

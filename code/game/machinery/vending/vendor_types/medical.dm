@@ -726,7 +726,7 @@
 	vendor_theme = VENDOR_THEME_USCM
 
 	chem_refill = list(
-		/obj/item/reagent_container/hypospray/autoinjector/ez/one_use
+		/obj/item/reagent_container/hypospray/autoinjector/ez/one_use,
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed/populate_product_list(scale)
@@ -838,7 +838,7 @@
 	chem_refill_volume = 150
 	chem_refill_volume_max = 150
 	chem_refill = list(
-	/obj/item/reagent_container/hypospray/autoinjector/ez/one_use
+		/obj/item/reagent_container/hypospray/autoinjector/ez/one_use,
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat

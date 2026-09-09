@@ -152,24 +152,30 @@
 /datum/action/xeno_action/onclick/toggle_crest/proc/start_crest()
 	var/mob/living/carbon/xenomorph/xeno = owner
 
+	RegisterSignal(xeno, COMSIG_XENO_ENTER_CRIT, PROC_REF(unconscious_check))
+	RegisterSignal(xeno, COMSIG_MOB_DEATH, PROC_REF(unconscious_check))
 	ADD_TRAIT(xeno, TRAIT_ABILITY_CREST, TRAIT_SOURCE_ABILITY("crest"))
 	to_chat(xeno, SPAN_XENOWARNING("We lower our crest."))
 	xeno.ability_speed_modifier += speed_debuff
 	xeno.armor_deflection_buff += armor_buff
 	xeno.mob_size = MOB_SIZE_BIG //knockback immune
-	button.icon_state = "template_active"
+	if(xeno.selected_ability != src)
+		button.icon_state = "template_active"
 	xeno.update_icons()
 	apply_cooldown()
 
 /datum/action/xeno_action/onclick/toggle_crest/proc/stop_crest()
 	var/mob/living/carbon/xenomorph/xeno = owner
 
+	UnregisterSignal(xeno, COMSIG_XENO_ENTER_CRIT)
+	UnregisterSignal(xeno, COMSIG_MOB_DEATH)
 	REMOVE_TRAIT(xeno, TRAIT_ABILITY_CREST, TRAIT_SOURCE_ABILITY("crest"))
 	to_chat(xeno, SPAN_XENOWARNING("We raise our crest."))
 	xeno.ability_speed_modifier -= speed_debuff
 	xeno.armor_deflection_buff -= armor_buff
 	xeno.mob_size = MOB_SIZE_XENO //no longer knockback immune
-	button.icon_state = "template_xeno"
+	if(xeno.selected_ability != src)
+		button.icon_state = "template_xeno"
 	xeno.update_icons()
 	apply_cooldown()
 
@@ -299,15 +305,9 @@
 
 	if(HAS_TRAIT(xeno, TRAIT_ABILITY_FORTIFY))
 		stop_fortify()
-		if(xeno.selected_ability != src)
-			button.icon_state = "template_xeno"
 	else
 		start_fortify()
-		if(xeno.selected_ability != src)
-			button.icon_state = "template_active"
 
-	xeno.update_icons()
-	apply_cooldown()
 	return ..()
 
 /datum/action/xeno_action/activable/fortify/action_activate()
@@ -332,10 +332,15 @@
 
 	ADD_TRAIT(xeno, TRAIT_ABILITY_FORTIFY, TRAIT_SOURCE_ABILITY("fortify"))
 	to_chat(xeno, SPAN_XENOWARNING("We tuck ourself into a defensive stance."))
+	if(xeno.selected_ability != src)
+		button.icon_state = "template_active"
 
 	apply_modifiers(xeno, TRUE)
 	xeno.mob_size = MOB_SIZE_IMMOBILE //knockback immune
 	xeno.mob_flags &= ~SQUEEZE_UNDER_VEHICLES
+
+	xeno.update_icons()
+	apply_cooldown()
 
 /datum/action/xeno_action/activable/fortify/proc/stop_fortify()
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -347,11 +352,16 @@
 	REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Fortify"))
 	REMOVE_TRAIT(xeno, TRAIT_ABILITY_FORTIFY, TRAIT_SOURCE_ABILITY("fortify"))
 	to_chat(xeno, SPAN_XENOWARNING("We resume our normal stance."))
+	if(xeno.selected_ability != src)
+		button.icon_state = "template_xeno"
 
 	apply_modifiers(xeno, FALSE)
 	xeno.anchored = FALSE
 	xeno.mob_size = MOB_SIZE_XENO //no longer knockback immune
 	xeno.mob_flags |= SQUEEZE_UNDER_VEHICLES
+
+	xeno.update_icons()
+	apply_cooldown()
 
 /datum/action/xeno_action/activable/fortify/proc/apply_modifiers(mob/living/carbon/xenomorph/xeno, fortify_state = FALSE)
 	if(fortify_state)
@@ -372,3 +382,18 @@
 	if(defendy.dir & REVERSE_DIR(projectile_direction))
 		damagedata["armor"] += frontal_armor
 
+/datum/action/xeno_action/onclick/toggle_crest/proc/unconscious_check()
+	SIGNAL_HANDLER
+
+	if(QDELETED(owner))
+		return
+
+	stop_crest()
+
+/datum/action/xeno_action/activable/fortify/proc/unconscious_check()
+	SIGNAL_HANDLER
+
+	if(QDELETED(owner))
+		return
+
+	stop_fortify()

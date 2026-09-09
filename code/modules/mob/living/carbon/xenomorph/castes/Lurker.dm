@@ -77,7 +77,7 @@
 
 
 /datum/behavior_delegate/lurker_base
-	name = "Base Lurker Behgavior Delegate"
+	name = "Base Lurker Behavior Delegate"
 
 	// Config
 	var/invis_recharge_time = 20 SECONDS

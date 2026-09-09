@@ -42,12 +42,12 @@
 /datum/behavior_delegate/praetorian_dancer
 	name = "Praetorian Dancer Behavior Delegate"
 
+	/// Used to countdown DANCER_DODGE_TIME.
+	var/dodge_start_time = -1
 	/// Check for slashed target that had yellow tag
 	var/spread_slash_triggered = FALSE
 	/// How much damage Harpoon Tail on DISARM mode do. (pierces armor)
 	var/blunt_damage = 8
-	/// How much time is left on timer. (used for status)
-	var/time_left = null
 	/// Timer to prevent dancer from spreading yellow tags.
 	var/last_dancer_spread_time = 0
 
@@ -61,9 +61,8 @@
 		. += "Damage: [blunt_damage] AP"
 		. += "Cooldown: 3 seconds."
 
-	var/datum/action/xeno_action/onclick/prae_dodge/dodge_action = get_action(bound_xeno, /datum/action/xeno_action/onclick/prae_dodge)
-	if(dodge_action.dodge_start_time != -1)
-		time_left = (DANCER_DODGE_TIME - (world.time - dodge_action.dodge_start_time)) / 10
+	if(dodge_start_time != -1)
+		var/time_left = (DANCER_DODGE_TIME - (world.time - dodge_start_time)) / 10
 		. += "Dodge Remaining: [time_left] second\s."
 		return
 
@@ -252,7 +251,10 @@
 
 
 /datum/action/xeno_action/activable/prae_impale/proc/impale_strike(mob/living/carbon/xenomorph/dancer_user, mob/living/carbon/target_carbon, damage)
-	if(!dancer_user || !target_carbon || target_carbon.stat == DEAD || QDELETED(dancer_user) || QDELETED(target_carbon))
+	if(QDELETED(dancer_user) || QDELETED(target_carbon))
+		return
+
+	if(target_carbon.stat == DEAD)
 		return
 
 	dancer_user.animation_attack_on(target_carbon)
@@ -269,6 +271,10 @@
 	if(!istype(dodge_user))
 		return
 
+	var/datum/behavior_delegate/praetorian_dancer/behavior = dodge_user.behavior_delegate
+	if(!behavior)
+		return
+
 	if(HAS_TRAIT(dodge_user, TRAIT_ABILITY_DODGE))
 		remove_effects()
 		return
@@ -279,7 +285,7 @@
 		return
 
 	ADD_TRAIT(dodge_user, TRAIT_ABILITY_DODGE, TRAIT_SOURCE_ABILITY("dodge"))
-	dodge_start_time = world.time
+	behavior.dodge_start_time = world.time
 	safe_click_cooldown = world.time + 1 SECONDS
 	button.icon_state = "template_active"
 	dodge_user.speed_modifier -= speed_buff_amount
@@ -302,6 +308,10 @@
 	if(!istype(dodge_remove))
 		return
 
+	var/datum/behavior_delegate/praetorian_dancer/behavior = dodge_remove.behavior_delegate
+	if(!behavior)
+		return
+
 	if(!HAS_TRAIT(dodge_remove, TRAIT_ABILITY_DODGE))
 		return
 
@@ -322,11 +332,11 @@
 		deltimer(dodge_timer)
 		dodge_timer = TIMER_ID_NULL
 
-	if(dodge_start_time > 0)
-		var/used_ratio = round((world.time - dodge_start_time) / duration, 0.1)
+	if(behavior.dodge_start_time > 0)
+		var/used_ratio = round((world.time - behavior.dodge_start_time) / duration, 0.1)
 		recharge_time = max(DANCER_DODGE_TIME * used_ratio * refund_multiplier, 5 SECONDS)
 
-	dodge_start_time = -1
+	behavior.dodge_start_time = -1
 	apply_cooldown_override(recharge_time)
 
 /datum/action/xeno_action/onclick/prae_dodge/proc/create_afterimage_sequence(mob/living/carbon/xenomorph/dodge_user, duration)

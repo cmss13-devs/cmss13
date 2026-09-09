@@ -153,7 +153,7 @@
 
 	for(var/action_type in action_types_to_cd)
 		var/datum/action/xeno_action/xeno_action = get_action(xeno, action_type)
-		if(!istype(xeno_action))
+		if(!xeno_action)
 			continue
 
 		xeno_action.apply_cooldown_override(cooldown_duration)

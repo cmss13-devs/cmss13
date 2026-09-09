@@ -931,6 +931,7 @@
 	if(!current_turf)
 		return
 
+	plasma_cost = xeno.ammo.spit_cost
 	XENO_ACTION_CHECK(xeno)
 
 	if(xeno.ammo.spit_windup)
@@ -944,11 +945,9 @@
 			to_chat(xeno, SPAN_XENODANGER("We decide to cancel our spit."))
 			REMOVE_TRAIT(xeno, TRAIT_ABILITY_BOMBARD, TRAIT_SOURCE_ABILITY("bombard"))
 			return
-	plasma_cost = xeno.ammo.spit_cost
 
-	if(!check_and_use_plasma_owner())
-		REMOVE_TRAIT(xeno, TRAIT_ABILITY_BOMBARD, TRAIT_SOURCE_ABILITY("bombard"))
-		return
+	REMOVE_TRAIT(xeno, TRAIT_ABILITY_BOMBARD, TRAIT_SOURCE_ABILITY("bombard"))
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [target_atom]!"),
 
@@ -961,7 +960,6 @@
 	proj.def_zone = xeno.get_limbzone_target()
 	proj.fire_at(spit_target, xeno, xeno, xeno.ammo.max_range, xeno.ammo.shell_speed)
 
-	REMOVE_TRAIT(xeno, TRAIT_ABILITY_BOMBARD, TRAIT_SOURCE_ABILITY("bombard"))
 	SEND_SIGNAL(xeno, COMSIG_XENO_POST_SPIT)
 
 	apply_cooldown()

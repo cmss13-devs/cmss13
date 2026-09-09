@@ -73,7 +73,7 @@ GLOBAL_DATUM_INIT(late_join_tgui, /datum/late_join, new)
 /datum/late_join/ui_state(mob/user, datum/ui_state/state)
 	if(isnewplayer(user))
 		return GLOB.new_player_state
-	return GLOB.default_state
+	return GLOB.never_state
 
 /datum/late_join/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)

@@ -361,7 +361,7 @@
 	var/obj/limb/l_arm = attached.get_limb("l_arm")
 	var/obj/limb/r_arm = attached.get_limb("r_arm")
 	if((l_arm.status & LIMB_DESTROYED) && (r_arm.status & LIMB_DESTROYED))
-		attached.visible_message(SPAN_NOTICE("\The [src] automatically detaches from [attached] - \he has no arms to attach to!."))
+		attached.visible_message(SPAN_NOTICE("\The [src] automatically detaches from [attached] - \he has no arms to attach to."))
 		attached = null
 		filtering = FALSE
 		update_icon(TRUE)

@@ -1991,8 +1991,8 @@
 
 /datum/equipment_preset/corpse/working_joe
 	name = "Deactivated Working Joe"
-	faction = FACTION_MARINE
-	faction_group = FACTION_LIST_ARES_MARINE
+	faction = FACTION_SURVIVOR
+	faction_group = FACTION_SURVIVOR
 	assignment = JOB_WORKING_JOE
 	job_title = JOB_WORKING_JOE
 	idtype = /obj/item/card/id/lanyard

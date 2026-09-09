@@ -842,6 +842,13 @@
 /obj/item/ammo_magazine/rifle/w_ek_17,
 /turf/open/floor/fire_colony/grille,
 /area/fire_colony/interior/excavation)
+"acp" = (
+/obj/effect/lava/edges/basalt/side_rock,
+/obj/item/stack/rods{
+	color = "#848484"
+	},
+/turf/open/fire_colony/basalt/glowing/basalt2,
+/area/fire_colony/exterior/clearing/south_west)
 "acq" = (
 /obj/effect/lava/edges/basalt/l_piece,
 /obj/structure/machinery/weather_siren{
@@ -863,6 +870,15 @@
 /obj/effect/lava/edges/basalt/corner_rock,
 /turf/open/fire_colony/sand,
 /area/fire_colony/exterior/valley/north)
+"act" = (
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 8
+	},
+/obj/item/stack/rods{
+	color = "#848484"
+	},
+/turf/open/fire_colony/brock,
+/area/fire_colony/exterior/clearing/south)
 "acu" = (
 /obj/effect/lava/edges/basalt/l_piece{
 	dir = 1
@@ -875,6 +891,13 @@
 /obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/plating/fire_colony/warnplate,
 /area/fire_colony/exterior/container_yard)
+"acw" = (
+/obj/effect/landmark/ambient_sound/lava,
+/obj/item/stack/rods{
+	color = "#848484"
+	},
+/turf/open/fire_colony/catwalk/alt,
+/area/fire_colony/exterior/clearing/pass)
 "acx" = (
 /obj/structure/machinery/door_control{
 	id = "hangar_ice_1";
@@ -914,6 +937,16 @@
 	icon_state = "stan2"
 	},
 /area/fire_colony/interior/hangar/broken_dropship)
+"acD" = (
+/obj/effect/lava/edges/basalt/l_piece,
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/obj/item/stack/rods{
+	color = "#848484"
+	},
+/turf/open/fire_colony/basalt/cave/east,
+/area/fire_colony/exterior/clearing/pass)
 "acE" = (
 /obj/structure/computerframe{
 	layer = 2.9
@@ -926,6 +959,12 @@
 /area/fire_colony/exterior/underground/excavation/north)
 "acG" = (
 /turf/open/fire_colony/asteroid,
+/area/fire_colony/exterior/valley/north)
+"acH" = (
+/obj/item/stack/rods{
+	color = "#848484"
+	},
+/turf/open/fire_colony/basalt/basalt0,
 /area/fire_colony/exterior/valley/north)
 "acI" = (
 /obj/structure/bed/sofa/hybrisa/sofa/black{
@@ -21835,6 +21874,9 @@
 	dir = 4
 	},
 /obj/effect/blocker/lava,
+/obj/effect/lava/edges/basalt/side_rock{
+	dir = 8
+	},
 /turf/open/fire_colony/hot_lava/lattice,
 /area/fire_colony/exterior/valley/north)
 "dCO" = (
@@ -37923,6 +37965,9 @@
 /obj/effect/lava/edges/basalt/side_rock{
 	dir = 1
 	},
+/obj/item/stack/rods{
+	color = "#848484"
+	},
 /turf/open/floor/plating/platingdmg1,
 /area/fire_colony/exterior/valley/north)
 "hld" = (
@@ -42685,13 +42730,11 @@
 /area/fire_colony/exterior/clearing/south)
 "iux" = (
 /obj/structure/platform/stone/lava/north,
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 1;
-	layer = 2.01
-	},
-/obj/effect/decal/hybrisa/lattice,
 /obj/effect/blocker/lava,
-/turf/open/fire_colony/hot_lava/L_piece/north,
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 4
+	},
+/turf/open/fire_colony/hot_lava/lattice,
 /area/fire_colony/exterior/valley/north)
 "iuI" = (
 /obj/effect/lava/edges/basalt/l_piece{
@@ -70132,11 +70175,11 @@
 /area/fire_colony/interior/dorms/south)
 "phY" = (
 /obj/structure/platform/stone/lava/north,
-/obj/effect/lava/edges/basalt/l_piece{
-	dir = 8
-	},
 /obj/effect/blocker/lava,
-/turf/open/fire_colony/hot_lava/L_piece/west,
+/obj/effect/lava/edges/basalt/l_piece{
+	dir = 1
+	},
+/turf/open/fire_colony/hot_lava/lattice,
 /area/fire_colony/exterior/valley/north)
 "pip" = (
 /obj/structure/fence/slim/blue,
@@ -70572,6 +70615,9 @@
 	dir = 4
 	},
 /obj/effect/landmark/ambient_sound/lava,
+/obj/item/stack/rods{
+	color = "#848484"
+	},
 /turf/open/fire_colony/catwalk/alt,
 /area/fire_colony/exterior/clearing/south_west)
 "pnT" = (
@@ -103837,6 +103883,9 @@
 	dir = 4
 	},
 /obj/effect/landmark/ambient_sound/lava,
+/obj/item/stack/rods{
+	color = "#848484"
+	},
 /turf/open/fire_colony/catwalk/alt,
 /area/fire_colony/exterior/valley/north)
 "xgL" = (
@@ -124883,7 +124932,7 @@ rLo
 sdo
 mUq
 gRq
-aaE
+acH
 xdY
 aAi
 jFR
@@ -125625,7 +125674,7 @@ rUt
 jlz
 aKk
 rhx
-pbc
+acp
 ruz
 gmg
 bas
@@ -130222,7 +130271,7 @@ abS
 abQ
 xRt
 wiQ
-ygE
+act
 teN
 eRA
 kHE
@@ -130420,7 +130469,7 @@ rZr
 aSb
 bXY
 aQx
-cVP
+acw
 ihJ
 bqY
 aJr
@@ -130619,7 +130668,7 @@ bcs
 rpD
 aHz
 xkP
-pjO
+acD
 cNg
 xAh
 xvk

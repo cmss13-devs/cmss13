@@ -280,7 +280,9 @@
 
 
 // -- specific ability traits --
+/// Used by defender to engage crest stance.
 #define TRAIT_ABILITY_CREST "t_ability_crest"
+/// Used by defender and steel crest to engage fortify stance.
 #define TRAIT_ABILITY_FORTIFY "t_ability_fortify"
 /// Used by shielder to check stance.
 #define TRAIT_ABILITY_ENCLOSED_PLATES "t_ability_enclosed_plates"

@@ -280,9 +280,10 @@
 
 // -- specific xeno traits --
 /// Used by dancer to mark targets with red tags.
-#define TRAIT_XENO_RED_TAG "t_xeno_red_tag"
+#define TRAIT_DANCER_RED_TAG "t_dancer_red_tag"
 /// Used by dancer to spread yellow tags.
-#define TRAIT_XENO_YELLOW_TAG "t_xeno_yellow_tag"
+#define TRAIT_DANCER_YELLOW_TAG "t_dancer_yellow_tag"
+
 
 //-- item traits --
 // TOOL TRAITS
@@ -498,8 +499,6 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_ATTACHMENT(slot) "t_s_attachment_[slot]"
 ///Status trait coming from ability
 #define TRAIT_SOURCE_ABILITY(ability) "t_s_ability_[ability]"
-///Status trait coming from xeno
-#define TRAIT_SOURCE_XENO(trait) "t_s_xeno_[trait]"
 #define TRAIT_SOURCE_LIMB(limb) "t_s_limb_[limb]"
 ///Status trait coming from temporary_mute
 #define TRAIT_SOURCE_TEMPORARY_MUTE "t_s_temporary_mute"

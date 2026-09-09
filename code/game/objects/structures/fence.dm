@@ -200,7 +200,7 @@
 					playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1)
 					duration *=12 //likely a blunt tool, least viable, you're gonna be there for a while
 				if(1)
-					user.visible_message(SPAN_NOTICE("[user] messily hacks through the [src] with [weapontool]!"),
+					user.visible_message(SPAN_NOTICE("[user] messily hacks through [src] with [weapontool]!"),
 					SPAN_NOTICE("You start trying to cut through [src] with [weapontool], but it's not the right tool for the job."))
 					playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1)
 					duration *= 2

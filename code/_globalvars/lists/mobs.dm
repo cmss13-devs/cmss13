@@ -2,6 +2,9 @@ GLOBAL_LIST_EMPTY(clients) //all clients
 GLOBAL_LIST_EMPTY(admins) //all clients whom are admins
 GLOBAL_PROTECT(admins)
 
+GLOBAL_LIST_EMPTY(deadmins)
+GLOBAL_PROTECT(deadmins)
+
 GLOBAL_LIST_EMPTY(directory) //all ckeys with associated client
 
 GLOBAL_DATUM(all_player_keys_regex, /regex)
@@ -23,6 +26,7 @@ GLOBAL_LIST_EMPTY(new_player_list) //all /mob/dead/new_player, in theory all sho
 GLOBAL_LIST_EMPTY_TYPED(mob_list, /mob)
 
 GLOBAL_LIST_EMPTY_TYPED(living_mob_list, /mob/living)
+GLOBAL_LIST_EMPTY_TYPED(marker_mob_list, /mob/dead/mob_marker)
 GLOBAL_LIST_EMPTY_TYPED(alive_mob_list, /mob)
 
 GLOBAL_LIST_EMPTY_TYPED(dead_mob_list, /mob) // excludes /mob/new_player

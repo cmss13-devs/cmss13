@@ -323,19 +323,6 @@
 		observer.client.add_to_screen(s_active.storage_continue)
 		observer.client.add_to_screen(s_active.storage_end)
 
-// called when something steps onto a human
-// this handles mulebots and vehicles
-/mob/living/carbon/human/Crossed(atom/movable/AM)
-	..()
-	if(istype(AM, /obj/structure/machinery/bot/mulebot))
-		var/obj/structure/machinery/bot/mulebot/MB = AM
-		MB.RunOver(src)
-
-	if(istype(AM, /obj/vehicle))
-		var/obj/vehicle/V = AM
-		V.RunOver(src)
-
-
 //gets assignment from ID or ID inside PDA or PDA itself
 //Useful when player do something with computers
 /mob/living/carbon/human/proc/get_assignment(if_no_id = "No id", if_no_job = "No job")

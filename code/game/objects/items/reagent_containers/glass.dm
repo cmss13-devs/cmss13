@@ -348,6 +348,7 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/minitank/attackby(obj/item/thing as obj, mob/user as mob)
+
 	if(istype(thing, /obj/item/reagent_container/hypospray/autoinjector))
 		var/obj/item/reagent_container/hypospray/autoinjector/autoinjector = thing
 		//how much to subtract from the tank to refill the autoinjector
@@ -374,14 +375,14 @@
 			if(!reagents.has_reagent(autoinjector.chemname, amount)) // Not enough reagents in the tank to refill the autoinjector.
 				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'Refill failed. [amount]u [autoinjector.chemname] is required to completely refill [autoinjector].'"))
 				return FALSE
-
-		//FINALLY, the good shit that actually fills the autoinjector!
-		reagents.trans_id_to(autoinjector, autoinjector.chemname, amount) //fill this bih
-		autoinjector.uses_left =  autoinjector.initial(volume) / autoinjector.amount_per_transfer_from_this
-		autoinjector.update_icon()
-		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
-		to_chat(user, SPAN_INFO("You successfully refill [autoinjector] with [src]!"))
-		return TRUE
+			else
+				//FINALLY, the good shit that actually fills the autoinjector!
+				reagents.trans_id_to(autoinjector, autoinjector.chemname, amount) //fill this bih
+				autoinjector.uses_left =  autoinjector.initial(volume) / autoinjector.amount_per_transfer_from_this
+				autoinjector.update_icon()
+				playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
+				to_chat(user, SPAN_INFO("You successfully refill [autoinjector] with [src]!"))
+				return TRUE
 
 /obj/item/reagent_container/glass/minitank/update_icon()
 	overlays.Cut()

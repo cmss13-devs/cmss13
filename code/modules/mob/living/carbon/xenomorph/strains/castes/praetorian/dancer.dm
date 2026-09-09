@@ -34,6 +34,7 @@
 
 	prae.recalculate_everything()
 
+#define ACTION_CURRENT_TAIL_MODE(X) (X.a_intent == INTENT_DISARM ? "Blunt" : "Normal")
 #define DANCER_YELLOW_TAG_SPREAD_DURATION 7 SECONDS
 #define DANCER_YELLOW_TAG_SPREAD_CD 20 SECONDS
 #define DANCER_YELLOW_TAG_SPREAD_DIST 5
@@ -42,6 +43,8 @@
 /datum/behavior_delegate/praetorian_dancer
 	name = "Praetorian Dancer Behavior Delegate"
 
+	/// How much damage Harpoon Tail on DISARM mode do. (pierces armor)
+	var/blunt_damage = 8
 	/// How much time is left on timer. (used for status)
 	var/time_left = null
 
@@ -53,11 +56,9 @@
 	. += "Guaranteed Dodge every [bound_xeno.dodge_threshold] bullet\s."
 	. += "Yellow Tag Spread Delay: 5 seconds."
 
-	var/datum/action/xeno_action/activable/tail_stab/harpoon_tail/harpoon_action = get_action(bound_xeno, /datum/action/xeno_action/activable/tail_stab/harpoon_tail)
-	harpoon_action.intent_detection()
-	. += "Tail Lance Intent: [harpoon_action.tail_mode]"
-	if(harpoon_action.tail_mode == "Blunt")
-		. += "Damage: [harpoon_action.blunt_damage] AP"
+	. += "Tail Lance Intent: [ACTION_CURRENT_TAIL_MODE(bound_xeno)]"
+	if(bound_xeno.a_intent == INTENT_DISARM)
+		. += "Damage: [blunt_damage] AP"
 		. += "Cooldown: 3 seconds."
 
 	var/datum/action/xeno_action/onclick/prae_dodge/dodge_action = get_action(bound_xeno, /datum/action/xeno_action/onclick/prae_dodge)
@@ -69,10 +70,10 @@
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_self()
 	..()
 
-	if(!HAS_TRAIT(bound_xeno, TRAIT_ABILITY_YELLOW_TAG))
+	if(!HAS_TRAIT(bound_xeno, TRAIT_XENO_YELLOW_TAG))
 		return
 
-	REMOVE_TRAIT(bound_xeno, TRAIT_ABILITY_YELLOW_TAG, TRAIT_SOURCE_ABILITY("yellow_tag"))
+	REMOVE_TRAIT(bound_xeno, TRAIT_XENO_YELLOW_TAG, TRAIT_SOURCE_XENO("yellow_tag"))
 
 	var/datum/action/xeno_action/activable/prae_impale/impale_action = get_action(bound_xeno, /datum/action/xeno_action/activable/prae_impale)
 	if(!impale_action.action_cooldown_check())
@@ -103,7 +104,7 @@
 		break
 
 	if(consumed_spread)
-		ADD_TRAIT(bound_xeno, TRAIT_ABILITY_YELLOW_TAG, TRAIT_SOURCE_ABILITY("yellow_tag"))
+		ADD_TRAIT(bound_xeno, TRAIT_XENO_YELLOW_TAG, TRAIT_SOURCE_XENO("yellow_tag"))
 
 	if(target_carbon.health <= 0)
 		try_spread_tags_from(target_carbon)
@@ -149,6 +150,7 @@
 
 
 /datum/action/xeno_action/activable/tail_stab/harpoon_tail/ability_act(mob/living/carbon/xenomorph/xeno, mob/living/carbon/target_carbon, obj/limb/limb)
+	var/datum/behavior_delegate/praetorian_dancer/behavior = xeno.behavior_delegate
 	if(!istype(xeno) || !istype(target_carbon))
 		return
 
@@ -166,21 +168,12 @@
 			xeno.behavior_delegate.melee_attack_additional_effects_target(target_carbon)
 
 		playsound(target_carbon, "punch", 25, TRUE)
-		target_carbon.apply_damage(blunt_damage, BRUTE, "chest")
+		target_carbon.apply_damage(behavior.blunt_damage, BRUTE, "chest")
 		apply_cooldown(cooldown_modifier = 0.3)
 		update_button_icon()
 		return target_carbon
 
 	return ..()
-
-/datum/action/xeno_action/activable/tail_stab/harpoon_tail/proc/intent_detection()
-	var/mob/living/carbon/xenomorph/xeno = owner
-	if(xeno && xeno.a_intent == INTENT_DISARM)
-		tail_mode = "Blunt"
-	else
-		tail_mode = "Normal"
-
-
 
 
 /datum/action/xeno_action/activable/prae_impale/use_ability(atom/target_atom)
@@ -220,18 +213,19 @@
 					to_chat(dancer_user, SPAN_WARNING("We can't attack through [atom_in_turf]!"))
 					return
 
-	XENO_ACTION_CHECK_USE_PLASMA(dancer_user)
+	if(!check_and_use_plasma_owner())
+		return
 
 	apply_cooldown()
-	REMOVE_TRAIT(dancer_user, TRAIT_ABILITY_RED_TAG, TRAIT_SOURCE_ABILITY("red_tag"))
+	REMOVE_TRAIT(dancer_user, TRAIT_XENO_RED_TAG, TRAIT_SOURCE_XENO("red_tag"))
 	for(var/datum/effects/dancer_tag/spread/tag_spread in target_carbon.effects_list)
-		ADD_TRAIT(dancer_user, TRAIT_ABILITY_RED_TAG, TRAIT_SOURCE_ABILITY("red_tag"))
+		ADD_TRAIT(dancer_user, TRAIT_XENO_RED_TAG, TRAIT_SOURCE_XENO("red_tag"))
 		qdel(tag_spread)
 		apply_cooldown_override()
 		break
 
 	for(var/datum/effects/dancer_tag/normal/dancer_tag_effect in target_carbon.effects_list)
-		ADD_TRAIT(dancer_user, TRAIT_ABILITY_RED_TAG, TRAIT_SOURCE_ABILITY("red_tag"))
+		ADD_TRAIT(dancer_user, TRAIT_XENO_RED_TAG, TRAIT_SOURCE_XENO("red_tag"))
 		qdel(dancer_tag_effect)
 		break
 
@@ -243,7 +237,7 @@
 	dancer_user.face_atom(target_atom)
 
 	var/damage = get_xeno_damage_slash(target_carbon, rand(dancer_user.melee_damage_lower, dancer_user.melee_damage_upper))
-	var/buffed = HAS_TRAIT(dancer_user, TRAIT_ABILITY_RED_TAG)
+	var/buffed = HAS_TRAIT(dancer_user, TRAIT_XENO_RED_TAG)
 	dancer_user.visible_message(SPAN_DANGER("\The [dancer_user] violently slices [target_atom] with its tail[buffed?" twice":""]!"),
 					SPAN_DANGER("We slice [target_atom] with our tail[buffed?" twice":""]!"))
 
@@ -284,7 +278,7 @@
 	if(!check_and_use_plasma_owner(200))
 		return
 
-	ADD_TRAIT(dodge_user, TRAIT_ABILITY_DODGE, TRAIT_SOURCE_ABILITY("dodge"))
+	ADD_TRAIT(dodge_user, TRAIT_ABILITY_DODGE, TRAIT_SOURCE_XENO("dodge"))
 	dodge_start_time = world.time
 	safe_click_cooldown = world.time + 1 SECONDS
 	button.icon_state = "template_active"
@@ -315,7 +309,7 @@
 		to_chat(dodge_remove, SPAN_XENOWARNING("We need a moment before breaking our evasive stance!"))
 		return
 
-	REMOVE_TRAIT(dodge_remove, TRAIT_ABILITY_DODGE, TRAIT_SOURCE_ABILITY("dodge"))
+	REMOVE_TRAIT(dodge_remove, TRAIT_ABILITY_DODGE, TRAIT_SOURCE_XENO("dodge"))
 	button.icon_state = "template_xeno"
 	dodge_remove.speed_modifier += speed_buff_amount
 	dodge_remove.dodge_threshold += 3
@@ -475,7 +469,8 @@
 		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom] is dead, why would we want to attack it?"))
 		return
 
-	XENO_ACTION_CHECK_USE_PLASMA(dancer_user)
+	if(!check_and_use_plasma_owner())
+		return
 
 	if(ishuman(target_carbon))
 		var/mob/living/carbon/human/target_human = target_carbon
@@ -502,27 +497,27 @@
 	dancer_user.face_atom(target_carbon)
 	dancer_user.flick_attack_overlay(target_carbon, "disarm")
 
-	REMOVE_TRAIT(dancer_user, TRAIT_ABILITY_RED_TAG, TRAIT_SOURCE_ABILITY("red_tag"))
+	REMOVE_TRAIT(dancer_user, TRAIT_XENO_RED_TAG, TRAIT_SOURCE_XENO("red_tag"))
 
 	var/datum/effects/dancer_tag/normal/dancer_tag_effect = locate() in target_carbon.effects_list
 	var/datum/effects/dancer_tag/spread/tag_spread = locate() in target_carbon.effects_list
 
 	if(tag_spread)
-		ADD_TRAIT(dancer_user, TRAIT_ABILITY_RED_TAG, TRAIT_SOURCE_ABILITY("red_tag"))
+		ADD_TRAIT(dancer_user, TRAIT_XENO_RED_TAG, TRAIT_SOURCE_XENO("red_tag"))
 		qdel(tag_spread)
 		apply_cooldown_override()
 
 	if(dancer_tag_effect)
-		ADD_TRAIT(dancer_user, TRAIT_ABILITY_RED_TAG, TRAIT_SOURCE_ABILITY("red_tag"))
+		ADD_TRAIT(dancer_user, TRAIT_XENO_RED_TAG, TRAIT_SOURCE_XENO("red_tag"))
 		qdel(dancer_tag_effect)
 
-	if(!HAS_TRAIT(dancer_user, TRAIT_ABILITY_RED_TAG))
+	if(!HAS_TRAIT(dancer_user, TRAIT_XENO_RED_TAG))
 		new /datum/effects/xeno_slow(target_carbon, dancer_user, null, null, get_xeno_stun_duration(target_carbon, slow_duration))
 
 	var/stun_duration = stun_duration_default
 	var/daze_duration = 0
 
-	if(HAS_TRAIT(dancer_user, TRAIT_ABILITY_RED_TAG))
+	if(HAS_TRAIT(dancer_user, TRAIT_XENO_RED_TAG))
 		stun_duration = stun_duration_buffed
 		daze_duration = daze_duration_buffed
 
@@ -550,3 +545,5 @@
 
 	apply_cooldown()
 	return ..()
+
+#undef ACTION_CURRENT_TAIL_MODE

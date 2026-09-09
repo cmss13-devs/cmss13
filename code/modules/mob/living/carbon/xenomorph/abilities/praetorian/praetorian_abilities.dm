@@ -172,8 +172,6 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_TAIL_STAB
 
-	/// How much damage Harpoon Tail on DISARM mode do. (pierces armor)
-	var/blunt_damage = 8
 	/// Harpoon Tail mode, used only to display in status.
 	var/tail_mode = null
 

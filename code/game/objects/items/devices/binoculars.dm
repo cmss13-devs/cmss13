@@ -152,10 +152,18 @@
 			return FALSE
 		if(user.sight & SEE_TURFS)
 			var/list/turf/path = get_line(user, targeted_atom, include_start_atom = FALSE)
-			for(var/turf/T in path)
-				if(T.opacity)
+			var/max_distance = 23
+			if(path.len > max_distance)
+				to_chat(user, SPAN_WARNING("Target is too far!"))
+				return FALSE
+			for(var/turf/turf in path)
+				if(turf.opacity)
 					to_chat(user, SPAN_WARNING("There is something in the way of the laser!"))
 					return FALSE
+				for(var/obj/blocker in turf.contents)
+					if(blocker.opacity)
+						to_chat(user, SPAN_WARNING("[blocker] is in the way of the laser!"))
+						return FALSE
 		acquire_target(targeted_atom, user)
 		return TRUE
 	return FALSE

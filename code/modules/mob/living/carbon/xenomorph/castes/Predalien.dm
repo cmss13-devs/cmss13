@@ -175,7 +175,7 @@ You must still listen to the queen.
 
 	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
-	playsound(xeno.loc, pick(predalien_roar), 75, 0, status = 0)
+	playsound(xeno.loc, pick(predalien_roar), 50, 0, status = 0, falloff = 3)
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a guttural roar!"))
 	xeno.create_shriekwave(7) //Adds the visual effect. Wom wom wom, 7 shriekwaves
 	FOR_DVIEW(var/mob/living/carbon/target_carbon, 7, xeno, HIDE_INVISIBLE_OBSERVER)
@@ -187,9 +187,6 @@ You must still listen to the queen.
 			if(isyautja(target_human) && yautja_glove)
 				if(HAS_TRAIT(target_human, TRAIT_CLOAKED))
 					yautja_glove.decloak(target_human, TRUE, DECLOAK_PREDALIEN)
-					target_human.add_filter("uncloack", 1, list("type" = "outline", "color" = "#32fff58c", "size" = 1.5))
-					addtimer(CALLBACK(src, PROC_REF(disable_filter), target_human), 3 SECONDS)
-					playsound(target_human.loc, 'sound/effects/pred_force_decloak.ogg', 100, 1, 10)
 
 				yautja_glove.cloak_timer = xeno_cooldown * 0.1
 		else if(isxeno(target_carbon) && xeno.can_not_harm(target_carbon))

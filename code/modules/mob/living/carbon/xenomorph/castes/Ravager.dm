@@ -246,7 +246,11 @@
 		super_empower(xeno, behavior.empower_targets)
 
 /datum/action/xeno_action/onclick/empower/proc/super_empower(mob/living/carbon/xenomorph/xeno)
-	xeno.visible_message(SPAN_DANGER("[xeno] glows an eerie red as it empowers further with the strength of [empower_targets] hostiles!"), SPAN_XENOHIGHDANGER("We begin to glow an eerie red, empowered by the [empower_targets] enemies!"))
+	var/datum/behavior_delegate/ravager_base/behavior = xeno.behavior_delegate
+	if(!behavior)
+		return
+
+	xeno.visible_message(SPAN_DANGER("[xeno] glows an eerie red as it empowers further with the strength of [behavior.empower_targets] hostiles!"), SPAN_XENOHIGHDANGER("We begin to glow an eerie red, empowered by the [behavior.empower_targets] enemies!"))
 	xeno.emote("roar")
 
 	var/color = "#FF0000"

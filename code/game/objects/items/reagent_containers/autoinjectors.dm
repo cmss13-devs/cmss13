@@ -23,9 +23,7 @@
 	skilllock = SKILL_MEDICAL_DEFAULT
 	///If TRUE, nobody can tell what's in this autoinjector without a scanner.
 	var/chemical_unclear = FALSE
-	///If TRUE, it's a strange crystal.
-	var/is_crystal = FALSE
-	///if TRUE, this looks like a stimpack.
+	///if TRUE, this is a stimpack.
 	var/is_stimpack = FALSE
 	///How many uses are left in this autoinjector?
 	var/uses_left = 3
@@ -179,7 +177,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol
 	name = "tramadol autoinjector"
 	chemname = "tramadol"
-	desc = "An autoinjector that injects weak but effective painkiller for trauma."
+	desc = "An autoinjector that injects a weak but effective painkiller for trauma."
 	maptext_label = "Tr"
 
 /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol/random_amount
@@ -204,7 +202,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone
 	name = "oxycodone autoinjector (EXTREME PAINKILLER)"
 	chemname = "oxycodone"
-	desc = "An autoinjector that injects powerful painkiller intended for life-threatening situations."
+	desc = "An autoinjector that injects a powerful painkiller intended for life-threatening situations."
 	amount_per_transfer_from_this = MED_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (MED_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	maptext_label = "Ox"
@@ -430,7 +428,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/tutorial/tramadol
 	name = "tramadol EZ autoinjector (FOR TRAINING USE ONLY)"
 	chemname = "tramadol"
-	desc = "An EZ one-use autoinjector that injects Tramadol, a common pain-killing medicine. To use it, click the autoinjector while it is in your hand. You can also click any person one tile near you, or yourself, to inject its contents."
+	desc = "An EZ one-use autoinjector that injects a common pain-killing medicine. To use it, click the autoinjector while it is in your hand. You can also click any person one tile near you, or yourself, to inject its contents."
 	maptext_label = "OuTr"
 
 /obj/item/reagent_container/hypospray/autoinjector/tutorial/kelotane
@@ -555,7 +553,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine
 	name = "ultrazine stimpack"
 	chemname = "ultrazine"
-	desc = "A stimpack that injects ultrazine, a special and illegal muscle stimulant. Highly addictive."
+	desc = "A stimpack that injects a special and illegal muscle stimulant. Highly addictive."
 	amount_per_transfer_from_this = 5
 	volume = 25
 	uses_left = 5

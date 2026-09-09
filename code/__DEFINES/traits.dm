@@ -280,8 +280,11 @@
 
 
 // -- specific ability traits --
+/// Used by ravager pounce to charge at enemies.
 #define TRAIT_ABILITY_POUNCE_CHARGE "t_ability_pounce_charge"
+/// Used for empower windup before ravager get empowered.
 #define TRAIT_ABILITY_PRE_EMPOWER "t_ability_pre_empower"
+/// Used by empower to give ravager boost to abilities after meeting target threshold.
 #define TRAIT_ABILITY_SUPER_EMPOWER "t_ability_super_empower"
 /// Used by shielder to check stance.
 #define TRAIT_ABILITY_ENCLOSED_PLATES "t_ability_enclosed_plates"

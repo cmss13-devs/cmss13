@@ -280,6 +280,7 @@
 
 
 // -- specific ability traits --
+/// Used by xenos with spit_windup: TRUE, currently used only by boiler.
 #define TRAIT_ABILITY_BOMBARD "t_ability_bombard"
 /// Used by shielder to check stance.
 #define TRAIT_ABILITY_ENCLOSED_PLATES "t_ability_enclosed_plates"

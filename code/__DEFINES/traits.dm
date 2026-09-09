@@ -278,13 +278,6 @@
 #define TRAIT_ABILITY_REFLECTIVE_PLATES "t_ability_reflective_plates"
 
 
-// -- specific xeno traits --
-/// Used by dancer to mark targets with red tags.
-#define TRAIT_DANCER_RED_TAG "t_dancer_red_tag"
-/// Used by dancer to spread yellow tags.
-#define TRAIT_DANCER_YELLOW_TAG "t_dancer_yellow_tag"
-
-
 //-- item traits --
 // TOOL TRAITS
 #define TRAIT_TOOL_SCREWDRIVER "t_tool_screwdriver"

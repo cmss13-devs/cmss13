@@ -43,11 +43,12 @@
 /datum/behavior_delegate/praetorian_dancer
 	name = "Praetorian Dancer Behavior Delegate"
 
+	/// Check for slashed target that had yellow tag
+	var/spread_slash_triggered = FALSE
 	/// How much damage Harpoon Tail on DISARM mode do. (pierces armor)
 	var/blunt_damage = 8
 	/// How much time is left on timer. (used for status)
 	var/time_left = null
-
 	/// Timer to prevent dancer from spreading yellow tags.
 	var/last_dancer_spread_time = 0
 
@@ -70,10 +71,10 @@
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_self()
 	..()
 
-	if(!HAS_TRAIT(bound_xeno, TRAIT_DANCER_YELLOW_TAG))
+	if(!spread_slash_triggered)
 		return
 
-	REMOVE_TRAIT(bound_xeno, TRAIT_DANCER_YELLOW_TAG, TRAIT_SOURCE_ABILITY("dancer_melee"))
+	spread_slash_triggered = FALSE
 
 	var/datum/action/xeno_action/activable/prae_impale/impale_action = get_action(bound_xeno, /datum/action/xeno_action/activable/prae_impale)
 	if(!impale_action.action_cooldown_check())
@@ -104,7 +105,7 @@
 		break
 
 	if(consumed_spread)
-		ADD_TRAIT(bound_xeno, TRAIT_DANCER_YELLOW_TAG, TRAIT_SOURCE_ABILITY("dancer_melee"))
+		spread_slash_triggered = TRUE
 
 	if(target_carbon.health <= 0)
 		try_spread_tags_from(target_carbon)
@@ -217,15 +218,15 @@
 		return
 
 	apply_cooldown()
-	REMOVE_TRAIT(dancer_user, TRAIT_DANCER_RED_TAG, TRAIT_SOURCE_ABILITY("impale"))
+	var/buffed = FALSE
 	for(var/datum/effects/dancer_tag/spread/tag_spread in target_carbon.effects_list)
-		ADD_TRAIT(dancer_user, TRAIT_DANCER_RED_TAG, TRAIT_SOURCE_ABILITY("impale"))
+		buffed = TRUE
 		qdel(tag_spread)
 		apply_cooldown_override()
 		break
 
 	for(var/datum/effects/dancer_tag/normal/dancer_tag_effect in target_carbon.effects_list)
-		ADD_TRAIT(dancer_user, TRAIT_DANCER_RED_TAG, TRAIT_SOURCE_ABILITY("impale"))
+		buffed = TRUE
 		qdel(dancer_tag_effect)
 		break
 
@@ -237,7 +238,6 @@
 	dancer_user.face_atom(target_atom)
 
 	var/damage = get_xeno_damage_slash(target_carbon, rand(dancer_user.melee_damage_lower, dancer_user.melee_damage_upper))
-	var/buffed = HAS_TRAIT(dancer_user, TRAIT_DANCER_RED_TAG)
 	dancer_user.visible_message(SPAN_DANGER("\The [dancer_user] violently slices [target_atom] with its tail[buffed?" twice":""]!"),
 					SPAN_DANGER("We slice [target_atom] with our tail[buffed?" twice":""]!"))
 
@@ -497,27 +497,27 @@
 	dancer_user.face_atom(target_carbon)
 	dancer_user.flick_attack_overlay(target_carbon, "disarm")
 
-	REMOVE_TRAIT(dancer_user, TRAIT_DANCER_RED_TAG, TRAIT_SOURCE_ABILITY("tail_trip"))
+	var/buffed = FALSE
 
 	var/datum/effects/dancer_tag/normal/dancer_tag_effect = locate() in target_carbon.effects_list
 	var/datum/effects/dancer_tag/spread/tag_spread = locate() in target_carbon.effects_list
 
 	if(tag_spread)
-		ADD_TRAIT(dancer_user, TRAIT_DANCER_RED_TAG, TRAIT_SOURCE_ABILITY("tail_trip"))
+		buffed = TRUE
 		qdel(tag_spread)
 		apply_cooldown_override()
 
 	if(dancer_tag_effect)
-		ADD_TRAIT(dancer_user, TRAIT_DANCER_RED_TAG, TRAIT_SOURCE_ABILITY("tail_trip"))
+		buffed = TRUE
 		qdel(dancer_tag_effect)
 
-	if(!HAS_TRAIT(dancer_user, TRAIT_DANCER_RED_TAG))
+	if(!buffed)
 		new /datum/effects/xeno_slow(target_carbon, dancer_user, null, null, get_xeno_stun_duration(target_carbon, slow_duration))
 
 	var/stun_duration = stun_duration_default
 	var/daze_duration = 0
 
-	if(HAS_TRAIT(dancer_user, TRAIT_DANCER_RED_TAG))
+	if(buffed)
 		stun_duration = stun_duration_buffed
 		daze_duration = daze_duration_buffed
 

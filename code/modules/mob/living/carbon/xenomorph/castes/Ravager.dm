@@ -90,14 +90,16 @@
 /datum/behavior_delegate/ravager_base
 	var/shield_decay_time = 15 SECONDS // Time in deciseconds before our shield decays
 	var/slash_charge_cdr = 3 SECONDS // Amount to reduce charge cooldown by per slash
+	var/knockdown_amount = 1.6
+	var/fling_distance = 3
+	var/empower_targets = 0
+	var/super_empower_threshold = 3
 	var/dmg_buff_per_target = 2
 
-/datum/behavior_delegate/ravager_base/melee_attack_modify_damage(original_damage)
+/datum/behavior_delegate/ravager_base/melee_attack_modify_damage(original_damage, mob/living/carbon/carbon)
 	var/damage_plus
-
-	var/datum/action/xeno_action/onclick/empower/empower_used = get_action(bound_xeno, /datum/action/xeno_action/onclick/empower)
-	if(empower_used.empower_targets)
-		damage_plus = dmg_buff_per_target * empower_used.empower_targets
+	if(empower_targets)
+		damage_plus = dmg_buff_per_target * empower_targets
 
 	return original_damage + damage_plus
 
@@ -116,9 +118,7 @@
 			shield_total += xeno_shield.amount
 
 	. += "Empower Shield: [shield_total]"
-
-	var/datum/action/xeno_action/onclick/empower/empower_used = get_action(bound_xeno, /datum/action/xeno_action/onclick/empower)
-	. += "Bonus Slash Damage: [dmg_buff_per_target * empower_used.empower_targets]"
+	. += "Bonus Slash Damage: [dmg_buff_per_target * empower_targets]"
 
 /datum/behavior_delegate/ravager_base/on_life()
 	var/datum/xeno_shield/rav_shield
@@ -193,8 +193,6 @@
 /datum/action/xeno_action/onclick/empower/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	XENO_ACTION_CHECK(xeno)
-
 	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_PRE_EMPOWER))
 		XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
@@ -206,19 +204,15 @@
 		apply_cooldown()
 		return ..()
 	else
+		XENO_ACTION_CHECK(xeno)
 		actual_empower(xeno)
 		return TRUE
 
-/datum/action/xeno_action/onclick/empower/action_cooldown_check()
-	var/mob/living/carbon/xenomorph/xeno = owner
-	if(cooldown_timer_id == TIMER_ID_NULL)
-		return TRUE
-	else if(HAS_TRAIT(xeno, TRAIT_ABILITY_PRE_EMPOWER))
-		return TRUE
-	else
-		return FALSE
-
 /datum/action/xeno_action/onclick/empower/proc/actual_empower(mob/living/carbon/xenomorph/xeno)
+	var/datum/behavior_delegate/ravager_base/behavior = xeno.behavior_delegate
+	if(!behavior)
+		return
+
 	REMOVE_TRAIT(xeno, TRAIT_ABILITY_PRE_EMPOWER, TRAIT_SOURCE_ABILITY("pre_empower"))
 	button.icon_state = "template_xeno"
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] gets empowered by the surrounding enemies!"), SPAN_XENOWARNING("We feel a rush of power from the surrounding enemies!"))
@@ -232,14 +226,14 @@
 	var/list/telegraph_atom_list = list()
 
 	for(var/mob/living/mob in mobs_in_range)
-		if(empower_targets >= max_targets)
+		if(behavior.empower_targets >= max_targets)
 			break
 		if(mob.stat == DEAD || HAS_TRAIT(mob, TRAIT_NESTED))
 			continue
 		if(xeno.can_not_harm(mob))
 			continue
 
-		empower_targets++
+		behavior.empower_targets++
 		accumulative_health += shield_per_human
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(mob.loc, 1 SECONDS)
 		shake_camera(mob, 2, 1)
@@ -248,8 +242,8 @@
 
 	xeno.add_xeno_shield(accumulative_health, XENO_SHIELD_SOURCE_RAVAGER)
 	xeno.overlay_shields()
-	if(empower_targets >= super_empower_threshold) //you go in deep you reap the rewards
-		super_empower(xeno, empower_targets)
+	if(behavior.empower_targets >= behavior.super_empower_threshold) //you go in deep you reap the rewards
+		super_empower(xeno, behavior.empower_targets)
 
 /datum/action/xeno_action/onclick/empower/proc/super_empower(mob/living/carbon/xenomorph/xeno)
 	xeno.visible_message(SPAN_DANGER("[xeno] glows an eerie red as it empowers further with the strength of [empower_targets] hostiles!"), SPAN_XENOHIGHDANGER("We begin to glow an eerie red, empowered by the [empower_targets] enemies!"))
@@ -274,7 +268,11 @@
 	addtimer(CALLBACK(src, PROC_REF(remove_superbuff), xeno), 1.5 SECONDS)
 
 /datum/action/xeno_action/onclick/empower/proc/remove_superbuff(mob/living/carbon/xenomorph/xeno)
-	empower_targets = 0
+	var/datum/behavior_delegate/ravager_base/behavior = xeno.behavior_delegate
+	if(!behavior)
+		return
+
+	behavior.empower_targets = 0
 
 	REMOVE_TRAIT(xeno, TRAIT_ABILITY_SUPER_EMPOWER, TRAIT_SOURCE_ABILITY("super_empower"))
 	xeno.visible_message(SPAN_DANGER("[xeno]'s glow slowly dims."), SPAN_XENOHIGHDANGER("Our glow fades away, the power leaving our form!"))
@@ -296,23 +294,35 @@
 
 	actual_empower(xeno)
 
+/datum/action/xeno_action/onclick/empower/action_cooldown_check()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(cooldown_timer_id == TIMER_ID_NULL)
+		return TRUE
+	else if(HAS_TRAIT(xeno, TRAIT_ABILITY_PRE_EMPOWER))
+		return TRUE
+	else
+		return FALSE
+
 // Supplemental behavior for our charge
 /datum/action/xeno_action/activable/pounce/charge/additional_effects(mob/living/living)
 	var/mob/living/carbon/human/human = living
 	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/ravager_base/behavior = xeno.behavior_delegate
+	if(!behavior)
+		return
 
 	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_SUPER_EMPOWER))
 		return
 
 	ADD_TRAIT(xeno, TRAIT_ABILITY_POUNCE_CHARGE, TRAIT_SOURCE_ABILITY("pounce_charge"))
 	xeno.visible_message(SPAN_XENODANGER("[xeno] uses its shield to bash [human] as it charges at them!"), SPAN_XENODANGER("We use our shield to bash [human] as we charge at them!"))
-	human.apply_effect(knockdown_amount, WEAKEN)
+	human.apply_effect(behavior.knockdown_amount, WEAKEN)
 	human.attack_alien(xeno, rand(xeno.melee_damage_lower, xeno.melee_damage_upper), unblockable=TRUE)
 	REMOVE_TRAIT(xeno, TRAIT_ABILITY_POUNCE_CHARGE, TRAIT_SOURCE_ABILITY("pounce_charge"))
 
 	var/facing = get_dir(xeno, human)
 
-	xeno.throw_carbon(human, facing, fling_distance, SPEED_VERY_FAST, shake_camera = FALSE, immobilize = TRUE)
+	xeno.throw_carbon(human, facing, behavior.fling_distance, SPEED_VERY_FAST, shake_camera = FALSE, immobilize = TRUE)
 
 /datum/action/xeno_action/activable/scissor_cut/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/ravager_user = owner

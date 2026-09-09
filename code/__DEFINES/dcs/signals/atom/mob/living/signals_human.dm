@@ -101,3 +101,8 @@
 
 /// /datum/game_mode/colonialmarines/declare_completion
 #define COMSIG_HUMAN_FINISHED_ROUND "human_finished_round"
+
+/// From sniper aimed_shot/use_ability()
+#define COMSIG_HUMAN_AIMED_SHOT_START "human_aimed_shot_start"
+/// From From sniper aimed_shot/use_ability()
+#define COMSIG_HUMAN_AIMED_SHOT_END "human_aimed_shot_end"

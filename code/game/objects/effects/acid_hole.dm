@@ -11,11 +11,16 @@
 /obj/effect/acid_hole/Initialize()
 	. = ..()
 	if(istype(loc, /turf/closed/wall))
-		var/turf/closed/wall/W = loc
-		W.acided_hole = src
-		holed_wall = W
+		var/turf/closed/wall/acided_wall = loc
+		acided_wall.acided_hole = src
+		holed_wall = acided_wall
 		holed_wall.opacity = FALSE
-		setDir(W.acided_hole_dir)
+		// Original intended way for mappers to set the direction was to set wall.acided_hole_dir, but mappers didnt know that, so we will just handle all ways they could have set it.
+		// Since holes can only have two states (vertical/horizontal), default is vertical.
+		if(icon_state != initial(icon_state)) // Mapper varedited icon_state to horizontal, so we update code to reflect it.
+			holed_wall.acided_hole_dir = EAST
+		if(dir != EAST && dir != WEST) // Mapper didnt varedit dir to horizontal, so we will use acided_hole_dir.
+			setDir(acided_wall.acided_hole_dir)
 
 /obj/effect/acid_hole/Destroy()
 	if(holed_wall)

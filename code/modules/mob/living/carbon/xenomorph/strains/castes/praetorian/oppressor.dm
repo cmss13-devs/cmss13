@@ -51,10 +51,8 @@
 	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
 
 	if(world.time <= stabbing_xeno.next_move)
-	if(world.time <= stabbing_xeno.next_move)
 		return FALSE
 
-	XENO_ACTION_CHECK_USE_PLASMA(stabbing_xeno)
 	XENO_ACTION_CHECK_USE_PLASMA(stabbing_xeno)
 
 	stabbing_xeno.visible_message(SPAN_XENODANGER("\The [stabbing_xeno] uncoils and wildly throws out its tail!"), SPAN_XENODANGER("We uncoil our tail wildly in front of us!"))

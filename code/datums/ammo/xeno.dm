@@ -203,7 +203,7 @@
 	spit_cost =  45
 	damage = 45
 	max_range = 8
-	spit_windup = 1.2 SECONDS
+	spit_windup = 0.6 SECONDS
 	hits_lying_mobs = TRUE
 	damage_falloff = 0
 	var/portion_loss_per_hit = 0.55
@@ -245,7 +245,7 @@
 	name = "Acid blob"
 	damage = 25
 	spit_cost = 65
-	spit_windup = 1.2 SECONDS
+	spit_windup = 0.8 SECONDS
 	shell_speed = AMMO_SPEED_TIER_2
 	flags_ammo_behavior = AMMO_HITS_TARGET_TURF|AMMO_ACIDIC
 	max_range = 5

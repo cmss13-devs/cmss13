@@ -33,6 +33,7 @@
 #include "code\__DEFINES\access.dm"
 #include "code\__DEFINES\admin.dm"
 #include "code\__DEFINES\alerts.dm"
+#include "code\__DEFINES\announcement.dm"
 #include "code\__DEFINES\ARES.dm"
 #include "code\__DEFINES\assert.dm"
 #include "code\__DEFINES\atmospherics.dm"

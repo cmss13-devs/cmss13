@@ -772,8 +772,8 @@
 			update_icon()
 
 			if(length(contents) > 0)
-				spill_contents(user)
-				user.visible_message(SPAN_WARNING("[user] pops the lid off of [src], spilling its contents everywhere!"), SPAN_WARNING("You pop the lid off of [src], spilling its contents everywhere!"))
+				spill_contents(user, pick(3, 4, 4, 4, 5))
+				user.visible_message(SPAN_WARNING("[user] pops the lid off of [src], spilling some of its contents everywhere!"), SPAN_WARNING("You pop the lid off of [src], spilling some of its contents everywhere!"))
 				playsound(loc, 'sound/effects/pillbottle.ogg', 25, 1)
 				playsound(loc, 'sound/effects/pill_spill.ogg', 25, 1)
 			else
@@ -945,12 +945,19 @@
 	to_chat(user, SPAN_NOTICE("You color [src]."))
 	update_icon()
 
-/obj/item/storage/pill_bottle/proc/spill_contents(mob/user)
+/obj/item/storage/pill_bottle/proc/spill_contents(mob/user, max_pills_to_spill)
 	storage_close(user)
+
+	var/spilled = 0
 	var/turf/origin_turf = get_turf(user)
 	for (var/obj/item/pill in contents)
+		if (spilled >= max_pills_to_spill)
+			return
+
 		remove_from_storage(pill, origin_turf, user)
 		INVOKE_ASYNC(src, PROC_REF(spill_forward), pill, origin_turf, user.dir)
+
+		spilled++
 
 /obj/item/storage/pill_bottle/proc/spill_forward(obj/item/pill, turf/origin_turf, direction)
 	var/turf/target_turf = origin_turf

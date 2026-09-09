@@ -7,7 +7,7 @@
 	desc = "An automated weapon rack hooked up to a big storage of standard-issue weapons."
 	icon_state = "guns"
 	req_access = list()
-	req_one_access = list()
+	req_one_access = list(ACCESS_MARINE_GENERAL, ACCESS_MARINE_PREP)
 	hackable = TRUE
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND | VEND_STOCK_DYNAMIC
 
@@ -15,6 +15,7 @@
 	name = "\improper UD-6 Armory"
 	icon = 'icons/obj/structures/machinery/omaha/modules.dmi'
 	icon_state = "armory_module-full"
+	req_one_access = list()
 	bound_height = 64
 	density = FALSE
 

@@ -72,6 +72,14 @@
 	RegisterSignal(src, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(remove_equipment))
 	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_dir_change))
 
+/obj/docking_port/mobile/marine_dropship/midway/Initialize(mapload)
+	.=..()
+
+	for(var/place in shuttle_areas)
+		for(var/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/console in place)
+			console.linked_dropship = src
+			break
+
 /obj/docking_port/mobile/marine_dropship/Destroy(force)
 	. = ..()
 	qdel(door_control)

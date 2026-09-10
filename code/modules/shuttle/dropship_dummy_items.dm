@@ -18,8 +18,16 @@
 /obj/deployer/shuttle/dropship/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	. = ..()
 	if(is_reserved_level(src.z))
+		if(linked_item)
+			linked_item.moveToNullspace()
+		if(linked_item2)
+			linked_item2.moveToNullspace()
 		return
 	if(linked_dropship.is_hijacked)
+		if(linked_item)
+			linked_item.moveToNullspace()
+		if(linked_item2)
+			linked_item2.moveToNullspace()
 		return
 
 /obj/deployer/shuttle/dropship/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
@@ -300,18 +308,6 @@
 	layer = UNDER_TURF_LAYER
 	var/obj/structure/dropship_equipment/weapon/m90_minigun/linked_m90
 
-/obj/structure/dropship_equipment/weapon/m90_minigun
-	name = "\improper Twin-linked m90 miniguns"
-	icon = 'icons/obj/structures/machinery/midway/misc_96x96.dmi'
-	icon_state = "m90_minigun"
-	layer = FLY_LAYER
-	alpha = 225
-	density = FALSE
-	firing_sound = 'sound/effects/gau_incockpit.ogg'
-	skill_required = SKILL_PILOT_TRAINED
-	fire_mission_only = FALSE
-	shorthand = "GAU"
-
 /obj/deployer/shuttle/dropship/m90_minigun/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
 	. = ..()
 	var/turf/turf_below = SSmapping.get_turf_below(src.loc)
@@ -320,6 +316,8 @@
 			linked_m90.loc = turf_below
 		else
 			linked_m90 = new item_to_deploy(turf_below)
+			linked_m90.linked_shuttle = src.linked_dropship
+			linked_m90.linked_shuttle.equipments += linked_m90
 			linked_item = linked_m90
 			linked_m90.pixel_x = pixel_x
 			linked_m90.pixel_y = pixel_y

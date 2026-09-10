@@ -772,7 +772,7 @@
 			update_icon()
 
 			if(length(contents) > 0)
-				spill_contents(user, pick(3, 4, 4, 4, 5))
+				spill_contents(user, 3)
 				user.visible_message(SPAN_WARNING("[user] pops the lid off of [src], spilling some of its contents everywhere!"), SPAN_WARNING("You pop the lid off of [src], spilling some of its contents everywhere!"))
 				playsound(loc, 'sound/effects/pillbottle.ogg', 25, 1)
 				playsound(loc, 'sound/effects/pill_spill.ogg', 25, 1)

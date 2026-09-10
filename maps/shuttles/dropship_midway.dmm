@@ -161,6 +161,10 @@
 /area/shuttle/drop_midway/midway)
 "hP" = (
 /obj/structure/machinery/light/blue,
+/obj/structure/bed/chair/vehicle/midway_gunner{
+	dir = 1;
+	layer = 3.02
+	},
 /turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
 "hQ" = (
@@ -204,6 +208,13 @@
 "kb" = (
 /obj/deployer/shuttle/dropship/gibber,
 /turf/closed/shuttle/dropship_midway/wall_40,
+/area/shuttle/drop_midway/midway)
+"kl" = (
+/obj/structure/machinery/computer/cameras/dropship/midway/gunnery{
+	pixel_x = -16;
+	pixel_y = -48
+	},
+/turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
 "ks" = (
 /obj/structure/machinery/door/airlock/hatch/cockpit/midway{
@@ -758,13 +769,6 @@
 "LM" = (
 /turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
-"LT" = (
-/obj/structure/shuttle/part/decal/dropship_midway/decal,
-/obj/structure/shuttle/part/decal/dropship_midway/platform_decal{
-	dir = 1
-	},
-/turf/open/shuttle/dropship/midway/grated,
-/area/shuttle/drop_midway/midway)
 "Mb" = (
 /obj/structure/shuttle/part/decal/dropship_midway/decal,
 /obj/structure/ladder/multiz/dropship/midway,
@@ -1232,8 +1236,8 @@ ci
 GK
 ea
 yX
-IH
-IH
+hd
+hd
 hd
 Rx
 hd
@@ -1257,8 +1261,8 @@ is
 Sl
 Ng
 ks
-LT
-LM
+Ng
+kl
 hP
 hH
 YI
@@ -1284,8 +1288,8 @@ qw
 Mb
 Ct
 Zr
-lE
-lE
+hd
+hd
 hd
 Rx
 hd

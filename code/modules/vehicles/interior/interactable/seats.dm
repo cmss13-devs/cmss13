@@ -503,6 +503,21 @@
 	icon = 'icons/obj/structures/machinery/omaha/seats.dmi'
 	icon_state = "passenger_chair"
 
+/obj/structure/bed/chair/vehicle/midway_gunner // make it indestructible
+	icon = 'icons/obj/structures/machinery/midway/seats.dmi'
+	icon_state = "passenger_chair"
+	var/obj/docking_port/mobile/marine_dropship/linked_dropship
+	var/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/linked_gunnery_console
+	//RegisterSignal(operator, COMSIG_MOB_POST_CLICK, PROC_REF(fire_gun))
+
+/obj/structure/bed/chair/vehicle/midway_gunner/afterbuckle(mob/M)
+	. = ..()
+	to_chat(M, SPAN_NOTICE("Interact with the [linked_gunnery_console.name] to provide fire support."))
+//	M.reset_view(linked_dropship)
+
+/obj/structure/bed/chair/vehicle/midway_gunner/handle_rotation()
+	return
+
 /obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer
 	icon = 'icons/obj/structures/machinery/omaha/seats.dmi'
 	icon_state = "passenger_chair"

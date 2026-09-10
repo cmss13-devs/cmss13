@@ -18,6 +18,7 @@
 "jC" = (/obj/structure/machinery/cm_vending/sorted/attachments/squad{req_access = null; req_one_access = null; vend_y_offset = 0},/turf/open/floor/almayer/plating,/area/event)
 "kc" = (/obj/effect/landmark/start/executive,/turf/open/floor/almayer/plating,/area/event)
 "kk" = (/obj/effect/landmark/start/working_joe,/turf/open/floor/almayer/plating,/area/event)
+"kp" = (/obj/effect/vehicle_spawner/tank/fixed/minigun,/turf/open/floor/almayer/plating,/area/event)
 "kw" = (/obj/structure/barricade/handrail/no_vault{dir = 4},/obj/structure/barricade/handrail/no_vault{dir = 4},/turf/open/floor/plating/bare_catwalk,/area/event/dynamic)
 "kR" = (/obj/effect/landmark/start/professor,/turf/open/floor/almayer/plating,/area/event)
 "lo" = (/obj/effect/attach_point/weapon/dropship1/left_fore,/turf/open_space,/area/event/dynamic)
@@ -153,7 +154,7 @@ BFqkLKLKLKLKLKLKLKLKLKLKLKLKLKBFLKLKLKLKLKLKLKLKLKLKLKLKLKBzLKLKLKLKLKLKLKLKLKLK
 BFgYLKLKLKLKLKLKLKLKXUCOjCnaIwBFLKLKLKLKBzLKLKMpLKLKLKLKLKLKLKLKLKLKLKLKLKBzLKLKLKBFKeKeKeKeKeKeKeKe
 BFUDLKLKLKLKLKLKLKLKBFBFBFBFBFBFLKLKLKLKLKLKqeLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKBFKeKeKeKeKeKeKeKe
 BFuULKLKLKLKLKLKLKLKLKLKBFBFBFBFLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKBFKeKeKeKeKeKeKeKe
-BFKQLKLKLKLKLKLKLKLKLKLKBFGWGWBFLKLKLKLKLKLKLKLKLKBzLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKBFKeKeKeKeKeKeKeKe
+BFKQLKLKLKLKLKLKLKLKLKLKBFGWGWBFLKLKLKLKLKLKLKLKLKBzkpLKLKLKLKLKLKLKLKLKLKLKLKLKLKBFKeKeKeKeKeKeKeKe
 BFPFLKLKLKLKLKLKLKLKLKLKLKLKLKBFLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKBFKeKeKeKeKeKeKeKe
 BFLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKpgLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKBFKeKeKeKeKeKeKeKe
 BFjeLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKLKBFKeKeKeKeKeKeKeKe

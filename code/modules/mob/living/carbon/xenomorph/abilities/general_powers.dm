@@ -150,7 +150,7 @@
 
 	INVOKE_ASYNC(src, PROC_REF(try_autoweed), xeno)
 
-/datum/action/xeno_action/onclick/autoweeding_toggle/proc/stop_autoweed(mob/living/carbon/xenomorph/xeno)
+/datum/action/xeno_action/onclick/autoweeding_toggle/proc/stop_autoweed(mob/living/carbon/xenomorph/xeno, silent = FALSE)
 	SIGNAL_HANDLER
 
 	if(!auto_weeding)
@@ -159,7 +159,8 @@
 
 	if(xeno)
 		UnregisterSignal(xeno, list(COMSIG_MOVABLE_MOVED, COMSIG_MOB_DEATH))
-		to_chat(xeno, SPAN_XENONOTICE("We will no longer automatically plant weeds."))
+		if(!silent)
+			to_chat(xeno, SPAN_XENONOTICE("We will no longer automatically plant weeds."))
 	button.icon_state = "template_xeno"
 
 /datum/action/xeno_action/onclick/autoweeding_toggle/proc/try_autoweed(mob/living/carbon/xenomorph/xeno)
@@ -168,8 +169,8 @@
 
 	var/plasma_cost = linked_planting.plasma_cost
 	if(xeno.plasma_max > 0 && (((xeno.plasma_stored - plasma_cost) / xeno.plasma_max) * 100 < 20))
-		to_chat(xeno, SPAN_XENONOTICE("Our plasma is too low."))
-		stop_autoweed(xeno)
+		to_chat(xeno, SPAN_XENONOTICE("We will no longer continue autoweeding for our plasma is too low."))
+		stop_autoweed(xeno, silent = TRUE)
 		return
 
 	var/turf/turf = xeno.loc

@@ -831,17 +831,35 @@ world
 /proc/BlendRGB(rgb1, rgb2, amount)
 	return rgb_gradient(amount, 0, rgb1, 1, rgb2, "loop")
 
-/proc/icon2base64(icon/icon)
-	if(!isicon(icon))
-		return FALSE
-	var/savefile/dummySave = new("tmp/dummySave.sav")
-	dummySave["dummy"] << icon
-	var/iconData = dummySave.ExportText("dummy")
-	var/list/partial = splittext(iconData, "{")
-	. = replacetext(copytext_char(partial[2], 3, -5), "\n", "")  //if cleanup fails we want to still return the correct base64
-	dummySave.Unlock()
-	dummySave = null
-	fdel("tmp/dummySave.sav")  //if you get the idea to try and make this more optimized, make sure to still call unlock on the savefile after every write to unlock it.
+/proc/icon2base64(icon_file, icon_state)
+	if (!icon_exists(icon_file, icon_state, TRUE))
+		return
+
+	var/sprite_object = list(
+		icon_file = icon_file,
+		icon_state = icon_state,
+		dir = SOUTH,
+		frame = 1,
+		transform = list()
+	)
+	var/extern_result = rustg_iconforge_generate_headless("tmp/forged.png", json_encode(list("sprite" = sprite_object)), TRUE)
+
+	if (extern_result["file_path"] != 'tmp/forged.png')
+		// Rust-g errored out, fall back to old implementation
+		var/savefile/save_buffer = new /savefile("tmp/forged.sav")
+		save_buffer["icon"] << icon(icon_file, icon_state = icon_state)
+
+		var/icon_data = save_buffer.ExportText("icon")
+		var/list/split_data = splittext(icon_data, "{")
+		. = replacetext(copytext_char(split_data[2], 3, -5), "\n", "")
+
+		save_buffer.Unlock()
+		save_buffer = null
+		fdel("tmp/forged.sav")
+		return
+
+	// No need to delete temp file, it'll be overridden by next proc call
+	return rustg_encode_base64(rustg_file_read("tmp/forged.png"))
 
 /**
  * Center's an image.

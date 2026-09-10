@@ -42,18 +42,10 @@
 		<div class="LorePage">
 			<h2>Where am I?</h2>
 			<p>
-				You are aboard the <strong>%SHIP_NAME%</strong>, a military vessel carrying a Colonial Marine force. This ship
-				is your home between deployments. There are various departments aboard the ship. Command directs operations, requisitions supplies equipment, and medical puts
-				people back together. Dropships carry personnel and supplies between the ship and the surface.
-			</p>
-			<p>
+				You are aboard the <strong>%SHIP_NAME%</strong>, a military vessel carrying a Colonial Marine force.
 				Your patrol area is the <strong>Neroid Sector</strong>, a remote region of the colonial frontier in the
 				<strong>Anglo-Japanese Arm</strong>, far from Earth. CLF insurgents threaten the sector's security. The USCM is
 				here to protect colonial Settlements and support legitimate authorities.
-			</p>
-			<p>
-				Your destination and orders depend on the current mission. <strong>Listen to the briefing.</strong> This
-				leaflet cannot tell you what happened while you were asleep.
 			</p>
 			<h2>What sort of world did I wake up in?</h2>
 			<p>

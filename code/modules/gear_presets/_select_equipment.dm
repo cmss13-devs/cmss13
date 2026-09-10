@@ -179,6 +179,8 @@
 	new_human.vendor_buyable_categories = MARINE_CAN_BUY_ALL
 
 /datum/equipment_preset/proc/equip_spawn_lore(mob/living/carbon/human/new_human)
+	set waitfor = FALSE
+
 	// survivor and non-USCM don't get the orientation leaflet
 	if(!istype(src, /datum/equipment_preset/uscm) && !istype(src, /datum/equipment_preset/uscm_ship) && !istype(src, /datum/equipment_preset/uscm_co))
 		return
@@ -194,7 +196,19 @@
 	for(var/role in player.playtimes)
 		var/datum/entity/player_time/playtime = player.playtimes[role]
 		total_playtime += playtime.total_minutes MINUTES_TO_DECISECOND
-	if(total_playtime >= 10 HOURS)
+	if(total_playtime >= JOB_PLAYTIME_TIER_1)
+		return
+
+	var/auto_open = total_playtime == 0
+	UNTIL(QDELETED(new_human) || (SSticker.IsRoundInProgress() && isturf(new_human.loc) && new_human.body_position == STANDING_UP)) //waits until they exit the cryopod so they don't immediately drop the pamp
+	if(QDELETED(new_human) || !new_human.client)
+		return
+
+	total_playtime = 0
+	for(var/role in player.playtimes)
+		var/datum/entity/player_time/playtime = player.playtimes[role]
+		total_playtime += playtime.total_minutes MINUTES_TO_DECISECOND
+	if(total_playtime >= JOB_PLAYTIME_TIER_1)
 		return
 
 	var/obj/item/lore_book/marine_cryosleep/pamphlet = new(get_turf(new_human))
@@ -204,6 +218,10 @@
 				break
 		new_human.put_in_hands(pamphlet)
 	to_chat(new_human, SPAN_NOTICE("You have been issued \a [pamphlet] as a refresher for post-cryosleep memory loss. Use it in your hand to read it."))
+
+	if(auto_open && !new_human.client.player_details.orientation_leaflet_opened)
+		new_human.client.player_details.orientation_leaflet_opened = TRUE
+		pamphlet.tgui_interact(new_human)
 
 /datum/equipment_preset/proc/load_preset(mob/living/carbon/human/new_human, randomise = FALSE, count_participant = FALSE, client/mob_client, show_job_gear = TRUE)
 	if(!new_human.hud_used)

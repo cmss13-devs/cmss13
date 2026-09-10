@@ -538,13 +538,13 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	new_job.load_loadout(new_human)
 
-	new_human.assigned_equipment_preset?.equip_spawn_lore(new_human)
-
 	for(var/cardinal in GLOB.cardinals)
 		var/obj/structure/machinery/cryopod/pod = locate() in get_step(new_human, cardinal)
 		if(pod)
 			pod.go_in_cryopod(new_human, silent = TRUE)
 			break
+
+	new_human.assigned_equipment_preset?.equip_spawn_lore(new_human)
 
 	new_human.sec_hud_set_ID()
 	new_human.hud_set_squad()

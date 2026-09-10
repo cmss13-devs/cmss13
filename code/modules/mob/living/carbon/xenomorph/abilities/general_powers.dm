@@ -96,75 +96,99 @@
 	SEND_SIGNAL(xeno, COMSIG_XENO_PLANT_RESIN_NODE)
 	return ..()
 
+/datum/action/xeno_action/onclick/autoweeding_toggle/Destroy()
+	if(owner)
+		UnregisterSignal(owner, list(COMSIG_MOVABLE_MOVED, COMSIG_MOB_DEATH))
+	linked_planting = null
+	return ..()
+
 ///Toggles automatic weeding
 /datum/action/xeno_action/onclick/autoweeding_toggle/use_ability(atom/atom)
-	if(!linked_planting)
-		for(var/datum/action/xeno_action/onclick/plant_weeds/weed_planting in owner.actions)
-			linked_planting = weed_planting
-			break
-	if(!our_sister)
-		our_sister = owner
-	if(auto_weeding)
-		UnregisterSignal(owner, COMSIG_MOVABLE_MOVED)
-		UnregisterSignal(owner, COMSIG_MOB_DEATH)
-		auto_weeding = FALSE
-		to_chat(owner, SPAN_XENONOTICE("We will no longer automatically plant weeds."))
-		button.icon_state = "template_xeno"
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!istype(xeno))
 		return
-	RegisterSignal(owner, COMSIG_MOVABLE_MOVED, PROC_REF(weed_on_move))
-	RegisterSignal(owner, COMSIG_MOB_DEATH, PROC_REF(use_ability))
+
+	if(!linked_planting)
+		linked_planting = locate(/datum/action/xeno_action/onclick/plant_weeds) in xeno.actions
+		if(!linked_planting)
+			return
+
+	if(auto_weeding)
+		stop_autoweed(xeno)
+		return
+
+	RegisterSignal(xeno, COMSIG_MOVABLE_MOVED, PROC_REF(weed_on_move))
+	RegisterSignal(xeno, COMSIG_MOB_DEATH, PROC_REF(use_ability))
 	auto_weeding = TRUE
+	step_count = 0
 	button.icon_state = "template_active"
-	to_chat(owner, SPAN_XENONOTICE("We will now automatically plant weeds."))
-	step_counter_x = 0
-	step_counter_y = 0
-	linked_planting.use_ability()
+	to_chat(xeno, SPAN_XENONOTICE("We will now automatically plant weeds."))
+
+	try_autoweed(xeno)
 
 	return ..()
 
-///Used for performing automatic weeding
-/datum/action/xeno_action/onclick/autoweeding_toggle/proc/weed_on_move()
-	switch(our_sister.last_move_dir)
-		if(NORTH)
-			step_counter_y += 1
-			if(step_counter_y >= step_range)
-				step_counter_y = 0
-				count_success = TRUE
-		if(SOUTH)
-			step_counter_y -= 1
-			if(step_counter_y <= -step_range)
-				step_counter_y = 0
-				count_success = TRUE
-		if(EAST)
-			step_counter_x += 1
-			if(step_counter_x >= step_range)
-				step_counter_x = 0
-				count_success = TRUE
-		if(WEST)
-			step_counter_x -= 1
-			if(step_counter_x <= -step_range)
-				step_counter_x = 0
-				count_success = TRUE
+///signal handler for moving while autoweeding is active
+/datum/action/xeno_action/onclick/autoweeding_toggle/proc/weed_on_move(mob/living/carbon/xenomorph/xeno, atom/old_loc, move_dir, forced)
+	SIGNAL_HANDLER
 
-	if(count_success)
-		var/turf/turf = our_sister.loc
-		if(!istype(turf))
-			return
-		if(turf.density)
-			return
-		if(turf.is_weedable < FULLY_WEEDABLE)
-			return
-		if(!linked_planting.action_cooldown_check())
-			return
-		count_success = FALSE
-		for(var/obj/effect/alien/weeds/node/preplanted_node in view(view_range, turf))
-			if(preplanted_node)
-				return
-		if(((our_sister.plasma_stored - linked_planting.plasma_cost) / our_sister.plasma_max * 100) < 20)
-			to_chat(our_sister, SPAN_XENONOTICE("Plasma is too low."))
-			src.use_ability()
-			return
-		linked_planting.use_ability(src, autoplanted = TRUE)
+	// apparently forced isnt really used anywhere, but just in case atp
+	if(forced || !istype(xeno) || xeno.stat || HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
+		return
+
+	if(xeno.pulledby || xeno.throwing || xeno.buckled)
+		return
+
+	// check_state already handles these, but better return early so we dont have too much overhead
+	if(xeno.resting || xeno.body_position != STANDING_UP || xeno.is_mob_incapacitated())
+		return
+
+	step_count++
+	if(step_count < step_delay)
+		return
+	step_count = 0
+
+	INVOKE_ASYNC(src, PROC_REF(try_autoweed), xeno)
+
+/datum/action/xeno_action/onclick/autoweeding_toggle/proc/stop_autoweed(mob/living/carbon/xenomorph/xeno)
+	SIGNAL_HANDLER
+
+	if(!auto_weeding)
+		return
+	auto_weeding = FALSE
+
+	if(xeno)
+		UnregisterSignal(xeno, list(COMSIG_MOVABLE_MOVED, COMSIG_MOB_DEATH))
+		to_chat(xeno, SPAN_XENONOTICE("We will no longer automatically plant weeds."))
+	button.icon_state = "template_xeno"
+
+/datum/action/xeno_action/onclick/autoweeding_toggle/proc/try_autoweed(mob/living/carbon/xenomorph/xeno)
+	if(!linked_planting || !linked_planting.action_cooldown_check())
+		return
+
+	var/plasma_cost = linked_planting.plasma_cost
+	if(xeno.plasma_max > 0 && (((xeno.plasma_stored - plasma_cost) / xeno.plasma_max) * 100 < 20))
+		to_chat(xeno, SPAN_XENONOTICE("We will no longer continue autoweeding, for our plasma is too low."))
+		stop_autoweed(xeno)
+		return
+
+	var/turf/turf = xeno.loc
+	if(!istype(turf) || turf.density || turf.is_weedable < FULLY_WEEDABLE)
+		return
+
+	if(locate(/obj/effect/alien/weeds/node) in turf)
+		return
+
+	// if we are already standing on weeds, don't bother
+	var/obj/effect/alien/weeds/local_weeds = locate(/obj/effect/alien/weeds) in turf
+	if(local_weeds && local_weeds.parent)
+		return
+
+	// locate check rather than view + why would xenos care much about LOS for nodes anyway
+	if(locate(/obj/effect/alien/weeds/node) in orange(node_search_range, turf))
+		return
+
+	linked_planting.use_ability(turf, autoplanted = TRUE)
 
 /mob/living/carbon/xenomorph/lay_down()
 	if(!can_heal && !resting)

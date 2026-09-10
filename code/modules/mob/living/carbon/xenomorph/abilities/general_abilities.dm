@@ -42,12 +42,10 @@
 
 	var/auto_weeding = FALSE
 	var/datum/action/xeno_action/onclick/plant_weeds/linked_planting
-	var/mob/living/carbon/xenomorph/our_sister
-	var/step_counter_x = 0
-	var/step_counter_y = 0
-	var/count_success = FALSE
-	var/view_range = 4
-	var/step_range = 2
+
+	var/step_count = 0
+	var/step_delay = 3
+	var/node_search_range = 4
 
 // Resting
 /datum/action/xeno_action/onclick/xeno_resting

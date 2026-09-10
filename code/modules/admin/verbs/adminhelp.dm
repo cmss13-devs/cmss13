@@ -884,7 +884,7 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 //
 
 /client/proc/giveadminhelpverb()
-	if(!src)
+	if(!src || !istype(src, /client)) // non-clients, like the dummy client, will cause a runtime if this is ran
 		return
 	add_verb(src, /client/proc/adminhelp)
 	deltimer(adminhelptimerid)

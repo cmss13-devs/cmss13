@@ -339,6 +339,8 @@
 			join_turf = get_turf(pick(GLOB.latejoin))
 		human.forceMove(join_turf)
 
+		human.assigned_equipment_preset?.equip_spawn_lore(human)
+
 		for(var/cardinal in GLOB.cardinals)
 			var/obj/structure/machinery/cryopod/pod = locate() in get_step(human, cardinal)
 			if(pod)

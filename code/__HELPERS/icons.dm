@@ -844,7 +844,7 @@ world
 	)
 	var/extern_result = rustg_iconforge_generate_headless("tmp/forged.png", json_encode(list("sprite" = sprite_object)), TRUE)
 
-	if (extern_result["file_path"] != 'tmp/forged.png')
+	if (extern_result["file_path"] != "tmp/forged.png" || !fexists("tmp/forged.png"))
 		// Rust-g errored out, fall back to old implementation
 		log_debug("External rust-g library call for icon2base64 errored out! Reverting to legacy fallback implementation.")
 

@@ -547,7 +547,8 @@
 
 /obj/item/weapon/gun/rifle/sniper/svd
 	name = "\improper Type 88 designated marksman rifle"
-	desc = "The standard issue DMR of the UPP, the Type 88 is sought after by competitive shooters and terrorists alike for its high degree of accuracy. Typically loaded with armor-piercing 7.62x54mmR rounds in a 12 round magazine."
+	desc = "The standard issue DMR of the UPP, the Type 88 is an accurate and powerful rifle, whilst not a true sniper rifle, it greatly exceeds the range and accuracy of similar DMRs used by other nations such as the M4RA and L64 rifles used by the USCM and TWE."
+	desc_lore = "More of an upgrade than an actual new weapon, the design of the Type 88 is nearly identical to the older Type 80 DMR of Dog War fame, but with an upscaled 12.7x35mm cartridge compared to the older 9x40mm cartridge used by the Type 80."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/marksman_rifles.dmi'
 	icon_state = "type88"
 	item_state = "type88"
@@ -600,5 +601,5 @@
 	accuracy_mult = BASE_ACCURACY_MULT * 3
 	scatter = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT
-	recoil = RECOIL_AMOUNT_TIER_5
+	recoil = RECOIL_AMOUNT_TIER_4
 	damage_falloff_mult = 0

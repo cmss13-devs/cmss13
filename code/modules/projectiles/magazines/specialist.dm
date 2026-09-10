@@ -56,9 +56,9 @@
 //Type 88 //Based on the actual Dragunov designated marksman rifle.
 
 /obj/item/ammo_magazine/sniper/svd
-	name = "\improper Type-88 Magazine (7.62x54mmR)"
-	desc = "A large-caliber 7.62x54mmR magazine for the Type-88 designated marksman rifle."
-	caliber = "7.62x54mmR"
+	name = "\improper Type-88 Magazine (12.7x35mm)"
+	desc = "A large-caliber 12.7x35mm caseless magazine for the Type-88 designated marksman rifle."
+	caliber = "12.7x35mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/marksman_rifles.dmi'
 	icon_state = "type88mag"
 	default_ammo = /datum/ammo/bullet/sniper/upp
@@ -411,9 +411,9 @@
 
 /obj/item/ammo_magazine/rocket/upp
 	name = "\improper HJRA-12 High-Explosive Rocket"
-	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Rocket Launcher. This one is a standard high-explosive rocket for use against light vehicles or as an anti-personnel grenade."
+	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a standard high-explosive rocket for use against unarmored vehicles or structures, the most common use cases."
 
-	caliber = "88mm"
+	caliber = "95mm"
 	icon_state = "hjra_explosive"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/rocket_launchers.dmi'
 
@@ -430,9 +430,9 @@
 
 /obj/item/ammo_magazine/rocket/upp/at
 	name = "\improper HJRA-12 Anti-Tank Rocket"
-	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Rocket Launcher. This one is a standard anti-tank rocket designed to disable or destroy hostile armored vehicles."
+	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a standard anti-tank rocket designed to disable or destroy armored vehicles, but the disposable RPG-150 is usually prefered for this."
 
-	caliber = "88mm"
+	caliber = "95mm"
 	icon_state = "hjra_tank"
 
 	max_rounds = 1
@@ -441,10 +441,9 @@
 	reload_delay = 85
 
 /obj/item/ammo_magazine/rocket/upp/incen
-	name = "\improper HJRA-12 Extreme-Intensity Incendiary Rocket"
-	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Rocket Launcher. This one is an extreme-intensity incendiary rocket."
-	desc_lore = "This incendiary rocket uses an experimental chemical designated 'R-189' by the UPP. It is designed to melt through fortifications and bunkers but is most commonly used in an anti-personnel role due to over-issuing and the temperatures after use in its intended role leaving behind a cloud of super-heated air, preventing troops' advance."
-	caliber = "88mm"
+	name = "\improper HJRA-12 Thermobaric Rocket"
+	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a thermobaric rocket for anti-personnal or against emplacements. A similar load is used in the disposable URO-H launcher."
+	caliber = "95mm"
 	icon_state = "hjra_incen"
 
 	max_rounds = 1

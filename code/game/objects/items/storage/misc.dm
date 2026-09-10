@@ -157,7 +157,7 @@
 	can_hold = list(/obj/item/weapon/gun/pistol/t73, /obj/item/ammo_magazine/pistol/t73)
 
 /obj/item/storage/box/fluff_gun/upp/fill_preset_inventory()
-	new /obj/item/weapon/gun/pistol/t73(src)
+	new /obj/item/weapon/gun/pistol/t73/loadout(src)
 	new /obj/item/ammo_magazine/pistol/t73(src)
 	new /obj/item/ammo_magazine/pistol/t73(src)
 	new /obj/item/ammo_magazine/pistol/t73(src)

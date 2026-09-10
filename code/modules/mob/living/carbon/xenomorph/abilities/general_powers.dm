@@ -136,7 +136,7 @@
 	if(forced || !istype(xeno) || xeno.stat || HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
 		return
 
-	if(xeno.pulledby || xeno.throwing || xeno.buckled)
+	if(xeno.pulledby || xeno.buckled)
 		return
 
 	// check_state already handles these, but better return early so we dont have too much overhead

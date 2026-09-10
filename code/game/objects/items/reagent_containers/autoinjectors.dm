@@ -597,7 +597,6 @@
 	uses_left = 1
 	black_market_value = 25
 	cannot_refill = TRUE
-	is_crystal = TRUE
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja/get_examine_text(mob/user)
 	update_uses_left()

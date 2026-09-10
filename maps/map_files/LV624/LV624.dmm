@@ -7301,8 +7301,7 @@
 	dwidth = 8;
 	width = 17;
 	dheight = 12;
-	height = 24;
-	zheight = 1
+	height = 24
 	},
 /turf/open_space,
 /area/sky)

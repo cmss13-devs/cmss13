@@ -46,6 +46,8 @@
 	var/step_counter_x = 0
 	var/step_counter_y = 0
 	var/count_success = FALSE
+	var/view_range = 4
+	var/step_range = 2
 
 // Resting
 /datum/action/xeno_action/onclick/xeno_resting

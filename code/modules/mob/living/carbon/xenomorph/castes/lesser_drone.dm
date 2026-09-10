@@ -69,7 +69,6 @@
 		/datum/action/xeno_action/onclick/plant_weeds/lesser, //first macro
 		/datum/action/xeno_action/onclick/choose_resin, //second macro
 		/datum/action/xeno_action/activable/secrete_resin, //third macro
-		/datum/action/xeno_action/onclick/autoweeding_toggle,
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -131,7 +130,7 @@
 		bound_xeno.adjustBruteLoss(5)
 
 
-/datum/action/xeno_action/onclick/plant_weeds/lesser/use_ability(atom/target_atom)
+/datum/action/xeno_action/onclick/plant_weeds/lesser/use_ability(atom/target_atom, autoplanted)
 	var/mob/living/carbon/xenomorph/lesser_drone/xeno = owner
 	var/obj/effect/alien/weeds/node/mother_node
 

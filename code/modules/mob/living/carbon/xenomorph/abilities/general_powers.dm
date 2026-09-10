@@ -3,7 +3,7 @@
 // and abilities files hold the object declarations for the abilities
 
 // Plant weeds
-/datum/action/xeno_action/onclick/plant_weeds/use_ability(atom/atom)
+/datum/action/xeno_action/onclick/plant_weeds/use_ability(atom/atom, autoplanted)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!action_cooldown_check())
 		return
@@ -89,7 +89,10 @@
 			qdel(cur_weed)
 
 	playsound(xeno.loc, "alien_resin_build", 25)
-	apply_cooldown()
+	if(autoplanted)
+		apply_cooldown(0)
+	else
+		apply_cooldown()
 	SEND_SIGNAL(xeno, COMSIG_XENO_PLANT_RESIN_NODE)
 	return ..()
 
@@ -121,47 +124,47 @@
 
 ///Used for performing automatic weeding
 /datum/action/xeno_action/onclick/autoweeding_toggle/proc/weed_on_move()
-	var/turf/turf = our_sister.loc
-	if(!linked_planting.action_cooldown_check())
-		return
-	if(!istype(turf))
-		return
-	if(turf.density)
-		return
-	if(turf.is_weedable < FULLY_WEEDABLE)
-		return
-
 	switch(our_sister.last_move_dir)
 		if(NORTH)
 			step_counter_y += 1
-			if(step_counter_y >= 5)
+			if(step_counter_y >= step_range)
 				step_counter_y = 0
 				count_success = TRUE
 		if(SOUTH)
 			step_counter_y -= 1
-			if(step_counter_y <= -5)
+			if(step_counter_y <= -step_range)
 				step_counter_y = 0
 				count_success = TRUE
 		if(EAST)
 			step_counter_x += 1
-			if(step_counter_x >= 5)
+			if(step_counter_x >= step_range)
 				step_counter_x = 0
 				count_success = TRUE
 		if(WEST)
 			step_counter_x -= 1
-			if(step_counter_x <= -5)
+			if(step_counter_x <= -step_range)
 				step_counter_x = 0
 				count_success = TRUE
+
 	if(count_success)
+		var/turf/turf = our_sister.loc
+		if(!istype(turf))
+			return
+		if(turf.density)
+			return
+		if(turf.is_weedable < FULLY_WEEDABLE)
+			return
+		if(!linked_planting.action_cooldown_check())
+			return
 		count_success = FALSE
-		for(var/obj/effect/alien/weeds/node/preplanted_node in view(4, turf))
+		for(var/obj/effect/alien/weeds/node/preplanted_node in view(view_range, turf))
 			if(preplanted_node)
 				return
 		if(((our_sister.plasma_stored - linked_planting.plasma_cost) / our_sister.plasma_max * 100) < 20)
 			to_chat(our_sister, SPAN_XENONOTICE("Plasma is too low."))
 			src.use_ability()
 			return
-		linked_planting.use_ability()
+		linked_planting.use_ability(src, autoplanted = TRUE)
 
 /mob/living/carbon/xenomorph/lay_down()
 	if(!can_heal && !resting)

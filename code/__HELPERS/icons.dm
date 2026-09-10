@@ -846,6 +846,8 @@ world
 
 	if (extern_result["file_path"] != 'tmp/forged.png')
 		// Rust-g errored out, fall back to old implementation
+		log_debug("External rust-g library call for icon2base64 errored out! Reverting to legacy fallback implementation.")
+
 		var/savefile/save_buffer = new /savefile("tmp/forged.sav")
 		save_buffer["icon"] << icon(icon_file, icon_state = icon_state)
 

@@ -147,9 +147,6 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	desc = "Sandstone is sand cemented into stone. A common building material for primitive civilizations, but it can still make a good enough wall. This one has strange runes embued into the brick."
 	singular_name = "runed sandstone brick"
 	icon_state = "sheet-runedsandstone"
-	throw_speed = SPEED_VERY_FAST
-	throw_range = 5
-	amount_sprites = TRUE
 	black_market_value = 15
 	sheettype = "runedsandstone"
 	stack_id = "runedsandstone"

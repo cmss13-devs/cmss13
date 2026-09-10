@@ -417,8 +417,9 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 
 //Removes the ahelp verb and returns it after 2 minutes
 /datum/admin_help/proc/TimeoutVerb()
-	remove_verb(initiator, /client/proc/adminhelp)
-	initiator.adminhelptimerid = addtimer(CALLBACK(initiator, /client/proc/giveadminhelpverb), 1200, TIMER_STOPPABLE) //2 minute cooldown of admin helps
+	if(istype(initiator, /client))
+		remove_verb(initiator, /client/proc/adminhelp)
+		initiator.adminhelptimerid = addtimer(CALLBACK(initiator, /client/proc/giveadminhelpverb), 1200, TIMER_STOPPABLE) //2 minute cooldown of admin helps
 
 //private
 /datum/admin_help/proc/FullMonty(ref_src)

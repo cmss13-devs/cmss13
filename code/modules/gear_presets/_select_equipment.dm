@@ -217,7 +217,7 @@
 			if(new_human.equip_to_slot_if_possible(held_item, WEAR_IN_BACK, disable_warning = TRUE) || new_human.drop_inv_item_on_ground(held_item))
 				break
 		new_human.put_in_hands(pamphlet)
-	to_chat(new_human, SPAN_NOTICE("You have been issued \a [pamphlet] as a refresher for post-cryosleep memory loss. Use it in your hand to read it."))
+	to_chat(new_human, SPAN_NOTICE("You have been issued \a [pamphlet] as a refresher for post-hypersleep memory loss. Use it in your hand to read it."))
 
 	if(auto_open && !new_human.client.player_details.orientation_leaflet_opened)
 		new_human.client.player_details.orientation_leaflet_opened = TRUE

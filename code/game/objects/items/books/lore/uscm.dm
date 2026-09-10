@@ -1,6 +1,6 @@
 /obj/item/lore_book/marine_cryosleep
-	name = "USCM post-cryosleep orientation pamphlet"
-	desc = "A small USCM pamphlet issued to waking marines as a refresher for temporary cryosleep amnesia. The cover reads: 'Welcome Back, Marine.'"
+	name = "USCM post-hypersleep orientation pamphlet"
+	desc = "A small USCM pamphlet issued to waking marines as a refresher for temporary hypersleep amnesia. The cover reads: 'Welcome Back, Marine.'"
 	icon = 'icons/obj/items/pamphlets.dmi'
 	icon_state = "pamphlet_written"
 	item_state = "paper"
@@ -19,7 +19,7 @@
 			<h2>Still waking up?</h2>
 			<p>
 				Head full of fog? Having trouble placing the last few months? Temporary confusion and gaps in memory can follow
-				prolonged cryosleep. Read this leaflet and give yourself a moment. <strong>If you
+				prolonged hypersleep for the inexperienced. Read this leaflet and give yourself a moment. <strong>If you
 				cannot remember your own name or the confusion persists, report to medical.</strong>
 			</p>
 			<h2>Who am I?</h2>

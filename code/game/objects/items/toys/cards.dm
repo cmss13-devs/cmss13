@@ -108,6 +108,9 @@
 	else
 		icon_state = "[base_icon]_open"
 
+/obj/item/toy/deck/item_action_slot_check(mob/user, slot)
+	return FALSE // Do not add our verbs to mobs because set src sucks
+
 /obj/item/toy/deck/verb/draw_card()
 	set category = "Object"
 	set name = "Draw"

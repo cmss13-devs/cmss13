@@ -327,7 +327,7 @@
 	dir = 1
 	},
 /obj/structure/bed/chair/vehicle/omaha_passenger{
-	pixel_x = +8;
+	pixel_x = 8;
 	dir = 1
 	},
 /turf/open/shuttle/dropship/midway/grated,
@@ -435,7 +435,7 @@
 	pixel_x = -8
 	},
 /obj/structure/bed/chair/vehicle/omaha_passenger{
-	pixel_x = +8
+	pixel_x = 8
 	},
 /turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
@@ -826,7 +826,7 @@
 	pixel_x = -8
 	},
 /obj/structure/bed/chair/vehicle/omaha_passenger{
-	pixel_x = +8
+	pixel_x = 8
 	},
 /turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
@@ -893,7 +893,7 @@
 	pixel_x = -8
 	},
 /obj/structure/bed/chair/vehicle/omaha_passenger{
-	pixel_x = +8
+	pixel_x = 8
 	},
 /turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
@@ -948,7 +948,7 @@
 	dir = 1
 	},
 /obj/structure/bed/chair/vehicle/omaha_passenger{
-	pixel_x = +8;
+	pixel_x = 8;
 	dir = 1
 	},
 /turf/open/shuttle/dropship/midway/grated,

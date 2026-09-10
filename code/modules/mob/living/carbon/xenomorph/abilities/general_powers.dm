@@ -168,7 +168,7 @@
 
 	var/plasma_cost = linked_planting.plasma_cost
 	if(xeno.plasma_max > 0 && (((xeno.plasma_stored - plasma_cost) / xeno.plasma_max) * 100 < 20))
-		to_chat(xeno, SPAN_XENONOTICE("We will no longer continue autoweeding, for our plasma is too low."))
+		to_chat(xeno, SPAN_XENONOTICE("Our plasma is too low."))
 		stop_autoweed(xeno)
 		return
 

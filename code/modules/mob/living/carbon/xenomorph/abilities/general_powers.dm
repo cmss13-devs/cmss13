@@ -921,6 +921,9 @@
 	SIGNAL_HANDLER
 
 	var/list/mods = params2list(params)
+	if(target) //in case we reclick to reaim before the mouse drag gets to registered
+		new_target = target
+		owner?.face_atom(new_target)
 	source.click(target, mods)
 
 /datum/action/xeno_action/activable/xeno_spit/on_deselect()

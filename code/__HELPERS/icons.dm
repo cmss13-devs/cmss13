@@ -831,6 +831,11 @@ world
 /proc/BlendRGB(rgb1, rgb2, amount)
 	return rgb_gradient(amount, 0, rgb1, 1, rgb2, "loop")
 
+/// Converts a given icon_file with an icon_state into a base64 string.
+/// Accepts a list of TRANSFORM_OBJECTs that can be applied to perform icon manipulation before the icon is "rendered" to base64.
+///
+/// For more information about TRANSFORM_OBJECTs, see rust-g documentation:
+/// https://github.com/cmss13-devs/cmss13/blob/5811a26e6389ab4d06f960efc8db59bb6dd7b380/code/__DEFINES/__rust_g.dm#L337-L347
 /proc/icon2base64(icon_file, icon_state, list/list/transforms = list())
 	if (!icon_exists(icon_file, icon_state, TRUE))
 		return
@@ -877,7 +882,7 @@ world
 ///
 /// YOU SHOULD NOT BE USING THIS UNLESS YOU KNOW WHAT YOU'RE DOING!
 /// To learn, read the documentation for iconforge at:
-/// https://github.com/cmss13-devs/cmss13/blob/5811a26e6389ab4d06f960efc8db59bb6dd7b380/code/__DEFINES/__rust_g.dm#L337
+/// https://github.com/cmss13-devs/cmss13/blob/5811a26e6389ab4d06f960efc8db59bb6dd7b380/code/__DEFINES/__rust_g.dm#L337-L347
 /proc/apply_rustg_transforms(icon/icon, list/list/transforms)
 	. = TRUE
 	for (var/list/transform in transforms)

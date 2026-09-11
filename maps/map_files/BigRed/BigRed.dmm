@@ -10085,12 +10085,12 @@
 "aSR" = (
 /obj/structure/pipes/vents/pump,
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/smg/mp27,
+/obj/item/weapon/gun/rifle/m20a,
 /turf/open/floor/redcorner/west,
 /area/bigredv2/outside/admin_building)
 "aSS" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/smg/mp27,
+/obj/item/weapon/gun/rifle/m20a,
 /turf/open/floor/redcorner/west,
 /area/bigredv2/outside/admin_building)
 "aST" = (
@@ -10463,6 +10463,8 @@
 /turf/open/floor/podhatchfloor,
 /area/bigredv2/outside/admin_building)
 "aVk" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/m20a,
 /turf/open/floor/redcorner/west,
 /area/bigredv2/outside/admin_building)
 "aVl" = (
@@ -24043,9 +24045,7 @@
 "iFT" = (
 /obj/structure/platform_decoration/metal/almayer/west,
 /obj/structure/platform_decoration/metal/almayer,
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/bluegrid/bcircuitoff,
 /area/bigredv2/caves/lambda/research)
 "iGp" = (
@@ -25532,9 +25532,7 @@
 "kkJ" = (
 /obj/structure/platform_decoration/metal/almayer/north,
 /obj/structure/platform_decoration/metal/almayer/east,
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /obj/item/stack/cable_coil/random,
 /turf/open/floor/bluegrid/bcircuitoff,
 /area/bigredv2/caves/lambda/research)
@@ -27990,9 +27988,7 @@
 /area/bigredv2/outside/space_port)
 "mSC" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/bluegrid/bcircuitoff,
 /area/bigredv2/caves/lambda/research)
 "mSS" = (

@@ -3020,6 +3020,22 @@ Defined in conflicts.dm of the #defines folder.
 
 	revolver.flags_equip_slot |= SLOT_WAIST
 
+
+/obj/item/attachable/stock/m20a
+	name = "\improper M20A stock"
+	desc = "The M20A's standard polymer collapsible stock. When extended, it improves scatter, accuracy, and recoil, but slightly hinders agility."
+	slot = "stock"
+	melee_mod = 5
+	size_mod = 1
+	icon_state = "m20astock"
+	attach_icon = "m20astock_a"
+	pixel_shift_x = 40
+	pixel_shift_y = 14
+	hud_offset_mod = 3
+
+/obj/item/attachable/stock/m20a/New()
+	..()
+
 // ======== Underbarrel Attachments ======== //
 
 
@@ -3591,6 +3607,23 @@ Defined in conflicts.dm of the #defines folder.
 					qdel(mag)
 			return
 	to_chat(user, SPAN_WARNING("[src] only accepts shotgun buckshot."))
+
+
+/obj/item/attachable/attached_gun/shotgun/m20a/unloaded
+	current_rounds = 0
+
+/obj/item/attachable/attached_gun/shotgun/m20a
+	name = "\improper U3 underbarrel shotgun"
+	desc = "An ARMAT U3 tactical shotgun. Integrated into the M20A Harrington rifle. Only capable of loading up to five buckshot shells, this one seems less effective at smashing down doors."
+	icon_state = "masterkey"
+	attach_icon = "masterkey_a"
+	flags_attach_features = ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON
+	hidden = TRUE
+
+
+/obj/item/attachable/attached_gun/shotgun/m20a/set_bullet_traits()
+	return
+
 
 /obj/item/attachable/attached_gun/shotgun/af13 //NSG underslung shottie
 	name = "\improper AF13 underbarrel shotgun"

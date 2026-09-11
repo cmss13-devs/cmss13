@@ -112,7 +112,7 @@
 
 /mob/living/carbon/xenomorph/facehugger/update_icons()
 	. = ..()
-	if(throwing)
+	if(HAS_TRAIT(src, TRAIT_LAUNCHED))
 		icon_state = "[get_strain_icon()] [caste.caste_type] Thrown"
 
 /mob/living/carbon/xenomorph/facehugger/start_pulling(atom/movable/AM)
@@ -284,9 +284,10 @@
 	name = "Base Facehugger Behavior Delegate"
 
 /datum/behavior_delegate/facehugger_base/on_life()
-	if(!(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno)))
-		bound_xeno.adjustBruteLoss(2)
-
+	if(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno))
+		return
+	bound_xeno.adjustBruteLoss(2)
+	bound_xeno.updatehealth()
 
 /datum/action/xeno_action/activable/pounce/facehugger/use_ability(atom/target_atom)
 	for(var/obj/structure/machinery/door/airlock/current_airlock in get_turf(owner))

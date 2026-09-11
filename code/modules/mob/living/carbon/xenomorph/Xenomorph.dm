@@ -1229,6 +1229,10 @@
 		return FALSE
 
 	var/move_dir = get_dir(src, current_structure)
+	for(var/atom/movable/atom in get_turf(src))
+		if(atom != current_structure && atom.density && atom.BlockedExitDirs(src, move_dir))
+			to_chat(src, SPAN_WARNING("[atom] prevents us from squeezing under [current_structure]!"))
+			return FALSE
 	for(var/atom/movable/atom in get_turf(current_structure))
 		if(atom != current_structure && atom.density && atom.BlockedPassDirs(src, move_dir))
 			to_chat(src, SPAN_WARNING("[atom] prevents us from squeezing under [current_structure]!"))

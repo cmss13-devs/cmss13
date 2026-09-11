@@ -578,6 +578,13 @@
 	new /obj/item/attachable/lasersight(src)
 	new /obj/item/storage/belt/gun/m4a3(src)
 
+/obj/item/storage/box/kit/dual_vp78
+	name = "\improper Dual VP78M6 Pistol Kit"
+	pro_case_overlay = "defense"
+
+/obj/item/storage/box/kit/dual_vp78/fill_preset_inventory()
+	new /obj/item/storage/belt/gun/vp78m6/dual_holster/full(src)
+
 /obj/item/storage/box/kit/cryo_self_defense
 	name = "\improper Cryo Self Defense Kit"
 	desc = "A basic self-defense kit reserved for emergencies. As you might expect, not much care was put into keeping the stock fresh, who would be insane enough to attack a USCM ship directly?"

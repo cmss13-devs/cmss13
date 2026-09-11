@@ -2097,6 +2097,38 @@
 	for(var/i = 1 to storage_slots - 2)
 		new /obj/item/ammo_magazine/revolver/marksman(src)
 
+/obj/item/storage/belt/gun/vp78m6/dual_holster
+	name = "\improper M278 Pattern weapon harness"
+	desc = "A well-oiled leather harness with two hip-mounted holsters for large handguns. Has some extra pouches for mags right where you'd need 'em."
+	icon_state = "dual_holster"
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN
+	storage_slots = 8
+	can_hold = list(
+		/obj/item/weapon/gun/pistol/vp78/vp78m6,
+		/obj/item/ammo_magazine/pistol/vp78,
+	)
+	holster_slots = list(
+		"1" = list("icon_x" = 0, "icon_y" = 0),
+		"2" = list("icon_x" = 0, "icon_y" = 0),
+	)
+	skip_fullness_overlays = TRUE
+
+/obj/item/storage/belt/gun/vp78m6/dual_holster/Initialize()
+	var/matrix/second_gun_transform = matrix()
+	second_gun_transform.Scale(-1, 1)
+	holster_slots["2"]["underlay_transform"] = second_gun_transform
+	. = ..()
+
+/obj/item/storage/belt/gun/vp78m6/dual_holster/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78/vp78m6())
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78/vp78m6())
+	for(var/i = 1 to storage_slots - 2)
+		new /obj/item/ammo_magazine/pistol/vp78(src)
+
 /obj/item/storage/belt/gun/m44/lever_action
 	name = "\improper M276 pattern 45-70 revolver rig"
 	desc = "An ammunition belt designed to hold the large 45-70 Govt. caliber bullets for the R4T lever-action rifle. This version has reduced capacity in exchange for a whole revolver holster."

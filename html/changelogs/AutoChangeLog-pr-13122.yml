@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed some places where damage wasn't updating health (namely facehuggers and lessers off weeds)"

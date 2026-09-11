@@ -831,7 +831,7 @@ world
 /proc/BlendRGB(rgb1, rgb2, amount)
 	return rgb_gradient(amount, 0, rgb1, 1, rgb2, "loop")
 
-/proc/icon2base64(icon_file, icon_state)
+/proc/icon2base64(icon_file, icon_state, list/list/transforms = list())
 	if (!icon_exists(icon_file, icon_state, TRUE))
 		return
 
@@ -840,7 +840,7 @@ world
 		icon_state = icon_state,
 		dir = SOUTH,
 		frame = 1,
-		transform = list()
+		transform = transforms
 	)
 	var/extern_result = rustg_iconforge_generate_headless("tmp/forged.png", json_encode(list("sprite" = sprite_object)), TRUE)
 
@@ -850,22 +850,163 @@ world
 
 	if (extern_result["file_path"] != "tmp/forged.png" || icon64 == "")
 		// Rust-g errored out, fall back to old implementation
-		log_debug("External rust-g library call for icon2base64 failed! Reverting to legacy fallback implementation.")
-
-		var/savefile/save_buffer = new /savefile("tmp/forged.sav")
-		save_buffer["icon"] << icon(icon_file, icon_state = icon_state)
-
-		var/icon_data = save_buffer.ExportText("icon")
-		var/list/split_data = splittext(icon_data, "{")
-		. = replacetext(copytext_char(split_data[2], 3, -5), "\n", "")
-
-		save_buffer.Unlock()
-		save_buffer = null
-		fdel("tmp/forged.sav")
-		return
+		stack_trace("External rust-g library call for icon2base64 failed! Reverting to legacy fallback implementation.")
+		var/icon/icon = icon(icon = icon_file, icon_state = icon_state)
+		apply_rustg_transforms(icon, transforms)
+		return icon2base64_costly(icon)
 
 	// No need to delete temp file, it'll be overridden by next proc call
 	return icon64
+
+/// Costly version of icon2base64 that should only really be used if the base function fails for some reason.
+/// Uses native /savefile calls and therefore should be more robust in the event of an error.
+/proc/icon2base64_costly(icon/icon)
+	var/savefile/save_buffer = new /savefile("tmp/forged.sav")
+	save_buffer["icon"] << icon
+
+	var/icon_data = save_buffer.ExportText("icon")
+	var/list/split_data = splittext(icon_data, "{")
+	. = replacetext(copytext_char(split_data[2], 3, -5), "\n", "")
+
+	save_buffer.Unlock()
+	save_buffer = null
+	fdel("tmp/forged.sav")
+
+/// Applies rustg TRANSFORM_OBJECT calls in-house, allowing icons to be manipulated even if rustg fails during the iconforge process.
+///
+/// YOU SHOULD NOT BE USING THIS UNLESS YOU KNOW WHAT YOU'RE DOING!
+/// To learn, read the documentation for iconforge at:
+/// https://github.com/cmss13-devs/cmss13/blob/5811a26e6389ab4d06f960efc8db59bb6dd7b380/code/__DEFINES/__rust_g.dm#L337
+/proc/apply_rustg_transforms(icon/icon, list/list/transforms)
+	. = TRUE
+	for (var/list/transform in transforms)
+		switch (transform["type"])
+			if (RUSTG_ICONFORGE_BLEND_COLOR)
+				var/color = transform["color"]
+				var/blend_mode = transform["blend_mode"]
+				if (isnull(color) || isnull(blend_mode))
+					stack_trace("rustg transform object BLEND_COLOR is missing required fields")
+					. = FALSE
+					continue
+				icon.Blend(transform["color"], transform["blend_mode"])
+
+			if (RUSTG_ICONFORGE_BLEND_ICON)
+				var/sprite_object = transform["icon"]
+				var/blend_mode = transform["blend_mode"]
+				if (isnull(sprite_object) || isnull(blend_mode))
+					stack_trace("rustg transform object BLEND_ICON is missing required fields")
+					. = FALSE
+					continue
+
+				var/icon_file = sprite_object["icon_file"]
+				var/icon_state = sprite_object["icon_state"]
+				if (!icon_exists(icon_file, icon_state))
+					stack_trace("rustg transform object BLEND_ICON has a SPRITE_OBJECT that points to a non-existant icon ([sprite_object["icon_file"]], state:[sprite_object["icon_state"]])")
+					. = FALSE
+					continue
+				var/icon/blend_sprite = icon(icon_file, icon_state = icon_state)
+
+				var/x_offset = transform["x"]
+				var/y_offset = transform["y"]
+				if (!isnull(x_offset) && !isnull(y_offset))
+					icon.Blend(blend_sprite, transform["blend_mode"], x_offset, y_offset)
+				else if (!isnull(x_offset))
+					icon.Blend(blend_sprite, transform["blend_mode"], x_offset)
+				else if (!isnull(y_offset))
+					icon.Blend(blend_sprite, transform["blend_mode"], y = y_offset)
+				else
+					icon.Blend(blend_sprite, transform["blend_mode"])
+
+			if (RUSTG_ICONFORGE_SCALE)
+				var/width = transform["width"]
+				var/height = transform["height"]
+				if (isnull(width) || isnull(height))
+					stack_trace("rustg transform object SCALE is missing required fields")
+					. = FALSE
+					continue
+				icon.Scale(width, height)
+
+			if (RUSTG_ICONFORGE_CROP)
+				var/x1 = transform["x1"]
+				var/y1 = transform["y1"]
+				var/x2 = transform["x2"]
+				var/y2 = transform["y2"]
+
+				if (isnull(x1) || isnull(y1) || isnull(x1) || isnull(y2))
+					stack_trace("rustg transform object CROP is missing required fields")
+					. = FALSE
+					continue
+				icon.Crop(x1, y1, x2, y2)
+
+			if (RUSTG_ICONFORGE_MAP_COLORS)
+				var/list/required_fields = list("rr", "rg", "rb", "ra", "gr", "gg", "gb", "ga", "br", "bg", "bb", "ba", "ar", "ag", "ab", "aa")
+				var/missing_required_field = FALSE
+				for (var/field_key in required_fields)
+					if (isnull(transform[field_key]))
+						stack_trace("rustg transform object MAP_COLORS is missing required field: [field_key]")
+						missing_required_field = TRUE
+						break
+				if (missing_required_field)
+					. = FALSE
+					continue
+
+				icon.MapColors(
+					transform["rr"], transform["rg"], transform["rb"], transform["ra"],
+					transform["gr"], transform["gg"], transform["gb"], transform["ga"],
+					transform["br"], transform["bg"], transform["bb"], transform["ba"],
+					transform["ar"], transform["ag"], transform["ab"], transform["aa"]
+				)
+
+			if (RUSTG_ICONFORGE_FLIP)
+				var/dir = transform["dir"]
+				if (isnull(dir))
+					stack_trace("rustg transform object FLIP is missing required field: dir")
+					. = FALSE
+					continue
+				icon.Flip(dir)
+
+			if (RUSTG_ICONFORGE_TURN)
+				var/angle = transform["angle"]
+				if (isnull(angle))
+					stack_trace("rustg transform object TURN is missing required field: angle")
+					. = FALSE
+					continue
+				icon.Turn(angle)
+
+			if (RUSTG_ICONFORGE_SHIFT)
+				var/dir = transform["dir"]
+				var/offset = transform["offset"]
+				var/wrap = transform["wrap"]
+				if (isnull(dir) || isnull(offset) || isnull(wrap))
+					stack_trace("rustg transform object SHIFT is missing required fields")
+					. = FALSE
+					continue
+				icon.Shift(dir, offset, wrap)
+
+			if (RUSTG_ICONFORGE_SWAP_COLOR)
+				var/src_color = transform["src_color"]
+				var/dst_color = transform["dst_color"]
+				if (isnull(src_color) || isnull(dst_color))
+					stack_trace("rustg transform object SWAP_COLOR is missing required fields")
+					. = FALSE
+					continue
+				icon.SwapColor(src_color, dst_color)
+
+			if (RUSTG_ICONFORGE_DRAW_BOX)
+				var/color = transform["color"]
+				var/x1 = transform["x1"]
+				var/y1 = transform["y1"]
+				var/x2 = transform["x2"]
+				var/y2 = transform["y2"]
+				if (isnull(color) || isnull(x1) || isnull(y1))
+					stack_trace("rustg transform object DRAW_BOX is missing required fields")
+					. = FALSE
+					continue
+				if (isnull(x2))
+					x2 = x1
+				if (isnull(y2))
+					y2 = y1
+				icon.DrawBox(color, x1, y1, x2, y2)
 
 /**
  * Center's an image.

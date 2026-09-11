@@ -873,6 +873,7 @@ world
 	fdel("tmp/forged.sav")
 
 /// Applies rustg TRANSFORM_OBJECT calls in-house, allowing icons to be manipulated even if rustg fails during the iconforge process.
+/// This function will continue execution even if an individual transform object fails. In the case that it does, it will return FALSE. Otherwise, it will return TRUE.
 ///
 /// YOU SHOULD NOT BE USING THIS UNLESS YOU KNOW WHAT YOU'RE DOING!
 /// To learn, read the documentation for iconforge at:
@@ -1007,6 +1008,14 @@ world
 				if (isnull(y2))
 					y2 = y1
 				icon.DrawBox(color, x1, y1, x2, y2)
+
+			else
+				var/mystery_type = transform["type"]
+				if (isnull(mystery_type))
+					stack_trace("encountered a null rustg transform object during transform processing")
+				else
+					stack_trace("unknown rustg transform object [transform["type"]] encountered during transform processing")
+				. = FALSE
 
 /**
  * Center's an image.

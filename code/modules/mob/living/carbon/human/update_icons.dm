@@ -475,10 +475,18 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 
 /mob/living/carbon/human/proc/update_mouth(speaking = 0)	//nothing else other than mouth should be in this layer
 	remove_overlay(MOUTH_LAYER)
+
+	if(isyautja(src))
+		var/state = speaking == 0 ? "" : (speaking == 1 ? "talk" : "scream")
+		var/image/mouth = image('icons/mob/humans/yaut_mouth.dmi', src, "[skin_color]_[state]",  ABOVE_MOB_LAYER)
+		overlays_standing[MOUTH_LAYER] = mouth
+		apply_overlay(MOUTH_LAYER)
+		return
+
 	if(mouth_style && (species && species.flags & HAS_MOUTH))
 		var/yelling_state = copytext(mouth_style, 1, 7) == "small_" ? copytext(mouth_style, 7) : "[mouth_style]_yell"
 		var/state = speaking == 0 ? "" : (speaking == 1 ? "[mouth_style]" : yelling_state)
-		mouth = image('icons/mob/humans/mouth.dmi', src, state,  -MOUTH_LAYER)
+		var/image/mouth = image('icons/mob/humans/mouth.dmi', src, state,  -MOUTH_LAYER)
 		overlays_standing[MOUTH_LAYER] = mouth
 		apply_overlay(MOUTH_LAYER)
 

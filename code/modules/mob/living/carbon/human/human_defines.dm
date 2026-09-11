@@ -190,9 +190,6 @@
 	// Haul resist cooldown
 	var/next_haul_resist
 
-	// mouth image, for speaking
-	var/image/mouth
-
 /client/var/cached_human_playtime
 
 /client/proc/get_total_human_playtime(skip_cache = FALSE)

@@ -1560,8 +1560,6 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	var/eyes_b
 
 	var/lip_style
-	var/mouth_style
-	var/image/mouth	//used to express thoughts
 
 /obj/limb/head/update_limb()
 	. = ..()
@@ -1571,7 +1569,6 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	eyes_b = owner.b_eyes
 
 	lip_style = owner.lip_style
-	mouth_style = owner.mouth_style
 
 /obj/limb/head/get_limb_icon()
 	. = ..()

@@ -474,4 +474,4 @@
 		addtimer(CALLBACK(src, PROC_REF(update_mouth)), 0.4*times SECONDS)
 	else if (timing_override)
 		times = 0
-		addtimer(CALLBACK(src, PROC_REF(move_mouth)), timing_override SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(update_mouth)), timing_override SECONDS)

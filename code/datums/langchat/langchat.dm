@@ -123,15 +123,6 @@
 	var/text_to_display = message
 	var/is_emote = additional_styles && additional_styles.Find("emote")
 
-	if(ishuman(src))
-		var/mob/living/carbon/human/speaker = src
-		var/words_spoken = 1
-		for(var/i in 1 to length(message))
-			var/char = copytext(message, i, i + 1)
-			if(char == " ")
-				words_spoken++
-		speaker.move_mouth(words_spoken, langchat_styles == "" ? 1 : 2)
-
 	if(split_long_messages)
 		if(length(message) > LANGCHAT_LONGEST_TEXT)
 			text_to_display = copytext_char(message, 1, LANGCHAT_LONGEST_TEXT - 5) + "..."

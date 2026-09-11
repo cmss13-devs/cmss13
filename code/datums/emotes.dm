@@ -162,7 +162,7 @@
 	for(var/obj/object as anything in seeing_obj)
 		object.see_emote(user, msg, (emote_type & EMOTE_AUDIBLE))
 
-	if(ishuman(user) && move_mouth != null)
+	if(ishuman(user) && move_mouth != FALSE)
 		var/mob/living/carbon/human/mouthy_human = user
 		mouthy_human.move_mouth(times = move_mouth < 0 ? abs(move_mouth) : 1, yelling = move_mouth > 0 ? 2 : 1, timing_override = move_mouth > 0 ? move_mouth : null)
 

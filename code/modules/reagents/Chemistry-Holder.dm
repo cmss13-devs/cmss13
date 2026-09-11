@@ -791,7 +791,7 @@
 		if((istype(my_atom, /obj/item/explosive/plastic) || istype(my_atom, /obj/item/explosive/grenade)) && (ismob(my_atom.loc) || isStructure(my_atom.loc)))
 			addtimer(CALLBACK(my_atom.loc, TYPE_PROC_REF(/atom, ex_act), ex_power), 0.2 SECONDS)
 			ex_power = ex_power / 2
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, cause_data), 0.2 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, cause_data, istype(my_atom, /obj/item/explosive/grenade)), 0.2 SECONDS)
 
 		exploded = TRUE // clears reagents after all reactions processed
 

@@ -283,11 +283,10 @@ as having entered the turf.
 	if(!epicenter)
 		return
 
-	// An alive mob lying flat on the epicenter smothers the blast with their body,
-	// containing the explosion so it only ever affects this single tile.
+	// An alive human lying flat on the epicenter smothers the blast with their body, containing the explosion so it only ever affects this single tile.
 	var/contained = FALSE
 	if(body_blockable)
-		for(var/mob/living/blocker in epicenter)
+		for(var/mob/living/carbon/human/blocker in epicenter)
 			if(blocker.resting && blocker.stat == CONSCIOUS)
 				contained = TRUE
 				if(blocker.faction == FACTION_MARINE || (FACTION_MARINE in blocker.faction_group))

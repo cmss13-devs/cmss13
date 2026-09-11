@@ -88,7 +88,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_note)
 		"ban_time",
 		"is_confidential",
 		"admin_rank",
-		"note_category"
+		"note_category",
 	)
 
 /// Returns all notes associated with a CKEY, structured as a list of strings.

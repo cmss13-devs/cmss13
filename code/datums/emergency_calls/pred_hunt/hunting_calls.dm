@@ -62,42 +62,74 @@
 
 	if(mercs < max_mercs && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_MERC))
 		mercs++
-		var/list/hunted_types = list(/datum/equipment_preset/other/freelancer/leader/hunted, /datum/equipment_preset/other/freelancer/standard/hunted)
+		var/list/hunted_types = list(
+			/datum/equipment_preset/other/freelancer/leader/hunted,
+			/datum/equipment_preset/other/freelancer/standard/hunted,
+			)
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
 		to_chat(hunted, SPAN_BOLD("No one is more professional than I. Unlike other mercenaries, your group was registered as a legitimate business that dealt in violence. Working for various high profile clients, information classified to the public circulated somewhat freely in your circle - stories you dismissed as anecdotal or hearsay. The last job you took proved particularly hazardous and truthful: as you were clearing local fauna around a dig site, a massive man-shaped shimmering thing lunged at you and knocked you out in one blow. Groggily opening your eyes, you try to make sense of your surroundings, and get up."))
 	else if(upp < max_upp && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_UPP))
 		upp++
-		var/list/hunted_types = list(/datum/equipment_preset/upp/soldier/hunted, /datum/equipment_preset/upp/leader/hunted, /datum/equipment_preset/upp/machinegunner/hunted, /datum/equipment_preset/upp/sapper/hunted)
+		var/list/hunted_types = list(
+			/datum/equipment_preset/upp/soldier/hunted,
+			/datum/equipment_preset/upp/leader/hunted,
+			/datum/equipment_preset/upp/machinegunner/hunted,
+			/datum/equipment_preset/upp/sapper/hunted,
+			)
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
 		to_chat(hunted, SPAN_BOLD("Life was alright. Previously relocated from your noisier post on the frontier, you were now stationed just on the outer veil of Union territory. Combat patrols and sawdust rations turned into boring guard shifts and proper food, making your peacekeeping duty a much envied task. Then, your life came crumbling down. An unknown alien surprised you and the rest of your garrison, slaughtering effectively everyone. Just as you were about to escape, it caught you in a trap, and dragged you into the darkness. Now awake in a completely different place, still sore from the confrontation, you wonder what you'd have to do to get back home safe and sound."))
 	else if(royal_marines < max_royal_marines && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_TWE))
 		royal_marines++
-		var/list/hunted_types = list(/datum/equipment_preset/twe/royal_marine/standard/hunted, /datum/equipment_preset/twe/royal_marine/team_leader/hunted, /datum/equipment_preset/twe/royal_marine/lieuteant/hunted)
+		var/list/hunted_types = list(
+			/datum/equipment_preset/twe/royal_marine/standard/hunted,
+			/datum/equipment_preset/twe/royal_marine/team_leader/hunted,
+			/datum/equipment_preset/twe/royal_marine/lieuteant/hunted,
+			)
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
 		to_chat(hunted, SPAN_BOLD("You were starting to get sick and tired of these Australians. Posted and wrangled around Oceania, you had spent the last half decade from refugee camp to metropolis, making sure order was maintained most of the time and partaking in a riot action now and then. You were ready to give about anything for your job to be more interesting, and like a monkey's paw, the wish came true. One night, your barracks got blown up before your very eyes while on guard duty, and to your dismay, it was not a terrorist. You attempted to gun the monster down, but failed, your friends torn apart before your very eyes. Being the last one alive, the thing takes you with it, shackles you, and throws you into a cell. You black out again, and wake up here, wherever you are. At least you hope things will be more interesting now, or so you tell yourself."))
 	else if(clf < max_clf && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_CLF))
 		clf++
-		var/list/hunted_types = list(/datum/equipment_preset/clf/soldier/hunted, /datum/equipment_preset/clf/leader/hunted, /datum/equipment_preset/clf/engineer/hunted, /datum/equipment_preset/clf/specialist/hunted)
+		var/list/hunted_types = list(
+			/datum/equipment_preset/clf/soldier/hunted,
+			/datum/equipment_preset/clf/leader/hunted,
+			/datum/equipment_preset/clf/engineer/hunted,
+			/datum/equipment_preset/clf/specialist/hunted,
+			)
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
 		to_chat(hunted, SPAN_BOLD("Your whole life was a struggle. Fighting tooth and nail for the independence of your colony from one master to the next, with not much change, your home ended up crushed under the boot of the oppressor. Filled with rage, you traveled with your cell of freedom fighters from one system to the next, wreaking havoc and mayhem, which eventually makes you notorious for your brutal executions of government officials and military. While on a raid gone wrong, your comrades get slaughtered by a marine squad, and as you scamper to get away, something else catches you off guard. KO'd and taken away, you wake up in conditions not much different from your previous ones, determined to get revenge against your oppressor once more."))
 	else if(pmc < max_pmc && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_PMC))
 		pmc++
-		var/list/hunted_types = list(/datum/equipment_preset/pmc/pmc_standard/hunted, /datum/equipment_preset/pmc/pmc_medic/hunted, /datum/equipment_preset/pmc/technician/hunted, /datum/equipment_preset/goon/standard/hunted, /datum/equipment_preset/goon/lead/hunted)
+		var/list/hunted_types = list(
+			/datum/equipment_preset/pmc/pmc_standard/hunted,
+			/datum/equipment_preset/pmc/pmc_medic/hunted,
+			/datum/equipment_preset/pmc/technician/hunted,
+			/datum/equipment_preset/goon/standard/hunted,
+			/datum/equipment_preset/goon/lead/hunted,
+			)
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
 		to_chat(hunted, SPAN_BOLD("You were one of the best on Weyland-Yutani's payroll, or so they told you. Working under the corporate overlords for years, you had a comfortable and cushy job. If you got hurt, the excellent healthcare never got you close to death. You were recently sent to guard a corporate site's premises off the grid on an unfamiliar planet. They didn't tell what were you guarding, all that you managed to see was a couple of elite units and some scientists moving a heavy duty roller bed with a heavily disfigured alien body on it covered by a tarp. What you were doing was an easy task..or so you thought. One day you witnessed an explosion in the facility and your fellow units being vaporized by some kind of plasma projectiles, you tried to run but a net has suddenly launched in front of you and knocked you out down to the ground. You wake up here with most of your gear intact. For the first time, you are on your own."))
 	else if(misc < max_misc && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_HUNT_MISC))
 		misc++
-		var/list/hunted_types = list(/datum/equipment_preset/other/hunted/roman, /datum/equipment_preset/other/hunted/roman/centurion, /datum/equipment_preset/other/hunted/roman/eaglebearer, /datum/equipment_preset/other/hunted/vietnam)
+		var/list/hunted_types = list(
+			/datum/equipment_preset/other/hunted/roman,
+			/datum/equipment_preset/other/hunted/roman/centurion,
+			/datum/equipment_preset/other/hunted/roman/eaglebearer,
+			/datum/equipment_preset/other/hunted/vietnam,
+			)
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
 		to_chat(hunted, SPAN_BOLD("You were an ancient warrior of a different era. While you were on your usual daily routine, a humanoid monstrous beast appeared in front of you, shackled you and taken you captive. You passed out due to sheer horror and woke up inside an incomprehensible structure with a window to the stars. You were dragged away and were forced to be put inside some kind of pod, it was closed shut and the last thing you remember was that you felt very cold. You wake up again with everything you had before you got kidnapped but the environment and the air you are in feels completely different. It's time to put your survival skills to the test."))
 	else
-		var/list/hunted_types = list(/datum/equipment_preset/uscm/hunted/rifleman,/datum/equipment_preset/uscm/hunted/tl, /datum/equipment_preset/uscm/hunted/sg,)
+		var/list/hunted_types = list(
+			/datum/equipment_preset/uscm/hunted/rifleman,
+			/datum/equipment_preset/uscm/hunted/tl,
+			/datum/equipment_preset/uscm/hunted/sg,
+			)
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
 		to_chat(hunted, SPAN_BOLD("You dreamt of becoming the ultimate badass ever since you were a kid. Nukes, knives, sharp sticks - and the corps was for you, enlisting into the marines as soon as you could join. There were little regrets from you, happily gunning down anything, anytime, and anywhere you were told to go... until now. During a jungle patrol, your entire squad was torn to shreds by a single cloaker - something you previously figured was made up just to scare chickenshit privates. Riddling the freak with bullet holes, it finally catches you off guard, and after that it's all hazy. Waking up, you realize you're still alive... and that it left you with your weapon. Big mistake. You get up."))

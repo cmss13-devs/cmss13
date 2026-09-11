@@ -26,5 +26,5 @@
 
 /datum/asset/simple/restart_animation
 	assets = list(
-		"loading" = 'html/lobby/loading.gif'
+		"loading" = 'html/lobby/loading.gif',
 	)

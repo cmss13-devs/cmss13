@@ -12,7 +12,7 @@ GLOBAL_LIST_EMPTY(fishing_loot_tables)
 		/obj/item/reagent_container/food/snacks/fishable/urchin/purple,
 		/obj/item/reagent_container/food/snacks/fishable/fish/bluegill,
 		/obj/item/reagent_container/food/snacks/fishable/fish/salmon,
-		/obj/item/reagent_container/food/snacks/fishable/fish/white_perch
+		/obj/item/reagent_container/food/snacks/fishable/fish/white_perch,
 	)
 	var/list/uncommon_fishable_atoms = list(
 		/obj/item/cell/high,
@@ -24,14 +24,14 @@ GLOBAL_LIST_EMPTY(fishing_loot_tables)
 		/obj/item/ore/iron,
 		/obj/item/fish_bait,
 		/obj/item/storage/beer_pack,
-		/obj/item/stack/sheet/metal
+		/obj/item/stack/sheet/metal,
 	)
 	var/list/rare_fishable_atoms = list(
 		/obj/item/reagent_container/food/snacks/packaged_burrito,
 		/obj/item/ore/silver,
 		/obj/item/ore/gold,
 		/obj/item/ore/diamond,
-		/obj/item/reagent_container/food/snacks/fishable/urchin/red
+		/obj/item/reagent_container/food/snacks/fishable/urchin/red,
 	)
 	var/list/ultra_rare_fishable_atoms = list(
 		/obj/item/card/data/clown,

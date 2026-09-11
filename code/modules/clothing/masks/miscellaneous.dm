@@ -40,7 +40,7 @@
 	icon_state = "snorkel"
 	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi',
 	)
 	flags_inv_hide = HIDEFACE
 	flags_armor_protection = 0

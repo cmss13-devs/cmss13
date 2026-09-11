@@ -22,7 +22,7 @@
 	xenos_slots = 4
 
 	entrances = list(
-		"back" = list(0, 2)
+		"back" = list(0, 2),
 	)
 
 	movement_sound = 'sound/vehicles/tank_driving.ogg'
@@ -70,7 +70,7 @@
 		"bullet" = 0.4,
 		"explosive" = 0.8,
 		"blunt" = 0.8,
-		"abstract" = 1
+		"abstract" = 1,
 	)
 
 	explosive_resistance = 400

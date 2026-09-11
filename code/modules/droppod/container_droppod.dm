@@ -22,7 +22,7 @@
 	var/reverse_delays = list(
 		"drop_time" = 0,
 		"dropping_time" = 2 SECONDS,
-		"open_time" = 2 SECONDS
+		"open_time" = 2 SECONDS,
 	)
 	var/return_time = 30 SECONDS
 

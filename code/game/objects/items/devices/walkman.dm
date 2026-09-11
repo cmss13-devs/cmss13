@@ -18,7 +18,7 @@
 		WEAR_L_EAR = "walkman",
 		WEAR_R_EAR = "walkman",
 		WEAR_IN_BELT = "walkman",
-		WEAR_IN_J_STORE = "walkman"
+		WEAR_IN_J_STORE = "walkman",
 	)
 	flags_obj = OBJ_IS_HELMET_GARB
 	black_market_value = 15

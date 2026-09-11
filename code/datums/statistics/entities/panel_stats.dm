@@ -97,7 +97,7 @@
 				"total_hits" = H.top_weapon.total_hits,
 				"total_shots" = H.top_weapon.total_shots,
 				"total_shots_hit" = H.top_weapon.total_shots_hit,
-				"total_friendly_fire" = H.top_weapon.total_friendly_fire
+				"total_friendly_fire" = H.top_weapon.total_friendly_fire,
 			)
 
 		for(var/iteration in H.humans_killed)

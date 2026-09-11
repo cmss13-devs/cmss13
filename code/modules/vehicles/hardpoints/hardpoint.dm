@@ -41,7 +41,7 @@
 		"1" = list(0, 0),
 		"2" = list(0, 0),
 		"4" = list(0, 0),
-		"8" = list(0, 0)
+		"8" = list(0, 0),
 	)
 
 	// debug vars
@@ -709,7 +709,7 @@
 			"1" = list(0, 0),
 			"2" = list(0, 0),
 			"4" = list(0, 0),
-			"8" = list(0, 0)
+			"8" = list(0, 0),
 		)
 	px_offsets[dir] = list(x,y)
 
@@ -751,7 +751,7 @@
 			"1" = list(0,0),
 			"2" = list(0,0),
 			"4" = list(0,0),
-			"8" = list(0,0)
+			"8" = list(0,0),
 		)
 
 	muzzle_flash_pos[dir] = list(x,y)

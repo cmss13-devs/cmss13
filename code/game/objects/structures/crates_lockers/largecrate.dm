@@ -119,20 +119,22 @@
 /obj/structure/largecrate/random
 	name = "supply crate"
 	var/num_things = 0
-	var/list/stuff = list(/obj/item/cell/high,
-						/obj/item/storage/belt/utility/full,
-						/obj/item/device/multitool,
-						/obj/item/tool/crowbar,
-						/obj/item/device/flashlight,
-						/obj/item/reagent_container/food/snacks/donkpocket,
-						/obj/item/explosive/grenade/smokebomb,
-						/obj/item/circuitboard/airlock,
-						/obj/item/device/assembly/igniter,
-						/obj/item/tool/weldingtool,
-						/obj/item/tool/wirecutters,
-						/obj/item/device/analyzer,
-						/obj/item/clothing/under/marine,
-						/obj/item/clothing/shoes/marine)
+	var/list/stuff = list(
+		/obj/item/cell/high,
+		/obj/item/storage/belt/utility/full,
+		/obj/item/device/multitool,
+		/obj/item/tool/crowbar,
+		/obj/item/device/flashlight,
+		/obj/item/reagent_container/food/snacks/donkpocket,
+		/obj/item/explosive/grenade/smokebomb,
+		/obj/item/circuitboard/airlock,
+		/obj/item/device/assembly/igniter,
+		/obj/item/tool/weldingtool,
+		/obj/item/tool/wirecutters,
+		/obj/item/device/analyzer,
+		/obj/item/clothing/under/marine,
+		/obj/item/clothing/shoes/marine,
+	)
 
 /obj/structure/largecrate/random/Initialize()
 	. = ..()
@@ -398,15 +400,15 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
 	var/num_guns = 3
 	var/num_mags = 3
 	var/list/stuff = list(
-					/obj/item/weapon/gun/pistol/m4a3 = /obj/item/ammo_magazine/pistol,
-					/obj/item/weapon/gun/pistol/m4a3 = /obj/item/ammo_magazine/pistol,
-					/obj/item/weapon/gun/revolver/m44 = /obj/item/ammo_magazine/revolver,
-					/obj/item/weapon/gun/rifle/m41a = /obj/item/ammo_magazine/rifle,
-					/obj/item/weapon/gun/rifle/m41a = /obj/item/ammo_magazine/rifle,
-					/obj/item/weapon/gun/shotgun/pump = /obj/item/ammo_magazine/shotgun,
-					/obj/item/weapon/gun/smg/m39 = /obj/item/ammo_magazine/smg/m39,
-					/obj/item/weapon/gun/smg/m39 = /obj/item/ammo_magazine/smg/m39
-				)
+		/obj/item/weapon/gun/pistol/m4a3 = /obj/item/ammo_magazine/pistol,
+		/obj/item/weapon/gun/pistol/m4a3 = /obj/item/ammo_magazine/pistol,
+		/obj/item/weapon/gun/revolver/m44 = /obj/item/ammo_magazine/revolver,
+		/obj/item/weapon/gun/rifle/m41a = /obj/item/ammo_magazine/rifle,
+		/obj/item/weapon/gun/rifle/m41a = /obj/item/ammo_magazine/rifle,
+		/obj/item/weapon/gun/shotgun/pump = /obj/item/ammo_magazine/shotgun,
+		/obj/item/weapon/gun/smg/m39 = /obj/item/ammo_magazine/smg/m39,
+		/obj/item/weapon/gun/smg/m39 = /obj/item/ammo_magazine/smg/m39,
+	)
 
 /obj/structure/largecrate/guns/Initialize()
 	. = ..()

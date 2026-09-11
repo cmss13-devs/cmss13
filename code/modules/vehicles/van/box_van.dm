@@ -23,7 +23,7 @@
 		"left" = list(2, 0),
 		"right" = list(-1, 0),
 		"back_left" = list(1, 2),
-		"back_right" = list(0, 2)
+		"back_right" = list(0, 2),
 	)
 
 	vehicle_flags = VEHICLE_CLASS_WEAK
@@ -34,7 +34,7 @@
 	misc_multipliers = list(
 		"move" = 0.5, // fucking annoying how this is the only way to modify speed
 		"accuracy" = 1,
-		"cooldown" = 1
+		"cooldown" = 1,
 	)
 
 	movement_sound = 'sound/vehicles/box_van_driving.ogg'

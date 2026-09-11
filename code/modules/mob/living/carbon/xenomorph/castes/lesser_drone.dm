@@ -134,7 +134,7 @@
 		bound_xeno.updatehealth()
 
 
-/datum/action/xeno_action/onclick/plant_weeds/lesser/use_ability(atom/target_atom)
+/datum/action/xeno_action/onclick/plant_weeds/lesser/use_ability(atom/target_atom, autoplanted)
 	var/mob/living/carbon/xenomorph/lesser_drone/xeno = owner
 	var/obj/effect/alien/weeds/node/mother_node
 

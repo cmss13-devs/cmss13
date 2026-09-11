@@ -16,7 +16,7 @@
 			msg += "[icon2html(icon, user)] "
 		msg += "<EM>[src]</EM>"
 
-		if(HAS_TRAIT(src, TRAIT_FLAYED))
+		if(mob_flags & MOB_FLAYED)
 			msg += " Its outer flesh has been removed...\n"
 		else
 			msg += "!\n"
@@ -110,7 +110,7 @@
 
 	msg += "<EM>[src]</EM>"
 
-	if(HAS_TRAIT(src, TRAIT_FLAYED))
+	if(mob_flags & MOB_FLAYED)
 		msg += " You cannot tell anymore, [t_He] doesn't have a face!\n"
 		msg += SPAN_BOLDWARNING("[uppertext(t_his)] SKIN HAS BEEN PEELED OFF.\n")
 	else

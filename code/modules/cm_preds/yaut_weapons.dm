@@ -917,7 +917,7 @@
 			for(var/obj/item/item in victim)
 				victim.drop_inv_item_to_loc(item, victim.loc, FALSE, TRUE)
 			victim.status_flags |= PERMANENTLY_DEAD
-			ADD_TRAIT(victim, TRAIT_FLAYED, user)
+			victim.mob_flags |= MOB_FLAYED
 			victim.name = "???"
 			victim.add_flay_overlay(stage = 3)
 

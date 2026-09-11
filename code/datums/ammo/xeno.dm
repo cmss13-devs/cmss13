@@ -241,6 +241,17 @@
 /datum/ammo/xeno/acid/spatter/dissolver_enzymatic_breath/spread
 	bonus_projectiles_amount = 0
 
+/datum/ammo/xeno/acid/spatter/dissolver_enzymatic_breath/on_hit_mob(mob/target_mob, obj/projectile/P)
+	. = ..()
+	if(!istype(target_mob, /mob/living))
+		return
+	var/mob/living/living = target_mob
+	if(!living.superslowed)
+		living.Superslow(1.5)
+	else
+		living.Root(1.5)
+
+
 /datum/ammo/xeno/acid/dissolver_acid_blob
 	name = "Acid blob"
 	damage = 25

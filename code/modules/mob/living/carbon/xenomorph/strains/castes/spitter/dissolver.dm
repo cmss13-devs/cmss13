@@ -140,6 +140,8 @@
 
 /datum/action/xeno_action/onclick/store_acid/can_use_action()
 	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno)
+		return FALSE
 	var/datum/behavior_delegate/spitter_dissolver/delegate = xeno.behavior_delegate
 	if(xeno && !xeno.is_mob_incapacitated() && !HAS_TRAIT(xeno, TRAIT_DAZED) && !xeno.buckled && xeno.plasma_stored >= plasma_cost && !xeno.action_busy && delegate && delegate.acid_stored < delegate.max_acid_stored)
 		return TRUE

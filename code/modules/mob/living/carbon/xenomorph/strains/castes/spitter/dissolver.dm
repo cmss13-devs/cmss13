@@ -139,16 +139,12 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/store_acid/can_use_action()
-	. = ..()
-
-	if(!.)
-		return FALSE
-	if(owner && owner.action_busy)
-		return FALSE
 	var/mob/living/carbon/xenomorph/xeno = owner
 	var/datum/behavior_delegate/spitter_dissolver/delegate = xeno.behavior_delegate
 	if(delegate.acid_stored >= delegate.max_acid_stored)
-		return FALSE
+	if(xeno && !xeno.is_mob_incapacitated() && !HAS_TRAIT(xeno, TRAIT_DAZED) && !xeno.buckled && xeno.plasma_stored >= plasma_cost && !xeno.action_busy)
+		return TRUE
+	return FALSE
 
 /datum/action/xeno_action/onclick/store_acid/update_button_icon()
 	. = ..()

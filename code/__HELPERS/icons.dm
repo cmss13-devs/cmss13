@@ -850,7 +850,7 @@ world
 
 	if (extern_result["file_path"] != "tmp/forged.png" || icon64 == "")
 		// Rust-g errored out, fall back to old implementation
-		stack_trace("External rust-g library call for icon2base64 failed! Reverting to legacy fallback implementation.")
+		log_debug("External rust-g library call for icon2base64 failed! Reverting to legacy fallback implementation.")
 		var/icon/icon = icon(icon = icon_file, icon_state = icon_state)
 		apply_rustg_transforms(icon, transforms)
 		return icon2base64_costly(icon)

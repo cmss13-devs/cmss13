@@ -3023,7 +3023,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/m20a
 	name = "\improper M20A stock"
-	desc = "The M20A's standard polymer collapsible stock. When extended, it improves scatter, accuracy, and recoil, but slightly hinders agility."
+	desc = "The M20A's standard polymer stock."
 	slot = "stock"
 	melee_mod = 5
 	size_mod = 1

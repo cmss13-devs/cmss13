@@ -28690,9 +28690,9 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "nFB" = (
-/obj/item/weapon/gun/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
+/obj/item/weapon/gun/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/mars_cave/mars_cave_3,
 /area/bigredv2/caves/mining)
 "nGl" = (
@@ -32383,12 +32383,10 @@
 "rtV" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/landmark/corpsespawner/miner,
-/obj/item/weapon/gun/rifle/m16{
-	pixel_x = 10
-	},
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
 /obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
 "ruo" = (

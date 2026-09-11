@@ -3033,8 +3033,6 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_y = 14
 	hud_offset_mod = 3
 
-/obj/item/attachable/stock/m20a/New()
-	..()
 
 // ======== Underbarrel Attachments ======== //
 

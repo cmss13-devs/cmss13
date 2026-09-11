@@ -1480,7 +1480,7 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 /obj/item/weapon/gun/rifle/m20a/unloaded
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_TRIGGER_SAFETY
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	current_mag = null
 	starting_attachment_types = list(/obj/item/attachable/stock/m20a,/obj/item/attachable/attached_gun/shotgun/m20a/unloaded)
 

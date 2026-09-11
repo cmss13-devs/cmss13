@@ -844,9 +844,13 @@ world
 	)
 	var/extern_result = rustg_iconforge_generate_headless("tmp/forged.png", json_encode(list("sprite" = sprite_object)), TRUE)
 
-	if (extern_result["file_path"] != "tmp/forged.png" || !fexists("tmp/forged.png"))
+	var/icon64 = ""
+	if (fexists("tmp/forged.png"))
+		icon64 = rustg_hash_file(RUSTG_RNG_FORMAT_BASE64, "tmp/forged.png")
+
+	if (extern_result["file_path"] != "tmp/forged.png" || icon64 == "")
 		// Rust-g errored out, fall back to old implementation
-		log_debug("External rust-g library call for icon2base64 errored out! Reverting to legacy fallback implementation.")
+		log_debug("External rust-g library call for icon2base64 failed! Reverting to legacy fallback implementation.")
 
 		var/savefile/save_buffer = new /savefile("tmp/forged.sav")
 		save_buffer["icon"] << icon(icon_file, icon_state = icon_state)
@@ -861,7 +865,7 @@ world
 		return
 
 	// No need to delete temp file, it'll be overridden by next proc call
-	return rustg_encode_base64(rustg_file_read("tmp/forged.png"))
+	return icon64
 
 /**
  * Center's an image.

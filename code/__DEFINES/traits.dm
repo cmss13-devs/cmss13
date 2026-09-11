@@ -267,6 +267,8 @@
 #define TRAIT_WEED_RESISTANT "weed_resistant"
 /// Mob can open xeno doors and hugger/traps ignore them
 #define TRAIT_XENO_RECOGNIZED "xeno_recognized"
+// Mob thats flayed
+#define TRAIT_FLAYED "t_flayed"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transferred to them

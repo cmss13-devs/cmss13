@@ -1019,7 +1019,7 @@ world
 				if (isnull(mystery_type))
 					stack_trace("encountered a null rustg transform object during transform processing")
 				else
-					stack_trace("unknown rustg transform object [transform["type"]] encountered during transform processing")
+					stack_trace("unknown rustg transform object [mystery_type] encountered during transform processing")
 				. = FALSE
 
 /**

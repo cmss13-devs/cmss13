@@ -13,11 +13,15 @@
 	var/cooldown_message = null
 	var/no_cooldown_msg = FALSE
 
-	var/cooldown_timer_id = TIMER_ID_NULL // holds our timer ID
+	var/cooldown_timer_id = TIMER_ID_NULL // holds cooldown timer ID
 
 	// Track state so we can effectively REDUCE xeno_cooldown by removing and replacing timers.
 	var/current_cooldown_start_time = 0
 	var/current_cooldown_duration = 0
+
+	var/duration_timer_id = TIMER_ID_NULL // holds duration timer ID
+	var/current_duration_start_time = 0
+	var/current_duration_duration = 0
 
 	// Charging
 	/// When set, an ability has to be charged up by being the active ability before it can be used
@@ -43,6 +47,9 @@
 	. = ..()
 
 /datum/action/xeno_action/process(delta_time)
+	if(duration_timer_id != TIMER_ID_NULL)
+		return update_duration_visual()
+
 	return update_cooldown_visual()
 
 /datum/action/xeno_action/proc/remove_charge()
@@ -472,13 +479,39 @@
 	if(action_start_message)
 		to_chat(owner, SPAN_NOTICE(action_start_message))
 
+///Use to display duration time of active ability.
+/datum/action/xeno_action/proc/start_duration_display(duration)
+	if(duration_timer_id != TIMER_ID_NULL)
+		deltimer(duration_timer_id)
+
+	duration_timer_id = addtimer(CALLBACK(src, PROC_REF(end_duration_display)), duration, TIMER_STOPPABLE)
+
+	current_duration_start_time = world.time
+	current_duration_duration = duration
+
+	START_PROCESSING(SSfasteffects, src)
+
+///Use to stop display duration time of active ability.
+/datum/action/xeno_action/proc/end_duration_display()
+	duration_timer_id = TIMER_ID_NULL
+	current_duration_start_time = 0
+	current_duration_duration = 0
+
+	update_button_icon()
+
+/datum/action/xeno_action/proc/update_duration_visual()
+	var/time_left = max(current_duration_start_time + current_duration_duration - world.time, 0)
+	if(!owner || time_left <= 0 || duration_timer_id == TIMER_ID_NULL)
+		button.set_maptext()
+		return PROCESS_KILL
+	button.set_maptext(SMALL_FONTS(7, round(time_left/10, 0.1)), 4, 4)
+
 /datum/action/xeno_action/proc/update_cooldown_visual()
 	var/time_left = max(current_cooldown_start_time + current_cooldown_duration - world.time, 0)
 	if(!owner || time_left <= 0 || cooldown_timer_id == TIMER_ID_NULL)
 		button.set_maptext()
 		return PROCESS_KILL
-	else
-		button.set_maptext(SMALL_FONTS(7, round(time_left/10, 0.1)), 4, 4)
+	button.set_maptext(SMALL_FONTS_COLOR(7, round(time_left/10, 0.1), "#fffb00"), 4, 4)
 
 /datum/action/xeno_action/proc/on_select(mob/user)
 	return

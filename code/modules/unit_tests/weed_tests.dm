@@ -88,12 +88,16 @@
 	if(!prepare_weed_unit_test())
 		return
 
+	var/original_setting = weeds_ability.plant_on_semiweedable
+	weeds_ability.plant_on_semiweedable = TRUE
+
 	var/original_weedable = weeder_turf.is_weedable
 	weeder_turf.is_weedable = NOT_WEEDABLE
 
 	weeds_ability.use_ability()
 
 	weeder_turf.is_weedable = original_weedable
+	weeds_ability.plant_on_semiweedable = original_setting
 
 	TEST_ASSERT_NULL(locate(/obj/effect/alien/weeds/node) in weeder_turf, "Test xenomorph [xeno_weeder] planted a weed node on an unweedable turf")
 
@@ -284,12 +288,27 @@
 	old_node.weed_strength = WEED_LEVEL_WEAK
 	old_node.hivenumber = xeno_weeder.hivenumber
 
+	var/turf/child_turf = get_step(weeder_turf, NORTH)
+	TEST_ASSERT_NOTNULL(child_turf, "Test failed during initialization: there was no turf north of [weeder_turf]")
+	TEST_ASSERT(!child_turf.density, "Test failed during initialization: the turf north of [weeder_turf] was dense")
+
+	var/obj/effect/alien/weeds/old_child = new(child_turf, old_node)
+	TEST_ASSERT(old_child in old_node.children, "Test failed during initialization weeds did not become child of the old node")
+
 	weeds_ability.use_ability()
 
 	TEST_ASSERT(QDELETED(old_node), "Test xenomorph [xeno_weeder] did not uproot the weaker node of its own hive")
 
 	var/obj/effect/alien/weeds/node/new_node = locate(/obj/effect/alien/weeds/node) in weeder_turf
 	TEST_ASSERT_NOTNULL(new_node, "Test xenomorph [xeno_weeder] uprooted the old node but did not plant a replacement")
+
+	var/obj/effect/alien/weeds/converted_child
+	for(var/obj/effect/alien/weeds/candidate in child_turf)
+		if(candidate.parent == new_node)
+			converted_child = candidate
+			break
+
+	TEST_ASSERT_NOTNULL(converted_child, "Test xenomorph [xeno_weeder] did not replace the old nodes weeds with weeds belonging to the new node")
 
 // Unweedable flag
 /datum/unit_test/weed_test/plant_weeds_blocked_by_unweedable_area/Run()

@@ -152,8 +152,7 @@
 /datum/action/xeno_action/onclick/toggle_crest/proc/start_crest()
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	RegisterSignal(xeno, COMSIG_XENO_ENTER_CRIT, PROC_REF(unconscious_check))
-	RegisterSignal(xeno, COMSIG_MOB_DEATH, PROC_REF(unconscious_check))
+	RegisterSignal(owner, COMSIG_MOB_STATCHANGE, PROC_REF(unconscious_check))
 	ADD_TRAIT(xeno, TRAIT_ABILITY_CREST, TRAIT_SOURCE_ABILITY("crest"))
 	to_chat(xeno, SPAN_XENOWARNING("We lower our crest."))
 	xeno.ability_speed_modifier += speed_debuff
@@ -167,8 +166,7 @@
 /datum/action/xeno_action/onclick/toggle_crest/proc/stop_crest()
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	UnregisterSignal(xeno, COMSIG_XENO_ENTER_CRIT)
-	UnregisterSignal(xeno, COMSIG_MOB_DEATH)
+	UnregisterSignal(owner, COMSIG_MOB_STATCHANGE)
 	REMOVE_TRAIT(xeno, TRAIT_ABILITY_CREST, TRAIT_SOURCE_ABILITY("crest"))
 	to_chat(xeno, SPAN_XENOWARNING("We raise our crest."))
 	xeno.ability_speed_modifier -= speed_debuff
@@ -326,8 +324,7 @@
 /datum/action/xeno_action/activable/fortify/proc/start_fortify()
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	RegisterSignal(xeno, COMSIG_XENO_ENTER_CRIT, PROC_REF(unconscious_check))
-	RegisterSignal(xeno, COMSIG_MOB_DEATH, PROC_REF(unconscious_check))
+	RegisterSignal(owner, COMSIG_MOB_STATCHANGE, PROC_REF(unconscious_check))
 	RegisterSignal(xeno, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(check_directional_projectile_armor))
 
 	ADD_TRAIT(xeno, TRAIT_ABILITY_FORTIFY, TRAIT_SOURCE_ABILITY("fortify"))
@@ -345,8 +342,7 @@
 /datum/action/xeno_action/activable/fortify/proc/stop_fortify()
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	UnregisterSignal(xeno, COMSIG_XENO_ENTER_CRIT)
-	UnregisterSignal(xeno, COMSIG_MOB_DEATH)
+	UnregisterSignal(owner, COMSIG_MOB_STATCHANGE)
 	UnregisterSignal(xeno, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE)
 
 	REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Fortify"))

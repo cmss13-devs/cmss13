@@ -30,8 +30,8 @@
 	integer = FALSE
 	min_val = -1
 
-/datum/config_entry/number/movedelay //Used for modifying movement speed for mobs.
-	abstract_type = /datum/config_entry/number/movedelay
+ABSTRACT_TYPE(/datum/config_entry/number/movedelay)
+/datum/config_entry/number/movedelay //! Used for modifying movement speed for mobs.
 
 /datum/config_entry/number/movedelay/run_delay
 	config_entry_value = 0

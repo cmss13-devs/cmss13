@@ -1,3 +1,4 @@
+ABSTRACT_TYPE(/mob/living)
 /mob/living
 	see_invisible = SEE_INVISIBLE_LIVING
 

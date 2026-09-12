@@ -114,6 +114,7 @@
 	SSclues.create_print(get_turf(user), user, "The fingerprint contains paper pieces.")
 	SEND_SIGNAL(P, COMSIG_POSTER_PLACED, user)
 
+ABSTRACT_TYPE(/datum/poster)
 /datum/poster
 	// Name suffix. Poster - [name]
 	var/name=""

@@ -110,8 +110,6 @@ GLOBAL_LIST_INIT_TYPED(sentry_spawns, /list/obj/effect/sentry_landmark, list())
 	icon = 'icons/landmarks.dmi'
 	icon_state = "map_sentry"
 
-	var/abstract_type = /obj/effect/sentry_landmark
-
 	/// Which landing zone this landmark should be connected to
 	var/landing_zone
 
@@ -132,8 +130,8 @@ GLOBAL_LIST_INIT_TYPED(sentry_spawns, /list/obj/effect/sentry_landmark, list())
 
 	return INITIALIZE_HINT_QDEL
 
+ABSTRACT_TYPE(/obj/effect/sentry_landmark/lz_1)
 /obj/effect/sentry_landmark/lz_1
-	abstract_type = /obj/effect/sentry_landmark/lz_1
 	landing_zone = /obj/docking_port/stationary/marine_dropship/lz1
 
 /obj/effect/sentry_landmark/lz_1/top_left
@@ -148,8 +146,8 @@ GLOBAL_LIST_INIT_TYPED(sentry_spawns, /list/obj/effect/sentry_landmark, list())
 /obj/effect/sentry_landmark/lz_1/bottom_right
 	position = SENTRY_BOTTOM_RIGHT
 
+ABSTRACT_TYPE(/obj/effect/sentry_landmark/lz_2)
 /obj/effect/sentry_landmark/lz_2
-	abstract_type = /obj/effect/sentry_landmark/lz_2
 	landing_zone = /obj/docking_port/stationary/marine_dropship/lz2
 
 /obj/effect/sentry_landmark/lz_2/top_left

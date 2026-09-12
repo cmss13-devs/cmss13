@@ -345,7 +345,7 @@
 		DB.screen_loc = "[clamp(c_view + 1 - view_x_offset + (target.x - user.x), 1, 2*c_view+1)],[clamp(c_view + 1 - view_y_offset + (target.y - user.y), 1, 2*c_view+1)]"
 		user.client.add_to_screen(DB)
 		new /obj/effect/temp_visual/minimap_blip(get_turf(target), minimap_flag)
-		addtimer(CALLBACK(src, PROC_REF(clear_pings), user, DB), 1 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(clear_pings), user, DB), 2 SECONDS)
 
 /obj/item/device/motiondetector/proc/clear_pings(mob/user, obj/effect/detector_blip/DB)
 	if(user.client)

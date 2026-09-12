@@ -289,13 +289,12 @@ as having entered the turf.
 		for(var/mob/living/carbon/human/blocker in epicenter)
 			if(blocker.resting && blocker.stat == CONSCIOUS)
 				contained = TRUE
-				if(blocker.faction == FACTION_MARINE || (FACTION_MARINE in blocker.faction_group))
-					var/shield_radius = max(2, round(power / max(falloff, 1)) + 1)
-					for(var/mob/living/carbon/human/marine in range(shield_radius, epicenter))
-						if(marine == blocker || marine.stat == DEAD || (marine.faction != FACTION_MARINE && !(FACTION_MARINE in marine.faction_group)))
-							continue
-						epicenter.visible_message(SPAN_HIGHDANGER("<b>[blocker]</b> throws himself onto the grenade to shield his fellow marines!"), null, 7)
-						break
+				var/shield_radius = max(2, round(power / max(falloff, 1)) + 1)
+				for(var/mob/living/carbon/human/nearby_human in range(shield_radius, epicenter))
+					if(nearby_human == blocker || nearby_human.stat == DEAD)
+						continue
+					epicenter.visible_message(SPAN_HIGHDANGER("<b>[blocker]</b> throws himself onto the grenade to shield his fellow people!"), null, 7)
+					break
 				break
 
 	if(!istype(explosion_cause_data))

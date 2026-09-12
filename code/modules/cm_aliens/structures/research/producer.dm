@@ -65,7 +65,7 @@
 	icon_state = "fruit_plasma_immature"
 
 	producing_chems = list(PLASMA_PURPLE)
-	production_amt = 10
+	production_amt = 50
 
 /obj/effect/alien/resin/chem_producer/nutrient
 	name = "nutrient gland"
@@ -73,7 +73,7 @@
 	icon_state = "fruit_plasma"
 
 	producing_chems = list(PLASMA_NUTRIENT)
-	production_amt = 10
+	production_amt = 50
 
 /obj/effect/alien/resin/chem_producer/chitin
 	name = "chitin gland"
@@ -81,7 +81,7 @@
 	icon_state = "fruit_spore_immature"
 
 	producing_chems = list(PLASMA_CHITIN)
-	production_amt = 10
+	production_amt = 50
 
 /obj/effect/alien/resin/chem_producer/reinforced_chitin
 	name = "reinforced chitin gland"
@@ -89,7 +89,7 @@
 	icon_state = "fruit_spore"
 
 	producing_chems = list(PLASMA_REINFORCED_CHITIN)
-	production_amt = 10
+	production_amt = 50
 
 /obj/effect/alien/resin/chem_producer/neurotoxin
 	name = "neurotoxin gland"
@@ -97,7 +97,7 @@
 	icon_state = "fruit_greater_immature"
 
 	producing_chems = list(PLASMA_NEUROTOXIN)
-	production_amt = 10
+	production_amt = 50
 
 /obj/effect/alien/resin/chem_producer/acid
 	name = "acid gland"
@@ -105,7 +105,7 @@
 	icon_state = "fruit_greater"
 
 	producing_chems = list(PLASMA_ACIDIC)
-	production_amt = 10
+	production_amt = 50
 
 /obj/effect/alien/resin/chem_producer/catecholamine
 	name = "catecholamine gland"
@@ -113,7 +113,7 @@
 	icon_state = "fruit_speed_immature"
 
 	producing_chems = list(PLASMA_CATECHOLAMINE)
-	production_amt = 10
+	production_amt = 50
 
 /obj/effect/alien/resin/chem_producer/adrenal
 	name = "adrenal gland"
@@ -121,7 +121,7 @@
 	icon_state = "fruit_speed"
 
 	producing_chems = list(PLASMA_ADRENALINE)
-	production_amt = 10
+	production_amt = 50
 
 /obj/effect/alien/resin/chem_producer/royal
 	name = "royal gland"
@@ -133,4 +133,4 @@
 	pixel_y = -16
 
 	producing_chems = list(PLASMA_ROYAL)
-	production_amt = 5
+	production_amt = 50

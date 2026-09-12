@@ -42,7 +42,7 @@
 		if (isnull(amount))
 			return
 
-		if(!L)
+		if(QDELETED(L))
 			to_chat(usr, "Mob doesn't exist anymore", confidential = TRUE)
 			return
 

@@ -310,6 +310,8 @@
 
 	TEST_ASSERT_NOTNULL(converted_child, "Test xenomorph [xeno_weeder] did not replace the old nodes weeds with weeds belonging to the new node")
 
+	TEST_ASSERT(QDELETED(old_child), "Test xenomorph [xeno_weeder] did not destroy the old nodes original weed during conversion")
+
 // Unweedable flag
 /datum/unit_test/weed_test/plant_weeds_blocked_by_unweedable_area/Run()
 	if(!prepare_weed_unit_test())

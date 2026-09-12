@@ -1258,6 +1258,7 @@
 #include "code\game\objects\items\XMAS.dm"
 #include "code\game\objects\items\books\book.dm"
 #include "code\game\objects\items\books\manuals.dm"
+#include "code\game\objects\items\books\lore\uscm.dm"
 #include "code\game\objects\items\circuitboards\airlock.dm"
 #include "code\game\objects\items\circuitboards\circuitboard.dm"
 #include "code\game\objects\items\circuitboards\computer.dm"

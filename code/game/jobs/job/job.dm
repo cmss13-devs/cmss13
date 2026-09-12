@@ -345,6 +345,8 @@
 				pod.go_in_cryopod(human, TRUE)
 				break
 
+		human.assigned_equipment_preset?.equip_spawn_lore(human)
+
 		human.sec_hud_set_ID()
 		human.hud_set_squad()
 

@@ -68,6 +68,8 @@
 		to_chat(H, SPAN_ROLE_HEADER("You are a Rifleman in the USCM."))
 		to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of [SSmapping.configs[GROUND_MAP].map_name]."))
 
+	H.assigned_equipment_preset?.equip_spawn_lore(H)
+
 	sleep(10)
 	to_chat(H, SPAN_BOLD("Objectives: [objectives]"))
 

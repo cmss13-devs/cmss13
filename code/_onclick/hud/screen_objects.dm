@@ -546,6 +546,9 @@
 
 		if(user.hive.hive_location)
 			options["Hive Core"] = list(null, TRACKER_HIVE)
+		var/obj/structure/machinery/computer/shuttle/dropship/flight/primary_lz_console = SSticker.mode.active_lz
+		if(primary_lz_console)
+			options["Primazy LZ"] = list(primary_lz_console, TRACKER_LZ)
 
 		for(var/mob/living/carbon/xenomorph/leader in user.hive.xeno_leader_list)
 			options["Xeno Leader [leader]"] = list(leader, TRACKER_LEADER)

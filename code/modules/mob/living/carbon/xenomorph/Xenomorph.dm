@@ -160,7 +160,7 @@
 	var/show_age_prefix = TRUE
 	var/show_name_numbers = TRUE
 	var/show_only_numbers = FALSE
-	var/evolution_stored = 0 //How much evolution they have stored
+	var/evolution_stored = 10000 //How much evolution they have stored SET TO ZERO AFTER TESTING IS DONE!
 	var/evolution_threshold = 200
 	var/tier = 1 //This will track their "tier" to restrict/limit evolutions
 	var/time_of_birth
@@ -388,6 +388,10 @@
 	var/hugger_drop_cooldown = 0
 	/// cooldown between throwing facehuggers
 	var/hugger_throw_cooldown = 0
+
+	///what caste do we want to evolve to
+	var/datum/caste_datum/desired_caste
+
 
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	if(old_xeno && old_xeno.hivenumber)
@@ -749,6 +753,7 @@
 /mob/living/carbon/xenomorph/Destroy()
 	GLOB.living_xeno_list -= src
 	GLOB.xeno_mob_list -= src
+	hive.remove_from_evo_list(src)
 	var/mob/living/carbon/human/user = hauled_mob?.resolve()
 	if(user)
 		user.handle_unhaul()
@@ -1250,6 +1255,7 @@
 /mob/living/carbon/xenomorph/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE, transfer = FALSE)
 	. = ..()
 	if(. && !can_reenter_corpse && !transfer && stat != DEAD && !QDELETED(src) && !should_block_game_interaction(src))
+		hive.remove_from_evo_list(src)
 		handle_ghost_message()
 	if(selected_ability)
 		selected_ability.action_deselect()
@@ -1373,3 +1379,21 @@
 	. = ..()
 	if(isxeno(user))
 		return
+
+
+/mob/living/carbon/xenomorph/proc/allow_evolution()
+	switch(desired_caste.tier)
+		if(2)
+			to_chat(src, "You are now able to evolve into [desired_caste.caste_type], seek weeds to begin evolving.")
+		if(3)
+			to_chat(src, "You are now able to evolve into [desired_caste.caste_type], seek hive weeds to begin evolving.")
+		if(0)
+			to_chat(src, "You are now able to evolve into [desired_caste.caste_type].")
+
+
+	addtimer(CALLBACK(src, PROC_REF(failed_to_evolve)), 3 MINUTES)
+
+///If we evolve we cease to exist, if we are in a pod after the 3 minute timer it allows us to finish evolving
+/mob/living/carbon/xenomorph/proc/failed_to_evolve()
+	if(!istype(loc, /obj/effect/alien/resin/special/evolution_pod))
+		hive.remove_from_evo_list(src)

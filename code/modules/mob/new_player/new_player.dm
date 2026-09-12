@@ -128,6 +128,13 @@
 	if(!client?.prefs.update_slot(player_rank.title))
 		return
 
+	if(player_rank.flags_startup_parameters & ROLE_ADD_TO_SQUAD && player_rank.title != JOB_INTEL)
+		var/datum/equipment_preset/preset = new player_rank.gear_preset
+		var/datum/squad/predicted = GLOB.RoleAuthority.get_eligible_squad(player_rank.title, preset.faction, client?.prefs?.preferred_squad)
+		if(istype(predicted, /datum/squad/marine/cryo))
+			to_chat(src, SPAN_WARNING("[rank] is not available with your current squad preferences."))
+			return
+
 	if(!GLOB.RoleAuthority.assign_role(src, player_rank, latejoin = TRUE))
 		to_chat(src, SPAN_WARNING("[rank] is not available. Please try another."))
 		return

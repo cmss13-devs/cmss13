@@ -20,7 +20,7 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 
 #define ACCESS_MARINE_ALPHA 15
 #define ACCESS_MARINE_BRAVO 16
-#define ACCESS_MARINE_CHARLIE 17
+#define ACCESS_MARINE_SUPPORT 17
 #define ACCESS_MARINE_DELTA 18
 
 #define ACCESS_MARINE_COMMAND 19

@@ -169,12 +169,12 @@ export const RADIO_PREFIXES = {
     label: 'UPP CCT',
   },
   ':k ': {
-    id: 'sof',
-    label: 'SOF',
+    id: 'kilo',
+    label: 'Kilo',
   },
   '.k ': {
-    id: 'yautja',
-    label: 'Military',
+    id: 'kilo',
+    label: 'Kilo',
   },
   '#k ': {
     id: 'specops',
@@ -209,12 +209,12 @@ export const RADIO_PREFIXES = {
     label: 'UPP Engi',
   },
   ':o ': {
-    id: 'colony',
-    label: 'Colony',
+    id: 'oscar',
+    label: 'Oscar',
   },
   '.o ': {
-    id: 'colony',
-    label: 'Colony',
+    id: 'oscar',
+    label: 'Oscar',
   },
   '#o ': {
     id: 'pmc-cct',
@@ -320,30 +320,6 @@ export const RADIO_PREFIXES = {
     id: 'wysec',
     label: 'W-Y Sec',
   },
-  ':1 ': {
-    id: 'wypub',
-    label: 'W-Y Pub',
-  },
-  '.1 ': {
-    id: 'wypub',
-    label: 'W-Y Pub',
-  },
-  '#1 ': {
-    id: 'wypub',
-    label: 'W-Y Pub',
-  },
-  ':2 ': {
-    id: 'cia',
-    label: 'CIA',
-  },
-  '.2 ': {
-    id: 'cia',
-    label: 'CIA',
-  },
-  '#2 ': {
-    id: 'cia',
-    label: 'CIA',
-  },
   ':z ': {
     id: 'highcom',
     label: 'HC',
@@ -355,6 +331,50 @@ export const RADIO_PREFIXES = {
   '#z ': {
     id: 'pmc-cmd',
     label: 'PMC Cmd.',
+  },
+  ':1 ': {
+    id: 'sof',
+    label: 'SOF',
+  },
+  '.1 ': {
+    id: 'sof',
+    label: 'SOF',
+  },
+  ':2 ': {
+    id: 'colony',
+    label: 'Colony',
+  },
+  '.2 ': {
+    id: 'colony',
+    label: 'Colony',
+  },
+  ':3 ': {
+    id: 'cia',
+    label: 'CIA',
+  },
+  '.3 ': {
+    id: 'cia',
+    label: 'CIA',
+  },
+  '#3 ': {
+    id: 'cia',
+    label: 'CIA',
+  },
+  ':4 ': {
+    id: 'wypub',
+    label: 'W-Y Pub',
+  },
+  '.4 ': {
+    id: 'wypub',
+    label: 'W-Y Pub',
+  },
+  '#4 ': {
+    id: 'wypub',
+    label: 'W-Y Pub',
+  },
+  ':5 ': {
+    id: 'yautja',
+    label: 'Military',
   },
 } as const;
 

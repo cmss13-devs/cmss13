@@ -4,8 +4,7 @@
 	alpha = 50;
 	exit_type = /obj/structure/interior_exit/vehicle/arc;
 	name = "ARC exit door";
-	pixel_y = -10;
-	tag = "right"
+	pixel_y = -10
 	},
 /turf/open/floor,
 /area/interior/vehicle/arc)

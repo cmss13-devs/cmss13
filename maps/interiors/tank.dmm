@@ -3,8 +3,7 @@
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 8;
 	exit_type = /obj/structure/interior_exit/vehicle/tank;
-	name = "back entrance marker";
-	tag = "back"
+	name = "back entrance marker"
 	},
 /obj/structure/transmitter{
 	dir = 8;

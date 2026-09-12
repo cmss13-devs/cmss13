@@ -542,6 +542,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/extended_barrel/New()
 	..()
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
+	damage_mod = BULLET_DAMAGE_MULT_TIER_1
 	velocity_mod = AMMO_SPEED_TIER_1
 
 /obj/item/attachable/extended_barrel/vented
@@ -604,6 +605,7 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = -HIT_ACCURACY_MULT_TIER_3
 	damage_mod = BULLET_DAMAGE_MULT_TIER_6
 	delay_mod = FIRE_DELAY_TIER_11
+	velocity_mod = AMMO_SPEED_TIER_1
 
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_7
 
@@ -779,6 +781,8 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
 	scatter_mod = -SCATTER_AMOUNT_TIER_6
 	delay_mod = FIRE_DELAY_TIER_7
+	damage_mod = BULLET_DAMAGE_MULT_TIER_2
+	velocity_mod = AMMO_SPEED_TIER_1
 
 /obj/item/attachable/mateba/long/Attach(obj/item/weapon/gun/G)
 	..()
@@ -801,6 +805,7 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = -HIT_ACCURACY_MULT_TIER_4
 	scatter_mod = SCATTER_AMOUNT_TIER_6
 	delay_mod = -FIRE_DELAY_TIER_7
+	damage_mod = -BULLET_DAMAGE_MULT_TIER_4
 
 /obj/item/attachable/mateba/short/Attach(obj/item/weapon/gun/G)
 	..()

@@ -46,7 +46,7 @@
 
 /obj/item/weapon/bracer_attachment
 	name = "bracer attachment"
-	desc = "How did you get these?."
+	desc = "How did you get these?"
 	var/plural_name = "wrist blades"
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
@@ -1188,7 +1188,7 @@
 		return
 
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_WARNING("Why would you want to do this!?."))
+		to_chat(user, SPAN_WARNING("Why would you want to do this!?"))
 		return
 	user.visible_message(SPAN_NOTICE("[user] mounts the [skull] with [src]."), SPAN_NOTICE("You mount [skull] to [src]."))
 	user.drop_inv_item_to_loc(skull, src)

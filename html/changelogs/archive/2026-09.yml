@@ -140,3 +140,22 @@
   - rscadd: an Encryption key variant that you can only hear a channel and not talk
       on it.
   - rscadd: Give the IO and POs a command key variant which they can only hear it.
+2026-09-11:
+  Drathek:
+  - bugfix: Fixed some places where damage wasn't updating health (namely facehuggers
+      and lessers off weeds)
+2026-09-12:
+  Drathek:
+  - bugfix: Fixed sentry subsystem using blocking http requests
+  PoltavskaPraca:
+  - imageadd: added an icon sprite for automated weeding
+  - qol: added autoweeding ability (toggleable) to a bunch of drone-adjacent castes.
+      Autoweeding automatically plants weed nodes as you move based on distance. At
+      20% plasma total or lower it becomes disabled automatically. Weeds planted via
+      autoweeding have the same cost as the usual.
+  Unknownity:
+  - bugfix: PMC Synthetic survivors now start with a shortwave radio inside their
+      backpack.
+  ori-disillusion-mirnov:
+  - bugfix: fixed runtime in clean_observe_target() by adding a check for a client
+  - bugfix: other possible set_eye related runtimes from lacking a client

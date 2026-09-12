@@ -1,0 +1,159 @@
+name: Tracy Startup Profiling
+
+on:
+  workflow_run:
+    workflows: ["CI Suite"]
+    types:
+      - completed
+
+jobs:
+  run_tracy_profiling:
+    runs-on: ubuntu-latest
+    if: >
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion == 'success'
+    permissions:
+      contents: read
+      pull-requests: write
+
+    env:
+      TRACY_VERSION: "0.13.1"
+
+    steps:
+      - name: Get PR info
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PR_NUMBER=$(gh api repos/${{ github.repository }}/commits/${{ github.event.workflow_run.head_sha }}/pulls --jq '.[0].number')
+          BASE_SHA=$(gh api repos/${{ github.repository }}/pulls/$PR_NUMBER --jq '.base.sha')
+          echo "number=$PR_NUMBER" >> $GITHUB_OUTPUT
+          echo "base_sha=$BASE_SHA" >> $GITHUB_OUTPUT
+          echo "head_sha=${{ github.event.workflow_run.head_sha }}" >> $GITHUB_OUTPUT
+
+      - name: Checkout PR head
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          path: pr
+          ref: ${{ steps.pr.outputs.head_sha }}
+          token: ${{ github.token }}
+
+      - name: Checkout base branch
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          path: base
+          ref: ${{ steps.pr.outputs.base_sha }}
+          token: ${{ github.token }}
+
+      - name: Restore BYOND cache
+        uses: actions/cache@v3
+        with:
+          path: ~/BYOND
+          key: ${{ runner.os }}-byond-${{ secrets.CACHE_PURGE_KEY }}
+
+      - name: Restore Tracy build cache
+        id: tracy-cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ./tracy-capture
+            ./tracy-csvexport
+          key: ${{ runner.os }}-tracy-${{ env.TRACY_VERSION }}-v2
+
+      - name: Install rust-g
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt update || true
+          sudo apt install -o APT::Immediate-Configure=false zlib1g-dev:i386 libssl-dev:i386
+          cd base && bash tools/ci/install_rust_g.sh
+
+      - name: Build Tracy tools
+        if: steps.tracy-cache.outputs.cache-hit != 'true'
+        run: |
+          sudo apt-get install -y cmake libtbb-dev libdbus-1-dev
+          git clone --depth 1 --branch v${TRACY_VERSION} https://github.com/wolfpld/tracy.git tracy-src
+          cmake -S tracy-src/capture  -B tracy-src/capture/build  -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-march=x86-64"
+          cmake --build tracy-src/capture/build  --parallel
+          cmake -S tracy-src/csvexport -B tracy-src/csvexport/build -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-march=x86-64"
+          cmake --build tracy-src/csvexport/build --parallel
+          cp tracy-src/capture/build/tracy-capture   ./tracy-capture
+          cp tracy-src/csvexport/build/tracy-csvexport ./tracy-csvexport
+
+      - name: Install byond-tracy
+        run: |
+          wget -q "https://github.com/spacestation13/byond-tracy/releases/latest/download/libprof.so"
+
+      - name: Compile PR build
+        run: |
+          cd base && bash tools/ci/install_byond.sh
+          source $HOME/BYOND/byond/bin/byondsetup
+          cd ../pr && tools/build/build.sh -DTRACY_PROFILE_AND_EXIT -DBYOND_TRACY -DREPRODUCIBLE_ENVIRONMENT
+
+      - name: Compile base build
+        run: |
+          source $HOME/BYOND/byond/bin/byondsetup
+          cd base && tools/build/build.sh -DTRACY_PROFILE_AND_EXIT -DBYOND_TRACY -DREPRODUCIBLE_ENVIRONMENT
+
+      - name: Prepare run assets
+        run: |
+          for dir in pr base; do
+            cp libprof.so $dir/libprof.so
+            cp ~/.byond/bin/librust_g.so $dir/librust_g.so
+            cp tracy-capture $dir/tracy-capture
+            cp tracy-csvexport $dir/tracy-csvexport
+          done
+
+      - name: Run profiling capture
+        run: |
+          cd pr && git remote remove origin && cd ..
+          cd base && git remote remove origin && cd ..
+          WS="$GITHUB_WORKSPACE"
+          # Alternate CPU cores each run to cancel out core bias while keeping parallel execution
+          sudo unshare -n bash -c "\
+            ip link set lo up && \
+            source $HOME/BYOND/byond/bin/byondsetup && \
+            run() { dir=\$1 name=\$2 cpus=\$3 port=\$4; cd $WS/\$dir && TRACY_PORT=\$port taskset -c \$cpus bash tools/ci/profile_server.sh $WS/\${name}.csv $WS/\${name}.tracy; } && \
+            for i in 1 2 3 4 5 6 7 8 9 10; do \
+              if (( i % 2 == 1 )); then run base base-\$i 0,1 8086 & run pr pr-\$i 2,3 8087 & wait; \
+              else run pr pr-\$i 0,1 8086 & run base base-\$i 2,3 8087 & wait; fi; \
+            done
+          "
+
+      - name: Generate PR comment
+        run: python3 base/tools/ci/profile_compare.py
+
+      - name: Post or update PR comment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          MARKER="<!-- tracy-profile-comment -->"
+          PR_NUMBER="${{ steps.pr.outputs.number }}"
+          COMMENT_ID=$(gh api \
+            repos/${{ github.repository }}/issues/$PR_NUMBER/comments \
+            --jq ".[] | select(.body | startswith(\"$MARKER\")) | .id" | head -n1)
+
+          if [[ -n "$COMMENT_ID" ]]; then
+            gh api --method PATCH \
+              repos/${{ github.repository }}/issues/comments/$COMMENT_ID \
+              -f body="$(cat pr-comment.md)"
+          else
+            gh api --method POST \
+              repos/${{ github.repository }}/issues/$PR_NUMBER/comments \
+              -f body="$(cat pr-comment.md)"
+          fi
+
+      - name: Upload CSV profiles
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tracy-profile-csv
+          path: "*.csv"
+
+      - name: Upload Tracy captures
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tracy-profile-tracy
+          path: "*.tracy"

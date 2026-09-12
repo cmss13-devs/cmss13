@@ -252,11 +252,13 @@
 			var/obj/structure/bed/chair/found_chair = found_obj
 			found_chair.update_shimmy_data(src)	//we need to update the shimmy other_buckled_chair chair to block walking into this buckled chair
 			found_chair.AddComponent(/datum/component/shimmy_around, approach_dirs = found_chair.shimmy_data[INDEX_APPORACH_DIRS], internal_dirs = found_chair.shimmy_data[INDEX_INTERNAL_DIRS])
-			target.set_density(FALSE)
-			return	//shimmying is already handled, we dont want to offset shimmiers twice!
+			ADD_TRAIT(target, TRAIT_UNDENSE, TRAIT_SOURCE_BUCKLE)
+			target.update_density()	//theres already another buckled chair handling shimmies, but we still dont want our buckled mob to interfere
+			return	//shimmying is already handled
 	set_density(TRUE)
 	add_temp_pass_flags() //you shall not pass
-	target.set_density(FALSE)
+	ADD_TRAIT(target, TRAIT_UNDENSE, TRAIT_SOURCE_BUCKLE)
+	target.update_density()
 	AddComponent(/datum/component/shimmy_around, \
 		north_offset = shimmy_data[INDEX_NORTH_OFFSET], \
 		south_offset = shimmy_data[INDEX_SOUTH_OFFSET], \
@@ -295,7 +297,8 @@
 			shimmy_data[INDEX_EAST_OFFSET] = offset
 			shimmy_data[INDEX_WEST_OFFSET] = offset
 	if(force_update && buckled_mob)
-		buckled_mob.set_density(FALSE)
+		ADD_TRAIT(buckled_mob, TRAIT_UNDENSE, TRAIT_SOURCE_BUCKLE)
+		buckled_mob.update_density()
 		set_density(TRUE)
 		AddComponent(/datum/component/shimmy_around, \
 			north_offset = shimmy_data[INDEX_NORTH_OFFSET], \
@@ -309,6 +312,7 @@
 
 /obj/structure/bed/chair/unbuckle()
 	if(buckled_mob)
+		REMOVE_TRAIT(buckled_mob, TRAIT_UNDENSE, TRAIT_SOURCE_BUCKLE)
 		buckled_mob.update_density()
 	. = ..()
 	set_density(FALSE)
@@ -335,6 +339,8 @@
 				shimmied_living.layer = initial(shimmied_living.layer)
 		return
 	else	// At least one other chair is still occupied –> add a component, if one exists its inheritence will handle everything
+		ADD_TRAIT(other_buckled_chair.buckled_mob, TRAIT_UNDENSE, TRAIT_SOURCE_BUCKLE)
+		other_buckled_chair.buckled_mob.update_density()
 		other_buckled_chair.set_density(TRUE)
 		other_buckled_chair.update_shimmy_data(src)
 		other_buckled_chair.AddComponent(/datum/component/shimmy_around, \

@@ -44,17 +44,11 @@ GLOBAL_LIST_EMPTY(mainship_pipes)
 GLOBAL_LIST_EMPTY(cached_maps)
 
 /proc/initiate_minimap_icons()
-	var/list/icons = list()
+	var/base64_icons = list()
 	for(var/iconstate in icon_states('icons/UI_icons/map_blips.dmi'))
-		var/icon/image = icon('icons/UI_icons/map_blips.dmi', icon_state = iconstate)
-		icons[iconstate] += image
-
-	var/list/base64_icons = list()
-	for(var/iconstate in icons)
-		base64_icons[iconstate] = icon2base64(icons[iconstate])
+		base64_icons[iconstate] = icon2base64('icons/UI_icons/map_blips.dmi', iconstate)
 
 	GLOB.minimap_icons = base64_icons
-
 
 
 // Xeno stuff //

@@ -857,3 +857,7 @@
 
 /// Determines how fast xeno botany chems produce.
 #define XENO_BOTANY_RATE 10 SECONDS
+
+// defines below should only be used in ability actions.
+#define XENO_ACTION_CHECK(X) if(!X.check_state() || !action_cooldown_check() || !check_plasma_owner(src.plasma_cost)) return
+#define XENO_ACTION_CHECK_USE_PLASMA(X) if(!X.check_state() || !action_cooldown_check() || !check_and_use_plasma_owner(src.plasma_cost)) return

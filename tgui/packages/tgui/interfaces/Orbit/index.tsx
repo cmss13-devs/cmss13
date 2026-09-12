@@ -574,6 +574,7 @@ const ObservableContent = () => {
     clf = [],
     wy = [],
     hyperdyne = [],
+    lasalle = [],
     twe = [],
     freelancer = [],
     mercenary = [],
@@ -648,6 +649,11 @@ const ObservableContent = () => {
         color="orange"
         section={hyperdyne}
         title="Hyperdyne Corporation"
+      />
+      <ObservableSection
+        color="light-blue"
+        section={lasalle}
+        title="Lasalle Bionational"
       />
       <GroupedObservable
         color="red"

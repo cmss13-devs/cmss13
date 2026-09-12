@@ -103,7 +103,7 @@
 	w_class = SIZE_SMALL
 	attack_verb = list("warned", "cautioned", "smashed")
 
-/obj/item/tool/warning_cone
+/obj/item/tool/warning_cone // general.
 	name = "warning cone"
 	desc = "This cone is trying to warn you of something!"
 	icon_state = "cone"
@@ -120,8 +120,14 @@
 	flags_equip_slot = SLOT_HEAD
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 
+/obj/item/tool/warning_cone/blue // utility work.
+	icon_state = "cone_blue"
 
+/obj/item/tool/warning_cone/red // extreme danger or restricted area.
+	icon_state = "cone_red"
 
+/obj/item/tool/warning_cone/green // various or good to pass.
+	icon_state = "cone_green"
 
 /obj/item/tool/soap
 	name = "soap"

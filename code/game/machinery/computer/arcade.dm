@@ -202,3 +202,49 @@
 	for(num_of_prizes; num_of_prizes > 0; num_of_prizes--)
 		empprize = pick_weight(prizes)
 		new empprize(src.loc)
+
+// Arcade color variants
+
+/obj/structure/machinery/computer/arcade/back
+
+	icon_state = "arcadeback"
+
+/obj/structure/machinery/computer/arcade/red
+
+	icon_state = "arcadered"
+
+/obj/structure/machinery/computer/arcade/red_back
+
+	icon_state = "arcaderedback"
+
+/obj/structure/machinery/computer/arcade/blue
+
+	icon_state = "arcadeblue"
+
+/obj/structure/machinery/computer/arcade/blue_back
+
+	icon_state = "arcadeblueback"
+
+/obj/structure/machinery/computer/arcade/green
+
+	icon_state = "arcadegreen"
+
+/obj/structure/machinery/computer/arcade/green_back
+
+	icon_state = "arcadegreenback"
+
+/obj/structure/machinery/computer/arcade/green_stripe
+
+	icon_state = "arcadegreenstripe"
+
+/obj/structure/machinery/computer/arcade/green_stripe_back
+
+	icon_state = "arcadegreenstripeback"
+
+/obj/structure/machinery/computer/arcade/blue_stripe
+
+	icon_state = "arcadebluestripe"
+
+/obj/structure/machinery/computer/arcade/blue_stripe_back
+
+	icon_state = "arcadebluestripeback"

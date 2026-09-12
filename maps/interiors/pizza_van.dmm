@@ -35,13 +35,16 @@
 /turf/open/void/vehicle,
 /area/space)
 "j" = (
-/obj/structure/interior_wall/pizza_van,
+/obj/structure/interior_wall/pizza_van{
+	layer = 2.8
+	},
 /obj/structure/sign/poster/ad{
 	pixel_y = 4;
 	pixel_x = 8
 	},
 /obj/effect/vehicle_roof/pizza_van{
-	icon_state = "roof_4"
+	icon_state = "roof_4";
+	alpha = 25
 	},
 /turf/open/void/vehicle,
 /area/space)
@@ -50,7 +53,7 @@
 	icon_state = "background_2";
 	pixel_y = 32;
 	layer = 5.2;
-	alpha = 50
+	alpha = 25
 	},
 /turf/open/void/vehicle,
 /area/space)
@@ -58,19 +61,25 @@
 /obj/effect/landmark/interior/spawn/interior_viewport/simple{
 	pixel_y = 30
 	},
-/obj/structure/bed/chair/comfy/beige,
 /obj/item/clothing/head/hybrisa/pizza_galaxy,
+/obj/structure/bed/chair/vehicle/comfy{
+	pixel_y = 17;
+	buckling_y = 17
+	},
 /obj/effect/vehicle_roof/pizza_van{
-	icon_state = "roof_3"
+	icon_state = "roof_3";
+	alpha = 25
 	},
 /turf/open/shuttle/vehicle/med/gray,
 /area/interior/vehicle/pizza_van)
 "r" = (
 /obj/structure/interior_wall/pizza_van{
-	icon_state = "exterior_3"
+	icon_state = "exterior_3";
+	layer = 2.8
 	},
 /obj/effect/vehicle_roof/pizza_van{
-	icon_state = "roof_5"
+	icon_state = "roof_5";
+	alpha = 25
 	},
 /turf/open/void/vehicle,
 /area/space)
@@ -88,28 +97,36 @@
 	pixel_y = 32;
 	tag = "left"
 	},
-/obj/effect/landmark/interior/spawn/vehicle_driver_seat{
-	dir = 4;
-	icon_state = "comfychair_beige"
-	},
 /obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield{
 	icon_state = "windshield_viewport_bottom";
-	icon = 'icons/obj/vehicles/interiors/pizza_van_interior.dmi'
+	icon = 'icons/obj/vehicles/interiors/pizza_van_interior.dmi';
+	alpha = 50
+	},
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat{
+	dir = 4;
+	icon = 'icons/obj/vehicles/interiors/seats.dmi';
+	icon_state = "vehicle_seat";
+	pixel_x = -1;
+	pixel_y = 5
 	},
 /obj/effect/vehicle_roof/pizza_van{
-	icon_state = "front_roof_2"
+	icon_state = "front_roof_2";
+	alpha = 25
 	},
 /turf/open/shuttle/vehicle/floor_3_11,
 /area/interior/vehicle/pizza_van)
 "v" = (
 /obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield{
-	icon = 'icons/obj/vehicles/interiors/pizza_van_interior.dmi'
+	icon = 'icons/obj/vehicles/interiors/pizza_van_interior.dmi';
+	alpha = 50
 	},
 /obj/effect/vehicle_roof/pizza_van{
-	icon_state = "interior_door"
+	icon_state = "interior_door";
+	layer = 3
 	},
 /obj/effect/vehicle_roof/pizza_van{
-	icon_state = "front_roof_1"
+	icon_state = "front_roof_1";
+	alpha = 25
 	},
 /turf/open/void/vehicle,
 /area/space)
@@ -126,8 +143,16 @@
 	name = "right entrance marker";
 	tag = "right"
 	},
-/obj/structure/bed/chair/comfy/beige{
-	dir = 4
+/obj/structure/prop/vehicle/rt01/console{
+	pixel_x = 18;
+	icon_state = "vehicle_console_alt"
+	},
+/obj/structure/bed/chair/vehicle/comfy{
+	dir = 4;
+	pixel_y = 10;
+	buckling_x = -3;
+	buckling_y = 10;
+	pixel_x = -1
 	},
 /turf/open/shuttle/vehicle/floor_3_12,
 /area/interior/vehicle/pizza_van)
@@ -136,12 +161,14 @@
 	alpha = 100;
 	pixel_y = -2
 	},
-/obj/structure/bed/chair/comfy/beige{
-	dir = 1
-	},
 /obj/item/stack/sheet/cardboard{
 	layer = 1;
 	pixel_x = 12
+	},
+/obj/structure/bed/chair/vehicle/comfy{
+	dir = 1;
+	pixel_y = 1;
+	buckling_y = 1
 	},
 /turf/open/shuttle/vehicle/med/gray,
 /area/interior/vehicle/pizza_van)
@@ -150,7 +177,7 @@
 	icon_state = "background_3";
 	pixel_y = 32;
 	layer = 5.2;
-	alpha = 50
+	alpha = 25
 	},
 /turf/open/void/vehicle,
 /area/space)
@@ -173,7 +200,8 @@
 	pixel_y = 8
 	},
 /obj/effect/vehicle_roof/pizza_van{
-	icon_state = "roof_2"
+	icon_state = "roof_2";
+	alpha = 25
 	},
 /turf/open/shuttle/vehicle/med/gray,
 /area/interior/vehicle/pizza_van)

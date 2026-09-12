@@ -235,3 +235,6 @@
 	R.add_fingerprint(user)
 	user.drop_held_item()
 	qdel(src)
+
+/obj/item/frame/rack/long
+	icon_state = "longrack_parts"

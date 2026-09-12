@@ -47,3 +47,10 @@
 /obj/effect/decal/cleanable/blood/oil/streak
 	random_icon_states = list("mgibbl1", "mgibbl2", "mgibbl3", "mgibbl4", "mgibbl5")
 	amount = 1
+
+/obj/effect/decal/cleanable/blood/synth
+	name = "artificial blood"
+	desc = "A thick white fluid that serves as blood for synthetic beings. It smells faintly chemical."
+	icon = 'icons/effects/blood.dmi'
+	amount = 1
+	color = "#EEEEEE"

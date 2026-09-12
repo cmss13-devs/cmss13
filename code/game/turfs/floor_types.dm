@@ -325,6 +325,11 @@
 /turf/open/floor/plating/plating_catwalk/strata
 	icon = 'icons/turf/floors/strata_floor.dmi'
 
+/turf/open/floor/plating/plating_catwalk/strata/alt
+	icon = 'icons/turf/floors/strata_floor.dmi'
+	icon_state = "plating_catwalk_alt"
+	covered_icon_state = "catwalk_alt"
+
 /turf/open/floor/plating/plating_catwalk/shiva
 	icon = 'icons/turf/floors/ice_colony/shiva_floor.dmi'
 
@@ -2275,14 +2280,17 @@
 /turf/open/floor/almayer_hull/outerhull_dir
 	icon_state = "outerhull_dir"
 
-/turf/open/floor/almayer_hull/outerhull_dir/southwest
-	dir = SOUTHWEST
-
 /turf/open/floor/almayer_hull/outerhull_dir/north
 	dir = NORTH
 
 /turf/open/floor/almayer_hull/outerhull_dir/east
 	dir = EAST
+
+/turf/open/floor/almayer_hull/outerhull_dir/west
+	dir = WEST
+
+/turf/open/floor/almayer_hull/outerhull_dir/southwest
+	dir = SOUTHWEST
 
 /turf/open/floor/almayer_hull/outerhull_dir/northeast
 	dir = NORTHEAST
@@ -2290,17 +2298,11 @@
 /turf/open/floor/almayer_hull/outerhull_dir/southeast
 	dir = SOUTHEAST
 
-/turf/open/floor/almayer_hull/outerhull_dir/west
-	dir = WEST
-
 /turf/open/floor/almayer_hull/outerhull_dir/northwest
 	dir = NORTHWEST
 
 /turf/open/floor/almayer_hull/outerhull_dir_alt
 	icon_state = "outerhull_dir_alt"
-
-/turf/open/floor/almayer_hull/outerhull_dir_alt/southwest
-	dir = SOUTHWEST
 
 /turf/open/floor/almayer_hull/outerhull_dir_alt/north
 	dir = NORTH
@@ -2308,17 +2310,295 @@
 /turf/open/floor/almayer_hull/outerhull_dir_alt/east
 	dir = EAST
 
+/turf/open/floor/almayer_hull/outerhull_dir_alt/west
+	dir = WEST
+
+/turf/open/floor/almayer_hull/outerhull_dir_alt/southwest
+	dir = SOUTHWEST
+
 /turf/open/floor/almayer_hull/outerhull_dir_alt/northeast
 	dir = NORTHEAST
 
 /turf/open/floor/almayer_hull/outerhull_dir_alt/southeast
 	dir = SOUTHEAST
 
-/turf/open/floor/almayer_hull/outerhull_dir_alt/west
-	dir = WEST
-
 /turf/open/floor/almayer_hull/outerhull_dir_alt/northwest
 	dir = NORTHWEST
+
+/turf/open/floor/almayer_hull/corner
+	icon_state = "outerhull_corner"
+
+/turf/open/floor/almayer_hull/corner/north
+	dir = NORTH
+
+/turf/open/floor/almayer_hull/corner/east
+	dir = EAST
+
+/turf/open/floor/almayer_hull/corner/west
+	dir = WEST
+
+/turf/open/floor/almayer_hull/corner_alt
+	icon_state = "outerhull_corner_alt"
+
+/turf/open/floor/almayer_hull/corner_alt/north
+	dir = NORTH
+
+/turf/open/floor/almayer_hull/connection
+	icon_state = "outerhull_connection"
+
+/turf/open/floor/almayer_hull/connection/north
+	dir = NORTH
+
+/turf/open/floor/almayer_hull/connection/east
+	dir = EAST
+
+/turf/open/floor/almayer_hull/connection/west
+	dir = WEST
+
+/turf/open/floor/almayer_hull/connection_alt
+	icon_state = "outerhull_connection_alt"
+
+/turf/open/floor/almayer_hull/connection_alt/north
+	dir = NORTH
+
+/turf/open/floor/almayer_hull/connection_alt/east
+	dir = EAST
+
+/turf/open/floor/almayer_hull/connection_alt/west
+	dir = WEST
+
+/turf/open/floor/almayer_hull/connection_alt/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/almayer_hull/connection_alt/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/almayer_hull/connection_alt/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/almayer_hull/connection_alt/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/almayer_hull/connection_middle
+	icon_state = "outerhull_connection_middle"
+
+/turf/open/floor/almayer_hull/connection_middle/north
+	dir = NORTH
+
+/turf/open/floor/almayer_hull/connection_middle/east
+	dir = EAST
+
+/turf/open/floor/almayer_hull/connection_middle/west
+	dir = WEST
+
+/turf/open/floor/almayer_hull/connection_corner
+	icon_state = "outerhull_connection_corner"
+
+/turf/open/floor/almayer_hull/connection_corner/north
+	dir = NORTH
+
+/turf/open/floor/almayer_hull/connection_corner/east
+	dir = EAST
+
+/turf/open/floor/almayer_hull/connection_corner/west
+	dir = WEST
+
+/turf/open/floor/almayer_hull/connection_end
+	icon_state = "outerhull_connection_end"
+
+/turf/open/floor/almayer_hull/connection_end/north
+	dir = NORTH
+
+/turf/open/floor/almayer_hull/connection_end/east
+	dir = EAST
+
+/turf/open/floor/almayer_hull/connection_end/west
+	dir = WEST
+
+/turf/open/floor/almayer_hull/full
+	icon_state = "outerhull_full"
+
+/turf/open/floor/almayer_hull/tiles
+	icon_state = "outerhull_tiles"
+
+/turf/open/floor/almayer_hull/tiles/north
+	dir = NORTH
+
+/turf/open/floor/almayer_hull/tiles/east
+	dir = EAST
+
+/turf/open/floor/almayer_hull/tiles/west
+	dir = WEST
+
+/turf/open/floor/almayer_hull/tiles2
+	icon_state = "outerhull_tiles_alt"
+
+/turf/open/floor/almayer_hull/tiles2/north
+	dir = NORTH
+
+/turf/open/floor/almayer_hull/tiles2/east
+	dir = EAST
+
+/turf/open/floor/almayer_hull/tiles2/west
+	dir = WEST
+
+/turf/open/floor/almayer_hull/colorable
+	name = "sloped roof"
+	icon = 'icons/turf/almayer.dmi'
+	icon_state = "outerhull_colorable"
+
+/turf/open/floor/almayer_hull/colorable/dir
+	icon_state = "outerhull_colorable_dir"
+
+/turf/open/floor/almayer_hull/colorable/dir/north
+	dir = NORTH
+
+/turf/open/floor/almayer_hull/colorable/dir/east
+	dir = EAST
+
+/turf/open/floor/almayer_hull/colorable/dir/west
+	dir = WEST
+
+/turf/open/floor/almayer_hull/colorable/dir/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/almayer_hull/colorable/dir/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/almayer_hull/colorable/dir/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/almayer_hull/colorable/dir/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/almayer_hull/colorable/dir_alt
+	icon_state = "outerhull_colorable_dir_alt"
+
+/turf/open/floor/almayer_hull/colorable/dir_alt/north
+	dir = NORTH
+
+/turf/open/floor/almayer_hull/colorable/dir_alt/east
+	dir = EAST
+
+/turf/open/floor/almayer_hull/colorable/dir_alt/west
+	dir = WEST
+
+/turf/open/floor/almayer_hull/colorable/corner
+	icon_state = "outerhull_colorable_corner"
+
+/turf/open/floor/almayer_hull/colorable/corner/north
+	dir = NORTH
+
+/turf/open/floor/almayer_hull/colorable/corner/east
+	dir = EAST
+
+/turf/open/floor/almayer_hull/colorable/corner/west
+	dir = WEST
+
+/turf/open/floor/almayer_hull/colorable/corner_alt
+	icon_state = "outerhull_colorable_corner_alt"
+
+/turf/open/floor/almayer_hull/colorable/corner_alt/north
+	dir = NORTH
+
+/turf/open/floor/almayer_hull/colorable/connection
+	icon_state = "outerhull_colorable_connection"
+
+/turf/open/floor/almayer_hull/colorable/connection/north
+	dir = NORTH
+
+/turf/open/floor/almayer_hull/colorable/connection/east
+	dir = EAST
+
+/turf/open/floor/almayer_hull/colorable/connection/west
+	dir = WEST
+
+/turf/open/floor/almayer_hull/colorable/connection_alt
+	icon_state = "outerhull_colorable_connection_alt"
+
+/turf/open/floor/almayer_hull/colorable/connection_alt/north
+	dir = NORTH
+
+/turf/open/floor/almayer_hull/colorable/connection_alt/east
+	dir = EAST
+
+/turf/open/floor/almayer_hull/colorable/connection_alt/west
+	dir = WEST
+
+/turf/open/floor/almayer_hull/colorable/connection_alt/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/almayer_hull/colorable/connection_alt/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/almayer_hull/colorable/connection_alt/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/almayer_hull/colorable/connection_alt/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/almayer_hull/colorable/connection_middle
+	icon_state = "outerhull_colorable_connection_middle"
+
+/turf/open/floor/almayer_hull/colorable/connection_middle/north
+	dir = NORTH
+
+/turf/open/floor/almayer_hull/colorable/connection_middle/east
+	dir = EAST
+
+/turf/open/floor/almayer_hull/colorable/connection_middle/west
+	dir = WEST
+
+/turf/open/floor/almayer_hull/colorable/connection_corner
+	icon_state = "outerhull_colorable_connection_corner"
+
+/turf/open/floor/almayer_hull/colorable/connection_corner/north
+	dir = NORTH
+
+/turf/open/floor/almayer_hull/colorable/connection_corner/east
+	dir = EAST
+
+/turf/open/floor/almayer_hull/colorable/connection_corner/west
+	dir = WEST
+
+/turf/open/floor/almayer_hull/colorable/connection_end
+	icon_state = "outerhull_colorable_connection_end"
+
+/turf/open/floor/almayer_hull/colorable/connection_end/north
+	dir = NORTH
+
+/turf/open/floor/almayer_hull/colorable/connection_end/east
+	dir = EAST
+
+/turf/open/floor/almayer_hull/colorable/connection_end/west
+	dir = WEST
+
+/turf/open/floor/almayer_hull/colorable/full
+	icon_state = "outerhull_colorable_full"
+
+/turf/open/floor/almayer_hull/colorable/tiles
+	icon_state = "outerhull_colorable_tiles"
+
+/turf/open/floor/almayer_hull/colorable/tiles/north
+	dir = NORTH
+
+/turf/open/floor/almayer_hull/colorable/tiles/east
+	dir = EAST
+
+/turf/open/floor/almayer_hull/colorable/tiles/west
+	dir = WEST
+
+/turf/open/floor/almayer_hull/colorable/tiles2
+	icon_state = "outerhull_colorable_tiles_alt"
+
+/turf/open/floor/almayer_hull/colorable/tiles2/north
+	dir = NORTH
+
+/turf/open/floor/almayer_hull/colorable/tiles2/east
+	dir = EAST
+
+/turf/open/floor/almayer_hull/colorable/tiles2/west
+	dir = WEST
 
 //////////////////////////////////////////////////////////////////////
 
@@ -2844,6 +3124,45 @@
 
 /turf/open/floor/prison/floor_plate/southwest
 	dir = SOUTHWEST
+
+/turf/open/floor/prison/floor_plate/smooth_dir
+	icon_state = "smooth_dir"
+
+/turf/open/floor/prison/floor_plate/smooth_dir/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/floor_plate/smooth_dir/north
+	dir = NORTH
+
+/turf/open/floor/prison/floor_plate/smooth_dir/east
+	dir = EAST
+
+/turf/open/floor/prison/floor_plate/smooth_dir/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/prison/floor_plate/smooth_dir/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/prison/floor_plate/smooth_dir/west
+	dir = WEST
+
+/turf/open/floor/prison/floor_plate/smooth_dir/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/prison/floor_plate/smooth_u
+	icon_state = "smooth_u"
+
+/turf/open/floor/prison/floor_plate/smooth_u/north
+	dir = NORTH
+
+/turf/open/floor/prison/floor_plate/smooth_u/east
+	dir = EAST
+
+/turf/open/floor/prison/floor_plate/smooth_u/south
+	dir = SOUTH
+
+/turf/open/floor/prison/floor_plate/smooth_u/west
+	dir = WEST
 
 /turf/open/floor/prison/green
 	icon_state = "green"
@@ -3454,6 +3773,9 @@
 /turf/open/floor/prison/ramptop/east
 	dir = EAST
 
+/turf/open/floor/prison/ramptop/west
+	dir = WEST
+
 // Mechbay
 /turf/open/floor/mech_bay_recharge_floor
 	name = "Mech Bay Recharge Station"
@@ -3502,6 +3824,33 @@
 /turf/open/floor/corsat
 	icon = 'icons/turf/floors/corsat.dmi'
 	icon_state = "plating"
+
+/turf/open/floor/corsat/solid
+	icon_state = "solid"
+
+/turf/open/floor/corsat/solid/directions
+	icon_state = "solid_dir"
+
+/turf/open/floor/corsat/solid/directions/north
+	dir = NORTH
+
+/turf/open/floor/corsat/solid/directions/east
+	dir = EAST
+
+/turf/open/floor/corsat/solid/directions/west
+	dir = WEST
+
+/turf/open/floor/corsat/solid/directions/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/corsat/solid/directions/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/corsat/solid/directions/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/corsat/solid/directions/southwest
+	dir = SOUTHWEST
 
 /turf/open/floor/corsat/blue
 	icon_state = "blue"

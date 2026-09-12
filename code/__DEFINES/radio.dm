@@ -68,6 +68,10 @@
 
 #define RADIO_CHANNEL_HYPERDYNE "Hyperdyne"
 
+//Lasalle Bionational Comms
+
+#define RADIO_CHANNEL_LASALLE_BIONATIONAL "Lasalle Bionational"
+
 //Listening Devices
 #define RADIO_CHANNEL_BUG_A "Listening Device A"
 #define RADIO_CHANNEL_BUG_B "Listening Device B"

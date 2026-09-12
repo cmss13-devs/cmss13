@@ -256,6 +256,11 @@
 		toner = 0
 	return p
 
+// Alt standard photocopier
+
+/obj/structure/machinery/photocopier/alt
+	icon_state = "altbigscanner"
+	animate_state = "altbigscanner1"
 
 /// Upgraded photocopier, straight upgrade from the normal photocopier, made by Weyland-Yutani
 /obj/structure/machinery/photocopier/wyphotocopier

@@ -850,6 +850,68 @@
 	opacity = TRUE
 	glass = FALSE
 
+// Black Lavaland Doors
+
+/obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double
+	name = "Secure Airlock"
+	icon = 'icons/obj/structures/doors/lava/double_glass_door_teal.dmi'
+	opacity = FALSE
+	glass = TRUE
+	openspeed = 4 //shorter open animation.
+	req_one_access = null
+
+/obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/autoname
+	autoname = TRUE
+	opacity = FALSE
+	glass = TRUE
+	req_one_access = null
+
+/obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/orange
+	name = "Secure Airlock"
+	icon = 'icons/obj/structures/doors/lava/double_glass_door_orange.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/orange/autoname
+	autoname = TRUE
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/red
+	name = "Secure Airlock"
+	icon = 'icons/obj/structures/doors/lava/double_glass_door_red.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/red/autoname
+	autoname = TRUE
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/purple
+	name = "Secure Airlock"
+	icon = 'icons/obj/structures/doors/lava/double_glass_door_purple.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/purple/autoname
+	autoname = TRUE
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/solid
+	name = "Secure Airlock"
+	icon = 'icons/obj/structures/doors/lava/double_door_solid.dmi'
+	opacity = TRUE
+	glass = FALSE
+	openspeed = 4 //shorter open animation.
+
+/obj/structure/machinery/door/airlock/multi_tile/lavaland/black_double/solid/autoname
+	autoname = TRUE
+	opacity = TRUE
+	glass = FALSE
+
+
 // ------ UPP Multi Ship Doors ------ //
 // --- UPP Generic Door --- //
 

@@ -335,3 +335,21 @@
 	armor_melee = CLOTHING_ARMOR_VERYHIGH
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	slowdown = SLOWDOWN_ARMOR_LIGHT
+
+// Seegson Security
+
+/obj/item/clothing/suit/armor/vest/seegson_security
+	name = "\improper Seegson security armor"
+	desc = "An old Seegson security armored vest that protects against some damage."
+	icon_state = "seegson_security_armor"
+	item_state = "seegson_security_armor"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/SEEGSON.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/SEEGSON.dmi'
+	)
+	uniform_restricted = null
+
+/obj/item/clothing/suit/armor/vest/seegson_security/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/wy)
+	AddElement(/datum/element/corp_label/seegson)

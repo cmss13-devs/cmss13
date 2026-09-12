@@ -1385,6 +1385,23 @@
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
+/obj/structure/blackgoocontainer/attackby(obj/item/W, mob/living/user)
+	// Any sufficiently sharp knife/blade destroys instantly
+	if(W.sharp >= IS_SHARP_ITEM_SIMPLE)
+		user.animation_attack_on(src)
+		to_chat(user, SPAN_WARNING("You stab \the [src] with \the [W]."))
+		playsound(src, 'sound/effects/burrowoff.ogg', 25, 1)
+		qdel(src)
+		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
+	else
+		. = ..()
+
+/obj/structure/blackgoocontainer/submerged
+	icon_state = "blackgoocontainer4"
+	desc = "A strange alien container. It exudes an aura of otherworldly mystery. It's submerged partially in the ground."
+	icon = 'icons/obj/items/black_goo_stuff.dmi'
+	density = FALSE
+
 /obj/item/hybrisa/engineer_helmet
 	icon = 'icons/obj/structures/props/engineers/props.dmi'
 	name = "strange alien helmet"
@@ -1894,6 +1911,8 @@
 	switch(cup.type)
 		if(/obj/item/reagent_container/food/drinks/coffeecup)
 			icon_state = ("[base_state]_mug")
+		if(/obj/item/reagent_container/food/drinks/coffeecup/alt)
+			icon_state = ("[base_state]_mug_blue")
 		if(/obj/item/reagent_container/food/drinks/coffee/cuppa_joes)
 			icon_state = ("[base_state]_cup")
 		if(/obj/item/reagent_container/food/drinks/coffeecup/wy)
@@ -1907,6 +1926,11 @@
 	. = ..()
 	if(!anchored)
 		. += "It does not appear to be plugged in."
+
+/obj/structure/machinery/hybrisa/coffee_machine/alt
+	icon_state = "coffeealt"
+	vends = "coffeealt"
+	base_state = "coffeealt"
 
 // Big Computer Units 32x32
 
@@ -2431,6 +2455,21 @@
 	desc = "A small industrial shipping container.\nYou haven't heard much about Kelland Mining, besides the incident at LV-178's mining operation."
 	icon_state = "kelland_alt_r"
 
+/obj/structure/cargo_container/hybrisa/containersextended/colorable_big_left
+	name = "reinforced cargo container"
+	desc = "A small reinforced industrial shipping container."
+	icon_state = "colorable_crate_l"
+
+/obj/structure/cargo_container/hybrisa/containersextended/colorable_big_right
+	name = "reinforced cargo container"
+	desc = "A small reinforced industrial shipping container."
+	icon_state = "colorable_crate_r"
+
+/obj/structure/cargo_container/hybrisa/containersextended/colorable_small
+	name = "reinforced cargo container"
+	desc = "A small reinforced industrial shipping container."
+	icon_state = "colorable_crate_small"
+
 /// Fake Platforms
 
 /obj/structure/prop/hybrisa/fakeplatforms
@@ -2948,6 +2987,22 @@
 	icon_state = "stone_edging_deco"
 	density = FALSE
 	anchored = TRUE
+
+/obj/structure/prop/hybrisa/misc/prop_deco_edging
+	name = "decorative edging"
+	desc = "Decorative edging for bordering stuff, very fancy."
+	icon = 'icons/obj/structures/props/hybrisa/platforms.dmi'
+	icon_state = "stone_edging"
+	density = FALSE
+	anchored = TRUE
+	unacidable = TRUE
+	layer = TURF_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/structure/prop/hybrisa/misc/prop_deco_edging/corner
+	icon = 'icons/obj/structures/props/hybrisa/platforms.dmi'
+	icon_state = "stone_edging_deco"
 
 // Signs
 

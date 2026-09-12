@@ -21,6 +21,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_corporate_security, list(
 	list("Beige Trenchcoat", 0, /obj/item/clothing/suit/storage/CMB/trenchcoat, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
 	list("Brown Trenchcoat", 0, /obj/item/clothing/suit/storage/CMB/trenchcoat/brown, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
 	list("Grey Trenchcoat", 0, /obj/item/clothing/suit/storage/CMB/trenchcoat/grey, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
+	list("White Trench Coat", 0, /obj/item/clothing/suit/storage/CMB/trenchcoat/white, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
+	list("Blue Trench Coat", 0, /obj/item/clothing/suit/storage/CMB/trenchcoat/blue, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
 
 	list("BACKPACK (CHOOSE 1)", 0, null, null, null),
 	list("Black Leather Satchel", 0, /obj/item/storage/backpack/satchel/black, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),

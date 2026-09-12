@@ -173,6 +173,7 @@
 	name = "\improper Worn Colonial Liberation Front flag"
 	desc = "A very worn flag of the Colonial Liberation Front. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
 	icon_state = "clfflag_worn"
+
 //============//
 //  Flags    //
 //==========//
@@ -184,6 +185,67 @@
 	name = "\improper Union of Progressive Peoples Flag"
 	desc = "Unity through Strength, Freedom through Unity."
 	icon_state = "upp_flag"
+
+/obj/structure/sign/flag/simple
+	icon = 'icons/obj/structures/props/wall_decorations/ruined_banner.dmi'
+	icon_state = "ruinbanner_1"
+
+/obj/structure/sign/flag/simple/attackby(obj/item/W, mob/living/user)
+	// Any sufficiently sharp knife/blade destroys instantly
+	if(W.sharp >= IS_SHARP_ITEM_SIMPLE)
+		user.animation_attack_on(src)
+		to_chat(user, SPAN_WARNING("You rip \the [src] with \the [W]."))
+		playsound(src, 'sound/effects/cloth_rip.ogg', 25, 1)
+		qdel(src)
+		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
+	else
+		. = ..()
+
+/obj/structure/sign/flag/simple/ancient_torn
+	name = "\improper ancient torn banner"
+	desc = "An ancient torn banner, who knows how long this has been hanging here..."
+	icon_state = "small_ruinbanner_0"
+
+/obj/structure/sign/flag/simple/ancient_torn/ancient_torn_1
+	icon_state = "small_ruinbanner_1"
+
+/obj/structure/sign/flag/simple/ancient_torn/ancient_torn_2
+	icon_state = "small_ruinbanner_2"
+
+/obj/structure/sign/flag/simple/ancient_torn_desat
+	name = "\improper ancient torn banner"
+	desc = "An ancient torn banner, who knows how long this has been hanging here..."
+	icon_state = "old_ruinbanner_0"
+
+/obj/structure/sign/flag/simple/ancient_torn_desat/ancient_torn_desat_1
+	icon_state = "old_ruinbanner_1"
+
+/obj/structure/sign/flag/simple/ancient_torn_desat/ancient_torn_desat_2
+	icon_state = "old_ruinbanner_2"
+
+/obj/structure/sign/flag/simple/ancient_torn_red
+	name = "\improper ancient torn banner"
+	desc = "An ancient torn banner, who knows how long this has been hanging here..."
+	icon_state = "ruinbanner_0"
+
+/obj/structure/sign/flag/simple/ancient_torn_red/ancient_torn_red_1
+	icon_state = "ruinbanner_1"
+
+/obj/structure/sign/flag/simple/ancient_torn_red/ancient_torn_red_2
+	icon_state = "ruinbanner_2"
+
+/obj/structure/sign/flag/simple/ancient_torn_colorable
+	name = "\improper ancient torn banner"
+	desc = "An ancient torn banner, who knows how long this has been hanging here..."
+	icon = 'icons/obj/structures/props/wall_decorations/ruined_banner.dmi'
+	icon_state = "colorable_ruinbanner_0"
+
+/obj/structure/sign/flag/simple/ancient_torn_colorable/ancient_torn_colorable_1
+	icon_state = "colorable_ruinbanner_1"
+
+/obj/structure/sign/flag/simple/ancient_torn_colorable/ancient_torn_colorable_2
+	icon_state = "colorable_ruinbanner_2"
+
 
 //=====================//
 // SEMIOTIC STANDARD  //
@@ -246,6 +308,9 @@
 	name = "biological laboratory semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a biological laboratory."
 	icon_state = "biolab"
+
+/obj/structure/sign/safety/biolab/alt
+	icon_state = "biolab_alt"
 
 /obj/structure/sign/safety/bridge
 	name = "bridge semiotic"
@@ -492,6 +557,9 @@
 	desc = "Semiotic Standard denoting the nearby presence of a restricted area."
 	icon_state = "restrictedarea"
 
+/obj/structure/sign/safety/restrictedarea/dark
+	icon_state = "restrictedarea_dark"
+
 /obj/structure/sign/safety/fridge
 	name = "refrigerated storage (organic foodstuffs) semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a fridge."
@@ -651,6 +719,111 @@
 	name = "fire-station semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a fire-station."
 	icon_state = "firestation"
+
+/obj/structure/sign/safety/ten
+	name = "ten semiotic"
+	desc = "Semiotic Standard denoting the number ten."
+	icon_state = "10"
+
+/obj/structure/sign/safety/eleven
+	name = "eleven semiotic"
+	desc = "Semiotic Standard denoting the number eleven."
+	icon_state = "11"
+
+/obj/structure/sign/safety/twelve
+	name = "twelve semiotic"
+	desc = "Semiotic Standard denoting the number twelve."
+	icon_state = "12"
+
+/obj/structure/sign/safety/thirteen
+	name = "thirteen semiotic"
+	desc = "Semiotic Standard denoting the number thirteen."
+	icon_state = "13"
+
+/obj/structure/sign/safety/fourteen
+	name = "fourteen semiotic"
+	desc = "Semiotic Standard denoting the number fourteen."
+	icon_state = "14"
+
+/obj/structure/sign/safety/fifteen
+	name = "fifteen semiotic"
+	desc = "Semiotic Standard denoting the number fifteen."
+	icon_state = "15"
+
+/obj/structure/sign/safety/sixteen
+	name = "sixteen semiotic"
+	desc = "Semiotic Standard denoting the number sixteen."
+	icon_state = "16"
+
+/obj/structure/sign/safety/seventeen
+	name = "seventeen semiotic"
+	desc = "Semiotic Standard denoting the number seventeen."
+	icon_state = "17"
+
+/obj/structure/sign/safety/eighteen
+	name = "eighteen semiotic"
+	desc = "Semiotic Standard denoting the number eighteen."
+	icon_state = "18"
+
+/obj/structure/sign/safety/nineteen
+	name = "nineteen semiotic"
+	desc = "Semiotic Standard denoting the number nineteen."
+	icon_state = "19"
+
+/obj/structure/sign/safety/twenty
+	name = "twenty semiotic"
+	desc = "Semiotic Standard denoting the number twenty."
+	icon_state = "20"
+
+/obj/structure/sign/safety/twentyone
+	name = "twenty-one semiotic"
+	desc = "Semiotic Standard denoting the number twenty-one."
+	icon_state = "21"
+
+/obj/structure/sign/safety/twentytwo
+	name = "twenty-two semiotic"
+	desc = "Semiotic Standard denoting the number twenty-two."
+	icon_state = "22"
+
+/obj/structure/sign/safety/twentythree
+	name = "twenty-three semiotic"
+	desc = "Semiotic Standard denoting the number twenty-three."
+	icon_state = "23"
+
+/obj/structure/sign/safety/twentyfour
+	name = "twenty-four semiotic"
+	desc = "Semiotic Standard denoting the number twenty-four."
+	icon_state = "24"
+
+/obj/structure/sign/safety/twentyfive
+	name = "twenty-five semiotic"
+	desc = "Semiotic Standard denoting the number twenty-five."
+	icon_state = "25"
+
+/obj/structure/sign/safety/twentysix
+	name = "twenty-six semiotic"
+	desc = "Semiotic Standard denoting the number twenty-six."
+	icon_state = "26"
+
+/obj/structure/sign/safety/twentyseven
+	name = "twenty-seven semiotic"
+	desc = "Semiotic Standard denoting the number twenty-seven."
+	icon_state = "27"
+
+/obj/structure/sign/safety/twentyeight
+	name = "twenty-eight semiotic"
+	desc = "Semiotic Standard denoting the number twenty-eight."
+	icon_state = "28"
+
+/obj/structure/sign/safety/twentynine
+	name = "twenty-nine semiotic"
+	desc = "Semiotic Standard denoting the number twenty-nine."
+	icon_state = "29"
+
+/obj/structure/sign/safety/thirty
+	name = "thirty semiotic"
+	desc = "Semiotic Standard denoting the number thirty."
+	icon_state = "30"
 
 //===================//
 //   Marine signs   //

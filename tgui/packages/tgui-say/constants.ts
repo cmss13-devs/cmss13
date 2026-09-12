@@ -344,6 +344,18 @@ export const RADIO_PREFIXES = {
     id: 'cia',
     label: 'CIA',
   },
+  ':3 ': {
+    id: 'lasalle',
+    label: 'Lasalle',
+  },
+  '.3 ': {
+    id: 'lasalle',
+    label: 'Lasalle',
+  },
+  '#3 ': {
+    id: 'lasalle',
+    label: 'Lasalle',
+  },
   ':z ': {
     id: 'highcom',
     label: 'HC',

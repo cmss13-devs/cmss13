@@ -405,3 +405,31 @@
 /obj/effect/landmark/corpsespawner/tyrargo/us_army_medic/burst
 	name = "Corpse - Burst - US Army - Trooper"
 	equip_path = /datum/equipment_preset/corpse/tyrargo/us_army_medic/burst
+
+//*****************************************************************************************************/
+
+///Working Joe Corpse///
+
+/obj/effect/landmark/corpsespawner/working_joe
+	name = "Deactivated Working Joe"
+	equip_path = /datum/equipment_preset/corpse/working_joe
+
+/obj/effect/landmark/corpsespawner/working_joe/fireproof
+	name = "Deactivated Working Joe"
+	equip_path = /datum/equipment_preset/corpse/working_joe/fireproof
+
+// Dead UPP Spy
+
+/obj/effect/landmark/corpsespawner/upp_spy
+	name = "Corpse - Suspicious Colonist"
+	equip_path = /datum/equipment_preset/corpse/upp_spy
+
+// Dead HIG Operative
+
+/obj/effect/landmark/corpsespawner/lb_merc
+	name = "Corpse - HIG - Operative"
+	equip_path = /datum/equipment_preset/corpse/lb_merc
+
+/obj/effect/landmark/corpsespawner/lb_merc/burst
+
+	equip_path = /datum/equipment_preset/corpse/lb_merc/burst

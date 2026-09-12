@@ -55790,10 +55790,6 @@
 	},
 /turf/open/floor/prison/darkpurple2/northeast,
 /area/white_antre/indoors/main_level/east_corridor)
-"wFD" = (
-/obj/structure/window/framed/corsat/hull/research,
-/turf/open_space,
-/area/white_antre/indoors/upper_level/east_overwatch)
 "wGj" = (
 /obj/structure/shuttle/part/dropship_wy/transparent/engine_right_exhaust,
 /turf/open/auto_turf/shale/layer1/weedable,
@@ -167301,11 +167297,11 @@ euM
 euM
 euM
 bZq
-wFD
-wFD
-wFD
-wFD
-wFD
+bFG
+bFG
+bFG
+bFG
+bFG
 bZq
 bZq
 bZq

@@ -1,0 +1,4 @@
+author: "Atebite"
+delete-after: True
+changes:
+  - ui: "Redesigned the USCM late join menu"

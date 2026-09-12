@@ -101,7 +101,7 @@
 	return ..()
 
 ///Toggles automatic weeding
-/datum/action/xeno_action/onclick/autoweeding_toggle/use_ability(atom/atom)
+/datum/action/xeno_action/onclick/autoweeding_toggle/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!istype(xeno))
 		return

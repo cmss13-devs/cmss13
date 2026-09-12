@@ -926,6 +926,7 @@
 	item_state = "vp78m6"
 	fire_sound = 'sound/weapons/gun_vp78m6_fire.ogg'
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AKIMBO_ALLOWED
+	var/last_firing_sound_time = -1 //makes it not rupture your eardrums when dual wiel firing
 
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
@@ -955,9 +956,16 @@
 /obj/item/weapon/gun/pistol/vp78/vp78m6/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 20, "rail_x" = 10, "rail_y" = 23, "under_x" = 21, "under_y" = 13, "stock_x" = 18, "stock_y" = 14)
 
-/obj/item/weapon/gun/pistol/vp78/vp78m6/set_gun_config_values()
-	..()
-	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+/obj/item/weapon/gun/pistol/vp78/vp78m6/play_firing_sounds(obj/projectile/projectile_to_fire, mob/user)
+	if(!user || flags_gun_features & GUN_SILENCED || active_attachable?.flags_attach_features & ATTACH_PROJECTILE || projectile_to_fire.ammo?.sound_override)
+		return ..()
+
+	var/obj/item/weapon/gun/pistol/vp78/vp78m6/other_pistol = user.get_active_hand() == src ? user.get_inactive_hand() : user.get_active_hand()
+	if(istype(other_pistol) && other_pistol != src && other_pistol.fire_sound == fire_sound && other_pistol.last_firing_sound_time == world.time)
+		return
+
+	last_firing_sound_time = world.time
+	return ..()
 
 
 //-------------------------------------------------------

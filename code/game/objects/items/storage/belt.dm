@@ -2097,6 +2097,9 @@
 	for(var/i = 1 to storage_slots - 2)
 		new /obj/item/ammo_magazine/revolver/marksman(src)
 
+/obj/item/storage/belt/gun/vp78m6
+	parent_type = /obj/item/storage/belt/gun/m4a3
+
 /obj/item/storage/belt/gun/vp78m6/dual_holster
 	name = "\improper M278 Pattern weapon harness"
 	desc = "A well-oiled leather harness with two hip-mounted holsters for large handguns. Has some extra pouches for mags right where you'd need 'em."
@@ -2104,6 +2107,7 @@
 	icon = 'icons/obj/items/clothing/belts/belts.dmi'
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 	storage_slots = 8

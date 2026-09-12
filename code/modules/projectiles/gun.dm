@@ -1441,7 +1441,7 @@ and you're good to go.
 
 	play_firing_sounds(projectile_to_fire, user)
 
-	simulate_recoil(dual_wield && !(flags_gun_features & GUN_AKIMBO_ALLOWED), user, target)
+	simulate_recoil(dual_wield, user, target)
 
 	//This is where the projectile leaves the barrel and deals with projectile code only.
 	//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv

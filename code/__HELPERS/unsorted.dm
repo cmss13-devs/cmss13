@@ -1291,11 +1291,12 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
  * * start_atom - starting point of the line
  * * end_atom - ending point of the line
  * * include_start_atom - when truthy includes start_atom in the list, default TRUE
+ * * z_level_transitions - prevent diagonal avoidance of obstacles, only needed for actual object traversal, default FALSE
  *
  * Returns:
  * list - turfs from start_atom (in/exclusive) to end_atom (inclusive)
  */
-/proc/get_line(atom/start_atom, atom/end_atom, include_start_atom = TRUE)
+/proc/get_line(atom/start_atom, atom/end_atom, include_start_atom = TRUE, z_level_transitions = FALSE)
 	var/turf/start_turf = get_turf(start_atom)
 	var/turf/end_turf = get_turf(end_atom)
 	var/turf/end_turf_fall = end_turf //in case we are going cross fake z levels we store here the end tile to fall to
@@ -1335,6 +1336,51 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 		line += locate(x, y, start_z)
 
 	line += end_turf_fall
+
+	if(!reservation && z_level_transitions)
+		var/list/mutli_z_cross_points = list()
+		if(start_turf.z == end_turf.z)
+			return line
+		if(!SSmapping.same_z_map(start_atom.z, end_turf.z))
+			line.Cut()
+			line = list(start_turf) //We're trying to throw things accross maps somehow. Let's not.
+			return line
+
+		//Throwing accross Z levels on the same map. Fill in the vertical swapping over points so we're not diagnonally avoiding obstacle turfs.
+		var/turf/comparing_turf = start_turf
+		var/path_position = 0
+		if(length(line) > 1)
+			for(var/turf/turf_cross_point in line)
+				path_position++
+				if(comparing_turf.z == turf_cross_point.z)
+					comparing_turf = turf_cross_point
+					continue
+				else
+					mutli_z_cross_points += turf_cross_point
+					mutli_z_cross_points[turf_cross_point] = path_position
+					comparing_turf = turf_cross_point
+		else
+			path_position++ //Only one position in line and it's immediately into another Z.
+			mutli_z_cross_points += line[1]
+			mutli_z_cross_points[line[1]] = path_position
+
+		var/offset = SSmapping.level_trait(start_turf.z, ZTRAIT_UP)
+		var/turf/first_cross_point = mutli_z_cross_points[1]
+		if(first_cross_point.z != start_turf.z + offset)
+			offset = 0 // We only need to offset if we're entering from a lower Z.
+
+		for(var/turf/crossing_point in mutli_z_cross_points)
+			var/turf/switching_cross_point
+			switching_cross_point = locate(crossing_point.x, crossing_point.y, start_turf.z + offset)
+			if(offset > 0) //If we're ending up with multiple cross points, we're throwing across multiple Zs - This is probably only going to happen for throwing down, but just incase.
+				offset = offset + SSmapping.level_trait(switching_cross_point.z, ZTRAIT_UP)
+			else //So we need to adjust the offset for the next cross point.
+				offset = offset + SSmapping.level_trait(switching_cross_point.z, ZTRAIT_DOWN)
+			line.Insert(mutli_z_cross_points[crossing_point], switching_cross_point)
+
+			if(!istype(switching_cross_point, /turf/open_space))
+				line.Cut(max(1, mutli_z_cross_points[crossing_point] + 1), length(line) + 1) //Hit a non open_space turf. Shouldn't go through anything else. Stop here.
+				break
 
 	return line
 

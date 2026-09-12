@@ -17,7 +17,6 @@
 	name = GAMEMODE_DISTRESS_SIGNAL
 	config_tag = GAMEMODE_DISTRESS_SIGNAL
 	required_players = 1 //Need at least one player, but really we need 2.
-	xeno_required_num = 1 //Need at least one xeno.
 	monkey_amount = 5
 	corpses_to_spawn = 0
 	flags_round_type = MODE_INFESTATION|MODE_FOG_ACTIVATED|MODE_NEW_SPAWN
@@ -35,7 +34,6 @@
 
 /* Pre-pre-startup */
 /datum/game_mode/colonialmarines/can_start(bypass_checks = FALSE)
-	initialize_special_clamps()
 	return TRUE
 
 /datum/game_mode/colonialmarines/announce()
@@ -501,7 +499,7 @@
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "Attention! We think Azure-15 has lured the bulk of the K-Series off site, but we are experiencing massive power failures, the Prime hive containment zone is at risk. All surviving personnel prepa%^@!&*------", "White Antre Central Announcement", 'sound/AI/commandreport.ogg'), 65 SECONDS)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "Prime hive containment blastdoor failure imminent.", "Automated Facility Announcement", 'sound/AI/commandreport.ogg'), 165 SECONDS)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Almayer, this is the Platoon Commander of Azure-15, we just received a distress signal from White Antre, there appears to be a massive containment breach in progress, some kinda yellow-ish looking xenomorphs are pouring out en-mass. The site staff are suffering massive casualties and we are in a poor defensive position, we are going to attempt to lure the tangos away from the site and into open ground to the north.\n\nOnce we move north of the site we’ll be out of radio contact. My recommendation is to deploy to White Antre and attempt to rescue any of the remaining scientists and secure whatever it is we were sent to retrieve. Maybe rescue Kadinsky while you’re at it assuming he hasn’t had his sorry arse nailed to the wall already.\n\nWe’ll hold our own. Azure-15 out.", "Azure-15 Platoon Commander", 'sound/AI/commandreport.ogg'), 4 MINUTES)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_lore_announcement), "Something is happening. Be on guard.", "everything", "Queen Mother Announcement", 'sound/ambience/containment_breach1.ogg'), 30 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_lore_announcement), "Something is happening. Be on guard.", "everything", QUEEN_MOTHER_ANNOUNCE, 'sound/ambience/containment_breach1.ogg'), 30 SECONDS)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "Another, hostile, hive is making an escape from this metal cage, prepare yourselves as a chance to escape may occur soon.", "everything", QUEEN_MOTHER_ANNOUNCE), 1.5 MINUTES)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "My children. I sense the hostile, putrid, hive has fled this area, but some of the hosts that entrapped you remain alive within this metal complex, and I sense even more are on their way. Defeat these hosts to showcase your supremacy!", "everything", QUEEN_MOTHER_ANNOUNCE), 165 SECONDS)
 		if(MAP_LV_624)
@@ -775,25 +773,46 @@
 			var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
 			end_icon = "xeno_minor"
 			if(living_player_list[1] && !living_player_list[2]) // If Xeno Minor but Xenos are dead and Humans are alive, see which faction is the last standing
-				var/headcount = count_per_faction()
+				var/static/list/faction_victories = list(
+					"WY_headcount" = list(
+						"musical_track" = 'sound/theme/lastmanstanding_wy.ogg',
+						"end_icon" = "wy_major",
+						"name" = "Weyland-Yutani",
+					),
+					"UPP_headcount" = list(
+						"musical_track" = 'sound/theme/lastmanstanding_upp.ogg',
+						"end_icon" = "upp_major",
+						"name" = "Union of Progressive Peoples",
+					),
+					"CLF_headcount" = list(
+						"musical_track" = 'sound/theme/lastmanstanding_clf.ogg',
+						"end_icon" = "clf_major",
+						"name" = "Colonial Liberation Front",
+					),
+					"TWE_headcount" = list(
+						"musical_track" = 'sound/theme/lastmanstanding_twe.ogg',
+						"end_icon" = "twe_major",
+						"name" = "Three World Empire",
+					),
+					"marine_headcount" = list(
+						"musical_track" = 'sound/theme/neutral_melancholy2.ogg', // This is the theme song for Colonial Marines the game, fitting
+						"end_icon" = "xeno_minor",
+					),
+				)
+				var/list/headcount = count_per_faction()
 				var/living = headcount["total_headcount"]
-				if ((headcount["WY_headcount"] / living) > MAJORITY)
-					musical_track = pick('sound/theme/lastmanstanding_wy.ogg')
-					end_icon = "wy_major"
-					log_game("3rd party victory: Weyland-Yutani")
-					message_admins("3rd party victory: Weyland-Yutani")
-				else if ((headcount["UPP_headcount"] / living) > MAJORITY)
-					musical_track = pick('sound/theme/lastmanstanding_upp.ogg')
-					end_icon = "upp_major"
-					log_game("3rd party victory: Union of Progressive Peoples")
-					message_admins("3rd party victory: Union of Progressive Peoples")
-				else if ((headcount["CLF_headcount"] / living) > MAJORITY)
-					musical_track = pick('sound/theme/lastmanstanding_clf.ogg')
-					end_icon = "upp_major"
-					log_game("3rd party victory: Colonial Liberation Front")
-					message_admins("3rd party victory: Colonial Liberation Front")
-				else if ((headcount["marine_headcount"] / living) > MAJORITY)
-					musical_track = pick('sound/theme/neutral_melancholy2.ogg') //This is the theme song for Colonial Marines the game, fitting
+				for(var/faction in faction_victories)
+					if((headcount[faction] / living) <= MAJORITY)
+						continue
+					var/list/victory = faction_victories[faction]
+					musical_track = victory["musical_track"]
+					end_icon = victory["end_icon"]
+					var/faction_name = victory["name"]
+					if(faction_name)
+						var/victory_message = "3rd party victory: [faction_name]"
+						log_game(victory_message)
+						message_admins(victory_message)
+					break
 			else
 				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)

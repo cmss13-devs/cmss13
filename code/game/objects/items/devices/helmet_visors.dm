@@ -51,7 +51,7 @@
 		activate_visor(attached_helmet, user)
 
 		if(!silent)
-			to_chat(user, SPAN_NOTICE("You activate [src] on the [attached_helmet]."))
+			to_chat(user, SPAN_NOTICE("You activate [src] on [attached_helmet]."))
 			playsound_client(user.client, toggle_on_sound, null, 75)
 
 		return TRUE
@@ -59,7 +59,7 @@
 	deactivate_visor(attached_helmet, user)
 
 	if(!silent)
-		to_chat(user, SPAN_NOTICE("You deactivate [src] on the [attached_helmet]."))
+		to_chat(user, SPAN_NOTICE("You deactivate [src] on [attached_helmet]."))
 		playsound_client(user.client, toggle_off_sound, null, 75)
 
 	return TRUE

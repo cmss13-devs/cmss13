@@ -142,7 +142,7 @@ text("<A href='byond://?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes
 			if(open)
 				to_chat(user, SPAN_WARNING("Please close the access panel before locking it."))
 			else
-				to_chat(user, SPAN_NOTICE("This [src] doesn't seem to respect your authority."))
+				to_chat(user, SPAN_NOTICE("[src] doesn't seem to respect your authority."))
 	else
 		return ..()
 
@@ -284,7 +284,7 @@ text("<A href='byond://?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes
 /obj/structure/machinery/bot/cleanbot/proc/clean(obj/effect/decal/cleanable/target)
 	anchored = TRUE
 	icon_state = "cleanbot-c"
-	visible_message(SPAN_DANGER("[src] begins to clean up the [target]"))
+	visible_message(SPAN_DANGER("[src] begins to clean up [target]"))
 	cleaning = 1
 	var/cleantime = 50
 	if(istype(target,/obj/effect/decal/cleanable/dirt)) // Clean Dirt much faster

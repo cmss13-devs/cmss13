@@ -590,7 +590,7 @@
 				to_chat(user, SPAN_WARNING("You must be closer to pick up [src]."))
 				return
 			if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-				to_chat(user, SPAN_WARNING("You were interrupted while picking up the [src]."))
+				to_chat(user, SPAN_WARNING("You were interrupted while picking up [src]."))
 				return
 			// Create a new tripod item from the structure
 			undeploy(user)

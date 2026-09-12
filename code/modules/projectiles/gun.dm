@@ -2524,9 +2524,9 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		return
 
 	user.affected_message(execution_target,
-		SPAN_HIGHDANGER("You aim the [src] at [execution_target]'s head!"),
-		SPAN_HIGHDANGER("[user] aims the [src] directly at your head!"),
-		SPAN_DANGER("[user] aims the [src] at [execution_target]'s head!"))
+		SPAN_HIGHDANGER("You aim [src] at [execution_target]'s head!"),
+		SPAN_HIGHDANGER("[user] aims [src] directly at your head!"),
+		SPAN_DANGER("[user] aims [src] at [execution_target]'s head!"))
 
 	if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(execution_target))
 		return

@@ -37,7 +37,7 @@
 				if(SHIELD_ABSOLUTE, SHIELD_ABSOLUTE_TWOHANDS)
 					if(prob(back_shield.passive_block))
 						if(!custom_response)
-							visible_message(SPAN_DANGER("<B>[src] is protected from [attack_text] by the [back_shield]!</B>"), null, null, 5)
+							visible_message(SPAN_DANGER("<B>[src] is protected from [attack_text] by [back_shield]!</B>"), null, null, 5)
 						new block_effect(owner_turf)
 						playsound(src, back_shield.shield_sound, 70, vary = TRUE)
 						return TRUE

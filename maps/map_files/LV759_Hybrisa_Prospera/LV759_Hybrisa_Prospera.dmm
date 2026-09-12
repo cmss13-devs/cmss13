@@ -49502,7 +49502,9 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "guK" = (
-/obj/docking_port/stationary/marine_dropship/lz1,
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "LZ1: NE: Landing Zone"
+	},
 /turf/open/floor/plating/hybrisa/darkredfull2,
 /area/lv759/outdoors/landing_zone_1)
 "guL" = (
@@ -106872,7 +106874,9 @@
 /turf/open/hybrisa/street/sidewalk/west,
 /area/lv759/outdoors/colony_streets/central_streets)
 "oXm" = (
-/obj/docking_port/stationary/marine_dropship/lz2,
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "LZ2: SE: Landing Zone"
+	},
 /turf/open/floor/plating,
 /area/lv759/outdoors/landing_zone_2)
 "oXt" = (

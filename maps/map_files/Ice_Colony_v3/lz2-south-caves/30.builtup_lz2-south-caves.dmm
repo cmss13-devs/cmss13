@@ -1,81 +1,81 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/closed/wall/shiva/prefabricated/pink,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "b" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toy,
 /turf/open/floor/shiva/floor3,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "c" = (
 /turf/open/auto_turf/snow/layer4,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "e" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "f" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/autoname,
 /turf/open/floor/plating/plating_catwalk/shiva,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "i" = (
 /turf/closed/wall/shiva/ice,
 /area/shiva/interior/oob)
 "k" = (
 /turf/open/floor/shiva/floor3,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "l" = (
 /turf/open/floor/shiva/multi_tiles,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "m" = (
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/shiva/multi_tiles,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "n" = (
 /turf/open/auto_turf/snow/layer3,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "o" = (
 /turf/open/floor/shiva/north,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "p" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/powercell,
 /turf/open/floor/shiva/floor3,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "q" = (
 /turf/open/floor/shiva/radiator_tile,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "r" = (
 /turf/open/auto_turf/ice/layer2,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "s" = (
 /obj/structure/machinery/space_heater,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/shiva/floor3,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "t" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/ice_axe/red,
 /turf/open/floor/shiva/floor3,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "v" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/sliceable/bananabread,
 /turf/open/floor/shiva/floor3,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "w" = (
 /obj/structure/machinery/light/double{
 	dir = 4;
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/radiator_tile,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "x" = (
 /turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "y" = (
 /obj/structure/largecrate/random/mini/small_case/b{
 	pixel_x = 7;
@@ -92,7 +92,7 @@
 	dir = 8
 	},
 /turf/open/floor/shiva/floor3,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "z" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
@@ -101,7 +101,7 @@
 	name = "\improper Bio-lab Shutters"
 	},
 /turf/open/floor/shiva/floor3,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "B" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
@@ -110,24 +110,24 @@
 	name = "\improper Bio-lab Shutters"
 	},
 /turf/open/floor/shiva/north,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "C" = (
 /obj/structure/machinery/light/double{
 	dir = 8;
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/radiator_tile,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "D" = (
 /turf/open/auto_turf/ice/layer0,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "F" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/north,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "H" = (
 /turf/open/auto_turf/snow/layer2,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "I" = (
 /obj/structure/machinery/light/double{
 	dir = 4;
@@ -135,24 +135,24 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "K" = (
 /obj/structure/machinery/light/double{
 	dir = 8;
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/floor3,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "L" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "P" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
 /turf/open/floor/shiva/north,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "Q" = (
 /obj/item/clothing/shoes/snow,
 /obj/structure/surface/rack,
@@ -167,26 +167,26 @@
 /obj/item/tank/emergency_oxygen/engi,
 /obj/item/clothing/mask/rebreather,
 /turf/open/floor/shiva/multi_tiles/north,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "S" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/shiva,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "T" = (
 /turf/open/floor/plating/plating_catwalk/shiva,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "U" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/shiva/floor3,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "V" = (
 /obj/structure/surface/table,
 /obj/structure/largecrate/random/mini/chest/b{
 	pixel_x = -1
 	},
 /turf/open/floor/shiva/floor3,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "W" = (
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
 /area/shiva/interior/oob)
@@ -202,10 +202,10 @@
 	pixel_x = 2
 	},
 /turf/open/floor/shiva/floor3,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "Y" = (
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "Z" = (
 /obj/structure/machinery/light/double{
 	dir = 1;
@@ -213,7 +213,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 
 (1,1,1) = {"
 a

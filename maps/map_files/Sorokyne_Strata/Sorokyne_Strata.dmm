@@ -37938,7 +37938,9 @@
 /turf/closed/wall/wood,
 /area/strata/interior/wooden_ruins)
 "ciy" = (
-/obj/docking_port/stationary/marine_dropship/lz1,
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "LZ1: NW: Landing Zone"
+	},
 /turf/open/floor/plating,
 /area/strata/interior/landing_zones/lz1)
 "ciA" = (
@@ -44180,7 +44182,9 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/platform)
 "iUK" = (
-/obj/docking_port/stationary/marine_dropship/lz2,
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "LZ2: SW: Landing Zone"
+	},
 /turf/open/floor/plating,
 /area/strata/exterior/landing_zones/lz2)
 "iUN" = (

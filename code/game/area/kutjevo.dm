@@ -55,7 +55,7 @@
 	weather_enabled = FALSE
 	unlimited_power = 1 //ds computer
 	is_landing_zone = TRUE
-	linked_lz = DROPSHIP_LZ2
+	linked_lz = DROPSHIP_LZ1
 
 /area/kutjevo/exterior/lz_dunes
 	name = "Kutjevo - Landing Zone Dunes"
@@ -63,12 +63,12 @@
 	weather_enabled =  FALSE
 	unlimited_power = 1 //DS Computer
 	is_landing_zone = TRUE
-	linked_lz = DROPSHIP_LZ1
+	linked_lz = DROPSHIP_LZ2
 
 /area/kutjevo/exterior/lz_river
 	name = "Kutjevo - Power Station River"
 	icon_state = "lz_river"
-	linked_lz = DROPSHIP_LZ1
+	linked_lz = DROPSHIP_LZ2
 
 /area/kutjevo/exterior/spring
 	name = "Kutjevo - Southern Spring"
@@ -78,7 +78,7 @@
 /area/kutjevo/exterior/scrubland
 	name = "Kutjevo - North Scrubland"
 	icon_state = "scrubland"
-	linked_lz = DROPSHIP_LZ2
+	linked_lz = DROPSHIP_LZ1
 
 /area/kutjevo/exterior/scrubland/south
 	name = "Kutjevo - South Scrubland"
@@ -87,17 +87,17 @@
 /area/kutjevo/exterior/stonyfields
 	name = "Kutjevo - Stony Fields"
 	icon_state = "stone_fields"
-	linked_lz = DROPSHIP_LZ1
+	linked_lz = DROPSHIP_LZ2
 
 /area/kutjevo/exterior/Northwest_Colony
 	name = "Kutjevo - Northwest Colony Grounds"
 	icon_state = "rf_dunes"
-	linked_lz = DROPSHIP_LZ2
+	linked_lz = DROPSHIP_LZ1
 
 /area/kutjevo/exterior/runoff_dunes
 	name = "Kutjevo - Runoff Dunes"
 	icon_state = "rf_dunes"
-	linked_lz = DROPSHIP_LZ1
+	linked_lz = DROPSHIP_LZ2
 
 /area/kutjevo/exterior/runoff_river
 	name = "Kutjevo - Runoff River"
@@ -217,14 +217,14 @@
 	name = "Kutjevo Complex - Northwest Colony Dorms"
 	icon_state = "Colony_int"
 	ceiling = CEILING_METAL
-	linked_lz = DROPSHIP_LZ2
+	linked_lz = DROPSHIP_LZ1
 	is_landing_zone = TRUE
 
 /area/kutjevo/interior/complex/Northwest_Flight_Control
 	name =  "Kutjevo Complex - Northwest Flight Control Room"
 	icon_state = "Colony_int"
 	ceiling = CEILING_METAL
-	linked_lz = DROPSHIP_LZ2
+	linked_lz = DROPSHIP_LZ1
 	is_landing_zone = TRUE
 
 /area/kutjevo/interior/complex/Northwest_Security_Checkpoint
@@ -241,7 +241,7 @@
 	ceiling = CEILING_METAL
 	icon_state = "power"
 	minimap_color = MINIMAP_AREA_ENGI
-	linked_lz = DROPSHIP_LZ1
+	linked_lz = DROPSHIP_LZ2
 
 /area/kutjevo/interior/power/comms
 	name = "Kutjevo - Hydroelectric Dam Comms Relay"

@@ -15,6 +15,7 @@
 /mob/living/carbon/human/yautja
 	skin_color = "tan"
 	body_type = "pred"
+	mouth_style = "pred"
 
 /mob/living/carbon/human/yautja/create_hud()
 	if(client && !hud_used)

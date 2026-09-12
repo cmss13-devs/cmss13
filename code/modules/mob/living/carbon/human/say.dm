@@ -223,6 +223,14 @@
 
 					listener.show_message("<span class='game say'><span class='name'>[src]</span> <span class='message'>[far_verb], [far_message]</span></span>", SHOW_MESSAGE_AUDIBLE)
 
+		var/mob/living/carbon/human/speaker = src
+		var/words_spoken = 1
+		for(var/i in 1 to length(message))
+			var/char = copytext(message, i, i + 1)
+			if(char == " ")
+				words_spoken++
+		speaker.move_mouth(words_spoken, langchat_styles == "" ? 1 : 2)
+
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living/carbon/human, say_to_radios), used_radios, message, message_mode, verb, speaking)
 
 /mob/living/carbon/human/proc/say_to_radios(used_radios, message, message_mode, verb, speaking)

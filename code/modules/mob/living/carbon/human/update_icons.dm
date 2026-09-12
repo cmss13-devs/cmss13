@@ -324,6 +324,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	update_inv_shoes()
 	update_inv_s_store()
 	update_inv_wear_mask()
+	update_mouth()
 	update_inv_head()
 	update_inv_belt()
 	update_inv_back()
@@ -472,6 +473,20 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	overlays_standing[SHOES_LAYER] = I
 	apply_overlay(SHOES_LAYER)
 
+/mob/living/carbon/human/proc/update_mouth(speaking = 0)	//nothing else other than mouth should be in this layer
+	remove_overlay(MOUTH_LAYER)
+	if(mouth_style && (species && species.flags & HAS_MOUTH))
+		if(wear_mask)
+			return
+		var/icon_path = 'icons/mob/humans/mouth.dmi'
+		var/yelling_state = copytext(mouth_style, 1, 7) == "small_" ? copytext(mouth_style, 7) : "[mouth_style]_yell"
+		var/state = speaking == 0 ? "" : (speaking == 1 ? "[mouth_style]" : yelling_state)
+		if(isspeciesyautja(src))
+			icon_path = 'icons/mob/humans/yaut_mouth.dmi'
+			state = speaking == 0 ? "" : "[skin_color]_[(speaking == 1 ? "talk" : "scream")]"
+		var/image/mouth = image(icon_path, src, state,  -MOUTH_LAYER)
+		overlays_standing[MOUTH_LAYER] = mouth
+		apply_overlay(MOUTH_LAYER)
 
 /mob/living/carbon/human/update_inv_s_store()
 	remove_overlay(SUIT_STORE_LAYER)

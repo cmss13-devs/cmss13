@@ -467,3 +467,11 @@
 		headset = wear_r_ear
 	if(headset)
 		headset.update_minimap_icon()
+
+/mob/living/carbon/human/proc/move_mouth(times, yelling = FALSE, timing_override = null)
+	update_mouth(yelling)
+	if(times && !timing_override)
+		addtimer(CALLBACK(src, PROC_REF(update_mouth)), 0.4*times SECONDS)
+	else if (timing_override)
+		times = 0
+		addtimer(CALLBACK(src, PROC_REF(update_mouth)), timing_override SECONDS)

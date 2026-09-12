@@ -83,7 +83,6 @@ DEFINE_BITFIELD(reaction_type, list(
 ))
 
 DEFINE_BITFIELD(flags_ammo_behaviour, list(
-	"AMMO_EXPLOSIVE" = AMMO_EXPLOSIVE,
 	"AMMO_ACIDIC" = AMMO_ACIDIC,
 	"AMMO_XENO" = AMMO_XENO,
 	"AMMO_LASER" = AMMO_LASER,

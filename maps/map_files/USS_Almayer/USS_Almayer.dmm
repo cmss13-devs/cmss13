@@ -39949,7 +39949,8 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/office/lobby_door,
 /obj/structure/machinery/door/airlock/almayer/glass{
 	name = "\improper Weyland-Yutani Office Reception";
-	dir = 2
+	dir = 2;
+	id = "cl_office_door"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/corporateliaison)

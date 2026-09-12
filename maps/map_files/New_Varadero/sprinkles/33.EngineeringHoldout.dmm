@@ -1,4 +1,56 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "EngineeringHoldout"
+	},
+/obj/structure/sign/safety/fibre_optics{
+	pixel_x = 0;
+	pixel_y = -8
+	},
+/obj/structure/sign/safety/bridge{
+	pixel_x = 0;
+	pixel_y = 6
+	},
+/obj/structure/sign/safety/east{
+	pixel_x = 15;
+	pixel_y = -8
+	},
+/turf/closed/wall/r_wall/unmeltable,
+/area/template_noop)
+"ab" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/template_noop)
+"ac" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_range = 5;
+	light_power = 3;
+	light_color = "#FF0000";
+	light_on = 1
+	},
+/turf/closed/wall/r_wall/unmeltable,
+/area/template_noop)
+"ad" = (
+/obj/structure/surface/table{
+	flipped = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva,
+/area/template_noop)
+"ae" = (
+/obj/structure/sign/safety/maint,
+/turf/closed/wall/r_wall,
+/area/template_noop)
+"af" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/template_noop)
+"ag" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
 "ah" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/hypospray/tricordrazine{
@@ -6,16 +58,55 @@
 	pixel_y = 2
 	},
 /obj/item/reagent_container/food/snacks/bigbiteburger{
-	pixel_y = 8;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 8
 	},
 /turf/open/floor/shiva/blue,
+/area/template_noop)
+"ai" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"aj" = (
+/obj/structure/sign/poster/safety,
+/turf/closed/wall/r_wall,
+/area/template_noop)
+"ak" = (
+/obj/structure/window_frame/colony/reinforced,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/template_noop)
+"al" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"am" = (
+/obj/structure/sign/poster/propaganda{
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/turf/closed/wall/r_wall,
+/area/template_noop)
+"an" = (
+/obj/structure/sign/poster/hunk,
+/turf/closed/wall/r_wall,
+/area/template_noop)
+"ao" = (
+/obj/structure/sign/poster/ad{
+	icon_state = "poster35"
+	},
+/turf/closed/wall/r_wall,
 /area/template_noop)
 "aY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/ammo_casing/cartridge,
 /obj/item/ammo_casing/cartridge,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva,
 /area/template_noop)
 "bw" = (
@@ -27,6 +118,7 @@
 /obj/structure/closet/fireaxecabinet{
 	pixel_x = -32
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/blue/west,
 /area/template_noop)
 "dN" = (
@@ -34,6 +126,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/yellow/north,
 /area/template_noop)
 "ea" = (
@@ -58,14 +151,21 @@
 	pixel_x = -7;
 	pixel_y = 5
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/yellow/north,
 /area/template_noop)
 "er" = (
-/obj/structure/window_frame/colony,
-/obj/item/shard,
-/turf/open/floor/plating,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/structure/window_frame/colony/reinforced,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
 "fL" = (
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_c";
+	dir = 8
+	},
 /turf/open/floor/shiva/yellow/east,
 /area/template_noop)
 "jg" = (
@@ -88,20 +188,23 @@
 "jr" = (
 /obj/structure/window_frame/colony/reinforced,
 /obj/structure/window_frame/colony/reinforced,
-/obj/item/shard,
 /obj/item/stack/rods{
 	pixel_x = -11
 	},
-/turf/open/floor/plating,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
 "jD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /obj/item/prop/alien/hugger{
-	pixel_y = 4;
-	pixel_x = 5
+	pixel_x = 5;
+	pixel_y = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "jE" = (
@@ -115,12 +218,14 @@
 	pixel_y = -21
 	},
 /obj/effect/spawner/random/powercell,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
 "kr" = (
 /obj/structure/window_frame/colony/reinforced,
-/obj/item/shard,
-/turf/open/floor/plating,
+/obj/item/shard{
+	icon_state = "large"
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
 "kt" = (
 /obj/effect/landmark/objective_landmark/medium,
@@ -150,11 +255,13 @@
 /area/template_noop)
 "lb" = (
 /obj/structure/window_frame/colony/reinforced,
-/obj/item/shard,
 /obj/item/stack/rods{
 	pixel_x = 7
 	},
-/turf/open/floor/plating,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
 "lj" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -162,12 +269,13 @@
 	pixel_x = -1;
 	pixel_y = 3
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/blue/north,
 /area/template_noop)
 "lE" = (
 /obj/structure/prop/ice_colony/dense/planter_box/plated{
-	dir = 9;
-	icon_state = "planter_box_soil"
+	icon_state = "planter_box_soil";
+	dir = 9
 	},
 /obj/structure/flora/bush/ausbushes/pointybush{
 	pixel_y = 11
@@ -203,23 +311,29 @@
 /obj/effect/spawner/random/gun/pistol,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
 "nL" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
-	dir = 1;
 	name = "\improper Underground Technical Storage";
-	req_access_txt = "100";
-	welded = 1
+	dir = 1;
+	welded = 1;
+	req_access_txt = "100"
 	},
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "pg" = (
 /obj/structure/closet/crate/hydroponics/prespawned,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/blue/southeast,
 /area/template_noop)
 "pi" = (
 /obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s";
 	dir = 4
 	},
 /turf/open/floor/shiva/yellow/east,
@@ -231,22 +345,25 @@
 /area/template_noop)
 "qg" = (
 /obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva,
 /area/template_noop)
 "qE" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/yellow/west,
 /area/template_noop)
 "qY" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/yellow/north,
 /area/template_noop)
 "rn" = (
 /obj/structure/barricade/sandbags/wired{
-	pixel_y = -5;
-	dir = 8
+	dir = 8;
+	pixel_y = -5
 	},
 /obj/item/ammo_casing/shell,
 /obj/item/ammo_casing/shell,
@@ -263,14 +380,15 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva,
 /area/template_noop)
 "sB" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
+	welded = 1;
 	req_one_access = null;
-	welded = 1
+	req_access_txt = "100"
 	},
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
@@ -280,6 +398,8 @@
 	dir = 1
 	},
 /obj/item/storage/firstaid,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/yellow/north,
 /area/template_noop)
 "uf" = (
@@ -296,11 +416,12 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "uH" = (
 /obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva,
 /area/template_noop)
 "uR" = (
@@ -314,13 +435,16 @@
 	pixel_x = 5;
 	pixel_y = 9
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/yellow/northwest,
 /area/template_noop)
 "uZ" = (
-/obj/structure/window_frame/colony/reinforced,
-/obj/item/shard,
-/obj/item/stack/rods,
-/turf/open/floor/plating,
+/obj/structure/sign/safety/fibre_optics,
+/obj/structure/sign/safety/storage{
+	pixel_x = 14;
+	pixel_y = 0
+	},
+/turf/closed/wall,
 /area/template_noop)
 "vw" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -333,9 +457,15 @@
 	pixel_x = -5;
 	pixel_y = 9
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_c";
+	dir = 8
+	},
 /turf/open/floor/shiva/blue/east,
 /area/template_noop)
 "vy" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva,
 /area/template_noop)
 "vX" = (
@@ -346,27 +476,37 @@
 /obj/item/prop/alien/hugger{
 	pixel_y = 6
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva,
 /area/template_noop)
 "wk" = (
 /obj/structure/barricade/sandbags/wired{
 	pixel_y = -5
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/yellow,
 /area/template_noop)
 "wE" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva,
 /area/template_noop)
 "wJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s";
+	dir = 4
+	},
 /turf/open/floor/shiva/blue/east,
 /area/template_noop)
 "wP" = (
 /obj/structure/machinery/vending/security,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/blue/northwest,
 /area/template_noop)
 "xP" = (
 /obj/effect/spawner/random/gun/shotgun,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva,
 /area/template_noop)
 "yI" = (
@@ -378,6 +518,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/blue/north,
 /area/template_noop)
 "Ah" = (
@@ -389,6 +530,7 @@
 /obj/effect/landmark/objective_landmark/far,
 /obj/item/ammo_casing/cartridge,
 /obj/item/ammo_casing/cartridge,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva,
 /area/template_noop)
 "Bi" = (
@@ -420,33 +562,40 @@
 	pixel_y = 11;
 	on = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/blue,
 /area/template_noop)
 "EB" = (
 /obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 8
 	},
 /obj/structure/machinery/storm_siren{
 	dir = 8;
 	pixel_x = 3
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_c";
+	dir = 2
+	},
 /turf/open/floor/shiva/yellow/east,
 /area/template_noop)
 "Fm" = (
 /obj/structure/filingcabinet{
-	density = 0;
 	icon_state = "chestdrawer";
+	density = 0;
 	pixel_x = 8;
 	pixel_y = 11
 	},
 /obj/structure/filingcabinet{
-	density = 0;
 	icon_state = "chestdrawer";
+	density = 0;
 	pixel_x = -8;
 	pixel_y = 11
 	},
 /obj/effect/landmark/objective_landmark/science,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/blue/north,
 /area/template_noop)
 "Gm" = (
@@ -461,6 +610,7 @@
 	pixel_y = 13
 	},
 /obj/structure/machinery/light,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/blue,
 /area/template_noop)
 "GU" = (
@@ -474,7 +624,7 @@
 /area/template_noop)
 "GY" = (
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
 "Ha" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -487,15 +637,19 @@
 	pixel_x = -6;
 	pixel_y = 12
 	},
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_c";
+	dir = 2
+	},
 /turf/open/floor/shiva/blue/northeast,
 /area/template_noop)
 "Iq" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/obj/effect/landmark/corpsespawner/security,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_marine/burst,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva,
 /area/template_noop)
 "IE" = (
@@ -517,18 +671,19 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/blue/north,
 /area/template_noop)
 "KI" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/secure{
-	dir = 2;
-	icon_state = "door_locked";
-	locked = 1;
 	name = "Underground Secure Technical Storage";
-	req_access_txt = "100";
+	icon_state = "door_locked";
+	dir = 2;
+	locked = 1;
 	welded = 1;
-	panel_open = 1
+	panel_open = 1;
+	req_access_txt = "100"
 	},
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
@@ -541,16 +696,21 @@
 /area/template_noop)
 "Lo" = (
 /obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "LP" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/almayer/engineering{
-	dir = 1;
 	name = "\improper Underground Technical Storage";
-	req_access_txt = "100";
-	welded = 1
+	dir = 1;
+	welded = 1;
+	req_access_txt = "100"
 	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "MC" = (
@@ -558,11 +718,13 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/effect/decal/cleanable/blood/gibs/xeno/body,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/plating,
 /area/template_noop)
 "MU" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "Ng" = (
@@ -572,6 +734,7 @@
 /obj/structure/barricade/sandbags/wired{
 	pixel_y = -5
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/yellowfull/west,
 /area/template_noop)
 "NA" = (
@@ -595,32 +758,34 @@
 	pixel_x = -9;
 	pixel_y = 14
 	},
-/obj/effect/landmark/corpsespawner/engineer,
 /obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_groundcrew/burst,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "OK" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/sandbags/wired{
-	pixel_y = 10;
-	dir = 1
+	dir = 1;
+	pixel_y = 10
 	},
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "OM" = (
 /obj/structure/dispenser,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/blue/north,
 /area/template_noop)
 "Py" = (
 /obj/item/tool/wrench{
 	pixel_y = -20
 	},
-/obj/effect/decal/cleanable/blood/xtracks,
 /obj/item/stack/tile/plasteel{
 	pixel_x = -12;
 	pixel_y = -4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva,
 /area/template_noop)
 "PA" = (
@@ -630,12 +795,12 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/plating/kutjevo/platingdmg1,
+/turf/open/floor/platingdmg1,
 /area/template_noop)
 "Rf" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/barricade/sandbags/wired{
-	pixel_y = -5
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
 	},
 /turf/open/floor/shiva/yellowfull/west,
 /area/template_noop)
@@ -644,17 +809,19 @@
 /area/template_noop)
 "SC" = (
 /obj/structure/sign/poster/propaganda,
-/turf/closed/wall/r_wall,
+/turf/closed/wall,
 /area/template_noop)
 "Tc" = (
 /obj/item/device/flashlight{
 	on = 1
 	},
 /obj/item/paper/janitor{
-	pixel_y = 8;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 8
 	},
 /obj/effect/decal/cleanable/blood/xtracks,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/human,
 /turf/open/floor/shiva,
 /area/template_noop)
 "Ts" = (
@@ -667,14 +834,17 @@
 /area/template_noop)
 "UA" = (
 /obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva,
 /area/template_noop)
 "Wk" = (
 /obj/effect/spawner/random/toolbox,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "WQ" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/blue/north,
 /area/template_noop)
 "Yd" = (
@@ -682,6 +852,7 @@
 	dir = 8;
 	pixel_x = -10
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva,
 /area/template_noop)
 "Yo" = (
@@ -694,26 +865,27 @@
 "ZX" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
 /obj/effect/landmark/objective_landmark/science,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/blue/north,
 /area/template_noop)
 
 (1,1,1) = {"
 IE
-IE
-IE
-GY
+Ng
+Ng
+ak
 SC
-IE
-IE
-IE
+Ng
+af
+Ng
 GY
 er
 GY
-IE
-IE
+Ng
+aa
 "}
 (2,1,1) = {"
-GY
+am
 wP
 cJ
 jg
@@ -725,13 +897,13 @@ qE
 rn
 vy
 uf
-IE
+Ng
 "}
 (3,1,1) = {"
 IE
 zQ
-RF
-RF
+ag
+ag
 Bi
 GU
 Ng
@@ -746,8 +918,8 @@ lb
 IE
 WQ
 RF
-RF
-RF
+al
+ag
 NA
 Ng
 tP
@@ -758,37 +930,37 @@ wk
 kr
 "}
 (5,1,1) = {"
-GY
+IE
 ZX
 Ah
 uh
-Ah
+ai
 ah
 GY
 bw
 Tc
 Iq
-rC
+ad
 Nl
-kr
+ab
 "}
 (6,1,1) = {"
-GY
+an
 pz
-RF
+ag
 no
 Op
 kt
-IE
+Ng
 ej
 Py
 MC
-rC
+ad
 PA
 nL
 "}
 (7,1,1) = {"
-GY
+ao
 Fm
 Wk
 jD
@@ -807,7 +979,7 @@ IE
 OM
 RF
 lE
-RF
+ag
 yI
 Ng
 jE
@@ -818,26 +990,26 @@ Lo
 LP
 "}
 (9,1,1) = {"
-GY
+IE
 lj
-RF
+ag
 lE
-RF
+ag
 Di
 GY
 qY
 rU
-vy
+uH
 vy
 Nl
-kr
+ab
 "}
 (10,1,1) = {"
 IE
 Kg
-RF
+ag
 lE
-RF
+ag
 Gm
 Ng
 dN
@@ -848,7 +1020,7 @@ Lc
 jr
 "}
 (11,1,1) = {"
-GY
+IE
 Ha
 wJ
 vw
@@ -864,16 +1036,16 @@ kr
 "}
 (12,1,1) = {"
 IE
-GY
-sB
-IE
-GY
-GY
-IE
-GY
 IE
 sB
-GY
+ae
+aj
 IE
 IE
+IE
+IE
+sB
+ae
+IE
+ac
 "}

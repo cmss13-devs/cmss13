@@ -848,6 +848,12 @@
 	color = "#dae3e2"
 	base_river_slowdown = 4 // VERY. SLOW.
 
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill
+	color = "#ffd7ac"
+
+/turf/open/gm/river/shallow_ocean_shallow_ocean/fuelspill/deep
+	color = "#ff8f5b"
+
 /turf/open/gm/river/ocean/deep_ocean
 	name = "deep ocean"
 	default_name = "deep ocean"

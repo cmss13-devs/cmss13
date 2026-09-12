@@ -51,8 +51,8 @@
 	icon_state = "sorokyne_sign_2"
 
 /obj/structure/lz_sign/new_varadero
-	name = "New Varadero landing sign"
-	desc = "A large sign that reads 'New Varadero'. Its always sunny here!"
+	name = "LACN New Varadero Naval Base Sign"
+	desc = "A large sign that reads 'LACN - New Varadaro Naval Base' A graphic of a palm tree adorns the sign, as well as a warning for trespassers."
 	icon_state = "new_varadero"
 
 /obj/structure/lz_sign/chigusa_sign //Relocated from Desert Dam code files.

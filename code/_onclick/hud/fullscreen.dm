@@ -1,5 +1,3 @@
-
-
 /mob
 	var/list/fullscreens = list()
 
@@ -63,6 +61,10 @@
 				client.add_to_screen(screen)
 			else
 				client.remove_from_screen(screen)
+
+/mob/proc/initialize_special_lighting() //initialized on hud.dm when a new mob is spawned so you can't dodge this unless you dont have a client somehow
+	GLOB.sun_status.initialize_current_stage(src)
+	special_lighting_register_signals()
 
 //Get the distance to the farthest edge of the screen
 /mob/proc/get_maximum_view_range()
@@ -203,6 +205,49 @@
 	appearance_flags = NONE
 	show_when_dead = TRUE
 
+/mob/proc/special_lighting_register_signals()
+
+	RegisterSignal(src, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(special_lighting_z_change), TRUE)
+	RegisterSignal(src, COMSIG_MOVABLE_ENTERED_AREA, PROC_REF(special_lighting_area_change), TRUE)
+
+
+/mob/proc/special_lighting_unregister_signals()
+
+	UnregisterSignal(src, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(special_lighting_z_change))
+	UnregisterSignal(src, COMSIG_MOVABLE_ENTERED_AREA, PROC_REF(special_lighting_area_change))
+
+/mob/proc/special_lighting_z_change(atom/source, old_z, new_z)
+	var/area/mob_area = get_area(src)
+	if(CEILING_IS_PROTECTED(mob_area?.ceiling, CEILING_PROTECTION_TIER_2))
+		return
+	if(is_ground_level(old_z) && !is_ground_level(new_z))
+		GLOB.sun_status.enter_roof(src)
+		return
+	if(!is_ground_level(old_z) && is_ground_level(new_z))
+		GLOB.sun_status.exit_roof(src)
+		return
+
+/mob/proc/special_lighting_area_change(atom/source, old_area, new_area)
+	SIGNAL_HANDLER
+	if(!is_ground_level(z))
+		return
+	var/area/mob_old_area = old_area
+	var/area/mob_new_area = new_area
+
+	var/oldloc_incave = null
+	var/newloc_incave = null
+
+	if(CEILING_IS_PROTECTED(mob_old_area?.ceiling, CEILING_PROTECTION_TIER_2))
+		oldloc_incave = TRUE
+	if(CEILING_IS_PROTECTED(mob_new_area?.ceiling, CEILING_PROTECTION_TIER_2))
+		newloc_incave = TRUE
+
+	if((newloc_incave && !oldloc_incave)) //handles both null old loc and false oldloc
+		GLOB.sun_status.enter_roof(src)
+		return
+	if((oldloc_incave && !newloc_incave))
+		GLOB.sun_status.exit_roof(src)
+		return
 
 /atom/movable/screen/fullscreen/weather/low
 	icon_state = "impairedoverlay1"

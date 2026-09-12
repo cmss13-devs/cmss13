@@ -70,5 +70,9 @@ endmap
 map white_antre_research_facility
 endmap
 
+map conam_81_abyssal
+	maxplayers 85
+endmap
+
 map whiskey_outpost_v2
 endmap

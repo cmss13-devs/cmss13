@@ -90,15 +90,15 @@
 		to_chat(user, SPAN_NOTICE("You splash the solution onto [target]."))
 		playsound(target, 'sound/effects/slosh.ogg', 25, 1)
 
-		var/mob/living/M = target
+		var/mob/living/splashed_mob = target
 		var/list/injected = list()
-		for(var/datum/reagent/R in src.reagents.reagent_list)
-			injected += R.name
+		for(var/datum/reagent/chemical in src.reagents.reagent_list)
+			injected += chemical.name
 		var/contained = english_list(injected)
-		M.last_damage_data = create_cause_data(initial(name), user)
-		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been splashed with [src.name] by [user.name] ([user.ckey]). Reagents: [contained]</font>")
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to splash [M.name] ([M.key]). Reagents: [contained]</font>")
-		msg_admin_attack("[user.name] ([user.ckey]) splashed [M.name] ([M.ckey]) with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+		splashed_mob.last_damage_data = create_cause_data(initial(name), user)
+		splashed_mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been splashed with [src.name] by [user.name] ([user.ckey]). Reagents: [contained]</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to splash [splashed_mob.name] ([splashed_mob.key]). Reagents: [contained]</font>")
+		msg_admin_attack("[user.name] ([user.ckey]) splashed [splashed_mob.name] ([splashed_mob.key]) with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 		visible_message(SPAN_WARNING("[target] has been splashed with something by [user]!"))
 		reagents.reaction(target, TOUCH)
@@ -338,42 +338,67 @@
 		/obj/structure/machinery/autodispenser,
 		/obj/structure/machinery/constructable_frame,
 	)
-
+	/// A list of item types that allow reagent refilling.
+	var/list/chem_refill = list(
+		/obj/item/reagent_container/hypospray/autoinjector/standard,
+		/obj/item/reagent_container/hypospray/autoinjector/ez,
+		/obj/item/reagent_container/hypospray/autoinjector/tutorial,
+	)
 /obj/item/reagent_container/glass/minitank/on_reagent_change()
 	update_icon()
 
+/obj/item/reagent_container/glass/minitank/attackby(obj/item/item as obj, mob/user as mob)
+	if(istype(item, /obj/item/reagent_container/hypospray/autoinjector))
+		var/obj/item/reagent_container/hypospray/autoinjector/autoinjector = item
+		var/amount = (autoinjector.reagents.maximum_volume - autoinjector.reagents.total_volume)
 
-/obj/item/reagent_container/glass/minitank/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
-		var/obj/item/reagent_container/hypospray/autoinjector/A = W
-		if(A.mixed_chem)
-			to_chat(user, SPAN_WARNING("The autoinjector doesn't fit into [src]'s valve. It's probably not compatible."))
-			return
-		if(reagents.has_reagent(A.chemname, A.volume))
-			reagents.trans_id_to(A, A.chemname, A.volume)
-			A.uses_left = 3
-			A.update_icon()
-			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
+		if(autoinjector.reagents.total_volume >= autoinjector.reagents.maximum_volume) //Autoinjector is full!
+			to_chat(user, SPAN_NOTICE("[autoinjector] is full."))
+			return FALSE
 		else
-			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. The tank can't refill [A] - it's either incompatible or out of chemicals to fill it with!"))
-			. = ..()
-			return
-		to_chat(user, SPAN_INFO("You successfully refill [A] with [src]!"))
+			if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/research)) //Autoinjector says, "Where's my pouch?"
+				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'Custom PRCP valve detected in [autoinjector]. Compatibility test failed.'"))
+				return FALSE
+			else if(autoinjector.is_crystal || autoinjector.is_stimpack) //These aren't autoinjectors. The tank won't bother for error messages.
+				return FALSE
+			else if(autoinjector.cannot_refill)
+				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'No refill valve detected on [autoinjector].'"))
+				return FALSE
+			else if(!reagents.has_reagent(autoinjector.chemname, amount)) // Not enough reagents in the tank to refill the autoinjector.
+				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'Refill failed. [amount]u [autoinjector.chemname] required to completely refill [autoinjector].'"))
+				return FALSE
+
+		//FINALLY, the good shit that actually fills the autoinjector!
+		reagents.trans_id_to(autoinjector, autoinjector.chemname, amount) //fill this bih
+		autoinjector.uses_left = autoinjector.max_uses
+		autoinjector.update_icon()
+		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
+		to_chat(user, SPAN_INFO("You successfully refill [autoinjector] with [src]!"))
+		return TRUE
 
 /obj/item/reagent_container/glass/minitank/verb/flush_tank()
 	set category = "Object"
 	set name = "Flush Tank"
+	set desc = "Flush the minitank to empty its reagents."
 	set src in usr
 
 	if(usr.is_mob_incapacitated())
 		return
-	if(src.reagents.total_volume == 0)
-		to_chat(usr, SPAN_WARNING("It's already empty!"))
+
+	if(reagents.total_volume <= 0)
+		to_chat(usr, SPAN_NOTICE("[src] is already empty."))
 		return
+
+	to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 3 seconds..."))
+
+	if(!do_after(usr, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		to_chat(usr, SPAN_WARNING("You get distracted and stop trying to empty [src]."))
+		return
+
 	playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
 	to_chat(usr, SPAN_WARNING("You work the flush valve and successfully flush [src]'s contents!"))
 	reagents.clear_reagents()
-	update_icon() // just to be sure
+	update_icon()
 	return
 
 /obj/item/reagent_container/glass/minitank/update_icon()
@@ -446,7 +471,7 @@
 
 /obj/item/reagent_container/glass/beaker/bluespace
 	name = "high-capacity beaker"
-	desc = "A beaker with an enlarged holding capacity, made with blue-tinted plexiglass in order to withstand greater pressure. Can hold up to 500 units."
+	desc = "A beaker with an enlarged holding capacity, made with blue-tinted plexiglass to withstand greater pressure. Can hold up to 500 units."
 	icon_state = "beakerbluespace"
 	item_state = "beakerbluespace"
 	matter = list("glass" = 30000)
@@ -494,6 +519,7 @@
 
 /obj/item/reagent_container/glass/beaker/vial/epinephrine
 	name = "epinephrine vial"
+	desc = "A vial filled with epinephrine to help restart the heart after defibrillation for use in a hypospray."
 
 /obj/item/reagent_container/glass/beaker/vial/epinephrine/Initialize()
 	. = ..()
@@ -502,6 +528,7 @@
 
 /obj/item/reagent_container/glass/beaker/vial/tricordrazine
 	name = "tricordrazine vial"
+	desc = "A vial filled with a wide-spectrum damage healer to be used in a hypospray."
 
 /obj/item/reagent_container/glass/beaker/vial/tricordrazine/Initialize()
 	. = ..()
@@ -510,6 +537,7 @@
 
 /obj/item/reagent_container/glass/beaker/vial/sedative
 	name = "chloral hydrate vial"
+	desc = "A vial filled with a potent sleep agent to be used in a hypospray."
 
 /obj/item/reagent_container/glass/beaker/vial/sedative/Initialize()
 	. = ..()
@@ -589,7 +617,7 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/canister
-	name = "Hydrogen canister"
+	name = "hydrogen canister"
 	desc = "A canister containing pressurized hydrogen. Can be used to refill storage tanks."
 	icon = 'icons/obj/items/tank.dmi'
 	item_icons = list(
@@ -615,39 +643,45 @@
 	. = ..()
 
 /obj/item/reagent_container/glass/canister/ammonia
-	name = "Ammonia canister"
-	desc = "A canister containing pressurized ammonia. Can be used to refill storage tanks."
+	name = "ammonia canister"
+	desc = "A canister containing pressurized ammonia. It can be used to refill storage tanks."
 	icon_state = "canister_ammonia"
 	item_state = "canister_ammonia"
 	reagent = "ammonia"
 
 /obj/item/reagent_container/glass/canister/methane
-	name = "Methane canister"
-	desc = "A canister containing pressurized methane. Can be used to refill storage tanks."
+	name = "methane canister"
+	desc = "A canister containing pressurized methane. It can be used to refill storage tanks."
 	icon_state = "canister_methane"
 	item_state = "canister_methane"
 	reagent = "methane"
 
 /obj/item/reagent_container/glass/canister/pacid
-	name = "Polytrinic acid canister"
-	desc = "A canister containing pressurized polytrinic acid. Can be used to refill storage tanks."
+	name = "polytrinic acid canister"
+	desc = "A canister containing pressurized polytrinic acid. It can be used to refill storage tanks."
 	icon_state = "canister_pacid"
 	item_state = "canister_pacid"
 	reagent = "pacid"
 
 /obj/item/reagent_container/glass/canister/oxygen
-	name = "Oxygen canister"
-	desc = "A canister containing pressurized oxygen. Can be used to refill storage tanks."
+	name = "oxygen canister"
+	desc = "A canister containing pressurized oxygen. It can be used to refill storage tanks."
 	icon_state = "canister_oxygen"
 	item_state = "canister_oxygen"
 	reagent = "oxygen"
 
 /obj/item/reagent_container/glass/pressurized_canister // See the Pressurized Reagent Canister Pouch
-	name = "Pressurized canister"
-	desc = "A pressurized container. The inner part of a pressurized reagent canister pouch. Only compatible with its pouch, machinery or a storage tank."
+	name = "pressurized reagent canister"
+	desc = "The inner portion of the reagent pouch that you filled with chemicals. Only compatible with its pouch, machinery, or a storage tank."
 	icon = 'icons/obj/items/tank.dmi'
 	icon_state = "pressurized_reagent_container"
-	item_state = "anesthetic"
+	item_state = "pressurized_reagent_container"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tanks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tanks_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
+	)
+	flags_equip_slot = SLOT_BACK
 	amount_per_transfer_from_this = 0
 	possible_transfer_amounts = null
 	volume = 480
@@ -690,10 +724,35 @@
 		overlays += filling
 	..()
 
+/obj/item/reagent_container/glass/pressurized_canister/verb/flush_canister()
+	set category = "Object"
+	set name = "Flush Canister"
+	set desc = "Flush the pressurized reagent canister to empty its reagents."
+	set src in usr
+
+	if(usr.is_mob_incapacitated())
+		return
+
+	if(reagents.total_volume <= 0)
+		to_chat(usr, SPAN_NOTICE("[src] is already empty."))
+		return
+
+	to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 3 seconds..."))
+
+	if(!do_after(usr, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		to_chat(usr, SPAN_WARNING("You get distracted and stop trying to empty [src]."))
+		return
+
+	playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
+	to_chat(usr, SPAN_WARNING("You work the flush valve and successfully flush [src]'s contents!"))
+	reagents.clear_reagents()
+	update_icon()
+	return
+
 
 /obj/item/reagent_container/glass/bucket
-	desc = "It's a bucket. Holds 120 units."
 	name = "bucket"
+	desc = "This is a bucket. It holds 120 units."
 	icon = 'icons/obj/janitor.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',

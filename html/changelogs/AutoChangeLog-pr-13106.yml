@@ -1,0 +1,4 @@
+author: "Mary-Marilyn"
+delete-after: True
+changes:
+  - bugfix: "Fixes eye-blur becoming permanent if you re-entered your body late after being revived"

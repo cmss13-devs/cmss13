@@ -39,5 +39,5 @@
 	preview_state = "small_rat"
 
 /datum/sprite_accessory/mouths/small_toothless
-	name = "small_rat"
-	preview_state = "small_rat"
+	name = "small_toothless"
+	preview_state = "small_toothless"

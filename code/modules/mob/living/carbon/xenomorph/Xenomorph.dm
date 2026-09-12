@@ -912,6 +912,7 @@
 	recalculate_stats()
 	var/amt_to_death = health - health_threshold_dead
 	adjustBruteLoss(amt_to_death - 5)
+	updatehealth()
 
 /mob/living/carbon/xenomorph/prepare_huds()
 	..()

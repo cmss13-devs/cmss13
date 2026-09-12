@@ -1,5 +1,0 @@
-author: "wgtjunior743"
-delete-after: True
-changes:
-  - rscadd: "an Encryption key variant that you can only hear a channel and not talk on it."
-  - rscadd: "Give the IO and POs a command key variant which they can only hear it."

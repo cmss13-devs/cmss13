@@ -1098,9 +1098,6 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/east_containment_hive)
-"acU" = (
-/turf/closed/wall/mineral/bone_resin/k_series,
-/area/white_antre/indoors/main_level/east_containment_hive)
 "acV" = (
 /obj/effect/landmark/objective_landmark/close,
 /obj/structure/filingcabinet{
@@ -1270,7 +1267,7 @@
 	dir = 4
 	},
 /turf/closed/wall/mineral/bone_resin/k_series,
-/area/white_antre/indoors/main_level/east_containment_hive)
+/area/white_antre/oob)
 "adi" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -1738,8 +1735,8 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2"
 	},
-/turf/closed/wall/mineral/bone_resin/k_series,
-/area/white_antre/oob)
+/turf/open/floor/almayer/silver/north,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "aer" = (
 /obj/structure/platform/metal/almayer,
 /turf/closed/wall/mineral/bone_resin/k_series,
@@ -13151,6 +13148,9 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/east_containment)
+"aEi" = (
+/turf/open/floor/prison/redcorner,
+/area/white_antre/indoors/main_level/east_containment)
 "aEj" = (
 /obj/structure/largecrate/random/barrel/brown,
 /turf/open/floor/almayer/silvercorner/north,
@@ -20596,15 +20596,6 @@
 	},
 /turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/main_level/east_containment)
-"aZz" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2_red";
-	dir = 8;
-	pixel_x = -2
-	},
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/closed/wall/mineral/bone_resin/k_series,
-/area/white_antre/oob)
 "aZA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_warning_smooth_red"
@@ -125160,7 +125151,7 @@ aLJ
 baa
 aLJ
 afQ
-aZz
+bat
 aeO
 aLC
 bHo
@@ -125661,7 +125652,7 @@ baM
 aKV
 bHo
 bHo
-bHo
+aEi
 lvO
 aZI
 aKV
@@ -125674,8 +125665,8 @@ azk
 ayS
 ayV
 bpi
-acU
-acU
+bHo
+bHo
 ayS
 ayU
 azq
@@ -125823,7 +125814,7 @@ bHo
 bHo
 bHo
 bHo
-lvO
+abe
 baW
 baN
 bHo
@@ -125838,12 +125829,12 @@ aLE
 lqX
 agk
 azu
-bHo
+azk
 ayS
 ayV
 ayV
 adh
-acU
+bHo
 ayS
 ayU
 ayO
@@ -126004,14 +125995,14 @@ aKV
 rEa
 aLD
 lqX
-bHo
+azk
 aeq
-bHo
+azk
 azj
 ayU
 ayU
-acU
-adh
+ayV
+bpi
 ayV
 ayT
 ayP

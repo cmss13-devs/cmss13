@@ -925,6 +925,7 @@
 	icon_state = "vp78m6"
 	item_state = "vp78m6"
 	fire_sound = 'sound/weapons/gun_vp78m6_fire.ogg'
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AKIMBO_ALLOWED
 
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
@@ -956,7 +957,6 @@
 
 /obj/item/weapon/gun/pistol/vp78/vp78m6/set_gun_config_values()
 	..()
-	scatter_unwielded = SCATTER_AMOUNT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 
 

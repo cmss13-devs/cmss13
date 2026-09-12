@@ -312,6 +312,7 @@
 // Hybrisa lockdown announcements
 
 /obj/structure/machinery/door_control/colony_lockdown
+	tacmap_icon = "button"
 	var/used = FALSE
 	var/colony_lockdown_time = 25 MINUTES
 
@@ -329,6 +330,7 @@
 // Research
 
 /obj/structure/machinery/door_control/research_lockdown
+	tacmap_icon = "button"
 	var/used = FALSE
 	var/colony_lockdown_time = 10 MINUTES
 

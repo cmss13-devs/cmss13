@@ -14,6 +14,7 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 	power_machine = TRUE
 	idle_power_usage = 0
 	is_on = FALSE
+	tacmap_icon = "light_switch"
 	var/ispowered = FALSE
 	///All machinery under our control
 	var/list/machinery_list = list()

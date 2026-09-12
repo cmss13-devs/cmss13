@@ -1412,7 +1412,7 @@
 	pixel_x = -8
 	},
 /obj/item/tool/kitchen/rollingpin,
-/obj/item/book/manual/chef_recipes,
+/obj/item/chef_recipes,
 /obj/structure/machinery/light/small/built{
 	dir = 1
 	},

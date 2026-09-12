@@ -69,6 +69,59 @@
 	. = ..()
 	reagents.remove_reagent("xenoblood", 6)
 
+/obj/item/reagent_container/food/snacks/meat/patty
+	name = "patty"
+	desc = "A juicy cooked patty, ready to be slapped between two buns."
+	icon = 'icons/obj/items/food/food_ingredients.dmi'
+	icon_state = "patty"
+
+/obj/item/reagent_container/food/snacks/meat/patty_raw
+	name = "raw patty"
+	desc = "A raw patty ready to be grilled into a juicy and delicious burger."
+	icon = 'icons/obj/items/food/food_ingredients.dmi'
+	icon_state = "patty_raw"
+
+/obj/item/reagent_container/food/snacks/meat/patty_raw/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("Use unique action to shape it into a raw meatball.")
+
+/obj/item/reagent_container/food/snacks/meat/patty_raw/unique_action(mob/user)
+	if(..())
+		return
+
+	user.visible_message(
+		SPAN_NOTICE("[user] shapes [src] into a raw meatball."),
+		SPAN_NOTICE("You shape [src] into a raw meatball.")
+	)
+	playsound(user, 'sound/effects/blobattack.ogg', 50, 1)
+	var/obj/item/reagent_container/food/snacks/rawmeatball/M = new(get_turf(user))
+	user.drop_held_item(src)
+	qdel(src)
+	user.put_in_hands(M)
+
+/obj/item/reagent_container/food/snacks/meat/ground_meat
+	name = "ground meat"
+	desc = "Some meat that has been minced with a processor."
+	icon = 'icons/obj/items/food/food_ingredients.dmi'
+	icon_state = "groundbeef"
+	filling_color = "#DB0000"
+
+/obj/item/reagent_container/food/snacks/meat/ground_meat/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("Use unique action to shape it into a raw meatball.")
+
+/obj/item/reagent_container/food/snacks/meat/ground_meat/unique_action(mob/living/user)
+	user.visible_message(
+		SPAN_NOTICE("[user] shapes [src] into a ball."),
+		SPAN_NOTICE("You shape [src] into a ball of raw ground meat.")
+	)
+	playsound(user, 'sound/effects/blobattack.ogg', 50, TRUE)
+	var/obj/item/reagent_container/food/snacks/rawmeatball/M = new(get_turf(user))
+	user.drop_held_item(src)
+	qdel(src)
+	user.put_in_hands(M)
+	return TRUE
+
 //fishable atoms meat
 // todo: rewrite this into a procgen'ed item when gutting fish? May be incompatible with recipe code if done that way and not hardcoded.
 /obj/item/reagent_container/food/snacks/meat/fish

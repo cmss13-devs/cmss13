@@ -1039,7 +1039,7 @@
 /area/space)
 "En" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/book/manual/chef_recipes,
+/obj/item/chef_recipes,
 /obj/item/clothing/head/chefhat,
 /obj/item/storage/box/drinkingglasses,
 /obj/item/reagent_container/food/drinks/shaker,

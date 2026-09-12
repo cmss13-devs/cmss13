@@ -264,7 +264,7 @@
 		return
 
 	if (W.has_special_table_placement)
-		W.set_to_table(src)
+		W.set_to_table(src, user)
 		return
 
 	if(istype(W, /obj/item/grab) && get_dist(src, user) <= 1)

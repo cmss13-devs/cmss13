@@ -977,6 +977,7 @@
 	skill_required = SKILL_PILOT_TRAINED
 	gunnery_only = TRUE
 	detachable = FALSE
+	firing_delay = 10
 	shorthand = "M90"
 
 /obj/structure/dropship_equipment/weapon/m90_minigun/update_icon() // change icons

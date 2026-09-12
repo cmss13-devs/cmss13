@@ -3,8 +3,11 @@ import { createSearch } from 'common/string';
 import { useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
-  Button,
+  Box,
+  Flex,
   Input,
+  Popper,
+  ProgressBar,
   Section,
   Stack,
 } from 'tgui/components';
@@ -16,47 +19,19 @@ type Data = {
   can_spy: BooleanLike;
   mapRef: string;
   network: string[];
+  currentAmmo: number;
+  totalAmmo: number;
+};
+
+const GreedRedRange: Record<string, [number, number]> = {
+  good: [-Infinity, 0.25],
+  average: [0.25, 0.5],
+  bad: [0.5, Infinity],
 };
 
 type Camera = {
   name: string;
   ref: string;
-};
-
-/**
- * Returns previous and next camera names relative to the currently
- * active camera.
- */
-const prevNextCamera = (
-  cameras: Camera[],
-  activeCamera: Camera & { status: BooleanLike },
-) => {
-  if (!activeCamera || cameras.length < 2) {
-    return [];
-  }
-
-  const index = cameras.findIndex(
-    (camera) => camera.name === activeCamera.name,
-  );
-
-  switch (index) {
-    case -1: // Current camera is not in the list
-      return [cameras[cameras.length - 1].name, cameras[0].name];
-
-    case 0: // First camera
-      if (cameras.length === 2) return [cameras[1].name, cameras[1].name]; // Only two
-
-      return [cameras[cameras.length - 1].name, cameras[index + 1].name];
-
-    case cameras.length - 1: // Last camera
-      if (cameras.length === 2) return [cameras[0].name, cameras[0].name];
-
-      return [cameras[index - 1].name, cameras[0].name];
-
-    default:
-      // Middle camera
-      return [cameras[index - 1].name, cameras[index + 1].name];
-  }
 };
 
 /**
@@ -80,7 +55,7 @@ const selectCameras = (cameras: Camera[], searchText = ''): Camera[] => {
 
 export const DropshipGunneryConsole = (props) => {
   return (
-    <Window width={200} height={400}>
+    <Window width={215} height={400}>
       <Window.Content>
         <CameraContent />
       </Window.Content>
@@ -92,13 +67,24 @@ export const CameraContent = (props) => {
   const [searchText, setSearchText] = useState('');
 
   return (
-    <Stack fill>
+    <Stack fill vertical>
       <Stack.Item grow>
-        <CameraSelector searchText={searchText} setSearchText={setSearchText} />
+        <CameraSelector searchText={searchText} setSearchText={setSearchText} fill vertical />
+        <AmmoCounter grow vertical />
       </Stack.Item>
     </Stack>
   );
 };
+
+// export const AmmoContent = (props) => {
+//  return (
+//    <Stack >
+//      <Stack.Item>
+//        <AmmoCounter />
+//      </Stack.Item>
+//    </Stack>
+//  );
+// };
 
 const CameraSelector = (props) => {
   const { act, data } = useBackend<Data>();
@@ -148,5 +134,20 @@ const CameraSelector = (props) => {
         </Section>
       </Stack.Item>
     </Stack>
+  );
+};
+
+const AmmoCounter = (props) => {
+  const { data } = useBackend<Data>();
+  const { currentAmmo, totalAmmo } = data;
+  return (
+      <Stack fill vertical>
+        <Stack.Item grow position='absolute' bottom='0'>
+          <ProgressBar value={currentAmmo / totalAmmo} ranges={GreedRedRange}>
+            CUM_CNT: {currentAmmo} / {totalAmmo}
+          </ProgressBar>
+          <Box height='5px' />
+        </Stack.Item>
+      </Stack>
   );
 };

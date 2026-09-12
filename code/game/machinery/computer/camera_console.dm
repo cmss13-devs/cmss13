@@ -483,6 +483,24 @@
 			linked_m90 = gun
 			return ..()
 
+/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/ui_data()
+	var/list/data = list()
+	data["network"] = network
+	data["activeCamera"] = null
+	if(linked_m90)
+		if(linked_m90.ammo_equipped)
+			data["currentAmmo"] = linked_m90.ammo_equipped.ammo_count
+			data["totalAmmo"] = linked_m90.ammo_equipped.max_ammo_count
+		else
+			data["currentAmmo"] = 0
+			data["totalAmmo"] = 0
+	if(current)
+		data["activeCamera"] = list(
+			name = current.c_tag,
+			status = current.status,
+		)
+	return data
+
 /obj/structure/machinery/computer/cameras/dropship/midway/gunnery/ui_close(mob/user)
 	if(focused)
 		if(user_weakref)
@@ -563,9 +581,10 @@
 /obj/structure/machinery/computer/cameras/dropship/midway/gunnery/proc/focus_mob()
 	to_chat(world, "focusing mob")
 	var/mob/living/carbon/human/user = user_weakref.resolve()
-	user.remove_client_color_matrix("nvg_visor", 0.75 SECONDS)
-	user.clear_fullscreen("nvg_visor", 0.3 SECONDS)
-	user.clear_fullscreen("nvg_visor_blur", 0.3 SECONDS)
+	user.remove_client_color_matrix("gunnery_visor", 0.75 SECONDS)
+	user.clear_fullscreen("gunnery_visor", 0.4 SECONDS)
+	user.clear_fullscreen("gunnery_visor_blur", 0.4 SECONDS)
+	user.clear_fullscreen("gunnery_clouds", 0.1 SECONDS)
 	playsound(user, 'sound/handling/toggle_nv2.ogg', 25)
 
 	UnregisterSignal(user, COMSIG_MOB_POST_CLICK)
@@ -580,9 +599,10 @@
 	to_chat(world, "user found")
 	if(user.client?.prefs?.night_vision_preference)
 		matrix_color = user.client.prefs.nv_color_list[user.client.prefs.night_vision_preference]
-	user.add_client_color_matrix("nvg_visor", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string(matrix_color)), 0.75 SECONDS)
-	user.overlay_fullscreen("nvg_visor", /atom/movable/screen/fullscreen/flash/noise/nvg)
-	user.overlay_fullscreen("nvg_visor_blur", /atom/movable/screen/fullscreen/brute/nvg, 3)
+	user.add_client_color_matrix("gunnery_visor", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string(matrix_color)), 0.75 SECONDS)
+	user.overlay_fullscreen("gunnery_visor", /atom/movable/screen/fullscreen/flash/noise/nvg)
+	user.overlay_fullscreen("gunnery_visor_blur", /atom/movable/screen/fullscreen/brute/nvg, 3)
+	user.overlay_fullscreen("gunnery_clouds", /atom/movable/screen/fullscreen/clouds)
 	playsound(user, 'sound/handling/toggle_nv1.ogg', 25)
 
 	user.reset_view(selected_camera)
@@ -613,15 +633,14 @@
 
 /obj/structure/machinery/computer/cameras/dropship/midway/gunnery/proc/fire_m90(mob/living/carbon/human/user, atom/target, mods)
 	SIGNAL_HANDLER
-
-	if(!linked_m90.ammo_equipped || linked_m90.ammo_equipped.ammo_count <= 0)
-		to_chat(user, SPAN_WARNING("The [linked_m90.name] has no ammo."))
-		return FALSE
 	if(linked_m90.last_fired > world.time - linked_m90.firing_delay)
-		to_chat(user, SPAN_WARNING("[linked_m90.name] just fired, wait for it to cool down."))
+		to_chat(user, SPAN_WARNING("WARNING: [linked_m90.name] just fired, wait for it to cool down."))
+		return FALSE
+	if(!linked_m90.ammo_equipped || linked_m90.ammo_equipped.ammo_count <= 0)
+		to_chat(user, SPAN_WARNING("ERROR: The [linked_m90.name] has no ammo."))
 		return FALSE
 	if(linked_dropship.mode != SHUTTLE_CALL)
-		to_chat(user, SPAN_WARNING("Dropship can only fire while in flight."))
+		to_chat(user, SPAN_WARNING("ERROR: Dropship can only fire while in flight."))
 		return FALSE
 
 	var/turf/target_turf = get_turf(target)

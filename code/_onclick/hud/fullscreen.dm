@@ -107,6 +107,12 @@
 /atom/movable/screen/fullscreen/brute/nvg
 	color = COLOR_BLACK
 
+/atom/movable/screen/fullscreen/clouds
+	icon_state = "clouds"
+	layer = FULLSCREEN_DAMAGE_LAYER
+	alpha = 175
+//	color = COLOR_BLACK
+
 /atom/movable/screen/fullscreen/oxy
 	icon_state = "oxydamageoverlay"
 	layer = FULLSCREEN_DAMAGE_LAYER

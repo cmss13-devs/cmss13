@@ -27,6 +27,8 @@
 	var/additional_offset = TRUE
 	/// Extra time added to next_move to shimmy around
 	var/extra_delay = 1 DECISECONDS
+	/// List of mob types to exclude from being able to shimmy
+	var/list/disallowed_types
 
 /datum/component/shimmy_around/Initialize(\
 	approach_dirs = NORTH|SOUTH|EAST|WEST,\
@@ -37,7 +39,8 @@
 	east_offset = -5,\
 	west_offset = -5,\
 	additional_offset = TRUE,\
-	extra_delay = 1 DECISECONDS)
+	extra_delay = 1 DECISECONDS,\
+	disallowed_types = list())
 
 	parent_structure = parent
 	if(!istype(parent_structure))
@@ -52,6 +55,7 @@
 	src.west_offset = west_offset
 	src.additional_offset = additional_offset
 	src.extra_delay = extra_delay
+	src.disallowed_types = disallowed_types
 
 /datum/component/shimmy_around/Destroy(force, silent)
 	var/turf/my_turf = get_turf(parent_structure)
@@ -67,26 +71,28 @@
 
 /datum/component/shimmy_around/InheritComponent(datum/component/C, i_am_original,
 	approach_dirs, approach_dirs_layer_override, internal_dirs, north_offset,\
-	south_offset, east_offset, west_offset,	additional_offset, extra_delay)
+	south_offset, east_offset, west_offset,	additional_offset, extra_delay, disallowed_types)
 	. = ..()
-	if(approach_dirs && src.approach_dirs != approach_dirs)
-		src.approach_dirs =  approach_dirs
-	if(approach_dirs_layer_override && approach_dirs_layer_override != src.approach_dirs_layer_override)
+	if(approach_dirs != null && src.approach_dirs != approach_dirs)
+		src.approach_dirs = approach_dirs
+	if(approach_dirs_layer_override != null && approach_dirs_layer_override != src.approach_dirs_layer_override)
 		src.approach_dirs_layer_override = approach_dirs_layer_override
-	if(internal_dirs && internal_dirs != src.internal_dirs)
+	if(internal_dirs != null && internal_dirs != src.internal_dirs)
 		src.internal_dirs = internal_dirs
-	if(north_offset && north_offset != src.north_offset)
+	if(north_offset != null && north_offset != src.north_offset)
 		src.north_offset = north_offset
-	if(south_offset && south_offset != src.south_offset)
+	if(south_offset != null && south_offset != src.south_offset)
 		src.south_offset = south_offset
-	if(east_offset && east_offset != src.east_offset)
+	if(east_offset != null && east_offset != src.east_offset)
 		src.east_offset = east_offset
-	if(west_offset &&  west_offset != src.west_offset)
+	if(west_offset != null && west_offset != src.west_offset)
 		src.west_offset = west_offset
-	if(additional_offset &&  additional_offset != src.additional_offset)
+	if(additional_offset != null && additional_offset != src.additional_offset)
 		src.additional_offset = additional_offset
-	if(extra_delay && extra_delay != src.extra_delay)
+	if(extra_delay != null && extra_delay != src.extra_delay)
 		src.extra_delay = extra_delay
+	if(disallowed_types != null && disallowed_types != src.disallowed_types)
+		src.disallowed_types = disallowed_types	//just going to do a complete reassignment, let the inheritor initiator handle this
 
 /datum/component/shimmy_around/RegisterWithParent()
 	RegisterSignal(parent_structure, COMSIG_STRUCTURE_COLLIDED, PROC_REF(on_collide))
@@ -183,6 +189,10 @@
 	var/mob/living/mob = collided_atom
 	if(!istype(mob))
 		return
+
+	for(var/disallowed_type as anything in disallowed_types)
+		if(istype(mob, disallowed_type))
+			return	//disallowed type of mob trying to shimmy, NOT IN MY HOUSE!
 
 	// See if we allow this approach direction
 	var/direction = get_dir(mob, parent_structure)

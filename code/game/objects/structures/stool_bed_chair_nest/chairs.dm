@@ -249,6 +249,7 @@
 				target.density = FALSE
 			return	//shimmying is already handled, we dont want to offset shimmiers twice!
 	density = TRUE
+	pass_flags.flags_can_pass_all = null
 	if(target.density)
 		target.density = FALSE
 	AddComponent(/datum/component/shimmy_around, \
@@ -258,7 +259,11 @@
 		west_offset = shimmy_data[4],\
 		extra_delay = 0.5 SECONDS, \
 		approach_dirs = shimmy_data[5],\
-		internal_dirs = shimmy_data[6])
+		internal_dirs = shimmy_data[6], \
+			disallowed_types = list( \
+				/mob/living/carbon/xenomorph, \
+			) \
+		)
 
 /obj/structure/bed/chair/proc/update_shimmy_data(obj/structure/bed/chair/neighbor = null, force_update = FALSE)
 	if(shimmy_data == null)
@@ -297,13 +302,18 @@
 			west_offset  = shimmy_data[4], \
 			extra_delay  = 0.5 SECONDS, \
 			approach_dirs = shimmy_data[5], \
-			internal_dirs = shimmy_data[6])
+			internal_dirs = shimmy_data[6], \
+			disallowed_types = list( \
+				/mob/living/carbon/xenomorph, \
+			) \
+		)
 
 /obj/structure/bed/chair/unbuckle()
 	if(buckled_mob)
 		buckled_mob.update_density()
 	. = ..()
 	density = FALSE
+	pass_flags.flags_can_pass_all = PASS_UNDER|PASS_OVER|PASS_AROUND
 
 	var/obj/structure/bed/chair/other_buckled_chair
 	var/list/mob/living/shimmied_mobs = list()
@@ -325,7 +335,7 @@
 			break
 
 	for(var/mob/living/found_living in get_turf(src))	//any living mobs currently shimmied ??? (have the pixel offsets)
-		if(!found_living.buckled && found_living.pixel_x != initial(found_living.pixel_x) || found_living.pixel_y != initial(found_living.pixel_y))
+		if(!found_living.buckled && (found_living.pixel_x != initial(found_living.pixel_x) || found_living.pixel_y != initial(found_living.pixel_y)))
 			shimmied_mobs += found_living
 
 	if(!other_buckled_chair)	// No other chair is holding anyone → remove all the shimmy offsets from every shimmied mob
@@ -348,7 +358,8 @@
 				west_offset  = other_buckled_chair.shimmy_data[4], \
 				extra_delay  = 0.5 SECONDS, \
 				approach_dirs = other_buckled_chair.shimmy_data[5], \
-				internal_dirs = other_buckled_chair.shimmy_data[6])
+				internal_dirs = other_buckled_chair.shimmy_data[6], \
+				disallowed_types = list(/mob/living/carbon/xenomorph))
 			other_buckled_shimster = other_buckled_chair.GetComponent(/datum/component/shimmy_around)
 		else	//it posses one, we just need to pass in the new approach and internal_dirs values
 			old_data = list(

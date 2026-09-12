@@ -101,3 +101,61 @@
   - code_imp: add .sh file for update paths
   - code_imp: toggle crest unit tests
   - spellcheck: fixed a typo in steelcrest abilities unit test
+2026-09-08:
+  Detective-Google:
+  - balance: fire resistance boon cost increased from 1 to 2.
+  Fira, antlersss:
+  - balance: Sentries and mounted guns like M56D and M2C cannot be deployed inside
+      tents anymore.
+  Mary-Marilyn:
+  - bugfix: Station ERTs no longer continue spawning after round end.
+  - rscadd: Added undocking announcements when a station abandons the Almayer.
+  MistChristmas:
+  - bugfix: Add html encoding to Flavour Text
+  - code_imp: Add an arugment to get_line to account for objects transitioning z levels.
+      Currently used for throwing and shooting.
+  - bugfix: Being able to throw people off the map on WARF. Being able to shoot xenos
+      on the ground from CIC.
+  Puckaboo2:
+  - spellcheck: Fixed all sentences that end with ".!", "!.", "..?", ".?", "?."
+  Venuska1117:
+  - refactor: Updates Spitter code for cleaner look and making it easier to follow.
+  - refactor: Updates Trapper Boiler code for cleaner look and making it easier to
+      follow.
+  - refactor: Updates Vampire code for cleaner look and making it easier to follow.
+  - bugfix: Added missing cooldown check on vampire headbite and early return check
+      if target is DEAD.
+  - refactor: Changes Carrier single letter vars to use snake_case.
+  Watermelon914:
+  - admin: Admins will stay deadminned when they deadmin through reconnects/reloadadmin
+  labeo0:
+  - bugfix: welding goggles tint does not stay when they are taken off
+2026-09-09:
+  Venuska1117:
+  - refactor: Updates Oppressor Praetorian code for cleaner look and making it easier
+      to follow.
+  Yachuk:
+  - balance: changed MD ping animation from 1 to 2 seconds
+  wgtjunior743:
+  - rscadd: an Encryption key variant that you can only hear a channel and not talk
+      on it.
+  - rscadd: Give the IO and POs a command key variant which they can only hear it.
+2026-09-11:
+  Drathek:
+  - bugfix: Fixed some places where damage wasn't updating health (namely facehuggers
+      and lessers off weeds)
+2026-09-12:
+  Drathek:
+  - bugfix: Fixed sentry subsystem using blocking http requests
+  PoltavskaPraca:
+  - imageadd: added an icon sprite for automated weeding
+  - qol: added autoweeding ability (toggleable) to a bunch of drone-adjacent castes.
+      Autoweeding automatically plants weed nodes as you move based on distance. At
+      20% plasma total or lower it becomes disabled automatically. Weeds planted via
+      autoweeding have the same cost as the usual.
+  Unknownity:
+  - bugfix: PMC Synthetic survivors now start with a shortwave radio inside their
+      backpack.
+  ori-disillusion-mirnov:
+  - bugfix: fixed runtime in clean_observe_target() by adding a check for a client
+  - bugfix: other possible set_eye related runtimes from lacking a client

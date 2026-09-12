@@ -181,8 +181,6 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/backbag = 2 //backpack type
 	var/preferred_armor = "Random" //preferred armor type (from their primary prep vendor)
 
-	var/mouth_style = "toothy"
-
 	var/h_style = "Crewcut" //Hair type
 	var/r_hair = 0 //Hair color
 	var/g_hair = 0 //Hair color

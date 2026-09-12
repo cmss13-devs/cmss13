@@ -790,7 +790,6 @@
 	S["hair_style_name"] >> h_style
 	S["hair_gradient_name"] >> grad_style
 	S["facial_style_name"] >> f_style
-	S["mouth_style_name"] >> mouth_style
 	S["eyes_red"] >> r_eyes
 	S["eyes_green"] >> g_eyes
 	S["eyes_blue"] >> b_eyes
@@ -881,7 +880,6 @@
 	if(!FS.selectable) // delete this
 		f_style = random_facial_hair_style(gender, species)
 		save_character()
-	mouth_style = sanitize_inlist(mouth_style, GLOB.mouth_styles_list, initial(mouth_style))
 	r_eyes = sanitize_integer(r_eyes, 0, 255, initial(r_eyes))
 	g_eyes = sanitize_integer(g_eyes, 0, 255, initial(g_eyes))
 	b_eyes = sanitize_integer(b_eyes, 0, 255, initial(b_eyes))
@@ -957,7 +955,6 @@
 	S["hair_style_name"] << h_style
 	S["hair_gradient_name"] << grad_style
 	S["facial_style_name"] << f_style
-	S["mouth_style_name"] << mouth_style
 	S["eyes_red"] << r_eyes
 	S["eyes_green"] << g_eyes
 	S["eyes_blue"] << b_eyes

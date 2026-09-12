@@ -20,6 +20,8 @@
 	var/transverse = NONE
 	/// Relative position alongside longitudinal axis
 	var/long = NONE
+	var/round_slot = FALSE
+	var/obj/effect/attach_point_dummy/linked_bottom_point
 
 /obj/effect/attach_point/Destroy()
 	QDEL_NULL(installed_equipment)
@@ -59,6 +61,9 @@
 	ds_equipment.ship_base = src
 	ds_equipment.plane = plane
 	ds_equipment.setDir(src.dir)
+	ds_equipment.layer = src.layer + 0.01
+	if(linked_bottom_point)
+		linked_bottom_point.update_icon()
 
 	for(var/obj/docking_port/mobile/marine_dropship/shuttle in SSshuttle.mobile)
 		if(shuttle.id == ship_tag)
@@ -83,3 +88,51 @@
 		"min" = transverse + firing_arc_min,
 		"max" = transverse + firing_arc_max
 	)
+
+/obj/effect/attach_point_dummy
+	name = "equipment attach point"
+	desc = "A place where heavy equipment can be installed with a powerloader."
+	icon = 'icons/obj/structures/machinery/omaha/misc.dmi'
+	icon_state = "hardpoint_empty"
+	unacidable = TRUE
+	anchored = TRUE
+	layer = ABOVE_TURF_LAYER
+	plane = GAME_PLANE
+	var/obj/effect/attach_point/linked_attach_point
+
+/obj/effect/attach_point_dummy/omaha
+	icon = 'icons/obj/structures/machinery/omaha/misc.dmi'
+
+/obj/effect/attach_point_dummy/midway
+	icon = 'icons/obj/structures/machinery/midway/misc.dmi'
+
+/obj/effect/attach_point_dummy/Destroy()
+	QDEL_NULL(linked_attach_point)
+	return ..()
+
+/obj/effect/attach_point_dummy/update_icon()
+	if(linked_attach_point)
+		if(linked_attach_point.installed_equipment)
+			icon_state = "hardpoint_closed"
+		else
+			icon_state = "[initial(icon_state)]"
+
+/obj/effect/attach_point_dummy/attackby(obj/item/I, mob/user)
+	if(linked_attach_point.installed_equipment)
+		if(isxeno(user))
+			return linked_attach_point.installed_equipment.attack_alien(user)
+		linked_attach_point.installed_equipment.attackby(I, user)
+	else
+		return linked_attach_point.attackby(I, user)
+
+/obj/effect/attach_point_dummy/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(linked_attach_point.installed_equipment)
+		return linked_attach_point.installed_equipment.attack_alien(current_xenomorph)
+	else
+		return ..()
+
+/obj/effect/attach_point_dummy/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	if(linked_attach_point.installed_equipment)
+		linked_attach_point.installed_equipment.handle_tail_stab(xeno, blunt_stab)
+	else
+		return ..()

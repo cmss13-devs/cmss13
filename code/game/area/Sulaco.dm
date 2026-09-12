@@ -59,8 +59,17 @@
 	name = "\improper Alamo Landing Zone"
 	icon_state = "away1"
 
+/area/shuttle/drop_omaha/omaha
+	name = "\improper Dropship Omaha"
+	icon_state = "shuttlered"
+	base_muffle = MUFFLE_HIGH
+	base_lighting_alpha = 0
+	is_resin_allowed = FALSE
 
-
+/area/shuttle/drop_omaha/Enter(atom/movable/O, atom/oldloc)
+	if(istype(O, /obj/structure/barricade))
+		return FALSE
+	return TRUE
 
 /area/shuttle/drop2
 	//soundscape_playlist = list('sound/soundscape/drum1.ogg')
@@ -71,6 +80,18 @@
 	base_lighting_alpha = 0
 
 /area/shuttle/drop2/Enter(atom/movable/O, atom/oldloc)
+	if(istype(O, /obj/structure/barricade))
+		return FALSE
+	return TRUE
+
+/area/shuttle/drop_midway/midway
+	name = "\improper Dropship Midway"
+	icon_state = "shuttlered"
+	base_muffle = MUFFLE_HIGH
+	base_lighting_alpha = 0 // 255
+	is_resin_allowed = FALSE
+
+/area/shuttle/drop_midway/Enter(atom/movable/O, atom/oldloc)
 	if(istype(O, /obj/structure/barricade))
 		return FALSE
 	return TRUE

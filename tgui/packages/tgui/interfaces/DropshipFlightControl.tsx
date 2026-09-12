@@ -34,6 +34,7 @@ type DoorStatusEnums = (typeof DoorStatusEnum)[keyof typeof DoorStatusEnum];
 interface DoorStatus {
   id: string;
   value: DoorStatusEnums;
+  is_ramp: string; // idk how to pass a boolean. simple (....xxx, "is_ramp" = controller.is_ramp) in shuttle/helpers @ln75 is not working for some reason
 }
 
 interface AutomatedControl {
@@ -123,38 +124,74 @@ const DropshipDoorControl = () => {
                       No response
                     </Button>
                   )}
-                  {x.value === DoorStatusEnum.SHUTTLE_DOOR_UNLOCKED && (
-                    <Button
-                      disabled={disable_door_controls}
-                      width="100%"
-                      textAlign="center"
-                      onClick={() =>
-                        act('door-control', {
-                          interaction: 'force-lock',
-                          location: x.id,
-                        })
-                      }
-                      icon="door-closed"
-                    >
-                      Lock {name}
-                    </Button>
-                  )}
-                  {x.value === DoorStatusEnum.SHUTTLE_DOOR_LOCKED && (
-                    <Button
-                      disabled={disable_door_controls}
-                      width="100%"
-                      textAlign="center"
-                      onClick={() =>
-                        act('door-control', {
-                          interaction: 'unlock',
-                          location: x.id,
-                        })
-                      }
-                      icon="door-open"
-                    >
-                      Unlock {name}
-                    </Button>
-                  )}
+                  {x.is_ramp === '0' &&
+                    x.value === DoorStatusEnum.SHUTTLE_DOOR_UNLOCKED && (
+                      <Button
+                        disabled={disable_door_controls}
+                        width="100%"
+                        textAlign="center"
+                        onClick={() =>
+                          act('door-control', {
+                            interaction: 'force-lock',
+                            location: x.id,
+                          })
+                        }
+                        icon="door-closed"
+                      >
+                        Lock {name}
+                      </Button>
+                    )}
+                  {x.is_ramp === '0' &&
+                    x.value === DoorStatusEnum.SHUTTLE_DOOR_LOCKED && (
+                      <Button
+                        disabled={disable_door_controls}
+                        width="100%"
+                        textAlign="center"
+                        onClick={() =>
+                          act('door-control', {
+                            interaction: 'unlock',
+                            location: x.id,
+                          })
+                        }
+                        icon="door-open"
+                      >
+                        Unlock {name}
+                      </Button>
+                    )}
+                  {x.is_ramp === '1' &&
+                    x.value === DoorStatusEnum.SHUTTLE_DOOR_UNLOCKED && (
+                      <Button
+                        disabled={disable_door_controls}
+                        width="100%"
+                        textAlign="center"
+                        onClick={() =>
+                          act('door-control', {
+                            interaction: 'force-lock',
+                            location: x.id,
+                          })
+                        }
+                        icon="door-closed"
+                      >
+                        Raise {name} Ramp
+                      </Button>
+                    )}
+                  {x.is_ramp === '1' &&
+                    x.value === DoorStatusEnum.SHUTTLE_DOOR_LOCKED && (
+                      <Button
+                        disabled={disable_door_controls}
+                        width="100%"
+                        textAlign="center"
+                        onClick={() =>
+                          act('door-control', {
+                            interaction: 'unlock',
+                            location: x.id,
+                          })
+                        }
+                        icon="door-open"
+                      >
+                        Lower {name} Ramp
+                      </Button>
+                    )}
                 </>
               </Stack.Item>
             );

@@ -693,11 +693,12 @@
 		return FALSE
 	if(dropship.door_override)
 		return FALSE
-	if(!skillcheck(weapon_operator, SKILL_PILOT, DEW.skill_required)) //only pilots can fire dropship weapons.
-		to_chat(weapon_operator, SPAN_WARNING("You don't have the training to fire this weapon!"))
-		return FALSE
 	if(!dropship.in_flyby && DEW.fire_mission_only)
 		to_chat(weapon_operator, SPAN_WARNING("[DEW] requires a Fire Mission flight type to be fired."))
+		return FALSE
+
+	if(DEW.gunnery_only)
+		to_chat(weapon_operator, SPAN_WARNING("[DEW] can only be fired manually via the gunnery console."))
 		return FALSE
 
 	if(!DEW.ammo_equipped || DEW.ammo_equipped.ammo_count <= 0)
@@ -732,7 +733,7 @@
 		if(!is_outside && !cavebreaker) //cavebreaker doesn't care
 			to_chat(weapon_operator, SPAN_WARNING("INVALID TARGET: target must be visible from high altitude."))
 			return FALSE
-		if (protected_by_pylon(TURF_PROTECTION_CAS, TU))
+		if(protected_by_pylon(TURF_PROTECTION_CAS, TU))
 			to_chat(weapon_operator, SPAN_WARNING("INVALID TARGET: biological-pattern interference with signal."))
 			return FALSE
 		if(!DEW.ammo_equipped.can_fire_at(TU, weapon_operator))
@@ -920,11 +921,31 @@
 	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
 	shuttle_tag = DROPSHIP_ALAMO
 
+/obj/structure/machinery/computer/dropship_weapons/dropship_omaha
+	name = "\improper 'Omaha' weapons controls"
+	icon = 'icons/obj/structures/machinery/omaha/controls.dmi'
+	icon_state = "system_monitor"
+	density = FALSE
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)
+	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
+	shuttle_tag = DROPSHIP_OMAHA
+	layer = OBJ_LAYER + 0.01
+
 /obj/structure/machinery/computer/dropship_weapons/dropship2
 	name = "\improper 'Normandy' weapons controls"
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)
 	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
 	shuttle_tag = DROPSHIP_NORMANDY
+
+/obj/structure/machinery/computer/dropship_weapons/dropship_midway
+	name = "\improper 'Midway' weapons controls"
+	icon = 'icons/obj/structures/machinery/midway/controls.dmi'
+	icon_state = "system_monitor"
+	density = FALSE
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)
+	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
+	shuttle_tag = DROPSHIP_MIDWAY
+	layer = OBJ_LAYER + 0.01
 
 /obj/structure/machinery/computer/dropship_weapons/dropship3
 	name = "\improper 'Saipan' weapons controls"

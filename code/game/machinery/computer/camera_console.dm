@@ -434,9 +434,234 @@
 	name = "\improper 'Alamo' camera controls"
 	network = list(CAMERA_NET_ALAMO, CAMERA_NET_LASER_TARGETS)
 
+/obj/structure/machinery/computer/cameras/dropship/omaha
+	name = "\improper 'Omaha' camera controls"
+	icon = 'icons/obj/structures/machinery/omaha/controls.dmi'
+	icon_state = "weapons_console"
+	density = FALSE
+	layer = OBJ_LAYER + 0.01
+	network = list(CAMERA_NET_OMAHA, CAMERA_NET_LASER_TARGETS)
+
 /obj/structure/machinery/computer/cameras/dropship/two
 	name = "\improper 'Normandy' camera controls"
 	network = list(CAMERA_NET_NORMANDY, CAMERA_NET_LASER_TARGETS)
+
+/obj/structure/machinery/computer/cameras/dropship/midway
+	name = "\improper 'Midway' camera controls"
+	icon = 'icons/obj/structures/machinery/midway/controls.dmi'
+	icon_state = "weapons_console"
+	density = FALSE
+	layer = OBJ_LAYER + 0.01
+	network = list(CAMERA_NET_MIDWAY, CAMERA_NET_LASER_TARGETS)
+
+/obj/structure/machinery/computer/cameras/dropship/midway/gunnery
+	name = "\improper 'Midway' gunnery controls"
+	icon = 'icons/obj/structures/machinery/midway/modules.dmi'
+	icon_state = "gunnery"
+	density = TRUE
+	layer = OBJ_LAYER - 0.01
+	network = list(CAMERA_NET_LASER_TARGETS)
+	var/focused = FALSE
+	var/matrix_color = NV_COLOR_GREEN
+	var/datum/weakref/user_weakref
+	var/obj/docking_port/mobile/marine_dropship/linked_dropship
+	var/obj/structure/bed/chair/vehicle/midway_gunner/linked_chair
+	var/obj/structure/dropship_equipment/weapon/m90_minigun/linked_m90
+
+/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/Initialize()
+	.=..()
+	for(var/obj/structure/bed/chair/vehicle/midway_gunner/our_chair in range(2, src.loc))
+		linked_chair = our_chair
+		linked_chair.linked_gunnery_console = src
+	return
+
+/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/attack_hand(mob/user)
+	if(linked_m90)
+		return ..()
+	else
+		for(var/obj/structure/dropship_equipment/weapon/m90_minigun/gun in linked_dropship.equipments)
+			linked_m90 = gun
+			return ..()
+
+/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/ui_data()
+	var/list/data = list()
+	data["network"] = network
+	data["activeCamera"] = null
+	if(linked_m90)
+		if(linked_m90.ammo_equipped)
+			data["currentAmmo"] = linked_m90.ammo_equipped.ammo_count
+			data["totalAmmo"] = linked_m90.ammo_equipped.max_ammo_count
+		else
+			data["currentAmmo"] = 0
+			data["totalAmmo"] = 0
+	if(current)
+		data["activeCamera"] = list(
+			name = current.c_tag,
+			status = current.status,
+		)
+	return data
+
+/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/ui_close(mob/user)
+	if(focused)
+		if(user_weakref)
+			focus_mob()
+			if(!user.client?.prefs.custom_cursors)
+				return ..()
+			user.client.mouse_pointer_icon = initial(user.client.mouse_pointer_icon)
+
+	current = null
+	return ..()
+
+/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/tgui_interact(mob/user, datum/tgui/ui)
+	// Update UI
+	ui = SStgui.try_update_ui(user, src, ui)
+
+	SEND_SIGNAL(src, COMSIG_CAMERA_REFRESH)
+
+	if(!ui)
+		var/user_ref = WEAKREF(user)
+		var/is_living = isliving(user)
+		// Ghosts shouldn't count towards concurrent users, which produces
+		// an audible terminal_on click.
+		if(is_living)
+			concurrent_users += user_ref
+			user_weakref = user_ref
+		// Turn on the console
+		if(length(concurrent_users) == 1 && is_living)
+			update_use_power(USE_POWER_ACTIVE)
+
+		SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)
+
+		// Open UI
+		ui = new(user, src, "DropshipGunneryConsole", name)
+		to_chat(world, "what3")
+		ui.open()
+
+/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/ui_act(action, params)
+	. = ..()
+	if(.)
+		return
+	playsound(src, get_sfx("terminal_button"), 30, FALSE)
+	if(action == "change_camera") // rename action
+		var/c_tag = params["name"]
+		var/list/cameras = get_available_cameras()
+		var/obj/structure/machinery/camera/selected_camera
+
+		selected_camera = cameras[c_tag]
+		// Unicode breaks c_tags
+		// Currently the only issues with character names comes from the improper or proper tags and so we strip and recheck if not found.
+		if(!selected_camera)
+			for(var/I in cameras)
+				if(strip_improper(I) == c_tag)
+					selected_camera = cameras[I]
+					break
+
+		if(selected_camera)
+			if(selected_camera == current)
+				focus_mob()
+				to_chat(world, "dogshit")
+				selected_camera = null
+				current = null
+				ui_data()
+				return
+
+		current = selected_camera
+		playsound(src, get_sfx("terminal_type"), 25, FALSE)
+
+		if(!selected_camera)
+			return TRUE
+		to_chat(world, "what2")
+		to_chat(world, "selected_camera.view_range is [selected_camera.view_range]")
+		SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET, selected_camera, selected_camera.view_range, selected_camera.view_range)
+		if(user_weakref)
+			focus_camera(selected_camera)
+			prepare()
+		return TRUE
+
+/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/proc/focus_mob()
+	to_chat(world, "focusing mob")
+	var/mob/living/carbon/human/user = user_weakref.resolve()
+	user.remove_client_color_matrix("gunnery_visor", 0.75 SECONDS)
+	user.clear_fullscreen("gunnery_visor", 0.4 SECONDS)
+	user.clear_fullscreen("gunnery_visor_blur", 0.4 SECONDS)
+	user.clear_fullscreen("gunnery_clouds", 0.1 SECONDS)
+	playsound(user, 'sound/handling/toggle_nv2.ogg', 25)
+
+	UnregisterSignal(user, COMSIG_MOB_POST_CLICK)
+
+	user.reset_view(user)
+	user.update_sight()
+	focused = FALSE
+
+/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/proc/focus_camera(selected_camera)
+	to_chat(world, "focusing camera")
+	var/mob/living/carbon/human/user = user_weakref.resolve()
+	to_chat(world, "user found")
+	if(user.client?.prefs?.night_vision_preference)
+		matrix_color = user.client.prefs.nv_color_list[user.client.prefs.night_vision_preference]
+	user.add_client_color_matrix("gunnery_visor", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string(matrix_color)), 0.75 SECONDS)
+	user.overlay_fullscreen("gunnery_visor", /atom/movable/screen/fullscreen/flash/noise/nvg)
+	user.overlay_fullscreen("gunnery_visor_blur", /atom/movable/screen/fullscreen/brute/nvg, 3)
+	user.overlay_fullscreen("gunnery_clouds", /atom/movable/screen/fullscreen/clouds)
+	playsound(user, 'sound/handling/toggle_nv1.ogg', 25)
+
+	user.reset_view(selected_camera)
+	user.update_sight()
+	focused = TRUE
+
+/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/proc/prepare()
+	var/mob/living/carbon/human/user = user_weakref.resolve()
+
+	if(!skillcheck(user, SKILL_PILOT, linked_m90.skill_required)) //only pilots can fire dropship weapons.
+		to_chat(user, SPAN_WARNING("You don't have the training to fire this weapon!"))
+		return FALSE
+//	if(!faction)
+//		return FALSE//no faction, no weapons
+	if(!user.allow_gun_usage)
+		to_chat(user, SPAN_WARNING("Your programming prevents you from operating dropship weaponry!"))
+		return FALSE
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
+		to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+		return FALSE
+
+	if(user.buckled == linked_chair)
+		if(user.client?.prefs?.custom_cursors)
+			user.client.mouse_pointer_icon = 'icons/effects/mouse_pointer/supplypod_target.dmi'
+		RegisterSignal(user, COMSIG_MOB_POST_CLICK, PROC_REF(fire_m90))
+	else
+		to_chat(user, SPAN_NOTICE("I need to be sitting in the gunnery chair in order to use the [src.name] properly."))
+
+/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/proc/fire_m90(mob/living/carbon/human/user, atom/target, mods)
+	SIGNAL_HANDLER
+	if(linked_m90.last_fired > world.time - linked_m90.firing_delay)
+		to_chat(user, SPAN_WARNING("WARNING: [linked_m90.name] just fired, wait for it to cool down."))
+		return FALSE
+	if(!linked_m90.ammo_equipped || linked_m90.ammo_equipped.ammo_count <= 0)
+		to_chat(user, SPAN_WARNING("ERROR: The [linked_m90.name] has no ammo."))
+		return FALSE
+	if(linked_dropship.mode != SHUTTLE_CALL)
+		to_chat(user, SPAN_WARNING("ERROR: Dropship can only fire while in flight."))
+		return FALSE
+
+	var/turf/target_turf = get_turf(target)
+	var/area/targ_area = get_area(target)
+	var/is_outside = FALSE
+	if(target_turf)
+		if(is_ground_level(target_turf.z))
+			switch(targ_area.ceiling)
+				if(CEILING_NONE)
+					is_outside = TRUE
+				if(CEILING_GLASS)
+					is_outside = TRUE
+		if(!is_outside) //cavebreaker doesn't care |> && !linked_m90.cavebreaker
+			to_chat(user, SPAN_WARNING("INVALID TARGET: target must be visible from high altitude."))
+			return FALSE
+		if(protected_by_pylon(TURF_PROTECTION_CAS, target_turf))
+			to_chat(user, SPAN_WARNING("INVALID TARGET: biological-pattern interference with signal."))
+			return FALSE
+
+		linked_m90.open_fire(target_turf, user)
+
 
 /obj/structure/machinery/computer/cameras/dropship/three
 	name = "\improper 'Saipan' camera controls"

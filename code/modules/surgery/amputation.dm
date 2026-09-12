@@ -55,7 +55,7 @@
 	desc = "sever the muscular tissue's connections from the bone"
 	tools = SURGERY_TOOLS_INCISION
 	time = 5 SECONDS
-	preop_sound = 'sound/surgery/scalpel1.ogg'
+	//preop sound is handled in preop step code
 	success_sound = 'sound/surgery/scalpel2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
@@ -69,7 +69,7 @@
 	target.custom_pain("It feels as if your [surgery.affected_limb.display_name] is being ripped apart!", 1)
 
 	if(tool.hitsound)
-		playsound(target.loc, tool.hitsound, 25, TRUE)
+		playsound(get_turf(target), tool.hitsound, 25, TRUE)
 	log_interact(user, target, "[key_name(user)] attempted an amputation on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool ? "[tool]" : "their hands"].")
 
 /datum/surgery_step/cut_muscle/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -107,8 +107,8 @@
 	desc = "reconnect the muscles and abort the amputation"
 	tools = SURGERY_TOOLS_SUTURE
 	time = 3 SECONDS
-	preop_sound = 'sound/surgery/suture1.ogg'
-	success_sound = 'sound/surgery/suture2.ogg'
+	//preop_sound is handled in surgery_step/proc/use_custom_preop_sound in surgery_steps.dm
+	//success_sound is handled in surgery_step/proc/use_custom_success_sound in surgery_steps.dm
 	failure_sound = 'sound/surgery/retractor1.ogg'
 
 /datum/surgery_step/abort_amputation/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
@@ -160,8 +160,8 @@
 		/obj/item/tool/hatchet,
 		/obj/item/attachable/bayonet
 		)
-	preop_sound = 'sound/surgery/saw.ogg'
-	success_sound = 'sound/effects/bone_break4.ogg'
+	//preop sound is handled in preop step code
+	//success_sound is handled in surgery_step/proc/use_custom_success_sound in surgery_steps.dm
 	failure_sound = 'sound/effects/circsawfail1.ogg'
 
 /datum/surgery_step/saw_off_limb/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -180,7 +180,7 @@
 			target.emote("scream") //MY! ARRRRRRMMMM! - Scout from Team Fortress 2
 
 	if(tool.hitsound)
-		playsound(target.loc, tool.hitsound, 25, TRUE)
+		playsound(get_turf(target), tool.hitsound, 25, TRUE)
 
 	log_interact(user, target, "[key_name(user)] attempted to continue an amputation on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")
 
@@ -275,7 +275,7 @@
 	desc = "mend the torn blood vessels in the stump"
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 4 SECONDS
-	preop_sound = 'sound/handling/clothingrustle1.ogg'
+	//preop_sound is handled in surgery_step/proc/use_custom_preop_sound in surgery_steps.dm
 	success_sound = 'sound/surgery/hemostat2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
@@ -323,8 +323,8 @@
 	desc = "stitch the stump closed"
 	tools = SURGERY_TOOLS_SUTURE
 	time = 3 SECONDS
-	preop_sound = 'sound/surgery/suture1.ogg'
-	success_sound = 'sound/surgery/suture2.ogg'
+	//preop_sound is handled in surgery_step/proc/use_custom_preop_sound in surgery_steps.dm
+	//success_sound is handled in surgery_step/proc/use_custom_success_sound in surgery_steps.dm
 	failure_sound = 'sound/surgery/retractor1.ogg'
 
 /datum/surgery_step/close_amputation/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -365,8 +365,8 @@
 	desc = "cut through the jammed clamps on the prosthesis"
 	tools = SURGERY_TOOLS_SEVER_BONE
 	time = 5 SECONDS
-	preop_sound = 'sound/surgery/saw.ogg'
-	success_sound = 'sound/effects/buckle.ogg'
+	//preop_sound is handled in surgery_step/proc/use_custom_preop_sound in surgery_steps.dm
+	//success_sound is handled in surgery_step/proc/use_custom_success_sound in surgery_steps.dm
 	failure_sound = 'sound/effects/circsawfail3.ogg'
 
 /datum/surgery_step/sever_prosthetic_clamps/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

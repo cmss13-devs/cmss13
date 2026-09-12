@@ -41,7 +41,7 @@
 	)
 
 	time = 4 SECONDS
-	preop_sound = 'sound/surgery/saw.ogg'
+	//preop_sound is handled in surgery_step/proc/use_custom_preop_sound in surgery_steps.dm
 	success_sound = 'sound/effects/crack1.ogg'
 	failure_sound = 'sound/effects/crackandbleed.ogg'
 
@@ -79,7 +79,7 @@
 		//Having acid spray everywhere *but* the floor makes no sense, but this can be removed if research gets too messy.
 		victim.add_blood(BLOOD_COLOR_XENO, BLOOD_HANDS) //messy
 		victim.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY) //splish splosh
-		target.add_splatter_floor(get_turf(target.loc))
+		target.add_splatter_floor(get_turf(get_turf(target)))
 
 /datum/surgery_step/xenomorph/open_exoskeleton
 	name = "Pry Exoskeleton Open"
@@ -127,7 +127,7 @@
 		victim.apply_damage(rand(50, 75), BURN) // still dangerous
 		playsound(victim, "acid_sizzle", 25, TRUE)
 		animation_flash_color(victim, "#FF0000")
-		target.add_splatter_floor(get_turf(target.loc))
+		target.add_splatter_floor(get_turf(get_turf(target)))
 	return FALSE
 
 /datum/surgery_step/xenomorph/severe_connections
@@ -183,7 +183,7 @@
 		victim.apply_damage(rand(50, 75), BURN) // not AS dangerous but still is
 		playsound(victim, "acid_sizzle", 25, TRUE)
 		animation_flash_color(victim, "#FF0000")
-		target.add_splatter_floor(get_turf(target.loc))
+		target.add_splatter_floor(get_turf(get_turf(target)))
 
 /datum/surgery_step/xenomorph/remove_organ
 	name = "Remove Xenomorph Organ"

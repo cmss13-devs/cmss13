@@ -583,7 +583,7 @@
 	pro_case_overlay = "defense"
 
 /obj/item/storage/box/kit/dual_vp78/fill_preset_inventory()
-	new /obj/item/storage/belt/gun/vp78m6/dual_holster/full(src)
+	new /obj/item/storage/belt/gun/m4a3/vp78m6/dual_holster/full(src)
 
 /obj/item/storage/box/kit/cryo_self_defense
 	name = "\improper Cryo Self Defense Kit"

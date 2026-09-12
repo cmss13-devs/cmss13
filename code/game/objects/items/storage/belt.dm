@@ -2097,10 +2097,7 @@
 	for(var/i = 1 to storage_slots - 2)
 		new /obj/item/ammo_magazine/revolver/marksman(src)
 
-/obj/item/storage/belt/gun/vp78m6
-	parent_type = /obj/item/storage/belt/gun/m4a3
-
-/obj/item/storage/belt/gun/vp78m6/dual_holster
+/obj/item/storage/belt/gun/m4a3/vp78m6/dual_holster
 	name = "\improper M278 Pattern weapon harness"
 	desc = "A well-oiled leather harness with two hip-mounted holsters for large handguns. Has some extra pouches for mags right where you'd need 'em."
 	icon_state = "dual_holster"
@@ -2121,13 +2118,13 @@
 	)
 	skip_fullness_overlays = TRUE
 
-/obj/item/storage/belt/gun/vp78m6/dual_holster/Initialize()
+/obj/item/storage/belt/gun/m4a3/vp78m6/dual_holster/Initialize()
 	var/matrix/second_gun_transform = matrix()
 	second_gun_transform.Scale(-1, 1)
 	holster_slots["2"]["underlay_transform"] = second_gun_transform
 	. = ..()
 
-/obj/item/storage/belt/gun/vp78m6/dual_holster/full/fill_preset_inventory()
+/obj/item/storage/belt/gun/m4a3/vp78m6/dual_holster/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78/vp78m6())
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78/vp78m6())
 	for(var/i = 1 to storage_slots - 2)

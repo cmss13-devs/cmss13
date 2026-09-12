@@ -926,7 +926,7 @@
 	item_state = "vp78m6"
 	fire_sound = 'sound/weapons/gun_vp78m6_fire.ogg'
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AKIMBO_ALLOWED
-	var/last_firing_sound_time = -1 //makes it not rupture your eardrums when dual wiel firing
+	var/last_firing_sound_time = -1 //makes it not rupture your eardrums when dual wield firing
 
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,

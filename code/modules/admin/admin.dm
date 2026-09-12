@@ -77,7 +77,7 @@
 
 
 /datum/admins/proc/player_has_info(key as text)
-	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
+	var/savefile/info = new("data/player_saves/[key[1]]/[key]/info.sav")
 	var/list/infos
 	info >> infos
 	if(!LAZYLEN(infos))

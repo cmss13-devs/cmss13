@@ -86,6 +86,7 @@
 #include "create_and_destroy.dm"
 #include "duplicate_sprite_accessories.dm"
 #include "emote_panels.dm"
+#include "savefile_importing.dm"
 #include "map_sanity.dm"
 #include "missing_icons.dm"
 #include "resist.dm"

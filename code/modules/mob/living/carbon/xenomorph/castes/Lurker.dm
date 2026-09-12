@@ -86,21 +86,18 @@
 	var/buffed_slash_damage_ratio = 1.2
 	var/slash_slow_duration = 35
 
-	// State
-	var/next_slash_buffed = FALSE
-
 /datum/behavior_delegate/lurker_base/melee_attack_modify_damage(original_damage, mob/living/carbon/target_carbon)
-	if (!isxeno_human(target_carbon))
+	if(!isxeno_human(target_carbon))
 		return original_damage
 
-	if (next_slash_buffed)
+	if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_ASSASSINATE))
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We significantly strengthen our attack, slowing [target_carbon]!"))
 		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
 		original_damage *= buffed_slash_damage_ratio
 		target_carbon.set_effect(get_xeno_stun_duration(target_carbon, 3), SUPERSLOW)
-		next_slash_buffed = FALSE
+		REMOVE_TRAIT(bound_xeno, TRAIT_ABILITY_ASSASSINATE, TRAIT_SOURCE_ABILITY("lurker_melee"))
 		var/datum/action/xeno_action/onclick/lurker_assassinate/ability = get_action(bound_xeno, /datum/action/xeno_action/onclick/lurker_assassinate)
-		if (ability)
+		if(ability)
 			ability.button.icon_state = "template_xeno"
 
 	return original_damage
@@ -111,14 +108,14 @@
 	if(!isxeno_human(target_carbon))
 		return
 
-	if(next_slash_buffed && target_carbon)
+	if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_ASSASSINATE) && target_carbon)
 		return INTENT_HARM
 
 /datum/behavior_delegate/lurker_base/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
-	if (!isxeno_human(target_carbon))
+	if(!isxeno_human(target_carbon))
 		return
 
-	if (HAS_TRAIT(target_carbon, TRAIT_FLOORED))
+	if(HAS_TRAIT(target_carbon, TRAIT_FLOORED))
 		new /datum/effects/xeno_slow(target_carbon, bound_xeno, null, null, get_xeno_stun_duration(target_carbon, slash_slow_duration))
 
 	return
@@ -127,7 +124,7 @@
 	..()
 
 	var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invis_action = get_action(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
-	if (lurker_invis_action)
+	if(lurker_invis_action)
 		lurker_invis_action.invisibility_off() // Full cooldown
 
 /datum/behavior_delegate/lurker_base/proc/decloak_handler(mob/source)
@@ -143,8 +140,8 @@
 		lurker_pounce_action.knockdown = TRUE // pounce knocks down
 		lurker_pounce_action.freeze_self = TRUE
 	ADD_TRAIT(bound_xeno, TRAIT_CLOAKED, TRAIT_SOURCE_ABILITY("cloak"))
+	ADD_TRAIT(bound_xeno, TRAIT_ABILITY_INVIS, TRAIT_SOURCE_ABILITY("invis"))
 	RegisterSignal(bound_xeno, COMSIG_MOB_EFFECT_CLOAK_CANCEL, PROC_REF(decloak_handler))
-	bound_xeno.stealth = TRUE
 	invis_start_time = world.time
 
 /// Implementation for disabling invisibility.
@@ -153,8 +150,8 @@
 	if(lurker_pounce_action)
 		lurker_pounce_action.knockdown = FALSE // pounce no longer knocks down
 		lurker_pounce_action.freeze_self = FALSE
-	bound_xeno.stealth = FALSE
 	REMOVE_TRAIT(bound_xeno, TRAIT_CLOAKED, TRAIT_SOURCE_ABILITY("cloak"))
+	REMOVE_TRAIT(bound_xeno, TRAIT_ABILITY_INVIS, TRAIT_SOURCE_ABILITY("invis"))
 	UnregisterSignal(bound_xeno, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 	invis_start_time = -1
 
@@ -183,13 +180,17 @@
 	var/time_left = timeleft(lurker_invisibility_action.cooldown_timer_id) / 10
 	. += "Invisibility Recharge: [time_left] second\s."
 
+
 /datum/behavior_delegate/lurker_base/on_collide(atom/movable/movable_atom)
 	. = ..()
 
 	if(!ishuman(movable_atom))
 		return
 
-	if(!bound_xeno || !bound_xeno.stealth)
+	if(!bound_xeno)
+		return
+
+	if(!HAS_TRAIT(bound_xeno, TRAIT_ABILITY_INVIS))
 		return
 
 	var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invisibility_action = get_action(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
@@ -242,14 +243,12 @@
 
 	if(!istype(xeno))
 		return
-	if(!action_cooldown_check())
-		return
-	if(!check_and_use_plasma_owner())
-		return
+
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
 	xeno.deselect_timer = world.time + 5 // Half a second to prevent double clicks
 
-	if(xeno.stealth)
+	if(HAS_TRAIT(xeno, TRAIT_ABILITY_INVIS))
 		invisibility_off(0.9) // Near full refund of remaining time
 		return ..()
 
@@ -264,7 +263,7 @@
 	behavior.on_invisibility()
 
 	// if we go off early, this also works fine.
-	invis_timer_id = addtimer(CALLBACK(src, PROC_REF(invisibility_off)), duration, TIMER_STOPPABLE)
+	invis_timer_id = addtimer(CALLBACK(src, PROC_REF(invisibility_off)), invis_duration, TIMER_STOPPABLE)
 
 	return ..()
 
@@ -276,7 +275,11 @@
 
 	if(!istype(xeno))
 		return
-	if(owner.alpha == initial(owner.alpha) && !xeno.stealth)
+
+	if(owner.alpha == initial(owner.alpha))
+		return
+
+	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_INVIS))
 		return
 
 	if(invis_timer_id != TIMER_ID_NULL)
@@ -312,18 +315,12 @@
 /datum/action/xeno_action/onclick/lurker_assassinate/use_ability(atom/targeted_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if (!istype(xeno))
+	if(!istype(xeno))
 		return
 
-	if (!action_cooldown_check())
-		return
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
-	if (!check_and_use_plasma_owner())
-		return
-
-	var/datum/behavior_delegate/lurker_base/behavior = xeno.behavior_delegate
-	if (istype(behavior))
-		behavior.next_slash_buffed = TRUE
+	ADD_TRAIT(xeno, TRAIT_ABILITY_ASSASSINATE, TRAIT_SOURCE_ABILITY("assassinate"))
 
 	to_chat(xeno, SPAN_XENOHIGHDANGER("Our next slash will deal increased damage!"))
 
@@ -335,13 +332,11 @@
 
 /datum/action/xeno_action/onclick/lurker_assassinate/proc/unbuff_slash()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if (!istype(xeno))
+	if(!istype(xeno))
 		return
-	var/datum/behavior_delegate/lurker_base/behavior = xeno.behavior_delegate
-	if (istype(behavior))
-		// In case slash has already landed
-		if (!behavior.next_slash_buffed)
-			return
-		behavior.next_slash_buffed = FALSE
+
+	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_ASSASSINATE))
+		return
+	REMOVE_TRAIT(xeno, TRAIT_ABILITY_ASSASSINATE, TRAIT_SOURCE_ABILITY("assassinate"))
 
 	to_chat(xeno, SPAN_XENODANGER("We have waited too long, our slash will no longer deal increased damage!"))

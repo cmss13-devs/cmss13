@@ -10,7 +10,8 @@
 	emote_hear = list("clicks.")
 	emote_see = list("clacks.")
 	speak_chance = 1
-	turns_per_move = 5
+	min_turns_per_move = 6
+	max_turns_per_move = 12
 	meat_type = /obj/item/reagent_container/food/snacks/meat
 	response_help  = "pets the"
 	response_disarm = "gently pushes aside the"

@@ -11,7 +11,8 @@
 	emote_see = list("runs in a circle.", "shakes.", "scritches at something.")
 	mob_size = MOB_SIZE_SMALL
 	speak_chance = 1
-	turns_per_move = 5
+	min_turns_per_move = 1
+	max_turns_per_move = 3
 	see_in_dark = 6
 	maxHealth = 5
 	health = 5

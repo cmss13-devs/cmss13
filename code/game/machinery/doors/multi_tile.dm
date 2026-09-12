@@ -525,6 +525,7 @@
 
 // Elevator door
 /obj/structure/machinery/door/airlock/multi_tile/elevator
+	name = "Elevator Hatch"
 	icon = 'icons/obj/structures/doors/4x1_elevator.dmi'
 	icon_state = "door_closed"
 	width = 4

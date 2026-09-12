@@ -409,6 +409,9 @@
 #define HIVELORD_RESIN_WHISPERER "Resin Whisperer"
 #define HIVELORD_DESIGNER "Designer"
 
+// Spitter strain flags
+#define SPITTER_DISSOLVER "Dissolver"
+
 // Carrier strain flags
 #define CARRIER_EGGSAC "Eggsac"
 
@@ -461,6 +464,7 @@
 // Overall health pool
 #define XENO_HEALTH_MOD_VERY_SMALL  20
 #define XENO_HEALTH_MOD_SMALL   40
+#define XENO_HEALTH_MOD_SMALL_MED 50
 #define XENO_HEALTH_MOD_MED 60
 #define XENO_HEALTH_MOD_LARGE   80
 #define XENO_HEALTH_MOD_VERY_LARGE  100

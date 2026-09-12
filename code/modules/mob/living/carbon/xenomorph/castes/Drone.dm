@@ -80,6 +80,8 @@
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 
+	water_config = /datum/water_overlay_config/xeno/small
+
 	icon_xeno = 'icons/mob/xenos/castes/tier_1/drone.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_1/drone.dmi'
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'

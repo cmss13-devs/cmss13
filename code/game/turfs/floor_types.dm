@@ -268,38 +268,46 @@
 	icon = 'icons/turf/almayer.dmi'
 	icon_state = "plating_catwalk"
 	var/base_state = "plating" //Post mapping
-	var/covered = TRUE
+	covered = TRUE
 	var/covered_icon_state = "catwalk"
 
 /turf/open/floor/plating/plating_catwalk/Initialize(mapload, ...)
 	. = ..()
-
 	icon_state = base_state
-	update_icon()
+	update_overlays()
 
-/turf/open/floor/plating/plating_catwalk/update_icon()
+/turf/open/floor/plating/plating_catwalk/update_overlays()
 	. = ..()
 	if(covered)
-		overlays += image(icon, src, covered_icon_state, CATWALK_LAYER)
+		var/turf/check_turf = get_step(src, NORTH)
+		var/obj/effect/blocker/water/water_blocker = locate(/obj/effect/blocker/water) in contents
+		var/layer_to_use = CATWALK_LAYER
+		if(SSwater_overlays.is_layer_underwater_turf(src))
+			if(SSwater_overlays.is_water(check_turf))
+				if(water_blocker && water_blocker.dispersing)
+					layer_to_use = UNDER_WATER_TURF_LAYER +0.01
+				else
+					layer_to_use = TURF_LAYER
+			else
+				layer_to_use = UNDER_WATER_TURF_LAYER +0.01
+		overlays += image(icon, src, covered_icon_state, layer_to_use)
 
 /turf/open/floor/plating/plating_catwalk/attackby(obj/item/W as obj, mob/user as mob)
 	if (HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		if(covered)
 			var/obj/item/stack/catwalk/R = new(src, 1, type)
 			R.add_to_stacks(usr)
-			covered = FALSE
+			set_covered(FALSE)
 			to_chat(user, SPAN_WARNING("You remove the top of the catwalk."))
 			playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
-			update_icon()
 			return
 	if(istype(W, /obj/item/stack/catwalk))
 		if(!covered)
 			var/obj/item/stack/catwalk/E = W
 			E.use(1)
-			covered = TRUE
+			set_covered(TRUE)
 			to_chat(user, SPAN_WARNING("You replace the top of the catwalk."))
 			playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
-			update_icon()
 			return
 	return ..()
 

@@ -11,6 +11,9 @@
 
 //#define AREA_LAYER 1
 
+#define UNDER_WATER_TURF_LAYER 1.96
+#define UNDER_WATER_MOB_LAYER 1.98
+
 #define UNDER_TURF_LAYER 1.99
 
 #define TURF_LAYER 2

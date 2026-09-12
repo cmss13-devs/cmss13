@@ -12,23 +12,49 @@
 /obj/structure/catwalk/Initialize()
 	. = ..()
 	update_icon()
+	var/turf/my_turf = get_turf(src)
+	my_turf.turf_flags |= TURF_CATWALKED
+	if(SSwater_overlays.is_water(my_turf))
+		var/turf/open/my_open_turf = my_turf
+		my_open_turf.stop_being_water()
 
 /obj/structure/catwalk/update_icon()
 	..()
+	var/turf/turf = get_turf(src)
+	if(SSwater_overlays.is_layer_underwater_turf(turf))
+		var/turf/check_turf = get_step(src, NORTH)
+		var/obj/effect/blocker/water/water_blocker = locate(/obj/effect/blocker/water) in turf
+		var/layer_to_use = CATWALK_LAYER
+		if(SSwater_overlays.is_layer_underwater_turf(src))
+			if(SSwater_overlays.is_water(check_turf))
+				if(water_blocker && water_blocker.dispersing)
+					layer_to_use = UNDER_WATER_TURF_LAYER +0.01
+				else
+					layer_to_use = TURF_LAYER
+			else
+				layer_to_use = UNDER_WATER_TURF_LAYER +0.01
+		layer = layer_to_use
 	icon_state = base_state
 
 /obj/structure/catwalk/attackby(obj/item/W as obj, mob/user as mob)
+	var/turf/my_turf = get_turf(src)
 	if (HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		if(covered)
 			var/obj/item/stack/catwalk/R = new(usr.loc)
 			R.add_to_stacks(usr)
 			covered = 0
+			if(my_turf.turf_flags & TURF_WATER && istype(my_turf, /turf/open))
+				var/turf/open/my_open_turf = my_turf
+				my_open_turf.become_water(initial(my_open_turf.depth), initial(my_open_turf.water_type))
 			return
 	if(istype(W, /obj/item/stack/catwalk))
 		if(!covered)
 			var/obj/item/stack/catwalk/E = W
 			E.use(1)
 			covered = 1
+			if(my_turf.turf_flags & TURF_WATER && istype(my_turf, /turf/open))
+				var/turf/open/my_open_turf = my_turf
+				my_open_turf.stop_being_water()
 			return
 	var/turf/T = get_turf(src)
 	T.attackby(W, user)

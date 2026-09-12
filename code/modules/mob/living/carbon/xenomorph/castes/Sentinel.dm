@@ -56,6 +56,8 @@
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 
+	water_config = /datum/water_overlay_config/xeno/small
+
 	icon_xeno = 'icons/mob/xenos/castes/tier_1/sentinel.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_1/sentinel.dmi'
 

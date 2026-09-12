@@ -311,6 +311,8 @@
 	tileoffset = 0
 	viewsize = 12
 
+	water_config = /datum/water_overlay_config/xeno/large
+
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,

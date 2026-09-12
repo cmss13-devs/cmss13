@@ -145,7 +145,7 @@
 "nX" = (
 /obj/structure/window/framed/kutjevo/reinforced,
 /obj/structure/window_frame/kutjevo,
-/turf/open/space/basic,
+/turf/open/floor/plating/kutjevo,
 /area/template_noop)
 "og" = (
 /obj/item/reagent_container/food/drinks/cans/souto/lime,
@@ -259,10 +259,6 @@
 "yC" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/kutjevo/colors/red,
-/area/template_noop)
-"yM" = (
-/obj/structure/window/framed/kutjevo/reinforced,
-/turf/open/space/basic,
 /area/template_noop)
 "zf" = (
 /obj/structure/machinery/power/apc/no_power/north,
@@ -772,7 +768,7 @@ ep
 ep
 ep
 Pw
-yM
+Lu
 ga
 "}
 (10,1,1) = {"
@@ -788,7 +784,7 @@ bF
 ex
 ds
 EA
-yM
+Lu
 ga
 "}
 (11,1,1) = {"

@@ -89,6 +89,8 @@
 #define GUN_TRICKSTER (1<<19)
 /// If the gun can perform a warning shot
 #define GUN_CAN_WARNING_SHOT (1<<20)
+/// Ignores the accuracy and scatter penalties from dual wielding.
+#define GUN_AKIMBO_ALLOWED (1<<21)
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
 
 #define USES_STREAKS (1<<0)

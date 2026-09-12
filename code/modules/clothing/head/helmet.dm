@@ -1062,6 +1062,14 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "M11 pattern marine"
 
+/obj/item/clothing/head/helmet/marine/leader/mod
+	name = "\improper M11-R pattern helmet"
+	desc = "An M11 helmet fitted with leather banding, an external comms module, and a second optic mount. The additional hardware leaves less room for stowing personal items."
+	icon_state = "vsl_helmet"
+	specialty = "M11-R pattern marine"
+	storage_slots = 1
+	max_inserted_visors = 2
+
 /obj/item/clothing/head/helmet/marine/rto
 	name = "\improper M12 pattern dust helmet"
 	desc = "An experimental brain-bucket. A dust ruffle hangs from back instead of the standard lobster shell design. Moderately better at deflecting blunt objects at the cost of humiliation, can also hold a second visor optic. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your fantastic leadership."

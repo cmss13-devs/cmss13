@@ -122,6 +122,7 @@
 	xeno_cooldown = 15 SECONDS
 	plasma_cost = 180
 
+	var/allow_one_more_step = FALSE
 	// Config
 	var/max_distance = 6
 	var/windup = 8 DECISECONDS

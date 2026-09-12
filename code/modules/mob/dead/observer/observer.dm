@@ -193,7 +193,7 @@
 	observe_target_mob = null
 	observe_target_client = null
 
-	client.set_eye(src)
+	client?.set_eye(src)
 	hud_used.show_hud(hud_used.hud_version, src)
 	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 

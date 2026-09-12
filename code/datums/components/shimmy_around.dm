@@ -27,8 +27,8 @@
 	var/additional_offset = TRUE
 	/// Extra time added to next_move to shimmy around
 	var/extra_delay = 1 DECISECONDS
-	/// List of mob types to exclude from being able to shimmy
-	var/list/disallowed_types
+	/// bitflag for allowing mobs to enter the turf before shimmying them
+	var/allowed_pass_flag = PASS_MOB_IS
 
 /datum/component/shimmy_around/Initialize(\
 	approach_dirs = NORTH|SOUTH|EAST|WEST,\
@@ -40,7 +40,8 @@
 	west_offset = -5,\
 	additional_offset = TRUE,\
 	extra_delay = 1 DECISECONDS,\
-	disallowed_types = list())
+	allowed_pass_flag = PASS_MOB_IS, \
+	existing_shimmiers = list())
 
 	parent_structure = parent
 	if(!istype(parent_structure))
@@ -55,7 +56,10 @@
 	src.west_offset = west_offset
 	src.additional_offset = additional_offset
 	src.extra_delay = extra_delay
-	src.disallowed_types = disallowed_types
+	src.allowed_pass_flag = allowed_pass_flag
+
+	for(var/mob/existing_shimmieds in existing_shimmiers)
+		refresh_mob_offsets(existing_shimmieds)
 
 /datum/component/shimmy_around/Destroy(force, silent)
 	var/turf/my_turf = get_turf(parent_structure)
@@ -69,30 +73,40 @@
 	parent_structure = null
 	return ..()
 
-/datum/component/shimmy_around/InheritComponent(datum/component/C, i_am_original,
-	approach_dirs, approach_dirs_layer_override, internal_dirs, north_offset,\
-	south_offset, east_offset, west_offset,	additional_offset, extra_delay, disallowed_types)
+/datum/component/shimmy_around/InheritComponent(datum/component/C, i_am_original, \
+		approach_dirs, \
+		approach_dirs_layer_override, \
+		internal_dirs, north_offset,\
+		south_offset, \
+		east_offset, \
+		west_offset, \
+		additional_offset, \
+		extra_delay, \
+		allowed_pass_flag, \
+		existing_shimmiers)
 	. = ..()
-	if(approach_dirs != null && src.approach_dirs != approach_dirs)
+	if(approach_dirs != null)
 		src.approach_dirs = approach_dirs
-	if(approach_dirs_layer_override != null && approach_dirs_layer_override != src.approach_dirs_layer_override)
+	if(approach_dirs_layer_override != null)
 		src.approach_dirs_layer_override = approach_dirs_layer_override
-	if(internal_dirs != null && internal_dirs != src.internal_dirs)
+	if(internal_dirs != null)
 		src.internal_dirs = internal_dirs
-	if(north_offset != null && north_offset != src.north_offset)
+	if(north_offset != null)
 		src.north_offset = north_offset
-	if(south_offset != null && south_offset != src.south_offset)
+	if(south_offset != null)
 		src.south_offset = south_offset
-	if(east_offset != null && east_offset != src.east_offset)
+	if(east_offset != null)
 		src.east_offset = east_offset
-	if(west_offset != null && west_offset != src.west_offset)
+	if(west_offset != null)
 		src.west_offset = west_offset
-	if(additional_offset != null && additional_offset != src.additional_offset)
+	if(additional_offset != null)
 		src.additional_offset = additional_offset
-	if(extra_delay != null && extra_delay != src.extra_delay)
+	if(extra_delay != null)
 		src.extra_delay = extra_delay
-	if(disallowed_types != null && disallowed_types != src.disallowed_types)
-		src.disallowed_types = disallowed_types	//just going to do a complete reassignment, let the inheritor initiator handle this
+	if(allowed_pass_flag != null)
+		src.allowed_pass_flag = allowed_pass_flag
+	for(var/mob/existing_shimmieds in existing_shimmiers)
+		refresh_mob_offsets(existing_shimmieds)
 
 /datum/component/shimmy_around/RegisterWithParent()
 	RegisterSignal(parent_structure, COMSIG_STRUCTURE_COLLIDED, PROC_REF(on_collide))
@@ -190,9 +204,8 @@
 	if(!istype(mob))
 		return
 
-	for(var/disallowed_type as anything in disallowed_types)
-		if(istype(mob, disallowed_type))
-			return	//disallowed type of mob trying to shimmy, NOT IN MY HOUSE!
+	if(!(mob.pass_flags?.flags_pass & allowed_pass_flag))
+		return
 
 	// See if we allow this approach direction
 	var/direction = get_dir(mob, parent_structure)
@@ -326,50 +339,41 @@
 		mob.client.move_delay += extra_delay
 
 //used when we want to inherit shimmying mobs from another /datum/component/shimmy_around, or if our offsets changed and mobs' need to be refreshed
-/datum/component/shimmy_around/proc/refresh_mob_offsets(mob/living/shimmied_living, list/old_data)
-	if(!shimmied_living || !old_data || shimmied_living.loc != get_turf(parent_structure))
+/datum/component/shimmy_around/proc/refresh_mob_offsets(mob/living/shimmied_living)
+	if(!shimmied_living || shimmied_living.loc != get_turf(parent_structure))
 		return
 
-	// old_data layout you are currently using:
-	// 1 north, 2 south, 3 east, 4 west, 5 additional_offset
-	var/old_north   = old_data[1]
-	var/old_south   = old_data[2]
-	var/old_east    = old_data[3]
-	var/old_west    = old_data[4]
-	var/old_add_off = old_data[5]
-
+	// Current visual offset relative to the mob's natural position
 	var/delta_x = shimmied_living.pixel_x - initial(shimmied_living.pixel_x)
 	var/delta_y = shimmied_living.pixel_y - initial(shimmied_living.pixel_y)
-	if(old_add_off)
-		if(delta_x)
-			delta_x -= parent_structure.pixel_x
-		if(delta_y)
-			delta_y -= parent_structure.pixel_y
-
 	var/recovered_dir = 0
+
 	#define OFFSET_TOLERANCE 3
 
+	// Prefer matching against our *current* offset values
 	if(abs(delta_x) > OFFSET_TOLERANCE && abs(delta_y) <= OFFSET_TOLERANCE)
-		if(abs(delta_x - old_north) <= OFFSET_TOLERANCE)
+		if(abs(delta_x - north_offset) <= OFFSET_TOLERANCE)
 			recovered_dir = NORTH
-		else if(abs(delta_x - old_south) <= OFFSET_TOLERANCE)
+		else if(abs(delta_x - south_offset) <= OFFSET_TOLERANCE)
 			recovered_dir = SOUTH
 	else if(abs(delta_y) > OFFSET_TOLERANCE && abs(delta_x) <= OFFSET_TOLERANCE)
-		if(abs(delta_y - old_east) <= OFFSET_TOLERANCE)
+		if(abs(delta_y - east_offset) <= OFFSET_TOLERANCE)
 			recovered_dir = EAST
-		else if(abs(delta_y - old_west) <= OFFSET_TOLERANCE)
+		else if(abs(delta_y - west_offset) <= OFFSET_TOLERANCE)
 			recovered_dir = WEST
 
 	#undef OFFSET_TOLERANCE
 
-	if(!recovered_dir)
+	if(!recovered_dir)	//use the mob's last movement direction if we couldn't match an offset
+		recovered_dir = shimmied_living.last_move_dir
+
+	if(!recovered_dir)	//if we STILL couldn't figure out where they were supposed to be — just reset them
 		animate(shimmied_living, pixel_x = initial(shimmied_living.pixel_x), pixel_y = initial(shimmied_living.pixel_y), time = 0)
 		return
 
 	var/animate_time = min(shimmied_living.move_delay + extra_delay, MAX_ANIMATE_TIME)
 	apply_directional_offset(shimmied_living, recovered_dir, animate_time)
 
-	// Re-own the mob
 	RegisterSignal(shimmied_living, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(on_mob_pre_move), override = TRUE)
 	RegisterSignal(shimmied_living, COMSIG_MOVABLE_MOVED, PROC_REF(on_mob_move), override = TRUE)
 

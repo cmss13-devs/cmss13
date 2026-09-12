@@ -394,9 +394,7 @@
 			extra_delay  = 0.5 SECONDS, \
 			approach_dirs = shimmy_data[5], \
 			internal_dirs = shimmy_data[6], \
-			disallowed_types = list( \
-				/mob/living/carbon/xenomorph,) \
-			)
+			allowed_pass_flag = PASS_MOB_IS_HUMAN)
 
 /obj/structure/bed/chair/vehicle/proc/setup_buckle_offsets()
 	if(pixel_x != 0)

@@ -51,12 +51,12 @@
 	if(stacked_size)
 		to_chat(H, SPAN_NOTICE("You cannot fold a chair while its stacked!"))
 		return
-	var/obj/item/weapon/twohanded/folded_metal_chair/folded_char = new foldabletype(loc)
-	if(H.put_in_hands(folded_char))
+	var/obj/item/weapon/twohanded/folded_metal_chair/folded_chair = new foldabletype(loc)
+	if(H.put_in_hands(folded_chair))
 		qdel(src)
 	else
 		to_chat(H, SPAN_NOTICE("You need a free hand to fold up the chair."))
-		qdel(folded_char)
+		qdel(folded_chair)
 
 /obj/structure/bed/chair/attack_hand(mob/user)
 	. = ..()
@@ -234,6 +234,13 @@
 	handle_rotation()
 	return
 
+#define INDEX_NORTH_OFFSET 1
+#define INDEX_SOUTH_OFFSET 2
+#define INDEX_EAST_OFFSET 3
+#define INDEX_WEST_OFFSET 4
+#define INDEX_APPORACH_DIRS 5
+#define INDEX_INTERNAL_DIRS 6
+
 /obj/structure/bed/chair/do_buckle(mob/living/target, mob/user)
 	. = ..()
 	if(shimmy_data == null)
@@ -244,26 +251,21 @@
 		if(found_obj.buckled_mob && ispath(found_obj.type, /obj/structure/bed/chair))
 			var/obj/structure/bed/chair/found_chair = found_obj
 			found_chair.update_shimmy_data(src)	//we need to update the shimmy other_buckled_chair chair to block walking into this buckled chair
-			found_chair.AddComponent(/datum/component/shimmy_around, approach_dirs = found_chair.shimmy_data[5], internal_dirs = found_chair.shimmy_data[6])
-			if(target.density)
-				target.density = FALSE
+			found_chair.AddComponent(/datum/component/shimmy_around, approach_dirs = found_chair.shimmy_data[INDEX_APPORACH_DIRS], internal_dirs = found_chair.shimmy_data[INDEX_INTERNAL_DIRS])
+			target.set_density(FALSE)
 			return	//shimmying is already handled, we dont want to offset shimmiers twice!
-	density = TRUE
-	pass_flags.flags_can_pass_all = null
-	if(target.density)
-		target.density = FALSE
+	set_density(TRUE)
+	add_temp_pass_flags() //you shall not pass
+	target.set_density(FALSE)
 	AddComponent(/datum/component/shimmy_around, \
-		north_offset = shimmy_data[1], \
-		south_offset = shimmy_data[2], \
-		east_offset = shimmy_data[3], \
-		west_offset = shimmy_data[4],\
+		north_offset = shimmy_data[INDEX_NORTH_OFFSET], \
+		south_offset = shimmy_data[INDEX_SOUTH_OFFSET], \
+		east_offset = shimmy_data[INDEX_EAST_OFFSET], \
+		west_offset = shimmy_data[INDEX_WEST_OFFSET],\
 		extra_delay = 0.5 SECONDS, \
-		approach_dirs = shimmy_data[5],\
-		internal_dirs = shimmy_data[6], \
-			disallowed_types = list( \
-				/mob/living/carbon/xenomorph, \
-			) \
-		)
+		approach_dirs = shimmy_data[INDEX_APPORACH_DIRS],\
+		internal_dirs = shimmy_data[INDEX_INTERNAL_DIRS], \
+		allowed_pass_flag = PASS_MOB_IS_HUMAN)
 
 /obj/structure/bed/chair/proc/update_shimmy_data(obj/structure/bed/chair/neighbor = null, force_update = FALSE)
 	if(shimmy_data == null)
@@ -282,50 +284,38 @@
 	shimmy_data = list(-offset, -offset, -offset, -offset, approachness, internalness)
 	switch(dir)
 		if(NORTH)
-			shimmy_data[3] = offset
-			shimmy_data[4] = offset
+			shimmy_data[INDEX_EAST_OFFSET] = offset
+			shimmy_data[INDEX_WEST_OFFSET] = offset
 		if(EAST)
-			shimmy_data[1] = offset
-			shimmy_data[2] = offset
-			shimmy_data[3] = offset
-			shimmy_data[4] = offset
+			shimmy_data[INDEX_NORTH_OFFSET] = offset
+			shimmy_data[INDEX_SOUTH_OFFSET] = offset
+			shimmy_data[INDEX_EAST_OFFSET] = offset
+			shimmy_data[INDEX_WEST_OFFSET] = offset
 		if(WEST)
-			shimmy_data[3] = offset
-			shimmy_data[4] = offset
+			shimmy_data[INDEX_EAST_OFFSET] = offset
+			shimmy_data[INDEX_WEST_OFFSET] = offset
 	if(force_update && buckled_mob)
-		buckled_mob.density = FALSE
-		density = TRUE
+		buckled_mob.set_density(FALSE)
+		set_density(TRUE)
 		AddComponent(/datum/component/shimmy_around, \
-			north_offset = shimmy_data[1], \
-			south_offset = shimmy_data[2], \
-			east_offset  = shimmy_data[3], \
-			west_offset  = shimmy_data[4], \
+			north_offset = shimmy_data[INDEX_NORTH_OFFSET], \
+			south_offset = shimmy_data[INDEX_SOUTH_OFFSET], \
+			east_offset  = shimmy_data[INDEX_EAST_OFFSET], \
+			west_offset  = shimmy_data[INDEX_WEST_OFFSET], \
 			extra_delay  = 0.5 SECONDS, \
-			approach_dirs = shimmy_data[5], \
-			internal_dirs = shimmy_data[6], \
-			disallowed_types = list( \
-				/mob/living/carbon/xenomorph, \
-			) \
-		)
+			approach_dirs = shimmy_data[INDEX_APPORACH_DIRS], \
+			internal_dirs = shimmy_data[INDEX_INTERNAL_DIRS], \
+			allowed_pass_flag = PASS_MOB_IS_HUMAN)
 
 /obj/structure/bed/chair/unbuckle()
 	if(buckled_mob)
 		buckled_mob.update_density()
 	. = ..()
-	density = FALSE
-	pass_flags.flags_can_pass_all = PASS_UNDER|PASS_OVER|PASS_AROUND
+	set_density(FALSE)
+	remove_temp_pass_flags()
 
 	var/obj/structure/bed/chair/other_buckled_chair
 	var/list/mob/living/shimmied_mobs = list()
-	var/datum/component/shimmy_around/shimster = GetComponent(/datum/component/shimmy_around)
-	var/list/old_data
-	if(shimster)
-		old_data = list(
-			shimster.north_offset,
-			shimster.south_offset,
-			shimster.east_offset,
-			shimster.west_offset,
-			shimster.additional_offset)
 
 	for(var/obj/structure/bed/chair/found_chair in get_turf(src))
 		if(found_chair == src)
@@ -339,42 +329,31 @@
 			shimmied_mobs += found_living
 
 	if(!other_buckled_chair)	// No other chair is holding anyone → remove all the shimmy offsets from every shimmied mob
-		if(shimster)
-			qdel(shimster)
 		for(var/mob/living/shimmied_living in shimmied_mobs)
 			animate(shimmied_living, pixel_x = initial(shimmied_living.pixel_x), pixel_y = initial(shimmied_living.pixel_y), time = 0)
 			if(shimmied_living.layer != initial(shimmied_living.layer) && shimmied_living.layer != XENO_HIDING_LAYER)	//shimmy component also alters layering
 				shimmied_living.layer = initial(shimmied_living.layer)
 		return
-	else	// At least one other chair is still occupied – we need to either create one and then refresh mobs' offsets - OR just refresh mobs' offsets to whatd they'd be without another buckled chair
-		var/datum/component/shimmy_around/other_buckled_shimster = other_buckled_chair.GetComponent(/datum/component/shimmy_around)
-		if(!other_buckled_shimster)
-			other_buckled_chair.density = TRUE
-			other_buckled_chair.update_shimmy_data(src)
-			other_buckled_chair.AddComponent(/datum/component/shimmy_around, \
-				north_offset = other_buckled_chair.shimmy_data[1], \
-				south_offset = other_buckled_chair.shimmy_data[2], \
-				east_offset  = other_buckled_chair.shimmy_data[3], \
-				west_offset  = other_buckled_chair.shimmy_data[4], \
-				extra_delay  = 0.5 SECONDS, \
-				approach_dirs = other_buckled_chair.shimmy_data[5], \
-				internal_dirs = other_buckled_chair.shimmy_data[6], \
-				disallowed_types = list(/mob/living/carbon/xenomorph))
-			other_buckled_shimster = other_buckled_chair.GetComponent(/datum/component/shimmy_around)
-		else	//it posses one, we just need to pass in the new approach and internal_dirs values
-			old_data = list(
-				other_buckled_shimster.north_offset,
-				other_buckled_shimster.south_offset,
-				other_buckled_shimster.east_offset,
-				other_buckled_shimster.west_offset,
-				other_buckled_shimster.additional_offset)
-			other_buckled_chair.update_shimmy_data(src)
-			other_buckled_chair.AddComponent(/datum/component/shimmy_around, \
-				approach_dirs = other_buckled_chair.shimmy_data[5], \
-				internal_dirs = other_buckled_chair.shimmy_data[6])
+	else	// At least one other chair is still occupied –> add a component, if one exists its inheritence will handle everything
+		other_buckled_chair.set_density(TRUE)
+		other_buckled_chair.update_shimmy_data(src)
+		other_buckled_chair.AddComponent(/datum/component/shimmy_around, \
+			north_offset = other_buckled_chair.shimmy_data[INDEX_NORTH_OFFSET], \
+			south_offset = other_buckled_chair.shimmy_data[INDEX_SOUTH_OFFSET], \
+			east_offset  = other_buckled_chair.shimmy_data[3], \
+			west_offset  = other_buckled_chair.shimmy_data[INDEX_WEST_OFFSET], \
+			extra_delay  = 0.5 SECONDS, \
+			approach_dirs = other_buckled_chair.shimmy_data[INDEX_APPORACH_DIRS], \
+			internal_dirs = other_buckled_chair.shimmy_data[INDEX_INTERNAL_DIRS], \
+			allowed_pass_flag = PASS_MOB_IS_HUMAN, \
+			existing_shimmiers = shimmied_mobs)
 
-		for(var/mob/living/found_living in shimmied_mobs)	// although we sent the new data, existing shimmied mobs still need to be updated
-			other_buckled_shimster.refresh_mob_offsets(found_living, old_data)
+#undef INDEX_NORTH_OFFSET
+#undef INDEX_SOUTH_OFFSET
+#undef INDEX_EAST_OFFSET
+#undef INDEX_WEST_OFFSET
+#undef INDEX_APPORACH_DIRS
+#undef INDEX_INTERNAL_DIRS
 
 //Chair types
 /obj/structure/bed/chair/bolted

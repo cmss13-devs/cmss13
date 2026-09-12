@@ -338,43 +338,50 @@
 		/obj/structure/machinery/autodispenser,
 		/obj/structure/machinery/constructable_frame,
 	)
-
+	/// A list of item types that allow reagent refilling.
+	var/list/chem_refill = list(
+		/obj/item/reagent_container/hypospray/autoinjector/standard,
+		/obj/item/reagent_container/hypospray/autoinjector/ez,
+		/obj/item/reagent_container/hypospray/autoinjector/tutorial,
+	)
 /obj/item/reagent_container/glass/minitank/on_reagent_change()
 	update_icon()
 
-
-/obj/item/reagent_container/glass/minitank/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
-		var/obj/item/reagent_container/hypospray/autoinjector/A = W
-		if(A.mixed_chem)
-			to_chat(user, SPAN_WARNING("The autoinjector doesn't fit into [src]'s valve. It's probably not compatible."))
-			return
-		if(reagents.has_reagent(A.chemname, A.volume))
-			reagents.trans_id_to(A, A.chemname, A.volume)
-			A.uses_left = 3
-			A.update_icon()
-			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
+/obj/item/reagent_container/glass/minitank/attackby(obj/item/thing as obj, mob/user as mob)
+	if(istype(thing, /obj/item/reagent_container/hypospray/autoinjector))
+		var/obj/item/reagent_container/hypospray/autoinjector/autoinjector = thing
+		//how much to subtract from the tank to refill the autoinjector
+		var/amount = (autoinjector.reagents.maximum_volume - autoinjector.reagents.total_volume)
+		if(autoinjector.reagents.total_volume >= autoinjector.reagents.maximum_volume) //Autoinjector is full!
+			to_chat(user, SPAN_NOTICE("[autoinjector] is full."))
+			return FALSE
 		else
-			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. The tank can't refill [A] - it's either incompatible or out of chemicals to fill it with!"))
-			. = ..()
-			return
-		to_chat(user, SPAN_INFO("You successfully refill [A] with [src]!"))
+			if(!(is_type_in_list(autoinjector, chem_refill)))
+				if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/research)) //Autoinjector says, "Where's my pouch?"
+					to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test with [autoinjector]'s pressurized reagent canister receiver valve failed."))
+					return FALSE
+				if(autoinjector.is_stimpack) //Wait a minute...
+					to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test with [autoinjector]'s stimpack receiver valve failed."))
+					return FALSE
+				if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/yautja))//No error message. It's a crystal, right? It totally doesn't have medicine in it.
+					return FALSE
+				else if(autoinjector.cannot_refill)
+					to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test with [autoinjector]'s custom multi-reagent receiver valve failed.'"))
+					return FALSE
+				else
+					to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test with [autoinjector]'s receiver valve failed.'"))
+					return FALSE
+			if(!reagents.has_reagent(autoinjector.chemname, amount)) // Not enough reagents in the tank to refill the autoinjector.
+				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'Refill failed. [amount]u [autoinjector.chemname] is required to completely refill [autoinjector].'"))
+				return FALSE
 
-/obj/item/reagent_container/glass/minitank/verb/flush_tank()
-	set category = "Object"
-	set name = "Flush Tank"
-	set src in usr
-
-	if(usr.is_mob_incapacitated())
-		return
-	if(src.reagents.total_volume == 0)
-		to_chat(usr, SPAN_WARNING("It's already empty!"))
-		return
-	playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
-	to_chat(usr, SPAN_WARNING("You work the flush valve and successfully flush [src]'s contents!"))
-	reagents.clear_reagents()
-	update_icon() // just to be sure
-	return
+		//FINALLY, the good shit that actually fills the autoinjector!
+		reagents.trans_id_to(autoinjector, autoinjector.chemname, amount) //fill this bih
+		autoinjector.uses_left =  autoinjector.initial(volume) / autoinjector.amount_per_transfer_from_this
+		autoinjector.update_icon()
+		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
+		to_chat(user, SPAN_INFO("You successfully refill [autoinjector] with [src]!"))
+		return TRUE
 
 /obj/item/reagent_container/glass/minitank/update_icon()
 	overlays.Cut()
@@ -389,6 +396,30 @@
 		filling.icon_state = "[icon_state][round_percent]"
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
+
+/obj/item/reagent_container/glass/minitank/verb/flush_tank()
+	set category = "Object"
+	set name = "Flush Tank"
+	set desc = "Flush the minitank to empty its reagents."
+	set src in usr
+
+	if(usr.is_mob_incapacitated())
+		return
+
+	if(reagents.total_volume <= 0)
+		to_chat(usr, SPAN_NOTICE("[src] is already empty."))
+		return
+
+	to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 3 seconds..."))
+
+	if(!do_after(usr, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		to_chat(usr, SPAN_WARNING("You get distracted and stop trying to empty [src]."))
+		return
+
+	playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
+	to_chat(usr, SPAN_WARNING("You work the flush valve and successfully flush [src]'s contents!"))
+	reagents.clear_reagents()
+	update_icon()
 
 /obj/item/reagent_container/glass/beaker/large
 	name = "large beaker"

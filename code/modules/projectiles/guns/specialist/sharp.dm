@@ -20,20 +20,21 @@
 
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	wield_delay = WEAPON_DELAY_VERY_SLOW
-	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_AUTO_EJECTOR
 
 	flags_item = TWOHANDED|NO_CRYO_STORE
 	map_specific_decoration = TRUE
 
-	var/explosion_delay_sharp = TRUE
+	var/current_mine_safety = TRUE
 
 /obj/item/weapon/gun/rifle/sharp/Initialize()
-	. = ..()
 	AddElement(/datum/element/corp_label/armat)
+	LAZYADD(actions_types, list(/datum/action/item_action/specialist/sharp_firemode_ability))
+	return ..()
 
 /obj/item/weapon/gun/rifle/sharp/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_INFO("Switching firemodes will toggle the explosion delay timer between 1 second and 5 seconds.")
+	. += SPAN_INFO("Switching firemodes will toggle SAFE mode operation, with much greater IFF-logic of fired mines when activated.")
 
 /obj/item/weapon/gun/rifle/sharp/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
@@ -59,14 +60,111 @@
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 			return FALSE
 
-//code for changing explosion delay on direct hits
+/obj/item/weapon/gun/rifle/sharp/reload(mob/user, obj/item/ammo_magazine/magazine)
+	if(magazine.flags_magazine & AMMUNITION_HANDFUL)
+		insert_dart(user)
+		update_icon()
+		return
+	else if (istype(magazine, /obj/item/ammo_magazine/rifle/sharp))
+		insert_dart_magazine(user, magazine)
+		update_icon()
+		return
+	..()
+
+/obj/item/weapon/gun/rifle/sharp/proc/insert_dart(mob/user)
+	var/obj/item/ammo_magazine/handful/dart = user.get_active_hand()
+
+	if(!istype(dart.ammo_source, /datum/ammo/rifle/sharp))
+		to_chat(user, SPAN_WARNING("\The [dart] doesn't match \the [src]'s caliber!"))
+		return
+
+	if(in_chamber)
+		if(current_mag)
+			if(!istype(in_chamber.ammo, current_mag.default_ammo))
+				to_chat(user, SPAN_WARNING("Feeding \the [dart] would mix the ammo in \the [current_mag]!"))
+				return
+			else if (current_mag.current_rounds == current_mag.max_rounds)
+				to_chat(user, SPAN_WARNING("\The [dart] can't be pushed into the chamber as the loaded magazine is full!"))
+				return
+			current_mag.current_rounds++
+			current_mag.update_icon(current_mag.max_rounds)
+		else
+			var/obj/item/ammo_magazine/handful/new_handful = new(get_turf(src))
+			new_handful.generate_handful(get_ammo_type_chambered(), /obj/item/ammo_magazine/rifle/sharp::caliber, 1, /obj/item/weapon/gun/rifle/sharp::type)
+			to_chat(user, SPAN_WARNING("An already chambered dart is pushed out of \the [src]'s magazine port!"))
+	if(dart.current_rounds > 0)
+		in_chamber = create_bullet(dart.ammo_source, initial(name))
+		apply_traits(in_chamber)
+		user.visible_message(SPAN_NOTICE(("[user] loads a [dart.singular_name] into \the [src]'s chamber!")),
+		SPAN_NOTICE(("You load a [SPAN_ORANGE(dart.singular_name)] into \the [src]'s chamber.")))
+		dart.current_rounds--
+		dart.update_icon()
+		if(dart.current_rounds <= 0)
+			QDEL_NULL(dart)
+		playsound(src, 'sound/weapons/handling/gun_boltaction_close.ogg', 15)
+
+/obj/item/weapon/gun/rifle/sharp/proc/insert_dart_magazine(mob/user, obj/item/ammo_magazine/magazine)
+	if(current_mag)
+		to_chat(user, SPAN_WARNING("\The [src] has still got a magazine loaded."))
+		return
+	if(user)
+		replace_magazine(user, magazine)
+		SEND_SIGNAL(user, COMSIG_MOB_RELOADED_GUN, src)
+	else
+		current_mag = magazine
+		magazine.forceMove(src)
+		replace_ammo(,magazine)
+
+//code for changing mine modes
+
+/datum/action/item_action/specialist/sharp_firemode_ability
+	ability_primacy = SPEC_PRIMARY_ACTION_1
+
+/datum/action/item_action/specialist/sharp_firemode_ability/New(mob/living/user, obj/item/holder)
+	. = ..()
+	name = "Toggle SHARP Firemode"
+	button.name = name
+	update_button_icon()
+	update_ability_icon()
+
+/datum/action/item_action/specialist/sharp_firemode_ability/proc/update_ability_icon()
+	var/obj/item/weapon/gun/rifle/sharp/sharp_rifle = holder_item
+	var/icon = 'icons/mob/hud/actions.dmi'
+	var/icon_state
+	if(sharp_rifle.current_mine_safety)
+		icon_state = "sharp_safe"
+	else
+		icon_state = "sharp_danger"
+	button.overlays.Cut()
+	var/image/IMG = image(icon, button, icon_state)
+	button.overlays += IMG
+
+/datum/action/item_action/specialist/sharp_firemode_ability/can_use_action()
+	if(owner.is_mob_incapacitated())
+		return FALSE
+	return TRUE
+
+/datum/action/item_action/specialist/sharp_firemode_ability/action_activate()
+	. = ..()
+	var/obj/item/weapon/gun/rifle/sharp/sharp_rifle = holder_item
+	if(!ishuman(owner))
+		return
+	sharp_rifle.do_toggle_firemode(owner)
 
 /obj/item/weapon/gun/rifle/sharp/do_toggle_firemode(mob/user)
 	. = ..()
-	explosion_delay_sharp = !explosion_delay_sharp
 	playsound(user, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
-	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [explosion_delay_sharp ? SPAN_BOLD("enable") : SPAN_BOLD("disable")] [src]'s delayed fire mode. Explosive ammo will blow up in [explosion_delay_sharp ? SPAN_BOLD("5 seconds") : SPAN_BOLD("2.5 seconds")]."))
-	user.balloon_alert(user, "explosion delay [explosion_delay_sharp ? "5 seconds" : "2.5 seconds"].")
+	var/mine_mode_notice = ""
+	if(current_mine_safety)
+		current_mine_safety = FALSE
+		mine_mode_notice += "[icon2html(src, user)] You set [src]'s mine mode to DANGER mode. Explosive ammo will blow up regardless of friendly presence."
+	else
+		current_mine_safety = TRUE
+		mine_mode_notice += "[icon2html(src, user)] You set [src]'s mine mode to SAFE mode. Explosive ammo will NEVER blow up near friendly targets."
+	to_chat(user, SPAN_NOTICE(mine_mode_notice))
+
+	var/datum/action/item_action/specialist/sharp_firemode_ability/SFA = locate(/datum/action/item_action/specialist/sharp_firemode_ability) in actions
+	SFA.update_ability_icon()
 
 
 
@@ -93,6 +191,7 @@
 	shell_speed = AMMO_SPEED_TIER_2
 	var/embed_object = /obj/item/sharp/explosive
 	var/mine_level = 0
+	var/mine_safety = FALSE
 
 /datum/ammo/rifle/sharp/on_embed(mob/embedded_mob, obj/limb/target_organ)
 	if(!ishuman(embedded_mob))
@@ -123,36 +222,46 @@
 		return
 
 	var/mob/shooter = shot_dart.firer
+	var/obj/item/weapon/gun/rifle/sharp/weapon = shot_dart.shot_from
 	shake_camera(target, 2, 1)
 	if(shooter && ismob(shooter))
 		target.balloon_alert(target, "you have been hit by an explosive dart!", text_color = "#ce1e1e")
 		if(!target.get_target_lock(shooter.faction_group))
-			var/obj/item/weapon/gun/rifle/sharp/weapon = shot_dart.shot_from
 			playsound(get_turf(target), 'sound/weapons/gun_sharp_explode.ogg', 100)
-			if(weapon && weapon.explosion_delay_sharp)
-				addtimer(CALLBACK(src, PROC_REF(delayed_explosion), shot_dart, target, shooter), 5 SECONDS)
-			else
+			if(weapon)
+				mine_safety = weapon.current_mine_safety
 				addtimer(CALLBACK(src, PROC_REF(delayed_explosion), shot_dart, target, shooter), 2.5 SECONDS)
 
 /datum/ammo/rifle/sharp/explosive/drop_dart(loc, obj/projectile/shot_dart, mob/shooter)
 	var/signal_explosion = FALSE
 	if(locate(/obj/item/explosive/mine) in get_turf(loc))
 		signal_explosion = TRUE
-	var/obj/item/explosive/mine/sharp/dart = new /obj/item/explosive/mine/sharp(loc)
+	var/obj/item/explosive/mine/sharp/mine = new /obj/item/explosive/mine/sharp(loc)
+	var/obj/item/weapon/gun/rifle/sharp/weapon = shot_dart.shot_from
+	if(weapon)
+		mine.mine_safety = weapon.current_mine_safety
 	// if no darts on tile, don't arm, explode instead.
 	if(signal_explosion)
-		INVOKE_ASYNC(dart, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, prime), shooter)
+		INVOKE_ASYNC(mine, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, prime), shooter)
 	else
-		dart.anchored = TRUE
-		addtimer(CALLBACK(dart, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, deploy_mine), shooter), 3 SECONDS, TIMER_DELETE_ME)
-		addtimer(CALLBACK(dart, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, disarm)), 5 MINUTES, TIMER_DELETE_ME)
+		mine.anchored = TRUE
+		mine.setup_timer = addtimer(CALLBACK(mine, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, deploy_mine), shooter, weapon), 3 SECONDS, TIMER_DELETE_ME | TIMER_STOPPABLE)
+		mine.disarm_timer = addtimer(CALLBACK(mine, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, disarm)), 5 MINUTES, TIMER_DELETE_ME | TIMER_STOPPABLE)
 
 /datum/ammo/rifle/sharp/explosive/proc/delayed_explosion(obj/projectile/shot_dart, mob/target, mob/shooter)
 	if(ismob(target))
-		var/explosion_size = 60
-		var/falloff_size = 35
+		var/explosion_strength = 60
+		var/explosion_falloff = 60
 		var/cause_data = create_cause_data("P9 SHARP Rifle", shooter)
-		cell_explosion(get_turf(target), explosion_size, falloff_size, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+		if (mine_safety)
+			for(var/mob/living/carbon/human in range((explosion_strength / explosion_falloff), target))
+				if (human.get_target_lock(shooter.faction_group))
+					playsound(target, 'sound/weapons/smartgun_fail.ogg', target, 25)
+					to_chat(target, SPAN_WARNING("[shot_dart] releases itself from you!"))
+					target.balloon_alert(target, "an attached explosive dart releases itself from you!")
+					to_chat(shooter, SPAN_WARNING("[shot_dart] recognized an IFF marked target and did not detonate!"))
+					return
+		cell_explosion(get_turf(target), explosion_strength, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 
 
 /datum/ammo/rifle/sharp/incendiary
@@ -165,34 +274,44 @@
 	if(!target || target == shot_dart.firer)
 		return
 	var/mob/shooter = shot_dart.firer
+	var/obj/item/weapon/gun/rifle/sharp/weapon = shot_dart.shot_from
 	shake_camera(target, 2, 1)
 	if(shooter && ismob(shooter))
-		target.balloon_alert(target, "you have been hit by an incendiary dart!", text_color = "#ce1e1e")
+		target.balloon_alert(target, "you have been hit by an incendiary dart!", text_color = "#ce7c1e")
 		if(!target.get_target_lock(shooter.faction_group))
-			var/obj/item/weapon/gun/rifle/sharp/weapon = shot_dart.shot_from
 			playsound(get_turf(target), 'sound/weapons/gun_sharp_explode.ogg', 100)
-			if(weapon && weapon.explosion_delay_sharp)
-				addtimer(CALLBACK(src, PROC_REF(delayed_fire), shot_dart, target, shooter), 5 SECONDS)
-			else
+			if(weapon)
+				mine_safety = weapon.current_mine_safety
 				addtimer(CALLBACK(src, PROC_REF(delayed_fire), shot_dart, target, shooter), 2.5 SECONDS)
 
 /datum/ammo/rifle/sharp/incendiary/drop_dart(loc, obj/projectile/shot_dart, mob/shooter)
 	var/signal_explosion = FALSE
 	if(locate(/obj/item/explosive/mine) in get_turf(loc))
 		signal_explosion = TRUE
-	var/obj/item/explosive/mine/sharp/incendiary/dart = new /obj/item/explosive/mine/sharp/incendiary(loc)
+	var/obj/item/explosive/mine/sharp/incendiary/mine = new /obj/item/explosive/mine/sharp/incendiary(loc)
+	var/obj/item/weapon/gun/rifle/sharp/weapon = shot_dart.shot_from
+	if(weapon)
+		mine.mine_safety = weapon.current_mine_safety
 	// if no darts on tile, don't arm, explode instead.
 	if(signal_explosion)
-		INVOKE_ASYNC(dart, TYPE_PROC_REF(/obj/item/explosive/mine/sharp/incendiary, prime), shooter)
+		INVOKE_ASYNC(mine, TYPE_PROC_REF(/obj/item/explosive/mine/sharp/incendiary, prime), shooter)
 	else
-		dart.anchored = TRUE
-		addtimer(CALLBACK(dart, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, deploy_mine), shooter), 3 SECONDS, TIMER_DELETE_ME)
-		addtimer(CALLBACK(dart, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, disarm)), 5 MINUTES, TIMER_DELETE_ME)
+		mine.anchored = TRUE
+		mine.setup_timer = addtimer(CALLBACK(mine, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, deploy_mine), shooter, weapon), 3 SECONDS, TIMER_DELETE_ME | TIMER_STOPPABLE)
+		mine.disarm_timer = addtimer(CALLBACK(mine, TYPE_PROC_REF(/obj/item/explosive/mine/sharp, disarm)), 5 MINUTES, TIMER_DELETE_ME | TIMER_STOPPABLE)
 
 /datum/ammo/rifle/sharp/incendiary/proc/delayed_fire(obj/projectile/shot_dart, mob/target, mob/shooter)
 	if(ismob(target))
 		var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus/sharp
 		var/smoke_radius = 2
+		if(mine_safety)
+			for(var/mob/living/carbon/human in range(smoke_radius, target))
+				if (human.get_target_lock(shooter.faction_group))
+					playsound(target, 'sound/weapons/smartgun_fail.ogg', target, 25)
+					to_chat(target, SPAN_WARNING("[shot_dart] releases itself from you!"))
+					target.balloon_alert(target, "an attached incendiary dart releases itself from you!")
+					to_chat(shooter, SPAN_WARNING("[shot_dart] recognized an IFF marked target and did not detonate!"))
+					return
 		smoke.set_up(smoke_radius, 0, get_turf(target))
 		smoke.start()
 

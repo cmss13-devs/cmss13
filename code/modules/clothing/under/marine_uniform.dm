@@ -1328,6 +1328,22 @@
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
 	suit_restricted = FALSE
 
+// UPP CO SWEATER
+
+/obj/item/clothing/under/marine/veteran/UPP/sweater
+	name = "\improper UPP casual fatigues"
+	desc = "A wool sweater worn over some UPP fatigues, intended for more casual wear. Very itchy."
+	icon_state = "upp_sweater"
+	worn_state = "upp_sweater"
+
+/obj/item/clothing/under/marine/veteran/UPP/sweater_alt
+	name = "\improper UPP casual fatigues"
+	desc = "A wool sweater worn over some UPP fatigues, intended for more casual wear. Very itchy."
+	icon_state = "upp_sweater_alt"
+	worn_state = "upp_sweater_alt"
+
+
+
 //=========================//CMB\\================================\\
 
 

@@ -336,6 +336,24 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/storage/backpack/marine/satchel(src)
 	return
 
+/obj/structure/closet/secure_closet/cargotech_upp
+	name = "Logistical Technician's Locker"
+	req_access = list(ACCESS_CIVILIAN_LOGISTICS, ACCESS_UPP_GENERAL)
+	icon_state = "secure_locked_cargo"
+	icon_closed = "secure_unlocked_cargo"
+	icon_locked = "secure_locked_cargo"
+	icon_opened = "secure_open_cargo"
+	icon_broken = "secure_broken_cargo"
+	icon_off = "secure_off_cargo"
+
+/obj/structure/closet/secure_closet/cargotech_upp/Initialize()
+	. = ..()
+	new /obj/item/clothing/shoes/marine/upp(src)
+	new /obj/item/clothing/gloves/yellow(src)
+	new /obj/item/clothing/head/uppcap(src)
+	new /obj/item/device/flashlight(src)
+	return
+
 /obj/structure/closet/secure_closet/sea
 	name = "\improper SEA's Locker"
 	req_access = list(ACCESS_MARINE_SEA)

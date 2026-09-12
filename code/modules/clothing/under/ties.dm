@@ -730,12 +730,6 @@
 			squad_color = squad_name
 	icon_state = replacetext(initial(dummy_icon_state), "%SQUAD%", squad_color)
 
-/obj/item/clothing/accessory/patch/cec_patch
-	name = "CEC patch"
-	desc = "An old, worn and faded fire-resistant circular patch with a gold star on a split orange and red background. Once worn by members of the Cosmos Exploration Corps (CEC), a division of the UPP dedicated to exploration, resource assessment, and establishing colonies on new worlds. The patch serves as a reminder of the CEC's daring missions aboard aging starships, a symbol of perseverance in the face of adversity."
-	icon_state = "cecpatch"
-	item_state_slots = list(WEAR_AS_GARB = "cecpatch")
-
 /obj/item/clothing/accessory/patch/freelancer_patch
 	name = "Freelancer's Guild patch"
 	desc = "A fire-resistant circular patch featuring a white skull on a vertically split black and blue background. Worn by a skilled mercenary of the Freelancers, a well-equipped group for hire across the outer colonies, known for their professionalism and neutrality. This patch is a personal memento from the wearer’s time with the group, representing a life spent navigating the dangerous world of mercenary contracts."
@@ -767,6 +761,27 @@
 	name = "Hyperdyne Corporation patch"
 	desc = "A sleek corporate patch bearing the logo of the Hyperdyne Corporation—one of the most powerful conglomerates. Known for synthetic production, AI research, and deep-space logistics. Wearing this patch implies loyalty to profit over people."
 	icon_state = "hyperdynepatch"
+
+/obj/item/clothing/accessory/patch/cec_patch
+	name = "CEC patch"
+	desc = "An old, worn and faded fire-resistant circular patch with a small gold star next to a stylized depiction of a rocket launch. Often worn by members of the Cosmos Exploration Corps (CEC), a division of the UPP dedicated to exploration, resource assessment, and establishing colonies on new worlds. The patch serves as a reminder of the CEC's daring missions aboard aging starships, a symbol of perseverance in the face of adversity."
+	icon_state = "cecpatch"
+	item_state_slots = list(WEAR_AS_GARB = "cecpatch")
+
+/obj/item/clothing/accessory/patch/cec_patch_alt
+	name = "CEC patch"
+	desc = "An old, worn and faded fire-resistant circular patch with a red star on a deep blue background. Ocasionally worn by members of the Cosmos Exploration Corps (CEC), a division of the UPP dedicated to exploration, resource assessment, and establishing colonies on new worlds. The patch serves as a reminder of the CEC's daring missions aboard aging starships, a symbol of perseverance in the face of adversity."
+	icon_state = "cecalt"
+	item_state_slots = list(WEAR_AS_GARB = "cecalt")
+
+/obj/item/clothing/accessory/patch/cec_patch_classic
+	name = "CEC patch"
+	desc = "An old, worn and faded fire-resistant circular patch with a gold star on a split orange and red background. Once worn by members of the Cosmos Exploration Corps (CEC), a division of the UPP dedicated to exploration, resource assessment, and establishing colonies on new worlds. The patch serves as a reminder of the CEC's daring missions aboard aging starships, a symbol of perseverance in the face of adversity."
+	icon_state = "cecclassic"
+	item_state_slots = list(WEAR_AS_GARB = "cecclassic")
+
+
+
 
 // Misc
 
@@ -831,6 +846,17 @@
 	)
 	worn_accessory_slot = ACCESSORY_SLOT_PONCHO
 
+/obj/item/clothing/accessory/upp_cape
+	name = "torn UPP flag"
+	desc = "A torn up UPP flag with a pin that allows it to be worn as a cape."
+	icon_state = "upp_cape"
+	icon = 'icons/obj/items/clothing/accessory/ponchos.dmi'
+	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/ponchos.dmi'
+	accessory_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/ponchos.dmi',
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/ponchos.dmi'
+	)
+	worn_accessory_slot = ACCESSORY_SLOT_PONCHO
 
 //Ties that can store stuff
 

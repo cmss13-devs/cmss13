@@ -21,7 +21,7 @@ Current Problems:
 	var/obj/item/binding_item
 	var/is_attached_magazine_active = FALSE //It's two slots, 0 and 1
 	///Default to zero for no attached mag
-	var/attached_magazine = 0
+	var/attached_magazine = null
 	///Used to identify if the update_icon is called by the component (viz. the reseting sprite proc)
 	var/is_reseting_sprite = FALSE
 
@@ -170,7 +170,7 @@ Current Problems:
 //* Custom procs***************************************************************************************
 ///Creates an overlay for jungle mag
 /datum/component/jungle_magazine/proc/add_overlay(obj/item/target, list/inactive_mag_offsets, is_blend_inset, band_icon, band_icon_state)
-	if(attached_magazine != 0) //Only necessary if there's a magazine attached
+	if(attached_magazine != null) //Only necessary if there's a magazine attached
 		//* Add the inactive magazine icon
 		var/obj/item/ammo_magazine/inactive_mag = inactive_magazine()
 		var/image/inactive_mag_image = image(inactive_mag.icon, target, inactive_mag.icon_state)
@@ -235,7 +235,7 @@ Current Problems:
 
 /datum/component/jungle_magazine/proc/add_magazine(mob/user, obj/item/ammo_magazine/incoming_magazine) //? Used in construction phase
 	if(istype(incoming_magazine)) //Checks if incoming item is a magazine
-		if(attached_magazine == 0)
+		if(attached_magazine == null)
 			if (user)
 				user.drop_inv_item_to_loc(incoming_magazine, parent)
 			else //In case there's no user
@@ -259,7 +259,7 @@ Current Problems:
 	//*				 3) Remove attached magazine (attached is active) - Ditto, however magazine would be switched first / that or a special case idk
 	//Doing this with if statement since there's only two magazines max
 	var/obj/item/ammo_magazine/target_magazine
-	if(attached_magazine != 0) //Case #2
+	if(attached_magazine != null) //Case #2
 		if(is_attached_magazine_active) //Case #3, so afterwards we know the prime mag is being seen as active mag
 			switch_active_magazine(user, TRUE)
 		target_magazine = attached_magazine
@@ -267,7 +267,7 @@ Current Problems:
 			user.put_in_hands(target_magazine)
 		else
 			target_magazine.forceMove(get_turf(parent))
-		attached_magazine = 0
+		attached_magazine = null
 		signal_unreg(target_magazine)
 		reset_magazine_sprite(target_magazine)
 		reset_magazine_sprite(parent)
@@ -287,7 +287,7 @@ Current Problems:
 /datum/component/jungle_magazine/proc/get_examine_text(mob/user)
 	. += SPAN_INFO("Use special action switch between magazines, use in hand to remove the magazines.")
 	. += "\n"
-	if (attached_magazine == 0) //If there's no attached magazine there really shouldn't be a need for description of the other mag, user WILL have parent as active
+	if (attached_magazine == null) //If there's no attached magazine there really shouldn't be a need for description of the other mag, user WILL have parent as active
 		. += "No magazine is attached at this moment."
 	else
 		var/obj/item/ammo_magazine/target_mag = inactive_magazine()

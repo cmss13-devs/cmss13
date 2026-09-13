@@ -28,7 +28,14 @@ type Data = {
 
 export const PriorityInput = (props) => {
   const { data } = useBackend<Data>();
-  const { items = [], default_selections = items, message, timeout, title, theme } = data;
+  const {
+    items = [],
+    default_selections = items,
+    message,
+    timeout,
+    title,
+    theme,
+  } = data;
 
   // The full order of items as displayed. Reordering mutates this.
   const [itemsOrder, setItemsOrder] = useState<string[]>(items);

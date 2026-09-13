@@ -1,8 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Initial slot calculation no longer allows infinite xeno slots to be more accurate to the actual slotting afterwards"
-  - balance: "Technically squad medic and engineer limit calculations have changed, but should ultimately be the same"
-  - code_imp: "Removed/Moved some XvX code to specifically XvX files"
-  - config: "Removed two unnecessary configs xeno_number_divider and surv_number_divider"
-  - ui: "Some lobby menu buttons are now disabled while the game is starting"

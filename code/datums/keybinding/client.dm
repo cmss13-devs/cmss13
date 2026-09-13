@@ -3,15 +3,15 @@
 	weight = WEIGHT_HIGHEST
 
 /datum/keybinding/client/switch_input
-	hotkey_keys = list()
-	classic_keys = list()
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "switch_input"
 	full_name = "Switch Input to Command Bar"
 	description = "Switch between the map pane and the command bar."
 	keybind_signal = COMSIG_KB_CLIENT_SWITCHINPUT_DOWN
 
 /datum/keybinding/client/admin_help
-	hotkey_keys = list("Unbound")
+	hotkey_keys = list("F1")
 	classic_keys = list("F1")
 	name = "admin_help"
 	full_name = "Admin Help"
@@ -25,7 +25,6 @@
 	user.adminhelp()
 	return TRUE
 
-
 /datum/keybinding/client/screenshot
 	hotkey_keys = list("F2")
 	classic_keys = list("Unbound")
@@ -38,7 +37,22 @@
 	. = ..()
 	if(.)
 		return
-	winset(user, null, "command=.screenshot [!user.keys_held[SHIFT_CLICK] ? "auto" : ""]")
+	winset(user, null, "command='.screenshot auto'")
+	return TRUE
+
+/datum/keybinding/client/screenshot_as
+	hotkey_keys = list("Shift+F2")
+	classic_keys = list("Unbound")
+	name = "screenshot as"
+	full_name = "Screenshot As"
+	description = "Save a screenshot as."
+	keybind_signal = COMSIG_KB_CLIENT_SCREENSHOT_AS_DOWN
+
+/datum/keybinding/client/screenshot_as/down(client/user)
+	. = ..()
+	if(.)
+		return
+	winset(user, null, "command=.screenshot")
 	return TRUE
 
 /datum/keybinding/client/toggle_fullscreen
@@ -70,4 +84,3 @@
 		return
 	user.mob.button_pressed_F12()
 	return TRUE
-

@@ -240,7 +240,7 @@
 		ammo.fire_bonus_projectiles(src, gun_damage_mult, projectile_max_range_add, gun_bonus_proj_scatter)
 		bonus_projectile_check = PROJECTILE_ORIGINAL //Mark this projectile as having spawned a set of bonus projectiles.
 
-	path = get_line(starting, target_turf)
+	path = get_line(starting, target_turf, z_level_transitions = TRUE)
 	p_x += clamp((rand()-0.5)*scatter*3, -8, 8)
 	p_y += clamp((rand()-0.5)*scatter*3, -8, 8)
 	update_angle(starting, target_turf)

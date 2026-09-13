@@ -283,7 +283,7 @@ Current Problems:
 			binding_item.forceMove(target_turf)
 			target_magazine.forceMove(target_turf)
 		reset_magazine_sprite(target_magazine)
-		src.Destroy() //Removes the component completely
+		qdel(src) //Removes the component completely
 	return TRUE
 
 /datum/component/jungle_magazine/proc/get_examine_text(mob/user)

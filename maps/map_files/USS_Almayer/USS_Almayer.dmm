@@ -39949,7 +39949,8 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/office/lobby_door,
 /obj/structure/machinery/door/airlock/almayer/glass{
 	name = "\improper Weyland-Yutani Office Reception";
-	dir = 2
+	dir = 2;
+	id_tag = "cl_office_door"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/corporateliaison)
@@ -66991,11 +66992,6 @@
 /area/almayer/underdeck/req)
 "jnX" = (
 /obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "CIC Lockdown";
-	name = "\improper Combat Information Center Blast Door"
-	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/plating,
 /area/almayer/command/cic)
@@ -72439,11 +72435,6 @@
 	closeOtherId = "ciclobby_n";
 	id_tag = "cic_exterior";
 	name = "\improper Combat Information Center"
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "CIC Lockdown";
-	name = "\improper Combat Information Center Blast Door"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/cic)
@@ -84736,7 +84727,8 @@
 	},
 /obj/item/desk_bell{
 	pixel_y = 11;
-	pixel_x = -7
+	pixel_x = -7;
+	anchored = 1
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "IO Lab Shutters";
@@ -84834,11 +84826,6 @@
 	closeOtherId = "ciclobby_s";
 	id_tag = "cic_exterior";
 	name = "\improper Combat Information Center"
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "CIC Lockdown";
-	name = "\improper Combat Information Center Blast Door"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/cic)

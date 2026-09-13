@@ -512,7 +512,6 @@
 	width = 17;
 	dheight = 12;
 	height = 24;
-	zheight = 1
 	},
 /turf/open/floor/almayer/plating,
 /area/event)

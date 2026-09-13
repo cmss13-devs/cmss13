@@ -1094,7 +1094,7 @@
 		damage_result = armor_damage_reduction(GLOB.marine_ranged, damage, armor, bullet.ammo.penetration)
 
 		var/obj/item/clothing/suit/armor/yautja/hunter/full/yaut_armor = wear_suit //entirely for yautja heavy armor AP ward ability
-		if(istype(yaut_armor) && yaut_armor.ap_ward_on && bullet.ammo.penetration >= ARMOR_PENETRATION_TIER_1 && !(ammo_flags & AMMO_ROCKET)) //rockets still blow through
+		if(istype(yaut_armor) && yaut_armor.ap_ward_on && bullet.ammo.penetration >= ARMOR_PENETRATION_TIER_2 && !(ammo_flags & AMMO_ROCKET)) //rockets still blow through
 			damage_result = clamp(damage_result, 0, yaut_armor.ap_ward_damage_cap)
 
 		if(damage_result <= 5)

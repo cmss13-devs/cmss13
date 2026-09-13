@@ -20,6 +20,8 @@
 	var/creaking_sound
 	var/breaking_sound
 	var/shove_time
+	/// Tool used to dismantle this platform.
+	var/dismantle_tool = /obj/item/tool/weldingtool
 
 /obj/structure/platform/Initialize()
 	. = ..()
@@ -77,6 +79,11 @@
 
 	if(stat & BROKEN)
 		. += SPAN_WARNING("It looks destroyed.")
+	else if(!explo_proof)
+		if(dismantle_tool == /obj/item/tool/shovel)
+			. += SPAN_NOTICE("It can be dug away with a shovel or an entrenching tool.")
+		else
+			. += SPAN_NOTICE("It can be cut apart with a welding tool.")
 
 /obj/structure/platform/update_icon()
 	if(stat & BROKEN)
@@ -89,6 +96,51 @@
 	update_icon()
 
 /obj/structure/platform/attackby(obj/item/W, mob/user)
+	if(istype(W, dismantle_tool) && user.a_intent != INTENT_HARM)
+		if(user.action_busy)
+			return TRUE
+		if(stat & BROKEN)
+			to_chat(user, SPAN_WARNING("It's already destroyed!"))
+			return TRUE
+		if(explo_proof)
+			to_chat(user, SPAN_WARNING("[src] is too sturdy to dismantle!"))
+			return TRUE
+
+		var/dismantle_time = 5 SECONDS
+		var/obj/item/tool/weldingtool/welder
+		var/obj/item/tool/shovel/shovel
+		if(iswelder(W))
+			welder = W
+			if(!welder.isOn())
+				to_chat(user, SPAN_WARNING("You need to light [welder] first!"))
+				return TRUE
+			if(!welder.remove_fuel(1, user))
+				return TRUE
+			playsound(loc, 'sound/items/Welder.ogg', 25, TRUE)
+		else
+			shovel = W
+			if(shovel.folded)
+				to_chat(user, SPAN_WARNING("You need to unfold [shovel] first!"))
+				return TRUE
+			dismantle_time = shovel.shovelspeed
+			playsound(loc, creaking_sound, 30, TRUE)
+
+		if(shovel)
+			user.visible_message(SPAN_NOTICE("[user] starts digging away at the rock ledge."), SPAN_NOTICE("You start digging away at the rock ledge."))
+		else
+			user.visible_message(SPAN_NOTICE("[user] starts dismantling [src]."), SPAN_NOTICE("You start dismantling [src]."))
+		if(!do_after(user, dismantle_time * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+			return TRUE
+		if((stat & BROKEN) || explo_proof || (welder && !welder.isOn()) || (shovel && shovel.folded))
+			return TRUE
+		if(shovel)
+			user.visible_message(SPAN_NOTICE("[user] digs away the rock ledge."), SPAN_NOTICE("You dig away the rock ledge."))
+		else
+			user.visible_message(SPAN_NOTICE("[user] dismantles [src]."), SPAN_NOTICE("You dismantle [src]."))
+		playsound(loc, breaking_sound, 25, TRUE)
+		broken()
+		return TRUE
+
 	. = ..()
 	if(user.pulling)
 		if(!can_climb(user))
@@ -196,9 +248,12 @@
 	breaking_sound = 'sound/effects/metalhit.ogg'
 
 /obj/structure/platform/stone
+	name = "rock ledge"
+	desc = "A raised ledge of solid rock. You could probably climb it."
 	icon_state = "kutjevo_rock"
 	creaking_sound = 'sound/effects/rock_creaking.ogg'
 	breaking_sound = 'sound/effects/meteorimpact.ogg'
+	dismantle_tool = /obj/item/tool/shovel
 
 //------------------------------//
 //    Metal Stairs Platforms    //

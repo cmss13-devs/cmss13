@@ -24,6 +24,8 @@ Current Problems:
 	var/attached_magazine = null
 	///Used to identify if the update_icon is called by the component (viz. the reseting sprite proc)
 	var/is_reseting_sprite = FALSE
+	///Specify the do_after time for removing magazine from the binding item, in seconds
+	var/remove_magazine_do_after_time = 0.01
 
 	//* Magazine type lists
 	var/list/magazine_blacklist = list(
@@ -140,7 +142,7 @@ Current Problems:
 /datum/component/jungle_magazine/proc/on_attack_self(datum/source, mob/user)
 	SIGNAL_HANDLER
 
-	remove_magazine(user)
+	INVOKE_ASYNC(src, PROC_REF(remove_magazine_with_do_after), user, remove_magazine_do_after_time)
 	return COMPONENT_ITEM_CANCEL_ATTACK_SELF
 
 ///Update the overlay to have jungle mag after an update_icon is called on magazine
@@ -310,3 +312,7 @@ Current Problems:
 	UnregisterSignal(target_magazine, COMSIG_MAGAZINE_FINISH_UPDATE_ICON)
 	UnregisterSignal(target_magazine, COMSIG_ITEM_ATTEMPT_INSERTION_INTO_STORAGE)
 	UnregisterSignal(target_magazine, COMSIG_ITEM_ATTACK_ITEM)
+
+/datum/component/jungle_magazine/proc/remove_magazine_with_do_after(mob/user, do_after_time)
+	if(do_after(user, do_after_time SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		remove_magazine(user)

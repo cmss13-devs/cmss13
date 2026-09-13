@@ -49,7 +49,7 @@ Current Problems:
 	)
 
 	///Storage whitelists, higher precedence than blacklists
-	var/list/storage_whitelist = list( //* Only the drop pouch is realistically considered, the other two are left as flavor
+	var/list/storage_whitelist = list( //* Only the drop pouch is realistically considered, the other two are left as flavor (they both have jungle in their desc.)
 		/obj/item/storage/internal/accessory/drop_pouch,
 		/obj/item/storage/belt/marine/dutch,
 		/obj/item/storage/belt/marine/rmc,

@@ -40,7 +40,7 @@ They're all essentially identical when it comes to getting the job done.
 	///Set a timer for reloading mags. Higher is slower.
 	var/reload_delay = 1
 	///flags specifically for magazines.
-	var/flags_magazine = AMMUNITION_REFILLABLE | JUNGLE_STYLE_ABLE
+	var/flags_magazine = AMMUNITION_REFILLABLE
 	///the default mag icon state.
 	var/base_mag_icon
 	///the default mag item (inhand) state.

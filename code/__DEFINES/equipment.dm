@@ -498,6 +498,9 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 #define ACCESSORY_SLOT_MASK "Mask"
 #define ACCESSORY_SLOT_HELM_C "Helmet cover"
 
+//Visor module slots
+#define ACCESSORY_SLOT_VISOR_MODULE "Visor Module"
+
 // Accessory slots that are currently unused
 #define ACCESSORY_SLOT_ARMOR_A "Arm armor"
 #define ACCESSORY_SLOT_ARMOR_L "Leg armor"

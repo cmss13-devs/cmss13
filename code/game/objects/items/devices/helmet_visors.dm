@@ -211,6 +211,7 @@
 /obj/item/device/helmet_visor/night_vision
 	name = "night vision optic"
 	desc = "An insertable visor HUD into a standard USCM helmet. This type gives a form of night vision and is standard issue in units with regular funding."
+	desc_lore = "The AN/NVPAV-75 visor (or image intensifier). This unit allows visibility in total darkness, as it features an infrared illuminator, and operates for 12 hours without recharging. The NVO automatically recharges after being turned off, drawing power from the suits internal battery that also powers the shoulder lamp and other visors, a full recharge takes about 2 hours on average. Unfortunately, after the explosion of the M309 HEAP ammunition storage - located in another section containing these NVOs was also damaged. 94% of the lenses were destroyed; the remaining units were repaired and distributed to critical roles. The damaged lens has impaired zoom in/zoom out functionality, making it incompatible with binoculars and weapon scopes. Additionally, the infrared illuminator was repaired in a makeshift manner, but as a negative side effect, it now gives off a visible glow in the dark. As for the battery and electronics themselves, they lost their calibration after the blast and can no longer receive a recharge from the suit, and they now operate for only 10 minutes."
 	icon_state = "nvg_sight"
 	hud_type = null
 	action_icon_string = "nvg_sight_down"
@@ -224,6 +225,8 @@
 
 	/// About 10 minutes active use charge (hypothetically)
 	var/power_use = 33
+
+	var/obj/item/device/helmet_visor_module/installed_module = null
 
 	/// The alpha of darkness we set to for the mob while the visor is on, not completely fullbright but see-able
 	var/lighting_alpha = 100
@@ -239,6 +242,7 @@
 	power_cell = new(src)
 
 /obj/item/device/helmet_visor/night_vision/Destroy()
+	installed_module = null
 	power_cell = null
 	. = ..()
 
@@ -332,6 +336,84 @@
 		if(cycle_action)
 			cycle_action.set_default_overlay()
 
+/obj/item/device/helmet_visor/night_vision/proc/can_install_module(obj/item/device/helmet_visor_module/module, mob/user)
+	if(istype(src, /obj/item/device/helmet_visor/night_vision/marine_raider))
+		to_chat(user, SPAN_WARNING("[src] cannot accept this module."))
+		return FALSE
+
+	if(installed_module)
+		to_chat(user, SPAN_WARNING("[src] already has a module installed."))
+		return FALSE
+
+	if(module.slot != ACCESSORY_SLOT_VISOR_MODULE)
+		to_chat(user, SPAN_WARNING("[module] doesn't fit into [src]."))
+		return FALSE
+
+	if(istype(loc, /obj/item/clothing/head/helmet/marine))
+		to_chat(user, SPAN_WARNING("You must remove [src] from the helmet first."))
+		return FALSE
+
+	return TRUE
+
+/obj/item/device/helmet_visor/night_vision/proc/install_module(obj/item/device/helmet_visor_module/module, mob/user)
+	if(!can_install_module(module, user))
+		return
+
+	if(!user.temp_drop_inv_item(module))
+		return
+
+	module.forceMove(src)
+	installed_module = module
+	if(istype(module, /obj/item/device/helmet_visor_module/night_vision_power_efficiency))
+		var/obj/item/device/helmet_visor_module/night_vision_power_efficiency/efficiency_module = module
+		power_use = efficiency_module.power_use_setting
+		icon_state = "nvg_sight_upgraded"
+		update_icon()
+
+	to_chat(user, SPAN_NOTICE("You install [module] into [src]."))
+
+/obj/item/device/helmet_visor/night_vision/proc/uninstall_module(mob/user)
+	if(!installed_module)
+		to_chat(user, SPAN_WARNING("[src] has no module installed."))
+		return
+
+	var/obj/item/device/helmet_visor_module/module = installed_module
+	installed_module = null
+	power_use = initial(power_use)
+	icon_state = initial(icon_state)
+	action_icon_string = initial(action_icon_string)
+	update_icon()
+
+	if(user)
+		if(!user.put_in_hands(module))
+			module.forceMove(get_turf(src))
+		to_chat(user, SPAN_NOTICE("You remove [module] from [src]."))
+	else
+		module.forceMove(get_turf(src))
+
+/obj/item/device/helmet_visor/night_vision/attackby(obj/item/I, mob/user, params)
+	. = ..()
+	if(.)
+		return
+
+	if(istype(I, /obj/item/device/helmet_visor_module))
+		install_module(I, user)
+		return TRUE
+
+/obj/item/device/helmet_visor/night_vision/verb/remove_module()
+	set name = "Remove Visor Module"
+	set category = "Object"
+	set src in view(1)
+
+	if(!installed_module)
+		to_chat(usr, SPAN_WARNING("[src] has no module installed."))
+		return
+
+	if(!ishuman(usr))
+		return
+
+	uninstall_module(usr)
+
 #undef NVG_VISOR_USAGE
 
 /atom/movable/nvg_light
@@ -344,6 +426,7 @@
 /obj/item/device/helmet_visor/night_vision/marine_raider
 	name = "advanced night vision optic"
 	desc = "An insertable visor HUD into a standard USCM helmet. This type gives a form of night vision and is standard issue in special forces units."
+	desc_lore = "The AN/NVPAV-77 visor (or advanced image intensifier) is an improved version of the AN/NVPAV-75. Unlike the 75, this model does not require power from the suit's internal source, as it features a more advanced and optimized power supply. It also has a covert infrared illuminator that does not reveal the NVO to other night vision devices or thermal imagers and as a bonus - integrated medical optic. It operates continuously for 32 hours, and recharging while switched off takes 2 hours."
 	hud_type = list(MOB_HUD_FACTION_MARINE, MOB_HUD_MEDICAL_ADVANCED)
 	helmet_overlay = "nvg_sight_right_raider"
 	power_use = 0
@@ -455,3 +538,17 @@
 	icon_state = "po_visor_yellow"
 	action_icon_string = "po_visor_yellow_down"
 	helmet_overlay = "po_visor_yellow"
+
+//Visor modules
+/obj/item/device/helmet_visor_module
+	name = "visor module"
+	desc = "A module that can be installed into a helmet visor."
+	icon = 'icons/obj/items/clothing/helmet_visors.dmi'
+	icon_state = "night_vision_upgrade"
+	w_class = SIZE_TINY
+	var/slot = ACCESSORY_SLOT_VISOR_MODULE
+
+/obj/item/device/helmet_visor_module/night_vision_power_efficiency
+	name = "Night Vision optimizer"
+	desc = "A module that reduces power consumption of night vision optic, extending its battery life."
+	var/power_use_setting = 22 ///extra 5 minutes, 15 minutes total

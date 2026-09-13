@@ -159,3 +159,17 @@
   ori-disillusion-mirnov:
   - bugfix: fixed runtime in clean_observe_target() by adding a check for a client
   - bugfix: other possible set_eye related runtimes from lacking a client
+2026-09-13:
+  Atebite:
+  - ui: Redesigned the USCM late join menu
+  Detective-Google:
+  - imageadd: the CO turtleneck can now have the sleeves rolled, and no longer has
+      a sprite hole in the right side.
+  IowaPotatoFarmer:
+  - rscadd: Added a handful of new nightmare inserts to Kutjevo Refinery.
+  Mary-Marilyn:
+  - soundadd: Added a unique victory theme for the Three World Empire.
+  - imageadd: Added a new Three World Empire victory card.
+  - bugfix: Fixed the CLF incorrectly displaying the UPP victory card.
+  - bugfix: Fixes eye-blur becoming permanent if you re-entered your body late after
+      being revived

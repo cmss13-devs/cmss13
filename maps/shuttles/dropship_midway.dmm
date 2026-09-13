@@ -496,7 +496,7 @@
 /obj/structure/machinery/door_control/shuttle_ramp/midway_aft{
 	pixel_y = 32
 	},
-/obj/docking_port/mobile/marine_dropship/midway,
+/obj/docking_port/mobile/marine_dropship/multiz/midway,
 /turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
 "xl" = (

@@ -54,31 +54,32 @@
 			if(istype(side_door))
 				hatch.linked_dropship = src
 
-	for(var/place in shuttle_areas)
-		for(var/obj/structure/machinery/door_control/shuttle_ramp/ramp_button in place)
-			if(ramp_button.id == "aft_ramp")
-				ramp_button.linked_dropship = src
-				door_control.add_ramp(ramp_button, "aft")
-
-	for(var/place in shuttle_areas)
-		for(var/obj/structure/machinery/door_control/side_hatch/hatch_button in place)
-			hatch_button.linked_dropship = src
-
-	for(var/place in shuttle_areas)
-		for(var/obj/deployer/shuttle/dropship/deployerino in place)
-			deployerino.linked_dropship = src
-
 	RegisterSignal(src, COMSIG_DROPSHIP_ADD_EQUIPMENT, PROC_REF(add_equipment))
 	RegisterSignal(src, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(remove_equipment))
 	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_dir_change))
 
-/obj/docking_port/mobile/marine_dropship/midway/Initialize(mapload)
+/obj/docking_port/mobile/marine_dropship/multiz/Initialize(mapload)
 	.=..()
+	var/list/shuttle_contents = list()
+	for(var/area/areas in shuttle_areas)
+		for(var/obj/thing in areas)
+			shuttle_contents += thing
 
-	for(var/place in shuttle_areas)
-		for(var/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/console in place)
-			console.linked_dropship = src
-			break
+	var/obj/structure/machinery/door_control/shuttle_ramp/ramp_button = locate(/obj/structure/machinery/door_control/shuttle_ramp) in shuttle_contents
+	if(ramp_button)
+		if(ramp_button.id == "aft_ramp")
+			ramp_button.linked_dropship = src
+			door_control.add_ramp(ramp_button, "aft")
+
+	for(var/obj/structure/machinery/door_control/side_hatch/hatch_button in shuttle_contents)
+		hatch_button.linked_dropship = src
+
+	for(var/obj/deployer/shuttle/dropship/deployerino in shuttle_contents)
+		deployerino.linked_dropship = src
+
+	var/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/console = locate(/obj/structure/machinery/computer/cameras/dropship/midway/gunnery) in shuttle_contents
+	if(console)
+		console.linked_dropship = src
 
 /obj/docking_port/mobile/marine_dropship/Destroy(force)
 	. = ..()
@@ -139,7 +140,10 @@
 /obj/docking_port/mobile/marine_dropship/alamo/get_transit_path_type()
 	return /turf/open/space/transit/dropship/alamo
 
-/obj/docking_port/mobile/marine_dropship/omaha
+/obj/docking_port/mobile/marine_dropship/multiz
+	multiz_ship = TRUE
+
+/obj/docking_port/mobile/marine_dropship/multiz/omaha
 	name = "Omaha"
 	id = DROPSHIP_OMAHA
 	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
@@ -148,9 +152,8 @@
 	height = 24
 	dwidth = 8
 	dheight = 12
-	multiz_ship = TRUE
 
-/obj/docking_port/mobile/marine_dropship/omaha/get_transit_path_type()
+/obj/docking_port/mobile/marine_dropship/multiz/omaha/get_transit_path_type()
 	return /turf/open/space/transit/dropship/omaha
 
 /obj/docking_port/mobile/marine_dropship/normandy
@@ -161,7 +164,7 @@
 /obj/docking_port/mobile/marine_dropship/normandy/get_transit_path_type()
 	return /turf/open/space/transit/dropship/normandy
 
-/obj/docking_port/mobile/marine_dropship/midway
+/obj/docking_port/mobile/marine_dropship/multiz/midway
 	name = "Midway"
 	id = DROPSHIP_MIDWAY
 	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
@@ -170,9 +173,8 @@
 	height = 24
 	dwidth = 8
 	dheight = 12
-	multiz_ship = TRUE
 
-/obj/docking_port/mobile/marine_dropship/midway/get_transit_path_type()
+/obj/docking_port/mobile/marine_dropship/multiz/midway/get_transit_path_type()
 	return /turf/open/space/transit/dropship/midway
 
 /obj/docking_port/mobile/marine_dropship/saipan

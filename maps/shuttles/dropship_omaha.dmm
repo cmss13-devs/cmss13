@@ -766,7 +766,7 @@
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
 "Dw" = (
-/obj/docking_port/mobile/marine_dropship/omaha,
+/obj/docking_port/mobile/marine_dropship/multiz/omaha,
 /obj/structure/machinery/door_control/shuttle_ramp/omaha_aft{
 	pixel_y = 32
 	},

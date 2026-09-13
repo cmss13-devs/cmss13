@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 37
+#define SAVEFILE_VERSION_MAX 38
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -249,6 +249,12 @@
 		S["toggles_sound"] >> toggles_insert
 		toggles_insert |= (SOUND_ROUND_END)
 		S["toggles_sound"] << toggles_insert
+
+	if(savefile_version < 38) //new sound volume prefs
+		var/list/volume_preferences
+		S["volume_preferences"] >> volume_preferences
+		volume_preferences.Add(0.7, 0.25)
+		S["volume_preferences"] << volume_preferences
 
 	if(updated_from)
 		RegisterSignal(owner, COMSIG_CLIENT_LOGGED_IN, PROC_REF(handle_logged_in))

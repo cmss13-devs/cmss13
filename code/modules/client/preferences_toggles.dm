@@ -79,6 +79,14 @@ CLIENT_VERB(togglemidis)
 	set desc = "Stops the current admin sound. You can also use the STOP icon in the player above tgchat."
 	tgui_panel?.stop_music()
 
+CLIENT_VERB(togglehumanspeaking)
+	set name = "Hear/Silence Human Speaking Sounds"
+	set category = "Preferences.Sound"
+	set desc = "Toggles hearing humans speak."
+	prefs.toggles_sound ^= SOUND_HUMAN_SPEAKING
+	prefs.save_preferences()
+	to_chat(src, "You will [(prefs.toggles_sound & SOUND_HUMAN_SPEAKING ) ? "no longer" : "now"] hear human speech sounds.")
+
 CLIENT_VERB(togglechat)
 	set name = "Toggle Abovehead Chat"
 	set category = "Preferences.Chat"

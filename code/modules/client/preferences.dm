@@ -81,7 +81,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/toggles_survivor = TOGGLES_SURVIVOR_DEFAULT
 	var/toggles_insert = TOGGLES_INSERT_DEFAULT
 	var/toggles_ert_pred = TOGGLES_ERT_GROUNDS
-	var/list/volume_preferences = list(1, 0.5, 1, 0.6) // Game, music, admin midis, lobby music (this is also set in sanitize_volume_preferences() call)
+	var/list/volume_preferences = list(1, 0.5, 1, 0.6, 0.7, 0.25) // Game, music, admin midis, lobby music, human voices, xeno voices (this is also set in sanitize_volume_preferences() call)
 	var/chat_display_preferences = CHAT_TYPE_ALL
 	var/item_animation_pref_level = SHOW_ITEM_ANIMATIONS_ALL
 	var/pain_overlay_pref_level = PAIN_OVERLAY_BLURRY
@@ -642,6 +642,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Play Admin Sounds:</b> <a href='byond://?_src_=prefs;preference=hear_admin_sounds'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Play Announcement Sounds As Ghost:</b> <a href='byond://?_src_=prefs;preference=hear_observer_announcements'><b>[(toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Play Fax Sounds As Ghost:</b> <a href='byond://?_src_=prefs;preference=hear_faxes'><b>[(toggles_sound & SOUND_FAX_MACHINE) ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Hear Human Speech Sounds:</b> <a href='byond://?_src_=prefs;preference=hear_humans'><b>[(toggles_sound & SOUND_HUMAN_SPEAKING) ? "No" : "Yes"]</b></a><br>"
 			dat += "<b>Toggle Meme or Atmospheric Sounds:</b> <a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle</a><br>"
 			dat += "<b>Set Eye Blur Type:</b> <a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set</a><br>"
 			dat += "<b>Set Flash Type:</b> <a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_flash_type'>Set</a><br>"
@@ -1926,6 +1927,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 				if("hear_faxes")
 					toggles_sound ^= SOUND_FAX_MACHINE
+
+				if("hear_humans")
+					toggles_sound ^= SOUND_HUMAN_SPEAKING
 
 				if("lobby_music")
 					toggles_sound ^= SOUND_LOBBY

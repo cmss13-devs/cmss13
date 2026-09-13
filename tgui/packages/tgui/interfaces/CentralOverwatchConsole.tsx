@@ -66,6 +66,7 @@ type Data = {
   primary_objective: string[] | null;
   secondary_objective: string[] | null;
   z_hidden: BooleanLike;
+  can_launch_crates: BooleanLike;
   can_launch_obs: BooleanLike;
   ob_cooldown?: number;
   ob_loaded: BooleanLike;
@@ -133,6 +134,8 @@ const LoginPanel = (props) => {
     echo: 'green',
     foxtrot: 'brown',
     intel: 'green',
+    kilo: 'teal',
+    oscar: 'green',
   };
 
   return (
@@ -189,6 +192,8 @@ const SecondaryFunctions = (props) => {
     echo: 'green',
     foxtrot: 'brown',
     intel: 'green',
+    kilo: 'teal',
+    oscar: 'green',
   };
 
   return (
@@ -214,15 +219,17 @@ const SecondaryFunctions = (props) => {
             >
               Orbital Bombardment
             </Tabs.Tab>
-            <Tabs.Tab
-              selected={secondarycategory === 'supplydrop'}
-              icon="wrench"
-              onClick={() => setsecondaryCategory('supplydrop')}
-              p="3px"
-              bold
-            >
-              Supply Drop
-            </Tabs.Tab>
+            {!!data.can_launch_crates && (
+              <Tabs.Tab
+                selected={secondarycategory === 'supplydrop'}
+                icon="wrench"
+                onClick={() => setsecondaryCategory('supplydrop')}
+                p="3px"
+                bold
+              >
+                Supply Drop
+              </Tabs.Tab>
+            )}
             {!data.executive && (
               <Tabs.Tab icon="map" onClick={() => act('tacmap_unpin')}>
                 Tactical Map
@@ -272,7 +279,9 @@ const SecondaryFunctions = (props) => {
               <CommandMonitor />
             ))}
           {secondarycategory === 'oblaunch' && <OrbitalBombardmentLaunch />}
-          {secondarycategory === 'supplydrop' && <SupplyDrop />}
+          {secondarycategory === 'supplydrop' && data.can_launch_crates && (
+            <SupplyDrop />
+          )}
           {secondarycategory === 'execpanel' && <ExecutivePanel />}
           {secondarycategory === 'emergencypanel' && <EmergencyPanel />}
         </Stack.Item>
@@ -298,6 +307,8 @@ const CombinedSquadPanel = (props: Props) => {
     echo: 'green',
     foxtrot: 'brown',
     intel: 'green',
+    kilo: 'teal',
+    oscar: 'green',
   };
 
   return (
@@ -573,6 +584,18 @@ const CombinedSquadPanel = (props: Props) => {
                           <Table.Cell textAlign="center" p="10px">
                             {squad.secondary_objective
                               ? squad.secondary_objective
+                              : 'NONE'}
+                          </Table.Cell>
+                        </Table.Row>
+                        <Table.Row bold>
+                          <Table.Cell textAlign="center">
+                            OVERWATCH OFFICER
+                          </Table.Cell>
+                        </Table.Row>
+                        <Table.Row>
+                          <Table.Cell textAlign="center" p="10px">
+                            {squad.overwatch_officer
+                              ? squad.overwatch_officer
                               : 'NONE'}
                           </Table.Cell>
                         </Table.Row>

@@ -1072,12 +1072,23 @@
 //*************************************
 //-----SELF SETTING MARINE HEADSET-----
 //*************************************/
-//For events. Currently used for WO only. After equipping it, self_set() will adapt headset to marine.
+//Adapts itself to the wearer's squad and role on equip. Whiskey Outpost assigns squads after equipping, so it calls self_set() again once the squad is set.
+
+/obj/item/device/radio/headset/almayer/marine/self_setting
+	/// self_set() appends encryption keys, so it must only ever apply once
+	var/self_set_done = FALSE
+
+/obj/item/device/radio/headset/almayer/marine/self_setting/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	self_set()
 
 /obj/item/device/radio/headset/almayer/marine/self_setting/proc/self_set()
+	if(self_set_done)
+		return
 	var/mob/living/carbon/human/H = loc
 	if(istype(H, /mob/living/carbon/human))
 		if(H.assigned_squad)
+			self_set_done = TRUE
 			name = "[lowertext(H.assigned_squad.name)] radio headset"
 			desc = "This is used by [H.assigned_squad.name] squad members."
 			icon_state = "[lowertext(H.assigned_squad.name)]_headset"

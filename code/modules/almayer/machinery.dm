@@ -79,7 +79,7 @@
 	var/minimap_flag = MINIMAP_FLAG_USCM
 	var/drawing = TRUE
 
-/obj/structure/machinery/prop/almayer/CICmap/dumb
+/obj/structure/machinery/prop/almayer/CICmap/no_drawing
 	drawing = FALSE
 
 /obj/structure/machinery/prop/almayer/CICmap/Initialize(mapload, ...)

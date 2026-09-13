@@ -195,9 +195,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(istype(medic_job))
 		medic_job.set_spawn_positions(GLOB.players_preassigned)
 
-	// Restore kilo and oscar to their caps once we have enough clients
+	// Restore kilo and oscar to their caps once we have enough players
 	for(var/datum/squad/target_squad in squads)
-		if(target_squad.pop_lock && target_squad.pop_lock < length(GLOB.clients))
+		if(target_squad.pop_lock && target_squad.pop_lock < GLOB.players_preassigned)
 			target_squad.roles_cap = target_squad.initial_roles_cap
 
 	// Set survivor starting amount based on marines assigned

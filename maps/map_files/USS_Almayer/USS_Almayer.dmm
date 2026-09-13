@@ -53390,7 +53390,7 @@
 	pixel_y = -15;
 	pixel_x = 19
 	},
-/obj/structure/machinery/prop/almayer/CICmap/dumb{
+/obj/structure/machinery/prop/almayer/CICmap/no_drawing{
 	pixel_x = 15;
 	pixel_y = 16;
 	density = 0
@@ -56936,7 +56936,7 @@
 	pixel_y = -15;
 	pixel_x = 19
 	},
-/obj/structure/machinery/prop/almayer/CICmap/dumb{
+/obj/structure/machinery/prop/almayer/CICmap/no_drawing{
 	pixel_x = 15;
 	pixel_y = 16;
 	density = 0

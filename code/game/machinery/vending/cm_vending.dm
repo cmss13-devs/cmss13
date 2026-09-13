@@ -23,7 +23,6 @@
 	var/vendor_theme = VENDOR_THEME_COMPANY //sets vendor theme in NanoUI
 
 	var/list/vendor_role = list() //to be compared with assigned_role to only allow those to use that machine. Converted to list by Jeser 09.05.20
-	var/squad_tag = "" //same to restrict vendor to specified squad
 
 	var/use_points = FALSE //disabling these two grants unlimited access to items for adminab... I mean, events purposes
 	var/use_snowflake_points = FALSE
@@ -589,10 +588,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 				vendor_successful_vend(itemspec, user)
 				add_fingerprint(user)
 				return TRUE
-			if((!human_user.assigned_squad && squad_tag) || (!human_user.assigned_squad?.omni_squad_vendor && (squad_tag && human_user.assigned_squad.name != squad_tag)) && squad_tag != "null")
-				to_chat(user, SPAN_WARNING("This machine isn't for your squad."))
-				vend_fail()
-				return FALSE
 
 			if(vend_flags & VEND_CATEGORY_CHECK)
 				// if the vendor uses flags to control availability
@@ -1495,11 +1490,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 			else
 				user.equip_to_appropriate_slot(new_item)
 				new_item.update_icon()
-
-			if(istype(new_item, /obj/item/device/radio/headset/almayer/marine/self_setting))
-				var/obj/item/device/radio/headset/almayer/marine/self_setting/new_headset = new_item
-				new_headset.self_set()
-
 
 	new_item.post_vendor_spawn_hook(user)
 

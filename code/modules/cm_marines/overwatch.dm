@@ -578,15 +578,15 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(!current_squad)
 		data["squad_list"] = list()
 		for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
-			if(current_squad.active && (role ? current_squad.squad_role == role : TRUE) &&!current_squad.overwatch_officer && current_squad.faction == faction && current_squad.name != "Root")
+			if(current_squad.active && (!role || current_squad.squad_role == role) &&!current_squad.overwatch_officer && current_squad.faction == faction && current_squad.name != "Root")
 				data["squad_list"] += current_squad.name
 		return data
 
 	data["current_squad"] = current_squad.name
 
 	for(var/datum/squad/index_squad in GLOB.RoleAuthority.squads)
-		if(index_squad.active && (role ? index_squad.squad_role == role : TRUE) && index_squad.faction == faction && index_squad.name != "Root")
-			var/list/squad_data = list(list("name" = index_squad.name, "primary_objective" = index_squad.primary_objective, "secondary_objective" = index_squad.secondary_objective, "overwatch_officer" = index_squad.overwatch_officer, "ref" = REF(index_squad)))
+		if(index_squad.active && (!role || index_squad.squad_role == role) && index_squad.faction == faction && index_squad.name != "Root")
+			var/list/squad_data = list(list("name" = index_squad.name, "primary_objective" = index_squad.primary_objective, "secondary_objective" = index_squad.secondary_objective, "overwatch_officer" = index_squad.overwatch_officer?.name, "ref" = REF(index_squad)))
 			data["squad_data"] += squad_data
 
 	data["z_hidden"] = z_hidden
@@ -825,6 +825,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Orbital bombardment cannon not yet ready to fire again! Please wait [COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)/10] seconds.")]")
 			else
 				handle_bombard(user)
+			return TRUE
 
 		if("dropsupply")
 			if(isnull(params["x"]) || isnull(params["y"]) || isnull(params["z"]))
@@ -833,10 +834,13 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			y_supply = text2num(params["y"])
 			z_supply = text2num(params["z"])
 			if(current_squad)
-				if(!COOLDOWN_FINISHED(current_squad, next_supplydrop))
+				if(!current_squad.drop_pad)
+					to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("This squad has no supply pad to launch to!")]")
+				else if(!COOLDOWN_FINISHED(current_squad, next_supplydrop))
 					to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Supply drop not yet ready to launch again!")]")
 				else
 					handle_supplydrop(user)
+			return TRUE
 
 		if("save_coordinates")
 			if(isnull(params["x"]) || isnull(params["y"]) || isnull(params["z"]))
@@ -945,6 +949,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 		if("red_alert")
 			set_security_level(SEC_LEVEL_RED)
+			return TRUE
 
 		if("change_sec_level")
 			var/list/alert_list = list(num2seclevel(SEC_LEVEL_GREEN), num2seclevel(SEC_LEVEL_BLUE))
@@ -964,6 +969,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			log_game("[key_name(user)] has changed the security level to [get_security_level()].")
 			message_admins("[key_name_admin(user)] has changed the security level to [get_security_level()].")
 			log_ares_security("Manual Security Update", "Changed the security level to [get_security_level()].", user)
+			return TRUE
 
 		if("gather_index_squad_data")
 			var/squad = params["squad"]
@@ -975,6 +981,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 						current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's don't know how
 			else
 				current_squad = locate(params["squad"])
+			return TRUE
 
 		if("announce")
 			var/mob/living/carbon/human/human_user = user	// does not use operator, in case they are not operating, and cannot be operated by another operator, on behalf of the operator
@@ -1067,6 +1074,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				return
 			echo_squad.engage_squad(TRUE)
 			message_admins("[key_name(user)] activated Echo Squad for '[reason]'.")
+			return TRUE
 
 		if("distress")
 			if(!SSticker.mode)
@@ -1108,6 +1116,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			log_game("[key_name(user)] has called for an emergency evacuation.")
 			message_admins("[key_name_admin(user)] has called for an emergency evacuation.")
 			log_ares_security("Initiate Evacuation", "Called for an emergency evacuation.", user)
+			return TRUE
 
 		if("evacuation_cancel")
 			var/mob/living/carbon/human/human_user = user
@@ -1130,6 +1139,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			log_game("[key_name(user)] has canceled the emergency evacuation.")
 			message_admins("[key_name_admin(user)] has canceled the emergency evacuation.")
 			log_ares_security("Cancel Evacuation", "Cancelled the emergency evacuation.", user)
+			return TRUE
 
 		if("general_quarters")
 			var/datum/ares_datacore/datacore = GLOB.ares_datacore

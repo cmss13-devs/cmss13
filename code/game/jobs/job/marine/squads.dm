@@ -52,45 +52,38 @@
 	squad = #_tag;\
 }
 
-#define SQUAD_VENDORS(_name, _access, _tag) \
+#define SQUAD_VENDORS(_name, _access) \
 /obj/structure/machinery/cm_vending/clothing/engi/_name {\
-	squad_tag = #_tag;\
 	req_access = list(ACCESS_MARINE_ENGPREP, _access);\
 	headset_type = /obj/item/device/radio/headset/almayer/marine/self_setting;\
 }\
 \
 /obj/structure/machinery/cm_vending/clothing/leader/_name{\
-	squad_tag = #_tag;\
 	req_access = list(ACCESS_MARINE_LEADER, _access);\
 	headset_type = /obj/item/device/radio/headset/almayer/marine/self_setting;\
 }\
 \
 /obj/structure/machinery/cm_vending/clothing/medic/_name{\
-	squad_tag = #_tag;\
 	req_access = list(ACCESS_MARINE_MEDPREP, _access);\
 	headset_type = /obj/item/device/radio/headset/almayer/marine/self_setting;\
 }\
 \
 /obj/structure/machinery/cm_vending/clothing/marine/_name{\
-	squad_tag = #_tag;\
 	req_access = list(_access);\
 	headset_type = /obj/item/device/radio/headset/almayer/marine/self_setting;\
 }\
 \
 /obj/structure/machinery/cm_vending/clothing/smartgun/_name{\
-	squad_tag = #_tag;\
 	req_access = list(ACCESS_MARINE_SMARTPREP, _access);\
 	headset_type = /obj/item/device/radio/headset/almayer/marine/self_setting;\
 }\
 \
 /obj/structure/machinery/cm_vending/clothing/specialist/_name{\
-	squad_tag = #_tag;\
 	req_access = list(ACCESS_MARINE_SPECPREP, _access);\
 	headset_type = /obj/item/device/radio/headset/almayer/marine/self_setting;\
 }\
 \
 /obj/structure/machinery/cm_vending/clothing/tl/_name{\
-	squad_tag = #_tag;\
 	req_access = list(ACCESS_MARINE_TL_PREP, _access);\
 	headset_type = /obj/item/device/radio/headset/almayer/marine/self_setting;\
 }
@@ -138,8 +131,6 @@
 	var/chat_color = COLOR_WHITE
 	/// Which special access do we grant them
 	var/list/access = list()
-	/// Can use any squad vendor regardless of squad connection
-	var/omni_squad_vendor = FALSE
 	/// Squad roles max caps per role list
 	var/list/roles_cap = list(
 		JOB_SQUAD_MARINE = null,
@@ -261,7 +252,7 @@
 	)
 SQUAD_LANDMARKS(alpha, Alpha)
 SQUAD_CRYOSTORAGE(alpha, Alpha)
-SQUAD_VENDORS(alpha, ACCESS_MARINE_ALPHA, Alpha)
+SQUAD_VENDORS(alpha, ACCESS_MARINE_ALPHA)
 SQUAD_DROPPAD(alpha, Alpha)
 
 /datum/squad/marine/bravo
@@ -293,7 +284,7 @@ SQUAD_DROPPAD(alpha, Alpha)
 
 SQUAD_LANDMARKS(bravo, Bravo)
 SQUAD_CRYOSTORAGE(bravo, Bravo)
-SQUAD_VENDORS(bravo, ACCESS_MARINE_BRAVO, Bravo)
+SQUAD_VENDORS(bravo, ACCESS_MARINE_BRAVO)
 SQUAD_DROPPAD(bravo, Bravo)
 
 /datum/squad/marine/charlie
@@ -348,7 +339,7 @@ SQUAD_DROPPAD(charlie, Charlie)
 	)
 SQUAD_LANDMARKS(delta, Delta)
 SQUAD_CRYOSTORAGE(delta, Delta)
-SQUAD_VENDORS(delta, ACCESS_MARINE_DELTA, Delta)
+SQUAD_VENDORS(delta, ACCESS_MARINE_DELTA)
 SQUAD_DROPPAD(delta, Delta)
 
 /datum/squad/marine/echo
@@ -357,7 +348,6 @@ SQUAD_DROPPAD(delta, Delta)
 	chat_color = "#67d692"
 	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_SUPPORT, ACCESS_MARINE_DELTA)
 	radio_freq = ECHO_FREQ
-	omni_squad_vendor = TRUE
 	minimap_color = MINIMAP_SQUAD_ECHO
 	background_icon = "background_echo"
 	beret_flavortext = "Tightly Woven, as it should be."
@@ -428,7 +418,7 @@ SQUAD_LANDMARKS(oscar, Oscar)
 SQUAD_CRYOSTORAGE(oscar, Oscar)
 SQUAD_DROPPAD(oscar, Oscar)
 
-SQUAD_VENDORS(support, ACCESS_MARINE_SUPPORT, null)
+SQUAD_VENDORS(support, ACCESS_MARINE_SUPPORT)
 
 /datum/squad/marine/cryo
 	name = SQUAD_MARINE_CRYO
@@ -439,7 +429,6 @@ SQUAD_VENDORS(support, ACCESS_MARINE_SUPPORT, null)
 	background_icon = "background_foxtrot"
 	beret_flavortext = "Looks and feels starched, cold to the touch."
 
-	omni_squad_vendor = TRUE
 	radio_freq = CRYO_FREQ
 
 	active = FALSE
@@ -539,7 +528,6 @@ SQUAD_VENDORS(support, ACCESS_MARINE_SUPPORT, null)
 /datum/squad/upp
 	name = "Root"
 	usable = TRUE
-	omni_squad_vendor = TRUE
 	faction = FACTION_UPP
 	radio_freq = UPP_FREQ
 	roles_cap = list(
@@ -591,7 +579,6 @@ SQUAD_VENDORS(support, ACCESS_MARINE_SUPPORT, null)
 	squad_type = "Team"
 	faction = FACTION_PMC
 	usable = TRUE
-	omni_squad_vendor = TRUE
 
 /datum/squad/pmc/one
 	name = "Team Upsilon"
@@ -613,7 +600,6 @@ SQUAD_VENDORS(support, ACCESS_MARINE_SUPPORT, null)
 	squad_type = "Cell"
 	faction = FACTION_CLF
 	usable = TRUE
-	omni_squad_vendor = TRUE
 
 /datum/squad/clf/one
 	name = "Python"

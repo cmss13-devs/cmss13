@@ -1694,16 +1694,19 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 						weyland_yutani_relation = new_relation
 
 				if("prefsquad")
+					var/list/default_selected
 					var/list/choices
 					if(preferred_squad && islist(preferred_squad) && length(preferred_squad))
-						choices = preferred_squad
+						var/list/existing_squad_prefs = preferred_squad
+						default_selected = existing_squad_prefs.Copy()
+						choices = existing_squad_prefs.Copy()
 
 						for(var/squad in list("Alpha", "Bravo", "Charlie", "Delta", "Oscar", "Kilo"))
 							if(!(squad in choices))
 								choices += squad
 					else
 						choices = list("Alpha", "Bravo", "Charlie", "Delta", "Oscar", "Kilo")
-					var/new_pref_squad = tgui_priority_input(user, "Choose your preferred squads in order of priority or none for 'No Preference'.", "Squad Preference", choices)
+					var/new_pref_squad = tgui_priority_input(user, "Choose your preferred squads in order of priority or none for 'No Preference'.", "Squad Preference", choices, default_selected)
 					if(isnull(new_pref_squad))
 						return // Canceled
 					preferred_squad = new_pref_squad

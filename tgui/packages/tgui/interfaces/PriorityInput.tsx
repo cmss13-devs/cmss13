@@ -19,6 +19,7 @@ import { Loader } from './common/Loader';
 
 type Data = {
   items: string[];
+  default_selections: string[];
   message: string;
   title: string;
   timeout: number;
@@ -27,17 +28,17 @@ type Data = {
 
 export const PriorityInput = (props) => {
   const { data } = useBackend<Data>();
-  const { items = [], message, timeout, title, theme } = data;
+  const { items = [], default_selections = items, message, timeout, title, theme } = data;
 
   // The full order of items as displayed. Reordering mutates this.
   const [itemsOrder, setItemsOrder] = useState<string[]>(items);
 
-  // Which items are checked/selected. Default to all items checked.
-  const [selections, setSelections] = useState<string[]>(items);
+  // Which items are checked/selected. Defaults to whatever the caller marked as pre-selected.
+  const [selections, setSelections] = useState<string[]>(default_selections);
 
   // Keep itemsOrder in sync if `items` prop changes.
   useEffect(() => setItemsOrder(items), [items]);
-  useEffect(() => setSelections(items), [items]);
+  useEffect(() => setSelections(default_selections), [default_selections]);
 
   const [searchQuery, setSearchQuery] = useState('');
   const search = createSearch(searchQuery, (item: string) => item);

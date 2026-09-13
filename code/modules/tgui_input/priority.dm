@@ -7,11 +7,12 @@
  * * message - The message inside the window
  * * title - The title of the window
  * * list/items - The list of items to display
+ * * list/default_selections - Which items should start checked/ordered, in that order (optional, defaults to all of items)
  * * timeout - The timeout for the input (optional)
  * * theme - The ui theme to use for the TGUI window (optional).
  * * ui_state - The TGUI UI state that will be returned in ui_state(). Default: always_state
  */
-/proc/tgui_priority_input(mob/user, message, title = "Select", list/items, timeout = 0, theme = null, ui_state = GLOB.always_state)
+/proc/tgui_priority_input(mob/user, message, title = "Select", list/items, list/default_selections = null, timeout = 0, theme = null, ui_state = GLOB.always_state)
 	if (!user)
 		user = usr
 	if(!length(items))
@@ -26,7 +27,7 @@
 	if(isnull(user.client))
 		return null
 
-	var/datum/tgui_priority_input/input = new(user, message, title, items, timeout, theme, ui_state)
+	var/datum/tgui_priority_input/input = new(user, message, title, items, default_selections, timeout, theme, ui_state)
 	if(input.invalid)
 		qdel(input)
 		return
@@ -78,6 +79,8 @@
 	var/message
 	/// List of items to display
 	var/list/items
+	/// Which items start checked/ordered
+	var/list/default_selections
 	/// List of selected items
 	var/list/choices
 	/// Time when the input was created
@@ -93,7 +96,7 @@
 	/// Whether the tgui list input is invalid or not (i.e. due to all list entries being null)
 	var/invalid = FALSE
 
-/datum/tgui_priority_input/New(mob/user, message, title, list/items, timeout, theme = null, ui_state)
+/datum/tgui_priority_input/New(mob/user, message, title, list/items, list/default_selections = null, timeout, theme = null, ui_state)
 	src.title = title
 	src.message = message
 	src.items = list()
@@ -115,6 +118,17 @@
 	if(!length(src.items))
 		invalid = TRUE
 
+	if(default_selections)
+		src.default_selections = list()
+		for(var/i in default_selections)
+			if(!i)
+				continue
+			var/string_key = whitelistedWords.Replace("[i]", "")
+			if(string_key in src.items)
+				src.default_selections += string_key
+	else
+		src.default_selections = src.items.Copy()
+
 	if (timeout)
 		src.timeout = timeout
 		start_time = world.time
@@ -124,6 +138,7 @@
 	SStgui.close_uis(src)
 	state = null
 	items?.Cut()
+	default_selections?.Cut()
 	return ..()
 
 /**
@@ -159,6 +174,7 @@
 	var/list/data = list()
 
 	data["items"] = items
+	data["default_selections"] = default_selections
 	data["large_buttons"] = TRUE // Pref?
 	data["message"] = message
 	data["swapped_buttons"] = FALSE // Pref?

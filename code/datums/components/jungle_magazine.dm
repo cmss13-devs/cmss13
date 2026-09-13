@@ -285,7 +285,7 @@ Current Problems:
 	return TRUE
 
 /datum/component/jungle_magazine/proc/get_examine_text(mob/user)
-	. += SPAN_INFO("Use special action switch between magazines, use in hand eject magazines.")
+	. += SPAN_INFO("Use special action switch between magazines, use in hand to remove the magazines.")
 	. += "\n"
 	if (attached_magazine == 0) //If there's no attached magazine there really shouldn't be a need for description of the other mag, user WILL have parent as active
 		. += "No magazine is attached at this moment."

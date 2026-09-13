@@ -24,6 +24,8 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	var/list/generic_landmarks
 	/// Flag to determine if there is an insert, if there is but a player has opted out of too many archetypes, we can know to simply not spawn them.
 	var/insert_present_flag = FALSE
+	/// Whether this survivor type is infectable and affects larva counts
+	var/counts_for_larva = TRUE
 
 /datum/job/civilian/survivor/set_spawn_positions(count)
 	spawn_positions = clamp((floor(count * SURVIVOR_TO_TOTAL_SPAWN_RATIO)), 2, 8)
@@ -131,32 +133,33 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	else
 		return HAS_FLAG(client.prefs?.toggles_survivor, PLAY_SURVIVOR_NON_HOSTILE)
 
-/datum/job/civilian/survivor/spawn_in_player(mob/new_player/NP)
+/datum/job/civilian/survivor/spawn_in_player(mob/new_player/new_player_mob)
 	. = ..()
+
 	total_spawned++
 
-	var/mob/living/carbon/human/H = .
+	var/mob/living/carbon/human/human_mob = .
 
-	GLOB.spawned_survivors += WEAKREF(H)
+	GLOB.spawned_survivors += WEAKREF(human_mob)
 
-	var/obj/effect/landmark/survivor_spawner/picked_spawner = slotted_landmarks[NP]
+	var/obj/effect/landmark/survivor_spawner/picked_spawner = slotted_landmarks[new_player_mob]
 	if(!picked_spawner)
 		// Generally this shouldn't happen since role authority shouldn't be rolling us for a survivor in a hostile scenario
-		message_admins("Failed to spawn_in_player [key_name_admin(H)] as a survivor! This likely means NIGHTMARE_SCENARIO_HOSTILE_SURVIVOR is incorrect for this map!")
-		H.send_to_lobby()
-		qdel(H)
+		message_admins("Failed to spawn_in_player [key_name_admin(human_mob)] as a survivor! This likely means NIGHTMARE_SCENARIO_HOSTILE_SURVIVOR is incorrect for this map!")
+		human_mob.send_to_lobby()
+		qdel(human_mob)
 		return null
 
-	H.forceMove(get_turf(picked_spawner))
+	human_mob.forceMove(get_turf(picked_spawner))
 
-	handle_equip_gear(H, picked_spawner)
+	handle_equip_gear(human_mob, picked_spawner)
 
 	if(picked_spawner.roundstart_damage_max > 0)
 		if(istype(picked_spawner) && picked_spawner.roundstart_damage_max > 0)
 			for(var/i in 0 to picked_spawner.roundstart_damage_times)
-				H.take_limb_damage(rand(picked_spawner.roundstart_damage_min, picked_spawner.roundstart_damage_max), 0)
+				human_mob.take_limb_damage(rand(picked_spawner.roundstart_damage_min, picked_spawner.roundstart_damage_max), 0)
 
-	H.name = H.get_visible_name()
+	human_mob.name = human_mob.get_visible_name()
 
 	if(length(picked_spawner.intro_text))
 		intro_text = picked_spawner.intro_text
@@ -167,7 +170,44 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	if(picked_spawner.hostile)
 		hostile = TRUE
 
-	new /datum/cm_objective/move_mob/almayer/survivor(H)
+	if(counts_for_larva)
+		RegisterSignal(human_mob, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(grant_larva_on_death))
+
+	new /datum/cm_objective/move_mob/almayer/survivor(human_mob)
+
+/// SIGNAL_HANDLER for COMSIG_HUMAN_SET_UNDEFIBBABLE to grant main hive larva
+/datum/job/civilian/survivor/proc/grant_larva_on_death(mob/living/carbon/human/survivor)
+	SIGNAL_HANDLER
+
+	if(ROUND_TIME > 1 HOURS)
+		return
+	if(survivor.chestburst)
+		return
+	if(survivor.status_flags & XENO_HOST)
+		// We should wait to see if the embryo succeeds or not (this edgecase shouldn't normally happen)
+		var/obj/item/alien_embryo/embryo = locate() in survivor
+		if(embryo)
+			RegisterSignal(embryo, COMSIG_PARENT_QDELETING, PROC_REF(grant_larva_on_embryo_delete))
+			return
+
+	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	if(istype(hive))
+		hive.partial_larva += CONFIG_GET(number/larva_for_surv_death)
+		hive.convert_partial_larva_to_full_larva()
+
+/// SIGNAL_HANDLER for COMSIG_PARENT_QDELETING of an embryo to grant main hive larva
+/datum/job/civilian/survivor/proc/grant_larva_on_embryo_delete(obj/item/alien_embryo/embryo, force)
+	SIGNAL_HANDLER
+
+	if(ROUND_TIME > 1 HOURS)
+		return
+	if(embryo.affected_mob.chestburst)
+		return
+
+	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	if(istype(hive))
+		hive.partial_larva += CONFIG_GET(number/larva_for_surv_death)
+		hive.convert_partial_larva_to_full_larva()
 
 /datum/job/civilian/survivor/generate_entry_message(mob/living/carbon/human/survivor)
 	if(intro_text)
@@ -259,6 +299,7 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	total_positions = 1
 	spawn_positions = 1
 	job_options = null
+	counts_for_larva = FALSE
 
 /datum/job/civilian/survivor/synth/set_spawn_positions(count)
 	return spawn_positions

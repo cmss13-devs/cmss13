@@ -82,8 +82,10 @@
 	//Life variables
 	var/oxygen_alert = 0
 	var/fire_alert = 0
-	var/revive_grace_period = 5 MINUTES //5 minutes
-	var/undefibbable = FALSE //whether the human is dead and past the defibbrillation period.
+	/// How much time while dead before we become undefibbable
+	var/revive_grace_period = 5 MINUTES
+	/// Whether the human is dead and past the defibrillation period. Do not set this TRUE directly, instead use set_undefibbable so the signal can be sent too.
+	var/undefibbable = FALSE
 
 	var/holo_card_color = "" //which color type of holocard is printed on us
 	var/holo_card_accuracy = HOLOCARD_ACCURACY_HANDHELD // What placed this holocard on the human

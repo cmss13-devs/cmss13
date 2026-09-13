@@ -258,7 +258,7 @@
 
 	if(hive)
 		new_xeno.set_hive_and_update(hive.hivenumber)
-		if(!affected_mob.first_xeno && hive.hive_location && !ismonkey(affected_mob))
+		if(!affected_mob.first_xeno && hive.hive_location && !ismonkey(affected_mob) && !issurvivorjob(affected_mob.job))
 			hive.increase_larva_after_burst(is_nested)
 			hive.hive_ui.update_burrowed_larva()
 
@@ -401,7 +401,7 @@
 				O = victim_human.internal_organs_by_name[i]
 				victim_human.internal_organs_by_name -= i
 				victim_human.internal_organs -= O
-			victim_human.undefibbable = TRUE
+			victim_human.set_undefibbable()
 		victim.chestburst = 2
 		victim.update_burst()
 		victim.death(cause) // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.

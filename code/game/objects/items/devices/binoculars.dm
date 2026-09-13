@@ -158,7 +158,7 @@
 				return FALSE
 			for(var/turf/turf in path)
 				if(turf.opacity)
-					to_chat(user, SPAN_WARNING("There is something in the way of the laser!"))
+					to_chat(user, SPAN_WARNING("[turf] is in the way of the laser!"))
 					return FALSE
 				for(var/obj/blocker in turf.contents)
 					if(blocker.opacity)
@@ -167,7 +167,6 @@
 		acquire_target(targeted_atom, user)
 		return TRUE
 	return FALSE
-
 /obj/item/device/binoculars/range/proc/stop_targeting(mob/living/carbon/human/user)
 	if(coord)
 		QDEL_NULL(coord)

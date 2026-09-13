@@ -1091,6 +1091,12 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/east_containment_hive)
+"acU" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/landing_zone)
 "acV" = (
 /obj/effect/landmark/objective_landmark/close,
 /obj/structure/filingcabinet{
@@ -1730,6 +1736,9 @@
 	},
 /turf/open/floor/almayer/silver/north,
 /area/white_antre/indoors/main_level/east_containment_hive)
+"aer" = (
+/turf/open/floor/prison/redcorner/north,
+/area/white_antre/landing_zone)
 "aes" = (
 /obj/effect/decal/cleanable/dirt{
 	icon_state = "thermite";
@@ -2426,6 +2435,10 @@
 	},
 /turf/open/floor/almayer/silverfull,
 /area/white_antre/indoors/main_level/east_containment_hive)
+"afY" = (
+/obj/effect/sentry_landmark/lz_1/top_left,
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/landing_zone)
 "afZ" = (
 /obj/structure/sink{
 	dir = 8;
@@ -2635,6 +2648,10 @@
 /obj/effect/decal/cleanable/blood/tracks/footprints,
 /turf/open/floor/almayer/research/containment/corner/west,
 /area/white_antre/indoors/upper_level/simian_storage)
+"agM" = (
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor/prison/darkyellow2/southwest,
+/area/white_antre/landing_zone/roof)
 "agN" = (
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/white_antre/indoors/upper_level/simian_storage)
@@ -15144,7 +15161,7 @@
 /obj/structure/barricade/handrail/no_vault{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/landing_zone)
 "aIE" = (
 /obj/effect/decal/warning_stripes{
@@ -20369,7 +20386,7 @@
 /turf/open/floor/prison/red,
 /area/white_antre/landing_zone)
 "aYD" = (
-/turf/open/floor/prison/red,
+/turf/open/floor/prison/redcorner/west,
 /area/white_antre/landing_zone)
 "aYE" = (
 /turf/open/floor/prison/red/southeast,
@@ -20894,7 +20911,7 @@
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/landing_zone)
 "baf" = (
 /obj/structure/flora/bush/snow{
@@ -22273,9 +22290,6 @@
 /obj/structure/barricade/handrail/no_vault{
 	dir = 1
 	},
-/turf/open/floor/prison/red/north,
-/area/white_antre/landing_zone)
-"bdf" = (
 /turf/open/floor/prison/red/north,
 /area/white_antre/landing_zone)
 "bdg" = (
@@ -45580,7 +45594,8 @@
 /area/white_antre/indoors/upper_level/east_corridor)
 "cjh" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
-	dir = 2
+	dir = 2;
+	req_one_access = null
 	},
 /turf/open/floor/corsat/marked,
 /area/white_antre/landing_zone/roof)
@@ -50908,7 +50923,9 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/landing_zone/roof)
 "cvY" = (
-/obj/structure/machinery/door/airlock/almayer/secure/colony,
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
+	req_one_access = null
+	},
 /turf/open/floor/corsat/marked,
 /area/white_antre/landing_zone/roof)
 "cvZ" = (
@@ -100326,7 +100343,7 @@ aEV
 aEV
 aEV
 bXM
-bYb
+bXQ
 cfI
 cfC
 bUs
@@ -100494,7 +100511,7 @@ bXo
 bXo
 bYW
 bYC
-bdf
+aZa
 cfJ
 aZa
 lzW
@@ -100523,8 +100540,8 @@ xjs
 aZa
 aYL
 aYL
-aYD
-bYx
+aZa
+acU
 bXo
 aEV
 aEQ
@@ -100662,7 +100679,7 @@ bZy
 bYW
 bYW
 bYm
-bdf
+aZa
 bXj
 cfD
 bcF
@@ -100691,8 +100708,8 @@ aZi
 aZa
 aYL
 aYL
-bWP
-bYx
+bXj
+acU
 bXo
 bXo
 bXo
@@ -100830,7 +100847,7 @@ bXo
 bXo
 bXo
 bYD
-bYb
+bbP
 aYL
 aZa
 eZj
@@ -100859,7 +100876,7 @@ ezs
 aYL
 aYL
 aYL
-bWP
+bXg
 bae
 bXo
 bXo
@@ -101681,14 +101698,14 @@ oSf
 wvY
 bbQ
 bWX
-aYN
-aYN
-aYN
-aYN
-aYN
-bWX
-bWX
-bWX
+aer
+aZa
+aZa
+aZa
+aZa
+bXj
+bXj
+bXg
 bWX
 bWQ
 vMK
@@ -102515,7 +102532,7 @@ aKB
 aKB
 aKB
 aKB
-aKC
+afY
 iKa
 bAS
 bAP
@@ -102670,7 +102687,7 @@ bRL
 cwf
 cvV
 cvV
-ctR
+agM
 ctR
 bXo
 bXo
@@ -102701,7 +102718,7 @@ aZU
 bXk
 aKB
 aKB
-aKB
+aZU
 aKB
 aKB
 aKB
@@ -142361,14 +142378,14 @@ cmO
 cmO
 cmO
 cmO
-jIC
+fuj
 kPj
 kPj
 kPj
 kPj
 kPj
 kPj
-oyK
+pHD
 aJq
 aJq
 aJq
@@ -142529,14 +142546,14 @@ cmO
 cmO
 cmO
 cmO
-cmO
 jIC
 hLL
 hLL
 hLL
 hLL
+hLL
+hLL
 oyK
-cmK
 aJq
 aJq
 aJq
@@ -143537,8 +143554,8 @@ kDp
 kDp
 kDp
 kDp
+kDp
 vuo
-cmO
 cmK
 cmK
 cmK
@@ -143706,7 +143723,7 @@ kPj
 kPj
 kPj
 kPj
-vuo
+pHD
 aJq
 cmK
 cmK

@@ -95,6 +95,7 @@
 #include "subsystem_init.dm"
 #include "tgui_create_message.dm"
 #include "timer_sanity.dm"
+#include "toggle_crest.dm"
 #include "tutorials.dm"
 #include "weed_tests.dm"
 #include "xeno_strains.dm"

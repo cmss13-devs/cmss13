@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - server: "Juke build now checks last_define_params for whether to rebuild dm"

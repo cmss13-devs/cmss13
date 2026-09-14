@@ -1,0 +1,5 @@
+author: "ori-disillusion-mirnov"
+delete-after: True
+changes:
+  - bugfix: "fixed runtime in clean_observe_target() by adding a check for a client"
+  - bugfix: "other possible set_eye related runtimes from lacking a client"

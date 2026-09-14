@@ -3,15 +3,9 @@
 	faction_tag = FACTION_HYPERDYNE
 	base_icon_file = 'icons/mob/hud/factions/hyperdyne.dmi'
 
-/datum/faction/hyperdyne/modify_hud_holder(image/holder, mob/living/carbon/human/human)
-	var/icon/override_icon_file
-	var/hud_icon_state
-	var/_role = human.job
-	if(!_role)
-		var/obj/item/card/id/id_card = human.get_idcard()
-		if(id_card)
-			_role = id_card.rank
-	switch(_role)
+/datum/faction/hyperdyne/modify_hud_holder_from_data(image/holder, location, job_rank, paygrade, assignment, rank_fallback, rank_override, datum/squad/squad)
+	var/hud_icon_state = null
+	switch(job_rank)
 		if(JOB_HC_SEC)
 			hud_icon_state = "security"
 		if(JOB_HC_SEC_SYNTH)
@@ -40,5 +34,6 @@
 			hud_icon_state = "dep_director"
 		if(JOB_HC_DIRECTOR)
 			hud_icon_state = "director"
+
 	if(hud_icon_state)
-		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, human, "hc_[hud_icon_state]")
+		holder.overlays += image(base_icon_file, location, "hc_[hud_icon_state]")

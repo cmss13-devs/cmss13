@@ -173,3 +173,8 @@
   - bugfix: Fixed the CLF incorrectly displaying the UPP victory card.
   - bugfix: Fixes eye-blur becoming permanent if you re-entered your body late after
       being revived
+2026-09-14:
+  PoltavskaPraca:
+  - imageadd: added mouse cursor different sprites
+  - qol: new mouse cursors for smartgunner, changes based on if we are using ap/frontline
+      mode

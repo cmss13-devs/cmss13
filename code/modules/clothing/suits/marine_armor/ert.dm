@@ -249,6 +249,11 @@
 	storage_slots = 3
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP/officer)
 
+/obj/item/clothing/suit/storage/marine/faction/UPP/officer/mss
+	name = "\improper UPP MSS field jacket"
+	desc = "A lightweight protective jacket issued to officers of the UPP's Ministry of Space Security. It is plain and largely devoid of decoration. The MSS maintains agents and informants throughout the Middle Heavens, both within the Union and far beyond its borders. Seeing this jacket makes you wonder how long they have been watching you."
+	icon_state = "upp_coat_mss"
+
 /obj/item/clothing/suit/storage/marine/faction/UPP/kapitan
 	name = "\improper UL4 senior officer jacket"
 	desc = "A lightweight jacket, issued to senior officers of the UPP's military. Made of high-quality materials, even going as far as having the ranks and insignia of the Kapitan and their Company emblazoned on the shoulders and front of the jacket. Slightly protective from incoming damage, best off with proper armor however."

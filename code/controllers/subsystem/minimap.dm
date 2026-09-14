@@ -524,35 +524,37 @@ SUBSYSTEM_DEF(minimaps)
  * * marker: image or mutable_appearance we want to be using on the map
  */
 /datum/controller/subsystem/minimaps/proc/add_marker(atom/target, hud_flags = NONE, image/blip, image_x, image_y, is_label=FALSE)
-	if(!isatom(target) || !hud_flags || !blip)
+	if(!hud_flags || !blip)
 		CRASH("Invalid marker added to subsystem")
 
-	var/actual_z = target.z
-	if(ismob(target) && target.loc && !isturf(target.loc))
-		actual_z = target.loc.z
+	// Legacy behavior: track mobs one level in
+	var/turf/target_turf = get_turf(target)
+	var/z = target.z
+	if(ismob(target) && !z && target.loc)
+		z = target.loc.z
+	if(!z)
+		return
+	z = "[z]"
 
-	if(!initialized || !(minimaps_by_z["[actual_z]"])) //the minimap doesn't exist yet, z level was probably loaded after init
-		for(var/datum/callback/callback as anything in LAZYACCESS(earlyadds, "[actual_z]"))
+	var/datum/hud_displays/minimap = minimaps_by_z[z]
+
+	if(!initialized || !minimap) //the minimap doesn't exist yet, z level was probably loaded after init
+		for(var/datum/callback/callback as anything in LAZYACCESS(earlyadds, z))
 			if(callback.arguments[1] == target)
 				return
-		LAZYADDASSOCLIST(earlyadds, "[actual_z]", CALLBACK(src, PROC_REF(add_marker), target, hud_flags, blip))
+		LAZYADDASSOCLIST(earlyadds, z, CALLBACK(src, PROC_REF(add_marker), target, hud_flags, blip))
 		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(remove_earlyadd), override = TRUE) //Override required for late z-level loading to prevent hard dels where an atom is initiated during z load, but is qdel'd before it finishes
 		return
 
-
-	var/turf/target_turf = get_turf(target)
-	if(ismob(target) && target.loc && !isturf(target.loc))
-		target_turf = get_turf(target.loc)
-
-	blip.pixel_x = MINIMAP_PIXEL_FROM_WORLD(target_turf.x) + minimaps_by_z["[target_turf.z]"].x_offset + image_x
-	blip.pixel_y = MINIMAP_PIXEL_FROM_WORLD(target_turf.y) + minimaps_by_z["[target_turf.z]"].y_offset + image_y
+	blip.pixel_x = MINIMAP_PIXEL_FROM_WORLD(target_turf.x) + minimap.x_offset + image_x
+	blip.pixel_y = MINIMAP_PIXEL_FROM_WORLD(target_turf.y) + minimap.y_offset + image_y
 
 	images_by_source[target] = blip
 	for(var/flag in bitfield2list(hud_flags))
 		if(is_label)
 			flag = "[flag]label"
-		minimaps_by_z["[target_turf.z]"].images_assoc["[flag]"][target] = blip
-		minimaps_by_z["[target_turf.z]"].images_raw["[flag]"] += blip
+		minimap.images_assoc["[flag]"][target] = blip
+		minimap.images_raw["[flag]"] += blip
 		for(var/datum/minimap_updater/updater as anything in update_targets["[flag]"])
 			if(target_turf.z == updater.ztarget)
 				updater.raw_blips += blip
@@ -636,20 +638,12 @@ SUBSYSTEM_DEF(minimaps)
 	pixel_x = MINIMAP_PIXEL_FROM_WORLD(movable_loc.x) + minimap.x_offset
 	pixel_y = MINIMAP_PIXEL_FROM_WORLD(movable_loc.y) + minimap.y_offset
 
+	UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
+
 ///Used to handle minimap tracking inside other movables
 /atom/movable/proc/override_minimap_tracking()
 	var/image/blip = SSminimaps.images_by_source[src]
 	blip.RegisterSignal(loc, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/image, minimap_on_move))
-	RegisterSignal(loc, COMSIG_ATOM_EXITED, PROC_REF(cancel_override_minimap_tracking))
-
-///Stops minimap override tracking
-/atom/movable/proc/cancel_override_minimap_tracking(atom/movable/source, atom/movable/mover)
-	SIGNAL_HANDLER
-	if(mover != src)
-		return
-	var/image/blip = SSminimaps.images_by_source[src]
-	blip?.UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
-	UnregisterSignal(source, COMSIG_ATOM_EXITED)
 
 
 /**
@@ -1197,7 +1191,7 @@ SUBSYSTEM_DEF(minimaps)
 		if(to_track)
 			RegisterSignal(to_track, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/datum/action/minimap, clear_locator_override))
 			if(owner && owner.loc == to_track)
-				RegisterSignal(to_track, COMSIG_ATOM_EXITED, TYPE_PROC_REF(/datum/action/minimap, on_exit_check))
+				RegisterSignal(to_track, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/datum/action/minimap, on_exit_check))
 		if(owner)
 			RegisterSignal(new_track, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_owner_z_change))
 			var/turf/old_turf = get_turf(tracking)
@@ -1209,7 +1203,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(to_track)
 		RegisterSignal(to_track, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/datum/action/minimap, clear_locator_override))
 		if(owner.loc == to_track)
-			RegisterSignal(to_track, COMSIG_ATOM_EXITED, TYPE_PROC_REF(/datum/action/minimap, on_exit_check))
+			RegisterSignal(to_track, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/datum/action/minimap, on_exit_check))
 	RegisterSignal(new_track, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_owner_z_change))
 	var/turf/old_turf = get_turf(tracking)
 	if(old_turf.z != new_track.z)
@@ -1219,18 +1213,17 @@ SUBSYSTEM_DEF(minimaps)
 	locator.update(new_track)
 
 ///checks if we should clear override if the owner exits this atom
-/datum/action/minimap/proc/on_exit_check(datum/source, atom/movable/mover)
+/datum/action/minimap/proc/on_exit_check(atom/movable/source, oldloc, direction, Forced)
 	SIGNAL_HANDLER
-	if(mover && mover != owner)
-		return
-	clear_locator_override()
+	if(source.loc != oldloc)
+		clear_locator_override()
 
 ///CLears the locator override in case the override target is deleted
 /datum/action/minimap/proc/clear_locator_override()
 	SIGNAL_HANDLER
 	if(!locator_override)
 		return
-	UnregisterSignal(locator_override, list(COMSIG_PARENT_QDELETING, COMSIG_ATOM_EXITED))
+	UnregisterSignal(locator_override, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED))
 	if(owner)
 		UnregisterSignal(locator_override, COMSIG_MOVABLE_Z_CHANGED)
 		RegisterSignal(owner, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_owner_z_change))

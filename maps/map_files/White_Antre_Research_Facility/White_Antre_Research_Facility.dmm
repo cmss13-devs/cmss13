@@ -16682,6 +16682,9 @@
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/main_level/research)
 "aNI" = (
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 60
+	},
 /turf/open/floor/prison/darkbrownfull2,
 /area/white_antre/landing_zone/roof)
 "aNJ" = (
@@ -22723,9 +22726,6 @@
 /obj/item/tool/pen/blue{
 	pixel_y = -1;
 	pixel_x = -6
-	},
-/obj/structure/machinery/power/apc/power/north{
-	start_charge = 60
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison/darkbrownfull2,

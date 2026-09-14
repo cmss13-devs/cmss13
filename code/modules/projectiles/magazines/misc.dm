@@ -32,9 +32,9 @@
 	gun_type = /obj/item/weapon/gun/m60
 
 /obj/item/ammo_magazine/pkp
-	name = "QYJ-72 ammo box (12.7x35mm)"
-	desc = "A 12.7x35mm caseless 250-round box magazine for the UPP's standard GPMG, the QYJ-72."
-	caliber = "12.7x35mm"
+	name = "QYJ-72 ammo box (12x28mm)"
+	desc = "A 12x28mm caseless 250-round box magazine for the UPP's standard GPMG, the QYJ-72."
+	caliber = "12x28mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/machineguns.dmi'
 	icon_state = "qjy72"
 	w_class = SIZE_MEDIUM

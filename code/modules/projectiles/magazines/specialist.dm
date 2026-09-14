@@ -56,9 +56,9 @@
 //Type 88 //Based on the actual Dragunov designated marksman rifle.
 
 /obj/item/ammo_magazine/sniper/svd
-	name = "\improper FPA-299 Magazine (12.7x35mm)"
-	desc = "A large-caliber 12.7x35mm caseless magazine for the Type-88 designated marksman rifle."
-	caliber = "12.7x35mm"
+	name = "\improper FPA-299 Magazine (12x28mm)"
+	desc = "A large-caliber 12x28mm caseless magazine for the Type-88 designated marksman rifle."
+	caliber = "12x28mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/marksman_rifles.dmi'
 	icon_state = "type88mag"
 	default_ammo = /datum/ammo/bullet/sniper/upp

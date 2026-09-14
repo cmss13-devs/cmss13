@@ -62,11 +62,13 @@
 	chemname = "speed_stimulant"
 	desc = "A stimpack loaded with an experimental performance enhancement stimulant. Extremely muscle-stimulating. Lasts 5 minutes."
 	maptext_label = "StSp"
+
 /obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant
 	name = "brain stimulant stimpack"
 	chemname = "brain_stimulant"
 	desc = "A stimpack loaded with an experimental CNS stimulant. Extremely nerve-stimulating. Lasts 5 minutes."
 	maptext_label = "StBr"
+
 /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant
 	amount_per_transfer_from_this = 5
 	volume = 5

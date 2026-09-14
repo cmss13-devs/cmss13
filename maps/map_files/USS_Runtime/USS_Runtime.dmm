@@ -511,7 +511,7 @@
 	dwidth = 8;
 	width = 17;
 	dheight = 12;
-	height = 24;
+	height = 24
 	},
 /turf/open/floor/almayer/plating,
 /area/event)
@@ -4878,11 +4878,11 @@ PS
 PS
 WH
 IH
-TI
 IH
-TI
 IH
-TI
+IH
+IH
+IH
 WH
 YG
 dU

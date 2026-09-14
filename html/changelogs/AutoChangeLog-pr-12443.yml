@@ -1,8 +1,0 @@
-author: "LC4492"
-delete-after: True
-changes:
-  - code_imp: "Instead of Vs the thermal tarps are now Ms, following tradition."
-  - imagetweak: "Updates the sprites for body, cryo and tarp bags to show an 'empty' version of the sprite when the bag is empty, so it is now visually clear when the bag has someone inside it or not."
-  - imagetweak: "Changed 'holocards' on the cryobags from the 2x2 square on top of the bag to recolored versions of the bodybag label, so they are now much bigger, which helps you to notice it better, and now appear similar to a real life triage card attached to the bag."
-  - imagetweak: "Change tarps to use their currently unused closed version, of which I've hand-crafted to now have a very smooth 'invisibility' transition, there's also some small details that will make the bag look more 'alive' aswell."
-  - soundtweak: "Changed the sounds of when the tarp bags are closed or opened to the same sounds of body and cryo bags, given it just makes more sense."

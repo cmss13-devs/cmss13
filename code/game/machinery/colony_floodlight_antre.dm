@@ -38,7 +38,7 @@
 
 /obj/structure/machinery/colony_floodlight_switch/antre/attack_hand(mob/user as mob)
 	if(damaged)
-		to_chat(user, "The [src] is broken!")
+		to_chat(user, "[src] is broken!")
 		return FALSE
 	if(!ishuman(user))
 		to_chat(user, "Nice try.")

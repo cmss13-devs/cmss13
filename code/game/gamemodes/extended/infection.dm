@@ -75,7 +75,7 @@
 				possible_survivors -= A
 
 		if(length(possible_survivors)) //We may have stripped out all the contenders, so check again.
-			var/i = surv_starting_num
+			var/i = 0
 			var/datum/mind/new_survivor
 			while(i > 0)
 				if(!length(possible_survivors))

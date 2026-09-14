@@ -1,5 +1,0 @@
-author: "PoltavskaPraca"
-delete-after: True
-changes:
-  - imageadd: "added mouse cursor different sprites"
-  - qol: "new mouse cursors for smartgunner, changes based on if we are using ap/frontline mode"

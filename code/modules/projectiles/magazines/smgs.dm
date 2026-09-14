@@ -182,11 +182,11 @@
 	bonus_mag_aim_slowdown = SLOWDOWN_ADS_QUICK_MINUS
 	bonus_mag_wield_delay = WEAPON_DELAY_VERY_FAST
 //-------------------------------------------------------
-//Type 64 SMG, based on the PP Bizon.
+//NSP-773 SMG, based on the PP Bizon.
 
 /obj/item/ammo_magazine/smg/bizon
-	name = "\improper Type 64 Helical Magazine (8.6x20mm)"
-	desc = "A 8.6x20mm caseless 64-round helical magazine for the Type 64 submachinegun, the standard SMG of the UPP armed collective."
+	name = "\improper NSP-773 Helical Magazine (8.6x20mm)"
+	desc = "A 8.6x20mm caseless 64-round helical magazine for the NSP-773 submachinegun, the standard SMG of the UPP armed collective."
 	caliber = "8.6x20mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/smgs.dmi'
 	icon_state = "type64mag"

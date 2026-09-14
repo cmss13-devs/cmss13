@@ -510,30 +510,29 @@
 		if(user_weakref)
 			focus_mob()
 			if(!user.client?.prefs.custom_cursors)
+				current = null
+				user_weakref = null
 				return ..()
 			user.client.mouse_pointer_icon = initial(user.client.mouse_pointer_icon)
 
 	current = null
 	user_weakref = null
+	addtimer(CALLBACK(src, PROC_REF(clear_refs)), 5) // has something to do with the processing, the value gets set again for some reason even tho we cleared it above
 	return ..()
 
-/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/tgui_interact(mob/user, datum/tgui/ui)
-	// Update UI
-	ui = SStgui.try_update_ui(user, src, ui)
+/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/proc/clear_refs()
+	user_weakref = null
+	current = null
 
+/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
 	SEND_SIGNAL(src, COMSIG_CAMERA_REFRESH)
 
 	if(!ui)
 		var/user_ref = WEAKREF(user)
 		var/is_living = isliving(user)
-		// Ghosts shouldn't count towards concurrent users, which produces
-		// an audible terminal_on click.
 		if(is_living)
-			concurrent_users += user_ref
 			user_weakref = user_ref
-		// Turn on the console
-		if(length(concurrent_users) == 1 && is_living)
-			update_use_power(USE_POWER_ACTIVE)
 
 		SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)
 
@@ -659,6 +658,7 @@
 			return FALSE
 
 		linked_m90.open_fire(target_turf, user)
+		ui_data()
 
 
 /obj/structure/machinery/computer/cameras/dropship/three

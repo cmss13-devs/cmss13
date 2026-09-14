@@ -1675,6 +1675,7 @@
 		return
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("We rip out [xeno.iff_tag]! For the Hive!"))
 	xeno.adjustBruteLoss(50)
+	xeno.updatehealth()
 	xeno.iff_tag.forceMove(get_turf(xeno))
 	xeno.iff_tag = null
 
@@ -1688,6 +1689,7 @@
 			continue
 		xeno.visible_message(SPAN_XENOWARNING("[xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("We rip out [xeno.iff_tag]! For the hive!"))
 		xeno.adjustBruteLoss(50)
+		xeno.updatehealth()
 		xeno.iff_tag.forceMove(get_turf(xeno))
 		xeno.iff_tag = null
 	if(!length(defectors))

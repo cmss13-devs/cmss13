@@ -56,7 +56,7 @@
 		projectilesound = 'sound/weapons/pulse2.ogg'
 	ion_trail = new
 	ion_trail.set_up(src)
-	ion_trail.start()
+	ion_trail.start(do_NOT_delete = TRUE)
 
 /mob/living/simple_animal/hostile/retaliate/malf_drone/Process_Spacemove(check_drift = 0)
 	return 1

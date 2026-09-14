@@ -1,8 +1,0 @@
-author: "ComboTombo"
-delete-after: True
-changes:
-  - code_imp: "Moved setting assignments and ID cards for specialists from their vending machine's file to specialist.dm"
-  - qol: "The crew manifest's search function now covers paygrades"
-  - refactor: "Changed the way datacore.dm, squad_specialist.dm (vending machine), and specialist.dm handle setting assignments, manifest titles, and ID cards to drop the squad name from the manifest title. Also introduced job defines for each squad kit to be used by specialist.dm and marines_consoles.dm (crew monitor)"
-  - spellcheck: "Changed \"SHARP Operator\" in the crew manifest and crew monitor to \"SHARP Specialist\""
-  - ui: "Widened the crew manifest"

@@ -36,22 +36,6 @@
 		xeno.ability_speed_modifier -= 3
 		xeno.damage_modifier += XENO_DAMAGE_MOD_SMALL
 
-/datum/action/xeno_action/activable/fortify/proc/check_directional_armor(mob/living/carbon/xenomorph/defendy, list/damagedata)
-	SIGNAL_HANDLER
-	var/projectile_direction = damagedata["direction"]
-	// If the defender is facing the projectile.
-	if(defendy.dir & REVERSE_DIR(projectile_direction))
-		damagedata["armor"] += frontal_armor
-
-/datum/action/xeno_action/activable/fortify/proc/unconscious_check()
-	SIGNAL_HANDLER
-
-	if(QDELETED(owner))
-		return
-
-	UnregisterSignal(owner, COMSIG_XENO_ENTER_CRIT)
-	UnregisterSignal(owner, COMSIG_MOB_DEATH)
-	fortify_switch(owner, FALSE)
 
 /datum/action/xeno_action/onclick/soak/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/steelcrest = owner

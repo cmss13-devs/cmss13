@@ -260,6 +260,94 @@ All ShuttleMove procs go here
 	if(. & MOVE_AREA)
 		. |= MOVE_CONTENTS
 
+/obj/structure/bed/chair/vehicle/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	. = ..()
+	if(dir == EAST || dir == WEST) //8
+		pixel_x = 0
+		pixel_y = init_pixel_x + 8
+		buckle_offset_y = pixel_y
+		buckle_offset_x = pixel_x
+		if(pixel_y == 8)
+			higher_layer = TRUE
+	else
+		pixel_y = 0
+		if(dir == NORTH)
+			pixel_x = init_pixel_x
+		else
+			pixel_x = init_pixel_x * -1
+		buckle_offset_x = pixel_x
+		buckle_offset_y = pixel_y
+		higher_layer = FALSE
+	if(buckled_mob)
+		buckled_mob.pixel_y = pixel_y
+		buckled_mob.pixel_x = pixel_x
+	handle_rotation()
+
+/obj/structure/bed/chair/dropship/pilot/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	. = ..()
+	if(buckled_mob)
+		buckled_mob.pixel_y = pixel_y
+		buckled_mob.pixel_x = pixel_x
+	handle_rotation()
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
+//	.=..()
+	var/old_dir = src.dir
+	var/list/old_locs = src.locs
+	var/turf/open/shuttle/dropship/step_turf
+	var/turf/open/shuttle/dropship/init_loc
+	var/real_dir
+
+	if(linked_console)
+		real_dir = linked_console.dir
+	else
+		if(linked_dropship)
+			linked_console = linked_dropship.getControlConsole()
+			real_dir = linked_console.dir
+	if(!linked_to_turf)
+		if(move_dir == NORTH)
+			if(istype(src.loc, /turf/open/shuttle/dropship))
+				init_loc = src.loc
+				init_loc.linked_door = src
+				linked_to_turf = TRUE
+	if(id == "starboard_door" || "port_door")
+		if(real_dir == NORTH)
+			for(step_turf in range(1, loc))
+				if(step_turf.linked_door)
+					loc = get_step(step_turf, SOUTH)
+					break
+		else if(real_dir == EAST)
+			for(step_turf in range(1, loc))
+				if(step_turf.linked_door)
+					loc = get_step(step_turf, WEST)
+					break
+		else
+			for(step_turf in range(1, loc))
+				if(step_turf.linked_door)
+					loc = step_turf
+					break
+	if(id == "aft_door")
+		if(real_dir == NORTH)
+			for(step_turf in range(3, loc))
+				if(step_turf.linked_door)
+					loc = get_step(get_step(step_turf, WEST), WEST)
+					break
+		else if(real_dir == WEST)
+			for(step_turf in range(3, loc))
+				if(step_turf.linked_door)
+					loc = get_step(get_step(step_turf, SOUTH), SOUTH)
+					break
+		else
+			for(step_turf in range(3, loc))
+				if(step_turf.linked_door == src)
+					loc = step_turf
+					break
+
+	setDir(old_dir)
+	for(var/turf/closed/shuttle/tr_walls in old_locs)
+		tr_walls.set_opacity(1)
+	handle_multidoor()
+
 /*
 /obj/structure/ladder/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()
@@ -301,3 +389,38 @@ All ShuttleMove procs go here
 	//timer so it only happens once
 	addtimer(CALLBACK(monitor, /datum/proximity_monitor/proc/SetRange, monitor.current_range, TRUE), 0, TIMER_UNIQUE)
 */
+
+/obj/effect/attach_point/fuel/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	. = ..()
+	switch(dir)
+		if(NORTH)
+			if(adjusted_pixel)
+				pixel_x = -32
+			else
+				pixel_x = 0
+			pixel_y = 0
+		if(SOUTH)
+			if(adjusted_pixel)
+				pixel_x = 0
+			else
+				pixel_x = -32
+			pixel_y = -8
+		if(EAST)
+			if(adjusted_pixel)
+				pixel_y = 8
+			else
+				pixel_y = -24
+			pixel_x = -6
+		if(WEST)
+			if(adjusted_pixel)
+				pixel_y = -24
+			else
+				pixel_y = 8
+			pixel_x = -26
+	if(installed_equipment)
+		installed_equipment.setDir(dir)
+		installed_equipment.pixel_y = pixel_y
+		installed_equipment.pixel_x = pixel_x
+
+
+

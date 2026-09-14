@@ -52,19 +52,19 @@
 			return gender
 	return default
 
-/proc/sanitize_skin_color(skin_color, default = "Pale 2")
+/proc/sanitize_skin_color(skin_color, default = SKIN_COLOR_PALE2)
 	if(skin_color in GLOB.skin_color_list)
 		return skin_color
 
 	return default
 
-/proc/sanitize_body_type(body_type, default = "Lean")
+/proc/sanitize_body_type(body_type, default = BODY_TYPE_LEAN)
 	if(body_type in GLOB.body_type_list)
 		return body_type
 
 	return default
 
-/proc/sanitize_body_size(body_size, default = "Average")
+/proc/sanitize_body_size(body_size, default = BODY_SIZE_AVERAGE)
 	if(body_size in GLOB.body_size_list)
 		return body_size
 

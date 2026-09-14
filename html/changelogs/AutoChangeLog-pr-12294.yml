@@ -1,4 +1,0 @@
-author: "Fluffyzack21"
-delete-after: True
-changes:
-  - bugfix: "Changed the subtype for UPP corpses so they spawn with the correct belt type"

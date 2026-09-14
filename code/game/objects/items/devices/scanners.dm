@@ -107,6 +107,12 @@ K9 SCANNER
 			last_health_display = new(target_mob)
 		else
 			last_health_display.target_mob = target_mob
+
+		// Handle automatic holotags
+		if (user?.client.prefs.auto_holotag >= ALWAYS_TAG_PATIENTS && istype(target_mob, /mob/living/carbon/human))
+			var/mob/living/carbon/human/human = target_mob
+			human.auto_assign_holotag(user, HOLOCARD_ACCURACY_HANDHELD)
+
 		SStgui.close_user_uis(user, src)
 		last_scan = last_health_display.ui_data(user, DETAIL_LEVEL_HEALTHANALYSER)
 		last_health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = FALSE, ignore_delay = FALSE, alien = alien)
@@ -545,7 +551,7 @@ K9 SCANNER
 	var/area/scanner_area = get_area(scanner_turf)
 
 	if(self_turf.z != scanner_turf.z || self_area.fake_zlevel != scanner_area.fake_zlevel)
-		to_chat(user, SPAN_BOLDWARNING("The [src] lights up: <b>UNABLE TO REACH LINKED K9!<b>"))
+		to_chat(user, SPAN_BOLDWARNING("[src] lights up: <b>UNABLE TO REACH LINKED K9!<b>"))
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 		return
 

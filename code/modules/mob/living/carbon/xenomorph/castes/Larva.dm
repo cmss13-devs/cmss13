@@ -16,6 +16,7 @@
 	can_be_revived = FALSE
 
 	minimap_icon = "larva"
+	organ_type = null
 
 /datum/caste_datum/larva/predalien
 	caste_type = XENO_CASTE_PREDALIEN_LARVA
@@ -114,6 +115,11 @@
 	AUTOWIKI_SKIP(TRUE)
 
 	hivenumber = XENO_HIVE_DELTA
+
+/mob/living/carbon/xenomorph/larva/k_series
+	AUTOWIKI_SKIP(TRUE)
+
+	hivenumber = XENO_HIVE_K_SERIES
 
 /mob/living/carbon/xenomorph/larva/mutated
 	AUTOWIKI_SKIP(TRUE)

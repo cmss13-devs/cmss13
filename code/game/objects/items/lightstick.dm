@@ -20,6 +20,7 @@
 		set_light_range(0)
 
 /obj/item/lightstick/Crossed(mob/living/O)
+	..()
 	if(anchored && prob(trample_chance) && can_trample)
 		if(!istype(O,/mob/living/carbon/xenomorph/larva))
 			visible_message(SPAN_DANGER("[O] tramples [src]!"))

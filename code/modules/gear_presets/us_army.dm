@@ -2,6 +2,7 @@
 	paygrades = list(PAY_SHORT_AE2 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "ARMY"
+	minimap_background = "background_army"
 	job_title  = JOB_ARMY_TROOPER
 	faction = FACTION_MARINE
 	faction_group = FACTION_LIST_MARINE
@@ -71,7 +72,7 @@
 	assignment = JOB_ARMY_TROOPER
 	job_title  = JOB_ARMY_TROOPER
 	skills = /datum/skills/military/survivor/army_standard
-	minimap_icon = "hudsquad_trpr"
+	minimap_icon = "us_trooper"
 
 /datum/equipment_preset/us_army/standard/load_gear(mob/living/carbon/human/new_human)
 
@@ -106,7 +107,7 @@
 	assignment = JOB_ARMY_SMARTGUNNER
 	job_title  = JOB_ARMY_SMARTGUNNER
 	skills = /datum/skills/military/survivor/army_gunner
-	minimap_icon = "hudsquad_mmg"
+	minimap_icon = "us_gunner"
 
 /datum/equipment_preset/us_army/gunner/load_gear(mob/living/carbon/human/new_human)
 
@@ -147,7 +148,7 @@
 	assignment = JOB_ARMY_MEDIC
 	job_title  = JOB_ARMY_MEDIC
 	skills = /datum/skills/military/survivor/army_medic
-	minimap_icon = "hudsquad_cet"
+	minimap_icon = "us_med_tech"
 
 /datum/equipment_preset/us_army/medic/load_gear(mob/living/carbon/human/new_human)
 
@@ -187,7 +188,7 @@
 	assignment = JOB_ARMY_SNCO
 	job_title  = JOB_ARMY_SNCO
 	skills = /datum/skills/military/survivor/army_sl
-	minimap_icon = "hudsquad_sl_army"
+	minimap_icon = "us_leader"
 
 /datum/equipment_preset/us_army/sl/load_gear(mob/living/carbon/human/new_human)
 
@@ -225,8 +226,7 @@
 	assignment = JOB_ARMY_TANK
 	job_title  = JOB_ARMY_TANK
 	skills = /datum/skills/tank_crew
-	minimap_icon = "vc"
-	minimap_background = "background_intel"
+	minimap_icon = "us_tc"
 
 /datum/equipment_preset/us_army/tank/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/officer/tanker/uniform = new()

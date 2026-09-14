@@ -291,7 +291,7 @@ SUBSYSTEM_DEF(cmtv)
 		return
 
 	RegisterSignal(future_perspective_mob, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_STAT_SET_DEAD, COMSIG_MOB_NESTED, COMSIG_MOB_LOGOUT, COMSIG_MOB_DEATH), PROC_REF(handle_reset_signal))
-	RegisterSignal(future_perspective_mob, COMSIG_MOVABLE_ENTERED_OBJ, PROC_REF(handle_reset_signal_immediate))
+	RegisterSignal(future_perspective_mob, COMSIG_MOVABLE_MOVED, PROC_REF(handle_reset_signal_immediate))
 	RegisterSignal(future_perspective_mob, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(handle_z_change))
 	RegisterSignal(future_perspective_mob.client, COMSIG_CLIENT_EYE_CHANGED, PROC_REF(handle_eye_change))
 	RegisterSignal(future_perspective_mob.client, COMSIG_CLIENT_PIXEL_X_CHANGED, PROC_REF(handle_pixel_x_change))
@@ -329,7 +329,7 @@ SUBSYSTEM_DEF(cmtv)
 		COMSIG_MOB_LOGOUT,
 		COMSIG_MOB_DEATH,
 		COMSIG_MOVABLE_Z_CHANGED,
-		COMSIG_MOVABLE_ENTERED_OBJ,
+		COMSIG_MOVABLE_MOVED,
 	))
 
 	if(current_perspective.client)
@@ -371,10 +371,10 @@ SUBSYSTEM_DEF(cmtv)
 	reset_perspective("Current perspective is no longer eligible (signal)")
 
 /// Reset handler that immediately switches perspective to something generic while we wait
-/datum/controller/subsystem/cmtv/proc/handle_reset_signal_immediate()
+/datum/controller/subsystem/cmtv/proc/handle_reset_signal_immediate(atom/movable/source, oldloc, direct)
 	SIGNAL_HANDLER
-
-	reset_perspective("Current perspective is no longer eligible (instant signal)", instant = TRUE)
+	if(source.loc != oldloc && isobj(source.loc))
+		reset_perspective("Current perspective is no longer eligible (instant signal)", instant = TRUE)
 
 /datum/controller/subsystem/cmtv/proc/handle_eye_change(client/source_client, new_eye)
 	SIGNAL_HANDLER
@@ -484,27 +484,44 @@ SUBSYSTEM_DEF(cmtv)
 		camera_operator.view = "32x24"
 
 /datum/controller/subsystem/cmtv/proc/is_subscriber(client/potential_subscriber)
-	if(!CONFIG_GET(string/cmtv_api) || !CONFIG_GET(string/cmtv_api_key))
-		return FALSE
+	var/static/lookup_cache = list()
 
-	WAIT_DB_READY
+	var/cmtv_subscriber_api = CONFIG_GET(string/cmtv_subscriber_api)
+	var/cmtv_subscriber_api_key = CONFIG_GET(string/cmtv_subscriber_api_key)
+
+	if(!CONFIG_GET(string/cmtv_api) || !CONFIG_GET(string/cmtv_api_key) || !cmtv_subscriber_api || !cmtv_subscriber_api_key)
+		return FALSE
 
 	UNTIL(initialized)
 
 	if(!potential_subscriber)
 		return FALSE
 
-	var/list/datum/view_record/twitch_link/links = DB_VIEW(/datum/view_record/twitch_link, DB_AND(
-		DB_COMP("ckey", DB_EQUALS, potential_subscriber.ckey),
-		DB_COMP("twitch_id", DB_ISNOT)
-	))
+	var/twitch_id = lookup_cache[potential_subscriber.ckey]
+	if(!twitch_id)
+		var/datum/http_request/request = new
+		request.prepare(RUSTG_HTTP_METHOD_GET, "[cmtv_subscriber_api]?ckey=[potential_subscriber.ckey]", null, list("Authorization" = "Bearer [cmtv_subscriber_api_key]"))
+		request.begin_async()
 
-	if(!length(links))
-		return FALSE
+		UNTIL(request.is_complete())
 
-	for(var/datum/view_record/twitch_link/link as anything in links)
-		if(link.twitch_id in subscribers)
-			return TRUE
+		var/datum/http_response/response = request.into_response()
+
+		var/decoded
+		try
+			decoded = json_decode(response.body)
+		catch
+			log_debug("cmtv_subscriber_api returned an invalid response.")
+			return FALSE
+
+		twitch_id = decoded["twitch_id"]
+		if(!twitch_id)
+			return FALSE
+
+		lookup_cache[potential_subscriber.ckey] = twitch_id
+
+	if(twitch_id in subscribers)
+		return TRUE
 
 	return FALSE
 
@@ -655,7 +672,14 @@ SUBSYSTEM_DEF(cmtv)
 	protection = CONFIG_ENTRY_LOCKED
 
 /datum/config_entry/string/cmtv_api_key
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED|CONFIG_ENTRY_SENSITIVE
+
+/datum/config_entry/string/cmtv_subscriber_api
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/string/cmtv_subscriber_api_key
 	protection = CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_LOCKED
+
 
 /atom/movable/screen/cmtv
 	plane = ESCAPE_MENU_PLANE

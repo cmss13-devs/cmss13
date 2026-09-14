@@ -27,6 +27,7 @@
 	minimum_evolve_time = 4 MINUTES
 
 	minimap_icon = "defender"
+	organ_type = /obj/item/organ/xeno/defender
 
 /mob/living/carbon/xenomorph/defender
 	caste_type = XENO_CASTE_DEFENDER
@@ -35,11 +36,9 @@
 	icon = 'icons/mob/xenos/castes/tier_1/defender.dmi'
 	icon_size = 64
 	icon_state = "Defender Walking"
-	plasma_types = list(PLASMA_CHITIN)
 	pixel_x = -16
 	old_x = -16
 	tier = 1
-	organ_value = 1000
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/toggle_seethrough,
@@ -62,6 +61,15 @@
 
 	skull = /obj/item/skull/defender
 	pelt = /obj/item/pelt/defender
+
+/obj/item/organ/xeno/defender
+	name = "defender heart"
+	icon_state = "heart_t1"
+	item_state = "heart_t1"
+	research_value = 1000
+
+	xeno_organ_flags = XENO_ORGAN_WEAK|XENO_ORGAN_HARDENED
+
 
 /mob/living/carbon/xenomorph/defender/handle_special_state()
 	if(fortify)
@@ -114,27 +122,42 @@
 	if(!action_cooldown_check())
 		return
 
-	xeno.crest_defense = !xeno.crest_defense
+	if(!xeno.crest_defense)
+		RegisterSignal(owner, COMSIG_MOB_STATCHANGE, PROC_REF(unconscious_check))
+		headcrest_switch(xeno, TRUE)
+		if(xeno.selected_ability != src)
+			button.icon_state = "template_active"
+	else
+		UnregisterSignal(owner, COMSIG_MOB_STATCHANGE)
+		headcrest_switch(xeno, FALSE)
+		if(xeno.selected_ability != src)
+			button.icon_state = "template_xeno"
 
-	if(xeno.crest_defense)
+	apply_cooldown()
+	return ..()
+
+/datum/action/xeno_action/onclick/toggle_crest/proc/headcrest_switch(mob/living/carbon/xenomorph/xeno, crest_state)
+	if(xeno.crest_defense == crest_state)
+		return
+
+	if(crest_state)
 		to_chat(xeno, SPAN_XENOWARNING("We lower our crest."))
 
 		xeno.ability_speed_modifier += speed_debuff
 		xeno.armor_deflection_buff += armor_buff
+		xeno.crest_defense = TRUE
 		xeno.mob_size = MOB_SIZE_BIG //knockback immune
 		button.icon_state = "template_active"
-		xeno.update_icons()
 	else
 		to_chat(xeno, SPAN_XENOWARNING("We raise our crest."))
 
 		xeno.ability_speed_modifier -= speed_debuff
 		xeno.armor_deflection_buff -= armor_buff
+		xeno.crest_defense = FALSE
 		xeno.mob_size = MOB_SIZE_XENO //no longer knockback immune
 		button.icon_state = "template_xeno"
-		xeno.update_icons()
 
-	apply_cooldown()
-	return ..()
+	xeno.update_icons()
 
 // Defender Headbutt
 /datum/action/xeno_action/activable/headbutt/use_ability(atom/target_atom)
@@ -268,14 +291,12 @@
 	playsound(get_turf(xeno), 'sound/effects/stonedoor_openclose.ogg', 30, 1)
 
 	if(!xeno.fortify)
-		RegisterSignal(owner, COMSIG_XENO_ENTER_CRIT, PROC_REF(unconscious_check))
-		RegisterSignal(owner, COMSIG_MOB_DEATH, PROC_REF(unconscious_check))
+		RegisterSignal(owner, COMSIG_MOB_STATCHANGE, PROC_REF(unconscious_check))
 		fortify_switch(xeno, TRUE)
 		if(xeno.selected_ability != src)
 			button.icon_state = "template_active"
 	else
-		UnregisterSignal(owner, COMSIG_XENO_ENTER_CRIT)
-		UnregisterSignal(owner, COMSIG_MOB_DEATH)
+		UnregisterSignal(owner, COMSIG_MOB_STATCHANGE)
 		fortify_switch(xeno, FALSE)
 		if(xeno.selected_ability != src)
 			button.icon_state = "template_xeno"
@@ -329,3 +350,22 @@
 		xeno.armor_deflection_buff -= 30
 		xeno.armor_explosive_buff -= 60
 		xeno.small_explosives_stun = TRUE
+
+/datum/action/xeno_action/activable/fortify/proc/check_directional_armor(mob/living/carbon/xenomorph/defendy, list/damagedata)
+	SIGNAL_HANDLER
+	var/projectile_direction = damagedata["direction"]
+	// If the defender is facing the projectile.
+	if(defendy.dir & REVERSE_DIR(projectile_direction))
+		damagedata["armor"] += frontal_armor
+
+/datum/action/xeno_action/activable/fortify/proc/unconscious_check()
+	SIGNAL_HANDLER
+
+	UnregisterSignal(owner, COMSIG_MOB_STATCHANGE)
+	fortify_switch(owner, FALSE)
+
+/datum/action/xeno_action/onclick/toggle_crest/proc/unconscious_check()
+	SIGNAL_HANDLER
+
+	UnregisterSignal(owner, COMSIG_MOB_STATCHANGE)
+	headcrest_switch(owner, FALSE)

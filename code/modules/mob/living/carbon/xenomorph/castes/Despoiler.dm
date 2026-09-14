@@ -29,6 +29,8 @@
 	minimum_evolve_time = 15 MINUTES
 	evolution_allowed = FALSE
 
+	organ_type = /obj/item/organ/xeno/despoiler
+
 
 /mob/living/carbon/xenomorph/despoiler
 	caste_type = XENO_CASTE_DESPOILER
@@ -36,13 +38,11 @@
 	desc = "An emaciated acidic terror, barely alive and constantly leaking acid."
 	icon_size = 64
 	icon_state = "Despoiler Walking"
-	plasma_types = list(PLASMA_NEUROTOXIN, PLASMA_PURPLE)
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3
-	organ_value = 3000
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/toggle_seethrough,
@@ -67,6 +67,14 @@
 
 	skull = /obj/item/skull/despoiler
 	pelt = /obj/item/pelt/despoiler
+
+/obj/item/organ/xeno/despoiler
+	name = "despoiler heart"
+	icon_state = "heart_t3"
+	item_state = "heart_t3"
+	research_value = 3000
+
+	xeno_organ_flags = XENO_ORGAN_STRONG|XENO_ORGAN_ACID|XENO_ORGAN_TACHYCARDIA
 
 /mob/living/carbon/xenomorph/despoiler/proc/update_hypertension()
 	var/image/holder = hud_list[SPECIAL_HUD]
@@ -226,7 +234,7 @@
 		xeno.overlays -= delegate.empowered_overlay
 
 	var/barrage_size = max(round((time_charged / max_charge_time) * max_volley), min_volley) + modifier
-	playsound(xeno, 'sound/voice/xeno_praetorian_screech.ogg', 75, 0, status = 0)
+	playsound(xeno, "alien_roarhiss", 30, 0, status = 0)
 	playsound(xeno.loc, "acid_spit", 25, 1)
 	for(var/index in 1 to barrage_size)
 		var/initial_angle = Get_Angle(xeno, target)
@@ -312,7 +320,7 @@
 
 	apply_cooldown()
 
-	playsound(xeno, 'sound/voice/xeno_praetorian_screech.ogg', 75, 0, status = 0)
+	playsound(xeno, "alien_roarhiss", 30, 0, status = 0)
 	var/severity = (xeno.health <= (0.7 * xeno.maxHealth)) + (xeno.health <= (0.3 * xeno.maxHealth))
 	var/acid_range = severity + 1
 	var/empowered = delegate.next_ability_empowered

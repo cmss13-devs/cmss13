@@ -96,6 +96,32 @@
 #define rustg_acreplace_with_replacements(key, text, replacements) RUSTG_CALL(RUST_G, "acreplace_with_replacements")(key, text, json_encode(replacements))
 
 /**
+ * Generates a procedural dungeon map using BSP tree partitioning, prefab placement,
+ * MST corridor generation, and Cellular Automata smoothing.
+ *
+ * Returns a plain binary grid string (matching cellularnoise format):
+ * A width*height string of '0' (wall) and '1' (floor) characters in row-major order.
+ *
+ * Arguments:
+ * * width - Grid width
+ * * height - Grid height
+ * * prefabs_json - JSON array of prefab configs: [{"x":55,"y":65,"w":10,"h":10,"isEnclosed":true},...] (if none use "[]") x = bottom-left turf x, y = bottom-left turf y, w = prefab width, h = prefab height, isEnclosed = whether prefab should be treated like its wall or floor by the generation
+ * * min_bsp_size - Minimum BSP leaf dimension
+ * * max_ratio - Maximum aspect ratio for BSP splits
+ * * padding - Room edge padding within BSP leaf
+ * * room_fill_percent - How much of each BSP leaf a room fills, 1-100
+ * * corridor_width - Width of corridors between rooms
+ * * loop_percent - Chance to add extra MST edges for loops
+ * * noise_percent - Initial random floor density
+ * * ca_steps - Cellular Automata smoothing iterations
+ * * birth_limit - Neighbors to create floor (>=)
+ * * survival_limit - Neighbors to survive as floor (>=)
+ * * edge_is_alive - Whether out-of-bounds cells count as ALIVE (floor) for CA neighbor counts
+ */
+#define rustg_cave_system_generator_generate(width, height, prefabs_json, min_bsp_size, max_ratio, padding, room_fill_percent, corridor_width, loop_percent, noise_percent, ca_steps, birth_limit, survival_limit, edge_is_alive) \
+	RUSTG_CALL(RUST_G, "cave_system_generator_generate")(width, height, prefabs_json, min_bsp_size, max_ratio, padding, room_fill_percent, corridor_width, loop_percent, noise_percent, ca_steps, birth_limit, survival_limit, edge_is_alive)
+
+/**
  * This proc generates a cellular automata noise grid which can be used in procedural generation methods.
  *
  * Returns a single string that goes row by row, with values of 1 representing an alive cell, and a value of 0 representing a dead cell.
@@ -549,4 +575,20 @@
 	#define url_encode(text) rustg_url_encode(text)
 	#define url_decode(text) rustg_url_decode(text)
 #endif
+
+/// Generates a version 4 UUID.
+/// See https://www.ietf.org/rfc/rfc9562.html#section-5.4 for specifics on version 4 UUIDs.
+#define rustg_generate_uuid_v4(...) RUSTG_CALL(RUST_G, "uuid_v4")()
+
+/// Generates a version 7 UUID, with the current time.
+/// See https://www.ietf.org/rfc/rfc9562.html#section-5.7 for specifics on version 7 UUIDs.
+#define rustg_generate_uuid_v7(...) RUSTG_CALL(RUST_G, "uuid_v7")()
+
+/// Generates a random version 2 CUID.
+/// See https://github.com/paralleldrive/cuid2 for specifics on version 2 CUIDs.
+#define rustg_generate_cuid2(...) RUSTG_CALL(RUST_G, "cuid2")()
+
+/// Generates a random version 2 CUID with the given length.
+/// See https://github.com/paralleldrive/cuid2 for specifics on version 2 CUIDs.
+#define rustg_generate_cuid2_length(length) RUSTG_CALL(RUST_G, "cuid2_len")("[length]")
 

@@ -253,14 +253,14 @@
 		if(target.butchery_progress == 4)
 			if(do_after(src, 9 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				if(xeno_victim && isturf(target.loc))
-					visible_message(SPAN_DANGER("[src] flenses the last of [victim]'s exoskeleton, revealing only bones!."), SPAN_NOTICE("You flense the last of [victim]'s exoskeleton clean off!"))
+					visible_message(SPAN_DANGER("[src] flenses the last of [victim]'s exoskeleton, revealing only bones!"), SPAN_NOTICE("You flense the last of [victim]'s exoskeleton clean off!"))
 					new /obj/effect/decal/remains/xeno(xeno_victim.loc)
 					var/obj/item/skull/skull = new xeno_victim.skull(xeno_victim.loc)
 					var/obj/item/pelt/pelt = new xeno_victim.pelt(xeno_victim.loc)
 					pelt.name = "[xeno_victim.real_name] pelt"
 					skull.name = "[xeno_victim.real_name] skull"
 				else if(victim && isturf(target.loc))
-					visible_message(SPAN_DANGER("[src] reaches down and rips out \the [target]'s spinal cord and skull!."), SPAN_NOTICE("You firmly grip the revealed spinal column and rip [target]'s head off!"))
+					visible_message(SPAN_DANGER("[src] reaches down and rips out \the [target]'s spinal cord and skull!"), SPAN_NOTICE("You firmly grip the revealed spinal column and rip [target]'s head off!"))
 					if(!(victim.get_limb("head").status & LIMB_DESTROYED))
 						victim.apply_damage(150, BRUTE, "head", FALSE, TRUE)
 						var/obj/item/clothing/accessory/limb/skeleton/head/spine/new_spine = new /obj/item/clothing/accessory/limb/skeleton/head/spine(victim.loc)

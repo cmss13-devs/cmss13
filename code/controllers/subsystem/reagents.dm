@@ -57,7 +57,6 @@ SUBSYSTEM_DEF(reagents)
 					if(prop.name == PROPERTY_CIPHERING)
 						recipe[3] = PROPERTY_ENCRYPTED
 					break
-					recipe = list()//reset the list if its invalid
 			if(length(recipe) >= 3)
 				GLOB.combining_properties[prop.name] = recipe
 

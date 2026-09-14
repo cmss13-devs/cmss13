@@ -1067,7 +1067,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "An M11 helmet fitted with leather banding, a nonfunctional external comms module, and a second HUD optic mount. Its plating is slightly thinner to make room for the extra mount."
 	icon_state = "vsl_helmet"
 	specialty = "M11-R pattern marine"
-	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	max_inserted_visors = 2
 
 /obj/item/clothing/head/helmet/marine/rto

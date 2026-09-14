@@ -1,6 +1,0 @@
-author: "Mary-Marilyn"
-delete-after: True
-changes:
-  - soundadd: "Added a unique victory theme for the Three World Empire."
-  - imageadd: "Added a new Three World Empire victory card."
-  - bugfix: "Fixed the CLF incorrectly displaying the UPP victory card."

@@ -4160,7 +4160,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "qjy72_bipod"
 	attach_icon = "qjy72_bipod"
 
-obj/item/attachable/bipod/pkp/New()
+/obj/item/attachable/bipod/pkp/New()
 	..()
 	delay_mod = 0
 

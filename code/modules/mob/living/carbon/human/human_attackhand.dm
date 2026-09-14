@@ -239,11 +239,16 @@
 	if(shaken_friend)
 		SEND_SIGNAL(mob, COMSIG_HUMAN_HELPING_UP)
 
+
+	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+
+	if(HAS_TRAIT(src, TRAIT_UNSHAKABLE)) //shakes don't help if you have this trait
+		return
+
 	adjust_effect(-6, PARALYZE)
 	adjust_effect(-6, STUN)
 	adjust_effect(-6, WEAKEN)
 
-	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 
 /mob/living/carbon/human/proc/check_for_injuries(mob/living/carbon/human/checker)
 	if(!checker)

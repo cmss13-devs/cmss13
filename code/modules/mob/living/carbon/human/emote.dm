@@ -200,7 +200,7 @@
 	species_type_allowed_typecache = list(/datum/species/human, /datum/species/synthetic, /datum/species/yautja, /datum/species/synthetic/gen_two/gen_one/wy_droid)
 	species_type_blacklist_typecache = list(/datum/species/synthetic)
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	move_mouth = 1
+	move_mouth = 1.1
 
 /datum/emote/living/carbon/human/pain/get_sound(mob/living/user)
 	if(ishuman_strict(user))
@@ -244,7 +244,7 @@
 	audio_cooldown = 10 SECONDS
 	species_type_blacklist_typecache = list(/datum/species/synthetic)
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	move_mouth = 2
+	move_mouth = 2.3
 
 /datum/emote/living/carbon/human/scream/get_sound(mob/living/user)
 	if(ishuman_strict(user))
@@ -355,14 +355,14 @@
 	key = "yawn"
 	key_third_person = "yawns"
 	message = "yawns."
-	move_mouth = 4
+	move_mouth = 4.1
 
 /datum/emote/living/carbon/human/warcry
 	key = "warcry"
 	message = "shouts an inspiring cry!"
 	alt_message = "shouts something"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	move_mouth = 3
+	move_mouth = 2
 
 /datum/emote/living/carbon/human/warcry/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
@@ -400,7 +400,7 @@
 	message = "screams in agony!"
 	emote_type = EMOTE_FORCED_AUDIO|EMOTE_AUDIBLE|EMOTE_VISIBLE
 	stat_allowed = UNCONSCIOUS
-	move_mouth = 3
+	move_mouth = 3.1
 
 /datum/emote/living/carbon/human/burstscream/get_sound(mob/living/carbon/human/user)
 	if(!user.species)

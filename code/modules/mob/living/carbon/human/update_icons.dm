@@ -475,11 +475,12 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 
 /mob/living/carbon/human/proc/update_mouth(speaking = 0)	//nothing else other than mouth should be in this layer
 	remove_overlay(MOUTH_LAYER)
-	if(mouth_style && (species && species.flags & HAS_MOUTH))
+	if(mouth_style && mouth_style != "none" && (species && species.flags & HAS_MOUTH))
 		if(wear_mask)
 			return
 		var/icon_path = 'icons/mob/humans/mouth.dmi'
 		var/yelling_state = copytext(mouth_style, 1, 7) == "small_" ? copytext(mouth_style, 7) : "[mouth_style]_yell"
+		yelling_state = speaking >= 3 ? "[yelling_state]_scream" : yelling_state
 		var/state = speaking == 0 ? "" : (speaking == 1 ? "[mouth_style]" : yelling_state)
 		if(isspeciesyautja(src))
 			icon_path = 'icons/mob/humans/yaut_mouth.dmi'

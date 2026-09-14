@@ -1,10 +1,8 @@
 import { type BooleanLike, classes } from 'common/react';
-import { createSearch } from 'common/string';
 import { useBackend } from 'tgui/backend';
 import {
   Box,
   Divider,
-  Input,
   ProgressBar,
   Section,
   Stack,
@@ -52,42 +50,15 @@ export const MainWindow = (props) => {
   );
 };
 
-const selectCameras = (cameras: Camera[], searchText = ''): Camera[] => {
-  let queriedCameras = cameras.filter((camera: Camera) => !!camera.name);
-  if (searchText) {
-    const testSearch = createSearch(
-      searchText,
-      (camera: Camera) => camera.name,
-    );
-    queriedCameras = queriedCameras.filter(testSearch);
-  }
-  queriedCameras.sort();
-
-  return queriedCameras;
-};
-
 const CameraSelector = (props) => {
   const { act, data } = useBackend<Data>();
-  const { searchText, setSearchText } = props;
   const { activeCamera, currentAmmo, totalAmmo } = data;
-  const cameras = selectCameras(data.cameras, searchText);
 
   return (
     <Stack fill vertical>
-      <Stack.Item>
-        <Input
-          autoFocus
-          expensive
-          fluid
-          mt={1}
-          placeholder="SEL: CAM"
-          onInput={(e, value) => setSearchText(value)}
-          value={searchText}
-        />
-      </Stack.Item>
       <Stack.Item grow>
-        <Section scrollable height={24} title="CAM LST">
-          {cameras.map((camera) => (
+        <Section fill scrollable title="CAM LST">
+          {data.cameras.map((camera) => (
             // We're not using the component here because performance
             // would be absolutely abysmal (50+ ms for each re-render).
             <div
@@ -114,7 +85,7 @@ const CameraSelector = (props) => {
         </Section>
       </Stack.Item>
       <Divider />
-      <Stack.Item grow>
+      <Stack.Item>
         <ProgressBar value={currentAmmo / totalAmmo} ranges={RedGreenRange}>
           AMMO_CNT: {currentAmmo} / {totalAmmo}
         </ProgressBar>
@@ -122,18 +93,5 @@ const CameraSelector = (props) => {
       </Stack.Item>
       <Box height="5px" />
     </Stack>
-  );
-};
-
-const AmmoCounter = (props) => {
-  const { data } = useBackend<Data>();
-  const { currentAmmo, totalAmmo } = data;
-  return (
-    <>
-      <ProgressBar value={currentAmmo / totalAmmo} ranges={RedGreenRange}>
-        AMMO_CNT: {currentAmmo} / {totalAmmo}
-      </ProgressBar>
-      <Box height="5px" />
-    </>
   );
 };

@@ -489,7 +489,6 @@
 
 /obj/structure/machinery/computer/cameras/dropship/midway/gunnery/ui_data()
 	var/list/data = list()
-	data["network"] = network
 	data["activeCamera"] = null
 	if(linked_m90)
 		if(linked_m90.ammo_equipped)
@@ -503,7 +502,32 @@
 			name = current.c_tag,
 			status = current.status,
 		)
+	data["mapRef"] = camera_map_name
+	var/list/cameras = get_available_cameras()
+	data["cameras"] = list()
+	for(var/i in cameras)
+		var/obj/structure/machinery/camera/C = cameras[i]
+		data["cameras"] += list(list(
+			name = C.c_tag,
+		))
 	return data
+
+/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/ui_static_data() // aha
+	return
+
+/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/get_available_cameras()
+	var/list/D = list()
+	for(var/obj/structure/machinery/camera/C in GLOB.cas_cameras)
+		if(!C.network)
+			stack_trace("Camera in a cameranet has no camera network")
+			continue
+		if(!(islist(C.network)))
+			stack_trace("Camera in a cameranet has a non-list camera network")
+			continue
+		var/list/tempnetwork = C.network & network
+		if(length(tempnetwork))
+			D["[C.c_tag]"] = C
+	return D
 
 /obj/structure/machinery/computer/cameras/dropship/midway/gunnery/ui_close(mob/user)
 	if(focused)

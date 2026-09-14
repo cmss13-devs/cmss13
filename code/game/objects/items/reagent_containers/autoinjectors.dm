@@ -45,7 +45,6 @@
 /obj/item/reagent_container/hypospray/autoinjector/Initialize()
 	. = ..()
 
-	///From full, how many injections are in this autoinjector until it needs to be refilled or disposed?
 	if(mixed_chem)
 		return
 	reagents.add_reagent(chemname, volume)
@@ -82,7 +81,8 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/get_examine_text(mob/user)
 	. = ..()
-
+	
+	///From full, how many injections are in this autoinjector until it needs to be refilled or disposed?
 	var/max_uses = initial(volume) / amount_per_transfer_from_this
 	update_uses_left()
 

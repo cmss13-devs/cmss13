@@ -16682,9 +16682,7 @@
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/main_level/research)
 "aNI" = (
-/obj/structure/machinery/power/apc/power/north{
-	start_charge = 60
-	},
+/obj/structure/machinery/light/double,
 /turf/open/floor/prison/darkbrownfull2,
 /area/white_antre/landing_zone/roof)
 "aNJ" = (
@@ -50898,82 +50896,84 @@
 /turf/open/floor/prison/darkyellow2/east,
 /area/white_antre/landing_zone/roof)
 "cvW" = (
-/obj/structure/machinery/light/double,
-/turf/open/floor/prison/darkbrownfull2,
-/area/white_antre/landing_zone/roof)
-"cvX" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
 /turf/open/floor/prison/darkbrown2/east,
 /area/white_antre/landing_zone/roof)
-"cvY" = (
+"cvX" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/prison/darkbrownfull2,
 /area/white_antre/landing_zone/roof)
-"cvZ" = (
+"cvY" = (
 /turf/open/floor/prison/darkyellow2/west,
 /area/white_antre/landing_zone/roof)
-"cwa" = (
+"cvZ" = (
 /turf/open/floor/prison/darkyellow2/east,
 /area/white_antre/landing_zone/roof)
-"cwb" = (
+"cwa" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/landing_zone/roof)
-"cwc" = (
+"cwb" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	req_one_access = null
 	},
 /turf/open/floor/corsat/marked,
 /area/white_antre/landing_zone/roof)
-"cwd" = (
+"cwc" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellowcorners2/north,
 /area/white_antre/landing_zone/roof)
-"cwe" = (
+"cwd" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/white_antre/landing_zone/roof)
-"cwf" = (
+"cwe" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/metal/medium_stack,
 /turf/open/floor/prison,
 /area/white_antre/landing_zone/roof)
-"cwg" = (
+"cwf" = (
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/landing_zone/roof)
-"cwh" = (
+"cwg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/prison,
 /area/white_antre/landing_zone/roof)
-"cwi" = (
+"cwh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrown2/east,
 /area/white_antre/landing_zone/roof)
-"cwj" = (
+"cwi" = (
 /obj/item/tool/warning_cone{
 	pixel_y = 16
 	},
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/white_antre/landing_zone/roof)
-"cwk" = (
+"cwj" = (
 /turf/open/floor/prison/darkyellowcorners2/east,
 /area/white_antre/landing_zone/roof)
-"cwl" = (
+"cwk" = (
 /obj/item/tool/warning_cone{
 	pixel_x = 5;
 	pixel_y = 13
 	},
 /turf/open/floor/prison/darkyellowcorners2/north,
 /area/white_antre/landing_zone/roof)
-"cwm" = (
+"cwl" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/prison/darkyellow2/northeast,
+/area/white_antre/landing_zone/roof)
+"cwm" = (
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 60
+	},
+/turf/open/floor/prison/darkbrownfull2,
 /area/white_antre/landing_zone/roof)
 "cwn" = (
 /obj/effect/decal/cleanable/dirt,
@@ -100499,10 +100499,10 @@ iKa
 iKa
 bRL
 bRL
-aNI
+cwm
 beu
 bek
-cvW
+aNI
 bdY
 iFy
 ckx
@@ -101004,7 +101004,7 @@ ctR
 ctR
 cwt
 aKf
-cwf
+cwe
 ben
 aKf
 cqz
@@ -101172,7 +101172,7 @@ cwu
 aNA
 aNN
 aKf
-cwg
+cwf
 aKp
 aKf
 cqz
@@ -101676,7 +101676,7 @@ cwv
 aNA
 aNN
 aKf
-cwh
+cwg
 aKf
 aKf
 cqz
@@ -101845,7 +101845,7 @@ aNA
 aNN
 cwn
 bpa
-cwb
+cwa
 aXH
 aNC
 aKz
@@ -102011,10 +102011,10 @@ ctR
 ctR
 ctR
 aNO
-cwi
-cwi
+cwh
+cwh
 bev
-cvX
+cvW
 cqO
 ctR
 bZa
@@ -102182,7 +102182,7 @@ bRL
 cwo
 beq
 beq
-cvY
+cvX
 ctR
 ctR
 bXo
@@ -102349,7 +102349,7 @@ iKa
 bRL
 bRL
 akw
-cwc
+cwb
 akw
 ctR
 ctR
@@ -102684,9 +102684,9 @@ iKa
 iKa
 bRL
 bRL
-cwj
-cvZ
-cvZ
+cwi
+cvY
+cvY
 cul
 ctR
 bXo
@@ -102852,7 +102852,7 @@ iKa
 iKa
 bRL
 cwp
-cwk
+cwj
 aKf
 aKf
 cvz
@@ -103188,7 +103188,7 @@ aMJ
 iKa
 bRL
 cwr
-cwl
+cwk
 aXH
 aKp
 aKf
@@ -103356,8 +103356,8 @@ ewE
 iKa
 bRL
 cws
-cwm
-cwd
+cwl
+cwc
 aKf
 aKf
 cqv
@@ -103525,8 +103525,8 @@ iKa
 iKa
 bRL
 bRL
-cwe
-cwa
+cwd
+cvZ
 cvV
 cqw
 ckV

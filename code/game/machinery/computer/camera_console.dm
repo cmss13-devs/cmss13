@@ -476,6 +476,10 @@
 	return
 
 /obj/structure/machinery/computer/cameras/dropship/midway/gunnery/attack_hand(mob/user)
+	if(user_weakref)
+		var/mob/living/carbon/human/current_user = user_weakref.resolve()
+		to_chat(user, SPAN_WARNING("[current_user.name] is already using the [src.name]!"))
+		return
 	if(linked_m90)
 		return ..()
 	else
@@ -510,6 +514,7 @@
 			user.client.mouse_pointer_icon = initial(user.client.mouse_pointer_icon)
 
 	current = null
+	user_weakref = null
 	return ..()
 
 /obj/structure/machinery/computer/cameras/dropship/midway/gunnery/tgui_interact(mob/user, datum/tgui/ui)
@@ -534,7 +539,6 @@
 
 		// Open UI
 		ui = new(user, src, "DropshipGunneryConsole", name)
-		to_chat(world, "what3")
 		ui.open()
 
 /obj/structure/machinery/computer/cameras/dropship/midway/gunnery/ui_act(action, params)
@@ -559,7 +563,6 @@
 		if(selected_camera)
 			if(selected_camera == current)
 				focus_mob()
-				to_chat(world, "dogshit")
 				selected_camera = null
 				current = null
 				ui_data()
@@ -570,8 +573,6 @@
 
 		if(!selected_camera)
 			return TRUE
-		to_chat(world, "what2")
-		to_chat(world, "selected_camera.view_range is [selected_camera.view_range]")
 		SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET, selected_camera, selected_camera.view_range, selected_camera.view_range)
 		if(user_weakref)
 			focus_camera(selected_camera)
@@ -579,7 +580,6 @@
 		return TRUE
 
 /obj/structure/machinery/computer/cameras/dropship/midway/gunnery/proc/focus_mob()
-	to_chat(world, "focusing mob")
 	var/mob/living/carbon/human/user = user_weakref.resolve()
 	user.remove_client_color_matrix("gunnery_visor", 0.75 SECONDS)
 	user.clear_fullscreen("gunnery_visor", 0.4 SECONDS)
@@ -594,9 +594,7 @@
 	focused = FALSE
 
 /obj/structure/machinery/computer/cameras/dropship/midway/gunnery/proc/focus_camera(selected_camera)
-	to_chat(world, "focusing camera")
 	var/mob/living/carbon/human/user = user_weakref.resolve()
-	to_chat(world, "user found")
 	if(user.client?.prefs?.night_vision_preference)
 		matrix_color = user.client.prefs.nv_color_list[user.client.prefs.night_vision_preference]
 	user.add_client_color_matrix("gunnery_visor", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string(matrix_color)), 0.75 SECONDS)

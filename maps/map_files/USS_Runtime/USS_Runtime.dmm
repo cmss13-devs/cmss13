@@ -472,15 +472,6 @@
 	opacity = 0
 	},
 /area/event)
-"TI" = (
-/obj/structure/barricade/handrail/no_vault{
-	dir = 4
-	},
-/obj/structure/barricade/handrail/no_vault{
-	dir = 4
-	},
-/turf/open/floor/plating/bare_catwalk,
-/area/event/dynamic)
 "UO" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/closet/secure_closet/surgical{
@@ -7633,7 +7624,7 @@ PS
 PS
 PS
 IH
-TI
+IH
 lb
 dU
 lV

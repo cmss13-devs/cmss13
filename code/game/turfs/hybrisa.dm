@@ -60,11 +60,19 @@
 /turf/open/hybrisa/street/cement2
 	icon_state = "cement2"
 
+/turf/open/hybrisa/street/cement2/unweedable
+	allow_construction = FALSE
+	is_weedable = NOT_WEEDABLE
+
 /turf/open/hybrisa/street/cement3
 	icon_state = "cement3"
 
 /turf/open/hybrisa/street/asphalt
 	icon_state = "asphalt_old"
+
+/turf/open/hybrisa/street/asphalt/unweedable
+	allow_construction = FALSE
+	is_weedable = NOT_WEEDABLE
 
 // Side-walk
 
@@ -72,8 +80,24 @@
 /turf/open/hybrisa/street/sidewalkfull
 	icon_state = "sidewalkfull"
 
+/turf/open/hybrisa/street/sidewalkfull/unweedable
+	allow_construction = FALSE
+	is_weedable = NOT_WEEDABLE
+
 /turf/open/hybrisa/street/sidewalkcorner
 	icon_state = "sidewalkcorner"
+
+/turf/open/hybrisa/street/sidewalkcorner/south
+	dir = SOUTH
+
+/turf/open/hybrisa/street/sidewalkcorner/north
+	dir = NORTH
+
+/turf/open/hybrisa/street/sidewalkcorner/east
+	dir = EAST
+
+/turf/open/hybrisa/street/sidewalkcorner/west
+	dir = WEST
 
 // Side-Walk
 
@@ -786,8 +810,18 @@
 	icon_state = "darkblackmetal2"
 /turf/open/floor/hybrisa/metal/darkredfull2
 	icon_state = "darkredfull2"
+
 /turf/open/floor/hybrisa/metal/redcorner
 	icon_state = "zredcorner"
+
+/turf/open/floor/hybrisa/metal/redcorner/north
+	dir = NORTH
+
+/turf/open/floor/hybrisa/metal/redcorner/east
+	dir = EAST
+
+/turf/open/floor/hybrisa/metal/redcorner/west
+	dir = WEST
 
 /turf/open/floor/hybrisa/metal/grated
 	icon_state = "rampsmaller"

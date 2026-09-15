@@ -42,6 +42,7 @@
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
 #define MAP_TYRARGO_RIFT "Tyrargo Rift"
 #define MAP_WHITE_ANTRE_RESEARCH_FACILITY "White Antre Research Facility"
+#define MAP_NORTHPOINT_HOSPITAL "Northpoint Hospital"
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
 #define MAP_ROSTOCK "SSV Rostock" //UPP Warship
 #define MAP_HUNTERSHIP "Hunter Ship"
@@ -422,6 +423,7 @@
 #define WALL_FOREST_ROCK_DIRTY "rock_forest_dirty"
 #define WALL_STRATA_OUTPOST_RIBBED "strata_ribbed_outpost_"
 #define WALL_STRATA_OUTPOST_BARE "strata_bare_outpost_"
+#define WALL_NORTHPOINT "Inflatable_interior"
 #define WALL_SHIVA_ICE "shiva_ice"
 #define WALL_SHIVA_FAB "shiva_fab"
 #define WALL_SHIVA_FAB_R "shiva_fab_r"

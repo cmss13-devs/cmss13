@@ -210,6 +210,12 @@
 
 	var/shaken_friend = FALSE
 
+	if(HAS_TRAIT(src, TRAIT_UNSHAKABLE) && (HAS_TRAIT(src, TRAIT_FLOORED) || HAS_TRAIT(src, TRAIT_INCAPACITATED) || HAS_TRAIT(src, TRAIT_KNOCKEDOUT) || body_position == LYING_DOWN || sleeping))
+		mob.visible_message(SPAN_WARNING("[mob] shakes [src], but it seems to have no effect."),
+			SPAN_WARNING("You shake [src], but it seems to have no effect."), null, 4)
+		playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+		return
+
 	if(HAS_TRAIT(src, TRAIT_FLOORED) || HAS_TRAIT(src, TRAIT_KNOCKEDOUT) || body_position == LYING_DOWN || sleeping)
 		if(client)
 			sleeping = max(0,src.sleeping-5)
@@ -238,11 +244,7 @@
 	if(shaken_friend)
 		SEND_SIGNAL(mob, COMSIG_HUMAN_HELPING_UP)
 
-
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-
-	if(HAS_TRAIT(src, TRAIT_UNSHAKABLE)) //shakes don't help if you have this trait
-		return
 
 	adjust_effect(-6, PARALYZE)
 	adjust_effect(-6, STUN)

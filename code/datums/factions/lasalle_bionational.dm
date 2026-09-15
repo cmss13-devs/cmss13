@@ -3,15 +3,9 @@
 	faction_tag = FACTION_LASALLE_BIONATIONAL
 	base_icon_file = 'icons/mob/hud/factions/lasalle_bionational.dmi'
 
-/datum/faction/lasalle_bionational/modify_hud_holder(image/holder, mob/living/carbon/human/human)
-	var/icon/override_icon_file
-	var/hud_icon_state
-	var/_role = human.job
-	if(!_role)
-		var/obj/item/card/id/id_card = human.get_idcard()
-		if(id_card)
-			_role = id_card.rank
-	switch(_role)
+/datum/faction/lasalle_bionational/modify_hud_holder_from_data(image/holder, location, job_rank, paygrade, assignment, rank_fallback, rank_override, datum/squad/squad)
+	var/hud_icon_state = null
+	switch(job_rank)
 		if(JOB_LB_MERC)
 			hud_icon_state = "merc"
 		if(JOB_LB_MERC_MEDIC)
@@ -56,5 +50,6 @@
 			hud_icon_state = "dep_director"
 		if(JOB_LB_DIRECTOR)
 			hud_icon_state = "director"
+
 	if(hud_icon_state)
-		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, human, "ls_[hud_icon_state]")
+		holder.overlays += image(base_icon_file, location, "ls_[hud_icon_state]")

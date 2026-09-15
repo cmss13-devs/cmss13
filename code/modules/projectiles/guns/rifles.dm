@@ -1428,8 +1428,8 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi'
 	icon_state = "m20a"
 	item_state = "m20a"
-	reload_sound = 'sound/weapons/handling/m16_gun_reload.ogg'
-	unload_sound = 'sound/weapons/handling/m16_gun_unload.ogg'
+	reload_sound = 'sound/weapons/handling/gun_m16_reload.ogg'
+	unload_sound = 'sound/weapons/handling/gun_m16_unload.ogg'
 	fire_sound = "gun_pulse_classic"
 	current_mag = /obj/item/ammo_magazine/rifle/m20a
 	attachable_allowed = list(

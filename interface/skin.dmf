@@ -101,6 +101,7 @@ window "hudwindow"
 		anchor1 = -1,-1
 		anchor2 = -1,-1
 		saved-params = "pos;size;"
+		statusbar = false
 		is-pane = true
 	elem "hud"
 		type = MAP
@@ -108,6 +109,7 @@ window "hudwindow"
 		size = 160x480
 		anchor1 = 0,0
 		anchor2 = 100,100
+		statusbar = false
 		font-family = "Arial"
 		font-size = 7
 		saved-params = "icon-size;text-mode"

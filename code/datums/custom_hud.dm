@@ -88,52 +88,6 @@
 	var/coords_x = splittext(coords[1], ":")
 	return "hud:[coords_x[2]]:[text2num(coords_x[3])+A.hud_offset],[coords[2]]"
 
-/datum/custom_hud/old
-	ui_style_icon = 'icons/mob/hud/human_old.dmi'
-
-/datum/custom_hud/white
-	ui_style_icon = 'icons/mob/hud/human_white.dmi'
-
-/datum/custom_hud/orange
-	ui_style_icon = 'icons/mob/hud/human_orange.dmi'
-
-/datum/custom_hud/glass
-	ui_style_icon = 'icons/mob/hud/human_glass.dmi'
-
-/datum/custom_hud/red
-	ui_style_icon = 'icons/mob/hud/human_red.dmi'
-
-/datum/custom_hud/green
-	ui_style_icon = 'icons/mob/hud/human_green.dmi'
-
-/datum/custom_hud/bronze
-	ui_style_icon = 'icons/mob/hud/human_bronze.dmi'
-
-/datum/custom_hud/holographic
-	ui_style_icon = 'icons/mob/hud/human_holo.dmi'
-
-/datum/custom_hud/grey
-	ui_style_icon = 'icons/mob/hud/human_grey.dmi'
-
-/datum/custom_hud/dark
-	ui_style_icon = 'icons/mob/hud/human_dark.dmi'
-
-	UI_FRAME_LOC = "EAST-3:0,NORTH-1:15"
-	UI_OXYGEN_LOC = "EAST-2:16,NORTH-1:15"
-	UI_NUTRITION_LOC = "EAST-2:33,NORTH-1:15"
-	UI_TEMP_LOC = "EAST-1:26,NORTH-0:-7"
-	UI_HEALTH_LOC = "EAST-1:27,NORTH-0:-8"
-
-/datum/custom_hud/dark/get_status_loc(placement)
-	var/col = (placement-1)
-	var/coord_col = "-0"
-	var/coord_col_offset = "-[24 * col + 2]"
-
-	var/row = floor((placement-1)/6)
-	var/coord_row = "[-1 - row]"
-	var/coord_row_offset = -8
-	return "EAST[coord_col]:[coord_col_offset],NORTH[coord_row]:[coord_row_offset]"
-
 /datum/custom_hud/alien
 	ui_style_icon = 'icons/mob/hud/alien_standard.dmi'
 

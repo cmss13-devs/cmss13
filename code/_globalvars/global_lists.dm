@@ -546,16 +546,6 @@ GLOBAL_LIST_INIT(sidearm_ammo, list(
 /proc/setup_all_huds()
 	return list(
 		HUD_MIDNIGHT = new /datum/custom_hud(),
-		HUD_DARK = new /datum/custom_hud/dark(),
-		HUD_BRONZE = new /datum/custom_hud/bronze(),
-		HUD_GLASS = new /datum/custom_hud/glass(),
-		HUD_GREEN = new /datum/custom_hud/green(),
-		HUD_GREY = new /datum/custom_hud/grey(),
-		HUD_HOLO = new /datum/custom_hud/holographic(),
-		HUD_OLD = new /datum/custom_hud/old(),
-		HUD_ORANGE = new /datum/custom_hud/orange(),
-		HUD_RED = new /datum/custom_hud/red(),
-		HUD_WHITE = new /datum/custom_hud/white(),
 		HUD_ALIEN = new /datum/custom_hud/alien()
 	)
 

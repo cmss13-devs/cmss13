@@ -319,7 +319,7 @@
 				to_chat(user, SPAN_WARNING("You cannot secure \the [src] here, find a more secure surface!"))
 				return
 			var/turf/open/floor = get_turf(src)
-			if(!floor.allow_construction)
+			if(!floor.allow_construction || !floor.validate_deployment(TURF_DEPLOYABLE_SENTRY))
 				to_chat(user, SPAN_WARNING("You cannot secure \the [src] here, find a more secure surface!"))
 				return FALSE
 			user.visible_message(SPAN_NOTICE("[user] begins securing [src] to the ground."),

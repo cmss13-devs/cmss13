@@ -193,6 +193,54 @@
             "label": "Build All (runtime map + quickstart + testing)"
         },
         {
+            "type": "process",
+            "command": "tools/build/build.sh",
+            "windows": {
+                "command": ".\\tools\\build\\build.bat",
+                "args": ["-DUNIT_TESTS"]
+            },
+            "options": {
+                "env": {
+                    "DM_EXE": "${config:dreammaker.byondPath}"
+                }
+            },
+            "problemMatcher": [
+                "$dreammaker",
+                "$tsc",
+                "$eslint-stylish"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "dm: reparse",
+            "label": "Build All (unit testing)"
+        },
+        {
+            "type": "process",
+            "command": "tools/build/build.sh",
+            "windows": {
+                "command": ".\\tools\\build\\build.bat",
+                "args": ["-DRUNTIME_MAP", "-DUNIT_TESTS"]
+            },
+            "options": {
+                "env": {
+                    "DM_EXE": "${config:dreammaker.byondPath}"
+                }
+            },
+            "problemMatcher": [
+                "$dreammaker",
+                "$tsc",
+                "$eslint-stylish"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "dm: reparse",
+            "label": "Build All (runtime map + unit testing)"
+        },
+        {
             "type": "dreammaker",
             "dme": "colonialmarines.dme",
             "problemMatcher": [

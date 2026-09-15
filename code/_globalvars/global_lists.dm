@@ -551,7 +551,7 @@ GLOBAL_LIST_INIT(sidearm_ammo, list(
 
 /proc/setup_human_huds()
 	var/list/human_huds = list()
-	for(var/type in GLOB.custom_huds_list - list(HUD_ALIEN, HUD_ROBOT))
+	for(var/type in GLOB.custom_huds_list - list(HUD_ALIEN))
 		human_huds += type
 	return human_huds
 

@@ -155,7 +155,7 @@
 
 	xeno.create_shield(shield_duration, "shield2")
 	shield_active = TRUE
-	button.icon_state = "template_active"
+	button.icon_state = "template_xeno_active"
 	addtimer(CALLBACK(src, PROC_REF(remove_shield)), shield_duration)
 
 	apply_cooldown()

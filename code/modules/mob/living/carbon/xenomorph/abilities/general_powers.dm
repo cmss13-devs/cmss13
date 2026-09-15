@@ -725,7 +725,7 @@
 	if(xeno.layer != XENO_HIDING_LAYER)
 		xeno.layer = XENO_HIDING_LAYER
 		to_chat(xeno, SPAN_NOTICE("We are now hiding."))
-		button.icon_state = "template_active"
+		button.icon_state = "template_xeno_active"
 		RegisterSignal(xeno, COMSIG_MOB_STATCHANGE, PROC_REF(unhide_on_stat))
 	else
 		xeno.layer = initial(xeno.layer)

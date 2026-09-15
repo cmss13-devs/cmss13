@@ -913,6 +913,12 @@
 	gun_faction = FACTION_CLF
 	var/jammed = FALSE
 
+	actions_types = list( //no aim assist
+		/datum/action/item_action/smartgun/toggle_lethal_mode,
+		/datum/action/item_action/smartgun/toggle_ammo_type,
+		/datum/action/item_action/smartgun/toggle_frontline_mode,
+	)
+
 /obj/item/weapon/gun/smartgun/clf/set_gun_config_values()
 	..()
 	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_1 //Rusty, salvaged and worn, what did you expect?
@@ -953,17 +959,13 @@
 		balloon_alert(user, "*jammed*")
 		return NONE
 	else if(prob(0.8)) //0.8% chance to malfunction on fire
-		switch(rand(1, 5))
+		switch(rand(1, 3))
 			if(1)
-				toggle_aim_assist(user)
-			if(2)
 				toggle_frontline_mode(user)
-			if(3)
-				toggle_motion_detector(user)
-			if(4)
+			if(2)
 				toggle_ammo_type(user)
-			if(5)
-				toggle_lethal_mode(user)
+			if(3)
+				toggle_lethal_mode(user) //33.3% chance to kill the person in front of you
 		to_chat(user, SPAN_HIGHDANGER("[src]'s electronics malfunctioned!"))
 		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
 		sparks.set_up(5, 3, src)

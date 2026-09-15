@@ -2395,7 +2395,7 @@
 /area/bigredv2/caves/mining)
 "LG" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/faxmachine{
+/obj/structure/machinery/faxmachine/backpack/clf{
 	department = "CLF - Cell 42"
 	},
 /obj/item/paper/bigred/clf,
@@ -3288,6 +3288,10 @@
 "Zw" = (
 /obj/item/ore,
 /turf/open/mars_cave/mars_dirt_7,
+/area/bigredv2/caves/mining)
+"ZA" = (
+/obj/effect/landmark/survivor_spawner/clf_smartgunner/solaris,
+/turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
 "ZG" = (
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -4306,7 +4310,7 @@ lK
 FO
 FO
 xL
-FO
+ZA
 kV
 FO
 ag

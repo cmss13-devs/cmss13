@@ -61,6 +61,21 @@
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 	archetype = INSERT_STANDARD
 
+/obj/effect/landmark/survivor_spawner/clf_smartgunner
+	icon_state = "surv_clf"
+	hostile = TRUE
+	equipment = /datum/equipment_preset/survivor/clf/smartgunner
+	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
+	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are the weapons specialist fighting for the Colonial Liberation Front. Your ship received a distress signal from a planet bordering the CLF controlled space under USCM control. Ready and willing to save poor colonists from parasitic tyrants, you and your team boarded small ship called Marie Curie. Unfortunately, right before you came close to a landing zone, a glob of acid hit the ship, damaging one of the engines. Despite all the efforts of the pilot, the ship went straight into nearby mountain. You were hurt pretty badly in the crash. Dumbfounded, you rise up and notice that one of your limbs is badly bruised. You looked at other survivors, also limping and trying to tend to their wounds, luckily, none of you were seriously hurt."
+	roundstart_damage_min = 3
+	roundstart_damage_max = 10
+	roundstart_damage_times = 2
+
+	spawn_priority = SPAWN_PRIORITY_HIGH
+	archetype = INSERT_SMARTGUNNER
+
 /obj/effect/landmark/survivor_spawner/clf_lead
 	icon_state = "surv_clf"
 	hostile = TRUE
@@ -136,6 +151,7 @@
 
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 	archetype = INSERT_SYNTH
+
 //Big Red CLF survivors//
 
 /obj/effect/landmark/survivor_spawner/clf/solaris
@@ -161,6 +177,13 @@
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are doctor fighting for the Colonial Liberation Front. Your cell has been embedded among the miners and workers of Solaris Ridge, instigating and agitating for a general strike. Your work was successful and there was a strike that turned violent against UA peacekeeping forces. Soon after in the chaos, however, you received word that unknown creatures were picking off fellow colonists. You hunkered down with your cell and have begun to prepare for the worst, not knowing what fate awaits you in these caves..."
+
+/obj/effect/landmark/survivor_spawner/clf_smartgunner/solaris
+	intro_text = list("<h2>You are a survivor of a colonial uprising!</h2>",\
+	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are the weapons specialist for a squad fighting for the Colonial Liberation Front. Your cell has been embedded among the miners and workers of Solaris Ridge, instigating and agitating for a general strike. Your work was successful and there was a strike that turned violent against UA peacekeeping forces. Soon after in the chaos, however, you recieved word that unknown creatures were picking off fellow colonists. You hunkered down with your cell and have begun to prepare for the worst, not knowing what fate awaits you in these caves..."
+
 
 /obj/effect/landmark/survivor_spawner/clf_coordinator/solaris
 	intro_text = list("<h2>You are a survivor of a colonial uprising!</h2>",\
@@ -200,6 +223,12 @@
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are a doctor fighting for the Colonial Liberation Front. Your ship, due to poor maintenance, suffered a complete system failure that resulted in the ship being abandoned. Your pods catastrophically failed, and you appear to have landed on the nearest planet. At first, the colony appeared mostly abandoned, save for a company rat you found hiding in a supply locker. After some enhanced interrogation, you learned that there has been some sort of outbreak of dangerous creatures. The cell leader ordered everyone to hunker down, and you successfully repelled a wave of the creatures after suffering many casualties. You and your cell hang by a thread, stuck on an unknown world surrounded by unknown enemies."
 
+/obj/effect/landmark/survivor_spawner/clf_smartgunner/trijent
+	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
+	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are the weapons specialist of a squad fighting for the Colonial Liberation Front. Your ship, due to poor maintenance, suffered a complete system failure that resulted you ordering the ship to be abandoned. Your pods catastrophically failed, and you appear to have landed on the nearest planet. At first, the colony appeared mostly abandoned, save for a company rat you found hiding in a supply locker. After ordering some enhanced interrogation, you learned that there has been some sort of outbreak of dangerous creatures. You ordered everyone to hunker down, and you successfully repelled a wave of the creatures after suffering many casualties. You and your men hang by a thread, stuck on an unknown world surrounded by unknown enemies."
+
 /obj/effect/landmark/survivor_spawner/clf_coordinator/trijent
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
@@ -211,6 +240,7 @@
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are a synthetic programmed to fight for the Colonial Liberation Front. Your ship, due to poor maintenance, suffered a complete system failure that resulted in the ship being abandoned. Your pods catastrophically failed, and you appear to have landed on the nearest planet. At first, the colony appeared mostly abandoned, save for a company rat you found hiding in a supply locker. After some enhanced interrogation, you learned that there has been some sort of outbreak of dangerous creatures. The cell leader ordered everyone to hunker down, and you successfully repelled a wave of the creatures after suffering many casualties. You and your cell hang by a thread, stuck on an unknown world surrounded by unknown enemies."
+
 //Fiorina CLF survivors//
 
 /obj/effect/landmark/survivor_spawner/clf/fiorina
@@ -236,6 +266,13 @@
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are a doctor fighting for the Colonial Liberation Front. You have discovered that one of your comrades is being held temporarily at the Science Annex of the infamous Fiorina Prison. The plan was simple: Ram your ship straight into the station and shoot your way through, relying on the element of surprise. However, the station security was already on high alert, and responded quickly. You beat them back, but now it's quiet... too quiet..."
+
+/obj/effect/landmark/survivor_spawner/clf_smartgunner/fiorina
+	intro_text = list("<h2>You are a survivor of an attempted prison break!</h2>",\
+	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are the weapons specialist fighting for the Colonial Liberation Front. You have discovered that one of your comrades is being held temporarily at the Science Annex of the infamous Fiorina Prison. The plan was simple: Ram your ship straight into the station and shoot your way through, relying on the element of surprise. However, the station security was already on high alert, and responded quickly. You beat them back, but now it's quiet... too quiet..."
+
 
 /obj/effect/landmark/survivor_spawner/clf_coordinator/fiorina
 	intro_text = list("<h2>You are a survivor of an attempted prison break!</h2>",\
@@ -275,6 +312,12 @@
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are a doctor fighting for the Colonial Liberation Front. After a rough landing that disabled your strike craft, your cell successfully launched a raid against the corporate parasitic scum lording over this colony. However, the expected response from security forces never arrived, and the colony soon fell silent. Strange noises have been heard coming from the darkness that no one can identify, and the cell lead has ordered everyone to hold here until further orders."
 
+/obj/effect/landmark/survivor_spawner/clf_smartgunner/shivas
+	intro_text = list("<h2>You are a survivor of a CLF raid!</h2>",\
+	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are the weapons specialist fighting for the Colonial Liberation Front. After a rough landing that disabled your strike craft, your cell successfully launched a raid against the corporate parasitic scum lording over this colony. However, the expected response from security forces never arrived, and the colony soon fell silent. Strange noises have been heard coming from the darkness that no one can identify, and the cell lead has ordered everyone to hold here until further orders."
+
 /obj/effect/landmark/survivor_spawner/clf_coordinator/shivas
 	intro_text = list("<h2>You are a survivor of a CLF raid!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
@@ -286,6 +329,7 @@
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are a synthetic programmed to fight for the Colonial Liberation Front. After a rough landing that disabled your strike craft, your cell successfully launched a raid against the corporate parasitic scum lording over this colony. However, the expected response from security forces never arrived, and the colony soon fell silent. Strange noises have been heard coming from the darkness that no one can identify, and the cell lead has ordered everyone to hold here until further orders."
+
 //Kutjevo's CLF survivors//
 
 /obj/effect/landmark/survivor_spawner/clf/kutjevo
@@ -320,6 +364,15 @@
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are a doctor fighting for the Colonial Liberation Front. You and the rest of your team have been smuggling in this sector for years. After nearly running out of fuel running away from a patrol, you just barely managed to coast to a stop at the standard pickup and dropoff zone at the refinery. However, the crew that usually meets you was nowhere to be found, and the colony was dead silent. Not knowing what else to do, you started loading and unloading cargo as usual and setting up a perimeter just in case. Now, after dark, you've started hearing strange noises coming from the colony..."
+	roundstart_damage_min = 0
+	roundstart_damage_max = 0
+	roundstart_damage_times = 0
+
+/obj/effect/landmark/survivor_spawner/clf_smartgunner/kutjevo
+	intro_text = list("<h2>You are a CLF member running a smuggling operation!</h2>",\
+	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are the weapons specialist of a squad fighting for the Colonial Liberation Front. You and your team have been smuggling in this sector for years. After nearly running out of fuel running away from a patrol, you just barely managed to coast to a stop at the standard pickup and dropoff zone at the refinery. However, the crew that usually meets you was nowhere to be found, and the colony was dead silent. Not knowing what else to do, you ordered the team to start loading and unloading cargo as usual and to set up a perimeter just in case. Now, after dark, you've started hearing strange noises coming from the colony..."
 	roundstart_damage_min = 0
 	roundstart_damage_max = 0
 	roundstart_damage_times = 0
@@ -368,6 +421,13 @@
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are a doctor fighting for the Colonial Liberation Front. Your cell has been training and negotiating for more equipment with the UPP for a few weeks now. However, recently some sort of dangerous creatures have invaded the nearby colony, and the radios have fallen silent. The creatures then attacked your encampment, resulting in multiple casualties. Your Cell Lead has requested for an extraction from HQ, hopefully they arrive in time..."
 
+/obj/effect/landmark/survivor_spawner/clf_smartgunner/soro
+	intro_text = list("<h2>You are a CLF member in a covert camp!</h2>",\
+	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are the smartgunner of a squad fighting for the Colonial Liberation Front. Your cell has been training and negotiating for more equipment with the UPP for a few weeks now. However, recently some sort of dangerous creatures have invaded the nearby colony, and the radios have fallen silent. The creatures then attacked your encampment, resulting in multiple casualties. Unbeknownst to your men, your request for extraction from HQ has been denied..."
+
+
 /obj/effect/landmark/survivor_spawner/clf_coordinator/soro
 	intro_text = list("<h2>You are a CLF member in a covert camp!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
@@ -406,6 +466,12 @@
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are a doctor fighting for the Colonial Liberation Front. Your cell was en route to a UA outpost when your shuttle suffered a critical systems failure and crashed. Almost immediately, you were beset upon by unknown hostile creatures, which you and your team barely managed to beat back, not without taking serious losses. Defenses are prepared for the second assault, but you don't know how much longer you can hold out..."
 
+/obj/effect/landmark/survivor_spawner/clf_smartgunner/varadero
+	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
+	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are the weapons specialist of a squad fighting for the Colonial Liberation Front. Your cell was en route to a UA outpost when your shuttle suffered a critical systems failure and crashed. Almost immediately, you were beset upon by unknown hostile creatures, which your team barely managed to beat back, not without taking serious losses. Defenses are prepared for the second assault, but you don't know how much longer you can hold out..."
+
 /obj/effect/landmark/survivor_spawner/clf_coordinator/varadero
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
@@ -417,6 +483,7 @@
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are a synthetic programmed to fight for the Colonial Liberation Front. Your cell was en route to a UA outpost when your shuttle suffered a critical systems failure and crashed. Almost immediately, you were beset upon by unknown hostile creatures, which you and your team barely managed to beat back, not without taking serious losses. Defenses are prepared for the second assault, but you don't know how much longer you can hold out..."
+
 //Prospera CLF survivors//
 
 /obj/effect/landmark/survivor_spawner/clf/hybrisa
@@ -442,6 +509,12 @@
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are a doctor fighting for the Colonial Liberation Front. Taking advantage of the chaos after most security forces present in the city were diverted to the lab, your cell launched an assault on the offices nearby, knowing that a company big shot would be present. The raid was a success with minimal losses, but the expected security response never arrived. In fact, the whole city seems to have gone quiet..."
+
+/obj/effect/landmark/survivor_spawner/clf_smartgunner/hybrisa
+	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
+	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are the weapons specialist of a squad fighting for the Colonial Liberation Front. Taking advantage of the chaos after most security forces present in the city were diverted to the lab, you ordered your cell to launch an assault on the offices nearby, knowing that a company big shot would be present. The raid was a success with minimal losses, but the expected security response never arrived. In fact, the whole city seems to have gone quiet..."
 
 /obj/effect/landmark/survivor_spawner/clf_coordinator/hybrisa
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\

@@ -207,6 +207,7 @@
 
 		target.apply_effect(0.2, WEAKEN)
 
+		var/num_of_targets = LAZYLEN(targets)
 		switch(num_of_targets)
 			if(1)
 				new /datum/effects/xeno_slow(target, abduct_user, null, null, 2.5 SECONDS)
@@ -218,6 +219,11 @@
 					target_human.update_xeno_hostile_hud()
 				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target, TRAIT_SOURCE_ABILITY("Abduct")), get_xeno_stun_duration(target, 2.5 SECONDS))
 				to_chat(target, SPAN_XENOHIGHDANGER("[abduct_user] has pinned you to the ground! You cannot move!"))
+
+				target.set_effect(2, DAZE)
+			else
+				target.apply_effect(get_xeno_stun_duration(target, 1.3), WEAKEN)
+				to_chat(target, SPAN_XENOHIGHDANGER("You are slammed into the other victims of [abduct_user]!"))
 
 		shake_camera(target, 10, 1)
 

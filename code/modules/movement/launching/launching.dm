@@ -166,7 +166,7 @@
 		end_turf.on_throw_end(src)
 
 // Proc for throwing or propelling movable atoms towards a target
-/atom/movable/proc/launch_towards(datum/launch_metadata/launching_data, tracking = FALSE)
+/atom/movable/proc/launch_towards(datum/launch_metadata/launching_data, tracking = FALSE, list/turf/route = null)
 	if (!istype(launching_data))
 		CRASH("invalid launch_metadata passed to launch_towards")
 	if (!launching_data.target || !src)

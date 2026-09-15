@@ -73,7 +73,7 @@
 	pixel_x = -1;
 	dir = 1
 	},
-/obj/effect/landmark/survivor_spawner/clf_lead/varadero,
+/obj/effect/landmark/survivor_spawner/clf_smartgunner/varadero,
 /turf/open/floor/almayer,
 /area/varadero/interior/research/clfship)
 "ca" = (
@@ -1529,7 +1529,7 @@
 /area/varadero/interior/research)
 "Ir" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine{
+/obj/structure/machinery/faxmachine/backpack/clf{
 	department = "CLF - Cell 42"
 	},
 /obj/item/paper/varadero/clf,
@@ -1782,6 +1782,7 @@
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
 "Nw" = (
+/obj/effect/landmark/survivor_spawner/clf_lead/varadero,
 /turf/open/floor/platingdmg1,
 /area/varadero/interior/research)
 "NC" = (

@@ -2803,6 +2803,26 @@
 	new /obj/item/ammo_magazine/smartgun/rusty(src)
 	new /obj/item/ammo_magazine/smartgun/rusty(src)
 
+/obj/item/storage/belt/gun/smartgunner/clf/full_alt/survivor/fill_preset_inventory() //less ammo, same concept
+	switch(rand(1, 5))
+		if(1)
+			handle_item_insertion(new /obj/item/weapon/gun/revolver/upp())
+			new /obj/item/ammo_magazine/revolver/upp(src)
+		if(2)
+			handle_item_insertion(new /obj/item/weapon/gun/revolver/cmb())
+			new /obj/item/ammo_magazine/revolver/cmb(src)
+		if(3)
+			handle_item_insertion(new /obj/item/weapon/gun/pistol/m1911())
+			new /obj/item/ammo_magazine/pistol/m1911(src)
+		if(4)
+			handle_item_insertion(new /obj/item/weapon/gun/pistol/t73())
+			new /obj/item/ammo_magazine/pistol/t73(src)
+		if(5)
+			handle_item_insertion(new /obj/item/weapon/gun/pistol/deagle())
+			new /obj/item/ammo_magazine/pistol/deagle(src)
+
+	new /obj/item/ammo_magazine/smartgun/rusty(src)
+
 /obj/item/storage/belt/gun/mortarbelt
 	name="\improper M276 pattern mortar operator belt"
 	desc="An M276 load-bearing rig configured to carry ammunition for the M402 mortar, along with a sidearm."

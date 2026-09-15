@@ -1311,7 +1311,7 @@
 /area/strata/exterior/far_north_outpost)
 "jw" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/structure/machinery/faxmachine{
+/obj/structure/machinery/faxmachine/backpack/clf{
 	department = "CLF - Cell 42"
 	},
 /obj/item/paper/soro/clf,
@@ -1732,6 +1732,10 @@
 /obj/effect/blocker/sorokyne_hot_water,
 /turf/open/gm/river/soro,
 /area/strata/exterior/far_north_outpost)
+"zZ" = (
+/obj/effect/landmark/survivor_spawner/clf_smartgunner/soro,
+/turf/open/floor/wood,
+/area/strata/interior/outpost/clf_office)
 "Ad" = (
 /obj/item/trash/cigbutt,
 /turf/open/floor/wood,
@@ -2898,7 +2902,7 @@ bA
 eN
 xt
 Bb
-xt
+zZ
 BZ
 xt
 eN

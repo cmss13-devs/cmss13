@@ -108,13 +108,11 @@
 	if(id_paygrade)
 		msg += "<EM>[rank_display] </EM>"
 
-	msg += "<EM>[src]</EM>"
+	msg += "<EM>[src]</EM>\n"
 
 	if(mob_flags & MOB_FLAYED)
-		msg += " You cannot tell anymore, [t_He] doesn't have a face!\n"
+		msg += SPAN_ITALIC(" ...You cannot tell anymore, [t_He] doesn't have a face!\n")
 		msg += SPAN_BOLDWARNING("[uppertext(t_his)] SKIN HAS BEEN PEELED OFF.\n")
-	else
-		msg += "!\n"
 
 	//uniform
 	if(w_uniform && !skipjumpsuit)

@@ -1005,7 +1005,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			to_chat(user, "Using the proper protocol taught to you, you insert your ID to access the modified fax machine.")
 
 		else if((idcard.faction == FACTION_CLF) && (user.faction != FACTION_CLF))
-			var/checksucceed = pick(75;TRUE,25;FALSE) //Who do you think you are?
+			var/checksucceed = pick(25;TRUE,75;FALSE) //Who do you think you are?
 			if(!checksucceed)
 				to_chat(user, SPAN_HIGHDANGER("What's that beeping?"))
 				src.balloon_alert_to_viewers("the fax machine begins beeping rapidly!", null, 9, null, COLOR_RED)
@@ -1025,6 +1025,9 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 				addtimer(CALLBACK(src, PROC_REF(handle_explosion), target_turf), 1 SECONDS)
 				return
 			to_chat(user, SPAN_ALERTWARNING("Your keen eye and extensive technical knowledge save you from the *very* obvious IED implanted within the fax machine. Best be careful, next time you might not be so lucky."))
+
+		else if((idcard.faction == FACTION_CLF) && (user.faction != FACTION_CLF) && (user.skills.get_skill_level(SKILL_ENGINEER) >= SKILL_ENGINEER_MASTER)) //If the CE or Synth uses an ID.
+			to_chat(user, SPAN_ALERTWARNING("Your keen eye and extensive technical knowledge, and the correct identification save you from the *very* obvious IED implanted within the fax machine."))
 
 		else
 			to_chat(user, SPAN_HIGHDANGER("What's that beeping?"))

@@ -130,7 +130,7 @@
 	return TRUE
 
 // Proc for throwing items (should only really be used for throw)
-/atom/movable/proc/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, list/end_throw_callbacks, list/collision_callbacks, tracking = FALSE)
+/atom/movable/proc/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, list/end_throw_callbacks, list/collision_callbacks, tracking = FALSE, list/turf/route = null)
 	if(QDELETED(src))
 		return // Why throw something deleting?
 
@@ -158,7 +158,7 @@
 
 	flags_atom |= NO_ZFALL
 
-	launch_towards(LM, tracking)
+	launch_towards(LM, tracking, route)
 
 	flags_atom &= ~NO_ZFALL
 	var/turf/end_turf = get_turf(src)
@@ -166,7 +166,7 @@
 		end_turf.on_throw_end(src)
 
 // Proc for throwing or propelling movable atoms towards a target
-/atom/movable/proc/launch_towards(datum/launch_metadata/launching_data, tracking = FALSE)
+/atom/movable/proc/launch_towards(datum/launch_metadata/launching_data, tracking = FALSE, list/turf/route = null)
 	if (!istype(launching_data))
 		CRASH("invalid launch_metadata passed to launch_towards")
 	if (!launching_data.target || !src)
@@ -180,6 +180,22 @@
 		qdel(launch_metadata)
 	launch_metadata = launching_data
 
+	var/turf/start_turf
+	var/turf/above = SSmapping.get_turf_above(loc)
+	var/datum/turf_reservation/reservation = SSmapping.used_turfs[loc]
+	if(reservation && (reservation.is_below(loc, get_turf(launching_data.target))) || (launching_data.target.z > z) && istype(above, /turf/open_space))
+		start_turf = above
+	else
+		start_turf = get_step_towards(src, launching_data.target)
+		if(reservation && reservation.is_below(get_turf(launching_data.target), loc))
+			start_turf = get_step_towards(src, SSmapping.get_turf_above(launching_data.target))
+
+	var/list/turf/path
+	if(!LAZYLEN(route))
+		path = get_line(start_turf, launching_data.target, z_level_transitions = TRUE)
+	else
+		path = route
+
 	if (launching_data.spin)
 		animation_spin(5, 1 + min(1, launching_data.range/20))
 
@@ -191,17 +207,7 @@
 	ADD_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
 
 	add_temp_pass_flags(pass_flags)
-	var/turf/start_turf = get_step_towards(src, launching_data.target)
-	var/turf/above = SSmapping.get_turf_above(loc)
-	var/turf/target_turf = get_turf(launching_data.target)
-	var/datum/turf_reservation/reservation = SSmapping.used_turfs[loc]
-	if(reservation)
-		if((reservation.is_below(loc, target_turf)) || (launching_data.target.z > z) && istype(above, /turf/open_space))
-			start_turf = above
-		else if(reservation && reservation.is_below(target_turf, loc))
-			start_turf = get_step_towards(src, SSmapping.get_turf_above(launching_data.target))
 
-	var/list/turf/path = get_line(start_turf, launching_data.target, z_level_transitions = TRUE)
 	var/last_loc = loc
 	var/early_exit = FALSE
 

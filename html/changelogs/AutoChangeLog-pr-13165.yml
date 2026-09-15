@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - maptweak: "Removes invisible fog tiles on New Varadero. These tiles are not currently visible to players."

@@ -208,8 +208,6 @@
 
 	add_temp_pass_flags(pass_flags)
 
-	var/last_loc = loc
-
 	var/list/turf/path = get_line(start_turf, launching_data.target, z_level_transitions = TRUE)
 	var/last_loc = loc
 	var/early_exit = FALSE

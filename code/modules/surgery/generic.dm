@@ -492,10 +492,17 @@
 		return TRUE //Don't need the saw if it's already fractured.
 
 /datum/surgery_step/saw_encased/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.affected_message(target,
-		SPAN_NOTICE("You begin to cut through [target]'s [surgery.affected_limb.encased] with [tool]."),
-		SPAN_NOTICE("[user] begins to cut through your [surgery.affected_limb.encased] with [tool]."),
-		SPAN_NOTICE("[user] begins to cut through [target]'s [surgery.affected_limb.encased] with [tool]."))
+	if(surgery.affected_limb.name == "head")
+		user.affected_message(target,
+			SPAN_NOTICE("You begin to cut a circular opening in [target]'s [surgery.affected_limb.encased] with [tool]."),
+			SPAN_NOTICE("[user] begins to cut a circular opening in your [surgery.affected_limb.encased] with [tool]."),
+			SPAN_NOTICE("[user] begins to cut a circular opening in [target]'s [surgery.affected_limb.encased] with [tool]."))
+
+	else
+		user.affected_message(target,
+			SPAN_NOTICE("You begin to cut through [target]'s sternum with [tool]."),
+			SPAN_NOTICE("[user] begins to cut through your sternum with [tool]."),
+			SPAN_NOTICE("[user] begins to cut through [target]'s sternum with [tool]."))
 
 	target.custom_pain("You can feel every vibration and cut in your [surgery.affected_limb.display_name]! It feels terrible!", 1)
 
@@ -562,21 +569,34 @@
 	return TRUE
 
 /datum/surgery_step/open_encased_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.affected_message(target,
-		SPAN_NOTICE("You start forcing [target]'s [surgery.affected_limb.encased] open with [tool]."),
-		SPAN_NOTICE("[user] begins to force your [surgery.affected_limb.encased] open with [tool]."),
-		SPAN_NOTICE("[user] begins to force [target]'s [surgery.affected_limb.encased] open with [tool]."))
+	if(surgery.affected_limb.name == "head")
+		user.affected_message(target,
+			SPAN_NOTICE("You begin to carefully lift and remove the bone flap from [target]'s [surgery.affected_limb.encased] with [tool]."),
+			SPAN_NOTICE("[user] begins carefully lifting and removing the bone flap from your [surgery.affected_limb.encased] with [tool]."),
+			SPAN_NOTICE("[user] begins carefully lifting and removing the bone flap from [target]'s' [surgery.affected_limb.encased] with [tool]."))
+		target.custom_pain("Your [surgery.affected_limb.encased] still hurts so much from being sawed through, you don't notice [user] moving your bone flap away.", 1) //You're lifting a bone flap, not prying the skull open like you would with ribs.
 
-	target.custom_pain("It feels as if your [surgery.affected_limb.display_name] is being split in two!", 1)
+	else
+		user.affected_message(target,
+			SPAN_NOTICE("You begin forcing [target]'s [surgery.affected_limb.encased] open with [tool]."),
+			SPAN_NOTICE("[user] begins to force your [surgery.affected_limb.encased] open with [tool]."),
+			SPAN_NOTICE("[user] begins to force [target]'s [surgery.affected_limb.encased] open with [tool]."))
+
+		target.custom_pain("It feels as if your [surgery.affected_limb.display_name] is being split in two!", 1)
 	log_interact(user, target, "[key_name(user)] began opening [key_name(target)]'s [surgery.affected_limb.encased], possibly beginning [surgery].")
 
 /datum/surgery_step/open_encased_step/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	var/brain = surgery.affected_limb.body_part == BODY_FLAG_HEAD ? TRUE : FALSE
-	if(prob(10)) //RNG break chance.
+	if(surgery.affected_limb.name == "head")
 		user.affected_message(target,
-			SPAN_NOTICE("[target]'s [surgery.affected_limb.encased] couldn't take the strain and fractured as you exposed \his [brain ? "brain" : "vital organs"] with [tool]!"),
-			SPAN_NOTICE("Your [surgery.affected_limb.encased] couldn't take the strain and fractured as [user] exposed your [brain ? "brain" : "vital organs"] with [tool]!"),
-			SPAN_NOTICE("[target]'s [surgery.affected_limb.encased] couldn't take the strain and fractured as [user] exposed \his [brain ? "brain" : "vital organs"] with [tool]!"))
+			SPAN_NOTICE("You use [tool] to finish moving the bone flap on [target]'s [surgery.affected_limb.encased], exposing \his brain."),
+			SPAN_NOTICE("[user] uses [tool] to finish moving the bone flap on your [surgery.affected_limb.encased], exposing your brain."),
+			SPAN_NOTICE("[user] uses [tool] to moving the bone flap on [target]'s [surgery.affected_limb.encased], exposing \his brain."))
+
+	else if(prob(10) && surgery.affected_limb.name == "chest") //RNG break chance for chest only, since you're only nudging a bone cap from the skull.
+		user.affected_message(target,
+			SPAN_NOTICE("[target]'s [surgery.affected_limb.encased] couldn't take the strain and fractured as you exposed \his vital organs with [tool]!"),
+			SPAN_NOTICE("Your [surgery.affected_limb.encased] couldn't take the strain and fractured as [user] exposed your vital organs with [tool]!"),
+			SPAN_NOTICE("[target]'s [surgery.affected_limb.encased] couldn't take the strain and fractured as [user] exposed \his vital organs with [tool]!"))
 
 		surgery.affected_limb.fracture(100)
 		if(target.stat == CONSCIOUS)
@@ -584,9 +604,9 @@
 				target.emote("scream") //AWWW FUCK MY RIBS!
 	else
 		user.affected_message(target,
-			SPAN_NOTICE("You use [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."),
-			SPAN_NOTICE("[user] uses [tool] to hold your [surgery.affected_limb.encased] open, exposing your [brain ? "brain" : "vital organs"]."),
-			SPAN_NOTICE("[user] uses [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."))
+			SPAN_NOTICE("You use [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his vital organs."),
+			SPAN_NOTICE("[user] uses [tool] to hold your [surgery.affected_limb.encased] open, exposing your vital organs."),
+			SPAN_NOTICE("[user] uses [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his vital organs."))
 
 	surgery.affected_limb.surgery_status &= ~INCISION_BONE_CLOSED
 	surgery.affected_limb.surgery_status |= INCISION_BONE_OPENED
@@ -647,10 +667,19 @@
 
 /datum/surgery_step/open_encased_step/groin/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/internals_type = issynth(target) ? "hydraulic systems" : "internal organs"
+	var/h_his = "their" //[tool] doesn't have a gender.
+	switch(target.gender)
+		if(MALE)
+			h_his = "his"
+		if(FEMALE)
+			h_his = "her"
+		if(PLURAL)
+			h_his = "their"
+
 	user.affected_message(target,
-		SPAN_NOTICE("You hold [target]'s [internals_type] away from \his [surgery.affected_limb.cavity] with [tool], exposing \his pelvic bones."),
+		SPAN_NOTICE("You hold [target]'s [internals_type] away from \his [surgery.affected_limb.cavity] with [tool], exposing [h_his] pelvic bones."),
 		SPAN_NOTICE("[user] holds your [internals_type] away from [surgery.affected_limb.cavity] with [tool], exposing your pelvic bones."),
-		SPAN_NOTICE("[user] holds [target]'s [internals_type] away from \his [surgery.affected_limb.cavity] with [tool], exposing \his pelvic bones."))
+		SPAN_NOTICE("[user] holds [target]'s [internals_type] away from \his [surgery.affected_limb.cavity] with [tool], exposing [h_his] pelvic bones."))
 
 	surgery.affected_limb.surgery_status &= ~INCISION_PELVIS_HIDDEN
 	surgery.affected_limb.surgery_status |= INCISION_PELVIS_EXPOSED
@@ -708,12 +737,20 @@
 	failure_sound = 'sound/effects/bone_break7.ogg'
 
 /datum/surgery_step/close_encased_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.affected_message(target,
-		SPAN_NOTICE("You start bending [target]'s [surgery.affected_limb.encased] back into place with [tool]."),
-		SPAN_NOTICE("[user] starts bending your [surgery.affected_limb.encased] back into place with [tool]."),
-		SPAN_NOTICE("[user] starts bending [target]'s [surgery.affected_limb.encased] back into place with [tool]."))
+	if(surgery.affected_limb.name == "head")
+		user.affected_message(target,
+			SPAN_NOTICE("You gently move [target]'s bone flap back into place on \his [surgery.affected_limb.encased] with [tool]."),
+			SPAN_NOTICE("[user] gently moves your bone flap back into place on your [surgery.affected_limb.encased] with [tool]."),
+			SPAN_NOTICE("[user] gently moves [target]'s bone flap back into place on \his [surgery.affected_limb.encased] with [tool]."))
+		target.custom_pain("This... Actually does not hurt. It feels funny, though, like your skull is a living puzzle being pieced together.", 1)
 
-	target.custom_pain("You feel a crushing pressure in your [surgery.affected_limb.display_name]!", 1)
+	else
+		user.affected_message(target,
+			SPAN_NOTICE("You start bending [target]'s [surgery.affected_limb.encased] back into place with [tool]."),
+			SPAN_NOTICE("[user] starts bending your [surgery.affected_limb.encased] back into place with [tool]."),
+			SPAN_NOTICE("[user] starts bending [target]'s [surgery.affected_limb.encased] back into place with [tool]."))
+
+		target.custom_pain("You feel a crushing pressure in your [surgery.affected_limb.display_name]!", 1)
 	log_interact(user, target, "[key_name(user)] began closing [key_name(target)]'s [surgery.affected_limb.encased], attempting to begin [surgery].")
 
 /datum/surgery_step/close_encased_step/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

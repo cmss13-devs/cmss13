@@ -85,7 +85,7 @@
 
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/dissolver/corosive_spit
-	name = "corosive spit"
+	name = "corrosive spit"
 	action_icon_state = "xeno_spit"
 	plasma_cost = 45
 	ammo = /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit

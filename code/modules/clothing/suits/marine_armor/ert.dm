@@ -1048,5 +1048,4 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	movement_compensation = SLOWDOWN_ARMOR_LIGHT
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
-	armor_internaldamage = CLOTHING_ARMOR_LOW
 	storage_slots = 3

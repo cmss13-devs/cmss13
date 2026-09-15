@@ -36929,9 +36929,6 @@
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
 	},
-/obj/item/explosive/mine/active/no_iff{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl3"
@@ -39180,9 +39177,6 @@
 	icon_state = "trash_8"
 	},
 /obj/effect/decal/hybrisa/road/lines2,
-/obj/item/explosive/mine/active/no_iff{
-	dir = 8
-	},
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "caX" = (
@@ -51589,9 +51583,6 @@
 /area/varadero/interior/oob)
 "cEQ" = (
 /obj/item/weapon/wirerod,
-/obj/item/explosive/mine/active/no_iff{
-	dir = 1
-	},
 /turf/open/floor/prison/ramptop,
 /area/varadero/interior/cargo)
 "cER" = (
@@ -51972,9 +51963,6 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_5"
 	},
-/obj/item/explosive/mine/active/no_iff{
-	dir = 1
-	},
 /turf/open/shuttle/elevator/grating,
 /area/varadero/interior/cargo)
 "cFO" = (
@@ -52293,10 +52281,10 @@
 /obj/structure/platform/metal/kutjevo/north{
 	dir = 4
 	},
-/obj/item/storage/pouch/construction/low_grade_full,
 /obj/structure/closet/coffin/woodencrate,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/spawner/random/gun/shotgun/lowchance,
+/obj/item/stack/sheet/wood/medium_stack,
 /turf/open/shuttle/elevator/grating,
 /area/varadero/interior/cargo)
 "cGx" = (
@@ -58684,10 +58672,6 @@
 	},
 /area/varadero/interior/maintenance)
 "gyE" = (
-/obj/item/clothing/head/cmcap/boonie/LACN{
-	pixel_x = 10;
-	pixel_y = 8
-	},
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4;
 	pixel_y = 16;
@@ -58697,6 +58681,10 @@
 	icon_state = "hotseat_destroyed";
 	dir = 4;
 	can_buckle = 0
+	},
+/obj/item/clothing/head/cmcap/boonie{
+	pixel_x = 10;
+	pixel_y = 6
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/varadero/interior/crashedshuttle)
@@ -63032,7 +63020,7 @@
 	pixel_y = 9
 	},
 /obj/effect/decal/strata_decals/grime/grime4,
-/obj/item/clothing/head/cmcap/boonie/LACN,
+/obj/item/clothing/head/cmcap/boonie,
 /obj/item/device/flashlight/lamp/green{
 	pixel_y = 11
 	},
@@ -70021,14 +70009,14 @@
 /area/varadero/interior_protected/vessel)
 "pBo" = (
 /obj/structure/coatrack,
-/obj/item/clothing/head/cmcap/boonie/LACN{
-	pixel_x = -4;
-	pixel_y = 9
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/suit/storage/jacket/marine/service/warden{
 	pixel_x = 4;
 	pixel_y = 3
+	},
+/obj/item/clothing/head/cmcap/boonie{
+	pixel_x = -5;
+	pixel_y = 9
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/security)
@@ -80499,7 +80487,7 @@
 /area/varadero/interior_protected/maintenance/south)
 "xxo" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/head/cmcap/boonie/LACN,
+/obj/item/clothing/head/cmcap/boonie,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/bunks)
 "xxE" = (

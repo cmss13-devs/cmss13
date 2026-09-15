@@ -303,6 +303,12 @@ CIVILIAN
 		SKILL_RESEARCH = SKILL_RESEARCH_TRAINED,
 	)
 
+/datum/skills/civilian/survivor/labass
+	name = "Survivor Lab Assistant"
+	additional_skills = list(
+		SKILL_RESEARCH = SKILL_RESEARCH_TRAINED,
+	)
+
 /datum/skills/civilian/survivor/chef
 	name = "Survivor Chef"
 	additional_skills = list(

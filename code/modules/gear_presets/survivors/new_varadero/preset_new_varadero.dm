@@ -519,7 +519,7 @@
 	faction = FACTION_WY
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_MARINE)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	skills = /datum/skills/civilian/survivor
+	skills = /datum/skills/civilian/survivor/labass
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH,)
 
 	survivor_variant = CIVILIAN_SURVIVOR
@@ -592,12 +592,12 @@
 	add_lacn_weapon(new_human)
 	..()
 
-/datum/equipment_preset/survivor/beachbum //This role makes no sense here but its too iconic to remove so like uh; just pretend they broke into a navy base cause they could??.
+/datum/equipment_preset/survivor/beachbum //This role makes no sense here given the meaning of the word "bum" in this context, dont question it
 	name = "Survivor - Beach Bum"
 	assignment = "Beach Bum"
 	skills = /datum/skills/civilian/survivor/prisoner
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	access = list() // not meant to be at the base, so no access.
+	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/beachbum/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/shorts/red(new_human), WEAR_BODY)

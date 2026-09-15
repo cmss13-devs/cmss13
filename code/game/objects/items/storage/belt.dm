@@ -808,6 +808,10 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/ap (src)
 
+/obj/item/storage/belt/marine/m20a/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m20a
+
 /obj/item/storage/belt/marine/mar40/fill_preset_inventory() // Mar40
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/mar40 (src)

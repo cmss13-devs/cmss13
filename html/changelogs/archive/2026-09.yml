@@ -173,3 +173,18 @@
   - bugfix: Fixed the CLF incorrectly displaying the UPP victory card.
   - bugfix: Fixes eye-blur becoming permanent if you re-entered your body late after
       being revived
+2026-09-14:
+  PoltavskaPraca:
+  - imageadd: added mouse cursor different sprites
+  - qol: new mouse cursors for smartgunner, changes based on if we are using ap/frontline
+      mode
+2026-09-15:
+  fira:
+  - bugfix: Rocket/LTB/HPC now explode on clicked turf properly again rather than
+      flying by. Make SURE you click on what you want to explode, not the general
+      direction.
+  - rscdel: Removed Explosive Ammo properties. It only mattered for BE/Suicide with
+      HE Mateba, and it does that anyway.
+  - balance: Caster Eradicator (HPC) / Dual Plasma Cannons had scatter disabled to
+      target ground properly. Little difference that makes if that thing is pointed
+      at you.

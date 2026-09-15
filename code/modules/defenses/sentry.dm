@@ -9,6 +9,7 @@
 	icon = 'icons/obj/structures/machinery/defenses/sentry.dmi'
 	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 500-round drum magazine."
 	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_ENGPREP, ACCESS_MARINE_LEADER)
+	needs_power = FALSE // these have abstract internal batteries.
 	var/list/targets = list() // Lists of current potential targets
 	var/list/other_targets = list() //List of special target types to shoot at, if needed.
 	var/atom/movable/target = null
@@ -820,7 +821,7 @@
 		M.apply_damage(20, enviro=TRUE)
 
 /obj/structure/machinery/defenses/sentry/shotgun/hitby(atom/movable/AM)
-	if(AM.throwing && turned_on)
+	if(HAS_TRAIT(AM, TRAIT_LAUNCHED) && turned_on)
 		if(ismob(AM))
 			var/mob/living/L = AM
 			L.apply_damage(20, enviro=TRUE)

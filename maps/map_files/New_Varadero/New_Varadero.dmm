@@ -41,6 +41,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/predship/tile/hunter_tile_6/west,
 /area/varadero/interior_protected/vessel)
+"aag" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	name = "gear cabinet";
+	locked = 0;
+	opened = 1;
+	density = 0
+	},
+/obj/item/storage/belt/marine/m20a,
+/turf/open/floor/plating/bare_catwalk,
+/area/varadero/interior/library)
 "aah" = (
 /obj/structure/bed/chair/hunter{
 	name = "alien chair";
@@ -144,6 +154,14 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/interior/caves/east)
+"aat" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/m20a{
+	pixel_x = -7;
+	pixel_y = 0
+	},
+/turf/open/floor/asteroid,
+/area/varadero/exterior/eastbeach)
 "aau" = (
 /obj/structure/prop/colorable_rock/colorable{
 	dir = 8;
@@ -156,6 +174,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/east)
+"aaw" = (
+/obj/item/ammo_magazine/rifle/m20a{
+	pixel_x = 1;
+	pixel_y = -6
+	},
+/turf/open/floor/asteroid,
+/area/varadero/exterior/eastbeach)
 "aax" = (
 /obj/structure/shuttle/part/dropship3/transparent/engine_right_exhaust{
 	name = "\improper UD-6D - Las Guasimas"
@@ -210,6 +235,17 @@
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/varadero/interior/crashedshuttle)
+"aaA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop{
+	desc = "The molten husk of an M41A Mk1 Pulse Rifle. Most of the rifle's dust cover has melted into a vauge homogenous tan painted refuge vaugely in the shape of an Mk1. The barrel has fused into the underail which in turn has fused into the ammo feed. The trigger has melted into the grip itself and the carry handle is barely recogniseable.";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi';
+	name = "Melted M41A Mk1 Pulse Rifle";
+	icon_state = "m41amk1_d";
+	layer = 3.1
+	},
+/turf/open/gm/road,
+/area/varadero/exterior/comms4)
 "aaB" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice8";
@@ -227,6 +263,14 @@
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/gm/coast/east,
 /area/varadero/exterior/pontoon_beach)
+"aaD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/m20a{
+	pixel_x = 8;
+	pixel_y = 0
+	},
+/turf/open/gm/road,
+/area/varadero/exterior/comms4)
 "aaE" = (
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/varadero/exterior/islands)
@@ -1927,7 +1971,7 @@
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
 	},
-/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
 "agj" = (
@@ -18092,9 +18136,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_magazine/rifle/m41aMK1{
-	current_rounds = 0
-	},
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/bunks)
 "aYi" = (
@@ -19271,9 +19313,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "csplatter1"
 	},
-/obj/item/ammo_magazine/rifle/m41aMK1{
-	current_rounds = 12
-	},
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/floor/carpet,
 /area/varadero/interior/bunks)
 "bbn" = (
@@ -25744,11 +25784,6 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/north_research)
-"btv" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
-/turf/open/floor/shiva/green/east,
-/area/varadero/interior/hall_NW)
 "btw" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -28854,7 +28889,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table,
-/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/electrical)
 "bBq" = (
@@ -30700,10 +30735,10 @@
 /area/varadero/interior/library)
 "bGp" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/ammo_magazine/rifle/m41aMK1,
 /obj/structure/catwalk{
 	explo_proof = 1
 	},
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/library)
 "bGq" = (
@@ -31569,32 +31604,20 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "bIC" = (
-/obj/item/weapon/gun/rifle/m16/m16a5{
-	current_mag = null
+/obj/item/weapon/gun/rifle/m41aMK1{
+	pixel_y = 5
 	},
-/obj/item/weapon/gun/rifle/m16/m16a5{
-	pixel_y = -6;
-	current_mag = null
-	},
-/obj/item/weapon/gun/rifle/m16/m16a5{
-	pixel_y = 6;
-	current_mag = null
-	},
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
+/obj/item/weapon/gun/rifle/m41aMK1,
 /obj/structure/closet/secure_closet/guncabinet,
-/obj/item/ammo_box/magazine/M16,
-/obj/item/storage/belt/marine/m16,
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/interior/library)
 "bID" = (
+/obj/item/ammo_magazine/rifle/m41aMK1,
 /obj/structure/closet/secure_closet/guncabinet{
 	locked = 0;
 	opened = 1;
 	density = 0
 	},
-/obj/item/ammo_magazine/rifle/m41aMK1,
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/interior/library)
 "bIE" = (
@@ -31607,15 +31630,24 @@
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/interior/library)
 "bIF" = (
+/obj/item/ammo_box/magazine/m20a,
+/obj/item/storage/belt/marine/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/weapon/gun/rifle/m20a{
+	pixel_x = 0;
+	pixel_y = 4
+	},
+/obj/item/weapon/gun/rifle/m20a,
+/obj/item/weapon/gun/rifle/m20a{
+	pixel_x = 0;
+	pixel_y = -4
+	},
 /obj/structure/closet/secure_closet/guncabinet{
 	locked = 0;
 	opened = 1;
 	density = 0
 	},
-/obj/item/weapon/gun/rifle/m41aMK1{
-	pixel_y = 5
-	},
-/obj/item/weapon/gun/rifle/m41aMK1,
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/interior/library)
 "bIG" = (
@@ -33055,10 +33087,10 @@
 /obj/structure/machinery/light{
 	light_color = "#A7DBB6"
 	},
-/obj/item/storage/belt/marine/m41amk1,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/storage/belt/marine,
 /obj/item/storage/belt/marine,
+/obj/item/storage/belt/marine/m20a,
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/interior/library)
 "bMs" = (
@@ -34920,7 +34952,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/comms1)
 "bRb" = (
@@ -35458,12 +35490,12 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/rifle/m16/m16a5,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mfloor4";
 	pixel_x = 17;
 	pixel_y = 1
 	},
+/obj/item/weapon/gun/rifle/m20a,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/comms1)
 "bSj" = (
@@ -36688,9 +36720,7 @@
 /turf/open/floor/asteroid,
 /area/varadero/exterior/eastbeach)
 "bUY" = (
-/obj/item/weapon/gun/rifle/m41aMK1{
-	current_mag = null
-	},
+/obj/item/weapon/gun/rifle/m20a/unloaded,
 /turf/open/floor/asteroid,
 /area/varadero/exterior/eastbeach)
 "bUZ" = (
@@ -37144,15 +37174,6 @@
 	icon_state = "road_edge_decal3";
 	pixel_y = 16
 	},
-/turf/open/floor/asteroid,
-/area/varadero/exterior/eastbeach)
-"bWk" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = 16
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
 /turf/open/floor/asteroid,
 /area/varadero/exterior/eastbeach)
 "bWl" = (
@@ -38101,13 +38122,6 @@
 /area/varadero/exterior/pontoon_beach)
 "bYo" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/prop{
-	desc = "The molten husk of an M41A Mk1 Pulse Rifle. Most of the rifle's dust cover has melted into a vauge homogenous tan painted refuge vaugely in the shape of an Mk1. The barrel has fused into the underail which in turn has fused into the ammo feed. The trigger has melted into the grip itself and the carry handle is barely recogniseable.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi';
-	name = "Melted M41A Mk1 Pulse Rifle";
-	icon_state = "m41amk1_d";
-	layer = 3.1
-	},
 /obj/effect/decal/hybrisa/doubleroad/lines3,
 /obj/effect/decal/hybrisa/road/lines2,
 /turf/open/gm/road,
@@ -38370,11 +38384,6 @@
 /obj/structure/barricade/deployable{
 	dir = 8
 	},
-/turf/open/floor/asteroid,
-/area/varadero/exterior/eastbeach)
-"bZa" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
 /turf/open/floor/asteroid,
 /area/varadero/exterior/eastbeach)
 "bZb" = (
@@ -39438,11 +39447,6 @@
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
-"cbH" = (
-/obj/effect/decal/cleanable/blood/drip,
-/obj/item/ammo_magazine/rifle/l42a/heap/empty,
-/turf/open/floor/asteroidfloor/north,
-/area/varadero/exterior/lz1_near)
 "cbI" = (
 /obj/effect/spawner/gibspawner/xeno,
 /obj/effect/decal/cleanable/blood/xeno{
@@ -39901,6 +39905,10 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/m20a{
+	pixel_x = 1;
+	pixel_y = -6
+	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "ccP" = (
@@ -40440,7 +40448,7 @@
 /turf/open/floor/shiva/north,
 /area/varadero/interior/cargo)
 "cek" = (
-/obj/item/ammo_box/magazine/M16/empty,
+/obj/item/ammo_box/magazine/m20a/empty,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/cargo)
 "cel" = (
@@ -40577,13 +40585,16 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/blood/drip,
+/obj/item/ammo_magazine/rifle/m20a{
+	pixel_x = 8;
+	pixel_y = 0
+	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "ceC" = (
 /obj/structure/machinery/landinglight/delayone{
 	dir = 1
 	},
-/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "ceD" = (
@@ -41936,6 +41947,9 @@
 "chO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/doubleroad/lines6,
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_x = 6
+	},
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
 "chP" = (
@@ -42203,12 +42217,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
-"ciz" = (
-/obj/item/explosive/grenade/incendiary/molotov{
-	pixel_x = 6
-	},
-/turf/open/gm/road,
-/area/varadero/exterior/comms4)
 "ciA" = (
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "mfloor4"
@@ -42407,11 +42415,6 @@
 "cjf" = (
 /turf/open/floor/asteroidwarning/east,
 /area/varadero/interior/library)
-"cjg" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
-/turf/open/gm/road,
-/area/varadero/exterior/comms4)
 "cjh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood{
@@ -43047,9 +43050,20 @@
 /area/varadero/exterior/comms4)
 "ckW" = (
 /obj/structure/closet/crate/green,
-/obj/item/ammo_box/magazine/mk1,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_box/magazine/l42a,
+/obj/item/ammo_magazine/rifle/m20a{
+	pixel_x = -7;
+	pixel_y = 0
+	},
+/obj/item/ammo_magazine/rifle/m20a{
+	pixel_x = 1;
+	pixel_y = -6
+	},
+/obj/item/ammo_magazine/rifle/m20a{
+	pixel_x = 8;
+	pixel_y = 0
+	},
 /turf/open/hybrisa/street/sidewalk/south,
 /area/varadero/exterior/comms4)
 "ckX" = (
@@ -44081,8 +44095,16 @@
 /area/varadero/exterior/lz2_near)
 "cnv" = (
 /obj/structure/closet/crate/ammo/alt,
-/obj/item/ammo_box/magazine/l42a,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/l42a,
+/obj/item/ammo_magazine/rifle/l42a{
+	pixel_x = 6;
+	pixel_y = -7
+	},
+/obj/item/ammo_magazine/rifle/l42a{
+	pixel_x = -7;
+	pixel_y = -6
+	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
 "cnw" = (
@@ -44463,11 +44485,6 @@
 "cor" = (
 /obj/structure/prop/rock/brown,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/gm/dirt,
-/area/varadero/exterior/comms4)
-"cos" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_magazine/rifle/m16/ap,
 /turf/open/gm/dirt,
 /area/varadero/exterior/comms4)
 "cot" = (
@@ -45113,7 +45130,10 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz1_near)
 "cqc" = (
-/obj/item/ammo_magazine/rifle/l42a/heap/empty,
+/obj/item/ammo_magazine/rifle/m20a{
+	pixel_x = 1;
+	pixel_y = -6
+	},
 /turf/open/floor/asteroidwarning/west,
 /area/varadero/exterior/lz1_near)
 "cqd" = (
@@ -45427,10 +45447,7 @@
 /obj/structure/machinery/conveyor{
 	dir = 8
 	},
-/obj/item/ammo_box/rounds{
-	pixel_y = 3;
-	bullet_amount = 250
-	},
+/obj/item/ammo_box/magazine/m20a,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
 "cqR" = (
@@ -45478,6 +45495,10 @@
 	dir = 8;
 	pixel_x = 4;
 	pixel_y = 3
+	},
+/obj/item/ammo_magazine/rifle/m20a{
+	pixel_x = -7;
+	pixel_y = 0
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
@@ -45932,6 +45953,7 @@
 /area/varadero/interior/cargo)
 "csd" = (
 /obj/structure/closet/crate/ammo/alt,
+/obj/item/ammo_box/magazine/m20a,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
 "cse" = (
@@ -46151,7 +46173,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/rifle/m41aMK1,
+/obj/item/weapon/gun/rifle/m20a,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/varadero/interior/crashedshuttle)
 "csG" = (
@@ -46901,16 +46923,14 @@
 	name = "Red Alert cabinet"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/rifle/m16/m16a5{
-	pixel_y = 6;
-	current_mag = null
+/obj/item/weapon/gun/rifle/m20a{
+	pixel_x = 0;
+	pixel_y = 4
 	},
-/obj/item/weapon/gun/rifle/m16/m16a5{
-	current_mag = null
-	},
-/obj/item/weapon/gun/rifle/m16/m16a5{
-	pixel_y = -6;
-	current_mag = null
+/obj/item/weapon/gun/rifle/m20a,
+/obj/item/weapon/gun/rifle/m20a{
+	pixel_x = 0;
+	pixel_y = -4
 	},
 /turf/open/floor/shiva/red/northeast,
 /area/varadero/interior/security)
@@ -49378,9 +49398,6 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_magazine/rifle/m41aMK1{
-	current_rounds = 12
-	},
 /turf/open/floor/asteroid,
 /area/varadero/interior/cargo)
 "czT" = (
@@ -49745,8 +49762,9 @@
 	pixel_x = -2;
 	pixel_y = 7
 	},
-/obj/item/weapon/gun/rifle/m41aMK1{
-	current_mag = null
+/obj/item/ammo_magazine/rifle/m20a{
+	pixel_x = 1;
+	pixel_y = -6
 	},
 /turf/open/floor/asteroid,
 /area/varadero/interior/cargo)
@@ -50279,6 +50297,10 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/rifle/m20a{
+	pixel_x = 0;
+	pixel_y = 4
+	},
 /turf/open/floor/asteroid,
 /area/varadero/interior/cargo)
 "cBT" = (
@@ -51279,7 +51301,6 @@
 /area/varadero/interior/cargo)
 "cEg" = (
 /obj/structure/pipes/vents/pump,
-/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_c";
 	dir = 8
@@ -55402,15 +55423,13 @@
 /turf/open/floor/shiva/blue/north,
 /area/varadero/interior/maintenance)
 "dYp" = (
-/obj/item/ammo_magazine/rifle/m41aMK1{
-	current_rounds = 0
-	},
 /obj/structure/catwalk{
 	explo_proof = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/library)
 "dYq" = (
@@ -55477,9 +55496,17 @@
 	pixel_x = 6;
 	pixel_y = -7
 	},
-/obj/item/ammo_magazine/rifle/m41aMK1{
-	pixel_x = -7;
-	pixel_y = -1
+/obj/item/ammo_magazine/rifle/m20a{
+	pixel_x = 8;
+	pixel_y = 0
+	},
+/obj/item/ammo_magazine/rifle/m20a{
+	pixel_x = 1;
+	pixel_y = -6
+	},
+/obj/item/ammo_magazine/rifle/m20a{
+	pixel_x = -6;
+	pixel_y = 0
 	},
 /turf/open/shuttle/elevator/grating,
 /area/varadero/interior/hall_N)
@@ -56909,7 +56936,7 @@
 	pixel_y = 11
 	},
 /obj/effect/landmark/objective_landmark/close,
-/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/floor/shiva/redfull,
 /area/varadero/interior/medical)
 "fjg" = (
@@ -57618,9 +57645,7 @@
 	pixel_y = 11;
 	pixel_x = -5
 	},
-/obj/item/weapon/gun/rifle/m41aMK1{
-	current_mag = null
-	},
+/obj/item/weapon/gun/rifle/m20a,
 /turf/open/floor/shiva/redfull,
 /area/varadero/interior/medical)
 "fJI" = (
@@ -58836,21 +58861,19 @@
 /turf/closed/wall/rock/brown,
 /area/varadero/interior/oob)
 "gEO" = (
-/obj/item/weapon/gun/rifle/m41aMK1{
-	pixel_y = 3;
-	current_mag = null
-	},
-/obj/item/weapon/gun/rifle/m41aMK1{
-	current_mag = null
-	},
-/obj/item/weapon/gun/rifle/m41aMK1{
-	pixel_y = -3;
-	current_mag = null
-	},
 /obj/structure/closet/secure_closet/guncabinet{
 	name = "Red Alert cabinet"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/rifle/m20a{
+	pixel_x = 0;
+	pixel_y = 4
+	},
+/obj/item/weapon/gun/rifle/m20a,
+/obj/item/weapon/gun/rifle/m20a{
+	pixel_x = 0;
+	pixel_y = -4
+	},
 /turf/open/floor/shiva/red/southeast,
 /area/varadero/interior/security)
 "gES" = (
@@ -59058,7 +59081,6 @@
 	pixel_x = -1;
 	pixel_y = 4
 	},
-/obj/item/ammo_magazine/rifle/l42a/heap/empty,
 /turf/open/gm/dirt/desert2,
 /area/varadero/exterior/lz1_near)
 "gPZ" = (
@@ -59934,7 +59956,10 @@
 /turf/open/floor/shiva/red/east,
 /area/varadero/interior/security)
 "hAg" = (
-/obj/item/weapon/gun/rifle/l42a,
+/obj/item/weapon/gun/rifle/m20a{
+	pixel_x = 0;
+	pixel_y = 4
+	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
 "hAh" = (
@@ -64765,10 +64790,8 @@
 /area/varadero/interior/administration)
 "lnG" = (
 /obj/structure/disposalpipe/segment,
-/obj/item/ammo_magazine/rifle/m41aMK1{
-	current_rounds = 0
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_N)
 "lnO" = (
@@ -69081,6 +69104,7 @@
 /obj/structure/closet/hydrant{
 	pixel_x = -32
 	},
+/obj/item/ammo_magazine/rifle/m41aMK1/heap/empty,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_NW)
 "oRD" = (
@@ -71151,7 +71175,6 @@
 /obj/item/storage/belt/marine,
 /obj/item/storage/belt/marine/m41amk1,
 /obj/item/storage/belt/marine,
-/obj/item/storage/belt/marine,
 /turf/open/floor/plating/bare_catwalk,
 /area/varadero/interior/library)
 "qrl" = (
@@ -71737,14 +71760,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
-"qLs" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = 16
-	},
-/obj/item/ammo_magazine/rifle/m41aMK1,
-/turf/open/floor/wood,
-/area/varadero/interior/court)
 "qMl" = (
 /obj/structure/machinery/light,
 /turf/open/floor/shiva/floor3,
@@ -74179,9 +74194,7 @@
 /area/varadero/interior/electrical)
 "syL" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_magazine/rifle/m41aMK1{
-	current_rounds = 12
-	},
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/bunks)
 "syM" = (
@@ -79196,7 +79209,7 @@
 /area/varadero/interior/security)
 "wpX" = (
 /obj/effect/decal/strata_decals/grime/grime2,
-/obj/item/weapon/gun/rifle/m41aMK1,
+/obj/item/weapon/gun/rifle/m20a,
 /turf/open/floor/carpet,
 /area/varadero/interior/bunks)
 "wqc" = (
@@ -79661,8 +79674,8 @@
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/comms4)
 "wLv" = (
-/obj/item/weapon/gun/rifle/m41aMK1,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/rifle/m20a,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/bunks)
 "wLR" = (
@@ -80086,10 +80099,10 @@
 /obj/item/ammo_casing{
 	icon_state = "casing_8"
 	},
-/obj/item/ammo_magazine/rifle/m16,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl2"
 	},
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/floor/shiva/greenfull/west,
 /area/varadero/interior/comms1)
 "xeV" = (
@@ -84263,7 +84276,7 @@ cfx
 cdN
 cct
 caY
-bYx
+aaA
 bYo
 bWY
 bVD
@@ -85159,7 +85172,7 @@ pGs
 pGs
 pGs
 pGs
-cos
+cot
 cnH
 pGs
 clN
@@ -85711,8 +85724,8 @@ fQK
 cNt
 ckV
 cjW
-cjg
-ciz
+bYx
+bZR
 chN
 cgT
 bYx
@@ -86075,7 +86088,7 @@ cmN
 clO
 ckX
 cjY
-bYx
+aaD
 ciB
 chP
 bZR
@@ -89211,7 +89224,7 @@ bwL
 bvQ
 bvd
 icM
-btv
+icM
 bsQ
 kPX
 kPX
@@ -94636,7 +94649,7 @@ bZU
 cgf
 cez
 ccS
-cbH
+rSA
 bYK
 wMw
 bSv
@@ -94817,7 +94830,7 @@ bZU
 bZU
 bZU
 kMy
-cbD
+wMw
 bnf
 caj
 xXr
@@ -97943,7 +97956,7 @@ bAt
 pVN
 byR
 khb
-qLs
+urd
 iwg
 buE
 buD
@@ -98286,7 +98299,7 @@ scL
 oGv
 pGs
 pGs
-bMq
+aag
 bOI
 bNB
 bMq
@@ -103738,8 +103751,8 @@ bSE
 ngY
 bSI
 qVb
-bZa
-xmL
+bST
+aaw
 bST
 bUX
 bTI
@@ -103922,8 +103935,8 @@ bSJ
 lrR
 bST
 bXz
-bWk
-bST
+bWf
+aat
 vyp
 bSJ
 bRv

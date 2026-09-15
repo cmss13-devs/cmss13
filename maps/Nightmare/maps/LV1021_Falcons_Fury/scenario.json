@@ -2,7 +2,6 @@
     {
         "type": "pick", "name": "Falcon Fury Global Event",
         "choices": [
-            { "weight": 0, "type": "def", "values": { "lvevent": "none" } },
             { "weight": 1, "type": "def", "values": { "lvevent": "none", "hostile_survivors": true } }
         ]
     }

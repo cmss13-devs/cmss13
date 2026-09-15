@@ -1,5 +1,0 @@
-author: "PoltavskaPraca"
-delete-after: True
-changes:
-  - imageadd: "added an icon sprite for automated weeding"
-  - qol: "added autoweeding ability (toggleable) to a bunch of drone-adjacent castes. Autoweeding automatically plants weed nodes as you move based on distance. At 20% plasma total or lower it becomes disabled automatically. Weeds planted via autoweeding have the same cost as the usual."

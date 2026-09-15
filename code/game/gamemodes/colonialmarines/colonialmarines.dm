@@ -773,25 +773,46 @@
 			var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
 			end_icon = "xeno_minor"
 			if(living_player_list[1] && !living_player_list[2]) // If Xeno Minor but Xenos are dead and Humans are alive, see which faction is the last standing
-				var/headcount = count_per_faction()
+				var/static/list/faction_victories = list(
+					"WY_headcount" = list(
+						"musical_track" = 'sound/theme/lastmanstanding_wy.ogg',
+						"end_icon" = "wy_major",
+						"name" = "Weyland-Yutani",
+					),
+					"UPP_headcount" = list(
+						"musical_track" = 'sound/theme/lastmanstanding_upp.ogg',
+						"end_icon" = "upp_major",
+						"name" = "Union of Progressive Peoples",
+					),
+					"CLF_headcount" = list(
+						"musical_track" = 'sound/theme/lastmanstanding_clf.ogg',
+						"end_icon" = "clf_major",
+						"name" = "Colonial Liberation Front",
+					),
+					"TWE_headcount" = list(
+						"musical_track" = 'sound/theme/lastmanstanding_twe.ogg',
+						"end_icon" = "twe_major",
+						"name" = "Three World Empire",
+					),
+					"marine_headcount" = list(
+						"musical_track" = 'sound/theme/neutral_melancholy2.ogg', // This is the theme song for Colonial Marines the game, fitting
+						"end_icon" = "xeno_minor",
+					),
+				)
+				var/list/headcount = count_per_faction()
 				var/living = headcount["total_headcount"]
-				if ((headcount["WY_headcount"] / living) > MAJORITY)
-					musical_track = pick('sound/theme/lastmanstanding_wy.ogg')
-					end_icon = "wy_major"
-					log_game("3rd party victory: Weyland-Yutani")
-					message_admins("3rd party victory: Weyland-Yutani")
-				else if ((headcount["UPP_headcount"] / living) > MAJORITY)
-					musical_track = pick('sound/theme/lastmanstanding_upp.ogg')
-					end_icon = "upp_major"
-					log_game("3rd party victory: Union of Progressive Peoples")
-					message_admins("3rd party victory: Union of Progressive Peoples")
-				else if ((headcount["CLF_headcount"] / living) > MAJORITY)
-					musical_track = pick('sound/theme/lastmanstanding_clf.ogg')
-					end_icon = "upp_major"
-					log_game("3rd party victory: Colonial Liberation Front")
-					message_admins("3rd party victory: Colonial Liberation Front")
-				else if ((headcount["marine_headcount"] / living) > MAJORITY)
-					musical_track = pick('sound/theme/neutral_melancholy2.ogg') //This is the theme song for Colonial Marines the game, fitting
+				for(var/faction in faction_victories)
+					if((headcount[faction] / living) <= MAJORITY)
+						continue
+					var/list/victory = faction_victories[faction]
+					musical_track = victory["musical_track"]
+					end_icon = victory["end_icon"]
+					var/faction_name = victory["name"]
+					if(faction_name)
+						var/victory_message = "3rd party victory: [faction_name]"
+						log_game(victory_message)
+						message_admins(victory_message)
+					break
 			else
 				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)

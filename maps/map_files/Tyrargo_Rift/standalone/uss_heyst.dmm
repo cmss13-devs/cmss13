@@ -5645,6 +5645,10 @@
 	pixel_y = 22
 	},
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/prop/vehicles/tank/miltruck{
+	dir = 4;
+	pixel_y = -34
+	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "WR" = (

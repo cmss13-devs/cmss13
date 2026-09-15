@@ -1,0 +1,5 @@
+author: "Dimdimich1996, AmoryBlaine, DetectiveGoogle"
+delete-after: True
+changes:
+  - rscadd: "New colony rifle, M20A Harrington, similar stats to an M16."
+  - maptweak: "static M16 spawns on Solaris have been replaced by the M20A."

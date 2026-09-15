@@ -134,3 +134,15 @@
 	is_council = TRUE
 
 //*****************************************************************************************************/
+
+/datum/equipment_preset/synth/uscm/research
+	name = "USCM Synthetic (Research)"
+	paygrades = list(PAY_SHORT_MWO = JOB_PLAYTIME_TIER_0)
+	subtype = "sci"
+	assignment = JOB_SYNTH_SCI
+	manifest_title = JOB_SYNTH_SCI
+
+/datum/equipment_preset/synth/uscm/research/council
+	name = "USCM Synthetic Council (Research)"
+	paygrades = list(PAY_SHORT_MCWO = JOB_PLAYTIME_TIER_0)
+	is_council = TRUE

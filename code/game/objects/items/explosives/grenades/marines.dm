@@ -167,9 +167,9 @@
 /obj/item/explosive/grenade/high_explosive/airburst/launch_impact(atom/hit_atom)
 	..()
 	var/detonate = TRUE
-	if(isobj(hit_atom) && !rebounding)
+	if(isobj(hit_atom) && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 		detonate = FALSE
-	if(isturf(hit_atom) && hit_atom.density && !rebounding)
+	if(isturf(hit_atom) && hit_atom.density && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 		detonate = FALSE
 	if(active && detonate) // Active, and we reached our destination.
 		if(ismob(hit_atom))
@@ -236,11 +236,11 @@
 	..()
 	var/detonate = TRUE
 	var/turf/hit_turf = null
-	if(isobj(hit_atom) && !rebounding)
+	if(isobj(hit_atom) && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 		detonate = FALSE
 	if(isturf(hit_atom))
 		hit_turf = hit_atom
-		if(hit_turf.density && !rebounding)
+		if(hit_turf.density && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 			detonate = FALSE
 	if(active && detonate) // Active, and we reached our destination.
 		var/angle = dir2angle(last_move_dir)
@@ -271,9 +271,9 @@
 /obj/item/explosive/grenade/high_explosive/impact/launch_impact(atom/hit_atom)
 	..()
 	var/detonate = TRUE
-	if(isobj(hit_atom) && !rebounding)
+	if(isobj(hit_atom) && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 		detonate = FALSE
-	if(isturf(hit_atom) && hit_atom.density && !rebounding)
+	if(isturf(hit_atom) && hit_atom.density && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 		detonate = FALSE
 	if(active && detonate) // Active, and we reached our destination.
 		if(explosion_power)
@@ -381,11 +381,11 @@
 	..()
 	var/detonate = TRUE
 	var/turf/hit_turf = null
-	if(isobj(hit_atom) && !rebounding)
+	if(isobj(hit_atom) && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 		detonate = FALSE
 	if(isturf(hit_atom))
 		hit_turf = hit_atom
-		if(hit_turf.density && !rebounding)
+		if(hit_turf.density && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 			detonate = FALSE
 	if(active && detonate) // Active, and we reached our destination.
 		var/angle = dir2angle(last_move_dir)
@@ -748,11 +748,11 @@
 	..()
 	var/detonate = TRUE
 	var/turf/hit_turf = null
-	if(isobj(hit_atom) && !rebounding)
+	if(isobj(hit_atom) && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 		detonate = FALSE
 	if(isturf(hit_atom))
 		hit_turf = hit_atom
-		if(hit_turf.density && !rebounding)
+		if(hit_turf.density && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 			detonate = FALSE
 	if(active && detonate) // Active, and we reached our destination.
 		playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)

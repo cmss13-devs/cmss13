@@ -880,6 +880,7 @@
 "pM" = (
 /obj/structure/bed/chair/dropship/passenger,
 /obj/item/storage/belt/medical/lifesaver/upp,
+/obj/effect/landmark/survivor_spawner/upp_mss,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "pO" = (
@@ -1022,6 +1023,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "tu" = (
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/survivor_spawner/upp_synth,
 /turf/open/shuttle/dropship/can_surgery/light_grey_bottom_right,
 /area/desert_dam/building/bar/bar)
 "tA" = (
@@ -1689,10 +1691,6 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"Fa" = (
-/obj/structure/flora/tree/joshua,
-/turf/closed/wall/rock/orange,
-/area/desert_dam/exterior/rock)
 "Fd" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -2229,6 +2227,7 @@
 	bullet_amount = 0
 	},
 /obj/effect/decal/cleanable/blood/oil/streak,
+/obj/effect/landmark/survivor_spawner/upp/soldier,
 /turf/open/shuttle/dropship/can_surgery/light_grey_bottom_left,
 /area/desert_dam/building/bar/bar)
 "Rl" = (
@@ -2814,7 +2813,7 @@ eh
 Dt
 xT
 xT
-Fa
+xT
 xT
 xT
 xT

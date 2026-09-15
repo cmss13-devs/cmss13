@@ -533,7 +533,7 @@
 		return ..()
 
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_WARNING("You do not know how to attach the [attacking_item] to the [src]."))
+		to_chat(user, SPAN_WARNING("You do not know how to attach the [attacking_item] to [src]."))
 		return
 
 	if(blades_enabled == FALSE)
@@ -541,7 +541,7 @@
 
 	var/obj/item/bracer_attachments/bracer_attachment = attacking_item
 	if(!bracer_attachment.attached_weapon_type)
-		CRASH("[key_name(user)] attempted to attach the [bracer_attachment] to the [src], with no valid attached_weapon.")
+		CRASH("[key_name(user)] attempted to attach the [bracer_attachment] to [src], with no valid attached_weapon.")
 
 	if(left_bracer_attachment && right_bracer_attachment)
 		to_chat(user, SPAN_WARNING("You already have the maximum amount of bracer attachments on [src]."))
@@ -734,20 +734,21 @@
 	for(var/mob/living/carbon/human/dead_yautja as anything in GLOB.yautja_mob_list)
 		if(dead_yautja.stat != DEAD)
 			continue
-		var/area/location = get_area(dead_yautja)
-		if(location?.flags_area & AREA_YAUTJA_GROUNDS)
+		var/area/current_area = get_area(dead_yautja)
+		if(current_area?.flags_area & AREA_YAUTJA_GROUNDS)
 			continue
-		if(is_reserved_level(dead_yautja.z))
+		var/atom/true_location = get_true_location(dead_yautja)
+		if(is_reserved_level(true_location.z))
 			dead_low_orbit++
-		else if(is_mainship_level(dead_yautja.z))
+		else if(is_mainship_level(true_location.z))
 			dead_on_almayer++
-		else if(is_ground_level(dead_yautja.z))
+		else if(is_ground_level(true_location.z))
 			dead_on_planet++
-		if(hunter_eye.z == dead_yautja.z)
-			var/dist = get_dist(hunter_eye, dead_yautja)
+		if(hunter_eye.z == true_location.z)
+			var/dist = get_dist(hunter_eye, true_location)
 			if(dist < closest)
 				closest = dist
-				direction = Get_Compass_Dir(hunter_eye, dead_yautja)
+				direction = Get_Compass_Dir(hunter_eye, true_location)
 				areaLoc = loc
 
 	var/output = FALSE
@@ -1460,7 +1461,7 @@
 	if(is_local)
 		user.show_speech_bubble(heard, "pred_translator1")
 
-	log_say("[user.name != "Unknown" ? user.name : "([user.real_name])"] \[Yautja Translator\]: [message] (CKEY: [user.key]) (JOB: [user.job]) (AREA: [get_area_name(user)])")
+	log_say("[user.name != "Unknown" ? user.name : "([user.real_name])"] \[Yautja Translator\]: [message] (CKEY: [user.ckey]) (JOB: [user.job]) (AREA: [get_area_name(user)])")
 
 	var/overhead_color = "#ff0505"
 	var/span_class = "yautja_translator"

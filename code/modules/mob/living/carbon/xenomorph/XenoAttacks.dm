@@ -18,7 +18,6 @@
 			last_damage_data = create_cause_data(initial(M.name), M)
 			S.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [key_name(src)]</font>")
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [key_name(S)]</font>")
-			updatehealth()
 
 /mob/living/carbon/xenomorph/attack_hand(mob/living/carbon/human/M)
 	if(..())
@@ -99,7 +98,6 @@
 				attack_log += text("\[[time_stamp()]\] <font color='orange'>was [picked_verb]ed by [key_name(M)]</font>")
 				M.attack_log += text("\[[time_stamp()]\] <font color='red'>[picked_verb]ed [key_name(src)]</font>")
 				apply_damage(damage, BRUTE)
-				updatehealth()
 			else
 				playsound(loc, attack.miss_sound, 25, 1)
 				visible_message(SPAN_DANGER("[M] tried to [pick(attack.attack_verb)] [src]!"), null, null, 5, CHAT_TYPE_MELEE_HIT)
@@ -109,7 +107,7 @@
 //Hot hot Aliens on Aliens action.
 //Actually just used for eating people.
 /mob/living/carbon/xenomorph/attack_alien(mob/living/carbon/xenomorph/xeno)
-	if (xeno.fortify || HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
+	if(xeno.fortify || HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED) || HAS_TRAIT(xeno, TRAIT_ABILITY_REFLECTIVE_PLATES))
 		return XENO_NO_DELAY_ACTION
 
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))

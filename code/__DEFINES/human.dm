@@ -109,6 +109,11 @@
 #define LIMB_PRINTING_TIME 550
 #define LIMB_METAL_AMOUNT 125
 
+// Holocard defines
+#define HOLOCARD_ACCURACY_HANDHELD 0
+#define HOLOCARD_ACCURACY_MANUAL 1
+#define HOLOCARD_ACCURACY_BODYSCANNER 2 //! Bodyscanners will always be able to set the correct holotag
+
 // ORDERS
 #define COMMAND_ORDER_RANGE 7
 #define COMMAND_ORDER_COOLDOWN 800 // 1 minute 20 seconds
@@ -197,10 +202,11 @@
 #define SYNTH_WORKING_JOE "Working Joe"
 #define SYNTH_HAZARD_JOE "Hazard Joe"
 #define SYNTH_UPP_JOE "Dzho Automaton"
+#define SYNTH_DANIEL "Daniel"
 #define SYNTH_K9 "Synthetic K9"
 
 #define PLAYER_SYNTHS list(SYNTH_GEN_ONE, SYNTH_GEN_TWO, SYNTH_GEN_THREE)
-#define SYNTH_TYPES list(SYNTH_COMBAT, SYNTH_INFILTRATOR, SYNTH_WORKING_JOE, SYNTH_GEN_ONE, SYNTH_GEN_TWO, SYNTH_GEN_THREE)
+#define SYNTH_TYPES list(SYNTH_COMBAT, SYNTH_INFILTRATOR, SYNTH_WORKING_JOE, SYNTH_DANIEL, SYNTH_GEN_ONE, SYNTH_GEN_TWO, SYNTH_GEN_THREE)
 
 // Human religion defines
 #define RELIGION_PROTESTANT "Christianity (Protestant)"
@@ -222,3 +228,20 @@
 #define RELIGION_AGNOSTICISM "Agnostic"
 
 #define MAXIMUM_DROPPED_OBJECTS_REMEMBERED 5
+
+//--- body 'cosmetic' stuff ---//
+
+#define BODY_TYPE_NOMUSCLE "No Muscles"
+/// default body type
+#define BODY_TYPE_LEAN "Lean"
+#define BODY_TYPE_RIPPED "Ripped"
+
+#define BODY_SIZE_THIN "Thin"
+/// default body size
+#define BODY_SIZE_AVERAGE "Average"
+#define BODY_SIZE_LARGE "Large"
+
+/// default skin color
+#define SKIN_COLOR_PALE2 "Pale 2"
+
+//--- end ---//

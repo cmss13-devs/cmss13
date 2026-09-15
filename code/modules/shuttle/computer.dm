@@ -503,7 +503,7 @@
 						to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, hyperdrive active\"."))
 						return
 
-					if(SShijack.crashed || SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+					if(SShijack.crashed || !SShijack.escape_possible)
 						to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, systems damaged\"."))
 						return
 

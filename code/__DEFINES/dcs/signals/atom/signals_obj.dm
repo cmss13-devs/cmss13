@@ -20,6 +20,9 @@
 #define COMSIG_BLEEDING_PROCESS "bleeding_process"
 	#define COMPONENT_BLEEDING_CANCEL (1<<0)
 
+// From /obj/structure/machinery/computer/research/ui_act()
+#define COMSIG_CHEMICAL_ANNOUNCEMENT "chemical_announcement"
+
 /// From /obj/effect/alien/weeds/Initialize()
 #define COMSIG_WEEDNODE_GROWTH_COMPLETE "weednode_growth_complete"
 /// From /obj/effect/alien/weeds/Initialize()
@@ -75,3 +78,6 @@
 // from /obj/item/device/binoculars/range/designator/acquire_target()
 #define COMSIG_DESIGNATOR_LASE "comsig_designator_lase"
 #define COMSIG_DESIGNATOR_LASE_OFF "comsig_designator_lase_off"
+
+#define COMSIG_DOOR_OPEN "comsig_door_open"
+#define COMSIG_DOOR_CLOSE "comsig_door_close"

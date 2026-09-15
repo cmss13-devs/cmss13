@@ -71,6 +71,9 @@
 	/// the [/datum/lazy_template] we should attempt to spawn in for the return journey
 	var/home_base = /datum/lazy_template/ert/freelancer_station
 
+	/// What sound plays to ghosts when this rolls? Silent if null
+	var/alert_sound
+
 /datum/game_mode/proc/initialize_emergency_calls()
 	if(length(all_calls)) //It's already been set up.
 		return
@@ -138,6 +141,9 @@
 			to_chat(M, SPAN_WARNING(FONT_SIZE_LARGE("You cannot join if you have Ghosted recently. Click the link in chat, or use the verb in the ghost tab to join.</span>\n")))
 
 			give_action(M, /datum/action/join_ert, src)
+
+			if(!isnull(alert_sound))
+				playsound_client(M.client, alert_sound, vol = 50)
 
 /datum/game_mode/proc/activate_distress()
 	ert_dispatched = TRUE

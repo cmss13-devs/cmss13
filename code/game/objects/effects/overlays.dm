@@ -8,7 +8,7 @@
 	icon = 'icons/turf/beach2.dmi'
 	icon_state = "palm1"
 	density = TRUE
-	layer = FLY_LAYER
+	layer = ABOVE_MOB_LAYER
 	anchored = TRUE
 
 /obj/effect/overlay/palmtree_l
@@ -16,7 +16,7 @@
 	icon = 'icons/turf/beach2.dmi'
 	icon_state = "palm2"
 	density = TRUE
-	layer = FLY_LAYER
+	layer = ABOVE_MOB_LAYER
 	anchored = TRUE
 
 /obj/effect/overlay/coconut

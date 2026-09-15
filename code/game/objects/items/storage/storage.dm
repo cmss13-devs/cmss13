@@ -459,53 +459,53 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 
 //This proc return 1 if the item can be picked up and 0 if it can't.
 //Set the stop_messages to stop it from printing messages
-/obj/item/storage/proc/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE)
-	if(!istype(W) || (W.flags_item & NODROP))
+/obj/item/storage/proc/can_be_inserted(obj/item/tool, mob/user, stop_messages = FALSE)
+	if(!istype(tool) || (tool.flags_item & NODROP))
 		return //Not an item
 
-	if(src.loc == W)
+	if(src.loc == tool)
 		return 0 //Means the item is already in the storage item
 
 	//specific labeler check
-	if(istype(W, /obj/item/tool/hand_labeler))
-		var/obj/item/tool/hand_labeler/L = W
+	if(istype(tool, /obj/item/tool/hand_labeler))
+		var/obj/item/tool/hand_labeler/L = tool
 		if(L.mode)
 			return 0
 
-	if(istype(W, /obj/item/tool/yautja_cleaner) && user.a_intent == INTENT_HARM) //Cleaner both needs to be able to melt containers and be stored within them.
+	if(istype(tool, /obj/item/tool/yautja_cleaner) && user.a_intent == INTENT_HARM) //Cleaner both needs to be able to melt containers and be stored within them.
 		return
 
-	if(W.heat_source && !(W.flags_item & IGNITING_ITEM))
-		to_chat(usr, SPAN_ALERT("[W] is ignited, you can't store it!"))
+	if(tool.heat_source && !(tool.flags_item & IGNITING_ITEM))
+		to_chat(usr, SPAN_ALERT("[tool] is ignited, you can't store it!"))
 		return
 
-	if(!can_hold_type(W.type, user))
+	if(!can_hold_type(tool.type, user))
 		if(!stop_messages)
-			to_chat(usr, SPAN_NOTICE("[src] cannot hold [W]."))
+			to_chat(usr, SPAN_NOTICE("[src] cannot hold [tool]."))
 		return
 
 	var/w_limit_bypassed = 0
 	if(length(bypass_w_limit))
 		for(var/A in bypass_w_limit)
-			if(istype(W, A))
+			if(istype(tool, A))
 				w_limit_bypassed = 1
 				break
 
-	if (!w_limit_bypassed && W.w_class > max_w_class)
+	if (!w_limit_bypassed && tool.w_class > max_w_class)
 		if(!stop_messages)
-			to_chat(usr, SPAN_NOTICE("[W] is too long for this [src]."))
+			to_chat(usr, SPAN_NOTICE("[tool] is too long for [src]."))
 		return 0
 
 	//Checks if there is room for the item.
-	if(!has_room(W))
+	if(!has_room(tool))
 		if(!stop_messages)
 			to_chat(usr, SPAN_NOTICE("[src] is full, make some space."))
 		return 0
 
-	if(W.w_class >= src.w_class && (isstorage(W)))
+	if(tool.w_class >= src.w_class && (isstorage(tool)))
 		if(!istype(src, /obj/item/storage/backpack/holding)) //bohs should be able to hold backpacks again. The override for putting a boh in a boh is in backpack.dm.
 			if(!stop_messages)
-				to_chat(usr, SPAN_NOTICE("[src] cannot hold [W] as it's a storage item of the same size."))
+				to_chat(usr, SPAN_NOTICE("[src] cannot hold [tool] as it's a storage item of the same size."))
 			return 0 //To prevent the stacking of same sized storage items.
 
 	return 1
@@ -819,9 +819,10 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 						//Hijacked from /obj/item/ammo_magazine/proc/create_handful because it had to be handled differently
 						//All this because shell types are instances and not their own objects :)
 
-						var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
+						var/datum/ammo/ammo_listing = GLOB.ammo_list[ammo_dumping.default_ammo]
+						var/obj/item/ammo_magazine/handful/new_handful = new ammo_listing.handful_type()
 						var/transferred_handfuls = min(ammo_dumping.current_rounds, amount_to_dump)
-						new_handful.generate_handful(ammo_dumping.default_ammo, ammo_dumping.caliber, amount_to_dump, transferred_handfuls, ammo_dumping.gun_type)
+						new_handful.generate_handful(ammo_dumping.default_ammo, ammo_dumping.caliber, transferred_handfuls, ammo_dumping.gun_type)
 						ammo_dumping.current_rounds -= transferred_handfuls
 						handle_item_insertion(new_handful, TRUE, user)
 						update_icon(-transferred_handfuls)

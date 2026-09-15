@@ -1463,7 +1463,7 @@
 /area/lv759/indoors/spaceport/baggagehandling)
 "hc" = (
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
-	dir = 1;
+	dir = 8;
 	layer = 4;
 	pixel_x = -7
 	},
@@ -7202,7 +7202,7 @@
 /area/lv759/indoors/spaceport/docking_bay_1)
 "Oe" = (
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
-	dir = 1;
+	dir = 8;
 	layer = 4;
 	pixel_x = -7
 	},

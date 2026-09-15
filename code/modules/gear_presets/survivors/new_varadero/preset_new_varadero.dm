@@ -69,7 +69,7 @@
 		if(2)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/mp/mpcap(new_human), WEAR_HEAD)
 		if(3)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/boonie/LACN, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/boonie, WEAR_HEAD)
 	add_lacn_weapon(new_human)
 	..()
 
@@ -106,7 +106,7 @@
 		if(2)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beanie/gray(new_human), WEAR_HEAD)
 		if(3)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/boonie/LACN, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/boonie, WEAR_HEAD)
 		if(4)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(new_human), WEAR_HEAD)
 	add_lacn_weapon(new_human)

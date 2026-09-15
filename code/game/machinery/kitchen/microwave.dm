@@ -53,9 +53,9 @@
 //*   Item Adding
 //********************/
 
-/obj/structure/machinery/microwave/attackby(obj/item/food as obj, mob/user as mob)
+/obj/structure/machinery/microwave/attackby(obj/item/thing as obj, mob/user as mob)
 	if(broken > 0)
-		if(broken == 2 && HAS_TRAIT(food, TRAIT_TOOL_SCREWDRIVER)) // If it's broken and they're using a screwdriver
+		if(broken == 2 && HAS_TRAIT(thing, TRAIT_TOOL_SCREWDRIVER)) // If it's broken and they're using a screwdriver
 			user.visible_message(
 				SPAN_NOTICE("[user] starts to fix part of the microwave."),
 				SPAN_NOTICE("You start to fix part of the microwave.")
@@ -66,7 +66,7 @@
 					SPAN_NOTICE("You have fixed part of the microwave. Now use a wrench!")
 				)
 				src.broken = 1 // Fix it a bit
-		else if(src.broken == 1 && HAS_TRAIT(food, TRAIT_TOOL_WRENCH)) // If it's broken and they're doing the wrench
+		else if(src.broken == 1 && HAS_TRAIT(thing, TRAIT_TOOL_WRENCH)) // If it's broken and they're doing the wrench
 			user.visible_message(
 				SPAN_NOTICE("[user] starts to fix part of the microwave."),
 				SPAN_NOTICE("You start to fix part of the microwave.")
@@ -86,11 +86,11 @@
 			else
 				to_chat(user, SPAN_DANGER("It's broken! Use a wrench to fix it!"))
 			return 1
-	else if(HAS_TRAIT(food, TRAIT_TOOL_WRENCH))
+	else if(HAS_TRAIT(thing, TRAIT_TOOL_WRENCH))
 		. = ..()
 		return
 	else if(dirty==100) // The microwave is all dirty so can't be used!
-		if(istype(food, /obj/item/reagent_container/spray/cleaner)) // If they're trying to clean it then let them
+		if(istype(thing, /obj/item/reagent_container/spray/cleaner)) // If they're trying to clean it then let them
 			user.visible_message(
 				SPAN_NOTICE("[user] starts to clean the microwave."),
 				SPAN_NOTICE("You start to clean the microwave.")
@@ -109,35 +109,35 @@
 			return 1
 	else if(operating)
 		to_chat(user, SPAN_DANGER("It's running!"))
-	else if(is_type_in_list(food,acceptable_items))
+	else if(is_type_in_list(thing,acceptable_items))
 		if (length(contents)>=max_n_of_items)
 			to_chat(user, SPAN_DANGER("[src] is full of ingredients, you cannot put more."))
 			return 1
-		if(istype(food, /obj/item/stack) && food:get_amount() > 1) // This is bad, but I can't think of how to change it
-			var/obj/item/stack/foodstack = food
-			new food.type (src)
+		if(istype(thing, /obj/item/stack) && thing:get_amount() > 1) // This is bad, but I can't think of how to change it
+			var/obj/item/stack/foodstack = thing
+			new thing.type (src)
 			foodstack.use(1)
 			user.visible_message(
-				SPAN_NOTICE("[user] has added one of [food] to \the [src]."),
-				SPAN_NOTICE("You add one of [food] to \the [src]."))
+				SPAN_NOTICE("[user] has added one of [thing] to \the [src]."),
+				SPAN_NOTICE("You add one of [thing] to \the [src]."))
 		else
 		// user.before_take_item(O) //This just causes problems so far as I can tell. -Pete
 			if(user.drop_held_item())
-				food.forceMove(src)
+				thing.forceMove(src)
 				user.visible_message(
-					SPAN_NOTICE("[user] has added \the [food] to \the [src]."),
-					SPAN_NOTICE("You add \the [food] to \the [src]."))
-	else if(istype(food,/obj/item/reagent_container/glass) || istype(food,/obj/item/reagent_container/food/drinks) || istype(food,/obj/item/reagent_container/food/condiment)) // TODO: typecache this
-		if (!food.reagents)
+					SPAN_NOTICE("[user] has added \the [thing] to \the [src]."),
+					SPAN_NOTICE("You add \the [thing] to \the [src]."))
+	else if(istype(thing,/obj/item/reagent_container/glass) || istype(thing,/obj/item/reagent_container/food/drinks) || istype(thing,/obj/item/reagent_container/food/condiment)) // TODO: typecache this
+		if (!thing.reagents)
 			return 1
-		for (var/datum/reagent/chemical in food.reagents.reagent_list)
+		for (var/datum/reagent/chemical in thing.reagents.reagent_list)
 			if (!(chemical.id in acceptable_reagents))
-				to_chat(user, SPAN_DANGER("Your [food] contains components unsuitable for cookery."))
+				to_chat(user, SPAN_DANGER("Your [thing] contains components unsuitable for cookery."))
 				return 1
-	else if(istype(food,/obj/item/grab))
+	else if(istype(thing,/obj/item/grab))
 		return 1
 	else
-		to_chat(user, SPAN_DANGER("You have no idea what you can cook with this [food]."))
+		to_chat(user, SPAN_DANGER("You have no idea what you can cook with this [thing]."))
 		return 1
 	src.updateUsrDialog()
 

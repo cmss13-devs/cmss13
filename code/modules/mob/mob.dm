@@ -405,11 +405,29 @@
 			pointed_at.add_filter(outline_name, 2, list("type" = "outline", "color" = outline_color, "size" = outline_size))
 			addtimer(CALLBACK(pointed_at, PROC_REF(disable_point_outline), outline_name), 4.5 SECONDS)
 
+		if(ishuman(mob) && ishumansynth_strict(pointed_at) && pointed_at != mob) //Don't yell out the name of predators ever, that would be weird. Or ourselves
+			handle_calling_lastnames_when_pointing(mob, pointed_at)
+
+
 	visible_message("<b>[src]</b> points to [pointed_at]", null, null, 5)
 	return TRUE
 
 /mob/proc/disable_point_outline(outline_name)
 	remove_filter(outline_name)
+
+/mob/proc/handle_calling_lastnames_when_pointing(mob/living/carbon/human/pointer, mob/living/carbon/human/yelled_at_human)
+	if(!(pointer.client?.prefs?.toggle_prefs & TOGGLE_SHOUTING_AT_POINTED_PEOPLE))
+		return
+	if(yelled_at_human.faction == pointer.faction && yelled_at_human.name != "Unknown") // Don't yell out the name of CLF... Or someone you don't know
+		var/split_name = splittext(yelled_at_human.name, " ")
+		var/last_name = split_name[length(split_name)]
+		var/final_spoken_name
+		if(pointer.a_intent == INTENT_DISARM)
+			final_spoken_name = "[last_name]!"
+		if(pointer.a_intent == INTENT_GRAB)
+			final_spoken_name = "[uppertext(last_name)]!!"
+		if(final_spoken_name)
+			say(final_spoken_name)
 
 ///Is this mob important enough to point with big arrows?
 /mob/proc/check_improved_pointing()

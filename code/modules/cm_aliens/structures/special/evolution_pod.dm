@@ -6,7 +6,7 @@
 	pixel_y = -16
 
 
-	var/icon_prefix = ""
+	var/icon_prefix = "t2"
 
 	var/mob/living/carbon/xenomorph/occupant
 	var/open = FALSE //if we did open voluntarly
@@ -24,6 +24,7 @@
 		return
 	if(!open && !exploaded)
 		icon_state = "[icon_prefix]_cocoon" //first update icon is called on init and occupant is not in we need to update it afterwards
+
 /obj/effect/alien/resin/special/evolution_pod/Destroy()
 	. = ..()
 	if(occupant) //this should not be possible but better safe then sorry

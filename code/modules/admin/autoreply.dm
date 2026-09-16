@@ -98,6 +98,10 @@ ON_CONFIG_LOAD(/datum/autoreply/mentor/whitelist)
 	title = "C: Clear Cache"
 	message = "In order to clear cache, you need to click on gear icon located in upper-right corner of your BYOND client and select preferences. Switch to Games tab and click Clear Cache button. In some cases you need to manually delete cache. To do that, select Advanced tab and click Open User Directory and delete \"cache\" folder there."
 
+/datum/autoreply/mentor/dissappearing_mouse
+	title = "C: Dissappearing Mouse"
+	message = "This is a issue with Windows. To fix, either use the taskbar search or Windows Run (Win+R), type in \"main.cpl\", go to the pointer options menu, and under the visibility section untick \"Hide Pointer while typing\". Remember to click apply at the bottom of the page."
+
 /datum/autoreply/mentor/click_drag
 	title = "C: Combat Click-Drag Override"
 	message = "When clicking while moving the mouse, Byond sometimes detects it as a click-and-drag attempt and prevents the click from taking effect, even if the button was only held down for an instant.\
@@ -164,3 +168,4 @@ Laser Designators have a second mode (produces a RED laser) that allows highligh
 /datum/autoreply/mentor/tunnel
 	title = "X: Tunnel"
 	message = "Click on the tunnel to enter it. While being in the tunnel, Alt + Click it to exit, Ctrl + Click to choose a destination."
+

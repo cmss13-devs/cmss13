@@ -562,9 +562,6 @@
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
 
-/datum/chem_property/negative/addictive/pre_process(mob/living/M)
-	return list(REAGENT_BOOST = (level * 1.5))
-
 /datum/chem_property/negative/addictive/process(mob/living/M, potency = 1, delta_time)
 	var/has_addiction
 	for(var/datum/disease/addiction/D in M.viruses)
@@ -581,6 +578,9 @@
 
 /datum/chem_property/negative/addictive/process_critical(mob/living/M, potency = 1, delta_time)
 	M.disabilities |= NERVOUS
+
+/datum/chem_property/negative/addictive/pre_process(mob/living/M)
+	return list(REAGENT_BOOST = (level * 1.5))
 
 //PROPERTY_DISABLED (in generation)
 /datum/chem_property/negative/hemositic

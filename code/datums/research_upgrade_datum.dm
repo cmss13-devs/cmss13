@@ -51,7 +51,7 @@
 	name = "AutoDoc Bone Fracture Repair"
 	desc = "A data and instruction set for the AutoDoc, making it capable of setting fractures and applying bonegel."
 	behavior = RESEARCH_UPGRADE_ITEM
-	value_upgrade = 1500
+	value_upgrade = 1000
 	clearance_req = 3
 
 /datum/research_upgrades/machinery/autodoc/broken_bone/on_purchase(turf/machine_loc)
@@ -61,7 +61,7 @@
 	name = "AutoDoc Broken Organ Repair"
 	desc = "A data and instruction set for the AutoDoc, making it capable of fixing organ damage."
 	behavior = RESEARCH_UPGRADE_ITEM
-	value_upgrade = 1500
+	value_upgrade = 1000
 	clearance_req = 2
 
 /datum/research_upgrades/machinery/autodoc/organ_damage/on_purchase(turf/machine_loc)
@@ -71,7 +71,7 @@
 	name = "AutoDoc Embryo Removal"
 	desc = "Data and instruction set for AutoDoc making it mildly proficient in removing parasites left by unknown organism."
 	behavior = RESEARCH_UPGRADE_ITEM
-	value_upgrade = 4000
+	value_upgrade = 2000
 	clearance_req = 6
 
 /datum/research_upgrades/machinery/autodoc/larva_removal/on_purchase(turf/machine_loc)
@@ -81,7 +81,7 @@
 	name = "Reagent-Grinder Upgrade"
 	desc = "Research upgrade for Reagent grinder, technology on this disk makes storing and grinding procedures more effective, increasing both speed and product capacity of the grinder."
 	behavior = RESEARCH_UPGRADE_ITEM
-	value_upgrade = 500
+	value_upgrade = 200
 	item_reference = /obj/item/research_upgrades/grinderspeed
 	upgrade_type = ITEM_MACHINERY_UPGRADE
 	clearance_req = 2
@@ -91,7 +91,7 @@
 	name = "Sleeper Upgrade"
 	desc = "Research upgrade for Sleeper system, technology on this disk is used on a sleeper to allow wider spectrum of chemicals to be administered, as well as upgrading dialysis software."
 	behavior = RESEARCH_UPGRADE_ITEM
-	value_upgrade = 500
+	value_upgrade = 200
 	item_reference = /obj/item/research_upgrades/sleeper
 	upgrade_type = ITEM_MACHINERY_UPGRADE
 	clearance_req = 1
@@ -100,7 +100,7 @@
 	name = "Chemical Extractor"
 	desc = "A chemical extractor that can be used to extract chemicals from a specified vessel. Sends them to the tagged chemical network. These ones are configured for research."
 	behavior = RESEARCH_UPGRADE_ITEM
-	value_upgrade = 1000
+	value_upgrade = 500
 	item_reference = /obj/item/chem_extractor
 	upgrade_type = ITEM_MACHINERY_UPGRADE
 	clearance_req = 2
@@ -143,14 +143,14 @@
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 	item_reference = /obj/item/research_upgrades/reroll
-	change_purchase = 200
+	change_purchase = 100
 	maximum_price = 2000
 	clearance_req = 4
 
 /datum/research_upgrades/item/laser_scalpel
 	name = "Laser Scalpel"
 	desc = "An advanced, robust version of the normal scalpel, allowing it to pierce through thick skin and chitin alike with extreme ease."
-	value_upgrade = 3000
+	value_upgrade = 2000
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 	item_reference = /obj/item/tool/surgery/scalpel/laser/advanced
@@ -159,7 +159,7 @@
 /datum/research_upgrades/item/incision_management
 	name = "Incision Management System"
 	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares an incision, allowing for the immediate commencement of therapeutic steps."
-	value_upgrade = 1500
+	value_upgrade = 400
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 	clearance_req = 3
@@ -169,7 +169,7 @@
 /datum/research_upgrades/item/nanosplints
 	name = "Reinforced Fiber Splints"
 	desc = "A set of splints made from durable carbon fiber sheets reinforced with flexible titanium lattice, comes in a stack of five."
-	value_upgrade = 800
+	value_upgrade = 600
 	clearance_req = 3
 	change_purchase = -100
 	minimum_price = 100
@@ -178,6 +178,32 @@
 
 /datum/research_upgrades/item/nanosplints/on_purchase(turf/machine_loc)
 	new /obj/item/stack/medical/splint/nano/research(machine_loc, 5)//adjust this to change amount of nanosplints in a stack, can't be higher than five, go change max_amount in the nanosplint itself, then change it.
+
+/datum/research_upgrades/item/advancedkit
+	name = "Experimental First-Aid Kit"
+	desc = "An emergency medical storage kit pre-loaded with the best available medical technology the Company can afford. Contains 3 packs of both types of advanced trauma kits, and 5 reinforced fiber splints."
+	value_upgrade = 1500
+	clearance_req = 4
+	change_purchase = -300
+	minimum_price = 500
+	behavior = RESEARCH_UPGRADE_ITEM
+	upgrade_type = ITEM_ACCESSORY_UPGRADE
+
+/datum/research_upgrades/item/advancedkit/on_purchase(turf/machine_loc)
+	new /obj/item/storage/firstaid/adv/research(machine_loc)
+
+/datum/research_upgrades/item/defibrillator
+	name = "Advanced Compact Defibrillator"
+	desc = "A modified defibrillator that trades size, chronic patient health, and safety for the ability to defibrillator a patient using induction- ignoring metallic objects inbetween contact and the heart."
+	value_upgrade = 1500
+	clearance_req = 5
+	change_purchase = -100
+	minimum_price = 500
+	behavior = RESEARCH_UPGRADE_ITEM
+	upgrade_type = ITEM_ACCESSORY_UPGRADE
+
+/datum/research_upgrades/item/defibrillator/on_purchase(turf/machine_loc)
+	new /obj/item/device/defibrillator/compact_adv/research(machine_loc)
 
 /datum/research_upgrades/item/flamer_tank
 	name = "Upgraded Incinerator Tank"
@@ -198,7 +224,7 @@
 	clearance_req = 1
 	change_purchase = 50
 	minimum_price = 100
-	maximum_price = 500
+	maximum_price = 400
 	item_reference = /obj/item/ammo_magazine/flamer_tank/smoke/upgraded
 
 /datum/research_upgrades/armor
@@ -208,7 +234,7 @@
 /datum/research_upgrades/armor/translator
 	name = "Universal Translator Plate"
 	desc = "A uniform-attachable plate capable of translating any unknown language heard by the wearer."
-	value_upgrade = 2000
+	value_upgrade = 1500
 	behavior = RESEARCH_UPGRADE_ITEM
 	clearance_req = 6
 	upgrade_type = ITEM_ARMOR_UPGRADE
@@ -217,7 +243,7 @@
 /datum/research_upgrades/armor/coagulator
 	name = "Active Blood Coagulator Plate"
 	desc = "A uniform-attachable plate capable of coagulating any bleeding wounds the user possesses."
-	value_upgrade = 1200
+	value_upgrade = 800
 	behavior = RESEARCH_UPGRADE_ITEM
 	clearance_req = 2
 	change_purchase = -200
@@ -229,7 +255,7 @@
 /datum/research_upgrades/armor/emergency_injector
 	name = "Medical Emergency Injector"
 	desc = "A medical plate with two buttons on the sides and a hefty chemical tank. Attached to a uniform and on a simultaneous press, it injects an emergency dose of medical chemicals much larger than a normal emergency autoinjector. Single time use and is recycled in biomass printer. Features overdose protection."
-	value_upgrade = 250
+	value_upgrade = 200
 	clearance_req = 1
 	behavior = RESEARCH_UPGRADE_ITEM
 	change_purchase = -100
@@ -240,7 +266,7 @@
 /datum/research_upgrades/armor/ceramic
 	name = "Ceramic Armor Plate"
 	desc = "A strong trauma plate, able to protect the user from a large amount of bullets. Completely useless against sharp objects."
-	value_upgrade = 500
+	value_upgrade = 400
 	clearance_req = 2
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ARMOR_UPGRADE
@@ -251,7 +277,7 @@
 /datum/research_upgrades/armor/preservation
 	name = "Death Preservation Plate"
 	desc = "Preservation plate which activates once the user is dead, uses variety of different substances and sensors to slow down the decay and increase the time before the user is permanently dead, due to small tank of preservatives, it needs to be replaced on each death. Extends time to permadeath by around four minutes."
-	value_upgrade = 500
+	value_upgrade = 400
 	clearance_req = 4
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ARMOR_UPGRADE

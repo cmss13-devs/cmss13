@@ -214,12 +214,12 @@
 				return TRUE
 
 /obj/item/stack/medical/advanced/bruise_pack/upgraded
-	name = "upgraded trauma kit"
-	singular_name = "upgraded trauma kit"
+	name = "WY-1996 Macro-Adhesive Trauma Kit"
+	singular_name = "MA Trauma Package"
 	stack_id = "upgraded trauma kit"
 
 	icon_state = "traumakit_upgraded"
-	desc = "An upgraded trauma treatment kit. Three times as effective as standard-issue, and non-replenishable. Use sparingly on only the most critical wounds."
+	desc = "State of the art medical technology. The inclusion of disease-isolated macrophage cultures make these kits three times as effective as standard-issue surgical adhesive. However, due to production costs, they remain logistically impossible to replenish. Use sparingly on only the most critical wounds."
 
 	max_amount = 10
 	amount = 10
@@ -292,12 +292,11 @@
 				return TRUE
 
 /obj/item/stack/medical/advanced/ointment/upgraded
-	name = "upgraded burn kit"
-	singular_name = "upgraded burn kit"
-	stack_id = "upgraded burn kit"
-
-	icon_state = "burnkit_upgraded"
-	desc = "An upgraded burn treatment kit. Three times as effective as standard-issue, and non-replenishable. Use sparingly on only the most critical burns."
+	name = "WY-1996 Macro-Isolating Burn Kit"
+	singular_name = "MA Burn Package"
+	stack_id = "upgraded trauma kit"
+	icon_state = "traumakit_upgraded"
+	desc = "State of the art medical technology. The inclusion of disease-isolated macrophage cultures make these kits three times as effective as standard-issue abiotic ointment. However, due to production costs, they remain logistically impossible to replenish. Use sparingly on only the most critical wounds."
 
 	max_amount = 10
 	amount = 10

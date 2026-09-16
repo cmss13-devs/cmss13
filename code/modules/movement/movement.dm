@@ -32,7 +32,7 @@
 			return NO_BLOCKED_MOVEMENT
 
 		// This is to properly handle diagonal movement (a cade to your NE facing west when you are trying to move NE should block for north instead of east)
-		if(target_dir & (NORTH|SOUTH) && target_dir & (EAST|WEST))
+		if(IS_DIAGONAL_DIR(target_dir))
 			return target_dir - (target_dir & reverse_dir)
 		return target_dir & reverse_dir
 	else
@@ -78,8 +78,6 @@
 	if (.)
 		Moved(oldloc, direct)
 
-	handle_rotation()
-
 /// Called when `crossed_by` enters the atom's turf (via native Move() or doMove() if allowed).
 /// Does not return anything, only handles side effects from Crossed.
 /atom/Crossed(atom/movable/crossed_by)
@@ -90,7 +88,7 @@
 
 /// Called when a movable atom has hit an atom via movement
 /atom/movable/proc/Collide(atom/A)
-	if (throwing)
+	if (HAS_TRAIT(src, TRAIT_LAUNCHED))
 		launch_impact(A)
 
 	if (A && !QDELETED(A))

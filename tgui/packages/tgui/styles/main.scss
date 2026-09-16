@@ -95,6 +95,7 @@
 @include meta.load-css('./interfaces/TacticalMap.scss');
 @include meta.load-css('./interfaces/StripMenu.scss');
 @include meta.load-css('./interfaces/CrewManifest.scss');
+@include meta.load-css('./interfaces/LateJoin.scss');
 
 // Layouts
 @include meta.load-css('./layouts/Layout.scss');

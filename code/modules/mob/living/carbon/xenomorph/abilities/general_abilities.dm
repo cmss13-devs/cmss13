@@ -31,6 +31,22 @@
 	var/plant_on_semiweedable = FALSE
 	var/node_type = /obj/effect/alien/weeds/node
 
+/datum/action/xeno_action/onclick/autoweeding_toggle
+	name = "Toggle Autoweeding"
+	action_icon_state = "autoweed_toggle"
+	plasma_cost = 0
+	macro_path = /datum/action/xeno_action/verb/verb_toggle_autoweed
+	action_type = XENO_ACTION_CLICK
+	xeno_cooldown = 2 SECONDS
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+
+	var/auto_weeding = FALSE
+	var/datum/action/xeno_action/onclick/plant_weeds/linked_planting
+
+	var/step_count = 0
+	var/step_delay = 3
+	var/node_search_range = 4
+
 // Resting
 /datum/action/xeno_action/onclick/xeno_resting
 	name = "Rest"
@@ -479,6 +495,7 @@
 	var/stab_range = 2
 	/// Used for defender's tail 'stab'.
 	var/blunt_stab = FALSE
+	var/damage_multiplier = TAILSTAB_MOB_DAMAGE_MULTIPLIER
 
 /datum/action/xeno_action/onclick/evolve
 	name = "Evolve"
@@ -503,11 +520,12 @@
 	name = "Transmute"
 	action_icon_state = "transmute"
 	action_type = XENO_ACTION_CLICK
+	macro_path = /mob/living/carbon/xenomorph/proc/verb_transmute
 
 /datum/action/xeno_action/onclick/transmute/action_activate()
 	. = ..()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	xeno.transmute_verb()
+	xeno.verb_transmute()
 
 /datum/action/xeno_action/onclick/transmute/can_use_action()
 	if(!owner)

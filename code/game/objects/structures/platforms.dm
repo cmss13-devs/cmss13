@@ -13,7 +13,7 @@
 	layer = OBJ_LAYER
 	breakable = TRUE
 	flags_atom = ON_BORDER|NO_ZFALL
-	unacidable = TRUE
+	unacidable = FALSE
 	climb_delay = CLIMB_DELAY_SHORT
 	projectile_coverage = PROJECTILE_COVERAGE_NONE
 	var/stat = 0

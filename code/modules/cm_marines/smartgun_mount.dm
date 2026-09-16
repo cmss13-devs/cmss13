@@ -146,7 +146,7 @@
 	var/turf/T = get_turf(usr)
 	if(istype(T, /turf/open))
 		var/turf/open/floor = T
-		if(!floor.allow_construction)
+		if(!floor.allow_construction || !floor.validate_deployment(TURF_DEPLOYABLE_GUN))
 			to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
 			return FALSE
 	var/fail = FALSE
@@ -250,7 +250,7 @@
 	var/turf/T = get_turf(user)
 	if(istype(T, /turf/open))
 		var/turf/open/floor = T
-		if(!floor.allow_construction)
+		if(!floor.allow_construction || !floor.validate_deployment(TURF_DEPLOYABLE_GUN))
 			to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
 			return FALSE
 	var/fail = FALSE
@@ -622,7 +622,7 @@
 	..()
 
 /obj/structure/machinery/m56d_hmg/BlockedPassDirs(atom/movable/mover, target_turf)
-	if(istype(mover, /obj/item) && mover.throwing)
+	if(istype(mover, /obj/item) && HAS_TRAIT(mover, TRAIT_LAUNCHED))
 		return FALSE
 	else
 		return ..()
@@ -635,7 +635,7 @@
 	if(gun_has_gamemode_skin)
 		select_gamemode_skin()
 	update_icon()
-	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_fire_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_burst_firing)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(try_fire)), CALLBACK(src, PROC_REF(display_ammo)))
+	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_fire_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_burst_firing)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(try_fire)))
 
 /obj/structure/machinery/m56d_hmg/proc/select_gamemode_skin()
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)

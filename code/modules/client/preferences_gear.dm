@@ -545,6 +545,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "Urban Helmet netting"
 	path = /obj/item/clothing/accessory/helmet/cover/netting/urban
 
+/datum/gear/helmet_garb/netting/snow
+	display_name = "Snow Helmet netting"
+	path = /obj/item/clothing/accessory/helmet/cover/netting/snow
+
 /datum/gear/helmet_garb/lucky_feather
 	display_name = "Lucky feather, red"
 	path = /obj/item/prop/helmetgarb/lucky_feather
@@ -584,6 +588,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/helmet_garb/raincover/urban
 	display_name = "Urban Rain cover"
 	path = /obj/item/clothing/accessory/helmet/cover/raincover/urban
+
+/datum/gear/helmet_garb/raincover/snow
+	display_name = "Snow Rain cover"
+	path = /obj/item/clothing/accessory/helmet/cover/raincover/snow
 
 /datum/gear/helmet_garb/rabbits_foot
 	display_name = "Rabbit's foot"
@@ -1241,19 +1249,14 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	path = /obj/item/facepaint/sniper
 	fluff_cost = 3
 
-/datum/gear/misc/jungle_boots
-	display_name = "Jungle pattern combat boots"
-	path = /obj/item/clothing/shoes/marine/jungle
-	fluff_cost = 2
-
-/datum/gear/misc/brown_boots
-	display_name = "brown combat boots"
-	path = /obj/item/clothing/shoes/marine/brown
-	fluff_cost = 2
-
 /datum/gear/misc/brown_gloves
 	display_name = "brown combat gloves"
 	path = /obj/item/clothing/gloves/marine/brown
+	fluff_cost = 2
+
+/datum/gear/misc/grey_gloves
+	display_name = "grey combat gloves"
+	path = /obj/item/clothing/gloves/marine/grey
 	fluff_cost = 2
 
 /datum/gear/misc/fingerless_gloves
@@ -1261,9 +1264,19 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	path = /obj/item/clothing/gloves/marine/fingerless
 	fluff_cost = 2
 
+/datum/gear/misc/brown_boots
+	display_name = "brown combat boots"
+	path = /obj/item/clothing/shoes/marine/brown
+	fluff_cost = 2
+
 /datum/gear/misc/grey_boots
 	display_name = "grey combat boots"
 	path = /obj/item/clothing/shoes/marine/grey
+	fluff_cost = 2
+
+/datum/gear/misc/jungle_boots
+	display_name = "Jungle pattern combat boots"
+	path = /obj/item/clothing/shoes/marine/jungle
 	fluff_cost = 2
 
 /datum/gear/misc/urban_boots
@@ -1271,9 +1284,9 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	path = /obj/item/clothing/shoes/marine/urban
 	fluff_cost = 2
 
-/datum/gear/misc/grey_gloves
-	display_name = "grey combat gloves"
-	path = /obj/item/clothing/gloves/marine/grey
+/datum/gear/misc/snow_boots
+	display_name = "Snow pattern combat boots"
+	path = /obj/item/clothing/shoes/marine/snow
 	fluff_cost = 2
 
 /datum/gear/misc/pdt_kit

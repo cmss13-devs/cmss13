@@ -41,6 +41,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/predship/tile/hunter_tile_6/west,
 /area/varadero/interior_protected/vessel)
+"aag" = (
+/obj/item/stack/rods{
+	amount = 5
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/research)
 "aah" = (
 /obj/structure/bed/chair/hunter{
 	name = "alien chair";
@@ -144,6 +150,11 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/interior/caves/east)
+"aat" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/m20a,
+/turf/open/gm/road,
+/area/varadero/exterior/comms4)
 "aau" = (
 /obj/structure/prop/colorable_rock/colorable{
 	dir = 8;
@@ -156,6 +167,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/east)
+"aaw" = (
+/obj/structure/machinery/conveyor{
+	dir = 8
+	},
+/obj/item/ammo_box/rounds{
+	bullet_amount = 5
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/cargo)
 "aax" = (
 /obj/structure/shuttle/part/dropship3/transparent/engine_right_exhaust{
 	name = "\improper UD-6D - Las Guasimas"
@@ -6689,15 +6709,26 @@
 /area/varadero/interior_protected/caves/makeshift_tent)
 "atS" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/defenses/handheld/bell_tower/cloaker,
+/obj/structure/prop{
+	name = "destroyed R-1NG bell tower";
+	desc = "A compact version of the USCM defenses. Designed for quick deployment of the associated type in the field. At least it was at one point, now its just a useless hunk of metal and cables.";
+	icon = 'icons/obj/structures/machinery/defenses/bell_tower.dmi';
+	icon_state = "Normal bell_tower_destroyed";
+	explo_proof = 1;
+	breakable = 1;
+	pixel_x = 0;
+	pixel_y = -10
+	},
 /turf/open/floor/corsat/brown/west,
 /area/varadero/interior_protected/caves/makeshift_tent)
 "atT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/pistol/m1911,
 /obj/effect/decal/cleanable/blood{
 	pixel_x = 1;
 	pixel_y = 18
+	},
+/obj/item/weapon/gun/pistol/smart{
+	current_mag = null
 	},
 /turf/open/floor/corsat/plate,
 /area/varadero/interior_protected/caves/makeshift_tent)
@@ -13242,7 +13273,7 @@
 /obj/effect/decal/warning_stripes/asteroid{
 	icon_state = "warning_s"
 	},
-/obj/item/weapon/gun/rifle/rmc_f90/shotgun,
+/obj/item/weapon/gun/rifle/rmc_f90/a_grip,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
 "aLK" = (
@@ -14894,19 +14925,6 @@
 	},
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
-"aPR" = (
-/obj/structure/prop/structure_lattice{
-	dir = 1;
-	health = 300
-	},
-/obj/structure/prop/structure_lattice{
-	dir = 1;
-	layer = 3.1;
-	pixel_y = 10;
-	health = 300
-	},
-/turf/open/auto_turf/hybrisa_auto_turf/layer0,
-/area/varadero/interior_protected/caves)
 "aPS" = (
 /obj/structure/prop/structure_lattice{
 	dir = 1;
@@ -15407,7 +15425,6 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/hybrisa/kelland_miner/burst,
-/obj/item/weapon/gun/rifle/rmc_f90,
 /obj/structure/prop/hybrisa/fakeplatforms/platform4{
 	dir = 1
 	},
@@ -15417,6 +15434,7 @@
 /obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
 	dir = 5
 	},
+/obj/item/weapon/gun/rifle/rmc_f90/a_grip,
 /turf/open/floor/elevatorshaft,
 /area/varadero/interior_protected/caves)
 "aRg" = (
@@ -20606,19 +20624,6 @@
 	},
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/interior/caves/north_research)
-"bfd" = (
-/obj/structure/prop/structure_lattice{
-	dir = 1;
-	health = 300
-	},
-/obj/structure/prop/structure_lattice{
-	dir = 1;
-	layer = 3.1;
-	pixel_y = 10;
-	health = 300
-	},
-/turf/open/gm/dirt/dark_brown,
-/area/varadero/interior/caves/north_research)
 "bff" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -25341,10 +25346,6 @@
 /area/varadero/interior/maintenance/security/north)
 "bso" = (
 /obj/structure/reagent_dispensers/tank/fuel/spacecraft,
-/obj/item/engi_upgrade_kit{
-	pixel_x = -1;
-	pixel_y = 12
-	},
 /turf/open/floor/asteroidwarning/southwest,
 /area/varadero/interior/maintenance/security/north)
 "bsp" = (
@@ -26050,20 +26051,6 @@
 	dir = 5
 	},
 /turf/open/gm/dirt/dark_brown,
-/area/varadero/interior/caves/north_research)
-"buk" = (
-/obj/structure/prop/structure_lattice{
-	dir = 1;
-	health = 300
-	},
-/obj/structure/prop/structure_lattice{
-	dir = 1;
-	layer = 3.1;
-	pixel_y = 10;
-	health = 300
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/varadero/interior/caves/north_research)
 "bul" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -28350,18 +28337,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/north_research)
-"bAf" = (
-/obj/structure/prop/structure_lattice{
-	dir = 1;
-	health = 300
-	},
-/obj/structure/prop/structure_lattice{
-	dir = 1;
-	pixel_y = 10;
-	health = 300
-	},
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/north_research)
 "bAg" = (
 /obj/item/stack/medical/bruise_pack/random_amount,
 /obj/effect/decal/cleanable/blood{
@@ -29728,19 +29703,6 @@
 /obj/item/small_shards,
 /turf/open/gm/dirt,
 /area/varadero/exterior/farocean)
-"bDF" = (
-/obj/structure/prop/structure_lattice{
-	dir = 1;
-	health = 300
-	},
-/obj/structure/prop/structure_lattice{
-	dir = 1;
-	layer = 3.1;
-	pixel_y = 10;
-	health = 300
-	},
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance/research)
 "bDG" = (
 /obj/item/ammo_casing,
 /turf/open/floor/shiva/green/east,
@@ -38181,10 +38143,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/gm/road,
 /area/varadero/exterior/comms4)
-"bYA" = (
-/obj/item/ammo_magazine/rifle/m16,
-/turf/open/gm/road,
-/area/varadero/exterior/comms4)
 "bYB" = (
 /obj/structure/platform_decoration/metal/kutjevo,
 /obj/effect/decal/cleanable/dirt,
@@ -45406,6 +45364,10 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/supply/supplies/mre/twe,
+/obj/item/storage/box/mre/twe{
+	pixel_x = 2;
+	pixel_y = 15
+	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
 "cqJ" = (
@@ -45450,11 +45412,11 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
 "cqP" = (
-/obj/structure/closet/crate/ammo/alt,
 /obj/structure/machinery/conveyor{
 	dir = 8
 	},
 /obj/item/ammo_box/magazine/m20a,
+/obj/structure/closet/crate/secure/ammo,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
 "cqQ" = (
@@ -45749,7 +45711,6 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/obj/item/prop/magazine/dirty/torn,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
 "crC" = (
@@ -45958,11 +45919,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/medical)
-"csc" = (
-/obj/structure/closet/crate/ammo/alt,
-/obj/item/ammo_box/magazine/m20a,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/cargo)
 "csd" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -46009,7 +45965,10 @@
 /area/varadero/interior/cargo)
 "csi" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/storage/box/mre/twe,
+/obj/item/prop/magazine/dirty/torn{
+	pixel_x = 7;
+	pixel_y = 3
+	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
 "csj" = (
@@ -47863,7 +47822,9 @@
 	},
 /obj/item/clothing/under/hybrisa/cmb_officer,
 /obj/item/device/radio/headset/distress/CMB/limited,
-/obj/item/weapon/gun/pistol/highpower/tactical,
+/obj/item/weapon/gun/pistol/highpower/tactical{
+	current_mag = null
+	},
 /obj/item/clothing/suit/armor/vest/hybrisa/cmb_vest,
 /obj/item/clothing/suit/storage/CMB/hybrisa,
 /obj/item/clothing/accessory/holobadge/cord,
@@ -48583,8 +48544,8 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
 "cyk" = (
-/obj/structure/closet/crate,
 /obj/item/stack/sheet/plasteel/small_stack,
+/obj/structure/closet/crate/secure,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
 "cyl" = (
@@ -50327,11 +50288,11 @@
 /turf/open/floor/asteroid,
 /area/varadero/interior/cargo)
 "cBU" = (
+/obj/item/ammo_magazine/rifle/l42a/heap/empty,
 /turf/open/floor/asteroid,
 /area/varadero/interior/cargo)
 "cBV" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/ammo_magazine/rifle/l42a/heap/empty,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood{
 	pixel_x = 5;
@@ -52309,10 +52270,10 @@
 /obj/structure/platform/metal/kutjevo/north{
 	dir = 4
 	},
-/obj/structure/closet/coffin/woodencrate,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/spawner/random/gun/shotgun/lowchance,
 /obj/item/stack/sheet/wood/medium_stack,
+/obj/structure/closet/crate/secure/gear,
 /turf/open/shuttle/elevator/grating,
 /area/varadero/interior/cargo)
 "cGw" = (
@@ -54565,7 +54526,10 @@
 /turf/open/floor/wood,
 /area/varadero/interior/administration)
 "djP" = (
-/obj/structure/largecrate/random/barrel/yellow,
+/obj/structure/closet/crate/secure/weyland{
+	name = "secure W-Y biohazard crate"
+	},
+/obj/item/xeno_egg/forsaken,
 /turf/open/floor/corsat/brown/southwest,
 /area/varadero/interior_protected/caves/makeshift_tent)
 "dkl" = (
@@ -60692,7 +60656,7 @@
 /obj/item/clothing/suit/storage/jacket/marine/rmc/service/iasf_combat_jacket,
 /obj/item/ammo_magazine/rifle/rmc_f90,
 /obj/item/ammo_magazine/rifle/rmc_f90,
-/obj/item/weapon/gun/rifle/rmc_f90/scope,
+/obj/item/weapon/gun/rifle/rmc_f90,
 /turf/open/predship/hunter_grate,
 /area/varadero/interior_protected/vessel)
 "idr" = (
@@ -62147,11 +62111,11 @@
 /turf/open/floor/asteroidwarning/southeast,
 /area/varadero/exterior/lz1_near)
 "jgQ" = (
-/obj/item/weapon/shield/riot/ballistic,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl2"
 	},
+/obj/item/weapon/shield/riot,
 /turf/open/floor/shiva/wredfull,
 /area/varadero/interior/medical)
 "jgV" = (
@@ -63166,7 +63130,9 @@
 /obj/item/clothing/head/fedora/grey{
 	pixel_y = 8
 	},
-/obj/item/weapon/gun/revolver/m44/custom/pkd_special,
+/obj/item/weapon/gun/revolver/m44/custom/pkd_special{
+	current_mag = null
+	},
 /turf/open/predship/hunter_grate,
 /area/varadero/interior_protected/vessel)
 "jQM" = (
@@ -67820,7 +67786,6 @@
 /obj/item/reagent_container/food/drinks/bottle/wine,
 /obj/item/reagent_container/food/drinks/bottle/pwine,
 /obj/item/storage/box/stompers,
-/obj/item/xeno_egg/forsaken,
 /obj/item/weapon/gun/lever_action/r4t,
 /obj/item/ammo_magazine/handful/lever_action,
 /obj/item/ammo_magazine/handful/lever_action,
@@ -81370,12 +81335,10 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
-/obj/item/ammo_magazine/sniper/svd,
 /obj/item/weapon/gun/rifle/sniper/svd{
 	pixel_x = -5;
-	pixel_y = 5
+	pixel_y = 5;
+	current_mag = null
 	},
 /obj/structure/window/reinforced/ultra{
 	name = "reinforced phoron window";
@@ -83233,7 +83196,7 @@ xCn
 oVt
 xCn
 sfF
-bfd
+aUH
 bea
 pGs
 pGs
@@ -83764,7 +83727,7 @@ xCn
 xCn
 aUH
 aUH
-pGs
+abF
 bfc
 mQF
 efw
@@ -83945,8 +83908,8 @@ xCn
 xCn
 aUH
 aUH
-buk
-abF
+byB
+pGs
 bcV
 hhM
 bqY
@@ -84127,8 +84090,8 @@ aUH
 aUH
 bgk
 aWH
-abF
-abF
+pGs
+pGs
 pGs
 hhM
 mxx
@@ -85390,7 +85353,7 @@ yks
 pGs
 pGs
 pGs
-bDF
+efw
 efw
 efw
 biG
@@ -85756,7 +85719,7 @@ pGs
 xCn
 xCn
 xCn
-baY
+xCn
 bAU
 oPQ
 xCn
@@ -86278,8 +86241,8 @@ cfF
 caY
 ccD
 cbl
-bYy
-bYA
+aat
+bZS
 bXk
 bVO
 bOf
@@ -86889,7 +86852,7 @@ fay
 pGs
 pGs
 abF
-aPR
+abF
 arz
 aOf
 asj
@@ -87169,9 +87132,9 @@ cvi
 crs
 ctE
 ykc
-csc
+cye
 crs
-cqH
+aaw
 ykc
 coP
 fQW
@@ -87597,7 +87560,7 @@ xbc
 bmC
 kXQ
 bkV
-efw
+aag
 biE
 oPQ
 oPQ
@@ -87965,7 +87928,7 @@ biG
 biH
 xCn
 bgu
-srg
+buo
 beg
 oPQ
 oPQ
@@ -88151,7 +88114,7 @@ bfn
 srg
 srg
 srg
-srg
+buo
 xCn
 xCn
 aYH
@@ -88306,18 +88269,18 @@ xpP
 huF
 pGs
 pGs
-bAf
 xCn
-xCn
-xCn
-qHc
 xCn
 xCn
 xCn
 qHc
 xCn
 xCn
-baY
+xCn
+qHc
+xCn
+xCn
+baZ
 hhM
 hhM
 pGs
@@ -90168,7 +90131,7 @@ kGM
 sdz
 pGs
 pGs
-abF
+pGs
 aMY
 aGN
 aKZ

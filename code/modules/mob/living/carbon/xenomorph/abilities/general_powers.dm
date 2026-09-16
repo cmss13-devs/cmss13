@@ -654,6 +654,7 @@
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] [action_text][findtext(action_text, "e", -1) || findtext(action_text, "p", -1) ? "s" : "es"] at [target]!"), SPAN_XENOWARNING("We [action_text] at [target]!"))
 
 	pre_pounce_effects()
+	SEND_SIGNAL(owner, COMSIG_XENO_POUNCE_STARTED, target)
 
 	xeno.pounce_distance = get_dist(xeno, target)
 	if(xeno.z != target.z)
@@ -662,6 +663,7 @@
 	xeno.update_icons()
 
 	additional_effects_always()
+	SEND_SIGNAL(owner, COMSIG_XENO_POUNCE_FINISHED, target)
 	..()
 
 	return TRUE

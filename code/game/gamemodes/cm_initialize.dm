@@ -10,7 +10,6 @@ You can see a working example in the Colonial Marines game mode.
 
 	//Minds are not transferred/made at this point, so we have to check for them so we don't double dip.
 	can_start() //This should have the following in order:
-		initialize_special_clamps()
 		initialize_starting_predator_list()
 		if(!initialize_starting_xenomorph_list()) //If we don't have the right amount of xenos, we can't start.
 			return
@@ -117,7 +116,6 @@ Additional game mode variables.
 
 /datum/game_mode/proc/get_roles_list()
 	return GLOB.ROLES_USCM
-
 
 //===================================================\\
 

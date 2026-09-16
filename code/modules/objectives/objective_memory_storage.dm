@@ -239,7 +239,6 @@ GLOBAL_DATUM_INIT(intel_system, /datum/intel_system, new())
 	unslashable = TRUE
 	unacidable = TRUE
 
-
 /obj/structure/machinery/computer/view_objectives/attack_hand(mob/living/user)
 	if(!user || !istype(user) || !user.mind || !user.mind.objective_memory)
 		return FALSE

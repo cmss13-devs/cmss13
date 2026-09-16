@@ -188,14 +188,17 @@
 /turf/open/slippery/hull/dir
 	icon_state = "outerhull_dir"
 
-/turf/open/slippery/hull/dir/southwest
-	dir = SOUTHWEST
-
 /turf/open/slippery/hull/dir/north
 	dir = NORTH
 
 /turf/open/slippery/hull/dir/east
 	dir = EAST
+
+/turf/open/slippery/hull/dir/west
+	dir = WEST
+
+/turf/open/slippery/hull/dir/southwest
+	dir = SOUTHWEST
 
 /turf/open/slippery/hull/dir/northeast
 	dir = NORTHEAST
@@ -203,10 +206,73 @@
 /turf/open/slippery/hull/dir/southeast
 	dir = SOUTHEAST
 
-/turf/open/slippery/hull/dir/west
+/turf/open/slippery/hull/dir/northwest
+	dir = NORTHWEST
+
+/turf/open/slippery/hull/dir_alt
+	icon_state = "outerhull_dir_alt"
+
+/turf/open/slippery/hull/dir_alt/north
+	dir = NORTH
+
+/turf/open/slippery/hull/dir_alt/east
+	dir = EAST
+
+/turf/open/slippery/hull/dir_alt/west
 	dir = WEST
 
-/turf/open/slippery/hull/dir/northwest
+/turf/open/slippery/hull/corner
+	icon_state = "outerhull_corner"
+
+/turf/open/slippery/hull/corner/north
+	dir = NORTH
+
+/turf/open/slippery/hull/corner/east
+	dir = EAST
+
+/turf/open/slippery/hull/corner/west
+	dir = WEST
+
+/turf/open/slippery/hull/corner_alt
+	icon_state = "outerhull_corner_alt"
+
+/turf/open/slippery/hull/corner_alt/north
+	dir = NORTH
+
+/turf/open/slippery/hull/connection
+	icon_state = "outerhull_connection"
+
+/turf/open/slippery/hull/connection/north
+	dir = NORTH
+
+/turf/open/slippery/hull/connection/east
+	dir = EAST
+
+/turf/open/slippery/hull/connection/west
+	dir = WEST
+
+/turf/open/slippery/hull/connection_alt
+	icon_state = "outerhull_connection_alt"
+
+/turf/open/slippery/hull/connection_alt/north
+	dir = NORTH
+
+/turf/open/slippery/hull/connection_alt/east
+	dir = EAST
+
+/turf/open/slippery/hull/connection_alt/west
+	dir = WEST
+
+/turf/open/slippery/hull/connection_alt/southwest
+	dir = SOUTHWEST
+
+/turf/open/slippery/hull/connection_alt/northeast
+	dir = NORTHEAST
+
+/turf/open/slippery/hull/connection_alt/southeast
+	dir = SOUTHEAST
+
+/turf/open/slippery/hull/connection_alt/northwest
 	dir = NORTHWEST
 
 /turf/open/slippery/roof
@@ -239,6 +305,713 @@
 
 /turf/open/slippery/roof/dir/northwest
 	dir = NORTHWEST
+/turf/open/slippery/hull/connection_middle
+	icon_state = "outerhull_connection_middle"
+
+/turf/open/slippery/hull/connection_middle/north
+	dir = NORTH
+
+/turf/open/slippery/hull/connection_middle/east
+	dir = EAST
+
+/turf/open/slippery/hull/connection_middle/west
+	dir = WEST
+
+/turf/open/slippery/hull/connection_corner
+	icon_state = "outerhull_connection_corner"
+
+/turf/open/slippery/hull/connection_corner/north
+	dir = NORTH
+
+/turf/open/slippery/hull/connection_corner/east
+	dir = EAST
+
+/turf/open/slippery/hull/connection_corner/west
+	dir = WEST
+
+/turf/open/slippery/hull/connection_end
+	icon_state = "outerhull_connection_end"
+
+/turf/open/slippery/hull/connection_end/north
+	dir = NORTH
+
+/turf/open/slippery/hull/connection_end/east
+	dir = EAST
+
+/turf/open/slippery/hull/connection_end/west
+	dir = WEST
+
+/turf/open/slippery/hull/full
+	icon_state = "outerhull_full"
+
+/turf/open/slippery/hull/tiles
+	icon_state = "outerhull_tiles"
+
+/turf/open/slippery/hull/tiles/north
+	dir = NORTH
+
+/turf/open/slippery/hull/tiles/east
+	dir = EAST
+
+/turf/open/slippery/hull/tiles/west
+	dir = WEST
+
+/turf/open/slippery/hull/tiles2
+	icon_state = "outerhull_tiles_alt"
+
+/turf/open/slippery/hull/tiles2/north
+	dir = NORTH
+
+/turf/open/slippery/hull/tiles2/east
+	dir = EAST
+
+/turf/open/slippery/hull/tiles2/west
+	dir = WEST
+
+//Colorable hull tiles
+/turf/open/slippery/hull/colorable
+	name = "sloped roof"
+	icon = 'icons/turf/almayer.dmi'
+	icon_state = "outerhull_colorable"
+
+/turf/open/slippery/hull/colorable/dir
+	icon_state = "outerhull_colorable_dir"
+
+/turf/open/slippery/hull/colorable/dir/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/dir/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/dir/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/dir/southwest
+	dir = SOUTHWEST
+
+/turf/open/slippery/hull/colorable/dir/northeast
+	dir = NORTHEAST
+
+/turf/open/slippery/hull/colorable/dir/southeast
+	dir = SOUTHEAST
+
+/turf/open/slippery/hull/colorable/dir/northwest
+	dir = NORTHWEST
+
+/turf/open/slippery/hull/colorable/dir_alt
+	icon_state = "outerhull_colorable_dir_alt"
+
+/turf/open/slippery/hull/colorable/dir_alt/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/dir_alt/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/dir_alt/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/corner
+	icon_state = "outerhull_colorable_corner"
+
+/turf/open/slippery/hull/colorable/corner/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/corner/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/corner/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/corner_alt
+	icon_state = "outerhull_colorable_corner_alt"
+
+/turf/open/slippery/hull/colorable/corner_alt/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/connection
+	icon_state = "outerhull_colorable_connection"
+
+/turf/open/slippery/hull/colorable/connection/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/connection/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/connection/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/connection_alt
+	icon_state = "outerhull_colorable_connection_alt"
+
+/turf/open/slippery/hull/colorable/connection_alt/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/connection_alt/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/connection_alt/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/connection_alt/southwest
+	dir = SOUTHWEST
+
+/turf/open/slippery/hull/colorable/connection_alt/northeast
+	dir = NORTHEAST
+
+/turf/open/slippery/hull/colorable/connection_alt/southeast
+	dir = SOUTHEAST
+
+/turf/open/slippery/hull/colorable/connection_alt/northwest
+	dir = NORTHWEST
+
+/turf/open/slippery/hull/colorable/connection_middle
+	icon_state = "outerhull_colorable_connection_middle"
+
+/turf/open/slippery/hull/colorable/connection_middle/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/connection_middle/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/connection_middle/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/connection_corner
+	icon_state = "outerhull_colorable_connection_corner"
+
+/turf/open/slippery/hull/colorable/connection_corner/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/connection_corner/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/connection_corner/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/connection_end
+	icon_state = "outerhull_colorable_connection_end"
+
+/turf/open/slippery/hull/colorable/connection_end/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/connection_end/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/connection_end/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/full
+	icon_state = "outerhull_colorable_full"
+
+/turf/open/slippery/hull/colorable/tiles
+	icon_state = "outerhull_colorable_tiles"
+
+/turf/open/slippery/hull/colorable/tiles/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/tiles/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/tiles/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/tiles2
+	icon_state = "outerhull_colorable_tiles_alt"
+
+/turf/open/slippery/hull/colorable/tiles2/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/tiles2/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/tiles2/west
+	dir = WEST
+
+//Colorable hull tiles - Purple (Fire Colony)
+
+/turf/open/slippery/hull/colorable/purple
+	color = "#716c71"
+
+/turf/open/slippery/hull/colorable/purple/dir
+	icon_state = "outerhull_colorable_dir"
+
+/turf/open/slippery/hull/colorable/purple/dir/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/purple/dir/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/purple/dir/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/purple/dir/southwest
+	dir = SOUTHWEST
+
+/turf/open/slippery/hull/colorable/purple/dir/northeast
+	dir = NORTHEAST
+
+/turf/open/slippery/hull/colorable/purple/dir/southeast
+	dir = SOUTHEAST
+
+/turf/open/slippery/hull/colorable/purple/dir/northwest
+	dir = NORTHWEST
+
+/turf/open/slippery/hull/colorable/purple/dir_alt
+	icon_state = "outerhull_colorable_dir_alt"
+
+/turf/open/slippery/hull/colorable/purple/dir_alt/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/purple/dir_alt/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/purple/dir_alt/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/purple/corner
+	icon_state = "outerhull_colorable_corner"
+
+/turf/open/slippery/hull/colorable/purple/corner/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/purple/corner/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/purple/corner/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/purple/corner_alt
+	icon_state = "outerhull_colorable_corner_alt"
+
+/turf/open/slippery/hull/colorable/purple/corner_alt/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/purple/connection
+	icon_state = "outerhull_colorable_connection"
+
+/turf/open/slippery/hull/colorable/purple/connection/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/purple/connection/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/purple/connection/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/purple/connection_alt
+	icon_state = "outerhull_colorable_connection_alt"
+
+/turf/open/slippery/hull/colorable/purple/connection_alt/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/purple/connection_alt/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/purple/connection_alt/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/purple/connection_alt/southwest
+	dir = SOUTHWEST
+
+/turf/open/slippery/hull/colorable/purple/connection_alt/northeast
+	dir = NORTHEAST
+
+/turf/open/slippery/hull/colorable/purple/connection_alt/southeast
+	dir = SOUTHEAST
+
+/turf/open/slippery/hull/colorable/purple/connection_alt/northwest
+	dir = NORTHWEST
+
+/turf/open/slippery/hull/colorable/purple/connection_middle
+	icon_state = "outerhull_colorable_connection_middle"
+
+/turf/open/slippery/hull/colorable/purple/connection_middle/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/purple/connection_middle/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/purple/connection_middle/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/purple/connection_corner
+	icon_state = "outerhull_colorable_connection_corner"
+
+/turf/open/slippery/hull/colorable/purple/connection_corner/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/purple/connection_corner/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/purple/connection_corner/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/purple/connection_end
+	icon_state = "outerhull_colorable_connection_end"
+
+/turf/open/slippery/hull/colorable/purple/connection_end/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/purple/connection_end/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/purple/connection_end/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/purple/full
+	icon_state = "outerhull_colorable_full"
+
+/turf/open/slippery/hull/colorable/purple/tiles
+	icon_state = "outerhull_colorable_tiles"
+
+/turf/open/slippery/hull/colorable/purple/tiles/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/purple/tiles/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/purple/tiles/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/purple/tiles2
+	icon_state = "outerhull_colorable_tiles_alt"
+
+/turf/open/slippery/hull/colorable/purple/tiles2/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/purple/tiles2/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/purple/tiles2/west
+	dir = WEST
+
+//Colorable hull tiles - Teal (Fire Colony)
+
+/turf/open/slippery/hull/colorable/teal
+	icon_state = "outerhull_colorable"
+	color = "#697374"
+
+/turf/open/slippery/hull/colorable/teal/dir
+	icon_state = "outerhull_colorable_dir"
+
+/turf/open/slippery/hull/colorable/teal/dir/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/teal/dir/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/teal/dir/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/teal/dir/southwest
+	dir = SOUTHWEST
+
+/turf/open/slippery/hull/colorable/teal/dir/northeast
+	dir = NORTHEAST
+
+/turf/open/slippery/hull/colorable/teal/dir/southeast
+	dir = SOUTHEAST
+
+/turf/open/slippery/hull/colorable/teal/dir/northwest
+	dir = NORTHWEST
+
+/turf/open/slippery/hull/colorable/teal/dir_alt
+	icon_state = "outerhull_colorable_dir_alt"
+
+/turf/open/slippery/hull/colorable/teal/dir_alt/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/teal/dir_alt/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/teal/dir_alt/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/teal/corner
+	icon_state = "outerhull_colorable_corner"
+
+/turf/open/slippery/hull/colorable/teal/corner/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/teal/corner/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/teal/corner/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/teal/corner_alt
+	icon_state = "outerhull_colorable_corner_alt"
+
+/turf/open/slippery/hull/colorable/teal/corner_alt/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/teal/connection
+	icon_state = "outerhull_colorable_connection"
+
+/turf/open/slippery/hull/colorable/teal/connection/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/teal/connection/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/teal/connection/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/teal/connection_alt
+	icon_state = "outerhull_colorable_connection_alt"
+
+/turf/open/slippery/hull/colorable/teal/connection_alt/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/teal/connection_alt/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/teal/connection_alt/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/teal/connection_alt/southwest
+	dir = SOUTHWEST
+
+/turf/open/slippery/hull/colorable/teal/connection_alt/northeast
+	dir = NORTHEAST
+
+/turf/open/slippery/hull/colorable/teal/connection_alt/southeast
+	dir = SOUTHEAST
+
+/turf/open/slippery/hull/colorable/teal/connection_alt/northwest
+	dir = NORTHWEST
+
+/turf/open/slippery/hull/colorable/teal/connection_middle
+	icon_state = "outerhull_colorable_connection_middle"
+
+/turf/open/slippery/hull/colorable/teal/connection_middle/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/teal/connection_middle/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/teal/connection_middle/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/teal/connection_corner
+	icon_state = "outerhull_colorable_connection_corner"
+
+/turf/open/slippery/hull/colorable/teal/connection_corner/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/teal/connection_corner/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/teal/connection_corner/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/teal/connection_end
+	icon_state = "outerhull_colorable_connection_end"
+
+/turf/open/slippery/hull/colorable/teal/connection_end/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/teal/connection_end/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/teal/connection_end/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/teal/full
+	icon_state = "outerhull_colorable_full"
+
+/turf/open/slippery/hull/colorable/teal/tiles
+	icon_state = "outerhull_colorable_tiles"
+
+/turf/open/slippery/hull/colorable/teal/tiles/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/teal/tiles/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/teal/tiles/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/teal/tiles2
+	icon_state = "outerhull_colorable_tiles_alt"
+
+/turf/open/slippery/hull/colorable/teal/tiles2/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/teal/tiles2/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/teal/tiles2/west
+	dir = WEST
+
+//Colorable hull tiles
+
+/turf/open/slippery/hull/colorable/teal
+	name = "sloped roof"
+	icon = 'icons/turf/almayer.dmi'
+	icon_state = "outerhull_colorable"
+
+/turf/open/slippery/hull/colorable/teal/dir
+	icon_state = "outerhull_colorable_dir"
+
+/turf/open/slippery/hull/colorable/teal/dir/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/teal/dir/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/teal/dir/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/teal/dir/southwest
+	dir = SOUTHWEST
+
+/turf/open/slippery/hull/colorable/teal/dir/northeast
+	dir = NORTHEAST
+
+/turf/open/slippery/hull/colorable/teal/dir/southeast
+	dir = SOUTHEAST
+
+/turf/open/slippery/hull/colorable/teal/dir/northwest
+	dir = NORTHWEST
+
+/turf/open/slippery/hull/colorable/teal/dir_alt
+	icon_state = "outerhull_colorable_dir_alt"
+
+/turf/open/slippery/hull/colorable/teal/dir_alt/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/teal/dir_alt/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/teal/dir_alt/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/teal/corner
+	icon_state = "outerhull_colorable_corner"
+
+/turf/open/slippery/hull/colorable/teal/corner/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/teal/corner/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/teal/corner/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/teal/corner_alt
+	icon_state = "outerhull_colorable_corner_alt"
+
+/turf/open/slippery/hull/colorable/teal/corner_alt/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/teal/connection
+	icon_state = "outerhull_colorable_connection"
+
+/turf/open/slippery/hull/colorable/teal/connection/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/teal/connection/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/teal/connection/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/teal/connection_alt
+	icon_state = "outerhull_colorable_connection_alt"
+
+/turf/open/slippery/hull/colorable/teal/connection_alt/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/teal/connection_alt/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/teal/connection_alt/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/teal/connection_alt/southwest
+	dir = SOUTHWEST
+
+/turf/open/slippery/hull/colorable/teal/connection_alt/northeast
+	dir = NORTHEAST
+
+/turf/open/slippery/hull/colorable/teal/connection_alt/southeast
+	dir = SOUTHEAST
+
+/turf/open/slippery/hull/colorable/teal/connection_alt/northwest
+	dir = NORTHWEST
+
+/turf/open/slippery/hull/colorable/teal/connection_middle
+	icon_state = "outerhull_colorable_connection_middle"
+
+/turf/open/slippery/hull/colorable/teal/connection_middle/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/teal/connection_middle/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/teal/connection_middle/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/teal/connection_corner
+	icon_state = "outerhull_colorable_connection_corner"
+
+/turf/open/slippery/hull/colorable/teal/connection_corner/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/teal/connection_corner/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/teal/connection_corner/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/teal/connection_end
+	icon_state = "outerhull_colorable_connection_end"
+
+/turf/open/slippery/hull/colorable/teal/connection_end/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/teal/connection_end/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/teal/connection_end/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/teal/full
+	icon_state = "outerhull_colorable_full"
+
+/turf/open/slippery/hull/colorable/teal/tiles
+	icon_state = "outerhull_colorable_tiles"
+
+/turf/open/slippery/hull/colorable/teal/tiles/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/teal/tiles/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/teal/tiles/west
+	dir = WEST
+
+/turf/open/slippery/hull/colorable/teal/tiles2
+	icon_state = "outerhull_colorable_tiles_alt"
+
+/turf/open/slippery/hull/colorable/teal/tiles2/north
+	dir = NORTH
+
+/turf/open/slippery/hull/colorable/teal/tiles2/east
+	dir = EAST
+
+/turf/open/slippery/hull/colorable/teal/tiles2/west
+	dir = WEST
+
+// Glass Roof
+
+/obj/structure/prop/roof/glass
+	icon = 'icons/effects/glass_roof.dmi'
+	icon_state = "glass_roof_1"
+	layer = TURF_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 // Prison grass
 /turf/open/organic/grass
@@ -1647,6 +2420,9 @@
 /turf/open/shuttle/vehicle/floor_3_13
 	icon_state = "floor_3_13"
 
+/turf/open/shuttle/vehicle/floor_3_14
+	icon_state = "floor_3_14"
+
 /turf/open/shuttle/vehicle/floor_3_1_1
 	icon_state = "floor_3_1_1"
 
@@ -1679,6 +2455,30 @@
 
 /turf/open/shuttle/vehicle/floor_3_9_1
 	icon_state = "floor_3_9_1"
+
+/turf/open/shuttle/vehicle/van_floor_0
+	icon_state = "van_floor_0"
+
+/turf/open/shuttle/vehicle/van_floor_0/north
+	dir = NORTH
+
+/turf/open/shuttle/vehicle/van_floor_0/east
+	dir = EAST
+
+/turf/open/shuttle/vehicle/van_floor_0/west
+	dir = WEST
+
+/turf/open/shuttle/vehicle/van_floor_1
+	icon_state = "van_floor_1"
+
+/turf/open/shuttle/vehicle/van_floor_1/north
+	dir = NORTH
+
+/turf/open/shuttle/vehicle/van_floor_1/east
+	dir = EAST
+
+/turf/open/shuttle/vehicle/van_floor_1/west
+	dir = WEST
 
 /turf/open/walkable_lattice
 	desc = "A support lattice."

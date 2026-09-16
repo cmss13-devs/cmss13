@@ -670,3 +670,11 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	name = "rotary telephone"
 	icon_state = "rotary_phone"
 	desc = "The finger plate is a little stiff."
+
+
+/obj/structure/transmitter/save_station
+	icon_state = "savestation_phone"
+
+/obj/structure/transmitter/save_station/colony_net
+	networks_receive = list(FACTION_COLONIST)
+	networks_transmit = list(FACTION_COLONIST)

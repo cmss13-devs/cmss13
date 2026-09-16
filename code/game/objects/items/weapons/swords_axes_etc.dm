@@ -41,6 +41,10 @@
 
 	user.visible_message(SPAN_DANGER("<B>[M] has been beaten with \the [src] by [user]!</B>"), SPAN_DANGER("You hear someone fall."))
 
+/obj/item/weapon/classic_baton/alt
+	icon_state = "baton_alt"
+	item_state = "classic_baton_alt"
+
 //Telescopic baton
 /obj/item/weapon/telebaton
 	name = "telescopic baton"

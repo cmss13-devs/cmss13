@@ -20,3 +20,10 @@
 	icon_state = "newspaper"
 	w_class = SIZE_TINY //Let's make it fit in trashbags!
 	attack_verb = list("bapped")
+
+/obj/structure/machinery/newscaster/seegson
+	name = "newscaster"
+	desc = "A standard newsfeed handler for use in commercial space stations. All the news you absolutely have no use for, in one place!"
+	icon = 'icons/obj/structures/machinery/terminals.dmi'
+	icon_state = "altnewscaster_normal"
+	anchored = TRUE

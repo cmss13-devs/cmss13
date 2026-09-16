@@ -120,6 +120,7 @@
 	desc = "Sharp, matte black, and deadly. In a pinch this will substitute for a pencil in a fight."
 	force = MELEE_FORCE_TIER_2
 	throwforce = MELEE_FORCE_NORMAL
+	icon_state = "tac_screwdriver"
 
 /obj/item/tool/screwdriver/tactical/Initialize()
 	. = ..()

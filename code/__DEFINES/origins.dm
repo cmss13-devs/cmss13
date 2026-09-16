@@ -30,3 +30,9 @@
 
 // CMB
 #define ORIGIN_CMB "The Colonial Marshal Bureau"
+
+// LASALLE BIONATIONAL
+
+#define ORIGIN_LB "Lasalle Bionational Corporation"
+#define ORIGIN_LB_SEC "Lasalle Bionational Security Forces"
+#define ORIGIN_LB_MERC "Lasalle Bionational Hazard Intervention Group"

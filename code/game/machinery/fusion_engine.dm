@@ -491,6 +491,14 @@
 	name = "\improper RDS-168 fusion reactor"
 	desc = "A RDS-168 Fusion Reactor."
 
+/obj/structure/machinery/power/power_generator/reactor/colony/alt
+	name = "\improper G-11 geothermal generator"
+	desc = "A thermoelectric generator sitting atop a plasma-filled borehole."
+	icon = 'icons/obj/structures/machinery/fusion_eng.dmi'
+
+	is_on = FALSE
+	power_gen = 100000 //100,000W at full capacity
+	original_fail_rate = 10
 
 #undef BUILDSTATE_FUNCTIONAL
 #undef BUILDSTATE_DAMAGE_WELD

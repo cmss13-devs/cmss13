@@ -77,6 +77,8 @@
 	S.handle_rotation()
 	S.pixel_x = pixel_x
 	S.pixel_y = pixel_y
+	S.buckling_x = pixel_x
+	S.buckling_y = pixel_y
 
 	qdel(src)
 
@@ -100,6 +102,8 @@
 	S.handle_rotation()
 	S.pixel_x = pixel_x
 	S.pixel_y = pixel_y
+	S.buckling_x = pixel_x
+	S.buckling_y = pixel_y
 
 	qdel(src)
 
@@ -280,15 +284,15 @@
 	color = "#009cb8"
 
 /obj/effect/landmark/interior/spawn/interior_viewport/on_load(datum/interior/I)
-	var/obj/structure/interior_viewport/V = new(loc)
+	var/obj/structure/interior_viewport/viewport = new(loc)
 
-	V.dir = dir
-	V.vehicle = I.exterior
-	V.pixel_x = pixel_x
-	V.pixel_y = pixel_y
-	V.layer = layer
-	V.alpha = alpha
-	V.update_icon()
+	viewport.dir = dir
+	viewport.vehicle = I.exterior
+	viewport.pixel_x = pixel_x
+	viewport.pixel_y = pixel_y
+	viewport.layer = layer
+	viewport.alpha = alpha
+	viewport.update_icon()
 
 	qdel(src)
 
@@ -304,13 +308,15 @@
 	color = "#009cb8"
 
 /obj/effect/landmark/interior/spawn/interior_viewport/simple/on_load(datum/interior/I)
-	var/obj/structure/interior_viewport/simple/V = new(loc)
+	var/obj/structure/interior_viewport/simple/viewport = new(loc)
 
-	V.vehicle = I.exterior
-	V.pixel_x = pixel_x
-	V.pixel_y = pixel_y
-	V.layer = layer
-	V.alpha = alpha
+	viewport.vehicle = I.exterior
+	viewport.pixel_x = pixel_x
+	viewport.pixel_y = pixel_y
+	viewport.layer = layer
+	viewport.alpha = alpha
+	viewport.icon = icon
+	viewport.icon_state = icon_state
 
 	qdel(src)
 
@@ -324,12 +330,14 @@
 	alpha = 80
 
 /obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield/on_load(datum/interior/I)
-	var/obj/structure/interior_viewport/simple/windshield/V = new(loc)
+	var/obj/structure/interior_viewport/simple/windshield/viewport = new(loc)
 
-	V.vehicle = I.exterior
-	V.pixel_x = pixel_x
-	V.pixel_y = pixel_y
-	V.alpha = alpha
-	V.icon = icon
+	viewport.vehicle = I.exterior
+	viewport.pixel_x = pixel_x
+	viewport.pixel_y = pixel_y
+	viewport.alpha = alpha
+	viewport.icon = icon
+	viewport.icon = icon
+	viewport.icon_state = icon_state
 
 	qdel(src)

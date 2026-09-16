@@ -22995,12 +22995,6 @@
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1,
 /area/northpoint/indoors/main)
-"bqD" = (
-/turf/open/floor/prison/yellow/southwest,
-/area/northpoint/oob)
-"bqE" = (
-/turf/open/floor/prison/yellow,
-/area/northpoint/oob)
 "bqF" = (
 /obj/structure/bed/chair/comfy/hybrisa/blue{
 	dir = 4
@@ -23050,9 +23044,6 @@
 	},
 /turf/open/floor/plating/platingdmg2,
 /area/northpoint/outdoors/urban_cave/north_east)
-"bqM" = (
-/turf/open/floor/prison/yellowcorner/west,
-/area/northpoint/oob)
 "bqN" = (
 /obj/item/stack/sheet/metal,
 /obj/effect/landmark/xeno_spawn,
@@ -23371,9 +23362,6 @@
 	},
 /turf/open/floor/prison/yellow/northwest,
 /area/northpoint/outdoors/urban_cave/north_east)
-"brG" = (
-/turf/open/floor/prison/yellowcorner/east,
-/area/northpoint/oob)
 "brH" = (
 /obj/structure/blocker/invisible_wall/map_edge,
 /obj/structure/prop/northpoint/concrete_wall/wired{
@@ -23400,12 +23388,6 @@
 /obj/structure/prop/hybrisa/misc/pole_stump,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/northpoint/outdoors/urban_cave/north_east)
-"brL" = (
-/turf/open/floor/prison/yellow/northwest,
-/area/northpoint/oob)
-"brM" = (
-/turf/open/floor/prison/yellow/north,
-/area/northpoint/oob)
 "brN" = (
 /obj/structure/prop/tyrargo/large_tents/small_closed/back{
 	layer = 3.98;
@@ -107535,14 +107517,14 @@ bVe
 bVb
 bUQ
 lNw
-brL
-brG
-cgd
-cgd
-cgd
-cgd
-bqM
-bqD
+lNw
+lNw
+lNw
+lNw
+lNw
+lNw
+lNw
+lNw
 bUq
 bUi
 bTV
@@ -107690,14 +107672,14 @@ bVf
 bVb
 bUQ
 lNw
-brM
-cgd
-cgd
-cgd
-cgd
-cgd
-cgd
-bqE
+lNw
+lNw
+lNw
+lNw
+lNw
+lNw
+lNw
+lNw
 lNw
 bUj
 bTX
@@ -107845,14 +107827,14 @@ bVf
 bVb
 bUR
 lNw
-brM
-cgd
-ssk
-cgd
-cgd
-ssk
-cgd
-bqE
+lNw
+lNw
+lNw
+lNw
+lNw
+lNw
+lNw
+lNw
 lNw
 bUk
 bTY
@@ -108000,14 +107982,14 @@ bVg
 bVb
 bUQ
 lNw
-brM
-cgd
-ssk
-cgd
-cgd
-ssk
-cgd
-bqE
+lNw
+lNw
+lNw
+lNw
+lNw
+lNw
+lNw
+lNw
 lNw
 bUl
 bTZ
@@ -108155,14 +108137,14 @@ lNw
 bVc
 bUS
 lNw
-brM
-cgd
-cgd
-cgd
-cgd
-cgd
-cgd
-bqE
+lNw
+lNw
+lNw
+lNw
+lNw
+lNw
+lNw
+lNw
 lNw
 bUm
 bUa
@@ -108310,14 +108292,14 @@ lNw
 byd
 bUT
 lNw
-brM
-cgd
-ssk
-cgd
-cgd
-ssk
-cgd
-bqE
+lNw
+lNw
+lNw
+lNw
+lNw
+lNw
+lNw
+lNw
 lNw
 bUn
 bUb
@@ -108465,14 +108447,14 @@ lNw
 bVd
 bUU
 lNw
-brM
-cgd
-ssk
-cgd
-cgd
-ssk
-cgd
-bqE
+lNw
+lNw
+lNw
+lNw
+lNw
+lNw
+lNw
+lNw
 lNw
 bUo
 bUc

@@ -177,6 +177,8 @@
 #define TRAIT_CANT_RIDE "cant_ride"
 /// Makes mob immune to dir lock slowdown.
 #define TRAIT_NO_DIR_LOCK_SLOWDOWN "no_dir_lock_slowdown"
+/// Prevents stun reductions from shakes
+#define TRAIT_UNSHAKABLE "unshakable"
 
 // SPECIES TRAITS
 /// Knowledge of Yautja technology

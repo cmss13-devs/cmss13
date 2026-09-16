@@ -211,7 +211,8 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of [src]."),
 	SPAN_XENODANGER("We emerge in a greater form from the husk of our old body. For the hive!"))
-	new /obj/item/xeno_husk(new_xeno.loc)
+	if(new_xeno.tier == 1)
+		new /obj/item/xeno_husk(new_xeno.loc)
 
 	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
 		hive.living_xeno_queen.overwatch(new_xeno)

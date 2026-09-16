@@ -98,7 +98,7 @@
 /obj/item/xeno_husk/Initialize(mapload, ...)
 	. = ..()
 	icon_state = pick(possible_states)
-	addtimer(CALLBACK(src, PROC_REF(decay), 10 MINUTES))
+	addtimer(CALLBACK(src, PROC_REF(decay)), 10 MINUTES)
 
 /obj/item/xeno_husk/proc/decay()
 	for(var/mob/living/mob in range(1,src))

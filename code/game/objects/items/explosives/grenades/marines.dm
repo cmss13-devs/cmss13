@@ -33,7 +33,7 @@
 	if(shrapnel_count)
 		create_shrapnel(loc, shrapnel_count, , ,shrapnel_type, cause_data)
 	apply_explosion_overlay()
-	cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, null, cause_data)
+	cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, null, cause_data, body_blockable=TRUE)
 	qdel(src)
 
 

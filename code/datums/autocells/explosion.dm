@@ -45,6 +45,8 @@
 	var/reflection_power_multiplier = 0.4
 	/// Whether the damage is considered to be from an environmental source
 	var/enviro = FALSE
+	/// Whether the explosion has been smothered and contained to the single tile it occurred on (e.g. body-blocked)
+	var/contained = FALSE
 
 	//Diagonal cells have a small delay when branching off from a non-diagonal cell. This helps the explosion look circular
 	var/delay = 0
@@ -191,6 +193,11 @@
 		qdel(src)
 		return
 
+	// A contained explosion was smothered at its epicenter, so it never leaves that tile.
+	if(contained)
+		qdel(src)
+		return
+
 	// Propagate the explosion
 	var/list/to_spread = get_propagation_dirs(reflected)
 	for(var/dir in to_spread)
@@ -269,12 +276,26 @@ as having entered the turf.
 // I'll admit most of the code from here on out is basically just copypasta from DOREC
 
 // Spawns a cellular automaton of an explosion
-/proc/cell_explosion(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, datum/cause_data/explosion_cause_data, enviro=FALSE)
+/proc/cell_explosion(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, datum/cause_data/explosion_cause_data, enviro=FALSE, body_blockable = FALSE)
 	if(!istype(epicenter))
 		epicenter = get_turf(epicenter)
 
 	if(!epicenter)
 		return
+
+	// An alive human lying flat on the epicenter smothers the blast with their body, containing the explosion so it only ever affects this single tile.
+	var/contained = FALSE
+	if(body_blockable)
+		for(var/mob/living/carbon/human/blocker in epicenter)
+			if(blocker.resting && blocker.stat == CONSCIOUS)
+				contained = TRUE
+				var/shield_radius = max(2, round(power / max(falloff, 1)) + 1)
+				for(var/mob/living/carbon/human/nearby_human in range(shield_radius, epicenter))
+					if(nearby_human == blocker || nearby_human.stat == DEAD)
+						continue
+					epicenter.visible_message(SPAN_HIGHDANGER("<b>[blocker]</b> throws himself onto the grenade to shield his fellow people!"), null, 7)
+					break
+				break
 
 	if(!istype(explosion_cause_data))
 		if(explosion_cause_data)
@@ -306,7 +327,7 @@ as having entered the turf.
 	if(QDELETED(E))
 		return
 
-	if(power >= 150) //shockwave for anything over 150 power
+	if(power >= 150 && !contained) //shockwave for anything over 150 power
 		new /obj/effect/shockwave(epicenter, power/60)
 
 	E.power = power
@@ -315,8 +336,9 @@ as having entered the turf.
 	E.direction = direction
 	E.explosion_cause_data = explosion_cause_data
 	E.enviro = enviro
+	E.contained = contained
 
-	if(power >= 100) // powerful explosions send out some special effects
+	if(power >= 100 && !contained) // powerful explosions send out some special effects
 		epicenter = get_turf(epicenter) // the ex_acts might have changed the epicenter
 		new /obj/shrapnel_effect(epicenter)
 

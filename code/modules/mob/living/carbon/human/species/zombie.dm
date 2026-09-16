@@ -111,8 +111,7 @@
 			if(zombie.client)
 				zombie.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>You are dead...</u></span><br>You lost your head. No reviving for you.", /atom/movable/screen/text/screen_text/command_order, rgb(155, 0, 200))
 			to_chat(zombie, SPAN_XENOWARNING("You fall... headless, you will no longer rise."))
-			zombie.undefibbable = TRUE // really only for weed_food
-			SEND_SIGNAL(zombie, COMSIG_HUMAN_SET_UNDEFIBBABLE)
+			zombie.set_undefibbable() // really only for weed_food
 
 /datum/species/zombie/handle_dead_death(mob/living/carbon/human/zombie, gibbed)
 	if(gibbed)
@@ -155,9 +154,7 @@
 	return static_tab_items
 
 /datum/species/zombie/handle_head_loss(mob/living/carbon/human/zombie)
-	if(!zombie.undefibbable)
-		zombie.undefibbable = TRUE // really only for weed_food
-		SEND_SIGNAL(zombie, COMSIG_HUMAN_SET_UNDEFIBBABLE)
+	zombie.set_undefibbable() // really only for weed_food
 	if(WEAKREF(zombie) in to_revive)
 		remove_from_revive(zombie)
 		var/client/receiving_client = zombie.client

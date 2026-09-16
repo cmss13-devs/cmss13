@@ -36,13 +36,9 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	for(var/caste in castes_available)
 		if(GLOB.xeno_datum_list[caste].minimum_evolve_time > ROUND_TIME)
 			castes_available -= caste
-	castes_available = XENO_T2_CASTES + XENO_T3_CASTES //REMOVE AFTER TESTING!
 	if(!length(castes_available))
 		to_chat(src, SPAN_WARNING("The Hive is not capable of supporting any castes we can evolve to yet."))
 		return
-
-	//REMOVETHIS LATER
-
 
 	var/castepick
 	if((client.prefs && client.prefs.no_radials_preference) || !hive.evolution_menu_images)

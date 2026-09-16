@@ -45,8 +45,8 @@
 	desc = "stabilize the wounds"
 	tools = SURGERY_TOOLS_MEDICOMP_STABILIZE_WOUND
 	time = 5 SECONDS
-	preop_sound = 'sound/handling/clothingrustle1.ogg'
-	success_sound = 'sound/handling/ointment_spreading.ogg'
+	//preop_sound is handled in surgery_step/proc/use_custom_preop_sound in surgery_steps.dm
+	//success_sound is handled in surgery_step/proc/use_custom_success_sound in surgery_steps.dm
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/mstabilize_wounds/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -90,6 +90,7 @@
 	tools = SURGERY_TOOLS_MEDICOMP_MEND_WOUND
 	time = 15 SECONDS
 	preop_sound = 'sound/effects/gunrustle1.ogg'
+	success_sound = 'sound/handling/ointment_spreading.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/mtend_wounds/extra_checks(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
@@ -152,14 +153,12 @@
 	desc = "clamp the wounds"
 	tools = SURGERY_TOOLS_MEDICOMP_CLAMP_WOUND
 	time = 10 SECONDS
-	preop_sound = 'sound/surgery/cautery1.ogg'
-	success_sound = 'sound/surgery/cautery2.ogg'
+	//preop_sound is handled in surgery_step/proc/use_custom_preop_sound in surgery_steps.dm
+	//success_sound is handled in surgery_step/proc/use_custom_success_sound in surgery_steps.dm
 	failure_sound = 'sound/items/welder.ogg'
 
 /datum/surgery_step/cauterize/mclamp_wound/tool_check(mob/user, obj/item/tool, datum/surgery/surgery)
 	. = ..()
-	if((. in tools_lit) && !tool.heat_source)
-		return FALSE
 
 /datum/surgery_step/cauterize/mclamp_wound/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(user == target)

@@ -437,7 +437,7 @@
 /// remove hide and apply modified attack cooldown
 /datum/action/xeno_action/onclick/xenohide/proc/post_attack()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	UnregisterSignal(xeno, COMSIG_MOB_STATCHANGE)
+	UnregisterSignal(xeno, list(COMSIG_MOB_STATCHANGE, COMSIG_LIVING_PRE_DOAFTER))
 	if(xeno.layer == XENO_HIDING_LAYER)
 		xeno.layer = initial(xeno.layer)
 		button.icon_state = "template_xeno"

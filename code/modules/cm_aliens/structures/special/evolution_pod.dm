@@ -88,3 +88,19 @@
 	health = 650
 	maxhealth = 650
 
+/obj/item/xeno_husk
+	name = "Larva husk"
+	desc = "Discarded flexible skin of some kind of creature, let's hope whatever it was it's no longer here."
+	icon = 'icons/mob/xenos/lavahusk.dmi'
+	icon_state = "husk_01"
+	var/list/possible_states = list("husk_01", "husk_02", "husk_03")
+
+/obj/item/xeno_husk/Initialize(mapload, ...)
+	. = ..()
+	icon_state = pick(possible_states)
+	addtimer(CALLBACK(src, PROC_REF(decay), 10 MINUTES))
+
+/obj/item/xeno_husk/proc/decay()
+	for(var/mob/living/mob in range(1,src))
+		to_chat(mob, SPAN_INFO("[src] falls apart."))
+	qdel(src)

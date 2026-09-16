@@ -737,9 +737,10 @@
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/onclick/xenohide/proc/unhide_on_action()
+/datum/action/xeno_action/onclick/xenohide/proc/unhide_on_action(source, delay)
 	SIGNAL_HANDLER
-	post_attack()
+	if(delay > 0)
+		post_attack()
 
 /datum/action/xeno_action/onclick/xenohide/proc/unhide_on_stat(mob/living/carbon/xenomorph/source, new_stat, old_stat)
 	SIGNAL_HANDLER

@@ -763,7 +763,7 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	var/mob/living/busy_user = user
 	if(!istype(busy_user))
 		return FALSE
-	SEND_SIGNAL(busy_user, COMSIG_LIVING_PRE_DOAFTER)
+	SEND_SIGNAL(busy_user, COMSIG_LIVING_PRE_DOAFTER, delay)
 
 	if(delay == 0) // Nothing to wait for, so action passes
 		return TRUE

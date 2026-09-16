@@ -84,7 +84,7 @@
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_righthand.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi',
 	)
 
 	attack_verb = list("shoved", "bashed")
@@ -114,7 +114,7 @@
 	icon = 'icons/obj/items/weapons/melee/shields.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_righthand.dmi',
 	)
 	icon_state = "eshield0" // eshield1 for expanded
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT|NOBLOODY
@@ -176,5 +176,5 @@
 	w_class = SIZE_MASSIVE
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_righthand.dmi',
 	)

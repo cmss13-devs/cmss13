@@ -32,7 +32,7 @@
 	contains = list(
 		/obj/item/device/motiondetector,
 		/obj/item/device/motiondetector,
-					)
+	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/supply
 	containername = "Motion Detector crate"

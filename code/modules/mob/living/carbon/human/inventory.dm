@@ -227,7 +227,7 @@
 		WEAR_IN_BELT,
 		WEAR_IN_J_STORE,
 		WEAR_IN_L_STORE,
-		WEAR_IN_R_STORE
+		WEAR_IN_R_STORE,
 	)
 
 	if(!(slot in no_update))

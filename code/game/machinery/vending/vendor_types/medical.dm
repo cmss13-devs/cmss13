@@ -75,7 +75,7 @@
 	var/destroyed_sound = 'sound/effects/metalhit.ogg'
 	///Random loot to spawn if destroyed as assoc list of type_path = max_quantity
 	var/list/destroyed_loot = list(
-		/obj/item/stack/sheet/metal = 2
+		/obj/item/stack/sheet/metal = 2,
 	)
 
 /obj/structure/restock_cart/medical

@@ -44,7 +44,7 @@
 	icon_state = "pmc_mask"
 	icon = 'icons/obj/items/clothing/masks/masks_by_faction/WY.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/WY.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/WY.dmi',
 	)
 	vision_impair = VISION_IMPAIR_NONE
 	armor_melee = CLOTHING_ARMOR_LOW
@@ -70,7 +70,7 @@
 	icon_state = "balaclava"
 	icon = 'icons/obj/items/clothing/masks/balaclava.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi',
 	)
 
 /obj/item/clothing/mask/gas/pmc/upp
@@ -78,7 +78,7 @@
 	icon_state = "upp_mask"
 	icon = 'icons/obj/items/clothing/masks/masks_by_faction/UPP.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/UPP.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/UPP.dmi',
 	)
 
 /obj/item/clothing/mask/gas/pmc/leader
@@ -113,7 +113,7 @@
 	icon_state = "souto_man"
 	icon = 'icons/obj/items/clothing/masks/masks.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks.dmi',
 	)
 	vision_impair = VISION_IMPAIR_NONE
 	unacidable = TRUE
@@ -127,7 +127,7 @@
 	icon_state = "rmc_mask"
 	icon = 'icons/obj/items/clothing/masks/masks_by_faction/TWE.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/TWE.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/TWE.dmi',
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
@@ -140,7 +140,7 @@
 	item_state = "pfb"
 	icon = 'icons/obj/items/clothing/masks/masks_by_faction/UPP.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/UPP.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/UPP.dmi',
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR

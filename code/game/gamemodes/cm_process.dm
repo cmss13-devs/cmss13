@@ -10,6 +10,10 @@ of predators), but can be added to include variant game modes (like humans vs. h
 /datum/game_mode/proc/check_queen_status()
 	return
 
+//If the hive doesn't hijack after marines evacuate, this will also end the game.
+/datum/game_mode/proc/no_hijack_check()
+	return
+
 //===================================================\\
 
 				//ANNOUNCE COMPLETION\\

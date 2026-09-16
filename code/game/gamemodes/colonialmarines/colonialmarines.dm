@@ -578,6 +578,14 @@
 			add_current_round_status_to_end_results((next_stat_check ? "" : "Round Start"))
 			next_stat_check = world.time + 10 MINUTES
 
+		if(SSobjectives.first_drop_complete && (ROUND_TIME > round_time_no_hijack)) //if marines have landed and 30 minutes have passed into the round, check if hijack conditions are possible
+			no_hijack_check()
+
+		//test value
+		if((ROUND_TIME >= round_time_evolution_ovipositor)) //if marines have landed and 30 minutes have passed into the round, check if hijack conditions are possible
+			no_hijack_check()
+
+
 /**
  * Primes and fires off the explodey-pipes during hijack.
  */
@@ -734,12 +742,40 @@
 		if(hive.living_xeno_queen && !should_block_game_interaction(hive.living_xeno_queen.loc))
 			//Some Queen is alive, we shouldn't end the game yet
 			return
-
 	if(length(hive.totalXenos) <= 3)
 		round_finished = MODE_INFESTATION_M_MAJOR
 	else
 		round_finished = MODE_INFESTATION_M_MINOR
 	log_game("Distress Signal Hive collapse!")
+
+/datum/game_mode/colonialmarines/no_hijack_check()
+	if(is_in_endgame) // don't end the round prematurely if hijack has started
+		return
+
+	var/datum/hive_status/hive
+	for(var/cur_number in GLOB.hive_datum) //check if queen is dead and whether or not hive is able to delay roundend
+		hive = GLOB.hive_datum[cur_number]
+		if(hive.need_round_end_check && !hive.can_delay_round_end())
+			continue
+		if(!hive.living_xeno_queen || should_block_game_interaction(hive.living_xeno_queen.loc))
+			//The queen is dead or is alive off the operation site, so check back in five minutes to see if that's still the case
+			addtimer(CALLBACK(src, PROC_REF(no_hijack_check)), 5 MINUTES)
+			return
+
+	var/groundside_humans = 0
+	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
+		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
+			continue
+
+		var/turf/turf = get_turf(current_human)
+		if(is_ground_level(turf?.z))
+			groundside_humans++
+			if(groundside_humans >= 12) //if more than doesn't count as an evacuation
+				return
+	//otherwise, end the round in 10 minutes if the hive does not hijack after evac, and return a xeno minor
+	to_chat(hive.living_xeno_queen, SPAN_XENODANGER("This hiveworld turns, and your chance to bring terror to the hosts in the stars above is waning..."))
+	round_finished = MODE_INFESTATION_X_MINOR
+	addtimer(CALLBACK(src, PROC_REF(declare_completion)), 10 MINUTES)
 
 /**
  * Checks if the round is over

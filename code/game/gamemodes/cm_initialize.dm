@@ -102,6 +102,9 @@ Additional game mode variables.
 	///Time for when resin placing is allowed close to LZs
 	var/round_time_resin = 40 MINUTES
 
+	///Time for when hijack stalemate procs are able to begin
+	var/round_time_no_hijack = 30 MINUTES
+
 	///Time for when ovipositor becomes necessary for evolution to progress.
 	var/round_time_evolution_ovipositor = XENO_ROUNDSTART_FREE_EVO_TIME
 	///Indicates when round_time_evolution_ovipositor has been passed. While FALSE, round_time_evolution_ovipositor is checked

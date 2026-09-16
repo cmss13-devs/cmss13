@@ -444,9 +444,16 @@
 	if(!selection)
 		return FALSE
 
+
+
 	if(!buffs[selection])
 		to_chat(xeno, "This selection is impossible!")
 		return FALSE
+
+	var/datum/hivebuff/hivebuff = buffs[selection]
+	if(!xeno.ovipositor && !hivebuff.works_oviless) //so you do not go off ovi with the radial being open or something
+		to_chat(xeno, SPAN_XENONOTICE("You need to be on oviposition to purchase boons!"))
+		return
 
 	if(buffs[selection].must_select_pylon)
 		var/list/pylon_to_area_dictionary = list()

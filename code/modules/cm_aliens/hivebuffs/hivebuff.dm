@@ -71,6 +71,8 @@
 
 	/// _on_cease timer id
 	var/cease_timer_id
+	/// can you buy and use this buff off ovi
+	var/works_oviless = FALSE
 
 /datum/hivebuff/New(datum/hive_status/xenohive)
 	. = ..()
@@ -382,6 +384,7 @@
 	cost = 2
 	number_of_required_pylons = 2
 	radial_icon = "health_m"
+	works_oviless = TRUE
 
 /datum/hivebuff/evo_buff/major/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)
 	hive.allow_no_queen_evo = TRUE

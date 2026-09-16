@@ -1,0 +1,776 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"al" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/sign/poster/pinup{
+	pixel_x = -26;
+	pixel_y = 6
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/North_Garage)
+"ay" = (
+/obj/structure/prop/dam/truck/damaged{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cement_sunbleached,
+/area/template_noop)
+"bp" = (
+/obj/item/trash/cigbutt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_17"
+	},
+/obj/structure/sign/poster/clf{
+	pixel_x = -26;
+	pixel_y = 5
+	},
+/obj/item/weapon/dart/green{
+	pixel_y = -8;
+	pixel_x = -4
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/template_noop)
+"bR" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table/almayer,
+/obj/item/clothing/head/helmet/marine/veteran/kutjevo{
+	pixel_x = 6;
+	pixel_y = -3
+	},
+/obj/item/device/flashlight/lamp{
+	pixel_y = 10;
+	pixel_x = 8
+	},
+/obj/structure/machinery/door_control{
+	id = "kutjevo_garage_storm";
+	pixel_x = -5;
+	pixel_y = 6;
+	name = "Garage Storm Shutters button"
+	},
+/turf/open/floor/kutjevo/colors/orange/tile,
+/area/kutjevo/interior/complex/North_Garage)
+"dq" = (
+/obj/structure/largecrate/random/barrel/brown{
+	pixel_x = 5;
+	pixel_y = -1
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/template_noop)
+"ds" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/light,
+/turf/open/floor/kutjevo/colors/orange/edge,
+/area/kutjevo/interior/complex/North_Garage)
+"dv" = (
+/obj/structure/closet/toolcloset,
+/turf/open/floor/kutjevo/colors/orange/edge/north,
+/area/kutjevo/interior/complex/North_Garage)
+"eY" = (
+/obj/structure/reagent_dispensers/tank/fuel,
+/obj/structure/sign/nosmoking_2{
+	pixel_y = 30
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	icon_state = "grime3"
+	},
+/turf/open/floor/kutjevo/colors/orange/edge/north,
+/area/kutjevo/interior/complex/North_Garage)
+"fq" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage{
+	pixel_y = 6
+	},
+/turf/open/floor/kutjevo/colors/orange/tile,
+/area/kutjevo/interior/complex/North_Garage)
+"fC" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	req_one_access = null
+	},
+/turf/open/floor/kutjevo/colors/orange,
+/area/kutjevo/interior/complex/North_Garage)
+"ha" = (
+/turf/open/auto_turf/sand/layer0,
+/area/template_noop)
+"lb" = (
+/turf/open/floor/kutjevo/multi_tiles/north,
+/area/kutjevo/interior/complex/North_Garage)
+"lC" = (
+/obj/item/device/flashlight,
+/turf/open/floor/kutjevo/multi_tiles/east,
+/area/kutjevo/interior/complex/North_Garage)
+"mA" = (
+/obj/structure/largecrate/random/case/small,
+/obj/structure/largecrate/random/mini/small_case/c{
+	layer = 3.02;
+	pixel_x = -3;
+	pixel_y = 10
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/colors/orange/tile,
+/area/kutjevo/interior/complex/North_Garage)
+"mK" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/multi_tiles/north,
+/area/kutjevo/interior/complex/North_Garage)
+"mU" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door_control{
+	id = "kutjevo_garage";
+	name = "Garage Shutters";
+	pixel_y = -20
+	},
+/turf/open/floor/kutjevo/colors/orange/edge,
+/area/kutjevo/interior/complex/North_Garage)
+"na" = (
+/obj/structure/largecrate/random/barrel/black{
+	pixel_x = -5;
+	pixel_y = 1
+	},
+/obj/structure/largecrate/random/barrel/red{
+	pixel_x = 15;
+	pixel_y = 6
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/asphalt/cement_sunbleached,
+/area/template_noop)
+"nQ" = (
+/turf/open/floor/kutjevo/plate,
+/area/kutjevo/interior/complex/North_Garage)
+"ob" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5"
+	},
+/turf/open/floor/kutjevo/plate,
+/area/kutjevo/interior/complex/North_Garage)
+"oh" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/random/mini/chest{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/structure/largecrate/random/mini/chest/b{
+	layer = 3.02;
+	pixel_y = -4;
+	pixel_x = -2
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/colors/orange/edge/east,
+/area/kutjevo/interior/complex/North_Garage)
+"pp" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/sign/poster/pinup{
+	pixel_y = 34;
+	pixel_x = -2
+	},
+/obj/item/prop/colony/canister{
+	pixel_y = 10;
+	pixel_x = -4
+	},
+/obj/item/prop/colony/canister{
+	pixel_y = 2;
+	pixel_x = 4;
+	layer = 3.04
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/colors/orange/tile,
+/area/kutjevo/interior/complex/North_Garage)
+"pM" = (
+/obj/item/weapon/dart{
+	pixel_y = -10;
+	pixel_x = -5
+	},
+/obj/item/weapon/dart/green{
+	pixel_y = -12
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cement_sunbleached,
+/area/template_noop)
+"qj" = (
+/obj/structure/sign/poster/propaganda{
+	pixel_y = 32;
+	pixel_x = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/kutjevo/colors/orange/tile,
+/area/kutjevo/interior/complex/North_Garage)
+"qG" = (
+/obj/structure/machinery/door_control{
+	id = "kutjevo_garage";
+	name = "Garage Shutters";
+	pixel_y = 30
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/kutjevo/interior/complex/North_Garage)
+"sl" = (
+/obj/structure/prop/dam/truck/cargo,
+/turf/open/asphalt/cement_sunbleached,
+/area/template_noop)
+"sw" = (
+/obj/structure/largecrate/random/secure,
+/obj/item/prop/colony/canister{
+	pixel_y = 13;
+	pixel_x = 2
+	},
+/turf/open/floor/kutjevo/colors/orange/tile,
+/area/kutjevo/interior/complex/North_Garage)
+"sP" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_16";
+	pixel_x = -6;
+	pixel_y = 12
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/weapon/dart{
+	pixel_y = 10;
+	pixel_x = -8
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/template_noop)
+"uc" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/filingcabinet{
+	pixel_x = 8;
+	pixel_y = 8;
+	density = 0
+	},
+/obj/structure/largecrate/random/mini{
+	pixel_x = -11;
+	pixel_y = -2
+	},
+/obj/structure/largecrate/random/mini{
+	pixel_x = -9;
+	pixel_y = 12;
+	layer = 3.02
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/kutjevo/colors/orange/edge/north,
+/area/kutjevo/interior/complex/North_Garage)
+"uf" = (
+/obj/structure/roof/hybrisa/signs/mechanicsign{
+	light_color = "#0085FF";
+	light_on = 1;
+	light_power = 3;
+	light_range = 4;
+	pixel_x = -26;
+	pixel_y = 10
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/template_noop)
+"uD" = (
+/turf/open/auto_turf/sand/layer1,
+/area/template_noop)
+"vY" = (
+/obj/structure/surface/rack,
+/obj/item/hardpoint/locomotion/van_wheels{
+	unacidable = 1
+	},
+/turf/open/floor/kutjevo/colors/orange/edge,
+/area/kutjevo/interior/complex/North_Garage)
+"wx" = (
+/obj/structure/fence,
+/turf/open/auto_turf/sand/layer1,
+/area/template_noop)
+"wz" = (
+/obj/item/trash/cigbutt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_6"
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/template_noop)
+"xm" = (
+/obj/item/trash/cigbutt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cement_sunbleached,
+/area/template_noop)
+"xY" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 12
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/North_Garage)
+"At" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/kutjevo/multi_tiles/north,
+/area/kutjevo/interior/complex/North_Garage)
+"AD" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9"
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/template_noop)
+"Bf" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/kutjevo/plate,
+/area/kutjevo/interior/complex/North_Garage)
+"Cl" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/auto_turf/sand/layer1,
+/area/template_noop)
+"Cu" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/prop/alien/hugger,
+/turf/open/floor/kutjevo/multi_tiles/north,
+/area/kutjevo/interior/complex/North_Garage)
+"Eg" = (
+/turf/closed/wall/kutjevo/colony,
+/area/kutjevo/interior/complex/North_Garage)
+"EC" = (
+/turf/open/asphalt/cement_sunbleached,
+/area/template_noop)
+"EP" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/North_Garage)
+"FC" = (
+/obj/structure/window/framed/kutjevo,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "kutjevo_garage_storm";
+	name = "\improper Garage Storm Shutters"
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/North_Garage)
+"GQ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/kutjevo/colors/orange/edge/east,
+/area/kutjevo/interior/complex/North_Garage)
+"IA" = (
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cement_sunbleached,
+/area/template_noop)
+"II" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/North_Garage)
+"JL" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/kutjevo/multi_tiles/east,
+/area/kutjevo/interior/complex/North_Garage)
+"Mc" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cement_sunbleached,
+/area/template_noop)
+"MP" = (
+/obj/structure/closet/crate/trashcart,
+/obj/item/hybrisa/misc/trash_bag_full_prop,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/burger,
+/turf/open/asphalt/cement_sunbleached,
+/area/template_noop)
+"MS" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/kutjevo/multi_tiles/north,
+/area/kutjevo/interior/complex/North_Garage)
+"Na" = (
+/obj/effect/decal/strata_decals/grime/grime3,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/kutjevo/plate,
+/area/kutjevo/interior/complex/North_Garage)
+"Oa" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = 5;
+	pixel_x = -2
+	},
+/turf/open/floor/kutjevo/multi_tiles/east,
+/area/kutjevo/interior/complex/North_Garage)
+"PB" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/closet/secure_closet/engineering_welding,
+/turf/open/floor/kutjevo/colors/orange/edge/north,
+/area/kutjevo/interior/complex/North_Garage)
+"PJ" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/kutjevo/colors/orange/tile,
+/area/kutjevo/interior/complex/North_Garage)
+"PV" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/kutjevo/plate,
+/area/kutjevo/interior/complex/North_Garage)
+"Rq" = (
+/turf/open/floor/kutjevo/multi_tiles/east,
+/area/kutjevo/interior/complex/North_Garage)
+"RC" = (
+/obj/effect/decal/hybrisa/tiretrack,
+/turf/open/floor/kutjevo/multi_tiles/north,
+/area/kutjevo/interior/complex/North_Garage)
+"RE" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 12
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/vehicle_spawner/van/decrepit{
+	dir = 8
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/North_Garage)
+"RI" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_3"
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/template_noop)
+"SJ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/toolbox{
+	pixel_y = 11
+	},
+/turf/open/floor/kutjevo/colors/orange/edge,
+/area/kutjevo/interior/complex/North_Garage)
+"SQ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/tool,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/spawner/random/powercell,
+/turf/open/floor/kutjevo/colors/orange/edge/north,
+/area/kutjevo/interior/complex/North_Garage)
+"ST" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 5
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 5
+	},
+/turf/open/floor/kutjevo/plate,
+/area/kutjevo/interior/complex/North_Garage)
+"TB" = (
+/obj/structure/powerloader_wreckage/ft,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/asphalt/cement_sunbleached,
+/area/template_noop)
+"Ue" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	pixel_y = 4
+	},
+/obj/structure/sign/banners/united_americas_flag{
+	pixel_y = 31
+	},
+/turf/open/floor/kutjevo/colors/orange/edge/north,
+/area/kutjevo/interior/complex/North_Garage)
+"Uw" = (
+/turf/open/auto_turf/sand/layer2,
+/area/template_noop)
+"Uy" = (
+/obj/effect/decal/hybrisa/tiretrack,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/kutjevo/colors/orange/tile,
+/area/kutjevo/interior/complex/North_Garage)
+"UV" = (
+/obj/structure/largecrate/random/barrel/yellow{
+	pixel_y = 1;
+	pixel_x = 3
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/template_noop)
+"UX" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 12
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/North_Garage)
+"Vc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/kutjevo/colors/orange/edge,
+/area/kutjevo/interior/complex/North_Garage)
+"Xi" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "kutjevo_garage";
+	name = "\improper Garage Shutters"
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/North_Garage)
+"XP" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/kutjevo/multi_tiles/north,
+/area/kutjevo/interior/complex/North_Garage)
+"Yx" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	req_one_access = null
+	},
+/turf/open/floor/kutjevo/colors/orange,
+/area/kutjevo/interior/complex/North_Garage)
+"YR" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/kutjevo/colors/orange/edge,
+/area/kutjevo/interior/complex/North_Garage)
+"YW" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4"
+	},
+/turf/open/floor/kutjevo/multi_tiles/north,
+/area/kutjevo/interior/complex/North_Garage)
+
+(1,1,1) = {"
+Uw
+Eg
+Eg
+Eg
+Eg
+Eg
+Eg
+uf
+EC
+EC
+"}
+(2,1,1) = {"
+Eg
+Eg
+pp
+al
+EP
+mA
+Eg
+Eg
+uD
+EC
+"}
+(3,1,1) = {"
+Eg
+fq
+JL
+xY
+RE
+lC
+Uy
+Xi
+EC
+EC
+"}
+(4,1,1) = {"
+Eg
+SQ
+At
+UX
+II
+RC
+YR
+Xi
+EC
+EC
+"}
+(5,1,1) = {"
+Eg
+eY
+lb
+ST
+PV
+lb
+Vc
+Xi
+EC
+EC
+"}
+(6,1,1) = {"
+Eg
+PB
+lb
+Bf
+PV
+lb
+mU
+Eg
+qG
+EC
+"}
+(7,1,1) = {"
+Eg
+dv
+lb
+PV
+ob
+Cu
+SJ
+FC
+EC
+EC
+"}
+(8,1,1) = {"
+Eg
+uc
+YW
+nQ
+Na
+MS
+vY
+FC
+EC
+EC
+"}
+(9,1,1) = {"
+Eg
+Ue
+mK
+nQ
+nQ
+XP
+ds
+Eg
+EC
+EC
+"}
+(10,1,1) = {"
+Eg
+bR
+Oa
+nQ
+PV
+Rq
+PJ
+fC
+EC
+EC
+"}
+(11,1,1) = {"
+Eg
+Eg
+qj
+oh
+GQ
+sw
+Eg
+Eg
+EC
+EC
+"}
+(12,1,1) = {"
+Cl
+Eg
+Yx
+Eg
+Eg
+Eg
+Eg
+uD
+EC
+EC
+"}
+(13,1,1) = {"
+uD
+wx
+IA
+MP
+bp
+sP
+EC
+EC
+EC
+EC
+"}
+(14,1,1) = {"
+uD
+wx
+EC
+wz
+EC
+xm
+EC
+EC
+EC
+EC
+"}
+(15,1,1) = {"
+uD
+wx
+EC
+EC
+EC
+AD
+EC
+uD
+EC
+sl
+"}
+(16,1,1) = {"
+Uw
+wx
+UV
+pM
+ay
+na
+wx
+uD
+EC
+EC
+"}
+(17,1,1) = {"
+uD
+wx
+TB
+Mc
+uD
+dq
+wx
+uD
+Uw
+EC
+"}
+(18,1,1) = {"
+uD
+wx
+wx
+wx
+wx
+wx
+wx
+uD
+EC
+EC
+"}
+(19,1,1) = {"
+uD
+RI
+uD
+ha
+ha
+uD
+uD
+uD
+EC
+EC
+"}
+(20,1,1) = {"
+uD
+uD
+ha
+ha
+Uw
+ha
+ha
+uD
+EC
+EC
+"}

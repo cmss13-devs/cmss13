@@ -27,6 +27,8 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/predalien_base
 
+	organ_type = /obj/item/organ/xeno/predalien
+
 	minimap_icon = "predalien"
 
 /mob/living/carbon/xenomorph/predalien
@@ -40,7 +42,6 @@
 	icon_xenonid = 'icons/mob/xenos/castes/tier_4/predalien.dmi'
 	icon_state = "Predalien Walking"
 	speaking_noise = 'sound/voice/predalien_click.ogg'
-	plasma_types = list(PLASMA_CATECHOLAMINE)
 	faction = FACTION_PREDALIEN
 	claw_type = CLAW_TYPE_VERY_SHARP
 	wall_smash = TRUE
@@ -49,7 +50,6 @@
 	old_x = -16
 	mob_size = MOB_SIZE_BIG
 	tier = 1
-	organ_value = 20000
 	age = XENO_NO_AGE //Predaliens are already in their ultimate form, they don't get even better
 	show_age_prefix = FALSE
 	small_explosives_stun = FALSE
@@ -78,6 +78,13 @@
 	/// If the pred alert/player notif should happen when the predalien spawns
 	var/should_announce_spawn = TRUE
 
+/obj/item/organ/xeno/predalien
+	name = "abomination heart"
+	icon_state = "heart_t3"
+	item_state = "heart_t3"
+	research_value = 20000
+
+	xeno_organ_flags = XENO_ORGAN_STRONG|XENO_ORGAN_HARDENED|XENO_ORGAN_TACHYCARDIA
 
 
 /mob/living/carbon/xenomorph/predalien/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
@@ -119,10 +126,6 @@ You must still listen to the queen.
 <span class='role_body'>|______________________|</span>
 "})
 	emote("roar")
-
-/mob/living/carbon/xenomorph/predalien/get_organ_icon()
-	return "heart_t3"
-
 
 /mob/living/carbon/xenomorph/predalien/resist_fire()
 	..()

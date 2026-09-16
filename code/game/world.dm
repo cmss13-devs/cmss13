@@ -146,8 +146,13 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 /world/Topic(T, addr, master, key)
 	TGS_TOPIC
 
-
 	var/list/response = list()
+
+	if(!global.config.is_loaded)
+		log_topic("!Ignored topic from:[addr], master:[master], key:[key] because config is not loaded!")
+		response["statuscode"] = 425
+		response["response"] = "Request cannot be processed at this time"
+		return json_encode(response)
 
 	if(length(T) > CONFIG_GET(number/topic_max_size))
 		response["statuscode"] = 413

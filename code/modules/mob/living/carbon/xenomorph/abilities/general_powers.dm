@@ -727,14 +727,19 @@
 		to_chat(xeno, SPAN_NOTICE("We are now hiding."))
 		button.icon_state = "template_active"
 		RegisterSignal(xeno, COMSIG_MOB_STATCHANGE, PROC_REF(unhide_on_stat))
+		RegisterSignal(xeno, COMSIG_LIVING_PRE_DOAFTER, PROC_REF(unhide_on_action))
 	else
 		xeno.layer = initial(xeno.layer)
 		to_chat(xeno, SPAN_NOTICE("We have stopped hiding."))
 		button.icon_state = "template_xeno"
-		UnregisterSignal(xeno, COMSIG_MOB_STATCHANGE)
+		UnregisterSignal(xeno, list(COMSIG_MOB_STATCHANGE, COMSIG_LIVING_PRE_DOAFTER))
 	xeno.update_wounds()
 	apply_cooldown()
 	return ..()
+
+/datum/action/xeno_action/onclick/xenohide/proc/unhide_on_action()
+	SIGNAL_HANDLER
+	post_attack()
 
 /datum/action/xeno_action/onclick/xenohide/proc/unhide_on_stat(mob/living/carbon/xenomorph/source, new_stat, old_stat)
 	SIGNAL_HANDLER

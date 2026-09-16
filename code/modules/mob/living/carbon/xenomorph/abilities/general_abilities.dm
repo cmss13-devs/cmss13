@@ -428,6 +428,8 @@
 		return FALSE
 	if(xeno.on_fire)
 		return FALSE
+	if(xeno.action_busy)
+		return FALSE
 	if(!xeno.buckled && !xeno.is_mob_incapacitated() && !LAZYLEN(xeno.buckled_mobs))
 		if(!(SEND_SIGNAL(xeno, COMSIG_LIVING_SHIMMY_LAYER) & COMSIG_LIVING_SHIMMY_LAYER_CANCEL))
 			return TRUE

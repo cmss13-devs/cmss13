@@ -759,6 +759,12 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	if(!istype(user) || delay < 0)
 		return FALSE
 
+	// Only living mobs can perform timed actions.
+	var/mob/living/busy_user = user
+	if(!istype(busy_user))
+		return FALSE
+	SEND_SIGNAL(busy_user, COMSIG_LIVING_PRE_DOAFTER)
+
 	if(delay == 0) // Nothing to wait for, so action passes
 		return TRUE
 
@@ -766,11 +772,6 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	var/has_target = FALSE
 	if(istype(target))
 		has_target = TRUE
-
-	// Only living mobs can perform timed actions.
-	var/mob/living/busy_user = user
-	if(!istype(busy_user))
-		return FALSE
 
 	// This var will only be used for checks that require target to be living.
 	var/mob/living/T = target

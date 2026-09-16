@@ -6,6 +6,7 @@
 	static_comms_amount = 2
 	votable = FALSE
 	taskbar_icon = 'icons/taskbar/gml_colonyrp.png'
+	flags_round_type = MODE_SUNSET
 
 /datum/game_mode/extended/announce()
 	to_world("<B>The current game mode is - Extended!</B>")

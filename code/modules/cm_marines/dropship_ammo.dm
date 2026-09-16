@@ -427,6 +427,67 @@
 	spawn(5)
 		fire_spread(impact, create_cause_data(initial(name), source_mob), 3, 25, 20, "#EE6515")
 
+/// M90 minigun twin linked ////
+
+/obj/structure/ship_ammo/m90_minigun
+	name = "\improper PGU-420 Multi-Purpose 90mm ammo crate"
+	icon_state = "30mm_crate"
+	desc = "A crate full of PGU-420 90mm Multi-Purpose ammo designed to penetrate light (non-reinforced) structures, as well as shred infantry, IAVs, LAVs, IMVs, and MRAPs. Works in large areas for use on Class 4 and superior alien insectoid infestations, as well as fitting within the armaments allowed for use against a tier 4 insurgency as well as higher tiers. However, it lacks armor penetrating capabilities, for which Anti-Tank 30mm ammo is needed. Can be loaded into the GAU-21 30mm cannon."
+	equipment_type = /obj/structure/dropship_equipment/weapon/m90_minigun
+	ammo_count = 400
+	max_ammo_count = 400
+	transferable_ammo = TRUE
+	ammo_used_per_firing = 40
+	point_cost = 275
+	fire_mission_delay = 2
+	travelling_time = 20
+	accuracy_range = 1
+	var/bullet_spread_range = 2 //how far from the real impact turf can bullets land
+	var/shrapnel_type = /datum/ammo/bullet/shrapnel/gau //For siming 30mm bullet impacts.
+	var/directhit_damage = 145 //how much damage is to be inflicted to a mob, this is here so that we can hit resting mobs.
+	var/penetration = 30 //AP value pretty much
+
+/obj/structure/ship_ammo/m90_minigun/get_examine_text(mob/user)
+	. = ..()
+	. += "It has [ammo_count] round\s."
+
+/obj/structure/ship_ammo/m90_minigun/show_loaded_desc(mob/user)
+	if(ammo_count)
+		return "It's loaded with \a [src] containing [ammo_count] round\s."
+	else
+		return "It's loaded with an empty [name]."
+
+/obj/structure/ship_ammo/m90_minigun/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
+	set waitfor = 0
+	var/list/turf_list = RANGE_TURFS(bullet_spread_range, impact)
+	var/soundplaycooldown = 0
+	var/debriscooldown = 0
+
+	for(var/i = 1 to ammo_used_per_firing)
+		sleep(1)
+		var/turf/impact_tile = pick(turf_list)
+		var/datum/cause_data/cause_data = create_cause_data(fired_from.name, source_mob)
+		impact_tile.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(GLOB.alldirs), cause_data)
+		create_shrapnel(impact_tile,1,0,0,shrapnel_type,cause_data,FALSE,100) //simulates a bullet
+		for(var/atom/movable/explosion_effect in impact_tile)
+			if(iscarbon(explosion_effect))
+				var/mob/living/carbon/bullet_effect = explosion_effect
+				explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
+				bullet_effect.apply_armoured_damage(directhit_damage,ARMOR_BULLET,BRUTE,null,penetration)
+			else
+				explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW)
+		new /obj/effect/particle_effect/expl_particles(impact_tile)
+		if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
+			playsound(impact_tile, 'sound/effects/gauimpact.ogg',40,1,20)
+			soundplaycooldown = 3
+		soundplaycooldown--
+		if(!debriscooldown)
+			impact_tile.ceiling_debris_check(1)
+			debriscooldown = 6
+		debriscooldown--
+	sleep(11) //speed of sound simulation
+	playsound(impact, 'sound/effects/gau.ogg',100,1,60)
+
 /obj/structure/ship_ammo/sentry
 	name = "\improper A/C-49-P Air Deployable Sentry"
 	desc = "An omni-directional sentry, capable of defending an area from lightly armored hostile incursion. Can be loaded into the LAG-14 Internal Sentry Launcher."

@@ -50,10 +50,36 @@
 			var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/hatch = air
 			if(istype(hatch))
 				hatch.linked_dropship = src
+			var/obj/structure/machinery/door/airlock/hatch/side_hatch/side_door = air
+			if(istype(side_door))
+				hatch.linked_dropship = src
 
 	RegisterSignal(src, COMSIG_DROPSHIP_ADD_EQUIPMENT, PROC_REF(add_equipment))
 	RegisterSignal(src, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(remove_equipment))
 	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_dir_change))
+
+/obj/docking_port/mobile/marine_dropship/multiz/Initialize(mapload)
+	.=..()
+	var/list/shuttle_contents = list()
+	for(var/area/areas in shuttle_areas)
+		for(var/obj/thing in areas)
+			shuttle_contents += thing
+
+	var/obj/structure/machinery/door_control/shuttle_ramp/ramp_button = locate(/obj/structure/machinery/door_control/shuttle_ramp) in shuttle_contents
+	if(ramp_button)
+		if(ramp_button.id == "aft_ramp")
+			ramp_button.linked_dropship = src
+			door_control.add_ramp(ramp_button, "aft")
+
+	for(var/obj/structure/machinery/door_control/side_hatch/hatch_button in shuttle_contents)
+		hatch_button.linked_dropship = src
+
+	for(var/obj/deployer/shuttle/dropship/deployerino in shuttle_contents)
+		deployerino.linked_dropship = src
+
+	var/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/console = locate(/obj/structure/machinery/computer/cameras/dropship/midway/gunnery) in shuttle_contents
+	if(console)
+		console.linked_dropship = src
 
 /obj/docking_port/mobile/marine_dropship/Destroy(force)
 	. = ..()
@@ -114,6 +140,22 @@
 /obj/docking_port/mobile/marine_dropship/alamo/get_transit_path_type()
 	return /turf/open/space/transit/dropship/alamo
 
+/obj/docking_port/mobile/marine_dropship/multiz
+	multiz_ship = TRUE
+
+/obj/docking_port/mobile/marine_dropship/multiz/omaha
+	name = "Omaha"
+	id = DROPSHIP_OMAHA
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+
+	width = 17
+	height = 24
+	dwidth = 8
+	dheight = 12
+
+/obj/docking_port/mobile/marine_dropship/multiz/omaha/get_transit_path_type()
+	return /turf/open/space/transit/dropship/omaha
+
 /obj/docking_port/mobile/marine_dropship/normandy
 	name = "Normandy"
 	id = DROPSHIP_NORMANDY
@@ -121,6 +163,19 @@
 
 /obj/docking_port/mobile/marine_dropship/normandy/get_transit_path_type()
 	return /turf/open/space/transit/dropship/normandy
+
+/obj/docking_port/mobile/marine_dropship/multiz/midway
+	name = "Midway"
+	id = DROPSHIP_MIDWAY
+	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
+
+	width = 17
+	height = 24
+	dwidth = 8
+	dheight = 12
+
+/obj/docking_port/mobile/marine_dropship/multiz/midway/get_transit_path_type()
+	return /turf/open/space/transit/dropship/midway
 
 /obj/docking_port/mobile/marine_dropship/saipan
 	name = "Saipan"
@@ -371,11 +426,33 @@
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/alamo
 
+/obj/docking_port/stationary/marine_dropship/almayer_hangar_omaha
+	name = "Almayer Hangar bay 1"
+	id = ALMAYER_DROPSHIP_LZ1
+	auto_open = TRUE
+	roundstart_template = /datum/map_template/shuttle/omaha
+
+	width = 17
+	height = 24
+	dwidth = 8
+	dheight = 12
+
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_2
 	name = "Almayer Hangar bay 2"
 	id = ALMAYER_DROPSHIP_LZ2
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/normandy
+
+/obj/docking_port/stationary/marine_dropship/almayer_hangar_midway
+	name = "Almayer Hangar bay 2"
+	id = ALMAYER_DROPSHIP_LZ2
+	auto_open = TRUE
+	roundstart_template = /datum/map_template/shuttle/midway
+
+	width = 17
+	height = 24
+	dwidth = 8
+	dheight = 12
 
 /obj/docking_port/stationary/marine_dropship/upp/hangar_1
 	name = "Rostock Hangar bay 1"
@@ -403,6 +480,10 @@
 	. = ..()
 	if(istype(arriving_shuttle, /obj/docking_port/mobile/marine_dropship))
 		var/obj/docking_port/mobile/marine_dropship/ds = arriving_shuttle
+		dheight = ds.dheight
+		dwidth = ds.dwidth
+		height = ds.height
+		width = ds.width
 		ds.hijack.crash_landing()
 
 /obj/docking_port/stationary/marine_dropship/crash_site/on_arrival(obj/docking_port/mobile/arriving_shuttle)
@@ -432,9 +513,17 @@
 	name = "Alamo"
 	shuttle_id = DROPSHIP_ALAMO
 
+/datum/map_template/shuttle/omaha
+	name = "Omaha"
+	shuttle_id = DROPSHIP_OMAHA
+
 /datum/map_template/shuttle/normandy
 	name = "Normandy"
 	shuttle_id = DROPSHIP_NORMANDY
+
+/datum/map_template/shuttle/midway
+	name = "Midway"
+	shuttle_id = DROPSHIP_MIDWAY
 
 /datum/map_template/shuttle/saipan
 	name = "Saipan"

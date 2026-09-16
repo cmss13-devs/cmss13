@@ -1,3 +1,4 @@
+ABSTRACT_TYPE(/obj)
 /obj
 	/// Used to store information about the contents of the object.
 	var/list/matter

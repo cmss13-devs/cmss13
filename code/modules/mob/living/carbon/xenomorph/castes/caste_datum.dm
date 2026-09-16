@@ -1,4 +1,5 @@
 // Actual caste datum basedef
+ABSTRACT_TYPE(/datum/caste_datum)
 /datum/caste_datum
 	var/caste_type = ""
 	var/display_name = ""

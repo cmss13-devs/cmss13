@@ -4,6 +4,7 @@
 //======
 */
 
+ABSTRACT_TYPE(/datum/ammo/energy)
 /datum/ammo/energy
 	ping = null //no bounce off. We can have one later.
 	sound_hit = "energy_hit"
@@ -71,6 +72,7 @@
 	accuracy = HIT_ACCURACY_TIER_3
 	damage_falloff = DAMAGE_FALLOFF_TIER_8
 
+ABSTRACT_TYPE(/datum/ammo/energy/yautja)
 /datum/ammo/energy/yautja
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	accurate_range = 12
@@ -133,7 +135,7 @@
 		any_target.apply_effect(stun_time, STUN)
 	..()
 
-/datum/ammo/energy/yautja/caster/sphere/aoe_stun
+/datum/ammo/energy/yautja/caster/sphere_aoe_stun
 	name = "plasma immobilizer"
 	damage = 0
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
@@ -143,19 +145,19 @@
 	var/stun_range = 7 // Big
 	var/stun_time = 6
 
-/datum/ammo/energy/yautja/caster/sphere/aoe_stun/on_hit_mob(mob/all_targets, obj/projectile/stun_projectile)
+/datum/ammo/energy/yautja/caster/sphere_aoe_stun/on_hit_mob(mob/all_targets, obj/projectile/stun_projectile)
 	do_area_stun(stun_projectile)
 
-/datum/ammo/energy/yautja/caster/sphere/aoe_stun/on_hit_turf(turf/any_turf, obj/projectile/stun_projectile)
+/datum/ammo/energy/yautja/caster/sphere_aoe_stun/on_hit_turf(turf/any_turf, obj/projectile/stun_projectile)
 	do_area_stun(stun_projectile)
 
-/datum/ammo/energy/yautja/caster/sphere/aoe_stun/on_hit_obj(obj/any_object, obj/projectile/stun_projectile)
+/datum/ammo/energy/yautja/caster/sphere_aoe_stun/on_hit_obj(obj/any_object, obj/projectile/stun_projectile)
 	do_area_stun(stun_projectile)
 
-/datum/ammo/energy/yautja/caster/sphere/aoe_stun/do_at_max_range(obj/projectile/stun_projectile)
+/datum/ammo/energy/yautja/caster/sphere_aoe_stun/do_at_max_range(obj/projectile/stun_projectile)
 	do_area_stun(stun_projectile)
 
-/datum/ammo/energy/yautja/caster/sphere/aoe_stun/proc/do_area_stun(obj/projectile/stun_projectile)
+/datum/ammo/energy/yautja/caster/sphere_aoe_stun/proc/do_area_stun(obj/projectile/stun_projectile)
 	playsound(stun_projectile, 'sound/weapons/wave.ogg', 75, 1, 25)
 
 	for(var/mob/living/carbon/any_target in orange(stun_range, stun_projectile))
@@ -293,7 +295,7 @@
 	shaboomboom(projectile, get_turf(projectile))
 	cell_explosion(get_turf(projectile), 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 
-/datum/ammo/energy/yautja/rifle/bolt
+/datum/ammo/energy/yautja/rifle_bolt
 	name = "plasma rifle bolt"
 	icon_state = "ion"
 	damage_type = BURN
@@ -303,13 +305,13 @@
 	damage = 55
 	penetration = ARMOR_PENETRATION_TIER_10
 
-/datum/ammo/energy/yautja/rifle/bolt/on_hit_mob(mob/hit_mob, obj/projectile/hit_projectile)
+/datum/ammo/energy/yautja/rifle_bolt/on_hit_mob(mob/hit_mob, obj/projectile/hit_projectile)
 	if(isxeno(hit_mob))
 		var/mob/living/carbon/xenomorph/xeno = hit_mob
 		xeno.apply_damage(damage * 0.75, BURN)
 		xeno.AddComponent(/datum/component/status_effect/interference, 30, 30)
 
-/datum/ammo/energy/yautja/rifle/bolt/set_bullet_traits()
+/datum/ammo/energy/yautja/rifle_bolt/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)

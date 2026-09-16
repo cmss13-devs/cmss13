@@ -3,6 +3,7 @@
 					Xeno Spits
 //======
 */
+ABSTRACT_TYPE(/datum/ammo/xeno)
 /datum/ammo/xeno
 	icon_state = "neurotoxin"
 	ping = "ping_x"

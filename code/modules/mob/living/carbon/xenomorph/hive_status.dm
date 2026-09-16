@@ -1254,8 +1254,9 @@
 			tier_three_candidates -= xeno
 		if(0)
 			queen_candidates -= xeno
+	if(xeno.desired_caste)
+		to_chat(xeno, "You are no longer candidate to evolve into [xeno.desired_caste.caste_type].")
 	xeno.desired_caste = null
-	to_chat(xeno, "You are no longer candidate to evolve into [xeno.desired_caste.caste_type].")
 
 /datum/hive_status/proc/offer_evolutions()
 	var/found_candidate = FALSE

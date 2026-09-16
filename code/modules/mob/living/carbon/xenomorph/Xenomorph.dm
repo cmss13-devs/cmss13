@@ -1388,6 +1388,7 @@
 			to_chat(src, "You are now able to evolve into [desired_caste.caste_type], seek hive weeds to begin evolving.")
 		if(0)
 			to_chat(src, "You are now able to evolve into [desired_caste.caste_type].")
+	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
 
 	addtimer(CALLBACK(src, PROC_REF(failed_to_evolve)), 3 MINUTES)

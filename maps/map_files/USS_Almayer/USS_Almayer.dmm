@@ -1909,7 +1909,6 @@
 	density = 0
 	},
 /obj/item/book/manual/orbital_cannon_manual,
-/obj/item/book/manual/chef_recipes,
 /obj/item/book/manual/atmospipes,
 /obj/item/book/manual/medical_diagnostics_manual,
 /turf/open/floor/almayer/silver/northeast,
@@ -4473,6 +4472,10 @@
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12
 	},
+/obj/structure/closet/crate/freezer,
+/obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza,
+/obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza,
+/obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_m_p)
 "akQ" = (
@@ -7612,8 +7615,7 @@
 "asR" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
-	name = "Dropship Remote Control Console";
-	pixel_y = 0
+	name = "Dropship Remote Control Console"
 	},
 /obj/structure/machinery/computer/crew/alt{
 	pixel_x = -17
@@ -35412,15 +35414,12 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/surface/table/almayer,
-/obj/item/book/manual/chef_recipes,
-/obj/item/reagent_container/food/condiment/sugar{
-	pixel_x = 10
-	},
-/obj/item/clothing/head/chefhat,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/machinery/cooking/grill,
+/obj/item/reagent_container/cooking/grill_grate,
+/obj/item/reagent_container/cooking/grill_grate,
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/grunt_rnr)
 "bIK" = (
@@ -37148,11 +37147,24 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/structure/surface/table/almayer,
-/obj/item/tool/kitchen/rollingpin,
-/obj/item/tool/kitchen/knife,
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/structure/machinery/cooking/stovetop,
+/obj/item/reagent_container/cooking/pan{
+	pixel_x = -6;
+	pixel_y = -2
+	},
+/obj/item/reagent_container/cooking/pan{
+	pixel_x = -6
+	},
+/obj/item/reagent_container/cooking/pot{
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/cooking/pot{
+	pixel_x = 7;
+	pixel_y = 10
 	},
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/grunt_rnr)
@@ -54905,10 +54917,8 @@
 /turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/lower)
 "dYR" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/reagentgrinder{
-	pixel_y = 10
-	},
+/obj/structure/machinery/cooking/oven,
+/obj/item/reagent_container/cooking/oven,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/grunt_rnr)
 "dYU" = (
@@ -56508,7 +56518,8 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/fridge/organic,
+/obj/item/reagent_container/cooking/icecream_bowl,
+/obj/structure/machinery/cooking/ice_cream_mixer,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
 "eFT" = (
@@ -63226,6 +63237,16 @@
 /area/almayer/maint/hull/lower/p_bow)
 "hLC" = (
 /obj/structure/surface/table/almayer,
+/obj/item/tool/kitchen/rollingpin,
+/obj/item/tool/kitchen/knife,
+/obj/item/clothing/head/chefhat,
+/obj/item/reagent_container/food/condiment/sugar{
+	pixel_x = 10
+	},
+/obj/item/chef_recipes,
+/obj/item/reagent_container/cooking/sushimat,
+/obj/item/reagent_container/cooking/board,
+/obj/item/reagent_container/cooking/bowl,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
 "hLI" = (
@@ -67360,6 +67381,7 @@
 	req_one_access_txt = "2;3;12;19";
 	throw_range = 15
 	},
+/obj/structure/machinery/cooking/grill,
 /turf/open/floor/almayer/red/northeast,
 /area/almayer/hallways/lower/port_fore_hallway)
 "jvM" = (
@@ -69533,7 +69555,9 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
 "kvU" = (
-/obj/structure/surface/table/almayer,
+/obj/structure/machinery/cooking/grill,
+/obj/item/reagent_container/cooking/grill_grate,
+/obj/item/reagent_container/cooking/grill_grate,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/grunt_rnr)
 "kwc" = (
@@ -71777,14 +71801,21 @@
 /turf/open/floor/almayer/plating_striped,
 /area/almayer/underdeck/req)
 "luS" = (
-/obj/structure/surface/rack,
-/obj/item/stack/sheet/cardboard{
-	amount = 50;
-	pixel_x = -3
+/obj/structure/machinery/cooking/stovetop,
+/obj/item/reagent_container/cooking/pan{
+	pixel_x = -6;
+	pixel_y = -2
 	},
-/obj/item/stack/sheet/cardboard{
-	amount = 50;
-	pixel_x = 4
+/obj/item/reagent_container/cooking/pan{
+	pixel_x = -6
+	},
+/obj/item/reagent_container/cooking/pot{
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/cooking/pot{
+	pixel_x = 7;
+	pixel_y = 10
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
@@ -76603,6 +76634,12 @@
 	name = "EAT - poster";
 	pixel_y = 30
 	},
+/obj/item/tool/kitchen/tray{
+	pixel_y = 9
+	},
+/obj/item/tool/kitchen/tray{
+	pixel_y = 12
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
 "nFK" = (
@@ -79009,14 +79046,8 @@
 /turf/open/floor/almayer/sterile_green_corner/east,
 /area/almayer/shipboard/brig/medical)
 "oDE" = (
-/obj/structure/surface/rack,
-/obj/item/reagent_container/spray/cleaner{
-	pixel_x = 6
-	},
-/obj/item/reagent_container/spray/cleaner,
-/obj/item/reagent_container/spray/cleaner{
-	pixel_x = -6
-	},
+/obj/structure/machinery/cooking/ice_cream_mixer,
+/obj/item/reagent_container/cooking/icecream_bowl,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
 "oDJ" = (
@@ -81653,11 +81684,7 @@
 /turf/open/floor/almayer/flooredgesmooth2/south,
 /area/almayer/hallways/lower/port_aft_hallway)
 "pOY" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/microwave{
-	density = 0;
-	pixel_y = 9
-	},
+/obj/structure/closet/secure_closet/fridge/organic,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
 "pPd" = (
@@ -82318,6 +82345,20 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/item/trash/plate{
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/obj/item/trash/plate{
+	pixel_x = 1;
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/condiment/saltshaker{
+	pixel_x = -4
+	},
+/obj/item/reagent_container/food/condiment/peppermill{
+	pixel_x = 4
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
@@ -90087,10 +90128,9 @@
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "tsa" = (
-/obj/structure/surface/table/almayer,
-/obj/item/clothing/suit/chef/classic,
-/obj/item/tool/kitchen/knife/butcher,
-/obj/item/clothing/suit/chef/classic,
+/obj/structure/machinery/cooking/deepfryer,
+/obj/item/reagent_container/cooking/deep_basket,
+/obj/item/reagent_container/cooking/deep_basket,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/grunt_rnr)
 "tsn" = (
@@ -92799,10 +92839,14 @@
 /turf/open/floor/almayer/red/west,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "uCw" = (
-/obj/structure/closet/crate/freezer,
-/obj/item/reagent_container/food/snacks/tomatomeat,
-/obj/item/reagent_container/food/snacks/tomatomeat,
-/obj/item/reagent_container/food/snacks/tomatomeat,
+/obj/structure/surface/rack,
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = -6
+	},
+/obj/item/reagent_container/spray/cleaner,
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = 6
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_m_p)
 "uCD" = (
@@ -93746,10 +93790,15 @@
 /turf/open/floor/almayer/tcomms,
 /area/almayer/engineering/upper_engineering/starboard)
 "uXU" = (
-/obj/structure/closet/crate/freezer,
-/obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza,
-/obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza,
-/obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza,
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/cardboard{
+	amount = 50;
+	pixel_x = -3
+	},
+/obj/item/stack/sheet/cardboard{
+	amount = 50;
+	pixel_x = 4
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_m_p)
 "uXX" = (
@@ -94936,9 +94985,9 @@
 /area/almayer/living/basketball)
 "vwI" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/microwave{
-	pixel_y = 8
-	},
+/obj/item/tool/kitchen/knife/butcher,
+/obj/item/clothing/suit/chef/classic,
+/obj/item/clothing/suit/chef/classic,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/grunt_rnr)
 "vwT" = (
@@ -95184,6 +95233,10 @@
 /area/almayer/hallways/hangar)
 "vAx" = (
 /obj/structure/machinery/power/apc/almayer/north,
+/obj/structure/closet/crate/freezer,
+/obj/item/reagent_container/food/snacks/tomatomeat,
+/obj/item/reagent_container/food/snacks/tomatomeat,
+/obj/item/reagent_container/food/snacks/tomatomeat,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
 "vAz" = (
@@ -98039,21 +98092,9 @@
 /area/almayer/shipboard/brig/chief_mp_office)
 "wIG" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/surface/table/almayer,
-/obj/item/trash/plate{
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/obj/item/trash/plate{
-	pixel_x = 1;
-	pixel_y = 6
-	},
-/obj/item/reagent_container/food/condiment/peppermill{
-	pixel_x = 4
-	},
-/obj/item/reagent_container/food/condiment/saltshaker{
-	pixel_x = -4
-	},
+/obj/structure/machinery/cooking/deepfryer,
+/obj/item/reagent_container/cooking/deep_basket,
+/obj/item/reagent_container/cooking/deep_basket,
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/grunt_rnr)
 "wIQ" = (
@@ -98261,13 +98302,8 @@
 /turf/open/floor/almayer/blue/southeast,
 /area/almayer/living/port_emb)
 "wLK" = (
-/obj/structure/surface/table/almayer,
-/obj/item/tool/kitchen/tray{
-	pixel_y = 9
-	},
-/obj/item/tool/kitchen/tray{
-	pixel_y = 12
-	},
+/obj/structure/machinery/cooking/oven,
+/obj/item/reagent_container/cooking/oven,
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/grunt_rnr)
 "wLN" = (
@@ -98995,6 +99031,9 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/item/reagent_container/cooking/sushimat,
+/obj/item/reagent_container/cooking/board,
+/obj/item/reagent_container/cooking/bowl,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
 "xaS" = (

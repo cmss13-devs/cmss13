@@ -13,11 +13,21 @@
 /turf/template_noop,
 /area/template_noop)
 "i" = (
-/obj/structure/machinery/vending/coffee/tent,
+/obj/structure/machinery/cooking/stovetop,
+/obj/item/reagent_container/cooking/pot,
+/obj/item/reagent_container/cooking/pan,
 /turf/template_noop,
 /area/template_noop)
 "j" = (
-/obj/structure/reagent_dispensers/tank/water,
+/obj/structure/machinery/cooking/grill,
+/obj/item/reagent_container/cooking/grill_grate{
+	pixel_x = 8;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/cooking/grill_grate{
+	pixel_x = -4;
+	pixel_y = -2
+	},
 /turf/template_noop,
 /area/template_noop)
 "o" = (
@@ -34,6 +44,9 @@
 /obj/item/tool/kitchen/utensil/fork/plastic,
 /obj/item/tool/kitchen/rollingpin,
 /obj/item/tool/kitchen/knife,
+/obj/item/reagent_container/cooking/bowl,
+/obj/item/reagent_container/cooking/board,
+/obj/item/reagent_container/cooking/sushimat,
 /turf/template_noop,
 /area/template_noop)
 "p" = (
@@ -64,7 +77,9 @@
 /obj/structure/blocker/tent{
 	dir = 1
 	},
-/obj/structure/surface/table,
+/obj/structure/machinery/cooking/deepfryer,
+/obj/item/reagent_container/cooking/deep_basket,
+/obj/item/reagent_container/cooking/deep_basket,
 /turf/template_noop,
 /area/template_noop)
 "A" = (
@@ -72,6 +87,7 @@
 /obj/structure/blocker/tent{
 	dir = 4
 	},
+/obj/structure/reagent_dispensers/tank/water,
 /turf/template_noop,
 /area/template_noop)
 "C" = (
@@ -82,16 +98,14 @@
 	phone_id = "Ground Provisions";
 	name = "Mess Phone"
 	},
-/obj/structure/surface/table,
-/obj/structure/machinery/microwave/tent{
-	pixel_y = 7
-	},
 /obj/structure/blocker/tent{
 	dir = 1
 	},
 /obj/structure/blocker/tent{
 	dir = 8
 	},
+/obj/structure/machinery/cooking/oven,
+/obj/item/reagent_container/cooking/oven,
 /turf/template_noop,
 /area/template_noop)
 "T" = (

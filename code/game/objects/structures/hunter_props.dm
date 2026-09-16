@@ -351,16 +351,20 @@
 
 // Fake platform
 
-/obj/structure/prop/hunter/fake_platform/hunter
-	icon = 'icons/obj/structures/props/platforms.dmi'
-	icon_state = "hunter_platform"
+/obj/structure/prop/hunter/fake_platform
 	name = "raised metal edge"
-	desc =  "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
+	desc = "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
+	icon = 'icons/obj/structures/props/platforms.dmi'
+	icon_state = null // This is an abstract type
 	density = FALSE
 	anchored = TRUE
+	flags_atom = NO_ZFALL
 	layer = WEED_LAYER
 	plane = FLOOR_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/structure/prop/hunter/fake_platform/hunter
+	icon_state = "hunter_platform"
 
 /obj/structure/prop/hunter/fake_platform/hunter/north
 	dir = NORTH
@@ -523,9 +527,16 @@
 	bound_height = 64
 	bound_width = 64
 
+/obj/structure/prop/hunter/ancient_temple/giant_statue/base/colorable
+	icon_state = "statue_base_big_colorable"
+
 /obj/structure/prop/hunter/ancient_temple/giant_statue/base/small
 
 	icon_state = "statue_base_small"
+
+/obj/structure/prop/hunter/ancient_temple/giant_statue/base/small/colorable
+
+	icon_state = "statue_base_small_colorable"
 
 /obj/structure/prop/hunter/ancient_temple/small_statue
 	icon = 'icons/obj/structures/props/hunter/ancientsmallstatue.dmi'
@@ -548,6 +559,9 @@
 	icon_state = "small_statue_base"
 	name = "stone statue base"
 	desc = "A stone statue base, ordorned with unknown symbols and runes."
+
+/obj/structure/prop/hunter/ancient_temple/small_statue/base/colorable
+	icon_state = "small_statue_base_colorable"
 
 /obj/structure/prop/hunter/ancient_temple/fountain_head
 	name = "carved stone head"

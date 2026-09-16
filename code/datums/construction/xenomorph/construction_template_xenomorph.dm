@@ -14,7 +14,7 @@
 
 /datum/construction_template/xenomorph/complete() //Override because we need to pass the hive ref
 	if(!owner || !get_turf(owner))
-		log_debug("Constuction template ([name]) completed construction without a build location")
+		log_debug("Construction template ([name]) completed construction without a build location")
 		return
 	if(hive_ref)
 		hive_ref.remove_construction(owner)
@@ -88,7 +88,7 @@
 
 /datum/construction_template/xenomorph/nest/complete() //overrided for unique build logic
 	if(!owner || !get_turf(owner))
-		log_debug("Constuction template ([name]) completed construction without a build location")
+		log_debug("Construction template ([name]) completed construction without a build location")
 		return
 	if(hive_ref)
 		hive_ref.remove_construction(owner)

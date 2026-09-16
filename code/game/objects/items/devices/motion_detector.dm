@@ -261,17 +261,8 @@
 	if(!istype(cur_turf))
 		return
 
-	range_bounds.set_shape(cur_turf.x, cur_turf.y, detector_range * 2)
-
-	var/list/ping_candidates = SSquadtree.players_in_range(range_bounds, cur_turf.z, QTREE_FILTER_LIVING | QTREE_SCAN_MOBS)
-	var/turf/above = SSmapping.get_turf_above(cur_turf)
-	var/turf/below = SSmapping.get_turf_below(cur_turf)
-	if(above)
-		ping_candidates += SSquadtree.players_in_range(range_bounds, above.z, QTREE_FILTER_LIVING | QTREE_SCAN_MOBS)
-	if(below)
-		ping_candidates += SSquadtree.players_in_range(range_bounds, below.z, QTREE_FILTER_LIVING | QTREE_SCAN_MOBS)
-
-	for(var/mob/living/current_mob as anything in ping_candidates)
+	var/list/atom/movable/ping_candidates = SSmapgrids.get_movables_in_region(cur_turf.z, cur_turf.x - detector_range, cur_turf.x + detector_range, cur_turf.y - detector_range, cur_turf.y + detector_range)
+	for(var/mob/living/current_mob in ping_candidates)
 		if(current_mob == loc)
 			continue //device user isn't detected
 		if(world.time > current_mob.l_move_time + 20)
@@ -354,7 +345,7 @@
 		DB.screen_loc = "[clamp(c_view + 1 - view_x_offset + (target.x - user.x), 1, 2*c_view+1)],[clamp(c_view + 1 - view_y_offset + (target.y - user.y), 1, 2*c_view+1)]"
 		user.client.add_to_screen(DB)
 		new /obj/effect/temp_visual/minimap_blip(get_turf(target), minimap_flag)
-		addtimer(CALLBACK(src, PROC_REF(clear_pings), user, DB), 1 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(clear_pings), user, DB), 2 SECONDS)
 
 /obj/item/device/motiondetector/proc/clear_pings(mob/user, obj/effect/detector_blip/DB)
 	if(user.client)

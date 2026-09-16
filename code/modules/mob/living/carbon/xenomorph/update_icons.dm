@@ -116,34 +116,31 @@
 	. = ..()
 	if(. != new_value)
 		update_icons() // Snowflake handler for xeno resting icons
-		update_wounds()
 
 /mob/living/carbon/xenomorph/on_floored_start()
 	. = ..()
 	update_icons()
-	update_wounds()
 	overlays -= acid_overlay
 
 /mob/living/carbon/xenomorph/on_floored_end()
 	. = ..()
 	update_icons()
-	update_wounds()
+
 /mob/living/carbon/xenomorph/on_incapacitated_trait_gain()
 	. = ..()
 	update_icons()
-	update_wounds()
+
 /mob/living/carbon/xenomorph/on_incapacitated_trait_loss()
 	. = ..()
 	update_icons()
-	update_wounds()
+
 /mob/living/carbon/xenomorph/on_knockedout_trait_gain()
 	. = ..()
 	update_icons()
-	update_wounds()
+
 /mob/living/carbon/xenomorph/on_knockedout_trait_loss()
 	. = ..()
 	update_icons()
-	update_wounds()
 
 /* ^^^^^^^^^^^^^^ End Icon updates */
 
@@ -365,7 +362,7 @@
 			new_icon_state = "[caste.caste_type]_walk_[health_threshold]"
 		else
 			new_icon_state = handle_special_wound_states(health_threshold)
-	if(organ_removed)
+	if(isnull(organ) && !isnull(caste.organ_type))
 		new_icon_state = "[caste.caste_type]_dissection"
 
 	if(new_icon_state != wound_icon_holder.icon_state)

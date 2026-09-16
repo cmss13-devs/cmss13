@@ -88,6 +88,7 @@
 #define SLOW "slow"
 #define SUPERSLOW "superslow"
 #define ROOT "root"
+#define HUSHED "hushed"
 
 //=================================================
 
@@ -120,6 +121,7 @@
 #define NO_PERMANENT_DAMAGE (1<<20)
 #define CORRUPTED_ALLY (1<<21)
 #define FAKESOUL (1<<22) // Lets things without souls pretend like they do
+// NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
 
 // =============================
 // hive types
@@ -130,17 +132,19 @@
 #define XENO_HIVE_BRAVO "xeno_hive_bravo"
 #define XENO_HIVE_CHARLIE "xeno_hive_charlie"
 #define XENO_HIVE_DELTA "xeno_hive_delta"
+#define XENO_HIVE_K_SERIES "xeno_hive_k_series"
 #define XENO_HIVE_FERAL "xeno_hive_feral"
 #define XENO_HIVE_TAMED "xeno_hive_tamed"
 #define XENO_HIVE_MUTATED "xeno_hive_mutated"
 #define XENO_HIVE_FORSAKEN "xeno_hive_forsaken"
 #define XENO_HIVE_YAUTJA "xeno_hive_yautja"
+#define XENO_HIVE_YAUTJA_BADBLOOD "xeno_hive_yautja_badblood"
 #define XENO_HIVE_HUNTED "xeno_hive_hunted"
 #define XENO_HIVE_RENEGADE "xeno_hive_renegade"
 
 #define XENO_HIVE_TUTORIAL "xeno_hive_tutorial"
 
-#define ALL_XENO_HIVES list(XENO_HIVE_NORMAL, XENO_HIVE_CORRUPTED, XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE, XENO_HIVE_DELTA, XENO_HIVE_FERAL, XENO_HIVE_TAMED, XENO_HIVE_MUTATED, XENO_HIVE_FORSAKEN, XENO_HIVE_YAUTJA, XENO_HIVE_RENEGADE, XENO_HIVE_TUTORIAL)
+#define ALL_XENO_HIVES list(XENO_HIVE_NORMAL, XENO_HIVE_CORRUPTED, XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE, XENO_HIVE_DELTA, XENO_HIVE_K_SERIES, XENO_HIVE_FERAL, XENO_HIVE_TAMED, XENO_HIVE_MUTATED, XENO_HIVE_FORSAKEN, XENO_HIVE_YAUTJA, XENO_HIVE_YAUTJA_BADBLOOD, XENO_HIVE_RENEGADE, XENO_HIVE_TUTORIAL)
 
 //=================================================
 
@@ -193,6 +197,7 @@
 #define MUTINY_MUTINEER (1<<7)  // Part of the Mutiny Gang
 #define MUTINY_LOYALIST (1<<8) // Allied with command.
 #define MUTINY_NONCOMBAT (1<<9) // NON COMBATANT.
+#define MOB_ABSTRACT (1<<10) //! This mob is a proxy for gameplay functions, it shouldn't be treated as a full-on mob for gameplay
 
 //=================================================
 
@@ -282,6 +287,9 @@
 #define BLOOD_VOLUME_OKAY 336
 #define BLOOD_VOLUME_BAD 224
 #define BLOOD_VOLUME_SURVIVE 122
+
+//Blood level for a dead xenomorph
+#define BLOOD_VOLUME_DEAD_XENO 60
 
 
 //diseases

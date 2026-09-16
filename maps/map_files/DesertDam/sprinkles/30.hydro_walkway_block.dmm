@@ -166,7 +166,6 @@
 	dir = 1
 	},
 /obj/item/shard,
-/obj/item/weapon/gun/flamer/survivor,
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/building/substation/southwest/solar/walkway)
 "J" = (

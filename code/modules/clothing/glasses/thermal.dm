@@ -17,7 +17,7 @@
 	darkness_view = 12
 	invisa_view = 2
 	eye_protection = EYE_PROTECTION_NEGATIVE
-	deactive_state = "goggles_off"
+	deactivated_state = "goggles_off"
 	fullscreen_vision = /atom/movable/screen/fullscreen/thermal
 	var/blinds_on_emp = TRUE
 
@@ -44,7 +44,7 @@
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/huds.dmi',
 	)
 	icon_state = "meson"
-	deactive_state = "degoggles"
+	deactivated_state = "degoggles"
 	actions_types = list(/datum/action/item_action/toggle)
 
 /obj/item/clothing/glasses/thermal/syndi/bug_b_gone
@@ -55,13 +55,13 @@
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/goggles.dmi',
 	)
 	icon_state = "rwelding-g"
-	deactive_state = "rwelding-gup"
+	deactivated_state = "rwelding-gup"
 	gender = PLURAL
 
 /obj/item/clothing/glasses/thermal/syndi/kutjevo
 	icon = 'icons/obj/items/clothing/glasses/goggles.dmi'
 	icon_state = "kutjevo_goggles"
-	deactive_state = "kutjevo_goggles"
+	deactivated_state = "kutjevo_goggles"
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/goggles.dmi',
 	)

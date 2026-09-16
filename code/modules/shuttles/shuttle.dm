@@ -7,7 +7,6 @@
 	var/name = "Shuttle" //Name of the shuttle, for messages
 	var/warmup_time = 0
 	var/moving_status = SHUTTLE_IDLE
-	var/move_scheduled = 0
 	var/turf/target_turf = null
 	var/target_rotation = 0
 	var/list/shuttle_turfs = null
@@ -114,9 +113,6 @@
 			INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 	if (iselevator) // Super snowflake code
-		for (var/obj/structure/machinery/computer/shuttle_control/ice_colony/C in area)
-			C.animate_on()
-
 		for (var/turf/closed/shuttle/elevator/gears/G in area)
 			G.start()
 
@@ -143,8 +139,6 @@
 			INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 	if (iselevator) // Super snowflake code
-		for (var/obj/structure/machinery/computer/shuttle_control/ice_colony/C in area)
-			C.animate_off()
 
 		for (var/turf/closed/shuttle/elevator/gears/G in area)
 			G.stop()

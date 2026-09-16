@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - code_imp: "Updated some code regarding dress vendor and snowflake vendor to satisfy new checks"
+  - code_imp: "Updated loop logic for legendary property setup"

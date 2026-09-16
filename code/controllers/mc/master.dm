@@ -608,7 +608,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	. = 1
 
 
-/// RunQueue - Run thru the queue of subsystems to run, running them while balancing out their allocated tick precentage
+/// RunQueue - Run thru the queue of subsystems to run, running them while balancing out their allocated tick percentage
 /// Returns 0 if runtimed, a negitive number for logic errors, and a positive number if the operation completed without errors
 /datum/controller/master/proc/RunQueue()
 	. = 0
@@ -618,7 +618,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/queue_node_paused
 
 	var/current_tick_budget
-	var/tick_precentage
+	var/tick_percentage
 	var/tick_remaining
 	var/ran = TRUE //this is right
 	var/bg_calc //have we swtiched current_tick_budget to background mode yet?
@@ -657,18 +657,18 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			tick_remaining = TICK_LIMIT_RUNNING - TICK_USAGE
 
 			if (queue_node_priority >= 0 && current_tick_budget > 0 && current_tick_budget >= queue_node_priority)
-				//Give the subsystem a precentage of the remaining tick based on the remaining priority
-				tick_precentage = tick_remaining * (queue_node_priority / current_tick_budget)
+				//Give the subsystem a percentage of the remaining tick based on the remaining priority
+				tick_percentage = tick_remaining * (queue_node_priority / current_tick_budget)
 			else
 				//error state
 				if (. == 0)
 					log_world("MC: tick_budget sync error. [json_encode(list(current_tick_budget, queue_priority_count, queue_priority_count_bg, bg_calc, queue_node, queue_node_priority))]")
 				. = -1
-				tick_precentage = tick_remaining //just because we lost track of priority calculations doesn't mean we can't try to finish off the run, if the error state persists, we don't want to stop ticks from happening
+				tick_percentage = tick_remaining //just because we lost track of priority calculations doesn't mean we can't try to finish off the run, if the error state persists, we don't want to stop ticks from happening
 
-			tick_precentage = max(tick_precentage*0.5, tick_precentage-queue_node.tick_overrun)
+			tick_percentage = max(tick_percentage*0.5, tick_percentage-queue_node.tick_overrun)
 
-			current_ticklimit = floor(TICK_USAGE + tick_precentage)
+			current_ticklimit = floor(TICK_USAGE + tick_percentage)
 
 			ran = TRUE
 
@@ -688,7 +688,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 			if (tick_usage < 0)
 				tick_usage = 0
-			queue_node.tick_overrun = max(0, MC_AVG_FAST_UP_SLOW_DOWN(queue_node.tick_overrun, tick_usage-tick_precentage))
+			queue_node.tick_overrun = max(0, MC_AVG_FAST_UP_SLOW_DOWN(queue_node.tick_overrun, tick_usage-tick_percentage))
 			queue_node.state = state
 
 			if (state == SS_PAUSED)

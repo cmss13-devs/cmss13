@@ -95,6 +95,16 @@
 	new /obj/item/clothing/head/hardhat/red(src)
 	new /obj/item/storage/box/m94(src)
 
+/obj/structure/closet/firecloset/alt_full/Initialize()
+	. = ..()
+	contents = list()
+
+	new /obj/item/clothing/suit/storage/marine/light/vest/fire_light(src)
+	new /obj/item/reagent_container/glass/canister/oxygen(src)
+	new /obj/item/tool/extinguisher(src)
+	new /obj/item/clothing/head/helmet/hybrisa/firefighter(src)
+	new /obj/item/storage/box/m94(src)
+
 /obj/structure/closet/firecloset/update_icon()
 	if(!opened)
 		icon_state = icon_closed

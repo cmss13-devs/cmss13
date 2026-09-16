@@ -1,0 +1,8 @@
+/area/shiva/exterior/telecomm/lz2_north/@SUBTYPES : /area/shiva/exterior/telecomm/lz1_north/@SUBTYPES{@OLD}
+/area/shiva/interior/caves/s_lz2/@SUBTYPES : /area/shiva/interior/caves/s_lz1/@SUBTYPES{@OLD}
+/area/shiva/exterior/telecomm/lz2_northeast/@SUBTYPES : /area/shiva/exterior/telecomm/lz1_northeast/@SUBTYPES{@OLD}
+/area/shiva/exterior/telecomm/lz2_southeast/@SUBTYPES : /area/shiva/exterior/telecomm/lz1_southeast/@SUBTYPES{@OLD}
+/area/shiva/exterior/lz2_fortress/@SUBTYPES : /area/shiva/exterior/lz1_fortress/@SUBTYPES{@OLD}
+/area/shiva/interior/lz2_habs/@SUBTYPES : /area/shiva/interior/lz1_habs/@SUBTYPES{@OLD}
+/area/shiva/exterior/lz1_valley/@SUBTYPES : /area/shiva/exterior/lz2_valley/@SUBTYPES{@OLD}
+/area/shiva/exterior/cp_lz2/@SUBTYPES : /area/shiva/exterior/cp_lz1/@SUBTYPES{@OLD}

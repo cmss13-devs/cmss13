@@ -949,6 +949,7 @@
 	worn_state = "co_turtleneck"
 	specialty = "captain's turtleneck"
 	flags_atom = NO_GAMEMODE_SKIN
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/dress
 	name = "marine formal service uniform"
@@ -1257,6 +1258,12 @@
 	desc = "A set of Officer UPP fatigues, mass-produced for the armed-forces of the Union of Progressive Peoples. A rare sight, especially in ICC zones. This particular set sports the dark drab pattern of the UPP 17th battalion, 'Smoldering Sons', operating in the sparse UPP frontier in the Anglo-Japanese arm."
 	icon_state = "upp_uniform_officer"
 	worn_state = "upp_uniform_officer"
+
+/obj/item/clothing/under/marine/veteran/UPP/officer/mss
+	name = "\improper UPP MSS officer service uniform"
+	desc = "A service uniform worn by officers of the Ministry of Space Security, the UPP's internal security and intelligence service. The MSS concerns itself with espionage, counterintelligence, political loyalty, and threats to the Union, both foreign and domestic."
+	icon_state = "upp_uniform_service"
+	worn_state = "upp_uniform_service"
 
 /obj/item/clothing/under/marine/veteran/UPP/civi1
 	name = "\improper UPP Civilian-style Orange overalls"
@@ -2249,4 +2256,3 @@
 	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
 	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
 	hood_type = /obj/item/clothing/head/helmet/marine/cbrn_hood/advanced
-

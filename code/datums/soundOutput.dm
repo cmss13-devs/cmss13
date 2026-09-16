@@ -22,21 +22,32 @@
 	owner = null
 	return ..()
 
+/// Called when processing every sound on every client
+/// This is a VERY hot proc, it's advised to keep it as lean as possible
+/// Consider if there are 400 sounds/second and 150 clients get to hear them,
+/// that could be 60K calls/second
 /datum/soundOutput/proc/process_sound(datum/sound_template/T)
 	var/sound/S = sound(T.file, T.wait, T.repeat)
 	S.volume = owner.prefs.volume_preferences[T.volume_cat] * T.volume
-	if(T.channel == 0)
+
+	// This should never happen and you don't want it to happen, because
+	// channels are allocated globally. If you start allocating a global
+	// channel per-sound per-person, you'll rotate through them really
+	// fast and it'll cause running sounds to be randomly overwritten.
+	if(T.channel == NONE)
 		S.channel = get_free_channel()
 	else
 		S.channel = T.channel
+
 	S.frequency = T.frequency
 	S.falloff = T.falloff
 	S.status = T.status
-	if(T.x && T.y && T.z)
+
+	if(T.x && T.y && T.z) // Patch up 3D Sound based on in-world coordinates
 		var/turf/owner_turf = get_turf(owner.mob)
 		if(owner_turf)
 			// We're in an interior and sound came from outside
-			if(SSinterior.in_interior(owner_turf) && owner_turf.z != T.z)
+			if(SSINTERIOR_TURF_IN_INTERIOR_FAST(owner_turf) && owner_turf.z != T.z)
 				var/datum/interior/VI = SSinterior.get_interior_by_coords(owner_turf.x, owner_turf.y, owner_turf.z)
 				if(VI && VI.exterior)
 					var/turf/candidate = get_turf(VI.exterior)
@@ -44,16 +55,19 @@
 						return // Invalid location
 					S.falloff /= 2
 					owner_turf = candidate
+
 			S.x = T.x - owner_turf.x
-			S.y = (T.z - owner_turf.z) * 5
+			S.y = (T.z - owner_turf.z) * MULTI_Z_SOUND_DISTANCE
 			S.z = T.y - owner_turf.y
-		S.y += T.y_s_offset
+
+		S.z += T.z_s_offset // Please read the codedoc for z_s_offset
 		S.x += T.x_s_offset
+
 		S.echo = SOUND_ECHO_REVERB_ON //enable environment reverb for positional sounds
-	for(var/pos = 1 to length(T.echo))
-		if(!T.echo[pos])
-			continue
-		S.echo[pos] = T.echo[pos]
+
+	if(T.echo)
+		S.echo = T.echo
+
 	if(owner.mob.ear_deaf > 0)
 		S.status |= SOUND_MUTE
 

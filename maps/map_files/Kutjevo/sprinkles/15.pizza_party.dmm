@@ -1,0 +1,901 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aN" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	req_one_access = null
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/template_noop)
+"aP" = (
+/obj/item/stool{
+	pixel_y = 8;
+	pixel_x = -4
+	},
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"bA" = (
+/obj/structure/machinery/cm_vending/sorted/boozeomat,
+/obj/structure/sign/poster/ad{
+	pixel_y = 31;
+	pixel_x = -3
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/colors/red/inner_corner,
+/area/template_noop)
+"bF" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	icon_state = "chair_alt";
+	pixel_x = 2;
+	pixel_y = 5
+	},
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"ds" = (
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"dv" = (
+/obj/item/frame/table/almayer,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"dx" = (
+/obj/item/shard,
+/obj/item/stack/rods,
+/turf/open/floor/kutjevo/colors/red/edge,
+/area/template_noop)
+"dH" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"dR" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/snacks/meatpizzaslice,
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"en" = (
+/obj/effect/landmark/corpsespawner/colonist/kutjevo,
+/turf/open/floor/kutjevo/colors/red/edge,
+/area/template_noop)
+"ep" = (
+/turf/open/floor/kutjevo/colors/red/edge/west,
+/area/template_noop)
+"ex" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	icon_state = "chair_alt";
+	pixel_y = 3;
+	pixel_x = -2
+	},
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"fl" = (
+/turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"fy" = (
+/obj/effect/landmark/corpsespawner/colonist/kutjevo,
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"ga" = (
+/turf/template_noop,
+/area/template_noop)
+"hH" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	req_one_access = null
+	},
+/turf/open/floor/plating/kutjevo,
+/area/template_noop)
+"iP" = (
+/obj/item/stool{
+	pixel_y = 8;
+	pixel_x = 3
+	},
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"jm" = (
+/obj/item/tool/wet_sign,
+/turf/open/floor/kutjevo/colors/red/edge/west,
+/area/template_noop)
+"ju" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	icon_state = "chair_alt";
+	pixel_y = 3
+	},
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"kU" = (
+/obj/effect/decal/strata_decals/grime/grime3,
+/turf/open/floor/kutjevo/colors/red/edge/north,
+/area/template_noop)
+"kZ" = (
+/obj/item/shard,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/colors/red/inner_corner/west,
+/area/template_noop)
+"lj" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29"
+	},
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"lK" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/drinks/cans/souto/cranberry{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/food/drinks/cans/souto/diet/peach{
+	pixel_x = -7;
+	pixel_y = 1
+	},
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"nr" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"nD" = (
+/turf/open/floor/kutjevo/colors/red/edge/north,
+/area/template_noop)
+"nX" = (
+/obj/structure/window/framed/kutjevo/reinforced,
+/obj/structure/window_frame/kutjevo,
+/turf/open/floor/plating/kutjevo,
+/area/template_noop)
+"og" = (
+/obj/item/reagent_container/food/drinks/cans/souto/lime,
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"pG" = (
+/obj/structure/machinery/vending/cola,
+/turf/open/floor/kutjevo/colors/red/inner_corner/north,
+/area/template_noop)
+"pM" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/kutjevo/colors/red/edge/north,
+/area/template_noop)
+"qd" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/snacks/meatpizzaslice,
+/turf/open/floor/kutjevo/colors/red/inner_corner,
+/area/template_noop)
+"qe" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open/floor/kutjevo/colors/red/edge/east,
+/area/template_noop)
+"rm" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/stack/sheet/cardboard/medium_stack,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"sh" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/drinks/cans/souto/blue,
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"st" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	req_one_access = null
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/template_noop)
+"sE" = (
+/obj/effect/landmark/corpsespawner/colonist/kutjevo,
+/turf/open/floor/kutjevo/colors/red/edge/east,
+/area/template_noop)
+"sQ" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	req_one_access = null
+	},
+/turf/open/floor/plating/kutjevo,
+/area/template_noop)
+"tX" = (
+/obj/structure/surface/table/almayer,
+/obj/item/pizzabox/pizza_galaxy/vegetable,
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"uF" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_30"
+	},
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"vv" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/pizzabox/pizza_galaxy/mystery/stack,
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"vC" = (
+/obj/item/stool{
+	pixel_y = 8;
+	pixel_x = -1
+	},
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"wf" = (
+/obj/item/stool{
+	pixel_y = 8
+	},
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"xI" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_magazine/pistol/highpower{
+	current_rounds = 0
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/tile/tilered,
+/area/template_noop)
+"ym" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/snacks/flour,
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"yu" = (
+/obj/structure/closet/crate/freezer,
+/obj/item/reagent_container/food/drinks/cans/souto/classic,
+/obj/item/reagent_container/food/drinks/cans/souto/classic,
+/obj/item/reagent_container/food/drinks/cans/souto/classic,
+/obj/item/reagent_container/food/drinks/cans/souto/diet,
+/obj/item/reagent_container/food/drinks/cans/souto/diet,
+/obj/item/reagent_container/food/drinks/cans/souto/diet,
+/obj/item/reagent_container/food/drinks/cans/souto/classic,
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"yC" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"zf" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/colors/red/inner_corner/north,
+/area/template_noop)
+"zZ" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"Bd" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	icon_state = "chair_alt"
+	},
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"Bu" = (
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"BJ" = (
+/obj/structure/platform/metal/kutjevo/east,
+/turf/open/floor/kutjevo/colors/red/edge/east,
+/area/template_noop)
+"Ca" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza,
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"CW" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/colors/red/edge/north,
+/area/template_noop)
+"Dn" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/kitchen/pizzacutter,
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"Ee" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/colors/red/edge/north,
+/area/template_noop)
+"El" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/colors/red/edge/north,
+/area/template_noop)
+"En" = (
+/obj/item/frame/table/almayer,
+/turf/open/floor/kutjevo/colors/red/inner_corner/north,
+/area/template_noop)
+"Et" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/snacks/dough{
+	pixel_x = 3
+	},
+/obj/item/tool/kitchen/rollingpin{
+	pixel_y = 5;
+	pixel_x = -3
+	},
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"EA" = (
+/turf/open/floor/kutjevo/colors/red/edge,
+/area/template_noop)
+"EK" = (
+/obj/structure/window_frame/kutjevo,
+/obj/item/shard,
+/turf/open/floor/plating/kutjevo,
+/area/template_noop)
+"EN" = (
+/obj/item/frame/table/almayer,
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"Fa" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/snacks/meatpizzaslice,
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"Ff" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"Gn" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/reagent_container/food/snacks/vegetablepizzaslice,
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"Gs" = (
+/obj/item/stool{
+	pixel_y = 8;
+	pixel_x = -3
+	},
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"Gx" = (
+/obj/effect/acid_hole{
+	dir = 4
+	},
+/turf/closed/wall/kutjevo/colony,
+/area/template_noop)
+"Hh" = (
+/obj/structure/surface/table/almayer,
+/obj/item/pizzabox/pizza_galaxy/mystery,
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"HL" = (
+/obj/structure/surface/table/almayer,
+/obj/item/prop/colony/game{
+	pixel_y = 4
+	},
+/turf/open/floor/kutjevo/colors/red/inner_corner/east,
+/area/template_noop)
+"IF" = (
+/turf/open/floor/kutjevo/colors/red/edge/northeast,
+/area/template_noop)
+"IN" = (
+/obj/item/shard,
+/turf/open/auto_turf/sand/layer1,
+/area/template_noop)
+"Jx" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/tile/tilered,
+/area/template_noop)
+"JB" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"JS" = (
+/obj/structure/surface/table/almayer,
+/obj/item/pizzabox/pizza_galaxy/mushroom,
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"Lu" = (
+/obj/structure/window/framed/kutjevo/reinforced,
+/turf/open/floor/plating/kutjevo,
+/area/template_noop)
+"LC" = (
+/obj/structure/window_frame/kutjevo/reinforced,
+/obj/item/stack/rods,
+/turf/open/floor/plating/kutjevo,
+/area/template_noop)
+"Md" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"Mn" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/colors/red/edge/east,
+/area/template_noop)
+"Mr" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/kutjevo/colors/red/inner_corner,
+/area/template_noop)
+"Mu" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/colors/red/edge,
+/area/template_noop)
+"MH" = (
+/obj/structure/sign/banners/happybirthdaysteve{
+	pixel_y = -4
+	},
+/turf/closed/wall/kutjevo/colony,
+/area/template_noop)
+"MI" = (
+/obj/structure/machinery/light,
+/turf/open/floor/kutjevo/colors/red/edge,
+/area/template_noop)
+"MS" = (
+/obj/structure/window_frame/kutjevo/reinforced,
+/obj/item/shard,
+/turf/open/floor/plating/kutjevo,
+/area/template_noop)
+"Ny" = (
+/obj/structure/roof/hybrisa/signs/pizzasign{
+	light_color = "#FF9100";
+	light_on = 1;
+	light_power = 4;
+	light_range = 4;
+	pixel_x = 2
+	},
+/turf/open/floor/kutjevo/colors/red/edge/east,
+/area/template_noop)
+"Nz" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/colors/red/edge,
+/area/template_noop)
+"Om" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	icon_state = "chair_alt";
+	pixel_x = 3;
+	pixel_y = -1
+	},
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"OD" = (
+/turf/closed/wall/kutjevo/colony,
+/area/template_noop)
+"Pw" = (
+/turf/open/floor/kutjevo/colors/red/inner_corner/east,
+/area/template_noop)
+"Qe" = (
+/obj/effect/decal/strata_decals/grime/grime3,
+/turf/open/floor/kutjevo/colors/red/edge/east,
+/area/template_noop)
+"RM" = (
+/obj/effect/decal/cleanable/flour,
+/obj/item/ammo_magazine/pistol/highpower{
+	current_rounds = 0
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/tile/tilered,
+/area/template_noop)
+"RV" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/kutjevo/grey/plate,
+/area/template_noop)
+"Sb" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/microwave{
+	pixel_y = 6
+	},
+/obj/structure/machinery/microwave{
+	pixel_y = 20
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"Sz" = (
+/obj/item/tool/mop{
+	pixel_y = 6
+	},
+/obj/effect/decal/strata_decals/grime/grime4,
+/turf/open/floor/kutjevo/colors/red/edge/west,
+/area/template_noop)
+"SK" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"SM" = (
+/obj/item/weapon/twohanded/folded_metal_chair,
+/obj/effect/landmark/corpsespawner/colonist/kutjevo/burst,
+/turf/open/floor/kutjevo/colors/red/edge/north,
+/area/template_noop)
+"TN" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/stool{
+	pixel_y = 8
+	},
+/obj/structure/sink{
+	pixel_y = 32
+	},
+/turf/open/floor/hybrisa/tile/tilered,
+/area/template_noop)
+"TS" = (
+/obj/effect/landmark/corpsespawner/hybrisa/pizza_galaxy,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/tile/tilered,
+/area/template_noop)
+"TW" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/colors/red/edge,
+/area/template_noop)
+"TX" = (
+/obj/effect/decal/cleanable/flour,
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"UU" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/turf/open/floor/kutjevo/colors/red/edge/east,
+/area/template_noop)
+"Vm" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/snacks/meatpizzaslice,
+/obj/item/reagent_container/food/drinks/cans/souto/classic{
+	pixel_y = 14;
+	pixel_x = -6
+	},
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"VI" = (
+/turf/open/floor/kutjevo/colors/red/inner_corner/west,
+/area/template_noop)
+"We" = (
+/obj/item/reagent_container/glass/bucket/mopbucket{
+	pixel_y = 9;
+	pixel_x = -4
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/colors/red/inner_corner/east,
+/area/template_noop)
+"Xg" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/pistol/highpower,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/tile/tilered,
+/area/template_noop)
+"Xh" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/kutjevo/colors/red/edge/west,
+/area/template_noop)
+"Xi" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/snacks/mushroompizzaslice,
+/turf/open/floor/kutjevo/colors/red/inner_corner/west,
+/area/template_noop)
+"Xm" = (
+/obj/structure/surface/table/almayer,
+/obj/item/toy/deck/uno,
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"Xn" = (
+/obj/structure/closet,
+/obj/item/clothing/under/hybrisa/pizza_galaxy,
+/obj/item/clothing/head/hybrisa/pizza_galaxy,
+/obj/item/card/id/pizza,
+/obj/item/clothing/suit/armor/vest,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"Xq" = (
+/obj/structure/closet/crate/freezer,
+/obj/item/pizzabox/pizza_galaxy/meat,
+/obj/item/pizzabox/pizza_galaxy/mushroom,
+/obj/item/defenses/handheld/tesla_coil,
+/obj/item/reagent_container/food/snacks/cheesewedge,
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"Yx" = (
+/obj/item/stack/sandbags/large_stack,
+/turf/open/floor/kutjevo/colors/red,
+/area/template_noop)
+"YD" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/snacks/mushroompizzaslice,
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"YF" = (
+/turf/closed/wall/kutjevo/colony/reinforced,
+/area/template_noop)
+
+(1,1,1) = {"
+ga
+ga
+ga
+YF
+YF
+Lu
+Lu
+Lu
+YF
+YF
+ga
+ga
+ga
+ga
+"}
+(2,1,1) = {"
+ga
+ga
+ga
+OD
+bA
+ep
+jm
+Sz
+We
+Lu
+qd
+ep
+HL
+ga
+"}
+(3,1,1) = {"
+ga
+ga
+ga
+MH
+kU
+aP
+wf
+vC
+Mu
+Lu
+SM
+yC
+Nz
+ga
+"}
+(4,1,1) = {"
+ga
+ga
+ga
+OD
+pM
+YD
+Hh
+Fa
+en
+hH
+CW
+Bu
+ga
+ga
+"}
+(5,1,1) = {"
+Sb
+zZ
+rm
+OD
+nD
+Vm
+Xm
+Hh
+EA
+hH
+nD
+Bu
+ga
+ga
+"}
+(6,1,1) = {"
+Xn
+Bu
+TX
+st
+nD
+wf
+iP
+Gs
+dx
+MS
+Ee
+Bu
+TW
+ga
+"}
+(7,1,1) = {"
+Xq
+Bu
+yu
+OD
+zf
+sE
+Qe
+Mn
+kZ
+LC
+En
+Ny
+Xi
+ga
+"}
+(8,1,1) = {"
+ga
+sQ
+OD
+YF
+OD
+OD
+aN
+aN
+OD
+OD
+Gx
+OD
+YF
+ga
+"}
+(9,1,1) = {"
+Jx
+TS
+Xg
+Dn
+Mr
+Xh
+ep
+ep
+ep
+ep
+ep
+Pw
+Lu
+ga
+"}
+(10,1,1) = {"
+TN
+RM
+xI
+Ca
+nD
+ds
+Om
+ds
+bF
+ex
+ds
+EA
+Lu
+ga
+"}
+(11,1,1) = {"
+Et
+ym
+vv
+lK
+nD
+ds
+JS
+Ff
+sh
+dR
+SK
+MI
+YF
+JB
+"}
+(12,1,1) = {"
+EK
+EK
+EK
+YF
+El
+ds
+dH
+ju
+ds
+Bd
+ds
+EA
+hH
+ga
+"}
+(13,1,1) = {"
+Md
+RV
+IN
+st
+nD
+ds
+ds
+Gn
+nr
+bF
+ds
+EA
+hH
+ga
+"}
+(14,1,1) = {"
+ga
+fl
+Md
+ga
+pG
+IF
+ds
+EN
+fy
+tX
+ds
+MI
+YF
+JB
+"}
+(15,1,1) = {"
+ga
+ga
+ga
+ga
+ga
+pG
+IF
+og
+dv
+nr
+ds
+EA
+nX
+Yx
+"}
+(16,1,1) = {"
+ga
+ga
+ga
+ga
+ga
+ga
+pG
+qe
+BJ
+BJ
+UU
+VI
+nX
+JB
+"}
+(17,1,1) = {"
+ga
+ga
+ga
+ga
+ga
+ga
+ga
+ga
+uF
+lj
+ga
+ga
+ga
+ga
+"}

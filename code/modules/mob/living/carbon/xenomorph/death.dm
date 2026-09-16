@@ -15,6 +15,14 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 
 	overlays -= acid_overlay
 
+	// Dead xenomorphs have reduced blood
+	// Acts a source of xeno chems, but temporary and limited.
+	blood_volume = BLOOD_VOLUME_DEAD_XENO
+
+	if(organ_regen_timer != TIMER_ID_NULL)
+		deltimer(organ_regen_timer)
+		organ_regen_timer = TIMER_ID_NULL
+
 	if(is_zoomed)
 		zoom_out()
 
@@ -170,6 +178,10 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 
 	if(!no_remains)
 		new /obj/effect/decal/remains/xeno(get_turf(src), icon, "gibbed-a-corpse", pixel_x)
+
+	var/turf/death_turf = get_turf(src)
+	if(!should_block_game_interaction(src, TRUE) && (is_ground_level(death_turf.z) || is_mainship_level(death_turf.z) || is_reserved_level(death_turf.z)))
+		new /mob/dead/mob_marker(death_turf, src)
 
 	check_blood_splash(35, BURN, 65, 2) //Some testing numbers. 35 burn, 65 chance.
 

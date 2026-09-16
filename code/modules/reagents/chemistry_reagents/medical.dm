@@ -202,6 +202,19 @@
 	)
 	flags = REAGENT_TYPE_MEDICAL | REAGENT_NO_GENERATION
 
+/datum/reagent/medical/sozo //yautja weak tricord, effectively
+	name = "Sozo"
+	id = "sozo"
+	description = "A sweet smelling alien substance."
+	reagent_state = LIQUID
+	color = "#e4d00A"
+	properties = list(
+		PROPERTY_CROSSMETABOLIZING = 1,
+		PROPERTY_NEOGENETIC = 1,
+		PROPERTY_ANTICORROSIVE = 1,
+	)
+	flags = REAGENT_TYPE_MEDICAL
+
 /datum/reagent/medical/neuraline //injected by neurostimulator implant
 	name = "Neuraline"
 	id = "neuraline"

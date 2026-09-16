@@ -408,3 +408,72 @@
 
 /turf/open/auto_turf/shale/layer2/weedable
 	is_weedable = FULLY_WEEDABLE
+
+// Swamp Auto-turf
+
+/turf/open/auto_turf/swamp_dirt
+	layer_name = list("marsh sediment", "soft mud", "warn a coder", "warn a coder", "warn a coder")
+	icon = 'icons/turf/floors/auto_dirt_swamp.dmi'
+	icon_state = "swamp_1"
+	icon_prefix = "swamp"
+
+/turf/open/auto_turf/swamp_dirt/get_dirt_type()
+	return DIRT_TYPE_SAND
+
+/turf/open/auto_turf/swamp_dirt/layer0
+	icon_state = "swamp_0"
+	bleed_layer = 0
+
+/turf/open/auto_turf/swamp_dirt/layer1
+	icon_state = "swamp_1"
+	bleed_layer = 1
+
+
+/turf/open/auto_turf/swampalt_dirt
+	layer_name = list("marsh sediment", "soft mud", "warn a coder", "warn a coder", "warn a coder")
+	icon = 'icons/turf/floors/auto_dirt_swamp.dmi'
+	icon_state = "alt_1"
+	icon_prefix = "alt"
+
+/turf/open/auto_turf/swampalt_dirt/get_dirt_type()
+	return DIRT_TYPE_SAND
+
+/turf/open/auto_turf/swampalt_dirt/layer0
+	icon_state = "alt_0"
+	bleed_layer = 0
+
+/turf/open/auto_turf/swampalt_dirt/layer1
+	icon_state = "alt_1"
+	bleed_layer = 1
+
+/turf/open/auto_turf/swamp_grass
+	name = "matted grass"
+	icon = 'icons/turf/floors/auto_swamp_grass.dmi'
+	icon_state = "grass_0"
+	icon_prefix = "grass"
+	layer_name = list("ground","lush thick grass")
+	desc = "Grass, dirt, mud, and other assorted high moisture cave flooring."
+
+/turf/open/auto_turf/swamp_grass/insert_self_into_baseturfs()
+	baseturfs += /turf/open/auto_turf/swamp_grass/layer0
+
+/turf/open/auto_turf/swamp_grass/layer0
+	icon_state = "grass_0"
+	bleed_layer = 0
+	variant_prefix_name = "matted grass"
+
+/turf/open/auto_turf/swamp_grass/layer0_mud
+	icon_state = "grass_0_mud"
+	bleed_layer = 0
+	variant = "mud"
+	variant_prefix_name = "muddy"
+
+/turf/open/auto_turf/swamp_grass/layer0_mud_alt
+	icon_state = "grass_0_mud_alt"
+	bleed_layer = 0
+	variant = "mud_alt"
+	variant_prefix_name = "muddy"
+
+/turf/open/auto_turf/swamp_grass/layer1
+	icon_state = "grass_1"
+	bleed_layer = 1

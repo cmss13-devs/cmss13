@@ -64,16 +64,16 @@
 	caliber = ".44 sabot"
 
 /obj/item/ammo_magazine/revolver/upp
-	name = "\improper ZHNK-72 speed loader (7.62x38mmR)"
-	desc = "A 7-round 7.62x38mmR revolver speed loader."
+	name = "\improper ZHNK-72 speed loader (12.7x55mm)"
+	desc = "A 7-round 12.7x55mm revolver speed loader."
 	default_ammo = /datum/ammo/bullet/revolver/upp
-	caliber = "7.62x38mmR"
+	caliber = "12.7x55mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/revolvers.dmi'
 	icon_state = "zhnk72loader"
 	gun_type = /obj/item/weapon/gun/revolver/upp
 
 /obj/item/ammo_magazine/revolver/upp/shrapnel
-	name = "\improper ZHNK-72 shrapnel-shot speed loader (7.62x38mmR)"
+	name = "\improper ZHNK-72 shrapnel-shot speed loader (12.7x55mm)"
 	desc = "This speedloader contains seven 'shrapnel-shot' bullets, cheap recycled casings picked up off the ground and refilled with gunpowder and random scrap metal. Acts similarly to flechette."
 	default_ammo = /datum/ammo/bullet/revolver/upp/shrapnel
 	icon_state = "zhnk72loader_shrapnel"
@@ -205,7 +205,7 @@
 
 /obj/item/ammo_magazine/internal/revolver/upp
 	default_ammo = /datum/ammo/bullet/revolver/upp
-	caliber = "7.62x38mmR"
+	caliber = "12.7x55mm"
 	max_rounds = 7
 	gun_type = /obj/item/weapon/gun/revolver/upp
 

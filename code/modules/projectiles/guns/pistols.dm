@@ -179,7 +179,7 @@
 
 /obj/item/weapon/gun/pistol/m1911/fluff
 	name = "\improper M48A4 service pistol"
-	desc = "A timeless classic since the first World War, the M1911A1 has limited use with the USCM, and is also often privately bought and used as a sidearm if a standard pistol is not issued out. This is a modernized version with an ammo counter and a polymer grip, designated M48A4. Chambered in .45 ACP. This one looks a bit worn and old."
+	desc = "A timeless classic since the first World War, the M1911A1 has limited use with the USCM, and is also often privately bought and used as a sidearm if a standard pistol is not issued out. This is a modernized version with an ammo counter and a polymer grip, designated M48A4. Chambered in .45 ACP.  <span class='notice'> This one looks worn, and won't be as effective in combat.</span>"
 	icon_state = "m4a345_s"
 	item_state = "m4a3"
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
@@ -339,7 +339,8 @@
 
 /obj/item/weapon/gun/pistol/np92
 	name = "\improper NP92 pistol"
-	desc = "The standard issue sidearm of the UPP. The NP92 is a small but powerful sidearm, well-liked by most it is issued to, although some prefer the weapon it was meant to replace, the Type 73. Takes 12 round magazines."
+	desc = "The current standard issue sidearm of the UPP Armed Collective, the NP92 is a small but powerful sidearm, chambered in the unique 8.6x20mm caseless cartridge. It's a well-liked pistol by most of its users, though certain flaws lead some to prefer the weapon it replaced, the Type 73."
+	desc_lore = "One of the longest running desires of UPPAC Procurement was that of a caseless pistol, but for much of the Union's lifespan a reliable and effective caseless pistol(or at least one that's on par with the Type 73) had been out of reach. But technology marches on, and with developments in caseless technology in the late 2160s the dream of a modern caseless pistol had become a reality. The design stage of the NP92 passed by quickly, and with prototyping and testing complete by 2171, it was soon-after adopted, replacing the Type 73 and recently adopted Type 74. \nDesign wise, the NP92 is a quite advanced and forward looking pistol, featuring a large capacity and decent stopping power. Though the pistol is not without its flaws, it's overly small size leaves many with larger frames or hands struggling to comfortably use the pistol, and it suffers from poor relability if not strictly maintained.\nThe NP92 series consists of the original NP92, the integrally suppressed NPZ92, the compact NPT92, and a machinepistol variant with the NPG92."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/pistols.dmi'
 	icon_state = "np92"
 	item_state = "np92"
@@ -370,11 +371,11 @@
 	scatter = SCATTER_AMOUNT_TIER_6
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_3
+	damage_mult = BASE_BULLET_DAMAGE_MULT
 
 /obj/item/weapon/gun/pistol/np92/suppressed
 	name = "\improper NPZ92 pistol"
-	desc = "The NPZ92 is a version of the NP92 that includes an integrated suppressor, issued sparingly to Kommando units."
+	desc = "The current standard issue sidearm of the UPP Armed Collective. A unique variant of the NP92, the NPZ92 is integrally suppressed. It's quite rare to find, usually only issued to special units like the Commandos."
 	icon_state = "npz92"
 	item_state = "npz92"
 	inherent_traits = list(TRAIT_GUN_SILENCED)
@@ -397,7 +398,8 @@
 
 /obj/item/weapon/gun/pistol/t73
 	name = "\improper Type 73 pistol"
-	desc = "The Type 73 is the once-standard issue sidearm of the UPP. Replaced by the NP92 in UPP use, it remains popular with veteran UPP troops due to familiarity and extra power. Due to an extremely large amount being produced, they tend to end up in the hands of forces attempting to arm themselves on a budget. Users include the Union of Progressive Peoples, Colonial Liberation Front, and just about any mercenary or pirate group out there."
+	desc = "The Type 73 is the once-standard issue sidearm of the UPP Armed Collective. Whilst it was officially replaced with the NP92 series, it remains popular with veteran UPP troops for it's familiarity, extra firepower, and reliability."
+	desc_lore = "Originally a joint project between the then-fledgling UPP and the now-defunct CANC, the Type 73 was first adopted in 2122, since then it's served the Union well, with the limited use-case of pistols not requiring much advancement, the design remained mostly unchanged throughout most of its lifespan. \nThe Type 73 series is considered to be one of the most widely produced handguns of the 22nd century, with production far exceeding UPPAC requirements surplus batches tend to end up in the hands of forces attempting to arm themselves on a budget. Users include the Union of Progressive Peoples, Colonial Liberation Front, and just about any mercenary, rebel, or pirate group out there."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/pistols.dmi'
 	icon_state = "tt"
 	item_state = "tt"
@@ -432,10 +434,18 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
 
+/obj/item/weapon/gun/pistol/t73/loadout
+	desc = "The Type 73 is the once-standard issue sidearm of the UPP Armed Collective. Whilst it was officially replaced with the NP92 series, it remains popular with veteran UPP troops for it's familiarity and extra firepower. <span class='notice'> This one looks worn, and won't be as effective in combat.</span>"
+
+/obj/item/weapon/gun/pistol/t73/loadout/set_gun_config_values()
+	..()
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+
 
 /obj/item/weapon/gun/pistol/t73/leader
 	name = "\improper Type 74 pistol"
-	desc = "The Type 74 is the designation for a specially modified Type 73 with an integrated laser sight system, multiple lightning cuts to reduce weight in order to allow a higher pressure round to be used with the same recoil spring, and a more comfortable grip. Due to the adoption of the NP92, the Type 74 was produced in limited numbers, because of this it is typically only issued on request to high-ranking officers."
+	desc = "The Type 74 was the originally intended replacement for the Type 73 pistol. It's reinforced frame allows it to fire high-powered cartridges that would destroy a normal Type 73."
+	desc_lore = "More of an upgrade package to the Type 73 than an actual replacement, featuring many improvements such as an integrated lasersight, a reinforced frame and gas system to allow the usage of much higher pressure cartridges, improved sights and grip-profile, reliability improvements. Just months after the initial adoption of the Type 74, the new NP92 series was completed and soon-after adopted as a replacement to both the Type 73 and Type 74. With only a small number of Type 74s being produced in the time between it's adoption and replacement, the Type 74 was relegated to a senior officer's weapon, usually given as token of appreciation for long or excellent service."
 	icon_state = "ttb"
 	item_state = "ttb"
 	current_mag = /obj/item/ammo_magazine/pistol/t73_impact

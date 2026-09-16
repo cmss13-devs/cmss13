@@ -537,7 +537,7 @@
 
 /obj/item/weapon/gun/smg/pps43
 	name = "\improper Type-19 Submachinegun" //placeholder
-	desc = "An outdated, but reliable and powerful, submachinegun originating in the Union of Progressive Peoples, it is still in limited service in the UPP but is most often used by paramilitary groups or corporate security forces. It is usually used with a 35 round stick magazine, or a 71 round drum."
+	desc = "An outdated, but reliable and powerful, submachinegun originating in the Chinese/Asian-Nation Cooperative, it is still in limited service in the UPP"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/smgs.dmi'
 	icon_state = "insasu"
 	item_state = "insasu"
@@ -584,12 +584,12 @@
 /obj/item/weapon/gun/smg/pps43/extended_mag
 	current_mag = /obj/item/ammo_magazine/smg/pps43/extended
 //-------------------------------------------------------
-//Type 64
+//NSP-773
 
 /obj/item/weapon/gun/smg/bizon
-	name = "\improper Type 64 Submachinegun"
-	desc = "The standard submachinegun of the UPP, sporting an unusual 64 round helical magazine, it has a high fire-rate, but is unusually accurate. This one has a faux-wood grip, denoting it as civilian use or as an export model."
-	desc_lore = "The Type 64 finds its way into the hands of more than just UPP soldiers, it has an active life with rebel groups, corporate security forces, mercenaries, less well-armed militaries, and just about everything or everyone in between."
+	name = "\improper NSP-773 Submachinegun"
+	desc = "The standard submachinegun of the UPP, sporting an unusual 64 round helical magazine, it has a high fire-rate, but suffers from poor precision at range."
+	desc_lore = "The NSP-773 orignates as a sister project to the NP92 handgun, intended to replace the VU-292 submachinegun in police and orbital use whilst using the newly developed 8.6x20mm caseless round. Whilst a normal carbine was more than sufficent for rear-line troops and vehicle crews, a lower-powered pistol cartridge was deemed superior for the purpose of avoiding overpenetration in enviroments like space stations or civilian centers. The design, whilst having several flaws with accuracy and the like, proved easy to produce and even easier to copy. Today it's used not just by the Union, but also plenty of small-time mercenaries, rebels, corporate security teams, and just about everything in-between."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/smgs.dmi'
 	icon_state = "type64"
 	item_state = "type64"
@@ -621,9 +621,6 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 
 /obj/item/weapon/gun/smg/bizon/upp
-	name = "\improper Type 64 Submachinegun"
-	desc = "The standard submachinegun of the UPP, sporting an unusual 64 round helical magazine, it has a high fire-rate, but is unusually accurate. This one has a black polymer grip, denoting it as in-use by the UPP military."
-	desc_lore = "The Type 64 finds its way into the hands of more than just UPP soldiers, it has an active life with rebel groups, corporate security forces, mercenaries, less well-armed militaries, and just about everything or everyone in between."
 	icon_state = "type64_u"
 	item_state = "type64"
 

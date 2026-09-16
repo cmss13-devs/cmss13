@@ -1,21 +1,21 @@
 /datum/supply_packs/upp/ammo_rounds_box_5_45x39mm
-	name = "UPP ammo box crate (5.45x39mm) (x600 rounds)"
+	name = "UPP ammo box crate (10x27mm) (x600 rounds)"
 	contains = list(
 		/obj/item/ammo_box/rounds/type71,
 	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "5.45x39mm ammo crate"
+	containername = "10x27mm ammo crate"
 	group = "UPP Ammo"
 
 /datum/supply_packs/upp/ammo_rounds_box_5_45x39mm_ap
-	name = "UPP ammo box crate (5.45x39mm AP) (x600 rounds)"
+	name = "UPP ammo box crate (10x27mm AP) (x600 rounds)"
 	contains = list(
 		/obj/item/ammo_box/rounds/type71/ap,
 	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "5.45x39mm AP ammo crate"
+	containername = "10x27mm AP ammo crate"
 	group = "UPP Ammo"
 
 
@@ -69,13 +69,13 @@
 
 
 /datum/supply_packs/upp/ammo_Type64_x10
-	name = "UPP Magazine box (Type 64, 10x regular mags)"
+	name = "UPP Magazine box (NSP-773, 10x regular mags)"
 	contains = list(
 		/obj/item/ammo_box/magazine/type64,
 	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "Type 64 magazines crate"
+	containername = "NSP-773 magazines crate"
 	group = "UPP Ammo"
 
 /datum/supply_packs/upp/ammo_Type71_box

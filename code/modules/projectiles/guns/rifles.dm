@@ -1581,7 +1581,8 @@
 
 /obj/item/weapon/gun/rifle/type71
 	name = "\improper Type 71 pulse rifle"
-	desc = "The primary service rifle of the UPP space forces, the Type 71 is an ergonomic, lightweight pulse rifle chambered in 5.45x39mm. In accordance with doctrinal principles of overmatch and suppression, the rifle has a high rate of fire and a high-capacity casket magazine. Despite lackluster precision, an integrated recoil-dampening mechanism makes the rifle surprisingly controllable in bursts."
+	desc = "The primary service rifle of the UPP Space Operating Forces, the Type 71 is an ergonomic, lightweight pulse rifle chambered in 10x27mm. Whilst not as fast-firing as the M41A of the Colonial Marines, the larger size of the 10x27mm cartridge allows superior penetration and stopping power. Despite comparatively poor precision, an integrated recoil-dampening mechanism makes the rifle surprisingly controllable in bursts."
+	desc_lore = "Officially designated the Rifle, Infantry, Type 71, Model B, the Type 71 serves as the most common rifle throughout the UPP SOF. \nThe initial design for the Type 71 originates in the now defunct Chinese/Asian-Nation Cooperative, recognising the limited effectiveness of their current carbines, plans were drafted to replace their current weapons, though the end of the Dog War and subsequent absorption of the CANC into the UPP put these on hold. \nIn 2170, with the experience of the Dog War and early fights against CANC seperatists in mind, the SOF recognised a need to replace their current rifle and set out to find a replacement. By the end of the trials, SOF Procurement had chosen to adopt the Type 71-A as its new rifle, which immediately began to show teething issues not uncovering in the adoption process. The original Type 71-A was shown to suffer from poor reliabilty and accuracy, and early magazine models had a chronic issue of malfunctioning when undergoing rapid heat changes. These issues, compounded with general opportunities to make improvements to the design led the SOF to adopt the current model, the Type 71-B, which has served the UPP faithfully ever since."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/assault_rifles.dmi'
 	icon_state = "type71"
 	item_state = "type71"
@@ -1707,7 +1708,7 @@
 
 /obj/item/weapon/gun/rifle/type71/flamer
 	name = "\improper Type 71-F pulse rifle"
-	desc = "This appears to be a less common variant of the Type 71 with an integrated flamethrower that seems especially powerful."
+	desc = "An uncommon variant of the UPPAC SOF's standard rifle, the Type 71-F trades out the commonly attached grenade launcher with an underbarrel flamethrower, allowing greater close-quarters capabilities and foliage clearage."
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight, // Rail
 		/obj/item/attachable/magnetic_harness,
@@ -1756,8 +1757,9 @@
 	)
 
 /obj/item/weapon/gun/rifle/type71/carbine
-	name = "\improper Type 71 pulse carbine"
-	desc = "A carbine variant of the Type 71, easier to handle at the cost of lesser damage, but negative soldier reviews have shifted it out of active use, given only to reserves or troops not expected to face much combat."
+	name = "\improper Type 71-C pulse carbine"
+	desc = "A carbine variant of the UPPAC SOF's standard rifle, the Type 71-C is a smaller and lighter version of the standard Type 71, primarily issued to troops intended to be going into close quarters, backline troops, and vehicle crews. It fires faster than a standard rifle, but the lower muzzle velocity lowers damage output."
+	desc_lore = "The Type 71-C exists originally as a personal defense weapon for troops not expected to get into contact, like backline logistics or vehicle crews, however the shortening of the gas-system in the design of the weapon led to a noticibly higher fire-rate. This combined with the standard explosive-filled rounds exploding with the same force even with the lower muzzle velocity led to the 71-C's adoption as a general use close-quarters weapon. \nIt is officially recommended to fire in short bursts unless otherwise necessary, prolonged fire has been known to greatly increase wear on the carbine, and in certain cases cause catastrophic malfunctions."
 	icon_state = "type71c"
 	item_state = "type71c"
 
@@ -1829,8 +1831,9 @@
 	)
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando
-	name = "\improper Type 71 'Commando' pulse carbine"
-	desc = "A much rarer variant of the Type 71, this version contains an integrated suppressor, integrated scope, and extensive fine-tuning. Many parts have been replaced, filed down, and improved upon. As a result, this variant is rarely seen outside of commando units."
+	name = "\improper Type 71-K 'Commando' pulse carbine"
+	desc = "A much rarer variant of the Type 71, this version contains an integrated suppressor, integrated scope, IFF capable targetting system, and extensive fine-tuning. Many parts have been replaced, filed down, and improved upon. As a result, this variant is rarely seen outside of commando units."
+	desc_lore = "The Type 71-K is the newest, and most rare variant of the Type 71. Issued sparingly to commando and special forces units throughout the entire UPPAC, the Type 71-K features several improvements over both the Type 71-C and standard Type 71; such as an integrated suppressor, superior accuracy and fire-rate, a computerised tracking system, an attached low-power scope for precise shots, superior reliability(when properly maintained) whilst at the same time remaining lighter than the standard Type 71 rifle by use of several lighter and cut down parts."
 	icon_state = "type73"
 	item_state = "type73"
 

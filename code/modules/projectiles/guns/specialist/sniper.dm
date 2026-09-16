@@ -543,11 +543,12 @@
 			PMC_sniper.KnockDown(5)
 			PMC_sniper.Stun(5)
 
-//Type 88 //Based on the actual Dragunov DMR rifle.
+//FPA-299, UPP/rebel sniper rifle
 
 /obj/item/weapon/gun/rifle/sniper/svd
-	name = "\improper Type 88 designated marksman rifle"
-	desc = "The standard issue DMR of the UPP, the Type 88 is sought after by competitive shooters and terrorists alike for its high degree of accuracy. Typically loaded with armor-piercing 7.62x54mmR rounds in a 12 round magazine."
+	name = "\improper FPA-299 designated marksman rifle"
+	desc = "The standard issue DMR of the UPP, the FPA-299 is an accurate and powerful rifle, whilst not a true sniper rifle, it greatly exceeds the range and accuracy of similar DMRs used by other nations such as the M4RA and L64 rifles used by the USCM and TWE."
+	desc_lore = "The Fusil de Precisión Avanzado, or the FPA-299, is the current standard DMR of all branches of the UPPAC. \nMore of an upgrade than an actual new weapon, the design of the FTA-299 is nearly identical to the older FPA-270 DMR of Dog War fame, but with an upscaled 12x28mm cartridge used by the QYJ-72 compared to the older 9x40mm cartridge used by the FPA-270."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/marksman_rifles.dmi'
 	icon_state = "type88"
 	item_state = "type88"
@@ -600,5 +601,5 @@
 	accuracy_mult = BASE_ACCURACY_MULT * 3
 	scatter = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT
-	recoil = RECOIL_AMOUNT_TIER_5
+	recoil = RECOIL_AMOUNT_TIER_4
 	damage_falloff_mult = 0

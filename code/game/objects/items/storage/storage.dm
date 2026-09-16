@@ -653,6 +653,9 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	..()
 
 /obj/item/storage/proc/attempt_item_insertion(obj/item/W as obj, prevent_warning = FALSE, mob/user as mob)
+	if(SEND_SIGNAL(W, COMSIG_ITEM_ATTEMPT_INSERTION_INTO_STORAGE, src, prevent_warning, user) & COMPONENT_ITEM_CANCEL_INSERTION_INTO_STORAGE)
+		return
+
 	if(!can_be_inserted(W, user))
 		return
 

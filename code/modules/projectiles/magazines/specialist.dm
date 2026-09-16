@@ -74,6 +74,7 @@
 	default_ammo = /datum/ammo/bullet/rifle/m4ra/custom_tracker
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
+	flags_magazine = AMMUNITION_REFILLABLE | JUNGLE_STYLE_ABLE
 	ammo_band_icon = "+a19_band"
 	ammo_band_icon_empty = "+a19_band_e"
 	caliber = "A19"

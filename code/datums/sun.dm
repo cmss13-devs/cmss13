@@ -76,7 +76,8 @@ GLOBAL_DATUM_INIT(sun_status, /datum/sun, new)
 	var/area/lighting_mob_area = get_area(mob_in_light)
 	if(CEILING_IS_PROTECTED(lighting_mob_area?.ceiling, CEILING_PROTECTION_TIER_2)) //if underground, don't animate, this is needed in combo with the special area check
 		return FALSE
-	if(!is_ground_level(get_turf(mob_in_light)?.z)) // dont animate if not groundlevel
+	var/turf/mob_turf = get_turf(mob_in_light)
+	if(!is_ground_level(mob_turf.z)) // dont animate if not groundlevel
 		return FALSE
 	return TRUE
 

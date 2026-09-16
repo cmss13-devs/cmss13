@@ -55,6 +55,9 @@
 
 	var/time_to_live = 10
 
+	///for despoiler acid that only removes two pats of flame not all of it
+	var/weak_extinguish = FALSE
+
 /obj/effect/xenomorph/spray/no_stun
 	stun_duration = 0
 
@@ -110,19 +113,22 @@
 
 		// Humans?
 		if(isliving(atm)) //For extinguishing mobs on fire
-			var/mob/living/M = atm
+			var/mob/living/mob = atm
 
-			if(M != cause_data?.resolve_mob())
-				M.ExtinguishMob()
+			if(mob != cause_data?.resolve_mob())
+				if(!weak_extinguish)
+					mob.ExtinguishMob()
+				else
+					mob.adjust_fire_stacks(-10, min_stacks = 0) //two pats
 
-			if(M.stat == DEAD) // NO. DAMAGING. DEAD. MOBS.
+			if(mob.stat == DEAD) // NO. DAMAGING. DEAD. MOBS.
 				continue
-			if (iscarbon(M))
-				var/mob/living/carbon/C = M
-				if (C.ally_of_hivenumber(hivenumber))
+			if (iscarbon(mob))
+				var/mob/living/carbon/carbon = mob
+				if (carbon.ally_of_hivenumber(hivenumber))
 					continue
-				apply_spray(M)
-				M.apply_armoured_damage(get_xeno_damage_acid(M, damage_amount), ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
+				apply_spray(mob)
+				mob.apply_armoured_damage(get_xeno_damage_acid(mob, damage_amount), ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
 
 			continue
 
@@ -161,7 +167,8 @@
 	if(isliving(AM))
 		var/mob/living/living_mob = AM
 		if(living_mob.ally_of_hivenumber(hivenumber))
-			living_mob.ExtinguishMob()
+			if(!weak_extinguish)
+				living_mob.ExtinguishMob()
 		else
 			apply_spray(living_mob)
 	else if(isVehicleMultitile(AM))
@@ -258,6 +265,7 @@
 	damage_amount = 30
 	time_to_live = 2 SECONDS
 	stun_duration = 0
+	weak_extinguish = TRUE
 
 /obj/effect/xenomorph/spray/despoiler/apply_spray(mob/living/carbon/carbon)
 	. = ..()
@@ -265,9 +273,6 @@
 
 	if(!acid_effect)
 		acid_effect = new /datum/effects/acid(carbon)
-
-/obj/effect/xenomorph/spray/despoiler/empowered
-	stun_duration = 1
 
 /obj/effect/xenomorph/spray/despoiler/empowered/apply_spray(mob/living/carbon/carbon)
 	var/datum/component/acid_immunity/immunity = carbon.GetComponent(/datum/component/acid_immunity)

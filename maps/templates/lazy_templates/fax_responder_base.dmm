@@ -695,6 +695,13 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/ert_station/fax_response_station)
+"gF" = (
+/obj/structure/window/reinforced/toughened{
+	dir = 8
+	},
+/obj/item/tool/soap,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/adminlevel/ert_station/fax_response_station)
 "gG" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Bathroom"
@@ -892,14 +899,8 @@
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "jf" = (
-/obj/structure/machinery/cm_vending/sorted/marine_food{
-	pixel_y = 16;
-	wrenchable = 0;
-	density = 0;
-	name = "\improper Food Vendor";
-	desc = "Contains replica military prepared meals.";
-	pixel_x = 10
-	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/woodentable,
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "ji" = (
@@ -928,17 +929,9 @@
 /turf/open/asphalt,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "jm" = (
-/obj/structure/window/reinforced/toughened{
-	layer = 2.99
-	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/emails{
-	dir = 1
-	},
-/obj/item/paper_bin{
-	pixel_x = -14;
-	pixel_y = 5;
-	layer = 2.98
+/obj/structure/machinery/disposal{
+	pixel_y = -3;
+	pixel_x = 4
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -2213,12 +2206,10 @@
 /turf/open/floor/shiva/radiator_tile2,
 /area/adminlevel/ert_station/fax_response_station)
 "xj" = (
-/obj/structure/window/reinforced/toughened,
-/obj/structure/window/reinforced/toughened{
-	dir = 8
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Bathroom";
+	dir = 1
 	},
-/obj/structure/surface/table/almayer,
-/obj/item/device/flashlight/lamp,
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "xm" = (
@@ -2421,19 +2412,8 @@
 /turf/open/floor/almayer/red/northwest,
 /area/adminlevel/ert_station/fax_response_station)
 "zw" = (
-/obj/structure/window/reinforced/toughened,
-/obj/structure/window/reinforced/toughened{
-	dir = 4
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/device/flashlight/lamp,
-/obj/item/paper_bin{
-	pixel_x = -14;
-	pixel_y = 5
-	},
-/obj/item/tool/pen/red/clicky{
-	pixel_x = -15;
-	pixel_y = 2
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -2617,6 +2597,13 @@
 /area/adminlevel/ert_station/fax_response_station)
 "AQ" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"AS" = (
+/obj/structure/machinery/computer/arcade{
+	pixel_y = 17;
+	density = 0
+	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "AT" = (
@@ -2922,13 +2909,14 @@
 /turf/open/floor/almayer/red,
 /area/adminlevel/ert_station/fax_response_station)
 "DL" = (
-/obj/structure/machinery/vending/coffee{
-	pixel_x = 4;
-	wrenchable = 0;
-	prices = list();
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/sorted/marine_food{
 	pixel_y = 16;
+	wrenchable = 0;
 	density = 0;
-	wires = 12
+	name = "\improper Food Vendor";
+	desc = "Contains replica military prepared meals.";
+	pixel_x = 10
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -3540,6 +3528,14 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
+"JN" = (
+/obj/structure/surface/table/woodentable,
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
+	pixel_y = 29
+	},
+/obj/item/pizzabox/pizza_galaxy/meat,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
 "JO" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Bathroom";
@@ -3724,10 +3720,12 @@
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "LX" = (
-/obj/structure/flora/pottedplant/random{
-	pixel_y = 6;
-	pixel_x = -5;
-	layer = 4
+/obj/structure/window/framed/kutjevo/reinforced{
+	not_damageable = 1;
+	not_deconstructable = 1;
+	health = 999999;
+	unacidable = 1;
+	unslashable = 1
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -3832,15 +3830,11 @@
 /turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/fax_response_station)
 "Nt" = (
-/obj/structure/machinery/computer/arcade{
-	pixel_y = 17;
-	density = 0
-	},
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood/ship,
+/turf/closed/wall/kutjevo/colony/reinforced/hull,
 /area/adminlevel/ert_station/fax_response_station)
 "Nx" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
@@ -3872,10 +3866,14 @@
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "NU" = (
-/obj/structure/window/reinforced/toughened,
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/emails{
-	dir = 1
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/vending/coffee{
+	pixel_x = 4;
+	wrenchable = 0;
+	prices = list();
+	pixel_y = 16;
+	density = 0;
+	wires = 12
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -4484,6 +4482,25 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
+"UC" = (
+/obj/structure/surface/table/woodentable,
+/obj/structure/machinery/hybrisa/coffee_machine{
+	pixel_y = 13;
+	pixel_x = 1
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -8;
+	pixel_y = -1
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 6
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -1;
+	pixel_y = -1
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
 "UD" = (
 /obj/structure/pipes/vents/pump/no_boom{
 	dir = 1
@@ -4859,6 +4876,9 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/comfy/beige{
+	dir = 8
+	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "ZP" = (
@@ -6745,8 +6765,8 @@ Ry
 wl
 gX
 xK
-bH
-NU
+JN
+zw
 LX
 TW
 nr
@@ -6785,9 +6805,9 @@ Ry
 wl
 gX
 xK
-TW
+jf
 zw
-wZ
+LX
 wZ
 Di
 wZ
@@ -6827,7 +6847,7 @@ gX
 xK
 ZL
 wZ
-wZ
+xj
 wZ
 Ba
 Tg
@@ -6866,8 +6886,8 @@ wl
 gX
 xK
 wZ
-xj
 wZ
+LX
 wZ
 wg
 ID
@@ -6905,9 +6925,9 @@ Ry
 wl
 gX
 xK
-bH
+UC
 jm
-wZ
+LX
 wZ
 fo
 yR
@@ -6947,8 +6967,8 @@ gX
 xK
 xK
 xK
-jf
-TW
+xK
+DL
 rX
 AQ
 Nx
@@ -6986,9 +7006,9 @@ wl
 gX
 xK
 NV
+Ph
 xK
-DL
-TW
+NU
 fo
 pl
 xK
@@ -7026,8 +7046,8 @@ wl
 gX
 xK
 bf
+Ph
 Dw
-wZ
 wZ
 cX
 bX
@@ -7066,9 +7086,9 @@ wl
 gX
 xK
 sI
-xK
+gF
 Nt
-wZ
+AS
 fo
 tJ
 xK

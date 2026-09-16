@@ -1383,3 +1383,191 @@
 	icon_state = "prison_cellwindow0"
 	basestate = "prison_cellwindow"
 	health = 100
+
+
+//Atlan Station Windows
+//grey
+/obj/structure/window/framed/upp_ship/grey
+	name = "window"
+	desc = "A glass window inside a wall frame."
+	icon = 'icons/turf/walls/upp_grey_windows.dmi'
+	icon_state = "uppwall_window0"
+	basestate = "uppwall_window"
+	health = 40
+	window_frame = /obj/structure/window_frame/upp_ship/grey
+
+/obj/structure/window/framed/upp_ship/grey/reinforced
+	name = "reinforced window"
+	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
+	icon_state = "uppwall_window0"
+	basestate = "uppwall_window"
+	health = 100
+	reinf = 1
+	window_frame = /obj/structure/window_frame/upp_ship/grey/reinforced
+
+/obj/structure/window/framed/upp_ship/grey/hull
+	name = "hull window"
+	desc = "A glass window. Something tells you this one is somehow indestructible."
+	icon_state = "uppwall_rwindow0"
+	basestate = "uppwall_rwindow"
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 10000000
+	window_frame = /obj/structure/window_frame/upp_ship/grey/reinforced/hull
+
+//teal
+/obj/structure/window/framed/upp_ship/grey/teal
+	name = "window"
+	desc = "A glass window inside a wall frame."
+	icon = 'icons/turf/walls/upp_grey_teal_windows.dmi'
+	icon_state = "uppwall_window0"
+	basestate = "uppwall_window"
+	health = 40
+	window_frame = /obj/structure/window_frame/upp_ship/grey/teal
+
+/obj/structure/window/framed/upp_ship/grey/teal/reinforced
+	name = "reinforced window"
+	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
+	icon_state = "uppwall_window0"
+	basestate = "uppwall_window"
+	health = 100
+	reinf = 1
+	window_frame = /obj/structure/window_frame/upp_ship/grey/teal/reinforced
+
+/obj/structure/window/framed/upp_ship/grey/teal/hull
+	name = "hull window"
+	desc = "A glass window. Something tells you this one is somehow indestructible."
+	icon_state = "uppwall_rwindow0"
+	basestate = "uppwall_rwindow"
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 10000000
+	window_frame = /obj/structure/window_frame/upp_ship/grey/teal/hull
+
+//blue
+/obj/structure/window/framed/upp_ship/grey/blue
+	name = "window"
+	desc = "A glass window inside a wall frame."
+	icon = 'icons/turf/walls/upp_grey_blue_windows.dmi'
+	icon_state = "uppwall_window0"
+	basestate = "uppwall_window"
+	health = 40
+	window_frame = /obj/structure/window_frame/upp_ship/grey/blue
+
+/obj/structure/window/framed/upp_ship/grey/blue/reinforced
+	name = "reinforced window"
+	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
+	icon_state = "uppwall_window0"
+	basestate = "uppwall_window"
+	health = 100
+	reinf = 1
+	window_frame = /obj/structure/window_frame/upp_ship/grey/blue/reinforced
+
+/obj/structure/window/framed/upp_ship/grey/blue/hull
+	name = "hull window"
+	desc = "A glass window. Something tells you this one is somehow indestructible."
+	icon_state = "uppwall_rwindow0"
+	basestate = "uppwall_rwindow"
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 10000000
+	window_frame = /obj/structure/window_frame/upp_ship/grey/blue/hull
+
+//orange
+/obj/structure/window/framed/upp_ship/grey/orange
+	name = "window"
+	desc = "A glass window inside a wall frame."
+	icon = 'icons/turf/walls/upp_grey_orange_windows.dmi'
+	icon_state = "uppwall_window0"
+	basestate = "uppwall_window"
+	health = 40
+	window_frame = /obj/structure/window_frame/upp_ship/grey/orange
+
+/obj/structure/window/framed/upp_ship/grey/orange/reinforced
+	name = "reinforced window"
+	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
+	icon_state = "uppwall_window0"
+	basestate = "uppwall_window"
+	health = 100
+	reinf = 1
+	window_frame = /obj/structure/window_frame/upp_ship/grey/orange/reinforced
+
+/obj/structure/window/framed/upp_ship/grey/orange/hull
+	name = "hull window"
+	desc = "A glass window. Something tells you this one is somehow indestructible."
+	icon_state = "uppwall_rwindow0"
+	basestate = "uppwall_rwindow"
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 10000000
+	window_frame = /obj/structure/window_frame/upp_ship/grey/orange/hull
+
+//red
+/obj/structure/window/framed/upp_ship/grey/red
+	name = "window"
+	desc = "A glass window inside a wall frame."
+	icon = 'icons/turf/walls/upp_grey_red_windows.dmi'
+	icon_state = "uppwall_window0"
+	basestate = "uppwall_window"
+	health = 40
+	window_frame = /obj/structure/window_frame/upp_ship/grey/red
+
+/obj/structure/window/framed/upp_ship/grey/red/reinforced
+	name = "reinforced window"
+	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
+	icon_state = "uppwall_window0"
+	basestate = "uppwall_window"
+	health = 100
+	reinf = 1
+	window_frame = /obj/structure/window_frame/upp_ship/grey/red/reinforced
+
+/obj/structure/window/framed/upp_ship/grey/red/hull
+	name = "hull window"
+	desc = "A glass window. Something tells you this one is somehow indestructible."
+	icon_state = "uppwall_rwindow0"
+	basestate = "uppwall_rwindow"
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 10000000
+	window_frame = /obj/structure/window_frame/upp_ship/grey/red/hull
+
+//green
+/obj/structure/window/framed/upp_ship/grey/green
+	name = "window"
+	desc = "A glass window inside a wall frame."
+	icon = 'icons/turf/walls/upp_grey_green_windows.dmi'
+	icon_state = "uppwall_window0"
+	basestate = "uppwall_window"
+	health = 40
+	window_frame = /obj/structure/window_frame/upp_ship/grey/green
+
+/obj/structure/window/framed/upp_ship/grey/green/reinforced
+	name = "reinforced window"
+	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
+	icon_state = "uppwall_window0"
+	basestate = "uppwall_window"
+	health = 100
+	reinf = 1
+	window_frame = /obj/structure/window_frame/upp_ship/grey/green/reinforced
+
+/obj/structure/window/framed/upp_ship/grey/green/hull
+	name = "hull window"
+	desc = "A glass window. Something tells you this one is somehow indestructible."
+	icon_state = "uppwall_rwindow0"
+	basestate = "uppwall_rwindow"
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 10000000
+	window_frame = /obj/structure/window_frame/upp_ship/grey/green/hull

@@ -106,7 +106,7 @@
 			to_chat(user, SPAN_WARNING("[src] is too sturdy to dismantle!"))
 			return TRUE
 
-		var/dismantle_time = 5 SECONDS
+		var/dismantle_time = 7 SECONDS // Matches a normal sized xenom
 		var/obj/item/tool/weldingtool/welder
 		var/obj/item/tool/shovel/shovel
 		if(iswelder(W))
@@ -122,14 +122,13 @@
 			if(shovel.folded)
 				to_chat(user, SPAN_WARNING("You need to unfold [shovel] first!"))
 				return TRUE
-			dismantle_time = shovel.shovelspeed
 			playsound(loc, creaking_sound, 30, TRUE)
 
 		if(shovel)
 			user.visible_message(SPAN_NOTICE("[user] starts digging away at the rock ledge."), SPAN_NOTICE("You start digging away at the rock ledge."))
 		else
 			user.visible_message(SPAN_NOTICE("[user] starts dismantling [src]."), SPAN_NOTICE("You start dismantling [src]."))
-		if(!do_after(user, dismantle_time * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+		if(!do_after(user, dismantle_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 			return TRUE
 		if((stat & BROKEN) || explo_proof || (welder && !welder.isOn()) || (shovel && shovel.folded))
 			return TRUE

@@ -138,6 +138,18 @@
 	log_strain("[new_xeno.name] reset their strain.")
 	COOLDOWN_START(new_xeno, next_strain_reset, 40 MINUTES)
 
+/mob/living/carbon/xenomorph/verb/strain_info()
+	set name = "Strain Information"
+	set desc = "Gives information about your strain."
+	set category = "Alien.Essentials"
+
+	// Checks if user has a strain.
+	if(!strain)
+		return
+
+	to_chat(src, SPAN_XENOANNOUNCE(strain.description))
+	return TRUE
+
 /// Is this xeno currently able to take a strain?
 /mob/living/carbon/xenomorph/proc/can_take_strain(reset=FALSE)
 	if(!length(caste.available_strains) || !check_state(TRUE))

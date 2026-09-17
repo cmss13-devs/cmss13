@@ -33,12 +33,6 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		castes_available = caste.early_evolves_to.Copy()
 
 	castes_available -= hive.blacklisted_castes
-	for(var/caste in castes_available)
-		if(GLOB.xeno_datum_list[caste].minimum_evolve_time > ROUND_TIME)
-			castes_available -= caste
-	if(!length(castes_available))
-		to_chat(src, SPAN_WARNING("The Hive is not capable of supporting any castes we can evolve to yet."))
-		return
 
 	var/castepick
 	if((client.prefs && client.prefs.no_radials_preference) || !hive.evolution_menu_images)

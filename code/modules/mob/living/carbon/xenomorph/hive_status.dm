@@ -1274,7 +1274,6 @@
 	for(var/caste in XENO_T2_CASTES)
 		if(GLOB.xeno_datum_list[caste].minimum_evolve_time > ROUND_TIME)
 			continue
-		to_chat(world, "[GLOB.xeno_datum_list[caste].minimum_evolve_time]")
 		if(slots[TIER_2][GUARANTEED_SLOTS][caste])
 			var/list/caste_candidates = list()
 			for(var/mob/living/carbon/xenomorph/xeno in tier_two_candidates)

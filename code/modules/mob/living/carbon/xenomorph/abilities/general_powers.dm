@@ -737,6 +737,7 @@
 	apply_cooldown()
 	return ..()
 
+/// SIGNAL_HANDLER for COMSIG_LIVING_PRE_DOAFTER
 /datum/action/xeno_action/onclick/xenohide/proc/unhide_on_action(source, delay)
 	SIGNAL_HANDLER
 	if(delay > 0)

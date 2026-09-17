@@ -757,7 +757,7 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 /proc/do_after(mob/living/busy_user, delay, user_flags = INTERRUPT_ALL, show_busy_icon, atom/movable/target, target_flags = INTERRUPT_MOVED, show_target_icon, max_dist = 1, status_effect = null, \
 		show_remaining_time = FALSE, numticks = DA_DEFAULT_NUM_TICKS) // These args should primarily be named args, since you only modify them in niche situations
 	// Only living mobs can perform timed actions.
-	if(!istype(user) || delay < 0)
+	if(!istype(busy_user) || delay < 0)
 		return FALSE
 
 	SEND_SIGNAL(busy_user, COMSIG_LIVING_PRE_DOAFTER, delay)

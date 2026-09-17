@@ -1327,11 +1327,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/event/metal/dynamic/lit)
-"xe" = (
-/obj/structure/blocker/fog,
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/coast/beachcorner/south_east,
-/area/varadero/exterior/farocean)
 "xk" = (
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/auto_turf/sand_white/layer0,
@@ -1428,10 +1423,6 @@
 	},
 /turf/open/floor/plating,
 /area/event/dynamic/lit)
-"zG" = (
-/obj/structure/blocker/fog,
-/turf/open/gm/coast/beachcorner2/south_east,
-/area/varadero/exterior/farocean)
 "zH" = (
 /obj/structure/platform_decoration/metal/strata/north,
 /turf/open/auto_turf/sand_white/layer1,
@@ -1942,10 +1933,6 @@
 	},
 /turf/open/floor/interior/wood,
 /area/varadero/interior_protected/caves/central)
-"Lp" = (
-/obj/structure/blocker/fog,
-/turf/open/gm/river/ocean/deep_ocean,
-/area/varadero/exterior/farocean)
 "LC" = (
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
@@ -6958,21 +6945,21 @@ VX
 VX
 "}
 (75,1,1) = {"
-Lp
-Lp
-Lp
-Lp
-Lp
-Lp
-Lp
-Lp
-Lp
-Lp
-Lp
-Lp
-Lp
-zG
-xe
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+nP
+lq
 VX
 VX
 VX

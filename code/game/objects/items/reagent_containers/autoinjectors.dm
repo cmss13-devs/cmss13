@@ -23,8 +23,6 @@
 	skilllock = SKILL_MEDICAL_DEFAULT
 	///If TRUE, nobody can tell what's in this autoinjector without a scanner.
 	var/chemical_unclear = FALSE
-	///if TRUE, this is a stimpack.
-	var/is_stimpack = FALSE
 	///How many uses are left in this autoinjector?
 	var/uses_left = 3
 	///If TRUE, this autoinjector has more than one reagent in it.
@@ -79,34 +77,49 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/get_examine_text(mob/user)
 	. = ..()
-	
 	///From full, how many injections are in this autoinjector until it needs to be refilled or disposed?
 	var/max_uses = initial(volume) / amount_per_transfer_from_this
 	update_uses_left()
 
-	if(uses_left >= 0)
-		if(chemical_unclear)
+	if(uses_left > 0)
+		if(chemical_unclear) //can't see what's in these bihs
 			if(max_uses == 1)
-				. += SPAN_NOTICE("It injects its entire payload of... Medicine, you guess? You don't know exactly what's in it.")
+				. += SPAN_NOTICE("It injects its entire payload of... medicine, you guess? You don't know exactly what's in it.")
 			else
-				. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections of... Medicine, you guess? You don't know exactly what's in it.")
-		else if(max_uses == 1) //one-use autoinjectors
+				. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections of... medicine, you guess? You don't know exactly what's in it.")
+
+		if(HAS_TRAIT(src, TRAIT_INJECTOR_CRYSTAL))
+			if(isyautja(user)) //
+				. += SPAN_NOTICE("It injects its entire payload of [amount_per_transfer_from_this]u [capitalize(chemname)] at once.")
+			else
+				. += SPAN_NOTICE("On closer perusal, the spike has a tiny, slanted hole at the end like an injector. You don't know what's in it or how to inject it, though.")
+
+		if(HAS_TRAIT(src, TRAIT_INJECTOR_RESEARCH))
+			if(max_uses == 1)
+				. += SPAN_NOTICE("It injects its entire payload of [amount_per_transfer_from_this]u of whatever you put in it.")
+			else
+				. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections of [amount_per_transfer_from_this]u of whatever you put in it.")
+
+		if(max_uses == 1) //one_use autoinjectors
 			. += SPAN_NOTICE("It injects its entire payload of [amount_per_transfer_from_this]u [capitalize(chemname)] at once.")
 		else
 			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections of [amount_per_transfer_from_this]u [capitalize(chemname)].")
 
 	else if(uses_left <= 0)
+		if(HAS_TRAIT(src, TRAIT_INJECTOR_CRYSTAL))
+			if(isyautja(user)) //
+				. += SPAN_WARNING("It is spent and it will soon disintegrate.")
 		if(cannot_refill)
 			. += SPAN_WARNING("It is spent and it cannot be refilled.")
+		if(HAS_TRAIT(src, TRAIT_INJECTOR_RESEARCH))
+			. += SPAN_HELPFUL("It is empty but it can be refilled with a pressurized reagent canister pouch.")
 		else
-			. += SPAN_HELPFUL("It is empty but it can be refilled. Try Wey-Med vends, Wall-Meds, or an MS-11 Smart Refill Tank.") //left ambiguous. w/e.
+			. += SPAN_HELPFUL("It is empty but it can be refilled. Try Wey-Med vends, Wall-Meds, or an MS-11 Smart Refill Tank.")
 
-	if(skilllock >= SKILL_MEDICAL_TRAINED)
+	if(skilllock >= SKILL_MEDICAL_TRAINED && !HAS_TRAIT(src, TRAIT_INJECTOR_CRYSTAL))
 		. += SPAN_NOTICE("It has a lock on it similar to pill bottles. Only those with sufficient medical training can unlock it.")
 	else
 		. += SPAN_HELPFUL("It doesn't have a lock on it, so anyone can use it.")
-
-
 
 /obj/item/reagent_container/hypospray/autoinjector/equipped()
 	..()
@@ -366,7 +379,6 @@
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 
-
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/inaprovaline
 	name = "crit-save EZ autoinjector"
 	chemname = "inaprovaline"
@@ -494,6 +506,7 @@
 	maptext_label = "Zzz"
 	cannot_refill = TRUE
 	skilllock = SKILL_MEDICAL_MEDIC
+	cannot_refill = TRUE
 	chemical_unclear = TRUE
 
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate/Initialize()
@@ -503,10 +516,10 @@
 	update_icon()
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency
-	name = "emergency EZ autoinjector (HIGH DOSE CAUTION)"
-	desc = "A massive ez autoinjector that injects a special cocktail of chemicals to be used in life-threatening situations. WARNING: DO NOT USE IF THE PATIENT HAS BICARIDINE, KELOTANE, OR OXYCODONE IN THEIR SYSTEM AS THE PATIENT *WILL* OVERDOSE!"
+	name = "emergency EZ one-use autoinjector (HIGH DOSE CAUTION)"
+	desc = "A massive ez one-use autoinjector that injects several strong medications at near-overdose doses at once to be used in life-threatening situations."
 	icon_state = "empty_emergency"
-	chemname = "emergency mix"
+	chemname = "emergency"
 	autoinjector_type = "autoinjector_single"
 	amount_per_transfer_from_this = (REAGENTS_OVERDOSE-1)*2 + (MED_REAGENTS_OVERDOSE-1) + 1 //dexalin plus is the +1
 	volume = (REAGENTS_OVERDOSE-1)*2 + (MED_REAGENTS_OVERDOSE-1) + 1 //dexalin plus is the +1
@@ -562,7 +575,10 @@
 	skilllock = SKILL_MEDICAL_DEFAULT
 	display_maptext = FALSE //corporate secret
 	cannot_refill = TRUE
-	is_stimpack = TRUE
+
+/obj/item/reagent_container/hypospray/autoinjector/ultrazine/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_INJECTOR_STIMPACK, TRAIT_SOURCE_INHERENT)
 
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine/update_icon()
 	. = ..()
@@ -598,15 +614,9 @@
 	black_market_value = 25
 	cannot_refill = TRUE
 
-/obj/item/reagent_container/hypospray/autoinjector/yautja/get_examine_text(mob/user)
-	update_uses_left()
-	if(uses_left >= 0)
-		if(isyautja(user))
-			. += SPAN_NOTICE("It is currently loaded with a single injection of [amount_per_transfer_from_this]u [capitalize(chemname)].")
-
-	else if(uses_left <= 0)
-		if(isyautja(user))
-			. += SPAN_NOTICE("It is spent and it will soon disintegrate.")
+/obj/item/reagent_container/hypospray/autoinjector/yautja/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_INJECTOR_CRYSTAL, TRAIT_SOURCE_INHERENT)
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall
 	name = "orange unusual crystal"
@@ -645,20 +655,9 @@
 	uses_left = 0
 	display_maptext = FALSE
 
-/obj/item/reagent_container/hypospray/autoinjector/research/get_examine_text(mob/user)
+/obj/item/reagent_container/hypospray/autoinjector/research/Initialize()
 	. = ..()
-	var/max_uses = initial(volume) / amount_per_transfer_from_this
-	if(uses_left >= 0)
-		. += SPAN_NOTICE("It is currently loaded with [uses_left / max_uses]/[max_uses] injections of [amount_per_transfer_from_this]u of whatever you put in it.")
-		if(max_uses == 1)
-			. += SPAN_NOTICE("It is currently loaded with a single injection of [amount_per_transfer_from_this]u of whatever you put in it.") //one-use autoinjectors
-	else if(uses_left <= 0)
-		. += SPAN_NOTICE("It is empty, but you can refill it with a pressurized reagent canister pouch.")
-
-	if(skilllock >= SKILL_MEDICAL_TRAINED)
-		. += SPAN_NOTICE("It has a lock on it similar to pill bottles. Only those with sufficient medical training can unlock it.")
-	else
-		. += SPAN_HELPFUL("It doesn't have a lock on it, so anyone can use it.")
+	ADD_TRAIT(src, TRAIT_INJECTOR_RESEARCH, TRAIT_SOURCE_INHERENT)
 
 /obj/item/reagent_container/hypospray/autoinjector/research/verb/flush_autoinjector()
 	set category = "Object"
@@ -733,7 +732,6 @@
 	volume = 10
 	amount_per_transfer_from_this = 10
 
-
 /obj/item/reagent_container/hypospray/autoinjector/research/ez/medium
 	name = "custom EZ one-use autoinjector (15u)"
 	volume = 15
@@ -765,7 +763,7 @@
 	icon_state = "empty_medic"
 	uses_left = 0
 
-/obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/tiny
+/obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/unit
 	name = "reagent canister pouch autoinjector (1u)"
 	volume = 6
 	amount_per_transfer_from_this = 1

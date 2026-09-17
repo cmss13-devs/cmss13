@@ -349,6 +349,14 @@
 /// If the table is being flipped, prevent any changes that will mess with adjacency handling
 #define TRAIT_TABLE_FLIPPING "t_table_flipping"
 
+//-- autoinjector traits --
+//trait identifying an autoinjector as a yautja crystal
+#define TRAIT_INJECTOR_CRYSTAL "inj_crystal"
+//trait identifying an autoinjector as a stimpack
+#define TRAIT_INJECTOR_STIMPACK "inj_stimpack"
+//trait identifying an autoinjector that is a factory custom from the autolathe
+#define TRAIT_INJECTOR_RESEARCH "inj_research"
+
 //List of all traits
 GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_YAUTJA_TECH,
@@ -451,6 +459,11 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 	),
 	/obj/structure/surface/table = list(
 		"TRAIT_STRUCTURE_FLIPPING" = TRAIT_TABLE_FLIPPING,
+	),
+	/obj/item/reagent_container/hypospray/autoinjector = list(
+		"TRAIT_INJECTOR_CRYSTAL" = TRAIT_INJECTOR_CRYSTAL,
+		"TRAIT_INJECTOR_STIMPACK" = TRAIT_INJECTOR_STIMPACK,
+		"TRAIT_INJECTOR_RESEARCH" = TRAIT_INJECTOR_RESEARCH,
 	)
 ))
 

@@ -399,7 +399,7 @@
 
 /datum/autolathe/recipe/medilathe/autoinjector/s1x6
 	name = "reagent pouch autoinjector (6x1u)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/tiny
+	path = /obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch/unit
 
 /datum/autolathe/recipe/medilathe/autoinjector/s5x6
 	name = "reagent pouch autoinjector (6x5u)"

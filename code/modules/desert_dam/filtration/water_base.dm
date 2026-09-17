@@ -74,8 +74,9 @@
 		qdel(resin)
 	for(var/obj/structure/mineral_door/resin/resin in loc)
 		qdel(resin)
-	for(var/turf/closed/wall/resin/resin in loc)
-		qdel(resin)
+	if(istype(loc, /turf/closed/wall/resin))
+		var/turf/closed/wall/resin/resin = loc
+		resin.dismantle_wall()
 	for(var/obj/flamer_fire/fire in loc)
 		qdel(fire)
 

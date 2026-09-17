@@ -1274,6 +1274,7 @@
 	for(var/caste in XENO_T2_CASTES)
 		if(GLOB.xeno_datum_list[caste].minimum_evolve_time > ROUND_TIME)
 			continue
+		to_chat(world, "[GLOB.xeno_datum_list[caste].minimum_evolve_time]")
 		if(slots[TIER_2][GUARANTEED_SLOTS][caste])
 			var/list/caste_candidates = list()
 			for(var/mob/living/carbon/xenomorph/xeno in tier_two_candidates)
@@ -1298,6 +1299,8 @@
 	if(slots[TIER_3][OPEN_SLOTS] > 0)
 		var/list/caste_candidates = list()
 		for(var/mob/living/carbon/xenomorph/xeno in tier_three_candidates)
+			if(xeno.desired_caste.minimum_evolve_time > ROUND_TIME)
+				continue
 			if(xeno.desired_caste.tier == 3)
 				caste_candidates |= xeno
 		if(length(caste_candidates))
@@ -1307,6 +1310,8 @@
 	if(slots[TIER_2][OPEN_SLOTS] > 0)
 		var/list/caste_candidates = list()
 		for(var/mob/living/carbon/xenomorph/xeno in tier_two_candidates)
+			if(xeno.desired_caste.minimum_evolve_time > ROUND_TIME)
+				continue
 			if(xeno.desired_caste.tier == 2)
 				caste_candidates |= xeno
 		if(length(caste_candidates))

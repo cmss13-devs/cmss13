@@ -44,8 +44,6 @@
 		if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, node, INTERRUPT_ALL))
 			to_chat(xeno, SPAN_WARNING("There's a pod here already! You decide to not replace it."))
 			return
-		to_chat(xeno, SPAN_NOTICE("We uproot and replace the weed node."))
-		playsound(xeno.loc, "alien_resin_break", 25)
 
 	var/obj/effect/alien/resin/trap/resin_trap = locate() in turf
 	if(resin_trap)
@@ -74,6 +72,8 @@
 		return
 
 	if(node)
+		to_chat(xeno, SPAN_NOTICE("We uproot and replace the weed node."))
+		playsound(xeno.loc, "alien_resin_break", 25)
 		to_convert = node.children.Copy()
 		qdel(node)
 

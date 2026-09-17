@@ -73,10 +73,10 @@
 	for(var/obj/effect/alien/resin/resin in loc)
 		qdel(resin)
 	for(var/obj/structure/mineral_door/resin/resin in loc)
-		qdel(resin)
+		resin.Dismantle(TRUE)
 	if(istype(loc, /turf/closed/wall/resin))
 		var/turf/closed/wall/resin/resin = loc
-		resin.dismantle_wall()
+		resin.dismantle_wall(TRUE)
 	for(var/obj/flamer_fire/fire in loc)
 		qdel(fire)
 

@@ -274,6 +274,7 @@
 	var/castes = castes_available.Join(", ")
 	xeno_message(SPAN_XENOANNOUNCE("The Hive is now strong enough to support: [castes]"))
 	xeno_maptext("The Hive can now support: [castes]", "Hive Strengthening")
+	offer_evolutions()
 	evo_screech()
 
 /datum/hive_status/proc/evo_screech()
@@ -1271,6 +1272,8 @@
 
 	//we first offer the guaranteed slots
 	for(var/caste in XENO_T2_CASTES)
+		if(GLOB.xeno_datum_list[caste].minimum_evolve_time > ROUND_TIME)
+			continue
 		if(slots[TIER_2][GUARANTEED_SLOTS][caste])
 			var/list/caste_candidates = list()
 			for(var/mob/living/carbon/xenomorph/xeno in tier_two_candidates)
@@ -1280,6 +1283,8 @@
 				offer_evolution_to(pick(caste_candidates))
 				found_candidate = TRUE
 	for(var/caste in XENO_T3_CASTES)
+		if(GLOB.xeno_datum_list[caste].minimum_evolve_time > ROUND_TIME)
+			continue
 		if(slots[TIER_3][GUARANTEED_SLOTS][caste])
 			var/list/caste_candidates = list()
 			for(var/mob/living/carbon/xenomorph/xeno in tier_three_candidates)

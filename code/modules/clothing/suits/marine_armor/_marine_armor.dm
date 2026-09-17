@@ -92,6 +92,7 @@
 	var/flashlight_cooldown = 0 //Cooldown for toggling the light
 	var/locate_cooldown = 0 //Cooldown for SL locator
 	var/armor_overlays[]
+	var/storage_capacity = 8
 	actions_types = list(/datum/action/item_action/toggle/lamp)
 	var/flags_marine_armor = ARMOR_SQUAD_OVERLAY|ARMOR_LAMP_OVERLAY
 	var/specialty = "M3 pattern marine" //Same thing here. Give them a specialty so that they show up correctly in vendors. speciality does NOTHING if you have NO_NAME_OVERRIDE
@@ -134,7 +135,7 @@
 		/obj/item/ammo_magazine/smg,
 		/obj/item/ammo_magazine/sniper,
 	)
-	pockets.max_storage_space = 8
+	pockets.max_storage_space = storage_capacity
 
 	light_holder = new(src)
 	AddElement(/datum/element/corp_label/armat)
@@ -288,6 +289,8 @@
 	icon_state = "MB"
 	specialty = "M4 pattern mod-'B' marine"
 	lamp_icon = "lampr"
+	storage_slots = null
+	storage_capacity = 10 //equivalent to 3 large and 1 tiny slot
 
 /obj/item/clothing/suit/storage/marine/medium/rto/army
 	name = "\improper Personal Body Armor System"

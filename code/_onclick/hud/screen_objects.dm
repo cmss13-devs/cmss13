@@ -897,6 +897,10 @@
 	icon = 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi'
 	icon_state = "surgery_off"
 	screen_loc = "hud:1:9,7:55"
+	alpha = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	var/active = FALSE
+
 
 // /atom/movable/screen/surgery_mode/give_to(mob/living/L)
 // 	..()
@@ -912,8 +916,11 @@
 // 		usr.mob_flags |= SURGERY_MODE_ON
 
 // Called when the action is clicked on.
-/atom/movable/screen/surgery_mode/clicked()
+/atom/movable/screen/surgery_mode/clicked(mob/user, mods, location, params)
 	. = ..()
+	if(!active)
+		return
+
 	if(usr.mob_flags & SURGERY_MODE_ON)
 		icon_state = "surgery_off"
 		usr.mob_flags &= ~SURGERY_MODE_ON

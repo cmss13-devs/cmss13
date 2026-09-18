@@ -107,9 +107,12 @@
 	if(is_skilled(SKILL_SURGERY_NOVICE))
 		surgery_button.alpha = 255
 		surgery_button.mouse_opacity = MOUSE_OPACITY_ICON
+		surgery_button.active = TRUE
 	else
 		surgery_button.alpha = 0
 		surgery_button.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+		surgery_button.active = FALSE
+		owner.mob_flags &= ~SURGERY_MODE_ON
 
 /datum/skill/research
 	skill_name = SKILL_RESEARCH

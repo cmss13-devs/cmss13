@@ -8,6 +8,11 @@
 
 	var/auth_ticket = params_list[SS13LIB_AUTH_TICKET_CODE]
 
+	if(auth_ticket && !auth_method_enabled("hub"))
+		SS13LIB_INFO_LOG("Rejecting [new_client.key]: Hub authentication is disabled.")
+		del(new_client)
+		return TRUE
+
 	var/launcher_port = params_list["launcher_port"]
 	var/launcher_key = params_list["launcher_key"]
 
@@ -37,6 +42,11 @@
 
 		SS13LIB_WARNING_LOG("Failed to authenticate [new_client.key] via SS13Hub.")
 
+		if(!auth_method_enabled("byond"))
+			SS13LIB_WARNING_LOG("Rejecting [new_client.key]: Hub authentication failed and BYOND authentication is disabled.")
+			del(new_client)
+			return TRUE
+
 		var/key_to_skip = new_client.key
 		isbanned_hook_ignore |= key_to_skip
 
@@ -53,6 +63,10 @@
 
 		new_client.mob = new /mob/ss13lib_holder_mob(null)
 		return new_client.mob
+	if(!auth_method_enabled("byond"))
+		SS13LIB_INFO_LOG("Rejecting [new_client.key]: BYOND authentication is disabled.")
+		del(new_client)
+		return TRUE
 
 	var/key_to_skip = new_client.key
 	isbanned_hook_ignore |= key_to_skip
@@ -63,6 +77,13 @@
 
 	SS13LIB_INFO_LOG("No auth ticket for [new_client.key], proceeding as BYOND-authenticated user.")
 	return FALSE
+
+/datum/ss13lib/proc/auth_method_enabled(method)
+#ifdef SS13LIB_AUTH_METHODS
+	return method in SS13LIB_AUTH_METHODS
+#else
+	return TRUE
+#endif
 
 /datum/ss13lib/proc/check_auth_ticket(auth_ticket, client_ip) as /datum/ss13lib_auth_response
 	if(!src.server_id)

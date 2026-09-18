@@ -188,3 +188,22 @@
   - balance: Caster Eradicator (HPC) / Dual Plasma Cannons had scatter disabled to
       target ground properly. Little difference that makes if that thing is pointed
       at you.
+2026-09-16:
+  Dimdimich1996, AmoryBlaine, DetectiveGoogle:
+  - rscadd: New colony rifle, M20A Harrington, similar stats to an M16.
+  - maptweak: static M16 spawns on Solaris have been replaced by the M20A.
+  Drathek:
+  - code_imp: Updated some code regarding dress vendor and snowflake vendor to satisfy
+      new checks
+  - code_imp: Updated loop logic for legendary property setup
+  Steelpoint:
+  - maptweak: Removes invisible fog tiles on New Varadero. These tiles are not currently
+      visible to players.
+2026-09-18:
+  Drathek:
+  - code_imp: Rearranged sentry variable defines some
+  - bugfix: Defenses (not just sentries) no longer are flagged as needing power since
+      they handle power themselves
+  TheDonkified:
+  - refactor: Extract path-matching logic into a helper function
+  - code_imp: Add unit tests for new helper

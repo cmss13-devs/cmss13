@@ -492,7 +492,7 @@
 
 	icon_state = "gun_unique"
 
-/atom/movable/screen/clicked(mob/user, list/mods)
+/atom/movable/screen/clicked(mob/user, list/mods, location, params)
 	if(!user)
 		return TRUE
 

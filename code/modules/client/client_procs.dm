@@ -274,6 +274,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	//CONNECT//
 	///////////
 /client/New(TopicData)
+	log_debug("join topic: [json_encode(TopicData)]")
+
 	SS13LIB_CLIENT
 
 	soundOutput = new /datum/soundOutput(src)

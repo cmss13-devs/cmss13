@@ -501,11 +501,18 @@
 
 	return FALSE
 
-/atom/movable/screen/inventory/clicked(mob/user, list/mods)
+/atom/movable/screen/inventory/clicked(mob/user, list/mods, location, params)
 	if(..())
 		return TRUE
 	if(user.is_mob_incapacitated(TRUE))
 		return TRUE
+
+	var/obj/item/inv_item = user.get_item_by_slot(slot_id)
+	if(inv_item)
+		user.next_click -= 1
+		user.do_click(inv_item, location, params)
+		return TRUE
+
 	switch(name)
 		if("r_hand")
 			if(iscarbon(user))

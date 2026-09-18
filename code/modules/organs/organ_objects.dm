@@ -211,6 +211,10 @@
 		to_chat(user, SPAN_WARNING("It would be unwise to plant this out here."))
 		return FALSE
 
+	if(src.max_usage < 1)
+		to_chat(user, SPAN_WARNING("The heart has no mass left... what are you even holding?"))
+		return
+
 	return TRUE
 
 /obj/item/organ/xeno/proc/handle_organ_planting(turf/target, mob/user)

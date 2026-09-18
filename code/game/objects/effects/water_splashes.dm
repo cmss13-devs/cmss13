@@ -13,6 +13,7 @@
 
 /obj/effect/water_splash/Initialize(mapload=FALSE, playsound = TRUE)
 	. = ..()
+	message_admins("water splashing created")
 	if(lifetime != INFINITY)
 		addtimer(CALLBACK(src, PROC_REF(destroy_effect)), lifetime)
 	if(playsound)

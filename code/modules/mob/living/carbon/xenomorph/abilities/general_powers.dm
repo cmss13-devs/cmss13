@@ -565,7 +565,6 @@
 	xeno.update_icons()
 
 	additional_effects_always()
-	SEND_SIGNAL(owner, COMSIG_XENO_POUNCE_FINISHED, target)
 	..()
 
 	return TRUE

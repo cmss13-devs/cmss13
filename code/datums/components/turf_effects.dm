@@ -1,3 +1,7 @@
+#define HIDDEN_NONE 0
+#define HIDDEN_PLAIN 1
+#define HIDDEN_OFFSET 2
+
 //	turf_effects are unique components that turfs give mobs/obj upon them entering,
 //	they should have a seperate effect defined in each subtype that affects the mob/obj in someway
 //	when created they should register signals that control their behaviour, ideally destroying the effect on some conditions like movement off these turfs
@@ -8,7 +12,7 @@
 /datum/component/turf_effect
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
 	var/turf/open/effect_turf	//the turf granting this effect, since its for thing that move into it should always be open
-	var/hidden = FALSE	//for when we still want to preserve the effect but not display
+	var/hidden = HIDDEN_NONE	//for when we still want to preserve the effect but not display
 
 //subtypes should call .=..() last in their definitions, since this calls update and the hidden_check
 /datum/component/turf_effect/Initialize(turf/input_turf)
@@ -26,8 +30,8 @@
 /** !!!! this proc should always be overrriden !!!!
 */
 /datum/component/turf_effect/proc/update()
-	if(!hidden)
-		qdel(src)
+	qdel(src)
+	CRASH("/datum/component/turf_effect update() called without being overriden")
 
 /////////////////////////////// WATER TURF EFFECT ///////////////////////////////////
 
@@ -106,7 +110,6 @@
 	RegisterSignal(parent, COMSIG_MOVABLE_LAUNCHED_LANDED, PROC_REF(handle_landed))
 	if(isxeno(parent))
 		RegisterSignal(parent, COMSIG_XENO_POUNCE_STARTED, PROC_REF(handle_pounce))
-		RegisterSignal(parent, COMSIG_XENO_POUNCE_FINISHED, PROC_REF(handle_pounce))
 
 /datum/component/turf_effect/water/UnregisterFromParent(datum/source, force)
 	. = ..()
@@ -120,7 +123,7 @@
 		COMSIG_HUMAN_HAULED,
 		COMSIG_MOVABLE_LAUNCHED_LANDED))
 	if(isxeno(parent))
-		UnregisterSignal(parent, list(COMSIG_XENO_POUNCE_STARTED, COMSIG_XENO_POUNCE_FINISHED))
+		UnregisterSignal(parent, COMSIG_XENO_POUNCE_STARTED)
 
 /datum/component/turf_effect/water/proc/handle_position_change(parent_source, oldloc, direction, forced)
 	SIGNAL_HANDLER	//simple checks if to remove, if it were a water turf then the comp already has inherited
@@ -189,8 +192,6 @@
 	var/my_turf = get_turf(parent)
 	new /obj/effect/water_splash(my_turf, TRUE)
 
-#define HIDDEN_OFFSET 2
-
 /datum/component/turf_effect/water/proc/update_hidden()
 	if(iscarbon(parent))
 		var/mob/living/carbon/input_carbon = parent
@@ -208,9 +209,9 @@
 				input_carbon.plane = initial(input_carbon.plane)
 				the_water.overlays.Cut()
 				the_splash.icon_state = null
-			hidden = TRUE
+			hidden = HIDDEN_PLAIN
 			return
-		hidden = FALSE
+		hidden = HIDDEN_NONE
 
 /datum/component/turf_effect/water/update()
 	if(iscarbon(parent))
@@ -244,4 +245,6 @@
 		affected_carbon.vis_contents |= the_water
 		affected_carbon.vis_contents |= the_splash
 
+#undef HIDDEN_NONE
+#undef HIDDEN_PLAIN
 #undef HIDDEN_OFFSET

@@ -270,6 +270,7 @@
 	var/base_state = "plating" //Post mapping
 	covered = TRUE
 	var/covered_icon_state = "catwalk"
+	turf_flags = TURF_BURNABLE|TURF_BREAKABLE|TURF_CATWALKED
 
 /turf/open/floor/plating/plating_catwalk/Initialize(mapload, ...)
 	. = ..()
@@ -297,6 +298,7 @@
 		if(covered)
 			var/obj/item/stack/catwalk/R = new(src, 1, type)
 			R.add_to_stacks(usr)
+			turf_flags &= ~TURF_CATWALKED
 			set_covered(FALSE)
 			to_chat(user, SPAN_WARNING("You remove the top of the catwalk."))
 			playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
@@ -305,6 +307,7 @@
 		if(!covered)
 			var/obj/item/stack/catwalk/E = W
 			E.use(1)
+			turf_flags |= TURF_CATWALKED
 			set_covered(TRUE)
 			to_chat(user, SPAN_WARNING("You replace the top of the catwalk."))
 			playsound(src, 'sound/items/Crowbar.ogg', 25, 1)

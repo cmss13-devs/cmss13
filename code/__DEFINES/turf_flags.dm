@@ -11,8 +11,11 @@
 #define TURF_BURNT (1<<6)
 #define TURF_BREAKABLE (1<<7)
 #define TURF_BROKEN (1<<8)
+/// For turfs that by default are water (from mapload)
 #define TURF_WATER (1<<9)
+/// For turfs that are turned into water, distinct so being turned back is viable
 #define TURF_WATERLIKE (1<<10)
+/// Set when turfs have a catwalk built on them
 #define TURF_CATWALKED (1<<11)
 
 //ChangeTurf options to change its behavior

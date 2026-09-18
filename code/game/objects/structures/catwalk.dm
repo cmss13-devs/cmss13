@@ -18,6 +18,11 @@
 		var/turf/open/my_open_turf = my_turf
 		my_open_turf.stop_being_water()
 
+/obj/structure/catwalk/Destroy()
+	. = ..()
+	var/turf/my_turf = get_turf(src)
+	my_turf.turf_flags &= ~TURF_CATWALKED
+
 /obj/structure/catwalk/update_icon()
 	..()
 	var/turf/turf = get_turf(src)
@@ -41,6 +46,7 @@
 	if (HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		if(covered)
 			var/obj/item/stack/catwalk/R = new(usr.loc)
+			my_turf.turf_flags &= ~TURF_CATWALKED
 			R.add_to_stacks(usr)
 			covered = 0
 			if(my_turf.turf_flags & TURF_WATER && istype(my_turf, /turf/open))
@@ -52,6 +58,7 @@
 			var/obj/item/stack/catwalk/E = W
 			E.use(1)
 			covered = 1
+			my_turf.turf_flags |= TURF_CATWALKED
 			if(my_turf.turf_flags & TURF_WATER && istype(my_turf, /turf/open))
 				var/turf/open/my_open_turf = my_turf
 				my_open_turf.stop_being_water()

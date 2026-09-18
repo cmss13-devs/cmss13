@@ -13,7 +13,7 @@
 #elif DM_VERSION >= 516 && DM_BUILD >= 1664
 	world.Export(url, data, 0, null, method)
 #else
-	#error Either `rustg_http_request_fire_and_forget` must be available, or 516.1664 must be in use.
+	#error Either `rustg_http_request_fire_and_forget` must be available, or 516.1664+ must be in use.
 	#error If your codebase has a custom HTTP implementation, it can be provided using
 	#error #define SS13LIB_HTTP_FIRE_AND_FORGET(method, url, data)
 #endif
@@ -73,7 +73,7 @@
 			response.errored = TRUE
 
 #else
-	#error Either `rustg_http_request_async` must be available, or 516.1664 must be in use.
+	#error Either `rustg_http_request_async` must be available, or 516.1664+ must be in use.
 	#error If your codebase has a custom HTTP implementation, it can be provided using
 	#error #define SS13LIB_HTTP_ASYNC(method, url, data), returning a /datum/ss13lib_http_response
 #endif

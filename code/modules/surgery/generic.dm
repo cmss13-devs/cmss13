@@ -77,16 +77,15 @@
 			SPAN_NOTICE("You finish the incision on [target]'s [surgery.affected_limb.display_name]."),
 			SPAN_NOTICE("[user] finishes the incision on your [surgery.affected_limb.display_name]."),
 			SPAN_NOTICE("[user] finishes the incision on [target]'s [surgery.affected_limb.display_name]."))
-		surgery.affected_limb.surgery_status |= (INCISION_MADE | INCISION_BLEEDING)
 
 		if(!(surgery.affected_limb.status & LIMB_SYNTHSKIN))
 			var/datum/effects/bleeding/external/incision_bleed = new(target, surgery.affected_limb, 10)
 			incision_bleed.duration = 10 MINUTES //A weak bleed, but it doesn't stop on its own.
 			surgery.affected_limb.bleeding_effects_list += incision_bleed
-			surgery.affected_limb.surgery_status |= (INCISION_MADE | INCISION_CLAMPED) //I want that beige color
+			surgery.affected_limb.surgery_status |= (INCISION_MADE | INCISION_BLEEDING)
 		else
 			surgery.status += 3 // synth skin doesn't cause bleeders
-		surgery.affected_limb.surgery_status |= (INCISION_MADE | INCISION_CLAMPED)
+			surgery.affected_limb.surgery_status |= (INCISION_MADE | INCISION_CLAMPED)
 
 	surgery.affected_limb.incision_int_bleeding_flag_check()
 	target.update_surgery_overlays()

@@ -1412,104 +1412,109 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	. = list()
 ///////////////////
 
-	if(!isyautja(owner)) //no overlays 4 u until body parts don't look like jigsaw puzzle pieces.
-
 // SET UP OVERLAYS FOR INCISIONS
-		if(surgery_status & INCISION_MADE) //sets up the initial incision sprite
-			surgery_flesh_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER)
-			surgery_flesh_overlay.icon_state = "incision_[name]"
+	if(surgery_status & INCISION_MADE) //sets up the initial incision sprite
+		surgery_flesh_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER)
+		surgery_flesh_overlay.icon_state = "incision_[name]"
 
-			if(surgery_status & INCISION_BLEEDING)
-				surgery_flesh_overlay.color = owner?.species.incision_color_fresh
+		if(surgery_status & INCISION_BLEEDING)
+			surgery_flesh_overlay.color = owner?.species.incision_color_fresh
 
-			if(surgery_status & INCISION_CLAMPED)
-				surgery_flesh_overlay.color = owner?.species.incision_color_clamped
+		if(surgery_status & INCISION_CLAMPED)
+			surgery_flesh_overlay.color = owner?.species.incision_color_clamped
 
-			. += surgery_flesh_overlay
+		. += surgery_flesh_overlay
 ////////////////////
 
 // SET UP WIDENED INCISIONS
-		if(surgery_status & INCISION_WIDENED) //adds the widened incision or body cavity if chest/pelvis/skull
-			surgery_flesh_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER)
+	if(surgery_status & INCISION_WIDENED) //adds the widened incision or body cavity if chest/pelvis/skull
+		surgery_flesh_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER)
+		if(issynth(owner))
+			if(name == "groin" || name == "chest") //synths have unique body cavities; they're filled with hydraulic tubes and other junk.
+				surgery_flesh_overlay.icon_state = "incision_wide_[name]_s"
+		else
+			surgery_flesh_overlay.icon_state = "incision_wide_[name]"
+
+		if(surgery_status & INCISION_BLEEDING)
 			if(issynth(owner))
-				if(name == "groin" || name == "chest") //synths have unique body cavities; they're filled with hydraulic tubes and other junk.
-					surgery_flesh_overlay.icon_state = "incision_wide_[name]_s"
-			else
-				surgery_flesh_overlay.icon_state = "incision_wide_[name]"
-
-			if(surgery_status & INCISION_BLEEDING)
-				if(issynth(owner))
-					surgery_flesh_overlay.color = owner?.species.incision_color_clamped
-				else
-					surgery_flesh_overlay.color = owner?.species.incision_color_fresh
-
-			if(surgery_status & INCISION_CLAMPED)
 				surgery_flesh_overlay.color = owner?.species.incision_color_clamped
+			else
+				surgery_flesh_overlay.color = owner?.species.incision_color_fresh
 
-			. += surgery_flesh_overlay
+		if(surgery_status & INCISION_CLAMPED)
+			surgery_flesh_overlay.color = owner?.species.incision_color_clamped
+
+		. += surgery_flesh_overlay
 ////////////////////
 
 //SET UP BONES
-			if(name == "head" || name == "chest" )
-				surgery_bone_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +2) // incision, then organs, then bones
-			else
-				surgery_bone_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +1) //incision, then bones on top
+		if(name == "head" || name == "chest" )
+			surgery_bone_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +2) // incision, then organs, then bones
+		else
+			surgery_bone_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +1) //incision, then bones on top
 
+		surgery_bone_overlay.icon_state = "bone_[name]"
+
+		if(surgery_status & INCISION_BONE_OPENED)
+			surgery_bone_overlay.icon_state = "bone_open_[name]"
+		if(surgery_status & INCISION_BONE_CLOSED || surgery_status & INCISION_PELVIS_EXPOSED)
 			surgery_bone_overlay.icon_state = "bone_[name]"
 
-			if(surgery_status & INCISION_BONE_OPENED)
-				surgery_bone_overlay.icon_state = "bone_open_[name]"
-			if(surgery_status & INCISION_BONE_CLOSED || surgery_status & INCISION_PELVIS_EXPOSED)
-				surgery_bone_overlay.icon_state = "bone_[name]"
+		if(status & LIMB_BROKEN)
+			surgery_bone_overlay.icon_state += "_broken"
 
-			if(status & LIMB_BROKEN)
-				surgery_bone_overlay.icon_state += "_broken"
-
-			. += surgery_bone_overlay
+		. += surgery_bone_overlay
 ////////////////////
 
 ///SET UP ORGANS
-			//Add intestines overlay manually because they're not organs by default, yet
-			if(name == "groin" && !issynth(owner))
-				if(surgery_status & INCISION_PELVIS_HIDDEN)
-					innards_overlay = image('icons/mob/humans/dam_human.dmi', icon_state = "innards", layer = SURGERY_LAYER +1)
-				else if(surgery_status & INCISION_PELVIS_EXPOSED) //organs were moved away
-					innards_overlay = null
-				. += innards_overlay
+		//Add intestines overlay manually because they're not organs by default, yet
+		if(name == "groin" && !issynth(owner))
+			if(surgery_status & INCISION_PELVIS_HIDDEN)
+				innards_overlay = image('icons/mob/humans/dam_human.dmi', icon_state = "innards", layer = SURGERY_LAYER +1)
+			else if(surgery_status & INCISION_PELVIS_EXPOSED) //organs were moved away
+				innards_overlay = null
+			. += innards_overlay
 
-			//Add the rest of the organs.
-			if(name == "head" || name == "chest" || name == "groin")
-				for(var/datum/internal_organ/organ as anything in internal_organs)
-					if(name == "head" || name == "chest" )
-						surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +1) // incision, then organs, then bones
-					else if(name == "groin")
-						if(surgery_status & INCISION_PELVIS_HIDDEN)
-							surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +2)
-						if(surgery_status & INCISION_PELVIS_EXPOSED) //organs were moved away
-							surgery_organ_overlay = null
-					else
+		//Add the rest of the organs.
+		if(name == "head" || name == "chest" || name == "groin")
+			for(var/datum/internal_organ/organ as anything in internal_organs)
+				if(name == "head" || name == "chest" )
+					surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +1) // incision, then organs, then bones
+				else if(name == "groin")
+					if(surgery_status & INCISION_PELVIS_HIDDEN)
+						surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +2)
+					if(surgery_status & INCISION_PELVIS_EXPOSED) //organs were moved away
 						surgery_organ_overlay = null
+				else
+					surgery_organ_overlay = null
 
-					surgery_organ_overlay.icon_state = "[organ.name]"
+				surgery_organ_overlay.icon_state = "[organ.name]"
 
-					//Adds prosthetic organs, if any
-					if(organ.robotic == ORGAN_ROBOT)
-						surgery_organ_overlay.icon_state += "_r"
+				//Adds prosthetic organs, if any
+				if(organ.robotic == ORGAN_ROBOT)
+					surgery_organ_overlay.icon_state += "_r"
 
-					. += surgery_organ_overlay
+				. += surgery_organ_overlay
 
 // SET UP INTERNALLY BLEEDING OVERLAYS
-			if(surgery_status & INCISION_INT_BLEEDING) //internally bleeding limbs can only be identified after widening the incision
-				surgery_ib_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +3)
-				surgery_ib_overlay.color = owner?.species.incision_color_fresh
+		if(surgery_status & INCISION_INT_BLEEDING) //internally bleeding limbs can only be identified after widening the incision
+			surgery_ib_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +3)
+			surgery_ib_overlay.color = owner?.species.incision_color_fresh
 
-				if(issynth(owner))
-					if(name == "chest") //synths have a unique chest cavity shape from humans. Otherwise, every other incision cavity looks the same as humans.
-						surgery_ib_overlay.icon_state = "ib_[name]_s"
-				else
-					surgery_ib_overlay.icon_state = "ib_[name]"
+			if(issynth(owner))
+				if(name == "chest") //synths have a unique chest cavity shape from humans. Otherwise, every other incision cavity looks the same as humans.
+					surgery_ib_overlay.icon_state = "ib_[name]_s"
+			else
+				surgery_ib_overlay.icon_state = "ib_[name]"
 
-				. += surgery_ib_overlay
+			. += surgery_ib_overlay
+
+	if(isyautja(owner)) //no overlays 4 u until body parts don't look like jigsaw puzzle pieces.
+		surgery_flesh_overlay = null
+		surgery_bone_overlay = null
+		surgery_ib_overlay = null
+		surgery_organ_overlay = null
+		innards_overlay = null
 ////////////////////
 
 ////////////////////

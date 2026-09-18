@@ -73,8 +73,8 @@
 
 	var/blood_color = BLOOD_COLOR_HUMAN //Red.
 	//Special color for fresh incisions on organic life forms. Unique to humans and synthetics, right now.
-	var/incision_color_fresh = "#CC0000"
-	var/incision_color_clamped =  BLOOD_COLOR_HUMAN
+	var/incision_color_fresh = BLOOD_COLOR_HUMAN
+	var/incision_color_clamped =  "#B62E31"
 	var/flesh_color = "#FFC896" //Pink.
 	var/base_color   //Used when setting species.
 	var/hair_color   //If the species only has one hair color

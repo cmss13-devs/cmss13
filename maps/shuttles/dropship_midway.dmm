@@ -11,7 +11,7 @@
 	id = "starboard_door";
 	name = "midway starboard access"
 	},
-/turf/open/shuttle/dropship/midway/grated,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "aX" = (
 /obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_11,
@@ -28,6 +28,10 @@
 /obj/structure/shuttle/part/decal/dropship_midway/panel_full,
 /obj/structure/shuttle/part/decal/dropship_midway/platform{
 	dir = 1
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	dir = 1;
+	pixel_y = 24
 	},
 /turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
@@ -121,7 +125,9 @@
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "fM" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_30,
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_30{
+	fullish_tile = 0
+	},
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "gc" = (
@@ -310,7 +316,9 @@
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "oX" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/nose/left_21,
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/left_21{
+	fullish_tile = 0
+	},
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "pc" = (
@@ -358,6 +366,10 @@
 	},
 /obj/item/device/radio/intercom/midway{
 	pixel_x = 20
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	dir = 1;
+	pixel_y = 24
 	},
 /turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
@@ -417,7 +429,9 @@
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "tq" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_10,
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_10{
+	fullish_tile = 0
+	},
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "tE" = (
@@ -497,6 +511,7 @@
 	pixel_y = 32
 	},
 /obj/docking_port/mobile/marine_dropship/multiz/midway,
+/obj/deployer/shuttle/dropship/roof_loader/midway,
 /turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
 "xl" = (
@@ -547,7 +562,7 @@
 	dir = 8;
 	name = "midway port access"
 	},
-/turf/open/shuttle/dropship/midway/grated,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "AP" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/body/body_10,
@@ -739,7 +754,9 @@
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "Kc" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_14,
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_14{
+	fullish_tile = 0
+	},
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "Kn" = (
@@ -831,7 +848,9 @@
 /turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
 "OZ" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/nose/right_24,
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/right_24{
+	fullish_tile = 0
+	},
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "Pe" = (
@@ -840,7 +859,9 @@
 /turf/open/shuttle/dropship/midway/ramp/rampio_02,
 /area/shuttle/drop_midway/midway)
 "Pk" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_20,
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_20{
+	fullish_tile = 0
+	},
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "PA" = (
@@ -898,7 +919,9 @@
 /turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
 "RZ" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_33,
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_33{
+	fullish_tile = 0
+	},
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "Sl" = (
@@ -938,7 +961,9 @@
 /turf/closed/shuttle/dropship_midway/wall_mid_31,
 /area/shuttle/drop_midway/midway)
 "UY" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_23,
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_23{
+	fullish_tile = 0
+	},
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "Vk" = (

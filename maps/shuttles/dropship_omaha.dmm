@@ -770,6 +770,7 @@
 /obj/structure/machinery/door_control/shuttle_ramp/omaha_aft{
 	pixel_y = 32
 	},
+/obj/deployer/shuttle/dropship/roof_loader/omaha,
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/drop_omaha/omaha)
 "Dy" = (

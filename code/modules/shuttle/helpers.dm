@@ -179,7 +179,7 @@
 /datum/door_controller/single/proc/bump_at_turf(turf/door_turf, obj/structure/machinery/door/door)
 	// Find somewhere valid to push towards (non-shuttle turf)
 	var/turf/target_turf
-	for(var/turf/current_turf in orange(1, door_turf))
+	for(var/turf/current_turf in orange(2, door_turf))
 		if(istype(current_turf, /turf/open/shuttle))
 			continue
 		if(istype(current_turf, /turf/closed/shuttle))
@@ -206,6 +206,8 @@
 			continue
 		if(istype(blocking_obj, /obj/effect/alien/weeds))
 			continue // No need to push
+		if(blocking_obj.anchored)
+			continue
 
 		// Skip anything that'd just get crushed instead
 		if(istype(door, /obj/structure/machinery/door/airlock))

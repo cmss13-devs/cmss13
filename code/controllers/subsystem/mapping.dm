@@ -11,6 +11,7 @@ SUBSYSTEM_DEF(mapping)
 	///Name of all shuttles
 	var/list/shuttle_templates = list()
 	var/list/all_shuttle_templates = list()
+	var/list/shuttle_roof_templates = list()
 	///map_id of all tents
 	var/list/tent_type_templates = list()
 
@@ -288,6 +289,7 @@ SUBSYSTEM_DEF(mapping)
 
 	preloadShuttleTemplates()
 	preload_tent_templates()
+	preload_shuttle_roof_templates()
 
 /proc/generateMapList(filename)
 	. = list()
@@ -328,6 +330,11 @@ SUBSYSTEM_DEF(mapping)
 		shuttle_templates[S.shuttle_id] = S
 		all_shuttle_templates[item] = S
 		map_templates[S.shuttle_id] = S
+
+/datum/controller/subsystem/mapping/proc/preload_shuttle_roof_templates()
+	for(var/template in subtypesof(/datum/map_template/shuttle_roof))
+		var/datum/map_template/shuttle_roof/new_shuttle_roof = new template()
+		shuttle_roof_templates[new_shuttle_roof.roof_id] = new_shuttle_roof
 
 /datum/controller/subsystem/mapping/proc/preload_tent_templates()
 	for(var/template in subtypesof(/datum/map_template/tent))

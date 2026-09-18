@@ -33,6 +33,7 @@
 	var/dwidth = 0
 	///position relative to covered area, parallel to dir
 	var/dheight = 0
+	var/zdepth = 0
 	var/area_type
 	///are we invisible to shuttle navigation computers?
 	var/hidden = FALSE
@@ -801,7 +802,7 @@
 	var/list/turfs = ripple_area(S1)
 	for(var/t in turfs)
 		ripples += new /obj/effect/abstract/ripple/shadow(t, animate_time)
-		if(multiz_ship)
+		if(multiz_ship) // ripples
 			var/obj/docking_port/mobile/marine_dropship/our_ship = src
 			if(!our_ship.is_hijacked)
 				var/turf_below = SSmapping.get_turf_below(t)

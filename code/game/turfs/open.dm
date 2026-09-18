@@ -1447,6 +1447,19 @@
 /turf/open/shuttle/dropship/omaha/marked
 	icon_state = "marked"
 
+/turf/open/shuttle/dropship/omaha/openspace
+	name = "open space"
+	icon = 'icons/turf/floors/floors.dmi'
+	icon_state = "transparent"
+
+/turf/open/shuttle/dropship/omaha/basic/invisible
+	icon_state = "basic"
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/turf/open/shuttle/dropship/omaha/openspace/Initialize()
+	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
+	update_vis_contents()
+
 /// RAMP ////
 
 /turf/open/shuttle/dropship/omaha/ramp
@@ -1508,6 +1521,19 @@
 
 /turf/open/shuttle/dropship/midway/marked
 	icon_state = "marked"
+
+/turf/open/shuttle/dropship/midway/openspace
+	name = "open space"
+	icon = 'icons/turf/floors/floors.dmi'
+	icon_state = "transparent"
+
+/turf/open/shuttle/dropship/midway/basic/invisible
+	icon_state = "basic"
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/turf/open/shuttle/dropship/midway/openspace/Initialize()
+	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
+	update_vis_contents()
 
 /// MIDWAY RAMP ////
 

@@ -1,12 +1,6 @@
 import { type BooleanLike, classes } from 'common/react';
 import { useBackend } from 'tgui/backend';
-import {
-  Box,
-  Divider,
-  ProgressBar,
-  Section,
-  Stack,
-} from 'tgui/components';
+import { Box, Divider, ProgressBar, Section, Stack } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
 type Data = {

@@ -6,43 +6,44 @@
 	flags_atom = NO_ZFALL
 	unacidable = TRUE
 	explo_proof = TRUE
+	anchored = TRUE
 
 /obj/deployer/shuttle/dropship
 	icon = 'icons/obj/structures/machinery/omaha/misc.dmi'
 	icon_state = "deployer"
 	var/obj/docking_port/mobile/marine_dropship/linked_dropship
 	var/item_to_deploy
-	var/obj/linked_item
-	var/obj/linked_item2
+	var/list/linked_items = list()
 
 /obj/deployer/shuttle/dropship/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	. = ..()
+
 	if(is_reserved_level(src.z))
-		if(linked_item)
-			linked_item.moveToNullspace()
-		if(linked_item2)
-			linked_item2.moveToNullspace()
-		return
-	if(linked_dropship.is_hijacked)
-		if(linked_item)
-			linked_item.moveToNullspace()
-		if(linked_item2)
-			linked_item2.moveToNullspace()
-		return
+		if(length(linked_items))
+			for(var/obj/items in linked_items)
+				items.moveToNullspace()
+			return
+
+	if(linked_dropship?.is_hijacked)
+		if(length(linked_items))
+			for(var/obj/items in linked_items)
+				items.moveToNullspace()
+			return
 
 /obj/deployer/shuttle/dropship/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
+	. = ..()
+
 	if(is_reserved_level(src.z))
-		if(linked_item)
-			linked_item.moveToNullspace()
-		if(linked_item2)
-			linked_item2.moveToNullspace()
-		return
+		if(length(linked_items))
+			for(var/obj/items in linked_items)
+				items.moveToNullspace()
+			return
+
 	if(linked_dropship.is_hijacked)
-		if(linked_item)
-			linked_item.moveToNullspace()
-		if(linked_item2)
-			linked_item2.moveToNullspace()
-		return
+		if(length(linked_items))
+			for(var/obj/items in linked_items)
+				items.moveToNullspace()
+			return
 
 /obj/deployer/shuttle/dropship/ramp_button
 	var/obj/structure/machinery/door_control/dropship_ramp_dummy/linked_button
@@ -61,7 +62,7 @@
 	else
 		for(var/obj/structure/machinery/door_control/shuttle_ramp/original_button in range(8, src.loc))
 			linked_button = new item_to_deploy(SSmapping.get_turf_below(src.loc))
-			linked_item = linked_button
+			linked_items += linked_button
 			linked_button.pixel_y = 16
 			linked_button.layer = FLY_LAYER
 			linked_button.alpha = 215
@@ -76,15 +77,12 @@
 
 /obj/deployer/shuttle/dropship/belly/omaha
 	item_to_deploy = /obj/structure/shuttle/part/fuel_lines/omaha
+
 /obj/deployer/shuttle/dropship/belly/midway
 	item_to_deploy = /obj/structure/shuttle/part/fuel_lines/midway
 
 /obj/deployer/shuttle/dropship/belly/lateShuttleMove()
 	.=..()
-	if(is_reserved_level(src.z))
-		if(lines)
-			lines.moveToNullspace()
-		return
 	var/turf/target_turf = locate(src.x-5, src.y, src.z)
 	if(target_turf)
 		var/turf/final_turf = SSmapping.get_turf_below(target_turf)
@@ -93,25 +91,25 @@
 				lines.loc = final_turf
 			else
 				lines = new item_to_deploy(final_turf)
-				linked_item = lines
+				linked_items += lines
 
 /obj/deployer/shuttle/dropship/landing_gear
 	var/offset_x = -16
 	var/offset_y = -19
 	var/map_offset_x
 	var/map_offset_y
-	var/obj/structure/shuttle/part/dropship_omaha/landing_gear_big/land_gear
-	var/obj/structure/shuttle/part/dropship_omaha/landing_hatch_big/hatch_big
-	item_to_deploy = /obj/structure/shuttle/part/dropship_omaha/landing_gear_big
-	var/item_to_deploy2 = /obj/structure/shuttle/part/dropship_omaha/landing_hatch_big
+	var/obj/structure/shuttle/part/dropship_mohawk/landing_gear_big/land_gear
+	var/obj/structure/shuttle/part/dropship_mohawk/landing_hatch_big/hatch_big
+	item_to_deploy = /obj/structure/shuttle/part/dropship_mohawk/landing_gear_big
+	var/item_to_deploy2 = /obj/structure/shuttle/part/dropship_mohawk/landing_hatch_big
 
 /obj/deployer/shuttle/dropship/landing_gear/omaha
-	item_to_deploy = /obj/structure/shuttle/part/dropship_omaha/landing_gear_big/omaha
-	item_to_deploy2 = /obj/structure/shuttle/part/dropship_omaha/landing_hatch_big/omaha
+	item_to_deploy = /obj/structure/shuttle/part/dropship_mohawk/landing_gear_big/omaha
+	item_to_deploy2 = /obj/structure/shuttle/part/dropship_mohawk/landing_hatch_big/omaha
 
 /obj/deployer/shuttle/dropship/landing_gear/midway
-	item_to_deploy = /obj/structure/shuttle/part/dropship_omaha/landing_gear_big/midway
-	item_to_deploy2 = /obj/structure/shuttle/part/dropship_omaha/landing_hatch_big/midway
+	item_to_deploy = /obj/structure/shuttle/part/dropship_mohawk/landing_gear_big/midway
+	item_to_deploy2 = /obj/structure/shuttle/part/dropship_mohawk/landing_hatch_big/midway
 
 /obj/deployer/shuttle/dropship/landing_gear/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
 	. = ..()
@@ -122,18 +120,19 @@
 			land_gear.loc = final_turf
 		else
 			land_gear = new item_to_deploy(final_turf)
-			linked_item = land_gear
+			linked_items += land_gear
 			land_gear.dir = src.dir
 		if(hatch_big)
 			hatch_big.loc = final_turf
 		else
 			hatch_big = new item_to_deploy2(final_turf)
-			linked_item2 = hatch_big
+			linked_items += hatch_big
 			hatch_big.dir = src.dir
 			hatch_big.pixel_x = offset_x
 			hatch_big.pixel_y = offset_y
 
 /obj/deployer/shuttle/dropship/fuel_attachment_point
+	name = "fuel attachment p. deployer"
 	icon_state = "deployer_fuel"
 	var/obj/effect/attach_point/linked_point
 	var/offset_x
@@ -147,13 +146,6 @@
 
 /obj/deployer/shuttle/dropship/fuel_attachment_point/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
 	. = ..()
-	if(is_reserved_level(src.z))
-		if(linked_point)
-			linked_point.moveToNullspace()
-		if(linked_point.installed_equipment)
-			linked_point.installed_equipment.moveToNullspace()
-		return
-
 	var/turf/open/t_below = SSmapping.get_turf_below(src.loc)
 	if(t_below)
 		if(linked_point)
@@ -162,7 +154,7 @@
 				linked_point.installed_equipment.loc = t_below
 		else
 			linked_point = new item_to_deploy(t_below)
-			linked_item = linked_point
+			linked_items += linked_point
 			linked_point.layer = FLY_LAYER + 0.01
 			linked_point.alpha = 225
 			linked_point.pixel_x = offset_x
@@ -191,7 +183,7 @@
 			linked_bottom.loc = target_turf
 		else
 			linked_bottom = new item_to_deploy(target_turf)
-			linked_item = linked_bottom
+			linked_items += linked_bottom
 			linked_bottom.layer = FLY_LAYER + 0.01
 			for(var/obj/effect/attach_point/attachie in src.loc.contents)
 				linked_bottom.linked_attach_point = attachie
@@ -318,6 +310,132 @@
 			linked_m90 = new item_to_deploy(turf_below)
 			linked_m90.linked_shuttle = src.linked_dropship
 			linked_m90.linked_shuttle.equipments += linked_m90
-			linked_item = linked_m90
+			linked_items += linked_m90
 			linked_m90.pixel_x = pixel_x
 			linked_m90.pixel_y = pixel_y
+
+/obj/deployer/shuttle/dropship/roof_loader
+	var/list/linked_fauxes = list()
+	var/datum/map_template/shuttle_roof/roof_template
+	var/template_preset = "abstract"
+	var/deployed_already = FALSE
+	var/our_glob_list
+
+	item_to_deploy = /turf/open/shuttle/dropship/midway/basic/invisible
+	var/item_to_deploy2 = /turf/open/shuttle/dropship/midway/openspace
+
+/obj/deployer/shuttle/dropship/roof_loader/omaha
+	template_preset = "omaha"
+	item_to_deploy = /turf/open/shuttle/dropship/omaha/basic/invisible
+
+/obj/deployer/shuttle/dropship/roof_loader/omaha/Initialize()
+	. = ..()
+	our_glob_list = GLOB.omaha_roof_fauxes
+
+/obj/deployer/shuttle/dropship/roof_loader/midway
+	template_preset = "midway"
+	item_to_deploy = /turf/open/shuttle/dropship/midway/basic/invisible
+
+/obj/deployer/shuttle/dropship/roof_loader/midway/Initialize()
+	. = ..()
+	our_glob_list = GLOB.midway_roof_fauxes
+
+/obj/deployer/shuttle/dropship/roof_loader/Initialize()
+	. = ..()
+	set_template(SSmapping.shuttle_roof_templates[template_preset])
+	debug_chat("template name is [roof_template.name]")
+
+/obj/deployer/shuttle/dropship/roof_loader/proc/set_template(datum/map_template/new_template)
+	if(!istype(new_template))
+		return
+	roof_template = new_template
+	debug_chat("template name is [roof_template.name]")
+
+/obj/deployer/shuttle/dropship/roof_loader/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
+	. = ..()
+	if(deployed_already)
+		if(is_ground_level(src.z) || linked_dropship.is_hijacked && !is_reserved_level(src.z))
+			var/turf/our_loc
+			for(var/obj/fauxie in linked_fauxes)
+				our_loc = fauxie.loc
+				our_loc.ScrapeAway()
+				addtimer(CALLBACK(our_loc, TYPE_PROC_REF(/turf/open, update_vis_contents)), 3) // idk, calling an update after movetonullspace also doesnt work but timer i find working all the time
+				fauxie.moveToNullspace()
+
+/obj/deployer/shuttle/dropship/roof_loader/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
+	.=..()
+	if(is_ground_level(src.z) || linked_dropship.is_hijacked)
+		var/turf/target_turf = SSmapping.get_turf_above(src.loc)
+		if(target_turf)
+			if(deployed_already)
+				move_into_position(target_turf)
+				place_walkable()
+				crush_shit()
+				update_visuals()
+			else
+				roof_template.load(target_turf, TRUE, FALSE)
+				setup_link()
+				update_fauxes_icons()
+				place_walkable()
+				crush_shit()
+				update_visuals()
+				deployed_already = TRUE
+
+/obj/deployer/shuttle/dropship/roof_loader/proc/setup_link()
+	var/turf/turf_above = SSmapping.get_turf_above(src.loc)
+	if(turf_above)
+		for(var/obj/faux_turf/open/dropship/roof/our_faux in range(12, turf_above))
+			linked_fauxes += our_faux
+			our_faux.recorded_offset_X = our_faux.x - src.x
+			our_faux.recorded_offset_Y = our_faux.y - src.y
+
+/obj/deployer/shuttle/dropship/roof_loader/proc/update_fauxes_icons()
+	var/count_X = 0
+	var/count_Y = 0
+	for(var/obj/faux_turf/open/dropship/roof/fauxie in our_glob_list)
+		fauxie.icon_state = "[count_X],[count_Y]"
+		count_X ++
+		if(count_X == 17)
+			count_X = 0
+			count_Y ++
+	for(var/obj/faux_turf/open/dropship/roof/empty_space/useless in linked_fauxes)
+		linked_fauxes -= useless
+		our_glob_list -= useless
+		QDEL_NULL(useless)
+
+/obj/deployer/shuttle/dropship/roof_loader/proc/place_walkable()
+	var/obj/faux_turf/open/dropship/roof/solid/snake
+	var/obj/faux_turf/open/dropship/roof/edge/runner
+	var/obj/faux_turf/open/dropship/roof/canopy/canopius
+	var/turf/turf_loc
+	for(snake in linked_fauxes)
+		turf_loc = snake.loc
+		turf_loc.place_on_top(item_to_deploy)
+	for(runner in linked_fauxes)
+		turf_loc = runner.loc
+		if(istransparentturf(turf_loc))
+			turf_loc.place_on_top(item_to_deploy2)
+		else
+			turf_loc.ScrapeAway() // just so that there's a bit of a gradeint being like tiled floor and then goes like plating, its gon look better this way trust me
+	for(canopius in linked_fauxes)
+		turf_loc = canopius.loc
+		turf_loc.place_on_top(item_to_deploy2)
+
+/obj/deployer/shuttle/dropship/roof_loader/proc/crush_shit()
+	var/obj/docking_port/moving_dock = src.linked_dropship
+	var/turf/our_loc
+	for(var/obj/fauxie in linked_fauxes)
+		our_loc = fauxie.loc
+		for(var/i in our_loc.contents) // yeah zone
+			var/atom/movable/thing = i
+			our_loc.shuttleCrushThing(thing, moving_dock)
+
+/obj/deployer/shuttle/dropship/roof_loader/proc/update_visuals()
+	var/turf/our_loc
+	for(var/obj/fauxie in linked_fauxes)
+		our_loc = fauxie.loc
+		our_loc.update_vis_contents()
+
+/obj/deployer/shuttle/dropship/roof_loader/proc/move_into_position(turf/target_turf)
+	for(var/obj/faux_turf/open/dropship/roof/fauxie in linked_fauxes)
+		fauxie.loc = locate(src.x + fauxie.recorded_offset_X, src.y + fauxie.recorded_offset_Y, target_turf.z)

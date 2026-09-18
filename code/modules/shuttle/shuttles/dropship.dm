@@ -152,6 +152,7 @@
 	height = 24
 	dwidth = 8
 	dheight = 12
+	zdepth = 1
 
 /obj/docking_port/mobile/marine_dropship/multiz/omaha/get_transit_path_type()
 	return /turf/open/space/transit/dropship/omaha
@@ -173,6 +174,7 @@
 	height = 24
 	dwidth = 8
 	dheight = 12
+	zdepth = 1
 
 /obj/docking_port/mobile/marine_dropship/multiz/midway/get_transit_path_type()
 	return /turf/open/space/transit/dropship/midway
@@ -484,6 +486,7 @@
 		dwidth = ds.dwidth
 		height = ds.height
 		width = ds.width
+		zdepth = ds.zdepth
 		ds.hijack.crash_landing()
 
 /obj/docking_port/stationary/marine_dropship/crash_site/on_arrival(obj/docking_port/mobile/arriving_shuttle)
@@ -517,6 +520,10 @@
 	name = "Omaha"
 	shuttle_id = DROPSHIP_OMAHA
 
+/datum/map_template/shuttle_roof/omaha
+	name = "Omaha Roof"
+	roof_id = "omaha"
+
 /datum/map_template/shuttle/normandy
 	name = "Normandy"
 	shuttle_id = DROPSHIP_NORMANDY
@@ -524,6 +531,10 @@
 /datum/map_template/shuttle/midway
 	name = "Midway"
 	shuttle_id = DROPSHIP_MIDWAY
+
+/datum/map_template/shuttle_roof/midway
+	name = "Midway Roof"
+	roof_id = "midway"
 
 /datum/map_template/shuttle/saipan
 	name = "Saipan"

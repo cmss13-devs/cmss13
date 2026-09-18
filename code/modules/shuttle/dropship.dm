@@ -561,7 +561,8 @@
 
 /// landing gears ///
 
-/obj/structure/shuttle/part/dropship_omaha/landing_gear_big
+/obj/structure/shuttle/part/dropship_mohawk/landing_gear_big
+	name = "\improper Dropship landing gear"
 	icon = 'icons/obj/structures/machinery/omaha/misc_96x96.dmi'
 	icon_state = "landing_gear"
 	density = TRUE
@@ -570,24 +571,26 @@
 	bound_height = 64
 	layer = 4
 
-/obj/structure/shuttle/part/dropship_omaha/landing_gear_big/omaha
+/obj/structure/shuttle/part/dropship_mohawk/landing_gear_big/omaha
 	icon = 'icons/obj/structures/machinery/omaha/misc_96x96.dmi'
 
-/obj/structure/shuttle/part/dropship_omaha/landing_gear_big/midway
+/obj/structure/shuttle/part/dropship_mohawk/landing_gear_big/midway
 	icon = 'icons/obj/structures/machinery/midway/misc_96x96.dmi'
 
-/obj/structure/shuttle/part/dropship_omaha/landing_hatch_big
+/obj/structure/shuttle/part/dropship_mohawk/landing_hatch_big
+	name = "\improper Dropship landing gear hatch"
 	icon = 'icons/obj/structures/machinery/omaha/misc_96x96.dmi'
 	icon_state = "gear_hatch"
 	density = FALSE
 	opacity = FALSE
 	alpha = 227
 	layer = 4
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-/obj/structure/shuttle/part/dropship_omaha/landing_hatch_big/omaha
+/obj/structure/shuttle/part/dropship_mohawk/landing_hatch_big/omaha
 	icon = 'icons/obj/structures/machinery/omaha/misc_96x96.dmi'
 
-/obj/structure/shuttle/part/dropship_omaha/landing_hatch_big/midway
+/obj/structure/shuttle/part/dropship_mohawk/landing_hatch_big/midway
 	icon = 'icons/obj/structures/machinery/midway/misc_96x96.dmi'
 
 // USCM Dropship Normandy
@@ -700,7 +703,7 @@
 // USCM Dropship Midway
 
 /obj/structure/shuttle/part/dropship_midway
-	name = "\improper Omaha"
+	name = "\improper Midway"
 	icon = 'icons/turf/midway/facade.dmi'
 	icon_state = "15,16"
 	dir = NORTH
@@ -710,6 +713,11 @@
 
 /obj/structure/shuttle/part/dropship_midway/transparent
 	opacity = FALSE
+
+/obj/structure/shuttle/part/dropship_midway/transparent/beforeShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	.=..()
+	for(var/turf/transparent_turf in locs)
+		addtimer(CALLBACK(transparent_turf, TYPE_PROC_REF(/turf/open, update_vis_contents)), 5)
 
 /obj/structure/shuttle/part/dropship_midway/transparent/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	.=..()

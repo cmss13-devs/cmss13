@@ -3,14 +3,13 @@
 	density = FALSE
 	opacity = FALSE
 	unacidable = TRUE
-
 	alpha = 0
-	layer = TURF_LAYER
+	layer = UNDER_WATER_TURF_LAYER + 0.01
+	plane = FLOOR_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	flags_atom = NO_ZFALL
-
-	icon = 'icons/turf/floors/desert_water.dmi'
-	icon_state = "seadeep"
+	icon = 'icons/landmarks.dmi'
+	icon_state = "map_blocker"
 
 /obj/effect/blocker/water
 	var/flooded_alpha = 180
@@ -18,6 +17,14 @@
 	var/disperse_group = 1
 	var/spread_delay = 0.5 SECONDS
 	var/list/water_sounds = list('sound/effects/slosh.ogg')
+	var/created_depth = DEPTH_SHALLOW
+	var/water_type = /turf/open/gm/river/desert/tyrargo/deep
+
+/obj/effect/blocker/water/Initialize(mapload, ...)
+	. = ..()
+	var/turf/settings = water_type
+	icon = settings.icon
+	icon_state = settings.icon_state
 
 /obj/effect/blocker/water/proc/drain_spread(from_dir = 0)
 	if(!dispersing)
@@ -59,8 +66,12 @@
 /obj/effect/blocker/water/proc/drain()
 	dispersing = FALSE
 	animate(src, alpha = initial(alpha), time = 6 SECONDS)
-	var/turf/location = loc
+	var/turf/location = get_turf(src)
 	location.is_weedable = initial(location.is_weedable)
+	if(istype(location, /turf/open))
+		var/turf/open/open_location = location
+		open_location.stop_being_water()
+
 
 /obj/effect/blocker/water/proc/disperse(from_dir)
 	dispersing = TRUE
@@ -84,5 +95,8 @@
 
 	animate(src, alpha = flooded_alpha, easing = BACK_EASING | EASE_OUT, time = 4 SECONDS)
 	update_icon()
-	var/turf/location = loc
+	var/turf/location = get_turf(src)
 	location.is_weedable = NOT_WEEDABLE
+	if(istype(location, /turf/open))
+		var/turf/open/open_location = location
+		open_location.become_water(created_depth, water_type)

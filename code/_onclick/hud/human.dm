@@ -132,6 +132,33 @@
 			if(H.r_store)
 				H.r_store.screen_loc = ui_datum.ui_storage2
 				screenmob.client.add_to_screen(H.r_store)
+			if(H.glasses)
+				H.glasses.screen_loc = ui_datum.ui_glasses
+				screenmob.client.add_to_screen(H.glasses)
+			if(H.w_uniform)
+				H.w_uniform.screen_loc = ui_datum.ui_iclothing
+				screenmob.client.add_to_screen(H.w_uniform)
+			if(H.shoes)
+				H.shoes.screen_loc = ui_datum.ui_shoes
+				screenmob.client.add_to_screen(H.shoes)
+			if(H.wear_l_ear)
+				H.wear_l_ear.screen_loc = ui_datum.ui_wear_l_ear
+				screenmob.client.add_to_screen(H.wear_l_ear)
+			if(H.wear_r_ear)
+				H.wear_r_ear.screen_loc = ui_datum.ui_wear_r_ear
+				screenmob.client.add_to_screen(H.wear_r_ear)
+			if(H.gloves)
+				H.gloves.screen_loc = ui_datum.ui_gloves
+				screenmob.client.add_to_screen(H.gloves)
+			if(H.wear_suit)
+				H.wear_suit.screen_loc = ui_datum.ui_oclothing
+				screenmob.client.add_to_screen(H.wear_suit)
+			if(H.head)
+				H.head.screen_loc = ui_datum.ui_head
+				screenmob.client.add_to_screen(H.head)
+			if(H.wear_mask)
+				H.wear_mask.screen_loc = ui_datum.ui_mask
+				screenmob.client.add_to_screen(H.wear_mask)
 		else
 			if(H.s_store)
 				screenmob.client.remove_from_screen(H.s_store)
@@ -145,13 +172,31 @@
 				screenmob.client.remove_from_screen(H.l_store)
 			if(H.r_store)
 				screenmob.client.remove_from_screen(H.r_store)
+			if(H.head)
+				screenmob.client.remove_from_screen(H.head)
+			if(H.gloves)
+				screenmob.client.remove_from_screen(H.gloves)
+			if(H.wear_suit)
+				screenmob.client.remove_from_screen(H.wear_suit)
+			if(H.w_uniform)
+				screenmob.client.remove_from_screen(H.w_uniform)
+			if(H.wear_l_ear)
+				screenmob.client.remove_from_screen(H.wear_l_ear)
+			if(H.wear_r_ear)
+				screenmob.client.remove_from_screen(H.wear_r_ear)
+			if(H.wear_mask)
+				screenmob.client.remove_from_screen(H.wear_mask)
+			if(H.glasses)
+				screenmob.client.remove_from_screen(H.glasses)
+			if(H.shoes)
+				screenmob.client.remove_from_screen(H.shoes)
 
 	if(hud_version != HUD_STYLE_NOHUD)
 		if(H.r_hand)
-			H.r_hand.screen_loc = ui_datum.hud_slot_offset(H.r_hand, ui_datum.ui_rhand)
+			H.r_hand.screen_loc = ui_datum.hud_slot_offset(H.r_hand, ui_datum.ui_item_lhand)
 			screenmob.client.add_to_screen(H.r_hand)
 		if(H.l_hand)
-			H.l_hand.screen_loc = ui_datum.hud_slot_offset(H.l_hand, ui_datum.ui_lhand)
+			H.l_hand.screen_loc = ui_datum.hud_slot_offset(H.l_hand, ui_datum.ui_item_rhand)
 			screenmob.client.add_to_screen(H.l_hand)
 	else
 		if(H.r_hand)

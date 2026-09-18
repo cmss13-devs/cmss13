@@ -67,7 +67,7 @@
 /datum/action/xeno_action/onclick/xeno_resting/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.lay_down()
-	button.icon_state = xeno.resting ? "template_xeno_active" : "template_xeno"
+	button.icon_state = xeno.resting ? "template_active" : "template_xeno"
 	return ..()
 
 // Shift Spits

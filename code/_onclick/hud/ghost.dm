@@ -1,5 +1,5 @@
 /atom/movable/screen/ghost
-	icon = 'icons/mob/screen_ghost.dmi'
+	icon = 'icons/mob/hud/cm_hud/cm_hud_ghost_objects.dmi'
 
 /atom/movable/screen/ghost/MouseEntered()
 	flick(icon_state + "_anim", src)
@@ -9,7 +9,7 @@
 
 /atom/movable/screen/ghost/follow_ghosts
 	name = "Follow"
-	icon_state = "follow_ghost"
+	icon_state = "orbit"
 
 /atom/movable/screen/ghost/follow_ghosts/Click()
 	var/mob/dead/observer/G = usr
@@ -17,7 +17,7 @@
 
 /atom/movable/screen/ghost/reenter_corpse
 	name = "Reenter corpse"
-	icon_state = "reenter_corpse"
+	icon_state = "return_to_body"
 
 /atom/movable/screen/ghost/reenter_corpse/Click()
 	var/mob/dead/observer/G = usr
@@ -25,15 +25,15 @@
 
 /atom/movable/screen/ghost/toggle_huds
 	name = "Toggle HUDs"
-	icon_state = "ghost_hud_toggle"
+	icon_state = "hud_prefs"
 
 /atom/movable/screen/ghost/toggle_huds/Click()
 	var/client/client = usr.client
 	client.toggle_ghost_hud()
 
 /atom/movable/screen/move_up
-	icon = 'icons/mob/screen_ghost.dmi'
-	icon_state = "move_up"
+	icon = 'icons/mob/hud/cm_hud/cm_hud_ghost_objects.dmi'
+	icon_state = "z_level_up"
 
 /atom/movable/screen/move_up/Click()
 	var/mob/dead/observer/ghost = usr
@@ -42,8 +42,8 @@
 	return
 
 /atom/movable/screen/move_down
-	icon = 'icons/mob/screen_ghost.dmi'
-	icon_state = "move_down"
+	icon = 'icons/mob/hud/cm_hud/cm_hud_ghost_objects.dmi'
+	icon_state = "z_level_down"
 
 /atom/movable/screen/move_down/Click()
 	var/mob/dead/observer/ghost = usr
@@ -51,9 +51,13 @@
 	ghost.teleport_z_down()
 	return
 
-/datum/hud/ghost/New(mob/owner, ui_style='icons/mob/hud/human_white.dmi')
+/datum/hud/ghost/New(mob/owner)
 	. = ..()
 	var/atom/movable/screen/using
+
+	// using = new /atom/movable/screen/backhud/ghost()
+	// using.screen_loc = ui_datum.ui_backhud
+	// static_inventory += backhud
 
 	using = new /atom/movable/screen/ghost/follow_ghosts()
 	using.screen_loc = ui_ghost_slot2

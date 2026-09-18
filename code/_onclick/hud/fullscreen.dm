@@ -259,6 +259,9 @@
 /atom/movable/screen/backhud/marine
 	icon = 'icons/mob/hud/cm_hud/cmhud_marine_background.dmi'
 
+/atom/movable/screen/backhud/ghost
+	icon = 'icons/mob/hud/cm_hud/cmhud_ghost_background.dmi'
+
 /atom/movable/screen/border
 	icon = 'icons/mob/hud/cm_hud/cm_hud_border.dmi'
 	screen_loc = "1, 1"

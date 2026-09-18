@@ -15,8 +15,10 @@
 	var/increment_grace_time = 50
 	///how much oxy damage should be given per process
 	var/proc_damage_per_stack = 0.2
-	///stopgrap for oxy damage on mob when this stops causing harm
-	var/max_oxyloss = 50
+	///Maximum oxyloss is clamped between these two bounds, this prevents someone from achieving high oxyloss by keeping someone on 5-10 stacks for a long time. To get high damage, you need high stacks.
+	var/max_oxyloss_lower_bound = 10
+	var/max_oxyloss_upper_bound = 40
+	var/max_oxyloss = 10
 	///particles
 	var/obj/effect/abstract/particle_holder/particle_holder
 
@@ -39,6 +41,8 @@
 	. = ..()
 
 	var/mob/living/carbon/human/human = affected_atom
+	var/stack_ratio = stack_count / max_stacks
+	max_oxyloss = max_oxyloss_lower_bound + (stack_ratio * (max_oxyloss_upper_bound - max_oxyloss_lower_bound))
 	if(human.oxyloss < max_oxyloss)
 		human.apply_damage(min(max_oxyloss - human.oxyloss, proc_damage_per_stack * stack_count, 5), OXY)
 	human.update_xeno_hostile_hud()

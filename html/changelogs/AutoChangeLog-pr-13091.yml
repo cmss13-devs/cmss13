@@ -1,7 +1,0 @@
-author: "Drathek PoltavskaPraca"
-delete-after: True
-changes:
-  - qol: "Admin help is bound by default to F1 again for hotkey set"
-  - bugfix: "Accessing options and messages and profiling is possible again"
-  - bugfix: "Fixed incorrect triggering of conflicting keybinding detection for switch input key"
-  - bugfix: "Screenshot auto is now possible again via hotkeys, broken up into two binds, and is bound to F2/Shift+F2 for the hotkey set"

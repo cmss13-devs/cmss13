@@ -35,10 +35,7 @@
 		var/soundname = source.depth >= DEPTH_COAST_INTERMEDIATE ? "shallowwading" : (source.depth >= DEPTH_SHALLOW ? "wading":"deepwading")
 		playsound(source, soundname, 10, 1, 10, falloff=1)
 
-/datum/element/water_turf/proc/on_landed_on(turf/open/hit_turf, atom/movable/mover, ignore_move_dir = FALSE)
+/datum/element/water_turf/proc/on_landed_on(turf/open/hit_turf, atom/movable/mover)
 	SIGNAL_HANDLER
-	if(ignore_move_dir != FALSE && mover.last_move_dir == SOUTH)
-		addtimer(CALLBACK(src, PROC_REF(on_landed_on), hit_turf, mover, TRUE), 0.05 SECONDS)
-		return
 	if(hit_turf.depth <= DEPTH_COAST_SHALLOW && !hit_turf.covered)
 		new /obj/effect/water_splash(hit_turf, TRUE)	//SPLASHHH!! something hit the water!

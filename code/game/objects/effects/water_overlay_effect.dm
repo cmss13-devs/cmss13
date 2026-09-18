@@ -20,7 +20,6 @@
 		return
 
 	var/is_resting = overlaid_mob.resting || overlaid_mob.body_position == LYING_DOWN
-	message_admins(config.type)
 	if(is_resting && initial(config.resting_behavior) == WATER_OVERLAY_CONFIG_RESTING_NONE)
 		return
 

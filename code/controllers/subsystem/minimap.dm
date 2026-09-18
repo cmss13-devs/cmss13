@@ -1,5 +1,13 @@
 /// range that we can remove labels when we click near them with the removal tool
 #define LABEL_REMOVE_RANGE 20
+/// minimum Alt+Scroll zoom level on the tacmap
+#define MINIMAP_ZOOM_MIN 0.2
+/// maximum Alt+Scroll zoom level on the tacmap
+#define MINIMAP_ZOOM_MAX 3
+/// wheel delta units per 1.0 change in zoom_scale
+#define MINIMAP_ZOOM_STEP_DIVISOR 1200
+/// max world.time gap (deciseconds) between handle_pan calls before treating it as a fresh drag instead of a continuation
+#define MINIMAP_PAN_GAP_THRESHOLD 3
 /// How often a tacmap can be submitted
 #define CANVAS_COOLDOWN_TIME 3 MINUTES
 /// List of minimap_flag=world.time for a faction wide cooldown on tacmap submissions
@@ -835,47 +843,23 @@ SUBSYSTEM_DEF(minimaps)
 	var/atom/movable/screen/minimap_tool/draw_tool/active_draw_tool
 	/// List of turfs that have labels attached to them. kept around so it can be cleared
 	var/list/turf/labelled_turfs = list()
-
+///Scrolling always zooms the tacmap now (no modifier needed) - panning moved to click-drag, see /client/proc/handle_pan
 /atom/movable/screen/minimap/MouseWheel(delta_x, delta_y, location, control, params)
 	var/mob/user = usr
-	var/list/mods = params2list(params)
 
 	if(!user)
 		return
 
 	var/atom/movable/screen/plane_master/minimap/plane_master = user.hud_used.plane_masters["[TACMAP_PLANE]"]
 
-	if(!plane_master)
+	if(!plane_master || plane_master.locked)
 		return
 
-	var/matrix/transform = plane_master.transform
-
-	if(!transform)
-		plane_master.transform = matrix()
-
-	var/shift_click = mods[SHIFT_CLICK]
-	var/x_shift = plane_master.cur_x_shift
-	var/max_x_shift = x_max * max_scroll_ratio
-	var/y_shift = plane_master.cur_y_shift
-	var/max_y_shift = y_max * max_scroll_ratio
-
-	// Out of bounds checks
-	if(x_shift > max_x_shift && (shift_click ? delta_y < 0 : delta_x < 0) || x_shift < max_x_shift * -1 && (shift_click ? delta_y > 0 : delta_x > 0))
+	var/new_zoom = clamp(plane_master.zoom_scale + (delta_y / MINIMAP_ZOOM_STEP_DIVISOR), MINIMAP_ZOOM_MIN, MINIMAP_ZOOM_MAX)
+	if(new_zoom == plane_master.zoom_scale)
 		return
-
-	if(y_shift > max_y_shift && (shift_click ? delta_x < 0 : delta_y < 0) || y_shift < max_y_shift * -1 && (shift_click ? delta_x > 0 : delta_y > 0))
-		return
-
-	if(shift_click)
-		transform.Translate(delta_y / 32, delta_x / 32)
-		plane_master.cur_x_shift -= delta_y / 32
-		plane_master.cur_y_shift -= delta_x / 32
-	else
-		transform.Translate(delta_x / 32, delta_y / 32)
-		plane_master.cur_x_shift -= delta_x / 32
-		plane_master.cur_y_shift -= delta_y / 32
-
-	plane_master.transform = transform
+	plane_master.zoom_scale = new_zoom
+	plane_master.rebuild_transform()
 
 /atom/movable/screen/minimap/Initialize(mapload, datum/hud/hud_owner, target, minimap_flags, live = TRUE, popup = FALSE, drawing = TRUE)
 	. = ..()
@@ -1013,15 +997,10 @@ SUBSYSTEM_DEF(minimaps)
 	if(!modifiers[CTRL_CLICK])
 		return
 	// we only care about absolute coords because the map is fixed to 1,1 so no client stuff
-	var/atom/movable/screen/plane_master/minimap/plane_master = source.hud_used.plane_masters["[TACMAP_PLANE]"]
-
-	if(!plane_master)
-		return
-
 	var/list/pixel_coords = params2screenpixel(modifiers["screen-loc"])
 	var/zlevel = SSminimaps.updaters_by_datum[src].ztarget
-	var/x = (pixel_coords[1] - SSminimaps.minimaps_by_z["[zlevel]"].x_offset + plane_master.cur_x_shift)  / MINIMAP_SCALE
-	var/y = (pixel_coords[2] - SSminimaps.minimaps_by_z["[zlevel]"].y_offset + plane_master.cur_y_shift)  / MINIMAP_SCALE
+	var/x = (pixel_coords[1] - SSminimaps.minimaps_by_z["[zlevel]"].x_offset) / MINIMAP_SCALE
+	var/y = (pixel_coords[2] - SSminimaps.minimaps_by_z["[zlevel]"].y_offset) / MINIMAP_SCALE
 	var/c_x = clamp(CEILING(x, 1), 1, world.maxx)
 	var/c_y = clamp(CEILING(y, 1), 1, world.maxy)
 	choices_by_mob[source] = list(c_x, c_y)
@@ -1440,7 +1419,10 @@ SUBSYSTEM_DEF(minimaps)
 	if(!minimap_displayed)
 		map.stop_polling[owner] = TRUE
 		return
+	var/atom/movable/screen/plane_master/minimap/plane_master = owner.hud_used.plane_masters["[TACMAP_PLANE]"]
+	plane_master?.reset_perspective_for_tool()
 	var/list/clicked_coords = map.get_coords_from_click(owner)
+	plane_master?.restore_perspective()
 	if(!clicked_coords)
 		toggle_minimap(FALSE)
 		return
@@ -1626,16 +1608,20 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/draw_tool/clicked(mob/user, list/mods)
 	. = ..()
+	var/atom/movable/screen/plane_master/minimap/plane_master = user.hud_used.plane_masters["[TACMAP_PLANE]"]
 	if(LAZYACCESS(mods, MIDDLE_CLICK))
 		user.client.active_draw_tool = null
 		linked_map.active_draw_tool = null
 		winset(user, "drawingtools", "reset=true")
+		setup_tacmap_pan_drag(user)
+		plane_master?.restore_perspective()
 		return
 
 	winset(user, "drawingtools", "parent=default;name=MouseDragMove;command=\".mouse-draw \[\[mapwindow.map.mouse-pos.x]] \[\[mapwindow.map.mouse-pos.y]] \[\[mapwindow.map.size.x]] \[\[mapwindow.map.size.y]] \[\[mapwindow.map.view-size.x]] \[\[mapwindow.map.view-size.y]]\"")
 	add_verb(user.client, /client/proc/handle_draw)
 	linked_map.active_draw_tool = src
 	user.client.active_draw_tool = src
+	plane_master?.reset_perspective_for_tool()
 
 /client/var/atom/movable/screen/minimap_tool/draw_tool/active_draw_tool
 /client/var/last_drawn
@@ -1686,14 +1672,10 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/draw_tool/proc/process_queue(mob/user)
 	var/icon/slate = icon(drawn_image.icon)
 	var/first = TRUE
-	var/atom/movable/screen/plane_master/minimap/plane_master = user.hud_used.plane_masters["[TACMAP_PLANE]"]
-
-	if(!plane_master)
-		return
 
 	if(!last_coords)
 		var/vector/first_in_queue = freedraw_queue[1]
-		last_coords = list(first_in_queue.x + plane_master.cur_x_shift, first_in_queue.y + plane_master.cur_x_shift)
+		last_coords = list(first_in_queue.x, first_in_queue.y)
 	else
 		first = FALSE
 
@@ -1702,8 +1684,8 @@ SUBSYSTEM_DEF(minimaps)
 			first = FALSE
 			continue
 
-		var/px = vector.x + plane_master.cur_x_shift
-		var/py = vector.y + plane_master.cur_y_shift
+		var/px = vector.x
+		var/py = vector.y
 
 		if(width)
 			draw_line_width(last_coords, list(px, py), slate, width)
@@ -1720,6 +1702,9 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/draw_tool/on_mousedown(mob/source, atom/object, location, control, params)
 	. = ..()
 	if(!.)
+		var/atom/movable/screen/plane_master/minimap/plane_master = source.hud_used.plane_masters["[TACMAP_PLANE]"]
+		plane_master?.restore_perspective() // covers being disarmed via clicking elsewhere/another tool, not just our own clicked()
+		setup_tacmap_pan_drag(source) // the winset drag macro is still pointed at .mouse-draw otherwise, since this path never calls reset=true
 		return
 
 	// N.B. popup tacmap is a different control; we never want to receive drawing inputs from it.
@@ -1729,14 +1714,8 @@ SUBSYSTEM_DEF(minimaps)
 	else
 		drawing = TRUE
 
-	var/atom/movable/screen/plane_master/minimap/plane_master = source.hud_used.plane_masters["[TACMAP_PLANE]"]
-
-	if(!plane_master)
-		return
-
 	var/list/modifiers = params2list(params)
 	var/list/pixel_coords = params2screenpixel(modifiers["screen-loc"])
-	pixel_coords = list(pixel_coords[1] + plane_master.cur_x_shift, pixel_coords[2] + plane_master.cur_y_shift)
 	if(modifiers[BUTTON] == MIDDLE_CLICK)
 		var/icon/mona_lisa = icon(drawn_image.icon)
 		mona_lisa.DrawBox(color, pixel_coords[1], pixel_coords[2], ++pixel_coords[1], ++pixel_coords[2])
@@ -1818,35 +1797,145 @@ SUBSYSTEM_DEF(minimaps)
 			slate.DrawBox(draw_color, start_x*2, start_y*2, start_x*2 + 1, start_y*2 + 1)
 	return slate
 
-/atom/movable/screen/minimap_tool/draw_tool/green
+///Drawning dropdown.
+/atom/movable/screen/minimap_tool/draw_tool/picker
+	screen_loc = "15,14"
+	desc = "Click to choose a drawing color. Middle click to unselect the active color."
+	color = null
+	/// the color swatches shown when the dropdown is open
+	var/list/atom/movable/screen/minimap_tool/draw_tool/swatch/swatches
+	/// whether the dropdown is currently shown
+	var/dropdown_open = FALSE
+
+/atom/movable/screen/minimap_tool/draw_tool/picker/Initialize(mapload, zlevel, minimap_flag, linked_map, owner)
+	. = ..()
+	swatches = list()
+	for(var/path in list(
+		/atom/movable/screen/minimap_tool/draw_tool/swatch/green,
+		/atom/movable/screen/minimap_tool/draw_tool/swatch/black,
+		/atom/movable/screen/minimap_tool/draw_tool/swatch/red,
+		/atom/movable/screen/minimap_tool/draw_tool/swatch/yellow,
+		/atom/movable/screen/minimap_tool/draw_tool/swatch/purple,
+		/atom/movable/screen/minimap_tool/draw_tool/swatch/blue,
+		/atom/movable/screen/minimap_tool/draw_tool/swatch/clear_x,
+	))
+		var/atom/movable/screen/minimap_tool/draw_tool/swatch/new_swatch = new path(null, zlevel, minimap_flag, linked_map, owner)
+		new_swatch.picker_ref = src
+		swatches += new_swatch
+
+/atom/movable/screen/minimap_tool/draw_tool/picker/Destroy()
+	QDEL_LIST(swatches)
+	return ..()
+
+/atom/movable/screen/minimap_tool/draw_tool/picker/clicked(mob/user, list/mods)
+	if(LAZYACCESS(mods, MIDDLE_CLICK))
+		user.client.active_draw_tool = null
+		linked_map.active_draw_tool = null
+		winset(user, "drawingtools", "reset=true")
+		setup_tacmap_pan_drag(user)
+		close_dropdown(user)
+		return TRUE
+
+	if(LAZYACCESS(mods, LEFT_CLICK))
+		if(dropdown_open)
+			close_dropdown(user)
+		else
+			open_dropdown(user)
+		return TRUE
+	return TRUE
+
+/atom/movable/screen/minimap_tool/draw_tool/picker/proc/open_dropdown(mob/user)
+	dropdown_open = TRUE
+	user.client.add_to_screen(swatches)
+	var/atom/movable/screen/plane_master/minimap/plane_master = user.hud_used.plane_masters["[TACMAP_PLANE]"]
+	plane_master?.reset_perspective_for_tool()
+
+/**
+ * Closes the dropdown, hiding its swatches - except keep_visible, if given, which stays on screen.
+ * Needed because a swatch's own on_mousedown self-disarms the instant it's no longer in client.screen,
+ * so we can't hide the swatch that was just armed for drawing or it'd immediately unselect itself.
+ * Restores the saved zoom/pan too, unless keep_visible is set (a color is still actively armed).
+ */
+/atom/movable/screen/minimap_tool/draw_tool/picker/proc/close_dropdown(mob/user, atom/movable/screen/minimap_tool/draw_tool/swatch/keep_visible)
+	dropdown_open = FALSE
+	user.client.remove_from_screen(swatches - keep_visible)
+	if(!keep_visible)
+		var/atom/movable/screen/plane_master/minimap/plane_master = user.hud_used.plane_masters["[TACMAP_PLANE]"]
+		plane_master?.restore_perspective()
+
+/**
+ * A single color swatch offered by the picker's dropdown. Behaves exactly like the old standalone color buttons
+ * (drag to draw, middle click to unselect) but also reports back to the picker so it can update its indicator color
+ * and close the dropdown once a color's been picked.
+ */
+/atom/movable/screen/minimap_tool/draw_tool/swatch
+	/// the picker button this swatch belongs to, and reports selection back to
+	var/atom/movable/screen/minimap_tool/draw_tool/picker/picker_ref
+
+/atom/movable/screen/minimap_tool/draw_tool/swatch/clicked(mob/user, list/mods)
+	. = ..()
+	if(!picker_ref)
+		return .
+	if(LAZYACCESS(mods, LEFT_CLICK))
+		picker_ref.color = color
+		picker_ref.close_dropdown(user, src) // keep this swatch visible - it's now the armed draw tool
+	else
+		picker_ref.close_dropdown(user)
+	return .
+
+///catches disarm paths that don't go through clicked() at all (e.g. clicking a different tool while this one's armed) so the picker still resets its color and the perspective still gets restored
+/atom/movable/screen/minimap_tool/draw_tool/swatch/on_mousedown(mob/source, atom/object, location, control, params)
+	. = ..()
+	if(!. && picker_ref)
+		picker_ref.color = null
+		picker_ref.close_dropdown(source)
+
+/atom/movable/screen/minimap_tool/draw_tool/swatch/green
 	screen_loc = "14,14"
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_green.dmi'
 	color = MINIMAP_DRAWING_GREEN
 
-/atom/movable/screen/minimap_tool/draw_tool/black
+/atom/movable/screen/minimap_tool/draw_tool/swatch/black
 	screen_loc = "14,13"
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_black.dmi'
 	color = MINIMAP_DRAWING_BLACK
 
-/atom/movable/screen/minimap_tool/draw_tool/red
-	screen_loc = "15,14"
+/atom/movable/screen/minimap_tool/draw_tool/swatch/red
+	screen_loc = "14,12"
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_red.dmi'
 	color = MINIMAP_DRAWING_RED
 
-/atom/movable/screen/minimap_tool/draw_tool/yellow
+/atom/movable/screen/minimap_tool/draw_tool/swatch/yellow
 	screen_loc = "15,13"
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_yellow.dmi'
 	color = MINIMAP_DRAWING_YELLOW
 
-/atom/movable/screen/minimap_tool/draw_tool/purple
+/atom/movable/screen/minimap_tool/draw_tool/swatch/purple
 	screen_loc = "15,12"
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_purple.dmi'
 	color = MINIMAP_DRAWING_PURPLE
 
-/atom/movable/screen/minimap_tool/draw_tool/blue
+/atom/movable/screen/minimap_tool/draw_tool/swatch/blue
 	screen_loc = "15,11"
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_blue.dmi'
 	color = MINIMAP_DRAWING_BLUE
+
+///not a color - clears the active draw tool instead of arming one, then closes the dropdown
+/atom/movable/screen/minimap_tool/draw_tool/swatch/clear_x
+	icon_state = "close"
+	desc = "Clear the selected drawing color."
+	screen_loc = "14,11"
+	color = null
+
+/atom/movable/screen/minimap_tool/draw_tool/swatch/clear_x/clicked(mob/user, list/mods)
+	user.client.active_draw_tool = null
+	linked_map.active_draw_tool = null
+	winset(user, "drawingtools", "reset=true")
+	setup_tacmap_pan_drag(user)
+	if(picker_ref)
+		picker_ref.color = null
+		picker_ref.close_dropdown(user)
+	return TRUE
 
 /atom/movable/screen/minimap_tool/draw_tool/erase
 	icon_state = "erase"
@@ -1866,6 +1955,9 @@ SUBSYSTEM_DEF(minimaps)
 	. = ..()
 	if(LAZYACCESS(mods, MIDDLE_CLICK))
 		clear_labels(user)
+		return
+	var/atom/movable/screen/plane_master/minimap/plane_master = user.hud_used.plane_masters["[TACMAP_PLANE]"]
+	plane_master?.reset_perspective_for_tool()
 
 ///Clears all labels and logs who did it
 /atom/movable/screen/minimap_tool/label/proc/clear_labels(mob/user)
@@ -1887,6 +1979,8 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/label/on_mousedown(mob/source, atom/object, location, control, params)
 	. = ..()
 	if(!.)
+		var/atom/movable/screen/plane_master/minimap/plane_master = source.hud_used.plane_masters["[TACMAP_PLANE]"]
+		plane_master?.restore_perspective() // covers being disarmed via clicking elsewhere/another tool
 		return
 
 	// N.B. popup tacmap is a different control; we never want to receive drawing inputs from it.
@@ -1900,15 +1994,10 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/label/proc/async_mousedown(mob/source, atom/object, location, control, params)
 	// this is really [/atom/movable/screen/minimap/proc/get_coords_from_click] copypaste since we
 	// want to also cancel the click if they click src and I can't be bothered to make it even more generic rn
-	var/atom/movable/screen/plane_master/minimap/plane_master = source.hud_used.plane_masters["[TACMAP_PLANE]"]
-
-	if(!plane_master)
-		return
-
 	var/list/modifiers = params2list(params)
 	var/list/pixel_coords = params2screenpixel(modifiers["screen-loc"])
-	var/x = (pixel_coords[1] - x_offset + plane_master.cur_x_shift) / MINIMAP_SCALE
-	var/y = (pixel_coords[2] - y_offset + plane_master.cur_y_shift) / MINIMAP_SCALE
+	var/x = (pixel_coords[1] - x_offset) / MINIMAP_SCALE
+	var/y = (pixel_coords[2] - y_offset) / MINIMAP_SCALE
 	var/c_x = clamp(CEILING(x, 1), 1, world.maxx)
 	var/c_y = clamp(CEILING(y, 1), 1, world.maxy)
 	var/turf/target = locate(c_x, c_y, zlevel)
@@ -1962,6 +2051,171 @@ SUBSYSTEM_DEF(minimaps)
 	SSminimaps.cic_drawings[drawing_key] = textbox
 
 	SSminimaps.refresh_cic_drawing_overlays(zlevel, minimap_flag)
+
+///finds the closest living human to the given coordinates on the given zlevel, within max_dist tiles. Only looks at the given overwatch console's currently selected squad - returns nothing if no squad is selected yet, never searches globally. Returns list(nearest_marine, distance).
+/proc/find_nearest_camera_marine(zlevel, x, y, obj/structure/machinery/computer/overwatch/console, max_dist = 2)
+	if(!console?.current_squad)
+		return list(null, null)
+	var/list/candidates = console.current_squad.marines_list
+
+	var/turf/click_turf = locate(x, y, zlevel)
+	if(!click_turf)
+		return list(null, null)
+
+	var/mob/living/carbon/human/nearest
+	var/best_dist
+	for(var/candidate in candidates)
+		if(!ishuman(candidate))
+			continue
+		var/mob/living/carbon/human/H = candidate
+		if(!marine_has_camera_gear(H))
+			continue // only marines wearing something that actually streams a camera feed are useful targets
+		var/turf/h_turf = get_turf(H)
+		if(!h_turf || h_turf.z != zlevel)
+			continue
+		var/dist = get_dist_euclidian(h_turf, click_turf)
+		if(dist > max_dist)
+			continue
+		if(isnull(best_dist) || dist < best_dist)
+			best_dist = dist
+			nearest = H
+	return list(nearest, best_dist)
+
+///standalone check mirroring [/obj/structure/machinery/computer/overwatch/proc/marine_has_camera] without needing a console reference
+/proc/marine_has_camera_gear(mob/living/carbon/human/marine)
+	if(istype(marine.head, /obj/item/clothing/head/helmet/marine))
+		return TRUE
+	if(istype(marine.wear_l_ear, /obj/item/device/overwatch_camera) || istype(marine.wear_r_ear, /obj/item/device/overwatch_camera))
+		return TRUE
+	if(istype(marine.glasses, /obj/item/clothing/glasses/night/m56_goggles))
+		return TRUE
+	return FALSE
+
+/atom/movable/screen/minimap_tool/camera_select
+	icon_state = "scroll"
+	desc = "Click to arm, then click a marine's blip to switch the console's camera feed to them. Disarms itself once it succeeds; click this button again to disarm manually."
+	screen_loc = "15,3"
+	/// Whether this tool is currently armed and listening for a map click
+	var/armed = FALSE
+
+/atom/movable/screen/minimap_tool/camera_select/clicked(mob/user, list/mods)
+	if(!LAZYACCESS(mods, LEFT_CLICK))
+		return ..()
+	if(armed)
+		disarm(user)
+		return TRUE
+	armed = TRUE
+	var/atom/movable/screen/plane_master/minimap/plane_master = user.hud_used.plane_masters["[TACMAP_PLANE]"]
+	plane_master?.reset_perspective_for_tool()
+	return ..()
+
+///unregisters the mousedown listener, resets the cursor, and restores whatever zoom/pan was saved when this tool was armed
+/atom/movable/screen/minimap_tool/camera_select/proc/disarm(mob/user)
+	armed = FALSE
+	UnregisterSignal(user, COMSIG_MOB_MOUSEDOWN)
+	user.client.mouse_pointer_icon = null
+	var/atom/movable/screen/plane_master/minimap/plane_master = user.hud_used.plane_masters["[TACMAP_PLANE]"]
+	plane_master?.restore_perspective()
+
+/atom/movable/screen/minimap_tool/camera_select/on_mousedown(mob/source, atom/object, location, control, params)
+	. = ..()
+	if(!.)
+		if(armed)
+			disarm(source) // covers being disarmed via clicking elsewhere/another tool, not just our own clicked()
+		return
+
+	// N.B. popup tacmap is a different control; we never want to receive drawing inputs from it.
+	if (control != "mapwindow.map")
+		return COMSIG_MOB_CLICK_CANCELED
+
+	INVOKE_ASYNC(src, PROC_REF(async_mousedown), source, object, location, control, params)
+	return COMSIG_MOB_CLICK_CANCELED
+
+///async mousedown for the camera-select tool - switches the owning overwatch console's camera feed to the marine nearest the click
+/atom/movable/screen/minimap_tool/camera_select/proc/async_mousedown(mob/source, atom/object, location, control, params)
+	var/list/modifiers = params2list(params)
+	var/list/pixel_coords = params2screenpixel(modifiers["screen-loc"])
+	var/x = (pixel_coords[1] - x_offset) / MINIMAP_SCALE
+	var/y = (pixel_coords[2] - y_offset) / MINIMAP_SCALE
+	var/c_x = clamp(CEILING(x, 1), 1, world.maxx)
+	var/c_y = clamp(CEILING(y, 1), 1, world.maxy)
+
+	var/obj/structure/machinery/computer/overwatch/console = istype(owner?.parent, /obj/structure/machinery/computer/overwatch) ? owner.parent : null
+	if(!console)
+		return
+
+	var/list/nearest_result = find_nearest_camera_marine(zlevel, c_x, c_y, console)
+	var/mob/living/carbon/human/nearest_marine = nearest_result[1]
+	if(!nearest_marine)
+		return
+
+	to_chat(source, SPAN_NOTICE("Overwatch: switching to [nearest_marine.real_name]'s camera."))
+	console.try_watch_camera(source, nearest_marine)
+	disarm(source)
+
+/**
+ * Establishes (or re-establishes) the default click-drag-to-pan macro binding for the tacmap. Called once when the
+ * tacmap opens, and again whenever a draw tool disarms, so dragging on the map goes back to panning by default.
+ */
+/proc/setup_tacmap_pan_drag(mob/user)
+	if(!user?.client)
+		return
+	winset(user, "drawingtools", "parent=default;name=MouseDragMove;command=\".mouse-pan \[\[mapwindow.map.mouse-pos.x]] \[\[mapwindow.map.mouse-pos.y]] \[\[mapwindow.map.size.x]] \[\[mapwindow.map.size.y]] \[\[mapwindow.map.view-size.x]] \[\[mapwindow.map.view-size.y]]\"")
+	add_verb(user.client, /client/proc/handle_pan)
+
+///default click-drag panning for the tacmap - no tool needs to be armed. Uses a time-gap check instead of an explicit drag-start signal to avoid jumping when a fresh drag begins after the last one ended.
+/client/proc/handle_pan(mouse_x as num, mouse_y as num, size_x as num, size_y as num, view_size_x as num, view_size_y as num)
+	set instant = TRUE
+	set category = null
+	set hidden = TRUE
+	set name = ".mouse-pan"
+
+	var/atom/movable/screen/plane_master/minimap/plane_master = mob?.hud_used.plane_masters["[TACMAP_PLANE]"]
+	if(!plane_master || plane_master.locked)
+		return
+
+	mouse_y = size_y - mouse_y
+
+	var/horizontal_letterbox = size_x - view_size_x
+	var/vertical_letterbox = size_y - view_size_y
+
+	if(horizontal_letterbox)
+		mouse_x -= floor(horizontal_letterbox / 2)
+	if(vertical_letterbox)
+		mouse_y -= floor(vertical_letterbox / 2)
+
+	mouse_x = floor(mouse_x * (SCREEN_PIXEL_SIZE / view_size_x))
+	mouse_y = floor(mouse_y * (SCREEN_PIXEL_SIZE / view_size_y))
+
+	if(mouse_x < 0 || mouse_y < 0)
+		return
+
+	if(plane_master.last_mouse && (world.time - plane_master.last_pan_time) <= MINIMAP_PAN_GAP_THRESHOLD)
+		var/dx = mouse_x - plane_master.last_mouse[1]
+		var/dy = mouse_y - plane_master.last_mouse[2]
+		plane_master.cur_x_shift -= dx
+		plane_master.cur_y_shift -= dy
+		plane_master.rebuild_transform()
+
+	plane_master.last_mouse = list(mouse_x, mouse_y)
+	plane_master.last_pan_time = world.time
+
+///Toggles locking the tacmap in place: disables mouse-drag panning and scroll zoom. Tool actions (drawing, labels, camera select) still work and still reset/restore their own perspective while locked.
+/atom/movable/screen/minimap_tool/lock
+	icon_state = "scroll_stop"
+	desc = "Toggle locking the map in place. Disables mouse drag and scroll while locked; drawing/labels/camera select still work normally."
+	screen_loc = "15,2"
+
+/atom/movable/screen/minimap_tool/lock/clicked(mob/user, list/mods)
+	if(!LAZYACCESS(mods, LEFT_CLICK))
+		return ..()
+	var/atom/movable/screen/plane_master/minimap/plane_master = user.hud_used.plane_masters["[TACMAP_PLANE]"]
+	if(!plane_master)
+		return TRUE
+	plane_master.locked = !plane_master.locked
+	color = plane_master.locked ? COLOR_RED : null
+	to_chat(user, SPAN_NOTICE("Tacmap [plane_master.locked ? "locked" : "unlocked"]."))
+	return TRUE
 
 /atom/movable/screen/minimap_tool/clear
 	icon_state = "clear"

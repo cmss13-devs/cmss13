@@ -38,16 +38,13 @@
 
 	if(has_drawing_tools)
 		drawing_tools += list(
-			/atom/movable/screen/minimap_tool/draw_tool/red,
-			/atom/movable/screen/minimap_tool/draw_tool/yellow,
-			/atom/movable/screen/minimap_tool/draw_tool/purple,
-			/atom/movable/screen/minimap_tool/draw_tool/blue,
-			/atom/movable/screen/minimap_tool/draw_tool/green,
-			/atom/movable/screen/minimap_tool/draw_tool/black,
+			/atom/movable/screen/minimap_tool/draw_tool/picker,
 			/atom/movable/screen/minimap_tool/draw_tool/erase,
 			/atom/movable/screen/minimap_tool/label,
 			/atom/movable/screen/minimap_tool/clear,
 			/atom/movable/screen/minimap_tool/popout,
+			/atom/movable/screen/minimap_tool/camera_select,
+			/atom/movable/screen/minimap_tool/lock,
 		)
 
 	if(has_update)
@@ -98,6 +95,9 @@
 	var/list/user_objects = interactees[user]
 	if(user_objects)
 		user.client.remove_from_screen(user_objects["map"])
+		for(var/atom/movable/screen/minimap_tool/draw_tool/picker/picker in user_objects["drawing_actions"])
+			if(picker.dropdown_open)
+				picker.close_dropdown(user)
 		user.client.remove_from_screen(user_objects["drawing_actions"])
 		user.client.remove_from_screen(user_objects["close_button"])
 
@@ -142,6 +142,7 @@
 	user.client.add_to_screen(user_drawing_actions)
 	user.client.add_to_screen(user_close_button)
 	user.client.add_to_screen(user_map)
+	setup_tacmap_pan_drag(user)
 
 	// Apply ceiling protection overlay if client has preference enabled
 	if(user.client.prefs?.show_minimap_ceiling_protection)

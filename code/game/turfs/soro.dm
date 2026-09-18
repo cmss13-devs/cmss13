@@ -121,7 +121,7 @@
 
 /turf/open/gm/coast/dirt/south
 	dir = 1
-	depth = DEPTH_LAND
+	depth = DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/coast/dirt/west
 	dir = 4
@@ -139,11 +139,11 @@
 
 /turf/open/gm/coast/dirt/beachcorner/south_east
 	dir = 4
-	depth = DEPTH_LAND
+	depth = DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/coast/dirt/beachcorner/south_west
 	dir = 8
-	depth = DEPTH_LAND
+	depth = DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/coast/dirt/beachcorner2
 	icon_state = "beachcorner2"
@@ -170,7 +170,7 @@
 
 /turf/open/gm/coast/dirt/forestdir/south
 	dir = 1
-	depth = DEPTH_LAND
+	depth = DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/coast/dirt/forestdir/west
 	dir = 4
@@ -191,11 +191,11 @@
 
 /turf/open/gm/coast/dirt/forestbeachcorner/south_east
 	dir = 4
-	depth = DEPTH_LAND
+	depth = DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/coast/dirt/forestbeachcorner/south_west
 	dir = 8
-	depth = DEPTH_LAND
+	depth = DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/coast/dirt/forestbeachcorner2
 	icon = 'icons/turf/floors/tyrargo_map_dirt.dmi'

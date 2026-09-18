@@ -20,6 +20,7 @@
 		return
 
 	var/is_resting = overlaid_mob.resting || overlaid_mob.body_position == LYING_DOWN
+	message_admins(config.type)
 	if(is_resting && initial(config.resting_behavior) == WATER_OVERLAY_CONFIG_RESTING_NONE)
 		return
 
@@ -30,7 +31,7 @@
 			should_immerse = FALSE
 		if(WATER_OVERLAY_CONFIG_IMMERSE_ALWAYS)
 			should_immerse = TRUE
-		if(WATER_OVERLAY_CONFIG_IMMERSE_DEPTHED)
+		if(WATER_OVERLAY_CONFIG_IMMERSE_DEPTHED, WATER_OVERLAY_CONFIG_RESTING_IMMERSE)
 			should_immerse = (config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_IMMERSE && is_resting) || (pixel_y_offset <= initial(config.immerse_at_depth))
 		if(WATER_OVERLAY_CONFIG_IMMERSE_WHEN_RESTING_ALWAYS)
 			should_immerse = is_resting

@@ -186,7 +186,7 @@
 /turf/open/desert/desert_shore/desert_shore1
 	name = "shore"
 	icon_state = "shore1"
-	depth = DEPTH_LAND
+	depth = DEPTH_COAST_DEPTHLESS
 
 /turf/open/desert/desert_shore/desert_shore1/north
 	dir = NORTH
@@ -234,7 +234,7 @@
 /turf/open/desert/desert_shore/shore_edge1
 	name = "shore"
 	icon_state = "shore_edge1"
-	depth = DEPTH_LAND
+	depth = DEPTH_COAST_DEPTHLESS
 
 /turf/open/desert/desert_shore/shore_edge1/north
 	dir = NORTH
@@ -246,7 +246,7 @@
 
 /turf/open/desert/desert_shore/shore_edge1/west
 	dir = WEST
-	depth = DEPTH_LAND
+	depth = DEPTH_COAST_DEPTHLESS
 
 /*
 /turf/open/desert/desert_shore/desert_shore2

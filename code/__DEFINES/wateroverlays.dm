@@ -1,4 +1,5 @@
 #define DEPTH_LAND 0
+#define DEPTH_COAST_DEPTHLESS -0.01
 #define DEPTH_COAST_SHALLOW -2
 #define DEPTH_COAST_INTERMEDIATE -4
 #define DEPTH_SHALLOW -8
@@ -12,7 +13,7 @@
 #define WATER_OVERLAY_CONFIG_RESTING_IMMERSE "resting_immerse"	//in case we want WATER_OVERLAY_CONFIG_IMMERSE_DEPTHED but also while resting
 
 #define WATER_OVERLAY_CONFIG_IMMERSE_NONE "immerse_no"	//never completely covered
-#define WATER_OVERLAY_CONFIG_IMMERSE_WHEN_RESTING_ALWAYS "immerse_when_resting_always"	//will completely cover mob anytime its resting
-#define WATER_OVERLAY_CONFIG_IMMERSE_WHEN_RESTING_DEPTHED "immerse_when_resting_depthed"	//will completely cover mob when resting at immerse_at_depth
+#define WATER_OVERLAY_CONFIG_IMMERSE_WHEN_RESTING_ALWAYS "immerse_resting_always"	//will completely cover mob anytime its resting
+#define WATER_OVERLAY_CONFIG_IMMERSE_WHEN_RESTING_DEPTHED "immerse_resting_depthed"	//will completely cover mob when resting at immerse_at_depth
 #define WATER_OVERLAY_CONFIG_IMMERSE_ALWAYS "immerse_always"	//will completely cover mob anytime its in water
 #define WATER_OVERLAY_CONFIG_IMMERSE_DEPTHED "immerse_always"	//will completely cover mob at immerse_at_depth

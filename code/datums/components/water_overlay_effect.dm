@@ -2,51 +2,23 @@
 #define HIDDEN_PLAIN 1
 #define HIDDEN_OFFSET 2
 
-//	turf_effects are unique components that turfs give mobs/obj upon them entering,
-//	they should have a seperate effect defined in each subtype that affects the mob/obj in someway
-//	when created they should register signals that control their behaviour, ideally destroying the effect on some conditions like movement off these turfs
-//	but can handle other signals as well that affect the effect, which should all be added in RegisterWithParent()
-//	since this should just be architecture for handling adding/removing, the actual effects are seperate...
-//	and should be defined per subtype and handled in update() (which all the signal handling procs should call)
-//	SPECIAL NOTE: default behavior of turf_effect is to check if its hidden or not and delete itself, update() should always be overriden with detailed behaviour
-/datum/component/turf_effect
+/////////////////////////////// WATER OVERLAY EFFECT ///////////////////////////////////
+
+/datum/component/water_overlay_effect
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
-	var/turf/open/effect_turf	//the turf granting this effect, since its for thing that move into it should always be open
-	var/hidden = HIDDEN_NONE	//for when we still want to preserve the effect but not display
-
-//subtypes should call .=..() last in their definitions, since this calls update and the hidden_check
-/datum/component/turf_effect/Initialize(turf/input_turf)
-	. = ..()
-	effect_turf = input_turf
-
-/datum/component/turf_effect/InheritComponent(datum/component/C, i_am_original, turf/input_turf, y_offset, force_update)
-	. = ..()
-	if(force_update)
-		update()
-	else if(effect_turf.type != input_turf.type)	//all turf_effects should update upon entering a new turf type, since these are turf effects
-		effect_turf = input_turf
-		update()
-
-/** !!!! this proc should always be overrriden !!!!
-*/
-/datum/component/turf_effect/proc/update()
-	qdel(src)
-	CRASH("/datum/component/turf_effect update() called without being overriden")
-
-/////////////////////////////// WATER TURF EFFECT ///////////////////////////////////
-
-/datum/component/turf_effect/water
 	var/obj/effect/water_overlay_effect/the_water
 	var/obj/effect/water_splash/water_overlay_splash/the_splash
+	var/turf/open/effect_turf	//the turf granting this effect, since its for thing that move into it should always be open
+	var/turf/old_effect_turf	//the turf granting this effect previously, set on inherit
+	var/hidden = HIDDEN_NONE	//for when we still want to preserve the effect but not display
 	var/water_depth = 0
 
-/datum/component/turf_effect/water/Initialize(turf/input_turf, y_offset, tried_parent)
-	. = ..()
+/datum/component/water_overlay_effect/Initialize(turf/input_turf, y_offset, tried_parent)
 	if((!ismob(parent) && !isobj(parent)) || !istype(input_turf, /turf/open))	//this should already be handled in the turfs creating this component, but a few backup checks cant hurt
 		return COMPONENT_INCOMPATIBLE
 
-	var/turf/open/input_open = input_turf
-	the_splash = new /obj/effect/water_splash/water_overlay_splash(null, input_open.depth <= DEPTH_SHALLOW && water_depth == DEPTH_LAND ? TRUE : FALSE)	//if the waters deep enough, and no depth b4 --> SPLASH SOUND! :DDDD
+	effect_turf = input_turf
+	the_splash = new /obj/effect/water_splash/water_overlay_splash(null, effect_turf.depth <= DEPTH_SHALLOW && water_depth == DEPTH_LAND ? TRUE : FALSE)	//if the waters deep enough, and no depth b4 --> SPLASH SOUND! :DDDD
 	the_water = new /obj/effect/water_overlay_effect()
 	effect_turf = input_turf
 	water_depth = effect_turf.depth
@@ -55,19 +27,21 @@
 		parent.AddComponent(/datum/component/footstep, 2 , 35, 11, 4, footstep_sounds_="alien_footstep_large_water")
 
 	update_hidden()
-
-	var/step_delay = 0	//we're going to call update() ideally halfway through the mobs movement animation
 	var/mob/parent_mob = parent
-	if(parent_mob.client)
-		step_delay = parent_mob.client.move_delay
-	else if(isliving(parent))
-		var/mob/living/living_parent = parent
-		step_delay = living_parent.move_delay
+	if(SSwater_overlays.is_water(old_effect_turf) || SSwater_overlays.is_coastline(effect_turf))
+		update()
+	else
+		var/step_delay = 0	//we're going to call update() ideally halfway through the mobs movement animation
+		if(parent_mob.client)
+			step_delay = parent_mob.client.move_delay
+		else if(isliving(parent))
+			var/mob/living/living_parent = parent
+			step_delay = living_parent.move_delay
 
-	step_delay = max(world.tick_lag, step_delay)
-	addtimer(CALLBACK(src, PROC_REF(update)), step_delay * 0.6, TIMER_UNIQUE|TIMER_OVERRIDE)
+		step_delay = max(world.tick_lag, step_delay)
+		addtimer(CALLBACK(src, PROC_REF(update)), step_delay * 0.6, TIMER_UNIQUE|TIMER_OVERRIDE)
 
-/datum/component/turf_effect/water/Destroy()
+/datum/component/water_overlay_effect/Destroy()
 	var/atom/movable/movable_parent = parent
 
 	animate(parent, pixel_y = initial(movable_parent.pixel_y), 0.2 SECONDS)
@@ -91,14 +65,14 @@
 	qdel(the_splash)
 	. = ..() //we need to do this last
 
-/datum/component/turf_effect/water/InheritComponent(datum/component/component, i_am_original, turf/input_turf, y_offset)
-	var/will_update = FALSE
+/datum/component/water_overlay_effect/InheritComponent(datum/component/component, i_am_original, turf/input_turf, y_offset)
+	effect_turf = input_turf
 	if(water_depth != y_offset)
 		water_depth = y_offset
-		will_update = TRUE
-	. = ..(component, i_am_original, input_turf, will_update)
+		update_hidden()
+		update()
 
-/datum/component/turf_effect/water/RegisterWithParent(datum/target)
+/datum/component/water_overlay_effect/RegisterWithParent(datum/target)
 	. = ..()
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(handle_position_change))
 	RegisterSignal(parent, COMSIG_LIVING_SET_LYING_ANGLE, PROC_REF(handle_resting_change))
@@ -111,7 +85,7 @@
 	if(isxeno(parent))
 		RegisterSignal(parent, COMSIG_XENO_POUNCE_STARTED, PROC_REF(handle_pounce))
 
-/datum/component/turf_effect/water/UnregisterFromParent(datum/source, force)
+/datum/component/water_overlay_effect/UnregisterFromParent(datum/source, force)
 	. = ..()
 	UnregisterSignal(parent, list(
 		COMSIG_MOVABLE_MOVED,
@@ -125,7 +99,7 @@
 	if(isxeno(parent))
 		UnregisterSignal(parent, COMSIG_XENO_POUNCE_STARTED)
 
-/datum/component/turf_effect/water/proc/handle_position_change(parent_source, oldloc, direction, forced)
+/datum/component/water_overlay_effect/proc/handle_position_change(parent_source, oldloc, direction, forced)
 	SIGNAL_HANDLER	//simple checks if to remove, if it were a water turf then the comp already has inherited
 
 	var/turf/open/gm/moved_to_turf = get_turf(parent_source)
@@ -135,7 +109,7 @@
 		qdel(src)
 		return
 
-/datum/component/turf_effect/water/proc/handle_resting_change()
+/datum/component/water_overlay_effect/proc/handle_resting_change()
 	SIGNAL_HANDLER	//the effects should exist but as resting/unresting varients, update() to switch between them
 
 	if(iscarbon(parent))
@@ -151,11 +125,11 @@
 	effect_turf = laid_on_turf
 	update()
 
-/datum/component/turf_effect/water/proc/handle_set_body_position()	//passthrough unless human, which actually use lying_angles
+/datum/component/water_overlay_effect/proc/handle_set_body_position()	//passthrough unless human, which actually use lying_angles
 	if(!ishuman(parent))
 		handle_resting_change()
 
-/datum/component/turf_effect/water/proc/handle_buckle_change()
+/datum/component/water_overlay_effect/proc/handle_buckle_change()
 	SIGNAL_HANDLER	//this is for in the case the affected mob buckles/gets-hauled/unhauled, update_hidden() and update()
 
 	var/turf/unbuckled_turf = get_turf(parent)
@@ -167,44 +141,45 @@
 	update_hidden()
 	update()
 
-/datum/component/turf_effect/water/proc/handle_layer_update(new_layer)
+/datum/component/water_overlay_effect/proc/handle_layer_update(new_layer)
 	SIGNAL_HANDLER
 
 	if(!hidden && ismob(parent))
 		var/mob/parent_mob = parent
 		parent_mob.layer = UNDER_WATER_MOB_LAYER
 
-/datum/component/turf_effect/water/proc/handle_hauled(xenomorph)
+/datum/component/water_overlay_effect/proc/handle_hauled(xenomorph)
 	SIGNAL_HANDLER
 
 	update_hidden()
 
-/datum/component/turf_effect/water/proc/handle_landed(atom/movable/launchee, turf/landed_upon)
+/datum/component/water_overlay_effect/proc/handle_landed(atom/movable/launchee, turf/landed_upon)
 	SIGNAL_HANDLER
 
 	effect_turf = landed_upon
 	update_hidden()
 	update()
 
-/datum/component/turf_effect/water/proc/handle_pounce()
+/datum/component/water_overlay_effect/proc/handle_pounce()
 	SIGNAL_HANDLER
 
 	var/my_turf = get_turf(parent)
 	new /obj/effect/water_splash(my_turf, TRUE)
 
-/datum/component/turf_effect/water/proc/update_hidden()
+/datum/component/water_overlay_effect/proc/update_hidden()
 	if(iscarbon(parent))
 		var/mob/living/carbon/input_carbon = parent
 		if(HAS_TRAIT(input_carbon, TRAIT_HAULED) || (input_carbon.pulledby && input_carbon.pulledby.grab_level >= GRAB_CARRY))
 			if(!hidden) //if it wasnt hidden before but now is
-				input_carbon.layer = initial(input_carbon.layer )
+				animate(parent, pixel_y = water_depth, layer = UNDER_WATER_MOB_LAYER-0.01, 0.2 SECONDS)
 				input_carbon.plane = initial(input_carbon.plane)
 				the_water.overlays.Cut()
 				the_splash.icon_state = null
 			hidden = HIDDEN_OFFSET
 			return
-		else if(input_carbon.buckled || HAS_TRAIT(input_carbon, TRAIT_LAUNCHED))
+		else if(water_depth == DEPTH_COAST_DEPTHLESS || input_carbon.buckled || HAS_TRAIT(input_carbon, TRAIT_LAUNCHED))
 			if(!hidden) //if it wasnt hidden before but now is
+				animate(input_carbon, pixel_y = initial(input_carbon.pixel_y), 0.2 SECONDS) //remove offset
 				input_carbon.layer = initial(input_carbon.layer )
 				input_carbon.plane = initial(input_carbon.plane)
 				the_water.overlays.Cut()
@@ -213,12 +188,9 @@
 			return
 		hidden = HIDDEN_NONE
 
-/datum/component/turf_effect/water/update()
+/datum/component/water_overlay_effect/proc/update()
 	if(iscarbon(parent))
-		if(hidden == HIDDEN_OFFSET)	//the mob is hauled, or fireman carried
-			animate(parent, pixel_y = water_depth, layer = UNDER_WATER_MOB_LAYER-0.01, 0.2 SECONDS)
-			return
-		else if (hidden) //in flight during a throw, or buckled to something
+		if(hidden)	//the mob is hauled, or fireman carried
 			return
 
 		var/mob/living/carbon/affected_carbon = parent

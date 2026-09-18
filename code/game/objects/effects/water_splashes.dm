@@ -13,7 +13,6 @@
 
 /obj/effect/water_splash/Initialize(mapload=FALSE, playsound = TRUE)
 	. = ..()
-	message_admins("water splashing created")
 	if(lifetime != INFINITY)
 		addtimer(CALLBACK(src, PROC_REF(destroy_effect)), lifetime)
 	if(playsound)
@@ -22,7 +21,7 @@
 /obj/effect/water_splash/proc/destroy_effect()
 	qdel(src)
 
-//this is what turf_effect/water puts on mobs that are in water
+//this is what water_overlay_effect puts on mobs that are in water
 /obj/effect/water_splash/water_overlay_splash
 	lifetime = INFINITY
 	appearance_flags = RESET_ALPHA | KEEP_APART

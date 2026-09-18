@@ -49,18 +49,18 @@ SUBSYSTEM_DEF(water_overlays)
 	return icon_paths["[icon_size]"]
 
 /datum/controller/subsystem/water_overlays/proc/is_full_water(turf/potential_water)
-	if(!istype(potential_water, /turf/open))
+	if(potential_water == null || !istype(potential_water, /turf/open))
 		return FALSE
 	var/turf/open/potential_open_water = potential_water
-	if(potential_open_water.covered || potential_open_water.depth >= DEPTH_LAND)
+	if(potential_open_water.covered || potential_open_water.depth >= DEPTH_LAND || potential_open_water.turf_flags & TURF_CATWALKED)
 		return FALSE
 	return (potential_water.turf_flags & (TURF_WATER | TURF_WATERLIKE) && potential_open_water.depth <= DEPTH_SHALLOW)
 
 /datum/controller/subsystem/water_overlays/proc/is_coastline(turf/potential_coastline)
-	if(!istype(potential_coastline, /turf/open))
+	if(potential_coastline == null || !istype(potential_coastline, /turf/open))
 		return FALSE
 	var/turf/open/potential_open_coastline = potential_coastline
-	if(potential_open_coastline.covered || potential_open_coastline.depth >= DEPTH_LAND)
+	if(potential_open_coastline.covered || potential_open_coastline.depth >= DEPTH_LAND || potential_coastline.turf_flags & TURF_CATWALKED)
 		return FALSE
 	return  ((potential_coastline.turf_flags & (TURF_WATER | TURF_WATERLIKE)) && potential_open_coastline.depth >= DEPTH_COAST_INTERMEDIATE)
 
@@ -113,7 +113,7 @@ SUBSYSTEM_DEF(water_overlays)
 		var/found_icon_state = water_data[2]
 		var/found_depth = water_data[3]
 		var/found_type = water_data[4]
-		if(found_depth == DEPTH_LAND)	//somehow we got a non water turf in SSwater_overlays.found_waters, it shouldnt get an overlay for it
+		if(found_depth >= DEPTH_COAST_DEPTHLESS)	//somehow we got a non water turf in SSwater_overlays.found_waters, it shouldnt get an overlay for it
 			continue
 		var/toxic = 0	//this works as a iterator... used exclusively for water turfs that use 'icons/turf/floors/desert_water.dmi' which have 2 addtional varients
 		for(var/working_icon in handle_toxic_states(found_icon))	//if the water turf can be toxic, we need to run a loop for each possiblity, handle_toxic_states returns a list[1] for waters that dont have that possibility or a list[3] for those that do

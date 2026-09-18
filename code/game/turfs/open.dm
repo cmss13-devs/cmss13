@@ -882,14 +882,14 @@
 	name = "pool"
 
 /turf/open/gm/river/pool/no_overlay
-	depth = DEPTH_LAND
+	depth = DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/river/no_overlay
-	depth = DEPTH_LAND
+	depth = DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/river/no_overlay/sewage
 	name = "sewage"
-	depth = DEPTH_LAND
+	depth = DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/river/shallow_ocean_shallow_ocean
 	name = "shallow ocean"
@@ -969,7 +969,7 @@
 
 /turf/open/gm/coast/south
 	dir = 1
-	depth = DEPTH_LAND
+	depth = DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/coast/west
 	dir = 4
@@ -992,11 +992,11 @@
 
 /turf/open/gm/coast/beachcorner/south_east
 	dir = 4
-	depth = DEPTH_LAND
+	depth = DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/coast/beachcorner/south_west
 	dir = 8
-	depth = DEPTH_LAND
+	depth = DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/coast/beachcorner2
 	icon_state = "beachcorner2"

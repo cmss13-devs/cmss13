@@ -61,76 +61,76 @@
 
 /obj/effect/alien/resin/chem_producer/plasma
 	name = "plasma gland"
-	desc = "A weird-looking pulsating node that produces purple plasma"
+	desc = "A weird-looking pulsating node that produces 'purple' plasma, a poorly understood substance that facilitates the production of pheromones and crystalline weed structures."
 	icon_state = "fruit_plasma_immature"
 
 	producing_chems = list(PLASMA_PURPLE)
-	production_amt = 50
+	production_amt = 20
 
 /obj/effect/alien/resin/chem_producer/nutrient
 	name = "nutrient gland"
-	desc = "A weird-looking pulsating node that produces nutrient plasma"
+	desc = "A weird-looking pulsating node that produces 'nutrient' plasma. Due to its rarity, it has only been linked to a single evolutionary phenomenon."
 	icon_state = "fruit_plasma"
 
 	producing_chems = list(PLASMA_NUTRIENT)
-	production_amt = 50
+	production_amt = 20
 
 /obj/effect/alien/resin/chem_producer/chitin
 	name = "chitin gland"
-	desc = "A weird-looking pulsating node that produces chitin"
+	desc = "A weird-looking pulsating node that produces 'chitin' plasma, typically found within 'Defender' line evolutions and strains - and is typically associated with the Hive's frontline combat castes."
 	icon_state = "fruit_spore_immature"
 
 	producing_chems = list(PLASMA_CHITIN)
-	production_amt = 50
+	production_amt = 20
 
 /obj/effect/alien/resin/chem_producer/reinforced_chitin
 	name = "reinforced chitin gland"
-	desc = "A weird-looking pulsating node that produces reinforced chitin plasma"
+	desc = "A weird-looking pulsating node that produces 'reinforced chitin' plasma. The USS Royce considers this substance undocumented save for its initial discovery."
 	icon_state = "fruit_spore"
 
 	producing_chems = list(PLASMA_REINFORCED_CHITIN)
-	production_amt = 50
+	production_amt = 20
 
 /obj/effect/alien/resin/chem_producer/neurotoxin
 	name = "neurotoxin gland"
-	desc = "A weird-looking pulsating node that produces neurotoxin plasma"
+	desc = "A weird-looking pulsating node that produces 'neurotoxin' plasma - used by the more recently discovered 'sentinel' evolution lines, in the production of nerve agents for war."
 	icon_state = "fruit_greater_immature"
 
 	producing_chems = list(PLASMA_NEUROTOXIN)
-	production_amt = 50
+	production_amt = 20
 
 /obj/effect/alien/resin/chem_producer/acid
 	name = "acid gland"
-	desc = "A weird-looking pulsating node that produces acidic plasma"
+	desc = "A weird-looking pulsating node that produces acidic plasma. Likely responsible for the genus' acidic reflex."
 	icon_state = "fruit_greater"
 
 	producing_chems = list(PLASMA_ACIDIC)
-	production_amt = 50
+	production_amt = 20
 
 /obj/effect/alien/resin/chem_producer/catecholamine
 	name = "catecholamine gland"
-	desc = "A weird-looking pulsating node that produces catecholamine plasma"
+	desc = "A weird-looking pulsating node that produces 'catecholamine' plasma, and serves as a potent muscle-stimulant for the Hive's fastest evolutionary species."
 	icon_state = "fruit_speed_immature"
 
 	producing_chems = list(PLASMA_CATECHOLAMINE)
-	production_amt = 50
+	production_amt = 20
 
 /obj/effect/alien/resin/chem_producer/adrenal
 	name = "adrenal gland"
-	desc = "A weird-looking pulsating node that produces adrenal plasma"
+	desc = "A weird-looking pulsating node that produces 'adrenal' plasma. The USS Royce considers this substance undocumented save for its initial discovery."
 	icon_state = "fruit_speed"
 
 	producing_chems = list(PLASMA_ADRENALINE)
-	production_amt = 50
+	production_amt = 20
 
 /obj/effect/alien/resin/chem_producer/royal
 	name = "royal gland"
-	desc = "A weird-looking pulsating node that produces royal plasma"
+	desc = "A weird-looking pulsating node that produces Her Royal Substitutes. With this, you will be able to produce your own hive, should you need it."
 	icon = 'icons/mob/xenos/structures64x64.dmi'
 	icon_state = "collector_gather"
 	plane = GAME_PLANE
 	pixel_x = -16
 	pixel_y = -16
 
-	producing_chems = list(PLASMA_ROYAL)
-	production_amt = 50
+	producing_chems = list(PLASMA_ROYAL, PLASMA_EGG)
+	production_amt = 4

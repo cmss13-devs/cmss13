@@ -139,6 +139,8 @@
 	var/xeno_organ_flags = NONE
 	///hivenumber of the organ heart
 	var/hivenumber = XENO_HIVE_NORMAL
+	//how many times an organ can be planted, halves the research_value every time you do
+	var/max_usage = 2
 
 	var/constructing = FALSE
 
@@ -172,7 +174,11 @@
 	if(!can_build_gland(target, user))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] starts planting [src]."), SPAN_NOTICE("You start planting [src]."))
+	if(src.max_usage > 1)
+		user.visible_message(SPAN_NOTICE("[user] cuts off a significant section of [src], and starts planting it."), SPAN_NOTICE("You cut a sizable section of the aorta off, and plant \the [src], planting half of it on the floor."))
+	if(src.max_usage <= 1)
+		user.visible_message(SPAN_NOTICE("[user] uses the remainder of the heart, planting it deep inside the weeds."), SPAN_NOTICE("Using the last portion of the heart, you score \the [src]'s aorta, and place it face down, planting it on the floor."))
+
 	if(!do_after(user, 3 SECONDS, show_busy_icon = TRUE, target = target))
 		return
 
@@ -181,6 +187,11 @@
 
 	playsound(plant_target, "alien_resin_build", 25)
 	new /obj/effect/alien/weeds/node(plant_target, null, null, GLOB.hive_datum[hivenumber])
+	if(src.max_usage > 1) //if the organ hasn't been used twice yet
+		src.max_usage -= 1
+		src.research_value /= 2 //halve the biomass value
+		src.desc += SPAN_WARNING("\nThis organ has already been used once, and can only be planted one more time.")
+		return
 	qdel(src)
 
 /obj/item/organ/xeno/proc/can_build_gland(turf/target, mob/user)
@@ -262,7 +273,11 @@
 	if(!user.is_holding(src) || user.action_busy)
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] starts planting [src]"), SPAN_NOTICE("You start planting [src]"))
+	if(src.max_usage > 1)
+		user.visible_message(SPAN_NOTICE("[user] cuts off a significant section of [src], and starts planting it."), SPAN_NOTICE("You cut a sizable section of the aorta off, and plant \the [src], grafting half of it on the weeds"))
+	if(src.max_usage <= 1)
+		user.visible_message(SPAN_NOTICE("[user] uses the remainder of the heart, planting it deep inside the weeds."), SPAN_NOTICE("Using the last portion of the heart, you score \the [src]'s aorta, and place it face down, grafting it into the weeds."))
+
 	if(!do_after(user, 3 SECONDS, show_busy_icon = TRUE, target = target))
 		return
 
@@ -273,6 +288,11 @@
 	if(xeno_organ_flags & XENO_ORGAN_FRESH)
 		producer.name = "enhanced [producer.name]"
 		producer.production_amt *= 2
+	if(src.max_usage > 1) //if the organ hasn't been used twice yet
+		src.max_usage -= 1
+		src.research_value /= 2 //halve the biomass value
+		src.desc += SPAN_WARNING("\nThis organ has already been used once, and can only be planted one more time.")
+		return
 	qdel(src)
 
 //These are here so they can be printed out via the fabricator.

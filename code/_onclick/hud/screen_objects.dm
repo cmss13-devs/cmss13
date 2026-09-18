@@ -108,6 +108,7 @@
 /atom/movable/screen/close
 	name = "close"
 	icon_state = "close"
+	icon = 'icons/mob/hud/cm_hud/cm_hud_inventory.dmi'
 
 /atom/movable/screen/close/clicked(mob/user)
 	if(isobserver(user))

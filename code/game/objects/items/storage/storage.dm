@@ -229,11 +229,17 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 /datum/item_storage_box/New()
 	. = ..()
 	start = new()
+	start.icon = 'icons/mob/hud/cm_hud/cm_hud_inventory.dmi'
 	start.icon_state = "stored_start"
+	start.layer = ABOVE_HUD_LAYER
 	continued = new()
+	continued.icon = 'icons/mob/hud/cm_hud/cm_hud_inventory.dmi'
 	continued.icon_state = "stored_continue"
+	continued.layer = ABOVE_HUD_LAYER
 	end = new()
+	end.icon = 'icons/mob/hud/cm_hud/cm_hud_inventory.dmi'
 	end.icon_state = "stored_end"
+	end.layer = ABOVE_HUD_LAYER
 
 /datum/item_storage_box/Destroy(force, ...)
 	QDEL_NULL(start)
@@ -256,6 +262,7 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 		storage_continue = new /atom/movable/screen/storage()
 		storage_continue.name = "storage"
 		storage_continue.master = src
+		storage_continue.icon = 'icons/mob/hud/cm_hud/cm_hud_inventory.dmi'
 		storage_continue.icon_state = "storage_continue"
 		storage_continue.screen_loc = "7,7 to 10,8"
 		var/matrix/M = matrix()
@@ -878,6 +885,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	boxes = new
 	boxes.name = "storage"
 	boxes.master = src
+	boxes.icon = 'icons/mob/hud/cm_hud/cm_hud_inventory.dmi'
 	boxes.icon_state = "block"
 	boxes.screen_loc = "7,7 to 10,8"
 	boxes.layer = HUD_LAYER
@@ -885,11 +893,13 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	storage_start = new /atom/movable/screen/storage()
 	storage_start.name = "storage"
 	storage_start.master = src
+	storage_start.icon = 'icons/mob/hud/cm_hud/cm_hud_inventory.dmi'
 	storage_start.icon_state = "storage_start"
 	storage_start.screen_loc = "7,7 to 10,8"
 	storage_end = new /atom/movable/screen/storage()
 	storage_end.name = "storage"
 	storage_end.master = src
+	storage_end.icon = 'icons/mob/hud/cm_hud/cm_hud_inventory.dmi'
 	storage_end.icon_state = "storage_end"
 	storage_end.screen_loc = "7,7 to 10,8"
 

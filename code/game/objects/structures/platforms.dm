@@ -240,6 +240,16 @@
 	icon_state = "platform_sm_stair_alt"
 	explo_proof = TRUE
 
+/obj/structure/platform/metal/stair_cut/atlan
+	icon = 'icons/obj/structures/props/upp_platform.dmi'
+	icon_state = "atlan_metalplatform_stair"
+
+/obj/structure/platform/metal/stair_cut/atlan/atlan_left
+	icon_state = "atlan_metalplatform_stair"
+
+/obj/structure/platform/metal/stair_cut/atlan/atlan_right
+	icon_state = "atlan_metalplatform_stair_alt"
+
 //------------------------------//
 //    Stone Stairs Platforms    //
 //------------------------------//
@@ -1169,3 +1179,31 @@
 /obj/structure/platform/stone/stair_cut/kutjevo_right
 	icon_state = "colorable_kutjevo_rock_stair_alt"
 	explo_proof = TRUE
+
+
+// Atlan Platforms //
+/obj/structure/platform/metal/atlan
+	icon = 'icons/obj/structures/props/upp_platform.dmi'
+	icon_state = "atlan_metalplatform"
+	name = "raised metal edge"
+	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+
+/obj/structure/platform/metal/atlan/north
+	dir = NORTH
+/obj/structure/platform/metal/atlan/east
+	dir = EAST
+/obj/structure/platform/metal/atlan/west
+	dir = WEST
+
+/obj/structure/platform_decoration/metal/atlan
+	name = "raised metal corner"
+	desc = "A raised level of metal, often used to elevate areas above others. This is the corner."
+	icon = 'icons/obj/structures/props/upp_platform.dmi'
+	icon_state = "atlan_metalplatform_deco"
+
+/obj/structure/platform_decoration/metal/atlan/north
+	dir = NORTH
+/obj/structure/platform_decoration/metal/atlan/east
+	dir = EAST
+/obj/structure/platform_decoration/metal/atlan/west
+	dir = WEST

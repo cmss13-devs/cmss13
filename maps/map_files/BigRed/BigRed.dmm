@@ -79,7 +79,7 @@
 /area/bigredv2/outside/space_port)
 "aau" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "LZ1: Communications Landing Zone"
+	name = "LZ1: NW: Communications Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
@@ -13187,7 +13187,7 @@
 /area/bigredv2/outside/space_port_lz2)
 "biI" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
-	name = "LZ2: Engineering Landing Zone"
+	name = "LZ2: SW: Engineering Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port_lz2)

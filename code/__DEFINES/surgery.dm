@@ -69,7 +69,9 @@ unless the surgical tool is completely unsuited to what it's being used for.*/
 ///Tools routinely used to hit people, which wouldn't make sense to give 'you can't open an incision with xyz' messages.
 #define SURGERY_TOOLS_NO_INIT_MSG list(\
 	/obj/item/stack/medical/advanced/bruise_pack,\
+	/obj/item/stack/medical/advanced/ointment,\
 	/obj/item/stack/medical/bruise_pack,\
+	/obj/item/stack/medical/ointment,\
 	/obj/item/tool/kitchen/utensil/fork,\
 	/obj/item/stack/cable_coil,\
 	/obj/item/tool/lighter,\

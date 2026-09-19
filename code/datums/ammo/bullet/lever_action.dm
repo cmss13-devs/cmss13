@@ -14,6 +14,7 @@
 	accurate_range = 14
 	effective_range_max = 7
 	handful_state = "lever_action_bullet"
+	handful_type = /obj/item/ammo_magazine/handful/lever_action
 	shell_casing = /obj/effect/decal/cleanable/ammo_casing/cartridge/lever_action
 
 //unused and not working. need to refactor MD code. Unobtainable.

@@ -3,7 +3,7 @@
 // and abilities files hold the object declarations for the abilities
 
 // Plant weeds
-/datum/action/xeno_action/onclick/plant_weeds/use_ability(atom/atom)
+/datum/action/xeno_action/onclick/plant_weeds/use_ability(atom/atom, autoplanted)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!action_cooldown_check())
 		return
@@ -89,9 +89,107 @@
 			qdel(cur_weed)
 
 	playsound(xeno.loc, "alien_resin_build", 25)
-	apply_cooldown()
+	if(autoplanted)
+		apply_cooldown(0)
+	else
+		apply_cooldown()
 	SEND_SIGNAL(xeno, COMSIG_XENO_PLANT_RESIN_NODE)
 	return ..()
+
+/datum/action/xeno_action/onclick/autoweeding_toggle/Destroy()
+	if(owner)
+		UnregisterSignal(owner, list(COMSIG_MOVABLE_MOVED, COMSIG_MOB_DEATH))
+	linked_planting = null
+	return ..()
+
+///Toggles automatic weeding
+/datum/action/xeno_action/onclick/autoweeding_toggle/use_ability(atom/atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!istype(xeno))
+		return
+
+	if(!linked_planting)
+		linked_planting = locate(/datum/action/xeno_action/onclick/plant_weeds) in xeno.actions
+		if(!linked_planting)
+			return
+
+	if(auto_weeding)
+		stop_autoweed(xeno)
+		return
+
+	RegisterSignal(xeno, COMSIG_MOVABLE_MOVED, PROC_REF(weed_on_move))
+	RegisterSignal(xeno, COMSIG_MOB_DEATH, PROC_REF(use_ability))
+	auto_weeding = TRUE
+	step_count = 0
+	button.icon_state = "template_active"
+	to_chat(xeno, SPAN_XENONOTICE("We will now automatically plant weeds."))
+
+	try_autoweed(xeno)
+
+	return ..()
+
+///signal handler for moving while autoweeding is active
+/datum/action/xeno_action/onclick/autoweeding_toggle/proc/weed_on_move(mob/living/carbon/xenomorph/xeno, atom/old_loc, move_dir, forced)
+	SIGNAL_HANDLER
+
+	// apparently forced isnt really used anywhere, but just in case atp
+	if(forced || !istype(xeno) || xeno.stat || HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
+		return
+
+	if(xeno.pulledby || xeno.buckled)
+		return
+
+	// check_state already handles these, but better return early so we dont have too much overhead
+	if(xeno.resting || xeno.body_position != STANDING_UP || xeno.is_mob_incapacitated())
+		return
+
+	step_count++
+	if(step_count < step_delay)
+		return
+	step_count = 0
+
+	INVOKE_ASYNC(src, PROC_REF(try_autoweed), xeno)
+
+/datum/action/xeno_action/onclick/autoweeding_toggle/proc/stop_autoweed(mob/living/carbon/xenomorph/xeno, silent = FALSE)
+	SIGNAL_HANDLER
+
+	if(!auto_weeding)
+		return
+	auto_weeding = FALSE
+
+	if(xeno)
+		UnregisterSignal(xeno, list(COMSIG_MOVABLE_MOVED, COMSIG_MOB_DEATH))
+		if(!silent)
+			to_chat(xeno, SPAN_XENONOTICE("We will no longer automatically plant weeds."))
+	button.icon_state = "template_xeno"
+
+/datum/action/xeno_action/onclick/autoweeding_toggle/proc/try_autoweed(mob/living/carbon/xenomorph/xeno)
+	if(!linked_planting || !linked_planting.action_cooldown_check())
+		return
+
+	var/plasma_cost = linked_planting.plasma_cost
+	if(xeno.plasma_max > 0 && (((xeno.plasma_stored - plasma_cost) / xeno.plasma_max) * 100 < 20))
+		to_chat(xeno, SPAN_XENONOTICE("We will no longer continue autoweeding for our plasma is too low."))
+		stop_autoweed(xeno, silent = TRUE)
+		return
+
+	var/turf/turf = xeno.loc
+	if(!istype(turf) || turf.density || turf.is_weedable < FULLY_WEEDABLE)
+		return
+
+	if(locate(/obj/effect/alien/weeds/node) in turf)
+		return
+
+	// if we are already standing on weeds, don't bother
+	var/obj/effect/alien/weeds/local_weeds = locate(/obj/effect/alien/weeds) in turf
+	if(local_weeds && local_weeds.parent)
+		return
+
+	// locate check rather than view + why would xenos care much about LOS for nodes anyway
+	if(locate(/obj/effect/alien/weeds/node) in orange(node_search_range, turf))
+		return
+
+	linked_planting.use_ability(turf, autoplanted = TRUE)
 
 /mob/living/carbon/xenomorph/lay_down()
 	if(!can_heal && !resting)
@@ -972,124 +1070,6 @@
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/activable/bombard/use_ability(atom/atom)
-	var/mob/living/carbon/xenomorph/xeno = owner
-
-	if (!istype(xeno) || !xeno.check_state() || !action_cooldown_check() || xeno.action_busy)
-		return FALSE
-
-	var/turf/turf = get_turf(atom)
-
-	if(isnull(turf) || istype(turf, /turf/closed) || !turf.can_bombard(owner))
-		to_chat(xeno, SPAN_XENODANGER("We can't bombard that!"))
-		return FALSE
-
-	if (!check_plasma_owner())
-		return FALSE
-
-	if(turf.z != xeno.z)
-		to_chat(xeno, SPAN_WARNING("That target is too far away!"))
-		return FALSE
-
-	var/atom/bombard_source = get_bombard_source()
-	if (!xeno.can_bombard_turf(turf, range, bombard_source))
-		return FALSE
-
-	xeno.visible_message(SPAN_XENODANGER("[xeno] digs itself into place!"), SPAN_XENODANGER("We dig ourself into place!"))
-	if (!do_after(xeno, activation_delay, interrupt_flags, BUSY_ICON_HOSTILE))
-		to_chat(xeno, SPAN_XENODANGER("We decide to cancel our bombard."))
-		return FALSE
-
-	if (!xeno.can_bombard_turf(turf, range, bombard_source)) //Second check in case something changed during the do_after.
-		return FALSE
-
-	if (!check_and_use_plasma_owner())
-		return FALSE
-
-	apply_cooldown()
-
-	xeno.visible_message(SPAN_XENODANGER("[xeno] launches a massive ball of acid at [atom]!"), SPAN_XENODANGER("You launch a massive ball of acid at [atom]!"))
-	playsound(get_turf(xeno), 'sound/effects/blobattack.ogg', 25, 1)
-
-	recursive_spread(turf, effect_range, effect_range)
-
-	return ..()
-
-/datum/action/xeno_action/activable/bombard/proc/recursive_spread(turf/turf, dist_left, orig_depth)
-	if(!istype(turf))
-		return
-	else if(dist_left == 0)
-		return
-	else if(istype(turf, /turf/closed) || istype(turf, /turf/open/space))
-		return
-	else if(!turf.can_bombard(owner))
-		return
-
-	addtimer(CALLBACK(src, PROC_REF(new_effect), turf, owner), 2*(orig_depth - dist_left))
-
-	for(var/mob/living/L in turf)
-		to_chat(L, SPAN_XENOHIGHDANGER("You see a massive ball of acid flying towards you!"))
-
-	for(var/dirn in GLOB.alldirs)
-		recursive_spread(get_step(turf, dirn), dist_left - 1, orig_depth)
-
-
-/datum/action/xeno_action/activable/bombard/proc/new_effect(turf/turf, mob/living/carbon/xenomorph/xeno)
-	if(!istype(turf))
-		return
-
-	for(var/obj/effect/xenomorph/boiler_bombard/BB in turf)
-		return
-
-	new effect_type(turf, xeno)
-
-/datum/action/xeno_action/activable/bombard/proc/get_bombard_source()
-	return owner
-
-/turf/proc/can_bombard(mob/bombarder)
-	if(!can_be_dissolved() && density)
-		return FALSE
-	for(var/atom/atom in src)
-		if(istype(atom, /obj/structure/machinery))
-			continue // Machinery shouldn't block boiler gas (e.g. computers)
-		if(ismob(atom))
-			continue // Mobs shouldn't block boiler gas
-
-		if(atom && atom.unacidable && atom.density && !(atom.flags_atom & ON_BORDER))
-			return FALSE
-
-	return TRUE
-
-/mob/living/carbon/xenomorph/proc/can_bombard_turf(atom/target, range = 5, atom/bombard_source) // I couldn't be arsed to do actual raycasting :I This is horribly inaccurate.
-	if(!bombard_source || !isturf(bombard_source.loc))
-		to_chat(src, SPAN_XENODANGER("That target is obstructed!"))
-		return FALSE
-	var/turf/current = bombard_source.loc
-	var/turf/target_turf = get_turf(target)
-
-	if (get_dist_sqrd(current, target_turf) > (range*range))
-		to_chat(src, SPAN_XENODANGER("That is too far away!"))
-		return
-
-	. = TRUE
-	while(current != target_turf)
-		if(!current)
-			. = FALSE
-		if(!current.can_bombard(src))
-			. = FALSE
-		if(current.opacity)
-			. = FALSE
-		if(.)
-			for(var/atom/atom in current)
-				if(atom.opacity)
-					. = FALSE
-					break
-		if(!.)
-			to_chat(src, SPAN_XENODANGER("That target is obstructed!"))
-			return
-
-		current = get_step_towards(current, target_turf)
-
 /datum/action/xeno_action/activable/tail_stab/use_ability(atom/targetted_atom)
 	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
 	if(HAS_TRAIT(targetted_atom, TRAIT_HAULED))
@@ -1234,7 +1214,7 @@
 	stabbing_xeno.animation_attack_on(target)
 	stabbing_xeno.flick_attack_overlay(target, stab_overlay)
 
-	var/damage = (stabbing_xeno.melee_damage_upper + stabbing_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * TAILSTAB_MOB_DAMAGE_MULTIPLIER
+	var/damage = (stabbing_xeno.melee_damage_upper + stabbing_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * damage_multiplier
 
 	if(stabbing_xeno.behavior_delegate && apply_behavior_delagate)
 		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_target(target)

@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Hijack ground crash now causes xenomorph major once the ground crash sequence is complete"

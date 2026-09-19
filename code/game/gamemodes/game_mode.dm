@@ -21,8 +21,12 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	var/vote_cycle = null
 	var/probability = 0
 	var/list/datum/mind/modePlayer = new
+	/// The number of players required to vote to start this gamemode
 	var/required_players = 0
-	var/required_players_secret = 0 //Minimum number of players for that game mode to be chose in Secret
+	/// The number of players required to start this gamemode (uses required_players if null)
+	var/required_ready_players = null
+	/// The number of players required to start this gamemode when secret
+	var/required_players_secret = 0
 	var/ert_disabled = 0
 	var/force_end_at = 0
 	var/xeno_evo_speed = 0 // if not 0 - gives xeno an evo boost/nerf
@@ -65,7 +69,8 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		if(players >= required_players_secret)
 			return TRUE
 	else
-		if(players >= required_players)
+		var/needed_players = isnull(required_ready_players) ? required_players : required_ready_players
+		if(players >= needed_players)
 			return TRUE
 	return FALSE
 
@@ -285,6 +290,15 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		tower.spawn_tower()
 	QDEL_LIST(GLOB.comm_tower_landmarks_net_one)
 	QDEL_LIST(GLOB.comm_tower_landmarks_net_two)
+
+/datum/game_mode/proc/send_end_round_music(musical_track)
+	if(!musical_track)
+		return
+	var/sound/theme = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
+	theme.status = SOUND_STREAM
+	for(var/client/client as anything in GLOB.clients)
+		if(client.prefs?.toggles_sound & SOUND_ROUND_END)
+			sound_to(client, theme)
 
 //////////////////////////
 //Reports player logouts//

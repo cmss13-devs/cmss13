@@ -1840,6 +1840,37 @@
 /obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/kutjevo/multi_tiles/southeast,
 /area/kutjevo/interior/power)
+"agZ" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "wy_office"
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/Northwest_Colony)
+"aha" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "flightcontrol_extension"
+	},
+/turf/closed/wall/kutjevo/rock,
+/area/kutjevo/interior/oob)
+"ahb" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/effect/landmark/nightmare{
+	insert_tag = "pizza_party"
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/complex_border/med_rec)
+"ahc" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "lz2_containers"
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_pad)
+"ahd" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "cave_hold"
+	},
+/turf/closed/wall/kutjevo/rock,
+/area/kutjevo/interior/oob)
 "ahp" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -7776,6 +7807,9 @@
 "jzQ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/objective_landmark/science,
+/obj/effect/landmark/nightmare{
+	insert_tag = "facehugger_examination"
+	},
 /turf/open/floor/kutjevo/colors/cyan/inner_corner/east,
 /area/kutjevo/interior/complex/med)
 "jAw" = (
@@ -12935,6 +12969,9 @@
 /area/kutjevo/interior/construction/north)
 "rHg" = (
 /obj/structure/prop/dam/truck/cargo,
+/obj/effect/landmark/nightmare{
+	insert_tag = "northroad_garage"
+	},
 /turf/open/asphalt/cement_sunbleached,
 /area/kutjevo/exterior/scrubland)
 "rHt" = (
@@ -19466,7 +19503,7 @@ sWF
 sWF
 sWF
 dxF
-dxF
+aha
 dxF
 dxF
 dxF
@@ -22153,7 +22190,7 @@ hrz
 hrz
 sVF
 sVF
-sVF
+agZ
 sVF
 iin
 sVF
@@ -22624,7 +22661,7 @@ qDH
 qDH
 qDH
 qDH
-lKk
+ahc
 dmy
 dmy
 dmy
@@ -36997,7 +37034,7 @@ aap
 aCY
 aCY
 aCY
-inc
+ahb
 msK
 msK
 msK
@@ -45667,7 +45704,7 @@ dxF
 dxF
 dxF
 wTt
-dxF
+ahd
 dxF
 dxF
 dxF

@@ -14,6 +14,7 @@
 	INVOKE_ASYNC(src, PROC_REF(teleport), AM)
 
 /obj/effect/portal/Crossed(AM as mob|obj)
+	..()
 	INVOKE_ASYNC(src, PROC_REF(teleport), AM)
 
 /obj/effect/portal/attack_hand(mob/user as mob)

@@ -254,39 +254,6 @@
 			return FALSE
 	return TRUE
 
-//This will update a mob's name, real_name, mind.name, data_core records, pda and id
-//Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
-/mob/proc/fully_replace_character_name(oldname, newname)
-	if(!newname)
-		return 0
-	change_real_name(src, newname)
-
-	if(oldname)
-		//update the datacore records! This is goig to be a bit costly.
-		var/mob_ref = WEAKREF(src)
-		for(var/list/L in list(GLOB.data_core.general, GLOB.data_core.medical, GLOB.data_core.security, GLOB.data_core.locked))
-			for(var/datum/data/record/record_entry in L)
-				if(record_entry.fields["ref"] == mob_ref)
-					record_entry.fields["name"] = newname
-					record_entry.name = newname
-					break
-
-		//update our pda and id if we have them on our person
-		var/list/searching = GetAllContents(searchDepth = 3)
-		var/search_id = 1
-		var/search_pda = 1
-
-		for(var/A in searching)
-			if(search_id && istype(A, /obj/item/card/id))
-				var/obj/item/card/id/ID = A
-				if(ID.registered_name == oldname)
-					ID.registered_name = newname
-					ID.name = "[newname]'s [ID.id_type] ([ID.assignment])"
-					if(!search_pda)
-						break
-					search_id = 0
-	return 1
-
 //Returns a list of all mobs with their name
 /proc/getmobs()
 	var/list/mobs = sortmobs()
@@ -1324,11 +1291,12 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
  * * start_atom - starting point of the line
  * * end_atom - ending point of the line
  * * include_start_atom - when truthy includes start_atom in the list, default TRUE
+ * * z_level_transitions - prevent diagonal avoidance of obstacles, only needed for actual object traversal, default FALSE
  *
  * Returns:
  * list - turfs from start_atom (in/exclusive) to end_atom (inclusive)
  */
-/proc/get_line(atom/start_atom, atom/end_atom, include_start_atom = TRUE)
+/proc/get_line(atom/start_atom, atom/end_atom, include_start_atom = TRUE, z_level_transitions = FALSE)
 	var/turf/start_turf = get_turf(start_atom)
 	var/turf/end_turf = get_turf(end_atom)
 	var/turf/end_turf_fall = end_turf //in case we are going cross fake z levels we store here the end tile to fall to
@@ -1368,6 +1336,51 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 		line += locate(x, y, start_z)
 
 	line += end_turf_fall
+
+	if(!reservation && z_level_transitions)
+		var/list/mutli_z_cross_points = list()
+		if(start_turf.z == end_turf.z)
+			return line
+		if(!SSmapping.same_z_map(start_atom.z, end_turf.z))
+			line.Cut()
+			line = list(start_turf) //We're trying to throw things accross maps somehow. Let's not.
+			return line
+
+		//Throwing accross Z levels on the same map. Fill in the vertical swapping over points so we're not diagnonally avoiding obstacle turfs.
+		var/turf/comparing_turf = start_turf
+		var/path_position = 0
+		if(length(line) > 1)
+			for(var/turf/turf_cross_point in line)
+				path_position++
+				if(comparing_turf.z == turf_cross_point.z)
+					comparing_turf = turf_cross_point
+					continue
+				else
+					mutli_z_cross_points += turf_cross_point
+					mutli_z_cross_points[turf_cross_point] = path_position
+					comparing_turf = turf_cross_point
+		else
+			path_position++ //Only one position in line and it's immediately into another Z.
+			mutli_z_cross_points += line[1]
+			mutli_z_cross_points[line[1]] = path_position
+
+		var/offset = SSmapping.level_trait(start_turf.z, ZTRAIT_UP)
+		var/turf/first_cross_point = mutli_z_cross_points[1]
+		if(first_cross_point.z != start_turf.z + offset)
+			offset = 0 // We only need to offset if we're entering from a lower Z.
+
+		for(var/turf/crossing_point in mutli_z_cross_points)
+			var/turf/switching_cross_point
+			switching_cross_point = locate(crossing_point.x, crossing_point.y, start_turf.z + offset)
+			if(offset > 0) //If we're ending up with multiple cross points, we're throwing across multiple Zs - This is probably only going to happen for throwing down, but just incase.
+				offset = offset + SSmapping.level_trait(switching_cross_point.z, ZTRAIT_UP)
+			else //So we need to adjust the offset for the next cross point.
+				offset = offset + SSmapping.level_trait(switching_cross_point.z, ZTRAIT_DOWN)
+			line.Insert(mutli_z_cross_points[crossing_point], switching_cross_point)
+
+			if(!istype(switching_cross_point, /turf/open_space))
+				line.Cut(max(1, mutli_z_cross_points[crossing_point] + 1), length(line) + 1) //Hit a non open_space turf. Shouldn't go through anything else. Stop here.
+				break
 
 	return line
 
@@ -1478,6 +1491,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	invisibility = INVISIBILITY_ABSTRACT
 	density = FALSE
 	see_in_dark = INFINITY
+	mob_flags = MOB_ABSTRACT
 	var/ready_to_die = FALSE
 
 /mob/dview/Initialize() //Properly prevents this mob from gaining huds or joining any global lists

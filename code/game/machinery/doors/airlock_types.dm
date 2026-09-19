@@ -906,17 +906,19 @@
 	return ..()
 
 /obj/structure/machinery/door/airlock/dropship_hatch/attack_alien(mob/living/carbon/xenomorph/xeno)
-
 	if(xeno.hive_pos != XENO_QUEEN)
 		return ..()
 
 	if(!locked)
 		return ..()
 
-	to_chat(xeno, SPAN_NOTICE("You try and force the doors open."))
-	if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(xeno.action_busy)
+		return
+
+	to_chat(xeno, SPAN_NOTICE("You try and force the doors open!"))
+	if(do_after(xeno, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		unlock(TRUE)
-		open(1)
+		open(TRUE)
 		lock(TRUE)
 
 /obj/structure/machinery/door/airlock/dropship_hatch/two

@@ -229,6 +229,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	src.health -= P.force
 
 /obj/effect/fake_attacker/Crossed(mob/M, somenumber)
+	..()
 	if(M.weak_reference != weak_target)
 		return
 	step_away(src,M,2,world.icon_size/move_delay)

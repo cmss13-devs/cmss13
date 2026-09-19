@@ -12,7 +12,7 @@
 #define HEADSHOT_OVERLAY_HEAVY "heavy_headshot"
 
 // flags_ammo_behaviour
-#define AMMO_EXPLOSIVE (1<<0)
+// (1<<0) was formerly AMMO_EXPLOSIVE. Reuse it only if you must. I encourage you to use components.
 #define AMMO_ACIDIC (1<<1)
 #define AMMO_XENO (1<<2)
 #define AMMO_LASER (1<<3)
@@ -83,6 +83,12 @@
 #define GUN_SUPPORT_PLATFORM (1<<16)
 /// No gun description, only base desc
 #define GUN_NO_DESCRIPTION (1<<17)
+/// If the gun can do battlefield executions
+#define GUN_BATTLEFIELD_EXECUTION (1<<18)
+/// If the gun can perform tricks
+#define GUN_TRICKSTER (1<<19)
+/// If the gun can perform a warning shot
+#define GUN_CAN_WARNING_SHOT (1<<20)
 /// If it can automatically eject shell casings
 #define GUN_AUTO_EJECT_CASINGS (1<<18)
 /// If it needs to manually eject shell casings (like bolt actions)

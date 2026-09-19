@@ -1,5 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - bugfix: "Zip Cuff boxes can now only take tiny items like zip cuffs."
-  - rscdel: "Removed the Large zip cuff box from SLs and some others. Replaced with small ones."

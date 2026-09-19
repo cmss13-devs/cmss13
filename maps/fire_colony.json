@@ -1,0 +1,79 @@
+{
+    "map_name": "LV-376 Charon's Crucible",
+    "short_name": "Fire Colony",
+    "map_path": "map_files/Fire_Colony",
+    "map_file": "Fire_Colony.dmm",
+    "webmap_url": "Fire_Colony",
+    "weather_holder": "/datum/weather_ss_map_holder/fire_colony",
+    "survivor_types": [
+        "/datum/equipment_preset/survivor/fire_colony/civilian",
+        "/datum/equipment_preset/survivor/fire_colony/doctor",
+        "/datum/equipment_preset/survivor/fire_colony/scientist_xenoarchaeologist",
+        "/datum/equipment_preset/survivor/fire_colony/scientist_xenobiologist",
+        "/datum/equipment_preset/survivor/fire_colony/scientist_xenoflora",
+        "/datum/equipment_preset/survivor/fire_colony/engineer",
+        "/datum/equipment_preset/survivor/lasalle_bionational",
+        "/datum/equipment_preset/survivor/fire_colony/corporate_goon"
+    ],
+    "synth_survivor_types": [
+        "/datum/equipment_preset/synth/survivor/fire_colony/civilian",
+        "/datum/equipment_preset/synth/survivor/fire_colony/engineer",
+        "/datum/equipment_preset/synth/survivor/fire_colony/doctor",
+        "/datum/equipment_preset/synth/survivor/fire_colony/security",
+        "/datum/equipment_preset/synth/survivor/fire_colony/scientist"
+    ],
+    "CO_insert_survivor_types": [
+        "/datum/equipment_preset/survivor/lasalle_merc/lasalle_commander"
+    ],
+    "colony_joe_types": [
+        "/datum/job/civilian/working_joe/colony"
+    ],
+    "defcon_triggers": [
+        4750,
+        3500,
+        2000,
+        1000,
+        0.0
+    ],
+    "map_item_type": "/obj/item/map/fire_colony",
+    "announce_text": "An automated distress signal has been received from Lasalle Bionational's Ecological Research Site on the volcanic world of LV-376 also known as 'Charon's Crucible'. All communications with the colony have since been lost. The ###SHIPNAME### has been dispatched to investigate.",
+    "co_briefing": {
+        "Hawks": "maps/map_briefings/commanding_officer/big_red/SOLARISRIDGEcpo.html",
+        "Doves": "maps/map_briefings/commanding_officer/big_red/SOLARISRIDGEhmm.html",
+        "Magpies": "maps/map_briefings/commanding_officer/big_red/SOLARISRIDGEmodi.html",
+        "Unaligned": "maps/map_briefings/commanding_officer/big_red/SOLARISRIDGEunaligned.html"
+    },
+    "monkey_types": [
+        "neaera_alt"
+    ],
+    "traits": [
+        {
+            "Ground": true,
+            "Up": 1
+        },
+        {
+            "Ground": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Ground": true,
+            "Down": -1
+        }
+    ],
+    "nightmare_path": "maps/Nightmare/maps/Fire_Colony/",
+    "xvx_hives": {
+        "xeno_hive_alpha": 0,
+        "xeno_hive_bravo": 0,
+        "xeno_hive_charlie": 0,
+        "xeno_hive_delta": 100
+    },
+    "camouflage": "classic",
+    "gamemodes": [
+        "Distress Signal",
+        "Hunter Games",
+        "Hive Wars",
+        "Faction Clash",
+        "Infection"
+    ]
+}

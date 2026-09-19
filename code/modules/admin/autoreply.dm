@@ -102,8 +102,8 @@ ON_CONFIG_LOAD(/datum/autoreply/mentor/whitelist)
 	title = "C: Clear Cache"
 	message = "In order to clear cache, you need to click on gear icon located in upper-right corner of your BYOND client and select preferences. Switch to Games tab and click Clear Cache button. In some cases you need to manually delete cache. To do that, select Advanced tab and click Open User Directory and delete \"cache\" folder there."
 
-/datum/autoreply/mentor/dissappearing_mouse
-	title = "C: Dissappearing Mouse"
+/datum/autoreply/mentor/disappearing_mouse
+	title = "C: Disappearing Mouse"
 	message = "This is a issue with Windows. To fix, either use the taskbar search or Windows Run (Win+R), type in \"main.cpl\", go to the pointer options menu, and under the visibility section untick \"Hide Pointer while typing\". Remember to click apply at the bottom of the page."
 
 /datum/autoreply/mentor/click_drag
@@ -149,9 +149,9 @@ ON_CONFIG_LOAD(/datum/autoreply/mentor/macros)
 
 /datum/autoreply/mentor/ability_activation
 	title = "L: Ability Activation"
-	message = "To activate an ability, ensure that it is selected on the ability bar (Top left of the game screen), then depending on the abilitty it may be activated immediately on clicking the button, open a UI menu, or may only activate on click of the middle mouse button.\
-The ability bar can be entirely hidden by using the leftwards arrow at the end of the ability bar (and reshown with the same arrow button).\
-As a xenomorph only, you can change your ability activation button from middle click by changing it in \"Edit Characters\" (available from the escape menu or the preferences tab on the top of the chat window) then under the sub-menu Settings and section Game Setttings click \"Button To Activate Xenomorph Abilities\"."
+	message = "To activate an ability, ensure that it is selected on the ability bar (Top left of the game screen), then depending on the ability it may be activated immediately on clicking the button, open a UI menu, or may only activate on click of the middle mouse button. \
+The ability bar can be entirely hidden by using the leftwards arrow at the end of the ability bar (and reshown with the same arrow button). \
+As a xenomorph only, you can change your ability activation button from middle click by changing it in \"Edit Characters\" (available from the escape menu or the preferences tab on the top of the chat window) then under the sub-menu Settings and section Game Settings click \"Button To Activate Xenomorph Abilities\"."
 
 /datum/autoreply/mentor/synthkey
 	title = "H: Synthetic Reset Key"
@@ -169,10 +169,10 @@ Laser Designators have a second mode (produces a RED laser) that allows highligh
 
 /datum/autoreply/mentor/cpr
 	title = "H: CPR"
-	message = "When you find a killed ally, if they have not permanently died you can slow their permanent death by applying CPR. If without a sensormate HUD, then you can check if they have died permanently by examining then clicking \"Check Status\" at the bottom of the readout.\
-If they are dead then they will be \"...not breathing...\", and otherwise if permanently dead they will be \"...no signs of life...\". If you have a sensormate equipped and activated, you can see at range if a mob is revivable.\
-A skull means permanently dead, a solid red line means the player does not want to be revived (DNR), a red box outline means the player has lost connection, while a heartbeat line indicates someone is revivable with a colored line showing how long they have left; A green line is under 5 minutes, a yellow line is under 2 minutes, while a flashing red line is less than 1 minute.\
-To apply CPR, on help intent click on a dead human and wait 3 seconds to apply. Once completed successfully, you must wait another 5 seconds to apply CPR successfully again. CPR may be done quicker with a higher medical skill."
+	message = "When you find a killed ally, if they have not permanently died you can slow their permanent death by applying CPR. If without a sensormate HUD, then you can check if they have died permanently by examining then clicking \"Check Status\" at the bottom of the readout. \
+If they are dead then they will be \"...not breathing...\", and otherwise if permanently dead they will be \"...no signs of life...\". If you have a sensormate equipped and activated, you can see at range if a mob is revivable. \
+A skull means permanently dead, a solid red line means the player does not want to be revived (DNR), a red box outline means the player has disconnected, while a heartbeat line indicates someone is revivable with a colored line showing how long they have left; A green line is under 5 minutes, a yellow line is under 2 minutes, while a flashing red line is less than 1 minute. \
+To apply CPR, on help intent click on a dead human and wait 3 seconds to apply. Once completed successfully, you must wait another 5 seconds to apply CPR successfully again. CPR may be done faster with a higher medical skill."
 
 /datum/autoreply/mentor/fireman_carry
 	title = "H: Fireman Carry"

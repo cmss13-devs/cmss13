@@ -69,13 +69,13 @@
 
 
 /datum/supply_packs/upp/ammo_Type64_x10
-	name = "UPP Magazine box (NSP-773, 10x regular mags)"
+	name = "UPP Magazine box (MSP-64, 10x regular mags)"
 	contains = list(
 		/obj/item/ammo_box/magazine/type64,
 	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "NSP-773 magazines crate"
+	containername = "MSP-64 magazines crate"
 	group = "UPP Ammo"
 
 /datum/supply_packs/upp/ammo_Type71_box
@@ -160,7 +160,7 @@
 	group = "UPP Special Ammo"
 
 /datum/supply_packs/upp/ammo_rpg_wp
-	name = "UPP HJRA-12 Extreme-Intensity Incendiary Rocket Crate (x3)"
+	name = "UPP HJRA-12 Thermobaric Rocket Crate (x3)"
 	contains = list(
 		/obj/item/ammo_magazine/rocket/upp/incen,
 		/obj/item/ammo_magazine/rocket/upp/incen,
@@ -168,5 +168,5 @@
 	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/explosives
-	containername = "HJRA-12 Extreme-Intensity Incendiary Rocket Crate"
+	containername = "HJRA-12 Thermobaric Rocket Crate"
 	group = "UPP Special Ammo"

@@ -445,7 +445,7 @@
 /obj/item/weapon/gun/pistol/t73/leader
 	name = "\improper Type 74 pistol"
 	desc = "The Type 74 was the originally intended replacement for the Type 73 pistol. It's reinforced frame allows it to fire high-powered cartridges that would destroy a normal Type 73."
-	desc_lore = "More of an upgrade package to the Type 73 than an actual replacement, featuring many improvements such as an integrated lasersight, a reinforced frame and gas system to allow the usage of much higher pressure cartridges, improved sights and grip-profile, reliability improvements. Just months after the initial adoption of the Type 74, the new NP92 series was completed and soon-after adopted as a replacement to both the Type 73 and Type 74. With only a small number of Type 74s being produced in the time between it's adoption and replacement, the Type 74 was relegated to a senior officer's weapon, usually given as token of appreciation for long or excellent service."
+	desc_lore = "More of an upgrade package to the Type 73 than an actual replacement, featuring many improvements such as an integrated lasersight and reinforced frame to allow the usage of higher pressure cartridges. Just months after the initial adoption of the Type 74, the new NP92 series was completed and soon-after adopted as a replacement to both the Type 73 and Type 74. With only a small number of Type 74s being produced in the time between it's adoption and replacement, the Type 74 was relegated to a senior officer's weapon, usually given as token of appreciation for long or excellent service."
 	icon_state = "ttb"
 	item_state = "ttb"
 	current_mag = /obj/item/ammo_magazine/pistol/t73_impact

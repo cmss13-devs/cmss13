@@ -267,20 +267,20 @@
 //Type 73 pistol. //A TT
 
 /obj/item/ammo_magazine/pistol/t73
-	name = "\improper Type 73 magazine (10x18mm)"
-	desc = "A 10x18mm cased pistol magazine."
+	name = "\improper Type 73 magazine (10mm)"
+	desc = "A 10mm cased pistol magazine."
 	default_ammo = /datum/ammo/bullet/pistol/heavy
-	caliber = "10x18mm"
+	caliber = "10mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
 	icon_state = "ttmag"
 	max_rounds = 9
 	gun_type = /obj/item/weapon/gun/pistol/t73
 
 /obj/item/ammo_magazine/pistol/t73_impact
-	name = "\improper High Impact Type 74 magazine (10x18mm)"
-	desc = "A high-impact 10x18mm cased pistol magazine. The bullets are tipped with a tungsten-lead alloy to stagger absolutely anything they hit, and the extra powder load is enough to blow apart a normal Type 73 if used. Point towards dissidents."
+	name = "\improper High Impact Type 74 magazine (10mm)"
+	desc = "A high-impact 10mm cased pistol magazine. The bullets are tipped with a tungsten-lead alloy to stagger absolutely anything they hit, and the extra powder load is enough to blow apart a normal Type 73 if used. Point towards dissidents."
 	default_ammo = /datum/ammo/bullet/pistol/deagle/super/highimpact/upp
-	caliber = "10x18mm cased"
+	caliber = "10mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
 	icon_state = "ttmag_impact"
 	max_rounds = 9

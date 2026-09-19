@@ -418,7 +418,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/bizon
-	name = "NSP-773 Submachinegun (x4 magazines included)"
+	name = "MSP-64 Submachinegun (x4 magazines included)"
 	contains = list(
 		/obj/item/weapon/gun/smg/bizon,
 		/obj/item/ammo_magazine/smg/bizon,
@@ -885,7 +885,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/bizon
-	name = "Magazines box (NSP-773, 10x mags)"
+	name = "Magazines box (MSP-64, 10x mags)"
 	dollar_cost = 40
 	contains = list(/obj/item/ammo_box/magazine/type64)
 	containertype = /obj/structure/largecrate/black_market
@@ -1267,7 +1267,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 				new picked_type(loc)
 			loot_message = SPAN_NOTICE("It's some strange elite gear...?")
 		if(11 to 15)
-			//NSP-773
+			//MSP-64
 			new /obj/item/weapon/gun/smg/bizon(loc)
 			new /obj/item/ammo_magazine/smg/bizon(loc)
 			new /obj/item/ammo_magazine/smg/bizon(loc)

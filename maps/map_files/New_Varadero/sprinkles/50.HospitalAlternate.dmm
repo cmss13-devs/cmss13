@@ -3,26 +3,22 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "ab" = (
-/obj/item/weapon/gun/rifle/m41a,
-/obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/shell{
-	icon_state = "cartridge_3_1"
-	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
 "ac" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/surface/table{
-	color = "#8B7B5B"
+/obj/structure/machinery/light{
+	dir = 1
 	},
-/obj/structure/machinery/hybrisa/coffee_machine{
-	pixel_x = 1;
-	pixel_y = 10
+/obj/effect/decal/cleanable/blood/splatter{
+	icon_state = "mfloor4"
 	},
 /turf/open/floor/shiva/snow_mat/west,
 /area/template_noop)
@@ -30,63 +26,61 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
+/obj/item/toy/plush/therapy/random_color,
 /obj/structure/surface/table{
 	color = "#8B7B5B"
 	},
-/obj/item/clothing/under/rank/chemist{
-	pixel_x = -7;
-	pixel_y = 12
-	},
-/obj/item/toy/plush/therapy/random_color,
 /turf/open/floor/shiva/snow_mat/east,
-/area/template_noop)
-"ae" = (
-/obj/structure/window_frame/colony,
-/obj/item/shard,
-/turf/open/floor/plating,
 /area/template_noop)
 "af" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/shiva/multi_tiles/west,
 /area/template_noop)
 "ag" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/item/trash/used_stasis_bag,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "ah" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/hybrisa/hospital/hospitaldivider{
-	pixel_y = 5;
-	layer = 3.8
+	layer = 3.8;
+	pixel_y = 5
 	},
 /turf/open/floor/shiva/red/north,
-/area/template_noop)
-"ai" = (
-/obj/structure/flora/pottedplant/random,
-/turf/open/floor/shiva/wred/west,
 /area/template_noop)
 "aj" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/structure/bed/roller/hospital/bloody,
-/obj/effect/landmark/corpsespawner/colonist/burst,
-/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/roller/hospital_empty/bigrollerbloodempty,
+/obj/effect/landmark/corpsespawner/new_varadero/lacn_marine/burst,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "ak" = (
-/obj/item/shard,
 /obj/structure/window_frame/colony,
-/turf/open/floor/plating,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 4;
+	name = "\improper quarantine shutters";
+	needs_power = 0
+	},
+/obj/item/shard{
+	icon_state = "large"
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
 "al" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
 /turf/open/floor/shiva/wred/west,
 /area/template_noop)
 "am" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/bloodtrail{
-	pixel_x = 5;
-	dir = 1
+	pixel_x = 4
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
@@ -101,82 +95,555 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "ap" = (
-/obj/effect/landmark/corpsespawner/doctor,
-/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/landmark/corpsespawner/new_varadero/doctor/burst,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "csplatter1"
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
 "aq" = (
-/obj/item/prop/alien/hugger,
+/obj/effect/decal/hybrisa/trash,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mfloor3"
+	},
+/obj/effect/spawner/gibspawner/human,
 /turf/open/floor/shiva/snow_mat/east,
-/area/template_noop)
-"ar" = (
-/obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/shiva/floor3,
 /area/template_noop)
 "as" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "at" = (
 /obj/structure/disposalpipe/junction{
-	dir = 1;
-	icon_state = "pipe-j2"
+	icon_state = "pipe-j2";
+	dir = 1
 	},
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
-"au" = (
-/obj/structure/largecrate/random/mini/med{
-	pixel_x = -7;
-	pixel_y = 14
+"av" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "HospitalAlternate"
 	},
-/obj/structure/largecrate/random/mini/med{
-	pixel_y = 12;
-	pixel_x = 9
-	},
-/turf/open/floor/shiva/redfull,
+/obj/structure/sign/safety/maint,
+/turf/closed/wall,
+/area/template_noop)
+"aw" = (
+/obj/effect/acid_hole,
+/turf/closed/wall,
 /area/template_noop)
 "ax" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/shiva/red/west,
 /area/template_noop)
+"ay" = (
+/obj/structure/sign/safety/maint,
+/turf/closed/wall,
+/area/template_noop)
+"az" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/wred,
+/area/template_noop)
+"aA" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_c";
+	dir = 2
+	},
+/turf/open/floor/shiva/wred,
+/area/template_noop)
+"aB" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/greenfull/west,
+/area/template_noop)
+"aC" = (
+/obj/structure/window/framed/colony,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 4;
+	name = "\improper quarantine shutters";
+	needs_power = 0
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/template_noop)
+"aD" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"aE" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/stack/sheet/mineral/phoron,
+/obj/item/stack/sheet/mineral/phoron,
+/obj/item/stack/sheet/mineral/phoron,
+/obj/item/stack/sheet/mineral/phoron,
+/obj/structure/machinery/reagentgrinder{
+	pixel_y = 7
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"aF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"aG" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/obj/effect/landmark/corpsespawner/new_varadero/doctor,
+/obj/effect/decal/cleanable/blood,
+/obj/item/spacecash/c1{
+	pixel_x = 6;
+	pixel_y = -9
+	},
+/turf/open/floor/shiva/red/west,
+/area/template_noop)
+"aH" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_y = 7
+	},
+/obj/structure/reagent_dispensers/water_cooler{
+	pixel_x = -7;
+	pixel_y = 22;
+	layer = 3.3;
+	density = 0
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"aI" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"aJ" = (
+/obj/structure/sign/safety/biohazard{
+	pixel_x = 15;
+	pixel_y = 0
+	},
+/turf/closed/wall,
+/area/template_noop)
+"aK" = (
+/obj/structure/sign/safety/reception,
+/turf/closed/wall,
+/area/template_noop)
+"aL" = (
+/obj/structure/machinery/iv_drip,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/redfull/west,
+/area/template_noop)
+"aM" = (
+/obj/effect/acid_hole,
+/turf/closed/wall/r_wall,
+/area/template_noop)
+"aN" = (
+/obj/structure/sign/poster/safety{
+	icon_state = "poster31"
+	},
+/turf/closed/wall,
+/area/template_noop)
+"aO" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
+/turf/closed/wall/r_wall/unmeltable,
+/area/template_noop)
+"aP" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_13"
+	},
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"aQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/shiva/multi_tiles/west,
+/area/template_noop)
+"aR" = (
+/obj/item/device/flashlight/lamp/green{
+	pixel_y = 7
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/stock_parts/matter_bin/super{
+	pixel_x = -8;
+	pixel_y = 3
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"aS" = (
+/obj/structure/bed/sofa/vert/grey/bot,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"aT" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
 "aU" = (
-/obj/structure/sink{
-	pixel_y = 15
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter{
+	icon_state = "mfloor5"
 	},
 /turf/open/floor/shiva/redfull,
+/area/template_noop)
+"aV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	layer = 3.8
+	},
+/turf/open/floor/shiva/red/north,
 /area/template_noop)
 "aW" = (
 /obj/structure/machinery/light,
 /obj/structure/reagent_dispensers/tank/fuel/oxygentank,
 /turf/open/floor/shiva/red/east,
 /area/template_noop)
+"aX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"aY" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"aZ" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8"
+	},
+/obj/effect/landmark/objective_landmark/science,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"ba" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mfloor4"
+	},
+/turf/open/floor/shiva/multi_tiles/west,
+/area/template_noop)
 "bb" = (
 /obj/structure/bed/roller/hospital_empty/bigrollerempty3,
 /turf/open/floor/shiva/multi_tiles/west,
 /area/template_noop)
-"bi" = (
-/obj/effect/landmark/hunter_primary,
+"bc" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/science,
+/obj/item/storage/box/cdeathalarm_kit{
+	pixel_x = -8;
+	pixel_y = 1
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"bd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/sofa/vert/grey,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"be" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"bf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/turf/open/floor/shiva/greenfull/west,
+/area/template_noop)
+"bg" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/folder/black{
+	pixel_x = -7;
+	pixel_y = 13
+	},
+/obj/item/folder/white{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/item/folder/yellow{
+	pixel_x = -7
+	},
+/obj/item/facepaint/lipstick/jade{
+	pixel_x = 5
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"bh" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/wredfull,
+/area/template_noop)
+"bj" = (
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	layer = 3.8;
+	pixel_y = 5
+	},
+/turf/open/floor/shiva/red/north,
+/area/template_noop)
+"bk" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/science,
+/obj/item/tool/pen/blue{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/item/paper/janitor{
+	pixel_x = -4;
+	pixel_y = 4
+	},
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "bl" = (
 /turf/open/floor/shiva/snow_mat/west,
 /area/template_noop)
+"bm" = (
+/obj/structure/bed/sofa/vert/grey/top,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"bn" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_7"
+	},
+/turf/open/floor/shiva/wredfull,
+/area/template_noop)
+"bo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"bp" = (
+/obj/structure/sign/safety/biohazard{
+	pixel_x = 8;
+	pixel_y = 0
+	},
+/turf/closed/wall,
+/area/template_noop)
+"bq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"br" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/north,
+/area/template_noop)
+"bs" = (
+/obj/structure/bed/chair{
+	icon_state = "chair_alt";
+	dir = 4
+	},
+/turf/open/floor/shiva/wred/west,
+/area/template_noop)
+"bt" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s";
+	dir = 4
+	},
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"bu" = (
+/obj/item/stool{
+	icon_state = "stool_alt"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"bv" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/wred/east,
+/area/template_noop)
+"bw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5"
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"bx" = (
+/obj/effect/decal/hybrisa/bloodtrail,
+/turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"by" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"bz" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"bA" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"bB" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/wredfull,
+/area/template_noop)
+"bC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 15;
+	pixel_y = 1
+	},
+/turf/open/floor/shiva/redfull,
+/area/template_noop)
+"bD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/template_noop)
+"bE" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
 "bF" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/maint{
-	dir = 1;
 	name = "\improper Underground Maintenance";
+	dir = 1;
+	req_one_access = null;
 	req_access_txt = "100";
-	req_one_access = null
+	locked = 1
 	},
 /turf/open/floor/shiva/wred,
+/area/template_noop)
+"bG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_6"
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"bH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "mfloor6"
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"bI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"bJ" = (
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 4;
+	name = "\improper quarantine shutters";
+	needs_power = 0
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"bK" = (
+/obj/structure/bed/chair/comfy/teal{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5"
+	},
+/mob/living/simple_animal/small/mouse,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"bL" = (
+/obj/effect/decal/hybrisa/trash,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"bM" = (
+/obj/structure/sign/safety/biohazard,
+/turf/closed/wall,
+/area/template_noop)
+"bN" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_range = 5;
+	light_power = 3;
+	light_color = "#FF0000";
+	light_on = 1;
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/turf/open/floor/shiva/redfull,
 /area/template_noop)
 "bT" = (
 /obj/item/storage/firstaid/o2{
@@ -193,21 +660,23 @@
 /turf/open/floor/shiva/greenfull/west,
 /area/template_noop)
 "bV" = (
+/obj/item/storage/pouch/tools/full,
 /obj/structure/closet/secure_closet/personal/patient,
 /obj/structure/barricade/handrail/wire{
 	dir = 8;
 	layer = 2.991
 	},
-/obj/effect/landmark/objective_landmark/science,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "bY" = (
 /obj/structure/pipes/vents/pump,
-/obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/shiva/red,
 /area/template_noop)
 "cq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/hunter_primary,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "dt" = (
@@ -219,12 +688,11 @@
 	dir = 4;
 	pixel_x = 24
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard{
+	icon_state = "large"
+	},
 /turf/open/floor/shiva/north,
-/area/template_noop)
-"dx" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/bed/sofa/vert/grey/top,
-/turf/open/floor/shiva/floor3,
 /area/template_noop)
 "dB" = (
 /turf/closed/wall/r_wall,
@@ -233,7 +701,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/chem_dispenser,
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "dG" = (
@@ -242,10 +710,6 @@
 	},
 /obj/structure/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/shiva/multi_tiles,
-/area/template_noop)
-"eg" = (
-/obj/structure/machinery/vending/snack,
-/turf/open/floor/shiva/redfull/west,
 /area/template_noop)
 "eo" = (
 /obj/structure/disposalpipe/segment,
@@ -256,10 +720,7 @@
 /turf/open/floor/shiva/red/north,
 /area/template_noop)
 "eu" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	icon_state = "chair_alt"
-	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/red/north,
 /area/template_noop)
 "ew" = (
@@ -271,11 +732,16 @@
 	dir = 8;
 	health = 80
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "eU" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor/plating,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	name = "\improper quarantine shutters";
+	needs_power = 0
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
 "eV" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
@@ -301,6 +767,7 @@
 "gi" = (
 /obj/item/device/defibrillator,
 /obj/structure/surface/table,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/wred/north,
 /area/template_noop)
 "gv" = (
@@ -320,20 +787,26 @@
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "hh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/alien/hugger{
+	pixel_x = -8;
+	pixel_y = 5
+	},
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
 "hG" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/clothing/suit/armor/vest,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "in" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
+	name = "\improper Underground Medical";
 	dir = 1;
-	name = "\improper Underground Medical Laboratory Storage";
-	req_access_txt = "100";
-	req_one_access = null
+	req_access = null;
+	req_one_access = null;
+	locked = 1
 	},
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
@@ -348,12 +821,14 @@
 /obj/structure/barricade/handrail/wire{
 	dir = 4
 	},
+/obj/item/storage/pouch/shotgun,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "iB" = (
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -364,39 +839,44 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s";
+	dir = 4
+	},
 /turf/open/floor/shiva/redfull/west,
 /area/template_noop)
 "jc" = (
 /obj/structure/pipes/standard/simple/visible{
 	dir = 5
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/red,
 /area/template_noop)
 "jh" = (
-/obj/structure/bed/chair,
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "jr" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "js" = (
-/obj/effect/landmark/corpsespawner/doctor,
-/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/snow_mat/north,
 /area/template_noop)
 "jx" = (
 /obj/structure/machinery/holosign_switch{
-	id = "otice";
-	pixel_y = -24
+	pixel_y = -24;
+	id = "otice"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "jE" = (
@@ -404,7 +884,10 @@
 /area/template_noop)
 "jP" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/device/flashlight,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "kb" = (
@@ -415,12 +898,18 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
 "kh" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	layer = 3.1
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "kw" = (
@@ -433,18 +922,21 @@
 /turf/open/floor/shiva/wred/north,
 /area/template_noop)
 "ky" = (
-/obj/structure/prop/structure_lattice{
-	density = 0;
-	desc = "On closer inspection, everything on these shelves are made of plastic.";
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bookcase{
 	icon_state = "book-5";
-	name = "book case"
+	density = 0
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "kX" = (
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
@@ -463,18 +955,29 @@
 	pixel_x = -6;
 	pixel_y = 6
 	},
-/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "mo" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = -7;
+	pixel_y = 14;
+	layer = 3.3
+	},
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = 9;
+	pixel_y = 12;
+	layer = 3.3
+	},
 /turf/open/floor/shiva/snow_mat/west,
 /area/template_noop)
 "mu" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/bodybag/cryobag,
+/obj/structure/bed/hybrisa/hospital/hospitaldivider,
+/obj/item/shard{
+	icon_state = "medium"
+	},
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/template_noop)
 "mw" = (
@@ -484,6 +987,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "my" = (
@@ -497,18 +1001,26 @@
 /area/template_noop)
 "mO" = (
 /obj/structure/pipes/unary/freezer{
-	dir = 8;
-	icon_state = "freezer_1"
+	icon_state = "freezer_1";
+	dir = 8
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
 	},
 /turf/open/floor/shiva/red,
 /area/template_noop)
 "mQ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	name = "\improper quarantine shutters";
+	needs_power = 0
+	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
+	name = "\improper Underground Medical";
 	dir = 1;
-	name = "\improper Underground Medical Laboratory";
+	req_access = null;
 	req_one_access = null;
-	req_access = null
+	locked = 1
 	},
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
@@ -516,10 +1028,13 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles/west,
 /area/template_noop)
 "nM" = (
 /obj/structure/reagent_dispensers/water_cooler,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "og" = (
@@ -533,7 +1048,10 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/mob/living/simple_animal/small/mouse,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter{
+	icon_state = "mfloor4"
+	},
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/template_noop)
 "ol" = (
@@ -554,20 +1072,27 @@
 	pixel_x = 6;
 	pixel_y = 3
 	},
-/obj/item/ammo_magazine/rifle,
+/obj/structure/transmitter/colony_net/rotary{
+	pixel_x = -1;
+	pixel_y = 11;
+	phone_category = "New Varadero Naval Base";
+	phone_id = "Medbay"
+	},
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "oU" = (
-/obj/structure/machinery/power/apc/no_power/east,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/power/east,
 /turf/open/floor/shiva/wred/east,
 /area/template_noop)
 "pd" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/hybrisa/hospital/hospitaldivider{
-	pixel_y = 5;
+	dir = 1;
 	layer = 3.8;
-	dir = 1
+	pixel_y = 5
 	},
 /turf/open/floor/shiva/red/north,
 /area/template_noop)
@@ -579,17 +1104,25 @@
 /area/template_noop)
 "pp" = (
 /obj/structure/machinery/bioprinter,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "ps" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/red/east,
 /area/template_noop)
 "pz" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_c";
 	dir = 8
 	},
 /turf/open/floor/shiva/redfull,
@@ -598,21 +1131,16 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
-"qc" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	dir = 1;
-	name = "\improper Underground Maintenance";
-	req_access_txt = "100";
-	req_one_access = null
-	},
-/turf/open/floor/shiva/wred,
-/area/template_noop)
 "qr" = (
-/obj/structure/surface/rack,
-/obj/item/storage/pouch/shotgun,
 /obj/effect/landmark/objective_landmark/science,
+/obj/structure/surface/rack,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8"
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/red/west,
 /area/template_noop)
 "qR" = (
@@ -623,9 +1151,10 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
-	name = "\improper Underground Medical Laboratory Treatment";
+	name = "\improper Underground Medical Treatment";
+	req_one_access = null;
 	req_access_txt = "100";
-	req_one_access = null
+	locked = 1
 	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
@@ -633,14 +1162,11 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/reagent_dispensers/water_cooler{
-	pixel_y = 22;
-	pixel_x = -7
+/obj/structure/surface/table{
+	color = "#8B7B5B"
 	},
-/obj/structure/bed/chair{
-	dir = 8;
-	pixel_y = 7
-	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/suit/storage/labcoat/chemist,
 /turf/open/floor/shiva/snow_mat/north,
 /area/template_noop)
 "rb" = (
@@ -656,19 +1182,17 @@
 	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
-"rZ" = (
-/obj/structure/machinery/iv_drip,
-/turf/open/floor/shiva/redfull,
-/area/template_noop)
 "sh" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/structure/machinery/sleep_console,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "sx" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/wred/north,
 /area/template_noop)
 "ta" = (
@@ -676,6 +1200,7 @@
 	icon_state = "pottedplant_22";
 	pixel_y = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "tE" = (
@@ -689,6 +1214,7 @@
 /obj/item/device/defibrillator{
 	pixel_y = 5
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/red,
 /area/template_noop)
 "ui" = (
@@ -699,18 +1225,17 @@
 /area/template_noop)
 "us" = (
 /obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
 "uu" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	icon_state = "chair_alt"
-	},
+/obj/structure/machinery/chem_master,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/redfull/west,
 /area/template_noop)
 "uQ" = (
@@ -720,7 +1245,11 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/flora/pottedplant/random,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/red,
 /area/template_noop)
 "vj" = (
@@ -736,10 +1265,13 @@
 /area/template_noop)
 "vn" = (
 /obj/structure/machinery/light,
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/roller/hospital_empty/bigrollerempty3,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "vu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/vending/snack,
 /turf/open/floor/shiva/red/west,
 /area/template_noop)
 "vw" = (
@@ -750,6 +1282,7 @@
 	icon_state = "pottedplant_22";
 	pixel_y = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "vz" = (
@@ -759,31 +1292,19 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/medical{
+	name = "Underground Medical Operating Theatre";
 	dir = 1;
-	name = "Underground Medical Laboratory Operating Theatre";
-	req_access_txt = "100";
-	req_one_access = null
+	req_one_access = null;
+	req_access_txt = "100"
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	name = "\improper quarantine shutters";
+	needs_power = 0
 	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
-"vK" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/box/cdeathalarm_kit{
-	pixel_x = -8;
-	pixel_y = 1
-	},
-/obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/shiva/floor3,
-/area/template_noop)
 "vS" = (
 /turf/open/floor/shiva/redfull,
-/area/template_noop)
-"vX" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
-	pixel_y = 8
-	},
-/turf/open/floor/shiva/wred/east,
 /area/template_noop)
 "wb" = (
 /obj/structure/disposalpipe/segment{
@@ -793,14 +1314,21 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+	name = "\improper Underground Medical";
 	dir = 1;
-	name = "\improper Underground Medical Laboratory";
 	req_access = null;
-	req_one_access = null
+	req_one_access = null;
+	locked = 1
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 4;
+	name = "\improper quarantine shutters";
+	needs_power = 0
 	},
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "wi" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/wred,
 /area/template_noop)
 "wn" = (
@@ -811,10 +1339,14 @@
 /area/template_noop)
 "xu" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
+	name = "Underground Medical Operating Theatre";
 	dir = 1;
-	name = "Underground Medical Laboratory Operating Theatre";
-	req_access_txt = "100";
-	req_one_access = null
+	req_one_access = null;
+	req_access_txt = "100"
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	name = "\improper quarantine shutters";
+	needs_power = 0
 	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
@@ -824,12 +1356,19 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "\improper Underground Maintenance";
+	req_one_access = null;
 	req_access_txt = "100";
-	req_one_access = null
+	locked = 1
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 4;
+	name = "\improper quarantine shutters";
+	needs_power = 0
 	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
 "yo" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/redfull/west,
 /area/template_noop)
 "yx" = (
@@ -838,10 +1377,6 @@
 	},
 /obj/structure/closet/hydrant{
 	pixel_y = 32
-	},
-/obj/item/prop/alien/hugger{
-	pixel_y = 5;
-	pixel_x = -8
 	},
 /turf/open/floor/shiva/red/east,
 /area/template_noop)
@@ -852,15 +1387,12 @@
 /turf/open/floor/shiva/wred,
 /area/template_noop)
 "zj" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/obj/structure/bed/chair{
-	dir = 8;
-	icon_state = "chair_alt"
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/flashlight/lamp/green{
+	pixel_y = 7
 	},
 /turf/open/floor/shiva/redfull/west,
 /area/template_noop)
@@ -877,17 +1409,16 @@
 "zK" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
 "zL" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "zQ" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	icon_state = "chair_alt"
-	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/red,
 /area/template_noop)
 "zV" = (
@@ -902,6 +1433,7 @@
 	dir = 4
 	},
 /obj/structure/closet/secure_closet/personal/patient,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "Ar" = (
@@ -910,18 +1442,20 @@
 /area/template_noop)
 "AD" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/bed/sofa/vert/grey/bot,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "AU" = (
 /obj/structure/surface/rack,
-/obj/item/storage/pouch/tools/full,
-/obj/effect/landmark/objective_landmark/science,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_c";
+	dir = 8
+	},
 /turf/open/floor/shiva/redfull/west,
 /area/template_noop)
 "BH" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/gun/shotgun/pump,
 /obj/item/ammo_magazine/shotgun/buckshot{
 	pixel_x = 6;
 	pixel_y = -4
@@ -935,6 +1469,8 @@
 /obj/effect/decal/hybrisa/bloodtrail{
 	pixel_x = 4
 	},
+/obj/effect/spawner/gibspawner/human,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/template_noop)
 "Cl" = (
@@ -945,16 +1481,23 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "Cp" = (
-/obj/item/clothing/head/helmet,
+/obj/structure/bed/chair{
+	dir = 8
+	},
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "CA" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "CY" = (
@@ -968,6 +1511,7 @@
 "Db" = (
 /obj/structure/filingcabinet,
 /obj/item/paper/research_notes,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "Dy" = (
@@ -975,7 +1519,8 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/item/weapon/shield/riot,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/human,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "DC" = (
@@ -993,10 +1538,13 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "DY" = (
-/obj/structure/machinery/vending/snack,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/greenfull/west,
 /area/template_noop)
 "Em" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5"
+	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
 "EC" = (
@@ -1016,12 +1564,14 @@
 "ER" = (
 /obj/structure/bed/roller,
 /obj/structure/machinery/iv_drip,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/wred/north,
 /area/template_noop)
 "Fa" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
 "FN" = (
@@ -1036,6 +1586,7 @@
 	pixel_y = 11
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/ammo_magazine/rifle/m41aMK1,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "FP" = (
@@ -1051,6 +1602,10 @@
 	req_access_txt = "100"
 	},
 /obj/structure/machinery/light,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_c";
+	dir = 1
+	},
 /turf/open/floor/shiva/wred/southeast,
 /area/template_noop)
 "Gx" = (
@@ -1061,40 +1616,57 @@
 	dir = 4
 	},
 /obj/structure/flora/pottedplant/random,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/redfull/west,
 /area/template_noop)
 "GU" = (
-/obj/effect/decal/cleanable/blood/gibs,
 /obj/effect/spawner/random/gun/pistol/midchance,
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 9;
+	layer = 2.5
+	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
 "GV" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/red/east,
 /area/template_noop)
 "He" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/chair,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "Hu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair{
+	icon_state = "chair_alt";
+	dir = 4
+	},
 /turf/open/floor/shiva/wred/west,
 /area/template_noop)
 "HB" = (
 /obj/structure/pipes/vents/pump,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "HC" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4
+	dir = 4;
+	welded = 1
 	},
-/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/shield/riot/ballistic,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "HT" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
+	},
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_s"
 	},
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
@@ -1107,25 +1679,13 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
-"Ih" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/shiva/floor3,
-/area/template_noop)
 "Io" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/paper/janitor{
-	pixel_x = -4;
-	pixel_y = 4
-	},
-/obj/item/tool/pen/blue{
-	pixel_x = 6;
-	pixel_y = -4
-	},
-/obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/shiva/floor3,
+/obj/structure/sign/poster/safety,
+/turf/closed/wall,
 /area/template_noop)
 "Is" = (
-/obj/structure/machinery/chem_master,
+/obj/structure/bed/hybrisa/hospital/hospitaldivider,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/red/northeast,
 /area/template_noop)
 "Iz" = (
@@ -1133,20 +1693,23 @@
 /area/template_noop)
 "IC" = (
 /obj/structure/disposalpipe/junction{
-	dir = 8;
-	icon_state = "pipe-j2"
+	icon_state = "pipe-j2";
+	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/template_noop)
 "IF" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	name = "\improper Underground Medical Laboratory";
+	name = "\improper Underground Medical";
+	locked = 1;
 	req_access = null;
-	req_one_access = null
+	req_one_access = null;
+	welded = 1
 	},
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
@@ -1157,39 +1720,41 @@
 /turf/open/floor/shiva/wred/north,
 /area/template_noop)
 "IV" = (
-/obj/structure/surface/rack,
-/obj/item/storage/pouch/sling,
-/obj/effect/landmark/objective_landmark/science,
 /obj/structure/machinery/light,
-/turf/open/floor/shiva/floor3,
-/area/template_noop)
-"Jf" = (
-/obj/item/roller{
-	pixel_x = 2;
-	pixel_y = 7
-	},
-/obj/structure/surface/table,
+/obj/structure/surface/rack,
 /obj/item/roller{
 	pixel_x = 4;
 	pixel_y = 14
 	},
+/obj/item/roller{
+	pixel_x = 2;
+	pixel_y = 7
+	},
+/turf/open/floor/shiva/floor3,
+/area/template_noop)
+"Jf" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/box/beakers,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "Jr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/shiva/multi_tiles/west,
 /area/template_noop)
 "JS" = (
-/obj/structure/bed/chair/office/light{
-	dir = 8
-	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
 "Ki" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+	name = "\improper Underground Medical";
 	dir = 1;
-	name = "\improper Underground Medical Laboratory";
 	req_access = null;
-	req_one_access = null
+	req_one_access = null;
+	locked = 1;
+	welded = 1
 	},
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
@@ -1199,8 +1764,14 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "\improper Underground Maintenance";
+	req_one_access = null;
 	req_access_txt = "100";
-	req_one_access = null
+	locked = 1
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 4;
+	name = "\improper quarantine shutters";
+	needs_power = 0
 	},
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
@@ -1211,13 +1782,14 @@
 /area/template_noop)
 "KT" = (
 /obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/template_noop)
 "Lu" = (
@@ -1226,22 +1798,17 @@
 /area/template_noop)
 "Lw" = (
 /obj/structure/machinery/photocopier,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
 "LY" = (
-/obj/structure/machinery/vending/coffee,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair,
 /turf/open/floor/shiva/greenfull/west,
 /area/template_noop)
 "MF" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/device/flashlight/lamp/green{
-	pixel_y = 7
-	},
-/obj/item/stock_parts/matter_bin/super{
-	pixel_x = -8;
-	pixel_y = 3
-	},
-/turf/open/floor/shiva/floor3,
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/template_noop)
 "MM" = (
 /obj/structure/barricade/handrail/wire{
@@ -1256,27 +1823,26 @@
 	pixel_x = 6;
 	pixel_y = -2
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva/red,
 /area/template_noop)
 "MZ" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/wred,
 /area/template_noop)
 "Nw" = (
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/medical_pod/sleeper,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles,
-/area/template_noop)
-"ND" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/bed/sofa/vert/grey,
-/turf/open/floor/shiva/floor3,
 /area/template_noop)
 "NI" = (
 /obj/item/stool{
@@ -1285,14 +1851,7 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "NK" = (
-/obj/structure/machinery/reagentgrinder{
-	pixel_y = 7
-	},
-/obj/item/stack/sheet/mineral/phoron,
-/obj/item/stack/sheet/mineral/phoron,
-/obj/item/stack/sheet/mineral/phoron,
-/obj/item/stack/sheet/mineral/phoron,
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "NM" = (
@@ -1305,27 +1864,6 @@
 	pixel_y = 17
 	},
 /turf/open/floor/shiva/multi_tiles,
-/area/template_noop)
-"Og" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/folder/black{
-	pixel_x = -7;
-	pixel_y = 13
-	},
-/obj/item/folder/white{
-	pixel_x = -6;
-	pixel_y = 7
-	},
-/obj/item/folder/yellow{
-	pixel_x = -7
-	},
-/obj/item/facepaint/lipstick/jade{
-	pixel_x = 5
-	},
-/turf/open/floor/shiva/floor3,
 /area/template_noop)
 "Ok" = (
 /obj/structure/machinery/light{
@@ -1342,25 +1880,32 @@
 	pixel_x = 5;
 	pixel_y = 3
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/wred/north,
 /area/template_noop)
 "OP" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
 "PL" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood,
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
 "PQ" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/red/east,
 /area/template_noop)
 "PZ" = (
-/obj/effect/decal/cleanable/blood/gibs,
-/obj/effect/landmark/corpsespawner/colonist/burst,
+/obj/effect/decal/hybrisa/trash,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/new_varadero/doctor/burst,
+/obj/item/weapon/gun/shotgun/pump,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mfloor3"
+	},
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "Qn" = (
@@ -1379,10 +1924,13 @@
 	dir = 8;
 	layer = 2.991
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "QD" = (
 /obj/structure/machinery/body_scanconsole,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "QK" = (
@@ -1398,7 +1946,11 @@
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "QZ" = (
-/obj/structure/machinery/photocopier,
+/obj/structure/machinery/chem_dispenser,
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_x = 4;
+	pixel_y = 17
+	},
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "Rs" = (
@@ -1411,11 +1963,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/surface/table{
-	color = "#8B7B5B"
-	},
 /obj/structure/machinery/microwave{
-	pixel_y = 18
+	pixel_y = 18;
+	layer = 3.3
 	},
 /obj/item/reagent_container/food/snacks/packaged_burger{
 	pixel_x = -8
@@ -1424,28 +1974,37 @@
 	pixel_x = 2;
 	pixel_y = 2
 	},
+/obj/structure/surface/table{
+	color = "#8B7B5B"
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
 "RU" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/shell{
-	icon_state = "cartridge_1_1"
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/office/light{
+	dir = 8
 	},
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "Se" = (
+/obj/item/storage/pouch/sling,
 /obj/structure/closet/secure_closet/personal/patient,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "Sq" = (
 /obj/structure/machinery/cryo_cell,
-/obj/structure/pipes/standard/cap,
+/obj/structure/pipes/standard/cap/hidden,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "Su" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
 /turf/open/floor/shiva/greenfull/west,
 /area/template_noop)
 "Sy" = (
@@ -1467,58 +2026,55 @@
 /area/template_noop)
 "SR" = (
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/item/restraint/handcuffs{
 	pixel_x = -6;
 	pixel_y = 5
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "Tc" = (
-/obj/structure/closet/secure_closet/personal/patient,
 /obj/structure/barricade/handrail/wire{
 	dir = 4
 	},
+/obj/structure/closet/secure_closet/personal/patient,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "TP" = (
 /obj/structure/machinery/medical_pod/bodyscanner,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "UV" = (
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 1
 	},
 /obj/structure/machinery/alarm{
 	dir = 4;
 	pixel_x = -24
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "UX" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor/shiva/wredfull,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/wred,
 /area/template_noop)
 "UZ" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/bloodtrail{
-	pixel_x = 5;
 	dir = 9;
+	pixel_x = 5;
 	pixel_y = 7
 	},
-/obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/shiva/red,
-/area/template_noop)
-"Vy" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/device/flashlight/lamp/green{
-	pixel_y = 7;
-	on = 1
-	},
-/turf/open/floor/shiva/redfull/west,
 /area/template_noop)
 "VI" = (
 /obj/structure/pipes/vents/pump,
@@ -1526,10 +2082,11 @@
 /area/template_noop)
 "VJ" = (
 /obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/red/west,
 /area/template_noop)
 "VY" = (
@@ -1543,8 +2100,12 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/effect/landmark/corpsespawner/colonist/burst,
+/obj/effect/decal/cleanable/dirt,
 /obj/item/trash/used_stasis_bag,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_c";
+	dir = 2
+	},
 /turf/open/floor/shiva/redfull/west,
 /area/template_noop)
 "Wp" = (
@@ -1560,27 +2121,35 @@
 /area/template_noop)
 "WO" = (
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 2
 	},
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
 "WP" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/crap_item,
 /turf/open/floor/shiva/red,
 /area/template_noop)
 "Xg" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "Xh" = (
 /obj/structure/machinery/light{
 	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes/asteroid{
+	icon_state = "warning_c";
+	dir = 2
 	},
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
@@ -1588,7 +2157,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/tracks/wheels,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "XT" = (
@@ -1600,16 +2169,19 @@
 /obj/structure/machinery/computer/communications{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "Ya" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/bed/chair/wheelchair,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/greenfull/west,
 /area/template_noop)
 "Ym" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/template_noop)
 "YM" = (
@@ -1622,10 +2194,9 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/objective_landmark/close,
 /obj/item/clock{
-	pixel_y = 13;
-	pixel_x = -15
+	pixel_x = -15;
+	pixel_y = 13
 	},
-/obj/item/clothing/gloves/latex,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "Zr" = (
@@ -1634,20 +2205,25 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Underground Medical Laboratory Lobby";
+	req_one_access = null;
 	req_access_txt = "100";
-	req_one_access = null
+	locked = 1
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 4;
+	name = "\improper quarantine shutters";
+	needs_power = 0
 	},
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
 "Zx" = (
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	icon_state = "pipe-c";
+	dir = 1
 	},
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
 "ZA" = (
@@ -1655,7 +2231,7 @@
 	dir = 4
 	},
 /obj/structure/pipes/standard/manifold/hidden/green,
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "ZI" = (
@@ -1670,59 +2246,59 @@
 
 (1,1,1) = {"
 QK
-eU
-eU
-YM
+bD
+bD
+by
 Ki
-eU
-eU
+MF
 kb
-eU
-eU
+bf
+aF
+aI
+aP
+aI
+aF
+aB
 zC
 zC
-eU
-eU
 zC
-zC
-zC
-Sy
+av
 "}
 (2,1,1) = {"
-eU
+MF
 FP
 bT
-YM
-rA
+by
+aY
 Su
 Io
-Og
-vK
 MF
-Qn
+MF
+MF
 zC
-Vy
-Lu
+zC
+aC
+aC
 zC
 KR
 Ok
 zC
 "}
 (3,1,1) = {"
-eU
+MF
 Ya
+aY
+by
 rA
-YM
-rA
-rA
-rA
-rA
-rA
-rA
-bi
-zC
+bq
+bk
+bg
+bc
+aR
+Qn
+aJ
 zj
-eg
+Lu
 zC
 EN
 wi
@@ -1731,34 +2307,34 @@ zC
 (4,1,1) = {"
 IF
 as
-cq
+AD
 an
-cq
-dx
-dx
-ND
-ND
+AD
+AD
+AD
+AD
+AD
 AD
 cq
 mQ
-ax
+aG
 vu
 eU
 sx
 MZ
-eU
+zC
 "}
 (5,1,1) = {"
 eo
 at
-eo
+bE
 iB
-Ih
-rA
-rA
-rA
-rA
-rA
+aY
+aY
+bm
+bd
+bd
+aS
 rA
 zC
 ac
@@ -1766,32 +2342,32 @@ ab
 eU
 OM
 zc
-eU
+zC
 "}
 (6,1,1) = {"
-eU
+MF
 DY
-rA
+bG
 mw
-rA
-fY
+aY
+br
 WI
-jE
-jE
+be
+be
 NI
 fY
-ae
+eU
 RL
 js
 zC
 ZI
 zc
-zC
+Sy
 "}
 (7,1,1) = {"
-eU
-He
-ar
+MF
+aY
+aY
 mw
 fY
 hg
@@ -1800,13 +2376,13 @@ ew
 XT
 FN
 oN
-eU
+aK
 ad
 PL
 in
 gv
 UX
-qc
+Sy
 "}
 (8,1,1) = {"
 kb
@@ -1817,62 +2393,62 @@ jE
 QV
 JS
 VY
-hh
+JS
 JS
 hh
 eU
 qS
 bl
-Rs
-IR
-zc
 zC
+IR
+az
+aw
 "}
 (9,1,1) = {"
-eU
-He
+MF
 rA
-mw
-NI
+bH
+bz
+bu
 SO
 wn
 hG
 HC
-vS
+aD
 nM
-ae
-rW
+eU
+aH
 Em
 eU
 kw
-zc
-eU
+az
+zC
 "}
 (10,1,1) = {"
-eU
+MF
 He
 Cp
 ao
-jE
+be
 BH
-hh
+JS
 PZ
 Dy
-vS
+aT
 Db
 eU
 mo
-Em
+ab
 eU
 gi
-zc
-eU
+aA
+zC
 "}
 (11,1,1) = {"
-zC
+aw
 LY
-rA
-mw
+bI
+bA
 dt
 YP
 Lw
@@ -1890,100 +2466,100 @@ bF
 "}
 (12,1,1) = {"
 zC
-zC
-rA
+bM
+bJ
 wb
 zC
-eU
-eU
-eU
+aC
+aC
+aC
 Zr
-eU
-Rs
+aC
 zC
+dB
 Gx
 yo
 zC
 rb
 Ga
-zC
+ay
 "}
 (13,1,1) = {"
 eU
 vw
-hh
-my
+JS
+bB
 al
+bs
 Hu
-ai
 Hu
 OP
-uQ
+aV
 vb
-yo
+aL
 Xg
-vS
+aD
+dB
 zC
-eU
-eU
 zC
+dB
 "}
 (14,1,1) = {"
 eU
-au
+vS
 VI
 WO
 zK
 Zx
-gv
-gv
+bn
+bh
 pX
 et
 WP
 ol
 CA
-vS
-eU
+aE
+zC
 zV
 Iz
 Iz
 "}
 (15,1,1) = {"
 eU
-ta
-tE
+bN
+bv
 oU
-tE
+bv
 my
 ui
 tE
-vX
+tE
 eu
 zQ
 uu
 QZ
 Jf
-eU
+zC
 Iz
 Iz
 Iz
 "}
 (16,1,1) = {"
 Sy
-zC
-eU
+Sy
+aC
 zC
 Rs
 qR
 zC
-eU
+aC
 eV
-eU
+aC
+zC
+Sy
 zC
 zC
-eU
-eU
-zC
+dB
 Iz
 Iz
 Iz
@@ -2000,7 +2576,7 @@ uQ
 fz
 Jr
 DC
-zC
+dB
 zV
 Iz
 Iz
@@ -2011,16 +2587,16 @@ Iz
 (18,1,1) = {"
 eU
 DQ
-Ic
+bK
 MM
 kX
 KT
 Xk
 ah
 TP
-rA
-af
-eU
+aX
+aQ
+zC
 Iz
 Iz
 Iz
@@ -2031,16 +2607,16 @@ Iz
 (19,1,1) = {"
 eU
 jr
-jE
+bL
 UZ
 am
 BS
 aj
-ah
+bj
 QD
-rA
+aY
 vn
-zC
+aM
 Iz
 Iz
 Iz
@@ -2060,7 +2636,7 @@ pd
 Nw
 aa
 af
-eU
+aN
 Iz
 Iz
 Iz
@@ -2069,18 +2645,18 @@ Iz
 Iz
 "}
 (21,1,1) = {"
-Rs
 zC
+Io
 zm
 jc
-jE
+bw
 Ym
-jE
-uQ
+bo
+eu
 sh
-YM
+aZ
 bb
-eU
+dB
 Iz
 Iz
 Iz
@@ -2112,7 +2688,7 @@ Iz
 Iz
 zC
 zC
-eU
+aC
 zC
 ak
 zC
@@ -2120,7 +2696,7 @@ zC
 Qo
 nu
 bV
-zC
+aO
 Iz
 Iz
 Iz
@@ -2140,7 +2716,7 @@ eU
 Aa
 kh
 Se
-eU
+aO
 Iz
 Iz
 Iz
@@ -2150,17 +2726,17 @@ Iz
 "}
 (25,1,1) = {"
 Iz
-Rs
+aw
 aU
 GU
-Em
+bx
 Fa
-rZ
-Rs
+aD
+zC
 iy
-nu
+ba
 Tc
-eU
+Sy
 Iz
 Iz
 Iz
@@ -2171,7 +2747,7 @@ Iz
 (26,1,1) = {"
 Iz
 xu
-vS
+aD
 ap
 Ar
 ke
@@ -2196,11 +2772,11 @@ aq
 EC
 rW
 jx
-zC
+aw
 ag
 YM
 IV
-zC
+dB
 Iz
 Iz
 Iz
@@ -2210,11 +2786,11 @@ Iz
 "}
 (28,1,1) = {"
 Iz
-zC
+bM
 pp
-vS
+bC
 Xh
-Xg
+bt
 pz
 eU
 Wi
@@ -2230,17 +2806,17 @@ Iz
 "}
 (29,1,1) = {"
 Iz
+dB
+Io
 zC
-zC
-eU
-Rs
+ay
 yj
-eU
-zC
-Rs
+bp
+dB
+ay
 KQ
-eU
 zC
+dB
 Iz
 Iz
 Iz

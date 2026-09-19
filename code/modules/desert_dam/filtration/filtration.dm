@@ -10,6 +10,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	explo_proof = TRUE
+	tacmap_icon = "water"
 	var/id = null
 	var/active = FALSE
 

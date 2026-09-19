@@ -207,3 +207,6 @@
   TheDonkified:
   - refactor: Extract path-matching logic into a helper function
   - code_imp: Add unit tests for new helper
+2026-09-19:
+  Drathek:
+  - balance: Marines can no longer deploy mines in shuttle turfs

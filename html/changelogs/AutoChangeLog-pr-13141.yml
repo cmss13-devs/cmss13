@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - balance: "Marines can no longer deploy mines in shuttle turfs"

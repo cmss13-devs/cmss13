@@ -199,3 +199,11 @@
   Steelpoint:
   - maptweak: Removes invisible fog tiles on New Varadero. These tiles are not currently
       visible to players.
+2026-09-18:
+  Drathek:
+  - code_imp: Rearranged sentry variable defines some
+  - bugfix: Defenses (not just sentries) no longer are flagged as needing power since
+      they handle power themselves
+  TheDonkified:
+  - refactor: Extract path-matching logic into a helper function
+  - code_imp: Add unit tests for new helper

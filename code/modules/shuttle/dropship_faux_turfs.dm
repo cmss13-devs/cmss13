@@ -29,6 +29,11 @@ GLOBAL_LIST_EMPTY(midway_roof_fauxes)
 	var/recorded_offset_X
 	var/recorded_offset_Y
 
+/obj/faux_turf/open/dropship/roof/Destroy()
+	GLOB.omaha_roof_fauxes -= src
+	GLOB.midway_roof_fauxes -= src
+	return ..()
+
 /obj/faux_turf/open/dropship/roof/solid
 	icon_state = "8,3"
 

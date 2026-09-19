@@ -1461,6 +1461,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /turf/open/shuttle/dropship/omaha/openspace/Initialize()
+	.=..()
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
 	update_vis_contents()
 
@@ -1536,6 +1537,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /turf/open/shuttle/dropship/midway/openspace/Initialize()
+	.=..()
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
 	update_vis_contents()
 

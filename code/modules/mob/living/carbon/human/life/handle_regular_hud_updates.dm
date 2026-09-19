@@ -99,30 +99,30 @@
 			clear_fullscreen("high")
 
 
-		if(hud_used)
-			if(hud_used.healths)
-				switch(hal_screwyhud)
-					if(1)
-						hud_used.healths.icon_state = "health6"
-					if(2)
-						hud_used.healths.icon_state = "health7"
-					else
-						var/pain_percentage = max(pain.get_pain_percentage(), 100 - (stamina.current_stamina/stamina.max_stamina)*100) // Get the highest value from either
-						switch(pain_percentage)
-							if(80 to 100)
-								hud_used.healths.icon_state = "health6"
-							if(60 to 80)
-								hud_used.healths.icon_state = "health5"
-							if(50 to 60)
-								hud_used.healths.icon_state = "health4"
-							if(40 to 50)
-								hud_used.healths.icon_state = "health3"
-							if(20 to 40)
-								hud_used.healths.icon_state = "health2"
-							if(1 to 20)
-								hud_used.healths.icon_state = "health1"
-							else
-								hud_used.healths.icon_state = "health0"
+		// if(hud_used)
+		// 	if(hud_used.healths)
+		// 		switch(hal_screwyhud)
+		// 			if(1)
+		// 				hud_used.healths.icon_state = "health6"
+		// 			if(2)
+		// 				hud_used.healths.icon_state = "health7"
+		// 			else
+		// 				var/pain_percentage = max(pain.get_pain_percentage(), 100 - (stamina.current_stamina/stamina.max_stamina)*100) // Get the highest value from either
+		// 				switch(pain_percentage)
+		// 					if(80 to 100)
+		// 						hud_used.healths.icon_state = "health6"
+		// 					if(60 to 80)
+		// 						hud_used.healths.icon_state = "health5"
+		// 					if(50 to 60)
+		// 						hud_used.healths.icon_state = "health4"
+		// 					if(40 to 50)
+		// 						hud_used.healths.icon_state = "health3"
+		// 					if(20 to 40)
+		// 						hud_used.healths.icon_state = "health2"
+		// 					if(1 to 20)
+		// 						hud_used.healths.icon_state = "health1"
+		// 					else
+		// 						hud_used.healths.icon_state = "health0"
 
 			if(hud_used.nutrition_icon)
 				switch(nutrition)

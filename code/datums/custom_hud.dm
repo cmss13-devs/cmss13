@@ -52,7 +52,7 @@
 	//Middle right (status indicators)
 	var/UI_SL_LOCATOR_LOC = "hud:1:20,12:13"
 	var/UI_OXYGEN_LOC = "hud:3:10,13:15"
-	var/UI_HEALTH_LOC = "EAST-1:28,7:15"
+	var/UI_HEALTH_LOC = "hud:2:51,10:38"
 	var/UI_TEMP_LOC = "hud:3:2,9:19"
 	var/UI_NUTRITION_LOC = "hud:3:-6,13:15"
 	var/UI_PULSE_LINE_LOC = "hud:3:20,13:6"

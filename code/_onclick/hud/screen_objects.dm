@@ -231,7 +231,7 @@
 	icon_state = "zone_sel"
 	plane = HUD_PLANE
 	layer = HUD_LAYER
-	var/overlay_icon = 'icons/mob/hud/cm_hud/cm_hud_zone_sel_xeno.dmi'
+	var/overlay_icon = 'icons/mob/hud/cm_hud/cm_hud_zone_sel_marine.dmi'
 	var/static/list/hover_overlays_cache = list()
 	var/hovering
 
@@ -270,6 +270,9 @@
 	if(!overlay_object)
 		overlay_object = new
 		overlay_object.icon_state = "[choice]"
+		if(isxeno(usr))
+			overlay_object.icon = 'icons/mob/hud/cm_hud/cm_hud_zone_sel_xeno.dmi'
+			overlay_icon ='icons/mob/hud/cm_hud/cm_hud_zone_sel_xeno.dmi'
 		hover_overlays_cache[choice] = overlay_object
 	vis_contents += overlay_object
 
@@ -283,8 +286,8 @@
 /atom/movable/screen/zone_sel/update_icon(mob/user)
 	// if(!hud?.mymob)
 	// 	return
-	user.hud_used?.zone_sel.overlays.Cut()
-	user.hud_used?.zone_sel.overlays += mutable_appearance(overlay_icon, "[user.zone_selected]")
+	user.hud_used.zone_sel?.overlays.Cut()
+	user.hud_used.zone_sel.overlays += mutable_appearance(overlay_icon, "[user.zone_selected]")
 
 /atom/movable/screen/zone_sel/MouseExited(location, control, params)
 	if(!isobserver(usr) && hovering)
@@ -292,12 +295,15 @@
 		hovering = null
 
 /obj/effect/overlay/zone_sel
-	icon = 'icons/mob/hud/cm_hud/cm_hud_zone_sel_xeno.dmi'
+	icon = 'icons/mob/hud/cm_hud/cm_hud_zone_sel_marine.dmi'
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	alpha = 128
 	anchored = TRUE
 	plane = ABOVE_HUD_PLANE
 	layer = ABOVE_HUD_LAYER
+
+/obj/effect/overlay/zone_sel/xeno
+	icon = 'icons/mob/hud/cm_hud/cm_hud_zone_sel_xeno.dmi'
 
 /atom/movable/screen/zone_sel/proc/get_zone_at(icon_x, icon_y, mob/user)
 	if(isxeno(user))
@@ -336,61 +342,50 @@
 						if(33 to 35)
 							if(icon_x in 22 to 24)
 								return BODY_ZONE_MOUTH
-						if(36 to 38) //Eyeline, eyes are on 15 and 17
+						if(36 to 38) //Eyeline
 							if(icon_x in 20 to 26)
 								return BODY_ZONE_EYES
 					return BODY_ZONE_HEAD
-	// else
-	// 	switch(icon_y)
-	// 		if(1 to 3) //Feet
-	// 			switch(icon_x)
-	// 				if(10 to 15)
-	// 					selecting = "r_foot"
-	// 				if(17 to 22)
-	// 					selecting = "l_foot"
-	// 				else
-	// 					return 1
-	// 		if(4 to 9) //Legs
-	// 			switch(icon_x)
-	// 				if(10 to 15)
-	// 					selecting = "r_leg"
-	// 				if(17 to 22)
-	// 					selecting = "l_leg"
-	// 				else
-	// 					return 1
-	// 		if(10 to 13) //Hands and groin
-	// 			switch(icon_x)
-	// 				if(8 to 11)
-	// 					selecting = "r_hand"
-	// 				if(12 to 20)
-	// 					selecting = "groin"
-	// 				if(21 to 24)
-	// 					selecting = "l_hand"
-	// 				else
-	// 					return 1
-	// 		if(14 to 22) //Chest and arms to shoulders
-	// 			switch(icon_x)
-	// 				if(8 to 11)
-	// 					selecting = "r_arm"
-	// 				if(12 to 20)
-	// 					selecting = "chest"
-	// 				if(21 to 24)
-	// 					selecting = "l_arm"
-	// 				else
-	// 					return 1
-	// 		if(23 to 30) //Head, but we need to check for eye or mouth
-	// 			if(icon_x in 12 to 20)
-	// 				selecting = "head"
-	// 				switch(icon_y)
-	// 					if(23 to 24)
-	// 						if(icon_x in 15 to 17)
-	// 							selecting = "mouth"
-	// 					if(26) //Eyeline, eyes are on 15 and 17
-	// 						if(icon_x in 14 to 18)
-	// 							selecting = "eyes"
-	// 					if(25 to 27)
-	// 						if(icon_x in 15 to 17)
-	// 							selecting = "eyes"
+	else
+		switch(icon_y)
+			if(6 to 12) //Feet
+				switch(icon_x)
+					if(18 to 26)
+						return BODY_ZONE_R_FOOT
+					if(34 to 42)
+						return BODY_ZONE_L_FOOT
+			if(13 to 33) //Legs
+				switch(icon_x)
+					if(22 to 28)
+						return BODY_ZONE_R_LEG
+					if(31 to 38)
+						return BODY_ZONE_L_LEG
+			if(34 to 41) //Hands and groin
+				switch(icon_x)
+					if(12 to 17)
+						return BODY_ZONE_R_HAND
+					if(24 to 36)
+						return BODY_ZONE_GROIN
+					if(43 to 48)
+						return BODY_ZONE_L_HAND
+			if(42 to 58) //Chest and arms to shoulders
+				switch(icon_x)
+					if(38 to 46)
+						return BODY_ZONE_R_ARM
+					if(23 to 37)
+						return BODY_ZONE_CHEST
+					if(14 to 22)
+						return BODY_ZONE_L_ARM
+			if(59 to 71) //Head, but we need to check for eye or mouth
+				if(icon_x in 24 to 36)
+					switch(icon_y)
+						if(59 to 61)
+							if(icon_x in 22 to 38)
+								return BODY_ZONE_MOUTH
+						if(62 to 64) //Eyeline
+							if(icon_x in 22 to 38)
+								return BODY_ZONE_EYES
+					return BODY_ZONE_HEAD
 
 /atom/movable/screen/gun
 	/// The proc/verb which should be called on the gun.
@@ -674,8 +669,8 @@
 
 /atom/movable/screen/healths
 	name = "health"
-	icon_state = "health0"
-	icon = 'icons/mob/hud/human_midnight.dmi'
+	icon_state = "zone_sel"
+	icon = 'icons/mob/hud/cm_hud/cm_hud_zone_sel_marine.dmi'
 
 /atom/movable/screen/healths/xeno
 	name = "health"

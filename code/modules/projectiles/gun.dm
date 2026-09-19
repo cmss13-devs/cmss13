@@ -2001,15 +2001,12 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	// Do not display ammo if you have an attachment
 	// currently activated
 
-	if(!current_mag)
+	if(!user)
 		return
 
 	if(flags_gun_features & GUN_AMMO_COUNTER)
 		var/atom/movable/screen/gun_ammo_counter/counter = user?.hud_used.gun_ammo_counter
-		counter.update_hud(user)
-
-	if(!user)
-		return
+		counter?.update_hud(user)
 
 //This proc applies some bonus effects to the shot/makes the message when a bullet is actually fired.
 /obj/item/weapon/gun/proc/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, atom/target, reflex = 0, dual_wield = 0)

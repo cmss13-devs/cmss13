@@ -71,7 +71,7 @@
 		pickables[node] = isnum(node.raw["weight"]) ? node.raw["weight"] : 1
 	var/list/datum/nmnode/picked = list()
 	var/remaining = src.amount
-#if defined(UNIT_TESTS)
+#if defined(REPRODUCIBLE_ENVIRONMENT)
 	remaining = length(pickables) // Force all to be picked for testing (this could potentially make false positives though)
 #endif
 	while(length(pickables) && remaining > 0)

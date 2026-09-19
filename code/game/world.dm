@@ -60,7 +60,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 
 	init_global_referenced_datums()
 
-	#if defined(AUTOWIKI) || defined(UNIT_TESTS)
+	#if defined(AUTOWIKI) || defined(REPRODUCIBLE_ENVIRONMENT)
 	sleep_offline = FALSE
 	#endif
 

@@ -14,8 +14,8 @@
 "aY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/ammo_casing/cartridge,
-/obj/item/ammo_casing/cartridge,
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /turf/open/floor/shiva,
 /area/template_noop)
 "bw" = (
@@ -201,8 +201,8 @@
 	dir = 4
 	},
 /obj/effect/spawner/random/gun/pistol,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating,
 /area/template_noop)
 "nL" = (
@@ -248,9 +248,9 @@
 	pixel_y = -5;
 	dir = 8
 	},
-/obj/item/ammo_casing/shell,
-/obj/item/ammo_casing/shell,
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/shiva,
 /area/template_noop)
 "rC" = (
@@ -300,7 +300,7 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "uH" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/shiva,
 /area/template_noop)
 "uR" = (
@@ -387,8 +387,8 @@
 "AG" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/objective_landmark/far,
-/obj/item/ammo_casing/cartridge,
-/obj/item/ammo_casing/cartridge,
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /turf/open/floor/shiva,
 /area/template_noop)
 "Bi" = (
@@ -536,7 +536,7 @@
 /obj/structure/barricade/sandbags/wired{
 	pixel_y = -5
 	},
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/shiva/yellow,
 /area/template_noop)
 "Lo" = (

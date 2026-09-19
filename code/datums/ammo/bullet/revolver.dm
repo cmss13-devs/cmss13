@@ -12,6 +12,7 @@
 	accuracy = HIT_ACCURACY_TIER_1
 	accurate_range = 7
 	handful_type = /obj/item/ammo_magazine/handful/revolver
+	shell_casing = /obj/effect/decal/cleanable/ammo_casing
 
 /datum/ammo/bullet/revolver/marksman
 	name = "marksman revolver bullet"
@@ -95,6 +96,7 @@
 	icon_state = "shrapnelshot"
 	handful_state = "shrapnel"
 	bonus_projectiles_type = /datum/ammo/bullet/revolver/upp/shrapnel_bits
+	shell_casing = /obj/effect/decal/cleanable/ammo_casing/shrapnel
 
 	max_range = 6
 	damage = 40 // + TIER_4 * 3

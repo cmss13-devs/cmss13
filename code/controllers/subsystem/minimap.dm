@@ -1568,7 +1568,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/MouseEntered(location, control, params)
 	. = ..()
-	add_filter("mouseover", 1, outline_filter(1, COLOR_WHITE))
+	add_filter("mouseover", 1, outline_filter(1, COLOR_HUD_BLUE))
 	if(desc)
 		openToolTip(usr, src, params, title = name, content = desc, special = "offset_left")
 

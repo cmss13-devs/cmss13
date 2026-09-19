@@ -4,16 +4,16 @@ GLOBAL_LIST_INIT(cm_vending_gear_upp_commanding_officer, list(
 		list("COMMANDER'S PRIMARY (CHOOSE 1)", 0, null, null, null),
 		list("Type 71 Pulse Rifle", 0, /obj/item/weapon/gun/rifle/type71, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
 		list("Type 71 Pulse Rifle Carbine", 0, /obj/item/weapon/gun/rifle/type71/carbine, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
-		list("Type 64 Submachinegun", 0, /obj/item/weapon/gun/smg/bizon/upp, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
+		list("MSP-64 Submachinegun", 0, /obj/item/weapon/gun/smg/bizon/upp, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
 
 		list("PRIMARY AMMUNITION", 0, null, null, null),
 		list("Type 71 Magazine", 10, /obj/item/ammo_magazine/rifle/type71, null, VENDOR_ITEM_RECOMMENDED),
 		list("Type 71 AP Magazine", 20, /obj/item/ammo_magazine/rifle/type71/ap, null, VENDOR_ITEM_RECOMMENDED),
-		list("Type 64 Helical Magazine", 20, /obj/item/ammo_magazine/smg/bizon, null, VENDOR_ITEM_REGULAR),
+		list("MSP-64 Helical Magazine", 20, /obj/item/ammo_magazine/smg/bizon, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", 0, null, null, null),
-		list("Type 73 Magazine (7.62x25mm)", 5, /obj/item/ammo_magazine/pistol/t73, null, VENDOR_ITEM_RECOMMENDED),
-		list("High Impact Type 73 Magazine (7.62x25mm)", 15, /obj/item/ammo_magazine/pistol/t73_impact , null, VENDOR_ITEM_REGULAR),
+		list("Type 73 Magazine (10mm)", 5, /obj/item/ammo_magazine/pistol/t73, null, VENDOR_ITEM_RECOMMENDED),
+		list("High Impact Type 73 Magazine (10mm)", 15, /obj/item/ammo_magazine/pistol/t73_impact , null, VENDOR_ITEM_REGULAR),
 
 		list("EXPLOSIVES", 0, null, null, null),
 		list("Type 6 Shrapnel Grenade", 5, /obj/item/explosive/grenade/high_explosive/upp, null, VENDOR_ITEM_REGULAR),

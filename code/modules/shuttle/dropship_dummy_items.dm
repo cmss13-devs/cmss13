@@ -398,7 +398,6 @@
 			count_Y ++
 	for(var/obj/faux_turf/open/dropship/roof/empty_space/useless in linked_fauxes)
 		linked_fauxes -= useless
-		our_glob_list -= useless
 		QDEL_NULL(useless)
 
 /obj/deployer/shuttle/dropship/roof_loader/proc/place_walkable()

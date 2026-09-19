@@ -6,10 +6,6 @@
 	explo_proof = TRUE
 	anchored = TRUE
 
-/obj/faux_turf/Initialize()
-	.=..()
-	return INITIALIZE_HINT_NORMAL
-
 /obj/faux_turf/open
 	opacity = FALSE
 	density = FALSE
@@ -104,9 +100,9 @@ GLOBAL_LIST_EMPTY(midway_roof_fauxes)
 	icon_state = "1,1"
 
 /obj/faux_turf/open/dropship/roof/empty_space/omaha/Initialize()
-	. = ..()
 	GLOB.omaha_roof_fauxes += src
+	return ..()
 
 /obj/faux_turf/open/dropship/roof/empty_space/midway/Initialize()
-	. = ..()
 	GLOB.midway_roof_fauxes += src
+	return ..()

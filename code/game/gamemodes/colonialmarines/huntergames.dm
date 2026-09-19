@@ -384,9 +384,9 @@
 
 	return human_count
 
-///////////////////////////////
-//Checks if the round is over//
-///////////////////////////////
+/**
+ * Checks if the round is over
+ */
 /datum/game_mode/huntergames/check_finished()
 	if(finished != 0)
 		return 1

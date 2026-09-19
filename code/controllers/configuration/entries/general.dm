@@ -311,8 +311,7 @@ Master controller and performance related.
 /datum/config_entry/number/mc_tick_rate/disable_high_pop_mc_mode_amount
 	config_entry_value = 60
 
-/datum/config_entry/number/mc_tick_rate
-	abstract_type = /datum/config_entry/number/mc_tick_rate
+ABSTRACT_TYPE(/datum/config_entry/number/mc_tick_rate)
 
 /datum/config_entry/number/mc_tick_rate/ValidateAndSet(str_val)
 	. = ..()

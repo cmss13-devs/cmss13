@@ -1,4 +1,5 @@
 
+ABSTRACT_TYPE(/atom)
 /atom
 	var/desc_lore = null
 

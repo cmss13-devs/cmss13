@@ -4,6 +4,7 @@
 //======
 */
 
+ABSTRACT_TYPE(/datum/ammo/bullet/shotgun)
 /datum/ammo/bullet/shotgun
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 	handful_type = /obj/item/ammo_magazine/handful/shotgun

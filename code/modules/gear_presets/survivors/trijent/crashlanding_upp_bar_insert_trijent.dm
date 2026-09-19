@@ -183,7 +183,15 @@
 	role_comm_title = "MSS-Off."
 	minimap_icon = "upp_plt"
 	skills = /datum/skills/military/survivor/upp_sl/mss
-	languages = ALL_HUMAN_LANGUAGES
+	languages = list(
+		LANGUAGE_RUSSIAN,
+		LANGUAGE_ENGLISH,
+		LANGUAGE_JAPANESE,
+		LANGUAGE_CHINESE,
+		LANGUAGE_GERMAN,
+		LANGUAGE_SPANISH,
+		LANGUAGE_FRENCH,
+	)
 	access = list(
 		ACCESS_UPP_GENERAL,
 		ACCESS_UPP_MEDICAL,

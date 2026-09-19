@@ -1,4 +1,0 @@
-author: "Watermelon914"
-delete-after: True
-changes:
-  - bugfix: "Fixed gamemode vote not auto-resolving if there's only one option."

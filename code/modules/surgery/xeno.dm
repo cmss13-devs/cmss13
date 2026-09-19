@@ -23,7 +23,7 @@
 	if((patient.tier > 2 || isqueen(patient)) && !istype(tool, /obj/item/tool/surgery/scalpel/laser/advanced))
 		to_chat(user, SPAN_DANGER("Chitin of this kind is too thick for an ordinary tool, you would need something special."))
 		return FALSE
-	if(patient.stat == DEAD && !patient.organ_removed)
+	if((patient.stat == DEAD || patient.hive.is_ally(user)) && patient.organ)
 		return TRUE
 	return FALSE
 
@@ -233,10 +233,13 @@
 			//no blood splatter here, we're just sticking our hands in, not cutting anything open
 			user.add_blood(BLOOD_COLOR_XENO, BLOOD_HANDS)
 
-	var/obj/item/organ/xeno/organ = locate() in target
+	var/obj/item/organ/xeno/organ = target.organ
 	if(!isnull(organ))
+		if(target.stat != DEAD)
+			organ.xeno_organ_flags |= XENO_ORGAN_FRESH
+			organ.name = "fresh [organ.name]"
+		SEND_SIGNAL(organ, COMSIG_XENO_ORGAN_REMOVED, user)
 		organ.forceMove(target.loc)
-		target.organ_removed = TRUE
 		target.update_wounds()
 
 /datum/surgery_step/xenomorph/remove_organ/failure(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

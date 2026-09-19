@@ -240,7 +240,7 @@
 		ammo.fire_bonus_projectiles(src, gun_damage_mult, projectile_max_range_add, gun_bonus_proj_scatter)
 		bonus_projectile_check = PROJECTILE_ORIGINAL //Mark this projectile as having spawned a set of bonus projectiles.
 
-	path = get_line(starting, target_turf)
+	path = get_line(starting, target_turf, z_level_transitions = TRUE)
 	p_x += clamp((rand()-0.5)*scatter*3, -8, 8)
 	p_y += clamp((rand()-0.5)*scatter*3, -8, 8)
 	update_angle(starting, target_turf)
@@ -978,7 +978,7 @@
 					xeno_jitter(5 DECISECONDS)
 					if(bullet.ammo.sound_miss)
 						playsound_client(client, bullet.ammo.sound_miss, get_turf(src), 75, TRUE)
-					visible_message(SPAN_AVOIDHARM("The [src] darts aside, evading [bullet]!"),
+					visible_message(SPAN_AVOIDHARM("[src] darts aside, evading [bullet]!"),
 						SPAN_AVOIDHARM("You react fast, and [bullet] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
 					return FALSE
 

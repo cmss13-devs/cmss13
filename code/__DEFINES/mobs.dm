@@ -288,6 +288,9 @@
 #define BLOOD_VOLUME_BAD 224
 #define BLOOD_VOLUME_SURVIVE 122
 
+//Blood level for a dead xenomorph
+#define BLOOD_VOLUME_DEAD_XENO 60
+
 
 //diseases
 #define SPECIAL -1

@@ -32,6 +32,9 @@
 #define SOUND_CHANNEL_Z 1024
 #define CHANNEL_ANNOUNCEMENTS 1025 // IC priority announcements, hivemind messages etc
 
+/// How far do we consider a change in Z plane is for the purpose of calculating Y coordinates in 3D Sound, relative to tiles on the same level
+#define MULTI_Z_SOUND_DISTANCE 5
+
 //default byond sound echo list index positions.
 //ECHO_DIRECT and ECHO_ROOM are the only two that actually appear to do anything, and represent the dry and wet channels of the environment effects, respectively.
 #define ECHO_DIRECT 1

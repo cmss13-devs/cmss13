@@ -154,6 +154,7 @@ SUBSYSTEM_DEF(atoms)
 			qdeleted = TRUE
 		else
 			BadInitializeCalls[the_type] |= BAD_INIT_NO_HINT
+			CRASH("A.name: [A.name] at X[A.x] Y[A.y] Z[A.z] -- didn't initialize properly.")
 
 	if(!A) //possible harddel
 		qdeleted = TRUE

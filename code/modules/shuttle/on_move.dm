@@ -49,6 +49,8 @@ All ShuttleMove procs go here
 				return
 			if(istype(thing, /obj/structure/machinery/floodlight/landing/floor))
 				return
+			if(istype(thing, /obj/faux_turf))
+				return
 
 			// SSshuttle also removes these in remove_ripples, but its timing is weird
 			if(!istype(thing, /obj/effect))

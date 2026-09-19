@@ -20,6 +20,7 @@
 	var/point_cost = 0 //how many points it costs to build this with the fabricator, set to 0 if unbuildable.
 	var/skill_required = SKILL_PILOT_TRAINED
 	var/combat_equipment = TRUE
+	var/detachable = TRUE
 	var/faction_exclusive //if null all factions can print it
 
 
@@ -41,6 +42,8 @@
 	health = min(initial(health), health-damage)
 	if(health <= 0)
 		visible_message(SPAN_DANGER("[src] is destroyed!"))
+		if(ship_base.linked_bottom_point)
+			ship_base.linked_bottom_point.icon_state = "[initial(ship_base.linked_bottom_point.icon_state)]"
 		qdel(src)
 
 /obj/structure/dropship_equipment/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
@@ -87,7 +90,8 @@
 			if(uses_ammo && ammo_equipped)
 				unload_ammo(powerloader_clamp, user)
 			else
-				grab_equipment(powerloader_clamp, user)
+				if(detachable)
+					grab_equipment(powerloader_clamp, user)
 		return TRUE
 
 	if(iswelder(item))
@@ -117,18 +121,24 @@
 	return TRUE
 
 /obj/structure/dropship_equipment/proc/load_ammo(obj/item/powerloader_clamp/powerloader_clamp, mob/living/user)
-	if(!ship_base || !uses_ammo || ammo_equipped || !istype(powerloader_clamp.loaded, /obj/structure/ship_ammo))
+	if(!uses_ammo || ammo_equipped || !istype(powerloader_clamp.loaded, /obj/structure/ship_ammo))
+		return
+	if(detachable && !ship_base)
+		to_chat(user, SPAN_WARNING("Install [src.name] onto the dropship first."))
 		return
 	var/obj/structure/ship_ammo/ship_ammo = powerloader_clamp.loaded
 	if(ship_ammo.equipment_type != type)
 		to_chat(user, SPAN_WARNING("[ship_ammo] doesn't fit in [src]."))
 		return
 	playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
-	var/point_loc = ship_base.loc
+	var/point_loc
+	if(detachable)
+		point_loc = ship_base.loc
 	if(!do_after(user, 3 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
-	if(!ship_base || ship_base.loc != point_loc)
-		return
+	if(detachable)
+		if(!ship_base || ship_base.loc != point_loc)
+			return
 	if(!ammo_equipped && powerloader_clamp.loaded == ship_ammo && powerloader_clamp.linked_powerloader && powerloader_clamp.linked_powerloader.buckled_mob == user)
 		ship_ammo.forceMove(src)
 		powerloader_clamp.loaded = null
@@ -177,6 +187,8 @@
 	powerloader_clamp.grab_object(user, src, "ds_gear", 'sound/machines/hydraulics_1.ogg')
 	if(ship_base)
 		ship_base.installed_equipment = null
+		if(ship_base.linked_bottom_point)
+			ship_base.linked_bottom_point.update_icon()
 		ship_base = null
 		if(linked_shuttle)
 			SEND_SIGNAL(linked_shuttle, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, src)
@@ -360,6 +372,10 @@
 	deployed_turret.linked_cam = new(deployed_turret.loc, "[capitalize_first_letters(ship_base.name)] [capitalize_first_letters(name)]")
 	if (linked_shuttle.id == DROPSHIP_ALAMO)
 		deployed_turret.linked_cam.network = list(CAMERA_NET_ALAMO)
+	else if (linked_shuttle.id == DROPSHIP_OMAHA)
+		deployed_turret.linked_cam.network = list(CAMERA_NET_OMAHA)
+	else if (linked_shuttle.id == DROPSHIP_MIDWAY)
+		deployed_turret.linked_cam.network = list(CAMERA_NET_MIDWAY)
 	else if (linked_shuttle.id == DROPSHIP_NORMANDY)
 		deployed_turret.linked_cam.network = list(CAMERA_NET_NORMANDY)
 	else if (linked_shuttle.id == DROPSHIP_SAIPAN)
@@ -557,7 +573,10 @@
 	if(ship_base)
 		pixel_x = ship_base.pixel_x
 		pixel_y = ship_base.pixel_y
-		icon_state = "[initial(icon_state)]_installed"
+		if(ship_base.round_slot)
+			icon_state = "[initial(icon_state)]_omaha"
+		else
+			icon_state = "[initial(icon_state)]_installed"
 	else
 		pixel_x = initial(pixel_x)
 		pixel_y = initial(pixel_y)
@@ -730,6 +749,7 @@
 	var/firing_delay = 20
 	/// True if this weapon can only be fired in Fire Missions (not Direct)
 	var/fire_mission_only = TRUE
+	var/gunnery_only = FALSE
 
 /obj/structure/dropship_equipment/weapon/update_equipment()
 	if(ship_base)
@@ -945,6 +965,29 @@
 		icon_state = "launch_bay_deployed"
 	else
 		icon_state = "launch_bay"
+
+/obj/structure/dropship_equipment/weapon/m90_minigun
+	name = "\improper Twin-linked m90 miniguns"
+	icon = 'icons/obj/structures/machinery/midway/misc_96x96.dmi'
+	icon_state = "m90_minigun"
+	layer = FLY_LAYER
+	alpha = 225
+	density = FALSE
+	firing_sound = 'sound/effects/gau_incockpit.ogg'
+	skill_required = SKILL_PILOT_TRAINED
+	gunnery_only = TRUE
+	detachable = FALSE
+	firing_delay = 10
+	shorthand = "M90"
+
+/obj/structure/dropship_equipment/weapon/m90_minigun/update_icon() // change icons
+	if(ammo_equipped)
+		icon_state = "m90_minigun"
+	else
+		if(ship_base)
+			icon_state = "m90_minigun"
+		else
+			icon_state = "m90_minigun"
 
 //================= OTHER EQUIPMENT =================//
 

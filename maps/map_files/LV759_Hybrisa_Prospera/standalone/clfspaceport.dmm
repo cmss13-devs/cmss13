@@ -2345,6 +2345,7 @@
 /obj/structure/barricade/sandbags{
 	pixel_y = 15
 	},
+/obj/effect/landmark/survivor_spawner/clf_smartgunner/hybrisa,
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/cargo)
 "Ih" = (
@@ -2669,7 +2670,7 @@
 /area/lv759/indoors/spaceport/clf_dropship)
 "Mr" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/faxmachine{
+/obj/structure/machinery/faxmachine/backpack/clf{
 	department = "CLF - Cell 42"
 	},
 /obj/structure/surface/table/almayer,

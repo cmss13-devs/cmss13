@@ -272,3 +272,33 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
 
 	spawn_weapon(/obj/item/weapon/gun/smg/fp9000, /obj/item/ammo_magazine/smg/fp9000, new_human)
+
+/datum/equipment_preset/survivor/clf/smartgunner
+	name = "CLF Survivor Specialist"
+	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = JOB_CLF_SPECIALIST
+	job_title = JOB_CLF_SPECIALIST
+	role_comm_title = "SG"
+	minimap_icon = "clf_spec"
+	skills = /datum/skills/civilian/survivor/clf/smartgunner
+
+/datum/equipment_preset/survivor/clf/smartgunner/load_gear(mob/living/carbon/human/new_human)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/clf, WEAR_BODY)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/droppouch, WEAR_ACCESSORY)
+		new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/hacked/clf, WEAR_IN_ACCESSORY)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/clf_patch, WEAR_ACCESSORY)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia/smartgun, WEAR_JACKET)
+		new_human.equip_to_slot_or_del(new /obj/item/mre_food_packet/clf, WEAR_IN_JACKET)
+		new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_JACKET)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/head/headband/red, WEAR_HEAD) //hell yeah
+		new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet/upp, WEAR_FACE)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/jungle/pistol, WEAR_FEET)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/mgoggles/mp_riot_shield, WEAR_EYES)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/ears/earmuffs, WEAR_R_EAR)
+		new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF, WEAR_L_EAR)
+		new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/clf/no_flag, WEAR_J_STORE)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
+
+		new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/clf/full_alt/survivor, WEAR_WAIST)
+		new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
+		new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)

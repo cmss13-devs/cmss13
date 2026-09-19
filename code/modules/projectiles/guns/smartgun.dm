@@ -890,11 +890,15 @@
 /obj/item/weapon/gun/smartgun/clf
 	name = "\improper scavenged M56 'Freedom' smartgun"
 	desc = "A smartgun abomination made from salvaged-parts sloppily wired and welded together, it appears to be rusted across it's frame. As whoever made this thing, clearly had no resources or proper tools to assemble it to an efficient usable state."
-	desc_lore = {"After long-fiery battles that partook within the Neroid Sector of the frontier, the United States Colonial Marines were pushed out by Colonial Liberation Front cells. Through a set of tactics, utilizing guerilla warfare mostly based around hit-and runs to compensate for the lack of proper logistics.
+	desc_lore = {"After long-fiery battles within the Neroid Sector, the atomized militia has become organised to the point of incorporating specialized USCM equipment into their catalogues, though- with a few modifications.
 
-		On it's aftermath gear unrecovered was left on the way, which the front proceeded to use to their own advantage. Taking what they could from the corpses of the infantry left behind to cover their needs, the mechanisms and electronics from the M56A2's were extracted from the broken-down exemplarys. Then placed into a makeshift frame although primitive and rudimentary due to no detailed schematics or resources at hand. Then issued out as  a desperate measure of giving an equal fire-support weapon to it's troops.
+		In the aftermath of these "victories", there was a significant amount of unrecovered gear, specialist gear. Taking what they could from the corpses of the infantry left behind to cover their needs, the mechanisms and electronics from the M56A2's were extracted from the broken-down exemplaries. These were then combined with primitive frames and related weapon bodies, due to there being no detailed schematics or resources at hand. After that, it was issued out as a desperate measure of giving an equal fire-support weapon to it's troops.
 
-		After studys done on this frankenstein of a weapon by the USCM, it reportedly was using parts from the slightly outdated M56, mainly it's barrel to outfit it, as  an unintentioned flaw it jams constantly requiring extensive  and frequent maintenance making it almost unreliable. The M57 and L56A2 were also scrapped for spare-parts to put it together, as the rarity of parts themselves was a prominent fabrication issue for the insurgency cells."}
+		After studies done on this frankenstein of a weapon by the USCM, it's reportedly made using parts from the slightly outdated M560. As an unintentional flaw, it jams constantly- requiring extensive and frequent maintenance, to the point of near-unreliability. The M560's barrel seems to be blamed for this. The M57 and L56A2 were also scrapped for spare-parts for the body, as the rarity of parts themselves was a prominent fabrication issue for the insurgency cells.
+
+		On top of this, the M560's native target-acquisition systems have received extensive modifications, and often cause the weapon to "short", scrambling the software assistance, most notably its IFF. CLF interrogations imply this particular design failure is responsible for more than a dozen known incidents of insurgent friendly fire.
+
+		All in all... it's a miracle this gun even works."}
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/machineguns.dmi'
 	icon_state = "m56f"
 	item_state = "m56f"
@@ -908,6 +912,12 @@
 	)
 	gun_faction = FACTION_CLF
 	var/jammed = FALSE
+
+	actions_types = list( //no aim assist
+		/datum/action/item_action/smartgun/toggle_lethal_mode,
+		/datum/action/item_action/smartgun/toggle_ammo_type,
+		/datum/action/item_action/smartgun/toggle_frontline_mode,
+	)
 
 /obj/item/weapon/gun/smartgun/clf/set_gun_config_values()
 	..()
@@ -949,17 +959,13 @@
 		balloon_alert(user, "*jammed*")
 		return NONE
 	else if(prob(0.8)) //0.8% chance to malfunction on fire
-		switch(rand(1, 5))
+		switch(rand(1, 3))
 			if(1)
-				toggle_aim_assist(user)
-			if(2)
 				toggle_frontline_mode(user)
-			if(3)
-				toggle_motion_detector(user)
-			if(4)
+			if(2)
 				toggle_ammo_type(user)
-			if(5)
-				toggle_lethal_mode(user)
+			if(3)
+				toggle_lethal_mode(user) //33.3% chance to kill the person in front of you
 		to_chat(user, SPAN_HIGHDANGER("[src]'s electronics malfunctioned!"))
 		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
 		sparks.set_up(5, 3, src)

@@ -1112,6 +1112,7 @@
 "CL" = (
 /obj/item/stool,
 /obj/item/weapon/gun/shotgun/merc,
+/obj/effect/landmark/survivor_spawner/clf_smartgunner/fiorina,
 /turf/open/floor/almayer,
 /area/fiorina/station/clf_ship)
 "CO" = (
@@ -1693,9 +1694,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/faxmachine{
-	department = "CLF - Cell 42"
-	},
+/obj/item/device/fax_backpack/clf,
 /turf/open/floor/almayer/blue/northeast,
 /area/fiorina/station/clf_ship)
 "Sx" = (

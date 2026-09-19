@@ -1431,11 +1431,9 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table,
-/obj/structure/machinery/faxmachine{
+/obj/structure/machinery/faxmachine/backpack/clf{
 	department = "CLF - Cell 42"
 	},
-/obj/item/paper/trijent/clf,
-/turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "AC" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -1960,6 +1958,11 @@
 "Rf" = (
 /turf/open/asphalt,
 /area/desert_dam/building/medical/garage)
+"Rm" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/landmark/survivor_spawner/clf_smartgunner/trijent,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
 "Ro" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall7"
@@ -2915,7 +2918,7 @@ Au
 jS
 ET
 ET
-ET
+Rm
 ET
 ET
 ET

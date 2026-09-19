@@ -75,6 +75,15 @@
 /turf/open/hybrisa/street/sidewalkcorner
 	icon_state = "sidewalkcorner"
 
+/turf/open/hybrisa/street/sidewalkcorner/north
+	dir = NORTH
+
+/turf/open/hybrisa/street/sidewalkcorner/west
+	dir = WEST
+
+/turf/open/hybrisa/street/sidewalkcorner/east
+	dir = EAST
+
 // Side-Walk
 
 /turf/open/hybrisa/street/sidewalk

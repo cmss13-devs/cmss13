@@ -629,6 +629,7 @@
 
 /datum/action/xeno_action/proc/do_banish(mob/living/carbon/xenomorph/queen/user_xeno, mob/living/carbon/xenomorph/target_xeno)
 	target_xeno.banished = TRUE
+	target_xeno.hive.remove_from_evo_list(target_xeno)
 	target_xeno.hud_update_banished()
 	target_xeno.lock_evolve = TRUE
 

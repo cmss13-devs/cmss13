@@ -34,13 +34,15 @@
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 
-	aura_strength = 2
+	aura_strength = XENO_PHERO_STRENGTH_NORMAL
 	hugger_throw_delay = 5 DECISECONDS
 	egg_cooldown = 25 SECONDS
 
 	minimum_evolve_time = 5 MINUTES
 
 	minimap_icon = "carrier"
+
+	organ_type = /obj/item/organ/xeno/carrier
 
 /mob/living/carbon/xenomorph/carrier
 	caste_type = XENO_CASTE_CARRIER
@@ -49,7 +51,7 @@
 	icon_size = 64
 	icon_xeno = 'icons/mob/xenos/castes/tier_2/carrier.dmi'
 	icon_state = "Carrier Walking"
-	plasma_types = list(PLASMA_PURPLE)
+	plasma_types = list(PLASMA_PHEROMONE)
 
 	drag_delay = 6 //pulling a big dead xeno is hard
 	var/huggers_reserved = 0
@@ -58,7 +60,6 @@
 	tier = 2
 	pixel_x = -16 //Needed for 2x2
 	old_x = -16
-	organ_value = 1000
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/toggle_seethrough,
@@ -100,6 +101,14 @@
 	var/eggs_max = 0
 	var/laid_egg = 0
 	var/hugger_retrieve_timer = 5 DECISECONDS
+
+/obj/item/organ/xeno/carrier
+	name = "carrier heart"
+	icon_state = "heart_t2"
+	item_state = "heart_t2"
+	research_value = 1000
+
+	xeno_organ_flags = XENO_ORGAN_STRONG|XENO_ORGAN_SUPPORT
 
 /mob/living/carbon/xenomorph/carrier/proc/update_hugger_overlays()
 	if(!hugger_overlays_icon)
@@ -247,7 +256,6 @@
 	else
 		to_chat(src, SPAN_WARNING("We can't carry more facehuggers on you."))
 
-
 /mob/living/carbon/xenomorph/carrier/proc/throw_hugger(atom/object)
 	if(!object)
 		return
@@ -318,8 +326,8 @@
 			SPAN_XENOWARNING("We throw a facehugger towards \the [object]!"))
 		addtimer(CALLBACK(src, PROC_REF(update_action_buttons)), caste.hugger_throw_delay) // no idea why hugger_throw_delay is a parent since its only really used by this file but whatever
 
-/mob/living/carbon/xenomorph/carrier/proc/store_egg(obj/item/xeno_egg/E)
-	if(E.hivenumber != hivenumber)
+/mob/living/carbon/xenomorph/carrier/proc/store_egg(obj/item/xeno_egg/target_egg)
+	if(target_egg.hivenumber != hivenumber)
 		to_chat(src, SPAN_WARNING("That egg is tainted!"))
 		return
 	if(eggs_cur < eggs_max)
@@ -327,9 +335,9 @@
 			eggs_cur++
 			behavior_delegate?.on_update_icons()
 			to_chat(src, SPAN_NOTICE("We store the egg and carry it for safekeeping. Now sheltering: [eggs_cur] / [eggs_max]."))
-			qdel(E)
+			qdel(target_egg)
 		else
-			to_chat(src, SPAN_WARNING("This [E.name] looks too unhealthy."))
+			to_chat(src, SPAN_WARNING("This [target_egg.name] looks too unhealthy."))
 	else
 		to_chat(src, SPAN_WARNING("We can't carry more eggs on ourselves."))
 
@@ -342,35 +350,35 @@
 
 	//target a hugger on the ground to store it directly
 	if(istype(object, /obj/item/xeno_egg))
-		var/obj/item/xeno_egg/E = object
-		if(isturf(E.loc) && Adjacent(E))
-			var/turf/egg_turf = E.loc
-			store_egg(E)
+		var/obj/item/xeno_egg/target_egg = object
+		if(isturf(target_egg.loc) && Adjacent(target_egg))
+			var/turf/egg_turf = target_egg.loc
+			store_egg(target_egg)
 			//Grab all the eggs from the turf
 			if(eggs_cur < eggs_max)
-				for(E in egg_turf)
+				for(target_egg in egg_turf)
 					if(eggs_cur < eggs_max)
-						store_egg(E)
+						store_egg(target_egg)
 			return
 
 	if(istype(object, /obj/effect/alien/resin/special/eggmorph))
 		store_eggs_into_egg_morpher(object)
 		return
 
-	var/obj/item/xeno_egg/E = get_active_hand()
-	if(!E) //empty active hand
+	var/obj/item/xeno_egg/target_egg = get_active_hand()
+	if(!target_egg) //empty active hand
 		//if no hugger in active hand, we take one from our storage
 		if(eggs_cur <= 0)
 			to_chat(src, SPAN_WARNING("We don't have any eggs to use!"))
 			return
-		E = new(src, hivenumber)
+		target_egg = new(src, hivenumber)
 		eggs_cur--
 		behavior_delegate?.on_update_icons()
-		put_in_active_hand(E)
+		put_in_active_hand(target_egg)
 		to_chat(src, SPAN_XENONOTICE("We grab one of the eggs in our storage. Now sheltering: [eggs_cur] / [eggs_max]."))
 		return
 
-	if(!istype(E)) //something else in our hand
+	if(!istype(target_egg)) //something else in our hand
 		to_chat(src, SPAN_WARNING("We need an empty hand to grab one of our stored eggs!"))
 		return
 

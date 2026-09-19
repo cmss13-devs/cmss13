@@ -50,17 +50,10 @@
 /datum/action/xeno_action/activable/tail_stab/tail_seize/use_ability(atom/targetted_atom)
 	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
 
-	if(!action_cooldown_check())
+	if(world.time <= stabbing_xeno.next_move)
 		return FALSE
 
-	if(!stabbing_xeno.check_state())
-		return FALSE
-
-	if (world.time <= stabbing_xeno.next_move)
-		return FALSE
-
-	if(!check_and_use_plasma_owner())
-		return FALSE
+	XENO_ACTION_CHECK_USE_PLASMA(stabbing_xeno)
 
 	stabbing_xeno.visible_message(SPAN_XENODANGER("\The [stabbing_xeno] uncoils and wildly throws out its tail!"), SPAN_XENODANGER("We uncoil our tail wildly in front of us!"))
 
@@ -82,7 +75,7 @@
 /datum/action/xeno_action/activable/prae_abduct/use_ability(atom/targetted_atom)
 	var/mob/living/carbon/xenomorph/abduct_user = owner
 
-	if(!action_cooldown_check() || abduct_user.action_busy)
+	if(abduct_user.action_busy)
 		return
 
 	if(!abduct_user.check_state())
@@ -303,18 +296,12 @@
 /datum/action/xeno_action/activable/oppressor_punch/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/oppressor_user = owner
 
-	if (!action_cooldown_check())
-		return
-
-	if (!isxeno_human(target_atom) || oppressor_user.can_not_harm(target_atom))
-		return
-
-	if (!oppressor_user.check_state())
+	if(!isxeno_human(target_atom) || oppressor_user.can_not_harm(target_atom))
 		return
 
 	var/mob/living/carbon/target_carbon = target_atom
 
-	if (!oppressor_user.Adjacent(target_carbon))
+	if(!oppressor_user.Adjacent(target_carbon))
 		return
 
 	if(target_carbon.stat == DEAD)
@@ -322,11 +309,10 @@
 
 	var/obj/limb/target_limb = target_carbon.get_limb(check_zone(oppressor_user.zone_selected))
 
-	if (ishuman(target_carbon) && (!target_limb || (target_limb.status & LIMB_DESTROYED)))
+	if(ishuman(target_carbon) && (!target_limb || (target_limb.status & LIMB_DESTROYED)))
 		target_limb = target_carbon.get_limb("chest")
 
-	if (!check_and_use_plasma_owner())
-		return
+	XENO_ACTION_CHECK_USE_PLASMA(oppressor_user)
 
 	target_carbon.last_damage_data = create_cause_data(oppressor_user.caste_type, oppressor_user)
 
@@ -339,11 +325,11 @@
 	oppressor_user.animation_attack_on(target_carbon)
 	oppressor_user.flick_attack_overlay(target_carbon, "punch")
 
-	if (!(target_carbon.mobility_flags & MOBILITY_MOVE) || !(target_carbon.mobility_flags & MOBILITY_STAND) || target_carbon.slowed)
+	if(!(target_carbon.mobility_flags & MOBILITY_MOVE) || !(target_carbon.mobility_flags & MOBILITY_STAND) || target_carbon.slowed)
 		target_carbon.apply_damage(get_xeno_damage_slash(target_carbon, damage), BRUTE, target_limb? target_limb.name : "chest")
 		ADD_TRAIT(target_carbon, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Oppressor Punch"))
 
-		if (ishuman(target_carbon))
+		if(ishuman(target_carbon))
 			var/mob/living/carbon/human/human_to_update = target_carbon
 			human_to_update.update_xeno_hostile_hud()
 

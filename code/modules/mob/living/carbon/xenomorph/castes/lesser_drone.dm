@@ -28,7 +28,9 @@
 	tackle_min = 4
 	tackle_max = 5
 
-	aura_strength = 1
+	organ_type = null
+
+	aura_strength = XENO_PHERO_STRENGTH_WEAK
 
 	minimap_icon = "lesser_drone"
 
@@ -45,7 +47,6 @@
 	icon_size = 48
 	icon_state = "Lesser Drone Walking"
 	xenonid_pixel_x = -9
-	plasma_types = list(PLASMA_PURPLE)
 	tier = 0
 	mob_flags = NOBIOSCAN
 	mob_size = MOB_SIZE_XENO_VERY_SMALL

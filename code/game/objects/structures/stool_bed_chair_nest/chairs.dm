@@ -19,6 +19,11 @@
 	handle_rotation()
 	if(!can_rotate)
 		verbs.Remove(/obj/structure/bed/chair/verb/rotate)
+	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(handle_rotation_on_dir_change)) // If this annoys you due to signal collision just remove it and override setDir, it's not that big a deal.
+
+/obj/structure/bed/chair/proc/handle_rotation_on_dir_change(atom/self, dir, newdir)
+	SIGNAL_HANDLER
+	handle_rotation()
 
 /obj/structure/bed/chair/initialize_pass_flags(datum/pass_flags_container/PF)
 	if(PF)
@@ -217,7 +222,6 @@
 
 	if(CONFIG_GET(flag/ghost_interaction))
 		src.setDir(turn(src.dir, 90))
-		handle_rotation()
 		return
 	else
 		if(!ishuman(usr))
@@ -231,7 +235,6 @@
 	if(usr.is_mob_incapacitated())
 		return
 	setDir(turn(src.dir, 90))
-	handle_rotation()
 	return
 
 //Chair types

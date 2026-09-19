@@ -72,6 +72,10 @@ ON_CONFIG_LOAD(/datum/autoreply/admin/whitelist)
 	title = "A: Staff Issue"
 	message = "This is not something that mentors can help with, please contact the staff team via AdminHelp."
 
+/datum/autoreply/mentor/mentors_helping
+	title = "L: Mentors on their way to help"
+	message = "A mentor will attend to help. Thanks for letting us know!"
+
 /datum/autoreply/mentor/whitelist
 	title = "L: Whitelist Issue"
 
@@ -157,6 +161,17 @@ ON_CONFIG_LOAD(/datum/autoreply/mentor/macros)
 Rangefinders allow you to get tile coordinates (longitude and latitude) by lasing it while zoomed in (produces a GREEN laser). Ctrl + Click on any open tile to start lasing. Ctrl + Click on your rangefinders to stop lasing without zooming out. Coordinates can be used by Staff Officers to send supply drops or to perform Orbital Bombardment. You also can use them to call mortar fire if there are engineers with a mortar. \
 Laser Designators have a second mode (produces a RED laser) that allows highlighting targets for Close Air Support performed by dropship pilots. They also have a fixed ID number that is shown on the pilot's weaponry console. Examine the laser designator to check its ID. Red laser must be maintained as long as needed in order for the dropship pilot to bomb the designated area. To switch between lasing modes, Alt + Click the laser designator. Alternatively, Right + Click it in hand and click \"Toggle Mode\"."
 
+/datum/autoreply/mentor/cpr
+	title = "H: CPR"
+	message = "When you find a killed ally, if they have not permanently died you can slow their permanent death by applying CPR. If without a sensormate HUD, then you can check if they have died permanently by examining then clicking \"Check Status\" at the bottom of the readout.\
+If they are dead then they will be \"...not breathing...\", and otherwise if permanently dead they will be \"...no signs of life...\". If you have a sensormate equipped and activated, you can see at range if a mob is revivable.\
+A skull means permanently dead, a solid red line means the player does not want to be revived (DNR), a red box outline means the player has lost connection, while a heartbeat line indicates someone is revivable with a colored line showing how long they have left; A green line is under 5 minutes, a yellow line is under 2 minutes, while a flashing red line is less than 1 minute.\
+To apply CPR, on help intent click on a dead human and wait 3 seconds to apply. Once completed successfully, you must wait another 5 seconds to apply CPR successfully again. CPR may be done quicker with a higher medical skill."
+
+/datum/autoreply/mentor/fireman_carry
+	title = "H: Fireman Carry"
+	message = "Fireman carry allows you to transport other humans quickly without any equipment. To fireman carry, grab the target (CTRL+Click), upgrade the grab once by clicking the grab or using \"Z\" (or \"Page down\" if hotkey mode is disabled). You must have the skill to fireman carry, which can be checked by the \"Check Skills\" command."
+
 /datum/autoreply/mentor/haul
 	title = "X: Haul as Xeno"
 	message = "Hauling is useful to quickly transport incapacitated hosts from one place to another. In order to haul a host as a Xeno, grab the mob (CTRL+Click) and then click on yourself to begin hauling. The host can break out of your grip, which will result in your death so make sure your target is incapacitated. After approximately 1 minute host will be automatically released. To release your target voluntary, click 'Release' on the HUD to throw them back up."
@@ -169,3 +184,6 @@ Laser Designators have a second mode (produces a RED laser) that allows highligh
 	title = "X: Tunnel"
 	message = "Click on the tunnel to enter it. While being in the tunnel, Alt + Click it to exit, Ctrl + Click to choose a destination."
 
+/datum/autoreply/mentor/directional_assist
+	title = "X: Directional assist"
+	message = "Directional assist allows you to slash any target in the direction of your mouse rather than clicking on sprites. To enable, go to the edit characters menu (available from the escape menu or the preferences tab on the top of the chat window), then under the \"Gameplay Toggles\" section, and click \"Toggle Directional Assist\"."

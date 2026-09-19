@@ -324,6 +324,19 @@
 	item_to_deploy = /turf/open/shuttle/dropship/midway/basic/invisible
 	var/item_to_deploy2 = /turf/open/shuttle/dropship/midway/openspace
 
+/obj/deployer/shuttle/dropship/roof_loader/Initialize()
+	. = ..()
+	if(template_preset == "abstract") //So spawning an abstract tent won't fail create and destroy
+		return
+	set_template(SSmapping.shuttle_roof_templates[template_preset])
+	if(!roof_template)
+		CRASH("[src] initialized with roof template preset, \"[template_preset]\", that does not exist.")
+
+/obj/deployer/shuttle/dropship/roof_loader/Destroy()
+	linked_fauxes = null
+	roof_template = null
+	return ..()
+
 /obj/deployer/shuttle/dropship/roof_loader/omaha
 	template_preset = "omaha"
 	item_to_deploy = /turf/open/shuttle/dropship/omaha/basic/invisible
@@ -339,10 +352,6 @@
 /obj/deployer/shuttle/dropship/roof_loader/midway/Initialize()
 	. = ..()
 	our_glob_list = GLOB.midway_roof_fauxes
-
-/obj/deployer/shuttle/dropship/roof_loader/Initialize()
-	. = ..()
-	set_template(SSmapping.shuttle_roof_templates[template_preset])
 
 /obj/deployer/shuttle/dropship/roof_loader/proc/set_template(datum/map_template/new_template)
 	if(!istype(new_template))
@@ -362,7 +371,7 @@
 
 /obj/deployer/shuttle/dropship/roof_loader/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
 	.=..()
-//	if(is_ground_level(src.z) || linked_dropship.is_hijacked)
+//	if(is_ground_level(src.z) || linked_dropship.is_hijacked && !is_reserved_level(src.z))
 	var/turf/target_turf = SSmapping.get_turf_above(src.loc)
 	if(target_turf)
 		if(deployed_already)

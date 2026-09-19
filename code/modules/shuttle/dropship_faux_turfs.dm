@@ -24,8 +24,6 @@ GLOBAL_LIST_EMPTY(midway_roof_fauxes)
 	icon = 'icons/turf/midway/roof_split.dmi'
 	icon_state = "0,0"
 	layer = TURF_LAYER + 0.01
-	var/post_init_icon_state = "fuck_you"
-	var/obj/deployer/shuttle/dropship/roof_loader/linked_loader
 	var/recorded_offset_X
 	var/recorded_offset_Y
 
@@ -100,9 +98,9 @@ GLOBAL_LIST_EMPTY(midway_roof_fauxes)
 	icon_state = "1,1"
 
 /obj/faux_turf/open/dropship/roof/empty_space/omaha/Initialize()
+	.=..()
 	GLOB.omaha_roof_fauxes += src
-	return ..()
 
 /obj/faux_turf/open/dropship/roof/empty_space/midway/Initialize()
+	.=..()
 	GLOB.midway_roof_fauxes += src
-	return ..()

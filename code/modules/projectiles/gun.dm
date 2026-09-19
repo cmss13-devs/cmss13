@@ -1287,7 +1287,7 @@ and you're good to go.
 
 //----------------------------------------------------------
 		//    \\
-		// FIRE BULLET AND POINT BLANK/SUICIDE \\
+		// FIRE BULLET AND POINT BLANK \\
 		//    \\
 		//    \\
 //----------------------------------------------------------
@@ -1447,13 +1447,14 @@ and you're good to go.
 
 	var/datum/ammo/fired_ammo = projectile_to_fire.ammo // reference for casing logic
 
-	if(flags_gun_features & (GUN_INTERNAL_MAG|GUN_MANUAL_EJECT_CASINGS)) //snowflake define for bolt actions or other weird guns that eject casings manually
-		if(fired_ammo.shell_casing)
-			spent_casings += fired_ammo.shell_casing // accurate case ejections for these guns would be better
+	if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_bullet_casing))
+		if(flags_gun_features & (GUN_INTERNAL_MAG|GUN_MANUAL_EJECT_CASINGS)) //snowflake define for bolt actions or other weird guns that eject casings manually
+			if(fired_ammo.shell_casing)
+				spent_casings += fired_ammo.shell_casing // accurate case ejections for these guns would be better
 
-	else if(prob(15) && flags_gun_features & GUN_AUTO_EJECT_CASINGS) // dont want to litter the ground too much, also dont want to unnecessarily increase the count for caseless weapons
-		if(fired_ammo.shell_casing)
-			spent_casings += fired_ammo.shell_casing
+		else if(prob(15) && flags_gun_features & GUN_AUTO_EJECT_CASINGS) // dont want to litter the ground too much, also dont want to unnecessarily increase the count for caseless weapons
+			if(fired_ammo.shell_casing)
+				spent_casings += fired_ammo.shell_casing
 
 	if((flags_gun_features & GUN_AUTO_EJECT_CASINGS))
 		eject_casing()
@@ -1632,13 +1633,14 @@ and you're good to go.
 		apply_bullet_effects(projectile_to_fire, user, target, bullets_fired, dual_wield) //We add any damage effects that we need.
 
 		// eject casing logic for PBs
-		if(flags_gun_features & (GUN_INTERNAL_MAG|GUN_MANUAL_EJECT_CASINGS))
-			if(projectile_to_fire.ammo.shell_casing)
-				spent_casings += projectile_to_fire.ammo.shell_casing
+		if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_bullet_casing))
+			if(flags_gun_features & (GUN_INTERNAL_MAG|GUN_MANUAL_EJECT_CASINGS))
+				if(projectile_to_fire.ammo.shell_casing)
+					spent_casings += projectile_to_fire.ammo.shell_casing
 
-		else if(prob(15) && flags_gun_features & GUN_AUTO_EJECT_CASINGS)
-			if(projectile_to_fire.ammo.shell_casing)
-				spent_casings += projectile_to_fire.ammo.shell_casing
+			else if(prob(15) && flags_gun_features & GUN_AUTO_EJECT_CASINGS)
+				if(projectile_to_fire.ammo.shell_casing)
+					spent_casings += projectile_to_fire.ammo.shell_casing
 
 		if((flags_gun_features & GUN_AUTO_EJECT_CASINGS))
 			eject_casing()
@@ -1794,16 +1796,19 @@ and you're good to go.
 	if(projectile_to_fire) //We actually have a projectile, let's move on.
 		user.visible_message(SPAN_WARNING("[user] pulls the trigger!"))
 		var/actual_sound
+
 		if(active_attachable && active_attachable.fire_sound)
 			actual_sound = active_attachable.fire_sound
 		else if(!isnull(fire_sound))
 			actual_sound = fire_sound
 		else actual_sound = pick(fire_sounds)
+
 		var/sound_volume = (flags_gun_features & GUN_SILENCED && !active_attachable) ? 25 : 60
 		playsound(user, actual_sound, sound_volume, 1)
 		simulate_recoil(2, user)
 		var/time
 		var/datum/cause_data/cause_data
+
 		if(projectile_to_fire.ammo.damage <= 0)
 			time += "\[[time_stamp()]\] [SPAN_BOLD(key_name(user))] tried to commit suicide with a [name]"
 			cause_data = create_cause_data("failed suicide by [initial(name)]")
@@ -1829,10 +1834,13 @@ and you're good to go.
 				user.spawn_gibs()
 			else
 				user.update_headshot_overlay(projectile_to_fire.ammo.headshot_state) //Add headshot overlay.
+
 			playsound(user, 'sound/effects/crackandbleed.ogg', 50, 1) // replace this with another eventually
+
 			user.apply_damage(projectile_to_fire.damage * 3, projectile_to_fire.ammo.damage_type, "head", used_weapon = used_weapon_text, no_limb_loss = TRUE, permanent_kill = TRUE)
 			user.apply_damage(200, OXY) //Fill out the rest of their healthbar.
 			user.death(cause_data) //Make sure they're dead. permanent_kill above will make them unrevivable.
+
 			msg_admin_ff(admin_msg, FALSE, user.loc.z)
 			to_chat(user, SPAN_HIGHDANGER("Your life flashes before you as your spirit is torn from your body!"))
 
@@ -1842,6 +1850,20 @@ and you're good to go.
 		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
 
 		projectile_to_fire.play_hit_effect(user)
+
+		var/datum/ammo/fired_ammo = projectile_to_fire.ammo
+
+		// intended no gamemode modifier check here, let them witness the carnage that happened here...
+		if(flags_gun_features & (GUN_INTERNAL_MAG|GUN_MANUAL_EJECT_CASINGS))
+			if(fired_ammo.shell_casing)
+				spent_casings += fired_ammo.shell_casing
+		else if(flags_gun_features & GUN_AUTO_EJECT_CASINGS)
+			if(fired_ammo.shell_casing)
+				spent_casings += fired_ammo.shell_casing
+
+		if(flags_gun_features & GUN_AUTO_EJECT_CASINGS)
+			eject_casing()
+
 		// No projectile code to handhold us, we do the cleaning ourselves:
 		QDEL_NULL(projectile_to_fire)
 		in_chamber = null
@@ -2512,7 +2534,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	var/datum/ammo/fired_ammo = projectile_to_fire.ammo
 
-	// same snowflakes at handle_fire
+	// intended no gamemode modifier check here, let them witness the carnage that happened here...
 	if(flags_gun_features & (GUN_INTERNAL_MAG|GUN_MANUAL_EJECT_CASINGS))
 		if(fired_ammo.shell_casing)
 			spent_casings += fired_ammo.shell_casing
@@ -2643,7 +2665,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	var/datum/ammo/fired_ammo = projectile_to_fire.ammo
 
-	// same snowflakes at handle_fire
+	// intended no gamemode modifier check here, let them witness the carnage that happened here...
 	if(flags_gun_features & (GUN_INTERNAL_MAG|GUN_MANUAL_EJECT_CASINGS))
 		if(fired_ammo.shell_casing)
 			spent_casings += fired_ammo.shell_casing

@@ -13,6 +13,8 @@
 
 /datum/ammo/bullet/smg
 	name = "submachinegun bullet"
+	hud_state = "smg"
+	hud_state_empty = "smg_empty"
 	damage = 34
 	accurate_range = 4
 	effective_range_max = 4
@@ -24,17 +26,18 @@
 
 /datum/ammo/bullet/smg/m39
 	name = "high-velocity submachinegun bullet" //i don't want all smgs to inherit 'high velocity'
+	hud_state = "smg_hv"
 
 /datum/ammo/bullet/smg/ap
 	name = "armor-piercing submachinegun bullet"
-
+	hud_state = "smg_ap"
 	damage = 26
 	penetration = ARMOR_PENETRATION_TIER_6
 	shell_speed = AMMO_SPEED_TIER_4
 
 /datum/ammo/bullet/smg/heap
 	name = "high-explosive armor-piercing submachinegun bullet"
-
+	hud_state = "smg_heap"
 	damage = 45
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	penetration = ARMOR_PENETRATION_TIER_6
@@ -42,6 +45,7 @@
 
 /datum/ammo/bullet/smg/ap/toxin
 	name = "toxic submachinegun bullet"
+	hud_state = "smg_tox"
 	var/acid_per_hit = 5
 	var/organic_damage_mult = 3
 
@@ -71,6 +75,7 @@
 
 /datum/ammo/bullet/smg/incendiary
 	name = "incendiary submachinegun bullet"
+	hud_state = "smg_fire"
 	damage_type = BURN
 	shrapnel_chance = 0
 	flags_ammo_behavior = AMMO_BALLISTIC
@@ -99,7 +104,7 @@
 
 /datum/ammo/bullet/smg/le
 	name = "armor-shredding submachinegun bullet"
-
+	hud_state = "smg_cluster"
 	scatter = SCATTER_AMOUNT_TIER_10
 	damage = 20
 	penetration = ARMOR_PENETRATION_TIER_4
@@ -109,6 +114,7 @@
 
 /datum/ammo/bullet/smg/rubber
 	name = "rubber submachinegun bullet"
+	hud_state = "smg_light"
 	sound_override = 'sound/weapons/gun_c99.ogg'
 
 	damage = 0
@@ -158,7 +164,7 @@
 
 /datum/ammo/bullet/smg/p90/ap
 	name = "armor-piercing submachinegun bullet"
-
+	hud_state = "smg_ap"
 	damage = 20
 	accurate_range = 5
 	effective_range_max = 8

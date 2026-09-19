@@ -6,6 +6,10 @@
 	explo_proof = TRUE
 	anchored = TRUE
 
+/obj/faux_turf/Initialize()
+	.=..()
+	return INITIALIZE_HINT_NORMAL
+
 /obj/faux_turf/open
 	opacity = FALSE
 	density = FALSE

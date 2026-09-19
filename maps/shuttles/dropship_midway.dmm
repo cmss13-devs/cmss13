@@ -125,9 +125,7 @@
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "fM" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_30{
-	fullish_tile = 0
-	},
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_30,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "gc" = (
@@ -316,9 +314,7 @@
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "oX" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/nose/left_21{
-	fullish_tile = 0
-	},
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/left_21,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "pc" = (
@@ -429,9 +425,7 @@
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "tq" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_10{
-	fullish_tile = 0
-	},
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_10,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "tE" = (
@@ -754,9 +748,7 @@
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "Kc" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_14{
-	fullish_tile = 0
-	},
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_14,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "Kn" = (
@@ -848,9 +840,7 @@
 /turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
 "OZ" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/nose/right_24{
-	fullish_tile = 0
-	},
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/right_24,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "Pe" = (
@@ -859,9 +849,7 @@
 /turf/open/shuttle/dropship/midway/ramp/rampio_02,
 /area/shuttle/drop_midway/midway)
 "Pk" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_20{
-	fullish_tile = 0
-	},
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_20,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "PA" = (
@@ -919,9 +907,7 @@
 /turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
 "RZ" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_33{
-	fullish_tile = 0
-	},
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_33,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "Sl" = (
@@ -961,9 +947,7 @@
 /turf/closed/shuttle/dropship_midway/wall_mid_31,
 /area/shuttle/drop_midway/midway)
 "UY" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_23{
-	fullish_tile = 0
-	},
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_23,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "Vk" = (

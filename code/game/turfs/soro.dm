@@ -197,6 +197,86 @@
 /turf/open/gm/coast/dirt/forestbeachcorner2/south_east
 	dir = 8
 
+
+/// Swamp Water
+
+/turf/open/gm/coast/dirt/swampdir
+	icon = 'icons/turf/floors/swamp_water.dmi'
+	icon_state = "swamp"
+	baseturfs = /turf/open/gm/coast
+
+/turf/open/gm/coast/dirt/swampdir/south
+	dir = 1
+
+/turf/open/gm/coast/dirt/swampdir/west
+	dir = 4
+
+/turf/open/gm/coast/dirt/swampdir/east
+	dir = 8
+
+/turf/open/gm/coast/dirt/swampbeachcorner
+	icon = 'icons/turf/floors/swamp_water.dmi'
+	icon_state = "swampcorner"
+
+/turf/open/gm/coast/dirt/swampbeachcorner/north_west
+
+/turf/open/gm/coast/dirt/swampbeachcorner/north_east
+	dir = 1
+
+/turf/open/gm/coast/dirt/swampbeachcorner/south_east
+	dir = 4
+
+/turf/open/gm/coast/dirt/swampbeachcorner/south_west
+	dir = 8
+
+/turf/open/gm/coast/dirt/swampbeachcorner2
+	icon = 'icons/turf/floors/swamp_water.dmi'
+	icon_state = "swampcorner2"
+
+/turf/open/gm/coast/dirt/swampbeachcorner2/north_west
+
+/turf/open/gm/coast/dirt/swampbeachcorner2/north_east
+	dir = 1
+
+/turf/open/gm/coast/dirt/swampbeachcorner2/south_west
+	dir = 4
+
+/turf/open/gm/coast/dirt/swampbeachcorner2/south_east
+	dir = 8
+
+/turf/open/gm/dirt/swamp_dirt
+	name = "swamp dirt"
+	icon = 'icons/turf/floors/swamp_water.dmi'
+	icon_state = "desert"
+	baseturfs = /turf/open/gm/dirt/dark_brown
+	minimap_color = MINIMAP_DIRT
+
+/turf/open/gm/dirt/swamp_dirt/variant_1
+	icon_state = "desert0"
+
+/turf/open/gm/dirt/swamp_dirt/variant_2
+	icon_state = "desert1"
+
+/turf/open/gm/dirt/swamp_dirt/variant_3
+	icon_state = "desert2"
+
+/turf/open/gm/dirt/swamp_dirt/variant_5
+	icon_state = "desert3"
+
+/turf/open/gm/dirt/swamp_dirt/variant_5/east
+	dir = EAST
+
+/turf/open/gm/dirt/swamp_dirt/variant_5/south
+	dir = SOUTH
+
+/turf/open/gm/dirt/swamp_dirt/variant_5/west
+	dir = WEST
+
+/turf/open/gm/dirt/swamp_dirt/variant_6
+	icon_state = "desert_dug"
+
+///////////
+
 /turf/open/asphalt/brown
 	name = "asphalt"
 	icon = 'icons/turf/floors/ground_map_dirt.dmi'
@@ -226,3 +306,9 @@
 	icon = 'icons/turf/floors/tyrargo_map_dirt.dmi'
 	icon_state = "forestseashallow"
 	icon_overlay = "forestriverwater"
+
+/turf/open/gm/river/swamp
+	icon = 'icons/turf/floors/swamp_water.dmi'
+	icon_state = "swampshallow"
+	icon_overlay = "swampriverwater"
+	no_overlay = TRUE

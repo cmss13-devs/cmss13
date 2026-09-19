@@ -802,15 +802,24 @@
 	var/list/turfs = ripple_area(S1)
 	for(var/t in turfs)
 		ripples += new /obj/effect/abstract/ripple/shadow(t, animate_time)
-		if(multiz_ship) // ripples
-			var/obj/docking_port/mobile/marine_dropship/our_ship = src
-			if(!our_ship.is_hijacked)
-				var/turf_below = SSmapping.get_turf_below(t)
-				if(turf_below)
-					ripples += new /obj/effect/abstract/ripple/shadow(turf_below, animate_time)
 	return TRUE
 
 /obj/docking_port/mobile/proc/remove_ripples()
+	QDEL_LIST(ripples)
+
+/obj/docking_port/mobile/marine_dropship/multiz/create_ripples(obj/docking_port/stationary/our_dock, animate_time)
+	var/turf/target_turf = locate(our_dock.x - dwidth, our_dock.y - dheight, our_dock.z)
+	ripples += new shuttle_shadow(target_turf, animate_time)
+	if(is_hijacked)
+		var/turf/turf_above = SSmapping.get_turf_above(target_turf)
+		ripples += new shuttle_shadow(turf_above, animate_time)
+	else
+		var/turf/turf_below = SSmapping.get_turf_below(target_turf)
+		ripples += new shuttle_shadow(turf_below, animate_time)
+
+	return TRUE
+
+/obj/docking_port/mobile/marine_dropship/multiz/remove_ripples()
 	QDEL_LIST(ripples)
 
 /obj/docking_port/mobile/proc/ripple_area(obj/docking_port/stationary/S1)

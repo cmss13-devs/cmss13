@@ -142,6 +142,8 @@
 
 /obj/docking_port/mobile/marine_dropship/multiz
 	multiz_ship = TRUE
+	use_ripples = FALSE
+	var/obj/effect/abstract/ripple/shadow/dropship_shadow/omaha/shuttle_shadow
 
 /obj/docking_port/mobile/marine_dropship/multiz/omaha
 	name = "Omaha"
@@ -153,6 +155,7 @@
 	dwidth = 8
 	dheight = 12
 	zdepth = 1
+	shuttle_shadow = /obj/effect/abstract/ripple/shadow/dropship_shadow/omaha
 
 /obj/docking_port/mobile/marine_dropship/multiz/omaha/get_transit_path_type()
 	return /turf/open/space/transit/dropship/omaha
@@ -175,6 +178,7 @@
 	dwidth = 8
 	dheight = 12
 	zdepth = 1
+	shuttle_shadow = /obj/effect/abstract/ripple/shadow/dropship_shadow/midway
 
 /obj/docking_port/mobile/marine_dropship/multiz/midway/get_transit_path_type()
 	return /turf/open/space/transit/dropship/midway

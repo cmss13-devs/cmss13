@@ -371,22 +371,22 @@
 
 /obj/deployer/shuttle/dropship/roof_loader/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
 	.=..()
-//	if(is_ground_level(src.z) || linked_dropship.is_hijacked && !is_reserved_level(src.z))
-	var/turf/target_turf = SSmapping.get_turf_above(src.loc)
-	if(target_turf)
-		if(deployed_already)
-			move_into_position(target_turf)
-			place_walkable()
-			crush_shit()
-			update_visuals()
-		else
-			roof_template.load(target_turf, TRUE, FALSE)
-			setup_link()
-			update_fauxes_icons()
-			place_walkable()
-			crush_shit()
-			update_visuals()
-			deployed_already = TRUE
+	if(is_ground_level(src.z) || linked_dropship.is_hijacked && !is_reserved_level(src.z))
+		var/turf/target_turf = SSmapping.get_turf_above(src.loc)
+		if(target_turf)
+			if(deployed_already)
+				move_into_position(target_turf)
+				place_walkable()
+				crush_shit()
+				update_visuals()
+			else
+				roof_template.load(target_turf, TRUE, FALSE)
+				setup_link()
+				update_fauxes_icons()
+				place_walkable()
+				crush_shit()
+				update_visuals()
+				deployed_already = TRUE
 
 /obj/deployer/shuttle/dropship/roof_loader/proc/setup_link()
 	var/turf/turf_above = SSmapping.get_turf_above(src.loc)

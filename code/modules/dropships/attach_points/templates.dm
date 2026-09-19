@@ -124,6 +124,16 @@
 /obj/effect/attach_point/weapon/dropship_midway
 	ship_tag = DROPSHIP_MIDWAY
 
+/obj/effect/attach_point/weapon/dropship_midway/nose
+	name = "nose weapon attach point"
+	icon_state = "equip_base_front"
+	attach_id = 21
+	dir = NORTH
+	firing_arc_min = -12
+	firing_arc_max =  12
+	transverse  = -3
+	long    =  0
+
 /obj/effect/attach_point/weapon/dropship_midway/left_wing
 	name = "port wing weapon attach point"
 	icon_state = "equip_base_l_wing"

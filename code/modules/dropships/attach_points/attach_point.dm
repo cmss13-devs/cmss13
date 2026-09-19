@@ -73,6 +73,26 @@
 
 	ds_equipment.update_equipment()
 
+/obj/effect/attach_point/weapon/dropship_midway/nose/install_equipment(obj/structure/dropship_equipment/our_equipment)
+	var/obj/structure/dropship_equipment/ds_equipment = our_equipment
+	if(!(base_category in ds_equipment.equip_categories))
+		CRASH("Tried installing [our_equipment.name] on [src.name] -- wrong catergory")
+
+	ds_equipment.forceMove(loc)
+	installed_equipment = ds_equipment
+	ds_equipment.ship_base = src
+	ds_equipment.plane = plane
+	ds_equipment.setDir(src.dir)
+	ds_equipment.layer = src.layer + 0.01
+
+	for(var/obj/docking_port/mobile/marine_dropship/shuttle in SSshuttle.mobile)
+		if(shuttle.id == ship_tag)
+			ds_equipment.linked_shuttle = shuttle
+			SEND_SIGNAL(shuttle, COMSIG_DROPSHIP_ADD_EQUIPMENT, ds_equipment)
+			break
+
+	ds_equipment.update_equipment()
+
 /// Weapon specific attachment point
 /obj/effect/attach_point/weapon
 	name = "weapon system attach point"

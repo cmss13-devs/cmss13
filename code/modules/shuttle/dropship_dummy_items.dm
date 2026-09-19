@@ -296,9 +296,11 @@
 	icon = 'icons/obj/structures/machinery/midway/misc_96x96.dmi'
 	icon_state = "m90_minigun_deployer"
 	item_to_deploy = /obj/structure/dropship_equipment/weapon/m90_minigun
+	var/item_to_deploy2 = /obj/effect/attach_point/weapon/dropship_midway/nose
 	invisibility = 0
 	layer = UNDER_TURF_LAYER
 	var/obj/structure/dropship_equipment/weapon/m90_minigun/linked_m90
+	var/obj/effect/attach_point/weapon/dropship_midway/nose/linked_nose
 
 /obj/deployer/shuttle/dropship/m90_minigun/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
 	. = ..()
@@ -308,11 +310,18 @@
 			linked_m90.loc = turf_below
 		else
 			linked_m90 = new item_to_deploy(turf_below)
+			linked_nose = new item_to_deploy2(turf_below)
 			linked_m90.linked_shuttle = src.linked_dropship
-			linked_m90.linked_shuttle.equipments += linked_m90
+
+			linked_nose.install_equipment(linked_m90)
+
 			linked_items += linked_m90
+			linked_items += linked_nose
+
 			linked_m90.pixel_x = pixel_x
 			linked_m90.pixel_y = pixel_y
+			linked_nose.pixel_x = pixel_x
+			linked_nose.pixel_y = pixel_y
 
 /obj/deployer/shuttle/dropship/roof_loader
 	var/list/linked_fauxes = list()

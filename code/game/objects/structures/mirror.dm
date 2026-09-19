@@ -34,6 +34,27 @@
 
 		var/userloc = H.loc
 
+		// THIS IS FOR TESTMERGE ONLY ***************************** REMOVE AFTERWARDS
+		var/selected = tgui_input_list(user, "What would you like to alter?", "Alterations Options", list("Hair"="hair","Mouth"="mouth"))
+		// THIS IS FOR TESTMERGE ONLY ***************************** REMOVE AFTERWARDS
+		if(selected == null)
+		// THIS IS FOR TESTMERGE ONLY ***************************** REMOVE AFTERWARDS
+			return
+		// THIS IS FOR TESTMERGE ONLY ***************************** REMOVE AFTERWARDS
+		else if(selected == "Mouth" && !isyautja(H))
+		// THIS IS FOR TESTMERGE ONLY ***************************** REMOVE AFTERWARDS
+			selected = tgui_input_list(H, "What mouth style would you like to use?", "Alterations Options", GLOB.mouth_styles_list + list("none"))
+		// THIS IS FOR TESTMERGE ONLY ***************************** REMOVE AFTERWARDS
+			if(selected != null)
+		// THIS IS FOR TESTMERGE ONLY ***************************** REMOVE AFTERWARDS
+				to_chat(H, SPAN_INFO("Mouth style updated to [selected]"))
+		// THIS IS FOR TESTMERGE ONLY ***************************** REMOVE AFTERWARDS
+				H.mouth_style = selected
+		// THIS IS FOR TESTMERGE ONLY ***************************** REMOVE AFTERWARDS
+				H.move_mouth(yelling = 1, timing_override = 3)
+		// THIS IS FOR TESTMERGE ONLY ***************************** REMOVE AFTERWARDS
+			return
+
 		//see code/modules/mob/new_player/preferences.dm at approx line 545 for comments!
 		//this is largely copypasted from there.
 

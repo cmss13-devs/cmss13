@@ -1,4 +1,0 @@
-author: "Yachuk"
-delete-after: True
-changes:
-  - balance: "changed MD ping animation from 1 to 2 seconds"

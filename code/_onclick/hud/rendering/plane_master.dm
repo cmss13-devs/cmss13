@@ -279,6 +279,11 @@
 	/// world.time of the last handle_pan call, used to detect a gap between drags so a fresh drag doesn't jump from the old position
 	var/last_pan_time
 
+/// Applies the player's minimap opacity preference to the whole tacmap plane (map, blips, drawings). Per-client, so it never touches a shared minimap object.
+/atom/movable/screen/plane_master/minimap/proc/apply_opacity_pref(client/user_client)
+	var/percent = user_client?.prefs?.minimap_opacity
+	alpha = isnull(percent) ? 255 : round(255 * percent / 100)
+
 /// Rebuilds transform from scratch each time so scale and pan never compound incorrectly across repeated calls
 /atom/movable/screen/plane_master/minimap/proc/rebuild_transform()
 	var/matrix/new_transform = matrix()

@@ -43,9 +43,11 @@
 			/atom/movable/screen/minimap_tool/label,
 			/atom/movable/screen/minimap_tool/clear,
 			/atom/movable/screen/minimap_tool/popout,
-			/atom/movable/screen/minimap_tool/camera_select,
 			/atom/movable/screen/minimap_tool/lock,
 		)
+		// only Overwatch consoles and xenos (Queen) have a camera/overwatch to switch, other tacmaps (CIC) would just get a dead button
+		if(istype(parent, /obj/structure/machinery/computer/overwatch) || isxeno(parent))
+			drawing_tools += /atom/movable/screen/minimap_tool/camera_select
 
 	if(has_update)
 		drawing_tools += /atom/movable/screen/minimap_tool/update
@@ -143,6 +145,11 @@
 	user.client.add_to_screen(user_close_button)
 	user.client.add_to_screen(user_map)
 	setup_tacmap_pan_drag(user)
+	var/atom/movable/screen/plane_master/minimap/plane_master = user.hud_used.plane_masters["[TACMAP_PLANE]"]
+	if(plane_master)
+		plane_master.locked = FALSE // the lock button is recreated on every open, so start unlocked to match it
+		plane_master.apply_opacity_pref(user.client)
+	user_map.mouse_opacity = MOUSE_OPACITY_OPAQUE // this per-client map may still be click-through from being locked last time
 
 	// Apply ceiling protection overlay if client has preference enabled
 	if(user.client.prefs?.show_minimap_ceiling_protection)

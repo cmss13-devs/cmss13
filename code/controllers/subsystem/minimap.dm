@@ -852,7 +852,7 @@ SUBSYSTEM_DEF(minimaps)
 
 	var/atom/movable/screen/plane_master/minimap/plane_master = user.hud_used.plane_masters["[TACMAP_PLANE]"]
 
-	if(!plane_master || plane_master.locked)
+	if(!plane_master || plane_master.locked || !isnull(plane_master.saved_zoom_scale))
 		return
 
 	var/new_zoom = clamp(plane_master.zoom_scale + (delta_y / MINIMAP_ZOOM_STEP_DIVISOR), MINIMAP_ZOOM_MIN, MINIMAP_ZOOM_MAX)
@@ -1084,7 +1084,7 @@ SUBSYSTEM_DEF(minimaps)
 		minimap_flags = new_minimap_flags
 	if(new_marker_flags)
 		marker_flags = new_marker_flags
-	drawing_tools += list(/atom/movable/screen/minimap_tool/up/simple, /atom/movable/screen/minimap_tool/down/simple, /atom/movable/screen/minimap_tool/change_map)
+	drawing_tools += list(/atom/movable/screen/minimap_tool/up/simple, /atom/movable/screen/minimap_tool/down/simple, /atom/movable/screen/minimap_tool/change_map, /atom/movable/screen/minimap_tool/lock)
 
 /datum/action/minimap/Destroy()
 	map = null
@@ -1121,13 +1121,25 @@ SUBSYSTEM_DEF(minimaps)
 			to_chat(owner, SPAN_WARNING("You already have a minimap open!"))
 			return FALSE
 		var/list/atom/movable/screen/actions = list()
-		map = SSminimaps.fetch_minimap_object(owner.z, map.minimap_flags, map.live, FALSE, map.drawing)
+		map = SSminimaps.fetch_minimap_object(owner.z, map.minimap_flags, map.live, FALSE, map.drawing, for_client=owner.client)
 		for(var/path in drawing_tools)
 			actions += new path(null, owner.z, minimap_flags, map, null)
+		// these two default to the slots below popout in the tacmap layout, which this action doesn't have, so stack them right under the level buttons instead of leaving a gap
+		var/next_slot = 4
+		for(var/tool_type in list(/atom/movable/screen/minimap_tool/camera_select, /atom/movable/screen/minimap_tool/lock))
+			var/atom/movable/screen/minimap_tool/tool = locate(tool_type) in actions
+			if(tool)
+				tool.screen_loc = "15,[next_slot--]"
 		drawing_actions = actions
 		owner.client.add_to_screen(drawing_actions)
 		owner.client.add_to_screen(map)
 		owner.client.add_to_screen(locator)
+		setup_tacmap_pan_drag(owner)
+		var/atom/movable/screen/plane_master/minimap/plane_master = owner.hud_used.plane_masters["[TACMAP_PLANE]"]
+		if(plane_master)
+			plane_master.locked = FALSE // the lock button is recreated on every open, so start unlocked to match it
+			plane_master.apply_opacity_pref(owner.client)
+		map.mouse_opacity = MOUSE_OPACITY_OPAQUE // this per-client map may still be click-through from being locked last time
 		// Apply ceiling protection overlay if client has preference enabled
 		if(owner.client.prefs?.show_minimap_ceiling_protection)
 			map.update_ceiling_overlay(owner.client)
@@ -1151,6 +1163,7 @@ SUBSYSTEM_DEF(minimaps)
 		owner.client.remove_from_screen(map)
 		owner.client.remove_from_screen(locator)
 		owner.client.remove_from_screen(drawing_actions)
+		winset(owner, "drawingtools", "reset=true")
 		map.stop_polling -= owner
 		// Hide ceiling protection toggle action when minimap closes
 		for(var/datum/action/minimap_ceiling/ceiling_action in owner.actions)
@@ -1380,6 +1393,12 @@ SUBSYSTEM_DEF(minimaps)
 			toggle_minimap(FALSE)
 		live = should_be_live
 		map = null
+
+	// Watching a sister through the map only makes sense on a live map: always for the Queen, otherwise only while the Queen is on the ovipositor
+	if(live)
+		drawing_tools |= /atom/movable/screen/minimap_tool/camera_select
+	else
+		drawing_tools -= /atom/movable/screen/minimap_tool/camera_select
 
 	. = ..()
 
@@ -2081,6 +2100,28 @@ SUBSYSTEM_DEF(minimaps)
 			nearest = H
 	return list(nearest, best_dist)
 
+///finds the closest living sister of the watcher's hive to the given coordinates, within max_dist tiles, using the same rules as the "Watch Xenomorph" action. Returns list(nearest_xeno, distance).
+/proc/find_nearest_watchable_xeno(mob/living/carbon/xenomorph/watcher, zlevel, x, y, max_dist = 2)
+	var/turf/click_turf = locate(x, y, zlevel)
+	if(!click_turf)
+		return list(null, null)
+
+	var/mob/living/carbon/xenomorph/nearest
+	var/best_dist
+	for(var/mob/living/carbon/xenomorph/candidate as anything in GLOB.living_xeno_list)
+		if(candidate == watcher || candidate.stat == DEAD || candidate.hivenumber != watcher.hivenumber || should_block_game_interaction(candidate))
+			continue
+		var/turf/candidate_turf = get_turf(candidate)
+		if(!candidate_turf || candidate_turf.z != zlevel)
+			continue
+		var/dist = get_dist_euclidian(candidate_turf, click_turf)
+		if(dist > max_dist)
+			continue
+		if(isnull(best_dist) || dist < best_dist)
+			best_dist = dist
+			nearest = candidate
+	return list(nearest, best_dist)
+
 ///standalone check mirroring [/obj/structure/machinery/computer/overwatch/proc/marine_has_camera] without needing a console reference
 /proc/marine_has_camera_gear(mob/living/carbon/human/marine)
 	if(istype(marine.head, /obj/item/clothing/head/helmet/marine))
@@ -2093,7 +2134,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/camera_select
 	icon_state = "scroll"
-	desc = "Click to arm, then click a marine's blip to switch the console's camera feed to them. Disarms itself once it succeeds; click this button again to disarm manually."
+	desc = "Click to arm, then click a blip on the map to watch through them. Disarms itself once it succeeds; click this button again to disarm manually."
 	screen_loc = "15,3"
 	/// Whether this tool is currently armed and listening for a map click
 	var/armed = FALSE
@@ -2140,6 +2181,19 @@ SUBSYSTEM_DEF(minimaps)
 	var/c_x = clamp(CEILING(x, 1), 1, world.maxx)
 	var/c_y = clamp(CEILING(y, 1), 1, world.maxy)
 
+	if(isxeno(source))
+		var/mob/living/carbon/xenomorph/watcher = source
+		if(!watcher.check_state(TRUE))
+			return
+		var/list/xeno_result = find_nearest_watchable_xeno(watcher, zlevel, c_x, c_y)
+		var/mob/living/carbon/xenomorph/target_xeno = xeno_result[1]
+		if(!target_xeno)
+			return
+		watcher.overwatch(target_xeno)
+		target_xeno.hud_set_queen_overwatch()
+		disarm(source)
+		return
+
 	var/obj/structure/machinery/computer/overwatch/console = istype(owner?.parent, /obj/structure/machinery/computer/overwatch) ? owner.parent : null
 	if(!console)
 		return
@@ -2171,7 +2225,7 @@ SUBSYSTEM_DEF(minimaps)
 	set name = ".mouse-pan"
 
 	var/atom/movable/screen/plane_master/minimap/plane_master = mob?.hud_used.plane_masters["[TACMAP_PLANE]"]
-	if(!plane_master || plane_master.locked)
+	if(!plane_master || plane_master.locked || !isnull(plane_master.saved_zoom_scale))
 		return
 
 	mouse_y = size_y - mouse_y
@@ -2213,6 +2267,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(!plane_master)
 		return TRUE
 	plane_master.locked = !plane_master.locked
+	linked_map.mouse_opacity = plane_master.locked ? MOUSE_OPACITY_TRANSPARENT : MOUSE_OPACITY_OPAQUE // locked = click-through to the world, only for this player's own map object
 	color = plane_master.locked ? COLOR_RED : null
 	to_chat(user, SPAN_NOTICE("Tacmap [plane_master.locked ? "locked" : "unlocked"]."))
 	return TRUE
@@ -2400,11 +2455,13 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/up/simple/clicked(mob/user, list/modifiers)
 	if(!SSmapping.same_z_map(linked_map.target, linked_map.target+1))
 		return
-	var/atom/movable/screen/minimap/new_linked_map = SSminimaps.fetch_minimap_object(linked_map.target+1, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+	var/atom/movable/screen/minimap/new_linked_map = SSminimaps.fetch_minimap_object(linked_map.target+1, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, for_client=user.client)
 	update_shown_map(user, new_linked_map)
 
 
 /atom/movable/screen/minimap_tool/proc/update_shown_map(mob/user, atom/movable/screen/minimap/new_linked_map)
+	var/atom/movable/screen/plane_master/minimap/plane_master = user.hud_used.plane_masters["[TACMAP_PLANE]"]
+	new_linked_map.mouse_opacity = plane_master?.locked ? MOUSE_OPACITY_TRANSPARENT : MOUSE_OPACITY_OPAQUE // keep the lock state when switching levels
 	user.client.remove_from_screen(linked_map)
 	user.client.add_to_screen(new_linked_map)
 	for(var/datum/action/minimap/user_map in user.actions)
@@ -2415,7 +2472,7 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/down/simple/clicked(mob/user, list/modifiers)
 	if(!SSmapping.same_z_map(linked_map.target, linked_map.target-1))
 		return
-	var/atom/movable/screen/minimap/new_linked_map = SSminimaps.fetch_minimap_object(linked_map.target-1, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+	var/atom/movable/screen/minimap/new_linked_map = SSminimaps.fetch_minimap_object(linked_map.target-1, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, for_client=user.client)
 	update_shown_map(user, new_linked_map)
 
 /atom/movable/screen/minimap_tool/change_map
@@ -2427,20 +2484,20 @@ SUBSYSTEM_DEF(minimaps)
 	var/atom/movable/screen/minimap/new_linked_map
 	if(SSmapping.level_has_any_trait(linked_map.target, list(ZTRAIT_GROUND)))
 		if(SSmapping.level_has_any_trait(user.z, list(ZTRAIT_MARINE_MAIN_SHIP)))
-			new_linked_map = SSminimaps.fetch_minimap_object(user.z, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+			new_linked_map = SSminimaps.fetch_minimap_object(user.z, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, for_client=user.client)
 			for(var/datum/action/minimap/map in user.actions)
 				user.client.add_to_screen(map.locator)
 		else
-			new_linked_map = SSminimaps.fetch_minimap_object(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)[1], linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+			new_linked_map = SSminimaps.fetch_minimap_object(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)[1], linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, for_client=user.client)
 			for(var/datum/action/minimap/map in user.actions)
 				user.client.remove_from_screen(map.locator)
 	else
 		if(SSmapping.level_has_any_trait(user.z, list(ZTRAIT_GROUND)))
-			new_linked_map = SSminimaps.fetch_minimap_object(user.z, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+			new_linked_map = SSminimaps.fetch_minimap_object(user.z, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, for_client=user.client)
 			for(var/datum/action/minimap/map in user.actions)
 				user.client.add_to_screen(map.locator)
 		else
-			new_linked_map = SSminimaps.fetch_minimap_object(SSmapping.levels_by_trait(ZTRAIT_GROUND)[1] , linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+			new_linked_map = SSminimaps.fetch_minimap_object(SSmapping.levels_by_trait(ZTRAIT_GROUND)[1] , linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, for_client=user.client)
 			for(var/datum/action/minimap/map in user.actions)
 				user.client.remove_from_screen(map.locator)
 

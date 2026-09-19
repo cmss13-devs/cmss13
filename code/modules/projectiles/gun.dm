@@ -2686,3 +2686,20 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 // CO GUN STUFF END
+
+/// For ejecting the spent casing from corresponding guns
+/obj/item/weapon/gun/proc/eject_casing()
+	if(!length(spent_casings))
+		return
+
+	var/turf/ejection_turf = get_turf(src)
+	if(!ejection_turf)
+		return
+
+	for(var/casing_type in spent_casings)
+		var/obj/effect/decal/cleanable/ammo_casing/casing = new casing_type(ejection_turf)
+
+		var/eject_noise = casing.ejection_sfx
+		playsound(loc, eject_noise, 25, TRUE)
+
+	spent_casings.Cut()

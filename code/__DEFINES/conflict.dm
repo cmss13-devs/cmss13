@@ -90,9 +90,9 @@
 /// If the gun can perform a warning shot
 #define GUN_CAN_WARNING_SHOT (1<<20)
 /// If it can automatically eject shell casings
-#define GUN_AUTO_EJECT_CASINGS (1<<18)
+#define GUN_AUTO_EJECT_CASINGS (1<<21)
 /// If it needs to manually eject shell casings (like bolt actions)
-#define GUN_MANUAL_EJECT_CASINGS (1<<19)
+#define GUN_MANUAL_EJECT_CASINGS (1<<22)
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
 
 #define USES_STREAKS (1<<0)

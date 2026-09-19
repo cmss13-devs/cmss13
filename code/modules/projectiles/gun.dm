@@ -230,6 +230,7 @@
 	var/list/gun_firemode_list = list()
 	///How many bullets the gun fired while bursting/auto firing
 	var/shots_fired = 0
+
 	/// Currently selected target to fire at. Set with set_target()
 	VAR_PRIVATE/atom/target
 	/// Current user (holding) of the gun. Set with set_gun_user()
@@ -242,8 +243,9 @@
 	var/projectile_type = /obj/projectile
 	/// The multiplier for how much slower this should fire in automatic mode. 1 is normal, 1.2 is 20% slower, 2 is 100% slower, etc. Protected due to it never needing to be edited.
 	VAR_PROTECTED/autofire_slow_mult = 1
+
 	/// How many empty shell casings are in the gun?
-	var/list/spent_casings = list()
+	var/list/spent_casings
 
 	/// Whether the weapon has expended it's "second wind" and lost its acid protection.
 	var/has_second_wind = TRUE
@@ -2508,6 +2510,19 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		balloon_alert_to_viewers("<b>*click*</b>")
 		return
 
+	var/datum/ammo/fired_ammo = projectile_to_fire.ammo
+
+	// same snowflakes at handle_fire
+	if(flags_gun_features & (GUN_INTERNAL_MAG|GUN_MANUAL_EJECT_CASINGS))
+		if(fired_ammo.shell_casing)
+			spent_casings += fired_ammo.shell_casing
+	else if(flags_gun_features & GUN_AUTO_EJECT_CASINGS)
+		if(fired_ammo.shell_casing)
+			spent_casings += fired_ammo.shell_casing
+
+	if(flags_gun_features & GUN_AUTO_EJECT_CASINGS)
+		eject_casing()
+
 	QDEL_NULL(projectile_to_fire)
 	reload_into_chamber(user)
 
@@ -2625,9 +2640,25 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	// so we actually expend a bullet this time, whaaaat
 	projectile_to_fire.play_hit_effect(execution_target)
+
+	var/datum/ammo/fired_ammo = projectile_to_fire.ammo
+
+	// same snowflakes at handle_fire
+	if(flags_gun_features & (GUN_INTERNAL_MAG|GUN_MANUAL_EJECT_CASINGS))
+		if(fired_ammo.shell_casing)
+			spent_casings += fired_ammo.shell_casing
+	else if(flags_gun_features & GUN_AUTO_EJECT_CASINGS)
+		if(fired_ammo.shell_casing)
+			spent_casings += fired_ammo.shell_casing
+
+	if(flags_gun_features & GUN_AUTO_EJECT_CASINGS)
+		eject_casing()
+
 	QDEL_NULL(projectile_to_fire)
+
 	if(!active_attachable)
 		in_chamber = null
+
 	reload_into_chamber(user)
 
 /datum/component/gun_hush // yes im lazy to make another file in the components folder

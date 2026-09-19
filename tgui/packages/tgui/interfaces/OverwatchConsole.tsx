@@ -102,7 +102,9 @@ const HomePanel = (props) => {
     delta: 'blue',
     echo: 'green',
     foxtrot: 'brown',
-    intel: 'green',
+    intel: 'dark-green',
+    kilo: 'teal',
+    oscar: 'olive',
   };
 
   return (

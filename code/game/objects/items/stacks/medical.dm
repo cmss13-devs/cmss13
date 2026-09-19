@@ -219,7 +219,7 @@
 	stack_id = "upgraded trauma kit"
 
 	icon_state = "traumakit_upgraded"
-	desc = "State of the art medical technology. The inclusion of disease-isolated macrophage cultures make these kits three times as effective as standard-issue surgical adhesive. However, due to production costs, they remain logistically impossible to replenish. Use sparingly on only the most critical wounds."
+	desc = "State of the art medical technology. The inclusion of disease-isolated macrophage cultures make these kits three times as effective as standard-issue surgical adhesive - making them incredibly effective even in untrained hands. However, due to production costs, they remain logistically impossible to replenish. Use sparingly on only the most critical wounds."
 
 	max_amount = 10
 	amount = 10
@@ -296,7 +296,7 @@
 	singular_name = "MA Burn Package"
 	stack_id = "upgraded trauma kit"
 	icon_state = "traumakit_upgraded"
-	desc = "State of the art medical technology. The inclusion of disease-isolated macrophage cultures make these kits three times as effective as standard-issue abiotic ointment. However, due to production costs, they remain logistically impossible to replenish. Use sparingly on only the most critical wounds."
+	desc = "State of the art medical technology. The inclusion of disease-isolated macrophage cultures make these kits three times as effective as standard-issue abiotic ointment  - making them incredibly effective even in untrained hands. However, due to production costs, they remain logistically impossible to replenish. Use sparingly on only the most critical wounds."
 
 	max_amount = 10
 	amount = 10

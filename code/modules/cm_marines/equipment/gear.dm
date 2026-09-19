@@ -12,7 +12,7 @@
 //MARINE SNIPER TARPS
 
 /obj/item/bodybag/tarp
-	name = "\improper V1 thermal-dampening tarp (folded)"
+	name = "\improper M1 thermal-dampening tarp (folded)"
 	desc = "A tarp carried by USCM Snipers. When laying underneath the tarp, the sniper is almost indistinguishable from the landscape if utilized correctly. The tarp contains a thermal-dampening weave to hide the wearer's heat signatures, optical camouflage, and smell dampening."
 	icon = 'icons/obj/bodybag.dmi'
 	icon_state = "jungletarp_folded"
@@ -26,22 +26,22 @@
 	unfolded_path = /obj/structure/closet/bodybag/tarp/snow
 
 /obj/item/bodybag/tarp/reactive
-	name = "\improper V2 reactive thermal tarp (folded)"
+	name = "\improper M1A2 reactive thermal tarp (folded)"
 	desc = "A tarp carried by some USCM infantry. This updated tarp is capable of blending into its environment nearly flawlessly, given that it can properly collate data once deployed. The tarp is able to hide the wearer's heat signature."
 	icon = 'icons/obj/bodybag.dmi'
 	icon_state = "reactivetarp_folded"
 	unfolded_path = /obj/structure/closet/bodybag/tarp/reactive
 
 /obj/item/bodybag/tarp/reactive/scout
-	name = "\improper V3 reactive thermal tarp (folded)"
-	desc = "A more compact and improved version of the V2 thermal tarp, intended primarily for the transportation of deceased or wounded marines. It has improved cloaking technology than earlier models, allowing it to cloak to a greater degree and faster, but can only be used with special training."
+	name = "\improper M1A3 reactive thermal tarp (folded)"
+	desc = "A more compact and improved version of the M1A2 thermal tarp, intended primarily for the transportation of deceased or wounded marines. It has improved cloaking technology than earlier models, allowing it to cloak to a greater degree and faster, but can only be used with special training."
 	icon_state = "scouttarp_folded"
 	w_class = SIZE_SMALL
 	unfolded_path = /obj/structure/closet/bodybag/tarp/reactive/scout
 
 /obj/structure/closet/bodybag/tarp
-	name = "\improper V1 thermal-dampening tarp"
-	bag_name = "\improper V1 thermal-dampening tarp"
+	name = "\improper M1 thermal-dampening tarp"
+	bag_name = "\improper M1 thermal-dampening tarp"
 	desc = "A tarp carried by USCM Snipers. When laying underneath the tarp, the sniper is almost indistinguishable from the landscape if utilized correctly. The tarp contains a thermal-dampening weave to hide the wearer's heat signatures, optical camouflage, and smell dampening."
 	icon = 'icons/obj/bodybag.dmi'
 	icon_state = "jungletarp_closed"
@@ -68,22 +68,24 @@
 	item_path = /obj/item/bodybag/tarp/snow
 
 /obj/structure/closet/bodybag/tarp/reactive
-	name = "\improper V2 reactive thermal tarp"
-	bag_name = "\improper V2 reactive thermal tarp"
+	name = "\improper M1A2 reactive thermal tarp"
+	bag_name = "\improper M1A2 reactive thermal tarp"
 	desc = "A tarp carried by some USCM infantry. This updated tarp is capable of blending into its environment nearly flawlessly, given that it can properly collate data once deployed. The tarp is able to hide the wearer's heat signature."
 	icon_state = "reactivetarp_closed"
 	icon_closed = "reactivetarp_closed"
 	icon_opened = "reactivetarp_open"
-	open_sound = 'sound/effects/vegetation_walk_1.ogg'
-	close_sound = 'sound/effects/vegetation_walk_2.ogg'
+	open_sound = 'sound/items/zip.ogg'
+	close_sound = 'sound/items/zip.ogg'
+	cloak_time = 10
+	closed_alpha = 50
 
 	item_path = /obj/item/bodybag/tarp/reactive
 	anchored = FALSE
 
 /obj/structure/closet/bodybag/tarp/reactive/scout
-	name = "\improper V3 reactive thermal tarp (folded)"
-	bag_name = "\improper V3 reactive thermal tarp"
-	desc = "A more compact and improved version of the V2 thermal tarp, intended primarily for the transportation of deceased or wounded marines. It has improved cloaking technology than earlier models, allowing it to cloak to a greater degree and faster, but can only be used with special training.\nUse this item in-hand or click somewhere on the floor adjacent to you to deploy it, then click it again to close it, which automatically cloaks the bag. Click again to open and uncloak it. If you lose it, right click to check tile contents around you to find it."
+	name = "\improper M1A3 reactive thermal tarp (folded)"
+	bag_name = "\improper M1A3 reactive thermal tarp"
+	desc = "A more compact and improved version of the M1A2 thermal tarp, intended primarily for the transportation of deceased or wounded marines. It has improved cloaking technology than earlier models, allowing it to cloak to a greater degree and faster, but can only be used with special training.\nUse this item in-hand or click somewhere on the floor adjacent to you to deploy it, then click it again to close it, which automatically cloaks the bag. Click again to open and uncloak it. If you lose it, right click to check tile contents around you to find it."
 	icon_state = "scouttarp_closed"
 	icon_closed = "scouttarp_closed"
 	icon_opened = "scouttarp_open"

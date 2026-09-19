@@ -133,8 +133,8 @@ text("<A href='byond://?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes
 			to_chat(usr, SPAN_NOTICE("You press the weird button."))
 			src.updateUsrDialog()
 
-/obj/structure/machinery/bot/cleanbot/attackby(obj/item/W, mob/user as mob)
-	if (istype(W, /obj/item/card/id))
+/obj/structure/machinery/bot/cleanbot/attackby(obj/item/card, mob/user as mob)
+	if (istype(card, /obj/item/card/id))
 		if(src.allowed(usr) && !open)
 			src.locked = !src.locked
 			to_chat(user, SPAN_NOTICE("You [ src.locked ? "lock" : "unlock"] [src]'s behaviour controls."))
@@ -142,7 +142,7 @@ text("<A href='byond://?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes
 			if(open)
 				to_chat(user, SPAN_WARNING("Please close the access panel before locking it."))
 			else
-				to_chat(user, SPAN_NOTICE("This [src] doesn't seem to respect your authority."))
+				to_chat(user, SPAN_NOTICE("[src] doesn't seem to respect your authority."))
 	else
 		return ..()
 
@@ -284,7 +284,7 @@ text("<A href='byond://?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes
 /obj/structure/machinery/bot/cleanbot/proc/clean(obj/effect/decal/cleanable/target)
 	anchored = TRUE
 	icon_state = "cleanbot-c"
-	visible_message(SPAN_DANGER("[src] begins to clean up the [target]"))
+	visible_message(SPAN_DANGER("[src] begins to clean up [target]."))
 	cleaning = 1
 	var/cleantime = 50
 	if(istype(target,/obj/effect/decal/cleanable/dirt)) // Clean Dirt much faster

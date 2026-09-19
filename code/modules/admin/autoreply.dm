@@ -151,7 +151,7 @@ ON_CONFIG_LOAD(/datum/autoreply/mentor/macros)
 	title = "L: Ability Activation"
 	message = "To activate an ability, ensure that it is selected on the ability bar (Top left of the game screen), then depending on the ability it may be activated immediately on clicking the button, open a UI menu, or may only activate on click of the middle mouse button. \
 The ability bar can be entirely hidden by using the leftwards arrow at the end of the ability bar (and reshown with the same arrow button). \
-As a xenomorph only, you can change your ability activation button from middle click by changing it in \"Edit Characters\" (available from the escape menu or the preferences tab on the top of the chat window) then under the sub-menu Settings and section Game Settings click \"Button To Activate Xenomorph Abilities\"."
+You can change your ability activation button from middle click by changing it in \"Edit Characters\" (available from the escape menu or the preferences tab on the top of the chat window) then under the sub-menu Settings and section Game Settings click \"Button To Activate Xenomorph Abilities\"."
 
 /datum/autoreply/mentor/synthkey
 	title = "H: Synthetic Reset Key"

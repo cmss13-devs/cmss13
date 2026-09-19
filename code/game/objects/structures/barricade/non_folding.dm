@@ -133,7 +133,11 @@
 					update_icon()
 					return
 				else
-					var/static/list/cade_types = list(BARRICADE_UPGRADE_ANTIFF = image(icon = 'icons/obj/structures/barricades.dmi', icon_state = "explosive_obj"), BARRICADE_UPGRADE_BRUTE = image(icon = 'icons/obj/structures/barricades.dmi', icon_state = "brute_obj"), BARRICADE_UPGRADE_BURN = image(icon = 'icons/obj/structures/barricades.dmi', icon_state = "burn_obj"))
+					var/static/list/cade_types = list(
+						BARRICADE_UPGRADE_ANTIFF = image(icon = 'icons/obj/structures/barricades.dmi', icon_state = "explosive_obj"),
+						BARRICADE_UPGRADE_BRUTE = image(icon = 'icons/obj/structures/barricades.dmi', icon_state = "brute_obj"),
+						BARRICADE_UPGRADE_BURN = image(icon = 'icons/obj/structures/barricades.dmi', icon_state = "burn_obj"),
+						)
 					var/choice = show_radial_menu(user, src, cade_types, require_near = TRUE)
 					if(!choice)
 						return

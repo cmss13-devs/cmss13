@@ -8,7 +8,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
 	)
 	icon_state = null
 	item_state = null
@@ -48,7 +48,8 @@
 		/obj/structure/machinery/reagent_analyzer,
 		/obj/structure/machinery/centrifuge,
 		/obj/structure/machinery/autodispenser,
-		/obj/structure/machinery/constructable_frame)
+		/obj/structure/machinery/constructable_frame,
+		)
 
 /obj/item/reagent_container/glass/Initialize()
 	. = ..()
@@ -595,7 +596,7 @@
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tanks_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tanks_righthand.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi',
 	)
 	icon_state = "canister_hydrogen"
 	item_state = "canister_hydrogen"

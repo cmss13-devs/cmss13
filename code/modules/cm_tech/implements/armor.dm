@@ -20,7 +20,7 @@
 	var/list/health_states = list(
 		0,
 		50,
-		100
+		100,
 	)
 
 	var/scrappable = TRUE

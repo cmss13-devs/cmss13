@@ -91,7 +91,7 @@
 	name = "cloth"
 	icon_state = "sterile2"
 	item_state_slots = list(
-		WEAR_FACE = "sterile"
+		WEAR_FACE = "sterile",
 	)
 
 	flags_inventory = CANTSTRIP

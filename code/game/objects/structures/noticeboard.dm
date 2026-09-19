@@ -63,7 +63,7 @@
 	for(var/obj/item/content in contents)
 		var/list/content_data = list(
 			name = content.name,
-			ref = REF(content)
+			ref = REF(content),
 		)
 		data["items"] += list(content_data)
 	return data

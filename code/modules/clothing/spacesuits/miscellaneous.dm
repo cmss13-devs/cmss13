@@ -103,7 +103,7 @@
 	icon_state = "souto_man"
 	icon = 'icons/obj/items/clothing/hats/hats.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi',
 	)
 	armor_melee = CLOTHING_ARMOR_HARDCORE
 	armor_bullet = CLOTHING_ARMOR_HARDCORE

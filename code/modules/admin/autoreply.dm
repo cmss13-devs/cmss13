@@ -147,6 +147,12 @@ ON_CONFIG_LOAD(/datum/autoreply/mentor/xeno)
 ON_CONFIG_LOAD(/datum/autoreply/mentor/macros)
 	message = "This <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_MACROS]'>guide</a> explains how to set up macros including examples of most common and useful ones."
 
+/datum/autoreply/mentor/ability_activation
+	title = "L: Ability Activation"
+	message = "To activate an ability, ensure that it is selected on the ability bar (Top left of the game screen), then depending on the abilitty it may be activated immediately on clicking the button, open a UI menu, or may only activate on click of the middle mouse button.\
+The ability bar can be entirely hidden by using the leftwards arrow at the end of the ability bar (and reshown with the same arrow button).\
+As a xenomorph only, you can change your ability activation button from middle click by changing it in \"Edit Characters\" (available from the escape menu or the preferences tab on the top of the chat window) then under the sub-menu Settings and section Game Setttings click \"Button To Activate Xenomorph Abilities\"."
+
 /datum/autoreply/mentor/synthkey
 	title = "H: Synthetic Reset Key"
 	message = "Synthetics cannot be restarted with a normal defibrilator and instead require a unique item called the Synthetic Reset Key. This functions the same as a defibrilator but only for synthetics. It can be used by anyone with engineering training and acquired from various squad role vendors. Most synthetics will carry one at all times."
@@ -186,4 +192,4 @@ To apply CPR, on help intent click on a dead human and wait 3 seconds to apply. 
 
 /datum/autoreply/mentor/directional_assist
 	title = "X: Directional assist"
-	message = "Directional assist allows you to slash any target in the direction of your mouse rather than clicking on sprites. To enable, go to the edit characters menu (available from the escape menu or the preferences tab on the top of the chat window), then under the \"Gameplay Toggles\" section, and click \"Toggle Directional Assist\"."
+	message = "Directional assist allows you to slash any target in the direction of your mouse rather than clicking on sprites. To enable, go to the edit characters menu (available from the escape menu or the preferences tab on the top of the chat window), then under Settings sub-menu and the Gameplay Toggles section, and click \"Toggle Directional Assist\"."

@@ -342,6 +342,7 @@
 		playsound(user, unload_sound, 25, 1)
 		russian_roulette = FALSE
 		update_icon()
+		eject_casing()
 
 /obj/item/weapon/gun/revolver/proc/toggle_cylinder(mob/user)
 	if(!current_mag)

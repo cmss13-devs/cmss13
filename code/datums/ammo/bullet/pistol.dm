@@ -13,7 +13,7 @@
 	damage = 40
 	penetration= ARMOR_PENETRATION_TIER_2
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
-	shell_casing = /obj/effect/decal/cleanable/ammo_casing
+	shell_casing = /obj/effect/decal/cleanable/ammo_casing/bullet
 
 /datum/ammo/bullet/pistol/setup_faction_clash_values()
 	. = ..()

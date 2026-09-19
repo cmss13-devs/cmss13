@@ -245,7 +245,7 @@
 	VAR_PROTECTED/autofire_slow_mult = 1
 
 	/// How many empty shell casings are in the gun?
-	var/list/spent_casings
+	var/list/spent_casings = list()
 
 	/// Whether the weapon has expended it's "second wind" and lost its acid protection.
 	var/has_second_wind = TRUE

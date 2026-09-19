@@ -12,7 +12,7 @@
 	accuracy = HIT_ACCURACY_TIER_1
 	accurate_range = 7
 	handful_type = /obj/item/ammo_magazine/handful/revolver
-	shell_casing = /obj/effect/decal/cleanable/ammo_casing
+	shell_casing = /obj/effect/decal/cleanable/ammo_casing/bullet
 
 /datum/ammo/bullet/revolver/marksman
 	name = "marksman revolver bullet"

@@ -287,5 +287,7 @@
 	var/mob/hologram/look_up/observed_hologram = new(above, src)
 	observed_hologram.invisibility = null
 	observed_hologram.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	observed_hologram.alpha = 127
+	observed_hologram.lighting_alpha = 127
 
 	observed_atom = observed_hologram

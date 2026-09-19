@@ -366,6 +366,7 @@
 	S["skip_playtime_ranks"] >> skip_playtime_ranks
 	S["show_queen_name"] >> show_queen_name
 	S["show_minimap_ceiling_protection"] >> show_minimap_ceiling_protection
+	S["minimap_opacity"] >> minimap_opacity
 	S["xeno_vision_level_pref"] >> xeno_vision_level_pref
 	S["xeno_defensive_grab_pref"] >> xeno_defensive_grab_pref
 	S["view_controller"] >> View_MC
@@ -521,6 +522,7 @@
 	skip_playtime_ranks = sanitize_integer(skip_playtime_ranks, 0, 1, 1)
 	show_queen_name = sanitize_integer(show_queen_name, FALSE, TRUE, FALSE)
 	show_minimap_ceiling_protection = sanitize_integer(show_minimap_ceiling_protection, FALSE, TRUE, FALSE)
+	minimap_opacity = sanitize_integer(minimap_opacity, 20, 100, 100)
 	xeno_vision_level_pref = sanitize_inlist(xeno_vision_level_pref, list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_HIGH_NVG, XENO_VISION_LEVEL_FULL_NVG), XENO_VISION_LEVEL_MID_NVG)
 	xeno_defensive_grab_pref = sanitize_islist(xeno_defensive_grab_pref, alist())
 	hear_vox = sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
@@ -659,6 +661,7 @@
 	S["skip_playtime_ranks"] << skip_playtime_ranks
 	S["show_queen_name"] << show_queen_name
 	S["show_minimap_ceiling_protection"] << show_minimap_ceiling_protection
+	S["minimap_opacity"] << minimap_opacity
 
 	S["view_controller"] << View_MC
 	S["observer_huds"] << observer_huds

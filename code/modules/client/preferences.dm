@@ -107,6 +107,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/playtime_perks = TRUE
 	var/skip_playtime_ranks = FALSE
 	var/show_minimap_ceiling_protection = FALSE
+	/// how opaque minimaps/tacmaps are drawn for this player, in percent (20 = very see-through, 100 = fully opaque)
+	var/minimap_opacity = 100
 
 	//Synthetic specific preferences
 	var/synthetic_name = "Undefined"

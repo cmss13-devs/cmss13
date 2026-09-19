@@ -514,7 +514,7 @@
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/tyrargo/indoors/admin/upper)
 "AB" = (
-/obj/item/reagent_container/hypospray/autoinjector/bicaridine/random_amount{
+/obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine/random_amount{
 	pixel_y = 6;
 	pixel_x = 1
 	},

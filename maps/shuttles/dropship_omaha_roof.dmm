@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"b" = (
+/obj/faux_turf/open/dropship/roof/canopy_edge/omaha,
+/turf/template_noop,
+/area/template_noop)
 "v" = (
 /obj/faux_turf/open/dropship/roof/edge/omaha,
 /turf/template_noop,
@@ -174,8 +178,8 @@ v
 "}
 (7,1,1) = {"
 F
-I
-I
+b
+b
 I
 I
 P
@@ -200,7 +204,7 @@ v
 "}
 (8,1,1) = {"
 F
-I
+b
 I
 I
 I
@@ -226,7 +230,7 @@ v
 "}
 (9,1,1) = {"
 F
-I
+b
 I
 I
 I
@@ -252,7 +256,7 @@ F
 "}
 (10,1,1) = {"
 F
-I
+b
 I
 I
 I
@@ -278,8 +282,8 @@ v
 "}
 (11,1,1) = {"
 F
-I
-I
+b
+b
 I
 I
 P

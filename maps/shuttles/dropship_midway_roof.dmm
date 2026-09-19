@@ -3,6 +3,10 @@
 /obj/faux_turf/open/dropship/roof/empty_space/midway,
 /turf/template_noop,
 /area/template_noop)
+"u" = (
+/obj/faux_turf/open/dropship/roof/canopy_edge/midway,
+/turf/template_noop,
+/area/template_noop)
 "P" = (
 /obj/faux_turf/open/dropship/roof/canopy/midway,
 /turf/template_noop,
@@ -174,8 +178,8 @@ T
 "}
 (7,1,1) = {"
 a
-P
-P
+u
+u
 P
 P
 X
@@ -200,7 +204,7 @@ T
 "}
 (8,1,1) = {"
 a
-P
+u
 P
 P
 P
@@ -226,7 +230,7 @@ T
 "}
 (9,1,1) = {"
 a
-P
+u
 P
 P
 P
@@ -252,7 +256,7 @@ a
 "}
 (10,1,1) = {"
 a
-P
+u
 P
 P
 P
@@ -278,8 +282,8 @@ T
 "}
 (11,1,1) = {"
 a
-P
-P
+u
+u
 P
 P
 X

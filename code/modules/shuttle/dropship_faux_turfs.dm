@@ -34,7 +34,6 @@ GLOBAL_LIST_EMPTY(midway_roof_fauxes)
 
 /obj/faux_turf/open/dropship/roof/solid/omaha
 	icon = 'icons/turf/omaha/roof_split.dmi'
-	icon_state = "8,3"
 
 /obj/faux_turf/open/dropship/roof/solid/omaha/Initialize()
 	. = ..()
@@ -42,7 +41,6 @@ GLOBAL_LIST_EMPTY(midway_roof_fauxes)
 
 /obj/faux_turf/open/dropship/roof/solid/midway
 	icon = 'icons/turf/midway/roof_split.dmi'
-	icon_state = "8,3"
 
 /obj/faux_turf/open/dropship/roof/solid/midway/Initialize()
 	. = ..()
@@ -52,14 +50,12 @@ GLOBAL_LIST_EMPTY(midway_roof_fauxes)
 	icon_state = "8,1"
 
 /obj/faux_turf/open/dropship/roof/edge/omaha
-	icon_state = "8,1"
 
 /obj/faux_turf/open/dropship/roof/edge/omaha/Initialize()
 	. = ..()
 	GLOB.omaha_roof_fauxes += src
 
 /obj/faux_turf/open/dropship/roof/edge/midway
-	icon_state = "8,1"
 
 /obj/faux_turf/open/dropship/roof/edge/midway/Initialize()
 	. = ..()
@@ -69,16 +65,29 @@ GLOBAL_LIST_EMPTY(midway_roof_fauxes)
 	icon_state = "8,22"
 
 /obj/faux_turf/open/dropship/roof/canopy/omaha
-	icon_state = "8,22"
 
 /obj/faux_turf/open/dropship/roof/canopy/omaha/Initialize()
 	. = ..()
 	GLOB.omaha_roof_fauxes += src
 
 /obj/faux_turf/open/dropship/roof/canopy/midway
-	icon_state = "8,22"
 
 /obj/faux_turf/open/dropship/roof/canopy/midway/Initialize()
+	. = ..()
+	GLOB.midway_roof_fauxes += src
+
+/obj/faux_turf/open/dropship/roof/canopy_edge
+	icon_state = "8,19"
+
+/obj/faux_turf/open/dropship/roof/canopy_edge/omaha
+
+/obj/faux_turf/open/dropship/roof/canopy_edge/omaha/Initialize()
+	. = ..()
+	GLOB.omaha_roof_fauxes += src
+
+/obj/faux_turf/open/dropship/roof/canopy_edge/midway
+
+/obj/faux_turf/open/dropship/roof/canopy_edge/midway/Initialize()
 	. = ..()
 	GLOB.midway_roof_fauxes += src
 

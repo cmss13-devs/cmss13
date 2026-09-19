@@ -343,13 +343,11 @@
 /obj/deployer/shuttle/dropship/roof_loader/Initialize()
 	. = ..()
 	set_template(SSmapping.shuttle_roof_templates[template_preset])
-	debug_chat("template name is [roof_template.name]")
 
 /obj/deployer/shuttle/dropship/roof_loader/proc/set_template(datum/map_template/new_template)
 	if(!istype(new_template))
 		return
 	roof_template = new_template
-	debug_chat("template name is [roof_template.name]")
 
 /obj/deployer/shuttle/dropship/roof_loader/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()
@@ -364,22 +362,22 @@
 
 /obj/deployer/shuttle/dropship/roof_loader/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
 	.=..()
-	if(is_ground_level(src.z) || linked_dropship.is_hijacked)
-		var/turf/target_turf = SSmapping.get_turf_above(src.loc)
-		if(target_turf)
-			if(deployed_already)
-				move_into_position(target_turf)
-				place_walkable()
-				crush_shit()
-				update_visuals()
-			else
-				roof_template.load(target_turf, TRUE, FALSE)
-				setup_link()
-				update_fauxes_icons()
-				place_walkable()
-				crush_shit()
-				update_visuals()
-				deployed_already = TRUE
+//	if(is_ground_level(src.z) || linked_dropship.is_hijacked)
+	var/turf/target_turf = SSmapping.get_turf_above(src.loc)
+	if(target_turf)
+		if(deployed_already)
+			move_into_position(target_turf)
+			place_walkable()
+			crush_shit()
+			update_visuals()
+		else
+			roof_template.load(target_turf, TRUE, FALSE)
+			setup_link()
+			update_fauxes_icons()
+			place_walkable()
+			crush_shit()
+			update_visuals()
+			deployed_already = TRUE
 
 /obj/deployer/shuttle/dropship/roof_loader/proc/setup_link()
 	var/turf/turf_above = SSmapping.get_turf_above(src.loc)
@@ -407,7 +405,9 @@
 	var/obj/faux_turf/open/dropship/roof/solid/snake
 	var/obj/faux_turf/open/dropship/roof/edge/runner
 	var/obj/faux_turf/open/dropship/roof/canopy/canopius
+	var/obj/faux_turf/open/dropship/roof/canopy_edge/swag
 	var/turf/turf_loc
+
 	for(snake in linked_fauxes)
 		turf_loc = snake.loc
 		turf_loc.place_on_top(item_to_deploy)
@@ -420,6 +420,16 @@
 	for(canopius in linked_fauxes)
 		turf_loc = canopius.loc
 		turf_loc.place_on_top(item_to_deploy2)
+	for(swag in linked_fauxes) // cuts the underlying turf icon and replaces the turf with a transparent one but adds what hasnt been cut so it fits snugly
+		turf_loc = swag.loc
+		var/icon/turf_icon = icon(turf_loc.icon, turf_loc.icon_state, turf_loc.dir)
+		var/icon/cutter = icon(swag.icon, swag.icon_state, swag.dir)
+		cutter.SetIntensity(0)
+		cutter.ChangeOpacity(256)
+		turf_icon.Blend(cutter, ICON_OVERLAY)
+		turf_icon.SwapColor(rgb(0, 0, 0, 255), rgb(0, 0, 0, 0))
+		turf_loc.place_on_top(item_to_deploy2)
+		turf_loc.overlays += turf_icon
 
 /obj/deployer/shuttle/dropship/roof_loader/proc/crush_shit()
 	var/obj/docking_port/moving_dock = src.linked_dropship

@@ -25,7 +25,7 @@
 	/// Has a buffer on each individual additional chemical that can be stored
 	var/list/additional_chemicals = list()
 	/// Additional chemical volume. This is per-chemical
-	var/additional_chemical_volume = 120
+	var/additional_chemical_volume = 350
 
 	unslashable = TRUE
 	unacidable = TRUE

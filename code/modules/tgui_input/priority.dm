@@ -46,11 +46,12 @@
  * * message - The message inside the window
  * * title - The title of the window
  * * list/items - The list of items to display
+ * * list/default_selections - Which items should start checked/ordered, in that order (optional, defaults to all of items)
  * * timeout - The timeout for the input (optional)
  * * theme - The ui theme to use for the TGUI window (optional).
  * * ui_state - The TGUI UI state that will be returned in ui_state(). Default: always_state
  */
-/proc/tgui_priority_input_async(mob/user, message, title = "Select", list/items, datum/callback/callback, timeout = 0, theme = null, ui_state = GLOB.always_state)
+/proc/tgui_priority_input_async(mob/user, message, title = "Select", list/items, list/default_selections, datum/callback/callback, timeout = 0, theme = null, ui_state = GLOB.always_state)
 	if (!user)
 		user = usr
 	if(!length(items))
@@ -65,7 +66,7 @@
 	if(isnull(user.client))
 		return null
 
-	var/datum/tgui_priority_input/async/input = new(user, message, title, items, callback, timeout, theme, ui_state)
+	var/datum/tgui_priority_input/async/input = new(user, message, title, items, default_selections, callback, timeout, theme, ui_state)
 	if(input.invalid)
 		qdel(input)
 		return
@@ -219,8 +220,8 @@
 	/// The callback to be invoked by the tgui_modal upon having a choice made.
 	var/datum/callback/callback
 
-/datum/tgui_priority_input/async/New(mob/user, message, title, list/items, callback, timeout, theme = null, ui_state)
-	..(user, message, title, items, callback, timeout, theme, ui_state)
+/datum/tgui_priority_input/async/New(mob/user, message, title, list/items, list/default_selections, callback, timeout, theme = null, ui_state)
+	..(user, message, title, items, default_selections, callback, timeout, theme, ui_state)
 	src.callback = callback
 
 /datum/tgui_priority_input/async/Destroy(force, ...)

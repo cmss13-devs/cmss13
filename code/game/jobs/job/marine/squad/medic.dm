@@ -15,14 +15,15 @@
 			target_squad.roles_cap[title] = medic_slot_formula(count * MARINE_TO_TOTAL_SPAWN_RATIO)
 
 /datum/job/marine/medic/get_total_positions(latejoin=0)
-	var/slots = medic_slot_formula(get_total_marines())
+	var/total_marines = get_total_marines()
+	var/slots = medic_slot_formula(total_marines)
 
 	if(slots <= total_positions_so_far)
 		slots = total_positions_so_far
 	else
 		total_positions_so_far = slots
 
-	return slots * 2 + calculate_extra_slots(latejoin, slots)
+	return slots * 2 + calculate_extra_slots(latejoin, slots, total_marines)
 
 /datum/job/marine/medic/generate_entry_conditions(mob/living/carbon/human/current_human)
 	. = ..()

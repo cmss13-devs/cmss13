@@ -11,11 +11,12 @@
 	. = ..()
 	spawning_human.important_radio_channels += JTAC_FREQ
 
-/datum/job/marine/tl/get_total_positions(latejoin=0)
+/datum/job/marine/tl/get_total_positions(latejoin)
 	var/extra_slots = 0
+	var/total_marines = get_total_marines()
 
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-		if(target_squad.pop_lock && target_squad.pop_lock < get_total_marines())
+		if(target_squad.pop_lock && target_squad.pop_lock < total_marines)
 			target_squad.roles_cap = target_squad.initial_roles_cap
 			extra_slots++
 

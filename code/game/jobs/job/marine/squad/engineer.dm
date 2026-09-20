@@ -15,14 +15,15 @@
 			target_squad.roles_cap[title] = engi_slot_formula(count * MARINE_TO_TOTAL_SPAWN_RATIO)
 
 /datum/job/marine/engineer/get_total_positions(latejoin=0)
-	var/slots = engi_slot_formula(get_total_marines())
+	var/total_marines = get_total_marines()
+	var/slots = engi_slot_formula(total_marines)
 
 	if(slots <= total_positions_so_far)
 		slots = total_positions_so_far
 	else
 		total_positions_so_far = slots
 
-	return slots * 2 + calculate_extra_slots(latejoin, slots)
+	return slots * 2 + calculate_extra_slots(latejoin, slots, total_marines)
 
 /datum/job/marine/engineer/whiskey
 	title = JOB_WO_SQUAD_ENGINEER

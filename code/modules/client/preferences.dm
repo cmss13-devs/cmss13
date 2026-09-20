@@ -208,8 +208,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/body_size = BODY_SIZE_AVERAGE // Body Size
 	var/body_type = BODY_TYPE_LEAN // Body Type
 	var/language = "None" //Secondary language
-	var/preferred_squad = list()
-	var/preferred_spec = list()
+	var/list/preferred_squad = list()
+	var/list/preferred_spec = list()
 	var/night_vision_preference = "Green"
 	var/list/nv_color_list = list(
 						"Green" = NV_COLOR_GREEN,
@@ -1694,25 +1694,21 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 						weyland_yutani_relation = new_relation
 
 				if("prefsquad")
-					var/list/default_selected
-					var/list/choices
-					if(preferred_squad && islist(preferred_squad) && length(preferred_squad))
-						var/list/existing_squad_prefs = preferred_squad
-						default_selected = existing_squad_prefs.Copy()
-						choices = existing_squad_prefs.Copy()
-
-						for(var/squad in list("Alpha", "Bravo", "Charlie", "Delta", "Oscar", "Kilo"))
-							if(!(squad in choices))
-								choices += squad
-					else
-						choices = list("Alpha", "Bravo", "Charlie", "Delta", "Oscar", "Kilo")
-					var/new_pref_squad = tgui_priority_input(user, "Choose your preferred squads in order of priority or none for 'No Preference'.", "Squad Preference", choices, default_selected)
+					var/list/choices = GLOB.squad_preference_options
+					if(islist(preferred_squad) && length(preferred_squad))
+						choices = preferred_squad.Copy()
+						choices |= GLOB.squad_preference_options // Slot in any missing
+					var/new_pref_squad = tgui_priority_input(user, "Choose your preferred squads in order of priority or none for 'No Preference'.", "Squad Preference", choices, preferred_squad)
 					if(isnull(new_pref_squad))
 						return // Canceled
 					preferred_squad = new_pref_squad
 
 				if("prefspec")
-					var/new_pref_spec = tgui_input_checkboxes(user, "Choose your preferred spec in order of priority or none for 'No Preference'.", "Specialist Preference", GLOB.specialist_set_name_dict, min_checked=0)
+					var/list/choices = GLOB.specialist_set_name_dict
+					if(islist(preferred_spec) && length(preferred_spec))
+						choices = preferred_spec.Copy()
+						choices |= GLOB.specialist_set_name_dict // Slot in any missing
+					var/new_pref_spec = tgui_priority_input(user, "Choose your preferred spec in order of priority or none for 'No Preference'.", "Specialist Preference", choices, preferred_spec)
 					if(isnull(new_pref_spec))
 						return // Canceled
 					preferred_spec = new_pref_spec

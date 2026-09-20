@@ -7,11 +7,12 @@
 	gear_preset = /datum/equipment_preset/uscm/leader
 	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>You are responsible for the men and women of your squad.</a> Make sure they are on task, working together, and communicating. You are also in charge of communicating with command and letting them know about the situation first hand. Keep out of harm's way."
 
-/datum/job/marine/leader/get_total_positions(latejoin=0)
+/datum/job/marine/leader/get_total_positions(latejoin)
 	var/extra_slots = 0
+	var/total_marines = get_total_marines()
 
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-		if(target_squad.pop_lock && target_squad.pop_lock < get_total_marines())
+		if(target_squad.pop_lock && target_squad.pop_lock < total_marines)
 			target_squad.roles_cap = target_squad.initial_roles_cap
 			extra_slots++
 	return extra_slots + spawn_positions

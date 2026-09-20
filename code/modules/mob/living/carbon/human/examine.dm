@@ -136,56 +136,18 @@
 			if(BODY_TYPE_RIPPED)
 				body_type_description = "muscular"
 
-		var/skipbody = wear_suit || (w_uniform && (w_uniform.undershirt || !(w_uniform.flags_jumpsuit & UNIFORM_JACKET_REMOVED)))
-		if(!skipface && !skipbody && body_size_description && body_type_description)
+		if(!skipface && !skipjumpsuit && body_size_description && body_type_description)
 			msg += "[t_He] [t_seem] to be [SPAN_BOLD(age_description)], with a build that appears [SPAN_BOLD(body_size_description)] and [SPAN_BOLD(body_type_description)].\n"
 		else if(!skipface)
 			msg += "[t_He] [t_seem] to be [SPAN_BOLD(age_description)].\n"
-		else if(!skipbody && body_size_description && body_type_description)
-			msg += "[capitalize(t_his)] build appears [SPAN_BOLD(body_size_description)] and [SPAN_BOLD(body_type_description)].\n"
-
-	//uniform
-	if(w_uniform && !skipjumpsuit)
-		msg += "[t_He] [t_is] [w_uniform.get_examine_location(src, user, WEAR_BODY, t_He, t_his, t_him, t_has, t_is)].\n"
+		else if(!skipjumpsuit && body_size_description && body_type_description)
+			msg += "[t_He] [t_is] currently hiding [t_his] face, but [t_his] build appears [SPAN_BOLD(body_size_description)] and [SPAN_BOLD(body_type_description)].\n"
+		else
+			msg += "[t_He] [t_is] currently hiding [t_his] face.\n"
 
 	//head
 	if(head)
 		msg += "[t_He] [t_is] wearing [head.get_examine_line(user)] [head.get_examine_location(src, user, WEAR_HEAD, t_He, t_his, t_him, t_has, t_is)].\n"
-
-	//suit/armor
-	if(wear_suit)
-		msg += "[t_He] [t_is] [wear_suit.get_examine_location(src, user, WEAR_JACKET, t_He, t_his, t_him, t_has, t_is)].\n"
-	//suit/armor storage
-	if(s_store && !skipsuitstorage)
-		msg += "[t_He] [t_is] carrying [s_store.get_examine_line(user)] [s_store.get_examine_location(src, user, WEAR_J_STORE, t_He, t_his, t_him, t_has, t_is)].\n"
-
-	//back
-	if(back)
-		msg += "[t_He] [t_has] [back.get_examine_line(user)] [back.get_examine_location(src, user, WEAR_BACK, t_He, t_his, t_him, t_has, t_is)].\n"
-
-	//left hand
-	if(l_hand)
-		msg += "[t_He] [t_is] holding [l_hand.get_examine_line(user)] [l_hand.get_examine_location(src, user, WEAR_L_HAND, t_He, t_his, t_him, t_has, t_is)].\n"
-
-	//right hand
-	if(r_hand)
-		msg += "[t_He] [t_is] holding [r_hand.get_examine_line(user)] [r_hand.get_examine_location(src, user, WEAR_R_HAND, t_He, t_his, t_him, t_has, t_is)].\n"
-
-	//gloves
-	if(gloves && !skipgloves)
-		msg += "[t_He] [t_has] [gloves.get_examine_line(user)] [gloves.get_examine_location(src, user, WEAR_HANDS, t_He, t_his, t_him, t_has, t_is)].\n"
-	else if(hands_blood_color)
-		msg += SPAN_WARNING("[t_He] [t_has] [(hands_blood_color != COLOR_OIL) ? "blood" : "oil"]-stained hands!\n")
-
-	//belt
-	if(belt)
-		msg += "[t_He] [t_has] [belt.get_examine_line(user)] [belt.get_examine_location(src, user, WEAR_WAIST, t_He, t_his, t_him, t_has, t_is)].\n"
-
-	//shoes
-	if(shoes && !skipshoes)
-		msg += "[t_He] [t_is] wearing [shoes.get_examine_line(user)] [shoes.get_examine_location(src, user, WEAR_FEET, t_He, t_his, t_him, t_has, t_is)].\n"
-	else if(feet_blood_color)
-		msg += SPAN_WARNING("[t_He] [t_has] [(feet_blood_color != COLOR_OIL) ? "blood" : "oil"]-stained feet!\n")
 
 	//mask
 	if(wear_mask && !skipmask)
@@ -202,9 +164,49 @@
 		if(wear_r_ear)
 			msg += "[t_He] [t_has] [wear_r_ear.get_examine_line(user)] [wear_r_ear.get_examine_location(src, user, WEAR_R_EAR, t_He, t_his, t_him, t_has, t_is)].\n"
 
+	//suit/armor
+	if(wear_suit)
+		msg += "[t_He] [t_is] [wear_suit.get_examine_location(src, user, WEAR_JACKET, t_He, t_his, t_him, t_has, t_is)].\n"
+
+	//suit/armor storage
+	if(s_store && !skipsuitstorage)
+		msg += "[t_He] [t_is] carrying [s_store.get_examine_line(user)] [s_store.get_examine_location(src, user, WEAR_J_STORE, t_He, t_his, t_him, t_has, t_is)].\n"
+
+	//uniform
+	if(w_uniform && !skipjumpsuit)
+		msg += "[t_He] [t_is] [w_uniform.get_examine_location(src, user, WEAR_BODY, t_He, t_his, t_him, t_has, t_is)].\n"
+
+	//back
+	if(back)
+		msg += "[t_He] [t_has] [back.get_examine_line(user)] [back.get_examine_location(src, user, WEAR_BACK, t_He, t_his, t_him, t_has, t_is)].\n"
+
 	//ID
 	if(wear_id)
 		msg += "[t_He] [t_is] [wear_id.get_examine_location(src, user, WEAR_ID, t_He, t_his, t_him, t_has, t_is)].\n"
+
+	//gloves
+	if(gloves && !skipgloves)
+		msg += "[t_He] [t_has] [gloves.get_examine_line(user)] [gloves.get_examine_location(src, user, WEAR_HANDS, t_He, t_his, t_him, t_has, t_is)].\n"
+	else if(hands_blood_color)
+		msg += SPAN_WARNING("[t_He] [t_has] [(hands_blood_color != COLOR_OIL) ? "blood" : "oil"]-stained hands!\n")
+
+	//left hand
+	if(l_hand)
+		msg += "[t_He] [t_is] holding [l_hand.get_examine_line(user)] [l_hand.get_examine_location(src, user, WEAR_L_HAND, t_He, t_his, t_him, t_has, t_is)].\n"
+
+	//right hand
+	if(r_hand)
+		msg += "[t_He] [t_is] holding [r_hand.get_examine_line(user)] [r_hand.get_examine_location(src, user, WEAR_R_HAND, t_He, t_his, t_him, t_has, t_is)].\n"
+
+	//belt
+	if(belt)
+		msg += "[t_He] [t_has] [belt.get_examine_line(user)] [belt.get_examine_location(src, user, WEAR_WAIST, t_He, t_his, t_him, t_has, t_is)].\n"
+
+	//shoes
+	if(shoes && !skipshoes)
+		msg += "[t_He] [t_is] wearing [shoes.get_examine_line(user)] [shoes.get_examine_location(src, user, WEAR_FEET, t_He, t_his, t_him, t_has, t_is)].\n"
+	else if(feet_blood_color)
+		msg += SPAN_WARNING("[t_He] [t_has] [(feet_blood_color != COLOR_OIL) ? "blood" : "oil"]-stained feet!\n")
 
 	//Inform user if their weapon's IFF will or won't hit src, code by The32bitguy from PVE
 	if(ishuman(user))

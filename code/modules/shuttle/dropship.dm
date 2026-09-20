@@ -133,11 +133,23 @@
 
 /obj/structure/shuttle/part/dropship_omaha/transparent
 	opacity = FALSE
+	density = FALSE
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/beforeShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	.=..()
+	var/turf/our_turf = src.loc
+	our_turf.update_vis_contents()
+	addtimer(CALLBACK(our_turf, TYPE_PROC_REF(/turf/open, update_vis_contents)), 2)
 
 /obj/structure/shuttle/part/dropship_omaha/transparent/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	.=..()
-	for(var/turf/transparent_turf in locs)
-		transparent_turf.update_vis_contents()
+	var/turf/our_turf = src.loc
+	our_turf.update_vis_contents()
+	if(!istransparentturf(our_turf))
+		for(var/thing in our_turf.contents)
+			if(istype(thing, /obj/vis_contents_holder))
+				our_turf.contents -= thing
+				QDEL_NULL(thing)
 
 /obj/structure/shuttle/part/dropship_omaha/transparent/lower_left_wing
 	icon = 'icons/obj/structures/machinery/omaha/misc_64x64.dmi'
@@ -493,6 +505,7 @@
 /obj/structure/shuttle/part/dropship_omaha/transparent/cockpit
 	icon = 'icons/turf/omaha/walls.dmi'
 	icon_state = "2,19"
+	density = TRUE
 
 /obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_00
 	icon_state = "2,19"
@@ -713,16 +726,23 @@
 
 /obj/structure/shuttle/part/dropship_midway/transparent
 	opacity = FALSE
+	density = FALSE
 
 /obj/structure/shuttle/part/dropship_midway/transparent/beforeShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	.=..()
-	for(var/turf/transparent_turf in locs)
-		addtimer(CALLBACK(transparent_turf, TYPE_PROC_REF(/turf/open, update_vis_contents)), 5)
+	var/turf/our_turf = src.loc
+	our_turf.update_vis_contents()
+	addtimer(CALLBACK(our_turf, TYPE_PROC_REF(/turf/open, update_vis_contents)), 2)
 
 /obj/structure/shuttle/part/dropship_midway/transparent/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	.=..()
-	for(var/turf/transparent_turf in locs)
-		transparent_turf.update_vis_contents()
+	var/turf/our_turf = src.loc
+	our_turf.update_vis_contents()
+	if(!istransparentturf(our_turf))
+		for(var/thing in our_turf.contents)
+			if(istype(thing, /obj/vis_contents_holder))
+				our_turf.contents -= thing
+				QDEL_NULL(thing)
 
 /obj/structure/shuttle/part/dropship_midway/transparent/lower_left_wing
 	icon = 'icons/obj/structures/machinery/midway/misc_64x64.dmi'
@@ -1046,6 +1066,7 @@
 /obj/structure/shuttle/part/dropship_midway/transparent/cockpit
 	icon = 'icons/turf/midway/walls.dmi'
 	icon_state = "2,19"
+	density = TRUE
 
 /obj/structure/shuttle/part/dropship_midway/transparent/cockpit/nose_00
 	icon_state = "2,19"

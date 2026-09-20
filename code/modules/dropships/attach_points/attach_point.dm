@@ -53,6 +53,7 @@
 	if(installed_equipment || clamp.loaded != ds_equipment)
 		return
 	to_chat(user, SPAN_NOTICE("You install [ds_equipment] on [src]."))
+	ds_equipment.flags_atom |= NO_ZFALL //naturally have to make it not fall thru zlevel before its moved onto openspace turf
 	ds_equipment.forceMove(loc)
 	clamp.loaded = null
 	playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, TRUE)
@@ -62,6 +63,9 @@
 	ds_equipment.plane = plane
 	ds_equipment.setDir(src.dir)
 	ds_equipment.layer = src.layer + 0.01
+	if(round_slot)
+		ds_equipment.pixel_x = src.pixel_x
+		ds_equipment.pixel_y = src.pixel_y
 	if(linked_bottom_point)
 		linked_bottom_point.update_icon()
 
@@ -78,6 +82,7 @@
 	if(!(base_category in ds_equipment.equip_categories))
 		CRASH("Tried installing [our_equipment.name] on [src.name] -- wrong catergory")
 
+	ds_equipment.flags_atom |= NO_ZFALL
 	ds_equipment.forceMove(loc)
 	installed_equipment = ds_equipment
 	ds_equipment.ship_base = src

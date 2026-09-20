@@ -173,6 +173,7 @@
 	playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
 	var/duration_time = 10
 	var/point_loc
+	flags_atom &= ~NO_ZFALL
 	if(ship_base)
 		duration_time = 70 //uninstalling equipment takes more time
 		point_loc = ship_base.loc
@@ -574,7 +575,8 @@
 		pixel_x = ship_base.pixel_x
 		pixel_y = ship_base.pixel_y
 		if(ship_base.round_slot)
-			icon_state = "[initial(icon_state)]_omaha"
+			icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
+			icon_state = "[initial(icon_state)]_mohawk"
 		else
 			icon_state = "[initial(icon_state)]_installed"
 	else
@@ -583,6 +585,7 @@
 		bound_width = initial(bound_width)
 		bound_height = initial(bound_height)
 		icon_state = initial(icon_state)
+		icon = initial(icon)
 
 
 /obj/structure/dropship_equipment/fuel/fuel_enhancer

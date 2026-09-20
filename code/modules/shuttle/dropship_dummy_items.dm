@@ -375,7 +375,7 @@
 			for(var/obj/fauxie in linked_fauxes)
 				our_loc = fauxie.loc
 				our_loc.ScrapeAway()
-				addtimer(CALLBACK(our_loc, TYPE_PROC_REF(/turf/open, update_vis_contents)), 3) // idk, calling an update after movetonullspace also doesnt work but timer i find working all the time
+				addtimer(CALLBACK(our_loc, TYPE_PROC_REF(/turf/open, update_vis_contents)), 2) // idk, calling an update after movetonullspace also doesnt work but timer i find working all the time
 				fauxie.moveToNullspace()
 
 /obj/deployer/shuttle/dropship/roof_loader/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
@@ -462,6 +462,11 @@
 	for(var/obj/fauxie in linked_fauxes)
 		our_loc = fauxie.loc
 		our_loc.update_vis_contents()
+		if(!istransparentturf(our_loc))
+			for(var/thing in our_loc.contents)
+				if(istype(thing, /obj/vis_contents_holder))
+					our_loc.contents -= thing
+					QDEL_NULL(thing)
 
 /obj/deployer/shuttle/dropship/roof_loader/proc/move_into_position(turf/target_turf)
 	for(var/obj/faux_turf/open/dropship/roof/fauxie in linked_fauxes)

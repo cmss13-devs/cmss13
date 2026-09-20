@@ -4,7 +4,7 @@
 /area/shuttle/drop_midway/midway)
 "an" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/nose/right_02,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "aA" = (
 /obj/structure/machinery/door/airlock/hatch/side_hatch/midway{
@@ -29,9 +29,13 @@
 /obj/structure/shuttle/part/decal/dropship_midway/platform{
 	dir = 1
 	},
-/obj/structure/bed/chair/vehicle/omaha_passenger{
-	dir = 1;
-	pixel_y = 24
+/obj/structure/machinery/light/dropship/double/blue{
+	dir = 8;
+	pixel_x = -12
+	},
+/obj/structure/bed/chair/vehicle/omaha_pilot{
+	pixel_y = 20;
+	dir = 1
 	},
 /turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
@@ -53,11 +57,7 @@
 /area/shuttle/drop_midway/midway)
 "cY" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/nose/right_13,
-/turf/template_noop,
-/area/shuttle/drop_midway/midway)
-"dI" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/body/body_40,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "dJ" = (
 /obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_32,
@@ -70,11 +70,7 @@
 "ed" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/right_20,
 /obj/deployer/shuttle/dropship/gibber,
-/turf/template_noop,
-/area/shuttle/drop_midway/midway)
-"ev" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/body/body_50,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "ew" = (
 /obj/deployer/shuttle/dropship/fuel_attachment_point/midway{
@@ -88,17 +84,20 @@
 	dir = 4;
 	layer = 3.51
 	},
+/obj/structure/machinery/light/dropship/double/blue{
+	pixel_x = 12;
+	dir = 4;
+	pixel_y = -16
+	},
 /turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
-"eP" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/body/body_11,
-/turf/template_noop,
-/area/shuttle/drop_midway/midway)
 "fb" = (
-/obj/structure/machinery/light/blue{
-	dir = 8
-	},
 /obj/structure/shuttle/part/decal/dropship_midway/panel_half,
+/obj/structure/machinery/light/dropship/double/blue{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = -16
+	},
 /turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "fw" = (
@@ -114,7 +113,7 @@
 /area/shuttle/drop_midway/midway)
 "fD" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_11,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "fE" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/nose/right_23,
@@ -122,11 +121,10 @@
 /area/shuttle/drop_midway/midway)
 "fL" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/left_21,
-/turf/template_noop,
-/area/shuttle/drop_midway/midway)
-"fM" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_30,
-/turf/template_noop,
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_20{
+	pixel_x = -32
+	},
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "gc" = (
 /turf/closed/shuttle/dropship_midway/wall_03,
@@ -144,7 +142,7 @@
 "hB" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/left_23,
 /obj/deployer/shuttle/dropship/gibber,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "hC" = (
 /turf/closed/shuttle/dropship_midway/wall_mid_11,
@@ -161,10 +159,9 @@
 	offset_y = 1
 	},
 /obj/effect/attach_point/electronics/dropship_midway,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "hP" = (
-/obj/structure/machinery/light/blue,
 /obj/structure/bed/chair/vehicle/midway_gunner{
 	dir = 1;
 	layer = 3.02
@@ -207,6 +204,9 @@
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "jD" = (
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_10{
+	pixel_x = -32
+	},
 /turf/closed/shuttle/dropship_midway/wall_70,
 /area/shuttle/drop_midway/midway)
 "kb" = (
@@ -237,7 +237,7 @@
 /area/shuttle/drop_midway/midway)
 "lg" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_10,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "lh" = (
 /obj/deployer/shuttle/dropship/fuel_attachment_point/midway{
@@ -252,9 +252,12 @@
 /area/shuttle/drop_midway/midway)
 "lt" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/left_33,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "lw" = (
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_30{
+	pixel_x = -32
+	},
 /turf/closed/shuttle/dropship_midway/wall_90,
 /area/shuttle/drop_midway/midway)
 "lE" = (
@@ -288,7 +291,7 @@
 /area/shuttle/drop_midway/midway)
 "nJ" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/nose/right_12,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "nO" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/nose/left_02,
@@ -306,6 +309,9 @@
 /area/shuttle/drop_midway/midway)
 "ox" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/nose/right_14,
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/right_24{
+	pixel_y = 32
+	},
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "oO" = (
@@ -313,16 +319,11 @@
 /obj/deployer/shuttle/dropship/belly/midway,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
-"oX" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/nose/left_21,
-/turf/template_noop,
-/area/shuttle/drop_midway/midway)
-"pc" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/body/body_41,
-/turf/template_noop,
-/area/shuttle/drop_midway/midway)
 "pG" = (
-/obj/structure/machinery/light/blue,
+/obj/structure/machinery/light/dropship/double/blue,
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_40{
+	pixel_x = -32
+	},
 /turf/open/shuttle/dropship/midway/external,
 /area/shuttle/drop_midway/midway)
 "pM" = (
@@ -338,11 +339,11 @@
 /area/shuttle/drop_midway/midway)
 "qa" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/nose/left_03,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "qi" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_16,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "qr" = (
 /obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_third,
@@ -363,9 +364,9 @@
 /obj/item/device/radio/intercom/midway{
 	pixel_x = 20
 	},
-/obj/structure/bed/chair/vehicle/omaha_passenger{
-	dir = 1;
-	pixel_y = 24
+/obj/structure/bed/chair/vehicle/omaha_pilot{
+	pixel_y = 20;
+	dir = 1
 	},
 /turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
@@ -381,7 +382,7 @@
 /area/shuttle/drop_midway/midway)
 "qQ" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/right_31,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "rd" = (
 /turf/closed/shuttle/dropship_midway/wall_mid_13,
@@ -401,6 +402,9 @@
 /turf/closed/shuttle/dropship_midway/wall_11,
 /area/shuttle/drop_midway/midway)
 "rX" = (
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_20{
+	pixel_x = -32
+	},
 /turf/closed/shuttle/dropship_midway/wall_80,
 /area/shuttle/drop_midway/midway)
 "sk" = (
@@ -409,23 +413,18 @@
 "sA" = (
 /turf/closed/shuttle/dropship_midway/wall_mid_00,
 /area/shuttle/drop_midway/midway)
-"sE" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/body/body_31,
-/turf/template_noop,
-/area/shuttle/drop_midway/midway)
 "sJ" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/right_12,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "sP" = (
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_31{
+	pixel_x = 32
+	},
 /turf/closed/shuttle/dropship_midway/wall_95,
 /area/shuttle/drop_midway/midway)
 "tl" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/cockpit/nose_00,
-/turf/template_noop,
-/area/shuttle/drop_midway/midway)
-"tq" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_10,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "tE" = (
@@ -453,6 +452,9 @@
 /area/shuttle/drop_midway/midway)
 "uA" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/left_11,
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_10{
+	pixel_x = -32
+	},
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "vc" = (
@@ -468,7 +470,7 @@
 	dir = 1
 	},
 /obj/deployer/shuttle/dropship/gibber,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "wb" = (
 /obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_30,
@@ -487,7 +489,7 @@
 /area/shuttle/drop_midway/midway)
 "wW" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_14,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "xb" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/left_00,
@@ -509,7 +511,7 @@
 /turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
 "xl" = (
-/obj/structure/machinery/light/blue,
+/obj/structure/machinery/light/dropship/double/blue,
 /turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "xI" = (
@@ -531,7 +533,7 @@
 /area/shuttle/drop_midway/midway)
 "yw" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_12,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "yX" = (
 /obj/structure/shuttle/part/decal/dropship_midway/decal,
@@ -541,6 +543,9 @@
 /turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "zM" = (
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_11{
+	pixel_x = 32
+	},
 /turf/closed/shuttle/dropship_midway/wall_71,
 /area/shuttle/drop_midway/midway)
 "Aq" = (
@@ -558,10 +563,6 @@
 	},
 /turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
-"AP" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/body/body_10,
-/turf/template_noop,
-/area/shuttle/drop_midway/midway)
 "AV" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/cockpit/nose_10,
 /turf/template_noop,
@@ -575,7 +576,7 @@
 	offset_y = 1
 	},
 /obj/effect/attach_point/electronics/dropship_midway,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "Cq" = (
 /obj/structure/machinery/camera/autoname/almayer/dropship_midway{
@@ -584,6 +585,9 @@
 	},
 /obj/item/device/radio/intercom/midway{
 	pixel_y = 28
+	},
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_51{
+	pixel_x = 32
 	},
 /turf/open/shuttle/dropship/midway/external,
 /area/shuttle/drop_midway/midway)
@@ -597,6 +601,9 @@
 	},
 /obj/item/device/radio/intercom/midway{
 	pixel_y = 28
+	},
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_50{
+	pixel_x = -32
 	},
 /turf/open/shuttle/dropship/midway/external,
 /area/shuttle/drop_midway/midway)
@@ -612,11 +619,11 @@
 	offset_y = 1
 	},
 /obj/effect/attach_point/weapon/dropship_midway/right_fore,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "Dm" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/nose/left_13,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "Dw" = (
 /obj/effect/attach_point/crew_weapon/dropship1{
@@ -631,17 +638,16 @@
 /obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_second,
 /turf/open/shuttle/dropship/midway/ramp/rampio_11,
 /area/shuttle/drop_midway/midway)
-"DT" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/body/body_21,
-/turf/template_noop,
-/area/shuttle/drop_midway/midway)
 "Ef" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_15,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "Eh" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/right_22,
-/turf/template_noop,
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_23{
+	pixel_x = 32
+	},
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "El" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/cockpit/nose_02,
@@ -658,14 +664,10 @@
 	dir = 1
 	},
 /obj/deployer/shuttle/dropship/gibber,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "EG" = (
 /turf/closed/shuttle/dropship_midway/wall_04,
-/area/shuttle/drop_midway/midway)
-"ES" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/body/body_01,
-/turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "EU" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_03,
@@ -681,15 +683,14 @@
 "Gr" = (
 /turf/closed/shuttle/dropship_midway/wall_21,
 /area/shuttle/drop_midway/midway)
-"Gs" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/body/body_51,
-/turf/template_noop,
-/area/shuttle/drop_midway/midway)
 "Gt" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/nose/right_03,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "GE" = (
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_21{
+	pixel_x = 32
+	},
 /turf/closed/shuttle/dropship_midway/wall_81,
 /area/shuttle/drop_midway/midway)
 "GI" = (
@@ -705,7 +706,7 @@
 /area/shuttle/drop_midway/midway)
 "GX" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/left_32,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "Ha" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/left_30,
@@ -714,6 +715,9 @@
 /area/shuttle/drop_midway/midway)
 "Hz" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/nose/left_11,
+/obj/structure/shuttle/part/dropship_midway/transparent/nose/left_21{
+	pixel_y = 32
+	},
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "HK" = (
@@ -727,7 +731,10 @@
 /area/shuttle/drop_midway/midway)
 "Is" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/left_31,
-/turf/template_noop,
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_30{
+	pixel_x = -32
+	},
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "IH" = (
 /obj/structure/shuttle/part/decal/dropship_midway/platform_decal{
@@ -737,27 +744,25 @@
 /area/shuttle/drop_midway/midway)
 "IU" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/left_12,
-/turf/template_noop,
-/area/shuttle/drop_midway/midway)
-"IY" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/body/body_00,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "Jz" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/right_13,
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_14{
+	pixel_x = 32
+	},
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "Kc" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_14,
-/turf/template_noop,
+/obj/structure/machinery/light/dropship/double/blue,
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_41{
+	pixel_x = 32
+	},
+/turf/open/shuttle/dropship/midway/external,
 /area/shuttle/drop_midway/midway)
 "Kn" = (
 /obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_fifth,
 /turf/open/shuttle/dropship/midway/basic,
-/area/shuttle/drop_midway/midway)
-"Kx" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/body/body_20,
-/turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "Kz" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/left_01,
@@ -785,7 +790,6 @@
 	pixel_x = 16;
 	pixel_y = 5
 	},
-/obj/structure/machinery/light/blue,
 /turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "Mx" = (
@@ -797,7 +801,7 @@
 	offset_y = 1
 	},
 /obj/effect/attach_point/weapon/dropship_midway/left_fore,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "Ng" = (
 /obj/structure/shuttle/part/decal/dropship_midway/decal,
@@ -805,7 +809,7 @@
 /area/shuttle/drop_midway/midway)
 "Nh" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/right_30,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "No" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/nose/right_22,
@@ -813,13 +817,16 @@
 /area/shuttle/drop_midway/midway)
 "NB" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/nose/left_12,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "NQ" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/bottom/bottom_02,
 /turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "Oh" = (
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_00{
+	pixel_x = -32
+	},
 /turf/closed/shuttle/dropship_midway/wall_60,
 /area/shuttle/drop_midway/midway)
 "OS" = (
@@ -839,18 +846,10 @@
 	},
 /turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
-"OZ" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/nose/right_24,
-/turf/template_noop,
-/area/shuttle/drop_midway/midway)
 "Pe" = (
 /obj/structure/shuttle/part/decal/dropship_midway/ramp_decals/border_02,
 /obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_first,
 /turf/open/shuttle/dropship/midway/ramp/rampio_02,
-/area/shuttle/drop_midway/midway)
-"Pk" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/wings/left_20,
-/turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "PA" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/cockpit/nose_03,
@@ -860,10 +859,12 @@
 /turf/closed/shuttle/dropship_midway/wall_93,
 /area/shuttle/drop_midway/midway)
 "PL" = (
-/obj/structure/machinery/light/blue{
-	dir = 4
-	},
 /obj/structure/shuttle/part/decal/dropship_midway/panel_half,
+/obj/structure/machinery/light/dropship/double/blue{
+	pixel_x = 12;
+	dir = 4;
+	pixel_y = -16
+	},
 /turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "Qm" = (
@@ -877,7 +878,10 @@
 /area/shuttle/drop_midway/midway)
 "QH" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/right_32,
-/turf/template_noop,
+/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_33{
+	pixel_x = 32
+	},
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "QN" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/right_01,
@@ -905,10 +909,6 @@
 	pixel_x = 8
 	},
 /turf/open/shuttle/dropship/midway/grated,
-/area/shuttle/drop_midway/midway)
-"RZ" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_33,
-/turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "Sl" = (
 /obj/structure/shuttle/part/decal/dropship_midway/stairs_platform{
@@ -945,10 +945,6 @@
 "US" = (
 /obj/deployer/shuttle/dropship/gibber,
 /turf/closed/shuttle/dropship_midway/wall_mid_31,
-/area/shuttle/drop_midway/midway)
-"UY" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/wings/right_23,
-/turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "Vk" = (
 /obj/deployer/shuttle/dropship/gibber,
@@ -987,7 +983,7 @@
 /area/shuttle/drop_midway/midway)
 "Wh" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/left_22,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 "Wt" = (
 /turf/closed/shuttle/dropship_midway/wall_06,
@@ -1000,10 +996,6 @@
 /area/shuttle/drop_midway/midway)
 "WP" = (
 /turf/closed/shuttle/dropship_midway/wall_mid_50,
-/area/shuttle/drop_midway/midway)
-"WQ" = (
-/obj/structure/shuttle/part/dropship_midway/transparent/body/body_30,
-/turf/template_noop,
 /area/shuttle/drop_midway/midway)
 "XI" = (
 /turf/closed/shuttle/dropship_midway/wall_05,
@@ -1024,6 +1016,11 @@
 	dir = 4;
 	pixel_x = -16
 	},
+/obj/structure/machinery/light/dropship/double/blue{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = -16
+	},
 /turf/open/shuttle/dropship/midway/grated,
 /area/shuttle/drop_midway/midway)
 "Yb" = (
@@ -1033,6 +1030,9 @@
 /turf/closed/shuttle/dropship_midway/wall_mid_02,
 /area/shuttle/drop_midway/midway)
 "YV" = (
+/obj/structure/shuttle/part/dropship_midway/transparent/body/body_01{
+	pixel_x = 32
+	},
 /turf/closed/shuttle/dropship_midway/wall_61,
 /area/shuttle/drop_midway/midway)
 "Zr" = (
@@ -1052,7 +1052,7 @@
 /area/shuttle/drop_midway/midway)
 "ZI" = (
 /obj/structure/shuttle/part/dropship_midway/transparent/wings/right_21,
-/turf/template_noop,
+/turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/drop_midway/midway)
 
 (1,1,1) = {"
@@ -1062,9 +1062,9 @@ ru
 ru
 ru
 ru
-fM
-Pk
-tq
+ru
+ru
+ru
 ru
 ru
 ru
@@ -1111,7 +1111,7 @@ ru
 ru
 ru
 ru
-oX
+ru
 Hz
 nO
 GX
@@ -1144,12 +1144,12 @@ lt
 hB
 ED
 Kz
-ev
-dI
-WQ
-Kx
-AP
-IY
+ru
+ru
+ru
+ru
+ru
+ru
 ru
 ru
 ru
@@ -1379,7 +1379,7 @@ US
 ys
 md
 Cq
-pG
+Kc
 sP
 GE
 zM
@@ -1404,12 +1404,12 @@ Nh
 ed
 vS
 QN
-Gs
-pc
-sE
-DT
-eP
-ES
+ru
+ru
+ru
+ru
+ru
+ru
 ru
 ru
 ru
@@ -1423,7 +1423,7 @@ ru
 ru
 ru
 ru
-OZ
+ru
 ox
 Gt
 qQ
@@ -1478,9 +1478,9 @@ ru
 ru
 ru
 ru
-RZ
-UY
-Kc
+ru
+ru
+ru
 ru
 ru
 ru

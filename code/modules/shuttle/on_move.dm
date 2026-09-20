@@ -272,7 +272,7 @@ All ShuttleMove procs go here
 		if(pixel_y == 8)
 			higher_layer = TRUE
 	else
-		pixel_y = 0
+		pixel_y = init_pixel_y
 		if(dir == NORTH)
 			pixel_x = init_pixel_x
 		else
@@ -424,5 +424,11 @@ All ShuttleMove procs go here
 		installed_equipment.pixel_y = pixel_y
 		installed_equipment.pixel_x = pixel_x
 
-
-
+/obj/docking_port/mobile/marine_dropship/multiz/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
+	. = ..()
+	if(is_reserved_level(src.z))
+		for(var/area/our_areas in shuttle_areas)
+			our_areas.set_base_lighting(our_areas.base_lighting_color, 255)
+	else
+		for(var/area/our_areas in shuttle_areas)
+			our_areas.set_base_lighting(our_areas.base_lighting_color, 0)

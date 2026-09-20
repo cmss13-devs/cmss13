@@ -187,6 +187,42 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/pontoon_beach)
+"aE" = (
+/obj/structure/sign/banners/united_americas_flag_worn{
+	pixel_x = 3;
+	pixel_y = 30
+	},
+/obj/structure/sign/poster/propaganda{
+	pixel_x = -10;
+	pixel_y = 33
+	},
+/turf/open/floor/plating/wood,
+/area/varadero/interior/beach_bar)
+"aF" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 4
+	},
+/obj/structure/sign/poster/ad{
+	layer = 3.4;
+	pixel_x = -1;
+	pixel_y = 36
+	},
+/turf/open/floor/plating/wood,
+/area/varadero/interior/beach_bar)
+"aG" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8
+	},
+/obj/structure/sign/poster/ad{
+	pixel_x = 25;
+	pixel_y = 7
+	},
+/obj/structure/sign/poster/propaganda{
+	pixel_x = 28;
+	pixel_y = 3
+	},
+/turf/open/floor/plating/wood,
+/area/varadero/interior/beach_bar)
 "aI" = (
 /obj/structure/barricade/handrail/wire{
 	layer = 3.01
@@ -746,7 +782,7 @@
 /obj/structure/catwalk{
 	explo_proof = 1
 	},
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating/almayer,
 /area/varadero/exterior/pontoon_beach)
 "lC" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush{
@@ -1025,11 +1061,6 @@
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pontoon_beach)
-"qz" = (
-/obj/structure/sign/poster/propaganda,
-/obj/structure/sign/banners/united_americas_flag_worn,
-/turf/closed/wall/wood,
-/area/varadero/interior/beach_bar)
 "qQ" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
@@ -1750,14 +1781,6 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
-"Iq" = (
-/obj/structure/sign/poster/ad{
-	pixel_x = 5;
-	pixel_y = 4
-	},
-/obj/structure/sign/poster/ad,
-/turf/closed/wall/wood,
-/area/varadero/interior/beach_bar)
 "IK" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/gm/dirt,
@@ -1814,6 +1837,14 @@
 "KZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
+/obj/structure/sign/poster/ad{
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/obj/structure/sign/poster/ad{
+	pixel_x = 5;
+	pixel_y = 36
+	},
 /turf/open/floor/plating/wood,
 /area/varadero/interior/beach_bar)
 "Lg" = (
@@ -2049,7 +2080,7 @@
 	explo_proof = 1
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating/almayer,
 /area/varadero/exterior/pontoon_beach)
 "Rq" = (
 /obj/structure/barricade/handrail/wire{
@@ -2087,12 +2118,6 @@
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pontoon_beach)
-"Sc" = (
-/obj/structure/sign/poster/ad{
-	layer = 3.4
-	},
-/turf/closed/wall/wood,
-/area/varadero/interior/beach_bar)
 "Sk" = (
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
@@ -2143,14 +2168,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/pontoon_beach)
-"Ty" = (
-/obj/structure/sign/poster/ad,
-/obj/structure/sign/poster/propaganda{
-	pixel_x = 6;
-	pixel_y = 1
-	},
-/turf/closed/wall/wood,
-/area/varadero/interior/beach_bar)
 "TH" = (
 /obj/structure/prop{
 	name = "M83 'Skysweeper' platform";
@@ -3058,7 +3075,7 @@ Ky
 Lg
 iZ
 eN
-Iq
+Ug
 KZ
 vd
 sR
@@ -3097,8 +3114,8 @@ Ky
 zt
 jZ
 cF
-qz
-WJ
+Ug
+aE
 WJ
 WJ
 Jl
@@ -3136,8 +3153,8 @@ Ky
 SU
 Oi
 YV
-Sc
-UJ
+Ug
+aF
 WJ
 nY
 WJ
@@ -3215,7 +3232,7 @@ av
 zt
 cF
 GA
-yv
+aG
 lH
 lH
 Xh
@@ -3254,7 +3271,7 @@ aB
 zt
 cF
 Ug
-Ty
+Ug
 Kp
 Kp
 Ug

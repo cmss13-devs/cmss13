@@ -13,12 +13,8 @@
 
 /datum/job/marine/specialist/get_total_positions(latejoin = 0)
 	var/positions = spawn_positions
-	if(latejoin)
-		positions = spec_slot_formula(get_total_marines())
-		if(positions <= total_positions_so_far)
-			positions = total_positions_so_far
-		else
-			total_positions_so_far = positions
+	if(latejoin && positions <= total_positions_so_far)
+		positions = total_positions_so_far
 	else
 		total_positions_so_far = positions
 	return positions

@@ -27,16 +27,15 @@
 
 /obj/structure/stairs/multiz/proc/on_stairs_moved(turf/source, atom/movable/enterer)
 	SIGNAL_HANDLER
-	if(!istype(enterer, /mob) && !istype(enterer, /obj/vehicle/powerloader))
-		return
-	if(istype(enterer, /obj/vehicle/powerloader))
-		var/obj/vehicle/powerloader/our_loader = enterer
-		if(our_loader.buckled_mob)
-			RegisterSignal(our_loader, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(on_premove))
-			RegisterSignal(our_loader, COMSIG_MOVABLE_MOVED, PROC_REF(on_leave))
-	else
-		RegisterSignal(enterer, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(on_premove))
-		RegisterSignal(enterer, COMSIG_MOVABLE_MOVED, PROC_REF(on_leave))
+	if(istype(enterer, /mob) || istype(enterer, /obj/vehicle/powerloader))
+		if(istype(enterer, /obj/vehicle/powerloader))
+			var/obj/vehicle/powerloader/our_loader = enterer
+			if(our_loader.buckled_mob)
+				RegisterSignal(our_loader, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(on_premove))
+				RegisterSignal(our_loader, COMSIG_MOVABLE_MOVED, PROC_REF(on_leave))
+		else
+			RegisterSignal(enterer, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(on_premove))
+			RegisterSignal(enterer, COMSIG_MOVABLE_MOVED, PROC_REF(on_leave))
 
 /obj/structure/stairs/multiz/proc/on_leave(atom/movable/mover, atom/oldloc, newDir)
 	SIGNAL_HANDLER

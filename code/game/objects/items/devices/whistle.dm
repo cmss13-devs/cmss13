@@ -6,6 +6,7 @@
 	w_class = SIZE_TINY
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_FACE | SLOT_ACCESSORY
+	flags_inv_hide = HIDEMOUTHCLENCHED
 	actions_types = list(/datum/action/item_action/toggle/use/whistle)
 	item_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi'

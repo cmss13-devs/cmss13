@@ -134,22 +134,24 @@
 /obj/structure/shuttle/part/dropship_omaha/transparent
 	opacity = FALSE
 	density = FALSE
+	var/turf/saved_turf
 
-/obj/structure/shuttle/part/dropship_omaha/transparent/beforeShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
-	.=..()
-	var/turf/our_turf = src.loc
-	our_turf.update_vis_contents()
-	addtimer(CALLBACK(our_turf, TYPE_PROC_REF(/turf/open, update_vis_contents)), 2)
+/obj/structure/shuttle/part/dropship_omaha/transparent/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
+	. = ..()
+	saved_turf = src.loc
+
+/obj/structure/shuttle/part/dropship_omaha/transparent/onShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	. = ..()
+	saved_turf.update_vis_contents()
 
 /obj/structure/shuttle/part/dropship_omaha/transparent/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	.=..()
 	var/turf/our_turf = src.loc
 	our_turf.update_vis_contents()
 	if(!istransparentturf(our_turf))
-		for(var/thing in our_turf.contents)
-			if(istype(thing, /obj/vis_contents_holder))
-				our_turf.contents -= thing
-				QDEL_NULL(thing)
+		for(var/obj/vis_contents_holder/thing in our_turf.contents)
+			our_turf.contents -= thing
+			QDEL_NULL(thing)
 
 /obj/structure/shuttle/part/dropship_omaha/transparent/lower_left_wing
 	icon = 'icons/obj/structures/machinery/omaha/misc_64x64.dmi'
@@ -727,22 +729,24 @@
 /obj/structure/shuttle/part/dropship_midway/transparent
 	opacity = FALSE
 	density = FALSE
+	var/turf/saved_turf
 
-/obj/structure/shuttle/part/dropship_midway/transparent/beforeShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
-	.=..()
-	var/turf/our_turf = src.loc
-	our_turf.update_vis_contents()
-	addtimer(CALLBACK(our_turf, TYPE_PROC_REF(/turf/open, update_vis_contents)), 2)
+/obj/structure/shuttle/part/dropship_midway/transparent/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
+	. = ..()
+	saved_turf = src.loc
+
+/obj/structure/shuttle/part/dropship_midway/transparent/onShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	. = ..()
+	saved_turf.update_vis_contents()
 
 /obj/structure/shuttle/part/dropship_midway/transparent/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	.=..()
 	var/turf/our_turf = src.loc
 	our_turf.update_vis_contents()
 	if(!istransparentturf(our_turf))
-		for(var/thing in our_turf.contents)
-			if(istype(thing, /obj/vis_contents_holder))
-				our_turf.contents -= thing
-				QDEL_NULL(thing)
+		for(var/obj/vis_contents_holder/thing in our_turf.contents)
+			our_turf.contents -= thing
+			QDEL_NULL(thing)
 
 /obj/structure/shuttle/part/dropship_midway/transparent/lower_left_wing
 	icon = 'icons/obj/structures/machinery/midway/misc_64x64.dmi'

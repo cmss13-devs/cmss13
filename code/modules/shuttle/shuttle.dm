@@ -584,34 +584,24 @@
 //this is to check if this shuttle can physically dock at dock S
 /obj/docking_port/mobile/proc/canDock(obj/docking_port/stationary/S)
 	if(!istype(S))
-		to_chat(world, "dock 1")
 		return SHUTTLE_NOT_A_DOCKING_PORT
 
 	if(S.disabled)
-		to_chat(world, "dock 2")
 		return SHUTTLE_DOCK_DISABLED
 
 	if(istype(S, /obj/docking_port/stationary/transit))
-		to_chat(world, "dock 3")
 		return SHUTTLE_CAN_DOCK
 
 	if(dwidth > S.dwidth)
-		to_chat(world, "dock 4")
-		to_chat(world, "dwidth is [dwidth] || s.dwidth is [S.dwidth]")
 		return SHUTTLE_DWIDTH_TOO_LARGE
 
 	if(width-dwidth > S.width-S.dwidth)
-		to_chat(world, "dock 5")
-		to_chat(world, "dwidth is [dwidth] || s.dwidth is [S.dwidth]")
 		return SHUTTLE_WIDTH_TOO_LARGE
 
 	if(dheight > S.dheight)
-		to_chat(world, "dock 6")
 		return SHUTTLE_DHEIGHT_TOO_LARGE
 
 	if(height-dheight > S.height-S.dheight)
-		to_chat(world, "dock 7")
-		to_chat(world, "yolo [height-dheight] >||> [S.height-S.dheight]")
 		return SHUTTLE_HEIGHT_TOO_LARGE
 
 	//check the dock isn't occupied
@@ -619,12 +609,10 @@
 	if(currently_docked)
 		// by someone other than us
 		if(currently_docked != src)
-			to_chat(world, "dock 8")
 			return SHUTTLE_SOMEONE_ELSE_DOCKED
 		else
 		// This isn't an error, per se, but we can't let the shuttle code
 		// attempt to move us where we currently are, it will get weird.
-			to_chat(world, "dock 9")
 			return SHUTTLE_ALREADY_DOCKED
 
 	return SHUTTLE_CAN_DOCK

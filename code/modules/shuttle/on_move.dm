@@ -81,6 +81,9 @@ All ShuttleMove procs go here
 	var/shuttle_boundary = baseturfs.Find(/turf/baseturf_skipover/shuttle)
 	if(shuttle_boundary)
 		oldT.ScrapeAway(length(baseturfs) - shuttle_boundary + 1)
+		var/turf/turf_above = SSmapping.get_turf_above(oldT)
+		if(turf_above)
+			turf_above.update_vis_contents()
 
 	if(rotation)
 		shuttleRotate(rotation) //see shuttle_rotate.dm

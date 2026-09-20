@@ -26,10 +26,12 @@ GLOBAL_LIST_EMPTY(midway_roof_fauxes)
 	layer = TURF_LAYER + 0.01
 	var/recorded_offset_X
 	var/recorded_offset_Y
+	var/turf/saved_turf
 
 /obj/faux_turf/open/dropship/roof/Destroy()
 	GLOB.omaha_roof_fauxes -= src
 	GLOB.midway_roof_fauxes -= src
+	saved_turf = null
 	return ..()
 
 /obj/faux_turf/open/dropship/roof/solid

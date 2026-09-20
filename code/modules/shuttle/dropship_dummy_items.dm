@@ -22,13 +22,15 @@
 		if(length(linked_items))
 			for(var/obj/items in linked_items)
 				items.moveToNullspace()
-			return
+			return FALSE
 
 	if(linked_dropship?.is_hijacked)
 		if(length(linked_items))
 			for(var/obj/items in linked_items)
 				items.moveToNullspace()
-			return
+			return FALSE
+
+	return TRUE
 
 /obj/deployer/shuttle/dropship/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
 	. = ..()
@@ -37,13 +39,15 @@
 		if(length(linked_items))
 			for(var/obj/items in linked_items)
 				items.moveToNullspace()
-			return
+			return FALSE
 
 	if(linked_dropship.is_hijacked)
 		if(length(linked_items))
 			for(var/obj/items in linked_items)
 				items.moveToNullspace()
-			return
+			return FALSE
+
+	return TRUE
 
 /obj/deployer/shuttle/dropship/ramp_button
 	var/obj/structure/machinery/door_control/dropship_ramp_dummy/linked_button
@@ -56,20 +60,21 @@
 
 /obj/deployer/shuttle/dropship/ramp_button/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	. = ..()
-	if(linked_button)
-		linked_button.loc = SSmapping.get_turf_below(src.loc)
-		linked_button.pixel_y = 16
-	else
-		for(var/obj/structure/machinery/door_control/shuttle_ramp/original_button in range(8, src.loc))
-			linked_button = new item_to_deploy(SSmapping.get_turf_below(src.loc))
-			linked_items += linked_button
+	if(.)
+		if(linked_button)
+			linked_button.loc = SSmapping.get_turf_below(src.loc)
 			linked_button.pixel_y = 16
-			linked_button.layer = FLY_LAYER
-			linked_button.alpha = 215
-			linked_button.linked_dropship = original_button.linked_dropship
-			linked_button.linked_ramp_control = original_button
-			linked_button.linked_single_controller = original_button.linked_single_controller
-			break
+		else
+			for(var/obj/structure/machinery/door_control/shuttle_ramp/original_button in range(8, src.loc))
+				linked_button = new item_to_deploy(SSmapping.get_turf_below(src.loc))
+				linked_items += linked_button
+				linked_button.pixel_y = 16
+				linked_button.layer = FLY_LAYER
+				linked_button.alpha = 215
+				linked_button.linked_dropship = original_button.linked_dropship
+				linked_button.linked_ramp_control = original_button
+				linked_button.linked_single_controller = original_button.linked_single_controller
+				break
 
 /obj/deployer/shuttle/dropship/belly
 	var/obj/structure/shuttle/part/fuel_lines/lines
@@ -83,15 +88,16 @@
 
 /obj/deployer/shuttle/dropship/belly/lateShuttleMove()
 	.=..()
-	var/turf/target_turf = locate(src.x-5, src.y, src.z)
-	if(target_turf)
-		var/turf/final_turf = SSmapping.get_turf_below(target_turf)
-		if(final_turf)
-			if(lines)
-				lines.loc = final_turf
-			else
-				lines = new item_to_deploy(final_turf)
-				linked_items += lines
+	if(.)
+		var/turf/target_turf = locate(src.x-5, src.y, src.z)
+		if(target_turf)
+			var/turf/final_turf = SSmapping.get_turf_below(target_turf)
+			if(final_turf)
+				if(lines)
+					lines.loc = final_turf
+				else
+					lines = new item_to_deploy(final_turf)
+					linked_items += lines
 
 /obj/deployer/shuttle/dropship/landing_gear
 	var/offset_x = -16
@@ -113,23 +119,24 @@
 
 /obj/deployer/shuttle/dropship/landing_gear/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
 	. = ..()
-	var/turf/open/t_below = SSmapping.get_turf_below(src.loc)
-	if(t_below)
-		var/turf/open/final_turf = locate(t_below.x + map_offset_x, t_below.y +map_offset_y, t_below.z)
-		if(land_gear)
-			land_gear.loc = final_turf
-		else
-			land_gear = new item_to_deploy(final_turf)
-			linked_items += land_gear
-			land_gear.dir = src.dir
-		if(hatch_big)
-			hatch_big.loc = final_turf
-		else
-			hatch_big = new item_to_deploy2(final_turf)
-			linked_items += hatch_big
-			hatch_big.dir = src.dir
-			hatch_big.pixel_x = offset_x
-			hatch_big.pixel_y = offset_y
+	if(.)
+		var/turf/open/t_below = SSmapping.get_turf_below(src.loc)
+		if(t_below)
+			var/turf/open/final_turf = locate(t_below.x + map_offset_x, t_below.y +map_offset_y, t_below.z)
+			if(land_gear)
+				land_gear.loc = final_turf
+			else
+				land_gear = new item_to_deploy(final_turf)
+				linked_items += land_gear
+				land_gear.dir = src.dir
+			if(hatch_big)
+				hatch_big.loc = final_turf
+			else
+				hatch_big = new item_to_deploy2(final_turf)
+				linked_items += hatch_big
+				hatch_big.dir = src.dir
+				hatch_big.pixel_x = offset_x
+				hatch_big.pixel_y = offset_y
 
 /obj/deployer/shuttle/dropship/fuel_attachment_point
 	name = "fuel attachment p. deployer"
@@ -146,19 +153,20 @@
 
 /obj/deployer/shuttle/dropship/fuel_attachment_point/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
 	. = ..()
-	var/turf/open/t_below = SSmapping.get_turf_below(src.loc)
-	if(t_below)
-		if(linked_point)
-			linked_point.loc = t_below
-			if(linked_point.installed_equipment)
-				linked_point.installed_equipment.loc = t_below
-		else
-			linked_point = new item_to_deploy(t_below)
-			linked_items += linked_point
-			linked_point.layer = FLY_LAYER + 0.01
-			linked_point.alpha = 225
-			linked_point.pixel_x = offset_x
-			linked_point.pixel_y = offset_y
+	if(.)
+		var/turf/open/t_below = SSmapping.get_turf_below(src.loc)
+		if(t_below)
+			if(linked_point)
+				linked_point.loc = t_below
+				if(linked_point.installed_equipment)
+					linked_point.installed_equipment.loc = t_below
+			else
+				linked_point = new item_to_deploy(t_below)
+				linked_items += linked_point
+				linked_point.layer = FLY_LAYER + 0.01
+				linked_point.alpha = 225
+				linked_point.pixel_x = offset_x
+				linked_point.pixel_y = offset_y
 
 /obj/deployer/shuttle/dropship/hardpoints
 	icon_state = "deployer_gun"
@@ -176,22 +184,23 @@
 
 /obj/deployer/shuttle/dropship/hardpoints/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	. = ..()
-	var/turf/open/t_below =  SSmapping.get_turf_below(src.loc)
-	if(t_below)
-		var/turf/open/target_turf = locate(loc.x + map_offset_x, loc.y + map_offset_y, t_below.z)
-		if(linked_bottom)
-			linked_bottom.loc = target_turf
-		else
-			linked_bottom = new item_to_deploy(target_turf)
-			linked_items += linked_bottom
-			linked_bottom.layer = FLY_LAYER + 0.01
-			for(var/obj/effect/attach_point/attachie in src.loc.contents)
-				linked_bottom.linked_attach_point = attachie
-				linked_bottom.name = linked_bottom.linked_attach_point.name
-				attachie.linked_bottom_point = linked_bottom
-				linked_bottom.pixel_x = offset_x
-				linked_bottom.pixel_y = offset_y
-				break
+	if(.)
+		var/turf/open/t_below =  SSmapping.get_turf_below(src.loc)
+		if(t_below)
+			var/turf/open/target_turf = locate(loc.x + map_offset_x, loc.y + map_offset_y, t_below.z)
+			if(linked_bottom)
+				linked_bottom.loc = target_turf
+			else
+				linked_bottom = new item_to_deploy(target_turf)
+				linked_items += linked_bottom
+				linked_bottom.layer = FLY_LAYER + 0.01
+				for(var/obj/effect/attach_point/attachie in src.loc.contents)
+					linked_bottom.linked_attach_point = attachie
+					linked_bottom.name = linked_bottom.linked_attach_point.name
+					attachie.linked_bottom_point = linked_bottom
+					linked_bottom.pixel_x = offset_x
+					linked_bottom.pixel_y = offset_y
+					break
 
 /obj/deployer/shuttle/dropship/gibber
 	icon_state = "deployer_gibber"
@@ -372,11 +381,17 @@
 	if(deployed_already)
 		if(is_ground_level(src.z) || linked_dropship.is_hijacked && !is_reserved_level(src.z))
 			var/turf/our_loc
-			for(var/obj/fauxie in linked_fauxes)
+			for(var/obj/faux_turf/open/dropship/roof/fauxie in linked_fauxes)
 				our_loc = fauxie.loc
 				our_loc.ScrapeAway()
-				addtimer(CALLBACK(our_loc, TYPE_PROC_REF(/turf/open, update_vis_contents)), 2) // idk, calling an update after movetonullspace also doesnt work but timer i find working all the time
+				fauxie.saved_turf = fauxie.loc
 				fauxie.moveToNullspace()
+
+/obj/deployer/shuttle/dropship/roof_loader/onShuttleMove(turf/newT, turf/oldT, list/movement_force, move_dir, obj/docking_port/stationary/old_dock, obj/docking_port/mobile/moving_dock)
+	. = ..()
+	if(deployed_already)
+		for(var/obj/faux_turf/open/dropship/roof/fauxie in linked_fauxes)
+			fauxie.saved_turf.update_vis_contents()
 
 /obj/deployer/shuttle/dropship/roof_loader/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
 	.=..()
@@ -463,10 +478,9 @@
 		our_loc = fauxie.loc
 		our_loc.update_vis_contents()
 		if(!istransparentturf(our_loc))
-			for(var/thing in our_loc.contents)
-				if(istype(thing, /obj/vis_contents_holder))
-					our_loc.contents -= thing
-					QDEL_NULL(thing)
+			for(var/obj/vis_contents_holder/thing in our_loc.contents)
+				our_loc.contents -= thing
+				QDEL_NULL(thing)
 
 /obj/deployer/shuttle/dropship/roof_loader/proc/move_into_position(turf/target_turf)
 	for(var/obj/faux_turf/open/dropship/roof/fauxie in linked_fauxes)

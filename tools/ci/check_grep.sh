@@ -262,12 +262,12 @@ if [ "$pcre2_support" -eq 1 ]; then
 		echo -e "${RED}ERROR: All items in a long list should be indented one more than the opening list line.${NC}"
 		st=1
 	fi;
-	if $grep -PU '^(\t+)[\w\/]+\s*=\s*list\((?:\n\1\t.+)*\n\1\t(?![^\n]*,(?:\s*(?:\/\/.*|\/\*(?:[^*]|\*[^\/])*\*\/))*)[^\n]+\n\s*\)' $code_files; then
+	if $grep -PU '^(\t+)[\w\/]+\s*=\s*list\((?:\n\1\t.+)*\n\1\t(?!.*,\s*(\/[\/*][^,\n]+|$))[^\n]+\n\s*\)' $code_files; then
 		echo -e "${RED}ERROR: Last item in a long list should end with a comma.${NC}"
 		st=1
 	fi;
 	if $grep -PU '^(\t+)[\w\/]+\s*=\s*list\((?:\n(?!\s*\))\1\t.+|\n\s*$)+\)\s*(?:\/[\/*].*)?$' $code_files; then
-		echo -e "${RED}ERROR: The ) in a long list should be on a new line (or is missing a comma, or the ) appeared at the end of a comment).${NC}"
+		echo -e "${RED}ERROR: The ) in a long list should be on a new line (or the ) appeared at the end of a comment).${NC}"
 		st=1
 	fi;
 else

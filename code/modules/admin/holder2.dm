@@ -140,12 +140,12 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 		if(check_client_rights(other, rights_required, show_msg))
 			return TRUE
 		else if(show_msg)
-			to_chat(usr, SPAN_WARNING("You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required," ")]."))
+			to_chat(other, SPAN_WARNING("You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required," ")]."))
 	else
 		if(other.admin_holder)
 			return TRUE
 		else if(show_msg)
-			to_chat(usr, SPAN_WARNING("You are not a holder."))
+			to_chat(other, SPAN_WARNING("You are not a holder."))
 	return FALSE
 
 //probably a bit iffy - will hopefully figure out a better solution

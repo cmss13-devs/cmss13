@@ -1,4 +1,0 @@
-author: "Antlers"
-delete-after: True
-changes:
-  - bugfix: "Runed sandstone bricks no longer stack with their regular counterparts in inventories"

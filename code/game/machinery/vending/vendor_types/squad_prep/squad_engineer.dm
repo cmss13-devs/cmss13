@@ -193,6 +193,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_engi, list(
 	desc = "An automated rack hooked up to a colossal storage of combat technician standard-issue equipment."
 	req_access = list(ACCESS_MARINE_ENGPREP)
 	vendor_role = list(JOB_SQUAD_ENGI)
+	//Whiskey Outpost uses this squad-agnostic vendor, so the headset has to work out the squad itself.
+	headset_type = /obj/item/device/radio/headset/almayer/marine/self_setting
 
 /obj/structure/machinery/cm_vending/clothing/engi/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_engi

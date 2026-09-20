@@ -1072,25 +1072,44 @@
 //*************************************
 //-----SELF SETTING MARINE HEADSET-----
 //*************************************/
-//Adapts itself to the wearer's squad and role on equip. Whiskey Outpost assigns squads after equipping, so it calls self_set() again once the squad is set.
+//Adapts itself to the wearer's squad and role. Gear is equipped before squads are assigned at round start,
+//but a vendor-bought headset arrives after, so we listen at both ends and let whichever happens last
+//configure us. Re-running is also ssafe, so squad transfers rebrand and rekey correctly.
 
 /obj/item/device/radio/headset/almayer/marine/self_setting
-	/// self_set() appends encryption keys, so it must only ever apply once
-	var/self_set_done = FALSE
+	var/obj/item/device/encryptionkey/granted_key
+	var/list/default_tracking_options
+
+/obj/item/device/radio/headset/almayer/marine/self_setting/Initialize()
+	. = ..()
+	default_tracking_options = inbuilt_tracking_options?.Copy()
 
 /obj/item/device/radio/headset/almayer/marine/self_setting/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	self_set()
+	RegisterSignal(user, COMSIG_SET_SQUAD, PROC_REF(self_set), TRUE)
+
+/obj/item/device/radio/headset/almayer/marine/self_setting/dropped(mob/user)
+	. = ..()
+	UnregisterSignal(user, COMSIG_SET_SQUAD)
+
+/obj/item/device/radio/headset/almayer/marine/self_setting/Destroy()
+	granted_key = null
+	return ..()
 
 /obj/item/device/radio/headset/almayer/marine/self_setting/proc/self_set()
-	if(self_set_done)
-		return
 	var/mob/living/carbon/human/H = loc
 	if(!istype(H))
 		return
 	if(!H.assigned_squad)
 		return
-	self_set_done = TRUE
+	if(granted_key)
+		keys -= granted_key
+		QDEL_NULL(granted_key)
+	inbuilt_tracking_options = default_tracking_options?.Copy()
+	locate_setting = initial(locate_setting)
+	volume = initial(volume)
+
 	name = "[lowertext(H.assigned_squad.name)] radio headset"
 	desc = "This is used by [H.assigned_squad.name] squad members."
 	icon_state = "[lowertext(H.assigned_squad.name)]_headset"
@@ -1099,7 +1118,8 @@
 	switch(GET_DEFAULT_ROLE(H.job))
 		if(JOB_SQUAD_LEADER)
 			name = "marine leader " + name
-			keys += new /obj/item/device/encryptionkey/squadlead(src)
+			granted_key = new /obj/item/device/encryptionkey/squadlead(src)
+			keys += granted_key
 			inbuilt_tracking_options = list(
 				"Squad Leader" = TRACKER_SL,
 				"Fireteam Leader" = TRACKER_FTL,
@@ -1121,13 +1141,17 @@
 			volume = RADIO_VOLUME_CRITICAL
 		if(JOB_SQUAD_MEDIC)
 			name = "marine hospital corpsman " + name
-			keys += new /obj/item/device/encryptionkey/med(src)
+			granted_key = new /obj/item/device/encryptionkey/med(src)
+			keys += granted_key
 		if(JOB_SQUAD_ENGI)
 			name = "marine combat technician " + name
-			keys += new /obj/item/device/encryptionkey/engi(src)
+			granted_key = new /obj/item/device/encryptionkey/engi(src)
+			keys += granted_key
 		if(JOB_SQUAD_TEAM_LEADER)
 			name = "marine fireteam leader " + name
-			keys += new /obj/item/device/encryptionkey/jtac(src)
+			granted_key = new /obj/item/device/encryptionkey/jtac(src)
+			keys += granted_key
+			volume = RADIO_VOLUME_RAISED
 		else
 			name = "marine " + name
 

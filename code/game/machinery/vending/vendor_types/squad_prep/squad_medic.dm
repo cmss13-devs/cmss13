@@ -193,6 +193,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_medic, list(
 	desc = "An automated rack hooked up to a colossal storage of hospital corpsman standard-issue equipment."
 	req_access = list(ACCESS_MARINE_MEDPREP)
 	vendor_role = list(JOB_SQUAD_MEDIC)
+	//Whiskey Outpost uses this squad-agnostic vendor, so the headset has to work out the squad itself.
+	headset_type = /obj/item/device/radio/headset/almayer/marine/self_setting
 
 /obj/structure/machinery/cm_vending/clothing/medic/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_medic

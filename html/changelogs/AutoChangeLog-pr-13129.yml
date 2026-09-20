@@ -1,0 +1,4 @@
+author: "Antlers"
+delete-after: True
+changes:
+  - bugfix: "Renamed neuropathic's chemical property abbreviation to \"NPA,\" as \"NPT\" is already taken by nephrotoxic"

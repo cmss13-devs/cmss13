@@ -561,7 +561,7 @@
 			"type" = "string",
 			"max_length" = 500,
 			"required" = TRUE,
-		)
+		),
 	)
 
 	var/list/rules = validators[field]

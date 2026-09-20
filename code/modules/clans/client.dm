@@ -104,7 +104,7 @@ CLIENT_VERB(view_clan_info)
 			player_modify_ranks = (clan_info.permissions & CLAN_PERMISSION_MODIFY),
 
 			player_purge = (clan_info.permissions & CLAN_PERMISSION_ADMIN_MANAGER),
-			player_move_clans = (clan_info.permissions & CLAN_PERMISSION_ADMIN_MOVE)
+			player_move_clans = (clan_info.permissions & CLAN_PERMISSION_ADMIN_MOVE),
 		)
 	else
 		data = list(
@@ -123,7 +123,7 @@ CLIENT_VERB(view_clan_info)
 			player_modify_ranks = FALSE,
 
 			player_purge = (clan_info.permissions & CLAN_PERMISSION_ADMIN_MANAGER),
-			player_move_clans = (clan_info.permissions & CLAN_PERMISSION_ADMIN_MOVE)
+			player_move_clans = (clan_info.permissions & CLAN_PERMISSION_ADMIN_MOVE),
 		)
 
 	var/list/clan_members[length(CPV)]

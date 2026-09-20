@@ -1084,7 +1084,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				// 60-69: Cargo
 				JOB_WO_CHIEF_REQUISITION = 60,
 				JOB_WO_REQUISITION = 61,
-				// 70-149: SQUADS (look below)
+				// 70-149: SQUADS
 				// 150+: Civilian/other
 				JOB_WO_CORPORATE_LIAISON = 150,
 				JOB_WO_SYNTH = 160,

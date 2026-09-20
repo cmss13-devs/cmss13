@@ -1594,7 +1594,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		/obj/item/weapon/gun/energy,
 		/obj/item/weapon/gun/launcher,
 		/obj/item/weapon/gun/launcher/grenade,
-		/obj/item/weapon/gun/rifle/sniper
+		/obj/item/weapon/gun/rifle/sniper,
 		)
 	var/list/bad_guns = typesof(/obj/item/weapon/gun/pill) + /obj/item/weapon/gun/souto + /obj/item/weapon/gun/smg/nailgun/compact //guns that don't work for some reason
 	var/list/emplacements = list(/obj/item/device/m2c_gun , /obj/item/device/m56d_gun/mounted)
@@ -1605,7 +1605,8 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		/obj/item/weapon/gun/rifle/m4ra/training,
 		/obj/item/weapon/gun/smg/m39/training,
 		/obj/item/weapon/gun/pistol/m4a3/training,
-		/obj/item/weapon/gun/pistol/mod88/training) //Ivan doesn't carry toys.
+		/obj/item/weapon/gun/pistol/mod88/training, //Ivan doesn't carry toys.
+		)
 
 	var/list/picklist = subtypesof(/obj/item/weapon/gun) - (template_guns + bad_guns + emplacements + yautja_guns + smartguns + training_guns)
 	var/random_gun = pick(picklist)

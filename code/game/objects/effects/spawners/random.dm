@@ -553,9 +553,7 @@
 		/obj/item/weapon/gun/revolver/cmb = /obj/item/ammo_magazine/revolver/cmb,
 		/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717 = null,
 		/obj/item/weapon/gun/smg/mp5/mp5a5 = /obj/item/ammo_magazine/smg/mp5,
-		/obj/item/weapon/gun/revolver/cmb/custom = /obj/item/ammo_magazine/revolver/cmb
-
-
+		/obj/item/weapon/gun/revolver/cmb/custom = /obj/item/ammo_magazine/revolver/cmb,
 		)
 
 /obj/effect/spawner/random/gun/cmb/lowchance

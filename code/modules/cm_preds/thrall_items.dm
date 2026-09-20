@@ -253,7 +253,7 @@
 	icon = 'icons/obj/items/hunter/thrall_gear.dmi'
 	icon_state = "thrall_jumpsuit"
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/hunter/thrall_gear.dmi'
+		WEAR_BODY = 'icons/mob/humans/onmob/hunter/thrall_gear.dmi',
 	)
 
 /obj/item/clothing/under/chainshirt/thrall/cloth/alt

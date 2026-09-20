@@ -2493,7 +2493,8 @@
 		/obj/item/ammo_magazine/rifle/m4ra/rubber,
 		/obj/item/ammo_magazine/smg/m39/rubber,
 		/obj/item/ammo_magazine/pistol/rubber,
-		/obj/item/ammo_magazine/pistol/mod88/rubber) //Ivan doesn't bring children's ammo.
+		/obj/item/ammo_magazine/pistol/mod88/rubber, //Ivan doesn't bring children's ammo.
+		)
 
 	var/list/bad_guns = list(
 		/obj/item/weapon/gun/pistol/m4a3/training,

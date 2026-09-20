@@ -77,7 +77,7 @@
 
 /mob/living/carbon/xenomorph/king/Destroy()
 	UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)
-
+	hive.living_xeno_king = null
 	return ..()
 
 /mob/living/carbon/xenomorph/king/Initialize()
@@ -89,6 +89,7 @@
 		hive.banned_allies = list("All")
 		if(hive.break_all_alliances())
 			xeno_message(SPAN_XENOANNOUNCE("With the arrival of the King, all alliances have been broken."), 3, hivenumber)
+		hive.living_xeno_king = src
 
 /mob/living/carbon/xenomorph/king/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	. = ..()
@@ -134,6 +135,7 @@
 
 /mob/living/carbon/xenomorph/king/death(cause, gibbed)
 	. = ..()
+	hive.living_xeno_king = null
 	if(hive)
 		hive.setup_banned_allies()
 

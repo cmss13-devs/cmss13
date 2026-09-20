@@ -94,7 +94,7 @@
 	desc = "A shooting target. Installed on a holographic display mount to help assess the damage done. While being a close replica of real threats a marine would encounter, it's not a real target - special firing procedures seen in weapons such as XM88 or Holotarget ammo won't have any effect."
 	icon = 'icons/obj/structures/props/target_dummies.dmi'
 	icon_state = "target_a"
-	density = FALSE
+	density = TRUE
 	health = 10000
 	wrenchable = TRUE
 	anchored = TRUE
@@ -117,7 +117,7 @@
 	. = ..()
 	if(practice_health <= 0 || !anchored)
 		return
-	var/damage_dealt = floor(armor_damage_reduction(GLOB.xeno_ranged, bullet.damage, practice_mode[2], bullet.ammo.penetration))
+	var/damage_dealt = floor(armor_damage_reduction(GLOB.xeno_ranged, bullet.calculate_damage(), practice_mode[2], bullet.ammo.penetration))
 	langchat_speech(damage_dealt, get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small"))
 	practice_health -= damage_dealt
 	animation_flash_color(src, "#FF0000", 1)
@@ -145,6 +145,38 @@
 	animate(src, transform = matrix(0, MATRIX_ROTATE), time = 1, easing = EASE_OUT)
 	langchat_speech("[src] raises back into position!", get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
 	practice_health = practice_mode[1]
+
+/obj/structure/target/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(xeno.a_intent == INTENT_HARM)
+		if(unslashable)
+			return
+		xeno.animation_attack_on(src)
+		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
+		xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart!"),
+		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		deconstruct(FALSE)
+		return XENO_ATTACK_ACTION
+	else
+		to_chat(xeno, SPAN_WARNING("We stare at [src] cluelessly."))
+		return XENO_NO_DELAY_ACTION
+
+/obj/structure/target/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	if(unslashable)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	deconstruct(FALSE)
+	xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+	SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
+	return TAILSTAB_COOLDOWN_NORMAL
+
+/obj/structure/target/toggle_anchored(obj/item/wrench, mob/user)
+	//no need for movable,unbreakable bullet sponge
+	. = ..()
+	if(.)
+		density = !density
+	return .
+
 
 /obj/structure/target/syndicate
 	icon_state = "target_s"

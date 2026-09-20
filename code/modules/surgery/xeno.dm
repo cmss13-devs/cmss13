@@ -16,7 +16,7 @@
 	requires_bodypart_type = NONE
 	requires_bodypart = FALSE
 
-/datum/surgery/xenomorph/can_start(mob/user, mob/living/carbon/xenomorph/patient, obj/limb/L, obj/item/tool)
+/datum/surgery/xenomorph/can_start(mob/user, mob/living/carbon/xenomorph/patient, obj/limb/patient_limb, obj/item/tool)
 	if(islarva(patient) || isfacehugger(patient))
 		to_chat(user, SPAN_DANGER("This organism is probably too small to have a mature organ worthy of extraction..."))
 		return FALSE
@@ -41,9 +41,9 @@
 	)
 
 	time = 4 SECONDS
-	preop_sound = 'sound/handling/clothingrustle1.ogg'
-	success_sound = 'sound/handling/bandage.ogg'
-	failure_sound = 'sound/surgery/organ2.ogg'
+	preop_sound = 'sound/surgery/saw.ogg'
+	success_sound = 'sound/effects/crack1.ogg'
+	failure_sound = 'sound/effects/crackandbleed.ogg'
 
 //No need for to-patient messages on this one, they're heckin' dead
 /datum/surgery_step/xenomorph/cut_exoskeleton/preop(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -72,15 +72,18 @@
 		victim.visible_message(
 			SPAN_WARNING("[victim] is [pick("covered", "drenched", "soaked")] in the acidic blood that [pick("spurts", "sprays", "bursts")] out from the [target.caste_type]!"),
 			SPAN_HIGHDANGER("You feel agonizing pain as you're drenched in acid!"))
+		victim.emote("scream")
 		victim.apply_damage(rand(75, 125), BURN) // you WILL wear biosuit.
 		playsound(victim, "acid_sizzle", 25, TRUE)
 		animation_flash_color(victim, "#FF0000")
 		//Having acid spray everywhere *but* the floor makes no sense, but this can be removed if research gets too messy.
+		victim.add_blood(BLOOD_COLOR_XENO, BLOOD_HANDS) //messy
+		victim.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY) //splish splosh
 		target.add_splatter_floor(get_turf(target.loc))
 
 /datum/surgery_step/xenomorph/open_exoskeleton
-	name = "Pry exoskeleton open"
-	desc = "open the exoskeleton in the incision"
+	name = "Pry Exoskeleton Open"
+	desc = "open the exoskeleton"
 	tools = SURGERY_TOOLS_PRY_ENCASED
 	time = 2 SECONDS
 	preop_sound = 'sound/surgery/retractor1.ogg'
@@ -117,6 +120,10 @@
 		victim.visible_message(
 			SPAN_WARNING("[victim] is [pick("covered", "drenched", "soaked")] in the acidic blood that [pick("spurts", "sprays", "bursts")] out from the [target.caste_type]!"),
 			SPAN_DANGER("You're [pick("covered", "drenched", "soaked")] in the acidic blood that [pick("spurts", "sprays", "bursts")] out from the [target.caste_type]!"))
+
+		victim.add_blood(BLOOD_COLOR_XENO, BLOOD_HANDS)
+		victim.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY)
+		victim.emote("pain")
 		victim.apply_damage(rand(50, 75), BURN) // still dangerous
 		playsound(victim, "acid_sizzle", 25, TRUE)
 		animation_flash_color(victim, "#FF0000")
@@ -125,7 +132,7 @@
 
 /datum/surgery_step/xenomorph/severe_connections
 	name = "Sever Organ Connections"
-	desc = "detach tubes and connections from organ"
+	desc = "detach tubes and connections from the organ"
 	tools = list(
 		/obj/item/tool/surgery/scalpel = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/surgery/scalpel/pict_system = SURGERY_TOOL_MULT_IDEAL,
@@ -169,6 +176,10 @@
 		victim.visible_message(
 			SPAN_WARNING("[victim] is [pick("covered", "drenched", "soaked")] in the acidic blood that [pick("spurts", "sprays", "bursts")] out from the [target.caste_type]!"),
 			SPAN_DANGER("You're [pick("covered", "drenched", "soaked")] in the acidic blood that [pick("spurts", "sprays", "bursts")] out from the [target.caste_type]!"))
+
+		victim.add_blood(BLOOD_COLOR_XENO, BLOOD_HANDS) //messy
+		victim.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY) //splish splosh
+		victim.emote("pain")
 		victim.apply_damage(rand(50, 75), BURN) // not AS dangerous but still is
 		playsound(victim, "acid_sizzle", 25, TRUE)
 		animation_flash_color(victim, "#FF0000")
@@ -176,7 +187,7 @@
 
 /datum/surgery_step/xenomorph/remove_organ
 	name = "Remove Xenomorph Organ"
-	desc = "grab a hold of it and pull the organ out"
+	desc = "pull the organ out"
 	accept_hand = TRUE
 	tools = list(
 		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_IDEAL,
@@ -184,8 +195,8 @@
 		/obj/item/tool/kitchen/utensil/fork = SURGERY_TOOL_MULT_SUBSTITUTE,
 	)//shamelessly taken from embryo code
 	time = 3 SECONDS
-	preop_sound = 'sound/surgery/scalpel1.ogg'
-	success_sound = 'sound/surgery/scalpel2.ogg'
+	preop_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/surgery/hemostat2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/xenomorph/remove_organ/preop(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -220,6 +231,8 @@
 			playsound(user, "acid_sizzle", 25, TRUE)
 			animation_flash_color(user, "#FF0000")
 			//no blood splatter here, we're just sticking our hands in, not cutting anything open
+			user.add_blood(BLOOD_COLOR_XENO, BLOOD_HANDS)
+
 	var/obj/item/organ/xeno/organ = locate() in target
 	if(!isnull(organ))
 		organ.forceMove(target.loc)

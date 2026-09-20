@@ -492,7 +492,7 @@
 
 /obj/item/device/radio/headset/almayer/chef
 	name = "kitchen radio headset"
-	desc = "Used by the onboard kitchen staff, filled with background noise of sizzling pots. Can coordinate with the supply channel, using :u and inform command of delivery service using :v."
+	desc = "Used by the onboard kitchen staff, filled with background noise of sizzling pots. Can coordinate with the supply channel with :u."
 	icon_state = "req_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/req/mst)
 
@@ -519,7 +519,7 @@
 
 /obj/item/device/radio/headset/almayer/mmpo
 	name = "marine military police radio headset"
-	desc = "This is used by marine military police members. Channels are as follows: :p - military police, :v - marine command. :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
+	desc = "This is used by marine military police members. Channels are as follows: :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
 	additional_hud_types = list(MOB_HUD_FACTION_CMB)
 	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/mmpo)
@@ -622,7 +622,7 @@
 
 /obj/item/device/radio/headset/almayer/mcom/po
 	name = "marine pilot radio headset"
-	desc = "Used by Pilot Officers. Channels are as follows: :v - marine command, :n - engineering, :m - medical, :j - JTAC, :t - intel."
+	desc = "Used by Pilot Officers. Channels are as follows: :n - engineering, :m - medical, :j - JTAC, :t - intel."
 	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/po)
 	frequency = JTAC_FREQ
 	volume = RADIO_VOLUME_RAISED // raised for DCCs, POs already have their volume boosted with their leadership
@@ -635,7 +635,7 @@
 
 /obj/item/device/radio/headset/almayer/mcom/io
 	name = "marine intel radio headset"
-	desc = "Used by Intelligence Officers. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medical, :j - JTAC, :t - intel."
+	desc = "Used by Intelligence Officers. Channels are as follows: :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medical, :j - JTAC, :t - intel."
 	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/io)
 	frequency = INTEL_FREQ
 
@@ -680,7 +680,7 @@
 	desc = "Used by the CL to convince people to sign NDAs. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel, :y for WY."
 	icon_state = "wy_headset"
 	maximum_keys = 5
-	initial_keys = list(/obj/item/device/encryptionkey/mcom/cl)
+	initial_keys = list(/obj/item/device/encryptionkey/mcom/cl, /obj/item/device/encryptionkey/command)
 	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_PMC)
 	spy_bug_type = /obj/item/device/radio/listening_bug/radio_linked/fax/wy
 
@@ -692,8 +692,8 @@
 
 /obj/item/device/radio/headset/almayer/reporter
 	name = "reporter radio headset"
-	desc = "Used by the combat correspondent to get the scoop. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel."
-	initial_keys = list(/obj/item/device/encryptionkey/mcom)
+	desc = "Used by the combat correspondent to get the scoop. Channels are as follows: :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel."
+	initial_keys = list(/obj/item/device/encryptionkey/cc)
 
 /obj/item/device/radio/headset/almayer/rep
 	name = "representative radio headset"

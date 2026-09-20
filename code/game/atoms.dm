@@ -194,15 +194,6 @@ directive is properly returned.
 /atom/proc/can_be_syringed()
 	return flags_atom & CAN_BE_SYRINGED
 
-/*//Convenience proc to see whether a container can be accessed in a certain way.
-
-	proc/can_subract_container()
-		return flags & EXTRACT_CONTAINER
-
-	proc/can_add_container()
-		return flags & INSERT_CONTAINER
-*/
-
 /atom/proc/allow_drop()
 	return 1
 

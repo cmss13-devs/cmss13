@@ -281,23 +281,6 @@
 		var/datum/action/act = X
 		act.update_button_icon()
 
-/mob/living/carbon/xenomorph/proc/rename_tunnel(obj/structure/tunnel/tunnel_target in oview(1))
-	set name = "Rename Tunnel"
-	set desc = "Rename the tunnel."
-	set category = null
-
-	if(!istype(tunnel_target))
-		return
-
-	var/new_name = strip_html(input("Change the description of the tunnel:", "Tunnel Description") as text|null)
-	new_name = replace_non_alphanumeric_plus(new_name)
-	if(new_name)
-		new_name = "[new_name] ([get_area_name(tunnel_target)])"
-		log_admin("[key_name(src)] has renamed the tunnel \"[tunnel_target.tunnel_desc]\" as \"[new_name]\".")
-		msg_admin_niche("[src]/([key_name(src)]) has renamed the tunnel \"[tunnel_target.tunnel_desc]\" as \"[new_name]\".")
-		tunnel_target.tunnel_desc = "[new_name]"
-	return
-
 
 /datum/action/xeno_action/onclick/tremor/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/burrower_tremor = owner

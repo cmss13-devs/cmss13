@@ -534,7 +534,7 @@
 	//------------------//
 	intensityfire = BURN_LEVEL_TIER_1
 	durationfire = BURN_TIME_TIER_1
-	burn_sprite = "red"
+	burn_sprite = "dynamic"
 	rangefire = 4
 	//------------------//
 	explosive = TRUE

@@ -125,3 +125,5 @@ Marines take fewer bullets to kill than xenomorphs.
 Make sure to bring flares. No one wants to be blind against these things…
 The best time to kill a marine is when they don’t expect it. Hit and run is the bread and butter of xenos! Always be ready to fight back. Always assume a door will have ambushers behind it.
 You can clear vines, bushes, and tall grass in front of you quickly and efficiently by holding a machete and pressing your 'activate in-hand' hotkey (default: Z).
+You can reinforce a reagent or fuel tank with 10 plasteel sheets to make it immune to bullets, xenomorph projectiles and even fire and smaller explosives! simply click on one while holding the sheets to do it. To remove the shielding and get the materials back, simply click on it with a crowbar.
+

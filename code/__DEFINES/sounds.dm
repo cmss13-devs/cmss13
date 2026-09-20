@@ -31,7 +31,6 @@
 #define SOUND_CHANNEL_LOBBY 1023
 #define SOUND_CHANNEL_Z 1024
 
-
 //default byond sound echo list index positions.
 //ECHO_DIRECT and ECHO_ROOM are the only two that actually appear to do anything, and represent the dry and wet channels of the environment effects, respectively.
 #define ECHO_DIRECT 1

@@ -5,12 +5,8 @@
 	icon_state = "walkietalkie"
 	item_state = "walkietalkie"
 	var/on = 1 // 0 for off
-	var/last_transmission
 	var/frequency = PUB_FREQ //common chat
-	var/traitor_frequency = 0 //tune to frequency to unlock traitor supplies
 	var/canhear_range = 3 // the range which mobs can hear this radio from
-	var/wires = WIRE_SIGNAL|WIRE_RECEIVE|WIRE_TRANSMIT
-	var/b_stat = 0
 	var/broadcasting = FALSE
 	var/listening = TRUE
 	var/freqlock = TRUE
@@ -170,17 +166,6 @@
 				// recalculateChannels()
 				. = TRUE
 
-/obj/item/device/radio/proc/text_wires()
-	if (!b_stat)
-		return ""
-	return {"
-			<hr>
-			Green Wire: <A href='byond://?src=\ref[src];wires=4'>[(wires & 4) ? "Cut" : "Mend"] Wire</A><BR>
-			Red Wire:   <A href='byond://?src=\ref[src];wires=2'>[(wires & 2) ? "Cut" : "Mend"] Wire</A><BR>
-			Blue Wire:  <A href='byond://?src=\ref[src];wires=1'>[(wires & 1) ? "Cut" : "Mend"] Wire</A><BR>
-			"}
-
-
 /obj/item/device/radio/proc/text_sec_channel(chan_name, chan_stat)
 	var/list = !!(chan_stat&FREQ_LISTENING)!=0
 	var/channel_key = channel_to_prefix(chan_name)
@@ -211,11 +196,6 @@
 		return // the device has to be on
 	//  Fix for permacell radios, but kinda eh about actually fixing them.
 	if(!M || !message)
-		return
-
-	//  Uncommenting this. To the above comment:
-	// The permacell radios aren't suppose to be able to transmit, this isn't a bug and this "fix" is just making radio wires useless. -Giacom
-	if(!(src.wires & WIRE_TRANSMIT)) // The device has to have all its wires and shit intact
 		return
 
 	/* Quick introduction:
@@ -355,8 +335,6 @@
 	// what the range is in which mobs will hear the radio
 	// returns: -1 if can't receive, range otherwise
 
-	if (!(wires & WIRE_RECEIVE))
-		return -1
 	if(!listening)
 		return -1
 	if(!(0 in level))
@@ -391,43 +369,6 @@
 			return -1
 	return canhear_range
 
-/obj/item/device/radio/proc/send_hear(freq, level)
-	var/range = receive_range(freq, level)
-	if(range > -1)
-		var/list/hearers
-		var/list/mobs = get_mobs_in_view(canhear_range, src)
-		var/list/radios = get_radios_in_view(canhear_range, src)
-		hearers += mobs
-		hearers += radios
-		return hearers
-
-
-/obj/item/device/radio/get_examine_text(mob/user)
-	. = ..()
-	if ((in_range(src, user) || loc == user))
-		if (b_stat)
-			. += SPAN_NOTICE("[src] can be attached and modified!")
-		else
-			. += SPAN_NOTICE("[src] can not be modified or attached!")
-
-
-/obj/item/device/radio/attackby(obj/item/W as obj, mob/user as mob)
-	..()
-	if (!HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
-		return
-	b_stat = !( b_stat )
-	if(!istype(src, /obj/item/device/radio/beacon))
-		if (b_stat)
-			user.show_message(SPAN_NOTICE("The radio can now be attached and modified!"))
-		else
-			user.show_message(SPAN_NOTICE("The radio can no longer be modified or attached!"))
-		updateDialog()
-			//Foreach goto(83)
-		add_fingerprint(user)
-		return
-	else
-		return
-
 /obj/item/device/radio/emp_act(severity)
 	. = ..()
 	broadcasting = FALSE
@@ -450,3 +391,7 @@
 
 /obj/item/device/radio/marine
 	frequency = PUB_FREQ
+
+/obj/item/device/radio/marine/command
+	frequency = COMM_FREQ
+	name = "command shortwave radio"

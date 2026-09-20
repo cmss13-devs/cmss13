@@ -1,3 +1,9 @@
+#define BASE_CHEM_STORAGE_RECHARGE_RATE 10
+#define BASE_CHEM_STORAGE_MAX_ENERGY 100
+#define DYNAMIC_SCALING_CHEM_ENERGY_RATE_PER_MEDIC 5
+#define DYNAMIC_SCALING_CHEM_MAX_ENERGY_PER_MEDIC 60
+#define DYNAMIC_SCALING_CHEM_ENERGY_MINIMUM_SCALE 4
+
 /obj/structure/machinery/chem_storage
 	name = "Chemical Storage System"
 	desc = "Storage system for a large supply of chemicals, which slowly recharges."
@@ -10,12 +16,9 @@
 
 	var/network = "Ground"
 	var/recharge_cooldown = 15
-	var/recharge_rate = 10
-	var/energy = 50
-	var/max_energy = 100
-	// dynamic chemical supply variables
-	var/base_recharge_rate = 10
-	var/base_max_energy = 100
+	var/recharge_rate = BASE_CHEM_STORAGE_RECHARGE_RATE
+	var/energy = BASE_CHEM_STORAGE_MAX_ENERGY
+	var/max_energy = BASE_CHEM_STORAGE_MAX_ENERGY
 	var/dynamic_storage = FALSE
 
 	unslashable = TRUE
@@ -44,13 +47,15 @@
 	return ..()
 
 /// Scales the energy capacity and charge rates for chemical dispensers using the dynamic_storage var
-/// multiplier works by dividing total marine pop by 50
-/obj/structure/machinery/chem_storage/proc/calculate_dynamic_storage(multiplier)
+/obj/structure/machinery/chem_storage/proc/calculate_dynamic_storage(scale, round_start=FALSE)
 	if(!dynamic_storage)
 		return
-	recharge_rate |= floor(base_recharge_rate * multiplier)
-	max_energy |= floor(base_max_energy * multiplier)
-	energy = max_energy
+	if(scale < DYNAMIC_SCALING_CHEM_ENERGY_MINIMUM_SCALE)
+		scale = DYNAMIC_SCALING_CHEM_ENERGY_MINIMUM_SCALE
+	recharge_rate = initial(recharge_rate) + floor(scale * DYNAMIC_SCALING_CHEM_ENERGY_RATE_PER_MEDIC)
+	max_energy = initial(max_energy) + floor(scale * DYNAMIC_SCALING_CHEM_MAX_ENERGY_PER_MEDIC)
+	if(round_start)
+		energy = max_energy
 
 /obj/structure/machinery/chem_storage/get_examine_text(mob/user)
 	. = ..()

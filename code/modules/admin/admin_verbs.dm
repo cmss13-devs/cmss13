@@ -112,6 +112,8 @@ GLOBAL_LIST_INIT(admin_verbs_logs, list(
 	/datum/admins/proc/view_runtime_log, /*shows the server runtime log for this round*/
 	/datum/admins/proc/view_href_log, /*shows the server HREF log for this round*/
 	/datum/admins/proc/view_tgui_log, /*shows the server TGUI log for this round*/
+	/client/proc/opensearch_query_builder,
+	/client/proc/opensearch_quick_query,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_sounds, list(
@@ -222,6 +224,7 @@ GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	/client/proc/admin_blurb,
 	/datum/admins/proc/open_shuttlepanel,
 	/client/proc/allow_browser_inspect,
+	/client/proc/debug_mapgrids,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_debug_advanced, list(

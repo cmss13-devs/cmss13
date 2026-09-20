@@ -12,7 +12,7 @@
 
 /datum/keybinding/client/admin_help
 	hotkey_keys = list("Unbound")
-	classic_keys = list("Unbound")
+	classic_keys = list("F1")
 	name = "admin_help"
 	full_name = "Admin Help"
 	description = "Ask an admin for help."
@@ -70,3 +70,4 @@
 		return
 	user.mob.button_pressed_F12()
 	return TRUE
+

@@ -125,6 +125,13 @@
 	ranking = 15
 	officer_grade = GRADE_OFFICER
 
+/datum/paygrade/navy/o5/lacn
+	paygrade = PAY_SHORT_LACNO5
+	name = "Commander"
+	prefix = "CDR."
+	rank_pin = /obj/item/clothing/accessory/ranks/navy/o5/lacn
+	default_faction = FACTION_SURVIVOR
+
 /datum/paygrade/navy/o6
 	paygrade = PAY_SHORT_NO6
 	name = "Colonel"

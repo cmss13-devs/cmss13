@@ -127,6 +127,8 @@
 	minimap = new
 	minimap.give_to(src)
 
+	SSmapgrids.track_movable(src)
+
 	for(var/path in subtypesof(/datum/action/observer_action))
 		var/datum/action/observer_action/new_action = new path()
 		new_action.give_to(src)

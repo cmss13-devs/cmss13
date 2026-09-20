@@ -36,10 +36,22 @@
 	starter = TRUE
 	value = 2
 
-/datum/chem_property/positive/anticorrosive/process(mob/living/M, potency = 1)
-	M.heal_limb_damage(0, potency, chemical = TRUE)
+/datum/chem_property/positive/anticorrosive/process(mob/living/target, potency = 1)
+	target.heal_limb_damage(0, potency, chemical = TRUE)
 	if(potency > CREATE_MAX_TIER_1)
-		M.heal_limb_damage(0, potency * POTENCY_MULTIPLIER_LOW, chemical = TRUE)
+		target.heal_limb_damage(0, potency * POTENCY_MULTIPLIER_LOW, chemical = TRUE)
+	if(!ishuman(target))
+		return
+	if(potency <= POTENCY_MAX_TIER_1)
+		return
+	var/mob/living/carbon/human/target_human = target
+	if(!length(target_human.limbs_to_process))
+		return
+	for(var/obj/limb/wounded_limb as anything in target_human.limbs_to_process)
+		if(wounded_limb.status & (LIMB_ESCHAR|LIMB_THIRD_DEGREE_BURNS))
+			wounded_limb.status &= ~(LIMB_ESCHAR|LIMB_THIRD_DEGREE_BURNS)
+			wounded_limb.heal_damage(0, wounded_limb.burn_healing_threshold)
+			return
 
 /datum/chem_property/positive/anticorrosive/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.apply_damages(0.5 * potency * delta_time, 0, 0.5 * potency * delta_time) //Mixed brute/tox damage
@@ -62,10 +74,11 @@
 	starter = TRUE
 	value = 2
 
-/datum/chem_property/positive/neogenetic/process(mob/living/M, potency = 1)
-	M.heal_limb_damage(potency, 0)
-	if(potency > CREATE_MAX_TIER_1)
-		M.heal_limb_damage(potency * POTENCY_MULTIPLIER_LOW, 0)
+/datum/chem_property/positive/neogenetic/process(mob/living/target, potency = 1)
+	target.heal_limb_damage(potency, 0)
+	if(potency <= CREATE_MAX_TIER_1)
+		return
+	target.heal_limb_damage(potency * POTENCY_MULTIPLIER_LOW, 0)
 
 /datum/chem_property/positive/neogenetic/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(0.5 * potency * delta_time, BURN)

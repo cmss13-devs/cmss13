@@ -49,7 +49,7 @@
 		//SECURITY//
 		////////////
 	var/next_allowed_topic_time = 10
-	control_freak = CONTROL_FREAK_MACROS
+	control_freak = CONTROL_FREAK_ALL | CONTROL_FREAK_SKIN
 
 	var/received_irc_pm = -99999
 

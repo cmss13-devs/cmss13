@@ -84,13 +84,13 @@
 		list("Mortar Shell Backpack", floor(scale * 1), /obj/item/storage/backpack/marine/mortarpack, VENDOR_ITEM_REGULAR),
 		list("Technician Welder-Satchel", floor(scale * 5), /obj/item/storage/backpack/marine/engineerpack/satchel, VENDOR_ITEM_REGULAR),
 		list("IMP Ammo Rack", floor(scale * 2), /obj/item/storage/backpack/marine/ammo_rack, VENDOR_ITEM_REGULAR),
-		list("Radio Telephone Pack", floor(scale * 2), /obj/item/storage/backpack/marine/satchel/rto, VENDOR_ITEM_REGULAR),
 		list("Parachute", floor(scale * 20), /obj/item/parachute, VENDOR_ITEM_REGULAR),
 		list("Grenade Satchel", floor(scale * 2), /obj/item/storage/backpack/marine/grenadepack, VENDOR_ITEM_REGULAR),
 
 		list("BELTS", -1, null, null),
 		list("G8-A General Utility Pouch", floor(scale * 2), /obj/item/storage/backpack/general_belt, VENDOR_ITEM_REGULAR),
 		list("M276 Ammo Load Rig", floor(scale * 15), /obj/item/storage/belt/marine, VENDOR_ITEM_REGULAR),
+		list("M276 Combat Sidearm Rig", floor(scale * 2), /obj/item/storage/belt/gun/combat_rig, VENDOR_ITEM_REGULAR),
 		list("M276 General Pistol Holster Rig", floor(scale * 10), /obj/item/storage/belt/gun/m4a3, VENDOR_ITEM_REGULAR),
 		list("M276 Knife Rig", floor(scale * 5), /obj/item/storage/belt/knifepouch, VENDOR_ITEM_REGULAR),
 		list("M276 M39 Holster Rig", floor(scale * 5), /obj/item/storage/belt/gun/m39, VENDOR_ITEM_REGULAR),
@@ -155,7 +155,7 @@
 		list("FCT - Field Camera Tripod", floor(scale * 1), /obj/item/device/overwatch_camera_tripod, VENDOR_ITEM_REGULAR),
 
 		list("SKILL PAMPHLETS", -1, null, null),
-		list("JTAC Pamphlet", floor(scale * 1), /obj/item/pamphlet/upgradeable/jtac, VENDOR_ITEM_REGULAR),
+		list("JTAC Radio Kit", floor(scale * 1), /obj/item/storage/box/kit/mini_jtac, VENDOR_ITEM_REGULAR),
 		list("Engineering Pamphlet", floor(scale * 1), /obj/item/pamphlet/upgradeable/engineer, VENDOR_ITEM_REGULAR),
 		list("Powerloader Certification", 0.75, /obj/item/pamphlet/upgradeable/powerloader, VENDOR_ITEM_REGULAR),
 
@@ -487,6 +487,7 @@
 		list("Marine Jungle Combat Boots", 5, /obj/item/clothing/shoes/marine/jungle, VENDOR_ITEM_REGULAR),
 		list("Marine Grey Combat Boots", 5, /obj/item/clothing/shoes/marine/grey, VENDOR_ITEM_REGULAR),
 		list("Marine Urban Combat Boots", 5, /obj/item/clothing/shoes/marine/urban, VENDOR_ITEM_REGULAR),
+		list("Marine Snow Combat Boots", 5, /obj/item/clothing/shoes/marine/snow, VENDOR_ITEM_REGULAR),
 
 		list("BACKPACKS", -1, null, null),
 		list("Lightweight IMP Backpack", 20, /obj/item/storage/backpack/marine, VENDOR_ITEM_REGULAR),

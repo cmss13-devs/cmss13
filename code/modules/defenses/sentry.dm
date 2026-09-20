@@ -90,13 +90,17 @@
 
 	if(!range_bounds)
 		set_range()
-	targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
-	if(!targets)
-		return FALSE
+	var/list/atom/movable/all_targets = scan_targets()
+	targets = list()
+	for(var/mob/target in all_targets)
+		if(target.z != z)
+			continue
+		if(target.mob_flags & MOB_ABSTRACT)
+			continue
+		targets += target
 
-	if(!target && length(targets))
-		target = pick(targets)
-
+	if(!target)
+		target = SAFEPICK(targets)
 	get_target(target)
 	return TRUE
 
@@ -113,6 +117,12 @@
 			range_bounds = SQUARE(x, y + 4, 7)
 		if(SOUTH)
 			range_bounds = SQUARE(x, y - 4, 7)
+
+/obj/structure/machinery/defenses/sentry/proc/scan_targets()
+	RETURN_TYPE(/list/atom/movable)
+	if(!z)
+		return // Stop it. Get some help.
+	return SSmapgrids.get_movables_in_region(z, range_bounds.center_x - range_bounds.bounds_x / 2, range_bounds.center_x + range_bounds.bounds_x / 2, range_bounds.center_y - range_bounds.bounds_y / 2, range_bounds.center_y + range_bounds.bounds_y / 2  )
 
 /obj/structure/machinery/defenses/sentry/proc/unset_range()
 	SIGNAL_HANDLER

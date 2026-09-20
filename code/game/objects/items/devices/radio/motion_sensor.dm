@@ -22,7 +22,7 @@
 	/// radio which broadcasts updates
 	var/obj/item/device/radio/motion/transceiver
 	/// the hidden mob which voices updates
-	var/mob/living/silicon/voice
+	var/mob/living/silicon/abstract/voice
 
 	var/assigned_network = "MP"
 	var/assigned_channel
@@ -45,7 +45,7 @@
 
 /obj/item/device/motion_sensor/Initialize(mapload, ...)
 	. = ..()
-	voice = new /mob/living/silicon
+	voice = new
 	voice.name = "[name]:[serial_number]"
 	voice.forceMove(src)
 

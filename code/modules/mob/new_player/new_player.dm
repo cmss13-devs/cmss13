@@ -120,7 +120,7 @@
 		var/datum/squad/predicted = GLOB.RoleAuthority.get_eligible_squad(player_rank.title, preset.faction, client?.prefs?.preferred_squad)
 		if(istype(predicted, /datum/squad/marine/cryo))
 			to_chat(src, SPAN_WARNING("[rank] is not available with your current squad preferences."))
-			return
+			return FALSE
 
 	if(!GLOB.RoleAuthority.assign_role(src, player_rank, latejoin = TRUE))
 		to_chat(src, SPAN_WARNING("[rank] is not available. Please try another."))

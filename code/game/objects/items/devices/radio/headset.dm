@@ -1086,56 +1086,58 @@
 	if(self_set_done)
 		return
 	var/mob/living/carbon/human/H = loc
-	if(istype(H, /mob/living/carbon/human))
-		if(H.assigned_squad)
-			self_set_done = TRUE
-			name = "[lowertext(H.assigned_squad.name)] radio headset"
-			desc = "This is used by [H.assigned_squad.name] squad members."
-			icon_state = "[lowertext(H.assigned_squad.name)]_headset"
-			frequency = H.assigned_squad.radio_freq
+	if(!istype(H))
+		return
+	if(!H.assigned_squad)
+		return
+	self_set_done = TRUE
+	name = "[lowertext(H.assigned_squad.name)] radio headset"
+	desc = "This is used by [H.assigned_squad.name] squad members."
+	icon_state = "[lowertext(H.assigned_squad.name)]_headset"
+	frequency = H.assigned_squad.radio_freq
 
-			switch(GET_DEFAULT_ROLE(H.job))
-				if(JOB_SQUAD_LEADER)
-					name = "marine leader " + name
-					keys += new /obj/item/device/encryptionkey/squadlead(src)
-					inbuilt_tracking_options = list(
-						"Squad Leader" = TRACKER_SL,
-						"Fireteam Leader" = TRACKER_FTL,
-						"Landing Zone" = TRACKER_LZ,
-						"Commanding Officer" = TRACKER_CO,
-						"Executive Officer" = TRACKER_XO,
-						"Alpha SL" = TRACKER_ASL,
-						"Bravo SL" = TRACKER_BSL,
-						"Charlie SL" = TRACKER_CSL,
-						"Delta SL" = TRACKER_DSL,
-						"Echo SL" = TRACKER_ESL,
-						"Foxtrot SL" = TRACKER_FSL,
-						"Intel SL" = TRACKER_ISL,
-						"Kilo SL" = TRACKER_KSL,
-						"Oscar SL" = TRACKER_OSL
-					)
-					inbuilt_tracking_options -= "[H.assigned_squad.name] SL"
-					locate_setting = TRACKER_LZ
-					volume = RADIO_VOLUME_CRITICAL
-				if(JOB_SQUAD_MEDIC)
-					name = "marine hospital corpsman " + name
-					keys += new /obj/item/device/encryptionkey/med(src)
-				if(JOB_SQUAD_ENGI)
-					name = "marine combat technician " + name
-					keys += new /obj/item/device/encryptionkey/engi(src)
-				if(JOB_SQUAD_TEAM_LEADER)
-					name = "marine fireteam leader " + name
-					keys += new /obj/item/device/encryptionkey/jtac(src)
-				else
-					name = "marine " + name
+	switch(GET_DEFAULT_ROLE(H.job))
+		if(JOB_SQUAD_LEADER)
+			name = "marine leader " + name
+			keys += new /obj/item/device/encryptionkey/squadlead(src)
+			inbuilt_tracking_options = list(
+				"Squad Leader" = TRACKER_SL,
+				"Fireteam Leader" = TRACKER_FTL,
+				"Landing Zone" = TRACKER_LZ,
+				"Commanding Officer" = TRACKER_CO,
+				"Executive Officer" = TRACKER_XO,
+				"Alpha SL" = TRACKER_ASL,
+				"Bravo SL" = TRACKER_BSL,
+				"Charlie SL" = TRACKER_CSL,
+				"Delta SL" = TRACKER_DSL,
+				"Echo SL" = TRACKER_ESL,
+				"Foxtrot SL" = TRACKER_FSL,
+				"Intel SL" = TRACKER_ISL,
+				"Kilo SL" = TRACKER_KSL,
+				"Oscar SL" = TRACKER_OSL
+			)
+			inbuilt_tracking_options -= "[H.assigned_squad.name] SL"
+			locate_setting = TRACKER_LZ
+			volume = RADIO_VOLUME_CRITICAL
+		if(JOB_SQUAD_MEDIC)
+			name = "marine hospital corpsman " + name
+			keys += new /obj/item/device/encryptionkey/med(src)
+		if(JOB_SQUAD_ENGI)
+			name = "marine combat technician " + name
+			keys += new /obj/item/device/encryptionkey/engi(src)
+		if(JOB_SQUAD_TEAM_LEADER)
+			name = "marine fireteam leader " + name
+			keys += new /obj/item/device/encryptionkey/jtac(src)
+		else
+			name = "marine " + name
 
-			set_frequency(frequency)
-			for(var/ch_name in channels)
-				secure_radio_connections[ch_name] = SSradio.add_object(src, GLOB.radiochannels[ch_name],  RADIO_CHAT)
-			recalculateChannels()
-			if(H.mind && H.hud_used && H.hud_used.locate_leader) //make SL tracker visible
-				H.hud_used.locate_leader.alpha = 255
-				H.hud_used.locate_leader.mouse_opacity = MOUSE_OPACITY_ICON
+	set_frequency(frequency)
+	for(var/ch_name in channels)
+		secure_radio_connections[ch_name] = SSradio.add_object(src, GLOB.radiochannels[ch_name],  RADIO_CHAT)
+	recalculateChannels()
+	if(H.mind && H.hud_used && H.hud_used.locate_leader) //make SL tracker visible
+		H.hud_used.locate_leader.alpha = 255
+		H.hud_used.locate_leader.mouse_opacity = MOUSE_OPACITY_ICON
 
 //Distress (ERT) headsets.
 

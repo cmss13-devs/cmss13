@@ -81,21 +81,7 @@ export const PriorityInput = (props) => {
                   const origIdx = itemsOrder.indexOf(item);
                   return (
                     <TableRow className="candystripe" key={item}>
-                      <TableCell>
-                        <Button.Checkbox
-                          checked={selections.includes(item)}
-                          onClick={() => {
-                            const newSelections = selections.includes(item)
-                              ? selections.filter((s) => s !== item)
-                              : [...selections, item];
-                            setSelections(newSelections);
-                          }}
-                          fluid
-                        >
-                          {item}
-                        </Button.Checkbox>
-                      </TableCell>
-                      <TableCell>
+                      <TableCell collapsing>
                         <Stack>
                           <Stack.Item>
                             <Tooltip content="Move up" position="bottom">
@@ -125,6 +111,20 @@ export const PriorityInput = (props) => {
                             </Tooltip>
                           </Stack.Item>
                         </Stack>
+                      </TableCell>
+                      <TableCell>
+                        <Button.Checkbox
+                          checked={selections.includes(item)}
+                          onClick={() => {
+                            const newSelections = selections.includes(item)
+                              ? selections.filter((s) => s !== item)
+                              : [...selections, item];
+                            setSelections(newSelections);
+                          }}
+                          fluid
+                        >
+                          {item}
+                        </Button.Checkbox>
                       </TableCell>
                     </TableRow>
                   );

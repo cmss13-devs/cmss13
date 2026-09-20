@@ -26,6 +26,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	"King" = BE_KING,
 ))
 
+GLOBAL_LIST_INIT(squad_preference_options, list("Alpha", "Bravo", "Charlie", "Delta", "Oscar", "Kilo"))
+
 /datum/preferences
 	var/client/owner
 	var/atom/movable/screen/preview/preview_front

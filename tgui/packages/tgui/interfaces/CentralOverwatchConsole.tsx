@@ -1,6 +1,6 @@
 import type { BooleanLike } from 'common/react';
 import { capitalize } from 'common/string';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useBackend, useSharedState } from '../backend';
 import {
@@ -183,6 +183,11 @@ const SecondaryFunctions = (props) => {
     'secondaryselected',
     'squadmonitor',
   );
+  useEffect(() => {
+    if (secondarycategory === 'supplydrop' && !data.can_launch_crates) {
+      setsecondaryCategory('squadmonitor');
+    }
+  }, [data.can_launch_crates, secondarycategory]);
 
   const squadStringify = {
     alpha: 'red',
@@ -269,7 +274,7 @@ const SecondaryFunctions = (props) => {
           </Tabs>
         </Stack.Item>
         <Stack.Item grow>
-          {secondarycategory === 'ob' && data.can_launch_obs && (
+          {secondarycategory === 'ob' && !!data.can_launch_obs && (
             <OrbitalBombardment />
           )}
           {secondarycategory === 'squadmonitor' &&
@@ -279,7 +284,7 @@ const SecondaryFunctions = (props) => {
               <CommandMonitor />
             ))}
           {secondarycategory === 'oblaunch' && <OrbitalBombardmentLaunch />}
-          {secondarycategory === 'supplydrop' && data.can_launch_crates && (
+          {secondarycategory === 'supplydrop' && !!data.can_launch_crates && (
             <SupplyDrop />
           )}
           {secondarycategory === 'execpanel' && <ExecutivePanel />}

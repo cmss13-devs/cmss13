@@ -73,8 +73,8 @@
 	if(click(atom_clicked, mods))
 		return
 
-	var/is_primary_action = mods[LEFT_CLICK]
-	var/is_secondary_action = mods[RIGHT_CLICK]
+	var/is_primary_action = mods[LEFT_CLICK] == "1"
+	var/is_secondary_action = mods[RIGHT_CLICK] == "1"
 
 	if(is_primary_action)
 		if(atom_clicked.clicked(src, mods))
@@ -84,7 +84,7 @@
 			return
 
 	// Default click functions from here on.
-	if(!is_primary_action || !is_secondary_action)
+	if(!is_primary_action && !is_secondary_action)
 		return
 
 	if (is_mob_incapacitated(TRUE))
@@ -115,8 +115,10 @@
 	if(object_used == atom_clicked)
 		if(is_primary_action)
 			object_used.attack_self(src)
+			update_held_items()
 		else
 			object_used.attack_self_secondary(src)
+			update_held_items()
 		return
 
 	// Don't allow doing anything else if inside a container of some sort, like a locker.
@@ -488,20 +490,20 @@
 	started_testing = 0
 	clicks = 0
 
-/obj/item/clickrate_test/afterattack(atom/A, mob/living/user, flag, params)
+/obj/item/clickrate_test/afterattack(atom/A, mob/living/user, flag, list/modifiers)
 	if(flag)
 		to_world(SPAN_DEBUG("Too close, click something at range."))
 		return
 	if(!started_testing)
 		started_testing = world.time
 		if(!manual)
-			autoclick(user, A, params)
+			autoclick(user, A, modifiers)
 	clicks++
 
-/obj/item/clickrate_test/proc/autoclick(mob/user, atom/A, params)
+/obj/item/clickrate_test/proc/autoclick(mob/user, atom/A, list/modifiers)
 	if(clicks >= 20)
 		attack_self(user)
 		return
-	user.do_click(A, null, params)
-	addtimer(CALLBACK(src, PROC_REF(autoclick), user, A, params), 0.1)
+	user.do_click(A, null, modifiers)
+	addtimer(CALLBACK(src, PROC_REF(autoclick), user, A, modifiers), 0.1)
 #endif

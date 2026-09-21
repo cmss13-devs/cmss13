@@ -384,6 +384,9 @@
 		take_damage(attacking_xeno.melee_damage_lower*WEED_XENO_DAMAGEMULT)
 		return XENO_ATTACK_ACTION
 
+/obj/effect/alien/weeds/attackby_secondary(obj/item/attack_item, mob/living/user, list/mods)
+	return attackby(attack_item, user, mods)
+
 /obj/effect/alien/weeds/attackby(obj/item/attacking_item, mob/living/user)
 	if(explo_proof)
 		return FALSE
@@ -442,6 +445,9 @@
 	icon_state = "weedwall"
 	var/list/wall_connections = list("0", "0", "0", "0")
 	hibernate = TRUE
+
+/obj/effect/alien/weeds/weedwall/attackby_secondary(obj/item/attack_item, mob/living/user, list/mods)
+	return attackby(attack_item, user, mods)
 
 /obj/effect/alien/weeds/weedwall/attackby(obj/item/attacking_item, mob/living/user)
 	. = ..()

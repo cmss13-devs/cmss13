@@ -25,7 +25,7 @@
 	return FALSE
 
 
-/atom/movable/attackby(obj/item/W, mob/living/user)
+/atom/movable/attackby(obj/item/W, mob/living/user, list/mods)
 	. = ..()
 	if(W && !.)
 		if(!(W.flags_item & NOBLUDGEON))
@@ -49,13 +49,16 @@
 
 // Proximity_flag is 1 if this afterattack was called on something adjacent, in your square, or on your person.
 // Click parameters is the params string from byond Click() code, see that documentation.
-/obj/item/proc/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/proc/afterattack(atom/target, mob/user, proximity_flag, list/mods)
 	return FALSE
 
-/obj/item/proc/afterattack_secondary(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/proc/afterattack_secondary(atom/target, mob/user, proximity_flag, list/mods)
 	return FALSE
 
 /obj/item/proc/attack(mob/living/M, mob/living/user)
+	return try_bludgeon(M, user)
+
+/obj/item/proc/try_bludgeon(mob/living/M, mob/living/user)
 	if((flags_item & NOBLUDGEON) || (MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_attacking_corpses) && M.stat == DEAD && !user.get_target_lock(M.faction_group)))
 		return FALSE
 

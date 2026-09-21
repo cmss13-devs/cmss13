@@ -167,9 +167,8 @@
 /datum/action/xeno_action/activable/acid_barrage/on_select(mob/user)
 	RegisterSignal(user, COMSIG_MOB_MOUSEDOWN, PROC_REF(on_mouse_down))
 
-/datum/action/xeno_action/activable/acid_barrage/proc/on_mouse_down(mob/source, atom/target, turf, skin_ctl, params)
+/datum/action/xeno_action/activable/acid_barrage/proc/on_mouse_down(mob/source, atom/target, turf, skin_ctl, list/mods)
 	SIGNAL_HANDLER
-	var/list/mods = params2list(params)
 	source.click(target, mods)
 
 /datum/action/xeno_action/activable/acid_barrage/on_deselect(mob/user)
@@ -210,7 +209,7 @@
 /datum/action/xeno_action/activable/acid_barrage/proc/notify_max_charge()
 	to_chat(owner, SPAN_XENOHIGHDANGER("Our acid barrage is full!"))
 
-/datum/action/xeno_action/activable/acid_barrage/proc/release_barrage(atom/source, atom/target, turf, skin_ctl, params)
+/datum/action/xeno_action/activable/acid_barrage/proc/release_barrage(atom/source, atom/target, turf, skin_ctl, list/modifiers)
 	SIGNAL_HANDLER
 	// The real cooldown starts here
 	apply_cooldown_override(xeno_cooldown)

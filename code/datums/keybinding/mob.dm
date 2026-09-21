@@ -50,7 +50,7 @@
 	if(.)
 		return
 	var/mob/M = user.mob
-	M.mode()
+	M.execute_mode()
 	return TRUE
 
 /datum/keybinding/mob/drop_item

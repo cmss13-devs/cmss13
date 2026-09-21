@@ -193,38 +193,6 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	return 1
 
-/obj/item/weapon/gun/shotgun/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
-	if(!gun_user.Adjacent(object))
-		return ..()
-
-	if(!isliving(object))
-		return ..()
-
-	var/list/modifiers = params2list(params)
-	if(modifiers[CTRL_CLICK] || modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5])
-		return FALSE
-
-	if(!gun_user)
-		set_gun_user(source)
-
-	if(gun_user.get_active_hand() != src)
-		return FALSE
-
-	if(gun_user.throw_mode)
-		return FALSE
-
-	if(gun_user.a_intent != INTENT_HARM)
-		return FALSE
-
-	if(gun_user == object) //Throw back to click logic here to handle self harm prefrence
-		return FALSE
-
-	if(QDELETED(object))
-		return FALSE
-
-	INVOKE_ASYNC(src, PROC_REF(attack), object, gun_user)
-	return COMSIG_MOB_CLICK_HANDLED
-
 //-------------------------------------------------------
 //GENERIC MERC SHOTGUN //Not really based on anything.
 
@@ -1614,3 +1582,68 @@ can cause issues with ammo types getting mixed up during the burst.
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness)
 
 //-------------------------------------------------------
+
+/obj/item/weapon/gun/shotgun/ubarrel
+	name = "\improper internal u7 underbarrel shotgun"
+	desc = "You shouldn't be reading this"
+
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_WIELDED_FIRING_ONLY
+
+	fire_sound = 'sound/weapons/gun_shotgun_u7.ogg'
+	w_class = SIZE_MEDIUM
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/ubarrel
+	ammo = /datum/ammo/bullet/shotgun/buckshot/masterkey
+
+/obj/item/weapon/gun/shotgun/ubarrel/Initialize(mapload, spawn_empty)
+	. = ..()
+	add_bullet_traits(list(
+		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_turfs),
+		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 10.8, GLOB.damage_boost_breaching),
+		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_pylons)
+	))
+
+/obj/item/weapon/gun/shotgun/ubarrel/reload(mob/user, obj/item/ammo_magazine/magazine)
+	if(!ispath(magazine.default_ammo, /datum/ammo/bullet/shotgun/buckshot)) // No buckshot in this gun
+		to_chat(user, SPAN_WARNING("\The [src] only accepts buckshot!"))
+		return
+	return ..()
+
+/obj/item/weapon/gun/shotgun/ubarrel/m20a
+	name = "\improper internal U3 underbarrel shotgun"
+	desc = "You shouldn't be reading this"
+
+	fire_sound = 'sound/weapons/gun_shotgun_u7.ogg'
+	w_class = SIZE_MEDIUM
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/ubarrel
+	ammo = /datum/ammo/bullet/shotgun/buckshot/masterkey
+
+/obj/item/weapon/gun/shotgun/ubarrel/m20a/unloaded
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/ubarrel/unloaded
+
+/obj/item/weapon/gun/shotgun/af13
+	name = "\improper internal af13 underbarrel shotgun"
+	desc = "You shouldn't be reading this"
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_WIELDED_FIRING_ONLY
+
+	fire_sound = 'sound/weapons/gun_shotgun_u7.ogg'
+	w_class = SIZE_MEDIUM
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/af13
+	ammo = /datum/ammo/bullet/shotgun/buckshot/masterkey
+
+/obj/item/weapon/gun/shotgun/af13/Initialize(mapload, spawn_empty)
+	. = ..()
+	add_bullet_traits(list(
+		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 2*5, GLOB.damage_boost_turfs), // 3 hits to break down regular walls, about 6 to break down r-walls
+		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 3*10.8, GLOB.damage_boost_breaching), // 2-taps the R doors
+		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 2*5, GLOB.damage_boost_pylons)
+	))
+
+/obj/item/weapon/gun/shotgun/af13/reload(mob/user, obj/item/ammo_magazine/magazine)
+	if(!ispath(magazine.default_ammo, /datum/ammo/bullet/shotgun/buckshot)) // No buckshot in this gun
+		to_chat(user, SPAN_WARNING("\The [src] only accepts buckshot!"))
+		return
+	return ..()
+
+/obj/item/weapon/gun/shotgun/af13/b
+	name = "\improper internal af13-b underbarrel shotgun"
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/af13b

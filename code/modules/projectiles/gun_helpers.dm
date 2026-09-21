@@ -201,6 +201,11 @@ DEFINES in setup.dm, referenced here.
 	to_chat(user, SPAN_NOTICE(message))
 	return TRUE
 
+/obj/item/weapon/gun/afterattack_secondary(atom/target, mob/user, proximity_flag, list/mods)
+	. = ..()
+	if(ismob(target) && proximity_flag)
+		return try_bludgeon(target, user)
+
 /obj/item/weapon/gun/proc/handle_retrieval(mob/living/carbon/human/user, retrieval_slot)
 	if (!ishuman(user))
 		return FALSE
@@ -238,9 +243,17 @@ DEFINES in setup.dm, referenced here.
 	if(user.equip_to_slot_if_possible(src, WEAR_BACK))
 		to_chat(user, SPAN_WARNING("[src]'s magnetic sling automatically yanks it into your back."))
 
+/obj/item/weapon/gun/attackby_secondary(obj/item/attack_item, mob/living/user, list/mods)
+	try_activate_attachable_weapon()
+	if(!active_attachable || !(active_attachable.flags_attach_features & ATTACH_RELOADABLE))
+		return
+
+	if(check_inactive_hand(user))
+		active_attachable.reload_attachment(attack_item, user)
+
 //Clicking stuff onto the gun.
 //Attachables & Reloading
-/obj/item/weapon/gun/attackby(obj/item/attack_item, mob/user)
+/obj/item/weapon/gun/attackby(obj/item/attack_item, mob/user, list/mods)
 	if(flags_gun_features & GUN_BURST_FIRING)
 		return
 
@@ -259,13 +272,6 @@ DEFINES in setup.dm, referenced here.
 	else if(istype(attack_item,/obj/item/ammo_magazine))
 		if(check_inactive_hand(user))
 			reload(user,attack_item)
-
-/obj/item/weapon/gun/attackby_secondary(obj/item/attack_item, mob/living/user, list/mods)
-	if(!active_attachable || !(active_attachable.flags_attach_features & ATTACH_RELOADABLE))
-		return
-
-	if(check_inactive_hand(user))
-		active_attachable.reload_attachment(attack_item, user)
 
 //tactical reloads
 /obj/item/weapon/gun/MouseDrop_T(atom/dropping, mob/living/carbon/human/user)
@@ -368,22 +374,38 @@ DEFINES in setup.dm, referenced here.
 				//  \\
 //----------------------------------------------------------
 
+/obj/item/weapon/gun/proc/is_attached_to_gun(obj/item/weapon/gun/target)
+	if(!istype(target))
+		return FALSE
+
+	if(target.active_attachable && target.active_attachable.attached_gun == src)
+		return TRUE
+	return FALSE
+
+/obj/item/weapon/gun/proc/check_active_hand(mob/user)
+	if(user)
+		var/obj/item/weapon/gun/in_hand = user.get_active_hand()
+		if(!is_attached_to_gun(in_hand) && in_hand != src) //It has to be held.
+			to_chat(user, SPAN_WARNING("You have to hold [src] to do that!"))
+			return FALSE
+	return TRUE
+
 /obj/item/weapon/gun/proc/check_inactive_hand(mob/user)
 	if(user)
 		var/obj/item/weapon/gun/in_hand = user.get_inactive_hand()
-		if( in_hand != src ) //It has to be held.
+		if(!is_attached_to_gun(in_hand) && in_hand != src) //It has to be held.
 			to_chat(user, SPAN_WARNING("You have to hold [src] to do that!"))
-			return
-	return 1
+			return FALSE
+	return TRUE
 
 /obj/item/weapon/gun/proc/check_both_hands(mob/user)
 	if(user)
 		var/obj/item/weapon/gun/in_handL = user.l_hand
 		var/obj/item/weapon/gun/in_handR = user.r_hand
-		if( in_handL != src && in_handR != src ) //It has to be held.
+		if(in_handL != src && !is_attached_to_gun(in_handL) && in_handR != src && !is_attached_to_gun(in_handR)) //It has to be held.
 			to_chat(user, SPAN_WARNING("You have to hold [src] to do that!"))
-			return
-	return 1
+			return FALSE
+	return TRUE
 
 /obj/item/weapon/gun/proc/has_attachment(attachment)
 	if(!attachment)
@@ -1002,8 +1024,7 @@ DEFINES in setup.dm, referenced here.
 	return FALSE
 
 ///Helper proc that processes a clicked target, if the target is not black tiles, it will not change it. If they are it will return the turf of the black tiles. It will return null if the object is a screen object other than black tiles.
-/proc/get_turf_on_clickcatcher(atom/target, mob/user, params)
-	var/list/modifiers = params2list(params)
+/proc/get_turf_on_clickcatcher(atom/target, mob/user, list/modifiers)
 	if(!istype(target, /atom/movable/screen))
 		return target
 	if(!istype(target, /atom/movable/screen/click_catcher))

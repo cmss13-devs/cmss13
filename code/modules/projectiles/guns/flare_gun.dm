@@ -21,6 +21,14 @@
 
 	var/last_signal_flare_name
 
+/obj/item/weapon/gun/flare/ubarrel
+	name = "internal flare gun"
+	desc = "You shouldn't be reading this"
+	current_mag = /obj/item/ammo_magazine/internal/flare/ubarrel
+
+/obj/item/weapon/gun/flare/ubarrel/set_gun_config_values()
+	. = ..()
+	set_fire_delay(FIRE_DELAY_TIER_4 * 3)
 
 /obj/item/weapon/gun/flare/Initialize(mapload, spawn_empty)
 	. = ..()

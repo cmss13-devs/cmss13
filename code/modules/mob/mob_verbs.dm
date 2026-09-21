@@ -1,3 +1,10 @@
+/mob/verb/mode()
+	set name = "Activate Held Object"
+	set category = "Object"
+	set src = usr
+
+	execute_mode()
+
 /mob/verb/view_stats()
 	set category = "OOC.Records"
 	set name = "View Playtimes"

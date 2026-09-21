@@ -23,9 +23,7 @@
 			return
 	deselect_region()
 
-/datum/buildmode_mode/fill/when_clicked(client/c, params, obj/object)
-	var/list/modifiers = params2list(params)
-
+/datum/buildmode_mode/fill/when_clicked(client/c, list/modifiers, obj/object)
 	if(LAZYACCESS(modifiers, LEFT_CLICK) && LAZYACCESS(modifiers, ALT_CLICK))
 		if(istype(object, /turf) || istype(object, /obj) || istype(object, /mob))
 			objholder = object

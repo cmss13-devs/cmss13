@@ -1110,3 +1110,15 @@ note dizziness decrements automatically in the mob's Life() proc.
 	if(user.is_mob_incapacitated())
 		return
 	return relaydrive(user, direction)
+
+/mob/proc/execute_mode()
+	if(is_mob_incapacitated())
+		return
+
+	var/obj/item/item = get_active_hand()
+	if(!item)
+		return
+
+	item.attack_self(src)
+	update_held_items()
+

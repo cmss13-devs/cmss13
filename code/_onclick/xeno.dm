@@ -119,7 +119,6 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 	if(queued_action && handle_queued_action(target))
 		return TRUE
 
-	var/left_pressed = mods[LEFT_CLICK] == "1"
 	var/alt_pressed = mods[ALT_CLICK] == "1"
 	var/shift_pressed = mods[SHIFT_CLICK] == "1"
 	var/middle_pressed = mods[MIDDLE_CLICK] == "1"

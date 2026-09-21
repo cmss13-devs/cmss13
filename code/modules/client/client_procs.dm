@@ -1076,6 +1076,16 @@ CLIENT_VERB(action_hide_menu)
 
 	return FALSE
 
+/client/proc/set_right_click_menu_mode(shift_only)
+	if(shift_only)
+		winset(src, "mapwindow.map", "right-click=true")
+		winset(src, "ShiftUp", "is-disabled=false")
+		winset(src, "Shift", "is-disabled=false")
+	else
+		winset(src, "mapwindow.map", "right-click=false")
+		winset(src, "default.Shift", "is-disabled=true")
+		winset(src, "default.ShiftUp", "is-disabled=true")
+
 #ifdef SPACEMAN_DMM
 /client/VAR_PRIVATE/eye
 /client/VAR_PRIVATE/pixel_x

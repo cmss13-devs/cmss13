@@ -561,7 +561,8 @@
 	var/obj/item/weapon/gun/firearm = holder_item
 	var/obj/item/attachable/attached_gun/grenade/bomber = firearm.attachments["under"]
 	if(firearm.active_attachable == bomber)
-		if(bomber.breech_open)
+		var/obj/item/weapon/gun/launcher/grenade/attached_gun = bomber.attached_gun
+		if(attached_gun.open_chamber)
 			action_icon_state = "undergl_breech"
 		else
 			action_icon_state = "undergl_off"

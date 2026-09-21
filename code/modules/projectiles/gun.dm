@@ -26,6 +26,9 @@
 	flags_item = TWOHANDED
 	light_system = DIRECTIONAL_LIGHT
 
+
+	/// Disables tracking user's mousedown/mouseup to trigger the weapon
+	var/manually_handle_inputs = FALSE
 	///A custom mouse pointer icon to use when wielded
 	var/mouse_pointer = 'icons/effects/mouse_pointer/rifle_mouse.dmi'
 
@@ -384,6 +387,12 @@
 			// Remove bullet traits of gun from current projectile
 			// Need to use the proc instead of the wrapper because each entry is a list
 			in_chamber._RemoveElement(L)
+
+/obj/item/weapon/gun/proc/get_current_ammo_count()
+	return current_mag.current_rounds
+
+/obj/item/weapon/gun/proc/get_max_ammo_count()
+	return current_mag.max_rounds
 
 /obj/item/weapon/gun/proc/recalculate_attachment_bonuses()
 	//reset weight and force mods
@@ -1235,6 +1244,9 @@ and you're good to go.
 
 	return in_chamber //Returns the projectile if it's actually successful.
 
+/obj/item/weapon/gun/proc/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
+	return
+
 /obj/item/weapon/gun/proc/clear_jam(obj/projectile/projectile_to_fire, mob/user as mob) //Guns jamming, great.
 	flags_gun_features &= ~GUN_BURST_FIRING // Also want to turn off bursting, in case that was on. It probably was.
 	extra_delay = 2 + (burst_delay + extra_delay)*2 // Some extra delay before firing again.
@@ -1247,8 +1259,11 @@ and you're good to go.
 		//    \\
 //----------------------------------------------------------
 
-/obj/item/weapon/gun/proc/Fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield)
+/obj/item/weapon/gun/proc/Fire(atom/target, mob/living/user, list/modifiers, reflex = FALSE, dual_wield)
 	set waitfor = FALSE
+
+	if(active_attachable)
+		active_attachable.activate_attachment(src, user, turn_off = TRUE)
 
 	if(!gun_user)
 		set_gun_user(user)
@@ -1283,7 +1298,7 @@ and you're good to go.
 		if(istype(akimbo) && akimbo.gun_category == gun_category && !(akimbo.flags_gun_features & GUN_WIELDED_FIRING_ONLY))
 			dual_wield = TRUE //increases recoil, increases scatter, and reduces accuracy.
 
-	var/fire_return = handle_fire(target, user, params, reflex, dual_wield, akimbo, fired_by_akimbo)
+	var/fire_return = handle_fire(target, user, modifiers, reflex, dual_wield, akimbo, fired_by_akimbo)
 	if((gun_firemode == GUN_FIREMODE_AUTOMATIC && current_mag?.current_rounds % 8 == 0) || (gun_firemode == GUN_FIREMODE_BURSTFIRE && burst_amount <= shots_fired) || gun_firemode == GUN_FIREMODE_SEMIAUTO)
 		display_ammo(user)
 
@@ -1293,13 +1308,16 @@ and you're good to go.
 	flags_gun_features &= ~GUN_BURST_FIRING // We always want to turn off bursting when we're done, mainly for when we break early mid-burstfire.
 	return AUTOFIRE_CONTINUE
 
-/obj/item/weapon/gun/proc/handle_fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield, akimbo, fired_by_akimbo)
+/obj/item/weapon/gun/proc/handle_fire(atom/target, mob/living/user, list/modifiers, reflex = FALSE, dual_wield, akimbo, fired_by_akimbo)
 	var/turf/curloc = get_turf(user) //In case the target or we are expired.
 	var/turf/targloc = get_turf(target)
 
 	var/atom/original_target = target //This is for burst mode, in case the target changes per scatter chance in between fired bullets.
+	var/obj/item/weapon/gun/held_weapon = user.get_active_hand()
+	if(held_weapon != src && !is_attached_to_gun(held_weapon))
+		return TRUE
 
-	if(loc != user || (flags_gun_features & GUN_WIELDED_FIRING_ONLY && !(flags_item & WIELDED)))
+	if((held_weapon.flags_gun_features & GUN_WIELDED_FIRING_ONLY && !(held_weapon.flags_item & WIELDED)))
 		return TRUE
 
 	//The gun should return the bullet that it already loaded from the end cycle of the last Fire().
@@ -1329,16 +1347,16 @@ and you're good to go.
 
 	var/bullet_velocity = projectile_to_fire?.ammo?.shell_speed + velocity_add
 
-	if(params) // Apply relative clicked position from the mouse info to offset projectile
-		if(!params[CLICK_CATCHER])
-			if(params[VIS_X])
-				projectile_to_fire.p_x = text2num(params[VIS_X])
-			else if(params[ICON_X])
-				projectile_to_fire.p_x = text2num(params[ICON_X])
-			if(params[VIS_Y])
-				projectile_to_fire.p_y = text2num(params[VIS_Y])
-			else if(params[ICON_Y])
-				projectile_to_fire.p_y = text2num(params[ICON_Y])
+	if(modifiers) // Apply relative clicked position from the mouse info to offset projectile
+		if(!modifiers[CLICK_CATCHER])
+			if(modifiers[VIS_X])
+				projectile_to_fire.p_x = text2num(modifiers[VIS_X])
+			else if(modifiers[ICON_X])
+				projectile_to_fire.p_x = text2num(modifiers[ICON_X])
+			if(modifiers[VIS_Y])
+				projectile_to_fire.p_y = text2num(modifiers[VIS_Y])
+			else if(modifiers[ICON_Y])
+				projectile_to_fire.p_y = text2num(modifiers[ICON_Y])
 			var/atom/movable/clicked_target = original_target
 			if(istype(clicked_target))
 				projectile_to_fire.p_x -= clicked_target.bound_width / 2
@@ -1404,7 +1422,7 @@ and you're good to go.
 			if(preference == DUAL_WIELD_SWAP && gun_firemode != GUN_FIREMODE_AUTOMATIC)
 				user.swap_hand()
 			else if(preference != DUAL_WIELD_NONE) //DUAL_WIELD_FIRE, Akimbo firing. Forced if weapons are automatic because it doesn't make sense.
-				INVOKE_ASYNC(akimbo, PROC_REF(Fire), target, user, params, 0, TRUE)
+				INVOKE_ASYNC(akimbo, PROC_REF(Fire), target, user, modifiers, 0, TRUE)
 
 
 	//>>POST PROCESSING AND CLEANUP BEGIN HERE.<<
@@ -1782,11 +1800,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 				to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
 				return FALSE
 
-		if(flags_gun_features & GUN_TRIGGER_SAFETY)
-			to_chat(user, SPAN_WARNING("The safety is on!"))
-			gun_user.balloon_alert(gun_user, "safety on")
-			return
-
 		if(gun_user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (gun_user.a_intent == INTENT_HELP))
 			if(world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
 				to_chat(gun_user, SPAN_DANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
@@ -1794,11 +1807,21 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 				click_empty(gun_user)
 			return FALSE
 
-		if((flags_gun_features & GUN_WIELDED_FIRING_ONLY) && !(flags_item & WIELDED)) //If we're not holding the weapon with both hands when we should.
+		var/obj/item/weapon/gun/held_gun = user.get_active_hand()
+		if(held_gun != src && !is_attached_to_gun(held_gun))
+			to_chat(user, SPAN_WARNING("You have to hold \the [src]!"))
+			return
+
+		if(held_gun.flags_gun_features & GUN_TRIGGER_SAFETY)
+			to_chat(user, SPAN_WARNING("The safety is on!"))
+			gun_user.balloon_alert(gun_user, "safety on")
+			return
+
+		if((flags_gun_features & GUN_WIELDED_FIRING_ONLY) && !(held_gun.flags_item & WIELDED)) //If we're not holding the weapon with both hands when we should.
 			to_chat(user, SPAN_WARNING("You need a more secure grip to fire this weapon!"))
 			return
 
-		if((flags_gun_features & GUN_WY_RESTRICTED) && !wy_allowed_check(user))
+		if((held_gun.flags_gun_features & GUN_WY_RESTRICTED) && !wy_allowed_check(user))
 			return
 
 		//Has to be on the bottom of the stack to prevent delay when failing to fire the weapon for the first time.
@@ -2158,8 +2181,11 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	SIGNAL_HANDLER
 	target = get_turf(target)
 
-/obj/item/weapon/gun/proc/stop_fire()
+/obj/item/weapon/gun/proc/stop_fire(source, atom/target, turf/target, skin, list/mods)
 	SIGNAL_HANDLER
+	if(!mods[LEFT_CLICK])
+		return
+
 	if(!target || (gun_user.get_active_hand() != src))
 		return
 
@@ -2177,7 +2203,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		UnregisterSignal(gun_user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
 
 	gun_user = to_set
-	if(gun_user)
+	if(gun_user && !manually_handle_inputs)
 		RegisterSignal(gun_user, COMSIG_MOB_MOUSEDOWN, PROC_REF(start_fire))
 		RegisterSignal(gun_user, COMSIG_MOB_MOUSEDRAG, PROC_REF(change_target))
 		RegisterSignal(gun_user, COMSIG_MOB_MOUSEUP, PROC_REF(stop_fire))
@@ -2190,84 +2216,90 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	set_gun_user(null)
 
 ///Update the target if you draged your mouse
-/obj/item/weapon/gun/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
+/obj/item/weapon/gun/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, list/modifiers)
 	SIGNAL_HANDLER
-	set_target(get_turf_on_clickcatcher(over_object, gun_user, params))
+	set_target(get_turf_on_clickcatcher(over_object, gun_user, modifiers))
 	gun_user?.face_atom(target)
+
+/obj/item/weapon/gun/proc/try_activate_attachable_weapon()
+	if(active_attachable)
+		return
+	for(var/slot in attachments)
+		var/obj/item/attachable/attached_gun/attachment = attachments[slot]
+		if(!istype(attachment) || !(attachment.flags_attach_features & ATTACH_ACTIVATION))
+			continue
+		attachment.activate_attachment(src, gun_user)
+		if(active_attachable)
+			break
 
 ///Check if the gun can fire and add it to bucket auto_fire system if needed, or just fire the gun if not
 /// SIGNAL_HANDLER for COMSIG_MOB_MOUSEDOWN
-/obj/item/weapon/gun/proc/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
+/obj/item/weapon/gun/proc/start_fire(datum/source, atom/object, turf/location, control, list/modifiers, bypass_checks = FALSE)
 	SIGNAL_HANDLER
 
 	if(!gun_user)
 		set_gun_user(source)
 
-	var/list/modifiers = params2list(params)
 	if(modifiers[RIGHT_CLICK])
-		active_attachable.fire_attachment(object, src, source)
+		try_activate_attachable_weapon()
+		if(!active_attachable)
+			return
+		active_attachable.fire_attachment(object, src, source, modifiers)
 		return COMSIG_MOB_CLICK_HANDLED
 
-	if(!modifiers[LEFT_CLICK])
-		return FALSE
+	if(modifiers[MIDDLE_CLICK] && !modifiers[SHIFT_CLICK])
+		// Override the modifiers and return early
+		// Forces a secondary attack after skipping gun fire code.
+		modifiers[MIDDLE_CLICK] = null
+		modifiers[RIGHT_CLICK] = "1"
+		return
+
+	if(!modifiers[LEFT_CLICK] || modifiers[SHIFT_CLICK] || modifiers[ALT_CLICK])
+		return
 
 	// Don't allow doing anything else if inside a container of some sort, like a locker.
 	if(!isturf(gun_user.loc))
-		return FALSE
+		return
 
 	if(istype(object, /atom/movable/screen))
-		return FALSE
+		return
 
 	if(!bypass_checks)
-		if(gun_user.get_active_hand() != src) // If the object in our active hand is not this gun, abort, also shouldn't ever
-			return FALSE
+		if(!check_active_hand(gun_user)) // If the object in our active hand is not this gun, abort, also shouldn't ever
+			return
 
 		if(gun_user.throw_mode)
-			return FALSE
+			return
 
 		if(gun_user.Adjacent(object))
-			if((gun_user.a_intent != INTENT_HARM) || gun_user.loc == get_turf(object)) //Dealt with by click.adjacent/attack code
-				return FALSE
-
-			if(HAS_TRAIT(src, TRAIT_GUN_BAYONET))
-				if(isturf(object))
-					var/turf/turf_flag_check = object
-					if(turf_flag_check.turf_flags & TURF_ORGANIC)
-						return FALSE
-				if(isobj(object))
-					var/obj/object_flag_check = object
-					if(object_flag_check.flags_obj & OBJ_ORGANIC)
-						if(!(istypestrict(object, /obj/effect/alien/weeds)))
-							return FALSE
-
 			if(isliving(object))
 				if(flags_gun_features & GUN_BATTLEFIELD_EXECUTION)
 					var/can_battlefield_execute = (gun_user.zone_selected in list("head", "eyes", "mouth"))
 					if(can_battlefield_execute && ishuman(gun_user) && gun_user.a_intent == INTENT_HARM && skillcheck(gun_user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))
-						return FALSE
+						return
 
 	if(QDELETED(object))
-		return FALSE
+		return
 
 	if(gun_user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (gun_user.a_intent == INTENT_HELP))
 		if(world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
 			to_chat(gun_user, SPAN_DANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
 			gun_user.balloon_alert(gun_user, "help intent safety")
 			click_empty(gun_user)
-		return FALSE
+		return
 
-	set_target(get_turf_on_clickcatcher(object, gun_user, params))
+	set_target(get_turf_on_clickcatcher(object, gun_user, modifiers))
 	if((gun_firemode == GUN_FIREMODE_SEMIAUTO))
 		if(Fire(object, gun_user, modifiers))
 			reset_fire()
 		return COMSIG_MOB_CLICK_HANDLED
 	else if(gun_firemode == GUN_FIREMODE_BURSTFIRE && (flags_gun_features & GUN_BURST_FIRING))
-		return FALSE
+		return
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE)
 	return COMSIG_MOB_CLICK_HANDLED
 
 /// Wrapper proc for the autofire subsystem to ensure the important args aren't null
-/obj/item/weapon/gun/proc/fire_wrapper(atom/target, mob/living/user, params, reflex = FALSE, dual_wield)
+/obj/item/weapon/gun/proc/fire_wrapper(atom/target, mob/living/user, list/modifiers, reflex = FALSE, dual_wield)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	if(!target)
 		target = src.target
@@ -2275,7 +2307,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		user = gun_user
 	if(!target || !user)
 		return NONE
-	return Fire(target, user, params, reflex, dual_wield)
+	return Fire(target, user, modifiers, reflex, dual_wield)
 
 /// Setter proc for fa_firing
 /obj/item/weapon/gun/proc/set_auto_firing(auto = FALSE)

@@ -1587,7 +1587,7 @@ SUBSYSTEM_DEF(minimaps)
  * handles actions when the mouse is held down while the tool is active.
  * returns COMSIG_MOB_CLICK_CANCELED to continue handling, NONE to cancel
  */
-/atom/movable/screen/minimap_tool/proc/on_mousedown(mob/source, atom/object, location, control, params)
+/atom/movable/screen/minimap_tool/proc/on_mousedown(mob/source, atom/object, location, control, list/modifiers)
 	SIGNAL_HANDLER
 	if(!(src in source.client.screen))
 		UnregisterSignal(source, COMSIG_MOB_MOUSEDOWN)

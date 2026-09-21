@@ -323,10 +323,6 @@
 
 //Throwing stuff
 
-/mob/living/carbon/toggle_throw()
-	if(!stat && isturf(loc) && !is_mob_restrained())
-		toggle_throw_mode(THROW_MODE_NORMAL)
-
 /mob/living/carbon/proc/toggle_throw_mode(type)
 	if(type == THROW_MODE_OFF || throw_mode == type)
 		throw_mode = THROW_MODE_OFF

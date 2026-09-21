@@ -24,6 +24,7 @@
 
 	client.images = null
 	client.screen = null //remove hud items just in case
+	client.set_right_click_menu_mode(shift_to_open_context_menu)
 	client.render_plates_shown = alist()
 	if(!hud_used)
 		create_hud()

@@ -1185,7 +1185,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			if(user.client.prefs.toggle_right_click_menu)
 				user.client.prefs.toggle_right_click_menu = FALSE
 				user.client.set_right_click_menu_mode(shift_only = TRUE)
-				to_chat(user, SPAN_NOTICE("Right click no longer opens the contextual menu, it is now accessible only with [SPAN_WARNING("SHIFT + Right Click")]."))
+				to_chat(user, SPAN_NOTICE("Right click no longer opens the contextual menu, it is now accessible only with [SPAN_ORANGE("SHIFT + Right Click")]."))
 			else
 				user.client.prefs.toggle_right_click_menu = TRUE
 				user.client.set_right_click_menu_mode(shift_only = FALSE)

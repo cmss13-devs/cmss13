@@ -1,0 +1,5 @@
+author: "labeo0"
+delete-after: True
+changes:
+  - bugfix: "Facehuggers/larvas can no longer scuttle under doors with placed barricades to bypass them."
+  - bugfix: "Facehuggers can no longer click-hug humans lying down behind the barricades"

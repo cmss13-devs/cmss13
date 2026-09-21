@@ -83,18 +83,6 @@
 	if(mods[ALT_CLICK] && mods[LEFT_CLICK] && loc == user && !user.get_active_hand())
 		return FALSE
 
-	if(mods[ALT_CLICK] && mods[RIGHT_CLICK])
-		storage_draw_logic(src.name)
-
-	if(mods[ALT_CLICK] && mods[MIDDLE_CLICK])
-		if(istype(src, /obj/item/storage/belt/medical))
-			if(ishuman(user))
-				var/obj/item/storage/belt/medical/med_belt = src
-				med_belt.instant_pill_grabbable = !med_belt.instant_pill_grabbable
-				to_chat(user, SPAN_NOTICE("You will now [med_belt.instant_pill_grabbable ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))
-		else
-			to_chat(user, SPAN_NOTICE("This item isn't a medical belt."))
-
 	return ..()
 
 /obj/item/storage/proc/handle_mmb_open(mob/user)

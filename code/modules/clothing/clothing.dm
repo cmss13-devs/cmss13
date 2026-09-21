@@ -633,20 +633,4 @@
 		pockets.open(user)
 		return TRUE
 
-	if(mods[ALT_CLICK] && mods[MIDDLE_CLICK])
-		if(accessories)
-			remove_accessory(user, pick_accessory_to_remove(user, user))
-		else
-			to_chat(user, "No accessories to remove!")
-
-	if(mods[ALT_CLICK] && mods[RIGHT_CLICK])
-		if(!istype(src, /obj/item/clothing/suit/storage)) // This will trigger on uniforms, for webbings etc
-			for(var/obj/item/clothing/accessory/storage/A in accessories)
-				if(A.hold.storage_flags)
-					A.hold.storage_draw_logic(A.name)
-					break
-		else
-			var/obj/item/clothing/suit/storage/storage = src
-			storage.pockets.storage_draw_logic(src.name)
-
 	return ..()

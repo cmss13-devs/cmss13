@@ -593,7 +593,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<h2><b><u>Input Settings:</u></b></h2>"
 			dat += "<b>Mode:</b> <a href='byond://?_src_=prefs;preference=hotkeys'><b>[(hotkeys) ? "Hotkeys Mode" : "Send to Chat"]</b></a><br>"
 			dat += "<b>Keybinds:</b> <a href='byond://?_src_=prefs;preference=viewmacros'><b>View Keybinds</b></a><br>"
-			dat += "<b>Menu on Right-click:</b> <a href='byond://?_src_=prefs;preference=toggle_right_click_menu'><b>[(toggle_right_click_menu) ? "On" : "Off"]</b></a><br>"
+			dat += "<b>Right-click Contextual Menu:</b> <a href='byond://?_src_=prefs;preference=toggle_right_click_menu'><b>[(toggle_right_click_menu) ? "On" : "Off"]</b></a><br>"
 			dat += "<br><b>Say Input Style:</b> <a href='byond://?_src_=prefs;preference=inputstyle'><b>[tgui_say ? "Modern (default)" : "Legacy"]</b></a><br>"
 			dat += "<b>Say Input Color:</b> <a href='byond://?_src_=prefs;preference=inputcolor'><b>[tgui_say_light_mode ? "Lightmode" : "Darkmode (default)"]</b></a><br>"
 
@@ -1185,11 +1185,11 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			if(user.client.prefs.toggle_right_click_menu)
 				user.client.prefs.toggle_right_click_menu = FALSE
 				user.client.set_right_click_menu_mode(shift_only = TRUE)
-				to_chat(user, "Right click no longer opens a menu, only with SHIFT + Right Click.")
+				to_chat(user, SPAN_NOTICE("Right click no longer opens the contextual menu, it is now accessible only with [SPAN_WARNING("SHIFT + Right Click")]."))
 			else
 				user.client.prefs.toggle_right_click_menu = TRUE
 				user.client.set_right_click_menu_mode(shift_only = FALSE)
-				to_chat(user, "Right click opens a menu.")
+				to_chat(user, SPAN_NOTICE("Right click now opens the contextual menu."))
 
 		if("traits")
 			traits_picker.tgui_interact(user)

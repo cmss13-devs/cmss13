@@ -9,11 +9,11 @@
 ///Xeno abilities are activated using middle mouse
 #define XENO_ABILITY_CLICK_MIDDLE 1
 ///Xeno abilities are activated using right click
-#define XENO_ABILITY_CLICK_RIGHT 3
+#define XENO_ABILITY_CLICK_RIGHT 2
 //=================================================
 
 /// Update this to whatever the largest value of the XENO_ABILITY_CLICK_* defines is.
-#define XENO_ABILITY_CLICK_MAX 3
+#define XENO_ABILITY_CLICK_MAX 2
 
 //toggle_prefs bits from /datum/preferences
 //=================================================

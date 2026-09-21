@@ -64,7 +64,7 @@
 
 	last_chew = world.time
 
-/mob/living/carbon/human/UnarmedAttack(atom/A, proximity, click_parameters)
+/mob/living/carbon/human/UnarmedAttack(atom/A, proximity, list/mods)
 
 	if(body_position == LYING_DOWN && !HAS_TRAIT(src, TRAIT_HAULED)) //No attacks while laying down
 		return 0
@@ -83,12 +83,18 @@
 		return
 
 	SEND_SIGNAL(src, COMSIG_HUMAN_UNARMED_ATTACK, A)
-	A.attack_hand(src, click_parameters)
+	if(mods[LEFT_CLICK])
+		A.attack_hand(src, mods)
+	else
+		A.attack_hand_secondary(src, mods)
 
 /datum/proc/handle_click(mob/living/carbon/human/user, atom/A, params) //Heres our handle click relay proc thing.
 	return HANDLE_CLICK_PASS_THRU
 
 /atom/proc/attack_hand(mob/user)
+	return
+
+/atom/proc/attack_hand_secondary(mob/user)
 	return
 
 /mob/living/carbon/human/MouseDrop_T(atom/dropping, mob/living/user)

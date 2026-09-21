@@ -3121,7 +3121,7 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "under"
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON
 
-	attached_gun = /obj/item/weapon/gun/launcher/grenade/u1
+	attached_gun = /obj/item/weapon/gun/launcher/grenade/ubarrel/u1
 	attachment_firing_delay = FIRE_DELAY_TIER_4 * 3
 
 /obj/item/attachable/attached_gun/grenade/get_examine_text(mob/user)
@@ -3166,7 +3166,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "An older version of the classic underslung grenade launcher. Can store five grenades, and fire them farther, but fires them slower."
 	icon_state = "grenade-mk1"
 	attach_icon = "grenade-mk1_a"
-	attached_gun = /obj/item/weapon/gun/launcher/grenade/mk1
+	attached_gun = /obj/item/weapon/gun/launcher/grenade/ubarrel/mk1
 	attachment_firing_delay = 3 SECONDS
 
 
@@ -3175,7 +3175,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "An antique underbarrel grenade launcher. Adopted in 1969 for the M16, it was made obsolete centuries ago; how its ended up here is a mystery to you. Holds only one propriatary 40mm grenade, does not have modern IFF systems, it won't pass through your friends."
 	icon_state = "grenade-m203"
 	attach_icon = "grenade-m203_a"
-	attached_gun = /obj/item/weapon/gun/launcher/grenade/m203
+	attached_gun = /obj/item/weapon/gun/launcher/grenade/ubarrel/m203
 	// one shot, so if you can reload fast, you can shoot fast
 	attachment_firing_delay = 0.5 SECONDS
 
@@ -3185,7 +3185,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A W-Y take on an underslung grenade launcher system, made for the NSG23 line of weapons. Can store up to five grenades and fires them about as far as your U1 UGL for M41A Mk2."
 	icon_state = "u1rmc"
 	attach_icon = "u1rmc_a"
-	attached_gun = /obj/item/weapon/gun/launcher/grenade/u1rmc
+	attached_gun = /obj/item/weapon/gun/launcher/grenade/ubarrel/u1rmc
 	attachment_firing_delay = 2.4 SECONDS
 
 

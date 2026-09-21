@@ -26,7 +26,7 @@
 /*
 	Animals & All Unspecified
 */
-/mob/living/UnarmedAttack(atom/A)
+/mob/living/UnarmedAttack(atom/A, proximity, list/mods)
 	A.attack_animal(src)
 
 /atom/proc/attack_animal(mob/user as mob)

@@ -78,6 +78,12 @@
 	return TRUE
 
 
+/obj/item/storage/attack_hand_secondary(mob/user)
+	. = ..()
+	handle_mmb_open(user)
+	return TRUE
+
+
 /obj/item/storage/clicked(mob/user, list/mods)
 	if(!mods[SHIFT_CLICK] && (mods[MIDDLE_CLICK] || mods[RIGHT_CLICK]) && !mods[ALT_CLICK] && CAN_PICKUP(user, src))
 		handle_mmb_open(user)

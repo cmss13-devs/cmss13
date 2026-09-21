@@ -180,8 +180,7 @@
 	else
 		if(!isitem(targeted_atom) && !issurface(targeted_atom))
 			next_move += 4
-		if(!is_secondary_action)
-			UnarmedAttack(targeted_atom, 1, mods)
+		UnarmedAttack(targeted_atom, 1, mods)
 
 /mob/proc/check_click_intercept(list/mods, A)
 	//Client level intercept
@@ -293,7 +292,7 @@
 	proximity_flag is not currently passed to attack_hand, and is instead used
 	in human click code to allow glove touches only at melee range.
 */
-/mob/proc/UnarmedAttack(atom/A, proximity_flag, click_parameters)
+/mob/proc/UnarmedAttack(atom/A, proximity_flag, list/mods)
 	if(!client || !client.remote_control)
 		return FALSE
 	A.attack_remote(src)

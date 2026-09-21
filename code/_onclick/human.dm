@@ -17,7 +17,8 @@
 		if(XENO_ABILITY_CLICK_MIDDLE)
 			if(mods[MIDDLE_CLICK] && !mods[SHIFT_CLICK])
 				use_ability = TRUE
-		if(XENO_ABILITY_CLICK_RIGHT)
+		// TODO WAT: !! REMOVE THE 2 HERE BEFORE MERGE !!
+		if(2, XENO_ABILITY_CLICK_RIGHT)
 			if(mods[RIGHT_CLICK])
 				use_ability = TRUE
 

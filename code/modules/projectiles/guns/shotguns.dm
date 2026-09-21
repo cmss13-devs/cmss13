@@ -1586,6 +1586,8 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/ubarrel
 	name = "\improper internal u7 underbarrel shotgun"
 	desc = "You shouldn't be reading this"
+	icon = null
+	icon_state = null
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_WIELDED_FIRING_ONLY
 

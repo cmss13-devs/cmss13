@@ -137,7 +137,8 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 	switch(preference)
 		if(XENO_ABILITY_CLICK_MIDDLE)
 			activate_ability = middle_pressed && !shift_pressed
-		if(XENO_ABILITY_CLICK_RIGHT)
+		// TODO WAT: !! REMOVE THE 2 BEFORE MERGE !!
+		if(2, XENO_ABILITY_CLICK_RIGHT)
 			activate_ability = right_pressed
 
 	if(activate_ability && selected_ability)

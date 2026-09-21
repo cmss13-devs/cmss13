@@ -633,7 +633,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 			return "middle click"
 		if(XENO_ABILITY_CLICK_RIGHT)
 			return "right click"
-	return "middle click"
+	return "right click"
 
 /mob/proc/get_ability_mouse_name()
 	var/ability = get_ability_mouse_key()

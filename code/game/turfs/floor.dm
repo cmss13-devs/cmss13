@@ -7,6 +7,7 @@
 	turf_flags = TURF_BURNABLE|TURF_BREAKABLE
 	var/mineral = "metal"
 	var/image/wet_overlay
+	traction = 1
 
 	var/tile_type = /obj/item/stack/tile/plasteel
 	var/plating_type = /turf/open/floor/plating

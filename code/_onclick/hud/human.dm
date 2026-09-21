@@ -96,6 +96,7 @@
 		draw_nutrition(ui_datum)
 	draw_locator_spot(owner, ui_datum)
 	draw_zone_sel(ui_datum, ui_alpha, ui_color)
+	draw_vehicle_zone_sel(ui_datum, ui_alpha, ui_color)
 	draw_gun_related(ui_datum, ui_alpha)
 
 

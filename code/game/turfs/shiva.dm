@@ -2,6 +2,7 @@
 /turf/open/floor/shiva //Instance me!
 	icon = 'icons/turf/floors/ice_colony/shiva_floor.dmi'
 	icon_state = "floor"
+	traction = 1.1 // reasoning being that all of those floors LOOK like platings, which have a traction of 1.1 on other files. consistency!
 
 /turf/open/floor/shiva/blue
 	icon_state = "blue"

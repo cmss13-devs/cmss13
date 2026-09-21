@@ -238,8 +238,14 @@
 	contains = list(
 		/obj/item/storage/box/packet/flare,
 		/obj/item/storage/box/packet/flare,
+		/obj/item/storage/box/packet/flare,
+		/obj/item/storage/box/packet/flare,
+		/obj/item/storage/box/packet/flare,
+		/obj/item/storage/box/packet/flare,
+		/obj/item/storage/box/packet/flare,
+		/obj/item/storage/box/packet/flare,
 	)
-	cost = 40
+	cost = 10
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "M74 AGM-Star Shell Grenade Crate"
 	group = "Explosives"

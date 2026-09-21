@@ -34,6 +34,10 @@
 
 /obj/effect/vehicle_spawner/box_van/pizza_van/decrepit/load_hardpoints(obj/vehicle/multitile/box_van/pizza_van/V)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)
+	V.add_hardpoint(new /obj/item/hardpoint/engine/van)
+	V.add_hardpoint(new /obj/item/hardpoint/fuel_tank/van)
+	V.add_hardpoint(new /obj/item/hardpoint/radiator/civilian)
+	V.add_hardpoint(new /obj/item/hardpoint/battery/civilian)
 
 //PRESET: wheels installed
 /obj/effect/vehicle_spawner/box_van/pizza_van/fixed/spawn_vehicle()
@@ -46,3 +50,7 @@
 
 /obj/effect/vehicle_spawner/box_van/pizza_van/fixed/load_hardpoints(obj/vehicle/multitile/box_van/pizza_van/V)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)
+	V.add_hardpoint(new /obj/item/hardpoint/engine/van)
+	V.add_hardpoint(new /obj/item/hardpoint/fuel_tank/van)
+	V.add_hardpoint(new /obj/item/hardpoint/radiator/civilian)
+	V.add_hardpoint(new /obj/item/hardpoint/battery/civilian)

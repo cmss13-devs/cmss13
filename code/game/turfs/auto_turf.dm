@@ -99,6 +99,7 @@
 //Kutjevo & Trijent sand
 /turf/open/auto_turf/sand
 	layer_name = list("red dirt", "sand", "rocky sand", "this layer does not exist", "call a coder")
+	traction = 0.8
 
 /turf/open/auto_turf/sand/insert_self_into_baseturfs()
 	baseturfs += /turf/open/auto_turf/sand/layer0
@@ -143,6 +144,7 @@
 	icon_state = "ice_0"
 	icon_prefix = "ice"
 	layer_name = list("cracked permafrost","permafrost","glacial permafrost","warn a coder","warn a coder")
+	traction = 0.75
 
 /turf/open/auto_turf/ice/insert_self_into_baseturfs()
 	baseturfs += /turf/open/auto_turf/ice/layer0
@@ -259,22 +261,27 @@
 /turf/open/auto_turf/snow/layer0 //still have to manually define the layers for the editor
 	icon_state = "snow_0"
 	bleed_layer = 0
+	traction = 0.8
 
 /turf/open/auto_turf/snow/layer1
 	icon_state = "snow_1"
 	bleed_layer = 1
+	traction = 0.7
 
 /turf/open/auto_turf/snow/layer2
 	icon_state = "snow_2"
 	bleed_layer = 2
+	traction = 0.6
 
 /turf/open/auto_turf/snow/layer3
 	icon_state = "snow_3"
 	bleed_layer = 3
+	traction = 0.55
 
 /turf/open/auto_turf/snow/layer4
 	icon_state = "snow_4" //Add sorokyne rock decals to this one
 	bleed_layer = 4
+	traction = 0.5
 
 
 //new strata turfs
@@ -289,22 +296,27 @@
 /turf/open/auto_turf/snow/brown_base/layer0 //still have to manually define the layers for the editor
 	icon_state = "snow_b_0"
 	bleed_layer = 0
+	traction = 0.8
 
 /turf/open/auto_turf/snow/brown_base/layer1
 	icon_state = "snow_b_1"
 	bleed_layer = 1
+	traction = 0.7
 
 /turf/open/auto_turf/snow/brown_base/layer2
 	icon_state = "snow_b_2"
 	bleed_layer = 2
+	traction = 0.6
 
 /turf/open/auto_turf/snow/brown_base/layer3
 	icon_state = "snow_b_3"
 	bleed_layer = 3
+	traction = 0.55
 
 /turf/open/auto_turf/snow/brown_base/layer4
 	icon_state = "snow_b_4" //Add sorokyne rock decals to this one
 	bleed_layer = 4
+	traction = 0.5
 
 /turf/open/auto_turf/strata_grass
 	name = "matted grass"
@@ -313,6 +325,7 @@
 	icon_prefix = "grass"
 	layer_name = list("ground","lush thick grass")
 	desc = "Grass, dirt, mud, and other assorted high moisture cave flooring."
+	traction = 0.8
 
 /turf/open/auto_turf/strata_grass/insert_self_into_baseturfs()
 	baseturfs += /turf/open/auto_turf/strata_grass/layer0
@@ -345,6 +358,7 @@
 	icon_prefix = "grass"
 	layer_name = list("ground","lush thick grass")
 	desc = "grass, dirt, mud, and other assorted high moisture cave flooring."
+	traction = 0.8
 
 /turf/open/auto_turf/tyrargo_grass/insert_self_into_baseturfs()
 	baseturfs += /turf/open/auto_turf/tyrargo_grass/layer0
@@ -376,6 +390,7 @@
 	layer_name = list("wind blown dirt", "volcanic plate rock", "volcanic plate and rock", "this layer does not exist")
 	icon = 'icons/turf/floors/auto_shale.dmi'
 	icon_prefix = "shale"
+	traction = 0.8
 
 /turf/open/auto_turf/shale/get_dirt_type()
 	return DIRT_TYPE_SHALE

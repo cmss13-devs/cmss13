@@ -51,6 +51,12 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/burncolormod = 1
 	/// Cant be used in chemical synthesis in ANY way.
 	var/lockdown_chem = FALSE
+	/// Can this be poured into a vehicle fuel tank? See /obj/item/hardpoint/fuel_tank.
+	var/vehicle_fuel = FALSE
+	/// Can this be poured into a vehicle radiator as coolant? See /obj/item/hardpoint/radiator.
+	var/vehicle_coolant = FALSE
+	/// Multiplies a vehicle's top speed and acceleration while this fuel is loaded. 1 is no effect.
+	var/vehicle_fuel_performance_mult = 1
 	var/fire_type = FIRE_VARIANT_DEFAULT //Unique types of fire not modeled by chemfire (1 = Armor Shredding Greenfire). Effects in flamer.dm
 	// Chem generator and research stuff
 	var/chemclass = CHEM_CLASS_NONE //Decides how rare the chem in the generation process

@@ -5,3 +5,21 @@ ghost_whisper_12.ogg by ondrosik -- https://freesound.org/s/207797/ -- License: 
 
 hit_punch.ogg and hit_kick.ogg are made by Taira Komori
 (https://taira-komori.jpn.org/freesounden.html)
+
+vehicles/trackrattling.ogg: tank bulldozer tracked vehicle sound effect atmo by Garuda1982 -- https://freesound.org/s/541240/ -- License: Attribution 4.0
+vehicles/turretdamaged.ogg: Rotating tank turret planetary electric motor by lorefold -- https://freesound.org/s/607311/ -- License: Creative Commons 0
+vehicles/metalimpact1.ogg: Car Crash Sound Effect -- https://pixabay.com/sound-effects/film-special-effects-sound-effect-car-crash-394903/ -- License: Pixabay Content License
+vehicles/metalimpact2.ogg: Car Crash Impact Head on Smash Metal and Glass Breaking -- https://www.zapsplat.com/music/car-crash-impact-head-on-smash-metal-and-glass-breaking/ -- License: ZapSplat Standard License
+vehicles/metalimpact3.ogg: Bicycle Impact Crash Hits Metal Fence or Wall -- https://www.zapsplat.com/music/bicycle-impact-crash-hits-metal-fence-or-wall/ -- License: ZapSplat Standard License
+vehicles/metalimpact4.ogg: Car Crash Sound Effect by DRAGON-STUDIO -- https://pixabay.com/sound-effects/film-special-effects-car-crash-sound-effect-376874/ -- License: Pixabay Content License
+vehicles/metalimpact5.ogg: Clank Car Crash Collision by qubodup -- https://pixabay.com/sound-effects/film-special-effects-clank-car-crash-collision-6206/ -- License: Pixabay Content License
+vehicles/metalimpact6.ogg: Car Crash Sound by DRAGON-STUDIO -- https://pixabay.com/sound-effects/film-special-effects-car-crash-sound-376882/ -- License: Pixabay Content License
+vehicles/iffbeepactive.ogg: 5 beep c.wav by jobro -- https://freesound.org/s/33789/ -- License: Attribution 3.0
+vehicles/iffbeepoff.ogg: warning by EtherAudio -- https://freesound.org/s/856382/ -- License: Attribution 4.0
+vehicles/acidsizzle1.ogg: Food Sizzling.wav by bennathanras -- https://freesound.org/s/607430/ -- License: Attribution NonCommercial 4.0
+vehicles/acidsizzle2.ogg, vehicles/acidsizzle3.ogg, vehicles/acidsizzle4.ogg, vehicles/acidsizzle5.ogg, vehicles/acidsizzle6.ogg, vehicles/acidsizzle7.ogg: Sizzle / Acid Burn by bottles -- https://freesound.org/s/382313/ -- License: Creative Commons 0
+vehicles/turbinestartup.ogg, vehicles/turbineidle.ogg, vehicles/turbineoff.ogg: Start-up Sound - U.S. Army M1A1 Tank - Gas Turbine Engine.mp3 by adr1911 -- https://freesound.org/s/542582/ -- License: Creative Commons 0
+vehicles/treadedDrift.ogg: Floor Scrape 11 by Department64 -- https://freesound.org/s/681435/ -- License: Attribution 4.0
+vehicles/arcstart.ogg, vehicles/arcidle.ogg, vehicles/arcstop.ogg: Tank M2 Bradley Start And Stop -- https://quicksounds.com/sound/21044/tank-m2-bradley-start-and-stop -- License: Quick Sounds Standard License
+vehicles/apcstart.ogg, vehicles/apcidle.ogg, vehicles/apcstop.ogg: Tank M551 Start Stop -- https://quicksounds.com/sound/21067/tank-m551-start-stop -- License: Quick Sounds Standard License
+vehicles/humveestart.ogg, vehicles/humveeidle.ogg, vehicles/humveestop.ogg: Ford LTL-9000 Engine Start and Idle -- https://pixabay.com/sound-effects/technology-ford-ltl-9000-engine-start-and-idle-30042/ -- License: Pixabay Content License

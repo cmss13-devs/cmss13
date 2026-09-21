@@ -1,5 +1,6 @@
 #define SHOW_ON_STATUSBAR(type)\
 ##type/MouseEntered(location, control, params){\
+	. = ..();\
 	var/client/client = usr.client;\
 	if(client.prefs?.hide_statusbar){\
 		winset(client, "mapwindow.status_bar", "is-visible=false");\
@@ -8,6 +9,7 @@
 	winset(client, "mapwindow.status_bar", "text=\"[name]\"");\
 };\
 ##type/MouseExited(location, control, params){\
+	. = ..();\
 	var/client/client = usr.client;\
 	if(client.prefs?.hide_statusbar){\
 		return;\

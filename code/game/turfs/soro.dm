@@ -68,6 +68,7 @@
 	icon_state = "browndirt_road"
 	baseturfs = /turf/open/gm/road
 	minimap_color = MINIMAP_DIRT
+	traction = 1.0
 
 /turf/open/gm/grass/dirt
 	name = "grass"
@@ -113,6 +114,7 @@
 	icon_state = "beach"
 	baseturfs = /turf/open/gm/coast
 	supports_surgery = FALSE
+	traction = 0.75
 
 /turf/open/gm/coast/dirt/north
 

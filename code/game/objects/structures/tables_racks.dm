@@ -235,10 +235,20 @@
 		setDir(SOUTH)
 
 /obj/structure/surface/table/BlockedPassDirs(atom/movable/mover, target_dir)
+	// Same vehicle exemption as barricade and window. Only meaningful once flipped.
+	if(istype(mover, /obj/vehicle/multitile) && flipped)
+		return NO_BLOCKED_MOVEMENT
+
 	for(var/obj/structure/S in get_turf(mover))
 		if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable non-border objects allow you to universally climb over others
 			return NO_BLOCKED_MOVEMENT
 
+	return ..()
+
+/// Same vehicle exemption as BlockedPassDirs() above.
+/obj/structure/surface/table/BlockedExitDirs(atom/movable/mover, target_dir)
+	if(istype(mover, /obj/vehicle/multitile) && flipped)
+		return NO_BLOCKED_MOVEMENT
 	return ..()
 
 //Flipping tables, nothing more, nothing less

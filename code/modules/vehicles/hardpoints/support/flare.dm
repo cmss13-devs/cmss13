@@ -11,12 +11,14 @@
 	damage_multiplier = 0.1
 
 	activatable = TRUE
+	allowed_seat = VEHICLE_DRIVER
 
 	health = 500
-	firing_arc = 120
+	traverse_arc = 120
 
-	ammo = new /obj/item/ammo_magazine/hardpoint/flare_launcher
-	max_clips = 3
+	ammo = new /obj/item/ammo_magazine/hardpoint/turret_flare/apc
+	max_clips = 0
+	uses_starshell_ammo = TRUE
 
 	use_muzzle_flash = TRUE
 	angle_muzzleflash = FALSE
@@ -31,6 +33,11 @@
 
 	scatter = 6
 	fire_delay = 3.0 SECONDS
+
+/obj/item/hardpoint/support/flare_launcher/Initialize()
+	. = ..()
+	// Loaded shell-by-shell rather than swapped as a whole magazine.
+	ammo_type = null
 
 /obj/item/hardpoint/support/flare_launcher/set_bullet_traits()
 	..()

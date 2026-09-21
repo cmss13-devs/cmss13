@@ -22,6 +22,7 @@ GLOBAL_LIST_INIT(cm_vending_walkman, list(
 	list("Red-Black Cassette", 10, /obj/item/device/cassette_tape/heavymetal, VENDOR_ITEM_REGULAR),
 	list("Red Striped Cassette", 10, /obj/item/device/cassette_tape/hairmetal, VENDOR_ITEM_REGULAR),
 	list("Rising Sun Cassette", 10, /obj/item/device/cassette_tape/indie, VENDOR_ITEM_REGULAR),
+	list("Liberation Cassette", 10, /obj/item/device/cassette_tape/liberation, VENDOR_ITEM_REGULAR),
 	list("Walkman", 50, /obj/item/device/walkman, VENDOR_ITEM_REGULAR),
 	list("Walkman (White Band)", 50, /obj/item/device/walkman/white_band, VENDOR_ITEM_REGULAR),
 	list("Cassette Pouch", 15, /obj/item/storage/pouch/cassette, VENDOR_ITEM_REGULAR),

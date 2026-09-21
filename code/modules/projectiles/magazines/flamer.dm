@@ -79,10 +79,14 @@
 		if(G.current_mag == src)
 			G.update_icon()
 
+/**
+ * Refuels this tank from a fuel source. Also accepts the M34A2 tank's own Primary/Secondary flamer fuel tanks as a source/destination.
+ * Still no fuel mixing either way, the flamer_chem/reagent_list check below blocks it unless one side is empty or already the same chem.
+ */
 /obj/item/ammo_magazine/flamer_tank/afterattack(obj/target, mob/user , flag) //refuel at fueltanks when we run out of ammo.
 	if(get_dist(user,target) > 1)
 		return ..()
-	if(!istype(target, /obj/structure/reagent_dispensers/tank/fuel) && !istype(target, /obj/item/tool/weldpack) && !istype(target, /obj/item/storage/backpack/marine/engineerpack) && !istype(target, /obj/item/ammo_magazine/flamer_tank))
+	if(!istype(target, /obj/structure/reagent_dispensers/tank/fuel) && !istype(target, /obj/item/tool/weldpack) && !istype(target, /obj/item/storage/backpack/marine/engineerpack) && !istype(target, /obj/item/ammo_magazine/flamer_tank) && !istype(target, /obj/item/ammo_magazine/hardpoint/primary_flamer) && !istype(target, /obj/item/ammo_magazine/hardpoint/secondary_flamer))
 		return ..()
 
 	if(!target.reagents || length(target.reagents.reagent_list) < 1)

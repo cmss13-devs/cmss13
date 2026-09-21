@@ -21,6 +21,10 @@
 	dir = 4
 	},
 /obj/item/device/megaphone,
+/obj/effect/landmark/interior/spawn/intercom{
+	pixel_x = -1;
+	pixel_y = 15
+	},
 /turf/open/floor,
 /area/interior/vehicle/arc)
 "Dn" = (

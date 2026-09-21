@@ -321,7 +321,7 @@
 	R.intensityfire = burn_level
 	R.rangefire = radius
 
-	new /obj/flamer_fire(T, cause_data, R, R.rangefire, null, flameshape, target, , , fire_type)
+	new /obj/flamer_fire(T, cause_data, R, R.rangefire, null, flameshape, target, , , fire_type, resolve_flame_mount(T, T, null))
 
 /obj/item/explosive/grenade/incendiary/molotov
 	name = "\improper improvised firebomb"

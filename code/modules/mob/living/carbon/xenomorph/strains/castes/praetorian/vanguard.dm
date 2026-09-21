@@ -93,13 +93,19 @@
 		return
 
 	//X = xeno user, A = target atom
-	var/list/turf/target_turfs = get_line(pierce_user, targetted_atom, include_start_atom = FALSE)
+	// Aim at the closest tile of the tank's footprint instead of its center tile.
+	var/atom/line_target = targetted_atom
+	if(istype(targetted_atom, /obj/vehicle/multitile))
+		var/obj/vehicle/multitile/vehicle_target = targetted_atom
+		line_target = get_closest_turf_of_multitile_vehicle(pierce_user, vehicle_target) || targetted_atom
+	var/list/turf/target_turfs = get_line(pierce_user, line_target, include_start_atom = FALSE)
 	var/length_of_line = LAZYLEN(target_turfs)
 	if(length_of_line > 3)
 		target_turfs = target_turfs.Copy(1, 4)
 
 	// Get list of target mobs
 	var/list/target_mobs = list()
+	var/obj/vehicle/multitile/hit_vehicle = null
 	var/blocked = FALSE
 
 	for(var/turf/path_turf as anything in target_turfs)
@@ -108,6 +114,11 @@
 		//Check for walls etc and stop if we encounter one
 		if(path_turf.density)
 			break
+
+		if(!hit_vehicle)
+			var/obj/vehicle/multitile/candidate = get_multitile_vehicle_at(path_turf)
+			if(candidate)
+				hit_vehicle = candidate
 
 		//Check for structures such as doors
 		for(var/atom/path_content as anything in path_turf.contents)
@@ -151,6 +162,20 @@
 		current_mob.flick_attack_overlay(current_mob, "slash")
 		current_mob.apply_armoured_damage(get_xeno_damage_slash(current_mob, damage), ARMOR_MELEE, BRUTE, null, 20)
 		playsound(current_mob, pierce_sounds, 30, 1)
+
+	// Once per use, guaranteed hit to a random internal module at Hull/Turret, otherwise external.
+	//
+	// Gives the vehicle its own clear hit message instead of the generic "slashes its claws" line.
+	if(hit_vehicle)
+		playsound(hit_vehicle, pierce_sounds, 30, TRUE)
+		var/target_slot = hit_vehicle.get_attack_target_slot(pierce_user)
+		if(target_slot == WOUND_SLOT_HULL || target_slot == HDPT_TURRET)
+			pierce_user.visible_message(SPAN_DANGER("\The [pierce_user] pierces \the [hit_vehicle], puncturing straight through to its internals!"), SPAN_DANGER("We pierce \the [hit_vehicle], puncturing straight through to its internals!"))
+			hit_vehicle.force_internal_module_damage(target_slot, damage, "slash", pierce_user)
+		else
+			var/obj/item/hardpoint/target_hardpoint = hit_vehicle.resolve_targeted_hardpoint(target_slot)
+			pierce_user.visible_message(SPAN_DANGER("\The [pierce_user] pierces \the [hit_vehicle]!"), SPAN_DANGER("We pierce [hit_vehicle.get_attack_desc(pierce_user)]!"))
+			target_hardpoint?.take_damage(damage * GUARANTEED_EXTERNAL_HIT_DAMAGE_MULT, "slash", pierce_user, unmitigated = TRUE)
 
 	if (length(target_mobs) >= shield_regen_threshold)
 		var/datum/behavior_delegate/praetorian_vanguard/behavior = pierce_user.behavior_delegate
@@ -231,6 +256,31 @@
 
 	if (!check_and_use_plasma_owner())
 		return
+
+	// Neither Cleave mode can grab a vehicle. Root halves its momentum instead, fling deals tank_damage.
+	if(istype(target_atom, /obj/vehicle/multitile))
+		if(!is_adjacent_to_multitile_vehicle(cleave_user, target_atom))
+			to_chat(cleave_user, SPAN_XENOWARNING("We must be adjacent to our target!"))
+			return
+
+		var/obj/vehicle/multitile/vehicle = target_atom
+		cleave_user.face_atom(vehicle)
+		cleave_user.animation_attack_on(vehicle, 10)
+		var/tank_hitsound = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
+		playsound(vehicle, tank_hitsound, 75, TRUE)
+		play_wound_gain_effects(vehicle, WOUND_DAMTYPE_BRUTE, cleave_user)
+
+		if(root_toggle)
+			vehicle.halve_speed()
+			cleave_user.visible_message(SPAN_XENODANGER("[cleave_user] slams into [vehicle], slowing it to a crawl!"), SPAN_XENOHIGHDANGER("We slam into [vehicle.get_attack_desc(cleave_user)], slowing it to a crawl!"))
+			cleave_user.flick_attack_overlay(vehicle, "punch")
+		else
+			cleave_user.visible_message(SPAN_XENODANGER("[cleave_user] deals [vehicle] a massive blow!"), SPAN_XENOHIGHDANGER("We deal [vehicle.get_attack_desc(cleave_user)] a massive blow!"))
+			cleave_user.flick_attack_overlay(vehicle, "slam")
+			vehicle.take_damage_type(tank_damage, "slash", cleave_user)
+
+		apply_cooldown()
+		return ..()
 
 	if (!isxeno_human(target_atom) || cleave_user.can_not_harm(target_atom))
 		to_chat(cleave_user, SPAN_XENODANGER("We must target a hostile!"))

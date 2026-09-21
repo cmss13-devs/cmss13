@@ -62,6 +62,9 @@
 	var/root_toggle = TRUE
 	var/buffed = FALSE // Are we buffed
 
+	/// Plain damage against a tank, since neither root nor fling can grab onto a vehicle. Just figured it'd be neat as a combo or something.
+	var/tank_damage = 40
+
 /datum/action/xeno_action/onclick/toggle_cleave
 	name = "Toggle Cleave Type"
 	action_icon_state = "prae_cleave_root"

@@ -85,6 +85,12 @@
 	role_reserved_slots += RRS
 
 /obj/vehicle/multitile/apc/command/add_seated_verbs(mob/living/M, seat)
+	// Reassign this APC's CIC overwatch to the new driver's squad, if they're a Tank Crewman with one.
+	// driver.mind is required so a map-placed dummy/mannequin can never trigger an assignment just by existing pre-buckled.
+	if(seat == VEHICLE_DRIVER && ishuman(M))
+		var/mob/living/carbon/human/driver = M
+		if(driver.mind && driver.job == JOB_TANK_CREW && driver.assigned_squad)
+			update_overwatch_squad(driver.assigned_squad)
 	if(!M.client)
 		return
 	add_verb(M.client, list(
@@ -96,12 +102,43 @@
 		add_verb(M.client, list(
 			/obj/vehicle/multitile/proc/toggle_door_lock,
 			/obj/vehicle/multitile/proc/activate_horn,
+			/obj/vehicle/multitile/proc/toggle_cruise_control,
+			/obj/vehicle/multitile/proc/set_cruise_control_granularity,
+			/obj/vehicle/multitile/proc/toggle_turn_signal_north,
+			/obj/vehicle/multitile/proc/toggle_turn_signal_south,
+			/obj/vehicle/multitile/proc/toggle_turn_signal_east,
+			/obj/vehicle/multitile/proc/toggle_turn_signal_west,
+			/obj/vehicle/multitile/proc/toggle_engine,
+			/obj/vehicle/multitile/proc/cycle_hardpoint,
 		))
+		give_action(M, /datum/action/human_action/vehicle_action/toggle_door_lock)
+		give_action(M, /datum/action/human_action/vehicle_action/toggle_engine)
+		if(!(M.client.prefs.toggles_vehicle & VEHICLE_SIMPLE_ACCELERATION))
+			give_action(M, /datum/action/human_action/vehicle_action/toggle_cruise_control)
+			give_action(M, /datum/action/human_action/vehicle_action/set_cruise_control_granularity)
+		RegisterSignal(M, COMSIG_MOB_VEHICLE_PREFS_CHANGED, PROC_REF(on_driver_prefs_changed))
+		start_crew_hud(M, VEHICLE_DRIVER)
 	else if(seat == VEHICLE_GUNNER)
 		add_verb(M.client, list(
 			/obj/vehicle/multitile/proc/switch_hardpoint,
 			/obj/vehicle/multitile/proc/cycle_hardpoint,
+			/obj/vehicle/multitile/proc/toggle_hardpoint_fire_mode,
+			/obj/vehicle/multitile/proc/toggle_iff_module,
+			/obj/vehicle/multitile/proc/toggle_turret_safety,
+			/obj/vehicle/multitile/proc/toggle_slave_secondary_to_driver,
 		))
+		give_action(M, /datum/action/human_action/vehicle_action/toggle_iff)
+		give_action(M, /datum/action/human_action/vehicle_action/toggle_gyro)
+		get_gyro_hardpoint()?.recalculate_gyro(TRUE)
+		if(get_slavable_secondary())
+			give_action(M, /datum/action/human_action/vehicle_action/slave_secondary)
+		start_crew_hud(M, VEHICLE_GUNNER)
+	if(seat == VEHICLE_DRIVER || seat == VEHICLE_GUNNER)
+		if(active_hp[seat]?.get_flame_mode())
+			give_action(M, /datum/action/human_action/vehicle_action/toggle_hardpoint_fire_mode)
+		give_action(M, /datum/action/human_action/vehicle_action/use_phone)
+	refresh_hardpoint_actions()
+	ensure_active_hardpoint(seat)
 
 /obj/vehicle/multitile/apc/command/remove_seated_verbs(mob/living/M, seat)
 	if(!M.client)
@@ -116,12 +153,39 @@
 		remove_verb(M.client, list(
 			/obj/vehicle/multitile/proc/toggle_door_lock,
 			/obj/vehicle/multitile/proc/activate_horn,
+			/obj/vehicle/multitile/proc/toggle_cruise_control,
+			/obj/vehicle/multitile/proc/set_cruise_control_granularity,
+			/obj/vehicle/multitile/proc/toggle_turn_signal_north,
+			/obj/vehicle/multitile/proc/toggle_turn_signal_south,
+			/obj/vehicle/multitile/proc/toggle_turn_signal_east,
+			/obj/vehicle/multitile/proc/toggle_turn_signal_west,
+			/obj/vehicle/multitile/proc/toggle_engine,
+			/obj/vehicle/multitile/proc/cycle_hardpoint,
 		))
+		remove_action(M, /datum/action/human_action/vehicle_action/toggle_door_lock)
+		remove_action(M, /datum/action/human_action/vehicle_action/toggle_engine)
+		remove_action(M, /datum/action/human_action/vehicle_action/toggle_cruise_control)
+		remove_action(M, /datum/action/human_action/vehicle_action/set_cruise_control_granularity)
+		UnregisterSignal(M, COMSIG_MOB_VEHICLE_PREFS_CHANGED)
+		stop_crew_hud(M, VEHICLE_DRIVER)
 	else if(seat == VEHICLE_GUNNER)
 		remove_verb(M.client, list(
 			/obj/vehicle/multitile/proc/switch_hardpoint,
 			/obj/vehicle/multitile/proc/cycle_hardpoint,
+			/obj/vehicle/multitile/proc/toggle_hardpoint_fire_mode,
+			/obj/vehicle/multitile/proc/toggle_iff_module,
+			/obj/vehicle/multitile/proc/toggle_turret_safety,
+			/obj/vehicle/multitile/proc/toggle_slave_secondary_to_driver,
 		))
+		remove_action(M, /datum/action/human_action/vehicle_action/toggle_iff)
+		remove_action(M, /datum/action/human_action/vehicle_action/toggle_gyro)
+		remove_action(M, /datum/action/human_action/vehicle_action/slave_secondary)
+		get_gyro_hardpoint()?.recalculate_gyro(FALSE)
+		stop_crew_hud(M, VEHICLE_GUNNER)
+	if(seat == VEHICLE_DRIVER || seat == VEHICLE_GUNNER)
+		remove_action(M, /datum/action/human_action/vehicle_action/cycle_hardpoint)
+		remove_action(M, /datum/action/human_action/vehicle_action/toggle_hardpoint_fire_mode)
+		remove_action(M, /datum/action/human_action/vehicle_action/use_phone)
 
 /obj/vehicle/multitile/apc/command/initialize_cameras(change_tag = FALSE)
 	if(!camera)
@@ -224,6 +288,15 @@
 //PRESET: only wheels installed
 /obj/effect/vehicle_spawner/apc_cmd/plain/load_hardpoints(obj/vehicle/multitile/apc/command/V)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
+	V.add_hardpoint(new /obj/item/hardpoint/engine/apc)
+	V.add_hardpoint(new /obj/item/hardpoint/fuel_tank/uscm)
+	V.add_hardpoint(new /obj/item/hardpoint/radiator/uscm)
+	V.add_hardpoint(new /obj/item/hardpoint/battery/uscm)
+	V.add_hardpoint(new /obj/item/hardpoint/iff_module/uscm)
+	V.add_hardpoint(new /obj/item/hardpoint/visual_sensors/uscm)
+	V.add_hardpoint(new /obj/item/hardpoint/air_filter/uscm)
+	V.add_hardpoint(new /obj/item/hardpoint/turret_ring/uscm)
+	V.add_hardpoint(new /obj/item/hardpoint/hatch/armored/uscm)
 
 //PRESET: default hardpoints, destroyed
 /obj/effect/vehicle_spawner/apc_cmd/decrepit/spawn_vehicle()
@@ -240,6 +313,15 @@
 	V.add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
 	V.add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
+	V.add_hardpoint(new /obj/item/hardpoint/engine/apc)
+	V.add_hardpoint(new /obj/item/hardpoint/fuel_tank/uscm)
+	V.add_hardpoint(new /obj/item/hardpoint/radiator/uscm)
+	V.add_hardpoint(new /obj/item/hardpoint/battery/uscm)
+	V.add_hardpoint(new /obj/item/hardpoint/iff_module/uscm)
+	V.add_hardpoint(new /obj/item/hardpoint/visual_sensors/uscm)
+	V.add_hardpoint(new /obj/item/hardpoint/air_filter/uscm)
+	V.add_hardpoint(new /obj/item/hardpoint/turret_ring/uscm)
+	V.add_hardpoint(new /obj/item/hardpoint/hatch/armored/uscm)
 
 //PRESET: default hardpoints
 /obj/effect/vehicle_spawner/apc_cmd/fixed/load_hardpoints(obj/vehicle/multitile/apc/command/V)
@@ -247,3 +329,12 @@
 	V.add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
 	V.add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
+	V.add_hardpoint(new /obj/item/hardpoint/engine/apc)
+	V.add_hardpoint(new /obj/item/hardpoint/fuel_tank/uscm)
+	V.add_hardpoint(new /obj/item/hardpoint/radiator/uscm)
+	V.add_hardpoint(new /obj/item/hardpoint/battery/uscm)
+	V.add_hardpoint(new /obj/item/hardpoint/iff_module/uscm)
+	V.add_hardpoint(new /obj/item/hardpoint/visual_sensors/uscm)
+	V.add_hardpoint(new /obj/item/hardpoint/air_filter/uscm)
+	V.add_hardpoint(new /obj/item/hardpoint/turret_ring/uscm)
+	V.add_hardpoint(new /obj/item/hardpoint/hatch/armored/uscm)

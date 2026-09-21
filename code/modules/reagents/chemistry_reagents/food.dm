@@ -401,6 +401,9 @@
 	color = "#302000" // rgb: 48, 32, 0
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_NUTRITIOUS = 2)
+	vehicle_fuel = TRUE
+	// -10% top speed and acceleration when run neat. Also puffs grey exhaust smoke past a fuel threshold.
+	vehicle_fuel_performance_mult = 0.9
 
 /datum/reagent/enzyme
 	name = "Universal Enzyme"

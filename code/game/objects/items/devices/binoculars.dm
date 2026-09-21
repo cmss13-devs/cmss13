@@ -1,3 +1,7 @@
+/// Whether the given mob is inside a tank's interior, where binoculars don't make sense.
+/proc/is_in_tank_interior(mob/user)
+	return user && istype(get_area(user), /area/interior/vehicle/tank)
+
 /obj/item/device/binoculars
 	name = "binoculars"
 	gender = PLURAL
@@ -31,6 +35,11 @@
 
 /obj/item/device/binoculars/attack_self(mob/user)
 	..()
+
+	// Only blocks a real held pair, not a vehicle-owned hidden instance like gunner_rangefinder.
+	if((loc == user) && is_in_tank_interior(user))
+		to_chat(user, SPAN_WARNING("There's not enough room to use [src] properly in here."))
+		return
 
 	if(SEND_SIGNAL(user, COMSIG_BINOCULAR_ATTACK_SELF, src))
 		return
@@ -88,6 +97,7 @@
 	var/laser_cooldown = 0
 	var/cooldown_duration = 200 //20 seconds
 	var/obj/effect/overlay/temp/laser_coordinate/coord
+	var/acquiring = FALSE
 	var/target_acquisition_delay = 100 //10 seconds
 	var/rangefinder_popup = TRUE //Whether coordinates are displayed in a separate popup window.
 	var/last_x = "UNKNOWN"
@@ -136,6 +146,9 @@
 /obj/item/device/binoculars/range/handle_click(mob/living/carbon/human/user, atom/targeted_atom, list/mods)
 	if(!istype(user))
 		return
+	if((loc == user) && is_in_tank_interior(user))
+		to_chat(user, SPAN_WARNING("There's not enough room to use [src] properly in here."))
+		return FALSE
 	if(mods[CTRL_CLICK])
 		if(user.stat != CONSCIOUS)
 			to_chat(user, SPAN_WARNING("You cannot use [src] while incapacitated."))
@@ -144,14 +157,16 @@
 			return FALSE
 		if(mods[CLICK_CATCHER])
 			return FALSE
-		if(user.z != targeted_atom.z && !coord)
+		// Use the vehicle's real-world position for a hidden gunner rangefinder instance.
+		var/atom/position_ref = (loc == user) ? user : loc
+		if(position_ref.z != targeted_atom.z && !coord)
 			to_chat(user, SPAN_WARNING("You cannot get a direct laser from where you are."))
 			return FALSE
 		if(!(is_ground_level(targeted_atom.z)))
 			to_chat(user, SPAN_WARNING("INVALID TARGET: target must be on the surface."))
 			return FALSE
 		if(user.sight & SEE_TURFS)
-			var/list/turf/path = get_line(user, targeted_atom, include_start_atom = FALSE)
+			var/list/turf/path = get_line(position_ref, targeted_atom, include_start_atom = FALSE)
 			for(var/turf/T in path)
 				if(T.opacity)
 					to_chat(user, SPAN_WARNING("There is something in the way of the laser!"))
@@ -170,6 +185,9 @@
 
 	if(coord)
 		to_chat(user, SPAN_WARNING("You're already targeting something."))
+		return
+	if(acquiring)
+		to_chat(user, SPAN_WARNING("You're already acquiring a target."))
 		return
 	if(world.time < laser_cooldown)
 		to_chat(user, SPAN_WARNING("[src]'s laser battery is recharging."))
@@ -192,10 +210,38 @@
 	var/turf/TU = get_turf(targeted_atom)
 	if(!istype(TU) || user.action_busy)
 		return
+
+	// Cleared right before every way out of the wind-up, so it never gets stuck TRUE.
+	acquiring = TRUE
 	playsound(src, 'sound/effects/nightvision.ogg', 35)
 	to_chat(user, SPAN_NOTICE("INITIATING LASER TARGETING. Stand still."))
-	if(!do_after(user, acquisition_time, INTERRUPT_ALL, BUSY_ICON_GENERIC) || world.time < laser_cooldown)
+
+	// A gunner rangefinder must keep its turret aimed at TU for the whole acquisition, aborting if it drifts.
+	var/obj/vehicle/multitile/tank/tracking_tank = istype(loc, /obj/vehicle/multitile/tank) ? loc : null
+	var/obj/item/hardpoint/holder/tank_turret/tracking_turret = tracking_tank ? (locate() in tracking_tank.hardpoints) : null
+
+	var/success = TRUE
+	if(tracking_turret)
+		var/elapsed = 0
+		while(elapsed < acquisition_time)
+			sleep(1)
+			elapsed += 1
+			if(QDELETED(src) || QDELETED(user) || QDELETED(tracking_turret) || user.is_mob_incapacitated(TRUE))
+				success = FALSE
+				break
+			if(abs(angle_delta(Get_Angle_Grounded(get_turf(tracking_tank), TU), tracking_turret.current_angle)) > RANGEFINDER_TURRET_ARC_TOLERANCE)
+				to_chat(user, SPAN_WARNING("The turret drifted off target - lasing aborted."))
+				success = FALSE
+				break
+		if(success && world.time < laser_cooldown)
+			success = FALSE
+	else if(!do_after(user, acquisition_time, INTERRUPT_ALL, BUSY_ICON_GENERIC) || world.time < laser_cooldown)
+		success = FALSE
+
+	acquiring = FALSE
+	if(!success || QDELETED(src))
 		return
+
 	var/obj/effect/overlay/temp/laser_coordinate/LT = new (TU, las_name, user)
 	coord = LT
 	last_x = obfuscate_x(coord.x)
@@ -204,7 +250,16 @@
 	playsound(src, 'sound/effects/binoctarget.ogg', 35)
 	show_coords(user)
 	while(coord)
-		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		if(tracking_turret)
+			sleep(30)
+			if(QDELETED(src) || QDELETED(coord) || QDELETED(tracking_turret) || QDELETED(user) || user.is_mob_incapacitated(TRUE))
+				QDEL_NULL(coord)
+				break
+			if(abs(angle_delta(Get_Angle_Grounded(get_turf(tracking_tank), TU), tracking_turret.current_angle)) > RANGEFINDER_TURRET_ARC_TOLERANCE)
+				to_chat(user, SPAN_WARNING("The turret drifted off target - lasing lost."))
+				QDEL_NULL(coord)
+				break
+		else if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			QDEL_NULL(coord)
 			break
 
@@ -221,6 +276,9 @@
 		ui.open()
 
 /obj/item/device/binoculars/range/ui_state(mob/user)
+	//  the UI silently fails to open for the gunner without this
+	if(loc != user)
+		return GLOB.always_state
 	return GLOB.inventory_state
 
 /obj/item/device/binoculars/range/ui_data(mob/user)

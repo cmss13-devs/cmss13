@@ -775,6 +775,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		"Weapons",
 		"Vehicle Ammo",
 		"Vehicle Equipment",
+		"Vehicle Spare Parts",
 		"Attachments",
 		"Ammo",
 		"Weapons Specialist Ammo",

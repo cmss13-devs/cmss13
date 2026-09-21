@@ -6,11 +6,10 @@
 	disp_icon = "tank"
 	disp_icon_state = "odrive_enhancer"
 
-	health = 250
+	health = 550
 
-	// 20% movespeed increase. Remember that movespeed is given in delay
 	buff_multipliers = list(
-		"move" = 0.8
+		"move" = 1.2
 	)
 
 	px_offsets = list(
@@ -25,12 +24,12 @@
 		return
 	for(var/obj/item/hardpoint/locomotion/TR in V.hardpoints)
 		if(TR.health > 0)
-			V.misc_multipliers["move"] *= LAZYACCESS(buff_multipliers, "move")
+			V.gear_performance_mult *= LAZYACCESS(buff_multipliers, "move")
 			buff_applied = TRUE
 			break
 
 /obj/item/hardpoint/support/overdrive_enhancer/remove_buff(obj/vehicle/multitile/V)
 	if(!buff_applied)
 		return
-	V.misc_multipliers["move"] /= LAZYACCESS(buff_multipliers, "move")
+	V.gear_performance_mult /= LAZYACCESS(buff_multipliers, "move")
 	buff_applied = FALSE

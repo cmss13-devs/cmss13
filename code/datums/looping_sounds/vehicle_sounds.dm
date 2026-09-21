@@ -11,6 +11,49 @@
 	// Matches this file's other vehicle loops. Also applies to turretdamaged.ogg.
 	volume = 25
 
+/**
+ * Splits the traverse noise into a heavily cut interior copy and a moderately cut exterior one,
+ * rather than letting playsound() forward one full-volume template into the interior.
+ * 
+ * This should make the sounds made by the tank a bit more bearable following some complaints, both for the turret
+ * rotating sound and for the engine sounds.
+ *
+ * Arguments:
+ * * soundfile = The sound file picked by get_sound().
+ * * volume_override = Volume to use in place of this datum's own volume.
+ */
+/datum/looping_sound/tank_turret/play(soundfile, volume_override)
+	var/turf/source_turf = get_turf(parent)
+	if(!source_turf)
+		return
+
+	var/base_volume = volume_override || volume
+	// derived before either multiplier lands, so attenuation never shrinks the audible radius.
+	var/sound_range = extra_range || floor(0.25 * base_volume)
+
+	// parent is the hardpoint that owns the traverse (the turret itself, or a weapon running its
+	// own rotation), so the vehicle has to come off its owner rather than its loc.
+	var/obj/item/hardpoint/hardpoint = parent
+	var/obj/vehicle/multitile/vehicle = istype(hardpoint) ? hardpoint.owner : null
+	var/list/crew_clients = vehicle?.get_interior_mob_clients()
+	if(length(crew_clients))
+		var/datum/sound_template/crew_template = new()
+		crew_template.file = get_sfx(soundfile)
+		crew_template.volume = base_volume * TURRET_TRAVERSE_INTERIOR_VOLUME_MULT
+		crew_template.channel = get_free_channel()
+		SSsound.queue(crew_template, crew_clients)
+
+	// skips the automatic intterior forward step and stops the crew from hearing double sounds.
+	var/datum/sound_template/outside_template = new()
+	outside_template.file = get_sfx(soundfile)
+	outside_template.volume = base_volume * TURRET_TRAVERSE_EXTERIOR_VOLUME_MULT
+	outside_template.channel = get_free_channel()
+	outside_template.x = source_turf.x
+	outside_template.y = source_turf.y
+	outside_template.z = source_turf.z
+	outside_template.range = sound_range
+	SSsound.queue(outside_template)
+
 // Source: freesound.org/s/541240/ (Garuda1982, Attribution 4.0). See sound/ATTRIBUTION.txt
 /datum/looping_sound/tank_tracks
 	mid_sounds = 'sound/vehicles/trackrattling.ogg'
@@ -136,8 +179,8 @@
 	var/computed_volume = ENGINE_SOUND_MIN_VOLUME + effective_fraction * (ENGINE_SOUND_MAX_VOLUME - ENGINE_SOUND_MIN_VOLUME)
 	var/computed_frequency = ENGINE_SOUND_MIN_FREQUENCY + effective_fraction * (ENGINE_SOUND_MAX_FREQUENCY - ENGINE_SOUND_MIN_FREQUENCY)
 
-	play_direct_to_crew(vehicle, soundfile, computed_volume, computed_frequency)
-	play_to_outside_hearers(vehicle, soundfile, computed_volume, computed_frequency)
+	play_direct_to_crew(vehicle, soundfile, computed_volume * VEHICLE_ENGINE_INTERIOR_VOLUME_MULT, computed_frequency)
+	play_to_outside_hearers(vehicle, soundfile, computed_volume * VEHICLE_ENGINE_EXTERIOR_VOLUME_MULT, computed_frequency, computed_volume)
 	return computed_frequency
 
 /**
@@ -183,8 +226,9 @@
  * * soundfile = The sound file to play.
  * * sound_volume = Playback volume.
  * * sound_frequency = Playback frequency (pitch/speed) override.
+ * * range_volume = Volume the audible radius is derived from. Defaults to sound_volume.
  */
-/datum/looping_sound/tank_engine/proc/play_to_outside_hearers(obj/vehicle/multitile/vehicle, soundfile, sound_volume, sound_frequency)
+/datum/looping_sound/tank_engine/proc/play_to_outside_hearers(obj/vehicle/multitile/vehicle, soundfile, sound_volume, sound_frequency, range_volume)
 	var/turf/source_turf = get_turf(vehicle)
 	if(!source_turf)
 		return
@@ -200,7 +244,7 @@
 	template.x = source_turf.x
 	template.y = source_turf.y
 	template.z = source_turf.z
-	template.range = max(ENGINE_SOUND_MIN_RANGE, floor(0.25 * sound_volume))
+	template.range = max(ENGINE_SOUND_MIN_RANGE, floor(0.25 * (isnull(range_volume) ? sound_volume : range_volume)))
 	// falloff is the range before volume starts dropping. Half of range keeps it strong through
 	// the inner half of the audible radius, only tapering near the edge.
 	template.falloff = template.range * 0.5

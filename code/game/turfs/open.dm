@@ -827,8 +827,12 @@
 
 /turf/open/gm/river/poison/Entered(mob/living/M)
 	..()
-	if(istype(M))
-		M.apply_damage(55,TOX)
+	if(!istype(M))
+		return
+	// Riding on a vehicle's hull keeps them out of the water despite sharing its tile.
+	if(M.is_atop_vehicle())
+		return
+	M.apply_damage(55,TOX)
 
 /turf/open/gm/river/darkred_pool
 	color = "#990000"

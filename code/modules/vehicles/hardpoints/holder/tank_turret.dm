@@ -242,14 +242,16 @@
  * FIRING_GATE_TOLERANCE of the angle from tthe weapon's own muzzle to target.
  */
 /obj/item/hardpoint/holder/tank_turret/proc/in_turret_firing_arc(obj/item/hardpoint/weapon, atom/target)
-	var/turf/muzzle_turf = weapon.get_origin_turf()
 	var/turf/target_turf = get_turf(target)
 
-	//same tile angle is undefined for Get_Angle, returning FALSE to match the legacy static-arc check
-	if(muzzle_turf == target_turf)
+	//same tile angle is undefined, returning FALSE to match the legacy static-arc check
+	if(!target_turf || weapon.get_origin_turf() == target_turf)
+		return FALSE
+	var/turf/origin_turf = get_origin_turf()
+	if(!origin_turf || origin_turf == target_turf)
 		return FALSE
 
-	var/target_angle = Get_Angle(muzzle_turf, target_turf)
+	var/target_angle = Get_Angle_Grounded(origin_turf, target_turf)
 	. = abs(angle_delta(target_angle, current_angle)) <= FIRING_GATE_TOLERANCE
 
 /**

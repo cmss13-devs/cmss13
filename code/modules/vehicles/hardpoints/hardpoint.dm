@@ -406,7 +406,7 @@
 
 // Resets the hardpoint rotation to south
 /obj/item/hardpoint/proc/reset_rotation()
-	rotate(turning_angle(dir, SOUTH))
+	rotate(turning_angle(dir, SOUTH), override_gyro = TRUE)
 
 /**
  * Rotates this hardpoint by deg degrees, updating its own origins, dir, and current_angle.
@@ -948,6 +948,8 @@
 
 /// Whether this hardpoint gets independently mouse-aimed rotation, separate from the vehicle's own hull facing.
 /obj/item/hardpoint/proc/has_independent_aim()
+	if(get_rotation_owner() != src)
+		return FALSE
 	if(uses_live_rotation_tracking)
 		return TRUE
 	return self_gimballed && istype(loc, /obj/item/hardpoint/holder)
@@ -1381,7 +1383,7 @@
 	if(muzzle_turf == target_turf)
 		return FALSE
 
-	var/target_angle = Get_Angle(muzzle_turf, target_turf)
+	var/target_angle = Get_Angle_Grounded(muzzle_turf, target_turf)
 	return abs(angle_delta(target_angle, current_angle)) <= FIRING_GATE_TOLERANCE
 
 /**
@@ -1397,7 +1399,7 @@
 		return
 	if(aim_locked) // a track_and_charge() lock-on is in progress - mouse input can't fight it
 		return
-	if(world.time == last_desired_update_time) // collapses same-tick MouseMove spam into one update
+	if(world.time == last_desired_update_time) // collapses same-tick cursor updates into one, mostly MouseDrag's while the trigger is held
 		return
 	last_desired_update_time = world.time
 

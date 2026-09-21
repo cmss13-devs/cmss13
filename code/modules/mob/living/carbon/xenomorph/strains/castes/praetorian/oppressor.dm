@@ -259,7 +259,7 @@
 
 	// Dislocate's vehicle resolution, same aim-dependent split Warrior Punch uses.
 	if(istype(target_atom, /obj/vehicle/multitile))
-		if(!oppressor_user.check_state() || oppressor_user.agility)
+		if(!oppressor_user.check_state())
 			return
 		if(!is_adjacent_to_multitile_vehicle(oppressor_user, target_atom))
 			return

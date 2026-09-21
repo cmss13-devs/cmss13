@@ -37,6 +37,8 @@
 	var/computer_id = null //to track the players
 	var/list/attack_log = list( )
 	var/atom/movable/interactee //the thing that the mob is currently interacting with (e.g. a computer, another mob (stripping a mob), manning a hmg)
+	/// TRUE while something is listening for COMSIG_MOB_MOUSEMOVE on this mob. Lets /atom/MouseEntered() bail on a single var read for everyone who isn't currently aiming something.
+	var/tracking_mouse_position = FALSE
 	var/sdisabilities = 0 //Carbon
 	var/disabilities = 0 //Carbon
 	var/atom/movable/pulling = null

@@ -298,7 +298,7 @@
 		return
 
 	if(istype(affected_atom, /obj/vehicle/multitile))
-		if(!punch_user.check_state() || punch_user.agility)
+		if(!punch_user.check_state())
 			return
 		if(get_dist(punch_user, affected_atom) > 2) // matches the human-target branch's own tolerance below
 			return

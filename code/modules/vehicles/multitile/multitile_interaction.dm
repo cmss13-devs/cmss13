@@ -481,9 +481,11 @@
 	RegisterSignal(user, COMSIG_MOB_MOUSEDRAG, PROC_REF(crew_mousedrag))
 	RegisterSignal(user, COMSIG_MOB_MOUSEUP, PROC_REF(crew_mouseup))
 	RegisterSignal(user, COMSIG_MOB_MOUSEMOVE, PROC_REF(crew_mousemove))
+	user.tracking_mouse_position = TRUE
 
 /obj/vehicle/multitile/on_unset_interaction(mob/user)
 	UnregisterSignal(user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG, COMSIG_MOB_MOUSEMOVE))
+	user.tracking_mouse_position = FALSE
 
 	var/obj/item/hardpoint/hardpoint = get_mob_hp(user)
 	if(hardpoint)

@@ -96,7 +96,7 @@
 
 		if(!action_cooldown_check())
 			return
-		if(!fling_user.check_state() || fling_user.agility)
+		if(!fling_user.check_state())
 			return
 		if(!is_adjacent_to_multitile_vehicle(fling_user, vehicle))
 			return

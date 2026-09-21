@@ -58,6 +58,10 @@
 		qdel(src)
 		return
 
+	if(living_parent.is_atop_vehicle())
+		qdel(src)
+		return
+
 	var/cause = locate(cause_path) in living_parent.loc
 	if(!cause) //if we are no longer on a tile with the damage causing effect, stop.
 		qdel(src)

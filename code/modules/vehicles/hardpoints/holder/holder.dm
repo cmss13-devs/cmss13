@@ -206,10 +206,15 @@
 	return images
 
 /obj/item/hardpoint/holder/rotate(deg, override_gyro = FALSE, sync_angle = TRUE)
+	if(gyro && !override_gyro)
+		return FALSE
+	if(!deg)
+		return FALSE
+
 	for(var/obj/item/hardpoint/H in hardpoints)
 		// A child already mid-uninstall has no owner left to read. Skip it instead of crashing.
 		if(!H.owner)
 			continue
-		H.rotate(deg)
+		H.rotate(deg, override_gyro = TRUE, sync_angle = sync_angle)
 
 	return ..(deg, override_gyro, sync_angle)

@@ -17,7 +17,6 @@
 	var/buff_strength   = PLANTED_FLAG_BUFF
 	var/faction         = FACTION_MARINE
 	var/flag_active     = FALSE
-	var/datum/shape/range_bounds
 	var/luminosity_strength = 3
 
 	///  lets a fitted tank be selected as a laser/airstrike aiming point, same system as a planted flag turret
@@ -37,7 +36,6 @@
 /obj/item/hardpoint/secondary/united_americas_flag/Destroy()
 	if(flag_active)
 		deactivate_flag()
-	range_bounds = null
 	return ..()
 
 /obj/item/hardpoint/secondary/united_americas_flag/on_install(obj/vehicle/multitile/vehicle)
@@ -66,7 +64,6 @@
 	flag_active = FALSE
 	set_light(0)
 	stop_processing()
-	range_bounds = null
 	deactivate_signal()
 
 /obj/item/hardpoint/secondary/united_americas_flag/proc/activate_signal()
@@ -126,14 +123,13 @@
 	if(signal?.linked_cam && signal.linked_cam.loc != owner_turf)
 		signal.linked_cam.forceMove(owner_turf)
 
-	range_bounds = SQUARE(owner_turf.x, owner_turf.y, buff_range)
-
 	// Wounds progressively silence the buff itself, never the CAS aiming point/camera tracking.
 	var/effective_strength = buff_strength - get_wound_effect_sum("aura_reduction_add")
 	if(effective_strength <= 0)
 		return
 
-	var/list/targets = SSquadtree.players_in_range(range_bounds, owner_turf.z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
+	var/buff_radius = floor(buff_range * 0.5)
+	var/list/atom/movable/targets = SSmapgrids.get_movables_in_region(owner_turf.z, owner_turf.x - buff_radius, owner_turf.x + buff_radius, owner_turf.y - buff_radius, owner_turf.y + buff_radius)
 	if(!targets)
 		return
 

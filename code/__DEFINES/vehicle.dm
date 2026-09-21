@@ -212,6 +212,14 @@
 #define ENGINE_REV_RISE_RATE (1 / 1.5)
 /// How fast engine_rev_level decays back down per second once gas is released.
 #define ENGINE_REV_DECAY_RATE (1 / 2.5)
+/// Multiplier on engine volume for crew inside the vehicle.
+#define VEHICLE_ENGINE_INTERIOR_VOLUME_MULT 0.2
+/// Multiplier on engine volume for listeners outside the vehicle.
+#define VEHICLE_ENGINE_EXTERIOR_VOLUME_MULT 0.5
+/// Multiplier on turret traverse volume for crew inside the vehicle.
+#define TURRET_TRAVERSE_INTERIOR_VOLUME_MULT 0.2
+/// Multiplier on turret traverse volume for listeners outside the vehicle.
+#define TURRET_TRAVERSE_EXTERIOR_VOLUME_MULT 0.5
 
 // Engine exhaust smoke
 /// Tint for exhaust smoke triggered by engine_cracked_block (Brute).

@@ -124,6 +124,16 @@ DEFINES in setup.dm, referenced here.
 	unwield(user)
 	return ..()
 
+/obj/item/weapon/gun/attack_self_secondary(mob/user)
+	. = ..()
+	if(active_attachable)
+		active_attachable.attack_self(user)
+
+/obj/item/weapon/gun/attack_hand_secondary(mob/user)
+	. = ..()
+	if(active_attachable)
+		active_attachable.attack_hand(user)
+
 /obj/item/weapon/gun/attack_hand(mob/user)
 	var/obj/item/weapon/gun/in_hand = user.get_inactive_hand()
 

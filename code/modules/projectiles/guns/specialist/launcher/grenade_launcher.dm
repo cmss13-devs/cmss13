@@ -409,6 +409,42 @@
 	is_lobbing = TRUE
 	preload = null
 	underslug = TRUE
+	var/breech_open = FALSE
+	var/cocked = FALSE
+
+/obj/item/weapon/gun/launcher/grenade/ubarrel/unload(mob/user, reload_override, drop_override, loc_override)
+	if(!breech_open)
+		if(user)
+			to_chat(user, SPAN_WARNING("You must open the breech to unload \the [src]!"))
+		return FALSE
+	return ..()
+
+
+/obj/item/weapon/gun/launcher/grenade/ubarrel/able_to_fire(mob/living/user)
+	if(breech_open)
+		if(user)
+			to_chat(user, SPAN_WARNING("You must close the breech to fire \the [src]!"))
+			playsound(user, 'sound/weapons/gun_empty.ogg', 50, TRUE, 5)
+		return FALSE
+	if(!cocked)
+		if(user)
+			to_chat(user, SPAN_WARNING("You must cock \the [src] to fire it! (open and close the breech)"))
+			playsound(user, 'sound/weapons/gun_empty.ogg', 50, TRUE, 5)
+		return FALSE
+	. = ..()
+	if(!.)
+		return
+	return TRUE
+
+/obj/item/weapon/gun/launcher/grenade/ubarrel/reload(mob/user, obj/item/ammo_magazine/magazine)
+	if(!breech_open)
+		to_chat(user, SPAN_WARNING("\The [src]'s breech must be open to load grenades! (use unique-action)"))
+		return
+	return ..()
+
+/obj/item/weapon/gun/launcher/grenade/ubarrel/fire_grenade(atom/target, mob/user)
+	. = ..()
+	cocked = FALSE
 
 /obj/item/weapon/gun/launcher/grenade/ubarrel/u1
 	name = "\improper internal U1 grenade launcher"

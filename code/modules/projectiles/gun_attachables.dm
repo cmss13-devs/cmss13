@@ -3031,6 +3031,13 @@ Defined in conflicts.dm of the #defines folder.
 	var/gun_deactivate_sound = 'sound/weapons/handling/gun_underbarrel_deactivate.ogg'//allows us to give the attached gun unique activate and de-activate sounds. Not used yet.
 	var/gun_activate_sound  = 'sound/weapons/handling/gun_underbarrel_activate.ogg'
 
+/obj/item/attachable/attached_gun/attack_hand(mob/user)
+	unload_attachment(user)
+
+/obj/item/attachable/attached_gun/unload_attachment(mob/user, reload_override, drop_override, loc_override)
+	if(attached_gun)
+		attached_gun.unload(user, reload_override, drop_override, loc_override)
+
 /obj/item/attachable/attached_gun/Initialize(mapload, ...)
 	. = ..()
 	if(attached_gun)
@@ -3123,6 +3130,8 @@ Defined in conflicts.dm of the #defines folder.
 
 	attached_gun = /obj/item/weapon/gun/launcher/grenade/ubarrel/u1
 	attachment_firing_delay = FIRE_DELAY_TIER_4 * 3
+	var/open_sound = 'sound/weapons/handling/ugl_open.ogg'
+	var/close_sound = 'sound/weapons/handling/ugl_close.ogg'
 
 /obj/item/attachable/attached_gun/grenade/get_examine_text(mob/user)
 	. = ..()
@@ -3131,7 +3140,11 @@ Defined in conflicts.dm of the #defines folder.
 	if(ammo_count) . += "It has [ammo_count] grenade\s left."
 	else . += "It's empty."
 
-/obj/item/attachable/attached_gun/grenade/attack_self_secondary(mob/user)
+/obj/item/attachable/attached_gun/grenade/unique_action(mob/user)
+	. = ..()
+	attack_self(user)
+
+/obj/item/attachable/attached_gun/grenade/attack_self(mob/user)
 	. = ..()
 	if(!ishuman(usr))
 		return
@@ -3148,17 +3161,30 @@ Defined in conflicts.dm of the #defines folder.
 		to_chat(user, SPAN_WARNING("You need to hold \the [src] to do that."))
 		return
 
-	var/obj/item/weapon/gun/launcher/grenade/weapon = attached_gun
-	weapon.cylinder.open(user)
+	var/obj/item/weapon/gun/launcher/grenade/ubarrel/weapon = attached_gun
+	if(weapon.breech_open) // if it was ALREADY open
+		weapon.breech_open = FALSE
+		weapon.cocked = TRUE // by closing the gun we have cocked it and readied it to fire
+		to_chat(user, SPAN_NOTICE("You close \the [src]'s breech, cocking it!"))
+		playsound(src, close_sound, 15, 1)
+	else
+		weapon.breech_open = TRUE
+		weapon.cocked = FALSE
+		to_chat(user, SPAN_NOTICE("You open \the [src]'s breech!"))
+		playsound(src, open_sound, 15, 1)
+	update_icon()
 
 /obj/item/attachable/attached_gun/grenade/update_icon()
 	. = ..()
 	attach_icon = initial(attach_icon)
 	icon_state = initial(icon_state)
-	var/obj/item/weapon/gun/launcher/grenade/weapon = attached_gun
-	if(weapon.open_chamber)
+	var/obj/item/weapon/gun/launcher/grenade/ubarrel/weapon = attached_gun
+	if(weapon.breech_open)
 		attach_icon += "-open"
 		icon_state += "-open"
+	if(istype(loc, /obj/item/weapon/gun))
+		var/obj/item/weapon/gun/location = loc
+		location.update_icon()
 
 //For the Mk1
 /obj/item/attachable/attached_gun/grenade/mk1

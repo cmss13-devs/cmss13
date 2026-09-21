@@ -2253,13 +2253,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		active_attachable.fire_attachment(object, src, source, modifiers)
 		return COMSIG_MOB_CLICK_HANDLED
 
-	if(modifiers[MIDDLE_CLICK] && !modifiers[SHIFT_CLICK])
-		// Override the modifiers and return early
-		// Forces a secondary attack after skipping gun fire code.
-		modifiers[MIDDLE_CLICK] = null
-		modifiers[RIGHT_CLICK] = "1"
-		return
-
 	if(!modifiers[LEFT_CLICK] || modifiers[SHIFT_CLICK] || modifiers[ALT_CLICK])
 		return
 

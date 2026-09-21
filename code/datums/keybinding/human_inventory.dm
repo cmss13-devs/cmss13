@@ -126,7 +126,9 @@
 
 	if(!inactive_hand)
 		return
-	human_user.click_adjacent(inactive_hand, active_hand, list())
+	var/list/mods = list()
+	mods[LEFT_CLICK] = "1"
+	human_user.click_adjacent(inactive_hand, active_hand, mods)
 	return TRUE
 
 #define INTERACT_KEYBIND_COOLDOWN_TIME (0.2 SECONDS)

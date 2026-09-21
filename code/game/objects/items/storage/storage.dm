@@ -72,8 +72,14 @@
 						usr.put_in_l_hand(src)
 			add_fingerprint(usr)
 
+/obj/item/storage/attack_self_secondary(mob/user)
+	. = ..()
+	handle_mmb_open(user)
+	return TRUE
+
+
 /obj/item/storage/clicked(mob/user, list/mods)
-	if(!mods[SHIFT_CLICK] && mods[MIDDLE_CLICK] && !mods[ALT_CLICK] && CAN_PICKUP(user, src))
+	if(!mods[SHIFT_CLICK] && (mods[MIDDLE_CLICK] || mods[RIGHT_CLICK]) && !mods[ALT_CLICK] && CAN_PICKUP(user, src))
 		handle_mmb_open(user)
 		return TRUE
 

@@ -2181,7 +2181,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	SIGNAL_HANDLER
 	target = get_turf(target)
 
-/obj/item/weapon/gun/proc/stop_fire(source, atom/target, turf/target, skin, list/mods)
+/obj/item/weapon/gun/proc/stop_fire(source, atom/target, turf/turf_target, skin, list/mods)
 	SIGNAL_HANDLER
 	if(!mods[LEFT_CLICK])
 		return

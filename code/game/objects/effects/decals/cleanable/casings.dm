@@ -47,30 +47,6 @@ that said, the icon_states in the dmi files aren't culled for use by mappers - n
 
 	. = ..()
 
-/obj/effect/decal/cleanable/ammo_casing/create_overlay(overlay_icon = icon, overlay_icon_state = icon_state)
-	overlayed_image = image(overlay_icon, icon_state = overlay_icon_state)
-	overlayed_image.appearance_flags = appearance_flags
-	overlayed_image.mouse_opacity = mouse_opacity
-	overlayed_image.layer = layer
-	overlayed_image.transform = transform
-
-	if(pixel_x)
-		overlayed_image.pixel_x = pixel_x
-	if(pixel_y)
-		overlayed_image.pixel_y = pixel_y
-	if(color)
-		overlayed_image.color = color
-
-	cleanable_turf.overlays += overlayed_image
-	moveToNullspace()
-
-/obj/effect/decal/cleanable/ammo_casing/can_place_cleanable(obj/effect/decal/cleanable/ammo_casing/existing)
-	if(istype(existing))
-		existing.add_casing(icon, icon_state, transform, color)
-		return FALSE
-
-	return TRUE
-
 /obj/effect/decal/cleanable/ammo_casing/proc/add_casing(overlay_icon = icon, overlay_icon_state = icon_state, casing_matrix = transform, casing_color = color)
 	var/image/casing_image = image(overlay_icon, icon_state = overlay_icon_state)
 
@@ -84,6 +60,18 @@ that said, the icon_states in the dmi files aren't culled for use by mappers - n
 
 	overlay_images += casing_image
 	cleanable_turf.overlays += casing_image
+
+/obj/effect/decal/cleanable/ammo_casing/create_overlay(overlay_icon = icon, overlay_icon_state = icon_state, casing_color = color)
+	add_casing(overlay_icon, overlay_icon_state, transform, casing_color)
+
+	moveToNullspace()
+
+/obj/effect/decal/cleanable/ammo_casing/can_place_cleanable(obj/effect/decal/cleanable/ammo_casing/existing)
+	if(istype(existing))
+		existing.add_casing(icon, icon_state, transform, color)
+		return FALSE
+
+	return TRUE
 
 /obj/effect/decal/cleanable/ammo_casing/clear_overlay()
 	if(length(overlay_images))

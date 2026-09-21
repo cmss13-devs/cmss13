@@ -1,8 +1,8 @@
 /obj/item/lore_book/marine_cryosleep
 	name = "USCM post-hypersleep orientation pamphlet"
 	desc = "A small USCM pamphlet issued to waking marines as a refresher for temporary hypersleep amnesia. The cover reads: 'Welcome Back, Marine.'"
-	icon = 'icons/obj/items/pamphlets.dmi'
-	icon_state = "pamphlet_written"
+	icon = 'icons/obj/items/paper.dmi'
+	icon_state = "paper_uscm_words"
 	item_state = "paper"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',

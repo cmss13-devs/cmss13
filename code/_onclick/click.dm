@@ -32,7 +32,7 @@
 		if (istype(atom_clicked, /atom/movable/screen/click_catcher))
 			var/turf/TU = params2turf(mods[SCREEN_LOC], get_turf(client.get_eye()), client)
 			if (TU)
-				mods[CLICK_CATCHER] = 1
+				mods[CLICK_CATCHER] = "1"
 				do_click(TU, mods)
 		return
 

@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - bugfix: "Reinforced woden window frames will now be visible in game. They were previously invisible."

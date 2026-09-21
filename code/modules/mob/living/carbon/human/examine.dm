@@ -146,14 +146,16 @@
 			if(BODY_TYPE_RIPPED)
 				body_type_description = "muscular"
 
-		if(!skipface && !skipjumpsuit && body_size_description && body_type_description)
-			msg += "[t_He] [t_seem] to be [SPAN_BOLD(age_description)], with a build that appears [SPAN_BOLD(body_size_description)] and [SPAN_BOLD(body_type_description)].\n"
+		if(!skipface && !skipjumpsuit && body_size_description && body_type_description && mob_flags & MOB_FLAYED)
+			msg += "[t_He] [t_has] a [SPAN_BOLD(body_size_description)] [SPAN_BOLD(body_type_description)] build.\n"
+		else if(!skipface && !skipjumpsuit && body_size_description && body_type_description)
+			msg += "[t_He] [t_is] [SPAN_BOLD(age_description)], with a [SPAN_BOLD(body_size_description)] [SPAN_BOLD(body_type_description)] build.\n"
 		else if(!skipface)
-			msg += "[t_He] [t_seem] to be [SPAN_BOLD(age_description)].\n"
+			msg += "[t_He] [t_is] [SPAN_BOLD(age_description)].\n"
 		else if(!skipjumpsuit && body_size_description && body_type_description)
-			msg += "[t_He] [t_is] currently hiding [t_his] face, but [t_his] build appears [SPAN_BOLD(body_size_description)] and [SPAN_BOLD(body_type_description)].\n"
+			msg += "[t_his] [t_is] face is hidden, but [t_has] a [SPAN_BOLD(body_size_description)] [SPAN_BOLD(body_type_description)].\n"
 		else
-			msg += "[t_He] [t_is] currently hiding [t_his] face.\n"
+			msg += "[t_his] [t_is] face is hidden.\n"
 
 	//head
 	if(head)

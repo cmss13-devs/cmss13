@@ -25,20 +25,20 @@
 
 /obj/structure/platform/Initialize()
 	. = ..()
-	var/image/I = image(icon, src, "platform_overlay", LADDER_LAYER, dir)//ladder layer puts us just above weeds.
+	var/image/platform_overlay = image(icon, src, "platform_overlay", LADDER_LAYER, dir)//ladder layer puts us just above weeds.
 	switch(dir)
 		if(SOUTH)
 			layer = ABOVE_MOB_LAYER
-			I.pixel_y = -16
+			platform_overlay.pixel_y = -16
 		if(NORTH)
-			I.pixel_y = 16
+			platform_overlay.pixel_y = 16
 		if(EAST)
-			I.pixel_x = 16
+			platform_overlay.pixel_x = 16
 			layer = MOB_LAYER
 		if(WEST)
-			I.pixel_x = -16
+			platform_overlay.pixel_x = -16
 			layer = MOB_LAYER
-	overlays += I
+	overlays += platform_overlay
 
 /obj/structure/platform/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -51,8 +51,8 @@
 	..()
 
 /obj/structure/platform/BlockedPassDirs(atom/movable/mover, target_dir)
-	var/obj/structure/S = locate(/obj/structure) in get_turf(mover)
-	if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable objects allow you to universally climb over others
+	var/obj/structure/structure = locate(/obj/structure) in get_turf(mover)
+	if(structure && structure.climbable && !(structure.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable objects allow you to universally climb over others
 		return NO_BLOCKED_MOVEMENT
 
 	return ..()
@@ -95,8 +95,8 @@
 	layer = ABOVE_BLOOD_LAYER //lets hope it will appear under everything except weeds and blood.
 	update_icon()
 
-/obj/structure/platform/attackby(obj/item/W, mob/user)
-	if(istype(W, dismantle_tool) && user.a_intent != INTENT_HARM)
+/obj/structure/platform/attackby(obj/item/item, mob/user)
+	if(istype(item, dismantle_tool) && user.a_intent != INTENT_HARM)
 		if(user.action_busy)
 			return TRUE
 		if(stat & BROKEN)
@@ -109,8 +109,8 @@
 		var/dismantle_time = 7 SECONDS // Matches a normal sized xenom
 		var/obj/item/tool/weldingtool/welder
 		var/obj/item/tool/shovel/shovel
-		if(iswelder(W))
-			welder = W
+		if(iswelder(item))
+			welder = item
 			if(!welder.isOn())
 				to_chat(user, SPAN_WARNING("You need to light [welder] first!"))
 				return TRUE
@@ -118,7 +118,7 @@
 				return TRUE
 			playsound(loc, 'sound/items/Welder.ogg', 25, TRUE)
 		else
-			shovel = W
+			shovel = item
 			if(shovel.folded)
 				to_chat(user, SPAN_WARNING("You need to unfold [shovel] first!"))
 				return TRUE

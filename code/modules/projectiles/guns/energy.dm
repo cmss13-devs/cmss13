@@ -227,7 +227,7 @@
 	fire_sound = 'sound/weapons/Taser.ogg'
 	w_class = SIZE_MEDIUM
 	ammo = /datum/ammo/energy/taser/precise
-	charge_cost = 625 // approx 16 shots.
+	charge_cost = 1000 // approx 10 shots
 	has_charge_meter = TRUE
 	charge_icon = "+taser"
 	black_market_value = 20

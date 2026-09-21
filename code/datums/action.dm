@@ -372,6 +372,9 @@
 		base_icon = "healthhud"
 	else if(istype(hud_goggles, /obj/item/clothing/glasses/hud/security))
 		base_icon = "securityhud"
+	else if(istype(hud_goggles, /obj/item/clothing/glasses/hud/sensor))
+		base_icon = "sensorhud"
+		deactivate_state = "degoggles_sensorhud"
 	else if(istypestrict(hud_goggles, /obj/item/clothing/glasses/meson))
 		base_icon = "meson"
 	else if(istypestrict(hud_goggles, /obj/item/clothing/glasses/meson/refurbished))

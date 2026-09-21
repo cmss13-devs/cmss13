@@ -85,6 +85,11 @@
 	special_body_types = FALSE
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_IRON_TEETH, TRAIT_POUNCE_RESISTANT)
 
+	eyes_help = list(0, 255, 0) //red, green, blue
+	eyes_disarm = list(90, 90, 253)
+	eyes_grab = list(239, 167, 0)
+	eyes_harm = list(255, 0, 0)
+
 	no_grad_style = TRUE
 	hair_color = "#000000"
 	icobase = 'icons/mob/humans/species/r_synthetic.dmi'

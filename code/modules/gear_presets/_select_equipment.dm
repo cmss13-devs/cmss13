@@ -227,10 +227,10 @@
 		var/rankpath = get_rank_pins(current_rank)
 		if(rankpath)
 			var/obj/item/clothing/accessory/ranks/R = new rankpath()
-			if(new_human.wear_suit && new_human.wear_suit.can_attach_accessory(R))
-				new_human.wear_suit.attach_accessory(new_human, R, TRUE)
-			else if(new_human.w_uniform && new_human.w_uniform.can_attach_accessory(R))
+			if(new_human.w_uniform && new_human.w_uniform.can_attach_accessory(R))
 				new_human.w_uniform.attach_accessory(new_human, R, TRUE)
+			else if(new_human.wear_suit && new_human.wear_suit.can_attach_accessory(R))
+				new_human.wear_suit.attach_accessory(new_human, R, TRUE)
 			else
 				qdel(R)
 
@@ -401,7 +401,7 @@
 		/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40,
 		/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
 		/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
-		/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
+		/obj/item/weapon/gun/rifle/m20a = /obj/item/ammo_magazine/rifle/m20a,
 		/obj/item/weapon/gun/rifle/ar10 = /obj/item/ammo_magazine/rifle/ar10,
 		/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
 		/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
@@ -509,7 +509,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 	/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40,
 	/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40,
 	/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
-	/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
+	/obj/item/weapon/gun/rifle/m20a = /obj/item/ammo_magazine/rifle/m20a,
 	/obj/item/weapon/gun/rifle/ar10 = /obj/item/ammo_magazine/rifle/ar10,
 	/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
 	/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
@@ -570,7 +570,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 		return
 
 	var/list/merc_sidearms = list(
-		/obj/item/weapon/gun/pistol/heavy = /obj/item/ammo_magazine/pistol/heavy,
+		/obj/item/weapon/gun/pistol/deagle = /obj/item/ammo_magazine/pistol/deagle,
 		/obj/item/weapon/gun/pistol/m1911 = /obj/item/ammo_magazine/pistol/m1911,
 		/obj/item/weapon/gun/pistol/kt42 = /obj/item/ammo_magazine/pistol/kt42,
 		/obj/item/weapon/gun/pistol/holdout = /obj/item/ammo_magazine/pistol/holdout,
@@ -591,7 +591,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 		/obj/item/weapon/gun/rifle/m41aMK1 = /obj/item/ammo_magazine/rifle/m41aMK1,
 		/obj/item/weapon/gun/smg/fp9000 = /obj/item/ammo_magazine/smg/fp9000,
 		/obj/item/weapon/gun/smg/bizon = /obj/item/ammo_magazine/smg/bizon,
-		/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16)
+		/obj/item/weapon/gun/rifle/m20a = /obj/item/ammo_magazine/rifle/m20a)
 
 	var/gunpath = sidearm? pick(merc_sidearms) : pick(merc_firearms)
 	var/ammopath = sidearm? merc_sidearms[gunpath] : merc_firearms[gunpath]
@@ -625,7 +625,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 		/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
 		/obj/item/weapon/gun/rifle/m41aMK1 = /obj/item/ammo_magazine/rifle/m41aMK1,
 		/obj/item/weapon/gun/smg/fp9000 = /obj/item/ammo_magazine/smg/fp9000,
-		/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16)
+		/obj/item/weapon/gun/rifle/m20a = /obj/item/ammo_magazine/rifle/m20a)
 
 	var/gunpath = pick(merc_rifles)
 	var/ammopath = merc_rifles[gunpath]
@@ -637,9 +637,9 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 		return
 
 	var/list/elite_merc_rifles = list(
-	/obj/item/weapon/gun/smg/m39/elite = /obj/item/ammo_magazine/smg/m39/ap,
+	/obj/item/weapon/gun/smg/m39/elite/no_lock = /obj/item/ammo_magazine/smg/m39/ap,
 	/obj/item/weapon/gun/rifle/m41aMK1 = /obj/item/ammo_magazine/rifle/m41aMK1,
-	/obj/item/weapon/gun/rifle/m41a/elite = /obj/item/ammo_magazine/rifle/ap)
+	/obj/item/weapon/gun/rifle/m41a/elite/no_lock = /obj/item/ammo_magazine/rifle/ap)
 
 	var/list/elite_merc_shotguns = list(
 	/obj/item/weapon/gun/shotgun/merc = pick(GLOB.shotgun_handfuls_12g),
@@ -705,9 +705,9 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 	return
 
 /datum/equipment_preset/proc/add_common_wo_equipment(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/flare/full(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/black(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/self_setting(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/attachments(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
@@ -773,7 +773,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 		if(1)
 			new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/metal_foam(new_human), WEAR_IN_BACK)
 		if(2)
-			new_human.equip_to_slot_or_del(new /obj/structure/closet/bodybag/tarp/reactive(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/bodybag/tarp/reactive(new_human), WEAR_IN_BACK)
 
 
 /datum/equipment_preset/proc/add_random_cl_survivor_loot(mob/living/carbon/human/new_human) // Loot Generation associated with CL survivor. Makes them a little more valuable and not a useless pick.
@@ -861,8 +861,8 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb(new_human), WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/shotgun_ammo, WEAR_WAIST)
 		if(3)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16(new_human), WEAR_L_HAND)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m16(new_human), WEAR_WAIST)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m20a(new_human), WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m20a(new_human), WEAR_WAIST)
 		if(4)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/mar40/carbine(new_human), WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/mar40(new_human), WEAR_WAIST)
@@ -935,8 +935,8 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb(new_human), WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/shotgun_ammo, WEAR_WAIST)
 		if(3)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16(new_human), WEAR_L_HAND)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m16(new_human), WEAR_WAIST)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m20a(new_human), WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m20a(new_human), WEAR_WAIST)
 
 /datum/equipment_preset/proc/add_survivor_weapon_rebel(mob/living/carbon/human/new_human) // Randomizes the primary weapon a CLF survivor might have(Assumes you have an empty 3 slot webbing).
 
@@ -958,10 +958,10 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(new_human), WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(new_human), WEAR_IN_ACCESSORY)
 		if(3)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16(new_human), WEAR_L_HAND)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16(new_human), WEAR_IN_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16(new_human), WEAR_IN_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16(new_human), WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m20a(new_human), WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m20a(new_human), WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m20a(new_human), WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m20a(new_human), WEAR_IN_ACCESSORY)
 		if(4)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mac15(new_human), WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mac15(new_human), WEAR_IN_ACCESSORY)

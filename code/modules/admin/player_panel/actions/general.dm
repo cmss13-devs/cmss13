@@ -137,6 +137,27 @@
 	user.cmd_admin_pm(target.client)
 	return TRUE
 
+/datum/player_action/opensearch_query
+	action_tag = "opensearch_query"
+	name = "OpenSearch"
+
+/datum/player_action/opensearch_query/act(client/user, mob/target, list/params)
+	if(!target || !user.mob)
+		return
+
+	// We search ckey as a whole, but also boost it if it's present specifically in ckey field
+	var/list/list/query_terms = list()
+
+	if(target.persistent_ckey)
+		query_terms = list(
+			list(target.persistent_ckey, "ckey", 3),
+			list(target.persistent_ckey, null),
+		)
+
+	var/datum/opensearch_query/query = SSopensearch.new_query(query_terms)
+	query.tgui_interact(user.mob)
+	return TRUE
+
 /datum/player_action/alert_message
 	action_tag = "alert_message"
 	name = "Alert Message"

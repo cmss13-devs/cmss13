@@ -134,7 +134,8 @@ GLOBAL_LIST_INIT_TYPED(conflicting_properties, /list, list( PROPERTY_NUTRITIOUS 
 											PROPERTY_THERMOSTABILIZING = PROPERTY_HYPERTHERMIC, PROPERTY_THERMOSTABILIZING = PROPERTY_HYPOTHERMIC,
 											PROPERTY_AIDING = PROPERTY_NEUROINHIBITING, PROPERTY_OXYGENATING = PROPERTY_HYPOXEMIC, PROPERTY_ANTICARCINOGENIC = PROPERTY_CARCINOGENIC, \
 											PROPERTY_CIPHERING = PROPERTY_CIPHERING_PREDATOR, PROPERTY_TRANSFORMATIVE = PROPERTY_ANTITOXIC, PROPERTY_INTRAVENOUS = PROPERTY_HYPERMETABOLIC,\
-											PROPERTY_INTRAVENOUS = PROPERTY_HYPOMETABOLIC, PROPERTY_MUSCLESTIMULATING = PROPERTY_NERVESTIMULATING, PROPERTY_HEMOSITIC = PROPERTY_NUTRITIOUS))
+											PROPERTY_INTRAVENOUS = PROPERTY_HYPOMETABOLIC, PROPERTY_MUSCLESTIMULATING = PROPERTY_NERVESTIMULATING, PROPERTY_HEMOSITIC = PROPERTY_NUTRITIOUS, \
+											PROPERTY_NERVESTIMULATING = PROPERTY_WEED_RESISTANT, PROPERTY_MUSCLESTIMULATING = PROPERTY_WEED_RESISTANT))
 //list of all properties that combine into something else, now featured in global list
 GLOBAL_LIST_INIT_TYPED(combining_properties, /list, list( PROPERTY_DEFIBRILLATING = list(PROPERTY_MUSCLESTIMULATING, PROPERTY_CARDIOPEUTIC),\
 											PROPERTY_THANATOMETABOL = list(PROPERTY_HYPOXEMIC, PROPERTY_CRYOMETABOLIZING, PROPERTY_NEUROCRYOGENIC),\
@@ -148,7 +149,7 @@ GLOBAL_LIST_INIT_TYPED(combining_properties, /list, list( PROPERTY_DEFIBRILLATIN
 											PROPERTY_BONEMENDING = list(PROPERTY_CRYSTALLIZATION, PROPERTY_NUTRITIOUS)))
 
 //List of all id's from classed /datum/reagent datums indexed by class or tier. Used by chemistry generator and chem spawners.
-GLOBAL_LIST_INIT_TYPED(chemical_gen_classes_list, /list, list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list(), "H1" = list(), "tau", list()))
+GLOBAL_LIST_INIT_TYPED(chemical_gen_classes_list, /list, list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list(), "X1" = list(), "X2" = list(), "X3" = list(), "tau", list()))
 //properties generated in chemicals, helps to make sure the same property doesn't show up 10 times
 GLOBAL_LIST_INIT_TYPED(generated_properties, /list, list("positive" = list(), "negative" = list(), "neutral" = list()))
 
@@ -157,6 +158,9 @@ GLOBAL_LIST_INIT_TYPED(space_weapons_ammo, /datum/space_weapon_ammo, setup_ship_
 
 GLOBAL_LIST_INIT_TYPED(ammo_list, /datum/ammo, setup_ammo()) //List of all ammo types. Used by guns to tell the projectile how to act.
 GLOBAL_REFERENCE_LIST_INDEXED(joblist, /datum/job, title) //List of all jobstypes, minus borg and AI
+
+GLOBAL_LIST_INIT(body_type_spectrum, list(BODY_TYPE_NOMUSCLE, BODY_TYPE_LEAN, BODY_TYPE_RIPPED))
+GLOBAL_LIST_INIT(body_size_spectrum, list(BODY_SIZE_THIN, BODY_SIZE_AVERAGE, BODY_SIZE_LARGE))
 
 /*Surgical lists.
 surgery_invasiveness_levels lists possible incision depths.
@@ -188,8 +192,6 @@ GLOBAL_LIST_EMPTY(active_areas)
 GLOBAL_LIST_EMPTY(all_areas)
 
 GLOBAL_LIST_EMPTY(turfs)
-
-GLOBAL_LIST(objects_of_interest) // This is used to track the stealing objective for Agents.
 
 // Areas exempt from explosive antigrief (not Z-levels)
 GLOBAL_LIST_INIT(explosive_antigrief_exempt_areas, list(
@@ -338,12 +340,29 @@ GLOBAL_LIST_EMPTY(hj_categories)
 GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
 /// list of categories for upp joes
 GLOBAL_LIST_EMPTY(uppj_categories)
+/// list of categories for daniels
+GLOBAL_LIST_EMPTY(daniel_categories)
 /// dict ("category" : (emotes)) of every uppj emote typepath
 GLOBAL_LIST_INIT(uppj_emotes, setup_upp_joe_emotes())
+/// dict ("category" : (emotes)) of every daniel emote typepath
+GLOBAL_LIST_INIT(daniel_emotes, setup_daniel_emotes())
 /// list of categories for wy combat droids
 GLOBAL_LIST_EMPTY(wy_droid_categories)
 /// dict ("category" : (emotes)) of every wy droid emote typepath
 GLOBAL_LIST_INIT(wy_droid_emotes, setup_wy_droid_emotes())
+
+// magazine lists for storage items that needs it (DO NOT DEFINE HANDFULS HERE)
+/// list for longarm ammunition
+GLOBAL_LIST_INIT(longarm_ammo, list(
+	/obj/item/ammo_magazine/rifle,
+	/obj/item/ammo_magazine/smg,
+	/obj/item/ammo_magazine/sniper,
+))
+/// list for sidearm ammunition
+GLOBAL_LIST_INIT(sidearm_ammo, list(
+	/obj/item/ammo_magazine/pistol,
+	/obj/item/ammo_magazine/revolver,
+))
 
 /proc/cached_params_decode(params_data, decode_proc)
 	. = GLOB.paramslist_cache[params_data]
@@ -639,6 +658,19 @@ GLOBAL_LIST_INIT_TYPED(specialist_set_datums, /datum/specialist_set, setup_speci
 		emotes_to_add += emote
 	return emotes_to_add
 
+/// Setup for Daniel emotes and category list, returns data for daniel_emotes
+/proc/setup_daniel_emotes()
+	var/list/emotes_to_add = list()
+	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/working_joe))
+		if(!(initial(emote.joe_flag) & DANIEL_EMOTE) || !initial(emote.key) || !initial(emote.say_message))
+			continue
+
+		if(!(initial(emote.category) in GLOB.daniel_categories))
+			GLOB.daniel_categories += initial(emote.category)
+
+		emotes_to_add += emote
+	return emotes_to_add
+
 /// Setup for WY droid emotes and category list, returns data for wy_droid_emotes
 /proc/setup_wy_droid_emotes()
 	var/list/emotes_to_add = list()
@@ -657,3 +689,5 @@ GLOBAL_PROTECT(topic_tokens)
 
 GLOBAL_LIST_EMPTY(topic_commands)
 GLOBAL_PROTECT(topic_commands)
+
+GLOBAL_LIST_EMPTY(marine_medics)

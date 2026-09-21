@@ -169,7 +169,7 @@
 		for(var/datum/reagent/cur_reagent in beaker.reagents.reagent_list)
 			reagentnames += ";[cur_reagent.name]"
 
-		msg_admin_niche("[key_name(user)] put \a [beaker] into [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]) [ADMIN_JMP(src.loc)].", 1)
+		msg_admin_niche("[key_name(user)] put \a [beaker] into [src], containing [reagentnames] at [ADMIN_VERBOSEJMP(src)].")
 
 		if(user.drop_inv_item_to_loc(W, src))
 			user.visible_message("[user] adds \a [W] to [src]!", "You add \a [W] to [src]!")

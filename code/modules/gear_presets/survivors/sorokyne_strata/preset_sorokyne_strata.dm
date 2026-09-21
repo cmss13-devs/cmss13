@@ -689,7 +689,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt(new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/med_small_stack(new_human.back), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/small_stack(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/nailgun(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/maintenance_jack(new_human), WEAR_L_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt(new_human), WEAR_ACCESSORY)
@@ -811,7 +810,7 @@
 	job_title = JOB_HC_SEC_SYNTH
 	assignment = JOB_HC_SEC_SYNTH
 	role_comm_title = "HC Sec Syn"
-	faction_group = list(FACTION_HYPERDYNE, FACTION_LIST_SURVIVOR_UPP)
+	faction_group = FACTION_LIST_SURVIVOR_HYPERDYNE
 	idtype = /obj/item/card/id/silver/cl/hyperdyne
 	survivor_variant = CORPORATE_SURVIVOR
 	minimap_background = "background_hc_management"

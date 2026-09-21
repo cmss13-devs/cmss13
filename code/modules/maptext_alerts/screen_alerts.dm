@@ -93,7 +93,7 @@
 	fade_out_delay = 10 SECONDS
 	fade_out_time = 3 SECONDS
 
-	/atom/movable/screen/text/screen_text/chemical_advisory
+/atom/movable/screen/text/screen_text/chemical_advisory
 	maptext_height = 64
 	maptext_width = 480
 	maptext_x = 0

@@ -13,10 +13,6 @@
 	style_open = "<span class='langchat' style=font-size:24pt;text-align:center valign='top'>"
 	style_close = "</span>"
 
-/atom/movable/screen/text/screen_text/command_order/yautja
-	play_delay = 0.3
-	fade_out_delay = 10 SECONDS
-	fade_out_time = 3 SECONDS
 
 /atom/movable/screen/text/screen_text/command_order/automated
 	fade_out_delay = 3 SECONDS
@@ -206,22 +202,3 @@ GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_
 			mob_receiver.play_screen_text("<span class='langchat' style=font-size:24pt;text-align:left valign='top'><u>[uppertext(announcement_title)]:</u></span><br>" + mob_text, new /atom/movable/screen/text/screen_text/picture/potrait_custom_mugshot(null, null, owner), override_color)
 	notify_ghosts(header = "HUD Message", message = "[human_owner] has given a HUD announcement", source = human_owner, action = NOTIFY_HUMAN_HUD_ORDER, announcement_title = text, portrait_owner = human_owner, override_color_portrait = override_color)
 
-/atom/movable/screen/text/screen_text/command_order/tutorial
-	letters_per_update = 4 // overall, pretty fast while not immediately popping in
-	play_delay = 0.1
-	fade_out_delay = 2.5 SECONDS
-	fade_out_time = 0.5 SECONDS
-
-/atom/movable/screen/text/screen_text/command_order/tutorial/end_play()
-	if(!player)
-		qdel(src)
-		return
-
-	if(player.mob || HAS_TRAIT(player.mob, TRAIT_IN_TUTORIAL))
-		return ..()
-
-	for(var/atom/movable/screen/text/screen_text/command_order/tutorial/tutorial_message in player.screen_texts)
-		LAZYREMOVE(player.screen_texts, tutorial_message)
-		qdel(tutorial_message)
-
-	return ..()

@@ -2241,6 +2241,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		set_gun_user(source)
 
 	if(modifiers[RIGHT_CLICK])
+		if(gun_user.throw_mode)
+			return
 		try_activate_attachable_weapon()
 		if(!active_attachable)
 			return

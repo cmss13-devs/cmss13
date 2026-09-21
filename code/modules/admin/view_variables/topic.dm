@@ -1,7 +1,7 @@
 //DO NOT ADD MORE TO THIS FILE.
 //Use vv_do_topic() for datums!
 /client/proc/view_var_Topic(href, href_list, hsrc)
-	if( (usr.client != src) || !src.admin_holder || !admin_holder.CheckAdminHref(href, href_list))
+	if(!check_rights_for(src, R_VAREDIT) || !admin_holder.CheckAdminHref(href, href_list))
 		return
 	var/target = GET_VV_TARGET
 	vv_do_basic(target, href_list, href)
@@ -10,79 +10,73 @@
 		D.vv_do_topic(href_list)
 	else if(islist(target))
 		vv_do_list(target, href_list)
+
 	if(href_list["Vars"])
 		debug_variables(locate(href_list["Vars"]))
 
-//Stuff below aren't in dropdowns/etc.
+	else if(href_list["rotatedatum"])
+		var/atom/A = locate(href_list["rotatedatum"])
+		if(!istype(A))
+			to_chat(usr, "This can only be done to instances of type /atom", confidential = TRUE)
+			return
 
-	if(check_rights(R_VAREDIT))
+		switch(href_list["rotatedir"])
+			if("right")
+				A.setDir(turn(A.dir, -45))
+			if("left")
+				A.setDir(turn(A.dir, 45))
+		vv_update_display(A, "dir", dir2text(A.dir))
 
-		if(href_list["rotatedatum"])
-			if(!check_rights(NONE))
+	else if(href_list["adjustDamage"] && href_list["mobToDamage"])
+		if(!check_rights(R_EVENT))
+			return
+
+		var/mob/living/L = locate(href_list["mobToDamage"]) in GLOB.mob_list
+		if(!istype(L))
+			return
+
+		var/Text = href_list["adjustDamage"]
+
+		var/amount = tgui_input_number(usr, "Deal how much damage to mob? (Negative values here heal)", "Adjust [Text]loss", 0, 10000, -10000)
+
+		if (isnull(amount))
+			return
+
+		if(QDELETED(L))
+			to_chat(usr, "Mob doesn't exist anymore", confidential = TRUE)
+			return
+
+		var/newamt
+		switch(Text)
+			if("brute")
+				L.adjustBruteLoss(amount)
+				newamt = L.getBruteLoss()
+			if("fire")
+				L.adjustFireLoss(amount)
+				newamt = L.getFireLoss()
+			if("toxin")
+				L.adjustToxLoss(amount)
+				newamt = L.getToxLoss()
+			if("oxygen")
+				L.adjustOxyLoss(amount)
+				newamt = L.getOxyLoss()
+			if("clone")
+				L.adjustCloneLoss(amount)
+				newamt = L.getCloneLoss()
+			else
+				to_chat(usr, "You caused an error. DEBUG: Text:[Text] Mob:[L]", confidential = TRUE)
 				return
 
-			var/atom/A = locate(href_list["rotatedatum"])
-			if(!istype(A))
-				to_chat(usr, "This can only be done to instances of type /atom", confidential = TRUE)
-				return
+		L.updatehealth()
 
-			switch(href_list["rotatedir"])
-				if("right")
-					A.setDir(turn(A.dir, -45))
-				if("left")
-					A.setDir(turn(A.dir, 45))
-			vv_update_display(A, "dir", dir2text(A.dir))
+		if(amount != 0)
+			var/log_msg = "[key_name(usr)] dealt [amount] amount of [Text] damage to [key_name(L)]"
+			message_admins("[key_name(usr)] dealt [amount] amount of [Text] damage to [ADMIN_FLW(L)]")
+			log_admin(log_msg)
+			admin_ticket_log(L, "<font color='blue'>[log_msg]</font>")
+			vv_update_display(L, Text, "[newamt]")
 
-		else if(href_list["adjustDamage"] && href_list["mobToDamage"])
-			if(!check_rights(R_EVENT))
-				return
-
-			var/mob/living/L = locate(href_list["mobToDamage"]) in GLOB.mob_list
-			if(!istype(L))
-				return
-
-			var/Text = href_list["adjustDamage"]
-
-			var/amount = tgui_input_number(usr, "Deal how much damage to mob? (Negative values here heal)", "Adjust [Text]loss", 0, 10000, -10000)
-
-			if (isnull(amount))
-				return
-
-			if(!L)
-				to_chat(usr, "Mob doesn't exist anymore", confidential = TRUE)
-				return
-
-			var/newamt
-			switch(Text)
-				if("brute")
-					L.adjustBruteLoss(amount)
-					newamt = L.getBruteLoss()
-				if("fire")
-					L.adjustFireLoss(amount)
-					newamt = L.getFireLoss()
-				if("toxin")
-					L.adjustToxLoss(amount)
-					newamt = L.getToxLoss()
-				if("oxygen")
-					L.adjustOxyLoss(amount)
-					newamt = L.getOxyLoss()
-				if("clone")
-					L.adjustCloneLoss(amount)
-					newamt = L.getCloneLoss()
-				else
-					to_chat(usr, "You caused an error. DEBUG: Text:[Text] Mob:[L]", confidential = TRUE)
-					return
-
-			L.updatehealth()
-
-			if(amount != 0)
-				var/log_msg = "[key_name(usr)] dealt [amount] amount of [Text] damage to [key_name(L)]"
-				message_admins("[key_name(usr)] dealt [amount] amount of [Text] damage to [ADMIN_FLW(L)]")
-				log_admin(log_msg)
-				admin_ticket_log(L, "<font color='blue'>[log_msg]</font>")
-				vv_update_display(L, Text, "[newamt]")
-
-	if(href_list["view_combat_logs"])
+	else if(href_list["view_combat_logs"])
 		if(!check_rights(R_MOD))
 			return
 

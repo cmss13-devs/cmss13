@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - admin: "Ported various VV, protection, and SDQL differences from TG"

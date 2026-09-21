@@ -21450,9 +21450,6 @@
 	layer = 5.99;
 	pixel_y = 0
 	},
-/obj/effect/vehicle_roof/pizza_van{
-	layer = 5
-	},
 /turf/open/hybrisa/street/sidewalkfull/unweedable,
 /area/northpoint/oob)
 "blS" = (
@@ -21497,9 +21494,6 @@
 	dir = 4;
 	layer = 5.95;
 	pixel_y = 0
-	},
-/obj/effect/vehicle_roof/pizza_van{
-	layer = 5
 	},
 /turf/open/hybrisa/street/sidewalkfull/unweedable,
 /area/northpoint/oob)
@@ -56561,9 +56555,6 @@
 	layer = 5.99;
 	pixel_y = 0
 	},
-/obj/effect/vehicle_roof/pizza_van{
-	layer = 5
-	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt/unweedable,
 /area/northpoint/oob)
 "cYJ" = (
@@ -56573,9 +56564,6 @@
 	dir = 4;
 	layer = 5.95;
 	pixel_y = 0
-	},
-/obj/effect/vehicle_roof/pizza_van{
-	layer = 5
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt/unweedable,
 /area/northpoint/oob)

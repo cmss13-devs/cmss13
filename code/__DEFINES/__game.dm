@@ -450,6 +450,7 @@
 #define WALL_UPP_BASE "uppwall"
 #define WALL_ANCIENT_BASE "ancient_stone"
 #define WALL_RUNEDSTONE "runedstone"
+#define WALL_CONCRETE "concrete"
 
 //Defines for dropship weapon gimbals
 #define GIMBAL_LEFT -1

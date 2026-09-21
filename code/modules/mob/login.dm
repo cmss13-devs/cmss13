@@ -20,6 +20,7 @@
 
 	update_Login_details()
 
+
 	SEND_SIGNAL(src, COMSIG_MOB_LOGIN)
 
 	client.images = null

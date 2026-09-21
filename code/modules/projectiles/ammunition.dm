@@ -70,8 +70,10 @@ They're all essentially identical when it comes to getting the job done.
 		if(-1)
 			current_rounds = max_rounds //Fill it up. Anything other than -1 and 0 will just remain so.
 		if(0)
-			icon_state += "_e" //In case it spawns empty instead.
-			item_state += "_e"
+			if(icon_state)
+				icon_state += "_e" //In case it spawns empty instead.
+			if(item_state)
+				item_state += "_e"
 
 	if(ammo_band_color && ammo_band_icon)
 		update_ammo_band()

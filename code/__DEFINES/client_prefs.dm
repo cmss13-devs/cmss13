@@ -8,6 +8,8 @@
 //=================================================
 ///Xeno abilities are activated using middle mouse
 #define XENO_ABILITY_CLICK_MIDDLE 1
+///Xeno abilities are activated using shift left click
+#define XENO_ABILITY_CLICK_SHIFT 2
 ///Xeno abilities are activated using right click
 #define XENO_ABILITY_CLICK_RIGHT 3
 //=================================================

@@ -101,7 +101,7 @@
 		return
 	if (client && client.prefs && client.prefs.toggle_prefs & TOGGLE_DIRECTIONAL_ATTACK)
 		next_move += 0.25 SECONDS //Slight delay on missed directional attacks. If it finds a mob in the target tile, this will be overwritten by the attack delay.
-		return UnarmedAttack(get_step(src, Get_Compass_Dir(src, A)), tile_attack = TRUE, ignores_resin = TRUE)
+		return UnarmedAttack(get_step(src, Get_Compass_Dir(src, A)), FALSE, list(), tile_attack = TRUE, ignores_resin = TRUE)
 	return FALSE
 
 /**The parent proc, will default to UnarmedAttack behaviour unless overridden
@@ -119,6 +119,7 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 	if(queued_action && handle_queued_action(target))
 		return TRUE
 
+	var/left_pressed = mods[LEFT_CLICK] == "1"
 	var/alt_pressed = mods[ALT_CLICK] == "1"
 	var/shift_pressed = mods[SHIFT_CLICK] == "1"
 	var/middle_pressed = mods[MIDDLE_CLICK] == "1"
@@ -137,9 +138,11 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 	switch(preference)
 		if(XENO_ABILITY_CLICK_MIDDLE)
 			activate_ability = middle_pressed && !shift_pressed
-		// TODO WAT: !! REMOVE THE 2 BEFORE MERGE !!
-		if(2, XENO_ABILITY_CLICK_RIGHT)
+		if(XENO_ABILITY_CLICK_RIGHT)
 			activate_ability = right_pressed
+		if(XENO_ABILITY_CLICK_SHIFT)
+			activate_ability = left_pressed && shift_pressed
+
 
 	if(activate_ability && selected_ability)
 		if(istype(target, /atom/movable/screen))

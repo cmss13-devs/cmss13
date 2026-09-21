@@ -521,7 +521,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 		return
 
 	next_move += 6 // stop insane pickup speed
-	UnarmedAttack(pickupify)
+	UnarmedAttack(pickupify, FALSE, list())
 
 /mob/verb/pull_item(atom/movable/pullify in view(1, usr))
 	set name = "Pull"
@@ -623,7 +623,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 
 /mob/proc/get_ability_mouse_key()
 	if(!client)
-		return XENO_ABILITY_CLICK_MIDDLE
+		return XENO_ABILITY_CLICK_RIGHT
 
 	return client.prefs.xeno_ability_click_mode
 
@@ -631,6 +631,8 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	switch(preference_value)
 		if(XENO_ABILITY_CLICK_MIDDLE)
 			return "middle click"
+		if(XENO_ABILITY_CLICK_SHIFT)
+			return "shift click"
 		if(XENO_ABILITY_CLICK_RIGHT)
 			return "right click"
 	return "right click"

@@ -14,11 +14,13 @@
 /mob/living/carbon/human/click(atom/A, list/mods)
 	var/use_ability = FALSE
 	switch(get_ability_mouse_key())
+		if(XENO_ABILITY_CLICK_SHIFT)
+			if(mods[SHIFT_CLICK] && mods[LEFT_CLICK])
+				use_ability = TRUE
 		if(XENO_ABILITY_CLICK_MIDDLE)
 			if(mods[MIDDLE_CLICK] && !mods[SHIFT_CLICK])
 				use_ability = TRUE
-		// TODO WAT: !! REMOVE THE 2 HERE BEFORE MERGE !!
-		if(2, XENO_ABILITY_CLICK_RIGHT)
+		if(XENO_ABILITY_CLICK_RIGHT)
 			if(mods[RIGHT_CLICK])
 				use_ability = TRUE
 
@@ -84,10 +86,10 @@
 		return
 
 	SEND_SIGNAL(src, COMSIG_HUMAN_UNARMED_ATTACK, A)
-	if(mods[LEFT_CLICK])
-		A.attack_hand(src, mods)
-	else
+	if(mods[RIGHT_CLICK])
 		A.attack_hand_secondary(src, mods)
+	else
+		A.attack_hand(src, mods)
 
 /datum/proc/handle_click(mob/living/carbon/human/user, atom/A, params) //Heres our handle click relay proc thing.
 	return HANDLE_CLICK_PASS_THRU

@@ -2236,9 +2236,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /// SIGNAL_HANDLER for COMSIG_MOB_MOUSEDOWN
 /obj/item/weapon/gun/proc/start_fire(datum/source, atom/object, turf/location, control, list/modifiers, bypass_checks = FALSE)
 	SIGNAL_HANDLER
-
-	if(!gun_user)
-		set_gun_user(source)
+	set_gun_user(source)
 
 	if(modifiers[RIGHT_CLICK])
 		if(gun_user.throw_mode)
@@ -2267,8 +2265,19 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		return
 
 	if(!bypass_checks)
-		if(!check_active_hand(gun_user)) // If the object in our active hand is not this gun, abort, also shouldn't ever
+		if(!check_active_hand(gun_user) || gun_user.loc == get_turf(object)) // If the object in our active hand is not this gun, abort, also shouldn't ever
 			return
+
+		if(HAS_TRAIT(src, TRAIT_GUN_BAYONET))
+			if(isturf(object))
+				var/turf/turf_flag_check = object
+				if(turf_flag_check.turf_flags & TURF_ORGANIC)
+					return FALSE
+			if(isobj(object))
+				var/obj/object_flag_check = object
+				if(object_flag_check.flags_obj & OBJ_ORGANIC)
+					if(!(istypestrict(object, /obj/effect/alien/weeds)))
+						return FALSE
 
 		if(gun_user.throw_mode)
 			return

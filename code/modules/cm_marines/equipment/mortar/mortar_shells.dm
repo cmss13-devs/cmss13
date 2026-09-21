@@ -46,7 +46,7 @@
 	item_state = "mortar_ammo_he"
 
 /obj/item/mortar_shell/heplus/detonate(turf/T)
-	explosion(T, 3, 5, 7, 9, explosion_cause_data = cause_data) //effectively equivalent to an OT maxcap
+	explosion(T, 5, 7, 9, 11, explosion_cause_data = cause_data) //effectively equivalent to an OT maxcap. Scary!
 
 /obj/item/mortar_shell/frag
 	name = "\improper 80mm fragmentation mortar shell"
@@ -82,7 +82,7 @@
 	radius = 4
 	flame_level = BURN_TIME_TIER_5 + 10 //Type B standard, 50 base + 5 from chemfire code.
 	burn_level = BURN_LEVEL_TIER_2
-	flameshape = FLAMESHAPE_TRIANGLE
+	flameshape = FLAMESHAPE_STAR
 	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 	ceiling_penetrating = TRUE
 

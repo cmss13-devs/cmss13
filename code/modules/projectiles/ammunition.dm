@@ -93,8 +93,10 @@ They're all essentially identical when it comes to getting the job done.
 
 /obj/item/ammo_magazine/update_icon(round_diff = 0)
 	if(current_rounds <= 0)
-		icon_state = base_mag_icon + "_e"
-		item_state = base_mag_item + "_e"
+		if(base_mag_icon)
+			icon_state = base_mag_icon + "_e"
+		if(base_mag_item)
+			item_state = base_mag_item + "_e"
 		add_to_garbage(src)
 	else if(current_rounds - round_diff <= 0)
 		icon_state = base_mag_icon

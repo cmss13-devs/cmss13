@@ -1622,7 +1622,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/ubarrel/m20a/unloaded
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/ubarrel/unloaded
 
-/obj/item/weapon/gun/shotgun/af13
+/obj/item/weapon/gun/shotgun/ubarrel/af13
 	name = "\improper internal af13 underbarrel shotgun"
 	desc = "You shouldn't be reading this"
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_WIELDED_FIRING_ONLY
@@ -1632,7 +1632,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/af13
 	ammo = /datum/ammo/bullet/shotgun/buckshot/masterkey
 
-/obj/item/weapon/gun/shotgun/af13/Initialize(mapload, spawn_empty)
+/obj/item/weapon/gun/shotgun/ubarrel/af13/Initialize(mapload, spawn_empty)
 	. = ..()
 	add_bullet_traits(list(
 		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 2*5, GLOB.damage_boost_turfs), // 3 hits to break down regular walls, about 6 to break down r-walls
@@ -1640,12 +1640,12 @@ can cause issues with ammo types getting mixed up during the burst.
 		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 2*5, GLOB.damage_boost_pylons)
 	))
 
-/obj/item/weapon/gun/shotgun/af13/reload(mob/user, obj/item/ammo_magazine/magazine)
+/obj/item/weapon/gun/shotgun/ubarrel/af13/reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(!ispath(magazine.default_ammo, /datum/ammo/bullet/shotgun/buckshot)) // No buckshot in this gun
 		to_chat(user, SPAN_WARNING("\The [src] only accepts buckshot!"))
 		return
 	return ..()
 
-/obj/item/weapon/gun/shotgun/af13/b
+/obj/item/weapon/gun/shotgun/ubarrel/af13/b
 	name = "\improper internal af13-b underbarrel shotgun"
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/af13b

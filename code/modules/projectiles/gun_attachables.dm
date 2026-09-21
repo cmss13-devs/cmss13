@@ -3443,7 +3443,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "masterkey_af13_a"
 	desc = "A Weyland-Yutani AF13 underslung shotgun. Attaches to the underbarrel of NSG23 line of weapons. Only capable of loading up to six buckshot shells. Specialized for breaching into buildings."
 	w_class = SIZE_MEDIUM
-	attached_gun = /obj/item/weapon/gun/shotgun/af13/b
+	attached_gun = /obj/item/weapon/gun/shotgun/ubarrel/af13/b
 	slot = "under"
 	gun_activate_sound = 'sound/weapons/handling/gun_u7_activate.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON
@@ -3462,7 +3462,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "masterkey_af13_a"
 	desc = "A Weyland-Yutani AF13-B underslung shotgun, heavily modified by RMC Armourers. Attaches to the underbarrel of NSG23 line of weapons. Only capable of loading up to six buckshot shells. Specialized for breaching into buildings."
 	w_class = SIZE_MEDIUM
-	attached_gun = /obj/item/weapon/gun/shotgun/af13/b
+	attached_gun = /obj/item/weapon/gun/shotgun/ubarrel/af13/b
 	slot = "under"
 	gun_activate_sound = 'sound/weapons/handling/gun_u7_activate.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON|ATTACH_WIELD_OVERRIDE

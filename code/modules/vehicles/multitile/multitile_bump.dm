@@ -988,7 +988,7 @@
 
 	if(!has_own_crusher_charge_handling && iscrusher(M))
 		var/mob/living/carbon/xenomorph/crusher/C = M
-		if(C.throwing)
+		if(HAS_TRAIT(C, TRAIT_LAUNCHED))
 			var/do_move = TRUE
 			if(health > 0)
 				take_damage_type(100, "blunt", C)
@@ -1007,7 +1007,7 @@
 
 	if(M.action_busy)
 		return
-	if(M.pulledby || M.throwing)
+	if(M.pulledby || HAS_TRAIT(M, TRAIT_LAUNCHED))
 		return
 	var/turf/facing_turf = get_step(get_turf(M), M.dir)
 	if(!facing_turf)

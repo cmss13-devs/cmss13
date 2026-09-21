@@ -304,7 +304,7 @@
 			halve_speed()
 			return FALSE
 
-		if(!T.Enter(src))
+		if(!T.Enter(src, loc))
 			can_move = FALSE
 
 		for(var/atom/A in T)

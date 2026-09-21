@@ -195,7 +195,7 @@
 		if(!(flags_atom & DIRLOCK))
 			setDir(direct)
 		SEND_SIGNAL(src, COMSIG_MOB_MOVE_OR_LOOK, TRUE, direct, direct)
-		if(pulledby || throwing)
+		if(pulledby || HAS_TRAIT(src, TRAIT_LAUNCHED))
 			return FALSE
 		var/turf/edge = get_step(here, direct)
 		if(!edge || edge.z != z || (edge in tank.locs))
@@ -306,6 +306,8 @@
 	if(back && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
 		update_inv_back()
 
+	if(. && nutrition && stat != DEAD)
+		nutrition -= HUNGER_FACTOR/5
 
 
 /mob/proc/resist_grab(moving_resist)
@@ -418,7 +420,7 @@
 	if(buckled || now_pushing)
 		return
 
-	if(throwing)
+	if(HAS_TRAIT(src, TRAIT_LAUNCHED))
 		launch_impact(moving_atom)
 		return
 

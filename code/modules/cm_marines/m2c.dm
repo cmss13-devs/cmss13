@@ -109,7 +109,7 @@
 	if(!area.allow_construction)
 		to_chat(user, SPAN_WARNING("You can't set up \the [src] here."))
 		return
-	if(OT.density || !isturf(OT) || !OT.allow_construction)
+	if(OT.density || !isturf(OT) || !OT.allow_construction  || !OT.validate_deployment(TURF_DEPLOYABLE_GUN))
 		to_chat(user, SPAN_WARNING("You can't set up \the [src] here."))
 		return FALSE
 	if(isliving(user))
@@ -120,6 +120,7 @@
 	if(rotate_check.density)
 		to_chat(user, SPAN_WARNING("You can't set up \the [src] that way, there's a wall behind you!"))
 		return FALSE
+
 	for(var/obj/structure/potential_blocker in rotate_check)
 		if(potential_blocker.density)
 			to_chat(user, SPAN_WARNING("You can't set up \the [src] that way, there's \a [potential_blocker] behind you!"))
@@ -503,7 +504,7 @@
 
 	if(over_object == user && in_range(src, user))
 		if(stationary)
-			to_chat(user, SPAN_WARNING("You cannot disassemble the [src], it is stationary!"))
+			to_chat(user, SPAN_WARNING("You cannot disassemble [src], it is stationary!"))
 			return
 		if((rounds > 0) && (user.a_intent & (INTENT_GRAB)))
 			playsound(src.loc, 'sound/items/m56dauto_load.ogg', 75, 1)

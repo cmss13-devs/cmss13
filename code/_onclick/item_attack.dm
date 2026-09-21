@@ -10,12 +10,20 @@
 	if(flags_item & CAN_DIG_SHRAPNEL && ishuman(user))
 		dig_out_shrapnel(user)
 
+/obj/item/proc/attack_self_secondary(mob/user)
+	SHOULD_CALL_PARENT(TRUE)
+	return
+
 // No comment
 /atom/proc/attackby(obj/item/W, mob/living/user, list/mods)
 	if(SEND_SIGNAL(src, COMSIG_PARENT_ATTACKBY, W, user, mods) & COMPONENT_NO_AFTERATTACK)
 		return TRUE
 	SEND_SIGNAL(user, COMSIG_MOB_PARENT_ATTACKBY, src, W)
 	return FALSE
+
+/atom/proc/attackby_secondary(obj/item/attack_item, mob/living/user, list/mods)
+	return FALSE
+
 
 /atom/movable/attackby(obj/item/W, mob/living/user)
 	. = ..()
@@ -32,12 +40,20 @@
 	if(istype(I) && ismob(user))
 		return I.attack(src, user)
 
+/mob/living/attackby_secondary(obj/item/attack_item, mob/living/user, list/mods)
+	if(HAS_TRAIT(user, TRAIT_HAULED))
+		return
+	if(istype(attack_item) && ismob(user))
+		return attack_item.attack_secondary(src, user)
+
 
 // Proximity_flag is 1 if this afterattack was called on something adjacent, in your square, or on your person.
 // Click parameters is the params string from byond Click() code, see that documentation.
 /obj/item/proc/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	return FALSE
 
+/obj/item/proc/afterattack_secondary(atom/target, mob/user, proximity_flag, click_parameters)
+	return FALSE
 
 /obj/item/proc/attack(mob/living/M, mob/living/user)
 	if((flags_item & NOBLUDGEON) || (MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_attacking_corpses) && M.stat == DEAD && !user.get_target_lock(M.faction_group)))
@@ -122,3 +138,6 @@
 			playsound(loc, hitsound, 25, 1)
 		return (hit|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+
+/obj/item/proc/attack_secondary(mob/living/target, mob/living/user)
+	return

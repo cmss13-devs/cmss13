@@ -966,9 +966,6 @@
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/click(atom/clicked_atom, list/mods)
 	var/should_pounce = FALSE
 	switch(get_ability_mouse_key())
-		if(XENO_ABILITY_CLICK_SHIFT)
-			if(mods[SHIFT_CLICK] && mods[LEFT_CLICK])
-				should_pounce = TRUE
 		if(XENO_ABILITY_CLICK_RIGHT)
 			if(mods[RIGHT_CLICK])
 				should_pounce = TRUE

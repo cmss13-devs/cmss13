@@ -14,9 +14,6 @@
 /mob/living/carbon/human/click(atom/A, list/mods)
 	var/use_ability = FALSE
 	switch(get_ability_mouse_key())
-		if(XENO_ABILITY_CLICK_SHIFT)
-			if(mods[SHIFT_CLICK] && mods[LEFT_CLICK])
-				use_ability = TRUE
 		if(XENO_ABILITY_CLICK_MIDDLE)
 			if(mods[MIDDLE_CLICK] && !mods[SHIFT_CLICK])
 				use_ability = TRUE

@@ -67,7 +67,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/ooccolor
 	var/be_special = BE_ALIEN|BE_KING // Special role selection
 	var/toggle_prefs = TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_COMBAT_CLICKDRAG_OVERRIDE|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION|TOGGLE_VEND_ITEM_TO_HAND|TOGGLE_LEADERSHIP_SPOKEN_ORDERS|TOGGLE_COCKING_TO_HAND|TOGGLE_WIELD_ASSIST // flags in #define/mode.dm
-	var/xeno_ability_click_mode = XENO_ABILITY_CLICK_MIDDLE
+	var/xeno_ability_click_mode = XENO_ABILITY_CLICK_RIGHT
 	var/auto_fit_viewport = FALSE
 	var/adaptive_zoom = 0
 	var/UI_style = "midnight"
@@ -664,8 +664,6 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Enable Playtime Perks:</b> <a href='byond://?_src_=prefs;preference=playtime_perks'><b>[playtime_perks? "Yes" : "No"]</b></a><br>"
 			if(user.client.can_skip_role_lock())
 				dat += "<b>Skip Playtime Ranks:</b> <a href='byond://?_src_=prefs;preference=skip_playtime_ranks'><b>[skip_playtime_ranks? "Yes" : "No"]</b></a><br>"
-			dat += "<b>Toggle Being Able to Hurt Yourself: \
-					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_IGNORE_SELF]'><b>[toggle_prefs & TOGGLE_IGNORE_SELF ? "Off" : "On"]</b></a><br>"
 			dat += "<b>Toggle Help Intent Safety: \
 					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_HELP_INTENT_SAFETY]'><b>[toggle_prefs & TOGGLE_HELP_INTENT_SAFETY ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Automatic Shove: \
@@ -1289,7 +1287,6 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 				if("mouse_button_activation")
 					var/static/list/mouse_button_list = list(
 						xeno_ability_mouse_pref_to_string(XENO_ABILITY_CLICK_MIDDLE) = XENO_ABILITY_CLICK_MIDDLE,
-						xeno_ability_mouse_pref_to_string(XENO_ABILITY_CLICK_SHIFT) = XENO_ABILITY_CLICK_SHIFT,
 						xeno_ability_mouse_pref_to_string(XENO_ABILITY_CLICK_RIGHT) = XENO_ABILITY_CLICK_RIGHT
 					)
 					var/choice = tgui_input_list(user, "Choose how you will activate your xenomorph and human abilities.", "Mouse Activation Button", mouse_button_list)

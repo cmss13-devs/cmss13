@@ -323,13 +323,9 @@
 
 //Throwing stuff
 
-/mob/living/carbon/toggle_normal_throw()
+/mob/living/carbon/toggle_throw()
 	if(!stat && isturf(loc) && !is_mob_restrained())
 		toggle_throw_mode(THROW_MODE_NORMAL)
-
-/mob/living/carbon/toggle_high_toss()
-	if(!stat && isturf(loc) && !is_mob_restrained())
-		toggle_throw_mode(THROW_MODE_HIGH)
 
 /mob/living/carbon/proc/toggle_throw_mode(type)
 	if(type == THROW_MODE_OFF || throw_mode == type)
@@ -347,11 +343,10 @@
 	else
 		hud_used.throw_icon.icon_state = "act_throw_high"
 
-/mob/proc/throw_item(atom/target)
+/mob/proc/throw_item(atom/target, throw_high = FALSE)
 	return
 
-/mob/living/carbon/throw_item(atom/target)
-	var/throw_type = throw_mode
+/mob/living/carbon/throw_item(atom/target, throw_high = FALSE)
 	toggle_throw_mode(THROW_MODE_OFF) // This MUST be at the beginning, or else players will not recognize that throw is not toggled on (especially xenos)
 
 	if(is_ventcrawling) //NOPE
@@ -409,7 +404,7 @@
 			inertia_dir = get_dir(target, src)
 			step(src, inertia_dir)
 
-		if(throw_type == THROW_MODE_HIGH)
+		if(throw_high)
 			to_chat(src, SPAN_NOTICE("You prepare to perform a high toss."))
 			if(!do_after(src, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				to_chat(src, SPAN_WARNING("You need to set up the high toss!"))

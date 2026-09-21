@@ -59,9 +59,7 @@
 		storedarea = get_area(T)
 		areaimage.loc = storedarea // color our area
 
-/datum/buildmode_mode/area_edit/handle_selected_area(client/c, params)
-	var/list/modifiers = params2list(params)
-
+/datum/buildmode_mode/area_edit/handle_selected_area(client/c, list/modifiers)
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
 		var/choice = alert("Are you sure you want to fill area?", "Area Fill Confirmation", "Yes", "No")
 		if(choice != "Yes")

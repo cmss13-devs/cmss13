@@ -159,7 +159,7 @@
 		if(toggle_prefs & (1<<2))
 			S["xeno_ability_click_mode"] << XENO_ABILITY_CLICK_MIDDLE
 		else
-			S["xeno_ability_click_mode"] << XENO_ABILITY_CLICK_SHIFT
+			S["xeno_ability_click_mode"] << XENO_ABILITY_CLICK_RIGHT
 
 	if(savefile_version < 27)
 		// Gives staff afk protection by default.

@@ -1153,36 +1153,10 @@ and you're good to go.
 /obj/item/weapon/gun/proc/load_into_chamber(mob/user)
 	//The workhorse of the bullet procs.
 	//If we have a round chambered and no active attachable, we're good to go.
-	if(in_chamber && !active_attachable)
+	if(in_chamber)
 		return in_chamber //Already set!
 
-	//Let's check on the active attachable. It loads ammo on the go, so it never chambers anything
-	if(active_attachable)
-		if(shots_fired >= 1) // This is what you'll want to remove if you want automatic underbarrel guns in the future
-			SEND_SIGNAL(src, COMSIG_GUN_INTERRUPT_FIRE)
-			return
-
-		if(active_attachable.current_rounds > 0) //If it's still got ammo and stuff.
-			active_attachable.current_rounds--
-			var/obj/projectile/bullet = create_bullet(active_attachable.ammo, initial(name))
-			// For now, only bullet traits from the attachment itself will apply to its projectiles
-			for(var/entry in active_attachable.traits_to_give_attached)
-				var/list/L
-				// Check if this is an ID'd bullet trait
-				if(istext(entry))
-					L = active_attachable.traits_to_give_attached[entry].Copy()
-				else
-					// Prepend the bullet trait to the list
-					L = list(entry) + active_attachable.traits_to_give_attached[entry]
-				bullet.apply_bullet_trait(L)
-			return bullet
-		else
-			to_chat(user, SPAN_WARNING("[active_attachable] is empty!"))
-			to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
-			playsound(user, active_attachable.activation_sound, 15, 1)
-			active_attachable.activate_attachment(src, null, TRUE)
-	else
-		return ready_in_chamber()//We're not using the active attachable, we must use the active mag if there is one.
+	return ready_in_chamber()//We're not using the active attachable, we must use the active mag if there is one.
 
 /obj/item/weapon/gun/proc/apply_traits(obj/projectile/P)
 	// Apply bullet traits from gun
@@ -1238,46 +1212,31 @@ and you're good to go.
 
 //This proc is needed for firearms that chamber rounds after firing.
 /obj/item/weapon/gun/proc/reload_into_chamber(mob/user)
-	/*
-	ATTACHMENT POST PROCESSING
-	This should only apply to the masterkey, since it's the only attachment that shoots through Fire()
-	instead of its own thing through fire_attachment(). If any other bullet attachments are added, they would fire here.
-	*/
-	if(!active_attachable) //We don't need to check for the mag if an attachment was used to shoot.
-		in_chamber = null //If we didn't fire from attachable, let's set this so the next pass doesn't think it still exists.
-		if(current_mag) //If there is no mag, we can't reload.
-			ready_in_chamber()
+	in_chamber = null //If we didn't fire from attachable, let's set this so the next pass doesn't think it still exists.
+	if(current_mag) //If there is no mag, we can't reload.
+		ready_in_chamber()
 
-			// This is where the magazine is auto-ejected
-			if(current_mag.current_rounds <= 0 && flags_gun_features & GUN_AUTO_EJECTOR)
-				if((user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF))
-					update_icon()
-				else
-					var/drop_to_ground = TRUE
-					if(user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND)
-						if(!(flags_gun_features & GUN_BURST_FIRING) || ((flags_gun_features & GUN_BURST_FIRING) && burst_amount >= shots_fired)) //Don't mess with our hands if we're not done with the burst yet.
-							drop_to_ground = FALSE
-							unwield(user)
-							user.swap_hand()
-					unload(user, TRUE, drop_to_ground) // We want to quickly autoeject the magazine. This proc does the rest based on magazine type. User can be passed as null.
-					playsound(src, empty_sound, 25, 1)
-					SEND_SIGNAL(user, COMSIG_MOB_GUN_EMPTY, src)
-		else // Just fired a chambered bullet with no magazine in the gun
-			update_icon()
+		// This is where the magazine is auto-ejected
+		if(current_mag.current_rounds <= 0 && flags_gun_features & GUN_AUTO_EJECTOR)
+			if((user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF))
+				update_icon()
+			else
+				var/drop_to_ground = TRUE
+				if(user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND)
+					if(!(flags_gun_features & GUN_BURST_FIRING) || ((flags_gun_features & GUN_BURST_FIRING) && burst_amount >= shots_fired)) //Don't mess with our hands if we're not done with the burst yet.
+						drop_to_ground = FALSE
+						unwield(user)
+						user.swap_hand()
+				unload(user, TRUE, drop_to_ground) // We want to quickly autoeject the magazine. This proc does the rest based on magazine type. User can be passed as null.
+				playsound(src, empty_sound, 25, 1)
+				SEND_SIGNAL(user, COMSIG_MOB_GUN_EMPTY, src)
+	else // Just fired a chambered bullet with no magazine in the gun
+		update_icon()
 
 	return in_chamber //Returns the projectile if it's actually successful.
 
-/obj/item/weapon/gun/proc/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
-	if(active_attachable) //Attachables don't chamber rounds, so we want to delete it right away.
-		qdel(projectile_to_fire) //Getting rid of it. Attachables only use ammo after the cycle is over.
-		if(refund)
-			active_attachable.current_rounds++ //Refund the bullet.
-		return 1
-
 /obj/item/weapon/gun/proc/clear_jam(obj/projectile/projectile_to_fire, mob/user as mob) //Guns jamming, great.
 	flags_gun_features &= ~GUN_BURST_FIRING // Also want to turn off bursting, in case that was on. It probably was.
-	delete_bullet(projectile_to_fire, 1) //We're going to clear up anything inside if we need to.
-	//If it's a regular bullet, we're just going to keep it chambered.
 	extra_delay = 2 + (burst_delay + extra_delay)*2 // Some extra delay before firing again.
 	to_chat(user, SPAN_WARNING("[src] jammed! You'll need a second to get it fixed!"))
 
@@ -1305,25 +1264,6 @@ and you're good to go.
 		return NONE
 
 	/*
-	This is where the grenade launcher and flame thrower function as attachments.
-	This is also a general check to see if the attachment can fire in the first place.
-	*/
-	var/check_for_attachment_fire = FALSE
-
-	if(active_attachable?.flags_attach_features & ATTACH_WEAPON) //Attachment activated and is a weapon.
-		check_for_attachment_fire = TRUE
-		if(!(active_attachable.flags_attach_features & ATTACH_PROJECTILE)) //If it's unique projectile, this is where we fire it.
-			if((active_attachable.current_rounds <= 0) && !(active_attachable.flags_attach_features & ATTACH_IGNORE_EMPTY))
-				click_empty(user) //If it's empty, let them know.
-				to_chat(user, SPAN_WARNING("[active_attachable] is empty!"))
-				to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
-				active_attachable.activate_attachment(src, null, TRUE)
-			else
-				if(active_attachable.fire_attachment(target, src, user)) //Fire it.
-					active_attachable.last_fired = world.time
-			return NONE
-			//If there's more to the attachment, it will be processed farther down, through in_chamber and regular bullet act.
-	/*
 	This is where burst is established for the proceeding section. Which just means the proc loops around that many times.
 	If burst = 1, you must null it if you ever RETURN during the for() cycle. If for whatever reason burst is left on while
 	the gun is not firing, it will break a lot of stuff. BREAK is fine, as it will null it.
@@ -1343,7 +1283,7 @@ and you're good to go.
 		if(istype(akimbo) && akimbo.gun_category == gun_category && !(akimbo.flags_gun_features & GUN_WIELDED_FIRING_ONLY))
 			dual_wield = TRUE //increases recoil, increases scatter, and reduces accuracy.
 
-	var/fire_return = handle_fire(target, user, params, reflex, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
+	var/fire_return = handle_fire(target, user, params, reflex, dual_wield, akimbo, fired_by_akimbo)
 	if((gun_firemode == GUN_FIREMODE_AUTOMATIC && current_mag?.current_rounds % 8 == 0) || (gun_firemode == GUN_FIREMODE_BURSTFIRE && burst_amount <= shots_fired) || gun_firemode == GUN_FIREMODE_SEMIAUTO)
 		display_ammo(user)
 
@@ -1353,7 +1293,7 @@ and you're good to go.
 	flags_gun_features &= ~GUN_BURST_FIRING // We always want to turn off bursting when we're done, mainly for when we break early mid-burstfire.
 	return AUTOFIRE_CONTINUE
 
-/obj/item/weapon/gun/proc/handle_fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
+/obj/item/weapon/gun/proc/handle_fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield, akimbo, fired_by_akimbo)
 	var/turf/curloc = get_turf(user) //In case the target or we are expired.
 	var/turf/targloc = get_turf(target)
 
@@ -1450,13 +1390,10 @@ and you're good to go.
 	projectile_to_fire = null // Important: firing might have made projectile collide early and ALREADY have deleted it. We clear it too.
 	//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-	if(check_for_attachment_fire)
-		active_attachable.last_fired = world.time
-	else
-		last_fired = world.time
-		var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
-		if(fire_delay_group && delay_left > 0)
-			LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
+	last_fired = world.time
+	var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
+	if(fire_delay_group && delay_left > 0)
+		LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
 	SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
 
 	shots_fired++
@@ -1475,29 +1412,19 @@ and you're good to go.
 	muzzle_flash(angle,user)
 
 	//This is where we load the next bullet in the chamber. We check for attachments too, since we don't want to load anything if an attachment is active.
-	if(!check_for_attachment_fire && !reload_into_chamber(user)) // It has to return a bullet, otherwise it's empty. Unless it's an undershotgun.
+	if(!reload_into_chamber(user)) // It has to return a bullet, otherwise it's empty. Unless it's an undershotgun.
 		click_empty(user)
 		return TRUE //Nothing else to do here, time to cancel out.
 	return TRUE
 
 #define EXECUTION_CHECK (attacked_mob.stat == UNCONSCIOUS || attacked_mob.is_mob_restrained()) && (user.zone_selected=="head") && ((user.a_intent == INTENT_DISARM) || (user.a_intent == INTENT_GRAB))
 
-/obj/item/weapon/gun/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	if(!proximity_flag)
-		return FALSE
-
-	if(active_attachable && (active_attachable.flags_attach_features & ATTACH_MELEE))
-		active_attachable.last_fired = world.time
-		active_attachable.fire_attachment(target, src, user)
-		return TRUE
-
+/obj/item/weapon/gun/attack_secondary(mob/living/target, mob/living/user)
+	if(!active_attachable)
+		return ..()
+	active_attachable.attack(target, user)
 
 /obj/item/weapon/gun/attack(mob/living/attacked_mob, mob/living/user, dual_wield)
-	if(active_attachable && (active_attachable.flags_attach_features & ATTACH_MELEE)) //this is expected to do something in melee.
-		active_attachable.last_fired = world.time
-		active_attachable.fire_attachment(attacked_mob, src, user)
-		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
-
 	if(!(flags_gun_features & GUN_CAN_POINTBLANK)) // If it can't point blank, you can't suicide and such.
 		return ..()
 
@@ -1542,15 +1469,6 @@ and you're good to go.
 	// Backend to make PB scale off of fire_delay instead of attack_speed
 	user.next_move = world.time - attack_speed + fire_delay
 
-	//The following relating to bursts was borrowed from Fire code.
-	var/check_for_attachment_fire = FALSE
-	if(active_attachable)
-		if(active_attachable.flags_attach_features & ATTACH_PROJECTILE)
-			check_for_attachment_fire = TRUE
-		else
-			active_attachable.activate_attachment(src, null, TRUE)//No way.
-			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE) //do nothing
-
 	var/fired_by_akimbo = FALSE
 	if(dual_wield)
 		fired_by_akimbo = TRUE
@@ -1563,7 +1481,7 @@ and you're good to go.
 
 	var/bullets_to_fire = 1
 
-	if(!check_for_attachment_fire && (gun_firemode == GUN_FIREMODE_BURSTFIRE) && burst_amount > BURST_AMOUNT_TIER_1)
+	if((gun_firemode == GUN_FIREMODE_BURSTFIRE) && burst_amount > BURST_AMOUNT_TIER_1)
 		bullets_to_fire = burst_amount
 		flags_gun_features |= GUN_BURST_FIRING
 
@@ -1661,13 +1579,10 @@ and you're good to go.
 			projectile_to_fire.ammo.on_hit_mob(attacked_mob, projectile_to_fire, user)
 			attacked_mob.bullet_act(projectile_to_fire)
 
-		if(check_for_attachment_fire)
-			active_attachable.last_fired = world.time
-		else
-			last_fired = world.time
-			var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
-			if(fire_delay_group && delay_left > 0)
-				LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
+		last_fired = world.time
+		var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
+		if(fire_delay_group && delay_left > 0)
+			LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
 
 		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
 
@@ -1690,7 +1605,7 @@ and you're good to go.
 		in_chamber = null
 
 		//This is where we load the next bullet in the chamber. We check for attachments too, since we don't want to load anything if an attachment is active.
-		if(!check_for_attachment_fire && !reload_into_chamber(user)) // It has to return a bullet, otherwise it's empty. Unless it's an undershotgun.
+		if(!reload_into_chamber(user)) // It has to return a bullet, otherwise it's empty. Unless it's an undershotgun.
 			click_empty(user)
 			break //Nothing else to do here, time to cancel out.
 
@@ -1713,8 +1628,7 @@ and you're good to go.
 	flags_gun_features &= ~GUN_BURST_FIRING
 
 	// After a successful point blank, set proper fire delay to prevent bypassing gun's fire_delay during the auto fire transition
-	if(!check_for_attachment_fire)
-		last_fired = world.time
+	last_fired = world.time
 
 	display_ammo(user)
 
@@ -1757,19 +1671,14 @@ and you're good to go.
 		user.visible_message(SPAN_NOTICE("[user] decided life was worth living."))
 		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
-	// suicide code block
-	if(active_attachable && !(active_attachable.flags_attach_features & ATTACH_PROJECTILE))
-		active_attachable.activate_attachment(src, null, TRUE)//We're not firing off a nade into our mouth.
 	var/obj/projectile/projectile_to_fire = load_into_chamber(user)
 	if(projectile_to_fire) //We actually have a projectile, let's move on.
 		user.visible_message(SPAN_WARNING("[user] pulls the trigger!"))
 		var/actual_sound
-		if(active_attachable && active_attachable.fire_sound)
-			actual_sound = active_attachable.fire_sound
-		else if(!isnull(fire_sound))
+		if(!isnull(fire_sound))
 			actual_sound = fire_sound
 		else actual_sound = pick(fire_sounds)
-		var/sound_volume = (flags_gun_features & GUN_SILENCED && !active_attachable) ? 25 : 60
+		var/sound_volume = (flags_gun_features & GUN_SILENCED) ? 25 : 60
 		playsound(user, actual_sound, sound_volume, 1)
 		simulate_recoil(2, user)
 		var/time
@@ -1885,12 +1794,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 				click_empty(gun_user)
 			return FALSE
 
-		if(active_attachable)
-			if(active_attachable.flags_attach_features & ATTACH_PROJECTILE)
-				if(!(active_attachable.flags_attach_features & ATTACH_WIELD_OVERRIDE) && !(flags_item & WIELDED))
-					to_chat(user, SPAN_WARNING("You must wield [src] to fire [active_attachable]!"))
-					return
-		if((flags_gun_features & GUN_WIELDED_FIRING_ONLY) && !(flags_item & WIELDED) && !active_attachable) //If we're not holding the weapon with both hands when we should.
+		if((flags_gun_features & GUN_WIELDED_FIRING_ONLY) && !(flags_item & WIELDED)) //If we're not holding the weapon with both hands when we should.
 			to_chat(user, SPAN_WARNING("You need a more secure grip to fire this weapon!"))
 			return
 
@@ -1915,12 +1819,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 				return TRUE
 			return
 
-		var/next_shot
-
-		if(active_attachable) //Underbarrel attached weapon?
-			next_shot += active_attachable.last_fired + active_attachable.attachment_firing_delay
-		else //Normal fire.
-			next_shot += last_fired + fire_delay
+		var/next_shot = last_fired + fire_delay
 
 		if(world.time >= next_shot + extra_delay) //check the last time it was fired.
 			extra_delay = 0
@@ -1961,11 +1860,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		playsound(current_gun, actual_sound, 25, 1, 5)
 
 /obj/item/weapon/gun/proc/display_ammo(mob/user)
-	// Do not display ammo if you have an attachment
-	// currently activated
-	if(active_attachable)
-		return
-
 	if(!current_mag)
 		return
 
@@ -2059,18 +1953,13 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	//Guns with low ammo have their firing sound
 	var/firing_sndfreq = (current_mag && (current_mag.current_rounds / current_mag.max_rounds) > GUN_LOW_AMMO_PERCENTAGE) ? FALSE : SOUND_FREQ_HIGH
 
-	//firing from an attachment
-	if(active_attachable && active_attachable.flags_attach_features & ATTACH_PROJECTILE)
-		if(active_attachable.fire_sound) //If we're firing from an attachment, use that noise instead.
-			playsound(user, active_attachable.fire_sound, 50)
-	else
-		if(!(flags_gun_features & GUN_SILENCED))
-			if (firing_sndfreq && fire_rattle)
-				playsound(user, fire_rattle, firesound_volume, FALSE)//if the gun has a unique 'mag rattle' SFX play that instead of pitch shifting.
-			else
-				playsound(user, actual_sound, firesound_volume, firing_sndfreq)
+	if(!(flags_gun_features & GUN_SILENCED))
+		if (firing_sndfreq && fire_rattle)
+			playsound(user, fire_rattle, firesound_volume, FALSE)//if the gun has a unique 'mag rattle' SFX play that instead of pitch shifting.
 		else
-			playsound(user, actual_sound, 25, firing_sndfreq)
+			playsound(user, actual_sound, firesound_volume, firing_sndfreq)
+	else
+		playsound(user, actual_sound, 25, firing_sndfreq)
 
 /obj/item/weapon/gun/proc/simulate_scatter(obj/projectile/projectile_to_fire, atom/target, turf/curloc, turf/targloc, mob/user, bullets_fired = 1)
 	if(curloc.z != targloc.z)
@@ -2256,7 +2145,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 ///Set the target and take care of hard delete
 /obj/item/weapon/gun/proc/set_target(atom/object)
-	active_attachable?.set_target(object)
 	if(object == target || object == loc)
 		return
 	if(target)
@@ -2268,7 +2156,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 ///Set the target to its turf, so we keep shooting even when it was qdeled
 /obj/item/weapon/gun/proc/clean_target()
 	SIGNAL_HANDLER
-	active_attachable?.clean_target()
 	target = get_turf(target)
 
 /obj/item/weapon/gun/proc/stop_fire()
@@ -2317,7 +2204,11 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		set_gun_user(source)
 
 	var/list/modifiers = params2list(params)
-	if(modifiers[CTRL_CLICK] || modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5])
+	if(modifiers[RIGHT_CLICK])
+		active_attachable.fire_attachment(object, src, source)
+		return COMSIG_MOB_CLICK_HANDLED
+
+	if(!modifiers[LEFT_CLICK])
 		return FALSE
 
 	// Don't allow doing anything else if inside a container of some sort, like a locker.
@@ -2366,7 +2257,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		return FALSE
 
 	set_target(get_turf_on_clickcatcher(object, gun_user, params))
-	if((gun_firemode == GUN_FIREMODE_SEMIAUTO) || active_attachable)
+	if((gun_firemode == GUN_FIREMODE_SEMIAUTO))
 		if(Fire(object, gun_user, modifiers))
 			reset_fire()
 		return COMSIG_MOB_CLICK_HANDLED
@@ -2550,14 +2441,12 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		return
 
 	var/actual_sound
-	if(active_attachable && active_attachable.fire_sound)
-		actual_sound = active_attachable.fire_sound
-	else if(!isnull(fire_sound))
+	if(!isnull(fire_sound))
 		actual_sound = fire_sound
 	else
 		actual_sound = pick(fire_sounds)
 
-	var/sound_volume = (flags_gun_features & GUN_SILENCED && !active_attachable) ? 25 : 60
+	var/sound_volume = (flags_gun_features & GUN_SILENCED) ? 25 : 60
 	playsound(user, actual_sound, sound_volume, 1)
 
 	simulate_recoil(2, user)
@@ -2598,8 +2487,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	// so we actually expend a bullet this time, whaaaat
 	projectile_to_fire.play_hit_effect(execution_target)
 	QDEL_NULL(projectile_to_fire)
-	if(!active_attachable)
-		in_chamber = null
+	in_chamber = null
 	reload_into_chamber(user)
 
 /datum/component/gun_hush // yes im lazy to make another file in the components folder

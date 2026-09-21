@@ -256,24 +256,16 @@ DEFINES in setup.dm, referenced here.
 	if(istype(attack_item,/obj/item/attachable))
 		if(check_inactive_hand(user))
 			attach_to_gun(user,attack_item)
-
-	//the active attachment is reloadable
-	else if(active_attachable && active_attachable.flags_attach_features & ATTACH_RELOADABLE)
-		if(check_inactive_hand(user))
-			if(istype(attack_item,/obj/item/ammo_magazine))
-				var/obj/item/ammo_magazine/attachment_magazine = attack_item
-				if(istype(src, attachment_magazine.gun_type))
-					to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
-					playsound(user, active_attachable.activation_sound, 15, 1)
-					active_attachable.activate_attachment(src, null, TRUE)
-					reload(user,attachment_magazine)
-					return
-			active_attachable.reload_attachment(attack_item, user)
-
 	else if(istype(attack_item,/obj/item/ammo_magazine))
 		if(check_inactive_hand(user))
 			reload(user,attack_item)
 
+/obj/item/weapon/gun/attackby_secondary(obj/item/attack_item, mob/living/user, list/mods)
+	if(!active_attachable || !(active_attachable.flags_attach_features & ATTACH_RELOADABLE))
+		return
+
+	if(check_inactive_hand(user))
+		active_attachable.reload_attachment(attack_item, user)
 
 //tactical reloads
 /obj/item/weapon/gun/MouseDrop_T(atom/dropping, mob/living/carbon/human/user)

@@ -1001,9 +1001,8 @@ SUBSYSTEM_DEF(minimaps)
  * x and y minimap centering is reverted, then the x2 scaling of the map is removed
  * round up to correct if an odd pixel was clicked and make sure its valid
  */
-/atom/movable/screen/minimap/proc/on_click(mob/source, atom/A, params)
+/atom/movable/screen/minimap/proc/on_click(mob/source, atom/A, list/modifiers)
 	SIGNAL_HANDLER
-	var/list/modifiers = params2list(params)
 	if(!modifiers[CTRL_CLICK])
 		return
 	// we only care about absolute coords because the map is fixed to 1,1 so no client stuff

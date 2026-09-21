@@ -123,19 +123,6 @@
 	if (!targloc || !curloc)
 		return NONE //Something has gone wrong...
 
-	if(active_attachable && active_attachable.flags_attach_features & ATTACH_WEAPON) //Attachment activated and is a weapon.
-		if(active_attachable.flags_attach_features & ATTACH_PROJECTILE)
-			return
-		if((active_attachable.current_rounds <= 0) && !(active_attachable.flags_attach_features & ATTACH_IGNORE_EMPTY))
-			click_empty(user) //If it's empty, let them know.
-			to_chat(user, SPAN_WARNING("[active_attachable] is empty!"))
-			to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
-			active_attachable.activate_attachment(src, null, TRUE)
-		else
-			if(active_attachable.fire_attachment(target, src, user)) //Fire it.
-				active_attachable.last_fired = world.time
-		return NONE
-
 	if(flags_gun_features & GUN_TRIGGER_SAFETY)
 		to_chat(user, SPAN_WARNING("\The [src] isn't lit!"))
 		return NONE

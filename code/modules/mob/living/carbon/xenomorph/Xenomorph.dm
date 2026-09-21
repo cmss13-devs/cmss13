@@ -1330,7 +1330,7 @@
 		hugger_drop_cooldown = world.time + 2.5 SECONDS
 	return ..()
 
-/mob/living/carbon/xenomorph/throw_item(atom/target)
+/mob/living/carbon/xenomorph/throw_item(atom/target, throw_high = FALSE)
 	var/obj/item/object = get_active_hand()
 	if(istype(object, /obj/item/clothing/mask/facehugger))
 		if(world.time < hugger_throw_cooldown)

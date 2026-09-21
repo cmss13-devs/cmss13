@@ -20,27 +20,26 @@
 /client/Click(atom/A, location, control, params)
 	if (control && !ignore_next_click) // No .click macros allowed, and only one click per mousedown.
 		ignore_next_click = TRUE
-		return usr.do_click(A, location, params)
+		var/list/mods = params2list(params)
+		return usr.do_click(A, mods)
 
-/mob/proc/do_click(atom/atom_clicked, location, params)
+/mob/proc/do_click(atom/atom_clicked, list/mods)
 	// We'll be sending a lot of signals and things later on, this will save time.
 	if(!client)
 		return
 	// No clicking on atoms with the NOINTERACT flag
 	if ((atom_clicked.flags_atom & NOINTERACT))
 		if (istype(atom_clicked, /atom/movable/screen/click_catcher))
-			var/list/mods = params2list(params)
 			var/turf/TU = params2turf(mods[SCREEN_LOC], get_turf(client.get_eye()), client)
 			if (TU)
-				params += CLICK_CATCHER_ADD_PARAM
-				do_click(TU, location, params)
+				mods[CLICK_CATCHER] = 1
+				do_click(TU, mods)
 		return
 
 	if (world.time < next_click)
 		return
 
 	next_click = world.time + 1 //Maximum code-permitted clickrate 10.26/s, practical maximum manual rate: 8.5, autoclicker maximum: between 7.2/s and 8.5/s.
-	var/list/mods = params2list(params)
 
 	if (!clicked_something)
 		clicked_something = list("" = null)
@@ -67,26 +66,32 @@
 			atom_clicked.clicked(src, mods)
 			return
 
-	if(check_click_intercept(params,atom_clicked))
+	if(check_click_intercept(mods, atom_clicked))
 		return
 
 	// Click handled elsewhere. (These clicks are not affected by the next_move cooldown)
 	if(click(atom_clicked, mods))
 		return
-	if(atom_clicked.clicked(src, mods, location, params))
-		return
+
+	var/is_primary_action = mods[LEFT_CLICK]
+	var/is_secondary_action = mods[RIGHT_CLICK]
+
+	if(is_primary_action)
+		if(atom_clicked.clicked(src, mods))
+			return
+	else if(is_secondary_action)
+		if(atom_clicked.clicked_secondary(src, mods))
+			return
 
 	// Default click functions from here on.
+	if(!is_primary_action || !is_secondary_action)
+		return
 
 	if (is_mob_incapacitated(TRUE))
 		return
 
 	face_atom(atom_clicked)
 
-	if(mods[MIDDLE_CLICK] || mods[BUTTON4] || mods[BUTTON5])
-		return
-
-	// Special type of click.
 	if (is_mob_restrained())
 		RestrainedClickOn(atom_clicked)
 		return
@@ -95,12 +100,12 @@
 	if (throw_mode && atom_clicked.loc != src && !isstorage(atom_clicked.loc) && !istype(atom_clicked, /atom/movable/screen))
 		//if we're past the throw delay just throw, add the new delay time, and reset the buffer
 		if(COOLDOWN_FINISHED(src, throw_delay))
-			throw_item(atom_clicked)
+			throw_item(atom_clicked, throw_high = is_secondary_action)
 			COOLDOWN_START(src, throw_delay, THROW_DELAY)
 			throw_buffer = 0
 		//if we're still in the throw delay we check if the buffer is already used, if not then we throw the item and set the buffer as used
 		else if(!throw_buffer)
-			throw_item(atom_clicked)
+			throw_item(atom_clicked, throw_high = is_secondary_action)
 			throw_buffer++
 		return
 
@@ -108,21 +113,11 @@
 
 	// Special gun mode stuff.
 	if(object_used == atom_clicked)
-		mode()
-		return
-
-	//Self-harm preference. isxeno check because xeno clicks on self are redirected to the turf below the pointer.
-	if(atom_clicked == src && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && a_intent != INTENT_HELP && !isxeno(src))
-		if(object_used)
-			if(object_used.force && (!object_used || !(object_used.flags_item & (NOBLUDGEON|ITEM_ABSTRACT))))
-				if(world.time % 3)
-					to_chat(src, SPAN_NOTICE("You have the discipline not to hurt yourself."))
-				return
+		if(is_primary_action)
+			object_used.attack_self(src)
 		else
-			if(world.time % 3)
-				to_chat(src, SPAN_NOTICE("You have the discipline not to hurt yourself."))
-			return
-
+			object_used.attack_self_secondary(src)
+		return
 
 	// Don't allow doing anything else if inside a container of some sort, like a locker.
 	if (!isturf(loc))
@@ -137,49 +132,64 @@
 		return
 	// If not standing next to the atom clicked.
 	if(object_used)
-		object_used.afterattack(atom_clicked, src, 0, mods)
+		if(is_primary_action)
+			object_used.afterattack(atom_clicked, src, 0, mods)
+		else
+			object_used.afterattack_secondary(atom_clicked, src, 0, mods)
 		return
 
-	if(SEND_SIGNAL(src, COMSIG_MOB_CLICKON, atom_clicked, params) & COMSIG_MOB_CLICK_CANCELED)
+	if(SEND_SIGNAL(src, COMSIG_MOB_CLICKON, atom_clicked, mods) & COMSIG_MOB_CLICK_CANCELED)
 		return
+
 
 	RangedAttack(atom_clicked, mods)
 	SEND_SIGNAL(src, COMSIG_MOB_POST_CLICK, atom_clicked, mods)
 	return
 
-/mob/proc/click_adjacent(atom/targeted_atom, obj/item/used_item, mods)
+/mob/proc/click_adjacent(atom/targeted_atom, obj/item/used_item, list/mods)
+	var/is_secondary_action = mods[RIGHT_CLICK]
 	if(HAS_TRAIT(src, TRAIT_HAULED))
 		if(!isstorage(targeted_atom) && !isclothing(targeted_atom) && !isweapon(targeted_atom) && !isgun(targeted_atom))
 			return
 	if(used_item)
-		var/attackby_result = targeted_atom.attackby(used_item, src, mods)
+		var/attackby_result
+		if(is_secondary_action)
+			attackby_result = targeted_atom.attackby_secondary(used_item, src, mods)
+		else
+			attackby_result = targeted_atom.attackby(used_item, src, mods)
+
 		var/afterattack_result
 		if(!QDELETED(targeted_atom) && !(attackby_result & ATTACKBY_HINT_NO_AFTERATTACK))
 			// in case the attackby slept
 			if(!used_item)
 				if(!isitem(targeted_atom) && !issurface(targeted_atom))
 					next_move += 4
-				UnarmedAttack(targeted_atom, 1, mods)
+				if(!is_secondary_action)
+					UnarmedAttack(targeted_atom, 1, mods)
 				return
 
-			afterattack_result = used_item.afterattack(targeted_atom, src, 1, mods)
+			if(is_secondary_action)
+				afterattack_result = used_item.afterattack_secondary(targeted_atom, src, 1, mods)
+			else
+				afterattack_result = used_item.afterattack(targeted_atom, src, 1, mods)
 
 		if(used_item.attack_speed && !src.contains(targeted_atom) && (attackby_result & ATTACKBY_HINT_UPDATE_NEXT_MOVE) || (afterattack_result & ATTACKBY_HINT_UPDATE_NEXT_MOVE) || (used_item.flags_item & ADJACENT_CLICK_DELAY))
 			next_move += used_item.attack_speed
 	else
 		if(!isitem(targeted_atom) && !issurface(targeted_atom))
 			next_move += 4
-		UnarmedAttack(targeted_atom, 1, mods)
+		if(!is_secondary_action)
+			UnarmedAttack(targeted_atom, 1, mods)
 
-/mob/proc/check_click_intercept(params,A)
+/mob/proc/check_click_intercept(list/mods, A)
 	//Client level intercept
 	if(client?.click_intercept)
-		if(call(client.click_intercept, "InterceptClickOn")(src, params, A))
+		if(call(client.click_intercept, "InterceptClickOn")(src, mods, A))
 			return TRUE
 
 	//Mob level intercept
 	if(click_intercept)
-		if(call(click_intercept, "InterceptClickOn")(src, params, A))
+		if(call(click_intercept, "InterceptClickOn")(src, mods, A))
 			return TRUE
 
 	return FALSE
@@ -230,6 +240,10 @@
 		A.AICtrlClick(src)
 		return TRUE
 
+	if(mods[RIGHT_CLICK])
+		A.AIRightClick(src)
+		return TRUE
+
 	if(world.time <= next_move)
 		return TRUE
 
@@ -253,6 +267,9 @@
 
 		return TRUE
 	return FALSE
+
+/atom/proc/clicked_secondary(mob/user, list/mods)
+	return
 
 /atom/movable/clicked(mob/user, list/mods)
 	if (..())

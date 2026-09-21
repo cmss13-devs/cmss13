@@ -78,8 +78,7 @@
 	cornerA = null
 	cornerB = null
 
-/datum/buildmode_mode/proc/when_clicked(client/c, params, object)
-	var/list/modifiers = params2list(params)
+/datum/buildmode_mode/proc/when_clicked(client/c, list/modifiers, object)
 	if(use_corner_selection)
 		if(LAZYACCESS(modifiers, ALT_CLICK))
 			return
@@ -91,14 +90,14 @@
 				cornerB = select_tile(get_turf(object), AREASELECT_CORNERB)
 				to_chat(c, SPAN_BOLDNOTICE("Region selected, if you're happy with your selection left click again, otherwise right click."))
 				return
-			handle_selected_area(c, params)
+			handle_selected_area(c, modifiers)
 			deselect_region()
 		else
 			to_chat(c, SPAN_NOTICE("Region selection canceled!"))
 			deselect_region()
 	return
 
-/datum/buildmode_mode/proc/handle_selected_area(client/c, params)
+/datum/buildmode_mode/proc/handle_selected_area(client/c, list/modifiers)
 
 #undef AREASELECT_CORNERA
 #undef AREASELECT_CORNERB

@@ -398,3 +398,20 @@
 	desc = "A heavy, low-angle 40mm grenade launcher. Looks to be a hobbyist modification made to resemble a Vietnam War prop. This version has been modernized with an IFF enabled micro-computer. The wooden furniture is, in fact, made of painted hardened polykevlon."
 	icon_state = "m79"
 	icon_state = "m79"
+
+
+/obj/item/weapon/gun/launcher/grenade/u1
+	name = "\improper internal U1 grenade launcher"
+	desc = "You shouldn't be reading this"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/grenade_launchers.dmi'
+	icon_state = "m85a1"
+	item_state = "m85a1"
+	flags_equip_slot = SLOT_BACK
+	is_lobbing = TRUE
+	preload = null
+	actions_types = list(/datum/action/item_action/toggle_firing_level)
+
+	pixel_x = -4
+	hud_offset = -4
+
+	fire_sound = 'sound/weapons/handling/m79_shoot.ogg'

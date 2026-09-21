@@ -1565,16 +1565,6 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		return FALSE
 	if(isRemoteControlling(user))
 		return TRUE
-	// If the user is not a xeno (with active ability) with the shift click pref on, we examine. God forgive me for snowflake
-	if(user.get_ability_mouse_key() == XENO_ABILITY_CLICK_SHIFT)
-		if(isxeno(user))
-			var/mob/living/carbon/xenomorph/X = user
-			if(X.selected_ability)
-				return FALSE
-		else if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			if(H.selected_ability)
-				return FALSE
 	if(user.client.get_eye() == user && !user.is_mob_incapacitated(TRUE))
 		user.face_atom(src)
 	return TRUE

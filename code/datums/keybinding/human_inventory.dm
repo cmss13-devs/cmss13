@@ -126,7 +126,7 @@
 
 	if(!inactive_hand)
 		return
-	human_user.click_adjacent(inactive_hand, active_hand)
+	human_user.click_adjacent(inactive_hand, active_hand, list())
 	return TRUE
 
 #define INTERACT_KEYBIND_COOLDOWN_TIME (0.2 SECONDS)

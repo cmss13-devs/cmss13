@@ -140,8 +140,6 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 			activate_ability = middle_pressed && !shift_pressed
 		if(XENO_ABILITY_CLICK_RIGHT)
 			activate_ability = right_pressed
-		if(XENO_ABILITY_CLICK_SHIFT)
-			activate_ability = left_pressed && shift_pressed
 
 	if(activate_ability && selected_ability)
 		if(istype(target, /atom/movable/screen))

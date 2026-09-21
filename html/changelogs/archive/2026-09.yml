@@ -199,3 +199,30 @@
   Steelpoint:
   - maptweak: Removes invisible fog tiles on New Varadero. These tiles are not currently
       visible to players.
+2026-09-18:
+  Drathek:
+  - code_imp: Rearranged sentry variable defines some
+  - bugfix: Defenses (not just sentries) no longer are flagged as needing power since
+      they handle power themselves
+  TheDonkified:
+  - refactor: Extract path-matching logic into a helper function
+  - code_imp: Add unit tests for new helper
+2026-09-19:
+  Drathek:
+  - balance: Marines can no longer deploy mines in shuttle turfs
+2026-09-20:
+  Antlers:
+  - bugfix: Renamed neuropathic's chemical property abbreviation to "NPA," as "NPT"
+      is already taken by nephrotoxic
+  - bugfix: Runed sandstone bricks no longer stack with their regular counterparts
+      in inventories
+  - bugfix: Xenos can no longer crawl through holes in walls while incapacitated or
+      resting by click-dragging their sprite onto the hole
+  Drathek:
+  - bugfix: Fixed a div by zero runtime with explosion properties at level 0
+2026-09-21:
+  Kugamo:
+  - rscadd: ' xenos can now track their KING in their HUD compass'
+  Mary-Marilyn:
+  - qol: Examining a character now shows their body type and a rough estimate of their
+      age.

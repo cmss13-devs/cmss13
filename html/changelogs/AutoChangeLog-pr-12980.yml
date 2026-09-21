@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - balance: "Synth and CO survivors now respect the normal survivor limit"

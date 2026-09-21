@@ -148,7 +148,6 @@
 		return
 
 	to_chat(src, SPAN_XENOANNOUNCE(strain.description))
-	return TRUE
 
 /// Is this xeno currently able to take a strain?
 /mob/living/carbon/xenomorph/proc/can_take_strain(reset=FALSE)

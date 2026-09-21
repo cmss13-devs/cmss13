@@ -403,26 +403,27 @@
 	icon_state = "m79"
 
 
-/obj/item/weapon/gun/launcher/grenade/u1
-	name = "\improper internal U1 grenade launcher"
-	desc = "You shouldn't be reading this"
+/obj/item/weapon/gun/launcher/grenade/ubarrel
+	icon = null
+	icon_state = null
 	is_lobbing = TRUE
 	preload = null
-	internal_slots = 3
 	underslug = TRUE
+
+/obj/item/weapon/gun/launcher/grenade/ubarrel/u1
+	name = "\improper internal U1 grenade launcher"
+	desc = "You shouldn't be reading this"
+	internal_slots = 3
 
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
 	cocked_sound = null
 	fire_sound = 'sound/weapons/gun_m92_attachable.ogg'
 	max_range = 7
 
-/obj/item/weapon/gun/launcher/grenade/mk1
+/obj/item/weapon/gun/launcher/grenade/ubarrel/mk1
 	name = "\improper internal MK1 grenade launcher"
 	desc = "You shouldn't be reading this"
-	is_lobbing = TRUE
-	preload = null
 	internal_slots = 5
-	underslug = TRUE
 
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
 	cocked_sound = null
@@ -430,13 +431,10 @@
 	fire_sound = 'sound/weapons/gun_m92_attachable.ogg'
 	max_range = 10
 
-/obj/item/weapon/gun/launcher/grenade/m203
+/obj/item/weapon/gun/launcher/grenade/ubarrel/m203
 	name = "\improper internal M203 grenade launcher"
 	desc = "You shouldn't be reading this"
-	is_lobbing = FALSE
-	preload = null
 	internal_slots = 1
-	underslug = TRUE
 
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
 	cocked_sound = null
@@ -444,13 +442,10 @@
 	fire_sound = 'sound/weapons/gun_m92_attachable.ogg'
 	max_range = 14
 
-/obj/item/weapon/gun/launcher/grenade/u1rmc
+/obj/item/weapon/gun/launcher/grenade/ubarrel/u1rmc
 	name = "\improper internal U1 grenade launcher"
 	desc = "You shouldn't be reading this"
-	is_lobbing = TRUE
-	preload = null
 	internal_slots = 5
-	underslug = TRUE
 
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
 	cocked_sound = null

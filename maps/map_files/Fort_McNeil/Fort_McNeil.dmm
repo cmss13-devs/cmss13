@@ -1863,14 +1863,6 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/hybrisa/metal/zbrownfloor1,
 /area/fort_mcneil/landing_zone_1/ceiling)
-"aff" = (
-/obj/structure/machinery/space_heater/radiator/red{
-	dir = 8;
-	pixel_x = 1
-	},
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/floor/hybrisa/metal/zbrownfloor1,
-/area/fort_mcneil/landing_zone_1/ceiling)
 "afg" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 1
@@ -1993,10 +1985,6 @@
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/fort_mcneil/outdoors/colony_exterior/south_east)
 "afB" = (
-/obj/structure/machinery/space_heater/radiator/red{
-	dir = 4;
-	pixel_y = 4
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/lv624/fog_blocker/short,
 /obj/structure/machinery/door_control/brbutton{
@@ -28457,7 +28445,7 @@ abR
 aki
 dEM
 dEM
-aff
+acT
 abR
 abR
 adF

@@ -73,6 +73,26 @@
 	containername = "\improper M402 mortar flare shells crate"
 	group = "Mortar"
 
+/datum/supply_packs/ammo_mortar_he_plus
+	name = "M402 Extended-Explosives mortar crate (x4 HE+)"
+	cost = 45
+	contains = list(
+		/obj/item/mortar_shell/heplus,
+		/obj/item/mortar_shell/heplus,
+		/obj/item/mortar_shell/heplus,
+		/obj/item/mortar_shell/heplus,
+	)
+
+/datum/supply_packs/ammo_mortar_incend_plus
+	name = "M402 Radically Invasive Incendiary mortar crate (x4 RIP-Incend)"
+	cost = 30
+	contains = list(
+		/obj/item/mortar_shell/incendiary/pierce,
+		/obj/item/mortar_shell/incendiary/pierce,
+		/obj/item/mortar_shell/incendiary/pierce,
+		/obj/item/mortar_shell/incendiary/pierce,
+	)
+
 /datum/supply_packs/ammo_mortar_frag
 	name = "M402 mortar shells crate (x6 Frag)"
 	cost = 10

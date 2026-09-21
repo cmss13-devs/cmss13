@@ -14,6 +14,7 @@
 	ground_offset_y = 6
 	/// is it currently on fire and about to explode?
 	var/burning = FALSE
+	var/ceiling_penetrating = FALSE
 
 
 /obj/item/mortar_shell/Destroy()
@@ -37,6 +38,15 @@
 
 /obj/item/mortar_shell/he/detonate(turf/T)
 	explosion(T, 0, 3, 5, 7, explosion_cause_data = cause_data)
+
+/obj/item/mortar_shell/heplus
+	name = "\improper 80mm Octo-PETN Mortar Shell"
+	desc = "A custom 80mm mortar shell, loaded with a primer mixture of Octogen, Ammonium-Nitrate and Penthrite to deliver the greatest explosive ordnance available to the Almayer."
+	icon_state = "mortar_ammo_he"
+	item_state = "mortar_ammo_he"
+
+/obj/item/mortar_shell/heplus/detonate(turf/T)
+	explosion(T, 3, 5, 7, 9, explosion_cause_data = cause_data) //effectively equivalent to an OT maxcap
 
 /obj/item/mortar_shell/frag
 	name = "\improper 80mm fragmentation mortar shell"
@@ -63,6 +73,18 @@
 /obj/item/mortar_shell/incendiary/detonate(turf/T)
 	flame_radius(cause_data, radius, T, flame_level, burn_level, flameshape, null, fire_type)
 	playsound(T, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
+
+/obj/item/mortar_shell/incendiary/pierce
+	name = "\improper 80mm RIP-I Incendiary Shells"
+	desc = "An 80mm mortar shell, loaded with a Type B napalm charge- modeled after smaller calibre RIP (Radically Invasive Projectile) munitions to be able to penetrate large structures and multi-floor buildings to lower levels before detonating its incendiary payload. "
+	icon_state = "mortar_ammo_inc"
+	item_state = "mortar_ammo_inc"
+	radius = 4
+	flame_level = BURN_TIME_TIER_5 + 10 //Type B standard, 50 base + 5 from chemfire code.
+	burn_level = BURN_LEVEL_TIER_2
+	flameshape = FLAMESHAPE_TRIANGLE
+	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
+	ceiling_penetrating = TRUE
 
 /obj/item/mortar_shell/flare
 	name = "\improper 80mm flare/camera mortar shell"
@@ -228,10 +250,10 @@
 	new /obj/item/mortar_shell/he(src)
 	new /obj/item/mortar_shell/he(src)
 	new /obj/item/mortar_shell/he(src)
-	new /obj/item/mortar_shell/frag(src)
-	new /obj/item/mortar_shell/frag(src)
-	new /obj/item/mortar_shell/frag(src)
-	new /obj/item/mortar_shell/frag(src)
+	new /obj/item/mortar_shell/he(src)
+	new /obj/item/mortar_shell/he(src)
+	new /obj/item/mortar_shell/incendiary(src)
+	new /obj/item/mortar_shell/incendiary(src)
 	new /obj/item/mortar_shell/incendiary(src)
 	new /obj/item/mortar_shell/incendiary(src)
 	new /obj/item/mortar_shell/incendiary(src)
@@ -252,12 +274,12 @@
 	new /obj/item/mortar_shell/he(src)
 	new /obj/item/mortar_shell/he(src)
 	new /obj/item/mortar_shell/he(src)
-	new /obj/item/mortar_shell/frag(src)
-	new /obj/item/mortar_shell/frag(src)
-	new /obj/item/mortar_shell/frag(src)
+	new /obj/item/mortar_shell/he(src)
 	new /obj/item/mortar_shell/incendiary(src)
 	new /obj/item/mortar_shell/incendiary(src)
 	new /obj/item/mortar_shell/incendiary(src)
+	new /obj/item/mortar_shell/incendiary(src)
+	new /obj/item/mortar_shell/flare(src)
 	new /obj/item/mortar_shell/flare(src)
 	new /obj/item/mortar_shell/flare(src)
 	new /obj/item/mortar_shell/flare(src)

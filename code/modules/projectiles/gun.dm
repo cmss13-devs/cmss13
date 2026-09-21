@@ -2238,7 +2238,13 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	SIGNAL_HANDLER
 	set_gun_user(source)
 
+	if(modifiers[DRAG])
+		return
+
 	if(modifiers[RIGHT_CLICK])
+		// Inventory item/contained within something, don't shoot it.
+		if(isobj(object) && object.loc != location)
+			return
 		if(gun_user.throw_mode)
 			return
 		try_activate_attachable_weapon()
@@ -2272,17 +2278,20 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			if(isturf(object))
 				var/turf/turf_flag_check = object
 				if(turf_flag_check.turf_flags & TURF_ORGANIC)
-					return FALSE
+					return
 			if(isobj(object))
 				var/obj/object_flag_check = object
 				if(object_flag_check.flags_obj & OBJ_ORGANIC)
 					if(!(istypestrict(object, /obj/effect/alien/weeds)))
-						return FALSE
+						return
 
 		if(gun_user.throw_mode)
 			return
 
 		if(gun_user.Adjacent(object))
+			if((gun_user.a_intent != INTENT_HARM) || gun_user.loc == get_turf(object)) //Dealt with by click.adjacent/attack code
+				return
+
 			if(isliving(object))
 				if(flags_gun_features & GUN_BATTLEFIELD_EXECUTION)
 					var/can_battlefield_execute = (gun_user.zone_selected in list("head", "eyes", "mouth"))

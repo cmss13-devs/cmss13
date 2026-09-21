@@ -220,3 +220,9 @@
       resting by click-dragging their sprite onto the hole
   Drathek:
   - bugfix: Fixed a div by zero runtime with explosion properties at level 0
+2026-09-21:
+  Kugamo:
+  - rscadd: ' xenos can now track their KING in their HUD compass'
+  Mary-Marilyn:
+  - qol: Examining a character now shows their body type and a rough estimate of their
+      age.

@@ -1308,7 +1308,7 @@
 	color = "#828296"
 	ui_color = "#828296"
 
-	hive_inherent_traits = list(TRAIT_OPPOSABLE_THUMBS) // what if we were fucking insane
+	hive_inherited_traits = list(TRAIT_OPPOSABLE_THUMBS) // what if we were fucking insane
 	dynamic_evolution = FALSE
 	evolution_rate = 0
 	allow_no_queen_evo = TRUE

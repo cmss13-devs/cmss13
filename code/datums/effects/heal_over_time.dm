@@ -46,11 +46,11 @@
 	if(!.)
 		return
 	RegisterSignal(A, COMSIG_PARENT_EXAMINE, PROC_REF(bandage_check))
-	RegisterSignal(A, COMSIG_XENO_TAKE_DAMAGE, PROC_REF(break_heal))
+	RegisterSignal(A, COMSIG_MOB_TAKE_DAMAGE, PROC_REF(break_heal))
 
 /datum/effects/heal_over_time/xeno_bioglue/Destroy()
 	if(affected_atom)
-		UnregisterSignal(affected_atom, list(COMSIG_PARENT_EXAMINE,COMSIG_XENO_TAKE_DAMAGE))
+		UnregisterSignal(affected_atom, list(COMSIG_PARENT_EXAMINE,COMSIG_MOB_TAKE_DAMAGE))
 	..()
 
 /datum/effects/heal_over_time/xeno_bioglue/proc/bandage_check(datum/source, mob/examiner, list/examine_text)
@@ -66,6 +66,6 @@
 		healee.visible_message(
 			SPAN_WARNING("[healee]'s bioglue melts as it takes damage!"),
 			SPAN_WARNING("As you take damage, your acid blood melts the bioglue out of your wounds, breaking your regeneration!"))
-		UnregisterSignal(healee, COMSIG_XENO_TAKE_DAMAGE)
+		UnregisterSignal(healee, COMSIG_MOB_TAKE_DAMAGE)
 	if(!healing_bandages)
-		UnregisterSignal(healee, COMSIG_XENO_TAKE_DAMAGE)
+		UnregisterSignal(healee, COMSIG_MOB_TAKE_DAMAGE)

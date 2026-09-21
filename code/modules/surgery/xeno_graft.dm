@@ -23,7 +23,7 @@
 	if((patient.tier > 2 || isqueen(patient)) && !istype(tool, /obj/item/tool/surgery/scalpel/laser/advanced))
 		to_chat(user, SPAN_DANGER("Chitin of this kind is too thick for an ordinary tool, you would need something special."))
 		return FALSE
-	if(patient.stat != DEAD && !patient.organ_removed)
+	if(patient.stat != DEAD && patient.organ)
 		return TRUE
 	return FALSE
 

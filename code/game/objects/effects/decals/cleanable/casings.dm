@@ -24,12 +24,17 @@ that said, the icon_states in the dmi files aren't culled for use by mappers - n
 	layer = ABOVE_WEED_LAYER
 	density = FALSE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	cleanable_type = CLEANABLE_CASINGS
 	allow_this_to_overlap = TRUE
 	var/ejection_sfx = "gun_casing_generic"
 	/// number of variations of the casing found in its dmi file, much cleaner than spawning multiple casings on 1 tile for mappers
 	var/number_of_states = 10
 	/// true by default, responsible for randomizing the casing on mapload, for mappers.
 	var/randomized_mapload = TRUE
+
+	/// taken from tracks.dm textbook, list of overlain casings for better cleaning, probably best moving it in the cleanable parent eventually
+	var/list/overlay_images = list()
+
 
 /obj/effect/decal/cleanable/ammo_casing/Initialize(mapload)
 
@@ -48,6 +53,7 @@ that said, the icon_states in the dmi files aren't culled for use by mappers - n
 	overlayed_image.mouse_opacity = mouse_opacity
 	overlayed_image.layer = layer
 	overlayed_image.transform = transform
+
 	if(pixel_x)
 		overlayed_image.pixel_x = pixel_x
 	if(pixel_y)
@@ -57,6 +63,38 @@ that said, the icon_states in the dmi files aren't culled for use by mappers - n
 
 	cleanable_turf.overlays += overlayed_image
 	moveToNullspace()
+
+/obj/effect/decal/cleanable/ammo_casing/can_place_cleanable(obj/effect/decal/cleanable/ammo_casing/existing)
+	if(istype(existing))
+		existing.add_casing(icon, icon_state, transform, color)
+		return FALSE
+
+	return TRUE
+
+/obj/effect/decal/cleanable/ammo_casing/proc/add_casing(overlay_icon = icon, overlay_icon_state = icon_state, casing_matrix = transform, casing_color = color)
+	var/image/casing_image = image(overlay_icon, icon_state = overlay_icon_state)
+
+	casing_image.appearance_flags = appearance_flags
+	casing_image.mouse_opacity = mouse_opacity
+	casing_image.layer = layer
+	casing_image.transform = casing_matrix
+
+	if(casing_color)
+		casing_image.color = casing_color
+
+	overlay_images += casing_image
+	cleanable_turf.overlays += casing_image
+
+/obj/effect/decal/cleanable/ammo_casing/clear_overlay()
+	if(length(overlay_images))
+		cleanable_turf.overlays -= overlay_images
+		overlay_images = null
+
+	..()
+
+// ------------------------- //
+//  the casings themselves   //
+// ------------------------- //
 
 /obj/effect/decal/cleanable/ammo_casing/bullet
 	icon_state = "casing" // literally just the above

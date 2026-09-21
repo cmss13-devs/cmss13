@@ -14,7 +14,12 @@
 
 		if(icon)
 			msg += "[icon2html(icon, user)] "
-		msg += "<EM>[src]</EM>!\n"
+		msg += "<EM>[src]</EM>"
+
+		if(mob_flags & MOB_FLAYED)
+			msg += " Its outer flesh has been removed...\n"
+		else
+			msg += "!\n"
 
 		if(species && species.flags & IS_SYNTHETIC)
 			msg += "<span style='font-weight: bold; color: purple;'>You sense this creature is not organic.\n</span>"
@@ -102,7 +107,12 @@
 
 	if(id_paygrade)
 		msg += "<EM>[rank_display] </EM>"
-	msg += "<EM>[src]</EM>!\n"
+
+	msg += "<EM>[src]</EM>\n"
+
+	if(mob_flags & MOB_FLAYED)
+		msg += SPAN_ITALIC(" ...You cannot tell anymore, [t_He] doesn't have a face!\n")
+		msg += SPAN_BOLDWARNING("[uppertext(t_his)] SKIN HAS BEEN PEELED OFF.\n")
 
 	if(ishuman_strict(src))
 		var/age_description
@@ -136,14 +146,16 @@
 			if(BODY_TYPE_RIPPED)
 				body_type_description = "muscular"
 
-		if(!skipface && !skipjumpsuit && body_size_description && body_type_description)
-			msg += "[t_He] [t_seem] to be [SPAN_BOLD(age_description)], with a build that appears [SPAN_BOLD(body_size_description)] and [SPAN_BOLD(body_type_description)].\n"
+		if(!skipface && !skipjumpsuit && body_size_description && body_type_description && mob_flags & MOB_FLAYED)
+			msg += "[t_He] [t_has] a [SPAN_BOLD(body_size_description)] [SPAN_BOLD(body_type_description)] build.\n"
+		else if(!skipface && !skipjumpsuit && body_size_description && body_type_description)
+			msg += "[t_He] [t_is] [SPAN_BOLD(age_description)], with a [SPAN_BOLD(body_size_description)] [SPAN_BOLD(body_type_description)] build.\n"
 		else if(!skipface)
-			msg += "[t_He] [t_seem] to be [SPAN_BOLD(age_description)].\n"
+			msg += "[t_He] [t_is] [SPAN_BOLD(age_description)].\n"
 		else if(!skipjumpsuit && body_size_description && body_type_description)
-			msg += "[t_He] [t_is] currently hiding [t_his] face, but [t_his] build appears [SPAN_BOLD(body_size_description)] and [SPAN_BOLD(body_type_description)].\n"
+			msg += "[t_his] [t_is] face is hidden, but [t_has] a [SPAN_BOLD(body_size_description)] [SPAN_BOLD(body_type_description)].\n"
 		else
-			msg += "[t_He] [t_is] currently hiding [t_his] face.\n"
+			msg += "[t_his] [t_is] face is hidden.\n"
 
 	//head
 	if(head)

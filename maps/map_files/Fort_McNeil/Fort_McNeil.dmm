@@ -1999,6 +1999,11 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/lv624/fog_blocker/short,
+/obj/structure/machinery/door_control/brbutton{
+	pixel_y = 26;
+	id = "west";
+	name = "Door Control"
+	},
 /turf/open/floor/hybrisa/metal/zbrownfloor1/north,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "afC" = (
@@ -3390,6 +3395,13 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/fort_mcneil/outdoors/scrublands/south)
+"ajV" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "west"
+	},
+/turf/open/floor/corsat/marked,
+/area/fort_mcneil/landing_zone_1/ceiling)
 "ajW" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/shale/layer1/weedable,
@@ -3433,12 +3445,51 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/storage)
+"akg" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "east"
+	},
+/turf/open/floor/corsat/marked,
+/area/fort_mcneil/landing_zone_1/ceiling)
+"akh" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "east"
+	},
+/turf/open/floor/corsat/marked,
+/area/fort_mcneil/landing_zone_1/ceiling)
+"aki" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/structure/machinery/door_control/brbutton{
+	pixel_y = 26;
+	id = "east";
+	name = "Door Control"
+	},
+/turf/open/floor/hybrisa/metal/zbrownfloor1/north,
+/area/fort_mcneil/landing_zone_1/ceiling)
 "akj" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_y = 1
 	},
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/fort_mcneil/outdoors/comms)
+"akk" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/structure/machinery/door_control{
+	id = "west";
+	name = "Door Control";
+	pixel_x = 32;
+	needs_power = 0
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/fort_mcneil/outdoors/scrublands/south)
 "akl" = (
 /obj/effect/landmark/corpsespawner/colonist,
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -3448,6 +3499,19 @@
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/fort_mcneil/outdoors/comms)
+"akn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/structure/machinery/door_control{
+	id = "east";
+	name = "Door Control";
+	pixel_x = -32;
+	needs_power = 0
+	},
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/fort_mcneil/landing_zone_1)
 "ako" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_y = 1
@@ -9479,10 +9543,11 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/fort_mcneil/indoors/caves/north)
 "nba" = (
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic_solid/autoname{
-	dir = 1
-	},
 /obj/effect/landmark/lv624/fog_blocker/short,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "west"
+	},
 /turf/open/floor/corsat/marked,
 /area/fort_mcneil/landing_zone_1/ceiling)
 "nbf" = (
@@ -12018,10 +12083,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/fort_mcneil/outdoors/colony_exterior/south_east)
-"sIr" = (
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/floor/corsat/marked,
-/area/fort_mcneil/landing_zone_1/ceiling)
 "sKk" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 8
@@ -27786,7 +27847,7 @@ dah
 hCh
 aad
 klv
-kvt
+akk
 kvt
 kQQ
 kQQ
@@ -27888,10 +27949,10 @@ aad
 klv
 rjF
 abR
-abR
-sIr
+ajV
 nba
-abR
+nba
+ajV
 abR
 vAK
 isd
@@ -28393,7 +28454,7 @@ isd
 nBe
 abR
 abR
-acV
+aki
 dEM
 dEM
 aff
@@ -28494,10 +28555,10 @@ lCg
 kwx
 iPs
 abR
-abR
-sIr
-nba
-abR
+akg
+akh
+akh
+akg
 abR
 ajy
 aac
@@ -28594,7 +28655,7 @@ lfs
 aan
 aac
 aac
-gAD
+akn
 gAD
 dkt
 dkt

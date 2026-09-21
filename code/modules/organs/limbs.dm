@@ -51,9 +51,6 @@
 	///Embedded or implanter implanted items.
 	var/list/implants = list()
 
-	// how often wounds should be updated, a higher number means less often
-	var/wound_update_accuracy = 1
-
 	var/mob/living/carbon/human/owner = null
 	var/vital //Lose a vital limb, die immediately.
 
@@ -75,13 +72,13 @@
 	var/processing = FALSE
 
 	/// skin color of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
-	var/skin_color = "Pale 2"
+	var/skin_color = SKIN_COLOR_PALE2
 
 	/// body size of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
-	var/body_size = "Average"
+	var/body_size = BODY_SIZE_AVERAGE
 
 	/// body muscularity of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
-	var/body_type = "Lean"
+	var/body_type = BODY_TYPE_LEAN
 
 	/// species of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
 	var/datum/species/species
@@ -251,7 +248,7 @@
 /**
  * Describes how limbs (body parts) of human mobs get damage applied.
  *
- * Any damage past the limb maximum health is transfered onto the next limb up the line, by
+ * Any damage past the limb maximum health is transferred onto the next limb up the line, by
  * calling this proc recursively. When a hand is too damaged it is passed to the arm,
  * then to the chest and so on.
  *
@@ -259,11 +256,11 @@
  * directly would allow the attacker to effectively bypass all of that armor. A lurker
  * with 35 slash damage repeatedly slashing a hand protected by marine combat gloves
  * (20 armor) would do 20 damage to the hand, then would start doing the same 20 to
- * the arm, and then the chest. But if the lurker slashes the arm direclty it would only
+ * the arm, and then the chest. But if the lurker slashes the arm directly it would only
  * do 16 damage, assuming the marine is wearing medium armor which has armor value of 30.
  *
  * Thus we have to apply armor damage reduction on each limb to which the damage is
- * transfered. When this proc is called recursively for the first damage transfer to the
+ * transferred. When this proc is called recursively for the first damage transfer to the
  * parent, we set reduced_by variables to be the armor of the original limb hit. Then we
  * compare the parent limb armor with the applicable reduced_by and if it's higher we reduce
  * the damage by the difference between the two. Then we set reduced_by to
@@ -281,7 +278,7 @@
  * initial child limb armor.
  * One practical example where this would happen is when a human is wearing a set of armor
  * that does not protect legs, like the UPP officer. If a xeno keeps slashing his foot,
- * the damage would eventually get transfered to the leg, which has 0 armor. But this damage
+ * the damage would eventually get transferred to the leg, which has 0 armor. But this damage
  * has been already reduced by the boot armor even before this proc got first called.
  * So, assuming 35 damage slash, the leg would only be damaged by 21 even though it has
  * 0 armor. Fixing this would require a new proc that would be able to unapply armor
@@ -335,10 +332,10 @@
 	if(!is_ff && take_damage_organ_damage(brute, sharp))
 		brute /= 2
 
-	if(CONFIG_GET(flag/bones_can_break) && !(status & (LIMB_SYNTHSKIN)))
+	if(brute && CONFIG_GET(flag/bones_can_break) && !(status & (LIMB_SYNTHSKIN)))
 		take_damage_bone_break(brute)
 
-	if(CONFIG_GET(flag/flesh_can_eschar) && !(status & (LIMB_SYNTHSKIN)))
+	if(burn && CONFIG_GET(flag/flesh_can_eschar) && !(status & (LIMB_SYNTHSKIN)))
 		take_damage_eschar(burn)
 
 	if(status & LIMB_BROKEN && prob(40) && brute > 10)
@@ -461,7 +458,7 @@ This function completely restores a damaged organ to perfect condition.
 	damage_state = "=="
 	if(status & LIMB_SYNTHSKIN)
 		status = LIMB_SYNTHSKIN
-	else if(status & LIMB_ROBOT) //Robotic organs stay robotic.  Fix because right click rejuvinate makes IPC's organs organic.
+	else if(status & LIMB_ROBOT) //Robotic organs stay robotic.  Fix because right click rejuvenate makes IPC's organs organic.
 		status = LIMB_ROBOT
 	else
 		status = LIMB_ORGANIC
@@ -572,7 +569,7 @@ This function completely restores a damaged organ to perfect condition.
 
 ///Adds bleeding to the limb. Damage_amount lets you apply an amount worth of bleeding, otherwise it uses the given wound's damage.
 /obj/limb/proc/add_bleeding(datum/wound/W, internal = FALSE, damage_amount)
-	if(!(SSticker.current_state >= GAME_STATE_PLAYING)) //If the game hasnt started, don't add bleed. Hacky fix to avoid having 100 bleed effect from roundstart.
+	if(!(SSticker.current_state >= GAME_STATE_PLAYING)) //If the game hasn't started, don't add bleed. Hacky fix to avoid having 100 bleed effect from roundstart.
 		return
 
 	if(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
@@ -641,8 +638,7 @@ This function completely restores a damaged organ to perfect condition.
 
 /obj/limb/process()
 	// Process wounds, doing healing etc. Only do this every few ticks to save processing power
-	if(owner.life_tick % wound_update_accuracy == 0)
-		update_wounds()
+	update_wounds()
 
 	//Chem traces slowly vanish
 	if(owner.life_tick % 10 == 0)
@@ -705,8 +701,7 @@ This function completely restores a damaged organ to perfect condition.
 			heal_amt += 0.5 * 0.75 //Treated wounds heal faster
 
 		if(heal_amt)
-			//we only update wounds once in [wound_update_accuracy] ticks so have to emulate realtime
-			heal_amt = heal_amt * wound_update_accuracy
+			heal_amt = heal_amt
 			//configurable regen speed woo, no-regen hardcore or instaheal hugbox, choose your destiny
 			heal_amt = heal_amt * CONFIG_GET(number/organ_regeneration_multiplier)
 			// amount of healing is spread over all the wounds
@@ -734,7 +729,7 @@ This function completely restores a damaged organ to perfect condition.
 
 	// sync the organ's damage with its wounds
 	update_damages()
-	owner.update_damage_overlays()
+
 	if(wound_disappeared)
 		owner.update_med_icon()
 		remove_wound_bleeding()
@@ -757,26 +752,14 @@ This function completely restores a damaged organ to perfect condition.
 /obj/limb/proc/update_limb()
 	SHOULD_CALL_PARENT(TRUE)
 
-	var/datum/skin_color/owner_skin_color = GLOB.skin_color_list[owner?.skin_color]
+	var/datum/skin_color/owner_skin_color = GLOB.skin_color_list[owner?.skin_color] || GLOB.skin_color_list[SKIN_COLOR_PALE2]
+	skin_color = owner_skin_color?.icon_name
 
-	if(owner_skin_color)
-		skin_color = owner_skin_color.icon_name
-	else
-		skin_color = "pale2"
+	var/datum/body_type/owner_body_type = GLOB.body_type_list[owner?.body_type] || GLOB.body_type_list[BODY_TYPE_LEAN]
+	body_type = owner_body_type?.icon_name
 
-	var/datum/body_type/owner_body_type = GLOB.body_type_list[owner?.body_type]
-
-	if(owner_body_type)
-		body_type = owner_body_type.icon_name
-	else
-		body_type = "lean"
-
-	var/datum/body_type/owner_body_size = GLOB.body_size_list[owner?.body_size]
-
-	if(owner_body_size)
-		body_size = owner_body_size.icon_name
-	else
-		body_size = "avg"
+	var/datum/body_size/owner_body_size = GLOB.body_size_list[owner?.body_size] || GLOB.body_size_list[BODY_SIZE_AVERAGE]
+	body_size = owner_body_size?.icon_name
 
 	if(isspeciesyautja(owner))
 		skin_color = owner.skin_color
@@ -1039,7 +1022,7 @@ This function completely restores a damaged organ to perfect condition.
 			SPAN_WARNING("You hear a terrible sound of ripping tendons and flesh!"), 3)
 
 			// Checks if the mob can feel pain or if they have at least oxycodone level of painkiller
-			if(body_part != BODY_FLAG_HEAD && owner.pain.feels_pain && owner.pain.reduction_pain < PAIN_REDUCTION_HEAVY)
+			if(body_part != BODY_FLAG_HEAD && owner.pain.feels_pain && owner.pain.reduction_pain < PAIN_REDUCTION_FULL)
 				INVOKE_ASYNC(owner, TYPE_PROC_REF(/mob, emote), pick("pain", "scream"))
 
 			if(organ)
@@ -1354,7 +1337,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	if(is_sharp(W) || istype(W, /obj/item/shard/shrapnel))
 		W.embedded_organ = src
 		owner.embedded_items += W
-		if(is_sharp(W)) // Only add the verb if its not a shrapnel
+		if(is_sharp(W)) // Only add the verb if it's not a shrapnel
 			add_verb(owner, /mob/proc/yank_out_object)
 	W.add_mob_blood(owner)
 
@@ -1407,7 +1390,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	var/burnstate = copytext(damage_state, 2)
 	if(burnstate != "0")
 		burn_overlay.icon_state = "burn_[icon_name]_[burnstate]"
-		. += wound_overlay
+		. += burn_overlay
 
 /*
 			LIMB TYPES

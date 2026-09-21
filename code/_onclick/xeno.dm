@@ -66,7 +66,8 @@
 					var/turf/target_turf = target
 					for(var/obj/flamer_fire/fire in target_turf)
 						firepatted = TRUE
-						if(!(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire.tied_reagent?.fire_penetrating)
+						var/penetrating = fire.tied_reagent?.fire_penetrating && !(fire_immunity & FIRE_IMMUNITY_IGNORE_PEN)
+						if(!(fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || penetrating)
 							var/firedamage = max(fire.burnlevel - check_fire_intensity_resistance(), 0) * 0.5
 							apply_damage(firedamage, BURN, fire)
 						if((fire.firelevel > fire_level_to_extinguish) && (!fire.fire_variant)) //If fire_variant = 0, default fire extinguish behavior.
@@ -115,8 +116,7 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 	return
 
 /mob/living/carbon/xenomorph/click(atom/target, list/mods)
-	if(queued_action)
-		handle_queued_action(target)
+	if(queued_action && handle_queued_action(target))
 		return TRUE
 
 	var/left_pressed = mods[LEFT_CLICK] == "1"

@@ -84,7 +84,7 @@ GLOBAL_LIST_INIT(aalarm_mode_descriptions, flatten_numeric_alist(alist(
 	idle_power_usage = 80
 	active_power_usage = 1000 //For heating/cooling rooms. 1000 joules equates to about 1 degree every 2 seconds for a single tile of air.
 	power_channel = POWER_CHANNEL_ENVIRON
-	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING)
+	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_ENGINEERING)
 	var/alarm_id = null
 	var/breach_detection = 1 // Whether to use automatic breach detection or not
 	var/frequency = 1439
@@ -823,7 +823,7 @@ table tr:first-child th:first-child { border: none;}
 		var/list/selected = TLV["temperature"]
 		var/max_temperature = min(selected[3] - T0C, MAX_TEMPERATURE)
 		var/min_temperature = max(selected[2] - T0C, MIN_TEMPERATURE)
-		var/input_temperature = tgui_input_number(usr, "What temperature would you like the system to mantain? (Capped between [min_temperature]C and [max_temperature]C)", "Thermostat Controls", min_temperature, max_temperature, min_temperature)
+		var/input_temperature = tgui_input_number(usr, "What temperature would you like the system to maintain? (Capped between [min_temperature]C and [max_temperature]C)", "Thermostat Controls", min_temperature, max_temperature, min_temperature)
 		if(!input_temperature || input_temperature > max_temperature || input_temperature < min_temperature)
 			to_chat(usr, "Temperature must be between [min_temperature]C and [max_temperature]C.")
 		else
@@ -961,7 +961,7 @@ table tr:first-child th:first-child { border: none;}
 	switch(buildstage)
 		if(2)
 			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))  // Opening that Air Alarm up.
-				//to_chat(user, "You pop the Air Alarm's maintence panel open.")
+				//to_chat(user, "You pop the Air Alarm's maintenance panel open.")
 				wiresexposed = !wiresexposed
 				to_chat(user, "The wires have been [wiresexposed ? "exposed" : "unexposed"]")
 				update_icon()
@@ -977,14 +977,14 @@ table tr:first-child th:first-child { border: none;}
 				else
 					if(allowed(usr) && !isWireCut(AALARM_WIRE_IDSCAN))
 						locked = !locked
-						to_chat(user, SPAN_NOTICE(" You [locked ? "lock" : "unlock"] the Air Alarm interface."))
+						to_chat(user, SPAN_NOTICE("You [locked ? "lock" : "unlock"] the Air Alarm interface."))
 						updateUsrDialog()
 					else
 						to_chat(user, SPAN_DANGER("Access denied."))
 			return
 
 		if(1)
-			if(iscoil(W))
+			if(iswire(W))
 				var/obj/item/stack/cable_coil/C = W
 				if(C.use(5))
 					to_chat(user, SPAN_NOTICE("You wire \the [src]."))
@@ -1042,7 +1042,7 @@ table tr:first-child th:first-child { border: none;}
 
 /obj/structure/machinery/alarm/server/Initialize()
 	. = ..()
-	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING)
+	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_ENGINEERING)
 	TLV["oxygen"] = list(-1.0, -1.0,-1.0,-1.0) // Partial pressure, kpa
 	TLV["carbon dioxide"] = list(-1.0, -1.0,   5,  10) // Partial pressure, kpa
 	TLV["phoron"] = list(-1.0, -1.0, 0.2, 0.5) // Partial pressure, kpa

@@ -102,21 +102,21 @@
 	full_name = "Emit Frenzy pheromone"
 	description = "Increased run speed, damage and chance to knock off headhunter masks."
 	keybind_signal = COMSIG_KB_XENO_EMIT_PHEROMONES_FRENZY
-	pheromone = "frenzy"
+	pheromone = XENO_PHERO_FRENZY
 
 /datum/keybinding/xenomorph/emit_pheromones/warding
 	name = "emit_pheromones_warding"
 	full_name = "Emit Warding pheromone"
 	description = "Increased maximum negative health, and while in critical state, slower off weed bleedout."
 	keybind_signal = COMSIG_KB_XENO_EMIT_PHEROMONES_WARDING
-	pheromone = "warding"
+	pheromone = XENO_PHERO_WARDING
 
 /datum/keybinding/xenomorph/emit_pheromones/recovery
 	name = "emit_pheromones_recovery"
 	full_name = "Emit Recovery pheromone"
 	description = "Increased plasma and health regeneration."
 	keybind_signal = COMSIG_KB_XENO_EMIT_PHEROMONES_RECOVERY
-	pheromone = "recovery"
+	pheromone = XENO_PHERO_RECOVERY
 
 /datum/keybinding/xenomorph/corrosive_acid
 	hotkey_keys = list("Shift+C")
@@ -163,6 +163,21 @@
 	xeno.xeno_screech_action()
 	return TRUE
 
+/datum/keybinding/xenomorph/queen_announce
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "queen_announce"
+	full_name = "Word of the Queen"
+	keybind_signal = COMSIG_KB_XENO_WORD_OF_THE_QUEEN
+
+/datum/keybinding/xenomorph/queen_announce/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	xeno.hive_message()
+	return TRUE
+
 /datum/keybinding/xenomorph/tail_stab
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
@@ -185,13 +200,23 @@
 	full_name = "View Hive Status"
 	keybind_signal = COMSIG_KB_XENO_HIVE_STATUS
 
+/datum/keybinding/xenomorph/hive_status/can_use(client/user)
+	. = ..()
+	if(. || isobserver(user.mob))
+		return TRUE
+
 /datum/keybinding/xenomorph/hive_status/down(client/user)
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/xenomorph/xeno = user.mob
-	xeno.hive_status()
-	return TRUE
+	if(isxeno(user.mob))
+		var/mob/living/carbon/xenomorph/xeno = user.mob
+		xeno.hive_status()
+		return TRUE
+	if(isobserver(user.mob))
+		var/mob/dead/observer/ghost = user.mob
+		ghost.hive_status()
+		return TRUE
 
 /datum/keybinding/xenomorph/hide
 	hotkey_keys = list("Unbound")
@@ -254,3 +279,17 @@
 	current_xeno.toggle_seethrough()
 	return TRUE
 
+/datum/keybinding/xenomorph/rip_limb
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "rip_limb"
+	full_name = "Rip Limb"
+	keybind_signal = COMSIG_KB_XENO_RIP_LIMB
+
+/datum/keybinding/xenomorph/rip_limb/down(client/user)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/xenomorph/current_xeno = user?.mob
+	current_xeno.rip_limb()

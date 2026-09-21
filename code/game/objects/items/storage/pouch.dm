@@ -250,6 +250,10 @@
 /obj/item/storage/pouch/firstaid/full/alternate
 	desc = "Contains a first-aid autoinjector, bandages, ointment, and splints."
 
+/obj/item/storage/pouch/firstaid/full/alternate/wy
+	name = "W-Y first-aid pouch"
+	icon_state = "wy_firstaid"
+
 /obj/item/storage/pouch/firstaid/full/alternate/fill_preset_inventory()
 	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
 	new /obj/item/stack/medical/splint(src)
@@ -262,6 +266,10 @@
 /obj/item/storage/pouch/firstaid/full/pills
 	desc = "Contains a variety of pill packets for treating many injuries."
 
+/obj/item/storage/pouch/firstaid/full/pills/wy
+	name = "W-Y first-aid pouch"
+	icon_state = "wy_firstaid"
+
 /obj/item/storage/pouch/firstaid/full/pills/fill_preset_inventory()
 	new /obj/item/storage/pill_bottle/packet/bicaridine(src)
 	new /obj/item/storage/pill_bottle/packet/kelotane(src)
@@ -270,6 +278,25 @@
 
 /obj/item/storage/pouch/firstaid/full/pills/wy
 	icon_state = "wy_firstaid"
+
+/obj/item/storage/pouch/firstaid/hunted
+	name = "old pouch"
+	desc = "A general-purpose pouch used to carry necessary survival items."
+	icon_state = "survival"
+	storage_slots = 5
+	can_hold = list(
+		/obj/item/reagent_container/pill,
+		/obj/item/stack/medical/advanced/bruise_pack/predator,
+		/obj/item/stack/medical/advanced/ointment/predator,
+		/obj/item/stack/medical/splint,
+	)
+
+/obj/item/storage/pouch/firstaid/hunted/fill_preset_inventory()
+	new /obj/item/stack/medical/advanced/bruise_pack/predator(src)
+	new /obj/item/stack/medical/advanced/ointment/predator(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/reagent_container/pill/oxycodone/natural(src)
+	new /obj/item/reagent_container/pill/bicaridine/natural(src)
 
 /obj/item/storage/pouch/firstaid/ert
 	desc = "It can contain autoinjectors, ointments, and bandages. This one has some extra stuff."
@@ -486,7 +513,7 @@
 
 	can_hold = list(
 		/obj/item/ammo_magazine/pistol,
-		/obj/item/ammo_magazine/pistol/heavy,
+		/obj/item/ammo_magazine/pistol/deagle,
 		/obj/item/ammo_magazine/revolver,
 	)
 
@@ -577,7 +604,7 @@
 
 /obj/item/storage/pouch/magazine/large/pmc_sg
 	name = "smartgun drum pouch"
-	desc = "A heavy pouch designed for carrying a surplus of smargun drums."
+	desc = "A heavy pouch designed for carrying a surplus of smartgun drums."
 	icon_state = "wy_sgdrums_ammo"
 	storage_slots = 3
 	can_hold = list(
@@ -1091,11 +1118,11 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord
 	name = "Pressurized Reagent Canister Pouch (Tricordrazine Revival Mix)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Tricordrazine for stablizing and minimizing damage to defibrillated patients."
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Tricordrazine for stabilizing and minimizing damage to defibrillated patients."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri
 	name = "Pressurized Reagent Canister Pouch (Peridaxon Revival Mix)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon to stablize patients and stave off symptoms of post-defibrillation heart damage."
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon to stabilize patients and stave off symptoms of post-defibrillation heart damage."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/Initialize()
 	. = ..()
@@ -1217,31 +1244,31 @@
 
 
 
-	var/obj/O = target
-	if(!O.reagents || length(O.reagents.reagent_list) < 1)
-		to_chat(user, SPAN_WARNING("[O] is empty!"))
+	var/obj/container = target
+	if(!container.reagents || length(container.reagents.reagent_list) < 1)
+		to_chat(user, SPAN_WARNING("[container] is empty!"))
 		return
 
-	var/amt_to_remove = clamp(O.reagents.total_volume, 0, inner.volume)
+	var/amt_to_remove = clamp(container.reagents.total_volume, 0, inner.volume)
 	if(!amt_to_remove)
-		to_chat(user, SPAN_WARNING("[O] is empty!"))
+		to_chat(user, SPAN_WARNING("[container] is empty!"))
 		return
 
 	//Fill our inner reagent canister
-	O.reagents.trans_to(inner, amt_to_remove)
+	container.reagents.trans_to(inner, amt_to_remove)
 
 	//Refill our autoinjector
 	if(length(contents) > 0)
 		fill_autoinjector(contents[1])
 
 	//Top up our inner reagent canister after filling up the injector
-	amt_to_remove = clamp(O.reagents.total_volume, 0, inner.volume)
+	amt_to_remove = clamp(container.reagents.total_volume, 0, inner.volume)
 	if(amt_to_remove)
-		O.reagents.trans_to(inner, amt_to_remove)
+		container.reagents.trans_to(inner, amt_to_remove)
 
 	playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
 
-	to_chat(user, SPAN_NOTICE("You refill the [src]."))
+	to_chat(user, SPAN_NOTICE("You refill [src]."))
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/get_examine_text(mob/user)
@@ -1283,9 +1310,9 @@
 	if(isxeno(user))
 		return
 	if(!inner)
-		return "This [src] has no container inside!"
+		return "[src] has no container inside!"
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
-		return "This [src] contains: [get_reagent_list_text()]"
+		return "[src] contains: [get_reagent_list_text()]"
 	else
 		return "You don't know what's in it."
 
@@ -1320,7 +1347,7 @@
 	to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 3 seconds..."))
 	if(do_after(usr, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		if(inner)
-			to_chat(usr, SPAN_NOTICE("You flush the [src]."))
+			to_chat(usr, SPAN_NOTICE("You flush [src]."))
 			inner.reagents.clear_reagents()
 			update_icon()
 

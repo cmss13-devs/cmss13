@@ -28,11 +28,13 @@ const MapPanel = () => {
   return (
     <Box className="NavigationMenu">
       <ByondUi
-        params={{
+        winsetParams={{
           id: data.tactical_map_ref,
           type: 'map',
         }}
-        className="MapPanel"
+        boxProps={{
+          className: 'MapPanel',
+        }}
       />
     </Box>
   );

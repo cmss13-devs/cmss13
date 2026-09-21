@@ -23,7 +23,7 @@
 	var/attack_speed = 11  //+3, Adds up to 10.  Added an extra 4 removed from /mob/proc/do_click()
 	///Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
 	var/list/attack_verb
-	/// A multiplier to an object's force when used against a stucture.
+	/// A multiplier to an object's force when used against a structure.
 	var/demolition_mod = 1
 
 	health = null
@@ -141,8 +141,6 @@
 	var/blood_color = ""
 	/// taken from blood.dm
 	appearance_flags = KEEP_TOGETHER
-	/// lets us know if the item is an objective or not
-	var/is_objective = FALSE
 
 	/// Allows for bigger than 32x32 sprites.
 	var/worn_x_dimension = 32
@@ -229,16 +227,6 @@
 	forceMove(L.loc)
 	..()
 
-//user: The mob that is suiciding
-//damagetype: The type of damage the item will inflict on the user
-//BRUTELOSS = 1
-//FIRELOSS = 2
-//TOXLOSS = 4
-//OXYLOSS = 8
-//Output a creative message and then return the damagetype done
-/obj/item/proc/suicide_act(mob/user)
-	return
-
 /**
  * Global item proc for all of your unique item skin needs. Works with any
  * item, and will change the skin to whatever you specify here. You can also
@@ -305,20 +293,20 @@
 	var/size
 	switch(w_class)
 		if(SIZE_TINY)
-			size = "tiny"
+			size = SPAN_GREEN("tiny")
 		if(SIZE_SMALL)
-			size = "small"
+			size = SPAN_CYAN("small")
 		if(SIZE_MEDIUM)
-			size = "normal-sized"
+			size = SPAN_ORANGE("normal-sized")
 		if(SIZE_LARGE)
-			size = "bulky"
+			size = SPAN_DANGER("bulky")
 		if(SIZE_HUGE)
-			size = "huge"
+			size = SPAN_RED("huge")
 		if(SIZE_MASSIVE)
-			size = "massive"
-	. += "[p_are() == "are" ? "These are " : "This is a "][blood_color ? blood_color != COLOR_OIL ? "bloody " : "oil-stained " : ""][icon2html(src, user)][src.name]. [p_they(TRUE)] [p_are()] a [size] item."
+			size = SPAN_RED("massive")
+	. += "[p_are() == "are" ? "These are " : "This is a "][blood_color ? blood_color != COLOR_OIL ? "bloody " : "oil-stained " : ""][icon2html(src, user)][src.name]. [p_they(TRUE)] [p_are()] [size]."
 	if(desc)
-		. += desc
+		. += SPAN_INFO(desc)
 	if(desc_lore)
 		. += SPAN_NOTICE("This has an <a href='byond://?src=\ref[src];desc_lore=1'>extended lore description</a>.")
 
@@ -343,7 +331,7 @@
 	else if(isturf(loc) && HAS_TRAIT(user, TRAIT_HAULED))
 		return
 
-	throwing = 0
+	REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
 
 	if(loc == user)
 		if(!user.drop_inv_item_on_ground(src))
@@ -364,7 +352,7 @@
 	if(istype(W,/obj/item/storage))
 		var/obj/item/storage/S = W
 		if(S.storage_flags & STORAGE_CLICK_GATHER && isturf(loc))
-			if(S.storage_flags & STORAGE_GATHER_SIMULTAENOUSLY) //Mode is set to collect all items on a tile and we clicked on a valid one.
+			if(S.storage_flags & STORAGE_GATHER_SIMULTANEOUSLY) //Mode is set to collect all items on a tile and we clicked on a valid one.
 				var/success = 0
 				var/failure = 0
 
@@ -417,11 +405,12 @@
 /// Called just as an item is picked up (loc is not yet changed) and will return TRUE if the pickup wasn't canceled.
 /obj/item/proc/pickup(mob/user, silent)
 	SHOULD_CALL_PARENT(TRUE)
-	if((SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)) & COMSIG_ITEM_PICKUP_CANCELLED)
+	if(check_pickup_blocked(user))
 		if(!silent)
 			to_chat(user, SPAN_WARNING("Can't pick [src] up!"))
 			balloon_alert(user, "can't pick up")
 		return FALSE
+	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
 	SEND_SIGNAL(user, COMSIG_MOB_PICKUP_ITEM, src)
 	setDir(SOUTH)//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
 	if(pickup_sound && !silent && src.loc?.z)
@@ -890,11 +879,11 @@
 
 	if(user.eye_blind)
 		to_chat(user, SPAN_WARNING("You are too blind to see anything."))
-	else if(user.stat || !ishuman(user))
+	else if(user.stat || !ishuman(user) || (user.dizziness > 100))
 		to_chat(user, SPAN_WARNING("You are unable to focus through \the [zoom_device]."))
 	else if(!zoom && user.client && user.update_tint())
 		to_chat(user, SPAN_WARNING("Your welding equipment gets in the way of you looking through \the [zoom_device]."))
-	else if(!zoom && user.get_active_hand() != src && !istype(src, /obj/item/clothing/mask))
+	else if(!zoom && user.get_active_hand() != src && !istype(src, /obj/item/clothing))
 		to_chat(user, SPAN_WARNING("You need to hold \the [zoom_device] to look through it."))
 	else if(!zoom)
 		do_zoom(user, tileoffset, viewsize, keep_zoom)
@@ -904,9 +893,10 @@
 /obj/item/proc/unzoom(mob/living/user)
 	if(user.interactee == src)
 		user.unset_interaction()
-	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
-	INVOKE_ASYNC(user, TYPE_PROC_REF(/atom, visible_message), SPAN_NOTICE("[user] looks up from [zoom_device]."),
-	SPAN_NOTICE("You look up from [zoom_device]."))
+	if(zoom) // don't give us the message if we aren't even zoomed in
+		var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
+		INVOKE_ASYNC(user, TYPE_PROC_REF(/atom, visible_message), SPAN_NOTICE("[user] looks up from [zoom_device]."),
+		SPAN_NOTICE("You look up from [zoom_device]."))
 	zoom = !zoom
 	COOLDOWN_START(user, zoom_cooldown, 20)
 	SEND_SIGNAL(user, COMSIG_LIVING_ZOOM_OUT, src)
@@ -914,11 +904,11 @@
 	UnregisterSignal(src, list(
 		COMSIG_ITEM_DROPPED,
 		COMSIG_ITEM_UNWIELD,
-		COMSIG_PARENT_QDELETING,
 	))
 	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
 	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
 	if(user.client)
+		UnregisterSignal(user.client, COMSIG_CLIENT_ANIMATING)
 		user.client.change_view(GLOB.world_view_size, src)
 		user.client.set_pixel_x(0)
 		user.client.set_pixel_y(0)
@@ -928,6 +918,11 @@
 
 	if(mover.dir != zoom_initial_mob_dir && mover.client) //Dropped when disconnected, whoops
 		unzoom(mover)
+
+/obj/item/proc/zoom_handle_client_animate(client/source)
+	SIGNAL_HANDLER
+	if(source)
+		unzoom(source?.mob) // clients love to vanish and cause null reference exceptions :)
 
 /obj/item/proc/unzoom_dropped_callback(datum/source, mob/user)
 	SIGNAL_HANDLER
@@ -947,14 +942,13 @@
 		RegisterSignal(src, list(
 			COMSIG_ITEM_DROPPED,
 			COMSIG_ITEM_UNWIELD,
-			COMSIG_PARENT_QDELETING,
 		), PROC_REF(unzoom_dropped_callback))
 		RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(zoom_handle_mob_move_or_look))
+		RegisterSignal(user.client, COMSIG_CLIENT_ANIMATING, PROC_REF(zoom_handle_client_animate))
 
 		zoom_initial_mob_dir = user.dir
 
-		var/tilesize = 32
-		var/viewoffset = tilesize * tileoffset
+		var/viewoffset = world.icon_size * tileoffset
 
 		switch(user.dir)
 			if(NORTH)
@@ -1090,12 +1084,12 @@
  * Set the item up on a table.
  * @param target: table which is being used to host the item.
  */
-/obj/item/proc/set_to_table(obj/structure/surface/target)
-	if (do_after(usr, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+/obj/item/proc/set_to_table(obj/structure/surface/target, mob/user)
+	if (do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		table_setup = TRUE
-		usr.drop_inv_item_to_loc(src, target.loc)
+		user.drop_inv_item_to_loc(src, target.loc)
 	else
-		to_chat(usr, SPAN_WARNING("You fail to setup the [name]"))
+		to_chat(user, SPAN_WARNING("You fail to setup the [name]"))
 
 /**
  * Called to reset the state of the item to not be settled on the table.

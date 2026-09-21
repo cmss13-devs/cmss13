@@ -3,7 +3,6 @@
 #define XENO_ARMOR_REGEN_DELAY 30 SECONDS
 /mob/living/carbon/xenomorph/Life(delta_time)
 	set invisibility = 0
-	set background = 1
 
 	if(!loc)
 		return
@@ -25,9 +24,7 @@
 		handle_pheromones()
 		handle_regular_status_updates()
 		handle_overwatch() // For new Xeno hivewide overwatch - Fourk, 6/24/19
-		update_icons()
 		handle_luminosity()
-		handle_blood()
 
 		behavior_delegate?.on_life()
 		handle_environment()
@@ -102,8 +99,9 @@
 	if(istype(G))
 		G.die()
 		drop_inv_item_on_ground(G)
-	if(!caste || !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire_reagent.fire_penetrating)
-		if(caste.fire_immunity & FIRE_VULNERABILITY && caste.fire_vulnerability_mult >= 1)
+	var/penetrating = fire_reagent.fire_penetrating && !(fire_immunity & FIRE_IMMUNITY_IGNORE_PEN)
+	if(!(fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || penetrating)
+		if(fire_immunity & FIRE_VULNERABILITY && caste.fire_vulnerability_mult >= 1)
 			apply_damage(PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks) * caste.fire_vulnerability_mult, BURN)
 		else
 			apply_damage(armor_damage_reduction(GLOB.xeno_fire, PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks)), BURN)
@@ -151,9 +149,9 @@
 					continue
 				if(get_dist(aura_center, target) > floor(6 + aura_strength * 2))
 					continue
-				if(!HIVE_ALLIED_TO_HIVE(target.hivenumber, hivenumber))
+				if(!HIVE_ALLIED_TO_HIVE(hivenumber, target.hivenumber))
 					continue
-				if(target.banished)
+				if(banished || target.banished)
 					continue
 				if(use_leader_aura)
 					target.affected_by_pheromones(leader_current_aura, leader_aura_strength)
@@ -162,7 +160,7 @@
 
 	if(frenzy_aura != frenzy_new || warding_aura != warding_new || recovery_aura != recovery_new)
 		frenzy_aura = frenzy_new
-		if(health > crit_health || warding_new > warding_aura || !check_weeds_for_healing())
+		if(health > health_threshold_dead || warding_new > warding_aura || !check_weeds_for_healing())
 			warding_aura = warding_new
 		recovery_aura = recovery_new
 		recalculate_move_delay = TRUE
@@ -181,35 +179,36 @@
 				warding_new = strength
 			if(strength > recovery_new)
 				recovery_new = strength
-		if("frenzy")
+		if(XENO_PHERO_FRENZY)
 			if(strength > frenzy_new)
 				frenzy_new = strength
-		if("warding")
+		if(XENO_PHERO_WARDING)
 			if(strength > warding_new)
 				warding_new = strength
-		if("recovery")
+		if(XENO_PHERO_RECOVERY)
 			if(strength > recovery_new)
 				recovery_new = strength
 
 	// Also cap the auras
 	for(var/capped_aura in received_phero_caps)
 		switch(capped_aura)
-			if("frenzy")
+			if(XENO_PHERO_FRENZY)
 				frenzy_new = min(frenzy_new, received_phero_caps[capped_aura])
-			if("warding")
+			if(XENO_PHERO_WARDING)
 				warding_new = min(warding_new, received_phero_caps[capped_aura])
-			if("recovery")
+			if(XENO_PHERO_RECOVERY)
 				recovery_new = min(recovery_new, received_phero_caps[capped_aura])
 
 
 /mob/living/carbon/xenomorph/handle_regular_status_updates(regular_update = TRUE)
-	if(regular_update && health <= 0 && (!caste || (caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !on_fire)) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure
+	var/need_update_health = TRUE
+
+	if(regular_update && health <= 0 && (!caste || (fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !on_fire)) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure
 		if(!check_weeds_for_healing()) //In crit, damage is maximal if you're caught off weeds
 			apply_damage(2.5 - warding_aura*0.5, BRUTE) //Warding can heavily lower the impact of bleedout. Halved at 2.5 phero, stopped at 5 phero
 		else
 			apply_damage(-warding_aura, BRUTE)
-
-	updatehealth()
+		need_update_health = FALSE
 
 	if(health > 0 && stat != DEAD) //alive and not in crit! Turn on their vision.
 		see_in_dark = 50
@@ -222,9 +221,11 @@
 			blinded = TRUE
 			if(regular_update && halloss > 0)
 				apply_damage(-3, HALLOSS)
+				need_update_health = FALSE
 		else if(sleeping)
 			if(regular_update && halloss > 0)
 				apply_damage(-3, HALLOSS)
+				need_update_health = FALSE
 			if(regular_update && mind)
 				if((mind.active && client != null) || immune_to_ssd)
 					sleeping = max(sleeping - 1, 0)
@@ -239,12 +240,16 @@
 					apply_damage(-3, HALLOSS)
 				else
 					apply_damage(-1, HALLOSS)
+				need_update_health = FALSE
 
 		if(regular_update)
 			if(eye_blurry)
-				src.ReduceEyeBlur(1)
+				ReduceEyeBlur(1)
 
 			handle_statuses()//natural decrease of stunned, knocked_down, etc...
+
+	if(need_update_health)
+		updatehealth()
 
 	return TRUE
 
@@ -316,7 +321,7 @@
 	clear_fullscreen("dazed")
 
 /*Heal 1/70th of your max health in brute per tick. 1 as a bonus, to help smaller pools.
-Additionally, recovery pheromones mutiply this base healing, up to 2.5 times faster at level 5
+Additionally, recovery pheromones multiply this base healing, up to 2.5 times faster at level 5
 Modified via m, to multiply the number of wounds healed.
 Heal from fire half as fast
 Xenos don't actually take oxyloss, oh well
@@ -332,7 +337,6 @@ Make sure their actual health updates immediately.*/
 	apply_damage(min(-(maxHealth / 60 + 0.5 + (maxHealth / 60) * recov/2)*(m) + heal_penalty, 0), BURN)
 	apply_damage(min(-(maxHealth * 0.1 + 0.5 + (maxHealth * 0.1) * recov/2)*(m) + heal_penalty, 0), OXY)
 	apply_damage(min(-(maxHealth / 5 + 0.5 + (maxHealth / 5) * recov/2)*(m) + heal_penalty, 0), TOX)
-	updatehealth()
 
 
 /mob/living/carbon/xenomorph/proc/handle_environment()
@@ -340,12 +344,11 @@ Make sure their actual health updates immediately.*/
 	if(!current_turf || !istype(current_turf))
 		return
 
-	var/recoveryActual = (!caste || (caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !on_fire) ? recovery_aura : 0
+	var/recoveryActual = (!caste || (fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !on_fire) ? recovery_aura : 0
 	var/env_temperature = loc.return_temperature()
-	if(caste && !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE))
+	if(caste && !(fire_immunity & FIRE_IMMUNITY_NO_DAMAGE))
 		if(env_temperature > (T0C + 66))
 			apply_damage((env_temperature - (T0C + 66)) / 5, BURN) //Might be too high, check in testing.
-			updatehealth() //Make sure their actual health updates immediately
 			if(prob(20))
 				to_chat(src, SPAN_WARNING("You feel a searing heat!"))
 
@@ -417,6 +420,8 @@ Make sure their actual health updates immediately.*/
 	switch(locator.tracker_type)
 		if(TRACKER_QUEEN)
 			tracking_atom = hive.living_xeno_queen
+		if(TRACKER_KING)
+			tracking_atom = hive.living_xeno_king
 		if(TRACKER_HIVE)
 			tracking_atom = hive.hive_location
 		if(TRACKER_LEADER)
@@ -514,9 +519,9 @@ Make sure their actual health updates immediately.*/
 		health = maxHealth - getFireLoss() - getBruteLoss() //Xenos can only take brute and fire damage.
 
 	if(stat != DEAD && !gibbing)
-		var/warding_health = crit_health != 0 ? warding_aura * 20 : 0
-		if(health <= crit_health - warding_health) //dead
-			if(prob(gib_chance + 0.5*(crit_health - health)))
+		var/warding_health = health_threshold_dead != 0 ? warding_aura * 20 : 0
+		if(health <= health_threshold_dead - warding_health) //dead
+			if(prob(gib_chance + 0.5*(health_threshold_dead - health)))
 				async_gib(last_damage_data)
 			else
 				death(last_damage_data)
@@ -605,6 +610,6 @@ Make sure their actual health updates immediately.*/
 		return TRUE //weeds, yes!
 	if(need_weeds)
 		return FALSE //needs weeds, doesn't have any
-	if(hive && hive.living_xeno_queen && !is_mainship_level(hive.living_xeno_queen.loc.z) && is_mainship_level(loc.z))
+	if((hive && !hive.allow_no_queen_actions) && hive.living_xeno_queen && (!is_mainship_level(hive.living_xeno_queen.loc.z) && is_mainship_level(loc.z)))
 		return FALSE //We are on the ship, but the Queen isn't
 	return TRUE //we have off-weed healing, and either we're on Almayer with the Queen, or we're on non-Almayer, or the Queen is dead, good enough!

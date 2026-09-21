@@ -10,6 +10,8 @@ GLOBAL_PROTECT(href_token)
 	var/rights = 0
 	var/fakekey = null
 
+	var/static/list/cached_admin_tokens = list()
+
 	var/href_token
 
 	var/datum/marked_datum
@@ -28,7 +30,13 @@ GLOBAL_PROTECT(href_token)
 		return
 	rank = initial_rank
 	rights = initial_rights
-	href_token = GenerateToken()
+
+	if(ckey in cached_admin_tokens)
+		href_token = cached_admin_tokens[ckey]
+	else
+		href_token = GenerateToken()
+		cached_admin_tokens[ckey] = href_token
+
 	GLOB.admin_datums[ckey] = src
 	extra_titles = new_extra_titles
 	if(rights & R_PROFILER)
@@ -44,6 +52,15 @@ GLOBAL_PROTECT(href_token)
 		return FALSE
 	return ..()
 
+/datum/admins/proc/associate_or_deadmin(client/target, force = FALSE)
+	if(!istype(target))
+		return
+
+	if(GLOB.deadmins[target.ckey])
+		add_verb(target, /client/proc/readmin_self)
+		return
+	associate(target, force)
+
 /datum/admins/proc/associate(client/C, force = FALSE)
 	if(!istype(C))
 		return
@@ -58,6 +75,7 @@ GLOBAL_PROTECT(href_token)
 	owner.tgui_say.load()
 	owner.update_special_keybinds()
 	GLOB.admins |= C
+	GLOB.deadmins[owner.ckey] = FALSE
 
 	if(rights & R_MOD)
 		notify_login()
@@ -148,7 +166,7 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 		return PROC_BLOCKED
 	if(admin_holder)
 		admin_holder.disassociate()
-		QDEL_NULL(admin_holder)
+		GLOB.deadmins[ckey] = TRUE
 	return TRUE
 
 /client/proc/readmin()

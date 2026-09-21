@@ -1,0 +1,644 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"bi" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"bo" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"bs" = (
+/obj/item/prop/alien/hugger,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"eu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/item/ammo_magazine/pistol/holdout{
+	current_rounds = 6;
+	pixel_x = -1;
+	pixel_y = -1
+	},
+/obj/item/weapon/gun/pistol/holdout/custom{
+	current_mag = null;
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"eI" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/template_noop,
+/area/template_noop)
+"ff" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"fB" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Red/damage_2{
+	dir = 1;
+	icon_state = "meridian_red_damage_2"
+	},
+/obj/structure/prop/hybrisa/vehicles/Meridian/Red/damage_2{
+	dir = 1;
+	icon_state = "meridian_red_damage_2"
+	},
+/turf/template_noop,
+/area/template_noop)
+"fY" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"gO" = (
+/turf/template_noop,
+/area/template_noop)
+"jx" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/template_noop,
+/area/template_noop)
+"mW" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 5;
+	pixel_y = 3
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"nd" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/ammo_casing,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"nk" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/prop/hybrisa/vehicles/Meridian/Cop{
+	dir = 1;
+	desc = "The 'Mono-Spectra', a mass-produced civilian vehicle for the colonial markets, in and outside of the United Americas. Produced by 'Meridian' a car marque and associated operating division of the Weyland-Yutani Corporastion."
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"nE" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"nZ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/template_noop,
+/area/template_noop)
+"oI" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	layer = 4
+	},
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"pl" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	dir = 4
+	},
+/turf/template_noop,
+/area/template_noop)
+"pY" = (
+/obj/item/ammo_magazine/pistol/l54,
+/obj/item/ammo_magazine/pistol/l54,
+/turf/template_noop,
+/area/template_noop)
+"sa" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/item/ammo_casing,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"sd" = (
+/obj/effect/landmark/corpsespawner/trijent/nspa_constable,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"tQ" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"tU" = (
+/obj/item/weapon/gun/pistol/l54,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"uS" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -3;
+	pixel_y = 8
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -3;
+	pixel_y = 8
+	},
+/turf/template_noop,
+/area/template_noop)
+"wA" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"wM" = (
+/obj/structure/largecrate/empty/case{
+	pixel_y = 13
+	},
+/obj/item/storage/box/evidence{
+	pixel_x = 6;
+	pixel_y = 14
+	},
+/obj/item/evidencebag{
+	pixel_x = -10;
+	pixel_y = 19
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"wS" = (
+/obj/item/weapon/telebaton,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/effect/decal/hybrisa/bloodtrail,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 8;
+	pixel_y = 15
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"xM" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 4;
+	pixel_y = 9
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = 4;
+	pixel_y = 9
+	},
+/turf/template_noop,
+/area/template_noop)
+"xT" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"ys" = (
+/obj/effect/spawner/random/gun/cmb,
+/obj/effect/spawner/random/gun/cmb,
+/turf/template_noop,
+/area/template_noop)
+"zV" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -2;
+	pixel_y = 9
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -2;
+	pixel_y = 9
+	},
+/turf/template_noop,
+/area/template_noop)
+"Ct" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"CE" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/structure/prop/hybrisa/vehicles/Meridian/Cop,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"Df" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/largecrate/empty/case/double,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"Dl" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/template_noop,
+/area/template_noop)
+"Ds" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"EG" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	dir = 4;
+	icon_state = "xsplatter5"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"Fa" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/item/weapon/gun/pistol/l54{
+	current_mag = null;
+	pixel_x = -5;
+	pixel_y = 4
+	},
+/obj/item/ammo_magazine/pistol/l54{
+	pixel_y = -2;
+	current_rounds = 0
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"Ha" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/turf/template_noop,
+/area/template_noop)
+"Jl" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Cop,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"Jm" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	layer = 4
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"Ly" = (
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"Ms" = (
+/obj/item/device/camera{
+	pixel_x = -5;
+	pixel_y = 13
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"MJ" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"NX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"ON" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/item/clothing/head/fedora/grey{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/prop/alien/hugger{
+	pixel_x = 3;
+	pixel_y = -4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"OV" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	layer = 4
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"Pm" = (
+/obj/effect/landmark/corpsespawner/trijent/nspa_constable,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"Pr" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	dir = 8;
+	layer = 3
+	},
+/turf/template_noop,
+/area/template_noop)
+"Qj" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"RM" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	dir = 8;
+	layer = 3
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = 3;
+	pixel_y = 8
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = 3;
+	pixel_y = 8
+	},
+/turf/template_noop,
+/area/template_noop)
+"Tb" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"TO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 8;
+	pixel_y = 9
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"UI" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/item/device/clue_scanner{
+	pixel_x = 1;
+	pixel_y = -4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"UP" = (
+/obj/item/ammo_magazine/pistol/l54,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"VM" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"Wi" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/landmark/corpsespawner/trijent/nspa_constable,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/hybrisa/bloodtrail,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"XW" = (
+/obj/effect/landmark/corpsespawner/colonist/random,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 10;
+	pixel_y = 21
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"XX" = (
+/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 6;
+	pixel_y = 21
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"Ya" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	layer = 4
+	},
+/obj/effect/landmark/corpsespawner/trijent/nspa_constable,
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"YM" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 3;
+	pixel_y = 6
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = 3;
+	pixel_y = 6
+	},
+/turf/template_noop,
+/area/template_noop)
+
+(1,1,1) = {"
+gO
+gO
+gO
+gO
+gO
+gO
+gO
+gO
+"}
+(2,1,1) = {"
+gO
+gO
+Dl
+gO
+gO
+gO
+gO
+gO
+"}
+(3,1,1) = {"
+gO
+gO
+xM
+gO
+zV
+gO
+gO
+YM
+"}
+(4,1,1) = {"
+gO
+gO
+pl
+pl
+pl
+gO
+gO
+gO
+"}
+(5,1,1) = {"
+tQ
+tU
+bi
+nk
+Ct
+MJ
+ff
+NX
+"}
+(6,1,1) = {"
+mW
+Ya
+UP
+xT
+Fa
+TO
+sa
+Tb
+"}
+(7,1,1) = {"
+Ly
+oI
+bs
+xT
+Ms
+wS
+Wi
+nd
+"}
+(8,1,1) = {"
+gO
+gO
+gO
+gO
+pY
+gO
+gO
+nZ
+"}
+(9,1,1) = {"
+gO
+gO
+gO
+gO
+fB
+gO
+ys
+nZ
+"}
+(10,1,1) = {"
+gO
+gO
+gO
+gO
+gO
+jx
+gO
+nZ
+"}
+(11,1,1) = {"
+OV
+sd
+XX
+xT
+bo
+XW
+UI
+nE
+"}
+(12,1,1) = {"
+OV
+Qj
+bi
+xT
+Ds
+eu
+ON
+nE
+"}
+(13,1,1) = {"
+fY
+Jm
+Jl
+Df
+wM
+Pm
+CE
+nE
+"}
+(14,1,1) = {"
+gO
+gO
+gO
+Pr
+Pr
+eI
+gO
+gO
+"}
+(15,1,1) = {"
+gO
+gO
+Ha
+gO
+gO
+Pr
+Pr
+RM
+"}
+(16,1,1) = {"
+gO
+gO
+gO
+gO
+gO
+uS
+gO
+gO
+"}
+(17,1,1) = {"
+gO
+gO
+gO
+gO
+gO
+gO
+gO
+gO
+"}
+(18,1,1) = {"
+Ly
+VM
+bi
+xT
+EG
+Ct
+wA
+nE
+"}

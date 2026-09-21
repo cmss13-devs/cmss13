@@ -73,7 +73,7 @@
 		blinded = TRUE
 		silent = 0
 	else //ALIVE. LIGHTS ARE ON
-		if( !container && (health < HEALTH_THRESHOLD_DEAD || ((world.time - timeofhostdeath) > CONFIG_GET(number/revival_brain_life))) )
+		if( !container && (health < health_threshold_dead || ((world.time - timeofhostdeath) > CONFIG_GET(number/revival_brain_life))) )
 			death(last_damage_data)
 			blinded = TRUE
 			silent = 0
@@ -95,7 +95,7 @@
 					silent = 1
 					if(!alert)//Sounds an alarm, but only once per 'level'
 						INVOKE_ASYNC(src, PROC_REF(emote), "alarm")
-						to_chat(src, SPAN_DANGER("Major electrical distruption detected: System rebooting."))
+						to_chat(src, SPAN_DANGER("Major electrical disruption detected: System rebooting."))
 						alert = 1
 					if(prob(75))
 						emp_damage--

@@ -40,10 +40,14 @@
 	var/temperature = T20C
 	var/pressure = ONE_ATMOSPHERE
 	var/can_build_special = FALSE
-	var/is_resin_allowed = TRUE // can xenos weed, place resin holes or dig tunnels at said areas
-	var/allow_construction = TRUE // whether or not you can build things like barricades in this area
-	var/is_landing_zone = FALSE // primarily used to prevent mortars from hitting this location
-	var/resin_construction_allowed = TRUE // Allow construction of resin walls, and other special
+	/// can xenos weed, place resin holes or dig tunnels at said areas
+	var/is_resin_allowed = TRUE
+	/// whether or not you can build things like barricades in this area
+	var/allow_construction = TRUE
+	/// primarily used to prevent mortars from hitting this location
+	var/is_landing_zone = FALSE
+	/// Allow construction of resin walls, and other special
+	var/resin_construction_allowed = TRUE
 
 	// Weather
 	var/weather_enabled = TRUE // Manual override for weather if set to false
@@ -134,6 +138,12 @@
 				if(!(current_wall.turf_flags & TURF_HULL))
 					openable_turf_count++
 					continue
+
+	// If map_holder exists for SSweather, its already done its one-time setup
+	if(weather_enabled && SSweather.map_holder?.should_affect_area(src))
+		SSweather.weather_areas += src
+		if(SSweather.is_weather_event)
+			overlays += SSweather.curr_master_turf_overlay
 
 /area/proc/initialize_power(override_power)
 	if(requires_power)
@@ -453,23 +463,9 @@
 	return flags
 
 /area/proc/reg_in_areas_in_z()
-	if(!length(contents))
-		return
-
-	var/list/areas_in_z = SSmapping.areas_in_z
-	var/z
-	for(var/i in contents)
-		var/atom/thing = i
-		if(!thing)
-			continue
-		z = thing.z
-		break
-	if(!z)
-		WARNING("No z found for [src]")
-		return
-	if(!areas_in_z["[z]"])
-		areas_in_z["[z]"] = list()
-	areas_in_z["[z]"] += src
+	if(!SSmapping.areas_in_z["[z]"])
+		SSmapping.areas_in_z["[z]"] = list()
+	SSmapping.areas_in_z["[z]"] += src
 
 /**
  * Purges existing weeds, and prevents future weeds from being placed.
@@ -484,6 +480,13 @@
 	addtimer(VARSET_CALLBACK(src, unoviable_timer, FALSE), unoviable_timer)
 
 /area/sky
-	name = "Sky"
+	name = "Lower Sky"
 	icon_state = "lv-626"
 	flags_area = AREA_UNWEEDABLE
+	is_resin_allowed = FALSE
+
+/area/sky/level4
+	name = "Sky"
+
+/area/sky/level5
+	name = "Upper Sky"

@@ -27,16 +27,6 @@
 			return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 /mob/living/attackby(obj/item/I, mob/user)
-	/* Commented surgery code, proof of concept. Would need to tweak human attackby to prevent duplication; mob/living don't have separate limb objects.
-	if((user.mob_flags & SURGERY_MODE_ON) && user.a_intent & (INTENT_HELP|INTENT_DISARM))
-		safety = TRUE
-		var/datum/surgery/current_surgery = active_surgeries[user.zone_selected]
-		if(current_surgery)
-			if(current_surgery.attempt_next_step(user, I))
-				return TRUE
-		else if(initiate_surgery_moment(I, src, null, user))
-			return TRUE
-	*/
 	if(HAS_TRAIT(user, TRAIT_HAULED))
 		return
 	if(istype(I) && ismob(user))
@@ -105,6 +95,10 @@
 		if(isxeno(M))
 			var/mob/living/carbon/xenomorph/X = M
 			power = armor_damage_reduction(GLOB.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff - X.armor_deflection_debuff, 20, 0, 0, X.armor_integrity)
+
+			if(X.melee_vulnerability_mult != 0)
+				power *= X.melee_vulnerability_mult
+
 			var/armor_punch = armor_break_calculation(GLOB.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff - X.armor_deflection_debuff, 20, 0, 0, X.armor_integrity)
 			X.apply_armorbreak(armor_punch)
 		if(hitsound)

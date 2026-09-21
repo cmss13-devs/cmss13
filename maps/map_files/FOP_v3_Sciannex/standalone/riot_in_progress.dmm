@@ -7,6 +7,10 @@
 /obj/item/clothing/head/helmet/marine/veteran/cmb,
 /turf/open/floor/prison,
 /area/fiorina/station/security)
+"ac" = (
+/obj/effect/landmark/survivor_spawner/fiorina_armory_cmb_synth,
+/turf/open/floor/prison/redfull,
+/area/fiorina/station/security)
 "am" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/donut_box{
@@ -117,7 +121,7 @@
 "eK" = (
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating/prison,
-/area/fiorina/station/security)
+/area/fiorina/oob)
 "fd" = (
 /obj/structure/window/framed/prison/reinforced,
 /turf/open/floor/prison,
@@ -340,7 +344,7 @@
 /turf/template_noop,
 /area/template_noop)
 "np" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
+/obj/structure/machinery/landinglight/delaythree{
 	dir = 4
 	},
 /turf/open/floor/prison,
@@ -1008,7 +1012,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
 "QF" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
+/obj/structure/machinery/landinglight/delaytwo{
 	dir = 4
 	},
 /turf/open/floor/prison/floor_plate,
@@ -1210,14 +1214,14 @@
 /turf/open/floor/prison,
 /area/fiorina/station/security)
 "XO" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
+/obj/structure/machinery/landinglight/delayone{
 	dir = 4
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "XV" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
-/area/fiorina/station/security)
+/area/fiorina/oob)
 "Yt" = (
 /turf/open/floor/prison/cell_stripe/east,
 /area/fiorina/station/security)
@@ -1651,7 +1655,7 @@ YL
 DH
 AY
 DH
-xW
+ac
 xW
 FZ
 sq

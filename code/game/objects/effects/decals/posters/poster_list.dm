@@ -16,7 +16,7 @@ Template
 /datum/poster/poster_2
 	icon_state="poster2"
 	name = "Unicorn"
-	desc = "This blacklight felt poster is depicts a unicorn under a rainbow with the word 'DRUG' boldly written under it. You had this same one when you were younger, but you'd never tell anyone."
+	desc = "This blacklight felt poster depicts a unicorn under a rainbow with the word 'DRUG' boldly written under it. You had this same one when you were younger, but you'd never tell anyone."
 
 /datum/poster/poster_3
 	icon_state="poster3"
@@ -161,7 +161,7 @@ Template
 /datum/poster/poster_31
 	icon_state="poster31"
 	name = "safety goggles"
-	desc = "This poster depicts a minimalist man with glowing goggle lenses. It reads 'SAVE YOUR EYES USE YOUR GOGGLES"
+	desc = "This poster depicts a minimalist man with glowing goggle lenses. It reads 'SAVE YOUR EYES USE YOUR GOGGLES'."
 
 /datum/poster/poster_32
 	icon_state="poster32"
@@ -240,7 +240,7 @@ Template
 /datum/poster/poster_46
 	icon_state="poster46"
 	name = "Kelland Mining co. poster"
-	desc = "A simplified version of the Kelland Mining co. logo.The Kelland Mining Company is owned by Prospectia, a sub-division of the San Rei Corporation, which is in turn owned by the Weyland-Yutani Corporation."
+	desc = "A simplified version of the Kelland Mining co. logo. The Kelland Mining Company is owned by Prospectia, a sub-division of the San Rei Corporation, which is in turn owned by the Weyland-Yutani Corporation."
 
 /datum/poster/poster_47
 	icon_state="poster47"
@@ -260,21 +260,21 @@ Template
 /datum/poster/poster_50
 	icon_state="poster50"
 	name = "Synthetic 'Daniel' poster"
-	desc = "An ominous forward facing profile of the Synthetic model 'Daniel'. Not quite a second generation model but something inbetween, suited for the needs of colonists. The poster is more art then an advertisement."
+	desc = "An ominous forward facing profile of the Synthetic model 'Daniel'. Not quite a second generation model but something in-between, suited for the needs of colonists. The poster is more art than an advertisement."
 
 /datum/poster/poster_51
 	icon_state="poster51"
 	name = "Synthetic 'Daniel' poster"
-	desc = "An ominous side facing profile of the Synthetic model 'Daniel'. Not quite a second generation model but something inbetween, suited for the needs of colonists. The poster is more art then an advertisement."
+	desc = "An ominous side facing profile of the Synthetic model 'Daniel'. Not quite a second generation model but something in-between, suited for the needs of colonists. The poster is more art than an advertisement."
 
 /datum/poster/poster_52
 	icon_state="poster52"
-	name = "Colonial Marshalls poster"
+	name = "Colonial Marshals poster"
 	desc = "To live, to serve, wherever humanity roams."
 
 /datum/poster/poster_53
 	icon_state="poster53"
-	name = "Colonial Marshalls poster"
+	name = "Colonial Marshals poster"
 	desc = "The laws of Earth stretch beyond the Sol: The Colonial Marshals."
 
 /datum/poster/poster_54
@@ -320,12 +320,12 @@ Template
 /datum/poster/poster_62
 	icon_state="poster62"
 	name = "Synthetic 'Daniel' poster"
-	desc = "An ominous forward facing profile of the Synthetic model 'Daniel'. Not quite a second generation model but something inbetween, suited for the needs of colonists. The poster is more art then an advertisement."
+	desc = "An ominous forward facing profile of the Synthetic model 'Daniel'. Not quite a second generation model but something in-between, suited for the needs of colonists. The poster is more art than an advertisement."
 
 /datum/poster/poster_63
 	icon_state="poster63"
 	name = "Synthetic 'Daniel' poster"
-	desc = "An ominous side facing profile of the Synthetic model 'Daniel'. Not quite a second generation model but something inbetween, suited for the needs of colonists. The poster is more art then an advertisement."
+	desc = "An ominous side facing profile of the Synthetic model 'Daniel'. Not quite a second generation model but something in-between, suited for the needs of colonists. The poster is more art than an advertisement."
 
 /datum/poster/poster_64
 	icon_state="poster64"
@@ -465,7 +465,7 @@ Template
 /datum/poster/poster_91
 	icon_state="poster91"
 	name = "Through The Union Our Power Is Secured"
-	desc = "A stylized depiction of the UPP's flag and the words, 'Our Unity is the dream of all Peoples. Trust in the strength of ther Union.'"
+	desc = "A stylized depiction of the UPP's flag and the words, 'Our Unity is the dream of all Peoples. Trust in the strength of the Union.'"
 
 /datum/poster/poster_92
 	icon_state="poster92"
@@ -511,3 +511,8 @@ Template
 	icon_state="poster100"
 	name = "We Forge A Path Into the Stars"
 	desc = "The head of a man in a UPPAC EVA suit smiles looking not at you, but up to the right of the poster."
+
+/datum/poster/poster_101
+	icon_state="poster101"
+	name = "Light of science"
+	desc = "Funded by Weyland-Yutani to try on improving the USCM's view of their research staff. This one, specifically, dates way back to when research laboratories were first estabilished onboard USCM patrol vessels, after a good amount of government lobbying. The art is geometric, but yet expressive with its vibrant warm colors, of an artistic style made by an unknown artist. The art itself is supposed to represent the burning light of 'Science', glowing and piercing the dark as a star, opening paths through the expansive obscure."

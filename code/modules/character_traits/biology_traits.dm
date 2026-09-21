@@ -10,6 +10,7 @@
 	trait_desc = "A condition in which close objects appear clearly, but far ones don't."
 	applyable = TRUE
 	cost = 1
+	var/list/inapplicable_species = list(SPECIES_YAUTJA)
 
 /datum/character_trait/biology/bad_eyesight/apply_trait(mob/living/carbon/human/target)
 	..()

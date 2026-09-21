@@ -34,10 +34,9 @@
 	if(!is_mob_incapacitated() && pipe)
 		return pipe
 
-/mob/living/simple_animal/mouse/can_ventcrawl()
+/mob/living/simple_animal/small/can_ventcrawl()
 	return TRUE
-
-/mob/living/simple_animal/spiderbot/can_ventcrawl()
+/mob/living/simple_animal/big/corgi/puppy/can_ventcrawl()
 	return TRUE
 
 /mob/living/proc/handle_ventcrawl(atom/clicked_on)

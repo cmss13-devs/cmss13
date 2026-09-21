@@ -151,6 +151,11 @@
 
 	TIMER_COOLDOWN_START(src, COOLDOWN_SLOT_INTERACT_KEYBIND, INTERACT_KEYBIND_COOLDOWN_TIME)
 	var/mob/living/carbon/human/human_user = user.mob
+
+	if((human_user.is_mob_incapacitated(TRUE) || human_user.is_mob_restrained() || human_user.IsKnockDown() || HAS_TRAIT_FROM(human_user, TRAIT_UNDENSE, LYING_DOWN_TRAIT)) && !HAS_TRAIT(human_user, TRAIT_HAULED))
+		to_chat(user, SPAN_WARNING("You can't do that in your current state."))
+		return
+
 	var/obj/item/current_item = check_slot(human_user)
 	var/obj/item/in_hand_item = human_user.get_active_hand()
 

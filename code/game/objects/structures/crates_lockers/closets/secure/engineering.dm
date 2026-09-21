@@ -16,7 +16,7 @@
 	new /obj/item/clothing/head/welding(src)
 	new /obj/item/clothing/gloves/yellow(src)
 	if(is_mainship_level(z) || is_reserved_level(z))
-		new /obj/item/device/radio/headset/almayer/ce(src)
+		new /obj/item/device/radio/headset/almayer/mcom/ce(src)
 	new /obj/item/storage/toolbox/mechanical(src)
 	new /obj/item/clothing/suit/storage/hazardvest(src)
 	new /obj/item/clothing/mask/gas(src)

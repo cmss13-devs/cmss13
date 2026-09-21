@@ -10,6 +10,16 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 			"classic" = kb.classic_keys,
 		))
 
+/proc/keybind_to_keyboardMap(keybind, list/mods)
+	var/list/tempList = list()
+	for(var/i in mods)
+		tempList += GLOB._kbMap[i]
+	if(GLOB._kbMap[keybind])
+		tempList += GLOB._kbMap[keybind]
+	else
+		tempList += keybind
+	return tempList.Join("+")
+
 /datum/tgui_macro
 	var/client/owner
 	var/datum/preferences/prefs
@@ -24,11 +34,16 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 /datum/tgui_macro/ui_data(mob/user)
 	. = list()
 	.["player_keybinds"] = prefs.key_bindings
+	.["custom_keybinds"] = prefs.custom_keybinds
 
 /datum/tgui_macro/ui_static_data(mob/user)
 	. = list()
 	.["glob_keybinds"] = GLOB.ui_data_keybindings
 	.["byond_keymap"] = GLOB._kbMap
+	.["max_custom_keybinds"] = KEYBIND_CUSTOM_MAX
+	.["max_custom_keybind_picksays"] = KEYBIND_CUSTOM_PICKSAY_MAX
+	.["max_say_length"] = MAX_MESSAGE_LEN
+	.["max_emote_length"] = MAX_EMOTE_LEN
 
 /datum/tgui_macro/ui_state(mob/user)
 	return GLOB.always_state
@@ -61,12 +76,6 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 
 			var/old_key = params["old_key"]
 
-			var/mods = sortList(params["key_mods"]).Join("+")
-
-			var/full_key = params["key"]
-			if(mods)
-				full_key = "[mods]+[full_key]"
-
 			if(!params["key"])
 				if(kbinds[old_key])
 					kbinds[old_key] -= kb_name
@@ -77,13 +86,7 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 				prefs.save_preferences()
 				return
 
-			var/list/tempList = list()
-			for(var/i in splittext(full_key, "+"))
-				if(GLOB._kbMap[i])
-					tempList += GLOB._kbMap[i]
-				else
-					tempList += i
-			full_key = tempList.Join("+")
+			var/full_key = keybind_to_keyboardMap(params["key"], params["key_mods"])
 
 			if(kb_name in kbinds[full_key]) //We pressed the same key combination that was already bound here, so let's remove to re-add and re-sort.
 				kbinds[full_key] -= kb_name
@@ -120,6 +123,53 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 
 			prefs.save_preferences()
 			INVOKE_ASYNC(owner, /client/proc/set_macros)
+			return TRUE
+
+		if("set_custom_keybinds")
+			var/index = params["index"]
+			if(index > KEYBIND_CUSTOM_MAX)
+				return TRUE
+
+			var/keybind_type = params["keybind_type"]
+			if(!(keybind_type in list(KEYBIND_TYPE_SAY, KEYBIND_TYPE_ME, KEYBIND_TYPE_PICKSAY)))
+				return TRUE
+			var/keybind = keybind_to_keyboardMap(params["key"], params["key_mods"])
+			if(!keybind)
+				keybind = params["keybind"]
+
+			var/contents = params["contents"]
+
+			switch(keybind_type)
+				if(KEYBIND_TYPE_PICKSAY)
+					if(!islist(contents))
+						contents = list(contents)
+
+					var/list/list_contents = contents
+					if(length(contents) > KEYBIND_CUSTOM_PICKSAY_MAX)
+						list_contents.len = KEYBIND_CUSTOM_PICKSAY_MAX
+
+					for(var/i in 1 to length(contents))
+						list_contents[i] = strip_html(contents[i], MAX_EMOTE_LEN)
+
+				if(KEYBIND_TYPE_ME)
+					if(islist(contents))
+						contents = jointext(contents, ", ")
+					contents = strip_html(contents, MAX_EMOTE_LEN)
+
+				else
+					if(islist(contents))
+						contents = jointext(contents, ", ")
+					contents = strip_html(contents, MAX_MESSAGE_LEN)
+
+			var/when_human = sanitize_integer(params["when_human"], FALSE, TRUE, TRUE)
+			var/when_xeno = sanitize_integer(params["when_xeno"], FALSE, TRUE, TRUE)
+			var/when_yautja = sanitize_integer(params["when_yautja"], FALSE, TRUE, TRUE)
+			var/when_synth = sanitize_integer(params["when_synth"], FALSE, TRUE, TRUE)
+
+			prefs.custom_keybinds[index] = list("type" = keybind_type, "keybinding" = keybind, "contents" = contents, "when_human" = when_human, "when_xeno" = when_xeno, "when_yautja" = when_yautja, "when_synth" = when_synth)
+			prefs.load_custom_keybinds()
+
+			prefs.save_preferences()
 			return TRUE
 
 		if("clear_all_keybinds")

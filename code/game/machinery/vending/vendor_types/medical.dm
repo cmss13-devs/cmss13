@@ -15,7 +15,7 @@
 	unacidable = TRUE
 
 /obj/structure/medical_supply_link/ex_act(severity, direction)
-	return FALSE
+	return
 
 /obj/structure/medical_supply_link/Initialize()
 	. = ..()
@@ -176,7 +176,7 @@
 		playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
 		new /obj/item/stack/sheet/metal(loc)
 		if(supplies_remaining)
-			msg_admin_niche("[key_name(user)] deconstructed [src] with [supplies_remaining] [supply_descriptor] remaining in [get_area(src)] [ADMIN_JMP(loc)]", loc.x, loc.y, loc.z)
+			msg_admin_niche("[key_name(user)] deconstructed [src] with [supplies_remaining] [supply_descriptor] remaining in [ADMIN_VERBOSEJMP(src)]")
 		deconstruct(TRUE)
 		return
 
@@ -185,7 +185,7 @@
 /obj/structure/restock_cart/proc/healthcheck(mob/user)
 	if(health <= 0)
 		if(supplies_remaining && ishuman(user))
-			msg_admin_niche("[key_name(user)] destroyed [src] with [supplies_remaining] [supply_descriptor] remaining in [get_area(src)] [ADMIN_JMP(loc)]", loc.x, loc.y, loc.z)
+			msg_admin_niche("[key_name(user)] destroyed [src] with [supplies_remaining] [supply_descriptor] remaining in [ADMIN_VERBOSEJMP(src)]")
 		deconstruct(FALSE)
 
 /obj/structure/restock_cart/bullet_act(obj/projectile/Proj)
@@ -205,7 +205,7 @@
 	healthcheck(user)
 	return XENO_ATTACK_ACTION
 
-/obj/structure/restock_cart/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/restock_cart/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, attacked_sound, 25, 1)
@@ -216,6 +216,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	healthcheck(xeno)
 	return TAILSTAB_COOLDOWN_NORMAL
 
@@ -355,7 +356,7 @@
 	return TRUE
 
 /// Attempts to consume our reagents needed for the container (doesn't actually change the container)
-/// Will return TRUE if reagents were deducated or no reagents were needed
+/// Will return TRUE if reagents were deducted or no reagents were needed
 /obj/structure/machinery/cm_vending/sorted/medical/proc/try_deduct_chem(obj/item/reagent_container/container, mob/user)
 	var/missing_reagents = container.reagents.maximum_volume - container.reagents.total_volume
 	if(missing_reagents <= 0)
@@ -819,6 +820,7 @@
 	wrenchable = FALSE
 	vend_delay = 0.7 SECONDS
 	allow_supply_link_restock = FALSE
+	untippable = TRUE
 
 	listed_products = list(
 		list("SUPPLIES", -1, null, null),

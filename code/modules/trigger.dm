@@ -3,9 +3,9 @@
 	var/once = 1
 
 /obj/effect/step_trigger/message/memorial
-	message = "Please stand silently for a moment of reflection and respect. "
+	message = "Please stand silently for a moment of reflection and respect."
 	once = 0
-	
+
 /obj/effect/step_trigger/message/Trigger(mob/M)
 	if(!istype(M) || !M)
 		return

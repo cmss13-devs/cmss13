@@ -91,6 +91,8 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	qdel(src)
 
 /obj/structure/flora/ex_act(power)
+	if(explo_proof)
+		return
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		deconstruct(FALSE)
 
@@ -153,17 +155,88 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	icon = 'icons/obj/structures/props/natural/vegetation/ground_map64.dmi'
 	desc = "What an enormous tree!"
 	density = FALSE
+	unacidable = TRUE
+	unslashable = TRUE
+	explo_proof = TRUE
 	layer = ABOVE_XENO_LAYER
 
 // LV-624's Yggdrasil Tree
-/obj/structure/flora/tree/jungle/bigtreeTR
+/obj/structure/roof/flora/tree/jungle/bigtreeTR
+	name = "huge tree"
+	desc = "What an enormous tree!"
+	icon = 'icons/obj/structures/props/natural/vegetation/ground_map64.dmi'
 	icon_state = "bigtreeTR"
+	density = FALSE
+	unacidable = TRUE
+	unslashable = TRUE
+	explo_proof = TRUE
+	layer = ABOVE_XENO_LAYER
+	bound_height = 128
+	bound_width = 128
 
-/obj/structure/flora/tree/jungle/bigtreeTL
+/obj/structure/roof/flora/tree/jungle/bigtreeTL
+	name = "huge tree"
+	desc = "What an enormous tree!"
+	icon = 'icons/obj/structures/props/natural/vegetation/ground_map64.dmi'
 	icon_state = "bigtreeTL"
+	density = FALSE
+	unacidable = TRUE
+	unslashable = TRUE
+	explo_proof = TRUE
+	layer = ABOVE_XENO_LAYER
+	bound_height = 128
+	bound_width = 128
 
 /obj/structure/flora/tree/jungle/bigtreeBOT
 	icon_state = "bigtreeBOT"
+
+/obj/structure/flora/tree/tyrargo
+	icon = 'icons/obj/structures/props/natural/vegetation/tyrargo_pine_tree.dmi'
+	icon_state = "pine_1_snow"
+
+/obj/structure/flora/tree/tyrargo/tree_2
+	icon_state = "pine_1"
+
+/obj/structure/flora/tree/tyrargo/tree_3
+	icon_state = "bald"
+
+/obj/structure/flora/tree/tyrargo/tree_3/Initialize(mapload, ...)
+	. = ..()
+	AddComponent(/datum/component/shimmy_around, south_offset = 5)
+
+/obj/structure/flora/tree/tyrargo/tree_4
+	icon_state = "dead_tree1"
+
+/obj/structure/flora/tree/tyrargo/tree_5
+	icon_state = "dead_tree2"
+
+/obj/structure/flora/tree/tyrargo/tree_6
+	icon_state = "dead_tree3"
+
+
+/obj/structure/flora/tree/tyrargo_small
+	icon = 'icons/obj/structures/props/natural/vegetation/tyrargo_dead_trees.dmi'
+	icon_state = "tree_1"
+
+/obj/structure/flora/tree/tyrargo_small/Initialize(mapload, ...)
+	. = ..()
+	AddComponent(/datum/component/shimmy_around, south_offset = 5)
+
+/obj/structure/flora/tree/tyrargo_small/tree_2
+	icon_state = "tree_2"
+
+/obj/structure/flora/tree/tyrargo_small/tree_3
+	icon_state = "tree_3"
+
+/obj/structure/flora/tree/tyrargo_small/tree_4
+	icon_state = "tree_4"
+
+/obj/structure/flora/tree/tyrargo_small/tree_5
+	icon_state = "tree_5"
+
+/obj/structure/flora/tree/tyrargo_small/tree_stump
+	icon_state = "tree_stump"
+	density = FALSE
 
 //grass
 /obj/structure/flora/grass
@@ -395,6 +468,39 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon_state = "tallgrass_corner"
 	overlay_type = "tallgrass_overlay_corner"
 	center = FALSE
+
+//TYRARGO - TEMPERATE/TAIGA MAPS//
+
+/obj/structure/flora/grass/temperate
+	icon = 'icons/obj/structures/props/natural/vegetation/temperate_flora.dmi'
+	icon_state = "1"
+
+/obj/structure/flora/wood
+	name = "stick"
+	icon = 'icons/obj/structures/props/natural/vegetation/tyrargo_wood_flora.dmi'
+	icon_state = "stick1"
+	density = FALSE
+	fire_flag = FLORA_BURN_NO_SPREAD
+
+/obj/structure/flora/wood/stick1
+	icon_state = "stick1"
+
+/obj/structure/flora/wood/stick2
+	icon_state = "stick2"
+
+/obj/structure/flora/wood/stick3
+	icon_state = "stick3"
+
+/obj/structure/flora/wood/stick4
+	icon_state = "stick4"
+
+/obj/structure/flora/wood/trunk1
+	name = "tree trunk"
+	icon_state = "trunk1"
+
+/obj/structure/flora/wood/trunk2
+	name = "tree trunk"
+	icon_state = "trunk2"
 
 //BUSHES
 
@@ -705,41 +811,42 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 
 
 /obj/structure/flora/jungle/thickbush/Crossed(atom/movable/AM)
+	..()
 	if(!stump)
 		if(isliving(AM))
-			var/mob/living/L = AM
+			var/mob/living/living_thing = AM
 			var/bush_sound_prob = 60
-			if(istype(L, /mob/living/carbon/xenomorph))
-				var/mob/living/carbon/xenomorph/X = L
-				bush_sound_prob = X.tier * 20
+			if(istype(living_thing, /mob/living/carbon/xenomorph))
+				var/mob/living/carbon/xenomorph/xeno = living_thing
+				bush_sound_prob = xeno.tier * 20
 
 			if(prob(bush_sound_prob))
 				var/sound = pick('sound/effects/vegetation_walk_0.ogg','sound/effects/vegetation_walk_1.ogg','sound/effects/vegetation_walk_2.ogg')
 				playsound(src.loc, sound, 25, 1)
-			if(ishuman(L))
-				var/mob/living/carbon/human/H = L
+			if(ishuman(living_thing))
+				var/mob/living/carbon/human/human = living_thing
 				var/stuck = rand(0,10)
-				if(HAS_TRAIT(L, TRAIT_HAULED))
+				if(HAS_TRAIT(living_thing, TRAIT_HAULED))
 					return
 				switch(stuck)
 					if(0 to 4)
-						var/new_slowdown = H.next_move_slowdown + rand(2,3)
-						H.next_move_slowdown = new_slowdown
+						var/new_slowdown = human.next_move_slowdown + rand(2,3)
+						human.next_move_slowdown = new_slowdown
 						if(prob(2))
-							to_chat(H, SPAN_WARNING("Moving through [src] slows you down."))
+							to_chat(human, SPAN_WARNING("Moving through [src] slows you down."))
 					if(5 to 7)
-						var/new_slowdown = H.next_move_slowdown + rand(4,7)
-						H.next_move_slowdown = new_slowdown
+						var/new_slowdown = human.next_move_slowdown + rand(4,7)
+						human.next_move_slowdown = new_slowdown
 						if(prob(10))
-							to_chat(H, SPAN_WARNING("It is very hard to move trough this [src]..."))
+							to_chat(human, SPAN_WARNING("It is very hard to move through [src]..."))
 					if(8 to 9)
-						var/new_slowdown = H.next_move_slowdown + rand(8,11)
-						H.next_move_slowdown = new_slowdown
-						to_chat(H, SPAN_WARNING("You got tangeled in [src]!"))
+						var/new_slowdown = human.next_move_slowdown + rand(8,11)
+						human.next_move_slowdown = new_slowdown
+						to_chat(human, SPAN_WARNING("You got tangled in [src]!"))
 					if(10)
-						var/new_slowdown = H.next_move_slowdown + rand(12,20)
-						H.next_move_slowdown = new_slowdown
-						to_chat(H, SPAN_WARNING("You got completely tangeled in [src]! Oh boy..."))
+						var/new_slowdown = human.next_move_slowdown + rand(12,20)
+						human.next_move_slowdown = new_slowdown
+						to_chat(human, SPAN_WARNING("You got completely tangled in [src]! Oh boy..."))
 
 /obj/structure/flora/jungle/thickbush/attackby(obj/item/I as obj, mob/user as mob)
 	//hatchets and shiet can clear away undergrowth
@@ -807,11 +914,12 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
-/obj/structure/flora/jungle/thickbush/large_jungle_bush/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/flora/jungle/thickbush/large_jungle_bush/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/vegetation_hit.ogg', 25, 1)
 	xeno.visible_message(SPAN_DANGER("[xeno] slashes at [src] with its tail!"),
 	SPAN_DANGER("We slash at [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(xeno.melee_damage_upper)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL

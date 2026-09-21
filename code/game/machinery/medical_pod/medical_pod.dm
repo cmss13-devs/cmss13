@@ -31,7 +31,7 @@
 /obj/structure/machinery/medical_pod/attack_alien(mob/living/carbon/xenomorph/M)
 	eject()
 
-/obj/structure/machinery/medical_pod/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/machinery/medical_pod/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	return TAILSTAB_COOLDOWN_NONE
 
 /obj/structure/machinery/medical_pod/update_icon()

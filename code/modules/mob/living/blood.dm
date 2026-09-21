@@ -91,6 +91,26 @@
 
 	. = ..()
 
+// Xenomorph blood cannot be arbritrarily replenished
+/mob/living/carbon/xenomorph/inject_blood(obj/item/reagent_container/container, amount)
+	for(var/datum/reagent/reagent as anything in container.reagents.reagent_list)
+		var/taming = FALSE
+		for(var/datum/chem_property/property as anything in reagent.properties)
+			if(property.name == PROPERTY_RENEGADING)
+				taming = TRUE
+				break
+
+		var/amount_to_drain = amount
+
+		if(taming)
+			var/amount_left = container.reagents.get_reagent_amount(reagent.id)
+			amount_to_drain = min(amount_left, max(amount * 50, 5))
+
+		reagents.add_reagent(reagent.id, amount_to_drain, reagent.data_properties)
+		reagents.update_total()
+		container.reagents.remove_reagent(reagent.id, amount_to_drain)
+		return
+
 /mob/living/carbon/xenomorph/take_blood(obj/O, amount)
 	if(!O.reagents || amount <= 0 || blood_volume <= 0)
 		return
@@ -174,6 +194,8 @@
 
 //returns the color of the mob's blood
 /mob/living/proc/get_blood_color()
+	if(status_flags & PERMANENTLY_DEAD)
+		return BLOOD_COLOR_HUMAN_DRY
 	return BLOOD_COLOR_HUMAN
 
 /mob/living/carbon/xenomorph/get_blood_color()
@@ -210,24 +232,8 @@
 		return "greyblood"
 	return "blood"
 
-/mob/living/simple_animal/mouse/get_blood_id()
+/mob/living/simple_animal/get_blood_id()
 	return "blood"
-
-/mob/living/simple_animal/cat/get_blood_id()
-	return "blood"
-
-/mob/living/simple_animal/cow/get_blood_id()
-	return "blood"
-
-/mob/living/simple_animal/parrot/get_blood_id()
-	return "blood"
-
-/mob/living/simple_animal/corgi/get_blood_id()
-	return "blood"
-
-/mob/living/simple_animal/hostile/retaliate/goat/get_blood_id()
-	return "blood"
-
 
 // This is has more potential uses, and is probably faster than the old proc.
 /proc/get_safe_blood(bloodtype)

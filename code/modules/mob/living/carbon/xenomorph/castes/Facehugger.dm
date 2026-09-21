@@ -36,7 +36,7 @@
 	see_in_dark = 8
 	tier = 0  //Facehuggers don't count towards Pop limits
 	acid_blood_damage = 5
-	crit_health = 0
+	health_threshold_dead = 0
 	crit_grace_time = 0
 	gib_chance = 75
 	mob_size = MOB_SIZE_SMALL
@@ -50,6 +50,7 @@
 	can_hivemind_speak = FALSE
 
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/xenohide,
@@ -95,7 +96,7 @@
 	..()
 	if (PF)
 		PF.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
-		PF.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
+		PF.flags_can_pass_all = PASS_ALL|PASS_OVER_THROW_ITEM
 
 /mob/living/carbon/xenomorph/facehugger/Logout()
 	. = ..()
@@ -111,7 +112,7 @@
 
 /mob/living/carbon/xenomorph/facehugger/update_icons()
 	. = ..()
-	if(throwing)
+	if(HAS_TRAIT(src, TRAIT_LAUNCHED))
 		icon_state = "[get_strain_icon()] [caste.caste_type] Thrown"
 
 /mob/living/carbon/xenomorph/facehugger/start_pulling(atom/movable/AM)
@@ -151,6 +152,15 @@
 		if(!can_hug(human, hivenumber))
 			to_chat(src, SPAN_WARNING("You can't infect \the [human]..."))
 			return
+		var/hug_dir = get_dir(src, human)
+		for(var/atom/movable/atom in get_turf(src))
+			if(atom != src && atom.density && atom.BlockedExitDirs(src, hug_dir))
+				to_chat(src, SPAN_WARNING("[atom] prevents us from infecting [human]!"))
+				return
+		for(var/atom/movable/atom in get_turf(human))
+			if(atom != human && atom.density && atom.BlockedPassDirs(src, hug_dir))
+				to_chat(src, SPAN_WARNING("[atom] prevents us from infecting [human]!"))
+				return
 		visible_message(SPAN_WARNING("\The [src] starts climbing onto \the [human]'s face..."), SPAN_XENONOTICE("You start climbing onto \the [human]'s face..."))
 		if(!do_after(src, FACEHUGGER_CLIMB_DURATION, INTERRUPT_ALL, BUSY_ICON_HOSTILE, human, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			return
@@ -160,6 +170,15 @@
 		if(!can_hug(human, hivenumber))
 			to_chat(src, SPAN_WARNING("You can't infect \the [human]..."))
 			return
+		hug_dir = get_dir(src, human)
+		for(var/atom/movable/atom in get_turf(src))
+			if(atom != src && atom.density && atom.BlockedExitDirs(src, hug_dir))
+				to_chat(src, SPAN_WARNING("[atom] prevents us from infecting [human]!"))
+				return
+		for(var/atom/movable/atom in get_turf(human))
+			if(atom != human && atom.density && atom.BlockedPassDirs(src, hug_dir))
+				to_chat(src, SPAN_WARNING("[atom] prevents us from infecting [human]!"))
+				return
 		handle_hug(human)
 		return
 
@@ -283,5 +302,55 @@
 	name = "Base Facehugger Behavior Delegate"
 
 /datum/behavior_delegate/facehugger_base/on_life()
-	if(!(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno)))
-		bound_xeno.adjustBruteLoss(2)
+	if(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno))
+		return
+	bound_xeno.adjustBruteLoss(2)
+	bound_xeno.updatehealth()
+
+/datum/action/xeno_action/activable/pounce/facehugger/use_ability(atom/target_atom)
+	for(var/obj/structure/machinery/door/airlock/current_airlock in get_turf(owner))
+		if(current_airlock.density) //if its CLOSED YOU'RE SCUTTLING AND CANNOT POUNCE!!!
+			to_chat(owner, SPAN_WARNING("We cannot do that while squeezing and scuttling!"))
+			return FALSE
+
+	if(HAS_TRAIT(owner, TRAIT_IMMOBILIZED))
+		to_chat(owner, SPAN_WARNING("We cannot do that while immobilized!"))
+		return FALSE
+
+	return ..()
+
+/datum/action/xeno_action/activable/pounce/facehugger/post_windup_effects(interrupted)
+	..()
+
+	var/mob/living/carbon/xenomorph/facehugger = owner
+	if(!istype(facehugger) || interrupted)
+		return
+	facehugger.update_icons()
+
+/datum/action/xeno_action/activable/pounce/facehugger/additional_effects(mob/living/target_living)
+	if(!ishuman(target_living))
+		return
+
+	var/mob/living/carbon/xenomorph/facehugger/facehugger = owner
+	if(!istype(facehugger))
+		return
+
+	var/key_name = key_name(facehugger)
+	var/did_hug = FALSE
+	if(facehugger.pounce_distance <= 1 && can_hug(target_living, facehugger.hivenumber))
+		did_hug = facehugger.handle_hug(target_living)
+	log_attack("[key_name] [did_hug ? "successfully hugged" : "tried to hug"] [key_name(target_living)] (Pounce Distance: [facehugger.pounce_distance]) at [get_location_in_text(target_living)]")
+
+/datum/action/xeno_action/onclick/toggle_long_range/facehugger/on_zoom_out()
+	. = ..()
+
+	var/mob/living/carbon/xenomorph/facehugger/facehugger = owner
+	REMOVE_TRAIT(facehugger, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Long-Range Sight"))
+
+/datum/action/xeno_action/onclick/toggle_long_range/facehugger/on_zoom_in()
+	. = ..()
+
+	var/mob/living/carbon/xenomorph/facehugger/facehugger = owner
+	ADD_TRAIT(facehugger, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Long-Range Sight"))
+
+

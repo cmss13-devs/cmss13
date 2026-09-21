@@ -68,7 +68,7 @@
 /mob/living/carbon/xenomorph/verb/purchase_strain()
 	set name = "Purchase Strain"
 	set desc = "Purchase a strain for yourself"
-	set category = "Alien"
+	set category = "Alien.Essentials"
 
 	// Firstly, make sure the xeno is actually able to take a strain.
 	if(!can_take_strain())
@@ -109,7 +109,7 @@
 /mob/living/carbon/xenomorph/verb/reset_strain()
 	set name = "Reset Strain"
 	set desc = "Reset your strain."
-	set category = "Alien"
+	set category = "Alien.Essentials"
 
 	// Firstly, make sure the xeno is actually able to take a strain.
 	if(!can_take_strain(reset = TRUE))
@@ -178,7 +178,7 @@
 		to_chat(src, SPAN_WARNING("We must be at full health to take a strain."))
 		return FALSE
 
-	if(agility || fortify || crest_defense || stealth)
+	if(fortify || crest_defense || stealth || HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES) || HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES))
 		to_chat(src, SPAN_WARNING("We cannot take a strain while in this stance."))
 		return FALSE
 

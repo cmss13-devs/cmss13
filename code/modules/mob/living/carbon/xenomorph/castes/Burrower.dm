@@ -35,6 +35,8 @@
 
 	minimap_icon = "burrower"
 
+	organ_type = /obj/item/organ/xeno/burrower
+
 /mob/living/carbon/xenomorph/burrower
 	caste_type = XENO_CASTE_BURROWER
 	name = XENO_CASTE_BURROWER
@@ -42,18 +44,18 @@
 	icon = 'icons/mob/xenos/castes/tier_2/burrower.dmi'
 	icon_size = 64
 	icon_state = "Burrower Walking"
+	plasma_types = list(PLASMA_PHEROMONE)
 	layer = MOB_LAYER
 	plasma_stored = 100
-	plasma_types = list(PLASMA_PURPLE)
 	pixel_x = -12
 	old_x = -12
 	xenonid_pixel_x = -16
 	base_pixel_x = 0
 	base_pixel_y = -20
 	tier = 2
-	organ_value = 1500
 
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
@@ -66,6 +68,7 @@
 		/datum/action/xeno_action/activable/burrow, //third macro
 		/datum/action/xeno_action/onclick/tremor, //fourth macro
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
+		/datum/action/xeno_action/onclick/autoweeding_toggle,
 		)
 
 	inherent_verbs = list(
@@ -83,6 +86,14 @@
 
 	skull = /obj/item/skull/burrower
 	pelt = /obj/item/pelt/burrower
+
+/obj/item/organ/xeno/burrower
+	name = "burrower heart"
+	icon_state = "heart_t2"
+	item_state = "heart_t2"
+	research_value = 1500
+
+	xeno_organ_flags = XENO_ORGAN_STRONG|XENO_ORGAN_SUPPORT
 
 /mob/living/carbon/xenomorph/burrower/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
@@ -121,7 +132,7 @@
 		return
 
 	var/area/current_area = get_area(current_turf)
-	if(current_area.flags_area & AREA_NOTUNNEL)
+	if(current_area.flags_area & AREA_NOBURROW)
 		to_chat(src, SPAN_XENOWARNING("There's no way to burrow here."))
 		return
 
@@ -154,12 +165,6 @@
 	if(hauled)
 		hauled.forceMove(src)
 
-	if(caste.fire_immunity == FIRE_IMMUNITY_NONE)
-		RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
-		RegisterSignal(src, list(
-				COMSIG_LIVING_FLAMER_CROSSED,
-				COMSIG_LIVING_FLAMER_FLAMED,
-		), PROC_REF(flamer_crossed_immune))
 	add_traits(list(TRAIT_ABILITY_BURROWED, TRAIT_UNDENSE, TRAIT_IMMOBILIZED), TRAIT_SOURCE_ABILITY("Burrow"))
 	playsound(src.loc, 'sound/effects/burrowing_b.ogg', 25)
 	update_icons()
@@ -181,12 +186,6 @@
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
 	to_chat(src, SPAN_NOTICE("You resurface."))
-	if(caste.fire_immunity == FIRE_IMMUNITY_NONE)
-		UnregisterSignal(src, list(
-				COMSIG_LIVING_PREIGNITION,
-				COMSIG_LIVING_FLAMER_CROSSED,
-				COMSIG_LIVING_FLAMER_FLAMED,
-		))
 	remove_traits(list(TRAIT_ABILITY_BURROWED, TRAIT_UNDENSE, TRAIT_IMMOBILIZED), TRAIT_SOURCE_ABILITY("Burrow"))
 	invisibility = FALSE
 	alpha = initial(alpha)
@@ -249,7 +248,7 @@
 		return
 
 	var/area/area_to_get = get_area(target)
-	if(area_to_get.flags_area & AREA_NOTUNNEL || get_dist(src, target) > 15)
+	if(area_to_get.flags_area & AREA_NOBURROW || get_dist(src, target) > 15)
 		to_chat(src, SPAN_XENOWARNING("There's no way to tunnel over there."))
 		return
 
@@ -291,23 +290,6 @@
 	for(var/X in actions)
 		var/datum/action/act = X
 		act.update_button_icon()
-
-/mob/living/carbon/xenomorph/proc/rename_tunnel(obj/structure/tunnel/tunnel_target in oview(1))
-	set name = "Rename Tunnel"
-	set desc = "Rename the tunnel."
-	set category = null
-
-	if(!istype(tunnel_target))
-		return
-
-	var/new_name = strip_html(input("Change the description of the tunnel:", "Tunnel Description") as text|null)
-	new_name = replace_non_alphanumeric_plus(new_name)
-	if(new_name)
-		new_name = "[new_name] ([get_area_name(tunnel_target)])"
-		log_admin("[key_name(src)] has renamed the tunnel \"[tunnel_target.tunnel_desc]\" as \"[new_name]\".")
-		msg_admin_niche("[src]/([key_name(src)]) has renamed the tunnel \"[tunnel_target.tunnel_desc]\" as \"[new_name]\".")
-		tunnel_target.tunnel_desc = "[new_name]"
-	return
 
 
 /datum/action/xeno_action/onclick/tremor/use_ability(atom/target)
@@ -362,7 +344,8 @@
 		to_chat(xenomorph, SPAN_XENOWARNING("We can't do that from there."))
 		return
 
-	if(!turf.can_dig_xeno_tunnel() || !is_ground_level(turf.z))
+	var/area/current_area = get_area(turf)
+	if(!turf.can_dig_xeno_tunnel() || !is_ground_level(turf.z) || current_area.flags_area & AREA_NOTUNNEL)
 		to_chat(xenomorph, SPAN_XENOWARNING("We scrape around, but we can't seem to dig through that kind of floor."))
 		return
 

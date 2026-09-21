@@ -4,17 +4,17 @@ All ShuttleMove procs go here
 
 /* ***********************************Base procs************************************/
 
-// Called on every turf in the shuttle region, returns a bitflag for allowed movements of that turf
-// returns the new move_mode (based on the old)
+/// Called on every turf in the shuttle region, returns a bitflag for allowed movements of that turf
+/// returns the new move_mode (based on the old)
 /turf/proc/fromShuttleMove(turf/newT, move_mode)
 	if(!(move_mode & MOVE_AREA) || !isshuttleturf(src))
 		return move_mode
 
 	return move_mode | MOVE_TURF | MOVE_CONTENTS
 
-// Called from the new turf before anything has been moved
-// Only gets called if fromShuttleMove returns true first
-// returns the new move_mode (based on the old)
+/// Called from the new turf before anything has been moved
+/// Only gets called if fromShuttleMove returns true first
+/// returns the new move_mode (based on the old)
 /turf/proc/toShuttleMove(turf/oldT, move_mode, obj/docking_port/mobile/shuttle)
 	. = move_mode
 	if(!(. & (MOVE_TURF|MOVE_CONTENTS)))
@@ -57,7 +57,7 @@ All ShuttleMove procs go here
 		qdel(thing)
 
 
-// Called on the old turf to move the turf data
+/// Called on the old turf to move the turf data
 /turf/proc/onShuttleMove(turf/newT, list/movement_force, move_dir)
 	if(newT == src) // In case of in place shuttle rotation shenanigans.
 		return
@@ -70,7 +70,7 @@ All ShuttleMove procs go here
 	newT.CopyOnTop(src, 1, depth, TRUE)
 	return TRUE
 
-// Called on the new turf after everything has been moved
+/// Called on the new turf after everything has been moved
 /turf/proc/afterShuttleMove(turf/oldT, rotation)
 	//Dealing with the turf we left behind
 	oldT.TransferComponents(src)
@@ -82,6 +82,7 @@ All ShuttleMove procs go here
 
 	if(rotation)
 		shuttleRotate(rotation) //see shuttle_rotate.dm
+	SEND_SIGNAL(src, COMSIG_TURF_AFTER_SHUTTLE_MOVE, oldT)
 
 	return TRUE
 
@@ -91,13 +92,13 @@ All ShuttleMove procs go here
 
 //=====================================================================//
 
-// Called on every atom in shuttle turf contents before anything has been moved
-// returns the new move_mode (based on the old)
-// WARNING: Do not leave turf contents in beforeShuttleMove or dock() will runtime
+/// Called on every atom in shuttle turf contents before anything has been moved
+/// returns the new move_mode (based on the old)
+/// WARNING: Do not leave turf contents in beforeShuttleMove or dock() will runtime
 /atom/movable/proc/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	return move_mode
 
-// Called on atoms to move the atom to the new location
+/// Called on atoms to move the atom to the new location
 /atom/movable/proc/onShuttleMove(turf/newT, turf/oldT, list/movement_force, move_dir, obj/docking_port/stationary/old_dock, obj/docking_port/mobile/moving_dock)
 	if(newT == oldT) // In case of in place shuttle rotation shenanigans.
 		return
@@ -109,7 +110,7 @@ All ShuttleMove procs go here
 
 	return TRUE
 
-// Called on atoms after everything has been moved
+/// Called on atoms after everything has been moved
 /atom/movable/proc/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 
 	var/turf/newT = get_turf(src)
@@ -122,6 +123,8 @@ All ShuttleMove procs go here
 		shuttleRotate(rotation)
 
 // update_parallax_contents()
+
+	SEND_SIGNAL(src, COMSIG_ATOM_AFTER_SHUTTLE_MOVE, oldT)
 
 	return TRUE
 
@@ -138,14 +141,14 @@ All ShuttleMove procs go here
 
 //=====================================================================//
 
-// Called on areas before anything has been moved
-// returns the new move_mode (based on the old)
+/// Called on areas before anything has been moved
+/// returns the new move_mode (based on the old)
 /area/proc/beforeShuttleMove(list/shuttle_areas)
 	if(!shuttle_areas[src])
 		return NONE
 	return MOVE_AREA
 
-// Called on areas to move their turf between areas
+/// Called on areas to move their turf between areas
 /area/proc/onShuttleMove(turf/oldT, turf/newT, area/underlying_old_area)
 	if(newT == oldT) // In case of in place shuttle rotation shenanigans.
 		return TRUE
@@ -163,7 +166,7 @@ All ShuttleMove procs go here
 	newT.change_area(old_dest_area, src) //lighting
 	return TRUE
 
-// Called on areas after everything has been moved
+/// Called on areas after everything has been moved
 /area/proc/afterShuttleMove(new_parallax_dir)
 	//parallax_movedir = new_parallax_dir
 	return TRUE
@@ -192,7 +195,7 @@ All ShuttleMove procs go here
 	var/turf/T = loc
 	hide(T.intact_tile)
 
-/obj/structure/machinery/power/terminal/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+/obj/structure/terminal/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	. = ..()
 	var/turf/T = src.loc
 	if(level==1)
@@ -257,6 +260,94 @@ All ShuttleMove procs go here
 	if(. & MOVE_AREA)
 		. |= MOVE_CONTENTS
 
+/obj/structure/bed/chair/vehicle/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	. = ..()
+	if(dir == EAST || dir == WEST) //8
+		pixel_x = 0
+		pixel_y = init_pixel_x + 8
+		buckle_offset_y = pixel_y
+		buckle_offset_x = pixel_x
+		if(pixel_y == 8)
+			higher_layer = TRUE
+	else
+		pixel_y = 0
+		if(dir == NORTH)
+			pixel_x = init_pixel_x
+		else
+			pixel_x = init_pixel_x * -1
+		buckle_offset_x = pixel_x
+		buckle_offset_y = pixel_y
+		higher_layer = FALSE
+	if(buckled_mob)
+		buckled_mob.pixel_y = pixel_y
+		buckled_mob.pixel_x = pixel_x
+	handle_rotation()
+
+/obj/structure/bed/chair/dropship/pilot/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	. = ..()
+	if(buckled_mob)
+		buckled_mob.pixel_y = pixel_y
+		buckled_mob.pixel_x = pixel_x
+	handle_rotation()
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
+//	.=..()
+	var/old_dir = src.dir
+	var/list/old_locs = src.locs
+	var/turf/open/shuttle/dropship/step_turf
+	var/turf/open/shuttle/dropship/init_loc
+	var/real_dir
+
+	if(linked_console)
+		real_dir = linked_console.dir
+	else
+		if(linked_dropship)
+			linked_console = linked_dropship.getControlConsole()
+			real_dir = linked_console.dir
+	if(!linked_to_turf)
+		if(move_dir == NORTH)
+			if(istype(src.loc, /turf/open/shuttle/dropship))
+				init_loc = src.loc
+				init_loc.linked_door = src
+				linked_to_turf = TRUE
+	if(id == "starboard_door" || "port_door")
+		if(real_dir == NORTH)
+			for(step_turf in range(1, loc))
+				if(step_turf.linked_door)
+					loc = get_step(step_turf, SOUTH)
+					break
+		else if(real_dir == EAST)
+			for(step_turf in range(1, loc))
+				if(step_turf.linked_door)
+					loc = get_step(step_turf, WEST)
+					break
+		else
+			for(step_turf in range(1, loc))
+				if(step_turf.linked_door)
+					loc = step_turf
+					break
+	if(id == "aft_door")
+		if(real_dir == NORTH)
+			for(step_turf in range(3, loc))
+				if(step_turf.linked_door)
+					loc = get_step(get_step(step_turf, WEST), WEST)
+					break
+		else if(real_dir == WEST)
+			for(step_turf in range(3, loc))
+				if(step_turf.linked_door)
+					loc = get_step(get_step(step_turf, SOUTH), SOUTH)
+					break
+		else
+			for(step_turf in range(3, loc))
+				if(step_turf.linked_door == src)
+					loc = step_turf
+					break
+
+	setDir(old_dir)
+	for(var/turf/closed/shuttle/tr_walls in old_locs)
+		tr_walls.set_opacity(1)
+	handle_multidoor()
+
 /*
 /obj/structure/ladder/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()
@@ -298,3 +389,38 @@ All ShuttleMove procs go here
 	//timer so it only happens once
 	addtimer(CALLBACK(monitor, /datum/proximity_monitor/proc/SetRange, monitor.current_range, TRUE), 0, TIMER_UNIQUE)
 */
+
+/obj/effect/attach_point/fuel/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	. = ..()
+	switch(dir)
+		if(NORTH)
+			if(adjusted_pixel)
+				pixel_x = -32
+			else
+				pixel_x = 0
+			pixel_y = 0
+		if(SOUTH)
+			if(adjusted_pixel)
+				pixel_x = 0
+			else
+				pixel_x = -32
+			pixel_y = -8
+		if(EAST)
+			if(adjusted_pixel)
+				pixel_y = 8
+			else
+				pixel_y = -24
+			pixel_x = -6
+		if(WEST)
+			if(adjusted_pixel)
+				pixel_y = -24
+			else
+				pixel_y = 8
+			pixel_x = -26
+	if(installed_equipment)
+		installed_equipment.setDir(dir)
+		installed_equipment.pixel_y = pixel_y
+		installed_equipment.pixel_x = pixel_x
+
+
+

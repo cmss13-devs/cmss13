@@ -18,8 +18,8 @@
 
 	if(!registered_id)
 		if(!TIMER_COOLDOWN_CHECK(src, COOLDOWN_IDLOCK_TEXTALERT))
-			human_user.balloon_alert(user, "requires id!")
-			to_chat(human_user, SPAN_NOTICE("This item requires an ID scan to equip."))
+			human_user.balloon_alert(user, "requires an ID!")
+			to_chat(human_user, SPAN_NOTICE("This item requires a valid ID to equip."))
 			TIMER_COOLDOWN_START(src, COOLDOWN_IDLOCK_TEXTALERT, 1 SECONDS)
 		return COMPONENT_CANCEL_EQUIP
 
@@ -64,8 +64,10 @@
 
 	var/obj/item/card/id/attacking_id = attacking_object
 
-	if(attacking_id.registered_gid != registered_gid && !attacking_id.check_access(ACCESS_MARINE_SENIOR))
-		return
+	if(attacking_id.registered_gid != registered_gid && !(ACCESS_MARINE_SENIOR in attacking_id.GetAccess()))
+		user.balloon_alert(user, "item locked!")
+		to_chat(user, SPAN_NOTICE("This item has been locked to [registered_name]'s ID."))
+		return COMPONENT_CANCEL_ITEM_ATTACK
 
 	user.balloon_alert(user, "item unlocked")
 

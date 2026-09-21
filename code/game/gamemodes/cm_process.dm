@@ -56,11 +56,32 @@ of predators), but can be added to include variant game modes (like humans vs. h
 /datum/game_mode/proc/declare_completion_announce_predators()
 	set waitfor = 0
 	sleep(2 SECONDS)
-	if(length(predators))
+	var/dat = ""
+	if(length(yautja_hunters))
+		dat += SPAN_ROUNDBODY("<br><br>The Yautja Hunting Party was:")
+		for(var/entry in yautja_hunters)
+			dat += "<br>[entry] was [yautja_hunters[entry]["Name"]] [SPAN_BOLDNOTICE("([yautja_hunters[entry]["Status"]])")]"
+	if(length(yautja_youngbloods))
+		dat += SPAN_ROUNDBODY("<br><br>The Yautja Young-Bloods were:")
+		for(var/entry in yautja_youngbloods)
+			dat += "<br>[entry] was [yautja_youngbloods[entry]["Name"]] [SPAN_BOLDNOTICE("([yautja_youngbloods[entry]["Status"]])")]"
+	if(length(yautja_stranded))
+		dat += SPAN_ROUNDBODY("<br><br>The Stranded Yautja were:")
+		for(var/entry in yautja_stranded)
+			dat += "<br>[entry] was [yautja_stranded[entry]["Name"]] [SPAN_BOLDNOTICE("([yautja_stranded[entry]["Status"]])")]"
+	if(length(yautja_badbloods))
+		dat += SPAN_ROUNDBODY("<br><br>The Yautja Bad-Bloods were:")
+		for(var/entry in yautja_badbloods)
+			dat += "<br>[entry] was [yautja_badbloods[entry]["Name"]] [SPAN_BOLDNOTICE("([yautja_badbloods[entry]["Status"]])")]"
+	if(dat)
+		to_world("[dat]")
+
+/datum/game_mode/proc/declare_completion_announce_colony_joes()
+	if(length(colony_joes))
 		var/dat = "<br>"
-		dat += SPAN_ROUNDBODY("<br>The Predators were:")
-		for(var/entry in predators)
-			dat += "<br>[entry] was [predators[entry]["Name"]] [SPAN_BOLDNOTICE("([predators[entry]["Status"]])")]"
+		dat += SPAN_ROUNDBODY("<br>The Colony Working Joes were:")
+		for(var/entry in colony_joes)
+			dat += "<br>[entry] was [colony_joes[entry]["Name"]] [SPAN_BOLDNOTICE("([colony_joes[entry]["Status"]])")]"
 		to_world("[dat]")
 
 
@@ -263,6 +284,7 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 	var/num_WY = 0
 	var/num_UPP = 0
 	var/num_CLF = 0
+	var/num_TWE = 0
 	var/num_headcount = 0
 
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
@@ -280,12 +302,16 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 			num_CLF++
 			num_headcount++
 			continue
+		if(current_human.faction in FACTION_LIST_TWE)
+			num_TWE++
+			num_headcount++
+			continue
 		if(current_human.faction == FACTION_MARINE)
 			num_marines++
 			num_headcount++
 			continue
 		num_headcount++
-	return list("marine_headcount" = num_marines,"WY_headcount" = num_WY,"UPP_headcount" = num_UPP,"CLF_headcount" = num_CLF,"total_headcount" = num_headcount)
+	return list("marine_headcount" = num_marines,"WY_headcount" = num_WY,"UPP_headcount" = num_UPP,"CLF_headcount" = num_CLF,"TWE_headcount" = num_TWE,"total_headcount" = num_headcount)
 
 /*
 #undef QUEEN_DEATH_COUNTDOWN

@@ -85,5 +85,5 @@
 
 /datum/law/major_law/unauthorized_deployment
 	name = "Unauthorized Deployment"
-	desc = "To deploy into the area of operations without permission of the relevant head of department or Commander where appropriate whilst still performing assigned duties. (I.E A doctor deploying without permission, with the intentions to perform field surgery.) Deploying without intent to perform assigned duties remains desertion."
+	desc = "To deploy into the area of operations without permission of the relevant head of department or Commander where appropriate whilst still performing assigned duties. (i.e. a doctor deploying without permission, with the intentions to perform field surgery.) Deploying without intent to perform assigned duties remains desertion."
 	brig_time = 10

@@ -20,9 +20,6 @@
 	. = ..()
 	new_human.h_style = "Bald"
 	new_human.f_style = "Shaved"
-	if(new_human.client?.prefs?.synthetic_type)
-		new_human.set_species(new_human.client.prefs.synthetic_type)
-		return
 	new_human.set_species(SYNTH_K9)
 
 /datum/equipment_preset/synth_k9/load_name(mob/living/carbon/human/new_human, randomise)

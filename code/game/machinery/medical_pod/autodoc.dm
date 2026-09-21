@@ -137,8 +137,8 @@
 			occupant.apply_damage(-occupant.getOxyLoss(), OXY) // keep them breathing, pretend they get IV dexplus
 			if(filtering)
 				var/filtered = 0
-				for(var/datum/reagent/x in occupant.reagents.reagent_list)
-					occupant.reagents.remove_reagent(x.id, 3) // same as sleeper, may need reducing
+				for(var/datum/reagent/chemical in occupant.reagents.reagent_list)
+					occupant.reagents.remove_reagent(chemical.id, 3) // same as sleeper, may need reducing
 					filtered += 3
 				if(!filtered)
 					filtering = 0
@@ -169,7 +169,12 @@
 					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Trauma repair surgery complete.")
 			if(heal_burn)
 				if(occupant.getFireLoss() > 0)
-					occupant.heal_limb_damage(0, 3, robo_repair=TRUE)
+					for(var/obj/limb/burned_limb as anything in occupant.limbs_to_process)	// slight cheat to save cost
+						if(burned_limb.status & (LIMB_ESCHAR|LIMB_THIRD_DEGREE_BURNS))
+							burned_limb.status &= ~(LIMB_ESCHAR|LIMB_THIRD_DEGREE_BURNS)
+							burned_limb.heal_damage(0, burned_limb.burn_healing_threshold)
+							return
+					occupant.heal_limb_damage(0, 3, robo_repair=TRUE)	// only starts general repairs once priority wounds are tended
 					if(prob(10))
 						visible_message("\The [src] whirrs and clicks as it grafts synthetic skin.")
 						to_chat(occupant, SPAN_INFO("You feel your burned flesh being sliced away and replaced."))
@@ -397,23 +402,30 @@
 								patient.disabilities |= NEARSIGHTED // code\#define\mobs.dm
 
 							if(eye.eye_surgery_stage == 1)
-								sleep(RETRACTOR_MAX_DURATION)
+								sleep(HEMOSTAT_MAX_DURATION)
 								if(!surgery)
 									break
 								eye.eye_surgery_stage = 2
 
 							if(eye.eye_surgery_stage == 2)
-								sleep(HEMOSTAT_MAX_DURATION)
+								sleep(RETRACTOR_MAX_DURATION)
 								if(!surgery)
 									break
 								eye.eye_surgery_stage = 3
 
 							if(eye.eye_surgery_stage == 3)
+								sleep(FIXVEIN_MAX_DURATION)
+								if(!surgery)
+									break
+								eye.eye_surgery_stage = 4
+
+							if(eye.eye_surgery_stage == 4)
 								sleep(CAUTERY_MAX_DURATION)
 								if(!surgery)
 									break
 								patient.disabilities &= ~NEARSIGHTED
 								patient.sdisabilities &= ~DISABILITY_BLIND
+								patient.pain.recalculate_pain()
 								eye.heal_damage(eye.damage)
 								eye.eye_surgery_stage = 0
 					if("larva")
@@ -524,6 +536,7 @@
 						patient.update_body()
 						patient.updatehealth()
 						patient.UpdateDamageIcon()
+						patient.pain.recalculate_pain()
 
 					if("shrapnel")
 						if(prob(30))
@@ -597,6 +610,7 @@
 		sleep(CAUTERY_MAX_DURATION*surgery_mod)
 		if(!surgery)
 			return
+		target.pain.recalculate_pain()
 		limb.reset_limb_surgeries()
 		limb.remove_all_bleeding(TRUE)
 		target.updatehealth()
@@ -742,7 +756,7 @@
 		occupantData["stat"] = occupant.stat
 		occupantData["health"] = occupant.health
 		occupantData["maxHealth"] = occupant.maxHealth
-		occupantData["minHealth"] = HEALTH_THRESHOLD_DEAD
+		occupantData["minHealth"] = occupant.health_threshold_dead
 		occupantData["bruteLoss"] = occupant.getBruteLoss()
 		occupantData["oxyLoss"] = occupant.getOxyLoss()
 		occupantData["toxLoss"] = occupant.getToxLoss()
@@ -904,6 +918,14 @@
 /obj/structure/machinery/autodoc_console/yautja
 	name = "medical pod console"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	upgrades = list(
+		RESEARCH_UPGRADE_TIER_1,
+		RESEARCH_UPGRADE_TIER_2,
+		RESEARCH_UPGRADE_TIER_3,
+		RESEARCH_UPGRADE_TIER_4,
+	)
+
+/obj/structure/machinery/autodoc_console/upgraded
 	upgrades = list(
 		RESEARCH_UPGRADE_TIER_1,
 		RESEARCH_UPGRADE_TIER_2,

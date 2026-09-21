@@ -849,14 +849,14 @@
 	set src in usr
 
 	if(src && ishuman(usr))
-		var/str = copytext(reject_bad_text(input(usr,"Label text? (3 CHARACTERS MAXIMUM)", "Set \the [src]'s on-sprite label", "")), 1, 4)
+		var/str = copytext(reject_bad_text(input(usr,"Label text? (3 CHARACTERS MAXIMUM)", "Set [src]'s on-sprite label", "")), 1, 4)
 		if(!str || !length(str))
-			to_chat(usr, SPAN_NOTICE("You clear the label off \the [src]."))
+			to_chat(usr, SPAN_NOTICE("You clear the label off [src]."))
 			maptext_label = null
 			update_icon()
 			return
 		maptext_label = str
-		to_chat(usr, SPAN_NOTICE("You label \the [src] with '[str]' in big, blocky letters."))
+		to_chat(usr, SPAN_NOTICE("You label [src] with '[str]' in big, blocky letters."))
 		update_icon()
 
 /obj/item/storage/pill_bottle/can_storage_interact(mob/user)

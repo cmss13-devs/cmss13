@@ -76,7 +76,9 @@ export const StackReceipts = () => {
   const updateAmounts = () => {
     const updated = currentReceipts.map((receipt) => {
       const req = receipt.req_amount ?? 1;
-      const maxAllowed = Math.min(20, Math.floor(stack_amount / req));
+      const maxAllowed =
+        Math.min(20, Math.floor(stack_amount / req)) *
+        (receipt.res_amount ?? 1);
       const clampedAmount = Math.max(
         1,
         Math.min(receipt.amount_to_build ?? 1, maxAllowed),
@@ -195,6 +197,9 @@ export const StackReceipts = () => {
                     materialAmount,
                     data.singular_name,
                   )})`}
+                  {(receipt.res_amount ?? 1) > 1
+                    ? ` x ${receipt.res_amount ?? 1}`
+                    : ''}
                 </Button>
                 {receipt.is_multi &&
                 (receipt.req_amount ?? 1) < stack_amount ? (
@@ -204,7 +209,7 @@ export const StackReceipts = () => {
                       tabbed
                       className="StackNumberInput"
                       value={
-                        Math.round(
+                        Math.ceil(
                           (receipt.amount_to_build ?? 1) /
                             (receipt.res_amount ?? 1),
                         ) * (receipt.res_amount ?? 1)

@@ -28,7 +28,8 @@ SUBSYSTEM_DEF(interior)
 		areas |= current_turf.loc
 
 	for(var/area/current_area as anything in areas)
-		current_area.add_base_lighting()
+		if(!current_area.area_has_base_lighting)
+			current_area.add_base_lighting()
 
 	interiors += interior
 	return reserved_area
@@ -56,5 +57,8 @@ SUBSYSTEM_DEF(interior)
 		return FALSE
 
 	return TRUE
+
+/// See [/datum/controller/subsystem/interior/proc/in_interior]
+#define SSINTERIOR_TURF_IN_INTERIOR_FAST(loc) (!!SSmapping.used_turfs[loc])
 
 #undef INTERIOR_BORDER_SIZE

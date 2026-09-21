@@ -66,3 +66,11 @@
 /datum/character_trait/language/sainja
 	language_name = LANGUAGE_YAUTJA
 	applyable = FALSE
+
+/datum/character_trait/language/tactical_sign_language
+	language_name = LANGUAGE_TSL
+	applyable = FALSE
+
+/datum/character_trait/language/forgotten
+	language_name = LANGUAGE_FORGOTTEN
+	applyable = FALSE

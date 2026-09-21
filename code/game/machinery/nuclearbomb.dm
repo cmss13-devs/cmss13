@@ -1,7 +1,7 @@
 GLOBAL_VAR_INIT(bomb_set, FALSE)
 /obj/structure/machinery/nuclearbomb
 	name = "\improper 'Blockbuster' Large Atomic Fission Demolition Device (LAFDEDE)"
-	desc = "Mainly intended as a demolition charge, this device, also called 'W-135', is primarily used by USCM space vessels that don't have the equipment to remotely nuke planets from orbit. According to the Nuclear Regulatory Commission of the United Americas, this device have an estimated yield of 15 to 30 kilotonnes of TNT, enough to flatten everything that moves in a 6.30 kilometer, or 3.9 mile range. It also weighs 422 kilograms, or 930 pounds."
+	desc = "Mainly intended as a demolition charge, this device, also called 'W-135', is primarily used by USCM space vessels that don't have the equipment to remotely nuke planets from orbit. According to the Nuclear Regulatory Commission of the United Americas, this device has an estimated yield of 15 to 30 kilotonnes of TNT, enough to flatten everything that moves in a 6.30 kilometer, or 3.9 mile range. It also weighs 422 kilograms, or 930 pounds."
 	icon = 'icons/obj/structures/machinery/nuclearbomb.dmi'
 	icon_state = "nuke"
 	density = TRUE
@@ -91,7 +91,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom, attack_hand), M)
 	return XENO_ATTACK_ACTION
 
-/obj/structure/machinery/nuclearbomb/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/machinery/nuclearbomb/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	return TAILSTAB_COOLDOWN_NONE
 
 /obj/structure/machinery/nuclearbomb/attackby(obj/item/O as obj, mob/user as mob)

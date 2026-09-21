@@ -65,6 +65,8 @@
 	offhand.name = "[item_name] - offhand"
 	offhand.desc = "Your second grip on the [item_name]."
 	offhand.flags_item |= WIELDED
+	offhand.force_wielded = 0 // no reason for these things to deal the same damage as the parent when they shouldnt be used for attacks anyway
+	offhand.force = 0 // ditto
 	user.put_in_inactive_hand(offhand)
 	user.update_inv_l_hand(0)
 	user.update_inv_r_hand()
@@ -297,7 +299,7 @@
 	var/unwielded_hitsound = "swing_hit"
 
 	/// This controls how strong the explosion will be on the lunge mine. Higher is better.
-	var/detonation_force = 150
+	var/detonation_force = 200
 
 /obj/item/weapon/twohanded/lungemine/wield(mob/user)
 	. = ..()
@@ -345,7 +347,7 @@
 
 /obj/item/weapon/twohanded/lungemine/proc/lungemine_detonate(atom/target, mob/user)
 	var/turf/epicenter = get_turf(target)
-	cell_explosion(epicenter, detonation_force, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), user))
+	cell_explosion(epicenter, detonation_force, 100, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, create_cause_data(initial(name), user))
 	if(gib_user)
 		user.gib()
 	qdel(src)
@@ -353,7 +355,7 @@
 /obj/item/weapon/twohanded/lungemine/damaged
 	name = "damaged lunge mine"
 	desc = "A crude but intimidatingly bulky shaped explosive charge, fixed to the end of a pole. To use it, one must grasp it firmly in both hands, and thrust the prongs of the shaped charge into the target. That the resulting explosion occurs directly in front of the user's face was not an apparent concern of the designer. A true hero's weapon. This one seems pretty badly damaged, you probably shouldn't even pick it up from the ground."
-	detonation_force = 50
+	detonation_force = 100
 	gib_user = FALSE
 
 /obj/item/weapon/twohanded/breacher

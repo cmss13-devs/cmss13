@@ -139,6 +139,7 @@
 	throw_range = 20
 
 /obj/item/tool/soap/Crossed(atom/movable/AM)
+	..()
 	if (iscarbon(AM))
 		var/mob/living/carbon/C =AM
 		C.slip("soap", 3, 2)
@@ -164,7 +165,7 @@
 
 /obj/item/tool/soap/attack(mob/target, mob/user)
 	if(target && user && ishuman(target) && ishuman(user) && !target.stat && !user.stat && user.zone_selected == "mouth" )
-		user.visible_message(SPAN_DANGER("\the [user] washes \the [target]'s mouth out with soap!"))
+		user.visible_message(SPAN_DANGER("\The [user] washes \the [target]'s mouth out with soap!"))
 		return
 	..()
 

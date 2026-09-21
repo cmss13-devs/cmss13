@@ -1,5 +1,5 @@
 //Bunny
-/mob/living/simple_animal/bunny
+/mob/living/simple_animal/small/bunny
 	name = "bunny"
 	desc = "A little white bunny rabbit. Likes carrots, allegedly."
 	icon_state = "bunny"
@@ -17,7 +17,7 @@
 	black_market_value = 50
 	dead_black_market_value = 0
 
-/mob/living/simple_animal/bunny/dave
+/mob/living/simple_animal/small/bunny/dave
 	name = "Dave"
 	desc = "Dave. The coolest bunny rabbit in town."
 	icon_state = "dave"

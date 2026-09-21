@@ -14,7 +14,7 @@
 
 /datum/construction_template/xenomorph/complete() //Override because we need to pass the hive ref
 	if(!owner || !get_turf(owner))
-		log_debug("Constuction template ([name]) completed construction without a build location")
+		log_debug("Construction template ([name]) completed construction without a build location")
 		return
 	if(hive_ref)
 		hive_ref.remove_construction(owner)
@@ -88,7 +88,7 @@
 
 /datum/construction_template/xenomorph/nest/complete() //overrided for unique build logic
 	if(!owner || !get_turf(owner))
-		log_debug("Constuction template ([name]) completed construction without a build location")
+		log_debug("Construction template ([name]) completed construction without a build location")
 		return
 	if(hive_ref)
 		hive_ref.remove_construction(owner)
@@ -113,7 +113,7 @@
 			if(stepped_turf.density)
 				direction_to_put_nest = get_dir(stepped_turf, owner)
 				return
-	xeno_message(SPAN_XENOWARNING("This structure needs to be built directly next to an vertical surface."), 7, XENO_HIVE_NORMAL)
+	xeno_message(SPAN_XENOWARNING("This structure needs to be built directly next to a vertical surface."), 7, XENO_HIVE_NORMAL)
 	qdel(owner)
 	qdel(src)
 

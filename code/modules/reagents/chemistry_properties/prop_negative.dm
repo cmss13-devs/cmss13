@@ -34,7 +34,7 @@
 /datum/chem_property/negative/toxic
 	name = PROPERTY_TOXIC
 	code = "TXC"
-	description = "Poisonous substance which causes harm on contact with or through absorption by organic tissues, resulting in bad health, severe illness, or plant death."
+	description = "Poisonous substance which causes harm on contact with or through absorption by organic tissue, resulting in bad health, severe illness, or plant death."
 	rarity = PROPERTY_COMMON
 	starter = TRUE
 	value = -1
@@ -112,7 +112,7 @@
 
 			if(H.glasses)
 				if(prob(meltprob) && !H.glasses.unacidable)
-					to_chat(H, SPAN_DANGER("Your glasses melts away!"))
+					to_chat(H, SPAN_DANGER("Your [H.glasses] melt[H.glasses.gender != PLURAL ? "s" : ""] away!"))
 					qdel(H.glasses)
 					H.update_inv_glasses(0)
 				return
@@ -134,7 +134,7 @@
 			M.take_limb_damage(min(6, volume))
 	if(isxeno(M))
 		var/mob/living/carbon/xenomorph/xeno = M
-		if(potency > POTENCY_MAX_TIER_1) //Needs level 7+ to have any effect
+		if(potency > 2) //Needs level 5+ to have any effect, remember that potency = level * 0.5
 			xeno.AddComponent(/datum/component/status_effect/toxic_buildup, potency * volume * 0.25)
 
 /datum/chem_property/negative/corrosive/reaction_obj(obj/O, volume, potency)
@@ -187,7 +187,7 @@
 
 /datum/chem_property/negative/neuropathic
 	name = PROPERTY_NEUROPATHIC
-	code = "NPT"
+	code = "NPA"
 	description = "Activates the somatosensory system causing neuropathic pain all over the body. Unlike nociceptive pain, this is not caused to any tissue damage and is solely perceptive."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_STIMULANT
@@ -232,7 +232,7 @@
 		return
 	var/mob/living/carbon/C = M
 	C.blood_volume = max(C.blood_volume - 4 * potency *  delta_time, 0)
-	M.drowsyness = min(M.drowsyness + 0.5 * potency * delta_time, 15 * potency)
+	M.drowsiness = min(M.drowsiness + 0.5 * potency * delta_time, 15 * potency)
 	M.reagent_move_delay_modifier += potency
 	M.recalculate_move_delay = TRUE
 	if(prob(5 * delta_time))
@@ -274,13 +274,14 @@
 		var/datum/internal_organ/O = pick(L.internal_organs)//Organs can't bleed, so we just damage them
 		O.take_damage(POTENCY_MULTIPLIER_LOW * potency)
 
-/datum/chem_property/negative/hemorrhaging/process_critical(mob/living/M, potency = 1, delta_time)
-	if(prob(10 * potency * delta_time) && ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/obj/limb/L = pick(H.limbs)
-		var/datum/wound/internal_bleeding/I = new (0)
-		L.add_bleeding(I, TRUE)
-		L.wounds += I
+/datum/chem_property/negative/hemorrhaging/process_critical(mob/living/victim, potency = 1, delta_time)
+	if(prob(10 * potency * delta_time) && ishuman(victim))
+		var/mob/living/carbon/human/bleeder = victim
+		var/obj/limb/limb = pick(bleeder.limbs)
+		var/datum/wound/internal_bleeding/bleed = new (0)
+		limb.owner.custom_pain("You feel something burst in your [limb.display_name]!", 1)
+		limb.add_bleeding(bleed, TRUE)
+		limb.wounds += bleed
 
 /datum/chem_property/negative/hemorrhaging/reaction_mob(mob/M, method = TOUCH, volume, potency)
 	M.AddComponent(/datum/component/status_effect/healing_reduction, potency * volume * POTENCY_MULTIPLIER_VLOW) //deals brute DOT to humans, prevents healing for xenos
@@ -456,8 +457,8 @@
 		return
 	if (processing_tray.mutation_controller["Potency"] > potency*-2)
 		processing_tray.mutation_controller["Potency"] = potency*-2
-	if (processing_tray.mutation_controller["Bioluminecence"] > potency*-2)
-		processing_tray.mutation_controller["Bioluminecence"] = potency*-2
+	if (processing_tray.mutation_controller["Bioluminescence"] > potency*-2)
+		processing_tray.mutation_controller["Bioluminescence"] = potency*-2
 	if (processing_tray.mutation_controller["Flowers"] > potency*-2)
 		processing_tray.mutation_controller["Flowers"] = potency*-2
 
@@ -506,7 +507,7 @@
 	M.apply_damage(POTENCY_MULTIPLIER_HIGH * potency, BRAIN)
 	M.jitteriness = min(M.jitteriness + potency, POTENCY_MULTIPLIER_HIGH * potency)
 	if(prob(50))
-		M.drowsyness = min(M.drowsyness + potency, POTENCY_MULTIPLIER_HIGH * potency)
+		M.drowsiness = min(M.drowsiness + potency, POTENCY_MULTIPLIER_HIGH * potency)
 	if(prob(10))
 		M.emote("drool")
 

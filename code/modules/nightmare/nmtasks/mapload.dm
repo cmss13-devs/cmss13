@@ -78,7 +78,6 @@
 			arealist |= turf.loc
 		for(var/atom/movable/movable as anything in turf)
 			atomlist += movable // Much like initTemplateBounds() this only recurses content once. Never been an issue so far, but keep it in mind.
-	SSmapping.reg_in_areas_in_z(arealist) // Legacy. Not sure this is needed as it should already be carried out through area Initialize.
 	SSatoms.InitializeAtoms(atomlist + arealist)
 	// We still defer lighting, area sorting, etc, to be done all in one go!
 	SEND_SIGNAL(src, COMSIG_NIGHTMARE_TAINTED_BOUNDS, bounds)

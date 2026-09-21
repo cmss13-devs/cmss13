@@ -166,14 +166,14 @@
   }
 
   .mfd_button {
-    background-color: hsl(0, 0%, 7%);
+    background-color: hsl(0, 0%, 8%);
     width: 50px;
     height: 50px;
     font-size: normal;
     font-family: monospace;
     line-height: 45px;
     border-style: outset;
-    border-color: hsl(0, 0%, 7%);
+    border-color: hsla(0, 0%, 7%, 0.18);
     box-shadow: 0px 0px 0px 4px black;
     overflow: hidden;
     padding: 0;
@@ -187,7 +187,7 @@
 
   .mfd_button_active {
     @extend .mfd_button;
-    border-color: hsl(140, 100%, 46%);
+    border-color: hsla(140, 100%, 46%, 0.7);
   }
 
   .ButtonPanel {

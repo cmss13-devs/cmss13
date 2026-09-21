@@ -108,6 +108,9 @@
 
 #define XENO_STARTING_CRYSTAL 100 //How much building resource the queen gets to start with
 
+/// Whether the xeno in question is capable of prying open dropships, starting hijack (queen) and disabling ERT shuttles
+#define IS_XENO_DROPSHIP_CAPABLE(X) (X.hive_pos == XENO_QUEEN || X.caste_type == XENO_CASTE_PREDALIEN || X.caste_type == XENO_CASTE_KING)
+
 // Queen permission toggles
 #define COOLDOWN_TOGGLE_SLASH "cooldown_toggle_slash"
 #define COOLDOWN_TOGGLE_CONSTRUCTION "cooldown_toggle_construction"
@@ -422,6 +425,9 @@
 // Lurker strain flags
 #define LURKER_VAMPIRE "Vampire"
 
+// Warrior strain flags
+#define WARRIOR_BULWARK "Bulwark"
+
 // Ravager strain flags
 #define RAVAGER_HEDGEHOG "Hedgehog"
 #define RAVAGER_BERSERKER "Berserker"
@@ -450,6 +456,7 @@
 
 // Damage - this is applied as a flat nerf/buff to the xeno's average damage
 #define XENO_DAMAGE_MOD_VERY_SMALL  5
+#define XENO_DAMAGE_MOD_BULWARK  8
 #define XENO_DAMAGE_MOD_SMALL   10
 #define XENO_DAMAGE_MOD_MED 15
 #define XENO_DAMAGE_MOD_LARGE   20
@@ -523,6 +530,22 @@
 #define XENO_NEURO_TIER_4   1.75
 #define XENO_NEURO_TIER_5   2
 
+// Pheromone strength
+#define XENO_PHERO_STRENGTH_NONE 0
+#define XENO_PHERO_STRENGTH_VERY_WEAK 0.5
+#define XENO_PHERO_STRENGTH_WEAK 1
+#define XENO_PHERO_STRENGTH_NORMAL 2
+#define XENO_PHERO_STRENGTH_HIVELORD 2.5 // Apparently hivelords have slightly better pheromones, even though they're marked as "normal"
+#define XENO_PHERO_STRENGTH_STRONG 3
+#define XENO_PHERO_STRENGTH_VERY_STRONG 4
+#define XENO_PHERO_STRENGTH_OVERWHELMING 6
+
+// Pheromone types
+#define XENO_PHERO_RECOVERY "recovery"
+#define XENO_PHERO_FRENZY "frenzy"
+#define XENO_PHERO_WARDING "warding"
+#define ALL_XENO_PHEROMONES list(XENO_PHERO_RECOVERY, XENO_PHERO_FRENZY, XENO_PHERO_WARDING)
+
 // Pheremone strength modifiers
 #define XENO_PHERO_MOD_VERY_SMALL  0.25
 #define XENO_PHERO_MOD_SMALL   0.5
@@ -557,110 +580,73 @@
 
 /////////////////////////////////////////////////////////////////////////////////////
 //
-// Default scaling values
+// Hive Stat Modifiers
 //
-// In the abscence of a scalar (documented below) these values are what are used
-// to scale xeno stats by age.
+// Used to increase/decrease stats across the entire Hive
+// Comes in flat value and multiplier flavours
 //
 /////////////////////////////////////////////////////////////////////////////////////
 
-#define XENO_MULTIPLIER_HEALTH_YOUNG 1
-#define XENO_MULTIPLIER_HEALTH_MATURE 1.25
-#define XENO_MULTIPLIER_HEALTH_ELDER 1.4
-#define XENO_MULTIPLIER_HEALTH_ANCIENT 1.5
-#define XENO_MULTIPLIER_HEALTH_PRIMORDIAL 1.75
+// Flat Values
+// Has single, double and triple digit variants
+// Single and double are in multiples of 5 and go up to 50
+// Triple in multiples of 50 and go up to 500
+// Speed gets its own bespoke values
+#define XENO_HIVE_STATMOD_FLAT_NONE 0
+#define XENO_HIVE_STATMOD_FLAT_5 5
+#define XENO_HIVE_STATMOD_FLAT_10 10
+#define XENO_HIVE_STATMOD_FLAT_15 15
+#define XENO_HIVE_STATMOD_FLAT_20 20
+#define XENO_HIVE_STATMOD_FLAT_25 25
+#define XENO_HIVE_STATMOD_FLAT_30 30
+#define XENO_HIVE_STATMOD_FLAT_35 35
+#define XENO_HIVE_STATMOD_FLAT_40 40
+#define XENO_HIVE_STATMOD_FLAT_45 45
+#define XENO_HIVE_STATMOD_FLAT_50 50
 
-#define XENO_MULTIPLIER_DAMAGE_YOUNG 1
-#define XENO_MULTIPLIER_DAMAGE_MATURE 1.2
-#define XENO_MULTIPLIER_DAMAGE_ELDER 1.3
-#define XENO_MULTIPLIER_DAMAGE_ANCIENT 1.35
-#define XENO_MULTIPLIER_DAMAGE_PRIMORDIAL 1.45
+#define XENO_HIVE_STATMOD_FLAT_100 100
+#define XENO_HIVE_STATMOD_FLAT_150 150
+#define XENO_HIVE_STATMOD_FLAT_200 200
+#define XENO_HIVE_STATMOD_FLAT_250 250
+#define XENO_HIVE_STATMOD_FLAT_300 300
+#define XENO_HIVE_STATMOD_FLAT_350 350
+#define XENO_HIVE_STATMOD_FLAT_400 400
+#define XENO_HIVE_STATMOD_FLAT_450 450
+#define XENO_HIVE_STATMOD_FLAT_500 500
 
-#define XENO_MULTIPLIER_PLASMA_YOUNG 1
-#define XENO_MULTIPLIER_PLASMA_MATURE 1.25
-#define XENO_MULTIPLIER_PLASMA_ELDER 1.5
-#define XENO_MULTIPLIER_PLASMA_ANCIENT 2
-#define XENO_MULTIPLIER_PLASMA_PRIMORDIAL 2.25
+#define XENO_HIVE_STATMOD_FLAT_LOW_SPEED 0.2
+#define XENO_HIVE_STATMOD_FLAT_LOWMED_SPEED 0.4
+#define XENO_HIVE_STATMOD_FLAT_MED_SPEED 0.6
+#define XENO_HIVE_STATMOD_FLAT_MEDHIGH_SPEED 0.8
+#define XENO_HIVE_STATMOD_FLAT_HIGH_SPEED 1
 
-#define XENO_MULTIPLIER_CRYSTAL_YOUNG 1
-#define XENO_MULTIPLIER_CRYSTAL_MATURE 1.1
-#define XENO_MULTIPLIER_CRYSTAL_ELDER 1.2
-#define XENO_MULTIPLIER_CRYSTAL_ANCIENT 1.3
-#define XENO_MULTIPLIER_CRYSTAL_PRIMORDIAL 1.5
+// Multipliers
+// Has positive (over 1) and negative (below 1)
+// Positive
+#define XENO_HIVE_STATMOD_MULT_NONE 1
+#define XENO_HIVE_STATMOD_MULTPOS_EXTREMELOW 1.05
+#define XENO_HIVE_STATMOD_MULT_VERYLOW 1.1
+#define XENO_HIVE_STATMOD_MULT_LOW 1.15
+#define XENO_HIVE_STATMOD_MULT_LOWMED 1.2
+#define XENO_HIVE_STATMOD_MULT_MED 1.25
+#define XENO_HIVE_STATMOD_MULT_MEDHIGH 1.3
+#define XENO_HIVE_STATMOD_MULT_HIGH 1.35
+#define XENO_HIVE_STATMOD_MULT_VERYHIGH 1.4
+#define XENO_HIVE_STATMOD_MULT_EXTREMEHIGH 1.45
+#define XENO_HIVE_STATMOD_MULT_MEGAHIGH 1.5
+#define XENO_HIVE_STATMOD_MULT_OHGOD 2
 
-#define XENO_MULTIPLIER_PLASMA_GAIN_YOUNG 1
-#define XENO_MULTIPLIER_PLASMA_GAIN_MATURE 1.2
-#define XENO_MULTIPLIER_PLASMA_GAIN_ELDER 1.4
-#define XENO_MULTIPLIER_PLASMA_GAIN_ANCIENT 1.6
-#define XENO_MULTIPLIER_PLASMA_GAIN_PRIMORDIAL 1.8
-
-#define XENO_MULTIPLIER_ARMOR_FACTOR_YOUNG 0.6
-#define XENO_MULTIPLIER_ARMOR_FACTOR_MATURE 1.1
-#define XENO_MULTIPLIER_ARMOR_FACTOR_ELDER 1.15
-#define XENO_MULTIPLIER_ARMOR_FACTOR_ANCIENT 1.20
-#define XENO_MULTIPLIER_ARMOR_FACTOR_PRIMORDIAL 1.30
-
-#define XENO_MULTIPLIER_EVASION_YOUNG 0.6
-#define XENO_MULTIPLIER_EVASION_MATURE 1.10
-#define XENO_MULTIPLIER_EVASION_ELDER 1.15
-#define XENO_MULTIPLIER_EVASION_ANCIENT 1.20
-#define XENO_MULTIPLIER_EVASION_PRIMORDIAL 1.3
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-//
-// Scalars
-//
-// These are used to adjust caste scaling. Define in them in the caste datum definitions
-// for each age to override the default. Bear in mind that these scale from the base caste
-// values; they are NOT multiplicative. The actual variables for doing that are down below.
-//
-/////////////////////////////////////////////////////////////////////////////////////////////
-
-#define XENO_SCALAR_HEALTH_NONE 1
-#define XENO_SCALAR_HEALTH_LOW 1.1
-#define XENO_SCALAR_HEALTH_LOWMED 1.15
-#define XENO_SCALAR_HEALTH_MED 1.2
-#define XENO_SCALAR_HEALTH_MEDHIGH 1.25
-#define XENO_SCALAR_HEALTH_HIGH 1.3
-#define XENO_SCALAR_HEALTH_VERYHIGH 1.35
-#define XENO_SCALAR_HEALTH_ULTRAHIGH 1.4
-#define XENO_SCALAR_HEALTH_IMMORTAL 1.5
-#define XENO_SCALAR_HEALTH_OHLAWD 1.7
-
-#define XENO_SCALAR_DAMAGE_NONE 1
-#define XENO_SCALAR_DAMAGE_LOW 1.1
-#define XENO_SCALAR_DAMAGE_MED 1.2
-#define XENO_SCALAR_DAMAGE_HIGH 1.3
-#define XENO_SCALAR_DAMAGE_VERYHIGH 1.4
-#define XENO_SCALAR_DAMAGE_ULTRAHIGH 1.5
-
-#define XENO_SCALAR_PLASMA_NONE 1
-#define XENO_SCALAR_PLASMA_LOW 1.25
-#define XENO_SCALAR_PLASMA_MED 1.5
-#define XENO_SCALAR_PLASMA_HIGH 1.75
-#define XENO_SCALAR_PLASMA_VERYHIGH 2
-#define XENO_SCALAR_PLASMA_ULTRAHIGH 2.25
-
-#define XENO_SCALAR_PLASMA_GAIN_NONE 1
-#define XENO_SCALAR_PLASMA_GAIN_LOW 1.15
-#define XENO_SCALAR_PLASMA_GAIN_MED 1.3
-#define XENO_SCALAR_PLASMA_GAIN_HIGH 1.45
-#define XENO_SCALAR_PLASMA_GAIN_VERYHIGH 1.6
-#define XENO_SCALAR_PLASMA_GAIN_ULTRAHIGH 1.75
-
-#define XENO_SCALAR_ARMORFACTOR_NONE 1
-#define XENO_SCALAR_ARMORFACTOR_LOW 1.05
-#define XENO_SCALAR_ARMORFACTOR_MED 1.1
-#define XENO_SCALAR_ARMORFACTOR_HIGH 1.15
-#define XENO_SCALAR_ARMORFACTOR_VERYHIGH 1.20
-#define XENO_SCALAR_ARMORFACTOR_ULTRAHIGH 1.25
-
-#define XENO_SCALAR_EVASION_NONE 1
-#define XENO_SCALAR_EVASION_LOW 1.05
-#define XENO_SCALAR_EVASION_MED 1.1
-#define XENO_SCALAR_EVASION_HIGH 1.15
-#define XENO_SCALAR_EVASION_VERYHIGH 1.20
-#define XENO_SCALAR_EVASION_ULTRAHIGH 1.25
+// Negative
+#define XENO_HIVE_STATMOD_MULT_NEGATIVE_EXTREMELOW0.95
+#define XENO_HIVE_STATMOD_MULT_NEGATIVE_VERYLOW 0.9
+#define XENO_HIVE_STATMOD_MULT_NEGATIVE_LOW 0.85
+#define XENO_HIVE_STATMOD_MULT_NEGATIVE_LOWMED 0.8
+#define XENO_HIVE_STATMOD_MULT_NEGATIVE_MED 0.75
+#define XENO_HIVE_STATMOD_MULT_NEGATIVE_MEDHIGH 0.7
+#define XENO_HIVE_STATMOD_MULT_NEGATIVE_HIGH 0.65
+#define XENO_HIVE_STATMOD_MULT_NEGATIVE_VERYHIGH 0.60
+#define XENO_HIVE_STATMOD_MULT_NEGATIVE_EXTREMEHIGH 0.55
+#define XENO_HIVE_STATMOD_MULT_NEGATIVE_MEGAHIGH 0.5
 
 #define XENO_STRUCTURE_BUILD_TIME    20
 
@@ -700,6 +686,12 @@
 #define XENO_SHIELD_SOURCE_SHIELD_PILLAR 9
 #define XENO_SHIELD_SOURCE_CUMULATIVE_GENERIC 10
 #define XENO_SHIELD_SOURCE_KING_BULWARKSPELL 11
+
+//Xeno tier slots
+#define TIER_3 "3"
+#define TIER_2 "2"
+#define OPEN_SLOTS "open_slots"
+#define GUARANTEED_SLOTS "guaranteed_slots"
 
 //XENO CASTES
 #define XENO_CASTE_LARVA  "Larva"
@@ -757,6 +749,7 @@
 #define FIRE_IMMUNITY_NO_IGNITE			(1<<1)
 #define FIRE_IMMUNITY_XENO_FRENZY		(1<<2)
 #define FIRE_VULNERABILITY				(1<<3)
+#define FIRE_IMMUNITY_IGNORE_PEN		(1<<4)
 
 #define FIRE_MULTIPLIER_BASE	 	1
 #define FIRE_MULTIPLIER_LOW		 	1.25
@@ -781,6 +774,11 @@
 #define XENO_VISION_LEVEL_HIGH_NVG "Three Quarters Night Vision"
 #define XENO_VISION_LEVEL_FULL_NVG "Full Night Vision"
 
+// dancer defines
+#define DANCER_DODGE_TIME 7 SECONDS
+
+// bulwark defines
+#define BULWARK_REFLECTIVE_TIME 6 SECONDS
 
 // drone fruits
 
@@ -816,3 +814,50 @@
 #define LARVA_STATE_BLOODY 0
 #define LARVA_STATE_NORMAL 1
 #define LARVA_STATE_MATURE 2
+
+// facehugger / carrier nonsense
+
+#define MIN_IMPREGNATION_TIME 10 SECONDS //Time it takes to impregnate someone
+#define MAX_IMPREGNATION_TIME 15 SECONDS
+
+#define HUGGER_TIME_TO_LIVE 30 SECONDS
+#define HUGGER_ACTIVE_TIME 4 SECONDS //Time between being dropped and being able to jump
+
+#define FACEHUGGER_JUMP_RANGE 1 // dont really want them to hug you immediately as you break down a corner or a door when a carrier stacks them on a tile
+#define EGG_JUMP_RANGE 2 // This is for egg huggers, they are supposed to be scary and leap at people yes.
+#define CARRIER_HUGGER_THROW_RANGE 6
+
+// xeno organ flags
+
+// these organs are automatically assigned
+
+/// Organ is capable of generating plasma
+#define XENO_ORGAN_PLASMA (1<<0)
+/// Organ was taken from a living xenomorph
+#define XENO_ORGAN_FRESH (1<<1)
+
+// these need to be manually added
+
+/// Organ is capable of generating acid (sentinel evo tree)
+#define XENO_ORGAN_ACID (1<<2)
+/// Organ belongs to a support-type caste (drone evo tree)
+#define XENO_ORGAN_SUPPORT (1<<3)
+/// Organ belongs to a brute caste (defender evo tree)
+#define XENO_ORGAN_HARDENED (1<<4)
+/// Organ belongs to a fast caste (runner evo tree)
+#define XENO_ORGAN_TACHYCARDIA (1<<5)
+
+/// Organ belongs to a fragile caste (boiler)
+/// Obtaining it is very difficult and essentially
+/// requires a corrupted hive that evolves a boiler
+#define XENO_ORGAN_FRAGILE (1<<6)
+
+/// Organ taken from a low-tier caste
+#define XENO_ORGAN_WEAK (1<<7)
+/// Organ taken from a high-tier caste
+#define XENO_ORGAN_STRONG (1<<8)
+/// Organ taken from a royal-tier caste
+#define XENO_ORGAN_ROYAL (1<<9)
+
+/// Determines how fast xeno botany chems produce.
+#define XENO_BOTANY_RATE 10 SECONDS

@@ -75,10 +75,12 @@ export const ColorMatrixEditor = (props) => {
           </Stack.Item>
           <Stack.Item grow>
             <ByondUi
-              height="100%"
-              params={{
+              winsetParams={{
                 id: mapRef,
                 type: 'map',
+              }}
+              boxProps={{
+                height: '100%',
               }}
             />
           </Stack.Item>

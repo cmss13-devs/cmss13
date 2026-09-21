@@ -310,7 +310,7 @@
 "CA" = (
 /obj/structure/extinguisher_cabinet,
 /turf/closed/wall/r_wall/prison_unmeltable,
-/area/template_noop)
+/area/fiorina/oob)
 "Df" = (
 /obj/structure/largecrate/supply/supplies/water,
 /turf/open/floor/prison/whitegreen/west,
@@ -471,7 +471,7 @@
 /area/template_noop)
 "Od" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
-/area/template_noop)
+/area/fiorina/oob)
 "Ou" = (
 /obj/structure/bed/chair{
 	dir = 8;

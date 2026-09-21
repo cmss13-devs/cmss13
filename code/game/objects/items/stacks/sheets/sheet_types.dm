@@ -343,6 +343,8 @@ GLOBAL_LIST_INIT_TYPED(cardboard_recipes, /datum/stack_recipe, list ( \
 		new/datum/stack_recipe("empty magazine box (M16)", /obj/item/ammo_box/magazine/M16/empty), \
 		new/datum/stack_recipe("empty magazine box (M16 AP)", /obj/item/ammo_box/magazine/M16/ap/empty), \
 		null, \
+		new/datum/stack_recipe("empty magazine box (M20A)", /obj/item/ammo_box/magazine/m20a/empty), \
+		null, \
 		new/datum/stack_recipe("empty magazine box (AR10)", /obj/item/ammo_box/magazine/ar10/empty), \
 		null, \
 		new/datum/stack_recipe("empty magazine box (MP5)", /obj/item/ammo_box/magazine/mp5/empty), \
@@ -433,7 +435,7 @@ GLOBAL_LIST_INIT_TYPED(aluminium_recipes, /datum/stack_recipe, list ( \
 
 /obj/item/stack/sheet/aluminum
 	name = "aluminum"
-	desc = "A silvery-white soft metal of the boron group. Because of its low density it is often uses as a structural material in aircrafts."
+	desc = "A silvery-white soft metal of the boron group. Because of its low density it is often used as a structural material in aircraft."
 	singular_name = "aluminum sheet"
 	icon_state = "sheet-aluminum"
 	sheettype = "aluminum"

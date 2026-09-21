@@ -159,6 +159,32 @@
 	max_rounds = 6
 	gun_type = /obj/item/weapon/gun/revolver
 
+/obj/item/ammo_magazine/internal/revolver/create_handful(mob/user, transfer_amount, obj_name = src)
+	if(current_rounds <= 0)
+		return FALSE
+
+	var/list/rounds_in_cylinder = list()
+	for(var/ammo_path in chamber_contents)
+		if(ammo_path != "empty")
+			rounds_in_cylinder[ammo_path]++
+
+	var/first_put = TRUE
+	for(var/ammo_path in rounds_in_cylinder)
+		var/datum/ammo/bullet = GLOB.ammo_list[ammo_path]
+		if(!bullet)
+			continue
+		var/obj/item/ammo_magazine/handful/new_handful = new bullet.handful_type()
+		var/amount = rounds_in_cylinder[ammo_path]
+		new_handful.generate_handful(ammo_path, caliber, amount, gun_type)
+		if(first_put && user)
+			user.put_in_hands(new_handful) // only put the first one in their hands
+			first_put = FALSE
+		else
+			new_handful.forceMove(get_turf(src))
+			to_chat(user, SPAN_WARNING("...but you drop the rest of the mixed ammunition in the process."))
+
+	return TRUE
+
 //-------------------------------------------------------
 //M44 MAGNUM REVOLVER //Not actually cannon, but close enough.
 

@@ -163,7 +163,7 @@
 
 /obj/item/clothing/under/lawyer/oldman
 	name = "old man's suit"
-	desc = "A classic suit for the older gentleman with built in back support."
+	desc = "A classic suit for the older gentleman with built-in back support."
 	icon_state = "oldman"
 
 /obj/item/clothing/under/librarian

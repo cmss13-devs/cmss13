@@ -11,6 +11,7 @@
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
 	max_w_class = 0
 	foldable = null
+	unacidable = TRUE
 	/// For statistics tracking. The kit's name
 	var/kit_name = ""
 
@@ -143,6 +144,8 @@
 	new /obj/item/ammo_magazine/rifle/m4ra/custom(src)
 	new /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary(src)
 	new /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/custom/impact(src)
 	new /obj/item/ammo_magazine/rifle/m4ra/custom/impact(src)
 	new /obj/item/ammo_magazine/rifle/m4ra/custom/impact(src)
 	new /obj/item/weapon/gun/pistol/vp78(src)
@@ -153,7 +156,7 @@
 	new /obj/item/bodybag/tarp/reactive/scout(src)
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/explosive/plastic(src)
-	new /obj/item/device/encryptionkey/jtac(src)
+	new /obj/item/device/encryptionkey/scout(src)
 	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
 		new /obj/item/device/binoculars/designator(src)
 	else
@@ -202,6 +205,7 @@
 	name = "\improper SHARP Operator equipment case"
 	desc = "A large case containing a P9 SHARP rifle, M3-G4 Grenadier armor and helmet, and various pieces of additional equipment.\nDrag this sprite onto yourself to open it up!"
 	kit_overlay = "grenadier"
+	kit_name = "sharp_operator"
 
 /obj/item/storage/box/spec/sharp_operator/fill_preset_inventory()
 	new /obj/item/weapon/gun/rifle/sharp(src)
@@ -257,6 +261,8 @@
 	new /obj/item/tool/wrench(src)
 	new /obj/item/device/binoculars/range(src)
 	new /obj/item/device/binoculars/range/designator(src)
+	new /obj/item/storage/backpack/marine/satchel/rto(src)
+	new /obj/item/storage/backpack/marine/satchel/rto(src)
 
 
 //-----------------SPEC KIT BOX------------------
@@ -267,7 +273,7 @@
 	desc = "A paper box. Open it and get a specialist kit."
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "spec_kit"
-	var/list/allowed_roles_list = list(JOB_SQUAD_SPECIALIST, JOB_WO_SQUAD_SPECIALIST, JOB_WO_CREWMAN)
+	var/list/allowed_roles_list = list(JOB_SQUAD_SPECIALIST, JOB_WO_SQUAD_SPECIALIST, JOB_WO_WARDEN)
 
 	///Used for cryo specs who already have "foxtrot" appended to their ID assignments
 	var/squad_assignment_update = TRUE
@@ -417,7 +423,7 @@
 	new /obj/item/storage/pouch/tools/tank(src)
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/explosive/plastic(src)
-	new /obj/item/pamphlet/skill/machinegunner(src)
+	new /obj/item/pamphlet/upgradeable/machinegunner(src)
 
 /obj/item/storage/box/kit/defensegunner
 	name = "\improper M56D Defense Gunner Kit"
@@ -430,7 +436,7 @@
 	new /obj/item/clothing/head/helmet/marine/tech(src)
 	new /obj/item/explosive/mine(src)
 	new /obj/item/explosive/mine(src)
-	new /obj/item/pamphlet/skill/machinegunner(src)
+	new /obj/item/pamphlet/upgradeable/machinegunner(src)
 
 
 /obj/item/storage/box/kit/mini_pyro
@@ -501,7 +507,7 @@
 
 /obj/item/storage/box/kit/mini_engineer/fill_preset_inventory()
 	new /obj/item/storage/backpack/marine/engineerpack(src)
-	new /obj/item/pamphlet/skill/engineer(src)
+	new /obj/item/pamphlet/upgradeable/engineer(src)
 	new /obj/item/clothing/gloves/marine/insulated(src)
 	new /obj/item/tool/crowbar(src)
 	new /obj/item/clothing/glasses/welding(src)
@@ -517,7 +523,7 @@
 	pro_case_overlay = "medic"
 
 /obj/item/storage/box/kit/mini_medic/fill_preset_inventory()
-	new /obj/item/pamphlet/skill/medical(src)
+	new /obj/item/pamphlet/upgradeable/medical(src)
 	new /obj/item/storage/pouch/first_responder/full(src)
 	new /obj/item/storage/pouch/autoinjector/full(src)
 	new /obj/item/device/helmet_visor/medical(src)
@@ -536,6 +542,7 @@
 	new /obj/item/device/binoculars/range/designator(src)
 	new /obj/item/device/encryptionkey/jtac(src)
 	new /obj/item/storage/backpack/marine/satchel/rto(src)
+	new /obj/item/pamphlet/upgradeable/jtac(src)
 
 /obj/item/storage/box/kit/mini_intel
 	name = "\improper Field Intelligence Support Kit"
@@ -544,7 +551,7 @@
 /obj/item/storage/box/kit/mini_intel/fill_preset_inventory()
 	new /obj/item/stack/fulton(src)
 	new /obj/item/device/encryptionkey/intel(src)
-	new /obj/item/pamphlet/skill/intel(src)
+	new /obj/item/pamphlet/upgradeable/intel(src)
 	new /obj/item/device/motiondetector/intel(src)
 	new /obj/item/storage/pouch/document(src)
 

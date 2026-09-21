@@ -44,7 +44,7 @@
 		if(affecting)
 			affecting.take_damage(1, 0)
 	else if(ismouse(target))
-		var/mob/living/simple_animal/mouse/M = target
+		var/mob/living/simple_animal/small/mouse/M = target
 		visible_message(SPAN_DANGER("<b>SPLAT!</b>"))
 		M.splat()
 	if(!target)
@@ -88,6 +88,7 @@
 
 
 /obj/item/device/assembly/mousetrap/Crossed(atom/movable/AM)
+	..()
 	if(armed)
 		if(ishuman(AM))
 			var/mob/living/carbon/H = AM
@@ -95,7 +96,6 @@
 			H.visible_message(SPAN_WARNING("[H] accidentally steps on [src]."),SPAN_WARNING("You accidentally step on [src]"))
 		if(ismouse(AM))
 			triggered(AM)
-	..()
 
 
 /obj/item/device/assembly/mousetrap/on_found(mob/finder as mob)

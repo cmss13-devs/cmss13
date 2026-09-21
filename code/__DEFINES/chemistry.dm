@@ -79,12 +79,20 @@
 #define CHEM_CLASS_UNCOMMON 3
 /// Chemicals that are either can't be made or require rare or expandable components.
 #define CHEM_CLASS_RARE 4
+
+// xenomorph-related chems, obtained from xenobotany
+/// Common chemicals obtained from all xeno types
+#define CHEM_CLASS_XENO_BASIC 5
+/// Uncommon chemicals obtained from strong-variant specific castes
+#define CHEM_CLASS_XENO_SPECIALIZED 6
+/// Rare chemicals obtained from royal-type castes
+#define CHEM_CLASS_XENO_ROYAL 7
+
 /// Chemicals that can't be made
-#define CHEM_CLASS_SPECIAL 5
+#define CHEM_CLASS_SPECIAL 8
 /// Randomly generated chemicals
-#define CHEM_CLASS_ULTRA 6
-/// Rare chemicals ONLY acquired via hydroponics, Those are mostly useless but very important for hard difficulty on contracts.
-#define CHEM_CLASS_HYDRO 7
+#define CHEM_CLASS_ULTRA 9
+
 
 //chem_effect_flags, used to quickly check if the mob has a chem that provides a special effect
 #define CHEM_EFFECT_RESIST_FRACTURE (1<<0)
@@ -107,15 +115,28 @@
 /// potential replacement for CHEM_REACTION_CALM. makes the reaction go slower. no longer will stuff mix instantly.
 #define CHEM_REACTION_ENDOTHERMIC (1<<5)
 
-//Blood plasma
+//BLOOD PLASMA
+
+// Basic
 #define PLASMA_PURPLE "purpleplasma"
-#define PLASMA_PHEROMONE "pheromoneplasma"
 #define PLASMA_CHITIN "chitinplasma"
 #define PLASMA_CATECHOLAMINE "catecholamineplasma"
-#define PLASMA_NUTRIENT "nutrientplasma"
-#define PLASMA_EGG "eggplasma"
 #define PLASMA_NEUROTOXIN "neurotoxinplasma"
+
+// Specialized
+#define PLASMA_NUTRIENT "nutrientplasma"
+#define PLASMA_REINFORCED_CHITIN "reinforcedchitinplasma"
+#define PLASMA_ADRENALINE "adrenalplasma"
+#define PLASMA_ACIDIC "acidicplasma"
+
+// Royal
 #define PLASMA_ROYAL "royalplasma"
+
+// Special
+#define PLASMA_EGG "eggplasma"
+#define PLASMA_PHEROMONE "pheromoneplasma"
+
+
 
 // Flags for Reagent
 
@@ -185,7 +206,6 @@
 #define PROPERTY_HEMOGENIC "hemogenic"
 #define PROPERTY_YAUTJA_HEMOGENIC "yautja-hemogenic"
 #define PROPERTY_HEMOSTATIC "hemostatic"
-#define PROPERTY_NERVESTIMULATING "nerve-stimulating"
 #define PROPERTY_MUSCLESTIMULATING "muscle-stimulating"
 #define PROPERTY_PAINKILLING "painkilling"
 #define PROPERTY_HEPATOPEUTIC "hepatopeutic"
@@ -215,15 +235,20 @@
 #define PROPERTY_ADDICTIVE "addictive"
 #define PROPERTY_ENCEPHALOPHRASIVE "encephalophrasive"
 //Legendary, only in research hints. add this property to legendary list define if you're planning for it to be in normal research loop.
-#define PROPERTY_HYPERGENETIC "hypergenetic"
 #define PROPERTY_BOOSTING "boosting"
-#define PROPERTY_DNA_DISINTEGRATING "DNA-Disintegrating"
-#define PROPERTY_REGULATING "regulating"
-#define PROPERTY_OPTIMIZED "optimizing"
 #define PROPERTY_CIPHERING "ciphering"
-#define PROPERTY_ENCRYPTED "encrypted"
 #define PROPERTY_CIPHERING_PREDATOR "cross-ciphering"
+#define PROPERTY_DNA_DISINTEGRATING "DNA-Disintegrating"
+#define PROPERTY_ENCRYPTED "encrypted"
 #define PROPERTY_FIRE_PENETRATING "fire-penetrating"
+#define PROPERTY_HYPERGENETIC "hypergenetic"
+#define PROPERTY_OPTIMIZED "optimizing"
+#define PROPERTY_REGULATING "regulating"
+//Beyond legendary, only unlockable by processing a xenomorph queen organ
+//Essentially requires a corrupted xenomorph queen because the only way to produce the chemicals needed is by grinding a queen heart.
+#define PROPERTY_WEED_RESISTANT "weed-resistant"
+#define PROPERTY_XENO_RECOGNIZED "xeno-recognizing"
+#define PROPERTY_RENEGADING "renegading"
 //Admin Only Properties
 #define PROPERTY_ORGAN_HEALING "organ-healing"
 #define PROPERTY_CROSSMETABOLIZING "cross-metabolizing"
@@ -242,18 +267,20 @@
 #define PROPERTY_VISCOUS "viscous"
 #define PROPERTY_EXPLOSIVE "explosive"
 //Generation Disabled Properties
-#define PROPERTY_CARDIOSTABILIZING "cardio-stabilizing"
 #define PROPERTY_AIDING "aiding"
-#define PROPERTY_THERMOSTABILIZING "themo-stabilizing"
-#define PROPERTY_OXYGENATING "oxygenating"
-#define PROPERTY_FOCUSING "focusing"
 #define PROPERTY_ANTICARCINOGENIC "anti-carcinogenic"
-#define PROPERTY_UNKNOWN "unknown" //just has an OD effect
+#define PROPERTY_CARDIOSTABILIZING "cardio-stabilizing"
+#define PROPERTY_FOCUSING "focusing"
 #define PROPERTY_HEMOSITIC "hemositic"
+#define PROPERTY_NERVESTIMULATING "nerve-stimulating"
+#define PROPERTY_OXYGENATING "oxygenating"
+#define PROPERTY_THERMOSTABILIZING "themo-stabilizing"
+#define PROPERTY_UNKNOWN "unknown" //just has an OD effect
 
 ///Legendary properties, no PROPERTY_TYPE_ANOMALOUS, only normal ones.
 #define PROPERTY_LEGENDARY_LIST list(PROPERTY_HYPERGENETIC, PROPERTY_BOOSTING, PROPERTY_REGULATING, PROPERTY_OPTIMIZED)
-
+///Xenomorphic properties
+#define PROPERTY_XENOMORPHIC_LIST list(PROPERTY_WEED_RESISTANT, PROPERTY_XENO_RECOGNIZED, PROPERTY_RENEGADING)
 
 //Property rarity
 
@@ -267,8 +294,10 @@
 #define PROPERTY_RARE 3
 /// can strictly only be made through random generated property combinations, hints are found groundside.
 #define PROPERTY_LEGENDARY 4
+/// can be made by processing a queen organ, extremely difficult to produce
+#define PROPERTY_XENOMORPHIC 5
 /// can only be spawned through admin powers
-#define PROPERTY_ADMIN 5
+#define PROPERTY_ADMIN 6
 
 //Property category
 #define PROPERTY_TYPE_ALL 0
@@ -284,8 +313,8 @@
 #define PROPERTY_TYPE_COMBUSTIBLE 512
 
 // Defines for pain applied pr tick by chems
-#define PROPERTY_NEUROPATHIC_PAIN 1
-#define PROPERTY_NEUROPATHIC_PAIN_OD 2
+#define PROPERTY_NEUROPATHIC_PAIN 10
+#define PROPERTY_NEUROPATHIC_PAIN_OD 20
 #define PROPERTY_DEFIBRILLATING_PAIN_OD 2
 #define PROPERTY_CARDIOPEUTIC_PAIN_CRITICAL 3
 

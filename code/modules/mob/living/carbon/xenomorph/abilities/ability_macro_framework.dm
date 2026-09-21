@@ -1,3 +1,5 @@
+#define XENO_QUEUED_ACTION_TIMEOUT 5 SECONDS
+
 // Backend stuff for macros
 /proc/handle_xeno_macro(mob/living/carbon/xenomorph/xeno, action_name)
 	for(var/datum/action/xeno_action/action in xeno.actions)
@@ -18,11 +20,9 @@
 
 		if (XENO_ACTION_QUEUE)
 			handle_xeno_macro_actionqueue(xeno, action)
-
 		else
 			log_debug("Xeno action [action.name] is misconfigured. Code: XENO_ACTION_MACRO_1")
 			log_admin("Xeno action [action.name] is misconfigured. Tell the devs. Code: XENO_ACTION_MACRO_1")
-
 
 /proc/handle_xeno_macro_click(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/action)
 	action.button.clicked(xeno)
@@ -41,18 +41,29 @@
 // Queue an action for the next click. This will always work but should only be used for actions that actually NEED an atom to work
 // Other ones should just use the activate proc
 /proc/handle_xeno_macro_actionqueue(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/activable/action)
-	if (!istype(action))
+	if(!istype(action))
 		return
 
+	// Cancel on second press
+	if(xeno.queued_action == action)
+		xeno.clear_queued_action()
+		to_chat(xeno, SPAN_WARNING("You will no longer use [action.name] on your next click."))
+		return
+
+	if(!action.can_use_action() || !action.action_cooldown_check())
+		return
+
+	xeno.clear_queued_action()
 	xeno.queued_action = action
+	xeno.queued_action_timer = addtimer(CALLBACK(xeno, TYPE_PROC_REF(/mob/living/carbon/xenomorph, clear_queued_action)), XENO_QUEUED_ACTION_TIMEOUT, TIMER_STOPPABLE)
 	to_chat(xeno, SPAN_WARNING("Your next click will use [action.name]!"))
 
 	if(xeno.client?.prefs?.custom_cursors)
-		xeno.client.mouse_pointer_icon = 'icons/mob/hud/mecha_mouse.dmi'
+		xeno.client.mouse_pointer_icon = 'icons/effects/mouse_pointer/mecha_mouse.dmi'
 
 
 /mob/living/carbon/xenomorph/verb/xeno_primary_action_one()
-	set category = "Alien"
+	set category = "Alien.Xeno-Misc"
 	set name = "Xeno Primary Action One"
 	set hidden = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
@@ -68,7 +79,7 @@
 			break
 
 /mob/living/carbon/xenomorph/verb/xeno_primary_action_two()
-	set category = "Alien"
+	set category = "Alien.Xeno-Misc"
 	set name = "Xeno Primary Action Two"
 	set hidden = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
@@ -84,7 +95,7 @@
 			break
 
 /mob/living/carbon/xenomorph/verb/xeno_primary_action_three()
-	set category = "Alien"
+	set category = "Alien.Xeno-Misc"
 	set name = "Xeno Primary Action Three"
 	set hidden = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
@@ -100,7 +111,7 @@
 			break
 
 /mob/living/carbon/xenomorph/verb/xeno_primary_action_four()
-	set category = "Alien"
+	set category = "Alien.Xeno-Misc"
 	set name = "Xeno Primary Action Four"
 	set hidden = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
@@ -116,7 +127,7 @@
 			break
 
 /mob/living/carbon/xenomorph/verb/xeno_primary_action_five()
-	set category = "Alien"
+	set category = "Alien.Xeno-Misc"
 	set name = "Xeno Primary Action Five"
 	set hidden = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src

@@ -65,6 +65,14 @@ CLIENT_VERB(togglerebootsound)
 	prefs.save_preferences()
 	to_chat(src, "You will [(prefs.toggles_sound & SOUND_REBOOT) ? "now" : "no longer"] hear server reboot sounds.")
 
+CLIENT_VERB(toggleroundendmusic)
+	set name = "Hear/Silence Round End Music"
+	set category = "Preferences.Sound"
+	set desc = "Toggles hearing the round end music."
+	prefs.toggles_sound ^= SOUND_ROUND_END
+	prefs.save_preferences()
+	to_chat(src, "You will [(prefs.toggles_sound & SOUND_ROUND_END ) ? "now" : "no longer"] hear the round end music.")
+
 CLIENT_VERB(togglemidis)
 	set name = "Silence Current Admin Sound"
 	set category = "Preferences.Sound"
@@ -277,6 +285,7 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_shove'>Toggle Auto Shove</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_holotag'>Toggle Auto Holotags</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_swap_hands'>Toggle Middle Mouse Swapping Hands</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_vend_item_to_hand'>Toggle Vendors Vending to Hands</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>",
@@ -287,6 +296,7 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_flashing_lights_pref'>Set Flashing Lights</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_leadership_spoken_orders'>Toggle Leadership Spoken Orders</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_cocking_to_hand'>Toggle Bullet Cocking to hand</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_wield_assist'>Toggle Gun Wielding Assist</a><br>",
 	)
 
 	var/dat = ""
@@ -401,6 +411,15 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		to_chat(src, SPAN_BOLDNOTICE("You will now drop the ejected bullet when cocking a gun."))
 	prefs.save_preferences()
 
+/// Toggles whether wielding a gun too early queues the action
+/client/proc/toggle_wield_assist()
+	prefs.toggle_prefs ^= TOGGLE_WIELD_ASSIST
+	if(prefs.toggle_prefs & TOGGLE_WIELD_ASSIST)
+		to_chat(src, SPAN_BOLDNOTICE("Attempting to wield a gun before it is ready will now queue the action."))
+	else
+		to_chat(src, SPAN_BOLDNOTICE("Attempting to wield a gun before it is ready will no longer queue the action."))
+	prefs.save_preferences()
+
 ///Toggle whether dual-wielding fires both guns at once or swaps between them.
 /client/proc/toggle_dualwield()
 	if(prefs.dual_wield_pref < DUAL_WIELD_NONE)
@@ -416,6 +435,25 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		if(DUAL_WIELD_NONE)
 			to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now has no effect on how you fire."))
 
+	prefs.save_preferences()
+
+// Toggles whether or not using a body scanner/handheld scanner applies a triage tag to patients automatically
+
+/client/proc/toggle_auto_holotag()
+	switch (prefs.auto_holotag) {
+		if (NEVER_TAG_PATIENTS)
+			prefs.auto_holotag = ALWAYS_TAG_PATIENTS
+			to_chat(src, SPAN_BOLDNOTICE("Body scanners and handheld scanners will now automatically apply holocards."))
+		if (ALWAYS_TAG_PATIENTS)
+			prefs.auto_holotag = BODYSCAN_TAG_PATIENTS
+			to_chat(src, SPAN_BOLDNOTICE("Only body scanners will automatically apply triage holocards."))
+		if (BODYSCAN_TAG_PATIENTS)
+			prefs.auto_holotag = NEVER_TAG_PATIENTS
+			to_chat(src, SPAN_BOLDNOTICE("Triage holocards will never be automatically applied by health scanning devices."))
+		else
+			// Redundancy case, if defines ever get changed
+			prefs.auto_holotag = ALWAYS_TAG_PATIENTS
+	}
 	prefs.save_preferences()
 
 /client/proc/toggle_middle_mouse_swap_hands() //Toggle whether middle click swaps your hands
@@ -649,6 +687,32 @@ CLIENT_VERB(toggle_adaptive_zooming)
 			adaptive_zoom()
 	prefs.save_preferences()
 
+CLIENT_VERB(toggle_minimap_ceiling_protection)
+	set name = "Toggle Minimap Ceiling Overlay"
+	set category = "Preferences.UI"
+	set desc = "Toggle the display of ceiling protection colorcode on minimaps."
+
+	if(!mob)
+		return
+
+	// Check cooldown
+	if(!COOLDOWN_FINISHED(src, ceiling_protection_toggle_cooldown))
+		to_chat(mob, SPAN_WARNING("You must wait [COOLDOWN_SECONDSLEFT(src, ceiling_protection_toggle_cooldown)] seconds before toggling ceiling protection again."))
+		return
+
+	prefs.show_minimap_ceiling_protection = !prefs.show_minimap_ceiling_protection
+
+	// Set cooldown
+	COOLDOWN_START(src, ceiling_protection_toggle_cooldown, 2 SECONDS)
+	prefs.save_preferences()
+	to_chat(mob, SPAN_NOTICE("Ceiling protection overlay [prefs.show_minimap_ceiling_protection ? "enabled" : "disabled"] on minimaps."))
+
+	// Refresh minimaps for this client
+	for(var/atom/movable/screen/minimap/mini_map in screen)
+		if(mini_map.assigned_map) // Skip shared popup maps
+			continue
+		mini_map.update_ceiling_overlay(src)
+
 //------------ GHOST PREFERENCES ---------------------------------
 
 /client/proc/show_ghost_preferences() // Shows ghost-related preferences.
@@ -737,6 +801,8 @@ CLIENT_VERB(toggle_adaptive_zooming)
 		"Security HUD" = MOB_HUD_SECURITY_ADVANCED,
 		"Squad HUD" = MOB_HUD_FACTION_OBSERVER,
 		"Xeno Status HUD" = MOB_HUD_XENO_STATUS,
+		"Xeno Effects HUD" = MOB_HUD_XENO_HOSTILE,
+		"Hunter HUD" = MOB_HUD_HUNTER,
 		"Faction UPP HUD" = MOB_HUD_FACTION_UPP,
 		"Faction Wey-Yu HUD" = MOB_HUD_FACTION_WY,
 		"Faction TWE HUD" = MOB_HUD_FACTION_TWE,

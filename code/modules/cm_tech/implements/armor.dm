@@ -400,7 +400,7 @@
 
 /obj/item/clothing/accessory/health/research_plate/anti_decay
 	name = "experimental preservation plate"
-	desc = "Preservation plate which activates once the user is dead, uses variety of different substances and sensors to slow down the decay and increase the time before the user is permanently dead to around 9 minutes instead of 5"
+	desc = "Preservation plate which activates once the user is dead, uses variety of different substances and sensors to slow down the decay and increase the time before the user is permanently dead to around 9 minutes instead of 5."
 	var/mob/living/carbon/human/wearer
 
 
@@ -429,7 +429,7 @@
 /obj/item/clothing/accessory/health/research_plate/anti_decay/proc/begin_preserving()
 	SIGNAL_HANDLER
 	UnregisterSignal(wearer, COMSIG_MOB_DEATH)
-	to_chat(wearer, SPAN_NOTICE("The [src] detects your death and starts injecting various chemicals to slow down your final demise!"))
+	to_chat(wearer, SPAN_NOTICE("[src] detects your death and starts injecting various chemicals to slow down your final demise!"))
 	RegisterSignal(wearer, COMSIG_HUMAN_REVIVED, PROC_REF(reset_use))
 
 /obj/item/clothing/accessory/health/research_plate/anti_decay/proc/reset_use()

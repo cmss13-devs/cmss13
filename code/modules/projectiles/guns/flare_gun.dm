@@ -75,7 +75,7 @@
 		if(!attacking_flare.fuel)
 			to_chat(user, SPAN_WARNING("You can't put a burnt out flare in [src]!"))
 			return
-		if(current_mag && current_mag.current_rounds == 0)
+		if(current_mag && current_mag.current_rounds < current_mag.max_rounds)
 			ammo = GLOB.ammo_list[attacking_flare.ammo_datum]
 			playsound(user, reload_sound, 25, 1)
 			to_chat(user, SPAN_NOTICE("You load [attacking_flare] into [src]."))

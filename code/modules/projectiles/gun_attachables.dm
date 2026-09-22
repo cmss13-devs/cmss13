@@ -3032,7 +3032,10 @@ Defined in conflicts.dm of the #defines folder.
 	var/gun_activate_sound  = 'sound/weapons/handling/gun_underbarrel_activate.ogg'
 
 /obj/item/attachable/attached_gun/attack_hand(mob/user)
-	unload_attachment(user)
+	if(istype(loc, /obj/item/weapon/gun))
+		unload_attachment(user)
+		return
+	return ..()
 
 /obj/item/attachable/attached_gun/unload_attachment(mob/user, reload_override, drop_override, loc_override)
 	if(attached_gun)

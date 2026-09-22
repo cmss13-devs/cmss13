@@ -628,6 +628,12 @@
 		pockets.open(user)
 		return TRUE
 
+/obj/item/clothing/afterattack_secondary(atom/target, mob/user, proximity_flag, list/mods)
+	var/obj/item/storage/internal/pockets = get_pockets()
+	if(pockets && CAN_PICKUP(user, src))
+		pockets.open(user)
+		return TRUE
+
 
 /obj/item/clothing/clicked(mob/user, list/mods)
 	if(mods[ALT_CLICK] && mods[LEFT_CLICK] && loc == user && !user.get_active_hand()) //To pass quick-draw attempts to storage. See storage.dm for explanation.

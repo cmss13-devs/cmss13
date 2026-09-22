@@ -955,7 +955,7 @@
 	if(!spawning_area)
 		spawning_area = pick(GLOB.xeno_spawns) // ITS DEADPOP BOYS
 	var/list/turf_list
-	for(var/turf/open/open_turf in range(3, spawning_area))
+	for(var/turf/open/open_turf in orange(3, spawning_area))
 		if(istype(open_turf, /turf/open/space))
 			continue
 		LAZYADD(turf_list, open_turf)

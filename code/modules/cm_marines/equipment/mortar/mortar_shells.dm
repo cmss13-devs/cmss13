@@ -46,6 +46,9 @@
 	icon_state = "mortar_ammo_heplus"
 	item_state = "mortar_ammo_heplus"
 
+/obj/item/mortar_shell/heplus/get_examine_text(mob/user)
+	. += SPAN_WARNING("This shelltype is capable of gibbing and permanently removing marines from the round, be precise with your coordinates!")
+
 /obj/item/mortar_shell/heplus/detonate(turf/impact)
 	create_shrapnel(impact, 60, cause_data = cause_data, shrapnel_type = /datum/ammo/bullet/shrapnel/breaching) //HCHE (mine) shells are shrapnel
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 350, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), null)), 0.5 SECONDS) //Massive explosion with an 8 tile radius, with the first 2 tiles being capable of gibbing marines. Incredibly scary ordnance.
@@ -91,6 +94,9 @@
 	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 	ceiling_penetrating = TRUE
 
+/obj/item/mortar_shell/pierce/get_examine_text(mob/user)
+	. += SPAN_HELPFUL("This shelltype is capable of being fired into roofed areas, such as inside cave systems or underground labs, but doing so will require calibrating the shell first.")
+
 /obj/item/mortar_shell/incendiary/thermobaric
 	name = "\improper 80mm SFAE-Vacuum mortar shell"
 	desc = "An 80mm mortar shell. On impact, one canister ruptures and sprays the air with fuel across a wide zone, then a second canister is ruptured shortly after to detonate the fuel and create a vacuum effect at the impact site to pull any combatants into the shells' impact zone."
@@ -103,14 +109,17 @@
 	icon_state = "mortar_ammo_thermo"
 	item_state = "mortar_ammo_thermo"
 
+/obj/item/mortar_shell/thermobaric/get_examine_text(mob/user)
+	. += SPAN_WARNING("This shelltype will vacuum all targets in the blast radius towards the centre, be careful not to include friendlies in the target area!")
+
 /obj/item/mortar_shell/incendiary/thermobaric/detonate(turf/impact)
 	impact.ceiling_debris_check(3)
 	cell_explosion(impact, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //really small explosion
 	flame_radius(cause_data, radius, impact, flame_level, burn_level, flameshape, null, fire_type)
 	for(var/mob/living/carbon/victim in orange(5, impact))
-		victim.throw_atom(impact, 4, 25, src, TRUE) // Implosion throws affected towards center of vacuum
+		victim.throw_atom(impact, 4, 20, src, TRUE) // Implosion throws affected towards center of vacuum
 	QDEL_IN(src, 0.5 SECONDS)
-	playsound(impact, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
+	playsound(impact, 'sound/effects/phasein.ogg', 35, 1, 4)
 
 /obj/item/mortar_shell/flare
 	name = "\improper 80mm flare/camera mortar shell"

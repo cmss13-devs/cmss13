@@ -3040,6 +3040,8 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/unload_attachment(mob/user, reload_override, drop_override, loc_override)
 	if(attached_gun)
 		attached_gun.unload(user, reload_override, drop_override, loc_override)
+		return TRUE
+	return FALSE
 
 /obj/item/attachable/attached_gun/Initialize(mapload, ...)
 	. = ..()

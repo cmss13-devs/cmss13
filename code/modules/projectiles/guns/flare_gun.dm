@@ -21,14 +21,23 @@
 
 	var/last_signal_flare_name
 
+	/// Whether to only accept basic flares (no signal flares)
+	var/basic_flares_only = FALSE
+	/// The forced ammo type for this flare gun.
+	var/datum/ammo/forced_ammo_type
+
 /obj/item/weapon/gun/flare/ubarrel
 	name = "internal flare gun"
 	desc = "You shouldn't be reading this"
+	flags_gun_features = GUN_INTERNAL_MAG|GUN_WIELDED_FIRING_ONLY
+	forced_ammo_type = /datum/ammo/flare/no_ignite
 	current_mag = /obj/item/ammo_magazine/internal/flare/ubarrel
+	basic_flares_only = TRUE
 
 /obj/item/weapon/gun/flare/ubarrel/set_gun_config_values()
 	. = ..()
 	set_fire_delay(FIRE_DELAY_TIER_4 * 3)
+
 
 /obj/item/weapon/gun/flare/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -69,6 +78,9 @@
 /obj/item/weapon/gun/flare/attackby(obj/item/attacking_item, mob/user)
 	if(istype(attacking_item, /obj/item/device/flashlight/flare))
 		var/obj/item/device/flashlight/flare/attacking_flare = attacking_item
+		if(basic_flares_only && attacking_flare.ammo_datum != /datum/ammo/flare)
+			to_chat(user, SPAN_WARNING("\The [src] can't accept \the [attacking_flare]!"))
+			return
 		if(attacking_flare.on)
 			to_chat(user, SPAN_WARNING("You can't put a lit flare in [src]!"))
 			return
@@ -76,7 +88,10 @@
 			to_chat(user, SPAN_WARNING("You can't put a burnt out flare in [src]!"))
 			return
 		if(current_mag && current_mag.current_rounds < current_mag.max_rounds)
-			ammo = GLOB.ammo_list[attacking_flare.ammo_datum]
+			if(forced_ammo_type)
+				ammo = GLOB.ammo_list[forced_ammo_type]
+			else
+				ammo = GLOB.ammo_list[attacking_flare.ammo_datum]
 			playsound(user, reload_sound, 25, 1)
 			to_chat(user, SPAN_NOTICE("You load [attacking_flare] into [src]."))
 			current_mag.current_rounds++

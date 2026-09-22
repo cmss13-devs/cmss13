@@ -28,9 +28,19 @@
 	key_third_person = "blinks"
 	message = "blinks."
 
+/datum/emote/living/carbon/human/blink/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/mob/living/carbon/human/human_starer = user
+	human_starer.move_eyelids(EYELID_CLOSED, 0.2, null, 1)
+
 /datum/emote/living/carbon/human/blink_rapid
 	key = "rapidblink"
 	message = "blinks rapidly."
+
+/datum/emote/living/carbon/human/blink_rapid/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/mob/living/carbon/human/human_starer = user
+	human_starer.move_eyelids(EYELID_CLOSED, 0.1, 0.2, 8)
 
 /datum/emote/living/carbon/human/bow
 	key = "bow"
@@ -111,6 +121,11 @@
 	key_third_person = "glares"
 	message = "glares."
 	message_param = "glares at %t."
+
+/datum/emote/living/carbon/human/glare/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/mob/living/carbon/human/human_starer = user
+	human_starer.move_eyelids(EYELID_OPEN, 5)
 
 /datum/emote/living/carbon/human/golfclap
 	key = "golfclap"
@@ -217,6 +232,8 @@
 	. = ..()
 	if(!.)
 		return FALSE
+	var/mob/living/carbon/human/human_starer = user
+	human_starer.move_eyelids(EYELID_CLOSED, 0.1, 0.2, 4)
 
 /datum/emote/living/carbon/human/pain/run_langchat(mob/living/user, group)
 	if(!ishuman_strict(user))
@@ -307,6 +324,11 @@
 	key_third_person = "stares"
 	message = "stares."
 	message_param = "stares at %t."
+
+/datum/emote/living/carbon/human/stare/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/mob/living/carbon/human/human_starer = user
+	human_starer.move_eyelids(EYELID_OPEN, 5)
 
 /datum/emote/living/carbon/human/signal
 	key = "signal"
@@ -410,3 +432,28 @@
 /datum/emote/living/carbon/human/burstscream/run_langchat(mob/living/user, list/group)
 	. = ..()
 	user.show_speech_bubble(group, "pain")
+
+/datum/emote/living/carbon/human/closeeyes
+	key = "closeeyes"
+	key_third_person = "closeseyes"
+	message = "closes their eyes."
+
+/datum/emote/living/carbon/human/closeeyes/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/mob/living/carbon/human/human_eye_closer = user
+	if(human_eye_closer.eyelid_timer)
+		deltimer(human_eye_closer.eyelid_timer)
+		human_eye_closer.eyelid_timer = null
+	human_eye_closer.move_eyelids(EYELID_CLOSED_VOLUNTARILY, null, null, 1, normal_blinking_after=FALSE)
+	human_eye_closer.overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
+
+/datum/emote/living/carbon/human/openeyes
+	key = "openeyes"
+	key_third_person = "openseyes"
+	message = "opens their eyes."
+
+/datum/emote/living/carbon/human/openeyes/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/mob/living/carbon/human/human_eye_opener = user
+	human_eye_opener.move_eyelids(EYELID_OPEN, normal_blinking_after=FALSE)
+	human_eye_opener.clear_fullscreen("blind")

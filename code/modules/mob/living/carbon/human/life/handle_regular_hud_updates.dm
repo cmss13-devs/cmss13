@@ -7,7 +7,7 @@
 
 	if(stat != DEAD) //the dead get zero fullscreens
 
-		if(stat == UNCONSCIOUS)
+		if(stat == UNCONSCIOUS || eyelids_status == EYELID_CLOSED_VOLUNTARILY)
 			var/severity = 0
 			switch(health)
 				if(-20 to -10)

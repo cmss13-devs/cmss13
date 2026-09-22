@@ -964,37 +964,60 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(user && loc)
 		playsound(user, cocked_sound, 25, TRUE)
 
+/// User can be null here, to_chat just returns early if user is null.
+/obj/item/weapon/gun/proc/can_reload(mob/user, obj/item/ammo_magazine/magazine)
+	if(flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG))
+		return FALSE
+
+	if(!magazine || !istype(magazine))
+		to_chat(user, SPAN_WARNING("That's not a magazine!"))
+		return FALSE
+
+	//code for manually inserting a bullet into a chamber
+	if(magazine.flags_magazine & AMMUNITION_HANDFUL)
+		if(in_chamber)
+			to_chat(user, SPAN_WARNING("[src] needs to be unchambered first."))
+			return FALSE
+
+		var/match = FALSE
+		// evil and foreboding bullet matching code for list calibers
+		if(istype(magazine, /obj/item/ammo_magazine/handful))
+			if(islist(magazine.caliber))
+				match = islist(caliber) ? length(magazine.caliber & caliber) : (caliber in magazine.caliber)
+			else
+				match = islist(caliber) ? (magazine.caliber in caliber) : (magazine.caliber == caliber)
+
+		if(!match)
+			to_chat(user, SPAN_WARNING("\The [magazine] doesn't match [src]'s caliber!"))
+			return FALSE
+		return TRUE
+
+	if(magazine.current_rounds <= 0)
+		to_chat(user, SPAN_WARNING("[magazine] is empty!"))
+		return FALSE
+
+	if(!istype(src, magazine.gun_type) && !((magazine.type) in src.accepted_ammo))
+		to_chat(user, SPAN_WARNING("That magazine doesn't fit in there!"))
+		return FALSE
+
+	if(current_mag)
+		to_chat(user, SPAN_WARNING("It's still got something loaded."))
+		return FALSE
+
+	return TRUE
+
 /*
 Reload a gun using a magazine.
 This sets all the initial datum's stuff. The bullet does the rest.
 User can be passed as null, (a gun reloading itself for instance), so we need to watch for that constantly.
 */
 /obj/item/weapon/gun/proc/reload(mob/user, obj/item/ammo_magazine/magazine) //override for guns who use more special mags.
-	if(flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG))
+	if(!can_reload(user, magazine))
 		return
 
 	//code for manually inserting a bullet into a chamber
 	if(magazine.flags_magazine & AMMUNITION_HANDFUL)
-		if(in_chamber)
-			to_chat(user, SPAN_WARNING("[src] needs to be unchambered first."))
-			return
 		insert_bullet(user)
-		return
-
-	if(!magazine || !istype(magazine))
-		to_chat(user, SPAN_WARNING("That's not a magazine!"))
-		return
-
-	if(magazine.current_rounds <= 0)
-		to_chat(user, SPAN_WARNING("[magazine] is empty!"))
-		return
-
-	if(!istype(src, magazine.gun_type) && !((magazine.type) in src.accepted_ammo))
-		to_chat(user, SPAN_WARNING("That magazine doesn't fit in there!"))
-		return
-
-	if(current_mag)
-		to_chat(user, SPAN_WARNING("It's still got something loaded."))
 		return
 
 	if(user)
@@ -1438,6 +1461,7 @@ and you're good to go.
 #define EXECUTION_CHECK (attacked_mob.stat == UNCONSCIOUS || attacked_mob.is_mob_restrained()) && (user.zone_selected=="head") && ((user.a_intent == INTENT_DISARM) || (user.a_intent == INTENT_GRAB))
 
 /obj/item/weapon/gun/attack_secondary(mob/living/target, mob/living/user)
+	try_activate_attachable_weapon()
 	if(!active_attachable)
 		return ..()
 	active_attachable.attack(target, user)

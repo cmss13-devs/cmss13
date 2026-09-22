@@ -131,6 +131,7 @@ DEFINES in setup.dm, referenced here.
 
 /obj/item/weapon/gun/attack_hand_secondary(mob/user)
 	. = ..()
+	try_activate_attachable_weapon()
 	if(active_attachable)
 		active_attachable.attack_hand(user)
 
@@ -264,7 +265,7 @@ DEFINES in setup.dm, referenced here.
 	if(flags_gun_features & GUN_BURST_FIRING)
 		return
 
-	if(istype(attack_item, /obj/item/prop/helmetgarb/gunoil))
+	if(istype(attack_item, /obj/item/prop/helmetgarb/gunoil) && !(flags_gun_features & GUN_IS_ATTACHMENT))
 		var/oil_verb = pick("lubes", "oils", "cleans", "tends to", "gently strokes")
 		if(do_after(user, 3 SECONDS, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_FRIENDLY, status_effect = SLOW))
 			user.visible_message("[user] [oil_verb] [src]. It shines like new.", "You oil up and immaculately clean [src]. It shines like new.")
@@ -272,13 +273,20 @@ DEFINES in setup.dm, referenced here.
 		else
 			return
 
+	for(var/slot in attachments)
+		var/obj/item/attachable/attached_gun/attachment = attachments[slot]
+		if(!istype(attachment) || !(attachment.flags_attach_features & ATTACH_ACTIVATION))
+			continue
+		if(attachment.handle_silent_reload(attack_item, user))
+			return ATTACKBY_HINT_NO_AFTERATTACK
 
-	if(istype(attack_item,/obj/item/attachable))
+	if(istype(attack_item,/obj/item/attachable) && !(flags_gun_features & GUN_IS_ATTACHMENT))
 		if(check_inactive_hand(user))
 			attach_to_gun(user,attack_item)
 	else if(istype(attack_item,/obj/item/ammo_magazine))
 		if(check_inactive_hand(user))
-			reload(user,attack_item)
+			reload(user, attack_item)
+			return ATTACKBY_HINT_NO_AFTERATTACK
 
 //tactical reloads
 /obj/item/weapon/gun/MouseDrop_T(atom/dropping, mob/living/carbon/human/user)

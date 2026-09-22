@@ -1122,3 +1122,13 @@ note dizziness decrements automatically in the mob's Life() proc.
 	item.attack_self(src)
 	update_held_items()
 
+/mob/proc/execute_mode_secondary()
+	if(is_mob_incapacitated())
+		return
+
+	var/obj/item/item = get_active_hand()
+	if(!item)
+		return
+
+	item.attack_self_secondary(src)
+	update_held_items()

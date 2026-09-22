@@ -72,6 +72,7 @@
 
 // Human Inventory Navigation
 #define COMSIG_KB_HUMAN_INTERACT_OTHER_HAND "keybinding_human_interact_other_hand"
+#define COMSIG_KB_HUMAN_INTERACT_OTHER_HAND_SECONDARY "keybinding_human_interact_other_hand_secondary"
 #define COMSIG_KB_HUMAN_INTERACT_SLOT_BACK "keybinding_human_interact_slot_back"
 #define COMSIG_KB_HUMAN_INTERACT_SLOT_BELT "keybinding_human_interact_slot_belt"
 #define COMSIG_KB_HUMAN_INTERACT_SLOT_UNIFORM "keybinding_human_interact_slot_uniform"
@@ -123,6 +124,7 @@
 #define COMSIG_KB_MOB_CYCLEINTENTLEFT_DOWN "keybinding_mob_cycleintentleft_down"
 #define COMSIG_KB_MOB_SWAPHANDS_DOWN "keybinding_mob_swaphands_down"
 #define COMSIG_KB_MOB_ACTIVATEINHAND_DOWN "keybinding_mob_activateinhand_down"
+#define COMSIG_KB_MOB_ACTIVATEINHAND_SECONDARY_DOWN "keybinding_mob_activateinhand_secondary_down"
 #define COMSIG_KB_MOB_DROPITEM_DOWN "keybinding_mob_dropitem_down"
 #define COMSIG_KB_MOB_TOGGLEMOVEINTENT_DOWN "keybinding_mob_togglemoveintent_down"
 #define COMSIG_KB_MOB_TOGGLEMOVEINTENTALT_DOWN "keybinding_mob_togglemoveintentalt_down"

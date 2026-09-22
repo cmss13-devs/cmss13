@@ -3040,11 +3040,20 @@ Defined in conflicts.dm of the #defines folder.
 		return TRUE
 	return FALSE
 
+/obj/item/attachable/attached_gun/proc/handle_silent_reload(obj/item/to_reload, mob/user)
+	if(!attached_gun)
+		return FALSE
+	if(attached_gun.can_reload(null, to_reload))
+		attached_gun.reload(user, to_reload)
+		return TRUE
+	return FALSE
+
 /obj/item/attachable/attached_gun/Initialize(mapload, ...)
 	. = ..()
 	if(attached_gun)
 		attached_gun = new attached_gun(src)
 		attached_gun.manually_handle_inputs = TRUE
+		attached_gun.flags_gun_features |= GUN_IS_ATTACHMENT
 
 /obj/item/attachable/attached_gun/Destroy()
 	QDEL_NULL(attached_gun)
@@ -3131,6 +3140,11 @@ Defined in conflicts.dm of the #defines folder.
 
 	attached_gun = /obj/item/weapon/gun/launcher/grenade/ubarrel/u1
 
+/obj/item/attachable/attached_gun/grenade/handle_silent_reload(obj/item/to_reload, mob/user)
+	if(attached_gun && istype(to_reload, /obj/item/explosive/grenade))
+		attached_gun.attackby(to_reload, user)
+		return TRUE
+	return FALSE
 
 /obj/item/attachable/attached_gun/grenade/Initialize(mapload, ...)
 	. = ..()
@@ -3279,6 +3293,12 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/flamer/handle_pre_break_attachment_description(base_description_text as text, mob/user)
 	return base_description_text + " It is on [intense_mode ? "intense" : "normal"] mode."
+
+/obj/item/attachable/attached_gun/flamer/handle_silent_reload(obj/item/to_reload, mob/user)
+	if(istype(to_reload, /obj/item/ammo_magazine/flamer_tank))
+		reload_attachment(to_reload, user)
+		return TRUE
+	return FALSE
 
 /obj/item/attachable/attached_gun/flamer/reload_attachment(obj/item/ammo_magazine/flamer_tank/fuel_holder, mob/user)
 	if(istype(fuel_holder))

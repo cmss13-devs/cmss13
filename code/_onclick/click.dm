@@ -149,7 +149,7 @@
 	return
 
 /mob/proc/click_adjacent(atom/targeted_atom, obj/item/used_item, list/mods)
-	var/is_secondary_action = mods[RIGHT_CLICK]
+	var/is_secondary_action = mods[get_secondary_interact_key()]
 	if(HAS_TRAIT(src, TRAIT_HAULED))
 		if(!isstorage(targeted_atom) && !isclothing(targeted_atom) && !isweapon(targeted_atom) && !isgun(targeted_atom))
 			return

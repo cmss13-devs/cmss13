@@ -53,6 +53,22 @@
 	M.execute_mode()
 	return TRUE
 
+/datum/keybinding/mob/activate_inhand_secondary
+	hotkey_keys = list("Unbound") // Southeast = PAGEDOWN
+	classic_keys = list("Unbound")
+	name = "activate_inhand_secondary"
+	full_name = "Secondary Activate in-hand"
+	description = "Performs the secondary interaction of whatever item you have in-hand"
+	keybind_signal = COMSIG_KB_MOB_ACTIVATEINHAND_SECONDARY_DOWN
+
+/datum/keybinding/mob/activate_inhand_secondary/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/M = user.mob
+	M.execute_mode_secondary()
+	return TRUE
+
 /datum/keybinding/mob/drop_item
 	hotkey_keys = list("Q")
 	classic_keys = list("Unbound")

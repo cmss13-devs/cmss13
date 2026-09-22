@@ -145,38 +145,42 @@
 		return AUTOFIRE_CONTINUE
 	return NONE
 
-/obj/item/weapon/gun/flamer/reload(mob/user, obj/item/ammo_magazine/magazine)
+/obj/item/weapon/gun/flamer/can_reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(!magazine || !istype(magazine))
 		to_chat(user, SPAN_WARNING("That's not a magazine!"))
-		return
+		return FALSE
 
 	if(magazine.current_rounds <= 0)
 		to_chat(user, SPAN_WARNING("That [magazine.name] is empty!"))
-		return
+		return FALSE
 
 	if(!istype(src, magazine.gun_type))
 		to_chat(user, SPAN_WARNING("That magazine doesn't fit in there!"))
-		return
+		return FALSE
 
 	if(!QDELETED(current_mag) && current_mag.loc == src)
 		to_chat(user, SPAN_WARNING("It's still got something loaded!"))
+		return FALSE
+	return TRUE
+
+/obj/item/weapon/gun/flamer/reload(mob/user, obj/item/ammo_magazine/magazine)
+	if(!can_reload(user, magazine))
 		return
 
-	else
-		if(user)
-			if(magazine.reload_delay > 1)
-				to_chat(user, SPAN_NOTICE("You begin reloading [src]. Hold still..."))
-				if(do_after(user,magazine.reload_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-					replace_magazine(user)
-				else
-					to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
-					return
+	if(user)
+		if(magazine.reload_delay > 1)
+			to_chat(user, SPAN_NOTICE("You begin reloading [src]. Hold still..."))
+			if(do_after(user,magazine.reload_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+				replace_magazine(user)
 			else
-				replace_magazine(user, magazine)
+				to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
+				return
 		else
-			current_mag = magazine
-			magazine.forceMove(src)
-			replace_ammo(,magazine)
+			replace_magazine(user, magazine)
+	else
+		current_mag = magazine
+		magazine.forceMove(src)
+		replace_ammo(,magazine)
 	var/obj/item/ammo_magazine/flamer_tank/tank = magazine
 	fuel_pressure = tank.fuel_pressure
 	update_icon()
@@ -487,11 +491,11 @@
 	return ..()
 
 
-/obj/item/weapon/gun/flamer/m240/spec/reload(mob/user, obj/item/ammo_magazine/magazine)
+/obj/item/weapon/gun/flamer/m240/spec/can_reload(mob/user, obj/item/ammo_magazine/magazine)
 	if (fuelpack)
 		to_chat(user, SPAN_WARNING("The Broiler-T feed system cannot be reloaded manually."))
-		return
-	..()
+		return FALSE
+	return ..()
 
 /obj/item/weapon/gun/flamer/m240/spec/unload(mob/user, reload_override = 0, drop_override = 0, loc_override = 0)
 	if (fuelpack && (current_mag in list(fuelpack.fuel, fuelpack.fuelB, fuelpack.fuelX)))

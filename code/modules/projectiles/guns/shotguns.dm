@@ -141,17 +141,21 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/proc/check_chamber_position()
 	return 1
 
-
-/obj/item/weapon/gun/shotgun/reload(mob/user, obj/item/ammo_magazine/magazine)
+/obj/item/weapon/gun/shotgun/can_reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(flags_gun_features & GUN_BURST_FIRING)
-		return
+		return FALSE
 
 	if(!magazine || !istype(magazine,/obj/item/ammo_magazine/handful)) //Can only reload with handfuls.
 		to_chat(user, SPAN_WARNING("You can't use that to reload!"))
-		return
+		return FALSE
 
 	if(!check_chamber_position()) //For the double barrel.
 		to_chat(user, SPAN_WARNING("[src] has to be open!"))
+		return FALSE
+	return TRUE
+
+/obj/item/weapon/gun/shotgun/reload(mob/user, obj/item/ammo_magazine/magazine)
+	if(!can_reload(user, magazine))
 		return
 
 	//From here we know they are using shotgun type ammo and reloading via handful.
@@ -965,11 +969,11 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil = RECOIL_AMOUNT_TIER_3
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
-/obj/item/weapon/gun/shotgun/double/mou53/reload(mob/user, obj/item/ammo_magazine/magazine)
+/obj/item/weapon/gun/shotgun/double/mou53/can_reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(ispath(magazine.default_ammo, /datum/ammo/bullet/shotgun/buckshot)) // No buckshot in this gun
 		to_chat(user, SPAN_WARNING("\The [src] cannot safely fire this type of shell!"))
-		return
-	..()
+		return FALSE
+	return ..()
 
 /obj/item/weapon/gun/shotgun/double/mou53/unique_action(mob/user)
 	if(!COOLDOWN_FINISHED(src, breach_action_cooldown))
@@ -1604,10 +1608,10 @@ can cause issues with ammo types getting mixed up during the burst.
 		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_pylons)
 	))
 
-/obj/item/weapon/gun/shotgun/ubarrel/reload(mob/user, obj/item/ammo_magazine/magazine)
+/obj/item/weapon/gun/shotgun/ubarrel/can_reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(!ispath(magazine.default_ammo, /datum/ammo/bullet/shotgun/buckshot)) // No buckshot in this gun
 		to_chat(user, SPAN_WARNING("\The [src] only accepts buckshot!"))
-		return
+		return FALSE
 	return ..()
 
 /obj/item/weapon/gun/shotgun/ubarrel/m20a
@@ -1640,10 +1644,10 @@ can cause issues with ammo types getting mixed up during the burst.
 		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 2*5, GLOB.damage_boost_pylons)
 	))
 
-/obj/item/weapon/gun/shotgun/ubarrel/af13/reload(mob/user, obj/item/ammo_magazine/magazine)
+/obj/item/weapon/gun/shotgun/ubarrel/af13/can_reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(!ispath(magazine.default_ammo, /datum/ammo/bullet/shotgun/buckshot)) // No buckshot in this gun
 		to_chat(user, SPAN_WARNING("\The [src] only accepts buckshot!"))
-		return
+		return FALSE
 	return ..()
 
 /obj/item/weapon/gun/shotgun/ubarrel/af13/b

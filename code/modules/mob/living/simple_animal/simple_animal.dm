@@ -381,7 +381,7 @@
 			var/obj/item/stack/medical/MED = O
 			if(health < maxHealth)
 				if(MED.get_amount() >= 1)
-					apply_damage(-MED.heal_brute, BRUTE)
+					apply_damage(-12, BRUTE)
 					MED.use(1)
 					for(var/mob/M as anything in viewers(src, null))
 						if ((M.client && !( M.blinded )))
@@ -418,7 +418,6 @@
 		return
 
 	apply_damage(severity, BRUTE, enviro=enviro)
-	updatehealth()
 
 	var/knock_value = min( round( severity*0.1 ,1) ,10)
 	if(knock_value > 0)

@@ -623,18 +623,20 @@
 	xeno_announcement("By [user_xeno]'s will, [target_xeno] has been banished from the hive!\n\n[reason]", user_xeno.hivenumber, title=SPAN_ANNOUNCEMENT_HEADER_BLUE("Banishment"))
 	to_chat(target_xeno, FONT_SIZE_LARGE(SPAN_XENOWARNING("The [user_xeno] has banished you from the hive! Other xenomorphs may now attack you freely, but your link to the hivemind remains, preventing you from harming other sisters.")))
 
-	target_xeno.banished = TRUE
-	target_xeno.hud_update_banished()
-	target_xeno.lock_evolve = TRUE
-	user_xeno.hive.banished_ckeys[target_xeno.name] = target_xeno.ckey
-	addtimer(CALLBACK(src, PROC_REF(remove_banish), user_xeno.hive, target_xeno.name), 30 MINUTES)
-
+	do_banish(user_xeno, target_xeno)
 	message_admins("[key_name_admin(user_xeno)] has banished [key_name_admin(target_xeno)]. Reason: [reason]")
 	return
 
+/datum/action/xeno_action/proc/do_banish(mob/living/carbon/xenomorph/queen/user_xeno, mob/living/carbon/xenomorph/target_xeno)
+	target_xeno.banished = TRUE
+	target_xeno.hud_update_banished()
+	target_xeno.lock_evolve = TRUE
+
+	target_xeno.hive.banished_ckeys[target_xeno.name] = target_xeno.ckey
+	addtimer(CALLBACK(src, PROC_REF(remove_banish), target_xeno.hive, target_xeno.name), 30 MINUTES)
+
 /datum/action/xeno_action/proc/remove_banish(datum/hive_status/hive, name)
 	hive.banished_ckeys.Remove(name)
-
 
 // Readmission = un-banish
 
@@ -682,13 +684,18 @@
 		if(!user_xeno.check_state() || !check_and_use_plasma_owner(plasma_cost))
 			return
 
-		to_chat(target_xeno, FONT_SIZE_LARGE(SPAN_XENOWARNING("The [user_xeno] has readmitted you into the hive.")))
-		target_xeno.banished = FALSE
-		target_xeno.hud_update_banished()
-		target_xeno.lock_evolve = FALSE
+		do_readmit(user_xeno, target_xeno)
 
 	user_xeno.hive.banished_ckeys.Remove(banished_name)
 	return
+
+/datum/action/xeno_action/onclick/manage_hive/proc/do_readmit(mob/living/carbon/xenomorph/queen/user_xeno, mob/living/carbon/xenomorph/target_xeno)
+	if (user_xeno)
+		to_chat(target_xeno, FONT_SIZE_LARGE(SPAN_XENOWARNING("The [user_xeno] has readmitted you into the hive.")))
+
+	target_xeno.banished = FALSE
+	target_xeno.hud_update_banished()
+	target_xeno.lock_evolve = FALSE
 
 /datum/action/xeno_action/onclick/eye
 	name = "Enter Eye Form"
@@ -761,6 +768,29 @@
 		if(weeds_to_locate && weeds_to_locate.hivenumber == xeno.hivenumber && weeds_to_locate.parent && !weeds_to_locate.hibernate && !LinkBlocked(weeds_to_locate, turf_to_weed, turf_to_get))
 			node = weeds_to_locate.parent
 			break
+
+	var/turf/below = SSmapping.get_turf_below(turf_to_get)
+	if(!node && below && istype(below, /turf/closed))
+		for(var/direction in GLOB.cardinals)
+			if(!istype(get_step(turf_to_get, direction), /turf/open_space))
+				continue
+			var/turf/turf_to_weed = get_step(below, direction)
+			var/obj/effect/alien/weeds/weeds_to_locate = locate() in turf_to_weed
+			if(weeds_to_locate && weeds_to_locate.hivenumber == xeno.hivenumber && weeds_to_locate.parent && !weeds_to_locate.hibernate && !LinkBlocked(weeds_to_locate, turf_to_weed, turf_to_get))
+				node = weeds_to_locate.parent
+				break
+
+	var/turf/above = SSmapping.get_turf_above(turf_to_get)
+	if(!node && above && istype(above, /turf/open_space))
+		for(var/direction in GLOB.cardinals)
+			if(!istype(get_step(turf_to_get, direction), /turf/closed))
+				continue
+			var/turf/turf_to_weed = get_step(above, direction)
+			var/obj/effect/alien/weeds/weeds_to_locate = locate() in turf_to_weed
+			if(weeds_to_locate && weeds_to_locate.hivenumber == xeno.hivenumber && weeds_to_locate.parent && !weeds_to_locate.hibernate && !LinkBlocked(weeds_to_locate, turf_to_weed, turf_to_get))
+				node = weeds_to_locate.parent
+				break
+
 
 	if(!node)
 		to_chat(xeno, SPAN_XENOWARNING("You can only plant weeds if there is a nearby node."))

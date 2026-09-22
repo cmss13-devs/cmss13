@@ -15,6 +15,8 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/warrior_base
 
+	available_strains = list(/datum/xeno_strain/bulwark)
+
 	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER)
 	deevolves_to = list(XENO_CASTE_DEFENDER)
 	caste_desc = "A powerful front line combatant."
@@ -29,6 +31,8 @@
 
 	minimum_evolve_time = 9 MINUTES
 
+	organ_type = /obj/item/organ/xeno/warrior
+
 	minimap_icon = "warrior"
 
 /mob/living/carbon/xenomorph/warrior
@@ -38,12 +42,10 @@
 	icon = 'icons/mob/xenos/castes/tier_2/warrior.dmi'
 	icon_size = 64
 	icon_state = "Warrior Walking"
-	plasma_types = list(PLASMA_CHITIN)
 	pixel_x = -16
 	old_x = -16
 	tier = 2
 	pull_speed = 2 // about what it was before, slightly faster
-	organ_value = 2000
 	base_actions = list(
 		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
@@ -67,6 +69,14 @@
 	skull = /obj/item/skull/warrior
 	pelt = /obj/item/pelt/warrior
 
+/obj/item/organ/xeno/warrior
+	name = "warrior heart"
+	icon_state = "heart_t2"
+	item_state = "heart_t2"
+	research_value = 2000
+
+	xeno_organ_flags = XENO_ORGAN_STRONG|XENO_ORGAN_HARDENED
+
 /datum/behavior_delegate/warrior_base
 	name = "Base Warrior Behavior Delegate"
 
@@ -78,12 +88,19 @@
 	var/emote_cooldown = 0
 	var/lunging = FALSE // whether or not the warrior is currently lunging (holding) a target
 
+/mob/living/carbon/xenomorph/warrior/handle_special_state()
+	return HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES)
+
+/mob/living/carbon/xenomorph/warrior/handle_special_wound_states(severity)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES))
+		return "Warrior_plates_[severity]"
+
 /mob/living/carbon/xenomorph/warrior/throw_item(atom/target)
 	toggle_throw_mode(THROW_MODE_OFF)
 
 /mob/living/carbon/xenomorph/warrior/stop_pulling()
 	var/datum/behavior_delegate/warrior_base/warrior_delegate = behavior_delegate
-	if(isliving(pulling) && warrior_delegate.lunging)
+	if(isliving(pulling) && istype(warrior_delegate) && warrior_delegate.lunging)
 		warrior_delegate.lunging = FALSE // To avoid extreme cases of stopping a lunge then quickly pulling and stopping to pull someone else
 		var/mob/living/lunged = pulling
 		lunged.set_effect(0, STUN)
@@ -100,7 +117,7 @@
 	var/mob/living/living_mob = movable_atom
 	var/should_neckgrab = !(src.can_not_harm(living_mob)) && lunge
 
-	if(!QDELETED(living_mob) && !QDELETED(living_mob.pulledby) && living_mob != src ) //override pull of other mobs
+	if(!QDELETED(living_mob) && !QDELETED(living_mob.pulledby) && living_mob.pulledby != src ) //override pull of other mobs
 		visible_message(SPAN_WARNING("[src] has broken [living_mob.pulledby]'s grip on [living_mob]!"), null, null, 5)
 		living_mob.pulledby.stop_pulling()
 
@@ -198,7 +215,7 @@
 		to_chat(lunge_user, SPAN_XENOWARNING("We can't lunge from here!"))
 		return
 
-	if(!lunge_user.check_state() || lunge_user.agility)
+	if(!lunge_user.check_state())
 		return
 
 	if(lunge_user.can_not_harm(affected_atom) || !ismob(affected_atom))
@@ -237,7 +254,7 @@
 	if(!isxeno_human(affected_atom) || fling_user.can_not_harm(affected_atom))
 		return
 
-	if(!fling_user.check_state() || fling_user.agility)
+	if(!fling_user.check_state())
 		return
 
 	if(!fling_user.Adjacent(affected_atom))
@@ -291,7 +308,7 @@
 	if(!isxeno_human(affected_atom) || punch_user.can_not_harm(affected_atom))
 		return
 
-	if(!punch_user.check_state() || punch_user.agility)
+	if(!punch_user.check_state())
 		return
 
 	var/distance = get_dist(punch_user, affected_atom)

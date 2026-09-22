@@ -1,7 +1,8 @@
 /mob/living/carbon/human/proc/set_selected_ability(datum/action/human_action/activable/ability)
 	if(!ability)
 		selected_ability = null
-		client?.set_right_click_menu_mode(shift_only = FALSE)
+		if(client?.prefs.toggle_right_click_menu)
+			client.set_right_click_menu_mode(shift_only = FALSE)
 		return
 	selected_ability = ability
 	if(get_ability_mouse_key() == XENO_ABILITY_CLICK_RIGHT)
@@ -352,20 +353,33 @@ CULT
 /datum/action/human_action/activable/cult_leader
 	name = "Activable Leader Ability"
 
-/datum/action/human_action/activable/cult_leader/proc/can_target(mob/living/carbon/human/H)
+/datum/action/human_action/activable/cult_leader/proc/can_target(mob/living/carbon/human/target)
 	if(!ishuman(owner))
 		return
-	var/mob/living/carbon/human/Hu = owner
 
-	if(H.skills && (skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_SKILLED) || skillcheck(H, SKILL_POLICE, SKILL_POLICE_SKILLED)))
-		to_chat(Hu, SPAN_WARNING("This mind is too strong to target with your abilities."))
-		return
+	var/mob/living/carbon/human/cultist = owner
 
-	if(get_dist_sqrd(get_turf(H), get_turf(owner)) > 2)
-		to_chat(Hu, SPAN_WARNING("This target is too far away!"))
-		return
+	if(!ishuman_strict(target)) // No yautja or synths
+		return FALSE
 
-	return H.stat != DEAD && istype(H) && ishuman_strict(H) && H.hivenumber != Hu.hivenumber && !isnull(get_hive())
+	if(target.stat != CONSCIOUS) // No point in stunning dead or unconscious
+		return FALSE
+
+	if(!get_hive()) // Can't use xeno powers without a hive
+		return FALSE
+
+	if(target.hivenumber == cultist.hivenumber) // Can't use xeno powers on a fellow hive member
+		return FALSE
+
+	if(target.skills && (skillcheck(target, SKILL_LEADERSHIP, SKILL_LEAD_SKILLED) || skillcheck(target, SKILL_POLICE, SKILL_POLICE_SKILLED)))
+		to_chat(cultist, SPAN_WARNING("This mind is too strong to target with your abilities."))
+		return FALSE
+
+	if(get_dist_sqrd(get_turf(target), get_turf(owner)) > 2)
+		to_chat(cultist, SPAN_WARNING("This target is too far away!"))
+		return FALSE
+
+	return TRUE
 
 /datum/action/human_action/activable/cult_leader/proc/get_hive()
 	if(!ishuman(owner))

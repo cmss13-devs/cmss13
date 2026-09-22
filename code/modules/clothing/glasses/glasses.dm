@@ -135,6 +135,7 @@
 		user.glasses = null
 		user.update_inv_glasses()
 		user.update_glass_vision(src)
+		user.update_tint()
 	user.update_sight()
 	return ..()
 
@@ -171,6 +172,7 @@
 	actions_types = list(/datum/action/item_action/toggle/hudgoggles)
 	toggleable = TRUE
 	flags_inventory = COVEREYES
+	armor_bio = CLOTHING_ARMOR_MEDIUM
 	req_skill = SKILL_RESEARCH
 	req_skill_level = SKILL_RESEARCH_TRAINED
 	clothing_traits = list(TRAIT_REAGENT_SCANNER)

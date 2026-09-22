@@ -4,13 +4,11 @@
 	var/anchored = FALSE
 	var/drag_delay = 3 //delay (in deciseconds) added to mob's move_delay when pulling it.
 	var/l_move_time = 1
-	var/throwing = 0
 	var/throw_speed = SPEED_FAST // Speed that an atom will go when thrown by a carbon mob
 	var/throw_range = 7
 	var/cur_speed = MIN_SPEED // Current speed of an atom (account for speed when launched/thrown as well)
 	var/mob/pulledby = null
 	var/rebounds = FALSE
-	var/rebounding = FALSE // whether an object that was launched was rebounded (to prevent infinite recursive loops from wall bouncing)
 	var/list/mob/living/buckled_mobs
 	var/mob/living/buckled_mob // mob buckled to this mob
 	/// Bed-like behaviour, forces mob.lying = buckle_lying if not set to [NO_BUCKLE_LYING].
@@ -376,6 +374,9 @@
 * Called from [/atom/movable/proc/keyLoop], this exists to be overwritten by living mobs with a check to see if we're actually alive enough to change directions
 */
 /atom/movable/proc/keybind_face_direction(direction)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_REFLECTIVE_PLATES))
+		if(!do_after(src, 3 DECISECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_GENERIC))
+			setDir(direction)
 	setDir(direction)
 
 /atom/movable/proc/onTransitZ(old_z,new_z)
@@ -545,3 +546,11 @@
 		return NO_BLOCKED_MOVEMENT
 
 	return ..()
+
+/**
+ * Sends the COMSIG_MOVABLE_PRE_PICKUP signal and returns the bitfield result.
+ *
+ * Returns NONE if the pickup should be allowed, otherwise the bitfield canceled reason(s) (e.g. COMPONENT_PICKUP_CANCELED_ACID)
+ */
+/atom/movable/proc/check_pickup_blocked(mob/user)
+	return SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_PICKUP, user)

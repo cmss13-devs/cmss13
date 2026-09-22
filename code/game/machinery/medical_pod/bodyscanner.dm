@@ -46,10 +46,10 @@
 		return
 	go_out()
 
-/obj/structure/machinery/medical_pod/bodyscanner/ex_act(severity, datum/cause_data/cause_data)
+/obj/structure/machinery/medical_pod/bodyscanner/ex_act(severity, direction, datum/cause_data/cause_data)
 	for(var/atom/movable/A as mob|obj in src)
 		A.forceMove(loc)
-		A.ex_act(severity, , cause_data)
+		A.ex_act(severity, cause_data=cause_data)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
@@ -180,6 +180,10 @@
 		last_health_display = new(H)
 	else
 		last_health_display.target_mob = H
+
+	// Handle automatic holotags
+	if (user.client?.prefs.auto_holotag >= BODYSCAN_TAG_PATIENTS)
+		H.auto_assign_holotag(user, HOLOCARD_ACCURACY_BODYSCANNER)
 
 	N.fields["last_tgui_scan_result"] = last_health_display.ui_data(user, DETAIL_LEVEL_BODYSCAN)
 	N.fields["autodoc_data"] = generate_autodoc_surgery_list(H)

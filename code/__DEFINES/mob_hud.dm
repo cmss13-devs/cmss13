@@ -72,6 +72,7 @@
 #define MOB_HUD_XENO_HIVE_HUNTED 38
 #define MOB_HUD_XENO_HIVE_RENEGADE 39
 #define MOB_HUD_XENO_HIVE_TUTORIAL 40
+#define MOB_HUD_XENO_HIVE_K_SERIES 41
 
 //for SL/FTL/LZ targeting on locator huds
 #define TRACKER_SL "track_sl"
@@ -93,6 +94,7 @@
 
 //for tracking the queen/hivecore on xeno locator huds
 #define TRACKER_QUEEN "Queen"
+#define TRACKER_KING "King"
 #define TRACKER_HIVE "Hive Core"
 #define TRACKER_LEADER "Leader"
 #define TRACKER_TUNNEL "Tunnel"

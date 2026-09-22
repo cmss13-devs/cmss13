@@ -190,6 +190,11 @@ type ByondType = {
   storageCdn: string;
 
   /**
+   * Set to 1 if OPENDREAM is defined on config load, otherwise null.
+   */
+  OPENDREAM: string | null;
+
+  /**
    * If this tgui window exists in the IE11 trident browser.
    * TODO: Remove with 516
    */

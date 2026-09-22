@@ -224,6 +224,8 @@
 		var/datum/action/A = X
 		A.update_button_icon()
 
+	updatehealth()
+
 
 /mob/living/carbon/xenomorph/proc/gain_armor_percent(value)
 	armor_integrity = min(armor_integrity + value, 100)
@@ -275,9 +277,6 @@
 	if(frenzy_aura)
 		. -= (frenzy_aura * 0.05)
 
-	if(agility)
-		. += caste.agility_speed_increase
-
 	var/obj/effect/alien/weeds/W = locate(/obj/effect/alien/weeds) in loc
 	if (W)
 		if (W.linked_hive.hivenumber == hivenumber)
@@ -305,12 +304,12 @@
 	var/datum/action/xeno_action/activable/pounce/pounceAction = get_action(src, /datum/action/xeno_action/activable/pounce)
 
 	// Unconscious or dead, or not throwing but used pounce.
-	if(!check_state() || (!throwing && !pounceAction.action_cooldown_check()))
+	if(!check_state() || (!HAS_TRAIT(src, TRAIT_LAUNCHED) && !pounceAction.action_cooldown_check()))
 		return
 
 	var/mob/living/carbon/carbon_mob = pounced_mob
 	if(carbon_mob.stat == DEAD || carbon_mob.mob_size >= MOB_SIZE_BIG || can_not_harm(pounced_mob) || carbon_mob == src)
-		throwing = FALSE
+		REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
 		return
 
 	if(pounceAction.can_be_shield_blocked)
@@ -321,7 +320,7 @@
 					SPAN_XENODANGER("We slam into [human_mob]!"), null, 5)
 				KnockDown(1)
 				Stun(1)
-				throwing = FALSE //Reset throwing manually.
+				REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT) //Reset throwing manually.
 				playsound(human_mob, "bonk", 75, FALSE) //bonk
 				return
 
@@ -330,14 +329,14 @@
 					SPAN_XENODANGER("[human_mob] body slams us!"), null, 5)
 				KnockDown(3)
 				Stun(3)
-				throwing = FALSE
+				REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
 				return
 			if(HAS_TRAIT(human_mob, TRAIT_POUNCE_RESISTANT) && prob(60))
 				visible_message(SPAN_DANGER("[human_mob] withstands being pounced and slams down [src]!"),
 					SPAN_XENODANGER("[human_mob] throws us down after withstanding the pounce!"), null, 5)
 				KnockDown(1.5)
 				Stun(1.5)
-				throwing = FALSE
+				REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
 				return
 
 
@@ -358,7 +357,7 @@
 	if(pounceAction.slash)
 		carbon_mob.attack_alien(src, pounceAction.slash_bonus_damage)
 
-	throwing = FALSE //Reset throwing since something was hit.
+	REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT) //Reset throwing since something was hit.
 
 /mob/living/carbon/xenomorph/proc/unfreeze_pounce()
 	REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
@@ -370,7 +369,7 @@
 	var/datum/action/xeno_action/activable/pounce/pounceAction = get_action(src, /datum/action/xeno_action/activable/pounce)
 
 	// Unconscious or dead, or not throwing but used pounce
-	if(!check_state() || (!throwing && !pounceAction.action_cooldown_check()))
+	if(!check_state() || (!HAS_TRAIT(src, TRAIT_LAUNCHED) && !pounceAction.action_cooldown_check()))
 		obj_launch_collision(O)
 		return
 
@@ -587,21 +586,32 @@
 
 
 // Handle queued actions.
-/mob/living/carbon/xenomorph/proc/handle_queued_action(atom/A)
+/mob/living/carbon/xenomorph/proc/handle_queued_action(atom/target)
+	. = FALSE
 	if(!queued_action || !istype(queued_action) || !(queued_action in actions))
+		clear_queued_action()
 		return
 
 	if(queued_action.can_use_action() && queued_action.action_cooldown_check())
-		queued_action.use_ability_wrapper(A)
+		queued_action.use_ability_wrapper(target)
+		. = TRUE
 
+	clear_queued_action()
+
+/// Clears any queued action
+/mob/living/carbon/xenomorph/proc/clear_queued_action()
 	queued_action = null
 
-	if(client)
-		client.mouse_pointer_icon = initial(client.mouse_pointer_icon) // Reset our mouse pointer when we no longer have an action queued.
+	if(queued_action_timer != TIMER_ID_NULL)
+		deltimer(queued_action_timer)
+		queued_action_timer = TIMER_ID_NULL
 
-/// Called when pulling something and attacking yourself wth the pull (Z hotkey) override for caste specific behaviour
-/mob/living/carbon/xenomorph/proc/pull_power(mob/mob)
-	var/mob/living/carbon/pulled = src.pulling
+	if(client)
+		client.mouse_pointer_icon = initial(client.mouse_pointer_icon)
+
+/// Called when pulling something to either upgrade the grab or restrain the pulled mob
+/mob/living/carbon/xenomorph/proc/pull_power(obj/item/grab/grab_obj)
+	var/mob/living/carbon/pulled = pulling
 	if(!istype(pulled))
 		return
 	if(isxeno(pulled) || issynth(pulled))
@@ -613,29 +623,36 @@
 	if(pulled.stat == DEAD && !pulled.chestburst)
 		to_chat(src, SPAN_WARNING("Ew, [pulled] is already starting to rot."))
 		return
-	if(src.hauled_mob?.resolve()) // We can't carry more than one mob
-		to_chat(src, SPAN_WARNING("You already are carrying something, there's no way that will work."))
+	if(hauled_mob?.resolve()) // We can't carry more than one mob
+		to_chat(src, SPAN_WARNING("We already are carrying something, there's no way that will work."))
 		return
 	if(HAS_TRAIT(pulled, TRAIT_HAULED))
 		to_chat(src, SPAN_WARNING("They are already being hauled by someone else."))
 		return
-	if(src.action_busy)
+	if(action_busy)
 		to_chat(src, SPAN_WARNING("We are already busy with something."))
 		return
+
+	var/threshold = client?.prefs?.xeno_defensive_grab_pref[caste_type]
+	threshold = clamp(threshold, 0.25, 1)
+	if(grab_level < GRAB_AGGRESSIVE && threshold < 1)
+		grab_obj.progress_defensive_xeno(src, pulled)
+		return
+
 	SEND_SIGNAL(src, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
-	src.visible_message(SPAN_DANGER("[src] starts to restrain [pulled]!"),
+	visible_message(SPAN_DANGER("[src] starts to restrain [pulled]!"),
 	SPAN_DANGER("We start restraining [pulled]!"), null, 5)
 	if(HAS_TRAIT(src, TRAIT_CLOAKED)) //cloaked don't show the visible message, so we gotta work around
 		to_chat(pulled, FONT_SIZE_HUGE(SPAN_DANGER("[src] is trying to restrain you!")))
-	if(do_after(src, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-		if((isxeno(pulled.loc) && !src.hauled_mob) || HAS_TRAIT(pulled, TRAIT_HAULED))
-			to_chat(src, SPAN_WARNING("Someone already took \the [pulled]."))
+	if(do_after(src, 5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+		if((isxeno(pulled.loc) && !hauled_mob) || HAS_TRAIT(pulled, TRAIT_HAULED))
+			to_chat(src, SPAN_WARNING("Someone already took [pulled]."))
 			return
-		if(src.pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !src.hauled_mob?.resolve()) //make sure you've still got them in your claws, and alive
+		if(pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !hauled_mob?.resolve()) //make sure you've still got them in your claws, and alive
 			if(SEND_SIGNAL(pulled, COMSIG_MOB_HAULED, src) & COMPONENT_CANCEL_HAUL)
-				return FALSE
-			src.haul(pulled)
-			src.stop_pulling()
+				return
+			haul(pulled)
+			stop_pulling()
 
 // Vent Crawl
 /mob/living/carbon/xenomorph/proc/vent_crawl()
@@ -699,7 +716,6 @@
 
 	apply_damage(burn_amount, BURN)
 	to_chat(src, SPAN_DANGER("Our flesh, it melts!"))
-	updatehealth()
 	return TRUE
 
 /mob/living/carbon/xenomorph/get_role_name()
@@ -782,6 +798,10 @@
 		to_chat(src, SPAN_XENOBOLDNOTICE("There are no weeds here! Nesting hosts requires hive weeds."))
 		return
 
+	if(supplier_weeds.hivenumber != hivenumber)
+		to_chat(src, SPAN_XENOBOLDNOTICE("The weeds here do not belong to us!"))
+		return
+
 	if(supplier_weeds.weed_strength < WEED_LEVEL_HIVE)
 		to_chat(src, SPAN_XENOBOLDNOTICE("The weeds here are not strong enough for nesting hosts."))
 		return
@@ -807,7 +827,7 @@
 			to_chat(src, SPAN_XENONOTICE("There is already a host nested here!"))
 			return
 
-	var/obj/structure/bed/nest/applicable_nest = new(get_turf(host_to_nest))
+	var/obj/structure/bed/nest/applicable_nest = new(get_turf(host_to_nest), hivenumber)
 	applicable_nest.dir = dir_to_nest
 	if(!applicable_nest.buckle_mob(host_to_nest, src))
 		qdel(applicable_nest)

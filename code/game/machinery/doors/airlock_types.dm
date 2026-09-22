@@ -272,9 +272,6 @@
 	req_one_access = list(ACCESS_YAUTJA_ANCIENT)
 	unslashable = TRUE
 
-/obj/structure/machinery/door/airlock/yautja/secure/turf_plane
-	plane = TURF_PLANE
-
 //FIORINA PENITENTIARY (PRISON_FOP) MAINTENANCE HATCHES
 
 /obj/structure/machinery/door/airlock/prison_hatch
@@ -319,6 +316,9 @@
 
 /obj/structure/machinery/door/airlock/almayer/autoname
 	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/white
+	icon = 'icons/obj/structures/doors/almayerdoor_white.dmi'
 
 /obj/structure/machinery/door/airlock/almayer/glass
 	icon = 'icons/obj/structures/doors/almayerdoor_glass.dmi'
@@ -621,6 +621,29 @@
 	name = "Press Office"
 	req_access = list(ACCESS_PRESS)
 
+/obj/structure/machinery/door/airlock/almayer/generic/shuttle
+	name = "\improper Shuttle Airlock"
+	no_panel = TRUE
+	not_weldable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+
+/obj/structure/machinery/door/airlock/almayer/generic/shuttle/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(!IS_XENO_DROPSHIP_CAPABLE(xeno))
+		return ..()
+
+	if(!locked)
+		return ..()
+
+	if(xeno.action_busy)
+		return
+
+	to_chat(xeno, SPAN_NOTICE("You try and force the doors open!"))
+	if(do_after(xeno, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		unlock(TRUE)
+		open(TRUE)
+		lock(TRUE)
+
 /obj/structure/machinery/door/airlock/almayer/marine
 	name = "\improper Airlock"
 	icon = 'icons/obj/structures/doors/prepdoor.dmi'
@@ -906,17 +929,19 @@
 	return ..()
 
 /obj/structure/machinery/door/airlock/dropship_hatch/attack_alien(mob/living/carbon/xenomorph/xeno)
-
-	if(xeno.hive_pos != XENO_QUEEN)
+	if(!IS_XENO_DROPSHIP_CAPABLE(xeno))
 		return ..()
 
 	if(!locked)
 		return ..()
 
-	to_chat(xeno, SPAN_NOTICE("You try and force the doors open."))
-	if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(xeno.action_busy)
+		return
+
+	to_chat(xeno, SPAN_NOTICE("You try and force the doors open!"))
+	if(do_after(xeno, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		unlock(TRUE)
-		open(1)
+		open(TRUE)
 		lock(TRUE)
 
 /obj/structure/machinery/door/airlock/dropship_hatch/two

@@ -39,7 +39,7 @@
 //Pixel coordinates in screen_loc format ("[tile_x]:[pixel_x],[tile_y]:[pixel_y]")
 #define SCREEN_LOC "screen-loc"
 
-//Click catcher e.g. /atom/moveable/screen/click_catcher
+//Click catcher e.g. /atom/movable/screen/click_catcher
 #define CLICK_CATCHER "click_catcher"
 #define CLICK_CATCHER_ADD_PARAM ";click_catcher=1"
 

@@ -555,7 +555,7 @@
 /datum/reagent/ethanol/barefoot
 	name = "Barefoot"
 	id = "barefoot"
-	description = "Barefoot and pregnant"
+	description = "Barefoot and pregnant."
 	color = "#664300" // rgb: 102, 67, 0
 	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
@@ -563,7 +563,7 @@
 /datum/reagent/ethanol/snowwhite
 	name = "Snow White"
 	id = "snowwhite"
-	description = "A cold refreshment"
+	description = "A cold refreshment."
 	color = COLOR_WHITE
 	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5

@@ -159,9 +159,9 @@
 /obj/item/explosive/grenade/high_explosive/airburst/launch_impact(atom/hit_atom)
 	..()
 	var/detonate = TRUE
-	if(isobj(hit_atom) && !rebounding)
+	if(isobj(hit_atom) && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 		detonate = FALSE
-	if(isturf(hit_atom) && hit_atom.density && !rebounding)
+	if(isturf(hit_atom) && hit_atom.density && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 		detonate = FALSE
 	if(active && detonate) // Active, and we reached our destination.
 		if(ismob(hit_atom))
@@ -226,7 +226,7 @@
 
 /obj/item/explosive/grenade/incendiary/impact
 	name = "\improper 40mm incendiary grenade"
-	desc = "This is a 40mm grenade, designed to be launched by a grenade launcher and detonate on impact. This one is marked as a incendiary grenade, watch your fire."
+	desc = "This is a 40mm grenade, designed to be launched by a grenade launcher and detonate on impact. This one is marked as an incendiary grenade, watch your fire."
 	icon_state = "grenade_40mm_inc"
 	det_time = 0
 	item_state = "grenade_fire"
@@ -246,11 +246,11 @@
 	..()
 	var/detonate = TRUE
 	var/turf/hit_turf = null
-	if(isobj(hit_atom) && !rebounding)
+	if(isobj(hit_atom) && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 		detonate = FALSE
 	if(isturf(hit_atom))
 		hit_turf = hit_atom
-		if(hit_turf.density && !rebounding)
+		if(hit_turf.density && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 			detonate = FALSE
 	if(active && detonate) // Active, and we reached our destination.
 		var/angle = dir2angle(last_move_dir)
@@ -281,9 +281,9 @@
 /obj/item/explosive/grenade/high_explosive/impact/launch_impact(atom/hit_atom)
 	..()
 	var/detonate = TRUE
-	if(isobj(hit_atom) && !rebounding)
+	if(isobj(hit_atom) && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 		detonate = FALSE
-	if(isturf(hit_atom) && hit_atom.density && !rebounding)
+	if(isturf(hit_atom) && hit_atom.density && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 		detonate = FALSE
 	if(active && detonate) // Active, and we reached our destination.
 		if(explosion_power)
@@ -389,11 +389,11 @@
 	..()
 	var/detonate = TRUE
 	var/turf/hit_turf = null
-	if(isobj(hit_atom) && !rebounding)
+	if(isobj(hit_atom) && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 		detonate = FALSE
 	if(isturf(hit_atom))
 		hit_turf = hit_atom
-		if(hit_turf.density && !rebounding)
+		if(hit_turf.density && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 			detonate = FALSE
 	if(active && detonate) // Active, and we reached our destination.
 		var/angle = dir2angle(last_move_dir)
@@ -503,11 +503,11 @@
 	var/range = 5
 	/// Maximum possible damage before falloff.
 	var/damage = 110
-	/// Factor to mutiply the effect range has on damage.
+	/// Factor to multiply the effect range has on damage.
 	var/falloff_dam_reduction_mult = 20
 	/// Post falloff calc damage is divided by this to get xeno slowdown
 	var/xeno_slowdown_numerator = 11
-	/// Post falloff calc damage is multipled by this to get human stamina damage
+	/// Post falloff calc damage is multiplied by this to get human stamina damage
 	var/human_stam_dam_factor = 0.5
 
 /obj/item/explosive/grenade/sebb/Initialize()
@@ -568,6 +568,8 @@
 	user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."),
 		SPAN_NOTICE("You finish deploying [src]."))
 	var/obj/item/explosive/mine/sebb/planted = new /obj/item/explosive/mine/sebb(get_turf(user))
+	msg_admin_attack("[key_name(user)] has deployed \a [name] in landmine mode in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z])", src.loc.x, src.loc.y, src.loc.z)
+	planted.cause_data = create_cause_data(initial(name), user, src)
 	planted.activate_sensors()
 	planted.iff_signal = user.faction // assuring IFF is set
 	planted.pixel_x += rand(-5, 5)
@@ -597,14 +599,14 @@
 		sentry_stun.sentry_range = 0 // Temporarily "disable" the sentry by killing its range then setting it back.
 		new /obj/effect/overlay/temp/elec_arc(get_turf(sentry_stun))  // sprites are meh but we need visual indication that the sentry was messed up
 		addtimer(VARSET_CALLBACK(sentry_stun, sentry_range, initial(sentry_stun.sentry_range)), 5 SECONDS) // assure to set it back
-		sentry_stun.visible_message(SPAN_DANGER("[src]'s screen flickes violently as it's shocked!"))
-		sentry_stun.visible_message(SPAN_DANGER("[src] says \"ERROR: Fire control system resetting due to critical voltage flucuation!\""))
+		sentry_stun.visible_message(SPAN_DANGER("[src]'s screen flicks violently as it's shocked!"))
+		sentry_stun.visible_message(SPAN_DANGER("[src] says \"ERROR: Fire control system resetting due to critical voltage fluctuation!\""))
 		sparka.set_up(1, 1, sentry_stun)
 		sparka.start()
 
 	for(var/turf/turf in full_range)
 		if(prob(8))
-			var/datum/effect_system/spark_spread/sparkTurf = new //using a different spike system because the spark system doesn't like when you reuse it for differant things
+			var/datum/effect_system/spark_spread/sparkTurf = new //using a different spike system because the spark system doesn't like when you reuse it for different things
 			sparkTurf.set_up(1, 1, turf)
 			sparkTurf.start()
 		if(prob(10))
@@ -632,7 +634,7 @@
 				damage_applied *= 1.5
 				new /obj/effect/overlay/temp/elec_arc(get_turf(shocked_human))
 				to_chat(mob, SPAN_HIGHDANGER("All of your systems jam up as your main bus is overvolted by [damage_applied*2] volts."))
-				mob.visible_message(SPAN_WARNING("[mob] seizes up from the elctric shock."))
+				mob.visible_message(SPAN_WARNING("[mob] seizes up from the electric shock."))
 			shocked_human.take_overall_armored_damage(damage_applied, ARMOR_ENERGY, BURN, 90) // 90% chance to be on additional limbs
 			shocked_human.make_dizzy(damage_applied)
 			mob.apply_stamina_damage(damage_applied*human_stam_dam_factor) // Stamina damage
@@ -748,11 +750,11 @@
 	..()
 	var/detonate = TRUE
 	var/turf/hit_turf = null
-	if(isobj(hit_atom) && !rebounding)
+	if(isobj(hit_atom) && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 		detonate = FALSE
 	if(isturf(hit_atom))
 		hit_turf = hit_atom
-		if(hit_turf.density && !rebounding)
+		if(hit_turf.density && !HAS_TRAIT(src, TRAIT_REBOUNDING))
 			detonate = FALSE
 	if(active && detonate) // Active, and we reached our destination.
 		playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)

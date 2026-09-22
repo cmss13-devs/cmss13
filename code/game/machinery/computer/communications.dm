@@ -102,7 +102,6 @@
 					set_security_level(tmp_alertlevel)
 					if(GLOB.security_level != old_level)
 						//Only notify the admins if an actual change happened
-						log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
 						message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
 				else
 					to_chat(usr, SPAN_WARNING("You are not authorized to do this."))
@@ -159,7 +158,6 @@
 					to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
 					return FALSE
 
-				log_game("[key_name(usr)] has called for an emergency evacuation.")
 				message_admins("[key_name_admin(usr)] has called for an emergency evacuation.")
 				log_ares_security("Initiate Evacuation", "Called for an emergency evacuation.", usr)
 				return TRUE
@@ -185,7 +183,6 @@
 					to_chat(usr, SPAN_WARNING("You are unable to cancel the evacuation right now!"))
 					return FALSE
 
-				log_game("[key_name(usr)] has canceled the emergency evacuation.")
 				message_admins("[key_name_admin(usr)] has canceled the emergency evacuation.")
 				log_ares_security("Cancel Evacuation", "Cancelled the emergency evacuation.", usr)
 				return TRUE
@@ -205,6 +202,14 @@
 
 				if(SSticker.mode.force_end_at == 0)
 					to_chat(usr, SPAN_WARNING("ARES has denied your request for operational security reasons."))
+					return FALSE
+
+				if(SShijack.in_ftl)
+					to_chat(usr, SPAN_WARNING("The ship's hyperdrive is currently active - a beacon cannot be launched."))
+					return FALSE
+
+				if(SShijack.crashed || SShijack.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
+					to_chat(usr, SPAN_WARNING("The ship's systems are unresponsive - a beacon cannot be launched."))
 					return FALSE
 
 				if(world.time < cooldown_request + COOLDOWN_COMM_REQUEST)
@@ -303,9 +308,9 @@
 		if("messageUSCM")
 			if(authenticated == 2)
 				if(world.time < cooldown_central + COOLDOWN_COMM_CENTRAL)
-					to_chat(usr, SPAN_WARNING("Arrays recycling.  Please stand by."))
+					to_chat(usr, SPAN_WARNING("Arrays recycling. Please stand by."))
 					return FALSE
-				var/input = stripped_input(usr, "Please choose a message to transmit to USCM.  Please be aware that this process is very expensive, and abuse will lead to termination.  Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
+				var/input = stripped_input(usr, "Please choose a message to transmit to USCM. Please be aware that this process is very expensive, and abuse will lead to termination. Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
 				if(!input || !(usr in dview(1, src)) || authenticated != 2 || world.time < cooldown_central + COOLDOWN_COMM_CENTRAL)
 					return FALSE
 

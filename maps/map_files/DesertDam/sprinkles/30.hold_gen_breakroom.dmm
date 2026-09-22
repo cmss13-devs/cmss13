@@ -1,0 +1,789 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"be" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mgibbl1"
+	},
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"bg" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/engine_room)
+"bk" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"bK" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6";
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"bQ" = (
+/turf/open/floor/prison/darkyellow2/northeast,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"co" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"dq" = (
+/obj/structure/dartboard{
+	pixel_y = 32
+	},
+/obj/item/weapon/dart,
+/obj/structure/prop/hybrisa/misc/blood,
+/obj/effect/landmark/corpsespawner/engineer,
+/turf/open/floor/prison/darkyellow2/northwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"dG" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"eM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/burger{
+	pixel_y = -7
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"fi" = (
+/obj/item/reagent_container/food/snacks/wrapped/booniebars{
+	pixel_y = 6
+	},
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"gl" = (
+/turf/open/floor/prison/darkyellowcorners2/east,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"gt" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"ik" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"jg" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/hybrisa/coffee_machine,
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"ji" = (
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"jv" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	layer = 3.6
+	},
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"jL" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = 3;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -7;
+	pixel_y = -3
+	},
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"jY" = (
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"kb" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/control_room)
+"kk" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_x = -7;
+	pixel_y = 6
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"ko" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/dart{
+	pixel_x = -7;
+	pixel_y = -6
+	},
+/obj/item/weapon/dart{
+	pixel_x = -7
+	},
+/obj/item/weapon/dart/green{
+	pixel_x = 6;
+	pixel_y = -6
+	},
+/obj/item/weapon/dart/green{
+	pixel_x = 6
+	},
+/obj/item/weapon/dart/green{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/turf/open/floor/prison/darkyellow2/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"kC" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/obj/item/frame/table,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"kD" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"kT" = (
+/obj/item/prop/alien/hugger,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"lK" = (
+/obj/structure/surface/table,
+/obj/item/storage/donut_box{
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"lL" = (
+/obj/structure/largecrate/random/mini{
+	pixel_x = -6;
+	pixel_y = -4
+	},
+/obj/item/reagent_container/food/drinks/coffee/marine{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"lO" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"oe" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/chips{
+	pixel_x = 9
+	},
+/obj/item/reagent_container/food/snacks/wy_chips/pepper{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"oh" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"oZ" = (
+/obj/item/stool{
+	pixel_x = 7
+	},
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"pK" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/corpsespawner/colonist/random,
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6";
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"qO" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"rA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair{
+	dir = 1;
+	pixel_x = 2;
+	pixel_y = 10
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"rV" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_x = 4;
+	pixel_y = 5
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"rX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"sj" = (
+/obj/item/prop/alien/hugger,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"tz" = (
+/obj/structure/machinery/vending/cola,
+/turf/open/floor/prison/darkyellowcorners2/east,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"ui" = (
+/obj/structure/window_frame/colony,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"uZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table,
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"vZ" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"wS" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"wU" = (
+/obj/structure/surface/rack,
+/obj/item/prop/colony/game,
+/turf/open/floor/prison/darkyellow2/northeast,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"xs" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 4;
+	pixel_y = 12
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 8;
+	pixel_y = 5
+	},
+/turf/open/floor/prison/darkyellow2/southeast,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"xQ" = (
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"zp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 6
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"zD" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"Ad" = (
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = 4;
+	pixel_y = 7
+	},
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"Ah" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"Ak" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mgibbl2";
+	pixel_y = 8
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"Aw" = (
+/obj/structure/window/framed/hangar,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"AK" = (
+/obj/item/shard,
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"Bx" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 5;
+	pixel_y = 12
+	},
+/obj/effect/spawner/random/gun/civ,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"BG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table,
+/obj/effect/spawner/random/gun/pistol,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"CP" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"CX" = (
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"Da" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"Dt" = (
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"DC" = (
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"EY" = (
+/obj/structure/window/framed/hangar,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/control_room)
+"FQ" = (
+/obj/item/tool/weldingtool/simple,
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"FX" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"GL" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"GW" = (
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"Hh" = (
+/obj/item/shard,
+/turf/open/floor/prison/darkyellowcorners2/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"Hq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -11;
+	pixel_y = 2
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"Jp" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -12;
+	pixel_y = 17
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"Lc" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"LA" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"Ms" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_x = 6;
+	pixel_y = 2
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"ME" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/stack/cable_coil,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"MK" = (
+/obj/structure/bed/chair{
+	pixel_y = -1
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"Oc" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"On" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"OW" = (
+/obj/structure/bed/chair{
+	pixel_x = 1
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"Pq" = (
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"PC" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"Qf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"Rz" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 2;
+	name = "\improper Engineering Hallway";
+	welded = 1
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/control_room)
+"RU" = (
+/turf/open/floor/prison/darkyellowcorners2/north,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"SO" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/control_room)
+"Ub" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mgibbl4";
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"Uq" = (
+/obj/item/shard,
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"UO" = (
+/turf/open/floor/prison/darkyellow2/southeast,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"VN" = (
+/turf/template_noop,
+/area/template_noop)
+"Xb" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	layer = 3.6
+	},
+/turf/open/floor/prison/darkyellowcorners2/west,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"Xx" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"XD" = (
+/obj/item/stack/rods,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"Yv" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison/darkyellow2/northwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"YO" = (
+/obj/item/prop/alien/hugger,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"Ze" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"Zn" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+
+(1,1,1) = {"
+VN
+VN
+VN
+VN
+VN
+VN
+VN
+VN
+bg
+kb
+EY
+SO
+Rz
+EY
+kb
+"}
+(2,1,1) = {"
+VN
+VN
+VN
+VN
+VN
+VN
+VN
+VN
+bg
+Yv
+tz
+LA
+vZ
+jv
+Ze
+"}
+(3,1,1) = {"
+VN
+VN
+VN
+VN
+VN
+VN
+VN
+VN
+bg
+GL
+Lc
+bk
+zp
+FQ
+Aw
+"}
+(4,1,1) = {"
+VN
+VN
+VN
+VN
+VN
+VN
+VN
+VN
+bg
+DC
+Oc
+pK
+Pq
+ji
+ui
+"}
+(5,1,1) = {"
+Ze
+Ze
+Aw
+Aw
+Ze
+Aw
+Aw
+Ze
+Ze
+Ad
+xQ
+bK
+sj
+Uq
+ui
+"}
+(6,1,1) = {"
+Ze
+dq
+Xx
+fi
+wS
+jY
+jY
+ko
+Ze
+Dt
+Ak
+Bx
+On
+oZ
+Ze
+"}
+(7,1,1) = {"
+Ze
+dG
+Ak
+Ms
+lO
+rV
+Ub
+Xb
+Aw
+gl
+Qf
+qO
+oh
+lL
+Ze
+"}
+(8,1,1) = {"
+ui
+be
+MK
+uZ
+BG
+rX
+rA
+Pq
+XD
+CX
+Hq
+Ah
+xQ
+oe
+Ze
+"}
+(9,1,1) = {"
+Aw
+kT
+OW
+FX
+kC
+kD
+ik
+Zn
+ME
+zD
+Jp
+PC
+xQ
+lK
+Ze
+"}
+(10,1,1) = {"
+Ze
+DC
+On
+kk
+eM
+co
+Da
+Hh
+ui
+RU
+xQ
+xQ
+xQ
+gt
+Ze
+"}
+(11,1,1) = {"
+Ze
+wU
+AK
+CP
+YO
+GW
+AK
+UO
+Ze
+bQ
+GW
+jg
+jL
+xs
+Ze
+"}
+(12,1,1) = {"
+Ze
+Ze
+ui
+ui
+Ze
+ui
+Aw
+Ze
+Ze
+Ze
+Aw
+Aw
+Aw
+Ze
+Ze
+"}

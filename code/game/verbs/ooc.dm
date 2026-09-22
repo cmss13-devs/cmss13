@@ -39,8 +39,8 @@ CLIENT_VERB(ooc, msg as text)
 	if(!attempt_talking(msg))
 		return
 
-	log_ooc("[mob.name]/[key] : [msg]")
-	GLOB.STUI.ooc.Add("\[[time_stamp()]] <font color='#display_colour'>OOC: [mob.name]/[key]: [msg]</font><br>")
+	log_ooc("[mob.name]/[ckey] : [msg]")
+	GLOB.STUI.ooc.Add("\[[time_stamp()]] <font color='#display_colour'>OOC: [mob.name]/[ckey]: [msg]</font><br>")
 	GLOB.STUI.processing |= STUI_LOG_OOC_CHAT
 
 	var/display_colour = GLOB.ooc_color_override
@@ -92,7 +92,7 @@ CLIENT_VERB(ooc, msg as text)
 		var/static/sub_icon = icon('icons/effects/effects.dmi', "sub")
 		prefix += "[icon2html(sub_icon, GLOB.clients)]"
 	if(isCouncil(src))
-		prefix += "[icon2html(GLOB.ooc_rank_dmi, GLOB.clients, "WhitelistCouncil")]"
+		prefix += "[icon2html(GLOB.ooc_rank_dmi, GLOB.clients, isSenator(src) ? "WhitelistSenator" : "WhitelistCouncil")]"
 	var/comm_award = find_community_award_icons()
 	if(comm_award)
 		prefix += comm_award
@@ -153,13 +153,13 @@ CLIENT_VERB(looc, msg as text)
 	if(!attempt_talking(msg))
 		return
 
-	log_ooc("(LOCAL) [mob.name]/[key] : [msg]")
-	GLOB.STUI.ooc.Add("\[[time_stamp()]] <font color='#6699CC'>LOOC: [mob.name]/[key]: [msg]</font><br>")
+	log_ooc("(LOCAL) [mob.name]/[ckey] : [msg]")
+	GLOB.STUI.ooc.Add("\[[time_stamp()]] <font color='#6699CC'>LOOC: [mob.name]/[ckey]: [msg]</font><br>")
 	GLOB.STUI.processing |= STUI_LOG_OOC_CHAT
 	var/list/heard = get_mobs_in_view(7, src.mob)
 	var/mob/S = src.mob
 
-	var/display_name = S.key
+	var/display_name = S.username()
 	if(S.stat != DEAD && !isobserver(S))
 		display_name = S.real_name
 
@@ -180,10 +180,11 @@ CLIENT_VERB(looc, msg as text)
 		var/transmit_language = isxeno(mob) ? LANGUAGE_XENOMORPH : LANGUAGE_ENGLISH
 		mob.langchat_speech(msg, heard, GLOB.all_languages[transmit_language], "#ff47d7")
 
-	// Now handle admins
-	display_name = S.key
+	// Now handle admins - show username (key) when different, otherwise just key
+	var/username = S.username()
+	display_name = username != S.key ? "[username] ([S.key])" : S.key
 	if(S.stat != DEAD && !isobserver(S))
-		display_name = "[S.real_name]/([S.key])"
+		display_name = "[S.real_name]/([username != S.key ? "[username] ([S.key])" : S.key])"
 
 	for(var/client/C in GLOB.admins)
 		if(!C.admin_holder || !(C.admin_holder.rights & R_MOD))

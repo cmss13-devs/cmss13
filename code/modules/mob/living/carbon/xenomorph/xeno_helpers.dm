@@ -1,5 +1,5 @@
 /mob/living/carbon/xenomorph/can_ventcrawl()
-	return (mob_size < MOB_SIZE_BIG && caste.can_vent_crawl)
+	return (mob_size < MOB_SIZE_BIG && caste.can_vent_crawl && !LAZYLEN(buckled_mobs))
 
 /mob/living/carbon/xenomorph/ventcrawl_carry()
 	var/mob/living/carbon/human/user = hauled_mob?.resolve()

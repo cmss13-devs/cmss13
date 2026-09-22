@@ -8,7 +8,6 @@
 	var/bloodiness = 0
 	var/move_delay = 6
 
-
 /obj/structure/bed/chair/wheelchair/handle_rotation()
 	overlays.Cut()
 	var/image/O = image(icon = 'icons/obj/structures/props/furniture/chairs.dmi', icon_state = "w_overlay", layer = FLY_LAYER, dir = src.dir)
@@ -44,8 +43,8 @@
 			move_delay++
 		if(!working_hands)
 			return // No hands to drive your chair? Tough luck!
-		if(driver.pulling && driver.pulling.drag_delay && driver.get_pull_miltiplier()) //Dragging stuff can slow you down a bit.
-			var/pull_delay = driver.pulling.get_pull_drag_delay() * driver.get_pull_miltiplier()
+		if(driver.pulling && driver.pulling.drag_delay && driver.get_pull_multiplier()) //Dragging stuff can slow you down a bit.
+			var/pull_delay = driver.pulling.get_pull_drag_delay() * driver.get_pull_multiplier()
 			move_delay += max(driver.pull_speed + pull_delay + 3*driver.grab_level, 0) //harder grab makes you slower
 
 		if(isgun(driver.get_active_hand())) //Wheelchair user has a gun out, so obviously can't move

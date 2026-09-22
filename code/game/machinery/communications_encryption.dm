@@ -66,7 +66,7 @@
 		return TRUE
 
 	tgui_interact(user)
-	user.set_interaction(user)
+	user.set_interaction(src)
 	return TRUE
 
 /obj/structure/machinery/computer/almayer_encryption/tgui_interact(mob/user, datum/tgui/ui)
@@ -157,6 +157,7 @@
 
 	playsound(src, 'sound/items/taperecorder/taperecorder_print.ogg', 15, vary=TRUE)
 	var/datum/tgui/ui = tgui_interact(user)
+	user.set_interaction(src)
 	if(!do_after(user, 5 DECISECONDS, show_busy_icon=BUSY_ICON_GENERIC, target=src))
 		return TRUE
 
@@ -210,6 +211,11 @@
 	icon_state = "sensor_comp1"
 	tgui_mode = "encoder"
 	preload_punchcards = 0 // Nothing to print
+	var/pending_failure = FALSE
+
+/obj/structure/machinery/computer/almayer_encryption/encoder/Initialize()
+	. = ..()
+	RegisterSignal(SSdcs, COMSIG_GLOB_DELAYED_COMMS_FAILURE, PROC_REF(on_comms_failure))
 
 /obj/structure/machinery/computer/almayer_encryption/encoder/ui_data(mob/user)
 	. = list()
@@ -227,6 +233,8 @@
 			submit_solution(params["solution"], params["offset"], ui.user)
 			playsound(src, "keyboard_alt", 15, vary=TRUE)
 			return TRUE
+		if("finished_ping")
+			alert_on_comms_failure()
 
 /// Called by ui_act when submitting a code to attempt to update comms clarity
 /obj/structure/machinery/computer/almayer_encryption/encoder/proc/submit_solution(list/attempt, offset, mob/user)
@@ -266,6 +274,29 @@
 /obj/structure/machinery/computer/almayer_encryption/encoder/try_restock_punch_card(obj/item/paper/punch_card/card, mob/living/user)
 	return FALSE // Nothing to print
 
+/// SIGNAL_HANDLER for COMSIG_GLOB_DELAYED_COMMS_FAILURE
+/obj/structure/machinery/computer/almayer_encryption/encoder/proc/on_comms_failure()
+	SIGNAL_HANDLER
+
+	// Either visualize a ping attempt to a viewer on the UI (with fallback timer) or just beep now
+	pending_failure = TRUE
+	var/mob/user = interactor?.resolve()
+	if(user)
+		var/datum/tgui/ui = SStgui.try_update_ui(user, src)
+		if(ui)
+			ui.send_update(list("forced_ping" = world.time))
+			addtimer(CALLBACK(src, PROC_REF(alert_on_comms_failure)), 5 SECONDS)
+			return
+	alert_on_comms_failure()
+
+/// Makes a balloon alert, sfx, and ares command message if pending_failure is true
+/obj/structure/machinery/computer/almayer_encryption/encoder/proc/alert_on_comms_failure()
+	if(!pending_failure)
+		return
+	pending_failure = FALSE
+	balloon_alert_to_viewers("connection error!", text_color=COLOR_RED)
+	playsound(get_turf(src), 'sound/machines/twobeep.ogg', 75, TRUE)
+	ai_silent_announcement("SYSTEMS REPORT: Colony communications encoding error.", ".V")
 
 // ----- Decoder Computer -----
 

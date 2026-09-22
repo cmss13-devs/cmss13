@@ -19,8 +19,14 @@
 /datum/lazy_template/ert/uscm_station
 	map_name = "uscm_ert_station"
 
+/datum/lazy_template/ert/yautja_station
+	map_name = "yautja_ert_station"
+
 /datum/lazy_template/fax_response_base
 	map_name = "fax_responder_base"
+
+/datum/lazy_template/predsurv_base
+	map_name = "predsurv_base"
 
 /datum/lazy_template/ssv_rostock
 	map_name = "ssv_rostock"

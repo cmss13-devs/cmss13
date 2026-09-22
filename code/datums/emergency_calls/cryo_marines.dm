@@ -12,6 +12,7 @@
 	shuttle_id = ""
 	var/leaders = 0
 	spawn_max_amount = TRUE
+	ignore_ftl_or_crash = TRUE
 
 /datum/emergency_call/cryo_squad/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
 	var/datum/squad/marine/cryo/cryo_squad = GLOB.RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
@@ -19,7 +20,7 @@
 	. = ..()
 	shipwide_ai_announcement("Successfully deployed [mob_max] Foxtrot marines, of which [length(members)] are ready for duty.")
 	if(mob_max > length(members))
-		announce_dchat("Some cryomarines were not taken, use the Join As Freed Mob verb to take one of them.")
+		announce_dchat("Some cryomarines were not taken, use the Join As Freed Mob verb in the Ghost tab to take one of them.")
 
 /datum/emergency_call/cryo_squad/create_member(datum/mind/mind, turf/override_spawn_loc)
 	set waitfor = 0
@@ -81,6 +82,8 @@
 		to_chat(human, SPAN_ROLE_HEADER("You are a Rifleman in the USCM."))
 		to_chat(human, SPAN_ROLE_BODY("You are here to assist in the defence of [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
 		to_chat(human, SPAN_BOLDWARNING("If you wish to cryo or ghost upon spawning in, you must ahelp and inform staff so you can be replaced."))
+
+	human.assigned_equipment_preset?.equip_spawn_lore(human)
 
 	sleep(10)
 	if(!mind)

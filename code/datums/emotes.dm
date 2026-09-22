@@ -109,7 +109,7 @@
 			S_TIMER_COOLDOWN_START(user, COOLDOWN_MOB_AUDIO, 20 SECONDS) // We won't ever want to stop this except during qdel
 		playsound(user, tmp_sound, volume, vary)
 
-	log_emote("[user.name]/[user.key] : [msg ? msg : key]")
+	log_emote("[user.name]/[user.ckey] : [msg ? msg : key]")
 
 	if(!msg)
 		return
@@ -329,7 +329,7 @@
 	if(!text)
 		CRASH("Someone passed nothing to manual_emote(), fix it")
 
-	log_emote(text)
+	log_emote("[name]/[ckey] : [text]")
 
 	var/paygrade = get_paygrade()
 

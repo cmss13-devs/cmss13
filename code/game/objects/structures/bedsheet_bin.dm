@@ -144,7 +144,7 @@ LINEN BINS
 			sheets.Add(I)
 			amount++
 			to_chat(user, SPAN_NOTICE("You put [I] in [src]."))
-	else if(amount && !hidden && I.w_class < 4) //make sure there's sheets to hide it among, make sure nothing else is hidden in there.
+	else if(amount && !hidden && I.w_class < 4 && !(I.flags_item & ITEM_ABSTRACT)) //make sure there's sheets to hide it among, make sure nothing else is hidden in there.
 		if(user.drop_held_item())
 			I.forceMove(src)
 			hidden = I

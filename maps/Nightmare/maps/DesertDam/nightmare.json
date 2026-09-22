@@ -1,10 +1,4 @@
 [
-	{ "type": "pick", "choices": [
-		{ "type": "map_insert",  "landmark": "green-new-bridge", "path": "greenriver/newbridge.dmm" }
-	], "chance": 0.0 },
-	{ "type": "pick", "choices": [
-		{ "weight": 2, "type": "map_insert",  "landmark": "purple-new-bridge", "path": "purpleriver/newbridge.dmm" }
-	], "chance": 0.0 },
 	{ "type": "map_sprinkle", "path": "sprinkles/" },
     {
 		"type": "map_insert",
@@ -43,9 +37,27 @@
 	},
     {
 		"type": "map_insert",
-		"landmark": "clfpods",
+		"landmark": "barhold",
+		"chance": 0.4,
+		"path": "standalone/barhold.dmm",
+		"when": { "lvevent": "none" }
+	},
+    {
+		"type": "map_insert",
+		"landmark": "quarantine",
+		"chance": 0.4,
+		"path": "standalone/quarantine.dmm",
+		"when": { "lvevent": "none" }
+	},
+    {
+        "type": "map_insert",
+        "landmark": "clfpods",
 		"chance": 1.0,
 		"path": "standalone/clfpods.dmm",
 		"when": { "lvevent": "clfpods" }
+    },
+	{
+		"type": "include", "name": "Standalone variations",
+		"file": "mapgen_variations.json"
 	}
 ]

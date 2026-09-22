@@ -41,6 +41,23 @@
 	///Distance away from the cordon where we can put a "sort-cordon" and run some extra code (see make_repel). 0 makes nothing happen
 	var/pre_cordon_distance = 0
 
+/datum/turf_reservation/proc/get_turf_z(turf/turf)
+	var/turf/bottom_left_turf
+	var/turf/top_right_turf
+	for(var/i in 1 to length(bottom_left_turfs))
+		bottom_left_turf = bottom_left_turfs[i]
+		top_right_turf = top_right_turfs[i]
+		if(bottom_left_turf.x < turf.x && bottom_left_turf.y < turf.y && top_right_turf.x > turf.x &&  top_right_turf.y > turf.y)
+			return i
+	return null
+
+/datum/turf_reservation/proc/is_below(turf/turf_below, turf/turf_above)
+	var/turf_above_z = get_turf_z(turf_above)
+	var/turf_below_z = get_turf_z(turf_below)
+	if(isnull(turf_above_z) || isnull(turf_below_z))
+		return FALSE
+	return turf_above_z > turf_below_z
+
 /datum/turf_reservation/transit
 	turf_type = /turf/open/space/transit
 	pre_cordon_distance = 7
@@ -171,7 +188,7 @@
 
 /// Calculates the effective bounds information for the given turf. Returns a list of the information, or null if not applicable.
 /datum/turf_reservation/proc/calculate_turf_bounds_information(turf/target)
-	for(var/z_idx in 1 to z_size)
+	for(var/z_idx in 1 to length(bottom_left_turfs))
 		var/turf/bottom_left = bottom_left_turfs[z_idx]
 		var/turf/top_right = top_right_turfs[z_idx]
 		var/bl_x = bottom_left.x
@@ -205,13 +222,13 @@
 		return null
 
 	var/z_idx = bounds_info["z_idx"]
-	// check what z level, if its the max, then there is no turf below
-	if(z_idx == z_size)
+	// check what z level, if its the min, then there is no turf below
+	if(z_idx == 1)
 		return null
 
 	var/offset_x = bounds_info["offset_x"]
 	var/offset_y = bounds_info["offset_y"]
-	var/turf/bottom_left = bottom_left_turfs[z_idx + 1]
+	var/turf/bottom_left = bottom_left_turfs[z_idx - 1]
 	return locate(bottom_left.x + offset_x, bottom_left.y + offset_y, bottom_left.z)
 
 /// Gets the turf above the given target. Returns null if there is no turf above the target
@@ -222,12 +239,12 @@
 
 	var/z_idx = bounds_info["z_idx"]
 	// check what z level, if its the min, then there is no turf above
-	if(z_idx == 1)
+	if(z_idx == z_size)
 		return null
 
 	var/offset_x = bounds_info["offset_x"]
 	var/offset_y = bounds_info["offset_y"]
-	var/turf/bottom_left = bottom_left_turfs[z_idx - 1]
+	var/turf/bottom_left = bottom_left_turfs[z_idx + 1]
 	return locate(bottom_left.x + offset_x, bottom_left.y + offset_y, bottom_left.z)
 
 /datum/turf_reservation/New()

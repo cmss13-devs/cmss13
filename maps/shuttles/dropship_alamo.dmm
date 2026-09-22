@@ -1,4 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/closed/shuttle/dropship1{
+	icon_state = "82"
+	},
+/area/shuttle/drop1/sulaco)
 "aj" = (
 /obj/structure/machinery/camera/autoname/almayer/dropship_one{
 	dir = 4;
@@ -370,7 +375,8 @@
 "Iu" = (
 /obj/effect/attach_point/fuel/dropship1{
 	dir = 1;
-	pixel_x = -32
+	pixel_x = -32;
+	adjusted_pixel = 1
 	},
 /turf/closed/shuttle/dropship1/transparent{
 	icon_state = "33"
@@ -699,7 +705,7 @@ VM
 QT
 Cg
 OL
-KJ
+Za
 cR
 Zo
 Zo
@@ -791,7 +797,7 @@ bj
 cC
 nO
 yQ
-Za
+KJ
 XF
 Zo
 Zo
@@ -814,7 +820,7 @@ mb
 mb
 mb
 IP
-oo
+aa
 TK
 cr
 TK

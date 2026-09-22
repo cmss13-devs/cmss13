@@ -106,7 +106,7 @@
 		CC.updateicon()
 		overlays = list()
 		string_attached = null
-		to_chat(user, SPAN_NOTICE(" You detach the string from the coin."))
+		to_chat(user, SPAN_NOTICE("You detach the string from the coin."))
 	else ..()
 
 /obj/item/coin/attack_self(mob/user)
@@ -117,8 +117,8 @@
 		comment = "tails"
 	else if(result == 2)
 		comment = "heads"
-	user.visible_message(SPAN_NOTICE("[user] has thrown \the [src]. It lands on [comment]! "),
-						SPAN_NOTICE("You throw \the [src]. It lands on [comment]! "))
+	user.visible_message(SPAN_NOTICE("[user] has thrown \the [src]. It lands on [comment]!"),
+						SPAN_NOTICE("You throw \the [src]. It lands on [comment]!"))
 
 
 /obj/item/coin/marine

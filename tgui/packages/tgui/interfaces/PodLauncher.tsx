@@ -387,11 +387,13 @@ const ViewTabHolder = (props) => {
         </Flex.Item>
         <Flex.Item grow={1} mt={1}>
           <ByondUi
-            className="CameraPanel"
-            height="100%"
-            params={{
+            winsetParams={{
               id: map_ref,
               type: 'map',
+            }}
+            boxProps={{
+              className: 'CameraPanel',
+              height: '100%',
             }}
           />
         </Flex.Item>
@@ -571,8 +573,6 @@ class PresetsPage extends Component {
   }
 
   async componentDidMount() {
-    // This warning is generally considered OK to ignore in this context
-    // eslint-disable-next-line react/no-did-mount-set-state
     this.setState({
       presets: await this.getPresets(),
     });

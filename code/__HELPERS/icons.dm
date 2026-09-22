@@ -230,7 +230,7 @@ world
 /icon/proc/ColorTone(tone)
 	GrayScale()
 
-	var/list/TONE = ReadRGB(tone)
+	var/list/TONE = rgb2num(tone)
 	var/gray = round(TONE[1]*0.3 + TONE[2]*0.59 + TONE[3]*0.11, 1)
 
 	var/icon/upper = (255-gray) ? new(src) : null
@@ -272,64 +272,6 @@ world
 
 		Higher value means brighter color
  */
-
-/proc/ReadRGB(rgb)
-	if(!rgb)
-		return
-
-	// interpret the HSV or HSVA value
-	var/i=1,start=1
-	if(text2ascii(rgb) == 35) ++start // skip opening #
-	var/ch,which=0,r=0,g=0,b=0,alpha=0,usealpha
-	var/digits=0
-	for(i=start, i<=length(rgb), ++i)
-		ch = text2ascii(rgb, i)
-		if(ch < 48 || (ch > 57 && ch < 65) || (ch > 70 && ch < 97) || ch > 102)
-			break
-		++digits
-		if(digits == 8)
-			break
-
-	var/single = digits < 6
-	if(digits != 3 && digits != 4 && digits != 6 && digits != 8)
-		return
-	if(digits == 4 || digits == 8)
-		usealpha = 1
-	for(i=start, digits>0, ++i)
-		ch = text2ascii(rgb, i)
-		if(ch >= 48 && ch <= 57)
-			ch -= 48
-		else if(ch >= 65 && ch <= 70) ch -= 55
-		else if(ch >= 97 && ch <= 102) ch -= 87
-		else
-			break
-		--digits
-		switch(which)
-			if(0)
-				r = (r << 4)|ch
-				if(single)
-					r |= r << 4
-					++which
-				else if(!(digits & 1)) ++which
-			if(1)
-				g = (g << 4)|ch
-				if(single)
-					g |= g << 4
-					++which
-				else if(!(digits & 1)) ++which
-			if(2)
-				b = (b << 4)|ch
-				if(single)
-					b |= b << 4
-					++which
-				else if(!(digits & 1)) ++which
-			if(3)
-				alpha = (alpha << 4)|ch
-				if(single)
-					alpha |= alpha << 4
-
-	. = list(r, g, b)
-	if(usealpha) . += alpha
 
 /// Create a single [/icon] from a given [/atom] or [/image].
 ///
@@ -558,7 +500,7 @@ world
 	if (!color) return "#FFFFFF"
 	if (!value) return color
 
-	var/list/RGB = ReadRGB(color)
+	var/list/RGB = rgb2num(color)
 	RGB[1] = clamp(RGB[1]+value,0,255)
 	RGB[2] = clamp(RGB[2]+value,0,255)
 	RGB[3] = clamp(RGB[3]+value,0,255)
@@ -887,22 +829,7 @@ world
 		return TRUE
 
 /proc/BlendRGB(rgb1, rgb2, amount)
-	var/list/RGB1 = ReadRGB(rgb1)
-	var/list/RGB2 = ReadRGB(rgb2)
-
-	// add missing alpha if needed
-	if(length(RGB1) < length(RGB2))
-		RGB1 += 255
-	else if(length(RGB2) < length(RGB1))
-		RGB2 += 255
-	var/usealpha = length(RGB1) > 3
-
-	var/r = round(RGB1[1] + (RGB2[1] - RGB1[1]) * amount, 1)
-	var/g = round(RGB1[2] + (RGB2[2] - RGB1[2]) * amount, 1)
-	var/b = round(RGB1[3] + (RGB2[3] - RGB1[3]) * amount, 1)
-	var/alpha = usealpha ? round(RGB1[4] + (RGB2[4] - RGB1[4]) * amount, 1) : null
-
-	return isnull(alpha) ? rgb(r, g, b) : rgb(r, g, b, alpha)
+	return rgb_gradient(amount, 0, rgb1, 1, rgb2, "loop")
 
 /proc/icon2base64(icon/icon)
 	if(!isicon(icon))

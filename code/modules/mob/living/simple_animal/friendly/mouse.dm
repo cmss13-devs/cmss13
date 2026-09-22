@@ -21,8 +21,8 @@
 	response_harm   = "stamps on the"
 	layer = ABOVE_LYING_MOB_LAYER
 	min_oxy = 16 //Require at least 16kPA oxygen
-	minbodytemp = 223 //Below -50 Degrees Celcius
-	maxbodytemp = 323 //Above 50 Degrees Celcius
+	minbodytemp = 223 //Below -50 Degrees Celsius
+	maxbodytemp = 323 //Above 50 Degrees Celsius
 	universal_speak = FALSE
 	universal_understand = TRUE
 	holder_type = /obj/item/holder/mouse
@@ -84,6 +84,7 @@
 	return
 
 /mob/living/simple_animal/small/mouse/Crossed(AM as mob|obj)
+	..()
 	if( ishuman(AM) )
 		if(!ckey && stat == UNCONSCIOUS)
 			set_stat(CONSCIOUS)
@@ -91,9 +92,8 @@
 			wander = TRUE
 		else if(!stat && prob(5))
 			var/mob/M = AM
-			to_chat(M, SPAN_NOTICE(" [icon2html(src, M)] Squeek!"))
+			to_chat(M, SPAN_NOTICE("[icon2html(src, M)] Squeek!"))
 			M << 'sound/effects/mousesqueek.ogg'
-	..()
 
 /mob/living/simple_animal/small/mouse/death()
 	layer = ABOVE_LYING_MOB_LAYER

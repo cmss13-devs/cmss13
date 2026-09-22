@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	. = ..()
 	if(on)
 		playsound(src, 'sound/machines/tcomms_on.ogg', vol = 80, vary = FALSE, sound_range = 16, falloff = 0.5)
-		msg_admin_niche("Portable communication relay started for Z-Level [src.z] [ADMIN_JMP(src)]")
+		msg_admin_niche("Portable communication relay started for Z-Level [src.z]", src)
 
 		if(SSobjectives && SSobjectives.comms)
 			// This is the first time colony comms have been established.
@@ -77,7 +77,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/relay/preset/tower/tcomms_shutdown()
 	. = ..()
 	if(!on)
-		msg_admin_niche("Portable communication relay shut down for Z-Level [src.z] [ADMIN_JMP(src)]")
+		msg_admin_niche("Portable communication relay shut down for Z-Level [src.z]", src)
 
 /obj/structure/machinery/telecomms/relay/preset/tower/bullet_act(obj/projectile/P)
 	..()
@@ -102,14 +102,14 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	if(health <= 0)
 		toggled = FALSE // requires flipping on again once repaired
 	if(health < initial(health))
-		desc = "[initial(desc)] [SPAN_WARNING(" It is damaged and needs a welder for repairs!")]"
+		desc = "[initial(desc)] [SPAN_WARNING("It is damaged and needs a welder for repairs!")]"
 	else
 		desc = initial(desc)
 	update_state()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/toggle_state(mob/user)
 	if(!toggled && (inoperable() || (health <= initial(health) / 2)))
-		to_chat(user, SPAN_WARNING("\The [src.name] needs repairs to be turned back on!"))
+		to_chat(user, SPAN_WARNING("[src] needs repairs to be turned back on!"))
 		return
 	..()
 
@@ -157,7 +157,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	if(isSilicon(user))
 		return ..()
 	if(on)
-		to_chat(user, SPAN_WARNING("\The [src.name] blinks and beeps incomprehensibly as it operates, better not touch this..."))
+		to_chat(user, SPAN_WARNING("[src] blinks and beeps incomprehensibly as it operates, better not touch this..."))
 		return
 	toggle_state(user) // just flip dat switch
 
@@ -201,6 +201,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	icon = 'icons/obj/structures/machinery/comm_tower3.dmi'
 	icon_state = "static1"
 	toggled = FALSE
+	on = FALSE
 	bound_height = 64
 	bound_width = 64
 	freq_listening = list(COLONY_FREQ)
@@ -211,18 +212,28 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	/// Tower has been taken before, this gives xenos an extra resin point on capture for the first time.
 	var/captured_before = FALSE
 
-
 	/// Held image for the current overlay on the tower from xeno corruption
 	var/image/corruption_image
 
 	/// Holds the delay for when a cluster can recorrupt the comms tower after a pylon has been destroyed
 	COOLDOWN_DECLARE(corruption_delay)
 
-/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/Initialize()
-	. = ..()
+	/// Whether this tower has already triggered a garble event
+	var/garble_event_triggered = FALSE
 
-	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(register_with_turf))
-	register_with_turf()
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/Initialize(mapload, ...)
+	. = ..()
+	// COMSIG_MOVABLE_TURF_ENTERED to handle ChangeTurf
+	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(register_with_turf))
+	if(!mapload)
+		register_with_turf()
+
+/// Handler for callback of COMSIG_MOVABLE_TURF_ENTERED (turf changed)
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/register_with_turf(atom/movable/source, turf/new_turf)
+	SIGNAL_HANDLER
+	var/turf/location = get_turf(src)
+	if(location && (!new_turf || location == new_turf)) // We only need to monitor our loc not our locs
+		RegisterSignal(location, COMSIG_WEEDNODE_GROWTH, PROC_REF(handle_xeno_acquisition))
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/get_examine_text(mob/user)
 	. = ..()
@@ -245,7 +256,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		to_chat(user, SPAN_NOTICE("\The [src] is already turned [on ? "on" : "off"]!"))
 		return
 	if(stat & NOPOWER)
-		to_chat(user, SPAN_WARNING("\The [src] makes a small plaintful beep, and nothing happens. It seems to be out of power."))
+		to_chat(user, SPAN_WARNING("\The [src] makes a small plaintive beep, and nothing happens. It seems to be out of power."))
 		return FALSE
 	if(toggle_cooldown > world.time) //cooldown only to prevent spam toggling
 		to_chat(user, SPAN_WARNING("\The [src]'s processors are still cooling! Wait before trying to flip the switch again."))
@@ -254,6 +265,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	var/turf/commloc = get_turf(src)
 	var/area/commarea = get_area(src)
 	if(on) //now, if it went on it now uses power
+		garble_event_triggered = FALSE
 		use_power = USE_POWER_IDLE
 		message_admins("[key_name(user)] turned \the [src] in [commarea] ON. [ADMIN_JMP(commloc.loc)]")
 	else
@@ -265,7 +277,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/attackby(obj/item/I, mob/user)
 	if(HAS_TRAIT(I, TRAIT_TOOL_MULTITOOL))
 		if(inoperable() || (health <= initial(health) * 0.5))
-			to_chat(user, SPAN_WARNING("\The [src.name] needs repairs to have frequencies added to its software!"))
+			to_chat(user, SPAN_WARNING("[src] needs repairs to have frequencies added to its software!"))
 			return
 		var/choice = tgui_input_list(user, "What do you wish to do?", "TC-3T comms tower", list("Wipe communication frequencies", "Add your faction's frequencies"))
 		if(choice == "Wipe communication frequencies")
@@ -276,20 +288,24 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		else if(choice == "Add your faction's frequencies")
 			if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
+			if(FACTION_SURVIVOR in user.faction_group)
+				freq_listening |= COLONY_FREQ
+				if(user.faction == FACTION_MARINE)
+					freq_listening |= SURVIVOR_FREQS
 			switch(user.faction)
 				if(FACTION_SURVIVOR)
 					freq_listening |= COLONY_FREQ
-					if(FACTION_MARINE in user.faction_group) //FORECON survivors
-						freq_listening |= SOF_FREQ
 				if(FACTION_CLF)
 					freq_listening |= CLF_FREQS
 				if(FACTION_UPP)
 					freq_listening |= UPP_FREQS
 				if(FACTION_WY,FACTION_PMC)
 					freq_listening |= PMC_FREQS
-				if(FACTION_TWE)
+				if(FACTION_TWE, FACTION_IASF)
 					freq_listening |= RMC_FREQ
-				if(FACTION_YAUTJA)
+				if(FACTION_MARSHAL)
+					freq_listening |= CMB_FREQ
+				if(FACTION_YAUTJA, FACTION_YAUTJA_YOUNG, FACTION_YAUTJA_BADBLOOD, FACTION_YAUTJA_STRANDED)
 					to_chat(user, SPAN_WARNING("You decide to leave the human machine alone."))
 					return
 				else
@@ -301,24 +317,40 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/power_change()
 	..()
-	if((stat & NOPOWER))
-		if(on)
-			toggle_state()
-			on = FALSE
-			update_icon()
-			SSradio.update_cache()
+	if((stat & NOPOWER) && on)
+		toggled = FALSE
+		update_state()
+		SSradio.update_cache()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/update_state()
 	..()
 	if(inoperable())
-		handle_xeno_acquisition(get_turf(src))
+		handle_xeno_acquisition()
+		if(!garble_event_triggered && (COMM_FREQ in freq_listening))
+			garble_event_triggered = TRUE
+			SSradio.update_cache()
+			addtimer(CALLBACK(src, PROC_REF(delayed_marine_failure)), 10 SECONDS)
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/delayed_marine_failure()
+	SSradio.faction_coms_clarity[FACTION_MARINE] = CONFIG_GET(number/announcement_min_clarity)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_DELAYED_COMMS_FAILURE)
+
+/// Locates a nearby cluster from GLOB.all_xeno_pylon_cluster_nodes otherwise null
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/find_nearby_cluster()
+	for(var/obj/effect/alien/weeds/node/pylon/cluster/cluster as anything in GLOB.all_xeno_pylon_cluster_nodes)
+		if(cluster.is_in_range(src))
+			return cluster
+	return null
 
 /// Handles xenos corrupting the tower when weeds touch the turf it is located on
-/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/handle_xeno_acquisition(turf/weeded_turf)
+/// caller argument just used to simplify the need for calling find_nearby_cluster if needed
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/handle_xeno_acquisition(obj/effect/alien/weeds/signal_source, obj/effect/alien/weeds/node/pylon/invoking_pylon)
 	SIGNAL_HANDLER
 
 	if(corrupted)
 		return
+
+	var/turf/weeded_turf = get_turf(src)
 
 	if(!weeded_turf.weeds)
 		return
@@ -329,37 +361,43 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	if(!weeded_turf.weeds.parent)
 		return
 
-	if(!istype(weeded_turf.weeds.parent, /obj/effect/alien/weeds/node/pylon/cluster))
-		return
-
 	if(SSticker.mode.is_in_endgame)
 		return
 
 	if(operable())
 		return
 
+	// This might not actually be a cluster node but we'll assert that in a moment
+	var/obj/effect/alien/weeds/node/pylon/cluster/effective_parent = weeded_turf.weeds.parent
+	if(!istype(effective_parent, /obj/effect/alien/weeds/node/pylon/cluster))
+		if(!istype(effective_parent, /obj/effect/alien/weeds/node/pylon/core))
+			return
+		// Core weeds can override cluster weeds so manually look for a cluster if not already passed in args
+		effective_parent = invoking_pylon || find_nearby_cluster()
+		if(!effective_parent)
+			return
+
 	if(ROUND_TIME < XENO_COMM_ACQUISITION_TIME)
-		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition), weeded_turf), (XENO_COMM_ACQUISITION_TIME - ROUND_TIME), TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition)), (XENO_COMM_ACQUISITION_TIME - ROUND_TIME), TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 		return
 
 	if(!COOLDOWN_FINISHED(src, corruption_delay))
-		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition), weeded_turf), (COOLDOWN_TIMELEFT(src, corruption_delay)), TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition)), (COOLDOWN_TIMELEFT(src, corruption_delay)), TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 		return
 
-	var/obj/effect/alien/weeds/node/pylon/cluster/parent_node = weeded_turf.weeds.parent
-
-	var/obj/effect/alien/resin/special/cluster/cluster_parent = parent_node.resin_parent
-
-	var/list/held_children_weeds = parent_node.children
+	// Prepare to upgrade the cluster
+	var/obj/effect/alien/resin/special/cluster/cluster_parent = effective_parent.resin_parent
+	var/list/held_children_weeds = effective_parent.children - effective_parent // why does it put itself into children...
 	var/cluster_loc = cluster_parent.loc
 	var/linked_hive = cluster_parent.linked_hive
 
-	parent_node.children = list()
-
+	// Delete the old (but don't touch our list)
+	effective_parent.children = list()
 	qdel(cluster_parent)
 
+	// Make a new endgame pylon
 	var/obj/effect/alien/resin/special/pylon/endgame/new_pylon = new(cluster_loc, linked_hive)
-	new_pylon.node.children = held_children_weeds
+	new_pylon.node.children += held_children_weeds
 
 	for(var/obj/effect/alien/weeds/weed in new_pylon.node.children)
 		weed.parent = new_pylon.node
@@ -386,9 +424,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	SIGNAL_HANDLER
 
 	corrupted = FALSE
-
 	overlays -= corruption_image
-
 	COOLDOWN_START(src, corruption_delay, XENO_PYLON_DESTRUCTION_DELAY)
 
 /// Handles moving the overlay from growing to idle
@@ -397,14 +433,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		return
 
 	corruption_image = image(icon, icon_state = "resin_idle")
-
 	overlays += corruption_image
-
-/// Handles re-registering signals on new turfs if changed
-/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/register_with_turf()
-	SIGNAL_HANDLER
-
-	RegisterSignal(get_turf(src), COMSIG_WEEDNODE_GROWTH, PROC_REF(handle_xeno_acquisition))
 
 /obj/structure/machinery/telecomms/relay/preset/telecomms
 	id = "Telecomms Relay"
@@ -428,7 +457,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	network = "tcommsat"
 	autolinkers = list("hub", "relay", "s_relay", "medical",
 		"common", "command", "engineering", "squads", "security",
-		"receiverA", "receiverB",  "broadcasterA", "broadcasterB")
+		"receiverA", "receiverB", "broadcasterA", "broadcasterB")
 
 /obj/structure/machinery/telecomms/hub/preset_cent
 	id = "CentComm Hub"
@@ -452,7 +481,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	id = "Receiver B"
 	network = "tcommsat"
 	autolinkers = list("receiverB") // link to relay
-	freq_listening = list(COMM_FREQ, ENG_FREQ, SEC_FREQ, MED_FREQ, REQ_FREQ, SENTRY_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ)
+	freq_listening = list(COMM_FREQ, ENG_FREQ, SEC_FREQ, MED_FREQ, REQ_FREQ, SENTRY_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, WY_PUB_FREQ, WY_SEC_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ)
 
 	//Common and other radio frequencies for people to freely use
 /obj/structure/machinery/telecomms/receiver/preset/Initialize(mapload, ...)
@@ -464,8 +493,13 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	id = "CentComm Receiver"
 	network = "tcommsat"
 	autolinkers = list("receiverCent")
-	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ, FORECON_FREQ)
+	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ, FORECON_FREQ, ARMY_FREQ)
 
+/obj/structure/machinery/telecomms/receiver/preset_yaut
+	id = "Yautja Receiver"
+	network = "tcommsat"
+	autolinkers = list("yautjacomm")
+	freq_listening = list(YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, BADBLOOD_FREQ, STRANDED_FREQ)
 //Buses
 
 /obj/structure/machinery/telecomms/bus/preset_one
@@ -483,7 +517,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/bus/preset_three
 	id = "Bus 3"
 	network = "tcommsat"
-	freq_listening = list(SEC_FREQ, COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
+	freq_listening = list(SEC_FREQ, COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, WY_PUB_FREQ, WY_SEC_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
 	autolinkers = list("processor3", "security", "command", "JTAC")
 
 /obj/structure/machinery/telecomms/bus/preset_four
@@ -499,9 +533,14 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/bus/preset_cent
 	id = "CentComm Bus"
 	network = "tcommsat"
-	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
+	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
 	autolinkers = list("processorCent", "centcomm")
 
+/obj/structure/machinery/telecomms/bus/preset_yaut
+	id = "Yautja Bus"
+	network = "tcommsat"
+	freq_listening = list(YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, BADBLOOD_FREQ, STRANDED_FREQ)
+	autolinkers = list("yautjacomm")
 //Processors
 
 /obj/structure/machinery/telecomms/processor/preset_one
@@ -564,7 +603,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 /obj/structure/machinery/telecomms/server/presets/command
 	id = "Command Server"
-	freq_listening = list(COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
+	freq_listening = list(COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, WY_PUB_FREQ, WY_SEC_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
 	autolinkers = list("command")
 
 /obj/structure/machinery/telecomms/server/presets/engineering
@@ -579,9 +618,13 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 /obj/structure/machinery/telecomms/server/presets/centcomm
 	id = "CentComm Server"
-	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
+	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
 	autolinkers = list("centcomm")
 
+/obj/structure/machinery/telecomms/server/presets/yaut
+	id = "Yautja Server"
+	autolinkers = list("yautjacomm")
+	freq_listening = list(YAUT_FREQ, YAUT_OVR_FREQ, YAUT_SPEC_FREQ, BADBLOOD_FREQ, STRANDED_FREQ)
 //Broadcasters
 
 //--PRESET LEFT--//

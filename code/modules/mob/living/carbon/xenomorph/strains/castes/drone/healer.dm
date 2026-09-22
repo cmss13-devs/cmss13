@@ -1,6 +1,6 @@
 /datum/xeno_strain/healer
 	name = DRONE_HEALER
-	description = "You lose your choice of resin secretions, a chunk of your slash damage, and you will experience a slighty-increased difficulty in tackling hosts in exchange for strong pheromones, the ability to use a bit of your health to plant a maximum of three lesser resin fruits, and the ability to heal your sisters' wounds by secreting a regenerative resin salve by using your vital fluids and a fifth of your plasma. Be wary, this is a dangerous process; overexert yourself and you may exhaust yourself to unconsciousness, or die..."
+	description = "You lose your choice of resin secretions, a chunk of your slash damage, and you will experience a slightly-increased difficulty in tackling hosts in exchange for strong pheromones, the ability to use a bit of your health to plant a maximum of three lesser resin fruits, and the ability to heal your sisters' wounds by secreting a regenerative resin salve by using your vital fluids and a fifth of your plasma. Be wary, this is a dangerous process; overexert yourself and you may exhaust yourself to unconsciousness, or die..."
 	flavor_description = "Divided we fall, united we win. We live for the hive, we die for the hive."
 	icon_state_prefix = "Healer"
 
@@ -24,7 +24,6 @@
 
 /datum/xeno_strain/healer/apply_strain(mob/living/carbon/xenomorph/drone/drone)
 	drone.phero_modifier += XENO_PHERO_MOD_LARGE
-	drone.plasma_types += PLASMA_PHEROMONE
 	drone.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
 	drone.tackle_chance_modifier -= 5
 
@@ -139,7 +138,7 @@
 	healer_delegate.salve_applied_recently = TRUE
 	if(!target_is_healer && !isfacehugger(target_xeno)) // no cheap grinding
 		healer_delegate.modify_transferred(amount * damage_taken_mod)
-	update_icons()
+	behavior_delegate?.on_update_icons()
 	addtimer(CALLBACK(healer_delegate, /datum/behavior_delegate/drone_healer/proc/un_salve), 5 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 
 /datum/behavior_delegate/drone_healer
@@ -175,7 +174,7 @@
 
 /datum/behavior_delegate/drone_healer/proc/un_salve()
 	salve_applied_recently = FALSE
-	bound_xeno.update_icons()
+	bound_xeno.behavior_delegate?.on_update_icons()
 
 /*
 	SACRIFICE
@@ -196,14 +195,14 @@
 		return
 	if(bound_xeno.stat == DEAD)
 		return
-	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	var/image/holder = bound_xeno.hud_list[SPECIAL_HUD]
 	holder.overlays.Cut()
 	var/percentage_transferred = min(round((transferred_amount / required_transferred_amount) * 100, 10), 100)
 	if(percentage_transferred)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_transferred]")
 
 /datum/behavior_delegate/drone_healer/handle_death(mob/M)
-	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	var/image/holder = bound_xeno.hud_list[SPECIAL_HUD]
 	holder.overlays.Cut()
 
 /datum/action/xeno_action/activable/healer_sacrifice
@@ -268,7 +267,6 @@
 		target.gain_health(abs(target.health)) //second, get them out of crit.
 
 	target.gain_health(xeno.health * transfer_mod)
-	target.updatehealth()
 
 	target.clear_debuffs() //third, remove debuffs so they can stand up.
 

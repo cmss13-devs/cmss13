@@ -30,7 +30,8 @@
 	..()
 	spawn(5)
 		if(brainmob && brainmob.client)
-			brainmob.client.screen.len = null //clear the hud
+			brainmob.client.screen.Cut() //clear the hud
+			brainmob.client.render_plates_shown = alist()
 
 /obj/item/organ/brain/proc/transfer_identity(mob/living/carbon/H)
 	name = "[H]'s brain"
@@ -42,7 +43,7 @@
 	if(H.mind)
 		H.mind.transfer_to(brainmob)
 
-	to_chat(brainmob, SPAN_NOTICE(" You feel slightly disoriented. That's normal when you're just a brain."))
+	to_chat(brainmob, SPAN_NOTICE("You feel slightly disoriented. That's normal when you're just a brain."))
 
 /obj/item/organ/brain/get_examine_text(mob/user)
 	. = ..()

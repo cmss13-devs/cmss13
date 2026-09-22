@@ -2,7 +2,7 @@
 /obj/effect/landmark/structure_spawner
 	name = "structure spawner"
 	icon_state = "x2"
-	/// Typepath to effectively instanciate
+	/// Typepath to effectively instantiate
 	var/path_to_spawn
 	/// Truthy if a turf to use turf placement operations
 	var/is_turf = FALSE
@@ -35,7 +35,7 @@
 		target_location = get_spawn_location()
 	if(is_turf)
 		var/turf/T = target_location
-		return T?.PlaceOnTop(path_to_spawn)
+		return T?.place_on_top(path_to_spawn)
 	return new path_to_spawn(target_location)
 
 /// Post-Setup hook, mainly to delete unused landmarks. By default delete all non-applicable ones

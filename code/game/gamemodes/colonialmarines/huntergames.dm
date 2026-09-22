@@ -86,8 +86,8 @@
 //Digging through this is a pain. I'm leaving it mostly alone until a full rework takes place.
 
 /datum/game_mode/huntergames
-	name = "Hunter Games"
-	config_tag = "Hunter Games"
+	name = GAMEMODE_HUNTER_GAMES
+	config_tag = GAMEMODE_HUNTER_GAMES
 	required_players = 1
 	flags_round_type = MODE_NO_LATEJOIN
 	latejoin_larva_drop = 0 //You never know
@@ -408,7 +408,7 @@
 			break
 
 	if(finished == 1 && !QDELETED(winner) && istype(winner))
-		to_world(SPAN_DANGER("<FONT size = 4><B>We have a winner! >> [winner.real_name] ([winner.key]) << defeated all enemies!</B></FONT>"))
+		to_world(SPAN_DANGER("<FONT size = 4><B>We have a winner! >> [winner.real_name] ([winner.username()]) << defeated all enemies!</B></FONT>"))
 		to_world("<FONT size = 3><B>Well done, your tale of survival will live on in legend!</B></FONT>")
 
 	else if(finished == 2)

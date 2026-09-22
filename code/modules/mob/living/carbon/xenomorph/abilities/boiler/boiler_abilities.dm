@@ -5,31 +5,6 @@
 	handles_movement = FALSE
 	movement_slowdown = XENO_SPEED_SLOWMOD_ZOOM
 
-/datum/action/xeno_action/activable/acid_lance
-	name = "Acid Lance"
-	action_icon_state = "acid_lance"
-	plasma_cost = 50
-	macro_path = /datum/action/xeno_action/verb/verb_acid_lance
-	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 19 SECONDS
-
-	// Config
-	var/stack_time = 10
-	var/base_range = 6
-	var/range_per_stack = 1
-	var/base_damage = 35
-	var/damage_per_stack = 15
-	var/movespeed_per_stack = 1.25
-
-	var/time_after_max_before_end = 25
-
-	// State
-	var/stacks = 0
-	var/max_stacks = 5
-	var/movespeed_nerf_applied = 0
-	var/activated_once = FALSE
-
 /datum/action/xeno_action/onclick/shift_spits/boiler
 	name = "Toggle Gas Type"
 	action_icon_state = "shift_spit_acid_glob"

@@ -52,6 +52,61 @@
 	gear_preset = /datum/equipment_preset/wy/manager/director
 	supervisors = "Weyland-Yutani Directorate"
 
+// Goons //
+/datum/job/special/wey_yu/goon
+	supervisors = "Weyland-Yutani Directorate"
+
+/datum/job/special/wey_yu/goon/standard
+	title = JOB_WY_GOON
+	gear_preset = /datum/equipment_preset/goon/standard
+
+/datum/job/special/wey_yu/goon/engineer
+	title = JOB_WY_GOON_TECH
+	gear_preset = /datum/equipment_preset/goon/engineer
+
+/datum/job/special/wey_yu/goon/medic
+	title = JOB_WY_GOON_MEDIC
+	gear_preset = /datum/equipment_preset/goon/medic
+
+/datum/job/special/wey_yu/goon/lead
+	title = JOB_WY_GOON_LEAD
+	gear_preset = /datum/equipment_preset/goon/lead
+
+/datum/job/special/wey_yu/goon/researcher
+	title = JOB_WY_RESEARCHER
+	gear_preset = /datum/equipment_preset/goon/researcher
+
+/datum/job/special/wey_yu/goon/researcher/lead
+	title = JOB_WY_RESEARCH_LEAD
+	gear_preset = /datum/equipment_preset/goon/researcher/lead
+
+/datum/job/special/wey_yu/ppo // Abstract type (null title)
+	supervisors = "Weyland-Yutani Personal Protection Division"
+
+/datum/job/special/wey_yu/ppo/standard
+	title = JOB_WY_PPO
+	gear_preset = /datum/equipment_preset/wy_ppo
+
+/datum/job/special/wey_yu/ppo/specialist
+	title = JOB_WY_PPS
+	gear_preset = /datum/equipment_preset/wy_ppo/spec
+
+/datum/job/special/wey_yu/ppo/coordinator
+	title = JOB_WY_PPC
+	gear_preset = /datum/equipment_preset/wy_ppo/coordinator
+
+/datum/job/special/wey_yu/ppo/directorate
+	supervisors = "Weyland-Yutani Directorate"
+	title = JOB_WY_DPO
+	gear_preset = /datum/equipment_preset/wy_ppo/directorate
+
+/datum/job/special/wey_yu/ppo/directorate/specialist
+	title = JOB_WY_DPS
+	gear_preset = /datum/equipment_preset/wy_ppo/directorate/spec
+
+/datum/job/special/wey_yu/ppo/directorate/coordinator
+	title = JOB_WY_DPC
+	gear_preset = /datum/equipment_preset/wy_ppo/directorate/coordinator
 
 // PMCS //
 /datum/job/special/wey_yu/pmc // Abstract type (null title)
@@ -94,8 +149,8 @@
 	gear_preset = /datum/equipment_preset/pmc/pmc_riot_control
 
 /datum/job/special/wey_yu/pmc/detainer
-	title = JOB_PMC_DETAINER
-	gear_preset = /datum/equipment_preset/pmc/pmc_detainer
+	title = JOB_PMC_SECURITY
+	gear_preset = /datum/equipment_preset/pmc/pmc_security
 
 /datum/job/special/wey_yu/pmc/crewman
 	title = JOB_PMC_CREWMAN
@@ -107,7 +162,7 @@
 
 /datum/job/special/wey_yu/pmc/synth
 	title = JOB_PMC_SYNTH
-	gear_preset = /datum/equipment_preset/pmc/synth
+	gear_preset = /datum/equipment_preset/synth/pmc
 
 /datum/job/special/wey_yu/pmc/director
 	title = JOB_PMC_DIRECTOR
@@ -126,6 +181,6 @@
 	gear_preset = /datum/equipment_preset/pmc/commando/gunner
 
 /datum/job/special/wey_yu/pmc/commando_dogcatcher
-	title = JOB_WY_COMMANDO_DOGCATHER
+	title = JOB_WY_COMMANDO_DOGCATCHER
 	gear_preset = /datum/equipment_preset/pmc/commando/dogcatcher
 

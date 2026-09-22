@@ -17,6 +17,7 @@
 	flags_equip_slot = SLOT_EAR
 	inherent_traits = list(TRAIT_ITEM_EAR_EXCLUSIVE)
 	var/translate_apollo = FALSE
+	var/translate_artemis = FALSE
 	var/translate_hive = FALSE
 	var/maximum_keys = 3
 	var/list/initial_keys //Typepaths of objects to be created at initialisation.
@@ -102,14 +103,22 @@
 	volume = text_to_volume[volume_setting]
 	to_chat(usr, SPAN_NOTICE("You set \the [src]'s volume to <b>[volume_setting]</b>."))
 
-/obj/item/device/radio/headset/handle_message_mode(mob/living/M as mob, message, channel)
+/obj/item/device/radio/headset/handle_message_mode(mob/living/speaker as mob, message, channel)
+
+	if((channel in hear_only_channels) && !(channel in channels))
+		to_chat(speaker, SPAN_WARNING("The [channel] channel is receive only. You cannot talk on it."))
+		return null
+
 	if (channel == RADIO_CHANNEL_SPECIAL)
 		if (translate_apollo)
 			var/datum/language/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
-			apollo.broadcast(M, message)
+			apollo.broadcast(speaker, message)
+		if (translate_artemis)
+			var/datum/language/artemis = GLOB.all_languages[LANGUAGE_APOLLO]
+			artemis.broadcast(speaker, message)
 		if (translate_hive)
 			var/datum/language/hivemind = GLOB.all_languages[LANGUAGE_HIVEMIND]
-			hivemind.broadcast(M, message)
+			hivemind.broadcast(speaker, message)
 		return null
 
 	if(default_freq && channel == default_freq)
@@ -183,7 +192,7 @@
 			recalculateChannels()
 			to_chat(user, SPAN_NOTICE("You pop out the encryption keys in \the [src]!"))
 		else
-			to_chat(user, SPAN_NOTICE("This headset doesn't have any encryption keys!  How useless..."))
+			to_chat(user, SPAN_NOTICE("This headset doesn't have any encryption keys! How useless..."))
 
 	if(istype(W, /obj/item/device/encryptionkey/))
 		for (var/obj/item/device/encryptionkey/key as anything in keys)
@@ -213,20 +222,32 @@
 		secure_radio_connections[ch_name] = null
 	channels = list()
 	translate_apollo = FALSE
+	translate_artemis = FALSE
 	translate_hive = FALSE
 
 	tracking_options = length(inbuilt_tracking_options) ? inbuilt_tracking_options.Copy() : list()
+
+	hear_only_channels = list()
+
 	for(var/i in keys)
 		var/obj/item/device/encryptionkey/key = i
 		for(var/ch_name in key.channels)
 			if(ch_name in channels)
 				continue
-			channels += ch_name
-			channels[ch_name] = key.channels[ch_name]
+			if(key.hear_only)
+				hear_only_channels += ch_name
+				hear_only_channels[ch_name] = key.channels[ch_name]
+				secure_radio_connections[ch_name] = SSradio.add_object(src, GLOB.radiochannels[ch_name], RADIO_CHAT)
+			else
+				channels += ch_name
+				channels[ch_name] = key.channels[ch_name]
+				
 		for(var/tracking_option in key.tracking_options)
 			tracking_options[tracking_option] = key.tracking_options[tracking_option]
 		if(key.translate_apollo)
 			translate_apollo = TRUE
+		if(key.translate_artemis)
+			translate_artemis = TRUE
 		if(key.translate_hive)
 			translate_hive = TRUE
 
@@ -485,7 +506,7 @@
 
 /obj/item/device/radio/headset/almayer/chef
 	name = "kitchen radio headset"
-	desc = "Used by the onboard kitchen staff, filled with background noise of sizzling pots. Can coordinate with the supply channel, using :u and inform command of delivery service using :v."
+	desc = "Used by the onboard kitchen staff, filled with background noise of sizzling pots. Can coordinate with the supply channel with :u."
 	icon_state = "req_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/req/mst)
 
@@ -500,8 +521,7 @@
 	name = "researcher radio headset"
 	desc = "A headset used by medbay's skilled researchers. Channels are as follows: :m - medical, :t - intel."
 	icon_state = "med_headset"
-	frequency = MED_FREQ
-	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/medres)
+	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/medres, /obj/item/device/encryptionkey/wy_pub)
 	additional_hud_types = list(MOB_HUD_FACTION_WY)
 
 /obj/item/device/radio/headset/almayer/ct
@@ -513,7 +533,7 @@
 
 /obj/item/device/radio/headset/almayer/mmpo
 	name = "marine military police radio headset"
-	desc = "This is used by marine military police members. Channels are as follows: :p - military police, :v - marine command. :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
+	desc = "This is used by marine military police members. Channels are as follows: :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
 	additional_hud_types = list(MOB_HUD_FACTION_CMB)
 	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/mmpo)
@@ -616,8 +636,8 @@
 
 /obj/item/device/radio/headset/almayer/mcom/po
 	name = "marine pilot radio headset"
-	desc = "Used by Pilot Officers. Channels are as follows: :v - marine command, :n - engineering, :m - medical, :j - JTAC, :t - intel."
-	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/po)
+	desc = "Used by Pilot Officers. Channels are as follows:, :n - engineering, :m - medical, :j - JTAC, :t - intel. Receive only channels are as follows: Command."
+	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/po, /obj/item/device/encryptionkey/command/hear)
 	frequency = JTAC_FREQ
 	volume = RADIO_VOLUME_RAISED // raised for DCCs, POs already have their volume boosted with their leadership
 	misc_tracking = TRUE
@@ -629,8 +649,8 @@
 
 /obj/item/device/radio/headset/almayer/mcom/io
 	name = "marine intel radio headset"
-	desc = "Used by Intelligence Officers. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medical, :j - JTAC, :t - intel."
-	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/io)
+	desc = "Used by Intelligence Officers. Channels are as follows: :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medical, :j - JTAC, :t - intel. Receive only channels are as follows: Command."
+	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/io, /obj/item/device/encryptionkey/command/hear)
 	frequency = INTEL_FREQ
 
 /obj/item/device/radio/headset/almayer/mcom/mw
@@ -674,19 +694,20 @@
 	desc = "Used by the CL to convince people to sign NDAs. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel, :y for WY."
 	icon_state = "wy_headset"
 	maximum_keys = 5
-	initial_keys = list(/obj/item/device/encryptionkey/mcom/cl)
+	initial_keys = list(/obj/item/device/encryptionkey/mcom/cl, /obj/item/device/encryptionkey/command)
 	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_PMC)
 	spy_bug_type = /obj/item/device/radio/listening_bug/radio_linked/fax/wy
 
 /obj/item/device/radio/headset/almayer/mcl/Initialize()
 	. = ..()
-	spy_bug.nametag = "CL Radio"
+	if(spy_bug)
+		spy_bug.nametag = "CL Radio"
 	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/device/radio/headset/almayer/reporter
 	name = "reporter radio headset"
-	desc = "Used by the combat correspondent to get the scoop. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel."
-	initial_keys = list(/obj/item/device/encryptionkey/mcom)
+	desc = "Used by the combat correspondent to get the scoop. Channels are as follows: :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel."
+	initial_keys = list(/obj/item/device/encryptionkey/cc)
 
 /obj/item/device/radio/headset/almayer/rep
 	name = "representative radio headset"
@@ -702,6 +723,13 @@
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom)
 	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB)
 	minimap_type = /datum/action/minimap/marine/live
+
+/obj/item/device/radio/headset/almayer/mcom/spare
+	name = "marine acting command headset"
+	desc = "Issued only to officers tasked in being the acting commander or as its duty officer. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel."
+	icon_state = "mco_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/mcom, /obj/item/device/encryptionkey/mmpo)
+	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB)
 
 /obj/item/device/radio/headset/almayer/mcom/cdrcom/xo
 	locate_setting = TRACKER_CO
@@ -739,6 +767,7 @@
 	icon_state = "mco_headset"
 	misc_tracking = TRUE
 	locate_setting = TRACKER_CO
+	initial_keys = list(/obj/item/device/encryptionkey/mcom, /obj/item/device/encryptionkey/mmpo)
 
 	inbuilt_tracking_options = list(
 		"Commanding Officer" = TRACKER_CO,
@@ -1113,7 +1142,7 @@
 	desc = "A headset commonly worn by WY corporate personnel."
 	icon_state = "wy_headset"
 	frequency = WY_FREQ
-	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/WY)
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/wy_pub)
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_WY
 
@@ -1121,13 +1150,22 @@
 	. = ..()
 	AddElement(/datum/element/corp_label/wy)
 
-/obj/item/device/radio/headset/distress/WY/guard
+/obj/item/device/radio/headset/distress/WY/security
+	name = "WY corporate security headset"
+	desc = "A headset commonly worn by WY corporate security personnel."
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/wy_sec)
+
+/obj/item/device/radio/headset/distress/WY/security/guard
+	name = "WY personal protection headset"
+	desc = "Issued to Corporate Security personnel. Channels are as follows: :m - medbay, :g - public, :1 for WY Public, :y for WY Corporate and #y for WY Security."
 	misc_tracking = TRUE
 	locate_setting = TRACKER_CL
 	inbuilt_tracking_options = list(
 		"Corporate Liaison" = TRACKER_CL
 	)
-	additional_hud_types = list(MOB_HUD_FACTION_WY)
+	additional_hud_types = list(MOB_HUD_FACTION_MARINE)
+	initial_keys = list(/obj/item/device/encryptionkey/wy_bodyguard)
+	minimap_type = /datum/action/minimap/marine
 
 /obj/item/device/radio/headset/distress/hyperdyne
 	name = "HC corporate headset"
@@ -1434,6 +1472,16 @@
 	icon_state = "soc_headset"
 	frequency = SOF_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/soc/forecon)
+	volume = RADIO_VOLUME_QUIET
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_MARINE
+
+/obj/item/device/radio/headset/almayer/sof/survivor_army
+	name = "US Army headset"
+	desc = "Issued exclusively to Army troopers."
+	icon_state = "soc_headset"
+	frequency = ARMY_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/soc/army)
 	volume = RADIO_VOLUME_QUIET
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_MARINE

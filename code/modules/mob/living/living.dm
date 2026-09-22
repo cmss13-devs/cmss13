@@ -22,6 +22,9 @@
 	initialize_stamina()
 	GLOB.living_mob_list += src
 
+	if(!(mob_flags & MOB_ABSTRACT))
+		SSmapgrids.track_movable(src)
+
 /mob/living/Destroy()
 	GLOB.living_player_list -= src
 	GLOB.living_mob_list -= src
@@ -150,7 +153,7 @@
 		if(client)
 			to_chat(usr, "[src]'s Metainfo:<br>[client.prefs.metadata]")
 		else
-			to_chat(usr, "[src] does not have any stored infomation!")
+			to_chat(usr, "[src] does not have any stored information!")
 	else
 		to_chat(usr, "OOC Metadata is not supported by this server!")
 
@@ -218,6 +221,8 @@
 	if(back && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
 		update_inv_back()
 
+	if(. && nutrition && stat != DEAD)
+		nutrition -= HUNGER_FACTOR/5
 
 
 /mob/proc/resist_grab(moving_resist)
@@ -265,8 +270,8 @@
 	if (drowsiness > 0)
 		. += 6
 
-	if(pulling && pulling.drag_delay && get_pull_miltiplier()) //Dragging stuff can slow you down a bit.
-		var/pull_delay = pulling.get_pull_drag_delay() * get_pull_miltiplier()
+	if(pulling && pulling.drag_delay && get_pull_multiplier()) //Dragging stuff can slow you down a bit.
+		var/pull_delay = pulling.get_pull_drag_delay() * get_pull_multiplier()
 
 		var/grab_level_delay = 0
 		switch(grab_level)
@@ -300,7 +305,7 @@
 		. = drag_delay
 
 //whether we are slowed when dragging things
-/mob/living/proc/get_pull_miltiplier()
+/mob/living/proc/get_pull_multiplier()
 	if(!HAS_TRAIT(src, TRAIT_DEXTROUS))
 		if(grab_level == GRAB_CARRY)
 			return 0.1
@@ -330,7 +335,7 @@
 	if(buckled || now_pushing)
 		return
 
-	if(throwing)
+	if(HAS_TRAIT(src, TRAIT_LAUNCHED))
 		launch_impact(moving_atom)
 		return
 
@@ -503,7 +508,7 @@
 // If this proc causes issues you can probably disable it until then.
 /mob/living/carbon/update_stat()
 	if(stat != DEAD)
-		if(health <= HEALTH_THRESHOLD_DEAD)
+		if(health <= health_threshold_dead)
 			death()
 			return
 		else if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
@@ -557,6 +562,7 @@
 		return
 	. = lying_angle
 	lying_angle = new_lying
+	SEND_SIGNAL(src, COMSIG_LIVING_SET_LYING_ANGLE)
 	if(lying_angle != lying_prev)
 		update_transform(instant_update = on_movement) // Don't use transition for eg. crawling movement, because we already have the movement glide
 		lying_prev = lying_angle
@@ -719,3 +725,53 @@
 /mob/living/onZImpact(turf/impact_turf, height)
 	. = ..()
 	impact_turf.z_impact(src, height)
+
+/**
+ * Checks if user can mount src
+ *
+ * Arguments:
+ * * user - The mob trying to mount
+ * * target_mounting - Is the target initiating the mounting process?
+ */
+/mob/living/proc/can_mount(mob/living/user, target_mounting = FALSE)
+	if(!target_mounting)
+		user = pulling
+	if(!ishuman(user))
+		return FALSE
+	var/mob/living/carbon/human/human_pulled = user
+	if(human_pulled.stat == DEAD)
+		return FALSE
+	if(!CHECK_BITFIELD(buckle_flags, CAN_BUCKLE))
+		return FALSE
+	return TRUE
+
+/**
+ * Handles the target trying to ride src
+ *
+ * Arguments:
+ * * target - The mob being put on the back
+ * * target_mounting - Is the target initiating the mounting process?
+ */
+/mob/living/proc/carry_target(mob/living/carbon/target, target_mounting = FALSE)
+	if(!ismob(target))
+		return
+	if(target.is_mob_incapacitated())
+		if(target_mounting)
+			to_chat(target, SPAN_WARNING("You cannot mount [src]!"))
+			return
+		return
+	visible_message(SPAN_NOTICE("[target_mounting ? "[target] starts to mount [src]" : "[src] starts hoisting [target] onto [p_their()] back..."]"),
+	SPAN_NOTICE("[target_mounting ? "[target] starts to mount on your back" : "You start to lift [target] onto your back..."]"))
+	if(!do_after(target_mounting ? target : src, 5 SECONDS, NONE, BUSY_ICON_HOSTILE, target_mounting ? src : target))
+		visible_message(SPAN_WARNING("[target_mounting ? "[target] fails to mount on [src]" : "[src] fails to carry [target]!"]"))
+		return
+	//Second check to make sure they're still valid to be carried
+	if(target.is_mob_incapacitated())
+		return
+	buckle_mob(target, src, target_hands_needed = 1)
+
+/mob/living/MouseDrop_T(atom/dropping, mob/user)
+	. = ..()
+	if(!can_mount(user, TRUE))
+		return
+	INVOKE_ASYNC(src, PROC_REF(carry_target), dropping, TRUE)

@@ -16,6 +16,7 @@
 #define LANGUAGE_HIVEMIND "Hivemind"
 
 #define LANGUAGE_APOLLO "APOLLO Link"
+#define LANGUAGE_ARTEMIS "ARTEMIS Link"
 
 #define LANGUAGE_TELEPATH "Telepath Implant"
 
@@ -45,3 +46,7 @@
 #define U_GROUP_FULL (1<<0)
 #define U_UMLAUT (1<<1)
 #define U_UMLAUT_RARE (1<<2)
+
+
+//Language Flags
+#define LANGUAGE_HEAR_ONLY (1<<0)

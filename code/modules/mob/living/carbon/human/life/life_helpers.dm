@@ -160,17 +160,11 @@
 
 
 /mob/living/carbon/human/proc/process_glasses(obj/item/clothing/glasses/G)
-	var/atom/movable/screen/plane_master/blackness/darkness_plane = hud_used?.plane_masters["[BLACKNESS_PLANE]"]
-
 	if(!G || !G.active)
-		darkness_plane?.alpha = 255
 		return
 	see_in_dark += G.darkness_view
 	if(G.vision_flags)
 		sight |= G.vision_flags
-
-	if(G.vision_flags & SEE_TURFS)
-		darkness_plane?.alpha = 0
 
 	if(G.lighting_alpha < lighting_alpha)
 		lighting_alpha = G.lighting_alpha
@@ -224,4 +218,10 @@
 	flash_eyes()
 	apply_effect(10, EYE_BLUR)
 	apply_effect(10, PARALYZE)
-	updatehealth() //One more time, so it doesn't show the target as dead on HUDs
+	// The Health HUD updates on changing health, but since we did that while we were still dead,
+	// it didn't put the correct icon. So we re-run HUD updates to show the correct ones now
+	// that we are fully alive. Rest thrown on for good measure.
+	med_hud_set_health()
+	med_hud_set_armor()
+	med_hud_set_status()
+

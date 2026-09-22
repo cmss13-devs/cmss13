@@ -104,10 +104,14 @@
 				stuttering = max(stuttering, effect)
 		if(EYE_BLUR)
 			EyeBlur(effect)
+		if(EYE_BLIND)
+			EyeBlind(effect)
 		if(DROWSY)
 			drowsiness = max(drowsiness, effect)
 		if(ROOT)
 			Root(effect)
+		if(HUSHED)
+			hushed(effect)
 	updatehealth()
 	return TRUE
 
@@ -143,6 +147,8 @@
 			drowsiness = POSITIVE(drowsiness + effect)
 		if(ROOT)
 			AdjustRoot(effect)
+		if(HUSHED)
+			adjust_hushed(effect)
 	updatehealth()
 	return TRUE
 
@@ -175,10 +181,12 @@
 			drowsiness = POSITIVE(effect)
 		if(ROOT)
 			SetRoot(effect)
+		if(HUSHED)
+			set_hushed(effect)
 	updatehealth()
 	return TRUE
 
-/mob/living/proc/apply_effects(stun = 0, weaken = 0, paralyze = 0, irradiate = 0, stutter = 0, eyeblur = 0, drowsy = 0, agony = 0, root = 0)
+/mob/living/proc/apply_effects(stun = 0, weaken = 0, paralyze = 0, irradiate = 0, stutter = 0, eyeblur = 0, drowsy = 0, agony = 0, root = 0, hushed = 0)
 	if(stun)
 		apply_effect(stun, STUN)
 	if(weaken)
@@ -195,4 +203,6 @@
 		apply_effect(agony, AGONY)
 	if(root)
 		apply_effect(root, ROOT)
+	if(hushed)
+		apply_effect(hushed, HUSHED)
 	return 1

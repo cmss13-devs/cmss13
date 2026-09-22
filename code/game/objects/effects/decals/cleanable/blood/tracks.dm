@@ -8,6 +8,7 @@
 	var/going_state="blood2"
 	cleanable_type = CLEANABLE_TRACKS
 	overlay_on_initialize = TRUE
+	apply_bloody_feet = FALSE
 
 	var/list/steps_in
 	var/list/steps_out
@@ -16,9 +17,6 @@
 
 	/// Amount of pixels to shift either way in an attempt to make the tracks more organic
 	var/transverse_amplitude = 3
-
-/obj/effect/decal/cleanable/blood/tracks/Crossed()
-	return
 
 /obj/effect/decal/cleanable/blood/tracks/can_place_cleanable()
 	return FALSE
@@ -59,13 +57,27 @@
 	going_state  = "human2"
 	amount = 0
 
+/obj/effect/decal/cleanable/blood/tracks/pawprints
+	name = "pawprints"
+	gender = PLURAL
+	desc = "Whoops..."
+	coming_state = "paw1"
+	going_state  = "paw2"
+	amount = 0
+
+/obj/effect/decal/cleanable/blood/tracks/clawprints
+	name = "clawprints"
+	gender = PLURAL
+	desc = "Whoops..."
+	coming_state = "claw1"
+	going_state  = "claw2"
+	amount = 0
+
 /obj/effect/decal/cleanable/blood/tracks/wheels
 	name = "tracks"
 	gender = PLURAL
-	desc = "Whoops..."
+	desc = "They look like tracks left by wheels."
 	coming_state = "wheels"
 	going_state  = ""
-	desc = "They look like tracks left by wheels."
-	gender = PLURAL
 	random_icon_states = null
 	amount = 0

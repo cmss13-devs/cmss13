@@ -10,7 +10,7 @@
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/thrall_gear.dmi'
 	)
-	thrall = TRUE
+	random_icon = FALSE
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
@@ -46,6 +46,60 @@
 	item_state = "thrallarmor_bone"
 	item_state_slots = list(WEAR_JACKET = "thrallarmor_bone")
 
+// Half armored version
+
+/obj/item/clothing/suit/armor/yautja/thrall/old
+	icon_state = "old_thrallarmor_ebony"
+	item_state = "old_thrallarmor_ebony"
+	item_state_slots = list(WEAR_JACKET = "old_thrallarmor_ebony")
+
+/obj/item/clothing/suit/armor/yautja/thrall/old/silver
+	icon_state = "old_thrallarmor_silver"
+	item_state = "old_thrallarmor_silver"
+	item_state_slots = list(WEAR_JACKET = "old_thrallarmor_silver")
+
+/obj/item/clothing/suit/armor/yautja/thrall/old/gold
+	icon_state = "old_thrallarmor_gold"
+	item_state = "old_thrallarmor_gold"
+	item_state_slots = list(WEAR_JACKET = "old_thrallarmor_gold")
+
+/obj/item/clothing/suit/armor/yautja/thrall/old/crimson
+	icon_state = "old_thrallarmor_crimson"
+	item_state = "old_thrallarmor_crimson"
+	item_state_slots = list(WEAR_JACKET = "old_thrallarmor_crimson")
+
+/obj/item/clothing/suit/armor/yautja/thrall/old/bone
+	icon_state = "old_thrallarmor_bone"
+	item_state = "old_thrallarmor_bone"
+	item_state_slots = list(WEAR_JACKET = "old_thrallarmor_bone")
+
+// Light armored version
+
+/obj/item/clothing/suit/armor/yautja/thrall/light
+	icon_state = "light_thrallarmor_ebony"
+	item_state = "light_thrallarmor_ebony"
+	item_state_slots = list(WEAR_JACKET = "light_thrallarmor_ebony")
+
+/obj/item/clothing/suit/armor/yautja/thrall/light/silver
+	icon_state = "light_thrallarmor_silver"
+	item_state = "light_thrallarmor_silver"
+	item_state_slots = list(WEAR_JACKET = "light_thrallarmor_silver")
+
+/obj/item/clothing/suit/armor/yautja/thrall/light/gold
+	icon_state = "light_thrallarmor_gold"
+	item_state = "light_thrallarmor_gold"
+	item_state_slots = list(WEAR_JACKET = "light_thrallarmor_gold")
+
+/obj/item/clothing/suit/armor/yautja/thrall/light/crimson
+	icon_state = "light_thrallarmor_crimson"
+	item_state = "light_thrallarmor_crimson"
+	item_state_slots = list(WEAR_JACKET = "light_thrallarmor_crimson")
+
+/obj/item/clothing/suit/armor/yautja/thrall/light/bone
+	icon_state = "light_thrallarmor_bone"
+	item_state = "light_thrallarmor_bone"
+	item_state_slots = list(WEAR_JACKET = "light_thrallarmor_bone")
+
 ///Thrall Greaves & Material Types
 /obj/item/clothing/shoes/yautja/thrall
 	name = "alien greaves"
@@ -57,15 +111,16 @@
 	item_icons = list(
 		WEAR_FEET = 'icons/mob/humans/onmob/hunter/thrall_gear.dmi'
 	)
-	thrall = TRUE
-
+	random_icon = FALSE
 	allowed_items_typecache = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/weapon/throwing_knife,
 		/obj/item/weapon/gun/pistol/action,
 		/obj/item/weapon/gun/pistol/clfpistol,
 		/obj/item/weapon/straight_razor,
+		/obj/item/weapon/yautja/knife,
 	)
+	spawn_item_type = /obj/item/weapon/yautja/knife
 
 /obj/item/clothing/shoes/yautja/thrall/silver
 	icon_state = "thrallgreaves_silver"
@@ -86,6 +141,60 @@
 	icon_state = "thrallgreaves_bone"
 	item_state = "thrallgreaves_bone"
 	item_state_slots = list(WEAR_FEET = "thrallgreaves_bone")
+
+// Half armored version
+
+/obj/item/clothing/shoes/yautja/thrall/old
+	icon_state = "old_thrallgreaves_ebony"
+	item_state = "old_thrallgreaves_ebony"
+	item_state_slots = list(WEAR_FEET = "old_thrallgreaves_ebony")
+
+/obj/item/clothing/shoes/yautja/thrall/old/silver
+	icon_state = "old_thrallgreaves_silver"
+	item_state = "old_thrallgreaves_silver"
+	item_state_slots = list(WEAR_FEET = "old_thrallgreaves_silver")
+
+/obj/item/clothing/shoes/yautja/thrall/old/gold
+	icon_state = "old_thrallgreaves_gold"
+	item_state = "old_thrallgreaves_gold"
+	item_state_slots = list(WEAR_FEET = "old_thrallgreaves_gold")
+
+/obj/item/clothing/shoes/yautja/thrall/old/crimson
+	icon_state = "old_thrallgreaves_crimson"
+	item_state = "old_thrallgreaves_crimson"
+	item_state_slots = list(WEAR_FEET = "old_thrallgreaves_crimson")
+
+/obj/item/clothing/shoes/yautja/thrall/old/bone
+	icon_state = "old_thrallgreaves_bone"
+	item_state = "old_thrallgreaves_bone"
+	item_state_slots = list(WEAR_FEET = "old_thrallgreaves_bone")
+
+// Light armored version
+
+/obj/item/clothing/shoes/yautja/thrall/light
+	icon_state = "thrallboots_ebony"
+	item_state = "thrallboots_ebony"
+	item_state_slots = list(WEAR_FEET = "thrallboots_ebony")
+
+/obj/item/clothing/shoes/yautja/thrall/light/silver
+	icon_state = "thrallboots_silver"
+	item_state = "thrallboots_silver"
+	item_state_slots = list(WEAR_FEET = "thrallboots_silver")
+
+/obj/item/clothing/shoes/yautja/thrall/light/gold
+	icon_state = "thrallboots_gold"
+	item_state = "thrallboots_gold"
+	item_state_slots = list(WEAR_FEET = "thrallboots_gold")
+
+/obj/item/clothing/shoes/yautja/thrall/light/crimson
+	icon_state = "thrallboots_crimson"
+	item_state = "thrallboots_crimson"
+	item_state_slots = list(WEAR_FEET = "thrallboots_crimson")
+
+/obj/item/clothing/shoes/yautja/thrall/light/bone
+	icon_state = "thrallboots_bone"
+	item_state = "thrallboots_bone"
+	item_state_slots = list(WEAR_FEET = "thrallboots_bone")
 
 ///Thrall Mask Material Types, original mask & mask code in yaut_mask.dm
 /obj/item/clothing/mask/gas/yautja/thrall/silver
@@ -108,10 +217,48 @@
 	item_state = "thrallmask_bone"
 	item_state_slots = list(WEAR_FACE = "thrallmask_bone")
 
+/obj/item/clothing/mask/gas/yautja/thrall/alt
+	icon_state = "thrallmask_alt_ebony"
+	item_state = "thrallmask_alt_ebony"
+	item_state_slots = list(WEAR_FACE = "thrallmask_alt_ebony")
+
+/obj/item/clothing/mask/gas/yautja/thrall/alt/silver
+	icon_state = "thrallmask_alt_silver"
+	item_state = "thrallmask_alt_silver"
+	item_state_slots = list(WEAR_FACE = "thrallmask_alt_silver")
+
+/obj/item/clothing/mask/gas/yautja/thrall/alt/gold
+	icon_state = "thrallmask_alt_gold"
+	item_state = "thrallmask_alt_gold"
+	item_state_slots = list(WEAR_FACE = "thrallmask_alt_gold")
+
+/obj/item/clothing/mask/gas/yautja/thrall/alt/crimson
+	icon_state = "thrallmask_alt_crimson"
+	item_state = "thrallmask_alt_crimson"
+	item_state_slots = list(WEAR_FACE = "thrallmask_alt_crimson")
+
+/obj/item/clothing/mask/gas/yautja/thrall/alt/bone
+	icon_state = "thrallmask_alt_bone"
+	item_state = "thrallmask_alt_bone"
+	item_state_slots = list(WEAR_FACE = "thrallmask_alt_bone")
+
 ///Subtype for name & desc
 /obj/item/clothing/under/chainshirt/thrall
 	name = "alien mesh suit"
 	desc = "A strange alloy weave in the form of a vest. It feels cold with an alien weight. It has been adapted for human physiology."
+
+/obj/item/clothing/under/chainshirt/thrall/cloth
+	name = "alien fiberweave suit"
+	desc = "A lightweight one-piece suit woven from an unfamiliar alien fibre, adapted for humans, who are bound to Yautja clans."
+	icon = 'icons/obj/items/hunter/thrall_gear.dmi'
+	icon_state = "thrall_jumpsuit"
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/hunter/thrall_gear.dmi'
+	)
+
+/obj/item/clothing/under/chainshirt/thrall/cloth/alt
+	icon_state = "thrall_alt_jumpsuit"
+	item_state = "thrall_alt_jumpsuit"
 
 ///Subtype of base bracers, not hunter ones. Different name, desc, & color.
 /obj/item/clothing/gloves/yautja/thrall
@@ -120,6 +267,34 @@
 
 	color = "#b85440"
 	minimap_icon = "thrall"
+
+/obj/item/clothing/gloves/yautja/hunter/bloodedthrall
+	name = "blooded thrall bracers"
+	desc = "A pair of strange alien bracers, adapted for human biology. These contain additional features."
+	minimap_icon = "thrall"
+	icon_state = "bracer_ebony"
+	item_state = "bracer_ebony"
+	item_state_slots = list(WEAR_HANDS = "bracer_ebony")
+
+/obj/item/clothing/gloves/yautja/hunter/bloodedthrall/bronze
+	icon_state = "bracer_bronze"
+	item_state = "bracer_bronze"
+	item_state_slots = list(WEAR_HANDS = "bracer_bronze")
+
+/obj/item/clothing/gloves/yautja/hunter/bloodedthrall/silver
+	icon_state = "bracer_silver"
+	item_state = "bracer_silver"
+	item_state_slots = list(WEAR_HANDS = "bracer_silver")
+
+/obj/item/clothing/gloves/yautja/hunter/bloodedthrall/crimson
+	icon_state = "bracer_crimson"
+	item_state = "bracer_crimson"
+	item_state_slots = list(WEAR_HANDS = "bracer_crimson")
+
+/obj/item/clothing/gloves/yautja/hunter/bloodedthrall/bone
+	icon_state = "bracer_bone"
+	item_state = "bracer_bone"
+	item_state_slots = list(WEAR_HANDS = "bracer_bone")
 
 /obj/item/storage/box/bracer
 	name = "alien box"
@@ -131,6 +306,9 @@
 
 /obj/item/storage/box/bracer/fill_preset_inventory()
 	new /obj/item/clothing/gloves/yautja/thrall(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall(src)
 
 ///Relay beacon for blooded thralls, only capable of teleporting back to the Yautja Ship
 /obj/item/device/thrall_teleporter
@@ -155,7 +333,6 @@
 		return
 
 	var/mob/living/carbon/human/H = user
-	var/ship_to_tele = -1
 
 	if(!HAS_TRAIT(H, TRAIT_YAUTJA_TECH) || should_block_game_interaction(H))
 		to_chat(user, SPAN_WARNING("You fiddle with it, but nothing happens!"))
@@ -165,24 +342,9 @@
 		to_chat(user, SPAN_WARNING("You have not been shown how to use the relay beacon, best not fiddle with it."))
 		return
 
-	if(isthrall(user))
-		var/datum/entity/clan_player/clan_info = H.client.clan_info
-		if(clan_info.permissions & CLAN_PERMISSION_ADMIN_VIEW)
-			var/list/datum/view_record/clan_view/clan_perm_view = DB_VIEW(/datum/view_record/clan_view/)
-			for(var/datum/view_record/clan_view/clan_view in clan_perm_view)
-				if(!SSpredships.is_clanship_loaded(clan_view?.clan_id))
-					continue
-				ship_to_tele += list("[clan_view.name]" = "[clan_view.clan_id]: [clan_view.name]")
-		if(SSpredships.is_clanship_loaded(clan_info?.clan_id))
-			ship_to_tele += list("Your clan" = "[clan_info.clan_id]")
-
-	var/clan = ship_to_tele
-	if(clan != "Human" && !SSpredships.is_clanship_loaded(clan))
-		return // Checking ship is valid
-
 	// Getting an arrival point
 	var/turf/target_turf
-	target_turf = SAFEPICK(SSpredships.get_clan_spawnpoints(clan))
+	target_turf = SAFEPICK(GLOB.yautja_spawnpoints)
 	if(!istype(target_turf))
 		return
 
@@ -191,19 +353,16 @@
 	teleporting = TRUE
 	user.visible_message(SPAN_INFO("[user] starts becoming shimmery and indistinct..."))
 
-	if(!do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		to_chat(user, "You were interrupted!")
-		teleporting = FALSE
-		return
-	// Display fancy animation for you and the person you might be pulling (Legacy)
-	SEND_SIGNAL(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
-	user.visible_message(SPAN_WARNING("[icon2html(user, viewers(src))][user] disappears!"))
-	var/tele_time = animation_teleport_quick_out(user)
-	var/mob/living/passenger = user.pulling
-	if(istype(passenger)) // Pulled person
-		SEND_SIGNAL(passenger, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
-		passenger.visible_message(SPAN_WARNING("[icon2html(passenger, viewers(src))][passenger] disappears!"))
-		animation_teleport_quick_out(passenger)
+	if(do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		// Display fancy animation for you and the person you might be pulling (Legacy)
+		SEND_SIGNAL(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
+		user.visible_message(SPAN_WARNING("[icon2html(user, viewers(src))][user] disappears!"))
+		var/tele_time = animation_teleport_quick_out(user)
+		var/mob/living/passenger = user.pulling
+		if(istype(passenger)) // Pulled person
+			SEND_SIGNAL(passenger, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
+			passenger.visible_message(SPAN_WARNING("[icon2html(passenger, viewers(src))][passenger] disappears!"))
+			animation_teleport_quick_out(passenger)
 
 		sleep(tele_time) // Animation delay
 		user.trainteleport(target_turf) // Actually teleports everyone, not just you + pulled

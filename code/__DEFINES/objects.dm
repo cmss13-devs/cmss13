@@ -211,8 +211,12 @@ GLOBAL_LIST_INIT(RESTRICTED_CAMERA_NETWORKS, list( //Those networks can only be 
 #define OBJ_NO_HELMET_BAND (1<<1)
 /// Marks the object as helmet garb
 #define OBJ_IS_HELMET_GARB (1<<2)
+/// Marks the object as stylish for the style system
+#define OBJ_IS_STYLISH (1<<3)
+/// If the object can be converted into an accessory
+#define OBJ_CAN_ACCESSORIZE (1<<4)
 /// can you customize the description/name of the thing?
-#define OBJ_UNIQUE_RENAME (1<<3)
+#define OBJ_UNIQUE_RENAME (1<<5)
 
 // For reinforced table status
 #define RTABLE_WEAKENED 1
@@ -230,3 +234,11 @@ GLOBAL_LIST_INIT(RESTRICTED_CAMERA_NETWORKS, list( //Those networks can only be 
 
 /// How many fields maximum are allowed on papers
 #define PAPER_MAX_FIELDS 51
+
+// Filing cabinet defines
+#define FILING_CABINET_NORMAL "filingcabinet"
+#define FILING_CABINET_CHEST "chestdrawer"
+#define FILING_CABINET_TALL "tallcabinet"
+#define FILING_CABINET_NORMAL_DOUBLE "filingcabinet_double"
+#define FILING_CABINET_CHEST_DOUBLE "chestdrawer_double"
+#define FILING_CABINET_TALL_DOUBLE "tallcabinet_double"

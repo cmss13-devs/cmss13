@@ -33,6 +33,24 @@
 	var/list/handen = get_hands()
 	return handen.Find(I)
 
+/**
+ * Checks if this mob is holding a certain type of item in either active or inactive hand
+ * returns TRUE if found FALSE if not
+ * Args:
+ * * typepath: typepath to check for
+ * * mainhand: Whether to check active hand (otherwise inactive)
+ */
+/mob/proc/is_holding_item_of_type(typepath, mainhand=TRUE)
+	if(istype(get_held_item(), typepath))
+		return TRUE
+	if(mainhand)
+		if(istype(get_active_hand(), typepath))
+			return TRUE
+	else
+		if(istype(get_inactive_hand(), typepath))
+			return TRUE
+	return FALSE
+
 //Puts the item into your l_hand if possible and calls all necessary triggers/updates. returns 1 on success.
 /mob/proc/put_in_l_hand(obj/item/moved_item)
 	if(!istype(moved_item))
@@ -190,7 +208,7 @@
 			remembered_dropped_objects -= weak_ref
 			break
 		if(previously_held_object in check_turf)
-			if(previously_held_object.throwing)
+			if(HAS_TRAIT(previously_held_object, TRAIT_LAUNCHED))
 				return FALSE
 			if(previously_held_object.anchored)
 				return FALSE

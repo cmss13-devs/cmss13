@@ -1,0 +1,4 @@
+author: "PoltavskaPraca"
+delete-after: True
+changes:
+  - rscadd: "Can now disable right click menu in the preferences -> settings, left upper corner: Right-click Contextual Menu. It is ON by default. Can even shoot and do a lot of stuff with RMB instead of LMB."

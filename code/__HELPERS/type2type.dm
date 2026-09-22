@@ -10,83 +10,17 @@
 
 //Returns an integer given a hex input
 /proc/hex2num(hex)
-	if (!( istext(hex) ))
-		return
-
-	var/num = 0
-	var/power = 0
-	var/i = null
-	i = length(hex)
-	while(i > 0)
-		var/char = copytext(hex, i, i + 1)
-		switch(char)
-			if("0")
-				pass()
-			if("9", "8", "7", "6", "5", "4", "3", "2", "1")
-				num += text2num(char) * 16 ** power
-			if("a", "A")
-				num += 16 ** power * 10
-			if("b", "B")
-				num += 16 ** power * 11
-			if("c", "C")
-				num += 16 ** power * 12
-			if("d", "D")
-				num += 16 ** power * 13
-			if("e", "E")
-				num += 16 ** power * 14
-			if("f", "F")
-				num += 16 ** power * 15
-			else
-				return
-		power++
-		i--
-	return num
+	return text2num(hex, 16)
 
 //Returns the hex value of a number given a value assumed to be a base-ten value
 /proc/num2hex(num, placeholder)
+	return num2text(num, placeholder, 16)
 
-	if (placeholder == null)
-		placeholder = 2
-	if (!( isnum(num) ))
-		return
-	if (num == 0)
-		var/final = ""
-		for(var/i=1 to placeholder) final = "[final]0"
-		return final
-	var/hex = ""
-	var/i = 0
-	while(16 ** i < num)
-		i++
-	var/power = null
-	power = i - 1
-	while(power >= 0)
-		var/val = floor(num / 16 ** power)
-		num -= val * 16 ** power
-		switch(val)
-			if(9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, 0.0)
-				hex += text("[]", val)
-			if(10.0)
-				hex += "A"
-			if(11.0)
-				hex += "B"
-			if(12.0)
-				hex += "C"
-			if(13.0)
-				hex += "D"
-			if(14.0)
-				hex += "E"
-			if(15.0)
-				hex += "F"
-		power--
-	while(length(hex) < placeholder)
-		hex = text("0[]", hex)
-	return hex
-
-//Splits the text of a file at seperator and returns them in a list.
-/proc/file2list(filename, seperator="\n", trim = TRUE)
+//Splits the text of a file at separator and returns them in a list.
+/proc/file2list(filename, separator="\n", trim = TRUE)
 	if (trim)
-		return splittext(trim(file2text(filename)),seperator)
-	return splittext(file2text(filename),seperator)
+		return splittext(trim(file2text(filename)),separator)
+	return splittext(file2text(filename),separator)
 
 
 //Turns a direction into text
@@ -171,7 +105,7 @@
 
 //Converts an angle (degrees) into an ss13 direction
 /proc/angle2dir(degree)
-	degree = ((degree+22.5)%365)
+	degree = ((degree % 360) + 382.5) % 360
 	if(degree < 45)
 		return NORTH
 	if(degree < 90)
@@ -247,37 +181,37 @@
 			return ICON_OVERLAY
 
 //Converts a rights bitfield into a string
-/proc/rights2text(rights,seperator="")
+/proc/rights2text(rights,separator="")
 	if(rights & R_BUILDMODE)
-		. += "[seperator]+BUILDMODE"
+		. += "[separator]+BUILDMODE"
 	if(rights & R_ADMIN)
-		. += "[seperator]+ADMIN"
+		. += "[separator]+ADMIN"
 	if(rights & R_BAN)
-		. += "[seperator]+BAN"
+		. += "[separator]+BAN"
 	if(rights & R_SERVER)
-		. += "[seperator]+SERVER"
+		. += "[separator]+SERVER"
 	if(rights & R_DEBUG)
-		. += "[seperator]+DEBUG"
+		. += "[separator]+DEBUG"
 	if(rights & R_POSSESS)
-		. += "[seperator]+POSSESS"
+		. += "[separator]+POSSESS"
 	if(rights & R_PERMISSIONS)
-		. += "[seperator]+PERMISSIONS"
+		. += "[separator]+PERMISSIONS"
 	if(rights & R_STEALTH)
-		. += "[seperator]+STEALTH"
+		. += "[separator]+STEALTH"
 	if(rights & R_COLOR)
-		. += "[seperator]+COLOR"
+		. += "[separator]+COLOR"
 	if(rights & R_VAREDIT)
-		. += "[seperator]+VAREDIT"
+		. += "[separator]+VAREDIT"
 	if(rights & R_SOUNDS)
-		. += "[seperator]+SOUND"
+		. += "[separator]+SOUND"
 	if(rights & R_SPAWN)
-		. += "[seperator]+SPAWN"
+		. += "[separator]+SPAWN"
 	if(rights & R_MOD)
-		. += "[seperator]+MODERATOR"
+		. += "[separator]+MODERATOR"
 	if(rights & R_MENTOR)
-		. += "[seperator]+MENTOR"
+		. += "[separator]+MENTOR"
 	if(rights & R_NOLOCK)
-		. += "[seperator]+NOLOCK"
+		. += "[separator]+NOLOCK"
 	return .
 
 /// Return html to load a url.

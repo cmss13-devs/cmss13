@@ -41,7 +41,7 @@
 	icon_state = "oob"
 	requires_power = FALSE
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
+	flags_area = AREA_NOBURROW|AREA_UNWEEDABLE
 
 /area/kutjevo/interior/oob/dev_room
 	name = "Kutjevo - Credits Room"
@@ -234,6 +234,19 @@
 	linked_lz = DROPSHIP_LZ2
 	minimap_color = MINIMAP_AREA_SEC
 	is_landing_zone = TRUE
+
+//Insert areas
+/area/kutjevo/interior/complex/North_Garage
+	name = "Kutjevo Complex - North Garage"
+	icon_state = "Colony_int"
+	ceiling = CEILING_METAL
+	linked_lz = DROPSHIP_LZ2
+
+/area/kutjevo/interior/complex/Northwest_Corporate_Office
+	name = "Kutjevo Complex - Northwest Corporate Office"
+	icon_state = "Colony_int"
+	ceiling = CEILING_METAL
+	linked_lz = DROPSHIP_LZ2
 
 //Out buildings + foremans
 /area/kutjevo/interior/power

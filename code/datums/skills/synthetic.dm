@@ -5,7 +5,7 @@ SYNTHETIC
 */
 
 /datum/skills/synthetic
-	name = "Synthetic"
+	name = SYNTH_GEN_THREE
 	skills = list(
 		SKILL_CQC = SKILL_CQC_MASTER,
 		SKILL_ENGINEER = SKILL_ENGINEER_MASTER,
@@ -28,8 +28,8 @@ SYNTHETIC
 		SKILL_NAVIGATIONS = SKILL_NAVIGATIONS_TRAINED,
 	)
 
-/datum/skills/colonial_synthetic
-	name = SYNTH_COLONY
+/datum/skills/synthetic/gen_two
+	name = SYNTH_GEN_TWO
 	skills = list(
 		SKILL_CQC = SKILL_CQC_EXPERT,
 		SKILL_ENGINEER = SKILL_ENGINEER_MASTER,
@@ -50,6 +50,9 @@ SYNTHETIC
 		SKILL_INTEL = SKILL_INTEL_TRAINED,
 		SKILL_DOMESTIC = SKILL_DOMESTIC_MASTER,
 	)
+
+/datum/skills/synthetic/gen_two/gen_one
+	name = SYNTH_GEN_ONE
 
 /datum/skills/working_joe
 	name = SYNTH_WORKING_JOE

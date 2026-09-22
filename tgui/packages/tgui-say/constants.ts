@@ -173,8 +173,8 @@ export const RADIO_PREFIXES = {
     label: 'SOF',
   },
   '.k ': {
-    id: 'sof',
-    label: 'SOF',
+    id: 'yautja',
+    label: 'Military',
   },
   '#k ': {
     id: 'specops',
@@ -249,12 +249,12 @@ export const RADIO_PREFIXES = {
     label: 'Yautja',
   },
   ':s ': {
-    id: 'cia',
-    label: 'CIA',
+    id: 'army',
+    label: 'Army',
   },
   '.s ': {
-    id: 'cia',
-    label: 'CIA',
+    id: 'army',
+    label: 'Army',
   },
   '#s ': {
     id: 'yautja',
@@ -310,15 +310,39 @@ export const RADIO_PREFIXES = {
   },
   ':y ': {
     id: 'wy',
-    label: 'W-Y',
+    label: 'W-Y Corp',
   },
   '.y ': {
     id: 'wy',
-    label: 'W-Y',
+    label: 'W-Y Corp',
   },
   '#y ': {
-    id: 'wy',
-    label: 'W-Y',
+    id: 'wysec',
+    label: 'W-Y Sec',
+  },
+  ':1 ': {
+    id: 'wypub',
+    label: 'W-Y Pub',
+  },
+  '.1 ': {
+    id: 'wypub',
+    label: 'W-Y Pub',
+  },
+  '#1 ': {
+    id: 'wypub',
+    label: 'W-Y Pub',
+  },
+  ':2 ': {
+    id: 'cia',
+    label: 'CIA',
+  },
+  '.2 ': {
+    id: 'cia',
+    label: 'CIA',
+  },
+  '#2 ': {
+    id: 'cia',
+    label: 'CIA',
   },
   ':z ': {
     id: 'highcom',

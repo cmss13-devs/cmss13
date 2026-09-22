@@ -7,7 +7,7 @@
 	attack_speed = 3
 	ground_offset_x = 7
 	ground_offset_y = 7
-	/// How many units of reagent get transfered out of the container at a time
+	/// How many units of reagent get transferred out of the container at a time
 	var/amount_per_transfer_from_this = 5
 	/// A list of possible amounts that can be transferred
 	var/possible_transfer_amounts = list(5, 10, 15, 20, 25, 30)

@@ -1,0 +1,471 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical)
+"ab" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical)
+"ac" = (
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"ad" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/area/desert_dam/exterior/valley/valley_medical)
+"ae" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/desert_dam/exterior/valley/valley_medical)
+"ag" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical)
+"ah" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/area/desert_dam/exterior/valley/valley_medical)
+"ai" = (
+/obj/effect/blocker/water/toxic/Group_1,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/river/riverside_south)
+"aj" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_medical)
+"ak" = (
+/obj/effect/blocker/water/toxic/Group_1,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/desert_dam/exterior/river/riverside_south)
+"al" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/valley_medical)
+"am" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/desert_dam/exterior/valley/valley_medical)
+"ao" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/desert_dam/exterior/valley/valley_medical)
+"ap" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/desert_dam/exterior/valley/valley_medical)
+"aq" = (
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_medical)
+"ar" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/valley/valley_medical)
+"as" = (
+/obj/structure/stairs{
+	dir = 1
+	},
+/obj/structure/platform/metal/almayer/west,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical)
+"at" = (
+/obj/structure/stairs{
+	dir = 1
+	},
+/obj/structure/platform/metal/almayer/east,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_medical)
+"au" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/desert_dam/exterior/valley/valley_medical)
+"ay" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/desert/dirt/dirt2,
+/area/desert_dam/exterior/valley/valley_medical)
+"az" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/turf/open/desert/dirt/dirt2,
+/area/desert_dam/exterior/valley/valley_medical)
+"aA" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/turf/open/desert/dirt/dirt2,
+/area/desert_dam/exterior/valley/valley_medical)
+"aD" = (
+/turf/open/desert/dirt/dirt2,
+/area/desert_dam/exterior/valley/valley_medical)
+"aE" = (
+/obj/structure/platform/metal/almayer/east,
+/turf/open/desert/dirt/dirt2,
+/area/desert_dam/exterior/valley/valley_medical)
+"aJ" = (
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
+"aM" = (
+/obj/structure/platform_decoration/metal/almayer,
+/turf/template_noop,
+/area/template_noop)
+"aN" = (
+/obj/structure/platform/metal/almayer,
+/turf/template_noop,
+/area/template_noop)
+"aS" = (
+/obj/effect/blocker/water/toxic/Group_1,
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/river/riverside_south)
+"aV" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/river/riverside_south)
+"aW" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/valley_medical)
+"aZ" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/desert_dam/exterior/valley/valley_medical)
+"ba" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/turf/template_noop,
+/area/template_noop)
+"bb" = (
+/obj/structure/platform/metal/almayer/north,
+/turf/template_noop,
+/area/template_noop)
+"bi" = (
+/obj/effect/blocker/water/toxic/Group_1,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/desert_dam/exterior/river/riverside_south)
+"bl" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/desert_dam/exterior/river/riverside_south)
+"bs" = (
+/obj/structure/platform/metal/almayer/east,
+/turf/template_noop,
+/area/template_noop)
+"bt" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/template_noop,
+/area/template_noop)
+"bw" = (
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_cargo)
+"bx" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/desert_dam/exterior/river/riverside_south)
+"by" = (
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_cargo)
+"bz" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_cargo)
+"bA" = (
+/turf/template_noop,
+/area/template_noop)
+"bC" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/desert_dam/exterior/river/riverside_south)
+"bD" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/river/riverside_south)
+"bE" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"bF" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/valley/valley_medical)
+"bG" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/valley/valley_medical)
+"bH" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/valley/valley_medical)
+"bI" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/valley_medical)
+"bJ" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/exterior/valley/valley_medical)
+"bK" = (
+/obj/structure/flora/grass/desert/heavygrass_4,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"bL" = (
+/obj/effect/blocker/water/toxic/Group_1,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/area/desert_dam/exterior/river/riverside_south)
+"bM" = (
+/obj/effect/blocker/water/toxic/Group_1,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/river/riverside_south)
+
+(1,1,1) = {"
+aa
+bA
+bA
+bA
+bA
+bA
+bA
+bA
+bA
+bA
+aM
+bs
+bs
+bs
+bs
+bs
+bs
+bs
+bs
+bs
+bs
+bw
+"}
+(2,1,1) = {"
+ab
+ag
+aa
+aa
+bA
+bA
+bA
+bA
+bA
+bA
+aN
+bL
+bi
+bi
+bi
+bi
+bi
+bi
+bC
+bC
+bl
+bw
+"}
+(3,1,1) = {"
+ac
+ah
+ao
+aa
+bA
+bA
+bA
+bA
+bA
+bA
+aN
+bM
+aS
+ai
+ai
+ai
+ai
+ai
+bD
+bD
+bx
+bw
+"}
+(4,1,1) = {"
+bK
+al
+ap
+as
+ay
+aD
+bA
+bA
+aJ
+bA
+aN
+bM
+ak
+ba
+bt
+bt
+bt
+bt
+bt
+bt
+bt
+bw
+"}
+(5,1,1) = {"
+ac
+al
+ap
+at
+az
+aD
+aD
+aJ
+aJ
+aJ
+aN
+bM
+ak
+bb
+bA
+bA
+bA
+bA
+bA
+bA
+bA
+by
+"}
+(6,1,1) = {"
+ad
+aj
+ap
+aa
+aA
+aE
+aE
+aJ
+aJ
+aJ
+bA
+aV
+ak
+bb
+bA
+bA
+bA
+bA
+bA
+bA
+bA
+bz
+"}
+(7,1,1) = {"
+ae
+aq
+ap
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aW
+ap
+bb
+bA
+bA
+bA
+bA
+bA
+bA
+bA
+by
+"}
+(8,1,1) = {"
+ab
+bI
+aq
+au
+au
+au
+au
+au
+au
+au
+au
+aq
+ap
+bb
+bA
+bA
+bA
+bA
+bA
+bA
+bA
+bA
+"}
+(9,1,1) = {"
+ac
+am
+ar
+ar
+bH
+bG
+bF
+ar
+ar
+ar
+ar
+ar
+aZ
+bb
+bA
+bA
+bA
+bA
+bA
+bA
+bA
+bA
+"}
+(10,1,1) = {"
+bJ
+bJ
+ac
+ac
+aJ
+aJ
+aJ
+ac
+ac
+bE
+ac
+ac
+ac
+bb
+bA
+bA
+bA
+bA
+bA
+bA
+bA
+bA
+"}

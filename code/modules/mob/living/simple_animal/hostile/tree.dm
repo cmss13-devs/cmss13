@@ -48,7 +48,7 @@
 	if(istype(L))
 		if(prob(15))
 			L.apply_effect(3, WEAKEN)
-			L.visible_message(SPAN_DANGER("\the [src] knocks down \the [L]!"))
+			L.visible_message(SPAN_DANGER("\The [src] knocks down \the [L]!"))
 
 /mob/living/simple_animal/hostile/tree/death()
 	..(null,"is hacked into pieces!")

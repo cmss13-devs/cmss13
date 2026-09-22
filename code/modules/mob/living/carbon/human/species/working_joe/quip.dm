@@ -282,3 +282,73 @@
 	say_message = "We have some disagreements between us."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/argument
+	key = "argument"
+	sound = 'sound/voice/joe/daniel/another_argument.ogg'
+	say_message = "Another argument."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/believe_so
+	key = "believeso"
+	sound = 'sound/voice/joe/daniel/i_do_believe_so.ogg'
+	say_message = "I do believe so."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/sorry
+	key = "sorry"
+	sound = 'sound/voice/joe/daniel/im_sorry.ogg'
+	say_message = "I'm sorry."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/it_appears
+	key = "itappears"
+	sound = 'sound/voice/joe/daniel/it_appears_that.ogg'
+	say_message = "It appears that these creatures have destroyed our communication system."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/nothing_in
+	key = "nothingin"
+	sound = 'sound/voice/joe/daniel/nothing_in.ogg'
+	say_message = "Nothing in, nothing out."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/of_course
+	key = "ofcourse"
+	sound = 'sound/voice/joe/daniel/of_course.ogg'
+	say_message = "Of course."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/no_idea
+	key = "noidea"
+	sound = 'sound/voice/joe/daniel/sorry_i_have_no_idea.ogg'
+	say_message = "Sorry, I have no idea."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/protocols_clear
+	key = "protocolsclear"
+	sound = 'sound/voice/joe/daniel/the_protocols_are_clear.ogg'
+	say_message = "The protocols are clear."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/only_right
+	key = "onlyright"
+	sound = 'sound/voice/joe/daniel/what_you_are_doing_is_only_right.ogg'
+	say_message = "What you're doing is only right."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/following_procedures
+	key = "following_procedures"
+	sound = 'sound/voice/joe/daniel/you_were_only_following.ogg'
+	say_message = "You were only following the Weyland-Yutani containment procedures."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE

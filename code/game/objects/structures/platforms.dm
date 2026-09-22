@@ -12,31 +12,33 @@
 	throwpass = TRUE //You can throw objects over this, despite its density.
 	layer = OBJ_LAYER
 	breakable = TRUE
-	flags_atom = ON_BORDER
-	unacidable = TRUE
+	flags_atom = ON_BORDER|NO_ZFALL
+	unacidable = FALSE
 	climb_delay = CLIMB_DELAY_SHORT
 	projectile_coverage = PROJECTILE_COVERAGE_NONE
 	var/stat = 0
 	var/creaking_sound
 	var/breaking_sound
 	var/shove_time
+	/// Tool used to dismantle this platform.
+	var/dismantle_tool = /obj/item/tool/weldingtool
 
 /obj/structure/platform/Initialize()
 	. = ..()
-	var/image/I = image(icon, src, "platform_overlay", LADDER_LAYER, dir)//ladder layer puts us just above weeds.
+	var/image/platform_overlay = image(icon, src, "platform_overlay", LADDER_LAYER, dir)//ladder layer puts us just above weeds.
 	switch(dir)
 		if(SOUTH)
 			layer = ABOVE_MOB_LAYER
-			I.pixel_y = -16
+			platform_overlay.pixel_y = -16
 		if(NORTH)
-			I.pixel_y = 16
+			platform_overlay.pixel_y = 16
 		if(EAST)
-			I.pixel_x = 16
+			platform_overlay.pixel_x = 16
 			layer = MOB_LAYER
 		if(WEST)
-			I.pixel_x = -16
+			platform_overlay.pixel_x = -16
 			layer = MOB_LAYER
-	overlays += I
+	overlays += platform_overlay
 
 /obj/structure/platform/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -49,8 +51,8 @@
 	..()
 
 /obj/structure/platform/BlockedPassDirs(atom/movable/mover, target_dir)
-	var/obj/structure/S = locate(/obj/structure) in get_turf(mover)
-	if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable objects allow you to universally climb over others
+	var/obj/structure/structure = locate(/obj/structure) in get_turf(mover)
+	if(structure && structure.climbable && !(structure.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable objects allow you to universally climb over others
 		return NO_BLOCKED_MOVEMENT
 
 	return ..()
@@ -77,6 +79,11 @@
 
 	if(stat & BROKEN)
 		. += SPAN_WARNING("It looks destroyed.")
+	else if(!explo_proof)
+		if(dismantle_tool == /obj/item/tool/shovel)
+			. += SPAN_NOTICE("It can be dug away with a shovel or an entrenching tool.")
+		else
+			. += SPAN_NOTICE("It can be cut apart with a welding tool.")
 
 /obj/structure/platform/update_icon()
 	if(stat & BROKEN)
@@ -88,7 +95,51 @@
 	layer = ABOVE_BLOOD_LAYER //lets hope it will appear under everything except weeds and blood.
 	update_icon()
 
-/obj/structure/platform/attackby(obj/item/W, mob/user)
+/obj/structure/platform/attackby(obj/item/item, mob/user)
+	if(istype(item, dismantle_tool) && user.a_intent != INTENT_HARM)
+		if(user.action_busy)
+			return TRUE
+		if(stat & BROKEN)
+			to_chat(user, SPAN_WARNING("It's already destroyed!"))
+			return TRUE
+		if(explo_proof)
+			to_chat(user, SPAN_WARNING("[src] is too sturdy to dismantle!"))
+			return TRUE
+
+		var/dismantle_time = 7 SECONDS // Matches a normal sized xenom
+		var/obj/item/tool/weldingtool/welder
+		var/obj/item/tool/shovel/shovel
+		if(iswelder(item))
+			welder = item
+			if(!welder.isOn())
+				to_chat(user, SPAN_WARNING("You need to light [welder] first!"))
+				return TRUE
+			if(!welder.remove_fuel(1, user))
+				return TRUE
+			playsound(loc, 'sound/items/Welder.ogg', 25, TRUE)
+		else
+			shovel = item
+			if(shovel.folded)
+				to_chat(user, SPAN_WARNING("You need to unfold [shovel] first!"))
+				return TRUE
+			playsound(loc, creaking_sound, 30, TRUE)
+
+		if(shovel)
+			user.visible_message(SPAN_NOTICE("[user] starts digging away at the rock ledge."), SPAN_NOTICE("You start digging away at the rock ledge."))
+		else
+			user.visible_message(SPAN_NOTICE("[user] starts dismantling [src]."), SPAN_NOTICE("You start dismantling [src]."))
+		if(!do_after(user, dismantle_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+			return TRUE
+		if((stat & BROKEN) || explo_proof || (welder && !welder.isOn()) || (shovel && shovel.folded))
+			return TRUE
+		if(shovel)
+			user.visible_message(SPAN_NOTICE("[user] digs away the rock ledge."), SPAN_NOTICE("You dig away the rock ledge."))
+		else
+			user.visible_message(SPAN_NOTICE("[user] dismantles [src]."), SPAN_NOTICE("You dismantle [src]."))
+		playsound(loc, breaking_sound, 25, TRUE)
+		broken()
+		return TRUE
+
 	. = ..()
 	if(user.pulling)
 		if(!can_climb(user))
@@ -157,7 +208,7 @@
 	throwpass = TRUE
 	layer = OBJ_LAYER
 	breakable = FALSE
-	flags_atom = ON_BORDER
+	flags_atom = ON_BORDER|NO_ZFALL
 	unacidable = TRUE
 
 /obj/structure/platform_decoration/Initialize()
@@ -196,9 +247,12 @@
 	breaking_sound = 'sound/effects/metalhit.ogg'
 
 /obj/structure/platform/stone
+	name = "rock ledge"
+	desc = "A raised ledge of solid rock. You could probably climb it."
 	icon_state = "kutjevo_rock"
 	creaking_sound = 'sound/effects/rock_creaking.ogg'
 	breaking_sound = 'sound/effects/meteorimpact.ogg'
+	dismantle_tool = /obj/item/tool/shovel
 
 //------------------------------//
 //    Metal Stairs Platforms    //
@@ -260,6 +314,12 @@
 /obj/structure/platform/stone/stair_cut/soro_right
 	icon_state = "strata_rock_platform_stair_alt"
 
+/obj/structure/platform/stone/stair_cut/tyrargo_left
+	icon_state = "tyrargo_rock_platform_stair"
+
+/obj/structure/platform/stone/stair_cut/tyrargo_right
+	icon_state = "tyrargo_rock_platform_stair_alt"
+
 /obj/structure/platform/stone/stair_cut/kutjevo_left
 	icon_state = "kutjevo_rock_stair"
 
@@ -282,11 +342,24 @@
 
 /obj/structure/platform/stone/stair_cut/runed_sandstone_left
 	icon_state = "stone_stair"
-	color = "#b29082"
+	color = "#b6a38f"
 
 /obj/structure/platform/stone/stair_cut/runed_sandstone_right
 	icon_state = "stone_stair_alt"
-	color = "#b29082"
+	color = "#b6a38f"
+
+/// Ancient-Temple platform stair-cut
+/obj/structure/platform/stone/stair_cut/ancient_temple_left
+	icon_state = "ancient_platform_stair_left"
+
+/obj/structure/platform/stone/stair_cut/ancient_temple_right
+	icon_state = "ancient_platform_stair_right"
+
+/obj/structure/platform/stone/stair_cut/ancient_temple_alt_left
+	icon_state = "ancient_platform_stair_alt_left"
+
+/obj/structure/platform/stone/stair_cut/ancient_temple_alt_right
+	icon_state = "ancient_platform_stair_alt_right"
 
 //------------------------------------//
 //       Metal based Platforms        //
@@ -335,6 +408,19 @@
 /obj/structure/platform/metal/kutjevo_smooth/east
 	dir = EAST
 /obj/structure/platform/metal/kutjevo_smooth/west
+	dir = WEST
+
+/obj/structure/platform/metal/kutjevo_smooth_immune
+	icon_state = "kutjevo_platform_sm"
+	name = "raised metal edge"
+	desc =  "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
+	explo_proof = TRUE
+
+/obj/structure/platform/metal/kutjevo_smooth_immune/north
+	dir = NORTH
+/obj/structure/platform/metal/kutjevo_smooth_immune/east
+	dir = EAST
+/obj/structure/platform/metal/kutjevo_smooth_immune/west
 	dir = WEST
 
 
@@ -439,6 +525,32 @@
 /obj/structure/platform/stone/mineral/west
 	dir = WEST
 
+// Tyrargo Rock
+
+/obj/structure/platform/stone/tyrargo
+	name = "rock edge"
+	desc = "A solid chunk of desolate rocks. Looks like you could climb it."
+	icon_state = "tyrargo_rock_platform"
+
+/obj/structure/platform/stone/tyrargo/north
+	dir = NORTH
+/obj/structure/platform/stone/tyrargo/east
+	dir = EAST
+/obj/structure/platform/stone/tyrargo/west
+	dir = WEST
+
+//--//
+
+/obj/structure/platform/stone/mineral
+	icon_state = "stone"
+
+/obj/structure/platform/stone/mineral/north
+	dir = NORTH
+/obj/structure/platform/stone/mineral/east
+	dir = EAST
+/obj/structure/platform/stone/mineral/west
+	dir = WEST
+
 
 /obj/structure/platform/stone/sandstone
 	name = "sandstone platform"
@@ -457,13 +569,36 @@
 /obj/structure/platform/stone/runed_sandstone
 	name = "sandstone temple platform"
 	icon_state = "stone"
-	color = "#b29082"
+	color = "#b6a38f"
 
 /obj/structure/platform/stone/runed_sandstone/north
 	dir = NORTH
 /obj/structure/platform/stone/runed_sandstone/east
 	dir = EAST
 /obj/structure/platform/stone/runed_sandstone/west
+	dir = WEST
+
+/// Ancient-Temple platforms
+/obj/structure/platform/stone/ancient_temple
+	name = "stone platform"
+	desc = "A platform supporting elevated ground, made of stone. It appears to be carved with deocorative symbols."
+	icon_state = "ancient_platform"
+
+/obj/structure/platform/stone/ancient_temple/north
+	dir = NORTH
+/obj/structure/platform/stone/ancient_temple/east
+	dir = EAST
+/obj/structure/platform/stone/ancient_temple/west
+	dir = WEST
+
+/obj/structure/platform/stone/ancient_temple/alt
+	icon_state = "ancient_platform_alt"
+
+/obj/structure/platform/stone/ancient_temple/alt/north
+	dir = NORTH
+/obj/structure/platform/stone/ancient_temple/alt/east
+	dir = EAST
+/obj/structure/platform/stone/ancient_temple/alt/west
 	dir = WEST
 
 //------------------------------------//
@@ -533,6 +668,19 @@
 /obj/structure/platform_decoration/metal/kutjevo_smooth/east
 	dir = EAST
 /obj/structure/platform_decoration/metal/kutjevo_smooth/west
+	dir = WEST
+
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune
+	name = "raised metal corner"
+	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-Euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."
+	icon_state = "kutjevo_platform_sm_deco"
+	explo_proof = TRUE
+
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north
+	dir = NORTH
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east
+	dir = EAST
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west
 	dir = WEST
 
 
@@ -617,6 +765,20 @@
 /obj/structure/platform_decoration/stone/soro/west
 	dir = WEST
 
+//TYRARGO
+
+/obj/structure/platform_decoration/stone/tyrargo
+	name = "rock corner"
+	desc = "Solid chunks of desolate rocks."
+	icon_state = "tyrargo_rock_platform_deco"
+
+/obj/structure/platform_decoration/stone/tyrargo/north
+	dir = NORTH
+/obj/structure/platform_decoration/stone/tyrargo/east
+	dir = EAST
+/obj/structure/platform_decoration/stone/tyrargo/west
+	dir = WEST
+
 
 /obj/structure/platform_decoration/stone/mineral
 	icon_state = "stone_deco"
@@ -645,13 +807,36 @@
 /obj/structure/platform_decoration/stone/runed_sandstone
 	name = "sandstone temple platform corner"
 	icon_state = "stone_deco"
-	color = "#b29082"
+	color = "#b6a38f"
 
 /obj/structure/platform_decoration/stone/runed_sandstone/north
 	dir = NORTH
 /obj/structure/platform_decoration/stone/runed_sandstone/east
 	dir = EAST
 /obj/structure/platform_decoration/stone/runed_sandstone/west
+	dir = WEST
+
+/// Ancient-Temple platform deco
+/obj/structure/platform_decoration/stone/ancient_temple
+	name = "stone platform corner"
+	desc = "A platform supporting elevated ground, made of stone. It appears to be carved with deocorative symbols."
+	icon_state = "ancient_platform_deco"
+
+/obj/structure/platform_decoration/stone/ancient_temple/north
+	dir = NORTH
+/obj/structure/platform_decoration/stone/ancient_temple/east
+	dir = EAST
+/obj/structure/platform_decoration/stone/ancient_temple/west
+	dir = WEST
+
+/obj/structure/platform_decoration/stone/ancient_temple/alt
+	icon_state = "ancient_platform_alt_deco"
+
+/obj/structure/platform_decoration/stone/ancient_temple/alt/north
+	dir = NORTH
+/obj/structure/platform_decoration/stone/ancient_temple/alt/east
+	dir = EAST
+/obj/structure/platform_decoration/stone/ancient_temple/alt/west
 	dir = WEST
 
 /// Hybrisa Platforms
@@ -901,3 +1086,140 @@
 	dir = EAST
 /obj/structure/platform_decoration/stone/runed_sandstone/west
 	dir = WEST
+
+// Colorable variants
+// strata rocks
+
+/obj/structure/platform/stone/soro_colorable
+	name = "rock edge"
+	desc = "A solid chunk of desolate rocks. Looks like you could climb it."
+	icon_state = "colorable_strata_rock_platform"
+
+/obj/structure/platform/stone/soro_colorable/north
+	dir = NORTH
+/obj/structure/platform/stone/soro_colorable/east
+	dir = EAST
+/obj/structure/platform/stone/soro_colorable/west
+	dir = WEST
+
+/obj/structure/platform_decoration/stone/soro_colorable
+	name = "rock corner"
+	desc = "Solid chunks of desolate rocks."
+	icon_state = "colorable_strata_rock_platform_deco"
+
+/obj/structure/platform_decoration/stone/soro_colorable/north
+	dir = NORTH
+/obj/structure/platform_decoration/stone/soro_colorable/east
+	dir = EAST
+/obj/structure/platform_decoration/stone/soro_colorable/west
+	dir = WEST
+
+/obj/structure/platform/stone/stair_cut/soro_left
+	icon_state = "colorable_strata_rock_platform_stair"
+
+/obj/structure/platform/stone/stair_cut/soro_right
+	icon_state = "colorable_strata_rock_platform_stair_alt"
+
+//strata rocks immune (used for z level transitions)
+
+/obj/structure/platform/stone/soro_colorable_immune
+	name = "rock edge"
+	desc = "A solid chunk of desolate rocks. Looks like you could climb it."
+	icon_state = "colorable_strata_rock_platform"
+	explo_proof = TRUE
+
+/obj/structure/platform/stone/soro_colorable_immune/north
+	dir = NORTH
+/obj/structure/platform/stone/soro_colorable_immune/east
+	dir = EAST
+/obj/structure/platform/stone/soro_colorable_immune/west
+	dir = WEST
+
+/obj/structure/platform_decoration/stone/soro_colorable_immune
+	name = "rock corner"
+	desc = "Solid chunks of desolate rocks."
+	icon_state = "colorable_strata_rock_platform_deco"
+	explo_proof = TRUE
+
+/obj/structure/platform_decoration/stone/soro_colorable_immune/north
+	dir = NORTH
+/obj/structure/platform_decoration/stone/soro_colorable_immune/east
+	dir = EAST
+/obj/structure/platform_decoration/stone/soro_colorable_immune/west
+	dir = WEST
+
+/obj/structure/platform/stone/stair_cut/soro_left
+	icon_state = "colorable_strata_rock_platform_stair"
+	explo_proof = TRUE
+
+/obj/structure/platform/stone/stair_cut/soro_right
+	icon_state = "colorable_strata_rock_platform_stair_alt"
+	explo_proof = TRUE
+
+//kutjevo rocks
+
+/obj/structure/platform/stone/kutjevo_colorable
+	name = "rock edge"
+	desc = "A solid chunk of desolate rocks. Looks like you could climb it."
+	icon_state = "colorable_kutjevo_rock"
+
+/obj/structure/platform/stone/kutjevo_colorable/north
+	dir = NORTH
+/obj/structure/platform/stone/kutjevo_colorable/east
+	dir = EAST
+/obj/structure/platform/stone/kutjevo_colorable/west
+	dir = WEST
+
+/obj/structure/platform_decoration/stone/kutjevo_colorable
+	name = "rock corner"
+	desc = "Solid chunks of desolate rocks."
+	icon_state = "colorable_kutjevo_rock_deco"
+
+/obj/structure/platform_decoration/stone/kutjevo_colorable/north
+	dir = NORTH
+/obj/structure/platform_decoration/stone/kutjevo_colorable/east
+	dir = EAST
+/obj/structure/platform_decoration/stone/kutjevo_colorable/west
+	dir = WEST
+
+/obj/structure/platform/stone/stair_cut/kutjevo_left
+	icon_state = "colorable_kutjevo_rock_stair"
+
+/obj/structure/platform/stone/stair_cut/kutjevo_right
+	icon_state = "colorable_kutjevo_rock_stair_alt"
+
+//kutjevo rocks immune (used for z level transitions)
+
+/obj/structure/platform/stone/kutjevo_colorable_immune
+	name = "rock edge"
+	desc = "A solid chunk of desolate rocks. Looks like you could climb it."
+	icon_state = "colorable_kutjevo_rock"
+	explo_proof = TRUE
+
+/obj/structure/platform/stone/kutjevo_colorable_immune/north
+	dir = NORTH
+/obj/structure/platform/stone/kutjevo_colorable_immune/east
+	dir = EAST
+/obj/structure/platform/stone/kutjevo_colorable_immune/west
+	dir = WEST
+
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune
+	name = "rock corner"
+	desc = "Solid chunks of desolate rocks."
+	icon_state = "colorable_kutjevo_rock_deco"
+	explo_proof = TRUE
+
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/north
+	dir = NORTH
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/east
+	dir = EAST
+/obj/structure/platform_decoration/stone/kutjevo_colorable_immune/west
+	dir = WEST
+
+/obj/structure/platform/stone/stair_cut/kutjevo_left
+	icon_state = "colorable_kutjevo_rock_stair"
+	explo_proof = TRUE
+
+/obj/structure/platform/stone/stair_cut/kutjevo_right
+	icon_state = "colorable_kutjevo_rock_stair_alt"
+	explo_proof = TRUE

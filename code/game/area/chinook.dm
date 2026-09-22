@@ -8,7 +8,7 @@
 	icon_state = "almayer"
 	requires_power = TRUE
 	statistic_exempt = TRUE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW
 	sound_environment = SOUND_ENVIRONMENT_ROOM
 	unlimited_power = TRUE
 	ceiling = CEILING_METAL

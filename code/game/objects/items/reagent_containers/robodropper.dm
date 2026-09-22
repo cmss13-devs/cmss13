@@ -1,7 +1,7 @@
 
 /obj/item/reagent_container/robodropper
 	name = "industrial dropper"
-	desc = "A robust-looking dropper for measuring and transfering small units of liquid. Transfers up to 10 units."
+	desc = "A robust-looking dropper for measuring and transferring small units of liquid. Transfers up to 10 units."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "robodropper"
 	amount_per_transfer_from_this = 10
@@ -76,7 +76,7 @@
 						src.reagents.reaction(safe_thing, TOUCH)
 
 
-					to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the solution."))
+					to_chat(user, SPAN_NOTICE("You transfer [trans] units of the solution."))
 					if (src.reagents.total_volume<=0)
 						filled = 0
 						update_icon()
@@ -94,11 +94,11 @@
 			var/contained = english_list(injected)
 			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been squirted with [src.name] by [user.name] ([user.ckey]). Reagents: [contained]</font>")
 			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to squirt [M.name] ([M.key]). Reagents: [contained]</font>")
-			msg_admin_attack("[user.name] ([user.ckey]) squirted [M.name] ([M.key]) with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+			msg_admin_attack("[user.name] ([user.ckey]) squirted [M.name] ([M.ckey]) with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 
 		trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
-		to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the solution."))
+		to_chat(user, SPAN_NOTICE("You transfer [trans] units of the solution."))
 		if (src.reagents.total_volume<=0)
 			filled = 0
 			update_icon()
@@ -119,7 +119,7 @@
 			to_chat(user, SPAN_DANGER("You fail to remove reagents from [target]."))
 			return
 
-		to_chat(user, SPAN_NOTICE(" You fill the dropper with [trans] units of the solution."))
+		to_chat(user, SPAN_NOTICE("You fill the dropper with [trans] units of the solution."))
 
 		filled = 1
 		update_icon()

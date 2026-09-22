@@ -205,11 +205,13 @@ const CameraControls = (props: { readonly searchText: string }) => {
         </Stack.Item>
         <Stack.Item grow>
           <ByondUi
-            height="100%"
-            width="100%"
-            params={{
+            winsetParams={{
               id: mapRef,
               type: 'map',
+            }}
+            boxProps={{
+              height: '100%',
+              width: '100%',
             }}
           />
         </Stack.Item>

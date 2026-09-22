@@ -72,7 +72,9 @@
 		"downloadMode" = "audio"
 	)), headers)
 
-	request.execute_blocking()
+	request.begin_async()
+
+	UNTIL(request.is_complete())
 
 	var/datum/http_response/response_raw = request.into_response()
 

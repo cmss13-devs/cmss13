@@ -185,17 +185,6 @@
 	reagents.add_reagent("blood", 20, data)
 	update_icon()
 
-/obj/item/reagent_container/glass/bottle/epiglottis_virion
-	name = "epiglottis virion culture bottle"
-	desc = "A small bottle. Contains Epiglottis virion culture in synthblood medium."
-
-/obj/item/reagent_container/glass/bottle/epiglottis_virion/Initialize()
-	. = ..()
-	var/datum/disease/F = new /datum/disease/advance/voice_change(0)
-	var/list/data = list("viruses"= list(F))
-	reagents.add_reagent("blood", 20, data)
-	update_icon()
-
 /obj/item/reagent_container/glass/bottle/liver_enhance_virion
 	name = "liver enhancement virion culture bottle"
 	desc = "A small bottle. Contains liver enhancement virion culture in synthblood medium."
@@ -384,7 +373,7 @@
 
 /obj/item/reagent_container/glass/bottle/oxycodone
 	name = "\improper Oxycodone bottle"
-	desc = "A small bottle. Contains Oxycodone - Used as an Extreme Painkiller.  ILLEGAL TO DISTRIBUTE."
+	desc = "A small bottle. Contains Oxycodone - Used as an Extreme Painkiller. Use with Caution."
 	volume = 60
 	amount_per_transfer_from_this = 60
 

@@ -39,8 +39,3 @@
 				static_lighting_build_overlay(new_area)
 			else
 				static_lighting_clear_overlay()
-	//Inherit overlay of new area
-	if(old_area.lighting_effect)
-		overlays -= old_area.lighting_effect
-	if(new_area.lighting_effect)
-		overlays += new_area.lighting_effect

@@ -1,4 +1,6 @@
 #define WO_MAX_WAVE 15
+#define WO_XENOS_WON 1
+#define WO_MARINES_WON 2
 
 //Global proc for checking if the game is whiskey outpost so I don't need to type if(gamemode == whiskey outpost) 50000 times
 /proc/Check_WO()
@@ -9,7 +11,8 @@
 /datum/game_mode/whiskey_outpost
 	name = GAMEMODE_WHISKEY_OUTPOST
 	config_tag = GAMEMODE_WHISKEY_OUTPOST
-	required_players = 140
+	required_players = 120 // Ultimately controlled by /datum/config_entry/number/whiskey_required_players
+	required_ready_players = 60
 	xeno_bypass_timer = 1
 	static_comms_amount = 0
 	flags_round_type = MODE_NEW_SPAWN
@@ -19,7 +22,7 @@
 		/datum/job/civilian/synthetic/whiskey = JOB_SYNTH,
 		/datum/job/command/warrant/whiskey = JOB_CHIEF_POLICE,
 		/datum/job/command/bridge/whiskey = JOB_SO,
-		/datum/job/command/tank_crew/whiskey = JOB_TANK_CREW,
+		/datum/job/command/warden/whiskey = JOB_WARDEN,
 		/datum/job/command/police/whiskey = JOB_POLICE,
 		/datum/job/command/pilot/whiskey = JOB_CAS_PILOT,
 		/datum/job/logistics/requisition/whiskey = JOB_CHIEF_REQUISITION,
@@ -45,7 +48,7 @@
 	//No longer relevant to the game mode, since supply drops are getting changed.
 	var/checkwin_counter = 0
 	var/finished = 0
-	var/has_started_timer = 10 //This is a simple timer so we don't accidently check win conditions right in post-game
+	var/has_started_timer = 10 //This is a simple timer so we don't accidentally check win conditions right in post-game
 	var/randomovertime = 0 //This is a simple timer so we can add some random time to the game mode.
 	var/spawn_next_wave = 12 MINUTES //Spawn first batch at ~12 minutes
 	var/last_wave_time = 0 // Stores the time the last wave (wave 15) started
@@ -75,16 +78,18 @@
 	var/list/whiskey_outpost_waves = list()
 
 	hardcore = TRUE
-	starting_round_modifiers = list(/datum/gamemode_modifier/permadeath)
+	starting_round_modifiers = list(/datum/gamemode_modifier/permadeath, /datum/gamemode_modifier/more_crit, /datum/gamemode_modifier/disable_wj_spawns)
 
 	votable = TRUE
-	vote_cycle = 75 // approx. once every 5 days, if it wins the vote
+	vote_cycle = 65 // approx. once every 5 days, if it wins the vote
 
 	taskbar_icon = 'icons/taskbar/gml_wo.png'
 
 /datum/game_mode/whiskey_outpost/New()
 	. = ..()
 	required_players = CONFIG_GET(number/whiskey_required_players)
+	if(!isnull(required_ready_players))
+		required_ready_players = min(required_ready_players, required_players) // Don't ever require more ready than voting
 
 /datum/game_mode/whiskey_outpost/get_roles_list()
 	return GLOB.ROLES_WO
@@ -130,14 +135,14 @@
 	sleep(10)
 	switch(map_locale) //Switching it up.
 		if(0)
-			marine_announcement("This is Captain Hans Naiche, commander of the 3rd Battalion 'Dust Raiders' forces here on LV-624. In our attempts to establish a base on this planet, several of our patrols were wiped out by hostile creatures.  We're setting up a distress call, but we need you to hold [SSmapping.configs[GROUND_MAP].map_name] in order for our engineers to set up the relay. We're prepping several M402 mortar units to provide fire support. If they overrun your positon, we will be wiped out with no way to call for help. Hold the line or we all die.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+			marine_announcement("This is Captain Hans Naiche, commander of the 3rd Battalion 'Dust Raiders' forces here on LV-624. In our attempts to establish a base on this planet, several of our patrols were wiped out by hostile creatures. We're setting up a distress call, but we need you to hold [SSmapping.configs[GROUND_MAP].map_name] in order for our engineers to set up the relay. We're prepping several M402 mortar units to provide fire support. If they overrun your position, we will be wiped out with no way to call for help. Hold the line or we all die.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 	addtimer(CALLBACK(src, PROC_REF(story_announce), 0), 3 MINUTES)
 	return ..()
 
 /datum/game_mode/whiskey_outpost/proc/story_announce(time)
 	switch(time)
 		if(0)
-			marine_announcement("This is Captain Hans Naiche, Commander of the 3rd Bataillion, 'Dust Raiders' forces on LV-624. As you already know, several of our patrols have gone missing and were likely wiped out by hostile local creatures as we attempted to set up our base.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+			marine_announcement("This is Captain Hans Naiche, Commander of the 3rd Battalion, 'Dust Raiders' forces on LV-624. As you already know, several of our patrols have gone missing and were likely wiped out by hostile local creatures as we attempted to set up our base.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 		if(1)
 			marine_announcement("Our scouts report increased activity in the area and given our intel, we're already preparing for the worst. We're setting up a comms relay to send out a distress call, but we're going to need time while our engineers get everything ready. All other stations should prepare accordingly and maximize combat readiness, effective immediately.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 		if(2)
@@ -159,7 +164,7 @@
 			SSitem_cleanup.delete_almayer()
 
 
-//PROCCESS
+//PROCESS
 /datum/game_mode/whiskey_outpost/process(delta_time)
 	. = ..()
 	checkwin_counter++
@@ -193,11 +198,19 @@
 	var/wave = pick(whiskey_outpost_waves[xeno_wave])
 	spawn_whiskey_outpost_xenos(wave)
 	announce_xeno_wave(wave)
+	announce_dchat("A new xenomorph wave is available, use the Join as Xeno verb to take one of them.")
+	if(xeno_wave == 1)
+		xeno_announcement("It is time, dear Queen. Release the hive!", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 	if(xeno_wave == 7)
 		//Wave when Marines get reinforcements!
 		get_specific_call(/datum/emergency_call/wo, FALSE, TRUE) // "Marine Reinforcements (Squad)"
+	if(xeno_wave == 14)
+		xeno_announcement("We sense that they are sending signals for help, we have little time left. We have granted you vision of all humans in the area, slaughter them all!", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
+		var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+		main_hive.see_humans_on_tacmap = TRUE
+		main_hive.tacmap_requires_queen_ovi = FALSE
+		SEND_SIGNAL(main_hive, COMSIG_XENO_REVEAL_TACMAP)
 	xeno_wave = min(xeno_wave + 1, WO_MAX_WAVE)
-
 
 /datum/game_mode/whiskey_outpost/proc/announce_xeno_wave(datum/whiskey_outpost_wave/wave_data)
 	if(!istype(wave_data))
@@ -209,12 +222,14 @@
 
 //CHECK WIN
 /datum/game_mode/whiskey_outpost/check_win()
-	var/C = count_humans_and_xenos(SSmapping.levels_by_trait(ZTRAIT_GROUND))
+	var/list/living_player_list = count_humans_and_xenos(SSmapping.levels_by_trait(ZTRAIT_GROUND))
+	var/num_humans = living_player_list[1]
+	//var/num_xenos = living_player_list[2]
 
-	if(C[1] == 0)
-		finished = 1 //Alien win
+	if(num_humans == 0)
+		finished = WO_XENOS_WON
 	else if(world.time > last_wave_time + 15 MINUTES) // Around 1:12 hh:mm
-		finished = 2 //Marine win
+		finished = WO_MARINES_WON
 
 /datum/game_mode/whiskey_outpost/proc/disablejoining()
 	for(var/i in GLOB.RoleAuthority.roles_by_name)
@@ -226,7 +241,6 @@
 			J.total_positions = J.current_positions
 		J.current_positions = J.get_total_positions(TRUE)
 	to_world("<B>New players may no longer join the game.</B>")
-	message_admins("Wave one has begun. Disabled new player game joining.")
 	message_admins("Wave one has begun. Disabled new player game joining except for replacement of cryoed marines.")
 	world.update_status()
 
@@ -251,9 +265,9 @@
 ///////////////////////////////
 /datum/game_mode/whiskey_outpost/check_finished()
 	if(finished != 0)
-		return 1
+		return TRUE
 
-	return 0
+	return FALSE
 
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//
@@ -261,26 +275,26 @@
 /datum/game_mode/whiskey_outpost/declare_completion()
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.track_round_end()
-	if(finished == 1)
+	if(finished == WO_XENOS_WON)
 		log_game("Round end result - xenos won")
 		to_world(SPAN_ROUND_HEADER("The Xenos have successfully defended their hive from colonization."))
 		to_world(SPAN_ROUNDBODY("Well done, you've secured LV-624 for the hive!"))
 		to_world(SPAN_ROUNDBODY("It will be another five years before the USCM returns to the Neroid Sector, with the arrival of the 2nd 'Falling Falcons' Battalion and the USS Almayer."))
 		to_world(SPAN_ROUNDBODY("The xenomorph hive on LV-624 remains unthreatened until then..."))
-		world << sound('sound/misc/Game_Over_Man.ogg')
+		send_end_round_music('sound/misc/Game_Over_Man.ogg')
 		if(GLOB.round_statistics)
 			GLOB.round_statistics.round_result = MODE_INFESTATION_X_MAJOR
 			if(GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_xeno_victories++
 				GLOB.round_statistics.current_map.total_xeno_majors++
 
-	else if(finished == 2)
+	else if(finished == WO_MARINES_WON)
 		log_game("Round end result - marines won")
 		to_world(SPAN_ROUND_HEADER("Against the onslaught, the marines have survived."))
 		to_world(SPAN_ROUNDBODY("The signal rings out to the USS Alistoun, and Dust Raiders stationed elsewhere in the Neroid Sector begin to converge on LV-624."))
 		to_world(SPAN_ROUNDBODY("Eventually, the Dust Raiders secure LV-624 and the entire Neroid Sector in 2182, pacifiying it and establishing peace in the sector for decades to come."))
 		to_world(SPAN_ROUNDBODY("The USS Almayer and the 2nd 'Falling Falcons' Battalion are never sent to the sector and are spared their fate in 2186."))
-		world << sound('sound/misc/hell_march.ogg')
+		send_end_round_music('sound/misc/hell_march.ogg')
 		if(GLOB.round_statistics)
 			GLOB.round_statistics.round_result = MODE_INFESTATION_M_MAJOR
 			if(GLOB.round_statistics.current_map)
@@ -291,7 +305,7 @@
 		log_game("Round end result - no winners")
 		to_world(SPAN_ROUND_HEADER("NOBODY WON!"))
 		to_world(SPAN_ROUNDBODY("How? Don't ask me..."))
-		world << 'sound/misc/sadtrombone.ogg'
+		send_end_round_music('sound/misc/sadtrombone.ogg')
 		if(GLOB.round_statistics)
 			GLOB.round_statistics.round_result = MODE_INFESTATION_DRAW_DEATH
 
@@ -501,7 +515,7 @@
 			for(var/path in spawnitems)
 				new path(crate)
 
-//Whiskey Outpost Recycler Machine. Teleports objects to centcomm so it doesnt lag
+//Whiskey Outpost Recycler Machine. Teleports objects to centcomm so it doesn't lag
 /obj/structure/machinery/wo_recycler
 	icon = 'icons/obj/structures/machinery/recycling.dmi'
 	icon_state = "grinder-o0"
@@ -659,7 +673,7 @@
 		return
 
 	if(!is_ground_level(user.z))
-		to_chat(user, "You have to be on the ground to use this or it won't transmit.")
+		to_chat(user, "You have to be on the ground to use this, or it won't transmit.")
 		return
 
 	activated = 1
@@ -667,15 +681,15 @@
 	w_class = 10
 	icon_state = "[icon_activated]"
 	playsound(src, 'sound/machines/twobeep.ogg', 15, 1)
-	to_chat(user, "You activate the [src]. Now toss it, the supplies will arrive in a moment!")
+	to_chat(user, "You activate [src]. Now toss it, the supplies will arrive in a moment!")
 
-	var/mob/living/carbon/C = user
-	if(istype(C) && !C.throw_mode)
-		C.toggle_throw_mode(THROW_MODE_NORMAL)
+	var/mob/living/carbon/person = user
+	if(istype(person) && !person.throw_mode)
+		person.toggle_throw_mode(THROW_MODE_NORMAL)
 
 	sleep(100) //10 seconds should be enough.
-	var/turf/T = get_turf(src) //Make sure we get the turf we're tossing this on.
-	drop_supplies(T, supply_drop)
+	var/turf/floor = get_turf(src) //Make sure we get the turf we're tossing this on.
+	drop_supplies(floor, supply_drop)
 	playsound(src,'sound/effects/bamf.ogg', 50, 1)
 	qdel(src)
 	return
@@ -812,3 +826,7 @@
 
 /datum/game_mode/whiskey_outpost/get_escape_menu()
 	return "Making a last stand on..."
+
+#undef WO_MAX_WAVE
+#undef WO_XENOS_WON
+#undef WO_MARINES_WON

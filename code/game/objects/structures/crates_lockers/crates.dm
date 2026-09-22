@@ -39,13 +39,10 @@
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND
 
-/obj/structure/closet/crate/can_open()
-	return 1
-
-/obj/structure/closet/crate/can_close()
-	for(var/mob/living/L in get_turf(src)) //Can't close if someone is standing inside it. This is to prevent "crate traps" (let someone step in, close, open for 30 damage)
-		return 0
-	return 1
+/obj/structure/closet/crate/can_close(mob/user)
+	if(locate(/mob/living) in get_turf(src)) //Can't close if someone is standing inside it. This is to prevent "crate traps" (let someone step in, close, open for 30 damage)
+		return FALSE
+	return TRUE
 
 /obj/structure/closet/crate/BlockedPassDirs(atom/movable/mover, target_dir)
 	for(var/obj/structure/S in get_turf(mover))
@@ -59,7 +56,7 @@
 /obj/structure/closet/crate/open(mob/user, force)
 	if(opened)
 		return FALSE
-	if(!force && !can_open())
+	if(!force && !can_open(user))
 		return FALSE
 
 	if(rigged && locate(/obj/item/device/radio/electropack) in src)
@@ -190,7 +187,7 @@
 
 /obj/structure/closet/crate/alpha
 	name = "alpha squad crate"
-	desc = "A crate with alpha squad's symbol on it. "
+	desc = "A crate with alpha squad's symbol on it."
 	icon_state = "closed_alpha"
 	icon_opened = "open_alpha"
 	icon_closed = "closed_alpha"
@@ -225,14 +222,14 @@
 
 /obj/structure/closet/crate/bravo
 	name = "bravo squad crate"
-	desc = "A crate with bravo squad's symbol on it. "
+	desc = "A crate with bravo squad's symbol on it."
 	icon_state = "closed_bravo"
 	icon_opened = "open_bravo"
 	icon_closed = "closed_bravo"
 
 /obj/structure/closet/crate/charlie
 	name = "charlie squad crate"
-	desc = "A crate with charlie squad's symbol on it. "
+	desc = "A crate with charlie squad's symbol on it."
 	icon_state = "closed_charlie"
 	icon_opened = "open_charlie"
 	icon_closed = "closed_charlie"
@@ -246,7 +243,7 @@
 
 /obj/structure/closet/crate/delta
 	name = "delta squad crate"
-	desc = "A crate with delta squad's symbol on it. "
+	desc = "A crate with delta squad's symbol on it."
 	icon_state = "closed_delta"
 	icon_opened = "open_delta"
 	icon_closed = "closed_delta"

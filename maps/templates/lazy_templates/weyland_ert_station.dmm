@@ -1,4 +1,49 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/machinery/flasher{
+	alpha = 1;
+	id = "Containment Cell WY";
+	layer = 2.1;
+	name = "Mounted Flash";
+	pixel_x = -24;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/research/containment/floor2/west,
+/area/adminlevel/ert_station/weyland_station)
+"ab" = (
+/obj/structure/pipes/vents/scrubber{
+	name = "Secure Air Scrubber";
+	welded = 1
+	},
+/turf/open/floor/almayer/research/containment/floor1,
+/area/adminlevel/ert_station/weyland_station)
+"ac" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/almayer/research/containment/floor2,
+/area/adminlevel/ert_station/weyland_station)
+"ad" = (
+/obj/structure/pipes/vents/pump{
+	name = "Secure Air Vent";
+	welded = 1
+	},
+/turf/open/floor/almayer/research/containment/floor1,
+/area/adminlevel/ert_station/weyland_station)
+"ae" = (
+/turf/open/floor/almayer/research/containment/corner/west,
+/area/adminlevel/ert_station/weyland_station)
+"af" = (
+/obj/structure/bed/chair,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/turf/open/floor/corsat/squares,
+/area/adminlevel/ert_station/weyland_station)
+"ag" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/turf/open/floor/corsat/plate,
+/area/adminlevel/ert_station/weyland_station)
 "al" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -343,6 +388,7 @@
 /turf/open/floor/corsat/plate,
 /area/adminlevel/ert_station/weyland_station)
 "fR" = (
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/almayer/research/containment/entrance,
 /area/adminlevel/ert_station/weyland_station)
 "fX" = (
@@ -362,7 +408,7 @@
 /area/adminlevel/ert_station/weyland_station)
 "gf" = (
 /obj/structure/machinery/body_scanconsole,
-/obj/structure/machinery/autodoc_console{
+/obj/structure/machinery/autodoc_console/upgraded{
 	dir = 1
 	},
 /turf/open/floor/corsat/green/north,
@@ -662,6 +708,8 @@
 /obj/item/storage/firstaid/adv,
 /obj/item/storage/belt/medical/lifesaver/full,
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/roller,
+/obj/item/roller,
 /turf/open/floor/corsat/green,
 /area/adminlevel/ert_station/weyland_station)
 "lo" = (
@@ -761,7 +809,7 @@
 /turf/open/floor/corsat/yellow/southeast,
 /area/adminlevel/ert_station/weyland_station)
 "mm" = (
-/obj/structure/machinery/medical_pod/sleeper,
+/obj/structure/machinery/medical_pod/sleeper/upgraded,
 /turf/open/floor/corsat/green/east,
 /area/adminlevel/ert_station/weyland_station)
 "mn" = (
@@ -829,9 +877,14 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/weyland_station)
 "nJ" = (
-/obj/item/roller,
-/obj/item/roller,
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/reagentgrinder{
+	pixel_y = 6
+	},
+/obj/item/stack/sheet/mineral/phoron{
+	amount = 25;
+	pixel_y = 1
+	},
 /turf/open/floor/corsat/green/southwest,
 /area/adminlevel/ert_station/weyland_station)
 "nQ" = (
@@ -968,7 +1021,7 @@
 /area/adminlevel/ert_station/weyland_station)
 "pz" = (
 /obj/structure/machinery/light/double,
-/turf/open/floor/almayer/research/containment/floor2/north,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/adminlevel/ert_station/weyland_station)
 "pB" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/antag_guns{
@@ -989,9 +1042,6 @@
 "pK" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag,
 /turf/open/floor/corsat/plate,
-/area/adminlevel/ert_station/weyland_station)
-"pL" = (
-/turf/open/floor/almayer/research/containment/corner/east,
 /area/adminlevel/ert_station/weyland_station)
 "pY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -2003,6 +2053,7 @@
 /obj/structure/machinery/door/poddoor/almayer/blended/white/open{
 	id = "WY Bio"
 	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/weyland_station)
 "FA" = (
@@ -2537,9 +2588,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/plate,
 /area/adminlevel/ert_station/weyland_station)
-"Ow" = (
-/turf/open/floor/almayer/research/containment/floor2/north,
-/area/adminlevel/ert_station/weyland_station)
 "OD" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
@@ -2766,15 +2814,7 @@
 /turf/open/floor/corsat/white/north,
 /area/adminlevel/ert_station/weyland_station)
 "RY" = (
-/obj/structure/machinery/flasher{
-	alpha = 1;
-	id = "Containment Cell WY";
-	layer = 2.1;
-	name = "Mounted Flash";
-	pixel_x = -15;
-	pixel_y = 30
-	},
-/turf/open/floor/almayer/research/containment/corner_var1/containment_corner_variant_2,
+/turf/open/floor/almayer/research/containment/corner,
 /area/adminlevel/ert_station/weyland_station)
 "Si" = (
 /obj/structure/bed/roller,
@@ -3943,8 +3983,8 @@ Es
 Ea
 aZ
 RY
-lR
-pL
+aa
+Mx
 Ab
 QT
 "}
@@ -3984,9 +4024,9 @@ Dr
 WU
 Xt
 Or
-Ow
 jn
-Ow
+ab
+jn
 Ab
 QT
 "}
@@ -4023,11 +4063,11 @@ oM
 Xi
 NC
 ZU
-Dr
-Xt
+rK
+dc
 Ft
 fR
-jn
+ac
 pz
 Ab
 QT
@@ -4064,13 +4104,13 @@ lI
 oM
 Gz
 NC
-in
-ev
+ag
+af
 oN
 aZ
-Ow
 jn
-Ow
+ad
+jn
 Ab
 QT
 "}
@@ -4110,7 +4150,7 @@ RQ
 ev
 qa
 Or
-Mx
+ae
 lR
 WK
 Ab

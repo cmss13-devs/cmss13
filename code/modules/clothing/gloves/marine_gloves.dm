@@ -54,6 +54,11 @@
 	name = "marine black combat gloves"
 	adopts_squad_color = FALSE
 
+/obj/item/clothing/gloves/marine/army
+	name = "army combat gloves"
+	desc = "Standard issue army tactical gloves. It reads: 'knit by Army Widows Association'."
+	adopts_squad_color = FALSE
+
 /obj/item/clothing/gloves/marine/brown
 	name = "marine brown combat gloves"
 	desc = "Standard issue marine tactical gloves. It reads: 'knit by Marine Widows Association'. These are brown instead of the classic black."
@@ -161,6 +166,12 @@
 	desc = "Non-standard kevlon fiber gloves. These are apparently ESPECIALLY insulated."
 	icon_state = "insulated"
 	item_state = "insulated"
+
+/obj/item/clothing/gloves/marine/veteran/ppo
+	name = "\improper WY PPO gloves"
+	desc = "Standard issue kevlon fiber gloves manufactured for and by Weyland-Yutani Personal Protection division. They are insulated against electrical shock."
+	icon_state = "ppo"
+	item_state = "ppo"
 
 /obj/item/clothing/gloves/marine/veteran/pmc
 	name = "\improper WY PMC gloves"

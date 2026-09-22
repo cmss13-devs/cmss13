@@ -46,7 +46,7 @@
 
 /obj/item/weapon/bracer_attachment
 	name = "bracer attachment"
-	desc = "How did you get these?."
+	desc = "How did you get these?"
 	var/plural_name = "wrist blades"
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
@@ -916,7 +916,9 @@
 				victim.apply_damage(22, BRUTE, limb, sharp = TRUE)
 			for(var/obj/item/item in victim)
 				victim.drop_inv_item_to_loc(item, victim.loc, FALSE, TRUE)
-				victim.status_flags |= PERMANENTLY_DEAD
+			victim.status_flags |= PERMANENTLY_DEAD
+			victim.mob_flags |= MOB_FLAYED
+			victim.name = "???"
 			victim.add_flay_overlay(stage = 3)
 
 			//End the loop and remove all references to the datum.
@@ -1188,7 +1190,7 @@
 		return
 
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_WARNING("Why would you want to do this!?."))
+		to_chat(user, SPAN_WARNING("Why would you want to do this!?"))
 		return
 	user.visible_message(SPAN_NOTICE("[user] mounts the [skull] with [src]."), SPAN_NOTICE("You mount [skull] to [src]."))
 	user.drop_inv_item_to_loc(skull, src)

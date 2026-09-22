@@ -63,7 +63,8 @@
 				got_evolution_message = TRUE
 
 			if(ROUND_TIME < XENO_ROUNDSTART_BOOSTED_EVO_TIME)
-				evolution_stored += progress_amount
+				if(ovipositor_check)
+					evolution_stored += progress_amount
 				return
 
 			if(evolution_stored > evolution_threshold + progress_amount)
@@ -72,6 +73,9 @@
 
 		else
 			evolution_stored += progress_amount
+			if(evolution_stored >= evolution_threshold)
+				evolve_message()
+				got_evolution_message = TRUE
 
 /mob/living/carbon/xenomorph/proc/evolve_message()
 	to_chat(src, SPAN_XENODANGER("Our carapace crackles and our tendons strengthen. We are ready to <a href='byond://?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
@@ -197,11 +201,14 @@
 
 
 /mob/living/carbon/xenomorph/handle_regular_status_updates(regular_update = TRUE)
+	var/need_update_health = TRUE
+
 	if(regular_update && health <= 0 && (!caste || (fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !on_fire)) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure
 		if(!check_weeds_for_healing()) //In crit, damage is maximal if you're caught off weeds
 			apply_damage(2.5 - warding_aura*0.5, BRUTE) //Warding can heavily lower the impact of bleedout. Halved at 2.5 phero, stopped at 5 phero
 		else
 			apply_damage(-warding_aura, BRUTE)
+		need_update_health = FALSE
 
 	if(health > 0 && stat != DEAD) //alive and not in crit! Turn on their vision.
 		see_in_dark = 50
@@ -214,9 +221,11 @@
 			blinded = TRUE
 			if(regular_update && halloss > 0)
 				apply_damage(-3, HALLOSS)
+				need_update_health = FALSE
 		else if(sleeping)
 			if(regular_update && halloss > 0)
 				apply_damage(-3, HALLOSS)
+				need_update_health = FALSE
 			if(regular_update && mind)
 				if((mind.active && client != null) || immune_to_ssd)
 					sleeping = max(sleeping - 1, 0)
@@ -231,12 +240,16 @@
 					apply_damage(-3, HALLOSS)
 				else
 					apply_damage(-1, HALLOSS)
+				need_update_health = FALSE
 
 		if(regular_update)
 			if(eye_blurry)
-				src.ReduceEyeBlur(1)
+				ReduceEyeBlur(1)
 
 			handle_statuses()//natural decrease of stunned, knocked_down, etc...
+
+	if(need_update_health)
+		updatehealth()
 
 	return TRUE
 
@@ -407,6 +420,8 @@ Make sure their actual health updates immediately.*/
 	switch(locator.tracker_type)
 		if(TRACKER_QUEEN)
 			tracking_atom = hive.living_xeno_queen
+		if(TRACKER_KING)
+			tracking_atom = hive.living_xeno_king
 		if(TRACKER_HIVE)
 			tracking_atom = hive.hive_location
 		if(TRACKER_LEADER)

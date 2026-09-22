@@ -1,5 +1,0 @@
-author: "ori-disillusion-mirnov"
-delete-after: True
-changes:
-  - code_imp: "toggle crest unit tests"
-  - spellcheck: "fixed a typo in steelcrest abilities unit test"

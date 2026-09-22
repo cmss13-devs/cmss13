@@ -45,7 +45,6 @@
 ///////////////////SURGERY FLAGS///////////////////
 //Surgery defines strictly for overlay application.
 
-
 ///The surgical site is bleeding.
 #define INCISION_BLEEDING (1<<0)
 

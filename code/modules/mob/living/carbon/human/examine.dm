@@ -147,9 +147,9 @@
 				body_type_description = "muscular"
 
 		if(!skipface && !skipjumpsuit && body_size_description && body_type_description && mob_flags & MOB_FLAYED)
-			msg += "[t_He] [t_has] a [SPAN_BOLD(body_size_description)] [SPAN_BOLD(body_type_description)] build.\n"
+			msg += "[t_He] [t_has] a [SPAN_BOLD(body_size_description)], [SPAN_BOLD(body_type_description)] build.\n"
 		else if(!skipface && !skipjumpsuit && body_size_description && body_type_description)
-			msg += "[t_He] [t_is] [SPAN_BOLD(age_description)], with a [SPAN_BOLD(body_size_description)] [SPAN_BOLD(body_type_description)] build.\n"
+			msg += "[t_He] [t_is] [SPAN_BOLD(age_description)], with a [SPAN_BOLD(body_size_description)], [SPAN_BOLD(body_type_description)] build.\n"
 		else if(!skipface)
 			msg += "[t_He] [t_is] [SPAN_BOLD(age_description)].\n"
 		else if(!skipjumpsuit && body_size_description && body_type_description)

@@ -377,6 +377,7 @@
 	if(istype(item, /obj/item/mortar_shell))
 		var/obj/item/mortar_shell/mortar_shell = item
 		var/turf/target_turf = locate(targ_x + dial_x + offset_x, targ_y + dial_y + offset_y, targ_z)
+		var/success = FALSE
 		if(lase_mode)
 			if(!linked_designator)
 				to_chat(user, SPAN_WARNING("[src] is in laser targeting mode, but there is no laser designator linked!"))
@@ -434,12 +435,22 @@
 			if(deviation_turf && !lase_mode) // Mortar is accurate in lase mode
 				target_turf = deviation_turf
 
-		user.visible_message(SPAN_NOTICE("[user] starts loading \a [mortar_shell.name] into [src]."),
-		SPAN_NOTICE("You start loading \a [mortar_shell.name] into [src]."))
-		playsound(loc, 'sound/weapons/gun_mortar_reload.ogg', 50, 1)
-		busy = TRUE
-		var/success = do_after(user, 1.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE)
-		busy = FALSE
+		if(penetrating)
+			user.visible_message(SPAN_NOTICE("[user] starts inputting \the [mortar_shell.name]'s targeting depth into [src], before loading the shell in."),
+			SPAN_NOTICE("You take a moment to calculate \the [mortar_shell.name]'s depth-penetration into [src]'s targeting matrix, before loading the shell in."))
+			playsound(loc, 'sound/machines/computer_typing6.ogg', 50, 1)
+			busy = TRUE
+			success = do_after(user, 4.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE) //it takes a while
+			busy = FALSE
+
+		if(!penetrating)
+			user.visible_message(SPAN_NOTICE("[user] starts loading \a [mortar_shell.name] into [src]."),
+			SPAN_NOTICE("You start loading \a [mortar_shell.name] into [src]."))
+			playsound(loc, 'sound/weapons/gun_mortar_reload.ogg', 50, 1)
+			busy = TRUE
+			success = do_after(user, 1.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE)
+			busy = FALSE
+
 		if(success)
 			user.visible_message(SPAN_NOTICE("[user] loads \a [mortar_shell.name] into [src]."),
 			SPAN_NOTICE("You load \a [mortar_shell.name] into [src]."))

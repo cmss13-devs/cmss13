@@ -313,11 +313,22 @@
 	message = "sneezes!"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/sneeze/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/mob/living/carbon/human/human_starer = user
+	human_starer.move_eyelids(EYELID_CLOSED, 0.5)
+
+
 /datum/emote/living/carbon/human/snore
 	key = "snore"
 	key_third_person = "snores"
 	message = "snores."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/snore/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/mob/living/carbon/human/human_starer = user
+	human_starer.move_eyelids(EYELID_CLOSED, 5)
 
 /datum/emote/living/carbon/human/stare
 	key = "stare"
@@ -441,11 +452,18 @@
 /datum/emote/living/carbon/human/closeeyes/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	var/mob/living/carbon/human/human_eye_closer = user
+	human_eye_closer.move_eyelids(EYELID_CLOSED_VOLUNTARILY, 10, normal_blinking_after=FALSE)
 	if(human_eye_closer.eyelid_timer)
 		deltimer(human_eye_closer.eyelid_timer)
 		human_eye_closer.eyelid_timer = null
-	human_eye_closer.move_eyelids(EYELID_CLOSED_VOLUNTARILY, null, null, 1, normal_blinking_after=FALSE)
 	human_eye_closer.overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
+	human_eye_closer.eyelid_timer = addtimer(CALLBACK(src, PROC_REF(closed_eyes_reminder), human_eye_closer, world.time), 30 SECONDS, TIMER_STOPPABLE)
+
+/datum/emote/living/carbon/human/closeeyes/proc/closed_eyes_reminder(mob/living/carbon/human/human_user, start_time)
+	if(human_user.eyelids_status == EYELID_CLOSED_VOLUNTARILY)
+		var/elapsed_time = world.time - start_time
+		to_chat(human_user, SPAN_INFO("You voluntarily closed your eyes [elapsed_time < 600 ? "[elapsed_time/10] seconds" : "[elapsed_time/600] minutes" ] ago, use *openeyes to see again."))
+		human_user.eyelid_timer = addtimer(CALLBACK(src, PROC_REF(closed_eyes_reminder), human_user, start_time), (elapsed_time < 600 ? 30 : (elapsed_time < 3000 ? 60 : 120)) SECONDS, TIMER_STOPPABLE)
 
 /datum/emote/living/carbon/human/openeyes
 	key = "openeyes"
@@ -455,5 +473,8 @@
 /datum/emote/living/carbon/human/openeyes/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	var/mob/living/carbon/human/human_eye_opener = user
-	human_eye_opener.move_eyelids(EYELID_OPEN, normal_blinking_after=FALSE)
+	if(human_eye_opener.eyelid_timer)
+		deltimer(human_eye_opener.eyelid_timer)
+		human_eye_opener.eyelid_timer = null
+	human_eye_opener.move_eyelids(EYELID_OPEN, 3, normal_blinking_after=TRUE)
 	human_eye_opener.clear_fullscreen("blind")

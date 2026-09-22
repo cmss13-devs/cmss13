@@ -307,6 +307,12 @@
 	if(on_fire)
 		msg += SPAN_WARNING("[t_He] [t_is] on fire!\n")
 
+	if(eyelids_status == EYELID_CLOSED_VOLUNTARILY)
+		for(var/obj/item/thing in contents)
+			if(thing.flags_inv_hide & HIDEEYES)
+				break
+		msg += "[t_He] has closed [t_his] eyes.\n"
+
 	var/list/wound_flavor_text = list()
 	var/list/is_destroyed = list()
 	var/list/is_bleeding = list()

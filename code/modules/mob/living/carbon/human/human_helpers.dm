@@ -508,7 +508,7 @@
 /mob/living/carbon/human/proc/resolve_eyelid_state(state)
 	if(state == EYELID_SWITCH)
 		return eyelids_status == EYELID_OPEN ? EYELID_CLOSED : EYELID_OPEN
-	return eyelids_status
+	return state
 
 /mob/living/carbon/human/proc/apply_eyelid_state(closed)
 	eyelids_status = closed

@@ -7,7 +7,7 @@
 
 	if(stat != DEAD) //the dead get zero fullscreens
 
-		if(stat == UNCONSCIOUS || eyelids_status == EYELID_CLOSED_VOLUNTARILY)
+		if(stat == UNCONSCIOUS)
 			var/severity = 0
 			switch(health)
 				if(-20 to -10)
@@ -81,7 +81,7 @@
 				clear_fullscreen("brute")
 
 
-		if(blinded)
+		if(blinded || eyelids_status == EYELID_CLOSED_VOLUNTARILY)
 			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
 		else
 			clear_fullscreen("blind")

@@ -641,4 +641,9 @@
 			if(V == /obj/item/clothing/suit/storage/verb/toggle_draw_mode) //So that alt-clicks are only intercepted for clothing items with internal storage and toggleable draw modes.
 				return
 
+	var/obj/item/storage/internal/pockets = get_pockets()
+	if(pockets && !mods[SHIFT_CLICK] && mods[MIDDLE_CLICK] && CAN_PICKUP(user, src))
+		pockets.open(user)
+		return TRUE
+
 	return ..()

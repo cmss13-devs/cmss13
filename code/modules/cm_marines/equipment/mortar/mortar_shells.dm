@@ -43,10 +43,11 @@
 	name = "\improper 80mm HCHE mortar shell"
 	desc = "An 80mm mortar shell. This shell produces a far-larger-than-average explosion on impact."
 	desc_lore = "This shell was introduced to the USCM in 2180, based off the US Army's HCHE shell for their 120mm mortar, which itself is the same shell design already in service with the Three World Empire. The introduction of 80mm SFAE shell midway through the Marine'70 reorganisation effort had vastly improved the Colonial Marines' firepower when fighting against entrenched enemies in difficult environments. However, field use quickly indicated that thermobaric munitions struggle in extremely cramped and enclosed spaces, and sometimes are prone to causing extreme structural damage (which isn't always desired.) In theory, a High Capacity High Explosive should deliver more consistent lethality in extremely enclosed areas at the expense of fragmentation produced while causing less structural stress. The munition contains more explosive filler in exchange for a thinner metal shell."
-	icon_state = "mortar_ammo_he"
-	item_state = "mortar_ammo_he"
+	icon_state = "mortar_ammo_heplus"
+	item_state = "mortar_ammo_heplus"
 
 /obj/item/mortar_shell/heplus/detonate(turf/impact)
+	create_shrapnel(impact, 60, cause_data = cause_data, shrapnel_type = /datum/ammo/bullet/shrapnel/breaching) //HCHE (mine) shells are shrapnel
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 350, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), null)), 0.5 SECONDS) //Massive explosion with an 8 tile radius, with the first 2 tiles being capable of gibbing marines. Incredibly scary ordnance.
 	QDEL_IN(src, 0.5 SECONDS)
 
@@ -81,8 +82,8 @@
 	name = "\improper 80mm HTVSF-Incendiary mortar shell"
 	desc = "An 80mm incendiary Hard-Target-Void-Sensing mortar shell. It is calibrated before firing, and on impact burrows deep inside fortifications or cave systems. Once the target depth is reached, the onboard computer will wait until the shell is in an open space before detonating, depositing Type-B Napalm inside."
 	desc_lore = "Heading into the Marine'70 program; the USCM had experienced several asymmetrical conflicts against independent or UPP-funded threat groups. Fresh in the minds of politicians, corporate executives and military planners was the Xibou rebellion. Their resistance was short-lived, but the inadequacy of Colonial Marines when attempting clear-out operations in mountainous terrain and deep cave systems sent a shockwave of fear throughout the military ecosystem. A Hard Target Void Sensing Fuze - Incendiary mortar munition was quickly brought forward as a cheap and quick-to-implement solution. Armat Battlefield Systems were awarded the contract due to their familiarity with the HTVSF system already inuse on their production line of various 158mm anti-fortification shells for M292 in use by the United Americas Colonial Guard and the United States Army. Colonial Marine Mortar Crews did not like the shell. The 80mm mortar did not receive an upgrade package for easy in-tube calibration of the shells. Crews have to input the depth-to-target via a rudimentary keypad, or use an appropriate unmanned aerial vehicle to scan the target to input the correct depth, or have foreknowledge of the target which is not always convenient or possible in a combat zone. Against complex multi-level structures such as prefabricated housing commonly seen on colony planets; mis-calibrating the shell can cause it to detonate in an undesired area."
-	icon_state = "mortar_ammo_inc"
-	item_state = "mortar_ammo_inc"
+	icon_state = "mortar_ammo_pierce"
+	item_state = "mortar_ammo_pierce"
 	radius = 4
 	flame_level = BURN_TIME_TIER_5 + 10 //Type B standard, 50 base + 10 from chemfire code.
 	burn_level = BURN_LEVEL_TIER_2
@@ -99,6 +100,8 @@
 	burn_level = BURN_LEVEL_TIER_8 //equivalent to blue-flame, but only a single resist
 	flameshape = FLAMESHAPE_STAR
 	fire_type = FIRE_VARIANT_DEFAULT
+	icon_state = "mortar_ammo_thermo"
+	item_state = "mortar_ammo_thermo"
 
 /obj/item/mortar_shell/incendiary/thermobaric/detonate(turf/impact)
 	impact.ceiling_debris_check(3)

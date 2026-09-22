@@ -2247,7 +2247,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(modifiers[DRAG])
 		return
 
-	if(modifiers[RIGHT_CLICK])
+	if(modifiers[gun_user.get_secondary_interact_key()])
 		// Inventory item/contained within something, don't shoot it.
 		if(isobj(object) && object.loc != location)
 			return

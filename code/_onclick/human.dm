@@ -86,7 +86,7 @@
 		return
 
 	SEND_SIGNAL(src, COMSIG_HUMAN_UNARMED_ATTACK, A)
-	if(mods[RIGHT_CLICK])
+	if(mods[get_secondary_interact_key()])
 		A.attack_hand_secondary(src, mods)
 	else
 		A.attack_hand(src, mods)

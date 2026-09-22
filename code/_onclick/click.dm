@@ -74,7 +74,7 @@
 		return
 
 	var/is_primary_action = mods[LEFT_CLICK] == "1"
-	var/is_secondary_action = mods[RIGHT_CLICK] == "1"
+	var/is_secondary_action = mods[get_secondary_interact_key()] == "1"
 
 	if(is_primary_action || mods[MIDDLE_CLICK])
 		if(atom_clicked.clicked(src, mods))

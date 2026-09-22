@@ -3078,6 +3078,8 @@ Defined in conflicts.dm of the #defines folder.
 		var/list/new_mods = mods.Copy()
 		new_mods[LEFT_CLICK] = "1"
 		new_mods[RIGHT_CLICK] = null
+		new_mods[BUTTON4] = null
+		new_mods[BUTTON5] = null
 		attached_gun.start_fire(user, target, get_turf(target), modifiers = new_mods)
 
 /obj/item/attachable/attached_gun/reload_attachment(obj/item/I, mob/user)

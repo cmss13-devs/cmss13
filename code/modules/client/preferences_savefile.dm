@@ -159,7 +159,7 @@
 		if(toggle_prefs & (1<<2))
 			S["xeno_ability_click_mode"] << XENO_ABILITY_CLICK_MIDDLE
 		else
-			S["xeno_ability_click_mode"] << XENO_ABILITY_CLICK_RIGHT
+			S["xeno_ability_click_mode"] << XENO_ABILITY_CLICK_SHIFT
 
 	if(savefile_version < 27)
 		// Gives staff afk protection by default.
@@ -356,6 +356,7 @@
 	S["ghost_orbit"] >> ghost_orbit
 	S["auto_observe"] >> auto_observe
 	S["CMTV_toggle_optout"] >> CMTV_toggle_optout
+	S["secondary_interaction_mb"] >> secondary_interaction_mb
 
 	S["human_name_ban"] >> human_name_ban
 
@@ -530,6 +531,7 @@
 	auto_fit_viewport = sanitize_integer(auto_fit_viewport, FALSE, TRUE, TRUE)
 	adaptive_zoom = sanitize_integer(adaptive_zoom, 0, 2, 0)
 	tooltips = sanitize_integer(tooltips, FALSE, TRUE, TRUE)
+	secondary_interaction_mb = sanitize_inlist(secondary_interaction_mb, list(RIGHT_CLICK, BUTTON4, BUTTON5), RIGHT_CLICK)
 
 	synthetic_name = synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type = sanitize_inlist(synthetic_type, PLAYER_SYNTHS, initial(synthetic_type))
@@ -647,6 +649,7 @@
 	S["ghost_orbit"] << ghost_orbit
 	S["auto_observe"] << auto_observe
 	S["CMTV_toggle_optout"] << CMTV_toggle_optout
+	S["secondary_interaction_mb"] << secondary_interaction_mb
 
 	S["human_name_ban"] << human_name_ban
 

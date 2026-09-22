@@ -81,6 +81,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/toggles_survivor = TOGGLES_SURVIVOR_DEFAULT
 	var/toggles_insert = TOGGLES_INSERT_DEFAULT
 	var/toggles_ert_pred = TOGGLES_ERT_GROUNDS
+	var/secondary_interaction_mb = RIGHT_CLICK
 	var/list/volume_preferences = list(1, 0.5, 1, 0.6) // Game, music, admin midis, lobby music (this is also set in sanitize_volume_preferences() call)
 	var/chat_display_preferences = CHAT_TYPE_ALL
 	var/item_animation_pref_level = SHOW_ITEM_ANIMATIONS_ALL
@@ -595,6 +596,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<h2><b><u>Input Settings:</u></b></h2>"
 			dat += "<b>Mode:</b> <a href='byond://?_src_=prefs;preference=hotkeys'><b>[(hotkeys) ? "Hotkeys Mode" : "Send to Chat"]</b></a><br>"
 			dat += "<b>Keybinds:</b> <a href='byond://?_src_=prefs;preference=viewmacros'><b>View Keybinds</b></a><br>"
+			dat += "<b>Secondary interact button:</b> <a href='byond://?_src_=prefs;preference=toggle_right_click_menu'><b>[secondary_mouse_pref_to_string(secondary_interaction_mb)]</b></a><br>"
 			dat += "<br><b>Say Input Style:</b> <a href='byond://?_src_=prefs;preference=inputstyle'><b>[tgui_say ? "Modern (default)" : "Legacy"]</b></a><br>"
 			dat += "<b>Say Input Color:</b> <a href='byond://?_src_=prefs;preference=inputcolor'><b>[tgui_say_light_mode ? "Lightmode" : "Darkmode (default)"]</b></a><br>"
 
@@ -1195,6 +1197,21 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 				winset(user, null, "input.focus=true")
 			else
 				winset(user, null, "input.focus=false")
+
+		if("toggle_right_click_menu")
+			var/static/list/mouse_button_list = list(
+				secondary_mouse_pref_to_string(RIGHT_CLICK) = RIGHT_CLICK,
+				secondary_mouse_pref_to_string(BUTTON4) = BUTTON4,
+				secondary_mouse_pref_to_string(BUTTON5) = BUTTON5
+			)
+			var/choice = tgui_input_list(user, "Choose how you will activate secondary interactions", "Mouse Activation Button", mouse_button_list)
+			if(!choice)
+				return
+			secondary_interaction_mb = mouse_button_list[choice]
+			if(secondary_interaction_mb == RIGHT_CLICK)
+				user.client?.set_right_click_menu_mode(TRUE)
+			else
+				user.client?.set_right_click_menu_mode(FALSE)
 
 		if("traits")
 			traits_picker.tgui_interact(user)

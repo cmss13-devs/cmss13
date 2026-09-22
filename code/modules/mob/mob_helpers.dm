@@ -627,6 +627,11 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 
 	return client.prefs.xeno_ability_click_mode
 
+/mob/proc/get_secondary_interact_key()
+	if(!client)
+		return RIGHT_CLICK
+	return client.prefs.secondary_interaction_mb
+
 /proc/xeno_ability_mouse_pref_to_string(preference_value)
 	switch(preference_value)
 		if(XENO_ABILITY_CLICK_MIDDLE)
@@ -636,6 +641,17 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 		if(XENO_ABILITY_CLICK_RIGHT)
 			return "right click"
 	return "right click"
+
+/proc/secondary_mouse_pref_to_string(preference_value)
+	switch(preference_value)
+		if(RIGHT_CLICK)
+			return "right click"
+		if(BUTTON4)
+			return "mouse button 4"
+		if(BUTTON5)
+			return "mouse button 5"
+	return "right click"
+
 
 /mob/proc/get_ability_mouse_name()
 	var/ability = get_ability_mouse_key()

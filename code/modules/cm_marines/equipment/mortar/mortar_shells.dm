@@ -47,7 +47,7 @@
 	item_state = "mortar_ammo_heplus"
 
 /obj/item/mortar_shell/heplus/get_examine_text(mob/user)
-	. += SPAN_WARNING("This shelltype is capable of gibbing and permanently removing marines from the round, be precise with your coordinates!")
+	. += SPAN_WARNING("This shelltype is capable of gibbing and permanently removing marines from the round, be precise and careful with your coordinates!")
 
 /obj/item/mortar_shell/heplus/detonate(turf/impact)
 	create_shrapnel(impact, 60, cause_data = cause_data, shrapnel_type = /datum/ammo/bullet/shrapnel/breaching) //HCHE (mine) shells are shrapnel

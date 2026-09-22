@@ -3025,9 +3025,6 @@ Defined in conflicts.dm of the #defines folder.
 	attachment_action_type = /datum/action/item_action/toggle
 	var/obj/item/weapon/gun/attached_gun
 
-	/// Initial firing delay when the attachment is activated. Prevents instantly switching and activating an attachment.
-	var/attachment_firing_delay = 0
-
 	var/gun_deactivate_sound = 'sound/weapons/handling/gun_underbarrel_deactivate.ogg'//allows us to give the attached gun unique activate and de-activate sounds. Not used yet.
 	var/gun_activate_sound  = 'sound/weapons/handling/gun_underbarrel_activate.ogg'
 
@@ -3102,8 +3099,6 @@ Defined in conflicts.dm of the #defines folder.
 		G.active_attachable = src
 		icon_state += "-on"
 
-	if(attached_gun)
-		attached_gun.last_fired = max(world.time + attachment_firing_delay - attached_gun.get_fire_delay(), attached_gun.last_fired)
 	SEND_SIGNAL(G, COMSIG_GUN_INTERRUPT_FIRE)
 	for(var/X in G.actions)
 		var/datum/action/A = X
@@ -3120,7 +3115,6 @@ Defined in conflicts.dm of the #defines folder.
 	attachment_action_type = /datum/action/item_action/toggle/flare_launcher
 	slot = "under"
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON
-	attachment_firing_delay = FIRE_DELAY_TIER_4 * 3
 
 //The requirement for an attachable being alt fire is AMMO CAPACITY > 0.
 /obj/item/attachable/attached_gun/grenade
@@ -3134,7 +3128,6 @@ Defined in conflicts.dm of the #defines folder.
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON
 
 	attached_gun = /obj/item/weapon/gun/launcher/grenade/ubarrel/u1
-	attachment_firing_delay = FIRE_DELAY_TIER_4 * 3
 
 
 /obj/item/attachable/attached_gun/grenade/Initialize(mapload, ...)
@@ -3195,7 +3188,6 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "grenade-mk1"
 	attach_icon = "grenade-mk1_a"
 	attached_gun = /obj/item/weapon/gun/launcher/grenade/ubarrel/mk1
-	attachment_firing_delay = 3 SECONDS
 
 
 /obj/item/attachable/attached_gun/grenade/m203 //M16 GL, only DD have it.
@@ -3204,8 +3196,6 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "grenade-m203"
 	attach_icon = "grenade-m203_a"
 	attached_gun = /obj/item/weapon/gun/launcher/grenade/ubarrel/m203
-	// one shot, so if you can reload fast, you can shoot fast
-	attachment_firing_delay = 0.5 SECONDS
 
 
 /obj/item/attachable/attached_gun/grenade/u1rmc
@@ -3214,7 +3204,6 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "u1rmc"
 	attach_icon = "u1rmc_a"
 	attached_gun = /obj/item/weapon/gun/launcher/grenade/ubarrel/u1rmc
-	attachment_firing_delay = 2.4 SECONDS
 
 
 //"ammo/flamethrower" is a bullet, but the actual process is handled through fire_attachment, linked through Fire().
@@ -3224,12 +3213,12 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "flamethrower_a"
 	desc = "A weapon-mounted refillable flamethrower attachment. It has a secondary setting for a more intense flame with far less propulsion ability and heavy fuel usage."
 	w_class = SIZE_MEDIUM
-	attachment_firing_delay = FIRE_DELAY_TIER_4 * 5
 	slot = "under"
 	gun_activate_sound = 'sound/weapons/handling/gun_underbarrel_flamer_activate.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON
 	attachment_action_type = /datum/action/item_action/toggle/flamer
 	// Will need to be refactored at some point to use `attached_gun`
+	var/attachment_firing_delay = FIRE_DELAY_TIER_4 * 5
 	var/next_fire = 0
 	var/current_rounds = 40
 	var/max_rounds = 40
@@ -3285,10 +3274,6 @@ Defined in conflicts.dm of the #defines folder.
 		max_range = 2
 		intense_mode = TRUE
 	update_icon()
-
-/obj/item/attachable/attached_gun/flamer/activate_attachment(obj/item/weapon/gun/G, mob/living/user, turn_off)
-	. = ..()
-	next_fire = world.time + attachment_firing_delay
 
 /obj/item/attachable/attached_gun/flamer/handle_pre_break_attachment_description(base_description_text as text, mob/user)
 	return base_description_text + " It is on [intense_mode ? "intense" : "normal"] mode."
@@ -3436,8 +3421,6 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "under"
 	gun_activate_sound = 'sound/weapons/handling/gun_u7_activate.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON
-	attachment_firing_delay = FIRE_DELAY_TIER_5 * 3
-
 
 /obj/item/attachable/attached_gun/shotgun/Initialize(mapload, ...)
 	. = ..()
@@ -3475,8 +3458,6 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "under"
 	gun_activate_sound = 'sound/weapons/handling/gun_u7_activate.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON
-	attachment_firing_delay = FIRE_DELAY_TIER_5 * 3
-
 
 /obj/item/attachable/attached_gun/shotgun/af13/get_examine_text(mob/user)
 	. = ..()
@@ -3494,7 +3475,6 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "under"
 	gun_activate_sound = 'sound/weapons/handling/gun_u7_activate.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON|ATTACH_WIELD_OVERRIDE
-	attachment_firing_delay = FIRE_DELAY_TIER_5 * 3
 
 /obj/item/attachable/attached_gun/extinguisher
 	name = "HME-12 underbarrel extinguisher"
@@ -3565,7 +3545,6 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_x = 4
 	pixel_shift_y = 14
 	attachment_action_type = /datum/action/item_action/toggle/nozzle
-	attachment_firing_delay = 2 SECONDS
 
 	var/projectile_type = /datum/ammo/flamethrower
 	var/fuel_per_projectile = 3

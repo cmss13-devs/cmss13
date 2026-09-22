@@ -311,13 +311,6 @@
 		return FALSE
 	return TRUE
 
-/obj/structure/machinery/cm_vending/sorted/medical/proc/check_autoinjector_types(obj/item/thing)
-	if(istype(thing, /obj/item/reagent_container/hypospray/autoinjector))
-		var/obj/item/reagent_container/hypospray/autoinjector/autoinjector = thing
-		if(autoinjector)
-			if(is_type_in_list(thing, chem_refill))
-				return TRUE
-
 /obj/structure/machinery/cm_vending/sorted/medical/additional_restock_checks(obj/item/item_to_stock, mob/user, list/vendspec)
 	var/dynamic_metadata = dynamic_stock_multipliers[vendspec]
 	if(dynamic_metadata)

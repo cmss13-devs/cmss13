@@ -37,16 +37,16 @@
 				plane = FLOOR_PLANE
 			else
 				layer = TURF_LAYER
-			I.pixel_y = 16
+			platform_overlay.pixel_y = 16
 		if(EAST)
-			I.pixel_x = 16
+			platform_overlay.pixel_x = 16
 			if(is_water)
 				layer = UNDER_WATER_TURF_LAYER + 0.01
 				plane = FLOOR_PLANE
 			else
 				layer = MOB_LAYER
 		if(WEST)
-			I.pixel_x = -16
+			platform_overlay.pixel_x = -16
 			if(is_water)
 				layer = UNDER_WATER_TURF_LAYER + 0.01
 				plane = FLOOR_PLANE

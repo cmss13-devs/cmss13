@@ -411,14 +411,27 @@
 	underslug = TRUE
 	var/breech_open = FALSE
 	var/cocked = FALSE
+	var/open_sound = 'sound/weapons/handling/ugl_open.ogg'
+	var/close_sound = 'sound/weapons/handling/ugl_close.ogg'
+
+/obj/item/weapon/gun/launcher/grenade/ubarrel/proc/toggle_breech(mob/living/user)
+	if(breech_open) // if it was ALREADY open
+		breech_open = FALSE
+		cocked = TRUE // by closing the gun we have cocked it and readied it to fire
+		to_chat(user, SPAN_NOTICE("You close \the [src]'s breech, cocking it!"))
+		playsound(src, close_sound, 15, 1)
+	else
+		breech_open = TRUE
+		cocked = FALSE
+		to_chat(user, SPAN_NOTICE("You open \the [src]'s breech!"))
+		playsound(src, open_sound, 15, 1)
+	SEND_SIGNAL(src, COMSIG_UNDERBARREL_GL_BREECH_TOGGLED)
 
 /obj/item/weapon/gun/launcher/grenade/ubarrel/unload(mob/user, reload_override, drop_override, loc_override)
 	if(!breech_open)
-		if(user)
-			to_chat(user, SPAN_WARNING("You must open the breech to unload \the [src]!"))
-		return FALSE
+		toggle_breech(user)
+		return
 	return ..()
-
 
 /obj/item/weapon/gun/launcher/grenade/ubarrel/able_to_fire(mob/living/user)
 	if(breech_open)
@@ -436,9 +449,9 @@
 		return
 	return TRUE
 
-/obj/item/weapon/gun/launcher/grenade/ubarrel/reload(mob/user, obj/item/ammo_magazine/magazine)
+/obj/item/weapon/gun/launcher/grenade/ubarrel/attackby(obj/item/attacking_obj, mob/user)
 	if(!breech_open)
-		to_chat(user, SPAN_WARNING("\The [src]'s breech must be open to load grenades! (use unique-action)"))
+		toggle_breech(user)
 		return
 	return ..()
 

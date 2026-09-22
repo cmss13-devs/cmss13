@@ -3135,8 +3135,15 @@ Defined in conflicts.dm of the #defines folder.
 
 	attached_gun = /obj/item/weapon/gun/launcher/grenade/ubarrel/u1
 	attachment_firing_delay = FIRE_DELAY_TIER_4 * 3
-	var/open_sound = 'sound/weapons/handling/ugl_open.ogg'
-	var/close_sound = 'sound/weapons/handling/ugl_close.ogg'
+
+
+/obj/item/attachable/attached_gun/grenade/Initialize(mapload, ...)
+	. = ..()
+	RegisterSignal(attached_gun, COMSIG_UNDERBARREL_GL_BREECH_TOGGLED, PROC_REF(on_breech_toggled))
+
+/obj/item/attachable/attached_gun/grenade/proc/on_breech_toggled()
+	SIGNAL_HANDLER
+	update_icon()
 
 /obj/item/attachable/attached_gun/grenade/get_examine_text(mob/user)
 	. = ..()
@@ -3167,17 +3174,7 @@ Defined in conflicts.dm of the #defines folder.
 		return
 
 	var/obj/item/weapon/gun/launcher/grenade/ubarrel/weapon = attached_gun
-	if(weapon.breech_open) // if it was ALREADY open
-		weapon.breech_open = FALSE
-		weapon.cocked = TRUE // by closing the gun we have cocked it and readied it to fire
-		to_chat(user, SPAN_NOTICE("You close \the [src]'s breech, cocking it!"))
-		playsound(src, close_sound, 15, 1)
-	else
-		weapon.breech_open = TRUE
-		weapon.cocked = FALSE
-		to_chat(user, SPAN_NOTICE("You open \the [src]'s breech!"))
-		playsound(src, open_sound, 15, 1)
-	update_icon()
+	weapon.toggle_breech(user)
 
 /obj/item/attachable/attached_gun/grenade/update_icon()
 	. = ..()

@@ -198,6 +198,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	return 1
 
 /obj/item/weapon/gun/shotgun/start_fire(datum/source, atom/object, turf/location, control, list/modifiers, bypass_checks = FALSE)
+	set_gun_user(source)
+
 	if(!modifiers[LEFT_CLICK])
 		return ..()
 

@@ -89,7 +89,7 @@
 			. += SPAN_NOTICE("It injects its entire payload of [chemical_name].")
 		else
 			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections of [chemical_name].")
-	else`
+	else
 		if(cannot_refill)
 			. += SPAN_WARNING("It is spent and it cannot be refilled.")
 		else

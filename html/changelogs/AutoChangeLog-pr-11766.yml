@@ -1,0 +1,4 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - bugfix: "larvas stop getting extra evo points over their threshold as every other caste if queen does not enter ovi for over 3 minutes roundstart"

@@ -40,10 +40,7 @@
 	volume = 5
 	uses_left = 1
 	display_maptext = TRUE
-
-/obj/item/reagent_container/hypospray/autoinjector/stimulant/Initialize()
-	. = ..()
-	ADD_TRAIT(src, TRAIT_INJECTOR_STIMPACK, TRAIT_SOURCE_INHERENT)
+	is_stimpack = TRUE
 
 /obj/item/reagent_container/hypospray/autoinjector/stimulant/update_icon()
 	overlays.Cut()

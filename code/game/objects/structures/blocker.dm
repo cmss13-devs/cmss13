@@ -40,6 +40,14 @@
 	desc = "You cannot wade out any further."
 	icon_state = "map_blocker"
 
+/obj/structure/blocker/cloudblocker
+	name = "storm clouds" // same as fog blocker just lacks procs to prevent processing strain
+	desc = "A dense clumping of storm clouds, too thick to get a clear glimps through or traverse."
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "smoke"
+	opacity = TRUE
+	color = "#a2acb9"
+
 /obj/structure/blocker/fog
 	name = "dense fog"
 	desc = "It looks way too dangerous to traverse. Best wait until it has cleared up."

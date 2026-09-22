@@ -949,12 +949,13 @@
 		spawning_area = living_xeno_queen
 	else
 		for(var/mob/living/carbon/xenomorpheus as anything in totalXenos)
+			spawning_area = xenomorpheus
 			if(islarva(xenomorpheus) || isxeno_builder(xenomorpheus)) //next to xenos that should be in a safe spot
-				spawning_area = xenomorpheus
+				break
 	if(!spawning_area)
-		spawning_area = pick(totalXenos) // FUCK IT JUST GO ANYWHERE
+		spawning_area = pick(GLOB.xeno_spawns) // ITS DEADPOP BOYS
 	var/list/turf_list
-	for(var/turf/open/open_turf in orange(3, spawning_area))
+	for(var/turf/open/open_turf in range(3, spawning_area))
 		if(istype(open_turf, /turf/open/space))
 			continue
 		LAZYADD(turf_list, open_turf)

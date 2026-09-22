@@ -469,6 +469,8 @@
 		headset.update_minimap_icon()
 
 /mob/living/carbon/human/proc/move_eyelids(state, period = 0, open_period = null, times = 1, initial_open_period=null, normal_blinking_after=TRUE)
+	if(species && !(species.flags & HAS_EYELIDS))
+		return
 	if(times == 0)
 		if(normal_blinking_after)
 			eyelid_timer = addtimer( \

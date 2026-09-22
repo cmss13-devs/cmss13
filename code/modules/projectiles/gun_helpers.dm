@@ -138,9 +138,6 @@ DEFINES in setup.dm, referenced here.
 	var/obj/item/weapon/gun/in_hand = user.get_inactive_hand()
 
 	if(in_hand == src && (flags_item & TWOHANDED))
-		if(active_attachable)
-			if(active_attachable.unload_attachment(user))
-				return
 		unload(user)//It has to be held if it's a two hander.
 		return
 	else

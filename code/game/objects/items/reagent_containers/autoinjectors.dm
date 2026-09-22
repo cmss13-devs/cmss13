@@ -75,12 +75,8 @@
 		overlays += filling
 		return
 
-/obj/item/reagent_container/hypospray/autoinjector/get_examine_text(mob/user)
-	. = ..()
-	///From full, how many injections are in this autoinjector until it needs to be refilled or disposed?
-	var/max_uses = initial(volume) / amount_per_transfer_from_this
-	update_uses_left()
-
+/obj/item/reagent_container/hypospray/autoinjector/proc/get_autoinjector_examine_text(mob/user, max_uses)
+	. = list()
 	if(uses_left > 0)
 		if(chemical_unclear) //can't see what's in these bihs
 			if(max_uses == 1)
@@ -88,38 +84,43 @@
 			else
 				. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections of... medicine, you guess? You don't know exactly what's in it.")
 
-		if(HAS_TRAIT(src, TRAIT_INJECTOR_CRYSTAL))
-			if(isyautja(user)) //
-				. += SPAN_NOTICE("It injects its entire payload of [amount_per_transfer_from_this]u [capitalize(chemname)] at once.")
-			else
-				. += SPAN_NOTICE("On closer perusal, the spike has a tiny, slanted hole at the end like an injector. You don't know what's in it or how to inject it, though.")
-
-		if(HAS_TRAIT(src, TRAIT_INJECTOR_RESEARCH))
-			if(max_uses == 1)
-				. += SPAN_NOTICE("It injects its entire payload of [amount_per_transfer_from_this]u of whatever you put in it.")
-			else
-				. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections of [amount_per_transfer_from_this]u of whatever you put in it.")
-
-		if(max_uses == 1) //one_use autoinjectors
+		else if(max_uses == 1) //one_use autoinjectors
 			. += SPAN_NOTICE("It injects its entire payload of [amount_per_transfer_from_this]u [capitalize(chemname)] at once.")
 		else
 			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections of [amount_per_transfer_from_this]u [capitalize(chemname)].")
 
-	else if(uses_left <= 0)
-		if(HAS_TRAIT(src, TRAIT_INJECTOR_CRYSTAL))
-			if(isyautja(user)) //
-				. += SPAN_WARNING("It is spent and it will soon disintegrate.")
+	else
 		if(cannot_refill)
 			. += SPAN_WARNING("It is spent and it cannot be refilled.")
-		if(HAS_TRAIT(src, TRAIT_INJECTOR_RESEARCH))
-			. += SPAN_HELPFUL("It is empty but it can be refilled with a pressurized reagent canister pouch.")
 		else
 			. += SPAN_HELPFUL("It is empty but it can be refilled. Try Wey-Med vends, Wall-Meds, or an MS-11 Smart Refill Tank.")
 
-	if(skilllock >= SKILL_MEDICAL_TRAINED && !HAS_TRAIT(src, TRAIT_INJECTOR_CRYSTAL))
-		. += SPAN_NOTICE("It has a lock on it similar to pill bottles. Only those with sufficient medical training can unlock it.")
+	if(skilllock > SKILL_MEDICAL_DEFAULT)
+		if(skillcheck(user, SKILL_MEDICAL, skilllock))
+			. += SPAN_HELPFUL("It has a lock on it similar to pill bottles, but you know how to unlock it.")
+		else
+			. += SPAN_WARNING("It has a lock on it similar to pill bottles. You do not have the training in medicine to unlock it.")
 	else
 		. += SPAN_HELPFUL("It doesn't have a lock on it, so anyone can use it.")
+
+	if(!chemical_unclear)
+		if(chemname == "tramadol")
+			. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: interaction with paracetamol produces toxins. Will be less efficacious if patient has opiate receptor deficiency.</b>")
+		if(chemname == "oxycodone")
+			. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: will be less efficacious to patients with opiate receptor deficiency.</b>")
+		if(chemname == "paracetamol")
+			. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: interaction with tramadol produces toxins.</b>")
+		if(chemname == "anti_toxin" || chemname == "arithrazine")
+			. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: does not remove overdosed reagents.</b>")
+		if(chemname == "ultrazine")
+			. += SPAN_WARNING("It comes with a warning label that says: <b>WARNING: EXTREMELY ADDICTIVE!</b>")
+
+/obj/item/reagent_container/hypospray/autoinjector/get_examine_text(mob/user)
+	. = ..()
+	///From full, how many injections are in this autoinjector until it needs to be refilled or disposed?
+	var/max_uses = initial(volume) / amount_per_transfer_from_this
+	update_uses_left()
+	. += get_autoinjector_examine_text(user, max_uses)
 
 /obj/item/reagent_container/hypospray/autoinjector/equipped()
 	..()
@@ -533,6 +534,10 @@
 	cannot_refill = TRUE
 	chemical_unclear = TRUE
 
+/obj/item/reagent_container/hypospray/autoinjector/emergency/get_autoinjector_examine_text(mob/user, max_uses)
+	. = ..()
+	. += SPAN_WARNING("It comes with a warning label: <b>This autoinjector injects one unit below the OD limit of: Bicaridine, Kelotane, and Oxycodone.</b>")
+
 /obj/item/reagent_container/hypospray/autoinjector/emergency/Initialize() //29u bicaridine, 29u kelotane, 19u oxycodone, 1u dexalin +.
 	. = ..()
 	reagents.add_reagent("bicaridine", REAGENTS_OVERDOSE-1)
@@ -618,6 +623,22 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_INJECTOR_CRYSTAL, TRAIT_SOURCE_INHERENT)
 
+/obj/item/reagent_container/hypospray/autoinjector/yautja/get_autoinjector_examine_text(mob/user, max_uses)
+	. = list()
+	var/notyautja_message = "On closer perusal, the spike has a tiny, slanted hole at the end like an injector. You don't know what's in it or how to inject it, though."
+
+	if(uses_left > 0)
+		if(isyautja(user))
+			. += SPAN_NOTICE("It injects its entire payload of [amount_per_transfer_from_this]u [capitalize(chemname)] at once.")
+			. += SPAN_HELPFUL("You instinctly know injecting more than one of these at once will cause an overdose.")
+		else
+			. += SPAN_NOTICE("[notyautja_message]")
+	else
+		if(isyautja(user))
+			. += SPAN_WARNING("It is spent and it will soon disintegrate.")
+		else
+			. += SPAN_NOTICE("[notyautja_message]")
+
 /obj/item/reagent_container/hypospray/autoinjector/yautja/thrall
 	name = "orange unusual crystal"
 	chemname = "dathwei"
@@ -658,6 +679,27 @@
 /obj/item/reagent_container/hypospray/autoinjector/research/Initialize()
 	. = ..()
 	ADD_TRAIT(src, TRAIT_INJECTOR_RESEARCH, TRAIT_SOURCE_INHERENT)
+
+/obj/item/reagent_container/hypospray/autoinjector/research/get_autoinjector_examine_text(mob/user, max_uses)
+
+	. = list()
+
+	if(uses_left > 0)
+		if(max_uses == 1)
+			. += SPAN_NOTICE("It injects its entire payload of [amount_per_transfer_from_this]u of whatever you put in it.")
+		else
+			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections of [amount_per_transfer_from_this]u of whatever you put in it.")
+	else
+		. += SPAN_HELPFUL("It is empty but it can be refilled with a pressurized reagent canister pouch.")
+
+	if(skilllock > SKILL_MEDICAL_DEFAULT)
+		if(skillcheck(user, SKILL_MEDICAL, skilllock))
+			. += SPAN_HELPFUL("It has a lock on it similar to pill bottles, but you know how to unlock it.")
+		else
+			. += SPAN_WARNING("It has a lock on it similar to pill bottles. You do not have the training in medicine to unlock it.")
+	else
+		. += SPAN_HELPFUL("It doesn't have a lock on it, so anyone can use it.")
+
 
 /obj/item/reagent_container/hypospray/autoinjector/research/verb/flush_autoinjector()
 	set category = "Object"
@@ -792,3 +834,5 @@
 	name = "reagent canister pouch autoinjector (30u)"
 	volume = 180
 	amount_per_transfer_from_this = 30
+
+

@@ -21,6 +21,9 @@
 
 	minimap_color = MINIMAP_FENCE
 
+/obj/structure/window/attackby_secondary(obj/item/attack_item, mob/living/user, list/mods)
+	return attackby(attack_item, user)
+
 ///fixes up layering on northern and southern windows, breaks fulltile windows, those shouldn't be used in the first place regardless.
 /obj/structure/window/Initialize()
 	. = ..()

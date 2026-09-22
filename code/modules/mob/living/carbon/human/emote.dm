@@ -40,7 +40,7 @@
 /datum/emote/living/carbon/human/blink_rapid/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	var/mob/living/carbon/human/human_starer = user
-	human_starer.move_eyelids(EYELID_CLOSED, 0.1, 0.2, 8)
+	human_starer.move_eyelids(EYELID_SWITCH, 0.1, 0.2, 8)
 
 /datum/emote/living/carbon/human/bow
 	key = "bow"

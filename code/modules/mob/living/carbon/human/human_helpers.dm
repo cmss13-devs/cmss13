@@ -493,7 +493,7 @@
 		if(initial_open_period==null)
 			initial_open_period = open_period
 		eyelid_timer = addtimer( \
-			CALLBACK(src, PROC_REF(move_eyelids), EYELID_SWITCH, period, clamp(initial_open_period+rand(-0.3, 0.3), 2, 4), times, open_period), \
+			CALLBACK(src, PROC_REF(move_eyelids), EYELID_SWITCH, period, clamp(initial_open_period+rand(-0.3, 0.3), initial_open_period-1, initial_open_period+1), times, open_period), \
 			(eyelids_status==EYELID_OPEN ? open_period : period) SECONDS, \
 			TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE \
 		)

@@ -213,9 +213,12 @@
 /mob/living/carbon/human/on_dazed_trait_gain(datum/source)
 	. = ..()
 	overlay_fullscreen("eye_blurry", /atom/movable/screen/fullscreen/impaired, 5)
+	move_eyelids(EYELID_SWITCH, 0.2, 1, EYELID_LOOP)
+
 /mob/living/carbon/human/on_dazed_trait_loss(datum/source)
 	. = ..()
 	clear_fullscreen("eye_blurry")
+	move_eyelids(EYELID_SWITCH, 0.2, 3, EYELID_LOOP)
 
 /mob/living/carbon/human/proc/check_status_effects()
 	var/status_effect_placement = 1

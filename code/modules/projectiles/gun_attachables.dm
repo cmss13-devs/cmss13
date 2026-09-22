@@ -3387,16 +3387,10 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/flamer/Attach(obj/item/weapon/gun/to_attach_to)
 	..()
 	ADD_TRAIT(to_attach_to, TRAIT_IGNITER, TRAIT_SOURCE_ATTACHMENT(slot))
-	RegisterSignal(to_attach_to, COMSIG_IGNITER_OVERRIDE, PROC_REF(igniter_override))
 
 /obj/item/attachable/attached_gun/flamer/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
 	REMOVE_TRAIT(detaching_gun, TRAIT_IGNITER, TRAIT_SOURCE_ATTACHMENT(slot))
-	UnregisterSignal(detaching_gun, COMSIG_IGNITER_OVERRIDE)
 	..()
-
-/obj/item/attachable/attached_gun/flamer/proc/igniter_override(obj/item/weapon/gun/attached_to, datum/igniter_override_metadata/metadata)
-	SIGNAL_HANDLER
-	metadata.igniter_override = src
 
 /obj/item/attachable/attached_gun/flamer/get_examine_text(mob/user)
 	. = ..()

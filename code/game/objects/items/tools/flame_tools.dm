@@ -43,16 +43,17 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	ADD_TRAIT(src, TRAIT_IGNITABLE, TRAIT_SOURCE_INHERENT)
 
 /obj/item/tool/candle/get_ignitable_flavor_text()
-	. = alist(
+	var/static/alist/flavor_text_map = alist(
 		/obj/item/tool/weldingtool = new /datum/ignitable_flavor_text_data(
 			replacement_text = SPAN_NOTICE("{user} casually lights {ignitable} with {igniter}."),
-			text_params = alist("ignitable" = ignitable_constants::APPLY_THE, "igniter" = ignitable_constants::APPLY_THE)
+			index_params = alist("ignitable" = /datum/ignitable_constants::APPLY_THE, "igniter" = /datum/ignitable_constants::APPLY_THE)
 		),
 		/datum = new /datum/ignitable_flavor_text_data(
 			replacement_text = SPAN_NOTICE("{user} lights {ignitable} with {igniter}."),
-			text_params = alist("ignitable" = ignitable_constants::APPLY_THE, "igniter" = ignitable_constants::APPLY_THE)
+			index_params = alist("ignitable" = /datum/ignitable_constants::APPLY_THE, "igniter" = /datum/ignitable_constants::APPLY_THE)
 		),
 	)
+	return flavor_text_map
 
 /obj/item/tool/candle/check_can_ignite()
 	return heat_source
@@ -76,7 +77,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	. = ..()
 
-/obj/item/tool/candle/ignite(obj/item/igniter, mob/user, flavor_text)
+/obj/item/tool/candle/on_ignite(obj/item/igniter, mob/user, flavor_text)
 	if(heat_source)
 		return
 
@@ -255,35 +256,77 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	ADD_TRAIT(src, TRAIT_IGNITABLE, TRAIT_SOURCE_INHERENT)
 	ADD_TRAIT(src, TRAIT_IGNITER, TRAIT_SOURCE_INHERENT)
 
-// TODO: setup typecache for this
 /obj/item/clothing/mask/cigarette/get_ignitable_flavor_text()
-	return alist(
+	var/static/flavor_text_map = alist(
 		/obj/item/tool/weldingtool = new /datum/ignitable_flavor_text_data(
 			replacement_text = SPAN_NOTICE("{user} casually lights {ignitable} with {igniter}."),
-			text_params = alist("ignitable" = ignitable_constants::APPLY_THE, "igniter" = ignitable_constants::APPLY_THE)
+			index_params = alist("ignitable" = /datum/ignitable_constants::APPLY_THE, "igniter" = /datum/ignitable_constants::APPLY_THE),
 		),
 		/obj/item/tool/lighter/zippo = new /datum/ignitable_flavor_text_data(
 			replacement_text = SPAN_ROSE("With a flick of their wrist, {user} lights their {ignitable} with {igniter}."),
-			text_params = alist("igniter" = ignitable_constants::APPLY_THE)
+			index_params = alist(
+				"igniter" = /datum/ignitable_constants::APPLY_THE,
+				"ignitable" = /datum/ignitable_constants::APPLY_NAME_ONLY,
+			),
 		),
 		/obj/item/device/flashlight/flare = new /datum/ignitable_flavor_text_data(
 			replacement_text = SPAN_NOTICE("{user} lights their {ignitable} with {igniter}."),
-			text_params = alist("igniter" = ignitable_constants::APPLY_THE)
+			index_params = alist(
+				"igniter" = /datum/ignitable_constants::APPLY_THE,
+				"ignitable" = /datum/ignitable_constants::APPLY_NAME_ONLY,
+			),
 		),
 		/obj/item/tool/lighter = new /datum/ignitable_flavor_text_data(
-			replacement_text = SPAN_NOTICE("{user} manages to light their {ignitable} with {igniter}.")
-			text_params = alist("igniter" = ignitable_constants::APPLY_THE)
+			replacement_text = SPAN_NOTICE("{user} manages to light their {ignitable} with {igniter}."),
+			index_params = alist(
+				"igniter" = /datum/ignitable_constants::APPLY_THE,
+				"ignitable" = /datum/ignitable_constants::APPLY_NAME_ONLY,
+			),
 		),
-		/obj/item/tool/match = new /datum/ignitable_flavor_text_data(SPAN_NOTICE("{user} lights their {ignitable} with their {igniter}.")),
-		/obj/item/weapon/energy/sword = new /datum/ignitable_flavor_text_data(SPAN_WARNING("{user} swings their {igniter}, barely missing their nose. They light their {ignitable} in the process.")),
-		/obj/item/device/assembly/igniter = new /datum/ignitable_flavor_text_data(SPAN_NOTICE("{user} fiddles with {igniter}, and manages to light their {ignitable}.")),
-		/obj/item/attachable/attached_gun/flamer = new /datum/ignitable_flavor_text_data(SPAN_NOTICE("{user} lights their {ignitable} with {igniter}.")),
-		/obj/item/weapon/gun/flamer = new /datum/ignitable_flavor_text_data(SPAN_NOTICE("{user} lights their {ignitable} with the pilot light of {igniter}.")),
-		/obj/item/weapon/gun = new /datum/ignitable_flavor_text_data(SPAN_NOTICE("{user} lights their {ignitable} with {igniter}.")),
-		/obj/item/tool/surgery/cautery = new /datum/ignitable_flavor_text_data(SPAN_NOTICE("{user} lights their {ignitable} with {igniter}.")),
-		/obj/item/clothing/mask/cigarette = new /datum/ignitable_flavor_text_data(SPAN_NOTICE("{user} lights their {ignitable} with {igniter} after a few attempts.")),
-		/obj/item/tool/candle = new /datum/ignitable_flavor_text_data(SPAN_NOTICE("{user} lights their {ignitable} with {igniter} after a few attempts.")),
+		/obj/item/tool/match = new /datum/ignitable_flavor_text_data(
+			SPAN_NOTICE("{user} lights their {ignitable} with their {igniter}."),
+			index_params = alist(
+				"igniter" = /datum/ignitable_constants::APPLY_NAME_ONLY,
+				"ignitable" = /datum/ignitable_constants::APPLY_NAME_ONLY,
+			),
+		),
+		/obj/item/weapon/energy/sword = new /datum/ignitable_flavor_text_data(
+			SPAN_WARNING("{user} swings their {igniter}, barely missing their nose. They light their {ignitable} in the process."),
+			index_params = alist(
+				"igniter" = /datum/ignitable_constants::APPLY_NAME_ONLY,
+				"ignitable" = /datum/ignitable_constants::APPLY_NAME_ONLY,
+			)
+		),
+		/obj/item/device/assembly/igniter = new /datum/ignitable_flavor_text_data(
+			SPAN_NOTICE("{user} fiddles with {igniter}, and manages to light their {ignitable}."),
+			index_params = alist("ignitable" = /datum/ignitable_constants::APPLY_NAME_ONLY),
+		),
+		/obj/item/attachable/attached_gun/flamer = new /datum/ignitable_flavor_text_data(
+			SPAN_NOTICE("{user} lights their {ignitable} with {igniter}."),
+			index_params = alist("ignitable" = /datum/ignitable_constants::APPLY_NAME_ONLY),
+		),
+		/obj/item/weapon/gun/flamer = new /datum/ignitable_flavor_text_data(
+			SPAN_NOTICE("{user} lights their {ignitable} with the pilot light of {igniter}."),
+			index_params = alist("ignitable" = /datum/ignitable_constants::APPLY_NAME_ONLY),
+		),
+		/obj/item/weapon/gun = new /datum/ignitable_flavor_text_data(
+			SPAN_NOTICE("{user} lights their {ignitable} with {igniter}."),
+			index_params = alist("ignitable" = /datum/ignitable_constants::APPLY_NAME_ONLY),
+		),
+		/obj/item/tool/surgery/cautery = new /datum/ignitable_flavor_text_data(
+			SPAN_NOTICE("{user} lights their {ignitable} with {igniter}."),
+			index_params = alist("ignitable" = /datum/ignitable_constants::APPLY_NAME_ONLY),
+		),
+		/obj/item/clothing/mask/cigarette = new /datum/ignitable_flavor_text_data(
+			SPAN_NOTICE("{user} lights their {ignitable} with {igniter} after a few attempts."),
+			index_params = alist("ignitable" = /datum/ignitable_constants::APPLY_NAME_ONLY),
+		),
+		/obj/item/tool/candle = new /datum/ignitable_flavor_text_data(
+			SPAN_NOTICE("{user} lights their {ignitable} with {igniter} after a few attempts."),
+			index_params = alist("ignitable" = /datum/ignitable_constants::APPLY_NAME_ONLY),
+		),
 	)
+	return flavor_text_map
 
 /obj/item/clothing/mask/cigarette/check_can_ignite()
 	return item_state == icon_on
@@ -321,7 +364,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(fixture.is_broken())
 			light(SPAN_NOTICE("[user] lights their [src] from the broken light."))
 
-/obj/item/clothing/mask/cigarette/ignite(obj/item/igniter, mob/user, flavor_text)
+/obj/item/clothing/mask/cigarette/on_ignite(obj/item/igniter, mob/user, flavor_text)
 	light(flavor_text)
 
 /obj/item/clothing/mask/cigarette/proc/light(flavor_text)
@@ -529,37 +572,37 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	chem_volume = 30
 
 /obj/item/clothing/mask/cigarette/cigar/havana/get_ignitable_flavor_text()
-	. = alist(
+	var/static/flavor_text_map = alist(
 		/obj/item/tool/weldingtool = new /datum/ignitable_flavor_text_data(
 			replacement_text = SPAN_NOTICE("{user} insults {ignitable} by lighting it with {igniter}."),
-			index_params = alist("ignitable" = ignitable_constants::APPLY_THE, "igniter" = ignitable_constants::APPLY_THE)
+			index_params = alist("ignitable" = /datum/ignitable_constants::APPLY_THE, "igniter" = /datum/ignitable_constants::APPLY_THE)
 		),
 		/obj/item/tool/lighter = new /datum/ignitable_flavor_text_data(
 			replacement_text = SPAN_NOTICE("{user} manages to offend their {ignitable} by lighting it with {igniter}."),
-			index_params = alist("igniter" = ignitable_constants::APPLY_THE)
+			index_params = alist("igniter" = /datum/ignitable_constants::APPLY_THE)
 		),
 		/obj/item/device/assembly/igniter = new /datum/ignitable_flavor_text_data(
 			replacement_text = SPAN_NOTICE("{user} fiddles with {igniter}, and manages to light their {ignitable} with the power of science."),
-			index_params = alist("igniter" = ignitable_constants::APPLY_THE),
+			index_params = alist("igniter" = /datum/ignitable_constants::APPLY_THE),
 		),
 		/obj/item/attachable/attached_gun/flamer = new /datum/ignitable_flavor_text_data(
 			replacement_text = SPAN_NOTICE("{user} lights their {ignitable} with {igniter}, bet that would have looked cooler if it was attached to something first!"),
-			index_params = alist("igniter" = ignitable_constants::APPLY_THE),
+			index_params = alist("igniter" = /datum/ignitable_constants::APPLY_THE),
 		),
 		/obj/item/weapon/gun/flamer = new /datum/ignitable_flavor_text_data(
 			replacement_text = SPAN_NOTICE("{user} lights their {ignitable} with the pilot light of {igniter}, the glint of pyromania in their eye."),
-			index_params = alist("igniter" = ignitable_constants::APPLY_THE),
+			index_params = alist("igniter" = /datum/ignitable_constants::APPLY_THE),
 		),
 		/obj/item/weapon/gun = new /datum/ignitable_flavor_text_data(
 			replacement_text = SPAN_NOTICE("{user} lights their {ignitable} with {igniter} like a complete badass."),
-			index_params = alist("igniter" = ignitable_constants::APPLY_THE),
+			index_params = alist("igniter" = /datum/ignitable_constants::APPLY_THE),
 		),
 		/obj/item/tool/surgery/cautery = new /datum/ignitable_flavor_text_data(
 			replacement_text = SPAN_NOTICE("{user} lights their {ignitable} with {igniter}, that can't be sterile!"),
-			index_params = alist("igniter" = ignitable_constants::APPLY_THE),
+			index_params = alist("igniter" = /datum/ignitable_constants::APPLY_THE),
 		)
-	)
-	. += ..()
+	) + ..()
+	return flavor_text_map
 
 /////////////////
 //SMOKING PIPES//
@@ -602,15 +645,15 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	..()
 
 /obj/item/clothing/mask/cigarette/pipe/get_ignitable_flavor_text()
-	. = list(
+	var/static/alist/flavor_text_map = list(
 		/obj/item/tool/weldingtool = new /datum/ignitable_flavor_text_data(SPAN_NOTICE("{user} recklessly lights {ignitable} with {igniter}.")),
 		/obj/item/tool/lighter/zippo = new /datum/ignitable_flavor_text_data(SPAN_ROSE("With much care, {user} lights their {ignitable} with their {igniter}.")),
 		/obj/item/device/flashlight/flare = new /datum/ignitable_flavor_text_data(SPAN_NOTICE("{user} lights their {ignitable} with {igniter}.")),
 		/obj/item/tool/lighter = new /datum/ignitable_flavor_text_data(SPAN_NOTICE("{user} manages to light their {ignitable} with {igniter}.")),
 		/obj/item/tool/match = new /datum/ignitable_flavor_text_data(SPAN_NOTICE("{user} lights their {ignitable} with their {igniter}.")),
 		/obj/item/device/assembly/igniter = new /datum/ignitable_flavor_text_data(SPAN_NOTICE("{user} fiddles with the {igniter}, and manages to light their {ignitable} with the power of science.")),
-	)
-	. += ..()
+	) + ..()
+	return flavor_text_map
 
 /obj/item/clothing/mask/cigarette/pipe/light()
 	if(smoketime > 0)
@@ -832,20 +875,20 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		return 1
 	return 0
 
-/obj/item/tool/lighter/attack(mob/living/carbon/M, mob/living/carbon/user)
-	if(!isliving(M))
+/obj/item/tool/lighter/attack(mob/living/carbon/target, mob/living/carbon/user)
+	if(!isliving(target))
 		return
-	M.IgniteMob()
-	if(!istype(M, /mob))
+	target.IgniteMob()
+	if(!ismob(target))
 		return
 
-	if(!istype(M.wear_mask, /obj/item/clothing/mask/cigarette) || user.zone_selected != "mouth" || !heat_source)
+	if(!HAS_TRAIT(target.wear_mask, TRAIT_IGNITABLE) || user.zone_selected != "mouth" || !heat_source)
 		return ..()
-	var/obj/item/clothing/mask/cigarette/cig = M.wear_mask
-	if(M == user)
-		SEND_SIGNAL(cig, COMSIG_ATOM_IGNITE, src, user)
+	var/obj/item/item_in_mouth = target.wear_mask
+	if(target == user)
+		item_in_mouth.ignite(src, user)
 	else if(istype(src, /obj/item/tool/lighter/zippo))
-		SEND_SIGNAL(cig, COMSIG_ATOM_IGNITE, src, user, SPAN_ROSE("[user] whips the [name] out and holds it for [M]."))
+		item_in_mouth.ignite(src, user, SPAN_ROSE("[user] whips [src] out and holds it for [target]."))
 	else
-		SEND_SIGNAL(cig, COMSIG_ATOM_IGNITE, src, user, SPAN_NOTICE("[user] holds the [name] out for [M], and lights the [cig.name]."))
+		item_in_mouth.ignite(src, user, SPAN_NOTICE("[user] holds [src] out for [target], and lights [item_in_mouth]."))
 

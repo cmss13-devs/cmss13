@@ -23,9 +23,10 @@
 	UnregisterSignal(source, COMSIG_PARENT_AFTERATTACK)
 	return ..()
 
-/// Proc to overwrite when specifying how an atom checks whether it can ignition. Default is to always ignite.
+/// Proc to override when specifying how an atom checks whether it can ignition. Default is to always ignite.
 /obj/item/proc/check_can_ignite()
 	return TRUE
 
+/// Proc to override if we want flavor text for why igniting something failed. Default is that there is no flavor text.
 /obj/item/proc/get_igniter_failure_message()
 	return

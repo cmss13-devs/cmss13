@@ -1,8 +1,7 @@
 /datum/ignitable_constants
 	// Update /proc/replace_ignitable_flavor_text(...) to handle any more constants here
 	VAR_FINAL/const/APPLY_THE = 1
-
-GLOBAL_REAL(ignitable_constants, /datum/ignitable_constants)
+	VAR_FINAL/const/APPLY_NAME_ONLY = 2
 
 /// Element for atoms that can ignite
 /datum/element/traitbound/ignitable
@@ -27,11 +26,7 @@ GLOBAL_REAL(ignitable_constants, /datum/ignitable_constants)
 	var/ignition_source = igniter
 	if (custom_flavor_text)
 		flavor_text = custom_flavor_text
-	var/datum/igniter_override_metadata/metadata = new /datum/igniter_override_metadata()
-	SEND_SIGNAL(igniter, COMSIG_IGNITER_OVERRIDE, metadata)
-	if (metadata.igniter_override)
-		ignition_source = metadata.igniter_override
-	if (flavor_text_by_type)
+	else if (flavor_text_by_type)
 		var/highest_matching_path = get_matching_paths(igniter, flavor_text_by_type).highest_matching
 		if (highest_matching_path)
 			var/datum/ignitable_flavor_text_data/flavor_text_data = flavor_text_by_type[highest_matching_path]
@@ -54,13 +49,8 @@ GLOBAL_REAL(ignitable_constants, /datum/ignitable_constants)
 				),
 			)
 	if (!flavor_text)
-		flavor_text = "[user] ignites \the [ignitable] with \the [ignition_source]."
+		flavor_text = "[user] ignites [ignitable] with [ignition_source]."
 	ignitable.ignite(ignition_source, user, flavor_text)
-
-/// Data class for setting igniter_override
-/datum/igniter_override_metadata
-	/// Atom to track as source of ignition
-	var/atom/igniter_override
 
 // TODO: generalize this to be usable in other contexts
 /datum/ignitable_flavor_text_data
@@ -75,8 +65,10 @@ GLOBAL_REAL(ignitable_constants, /datum/ignitable_constants)
 
 /proc/replace_ignitable_flavor_text(atom/atom_to_reference, text_param)
 	if (!text_param)
+		return "[atom_to_reference]"
+	else if (text_param == /datum/ignitable_constants::APPLY_NAME_ONLY)
 		return "[atom_to_reference.name]"
-	else if (text_param == ignitable_constants::APPLY_THE)
+	else if (text_param == /datum/ignitable_constants::APPLY_THE)
 		return "\the [atom_to_reference]"
 	else
 		CRASH("Invalid text_param passed: '[text_param]'")

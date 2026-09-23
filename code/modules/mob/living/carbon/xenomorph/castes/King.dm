@@ -2,6 +2,7 @@
 	caste_type = XENO_CASTE_KING
 	caste_desc = "The end of the line."
 	tier = 4
+	is_intelligent = TRUE
 
 	melee_damage_lower = XENO_DAMAGE_TIER_6
 	melee_damage_upper = XENO_DAMAGE_TIER_8
@@ -77,7 +78,7 @@
 
 /mob/living/carbon/xenomorph/king/Destroy()
 	UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)
-
+	hive.living_xeno_king = null
 	return ..()
 
 /mob/living/carbon/xenomorph/king/Initialize()
@@ -89,6 +90,7 @@
 		hive.banned_allies = list("All")
 		if(hive.break_all_alliances())
 			xeno_message(SPAN_XENOANNOUNCE("With the arrival of the King, all alliances have been broken."), 3, hivenumber)
+		hive.living_xeno_king = src
 
 /mob/living/carbon/xenomorph/king/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	. = ..()
@@ -134,6 +136,7 @@
 
 /mob/living/carbon/xenomorph/king/death(cause, gibbed)
 	. = ..()
+	hive.living_xeno_king = null
 	if(hive)
 		hive.setup_banned_allies()
 

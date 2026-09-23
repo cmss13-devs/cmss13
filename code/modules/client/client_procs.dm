@@ -452,7 +452,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	//Admin Authorisation
 	var/holder = GLOB.admin_datums[ckey]
 	if(holder)
-		INVOKE_ASYNC(holder, TYPE_PROC_REF(/datum/admins, associate), src)
+		INVOKE_ASYNC(holder, TYPE_PROC_REF(/datum/admins, associate_or_deadmin), src)
 
 	add_pref_verbs()
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)

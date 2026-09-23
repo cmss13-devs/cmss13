@@ -615,7 +615,7 @@ GLOBAL_LIST_INIT(markup_tags, list("/" = list("<i>", "</i>"),
 		//total of 22 messages
 	)
 
-	//You typically want speaking messages spaced out by at least 30 ticks (3 seconds),
+	//You typically want speaking messages spaced out by at least 30-50 ticks (3-5 seconds),
 	//but if you want to surprise the player with a hectic situation, try combining multiple messages in 10-20 tick spans.
 
 	//I recommend making the timestamp to a log **last**, and placing your gaps and pauses in the timestamps inside the storedinfo.

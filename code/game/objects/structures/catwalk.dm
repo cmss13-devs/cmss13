@@ -24,6 +24,17 @@
 	if(my_turf)
 		my_turf.turf_flags &= ~TURF_CATWALKED
 
+/obj/structure/catwalk/Moved(atom/oldloc, direction, Forced)
+	. = ..()
+
+	if(isturf(oldloc))
+		var/turf/old_turf = oldloc
+		old_turf.turf_flags &= ~TURF_CATWALKED
+
+	if(isturf(loc))
+		var/turf/new_turf = loc
+		new_turf.turf_flags |= TURF_CATWALKED
+
 /obj/structure/catwalk/update_icon()
 	..()
 	var/turf/turf = get_turf(src)

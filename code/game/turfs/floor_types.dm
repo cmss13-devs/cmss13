@@ -316,13 +316,13 @@
 
 /turf/open/floor/plating/plating_catwalk/break_tile()
 	if(covered)
-		covered = 0
+		set_covered(FALSE)
 		update_icon()
 	..()
 
 /turf/open/floor/plating/plating_catwalk/break_tile_to_plating()
 	if(covered)
-		covered = 0
+		set_covered(FALSE)
 		update_icon()
 	..()
 

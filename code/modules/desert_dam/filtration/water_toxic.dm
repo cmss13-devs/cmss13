@@ -8,6 +8,7 @@
 	var/const/WATER_TOXIC_NO = 0
 	var/const/WATER_TOXIC_YES = 1
 	var/const/WATER_TOXIC_DISPERSING = -1
+	water_type = null
 
 /obj/effect/blocker/water/toxic/Group_1
 	disperse_group = 1

@@ -31,6 +31,8 @@ SUBSYSTEM_DEF(water_overlays)
 					turfs_to_process |= found_turf
 		for(var/obj/effect/blocker/water/found_blocker in search_turf.contents)		//blocker/water objects can create water, we need to create overlays for those too
 			var/turf/water_blocker_turf = found_blocker.water_type
+			if(water_blocker_turf == null)
+				continue
 			found_waters["[found_blocker.water_type][found_blocker.water_type][water_blocker_turf.icon][water_blocker_turf.icon_state][found_blocker.created_depth]"] = list(water_blocker_turf.icon, water_blocker_turf.icon_state, found_blocker.created_depth, found_blocker.water_type)
 		CHECK_TICK
 	for(var/datum/water_overlay_config/config_type as anything in subtypesof(/datum/water_overlay_config))

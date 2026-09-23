@@ -22,9 +22,10 @@
 
 /obj/effect/blocker/water/Initialize(mapload, ...)
 	. = ..()
-	var/turf/settings = water_type
-	icon = settings.icon
-	icon_state = settings.icon_state
+	if(water_type)
+		var/turf/settings = water_type
+		icon = settings.icon
+		icon_state = settings.icon_state
 
 /obj/effect/blocker/water/proc/drain_spread(from_dir = 0)
 	if(!dispersing)
@@ -97,6 +98,6 @@
 	update_icon()
 	var/turf/location = get_turf(src)
 	location.is_weedable = NOT_WEEDABLE
-	if(istype(location, /turf/open))
+	if(water_type && istype(location, /turf/open))
 		var/turf/open/open_location = location
 		open_location.become_water(created_depth, water_type)

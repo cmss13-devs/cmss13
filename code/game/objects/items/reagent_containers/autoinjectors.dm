@@ -104,13 +104,13 @@
 		. += SPAN_HELPFUL("It doesn't have a lock on it, so anyone can use it.")
 
 	if(chemname == "tramadol")
-		. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: interaction with paracetamol produces toxins. Will be less efficacious if patient has opiate receptor deficiency.</b>")
+		. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: Mixing Tramadol and Paracetamol produces toxins and require dialysis to remove. Tramadol will be less efficacious if administered to a patient with opiate receptor deficiency.</b>")
 	if(chemname == "oxycodone")
-		. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: will be less efficacious to patients with opiate receptor deficiency.</b>")
+		. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: Oxycodone will be less efficacious if administered to a patient with opiate receptor deficiency.</b>")
 	if(chemname == "paracetamol")
-		. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: interaction with tramadol produces toxins.</b>")
+		. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: Mixing Paracetamol and Tramadol produces toxins that require dialysis to remove.</b>")
 	if(chemname == "anti_toxin" || chemname == "arithrazine")
-		. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: does not remove overdosed reagents.</b>")
+		. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: This medication does not remove overdosed substances. In case of overdose, please give the patient dialysis.</b>")
 	if(chemname == "ultrazine")
 		. += SPAN_WARNING("It comes with a warning label that says: <b>WARNING: EXTREMELY ADDICTIVE!</b>")
 
@@ -438,7 +438,7 @@
 	maptext_label = "OuTc"
 
 /obj/item/reagent_container/hypospray/autoinjector/tutorial/tramadol
-	name = "tramadol EZ autoinjector (FOR TRAINING USE ONLY)"
+	name = "tramadol training autoinjector (FOR TRAINING USE ONLY)"
 	chemname = "tramadol"
 	desc = "An EZ one-use autoinjector that injects a common pain-killing medicine. To use it, click the autoinjector while it is in your hand. You can also click any person one tile near you, or yourself, to inject its contents."
 	maptext_label = "OuTr"
@@ -533,7 +533,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency/get_autoinjector_examine_text(mob/user, max_uses)
 	. = ..()
-	. += SPAN_WARNING("It comes with a warning label: <b>This autoinjector injects one unit below the OD limit of: Bicaridine, Kelotane, and Oxycodone.</b>")
+	. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: This autoinjector injects one unit below the OD limit of: Bicaridine, Kelotane, and Oxycodone. Do not administer if any of the aforementioned chemicals are in the patient's bloodstream.</b>")
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency/Initialize() //29u bicaridine, 29u kelotane, 19u oxycodone, 1u dexalin +.
 	. = ..()
@@ -568,7 +568,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine
 	name = "ultrazine stimpack"
 	chemname = "ultrazine"
-	desc = "A stimpack that injects a special and illegal muscle stimulant. Highly addictive."
+	desc = "A stimpack that injects a special and illegal muscle stimulant."
 	amount_per_transfer_from_this = 5
 	volume = 25
 	uses_left = 5
@@ -600,11 +600,12 @@
 	. = list()
 	if(uses_left > 0)
 		if(max_uses == 1)
-			. += SPAN_NOTICE("It injects its entire payload of... Something? You don't know what's in it.")
+			. += SPAN_NOTICE("It injects its entire payload of... Something? It has no label and the chemical inside looks strange.")
 		else
-			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections of... Something? You don't know what's in it.")
+			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections of... Something? It has no label and the chemical inside looks strange.")
 	else
 		. += SPAN_WARNING("It is spent and you do not know how to refill it.")
+
 /obj/item/reagent_container/hypospray/autoinjector/yautja
 	name = "unusual crystal"
 	chemname = "thwei"
@@ -622,7 +623,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja/get_autoinjector_examine_text(mob/user, max_uses)
 	. = list()
-	var/notyautja_message = "On closer perusal, the tip of its has a tiny slanted hole. You think it might be an injector, you don't know what's in it or how to inject it, though."
+	var/notyautja_message = "On closer perusal, the tip of its has a tiny slanted hole. You think it might be an injector, but you don't know what's in it or how to inject it, though."
 
 	if(uses_left > 0)
 		if(isyautja(user))

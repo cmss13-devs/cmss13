@@ -1,6 +1,6 @@
 /datum/xeno_strain/vampire
 	name = LURKER_VAMPIRE
-	description = "You lose all of your abilities and you forfeit a chunk of your health and damage in exchange for a large amount of armor, a little bit of movement speed, increased attack speed, and brand new abilities that make you an assassin. Rush on your opponent to disorient them and Flurry to unleash a forward cleave that can hit and slow three talls and heal you for every tall you hit. Use your special AoE Tail Jab to knock talls away, doing more damage with direct hits and even more damage and a stun if they smack into walls. Finally, execute unconscious talls with a headbite to heal your wounds."
+	description = "We lose all of our abilities and you forfeit a chunk of our health and damage in exchange for a large amount of armor, a little bit of movement speed, increased attack speed, and brand new abilities that make you an assassin. Rush on our opponent to disorient them and Flurry to unleash a forward cleave that can hit and slow three talls and heal you for every tall you hit. Use our special AoE Tail Jab to knock talls away, doing more damage with direct hits and even more damage and a stun if they smack into walls. Finally, execute unconscious talls with a headbite to heal our wounds."
 	flavor_description = "Show no mercy! Slaughter them all!"
 	icon_state_prefix = "Vampire"
 
@@ -172,7 +172,7 @@
 	if(!step(hit_target, direction))
 		playsound(hit_target.loc, "punch", 25, 1)
 		hit_target.visible_message(SPAN_DANGER("[hit_target] slams into an obstacle!"),
-		isxeno(hit_target) ? SPAN_XENODANGER("We slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
+		isxeno(hit_target) ? SPAN_XENODANGER("We slam into an obstacle!") : SPAN_HIGHDANGER("We slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		hit_target.apply_damage(MELEE_FORCE_TIER_2)
 		if(hit_target.mob_size < MOB_SIZE_BIG)
 			hit_target.KnockDown(0.5)

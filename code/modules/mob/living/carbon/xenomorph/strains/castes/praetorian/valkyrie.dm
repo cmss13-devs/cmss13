@@ -1,6 +1,6 @@
 /datum/xeno_strain/valkyrie
 	name = PRAETORIAN_VALKYRIE
-	description = "You trade your ranged abilities and acid to gain the ability to emit strong pheromones and buff other Xenomorphs, giving them extra armor. An ability that knocks down people in a 2 by 3 in front of you while also throwing back grenades. You get an ability that rejuvenates everyone in a certain range depending on your rage. You also trade your tailstab for an extinguisher, while it doesn't do damage it can put out both enemies and allies. This can be used to extinguish people on fire to help capture them."
+	description = "We trade our ranged abilities and acid to gain the ability to emit strong pheromones and buff other Xenomorphs, giving them extra armor. An ability that knocks down people in a 2 by 3 in front of you while also throwing back grenades. We get an ability that rejuvenates everyone in a certain range depending on our rage. We also trade our tailstab for an extinguisher, while it doesn't do damage it can put out both enemies and allies. This can be used to extinguish people on fire to help capture them."
 	flavor_description = "This one will deny her sisters' deaths until they earn it. Fight or be forgotten."
 	icon_state_prefix = "Warden"
 
@@ -164,7 +164,7 @@
 	raging_valkyrie.recalculate_armor()
 	RegisterSignal(raging_valkyrie, list(COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE), PROC_REF(calculate_damage_mitigation_self))
 
-	if(istype(buffing_target.caste, /datum/caste_datum/crusher) || istype(buffing_target.caste, /datum/caste_datum/ravager)) // i wouldve made this a list() but for some reason it didnt work.
+	if(istype(buffing_target.caste, /datum/caste_datum/crusher) || istype(buffing_target.caste, /datum/caste_datum/ravager)) // i wouldve made this a list() but for some reason it didn't work.
 		playsound(get_turf(buffing_target), "alien_roar", 40)
 		buffing_target.create_custom_empower(icolor = "#a31010", ialpha = 200, small_xeno = TRUE)
 		buffing_target.add_filter("raging", 1, list("type" = "outline", "color" = "#a31010", "size" = 1))
@@ -409,7 +409,7 @@
 		return FALSE
 
 	playsound(extinguisher_tail, 'sound/effects/splat.ogg', 40, FALSE)
-	target.ExtinguishMob() // This can both help your allies, or help caps that are on fire.
+	target.ExtinguishMob() // This can both help our allies, or help caps that are on fire.
 	apply_cooldown()
 	extinguisher_tail.visible_message(SPAN_XENODANGER("[extinguisher_tail] pours acid all over [target] using its tail."), SPAN_XENOHIGHDANGER("We use our tail to pour acid over [target]."))
 	xeno_attack_delay(extinguisher_tail)

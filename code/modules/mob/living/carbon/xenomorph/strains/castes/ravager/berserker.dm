@@ -1,7 +1,7 @@
 /datum/xeno_strain/berserker
 	name = RAVAGER_BERSERKER
-	description = "You lose your empower, charge, and scissor cut, decrease your health, and sacrifice a bit of your influence under frenzy pheromones to increase your movement speed, slightly increase your armor, and gain a new set of abilities that make you a terrifying melee monster. By slashing, you heal yourself and gain a stack of rage that increases your armor, movement speed, attack speed, and your heals per slash, to a maximum of five rage. Use your new Appehend ability to increase your movement speed and apply a slow on the next target you slash and use your Clothesline ability to fling your target to heal yourself, even more-so if you have a rage stack that will be used up. Finally, use your Eviscerate to unleash a devastating windmill attack that heals you for every enemy you hit after an immobilizing wind-up."
-	flavor_description = "Unbridled fury fills this one. You will become an extension of my rage."
+	description = "We lose our empower, charge, and scissor cut, decrease our health, and sacrifice a bit of our influence under frenzy pheromones to increase our movement speed, slightly increase our armor, and gain a new set of abilities that make you a terrifying melee monster. By slashing, you heal ourselves and gain a stack of rage that increases our armor, movement speed, attack speed, and our heals per slash, to a maximum of five rage. Use our new Apprehend ability to increase our movement speed and apply a slow on the next target you slash and use our Clothesline ability to fling our target to heal ourselves, even more-so if you have a rage stack that will be used up. Finally, use our Eviscerate to unleash a devastating windmill attack that heals you for every enemy you hit after an immobilizing wind-up."
+	flavor_description = "Unbridled fury fills this one. We will become an extension of my rage."
 	icon_state_prefix = "Berserker"
 
 	actions_to_remove = list(
@@ -136,7 +136,7 @@
 
 	if(next_slash_buffed)
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We significantly strengthen our attack, slowing [target_carbon]!"))
-		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("We feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
 		target_carbon.apply_effect(get_xeno_stun_duration(target_carbon, slash_slow_duration), SLOW)
 		next_slash_buffed = FALSE
 
@@ -389,5 +389,5 @@
 				SPAN_XENONOTICE("ATTACK!!!! Wait- we're not allowed to attack hosts anymore..."))
 				return XENO_ATTACK_ACTION
 		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] fumbles stupidly for a moment, then slashes [target_carbon]!"),
-			SPAN_HIGHDANGER("Your oversized claws and small mind get in the way of restraining, slashing [target_carbon]!"), message_flags=CHAT_TYPE_XENO_COMBAT)
+			SPAN_HIGHDANGER("Our oversized claws and small mind get in the way of restraining, slashing [target_carbon]!"), message_flags=CHAT_TYPE_XENO_COMBAT)
 		return INTENT_HARM

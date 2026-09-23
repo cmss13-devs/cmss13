@@ -1,7 +1,7 @@
 /datum/xeno_strain/oppressor
 	// Dread it, run from it, destiny still arrives... or should I say, I do
 	name = PRAETORIAN_OPPRESSOR
-	description = "You abandon all of your acid-based abilities, your dash, some speed, and a bit of your slash damage for some resistance against small explosives, slashes that deal extra damage to prone targets, and a powerful hook ability that pulls up to three enemies towards you, slows them, and has varying effects depending on how many enemies you pull. You also gain a powerful punch that reduces your other abilities' cooldowns, pierces through armor, and does double damage in addition to rooting slowed targets. You can also knock enemies back and slow them with your new Tail Lash and quickly grab a tall, slow it, and pull it towards you with your unique Tail Stab."
+	description = "We abandon all of our acid-based abilities, our dash, some speed, and a bit of our slash damage for some resistance against small explosives, slashes that deal extra damage to prone targets, and a powerful hook ability that pulls up to three enemies towards you, slows them, and has varying effects depending on how many enemies you pull. We also gain a powerful punch that reduces our other abilities' cooldowns, pierces through armor, and does double damage in addition to rooting slowed targets. We can also knock enemies back and slow them with our new Tail Lash and quickly grab a tall, slow it, and pull it towards you with our unique Tail Stab."
 	flavor_description = "My reach is endless, this one will pull down the heavens."
 	icon_state_prefix = "Oppressor"
 
@@ -163,7 +163,7 @@
 
 	ADD_TRAIT(abduct_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
 	if(!do_after(abduct_user, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
-		to_chat(abduct_user, SPAN_XENOWARNING("You relax your tail."))
+		to_chat(abduct_user, SPAN_XENOWARNING("We relax our tail."))
 		apply_cooldown()
 
 		for(var/obj/effect/xenomorph/xeno_telegraph/xenotelegraph in telegraph_atom_list)
@@ -217,12 +217,12 @@
 				var/mob/living/carbon/human/target_human = target
 				target_human.update_xeno_hostile_hud()
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target, TRAIT_SOURCE_ABILITY("Abduct")), get_xeno_stun_duration(target, 2.5 SECONDS))
-			to_chat(target, SPAN_XENOHIGHDANGER("[abduct_user] has pinned you to the ground! You cannot move!"))
+			to_chat(target, SPAN_XENOHIGHDANGER("[abduct_user] has pinned you to the ground! We cannot move!"))
 
 			target.set_effect(2, DAZE)
 		else if(LAZYLEN(targets) >= 3)
 			target.apply_effect(get_xeno_stun_duration(target, 1.3), WEAKEN)
-			to_chat(target, SPAN_XENOHIGHDANGER("You are slammed into the other victims of [abduct_user]!"))
+			to_chat(target, SPAN_XENOHIGHDANGER("We are slammed into the other victims of [abduct_user]!"))
 
 		shake_camera(target, 10, 1)
 
@@ -281,7 +281,7 @@
 			human_to_update.update_xeno_hostile_hud()
 
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target_carbon, TRAIT_SOURCE_ABILITY("Oppressor Punch")), get_xeno_stun_duration(target_carbon, 1.2 SECONDS))
-		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[oppressor_user] has pinned you to the ground! You cannot move!"))
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[oppressor_user] has pinned you to the ground! We cannot move!"))
 	else
 		target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, damage), ARMOR_MELEE, BRUTE, target_limb? target_limb.name : "chest")
 		step_away(target_carbon, oppressor_user, 2)

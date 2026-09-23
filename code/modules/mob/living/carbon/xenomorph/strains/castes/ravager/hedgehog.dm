@@ -1,7 +1,7 @@
 /datum/xeno_strain/hedgehog
 	name = RAVAGER_HEDGEHOG
-	description = "You lose your empower, charge, scissor cut, and some slash damage in exchange for more explosive resistance. Your resistance scales with your shard count and at 50% grants you immunity to some explosive stuns. You accumulate shards over time and when taking damage. You can use these shards to power three new abilities: Spike Shield which gives you a temporary shield that spits bone shards around you when damaged; Fire Spikes which launches spikes at your target to slow them and deal damage when they move; and Spike Shed which launches all your spikes, grants a temporary speed boost, and disables shard generation for thirty seconds."
-	flavor_description = "You will pierce them a million times, show them what it feels like. This one will become my shield."
+	description = "We lose our empower, charge, scissor cut, and some slash damage in exchange for more explosive resistance. Our resistance scales with our shard count and at 50% grants you immunity to some explosive stuns. We accumulate shards over time and when taking damage. We can use these shards to power three new abilities: Spike Shield which gives you a temporary shield that spits bone shards around you when damaged; Fire Spikes which launches spikes at our target to slow them and deal damage when they move; and Spike Shed which launches all our spikes, grants a temporary speed boost, and disables shard generation for thirty seconds."
+	flavor_description = "We will pierce them a million times, show them what it feels like. This one will become my shield."
 	icon_state_prefix = "Hedgehog"
 
 	actions_to_remove = list(
@@ -54,7 +54,7 @@
 	if (!bound_xeno)
 		return
 
-	to_chat(bound_xeno, SPAN_XENODANGER("You have shed your spikes and cannot gain any more for [shard_lock_duration/10] seconds!"))
+	to_chat(bound_xeno, SPAN_XENODANGER("We have shed our spikes and cannot gain any more for [shard_lock_duration/10] seconds!"))
 
 	bound_xeno.speed_modifier -= shard_lock_speed_mod
 	bound_xeno.recalculate_speed()
@@ -68,7 +68,7 @@
 	if (!bound_xeno)
 		return
 
-	to_chat(bound_xeno, SPAN_XENODANGER("You feel your ability to gather shards return!"))
+	to_chat(bound_xeno, SPAN_XENODANGER("We feel our ability to gather shards return!"))
 
 	bound_xeno.speed_modifier += shard_lock_speed_mod
 	bound_xeno.recalculate_speed()
@@ -312,5 +312,5 @@
 				SPAN_XENONOTICE("ATTACK!!!! Wait- we're not allowed to attack hosts anymore..."))
 				return XENO_ATTACK_ACTION
 		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] fumbles stupidly for a moment, then slashes [target_carbon]!"),
-			SPAN_HIGHDANGER("Your oversized claws and small mind get in the way of restraining, slashing [target_carbon]!"), message_flags=CHAT_TYPE_XENO_COMBAT)
+			SPAN_HIGHDANGER("Our oversized claws and small mind get in the way of restraining, slashing [target_carbon]!"), message_flags=CHAT_TYPE_XENO_COMBAT)
 		return INTENT_HARM

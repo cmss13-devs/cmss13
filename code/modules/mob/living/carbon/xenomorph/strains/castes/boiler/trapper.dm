@@ -1,6 +1,6 @@
 /datum/xeno_strain/trapper
 	name = BOILER_TRAPPER
-	description = "You trade your ability to bombard, lance, and dump your acid in order to gain some speed and the ability to create acid explosions and restrain enemies within them. With your longer-range vision, set up traps that immobilize your opponents and place acid mines which deal damage to enemies and barricades and reduce the cooldown of your trap deployment for every enemy hit. Finally, hit enemies with your Acid Shotgun ability which adds a stack of insight to empower the next trap you place once you reach a maximum of ten insight. A point-blank shot or a shot on a stunned target will instantly apply ten stacks."
+	description = "We trade our ability to bombard, lance, and dump our acid in order to gain some speed and the ability to create acid explosions and restrain enemies within them. With our longer-range vision, set up traps that immobilize our opponents and place acid mines which deal damage to enemies and barricades and reduce the cooldown of our trap deployment for every enemy hit. Finally, hit enemies with our Acid Shotgun ability which adds a stack of insight to empower the next trap you place once you reach a maximum of ten insight. A point-blank shot or a shot on a stunned target will instantly apply ten stacks."
 	flavor_description = "The battlefield is my canvas, this one, my painter. Melt them where they stand."
 
 	actions_to_remove = list(
@@ -89,7 +89,7 @@
 	if(!trap_ability.empowered && trap_ability.empowering_charge_counter >= trap_ability.empower_charge_max)
 		trap_ability.empowered = TRUE
 		trap_ability.button.overlays += image('icons/mob/hud/actions_xeno.dmi', "+empowered")
-		to_chat(bound_xeno, SPAN_XENODANGER("You have gained sufficient insight in your prey to empower your next [trap_ability.name]."))
+		to_chat(bound_xeno, SPAN_XENODANGER("We have gained sufficient insight in our prey to empower our next [trap_ability.name]."))
 
 	if(trap_ability.empowering_charge_counter > trap_ability.empower_charge_max)
 		trap_ability.empowering_charge_counter = trap_ability.empower_charge_max
@@ -97,7 +97,7 @@
 /datum/behavior_delegate/boiler_trapper/on_life()
 	if((temp_movespeed_time_used + temp_movespeed_cooldown) < world.time)
 		if(!temp_movespeed_messaged)
-			to_chat(bound_xeno, SPAN_XENODANGER("You feel your adrenaline glands refill! Your speedboost will activate again."))
+			to_chat(bound_xeno, SPAN_XENODANGER("We feel our adrenaline glands refill! Our speedboost will activate again."))
 			temp_movespeed_messaged = TRUE
 		temp_movespeed_usable = TRUE
 		return
@@ -186,10 +186,10 @@
 		acid_bolt_message = "a powerful bolt of acid"
 
 	xeno.visible_message(SPAN_XENODANGER("[xeno] fires " + acid_bolt_message + " at [affected_atom]!"), SPAN_XENODANGER("We fire " + acid_bolt_message + " at [affected_atom]!"))
-	new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(turf, damage, delay, empowered, "You are blasted with " + acid_bolt_message + "!", xeno)
+	new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(turf, damage, delay, empowered, "We are blasted with " + acid_bolt_message + "!", xeno)
 
 	for(var/turf/target_turf in orange(1, turf))
-		new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(target_turf, damage, delay, empowered, "You are blasted with a " + acid_bolt_message + "!", xeno)
+		new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(target_turf, damage, delay, empowered, "We are blasted with a " + acid_bolt_message + "!", xeno)
 
 	if(empowered)
 		empowered = FALSE

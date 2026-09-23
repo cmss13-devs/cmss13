@@ -1,6 +1,6 @@
 /datum/xeno_strain/healer
 	name = DRONE_HEALER
-	description = "You lose your choice of resin secretions, a chunk of your slash damage, and you will experience a slightly-increased difficulty in tackling hosts in exchange for strong pheromones, the ability to use a bit of your health to plant a maximum of three lesser resin fruits, and the ability to heal your sisters' wounds by secreting a regenerative resin salve by using your vital fluids and a fifth of your plasma. Be wary, this is a dangerous process; overexert yourself and you may exhaust yourself to unconsciousness, or die..."
+	description = "We lose our choice of resin secretions, a chunk of our slash damage, and you will experience a slightly-increased difficulty in tackling hosts in exchange for strong pheromones, the ability to use a bit of our health to plant a maximum of three lesser resin fruits, and the ability to heal our sisters' wounds by secreting a regenerative resin salve by using our vital fluids and a fifth of our plasma. Be wary, this is a dangerous process; overexert ourselves and you may exhaust ourselves to unconsciousness, or die..."
 	flavor_description = "Divided we fall, united we win. We live for the hive, we die for the hive."
 	icon_state_prefix = "Healer"
 
@@ -17,7 +17,7 @@
 		/datum/action/xeno_action/onclick/plant_resin_fruit, // Second macro. Resin fruits belong to Gardener, but Healer has a minor variant.
 		/datum/action/xeno_action/activable/apply_salve, //Third macro, heal over time ability.
 		/datum/action/xeno_action/activable/transfer_plasma/healer, //Fourth macro, an improved plasma transfer.
-		/datum/action/xeno_action/activable/healer_sacrifice, //Fifth macro, the ultimate ability to sacrifice yourself
+		/datum/action/xeno_action/activable/healer_sacrifice, //Fifth macro, the ultimate ability to sacrifice ourselves
 	)
 
 	behavior_delegate_type = /datum/behavior_delegate/drone_healer

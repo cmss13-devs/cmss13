@@ -1,6 +1,6 @@
 /datum/xeno_strain/steel_crest
 	name = DEFENDER_STEELCREST
-	description = "You trade your tail sweep and a small amount of your slash damage for slightly increased headbutt knockback and damage and the ability to slowly move and headbutt while fortified. Along with this, you gain a unique ability to accumulate damage, and use it to recover a slight amount of health and refresh your tail slam."
+	description = "We trade our tail sweep and a small amount of our slash damage for slightly increased headbutt knockback and damage and the ability to slowly move and headbutt while fortified. Along with this, you gain a unique ability to accumulate damage, and use it to recover a slight amount of health and refresh our tail slam."
 	flavor_description = "This one, like my will, is indomitable. It will become my steel crest against all that defy me."
 	icon_state_prefix = "Steelcrest"
 
@@ -69,7 +69,7 @@
 
 	if(damage_accumulated >= damage_threshold)
 		addtimer(CALLBACK(src, PROC_REF(enraged), owner))
-		UnregisterSignal(owner, COMSIG_MOB_TAKE_DAMAGE) // Two Unregistersignal because if the enrage proc doesnt happen, then it needs to stop counting
+		UnregisterSignal(owner, COMSIG_MOB_TAKE_DAMAGE) // Two Unregistersignal because if the enrage proc doesn't happen, then it needs to stop counting
 
 /datum/action/xeno_action/onclick/soak/proc/stop_accumulating()
 	UnregisterSignal(owner, COMSIG_MOB_TAKE_DAMAGE)

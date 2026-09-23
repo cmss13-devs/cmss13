@@ -343,7 +343,6 @@
 /// Will return TRUE if reagents were deducted or no reagents were needed
 /obj/structure/machinery/cm_vending/sorted/medical/proc/try_deduct_chem(obj/item/reagent_container/container, mob/user)
 	var/missing_reagents = container.reagents.maximum_volume - container.reagents.total_volume
-	check_autoinjector_types(container)
 	if(missing_reagents <= 0)
 		return TRUE
 	if(!(is_type_in_list(container, chem_refill)))

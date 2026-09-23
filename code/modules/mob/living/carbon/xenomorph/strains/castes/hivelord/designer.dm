@@ -358,7 +358,7 @@
 
 /obj/effect/alien/resin/design/construct_node/attack_hand(mob/user)
 	if(!isxeno(user))
-		to_chat(user, SPAN_WARNING("We don't understand how to interact with this strange node."))
+		to_chat(user, SPAN_WARNING("You don't understand how to interact with this strange node."))
 		return
 
 	var/mob/living/carbon/xenomorph/xeno = user

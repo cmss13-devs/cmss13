@@ -281,7 +281,7 @@
 			human_to_update.update_xeno_hostile_hud()
 
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target_carbon, TRAIT_SOURCE_ABILITY("Oppressor Punch")), get_xeno_stun_duration(target_carbon, 1.2 SECONDS))
-		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[oppressor_user] has pinned us to the ground! We cannot move!"))
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[oppressor_user] has pinned you to the ground! You cannot move!"))
 	else
 		target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, damage), ARMOR_MELEE, BRUTE, target_limb? target_limb.name : "chest")
 		step_away(target_carbon, oppressor_user, 2)

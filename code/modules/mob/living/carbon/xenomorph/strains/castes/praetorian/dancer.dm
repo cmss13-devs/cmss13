@@ -577,7 +577,7 @@
 		dancer_user.visible_message(SPAN_XENODANGER("[dancer_user] trips [target_atom] with its tail!"), SPAN_XENODANGER("We trip [target_atom] with our tail!"))
 		dancer_user.spin_circle()
 		dancer_user.emote("tail")
-		to_chat(target_carbon, SPAN_XENOHIGHDANGER("We are swept off our feet by [dancer_user]!"))
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You are swept off your feet by [dancer_user]!"))
 	if(daze_duration > 0)
 		target_carbon.apply_effect(daze_duration, DAZE)
 	playsound(dancer_user, 'sound/effects/hit_kick.ogg', 75, 1)

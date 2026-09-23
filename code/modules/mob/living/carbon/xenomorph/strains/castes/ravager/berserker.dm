@@ -136,7 +136,7 @@
 
 	if(next_slash_buffed)
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We significantly strengthen our attack, slowing [target_carbon]!"))
-		to_chat(target_carbon, SPAN_XENOHIGHDANGER("We feel a sharp pain as [bound_xeno] slashes us, slowing us down!"))
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
 		target_carbon.apply_effect(get_xeno_stun_duration(target_carbon, slash_slow_duration), SLOW)
 		next_slash_buffed = FALSE
 

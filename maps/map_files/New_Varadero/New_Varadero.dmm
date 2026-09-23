@@ -41,6 +41,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/predship/tile/hunter_tile_6/west,
 /area/varadero/interior_protected/vessel)
+"aag" = (
+/obj/structure/blocker/invisible_wall/cloudblocker,
+/obj/structure/blocker/invisible_wall/cloudblocker,
+/turf/open_space,
+/area/sky)
 "aah" = (
 /obj/structure/bed/chair/hunter{
 	name = "alien chair";
@@ -8366,11 +8371,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/gm/dirt,
 /area/varadero/interior_protected/caves/digsite)
-"ayS" = (
-/obj/structure/blocker/cloudblocker,
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/coast/beachcorner/south_east,
-/area/varadero/exterior/farocean)
 "ayT" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 5
@@ -43003,8 +43003,17 @@
 "ckD" = (
 /obj/structure/closet/crate/ammo/alt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_box/magazine/m20a{
-	num_of_magazines = 3
+/obj/item/ammo_magazine/rifle/m20a{
+	pixel_x = -6;
+	pixel_y = 0
+	},
+/obj/item/ammo_magazine/rifle/m20a{
+	pixel_x = 1;
+	pixel_y = -6
+	},
+/obj/item/ammo_magazine/rifle/m20a{
+	pixel_x = 8;
+	pixel_y = 0
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
@@ -43642,8 +43651,17 @@
 "cmp" = (
 /obj/structure/closet/crate/green,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_box/magazine/m20a{
-	num_of_magazines = 3
+/obj/item/ammo_magazine/rifle/m20a{
+	pixel_x = 8;
+	pixel_y = 0
+	},
+/obj/item/ammo_magazine/rifle/m20a{
+	pixel_x = -6;
+	pixel_y = 0
+	},
+/obj/item/ammo_magazine/rifle/m20a{
+	pixel_x = 1;
+	pixel_y = -6
 	},
 /turf/open/hybrisa/street/sidewalk/south,
 /area/varadero/exterior/comms4)
@@ -46061,8 +46079,9 @@
 /obj/structure/machinery/conveyor{
 	dir = 8
 	},
-/obj/item/ammo_box/magazine/m20a{
-	num_of_magazines = 3
+/obj/item/ammo_magazine/rifle/m20a{
+	pixel_x = -6;
+	pixel_y = 0
 	},
 /turf/open/floor/plating/almayer,
 /area/varadero/interior/cargo)
@@ -46123,10 +46142,8 @@
 /obj/structure/machinery/conveyor{
 	dir = 8
 	},
-/obj/item/ammo_box/magazine/m20a{
-	num_of_magazines = 3
-	},
 /obj/structure/closet/crate/secure/ammo,
+/obj/item/ammo_box/magazine/m20a,
 /turf/open/floor/plating/almayer,
 /area/varadero/interior/cargo)
 "csF" = (
@@ -54364,23 +54381,6 @@
 	},
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/farocean)
-"cLl" = (
-/obj/structure/blocker/invisible_wall/water,
-/obj/item/lightstick/variant/planted,
-/obj/structure/prop/ice_colony/ground_wire{
-	name = "aquatic barrier";
-	desc = "A taut wire connected to two cable floats with inbuilt marking lights, below the surface of the water floats a large cable mesh going all the way down to the sea floor. While originally designed to keep out terrestrial sharks from public beaches, these days auqatic barriers such as this are most commonly used as cheap aquatic perimeter fencing instead."
-	},
-/obj/item/lightstick/red/spoke/planted{
-	pixel_x = 15;
-	pixel_y = -1;
-	unacidable = 1;
-	explo_proof = 1;
-	name = "aquatic barrier anchor";
-	desc = "A metal pole extending down to the sea floor below. Its connected to a large cable mesh, this one has a marking light installed atop it."
-	},
-/turf/open/gm/river/ocean/deep_ocean,
-/area/varadero/exterior/farocean)
 "cLm" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	name = "aquatic barrier";
@@ -54721,7 +54721,7 @@
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
 /area/sky)
 "cLW" = (
-/obj/structure/blocker/cloudblocker,
+/obj/structure/blocker/invisible_wall/cloudblocker,
 /turf/open_space,
 /area/sky)
 "cLX" = (
@@ -54787,7 +54787,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/sky/level4)
 "cMi" = (
-/obj/structure/blocker/cloudblocker,
+/obj/structure/blocker/invisible_wall/cloudblocker,
 /turf/open_space,
 /area/sky/level4)
 "cNb" = (
@@ -62192,7 +62192,6 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
 "iCi" = (
-/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirt/dark_brown/variant_3,
 /area/varadero/exterior/farocean)
 "iCy" = (
@@ -64838,11 +64837,6 @@
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_N)
-"kAb" = (
-/obj/structure/blocker/cloudblocker,
-/obj/structure/blocker/cloudblocker,
-/turf/open_space,
-/area/sky/level4)
 "kAl" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -64868,7 +64862,6 @@
 /turf/open/floor/plating/almayer,
 /area/varadero/interior/maintenance/north)
 "kCn" = (
-/obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirt/dark_brown,
 /area/varadero/exterior/farocean)
 "kCy" = (
@@ -68597,11 +68590,6 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
-"nJI" = (
-/obj/structure/blocker/cloudblocker,
-/obj/structure/blocker/cloudblocker,
-/turf/open_space,
-/area/sky)
 "nKd" = (
 /obj/structure/prop/turbine_extras,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -77747,7 +77735,7 @@
 /turf/open/gm/dirt/desert0,
 /area/varadero/exterior/monsoon)
 "uFE" = (
-/obj/structure/blocker/cloudblocker,
+/obj/structure/blocker/invisible_wall/cloudblocker,
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/farocean)
 "uFJ" = (
@@ -80711,7 +80699,6 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/maintenance/south)
 "wNG" = (
-/obj/structure/flora/jungle/vines/heavy,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/farocean)
 "wNV" = (
@@ -89413,7 +89400,7 @@ pGs
 pGs
 pGs
 akQ
-cbW
+akQ
 wNG
 akQ
 akQ
@@ -89604,11 +89591,11 @@ abt
 pGs
 pGs
 pGs
-bDY
+pGs
 dHI
 uhv
 cLK
-bWN
+pGs
 pGs
 pGs
 akQ
@@ -89994,10 +89981,10 @@ mPk
 pRa
 pRa
 pGs
-bWN
-cbW
-bWN
-bWN
+pGs
+akQ
+pGs
+pGs
 akQ
 akQ
 pGs
@@ -90189,7 +90176,7 @@ gtr
 bxP
 jCy
 kCn
-cbW
+akQ
 akQ
 akQ
 pGs
@@ -90382,7 +90369,7 @@ bxP
 ivy
 mUY
 iCi
-bWN
+pGs
 akQ
 pGs
 pGs
@@ -90574,7 +90561,7 @@ dRd
 bxP
 bxP
 iKC
-cbW
+akQ
 akQ
 pGs
 pGs
@@ -90765,8 +90752,8 @@ mPk
 qsp
 cLJ
 pGs
-bWN
-bWN
+pGs
+pGs
 pGs
 pGs
 pGs
@@ -91352,9 +91339,9 @@ pGs
 pGs
 pGs
 pGs
-pGs
-pGs
-pGs
+huF
+huF
+huF
 aOY
 cGE
 cFo
@@ -91544,9 +91531,9 @@ pGs
 pGs
 pGs
 pGs
-pGs
-pGs
-pGs
+huF
+huF
+huF
 huF
 adw
 adw
@@ -104978,7 +104965,7 @@ mPk
 mPk
 mPk
 mPk
-cLg
+bhw
 qwQ
 lTR
 pFZ
@@ -105552,11 +105539,11 @@ mPk
 mPk
 mPk
 mPk
-mPk
+vlm
 pRa
 bhw
 uYJ
-qwQ
+cKi
 kpe
 cFI
 cFI
@@ -106322,7 +106309,7 @@ mPk
 mPk
 mPk
 mPk
-cLl
+cLk
 qwQ
 lTR
 qwQ
@@ -107472,11 +107459,11 @@ mPk
 mPk
 mPk
 mPk
-mPk
+vlm
 mPk
 bhw
-cKi
-daS
+qwQ
+cKN
 lTR
 qwQ
 qwQ
@@ -107668,7 +107655,7 @@ mPk
 mPk
 cLm
 qwQ
-lTR
+daS
 qwQ
 qwQ
 cKi
@@ -118977,7 +118964,7 @@ abt
 "}
 (190,1,1) = {"
 dGr
-mPk
+uFE
 mPk
 mPk
 mPk
@@ -119169,7 +119156,7 @@ abt
 "}
 (191,1,1) = {"
 dGr
-mPk
+uFE
 mPk
 mPk
 mPk
@@ -119361,7 +119348,7 @@ abt
 "}
 (192,1,1) = {"
 dGr
-mPk
+uFE
 mPk
 mPk
 mPk
@@ -119553,7 +119540,7 @@ abt
 "}
 (193,1,1) = {"
 dGr
-mPk
+uFE
 mPk
 mPk
 mPk
@@ -119745,7 +119732,7 @@ abt
 "}
 (194,1,1) = {"
 dGr
-mPk
+uFE
 mPk
 mPk
 mPk
@@ -119937,7 +119924,7 @@ abt
 "}
 (195,1,1) = {"
 dGr
-mPk
+uFE
 mPk
 mPk
 mPk
@@ -120129,7 +120116,7 @@ abt
 "}
 (196,1,1) = {"
 dGr
-mPk
+uFE
 mPk
 mPk
 mPk
@@ -120321,7 +120308,7 @@ abt
 "}
 (197,1,1) = {"
 dGr
-mPk
+uFE
 mPk
 mPk
 mPk
@@ -122004,7 +121991,7 @@ pRa
 pRa
 pRa
 oTs
-ayS
+ymb
 pGs
 pGs
 pGs
@@ -139345,7 +139332,7 @@ tem
 tem
 tem
 tem
-cLW
+aag
 tem
 tem
 tem
@@ -157463,7 +157450,7 @@ cLW
 cLW
 cLW
 cLW
-nJI
+cLW
 cLW
 cLW
 cLW
@@ -159435,7 +159422,7 @@ cLW
 cLW
 cLW
 cLW
-cLW
+tem
 ezB
 ezB
 ezB
@@ -169329,7 +169316,7 @@ abr
 abr
 abr
 abr
-abs
+cMi
 cMi
 cMi
 cMi
@@ -185812,7 +185799,7 @@ abs
 abs
 abs
 abs
-cMi
+abs
 abs
 abs
 abs
@@ -191226,7 +191213,7 @@ abs
 abs
 abs
 abs
-cMi
+abs
 abs
 abs
 abs
@@ -191415,10 +191402,10 @@ abs
 abs
 abs
 abs
-cMi
-cMi
-cMi
-cMi
+abs
+abs
+abs
+abs
 abs
 abs
 abs
@@ -191607,10 +191594,10 @@ abs
 abs
 abs
 abs
-cMi
-cMi
 abs
-cMi
+abs
+abs
+abs
 abs
 abs
 abs
@@ -191764,7 +191751,6 @@ abs
 abs
 abs
 abs
-cMi
 abs
 abs
 abs
@@ -191784,13 +191770,6 @@ abs
 abs
 abs
 abs
-cMi
-cMi
-cMi
-cMi
-cMi
-cMi
-cMi
 abs
 abs
 abs
@@ -191799,7 +191778,15 @@ abs
 abs
 abs
 abs
-cMi
+abs
+abs
+abs
+abs
+abs
+abs
+abs
+abs
+abs
 abs
 abs
 abs
@@ -191970,22 +191957,22 @@ abs
 abs
 abs
 abs
-cMi
-cMi
-abs
-abs
-abs
-cMi
-cMi
-abs
-abs
-cMi
 abs
 abs
 abs
 abs
-cMi
-cMi
+abs
+abs
+abs
+abs
+abs
+abs
+abs
+abs
+abs
+abs
+abs
+abs
 abs
 abs
 abs
@@ -192162,12 +192149,6 @@ abs
 abs
 abs
 abs
-cMi
-abs
-abs
-abs
-abs
-cMi
 abs
 abs
 abs
@@ -192177,7 +192158,13 @@ abs
 abs
 abs
 abs
-cMi
+abs
+abs
+abs
+abs
+abs
+abs
+abs
 abs
 abs
 abs
@@ -192353,8 +192340,8 @@ abs
 abs
 abs
 abs
-cMi
-cMi
+abs
+abs
 abs
 abs
 abs
@@ -192539,13 +192526,13 @@ abs
 abs
 abs
 abs
-cMi
 abs
 abs
 abs
 abs
-cMi
-cMi
+abs
+abs
+abs
 abs
 abs
 abs
@@ -192725,12 +192712,6 @@ abs
 abs
 abs
 cMi
-cMi
-cMi
-cMi
-cMi
-cMi
-cMi
 abs
 abs
 abs
@@ -192761,9 +192742,15 @@ abs
 abs
 abs
 abs
-cMi
-cMi
-cMi
+abs
+abs
+abs
+abs
+abs
+abs
+abs
+abs
+abs
 abs
 abs
 abs
@@ -192917,9 +192904,9 @@ abs
 abs
 abs
 cMi
-cMi
-cMi
-cMi
+abs
+abs
+abs
 abs
 abs
 abs
@@ -194105,9 +194092,9 @@ abs
 abs
 abs
 abs
-cMi
-cMi
-cMi
+abs
+abs
+abs
 abs
 abs
 abs
@@ -194260,7 +194247,6 @@ abs
 abs
 abs
 abs
-cMi
 abs
 abs
 abs
@@ -194297,9 +194283,10 @@ abs
 abs
 abs
 abs
-cMi
 abs
-cMi
+abs
+abs
+abs
 abs
 abs
 abs
@@ -194489,9 +194476,9 @@ abs
 abs
 abs
 abs
-cMi
 abs
-cMi
+abs
+abs
 abs
 abs
 abs
@@ -194681,9 +194668,9 @@ abs
 abs
 abs
 abs
-cMi
 abs
-cMi
+abs
+abs
 abs
 abs
 abs
@@ -194873,9 +194860,9 @@ abs
 abs
 abs
 abs
-cMi
 abs
-cMi
+abs
+abs
 abs
 abs
 abs
@@ -195065,9 +195052,9 @@ abs
 abs
 abs
 abs
-cMi
 abs
-cMi
+abs
+abs
 abs
 abs
 abs
@@ -195257,9 +195244,9 @@ abs
 abs
 abs
 abs
-cMi
 abs
-cMi
+abs
+abs
 abs
 abs
 abs
@@ -195449,9 +195436,9 @@ abs
 abs
 abs
 abs
-cMi
 abs
-cMi
+abs
+abs
 abs
 abs
 abs
@@ -195641,9 +195628,9 @@ abs
 abs
 abs
 abs
-cMi
-cMi
-cMi
+abs
+abs
+abs
 abs
 abs
 abs
@@ -196793,8 +196780,8 @@ abs
 abs
 abs
 abs
-cMi
-cMi
+abs
+abs
 abs
 abs
 abs
@@ -196984,9 +196971,9 @@ abs
 abs
 abs
 abs
-cMi
-cMi
-cMi
+abs
+abs
+abs
 abs
 abs
 abs
@@ -198329,7 +198316,7 @@ abs
 abs
 abs
 abs
-cMi
+abs
 abs
 abs
 abs
@@ -198520,9 +198507,9 @@ abs
 abs
 abs
 abs
-cMi
-cMi
-cMi
+abs
+abs
+abs
 abs
 abs
 abs
@@ -198712,9 +198699,9 @@ abs
 abs
 abs
 abs
-cMi
 abs
-cMi
+abs
+abs
 abs
 abs
 abs
@@ -198904,9 +198891,9 @@ abs
 abs
 abs
 abs
-cMi
 abs
-cMi
+abs
+abs
 abs
 abs
 abs
@@ -199095,10 +199082,10 @@ abs
 abs
 abs
 abs
-cMi
-cMi
 abs
-cMi
+abs
+abs
+abs
 abs
 abs
 abs
@@ -199287,10 +199274,10 @@ abs
 abs
 abs
 abs
-cMi
 abs
 abs
-cMi
+abs
+abs
 abs
 abs
 abs
@@ -199478,12 +199465,12 @@ abs
 abs
 abs
 abs
-cMi
-cMi
 abs
 abs
-cMi
-cMi
+abs
+abs
+abs
+abs
 abs
 abs
 abs
@@ -199671,10 +199658,6 @@ cMi
 cMi
 cMi
 cMi
-abs
-abs
-abs
-abs
 cMi
 cMi
 cMi
@@ -199688,7 +199671,11 @@ cMi
 cMi
 cMi
 cMi
-kAb
+cMi
+cMi
+cMi
+cMi
+cMi
 cMi
 cMi
 cMi

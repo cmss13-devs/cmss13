@@ -1,3 +1,14 @@
+/obj/item/dead_bird
+	name = "dead bird"
+	desc = "A bird with a bullet hole in it. It appears to have ignored the warning shot."
+	icon = 'icons/mob/animal.dmi'
+	icon_state = "parrot_dead"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/animal.dmi',
+		WEAR_R_HAND = 'icons/mob/animal.dmi',
+	)
+	w_class = SIZE_SMALL
+
 /obj/item/bananapeel
 	name = "banana peel"
 	desc = "A peel from a banana."

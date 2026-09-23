@@ -526,12 +526,13 @@
 /*
 // HOW TO MAKE A CUSTOM AUDIO LOG TAPE
 // for spawning on maps or putting in the loadout tape recorder
-// done by example
+// done by example, read the "recordingtest" tape to get a clear example
 // typepath here, make sure to make it a subtype of audio_log
 /obj/item/tape/audio_log/example
 // do name desc and icon state here
 // these are the lines that will be said on the tape. Put them in the provided format for speech, and you can do whatever you like with other sounds
 // remember that you can make the recorder say ANYTHING
+// but it helps to keep messages short, and space them out, and keep names short too.
 	storedinfo = list(
 		"\[00:03\] Dana Summy says, \"Okay\"" ,
 		"\[00:05\] Alaina Suni says, \"Sure\"",
@@ -580,7 +581,7 @@ GLOBAL_LIST_INIT(markup_tags, list("/" = list("<i>", "</i>"),
 	icon_state = "cassette_worstmap" // rename this to your icon state
 
 //the default chinook tape
-/obj/item/tape/audio_log/recordingtest //mostly exists as an example to contributors how to add their own tapes.
+/obj/item/tape/audio_log/recordingtest //mostly exists as an example to contributors how to add their own tapes. A lot of the messages here are too long to be displayed cleanly in overhead chat, sadly.
 	name = "Poorly Scribbled-on Tape"
 	desc = "Despite the lacklustre inscription written into adhesive painter's tape, the cassette seems brand new. \nThe guy from that PX might've given this to you so you can figure out what to do with this junk you've bought..."
 	icon_state = "cassette_gray"

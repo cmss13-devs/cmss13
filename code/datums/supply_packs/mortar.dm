@@ -74,9 +74,10 @@
 	group = "Mortar"
 
 /datum/supply_packs/ammo_mortar_he_plus
-	name = "M402 HCHE mortar crate (x3 HE+)"
+	name = "M402 HCHE mortar crate (x4 HE+)"
 	cost = 45
 	contains = list(
+		/obj/item/mortar_shell/heplus,
 		/obj/item/mortar_shell/heplus,
 		/obj/item/mortar_shell/heplus,
 		/obj/item/mortar_shell/heplus,
@@ -99,7 +100,7 @@
 	group = "Mortar"
 
 /datum/supply_packs/ammo_mortar_thermobarics
-	name = "M402 SFAE-Vacuum mortar shell (x6 Thermobarics)"
+	name = "M402 SFAE-Vacuum mortar shell (x4 Thermobarics)"
 	cost = 30
 	contains = list(
 		/obj/item/mortar_shell/incendiary/thermobaric,

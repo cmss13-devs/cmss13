@@ -1,0 +1,6 @@
+author: "Antlers"
+delete-after: True
+changes:
+  - rscadd: "Pill bottles can now be broken open by knives and other sharp objects, breaking them and spilling their pills out onto the floor"
+  - rscadd: "Pill bottles can be fixed by using a wirecutter to pinch and bend the lid back into place with the correct medical skill (surgery >=1)"
+  - bugfix: "Humans without the necessary medical skill can no longer scoop up pills from the ground into pill bottles"

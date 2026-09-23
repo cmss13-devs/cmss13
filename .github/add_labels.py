@@ -47,6 +47,8 @@ def get_labels(pr):
     labels = {}
     failed = False
 
+    print("::error :: Rawr!")
+
     files = pr.get_files()
     for file in files:
         prefix = file.filename.split(".")[-1]

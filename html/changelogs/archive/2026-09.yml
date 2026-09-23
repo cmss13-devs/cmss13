@@ -220,3 +220,52 @@
       resting by click-dragging their sprite onto the hole
   Drathek:
   - bugfix: Fixed a div by zero runtime with explosion properties at level 0
+2026-09-21:
+  Kugamo:
+  - rscadd: ' xenos can now track their KING in their HUD compass'
+  Mary-Marilyn:
+  - qol: Examining a character now shows their body type and a rough estimate of their
+      age.
+2026-09-22:
+  Drathek:
+  - balance: Synth and CO survivors now respect the normal survivor limit
+  - admin: Ported various VV, protection, and SDQL differences from TG
+  Kugamo:
+  - rscadd: Flayed corpses no longer identifiable by name.
+  - spellcheck: Wording of examined humans' age, size, and build streamlined.
+  Mary-Marilyn:
+  - rscadd: Humans can now destroy metal ledges with welding tools and rock ledges
+      with shovels or entrenching tools.
+  - rscadd: Added a pamphlet introducing new players to the setting and major factions.
+      There are also a few strewn throughout the Almayer.
+  MistChristmas:
+  - bugfix: Dual fire Dual Wielding works again.
+  Onetoughcreampuff:
+  - rscadd: Added requested mentor autoresponses
+  PoltavskaPraca:
+  - rscadd: 'Can now disable right click menu in the preferences -> settings, left
+      upper corner: Right-click Contextual Menu. It is ON by default. Can even shoot
+      and do a lot of stuff with RMB instead of LMB.'
+  Steelpoint:
+  - bugfix: Reinforced woden window frames will now be visible in game. They were
+      previously invisible.
+  Unknownity:
+  - balance: Predaliens and Kings are now able to pry open locked dropships and containment
+      airlocks.
+  - balance: Predaliens and Kings are now able to lock the dropship but cannot start
+      hijack on their own.
+  - balance: King can now disable the lifeboats along with the Queen and Predalien.
+  - balance: ERT Shuttles' airlocks are now reinforced but can be forced open by Queens/Predaliens/Kings
+      and their consoles can also now be disabled by them.
+  cuberound:
+  - bugfix: larvas stop getting extra evo points over their threshold as every other
+      caste if queen does not enter ovi for over 3 minutes roundstart
+  labeo0:
+  - qol: Allows setting up fax backpack by clicking a table
+  - bugfix: Facehuggers/larvas can no longer scuttle under doors with placed barricades
+      to bypass them.
+  - bugfix: Facehuggers can no longer click-hug humans lying down behind the barricades
+  ori-disillusion-mirnov:
+  - bugfix: runtime when trying to add and remove the ahelp verb from a dummy client
+  osaka-fuuri:
+  - rscadd: Added 'Strain Information' Verb

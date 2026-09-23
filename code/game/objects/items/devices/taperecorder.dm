@@ -339,7 +339,7 @@
 /obj/item/device/taperecorder/colony/get_examine_text(mob/user)
 	. = ..()
 	if(!mytape)
-		desc += "\nLooks like the tape fell out somewhere. You'll have to find a new one, somewhere. The colony might be a good bet..."
+		. += SPAN_HELPFUL("\nLooks like the tape fell out. You'll have to find a new one. Somewhere on the colony might be a good bet...")
 
 /obj/item/device/taperecorder/colony/empty
 	starting_tape_type = null
@@ -349,7 +349,7 @@
 /// do not use on maps, only in player loadouts.
 /obj/item/device/taperecorder/colony/loadout
 	name = "\improper Seegson C36 tape recorder"
-	desc = "A cheap plastic C-Series tape recorder, mass produced by Seegson for distribution all over civilised space. To save on money, they cannot print transcripts of their tapes. You bought this one in a PX on Chinook before setting off."
+	desc = "A cheap plastic C-Series tape recorder, mass produced by Seegson for distribution all over civilised space. To save on money, they cannot print transcripts of their tapes. You probably bought this one in a PX on Chinook before setting off."
 	/// list of typepaths for lore tapes
 	var/list/lore_tapes = list()
 	starting_tape_type = null
@@ -523,7 +523,6 @@
 	icon_state = "cassette_regulation"
 
 
-
 /*
 // HOW TO MAKE A CUSTOM AUDIO LOG TAPE
 // for spawning on maps or putting in the loadout tape recorder
@@ -534,19 +533,19 @@
 // these are the lines that will be said on the tape. Put them in the provided format for speech, and you can do whatever you like with other sounds
 // remember that you can make the recorder say ANYTHING
 	storedinfo = list(
-		"\[00:03] Dana Summy says, \"Okay\"" ,
-		"\[00:05] Alaina Suni says, \"Sure\"",
-		"\[00:06] Dana Summy says, \"Yes\"",
-		"\[00:08] *gunshots*",
+		"\[00:03\] Dana Summy says, \"Okay\"" ,
+		"\[00:05\] Alaina Suni says, \"Sure\"",
+		"\[00:06\] Dana Summy says, \"Yes\"",
+		"\[00:08\] *gunshots*",
 	)
 // these are the timestamps of the above messages, put in the same order as you put the timestamps ideally
 // if you need two messages to play immediately after each other make their timestamps the same
 // these timestamps are in TICKS (1/10ths of a second)
 	timestamp = list(
 		30,
-		50,
 		60,
-		80,
+		90,
+		120,
 	)
 // how much of the tape has been used up
 // make this the biggest number on the timestamp list or 10 MINUTES if you don't want anything more to be recorded on the side.
@@ -568,3 +567,71 @@
 	unacidable = TRUE // so that xenos can't delete the map lore >:(
 	flags_obj = NO_FLAGS // we don't want players fucking up the item
 	icon_state = "cassette_worstmap" // rename this to your icon state
+
+//the default chinook tape
+/obj/item/tape/audio_log/recordingtest //mostly exists as an example to contributors how to add their own tapes.
+	name = "Poorly Scribbled-on Tape"
+	desc = "Despite the lacklustre inscription written into adhesive painter's tape, the cassette seems brand new. \nThe guy from that PX might've given this to you so you can figure out what to do with this junk you've bought..."
+	icon_state = "cassette_gray"
+	item_state = "cassette_gray"
+	storedinfo = list(
+		"\[00:03\] A tired, gravelly voice says, \"Okay...\"",
+		"\[00:04\] A tired, gravelly voice says, \"If you're hearing this,\"",
+		"\[00:05\] A tired, gravelly voice says, \"you've probably bought a Seegson C36 from the post-exchange at '91- and-\"",
+		"\[00:06\] A tired, gravelly voice says, \"You're prob'bly real curious about how this thing works,\"",
+		"\[00:07\] A tired, gravelly voice says, \"y'aced your ASVAB 'n y'think you're a reaaaal smart guy-\"",
+		"\[00:08\] A tired, gravelly voice says, \"so y'jammed the tape in like an ape, scratches your ass, and got started.\"",
+		"\[00:09\] *shuffling, and plastic dropping*",
+		//pause the timestamp for 80 ticks (8 seconds) #7
+		"\[00:13\] A tired, gravelly voice says, \"<b>Shit</b>, where'd I leave it?\"",
+		//pause the timestamp for another 60 ticks (6 seconds) #9
+		"\[00:16\] *more shuffling, and the sounds of paper*",
+		//return to 30 tick delays
+		"\[00:17\] A tired, gravelly voice says, \"Okay. Hi. My name's Mark,\"",
+		"\[00:18\] A tired, gravelly voice says, \"and I'm gonna teach you how you use your beautiful C36 to listen to the world.\"",
+		"\[00:19\] Mark(?) says, \"Sieg 'n Son's real pleased you bought the budget spaceman from us,\"",
+		"\[00:20\] Mark(?) says, \"But we <b>cut</b> the shit, so we'll tell you how it is.\"",
+		"\[00:22\] Mark(?) says, \"First things first- this shit don't record.\"",
+		"\[00:24\] Mark(?) says, \"It's busted, 'n Seegson's too busy making creepy mannequins-\"",
+		"\[00:26\] Mark(?) says, \"to make this thing worth the dollar or two it took you to wrest it from our shelves-\"",
+		"\[00:28\] Mark(?) says, \"So if you wanna listen to stuff,\"",
+		"\[00:30\] Mark(?) says, \"y'better've packed tapes for where-ever you're being deployed next, \"",
+		"\[00:31\] Mark(?) says, \"or find some if you're unlucky.\"",
+		"\[00:34\] Mark(?) says, \"'n Remember, if you're a Solar Devil, drinks're free at the light-bar.\"",
+		"\[00:36\] Mark(?) says, \"If you're a Falling Falcon... Do like birds do, and <i>flock off.</i>\"",
+		"\[00:41\] Mark(?) says, \"That concludes your orientation, private.\"",
+		"\[00:42\] Mark(?) says, \"Go make your ears bleed 'n your OMO cry.\"",
+		//total of 22 messages
+	)
+
+	//You typically want speaking messages spaced out by at least 30 ticks (3 seconds),
+	//but if you want to surprise the player with a hectic situation, try combining multiple messages in 10-20 tick spans.
+
+	//I recommend making the timestamp to a log **last**, and placing your gaps and pauses in the timestamps inside the storedinfo.
+	//This way you have an easier time writing all these numbers, and don't come back to rewrite them every time.
+	//Also, if you're anything like me, just spacebar and ctrl+H the commas in after.
+	timestamp = list(
+		30,
+		60,
+		90,
+		120,
+		150,
+		180,
+		210,
+		240,
+		320,
+		350,
+		410,
+		440,
+		470,
+		500,
+		530,
+		560,
+		590,
+		620,
+		650,
+		680,
+		710,
+		740,
+		770,
+	)

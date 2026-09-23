@@ -254,7 +254,7 @@
 			break
 
 		var/list/heard = get_mobs_in_view(GLOB.world_view_size, src)
-		langchat_speech(mytape.storedinfo[i], heard, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
+		langchat_speech(mytape.storedinfo[i], heard, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"), unlock_length = TRUE)
 
 		audible_message(SPAN_MAROON("[icon2html(src, usr)] [mytape.storedinfo[i]]"))//We want to display this properly, don't double encode
 		if(length(mytape.storedinfo) < i + 1)
@@ -611,7 +611,7 @@ GLOBAL_LIST_INIT(markup_tags, list("/" = list("<i>", "</i>"),
 		"\[00:31\] Mark(?) says, \"or find some if you're unlucky.\"",
 		"\[00:34\] Mark(?) says, \"'n Remember, if you're a Solar Devil, drinks're free at the light-bar.\"",
 		"\[00:36\] Mark(?) says, \"If you're a Falling Falcon... Do like birds do, and <i>flock off.</i>\"",
-		"\[00:41\] Mark(?) says, \"That concludes your orientation, private.\"",
+		"\[00:41\] Mark(?) says, \"That concludes your orientation.\"",
 		"\[00:42\] Mark(?) says, \"Go make your ears bleed 'n your OMO cry.\"",
 		//total of 22 messages
 	)

@@ -140,7 +140,7 @@
 	var/percentage_acid = round((acid_amount / max_acid) * 100, 10)
 	var/percentage_acid_cap = round((acid_gen_cap /max_acid) * 100, 10)
 	if(percentage_acid)
-		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_acid]")
+		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_acid].")
 	if(acid_amount >= acid_gen_cap)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "cap[percentage_acid_cap]")
 

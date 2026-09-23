@@ -276,8 +276,8 @@
 
 		if(bound_xeno.can_not_harm(target_carbon, check_hive_flags=FALSE)) // We manually check hive_flags later
 			bound_xeno.animation_attack_on(bound_xeno)
-			bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]"),
-			SPAN_XENONOTICE("We nibble [bound_xeno]"))
+			bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]."),
+			SPAN_XENONOTICE("We nibble [bound_xeno]."))
 			return XENO_ATTACK_ACTION
 
 		if(bound_xeno.behavior_delegate && bound_xeno.behavior_delegate.handle_slash(bound_xeno))
@@ -298,17 +298,17 @@
 			if(embryo_allied)
 				if(HAS_TRAIT(bound_xeno, TRAIT_NESTED))
 					bound_xeno.animation_attack_on(target_carbon)
-					bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]"),
+					bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]."),
 					SPAN_XENONOTICE("ATTACK!!!! Oh- [target_carbon] has a sister inside..."))
 					return XENO_NO_DELAY_ACTION
 				if(!HAS_FLAG(bound_xeno.hive.hive_flags, XENO_SLASH_INFECTED))
 					bound_xeno.animation_attack_on(target_carbon)
-					bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]"),
+					bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]."),
 					SPAN_XENONOTICE("ATTACK!!!! Oh- [target_carbon] has a sister inside..."))
 					return XENO_ATTACK_ACTION
 			if(!HAS_FLAG(bound_xeno.hive.hive_flags, XENO_SLASH_NORMAL))
 				bound_xeno.animation_attack_on(target_carbon)
-				bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]"),
+				bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]."),
 				SPAN_XENONOTICE("ATTACK!!!! Wait- we're not allowed to attack hosts anymore..."))
 				return XENO_ATTACK_ACTION
 		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] fumbles stupidly for a moment, then slashes [target_carbon]!"),

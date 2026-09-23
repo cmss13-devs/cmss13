@@ -368,7 +368,7 @@
 
 	var/total_plasma_cost = get_total_plasma_cost(xeno)
 	if(xeno.plasma_stored < total_plasma_cost)
-		to_chat(xeno, SPAN_WARNING("You lack the plasma to feed this node. [xeno.plasma_stored]/[total_plasma_cost]"))
+		to_chat(xeno, SPAN_WARNING("You lack the plasma to feed this node. [xeno.plasma_stored]/[total_plasma_cost]."))
 		return
 
 	xeno.plasma_stored -= total_plasma_cost
@@ -463,7 +463,7 @@
 	if(isxeno(user) || isobserver(user))
 		var/mob/living/carbon/xenomorph/xeno = user
 		var/total_plasma_cost = get_total_plasma_cost(xeno)
-		. += SPAN_NOTICE("You sense that feeding [SPAN_BOLDNOTICE("[total_plasma_cost]")] plasma with our hand to this node will secrete a [SPAN_BOLDNOTICE("[mark_meaning]")], you also heard that using plasma fruit works too.")
+		. += SPAN_NOTICE("You sense that feeding [SPAN_BOLDNOTICE("[total_plasma_cost].")] plasma with our hand to this node will secrete a [SPAN_BOLDNOTICE("[mark_meaning].")], you also heard that using plasma fruit works too.")
 
 //Should not be upgradable because it's not "stable" but special actions should create thick variant
 /turf/closed/wall/resin/weedbound //NEVER use this variant, use subtypes

@@ -267,6 +267,8 @@
 	new /obj/item/mortar_shell/flare(src)
 	new /obj/item/mortar_shell/flare(src)
 	new /obj/item/tool/wrench(src)
+	new /obj/item/device/encryptionkey/jtac(src)
+	new /obj/item/device/encryptionkey/jtac(src)
 	new /obj/item/device/binoculars/range(src)
 	new /obj/item/device/binoculars/range/designator(src)
 	new /obj/item/storage/backpack/marine/satchel/rto(src)

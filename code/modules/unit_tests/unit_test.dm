@@ -181,7 +181,7 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 		test.log_for_test(text, "error", file, line)
 
 		// Normal log message
-		log_entry += "\tFAILURE #[reasonID]: [text] at [file]:[line]"
+		log_entry += "\t[test_path]::FAILURE #[reasonID]: [text] at [file]:[line]"
 
 	var/message = log_entry.Join("\n")
 	log_test(message)
@@ -206,7 +206,7 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 			test.log_for_test(text, "warning", file, line)
 
 			// Normal log message
-			log_entry += "\tWARNING #[reasonID]: [text] at [file]:[line]"
+			log_entry += "\t[test_path]::WARNING #[reasonID]: [text] at [file]:[line]"
 
 		var/warn_messages = log_entry.Join("\n")
 		log_test(warn_messages)

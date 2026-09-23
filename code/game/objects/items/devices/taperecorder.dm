@@ -581,7 +581,7 @@ GLOBAL_LIST_INIT(markup_tags, list("/" = list("<i>", "</i>"),
 	icon_state = "cassette_worstmap" // rename this to your icon state
 
 //the default chinook tape
-/obj/item/tape/audio_log/recordingtest //mostly exists as an example to contributors how to add their own tapes. A lot of the messages here are too long to be displayed cleanly in overhead chat, sadly.
+/obj/item/tape/audio_log/recordingtest //mostly exists as an example to contributors how to add their own tapes. character limits per langchat line are currently 128, which is about where the longest messages in this storedinfo are at. Try and use this as a guidepost.
 	name = "Poorly Scribbled-on Tape"
 	desc = "Despite the lacklustre inscription written into adhesive painter's tape, the cassette seems brand new. \nThe guy from that PX might've given this to you so you can figure out what to do with this junk you've bought..."
 	icon_state = "cassette_gray"

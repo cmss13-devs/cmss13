@@ -594,7 +594,7 @@ GLOBAL_LIST_INIT(markup_tags, list("/" = list("<i>", "</i>"),
 		"\[00:08\] A tired, gravelly voice says, \"so y'jammed the tape in like an ape, scratches your ass, and got started.\"",
 		"\[00:09\] *shuffling, and plastic dropping*",
 		//pause the timestamp for 80 ticks (8 seconds) #7
-		"\[00:13\] A tired, gravelly voice says, \"<b>Shit</b>, where'd I leave it?\"",
+		"\[00:13\] A tired, gravelly voice says, \"<b>Shit</b>, where'd I leave it?\"", // <b> ... </b> bolds the message when displayed, look above for more info.
 		//pause the timestamp for another 60 ticks (6 seconds) #9
 		"\[00:16\] *more shuffling, and the sounds of paper*",
 		//return to 30 tick delays

@@ -558,6 +558,17 @@
 	[00:08] *gunshots*
 	End of recording.
 	Playback stopped.
+
+// Lastly, a reminder about markup
+
+// Global list for mark-up REGEX tag collection.
+GLOBAL_LIST_INIT(markup_tags, list("/" = list("<i>", "</i>"),
+						"*" = list("<b>", "</b>"),
+						"~" = list("<strike>", "</strike>"),
+						"_" = list("<u>", "</u>")))
+
+<b>, <i>, <strike>, and <u> will all work to bold, italicize, strike and underline your scripts. Use them well!
+
 // have fun!
 */
 

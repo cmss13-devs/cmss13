@@ -1,6 +1,6 @@
 /datum/xeno_strain/eggsac
 	name = CARRIER_EGGSAC
-	description = "In exchange for our ability to store huggers and place traps, you gain larger plasma stores, strong pheromones, and the ability to lay eggs by using our plasma stores. In addition, you can now carry twelve eggs at once and can place eggs one pace further than normal. \n\nWe can also place a small number of fragile eggs on normal weeds. These eggs have a lifetime of five minutes while you remain within 14 tiles. Or one minute if you leave this range."
+	description = "In exchange for our ability to store huggers and place traps, we gain larger plasma stores, strong pheromones, and the ability to lay eggs by using our plasma stores. In addition, we can now carry twelve eggs at once and can place eggs one pace further than normal. \n\nWe can also place a small number of fragile eggs on normal weeds. These eggs have a lifetime of five minutes while we remain within 14 tiles, or one minute if we leave this range."
 	flavor_description = "An egg is always an adventure; the next one may be different."
 	icon_state_prefix = "Eggsac"
 
@@ -120,7 +120,7 @@
 			if(egg_generation_progress >= 15)
 				egg_generation_progress = 0
 				xeno.eggs_cur++
-				to_chat(xeno, SPAN_XENONOTICE("We generate an egg. Now sheltering: [xeno.eggs_cur] / [xeno.eggs_max]."))
+				to_chat(xeno, SPAN_XENONOTICE("We generate an egg. Now sheltering: [xeno.eggs_cur] / [xeno.eggs_max]"))
 				xeno.behavior_delegate?.on_update_icons()
 
 #undef EGGSAC_OFF_WEED_EGGCAP

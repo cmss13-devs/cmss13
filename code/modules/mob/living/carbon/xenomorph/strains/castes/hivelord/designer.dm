@@ -1,7 +1,7 @@
 /datum/xeno_strain/designer
 	name = HIVELORD_DESIGNER
-	description = "We give up direct resin building, lose some plasma and health, but gain stronger pheromones and longer vision. We can place up to 36 design nodes: optimized nodes boost building by 50%, flexible nodes reduce plasma cost by 50%, and construct nodes allow anyone to donate plasma to build weedbound resin walls or doors, even on surfaces where we can't normally build. Some castes like hivelord, carrier, burrower and queen can stimulate construct nodes to make thick weedbound variant including plasma fruit. We can mark nodes as walls or doors, remotely thicken structures, control doors, and remove nodes. Using Greater Resin Surge turns all design nodes into weaker reflective walls for temporary hive defense. Our tackle is slightly stronger, causing longer knockdowns."
-	flavor_description = "We are hive's designer, while you no longer build with our own claws, our influence shapes the very foundation of the swarm, allowing it to expand and adapt beyond limits."
+	description = "We give up direct resin building and lose some plasma and health to gain stronger pheromones and longer vision. We can place up to 36 design nodes: optimized nodes boost building by 50%, flexible nodes reduce plasma cost by 50%, and construct nodes allow anyone to donate plasma to build weedbound resin walls or doors, even on surfaces where we can't normally build. Some castes like hivelord, carrier, burrower and queen can stimulate construct nodes to make thick weedbound variants, including plasma fruits. We can mark nodes as walls or doors and remotely thicken structures, control doors, and remove nodes. Using Greater Resin Surge turns all design nodes into weaker reflective walls for temporary hive defense. Our tackle is slightly stronger, causing longer knockdowns."
+	flavor_description = "We are hive's designer, while we no longer build with our own claws, our influence shapes the very foundation of the swarm, allowing it to expand and adapt beyond limits."
 	icon_state_prefix = "Designer"
 
 	actions_to_remove = list(
@@ -368,7 +368,7 @@
 
 	var/total_plasma_cost = get_total_plasma_cost(xeno)
 	if(xeno.plasma_stored < total_plasma_cost)
-		to_chat(xeno, SPAN_WARNING("We lack the plasma to feed this node. [xeno.plasma_stored]/[total_plasma_cost]."))
+		to_chat(xeno, SPAN_WARNING("We need [total_plasma_cost - xeno.plasma_stored] more plasma to feed this node."))
 		return
 
 	xeno.plasma_stored -= total_plasma_cost
@@ -463,12 +463,12 @@
 	if(isxeno(user) || isobserver(user))
 		var/mob/living/carbon/xenomorph/xeno = user
 		var/total_plasma_cost = get_total_plasma_cost(xeno)
-		. += SPAN_NOTICE("We sense that feeding [SPAN_BOLDNOTICE("[total_plasma_cost].")] plasma with our hand to this node will secrete a [SPAN_BOLDNOTICE("[mark_meaning].")], you also heard that using plasma fruit works too.")
+		. += SPAN_NOTICE("We sense that feeding [SPAN_BOLDNOTICE("[total_plasma_cost]")] plasma with our hand to this node will secrete a [SPAN_BOLDNOTICE("[mark_meaning]")]. We also heard that using plasma fruit works too.")
 
 //Should not be upgradable because it's not "stable" but special actions should create thick variant
 /turf/closed/wall/resin/weedbound //NEVER use this variant, use subtypes
 	name = "weedbound resin wall"
-	desc = "An oddly solidified resin wall with a layered pattern that reminds you of flower buds."
+	desc = "An oddly solidified resin wall with a layered pattern that reminds us of flower buds."
 	icon_state = "weedboundresin"
 	walltype = WALL_WEEDBOUND_RESIN
 
@@ -536,7 +536,7 @@
 
 /turf/closed/wall/resin/weedbound/thick
 	name = "thick weedbound resin wall"
-	desc = "An oddly solidified thick resin wall with a layered pattern that reminds you of flower buds."
+	desc = "An oddly solidified thick resin wall with a layered pattern that reminds us of flower buds."
 	icon_state = "thickweedboundresin"
 	damage_cap = HEALTH_WALL_XENO_THICK
 	walltype = WALL_THICK_WEEDBOUND_RESIN
@@ -647,7 +647,7 @@
 /obj/effect/alien/resin/sticky/weak_nutriplasm/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user))
-		. += SPAN_NOTICE("On closer examination, this thin, sticky substance reminds you of sticky resin.")
+		. += SPAN_NOTICE("On closer examination, this thin, sticky substance reminds us of sticky resin.")
 	if(isxeno(user) || isobserver(user))
 		. += SPAN_NOTICE("We stare at the remains of weedbound walls - nutriplasm. As edible as it sounds, it's just another kind of sticky resin.")
 
@@ -660,9 +660,9 @@
 /obj/effect/alien/resin/sticky/strong_nutriplasm/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user))
-		. += SPAN_NOTICE("On closer examination, this thick, sticky substance reminds you of sticky resin.")
+		. += SPAN_NOTICE("On closer examination, this thick, sticky substance reminds us of sticky resin.")
 	if(isxeno(user) || isobserver(user))
-		. += SPAN_NOTICE("We stare at thick nutriplasm, the remains from weedbound resin, it sound delicious but you remember, its just different sticky resin.")
+		. += SPAN_NOTICE("We stare at thick nutriplasm, the remains from weedbound resin. It sound delicious, but remember, its just a different flavor of sticky resin.")
 
 /obj/effect/alien/resin/design/upgrade
 	name = "Thicken Resin (60)"
@@ -673,7 +673,7 @@
 
 /obj/effect/alien/resin/design/remove
 	name = "Remove Design Node (25)"
-	desc = "Channel our plasma to revert design node back to weeds."
+	desc = "Channel our plasma to revert design nodes back to weeds."
 	icon = 'icons/mob/hud/actions_xeno.dmi'
 	icon_state = "remove_node"
 	plasma_cost = 25
@@ -827,7 +827,7 @@
 
 	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/upgrade))
 		if(!(istype(target_atom, /turf/closed/wall/resin) || istype(target_atom, /turf/closed/wall/resin/membrane) || istype(target_atom, /obj/structure/mineral_door/resin)))
-			to_chat(xeno, SPAN_XENOWARNING("We can only upgrade resin walls, membrane and doors!"))
+			to_chat(xeno, SPAN_XENOWARNING("We can only upgrade resin walls, membranes, and doors!"))
 			return
 
 		if(istype(target_atom, /turf/closed/wall/resin) || istype(target_atom, /turf/closed/wall/resin/membrane))
@@ -934,7 +934,7 @@
 		return
 
 	if(length(xeno.current_design) >= xeno.max_design_nodes) //Check if there are more nodes than length that was defined
-		to_chat(xeno, SPAN_XENOWARNING("We cannot sustain another node, one will wither away to allow this one to live!"))
+		to_chat(xeno, SPAN_XENOWARNING("We cannot sustain another node! Another node must wither away to allow this one to live!"))
 		var/obj/effect/alien/resin/design/old_design = xeno.current_design[1] //Check with node is first for deletion on list
 		xeno.current_design.Remove(old_design) //Removes first node stored inside list
 		qdel(old_design) //Delete node.
@@ -955,7 +955,7 @@
 			return
 		if(!check_and_use_plasma_owner(plasma_cost))
 			return
-		xeno.visible_message(SPAN_XENONOTICE("\The [xeno] channels nutrients and shapes it into a node!"))
+		xeno.visible_message(SPAN_XENONOTICE("[xeno] channels nutrients and shapes it into a node!"))
 		var/obj/effect/alien/resin/design/design = new xeno.selected_design(target_weeds.loc, target_weeds, xeno) //Create node you selected from list
 		if(!design)
 			to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find node to place! Contact a coder!"))
@@ -977,7 +977,7 @@
 			return
 		if(!check_and_use_plasma_owner(plasma_cost))
 			return
-		xeno.visible_message(SPAN_XENONOTICE("The [xeno] channels nutrients and shapes it into a node!"))
+		xeno.visible_message(SPAN_XENONOTICE("[xeno] channels nutrients and shapes it into a node!"))
 		var/obj/effect/alien/resin/design/design = new xeno.selected_design(target_weeds.loc, target_weeds, xeno)
 		if(!design)
 			to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find node to place! Contact a coder!"))
@@ -1001,7 +1001,7 @@
 			return
 		if(!check_and_use_plasma_owner(plasma_cost))
 			return
-		xeno.visible_message(SPAN_XENONOTICE("The [xeno] channels nutrients and shapes it into a node!"))
+		xeno.visible_message(SPAN_XENONOTICE("[xeno] channels nutrients and shapes it into a node!"))
 		var/obj/effect/alien/resin/design/design = new xeno.selected_design(target_weeds.loc, target_weeds, xeno)
 		if(!design)
 			to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find node to place! Contact a coder!"))

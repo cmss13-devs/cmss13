@@ -1,6 +1,6 @@
 /datum/xeno_strain/berserker
 	name = RAVAGER_BERSERKER
-	description = "We lose our empower, charge, and scissor cut, decrease our health, and sacrifice a bit of our influence under frenzy pheromones to increase our movement speed, slightly increase our armor, and gain a new set of abilities that make you a terrifying melee monster. By slashing, you heal ourselves and gain a stack of rage that increases our armor, movement speed, attack speed, and our heals per slash, to a maximum of five rage. Use our new Apprehend ability to increase our movement speed and apply a slow on the next target you slash and use our Clothesline ability to fling our target to heal ourselves, even more-so if you have a rage stack that will be used up. Finally, use our Eviscerate to unleash a devastating windmill attack that heals you for every enemy you hit after an immobilizing wind-up."
+	description = "We lose our Empower, Charge, and Scissor Cut, decrease our health, and sacrifice a bit of our influence under frenzy pheromones to increase our movement speed, slightly increase our armor, and gain a new set of abilities that make us a terrifying melee monster. By slashing, we heal ourselves and gain a stack of rage that increases our armor, movement speed, attack speed, and our heals per slash, to a maximum of five rage. Our new Apprehend ability increases our movement speed and applies a slow on the next target we slash. Our Clothesline ability flings our target to heal ourselves, even more-so if we have a rage stack that will be used up. Finally, Eviscerate unleashes a devastating windmill attack that heals us for every enemy we hit after an immobilizing wind-up."
 	flavor_description = "Unbridled fury fills this one. We will become an extension of my rage."
 	icon_state_prefix = "Berserker"
 
@@ -70,7 +70,7 @@
 		if(rage == max_rage)
 			bound_xeno.add_filter("berserker_rage", 1, list("type" = "outline", "color" = "#000000ff", "size" = 1))
 			rage_lock()
-			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We feel a euphoric rush as we reach max rage! We are LOCKED at max Rage!"))
+			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We feel a euphoric rush as we reach max rage! We are LOCKED at max rage!"))
 
 	// HP vamp
 	if(!bound_xeno.on_fire)
@@ -136,7 +136,7 @@
 
 	if(next_slash_buffed)
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We significantly strengthen our attack, slowing [target_carbon]!"))
-		to_chat(target_carbon, SPAN_XENOHIGHDANGER("We feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("We feel a sharp pain as [bound_xeno] slashes us, slowing us down!"))
 		target_carbon.apply_effect(get_xeno_stun_duration(target_carbon, slash_slow_duration), SLOW)
 		next_slash_buffed = FALSE
 
@@ -189,7 +189,7 @@
 			return
 		behavior.next_slash_buffed = FALSE
 
-	to_chat(xeno, SPAN_XENODANGER("We have waited too long, our slash will no longer slow enemies!"))
+	to_chat(xeno, SPAN_XENODANGER("We have waited too long! Our slash will no longer slow enemies!"))
 
 
 /datum/action/xeno_action/activable/clothesline/use_ability(atom/affected_atom)
@@ -361,7 +361,7 @@
 			return XENO_NO_DELAY_ACTION
 
 		if(target_carbon.stat == DEAD)
-			to_chat(bound_xeno, SPAN_WARNING("We raise our claws to attack [target_carbon]!- but... they're already dead."))
+			to_chat(bound_xeno, SPAN_WARNING("[target_carbon] is dead. We need another target!"))
 			return XENO_NO_DELAY_ACTION
 
 		if(bound_xeno.caste && !bound_xeno.caste.is_intelligent)
@@ -376,18 +376,18 @@
 				if(HAS_TRAIT(bound_xeno, TRAIT_NESTED))
 					bound_xeno.animation_attack_on(target_carbon)
 					bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]."),
-					SPAN_XENONOTICE("ATTACK!!!! Oh- [target_carbon] has a sister inside..."))
+					SPAN_XENONOTICE("Lower our claws! [target_carbon] has a sister inside!"))
 					return XENO_NO_DELAY_ACTION
 				if(!HAS_FLAG(bound_xeno.hive.hive_flags, XENO_SLASH_INFECTED))
 					bound_xeno.animation_attack_on(target_carbon)
 					bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]."),
-					SPAN_XENONOTICE("ATTACK!!!! Oh- [target_carbon] has a sister inside..."))
+					SPAN_XENONOTICE("Lower our claws! [target_carbon] has a sister inside!"))
 					return XENO_ATTACK_ACTION
 			if(!HAS_FLAG(bound_xeno.hive.hive_flags, XENO_SLASH_NORMAL))
 				bound_xeno.animation_attack_on(target_carbon)
 				bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]."),
-				SPAN_XENONOTICE("ATTACK!!!! Wait- we're not allowed to attack hosts anymore..."))
+				SPAN_XENONOTICE("Lower our claws! The Queen decreed we can no longer harm hosts!"))
 				return XENO_ATTACK_ACTION
 		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] fumbles stupidly for a moment, then slashes [target_carbon]!"),
-			SPAN_HIGHDANGER("Our oversized claws and small mind get in the way of restraining, slashing [target_carbon]!"), message_flags=CHAT_TYPE_XENO_COMBAT)
+			SPAN_HIGHDANGER("Our oversized claws and small mind get in the way of restraining [target_carbon] and we slash \him instead..."), message_flags=CHAT_TYPE_XENO_COMBAT)
 		return INTENT_HARM

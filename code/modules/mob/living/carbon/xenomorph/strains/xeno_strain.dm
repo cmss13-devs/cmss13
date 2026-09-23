@@ -80,7 +80,7 @@
 		strain_list[initial(strain_type.name)] = strain_type
 
 	// Ask the user which strain they want.
-	var/strain_choice = tgui_input_list(usr, "Which strain would you like to take?", "Choose Strain", strain_list, theme = "hive_status")
+	var/strain_choice = tgui_input_list(usr, "Which strain would we like to take?", "Choose Strain", strain_list, theme = "hive_status")
 	if(!strain_choice)
 		return
 	var/datum/xeno_strain/chosen_strain = strain_list[strain_choice]
@@ -117,7 +117,7 @@
 		return
 
 	// Show the user the strain's description, and double check that they want it.
-	if(tgui_alert(src, "Are you sure?", "Reset Strain", list("Yes", "No")) != "Yes")
+	if(tgui_alert(src, "Are we sure?", "Reset Strain", list("Yes", "No")) != "Yes")
 		return
 
 	// One more time after they confirm.

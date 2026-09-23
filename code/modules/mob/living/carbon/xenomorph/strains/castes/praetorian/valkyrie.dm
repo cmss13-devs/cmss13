@@ -1,6 +1,6 @@
 /datum/xeno_strain/valkyrie
 	name = PRAETORIAN_VALKYRIE
-	description = "We trade our ranged abilities and acid to gain the ability to emit strong pheromones and buff other Xenomorphs, giving them extra armor. An ability that knocks down people in a 2 by 3 in front of you while also throwing back grenades. We get an ability that rejuvenates everyone in a certain range depending on our rage. We also trade our tailstab for an extinguisher, while it doesn't do damage it can put out both enemies and allies. This can be used to extinguish people on fire to help capture them."
+	description = " We trade our ranged abilities and acid to gain the ability to emit strong pheromones and a plethora of new abilities. Our slashes heal us and our allies and generate Fury, which fuels some of our abilities. We can Retrieve the wounded from a distance, our High Gallop knocks down enemies throws back boom rocks in a 2 by 3 arc, Fight or Flight rejuvenates and removes debuffs around allies, its range depending on our rage, and Tantrum provides armor to allies and speed to Crushers and Ravagers both's range depending on our rage. We also trade our tailstab Tail Fountain; it doesn't do damage, but it extinguishes allies, or it can extinguish talls to facilitate capture."
 	flavor_description = "This one will deny her sisters' deaths until they earn it. Fight or be forgotten."
 	icon_state_prefix = "Warden"
 
@@ -96,7 +96,7 @@
 	if (amount > 0)
 		if (base_fury >= fury_max)
 			return
-		to_chat(bound_xeno, SPAN_XENODANGER("We are overcome with rage."))
+		to_chat(bound_xeno, SPAN_XENODANGER("We are overcome with rage!"))
 	base_fury = clamp(base_fury + amount, 0, fury_max)
 
 /datum/behavior_delegate/praetorian_valkyrie/proc/use_internal_fury_ability(cost)
@@ -436,7 +436,7 @@
 		return
 
 	if(A == valkyrie)
-		to_chat(valkyrie, SPAN_XENODANGER("We cannot retrieve ourself!"))
+		to_chat(valkyrie, SPAN_XENODANGER("We cannot retrieve ourselves!"))
 		return
 
 	if(!(A in view(7, valkyrie)))

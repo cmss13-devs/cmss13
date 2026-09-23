@@ -1,7 +1,7 @@
 /datum/xeno_strain/vanguard
 	name = PRAETORIAN_VANGUARD
-	description = "We forfeit all of our acid-based abilities and some health for some extra speed and a rechargeable shield that can block one attack. Use our Pierce from up to three paces away to stab through talls, while stabbing through two or more will completely recharge our shield. Use our charge to plow through enemies and use it again to unleash a powerful AoE slash that reaches up to three paces. We also have a Cleave ability, amplified by our shield, which you can toggle to either immobilize or fling a target away."
-	flavor_description = "Fearless you are born, fearless you serve, fearless you die. This one will become my Vanguard"
+	description = "We forfeit all of our acid-based abilities and some health for some extra speed and a rechargeable shield that can block one attack. Use our Pierce from up to three paces away to stab through talls, while stabbing through two or more will completely recharge our shield. Use our charge to plow through enemies and use it again to unleash a powerful AoE slash that reaches up to three paces. We also have a Cleave ability, amplified by our shield, which we can toggle to either immobilize or fling a target away."
+	flavor_description = "Fearless it is born, fearless it shall serve, and fearless it will die. This one will become my Vanguard."
 	icon_state_prefix = "Vanguard"
 
 	actions_to_remove = list(
@@ -263,7 +263,7 @@
 			Hu.update_xeno_hostile_hud()
 
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target_carbon, TRAIT_SOURCE_ABILITY("Cleave")), get_xeno_stun_duration(target_carbon, root_duration))
-		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[cleave_user] has pinned you to the ground! We cannot move!"))
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[cleave_user] has pinned us to the ground! We cannot move!"))
 		cleave_user.flick_attack_overlay(target_carbon, "punch")
 
 	else

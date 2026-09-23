@@ -1,6 +1,6 @@
 /datum/xeno_strain/trapper
 	name = BOILER_TRAPPER
-	description = "We trade our ability to bombard, lance, and dump our acid in order to gain some speed and the ability to create acid explosions and restrain enemies within them. With our longer-range vision, set up traps that immobilize our opponents and place acid mines which deal damage to enemies and barricades and reduce the cooldown of our trap deployment for every enemy hit. Finally, hit enemies with our Acid Shotgun ability which adds a stack of insight to empower the next trap you place once you reach a maximum of ten insight. A point-blank shot or a shot on a stunned target will instantly apply ten stacks."
+	description = "We trade our ability to bombard, lance, and dump our acid for some speed, the ability to create traps and acid mines, and to change our bombard into an acid shotgun. With our longer-range vision, we can set up traps that immobilize our opponents and place acid mines to deal damage to them and their barricades. For each target hit, we reduce the cooldown of our deployments. Finally, hitting enemies with our Acid Shotgun ability adds a stack of insight to empower the next trap we place once we reach a maximum of ten insight. A point-blank shot or a shot on a stunned target will instantly apply ten stacks."
 	flavor_description = "The battlefield is my canvas, this one, my painter. Melt them where they stand."
 
 	actions_to_remove = list(
@@ -97,7 +97,7 @@
 /datum/behavior_delegate/boiler_trapper/on_life()
 	if((temp_movespeed_time_used + temp_movespeed_cooldown) < world.time)
 		if(!temp_movespeed_messaged)
-			to_chat(bound_xeno, SPAN_XENODANGER("We feel our adrenaline glands refill! Our speedboost will activate again."))
+			to_chat(bound_xeno, SPAN_XENODANGER("We feel our adrenaline glands refill! Our speed boost will activate again."))
 			temp_movespeed_messaged = TRUE
 		temp_movespeed_usable = TRUE
 		return

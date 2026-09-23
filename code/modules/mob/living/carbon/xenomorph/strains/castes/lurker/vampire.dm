@@ -1,7 +1,7 @@
 /datum/xeno_strain/vampire
 	name = LURKER_VAMPIRE
-	description = "We lose all of our abilities and you forfeit a chunk of our health and damage in exchange for a large amount of armor, a little bit of movement speed, increased attack speed, and brand new abilities that make you an assassin. Rush on our opponent to disorient them and Flurry to unleash a forward cleave that can hit and slow three talls and heal you for every tall you hit. Use our special AoE Tail Jab to knock talls away, doing more damage with direct hits and even more damage and a stun if they smack into walls. Finally, execute unconscious talls with a headbite to heal our wounds."
-	flavor_description = "Show no mercy! Slaughter them all!"
+	description = "We lose all of our abilities and we forfeit a chunk of our health and damage in exchange for a large amount of armor, slightly increased movement speed, increased attack speed, and brand new abilities that turn us into a stealthy assassin. Our Rush ability disorients enemies and  our Flurry ability unleashes a forward cleave that can hit and slow three talls and heal us for every tall we hit. Use ospecial AoE Tail Jab knocks talls away, doing more damage with direct hits and even more damage and a stun if they smack into walls. Finally, after we subdue our enemies, we can execute them with a headbite to heal our wounds."
+	flavor_description = "Blood for the queen! Show no mercy! Slaughter them all!"
 	icon_state_prefix = "Vampire"
 
 	actions_to_remove = list(
@@ -236,19 +236,19 @@
 				to_chat(xeno, SPAN_WARNING("We should not harm this host! It has a sister inside."))
 				return
 
-	xeno.visible_message(SPAN_DANGER("[xeno] grabs [target_carbon]’s head aggressively."),
-	SPAN_XENOWARNING("We grab [target_carbon]’s head aggressively."))
+	xeno.visible_message(SPAN_DANGER("[xeno] grabs [target_carbon]’s head aggressively and opens their mouth..."),
+	SPAN_XENOWARNING("We grab [target_carbon]’s head aggressively and open our mouth..."))
 
 	if(!do_after(xeno, 0.8 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 2)) // would be 0.75 but that doesn't really work with numticks
 		return
 
 	// To make sure that the headbite does nothing if the target is moved away.
 	if(!xeno.Adjacent(target_carbon))
-		to_chat(xeno, SPAN_XENOHIGHDANGER("We missed! Our target was moved away before we could finish headbiting them!"))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("We missed! Our target moved before we could finish headbiting them!"))
 		return
 
 	if(target_carbon.stat == DEAD)
-		to_chat(xeno, SPAN_XENODANGER("They died before you could finish headbiting them! Be more careful next time!"))
+		to_chat(xeno, SPAN_XENODANGER("They died before we could finish headbiting them! Be more careful next time!"))
 		return
 
 	to_chat(xeno, SPAN_XENOHIGHDANGER("We pierce [target_carbon]’s head with our inner jaw!"))

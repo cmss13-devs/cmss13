@@ -14,7 +14,7 @@
 
 /datum/xeno_strain/charger
 	name = CRUSHER_CHARGER
-	description = "In exchange for our shield, a little bit of our armor and damage, our slowdown resist from turrets, our influence under frenzy pheromones, our stomp no longer knocking down talls, and our ability to lock our direction, you gain a considerable amount of health, some speed, our stomp does extra damage when stomping over a grounded tall, and our charge is now manually-controlled and momentum-based; the further you go, the more damage and speed you will gain until you achieve maximum momentum, indicated by our roar. In addition, our armor is now directional, being the toughest on the front, weaker on the sides, and weakest from the back. In return, you gain an ability to tumble to pass through enemies and avoid enemy fire, and an ability to forcefully move enemies via ramming into them."
+	description = "In exchange for our shield, a little bit of our armor and damage, our slowdown resist from turrets, our influence under frenzy pheromones, our stomp no longer knocking down talls, and our ability to lock our direction, we gain a considerable amount of health and our Charge is now manually-controlled and momentum-based; the further we go, the more damage and speed we will gain until we achieve maximum momentum, indicated by our roar. Our slashes now slow,deal AOE to adjacent targets, and they also reduce Charge and Defensive Shield's cooldown for every enemy hit. In addition, our armor is now directional, being the toughest on the front, weaker on the sides, and weakest from the back. In return, we gain an ability to tumble to pass through enemies and avoid enemy fire, an ability to forcefully move enemies via ramming into them. In addition our Stomp deals extra damage to knocked down talls but no longer knocks them down, instead creating a disorientating shake to any tall nearby. "
 	flavor_description = "Nothing stops this hive. This one will become both the immovable object and the unstoppable force."
 
 	actions_to_remove = list(
@@ -496,7 +496,7 @@
 						carbon_target.apply_effect(1, SLOW)
 					else
 						carbon_target.apply_effect(1, WEAKEN)
-						to_chat(carbon_target, SPAN_WARNING("The violent tremors make you lose our footing!"))
+						to_chat(carbon_target, SPAN_WARNING("The violent tremors makes us lose our footing!"))
 			playsound(get_turf(xeno), 'sound/effects/bang.ogg', 25, 0)
 			return
 		var/list/ram_dirs = get_perpen_dir(xeno.dir)
@@ -506,7 +506,7 @@
 		if(LinkBlocked(src, cur_turf, target_turf))
 			xeno.emote("roar")
 			xeno.visible_message(SPAN_DANGER("[xeno] flings [src] over to the side!"),SPAN_DANGER( "We fling [src] out of the way!"))
-			to_chat(src, SPAN_XENOHIGHDANGER("[xeno] flings you out of its way! Move it!"))
+			to_chat(src, SPAN_XENOHIGHDANGER("[xeno] flings us out of its way! Move it!"))
 			apply_effect(1, WEAKEN) // brief flicker stun
 			throw_atom(get_turf(src), 1, 3, xeno, TRUE)
 		step(src, ram_dir, charger_ability.momentum * 0.5)

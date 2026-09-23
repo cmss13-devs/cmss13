@@ -1,6 +1,6 @@
 /datum/xeno_strain/acider
 	name = RUNNER_ACIDER
-	description = "At the cost of a little bit of our speed and all of our current abilities, you gain a considerable amount of health, some armor, and a new organ that fills with volatile acid over time. When outside of combat, only a limited amount of acid will generate. Our Tail Stab and slashes apply acid to living lifeforms that slowly burns them and fills our acid glands. We also gain Corrosive Acid equivalent to that of a boiler that you can deploy more quickly than any other caste, at the cost of a chunk of our acid reserves with each use. Finally, after a twenty second windup, you can force our body to explode, covering everything near you with acid. The more acid you have stored, the more devastating the explosion will be, but during those twenty seconds before detonation you are slowed and give off several warning signals which give talls an opportunity to end you before you can detonate. If you successfully explode, you will reincarnate as a larva again!"
+	description = "At the cost of a little bit of our speed and all of our current abilities, we gain a considerable amount of health, some armor, and a new organ that fills with volatile acid over time. When outside of combat, only a limited amount of acid will generate. Our Tail Stab and slashes apply acid to living lifeforms that slowly burns them and fills our acid glands. We also gain Corrosive Acid equivalent to that of a boiler that we can deploy more quickly than any other caste, at the cost of a chunk of our acid reserves with each use. Finally, after a twenty second windup, we can force our body to explode, covering everything near us with acid. The more acid we have stored, the more devastating the explosion will be, but during those twenty seconds before detonation we are slowed and give off several warning signals which give talls an opportunity to end us before we can detonate. If we successfully explode, we will reincarnate as a larva again!"
 	flavor_description = "This one will be the last thing they hear. A martyr."
 	icon_state_prefix = "Acider"
 
@@ -140,7 +140,7 @@
 	var/percentage_acid = round((acid_amount / max_acid) * 100, 10)
 	var/percentage_acid_cap = round((acid_gen_cap /max_acid) * 100, 10)
 	if(percentage_acid)
-		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_acid].")
+		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_acid]")
 	if(acid_amount >= acid_gen_cap)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "cap[percentage_acid_cap]")
 
@@ -198,7 +198,7 @@
 /mob/living/carbon/xenomorph/runner/ventcrawl_carry()
 	var/datum/behavior_delegate/runner_acider/behavior_delegates = behavior_delegate
 	if(istype(behavior_delegates) && behavior_delegates.caboom_trigger)
-		to_chat(src, SPAN_XENOWARNING("We cannot ventcrawl when you are about to explode!"))
+		to_chat(src, SPAN_XENOWARNING("We cannot ventcrawl when we are about to explode!"))
 		return FALSE
 	return ..()
 
@@ -490,7 +490,7 @@
 		trap_acid_level = 1 + target.trap_type - RESIN_TRAP_ACID1
 
 	if(trap_acid_level >= ACIDER_ACID_LEVEL) // Acid runners apply /obj/effect/xenomorph/acid/strong generally
-		to_chat(src, SPAN_XENONOTICE("It already has good acid in."))
+		to_chat(src, SPAN_XENONOTICE("This trap has stronger acid than ours in it. That would have been a waste of our acid."))
 		return FALSE
 
 	to_chat(src, SPAN_XENONOTICE("We begin charging the resin trap with acid."))

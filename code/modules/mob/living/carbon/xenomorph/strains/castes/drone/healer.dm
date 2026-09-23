@@ -1,7 +1,7 @@
 /datum/xeno_strain/healer
 	name = DRONE_HEALER
-	description = "We lose our choice of resin secretions, a chunk of our slash damage, and you will experience a slightly-increased difficulty in tackling hosts in exchange for strong pheromones, the ability to use a bit of our health to plant a maximum of three lesser resin fruits, and the ability to heal our sisters' wounds by secreting a regenerative resin salve by using our vital fluids and a fifth of our plasma. Be wary, this is a dangerous process; overexert ourselves and you may exhaust ourselves to unconsciousness, or die..."
-	flavor_description = "Divided we fall, united we win. We live for the hive, we die for the hive."
+	description = "We lose our choice of resin secretions, a chunk of our slash damage, and we're slightly less capable of tackling hosts in exchange for strong pheromones, increased plasma transfer, the ability to use a bit of our health to plant a maximum of three lesser resin fruits, and, most importantly, we can produce a regenerative resin salve with Apply Salve by using our vital fluids and a fifth of our plasma to heal our sisters. Be wary, this is a dangerous process; we can overexert ourselves to unconsciousness, or even die..."
+	flavor_description = "United we stand, divided we fall. We live for the hive, we die for the hive."
 	icon_state_prefix = "Healer"
 
 	actions_to_remove = list(
@@ -82,7 +82,7 @@
 		return
 
 	if(target_xeno == src)
-		to_chat(src, SPAN_XENOWARNING("We can't heal ourself with our own resin salve!"))
+		to_chat(src, SPAN_XENOWARNING("We can't heal ourselves with our own resin salve!"))
 		return
 
 	if(!check_state())
@@ -188,7 +188,7 @@
 	. += "Fruits sustained: [length(bound_xeno.current_fruits)] / [bound_xeno.max_placeable]"
 	. += "Transferred health amount: [transferred_amount]/[required_transferred_amount]"
 	if(transferred_amount >= required_transferred_amount)
-		. += "Sacrifice will grant you new life."
+		. += "Sacrifice will grant us new life."
 
 /datum/behavior_delegate/drone_healer/on_life()
 	if(!bound_xeno)
@@ -229,7 +229,7 @@
 		return
 
 	if(target == xeno)
-		to_chat(xeno, "We can't heal ourself!")
+		to_chat(xeno, "We can't heal ourselves!")
 		return
 
 	if(isfacehugger(target) || islesserdrone(target))

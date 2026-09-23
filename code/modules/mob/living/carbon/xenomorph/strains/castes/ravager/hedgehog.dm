@@ -1,6 +1,6 @@
 /datum/xeno_strain/hedgehog
 	name = RAVAGER_HEDGEHOG
-	description = "We lose our empower, charge, scissor cut, and some slash damage in exchange for more explosive resistance. Our resistance scales with our shard count and at 50% grants you immunity to some explosive stuns. We accumulate shards over time and when taking damage. We can use these shards to power three new abilities: Spike Shield which gives you a temporary shield that spits bone shards around you when damaged; Fire Spikes which launches spikes at our target to slow them and deal damage when they move; and Spike Shed which launches all our spikes, grants a temporary speed boost, and disables shard generation for thirty seconds."
+	description = "We lose our Empower, Charge, Scissor Cut, and some slash damage in exchange for more explosive resistance and the ability to gain shards. Our resistance scales with our shard count and at 50% grants us immunity to some explosive stuns. We accumulate shards over time and when taking damage. We can use these shards to power three new abilities: Spike Shield which gives us a temporary shield that spits bone shards around us when damaged; Fire Spikes which launches spikes at our target to slow them and deal damage when they move; and Spike Shed which launches all our spikes, grants a temporary speed boost, and disables shard generation for thirty seconds."
 	flavor_description = "We will pierce them a million times, show them what it feels like. This one will become my shield."
 	icon_state_prefix = "Hedgehog"
 
@@ -200,7 +200,7 @@
 
 	var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
 	if (!behavior.check_shards(shard_cost))
-		to_chat(xeno, SPAN_DANGER("Not enough shards! We need [shard_cost - behavior.shards] more!"))
+		to_chat(xeno, SPAN_DANGER("We need [shard_cost - behavior.shards] more shards!"))
 		return
 	behavior.use_shards(shard_cost)
 
@@ -242,7 +242,7 @@
 
 	var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
 	if (!behavior.check_shards(shard_cost))
-		to_chat(xeno, SPAN_DANGER("Not enough shards! We need [shard_cost - behavior.shards] more!"))
+		to_chat(xeno, SPAN_DANGER("We need [shard_cost - behavior.shards] more shards!"))
 		return
 	behavior.use_shards(shard_cost)
 	behavior.lock_shards()
@@ -284,7 +284,7 @@
 			return XENO_NO_DELAY_ACTION
 
 		if(target_carbon.stat == DEAD)
-			to_chat(bound_xeno, SPAN_WARNING("We raise our claws to attack [target_carbon]!- but... they're already dead."))
+			to_chat(bound_xeno, SPAN_WARNING("[target_carbon] is dead. We need another target!"))
 			return XENO_NO_DELAY_ACTION
 
 		if(bound_xeno.caste && !bound_xeno.caste.is_intelligent)
@@ -299,18 +299,18 @@
 				if(HAS_TRAIT(bound_xeno, TRAIT_NESTED))
 					bound_xeno.animation_attack_on(target_carbon)
 					bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]."),
-					SPAN_XENONOTICE("ATTACK!!!! Oh- [target_carbon] has a sister inside..."))
+					SPAN_XENONOTICE("Lower our claws! [target_carbon] has a sister inside!"))
 					return XENO_NO_DELAY_ACTION
 				if(!HAS_FLAG(bound_xeno.hive.hive_flags, XENO_SLASH_INFECTED))
 					bound_xeno.animation_attack_on(target_carbon)
 					bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]."),
-					SPAN_XENONOTICE("ATTACK!!!! Oh- [target_carbon] has a sister inside..."))
+					SPAN_XENONOTICE("Lower our claws! [target_carbon] has a sister inside!"))
 					return XENO_ATTACK_ACTION
 			if(!HAS_FLAG(bound_xeno.hive.hive_flags, XENO_SLASH_NORMAL))
 				bound_xeno.animation_attack_on(target_carbon)
 				bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]."),
-				SPAN_XENONOTICE("ATTACK!!!! Wait- we're not allowed to attack hosts anymore..."))
+				SPAN_XENONOTICE("Lower our claws! The Queen decreed we can no longer harm hosts!"))
 				return XENO_ATTACK_ACTION
 		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] fumbles stupidly for a moment, then slashes [target_carbon]!"),
-			SPAN_HIGHDANGER("Our oversized claws and small mind get in the way of restraining, slashing [target_carbon]!"), message_flags=CHAT_TYPE_XENO_COMBAT)
+			SPAN_HIGHDANGER("Our oversized claws and small mind get in the way of restraining [target_carbon] and we slash \him instead..."), message_flags=CHAT_TYPE_XENO_COMBAT)
 		return INTENT_HARM

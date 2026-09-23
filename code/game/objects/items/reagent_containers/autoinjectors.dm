@@ -65,7 +65,7 @@
 		overlays += filling
 		return
 
-/obj/item/reagent_container/hypospray/autoinjectr/get_examine_text(mob/user)
+/obj/item/reagent_container/hypospray/autoinjector/get_examine_text(mob/user)
 	. = ..()
 	if(uses_left)
 		. += SPAN_NOTICE("It is currently loaded with [uses_left].")

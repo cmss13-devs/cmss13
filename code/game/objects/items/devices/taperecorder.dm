@@ -619,8 +619,10 @@
 		180,
 		210,
 		240,
+		//first pause happens here
 		320,
 		350,
+		//second pause happens here, between the shuffling and the reading of the script.
 		410,
 		440,
 		470,

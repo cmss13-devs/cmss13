@@ -18,6 +18,8 @@ function escapeRegex(string) {
 export async function removeGuideComments({ github, context }) {
 	let newBody = context.payload.pull_request.body;
 
+	console.log("rawr");
+
 	if (!newBody) {
 		console.log("PR body is empty, skipping...");
 		return;

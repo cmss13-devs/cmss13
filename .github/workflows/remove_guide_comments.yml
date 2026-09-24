@@ -14,5 +14,6 @@ jobs:
       uses: actions/github-script@v9
       with:
         script: |
+          echo "rawr"
           const { removeGuideComments } = await import('${{ github.workspace }}/tools/pull_request_hooks/removeGuideComments.js')
           await removeGuideComments({ github, context })

@@ -92,7 +92,7 @@
 	var/obj/item/pipe/fallen_pipe = new(landing_turf, 0, dir)
 	fallen_pipe.name = "fallen pipe"
 	fallen_pipe.desc = "A section of overhead piping. It seems to have a rather large bullet hole in it..."
-	playsound(landing_turf, 'sound/effects/pipe_crash.ogg', 100, FALSE)
+	playsound(landing_turf, get_sfx("pipe_crash"), 100, FALSE)
 	for(var/mob/living/carbon/human/victim in landing_turf)
 		if(!victim.get_limb("head"))
 			continue

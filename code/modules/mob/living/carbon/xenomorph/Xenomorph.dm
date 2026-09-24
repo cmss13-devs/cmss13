@@ -871,10 +871,11 @@
 	var/new_name = strip_html(input("Change the description of the tunnel:", "Tunnel Description") as text|null)
 	new_name = replace_non_alphanumeric_plus(new_name)
 	if(new_name)
+		var/label_name = new_name
 		new_name = "[new_name] ([get_area_name(tunnel_target)])"
 		log_admin("[key_name(src)] has renamed the tunnel \"[tunnel_target.tunnel_desc]\" as \"[new_name]\".")
 		msg_admin_niche("[src]/([key_name(src)]) has renamed the tunnel \"[tunnel_target.tunnel_desc]\" as \"[new_name]\".")
-		tunnel_target.tunnel_desc = "[new_name]"
+		tunnel_target.set_tunnel_desc("[new_name]", label_name)
 	return
 
 /mob/living/carbon/xenomorph/proc/finish_organ_regen()

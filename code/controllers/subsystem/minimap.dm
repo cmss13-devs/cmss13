@@ -114,7 +114,8 @@ SUBSYSTEM_DEF(minimaps)
 		if(is_observer)
 			// For observer maps, filter out any labels
 			for(var/image/blip as anything in updater.raw_blips)
-				if(!blip.maptext)
+				// only real labels are dropped: other blips can carry text too (tunnel names) and must stay visible
+				if(!blip.maptext || blip.icon_state != "label")
 					combined_overlays += blip
 		else
 			// For non-observer maps, use all raw_blips
@@ -345,6 +346,11 @@ SUBSYSTEM_DEF(minimaps)
 				frozen_blip.transform = live_blip.transform
 				frozen_blip.appearance_flags = live_blip.appearance_flags
 				frozen_blip.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+				frozen_blip.maptext = live_blip.maptext
+				frozen_blip.maptext_x = live_blip.maptext_x
+				frozen_blip.maptext_y = live_blip.maptext_y
+				frozen_blip.maptext_width = live_blip.maptext_width
+				frozen_blip.maptext_height = live_blip.maptext_height
 				frozen_blip.overlays = live_blip.overlays.Copy()
 				frozen_overlays += frozen_blip
 

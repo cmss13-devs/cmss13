@@ -2516,13 +2516,13 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	update_icon()
 
 	if(is_mainship_level(gun_turf.z) && gun_area.ceiling >= CEILING_METAL && prob(1))
-		for(var/turf/open/floor/landing_turf in shuffle(view(4, gun_turf)))
+		for(var/turf/open/floor/landing_turf in shuffle(RANGE_TURFS(4, gun_turf)))
 			var/area/landing_area = get_area(landing_turf)
 			if(landing_area.ceiling >= CEILING_METAL)
 				new /obj/effect/falling_pipe(landing_turf, user)
 				break
 	else if(is_ground_level(gun_turf.z) && gun_area.ceiling == CEILING_NONE && prob(1))
-		for(var/turf/open/landing_turf in shuffle(view(4, gun_turf)))
+		for(var/turf/open/landing_turf in shuffle(RANGE_TURFS(4, gun_turf)))
 			var/area/landing_area = get_area(landing_turf)
 			if(landing_area.ceiling == CEILING_NONE && !istype(landing_turf, /turf/open/space))
 				new /obj/effect/falling_bird(landing_turf, user)

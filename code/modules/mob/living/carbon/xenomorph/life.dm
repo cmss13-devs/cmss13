@@ -63,7 +63,8 @@
 				got_evolution_message = TRUE
 
 			if(ROUND_TIME < XENO_ROUNDSTART_BOOSTED_EVO_TIME)
-				evolution_stored += progress_amount
+				if(ovipositor_check)
+					evolution_stored += progress_amount
 				return
 
 			if(evolution_stored > evolution_threshold + progress_amount)
@@ -72,6 +73,9 @@
 
 		else
 			evolution_stored += progress_amount
+			if(evolution_stored >= evolution_threshold)
+				evolve_message()
+				got_evolution_message = TRUE
 
 /mob/living/carbon/xenomorph/proc/evolve_message()
 	to_chat(src, SPAN_XENODANGER("Our carapace crackles and our tendons strengthen. We are ready to <a href='byond://?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
@@ -416,6 +420,8 @@ Make sure their actual health updates immediately.*/
 	switch(locator.tracker_type)
 		if(TRACKER_QUEEN)
 			tracking_atom = hive.living_xeno_queen
+		if(TRACKER_KING)
+			tracking_atom = hive.living_xeno_king
 		if(TRACKER_HIVE)
 			tracking_atom = hive.hive_location
 		if(TRACKER_LEADER)

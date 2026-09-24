@@ -49,6 +49,7 @@ GENERAL_PROTECT_DATUM(/datum/json_savefile)
 		return TRUE
 	catch(var/exception/err)
 		stack_trace("failed to load savefile at '[path]': [err]")
+		fcopy(path, path + ".broken")
 		return FALSE
 
 /datum/json_savefile/proc/save()

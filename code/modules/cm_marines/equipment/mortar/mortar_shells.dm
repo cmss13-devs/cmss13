@@ -42,7 +42,7 @@
 /obj/item/mortar_shell/heplus
 	name = "\improper 80mm HCHE mortar shell"
 	desc = "An 80mm mortar shell. This shell produces a far-larger-than-average explosion on impact."
-	desc_lore = "This shell was introduced to the USCM in 2180, based off the US Army's HCHE shell for their 120mm mortar, which itself is the same shell design already in service with the Three World Empire. The introduction of 80mm SFAE shell midway through the Marine'70 reorganisation effort had vastly improved the Colonial Marines' firepower when fighting against entrenched enemies in difficult environments. However, field use quickly indicated that thermobaric munitions struggle in extremely cramped and enclosed spaces, and sometimes are prone to causing extreme structural damage (which isn't always desired.) In theory, a High Capacity High Explosive should deliver more consistent lethality in extremely enclosed areas at the expense of fragmentation produced while causing less structural stress. The munition contains more explosive filler in exchange for a thinner metal shell."
+	desc_lore = "This shell was introduced to the USCM in 2180, downsized from the US Army's HCHE shell for their 120mm mortar, which itself is the same shell design already in service with the Three World Empire. The introduction of 80mm SFAE shell midway through the Marine'70 reorganisation effort had vastly improved the Colonial Marines' firepower when fighting against entrenched enemies in difficult environments. However, field use quickly indicated that thermobaric munitions struggle in extremely cramped and enclosed spaces, and sometimes are prone to causing extreme structural damage (which isn't always desired.) In theory, a High Capacity High Explosive should deliver more consistent lethality in extremely enclosed areas at the expense of fragmentation produced while causing less structural stress. The munition contains more explosive filler in exchange for a thinner metal shell."
 	icon_state = "mortar_ammo_heplus"
 	item_state = "mortar_ammo_heplus"
 
@@ -94,7 +94,7 @@
 	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 	ceiling_penetrating = TRUE
 
-/obj/item/mortar_shell/pierce/get_examine_text(mob/user)
+/obj/item/mortar_shell/incendiary/pierce/get_examine_text(mob/user)
 	. += SPAN_HELPFUL("This shelltype is capable of being fired into roofed areas, such as inside cave systems or underground labs, but doing so will require calibrating the shell first.")
 
 /obj/item/mortar_shell/incendiary/thermobaric
@@ -109,7 +109,7 @@
 	icon_state = "mortar_ammo_thermo"
 	item_state = "mortar_ammo_thermo"
 
-/obj/item/mortar_shell/thermobaric/get_examine_text(mob/user)
+/obj/item/mortar_shell/incendiary/thermobaric/get_examine_text(mob/user)
 	. += SPAN_WARNING("This shelltype will vacuum all targets in the blast radius towards the centre, be careful not to include friendlies in the target area!")
 
 /obj/item/mortar_shell/incendiary/thermobaric/detonate(turf/impact)

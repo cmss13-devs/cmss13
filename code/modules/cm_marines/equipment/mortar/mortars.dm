@@ -418,7 +418,7 @@
 			if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_mortar_protection) && target_area.is_landing_zone)
 				to_chat(user, SPAN_WARNING("What the hell? Don't bomb the landing zone!"))
 				return
-			if(CEILING_IS_PROTECTED(target_area.ceiling, CEILING_PROTECTION_TIER_2) && (mortar_shell.ceiling_penetrating))
+			if((CEILING_IS_PROTECTED(target_area.ceiling, CEILING_PROTECTION_TIER_3)) || (CEILING_IS_PROTECTED(target_area.ceiling, CEILING_PROTECTION_TIER_2)) && (mortar_shell.ceiling_penetrating))
 				penetrating = TRUE //This shell is currently drilling a hole through the protected roof.
 
 		if(ship_side)
@@ -471,7 +471,15 @@
 
 			addtimer(CALLBACK(src, PROC_REF(handle_shell), target_turf, mortar_shell), travel_time)
 
-	if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
+//mortar decon
+/obj/structure/mortar/MouseDrop(over_object, src_location, over_location)
+	var/mob/living/carbon/user = usr
+	// If the user is unconscious or dead.
+	if(user.stat)
+		return
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+		return
+	if(over_object == user && in_range(src, user))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 			to_chat(user, SPAN_WARNING("You don't have the training to undeploy [src]."))
 			return
@@ -496,13 +504,9 @@
 				mortar.linked_designator = linked_designator
 			mortar.name = src.name
 			qdel(src)
+			user.put_in_active_hand(src)
 
-	if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
-		if(do_after(user, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			user.visible_message(SPAN_NOTICE("[user] toggles the targeting computer on [src]."),
-				SPAN_NOTICE("You toggle the targeting computer on [src]."))
-			computer_enabled = !computer_enabled
-			playsound(loc, 'sound/machines/switch.ogg', 25, 1)
+	update_icon()
 
 /obj/structure/mortar/ex_act(severity)
 	switch(severity)

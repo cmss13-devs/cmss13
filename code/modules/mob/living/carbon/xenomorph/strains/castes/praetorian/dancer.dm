@@ -219,7 +219,7 @@
 	var/mob/living/carbon/target_carbon = target_atom
 
 	if(target_carbon.stat == DEAD)
-		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom] is dead. Why would we want to attack it?"))
+		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom] is dead, why would we want to attack it?"))
 		return
 
 	var/dist = get_dist(dancer_user, target_carbon)

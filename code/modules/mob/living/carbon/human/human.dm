@@ -23,32 +23,16 @@
 		health_threshold_dead = -150
 		health_threshold_crit = -100
 
-	// THIS IS FOR TESTMERGE ONLY ***************************** REMOVE AFTERWARDS
-	if(ishuman_strict(src) && length(GLOB.mouth_styles_list))
-	// THIS IS FOR TESTMERGE ONLY ***************************** REMOVE AFTERWARDS
-		if(prob(50)) //toothy
-	// THIS IS FOR TESTMERGE ONLY ***************************** REMOVE AFTERWARDS
-			mouth_style = "toothy"
-	// THIS IS FOR TESTMERGE ONLY ***************************** REMOVE AFTERWARDS
-		else
-	// THIS IS FOR TESTMERGE ONLY ***************************** REMOVE AFTERWARDS
-			if(prob(50))
-	// THIS IS FOR TESTMERGE ONLY ***************************** REMOVE AFTERWARDS
-				mouth_style = "toothless"
-	// THIS IS FOR TESTMERGE ONLY ***************************** REMOVE AFTERWARDS
-			else
-	// THIS IS FOR TESTMERGE ONLY ***************************** REMOVE AFTERWARDS
-				if(prob(66))
-	// THIS IS FOR TESTMERGE ONLY ***************************** REMOVE AFTERWARDS
-					mouth_style = "diastema"
-	// THIS IS FOR TESTMERGE ONLY ***************************** REMOVE AFTERWARDS
-				else
-	// THIS IS FOR TESTMERGE ONLY ***************************** REMOVE AFTERWARDS
-					mouth_style = prob(50) ? "missing" : "rat"
-	// THIS IS FOR TESTMERGE ONLY ***************************** REMOVE AFTERWARDS
-	if(prob(33))
-	// THIS IS FOR TESTMERGE ONLY ***************************** REMOVE AFTERWARDS
-		mouth_style = "small_" + mouth_style
+	apply_mouth_visibility_to_viewers()
+
+/mob/living/carbon/human/proc/apply_mouth_visibility_to_viewers()
+	var/obj/item/organ/mouth/mouth = get_human_mouth()
+	if(!mouth)
+		return
+	for(var/client/found_client as anything in GLOB.clients)
+		if(found_client.prefs?.show_mouths)
+			continue
+		mouth.hide_for(found_client)
 
 /mob/living/carbon/human/clicked(mob/user, list/mods)
 	if(..())

@@ -362,7 +362,7 @@
 	message = "shouts an inspiring cry!"
 	alt_message = "shouts something"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	move_mouth = 2
+	move_mouth = 2.5
 
 /datum/emote/living/carbon/human/warcry/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
@@ -380,6 +380,26 @@
 				return get_sfx("[user.gender]_upp_warcry")
 			else
 				return get_sfx("[user.gender]_warcry")
+
+/datum/emote/living/carbon/human/hidemouths
+	key = "hidemouths"
+
+/datum/emote/living/carbon/human/hidemouths/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
+		var/obj/limb/head/H_head = H.get_limb("head")
+		var/obj/item/organ/mouth/H_head_M = H_head.my_mouth
+		H_head_M.hide_for(user)
+
+/datum/emote/living/carbon/human/showmouths
+	key = "showmouths"
+
+/datum/emote/living/carbon/human/showmouths/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
+		var/obj/limb/head/H_head = H.get_limb("head")
+		var/obj/item/organ/mouth/H_head_M = H_head.my_mouth
+		H_head_M.show_to(user)
 
 /datum/emote/living/carbon/human/whimper
 	key = "whimper"

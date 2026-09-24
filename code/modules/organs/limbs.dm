@@ -1549,12 +1549,24 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	has_stump_icon = TRUE
 	splint_icon_amount = 4
 	bandage_icon_amount = 4
+	var/obj/item/organ/mouth/my_mouth
 
 	var/eyes_r
 	var/eyes_g
 	var/eyes_b
 
 	var/lip_style
+
+/obj/limb/head/Initialize(mapload, obj/limb/P, mob/mob_owner)
+	. = ..()
+	if(ishuman(mob_owner))
+		var/mob/living/carbon/human/human_owner = mob_owner
+		if(human_owner.species && human_owner.species.flags & HAS_MOUTH)
+			my_mouth = new(src, human_owner)
+
+/obj/limb/head/Destroy()
+	qdel(my_mouth)
+	. = ..()
 
 /obj/limb/head/update_limb()
 	. = ..()

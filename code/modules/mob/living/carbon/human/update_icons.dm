@@ -74,6 +74,9 @@ There are several things that need to be remembered:
 */
 
 /mob/living/carbon/human/apply_overlay(cache_index)
+	if(isobj(overlays_standing[cache_index]))
+		overlays += overlays_standing[cache_index]
+		return
 	var/image/images = overlays_standing[cache_index]
 
 	if(!images)
@@ -474,22 +477,27 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	apply_overlay(SHOES_LAYER)
 
 /mob/living/carbon/human/proc/update_mouth(speaking = 0)	//nothing else other than mouth should be in this layer
-	remove_overlay(MOUTH_LAYER)
-	if(mouth_style && mouth_style != "none" && (species && species.flags & HAS_MOUTH))
+	var/obj/limb/head/my_head = get_limb("head")
+	my_head.my_mouth.update_appearance(src, speaking)
+	vis_contents += my_head.my_mouth
+	/*
+	if(m_style == null)
+		m_style = "toothy"
+	if(!isnull(m_style) && m_style != "none" && (species && species.flags & HAS_MOUTH))
 		if(wear_mask && wear_mask.flags_inv_hide & HIDEMOUTH)
 			return
 
 		var/icon_path = 'icons/mob/humans/mouth.dmi'
-		var/is_mouth_small = (copytext(mouth_style, 1, 7) == "small_")
+		var/is_mouth_small = (copytext(m_style, 1, 7) == "small_")
 		var/clenched = (wear_mask && wear_mask.flags_inv_hide & HIDEMOUTHCLENCHED)
 		var/state
 
 		if(speaking == 0 || (clenched && is_mouth_small && speaking <= 1))	//not talking at all, no mouth
-			state = ""
+			state = m_style
 		else if(speaking == 1)								//we're talking, add mouth
-			state = clenched ? "small_[mouth_style]" : mouth_style
+			state = clenched ? "small_[m_style]" : m_style
 		else												//we're being very loud, use a larger mouth
-			var/base = is_mouth_small ? copytext(mouth_style, 7) : mouth_style
+			var/base = is_mouth_small ? copytext(m_style, 7) : m_style
 			state = is_mouth_small || clenched ? base : "large_[base]"
 			if(speaking >= 3)
 				state = "[state]_scream"
@@ -503,9 +511,11 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 			icon_path = 'icons/mob/humans/yaut_mouth.dmi'
 			state = speaking == 0 ? "" : "[skin_color]_[(speaking == 1 ? "talk" : "scream")]"
 
-		var/image/mouth = image(icon_path, src, state,  -MOUTH_LAYER)
-		overlays_standing[MOUTH_LAYER] = mouth
-		apply_overlay(MOUTH_LAYER)
+		if(mouth_image == null)
+			mouth_image = image(icon_path, src, state,  -MOUTH_LAYER)
+			vis_contents += mouth_image
+		else
+			mouth_image.icon_state = icon_path*/
 
 /mob/living/carbon/human/update_inv_s_store()
 	remove_overlay(SUIT_STORE_LAYER)

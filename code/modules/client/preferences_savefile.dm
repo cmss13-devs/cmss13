@@ -436,6 +436,8 @@
 	S["tgui_fancy"] >> tgui_fancy
 	S["window_scale"] >> window_scale
 
+	S["show_mouths"] >> show_mouths
+
 	var/tutorial_string = ""
 	S["completed_tutorials"] >> tutorial_string
 	tutorial_savestring_to_list(tutorial_string)
@@ -590,6 +592,8 @@
 
 	chem_presets = sanitize_islist(chem_presets, list())
 
+	show_mouths = sanitize_integer(show_mouths, FALSE, TRUE, TRUE)
+
 	if(!observer_huds)
 		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE, "Hunter HUD"= FALSE, HUD_MENTOR_SIGHT = FALSE)
 
@@ -740,6 +744,8 @@
 
 	S["custom_keybinds"] << custom_keybinds
 
+	S["show_mouths"] << show_mouths
+
 	return TRUE
 
 /datum/preferences/proc/load_character(slot)
@@ -773,6 +779,7 @@
 	S["body_presentation"] >> body_presentation
 	S["language"] >> language
 	S["spawnpoint"] >> spawnpoint
+	S["mouth_style_name"] >> m_style
 
 	//colors to be consolidated into hex strings (requires some work with dna code)
 	S["hair_red"] >> r_hair
@@ -857,6 +864,7 @@
 	skin_color = sanitize_skin_color(skin_color)
 	body_type = sanitize_body_type(body_type)
 	body_size = sanitize_body_size(body_size)
+	m_style = sanitize_inlist(m_style, GLOB.mouth_styles_list, initial(m_style))
 	r_hair = sanitize_integer(r_hair, 0, 255, initial(r_hair))
 	g_hair = sanitize_integer(g_hair, 0, 255, initial(g_hair))
 	b_hair = sanitize_integer(b_hair, 0, 255, initial(b_hair))
@@ -963,6 +971,7 @@
 	S["backbag"] << backbag
 	//S["blood_type"] << blood_type
 	S["spawnpoint"] << spawnpoint
+	S["mouth_style_name"] << m_style
 
 	//Jobs
 	S["alternate_option"] << alternate_option

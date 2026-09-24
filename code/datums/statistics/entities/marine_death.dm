@@ -63,6 +63,7 @@
 /datum/entity_meta/marine_death
 	entity_type = /datum/entity/marine_death
 	table_name = "marine_deaths"
+	key_field = "round_id"
 	field_types = list(
 		"map_name" = DB_FIELDTYPE_STRING_MEDIUM,
 		"x" = DB_FIELDTYPE_INT,

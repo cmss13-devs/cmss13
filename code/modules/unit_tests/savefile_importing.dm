@@ -78,6 +78,6 @@
 	json_savefile.wipe()
 	runtime_read = json_savefile.get_entry("runtime_saving")
 	TEST_ASSERT_NULL(runtime_read, "wiped the tree but data remained")
-	json_savefile.load()
+	TEST_ASSERT(json_savefile.load(), "loading failed!")
 	runtime_read = json_savefile.get_entry("runtime_saving")
 	TEST_ASSERT_EQUAL(runtime_check_string, runtime_read, "saved and read the same key but got different values, save didn't work as expected")

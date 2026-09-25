@@ -6136,6 +6136,12 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/lv522/atmos/command_centre)
+"cYY" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv522/indoors/a_block/bridges/corpo)
 "cZb" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -20210,7 +20216,6 @@
 /turf/open/asphalt/cement/cement1,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "kCF" = (
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/prop/invuln/ice_prefab{
 	dir = 1;
 	icon_state = "fab_2"
@@ -23408,6 +23413,18 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/corpo/glass)
+"mob" = (
+/obj/structure/window/framed/strata/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "Sec-Kitchen-Lockdown";
+	name = "\improper Storm Shutters"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/corsat/marked,
+/area/lv522/indoors/a_block/security)
 "moz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
@@ -34502,6 +34519,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
+"rRk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv522/indoors/a_block/bridges/corpo)
 "rRm" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -35726,6 +35750,13 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/lone_buildings/storage_blocks/north_west)
+"sxX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/security)
 "syl" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -39661,6 +39692,10 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
+"utC" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/a_block/corpo/glass)
 "uue" = (
 /obj/structure/machinery/light,
 /obj/structure/machinery/disposal,
@@ -43881,8 +43916,10 @@
 /turf/open/auto_turf/shale/layer1,
 /area/sky)
 "wtI" = (
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/a_block/bridges/corpo)
 "wtK" = (
@@ -46519,12 +46556,12 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/dorms)
 "xPx" = (
-/obj/structure/prop/invuln/ice_prefab{
-	dir = 9
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/outdoors/colony_streets/north_west_street)
+/turf/open/floor/prison/darkredfull2,
+/area/lv522/indoors/a_block/security)
 "xPA" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3";
@@ -46692,6 +46729,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/indoors/b_block/hydro)
+"xSq" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/indoors/a_block/corpo/glass)
 "xSv" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/sand_white/layer0,
@@ -51972,7 +52013,7 @@ clY
 clY
 adv
 slD
-xPx
+swt
 kCF
 rbV
 wRz
@@ -66765,7 +66806,7 @@ jDN
 qjG
 qjG
 oeU
-mkh
+wGq
 aeF
 tnN
 hNf
@@ -67176,7 +67217,7 @@ mkh
 jDN
 qjG
 qjG
-qjG
+mkh
 saC
 oUq
 saC
@@ -68457,7 +68498,7 @@ vbX
 sLk
 sLk
 sLk
-jQk
+sxX
 ndb
 pRR
 ueX
@@ -68639,8 +68680,8 @@ iLg
 uiQ
 uwY
 uTv
-vpO
-mnX
+xSq
+utC
 vEY
 beB
 mSc
@@ -68663,7 +68704,7 @@ aYD
 uDb
 gLk
 uDb
-uDb
+tLE
 dXt
 lhT
 gvH
@@ -68869,7 +68910,7 @@ jft
 jft
 wue
 oPs
-uVj
+xPx
 xrr
 kiO
 dEY
@@ -69075,7 +69116,7 @@ sjy
 qTx
 qTx
 sjy
-qTx
+mob
 qTx
 sjy
 sjy
@@ -70497,7 +70538,7 @@ tQi
 jdn
 tQi
 tQi
-nTX
+rRk
 uyt
 tQi
 gwb
@@ -70703,7 +70744,7 @@ xlI
 mev
 mev
 xlI
-uyt
+cYY
 uyt
 mev
 odT

@@ -37,7 +37,7 @@
 		return
 
 	var/is_resting = affected_carbon.resting || affected_carbon.body_position == LYING_DOWN || HAS_TRAIT(affected_carbon, TRAIT_FLOORED)
-	if(is_resting && initial(config.resting_behavior) == WATER_OVERLAY_CONFIG_RESTING_NONE)
+	if(is_resting && config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_NONE)
 		return
 
 	var/is_immersed = config.immerse_behavior != WATER_OVERLAY_CONFIG_IMMERSE_NONE && (\

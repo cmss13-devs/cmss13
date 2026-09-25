@@ -81,7 +81,8 @@
 		if(SSwater_overlays.is_water(turf))
 			var/turf/open/found_turf = turf
 			var/turf/open/water_turf = found_turf.water_type
-			SSwater_overlays.found_waters["[found_turf.water_type][water_turf.icon][water_turf.icon_state][found_turf.depth]"] = list(water_turf.icon, water_turf.icon_state, found_turf.depth, found_turf.water_type)
+			var/datum/potential_water_overlay/water_data = new(water_turf.icon, water_turf.icon_state, found_turf.depth, found_turf.water_type)
+			SSwater_overlays.found_waters[water_data.create_index()] = water_data
 			for(var/direction in GLOB.alldirs)
 				found_turf = get_step(turf, direction)
 				if(found_turf && !SSwater_overlays.is_water(found_turf))

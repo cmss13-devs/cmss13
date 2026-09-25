@@ -21,7 +21,7 @@
 	RegisterSignal(open_target, COMSIG_TURF_LAUNCHED_LANDING, PROC_REF(on_landed_on))
 
 /datum/element/water_turf/Detach(datum/source, ...)
-	UnregisterSignal(source, list(COMSIG_TURF_ENTERED, COMSIG_ATOM_HITBY))
+	UnregisterSignal(source, list(COMSIG_TURF_ENTERED, COMSIG_TURF_LAUNCHED_LANDING))
 	return ..()
 
 /datum/element/water_turf/proc/on_enter(turf/open/source, atom/movable/mover)

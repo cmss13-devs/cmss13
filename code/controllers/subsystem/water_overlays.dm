@@ -19,21 +19,38 @@ SUBSYSTEM_DEF(water_overlays)
 		"88" = 'icons/effects/water_overlay_effects/_88.dmi',   //queen
 	)
 
+/datum/potential_water_overlay
+	var/icon
+	var/icon_state
+	var/depth
+	var/water_type
+
+/datum/potential_water_overlay/New(icon, icon_state, depth, water_type)
+	src.icon = icon
+	src.icon_state = icon_state
+	src.depth = depth
+	src.water_type = water_type
+
+/datum/potential_water_overlay/proc/create_index()
+	return "[water_type][icon][icon_state][depth]"
+
 /datum/controller/subsystem/water_overlays/Initialize()
 	for(var/turf/search_turf in GLOB.turfs)	//we're gonna cut down on the turfs we're gonna check to improve game start lag, ignoring water in nightmares...
 		if(is_water(search_turf))
 			var/turf/open/found_water = search_turf
 			var/turf/open/water_turf = found_water.water_type
-			found_waters["[found_water.water_type][water_turf.icon][water_turf.icon_state][found_water.depth]"] = list(water_turf.icon, water_turf.icon_state, found_water.depth, found_water.water_type)
+			var/datum/potential_water_overlay/water_data = new(water_turf.icon, water_turf.icon_state, found_water.depth, found_water.water_type)
+			found_waters[water_data.create_index()] = water_data		//using keys so turfs with the same water qualities wont make duplicate overlays (they use the same key)
 			for(var/direction in GLOB.alldirs)
 				var/turf/found_turf = get_step(search_turf, direction)
 				if(found_turf && !is_water(found_turf))
 					turfs_to_process |= found_turf
 		for(var/obj/effect/blocker/water/found_blocker in search_turf.contents)		//blocker/water objects can create water, we need to create overlays for those too
-			var/turf/water_blocker_turf = found_blocker.water_type
+			var/turf/water_blocker_turf = found_blocker.water_type		//using keys so turfs with the same water qualities wont make duplicate overlays (they use the same key)
 			if(water_blocker_turf == null)
 				continue
-			found_waters["[found_blocker.water_type][found_blocker.water_type][water_blocker_turf.icon][water_blocker_turf.icon_state][found_blocker.created_depth]"] = list(water_blocker_turf.icon, water_blocker_turf.icon_state, found_blocker.created_depth, found_blocker.water_type)
+			var/datum/potential_water_overlay/water_data = new(water_blocker_turf.icon, water_blocker_turf.icon_state, found_blocker.created_depth, found_blocker.water_type)
+			found_waters[water_data.create_index()] = water_data
 		CHECK_TICK
 	for(var/datum/water_overlay_config/config_type as anything in subtypesof(/datum/water_overlay_config))
 		var/size = "[initial(config_type.icon_size)]"
@@ -50,24 +67,25 @@ SUBSYSTEM_DEF(water_overlays)
 /datum/controller/subsystem/water_overlays/proc/get_icon_path(icon_size)
 	return icon_paths["[icon_size]"]
 
-/datum/controller/subsystem/water_overlays/proc/is_full_water(turf/potential_water)
+/datum/controller/subsystem/water_overlays/proc/is_water(turf/potential_water)
 	if(potential_water == null || !istype(potential_water, /turf/open))
 		return FALSE
 	var/turf/open/potential_open_water = potential_water
 	if(potential_open_water.covered || potential_open_water.depth >= DEPTH_LAND || potential_open_water.turf_flags & TURF_CATWALKED)
 		return FALSE
-	return (potential_water.turf_flags & (TURF_WATER | TURF_WATERLIKE) && potential_open_water.depth <= DEPTH_SHALLOW)
+	return potential_water.turf_flags & (TURF_WATER | TURF_WATERLIKE)
+
+/datum/controller/subsystem/water_overlays/proc/is_full_water(turf/potential_water)
+	if(!is_water(potential_water))
+		return FALSE
+	var/turf/open/potential_open_water = potential_water
+	return potential_open_water.depth <= DEPTH_SHALLOW
 
 /datum/controller/subsystem/water_overlays/proc/is_coastline(turf/potential_coastline)
-	if(potential_coastline == null || !istype(potential_coastline, /turf/open))
+	if(!is_water(potential_coastline))
 		return FALSE
 	var/turf/open/potential_open_coastline = potential_coastline
-	if(potential_open_coastline.covered || potential_open_coastline.depth >= DEPTH_LAND || potential_coastline.turf_flags & TURF_CATWALKED)
-		return FALSE
-	return  ((potential_coastline.turf_flags & (TURF_WATER | TURF_WATERLIKE)) && potential_open_coastline.depth >= DEPTH_COAST_INTERMEDIATE)
-
-/datum/controller/subsystem/water_overlays/proc/is_water(turf/potential_water)
-	return (is_full_water(potential_water) || is_coastline(potential_water))
+	return potential_open_coastline.depth >= DEPTH_COAST_INTERMEDIATE
 
 /datum/controller/subsystem/water_overlays/proc/handle_toxic_states(in_icon)			//adds duplicate states for toxic water turfs so we can handle toxic states
 	if(in_icon == 'icons/turf/floors/desert_water.dmi')
@@ -110,13 +128,13 @@ SUBSYSTEM_DEF(water_overlays)
 */
 /datum/controller/subsystem/water_overlays/proc/generate_water_display_icons()
 	for(var/key in SSwater_overlays.found_waters)
-		var/list/water_data = SSwater_overlays.found_waters[key]
-		var/found_icon = water_data[1]
-		var/found_icon_state = water_data[2]
-		var/found_depth = water_data[3]
-		var/found_type = water_data[4]
-		if(found_depth >= DEPTH_COAST_DEPTHLESS)	//somehow we got a non water turf in SSwater_overlays.found_waters, it shouldnt get an overlay for it
-			continue
+		var/datum/potential_water_overlay/water_data = SSwater_overlays.found_waters[key]
+		var/found_icon = water_data.icon
+		var/found_icon_state = water_data.icon_state
+		var/found_depth = water_data.depth
+		var/found_type = water_data.water_type
+		if(found_depth >= DEPTH_COAST_DEPTHLESS)	//some turfs, like coastlines have depthless values but are still water and need to be so to create the water_overlay_component ....
+			continue	//.							... BUT dont need overlays, we just continue past these here
 		var/toxic = 0	//this works as a iterator... used exclusively for water turfs that use 'icons/turf/floors/desert_water.dmi' which have 2 addtional varients
 		for(var/working_icon in handle_toxic_states(found_icon))	//if the water turf can be toxic, we need to run a loop for each possiblity, handle_toxic_states returns a list[1] for waters that dont have that possibility or a list[3] for those that do
 			for(var/texture_size in configs_by_size)
@@ -133,23 +151,23 @@ SUBSYSTEM_DEF(water_overlays)
 					for(var/i=0, i<pieces, i++)
 						for(var/j=0, j<pieces, j++)
 							sized_water_texture.Blend(turf_texture, ICON_OVERLAY, (i*32)+1, (j*32)+1)     //place our 32x32 textures on our water texture every 32 pixels
-					if(config.immerse_behavior != "immerse_no" && found_depth <= config.immerse_at_depth)
+					if((config.immerse_behavior != WATER_OVERLAY_CONFIG_IMMERSE_NONE || config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_IMMERSE) && found_depth <= config.immerse_at_depth)
 						SSwater_overlays.water_overlay_icons["[texture_size]_[found_type]_[toxic]_[found_depth]_immersed"] = icon(sized_water_texture)	// for the full water overlay
 
 					//	V V V V	construct depthed overlay for mob texture size	V V V V
 					var/icon/culled_water = icon(sized_water_texture)
 					var/texture_height = sized_water_texture.Height()
-					subtraction_texture.Shift(SOUTH, (texture_height - abs(found_depth)-3), FALSE)         //we move it down to "water level" if we're not using a custom mob culling mask
+					subtraction_texture.Shift(SOUTH, (texture_height + found_depth), FALSE)         //we move it down to "water level" if we're not using a custom mob culling mask
 					culled_water.AddAlphaMask(subtraction_texture)
 					SSwater_overlays.water_overlay_icons["[texture_size]_[found_type]_[toxic]_[found_depth]"] = culled_water	//this is the default overlays, made according to depth
 
 					//	V V V V	resting overlays	V V V V
 					var/resting_key = found_depth >= -4 ? "coast" : "deep"
-					if(config.resting_behavior == "resting_some")
+					if(config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_SOME)
 						var/icon/resting_overlay = icon(sized_water_texture)
 						resting_overlay.AddAlphaMask(icon(SSwater_overlays.get_icon_path(config.icon_size), "culling_[config.icon_state_key]_resting_[resting_key]"))
 						SSwater_overlays.water_overlay_icons["32_[found_type]_[toxic]_[found_depth]_[config.icon_state_key]_resting"] = resting_overlay
-					else if(config.resting_behavior == "resting_angled")
+					else if(config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_ANGLED)
 						var/icon/resting_east = icon(sized_water_texture)
 						var/icon/resting_west = icon(sized_water_texture)
 						resting_east.AddAlphaMask(icon(SSwater_overlays.get_icon_path(config.icon_size), "culling_[config.icon_state_key]_resting_[resting_key]_e"))

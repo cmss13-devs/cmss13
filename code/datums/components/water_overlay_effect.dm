@@ -17,8 +17,7 @@
 	if((!ismob(parent) && !isobj(parent)) || !istype(input_turf, /turf/open))	//this should already be handled in the turfs creating this component, but a few backup checks cant hurt
 		return COMPONENT_INCOMPATIBLE
 
-	effect_turf = input_turf
-	the_splash = new /obj/effect/water_splash/water_overlay_splash(null, effect_turf.depth <= DEPTH_SHALLOW && water_depth == DEPTH_LAND ? TRUE : FALSE)	//if the waters deep enough, and no depth b4 --> SPLASH SOUND! :DDDD
+	the_splash = new /obj/effect/water_splash/water_overlay_splash(null, water_depth <= DEPTH_SHALLOW)	//if the waters deep enough --> SPLASH SOUND! :DDDD
 	the_water = new /obj/effect/water_overlay_effect()
 	effect_turf = input_turf
 	water_depth = effect_turf.depth

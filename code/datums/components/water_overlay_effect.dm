@@ -17,7 +17,7 @@
 	if((!ismob(parent) && !isobj(parent)) || !istype(input_turf, /turf/open))	//this should already be handled in the turfs creating this component, but a few backup checks cant hurt
 		return COMPONENT_INCOMPATIBLE
 
-	the_splash = new /obj/effect/water_splash/water_overlay_splash(null, water_depth <= DEPTH_SHALLOW)	//if the waters deep enough --> SPLASH SOUND! :DDDD
+	the_splash = new /obj/effect/water_splash/water_overlay_splash(null, water_depth <= WATER_DEPTH_SHALLOW)	//if the waters deep enough --> SPLASH SOUND! :DDDD
 	the_water = new /obj/effect/water_overlay_effect()
 	effect_turf = input_turf
 	water_depth = effect_turf.depth
@@ -74,13 +74,14 @@
 /datum/component/water_overlay_effect/RegisterWithParent(datum/target)
 	. = ..()
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(handle_position_change))
+	RegisterSignal(parent, COMSIG_MOVABLE_LAUNCHED_LANDED, PROC_REF(handle_landed))
+	RegisterSignal(parent, COMSIG_MOB_UNHAULED, PROC_REF(handle_buckle_change))
+	RegisterSignal(parent, COMSIG_MOB_DEATH, PROC_REF(handle_death))
 	RegisterSignal(parent, COMSIG_LIVING_SET_LYING_ANGLE, PROC_REF(handle_resting_change))
 	RegisterSignal(parent, COMSIG_LIVING_SET_BODY_POSITION, PROC_REF(handle_set_body_position))
 	RegisterSignal(parent, COMSIG_LIVING_SET_BUCKLED, PROC_REF(handle_buckle_change))
-	RegisterSignal(parent, COMSIG_MOB_UNHAULED, PROC_REF(handle_buckle_change))
 	RegisterSignal(parent, COMSIG_LIVING_LAYER_UPDATED, PROC_REF(handle_layer_update))
 	RegisterSignal(parent, COMSIG_HUMAN_HAULED, PROC_REF(handle_hauled))
-	RegisterSignal(parent, COMSIG_MOVABLE_LAUNCHED_LANDED, PROC_REF(handle_landed))
 	if(isxeno(parent))
 		RegisterSignal(parent, COMSIG_XENO_POUNCE_STARTED, PROC_REF(handle_pounce))
 
@@ -94,7 +95,8 @@
 		COMSIG_MOB_UNHAULED,
 		COMSIG_LIVING_LAYER_UPDATED,
 		COMSIG_HUMAN_HAULED,
-		COMSIG_MOVABLE_LAUNCHED_LANDED))
+		COMSIG_MOVABLE_LAUNCHED_LANDED,
+		COMSIG_MOB_DEATH))
 	if(isxeno(parent))
 		UnregisterSignal(parent, COMSIG_XENO_POUNCE_STARTED)
 
@@ -104,7 +106,7 @@
 	var/turf/open/gm/moved_to_turf = get_turf(parent_source)
 	var/obj/effect/blocker/water/water_blocker = locate(/obj/effect/blocker/water/) in moved_to_turf.contents
 
-	if(moved_to_turf.depth >= DEPTH_LAND || (moved_to_turf.covered && water_blocker == null) || (moved_to_turf.covered && water_blocker && !water_blocker.dispersing))
+	if(moved_to_turf.depth >= WATER_DEPTH_LAND || (moved_to_turf.covered && water_blocker == null) || (moved_to_turf.covered && water_blocker && !water_blocker.dispersing))
 		qdel(src)
 		return
 
@@ -165,6 +167,10 @@
 	var/my_turf = get_turf(parent)
 	new /obj/effect/water_splash(my_turf, TRUE)
 
+/datum/component/water_overlay_effect/proc/handle_death()
+	SIGNAL_HANDLER
+	update()
+
 /datum/component/water_overlay_effect/proc/update_hidden()
 	if(iscarbon(parent))
 		var/mob/living/carbon/input_carbon = parent
@@ -176,7 +182,7 @@
 				the_splash.icon_state = null
 			hidden = HIDDEN_OFFSET
 			return
-		else if(water_depth == DEPTH_COAST_DEPTHLESS || input_carbon.buckled || HAS_TRAIT(input_carbon, TRAIT_LAUNCHED))
+		else if(water_depth == WATER_DEPTH_COAST_DEPTHLESS || input_carbon.buckled || HAS_TRAIT(input_carbon, TRAIT_LAUNCHED))
 			if(!hidden) //if it wasnt hidden before but now is
 				animate(input_carbon, pixel_y = initial(input_carbon.pixel_y), 0.2 SECONDS) //remove offset
 				input_carbon.layer = initial(input_carbon.layer )

@@ -13,7 +13,7 @@
 	var/scorchable = FALSE //if TRUE set to be an icon_state which is the full sprite version of whatever gets scorched --> for border turfs like grass edges and shorelines
 	var/scorchedness = 0 //how scorched is this turf 0 to 3
 	var/icon_state_before_scorching //this is really dumb, blame the mappers...
-	var/depth = DEPTH_LAND // for water_overlay_effects
+	var/depth = WATER_DEPTH_LAND // for water_overlay_effects
 	var/covered = 0	//if it has a catwalk like thing
 	var/water_type = null //for specifically partial water turfs: used in water overlays, as to not overlay sand/dirt/grass etc
 
@@ -149,7 +149,7 @@
 				. += "Well Done."
 
 /turf/open/proc/update_water_element(force=null)
-	if(force == TRUE || force == null && depth < DEPTH_LAND && !covered)
+	if(force == TRUE || force == null && depth < WATER_DEPTH_LAND && !covered)
 		AddElement(/datum/element/water_turf)
 	else
 		RemoveElement(/datum/element/water_turf)
@@ -163,7 +163,7 @@
 	update_overlays()
 
 /turf/open/proc/become_water(set_depth, set_type)
-	if(!covered && depth < DEPTH_LAND)	//already water
+	if(!covered && depth < WATER_DEPTH_LAND)	//already water
 		return
 	depth = set_depth
 	turf_flags |= TURF_WATERLIKE
@@ -179,7 +179,7 @@
 	update_water_element(TRUE)
 
 /turf/open/proc/stop_being_water()
-	depth = DEPTH_LAND
+	depth = WATER_DEPTH_LAND
 	turf_flags &= ~TURF_WATERLIKE
 	water_type = null
 	layer = initial(layer)
@@ -611,25 +611,25 @@
 	water_type = /turf/open/gm/river
 
 /turf/open/gm/grass/grassbeach/north
-	depth = DEPTH_COAST_INTERMEDIATE
+	depth = WATER_DEPTH_COAST_INTERMEDIATE
 
 /turf/open/gm/grass/grassbeach/south
 	dir = 1
 
 /turf/open/gm/grass/grassbeach/west
 	dir = 4
-	depth = DEPTH_COAST_SHALLOW
+	depth = WATER_DEPTH_COAST_SHALLOW
 
 /turf/open/gm/grass/grassbeach/east
 	dir = 8
-	depth = DEPTH_COAST_SHALLOW
+	depth = WATER_DEPTH_COAST_SHALLOW
 
 /turf/open/gm/grass/gbcorner
 	icon_state = "gbcorner"
 
 
 /turf/open/gm/grass/gbcorner/north_west
-	depth = DEPTH_COAST_SHALLOW
+	depth = WATER_DEPTH_COAST_SHALLOW
 
 /turf/open/gm/grass/gbcorner/south_east
 	dir = 1
@@ -639,7 +639,7 @@
 
 /turf/open/gm/grass/gbcorner/north_east
 	dir = 8
-	depth = DEPTH_COAST_SHALLOW
+	depth = WATER_DEPTH_COAST_SHALLOW
 
 /turf/open/gm/grass/Initialize(mapload, ...)
 	. = ..()
@@ -772,7 +772,7 @@
 	supports_surgery = FALSE
 	minimap_color = MINIMAP_WATER
 	is_weedable = NOT_WEEDABLE
-	depth = DEPTH_SHALLOW //used for the offset of mobs that enter it (see water_overlay_effect.dm)
+	depth = WATER_DEPTH_SHALLOW //used for the offset of mobs that enter it (see water_overlay_effect.dm)
 	layer = UNDER_WATER_TURF_LAYER
 	turf_flags = TURF_WATER
 	water_type = /turf/open/gm/river
@@ -884,14 +884,14 @@
 	name = "pool"
 
 /turf/open/gm/river/pool/no_overlay
-	depth = DEPTH_COAST_DEPTHLESS
+	depth = WATER_DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/river/no_overlay
-	depth = DEPTH_COAST_DEPTHLESS
+	depth = WATER_DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/river/no_overlay/sewage
 	name = "sewage"
-	depth = DEPTH_COAST_DEPTHLESS
+	depth = WATER_DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/river/shallow_ocean_shallow_ocean
 	name = "shallow ocean"
@@ -902,7 +902,7 @@
 	color = "#dae3e2"
 	base_river_slowdown = 4 // VERY. SLOW.
 	icon_state = "seaintermediate"
-	depth = DEPTH_INTERMEDIATE
+	depth = WATER_DEPTH_INTERMEDIATE
 	water_type = /turf/open/gm/river/ocean
 
 /turf/open/gm/river/ocean/deep_ocean
@@ -910,7 +910,7 @@
 	default_name = "deep ocean"
 	allow_construction = FALSE
 	icon_state = "seadeep"
-	depth = DEPTH_DEEP
+	depth = WATER_DEPTH_DEEP
 	water_type = /turf/open/gm/river/ocean/deep_ocean
 
 /turf/open/gm/river/ocean/Entered(atom/movable/entered_movable, atom/old_loc)
@@ -961,17 +961,17 @@
 	baseturfs = /turf/open/gm/coast
 	supports_surgery = FALSE
 	is_weedable = NOT_WEEDABLE
-	depth = DEPTH_COAST_SHALLOW //used for the offset of mobs that enter it (see water_overlay_effect.dm)
+	depth = WATER_DEPTH_COAST_SHALLOW //used for the offset of mobs that enter it (see water_overlay_effect.dm)
 	layer = UNDER_WATER_TURF_LAYER
 	turf_flags = TURF_WATER
 	water_type = /turf/open/gm/river
 
 /turf/open/gm/coast/north
-	depth = DEPTH_COAST_INTERMEDIATE
+	depth = WATER_DEPTH_COAST_INTERMEDIATE
 
 /turf/open/gm/coast/south
 	dir = 1
-	depth = DEPTH_COAST_DEPTHLESS
+	depth = WATER_DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/coast/west
 	dir = 4
@@ -986,23 +986,23 @@
 	icon_state = "beachcorner"
 
 /turf/open/gm/coast/beachcorner/north_west
-	depth = DEPTH_COAST_SHALLOW
+	depth = WATER_DEPTH_COAST_SHALLOW
 
 /turf/open/gm/coast/beachcorner/north_east
 	dir = 1
-	depth = DEPTH_COAST_SHALLOW
+	depth = WATER_DEPTH_COAST_SHALLOW
 
 /turf/open/gm/coast/beachcorner/south_east
 	dir = 4
-	depth = DEPTH_COAST_DEPTHLESS
+	depth = WATER_DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/coast/beachcorner/south_west
 	dir = 8
-	depth = DEPTH_COAST_DEPTHLESS
+	depth = WATER_DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/coast/beachcorner2
 	icon_state = "beachcorner2"
-	depth = DEPTH_COAST_INTERMEDIATE
+	depth = WATER_DEPTH_COAST_INTERMEDIATE
 
 /turf/open/gm/coast/beachcorner2/east
 	dir = EAST
@@ -1011,7 +1011,7 @@
 
 /turf/open/gm/coast/beachcorner2/north_east
 	dir = 1
-	depth = DEPTH_COAST_INTERMEDIATE
+	depth = WATER_DEPTH_COAST_INTERMEDIATE
 
 /turf/open/gm/coast/beachcorner2/south_west
 	dir = 4
@@ -1028,7 +1028,7 @@
 	minimap_color = MINIMAP_WATER
 	is_groundmap_turf = FALSE // Not real ground
 	fishing_allowed = TRUE
-	depth = DEPTH_INTERMEDIATE //used for the offset of mobs that enter it (see water_overlay_effect.dm)
+	depth = WATER_DEPTH_INTERMEDIATE //used for the offset of mobs that enter it (see water_overlay_effect.dm)
 
 //ELEVATOR SHAFT-----------------------------------//
 /turf/open/gm/empty
@@ -1048,7 +1048,7 @@
 	icon_state = "bluesea"
 	can_bloody = FALSE
 	supports_surgery = FALSE
-	depth = DEPTH_INTERMEDIATE //used for water_overlay_effect
+	depth = WATER_DEPTH_INTERMEDIATE //used for water_overlay_effect
 
 //Ice Colony grounds
 

@@ -17,7 +17,7 @@
 	var/disperse_group = 1
 	var/spread_delay = 0.5 SECONDS
 	var/list/water_sounds = list('sound/effects/slosh.ogg')
-	var/created_depth = DEPTH_SHALLOW
+	var/created_depth = WATER_DEPTH_SHALLOW
 	var/water_type = /turf/open/gm/river/desert/tyrargo/deep
 
 /obj/effect/blocker/water/Initialize(mapload, ...)

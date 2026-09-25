@@ -162,10 +162,10 @@
 /turf/open/desert/desert_shore
 	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "shore1"
-	var/toxic = 0
+	var/toxic = WATER_TOXIC_NO
 	supports_surgery = FALSE
 	is_weedable = NOT_WEEDABLE
-	depth = DEPTH_COAST_SHALLOW
+	depth = WATER_DEPTH_COAST_SHALLOW
 	layer = UNDER_WATER_TURF_LAYER
 	turf_flags = TURF_WATER
 	water_type = /turf/open/gm/river/desert/shallow
@@ -173,32 +173,32 @@
 /turf/open/desert/desert_shore/update_icon()
 	..()
 	switch(toxic)
-		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_YES)
+		if(WATER_TOXIC_YES)
 			set_light(2)
 			icon = 'icons/turf/floors/desert_water_toxic.dmi'
-		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_NO)
+		if(WATER_TOXIC_NO)
 			set_light(0)
 			icon = 'icons/turf/floors/desert_water.dmi'
-		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_DISPERSING)
+		if(WATER_TOXIC_DISPERSING)
 			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
 
 /turf/open/desert/desert_shore/desert_shore1
 	name = "shore"
 	icon_state = "shore1"
-	depth = DEPTH_COAST_DEPTHLESS
+	depth = WATER_DEPTH_COAST_DEPTHLESS
 
 /turf/open/desert/desert_shore/desert_shore1/north
 	dir = NORTH
-	depth = DEPTH_COAST_INTERMEDIATE
+	depth = WATER_DEPTH_COAST_INTERMEDIATE
 
 /turf/open/desert/desert_shore/desert_shore1/east
 	dir = EAST
-	depth = DEPTH_COAST_SHALLOW
+	depth = WATER_DEPTH_COAST_SHALLOW
 
 /turf/open/desert/desert_shore/desert_shore1/west
 	dir = WEST
-	depth = DEPTH_COAST_SHALLOW
+	depth = WATER_DEPTH_COAST_SHALLOW
 
 //shore corners are outside edges, corner of land, rest water
 /turf/open/desert/desert_shore/shore_corner1 //theres 2 of these across all our maps and they're almost identical to shore_corner2
@@ -207,46 +207,46 @@
 
 /turf/open/desert/desert_shore/shore_corner1/north
 	dir = NORTH
-	depth = DEPTH_COAST_INTERMEDIATE
+	depth = WATER_DEPTH_COAST_INTERMEDIATE
 
 /turf/open/desert/desert_shore/shore_corner1/west
 	dir = WEST
-	depth = DEPTH_COAST_INTERMEDIATE
+	depth = WATER_DEPTH_COAST_INTERMEDIATE
 
 /turf/open/desert/desert_shore/shore_corner2 //much more popularily used compared to shore_corner1, the poster child of shore_corners
 	name = "shore"
 	icon_state = "shore_corner2"
-	depth = DEPTH_COAST_SHALLOW
+	depth = WATER_DEPTH_COAST_SHALLOW
 
 /turf/open/desert/desert_shore/shore_corner2/north
 	dir = NORTH
-	depth = DEPTH_COAST_INTERMEDIATE
+	depth = WATER_DEPTH_COAST_INTERMEDIATE
 
 /turf/open/desert/desert_shore/shore_corner2/east
 	dir = EAST
-	depth = DEPTH_COAST_SHALLOW
+	depth = WATER_DEPTH_COAST_SHALLOW
 
 /turf/open/desert/desert_shore/shore_corner2/west
 	dir = WEST
-	depth = DEPTH_COAST_INTERMEDIATE
+	depth = WATER_DEPTH_COAST_INTERMEDIATE
 
 //shore edges are inside edges, corner of water, rest land
 /turf/open/desert/desert_shore/shore_edge1
 	name = "shore"
 	icon_state = "shore_edge1"
-	depth = DEPTH_COAST_DEPTHLESS
+	depth = WATER_DEPTH_COAST_DEPTHLESS
 
 /turf/open/desert/desert_shore/shore_edge1/north
 	dir = NORTH
-	depth = DEPTH_COAST_SHALLOW
+	depth = WATER_DEPTH_COAST_SHALLOW
 
 /turf/open/desert/desert_shore/shore_edge1/east
 	dir = EAST
-	depth = DEPTH_COAST_SHALLOW
+	depth = WATER_DEPTH_COAST_SHALLOW
 
 /turf/open/desert/desert_shore/shore_edge1/west
 	dir = WEST
-	depth = DEPTH_COAST_DEPTHLESS
+	depth = WATER_DEPTH_COAST_DEPTHLESS
 
 /*
 /turf/open/desert/desert_shore/desert_shore2
@@ -307,20 +307,20 @@
 	name = "cave shore"
 	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "shore_caves"
-	var/toxic = 0
+	var/toxic = WATER_TOXIC_NO
 	layer = UNDER_WATER_TURF_LAYER
 	turf_flags = TURF_WATER
 
 /turf/open/desert/cave/cave_shore/update_icon()
 	..()
 	switch(toxic)
-		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_YES)
+		if(WATER_TOXIC_YES)
 			set_light(2)
 			icon = 'icons/turf/floors/desert_water_toxic.dmi'
-		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_NO)
+		if(WATER_TOXIC_NO)
 			set_light(0)
 			icon = 'icons/turf/floors/desert_water.dmi'
-		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_DISPERSING)
+		if(WATER_TOXIC_DISPERSING)
 			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
 
@@ -338,22 +338,22 @@
 	name = "water"
 	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "shallow"
-	var/toxic = 0
+	var/toxic = WATER_TOXIC_NO
 	default_name = "water"
 	is_weedable = NOT_WEEDABLE
-	depth = DEPTH_SHALLOW
+	depth = WATER_DEPTH_SHALLOW
 	water_type = /turf/open/gm/river/desert
 
 /turf/open/gm/river/desert/update_icon()
 	..()
 	switch(toxic)
-		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_YES)
+		if(WATER_TOXIC_YES)
 			set_light(2)
 			icon = 'icons/turf/floors/desert_water_toxic.dmi'
-		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_NO)
+		if(WATER_TOXIC_NO)
 			set_light(0)
 			icon = 'icons/turf/floors/desert_water.dmi'
-		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_DISPERSING)
+		if(WATER_TOXIC_DISPERSING)
 			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
 	update_overlays()
@@ -361,7 +361,7 @@
 //shallow water
 /turf/open/gm/river/desert/shallow
 	icon_state = "shallow"
-	depth = DEPTH_SHALLOW
+	depth = WATER_DEPTH_SHALLOW
 	water_type = /turf/open/gm/river/desert/shallow
 
 /turf/open/gm/river/desert/shallow/covered
@@ -378,54 +378,63 @@
 //shallow water transition to deep
 /turf/open/gm/river/desert/shallow_edge
 	icon_state = "shallow_edge"
-	depth = DEPTH_INTERMEDIATE
+	depth = WATER_DEPTH_SHALLOW
 
 /turf/open/gm/river/desert/shallow_edge/southwest
 	dir = SOUTHWEST
-	depth = DEPTH_SHALLOW
+	depth = WATER_DEPTH_SHALLOW
 
 /turf/open/gm/river/desert/shallow_edge/north
 	dir = NORTH
-	depth = DEPTH_DEEP
+	depth = WATER_DEPTH_DEEP
 	water_type = /turf/open/gm/river/desert/deep
 
 /turf/open/gm/river/desert/shallow_edge/east
 	dir = EAST
+	depth = WATER_DEPTH_INTERMEDIATE
 
 /turf/open/gm/river/desert/shallow_edge/northeast
 	dir = NORTHEAST
+	depth = WATER_DEPTH_INTERMEDIATE
 
 /turf/open/gm/river/desert/shallow_edge/southeast
 	dir = SOUTHEAST
-	depth = DEPTH_SHALLOW
+	depth = WATER_DEPTH_SHALLOW
 
 /turf/open/gm/river/desert/shallow_edge/west
 	dir = WEST
+	depth = WATER_DEPTH_INTERMEDIATE
 
 /turf/open/gm/river/desert/shallow_edge/northwest
 	dir = NORTHWEST
+	depth = WATER_DEPTH_INTERMEDIATE
 
 /turf/open/gm/river/desert/shallow_edge/covered
 	covered = TRUE
 	icon = 'icons/turf/floors/desert_water_covered.dmi'
+	depth = WATER_DEPTH_SHALLOW
 
 /turf/open/gm/river/desert/shallow_edge/covered/north
 	dir = NORTH
 	water_type = /turf/open/gm/river/desert/deep
+	depth = WATER_DEPTH_DEEP
 
 /turf/open/gm/river/desert/shallow_edge/covered/east
 	dir = EAST
+	depth = WATER_DEPTH_INTERMEDIATE
 
 /turf/open/gm/river/desert/shallow_edge/covered/northeast
 	dir = NORTHEAST
+	depth = WATER_DEPTH_INTERMEDIATE
 
 /turf/open/gm/river/desert/shallow_edge/covered/west
 	dir = WEST
+	depth = WATER_DEPTH_INTERMEDIATE
 
 //shallow water transition to deep corner
 /turf/open/gm/river/desert/shallow_corner
 	icon_state = "shallow_c"
-	depth = DEPTH_DEEP
+	depth = WATER_DEPTH_DEEP
 	water_type = /turf/open/gm/river/desert/deep
 
 /turf/open/gm/river/desert/shallow_corner/covered
@@ -434,23 +443,23 @@
 
 /turf/open/gm/river/desert/shallow_corner/north
 	dir = NORTH
-	depth = DEPTH_DEEP
+	depth = WATER_DEPTH_DEEP
 
 /turf/open/gm/river/desert/shallow_corner/east
 	dir = EAST
-	depth = DEPTH_INTERMEDIATE
+	depth = WATER_DEPTH_INTERMEDIATE
 	water_type = /turf/open/gm/river/desert/shallow
 
 /turf/open/gm/river/desert/shallow_corner/west
 	dir = WEST
-	depth = DEPTH_INTERMEDIATE
+	depth = WATER_DEPTH_INTERMEDIATE
 	water_type = /turf/open/gm/river/desert/shallow
 
 
 //deep water
 /turf/open/gm/river/desert/deep
 	icon_state = "deep"
-	depth = DEPTH_DEEP
+	depth = WATER_DEPTH_DEEP
 	water_type = /turf/open/gm/river/desert/deep
 
 /turf/open/gm/river/desert/deep/no_slowdown
@@ -466,19 +475,19 @@
 //shallow water channel plain
 /turf/open/gm/river/desert/channel
 	icon_state = "channel"
-	depth = DEPTH_SHALLOW
+	depth = WATER_DEPTH_SHALLOW
 	water_type = /turf/open/gm/river/desert/channel
 
 //shallow water channel edge
 /turf/open/gm/river/desert/channel_edge
 	icon_state = "channel_edge"
-	depth = DEPTH_SHALLOW
+	depth = WATER_DEPTH_SHALLOW
 	water_type = /turf/open/gm/river/desert/channel_edge
 
 //shallow water channel corner
 /turf/open/gm/river/desert/channel_three
 	icon_state = "channel_three"
-	depth = DEPTH_SHALLOW
+	depth = WATER_DEPTH_SHALLOW
 	water_type = /turf/open/gm/river/desert/channel_three
 
 
@@ -680,7 +689,7 @@
 
 /turf/open/gm/river/desert/tyrargo/deep
 	icon_state = "seadeep"
-	depth = DEPTH_INTERMEDIATE
+	depth = WATER_DEPTH_INTERMEDIATE
 	water_type = /turf/open/gm/river/desert/tyrargo/deep
 
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown

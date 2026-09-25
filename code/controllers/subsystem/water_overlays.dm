@@ -71,7 +71,7 @@ SUBSYSTEM_DEF(water_overlays)
 	if(potential_water == null || !istype(potential_water, /turf/open))
 		return FALSE
 	var/turf/open/potential_open_water = potential_water
-	if(potential_open_water.covered || potential_open_water.depth >= DEPTH_LAND || potential_open_water.turf_flags & TURF_CATWALKED)
+	if(potential_open_water.covered || potential_open_water.depth >= WATER_DEPTH_LAND || potential_open_water.turf_flags & TURF_CATWALKED)
 		return FALSE
 	return potential_water.turf_flags & (TURF_WATER | TURF_WATERLIKE)
 
@@ -79,13 +79,13 @@ SUBSYSTEM_DEF(water_overlays)
 	if(!is_water(potential_water))
 		return FALSE
 	var/turf/open/potential_open_water = potential_water
-	return potential_open_water.depth <= DEPTH_SHALLOW
+	return potential_open_water.depth <= WATER_DEPTH_SHALLOW
 
 /datum/controller/subsystem/water_overlays/proc/is_coastline(turf/potential_coastline)
 	if(!is_water(potential_coastline))
 		return FALSE
 	var/turf/open/potential_open_coastline = potential_coastline
-	return potential_open_coastline.depth >= DEPTH_COAST_INTERMEDIATE
+	return potential_open_coastline.depth >= WATER_DEPTH_COAST_INTERMEDIATE
 
 /datum/controller/subsystem/water_overlays/proc/handle_toxic_states(in_icon)			//adds duplicate states for toxic water turfs so we can handle toxic states
 	if(in_icon == 'icons/turf/floors/desert_water.dmi')
@@ -118,6 +118,8 @@ SUBSYSTEM_DEF(water_overlays)
 	generate_water_display_icons() //called again to handle nightmare water turfs (usually redundant or tiny)
 	UnregisterSignal(SSnightmare, COMSIG_NIGHTMARES_PREPARE_GAME_COMPLETE)
 
+#define ADDITIONAL_DEPTH_OFFSET 3
+
 /**
 *	water turfs are hardcoded to only have certain depths, but the shorelines take from their fulltile varients ---> turf/open var/water_type
 *	so for coasts we only generate a very shallow overlay of their fulltile varient, this greatly shrinks the amount we need to make
@@ -133,7 +135,7 @@ SUBSYSTEM_DEF(water_overlays)
 		var/found_icon_state = water_data.icon_state
 		var/found_depth = water_data.depth
 		var/found_type = water_data.water_type
-		if(found_depth >= DEPTH_COAST_DEPTHLESS)	//some turfs, like coastlines have depthless values but are still water and need to be so to create the water_overlay_component ....
+		if(found_depth >= WATER_DEPTH_COAST_DEPTHLESS)	//some turfs, like coastlines have depthless values but are still water and need to be so to create the water_overlay_component ....
 			continue	//.							... BUT dont need overlays, we just continue past these here
 		var/toxic = 0	//this works as a iterator... used exclusively for water turfs that use 'icons/turf/floors/desert_water.dmi' which have 2 addtional varients
 		for(var/working_icon in handle_toxic_states(found_icon))	//if the water turf can be toxic, we need to run a loop for each possiblity, handle_toxic_states returns a list[1] for waters that dont have that possibility or a list[3] for those that do
@@ -157,7 +159,7 @@ SUBSYSTEM_DEF(water_overlays)
 					//	V V V V	construct depthed overlay for mob texture size	V V V V
 					var/icon/culled_water = icon(sized_water_texture)
 					var/texture_height = sized_water_texture.Height()
-					subtraction_texture.Shift(SOUTH, (texture_height + found_depth), FALSE)         //we move it down to "water level" if we're not using a custom mob culling mask
+					subtraction_texture.Shift(SOUTH, (texture_height + found_depth - ADDITIONAL_DEPTH_OFFSET), FALSE)         //we move it down to "water level" if we're not using a custom mob culling mask
 					culled_water.AddAlphaMask(subtraction_texture)
 					SSwater_overlays.water_overlay_icons["[texture_size]_[found_type]_[toxic]_[found_depth]"] = culled_water	//this is the default overlays, made according to depth
 
@@ -181,4 +183,6 @@ SUBSYSTEM_DEF(water_overlays)
 						var/icon/special_mask = icon(SSwater_overlays.get_icon_path(config.icon_size), "culling_[config.icon_state_key]")
 						special_icon.AddAlphaMask(special_mask)
 						SSwater_overlays.water_overlay_icons["[texture_size]_[found_type]_[toxic]_[found_depth]_[config.icon_state_key]"] = special_icon
-			toxic = toxic == 0 ? -1 : (toxic == -1 ? 1 : INFINITY)
+			toxic = toxic == WATER_TOXIC_NO ? WATER_TOXIC_DISPERSING : (toxic == WATER_TOXIC_DISPERSING ? WATER_TOXIC_YES : null)
+
+#undef ADDITIONAL_DEPTH_OFFSET

@@ -14,7 +14,7 @@
 		return ELEMENT_INCOMPATIBLE
 
 	var/turf/open/open_target = target
-	if(open_target.depth >= DEPTH_LAND || open_target.covered)
+	if(open_target.depth >= WATER_DEPTH_LAND || open_target.covered)
 		return ELEMENT_INCOMPATIBLE
 
 	RegisterSignal(open_target, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
@@ -31,11 +31,11 @@
 	if(!isliving(mover))
 		return
 	var/mob/living/living_mover = mover
-	if(source.depth <= DEPTH_COAST_SHALLOW && living_mover.m_intent == MOVE_INTENT_RUN)	//walking doesnt make sounds from moving through water
-		var/soundname = source.depth >= DEPTH_COAST_INTERMEDIATE ? "shallowwading" : (source.depth >= DEPTH_SHALLOW ? "wading":"deepwading")
+	if(source.depth <= WATER_DEPTH_COAST_SHALLOW && living_mover.m_intent == MOVE_INTENT_RUN)	//walking doesnt make sounds from moving through water
+		var/soundname = source.depth >= WATER_DEPTH_COAST_INTERMEDIATE ? "shallowwading" : (source.depth >= WATER_DEPTH_SHALLOW ? "wading":"deepwading")
 		playsound(source, soundname, 10, 1, 10, falloff=1)
 
 /datum/element/water_turf/proc/on_landed_on(turf/open/hit_turf, atom/movable/mover)
 	SIGNAL_HANDLER
-	if(hit_turf.depth <= DEPTH_COAST_SHALLOW && !hit_turf.covered)
+	if(hit_turf.depth <= WATER_DEPTH_COAST_SHALLOW && !hit_turf.covered)
 		new /obj/effect/water_splash(hit_turf, TRUE)	//SPLASHHH!! something hit the water!

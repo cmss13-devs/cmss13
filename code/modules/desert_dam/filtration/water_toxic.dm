@@ -5,9 +5,6 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = ABOVE_FLY_LAYER //to make it visible in the map editor
 	var/toxic = WATER_TOXIC_YES
-	var/const/WATER_TOXIC_NO = 0
-	var/const/WATER_TOXIC_YES = 1
-	var/const/WATER_TOXIC_DISPERSING = -1
 	water_type = null
 
 /obj/effect/blocker/water/toxic/Group_1

@@ -15,7 +15,7 @@
 	/// when to start checking for immersal
 	var/immerse_behavior = WATER_OVERLAY_CONFIG_IMMERSE_WHEN_RESTING_DEPTHED
 	/// When should this mob get completely covered in the overlay
-	var/immerse_at_depth = DEPTH_DEEP
+	var/immerse_at_depth = WATER_DEPTH_DEEP
 
 /datum/water_overlay_config/human
 	icon_state_key = "human"
@@ -41,7 +41,7 @@
 	use_splash = FALSE
 	resting_behavior = WATER_OVERLAY_CONFIG_RESTING_IMMERSE
 	immerse_behavior = WATER_OVERLAY_CONFIG_IMMERSE_DEPTHED
-	immerse_at_depth = DEPTH_SHALLOW
+	immerse_at_depth = WATER_DEPTH_SHALLOW
 
 /datum/water_overlay_config/xeno/medium
 	icon_size = 64

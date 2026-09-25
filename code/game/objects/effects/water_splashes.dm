@@ -51,25 +51,25 @@
 	if(!is_immersed)
 		if(is_resting && config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_ANGLED)
 			var/resting_dir = affected_carbon.get_lying_angle() == 270 ? "e" : "w"
-			if(pixel_y_offset >= DEPTH_COAST_INTERMEDIATE)
+			if(pixel_y_offset >= WATER_DEPTH_COAST_INTERMEDIATE)
 				splash_state = "[config.icon_state_key]_resting_coast_[resting_dir]"
-			else if(pixel_y_offset <= DEPTH_SHALLOW)
+			else if(pixel_y_offset <= WATER_DEPTH_SHALLOW)
 				splash_state = "[config.icon_state_key]_resting_deep_[resting_dir]"
 		else if(is_resting && config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_SOME)
-			if(pixel_y_offset >= DEPTH_COAST_INTERMEDIATE)
+			if(pixel_y_offset >= WATER_DEPTH_COAST_INTERMEDIATE)
 				splash_state = "[config.icon_state_key]_resting_coast"
-			else if(pixel_y_offset <= DEPTH_SHALLOW)
+			else if(pixel_y_offset <= WATER_DEPTH_SHALLOW)
 				splash_state = "[config.icon_state_key]_resting_deep"
 		else
-			if(pixel_y_offset == DEPTH_COAST_SHALLOW) //shallow coast
+			if(pixel_y_offset == WATER_DEPTH_COAST_SHALLOW) //shallow coast
 				splash_state = "coast_shallow"
-			else if(pixel_y_offset == DEPTH_COAST_INTERMEDIATE) //deep coast
+			else if(pixel_y_offset == WATER_DEPTH_COAST_INTERMEDIATE) //deep coast
 				splash_state = "coast_deep"
-			else if(pixel_y_offset == DEPTH_SHALLOW) //shallows
+			else if(pixel_y_offset == WATER_DEPTH_SHALLOW) //shallows
 				splash_state = "shallow"
-			else if(pixel_y_offset == DEPTH_INTERMEDIATE)	//intermediate depth
+			else if(pixel_y_offset == WATER_DEPTH_INTERMEDIATE)	//intermediate depth
 				splash_state = "intermediate"
-			else //pixel_y_offset== DEPTH_DEEP -- deep water
+			else //pixel_y_offset== WATER_DEPTH_DEEP -- deep water
 				splash_state = "deep"
 	else
 		splash_state = affected_carbon.stat == DEAD ? "empty" : "bubbles"

@@ -477,45 +477,10 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	apply_overlay(SHOES_LAYER)
 
 /mob/living/carbon/human/proc/update_mouth(speaking = 0)	//nothing else other than mouth should be in this layer
-	var/obj/limb/head/my_head = get_limb("head")
-	my_head.my_mouth.update_appearance(src, speaking)
-	vis_contents += my_head.my_mouth
-	/*
-	if(m_style == null)
-		m_style = "toothy"
-	if(!isnull(m_style) && m_style != "none" && (species && species.flags & HAS_MOUTH))
-		if(wear_mask && wear_mask.flags_inv_hide & HIDEMOUTH)
-			return
-
-		var/icon_path = 'icons/mob/humans/mouth.dmi'
-		var/is_mouth_small = (copytext(m_style, 1, 7) == "small_")
-		var/clenched = (wear_mask && wear_mask.flags_inv_hide & HIDEMOUTHCLENCHED)
-		var/state
-
-		if(speaking == 0 || (clenched && is_mouth_small && speaking <= 1))	//not talking at all, no mouth
-			state = m_style
-		else if(speaking == 1)								//we're talking, add mouth
-			state = clenched ? "small_[m_style]" : m_style
-		else												//we're being very loud, use a larger mouth
-			var/base = is_mouth_small ? copytext(m_style, 7) : m_style
-			state = is_mouth_small || clenched ? base : "large_[base]"
-			if(speaking >= 3)
-				state = "[state]_scream"
-				/*we could make cigarettes and bayonets fall out of mouth when screaming here
-				if(istype(wear_mask, /obj/item/attachable/bayonet) || istype(wear_mask, /obj/item/clothing/mask/cigarette))
-					to_chat(src, SPAN_NOTICE("You feel the [wear_mask] slip out of your mouth with the large expression!"))
-					unequip proc (wear_mask)
-				*/
-
-		if(isspeciesyautja(src))
-			icon_path = 'icons/mob/humans/yaut_mouth.dmi'
-			state = speaking == 0 ? "" : "[skin_color]_[(speaking == 1 ? "talk" : "scream")]"
-
-		if(mouth_image == null)
-			mouth_image = image(icon_path, src, state,  -MOUTH_LAYER)
-			vis_contents += mouth_image
-		else
-			mouth_image.icon_state = icon_path*/
+	var/obj/limb/mouth/my_mouth = get_mouth()
+	if(my_mouth)
+		my_mouth.update_appearance(src, speaking)
+		vis_contents += my_mouth
 
 /mob/living/carbon/human/update_inv_s_store()
 	remove_overlay(SUIT_STORE_LAYER)

@@ -78,65 +78,7 @@
 	name = "right leg"
 	icon_state = "r_leg"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/r_leg
-/*
-/obj/item/organ/mouth
-	name = "YOU SHOULDNT SEE THIS"
-	layer = -MOUTH_LAYER
-	var/style = "toothy"
-	var/image/hiding_image
-	var/icon_path = 'icons/mob/humans/mouth.dmi'
-	var/is_mouth_small
 
-/obj/item/organ/mouth/Initialize(mapload, /mob/living/carbon/human/input_human)
-	. = ..()
-	style = input_human.m_style
-	hiding_image = new(src)
-	hiding_image.override = TRUE
-	hiding_image.alpha = 0
-	is_mouth_small = (copytext(style, 1, 7) == "small_")
-	if(isspeciesyautja(input_human))
-		icon_path = 'icons/mob/humans/yaut_mouth.dmi'
-
-/obj/item/organ/mouth/proc/set_style(new_style)
-	if(GLOB.mouth_styles_list[new_style])
-		style = new_style
-		is_mouth_small = (copytext(style, 1, 7) == "small_")
-		return TRUE
-	else
-		return FALSE
-
-/obj/item/organ/mouth/proc/hide_for(/mob/prospective_hiddener)
-	if(prospective_hiddener.client == null)
-		return
-	prospective_hiddener.client.images += hiding_image
-
-/obj/item/organ/mouth/proc/show_to(/mob/prospective_seeinger)
-	if(prospective_seeinger.client == null)
-		return
-	prospective_seeinger.client.images -= hiding_image
-
-/obj/item/organ/mouth/proc/update_appearance(/mob/living/carbon/human/input_human, speaking = 0)
-	var/clenched = (input_human.wear_mask && input_human.wear_mask.flags_inv_hide & HIDEMOUTHCLENCHED)
-	var/state
-	if(isspeciesyautja(input_human))
-		state = speaking == 0 ? "" : "[input_human.skin_color]_[(speaking == 1 ? "talk" : "scream")]"
-	else
-		if(speaking == 0 || (clenched && is_mouth_small && speaking <= 1))	//not talking at all, no mouth
-			state = "[style]"
-		else if(speaking == 1)								//we're talking, add mouth
-			state = clenched ? "small_[style]" : style
-		else												//we're being very loud, use a larger mouth
-			var/base = is_mouth_small ? copytext(style, 7) : style
-			state = is_mouth_small || clenched ? base : "large_[base]"
-			if(speaking >= 3)
-				state = "[state]_scream"
-				/*we could make cigarettes and bayonets fall out of mouth when screaming here
-				if(istype(wear_mask, /obj/item/attachable/bayonet) || istype(wear_mask, /obj/item/clothing/mask/cigarette))
-					to_chat(src, SPAN_NOTICE("You feel the [wear_mask] slip out of your mouth with the large expression!"))
-					unequip proc (wear_mask)
-				*/
-	icon = image(icon_path, src, state,  -MOUTH_LAYER)
-*/
 /obj/item/limb/head
 	name = "head"
 	icon_state = "head_m"
@@ -147,7 +89,6 @@
 	var/brain_item_type = /obj/item/organ/brain
 	var/brain_mob_type = /mob/living/brain
 	var/braindeath_on_decap = 1 //whether the brainmob dies when head is decapitated (used by synthetics)
-	//var/obj/item/organ/mouth/my_mouth
 
 /obj/item/limb/head/New(loc, mob/living/carbon/human/H, cause = "decapitation")
 	if(istype(H))

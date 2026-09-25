@@ -26,7 +26,7 @@
 	apply_mouth_visibility_to_viewers()
 
 /mob/living/carbon/human/proc/apply_mouth_visibility_to_viewers()
-	var/obj/item/organ/mouth/mouth = get_human_mouth()
+	var/obj/limb/mouth/mouth = get_mouth()
 	if(!mouth)
 		return
 	for(var/client/found_client as anything in GLOB.clients)

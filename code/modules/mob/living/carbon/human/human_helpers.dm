@@ -484,8 +484,6 @@
 		times = 0
 		addtimer(CALLBACK(src, PROC_REF(update_mouth)), timing_override SECONDS)
 
-/mob/living/carbon/human/proc/get_human_mouth()
-	var/obj/limb/head/found_head = get_limb("head")
-	if(found_head)
-		return found_head.my_mouth
-	return FALSE
+/mob/living/carbon/human/proc/get_mouth()
+	for(var/obj/limb/mouth/my_mouth in src)
+		return my_mouth

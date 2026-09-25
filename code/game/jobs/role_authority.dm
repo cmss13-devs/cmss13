@@ -275,11 +275,17 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	unassigned_players = null
 
-	// Now we take spare unfilled xeno slots and make them larva NEW
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
-	if(istype(hive) && istype(XJ))
-		hive.stored_larva += max(0, (XJ.total_positions - XJ.current_positions) \
-		+ (XJ.calculate_extra_spawn_positions(alternate_option_assigned)))
+	if(istype(hive))
+		// Now we take spare unfilled xeno slots and make them larva
+		if(istype(XJ))
+			hive.stored_larva += max(0, (XJ.total_positions - XJ.current_positions) \
+			+ (XJ.calculate_extra_spawn_positions(alternate_option_assigned)))
+
+		// No roundstart queen? We need a drone
+		var/datum/job/antag/xenos/queen/queen_job = temp_roles_for_mode[JOB_XENOMORPH_QUEEN]
+		if(queen_job && queen_job.current_positions == 0)
+			hive.stored_larva += 1
 
 	/*===============================================================*/
 

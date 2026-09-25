@@ -496,7 +496,7 @@
 						carbon_target.apply_effect(1, SLOW)
 					else
 						carbon_target.apply_effect(1, WEAKEN)
-						to_chat(carbon_target, SPAN_WARNING("The violent tremors makes you lose your footing!"))
+						to_chat(carbon_target, SPAN_WARNING("The violent tremors make you lose your footing!"))
 			playsound(get_turf(xeno), 'sound/effects/bang.ogg', 25, 0)
 			return
 		var/list/ram_dirs = get_perpen_dir(xeno.dir)

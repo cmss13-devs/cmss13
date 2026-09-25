@@ -1,7 +1,7 @@
 /datum/xeno_strain/oppressor
 	// Dread it, run from it, destiny still arrives... or should I say, I do
 	name = PRAETORIAN_OPPRESSOR
-	description = "We abandon all of our acid-based abilities, our dash, some speed, and a bit of our slash damage for some resistance against small explosives, slashes that deal extra damage to prone targets, and several powerful abilities. Our Abduct ability pulls up to three non-prone enemies towards us, slows them, and has varying effects depending on how many victims pull. Our Dislocate ability deals armor-piercing damage, extra damage to slowed enemies, and reduces all ability cooldowns by 5 seconds if it lands. We exchange our tail stab for Tail Seize, which has a shorter windup, extra range, and grabs and slows enemies. Finally, Tail Lash, after a windup, knocks back and slows anything in a 2x3 cone in front of you."
+	description = "We abandon all of our acid-based abilities, our dash, some speed, and a bit of our slash damage for some resistance against small explosives, slashes that deal extra damage to prone targets, and several powerful abilities. Our Abduct ability pulls up to three non-prone enemies towards us, slows them, and has varying effects depending on how many victims we pull. Our Dislocate ability deals armor-piercing damage, extra damage to slowed enemies, and reduces all ability cooldowns by 5 seconds if it lands. We exchange our tail stab for Tail Seize, which has a shorter windup, extra range, and grabs and slows enemies. Finally, Tail Lash, after a windup, knocks back and slows anything in a 2x3 cone in front of us."
 	flavor_description = "My reach is endless, this one will pull down the heavens."
 	icon_state_prefix = "Oppressor"
 
@@ -217,12 +217,12 @@
 				var/mob/living/carbon/human/target_human = target
 				target_human.update_xeno_hostile_hud()
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target, TRAIT_SOURCE_ABILITY("Abduct")), get_xeno_stun_duration(target, 2.5 SECONDS))
-			to_chat(target, SPAN_XENOHIGHDANGER("[abduct_user] has pinned us to the ground! We cannot move!"))
+			to_chat(target, SPAN_XENOHIGHDANGER("[abduct_user] has pinned you to the ground! You cannot move!"))
 
 			target.set_effect(2, DAZE)
 		else if(LAZYLEN(targets) >= 3)
 			target.apply_effect(get_xeno_stun_duration(target, 1.3), WEAKEN)
-			to_chat(target, SPAN_XENOHIGHDANGER("We are slammed into the other victims of [abduct_user]!"))
+			to_chat(target, SPAN_XENOHIGHDANGER("You are slammed into the other victims of [abduct_user]!"))
 
 		shake_camera(target, 10, 1)
 

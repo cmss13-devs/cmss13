@@ -1,6 +1,6 @@
 /datum/xeno_strain/trapper
 	name = BOILER_TRAPPER
-	description = "We trade our ability to bombard, lance, and dump our acid for some speed, the ability to create traps and acid mines, and to change our bombard into an acid shotgun. With our longer-range vision, we can set up traps that immobilize our opponents and place acid mines to deal damage to them and their barricades. For each target hit, we reduce the cooldown of our deployments. Finally, hitting enemies with our Acid Shotgun ability adds a stack of insight to empower the next trap we place once we reach a maximum of ten insight. A point-blank shot or a shot on a stunned target will instantly apply ten stacks."
+	description = "We trade our ability to bombard and dump our acid for some speed, the ability to create traps and acid mines, and to change our bombard into an acid shotgun. With our longer-range vision, we can set up traps that immobilize our opponents and place acid mines to deal damage to them and their barricades. For each target hit, we reduce the cooldown of our deployments. Finally, hitting enemies with our Acid Shotgun ability adds a stack of insight to empower the next trap we place once we reach a maximum of ten insight. A point-blank shot or a shot on a stunned target will instantly apply ten stacks."
 	flavor_description = "The battlefield is my canvas, this one, my painter. Melt them where they stand."
 
 	actions_to_remove = list(
@@ -186,10 +186,10 @@
 		acid_bolt_message = "a powerful bolt of acid"
 
 	xeno.visible_message(SPAN_XENODANGER("[xeno] fires " + acid_bolt_message + " at [affected_atom]!"), SPAN_XENODANGER("We fire " + acid_bolt_message + " at [affected_atom]!"))
-	new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(turf, damage, delay, empowered, "We are blasted with " + acid_bolt_message + "!", xeno)
+	new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(turf, damage, delay, empowered, "You are blasted with " + acid_bolt_message + "!", xeno)
 
 	for(var/turf/target_turf in orange(1, turf))
-		new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(target_turf, damage, delay, empowered, "We are blasted with a " + acid_bolt_message + "!", xeno)
+		new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(target_turf, damage, delay, empowered, "You are blasted with a " + acid_bolt_message + "!", xeno)
 
 	if(empowered)
 		empowered = FALSE

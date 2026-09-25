@@ -1,7 +1,7 @@
 /datum/xeno_strain/berserker
 	name = RAVAGER_BERSERKER
 	description = "We lose our Empower, Charge, and Scissor Cut, decrease our health, and sacrifice a bit of our influence under frenzy pheromones to increase our movement speed, slightly increase our armor, and gain a new set of abilities that make us a terrifying melee monster. By slashing, we heal ourselves and gain a stack of rage that increases our armor, movement speed, attack speed, and our heals per slash, to a maximum of five rage. Our new Apprehend ability increases our movement speed and applies a slow on the next target we slash. Our Clothesline ability flings our target to heal ourselves, even more-so if we have a rage stack that will be used up. Finally, Eviscerate unleashes a devastating windmill attack that heals us for every enemy we hit after an immobilizing wind-up."
-	flavor_description = "Unbridled fury fills this one. We will become an extension of my rage."
+	flavor_description = "Unbridled fury fills this one. It will become an extension of my rage."
 	icon_state_prefix = "Berserker"
 
 	actions_to_remove = list(

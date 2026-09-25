@@ -1,7 +1,7 @@
 /datum/xeno_strain/designer
 	name = HIVELORD_DESIGNER
 	description = "We give up direct resin building and lose some plasma and health to gain stronger pheromones and longer vision. We can place up to 36 design nodes: optimized nodes boost building by 50%, flexible nodes reduce plasma cost by 50%, and construct nodes allow anyone to donate plasma to build weedbound resin walls or doors, even on surfaces where we can't normally build. Some castes like hivelord, carrier, burrower and queen can stimulate construct nodes to make thick weedbound variants, including plasma fruits. We can mark nodes as walls or doors and remotely thicken structures, control doors, and remove nodes. Using Greater Resin Surge turns all design nodes into weaker reflective walls for temporary hive defense. Our tackle is slightly stronger, causing longer knockdowns."
-	flavor_description = "We are hive's designer, while we no longer build with our own claws, our influence shapes the very foundation of the swarm, allowing it to expand and adapt beyond limits."
+	flavor_description = "You are the hive's designer. While you no longer build with your own claws, your influence shapes the very foundation of the swarm, allowing it to expand and adapt beyond limits."
 	icon_state_prefix = "Designer"
 
 	actions_to_remove = list(
@@ -468,7 +468,7 @@
 //Should not be upgradable because it's not "stable" but special actions should create thick variant
 /turf/closed/wall/resin/weedbound //NEVER use this variant, use subtypes
 	name = "weedbound resin wall"
-	desc = "An oddly solidified resin wall with a layered pattern that reminds us of flower buds."
+	desc = "An oddly solidified resin wall with a layered pattern that reminds you of flower buds."
 	icon_state = "weedboundresin"
 	walltype = WALL_WEEDBOUND_RESIN
 
@@ -536,7 +536,7 @@
 
 /turf/closed/wall/resin/weedbound/thick
 	name = "thick weedbound resin wall"
-	desc = "An oddly solidified thick resin wall with a layered pattern that reminds us of flower buds."
+	desc = "An oddly solidified thick resin wall with a layered pattern that reminds you of flower buds."
 	icon_state = "thickweedboundresin"
 	damage_cap = HEALTH_WALL_XENO_THICK
 	walltype = WALL_THICK_WEEDBOUND_RESIN
@@ -647,7 +647,7 @@
 /obj/effect/alien/resin/sticky/weak_nutriplasm/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user))
-		. += SPAN_NOTICE("On closer examination, this thin, sticky substance reminds us of sticky resin.")
+		. += SPAN_NOTICE("On closer examination, this thin, sticky substance reminds you of sticky resin.")
 	if(isxeno(user) || isobserver(user))
 		. += SPAN_NOTICE("We stare at the remains of weedbound walls - nutriplasm. As edible as it sounds, it's just another kind of sticky resin.")
 
@@ -660,7 +660,7 @@
 /obj/effect/alien/resin/sticky/strong_nutriplasm/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user))
-		. += SPAN_NOTICE("On closer examination, this thick, sticky substance reminds us of sticky resin.")
+		. += SPAN_NOTICE("On closer examination, this thick, sticky substance reminds you of sticky resin.")
 	if(isxeno(user) || isobserver(user))
 		. += SPAN_NOTICE("We stare at thick nutriplasm, the remains from weedbound resin. It sound delicious, but remember, its just a different flavor of sticky resin.")
 

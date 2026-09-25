@@ -172,7 +172,7 @@
 	if(!step(hit_target, direction))
 		playsound(hit_target.loc, "punch", 25, 1)
 		hit_target.visible_message(SPAN_DANGER("[hit_target] slams into an obstacle!"),
-		isxeno(hit_target) ? SPAN_XENODANGER("We slam into an obstacle!") : SPAN_HIGHDANGER("We slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
+		isxeno(hit_target) ? SPAN_XENODANGER("We slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		hit_target.apply_damage(MELEE_FORCE_TIER_2)
 		if(hit_target.mob_size < MOB_SIZE_BIG)
 			hit_target.KnockDown(0.5)

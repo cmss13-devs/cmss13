@@ -111,39 +111,3 @@
 
 	visible_message(SPAN_HIGHDANGER("CLANG! The pipe crashes onto the deck."))
 	qdel(src)
-
-/obj/effect/falling_bird
-	name = "falling bird"
-	icon = 'icons/mob/animal.dmi'
-	icon_state = "parrot_dead"
-	layer = 100
-	pixel_z = 192
-
-/obj/effect/falling_bird/Initialize(mapload, mob/shooter)
-	. = ..()
-	visible_message(SPAN_WARNING("A bird tumbles out of the sky!"))
-	animate(src, pixel_z = 0, time = 3 SECONDS, easing = QUAD_EASING|EASE_IN)
-	addtimer(CALLBACK(src, PROC_REF(land), shooter), 3 SECONDS)
-
-/obj/effect/falling_bird/proc/land(mob/shooter)
-	var/turf/landing_turf = get_turf(src)
-	if(!istype(landing_turf, /turf/open))
-		qdel(src)
-		return
-
-	var/obj/item/dead_bird/bird = new(landing_turf)
-	playsound(landing_turf, 'sound/effects/gibbed.ogg', 60, FALSE)
-	for(var/mob/living/carbon/human/victim in landing_turf)
-		if(!victim.get_limb("head"))
-			continue
-
-		victim.visible_message(
-			SPAN_WARNING("SPLAT! A dead bird lands on [victim]'s head!"),
-			SPAN_WARNING("SPLAT! A dead bird lands on your head. Great shot.")
-		)
-		victim.apply_damage(5, BRUTE, "head", used_weapon = bird, firer = shooter)
-		qdel(src)
-		return
-
-	visible_message(SPAN_WARNING("SPLAT! The bird hits the ground."))
-	qdel(src)

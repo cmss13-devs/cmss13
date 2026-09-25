@@ -267,7 +267,8 @@
 		var/mob/cur_mob = GLOB.ckey_to_occupied_mob[cur_ckey]
 		var/is_observer = isobserver(cur_mob)
 		if(is_observer && cur_mob.mind?.original?.aghosted) // We're assuming an admin isn't going to aghost and then turn off larva protection
-			continue
+			cur_mob = cur_mob.mind.original // We're more interested in what they aghosted from
+			is_observer = isobserver(cur_mob) // Shouldn't be possible to aghost a ghost but whatever
 		if(!is_observer && !isfacehugger(cur_mob) && !islesserdrone(cur_mob) && !should_block_game_interaction(cur_mob, include_hunting_grounds=TRUE))
 			continue
 

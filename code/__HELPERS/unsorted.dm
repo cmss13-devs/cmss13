@@ -142,8 +142,8 @@
 //
 // This is a copy-and-paste of the Enter() proc for turfs with tweaks related to the applications
 // of LinkBlocked
-/proc/LinkBlocked(atom/movable/mover, turf/start_turf, turf/target_turf, list/atom/forget)
-	if (!mover)
+/proc/LinkBlocked(mover_pass_flags, turf/start_turf, turf/target_turf, list/atom/denylist)
+	if(!istype(start_turf) || !istype(target_turf))
 		return null
 
 	/// the actual dir between the start and target turf
@@ -151,33 +151,34 @@
 	if (!fdir)
 		return null
 
-	var/fd1 = fdir & (fdir-1)
-	var/fd2 = fdir - fd1
+	var/fdWE = fdir & (fdir-1)
+	var/fdNS = fdir - fdWE
 
 	/// The direction that mover's path is being blocked by
 	var/blocking_dir = 0
 
-	var/obstacle
-	var/turf/T
-	var/atom/A
+	var/turf/side_turf
+	var/atom/obstacle_atom
+	var/atom/virtual_pointer
+	virtual_pointer.pass_flags = mover_pass_flags
 
-	blocking_dir |= start_turf.BlockedExitDirs(mover, fdir)
-	for (obstacle in start_turf) //First, check objects to block exit
-		if (mover == obstacle || (obstacle in forget))
+	blocking_dir |= start_turf.BlockedExitDirs(virtual_pointer, fdir)
+	for (var/obstacle in start_turf) //First, check objects to block exit
+		if (virtual_pointer == obstacle || (obstacle in denylist))
 			continue
 		if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
 			continue
-		A = obstacle
-		blocking_dir |= A.BlockedExitDirs(mover, fdir)
-		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-			return A
+		obstacle_atom = obstacle
+		blocking_dir |= obstacle_atom.BlockedExitDirs(virtual_pointer, fdir)
+		if ((!fdWE || blocking_dir & fdWE) && (!fdNS || blocking_dir & fdNS))
+			return obstacle_atom
 
 	// Check for atoms in adjacent turf EAST/WEST
-	if (fd1 && fd1 != fdir)
-		T = get_step(start_turf, fd1)
-		if (T.BlockedExitDirs(mover, fd2) || T.BlockedPassDirs(mover, fd1))
-			blocking_dir |= fd1
-			if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+	if (fdWE && fdWE != fdir)
+		T = get_step(start_turf, fdWE)
+		if (T.BlockedExitDirs(mover, fdNS) || T.BlockedPassDirs(mover, fdWE))
+			blocking_dir |= fdWE
+			if ((!fdWE || blocking_dir & fdWE) && (!fdNS || blocking_dir & fdNS))
 				return T
 		for (obstacle in T)
 			if(obstacle in forget)
@@ -185,18 +186,18 @@
 			if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
 				continue
 			A = obstacle
-			if (A.BlockedExitDirs(mover, fd2) || A.BlockedPassDirs(mover, fd1))
-				blocking_dir |= fd1
-				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+			if (A.BlockedExitDirs(mover, fdNS) || A.BlockedPassDirs(mover, fdWE))
+				blocking_dir |= fdWE
+				if ((!fdWE || blocking_dir & fdWE) && (!fdNS || blocking_dir & fdNS))
 					return A
 				break
 
 	// Check for atoms in adjacent turf NORTH/SOUTH
-	if (fd2 && fd2 != fdir)
-		T = get_step(start_turf, fd2)
-		if (T.BlockedExitDirs(mover, fd1) || T.BlockedPassDirs(mover, fd2))
-			blocking_dir |= fd2
-			if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+	if (fdNS && fdNS != fdir)
+		T = get_step(start_turf, fdNS)
+		if (T.BlockedExitDirs(mover, fdWE) || T.BlockedPassDirs(mover, fdNS))
+			blocking_dir |= fdNS
+			if ((!fdWE || blocking_dir & fdWE) && (!fdNS || blocking_dir & fdNS))
 				return T
 		for (obstacle in T)
 			if(obstacle in forget)
@@ -204,15 +205,15 @@
 			if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
 				continue
 			A = obstacle
-			if (A.BlockedExitDirs(mover, fd1) || A.BlockedPassDirs(mover, fd2))
-				blocking_dir |= fd2
-				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+			if (A.BlockedExitDirs(mover, fdWE) || A.BlockedPassDirs(mover, fdNS))
+				blocking_dir |= fdNS
+				if ((!fdWE || blocking_dir & fdWE) && (!fdNS || blocking_dir & fdNS))
 					return A
 				break
 
 	// Check the turf itself
 	blocking_dir |= target_turf.BlockedPassDirs(mover, fdir)
-	if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+	if ((!fdWE || blocking_dir & fdWE) && (!fdNS || blocking_dir & fdNS))
 		return target_turf
 	for (obstacle in target_turf) // Finally, check atoms in the target turf
 		if(obstacle in forget)
@@ -221,7 +222,7 @@
 			continue
 		A = obstacle
 		blocking_dir |= A.BlockedPassDirs(mover, fdir)
-		if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+		if((!fdWE || blocking_dir & fdWE) && (!fdNS || blocking_dir & fdNS))
 			return A
 
 	return null // Nothing found to block the link of mover from start_turf to target_turf

@@ -279,7 +279,7 @@
 		// Larva pool numbers are too volatile at the start of the game for the estimation to be what they end up with
 		if(!cache_only)
 			to_chat(candidate_new_player, SPAN_XENONOTICE("Larva pool position estimation is not available until shortly after the game has started. \
-				The ordering is based on your time of death or the time you joined. When you have been dead long enough and are not inactive, \
+				The ordering is based on your time of death or the time you observed. When you have been dead long enough and are not inactive, \
 				you will periodically receive updates where you are in the pool relative to other currently valid xeno candidates. \
 				Your current position will shift as others change their preferences or go inactive, but your relative position compared to all observers is the same. \
 				Note: Playing as a facehugger/lesser or in the thunderdome will not alter your time of death. \
@@ -297,7 +297,7 @@
 			position++
 		candidate_new_player.larva_pool_message_stale_time = world.time + 2.5 MINUTES // spam prevention
 		candidate_new_player.larva_pool_cached_message = "Your position would be [position]\th in the larva pool if you observed and were eligible to be a xeno. \
-			The ordering is based on your time of death or the time you joined. When you have been dead long enough and are not inactive, \
+			The ordering is based on your time of death or the time you observed. When you have been dead long enough and are not inactive, \
 			you will periodically receive updates where you are in the pool relative to other currently valid xeno candidates. \
 			Your current position will shift as others change their preferences or go inactive, but your relative position compared to all observers is the same. \
 			Note: Playing as a facehugger/lesser or in the thunderdome will not alter your time of death. \
@@ -341,7 +341,7 @@
 				break
 			position++
 		candidate_observer.larva_pool_cached_message = "You are currently ineligible to be a larva but would be [position]\th in the pool. \
-			The ordering is based on your time of death or the time you joined. When you have been dead long enough and are not inactive, \
+			The ordering is based on your time of death or the time you observed. When you have been dead long enough and are not inactive, \
 			you will periodically receive updates where you are in the pool relative to other currently valid xeno candidates. \
 			Your current position will shift as others change their preferences or go inactive, but your relative position compared to all observers is the same. \
 			Note: Playing as a facehugger/lesser or in the thunderdome will not alter your time of death. \

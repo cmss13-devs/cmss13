@@ -1648,6 +1648,9 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 /obj/limb/mouth/Initialize(mapload, obj/limb/P, mob/living/carbon/human/human_owner)
 	. = ..()
+	if(isnull(human_owner) || !ishuman(human_owner))
+		qdel(src)
+		return
 	style = human_owner.m_style
 	hiding_image = image(loc = src)
 	hiding_image.override = TRUE

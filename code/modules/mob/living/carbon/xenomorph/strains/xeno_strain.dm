@@ -67,7 +67,7 @@
 
 /mob/living/carbon/xenomorph/verb/purchase_strain()
 	set name = "Purchase Strain"
-	set desc = "Purchase a strain for yourself"
+	set desc = "Purchase a strain for ourselves"
 	set category = "Alien.Essentials"
 
 	// Firstly, make sure the xeno is actually able to take a strain.
@@ -80,7 +80,7 @@
 		strain_list[initial(strain_type.name)] = strain_type
 
 	// Ask the user which strain they want.
-	var/strain_choice = tgui_input_list(usr, "Which strain would you like to take?", "Choose Strain", strain_list, theme = "hive_status")
+	var/strain_choice = tgui_input_list(usr, "Which strain would we like to take?", "Choose Strain", strain_list, theme = "hive_status")
 	if(!strain_choice)
 		return
 	var/datum/xeno_strain/chosen_strain = strain_list[strain_choice]
@@ -105,7 +105,7 @@
 
 /mob/living/carbon/xenomorph/verb/reset_strain()
 	set name = "Reset Strain"
-	set desc = "Reset your strain."
+	set desc = "Reset our strain."
 	set category = "Alien.Essentials"
 
 	// Firstly, make sure the xeno is actually able to take a strain.
@@ -117,7 +117,7 @@
 		return
 
 	// Show the user the strain's description, and double check that they want it.
-	if(tgui_alert(src, "Are you sure?", "Reset Strain", list("Yes", "No")) != "Yes")
+	if(tgui_alert(src, "Are we sure?", "Reset Strain", list("Yes", "No")) != "Yes")
 		return
 
 	// One more time after they confirm.
@@ -140,7 +140,7 @@
 
 /mob/living/carbon/xenomorph/verb/strain_info()
 	set name = "Strain Information"
-	set desc = "Gives information about your strain."
+	set desc = "Gives information about our strain."
 	set category = "Alien.Essentials"
 
 	// Checks if user has a strain.
@@ -159,7 +159,7 @@
 		return FALSE
 
 	if(!strain && reset)
-		to_chat(src, SPAN_WARNING("You must first pick a strain before resetting it."))
+		to_chat(src, SPAN_WARNING("We must first pick a strain before resetting it."))
 		return FALSE
 
 	if(is_zoomed)

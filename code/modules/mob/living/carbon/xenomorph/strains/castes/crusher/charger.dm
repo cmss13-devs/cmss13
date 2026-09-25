@@ -14,7 +14,7 @@
 
 /datum/xeno_strain/charger
 	name = CRUSHER_CHARGER
-	description = "In exchange for your shield, a little bit of your armor and damage, your slowdown resist from turrets, your influence under frenzy pheromones, your stomp no longer knocking down talls, and your ability to lock your direction, you gain a considerable amount of health, some speed, your stomp does extra damage when stomping over a grounded tall, and your charge is now manually-controlled and momentum-based; the further you go, the more damage and speed you will gain until you achieve maximum momentum, indicated by your roar. In addition, your armor is now directional, being the toughest on the front, weaker on the sides, and weakest from the back. In return, you gain an ability to tumble to pass through enemies and avoid enemy fire, and an ability to forcefully move enemies via ramming into them."
+	description = "In exchange for our shield, a little bit of our armor and damage, our slowdown resist from turrets, our influence under frenzy pheromones, our stomp no longer knocking down talls, and our ability to lock our direction, we gain a considerable amount of health and our Charge is now manually-controlled and momentum-based; the further we go, the more damage and speed we will gain until we achieve maximum momentum, indicated by our roar. Our slashes now slow,deal AOE to adjacent targets, and they also reduce Charge and Defensive Shield's cooldown for every enemy hit. In addition, our armor is now directional, being the toughest on the front, weaker on the sides, and weakest from the back. In return, we gain an ability to tumble to pass through enemies and avoid enemy fire, an ability to forcefully move enemies via ramming into them. In addition our Stomp deals extra damage to knocked down talls but no longer knocks them down, instead creating a disorientating shake to any tall nearby. "
 	flavor_description = "Nothing stops this hive. This one will become both the immovable object and the unstoppable force."
 
 	actions_to_remove = list(
@@ -226,7 +226,7 @@
 			return
 		xeno.visible_message(
 			SPAN_DANGER("[xeno] smashes straight into \the [src]!"),
-			SPAN_XENODANGER("You smash straight into \the [src]!")
+			SPAN_XENODANGER("We smash straight into \the [src]!")
 		)
 		playsound(loc, "punch", 25, TRUE)
 		tip_over()
@@ -244,7 +244,7 @@
 	if(charger_ability.momentum >= CCA_MOMENTUM_LOSS_THIRD)
 		xeno.visible_message(
 			SPAN_DANGER("[xeno] smashes straight into \the [src]!"),
-			SPAN_XENODANGER("You smash straight into \the [src]!")
+			SPAN_XENODANGER("We smash straight into \the [src]!")
 		)
 		playsound(loc, "punch", 25, TRUE)
 		tip_over()
@@ -277,7 +277,7 @@
 	if(charger_ability.momentum)
 		visible_message(
 			SPAN_DANGER("[xeno] rams into [src] and skids to a halt!"),
-			SPAN_XENOWARNING("You ram into [src] and skid to a halt!")
+			SPAN_XENOWARNING("We ram into [src] and skid to a halt!")
 		)
 		take_damage(CHARGER_DAMAGE_CADE)
 		playsound(src, barricade_hitsound, 25, TRUE)
@@ -290,7 +290,7 @@
 	if(charger_ability.momentum)
 		visible_message(
 			SPAN_DANGER("[xeno] rams into [src] and skids to a halt!"),
-			SPAN_XENOWARNING("You ram into [src] and skid to a halt!")
+			SPAN_XENOWARNING("We ram into [src] and skid to a halt!")
 		)
 		update_health(CHARGER_DAMAGE_CADE)
 		if(charger_ability.momentum > 3)
@@ -447,7 +447,7 @@
 	apply_armoured_damage(charger_ability.momentum * momentum_mult/4, ARMOR_MELEE, BRUTE,"chest")
 	xeno.visible_message(
 		SPAN_DANGER("[xeno] rams [src]!"),
-		SPAN_XENODANGER("You ram [src]!")
+		SPAN_XENODANGER("We ram [src]!")
 	)
 	var/knockdown = 1
 	if(charger_ability.momentum == charger_ability.max_momentum)
@@ -489,7 +489,7 @@
 			xeno.throw_atom(get_step(xeno, pick(GLOB.cardinals)), 1, 3, xeno, TRUE)
 			charger_ability.stop_momentum() // We assume the other crusher'sparks handle_charge_collision() kicks in and stuns us too.
 			for(var/mob/living/carbon/carbon_target in range(7, xeno))
-				to_chat(carbon_target, SPAN_WARNING("The chargers colliding causes the ground to shake!"))
+				to_chat(carbon_target, SPAN_WARNING("[xeno]'s' colliding causes the ground to shake!"))
 				shake_camera(carbon_target, 2, 3)
 				if(get_dist(xeno, carbon_target) <= 3 && !xeno.can_not_harm(carbon_target))
 					if(carbon_target.mob_size >= MOB_SIZE_BIG)
@@ -505,8 +505,8 @@
 		var/target_turf = get_step(src, ram_dir)
 		if(LinkBlocked(src, cur_turf, target_turf))
 			xeno.emote("roar")
-			xeno.visible_message(SPAN_DANGER("[xeno] flings [src] over to the side!"),SPAN_DANGER( "You fling [src] out of the way!"))
-			to_chat(src, SPAN_XENOHIGHDANGER("[xeno] flings you out of its way! Move it!"))
+			xeno.visible_message(SPAN_DANGER("[xeno] flings [src] over to the side!"),SPAN_DANGER( "We fling [src] out of the way!"))
+			to_chat(src, SPAN_XENOHIGHDANGER("[xeno] flings us out of its way! Move it!"))
 			apply_effect(1, WEAKEN) // brief flicker stun
 			throw_atom(get_turf(src), 1, 3, xeno, TRUE)
 		step(src, ram_dir, charger_ability.momentum * 0.5)
@@ -527,7 +527,7 @@
 	take_overall_damage(charger_ability.momentum * momentum_mult)
 	xeno.visible_message(
 		SPAN_DANGER("[xeno] rams [src]!"),
-		SPAN_XENODANGER("You ram [src]!")
+		SPAN_XENODANGER("We ram [src]!")
 	)
 	var/knockdown = 1
 	if(charger_ability.momentum == charger_ability.max_momentum)
@@ -580,7 +580,7 @@
 	sparks.set_up(5, 1, loc)
 	xeno.visible_message(
 		SPAN_DANGER("[xeno] rams [src]!"),
-		SPAN_XENODANGER("You ram [src]!")
+		SPAN_XENODANGER("We ram [src]!")
 	)
 	if(health <= CHARGER_DAMAGE_SENTRY)
 		new /obj/effect/spawner/gibspawner/robot(src.loc) // if we goin down ,we going down with a show.
@@ -608,7 +608,7 @@
 	sparks.start()
 	xeno.visible_message(
 		SPAN_DANGER("[xeno] rams [src]!"),
-		SPAN_XENODANGER("You ram [src]!")
+		SPAN_XENODANGER("We ram [src]!")
 	)
 	playsound(src, "sound/effects/metal_crash.ogg", 25, TRUE)
 
@@ -645,7 +645,7 @@
 	sparks.start()
 	xeno.visible_message(
 		SPAN_DANGER("[xeno] rams [src]!"),
-		SPAN_XENODANGER("You ram [src]!")
+		SPAN_XENODANGER("We ram [src]!")
 	)
 	playsound(src, "sound/effects/metal_crash.ogg", 25, TRUE)
 
@@ -700,7 +700,7 @@
 		return
 	xeno.visible_message(
 		SPAN_DANGER("[xeno] rams [src]!"),
-		SPAN_XENODANGER("You ram [src]!")
+		SPAN_XENODANGER("We ram [src]!")
 	)
 	playsound(src, "sound/effects/metalhit.ogg", 25, TRUE)
 	qdel(src)
@@ -720,7 +720,7 @@
 		return
 	xeno.visible_message(
 		SPAN_DANGER("[xeno] rams [src]!"),
-		SPAN_XENODANGER("You ram [src]!")
+		SPAN_XENODANGER("We ram [src]!")
 	)
 	playsound(src, "sound/effects/metalhit.ogg", 25, TRUE)
 	qdel(src)

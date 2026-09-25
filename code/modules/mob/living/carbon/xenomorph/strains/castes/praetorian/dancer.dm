@@ -1,7 +1,7 @@
 /datum/xeno_strain/dancer
 	// My name is Cuban Pete, I'm the King of the Rumba Beat
 	name = PRAETORIAN_DANCER
-	description = "You lose all acid-based abilities and a small amount of your armor in exchange for increased movement speed, evasion, and unparalleled agility. This strain excels at rapid repositioning, bullet dodging, and phasing effortlessly through enemies and allies alike. Slashing enemies applies a red tag, altering how your tail abilities function. Tagged enemies cause Impale to strike twice and transform Tail Trip into a powerful knockdown instead of a brief stun. Your new Tail Stab adapts to your intent. When used in Disarm mode, it becomes a Blunt, armor-piercing strike. When enemies are brought close to death, yellow tags will spread to nearby foes. Slashing yellow-tagged enemies reduces the cooldown of your tail abilities, and using a tail trip or impale ability on a yellow-tagged target grants no cooldown penalty."
+	description = "We lose all acid-based abilities and a small amount of our armor in exchange for increased movement speed, evasion, and unparalleled agility. Our strain excels at rapid repositioning, bullet dodging, and phasing effortlessly through enemies and allies alike. Slashing enemies applies a red tag, altering how our tail abilities function. Tagged enemies cause Impale to strike twice and transform Tail Trip into a powerful knockdown instead of a brief stun. Our new Tail Stab adapts to our intent. When used in Disarm mode, it becomes a blunt, armor-piercing strike. When enemies are brought close to death, yellow tags will spread to nearby foes. Slashing yellow-tagged enemies reduces the cooldown of our tail abilities, and using a tail trip or impale ability on a yellow-tagged target grants no cooldown penalty."
 	flavor_description = "A performance fit for a Queen, this one will become my instrument of death."
 	icon_state_prefix = "Dancer"
 
@@ -29,7 +29,7 @@
 	prae.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_7
 	prae.claw_type = CLAW_TYPE_SHARP
 	prae.dodge_threshold = 6
-	prae.received_phero_caps["recovery"] = 3 //need to be limited, regens too fast with high strength phermones.
+	prae.received_phero_caps["recovery"] = 3 //need to be limited, regens too fast with high strength pheromones.
 
 	prae.recalculate_everything()
 
@@ -161,7 +161,7 @@
 		last_dancer_spread_time = world.time
 
 	if(spread_count >= 0)
-		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("Fear spreads among the prey, their weakness fuels your instincts to strike them down!"))
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("Fear spreads among our prey! Their weakness fuels our instincts to strike them down!"))
 
 /datum/behavior_delegate/praetorian_dancer/proc/intent_detection()
 	if(bound_xeno && bound_xeno.a_intent == INTENT_DISARM)
@@ -567,14 +567,14 @@
 		if(Xeno.mob_size >= MOB_SIZE_BIG)
 			xeno_smashed = TRUE
 			shake_camera(Xeno, 10, 1)
-			dancer_user.visible_message(SPAN_XENODANGER("[dancer_user] smashes [Xeno] with it's tail!"), SPAN_XENODANGER("We smash [Xeno] with your tail!"))
-			to_chat(Xeno, SPAN_XENOHIGHDANGER("You feel dizzy as [dancer_user] smashes you with their tail!"))
+			dancer_user.visible_message(SPAN_XENODANGER("[dancer_user] smashes [Xeno] with its tail!"), SPAN_XENODANGER("We smash [Xeno] with our tail!"))
+			to_chat(Xeno, SPAN_XENOHIGHDANGER("We feel dizzy as [dancer_user] smashes us with their tail!"))
 			dancer_user.animation_attack_on(Xeno)
 
 	if(!xeno_smashed)
 		if (stun_duration > 0)
 			target_carbon.apply_effect(stun_duration, WEAKEN)
-		dancer_user.visible_message(SPAN_XENODANGER("[dancer_user] trips [target_atom] with it's tail!"), SPAN_XENODANGER("We trip [target_atom] with our tail!"))
+		dancer_user.visible_message(SPAN_XENODANGER("[dancer_user] trips [target_atom] with its tail!"), SPAN_XENODANGER("We trip [target_atom] with our tail!"))
 		dancer_user.spin_circle()
 		dancer_user.emote("tail")
 		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You are swept off your feet by [dancer_user]!"))

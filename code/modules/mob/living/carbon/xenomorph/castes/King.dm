@@ -2,6 +2,7 @@
 	caste_type = XENO_CASTE_KING
 	caste_desc = "The end of the line."
 	tier = 4
+	is_intelligent = TRUE
 
 	melee_damage_lower = XENO_DAMAGE_TIER_6
 	melee_damage_upper = XENO_DAMAGE_TIER_8

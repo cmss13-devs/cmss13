@@ -26,7 +26,7 @@
 
 			SS13LIB_INFO_LOG("Auth succeeded for [new_client.key], resolved key: [resolved_key]")
 
-			var/is_banned = world.IsBanned(resolved_key, new_client.address, new_client.computer_id)
+			var/is_banned = world.IsBanned(resolved_key, new_client.address, new_client.computer_id, new_client.connection)
 			if(is_banned)
 				SS13LIB_INFO_LOG("Authenticated user [resolved_key] is banned, disconnecting.")
 				del(new_client)
@@ -50,7 +50,7 @@
 		var/key_to_skip = new_client.key
 		isbanned_hook_ignore |= key_to_skip
 
-		if(world.IsBanned(new_client.key, new_client.address, new_client.computer_id))
+		if(world.IsBanned(new_client.key, new_client.address, new_client.computer_id, new_client.connection))
 			SS13LIB_INFO_LOG("Unauthenticated user [new_client.key] is banned, disconnecting.")
 			del(new_client)
 			return TRUE
@@ -71,7 +71,7 @@
 	var/key_to_skip = new_client.key
 	isbanned_hook_ignore |= key_to_skip
 
-	if(world.IsBanned(new_client.key, new_client.address, new_client.computer_id))
+	if(world.IsBanned(new_client.key, new_client.address, new_client.computer_id, new_client.connection))
 		del(new_client)
 		return TRUE
 
@@ -127,6 +127,7 @@
 	SS13LIB_INFO_LOG("Auth ticket validated, username: [decoded["username"]]")
 
 	var/datum/ss13lib_auth_response/auth = new
+	auth.user_id = decoded["user_id"]
 	auth.key = decoded["key"]
 	auth.username = decoded["username"]
 	auth.created_at = decoded["created_at"]
@@ -134,6 +135,7 @@
 	auth.hwid_uniqueness = decoded["hwid_uniqueness"]
 	auth.discord_id = decoded["discord_id"]
 	auth.steam_id = decoded["steam_id"]
+	auth.steam_limited = decoded["steam_limited"]
 
 	return auth
 

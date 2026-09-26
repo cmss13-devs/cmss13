@@ -102,7 +102,7 @@
 /// Optional field
 #define SS13LIB_HUB_VISIBILITY // world.visibility
 
-/// The authentication methods this server supports. Sent during handshake.
+/// The authentication methods this server supports. Sent during handshake, enforced for incoming connections.
 /// Valid values: "hub" (SS13Hub authentication), "byond" (BYOND pager authentication)
 /// Defaults to list("hub", "byond") if not defined.
 /// Optional field
@@ -212,6 +212,8 @@
 #endif
 
 /datum/ss13lib_auth_response
+	/// The SS13Hub user UUID, always present.
+	var/user_id
 	/// The BYOND key if the user has a linked BYOND account, null otherwise.
 	var/key
 	/// The SS13Hub username, always present.
@@ -227,3 +229,5 @@
 	var/discord_id
 	/// The user's Steam ID if they have a linked Steam account, null otherwise.
 	var/steam_id
+	/// Whether the user's Steam account is limited (hasn't spent $5). TRUE if limited or unknown, null if no Steam account.
+	var/steam_limited

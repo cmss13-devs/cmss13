@@ -53,6 +53,5 @@
 	var/datum/action/xeno_action/test__with_plasma_cost/ability = give_action(test_xeno, /datum/action/xeno_action/test__with_plasma_cost)
 	TEST_ASSERT_NOTNULL(ability, "Test xeno should have received test ability")
 
-	var/original_plasma = test_xeno.plasma_stored
 	var/result = ability.check_plasma_owner()
 	TEST_ASSERT_EQUAL(result, TRUE, "check_plasma_owner returned FALSE unexpectedly")

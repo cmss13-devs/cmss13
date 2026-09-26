@@ -1088,7 +1088,7 @@
 //*************************************/
 //Adapts itself to the wearer's squad and role. Gear is equipped before squads are assigned at round start,
 //but a vendor-bought headset arrives after, so we listen at both ends and let whichever happens last
-//configure us. Re-running is also ssafe, so squad transfers rebrand and rekey correctly.
+//configure us. Re-running is also safe, so squad transfers rebrand and rekey correctly.
 
 /obj/item/device/radio/headset/almayer/marine/self_setting
 	var/obj/item/device/encryptionkey/granted_key

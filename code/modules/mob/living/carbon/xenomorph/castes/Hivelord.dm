@@ -19,7 +19,7 @@
 	)
 
 	evolution_allowed = FALSE
-	caste_desc = "For all your resin needs."
+	caste_desc = "For all our resin needs."
 	deevolves_to = list(XENO_CASTE_DRONE)
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_TWO_HANDS

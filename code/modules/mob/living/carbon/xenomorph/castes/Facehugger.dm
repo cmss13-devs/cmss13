@@ -134,12 +134,12 @@
 		if(time_of_birth + 3 SECONDS > world.time)
 			return
 		if(morpher.linked_hive.hivenumber != hivenumber)
-			to_chat(src, SPAN_XENOWARNING("This isn't your hive's eggmorpher!"))
+			to_chat(src, SPAN_XENOWARNING("This isn't our hive's eggmorpher!"))
 			return
 		if(morpher.stored_huggers >= morpher.huggers_max_amount)
 			to_chat(src, SPAN_XENOWARNING("\The [morpher] is already full of children."))
 			return
-		visible_message(SPAN_WARNING("\The [src] climbs back into \the [morpher]."), SPAN_XENONOTICE("You climb into \the [morpher]."))
+		visible_message(SPAN_WARNING("\The [src] climbs back into \the [morpher]."), SPAN_XENONOTICE("We climb into \the [morpher]."))
 		morpher.stored_huggers++
 		qdel(src)
 		return
@@ -147,10 +147,10 @@
 	if(ishuman(A))
 		var/mob/living/carbon/human/human = A
 		if((human.body_position != LYING_DOWN) && (!HAS_TRAIT(human, TRAIT_NESTED)))
-			to_chat(src, SPAN_WARNING("You can't reach \the [human], they need to be lying down or nested."))
+			to_chat(src, SPAN_WARNING("We can't reach \the [human], they need to be lying down or nested."))
 			return
 		if(!can_hug(human, hivenumber))
-			to_chat(src, SPAN_WARNING("You can't infect \the [human]..."))
+			to_chat(src, SPAN_WARNING("We can't infect \the [human]..."))
 			return
 		var/hug_dir = get_dir(src, human)
 		for(var/atom/movable/atom in get_turf(src))
@@ -161,14 +161,14 @@
 			if(atom != human && atom.density && atom.BlockedPassDirs(src, hug_dir))
 				to_chat(src, SPAN_WARNING("[atom] prevents us from infecting [human]!"))
 				return
-		visible_message(SPAN_WARNING("\The [src] starts climbing onto \the [human]'s face..."), SPAN_XENONOTICE("You start climbing onto \the [human]'s face..."))
+		visible_message(SPAN_WARNING("\The [src] starts climbing onto \the [human]'s face..."), SPAN_XENONOTICE("We start climbing onto \the [human]'s face..."))
 		if(!do_after(src, FACEHUGGER_CLIMB_DURATION, INTERRUPT_ALL, BUSY_ICON_HOSTILE, human, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			return
 		if((human.body_position != LYING_DOWN) && (!HAS_TRAIT(human, TRAIT_NESTED)))
-			to_chat(src, SPAN_WARNING("You can't reach \the [human], they need to be lying down or nested."))
+			to_chat(src, SPAN_WARNING("We can't reach \the [human], they need to be lying down or nested."))
 			return
 		if(!can_hug(human, hivenumber))
-			to_chat(src, SPAN_WARNING("You can't infect \the [human]..."))
+			to_chat(src, SPAN_WARNING("We can't infect \the [human]..."))
 			return
 		hug_dir = get_dir(src, human)
 		for(var/atom/movable/atom in get_turf(src))
@@ -269,14 +269,14 @@
 
 	switch(stat)
 		if(UNCONSCIOUS)
-			to_chat(src, SPAN_WARNING("You cannot emote while unconscious!"))
+			to_chat(src, SPAN_WARNING("We cannot emote while unconscious!"))
 			return FALSE
 		if(DEAD)
-			to_chat(src, SPAN_WARNING("You cannot emote while dead!"))
+			to_chat(src, SPAN_WARNING("We cannot emote while dead!"))
 			return FALSE
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, SPAN_DANGER("You cannot emote (muted)."))
+			to_chat(src, SPAN_DANGER("We cannot emote (muted)."))
 			return FALSE
 		if(!client.attempt_talking())
 			return FALSE
@@ -284,7 +284,7 @@
 	// Otherwise, ""roar""!
 	var/current_time = world.time
 	if(current_time - last_roar_time < 1 SECONDS)
-		to_chat(src, SPAN_WARNING("You must wait before roaring again."))
+		to_chat(src, SPAN_WARNING("We must wait before roaring again."))
 		return FALSE
 
 	last_roar_time = current_time

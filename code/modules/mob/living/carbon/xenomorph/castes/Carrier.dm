@@ -255,7 +255,7 @@
 			to_chat(src, SPAN_NOTICE("We take [huggers_to_transfer] facehuggers and carry them for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
 		behavior_delegate?.on_update_icons()
 	else
-		to_chat(src, SPAN_WARNING("We can't carry more facehuggers on you."))
+		to_chat(src, SPAN_WARNING("We can't carry more facehuggers on us."))
 
 /mob/living/carbon/xenomorph/carrier/proc/throw_hugger(atom/object)
 	if(!object)
@@ -273,7 +273,7 @@
 				drop_inv_item_on_ground(child)
 				return
 			if(on_fire)
-				to_chat(src, SPAN_WARNING("Touching \the [child] while you're on fire would burn it!"))
+				to_chat(src, SPAN_WARNING("Touching \the [child] while we're on fire would burn it!"))
 				return
 			store_hugger(child)
 			return
@@ -286,7 +286,7 @@
 				to_chat(src, SPAN_WARNING("That egg morpher is tainted!"))
 				return
 			if(on_fire)
-				to_chat(src, SPAN_WARNING("Touching \the [morpher] while you're on fire would burn the facehuggers in it!"))
+				to_chat(src, SPAN_WARNING("Touching \the [morpher] while we're on fire would burn the facehuggers in it!"))
 				return
 			store_huggers_from_egg_morpher(morpher)
 			return
@@ -471,9 +471,9 @@
 /datum/action/xeno_action/onclick/set_hugger_reserve/use_ability(atom/Atom)
 	var/mob/living/carbon/xenomorph/carrier/carrier = owner
 	carrier.huggers_reserved = tgui_input_number(usr,
-		"How many facehuggers would you like to keep safe from Observers wanting to join as facehuggers?",
+		"How many facehuggers would we like to keep safe from Observers wanting to join as facehuggers?",
 		"How many to reserve?",
 		carrier.huggers_reserved, carrier.huggers_max, 0
 	)
-	to_chat(carrier, SPAN_XENONOTICE("We reserve [carrier.huggers_reserved] facehuggers for ourself."))
+	to_chat(carrier, SPAN_XENONOTICE("We reserve [carrier.huggers_reserved] facehuggers for ourselves."))
 	return ..()

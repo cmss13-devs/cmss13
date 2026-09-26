@@ -558,7 +558,7 @@
 /datum/chem_property/negative/addictive
 	name = PROPERTY_ADDICTIVE
 	code = "ADT"
-	description = "Causes addiction. Higher potency results in a higher chance of causing an addiction when metabolized."
+	description = "Causes addiction. Higher potency results in a higher chance of causing an addiction when metabolized. As a result of a poorly-understood process, the neuro-transmitter interference causes improved somatic responses from the subject, effectively boosting the properties' effectiveness by ~1.5 times per phenomena-potency."
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
 
@@ -578,6 +578,9 @@
 
 /datum/chem_property/negative/addictive/process_critical(mob/living/M, potency = 1, delta_time)
 	M.disabilities |= NERVOUS
+
+/datum/chem_property/negative/addictive/pre_process(mob/living/M)
+	return list(REAGENT_BOOST = (level * 1.5))
 
 //PROPERTY_DISABLED (in generation)
 /datum/chem_property/negative/hemositic

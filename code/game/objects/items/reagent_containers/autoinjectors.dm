@@ -77,42 +77,29 @@
 	. = list()
 
 	var/chemical_name
-
-	for(var/datum/reagent/chem in reagents.reagent_list)
-		if(length(reagents.reagent_list) > 1)
-			chemical_name = SPAN_RED("... Oh, dear, the label's chemical list is overlapping and impossible to read. Better get a scanner.")
-		else
-			chemical_name = chem.name
+	if(length(reagents.reagent_list) > 1)
+		chemical_name = "... Oh, dear. The list is overlapping its text. All you can see is [capitalize(reagents.reagent_list[1].name)]. Better get a scanner to be sure"
+	else
+		chemical_name = capitalize(reagents.reagent_list[1].name)
 
 	if(uses_left > 0)
 		if(max_uses == 1) //one_use autoinjectors
-			. += SPAN_NOTICE("It injects its entire payload of [chemical_name].")
+			. += SPAN_NOTICE("It injects its entire payload of [amount_per_transfer_from_this]u [chemical_name].")
 		else
-			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections of [chemical_name].")
+			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections of [amount_per_transfer_from_this]u [chemical_name].")
 	else
 		if(cannot_refill)
-			. += SPAN_WARNING("It is spent and it cannot be refilled.")
+			. += SPAN_WARNING("It is spent and has no refill valve to refill it.")
 		else
-			. += SPAN_HELPFUL("It is empty but it can be refilled. Try Wey-Med vends, Wall-Meds, or an MS-11 Smart Refill Tank.")
+			. += SPAN_HELPFUL("It is empty but it can be refilled.")
 
 	if(skilllock > SKILL_MEDICAL_DEFAULT)
 		if(skillcheck(user, SKILL_MEDICAL, skilllock))
 			. += SPAN_HELPFUL("It has a lock on it similar to pill bottles, but you know how to unlock it.")
 		else
-			. += SPAN_WARNING("It has a lock on it similar to pill bottles. You do not have enough training in medicine to unlock it.")
+			. += SPAN_WARNING("It has a lock on it similar to pill bottles and you need training in Medicine to be taught how to unlock it.")
 	else
 		. += SPAN_HELPFUL("It doesn't have a lock on it, so anyone can use it.")
-
-	if(chemname == "tramadol")
-		. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: Mixing Tramadol and Paracetamol produces toxins and require dialysis to remove. Tramadol will be less efficacious if administered to a patient with opiate receptor deficiency.</b>")
-	if(chemname == "oxycodone")
-		. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: Oxycodone will be less efficacious if administered to a patient with opiate receptor deficiency.</b>")
-	if(chemname == "paracetamol")
-		. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: Mixing Paracetamol and Tramadol produces toxins that require dialysis to remove.</b>")
-	if(chemname == "anti_toxin" || chemname == "arithrazine")
-		. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: This medication does not remove overdosed substances. In case of overdose, please give the patient dialysis.</b>")
-	if(chemname == "ultrazine")
-		. += SPAN_WARNING("It comes with a warning label that says: <b>WARNING: EXTREMELY ADDICTIVE!</b>")
 
 /obj/item/reagent_container/hypospray/autoinjector/get_examine_text(mob/user)
 	. = ..()
@@ -145,6 +132,10 @@
 	display_maptext = TRUE
 	maptext_label = "Tc"
 	skilllock = SKILL_MEDICAL_MEDIC
+
+/obj/item/reagent_container/hypospray/autoinjector/standard/get_autoinjector_examine_text(mob/user, max_uses)
+	. = ..()
+	. += SPAN_HELPFUL("It has an additional label that says, 'Refillable at any Wey-Med Plus, Wey-Med Resupply Station, or with an MS-11 Smart Refill Tank.")
 
 /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine
 	name = "tricordrazine autoinjector"
@@ -193,6 +184,10 @@
 	desc = "An autoinjector that injects a weak but effective painkiller for trauma."
 	maptext_label = "Tr"
 
+/obj/item/reagent_container/hypospray/autoinjector/standard/tramadol/get_autoinjector_examine_text(mob/user, max_uses)
+	. = ..()
+	. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: Mixing Tramadol and Paracetamol produces toxins. Patients with opiate receptor deficiency may require two doses.</b>")
+
 /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol/random_amount
 
 /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol/random_amount/Initialize()
@@ -219,6 +214,10 @@
 	amount_per_transfer_from_this = MED_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (MED_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	maptext_label = "Ox"
+
+/obj/item/reagent_container/hypospray/autoinjector/standard/oxycodone/get_autoinjector_examine_text(mob/user, max_uses)
+	. = ..()
+	. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: Patients with opiate receptor deficiency may require two doses.</b>")
 
 /obj/item/reagent_container/hypospray/autoinjector/standard/kelotane
 	name = "kelotane autoinjector"
@@ -277,6 +276,10 @@
 	desc = "An autoinjector that injects a common toxin damage-purging medicine."
 	maptext_label = "Dy"
 
+/obj/item/reagent_container/hypospray/autoinjector/standard/antitoxin/get_autoinjector_examine_text(mob/user, max_uses)
+	. = ..()
+	. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: This medication does not remove overdosed substances. In case of overdose, please give the patient dialysis.</b>")
+
 /obj/item/reagent_container/hypospray/autoinjector/standard/meralyne
 	name = "meralyne autoinjector"
 	desc = "An autoinjector that injects an advanced brute-mending medicine."
@@ -321,6 +324,10 @@
 	skilllock = SKILL_MEDICAL_DEFAULT
 	maptext_label = "EzTc"
 
+/obj/item/reagent_container/hypospray/autoinjector/ez/get_autoinjector_examine_text(mob/user, max_uses)
+	. = ..()
+	. += SPAN_HELPFUL("It has an additional label that says, 'Refillable at nearly anywhere that dispenses autoinjectors and also with an MS-11 Smart Refill Tank.")
+
 /obj/item/reagent_container/hypospray/autoinjector/ez/tricordrazine
 	name = "tricordrazine EZ autoinjector"
 	chemname = "tricordrazine"
@@ -341,6 +348,10 @@
 	desc = "An EZ autoinjector that injects a weak but effective painkiller for trauma."
 	maptext_label = "EzTr"
 
+/obj/item/reagent_container/hypospray/autoinjector/ez/tramadol/get_autoinjector_examine_text(mob/user, max_uses)
+	. = ..()
+	. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: Mixing Tramadol and Paracetamol produces toxins. Patients with opiate receptor deficiency may require two doses.</b>")
+
 /obj/item/reagent_container/hypospray/autoinjector/ez/kelotane
 	name = "kelotane EZ autoinjector"
 	chemname = "kelotane"
@@ -358,6 +369,10 @@
 	chemname = "anti_toxin"
 	desc = "An EZ autoinjector that injects a common toxin damage-purging medicine."
 	maptext_label = "EzDy"
+
+/obj/item/reagent_container/hypospray/autoinjector/ez/antitoxin/get_autoinjector_examine_text(mob/user, max_uses)
+	. = ..()
+	. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: This medication does not remove overdosed substances. In case of overdose, please give the patient dialysis.</b>")
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/dexalin
 	name = "dexalin EZ autoinjector"
@@ -379,6 +394,8 @@
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 
+/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/get_autoinjector_examine_text(mob/user, max_uses)
+
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/inaprovaline
 	name = "crit-save EZ autoinjector"
 	chemname = "inaprovaline"
@@ -399,11 +416,19 @@
 	desc = "An EZ one-use autoinjector that injects medicine for anyone to self-administer to alleviate their pain."
 	maptext_label = "OuTr"
 
+/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol/get_autoinjector_examine_text(mob/user, max_uses)
+	. = ..()
+	. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: Mixing Tramadol and Paracetamol produces toxins. Patients with opiate receptor deficiency may require two doses.</b>")
+
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/antitoxin
 	name = "antitoxin EZ autoinjector"
 	chemname = "anti_toxin"
 	desc = "An EZ one-use autoinjector that injects medicine for anyone to self-administer to remove toxins from their bloodstream if they feel sick."
 	maptext_label = "OuDy"
+
+/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/antitoxin/get_autoinjector_examine_text(mob/user, max_uses)
+	. = ..()
+	. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: This medication does not remove overdosed substances. In case of overdose, please give the patient dialysis.</b>")
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/bicaridine
 	name = "wound care EZ autoinjector"
@@ -443,6 +468,10 @@
 	desc = "An EZ one-use autoinjector that injects a common pain-killing medicine. To use it, click the autoinjector while it is in your hand. You can also click any person one tile near you, or yourself, to inject its contents."
 	maptext_label = "OuTr"
 
+/obj/item/reagent_container/hypospray/autoinjector/tutorial/tramadol/get_autoinjector_examine_text(mob/user, max_uses)
+	. = ..()
+	. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: Mixing Tramadol and Paracetamol produces toxins. Patients with opiate receptor deficiency may require two doses.</b>")
+
 /obj/item/reagent_container/hypospray/autoinjector/tutorial/kelotane
 	name = "kelotane EZ autoinjector (FOR TRAINING USE ONLY)"
 	chemname = "kelotane"
@@ -468,6 +497,10 @@
 	chemname = "anti_toxin"
 	desc = "An EZ one-use autoinjector that injects a common toxin damage-purging medicine. To use it, click the autoinjector while it is in your hand. You can also click any person one tile near you, or yourself, to inject its contents."
 	maptext_label = "OuDy"
+
+/obj/item/reagent_container/hypospray/autoinjector/tutorial/antitoxin/get_autoinjector_examine_text(mob/user, max_uses)
+	. = ..()
+	. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: This medication does not remove overdosed substances. In case of overdose, please give the patient dialysis.</b>")
 
 /obj/item/reagent_container/hypospray/autoinjector/tutorial/adrenaline //in case we ever want to add defibrillation to the medical tutorial
 	name = "epinephrine EZ autoinjector (FOR TRAINING USE ONLY)"
@@ -533,7 +566,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency/get_autoinjector_examine_text(mob/user, max_uses)
 	. = ..()
-	. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: This autoinjector injects one unit below the OD limit of: Bicaridine, Kelotane, and Oxycodone. Do not administer if any of the aforementioned chemicals are in the patient's bloodstream.</b>")
+	. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: This autoinjector injects one unit below the OD limit of: Bicaridine, Kelotane, and Oxycodone.</b>")
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency/Initialize() //29u bicaridine, 29u kelotane, 19u oxycodone, 1u dexalin +.
 	. = ..()
@@ -577,6 +610,9 @@
 	skilllock = SKILL_MEDICAL_DEFAULT
 	display_maptext = FALSE //corporate secret
 	cannot_refill = TRUE
+/obj/item/reagent_container/hypospray/autoinjector/ultrazine/get_autoinjector_examine_text(mob/user, max_uses)
+	. = ..()
+	. += SPAN_WARNING("It comes with a warning label that says: <b>WARNING: EXTREMELY ADDICTIVE!</b>")
 
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine/update_icon()
 	. = ..()

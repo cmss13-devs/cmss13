@@ -713,6 +713,25 @@ CLIENT_VERB(toggle_minimap_ceiling_protection)
 			continue
 		mini_map.update_ceiling_overlay(src)
 
+CLIENT_VERB(set_minimap_opacity)
+	set name = "Set Minimap Opacity"
+	set category = "Preferences.UI"
+	set desc = "Adjust how transparent the minimap/tacmap is, from 20% (very see-through) to 100% (fully opaque)."
+
+	if(!mob)
+		return
+
+	var/new_opacity = tgui_input_number(mob, "Minimap opacity in percent (20 = very transparent, 100 = fully opaque).", "Minimap Opacity", prefs.minimap_opacity, 100, 20)
+	if(isnull(new_opacity))
+		return
+
+	prefs.minimap_opacity = clamp(round(new_opacity), 20, 100)
+	prefs.save_preferences()
+	to_chat(mob, SPAN_NOTICE("Minimap opacity set to [prefs.minimap_opacity]%."))
+
+	var/atom/movable/screen/plane_master/minimap/plane_master = mob.hud_used?.plane_masters["[TACMAP_PLANE]"]
+	plane_master?.apply_opacity_pref(src)
+
 //------------ GHOST PREFERENCES ---------------------------------
 
 /client/proc/show_ghost_preferences() // Shows ghost-related preferences.

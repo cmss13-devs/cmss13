@@ -23,6 +23,7 @@
 
 	var/fruit_growth_multiplier = 1
 	var/spread_on_semiweedable = FALSE
+	var/spread_on_hardweedable = FALSE
 	var/block_structures = BLOCK_NOTHING
 
 	var/datum/hive_status/linked_hive = null
@@ -46,6 +47,7 @@
 		node.add_child(src)
 		hivenumber = linked_hive.hivenumber
 		spread_on_semiweedable = node.spread_on_semiweedable
+		spread_on_hardweedable = node.spread_on_hardweedable
 		if(weed_strength == WEED_LEVEL_HARDY && spread_on_semiweedable)
 			name = "hardy [name]"
 			health = WEED_HEALTH_HARDY
@@ -77,6 +79,8 @@
 	if(turf)
 		turf.weeds = src
 		weeded_turf = turf
+		if(turf.is_weedable == HARDLY_WEEDABLE)
+			health *= 0.5
 		SEND_SIGNAL(turf, COMSIG_WEEDNODE_GROWTH) // Currently for weed_food wakeup
 
 	// COMSIG_MOVABLE_TURF_ENTERED to handle ChangeTurf
@@ -231,7 +235,7 @@
 			continue
 		if(!T.is_weedable)
 			continue
-		if(!spread_on_semiweedable && T.is_weedable < FULLY_WEEDABLE)
+		if((!spread_on_hardweedable || !spread_on_semiweedable) && T.is_weedable < FULLY_WEEDABLE)
 			continue
 		if(!weed_expand_objects(T, dirn))
 			continue
@@ -331,7 +335,11 @@
 /obj/effect/alien/weeds/update_icon()
 	overlays.Cut()
 
+	var/turf/current_turf = get_turf(src)
+	var/on_hardly_weedable = current_turf && current_turf.is_weedable == HARDLY_WEEDABLE
+
 	var/my_dir = 0
+	var/transition_dir = 0
 	for(var/check_dir in GLOB.cardinals)
 		var/turf/check = get_step(src, check_dir)
 
@@ -340,8 +348,11 @@
 		if(istype(check, /turf/closed/wall/resin))
 			my_dir |= check_dir
 
-		else if (locate(/obj/effect/alien/weeds) in check)
-			my_dir |= check_dir
+		else if(locate(/obj/effect/alien/weeds) in check)
+			if(on_hardly_weedable || check.is_weedable != HARDLY_WEEDABLE)
+				my_dir |= check_dir
+			else
+				transition_dir |= check_dir
 
 	// big brain the icon dir by letting -15 represent the base icon,
 	// 0-15 be for omnidirectional and -1 to -14 be the rest
@@ -349,14 +360,26 @@
 	var/icon_dir = -15
 	if(my_dir == 15) //weeds in all four directions
 		icon_dir = rand(0,15)
-		icon_state = "weed[icon_dir]"
 		if(weed_strength >= WEED_LEVEL_HIVE)
 			icon_state = "hive_[icon_state]"
+		if(!on_hardly_weedable)
+			icon_state = "weed[icon_dir]"
+		else
+			icon_dir = rand(0,3)
+			icon_state = "webbing_omni[icon_dir]"
+
 	else if(my_dir == 0) //no weeds in any direction
-		icon_state = "base"
+		if(!on_hardly_weedable)
+			icon_state = "base"
+		else
+			icon_state = "webbing_base"
 	else
 		icon_dir = -my_dir
-		icon_state = "weed_dir[my_dir]"
+		if(!on_hardly_weedable)
+			icon_state = "weed_dir[my_dir]"
+		else
+			icon_state = "webbing_dir[my_dir]"
+
 
 	if(secreting)
 		var/image/secretion
@@ -496,8 +519,9 @@
 	flags_atom = OPENCONTAINER
 	layer = ABOVE_BLOOD_LAYER
 	plane = FLOOR_PLANE
-	var/static/staticnode
+	var/image/node_image
 	var/overlay_node = TRUE
+	var/destroy_node = FALSE
 
 	// Which weeds are being kept alive by this node?
 	var/list/obj/effect/alien/weeds/children = list()
@@ -523,14 +547,16 @@
 /obj/effect/alien/weeds/node/update_icon()
 	..()
 	if(overlay_node)
-		overlays += staticnode
+		overlays += node_image
 
 /obj/effect/alien/weeds/node/proc/trap_destroyed()
 	SIGNAL_HANDLER
 	overlay_node = TRUE
-	overlays += staticnode
+	overlays += node_image
 
 /obj/effect/alien/weeds/node/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/xenomorph/xeno, datum/hive_status/hive)
+	if(destroy_node)
+		return INITIALIZE_HINT_QDEL
 	if (istype(hive))
 		linked_hive = hive
 	else if (istype(xeno) && xeno.hive)
@@ -546,17 +572,19 @@
 			qdel(weed) //replaces the previous weed
 			break
 
+	var/node_icon_state = icon_state
+
 	. = ..(mapload, src)
 
 	// Create the overlay with the determined icon_state
-	if(!staticnode)
-		staticnode = image('icons/mob/xenos/weeds.dmi', "weednode", ABOVE_OBJ_LAYER)
+	if(!node_image)
+		node_image = image('icons/mob/xenos/weeds.dmi', node_icon_state, ABOVE_OBJ_LAYER)
 
 	var/obj/effect/alien/resin/trap/trap = locate() in loc
 	if(trap)
 		RegisterSignal(trap, COMSIG_PARENT_PREQDELETED, PROC_REF(trap_destroyed))
 		overlay_node = FALSE
-		overlays -= staticnode
+		overlays -= node_image
 
 	if(xeno)
 		add_hiddenprint(xeno)
@@ -604,6 +632,13 @@
 	var/x_diff = abs(thing.x - x)
 	var/y_diff = abs(thing.y - y)
 	return (x_diff <= node_range && y_diff < node_range) || (x_diff < node_range && y_diff <= node_range)
+
+/obj/effect/alien/weeds/node/hardened
+	icon_state = "hardened_weednode"
+	spread_on_semiweedable = TRUE
+	spread_on_hardweedable = TRUE
+	fruit_growth_multiplier = 0.8
+	weed_strength = WEED_LEVEL_HARDY
 
 /obj/effect/alien/weeds/node/alpha
 	hivenumber = XENO_HIVE_ALPHA
@@ -710,5 +745,36 @@ GLOBAL_LIST_EMPTY(all_xeno_pylon_cluster_nodes)
 
 /obj/effect/resin_construct/transparent/weak
 	icon_state = "WeakTransparentConstruct"
+
+/obj/effect/resin_construct/fastweak
+	icon_state = "WeakReflectiveFast"
+
+/obj/effect/resin_construct/speed_node
+	icon_state = "speednode"
+
+/obj/effect/resin_construct/cost_node
+	icon_state = "costnode"
+
+/obj/effect/resin_construct/construct_node
+	icon_state = "constructnode"
+
+/obj/effect/resin_construct/construct_doorslow
+	icon_state = "BoundDoorSlow"
+
+/obj/effect/resin_construct/construct_wallslow
+	icon_state = "BoundWallSlow"
+
+/obj/effect/resin_construct/thickfast
+	icon_state = "ThickConstructFast"
+
+/obj/effect/resin_construct/thickdoorfast
+	icon_state = "ThickDoorConstructFast"
+	layer = FIREDOOR_CLOSED_LAYER
+
+/obj/effect/resin_construct/transparent/thickfast
+	icon_state = "WeakTransparentConstructFast"
+
+/obj/effect/resin_construct/upgrade_node
+	icon_state = "hardenednode"
 
 #undef WEED_BASE_GROW_SPEED

@@ -29,12 +29,6 @@
 	///Seconds under which to warn that the tape is almost up.
 	var/time_left_warning = 60 SECONDS
 
-	//sound support for colony tapes
-	var/sound/sound_track //the backing track, can contain voice acting, but should mostly be a timestamped track that plays sound effects. Up to you!
-	var/paused = TRUE
-	var/pl_index = 1
-	var/volume = 25
-
 	var/datum/looping_sound/tape_recorder_hiss/soundloop
 
 /obj/item/device/taperecorder/Initialize(mapload)
@@ -86,56 +80,16 @@
 /obj/item/device/taperecorder/proc/update_sound()
 	if(!playing)
 		soundloop.stop()
-		if(sound_track)
-			play_soundtrack()
-	if(playing)
-		soundloop.start()
-		if(sound_track)
-			pause_soundtrack()
-
-/obj/item/device/taperecorder/proc/update_song(sound/tapesound, mob/mobba, flags = SOUND_UPDATE)
-	if(!istype(mobba) || !istype(tapesound))
-		return
-	if(mobba.ear_deaf > 0)
-		flags |= SOUND_MUTE
-	tapesound.status = flags
-	tapesound.volume = src.volume
-	tapesound.channel = SOUND_CHANNEL_WALKMAN
-	sound_to(mobba,tapesound)
-
-/obj/item/device/taperecorder/proc/pause_soundtrack(mob/user)
-	if(!sound_track)
-		return
-	paused = TRUE
-	update_song(sound_track, user, SOUND_PAUSED | SOUND_UPDATE)
-
-/obj/item/device/taperecorder/proc/play_soundtrack(mob/user)
-	if(!sound_track)
-		return
-	sound_track = sound(sound_track, 0, 0, SOUND_CHANNEL_WALKMAN, volume)
-	sound_track.status = SOUND_STREAM
-	paused = FALSE
-	if(sound_track.status & SOUND_PAUSED)
-		update_song(sound_track,user)
 	else
-		update_song(sound_track,user,0)
-
-	update_song(sound_track,user)
-
-/obj/item/device/taperecorder/proc/break_soundtrack(mob/user)
-	if(!playing)
-		return
-	var/sound/break_sound = sound(null, 0, 0, SOUND_CHANNEL_WALKMAN)
-	break_sound.priority = 255
-	update_song(break_sound, user, 0)
+		soundloop.start()
 
 
-/obj/item/device/taperecorder/attackby(obj/item/myitem, mob/user, params)
-	if(!mytape && istype(myitem, /obj/item/tape))
-		if(!user.drop_inv_item_to_loc(myitem, src))
+/obj/item/device/taperecorder/attackby(obj/item/I, mob/user, params)
+	if(!mytape && istype(I, /obj/item/tape))
+		if(!user.drop_inv_item_to_loc(I, src))
 			return
-		mytape = myitem
-		to_chat(user, SPAN_NOTICE("You insert [myitem] into [src]."))
+		mytape = I
+		to_chat(user, SPAN_NOTICE("You insert [I] into [src]."))
 		playsound(src, 'sound/items/taperecorder/taperecorder_close.ogg', 50, FALSE)
 		update_icon()
 
@@ -148,8 +102,6 @@
 		user.put_in_hands(mytape)
 		mytape = null
 		update_icon()
-		if(sound_track)
-			break_soundtrack()
 
 /obj/item/device/taperecorder/fire_act(exposed_temperature, exposed_volume)
 	mytape.unspool() //Fires unspool the tape, which makes sense if you don't think about it
@@ -171,7 +123,6 @@
 			return ..()
 		if(loc == user)
 			play()
-			update_sound()
 			return TRUE
 		else if(Adjacent(user))
 			attack_self(user)
@@ -212,12 +163,12 @@
 	return
 
 
-/obj/item/device/taperecorder/hear_talk(mob/living/mobba, msg, verb, datum/language/speaking, italics)
+/obj/item/device/taperecorder/hear_talk(mob/living/M, msg, verb, datum/language/speaking, italics)
 	. = ..()
 	if(mytape && recording)
 		mytape.timestamp += mytape.used_capacity
-		var/language_known = (mobba.universal_speak || (speaking && (speaking.name in known_languages)))
-		var/mob_name = language_known ? mobba.GetVoice() : "Unknown"
+		var/language_known = (M.universal_speak || (speaking && (speaking.name in known_languages)))
+		var/mob_name = language_known ? M.GetVoice() : "Unknown"
 		var/message = (!speaking || language_known) ? msg : speaking.scramble(msg)
 		mytape.storedinfo += "\[[time2text(mytape.used_capacity,"mm:ss")]\] [mob_name] [verb], \"[italics ? "<i>" : null][message][italics ? "</i>" : null]\""
 
@@ -300,7 +251,6 @@
 			break
 		if(length(mytape.storedinfo) < i)
 			audible_message(SPAN_MAROON("[icon2html(src, usr)] End of recording."))
-			break_soundtrack()
 			break
 
 		var/list/heard = get_mobs_in_view(GLOB.world_view_size, src)
@@ -339,17 +289,14 @@
 		switch(selection)
 			if("Stop")
 				stop()
-				break_soundtrack()
 			if("Record")
 				record()
 			if("Play")
 				play()
-				play(sound_track)
 			if("Print Transcript")
 				print_transcript()
 			if("Eject")
 				eject(user)
-				break_soundtrack()
 
 /obj/item/device/taperecorder/verb/print_transcript()
 	if(!length(mytape.storedinfo))
@@ -406,7 +353,6 @@
 	/// list of typepaths for lore tapes
 	var/list/lore_tapes = list()
 	starting_tape_type = null
-
 /obj/item/tape
 	name = "tape"
 	desc = "A magnetic tape that can hold up to twenty minutes of content on either side. Has a little paper strip on the top to let you label it with a pen."
@@ -428,8 +374,6 @@
 	var/list/storedinfo = list()
 	///Numbered list of seconds the messages in the previous list appear at on the tape. Used by playback to get the timing right.
 	var/list/timestamp = list()
-	///An (optional) soundtrack that can be used for voice acting or filling tracks with sound effects. Master professionally, please!
-	var/sound/sound_track
 	var/used_capacity_otherside = 0 SECONDS //Separate my side
 	var/list/storedinfo_otherside = list()
 	var/list/timestamp_otherside = list()
@@ -671,14 +615,6 @@ GLOBAL_LIST_INIT(markup_tags, list("/" = list("<i>", "</i>"),
 		"\[00:42\] Mark(?) says, \"Go make your ears bleed 'n your OMO cry.\"",
 		//total of 22 messages
 	)
-	//Sound support!
-	//Soundtracks are completely optional, but might be useful if you want to emphasise a moment or scare,
-	//or add a literal soundtrack and turn your audiolog into a CD drama. Up to you.
-	//Use in coordination with the timestamps in order to properly order sync events.
-	sound_track = "sound/ambience/ambienceNV.ogg" //Example track.
-	//That being said, CD Drama's would be cool...
-
-
 
 	//You typically want speaking messages spaced out by at least 30-50 ticks (3-5 seconds),
 	//but if you want to surprise the player with a hectic situation, try combining multiple messages in 10-20 tick spans.
@@ -694,7 +630,7 @@ GLOBAL_LIST_INIT(markup_tags, list("/" = list("<i>", "</i>"),
 		150,
 		180,
 		210,
-		240,//paper shuffling SFX here
+		240,
 		//first pause happens here
 		320,
 		350,

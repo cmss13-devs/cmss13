@@ -331,6 +331,20 @@
 	damage_heal_threshold = 40
 	charge_cost = 198
 
+/obj/item/device/defibrillator/compact_adv/research
+	name = "Modified Compact Defibrillator"
+	desc = "An advanced compact defibrillator that trades capacity for immediate power. Integrated induction delivers shocks through metallic objects, such as armor, but unlike its full-sized variant, cannot guarantee better restorative quality, and does greater damage to the patient's coronary function."
+	icon = 'icons/obj/items/medical_tools.dmi'
+	icon_state = "compact_defib"
+	item_state = "defib"
+	base_icon_state = "compact_defib"
+	w_class = SIZE_MEDIUM
+	blocked_by_suit = FALSE
+	min_heart_damage_dealt = 6
+	max_heart_damage_dealt = 10 //feel the (heart)burn
+	damage_heal_threshold = 12
+	charge_cost = 198
+
 /obj/item/device/defibrillator/compact
 	name = "compact defibrillator"
 	desc ="This particular defibrillator has halved charge capacity compared to the standard emergency defibrillator, but can fit in your pocket."

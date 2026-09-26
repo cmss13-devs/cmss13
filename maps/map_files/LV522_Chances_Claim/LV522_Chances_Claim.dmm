@@ -4243,12 +4243,6 @@
 /obj/item/tool/pen/red/clicky,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
-"bVG" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/corsat,
-/area/lv522/atmos/east_reactor)
 "bVX" = (
 /obj/item/clothing/gloves/yellow,
 /turf/open/floor/corsat,
@@ -53177,7 +53171,7 @@ lhD
 lhD
 loD
 cfg
-xrF
+cfg
 lhD
 lhD
 loD
@@ -71506,7 +71500,7 @@ aWJ
 bhd
 mbq
 bRN
-bVG
+mbq
 yjL
 caN
 wvB

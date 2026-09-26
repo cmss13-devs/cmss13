@@ -332,9 +332,9 @@
 		)
 
 /obj/structure/bed/chair/BlockedPassDirs(atom/movable/mover, target_dir)
-	if(buckled_mob && isliving(mover))
+	if(buckled_mob && isliving(mover) && shimmy_data)
 		var/mob/living/L = mover
-		if(!(L.pass_flags && (L.pass_flags.flags_pass & PASS_MOB_IS_HUMAN)))
+		if(!(L.pass_flags && (L.pass_flags.flags_pass & shimmy_data[INDEX_PASS_FLAGS])))
 			return BLOCKED_MOVEMENT
 	return ..()
 

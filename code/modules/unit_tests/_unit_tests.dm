@@ -105,6 +105,7 @@
 #include "movement\link_blocked_diagonal.dm"
 #include "movement\movement_helpers.dm"
 #include "xenomorph\xeno_strains.dm"
+#include "xenomorph\abilities\plant_weeds.dm"
 #include "xenomorph\abilities\steelcrest_abilities.dm"
 #include "xenomorph\abilities\xeno_ability_helpers.dm"
 #include "xenomorph\abilities\pheromones\transmit_castes.dm"

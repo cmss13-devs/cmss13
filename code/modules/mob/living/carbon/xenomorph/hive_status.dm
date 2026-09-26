@@ -1300,6 +1300,34 @@
 	latejoin_burrowed = FALSE
 	tacmap_requires_queen_ovi = FALSE
 
+/datum/hive_status/controlled
+	name = FACTION_XENOMORPH_CONTROLLED
+	reporting_id = "controlled"
+	hivenumber = XENO_HIVE_CONTROLLED
+	prefix = "Controlled "
+	color = "#828296"
+	ui_color = "#828296"
+
+	hive_inherited_traits = list(TRAIT_OPPOSABLE_THUMBS) // what if we were fucking insane
+	dynamic_evolution = FALSE
+	evolution_rate = 0
+	allow_no_queen_evo = TRUE
+	allow_queen_evolve = FALSE
+	latejoin_burrowed = FALSE
+	tacmap_requires_queen_ovi = FALSE
+
+/datum/hive_status/controlled/add_xeno(mob/living/carbon/xenomorph/xeno)
+	. = ..()
+	xeno.add_language(LANGUAGE_ENGLISH)
+	xeno.remove_language(LANGUAGE_XENOMORPH)
+	xeno.remove_language(LANGUAGE_HIVEMIND)
+
+/datum/hive_status/controlled/remove_xeno(mob/living/carbon/xenomorph/xeno, hard)
+	. = ..()
+	xeno.remove_language(LANGUAGE_ENGLISH)
+	xeno.add_language(LANGUAGE_XENOMORPH)
+	xeno.add_language(LANGUAGE_HIVEMIND)
+
 /datum/hive_status/forsaken
 	name = FACTION_XENOMORPH_FORSAKEN
 	reporting_id = "forsaken"

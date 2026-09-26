@@ -1176,7 +1176,7 @@
 
 	// For guns, check if we should use the active attachable instead
 	var/obj/item/weapon/gun/gun = src
-	if(isgun(gun) && gun.active_attachable)
+	if(isgun(gun) && gun.active_attachable && (gun.active_attachable.flags_attach_features & ATTACH_HAS_UNIQUE_ACTION))
 		src = gun.active_attachable
 
 	unique_action(usr)

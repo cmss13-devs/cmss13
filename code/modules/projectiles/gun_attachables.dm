@@ -3136,7 +3136,7 @@ Defined in conflicts.dm of the #defines folder.
 	w_class = SIZE_MEDIUM
 	attachment_action_type = /datum/action/item_action/toggle/ugl
 	slot = "under"
-	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON|ATTACH_HAS_UNIQUE_ACTION
 
 	attached_gun = /obj/item/weapon/gun/launcher/grenade/ubarrel/u1
 
@@ -3231,7 +3231,7 @@ Defined in conflicts.dm of the #defines folder.
 	w_class = SIZE_MEDIUM
 	slot = "under"
 	gun_activate_sound = 'sound/weapons/handling/gun_underbarrel_flamer_activate.ogg'
-	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON|ATTACH_HAS_UNIQUE_ACTION
 	attachment_action_type = /datum/action/item_action/toggle/flamer
 	// Will need to be refactored at some point to use `attached_gun`
 	var/attachment_firing_delay = FIRE_DELAY_TIER_4 * 5

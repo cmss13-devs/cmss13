@@ -112,6 +112,8 @@
 #define ATTACH_MELEE (1<<6)
 /// Override for attachies so you can fire them with a single hand . ONLY FOR PROJECTILES!!
 #define ATTACH_WIELD_OVERRIDE (1<<7)
+/// Has a unique action
+#define ATTACH_HAS_UNIQUE_ACTION (1<<8)
 
 //Ammo magazine defines, for flags_magazine
 

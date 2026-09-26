@@ -640,6 +640,11 @@
 	fruit_growth_multiplier = 0.8
 	weed_strength = WEED_LEVEL_HARDY
 
+/obj/effect/alien/weeds/node/hardened/get_examine_text(mob/user)
+	. = ..()
+	if(isxeno(user) || isobserver(user))
+		. += SPAN_NOTICE("We sense that this weeds will benefit our resin fruits, increasing growth speed by [SPAN_BOLDNOTICE("20%")].")
+
 /obj/effect/alien/weeds/node/alpha
 	hivenumber = XENO_HIVE_ALPHA
 

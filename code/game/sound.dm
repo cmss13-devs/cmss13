@@ -310,6 +310,10 @@
 				sound = pick('sound/weapons/gun_smartgun1.ogg', 'sound/weapons/gun_smartgun2.ogg', 'sound/weapons/gun_smartgun3.ogg', 'sound/weapons/gun_smartgun4.ogg')
 			if("gun_smartgun_rattle")
 				sound = pick('sound/weapons/gun_smartgun1_rattle.ogg', 'sound/weapons/gun_smartgun2_rattle.ogg', 'sound/weapons/gun_smartgun3_rattle.ogg', 'sound/weapons/gun_smartgun4_rattle.ogg')
+			if("gun_smartgun_clf")
+				sound = pick('sound/weapons/gun_smartgun_clf1.ogg', 'sound/weapons/gun_smartgun_clf2.ogg', 'sound/weapons/gun_smartgun_clf3.ogg', 'sound/weapons/gun_smartgun_clf4.ogg')
+			if("gun_smartgun_clf_rattle")
+				sound = pick('sound/weapons/gun_smartgun_clf1_rattle.ogg', 'sound/weapons/gun_smartgun_clf2_rattle.ogg', 'sound/weapons/gun_smartgun_clf3_rattle.ogg', 'sound/weapons/gun_smartgun_clf4_rattle.ogg')
 			if("gun_jam_rack")
 				sound = pick('sound/weapons/handling/gun_jam_rack_1.ogg', 'sound/weapons/handling/gun_jam_rack_2.ogg', 'sound/weapons/handling/gun_jam_rack_3.ogg')
 			//A:CM gun sounds

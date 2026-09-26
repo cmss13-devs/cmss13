@@ -151,3 +151,4 @@
 	var/atom/observed_atom
 
 	var/nutrition = NUTRITION_NORMAL // This should be on /human
+	//var/atom/movable/observed_atom

@@ -72,10 +72,11 @@
 	name = "driver's seat"
 	desc = "Comfortable seat for a driver."
 	seat = VEHICLE_DRIVER
+	var/skill_to_check = SKILL_VEHICLE
 
 /obj/structure/bed/chair/comfy/vehicle/driver/do_buckle(mob/target, mob/user)
 	required_skill = vehicle.required_skill
-	if(!skillcheck(target, SKILL_VEHICLE, required_skill))
+	if(!skillcheck(target, skill_to_check, required_skill))
 		if(target == user)
 			to_chat(user, SPAN_WARNING("You have no idea how to drive this thing!"))
 		return FALSE

@@ -344,57 +344,22 @@
 	init_pixel_x = pixel_x
 
 /obj/structure/bed/chair/vehicle/update_shimmy_data(obj/structure/bed/chair/neighbor = null, force_update = FALSE)
-	if(shimmy_data == null)
-		return	//this chair doesnt shimmy
+	.=..()
+
 	var/approachness = NORTH|SOUTH|EAST|WEST
 	var/internalness = NORTH|SOUTH|EAST|WEST
-	var/offset = 14
+
 	if(neighbor && neighbor.buckled_mob)
 		internalness &= ~turn(dir, 180)	//cant walk into filled seats
 		approachness &= ~turn(dir, 180)
-	approachness &= ~dir
-	shimmy_data = list(-offset, -offset, -offset, -offset, approachness, internalness)
-
-	switch(dir)
-		if(NORTH)
-			shimmy_data[3] = offset
-			shimmy_data[4] = offset
-		if(EAST)
-			shimmy_data[1] = offset
-			shimmy_data[2] = offset
-			shimmy_data[3] = offset
-			shimmy_data[4] = offset
-		if(WEST)
-			shimmy_data[3] = offset
-			shimmy_data[4] = offset
-
-	if(dir == NORTH || dir == SOUTH)
-		if(pixel_x < 0)
-			shimmy_data[1] = offset
-			shimmy_data[2] = offset
-		else
-			shimmy_data[1] = -offset
-			shimmy_data[2] = -offset
-	else // EAST || WEST
-		if(pixel_y >= 16)
-			shimmy_data[3] = -offset
-			shimmy_data[4] = -offset
-		else
-			shimmy_data[3] = offset
-			shimmy_data[4] = offset
 
 	if(force_update && buckled_mob)
 		buckled_mob.density = FALSE
 		density = TRUE
 		AddComponent(/datum/component/shimmy_around, \
-			north_offset = shimmy_data[1], \
-			south_offset = shimmy_data[2], \
-			east_offset  = shimmy_data[3], \
-			west_offset  = shimmy_data[4], \
-			extra_delay  = 0.5 SECONDS, \
-			approach_dirs = shimmy_data[5], \
-			internal_dirs = shimmy_data[6], \
-			allowed_pass_flag = PASS_MOB_IS_HUMAN)
+			approach_dirs = approachness, \
+			internal_dirs = internalness \
+		)
 
 /obj/structure/bed/chair/vehicle/proc/setup_buckle_offsets()
 	if(pixel_x != 0)

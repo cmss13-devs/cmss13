@@ -238,8 +238,9 @@
 #define INDEX_SOUTH_OFFSET 2
 #define INDEX_EAST_OFFSET 3
 #define INDEX_WEST_OFFSET 4
-#define INDEX_APPORACH_DIRS 5
+#define INDEX_APPROACH_DIRS 5
 #define INDEX_INTERNAL_DIRS 6
+#define INDEX_PASS_FLAGS 7
 
 /obj/structure/bed/chair/do_buckle(mob/living/target, mob/user)
 	. = ..()
@@ -251,7 +252,7 @@
 		if(found_obj.buckled_mob && ispath(found_obj.type, /obj/structure/bed/chair))
 			var/obj/structure/bed/chair/found_chair = found_obj
 			found_chair.update_shimmy_data(src)	//we need to update the shimmy other_buckled_chair chair to block walking into this buckled chair
-			found_chair.AddComponent(/datum/component/shimmy_around, approach_dirs = found_chair.shimmy_data[INDEX_APPORACH_DIRS], internal_dirs = found_chair.shimmy_data[INDEX_INTERNAL_DIRS])
+			found_chair.AddComponent(/datum/component/shimmy_around, approach_dirs = found_chair.shimmy_data[INDEX_APPROACH_DIRS], internal_dirs = found_chair.shimmy_data[INDEX_INTERNAL_DIRS])
 			ADD_TRAIT(target, TRAIT_UNDENSE, TRAIT_SOURCE_BUCKLE)
 			target.update_density()	//theres already another buckled chair handling shimmies, but we still dont want our buckled mob to interfere
 			return	//shimmying is already handled
@@ -259,15 +260,16 @@
 	add_temp_pass_flags() //you shall not pass
 	ADD_TRAIT(target, TRAIT_UNDENSE, TRAIT_SOURCE_BUCKLE)
 	target.update_density()
+	update_shimmy_data()
 	AddComponent(/datum/component/shimmy_around, \
 		north_offset = shimmy_data[INDEX_NORTH_OFFSET], \
 		south_offset = shimmy_data[INDEX_SOUTH_OFFSET], \
 		east_offset = shimmy_data[INDEX_EAST_OFFSET], \
 		west_offset = shimmy_data[INDEX_WEST_OFFSET],\
 		extra_delay = 0.5 SECONDS, \
-		approach_dirs = shimmy_data[INDEX_APPORACH_DIRS],\
+		approach_dirs = shimmy_data[INDEX_APPROACH_DIRS],\
 		internal_dirs = shimmy_data[INDEX_INTERNAL_DIRS], \
-		allowed_pass_flag = PASS_MOB_IS_HUMAN)
+		allowed_pass_flag = shimmy_data[INDEX_PASS_FLAGS])
 
 /obj/structure/bed/chair/proc/update_shimmy_data(obj/structure/bed/chair/neighbor = null, force_update = FALSE)
 	if(shimmy_data == null)
@@ -280,22 +282,40 @@
 			approachness = NORTH | SOUTH
 	var/internalness = NORTH|SOUTH|EAST|WEST
 	if(neighbor && neighbor.buckled_mob)
-		internalness &= ~turn(dir, 180)	//cant walk into filled seats
-		approachness &= !turn(dir, 180)
+		internalness &= ~dir	//cant walk into filled seats
+		approachness &= ~turn(dir, 180)	//cant walk from behind into filled seats
+		approachness &= ~dir
 	var/offset = 14
-	shimmy_data = list(-offset, -offset, -offset, -offset, approachness, internalness)
+	shimmy_data = list(-offset, -offset, -offset, -offset, approachness, internalness, PASS_MOB_IS_HUMAN)
+
 	switch(dir)
 		if(NORTH)
 			shimmy_data[INDEX_EAST_OFFSET] = offset
 			shimmy_data[INDEX_WEST_OFFSET] = offset
 		if(EAST)
-			shimmy_data[INDEX_NORTH_OFFSET] = offset
-			shimmy_data[INDEX_SOUTH_OFFSET] = offset
+			shimmy_data[INDEX_NORTH_OFFSET]= offset
+			shimmy_data[INDEX_SOUTH_OFFSET]= offset
 			shimmy_data[INDEX_EAST_OFFSET] = offset
 			shimmy_data[INDEX_WEST_OFFSET] = offset
 		if(WEST)
 			shimmy_data[INDEX_EAST_OFFSET] = offset
 			shimmy_data[INDEX_WEST_OFFSET] = offset
+
+	if(dir == NORTH || dir == SOUTH)
+		if(pixel_x < 0)
+			shimmy_data[INDEX_NORTH_OFFSET]= offset
+			shimmy_data[INDEX_SOUTH_OFFSET]= offset
+		else
+			shimmy_data[INDEX_NORTH_OFFSET]= -offset
+			shimmy_data[INDEX_SOUTH_OFFSET]= -offset
+	else // EAST || WEST
+		if(pixel_y >= 16)
+			shimmy_data[INDEX_EAST_OFFSET] = -offset
+			shimmy_data[INDEX_WEST_OFFSET] = -offset
+		else
+			shimmy_data[INDEX_EAST_OFFSET] = offset
+			shimmy_data[INDEX_WEST_OFFSET] = offset
+
 	if(force_update && buckled_mob)
 		ADD_TRAIT(buckled_mob, TRAIT_UNDENSE, TRAIT_SOURCE_BUCKLE)
 		buckled_mob.update_density()
@@ -306,9 +326,17 @@
 			east_offset  = shimmy_data[INDEX_EAST_OFFSET], \
 			west_offset  = shimmy_data[INDEX_WEST_OFFSET], \
 			extra_delay  = 0.5 SECONDS, \
-			approach_dirs = shimmy_data[INDEX_APPORACH_DIRS], \
+			approach_dirs = shimmy_data[INDEX_APPROACH_DIRS], \
 			internal_dirs = shimmy_data[INDEX_INTERNAL_DIRS], \
-			allowed_pass_flag = PASS_MOB_IS_HUMAN)
+			allowed_pass_flag = shimmy_data[INDEX_PASS_FLAGS] \
+		)
+
+/obj/structure/bed/chair/BlockedPassDirs(atom/movable/mover, target_dir)
+    if(buckled_mob && isliving(mover))
+        var/mob/living/L = mover
+        if(!(L.pass_flags?.flags_pass & PASS_MOB_IS_HUMAN))
+            return BLOCKED_MOVEMENT
+    return ..()
 
 /obj/structure/bed/chair/unbuckle()
 	if(buckled_mob)
@@ -346,10 +374,10 @@
 		other_buckled_chair.AddComponent(/datum/component/shimmy_around, \
 			north_offset = other_buckled_chair.shimmy_data[INDEX_NORTH_OFFSET], \
 			south_offset = other_buckled_chair.shimmy_data[INDEX_SOUTH_OFFSET], \
-			east_offset  = other_buckled_chair.shimmy_data[3], \
+			east_offset  = other_buckled_chair.shimmy_data[INDEX_EAST_OFFSET], \
 			west_offset  = other_buckled_chair.shimmy_data[INDEX_WEST_OFFSET], \
 			extra_delay  = 0.5 SECONDS, \
-			approach_dirs = other_buckled_chair.shimmy_data[INDEX_APPORACH_DIRS], \
+			approach_dirs = other_buckled_chair.shimmy_data[INDEX_APPROACH_DIRS], \
 			internal_dirs = other_buckled_chair.shimmy_data[INDEX_INTERNAL_DIRS], \
 			allowed_pass_flag = PASS_MOB_IS_HUMAN, \
 			existing_shimmiers = shimmied_mobs)
@@ -358,7 +386,7 @@
 #undef INDEX_SOUTH_OFFSET
 #undef INDEX_EAST_OFFSET
 #undef INDEX_WEST_OFFSET
-#undef INDEX_APPORACH_DIRS
+#undef INDEX_APPROACH_DIRS
 #undef INDEX_INTERNAL_DIRS
 
 //Chair types

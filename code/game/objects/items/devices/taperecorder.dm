@@ -2,7 +2,7 @@
 	name = "tape recorder"
 	desc = "A device that can record dialogue using magnetic tapes. It automatically translates the content in playback."
 	icon = 'icons/obj/items/walkman.dmi'
-	icon_state = "taperecorder_idle"
+	icon_state = "taperecorder"
 	item_state = "analyzer"
 	w_class = SIZE_SMALL
 
@@ -136,7 +136,7 @@
 	return FALSE
 
 
-/obj/item/device/taperecorder/verb/ejectverb()
+/obj/item/device/taperecorder/proc/ejectverb()
 	set name = "Eject Tape"
 	set category = "Object"
 
@@ -149,16 +149,17 @@
 
 
 /obj/item/device/taperecorder/update_icon()
+	var/original_icon = initial(icon_state)
 	if(!mytape)
-		icon_state = "taperecorder_empty"
+		icon_state = "[original_icon]_empty"
 		return
 	if(recording)
-		icon_state = "taperecorder_recording"
+		icon_state = "[original_icon]_recording"
 		return
 	else if(playing)
-		icon_state = "taperecorder_playing"
+		icon_state = "[original_icon]_playing"
 		return
-	icon_state = "taperecorder_idle"
+	icon_state = "[original_icon]"
 	return
 
 
@@ -172,10 +173,7 @@
 		mytape.storedinfo += "\[[time2text(mytape.used_capacity,"mm:ss")]\] [mob_name] [verb], \"[italics ? "<i>" : null][message][italics ? "</i>" : null]\""
 
 
-/obj/item/device/taperecorder/verb/record()
-	set name = "Start Recording"
-	set category = "Object"
-
+/obj/item/device/taperecorder/proc/record()
 	if(!can_use(usr))
 		return
 	if(!mytape || mytape.unspooled)
@@ -209,10 +207,7 @@
 		playsound(src, 'sound/items/taperecorder/taperecorder_stop.ogg', 50, FALSE)
 
 
-/obj/item/device/taperecorder/verb/stop()
-	set name = "Stop"
-	set category = "Object"
-
+/obj/item/device/taperecorder/proc/stop()
 	if(!can_use(usr))
 		return
 
@@ -228,10 +223,7 @@
 	update_icon()
 	update_sound()
 
-/obj/item/device/taperecorder/verb/play()
-	set name = "Play Tape"
-	set category = "Object"
-
+/obj/item/device/taperecorder/proc/play()
 	if(!can_use(usr))
 		return
 	if(!mytape || mytape.unspooled)
@@ -262,7 +254,7 @@
 			break
 
 		var/list/heard = get_mobs_in_view(GLOB.world_view_size, src)
-		langchat_speech(mytape.storedinfo[i], heard, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
+		langchat_speech(mytape.storedinfo[i], heard, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"), unlock_length = TRUE)
 
 		audible_message(SPAN_MAROON("[icon2html(src, usr)] [mytape.storedinfo[i]]"))//We want to display this properly, don't double encode
 		if(length(mytape.storedinfo) < i + 1)
@@ -307,9 +299,6 @@
 				eject(user)
 
 /obj/item/device/taperecorder/verb/print_transcript()
-	set name = "Print Transcript"
-	set category = "Object"
-
 	if(!length(mytape.storedinfo))
 		return
 	if(!can_use(usr))
@@ -341,6 +330,29 @@
 /obj/item/device/taperecorder/empty
 	starting_tape_type = null
 
+/obj/item/device/taperecorder/colony
+	name = "\improper Seegson C36 tape recorder"
+	desc = "A cheap plastic C-Series tape recorder, mass produced by Seegson for distribution all over civilised space. To save on money, they cannot print transcripts of their tapes. This one has clearly seen some wear and tear."
+	icon_state = "colonyrecorder"
+	canprint = FALSE
+
+/obj/item/device/taperecorder/colony/get_examine_text(mob/user)
+	. = ..()
+	if(!mytape)
+		. += SPAN_HELPFUL("\nLooks like the tape fell out. You'll have to find a new one. Somewhere on the colony might be a good bet...")
+
+/obj/item/device/taperecorder/colony/empty
+	starting_tape_type = null
+	/// list of typepaths for lore tapes
+	var/list/lore_tapes = list()
+
+/// do not use on maps, only in player loadouts.
+/obj/item/device/taperecorder/colony/loadout
+	name = "\improper Seegson C36 tape recorder"
+	desc = "A cheap plastic C-Series tape recorder, mass produced by Seegson for distribution all over civilised space. To save on money, they cannot print transcripts of their tapes. You probably bought this one in a PX on Chinook before setting off."
+	/// list of typepaths for lore tapes
+	var/list/lore_tapes = list()
+	starting_tape_type = null
 /obj/item/tape
 	name = "tape"
 	desc = "A magnetic tape that can hold up to twenty minutes of content on either side. Has a little paper strip on the top to let you label it with a pen."
@@ -411,8 +423,6 @@
 /obj/item/tape/Initialize(mapload)
 	. = ..()
 	initial_icon_state = icon_state //random tapes will set this after choosing their icon
-	if(prob(50))
-		tapeflip()
 	flipped_name = name
 	unflipped_name = name
 
@@ -498,12 +508,144 @@
 
 //Random color tapes
 /obj/item/tape/random
-	icon_state = "cassette_rainbow"
+	icon_state = "cassette_flip"
 
 /obj/item/tape/random/Initialize(mapload)
 	icon_state = "cassette_[pick(cassette_colors)]"
 	. = ..()
 
+/obj/item/tape/random/loadout
+	desc = "A small plastic tape. Jams often."
+	max_capacity = 10 MINUTES
+
 /obj/item/tape/regulation
 	name = "regulation tape"
 	icon_state = "cassette_regulation"
+
+
+/*
+// HOW TO MAKE A CUSTOM AUDIO LOG TAPE
+// for spawning on maps or putting in the loadout tape recorder
+// done by example, read the "recordingtest" tape to get a clear example
+// typepath here, make sure to make it a subtype of audio_log
+/obj/item/tape/audio_log/example
+// do name desc and icon state here
+// these are the lines that will be said on the tape. Put them in the provided format for speech, and you can do whatever you like with other sounds
+// remember that you can make the recorder say ANYTHING
+// but it helps to keep messages short, and space them out, and keep names short too.
+	storedinfo = list(
+		"\[00:03\] Dana Summy says, \"Okay\"" ,
+		"\[00:05\] Alaina Suni says, \"Sure\"",
+		"\[00:06\] Dana Summy says, \"Yes\"",
+		"\[00:08\] *gunshots*",
+	)
+// these are the timestamps of the above messages, put in the same order as you put the timestamps ideally
+// if you need two messages to play immediately after each other make their timestamps the same
+// these timestamps are in TICKS (1/10ths of a second)
+	timestamp = list(
+		30,
+		60,
+		90,
+		120,
+	)
+// how much of the tape has been used up
+// make this the biggest number on the timestamp list or 10 MINUTES if you don't want anything more to be recorded on the side.
+	used_capacity = 90
+// what the above tape produced when played in-game
+	Playback started.
+	[00:03] Dana Summy says, "Okay"
+	[00:05] Alaina Suni says, "Sure"
+	[00:06] Dana Summy says, "Yes"
+	[00:08] *gunshots*
+	End of recording.
+	Playback stopped.
+
+// Lastly, a reminder about markup
+
+// Global list for mark-up REGEX tag collection.
+GLOBAL_LIST_INIT(markup_tags, list("/" = list("<i>", "</i>"),
+						"*" = list("<b>", "</b>"),
+						"~" = list("<strike>", "</strike>"),
+						"_" = list("<u>", "</u>")))
+
+<b>, <i>, <strike>, and <u> will all work to bold, italicize, strike and underline your scripts. Use them well!
+
+// have fun!
+*/
+
+/obj/item/tape/audio_log
+	name = "partially used tape" // RENAME!
+	desc = "A standard tape, made by the million in factories on Earth. This one has been partially used." // RENAME!
+	unacidable = TRUE // so that xenos can't delete the map lore >:(
+	flags_obj = NO_FLAGS // we don't want players fucking up the item
+	icon_state = "cassette_worstmap" // rename this to your icon state
+
+//the default chinook tape
+/obj/item/tape/audio_log/recordingtest //mostly exists as an example to contributors how to add their own tapes. character limits per langchat line are currently 128, which is about where the longest messages in this storedinfo are at. Try and use this as a guidepost.
+	name = "Poorly Scribbled-on Tape"
+	desc = "Despite the lacklustre inscription written into adhesive painter's tape, the cassette seems brand new. \nThe guy from that PX might've given this to you so you can figure out what to do with this junk you've bought..."
+	icon_state = "cassette_gray"
+	item_state = "cassette_gray"
+	storedinfo = list(
+		"\[00:03\] A tired, gravelly voice says, \"Okay...\"",
+		"\[00:04\] A tired, gravelly voice says, \"If you're hearing this,\"",
+		"\[00:05\] A tired, gravelly voice says, \"you've probably bought a Seegson C36 from the post-exchange at '91- and-\"",
+		"\[00:06\] A tired, gravelly voice says, \"You're prob'bly real curious about how this thing works,\"",
+		"\[00:07\] A tired, gravelly voice says, \"y'aced your ASVAB 'n y'think you're a reaaaal smart guy-\"",
+		"\[00:08\] A tired, gravelly voice says, \"so y'jammed the tape in like an ape, scratches your ass, and got started.\"",
+		"\[00:09\] *shuffling, and plastic dropping*",
+		//pause the timestamp for 80 ticks (8 seconds) #7
+		"\[00:13\] A tired, gravelly voice says, \"<b>Shit</b>, where'd I leave it?\"", // <b> ... </b> bolds the message when displayed, look above for more info.
+		//pause the timestamp for another 60 ticks (6 seconds) #9
+		"\[00:16\] *more shuffling, and the sounds of paper*",
+		//return to 30 tick delays
+		"\[00:17\] A tired, gravelly voice says, \"Okay. Hi. My name's Mark,\"",
+		"\[00:18\] A tired, gravelly voice says, \"and I'm gonna teach you how you use your beautiful C36 to listen to the world.\"",
+		"\[00:19\] Mark(?) says, \"Sieg 'n Son's real pleased you bought the budget spaceman from us,\"",
+		"\[00:20\] Mark(?) says, \"But we <b>cut</b> the shit, so we'll tell you how it is.\"",
+		"\[00:22\] Mark(?) says, \"First things first- this shit don't record.\"",
+		"\[00:24\] Mark(?) says, \"It's busted, 'n Seegson's too busy making creepy mannequins-\"",
+		"\[00:26\] Mark(?) says, \"to make this thing worth the dollar or two it took you to wrest it from our shelves-\"",
+		"\[00:28\] Mark(?) says, \"So if you wanna listen to stuff,\"",
+		"\[00:30\] Mark(?) says, \"y'better've packed tapes for where-ever you're being deployed next, \"",
+		"\[00:31\] Mark(?) says, \"or find some if you're unlucky.\"",
+		"\[00:34\] Mark(?) says, \"'n Remember, if you're a Solar Devil, drinks're free at the light-bar.\"",
+		"\[00:36\] Mark(?) says, \"If you're a Falling Falcon... Do like birds do, and <i>flock off.</i>\"",
+		"\[00:41\] Mark(?) says, \"That concludes your orientation.\"",
+		"\[00:42\] Mark(?) says, \"Go make your ears bleed 'n your OMO cry.\"",
+		//total of 22 messages
+	)
+
+	//You typically want speaking messages spaced out by at least 30-50 ticks (3-5 seconds),
+	//but if you want to surprise the player with a hectic situation, try combining multiple messages in 10-20 tick spans.
+
+	//I recommend making the timestamp to a log **last**, and placing your gaps and pauses in the timestamps inside the storedinfo.
+	//This way you have an easier time writing all these numbers, and don't come back to rewrite them every time.
+	//Also, if you're anything like me, just spacebar and ctrl+H the commas in after.
+	timestamp = list(
+		30,
+		60,
+		90,
+		120,
+		150,
+		180,
+		210,
+		240,
+		//first pause happens here
+		320,
+		350,
+		//second pause happens here, between the shuffling and the reading of the script.
+		410,
+		440,
+		470,
+		500,
+		530,
+		560,
+		590,
+		620,
+		650,
+		680,
+		710,
+		740,
+		770,
+	)

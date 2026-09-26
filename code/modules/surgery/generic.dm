@@ -454,6 +454,8 @@
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	steps = list(
 		/datum/surgery_step/saw_encased,
+		/datum/surgery_step/cauterize/abort, //fuck, forgot I don't have enough bone gel/rods
+		/datum/surgery_step/suture_incision/abort, //ditto
 		/datum/surgery_step/open_encased_step,
 		/datum/surgery_step/clamp_bleeders_step,
 		/datum/surgery_step/mend_encased,
@@ -625,6 +627,8 @@
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	steps = list(
 		/datum/surgery_step/close_encased_step,
+		/datum/surgery_step/cauterize/abort, //fuck, forgot I don't have enough bone gel/rods
+		/datum/surgery_step/suture_incision/abort, //ditto
 		/datum/surgery_step/open_encased_step,
 		/datum/surgery_step/clamp_bleeders_step, //oop i forgor, also cuz you can't clamp bleeders here, normally, for some reason
 		/datum/surgery_step/mend_encased,

@@ -31,6 +31,7 @@
 		/obj/effect/alien/resin/design/upgrade,
 		/obj/effect/alien/resin/design/remove,
 	)
+	hivelord.selected_design = /obj/effect/alien/resin/design/speed_node
 	hivelord.selected_design_mark = /datum/design_mark/resin_wall
 	hivelord.max_design_nodes = 36
 	hivelord.viewsize = WHISPERER_VIEWRANGE
@@ -83,38 +84,14 @@
 	ability_primacy = XENO_NOT_PRIMARY_ACTION
 	delay = 0
 
-/datum/action/xeno_action/proc/update_mouse_pointer()
-	var/mob/living/carbon/xenomorph/xeno = owner
-
-	if(xeno.selected_design == /obj/effect/alien/resin/design/speed_node)
-		if(xeno.selected_design_mark == /datum/design_mark/resin_wall)
-			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/spd_wall_mouse.dmi')
-		else
-			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/spd_door_mouse.dmi')
-		return
-
-	if(xeno.selected_design == /obj/effect/alien/resin/design/cost_node)
-		if(xeno.selected_design_mark == /datum/design_mark/resin_wall)
-			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/cost_wall_mouse.dmi')
-		else
-			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/cost_door_mouse.dmi')
-		return
-
-	if(xeno.selected_design == /obj/effect/alien/resin/design/construct_node)
-		if(xeno.selected_design_mark == /datum/design_mark/resin_wall)
-			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/const_wall_mouse.dmi')
-		else
-			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/const_door_mouse.dmi')
-		return
-
 //------------------------------------------//
 //-------// Greater Resin Surge. //---------//
 //------------------------------------------//
 
 /datum/action/xeno_action/activable/greater_resin_surge
-	name = "Greater Resin Surge (250)"
+	name = "Greater Resin Surge (100)"
 	action_icon_state = "greater_resin_surge"
-	plasma_cost = 250
+	plasma_cost = 100
 	xeno_cooldown = 30 SECONDS
 	macro_path = /datum/action/xeno_action/verb/verb_greater_surge
 	action_type = XENO_ACTION_CLICK
@@ -196,10 +173,6 @@
 	/// Toggle state for design icon.
 	var/design_toggle = TRUE
 
-/datum/action/xeno_action/activable/place_design/action_activate()
-	. = ..()
-	update_mouse_pointer()
-
 /datum/action/xeno_action/activable/place_design/use_ability(atom/target_atom, mods, use_plasma = TRUE, message = TRUE)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
@@ -237,6 +210,10 @@
 		to_chat(xeno, SPAN_WARNING("There are no weeds to create a connection!"))
 		return
 
+	if(target_turf.is_weedable < SEMI_WEEDABLE)
+		to_chat(xeno, SPAN_XENOWARNING("This ground is too unstable to support our design."))
+		return
+
 	if(target_weeds.hivenumber != xeno.hivenumber)
 		to_chat(xeno, SPAN_WARNING("These weeds do not belong to our hive; they reject our influence."))
 		return
@@ -244,90 +221,6 @@
 	var/plasma_cost
 	if(xeno.selected_design && xeno.selected_design.plasma_cost)
 		plasma_cost = xeno.selected_design.plasma_cost
-
-	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/upgrade))
-		if(!(istype(target_atom, /turf/closed/wall/resin) || istype(target_atom, /turf/closed/wall/resin/membrane) || istype(target_atom, /obj/structure/mineral_door/resin)))
-			to_chat(xeno, SPAN_XENOWARNING("We can only upgrade resin walls, membrane and doors!"))
-			return
-
-		if(istype(target_atom, /turf/closed/wall/resin) || istype(target_atom, /turf/closed/wall/resin/membrane))
-			var/turf/closed/wall/resin/wall = target_atom
-
-			if(wall.hivenumber != xeno.hivenumber)
-				to_chat(xeno, SPAN_XENOWARNING("[wall] does not belong to our hive!"))
-				return
-
-			if(wall.upgrading_now) //<--- Prevent spam and waste of plasma
-				to_chat(xeno, SPAN_WARNING("This wall is already being reinforced!"))
-				return
-
-			wall.upgrading_now = TRUE
-
-			if(wall.type == /turf/closed/wall/resin)
-				var/obj/thick_wall = new /obj/effect/resin_construct/thickfast(target_turf, src, xeno)
-				if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
-					qdel(thick_wall)
-					wall.upgrading_now = FALSE
-					return
-				qdel(thick_wall)
-				wall.ChangeTurf(/turf/closed/wall/resin/thick)
-
-			else if(wall.type == /turf/closed/wall/resin/membrane)
-				var/obj/thick_membrane = new /obj/effect/resin_construct/transparent/thickfast(target_turf, src, xeno)
-				if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
-					qdel(thick_membrane)
-					wall.upgrading_now = FALSE
-					return
-				qdel(thick_membrane)
-				wall.ChangeTurf(/turf/closed/wall/resin/membrane/thick)
-			else
-				to_chat(xeno, SPAN_XENOWARNING("[wall] can't be made thicker."))
-				return
-
-			wall.upgrading_now = FALSE
-
-		else if(istype(target_atom, /obj/structure/mineral_door/resin))
-			var/obj/structure/mineral_door/resin/door = target_atom
-
-			if(door.hivenumber != xeno.hivenumber)
-				to_chat(xeno, SPAN_XENOWARNING("[door] does not belong to your hive!"))
-				return
-
-			if(door.upgrading_now)
-				to_chat(xeno, SPAN_WARNING("This door is already being reinforced!"))
-				return
-
-			if(door.hardness == 1.5)
-				door.upgrading_now = TRUE
-				var/obj/thick_door = new /obj/effect/resin_construct/thickdoorfast(target_turf, src, xeno)
-				if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
-					qdel(thick_door)
-					door.upgrading_now = FALSE
-					return
-				qdel(thick_door)
-				var/oldloc = door.loc
-				qdel(door)
-				new /obj/structure/mineral_door/resin/thick(oldloc, door.hivenumber)
-			else
-				if(xeno.try_toggle_resin_door(door))
-					if(!check_and_use_plasma_owner())
-						return TRUE
-					return
-				return
-
-		else
-			to_chat(xeno, SPAN_XENOWARNING("We can only upgrade resin structures!"))
-			return
-
-		if(!check_and_use_plasma_owner(plasma_cost))
-			return
-
-		xeno.visible_message(SPAN_XENONOTICE("Weeds around [target_atom] start to twitch and pump substance towards it, thickening it in process!"),
-			SPAN_XENONOTICE("We start to channel nutrients towards [target_atom], using [plasma_cost] plasma."), null, 5)
-		playsound(target_atom, "alien_resin_build", 25)
-
-		target_atom.add_hiddenprint(xeno) //Tracks who reinforced it for admins
-		return TRUE
 
 	if(xeno.try_toggle_resin_door(target_atom))
 		if(!check_and_use_plasma_owner())
@@ -361,6 +254,32 @@
 
 	var/selected_design = xeno.selected_design
 
+	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/upgrade))
+		if(istype(target_weeds, /obj/effect/alien/weeds/node))
+			if(istype(target_weeds, /obj/effect/alien/weeds/node/hardened))
+				to_chat(xeno, SPAN_XENONOTICE("We cannot harden this node further."))
+				return
+			if(!check_plasma_owner(plasma_cost))
+				return
+
+			var/obj/upgrade_warn = new /obj/effect/resin_construct/upgrade_node(target_turf, src, xeno)
+			if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD) || selected_design != xeno.selected_design)
+				qdel(upgrade_warn) //Delete "Animation" overlay after defined time
+				return
+			qdel(upgrade_warn) //Delete again just in case overlay don't get deleted
+			var/obj/effect/alien/weeds/node/old_node = target_weeds
+			var/turf/node_turf = old_node.loc
+
+			if(!check_and_use_plasma_owner(plasma_cost))
+				return
+
+			new /obj/effect/alien/weeds/node/hardened(node_turf, xeno.hivenumber)
+			qdel(old_node)
+
+			to_chat(xeno, SPAN_XENONOTICE("We channel nutrients towards the node, morphing it in the process."))
+			playsound(xeno.loc, "alien_resin_build", 25)
+			return
+
 	var/obj/effect/alien/resin/design/existing_node = locate(/obj/effect/alien/resin/design) in target_turf
 	if(existing_node && xeno.selected_design_mark)
 		if(!istype(existing_node.mark_meaning, xeno.selected_design_mark))
@@ -372,6 +291,8 @@
 	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/speed_node)) //Check path you selected from list
 		if(!is_turf_clean(target_turf, check_resin_doors = TRUE))
 			to_chat(src, SPAN_WARNING("There's something built here already."))
+			return
+		if(!check_plasma_owner(plasma_cost))
 			return
 		var/obj/speed_warn = new /obj/effect/resin_construct/speed_node(target_turf, src, xeno) //Create "Animation" overlay
 		if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD) || selected_design != xeno.selected_design)
@@ -394,6 +315,8 @@
 	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/cost_node))
 		if(!is_turf_clean(target_turf, check_resin_doors = TRUE))
 			to_chat(src, SPAN_WARNING("There's something built here already."))
+			return
+		if(!check_plasma_owner(plasma_cost))
 			return
 		var/obj/cost_warn = new /obj/effect/resin_construct/cost_node(target_turf, src, xeno)
 		if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD) || selected_design != xeno.selected_design)
@@ -419,6 +342,8 @@
 			return
 		if(!xeno.check_alien_construction(target_turf, check_doors = FALSE))
 			return FALSE
+		if(!check_plasma_owner(plasma_cost))
+			return
 		var/obj/const_warn = new /obj/effect/resin_construct/construct_node(target_turf, src, xeno)
 		if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD) || selected_design != xeno.selected_design)
 			qdel(const_warn)
@@ -520,7 +445,6 @@
 		to_chat(xeno, SPAN_INFO("We will now place door markers."))
 		xeno.selected_design_mark = /datum/design_mark/resin_door
 
-	update_mouse_pointer()
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
 	return ..()
@@ -546,7 +470,7 @@
 	var/static/list/options = list(
 		"Optimized Node (50)" = icon(/datum/action/xeno_action::icon_file, "static_speednode"),
 		"Construct Node (50)" = icon(/datum/action/xeno_action::icon_file, "static_constructnode"),
-		"Thicken Resin (60)" = icon(/datum/action/xeno_action::icon_file, "upgrade_resin"),
+		"Upgrade Node (600)" = icon(/datum/action/xeno_action::icon_file, "upgrade_resin"),
 		"Open Old UI" = icon(/datum/action/xeno_action::icon_file, "open_ui"),
 		"Remove Node" = icon(/datum/action/xeno_action::icon_file, "remove_node"),
 		"Flexible Node (50)" = icon(/datum/action/xeno_action::icon_file, "static_costnode")
@@ -571,13 +495,11 @@
 		if("Construct Node (50)")
 			xeno.selected_design = /obj/effect/alien/resin/design/construct_node
 			des = TRUE
-		if("Thicken Resin (60)")
+		if("Upgrade Node (600)")
 			xeno.selected_design = /obj/effect/alien/resin/design/upgrade
-			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/upgrade_mouse.dmi')
 			rem = TRUE
 		if("Remove Node")
 			xeno.selected_design = /obj/effect/alien/resin/design/remove
-			xeno.set_action_cursor('icons/effects/mouse_pointer/designer/remove_mouse.dmi')
 			rem = TRUE
 		if("Open Old UI")
 			tgui_interact(xeno)
@@ -587,7 +509,6 @@
 	if(rem)
 		to_chat(xeno, SPAN_NOTICE("We will now remotely <b>[xeno.selected_design.name]</b>."))
 
-	update_mouse_pointer()
 	button.overlays.Cut()
 	button.overlays += image(icon_file, button, xeno.selected_design.icon_state)
 

@@ -1593,7 +1593,7 @@
 //-----// Design Speed Node //-----//
 
 /obj/effect/alien/resin/design/speed_node
-	name = "Optimized Design Node (50)"
+	name = "Optimized Design Node"
 	icon_state = "static_speednode"
 	plasma_cost = 50
 
@@ -1622,7 +1622,7 @@
 //-----// Design Cost Node //-----//
 
 /obj/effect/alien/resin/design/cost_node
-	name = "Flexible Design Node (50)"
+	name = "Flexible Design Node"
 	icon_state = "static_costnode"
 	plasma_cost = 50
 
@@ -1651,7 +1651,7 @@
 //-----// Design Construct Node //-----//
 
 /obj/effect/alien/resin/design/construct_node
-	name = "Construct Design Node (50)"
+	name = "Construct Design Node"
 	icon_state = "static_constructnode"
 	plasma_cost = 50
 	/// Amount of plasma to donate when interacting with node.
@@ -1885,7 +1885,6 @@
 	if(bound_weed)
 		UnregisterSignal(bound_weed, COMSIG_PARENT_QDELETING)
 		bound_weed = null
-		qdel(bound_weed)
 
 	var/turf/target_turf = get_turf(src)
 	if(target_turf)
@@ -1994,6 +1993,13 @@
 	icon_state = "nodeboundresin"
 	walltype = WALL_NODEBOUND_RESIN
 	destroy_override = TRUE
+
+/turf/closed/wall/resin/weedbound/node/Destroy()
+	if(bound_weed && !replacing)
+		UnregisterSignal(bound_weed, COMSIG_PARENT_QDELETING)
+		qdel(bound_weed)
+
+	return ..()
 
 //-----// Nodebound - Normal Wall //-----//
 
@@ -2179,11 +2185,11 @@
 //-----// Abilities Buttons (Do not Spawn in Game) //-----//
 
 /obj/effect/alien/resin/design/upgrade
-	name = "Thicken Resin (60)"
-	desc = "Channel our plasma and nutrients to thicken structures."
+	name = "Upgrade Resin Node"
+	desc = "Channel our plasma and nutrients to strenghten weeds node."
 	icon = 'icons/mob/hud/actions_xeno.dmi'
 	icon_state = "upgrade_resin"
-	plasma_cost = 60
+	plasma_cost = 300
 
 /obj/effect/alien/resin/design/remove
 	name = "Remove Design Node"

@@ -102,7 +102,9 @@ const HomePanel = (props) => {
     delta: 'blue',
     echo: 'green',
     foxtrot: 'brown',
-    intel: 'green',
+    intel: 'dark-green',
+    kilo: 'teal',
+    oscar: 'olive',
   };
 
   return (
@@ -190,8 +192,8 @@ const SquadPanel = (props) => {
       </Stack.Item>
       <Stack.Item grow>
         {category === 'monitor' && <SquadMonitor />}
-        {category === 'supply' && data.can_launch_crates && <SupplyDrop />}
-        {category === 'ob' && data.can_launch_obs && <OrbitalBombardment />}
+        {category === 'supply' && !!data.can_launch_crates && <SupplyDrop />}
+        {category === 'ob' && !!data.can_launch_obs && <OrbitalBombardment />}
       </Stack.Item>
     </Stack>
   );
@@ -199,6 +201,7 @@ const SquadPanel = (props) => {
 
 const MainDashboard = (props) => {
   const { act, data } = useBackend<Data>();
+  const [, setCategory] = useSharedState('selected', 'monitor');
 
   let { current_squad, primary_objective, secondary_objective } = data;
 
@@ -211,7 +214,13 @@ const MainDashboard = (props) => {
           <Button icon="user" onClick={() => act('change_operator')}>
             Operator - {data.operator}
           </Button>
-          <Button icon="sign-out-alt" onClick={() => act('logout')}>
+          <Button
+            icon="sign-out-alt"
+            onClick={() => {
+              setCategory('monitor');
+              act('logout');
+            }}
+          >
             Stop Overwatch
           </Button>
         </>

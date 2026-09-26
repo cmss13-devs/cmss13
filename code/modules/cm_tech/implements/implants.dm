@@ -22,7 +22,7 @@
 		"Nightvision Implant" = /obj/item/device/implanter/nvg,
 		"Rejuvenation Implant" = /obj/item/device/implanter/rejuv,
 		"Agility Implant" = /obj/item/device/implanter/agility,
-		"Subdermal Armor" = /obj/item/device/implanter/subdermal_armor
+		"Subdermal Armor" = /obj/item/device/implanter/subdermal_armor,
 	)
 
 /obj/item/storage/box/implant/picker/open(mob/user)

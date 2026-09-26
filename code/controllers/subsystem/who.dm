@@ -205,7 +205,7 @@ SUBSYSTEM_DEF(who)
 		"Maintainers" = "blue",
 		"Administrators" = "red",
 		"Moderators" = "orange",
-		"Mentors" = "green"
+		"Mentors" = "green",
 	)
 
 /datum/player_list/staff/update_data()

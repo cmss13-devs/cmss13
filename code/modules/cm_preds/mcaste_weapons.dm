@@ -124,7 +124,7 @@
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/pred_guns.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/back/guns_by_type/pred_guns.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pred_guns_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pred_guns_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pred_guns_righthand.dmi',
 	)
 	ignite_sound = 'sound/weapons/wy_flamer_ignite.ogg'
 	extinguish_sound = 'sound/weapons/wy_flamer_extinguish.ogg'
@@ -148,7 +148,8 @@
 	var/list/fire_sounds = list(
 		'sound/weapons/wy_flamethrower1.ogg',
 		'sound/weapons/wy_flamethrower2.ogg',
-		'sound/weapons/wy_flamethrower3.ogg')
+		'sound/weapons/wy_flamethrower3.ogg',
+		)
 	return pick(fire_sounds)
 
 /obj/item/weapon/gun/flamer/yautja/get_examine_text(mob/user)
@@ -196,7 +197,7 @@
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi', // we don't really care about handedness, it looks the exact same either way
-		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/mcaste_gear.dmi',
 	)
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 	ammo = /datum/ammo/energy/yautja/caster/lance

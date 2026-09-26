@@ -54,7 +54,7 @@
 		"Did you know? The liver can regenerate itself if a portion is removed.",
 		"Fun fact: Your sense of smell is closely linked to your memory.",
 		"The only muscle that never tires is that heart.",
-		"Did you know? Not breathing can lead to a premature cessation of life!"
+		"Did you know? Not breathing can lead to a premature cessation of life!",
 	)
 
 	var/static/list/idle_messages = list(
@@ -67,7 +67,7 @@
 		"I should have been a plastic surgeon.",
 		"What kind of medbay is this? Everyone’s dropping like flies.",
 		"Each breath a day keeps me at bay!",
-		"I sense a disturbance in my circuit board, as if a million people stopped breathing and were suddenly silent."
+		"I sense a disturbance in my circuit board, as if a million people stopped breathing and were suddenly silent.",
 	)
 
 	/// Message to display when performing CPR

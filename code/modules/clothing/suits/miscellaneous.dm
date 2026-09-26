@@ -305,7 +305,7 @@
 	blood_overlay_type = "vest"
 	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi',
 	)
 	allowed = list(
 		/obj/item/weapon/baton,
@@ -439,7 +439,7 @@
 	blood_overlay_type = "jacket"
 	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi',
 	)
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
@@ -481,7 +481,7 @@
 	desc = "A suit that belongs to someone important. It is made of insulating material and offers minor protection from all forms of damage."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi',
 	)
 	item_state = "manager_suit"
 	icon_state = "manager_suit"
@@ -513,7 +513,7 @@
 	desc = "A jacket that belongs to someone very important. It is made of insulating material and offers minor protection from all forms of damage."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi',
 	)
 	item_state = "director_suit"
 	icon_state = "director_suit"

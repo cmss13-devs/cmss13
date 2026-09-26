@@ -27,7 +27,7 @@
 		GLOB.phoronrglass_recipes,
 		GLOB.phoronglass_recipes,
 		GLOB.rod_recipes,
-		GLOB.snow_recipes
+		GLOB.snow_recipes,
 	)
 
 

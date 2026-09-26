@@ -95,7 +95,7 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 		"UPP Explosives",
 		"UPP Clothing",
 		"UPP Mortar",
-		"UPP Additional supplies"
+		"UPP Additional supplies",
 	)
 	//No black market under communism
 	contraband_supply_groups = list()

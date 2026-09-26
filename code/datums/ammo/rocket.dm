@@ -196,7 +196,7 @@
 	drop_flame(get_turf(projectile), projectile.weapon_cause_data)
 
 /datum/ammo/rocket/wp/upp
-	name = "extreme-intensity incendiary rocket"
+	name = "thermobaric rocket"
 	flags_ammo_behavior = AMMO_ROCKET|AMMO_HITS_TARGET_TURF|AMMO_STRIKES_SURFACE
 	damage_type = BURN
 

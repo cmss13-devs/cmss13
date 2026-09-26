@@ -277,3 +277,8 @@
       lid back into place with the correct medical skill (surgery >=1)
   - bugfix: Humans without the necessary medical skill can no longer scoop up pills
       from the ground into pill bottles
+2026-09-26:
+  Red-byte3D:
+  - rscadd: Unit test for weeds
+  - bugfix: Fixed a small issue with boiler effect code,
+  - bugfix: Weeds no longer decay first to re-weed, they just parent onto the node.

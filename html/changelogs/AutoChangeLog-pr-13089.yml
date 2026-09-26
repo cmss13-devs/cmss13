@@ -1,6 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - rscadd: "Unit test for weeds"
-  - bugfix: "Fixed a small issue with boiler effect code,"
-  - bugfix: "Weeds no longer decay first to re-weed, they just parent onto the node."

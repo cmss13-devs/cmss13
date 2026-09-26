@@ -197,6 +197,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/g_facial = 0 //Face hair color
 	var/b_facial = 0 //Face hair color
 
+	var/m_style = "toothy"
+
 	var/r_skin = 0 //Skin color
 	var/g_skin = 0 //Skin color
 	var/b_skin = 0 //Skin color
@@ -267,6 +269,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/stylesheet = "Modern"
 
 	var/lang_chat_disabled = FALSE
+
+	var/show_mouths = TRUE
 
 	var/show_permission_errors = TRUE
 
@@ -456,7 +460,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "</div>"
 
 			dat += "<div id='column2'>"
-			dat += "<h2><b><u>Hair and Eyes:</u></b></h2>"
+			dat += "<h2><b><u>Hair, Eyes and Mouth:</u></b></h2>"
 			dat += "<b>Hair:</b> [h_style]"
 			dat += " | "
 			dat += "<span class='square' style='background-color: #[num2hex(r_hair, 2)][num2hex(g_hair, 2)][num2hex(b_hair)];'></span>"
@@ -480,6 +484,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Color</b> <span class='square' style='background-color: #[num2hex(r_eyes, 2)][num2hex(g_eyes, 2)][num2hex(b_eyes)];'></span>"
 			dat += "</a>"
 			dat += "<br><br>"
+
+			dat += "<b>Mouth:</b> <a href='byond://?_src_=prefs;preference=mouth;task=input'><b>[m_style]</b></a><br>"
 
 			dat += "<h2><b><u>Marine Gear:</u></b></h2>"
 			dat += "<b>Underwear:</b> <a href='byond://?_src_=prefs;preference=underwear;task=input'><b>[underwear]</b></a><br>"
@@ -656,6 +662,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Button To Activate Xenomorph Abilities:</b> <a href='byond://?_src_=prefs;preference=mouse_button_activation;task=input'><b>[xeno_ability_mouse_pref_to_string(xeno_ability_click_mode)]</b></a><br>"
 			dat += "<b>Xeno Cooldown Messages:</b> <a href='byond://?_src_=prefs;preference=show_cooldown_messages'><b>[(show_cooldown_messages) ? "Show" : "Hide"]</b></a><br>"
 			dat += "<b>Toggle CMTV Opt-Out:</b> <a href='byond://?_src_=prefs;preference=CMTV_toggle_optout'><b>[CMTV_toggle_optout? "Enabled" : "Disabled"]</b></a><br>"
+			dat += "<b>Talking Mouths:</b> <a href='byond://?_src_=prefs;preference=show_mouths'><b>[show_mouths ? "Shown" : "Hidden"]</b></a><br>"
 			dat += "<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/receive_random_tip'>Read Random Tip of the Round</a><br>"
 			if(CONFIG_GET(flag/allow_Metadata))
 				dat += "<b>OOC Notes:</b> <a href='byond://?_src_=prefs;preference=metadata;task=input'> Edit </a>"
@@ -1682,6 +1689,10 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 						g_eyes = color_list[2]
 						b_eyes = color_list[3]
 
+				if("mouth")
+					var/new_mouth = tgui_input_list(user, "Choose your character's mouth:", "Character Preference", GLOB.mouth_styles_list)
+					if(new_mouth != null)
+						m_style = new_mouth
 
 				if("ooccolor")
 					var/new_ooccolor = input(user, "Choose your OOC color:", "Game Preference", ooccolor) as color|null
@@ -1973,6 +1984,11 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 				if("lang_chat_disabled")
 					lang_chat_disabled = !lang_chat_disabled
 
+				if("show_mouths")
+					show_mouths = !show_mouths
+					if(user.client)
+						user.client.execute_moving_mouth_setting(show_mouths)
+
 				if("fflogcolor")
 					var/ff_log_color_new = tgui_color_picker(user, "Choose your FF log color!", ff_log_color, "#00FF00")
 					if(ff_log_color_new)
@@ -2243,6 +2259,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	character.h_style = h_style
 	character.f_style = f_style
+
+	character.m_style = m_style
 
 	character.origin = origin
 	character.personal_faction = faction

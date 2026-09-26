@@ -289,6 +289,7 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_swap_hands'>Toggle Middle Mouse Swapping Hands</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_vend_item_to_hand'>Toggle Vendors Vending to Hands</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_moving_mouths'>Toggle Moving Mouths</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle Admin Sound Types</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set Eye Blur Type</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_flash_type'>Set Flash Type</a><br>",
@@ -334,7 +335,6 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 	else
 		to_chat(src, SPAN_BOLDNOTICE("Guns with auto-ejectors will automatically eject their magazines."))
 	prefs.save_preferences()
-
 
 /client/proc/toggle_ammo_display_type()
 	prefs.toggle_prefs ^= TOGGLE_AMMO_DISPLAY_TYPE
@@ -419,6 +419,13 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 	else
 		to_chat(src, SPAN_BOLDNOTICE("Attempting to wield a gun before it is ready will no longer queue the action."))
 	prefs.save_preferences()
+
+/// Toggles whether moving mouths are visible or not
+/client/proc/toggle_moving_mouths()
+	prefs.show_mouths = !prefs.show_mouths
+	prefs.save_preferences()
+	execute_moving_mouth_setting(prefs.show_mouths)
+	to_chat(src, SPAN_BOLDNOTICE("You [prefs.show_mouths ? "WILL" : "WILL NOT"] see moving mouths from now on."))
 
 ///Toggle whether dual-wielding fires both guns at once or swaps between them.
 /client/proc/toggle_dualwield()

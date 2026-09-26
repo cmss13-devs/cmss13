@@ -1,5 +1,6 @@
 /datum/emote/living/carbon/human/yautja/fake_sound
 	category = YAUTJA_EMOTE_CATEGORY_FAKESOUND
+	move_mouth = 2
 
 /datum/emote/living/carbon/human/yautja/fake_sound/aliengrowl
 	override_say = "Xenomorph growl"

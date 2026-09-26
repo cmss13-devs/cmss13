@@ -32,7 +32,7 @@
 	body_temperature = 350
 
 	mob_flags = KNOWS_TECHNOLOGY
-	flags = IS_WHITELISTED|NO_BREATHE|NO_CLONE_LOSS|NO_BLOOD|NO_POISON|IS_SYNTHETIC|NO_CHEM_METABOLIZATION|NO_NEURO|HAS_UNDERWEAR|HAS_SKIN_COLOR
+	flags = IS_WHITELISTED|NO_BREATHE|NO_CLONE_LOSS|NO_BLOOD|NO_POISON|IS_SYNTHETIC|NO_CHEM_METABOLIZATION|NO_NEURO|HAS_UNDERWEAR|HAS_SKIN_COLOR|HAS_MOUTH
 
 	blood_color = BLOOD_COLOR_SYNTHETIC
 
@@ -81,7 +81,7 @@
 /datum/species/synthetic/gen_two/gen_one
 	name = SYNTH_GEN_ONE
 	death_message = "violently gargles fluid and seizes up, the glow in their eyes dimming..."
-	flags = parent_type::flags & ~HAS_SKIN_COLOR
+	flags = parent_type::flags & ~(HAS_SKIN_COLOR|HAS_MOUTH)
 	special_body_types = FALSE
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES, TRAIT_IRON_TEETH, TRAIT_POUNCE_RESISTANT)
 

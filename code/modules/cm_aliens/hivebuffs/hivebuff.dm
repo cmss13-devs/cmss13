@@ -464,6 +464,7 @@
 	name = "Boon of Fire Resistance"
 	desc = "Makes all xenomorphs immune to fire for 5 minutes."
 	tier = HIVEBUFF_TIER_MINOR
+	cost = 2 // Needs both pylons active to keep 100% uptime.
 
 	engage_flavourmessage = "The Queen has imbued us with flame-resistant chitin."
 	duration = 5 MINUTES

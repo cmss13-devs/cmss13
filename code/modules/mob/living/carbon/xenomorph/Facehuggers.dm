@@ -308,6 +308,7 @@
 	human.update_inv_wear_mask()
 	human.disable_lights()
 	human.disable_special_items()
+	ADD_TRAIT(human, TRAIT_UNSHAKABLE, src)
 	if(ishuman_strict(human))
 		playsound(loc, human.gender == "male" ? "male_hugged" : "female_hugged" , 25, 0)
 	else if(isyautja(human))
@@ -338,6 +339,8 @@
 	return TRUE
 
 /obj/item/clothing/mask/facehugger/proc/impregnate(mob/living/carbon/human/target, hugger_ckey = null)
+	if(target)
+		REMOVE_TRAIT(target, TRAIT_UNSHAKABLE, src)
 	if(!target || target.wear_mask != src) //Was taken off or something
 		return
 	if(SEND_SIGNAL(target, COMSIG_HUMAN_IMPREGNATE, src) & COMPONENT_NO_IMPREGNATE)
@@ -368,7 +371,6 @@
 		die()
 	else
 		target.visible_message(SPAN_DANGER("[src] violates [target]'s face!"))
-
 	if(GLOB.round_statistics && ishuman(target))
 		GLOB.round_statistics.total_huggers_applied++
 

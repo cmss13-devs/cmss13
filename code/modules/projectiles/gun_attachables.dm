@@ -82,9 +82,6 @@ Defined in conflicts.dm of the #defines folder.
 
 	var/flags_attach_features = ATTACH_REMOVABLE
 
-	var/current_rounds = 0 //How much it has.
-	var/max_rounds = 0 //How much ammo it can store
-
 	var/attachment_action_type
 
 	var/hidden = FALSE //Render on gun?
@@ -241,14 +238,12 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/proc/unload_attachment(mob/user, reload_override = 0, drop_override = 0, loc_override = 0)
 	return FALSE
 
-/obj/item/attachable/proc/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/user) //For actually shooting those guns.
+/obj/item/attachable/proc/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/user, list/mods) //For actually shooting those guns.
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN_ATTACHMENT, src) // Because of this, the . = ..() check should be called last, just before firing
 	return TRUE
 
 /obj/item/attachable/proc/handle_attachment_description(mob/user)
-	var/obj/item/weapon/gun/gun = loc
-	var/adjacent = user && gun && gun.Adjacent(user)
 	var/base_attachment_desc
 	switch(slot)
 		if("rail")
@@ -258,19 +253,7 @@ Defined in conflicts.dm of the #defines folder.
 		if("stock")
 			base_attachment_desc = "It has a [icon2html(src)][SPAN_ORANGE(name)] for a stock."
 		if("under")
-			var/output = "It has a [icon2html(src)][SPAN_ORANGE(name)]"
-
-			if(flags_attach_features & ATTACH_WEAPON && adjacent)
-				var/ammo_text = "([current_rounds]/[max_rounds])"
-				if(current_rounds <= 0)
-					ammo_text = SPAN_RED(ammo_text)
-				else if(current_rounds < max_rounds)
-					ammo_text = SPAN_ORANGE(ammo_text)
-				else
-					ammo_text = SPAN_GREEN(ammo_text)
-				output += " [ammo_text]"
-			output += " mounted underneath."
-			base_attachment_desc = output
+			base_attachment_desc = "It has a [icon2html(src)][SPAN_ORANGE(name)] mounted underneath"
 		else
 			base_attachment_desc = "It has a [icon2html(src)][SPAN_ORANGE(name)] attached."
 
@@ -3040,73 +3023,94 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun
 	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
 	attachment_action_type = /datum/action/item_action/toggle
-	// Some attachments may be fired. So here are the variables related to that.
-	/// Ammo to fire the attachment with
-	var/datum/ammo/ammo = null
-	var/max_range = 0 //Determines # of tiles distance the attachable can fire, if it's not a projectile.
-	var/last_fired //When the attachment was last fired.
-	var/attachment_firing_delay = 0 //the delay between shots, for attachments that fires stuff
-	var/fire_sound = null //Sound to play when firing it alternately
+	var/obj/item/weapon/gun/attached_gun
+
 	var/gun_deactivate_sound = 'sound/weapons/handling/gun_underbarrel_deactivate.ogg'//allows us to give the attached gun unique activate and de-activate sounds. Not used yet.
 	var/gun_activate_sound  = 'sound/weapons/handling/gun_underbarrel_activate.ogg'
-	var/unload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'
 
-	/// An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
-	/// that will be given to the projectiles of the attached gun
-	var/list/list/traits_to_give_attached
-	/// Current target we're firing at
-	var/mob/target
-
-/obj/item/attachable/attached_gun/Initialize(mapload, ...) //Let's make sure if something needs an ammo type, it spawns with one.
-	. = ..()
-	if(ammo)
-		ammo = GLOB.ammo_list[ammo]
-
-
-/obj/item/attachable/attached_gun/Destroy()
-	ammo = null
-	target = null
+/obj/item/attachable/attached_gun/attack_hand(mob/user)
+	if(istype(loc, /obj/item/weapon/gun))
+		unload_attachment(user)
+		return
 	return ..()
 
-/// setter for target
-/obj/item/attachable/attached_gun/proc/set_target(atom/object)
-	if(object == target)
-		return
-	if(target)
-		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
-	target = object
-	if(target)
-		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(clean_target))
+/obj/item/attachable/attached_gun/unload_attachment(mob/user, reload_override, drop_override, loc_override)
+	if(attached_gun)
+		attached_gun.unload(user, reload_override, drop_override, loc_override)
+		return TRUE
+	return FALSE
 
-///Set the target to its turf, so we keep shooting even when it was qdeled
-/obj/item/attachable/attached_gun/proc/clean_target()
-	SIGNAL_HANDLER
-	target = get_turf(target)
+/obj/item/attachable/attached_gun/proc/handle_silent_reload(obj/item/to_reload, mob/user)
+	if(!attached_gun)
+		return FALSE
+	if(attached_gun.can_reload(null, to_reload))
+		attached_gun.reload(user, to_reload)
+		return TRUE
+	return FALSE
 
-/obj/item/attachable/attached_gun/proc/reset_damage_mult(obj/item/weapon/gun/gun)
-	SIGNAL_HANDLER
-	gun.damage_mult = 1
+/obj/item/attachable/attached_gun/Initialize(mapload, ...)
+	. = ..()
+	if(attached_gun)
+		attached_gun = new attached_gun(src)
+		attached_gun.manually_handle_inputs = TRUE
+		attached_gun.flags_gun_features |= GUN_IS_ATTACHMENT
+
+/obj/item/attachable/attached_gun/Destroy()
+	QDEL_NULL(attached_gun)
+	return ..()
+
+/obj/item/attachable/attached_gun/proc/get_current_ammo_count()
+	return attached_gun?.get_current_ammo_count() || 0
+
+/obj/item/attachable/attached_gun/proc/get_max_ammo_count()
+	return attached_gun?.get_max_ammo_count() || 0
+
+/obj/item/attachable/attached_gun/handle_attachment_description(mob/user)
+	. = ..()
+	var/turf/location = get_turf(src)
+	var/adjacent = get_dist(location, user) <= 1
+	if((flags_attach_features & ATTACH_WEAPON) && adjacent)
+		var/current_rounds = get_current_ammo_count()
+		var/max_rounds = get_max_ammo_count()
+		var/ammo_text = "([current_rounds]/[max_rounds])"
+		if(current_rounds <= 0)
+			ammo_text = SPAN_RED(ammo_text)
+		else if(current_rounds < max_rounds)
+			ammo_text = SPAN_ORANGE(ammo_text)
+		else
+			ammo_text = SPAN_GREEN(ammo_text)
+		. += "It has [ammo_text] rounds remaining <br>"
+
+/obj/item/attachable/attached_gun/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/user, list/mods)
+	. = ..()
+	if(attached_gun)
+		var/list/new_mods = mods.Copy()
+		new_mods[LEFT_CLICK] = "1"
+		new_mods[RIGHT_CLICK] = null
+		new_mods[BUTTON4] = null
+		new_mods[BUTTON5] = null
+		attached_gun.start_fire(user, target, get_turf(target), modifiers = new_mods)
+
+/obj/item/attachable/attached_gun/reload_attachment(obj/item/I, mob/user)
+	. = ..()
+	if(attached_gun)
+		attached_gun.attackby(I, user)
 
 /obj/item/attachable/attached_gun/activate_attachment(obj/item/weapon/gun/G, mob/living/user, turn_off)
 	if(G.active_attachable == src)
 		if(user)
-			to_chat(user, SPAN_NOTICE("You are no longer using [src]."))
+			to_chat(user, SPAN_NOTICE("You are no longer using \the [src]."))
 			playsound(user, gun_deactivate_sound, 30, 1)
 		G.active_attachable = null
 		icon_state = initial(icon_state)
-		UnregisterSignal(G, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
-		G.recalculate_attachment_bonuses()
 	else if(!turn_off)
 		if(user)
-			to_chat(user, SPAN_NOTICE("You are now using [src]."))
+			to_chat(user, SPAN_NOTICE("You are now using \the [src]."))
 			playsound(user, gun_activate_sound, 60, 1)
 		G.active_attachable = src
-		G.damage_mult = 1
-		RegisterSignal(G, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES, PROC_REF(reset_damage_mult))
 		icon_state += "-on"
 
 	SEND_SIGNAL(G, COMSIG_GUN_INTERRUPT_FIRE)
-
 	for(var/X in G.actions)
 		var/datum/action/A = X
 		A.update_button_icon()
@@ -3118,41 +3122,10 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "flare"
 	attach_icon = "flare_a"
 	w_class = SIZE_MEDIUM
-	current_rounds = 3
-	max_rounds = 3
-	max_range = 21
+	attached_gun = /obj/item/weapon/gun/flare/ubarrel
 	attachment_action_type = /datum/action/item_action/toggle/flare_launcher
 	slot = "under"
-	fire_sound = 'sound/weapons/gun_flare.ogg'
-	ammo = /datum/ammo/flare/no_ignite
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON
-
-/obj/item/attachable/attached_gun/flare_launcher/New()
-	..()
-	attachment_firing_delay = FIRE_DELAY_TIER_4 * 3
-
-/obj/item/attachable/attached_gun/flare_launcher/reload_attachment(obj/item/attacking_item, mob/user)
-	if(istype(attacking_item, /obj/item/device/flashlight/flare))
-		var/obj/item/device/flashlight/flare/attacking_flare = attacking_item
-		if(attacking_flare.on)
-			to_chat(user, SPAN_WARNING("You can't put a lit flare in [src]!"))
-			return
-		if(!attacking_flare.fuel)
-			to_chat(user, SPAN_WARNING("You can't put a burnt out flare in [src]!"))
-			return
-		if(istype(attacking_flare,/obj/item/device/flashlight/flare/signal))
-			to_chat(user, SPAN_WARNING("You can not load signal flare into the launcher."))
-			return
-		if(current_rounds < max_rounds)
-			playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 25, 1)
-			to_chat(user, SPAN_NOTICE("You load [attacking_flare] into [src]."))
-			current_rounds++
-			qdel(attacking_flare)
-			update_icon()
-		else
-			to_chat(user, SPAN_WARNING("You can not load more flares in."))
-	else
-		to_chat(user, SPAN_WARNING("That's not a flare!"))
 
 //The requirement for an attachable being alt fire is AMMO CAPACITY > 0.
 /obj/item/attachable/attached_gun/grenade
@@ -3161,35 +3134,39 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "grenade"
 	attach_icon = "grenade_a"
 	w_class = SIZE_MEDIUM
-	current_rounds = 0
-	max_rounds = 3
-	max_range = 7
 	attachment_action_type = /datum/action/item_action/toggle/ugl
 	slot = "under"
-	fire_sound = 'sound/weapons/gun_m92_attachable.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON
-	var/grenade_pass_flags
-	var/list/loaded_grenades //list of grenade types loaded in the UGL
-	var/breech_open = FALSE // is the UGL open for loading?
-	var/cocked = TRUE // has the UGL been cocked via opening and closing the breech?
-	var/open_sound = 'sound/weapons/handling/ugl_open.ogg'
-	var/close_sound = 'sound/weapons/handling/ugl_close.ogg'
 
-/obj/item/attachable/attached_gun/grenade/Initialize()
+	attached_gun = /obj/item/weapon/gun/launcher/grenade/ubarrel/u1
+
+/obj/item/attachable/attached_gun/grenade/handle_silent_reload(obj/item/to_reload, mob/user)
+	if(attached_gun && istype(to_reload, /obj/item/explosive/grenade))
+		attached_gun.attackby(to_reload, user)
+		return TRUE
+	return FALSE
+
+/obj/item/attachable/attached_gun/grenade/Initialize(mapload, ...)
 	. = ..()
-	grenade_pass_flags = PASS_HIGH_OVER|PASS_MOB_THRU|PASS_OVER
+	RegisterSignal(attached_gun, COMSIG_UNDERBARREL_GL_BREECH_TOGGLED, PROC_REF(on_breech_toggled))
 
-/obj/item/attachable/attached_gun/grenade/New()
-	..()
-	attachment_firing_delay = FIRE_DELAY_TIER_4 * 3
-	loaded_grenades = list()
+/obj/item/attachable/attached_gun/grenade/proc/on_breech_toggled()
+	SIGNAL_HANDLER
+	update_icon()
 
 /obj/item/attachable/attached_gun/grenade/get_examine_text(mob/user)
 	. = ..()
-	if(current_rounds) . += "It has [current_rounds] grenade\s left."
+	var/obj/item/weapon/gun/launcher/grenade/launcher = attached_gun
+	var/ammo_count = length(launcher.cylinder.contents)
+	if(ammo_count) . += "It has [ammo_count] grenade\s left."
 	else . += "It's empty."
 
 /obj/item/attachable/attached_gun/grenade/unique_action(mob/user)
+	. = ..()
+	attack_self(user)
+
+/obj/item/attachable/attached_gun/grenade/attack_self(mob/user)
+	. = ..()
 	if(!ishuman(usr))
 		return
 	if(user.is_mob_incapacitated() || !isturf(usr.loc))
@@ -3205,123 +3182,20 @@ Defined in conflicts.dm of the #defines folder.
 		to_chat(user, SPAN_WARNING("You need to hold \the [src] to do that."))
 		return
 
-	pump(user)
+	var/obj/item/weapon/gun/launcher/grenade/ubarrel/weapon = attached_gun
+	weapon.toggle_breech(user)
 
 /obj/item/attachable/attached_gun/grenade/update_icon()
 	. = ..()
 	attach_icon = initial(attach_icon)
 	icon_state = initial(icon_state)
-	if(breech_open)
+	var/obj/item/weapon/gun/launcher/grenade/ubarrel/weapon = attached_gun
+	if(weapon.breech_open)
 		attach_icon += "-open"
 		icon_state += "-open"
 	if(istype(loc, /obj/item/weapon/gun))
-		var/obj/item/weapon/gun/gun = loc
-		gun.update_attachable(slot)
-		for(var/datum/action/item_action as anything in gun.actions)
-			item_action.update_button_icon()
-
-/obj/item/attachable/attached_gun/grenade/proc/pump(mob/user) //for want of a better proc name
-	if(breech_open) // if it was ALREADY open
-		breech_open = FALSE
-		cocked = TRUE // by closing the gun we have cocked it and readied it to fire
-		to_chat(user, SPAN_NOTICE("You close \the [src]'s breech, cocking it!"))
-		playsound(src, close_sound, 15, 1)
-	else
-		breech_open = TRUE
-		cocked = FALSE
-		to_chat(user, SPAN_NOTICE("You open \the [src]'s breech!"))
-		playsound(src, open_sound, 15, 1)
-	update_icon()
-
-/obj/item/attachable/attached_gun/grenade/reload_attachment(obj/item/explosive/grenade/G, mob/user)
-	if(!breech_open)
-		to_chat(user, SPAN_WARNING("\The [src]'s breech must be open to load grenades! (use unique-action)"))
-		return
-	if(!istype(G) || istype(G, /obj/item/explosive/grenade/spawnergrenade/))
-		to_chat(user, SPAN_WARNING("[src] doesn't accept that type of grenade."))
-		return
-	if(!G.active) //can't load live grenades
-		if(!G.underslug_launchable)
-			to_chat(user, SPAN_WARNING("[src] doesn't accept that type of grenade."))
-			return
-		if(current_rounds >= max_rounds)
-			to_chat(user, SPAN_WARNING("[src] is full."))
-		else
-			playsound(user, 'sound/weapons/grenade_insert.wav', 25, 1)
-			current_rounds++
-			loaded_grenades += G
-			to_chat(user, SPAN_NOTICE("You load \the [G] into \the [src]."))
-			user.drop_inv_item_to_loc(G, src)
-
-/obj/item/attachable/attached_gun/grenade/unload_attachment(mob/user, reload_override = FALSE, drop_override = FALSE, loc_override = FALSE)
-	. = TRUE //Always uses special unloading.
-	if(!breech_open)
-		to_chat(user, SPAN_WARNING("\The [src] is closed! You must open it to take out grenades!"))
-		return
-	if(!current_rounds)
-		to_chat(user, SPAN_WARNING("It's empty!"))
-		return
-
-	var/obj/item/explosive/grenade/nade = loaded_grenades[length(loaded_grenades)] //Grab the last-inserted one. Or the only one, as the case may be.
-	loaded_grenades.Remove(nade)
-	current_rounds--
-
-	if(drop_override || !user)
-		nade.forceMove(get_turf(src))
-	else
-		user.put_in_hands(nade)
-
-	user.visible_message(SPAN_NOTICE("[user] unloads \a [nade] from \the [src]."),
-	SPAN_NOTICE("You unload \a [nade] from \the [src]."), null, 4, CHAT_TYPE_COMBAT_ACTION)
-	playsound(user, unload_sound, 30, 1)
-
-/obj/item/attachable/attached_gun/grenade/fire_attachment(atom/target,obj/item/weapon/gun/gun,mob/living/user)
-	if(!(gun.flags_item & WIELDED))
-		if(user)
-			to_chat(user, SPAN_WARNING("You must hold [gun] with two hands to use \the [src]."))
-		return
-	if(breech_open)
-		if(user)
-			to_chat(user, SPAN_WARNING("You must close the breech to fire \the [src]!"))
-			playsound(user, 'sound/weapons/gun_empty.ogg', 50, TRUE, 5)
-		return
-	if(!cocked)
-		if(user)
-			to_chat(user, SPAN_WARNING("You must cock \the [src] to fire it! (open and close the breech)"))
-			playsound(user, 'sound/weapons/gun_empty.ogg', 50, TRUE, 5)
-		return
-	if(get_dist(user,target) > max_range)
-		to_chat(user, SPAN_WARNING("Too far to fire the attachment!"))
-		playsound(user, 'sound/weapons/gun_empty.ogg', 50, TRUE, 5)
-		return FALSE
-
-	if(current_rounds > 0 && ..())
-		prime_grenade(target,gun,user)
-		return TRUE
-
-/obj/item/attachable/attached_gun/grenade/proc/prime_grenade(atom/target,obj/item/weapon/gun/gun,mob/living/user)
-	set waitfor = 0
-	var/obj/item/explosive/grenade/G = loaded_grenades[1]
-
-	if(G.antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(G, user))
-		to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from firing!"))
-		msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
-		return
-
-	playsound(user.loc, fire_sound, 50, 1)
-	msg_admin_attack("[key_name_admin(user)] fired an underslung grenade launcher [ADMIN_JMP_USER(user)]")
-	log_game("[key_name_admin(user)] used an underslung grenade launcher.")
-
-	var/pass_flags = NO_FLAGS
-	pass_flags |= grenade_pass_flags
-	G.det_time = min(15, G.det_time)
-	G.throw_range = max_range
-	G.activate(user, FALSE)
-	G.forceMove(get_turf(gun))
-	G.throw_atom(target, max_range, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
-	current_rounds--
-	cocked = FALSE // we have fired so uncock the gun
-	loaded_grenades.Cut(1,2)
+		var/obj/item/weapon/gun/location = loc
+		location.update_icon()
 
 //For the Mk1
 /obj/item/attachable/attached_gun/grenade/mk1
@@ -3329,24 +3203,15 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "An older version of the classic underslung grenade launcher. Can store five grenades, and fire them farther, but fires them slower."
 	icon_state = "grenade-mk1"
 	attach_icon = "grenade-mk1_a"
-	current_rounds = 0
-	max_rounds = 5
-	max_range = 10
-	attachment_firing_delay = 30
+	attached_gun = /obj/item/weapon/gun/launcher/grenade/ubarrel/mk1
+
 
 /obj/item/attachable/attached_gun/grenade/m203 //M16 GL, only DD have it.
 	name = "\improper M203 Grenade Launcher"
 	desc = "An antique underbarrel grenade launcher. Adopted in 1969 for the M16, it was made obsolete centuries ago; how its ended up here is a mystery to you. Holds only one propriatary 40mm grenade, does not have modern IFF systems, it won't pass through your friends."
 	icon_state = "grenade-m203"
 	attach_icon = "grenade-m203_a"
-	current_rounds = 0
-	max_rounds = 1
-	max_range = 14
-	attachment_firing_delay = 5 //one shot, so if you can reload fast you can shoot fast
-
-/obj/item/attachable/attached_gun/grenade/m203/Initialize()
-	. = ..()
-	grenade_pass_flags = NO_FLAGS
+	attached_gun = /obj/item/weapon/gun/launcher/grenade/ubarrel/m203
 
 
 /obj/item/attachable/attached_gun/grenade/u1rmc
@@ -3354,10 +3219,8 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A W-Y take on an underslung grenade launcher system, made for the NSG23 line of weapons. Can store up to five grenades and fires them about as far as your U1 UGL for M41A Mk2."
 	icon_state = "u1rmc"
 	attach_icon = "u1rmc_a"
-	current_rounds = 0
-	max_rounds = 5
-	max_range = 10
-	attachment_firing_delay = 24
+	attached_gun = /obj/item/weapon/gun/launcher/grenade/ubarrel/u1rmc
+
 
 //"ammo/flamethrower" is a bullet, but the actual process is handled through fire_attachment, linked through Fire().
 /obj/item/attachable/attached_gun/flamer
@@ -3366,22 +3229,26 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "flamethrower_a"
 	desc = "A weapon-mounted refillable flamethrower attachment. It has a secondary setting for a more intense flame with far less propulsion ability and heavy fuel usage."
 	w_class = SIZE_MEDIUM
-	current_rounds = 40
-	max_rounds = 40
-	max_range = 5
 	slot = "under"
-	fire_sound = 'sound/weapons/gun_flamethrower3.ogg'
 	gun_activate_sound = 'sound/weapons/handling/gun_underbarrel_flamer_activate.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON
 	attachment_action_type = /datum/action/item_action/toggle/flamer
+	// Will need to be refactored at some point to use `attached_gun`
+	var/attachment_firing_delay = FIRE_DELAY_TIER_4 * 5
+	var/next_fire = 0
+	var/current_rounds = 40
+	var/max_rounds = 40
+	var/max_range = 5
 	var/burn_level = BURN_LEVEL_TIER_1
 	var/burn_duration = BURN_TIME_TIER_1
 	var/round_usage_per_tile = 1
 	var/intense_mode = FALSE
 
-/obj/item/attachable/attached_gun/flamer/New()
-	..()
-	attachment_firing_delay = FIRE_DELAY_TIER_4 * 5
+/obj/item/attachable/attached_gun/flamer/get_max_ammo_count()
+	return max_rounds
+
+/obj/item/attachable/attached_gun/flamer/get_current_ammo_count()
+	return current_rounds
 
 /obj/item/attachable/attached_gun/flamer/get_examine_text(mob/user)
 	. = ..()
@@ -3427,6 +3294,12 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/flamer/handle_pre_break_attachment_description(base_description_text as text, mob/user)
 	return base_description_text + " It is on [intense_mode ? "intense" : "normal"] mode."
 
+/obj/item/attachable/attached_gun/flamer/handle_silent_reload(obj/item/to_reload, mob/user)
+	if(istype(to_reload, /obj/item/ammo_magazine/flamer_tank))
+		reload_attachment(to_reload, user)
+		return TRUE
+	return FALSE
+
 /obj/item/attachable/attached_gun/flamer/reload_attachment(obj/item/ammo_magazine/flamer_tank/fuel_holder, mob/user)
 	if(istype(fuel_holder))
 		var/amt_to_refill = max_rounds - current_rounds
@@ -3461,10 +3334,10 @@ Defined in conflicts.dm of the #defines folder.
 	else
 		to_chat(user, SPAN_WARNING("[src] can only be refilled with an incinerator tank."))
 
-/obj/item/attachable/attached_gun/flamer/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user)
+/obj/item/attachable/attached_gun/flamer/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user, list/mods)
 	if(!istype(loc, /obj/item/weapon/gun))
 		to_chat(user, SPAN_WARNING("\The [src] must be attached to a gun!"))
-		return
+		return FALSE
 
 	var/obj/item/weapon/gun/attached_gun = loc
 
@@ -3472,10 +3345,12 @@ Defined in conflicts.dm of the #defines folder.
 		to_chat(user, SPAN_WARNING("You must wield [attached_gun] to fire [src]!"))
 		return FALSE
 
+	if(next_fire > world.time)
+		return FALSE
+
 	if(current_rounds > round_usage_per_tile && ..())
 		unleash_flame(target, user)
-		if(attached_gun.last_fired < world.time)
-			attached_gun.last_fired = world.time
+		next_fire = world.time + attachment_firing_delay
 		return TRUE
 
 /obj/item/attachable/attached_gun/flamer/proc/unleash_flame(atom/target, mob/living/user)
@@ -3563,61 +3438,33 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "masterkey_a"
 	desc = "An Armat U7 tactical shotgun. Attaches to the underbarrel of most weapons. Only capable of loading up to five buckshot shells. Specialized for breaching into buildings."
 	w_class = SIZE_MEDIUM
-	max_rounds = 5
-	current_rounds = 5
-	ammo = /datum/ammo/bullet/shotgun/buckshot/masterkey
+	attached_gun = /obj/item/weapon/gun/shotgun/ubarrel
 	attachment_action_type = /datum/action/item_action/toggle/ubs
 	slot = "under"
-	fire_sound = 'sound/weapons/gun_shotgun_u7.ogg'
 	gun_activate_sound = 'sound/weapons/handling/gun_u7_activate.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON
 
-/obj/item/attachable/attached_gun/shotgun/New()
-	..()
-	attachment_firing_delay = FIRE_DELAY_TIER_5*3
+/obj/item/attachable/attached_gun/shotgun/Initialize(mapload, ...)
+	. = ..()
 	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/attachable/attached_gun/shotgun/get_examine_text(mob/user)
 	. = ..()
+	var/current_rounds = get_current_ammo_count()
 	if(current_rounds > 0) . += "It has [current_rounds] shell\s left."
 	else . += "It's empty."
-
-/obj/item/attachable/attached_gun/shotgun/set_bullet_traits()
-	LAZYADD(traits_to_give_attached, list(
-		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_turfs),
-		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 10.8, GLOB.damage_boost_breaching),
-		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_pylons)
-	))
-
-/obj/item/attachable/attached_gun/shotgun/reload_attachment(obj/item/ammo_magazine/handful/mag, mob/user)
-	if(istype(mag) && mag.flags_magazine & AMMUNITION_HANDFUL)
-		if(mag.default_ammo == /datum/ammo/bullet/shotgun/buckshot)
-			if(current_rounds >= max_rounds)
-				to_chat(user, SPAN_WARNING("[src] is full."))
-			else
-				current_rounds++
-				mag.current_rounds--
-				mag.update_icon()
-				to_chat(user, SPAN_NOTICE("You load one shotgun shell in [src]."))
-				playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 25, 1)
-				if(mag.current_rounds <= 0)
-					user.temp_drop_inv_item(mag)
-					qdel(mag)
-			return
-	to_chat(user, SPAN_WARNING("[src] only accepts shotgun buckshot."))
-
-
-/obj/item/attachable/attached_gun/shotgun/m20a/unloaded
-	current_rounds = 0
 
 /obj/item/attachable/attached_gun/shotgun/m20a
 	name = "\improper U3 underbarrel shotgun"
 	desc = "An ARMAT U3 tactical shotgun. Integrated into the M20A Harrington rifle. Only capable of loading up to five buckshot shells, this one seems less effective at smashing down doors."
 	icon_state = "masterkey"
 	attach_icon = "masterkey_a"
+	attached_gun = /obj/item/weapon/gun/shotgun/ubarrel/m20a
 	flags_attach_features = ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON
 	hidden = TRUE
 
+/obj/item/attachable/attached_gun/shotgun/m20a/unloaded
+	attached_gun = /obj/item/weapon/gun/shotgun/ubarrel/m20a/unloaded
 
 /obj/item/attachable/attached_gun/shotgun/m20a/set_bullet_traits()
 	return
@@ -3629,93 +3476,27 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "masterkey_af13_a"
 	desc = "A Weyland-Yutani AF13 underslung shotgun. Attaches to the underbarrel of NSG23 line of weapons. Only capable of loading up to six buckshot shells. Specialized for breaching into buildings."
 	w_class = SIZE_MEDIUM
-	max_rounds = 6
-	current_rounds = 6
+	attached_gun = /obj/item/weapon/gun/shotgun/ubarrel/af13/b
 	slot = "under"
-	fire_sound = 'sound/weapons/gun_shotgun_u7.ogg'
 	gun_activate_sound = 'sound/weapons/handling/gun_u7_activate.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON
 
-/obj/item/attachable/attached_gun/shotgun/af13/New()
-	..()
-	attachment_firing_delay = FIRE_DELAY_TIER_5*3
-
 /obj/item/attachable/attached_gun/shotgun/af13/get_examine_text(mob/user)
 	. = ..()
-	if(current_rounds > 0) . += "It has [current_rounds] shell\s left."
+	var/current_ammo = get_current_ammo_count()
+	if(current_ammo > 0) . += "It has [current_ammo] shell\s left."
 	else . += "It's empty."
 
-/obj/item/attachable/attached_gun/shotgun/af13/set_bullet_traits()
-	LAZYADD(traits_to_give_attached, list(
-		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_turfs),
-		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 10.8, GLOB.damage_boost_breaching),
-		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_pylons)
-	))
-
-/obj/item/attachable/attached_gun/shotgun/af13/reload_attachment(obj/item/ammo_magazine/handful/mag, mob/user)
-	if(istype(mag) && mag.flags_magazine & AMMUNITION_HANDFUL)
-		if(mag.default_ammo == /datum/ammo/bullet/shotgun/buckshot)
-			if(current_rounds >= max_rounds)
-				to_chat(user, SPAN_WARNING("[src] is full."))
-			else
-				current_rounds++
-				mag.current_rounds--
-				mag.update_icon()
-				to_chat(user, SPAN_NOTICE("You load one shotgun shell in [src]."))
-				playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 25, 1)
-				if(mag.current_rounds <= 0)
-					user.temp_drop_inv_item(mag)
-					qdel(mag)
-			return
-	to_chat(user, SPAN_WARNING("[src] only accepts shotgun buckshot."))
-
-/obj/item/attachable/attached_gun/shotgun/af13b //NSG underslung shottie for Breacher gun
+/obj/item/attachable/attached_gun/shotgun/af13/b //NSG underslung shottie for Breacher gun
 	name = "\improper AF13-B underbarrel shotgun"
 	icon_state = "masterkey_af13"
 	attach_icon = "masterkey_af13_a"
 	desc = "A Weyland-Yutani AF13-B underslung shotgun, heavily modified by RMC Armourers. Attaches to the underbarrel of NSG23 line of weapons. Only capable of loading up to six buckshot shells. Specialized for breaching into buildings."
 	w_class = SIZE_MEDIUM
-	max_rounds = 6
-	current_rounds = 6
-	ammo = /datum/ammo/bullet/shotgun/buckshot/masterkey
+	attached_gun = /obj/item/weapon/gun/shotgun/ubarrel/af13/b
 	slot = "under"
-	fire_sound = 'sound/weapons/gun_shotgun_u7.ogg'
 	gun_activate_sound = 'sound/weapons/handling/gun_u7_activate.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON|ATTACH_WIELD_OVERRIDE
-
-/obj/item/attachable/attached_gun/shotgun/af13b/New()
-	..()
-	attachment_firing_delay = FIRE_DELAY_TIER_5*3
-
-/obj/item/attachable/attached_gun/shotgun/af13b/get_examine_text(mob/user)
-	. = ..()
-	if(current_rounds > 0) . += "It has [current_rounds] shell\s left."
-	else . += "It's empty."
-
-/obj/item/attachable/attached_gun/shotgun/af13b/set_bullet_traits()
-	LAZYADD(traits_to_give_attached, list(
-		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 2*5, GLOB.damage_boost_turfs), // 3 hits to break down regular walls, about 6 to break down r-walls
-		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 3*10.8, GLOB.damage_boost_breaching), // 2-taps the R doors
-		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 2*5, GLOB.damage_boost_pylons)
-	))
-
-/obj/item/attachable/attached_gun/shotgun/af13b/reload_attachment(obj/item/ammo_magazine/handful/mag, mob/user)
-	if(istype(mag) && mag.flags_magazine & AMMUNITION_HANDFUL)
-		if(mag.default_ammo == /datum/ammo/bullet/shotgun/buckshot)
-			if(current_rounds >= max_rounds)
-				to_chat(user, SPAN_WARNING("[src] is full."))
-			else
-				current_rounds++
-				mag.current_rounds--
-				mag.update_icon()
-				to_chat(user, SPAN_NOTICE("You load one shotgun shell in [src]."))
-				playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 25, 1)
-				if(mag.current_rounds <= 0)
-					user.temp_drop_inv_item(mag)
-					qdel(mag)
-			return
-	to_chat(user, SPAN_WARNING("[src] only accepts shotgun buckshot."))
-
 
 /obj/item/attachable/attached_gun/extinguisher
 	name = "HME-12 underbarrel extinguisher"
@@ -3727,7 +3508,6 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "under"
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON|ATTACH_MELEE
 	var/obj/item/tool/extinguisher/internal_extinguisher
-	current_rounds = 1 //This has to be done to pass the fire_attachment check.
 
 /obj/item/attachable/attached_gun/extinguisher/get_examine_text(mob/user)
 	. = ..()
@@ -3746,7 +3526,7 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	initialize_internal_extinguisher()
 
-/obj/item/attachable/attached_gun/extinguisher/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user)
+/obj/item/attachable/attached_gun/extinguisher/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user, list/mods)
 	if(!internal_extinguisher)
 		return
 	if(..())
@@ -3787,12 +3567,11 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_x = 4
 	pixel_shift_y = 14
 	attachment_action_type = /datum/action/item_action/toggle/nozzle
-	max_range = 6
-	last_fired = 0
-	attachment_firing_delay = 2 SECONDS
 
 	var/projectile_type = /datum/ammo/flamethrower
 	var/fuel_per_projectile = 3
+	var/max_range = 6
+	var/last_fired = 0
 
 	var/static/list/fire_sounds = list(
 		'sound/weapons/gun_flamethrower1.ogg',
@@ -3810,7 +3589,7 @@ Defined in conflicts.dm of the #defines folder.
 	for(var/datum/action/item_action as anything in firearm.actions)
 		item_action.update_button_icon()
 
-/obj/item/attachable/attached_gun/flamer_nozzle/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user)
+/obj/item/attachable/attached_gun/flamer_nozzle/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user, list/mods)
 	. = ..()
 
 	if(world.time < gun.last_fired + gun.get_fire_delay())

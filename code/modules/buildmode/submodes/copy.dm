@@ -8,9 +8,7 @@
 	stored = null
 	return ..()
 
-/datum/buildmode_mode/copy/when_clicked(client/admin_copying, params, atom/object)
-	var/list/modifiers = params2list(params)
-
+/datum/buildmode_mode/copy/when_clicked(client/admin_copying, list/modifiers, atom/object)
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
 		var/turf/clicked_turf = get_turf(object)
 		if(stored)

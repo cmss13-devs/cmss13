@@ -622,6 +622,18 @@
 		return S.hold
 	return null
 
+/obj/item/clothing/attack_hand_secondary(mob/user)
+	var/obj/item/storage/internal/pockets = get_pockets()
+	if(pockets && CAN_PICKUP(user, src))
+		pockets.open(user)
+		return TRUE
+
+/obj/item/clothing/attackby_secondary(obj/item/attack_item, mob/living/user, list/mods)
+	var/obj/item/storage/internal/pockets = get_pockets()
+	if(pockets && CAN_PICKUP(user, src))
+		pockets.open(user)
+		return TRUE
+
 /obj/item/clothing/clicked(mob/user, list/mods)
 	if(mods[ALT_CLICK] && mods[LEFT_CLICK] && loc == user && !user.get_active_hand()) //To pass quick-draw attempts to storage. See storage.dm for explanation.
 		for(var/V in verbs)
@@ -629,7 +641,7 @@
 				return
 
 	var/obj/item/storage/internal/pockets = get_pockets()
-	if(pockets && mods[RIGHT_CLICK] && !mods[ALT_CLICK] && CAN_PICKUP(user, src))
+	if(pockets && !mods[SHIFT_CLICK] && mods[MIDDLE_CLICK] && CAN_PICKUP(user, src))
 		pockets.open(user)
 		return TRUE
 

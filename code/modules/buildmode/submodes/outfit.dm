@@ -16,9 +16,7 @@
 /datum/buildmode_mode/outfit/change_settings(client/c)
 	dresscode = tgui_input_list(c?.mob, "Pick a Preset", "Equipment", GLOB.equipment_presets.categories["All"])
 
-/datum/buildmode_mode/outfit/when_clicked(client/c, params, object)
-	var/list/modifiers = params2list(params)
-
+/datum/buildmode_mode/outfit/when_clicked(client/c, list/modifiers, object)
 	if(!ismob(object))
 		return
 	var/mob/living/carbon/human/selected = object

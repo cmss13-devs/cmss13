@@ -59,7 +59,6 @@ CLIENT_VERB(swap_hand)
 	return
 
 
-
 CLIENT_VERB(attack_self)
 	set hidden = TRUE
 	if(mob)

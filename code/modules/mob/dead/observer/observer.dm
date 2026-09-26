@@ -2,6 +2,7 @@
 	var/voted_this_drop = 0
 	can_block_movement = FALSE
 	recalculate_move_delay = FALSE
+	shift_to_open_context_menu = FALSE
 
 /mob/dead/forceMove(atom/destination)
 	var/turf/old_turf = get_turf(src)
@@ -334,6 +335,7 @@
 		toggle_colony_joe_action()
 
 	client.move_delay = MINIMAL_MOVEMENT_INTERVAL
+	client.set_right_click_menu_mode(FALSE)
 
 	if(observe_target_mob)
 		clean_observe_target()

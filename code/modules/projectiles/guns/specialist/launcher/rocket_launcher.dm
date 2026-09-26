@@ -126,22 +126,28 @@
 		user.put_in_hands(r)
 		r.update_icon()
 
-/obj/item/weapon/gun/launcher/rocket/reload(mob/user, obj/item/ammo_magazine/rocket)
+/obj/item/weapon/gun/launcher/rocket/can_reload(mob/user, obj/item/ammo_magazine/rocket)
 	if(!current_mag)
-		return
+		return FALSE
+
 	if(flags_gun_features & GUN_BURST_FIRING)
-		return
+		return FALSE
 
 	if(!rocket || !istype(rocket) || !istype(src, rocket.gun_type))
 		to_chat(user, SPAN_WARNING("That's not going to fit!"))
-		return
+		return FALSE
 
 	if(current_mag.current_rounds > 0)
 		to_chat(user, SPAN_WARNING("[src] is already loaded!"))
-		return
+		return FALSE
 
 	if(rocket.current_rounds <= 0)
 		to_chat(user, SPAN_WARNING("That frame is empty!"))
+		return FALSE
+	return TRUE
+
+/obj/item/weapon/gun/launcher/rocket/reload(mob/user, obj/item/ammo_magazine/rocket)
+	if(!can_reload(user, rocket))
 		return
 
 	if(user)
@@ -323,9 +329,12 @@
 	qdel(src)
 	user.put_in_active_hand(F)
 
-/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/reload()
+/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/can_reload(mob/user, obj/item/ammo_magazine/magazine)
 	to_chat(usr, SPAN_WARNING("You cannot reload \the [src]!"))
-	return
+	return FALSE
+
+/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/reload(mob/user, obj/item/ammo_magazine/magazine)
+	return can_reload(user, magazine)
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/unload()
 	to_chat(usr, SPAN_WARNING("You cannot unload \the [src]!"))

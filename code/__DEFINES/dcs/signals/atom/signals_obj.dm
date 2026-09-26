@@ -81,3 +81,5 @@
 
 #define COMSIG_DOOR_OPEN "comsig_door_open"
 #define COMSIG_DOOR_CLOSE "comsig_door_close"
+
+#define COMSIG_UNDERBARREL_GL_BREECH_TOGGLED "underbarrel_gl_breech_toggled"

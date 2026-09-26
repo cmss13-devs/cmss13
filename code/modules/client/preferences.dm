@@ -67,7 +67,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/ooccolor
 	var/be_special = BE_ALIEN|BE_KING // Special role selection
 	var/toggle_prefs = TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_COMBAT_CLICKDRAG_OVERRIDE|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION|TOGGLE_VEND_ITEM_TO_HAND|TOGGLE_LEADERSHIP_SPOKEN_ORDERS|TOGGLE_COCKING_TO_HAND|TOGGLE_WIELD_ASSIST // flags in #define/mode.dm
-	var/xeno_ability_click_mode = XENO_ABILITY_CLICK_MIDDLE
+	var/xeno_ability_click_mode = XENO_ABILITY_CLICK_RIGHT
 	var/auto_fit_viewport = FALSE
 	var/adaptive_zoom = 0
 	var/UI_style = "midnight"
@@ -81,7 +81,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/toggles_survivor = TOGGLES_SURVIVOR_DEFAULT
 	var/toggles_insert = TOGGLES_INSERT_DEFAULT
 	var/toggles_ert_pred = TOGGLES_ERT_GROUNDS
-	var/toggle_right_click_menu = TRUE
+	var/secondary_interaction_mb = RIGHT_CLICK
 	var/list/volume_preferences = list(1, 0.5, 1, 0.6) // Game, music, admin midis, lobby music (this is also set in sanitize_volume_preferences() call)
 	var/chat_display_preferences = CHAT_TYPE_ALL
 	var/item_animation_pref_level = SHOW_ITEM_ANIMATIONS_ALL
@@ -596,7 +596,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<h2><b><u>Input Settings:</u></b></h2>"
 			dat += "<b>Mode:</b> <a href='byond://?_src_=prefs;preference=hotkeys'><b>[(hotkeys) ? "Hotkeys Mode" : "Send to Chat"]</b></a><br>"
 			dat += "<b>Keybinds:</b> <a href='byond://?_src_=prefs;preference=viewmacros'><b>View Keybinds</b></a><br>"
-			dat += "<b>Right-click Contextual Menu:</b> <a href='byond://?_src_=prefs;preference=toggle_right_click_menu'><b>[(toggle_right_click_menu) ? "On" : "Off"]</b></a><br>"
+			dat += "<b>Secondary interact button:</b> <a href='byond://?_src_=prefs;preference=toggle_right_click_menu'><b>[secondary_mouse_pref_to_string(secondary_interaction_mb)]</b></a><br>"
 			dat += "<br><b>Say Input Style:</b> <a href='byond://?_src_=prefs;preference=inputstyle'><b>[tgui_say ? "Modern (default)" : "Legacy"]</b></a><br>"
 			dat += "<b>Say Input Color:</b> <a href='byond://?_src_=prefs;preference=inputcolor'><b>[tgui_say_light_mode ? "Lightmode" : "Darkmode (default)"]</b></a><br>"
 
@@ -666,8 +666,6 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Enable Playtime Perks:</b> <a href='byond://?_src_=prefs;preference=playtime_perks'><b>[playtime_perks? "Yes" : "No"]</b></a><br>"
 			if(user.client.can_skip_role_lock())
 				dat += "<b>Skip Playtime Ranks:</b> <a href='byond://?_src_=prefs;preference=skip_playtime_ranks'><b>[skip_playtime_ranks? "Yes" : "No"]</b></a><br>"
-			dat += "<b>Toggle Being Able to Hurt Yourself: \
-					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_IGNORE_SELF]'><b>[toggle_prefs & TOGGLE_IGNORE_SELF ? "Off" : "On"]</b></a><br>"
 			dat += "<b>Toggle Help Intent Safety: \
 					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_HELP_INTENT_SAFETY]'><b>[toggle_prefs & TOGGLE_HELP_INTENT_SAFETY ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Automatic Shove: \
@@ -1201,14 +1199,19 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 				winset(user, null, "input.focus=false")
 
 		if("toggle_right_click_menu")
-			if(user.client.prefs.toggle_right_click_menu)
-				user.client.prefs.toggle_right_click_menu = FALSE
-				user.client.set_right_click_menu_mode(shift_only = TRUE)
-				to_chat(user, SPAN_NOTICE("Right click no longer opens the contextual menu, it is now accessible only with [SPAN_ORANGE("SHIFT + Right Click")]."))
+			var/static/list/mouse_button_list = list(
+				secondary_mouse_pref_to_string(RIGHT_CLICK) = RIGHT_CLICK,
+				secondary_mouse_pref_to_string(BUTTON4) = BUTTON4,
+				secondary_mouse_pref_to_string(BUTTON5) = BUTTON5
+			)
+			var/choice = tgui_input_list(user, "Choose how you will activate secondary interactions", "Mouse Activation Button", mouse_button_list)
+			if(!choice)
+				return
+			secondary_interaction_mb = mouse_button_list[choice]
+			if(secondary_interaction_mb == RIGHT_CLICK)
+				user.client?.set_right_click_menu_mode(TRUE)
 			else
-				user.client.prefs.toggle_right_click_menu = TRUE
-				user.client.set_right_click_menu_mode(shift_only = FALSE)
-				to_chat(user, SPAN_NOTICE("Right click now opens the contextual menu."))
+				user.client?.set_right_click_menu_mode(FALSE)
 
 		if("traits")
 			traits_picker.tgui_interact(user)

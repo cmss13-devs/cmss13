@@ -192,6 +192,21 @@ also doesn't really matter. You can only reload them with handfuls.
 	max_rounds = 9
 	chamber_closed = 0
 
+/obj/item/ammo_magazine/internal/shotgun/ubarrel
+	default_ammo = /datum/ammo/bullet/shotgun/buckshot
+	max_rounds = 5
+
+/obj/item/ammo_magazine/internal/shotgun/ubarrel/unloaded
+	current_rounds = 0
+
+/obj/item/ammo_magazine/internal/shotgun/af13
+	default_ammo = /datum/ammo/bullet/shotgun/buckshot
+	max_rounds = 6
+
+/obj/item/ammo_magazine/internal/shotgun/af13b
+	default_ammo = /datum/ammo/bullet/shotgun/buckshot
+	max_rounds = 6
+
 /obj/item/ammo_magazine/internal/shotgun/double //For a double barrel.
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
 	max_rounds = 2

@@ -33,6 +33,7 @@
 	var/automated_timer
 	var/datum/cas_signal/paradrop_signal
 	var/faction = FACTION_MARINE
+	var/list/obj_shuttle_contents = list()
 
 /obj/docking_port/mobile/marine_dropship/Initialize(mapload)
 	. = ..()
@@ -60,24 +61,23 @@
 
 /obj/docking_port/mobile/marine_dropship/multiz/Initialize(mapload)
 	.=..()
-	var/list/shuttle_contents = list()
 	for(var/area/areas in shuttle_areas)
 		for(var/obj/thing in areas)
-			shuttle_contents += thing
+			obj_shuttle_contents += thing
 
-	var/obj/structure/machinery/door_control/shuttle_ramp/ramp_button = locate(/obj/structure/machinery/door_control/shuttle_ramp) in shuttle_contents
+	var/obj/structure/machinery/door_control/shuttle_ramp/ramp_button = locate(/obj/structure/machinery/door_control/shuttle_ramp) in obj_shuttle_contents
 	if(ramp_button)
 		if(ramp_button.id == "aft_ramp")
 			ramp_button.linked_dropship = src
 			door_control.add_ramp(ramp_button, "aft")
 
-	for(var/obj/structure/machinery/door_control/side_hatch/hatch_button in shuttle_contents)
+	for(var/obj/structure/machinery/door_control/side_hatch/hatch_button in obj_shuttle_contents)
 		hatch_button.linked_dropship = src
 
-	for(var/obj/deployer/shuttle/dropship/deployerino in shuttle_contents)
+	for(var/obj/deployer/shuttle/dropship/deployerino in obj_shuttle_contents)
 		deployerino.linked_dropship = src
 
-	var/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/console = locate(/obj/structure/machinery/computer/cameras/dropship/midway/gunnery) in shuttle_contents
+	var/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/console = locate(/obj/structure/machinery/computer/cameras/dropship/midway/gunnery) in obj_shuttle_contents
 	if(console)
 		console.linked_dropship = src
 

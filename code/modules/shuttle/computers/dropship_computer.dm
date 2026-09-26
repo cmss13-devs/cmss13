@@ -43,10 +43,12 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/omaha
 	icon = 'icons/obj/structures/machinery/omaha/controls.dmi'
 	density = TRUE
+	layer = 3.01
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/midway
 	icon = 'icons/obj/structures/machinery/midway/controls.dmi'
 	density = TRUE
+	layer = 3.01
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/Initialize(mapload, ...)
 	. = ..()

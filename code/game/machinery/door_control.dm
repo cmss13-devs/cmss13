@@ -557,28 +557,33 @@
 	icon = 'icons/obj/structures/machinery/omaha/interior_item.dmi'
 	icon_state = "ramp_control"
 	id = "aft_ramp"
+	var/dropship_id
 	var/obj/docking_port/mobile/marine_dropship/linked_dropship
 	var/list/first_ramps = list()
 	var/list/second_ramps = list()
 	var/list/third_ramps = list()
 	var/list/fourth_ramps = list()
 	var/list/fifth_ramps = list()
+	var/list/linked_railings = list()
 	normaldoorcontrol = CONTROL_NORMAL_DOORS
 	var/datum/door_controller/single/linked_single_controller
 	var/direction = "aft"
 	var/busy = FALSE
 	var/broken = FALSE
 	var/obj/deployer/shuttle/dropship/dummy_part/rampazoid
+	var/obj/effect/drosphip_ramp_shadow/linked_shadow
 
 /obj/structure/machinery/door_control/shuttle_ramp/omaha_aft
 	icon = 'icons/obj/structures/machinery/omaha/interior_item.dmi'
 	icon_state = "ramp_control"
 	id = "aft_ramp"
+	dropship_id = DROPSHIP_OMAHA
 
 /obj/structure/machinery/door_control/shuttle_ramp/midway_aft
 	icon = 'icons/obj/structures/machinery/midway/interior_item.dmi'
 	icon_state = "ramp_control"
 	id = "aft_ramp"
+	dropship_id = DROPSHIP_MIDWAY
 
 /obj/structure/machinery/door_control/shuttle_ramp/proc/borders_space()
 	if(is_reserved_level(src.z))
@@ -595,203 +600,146 @@
 		linked_single_controller.control_doors("open")
 
 /obj/structure/machinery/door_control/shuttle_ramp/proc/raise(forced = FALSE)
-	if(linked_single_controller.status == SHUTTLE_DOOR_LOCKED)
-		return
-	if(busy)
-		return
-	if(is_reserved_level(src.z))
+	if(linked_single_controller?.status == SHUTTLE_DOOR_LOCKED || busy || is_reserved_level(src.z))
 		return
 
 	busy = TRUE
 
 	playsound(src.loc, 'sound/machines/omaha_ramp.ogg', 60, 0)
-	finish_raising(forced) //addtimer(CALLBACK(src, PROC_REF(finish_raising)), 70,  TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+	var/turf/turf_below = SSmapping.get_turf_below(src.loc)
+	if(turf_below)
+		playsound(turf_below, 'sound/machines/omaha_ramp.ogg', 60, 0)
+
+	linked_shadow.set_icon_state(TRUE)
+	for(var/obj/structure/machinery/door/poddoor/railing/railme in linked_railings)
+		railme.open()
+	raise_ramp(fifth_ramps)
+	raise_ramp(fourth_ramps)
+	addtimer(CALLBACK(src, PROC_REF(raise_ramp), third_ramps), 25) // TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT
+	addtimer(CALLBACK(src, PROC_REF(raise_ramp), second_ramps), 50)
+	addtimer(CALLBACK(src, PROC_REF(raise_ramp), first_ramps, TRUE), 50)
 
 /obj/structure/machinery/door_control/shuttle_ramp/proc/raise_forced()
 	raise(forced = TRUE)
 
-/obj/structure/machinery/door_control/shuttle_ramp/proc/raise_mobs(list/raising_area)
-	for(rampazoid in raising_area)
-		var/turf/open/turf_below = SSmapping.get_turf_below(rampazoid.loc)
-		if(turf_below)
-			for(var/mob/living/carbon/morbius in turf_below.contents)
-				morbius.Move(rampazoid.loc)
+/obj/structure/machinery/door_control/shuttle_ramp/proc/raise_things(obj/our_deployer)
+	var/turf/turf_below = SSmapping.get_turf_below(our_deployer.loc)
+	if(turf_below)
+		for(var/atom/movable/movabius in turf_below.contents)
+			movabius.forceMove(our_deployer.loc)
 
-/obj/structure/machinery/door_control/shuttle_ramp/proc/finish_raising(forced = FALSE)
-	for(rampazoid in fifth_ramps)
-		if(!rampazoid.linked_staircase)
-			return
-		var/turf/turf_beneath = SSmapping.get_turf_below(rampazoid.loc)
-		turf_beneath.ScrapeAway()
-		QDEL_NULL(rampazoid.linked_staircase)
-	for(rampazoid in first_ramps)
-		if(rampazoid.shadowblaster)
-			if(!rampazoid.shadowblast)
-				rampazoid.shadowblast = new /obj/effect/drosphip_ramp_shadow(rampazoid.loc)
-				rampazoid.shadowblast.set_icon_state(raise = TRUE)
-			else
-				rampazoid.shadowblast.set_icon_state(raise = TRUE)
+/obj/structure/machinery/door_control/shuttle_ramp/proc/raise_ramp(list/ramp_group, finality = FALSE)
+	var/turf/open/our_turf
+	for(rampazoid in ramp_group)
+		our_turf = rampazoid.loc
 
-	for(rampazoid in fourth_ramps)
-		if(!rampazoid.linked_staircase)
-			return
-
-		var/turf/open/our_turf = rampazoid.loc
-		QDEL_NULL(rampazoid.linked_staircase)
-		our_turf.ScrapeAway()
-		our_turf.update_vis_contents()
-	raise_mobs(fourth_ramps)
-	if(forced)
-		raise_third(forced)
-	else
-		addtimer(CALLBACK(src, PROC_REF(raise_third)), 25,  TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
-
-/obj/structure/machinery/door_control/shuttle_ramp/proc/raise_third(forced = FALSE)
-	for(rampazoid in third_ramps)
-		var/turf/open/our_turf = rampazoid.loc
-		our_turf.ScrapeAway()
-		if(rampazoid.linked_structure_ramp)
-			rampazoid.linked_structure_ramp.moveToNullspace()
-		our_turf.update_vis_contents()
-	raise_mobs(third_ramps)
-	if(forced)
-		raise_fourth(forced)
-	else
-		addtimer(CALLBACK(src, PROC_REF(raise_fourth)), 25,  TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
-
-/obj/structure/machinery/door_control/shuttle_ramp/proc/raise_fourth(forced = FALSE)
-	for(rampazoid in second_ramps)
-		var/turf/open/our_turf = rampazoid.loc
-		our_turf.ScrapeAway()
-		if(rampazoid.linked_structure_ramp)
-			rampazoid.linked_structure_ramp.moveToNullspace()
-		our_turf.update_vis_contents()
-	raise_mobs(second_ramps)
-
-	for(rampazoid in first_ramps)
-		var/turf/open/our_turf = rampazoid.loc
-		our_turf.ScrapeAway()
-		our_turf.update_vis_contents()
-	raise_mobs(first_ramps)
-
-	linked_single_controller.status = SHUTTLE_DOOR_LOCKED
-	busy = FALSE
+		if(rampazoid.linked_deployable)
+			QDEL_NULL(rampazoid.linked_deployable)
+			rampazoid.linked_deployable = null
+		if(rampazoid.stored_turf)
+			rampazoid.stored_turf.ScrapeAway()
+			our_turf.update_vis_contents()
+		raise_things(rampazoid)
+	if(finality)
+		busy = FALSE
+		linked_single_controller.status = SHUTTLE_DOOR_LOCKED
 
 /obj/structure/machinery/door_control/shuttle_ramp/proc/lower()
-	if(linked_single_controller.status == SHUTTLE_DOOR_UNLOCKED)
+	if(linked_single_controller?.status == SHUTTLE_DOOR_UNLOCKED || busy || is_reserved_level(src.z) || linked_dropship.is_hijacked)
 		return
-	if(busy)
-		return
-	if(is_reserved_level(src.z))
-		return
-	if(linked_dropship.is_hijacked)
-		return
+
 	busy = TRUE
 
 	playsound(src.loc, 'sound/machines/omaha_ramp.ogg', 50, 0)
-	finish_lowering()
+	var/turf/turf_below = SSmapping.get_turf_below(src.loc)
+	if(turf_below)
+		playsound(turf_below, 'sound/machines/omaha_ramp.ogg', 60, 0)
 
-/obj/structure/machinery/door_control/shuttle_ramp/proc/crush_mobs(list/crushing_area) // very fucking slow
-	for(rampazoid in crushing_area)
-		var/turf/open/turf_below = SSmapping.get_turf_below(rampazoid.loc)
-		for(var/mob/living/carbon/morbius in turf_below.contents)
-			morbius.throw_random_direction(4, 3, spin = TRUE)
-			morbius.apply_effect(5, WEAKEN)
-			shake_camera(morbius, 20, 1)
-			morbius.apply_armoured_damage(40, ARMOR_MELEE, BRUTE, rand_zone())
+	linked_shadow.set_icon_state(FALSE)
+	for(var/obj/structure/machinery/door/poddoor/railing/railme in linked_railings)
+		railme.close()
+	lower_ramp(first_ramps)
+	lower_ramp(second_ramps)
+	addtimer(CALLBACK(src, PROC_REF(lower_ramp), third_ramps), 25) // TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT
+	addtimer(CALLBACK(src, PROC_REF(lower_ramp), fourth_ramps), 50)
+	addtimer(CALLBACK(src, PROC_REF(lower_ramp), fifth_ramps, TRUE), 50)
 
-/obj/structure/machinery/door_control/shuttle_ramp/proc/finish_lowering()
-	crush_mobs(fifth_ramps)
-	for(rampazoid in fifth_ramps)
-		var/turf/turf_beneath = SSmapping.get_turf_below(rampazoid.loc)
-		turf_beneath.place_on_top(rampazoid.item_to_deploy)
-		turf_beneath.icon_state = "3,16"
-	crush_mobs(first_ramps)
-	for(rampazoid in first_ramps)
-		var/turf/open/our_turf = rampazoid.loc
-		our_turf.place_on_top(/turf/open_space)
-		our_turf.update_vis_contents()
-		if(rampazoid.shadowblaster)
-			if(!rampazoid.shadowblast)
-				rampazoid.shadowblast = new /obj/effect/drosphip_ramp_shadow(rampazoid.loc)
-				rampazoid.shadowblast.set_icon_state(raise = FALSE)
-			else
-				rampazoid.shadowblast.set_icon_state(raise = FALSE)
-	crush_mobs(second_ramps)
-	for(rampazoid in second_ramps)
-		var/turf/open/our_turf = rampazoid.loc
-		var/turf/turf_beneath = SSmapping.get_turf_below(our_turf)
-		if(!rampazoid.linked_structure_ramp)
-			rampazoid.linked_structure_ramp = new rampazoid.structure_deploy(turf_beneath)
-			rampazoid.linked_structure_ramp.icon_state = "[our_turf.icon_state]-low"
+/obj/structure/machinery/door_control/shuttle_ramp/proc/lower_ramp(list/ramp_group, finality = FALSE)
+	var/turf/open/our_turf
+	var/turf/turf_beneath
+	for(rampazoid in ramp_group)
+		crush_mobs(rampazoid)
+		our_turf = rampazoid.loc
+		turf_beneath = SSmapping.get_turf_below(our_turf)
+
+		if(!rampazoid.cached_icon)
+			rampazoid.cached_icon = our_turf.icon
+			rampazoid.cached_icon_state = "[our_turf.icon_state]-low"
+
+		if(rampazoid.mode == "fifth")
+			rampazoid.stored_turf = turf_beneath.place_on_top(rampazoid.item_to_deploy)
+			rampazoid.linked_deployable = new rampazoid.item_to_deploy2(our_turf)
+			for(var/mob/living/carbon/morbius in our_turf.contents)
+				rampazoid.loc.Entered(morbius)
 		else
-			rampazoid.linked_structure_ramp.loc = turf_beneath
-		our_turf.place_on_top(/turf/open_space)
-		our_turf.update_vis_contents()
-	addtimer(CALLBACK(src, PROC_REF(lower_third)), 25,  TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+			if(rampazoid.item_to_deploy2)
+				rampazoid.linked_deployable = new rampazoid.item_to_deploy2(turf_beneath)
+			lower_things(rampazoid)
+			rampazoid.stored_turf = our_turf.place_on_top(rampazoid.item_to_deploy)
 
-/obj/structure/machinery/door_control/shuttle_ramp/proc/lower_third()
-	crush_mobs(third_ramps)
-	for(rampazoid in third_ramps)
-		var/turf/open/our_turf = rampazoid.loc
-		var/turf/turf_beneath = SSmapping.get_turf_below(our_turf)
-		if(!rampazoid.linked_structure_ramp)
-			rampazoid.linked_structure_ramp = new rampazoid.structure_deploy(turf_beneath)
-			rampazoid.linked_structure_ramp.icon_state = "[our_turf.icon_state]-low"
+		if(rampazoid.linked_deployable)
+			rampazoid.linked_deployable.icon = rampazoid.cached_icon
+			rampazoid.linked_deployable.icon_state = rampazoid.cached_icon_state
+
+	if(finality)
+		busy = FALSE
+		if(broken)
+			linked_single_controller.status = SHUTTLE_DOOR_BROKEN
 		else
-			rampazoid.linked_structure_ramp.loc = turf_beneath
-		our_turf.place_on_top(/turf/open_space)
-		our_turf.update_vis_contents()
-	addtimer(CALLBACK(src, PROC_REF(lower_fourth)), 25,  TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+			linked_single_controller.status = SHUTTLE_DOOR_UNLOCKED
 
-/obj/structure/machinery/door_control/shuttle_ramp/proc/lower_fourth()
-	crush_mobs(fourth_ramps)
-	for(rampazoid in fourth_ramps)
-		var/turf/open/our_turf = rampazoid.loc
-		var/turf/turf_beneath = SSmapping.get_turf_below(our_turf)
-		rampazoid.linked_staircase = new rampazoid.stairs_deploy_up(turf_beneath)
-		rampazoid.linked_staircase.icon = our_turf.icon
-		rampazoid.linked_staircase.icon_state = "[our_turf.icon_state]-low"
-		our_turf.place_on_top(/turf/open_space)
-		our_turf.update_vis_contents()
-	for(rampazoid in fifth_ramps)
-		var/turf/open/our_turf = rampazoid.loc
-		if(!rampazoid.linked_staircase)
-			rampazoid.linked_staircase = new rampazoid.stairs_deploy_down(our_turf)
-			rampazoid.linked_staircase.invisibility = 101
-	for(rampazoid in fifth_ramps)
-		for(var/mob/living/carbon/morbius in rampazoid.loc.contents)
-			rampazoid.loc.Entered(morbius)
+/obj/structure/machinery/door_control/shuttle_ramp/proc/lower_things(obj/our_deployer)
+	var/turf/turf_below = SSmapping.get_turf_below(our_deployer.loc)
+	if(turf_below)
+		for(var/atom/movable/movablius in rampazoid.loc.contents)
+			if(!movablius.anchored)
+				movablius.forceMove(turf_below)
 
-	busy = FALSE
-	if(broken)
-		linked_single_controller.status = SHUTTLE_DOOR_BROKEN
-	else
-		linked_single_controller.status = SHUTTLE_DOOR_UNLOCKED
-
+/obj/structure/machinery/door_control/shuttle_ramp/proc/crush_mobs(obj/our_deployer) // eh
+	var/turf/open/turf_below = SSmapping.get_turf_below(our_deployer.loc)
+	for(var/mob/living/carbon/morbius in turf_below.contents)
+		morbius.throw_random_direction(2, 3, spin = TRUE)
+		morbius.apply_effect(5, WEAKEN)
+		shake_camera(morbius, 10, 1)
+		morbius.apply_armoured_damage(40, ARMOR_MELEE, BRUTE, rand_zone())
 
 /obj/structure/machinery/door_control/shuttle_ramp/beforeShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	.=..()
 	if(!length(first_ramps))
-		for(var/place in linked_dropship.shuttle_areas)
-			for(rampazoid in place) // switch to switch and "" vars
-				switch(rampazoid.mode)
-					if("first")
-						first_ramps += rampazoid
-					if("second")
-						second_ramps += rampazoid
-					if("third")
-						third_ramps += rampazoid
-					if("fourth")
-						fourth_ramps += rampazoid
-					if("fifth")
-						fifth_ramps += rampazoid
+		for(rampazoid in linked_dropship.obj_shuttle_contents) // switch to switch and "" vars
+			switch(rampazoid.mode)
+				if("first")
+					first_ramps += rampazoid
+				if("second")
+					second_ramps += rampazoid
+				if("third")
+					third_ramps += rampazoid
+				if("fourth")
+					fourth_ramps += rampazoid
+				if("fifth")
+					fifth_ramps += rampazoid
 
 	if(!linked_single_controller)
 		for(var/direction in linked_dropship.door_control.door_controllers)
 			var/datum/door_controller/single/controller = linked_dropship.door_control.door_controllers[direction]
 			if(direction == src.direction)
 				linked_single_controller = controller
+	if(!linked_shadow)
+		linked_shadow = locate(/obj/effect/drosphip_ramp_shadow) in linked_dropship.obj_shuttle_contents
+	if(!length(linked_railings))
+		for(var/obj/structure/machinery/door/poddoor/railing/railme in linked_dropship.obj_shuttle_contents)
+			if(dropship_id == railme.id)
+				linked_railings += railme
 
 /obj/structure/machinery/door_control/shuttle_ramp/attackby(obj/item/item, mob/user)
 	if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL))
@@ -819,13 +767,7 @@
 	if(xeno.hive_pos != XENO_QUEEN)
 		return ..()
 
-	if(xeno.action_busy)
-		return
-
-	if(is_reserved_level(z)) //no prying in space even though it's funny
-		return
-
-	if(linked_single_controller.status == SHUTTLE_DOOR_UNLOCKED)
+	if(xeno.action_busy || is_reserved_level(z) || linked_single_controller.status == SHUTTLE_DOOR_UNLOCKED)
 		return
 
 	if(linked_single_controller && linked_single_controller.status == SHUTTLE_DOOR_BROKEN)
@@ -865,10 +807,10 @@
 	id = "aft_ramp"
 
 /obj/structure/machinery/door_control/dropship_ramp_dummy/handle_door()
-	linked_ramp_control.handle_door()
+	return linked_ramp_control.handle_door()
 
 /obj/structure/machinery/door_control/dropship_ramp_dummy/attackby(obj/item/item, mob/user)
-	linked_ramp_control.attackby(item, user)
+	return linked_ramp_control.attackby(item, user)
 
 /obj/structure/machinery/door_control/dropship_ramp_dummy/attack_alien(mob/living/carbon/xenomorph/xeno)
-	linked_ramp_control.attack_alien(xeno)
+	return linked_ramp_control.attack_alien(xeno)

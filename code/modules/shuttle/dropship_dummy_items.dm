@@ -222,20 +222,15 @@
 	opacity = FALSE
 	density = FALSE
 	flags_atom = NO_ZFALL
+	alpha = 0
 
 /obj/effect/drosphip_ramp_shadow/proc/set_icon_state(raise = TRUE)
 	if(raise)
-		icon_state = "shadowblast_raise"
-		addtimer(CALLBACK(src, PROC_REF(finish_raising)), 30,  TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+		animate(src, time = 50, loop = FALSE, alpha = 0)
+		alpha = 0
 	else
-		icon_state = "shadowblast_lower"
-		addtimer(CALLBACK(src, PROC_REF(finish_lowering)), 30,  TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
-
-/obj/effect/drosphip_ramp_shadow/proc/finish_raising()
-	icon_state = "shadowblast_kill"
-
-/obj/effect/drosphip_ramp_shadow/proc/finish_lowering()
-	icon_state = "shadowblast"
+		animate(src, time = 50, loop = FALSE, alpha = 255)
+		alpha = 255
 
 /// ramp ///
 
@@ -249,57 +244,69 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	can_block_movement = FALSE
 	flags_atom = NO_ZFALL
-	var/turf/open/stored_turf
+
+	var/turf/stored_turf
 	var/stored_icon_state
-	var/obj/structure/stairs/linked_staircase
-	var/obj/structure/shuttle/part/linked_structure_ramp
-	var/structure_deploy
-	var/stairs_deploy_up
-	var/stairs_deploy_down
-	var/shadowblaster
-	var/obj/effect/drosphip_ramp_shadow/shadowblast
+	var/obj/structure/linked_deployable
+	var/item_to_deploy2
+	var/cached_icon
+	var/cached_icon_state
 
 /obj/deployer/shuttle/dropship/dummy_part/omaha
-	item_to_deploy = /turf/closed/shuttle/dropship_omaha
-	structure_deploy = /obj/structure/shuttle/part/dropship_omaha/structure_ramp
-	stairs_deploy_up = /obj/structure/stairs/multiz/up/dropship_ramp/omaha
-	stairs_deploy_down = /obj/structure/stairs/multiz/down/dropship_ramp/omaha
+	item_to_deploy = /turf/open_space
 
 /obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_first
 	mode = "first"
+	item_to_deploy = /turf/open_space
 
 /obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_second
 	mode = "second"
+	item_to_deploy = /turf/open_space
+	item_to_deploy2 = /obj/structure/shuttle/part/dropship_omaha/structure_ramp
 
 /obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_third
 	mode = "third"
+	item_to_deploy = /turf/open_space
+	item_to_deploy2 = /obj/structure/shuttle/part/dropship_omaha/structure_ramp
 
 /obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_fourth
 	mode = "fourth"
+	item_to_deploy = /turf/open_space
+	item_to_deploy = /obj/structure/stairs/multiz/up/dropship_ramp/omaha
 
 /obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_fifth
 	mode = "fifth"
+	item_to_deploy = /turf/closed/shuttle/dropship_omaha/wall_mid_52
+	item_to_deploy2 = /obj/structure/stairs/multiz/down/dropship_ramp/omaha
 
 /obj/deployer/shuttle/dropship/dummy_part/midway
 	item_to_deploy = /turf/closed/shuttle/dropship_midway
-	structure_deploy = /obj/structure/shuttle/part/dropship_midway/structure_ramp
-	stairs_deploy_up = /obj/structure/stairs/multiz/up/dropship_ramp/midway
-	stairs_deploy_down = /obj/structure/stairs/multiz/down/dropship_ramp/midway
+
+//// midway ////
 
 /obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_first
 	mode = "first"
+	item_to_deploy = /turf/open_space
 
 /obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_second
 	mode = "second"
+	item_to_deploy = /turf/open_space
+	item_to_deploy2 = /obj/structure/shuttle/part/dropship_midway/structure_ramp
 
 /obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_third
 	mode = "third"
+	item_to_deploy = /turf/open_space
+	item_to_deploy2 = /obj/structure/shuttle/part/dropship_midway/structure_ramp
 
 /obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_fourth
 	mode = "fourth"
+	item_to_deploy = /turf/open_space
+	item_to_deploy2 = /obj/structure/stairs/multiz/up/dropship_ramp/midway
 
 /obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_fifth
 	mode = "fifth"
+	item_to_deploy = /turf/closed/shuttle/dropship_midway/wall_mid_52
+	item_to_deploy2 = /obj/structure/stairs/multiz/down/dropship_ramp/midway
 
 /obj/deployer/shuttle/dropship/m90_minigun
 	icon = 'icons/obj/structures/machinery/midway/misc_96x96.dmi'

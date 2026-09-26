@@ -2,7 +2,7 @@
 	var/direction
 	layer = OBJ_LAYER // Cannot be obstructed by weeds
 	var/list/blockers = list()
-	var/ramp = FALSE
+	var/not_ramp = TRUE
 
 /obj/structure/stairs/multiz/Initialize(mapload, ...)
 	. = ..()
@@ -10,7 +10,7 @@
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(register_with_turf))
 	if(!mapload)
 		register_with_turf()
-	if(!ramp)
+	if(not_ramp)
 		for(var/turf/blocked_turf in range(1, src))
 			blockers += WEAKREF(new /obj/effect/build_blocker(blocked_turf, src))
 			blockers += WEAKREF(new /obj/structure/blocker/anti_cade(blocked_turf))
@@ -77,10 +77,19 @@
 
 	var/datum/staircase/staircase
 
+/obj/structure/stairs/multiz/up/Destroy()
+	if(staircase)
+		for(var/mob/mobius in staircase.in_range_mob)
+			for(var/index, image in staircase.from_turf_to_images) // thank you harry
+				mobius.client?.images -= image
+
+		QDEL_NULL(staircase)
+	return ..()
+
 /obj/structure/stairs/multiz/up/LateInitialize()
 	. = ..()
 
-	if(staircase && !ramp)
+	if(staircase)
 		return
 
 	var/stairs = list(src)
@@ -94,8 +103,7 @@
 
 			stairs += up_ladder
 			adjacent_turf = get_step(adjacent_turf, direction)
-	if(!ramp)
-		staircase = new(stairs, dir)
+	staircase = new(stairs, dir)
 
 /datum/staircase
 
@@ -245,15 +253,14 @@ GLOBAL_DATUM_INIT(above_blackness_backdrop, /atom/movable/above_blackness_backdr
 	icon_state = "ramp-1"
 	dir = NORTH
 	direction = UP
-	ramp = TRUE
+	not_ramp = FALSE
 
 /obj/structure/stairs/multiz/down/dropship_ramp
 	icon = 'icons/turf/omaha/ramp.dmi'
 	icon_state = "ramp-11"
 	dir = NORTH
 	direction = DOWN
-	ramp = TRUE
-
+	not_ramp = FALSE
 /obj/structure/stairs/multiz/up/dropship_ramp/omaha
 	icon = 'icons/turf/omaha/ramp.dmi'
 

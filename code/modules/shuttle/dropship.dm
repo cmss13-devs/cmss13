@@ -15,6 +15,7 @@
 	can_block_movement = FALSE
 	flags_atom = NO_ZFALL
 	layer = ABOVE_TURF_LAYER
+	anchored = TRUE
 
 // USCM Dropship Alamo
 

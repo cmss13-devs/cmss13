@@ -1088,10 +1088,10 @@
 //*************************************/
 //Adapts itself to the wearer's squad and role. Gear is equipped before squads are assigned at round start,
 //but a vendor-bought headset arrives after, so we listen at both ends and let whichever happens last
-//configure us. Re-running is also safe, so squad transfers rebrand and rekey correctly.
+//configure us. Re-running rebrands and retunes on squad transfers, but the role key is only granted once.
 
 /obj/item/device/radio/headset/almayer/marine/self_setting
-	var/obj/item/device/encryptionkey/granted_key
+	var/role_configured = FALSE
 	var/list/default_tracking_options
 
 /obj/item/device/radio/headset/almayer/marine/self_setting/Initialize()
@@ -1107,33 +1107,26 @@
 	. = ..()
 	UnregisterSignal(user, COMSIG_SET_SQUAD)
 
-/obj/item/device/radio/headset/almayer/marine/self_setting/Destroy()
-	granted_key = null
-	return ..()
-
 /obj/item/device/radio/headset/almayer/marine/self_setting/proc/self_set()
 	var/mob/living/carbon/human/H = loc
 	if(!istype(H))
 		return
 	if(!H.assigned_squad)
 		return
-	if(granted_key)
-		keys -= granted_key
-		QDEL_NULL(granted_key)
+	var/key_type
+	var/role_locate_setting
 	inbuilt_tracking_options = default_tracking_options?.Copy()
-	locate_setting = initial(locate_setting)
 	volume = initial(volume)
 
 	name = "[lowertext(H.assigned_squad.name)] radio headset"
 	desc = "This is used by [H.assigned_squad.name] squad members."
-	icon_state = "[lowertext(H.assigned_squad.name)]_headset"
-	frequency = H.assigned_squad.radio_freq
+	var/squad_icon_state = "[lowertext(H.assigned_squad.name)]_headset"
+	icon_state = icon_exists(icon, squad_icon_state) ? squad_icon_state : initial(icon_state) // not every squad has a sprite (Intel)
 
 	switch(GET_DEFAULT_ROLE(H.job))
 		if(JOB_SQUAD_LEADER)
 			name = "marine leader " + name
-			granted_key = new /obj/item/device/encryptionkey/squadlead(src)
-			keys += granted_key
+			key_type = /obj/item/device/encryptionkey/squadlead
 			inbuilt_tracking_options = list(
 				"Squad Leader" = TRACKER_SL,
 				"Fireteam Leader" = TRACKER_FTL,
@@ -1151,31 +1144,32 @@
 				"Oscar SL" = TRACKER_OSL
 			)
 			inbuilt_tracking_options -= "[H.assigned_squad.name] SL"
-			locate_setting = TRACKER_LZ
+			role_locate_setting = TRACKER_LZ
 			volume = RADIO_VOLUME_CRITICAL
 		if(JOB_SQUAD_MEDIC)
 			name = "marine hospital corpsman " + name
-			granted_key = new /obj/item/device/encryptionkey/med(src)
-			keys += granted_key
+			key_type = /obj/item/device/encryptionkey/med
 		if(JOB_SQUAD_ENGI)
 			name = "marine combat technician " + name
-			granted_key = new /obj/item/device/encryptionkey/engi(src)
-			keys += granted_key
+			key_type = /obj/item/device/encryptionkey/engi
 		if(JOB_SQUAD_TEAM_LEADER)
 			name = "marine fireteam leader " + name
-			granted_key = new /obj/item/device/encryptionkey/jtac(src)
-			keys += granted_key
+			key_type = /obj/item/device/encryptionkey/jtac
 			volume = RADIO_VOLUME_RAISED
 		else
 			name = "marine " + name
 
-	set_frequency(frequency)
-	for(var/ch_name in channels)
-		secure_radio_connections[ch_name] = SSradio.add_object(src, GLOB.radiochannels[ch_name],  RADIO_CHAT)
+	if(!role_configured)
+		if(key_type)
+			keys += new key_type(src)
+		if(role_locate_setting)
+			locate_setting = role_locate_setting
+	role_configured = TRUE
+
+	set_frequency(H.assigned_squad.radio_freq)
 	recalculateChannels()
-	if(H.mind && H.hud_used && H.hud_used.locate_leader) //make SL tracker visible
-		H.hud_used.locate_leader.alpha = 255
-		H.hud_used.locate_leader.mouse_opacity = MOUSE_OPACITY_ICON
+	if(H.has_item_in_ears(src))
+		add_hud_tracker(H)
 
 //Distress (ERT) headsets.
 

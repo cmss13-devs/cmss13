@@ -44,6 +44,7 @@ map ice_colony_v2
 endmap
 
 map shivas_snowball
+	minplayers 70
 endmap
 
 map kutjevo

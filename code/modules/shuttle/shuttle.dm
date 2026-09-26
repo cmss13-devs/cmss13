@@ -5,13 +5,13 @@
 
 //NORTH default dir
 /obj/docking_port
-	invisibility = 101
+	invisibility = 0
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "pinonfar"
 
 // resistance_flags = RESIST_ALL
 	anchored = TRUE
-
+	flags_atom = NO_ZFALL
 	/**
 	  * The identifier of the port or ship.
 	  * This will be used in numerous other places like the console,
@@ -33,6 +33,7 @@
 	var/dwidth = 0
 	///position relative to covered area, parallel to dir
 	var/dheight = 0
+	var/zdepth = 0
 	var/area_type
 	///are we invisible to shuttle navigation computers?
 	var/hidden = FALSE
@@ -40,6 +41,8 @@
 	var/delete_after = FALSE
 	///are we registered in SSshuttles?
 	var/registered = FALSE
+
+	var/multiz_ship = FALSE
 
 ///register to SSshuttles
 /obj/docking_port/proc/register()
@@ -321,10 +324,11 @@
 
 	for(var/xscan = x0; xscan < x1; xscan++)
 		for(var/yscan = y0; yscan < y1; yscan++)
-			var/turf/searchspot = locate(xscan, yscan, src.z)
-			for(var/obj/structure/machinery/landinglight/light in searchspot)
-				landing_lights += light
-				light.linked_port = src
+			for(var/zscan in 0 to 1)
+				var/turf/searchspot = locate(xscan, yscan, src.z - zscan)
+				for(var/obj/structure/machinery/landinglight/light in searchspot)
+					landing_lights += light
+					light.linked_port = src
 
 /obj/docking_port/stationary/proc/turn_on_landing_lights()
 	for(var/obj/structure/machinery/landinglight/light in landing_lights)
@@ -789,6 +793,21 @@
 	return TRUE
 
 /obj/docking_port/mobile/proc/remove_ripples()
+	QDEL_LIST(ripples)
+
+/obj/docking_port/mobile/marine_dropship/multiz/create_ripples(obj/docking_port/stationary/our_dock, animate_time)
+	var/turf/target_turf = locate(our_dock.x - dwidth, our_dock.y - dheight, our_dock.z)
+	ripples += new shuttle_shadow(target_turf, animate_time)
+	if(is_hijacked)
+		var/turf/turf_above = SSmapping.get_turf_above(target_turf)
+		ripples += new shuttle_shadow(turf_above, animate_time)
+	else
+		var/turf/turf_below = SSmapping.get_turf_below(target_turf)
+		ripples += new shuttle_shadow(turf_below, animate_time)
+
+	return TRUE
+
+/obj/docking_port/mobile/marine_dropship/multiz/remove_ripples()
 	QDEL_LIST(ripples)
 
 /obj/docking_port/mobile/proc/ripple_area(obj/docking_port/stationary/S1)

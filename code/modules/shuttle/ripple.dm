@@ -21,3 +21,13 @@
 /obj/effect/abstract/ripple/Initialize(mapload, time_left)
 	. = ..()
 	animate(src, alpha=255, time=time_left) // I wish the loop argument would override the sprite's setting
+
+/obj/effect/abstract/ripple/shadow/dropship_shadow
+	icon = 'icons/turf/omaha/belly.dmi'
+	icon_state = "deathfromabove"
+
+/obj/effect/abstract/ripple/shadow/dropship_shadow/omaha
+	icon = 'icons/turf/omaha/belly.dmi'
+
+/obj/effect/abstract/ripple/shadow/dropship_shadow/midway
+	icon = 'icons/turf/midway/belly.dmi'

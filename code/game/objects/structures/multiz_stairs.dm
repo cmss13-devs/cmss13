@@ -2,6 +2,7 @@
 	var/direction
 	layer = OBJ_LAYER // Cannot be obstructed by weeds
 	var/list/blockers = list()
+	var/not_ramp = TRUE
 
 /obj/structure/stairs/multiz/Initialize(mapload, ...)
 	. = ..()
@@ -9,9 +10,10 @@
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(register_with_turf))
 	if(!mapload)
 		register_with_turf()
-	for(var/turf/blocked_turf in range(1, src))
-		blockers += WEAKREF(new /obj/effect/build_blocker(blocked_turf, src))
-		blockers += WEAKREF(new /obj/structure/blocker/anti_cade(blocked_turf))
+	if(not_ramp)
+		for(var/turf/blocked_turf in range(1, src))
+			blockers += WEAKREF(new /obj/effect/build_blocker(blocked_turf, src))
+			blockers += WEAKREF(new /obj/structure/blocker/anti_cade(blocked_turf))
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/structure/stairs/multiz/Destroy()
@@ -25,11 +27,15 @@
 
 /obj/structure/stairs/multiz/proc/on_stairs_moved(turf/source, atom/movable/enterer)
 	SIGNAL_HANDLER
-	if(!istype(enterer, /mob))
-		return
-
-	RegisterSignal(enterer, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(on_premove))
-	RegisterSignal(enterer, COMSIG_MOVABLE_MOVED, PROC_REF(on_leave))
+	if(istype(enterer, /mob) || istype(enterer, /obj/vehicle/powerloader))
+		if(istype(enterer, /obj/vehicle/powerloader))
+			var/obj/vehicle/powerloader/our_loader = enterer
+			if(our_loader.buckled_mob)
+				RegisterSignal(our_loader, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(on_premove))
+				RegisterSignal(our_loader, COMSIG_MOVABLE_MOVED, PROC_REF(on_leave))
+		else
+			RegisterSignal(enterer, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(on_premove))
+			RegisterSignal(enterer, COMSIG_MOVABLE_MOVED, PROC_REF(on_leave))
 
 /obj/structure/stairs/multiz/proc/on_leave(atom/movable/mover, atom/oldloc, newDir)
 	SIGNAL_HANDLER
@@ -71,6 +77,15 @@
 
 	var/datum/staircase/staircase
 
+/obj/structure/stairs/multiz/up/Destroy()
+	if(staircase)
+		for(var/mob/mobius in staircase.in_range_mob)
+			for(var/index, image in staircase.from_turf_to_images) // thank you harry
+				mobius.client?.images -= image
+
+		QDEL_NULL(staircase)
+	return ..()
+
 /obj/structure/stairs/multiz/up/LateInitialize()
 	. = ..()
 
@@ -88,7 +103,6 @@
 
 			stairs += up_ladder
 			adjacent_turf = get_step(adjacent_turf, direction)
-
 	staircase = new(stairs, dir)
 
 /datum/staircase
@@ -233,3 +247,28 @@ GLOBAL_DATUM_INIT(above_blackness_backdrop, /atom/movable/above_blackness_backdr
 
 /obj/structure/stairs/multiz/down
 	direction = DOWN
+
+/obj/structure/stairs/multiz/up/dropship_ramp
+	icon = 'icons/turf/omaha/ramp.dmi'
+	icon_state = "ramp-1"
+	dir = NORTH
+	direction = UP
+	not_ramp = FALSE
+
+/obj/structure/stairs/multiz/down/dropship_ramp
+	icon = 'icons/turf/omaha/ramp.dmi'
+	icon_state = "ramp-11"
+	dir = NORTH
+	direction = DOWN
+	not_ramp = FALSE
+/obj/structure/stairs/multiz/up/dropship_ramp/omaha
+	icon = 'icons/turf/omaha/ramp.dmi'
+
+/obj/structure/stairs/multiz/down/dropship_ramp/omaha
+	icon = 'icons/turf/omaha/ramp.dmi'
+
+/obj/structure/stairs/multiz/up/dropship_ramp/midway
+	icon = 'icons/turf/midway/ramp.dmi'
+
+/obj/structure/stairs/multiz/down/dropship_ramp/midway
+	icon = 'icons/turf/midway/ramp.dmi'

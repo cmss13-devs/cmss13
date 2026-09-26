@@ -526,6 +526,10 @@
 		new_self.reconsider_lights()
 
 	new_self.levelupdate()
+	if(!istransparentturf(new_self))
+		for(var/obj/vis_contents_holder/thing in new_self.contents)
+			src.contents -= thing
+			QDEL_NULL(thing)
 	return new_self
 
 //If you modify this function, ensure it works correctly with lateloaded map templates.
@@ -533,7 +537,7 @@
 	return // Placeholder. This is mostly used by /tg/ code for atmos updates
 
 // Take off the top layer turf and replace it with the next baseturf down
-/turf/proc/ScrapeAway(amount=1, flags)
+/turf/proc/ScrapeAway(amount=1, flags) //
 	if(!amount)
 		return
 	if(length(baseturfs))

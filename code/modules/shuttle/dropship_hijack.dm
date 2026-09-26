@@ -41,6 +41,10 @@
 
 		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), sploded, 250, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("dropship crash"))
 		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), create_cause_data("dropship crash"), 6, sploded, 10, 5, FLAMESHAPE_DEFAULT, null)
+		if(crash_site.zdepth > 0)
+			var/turf/turf_above = SSmapping.get_turf_above(sploded)
+			if(turf_above)
+				INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), turf_above, 250, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("dropship crash"))
 
 	qdel(outer_target)
 	// landing site explosion code
@@ -48,6 +52,10 @@
 	for(var/j = 0; j < explonum; j++)
 		var/turf/sploded = locate(crash_site.x + rand(-5, 15), crash_site.y + rand(-5, 25), crash_site.z)
 		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), sploded, 250, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("dropship crash"))
+		if(crash_site.zdepth > 0)
+			var/turf/turf_above = SSmapping.get_turf_above(sploded)
+			if(turf_above)
+				INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), turf_above, 250, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("dropship crash"))
 
 	// Break the ultra-reinforced windows.
 	// Break the briefing windows.

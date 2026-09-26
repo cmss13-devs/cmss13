@@ -223,7 +223,7 @@
 		living_mob.update_layer()
 		var/obj/vehicle/multitile/tank/rider_tank = living_mob.get_tank_on_top_of()
 		if(rider_tank)
-			if(get_multitile_vehicle_at(get_turf(living_mob)) != rider_tank)
+			if(!(rider_tank in get_turf(living_mob)))
 				rider_tank.clear_on_top(living_mob) // if we're not atop the tank still, clear us from it.
 	else
 		src.layer = initial(src.layer)
@@ -231,7 +231,7 @@
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
-		var/obj/vehicle/multitile/vehicle = get_multitile_vehicle_at(T)
+		var/obj/vehicle/multitile/vehicle = locate() in T
 		if(vehicle)
 			vehicle.obj_mark_on_top(src)
 		var/atom/hit_atom = ismob(launching_data.target) ? null : T // TODO, just check for LM.target, the ismob is to prevent funky behavior with grenades 'n crates

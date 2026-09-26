@@ -309,18 +309,6 @@
 	return vehicles
 
 /**
- * Finds the multitile vehicle (if any) whose footprint covers `checked_turf`.
- * A plain contents check only finds a vehicle on its one real .loc tile.
- */
-/proc/get_multitile_vehicle_at(turf/checked_turf)
-	if(!checked_turf)
-		return null
-	for(var/obj/vehicle/multitile/vehicle as anything in GLOB.all_multi_vehicles)
-		if(checked_turf in vehicle.locs)
-			return vehicle
-	return null
-
-/**
  * Checks real adjacency against every turf in `vehicle.locs`
  */
 /proc/is_adjacent_to_multitile_vehicle(atom/movable/mover, obj/vehicle/multitile/vehicle)

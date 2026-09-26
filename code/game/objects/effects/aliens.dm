@@ -131,8 +131,7 @@
 			if(scorch_turf_target.scorchable)
 				scorch_turf_target.scorch(damage_amount)
 
-	// Needed since a multitile vehicle only really occupies its one anchor turf.
-	var/obj/vehicle/multitile/vehicle_here = get_multitile_vehicle_at(loc)
+	var/obj/vehicle/multitile/vehicle_here = locate() in loc
 	if(vehicle_here)
 		vehicle_here.handle_acidic_environment(src)
 

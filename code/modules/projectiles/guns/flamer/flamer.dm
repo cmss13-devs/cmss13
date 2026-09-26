@@ -268,8 +268,8 @@
 			if(blocked.flags_atom & ON_BORDER)
 				return
 			var/datum/flameshape/FS = GLOB.flameshapes[flameshape]
-			var/tank_obstacle = FS && FS.is_tank_obstacle(blocked)
-			if(!tank_obstacle)
+			var/vehicle_obstacle = FS && FS.is_vehicle_obstacle(blocked)
+			if(!vehicle_obstacle)
 				stop_at_turf = TRUE
 
 	if(stop_at_turf)
@@ -678,7 +678,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 			return
 
 	// Mounts atop a tank's footprint so it rides along instead of being left behind.
-	var/obj/vehicle/multitile/tank/mount_tank = (mount_override == FLAME_MOUNT_AUTO) ? get_multitile_vehicle_at(loc) : mount_override
+	var/obj/vehicle/multitile/mount_tank = (mount_override == FLAME_MOUNT_AUTO) ? (locate(/obj/vehicle/multitile) in loc) : mount_override
 	if(istype(mount_tank))
 		mount_tank.obj_mark_on_top(src)
 
@@ -778,7 +778,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 /obj/flamer_fire/Destroy()
 	// Unmounts from the tank if mounted, otherwise a burned-out flame stays counted.
-	var/obj/vehicle/multitile/tank/mount_tank = get_tank_on_top_of()
+	var/obj/vehicle/multitile/mount_tank = get_tank_on_top_of()
 	if(istype(mount_tank))
 		mount_tank.obj_clear_on_top(src)
 	STOP_PROCESSING(SSobj, src)
@@ -909,7 +909,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 	update_flame()
 
-	var/obj/vehicle/multitile/tank/mounted_on = is_atop_vehicle() ? get_tank_on_top_of() : null
+	var/obj/vehicle/multitile/mounted_on = is_atop_vehicle() ? get_tank_on_top_of() : null
 	for(var/atom/thing in loc)
 		if(mounted_on && isliving(thing))
 			var/mob/living/living_thing = thing

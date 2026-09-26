@@ -5,8 +5,8 @@
 /datum/flameshape/proc/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
 	return
 
-/datum/flameshape/proc/is_tank_obstacle(atom/obstacle)
-	return istype(obstacle, /obj/vehicle/multitile/tank)
+/datum/flameshape/proc/is_vehicle_obstacle(atom/obstacle)
+	return isVehicleMultitile(obstacle)
 
 /**
  * Decides which tank (if any) a newly-created flame at turf T should mount atop.
@@ -20,13 +20,13 @@
  * Returns:
  * * The tank to mount atop, or FALSE to stay grounded.
  */
-/proc/resolve_flame_mount(turf/T, turf/prev_T, obj/vehicle/multitile/tank/prev_mount_tank)
-	var/obj/vehicle/multitile/tank/here_tank = get_multitile_vehicle_at(T)
+/proc/resolve_flame_mount(turf/T, turf/prev_T, obj/vehicle/multitile/prev_mount_tank)
+	var/obj/vehicle/multitile/here_tank = locate(/obj/vehicle/multitile) in T
 	if(!here_tank)
 		return FALSE
 	if(prev_mount_tank == here_tank)
 		return here_tank
-	if(!prev_T || get_multitile_vehicle_at(prev_T) != here_tank)
+	if(!prev_T || !(here_tank in prev_T))
 		return here_tank
 	return FALSE
 
@@ -75,7 +75,7 @@
 				A.flamer_fire_act(burn_dam, F.weapon_cause_data)
 				if (A.flags_atom & ON_BORDER)
 					break
-				if(!is_tank_obstacle(A))
+				if(!is_vehicle_obstacle(A))
 					new_spread_amt = 0
 
 		var/mount_override = resolve_flame_mount(T, source_turf, F.get_tank_on_top_of())
@@ -142,7 +142,7 @@
 	var/turf/source_turf = get_turf(F.loc)
 
 	var/turf/prev_T
-	var/obj/vehicle/multitile/tank/prev_mount_tank = F.get_tank_on_top_of()
+	var/obj/vehicle/multitile/prev_mount_tank = F.get_tank_on_top_of()
 
 	var/distance = 1
 	var/stop_at_turf = FALSE
@@ -166,7 +166,7 @@
 				A.flamer_fire_act(burn_dam, F.weapon_cause_data)
 				if (A.flags_atom & ON_BORDER)
 					break
-				if(!is_tank_obstacle(A))
+				if(!is_vehicle_obstacle(A))
 					stop_at_turf = TRUE
 
 		if(T == F.loc)
@@ -201,7 +201,7 @@
 	var/distance = 1
 	var/hit_dense_atom_mid = FALSE
 	var/turf/prev_T
-	var/obj/vehicle/multitile/tank/prev_mount_tank_mid = F.get_tank_on_top_of()
+	var/obj/vehicle/multitile/prev_mount_tank_mid = F.get_tank_on_top_of()
 
 	for(var/turf/T in turfs)
 		if(distance > fire_spread_amount)
@@ -218,7 +218,7 @@
 				AM.flamer_fire_act(burn_dam, F.weapon_cause_data)
 				if (AM.flags_atom & ON_BORDER)
 					break
-				if(!is_tank_obstacle(AM))
+				if(!is_vehicle_obstacle(AM))
 					hit_dense_atom_mid = TRUE
 
 		if(T == F.loc)
@@ -251,7 +251,7 @@
 		var/hit_dense_atom_side = FALSE
 
 		var/turf/prev_R = T
-		var/obj/vehicle/multitile/tank/prev_mount_tank_right = mid_mount_override
+		var/obj/vehicle/multitile/prev_mount_tank_right = mid_mount_override
 		for (var/turf/R in right)
 			if(prev_R)
 				var/atom/movable/temp = new/obj/flamer_fire()
@@ -261,7 +261,7 @@
 					AM.flamer_fire_act(burn_dam, F.weapon_cause_data)
 					if (AM.flags_atom & ON_BORDER)
 						break
-					if(!is_tank_obstacle(AM))
+					if(!is_vehicle_obstacle(AM))
 						hit_dense_atom_side = TRUE
 				else if (hit_dense_atom_mid)
 					break
@@ -274,7 +274,7 @@
 			sleep(1)
 
 		var/turf/prev_L = T
-		var/obj/vehicle/multitile/tank/prev_mount_tank_left = mid_mount_override
+		var/obj/vehicle/multitile/prev_mount_tank_left = mid_mount_override
 		for (var/turf/L in left)
 			if(prev_L)
 				var/atom/movable/temp = new/obj/flamer_fire()
@@ -284,7 +284,7 @@
 					AM.flamer_fire_act(burn_dam, F.weapon_cause_data)
 					if (AM.flags_atom & ON_BORDER)
 						break
-					if(!is_tank_obstacle(AM))
+					if(!is_vehicle_obstacle(AM))
 						hit_dense_atom_side = TRUE
 				else if (hit_dense_atom_mid)
 					break

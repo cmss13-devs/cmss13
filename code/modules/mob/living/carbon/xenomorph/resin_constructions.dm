@@ -69,7 +69,7 @@
 		to_chat(X, SPAN_WARNING("You cannot build under \the [V]!"))
 		return FALSE
 
-	var/obj/vehicle/multitile/multitile_vehicle = get_multitile_vehicle_at(T)
+	var/obj/vehicle/multitile/multitile_vehicle = locate() in T
 	if(multitile_vehicle)
 		to_chat(X, SPAN_WARNING("You cannot build under \the [multitile_vehicle]!"))
 		return FALSE

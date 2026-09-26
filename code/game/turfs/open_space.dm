@@ -137,11 +137,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	user.visible_message(SPAN_WARNING("[user] climbs down."), SPAN_WARNING("You climb down."))
 
-	var/obj/vehicle/multitile/tank/tank_at_destination = null
-	for(var/obj/vehicle/multitile/tank/T in below.contents)
-		if(below in T.locs)
-			tank_at_destination = T
-			break
+	var/obj/vehicle/multitile/tank/tank_at_destination = locate() in below
 
 	user.forceMove(below)
 
@@ -179,11 +175,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		var/mob/living/living_mob = movable
 		living_mob.death(create_cause_data("falling from a high place"))
 
-	var/obj/vehicle/multitile/tank/tank_at_destination = null
-	for(var/obj/vehicle/multitile/tank/T in below.contents)
-		if(below in T.locs)
-			tank_at_destination = T
-			break
+	var/obj/vehicle/multitile/tank/tank_at_destination = locate() in below
 
 	if(tank_at_destination && isliving(movable))
 		var/mob/living/L = movable

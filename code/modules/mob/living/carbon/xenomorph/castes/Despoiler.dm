@@ -413,7 +413,7 @@
 	QDEL_IN(src, decay_time)
 
 	// A vehicle already parked on this tile when the puddle spawns never triggers Crossed(), so check directly.
-	var/obj/vehicle/multitile/vehicle_here = get_multitile_vehicle_at(loc)
+	var/obj/vehicle/multitile/vehicle_here = locate() in loc
 	if(vehicle_here)
 		mount_on_vehicle(vehicle_here)
 

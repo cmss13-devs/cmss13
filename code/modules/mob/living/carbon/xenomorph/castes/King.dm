@@ -436,7 +436,7 @@
 		shake_camera(living, 15, 1)
 
 	// Landed dead-centre on a vehicle tile, place the King as a rider directly.
-	var/obj/vehicle/multitile/landed_on = get_multitile_vehicle_at(get_turf(owner))
+	var/obj/vehicle/multitile/landed_on = locate() in get_turf(owner)
 	if(landed_on)
 		landed_on.mark_on_top(owner)
 

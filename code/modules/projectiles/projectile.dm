@@ -416,9 +416,13 @@
 	if(distance_travelled == floor(ammo.max_range / 2))
 		ammo.do_at_half_range(src)
 	if(distance_travelled >= ammo.max_range)
-		// A short-range shot can run out of range while still over a tank's footprint.
-		// Hit the tank here instead of quietly vanishing. AMMO_PASSES_OVER_VEHICLES skips this entirely.
-		var/obj/vehicle/multitile/tank/tank_here = (ammo.flags_ammo_behavior & AMMO_PASSES_OVER_VEHICLES) ? null : (inside_tank || get_multitile_vehicle_at(next_turf))
+		// A short-range shot can run out of range while still over a vehicle's footprint.
+		// Hit it here instead of quietly vanishing. AMMO_PASSES_OVER_VEHICLES skips this entirely.
+		var/obj/vehicle/multitile/tank/tank_here
+		if(!(ammo.flags_ammo_behavior & AMMO_PASSES_OVER_VEHICLES))
+			tank_here = inside_tank || (locate(/obj/vehicle/multitile) in next_turf)
+			if(tank_here in permutated)
+				tank_here = null
 		if(tank_here)
 			ammo.on_hit_obj(tank_here, src)
 			tank_here.bullet_act(src)
@@ -456,14 +460,7 @@
 
 	// Check if we're inside a tank and trying to exit
 	if(inside_tank)
-		// Checks the tank's real, multi-tile locs list instead of just its one contents-holding turf.
-		var/tank_found = (get_multitile_vehicle_at(turf) == inside_tank)
-		if(!tank_found)
-			for(var/obj/obj in turf)
-				var/obj/vehicle/multitile/tank/M = _owning_tank_of(obj)
-				if(M == inside_tank || obj == inside_tank)
-					tank_found = TRUE
-					break
+		var/tank_found = (inside_tank in turf)
 
 		// hits the tank if there are no tank parts inside the turf
 		if(!tank_found)
@@ -531,11 +528,10 @@
 			turf.bullet_act(src)
 		return TRUE
 
-	// A tank's non-center footprint tiles have no real object in turf.contents, so catch it here via
-	// get_multitile_vehicle_at() so entering any of the tank's tiles marks inside_tank.
+	// Entering any of a vehicle's tiles marks inside_tank
 	if(!inside_tank)
-		var/obj/vehicle/multitile/tank/tank_here = get_multitile_vehicle_at(turf)
-		if(tank_here)
+		var/obj/vehicle/multitile/tank/tank_here = locate(/obj/vehicle/multitile) in turf
+		if(tank_here && !(tank_here in permutated))
 			inside_tank = tank_here
 	return FALSE
 
@@ -545,10 +541,7 @@
 		return FALSE
 	permutated |= obj
 
-	var/obj/vehicle/multitile/tank/M = _owning_tank_of(obj)
-	if(!M)
-		if(istype(obj, /obj/vehicle/multitile/tank))
-			M = obj
+	var/obj/vehicle/multitile/tank/M = istype(obj, /obj/vehicle/multitile/tank) ? obj : null
 
 	// this block allows projectiles fired from outside the tank to travel inside it.
 	if(M)
@@ -719,7 +712,7 @@
 /obj/projectile/proc/check_canhit(turf/current_turf, turf/next_turf, list/ignore_list)
 	var/proj_dir = get_dir(current_turf, next_turf)
 	// this would otherwise block diagonal shots at the tank
-	var/next_turf_is_vehicle = get_multitile_vehicle_at(next_turf)
+	var/next_turf_is_vehicle = locate(/obj/vehicle/multitile) in next_turf
 	if((proj_dir & (proj_dir - 1)) && !next_turf_is_vehicle && !current_turf.Adjacent(next_turf, ignore_list = ignore_list) && current_turf.z == next_turf.z)
 		ammo.on_hit_turf(current_turf, src)
 		current_turf.bullet_act(src)
@@ -1453,12 +1446,6 @@
 	if(dy == 0) //above or below you
 		if(dx == -1 || dx == 1)
 			return TRUE
-
-// helper proc to see if we are about to hit a tank
-/obj/projectile/proc/_owning_tank_of(atom/A)
-	if(istype(A, /obj/vehicle/multitile/tank))
-		return A
-	return null
 
 /obj/projectile/vulture
 	accuracy_range_falloff = 10

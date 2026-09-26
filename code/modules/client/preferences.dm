@@ -2040,7 +2040,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 				if("toggles_vehicle")
 					var/flag = text2num(href_list["flag"])
 					toggles_vehicle ^= flag
-					save_preferences()
+					// TEMP removal for test merge/event cases.
+					//save_preferences()
 					if(flag == VEHICLE_SIMPLE_ACCELERATION && user)
 						SEND_SIGNAL(user, COMSIG_MOB_VEHICLE_PREFS_CHANGED)
 

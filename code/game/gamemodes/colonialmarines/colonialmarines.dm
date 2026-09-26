@@ -19,7 +19,7 @@
 	required_players = 1 //Need at least one player, but really we need 2.
 	monkey_amount = 5
 	corpses_to_spawn = 0
-	flags_round_type = MODE_INFESTATION|MODE_FOG_ACTIVATED|MODE_NEW_SPAWN
+	flags_round_type = MODE_INFESTATION|MODE_FOG_ACTIVATED|MODE_NEW_SPAWN|MODE_SUNSET
 	static_comms_amount = 2
 	var/round_status_flags
 	var/next_stat_check = 0
@@ -663,6 +663,7 @@
 
 	if(SShijack?.sd_detonated)
 		round_finished = MODE_INFESTATION_DRAW_DEATH // Self destruction.
+		GLOB.sun_status.start_sun_behavior(behavior = SPECIAL_LIGHTING_SELF_DESTRUCTION)
 		return
 	if(SShijack?.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH && !MODE_HAS_MODIFIER(/datum/gamemode_modifier/continue_on_ground_crash))
 		if(SShijack.crashed)
@@ -681,6 +682,7 @@
 		else
 			SSticker.roundend_check_paused = TRUE
 			round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.
+			GLOB.sun_status.start_sun_behavior(behavior = SPECIAL_LIGHTING_SUNRISE) //the new sun
 			ares_conclude()
 			end_of_round_ert()
 
@@ -740,6 +742,7 @@
 	else
 		round_finished = MODE_INFESTATION_M_MINOR
 	log_game("Distress Signal Hive collapse!")
+	GLOB.sun_status.start_sun_behavior(behavior = SPECIAL_LIGHTING_SUNRISE)
 
 /**
  * Checks if the round is over

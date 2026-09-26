@@ -872,9 +872,7 @@
 
 		message_admins("[key_name(usr)] has sent [key_name(M)] back to the Lobby.")
 
-		var/mob/new_player/NP = new()
-		NP.ckey = M.ckey
-		qdel(M)
+		M.send_to_lobby()
 
 	else if(href_list["tdome1"])
 		if(!check_rights(R_ADMIN))

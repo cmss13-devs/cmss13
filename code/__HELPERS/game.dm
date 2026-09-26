@@ -190,7 +190,9 @@
  * * abomination - Whether the potential larva is for an abomination
  */
 /proc/get_alien_candidates(datum/hive_status/hive=null, sorted=TRUE, abomination=FALSE)
-	var/list/candidates = list()
+	RETURN_TYPE(/list/mob/dead/observer)
+
+	var/list/mob/dead/observer/candidates = list()
 
 	for(var/mob/dead/observer/cur_obs as anything in GLOB.observer_list)
 		// Preference check
@@ -245,6 +247,39 @@
 	return candidates
 
 /**
+ * Get a list of player_details that aren't currently in a role sorted by larva_pool_time.
+ */
+/proc/get_alien_candidates_absolute()
+	RETURN_TYPE(/list/datum/player_details)
+
+	var/list/datum/player_details/candidates = list()
+
+	for(var/cur_ckey in GLOB.player_details)
+		var/datum/player_details/cur_player = GLOB.player_details[cur_ckey]
+
+		// If we wanted to check job bans for not connected players, we'd have to query each one or snowflake cache that ban
+
+		// Ignore any new player that just stayed on lobby and never observed
+		if(isnull(cur_player.larva_pool_time))
+			continue
+
+		// Ignore any player currently in a role (that isn't exempt like ghost roles or thunderdome)
+		var/mob/cur_mob = GLOB.ckey_to_occupied_mob[cur_ckey]
+		var/is_observer = isobserver(cur_mob)
+		if(is_observer && cur_mob.mind?.original?.aghosted) // We're assuming an admin isn't going to aghost and then turn off larva protection
+			cur_mob = cur_mob.mind.original // We're more interested in what they aghosted from
+			is_observer = isobserver(cur_mob) // Shouldn't be possible to aghost a ghost but whatever
+		if(!is_observer && !isfacehugger(cur_mob) && !islesserdrone(cur_mob) && !should_block_game_interaction(cur_mob, include_hunting_grounds=TRUE))
+			continue
+
+		candidates += cur_player
+
+	if(length(candidates))
+		candidates = sort_list(candidates, GLOBAL_PROC_REF(cmp_player_larvapooltime_asc))
+
+	return candidates
+
+/**
  * Messages observers that are currently xeno candidates an update on the larva pool.
  *
  * Arguments:
@@ -253,11 +288,17 @@
  * * cache_only - Whether to not actually send a to_chat message and instead only update larva_pool_cached_message
  */
 /proc/message_alien_candidates(list/candidates, dequeued, cache_only=FALSE)
+	var/list/players_possibly_in_queue = get_alien_candidates_absolute()
+	var/total_absolute = length(players_possibly_in_queue)
+	var/total_candidates = length(candidates)
+
 	for(var/i in (1 + dequeued) to length(candidates))
 		var/mob/dead/observer/cur_obs = candidates[i]
+		var/absolute_position = players_possibly_in_queue.Find(cur_obs.client?.player_details)
 
 		// Generate the messages
-		var/cached_message = "You are currently [i-dequeued]\th in the larva pool."
+		var/cached_message = "You are currently [i-dequeued]/[total_candidates] in the larva pool. \
+		(Absolute position: [absolute_position]/[total_absolute])"
 		cur_obs.larva_pool_cached_message = cached_message
 		if(!cache_only)
 			var/chat_message = dequeued ? replacetext(cached_message, "currently", "now") : cached_message
@@ -279,7 +320,7 @@
 		// Larva pool numbers are too volatile at the start of the game for the estimation to be what they end up with
 		if(!cache_only)
 			to_chat(candidate_new_player, SPAN_XENONOTICE("Larva pool position estimation is not available until shortly after the game has started. \
-				The ordering is based on your time of death or the time you joined. When you have been dead long enough and are not inactive, \
+				The ordering is based on your time of death or the time you observed. When you have been dead long enough and are not inactive, \
 				you will periodically receive updates where you are in the pool relative to other currently valid xeno candidates. \
 				Your current position will shift as others change their preferences or go inactive, but your relative position compared to all observers is the same. \
 				Note: Playing as a facehugger/lesser or in the thunderdome will not alter your time of death. \
@@ -296,8 +337,8 @@
 				break
 			position++
 		candidate_new_player.larva_pool_message_stale_time = world.time + 2.5 MINUTES // spam prevention
-		candidate_new_player.larva_pool_cached_message = "Your position would be [position]\th in the larva pool if you observed and were eligible to be a xeno. \
-			The ordering is based on your time of death or the time you joined. When you have been dead long enough and are not inactive, \
+		candidate_new_player.larva_pool_cached_message = "Your position would be [position]/[length(valid_candidates)+1] in the larva pool if you observed and were eligible to be a xeno. \
+			The ordering is based on your time of death or the time you observed. When you have been dead long enough and are not inactive, \
 			you will periodically receive updates where you are in the pool relative to other currently valid xeno candidates. \
 			Your current position will shift as others change their preferences or go inactive, but your relative position compared to all observers is the same. \
 			Note: Playing as a facehugger/lesser or in the thunderdome will not alter your time of death. \
@@ -340,8 +381,8 @@
 			if(current.client.player_details.larva_pool_time >= candidate_time)
 				break
 			position++
-		candidate_observer.larva_pool_cached_message = "You are currently ineligible to be a larva but would be [position]\th in the pool. \
-			The ordering is based on your time of death or the time you joined. When you have been dead long enough and are not inactive, \
+		candidate_observer.larva_pool_cached_message = "You are currently ineligible to be a larva but would be [position]/[length(valid_candidates)+1] in the pool. \
+			The ordering is based on your time of death or the time you observed. When you have been dead long enough and are not inactive, \
 			you will periodically receive updates where you are in the pool relative to other currently valid xeno candidates. \
 			Your current position will shift as others change their preferences or go inactive, but your relative position compared to all observers is the same. \
 			Note: Playing as a facehugger/lesser or in the thunderdome will not alter your time of death. \

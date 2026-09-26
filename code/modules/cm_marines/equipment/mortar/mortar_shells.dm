@@ -14,6 +14,7 @@
 	ground_offset_y = 6
 	/// is it currently on fire and about to explode?
 	var/burning = FALSE
+	var/ceiling_penetrating = FALSE
 
 
 /obj/item/mortar_shell/Destroy()
@@ -38,6 +39,21 @@
 /obj/item/mortar_shell/he/detonate(turf/T)
 	explosion(T, 0, 3, 5, 7, explosion_cause_data = cause_data)
 
+/obj/item/mortar_shell/heplus
+	name = "\improper 80mm HCHE mortar shell"
+	desc = "An 80mm mortar shell. This shell produces a far-larger-than-average explosion on impact."
+	desc_lore = "This shell was introduced to the USCM in 2180, downsized from the US Army's HCHE shell for their 120mm mortar, which itself is the same shell design already in service with the Three World Empire. The introduction of 80mm SFAE shell midway through the Marine'70 reorganisation effort had vastly improved the Colonial Marines' firepower when fighting against entrenched enemies in difficult environments. However, field use quickly indicated that thermobaric munitions struggle in extremely cramped and enclosed spaces, and sometimes are prone to causing extreme structural damage (which isn't always desired.) In theory, a High Capacity High Explosive should deliver more consistent lethality in extremely enclosed areas at the expense of fragmentation produced while causing less structural stress. The munition contains more explosive filler in exchange for a thinner metal shell."
+	icon_state = "mortar_ammo_heplus"
+	item_state = "mortar_ammo_heplus"
+
+/obj/item/mortar_shell/heplus/get_examine_text(mob/user)
+	. += SPAN_WARNING("This shelltype is capable of gibbing and permanently removing marines from the round, be precise and careful with your coordinates!")
+
+/obj/item/mortar_shell/heplus/detonate(turf/impact)
+	create_shrapnel(impact, 60, cause_data = cause_data, shrapnel_type = /datum/ammo/bullet/shrapnel/breaching) //HCHE (mine) shells are shrapnel
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 350, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), null)), 0.5 SECONDS) //Massive explosion with an 8 tile radius, with the first 2 tiles being capable of gibbing marines. Incredibly scary ordnance.
+	QDEL_IN(src, 0.5 SECONDS)
+
 /obj/item/mortar_shell/frag
 	name = "\improper 80mm fragmentation mortar shell"
 	desc = "An 80mm mortar shell, loaded with a fragmentation charge."
@@ -49,6 +65,7 @@
 	sleep(2)
 	cell_explosion(T, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 
+//Cave-penetrating incendiary shells, yum!
 /obj/item/mortar_shell/incendiary
 	name = "\improper 80mm incendiary mortar shell"
 	desc = "An 80mm mortar shell, loaded with a Type B napalm charge. Perfect for long-range area denial."
@@ -60,9 +77,49 @@
 	var/flameshape = FLAMESHAPE_DEFAULT
 	var/fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
-/obj/item/mortar_shell/incendiary/detonate(turf/T)
-	flame_radius(cause_data, radius, T, flame_level, burn_level, flameshape, null, fire_type)
-	playsound(T, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
+/obj/item/mortar_shell/incendiary/detonate(turf/impact)
+	flame_radius(cause_data, radius, impact, flame_level, burn_level, flameshape, null, fire_type)
+	playsound(impact, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
+
+/obj/item/mortar_shell/incendiary/pierce
+	name = "\improper 80mm HTVSF-Incendiary mortar shell"
+	desc = "An 80mm incendiary Hard-Target-Void-Sensing mortar shell. It is calibrated before firing, and on impact burrows deep inside fortifications or cave systems. Once the target depth is reached, the onboard computer will wait until the shell is in an open space before detonating, depositing Type-B Napalm inside."
+	desc_lore = "Heading into the Marine'70 program; the USCM had experienced several asymmetrical conflicts against independent or UPP-funded threat groups. Fresh in the minds of politicians, corporate executives and military planners was the Xibou rebellion. Their resistance was short-lived, but the inadequacy of Colonial Marines when attempting clear-out operations in mountainous terrain and deep cave systems sent a shockwave of fear throughout the military ecosystem. A Hard Target Void Sensing Fuze - Incendiary mortar munition was quickly brought forward as a cheap and quick-to-implement solution. Armat Battlefield Systems were awarded the contract due to their familiarity with the HTVSF system already inuse on their production line of various 158mm anti-fortification shells for M292 in use by the United Americas Colonial Guard and the United States Army. Colonial Marine Mortar Crews did not like the shell. The 80mm mortar did not receive an upgrade package for easy in-tube calibration of the shells. Crews have to input the depth-to-target via a rudimentary keypad, or use an appropriate unmanned aerial vehicle to scan the target to input the correct depth, or have foreknowledge of the target which is not always convenient or possible in a combat zone. Against complex multi-level structures such as prefabricated housing commonly seen on colony planets; mis-calibrating the shell can cause it to detonate in an undesired area."
+	icon_state = "mortar_ammo_pierce"
+	item_state = "mortar_ammo_pierce"
+	radius = 4
+	flame_level = BURN_TIME_TIER_5 + 10 //Type B standard, 50 base + 10 from chemfire code.
+	burn_level = BURN_LEVEL_TIER_2
+	flameshape = FLAMESHAPE_STAR
+	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
+	ceiling_penetrating = TRUE
+
+/obj/item/mortar_shell/incendiary/pierce/get_examine_text(mob/user)
+	. += SPAN_HELPFUL("This shelltype is capable of being fired into roofed areas, such as inside cave systems or underground labs, but doing so will require calibrating the shell first.")
+
+/obj/item/mortar_shell/incendiary/thermobaric
+	name = "\improper 80mm SFAE-Vacuum mortar shell"
+	desc = "An 80mm mortar shell. On impact, one canister ruptures and sprays the air with fuel across a wide zone, then a second canister is ruptured shortly after to detonate the fuel and create a vacuum effect at the impact site to pull any combatants into the shells' impact zone."
+	desc_lore = "Midway through the Marine'70 program, the USCM were deployed to the jungle planet Linna 349 to assist the Three World Empire in counter insurgency operations. Although none of the new Marine'70 platoons were deployed, combat against insurgents proved extremely difficult due to poor visibility and various hit-and-run tactics employed by the rebels led by Shane Boulton. One lesson from the campaign was the inadequacy of anti-personnel area-denial weapons available to the USCM. Incinerators were vulnerable to sniper fire, causing the canisters to burst and ignite, and this was deemed a dilemma with no straight forward (and cost-effective) solution. Aiming to bridge the capabilities gap, the Ministry of Defense returned to a previously-rejected bunker-buster design that was overlooked in favor of the HTVSF munition. The SFAE was stripped of its' previously inadequate bunker penetrator and introduced the standalone shell alongside the HTVSF-I. The munition functions in two stages on impact. First, a small explosive charge ruptures the first canister, spraying a fine cloud of solid fuel particles into the surrounding air, where they mix with the atmosphere. A half second later, an igniter in the second canister ignites the cloud. The resulting fireball creates a massive pressure blast, blasting outwards, followed by a second phase as the fire ball consumes oxygen and collapses, pulling anything in the blast zone inwards."
+	radius = 4
+	flame_level = BURN_TIME_INSTANT
+	burn_level = BURN_LEVEL_TIER_8 //equivalent to blue-flame, but only a single resist
+	flameshape = FLAMESHAPE_STAR
+	fire_type = FIRE_VARIANT_DEFAULT
+	icon_state = "mortar_ammo_thermo"
+	item_state = "mortar_ammo_thermo"
+
+/obj/item/mortar_shell/incendiary/thermobaric/get_examine_text(mob/user)
+	. += SPAN_WARNING("This shelltype will vacuum all targets in the blast radius towards the centre, be careful not to include friendlies in the target area!")
+
+/obj/item/mortar_shell/incendiary/thermobaric/detonate(turf/impact)
+	impact.ceiling_debris_check(3)
+	cell_explosion(impact, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //really small explosion
+	flame_radius(cause_data, radius, impact, flame_level, burn_level, flameshape, null, fire_type)
+	for(var/mob/living/carbon/victim in orange(5, impact))
+		victim.throw_atom(impact, 4, 20, src, TRUE) // Implosion throws affected towards center of vacuum
+	QDEL_IN(src, 0.5 SECONDS)
+	playsound(impact, 'sound/effects/phasein.ogg', 35, 1, 4)
 
 /obj/item/mortar_shell/flare
 	name = "\improper 80mm flare/camera mortar shell"
@@ -228,10 +285,10 @@
 	new /obj/item/mortar_shell/he(src)
 	new /obj/item/mortar_shell/he(src)
 	new /obj/item/mortar_shell/he(src)
-	new /obj/item/mortar_shell/frag(src)
-	new /obj/item/mortar_shell/frag(src)
-	new /obj/item/mortar_shell/frag(src)
-	new /obj/item/mortar_shell/frag(src)
+	new /obj/item/mortar_shell/he(src)
+	new /obj/item/mortar_shell/he(src)
+	new /obj/item/mortar_shell/incendiary(src)
+	new /obj/item/mortar_shell/incendiary(src)
 	new /obj/item/mortar_shell/incendiary(src)
 	new /obj/item/mortar_shell/incendiary(src)
 	new /obj/item/mortar_shell/incendiary(src)
@@ -252,12 +309,12 @@
 	new /obj/item/mortar_shell/he(src)
 	new /obj/item/mortar_shell/he(src)
 	new /obj/item/mortar_shell/he(src)
-	new /obj/item/mortar_shell/frag(src)
-	new /obj/item/mortar_shell/frag(src)
-	new /obj/item/mortar_shell/frag(src)
+	new /obj/item/mortar_shell/he(src)
 	new /obj/item/mortar_shell/incendiary(src)
 	new /obj/item/mortar_shell/incendiary(src)
 	new /obj/item/mortar_shell/incendiary(src)
+	new /obj/item/mortar_shell/incendiary(src)
+	new /obj/item/mortar_shell/flare(src)
 	new /obj/item/mortar_shell/flare(src)
 	new /obj/item/mortar_shell/flare(src)
 	new /obj/item/mortar_shell/flare(src)

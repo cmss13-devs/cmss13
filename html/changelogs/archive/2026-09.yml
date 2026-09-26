@@ -178,3 +178,107 @@
   - imageadd: added mouse cursor different sprites
   - qol: new mouse cursors for smartgunner, changes based on if we are using ap/frontline
       mode
+2026-09-15:
+  fira:
+  - bugfix: Rocket/LTB/HPC now explode on clicked turf properly again rather than
+      flying by. Make SURE you click on what you want to explode, not the general
+      direction.
+  - rscdel: Removed Explosive Ammo properties. It only mattered for BE/Suicide with
+      HE Mateba, and it does that anyway.
+  - balance: Caster Eradicator (HPC) / Dual Plasma Cannons had scatter disabled to
+      target ground properly. Little difference that makes if that thing is pointed
+      at you.
+2026-09-16:
+  Dimdimich1996, AmoryBlaine, DetectiveGoogle:
+  - rscadd: New colony rifle, M20A Harrington, similar stats to an M16.
+  - maptweak: static M16 spawns on Solaris have been replaced by the M20A.
+  Drathek:
+  - code_imp: Updated some code regarding dress vendor and snowflake vendor to satisfy
+      new checks
+  - code_imp: Updated loop logic for legendary property setup
+  Steelpoint:
+  - maptweak: Removes invisible fog tiles on New Varadero. These tiles are not currently
+      visible to players.
+2026-09-18:
+  Drathek:
+  - code_imp: Rearranged sentry variable defines some
+  - bugfix: Defenses (not just sentries) no longer are flagged as needing power since
+      they handle power themselves
+  TheDonkified:
+  - refactor: Extract path-matching logic into a helper function
+  - code_imp: Add unit tests for new helper
+2026-09-19:
+  Drathek:
+  - balance: Marines can no longer deploy mines in shuttle turfs
+2026-09-20:
+  Antlers:
+  - bugfix: Renamed neuropathic's chemical property abbreviation to "NPA," as "NPT"
+      is already taken by nephrotoxic
+  - bugfix: Runed sandstone bricks no longer stack with their regular counterparts
+      in inventories
+  - bugfix: Xenos can no longer crawl through holes in walls while incapacitated or
+      resting by click-dragging their sprite onto the hole
+  Drathek:
+  - bugfix: Fixed a div by zero runtime with explosion properties at level 0
+2026-09-21:
+  Kugamo:
+  - rscadd: ' xenos can now track their KING in their HUD compass'
+  Mary-Marilyn:
+  - qol: Examining a character now shows their body type and a rough estimate of their
+      age.
+2026-09-22:
+  Drathek:
+  - balance: Synth and CO survivors now respect the normal survivor limit
+  - admin: Ported various VV, protection, and SDQL differences from TG
+  Kugamo:
+  - rscadd: Flayed corpses no longer identifiable by name.
+  - spellcheck: Wording of examined humans' age, size, and build streamlined.
+  Mary-Marilyn:
+  - rscadd: Humans can now destroy metal ledges with welding tools and rock ledges
+      with shovels or entrenching tools.
+  - rscadd: Added a pamphlet introducing new players to the setting and major factions.
+      There are also a few strewn throughout the Almayer.
+  MistChristmas:
+  - bugfix: Dual fire Dual Wielding works again.
+  Onetoughcreampuff:
+  - rscadd: Added requested mentor autoresponses
+  PoltavskaPraca:
+  - rscadd: 'Can now disable right click menu in the preferences -> settings, left
+      upper corner: Right-click Contextual Menu. It is ON by default. Can even shoot
+      and do a lot of stuff with RMB instead of LMB.'
+  Steelpoint:
+  - bugfix: Reinforced woden window frames will now be visible in game. They were
+      previously invisible.
+  Unknownity:
+  - balance: Predaliens and Kings are now able to pry open locked dropships and containment
+      airlocks.
+  - balance: Predaliens and Kings are now able to lock the dropship but cannot start
+      hijack on their own.
+  - balance: King can now disable the lifeboats along with the Queen and Predalien.
+  - balance: ERT Shuttles' airlocks are now reinforced but can be forced open by Queens/Predaliens/Kings
+      and their consoles can also now be disabled by them.
+  cuberound:
+  - bugfix: larvas stop getting extra evo points over their threshold as every other
+      caste if queen does not enter ovi for over 3 minutes roundstart
+  labeo0:
+  - qol: Allows setting up fax backpack by clicking a table
+  - bugfix: Facehuggers/larvas can no longer scuttle under doors with placed barricades
+      to bypass them.
+  - bugfix: Facehuggers can no longer click-hug humans lying down behind the barricades
+  ori-disillusion-mirnov:
+  - bugfix: runtime when trying to add and remove the ahelp verb from a dummy client
+  osaka-fuuri:
+  - rscadd: Added 'Strain Information' Verb
+2026-09-23:
+  Antlers:
+  - rscadd: Pill bottles can now be broken open by knives and other sharp objects,
+      breaking them and spilling their pills out onto the floor
+  - rscadd: Pill bottles can be fixed by using a wirecutter to pinch and bend the
+      lid back into place with the correct medical skill (surgery >=1)
+  - bugfix: Humans without the necessary medical skill can no longer scoop up pills
+      from the ground into pill bottles
+2026-09-26:
+  Red-byte3D:
+  - rscadd: Unit test for weeds
+  - bugfix: Fixed a small issue with boiler effect code,
+  - bugfix: Weeds no longer decay first to re-weed, they just parent onto the node.

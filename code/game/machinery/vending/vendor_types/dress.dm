@@ -109,29 +109,32 @@
 	if(.)
 		return
 
-	var/mob/living/carbon/human/H = usr
-	switch (action)
-		if ("vend")
+	var/mob/living/carbon/human/human_user = ui.user
+	if(!istype(human_user))
+		return
+
+	switch(action)
+		if("vend")
 			var/exploiting = TRUE
 			var/idx=params["prod_index"]
 
-			var/list/topic_listed_products = get_listed_products(usr)
+			var/list/topic_listed_products = get_listed_products(human_user)
 			var/list/L = topic_listed_products[idx]
 
 			var/item_path = L[3]
 
-			var/obj/item/card/id/id_card = H.get_idcard()
+			var/obj/item/card/id/id_card = human_user.get_idcard()
 
 			if(!id_card) //not wearing an ID
-				to_chat(H, SPAN_WARNING("Access denied. No ID card detected."))
+				to_chat(human_user, SPAN_WARNING("Access denied. No ID card detected."))
 				return
 
-			if(id_card.registered_name != H.real_name)
-				to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
+			if(id_card.registered_name != human_user.real_name)
+				to_chat(human_user, SPAN_WARNING("Wrong ID card owner detected."))
 				return
 
 			if(LAZYLEN(vendor_role) && !vendor_role.Find(id_card.rank))
-				to_chat(H, SPAN_WARNING("This machine isn't for you."))
+				to_chat(human_user, SPAN_WARNING("This machine isn't for you."))
 				return
 
 			for(var/category in GLOB.uniform_categories) // Very Hacky fix
@@ -151,8 +154,8 @@
 			if(exploiting)
 				return
 
-			var/obj/item/IT = new item_path(get_appropriate_vend_turf())
-			IT.add_fingerprint(usr)
+			var/obj/item/vended_item = new item_path(get_appropriate_vend_turf())
+			vended_item.add_fingerprint(usr)
 			LAZYADD(id_card.vended_items, item_path)
 			return TRUE
 
@@ -170,42 +173,43 @@
 	var/list/items
 	var/list/obj/item/item_types
 
-/obj/structure/machinery/cm_vending/clothing/super_snowflake/get_listed_products(mob/user)
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/tgui_interact(mob/user, datum/tgui/ui)
 	//If we don't have an object type, we ask the user to supply it
 	if(!item_types)
-		var/obj/item/chosen = get_item_category_from_user()
+		var/obj/item/chosen = get_item_category_from_user(user)
 		if(!chosen)
 			return
 		item_types = list(chosen)
+	return ..()
 
-	if(!items)
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/get_listed_products(mob/user)
+	if(!length(items))
 		items = list()
 		for(var/obj/item/item_type as anything in item_types)
 			add_items(item_type)
 
 	return items
 
-/obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/get_item_category_from_user()
-	var/item = tgui_input_text(usr,"What item to stock?", "Stock Vendor","")
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/get_item_category_from_user(mob/user)
+	var/item = tgui_input_text(user,"What item to stock?", "Stock Vendor","")
 	if(!item)
 		return
-	var/list/types = typesof(/obj/item)
 	var/list/matches = new()
 
 	//Figure out which object they might be trying to fetch
-	for(var/path in types)
+	for(var/path in typesof(/obj/item))
 		if(findtext("[path]", item))
 			matches += path
 
-	if(length(matches)==0)
+	if(!length(matches))
 		return
 
 	var/obj/item/chosen
-	if(length(matches)==1)
+	if(length(matches) == 1)
 		chosen = matches[1]
 	else
 		//If we have multiple options, let them select which one they meant
-		chosen = tgui_input_list(usr, "Select an object type", "Select Object", matches)
+		chosen = tgui_input_list(user, "Select an object type", "Select Object", matches)
 
 	return chosen
 

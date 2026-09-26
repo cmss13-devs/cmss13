@@ -68,6 +68,9 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	/// The identifying name of the machine within the department, listed when being sent something.
 	var/identity_name
 
+	///Whether or not the fax machine is modified.
+	var/clf = FALSE
+
 	/// The radio prefix used for radio alerts, if there is one.
 	var/radio_alert_tag = null
 
@@ -197,11 +200,18 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 		else
 			to_chat(user, SPAN_NOTICE("\The [src] jammed! It can only accept up to five papers at once."))
 			playsound(src, "sound/machines/terminal_insert_disc.ogg", 50, TRUE)
-		flick("[initial(icon_state)]send", src)
+
+		if(clf)
+			flick("fax_backpacksend_clf", src)
+		else
+			flick("[initial(icon_state)]send", src)
 		updateUsrDialog()
 		return
 
 	if(istype(O, /obj/item/card/id))
+
+		if(clf)
+			check_clf_id(O, user)
 
 		var/obj/item/card/id/idcard = O
 		if(scan)
@@ -624,7 +634,10 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			return
 		if(!(receiver.inoperable()))
 
-			flick("[initial(receiver.icon_state)]receive", receiver)
+			if(receiver.clf)
+				flick("fax_backpackreceive_clf", receiver)
+			else
+				flick("[initial(receiver.icon_state)]receive", receiver)
 
 			playsound(receiver.loc, "sound/machines/fax.ogg", 15)
 			// give the sprite some time to flick
@@ -909,6 +922,177 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			qdel(src)
 			return
 		return ..()
+
+//Coordinator survivor portable fax machine!
+//Deployed CLF portable fax machine
+/obj/structure/machinery/faxmachine/backpack/clf
+	name = "\improper Hacked Portable Press Fax Machine"
+	desc = "A reclaimed portable fax machine, with illicit, encrypted network addresses. Functions off an internal battery. Cannot receive faxes while being worn. It is currently deployed. Click-drag the device towards you to pick it up."
+	desc_lore = {"The Colonial Liberation Front isn't often known for cell-to-cell communications, guerilla warfare best managed through spontaneous invasive responses and dead drops. Recent incursions in the Neroid sector by the USCM sometimes necessitate a change of plans.
+
+        This particular piece of equipment seems to have been reclaimed from a USCM combat-correspondent. All identifications as to its previous owner, before modification are scrubbed. It could potentially originate from as far back as Operation Canton in the early 2160s, but Liberation insurgents have only been engaging the USCM well-after the events of Xibou.
+
+        This implies the machine is a possible military sponsor of some kind, though from where or who is unclear. Despite this, correspondents of any kind are high-priority targets for insurgent cell operations, journalism-through-hostile-coercion and kidnapping military media members being very beneficial for the Front's image.
+
+        The device itself is a mess of wires and haphazard modifications to prevent tracebacks. Its existence within an active cell poses both great risk, and great importance to whatever mission is in progress. It's very unlikely that something this valuable to Front's enemies will survive beyond single use.
+
+        If you aren't here to emancipate the masses, treat this device *very* carefully."}
+
+	icon_state = "fax_backpack_clf"
+	needs_power = FALSE
+	use_power = USE_POWER_NONE
+	health = 150
+	network = FAX_NET_CLF
+	department = FAX_DEPARTMENT_CLF
+	target_department = FAX_DEPARTMENT_CLF
+	clf = TRUE
+
+/obj/item/device/fax_backpack/clf
+	name = "\improper Hacked Portable Press Fax Machine"
+	desc = "A reclaimed portable fax machine, with illicit, encrypted network addresses. Functions off of an internal battery. Cannot receive faxes while being worn. It is currently undeployed. Activate the device inhand to deploy it."
+	desc_lore = {"The Colonial Liberation Front isn't often known for cell-to-cell communications, guerilla warfare best managed through spontaneous invasive responses and dead drops. Recent incursions in the Neroid sector by the USCM sometimes necessitate a change of plans.
+
+        This particular piece of equipment seems to have been reclaimed from a USCM combat-correspondent. All identifications as to its previous owner, before modification are scrubbed. It could potentially originate from as far back as Operation Canton in the early 2160s, but Liberation insurgents have only been engaging the USCM well-after the events of Xibou.
+
+        This implies the machine is a possible military sponsor of some kind, though from where or who is unclear. Despite this, correspondents of any kind are high-priority targets for insurgent cell operations, journalism-through-hostile-coercion and kidnapping military media members being very beneficial for the Front's image.
+
+        The device itself is a mess of wires and haphazard modifications to prevent tracebacks. Its existence within an active cell poses both great risk, and great importance to whatever mission is in progress. It's very unlikely that something this valuable to Front's enemies will survive beyond single use.
+
+        If you aren't here to emancipate the masses, treat this device *very* carefully."}
+	icon = 'icons/obj/structures/machinery/library.dmi'
+	icon_state = "fax_backpack_clf"
+	item_state = "fax_backpack_clf"
+	w_class = SIZE_HUGE
+	flags_equip_slot = SLOT_BACK
+	flags_item = ITEM_OVERRIDE_NORTHFACE
+	var/clf = TRUE
+
+/obj/item/device/fax_backpack/clf/attack_self(mob/user)
+	if(!ishuman(user))
+		return
+	var/turf/deployturf = get_turf(user)
+	if(istype(deployturf, /turf/open))
+		var/turf/open/floor = deployturf
+		var/area/area = get_area(user)
+		if(!floor.allow_construction || !area.allow_construction)
+			to_chat(user, SPAN_WARNING("You cannot deploy [src] here, find a more secure surface!"))
+			return FALSE
+	var/fail = FALSE
+	if(deployturf.density)
+		fail = TRUE
+	else
+		var/static/list/blocking_types = typecacheof(list(
+			/obj/structure/machinery/defenses,
+			/obj/structure/window,
+			/obj/structure/windoor_assembly,
+			/obj/structure/machinery/door,
+		))
+		for(var/obj/blockingobj in deployturf.contents)
+			if(blockingobj.density && !(blockingobj.flags_atom & ON_BORDER))
+				fail = TRUE
+				break
+			if(is_type_in_typecache(blockingobj, blocking_types))
+				fail = TRUE
+				break
+	if(fail)
+		to_chat(user, SPAN_WARNING("You can't deploy [src] here, something is in the way."))
+		return
+	to_chat(user,  SPAN_NOTICE("You begin to deploy [src]..."))
+	if(do_after(user, 4.5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		to_chat(user, SPAN_NOTICE("You deploy [src]."))
+		var/obj/structure/machinery/faxmachine/backpack/clf/deployedfax = new(deployturf, machine_id_tag)
+		deployedfax.faxbag = src
+		transfer_label_component(deployedfax)
+		playsound(src.loc, 'sound/machines/print.ogg', 40, 1)
+		user.drop_held_item(src)
+		forceMove(deployedfax)
+		set_light(1, null, COLOR_RED)
+		return
+	return ..()
+
+/obj/structure/machinery/faxmachine/proc/handle_explosion(turf/target_turf, dir, cause_data) //punish the strong
+	cell_explosion(target_turf, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+	qdel(src)
+
+/obj/structure/machinery/faxmachine/proc/check_clf_id(obj/item/input as obj, mob/user as mob)
+
+	if(istype(input, /obj/item/card/id))
+
+		var/obj/item/card/id/idcard = input
+
+		if((idcard.faction == FACTION_CLF) && (user.faction == FACTION_CLF))
+			to_chat(user, "Using the proper protocol taught to you, you insert your ID to access the modified fax machine.")
+
+		else if((idcard.faction == FACTION_CLF) && (user.faction != FACTION_CLF))
+			var/checksucceed = pick(25;TRUE,75;FALSE) //Who do you think you are?
+			if(!checksucceed)
+				to_chat(user, SPAN_HIGHDANGER("What's that beeping?"))
+				src.balloon_alert_to_viewers("the fax machine begins beeping rapidly!", null, 9, null, COLOR_RED)
+				var/turf/target_turf
+				target_turf = get_turf(src)
+				addtimer(CALLBACK(src, PROC_REF(handle_explosion), target_turf), 1 SECONDS)
+				return
+			to_chat(user, "With some caution, you insert the ID, and the system works perfectly. Why were you even scared?")
+
+		else if(user.skills.get_skill_level(SKILL_ENGINEER) >= SKILL_ENGINEER_MASTER) //Requires CE or Synth to properly access without blowing up, otherwise.
+			var/checksucceed = pick(75;TRUE,25;FALSE) //Though you can still, obviously, fail
+			if(!checksucceed)
+				to_chat(user, SPAN_HIGHDANGER("What's that beeping?"))
+				src.balloon_alert_to_viewers("the fax machine begins beeping rapidly!", null, 9, null, COLOR_RED)
+				var/turf/target_turf
+				target_turf = get_turf(src)
+				addtimer(CALLBACK(src, PROC_REF(handle_explosion), target_turf), 1 SECONDS)
+				return
+			to_chat(user, SPAN_ALERTWARNING("Your keen eye and extensive technical knowledge save you from the *very* obvious IED implanted within the fax machine. Best be careful, next time you might not be so lucky."))
+
+		else if((idcard.faction == FACTION_CLF) && (user.faction != FACTION_CLF) && (user.skills.get_skill_level(SKILL_ENGINEER) >= SKILL_ENGINEER_MASTER)) //If the CE or Synth uses an ID.
+			to_chat(user, SPAN_ALERTWARNING("Your keen eye and extensive technical knowledge, and the correct identification save you from the *very* obvious IED implanted within the fax machine."))
+
+		else
+			to_chat(user, SPAN_HIGHDANGER("What's that beeping?"))
+			src.balloon_alert_to_viewers("the fax machine begins beeping rapidly!", null, 9, null, COLOR_RED)
+			var/turf/target_turf
+			target_turf = get_turf(src)
+			addtimer(CALLBACK(src, PROC_REF(handle_explosion), target_turf), 1 SECONDS)
+			return
+
+/obj/structure/machinery/faxmachine/backpack/clf/get_examine_text(mob/user)
+	. = ..()
+	if(user.faction != FACTION_CLF)
+
+		switch(user.skills.get_skill_level(SKILL_ENGINEER))
+			if(SKILL_ENGINEER_ENGI)
+				. += SPAN_DANGER("There's something... beeping... behind the circuitry.\n")
+				return
+			if(SKILL_ENGINEER_MASTER, SKILL_ENGINEER_MAX)
+				. += SPAN_HIGHDANGER("THERE'S A BOMB IN THIS THING.\n")
+				return
+			else
+				. += SPAN_HELPFUL("Besides the flag, this looks pretty normal...\n")
+				return
+
+	else
+		. += SPAN_DANGER("This thing is too damn valuable, so the device has an IED failsafe. \nAny ID that isn't ours used in the *correct* procedure to operate this device will trigger its failsafe, destroying the device and its records, and hopefully, whatever American idiot along with it.")
+		return
+
+/obj/item/device/fax_backpack/clf/get_examine_text(mob/user) //have to do it twice, unfortunately
+	. = ..()
+	if(user.faction != FACTION_CLF)
+
+		switch(user.skills.get_skill_level(SKILL_ENGINEER))
+			if(SKILL_ENGINEER_ENGI)
+				. += SPAN_DANGER("There's something... beeping... behind the circuitry.\n")
+				return
+			if(SKILL_ENGINEER_MASTER, SKILL_ENGINEER_MAX)
+				. += SPAN_HIGHDANGER("THERE'S A BOMB IN THIS THING.\n")
+				return
+			else
+				. += SPAN_HELPFUL("Besides the flag, this looks pretty normal...\n")
+				return
+
+	else
+		. += SPAN_DANGER("This thing is too damn valuable, so the device has an IED failsafe. \nAny ID that isn't ours used in the *correct* procedure to operate this device will trigger its failsafe, destroying the device and its records, and hopefully, whatever American idiot along with it.")
+		return
 
 /datum/fax
 	var/data

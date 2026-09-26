@@ -276,6 +276,19 @@ CIVILIAN
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
 	)
 
+/datum/skills/civilian/survivor/clf/smartgunner
+	name = "Survivor CLF Weapons Specialist"
+	skills = list(
+		SKILL_FIREARMS = SKILL_FIREARMS_SKILLED,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_CQC = SKILL_CQC_TRAINED,
+		SKILL_POLICE = SKILL_POLICE_SKILLED,
+		SKILL_ENGINEER = SKILL_ENGINEER_NOVICE,
+		SKILL_SPEC_WEAPONS = SKILL_SPEC_ALL, //go forth and do evil, otherwise stick to your smartgun
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
+		SKILL_JTAC = SKILL_JTAC_TRAINED
+	)
+
 /datum/skills/civilian/survivor/clf/coordinator
 	name = "Survivor CLF Coordinator"
 	additional_skills = list(

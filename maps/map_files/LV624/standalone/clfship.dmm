@@ -453,6 +453,10 @@
 /obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor/almayer/bluecorner/north,
 /area/lv624/lazarus/crashed_ship)
+"fU" = (
+/obj/effect/landmark/survivor_spawner/clf_smartgunner,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv624/lazarus/crashed_ship)
 "fX" = (
 /obj/item/stool,
 /obj/effect/landmark/survivor_spawner/clf_lead,
@@ -1894,7 +1898,7 @@
 /area/lv624/lazarus/crashed_ship)
 "Yz" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/faxmachine/clf{
+/obj/structure/machinery/faxmachine/backpack/clf{
 	department = "CLF - Cell 42"
 	},
 /obj/item/paper/prison_station/pirate_note/clfship,
@@ -2332,7 +2336,7 @@ OZ
 Xq
 Qj
 lr
-lr
+fU
 Yz
 Xq
 Tx

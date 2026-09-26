@@ -452,11 +452,9 @@
 /area/kutjevo/exterior/clf_lz)
 "uP" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/faxmachine{
+/obj/structure/machinery/faxmachine/backpack/clf{
 	department = "CLF - Cell 42"
-	},
-/turf/open/floor/almayer/blue/northeast,
-/area/kutjevo/interior/colony/clf_shuttle)
+	})
 "vn" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan22"
@@ -643,6 +641,10 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_south)
+"Et" = (
+/obj/effect/landmark/survivor_spawner/clf_smartgunner/kutjevo,
+/turf/open/floor/almayer,
+/area/kutjevo/interior/colony/clf_shuttle)
 "Ex" = (
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/almayer/research/containment/floor2,
@@ -921,6 +923,10 @@
 /area/kutjevo/interior/colony/landing_zone_checkpoint)
 "QI" = (
 /turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/clf_lz)
+"QL" = (
+/obj/effect/landmark/survivor_spawner/clf_smartgunner/kutjevo,
+/turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)
 "QO" = (
 /obj/structure/largecrate/supply/floodlights,
@@ -2144,7 +2150,7 @@ cf
 cf
 oH
 cf
-cf
+QL
 cf
 cf
 zp
@@ -2962,7 +2968,7 @@ SV
 QI
 YQ
 uP
-RW
+Et
 Qy
 Ni
 YQ

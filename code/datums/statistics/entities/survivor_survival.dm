@@ -36,6 +36,7 @@
 /datum/entity_meta/survivor_survival
 	entity_type = /datum/entity/survivor_survival
 	table_name = "survivor_survival"
+	key_field = "round_id"
 	field_types = list(
 		"round_id" = DB_FIELDTYPE_INT,
 		"time_after_roundstart" = DB_FIELDTYPE_INT,

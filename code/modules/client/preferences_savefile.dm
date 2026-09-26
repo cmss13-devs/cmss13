@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 37
+#define SAVEFILE_VERSION_MAX 38
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -249,6 +249,12 @@
 		S["toggles_sound"] >> toggles_insert
 		toggles_insert |= (SOUND_ROUND_END)
 		S["toggles_sound"] << toggles_insert
+
+	if(savefile_version < 38) //new sound volume prefs
+		var/list/volume_preferences
+		S["volume_preferences"] >> volume_preferences
+		volume_preferences.Add(0.7, 0.25)
+		S["volume_preferences"] << volume_preferences
 
 	if(updated_from)
 		RegisterSignal(owner, COMSIG_CLIENT_LOGGED_IN, PROC_REF(handle_logged_in))
@@ -595,7 +601,7 @@
 	if(!observer_huds)
 		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE, "Hunter HUD"= FALSE, HUD_MENTOR_SIGHT = FALSE)
 
-	volume_preferences = sanitize_volume_preferences(volume_preferences, list(1, 0.5, 1, 0.6)) // Game, music, admin midis, lobby music
+	volume_preferences = sanitize_volume_preferences(volume_preferences, list(1, 0.5, 1, 0.6, 0.7, 0.25)) // Game, music, admin midis, lobby music, human voices, xeno voices
 
 	if(!islist(custom_keybinds))
 		custom_keybinds = new /list(KEYBIND_CUSTOM_MAX)

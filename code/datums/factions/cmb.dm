@@ -3,16 +3,10 @@
 	faction_tag = FACTION_MARSHAL
 	base_icon_file = 'icons/mob/hud/factions/cmb.dmi'
 
-/datum/faction/cmb/modify_hud_holder(image/holder, mob/living/carbon/human/human)
-	var/icon/override_icon_file
-	var/hud_icon_state
-	var/_role = human.job
-	var/anchorpoint_marine
-	if(!_role)
-		var/obj/item/card/id/id_card = human.get_idcard()
-		if(id_card)
-			_role = id_card.rank
-	switch(_role)
+/datum/faction/cmb/modify_hud_holder_from_data(image/holder, location, job_rank, paygrade, assignment, rank_fallback, rank_override, datum/squad/squad)
+	var/hud_icon_state = null
+	var/anchorpoint_marine = FALSE
+	switch(job_rank)
 		if(JOB_CMB)
 			hud_icon_state = "dep"
 		if(JOB_CMB_ENG)
@@ -33,8 +27,7 @@
 			hud_icon_state = "mar"
 		if(JOB_CMB_SWAT)
 			hud_icon_state = "spec"
-
-	//Anchorpoint Marines
+		//Anchorpoint Marines
 		if(JOB_SQUAD_MARINE)
 			hud_icon_state = "grunt"
 			anchorpoint_marine = TRUE
@@ -52,11 +45,11 @@
 			anchorpoint_marine = TRUE
 
 	if(anchorpoint_marine)
-		var/image/IMG = image('icons/mob/hud/factions/marine.dmi', human, "hudsquad")
-		IMG.color = "#194877"
-		holder.overlays += IMG
-		holder.overlays += image('icons/mob/hud/factions/marine.dmi', human, "hudsquad_[hud_icon_state]")
+		var/image/background = image('icons/mob/hud/factions/marine.dmi', location, "hudsquad")
+		background.color = "#194877"
+		holder.overlays += background
+		holder.overlays += image('icons/mob/hud/factions/marine.dmi', location, "hudsquad_[hud_icon_state]")
 		return
 
 	if(hud_icon_state)
-		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, human, "cmb_[hud_icon_state]")
+		holder.overlays += image(base_icon_file, location, "cmb_[hud_icon_state]")

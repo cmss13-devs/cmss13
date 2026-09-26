@@ -30,6 +30,7 @@
 //#define SOUND_CHANNEL_ADMIN_MIDI 1022
 #define SOUND_CHANNEL_LOBBY 1023
 #define SOUND_CHANNEL_Z 1024
+#define CHANNEL_ANNOUNCEMENTS 1025 // IC priority announcements, hivemind messages etc
 
 /// How far do we consider a change in Z plane is for the purpose of calculating Y coordinates in 3D Sound, relative to tiles on the same level
 #define MULTI_Z_SOUND_DISTANCE 5

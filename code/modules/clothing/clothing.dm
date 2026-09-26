@@ -629,7 +629,7 @@
 				return
 
 	var/obj/item/storage/internal/pockets = get_pockets()
-	if(pockets && mods[RIGHT_CLICK] && !mods[ALT_CLICK] && CAN_PICKUP(user, src))
+	if(pockets && CAN_PICKUP(user, src) && ((mods[RIGHT_CLICK] && !mods[ALT_CLICK]) || (mods[MIDDLE_CLICK] && !mods[SHIFT_CLICK])))
 		pockets.open(user)
 		return TRUE
 

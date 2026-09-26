@@ -1145,10 +1145,10 @@
 	var/turf/open/gm/river/desert/R
 	if(filtered)
 		for(R in src)
-			R.toxic = 0
+			R.toxic = WATER_TOXIC_NO
 	else
 		for(R in src)
-			R.toxic = 1
+			R.toxic = WATER_TOXIC_YES
 	R.update_icon()
 	if(Next_areas && !(src in Next_areas)) //Shouldn't ever happen but just to be safe
 		for(var/area/desert_dam/exterior/river/A in Next_areas)

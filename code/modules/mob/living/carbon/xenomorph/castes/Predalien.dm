@@ -157,7 +157,7 @@ You must still listen to the queen.
 	. = list()
 	. += "Kills: [kills]/[max_kills]"
 
-/datum/behavior_delegate/predalien_base/on_kill_mob(mob/M)
+/datum/behavior_delegate/predalien_base/on_kill_mob(mob/target_mob)
 	. = ..()
 
 	kills = min(kills + 1, max_kills)
@@ -175,7 +175,7 @@ You must still listen to the queen.
 
 	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
-	playsound(xeno.loc, pick(predalien_roar), 75, 0, status = 0)
+	playsound(xeno.loc, pick(predalien_roar), 50, 0, status = 0, falloff = 3)
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a guttural roar!"))
 	xeno.create_shriekwave(7) //Adds the visual effect. Wom wom wom, 7 shriekwaves
 	FOR_DVIEW(var/mob/living/carbon/target_carbon, 7, xeno, HIDE_INVISIBLE_OBSERVER)

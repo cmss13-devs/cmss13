@@ -2515,6 +2515,13 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	update_icon()
 
+	if(is_mainship_level(gun_turf.z) && gun_area.ceiling >= CEILING_METAL && prob(1))
+		for(var/turf/open/floor/landing_turf in shuffle(RANGE_TURFS(4, gun_turf)))
+			var/area/landing_area = get_area(landing_turf)
+			if(landing_area.ceiling >= CEILING_METAL)
+				new /obj/effect/falling_pipe(landing_turf, user)
+				break
+
 /obj/item/weapon/gun/proc/handle_battlefield_execution(mob/living/user, mob/living/hit_mob)
 
 	if(!skillcheck(user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED)) // just in case

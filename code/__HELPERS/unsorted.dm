@@ -754,11 +754,13 @@ GLOBAL_DATUM(action_purple_power_up, /image)
  * numticks: If a value is given, denotes how often the timed action checks for interrupting actions. By default, there are 5 checks every delay/5 deciseconds.
  * Note: 'delay' should be divisible by numticks in order for the timing to work as intended. numticks should also be a whole number.
  */
-/proc/do_after(mob/user, delay, user_flags = INTERRUPT_ALL, show_busy_icon, atom/movable/target, target_flags = INTERRUPT_MOVED, show_target_icon, max_dist = 1, status_effect = null, \
+/proc/do_after(mob/living/busy_user, delay, user_flags = INTERRUPT_ALL, show_busy_icon, atom/movable/target, target_flags = INTERRUPT_MOVED, show_target_icon, max_dist = 1, status_effect = null, \
 		show_remaining_time = FALSE, numticks = DA_DEFAULT_NUM_TICKS) // These args should primarily be named args, since you only modify them in niche situations
-	if(!istype(user) || delay < 0)
+	// Only living mobs can perform timed actions.
+	if(!istype(busy_user) || delay < 0)
 		return FALSE
 
+	SEND_SIGNAL(busy_user, COMSIG_LIVING_PRE_DOAFTER, delay)
 	if(delay == 0) // Nothing to wait for, so action passes
 		return TRUE
 
@@ -766,11 +768,6 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	var/has_target = FALSE
 	if(istype(target))
 		has_target = TRUE
-
-	// Only living mobs can perform timed actions.
-	var/mob/living/busy_user = user
-	if(!istype(busy_user))
-		return FALSE
 
 	// This var will only be used for checks that require target to be living.
 	var/mob/living/T = target

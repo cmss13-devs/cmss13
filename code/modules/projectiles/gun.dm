@@ -1793,7 +1793,7 @@ and you're good to go.
 				admin_msg = "[key_name(user)] lost at Russian Roulette with \a [name] in [get_area(user)] [ffl]"
 
 			var/obj/limb/head = user.get_limb("head") // carnage
-			if(projectile_to_fire.ammo.bonus_projectiles_type || projectile_to_fire.ammo.flags_ammo_behavior == AMMO_EXPLOSIVE || (projectile_to_fire.ammo.damage * damage_mult) >= 80)
+			if(projectile_to_fire.ammo.bonus_projectiles_type || (projectile_to_fire.ammo.damage * damage_mult) >= 80)
 				user.visible_message(SPAN_HIGHDANGER(uppertext("[user]'s head explodes into a cloud of blood and bone by their [name], oh God.")))
 				head.droplimb(FALSE, TRUE)
 				user.spawn_gibs()
@@ -1875,14 +1875,14 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 		if(flags_gun_features & GUN_TRIGGER_SAFETY)
 			to_chat(user, SPAN_WARNING("The safety is on!"))
-			gun_user.balloon_alert(gun_user, "safety on")
+			user.balloon_alert(user, "safety on")
 			return
 
-		if(gun_user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (gun_user.a_intent == INTENT_HELP))
+		if(user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (user.a_intent == INTENT_HELP))
 			if(world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
-				to_chat(gun_user, SPAN_DANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
-				gun_user.balloon_alert(gun_user, "help intent safety")
-				click_empty(gun_user)
+				to_chat(user, SPAN_DANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
+				user.balloon_alert(user, "help intent safety")
+				click_empty(user)
 			return FALSE
 
 		if(active_attachable)
@@ -2317,8 +2317,12 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		set_gun_user(source)
 
 	var/list/modifiers = params2list(params)
-	if(modifiers[CTRL_CLICK] || modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5])
+	if(modifiers[CTRL_CLICK] || modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5]) // if we dont remove 'modifiers[RIGHT_CLICK]' here, we will get access to faultless PB with shotguns
 		return FALSE
+	if(ishuman(gun_user))
+		var/mob/living/carbon/human/H = gun_user // basically there so that we DON'T shoot while tryna use spec gun abilities via RMB !AND! so that we DO shoot if we use spec stuff via MMB/shift+LMB
+		if(H.selected_ability && modifiers[RIGHT_CLICK] && H.client.prefs.xeno_ability_click_mode == XENO_ABILITY_CLICK_RIGHT)
+			return FALSE
 
 	// Don't allow doing anything else if inside a container of some sort, like a locker.
 	if(!isturf(gun_user.loc))
@@ -2563,7 +2567,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	simulate_recoil(2, user)
 
 	var/obj/limb/head = execution_target.get_limb("head")
-	if(projectile_to_fire.ammo.bonus_projectiles_type || projectile_to_fire.ammo.flags_ammo_behavior & AMMO_EXPLOSIVE || (projectile_to_fire.ammo.damage * damage_mult) >= 80)
+	if(projectile_to_fire.ammo.bonus_projectiles_type || (projectile_to_fire.ammo.damage * damage_mult) >= 80)
 		execution_target.visible_message(SPAN_HIGHDANGER(uppertext("[execution_target]'s head explodes into a cloud of blood and bone by [user]'s [name], oh God.")),
 			SPAN_HIGHDANGER("Your head explodes into a cloud of blood and bone, goddamn.")) // lol
 		head.droplimb(FALSE, TRUE)

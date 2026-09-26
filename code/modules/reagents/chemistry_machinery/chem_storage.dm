@@ -21,6 +21,12 @@
 	var/max_energy = BASE_CHEM_STORAGE_MAX_ENERGY
 	var/dynamic_storage = FALSE
 
+	/// List of additional chemicals that the chem storage can store.
+	/// Has a buffer on each individual additional chemical that can be stored
+	var/list/additional_chemicals = list()
+	/// Additional chemical volume. This is per-chemical
+	var/additional_chemical_volume = 120
+
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -62,6 +68,10 @@
 	if(in_range(user, src) || istype(user, /mob/dead/observer))
 		var/charge = floor((energy / max_energy) * 100)
 		. += SPAN_NOTICE("The charge meter reads [charge]%")
+	for(var/chem in additional_chemicals)
+		var/datum/reagent/reagent = GLOB.chemical_reagents_list[chem]
+		var/amount = additional_chemicals[chem]
+		. += SPAN_NOTICE("Contains [reagent.name] [amount]u")
 
 /obj/structure/machinery/chem_storage/process()
 	if(recharge_cooldown <= 0)

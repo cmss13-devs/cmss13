@@ -1568,12 +1568,13 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 /obj/limb/head/get_limb_icon()
 	. = ..()
 
-	var/image/eyes = image('icons/mob/humans/onmob/human_face.dmi', species.eyes, layer = -BODYPARTS_LAYER)
-	eyes.color = list(null, null, null, null, rgb(owner.r_eyes, owner.g_eyes, owner.b_eyes))
-	. += eyes
+	if(owner.eyelids_status == EYELID_OPEN)
+		var/image/eyes = image('icons/mob/humans/onmob/human_face.dmi', species.eyes, layer = -BODYPARTS_LAYER)
+		eyes.color = list(null, null, null, null, rgb(owner.r_eyes, owner.g_eyes, owner.b_eyes))
+		. += eyes
 
-	if(HAS_TRAIT(owner, TRAIT_INTENT_EYES))
-		. += emissive_appearance(icon = 'icons/mob/humans/onmob/human_face.dmi', icon_state = species.eyes)
+		if(HAS_TRAIT(owner, TRAIT_INTENT_EYES))
+			. += emissive_appearance(icon = 'icons/mob/humans/onmob/human_face.dmi', icon_state = species.eyes)
 
 	if(lip_style && (species && species.flags & HAS_LIPS))
 		var/image/lips = image('icons/mob/humans/onmob/human_face.dmi', "paint_[lip_style]", layer = -BODYPARTS_LAYER)
@@ -1582,7 +1583,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 /obj/limb/head/get_limb_icon_key()
 	. = ..()
 
-	return "[.]-[eyes_r]-[eyes_g]-[eyes_b]-[lip_style]"
+	return "[.]-[eyes_r]-[eyes_g]-[eyes_b]-[lip_style]-[owner.eyelids_status]"
 
 /obj/limb/head/reset_limb_surgeries()
 	for(var/zone in list("head", "eyes", "mouth"))

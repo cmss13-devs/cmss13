@@ -467,3 +467,51 @@
 		headset = wear_r_ear
 	if(headset)
 		headset.update_minimap_icon()
+
+/mob/living/carbon/human/proc/move_eyelids(state, period = 0, open_period = null, times = 1, initial_open_period=null, normal_blinking_after=TRUE)
+	if(species && !(species.flags & HAS_EYELIDS))
+		return
+	if(times == 0)
+		if(normal_blinking_after)
+			eyelid_timer = addtimer( \
+			CALLBACK(src, PROC_REF(move_eyelids), EYELID_SWITCH, 0.2, 3, EYELID_LOOP), \
+			(eyelids_status==EYELID_OPEN ? open_period : period) SECONDS, \
+			TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE \
+		)
+		else if(eyelid_timer)	//should already be none here but whatever
+			deltimer(eyelid_timer)
+			eyelid_timer = null
+		return
+
+	if(eyelid_timer)
+		deltimer(eyelid_timer)
+		eyelid_timer = null
+
+	apply_eyelid_state(resolve_eyelid_state(state))
+
+	if(times == 0)
+		return
+	else if(times == EYELID_LOOP)
+		if(initial_open_period==null)
+			initial_open_period = open_period
+		eyelid_timer = addtimer( \
+			CALLBACK(src, PROC_REF(move_eyelids), EYELID_SWITCH, period, clamp(initial_open_period+rand(-0.3, 0.3), initial_open_period-1, initial_open_period+1), times, open_period), \
+			(eyelids_status==EYELID_OPEN ? open_period : period) SECONDS, \
+			TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE \
+		)
+		return
+	else
+		eyelid_timer = addtimer( \
+			CALLBACK(src, PROC_REF(move_eyelids), EYELID_SWITCH, period, null, --times), \
+			period SECONDS, \
+			TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE \
+		)
+
+/mob/living/carbon/human/proc/resolve_eyelid_state(state)
+	if(state == EYELID_SWITCH)
+		return eyelids_status == EYELID_OPEN ? EYELID_CLOSED : EYELID_OPEN
+	return state
+
+/mob/living/carbon/human/proc/apply_eyelid_state(closed)
+	eyelids_status = closed
+	update_body()

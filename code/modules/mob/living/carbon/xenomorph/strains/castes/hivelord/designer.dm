@@ -89,9 +89,9 @@
 //------------------------------------------//
 
 /datum/action/xeno_action/activable/greater_resin_surge
-	name = "Greater Resin Surge (100)"
+	name = "Greater Resin Surge (150)"
 	action_icon_state = "greater_resin_surge"
-	plasma_cost = 100
+	plasma_cost = 150
 	xeno_cooldown = 30 SECONDS
 	macro_path = /datum/action/xeno_action/verb/verb_greater_surge
 	action_type = XENO_ACTION_CLICK
@@ -470,7 +470,7 @@
 	var/static/list/options = list(
 		"Optimized Node (50)" = icon(/datum/action/xeno_action::icon_file, "static_speednode"),
 		"Construct Node (50)" = icon(/datum/action/xeno_action::icon_file, "static_constructnode"),
-		"Upgrade Node (600)" = icon(/datum/action/xeno_action::icon_file, "upgrade_resin"),
+		"Upgrade Node (300)" = icon(/datum/action/xeno_action::icon_file, "upgrade_resin"),
 		"Open Old UI" = icon(/datum/action/xeno_action::icon_file, "open_ui"),
 		"Remove Node" = icon(/datum/action/xeno_action::icon_file, "remove_node"),
 		"Flexible Node (50)" = icon(/datum/action/xeno_action::icon_file, "static_costnode")
@@ -495,7 +495,7 @@
 		if("Construct Node (50)")
 			xeno.selected_design = /obj/effect/alien/resin/design/construct_node
 			des = TRUE
-		if("Upgrade Node (600)")
+		if("Upgrade Node (300)")
 			xeno.selected_design = /obj/effect/alien/resin/design/upgrade
 			rem = TRUE
 		if("Remove Node")

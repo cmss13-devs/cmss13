@@ -443,6 +443,9 @@
 
 // Xenos eating fruit
 /obj/item/reagent_container/food/snacks/resin_fruit/attack(mob/living/carbon/xenomorph/affected_xeno, mob/user)
+	var/pick_delay = consume_delay
+	var/mob/living/carbon/xenomorph/x_user = user
+
 	if(istype(user, /mob/living/carbon/xenomorph)) // Prevents xenos from feeding capped/dead marines fruit
 		var/mob/living/carbon/xenomorph/feeding_xeno = user
 		if(!feeding_xeno.can_not_harm(affected_xeno))
@@ -455,6 +458,9 @@
 	if(affected_xeno.stat == DEAD)
 		to_chat(user, SPAN_WARNING("That sister is already dead, they won't benefit from the fruit now..."))
 		return
+
+	if(istype(x_user.strain, /datum/xeno_strain/gardener))
+		consume_delay = 0
 
 	var/obj/effect/alien/resin/fruit/current_fruit = new fruit_type(affected_xeno)
 	var/cant_consume = current_fruit.prevent_consume(affected_xeno)
@@ -469,10 +475,8 @@
 		SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[current_fruit]</b>."),
 		SPAN_NOTICE("[user] starts [user == affected_xeno ? "eating" : "feeding [affected_xeno]"] <b>[current_fruit]</b>."))
 
-	var/pick_delay = consume_delay
-	var/mob/living/carbon/xenomorph/x_user = user
 	if(istype(x_user.strain, /datum/xeno_strain/gardener))
-		pick_delay /= 2
+		pick_delay = 0
 
 	if(!do_after(user, pick_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, affected_xeno, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 		return FALSE
@@ -528,7 +532,7 @@
 	F.picked = TRUE
 	var/pick_delay = F.consume_delay
 	if(istype(src.strain, /datum/xeno_strain/gardener))
-		pick_delay /= 2 //Decrease time by half, if strain is gardener
+		pick_delay = 0 // Removes pick delay for gardeners
 	if(!do_after(src, pick_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		F.picked = FALSE
 		return

@@ -54,6 +54,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cia, list(
 	list("Beige Trenchcoat", 0, /obj/item/clothing/suit/storage/CMB/trenchcoat, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
 	list("Brown Trenchcoat", 0, /obj/item/clothing/suit/storage/CMB/trenchcoat/brown, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
 	list("Grey Trenchcoat", 0, /obj/item/clothing/suit/storage/CMB/trenchcoat/grey, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
+	list("White Trenchcoat", 0, /obj/item/clothing/suit/storage/CMB/trenchcoat/white, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
+	list("Blue Trenchcoat", 0, /obj/item/clothing/suit/storage/CMB/trenchcoat/blue, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
 	list("Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
 	list("Brown Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat/brown, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
 	list("Grey Vest", 0, /obj/item/clothing/suit/storage/jacket/marine/vest/grey, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),

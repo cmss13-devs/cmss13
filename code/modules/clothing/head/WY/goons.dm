@@ -42,3 +42,22 @@
 	desc = "A basic skull-helm worn by corporate security assets. This variant comes with a wider brim to protect the user from the harsh climate of the desert and has a medical cross across the front."
 	icon_state = "sec_medic_helmet_kutjevo"
 	item_state = "sec_medic_helmet_kutjevo"
+
+// Lasalle Security
+
+/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/lasalle_security
+	name = "\improper Lasalle Bionational security helmet"
+	desc = "A full face helmet worn by Lasalle Bionatonal corporate security assets."
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/LASALLE.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/LASALLE.dmi'
+	)
+	icon_state = "lasalle_security_helmet"
+	item_state = "lasalle_security_helmet"
+
+	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR
+
+/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/lasalle_security/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/wy)
+	AddElement(/datum/element/corp_label/bionational)

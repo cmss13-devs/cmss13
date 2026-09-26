@@ -289,6 +289,16 @@
 /obj/structure/bed/chair/comfy/blue
 	icon_state = "comfychair_blue"
 
+/obj/structure/bed/chair/comfy/blue_dark
+	icon_state = "comfychair_bdark"
+
+/obj/structure/bed/chair/comfy/stool
+	name = "comfy stool"
+	desc = "Uh-hoh, the bar is heating up."
+	icon_state = "stool_diner"
+	anchored = TRUE
+	can_buckle = FALSE
+
 /obj/structure/bed/chair/comfy/yautja
 	name = "alien chair"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

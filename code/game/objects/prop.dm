@@ -152,6 +152,12 @@
 	icon_state = "canister"
 	icon = 'icons/obj/items/tank.dmi'
 
+/obj/item/prop/colony/canister/alt_1
+	icon_state = "canister_alt1"
+
+/obj/item/prop/colony/canister/alt_2
+	icon_state = "canister_alt2"
+
 /obj/item/prop/colony/proptag
 	name = "information dog tag"
 	desc = "A fallen marine's information dog tag. It reads,(BLANK)"
@@ -384,6 +390,14 @@
 	desc = "Weyland-Yutani Corporation's Model 30 Light Excavator. Despite looking like a massive beast, the Model 30 is fairly light when compared to other W-Y terraforming excavators. It's designed to be able to be disassembled for transport and re-assembled on site. This one is a nice gray color."
 	icon_state = "digger_gray"
 
+/obj/structure/prop/invuln/dense/excavator/gray_alt
+	desc = "A Model 30 Light Excavator. Despite looking like a massive beast, the Model 30 is fairly light when compared to other terraforming excavators. It's designed to be able to be disassembled for transport and re-assembled on site. This one is a nice gray color."
+	icon_state = "generic_digger_gray"
+
+/obj/structure/prop/invuln/dense/excavator/yellow
+	desc = "A Model 30 Light Excavator. Despite looking like a massive beast, the Model 30 is fairly light when compared to other terraforming excavators. It's designed to be able to be disassembled for transport and re-assembled on site. This one is a nice yellow color."
+	icon_state = "generic_digger_yellow"
+
 /obj/structure/prop/invuln/dense/excavator/Initialize()
 	. = ..()
 	if(dir & (SOUTH|NORTH))
@@ -392,3 +406,49 @@
 	else
 		bound_height = 96
 		bound_width = 192
+
+// Mining Refinery & Smelting
+
+/obj/structure/prop/huge_mining_machine/smelter
+	name = "industrial smelting furnace"
+	desc = "A colossal custom Seegson-designed smelting furnace engineered for specific industrial processing, used primarily to reduce raw pyrotrinium ore into a molten form. It's frame and heat-scarred plating reflect Seegson's preference for cheap, but functional machinery."
+	icon = 'icons/obj/structures/props/industrial/huge_mining_machines.dmi'
+	icon_state = "smelter_machine"
+	density = TRUE
+	anchored = TRUE
+	bound_width = 128
+	bound_height = 96
+
+/obj/structure/prop/huge_mining_machine/smelter/invun
+	unacidable = TRUE
+	unslashable = TRUE
+	breakable = FALSE
+	explo_proof = TRUE
+
+/obj/structure/prop/huge_mining_machine/refinery
+	name = "industrial smelting refinery"
+	desc = "A massive custom Seegson-designed refinery press built to compress molten pyrotrinium into uniform slabs for transport and industrial use. It's frame and heat-scarred plating reflect Seegson's preference for cheap, but functional machinery."
+	icon = 'icons/obj/structures/props/industrial/huge_mining_machines.dmi'
+	icon_state = "press_machine"
+	density = TRUE
+	anchored = TRUE
+	bound_width = 96
+	bound_height = 128
+
+/obj/structure/prop/huge_mining_machine/refinery/invun
+	unacidable = TRUE
+	unslashable = TRUE
+	breakable = FALSE
+	explo_proof = TRUE
+
+/obj/structure/prop/huge_mining_machine/conveyor
+	icon = 'icons/obj/structures/props/industrial/conveyor.dmi'
+	icon_state = "conveyor"
+	name = "conveyor belt"
+	desc = "A large conveyor belt used in industrial facilities."
+	projectile_coverage = FALSE
+	density = FALSE
+	layer = TURF_LAYER
+
+/obj/structure/prop/huge_mining_machine/conveyor/variation
+	icon_state = "conveyor1"

@@ -118,3 +118,72 @@
 
 /obj/effect/decal/floor_symbol/uscm_3x3/westface/northwest
 	dir = NORTHWEST
+
+/// SEEGSON LOGO
+
+/obj/effect/decal/seegson
+	name = "Seegson Corporation"
+	icon = 'icons/effects/seegson_logo.dmi'
+	icon_state = "seegson_logo"
+	layer = TURF_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/effect/decal/seegson/worn
+	icon_state = "seegson_logo_worn"
+
+/obj/effect/decal/seegson/small
+	icon = 'icons/effects/seegson_small.dmi'
+	icon_state = "seegson_logo"
+
+/obj/effect/decal/seegson/small/worn
+	icon_state = "seegson_logo_worn"
+
+/obj/effect/decal/seegson/small/lone
+	icon_state = "seegson_lone"
+
+/obj/effect/decal/seegson/small/lone/worn
+	icon_state = "seegson_lone_worn"
+
+/obj/effect/decal/seegson/small/circle
+	icon_state = "seegson_circle"
+
+/obj/effect/decal/seegson/small/circle/worn
+	icon_state = "seegson_circle_worn"
+
+/// LASALLE BIO LOGO
+
+/obj/effect/decal/lasalle_bio
+	name = "Lasalle Bionational Corporation"
+	icon = 'icons/effects/lasalle_logo.dmi'
+	icon_state = "lasalle_logo"
+	layer = TURF_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/effect/decal/lasalle_bio/worn
+	icon_state = "lasalle_logo_worn"
+
+/obj/effect/decal/lasalle_bio/worn_alt
+	icon_state = "lasalle_logo_worn2"
+
+/obj/effect/decal/lasalle_bio/symbol_only
+	icon_state = "lasalle_logo_symbol"
+
+/obj/effect/decal/lasalle_bio/symbol_only/worn
+	icon_state = "lasalle_logo_symbol_worn"
+
+/obj/effect/decal/lasalle_bio/symbol_only/worn_alt
+	icon_state = "lasalle_logo_symbol_worn2"
+
+/// Engineer (Space-Jockey) Ancient Ruins
+
+/obj/effect/decal/engineer_ruins
+	icon = 'icons/effects/engineercircle.dmi'
+	icon_state = "circle_combined"
+	layer = TURF_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/effect/decal/engineer_ruins/individual
+	icon_state = "circle1"

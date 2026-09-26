@@ -197,8 +197,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	armor_bio = CLOTHING_ARMOR_HIGH
 	armor_rad = CLOTHING_ARMOR_HIGH
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
-	slowdown = 0.75
-	var/speed_timer = 0
+	slowdown = 0.55
 	item_state_slots = list(WEAR_JACKET = "fullarmor")
 	allowed = list(
 		/obj/item/weapon/harpoon,
@@ -209,6 +208,206 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		/obj/item/weapon/twohanded/yautja,
 	)
 	fire_intensity_resistance = 20
+	actions_types = list(/datum/action/item_action/sozo_inject, /datum/action/item_action/ap_ward)
+	var/sozo_charges = 2
+	var/sozo_charges_max = 2
+	var/ap_ward_on = FALSE
+	var/ap_ward_slowdown = 1
+	var/ap_ward_drain = 100
+	var/ap_ward_damage_cap = 8
+
+/obj/item/clothing/suit/armor/yautja/hunter/full/verb/sozo_inject_verb()
+	set name = "Inject Sozo"
+	set desc = "Trigger the armor's Sozo injector system."
+	set category = "Yautja.Utility"
+	set src in usr
+	inject_sozo(usr)
+
+/obj/item/clothing/suit/armor/yautja/hunter/full/proc/update_sozo_actions()
+	for(var/datum/action/action as anything in actions)
+		action.update_button_icon()
+
+/obj/item/clothing/suit/armor/yautja/hunter/full/proc/inject_sozo(mob/user)
+	if(!ishuman(user))
+		return
+
+	var/mob/living/carbon/human/wearer = user
+
+	if(wearer.is_mob_incapacitated(TRUE))
+		return
+
+	if(wearer.wear_suit != src)
+		to_chat(wearer, SPAN_WARNING("You must be wearing [src] to use its injector system!"))
+		return
+
+	if(!HAS_TRAIT(wearer, TRAIT_YAUTJA_TECH) && !wearer.hunter_data?.thralled)
+		to_chat(wearer, SPAN_WARNING("You have no idea how any of this works."))
+		return
+
+	if(sozo_charges < 1)
+		to_chat(wearer, SPAN_WARNING("[src]'s injector system denies you more Sozo so soon!"))
+		return
+
+	if(!wearer.reagents)
+		return
+
+	var/obj/item/clothing/gloves/yautja/bracers = wearer.gloves
+	if(!istype(bracers))
+		to_chat(wearer, SPAN_WARNING("You must be wearing your bracers, as they power the armor!"))
+		return
+
+	if(!bracers.drain_power(wearer, 300)) //consult Yautja Council for actual drain values
+		return
+
+	sozo_charges--
+	wearer.reagents.add_reagent("sozo", 15)
+	to_chat(wearer, SPAN_NOTICE("[src] hisses as it injects Sozo into your bloodstream!"))
+	playsound(wearer, 'sound/items/hypospray.ogg', 25, TRUE)
+	update_sozo_actions()
+	addtimer(CALLBACK(src, PROC_REF(restore_sozo_charge)), 3 MINUTES)
+
+/obj/item/clothing/suit/armor/yautja/hunter/full/proc/restore_sozo_charge()
+	sozo_charges = min(sozo_charges + 1, sozo_charges_max)
+	update_sozo_actions()
+
+/datum/action/item_action/sozo_inject
+	name = "Inject Sozo"
+
+/datum/action/item_action/sozo_inject/New(Target, obj/item/holder)
+	.= ..()
+	name = "Inject Sozo"
+	button.name = name
+
+/datum/action/item_action/sozo_inject/action_activate()
+	. = ..()
+	var/obj/item/clothing/suit/armor/yautja/hunter/full/armor = holder_item
+	if(istype(armor))
+		armor.inject_sozo(owner)
+
+/datum/action/item_action/sozo_inject/can_use_action()
+	var/mob/living/carbon/human/human_owner = owner
+	if(!istype(human_owner) || human_owner.is_mob_incapacitated())
+		return FALSE
+	if(human_owner.wear_suit != holder_item)
+		return FALSE
+	return TRUE
+
+/datum/action/item_action/sozo_inject/update_button_icon()
+	var/obj/item/clothing/suit/armor/yautja/hunter/full/armor = holder_item
+	if(istype(armor) && armor.sozo_charges < 1)
+		button.color = rgb(120, 120, 120, 200)
+	else
+		button.color = rgb(255, 255, 255, 255)
+
+/obj/item/clothing/suit/armor/yautja/hunter/full/verb/ap_ward_verb()
+	set name = "Toggle Armor Lock"
+	set desc = "Brace the plates. Armor-piercing hits cannot exceed the ward's cap."
+	set category = "Yautja.Utility"
+	set src in usr
+	toggle_ap_ward(usr)
+
+/obj/item/clothing/suit/armor/yautja/hunter/full/proc/toggle_ap_ward(mob/user)
+	if(!ishuman(user))
+		return
+
+	var/mob/living/carbon/human/wearer = user
+
+	if(wearer.is_mob_incapacitated(TRUE))
+		return
+
+	if(wearer.wear_suit != src)
+		to_chat(wearer, SPAN_WARNING("You must be wearing [src] to brace it."))
+		return
+
+	if(!HAS_TRAIT(wearer, TRAIT_YAUTJA_TECH) && !wearer.hunter_data?.thralled)
+		to_chat(wearer, SPAN_WARNING("You have no idea how any of this works."))
+		return
+
+	if(ap_ward_on)
+		disable_ap_ward(wearer)
+		return
+
+	var/obj/item/clothing/gloves/yautja/bracers = wearer.gloves
+	if(!istype(bracers))
+		to_chat(wearer, SPAN_WARNING("You must be wearing your bracers, as they power the armor!"))
+		return
+
+	if(!bracers.drain_power(wearer, ap_ward_drain))
+		return
+
+	ap_ward_on = TRUE
+	slowdown += ap_ward_slowdown
+	START_PROCESSING(SSobj, src)
+	to_chat(wearer, SPAN_NOTICE("[src] braces. Armor-piercing hits can no longer fully pierce our armor!"))
+	update_ap_ward_actions()
+
+/obj/item/clothing/suit/armor/yautja/hunter/full/proc/disable_ap_ward(mob/user)
+	if(!ap_ward_on)
+		return
+
+	ap_ward_on = FALSE
+	slowdown -= ap_ward_slowdown
+	STOP_PROCESSING(SSobj, src)
+	if(user)
+		to_chat(user, SPAN_NOTICE("[src]'s plates release!"))
+	update_ap_ward_actions()
+
+/obj/item/clothing/suit/armor/yautja/hunter/full/process()
+	if(!ap_ward_on)
+		return PROCESS_KILL
+
+	if(!ishuman(loc))
+		disable_ap_ward(null)
+		return PROCESS_KILL
+
+	var/mob/living/carbon/human/wearer = loc
+	if(wearer.wear_suit != src)
+		disable_ap_ward(wearer)
+		return PROCESS_KILL
+
+	var/obj/item/clothing/gloves/yautja/bracers = wearer.gloves
+	if(!istype(bracers) || !bracers.drain_power(wearer, ap_ward_drain))
+		disable_ap_ward(wearer)
+		return PROCESS_KILL
+
+/obj/item/clothing/suit/armor/yautja/hunter/full/dropped(mob/user)
+	if(ap_ward_on && ishuman(user))
+		disable_ap_ward(user)
+	return ..()
+
+/obj/item/clothing/suit/armor/yautja/hunter/full/proc/update_ap_ward_actions()
+	for(var/datum/action/action as anything in actions)
+		action.update_button_icon()
+
+/datum/action/item_action/ap_ward
+	name = "Toggle Armor Lock"
+
+/datum/action/item_action/ap_ward/New(Target, obj/item/holder)
+	. = ..()
+	name = "Toggle Armor Lock"
+	button.name = name
+
+/datum/action/item_action/ap_ward/action_activate()
+	. = ..()
+	var/obj/item/clothing/suit/armor/yautja/hunter/full/armor = holder_item
+	if(istype(armor))
+		armor.toggle_ap_ward(owner)
+
+/datum/action/item_action/ap_ward/can_use_action()
+	var/mob/living/carbon/human/human_owner = owner
+	if(!istype(human_owner) || human_owner.is_mob_incapacitated())
+		return FALSE
+	if(human_owner.wear_suit != holder_item)
+		return FALSE
+	return TRUE
+
+/datum/action/item_action/ap_ward/update_button_icon()
+	var/obj/item/clothing/suit/armor/yautja/hunter/full/armor = holder_item
+	if(istype(armor) && armor.ap_ward_on)
+		button.color = rgb(80, 200, 180, 255)
+	else
+		button.color = rgb(255, 255, 255, 255)
+
 
 /obj/item/clothing/suit/armor/yautja/hunter/full/Initialize(mapload, armor_number, armor_material = "ebony")
 	. = ..(mapload, 0)

@@ -198,7 +198,6 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	armor_rad = CLOTHING_ARMOR_HIGH
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	slowdown = 0.55
-	var/speed_timer = 0
 	item_state_slots = list(WEAR_JACKET = "fullarmor")
 	allowed = list(
 		/obj/item/weapon/harpoon,
@@ -210,8 +209,8 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	)
 	fire_intensity_resistance = 20
 	actions_types = list(/datum/action/item_action/sozo_inject, /datum/action/item_action/ap_ward)
-	var/sozo_ready_at_1 = 0
-	var/sozo_ready_at_2 = 0
+	var/sozo_charges = 2
+	var/sozo_charges_max = 2
 	var/ap_ward_on = FALSE
 	var/ap_ward_slowdown = 1
 	var/ap_ward_drain = 100
@@ -223,14 +222,6 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	set category = "Yautja.Utility"
 	set src in usr
 	inject_sozo(usr)
-
-/obj/item/clothing/suit/armor/yautja/hunter/full/proc/sozo_charges_ready()
-	var/ready = 0
-	if(world.time >= sozo_ready_at_1)
-		ready++
-	if(world.time >= sozo_ready_at_2)
-		ready++
-	return ready
 
 /obj/item/clothing/suit/armor/yautja/hunter/full/proc/update_sozo_actions()
 	for(var/datum/action/action as anything in actions)
@@ -253,15 +244,8 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		to_chat(wearer, SPAN_WARNING("You have no idea how any of this works."))
 		return
 
-	var/charge_used = 0
-	if(world.time >= sozo_ready_at_1)
-		charge_used = 1
-	else if(world.time >= sozo_ready_at_2)
-		charge_used = 2
-	else
-		var/soonest = min(sozo_ready_at_1, sozo_ready_at_2)
-		var/seconds_left = max(1, round((soonest - world.time) / 10))
-		to_chat(wearer, SPAN_WARNING("[src]'s injector system denies you more Sozo so soon. Time left: <b>[seconds_left]</b> seconds."))
+	if(sozo_charges < 1)
+		to_chat(wearer, SPAN_WARNING("[src]'s injector system denies you more Sozo so soon!"))
 		return
 
 	if(!wearer.reagents)
@@ -275,20 +259,16 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	if(!bracers.drain_power(wearer, 300)) //consult Yautja Council for actual drain values
 		return
 
-	if(charge_used == 1)
-		sozo_ready_at_1 = world.time + 3 MINUTES
-	else
-		sozo_ready_at_2 = world.time + 3 MINUTES
-
+	sozo_charges--
 	wearer.reagents.add_reagent("sozo", 15)
 	to_chat(wearer, SPAN_NOTICE("[src] hisses as it injects Sozo into your bloodstream!"))
 	playsound(wearer, 'sound/items/hypospray.ogg', 25, TRUE)
 	update_sozo_actions()
-	addtimer(CALLBACK(src, PROC_REF(update_sozo_actions)), 3 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(restore_sozo_charge)), 3 MINUTES)
 
-/obj/item/clothing/suit/armor/yautja/hunter/full/proc/reset_sozo_inject()
-	for(var/datum/action/action as anything in actions)
-		action.update_button_icon()
+/obj/item/clothing/suit/armor/yautja/hunter/full/proc/restore_sozo_charge()
+	sozo_charges = min(sozo_charges + 1, sozo_charges_max)
+	update_sozo_actions()
 
 /datum/action/item_action/sozo_inject
 	name = "Inject Sozo"
@@ -314,7 +294,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /datum/action/item_action/sozo_inject/update_button_icon()
 	var/obj/item/clothing/suit/armor/yautja/hunter/full/armor = holder_item
-	if(istype(armor) && !armor.sozo_charges_ready())
+	if(istype(armor) && armor.sozo_charges < 1)
 		button.color = rgb(120, 120, 120, 200)
 	else
 		button.color = rgb(255, 255, 255, 255)

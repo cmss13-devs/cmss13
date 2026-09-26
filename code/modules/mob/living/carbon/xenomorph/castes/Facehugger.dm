@@ -255,7 +255,7 @@
 	return null
 
 /mob/living/carbon/xenomorph/facehugger/handle_queen_screech(mob/living/carbon/xenomorph/queen/queen)
-	to_chat(src, SPAN_DANGER("The mighty roar of the queen makes you tremble and fall over!"))
+	to_chat(src, SPAN_DANGER("The mighty roar of the queen makes us tremble and fall over!"))
 	adjust_effect(6, STUN)
 	apply_effect(6, WEAKEN)
 
@@ -269,14 +269,14 @@
 
 	switch(stat)
 		if(UNCONSCIOUS)
-			to_chat(src, SPAN_WARNING("We cannot emote while unconscious!"))
+			to_chat(src, SPAN_WARNING("You cannot emote while unconscious!"))
 			return FALSE
 		if(DEAD)
-			to_chat(src, SPAN_WARNING("We cannot emote while dead!"))
+			to_chat(src, SPAN_WARNING("You cannot emote while dead!"))
 			return FALSE
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, SPAN_DANGER("We cannot emote (muted)."))
+			to_chat(src, SPAN_DANGER("You cannot emote (muted)."))
 			return FALSE
 		if(!client.attempt_talking())
 			return FALSE

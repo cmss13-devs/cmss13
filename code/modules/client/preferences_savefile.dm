@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 37
+#define SAVEFILE_VERSION_MAX 38
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -249,6 +249,12 @@
 		S["toggles_sound"] >> toggles_insert
 		toggles_insert |= (SOUND_ROUND_END)
 		S["toggles_sound"] << toggles_insert
+
+	if(savefile_version < 38)
+		var/pref_toggles
+		S["toggle_prefs"] >> pref_toggles
+		pref_toggles |= TOGGLE_SHOUTING_AT_POINTED_PEOPLE // enabled by default for new saves
+		S["toggle_prefs"] << pref_toggles
 
 	if(updated_from)
 		RegisterSignal(owner, COMSIG_CLIENT_LOGGED_IN, PROC_REF(handle_logged_in))

@@ -332,11 +332,11 @@
 		)
 
 /obj/structure/bed/chair/BlockedPassDirs(atom/movable/mover, target_dir)
-    if(buckled_mob && isliving(mover))
-        var/mob/living/L = mover
-        if(!(L.pass_flags?.flags_pass & PASS_MOB_IS_HUMAN))
-            return BLOCKED_MOVEMENT
-    return ..()
+	if(buckled_mob && isliving(mover))
+		var/mob/living/L = mover
+		if(!(L.pass_flags?.flags_pass & PASS_MOB_IS_HUMAN))
+		return BLOCKED_MOVEMENT
+	return ..()
 
 /obj/structure/bed/chair/unbuckle()
 	if(buckled_mob)

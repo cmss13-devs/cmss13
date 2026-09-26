@@ -70,7 +70,7 @@
 /obj/item/clothing/suit/space/compression/uscm
 	name = "\improper MK.50 compression suit"
 	desc = "A heavy, bulky civilian space suit, fitted with armored plates. This specific suit has found its way into the ragtag inventory of the USCM's patrol boat requisitions system."
-	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/baton,/obj/item/restraint/handcuffs,/obj/item/tank)
+	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/weapon/baton,/obj/item/restraint/handcuffs,/obj/item/tank)
 
 // Souto man
 

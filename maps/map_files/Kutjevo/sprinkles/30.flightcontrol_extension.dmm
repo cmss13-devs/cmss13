@@ -148,7 +148,7 @@
 /turf/open/floor/kutjevo/tan/alt_inner_edge/east,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "lU" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/kutjevo/tan/alt_edge/west,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "me" = (
@@ -244,15 +244,15 @@
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "rZ" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/cartridge,
-/obj/item/ammo_casing/cartridge,
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "sR" = (
 /turf/open/floor/almayer/research/containment/floor2,
 /area/template_noop)
 "tM" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/kutjevo/tan/alt_edge/southeast,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "vu" = (
@@ -264,7 +264,7 @@
 /turf/open/floor/kutjevo/tan/alt_inner_edge/north,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "vQ" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "vV" = (
@@ -387,7 +387,7 @@
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "Fk" = (
 /obj/item/stack/sheet/wood,
-/obj/item/ammo_casing/cartridge,
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /turf/open/floor/kutjevo/tan/alt_edge/east,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "Gr" = (
@@ -403,12 +403,12 @@
 /turf/open/floor/kutjevo/tan/alt_edge,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "Hl" = (
-/obj/item/ammo_casing/shell,
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "HJ" = (
-/obj/item/ammo_casing/cartridge,
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /turf/open/floor/kutjevo/tan/multi_tiles/north,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "HK" = (
@@ -533,7 +533,7 @@
 /turf/open/floor/kutjevo/tan/alt_inner_edge,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "QN" = (
-/obj/item/ammo_casing/cartridge,
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /turf/open/floor/kutjevo/tan/alt_edge/west,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "Ri" = (
@@ -635,7 +635,7 @@
 /turf/open/floor/kutjevo/tan/alt_edge/west,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "XN" = (
-/obj/item/ammo_casing/cartridge,
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "Yy" = (

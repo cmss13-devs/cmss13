@@ -5,17 +5,17 @@
 	pixel_y = -22
 	},
 /turf/open/floor/shiva/radiator_tile,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "c" = (
 /obj/structure/machinery/door_control{
 	id = "eelz_shutters";
 	pixel_y = 22
 	},
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "d" = (
 /turf/open/auto_turf/snow/layer1,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "h" = (
 /obj/item/lightstick/red/spoke/planted{
 	layer = 3.1;
@@ -23,7 +23,7 @@
 	pixel_y = 25
 	},
 /turf/open/auto_turf/snow/layer1,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "k" = (
 /obj/item/lightstick/red/spoke/planted{
 	layer = 2.99;
@@ -31,20 +31,20 @@
 	pixel_y = 28
 	},
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "l" = (
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = 12;
 	pixel_y = 25
 	},
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "m" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassbb_1"
 	},
 /turf/open/auto_turf/snow/layer2,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "n" = (
 /obj/item/lightstick/red/spoke/planted{
 	layer = 2.99;
@@ -52,40 +52,40 @@
 	pixel_y = 28
 	},
 /turf/open/auto_turf/snow/layer0,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "s" = (
 /obj/structure/machinery/door_control{
 	id = "eelz_shutters";
 	pixel_y = 22
 	},
 /turf/open/floor/shiva/radiator_tile,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "u" = (
 /turf/open/floor/shiva/floor3,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "v" = (
 /turf/open/auto_turf/snow/layer0,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "x" = (
 /obj/structure/machinery/door_control{
 	id = "elz_shutters";
 	pixel_y = 22
 	},
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "D" = (
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "F" = (
 /obj/structure/machinery/door_control{
 	id = "elz_shutters";
 	pixel_y = -22
 	},
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "J" = (
 /turf/open/floor/shiva/multi_tiles/east,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "Q" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
@@ -94,21 +94,21 @@
 	name = "\improper Landing Zone Shutters"
 	},
 /turf/open/floor/plating/plating_catwalk/shiva,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "R" = (
 /obj/structure/machinery/door_control{
 	id = "elz_shutters";
 	pixel_y = 22
 	},
 /turf/open/floor/shiva/radiator_tile,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "S" = (
 /obj/structure/machinery/door_control{
 	id = "eelz_shutters";
 	pixel_y = -22
 	},
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "U" = (
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
 /area/shiva/interior/oob)
@@ -120,14 +120,14 @@
 	name = "\improper Landing Zone Shutters"
 	},
 /turf/open/floor/plating/plating_catwalk/shiva,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "Z" = (
 /obj/structure/machinery/door_control{
 	id = "elz_shutters";
 	pixel_y = -22
 	},
 /turf/open/floor/shiva/radiator_tile,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 
 (1,1,1) = {"
 D

@@ -1,69 +1,69 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/open/auto_turf/ice/layer2,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "b" = (
 /turf/open/floor/plating,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "d" = (
 /turf/open/auto_turf/ice/layer1,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "f" = (
 /obj/item/shard{
 	icon_state = "large";
 	name = "ice shard"
 	},
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "g" = (
 /obj/item/shard{
 	icon_state = "medium";
 	name = "ice shard"
 	},
 /turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "h" = (
 /turf/open/floor/plating,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "k" = (
 /turf/closed/wall/shiva/prefabricated/pink,
-/area/shiva/interior/lz2_habs)
+/area/shiva/interior/lz1_habs)
 "l" = (
 /obj/item/shard{
 	icon_state = "large";
 	name = "ice shard"
 	},
 /turf/open/floor/shiva/north,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "o" = (
 /obj/item/shard{
 	icon_state = "large";
 	name = "ice shard"
 	},
 /turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "p" = (
 /obj/item/stack/snow,
 /turf/open/auto_turf/ice/layer2,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "q" = (
 /obj/item/stack/snow,
 /turf/open/auto_turf/ice/layer0,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "r" = (
 /turf/open/auto_turf/snow/layer2,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "u" = (
 /obj/structure/barricade/snow,
 /turf/open/auto_turf/ice/layer0,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "v" = (
 /turf/open/floor/shiva/north,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "w" = (
 /obj/structure/barricade/snow,
 /turf/open/floor/plating,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "x" = (
 /obj/item/shard{
 	icon_state = "medium";
@@ -71,32 +71,32 @@
 	},
 /obj/structure/barricade/snow,
 /turf/open/floor/shiva/north,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "z" = (
 /obj/structure/barricade/metal/wired,
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "B" = (
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
 /area/shiva/interior/oob)
 "E" = (
 /obj/item/weapon/ice_axe/red,
 /turf/open/auto_turf/ice/layer0,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "G" = (
 /obj/item/shard{
 	icon_state = "large";
 	name = "ice shard"
 	},
 /turf/open/auto_turf/ice/layer0,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "I" = (
 /obj/structure/barricade/metal/wired,
 /turf/open/auto_turf/ice/layer1,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "K" = (
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "L" = (
 /turf/closed/wall/shiva/ice,
 /area/shiva/interior/oob)
@@ -105,34 +105,34 @@
 	dir = 8
 	},
 /turf/open/auto_turf/ice/layer1,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "N" = (
 /obj/item/stack/snow,
 /turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "P" = (
 /turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "Q" = (
 /turf/open/auto_turf/snow/layer3,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "S" = (
 /obj/item/shard{
 	icon_state = "medium";
 	name = "ice shard"
 	},
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "T" = (
 /obj/item/shard{
 	icon_state = "medium";
 	name = "ice shard"
 	},
 /turf/open/floor/plating,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "U" = (
 /turf/open/auto_turf/snow/layer4,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "V" = (
 /obj/item/shard{
 	icon_state = "large";
@@ -145,21 +145,21 @@
 	pixel_y = -19
 	},
 /turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "X" = (
 /turf/open/auto_turf/ice/layer0,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "Y" = (
 /obj/item/shard{
 	icon_state = "medium";
 	name = "ice shard"
 	},
 /turf/open/floor/shiva/north,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 "Z" = (
 /obj/structure/barricade/snow,
 /turf/open/floor/shiva/north,
-/area/shiva/interior/caves/s_lz2)
+/area/shiva/interior/caves/s_lz1)
 
 (1,1,1) = {"
 k

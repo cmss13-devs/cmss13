@@ -34,7 +34,7 @@
 /// Whether or not the bullet hits the target that was clicked or if it keeps travelling
 #define AMMO_HITS_TARGET_TURF (1<<17)
 #define AMMO_ALWAYS_FF (1<<18)
-//                              (1<<19) unused, previously was AMMO_HOMING
+#define AMMO_PASSES_OVER_VEHICLES (1<<19)
 /// Can't be deflected
 #define AMMO_NO_DEFLECT (1<<20)
 ///Can only hit people with criminal status

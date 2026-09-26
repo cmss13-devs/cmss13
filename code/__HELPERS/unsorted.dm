@@ -308,6 +308,43 @@
 
 	return vehicles
 
+/**
+ * Finds the multitile vehicle (if any) whose footprint covers `checked_turf`.
+ * A plain contents check only finds a vehicle on its one real .loc tile.
+ */
+/proc/get_multitile_vehicle_at(turf/checked_turf)
+	if(!checked_turf)
+		return null
+	for(var/obj/vehicle/multitile/vehicle as anything in GLOB.all_multi_vehicles)
+		if(checked_turf in vehicle.locs)
+			return vehicle
+	return null
+
+/**
+ * Checks real adjacency against every turf in `vehicle.locs`
+ */
+/proc/is_adjacent_to_multitile_vehicle(atom/movable/mover, obj/vehicle/multitile/vehicle)
+	if(!mover || !vehicle)
+		return FALSE
+	var/turf/mover_turf = get_turf(mover)
+	if(!mover_turf)
+		return FALSE
+	if(mover_turf in vehicle.locs)
+		return TRUE
+	for(var/turf/vehicle_turf in vehicle.locs)
+		if(mover_turf.Adjacent(vehicle_turf))
+			return TRUE
+	return FALSE
+
+/**
+ * Returns the distance to the closest tile of the vehicle's footprint
+ */
+/proc/get_dist_to_multitile_vehicle(atom/mover, obj/vehicle/multitile/vehicle)
+	var/closest = INFINITY
+	for(var/turf/vehicle_turf in vehicle.locs)
+		closest = min(closest, get_dist(mover, vehicle_turf))
+	return closest
+
 //Orders mobs by type then by name
 /proc/sortmobs()
 	var/list/moblist = list()

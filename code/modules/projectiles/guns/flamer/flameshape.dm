@@ -5,7 +5,32 @@
 /datum/flameshape/proc/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
 	return
 
-/datum/flameshape/proc/generate_fire(turf/T, obj/flamer_fire/F2, new_spread_amt, fs, should_call, skip_flame = FALSE, fuel_pressure = 1)
+/datum/flameshape/proc/is_tank_obstacle(atom/obstacle)
+	return istype(obstacle, /obj/vehicle/multitile/tank)
+
+/**
+ * Decides which tank (if any) a newly-created flame at turf T should mount atop.
+ * Mounts if continuing from something already mounted, or arriving from outside the tank's footprint.
+ *
+ * Arguments:
+ * * turf/T = The turf a new flame is about to be created on.
+ * * turf/prev_T = The immediately preceding turf in this fire's propagation chain.
+ * * prev_mount_tank = Whichever tank the thing at prev_T was already mounted atop.
+ *
+ * Returns:
+ * * The tank to mount atop, or FALSE to stay grounded.
+ */
+/proc/resolve_flame_mount(turf/T, turf/prev_T, obj/vehicle/multitile/tank/prev_mount_tank)
+	var/obj/vehicle/multitile/tank/here_tank = get_multitile_vehicle_at(T)
+	if(!here_tank)
+		return FALSE
+	if(prev_mount_tank == here_tank)
+		return here_tank
+	if(!prev_T || get_multitile_vehicle_at(prev_T) != here_tank)
+		return here_tank
+	return FALSE
+
+/datum/flameshape/proc/generate_fire(turf/T, obj/flamer_fire/F2, new_spread_amt, fs, should_call, skip_flame = FALSE, fuel_pressure = 1, mount_override = FLAME_MOUNT_AUTO)
 	var/obj/flamer_fire/foundflame = locate() in T
 	if(foundflame && foundflame.tied_reagents == F2.tied_reagents && !skip_flame) // From the same flames
 		return
@@ -18,7 +43,7 @@
 	if(!should_call)
 		to_call = null
 
-	new /obj/flamer_fire(T, F2.weapon_cause_data, F2.tied_reagent, new_spread_amt, F2.tied_reagents, fs, F2.target_clicked, to_call, fuel_pressure, F2.fire_variant)
+	new /obj/flamer_fire(T, F2.weapon_cause_data, F2.tied_reagent, new_spread_amt, F2.tied_reagents, fs, F2.target_clicked, to_call, fuel_pressure, F2.fire_variant, mount_override)
 	return TRUE
 
 /datum/flameshape/default
@@ -50,9 +75,11 @@
 				A.flamer_fire_act(burn_dam, F.weapon_cause_data)
 				if (A.flags_atom & ON_BORDER)
 					break
-				new_spread_amt = 0
+				if(!is_tank_obstacle(A))
+					new_spread_amt = 0
 
-		addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, new_spread_amt, F.flameshape, null, FALSE, fuel_pressure), 0)
+		var/mount_override = resolve_flame_mount(T, source_turf, F.get_tank_on_top_of())
+		addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, new_spread_amt, F.flameshape, null, FALSE, fuel_pressure, mount_override), 0)
 
 
 /datum/flameshape/default/irregular
@@ -115,6 +142,7 @@
 	var/turf/source_turf = get_turf(F.loc)
 
 	var/turf/prev_T
+	var/obj/vehicle/multitile/tank/prev_mount_tank = F.get_tank_on_top_of()
 
 	var/distance = 1
 	var/stop_at_turf = FALSE
@@ -138,7 +166,8 @@
 				A.flamer_fire_act(burn_dam, F.weapon_cause_data)
 				if (A.flags_atom & ON_BORDER)
 					break
-				stop_at_turf = TRUE
+				if(!is_tank_obstacle(A))
+					stop_at_turf = TRUE
 
 		if(T == F.loc)
 			if(stop_at_turf)
@@ -146,12 +175,16 @@
 			prev_T = T
 			continue
 
-		addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, 0, F.flameshape, null, TRUE, fuel_pressure), distance)
+		var/mount_override = FALSE
+		if(!stop_at_turf)
+			mount_override = resolve_flame_mount(T, prev_T, prev_mount_tank)
+		addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, 0, F.flameshape, null, TRUE, fuel_pressure, mount_override), distance)
 		if(stop_at_turf)
 			break
 
 		distance++
 		prev_T = T
+		prev_mount_tank = mount_override
 
 	if(F.to_call)
 		addtimer(F.to_call, distance + 1)
@@ -168,6 +201,7 @@
 	var/distance = 1
 	var/hit_dense_atom_mid = FALSE
 	var/turf/prev_T
+	var/obj/vehicle/multitile/tank/prev_mount_tank_mid = F.get_tank_on_top_of()
 
 	for(var/turf/T in turfs)
 		if(distance > fire_spread_amount)
@@ -184,7 +218,8 @@
 				AM.flamer_fire_act(burn_dam, F.weapon_cause_data)
 				if (AM.flags_atom & ON_BORDER)
 					break
-				hit_dense_atom_mid = TRUE
+				if(!is_tank_obstacle(AM))
+					hit_dense_atom_mid = TRUE
 
 		if(T == F.loc)
 			if (hit_dense_atom_mid)
@@ -193,8 +228,12 @@
 			prev_T = T
 			continue
 
-		addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, 0, FLAMESHAPE_TRIANGLE, null, FALSE, fuel_pressure), 0)
+		var/mid_mount_override = FALSE
+		if(!hit_dense_atom_mid)
+			mid_mount_override = resolve_flame_mount(T, prev_T, prev_mount_tank_mid)
+		addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, 0, FLAMESHAPE_TRIANGLE, null, FALSE, fuel_pressure, mid_mount_override), 0)
 		prev_T = T
+		prev_mount_tank_mid = mid_mount_override
 		sleep(1)
 
 		var/list/turf/right = list()
@@ -212,6 +251,7 @@
 		var/hit_dense_atom_side = FALSE
 
 		var/turf/prev_R = T
+		var/obj/vehicle/multitile/tank/prev_mount_tank_right = mid_mount_override
 		for (var/turf/R in right)
 			if(prev_R)
 				var/atom/movable/temp = new/obj/flamer_fire()
@@ -221,16 +261,20 @@
 					AM.flamer_fire_act(burn_dam, F.weapon_cause_data)
 					if (AM.flags_atom & ON_BORDER)
 						break
-					hit_dense_atom_side = TRUE
+					if(!is_tank_obstacle(AM))
+						hit_dense_atom_side = TRUE
 				else if (hit_dense_atom_mid)
 					break
-			generate_fire(R, F, 0, FLAMESHAPE_TRIANGLE, FALSE, FALSE, fuel_pressure)
+			var/right_mount_override = resolve_flame_mount(R, prev_R, prev_mount_tank_right)
+			generate_fire(R, F, 0, FLAMESHAPE_TRIANGLE, FALSE, FALSE, fuel_pressure, right_mount_override)
 			if (!hit_dense_atom_mid && hit_dense_atom_side)
 				break
 			prev_R = R
+			prev_mount_tank_right = right_mount_override
 			sleep(1)
 
 		var/turf/prev_L = T
+		var/obj/vehicle/multitile/tank/prev_mount_tank_left = mid_mount_override
 		for (var/turf/L in left)
 			if(prev_L)
 				var/atom/movable/temp = new/obj/flamer_fire()
@@ -240,13 +284,16 @@
 					AM.flamer_fire_act(burn_dam, F.weapon_cause_data)
 					if (AM.flags_atom & ON_BORDER)
 						break
-					hit_dense_atom_side = TRUE
+					if(!is_tank_obstacle(AM))
+						hit_dense_atom_side = TRUE
 				else if (hit_dense_atom_mid)
 					break
-			generate_fire(L, F, 0, FLAMESHAPE_TRIANGLE, FALSE, FALSE, fuel_pressure)
+			var/left_mount_override = resolve_flame_mount(L, prev_L, prev_mount_tank_left)
+			generate_fire(L, F, 0, FLAMESHAPE_TRIANGLE, FALSE, FALSE, fuel_pressure, left_mount_override)
 			if (!hit_dense_atom_mid && hit_dense_atom_side)
 				break
 			prev_L = L
+			prev_mount_tank_left = left_mount_override
 			sleep(1)
 
 		if (hit_dense_atom_mid)

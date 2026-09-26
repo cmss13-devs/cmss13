@@ -308,10 +308,6 @@
 		to_chat(xeno, SPAN_XENONOTICE("It would not be wise to try to leap there..."))
 		return
 
-	if(istype(target, /obj/vehicle/multitile))
-		to_chat(xeno, SPAN_XENONOTICE("It would not be wise to try to leap there..."))
-		return
-
 	var/area/target_area = get_area(target_turf)
 	if(target_area.flags_area & AREA_NOBURROW)
 		to_chat(xeno, SPAN_XENONOTICE("We cannot leap to that area!"))
@@ -360,7 +356,10 @@
 
 	//Initial visual
 	var/obj/effect/king_leap/leap_visual = new(owner.loc, negative, owner.dir)
-	new /obj/effect/xenomorph/xeno_telegraph/king_attack_template(template_turf, 20)
+	var/obj/effect/xenomorph/xeno_telegraph/king_attack_template/landing_telegraph = new(template_turf, 20)
+	// Bump above the vehicle so the telegraph renders on top of it.
+	if(locate(/obj/vehicle/multitile) in target_turf)
+		landing_telegraph.layer = TANK_RIDER_LAYER
 
 	negative = !negative //invert it for the descent later
 
@@ -402,10 +401,14 @@
 	owner.mouse_opacity = initial(owner.mouse_opacity)
 	playsound(owner.loc, 'sound/effects/meteorimpact.ogg', 200, TRUE)
 
-	/// Effects for landing
-	new /obj/effect/heavy_impact(owner.loc)
+	/// Effects for landing. Bumped above a vehicle so impact visuals don't render underneath it.
+	var/list/impact_turfs = list(owner.loc)
 	for(var/step in CARDINAL_ALL_DIRS)
-		new /obj/effect/heavy_impact(get_step(owner.loc, step))
+		impact_turfs += get_step(owner.loc, step)
+	for(var/turf/impact_turf in impact_turfs)
+		var/obj/effect/heavy_impact/impact = new(impact_turf)
+		if(locate(/obj/vehicle/multitile) in impact_turf)
+			impact.layer = TANK_RIDER_LAYER
 
 	// Actual Damaging Effects - Add stuff for cades - NEED TELEGRAPHS NEED EFFECTS
 
@@ -431,6 +434,11 @@
 
 	for(var/mob/living in range(7, owner))
 		shake_camera(living, 15, 1)
+
+	// Landed dead-centre on a vehicle tile, place the King as a rider directly.
+	var/obj/vehicle/multitile/landed_on = get_multitile_vehicle_at(get_turf(owner))
+	if(landed_on)
+		landed_on.mark_on_top(owner)
 
 	REMOVE_TRAIT(owner, TRAIT_UNDENSE, "Destroy")
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, "Destroy")

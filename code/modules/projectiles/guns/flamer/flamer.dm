@@ -267,7 +267,10 @@
 		if(blocked)
 			if(blocked.flags_atom & ON_BORDER)
 				return
-			stop_at_turf = TRUE
+			var/datum/flameshape/FS = GLOB.flameshapes[flameshape]
+			var/tank_obstacle = FS && FS.is_tank_obstacle(blocked)
+			if(!tank_obstacle)
+				stop_at_turf = TRUE
 
 	if(stop_at_turf)
 		flame_adjacent(current_turf, user, chem)
@@ -280,7 +283,9 @@
 
 	playsound(current_turf, src.get_fire_sound(), 50, TRUE)
 
-	new /obj/flamer_fire(current_turf, create_cause_data(initial(name), user), chem, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, PROC_REF(show_percentage), user), fuel_pressure, fire_type)
+	// The shooter's own tile stands in for "whatever preceded this flame".
+	var/mount_override = resolve_flame_mount(current_turf, get_turf(user), user.get_tank_on_top_of())
+	new /obj/flamer_fire(current_turf, create_cause_data(initial(name), user), chem, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, PROC_REF(show_percentage), user), fuel_pressure, fire_type, mount_override)
 
 /obj/item/weapon/gun/flamer/proc/flame_adjacent(turf/turfed, mob/living/user, datum/reagent/chem)
 	if(!istype(turfed))
@@ -577,6 +582,10 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "dynamic_2"
 	layer = BELOW_OBJ_LAYER
+	// Lets a flame ride along on a tank's footprint instead of staying behind on the map.
+	is_allowed_atop_vehicle = TRUE
+	// A mounted flame shouldn't get flung off by a hard crash. same behavior as acid tiles. Intent is forcing crewmen to pulling back and waiting it off.
+	immune_to_tank_crash_scatter = TRUE
 
 	light_system = STATIC_LIGHT
 	light_on = TRUE
@@ -603,7 +612,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 	var/weather_smothering_strength = 0
 
-/obj/flamer_fire/Initialize(mapload, datum/cause_data/cause_data, datum/reagent/R, fire_spread_amount = 0, datum/reagents/obj_reagents = null, new_flameshape = FLAMESHAPE_DEFAULT, atom/target = null, datum/callback/C, fuel_pressure = 1, fire_type = FIRE_VARIANT_DEFAULT)
+/obj/flamer_fire/Initialize(mapload, datum/cause_data/cause_data, datum/reagent/R, fire_spread_amount = 0, datum/reagents/obj_reagents = null, new_flameshape = FLAMESHAPE_DEFAULT, atom/target = null, datum/callback/C, fuel_pressure = 1, fire_type = FIRE_VARIANT_DEFAULT, mount_override = FLAME_MOUNT_AUTO)
 	. = ..()
 	if(!R)
 		R = new /datum/reagent/napalm/ut()
@@ -668,6 +677,11 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 			qdel(src)
 			return
 
+	// Mounts atop a tank's footprint so it rides along instead of being left behind.
+	var/obj/vehicle/multitile/tank/mount_tank = (mount_override == FLAME_MOUNT_AUTO) ? get_multitile_vehicle_at(loc) : mount_override
+	if(istype(mount_tank))
+		mount_tank.obj_mark_on_top(src)
+
 	if(fire_spread_amount > 0)
 		var/datum/flameshape/FS = GLOB.flameshapes[flameshape]
 		if(!FS)
@@ -692,6 +706,9 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 			S.changing_layer(new_layer)
 
 	for(var/mob/living/ignited_morb in loc) //Deal bonus damage if someone's caught directly in initial stream
+		// Only a mob actually riding atop the same tank gets caught by a mounted flame.
+		if(is_atop_vehicle() && ignited_morb.get_tank_on_top_of() != get_tank_on_top_of())
+			continue
 		if(ignited_morb.stat == DEAD)
 			continue
 
@@ -760,6 +777,10 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		current_open_turf.check_fall(src)
 
 /obj/flamer_fire/Destroy()
+	// Unmounts from the tank if mounted, otherwise a burned-out flame stays counted.
+	var/obj/vehicle/multitile/tank/mount_tank = get_tank_on_top_of()
+	if(istype(mount_tank))
+		mount_tank.obj_clear_on_top(src)
 	STOP_PROCESSING(SSobj, src)
 	to_call = null
 	tied_reagent = null
@@ -773,6 +794,12 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 /obj/flamer_fire/Crossed(atom/movable/atom_movable)
 	..()
+	// Mounting is only decided at creation, not when a tank drives onto existing fire.
+	if(is_atop_vehicle() && isliving(atom_movable))
+		// Only a mob riding atop that same tank can be "crossing" it for real.
+		var/mob/living/mob_crossed = atom_movable
+		if(mob_crossed.get_tank_on_top_of() != get_tank_on_top_of())
+			return
 	atom_movable.handle_flamer_fire_crossed(src)
 
 /obj/flamer_fire/proc/type_b_debuff_xeno_armor(mob/living/carbon/xenomorph/X)
@@ -882,7 +909,12 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 	update_flame()
 
+	var/obj/vehicle/multitile/tank/mounted_on = is_atop_vehicle() ? get_tank_on_top_of() : null
 	for(var/atom/thing in loc)
+		if(mounted_on && isliving(thing))
+			var/mob/living/living_thing = thing
+			if(living_thing.get_tank_on_top_of() != mounted_on)
+				continue
 		thing.handle_flamer_fire(src, damage, delta_time)
 
 	//This has been made a simple loop, for the most part flamer_fire_act() just does return, but for specific items it'll cause other effects.

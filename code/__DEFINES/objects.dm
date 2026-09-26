@@ -172,6 +172,8 @@ GLOBAL_LIST_INIT(RESTRICTED_CAMERA_NETWORKS, list( //Those networks can only be 
 
 #define FLAME_REAGENT_USE_AMOUNT 1
 
+#define FLAME_MOUNT_AUTO "flame_mount_auto"
+
 #define CLEANABLE_SPLATTER "splatter" // Vomit, oil
 #define CLEANABLE_BLOOD "blood"
 #define CLEANABLE_BLOOD_SPLATTER "blood splatter"

@@ -44,6 +44,8 @@
 	var/metallic = TRUE
 	/// Lower limit of damage beyond which the barricade cannot be fixed by welder. Compared to damage_state. If null it can be repaired at any damage_state.
 	var/welder_lower_damage_limit = null
+	/// TRUE while a vehicle is occupying this barricade's tile. Forces it to render above the vehicle.
+	var/covered_by_vehicle = FALSE
 
 /obj/structure/barricade/Initialize(mapload, mob/user)
 	. = ..()
@@ -122,6 +124,9 @@
 			icon_state = "[barricade_type]_closed"
 		layer = OBJ_LAYER
 
+	if(covered_by_vehicle)
+		layer = VEHICLE_COVERED_BARRICADE_LAYER
+
 	// Pixelshift to indicate anchored state
 	pixel_y = initial(pixel_y)
 	if(!anchored)
@@ -196,6 +201,9 @@
  * If the object is completely solid, returns ALL
  */
 /obj/structure/barricade/BlockedExitDirs(atom/movable/mover, target_dir)
+	// A multi-tile vehicle resolves barricades and windows through its own directional scan instead.
+	if(istype(mover, /obj/vehicle/multitile))
+		return NO_BLOCKED_MOVEMENT
 	if(closed)
 		return NO_BLOCKED_MOVEMENT
 
@@ -212,6 +220,9 @@
  *  mobs.
  */
 /obj/structure/barricade/BlockedPassDirs(atom/movable/mover, target_dir)
+	// See the identical vehicle exemption/reasoning in BlockedExitDirs() just above.
+	if(istype(mover, /obj/vehicle/multitile))
+		return NO_BLOCKED_MOVEMENT
 	if(closed)
 		return NO_BLOCKED_MOVEMENT
 

@@ -21,6 +21,9 @@
 		return
 	if(!ishuman(affected_mob))
 		return
+	// riding on a vehicle's hull holds them clear of the water, even though they share its tile.
+	if(affected_mob.is_atop_vehicle())
+		return
 
 	affected_mob.AddComponent(/datum/component/damage_over_time, /obj/effect/blocker/sorokyne_hot_water, dam_amount, dam_type, target_temp, temp_delta, synth_dmg_mult=0, pred_dmg_mult=0, enviro=TRUE)
 

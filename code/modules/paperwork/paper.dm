@@ -695,8 +695,8 @@
 	info = "Our ship is lost. Our pods have crashed on a company-occupied planet. It appears the colony is overrun with hostile creatures, and many of the men are already dead. Our fight for freedom cannot end like this! We will live on, for the liberation!"
 
 /obj/item/paper/varadero/clf
-	name = "SOS!"
-	info = "Mayday! Mayday! To all nearby CLF frequencies, we are under attack! Unknown creatures have overrun New Varadero outpost and our shuttle is damaged beyond repair! We ne-"
+	name = "Radio communications transcript"
+	info = "Sécurité! Sécurité! Sécurité! \n All stations! All stations! All stations! \n This is the New Varadero Republican Army! This is the New Varadero Republican Army! This is the New Varadero Republican Army! \n Sécurité broadcast from the New Varadero Republican Army ship, HMCSS Lockmart M-499L Class-3 Light Atmospheric Cargo Vessel! \n Registration; 6141127(07) Current coordinates; Loc: NEVA 29.056 South! 167.961 East! \n Ship has crashed in old TWE Naval base. UA has retreated from outpost! \n Base now overun by unknown hostile lifeform! Beasts on island can not swim far, infestation contained to island! \n Collapse tunnel to outpost ASAP to prevent further spread of infestation! \n <b> AVOID OUTPOST AT ALL COSTS, DO NOT ATTEMPT RESCUING US WE WILL BUY AS MUCH TIME AS POSSIBLE! </b> \n Out!"
 
 /obj/item/paper/soro/clf
 	name = "TOP SECRET: FOR CELL LEAD ONLY"

@@ -460,7 +460,20 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		M.job = null
 
 
-/datum/authority/branch/role/proc/equip_role(mob/living/new_mob, datum/job/new_job, turf/late_join)
+/datum/authority/branch/role/proc/get_latejoin_squads(datum/job/job)
+	var/default_role = GET_DEFAULT_ROLE(job.title)
+	if(!(job.flags_startup_parameters & ROLE_ADD_TO_SQUAD) || !((default_role in GLOB.job_squad_roles) || (default_role in GLOB.ROLES_MARINES_ANTAG)))
+		return
+	var/list/available_squads = list()
+	var/datum/equipment_preset/job_preset = GLOB.equipment_presets.gear_path_presets_list[job.gear_preset]
+	for(var/datum/squad/squad in squads)
+		if(!squad.roundstart || !squad.usable || squad.name == "Root" || squad.faction != job_preset?.faction)
+			continue
+		var/squad_name = squad.equivalent_name || squad.name
+		available_squads[squad_name] = squad
+	return available_squads
+
+/datum/authority/branch/role/proc/equip_role(mob/living/new_mob, datum/job/new_job, turf/late_join, datum/squad/selected_squad, preferred_squad_override)
 	if(!istype(new_mob) || !istype(new_job))
 		return
 
@@ -497,7 +510,10 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		new_job.generate_entry_conditions(new_human) //Do any other thing that relates to their spawn.
 
 	if(new_job.flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
-		randomize_squad(new_human)
+		if(selected_squad)
+			selected_squad.put_marine_in_squad(new_human)
+		else
+			randomize_squad(new_human, preferred_squad_override = preferred_squad_override)
 	if(!late_join)
 		prioritize_specialist(new_human)
 
@@ -557,7 +573,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	SSround_recording.recorder.track_player(new_human)
 
 //This proc is a bit of a misnomer, since there's no actual randomization going on.
-/datum/authority/branch/role/proc/randomize_squad(mob/living/carbon/human/human, skip_limit = FALSE)
+/datum/authority/branch/role/proc/randomize_squad(mob/living/carbon/human/human, skip_limit = FALSE, preferred_squad_override)
 	if(!human)
 		return
 
@@ -587,15 +603,15 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		if(squad.roundstart && squad.usable && squad.faction == human.faction && squad.name != "Root")
 			mixed_squads += squad
 
-	var/preferred_squad = human.client?.prefs?.preferred_squad
+	var/preferred_squad = isnull(preferred_squad_override) ? human.client?.prefs?.preferred_squad : preferred_squad_override
 	if(preferred_squad == "None")
 		preferred_squad = null
 
 	var/datum/squad/lowest
 	for(var/datum/squad/squad in mixed_squads)
-		if(slot_check && !isnull(squad.roles_cap[slot_check]) && !skip_limit)
-			if(squad.roles_in[slot_check] >= squad.roles_cap[slot_check])
-				continue
+		var/open_slots = squad.get_joinable_role_slots(slot_check, skip_limit)
+		if(!isnull(open_slots) && open_slots <= 0)
+			continue
 
 		if(preferred_squad && (squad.name == preferred_squad || squad.equivalent_name == preferred_squad)) //fav squad or faction equivalent has a spot for us, no more searching needed.
 			if(squad.put_marine_in_squad(human))

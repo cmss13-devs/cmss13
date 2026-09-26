@@ -805,13 +805,11 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	HTML += "<table width='100%' cellpadding='1' cellspacing='0'>"
 	var/index = -1
 
-	//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
-
 	var/list/active_role_names = GLOB.gamemode_roles[GLOB.master_mode]
 	if(!active_role_names)
 		active_role_names = GLOB.ROLES_DISTRESS_SIGNAL
 
-	for(var/role_name as anything in active_role_names)
+	for(var/role_name as anything in get_manifest_ordered_jobs(active_role_names))
 		var/datum/job/job = GLOB.RoleAuthority.roles_by_name[role_name]
 		if(!job)
 			debug_log("Missing job for prefs: [role_name]")
@@ -823,23 +821,25 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			HTML += "</table></td><td valign='top' width='20%'><table width='100%' cellpadding='1' cellspacing='0'>"
 			index = 0
 
-		HTML += "<tr class='[job.selection_class]'><td width='40%' align='right'>"
+		var/department = get_job_department(job.title)
+		var/job_classes = "[job.selection_class][department ? " job_department_[department]" : ""]"
+		HTML += "<tr class='[job_classes][is_job_leader(job.title) ? " job_leader" : ""]'><td width='40%' align='right'>"
 
 		if(jobban_isbanned(user, job.title))
-			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='center'></td><td><b>BANNED</b></td></tr>"
+			HTML += "<del>[job.disp_title]</del></td><td width='10%' align='center'></td><td><b>BANNED</b></td></tr>"
 			continue
 		else if(!job.check_whitelist_status(user))
-			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='center'></td><td>WHITELISTED</td></tr>"
+			HTML += "<del>[job.disp_title]</del></td><td width='10%' align='center'></td><td>WHITELISTED</td></tr>"
 			continue
 		else if(!job.can_play_role(user.client))
 			var/list/missing_requirements = job.get_role_requirements(user.client)
-			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='center'></td><td>TIMELOCKED</td></tr>"
+			HTML += "<del>[job.disp_title]</del></td><td width='10%' align='center'></td><td>TIMELOCKED</td></tr>"
 			for(var/r in missing_requirements)
 				var/datum/timelock/T = r
-				HTML += "<tr class='[job.selection_class]'><td width='40%' align='middle'>[T.name]</td><td width='10%' align='center'></td><td>[duration2text(missing_requirements[r])] Hours</td></tr>"
+				HTML += "<tr class='[job_classes]'><td width='40%' align='middle'>[T.name]</td><td width='10%' align='center'></td><td>[duration2text(missing_requirements[r])] Hours</td></tr>"
 			continue
 
-		HTML += "<b>[job.disp_title]</b></td><td width='10%' align='center'>"
+		HTML += "[job.disp_title]</td><td width='10%' align='center'>"
 
 		if(job.job_options)
 			if(pref_special_job_options)
@@ -925,13 +925,11 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	HTML += "<table width='100%' cellpadding='1' cellspacing='0'>"
 	var/index = -1
 
-	//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
-
 	var/list/active_role_names = GLOB.gamemode_roles[GLOB.master_mode]
 	if(!active_role_names)
 		active_role_names = GLOB.ROLES_DISTRESS_SIGNAL
 
-	for(var/role_name as anything in active_role_names)
+	for(var/role_name as anything in get_manifest_ordered_jobs(active_role_names))
 		var/datum/job/job = GLOB.RoleAuthority.roles_by_name[role_name]
 		if(!job)
 			debug_log("Missing job for prefs: [role_name]")
@@ -941,18 +939,20 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			HTML += "</table></td><td valign='top' width='20%'><table width='100%' cellpadding='1' cellspacing='0'>"
 			index = 0
 
-		HTML += "<tr class='[job.selection_class]'><td width='40%' align='right'>"
+		var/department = get_job_department(job.title)
+		var/job_classes = "[job.selection_class][department ? " job_department_[department]" : ""]"
+		HTML += "<tr class='[job_classes][is_job_leader(job.title) ? " job_leader" : ""]'><td width='40%' align='right'>"
 		if(jobban_isbanned(user, job.title))
-			HTML += "<b><del>[job.disp_title]</del></b></td><td width='60%'><b>BANNED</b></td></tr>"
+			HTML += "<del>[job.disp_title]</del></td><td width='60%'><b>BANNED</b></td></tr>"
 			continue
 		else if(!job.check_whitelist_status(user))
-			HTML += "<b><del>[job.disp_title]</del></b></td><td width='60%'>WHITELISTED</td></tr>"
+			HTML += "<del>[job.disp_title]</del></td><td width='60%'>WHITELISTED</td></tr>"
 			continue
 		else if(!job.can_play_role(user.client))
-			HTML += "<b><del>[job.disp_title]</del></b></td><td width='60%'>TIMELOCKED</td></tr>"
+			HTML += "<del>[job.disp_title]</del></td><td width='60%'>TIMELOCKED</td></tr>"
 			continue
 
-		HTML += "<b>[job.disp_title]</b></td>"
+		HTML += "[job.disp_title]</td>"
 
 		var/slot_name = get_job_slot_name(job.title)
 		HTML += "<td width='60%'><a href='byond://?_src_=prefs;preference=job_slot;task=assign;target_job=[job.title];'>[slot_name]</a>"

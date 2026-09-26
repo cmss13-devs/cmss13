@@ -356,7 +356,7 @@
 /obj/item/reagent_container/glass/minitank/attackby(obj/item/thing as obj, mob/user as mob)
 	var/list/stimpack_list = list(
 		/obj/item/reagent_container/hypospray/autoinjector/ultrazine,
-		/obj/item/reagent_container/hypospray/autoinjector/stimulant/
+		/obj/item/reagent_container/hypospray/autoinjector/stimulant,
 	)
 	if(istype(thing, /obj/item/reagent_container/hypospray/autoinjector))
 		var/obj/item/reagent_container/hypospray/autoinjector/autoinjector = thing

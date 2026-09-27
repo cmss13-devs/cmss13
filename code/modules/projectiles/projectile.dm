@@ -545,6 +545,10 @@
 	if((MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_attacking_corpses) && target_living.stat == DEAD) || (target_living in permutated))
 		return FALSE
 
+	// Lesser drones can't block rockets unless they were the directly clicked target
+	if(istype(target_living, /mob/living/carbon/xenomorph/lesser_drone) && original != target_living && istype(shot_from, /obj/item/weapon/gun/launcher/rocket))
+		return FALSE
+
 	if(is_target_xeno)
 		var/mob/living/carbon/xenomorph/xeno = target_living
 		var/directional_chance = xeno.get_reflection_chance(src)

@@ -35,6 +35,7 @@
 	var/registered = FALSE
 
 	var/minimap_flag = MINIMAP_FLAG_USCM
+	var/obj/effect/overlay/temp/dropship_reticle/direct_fire_reticle = null
 
 /obj/structure/machinery/computer/dropship_weapons/New()
 	..()
@@ -49,13 +50,25 @@
 
 	// camera setup
 	AddComponent(/datum/component/camera_manager)
-	AddComponent(/datum/component/tacmap, has_drawing_tools = FALSE, minimap_flag = minimap_flag, has_update = FALSE)
+	AddComponent(/datum/component/tacmap, has_drawing_tools = FALSE, minimap_flag = minimap_flag, has_update = TRUE)
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 /obj/structure/machinery/computer/dropship_weapons/Destroy()
-	. = ..()
+	if(selected_cas_signal)
+		UnregisterSignal(selected_cas_signal, COMSIG_PARENT_QDELETING)
+		selected_cas_signal = null
+	selected_equipment = null
+	clear_direct_fire_reticle()
 	QDEL_NULL(firemission_envelope)
 	UnregisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED)
+	. = ..()
+
+/obj/structure/machinery/computer/dropship_weapons/proc/clear_direct_fire_reticle(atom/movable/screen/plane_master/above_lighting = null)
+	if(!direct_fire_reticle)
+		return
+	if(above_lighting)
+		above_lighting.vis_contents -= direct_fire_reticle
+	QDEL_NULL(direct_fire_reticle)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/camera_mapname_update(source, value)
 	camera_map_name = value
@@ -149,6 +162,16 @@
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
+		var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+		if(tacmap_component)
+			if(!tacmap_component.map_holder)
+				tacmap_component.map_holder = new(null, 2, minimap_flag, FALSE, FALSE)
+				tacmap_component.is_embedded = TRUE
+				var/matrix/transform = matrix()
+				transform.Translate(-32, 14)
+				tacmap_component.map_holder.map.transform = transform
+				tacmap_component.map = tacmap_component.map_holder.map
+			user.client.register_map_obj(tacmap_component.map_holder.map)
 		SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)
 		ui = new(user, src, "DropshipWeaponsConsole", "Weapons Console")
 		ui.open()
@@ -157,8 +180,15 @@
 	. = ..()
 
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
-	tacmap_component.on_unset_interaction(user)
-	tacmap_component.ui_close(user)
+	if(tacmap_component)
+		tacmap_component.on_unset_interaction(user)
+		tacmap_component.ui_close(user)
+		if(tacmap_component.map_holder)
+			user.client?.clear_map(tacmap_component.map_holder.map_ref)
+			tacmap_component.map = null
+			qdel(tacmap_component.map_holder)
+			tacmap_component.map_holder = null
+			tacmap_component.interactees -= user
 	SEND_SIGNAL(src, COMSIG_CAMERA_UNREGISTER_UI, user)
 	simulation.stop_watching(user)
 
@@ -179,6 +209,9 @@
 /obj/structure/machinery/computer/dropship_weapons/ui_static_data(mob/user)
 	. = list()
 	.["camera_map_ref"] = camera_map_name
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	if(tacmap_component && tacmap_component.map_holder)
+		.["tactical_map_ref"] = tacmap_component.map_holder.map_ref
 
 /obj/structure/machinery/computer/dropship_weapons/ui_data(mob/user)
 	. = list()
@@ -512,13 +545,6 @@
 			RegisterSignal(linked_shuttle.paradrop_signal, COMSIG_PARENT_QDELETING, PROC_REF(clear_locked_turf_and_lock_aft))
 			RegisterSignal(linked_shuttle, COMSIG_SHUTTLE_SETMODE, PROC_REF(clear_locked_turf_and_lock_aft))
 			return TRUE
-		if("mapview")
-			var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
-			if(user in tacmap_component.interactees)
-				tacmap_component.on_unset_interaction(user)
-			else
-				tacmap_component.show_tacmap(user)
-
 /obj/structure/machinery/computer/dropship_weapons/proc/open_aft_for_paradrop()
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttle_tag)
 	if(!shuttle || !shuttle.paradrop_signal || shuttle.mode != SHUTTLE_CALL)
@@ -561,9 +587,21 @@
 	camera_area_equipment = null
 	if(firemission_envelope)
 		firemission_envelope.untrack_object()
+	if(selected_cas_signal)
+		UnregisterSignal(selected_cas_signal, COMSIG_PARENT_QDELETING)
+		selected_cas_signal = null
 
 	var/datum/cas_signal/target = get_cas_signal(target_ref)
 	camera_target_id = target_ref
+	clear_direct_fire_reticle()
+
+	if(target && target.signal_loc)
+		selected_cas_signal = target
+		RegisterSignal(selected_cas_signal, COMSIG_PARENT_QDELETING, PROC_REF(on_cas_signal_deleted))
+		var/turf/target_turf = get_turf(target.signal_loc)
+		if(target_turf)
+			direct_fire_reticle = new /obj/effect/overlay/temp/dropship_reticle(target_turf)
+
 	if(!target)
 		SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 		return
@@ -575,6 +613,15 @@
 		cam_height = cam_height * 1.5
 
 	SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET, target.linked_cam, cam_width, cam_height)
+
+/obj/structure/machinery/computer/dropship_weapons/proc/on_cas_signal_deleted(datum/cas_signal/source)
+	SIGNAL_HANDLER
+	if(source != selected_cas_signal)
+		return
+	selected_cas_signal = null
+	camera_target_id = null
+	clear_direct_fire_reticle()
+	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_screen_mode()
 	. = 0

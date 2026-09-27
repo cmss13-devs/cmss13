@@ -44,6 +44,10 @@
 
 	// Check objects:
 	for(var/obj/obj_path as anything in subtypesof_real(/obj))
+		if(ispath(obj_path, /obj/item))
+			var/obj/item/item_path = obj_path
+			if(initial(item_path.flags_item) & ITEM_ABSTRACT)
+				continue // Ignore abstract
 		// Ensure that it's not invisible/honk in mapping
 		var/initial_icon = initial(obj_path.icon)
 		var/initial_icon_state = initial(obj_path.icon_state)

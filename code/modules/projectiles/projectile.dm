@@ -545,8 +545,13 @@
 	if((MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_attacking_corpses) && target_living.stat == DEAD) || (target_living in permutated))
 		return FALSE
 
-	// Lesser drones can't block rockets unless they were the directly clicked target
+	// Lesser drones can't body-block rockets unless they were the directly clicked target
+	// Instead the rocket punches through them, killing the lesser but continuing on towards its actual target without detonating
 	if(istype(target_living, /mob/living/carbon/xenomorph/lesser_drone) && original != target_living && istype(shot_from, /obj/item/weapon/gun/launcher/rocket))
+		if(target_living.stat != DEAD)
+			target_living.visible_message(SPAN_XENOHIGHDANGER("[target_living] is punched clean through by [src]!"),
+				SPAN_XENOHIGHDANGER("You are punched clean through by [src]!"), null, 4, CHAT_TYPE_TAKING_HIT)
+			target_living.gib(create_cause_data(ammo.name, firer))
 		return FALSE
 
 	if(is_target_xeno)

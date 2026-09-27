@@ -272,7 +272,7 @@
 /obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_fourth
 	mode = "fourth"
 	item_to_deploy = /turf/open_space
-	item_to_deploy = /obj/structure/stairs/multiz/up/dropship_ramp/omaha
+	item_to_deploy2 = /obj/structure/stairs/multiz/up/dropship_ramp/omaha
 
 /obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_fifth
 	mode = "fifth"

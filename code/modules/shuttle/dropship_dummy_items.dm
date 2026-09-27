@@ -492,3 +492,55 @@
 /obj/deployer/shuttle/dropship/roof_loader/proc/move_into_position(turf/target_turf)
 	for(var/obj/faux_turf/open/dropship/roof/fauxie in linked_fauxes)
 		fauxie.loc = locate(src.x + fauxie.recorded_offset_X, src.y + fauxie.recorded_offset_Y, target_turf.z)
+
+/obj/deployer/shuttle/dropship/fake_roof_deployer
+	item_to_deploy = /obj/structure/dropship_roof
+
+	var/image/roof_image
+	var/roof_icon = ""
+	var/obj/structure/dropship_roof/our_roof
+//	var/list/stored_turfs = list()
+
+/obj/deployer/shuttle/dropship/fake_roof_deployer/omaha
+	item_to_deploy = /obj/structure/dropship_roof/omaha
+
+/obj/deployer/shuttle/dropship/fake_roof_deployer/midway
+	item_to_deploy = /obj/structure/dropship_roof/midway
+
+/obj/deployer/shuttle/dropship/fake_roof_deployer/lateShuttleMove()
+	.=..()
+	if(.)
+		var/turf/target_turf = locate(src.x-5, src.y, src.z)
+		if(target_turf)
+			our_roof = new item_to_deploy(target_turf, src)
+
+/obj/structure/dropship_roof
+	icon = 'icons/turf/omaha/belly.dmi'
+	icon_state = "blank"
+	opacity = FALSE
+	density = FALSE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+//	appearance_flags =
+
+	layer = INTERIOR_WALL_SOUTH_LAYER
+
+	var/image/roof_image
+	var/roof_icon = "roof"
+	var/obj/deployer/shuttle/dropship/fake_roof_deployer/parent_deployer
+
+/obj/structure/dropship_roof/omaha
+	icon = 'icons/turf/omaha/belly.dmi'
+
+/obj/structure/dropship_roof/midway
+	icon = 'icons/turf/midway/belly.dmi'
+
+/obj/structure/dropship_roof/New(loc, obj/deployer/shuttle/dropship/fake_roof_deployer/our_parent)
+	parent_deployer = our_parent
+	return ..(loc)
+
+/obj/structure/dropship_roof/Initialize(mapload, ...)
+	. = ..()
+	roof_image = image(icon, src, roof_icon)
+	roof_image.plane = ROOF_PLANE
+	roof_image.appearance_flags = KEEP_APART
+	src.overlays += roof_image

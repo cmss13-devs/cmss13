@@ -134,7 +134,7 @@
 
 /obj/structure/shuttle/part/dropship_omaha/transparent
 	opacity = FALSE
-	density = FALSE
+	density = TRUE
 	var/turf/saved_turf
 
 /obj/structure/shuttle/part/dropship_omaha/transparent/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)

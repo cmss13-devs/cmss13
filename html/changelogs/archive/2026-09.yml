@@ -282,3 +282,6 @@
   - rscadd: Unit test for weeds
   - bugfix: Fixed a small issue with boiler effect code,
   - bugfix: Weeds no longer decay first to re-weed, they just parent onto the node.
+2026-09-27:
+  Onetoughcreampuff:
+  - bugfix: Check Status should now account for decapitation

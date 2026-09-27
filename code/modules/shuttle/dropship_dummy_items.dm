@@ -538,6 +538,6 @@
 /obj/structure/dropship_roof/Initialize(mapload, ...)
 	. = ..()
 	roof_image = image(icon, src, roof_icon)
-	roof_image.plane = ROOF_PLANE
+	roof_image.plane = DROPSHIP_ROOF_PLANE
 	roof_image.appearance_flags = KEEP_APART
 	src.overlays += roof_image

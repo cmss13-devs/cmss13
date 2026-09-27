@@ -349,7 +349,7 @@
 		if(istype(subject_mob, /mob/hologram))
 			var/mob/hologram/hologram_mob = subject_mob
 			subject_mob = hologram_mob.linked_mob
-		var/atom/movable/screen/plane_master/roof/roof_plane = subject_mob.hud_used?.plane_masters["[ROOF_PLANE]"]
+		var/atom/movable/screen/plane_master/roof_dropship/roof_plane = subject_mob.hud_used?.plane_masters["[DROPSHIP_ROOF_PLANE]"]
 		roof_plane.Hide()
 	return ..()
 
@@ -359,7 +359,7 @@
 		if(istype(subject_mob, /mob/hologram))
 			var/mob/hologram/hologram_mob = subject_mob
 			subject_mob = hologram_mob.linked_mob
-		var/atom/movable/screen/plane_master/roof/roof_plane = subject_mob.hud_used?.plane_masters["[ROOF_PLANE]"]
+		var/atom/movable/screen/plane_master/roof_dropship/roof_plane = subject_mob.hud_used?.plane_masters["[DROPSHIP_ROOF_PLANE]"]
 		roof_plane.Show()
 	return ..()
 

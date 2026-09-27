@@ -269,9 +269,7 @@ const ViewFiremissionMfdPanel = (
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
-              <Stack.Item>
-                Length: {firemission.mission_length}
-              </Stack.Item>
+              <Stack.Item>Length: {firemission.mission_length}</Stack.Item>
               <Stack.Item width="100%">
                 <FiremissionView
                   panelStateId={props.panelStateId}

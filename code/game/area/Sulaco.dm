@@ -349,9 +349,8 @@
 		if(istype(subject_mob, /mob/hologram))
 			var/mob/hologram/hologram_mob = subject_mob
 			subject_mob = hologram_mob.linked_mob
-		debug_chat("mob [O.name] has entered")
 		var/atom/movable/screen/plane_master/roof/roof_plane = subject_mob.hud_used?.plane_masters["[ROOF_PLANE]"]
-		roof_plane.invisibility = 101
+		roof_plane.Hide()
 	return ..()
 
 /area/shuttle/multiz/Exited(atom/movable/O, atom/oldloc)
@@ -360,9 +359,8 @@
 		if(istype(subject_mob, /mob/hologram))
 			var/mob/hologram/hologram_mob = subject_mob
 			subject_mob = hologram_mob.linked_mob
-		debug_chat("mob [O.name] has exited")
 		var/atom/movable/screen/plane_master/roof/roof_plane = subject_mob.hud_used?.plane_masters["[ROOF_PLANE]"]
-		roof_plane.invisibility = 0
+		roof_plane.Show()
 	return ..()
 
 /area/shuttle/multiz/drop_omaha

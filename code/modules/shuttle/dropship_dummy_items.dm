@@ -499,7 +499,6 @@
 	var/image/roof_image
 	var/roof_icon = ""
 	var/obj/structure/dropship_roof/our_roof
-//	var/list/stored_turfs = list()
 
 /obj/deployer/shuttle/dropship/fake_roof_deployer/omaha
 	item_to_deploy = /obj/structure/dropship_roof/omaha
@@ -509,34 +508,32 @@
 
 /obj/deployer/shuttle/dropship/fake_roof_deployer/lateShuttleMove()
 	.=..()
-	if(.)
+	if(!is_reserved_level(src.z))
 		var/turf/target_turf = locate(src.x-5, src.y, src.z)
 		if(target_turf)
-			our_roof = new item_to_deploy(target_turf, src)
+			if(our_roof)
+				our_roof.loc = target_turf
+			else
+				our_roof = new item_to_deploy(target_turf)
 
 /obj/structure/dropship_roof
+	name = "dropship roof"
 	icon = 'icons/turf/omaha/belly.dmi'
 	icon_state = "blank"
+
 	opacity = FALSE
 	density = FALSE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-//	appearance_flags =
-
 	layer = INTERIOR_WALL_SOUTH_LAYER
 
 	var/image/roof_image
 	var/roof_icon = "roof"
-	var/obj/deployer/shuttle/dropship/fake_roof_deployer/parent_deployer
 
 /obj/structure/dropship_roof/omaha
 	icon = 'icons/turf/omaha/belly.dmi'
 
 /obj/structure/dropship_roof/midway
 	icon = 'icons/turf/midway/belly.dmi'
-
-/obj/structure/dropship_roof/New(loc, obj/deployer/shuttle/dropship/fake_roof_deployer/our_parent)
-	parent_deployer = our_parent
-	return ..(loc)
 
 /obj/structure/dropship_roof/Initialize(mapload, ...)
 	. = ..()

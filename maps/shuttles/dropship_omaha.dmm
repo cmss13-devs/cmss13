@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ap" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_51,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
 "ay" = (
 /obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_11,
 /turf/open/shuttle/dropship/omaha/basic,
@@ -64,9 +68,6 @@
 /area/shuttle/multiz/drop_omaha/omaha)
 "bw" = (
 /obj/structure/machinery/light/dropship/double,
-/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_40{
-	pixel_x = -32
-	},
 /turf/open/shuttle/dropship/omaha/external,
 /area/shuttle/multiz/drop_omaha/omaha)
 "bX" = (
@@ -110,12 +111,8 @@
 /turf/open/shuttle/dropship/omaha/basic,
 /area/shuttle/multiz/drop_omaha/omaha)
 "dO" = (
-/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_31{
-	pixel_x = 32
-	},
-/turf/closed/shuttle/dropship_omaha{
-	icon_state = "8,9"
-	},
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_30,
+/turf/template_noop,
 /area/shuttle/multiz/drop_omaha/omaha)
 "dZ" = (
 /turf/closed/shuttle/dropship_omaha{
@@ -257,12 +254,8 @@
 /turf/open/shuttle/dropship/omaha/grated,
 /area/shuttle/multiz/drop_omaha/omaha)
 "iS" = (
-/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_30{
-	pixel_x = -32
-	},
-/turf/closed/shuttle/dropship_omaha{
-	icon_state = "0,9"
-	},
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_41,
+/turf/template_noop,
 /area/shuttle/multiz/drop_omaha/omaha)
 "jp" = (
 /obj/structure/bed/chair/vehicle/omaha_passenger{
@@ -456,11 +449,8 @@
 /turf/open/shuttle/dropship/omaha/ramp/rampio_01,
 /area/shuttle/multiz/drop_omaha/omaha)
 "qz" = (
-/obj/structure/machinery/light/dropship/double,
-/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_41{
-	pixel_x = 32
-	},
-/turf/open/shuttle/dropship/omaha/external,
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_50,
+/turf/template_noop,
 /area/shuttle/multiz/drop_omaha/omaha)
 "qB" = (
 /turf/closed/shuttle/dropship_omaha{
@@ -1004,6 +994,10 @@
 	icon_state = "2,16"
 	},
 /area/shuttle/multiz/drop_omaha/omaha)
+"MD" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_40,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
 "MP" = (
 /obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_05,
 /turf/template_noop,
@@ -1120,6 +1114,10 @@
 	},
 /obj/deployer/shuttle/dropship/gibber,
 /turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"QA" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_31,
+/turf/template_noop,
 /area/shuttle/multiz/drop_omaha/omaha)
 "QU" = (
 /turf/closed/shuttle/dropship_omaha{
@@ -1282,9 +1280,6 @@
 	dir = 8;
 	pixel_x = 16
 	},
-/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_50{
-	pixel_x = -32
-	},
 /turf/open/shuttle/dropship/omaha/external,
 /area/shuttle/multiz/drop_omaha/omaha)
 "WI" = (
@@ -1329,9 +1324,6 @@
 /obj/structure/machinery/camera/autoname/almayer/dropship_omaha{
 	dir = 4;
 	pixel_x = -16
-	},
-/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_51{
-	pixel_x = 32
 	},
 /turf/open/shuttle/dropship/omaha/external,
 /area/shuttle/multiz/drop_omaha/omaha)
@@ -1491,9 +1483,9 @@ xc
 dM
 Pc
 CE
-Yl
-Yl
-Yl
+qz
+MD
+dO
 yL
 Es
 pU
@@ -1519,7 +1511,7 @@ XK
 Lt
 Wt
 bw
-iS
+yL
 PQ
 be
 be
@@ -1726,8 +1718,8 @@ Dy
 Jw
 rW
 Yb
-qz
-dO
+bw
+Yf
 jK
 AM
 AM
@@ -1751,9 +1743,9 @@ xh
 pO
 Qi
 IN
-Yl
-Yl
-Yl
+ap
+iS
+QA
 Yf
 Zn
 KH

@@ -292,7 +292,7 @@
 	var/total_absolute = length(players_possibly_in_queue)
 	var/total_candidates = length(candidates)
 
-	for(var/i in (1 + dequeued) to length(candidates))
+	for(var/i in (1 + dequeued) to total_candidates)
 		var/mob/dead/observer/cur_obs = candidates[i]
 		var/absolute_position = players_possibly_in_queue.Find(cur_obs.client?.player_details)
 

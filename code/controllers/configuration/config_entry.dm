@@ -9,20 +9,25 @@
 SET_PROTECTED_DATUM(/datum/config_entry)
 
 /datum/config_entry
-	var/name //read-only, this is determined by the last portion of the derived entry type
+	/// Do not instantiate if type matches this
+	var/abstract_type = /datum/config_entry
+	/// Read-only, this is determined by the last portion of the derived entry type
+	var/name
+	/// The configured value for this entry. This shouldn't be initialized in code, instead set default
 	var/config_entry_value
-	var/default //read-only, just set value directly
-
-	var/resident_file //the file which this was loaded from, if any
-	var/modified = FALSE //set to TRUE if the default has been overridden by a config entry
-
-	var/deprecated_by //the /datum/config_entry type that supercedes this one
-
+	/// Read-only default value for this config entry, used for resetting value to defaults when necessary. This is what config_entry_value is initially set to
+	var/default
+	/// The file which this was loaded from, if any
+	var/resident_file
+	/// Set to TRUE if the default has been overridden by a config entry
+	var/modified = FALSE
+	/// The config name of a configuration type that depricates this, if it exists
+	var/deprecated_by
+	/// The /datum/config_entry type that supersedes this one
 	var/protection = NONE
-	var/abstract_type = /datum/config_entry //do not instantiate if type matches this
-
-	var/vv_VAS = TRUE //Force validate and set on VV. VAS proccall guard will run regardless.
-
+	/// Force validate and set on VV. VAS proccall guard will run regardless.
+	var/vv_VAS = TRUE
+	/// Controls if error is thrown when duplicate configuration values for this entry type are encountered
 	var/dupes_allowed = FALSE
 
 /datum/config_entry/New()
@@ -44,10 +49,26 @@ SET_PROTECTED_DATUM(/datum/config_entry)
 	if(var_name == NAMEOF(src, config_entry_value) || var_name == NAMEOF(src, default))
 		. &= !(protection & CONFIG_ENTRY_HIDDEN)
 
+/datum/config_entry/vv_edit_var(var_name, var_value)
+	var/static/list/banned_edits = list(NAMEOF_STATIC(src, name), NAMEOF_STATIC(src, vv_VAS), NAMEOF_STATIC(src, default), NAMEOF_STATIC(src, resident_file), NAMEOF_STATIC(src, protection), NAMEOF_STATIC(src, abstract_type), NAMEOF_STATIC(src, modified), NAMEOF_STATIC(src, dupes_allowed))
+	if(var_name == NAMEOF(src, config_entry_value))
+		if(protection & CONFIG_ENTRY_LOCKED)
+			return FALSE
+		if(vv_VAS)
+			. = ValidateAndSet("[var_value]")
+			if(.)
+				datum_flags |= DF_VAR_EDITED
+			return
+		else
+			return ..()
+	if(var_name in banned_edits)
+		return FALSE
+	return ..()
+
 /datum/config_entry/proc/VASProcCallGuard(str_val)
-	. = !((protection & CONFIG_ENTRY_LOCKED) && IsAdminAdvancedProcCall() && GLOB.LastAdminCalledProc == "ValidateAndSet" && GLOB.LastAdminCalledTargetRef == "[REF(src)]")
+	. = !((protection & CONFIG_ENTRY_LOCKED) && IsAdminAdvancedProcCall())
 	if(!.)
-		log_admin_private("Config set of [type] to [str_val] attempted by [key_name(usr)]")
+		log_admin_private("[key_name(usr)] attempted to set locked config entry [type] to '[str_val]'")
 
 /datum/config_entry/proc/ValidateAndSet(str_val)
 	VASProcCallGuard(str_val)
@@ -63,6 +84,9 @@ SET_PROTECTED_DATUM(/datum/config_entry)
 	config_entry_value = ""
 	abstract_type = /datum/config_entry/string
 	var/auto_trim = TRUE
+
+/datum/config_entry/string/vv_edit_var(var_name, var_value)
+	return var_name != NAMEOF(src, auto_trim) && ..()
 
 /datum/config_entry/string/ValidateAndSet(str_val)
 	if(!VASProcCallGuard(str_val))
@@ -87,6 +111,10 @@ SET_PROTECTED_DATUM(/datum/config_entry)
 			log_config("Changing [name] from [temp] to [config_entry_value]!")
 		return TRUE
 	return FALSE
+
+/datum/config_entry/number/vv_edit_var(var_name, var_value)
+	var/static/list/banned_edits = list(NAMEOF_STATIC(src, max_val), NAMEOF_STATIC(src, min_val), NAMEOF_STATIC(src, integer))
+	return !(var_name in banned_edits) && ..()
 
 /datum/config_entry/flag
 	config_entry_value = FALSE
@@ -188,3 +216,6 @@ SET_PROTECTED_DATUM(/datum/config_entry)
 			config_entry_value[new_key] = new_value
 			return TRUE
 	return FALSE
+
+/datum/config_entry/keyed_list/vv_edit_var(var_name, var_value)
+	return var_name != NAMEOF(src, splitter) && ..()

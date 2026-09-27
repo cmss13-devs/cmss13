@@ -798,7 +798,7 @@
 		to_chat(weapon_operator, SPAN_WARNING("Name too short (at least 1 symbols)."))
 		return FALSE
 	// Check length
-	if(!firemission_length)
+	if(firemission_length < 1)
 		to_chat(weapon_operator, SPAN_WARNING("Incorrect input format."))
 		return FALSE
 	if(firemission_length > firemission_envelope.fire_length)

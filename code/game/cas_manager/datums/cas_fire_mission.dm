@@ -34,6 +34,7 @@
 /datum/cas_fire_mission/ui_data(mob/user)
 	. = list()
 	.["name"] = sanitize(copytext(name, 1, MAX_MESSAGE_LEN))
+	.["mission_length"] = mission_length
 	.["records"] = list()
 	for(var/datum/cas_fire_mission_record/record as anything in records)
 		.["records"] += list(record.ui_data(user))

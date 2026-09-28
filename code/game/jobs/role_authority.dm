@@ -121,6 +121,15 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			continue
 		roles_for_mode[role_name] = J
 
+	// Also shuffle survivors since some are tied together
+	var/list/snowflakes = GLOB.ROLES_WHITELISTED|GLOB.ROLES_SPECIAL
+	var/list/shuffled_snowflakes = shuffle(snowflakes)
+	for(var/i in 1 to length(snowflakes))
+		var/old_index = roles_for_mode.Find(snowflakes[i])
+		var/new_index = roles_for_mode.Find(shuffled_snowflakes[i])
+		if(old_index && new_index)
+			roles_for_mode.Swap(old_index, new_index)
+
 	// Also register game mode specific mappings to standard roles
 	role_mappings = list()
 	default_roles = list()
@@ -293,7 +302,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	for(var/priority in HIGH_PRIORITY to LOW_PRIORITY)
 		// Assigning xenos first.
 		assigned += assign_initial_roles(priority, roles_for_mode & GLOB.ROLES_XENO, unassigned_players)
-		// Assigning special roles second. (survivor, predator)
+		// Assigning special roles second. (survivor, predator) tho they are in random order from setup_candidates_and_roles
 		assigned += assign_initial_roles(priority, roles_for_mode & (GLOB.ROLES_WHITELISTED|GLOB.ROLES_SPECIAL), unassigned_players)
 		// Assigning command third.
 		assigned += assign_initial_roles(priority, roles_for_mode & GLOB.ROLES_COMMAND, unassigned_players)

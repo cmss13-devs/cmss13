@@ -1,0 +1,4 @@
+author: "Andywastaken"
+delete-after: True
+changes:
+  - bugfix: "CMTV will no longer prematurely cut from OBs and other turf events."

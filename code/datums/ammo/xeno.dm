@@ -40,17 +40,17 @@
 
 	neuro_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(apply_neuro))
 
-/proc/apply_neuro(mob/living/M, power, drain, insta_neuro = FALSE, drain_stims = FALSE, drain_medchems = FALSE, apply_effect = TRUE)
-	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
-		M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
+/proc/apply_neuro(mob/living/mobba, power, drain, insta_neuro = FALSE, drain_stims = FALSE, drain_medchems = FALSE, apply_effect = TRUE)
+	if(skillcheck(mobba, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
+		mobba.visible_message(SPAN_DANGER("[mobba] withstands the neurotoxin!"))
 		return //endurance 5 makes you immune to weak neurotoxin
-	if(ishuman(M))
-		var/mob/living/carbon/human/human = M
+	if(ishuman(mobba))
+		var/mob/living/carbon/human/human = mobba
 		if(drain_stims)
 			for(var/datum/reagent/generated/stim in human.reagents.reagent_list)
 				human.reagents.remove_reagent(stim.id, drain, TRUE)
 		if(human.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || human.species.flags & NO_NEURO)
-			human.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
+			human.visible_message(SPAN_DANGER("[mobba] shrugs off the neurotoxin!"))
 			return //species like zombies or synths are immune to neurotoxin
 		if(drain_medchems)
 			for(var/datum/reagent/medical/med in human.reagents.reagent_list)
@@ -61,47 +61,51 @@
 	if(!apply_effect)
 		return
 
-	if(!isxeno(M))
+	if(!isxeno(mobba))
 		if(insta_neuro)
-			if(M.GetKnockDownDuration() < 3) // Why are you not using KnockDown(3) ? Do you even know 3 is SIX seconds ? So many questions left unanswered.
-				M.KnockDown(power)
-				M.Stun(power)
+			if(mobba.GetKnockDownDuration() < 3) // Why are you not using KnockDown(3) ? Do you even know 3 is SIX seconds ? So many questions left unanswered.
+				mobba.KnockDown(power)
+				mobba.Stun(power)
 				return
 
-		if(ishuman(M))
-			M.apply_effect(4, SUPERSLOW)
-			M.visible_message(SPAN_DANGER("[M]'s movements are slowed."))
+		if(ishuman(mobba))
+			mobba.apply_effect(4, SUPERSLOW)
+			mobba.visible_message(SPAN_DANGER("[mobba]'s movements are slowed."))
 
 		var/no_clothes_neuro = FALSE
 
-		if(ishuman(M))
-			var/mob/living/carbon/human/human = M
+		if(ishuman(mobba))
+			var/mob/living/carbon/human/human = mobba
 			if(!human.wear_suit || human.wear_suit.slowdown == 0)
 				no_clothes_neuro = TRUE
 
 		if(no_clothes_neuro)
-			if(M.GetKnockDownDuration() < 5) // Nobody actually knows what this means. Supposedly it means less than 10 seconds. Frankly if you get locked into 10s of knockdown to begin with there are bigger issues.
-				M.KnockDown(power)
-				M.Stun(power)
-				M.visible_message(SPAN_DANGER("[M] falls prone."))
+			if(mobba.GetKnockDownDuration() < 5) // Nobody actually knows what this means. Supposedly it means less than 10 seconds. Frankly if you get locked into 10s of knockdown to begin with there are bigger issues.
+				mobba.KnockDown(power)
+				mobba.Stun(power)
+				mobba.visible_message(SPAN_DANGER("[mobba] falls prone."))
 
-/proc/apply_scatter_neuro(mob/living/M)
-	if(ishuman(M))
-		var/mob/living/carbon/human/human = M
-		if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX))
-			M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
+	if(isxeno(mobba))
+		mobba.apply_effect(4, SLOW) //slowdown matters a lot more to the melee faction, I think.
+		mobba.visible_message(SPAN_DANGER("The neurotoxin seeps into [mobba]'s chitin."))
+
+/proc/apply_scatter_neuro(mob/living/mobba)
+	if(ishuman(mobba))
+		var/mob/living/carbon/human/human = mobba
+		if(skillcheck(mobba, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX))
+			mobba.visible_message(SPAN_DANGER("[mobba] withstands the neurotoxin!"))
 			return //endurance 5 makes you immune to weak neuro
 		if(human.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || human.species.flags & NO_NEURO)
-			human.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
+			human.visible_message(SPAN_DANGER("[mobba] shrugs off the neurotoxin!"))
 			return
 
-		M.KnockDown(0.7) // Completely arbitrary values from another time where stun timers incorrectly stacked. Kill as needed.
-		M.Stun(0.7)
-		M.visible_message(SPAN_DANGER("[M] falls prone."))
+		mobba.KnockDown(0.7) // Completely arbitrary values from another time where stun timers incorrectly stacked. Kill as needed.
+		mobba.Stun(0.7)
+		mobba.visible_message(SPAN_DANGER("[mobba] falls prone."))
 
-/datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/projectile/P)
-	if(ishuman(M))
-		var/mob/living/carbon/human/human = M
+/datum/ammo/xeno/toxin/on_hit_mob(mob/mobba,obj/projectile/P)
+	if(ishuman(mobba))
+		var/mob/living/carbon/human/human = mobba
 		if(human.status_flags & XENO_HOST)
 			neuro_callback.Invoke(human, effect_power, drain_power, TRUE, TRUE, TRUE)
 			return
@@ -114,7 +118,7 @@
 			sns = new /datum/effects/sentinel_neuro_stacks(human)
 		sns.increment_stack_count(increment_amount)
 
-	neuro_callback.Invoke(M, effect_power, drain_power, FALSE, TRUE, TRUE)
+	neuro_callback.Invoke(mobba, effect_power, drain_power, FALSE, TRUE, TRUE)
 
 /datum/ammo/xeno/toxin/medium //Spitter
 	name = "neurotoxic spatter"
@@ -133,8 +137,8 @@
 	accuracy = HIT_ACCURACY_TIER_5*2
 	max_range = 6 - 1
 
-/datum/ammo/xeno/toxin/queen/on_hit_mob(mob/M,obj/projectile/P)
-	neuro_callback.Invoke(M, effect_power, drain_power, TRUE, TRUE, FALSE)
+/datum/ammo/xeno/toxin/queen/on_hit_mob(mob/mobba,obj/projectile/P)
+	neuro_callback.Invoke(mobba, effect_power, drain_power, TRUE, TRUE, FALSE)
 
 /datum/ammo/xeno/toxin/shotgun
 	name = "neurotoxic droplet"
@@ -172,12 +176,12 @@
 	penetration = ARMOR_PENETRATION_TIER_2
 	shell_speed = AMMO_SPEED_TIER_3
 
-/datum/ammo/xeno/acid/on_shield_block(mob/M, obj/projectile/P)
-	burst(M,P,damage_type)
+/datum/ammo/xeno/acid/on_shield_block(mob/mobba, obj/projectile/P)
+	burst(mobba,P,damage_type)
 
-/datum/ammo/xeno/acid/on_hit_mob(mob/M, obj/projectile/P)
-	if(iscarbon(M))
-		var/mob/living/carbon/C = M
+/datum/ammo/xeno/acid/on_hit_mob(mob/mobba, obj/projectile/P)
+	if(iscarbon(mobba))
+		var/mob/living/carbon/C = mobba
 		if(C.status_flags & XENO_HOST && HAS_TRAIT(C, TRAIT_NESTED) || C.stat == DEAD || HAS_TRAIT(C, TRAIT_HAULED))
 			return FALSE
 	..()
@@ -222,11 +226,11 @@
 
 	apply_delegate = FALSE
 
-/datum/ammo/xeno/acid/prae_nade/on_hit_mob(mob/M, obj/projectile/P)
-	if (!ishuman(M))
+/datum/ammo/xeno/acid/prae_nade/on_hit_mob(mob/mobba, obj/projectile/P)
+	if (!ishuman(mobba))
 		return
 
-	var/mob/living/carbon/human/human = M
+	var/mob/living/carbon/human/human = mobba
 
 	var/datum/effects/prae_acid_stacks/PAS = null
 	for (var/datum/effects/prae_acid_stacks/prae_acid_stacks in human.effects_list)
@@ -401,15 +405,15 @@
 	shrapnel_type = /obj/item/shard/shrapnel/bone_chips
 	shrapnel_chance = 60
 
-/datum/ammo/xeno/bone_chips/on_hit_mob(mob/living/M, obj/projectile/P)
-	if(iscarbon(M))
-		var/mob/living/carbon/C = M
+/datum/ammo/xeno/bone_chips/on_hit_mob(mob/living/mobba, obj/projectile/P)
+	if(iscarbon(mobba))
+		var/mob/living/carbon/C = mobba
 		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD || HAS_TRAIT(C, TRAIT_HAULED))
 			return
-	if(ishuman_strict(M) || isxeno(M))
-		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
-		if(M.slowed < 3)
-			M.apply_effect(3, SLOW)
+	if(ishuman_strict(mobba) || isxeno(mobba))
+		playsound(mobba, 'sound/effects/spike_hit.ogg', 25, 1, 1)
+		if(mobba.slowed < 3)
+			mobba.apply_effect(3, SLOW)
 
 /datum/ammo/xeno/bone_chips/spread
 	name = "small bone chips"
@@ -431,15 +435,15 @@
 	damage = 10
 	shrapnel_chance = 0
 
-/datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/living/M, obj/projectile/P)
-	if(iscarbon(M))
-		var/mob/living/carbon/C = M
+/datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/living/mobba, obj/projectile/P)
+	if(iscarbon(mobba))
+		var/mob/living/carbon/C = mobba
 		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD || HAS_TRAIT(C, TRAIT_HAULED))
 			return
-	if(ishuman_strict(M) || isxeno(M))
-		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
-		if(M.slowed < 6)
-			M.apply_effect(6, SLOW)
+	if(ishuman_strict(mobba) || isxeno(mobba))
+		playsound(mobba, 'sound/effects/spike_hit.ogg', 25, 1, 1)
+		if(mobba.slowed < 6)
+			mobba.apply_effect(6, SLOW)
 
 /datum/ammo/xeno/oppressor_tail
 	name = "tail hook"

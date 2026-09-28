@@ -195,6 +195,10 @@
 	// Reduces slowdown by 70%
 	if(HAS_TRAIT(crossing_mob, TRAIT_WEED_RESISTANT))
 		final_slowdown *= 0.3
+
+	// Corrupted hive weeds don't slow down xenos nearly as much!
+	if(isxeno(crossing_mob) && (linked_hive.hivenumber == XENO_HIVE_CORRUPTED))
+		final_slowdown *= 0.5
 	crossing_mob.next_move_slowdown = max(crossing_mob.next_move_slowdown, POSITIVE(final_slowdown))
 
 // Uh oh, we might be dying!
@@ -617,6 +621,9 @@
 
 /obj/effect/alien/weeds/node/hunted
 	hivenumber = XENO_HIVE_HUNTED
+
+/obj/effect/alien/weeds/node/corrupted
+	hivenumber = XENO_HIVE_CORRUPTED
 
 /obj/effect/alien/weeds/node/pylon
 	health = WEED_HEALTH_HIVE

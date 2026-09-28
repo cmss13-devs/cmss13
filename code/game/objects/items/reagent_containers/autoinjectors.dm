@@ -563,7 +563,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/black_goo_cure
 	name = "\"Pathogen\" cure EZ autoinjector (SINGLE-USE)"
-	desc = "An EZ autoinjector that injects a cure for Agent A0-3959X.91–15, also known as the 'black goo.'"
+	desc = "An EZ one-use autoinjector that injects a cure for Agent A0-3959X.91–15, also known as the 'black goo.'"
 	icon_state = "empty_research_single"
 	chemname = "antiZed"
 	autoinjector_type = "autoinjector_single"
@@ -585,7 +585,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine
 	name = "ultrazine stimpack"
 	chemname = "ultrazine"
-	desc = "A stimpack that injects a special and illegal muscle stimulant."
+	desc = "A stimpack that injects a special, illegal, and highly addictive muscle stimulant. It's 'speed' in the most literal sense."
 	amount_per_transfer_from_this = 5
 	volume = 25
 	uses_left = 5

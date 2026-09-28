@@ -1,0 +1,5 @@
+author: "Venuska1117"
+delete-after: True
+changes:
+  - balance: "Decloaking Predators using \"Roar\" ability now play loud sound clue for their decloak."
+  - soundadd: "Added new \"decloak\" sound for predators decloaked by predalien roar."

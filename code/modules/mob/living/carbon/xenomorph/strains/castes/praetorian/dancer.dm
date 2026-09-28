@@ -190,7 +190,7 @@
 		if(xeno.behavior_delegate)
 			xeno.behavior_delegate.melee_attack_additional_effects_target(target)
 
-		playsound(target, "punch", 25, TRUE)
+		playsound(target, SOUND_PUNCH, 25, TRUE)
 		target.apply_damage(behavior.blunt_damage, BRUTE, "chest")
 		apply_cooldown(cooldown_modifier = 0.3)
 		update_button_icon()

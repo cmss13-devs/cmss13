@@ -59,7 +59,7 @@
 		template.wait = soundin.wait
 		template.repeat = soundin.repeat
 	else
-		template.file = get_sfx(soundin)
+		template.file = soundin
 	template.channel = channel ? channel : get_free_channel()
 	template.status = status
 	template.falloff = falloff
@@ -136,7 +136,7 @@
 		template.wait = soundin.wait
 		template.repeat = soundin.repeat
 	else
-		template.file = get_sfx(soundin)
+		template.file = soundin
 
 	if(random_freq)
 		if(random_freq == "minor")
@@ -198,7 +198,7 @@
 			hearers += M.client
 	SSsound.queue(template, hearers)
 
-// The pick() proc has a built-in chance that can be added to any option by adding ,X; to the end of an option, where X is the % chance it will play.
+// only use when a constant expression is needed
 /proc/get_sfx(sound)
 	if(istext(sound))
 		switch(sound)
@@ -273,31 +273,31 @@
 			if("shell_load")
 				sound = pick('sound/weapons/shell_load1.ogg','sound/weapons/shell_load2.ogg','sound/weapons/shell_load3.ogg','sound/weapons/shell_load4.ogg')
 			if("ballistic_hit")
-				sound = pick('sound/bullets/bullet_impact1.ogg','sound/bullets/bullet_impact2.ogg','sound/bullets/bullet_impact1.ogg','sound/bullets/impact_flesh_1.ogg','sound/bullets/impact_flesh_2.ogg','sound/bullets/impact_flesh_3.ogg','sound/bullets/impact_flesh_4.ogg')
+				sound = SOUND_BALLISTIC_HIT
 			if("ballistic_armor")
-				sound = pick('sound/bullets/bullet_armor1.ogg','sound/bullets/bullet_armor2.ogg','sound/bullets/bullet_armor3.ogg','sound/bullets/bullet_armor4.ogg')
+				sound = SOUND_BALLISTIC_ARMOR
 			if("ballistic_miss")
-				sound = pick('sound/bullets/bullet_miss1.ogg','sound/bullets/bullet_miss2.ogg','sound/bullets/bullet_miss3.ogg','sound/bullets/bullet_miss4.ogg')
+				sound = SOUND_BALLISTIC_MISS
 			if("ballistic_bounce")
-				sound = pick('sound/bullets/bullet_ricochet1.ogg','sound/bullets/bullet_ricochet2.ogg','sound/bullets/bullet_ricochet3.ogg','sound/bullets/bullet_ricochet4.ogg','sound/bullets/bullet_ricochet5.ogg','sound/bullets/bullet_ricochet6.ogg','sound/bullets/bullet_ricochet7.ogg','sound/bullets/bullet_ricochet8.ogg')
+				sound = SOUND_BALLISTIC_BOUCE
 			if("ballistic_shield_hit")
-				sound = pick('sound/bullets/shield_impact_c1.ogg','sound/bullets/shield_impact_c2.ogg','sound/bullets/shield_impact_c3.ogg','sound/bullets/shield_impact_c4.ogg')
+				sound = SOUND_BALLISTIC_SHIELD_HIT
 			if("shield_shatter")
 				sound = pick('sound/bullets/shield_break_c1.ogg')
 			if("rocket_bounce")
-				sound = pick('sound/bullets/rocket_ricochet1.ogg','sound/bullets/rocket_ricochet2.ogg','sound/bullets/rocket_ricochet3.ogg')
+				sound = SOUND_ROCKET_BOUNCE
 			if("energy_hit")
-				sound = pick('sound/bullets/energy_impact1.ogg')
+				sound = SOUND_ENERGY_HIT
 			if("energy_miss")
-				sound = pick('sound/bullets/energy_miss1.ogg')
+				sound = SOUND_ENERGY_MISS
 			if("energy_bounce")
-				sound = pick('sound/bullets/energy_ricochet1.ogg')
+				sound = SOUND_ENERGY_BOUNCE
 			if("alloy_hit")
-				sound = pick('sound/bullets/spear_impact1.ogg')
+				sound = SOUND_ALLOY_HIT
 			if("alloy_armor")
-				sound = pick('sound/bullets/spear_armor1.ogg')
+				sound = SOUND_ALLOY_ARMOR
 			if("alloy_bounce")
-				sound = pick('sound/bullets/spear_ricochet1.ogg','sound/bullets/spear_ricochet2.ogg')
+				sound = SOUND_ALLOY_BOUNCE
 			if("gun_silenced")
 				sound = pick('sound/weapons/gun_silenced_shot1.ogg','sound/weapons/gun_silenced_shot2.ogg')
 			if("gun_silenced_alt")
@@ -411,13 +411,25 @@
 			if("female_preburst")
 				sound = pick('sound/voice/human_female_preburst1.ogg', 'sound/voice/human_female_preburst2.ogg', 'sound/voice/human_female_preburst3.ogg', 'sound/voice/human_female_preburst4.ogg', 'sound/voice/human_female_preburst5.ogg',  'sound/voice/human_female_preburst6.ogg',  'sound/voice/human_female_preburst7.ogg')
 			if("female_hugged")
-				sound = pick("sound/voice/human_female_facehugged1.ogg", 'sound/voice/human_female_facehugged2.ogg')
+				sound = pick('sound/voice/human_female_facehugged1.ogg', 'sound/voice/human_female_facehugged2.ogg')
 			if("rtb_handset")
 				sound = pick('sound/machines/telephone/rtb_handset_1.ogg', 'sound/machines/telephone/rtb_handset_2.ogg', 'sound/machines/telephone/rtb_handset_3.ogg', 'sound/machines/telephone/rtb_handset_4.ogg', 'sound/machines/telephone/rtb_handset_5.ogg')
 			if("talk_phone")
 				sound = pick('sound/machines/telephone/talk_phone1.ogg', 'sound/machines/telephone/talk_phone2.ogg', 'sound/machines/telephone/talk_phone3.ogg', 'sound/machines/telephone/talk_phone4.ogg', 'sound/machines/telephone/talk_phone5.ogg', 'sound/machines/telephone/talk_phone6.ogg', 'sound/machines/telephone/talk_phone7.ogg')
 			if("bone_break")
 				sound = pick('sound/effects/bone_break1.ogg','sound/effects/bone_break2.ogg','sound/effects/bone_break3.ogg','sound/effects/bone_break4.ogg','sound/effects/bone_break5.ogg','sound/effects/bone_break6.ogg','sound/effects/bone_break7.ogg','sound/effects/crack1.ogg', 'sound/effects/crack2.ogg', 'sound/effects/crackandbleed.ogg')
+			if("male_speak")
+				sound = pick('sound/voice/human_speech/human_male_speak.ogg')
+			if("male_ask")
+				sound = pick('sound/voice/human_speech/human_male_speak_ask.ogg')
+			if("male_exclaim")
+				sound = pick('sound/voice/human_speech/human_male_speak_exclaim.ogg')
+			if("female_speak")
+				sound = pick('sound/voice/human_speech/human_female_speak.ogg')
+			if("female_ask")
+				sound = pick('sound/voice/human_speech/human_female_speak_ask.ogg')
+			if("female_exclaim")
+				sound = pick('sound/voice/human_speech/human_female_speak_exclaim.ogg')
 			if("plush")
 				sound = pick('sound/items/plush1.ogg', 'sound/items/plush2.ogg', 'sound/items/plush3.ogg')
 			// working joe
@@ -469,7 +481,7 @@
 	var/datum/sound_template/template
 	for(var/i = 1, i <= ammount, i++)
 		template = new
-		template.file = get_sfx("male_warcry") // warcry has variable length, lots of variations
+		template.file = SOUND_MALE_WARCRY // warcry has variable length, lots of variations
 		template.channel = get_free_channel() // i'm convinced this is bad, but it's here to mirror playsound() behaviour
 		template.range = range
 		template.x = x

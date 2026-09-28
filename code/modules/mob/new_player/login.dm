@@ -245,7 +245,7 @@
 			return TRUE
 
 		if("keyboard")
-			playsound_client(client, get_sfx("keyboard"), vol = 20)
+			playsound_client(client, keyboard, vol = 20)
 
 /// Join as a 'xeno' - set us up in the larva pool
 /mob/new_player/proc/observe_for_xeno()

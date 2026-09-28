@@ -96,7 +96,7 @@
 			handled = TRUE
 			var/obj/structure/machinery/m56d_hmg/weapon_in_path = target
 			visible_message(SPAN_DANGER("[src] rams [weapon_in_path]!"), SPAN_XENODANGER("We ram [weapon_in_path]!"))
-			playsound(loc, "punch", 25, 1)
+			playsound(loc, SOUND_PUNCH, 25, 1)
 			weapon_in_path.CrusherImpact()
 			. = FALSE
 
@@ -113,7 +113,7 @@
 			var/obj/structure/machinery/defenses/defenses_in_path = target
 			visible_message(SPAN_DANGER("[src] rams [defenses_in_path]!"), SPAN_XENODANGER("We ram [defenses_in_path]!"))
 			if(!defenses_in_path.unacidable)
-				playsound(loc, "punch", 25, 1)
+				playsound(loc, SOUND_PUNCH, 25, 1)
 				defenses_in_path.stat |= DEFENSE_DAMAGED
 				defenses_in_path.update_health(melee_damage_upper)
 			. = FALSE
@@ -125,7 +125,7 @@
 				. = FALSE
 			else
 				visible_message(SPAN_DANGER("[src] smashes straight into [vending_in_path]!"), SPAN_XENODANGER("We smash straight into [vending_in_path]!"))
-				playsound(loc, "punch", 25, 1)
+				playsound(loc, SOUND_PUNCH, 25, 1)
 				vending_in_path.tip_over()
 				var/turf/turfs_charged_at = get_diagonal_step(vending_in_path, dir)
 				turfs_charged_at = get_step_away(turfs_charged_at, src)
@@ -139,7 +139,7 @@
 				. = FALSE
 			else
 				visible_message(SPAN_DANGER("[src] smashes straight into [vending_in_path]!"), SPAN_XENODANGER("We smash straight into [vending_in_path]!"))
-				playsound(loc, "punch", 25, 1)
+				playsound(loc, SOUND_PUNCH, 25, 1)
 				vending_in_path.tip_over()
 				var/turf/turfs_charged_at = get_diagonal_step(vending_in_path, dir)
 				turfs_charged_at = get_step_away(turfs_charged_at, src)
@@ -150,7 +150,7 @@
 			handled = TRUE
 			var/obj/structure/machinery/fuelpump/pump_in_path = target
 			visible_message(SPAN_DANGER("[src] rams [pump_in_path]!"), SPAN_XENODANGER("We ram [pump_in_path]!"))
-			playsound(loc, "punch", 25, 1)
+			playsound(loc, SOUND_PUNCH, 25, 1)
 			pump_in_path.update_health(melee_damage_upper)
 			. = FALSE
 
@@ -214,7 +214,7 @@
 			. = FALSE
 		else if(object_in_path.anchored)
 			visible_message(SPAN_DANGER("[src] crushes [object_in_path]!"), SPAN_XENODANGER("We crush [object_in_path]!"))
-			playsound(loc, "punch", 25, 1)
+			playsound(loc, SOUND_PUNCH, 25, 1)
 			object_in_path.deconstruct(FALSE)
 			. = TRUE
 
@@ -222,7 +222,7 @@
 			if(object_in_path.buckled_mob)
 				object_in_path.unbuckle()
 			visible_message(SPAN_WARNING("[src] knocks [object_in_path] aside!"), SPAN_XENOWARNING("We knock [object_in_path] aside.")) //Canisters, crates etc. go flying.
-			playsound(loc, "punch", 25, 1)
+			playsound(loc, SOUND_PUNCH, 25, 1)
 			var/turf/turfs_to_get = get_diagonal_step(object_in_path, dir)
 			turfs_to_get = get_step_away(turfs_to_get, src)
 			throw_atom(turfs_to_get, range=2, speed=2)

@@ -119,7 +119,7 @@ would spawn and follow the beaker, even if it is carried or thrown.
 
 /obj/effect/particle_effect/sparks/Initialize(mapload, ...)
 	. = ..()
-	playsound(loc, "sparks", 25, 1)
+	playsound(loc, SOUND_SPARKS, 25, 1)
 	START_PROCESSING(SSfasteffects, src)
 	QDEL_IN(src, 10 SECONDS)
 

@@ -80,7 +80,7 @@
 	. = ..()
 	if(slot == WEAR_FEET && enabled_waddle)
 		user.AddElement(/datum/element/waddling)
-		user.AddComponent(/datum/component/footstep, 2, 10, 4, 4, "clown_footstep", vary_ = 0)
+		user.AddComponent(/datum/component/footstep, 2, 10, 4, 4, SOUND_CLOWNSTEP, vary_ = 0)
 
 /obj/item/clothing/shoes/clown_shoes/unequipped(mob/user)
 	. = ..()

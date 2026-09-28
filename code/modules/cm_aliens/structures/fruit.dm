@@ -37,7 +37,7 @@
 		return
 	var/n_color = color
 	qdel(src)
-	playsound(src, "alien_resin_break", 25, FALSE)
+	playsound(src, SOUND_ALIEN_RESIN_BREAK, 25, FALSE)
 	if(!mature)
 		to_chat(user, SPAN_WARNING("[src] disintegrates in your hands as you uproot it."))
 		return
@@ -181,7 +181,7 @@
 		affected_xeno.animation_attack_on(src)
 		affected_xeno.visible_message(SPAN_XENODANGER("[affected_xeno] removes [name]!"),
 		SPAN_XENODANGER("You remove [name]!"))
-		playsound(loc, "alien_resin_break", 25)
+		playsound(loc, SOUND_ALIEN_RESIN_BREAK, 25)
 		qdel(src)
 		return XENO_ATTACK_ACTION
 	return XENO_NO_DELAY_ACTION

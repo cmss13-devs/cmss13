@@ -74,7 +74,7 @@
 			SPAN_HIGHDANGER("You feel agonizing pain as you're drenched in acid!"))
 		victim.emote("scream")
 		victim.apply_damage(rand(75, 125), BURN) // you WILL wear biosuit.
-		playsound(victim, "acid_sizzle", 25, TRUE)
+		playsound(victim, SOUND_ACID_SIZZLE, 25, TRUE)
 		animation_flash_color(victim, "#FF0000")
 		//Having acid spray everywhere *but* the floor makes no sense, but this can be removed if research gets too messy.
 		victim.add_blood(BLOOD_COLOR_XENO, BLOOD_HANDS) //messy
@@ -125,7 +125,7 @@
 		victim.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY)
 		victim.emote("pain")
 		victim.apply_damage(rand(50, 75), BURN) // still dangerous
-		playsound(victim, "acid_sizzle", 25, TRUE)
+		playsound(victim, SOUND_ACID_SIZZLE, 25, TRUE)
 		animation_flash_color(victim, "#FF0000")
 		target.add_splatter_floor(get_turf(target.loc))
 	return FALSE
@@ -181,7 +181,7 @@
 		victim.add_blood(BLOOD_COLOR_XENO, BLOOD_BODY) //splish splosh
 		victim.emote("pain")
 		victim.apply_damage(rand(50, 75), BURN) // not AS dangerous but still is
-		playsound(victim, "acid_sizzle", 25, TRUE)
+		playsound(victim, SOUND_ACID_SIZZLE, 25, TRUE)
 		animation_flash_color(victim, "#FF0000")
 		target.add_splatter_floor(get_turf(target.loc))
 
@@ -228,7 +228,7 @@
 				user.apply_damage(rand(30,50), BURN, "l_hand")
 			else
 				user.apply_damage(rand(30,50), BURN, "r_hand")
-			playsound(user, "acid_sizzle", 25, TRUE)
+			playsound(user, SOUND_ACID_SIZZLE, 25, TRUE)
 			animation_flash_color(user, "#FF0000")
 			//no blood splatter here, we're just sticking our hands in, not cutting anything open
 			user.add_blood(BLOOD_COLOR_XENO, BLOOD_HANDS)

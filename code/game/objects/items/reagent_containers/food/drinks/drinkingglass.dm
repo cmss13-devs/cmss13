@@ -714,7 +714,7 @@
 		else
 			new/obj/item/shard(src.loc)
 
-	playsound(src, "shatter", 25, 1)
+	playsound(src, SOUND_SHATTER, 25, 1)
 	transfer_fingerprints_to(B)
 
 	qdel(src)

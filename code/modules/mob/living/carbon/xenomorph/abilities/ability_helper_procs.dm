@@ -336,7 +336,7 @@
 	target.xeno_jitter(1 SECONDS)
 	to_chat(target, SPAN_XENOWARNING("[src] has transferred [amount] plasma to us. We now have [target.plasma_stored]."))
 	to_chat(src, SPAN_XENOWARNING("We have transferred [amount] plasma to [target]. We now have [plasma_stored]."))
-	playsound(src, "alien_drool", 25)
+	playsound(src, SOUND_ALIEN_DROOL, 25)
 
 /mob/living/carbon/xenomorph/proc/check_can_transfer_plasma(mob/living/carbon/xenomorph/target, max_range)
 	if(!check_state())

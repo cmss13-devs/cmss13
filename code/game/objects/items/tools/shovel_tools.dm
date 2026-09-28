@@ -134,7 +134,7 @@
 				new_bags.amount = dirttransfer_amount
 				new_bags.add_to_stacks(user)
 				var/replace = (user.get_inactive_hand() == SB)
-				playsound(user.loc, "rustle", 30, 1, 6)
+				playsound(user.loc, SOUND_RUSTLE, 30, 1, 6)
 				SB.use(dirttransfer_amount)
 				if(!SB && replace)
 					user.put_in_hands(new_bags)
@@ -152,7 +152,7 @@
 /obj/item/tool/shovel/proc/dump_shovel(atom/target, mob/user)
 	var/turf/T = target
 	to_chat(user, SPAN_NOTICE("You dump the [dirt_type_to_name(dirt_type)]!"))
-	playsound(user.loc, "rustle", 30, 1, 6)
+	playsound(user.loc, SOUND_RUSTLE, 30, 1, 6)
 	if(dirt_type == DIRT_TYPE_SNOW)
 		var/obj/item/stack/snow/S = locate() in T
 		if(S && S.amount + dirt_amt < S.max_amount)

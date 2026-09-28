@@ -1579,7 +1579,7 @@
 						update_icon(-transferred_handfuls)
 					else
 						break
-				playsound(user.loc, "rustle", 15, TRUE, 6)
+				playsound(user.loc, SOUND_RUSTLE, 15, TRUE, 6)
 				ammo_dumping.update_icon()
 			else
 				to_chat(user, SPAN_WARNING("[src] is full."))

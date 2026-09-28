@@ -12,7 +12,7 @@
 	w_class = SIZE_LARGE //Should not fit in backpacks
 	storage_slots = 14
 	max_storage_space = 24
-	use_sound = "toolbox"
+	use_sound = SOUND_TOOLBOX
 	matter = list("plastic" = 3000)
 	can_hold = list(
 		/obj/item/tool/surgery,

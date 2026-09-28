@@ -53,7 +53,7 @@
 			return
 		else
 			name = ("bookcase ([strip_html(newname)])")
-			playsound(src, "paper_writing", 15, TRUE)
+			playsound(src, SOUND_PAPER_WRITING, 15, TRUE)
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		if(do_after(user, 1 SECONDS, INTERRUPT_MOVED, BUSY_ICON_FRIENDLY, src))

@@ -333,7 +333,7 @@
 /datum/tutorial/marine/reqs_line/proc/agent_pick_up(mob/agent, obj/item/item)
 	// Actually pick the item up for the animation
 	agent.put_in_hands(item, drop_on_fail = FALSE)
-	playsound(agent, "rustle", 30)
+	playsound(agent, SOUND_RUSTLE, 30)
 	// Now delete it
 	agent.temp_drop_inv_item(item)
 	qdel(item)

@@ -14,8 +14,8 @@
 	uniform_restricted = list(/obj/item/clothing/under)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 
-	pickup_sound = "armorequip"
-	drop_sound = "armorequip"
+	pickup_sound = SOUND_ARMOREQUIP
+	drop_sound = SOUND_ARMOREQUIP
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/armor.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',

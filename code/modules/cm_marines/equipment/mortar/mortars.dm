@@ -96,8 +96,8 @@
 	if(firing)
 		xeno.animation_attack_on(src)
 		xeno.flick_attack_overlay(src, "slash")
-		playsound(src, "acid_hit", 25, 1)
-		playsound(xeno, "alien_help", 25, 1)
+		playsound(src, SOUND_ACID_HIT, 25, 1)
+		playsound(xeno, SOUND_ALIEN_HELP, 25, 1)
 		xeno.apply_damage(10, BURN)
 		xeno.visible_message(SPAN_DANGER("[xeno] tried to knock the steaming hot [src] over, but burned itself and pulled away!"),
 		SPAN_XENOWARNING("[src] is burning hot! Wait a few seconds."))

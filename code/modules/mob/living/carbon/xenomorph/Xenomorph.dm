@@ -84,10 +84,10 @@
 	//////////////////////////////////////////////////////////////////
 	var/datum/caste_datum/caste // Used to extract determine ALL Xeno stats.
 	var/speaking_key = "x"
-	var/speaking_noise = "alien_talk"
+	var/speaking_noise = SOUND_ALIEN_TALK
 	slash_verb = "slash"
 	slashes_verb = "slashes"
-	var/slash_sound = "alien_claw_flesh"
+	var/slash_sound = SOUND_ALIEN_CLAW_FLESH
 	health = 5
 	maxHealth = 5
 	health_threshold_dead = -100 // What negative healthy they die in.

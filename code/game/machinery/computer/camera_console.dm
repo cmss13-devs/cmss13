@@ -132,7 +132,7 @@
 					selected_camera = cameras[I]
 					break
 		current = selected_camera
-		playsound(src, get_sfx("terminal_type"), 25, FALSE)
+		playsound(src, terminal_type, 25, FALSE)
 
 		if(!selected_camera)
 			return TRUE

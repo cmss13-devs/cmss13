@@ -380,7 +380,7 @@
 		attacking_xeno.animation_attack_on(src)
 		attacking_xeno.visible_message(SPAN_DANGER("\The [attacking_xeno] slashes [src]!"),
 		SPAN_DANGER("You slash [src]!"), null, 5)
-		playsound(loc, "alien_resin_break", 25)
+		playsound(loc, SOUND_ALIEN_RESIN_BREAK, 25)
 		take_damage(attacking_xeno.melee_damage_lower*WEED_XENO_DAMAGEMULT)
 		return XENO_ATTACK_ACTION
 
@@ -397,7 +397,7 @@
 		to_chat(user, SPAN_WARNING("You cut \the [src] away with \the [attacking_item]."))
 
 	var/damage = (attacking_item.force * attacking_item.demolition_mod) / 3
-	playsound(loc, "alien_resin_break", 25)
+	playsound(loc, SOUND_ALIEN_RESIN_BREAK, 25)
 
 	if(iswelder(attacking_item))
 		var/obj/item/tool/weldingtool/WT = attacking_item
@@ -405,7 +405,7 @@
 			damage = WEED_HEALTH_STANDARD
 			playsound(loc, 'sound/items/Welder.ogg', 25, 1)
 	else
-		playsound(loc, "alien_resin_break", 25)
+		playsound(loc, SOUND_ALIEN_RESIN_BREAK, 25)
 
 
 	user.animation_attack_on(src)

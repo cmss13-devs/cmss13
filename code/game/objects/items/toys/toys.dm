@@ -506,7 +506,7 @@
 	if(!COOLDOWN_FINISHED(src, last_hug_time))
 		return
 	user.visible_message(SPAN_NOTICE("[user] hugs [src] tightly!"), SPAN_NOTICE("You hug [src]."))
-	playsound(user, "plush", 25, TRUE)
+	playsound(user, SOUND_PLUSH, 25, TRUE)
 	COOLDOWN_START(src, last_hug_time, 2.5 SECONDS)
 
 /obj/item/toy/plush/farwa

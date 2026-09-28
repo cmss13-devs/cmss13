@@ -126,7 +126,7 @@
 					else
 						user.drop_inv_item_to_loc(I, src)
 						holdingitems += I
-			playsound(user.loc, "rustle", 15, 1, 6)
+			playsound(user.loc, SOUND_RUSTLE, 15, 1, 6)
 			return FALSE
 
 		else

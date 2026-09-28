@@ -40,7 +40,7 @@
 	currentItem.SwapColor(rgb(255, 0, 220, 255), rgb(0, 0, 0, 0))
 	new_breakage.icon = currentItem
 
-	playsound(src, "windowshatter", 15, 1)
+	playsound(src, SOUND_WINDOWSHATTER, 15, 1)
 	transfer_fingerprints_to(new_breakage)
 
 	qdel(src)

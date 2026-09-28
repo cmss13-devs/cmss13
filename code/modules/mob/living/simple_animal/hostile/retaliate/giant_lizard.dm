@@ -178,7 +178,7 @@
 		manual_emote("growls at [target_mob].")
 	else
 		manual_emote("growls.")
-	playsound(loc, "giant_lizard_growl", 60)
+	playsound(loc, SOUND_GIANT_LIZARD_GROWL, 60)
 	COOLDOWN_START(src, growl_message, rand(10, 14) SECONDS)
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/get_status_tab_items()
@@ -355,7 +355,7 @@
 				COOLDOWN_START(src, emote_cooldown, rand(5, 8) SECONDS)
 				manual_emote(pick(pick(pet_emotes), "stares at [attacking_mob].", "nuzzles [attacking_mob].", "licks [attacking_mob]'s hand."), "nibbles [attacking_mob]'s arm.")
 				if(prob(50))
-					playsound(loc, "giant_lizard_hiss", 25)
+					playsound(loc, SOUND_GIANT_LIZARD_HISS, 25)
 					flick("Giant Lizard Tongue", tongue_icon_holder)
 	if(attacking_mob.a_intent == INTENT_DISARM && prob(25))
 		playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
@@ -397,7 +397,7 @@
 	food_target_ref = null
 	is_eating = FALSE
 	manual_emote("hisses in agony!")
-	playsound(src, "giant_lizard_hiss", 40)
+	playsound(src, SOUND_GIANT_LIZARD_HISS, 40)
 	MoveTo(null, 9, TRUE, 4 SECONDS, FALSE)
 	COOLDOWN_START(src, calm_cooldown, 8 SECONDS)
 
@@ -566,7 +566,7 @@
 		var/attack_type = pick(ATTACK_SLASH, ATTACK_BITE)
 		attacktext = attack_type ? "claws" : "bites"
 		flick_attack_overlay(target, attack_type ? "slash" : "animalbite")
-		playsound(loc, attack_type ? "alien_claw_flesh" : "alien_bite", 25, 1)
+		playsound(loc, attack_type ? SOUND_ALIEN_CLAW_FLESH : SOUND_ALIEN_BITE, 25, 1)
 		target.attack_animal(src)
 		animation_attack_on(target)
 
@@ -596,7 +596,7 @@
 			is_xeno_structure = TRUE
 
 		animation_attack_on(structure)
-		playsound(loc, is_xeno_structure ? "alien_resin_break" : 'sound/effects/metalhit.ogg', 25)
+		playsound(loc, is_xeno_structure ? SOUND_ALIEN_RESIN_BREAK : 'sound/effects/metalhit.ogg', 25)
 		visible_message(SPAN_DANGER("[src] slashes [structure]!"), SPAN_DANGER("You slash [structure]!"), null, 5, CHAT_TYPE_COMBAT_ACTION)
 		var/damage_multiplier = 2
 		if(is_xeno_structure)
@@ -867,7 +867,7 @@
 			var/attack_type = pick(ATTACK_SLASH, ATTACK_BITE)
 			attacktext = attack_type ? "claws" : "bites"
 			flick_attack_overlay(target, attack_type ? "slash" : "animalbite")
-			playsound(loc, attack_type ? "alien_claw_flesh" : "alien_bite", 25, 1)
+			playsound(loc, attack_type ? SOUND_ALIEN_CLAW_FLESH : SOUND_ALIEN_BITE, 25, 1)
 			target.handle_blood_splatter(get_dir(src.loc, target.loc))
 
 			if(target.body_position == LYING_DOWN)
@@ -915,7 +915,7 @@
 			Stun(1)
 
 			REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT) //Reset throwing manually.
-			playsound(human_mob, "bonk", 75, FALSE) //bonk
+			playsound(human_mob, SOUND_BONK, 75, FALSE) //bonk
 			return
 
 		if(isyautja(human_mob) && prob(75))//Body slam.
@@ -933,7 +933,7 @@
 			playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 			return
 
-	playsound(loc, "giant_lizard_hiss", 25)
+	playsound(loc, SOUND_GIANT_LIZARD_HISS, 25)
 	pounced_mob.KnockDown(0.5)
 	step_to(src, pounced_mob)
 	if(!client && !(pounced_mob.faction in faction_group))
@@ -992,13 +992,13 @@
 /datum/emote/living/giant_lizard/growl
 	key = "growl"
 	message = "growls."
-	sound = "giant_lizard_growl"
+	sound = SOUND_GIANT_LIZARD_GROWL
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/giant_lizard/hiss
 	key = "hiss"
 	message = "hisses."
-	sound = "giant_lizard_hiss"
+	sound = SOUND_GIANT_LIZARD_HISS
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/giant_lizard/flicktongue

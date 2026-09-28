@@ -47,7 +47,7 @@
 		for(var/mob/evac_mob in shuttle_area)
 			shake_camera(evac_mob, 20, 2)
 			if(evac_mob.client)
-				playsound_client(evac_mob.client, get_sfx("bigboom"), vol = 50)
+				playsound_client(evac_mob.client, bigboom, vol = 50)
 
 /// Called when the shuttle is launched and checks for crash and creates a crash point
 /obj/docking_port/mobile/crashable/proc/evac_launch()

@@ -368,7 +368,7 @@
 	SPAN_DANGER("You slash [src]!"))
 	M.animation_attack_on(src)
 	M.flick_attack_overlay(src, "slash")
-	playsound(loc, "alien_claw_metal", 25)
+	playsound(loc, SOUND_ALIEN_CLAW_METAL, 25)
 	update_health(rand(M.melee_damage_lower,M.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
@@ -820,7 +820,7 @@
 	SPAN_DANGER("You slash [src]!"))
 	xeno.animation_attack_on(src)
 	xeno.flick_attack_overlay(src, "slash")
-	playsound(loc, "alien_claw_metal", 25)
+	playsound(loc, SOUND_ALIEN_CLAW_METAL, 25)
 	update_health(rand(xeno.melee_damage_lower,xeno.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 

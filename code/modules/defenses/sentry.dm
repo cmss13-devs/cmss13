@@ -826,7 +826,7 @@
 		if(ismob(AM))
 			var/mob/living/L = AM
 			L.apply_damage(20, enviro=TRUE)
-			playsound(L, "bonk", 75, FALSE)
+			playsound(L, SOUND_BONK, 75, FALSE)
 			L.visible_message(SPAN_DANGER("The sentry's steel tusks impale [L]!"),
 			SPAN_DANGER("The sentry's steel tusks impale you!"))
 			if(L.mob_size <= MOB_SIZE_XENO_SMALL)

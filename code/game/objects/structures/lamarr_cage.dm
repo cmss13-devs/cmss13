@@ -38,7 +38,7 @@
 			src.density = FALSE
 			src.destroyed = 1
 			new /obj/item/shard( src.loc )
-			playsound(src, "shatter", 25, 1)
+			playsound(src, SOUND_SHATTER, 25, 1)
 			Break()
 	else
 		playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)

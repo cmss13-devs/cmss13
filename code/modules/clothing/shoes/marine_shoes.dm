@@ -27,7 +27,7 @@
 		/obj/item/tool/surgery/scalpel,
 		/obj/item/weapon/straight_razor,
 	)
-	drop_sound = "armorequip"
+	drop_sound = SOUND_ARMOREQUIP
 
 /obj/item/clothing/shoes/marine/update_icon()
 	if(stored_item)

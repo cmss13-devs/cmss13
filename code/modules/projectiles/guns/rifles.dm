@@ -48,7 +48,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi'
 	icon_state = "m41a"
 	item_state = "m41a"
-	fire_sound = "gun_pulse"
+	fire_sound = SOUND_GUN_PULSE
 	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
 	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle
@@ -149,7 +149,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/assault_rifles.dmi'
 	icon_state = "nsg23"
 	item_state = "nsg23"
-	fire_sound = "gun_nsg23"
+	fire_sound = SOUND_GUN_NSG23
 	reload_sound = 'sound/weapons/handling/nsg23_reload.ogg'
 	unload_sound = 'sound/weapons/handling/nsg23_unload.ogg'
 	cocked_sound = 'sound/weapons/handling/nsg23_cocked.ogg'
@@ -520,7 +520,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi'
 	icon_state = "m46c"
 	item_state = "m46c"
-	fire_sound = "gun_pulse"
+	fire_sound = SOUND_GUN_PULSE
 	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
 	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1
@@ -1837,7 +1837,7 @@
 	pixel_x = -2
 	hud_offset = -2
 
-	fire_sound = "gun_silenced"
+	fire_sound = SOUND_GUN_SILENCED
 	wield_delay = 0 //Ends up being .5 seconds due to scope
 	inherent_traits = list(TRAIT_GUN_SILENCED)
 	current_mag = /obj/item/ammo_magazine/rifle/type71/ap
@@ -2300,7 +2300,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/assault_rifles.dmi'
 	icon_state = "aug"
 	item_state = "aug"
-	fire_sound = "gun_pulse"
+	fire_sound = SOUND_GUN_PULSE
 	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
 	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/rmc_f90
@@ -2447,7 +2447,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/assault_rifles.dmi'
 	icon_state = "l23"
 	item_state = "l23"
-	fire_sound = "gun_nsg23"
+	fire_sound = SOUND_GUN_NSG23
 	reload_sound = 'sound/weapons/handling/nsg23_reload.ogg'
 	unload_sound = 'sound/weapons/handling/nsg23_unload.ogg'
 	cocked_sound = 'sound/weapons/handling/nsg23_cocked.ogg'
@@ -2532,7 +2532,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/assault_rifles.dmi'
 	icon_state = "l23"
 	item_state = "l23"
-	fire_sound = "gun_nsg23"
+	fire_sound = SOUND_GUN_NSG23
 	reload_sound = 'sound/weapons/handling/nsg23_reload.ogg'
 	unload_sound = 'sound/weapons/handling/nsg23_unload.ogg'
 	cocked_sound = 'sound/weapons/handling/nsg23_cocked.ogg'
@@ -2609,7 +2609,7 @@
 	item_state = "l42a3"
 	reload_sound = 'sound/weapons/handling/rmcdmr_reload.ogg'
 	unload_sound = 'sound/weapons/handling/rmcdmr_unload.ogg'
-	fire_sound = "gun_l64"
+	fire_sound = SOUND_GUN_L64
 	current_mag = /obj/item/ammo_magazine/rifle/l64
 
 	attachable_allowed = list(
@@ -2749,7 +2749,7 @@
 	map_specific_decoration = TRUE
 
 	var/pump_delay //How long we have to wait before we can pump the shotgun again.
-	var/pump_sound = "shotgunpump"
+	var/pump_sound = SOUND_SHOTGUNPUMP
 	var/message_delay = 1 SECONDS //To stop message spam when trying to pump the gun constantly.
 	var/burst_count = 0 //To detect when the burst fire is near its end.
 	COOLDOWN_DECLARE(allow_message)

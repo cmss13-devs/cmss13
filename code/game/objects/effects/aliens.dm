@@ -479,7 +479,7 @@
 			visible_message(SPAN_XENOWARNING("\The [acid_t] begins to crumble under the acid!"))
 
 /obj/effect/xenomorph/acid/proc/finish_melting()
-	playsound(src, "acid_hit", 25, TRUE)
+	playsound(src, SOUND_ACID_HIT, 25, TRUE)
 
 	if(istype(acid_t, /obj/item/weapon/gun))
 		var/obj/item/weapon/gun/acid_gun = acid_t

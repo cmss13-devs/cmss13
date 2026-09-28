@@ -46,7 +46,7 @@
 		txt = copytext(txt, 1, 128)
 		if(loc == user && user.stat == 0)
 			scribble = txt
-			playsound(src, "paper_writing", 15, TRUE)
+			playsound(src, SOUND_PAPER_WRITING, 15, TRUE)
 	..()
 
 /obj/item/photo/get_examine_text(mob/user)
@@ -99,7 +99,7 @@
 		var/mob/M = usr
 		if(!( istype(over_object, /atom/movable/screen) ))
 			return ..()
-		playsound(loc, "rustle", 15, 1, 6)
+		playsound(loc, SOUND_RUSTLE, 15, 1, 6)
 		if((!( M.is_mob_restrained() ) && !( M.stat ) && M.back == src))
 			switch(over_object.name)
 				if("r_hand")

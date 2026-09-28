@@ -123,7 +123,7 @@
 		M.animation_attack_on(src)
 		M.visible_message(SPAN_XENONOTICE("[M] clears the hatched egg."),
 		SPAN_XENONOTICE("We clear the hatched egg."))
-		playsound(src.loc, "alien_resin_break", 25)
+		playsound(src.loc, SOUND_ALIEN_RESIN_BREAK, 25)
 		qdel(src)
 		return XENO_NONCOMBAT_ACTION
 
@@ -303,7 +303,7 @@
 			damage = 15
 			playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 	else
-		playsound(src.loc, "alien_resin_break", 25)
+		playsound(src.loc, SOUND_ALIEN_RESIN_BREAK, 25)
 
 	health -= damage
 	healthcheck()

@@ -97,7 +97,7 @@
 		target_mob.attack_animal(src)
 		animation_attack_on(target_mob)
 		flick_attack_overlay(target_mob, "slash")
-		playsound(loc, "alien_claw_flesh", 25, 1)
+		playsound(loc, SOUND_ALIEN_CLAW_FLESH, 25, 1)
 		return target_mob
 	if(istype(target_mob, /obj/structure/machinery/bot))
 		var/obj/structure/machinery/bot/bot = target_mob

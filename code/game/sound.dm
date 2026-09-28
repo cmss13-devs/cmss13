@@ -383,6 +383,8 @@
 				sound = pick('sound/voice/alien_roar_larva1.ogg','sound/voice/alien_roar_larva2.ogg')
 			if("queen")
 				sound = pick('sound/voice/alien_queen_command.ogg','sound/voice/alien_queen_command2.ogg','sound/voice/alien_queen_command3.ogg')
+			if("pred_decloak")
+				sound = pick('sound/effects/pred_force_decloak.ogg')
 			// Human
 			if("male_scream")
 				sound = pick('sound/voice/human_male_scream_1.ogg','sound/voice/human_male_scream_2.ogg','sound/voice/human_male_scream_3.ogg','sound/voice/human_male_scream_4.ogg',5;'sound/voice/human_male_scream_5.ogg',5;'sound/voice/human_jackson_scream.ogg',5;'sound/voice/human_ack_scream.ogg','sound/voice/human_male_scream_6.ogg')

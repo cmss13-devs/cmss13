@@ -75,44 +75,52 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/proc/get_autoinjector_examine_text(mob/user, max_uses)
 	. = list()
-
-	var/chemical_name
-
-	for(var/datum/reagent/chem in reagents.reagent_list)
-		if(length(reagents.reagent_list) > 1)
-			chemical_name = SPAN_RED("... Oh, dear, the label's chemical list is overlapping and impossible to read. Better get a scanner.")
-		else
-			chemical_name = chem.name
-
 	if(uses_left > 0)
 		if(max_uses == 1) //one_use autoinjectors
-			. += SPAN_NOTICE("It injects its entire payload of [chemical_name].")
+			. += SPAN_NOTICE("It injects its entire payload of [amount_per_transfer_from_this]u.")
 		else
-			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections of [chemical_name].")
+			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] [amount_per_transfer_from_this]u injections.")
 	else
 		if(cannot_refill)
-			. += SPAN_WARNING("It is spent and it cannot be refilled.")
+			. += SPAN_WARNING("It is spent and has no refill valve to refill it.")
 		else
-			. += SPAN_HELPFUL("It is empty but it can be refilled. Try Wey-Med vends, Wall-Meds, or an MS-11 Smart Refill Tank.")
+			. += SPAN_HELPFUL("It is empty but it is always refillable at a Wey-Med Plus or with a Smart Refill Tank.")
 
 	if(skilllock > SKILL_MEDICAL_DEFAULT)
 		if(skillcheck(user, SKILL_MEDICAL, skilllock))
 			. += SPAN_HELPFUL("It has a lock on it similar to pill bottles, but you know how to unlock it.")
 		else
-			. += SPAN_WARNING("It has a lock on it similar to pill bottles. You do not have enough training in medicine to unlock it.")
+			. += SPAN_WARNING("It has a lock on it similar to pill bottles. You do not have enough training in Medicine to know how to unlock it.")
 	else
 		. += SPAN_HELPFUL("It doesn't have a lock on it, so anyone can use it.")
 
-	if(chemname == "tramadol")
-		. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: Mixing Tramadol and Paracetamol produces toxins and require dialysis to remove. Tramadol will be less efficacious if administered to a patient with opiate receptor deficiency.</b>")
-	if(chemname == "oxycodone")
-		. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: Oxycodone will be less efficacious if administered to a patient with opiate receptor deficiency.</b>")
-	if(chemname == "paracetamol")
-		. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: Mixing Paracetamol and Tramadol produces toxins that require dialysis to remove.</b>")
-	if(chemname == "anti_toxin" || chemname == "arithrazine")
-		. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: This medication does not remove overdosed substances. In case of overdose, please give the patient dialysis.</b>")
-	if(chemname == "ultrazine")
-		. += SPAN_WARNING("It comes with a warning label that says: <b>WARNING: EXTREMELY ADDICTIVE!</b>")
+	if(!mixed_chem)
+		if(length(reagents.reagent_list) > 0)
+			if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
+				var/datum/reagent/chemical = reagents.reagent_list[1]
+				var/dose = chemical.overdose / amount_per_transfer_from_this
+				if(dose != 0)
+					if(dose < 1)
+						. += SPAN_WARNING("You know this will overdose if administered.")
+					if(dose == 1)
+						. += SPAN_HELPFUL("You know not to exceed 1 dose.")
+					if(dose > 1)
+						. += SPAN_HELPFUL("You know not to exceed [dose] doses.")
+
+		for(var/datum/reagent/chem in reagents.reagent_list)
+			if(length(reagents.reagent_list) > 0)
+				if(chem.name == "Tramadol")
+					. += SPAN_HELPFUL("You know mixing Tramadol with Paracetamol produces toxins.")
+				if(chem.name == "Dylovene" || chem.name == "Arithrazine")
+					. += SPAN_HELPFUL("You know [chem.name] removes toxins but it does not remove overdosed substances nor treat liver damage.")
+				if(chem.name == "Peridaxon")
+					. += SPAN_HELPFUL("You know Peridaxon does not treat organ damage.")
+				if(chem.name == "Dexalin" || chem.name == "Dexalin Plus")
+					. += SPAN_HELPFUL("You know [chem.name] does not treat lung nor heart damage.")
+				if(chem.name == "Kelotane" || chem.name == "Dermaline")
+					. += SPAN_HELPFUL("You know [chem.name] does not treat eschar and severe burns nor the last 5 damage on limbs with the aforementioned afflictions.")
+				if(chem.name == "Oxycodone")
+					. += SPAN_HELPFUL("You know that patients with Opiate Receptor Deficiency require general anesthetic for a painless surgery.</b>")
 
 /obj/item/reagent_container/hypospray/autoinjector/get_examine_text(mob/user)
 	. = ..()
@@ -281,12 +289,16 @@
 	name = "meralyne autoinjector"
 	desc = "An autoinjector that injects an advanced brute-mending medicine."
 	chemname = "meralyne"
+	amount_per_transfer_from_this = LOWH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
+	volume = (LOWH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	maptext_label = "Me"
 
 /obj/item/reagent_container/hypospray/autoinjector/standard/dermaline
 	name = "dermaline autoinjector"
 	desc = "An autoinjector that injects an advanced burn-salving medicine."
 	chemname = "dermaline"
+	amount_per_transfer_from_this = LOWH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
+	volume = (LOWH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	maptext_label = "De"
 
 /obj/item/reagent_container/hypospray/autoinjector/standard/inaprovaline
@@ -498,7 +510,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate
 	name = "anesthetic autoinjector"
 	chemname = "anesthetic"
-	desc = "An autoinjector that injects a cocktail of anesthetics. Good to quickly pacify someone--for surgery, of course! What? Are you some sort of criminal?"
+	desc = "An autoinjector that injects a cocktail of general anesthetics. Good to quickly pacify someone--for surgery, of course! What? Are you some sort of criminal?"
 	amount_per_transfer_from_this = 10
 	volume = 30
 	mixed_chem = TRUE
@@ -508,6 +520,11 @@
 	skilllock = SKILL_MEDICAL_MEDIC
 	cannot_refill = TRUE
 
+/obj/item/reagent_container/hypospray/autoinjector/chloralhydrate/get_autoinjector_examine_text(mob/user, max_uses)
+	. = ..()
+	. += SPAN_HELPFUL("A label says: '<b>Contains 9u Soporific and 1u Chloral Hydrate per dose.</b>'")
+	. += SPAN_WARNING("A warning label says: '<b>Caution: Patients injected will accumulate 5u toxin damage per dose. Do not exceed three doses.</b>'")
+
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate/Initialize()
 	. = ..()
 	reagents.add_reagent("chloralhydrate", 1*3)
@@ -516,10 +533,10 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency
 	name = "emergency EZ one-use autoinjector (HIGH DOSE CAUTION)"
-	desc = "A massive ez one-use autoinjector that injects several strong medications at near-overdose doses at once to be used in life-threatening situations."
+	desc = "A massive ez one-use autoinjector that injects several strong medications at near-overdose doses to be used in life-threatening situations."
 	icon_state = "empty_emergency"
-	chemname = "emergency"
 	autoinjector_type = "autoinjector_single"
+	chemname = "emergency"
 	amount_per_transfer_from_this = (REAGENTS_OVERDOSE-1)*2 + (MED_REAGENTS_OVERDOSE-1) + 1 //dexalin plus is the +1
 	volume = (REAGENTS_OVERDOSE-1)*2 + (MED_REAGENTS_OVERDOSE-1) + 1 //dexalin plus is the +1
 	mixed_chem = TRUE
@@ -533,7 +550,8 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency/get_autoinjector_examine_text(mob/user, max_uses)
 	. = ..()
-	. += SPAN_WARNING("It comes with a warning label that says: <b>Warning: This autoinjector injects one unit below the OD limit of: Bicaridine, Kelotane, and Oxycodone. Do not administer if any of the aforementioned chemicals are in the patient's bloodstream.</b>")
+	. += SPAN_HELPFUL("A label says: '<b>Contains 29u Bicaridine, 29u Kelotane, 19u Oxycodone, and 1u Dexalin Plus.</b>'")
+	. += SPAN_WARNING("A warning label says: '<b>Does not treat eschar, severe burns, overdoses, organ damage, nor internal bleeding.</b>'")
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency/Initialize() //29u bicaridine, 29u kelotane, 19u oxycodone, 1u dexalin +.
 	. = ..()
@@ -545,16 +563,15 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/black_goo_cure
 	name = "\"Pathogen\" cure EZ autoinjector (SINGLE-USE)"
-	desc = "An EZ autoinjectort that injects a cure for Agent A0-3959X.91–15, also known as the 'black goo.'"
+	desc = "An EZ autoinjector that injects a cure for Agent A0-3959X.91–15, also known as the 'black goo.'"
 	icon_state = "empty_research_single"
 	chemname = "antiZed"
 	autoinjector_type = "autoinjector_single"
 	amount_per_transfer_from_this = 5
 	volume = 5
 	uses_left = 1
-
-	injectSFX = 'sound/items/air_release.ogg'
 	mixed_chem = TRUE
+	injectSFX = 'sound/items/air_release.ogg'
 	display_maptext = TRUE
 	maptext_label = "!!!"
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -600,9 +617,9 @@
 	. = list()
 	if(uses_left > 0)
 		if(max_uses == 1)
-			. += SPAN_NOTICE("It injects its entire payload of... Something? It has no label and the chemical inside looks strange.")
+			. += SPAN_NOTICE("It injects its entire payload, but you need a reagent scanner to know anything else.")
 		else
-			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections of... Something? It has no label and the chemical inside looks strange.")
+			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections, but you need a reagent scanner to know anything else.")
 	else
 		. += SPAN_WARNING("It is spent and you do not know how to refill it.")
 
@@ -678,9 +695,9 @@
 	. = list()
 	if(uses_left > 0)
 		if(max_uses == 1)
-			. += SPAN_NOTICE("It injects its entire payload of [amount_per_transfer_from_this]u of whatever you put in it.")
+			. += SPAN_NOTICE("It injects its entire payload of [amount_per_transfer_from_this]u.")
 		else
-			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections of [amount_per_transfer_from_this]u of whatever you put in it.")
+			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] [amount_per_transfer_from_this]u injections.")
 	else
 		. += SPAN_HELPFUL("It is empty but it can be refilled with a pressurized reagent canister pouch.")
 
@@ -688,7 +705,7 @@
 		if(skillcheck(user, SKILL_MEDICAL, skilllock))
 			. += SPAN_HELPFUL("It has a lock on it similar to pill bottles, but you know how to unlock it.")
 		else
-			. += SPAN_WARNING("It has a lock on it similar to pill bottles. You do not have the training in medicine to unlock it.")
+			. += SPAN_WARNING("It has a lock on it similar to pill bottles. You do not have enough training in Medicine to know how to unlock it.")
 	else
 		. += SPAN_HELPFUL("It doesn't have a lock on it, so anyone can use it.")
 

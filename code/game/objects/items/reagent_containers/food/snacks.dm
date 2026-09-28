@@ -1851,7 +1851,7 @@
 
 /obj/item/reagent_container/food/snacks/jellyburger
 	name = "Jelly Burger"
-	desc = "Culinary delight..?"
+	desc = "Culinary delight...?"
 	icon_state = "jellyburger"
 	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#B572AB"
@@ -2141,7 +2141,7 @@
 
 /obj/item/reagent_container/food/snacks/beetsoup
 	name = "beet soup"
-	desc = "Wait, how do you spell it again..?"
+	desc = "Wait, how do you spell it again...?"
 	icon_state = "beetsoup"
 	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl

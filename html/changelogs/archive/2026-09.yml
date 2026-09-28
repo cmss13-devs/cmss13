@@ -285,3 +285,8 @@
 2026-09-27:
   Onetoughcreampuff:
   - bugfix: Check Status should now account for decapitation
+2026-09-28:
+  ICA-usernameisunavailable:
+  - balance: Despoiler can no longer extinguish itself with oozing wounds.
+  Mary-Marilyn:
+  - bugfix: The body type examine text is no longer broken

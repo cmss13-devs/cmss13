@@ -358,12 +358,23 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 /datum/authority/branch/role/proc/calculate_role_weight(datum/job/J)
 	if(!J)
 		return 0
-	if(GLOB.ROLES_MARINES.Find(J.title))
+	if(J.title in GLOB.ROLES_MARINES)
 		return 1
-	if(GLOB.ROLES_XENO.Find(J.title))
+	if(J.title in GLOB.ROLES_XENO)
 		return 1
-	if(J.title == JOB_SURVIVOR)
-		return 1
+	if(J.title in FAX_RESPONDER_JOB_LIST)
+		return 0
+	switch(J.title)
+		if(JOB_SURVIVOR)
+			return 1
+		if(JOB_SYNTH_SURVIVOR)
+			return 1
+		if(JOB_CO_SURVIVOR)
+			return 1
+		if(JOB_PRED_SURVIVOR)
+			return 1
+		if(JOB_PREDATOR)
+			return 0
 	return SHIPSIDE_ROLE_WEIGHT
 
 /datum/authority/branch/role/proc/assign_random_role(mob/new_player/M, list/roles_to_iterate) //In case we want to pass on a list.

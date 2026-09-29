@@ -639,7 +639,25 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	..()
 
 /obj/item/clothing/mask/cigarette/pipe/attackby(obj/item/W as obj, mob/user as mob)
-	if(iswelder(W))
+	if(istype(W, /obj/item/clothing/mask/cigarette) && !istype(W, /obj/item/clothing/mask/cigarette/pipe))
+		var/obj/item/clothing/mask/cigarette/C = W
+		if(C.heat_source)
+			light(SPAN_NOTICE("[user] lights their [name] with [C]."))
+			return
+		if(!ash && smoketime > 0)
+			to_chat(user, SPAN_WARNING("\The [src] is already packed with tobacco."))
+			return
+		user.visible_message(SPAN_NOTICE("[user] crumbles [C] into \the [src], packing it with fresh tobacco."), SPAN_NOTICE("You crumble [C] into \the [src], packing it with fresh tobacco."))
+		if(ash)
+			new /obj/effect/decal/cleanable/ash(get_turf(user))
+			ash = FALSE
+		smoketime = initial(smoketime)
+		if(C.reagents && C.reagents.total_volume)
+			C.reagents.trans_to(src, C.reagents.total_volume)
+		qdel(C)
+		return
+
+	else if(iswelder(W))
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.isOn())//
 			light(SPAN_NOTICE("[user] recklessly lights [name] with [W]."))

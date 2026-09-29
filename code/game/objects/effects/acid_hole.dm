@@ -36,11 +36,19 @@
 	return
 
 
-/obj/effect/acid_hole/MouseDrop_T(mob/M, mob/user)
+/obj/effect/acid_hole/MouseDrop_T(mob/entity, mob/user)
 	if (!holed_wall)
 		return
 
-	if(M == user && isxeno(user))
+	if(entity == user && isxeno(user))
+		if (entity.resting)
+			to_chat(user, SPAN_WARNING("You cannot do that while resting!"))
+			return
+
+		if (entity.is_mob_incapacitated())
+			to_chat(user, SPAN_WARNING("You cannot do that while incapacitated!"))
+			return
+
 		use_wall_hole(user)
 
 

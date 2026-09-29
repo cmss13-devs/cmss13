@@ -163,7 +163,7 @@ SUBSYSTEM_DEF(hijack)
 
 	if(SSticker.current_state == GAME_STATE_FINISHED)
 		if(hijack_status == HIJACK_OBJECTIVES_DOCKED && SSticker.mode.round_finished == MODE_INFESTATION_X_MAJOR)
-			announce_station_undocking()
+			addtimer(CALLBACK(src, PROC_REF(announce_station_undocking)), 5 SECONDS)
 		can_fire = FALSE
 		return
 

@@ -19,6 +19,9 @@ endmap
 map bigredv2
 endmap
 
+map bigred_forward_base
+endmap
+
 map prison_station_fop
 	disabled
 endmap

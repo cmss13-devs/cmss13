@@ -283,7 +283,7 @@
 
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/xenomorph/xeno)
-	if(disabled)
+	if(disabled || istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base))
 		return XENO_NONCOMBAT_ACTION
 
 	// if the shuttleid is null or the shuttleid references a shuttle that has been removed from play, pick one

@@ -804,5 +804,3 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/tool/lighter/get_ignite_in_mouth_flavor_text(mob/living/user, obj/item/igniter, mob/living/target, obj/item/ignitable)
 	return SPAN_NOTICE("[user] holds [igniter] out for [target], and lights [ignitable].")
-
-#undef FORMAT_NAME_ONLY

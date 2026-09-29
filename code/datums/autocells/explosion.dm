@@ -298,8 +298,6 @@ as having entered the turf.
 					var/gender_object_pronoun = blocker.gender == MALE ? "himself" : blocker.gender == PLURAL ? "herself" : "themselves"
 					var/gender_possessive_pronoun = blocker.gender == MALE ? "his" : blocker.gender == PLURAL ? "her" : "their"
 					epicenter.visible_message(SPAN_HIGHDANGER("<b>[blocker]</b> throws [gender_object_pronoun] onto the grenade to shield [gender_possessive_pronoun] fellow [ishuman(blocker) ? "people" : "sisters"]!"), null, 7)
-					if (blocker.name == "John Kilgore" && shielded_mob == "The President")
-						epicenter.visible_message(SPAN_HIGHDANGER("GET DOWN MR. PRESIDENT!"), null, 7)
 					break
 
 				blocker.take_overall_damage(power * EXPLOSION_SMOTHER_DAMAGE_MULTIPLIER) // for a total of x1.5 damage!

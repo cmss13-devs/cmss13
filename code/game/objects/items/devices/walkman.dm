@@ -35,9 +35,6 @@
 
 /obj/item/device/walkman/Initialize()
 	. = ..()
-	design = rand(1, 13)
-	icon_state = "walkman_[design]"
-	update_icon()
 	AddElement(/datum/element/corp_label/seegson)
 
 /obj/item/device/walkman/Destroy()

@@ -45,7 +45,7 @@
 	var/reflection_power_multiplier = 0.4
 	/// Whether the damage is considered to be from an environmental source
 	var/enviro = FALSE
-	/// Whether the explosion has been smothered,
+	/// Whether the explosion has been smothered
 	var/smothered = FALSE
 
 	//Diagonal cells have a small delay when branching off from a non-diagonal cell. This helps the explosion look circular

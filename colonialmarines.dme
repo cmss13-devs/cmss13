@@ -2040,7 +2040,6 @@
 #include "code\modules\hydroponics\seed_machines\seed_editor.dm"
 #include "code\modules\hydroponics\seed_machines\seed_extractor.dm"
 #include "code\modules\hydroponics\seed_machines\seed_machines.dm"
-#include "code\modules\igniting\ignitable.dm"
 #include "code\modules\keybindings\bindings_atom.dm"
 #include "code\modules\keybindings\bindings_client.dm"
 #include "code\modules\keybindings\focus.dm"

@@ -43,10 +43,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	ADD_TRAIT(src, TRAIT_IGNITABLE, TRAIT_SOURCE_INHERENT)
 
 /obj/item/tool/candle/get_ignitable_flavor_text()
-	var/static/alist/flavor_text_map = list(
-		/obj/item/tool/weldingtool = SPAN_NOTICE("{user} casually lights {ignitable} with {igniter}."),
-		/datum = SPAN_NOTICE("{user} lights {ignitable} with {igniter}."),
-	)
+	var/alist/flavor_text_map = GLOB.ignitable_flavor_text_by_type[type]
+	if (isnull(flavor_text_map))
+		flavor_text_map = alist(
+			/obj/item/tool/weldingtool = SPAN_NOTICE("{user} casually lights {ignitable} with {igniter}."),
+			/datum = SPAN_NOTICE("{user} lights {ignitable} with {igniter}."),
+		)
+		GLOB.ignitable_flavor_text_by_type[type] = flavor_text_map
 	return flavor_text_map
 
 /obj/item/tool/candle/check_can_ignite()
@@ -252,21 +255,24 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	ADD_TRAIT(src, TRAIT_IGNITER, TRAIT_SOURCE_INHERENT)
 
 /obj/item/clothing/mask/cigarette/get_ignitable_flavor_text()
-	var/static/flavor_text_map = list(
-		/obj/item/tool/weldingtool = SPAN_NOTICE("{user} casually lights {ignitable} with {igniter}."),
-		/obj/item/tool/lighter/zippo = SPAN_ROSE("With a flick of their wrist, {user} lights their {ignitable:[FORMAT_NAME_ONLY]} with {igniter}."),
-		/obj/item/device/flashlight/flare = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with {igniter}."),
-		/obj/item/tool/lighter = SPAN_NOTICE("{user} manages to light their {ignitable:[FORMAT_NAME_ONLY]} with {igniter}."),
-		/obj/item/tool/match = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with their {igniter}."),
-		/obj/item/weapon/energy/sword = SPAN_WARNING("{user} swings their {igniter:[FORMAT_NAME_ONLY]}, barely missing their nose. They light their {ignitable:[FORMAT_NAME_ONLY]} in the process."),
-		/obj/item/device/assembly/igniter = SPAN_NOTICE("{user} fiddles with {igniter}, and manages to light their {ignitable:[FORMAT_NAME_ONLY]}."),
-		/obj/item/attachable/attached_gun/flamer = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with {igniter}."),
-		/obj/item/weapon/gun/flamer = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with the pilot light of {igniter}."),
-		/obj/item/weapon/gun = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with {igniter}."),
-		/obj/item/tool/surgery/cautery = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with {igniter}."),
-		/obj/item/clothing/mask/cigarette = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with {igniter} after a few attempts."),
-		/obj/item/tool/candle = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with {igniter} after a few attempts."),
-	)
+	var/alist/flavor_text_map = GLOB.ignitable_flavor_text_by_type[type]
+	if (isnull(flavor_text_map))
+		flavor_text_map = alist(
+			/obj/item/tool/weldingtool = SPAN_NOTICE("{user} casually lights {ignitable} with {igniter}."),
+			/obj/item/tool/lighter/zippo = SPAN_ROSE("With a flick of their wrist, {user} lights their {ignitable:[FORMAT_NAME_ONLY]} with {igniter}."),
+			/obj/item/device/flashlight/flare = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with {igniter}."),
+			/obj/item/tool/lighter = SPAN_NOTICE("{user} manages to light their {ignitable:[FORMAT_NAME_ONLY]} with {igniter}."),
+			/obj/item/tool/match = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with their {igniter}."),
+			/obj/item/weapon/energy/sword = SPAN_WARNING("{user} swings their {igniter:[FORMAT_NAME_ONLY]}, barely missing their nose. They light their {ignitable:[FORMAT_NAME_ONLY]} in the process."),
+			/obj/item/device/assembly/igniter = SPAN_NOTICE("{user} fiddles with {igniter}, and manages to light their {ignitable:[FORMAT_NAME_ONLY]}."),
+			/obj/item/attachable/attached_gun/flamer = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with {igniter}."),
+			/obj/item/weapon/gun/flamer = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with the pilot light of {igniter}."),
+			/obj/item/weapon/gun = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with {igniter}."),
+			/obj/item/tool/surgery/cautery = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with {igniter}."),
+			/obj/item/clothing/mask/cigarette = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with {igniter} after a few attempts."),
+			/obj/item/tool/candle = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with {igniter} after a few attempts."),
+		)
+		GLOB.ignitable_flavor_text_by_type[type] = flavor_text_map
 	return flavor_text_map
 
 /obj/item/clothing/mask/cigarette/check_can_ignite()
@@ -514,15 +520,18 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	chem_volume = 30
 
 /obj/item/clothing/mask/cigarette/cigar/get_ignitable_flavor_text()
-	var/static/flavor_text_map = list(
-		/obj/item/tool/weldingtool = SPAN_NOTICE("{user} insults {ignitable} by lighting it with {igniter}."),
-		/obj/item/tool/lighter = SPAN_NOTICE("{user} manages to offend their {ignitable:[FORMAT_NAME_ONLY]} by lighting it with {igniter}."),
-		/obj/item/device/assembly/igniter = SPAN_NOTICE("{user} fiddles with {igniter}, and manages to light their {ignitable:[FORMAT_NAME_ONLY]} with the power of science."),
-		/obj/item/attachable/attached_gun/flamer = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with {igniter}, bet that would have looked cooler if it was attached to something first!"),
-		/obj/item/weapon/gun/flamer = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with the pilot light of {igniter}, the glint of pyromania in their eye."),
-		/obj/item/weapon/gun = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with {igniter} like a complete badass."),
-		/obj/item/tool/surgery/cautery = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with {igniter}, that can't be sterile!"),
-	) + ..()
+	var/alist/flavor_text_map = GLOB.ignitable_flavor_text_by_type[type]
+	if (isnull(flavor_text_map))
+		flavor_text_map = alist(
+			/obj/item/tool/weldingtool = SPAN_NOTICE("{user} insults {ignitable} by lighting it with {igniter}."),
+			/obj/item/tool/lighter = SPAN_NOTICE("{user} manages to offend their {ignitable:[FORMAT_NAME_ONLY]} by lighting it with {igniter}."),
+			/obj/item/device/assembly/igniter = SPAN_NOTICE("{user} fiddles with {igniter}, and manages to light their {ignitable:[FORMAT_NAME_ONLY]} with the power of science."),
+			/obj/item/attachable/attached_gun/flamer = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with {igniter}, bet that would have looked cooler if it was attached to something first!"),
+			/obj/item/weapon/gun/flamer = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with the pilot light of {igniter}, the glint of pyromania in their eye."),
+			/obj/item/weapon/gun = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with {igniter} like a complete badass."),
+			/obj/item/tool/surgery/cautery = SPAN_NOTICE("{user} lights their {ignitable:[FORMAT_NAME_ONLY]} with {igniter}, that can't be sterile!"),
+		) + ..()
+		GLOB.ignitable_flavor_text_by_type[type] = flavor_text_map
 	return flavor_text_map
 
 /////////////////
@@ -566,14 +575,17 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	..()
 
 /obj/item/clothing/mask/cigarette/pipe/get_ignitable_flavor_text()
-	var/static/alist/flavor_text_map = list(
-		/obj/item/tool/weldingtool = SPAN_NOTICE("{user} recklessly lights {ignitable} with {igniter}."),
-		/obj/item/tool/lighter/zippo = SPAN_ROSE("With much care, {user} lights their {ignitable} with their {igniter}."),
-		/obj/item/device/flashlight/flare = SPAN_NOTICE("{user} lights their {ignitable} with {igniter}."),
-		/obj/item/tool/lighter = SPAN_NOTICE("{user} manages to light their {ignitable} with {igniter}."),
-		/obj/item/tool/match = SPAN_NOTICE("{user} lights their {ignitable} with their {igniter}."),
-		/obj/item/device/assembly/igniter = SPAN_NOTICE("{user} fiddles with the {igniter}, and manages to light their {ignitable} with the power of science."),
-	) + ..()
+	var/alist/flavor_text_map = GLOB.ignitable_flavor_text_by_type[type]
+	if (isnull(flavor_text_map))
+		flavor_text_map = alist(
+			/obj/item/tool/weldingtool = SPAN_NOTICE("{user} recklessly lights {ignitable} with {igniter}."),
+			/obj/item/tool/lighter/zippo = SPAN_ROSE("With much care, {user} lights their {ignitable} with their {igniter}."),
+			/obj/item/device/flashlight/flare = SPAN_NOTICE("{user} lights their {ignitable} with {igniter}."),
+			/obj/item/tool/lighter = SPAN_NOTICE("{user} manages to light their {ignitable} with {igniter}."),
+			/obj/item/tool/match = SPAN_NOTICE("{user} lights their {ignitable} with their {igniter}."),
+			/obj/item/device/assembly/igniter = SPAN_NOTICE("{user} fiddles with the {igniter}, and manages to light their {ignitable} with the power of science."),
+		) + ..()
+		GLOB.ignitable_flavor_text_by_type[type] = flavor_text_map
 	return flavor_text_map
 
 /obj/item/clothing/mask/cigarette/pipe/light()

@@ -13,6 +13,8 @@
 	UnregisterSignal(source, COMSIG_ATOM_IGNITE)
 	return ..()
 
+GLOBAL_ALIST_EMPTY(ignitable_flavor_text_by_type)
+
 /datum/element/traitbound/ignitable/proc/ignite(atom/ignitable, obj/item/igniter, mob/user, custom_flavor_text)
 	SIGNAL_HANDLER
 
@@ -47,7 +49,7 @@
  * - `{user}` = evil person responsible
  */
 /atom/proc/get_ignitable_flavor_text()
-	RETURN_TYPE(/list)
+	RETURN_TYPE(/alist)
 	return
 
 /**

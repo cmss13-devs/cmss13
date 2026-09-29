@@ -1,7 +1,18 @@
 //DO NOT ADD MORE TO THIS FILE.
 //Use vv_do_topic() for datums!
 /client/proc/view_var_Topic(href, href_list, hsrc)
-	if(!check_rights_for(src, R_VAREDIT) || !admin_holder.CheckAdminHref(href, href_list))
+	if(check_rights(R_MOD) && admin_holder.CheckAdminHref(href, href_list))
+		if(href_list["view_combat_logs"])
+			var/mob/A = locate(href_list["view_combat_logs"])
+
+			var/list/logs = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Combat Logs</title></head>")
+			for(var/entry in A.attack_log)
+				logs += "[entry]<br>"
+
+			show_browser(usr, logs.Join(), "Combat Logs", "logs_\ref[src]", width = 600, height = 480)
+	else
+		return
+	if(!check_rights_for(src, R_VAREDIT))
 		return
 	var/target = GET_VV_TARGET
 	vv_do_basic(target, href_list, href)
@@ -75,19 +86,6 @@
 			log_admin(log_msg)
 			admin_ticket_log(L, "<font color='blue'>[log_msg]</font>")
 			vv_update_display(L, Text, "[newamt]")
-
-	else if(href_list["view_combat_logs"])
-		if(!check_rights(R_MOD))
-			return
-
-		var/mob/A = locate(href_list["view_combat_logs"])
-
-		var/list/logs = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Combat Logs</title></head>")
-		for(var/entry in A.attack_log)
-			logs += "[entry]<br>"
-
-		show_browser(usr, logs.Join(), "Combat Logs", "logs_\ref[src]", width = 600, height = 480)
-
 
 	//Finally, refresh if something modified the list.
 	if(href_list["datumrefresh"])

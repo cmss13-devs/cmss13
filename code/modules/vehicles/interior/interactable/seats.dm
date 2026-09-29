@@ -544,3 +544,4 @@
 /obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer/afterShuttleMove()
 	.=..()
 	pixel_y = init_pixel_y
+	pixel_x = init_pixel_x

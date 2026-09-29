@@ -602,7 +602,6 @@
 /obj/structure/machinery/door_control/shuttle_ramp/proc/raise(forced = FALSE)
 	if(linked_single_controller?.status == SHUTTLE_DOOR_LOCKED || busy || is_reserved_level(src.z))
 		return
-
 	busy = TRUE
 
 	playsound(src.loc, 'sound/machines/omaha_ramp.ogg', 60, 0)
@@ -610,14 +609,19 @@
 	if(turf_below)
 		playsound(turf_below, 'sound/machines/omaha_ramp.ogg', 60, 0)
 
-	linked_shadow.set_icon_state(TRUE)
+	linked_shadow.set_icon_state(TRUE, forced)
 	for(var/obj/structure/machinery/door/poddoor/railing/railme in linked_railings)
 		railme.open()
 	raise_ramp(fifth_ramps)
 	raise_ramp(fourth_ramps)
-	addtimer(CALLBACK(src, PROC_REF(raise_ramp), third_ramps), 25) // TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT
-	addtimer(CALLBACK(src, PROC_REF(raise_ramp), second_ramps), 50)
-	addtimer(CALLBACK(src, PROC_REF(raise_ramp), first_ramps, TRUE), 50)
+	if(forced)
+		raise_ramp(third_ramps)
+		raise_ramp(second_ramps)
+		raise_ramp(first_ramps, TRUE)
+	else
+		addtimer(CALLBACK(src, PROC_REF(raise_ramp), third_ramps), 25) // TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT
+		addtimer(CALLBACK(src, PROC_REF(raise_ramp), second_ramps), 50)
+		addtimer(CALLBACK(src, PROC_REF(raise_ramp), first_ramps, TRUE), 50)
 
 /obj/structure/machinery/door_control/shuttle_ramp/proc/raise_forced()
 	raise(forced = TRUE)

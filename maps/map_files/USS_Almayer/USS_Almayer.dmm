@@ -88437,6 +88437,15 @@
 /obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/almayer/red,
 /area/almayer/lifeboat_pumps/north2)
+"taY" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/closed/wall/almayer/white,
+/area/almayer/medical/lower_medical_medbay)
 "tcd" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/radio{
@@ -146586,7 +146595,7 @@ xfT
 bst
 bJw
 rlZ
-aZK
+taY
 dTZ
 bHg
 hzs
@@ -146689,7 +146698,7 @@ eas
 bLS
 lJG
 rlZ
-aZK
+taY
 dTZ
 afp
 afc
@@ -146792,7 +146801,7 @@ xMs
 xMs
 bPz
 rlZ
-aZK
+taY
 dTZ
 afq
 afd
@@ -146895,7 +146904,7 @@ waD
 bkE
 lJG
 rlZ
-aZK
+taY
 dTZ
 afq
 afe
@@ -146998,7 +147007,7 @@ bez
 xMs
 bRP
 rlZ
-aZK
+taY
 dTZ
 aft
 eTB

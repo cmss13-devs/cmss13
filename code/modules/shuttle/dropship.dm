@@ -185,12 +185,6 @@
 /obj/structure/shuttle/part/decal/dropship_omaha/platform_decal
 	icon_state = "platform_decal"
 
-/obj/structure/shuttle/part/decal/dropship_omaha/panel_half
-	icon_state = "panel_half"
-
-/obj/structure/shuttle/part/decal/dropship_omaha/panel_full
-	icon_state = "panel_full"
-
 /obj/structure/shuttle/part/decal/dropship_omaha/decal
 	icon_state = "decal"
 
@@ -587,11 +581,44 @@
 	bound_height = 64
 	layer = 4
 
+	var/obj/structure/pipes/vents/dropship/entrance/linked_pipe
+	var/vent_id // based off of directions, could use strings instead for better readability tho 4 sure...
+	var/obj/docking_port/mobile/marine_dropship/linked_dropship
+	var/list/allowed_castes = list(XENO_CASTE_RUNNER,
+	XENO_CASTE_DRONE,
+	XENO_CASTE_SENTINEL,
+	XENO_CASTE_LURKER,
+	XENO_CASTE_BURROWER,
+	)
+
 /obj/structure/shuttle/part/dropship_mohawk/landing_gear_big/omaha
 	icon = 'icons/obj/structures/machinery/omaha/misc_96x96.dmi'
 
 /obj/structure/shuttle/part/dropship_mohawk/landing_gear_big/midway
 	icon = 'icons/obj/structures/machinery/midway/misc_96x96.dmi'
+
+/obj/structure/shuttle/part/dropship_mohawk/landing_gear_big/New(loc, obj/docking_port/mobile/marine_dropship/dropship, ventura_id)
+	linked_dropship = dropship
+	vent_id = ventura_id
+	return ..()
+
+/obj/structure/shuttle/part/dropship_mohawk/landing_gear_big/Initialize()
+	. = ..()
+	if(linked_dropship)
+		for(var/obj/structure/pipes/vents/dropship/entrance/pipoid in linked_dropship.obj_shuttle_contents)
+			if(vent_id == pipoid.landing_gear_id)
+				linked_pipe = pipoid
+				linked_pipe.linked_gear = src
+	else
+		CRASH("Obj [src.name] | path [src.type]: at X[src.x] Y[src.y] Z[src.z] doesn't have a linked dropship.")
+
+/obj/structure/shuttle/part/dropship_mohawk/landing_gear_big/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(xeno.caste_type in allowed_castes)
+		xeno.handle_ventcrawl(linked_pipe, FALSE)
+	else
+		to_chat(xeno, SPAN_NOTICE("We are too large to enter the maintenance access!"))
+		return ..()
+
 
 /obj/structure/shuttle/part/dropship_mohawk/landing_hatch_big
 	name = "\improper Dropship landing gear hatch"
@@ -787,12 +814,6 @@
 
 /obj/structure/shuttle/part/decal/dropship_midway/platform_decal
 	icon_state = "platform_decal"
-
-/obj/structure/shuttle/part/decal/dropship_midway/panel_half
-	icon_state = "panel_half"
-
-/obj/structure/shuttle/part/decal/dropship_midway/panel_full
-	icon_state = "panel_full"
 
 /obj/structure/shuttle/part/decal/dropship_midway/decal
 	icon_state = "decal"

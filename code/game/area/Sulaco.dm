@@ -350,7 +350,7 @@
 			var/mob/hologram/hologram_mob = subject_mob
 			subject_mob = hologram_mob.linked_mob
 		var/atom/movable/screen/plane_master/roof_dropship/roof_plane = subject_mob.hud_used?.plane_masters["[DROPSHIP_ROOF_PLANE]"]
-		roof_plane.Hide()
+		roof_plane?.Hide()
 	return ..()
 
 /area/shuttle/multiz/Exited(atom/movable/O, atom/oldloc)

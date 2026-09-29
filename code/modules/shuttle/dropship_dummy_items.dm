@@ -105,6 +105,7 @@
 	var/map_offset_x
 	var/map_offset_y
 	var/obj/structure/shuttle/part/dropship_mohawk/landing_gear_big/land_gear
+	var/vent_id
 	var/obj/structure/shuttle/part/dropship_mohawk/landing_hatch_big/hatch_big
 	item_to_deploy = /obj/structure/shuttle/part/dropship_mohawk/landing_gear_big
 	var/item_to_deploy2 = /obj/structure/shuttle/part/dropship_mohawk/landing_hatch_big
@@ -126,7 +127,7 @@
 			if(land_gear)
 				land_gear.loc = final_turf
 			else
-				land_gear = new item_to_deploy(final_turf)
+				land_gear = new item_to_deploy(final_turf, linked_dropship, vent_id)
 				linked_items += land_gear
 				land_gear.dir = src.dir
 			if(hatch_big)
@@ -224,12 +225,13 @@
 	flags_atom = NO_ZFALL
 	alpha = 0
 
-/obj/effect/drosphip_ramp_shadow/proc/set_icon_state(raise = TRUE)
+/obj/effect/drosphip_ramp_shadow/proc/set_icon_state(raise = TRUE, forced = FALSE)
+	var/timerr = forced ? 50 : 10
 	if(raise)
-		animate(src, time = 50, loop = FALSE, alpha = 0)
+		animate(src, time = timerr, loop = FALSE, alpha = 0)
 		alpha = 0
 	else
-		animate(src, time = 50, loop = FALSE, alpha = 255)
+		animate(src, time = timerr, loop = FALSE, alpha = 255)
 		alpha = 255
 
 /// ramp ///

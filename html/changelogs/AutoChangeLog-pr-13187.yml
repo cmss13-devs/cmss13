@@ -1,5 +1,0 @@
-author: "Mary-Marilyn"
-delete-after: True
-changes:
-  - qol: "The station undocking announcements now play 5 seconds after round end instead of immediately."
-  - bugfix: "Fixed a typo in the mercenary station undocking announcement."

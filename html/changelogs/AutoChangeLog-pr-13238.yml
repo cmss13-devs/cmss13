@@ -1,4 +1,0 @@
-author: "Kugamo"
-delete-after: True
-changes:
-  - bugfix: "dead facehuggers no longer block xenos from building resin structures atop them."

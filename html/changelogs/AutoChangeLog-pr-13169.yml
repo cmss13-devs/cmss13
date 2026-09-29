@@ -1,4 +1,0 @@
-author: "Mary-Marilyn"
-delete-after: True
-changes:
-  - soundadd: "Ported the PVE smartgun firing sound"

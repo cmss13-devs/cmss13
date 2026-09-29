@@ -1,4 +1,3 @@
-#define FORMAT_NAME_ONLY /datum/text_dynamic_insertion_constants::NAME_ONLY
 /*
 CONTAINS:
 CANDLES
@@ -213,7 +212,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "cigarette"
 	desc = "A roll of tobacco and fillers, wrapped in paper with a filter at the end. Apparently, inhaling the smoke makes you feel happier."
 	icon_state = "cigoff"
-	throw_speed = SPEED_AVERAGE
 	item_state = "cigoff"
 	icon = 'icons/obj/items/smoking/cigarettes.dmi'
 	item_icons = list(

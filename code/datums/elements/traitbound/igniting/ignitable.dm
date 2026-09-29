@@ -45,7 +45,7 @@
 /**
  * Proc to overwrite for when an ignitable ignites
  *
- * Should not be called directly, instead send the signal `COMSIG_ATOM_IGNITE`
+ * Should only be called via the COMSIG_ATOM_IGNITE signal for ignitable atoms
  */
 /atom/proc/ignite(obj/item/igniter, mob/user, flavor_text)
 	return

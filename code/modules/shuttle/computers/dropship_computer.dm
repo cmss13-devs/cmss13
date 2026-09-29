@@ -283,6 +283,9 @@
 
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(disabled)
+		return XENO_NONCOMBAT_ACTION
+
 	// if the shuttleid is null or the shuttleid references a shuttle that has been removed from play, pick one
 	if(!shuttleId || !SSshuttle.getShuttle(shuttleId, FALSE))
 		var/list/alternatives = alternative_shuttles()

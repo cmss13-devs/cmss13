@@ -47,6 +47,7 @@
 #define MAP_HUNTERSHIP "Hunter Ship"
 
 #define GAMEMODE_DISTRESS_SIGNAL "Distress Signal"
+#define GAMEMODE_FORWARD_BASE "Distress Signal: Forward Base"
 #define GAMEMODE_WHISKEY_OUTPOST "Whiskey Outpost"
 #define GAMEMODE_HIVE_WARS "Hive Wars"
 #define GAMEMODE_FACTION_CLASH "Faction Clash"

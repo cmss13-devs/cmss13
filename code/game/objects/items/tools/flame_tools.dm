@@ -647,7 +647,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(!ash && smoketime > 0)
 			to_chat(user, SPAN_WARNING("\The [src] is already packed with tobacco."))
 			return
-		user.visible_message(SPAN_NOTICE("[user] crumbles [C] into \the [src], packing it with fresh tobacco."), SPAN_NOTICE("You crumble [C] into \the [src], packing it with fresh tobacco."))
+		user.visible_message(SPAN_NOTICE("[user] starts crumbling [C] into \the [src]."), SPAN_NOTICE("You start crumbling [C] into \the [src]."))
+		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED))
+			to_chat(user, SPAN_WARNING("You stop packing \the [src]."))
+			return
+		if(QDELETED(C) || QDELETED(src) || C.loc != user || (!ash && smoketime > 0))
+			return
+		user.visible_message(SPAN_NOTICE("[user] finishes packing \the [src] with crumbled tobacco."), SPAN_NOTICE("You finish packing \the [src] with crumbled tobacco."))
 		if(ash)
 			new /obj/effect/decal/cleanable/ash(get_turf(user))
 			ash = FALSE

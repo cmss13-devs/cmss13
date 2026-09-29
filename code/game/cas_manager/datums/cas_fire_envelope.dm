@@ -284,7 +284,9 @@
 	// shadow effect only appears after firemission finishes firing
 	var/exit_duration = min(1.4 SECONDS, exit_phase_end - world.time)
 	if(result == FIRE_MISSION_ALL_GOOD && exit_duration > 0)
-		show_cas_exit_shadow(get_turf(target_turf), dir, mission.mission_length, exit_duration)
+		var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(linked_console.shuttle_tag)
+		if(dropship)
+			show_cas_exit_shadow(get_turf(target_turf), dir, mission.mission_length, exit_duration, dropship)
 
 /// Step 6: Sets the fire mission stat to FIRE_MISSION_STATE_COOLDOWN
 /datum/cas_fire_envelope/proc/flyoff()

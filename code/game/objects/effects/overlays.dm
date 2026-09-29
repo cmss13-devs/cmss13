@@ -58,28 +58,22 @@
 	start_on_spawn = FALSE
 
 // firemission shadow overlay appears over open/glass roofs only
-/proc/show_cas_exit_shadow(turf/start, direction, mission_length, duration)
-	if(!start || !is_ground_level(start.z) || !(direction in GLOB.cardinals))
+/proc/show_cas_exit_shadow(turf/start, direction, mission_length, duration, obj/docking_port/mobile/marine_dropship/dropship)
+	if(!start || !is_ground_level(start.z) || !(direction in GLOB.cardinals) || !dropship || dropship.cas_shadow_alpha <= 0)
 		return
-	var/static/list/shadow_icons = list()
-	var/icon/silhouette = shadow_icons["[direction]"]
+	var/icon/silhouette = dropship.get_cas_shadow_icon(direction)
 	if(!silhouette)
-		silhouette = icon('icons/effects/dropship_hover.dmi', "dropship_shadow")
-		silhouette.Scale(168, 288)
-		silhouette.Crop(-59, 1, 228, 288)
-		silhouette.Turn(dir2angle(direction))
-		if(direction == EAST || direction == WEST)
-			silhouette.Crop(1, 61, 288, 228)
-		else
-			silhouette.Crop(61, 1, 228, 288)
-		shadow_icons["[direction]"] = silhouette
+		return
 
 	var/dx = (direction == EAST) - (direction == WEST)
 	var/dy = (direction == NORTH) - (direction == SOUTH)
-	var/start_x = start.x - dx * 6
-	var/start_y = start.y - dy * 6
-	var/end_x = start.x + dx * (mission_length + 6)
-	var/end_y = start.y + dy * (mission_length + 6)
+	// clear the entire silhouette before entering/leaving the strike corridor.
+	var/flight_length = dx ? silhouette.Width() : silhouette.Height()
+	var/flight_margin = CEILING(flight_length / world.icon_size / 2, 1) + 1
+	var/start_x = start.x - dx * flight_margin
+	var/start_y = start.y - dy * flight_margin
+	var/end_x = start.x + dx * (mission_length + flight_margin)
+	var/end_y = start.y + dy * (mission_length + flight_margin)
 	var/radius_x = CEILING(silhouette.Width() / world.icon_size / 2, 1)
 	var/radius_y = CEILING(silhouette.Height() / world.icon_size / 2, 1)
 	var/turf/lower = locate(max(1, min(start_x, end_x) - radius_x), max(1, min(start_y, end_y) - radius_y), start.z)
@@ -105,15 +99,16 @@
 	// layer filters use offsets from the canvas center
 	var/center_x = lower.x + (upper.x - lower.x) / 2
 	var/center_y = lower.y + (upper.y - lower.y) / 2
-	return new /obj/effect/overlay/temp/cas_exit_shadow(lower, canvas, silhouette, roof_mask, (start_x - center_x) * world.icon_size, (start_y - center_y) * world.icon_size, (end_x - center_x) * world.icon_size, (end_y - center_y) * world.icon_size, duration)
+	return new /obj/effect/overlay/temp/cas_exit_shadow(lower, canvas, silhouette, roof_mask, (start_x - center_x) * world.icon_size, (start_y - center_y) * world.icon_size, (end_x - center_x) * world.icon_size, (end_y - center_y) * world.icon_size, duration, dropship.cas_shadow_alpha)
 
 /obj/effect/overlay/temp/cas_exit_shadow
 	name = "dropship shadow"
 	layer = ABOVE_BLOOD_LAYER
 	alpha = 70
 
-/obj/effect/overlay/temp/cas_exit_shadow/New(loc, icon/canvas, icon/silhouette, icon/roof_mask, start_x, start_y, end_x, end_y, duration)
+/obj/effect/overlay/temp/cas_exit_shadow/New(loc, icon/canvas, icon/silhouette, icon/roof_mask, start_x, start_y, end_x, end_y, duration, peak_alpha)
 	effect_duration = duration
+	alpha = clamp(peak_alpha, 0, 255)
 	icon = canvas
 	bound_width = canvas.Width()
 	bound_height = canvas.Height()

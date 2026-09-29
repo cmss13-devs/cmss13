@@ -239,6 +239,7 @@
 	var/obj/effect/overlay/temp/laser_target/laser
 	var/range_mode = 0 //Able to be switched between modes, 0 for cas laser, 1 for finding coordinates.
 	var/tracking_id //a set tracking id used for CAS
+	COOLDOWN_DECLARE(cas_acknowledgment_cooldown) // c/d between feedback ping for the binos when the PO selects their lase
 
 	/// Normally used for the red CAS dot overlay.
 	var/cas_laser_overlay = "laser_cas"
@@ -371,6 +372,8 @@
 		to_chat(user, SPAN_NOTICE("TARGET ACQUIRED. LASER TARGETING IS ONLINE. DON'T MOVE."))
 		var/obj/effect/overlay/temp/laser_target/LT = new (TU, las_name, user, tracking_id)
 		laser = LT
+		if(LT.signal)
+			LT.signal.designator_ref = WEAKREF(src)
 		SEND_SIGNAL(src, COMSIG_DESIGNATOR_LASE)
 
 		msg_admin_niche("Laser target [las_name] has been designated by [key_name(user, 1)] at ([TU.x], [TU.y], [TU.z]). From:", user)
@@ -383,6 +386,28 @@
 				SEND_SIGNAL(src, COMSIG_DESIGNATOR_LASE_OFF)
 				break
 
+// binos feedback ping requires the dropship to be in the air AND planetside comms to be online
+/obj/item/device/binoculars/range/designator/proc/acknowledge_cas_target(obj/structure/machinery/computer/dropship_weapons/console)
+	var/turf/location = get_turf(src)
+	if(!laser || !location || !is_ground_level(location.z) || !COOLDOWN_FINISHED(src, cas_acknowledgment_cooldown))
+		return
+	var/relay_online = FALSE
+	for(var/obj/structure/machinery/telecomms/relay/relay in SSradio.tcomm_machines_ground)
+		if(relay.on && !relay.inoperable(EMPED))
+			relay_online = TRUE
+			break
+	if(!relay_online)
+		return
+	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(console.shuttle_tag)
+	if(!dropship)
+		return
+	if(!istype(dropship.get_docked(), /obj/docking_port/stationary/transit))
+		return
+	COOLDOWN_START(src, cas_acknowledgment_cooldown, 1 SECONDS)
+	playsound(src, 'sound/machines/twobeep.ogg', 15, FALSE)
+	to_chat(laser.user, SPAN_NOTICE("The designator chirps: [dropship.name] has acquired your laser."))
+	return TRUE
+
 //IMPROVED LASER DESIGNATER, faster cooldown, faster target acquisition, can be found only in scout spec kit
 /obj/item/device/binoculars/range/designator/scout
 	name = "scout laser designator"
@@ -391,6 +416,11 @@
 	explo_proof = TRUE
 	cooldown_duration = 80
 	target_acquisition_delay = 30
+	var/scout_band = "scout_overlay"
+
+/obj/item/device/binoculars/range/designator/scout/update_icon()
+	overlays += scout_band
+	return ..()
 
 /obj/item/device/binoculars/range/designator/spotter
 	name = "spotter's laser designator"

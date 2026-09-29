@@ -57,6 +57,84 @@
 
 	start_on_spawn = FALSE
 
+// firemission shadow overlay appears over open/glass roofs only
+/proc/show_cas_exit_shadow(turf/start, direction, mission_length, duration)
+	if(!start || !is_ground_level(start.z) || !(direction in GLOB.cardinals))
+		return
+	var/static/list/shadow_icons = list()
+	var/static/icon/shadow_tile
+	var/icon/silhouette = shadow_icons["[direction]"]
+	if(!silhouette)
+		silhouette = icon('icons/effects/dropship_hover.dmi', "dropship_shadow")
+		silhouette.Scale(168, 288)
+		silhouette.Crop(-59, 1, 228, 288)
+		silhouette.Turn(dir2angle(direction))
+		if(direction == EAST || direction == WEST)
+			silhouette.Crop(1, 61, 288, 228)
+		else
+			silhouette.Crop(61, 1, 228, 288)
+		shadow_icons["[direction]"] = silhouette
+	if(!shadow_tile)
+		shadow_tile = icon(silhouette)
+		shadow_tile.Crop(1, 1, world.icon_size, world.icon_size)
+		shadow_tile.DrawBox(COLOR_BLACK, 1, 1, world.icon_size, world.icon_size)
+
+	var/dx = (direction == EAST) - (direction == WEST)
+	var/dy = (direction == NORTH) - (direction == SOUTH)
+	var/start_x = start.x - dx * 6
+	var/start_y = start.y - dy * 6
+	var/end_x = start.x + dx * (mission_length + 6)
+	var/end_y = start.y + dy * (mission_length + 6)
+	var/radius_x = CEILING(silhouette.Width() / world.icon_size / 2, 1)
+	var/radius_y = CEILING(silhouette.Height() / world.icon_size / 2, 1)
+	var/turf/lower = locate(max(1, min(start_x, end_x) - radius_x), max(1, min(start_y, end_y) - radius_y), start.z)
+	var/turf/upper = locate(min(world.maxx, max(start_x, end_x) + radius_x), min(world.maxy, max(start_y, end_y) + radius_y), start.z)
+	var/list/shadow_tiles = list()
+	for(var/turf/open/ground in block(lower, upper))
+		var/area/ground_area = get_area(ground)
+		if(ground_area.ceiling != CEILING_NONE && ground_area.ceiling != CEILING_GLASS)
+			continue
+		shadow_tiles += new /obj/effect/overlay/temp/cas_exit_shadow(ground, shadow_tile, silhouette, duration)
+	animate_cas_exit_shadow(shadow_tiles, silhouette, start_x, start_y, end_x, end_y, duration)
+
+// opacity and resizing effects
+/proc/animate_cas_exit_shadow(list/shadow_tiles, icon/silhouette, start_x, start_y, end_x, end_y, duration)
+	set waitfor = FALSE
+	var/start_time = world.time
+	while(world.time < start_time + duration)
+		var/progress = clamp((world.time - start_time) / duration, 0, 1)
+		// Keep the silhouette clear across the strike area, then climb away near the end.
+		var/climb_progress = clamp((progress - 0.55) / 0.45, 0, 1)
+		var/scale = 1 - 0.55 * climb_progress
+		var/opacity = round(70 * min(1, progress / 0.1) * (1 - climb_progress))
+		var/center_x = start_x + (end_x - start_x) * progress
+		var/center_y = start_y + (end_y - start_y) * progress
+		var/icon/climbing_silhouette = icon(silhouette)
+		climbing_silhouette.Scale(max(1, round(silhouette.Width() * scale)), max(1, round(silhouette.Height() * scale)))
+		for(var/obj/effect/overlay/temp/cas_exit_shadow/shadow as anything in shadow_tiles)
+			if(QDELETED(shadow))
+				continue
+			var/mask = shadow.get_filter("silhouette")
+			mask:icon = climbing_silhouette
+			mask:x = (center_x - shadow.x) * world.icon_size
+			mask:y = (center_y - shadow.y) * world.icon_size
+			shadow.alpha = opacity
+		sleep(world.tick_lag)
+	for(var/obj/effect/overlay/temp/cas_exit_shadow/shadow as anything in shadow_tiles)
+		if(!QDELETED(shadow))
+			shadow.alpha = 0
+
+/obj/effect/overlay/temp/cas_exit_shadow
+	name = "dropship shadow"
+	layer = ABOVE_BLOOD_LAYER
+	alpha = 0
+
+/obj/effect/overlay/temp/cas_exit_shadow/New(loc, icon/tile_icon, icon/silhouette, duration)
+	effect_duration = duration
+	icon = tile_icon
+	. = ..()
+	add_filter("silhouette", 1, alpha_mask_filter(icon = silhouette))
+
 /obj/effect/overlay/temp/point/Initialize(mapload, mob/M, atom/actual_pointed_atom)
 	. = ..()
 

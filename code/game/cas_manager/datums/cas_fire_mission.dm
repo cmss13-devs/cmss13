@@ -205,6 +205,8 @@
 	if(envelope)
 		envelope.change_current_loc(null)
 
+	return FIRE_MISSION_ALL_GOOD
+
 
 /**
  * Used only in the simulation room, proper tracking is done in the add_user_to_tracking envelop.

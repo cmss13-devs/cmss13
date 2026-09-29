@@ -13,30 +13,20 @@
 	UnregisterSignal(source, COMSIG_ATOM_IGNITE)
 	return ..()
 
-GLOBAL_ALIST_EMPTY(ignitable_flavor_text_by_type)
-
 /datum/element/traitbound/ignitable/proc/ignite(atom/ignitable, obj/item/igniter, mob/user, custom_flavor_text)
 	SIGNAL_HANDLER
 
-	var/flavor_text_by_type = ignitable.get_ignitable_flavor_text()
+	var/flavor_text_by_type = ignitable.get_ignitable_flavor_text(user, ignitable, igniter)
 	var/flavor_text
-	var/ignition_source = igniter
 	if (custom_flavor_text)
 		flavor_text = custom_flavor_text
 	else if (flavor_text_by_type)
 		var/highest_matching_path = get_matching_paths(igniter, flavor_text_by_type).highest_matching
 		if (highest_matching_path)
-			var/flavor_text_template = flavor_text_by_type[highest_matching_path]
-			flavor_text = text_dynamic_insertion_custom(
-				flavor_text_template,
-				list("ignitable", "igniter", "user"),
-				ignitable,
-				igniter,
-				user,
-			)
+			flavor_text = flavor_text_by_type[highest_matching_path]
 	if (!flavor_text)
-		flavor_text = "[user] ignites [ignitable] with [ignition_source]."
-	ignitable.ignite(ignition_source, user, flavor_text)
+		flavor_text = "[user] ignites [ignitable] with [igniter]."
+	ignitable.ignite(igniter, user, flavor_text)
 
 /**
  * Proc to overwrite for any ignitables with custom flavor text

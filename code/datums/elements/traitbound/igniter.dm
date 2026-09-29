@@ -13,13 +13,11 @@
 /datum/element/traitbound/igniter/proc/on_attack(obj/item/igniter, mob/living/user, mob/living/target)
 	SIGNAL_HANDLER
 
-	if(isnull(target.wear_mask) || user.zone_selected != "mouth")
+	if (isnull(target.wear_mask) || user.zone_selected != "mouth")
 		return
-	var/flavor_text = text_dynamic_insertion_custom(
-		igniter.get_ignite_in_mouth_flavor_text(),
-		list("igniter", "user", "target", "ignitable"),
-		igniter, user, target, target.wear_mask,
-	)
+	var/flavor_text = igniter.get_ignite_in_mouth_flavor_text(user, igniter, target, target.wear_mask)
+	if (isnull(flavor_text))
+		flavor_text = "[user] ignites [target.wear_mask] with [igniter] for [target]."
 	try_ignite(igniter, target.wear_mask, user, flavor_text)
 	return COMPONENT_CANCEL_ATTACK
 

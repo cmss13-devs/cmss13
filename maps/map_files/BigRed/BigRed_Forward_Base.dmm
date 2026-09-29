@@ -1824,7 +1824,7 @@
 "ajI" = (
 /obj/structure/machinery/telecomms/relay/preset/tower/all,
 /turf/open/floor/almayer_hull,
-/area/bigredv2/caves)
+/area/forward_base)
 "ajJ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -25440,10 +25440,6 @@
 /area/forward_base/living/offices/cryo)
 "bIz" = (
 /turf/open/floor/almayer/plating,
-/area/forward_base/shipboard/weapon_room)
-"bIA" = (
-/obj/structure/machinery/power/apc/upp/west,
-/turf/open/floor/almayer/plating_striped/north,
 /area/forward_base/shipboard/weapon_room)
 "bIB" = (
 /turf/closed/wall/almayer,
@@ -100994,7 +100990,7 @@ bIe
 bIe
 bIf
 bIz
-bIA
+bIT
 bIB
 ahZ
 ahZ

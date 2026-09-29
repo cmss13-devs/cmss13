@@ -3,6 +3,9 @@
 	config_tag = GAMEMODE_FORWARD_BASE
 	votable = FALSE
 
+/datum/game_mode/colonialmarines/forward_base/get_roles_list()
+	return ..() - list(JOB_DROPSHIP_PILOT, JOB_FIELD_DOCTOR)
+
 /datum/game_mode/colonialmarines/forward_base/map_announcement()
 	marine_announcement("Bad timing, marines. The CLF hit the regional military communications network and demolished the nearest long-range relay station. We've got this emergency channel to you, but that's about it. I can't coordinate another unit into your area, meaning, I can't get you the reinforcements you requested. You have a fortified position and enough ammunition to finish the job. You're on your own. Cameron out.", "BRIGADIER GENERAL CAMERON - CHINOOK 91 GSO STATION")
 	xeno_announcement("A hive of armed tallhosts have fortified themselves in a nest at the edge of our territory. The dense mist conceals them from you, but it is beginning to fade. Be patient. Soon, the way to the hosts will be clear.", "everything", QUEEN_MOTHER_ANNOUNCE)

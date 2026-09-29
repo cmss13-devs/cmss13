@@ -282,7 +282,7 @@
 	var/result = mission.execute_firemission(linked_console, target_turf, dir, fire_length, step_delay, src)
 	stat = FIRE_MISSION_STATE_OFF_TARGET
 	// shadow effect only appears after firemission finishes firing
-	var/exit_duration = min(1.4 SECONDS, exit_phase_end - world.time)
+	var/exit_duration = min(CAS_SHADOW_EXIT_DURATION, exit_phase_end - world.time)
 	if(result == FIRE_MISSION_ALL_GOOD && exit_duration > 0)
 		var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(linked_console.shuttle_tag)
 		if(dropship)

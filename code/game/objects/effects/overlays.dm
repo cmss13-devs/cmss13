@@ -104,21 +104,24 @@
 /obj/effect/overlay/temp/cas_exit_shadow
 	name = "dropship shadow"
 	layer = ABOVE_BLOOD_LAYER
-	alpha = 70
+	start_on_spawn = FALSE
 
-/obj/effect/overlay/temp/cas_exit_shadow/New(loc, icon/canvas, icon/silhouette, icon/roof_mask, start_x, start_y, end_x, end_y, duration, peak_alpha)
+/obj/effect/overlay/temp/cas_exit_shadow/Initialize(mapload, icon/canvas, icon/silhouette, icon/roof_mask, start_x, start_y, end_x, end_y, duration, peak_alpha)
+	. = ..()
+	if(!canvas || !silhouette || !roof_mask || duration <= 0)
+		return INITIALIZE_HINT_QDEL
 	effect_duration = duration
 	alpha = clamp(peak_alpha, 0, 255)
 	icon = canvas
 	bound_width = canvas.Width()
 	bound_height = canvas.Height()
-	. = ..()
 	add_filter("aircraft", 1, layering_filter(icon = silhouette, x = start_x, y = start_y, color = "#00000000", transform = matrix()))
 	add_filter("roof", 2, alpha_mask_filter(icon = roof_mask))
 	var/aircraft = get_filter("aircraft")
-	animate(aircraft, x = start_x + (end_x - start_x) * 0.1, y = start_y + (end_y - start_y) * 0.1, color = COLOR_BLACK, time = duration * 0.1, easing = LINEAR_EASING)
-	animate(x = start_x + (end_x - start_x) * 0.55, y = start_y + (end_y - start_y) * 0.55, time = duration * 0.45, easing = LINEAR_EASING)
-	animate(x = end_x, y = end_y, transform = matrix().Scale(0.45), color = "#00000000", time = duration * 0.45, easing = LINEAR_EASING)
+	animate(aircraft, x = start_x + (end_x - start_x) * CAS_SHADOW_FADE_IN, y = start_y + (end_y - start_y) * CAS_SHADOW_FADE_IN, color = COLOR_BLACK, time = duration * CAS_SHADOW_FADE_IN, easing = LINEAR_EASING)
+	animate(x = start_x + (end_x - start_x) * CAS_SHADOW_CLIMB_START, y = start_y + (end_y - start_y) * CAS_SHADOW_CLIMB_START, time = duration * (CAS_SHADOW_CLIMB_START - CAS_SHADOW_FADE_IN), easing = LINEAR_EASING)
+	animate(x = end_x, y = end_y, transform = matrix().Scale(CAS_SHADOW_FINAL_SCALE), color = "#00000000", time = duration * (1 - CAS_SHADOW_CLIMB_START), easing = LINEAR_EASING)
+	QDEL_IN(src, effect_duration)
 
 /obj/effect/overlay/temp/point/Initialize(mapload, mob/M, atom/actual_pointed_atom)
 	. = ..()

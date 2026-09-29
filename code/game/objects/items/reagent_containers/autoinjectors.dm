@@ -75,11 +75,31 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/proc/get_autoinjector_examine_text(mob/user, max_uses)
 	. = list()
+	var/reagent_list_text
+	var/reagent1 = "[reagents.reagent_list[1].volume]u [reagents.reagent_list[1].name]"
+	var/reagent2 = "[reagents.reagent_list[2].volume]u [reagents.reagent_list[2].name]"
+	var/reagent3 = "[reagents.reagent_list[3].volume]u [reagents.reagent_list[3].name]"
+	var/reagent4 = "[reagents.reagent_list[4].volume]u [reagents.reagent_list[4].name]"
+
+	if(reagents && reagents.reagent_list)
+		if(length(reagents.reagent_list) > 0)
+			if(length(reagents.reagent_list) == 1)
+				reagent_list_text += "[reagent1]"
+			if(length(reagents.reagent_list) == 2)
+				reagent_list_text += "[reagent1] and [reagent2]"
+			if(length(reagents.reagent_list) == 3)
+				reagent_list_text += "[reagent1], [reagent2], and [reagent3]"
+			if(length(reagents.reagent_list) == 4)
+				reagent_list_text += "[reagent1], [reagent2], [reagent3], and [reagent4]"
+			if(length(reagents.reagent_list) > 4)
+				reagent_list_text += "... The list is too long. It's overlapping. Better get a scanner"
+
+
 	if(uses_left > 0)
 		if(max_uses == 1) //one_use autoinjectors
-			. += SPAN_NOTICE("It injects its entire payload of [amount_per_transfer_from_this]u.")
+			. += SPAN_NOTICE("Its label says it injects its entire payload of [reagent_list_text].")
 		else
-			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] [amount_per_transfer_from_this]u injections.")
+			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections its label says each dose contains [reagent_list_text].")
 	else
 		if(cannot_refill)
 			. += SPAN_WARNING("It is spent and has no refill valve to refill it.")
@@ -97,8 +117,7 @@
 	if(!mixed_chem)
 		if(length(reagents.reagent_list) > 0)
 			if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
-				var/datum/reagent/chemical = reagents.reagent_list[1]
-				var/dose = chemical.overdose / amount_per_transfer_from_this
+				var/dose = reagents.reagent_list[1].overdose / amount_per_transfer_from_this
 				if(dose != 0)
 					if(dose < 1)
 						. += SPAN_WARNING("You know this will overdose if administered.")
@@ -107,19 +126,28 @@
 					if(dose > 1)
 						. += SPAN_HELPFUL("You know not to exceed [dose] doses.")
 
-		for(var/datum/reagent/chem in reagents.reagent_list)
-			if(length(reagents.reagent_list) > 0)
-				if(chem.name == "Tramadol")
-					. += SPAN_HELPFUL("You know mixing Tramadol with Paracetamol produces toxins.")
-				if(chem.name == "Dylovene" || chem.name == "Arithrazine")
+	for(var/datum/reagent/chem in reagents.reagent_list)
+		if(length(reagents.reagent_list) > 0)
+			if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
+				if(chem.name == "Arithrazine")
+					. += SPAN_HELPFUL("You know Arithrazine is a biocidal and you should administer it with a small dose of neogenetic medication.")
+				if(chem.name == "Arithrazine" || chem.name == "Dylovene")
 					. += SPAN_HELPFUL("You know [chem.name] removes toxins but it does not remove overdosed substances nor treat liver damage.")
-				if(chem.name == "Peridaxon")
-					. += SPAN_HELPFUL("You know Peridaxon does not treat organ damage.")
+				if(chem.name == "Chloral Hydrate" || chem.name == "Rezadone" )
+					. += SPAN_HELPFUL("You know [chem.name] is a toxin and you should administer it with a small dose of antitoxin.")
+				if(chem.name == "Dermaline" || chem.name == "Kelotane")
+					. += SPAN_HELPFUL("You know [chem.name] does not treat eschar and severe burns nor the last 5 damage on limbs with the aforementioned afflictions.")
 				if(chem.name == "Dexalin" || chem.name == "Dexalin Plus")
 					. += SPAN_HELPFUL("You know [chem.name] does not treat lung nor heart damage.")
-				if(chem.name == "Kelotane" || chem.name == "Dermaline")
-					. += SPAN_HELPFUL("You know [chem.name] does not treat eschar and severe burns nor the last 5 damage on limbs with the aforementioned afflictions.")
+				if(chem.name == "Paracetamol")
+					. += SPAN_HELPFUL("You know mixing Paracetamol with Tramadol produces toxins.")
+					. += SPAN_HELPFUL("You know that patients with Opiate Receptor Deficiency require general anesthetic for a painless surgery.</b>")
+				if(chem.name == "Peridaxon")
+					. += SPAN_HELPFUL("You know Peridaxon does not treat organ damage.")
 				if(chem.name == "Oxycodone")
+					. += SPAN_HELPFUL("You know that patients with Opiate Receptor Deficiency require general anesthetic for a painless surgery.</b>")
+				if(chem.name == "Tramadol")
+					. += SPAN_HELPFUL("You know mixing Tramadol with Paracetamol produces toxins.")
 					. += SPAN_HELPFUL("You know that patients with Opiate Receptor Deficiency require general anesthetic for a painless surgery.</b>")
 
 /obj/item/reagent_container/hypospray/autoinjector/get_examine_text(mob/user)
@@ -522,7 +550,6 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate/get_autoinjector_examine_text(mob/user, max_uses)
 	. = ..()
-	. += SPAN_HELPFUL("A label says: '<b>Contains 9u Soporific and 1u Chloral Hydrate per dose.</b>'")
 	. += SPAN_WARNING("A warning label says: '<b>Caution: Patients injected will accumulate 5u toxin damage per dose. Do not exceed three doses.</b>'")
 
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate/Initialize()
@@ -550,8 +577,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency/get_autoinjector_examine_text(mob/user, max_uses)
 	. = ..()
-	. += SPAN_HELPFUL("A label says: '<b>Contains 29u Bicaridine, 29u Kelotane, 19u Oxycodone, and 1u Dexalin Plus.</b>'")
-	. += SPAN_WARNING("A warning label says: '<b>Does not treat eschar, severe burns, overdoses, organ damage, nor internal bleeding.</b>'")
+	. += SPAN_WARNING("A warning label says: '<b>OVERDOSE WARNING: Do not administer if the patient has the first three aforementioned chemicals in their bloodstream.")
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency/Initialize() //29u bicaridine, 29u kelotane, 19u oxycodone, 1u dexalin +.
 	. = ..()
@@ -697,7 +723,7 @@
 		if(max_uses == 1)
 			. += SPAN_NOTICE("It injects its entire payload of [amount_per_transfer_from_this]u.")
 		else
-			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] [amount_per_transfer_from_this]u injections.")
+			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections of [amount_per_transfer_from_this]u.")
 	else
 		. += SPAN_HELPFUL("It is empty but it can be refilled with a pressurized reagent canister pouch.")
 

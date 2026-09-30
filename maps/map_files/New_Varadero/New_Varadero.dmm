@@ -498,6 +498,10 @@
 "abs" = (
 /turf/open_space,
 /area/sky/level4)
+"abt" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/turf/open_space,
+/area/sky)
 "abu" = (
 /obj/structure/bed/chair/dropship/passenger{
 	icon_state = "hotseat_destroyed";
@@ -6672,11 +6676,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
-"atC" = (
-/obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/obj/structure/blocker/forcefield/human,
-/turf/open_space,
-/area/sky)
 "atD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -54816,7 +54815,6 @@
 "cLP" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/obj/structure/blocker/forcefield/human,
 /turf/open_space,
 /area/sky)
 "cLQ" = (
@@ -139873,8 +139871,8 @@ drq
 ssW
 drq
 tem
-tem
-tem
+abt
+abt
 drq
 drq
 drq
@@ -140067,7 +140065,7 @@ drq
 tem
 tem
 tem
-tem
+abt
 drq
 qrl
 ayE
@@ -140255,7 +140253,7 @@ drq
 drq
 drq
 ssW
-tem
+abt
 tem
 tem
 tem
@@ -140450,7 +140448,7 @@ nHL
 drq
 tem
 tem
-tem
+abt
 drq
 drq
 cWe
@@ -142609,8 +142607,8 @@ drq
 drq
 drq
 drq
-tem
-tem
+abt
+abt
 drq
 drq
 cLL
@@ -143957,7 +143955,7 @@ ssW
 drq
 drq
 drq
-tem
+abt
 drq
 drq
 drq
@@ -144151,7 +144149,7 @@ cCt
 tem
 tem
 tem
-tem
+abt
 ayE
 drq
 drq
@@ -144339,7 +144337,7 @@ drq
 drq
 ssW
 drq
-tem
+abt
 tem
 tem
 tem
@@ -144535,7 +144533,7 @@ drq
 tem
 tem
 tem
-tem
+abt
 drq
 drq
 drq
@@ -146022,7 +146020,7 @@ drq
 drq
 drq
 ssW
-tem
+ezB
 tem
 tem
 tem
@@ -151419,7 +151417,7 @@ drq
 drq
 drq
 ssW
-atC
+abt
 drq
 drq
 drq
@@ -151611,7 +151609,7 @@ drq
 drq
 drq
 ssW
-atC
+abt
 drq
 drq
 drq
@@ -151803,7 +151801,7 @@ drq
 drq
 drq
 ssW
-atC
+abt
 drq
 drq
 drq
@@ -151994,7 +151992,7 @@ drq
 drq
 drq
 drq
-atC
+abt
 drq
 drq
 drq
@@ -152760,7 +152758,7 @@ drq
 drq
 drq
 drq
-atC
+abt
 tem
 tem
 drq
@@ -153143,11 +153141,11 @@ drq
 drq
 drq
 drq
-atC
+abt
 tem
 tem
 tem
-atC
+abt
 drq
 drq
 drq
@@ -153338,7 +153336,7 @@ drq
 tem
 tem
 tem
-atC
+abt
 cLP
 btp
 btp
@@ -153526,11 +153524,11 @@ btp
 btp
 btp
 btp
-atC
+abt
 tem
 tem
 tem
-atC
+abt
 btp
 btp
 btp

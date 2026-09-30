@@ -525,7 +525,7 @@
 	storage_slots = 6
 	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_CLICK_GATHER
 	can_hold = list(/obj/item/reagent_container/glass/beaker/vial,/obj/item/reagent_container/hypospray/autoinjector)
-	matter = list("plastic" = 2000)
+	matter = list("plastic" = 1000)
 	var/start_vials = 6
 	var/is_random
 
@@ -578,6 +578,16 @@
 		dump_into(M,user)
 	else
 		return ..()
+
+/obj/item/storage/fancy/vials/injector
+	name = "autoinjector storage box"
+	desc = "A box for storing sets of autoinjectors."
+	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector)
+	icon = 'icons/obj/items/injectorbox.dmi'
+	icon_state = "autoinjectorbox0"
+	item_state = "autoinjectorbox"
+	icon_type = "autoinjector"
+	start_vials = 0
 
 /obj/item/storage/lockbox/vials
 	name = "secure vial storage box"

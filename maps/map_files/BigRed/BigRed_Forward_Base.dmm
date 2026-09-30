@@ -64,12 +64,195 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/underdeck/hangar)
+"aak" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/emerald/north,
+/area/forward_base/hallways/lower/port_midship_hallway)
+"aal" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer,
+/area/forward_base/hallways/lower/port_midship_hallway)
+"aam" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/forward_base/hallways/lower/port_midship_hallway)
+"aan" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/hallways/lower/port_midship_hallway)
 "aao" = (
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
+"aap" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/emerald/east,
+/area/forward_base/hallways/lower/port_midship_hallway)
+"aaq" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/prison/southwest,
+/area/forward_base/hallways/lower/port_midship_hallway)
+"aar" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/prison/floor_plate,
+/area/forward_base/hallways/lower/port_midship_hallway)
+"aas" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/forward_base/hallways/lower/port_midship_hallway)
+"aat" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/antre/plating/corner_dir/north_east,
+/area/forward_base/hallways/lower/port_midship_hallway)
+"aau" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/blue/north,
+/area/forward_base/hallways/lower/port_midship_hallway)
+"aav" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/blue/west,
+/area/forward_base/hallways/lower/port_midship_hallway)
+"aaw" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/antre/plating/direction_west/east_north,
+/area/forward_base/hallways/lower/port_midship_hallway)
+"aax" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/blue,
+/area/forward_base/hallways/lower/port_midship_hallway)
+"aay" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/antre/plating/corner_dir/north_east,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
+"aaz" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/mono,
+/area/forward_base/hallways/lower/port_midship_hallway)
+"aaA" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/antre/plating/direction_north/east_edge,
+/area/forward_base/hallways/lower/port_midship_hallway)
 "aaB" = (
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/telecomm/n_cave)
+"aaC" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
+"aaD" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/antre/plating/corner_dir/south_east,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
+"aaE" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
+"aaF" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer,
+/area/forward_base/living/briefing)
+"aaG" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/cargo_arrow/east,
+/area/forward_base/living/briefing)
+"aaH" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/antre/plating/direction_north/east_edge,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
+"aaI" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
+"aaJ" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer,
+/area/forward_base/living/briefing)
+"aaK" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/blue/east,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
+"aaL" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/blue/east,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
 "aaM" = (
 /obj/effect/decal/strata_decals/grime/grime1{
 	dir = 1
@@ -79,6 +262,104 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
+"aaN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/flooredge/west,
+/area/forward_base/squads/alpha_bravo_shared)
+"aaO" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
+"aaP" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
+"aaQ" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
+"aaR" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
+"aaS" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/antre/plating/corner_dir/north_west,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
+"aaT" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
+"aaU" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
+"aaV" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
+"aaW" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/green/north,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
+"aaX" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/almayer/plate,
+/area/forward_base/shipboard/weapon_room)
+"aaY" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/forward_base/hallways/upper/port)
+"aaZ" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/largecrate/supply,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/forward_base/hallways/upper/port)
+"aba" = (
+/obj/structure/largecrate/random/case,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/forward_base/hallways/upper/port)
 "abb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -88,6 +369,11 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/c)
+"abc" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/largecrate/random/case,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/forward_base/hallways/upper/port)
 "abd" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -99,6 +385,58 @@
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/c)
+"abf" = (
+/obj/structure/largecrate/supply,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/forward_base/hallways/upper/port)
+"abg" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/forward_base/hallways/upper/port)
+"abh" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/plating_striped/north,
+/area/forward_base/squads/req)
+"abi" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/plating_striped/west,
+/area/forward_base/squads/req)
+"abj" = (
+/obj/structure/machinery/door/poddoor/railing{
+	dir = 4;
+	id = "supply_elevator_railing"
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer,
+/area/forward_base/squads/req)
+"abk" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/plating_striped/west,
+/area/forward_base/squads/req)
+"abl" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/plating_striped/east,
+/area/forward_base/squads/req)
+"abm" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/plating_striped,
+/area/forward_base/squads/req)
 "abq" = (
 /turf/open/mars_cave/mars_cave_10,
 /area/bigredv2/caves_north)
@@ -5050,6 +5388,9 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "auY" = (
@@ -5366,6 +5707,9 @@
 /turf/open/floor/almayer/silvercorner/west,
 /area/forward_base/hallways/lower/starboard_midship_hallway)
 "awc" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
 /turf/open/floor/almayer/silver/west,
 /area/forward_base/hallways/lower/starboard_midship_hallway)
 "awd" = (
@@ -5388,6 +5732,9 @@
 "awh" = (
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/hallways/lower/starboard_midship_hallway)
@@ -5707,6 +6054,9 @@
 /turf/open/floor/carpet,
 /area/bigredv2/caves/lambda/breakroom)
 "axq" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 8
+	},
 /turf/open/antre/plating/west_corner_dir/north_west,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "axr" = (
@@ -5792,6 +6142,9 @@
 "axH" = (
 /obj/structure/barricade/metal,
 /obj/structure/machinery/light,
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "axI" = (
@@ -6128,6 +6481,9 @@
 	name = "\improper Bunker checkpoint Lockdown";
 	pixel_y = -24;
 	pixel_x = 6
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
 	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/hallways/lower/port_midship_hallway)
@@ -6499,6 +6855,9 @@
 	},
 /obj/structure/machinery/light{
 	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
 	},
 /turf/open/floor/almayer/green/north,
 /area/forward_base/hallways/lower/starboard_midship_hallway)
@@ -6957,6 +7316,9 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
 /turf/open/floor/almayer,
 /area/forward_base/hallways/lower/starboard_midship_hallway)
 "aBO" = (
@@ -7200,6 +7562,9 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
 	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
 /turf/open/floor/almayer/emerald,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "aCF" = (
@@ -7375,6 +7740,9 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
 	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/hallways/lower/starboard_midship_hallway)
@@ -7820,6 +8188,9 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/hallways/lower/starboard_midship_hallway)
@@ -11229,6 +11600,9 @@
 /turf/open/floor/almayer/silver/west,
 /area/forward_base/living/briefing)
 "aPl" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
 /turf/open/floor/almayer/silver/west,
 /area/forward_base/living/briefing)
 "aPm" = (
@@ -11309,14 +11683,14 @@
 /turf/open/floor/almayer/silvercorner/west,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "aPA" = (
-/obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag,
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/almayer/cargo,
 /area/forward_base/engineering/lower/workshop)
 "aPB" = (
-/obj/structure/machinery/cm_vending/sorted/tech/comp_storage/antag,
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor/almayer/cargo,
 /area/forward_base/engineering/lower/workshop)
 "aPC" = (
@@ -14361,6 +14735,9 @@
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
 /turf/open/floor/prison/floor_plate,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "aZh" = (
@@ -16710,6 +17087,9 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
 /turf/open/floor/asteroidwarning/northeast,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "bhd" = (
@@ -16926,6 +17306,9 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/c)
 "bhV" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
 /turf/open/asphalt/cement/cement2,
 /area/bigredv2/outside/nw)
 "bhW" = (
@@ -17072,6 +17455,9 @@
 /turf/open/floor/almayer/mono,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "biv" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
 /turf/open/antre/plating/direction_north/north_edge,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "biw" = (
@@ -17092,10 +17478,16 @@
 /area/bigredv2/outside/hydroponics)
 "biy" = (
 /obj/structure/barricade/plasteel/wired,
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
 /turf/open/antre/plating/direction_north/south_edge,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "biz" = (
 /obj/effect/landmark/spycam_start,
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
 /turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/nw)
 "biA" = (
@@ -17109,6 +17501,9 @@
 "biB" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
 	},
 /turf/open/asphalt/cement,
 /area/bigredv2/outside/nw)
@@ -17264,6 +17659,9 @@
 "biZ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
 	},
 /turf/open/asphalt/cement/cement1/north,
 /area/bigredv2/outside/nw)
@@ -17524,6 +17922,9 @@
 "bjU" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
 	},
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/nw)
@@ -18043,6 +18444,9 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
 	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/hallways/lower/starboard_midship_hallway)
 "blP" = (
@@ -18134,6 +18538,9 @@
 /area/bigredv2/outside/filtration_plant)
 "bmc" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
 /turf/open/antre/plating/corner_dir/south_east,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "bmd" = (
@@ -18473,6 +18880,9 @@
 /turf/open/floor/almayer/test_floor4,
 /area/bigredv2/outside/filtration_plant)
 "bnk" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
 /turf/open/floor/almayer/blue/southwest,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "bnl" = (
@@ -18851,6 +19261,9 @@
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
 /turf/open/floor/prison/floor_plate,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "boo" = (
@@ -19012,6 +19425,9 @@
 /turf/open/floor/almayer/bluecorner/west,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "boQ" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
 /turf/open/floor/almayer/bluecorner/north,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "boR" = (
@@ -20869,7 +21285,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/guncabinet/red/armory_m39_submachinegun,
+/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_mk1_rifle_ap,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/command/cic)
 "btT" = (
@@ -20881,11 +21297,11 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/ne)
 "btU" = (
-/obj/structure/closet/secure_closet/guncabinet/red/armory_m39_submachinegun,
+/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_mk1_rifle_ap,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/command/cic)
 "btV" = (
-/obj/structure/closet/secure_closet/guncabinet/red/armory_m39_submachinegun,
+/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_shotgun,
 /turf/open/floor/almayer/cargo/no_build,
 /area/forward_base/command/cic)
 "btW" = (
@@ -25473,6 +25889,10 @@
 	icon_state = "W";
 	layer = 3.3
 	},
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 1
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/forward_base/hallways/upper/port)
 "bII" = (
@@ -26518,6 +26938,7 @@
 /area/forward_base/command/securestorage)
 "bLR" = (
 /obj/structure/surface/rack,
+/obj/effect/spawner/random/toolbox,
 /turf/open/floor/almayer/plate,
 /area/forward_base/shipboard/weapon_room)
 "bLS" = (
@@ -27280,6 +27701,9 @@
 	dir = 4;
 	id = "supply_elevator_railing"
 	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
 /turf/open/floor/almayer/cargo_arrow/west,
 /area/forward_base/squads/req)
 "bNT" = (
@@ -27333,6 +27757,9 @@
 "bOb" = (
 /obj/structure/sign/nosmoking_2{
 	pixel_x = -27
+	},
+/obj/structure/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/almayer/silvercorner,
 /area/forward_base/medical/operating_room_one)
@@ -27867,6 +28294,9 @@
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/medical/operating_room_one)
 "bPv" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/almayer/silvercorner/west,
 /area/forward_base/medical/operating_room_one)
 "bPw" = (
@@ -27901,6 +28331,9 @@
 	},
 /obj/structure/machinery/gear{
 	id = "supply_elevator_gear"
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
 	},
 /turf/open/floor/almayer/mono,
 /area/forward_base/squads/req)
@@ -27981,6 +28414,9 @@
 /turf/open/floor/almayer/plating_striped/west,
 /area/forward_base/squads/req)
 "bPM" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
 /turf/open/floor/almayer/plating_striped/southeast,
 /area/forward_base/squads/req)
 "bPN" = (
@@ -28074,7 +28510,7 @@
 /turf/open/floor/almayer/cargo,
 /area/forward_base/squads/req)
 "bPV" = (
-/obj/structure/largecrate/random/barrel/red,
+/obj/structure/machinery/computer/cryopod,
 /turf/open/floor/almayer/cargo,
 /area/forward_base/squads/req)
 "bPW" = (
@@ -51750,7 +52186,7 @@ ark
 arS
 arV
 arV
-arV
+aaN
 arV
 arV
 aix
@@ -52200,8 +52636,8 @@ auS
 auS
 auT
 auX
-auS
-auR
+aan
+aam
 auR
 avq
 avs
@@ -52385,9 +52821,9 @@ avY
 awb
 awc
 awf
-awg
+aaI
 awh
-awi
+aaP
 awj
 awi
 awi
@@ -52407,13 +52843,13 @@ awx
 awx
 awy
 awx
-awx
-awx
-awx
-awx
-awx
-awx
-awx
+aap
+aap
+aap
+aap
+aap
+aap
+aap
 awx
 awx
 awL
@@ -52598,7 +53034,7 @@ axc
 axf
 axg
 axh
-axf
+aaS
 axj
 axj
 axj
@@ -52633,7 +53069,7 @@ axD
 axm
 axE
 avA
-axF
+aak
 axH
 asR
 asZ
@@ -52820,15 +53256,15 @@ aym
 ayj
 ayj
 ayw
+aaH
+aaH
+aaH
 ayj
 ayj
 ayj
-ayj
-ayj
-ayj
-axS
-awf
-axQ
+aaD
+aaC
+aay
 ayy
 ayz
 avA
@@ -53018,7 +53454,7 @@ aab
 aab
 ahZ
 avW
-axP
+aaW
 awj
 ayW
 aza
@@ -53033,13 +53469,13 @@ ahZ
 awg
 awj
 azp
-awj
-awj
-awg
+aaE
+aaE
+aaI
 awj
 azr
-awj
-awj
+aaE
+aaE
 awf
 azs
 azw
@@ -53056,7 +53492,7 @@ azC
 azD
 azD
 azC
-azH
+aal
 azI
 azL
 azR
@@ -53256,7 +53692,7 @@ aAD
 aAt
 aAt
 aAF
-ayz
+aaw
 avA
 axF
 auR
@@ -53469,7 +53905,7 @@ aCD
 aAt
 aAt
 aCE
-ayz
+aaw
 avA
 axF
 aAG
@@ -53681,7 +54117,7 @@ aDI
 aDK
 aCD
 aDL
-auS
+bgS
 ayz
 avA
 axF
@@ -53887,14 +54323,14 @@ aEJ
 aEL
 aEL
 aEL
-aES
-aDx
+aaJ
+aUx
 aEL
 aEL
 aEL
 aCD
 aEV
-auS
+bgS
 ayz
 avA
 axF
@@ -54519,7 +54955,7 @@ aJo
 aJp
 aEG
 aEG
-aHM
+aDw
 aJu
 aJB
 aJP
@@ -55158,14 +55594,14 @@ aHE
 aRk
 aEG
 aEG
-aHM
+aDw
 aCD
 aGA
 aRl
 aEL
 aEL
 aEL
-aES
+aaJ
 aRt
 aEL
 aEL
@@ -55362,8 +55798,8 @@ aab
 ahZ
 aBx
 aBx
-awg
-awr
+aaI
+aaU
 awj
 aCD
 aSk
@@ -55592,9 +56028,9 @@ aIb
 aIb
 aIb
 aES
-aDx
-aGA
-aGA
+aUx
+aaF
+aaF
 aGA
 aTB
 aTF
@@ -55787,8 +56223,8 @@ aab
 aab
 ahZ
 ark
-awj
-aGt
+aaE
+aaV
 awj
 aUu
 aAt
@@ -55807,7 +56243,7 @@ aUA
 aUB
 aUC
 aUC
-aUC
+aaG
 aUC
 aUK
 aUL
@@ -56000,7 +56436,7 @@ aab
 aab
 ahZ
 ark
-awj
+aaE
 aGt
 aVF
 aVG
@@ -56640,7 +57076,7 @@ aab
 ahZ
 ark
 awj
-aGt
+aaV
 aVF
 aVG
 aVG
@@ -56853,9 +57289,9 @@ aab
 ahZ
 ark
 aZK
-aGt
+aaV
 awj
-awg
+aaI
 awg
 aZN
 ark
@@ -56882,7 +57318,7 @@ avA
 aZf
 baX
 aAe
-aAe
+aaq
 aAf
 aoO
 aiw
@@ -57066,9 +57502,9 @@ aab
 ahZ
 bbL
 awj
-aGt
+aaV
 awj
-awg
+aaI
 awi
 aGt
 bbQ
@@ -57281,8 +57717,8 @@ bde
 awj
 aGt
 awj
-awg
-awi
+aaI
+aaP
 aGt
 bdf
 ark
@@ -57923,7 +58359,7 @@ ahZ
 bfW
 awi
 aGt
-awg
+aaI
 awg
 aze
 beu
@@ -57939,7 +58375,7 @@ bgD
 bgF
 bgG
 bgH
-bgS
+aan
 bgU
 bfs
 ayz
@@ -58135,9 +58571,9 @@ aao
 bhn
 bho
 awi
-bdY
+aaT
 aza
-bea
+aaR
 bht
 bhB
 ahZ
@@ -58350,7 +58786,7 @@ bih
 bii
 bij
 awg
-awi
+aaP
 aGt
 aHz
 ahZ
@@ -58366,13 +58802,13 @@ bip
 bis
 biu
 auS
-bgU
+aaz
 bfs
 ayz
 avA
 biv
 biy
-bhS
+aas
 biz
 biB
 biC
@@ -58580,10 +59016,10 @@ auS
 auR
 biX
 auR
-bfs
+aax
 ayz
 avA
-avE
+aat
 avF
 bhS
 biY
@@ -59002,7 +59438,7 @@ bkk
 bkm
 awg
 bkt
-auS
+bgS
 bkv
 auR
 auR
@@ -59203,14 +59639,14 @@ pXu
 xBS
 bhn
 bkX
-aZN
+aaQ
 bkZ
 bla
 blb
 blb
 blb
-blb
-bla
+aaL
+aaK
 blc
 blb
 blb
@@ -59417,7 +59853,7 @@ wXg
 blw
 blz
 aZN
-awg
+aaI
 blH
 blI
 blI
@@ -59435,7 +59871,7 @@ blK
 aIg
 ayz
 avA
-aZf
+aau
 bdT
 asR
 auF
@@ -59630,7 +60066,7 @@ wXg
 blw
 blz
 blO
-aza
+aaO
 blP
 blQ
 blQ
@@ -59644,11 +60080,11 @@ blQ
 blU
 blU
 blU
-blU
+aaA
 bmc
 bmd
 avA
-aZf
+aau
 asR
 asR
 ayT
@@ -59861,10 +60297,10 @@ bni
 bnk
 avz
 avA
-aZf
+aau
 baX
-aAe
-aAe
+aaq
+aaq
 aAf
 auF
 bhf
@@ -60077,7 +60513,7 @@ azL
 aZf
 asR
 bon
-aBs
+aar
 asR
 asR
 asR
@@ -60285,8 +60721,8 @@ bnJ
 bnJ
 bol
 boP
-bnc
-bnc
+aav
+aav
 boQ
 asR
 asR
@@ -100114,8 +100550,8 @@ bGc
 bGW
 bGY
 bGZ
-bHa
-bHa
+abf
+aba
 bHb
 bHc
 bHd
@@ -100327,9 +100763,9 @@ bGc
 bHu
 bHv
 bHw
-bGH
-bGH
-bGH
+abg
+abc
+bKS
 bHx
 bHy
 bGB
@@ -100543,7 +100979,7 @@ bGB
 bGB
 bGB
 bHP
-bHQ
+bMF
 bHR
 bHS
 bHa
@@ -100756,7 +101192,7 @@ bGc
 bGc
 bGc
 bHR
-bHQ
+aaY
 bHZ
 bGZ
 aAG
@@ -100969,7 +101405,7 @@ bIo
 bGc
 bGc
 bHZ
-bHQ
+aaZ
 bHR
 aAG
 aAG
@@ -103752,7 +104188,7 @@ ahZ
 ahZ
 ahZ
 bIB
-bLR
+aaX
 bLS
 bLT
 bLU
@@ -104995,7 +105431,7 @@ beu
 bNF
 bNG
 bgp
-bgp
+abl
 bgp
 bgp
 bgp
@@ -105210,7 +105646,7 @@ bNQ
 bNR
 bNR
 bNS
-bNR
+abj
 bNR
 bNT
 bNU
@@ -105844,7 +106280,7 @@ aab
 ebf
 ahZ
 bOI
-bNP
+abm
 bOJ
 bOi
 bOi
@@ -106057,7 +106493,7 @@ aab
 ebf
 ahZ
 bOZ
-bNP
+abm
 bOh
 bOi
 bOi
@@ -106491,7 +106927,7 @@ bPB
 bPA
 bPA
 bPC
-bNU
+abh
 beu
 beu
 bNI
@@ -106701,9 +107137,9 @@ bPK
 bPL
 bPL
 bPL
+abk
 bPL
-bPL
-bPK
+abi
 bPM
 bPI
 beu

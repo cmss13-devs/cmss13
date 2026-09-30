@@ -1,7 +1,10 @@
 //DO NOT ADD MORE TO THIS FILE.
 //Use vv_do_topic() for datums!
 /client/proc/view_var_Topic(href, href_list, hsrc)
-	if(check_rights(R_MOD) && admin_holder.CheckAdminHref(href, href_list))
+	if(!admin_holder.CheckAdminHref(href, href_list))
+		return
+
+	if(check_rights(R_MOD))
 		if(href_list["view_combat_logs"])
 			var/mob/A = locate(href_list["view_combat_logs"])
 
@@ -10,10 +13,10 @@
 				logs += "[entry]<br>"
 
 			show_browser(usr, logs.Join(), "Combat Logs", "logs_\ref[src]", width = 600, height = 480)
-	else
-		return
+
 	if(!check_rights_for(src, R_VAREDIT))
 		return
+
 	var/target = GET_VV_TARGET
 	vv_do_basic(target, href_list, href)
 	if(isdatum(target))

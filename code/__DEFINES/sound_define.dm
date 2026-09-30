@@ -50,7 +50,9 @@
 #define SOUND_GUN_SILENCED_ALT list('sound/weapons/gun_silenced_alt_shot1.ogg','sound/weapons/gun_silenced_alt_shot2.ogg','sound/weapons/gun_silenced_alt_shot3.ogg')
 #define SOUND_GUN_PULSE list('sound/weapons/gun_m41a_1.ogg','sound/weapons/gun_m41a_2.ogg','sound/weapons/gun_m41a_3.ogg','sound/weapons/gun_m41a_4.ogg','sound/weapons/gun_m41a_5.ogg','sound/weapons/gun_m41a_6.ogg')
 #define SOUND_GUN_SMARTGUN list('sound/weapons/gun_smartgun1.ogg', 'sound/weapons/gun_smartgun2.ogg', 'sound/weapons/gun_smartgun3.ogg', 'sound/weapons/gun_smartgun4.ogg')
-#define SOUND_GUN_SMARTGUN_RATTLE list('sound/weapons/gun_smartgun1_rattle.ogg', 'sound/weapons/gun_smartgun2_rattle.ogg', 'sound/weapons/gun_smartgun3_rattle.ogg', 'sound/weapons/gun_smartgun4_rattle.ogg')
+#define SOUND_GUN_SMARTGUN_RATTLE list('sound/weapons/heavy_weapon_firing_sounds/gun_smartgun1_rattle.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun2_rattle.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun3_rattle.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun4_rattle.ogg')
+#define SOUND_GUN_SMARTGUN_CLF list('sound/weapons/heavy_weapon_firing_sounds/gun_smartgun_clf1.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun_clf2.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun_clf3.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun_clf4.ogg')
+#define SOUND_GUN_SMARTGUN_CLF_RATTLE list('sound/weapons/heavy_weapon_firing_sounds/gun_smartgun_clf1_rattle.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun_clf2_rattle.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun_clf3_rattle.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun_clf4_rattle.ogg')
 #define SOUND_GUN_JAM_RACK list('sound/weapons/handling/gun_jam_rack_1.ogg', 'sound/weapons/handling/gun_jam_rack_2.ogg', 'sound/weapons/handling/gun_jam_rack_3.ogg')
 #define SOUND_GUNRUSTLE list('sound/effects/gunrustle1.ogg', 'sound/effects/gunrustle2.ogg','sound/effects/gunrustle3.ogg')
 #define SOUND_GUNEQUIP list('sound/handling/gunequip1.ogg','sound/handling/gunequip2.ogg','sound/handling/gunequip3.ogg')
@@ -125,12 +127,15 @@
 #define SOUND_UPP_WJ_DEATH list('sound/voice/joe/upp_joe/smert1.ogg', 'sound/voice/joe/upp_joe/smert2.ogg', 'sound/voice/joe/upp_joe/smert3.ogg', 'sound/voice/joe/upp_joe/smert4.ogg', 'sound/voice/joe/upp_joe/smert5.ogg')
 #define SOUND_DANIEL_DEATH list('sound/voice/joe/daniel/death1.ogg', 'sound/voice/joe/daniel/death2.ogg', 'sound/voice/joe/daniel/death3.ogg')
 
-//misc mobs
-#define SOUND_CAT_MEOW list('sound/voice/cat_meow_1.ogg','sound/voice/cat_meow_2.ogg','sound/voice/cat_meow_3.ogg','sound/voice/cat_meow_4.ogg','sound/voice/cat_meow_5.ogg','sound/voice/cat_meow_6.ogg','sound/voice/cat_meow_7.ogg')
+// predators
 #define SOUND_PRED_PAIN list('sound/voice/pred_pain1.ogg','sound/voice/pred_pain2.ogg','sound/voice/pred_pain3.ogg','sound/voice/pred_pain4.ogg','sound/voice/pred_pain5.ogg', SOUND_PRED_PAIN_RARE)
 #define SOUND_PRED_PAIN_RARE list('sound/voice/pred_pain_rare1.ogg')
 #define SOUND_PRED_PREBURST list('sound/voice/pred_pain_rare1.ogg')
 #define SOUND_PRED_DEATH list('sound/voice/pred_death1.ogg', 'sound/voice/pred_death2.ogg')
+#define SOUND_PRED_DECLOAK list('sound/effects/pred_force_decloak.ogg')
+
+//misc mobs
+#define SOUND_CAT_MEOW list('sound/voice/cat_meow_1.ogg','sound/voice/cat_meow_2.ogg','sound/voice/cat_meow_3.ogg','sound/voice/cat_meow_4.ogg','sound/voice/cat_meow_5.ogg','sound/voice/cat_meow_6.ogg','sound/voice/cat_meow_7.ogg')
 #define SOUND_CLOWNSTEP list('sound/effects/clownstep1.ogg', 'sound/effects/clownstep2.ogg')
 #define SOUND_GIANT_LIZARD_GROWL list('sound/effects/giant_lizard_growl1.ogg', 'sound/effects/giant_lizard_growl2.ogg')
 #define SOUND_GIANT_LIZARD_HISS list('sound/effects/giant_lizard_hiss1.ogg', 'sound/effects/giant_lizard_hiss2.ogg')

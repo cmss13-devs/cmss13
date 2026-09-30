@@ -775,15 +775,14 @@
 				found_shuttle = shuttle
 				break
 		if(found_shuttle)
+			icon_state = initial(icon_state)
 			switch(found_shuttle.mode)
 				if(SHUTTLE_IGNITING)
 					icon_state = "Hula_Gal_Bounce"
 				if(SHUTTLE_CALL, SHUTTLE_RECALL)
 					icon_state = "Hula_Gal_Wild"
-				if(SHUTTLE_IDLE)
-					icon_state = "Hula_Gal"
 			return
-	icon_state = "Hula_Gal"
+	icon_state = initial(icon_state)
 
 /obj/structure/prop/ice_colony/tiger_rug
 	name = "tiger rug"

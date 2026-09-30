@@ -46,6 +46,3 @@ System Admin	+EVERYTHING +PROFILER
 Host 			+HOST
 Manager			+EVERYTHING
 Maintainer Manager		+EVERYTHING +PROFILER
-
-
-Legacy Mentor 	 +MENTOR +COLOR

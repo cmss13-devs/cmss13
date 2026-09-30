@@ -76,30 +76,34 @@
 /obj/item/reagent_container/hypospray/autoinjector/proc/get_autoinjector_examine_text(mob/user, max_uses)
 	. = list()
 	var/reagent_list_text
-	var/reagent1 = "[reagents.reagent_list[1].volume]u [reagents.reagent_list[1].name]"
-	var/reagent2 = "[reagents.reagent_list[2].volume]u [reagents.reagent_list[2].name]"
-	var/reagent3 = "[reagents.reagent_list[3].volume]u [reagents.reagent_list[3].name]"
-	var/reagent4 = "[reagents.reagent_list[4].volume]u [reagents.reagent_list[4].name]"
+	var/message1
+	var/message2
+	var/list/chem_list = reagents.reagent_list
 
-	if(reagents && reagents.reagent_list)
-		if(length(reagents.reagent_list) > 0)
-			if(length(reagents.reagent_list) == 1)
-				reagent_list_text += "[reagent1]"
-			if(length(reagents.reagent_list) == 2)
-				reagent_list_text += "[reagent1] and [reagent2]"
-			if(length(reagents.reagent_list) == 3)
-				reagent_list_text += "[reagent1], [reagent2], and [reagent3]"
-			if(length(reagents.reagent_list) == 4)
-				reagent_list_text += "[reagent1], [reagent2], [reagent3], and [reagent4]"
-			if(length(reagents.reagent_list) > 4)
-				reagent_list_text += "... The list is too long. It's overlapping. Better get a scanner"
+	if(reagents && chem_list)
+		if(length(chem_list) > 0)
+			for(var/datum/reagent/chemical in chem_list)
+				if(length(chem_list) == 1)
+					message1 += "[chemical.volume]u"
+					message2 += " [chemical.name]"
+				if(length(chem_list) > 1)
+					if(chemical == chem_list[chem_list.len])
+						break
+					if(length(chem_list) == 2)
+						message1 += "[chemical.volume]u [chemical.name] and "
+					else
+						message1 += "[chemical.volume]u [chemical.name], and "
 
+			for(var/datum/reagent/chemical in chem_list)
+				if(chemical == chem_list[chem_list.len])
+					message2 += "[chemical.volume]u [chemical.name]"
+			reagent_list_text += "[message1][message2]"
 
 	if(uses_left > 0)
 		if(max_uses == 1) //one_use autoinjectors
 			. += SPAN_NOTICE("Its label says it injects its entire payload of [reagent_list_text].")
 		else
-			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections its label says each dose contains [reagent_list_text].")
+			. += SPAN_NOTICE("It is currently loaded with [uses_left]/[max_uses] injections and its label says each dose contains [reagent_list_text].")
 	else
 		if(cannot_refill)
 			. += SPAN_WARNING("It is spent and has no refill valve to refill it.")
@@ -108,47 +112,47 @@
 
 	if(skilllock > SKILL_MEDICAL_DEFAULT)
 		if(skillcheck(user, SKILL_MEDICAL, skilllock))
-			. += SPAN_HELPFUL("It has a lock on it similar to pill bottles, but you know how to unlock it.")
+			. += SPAN_HELPFUL("It has a lock similar to pill bottles but you know how to unlock it.")
 		else
-			. += SPAN_WARNING("It has a lock on it similar to pill bottles. You do not have enough training in Medicine to know how to unlock it.")
+			. += SPAN_WARNING("It has a lock similar to pill bottles but you do not have enough training in Medicine to know how to unlock it.")
 	else
-		. += SPAN_HELPFUL("It doesn't have a lock on it, so anyone can use it.")
+		. += SPAN_HELPFUL("It doesn't have a lock on it. Anyone can use it.")
 
 	if(!mixed_chem)
-		if(length(reagents.reagent_list) > 0)
+		if(length(reagents.reagent_list) == 1)
 			if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
 				var/dose = reagents.reagent_list[1].overdose / amount_per_transfer_from_this
 				if(dose != 0)
 					if(dose < 1)
-						. += SPAN_WARNING("You know this will overdose if administered.")
+						. += SPAN_WARNING("You know this will overdose if administered.") //just in case.
 					if(dose == 1)
 						. += SPAN_HELPFUL("You know not to exceed 1 dose.")
 					if(dose > 1)
 						. += SPAN_HELPFUL("You know not to exceed [dose] doses.")
+					if(dose > 3)
+						. += SPAN_HELPFUL("You know this is safe for a multitude of doses.") //1u Dex+ injections
 
-	for(var/datum/reagent/chem in reagents.reagent_list)
+	for(var/datum/reagent/chemical in reagents.reagent_list)
 		if(length(reagents.reagent_list) > 0)
 			if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
-				if(chem.name == "Arithrazine")
-					. += SPAN_HELPFUL("You know Arithrazine is a biocidal and you should administer it with a small dose of neogenetic medication.")
-				if(chem.name == "Arithrazine" || chem.name == "Dylovene")
-					. += SPAN_HELPFUL("You know [chem.name] removes toxins but it does not remove overdosed substances nor treat liver damage.")
-				if(chem.name == "Chloral Hydrate" || chem.name == "Rezadone" )
-					. += SPAN_HELPFUL("You know [chem.name] is a toxin and you should administer it with a small dose of antitoxin.")
-				if(chem.name == "Dermaline" || chem.name == "Kelotane")
-					. += SPAN_HELPFUL("You know [chem.name] does not treat eschar and severe burns nor the last 5 damage on limbs with the aforementioned afflictions.")
-				if(chem.name == "Dexalin" || chem.name == "Dexalin Plus")
-					. += SPAN_HELPFUL("You know [chem.name] does not treat lung nor heart damage.")
-				if(chem.name == "Paracetamol")
+				if(chemical.name == "Chloral Hydrate")
+					. += SPAN_HELPFUL("You know [chemical.name] is a toxin and you should administer it with a small dose of antitoxic medication, like Dylovene.")
+				if(chemical.name == "Soporific")
+					. += SPAN_HELPFUL("You know [chemical.name] is a strong sedative and a general anesthetic. Your patient <i>will</i> be put to sleep. ")
+				if(chemical.name == "Dermaline" || chemical.name == "Kelotane")
+					. += SPAN_HELPFUL("You know [chemical.name] does not treat eschar and severe burns nor the last 5 damage on limbs with the aforementioned afflictions.")
+				if(chemical.name == "Dexalin" || chemical.name == "Dexalin Plus")
+					. += SPAN_HELPFUL("You know [chemical.name] does not treat lung nor heart damage.")
+				if(chemical.name == "Dylovene")
+					. += SPAN_HELPFUL("You know [chemical.name] does not remove overdosed substances nor treat liver damage.")
+				if(chemical.name == "Paracetamol" || chemical.name == "Tramadol")
 					. += SPAN_HELPFUL("You know mixing Paracetamol with Tramadol produces toxins.")
-					. += SPAN_HELPFUL("You know that patients with Opiate Receptor Deficiency require general anesthetic for a painless surgery.</b>")
-				if(chem.name == "Peridaxon")
-					. += SPAN_HELPFUL("You know Peridaxon does not treat organ damage.")
-				if(chem.name == "Oxycodone")
-					. += SPAN_HELPFUL("You know that patients with Opiate Receptor Deficiency require general anesthetic for a painless surgery.</b>")
-				if(chem.name == "Tramadol")
+				if(chemical.name == "Peridaxon")
+					. += SPAN_HELPFUL("You know Peridaxon treats the symptoms of organ damage, not the organ damage, itself.")
+				if(chemical.name == "Tramadol" || chemical.name == "Paracetamol")
 					. += SPAN_HELPFUL("You know mixing Tramadol with Paracetamol produces toxins.")
-					. += SPAN_HELPFUL("You know that patients with Opiate Receptor Deficiency require general anesthetic for a painless surgery.</b>")
+				if(chemical.name == "Tramadol" || chemical.name == "Oxycodone" || chemical.name == "Paracetamol")
+					. += SPAN_HELPFUL("You know that patients with Opiate Receptor Deficiency require general anesthetic for a painless surgery.")
 
 /obj/item/reagent_container/hypospray/autoinjector/get_examine_text(mob/user)
 	. = ..()
@@ -399,11 +403,13 @@
 	desc = "An EZ autoinjector that injects a common toxin damage-purging medicine."
 	maptext_label = "EzDy"
 
-/obj/item/reagent_container/hypospray/autoinjector/ez/dexalin
-	name = "dexalin EZ autoinjector"
-	chemname = "dexalin"
+/obj/item/reagent_container/hypospray/autoinjector/ez/dexalinp
+	name = "dexalin plus EZ autoinjector"
+	chemname = "dexalinp"
 	desc = "An EZ autoinjector that injects a common oxygen damage-purging medicine."
-	maptext_label = "EzDx"
+	maptext_label = "EzD+"
+	volume = 3
+	amount_per_transfer_from_this = 1
 
 
 //MARINE AUTOINJECTORS
@@ -422,46 +428,55 @@
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/inaprovaline
 	name = "crit-save EZ autoinjector"
 	chemname = "inaprovaline"
-	desc = "An EZ one-use autoinjector that injects a medicine for anyone to self-administer if they think they will pass out."
-	amount_per_transfer_from_this = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
+	desc = "An EZ one-use autoinjector that injects a medicine for anyone to self-administer if they anticipate passing out."
 	maptext_label = "OuIn"
+	amount_per_transfer_from_this = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tricordrazine
 	name = "first-aid EZ autoinjector"
 	chemname = "tricordrazine"
-	desc = "An EZ one-use autoinjector that injects medicine for anyone to self-administer to treat basic wounds."
+	desc = "An EZ one-use autoinjector that injects medicine for anyone to self-administer for treating basic wounds."
 	maptext_label = "OuTc"
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/tramadol
 	name = "pain-stop EZ autoinjector"
 	chemname = "tramadol"
-	desc = "An EZ one-use autoinjector that injects medicine for anyone to self-administer to alleviate their pain."
+	desc = "An EZ one-use autoinjector that injects medicine for anyone to self-administer for alleviating their pain."
 	maptext_label = "OuTr"
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/antitoxin
 	name = "antitoxin EZ autoinjector"
 	chemname = "anti_toxin"
-	desc = "An EZ one-use autoinjector that injects medicine for anyone to self-administer to remove toxins from their bloodstream if they feel sick."
+	desc = "An EZ one-use autoinjector that injects medicine for anyone to self-administer for removing toxins from their bloodstream if they feel sick."
 	maptext_label = "OuDy"
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/bicaridine
 	name = "wound care EZ autoinjector"
 	chemname = "bicaridine"
-	desc = "An EZ one-use autoinjector that injects medicine for anyone to self-administer to mend serious wounds from the inside out."
+	desc = "An EZ one-use autoinjector that injects medicine for anyone to self-administer for mending severe wounds from the inside out."
 	maptext_label = "OuBi"
 
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/kelotane
 	name = "burn care EZ autoinjector"
 	chemname = "kelotane"
-	desc = "An EZ one-use autoinjector that injects medicine for anyone to self-administer to treat serious burns from the inside out."
+	desc = "An EZ one-use autoinjector that injects medicine for anyone to self-administer for salving serious burns from the inside out."
 	maptext_label = "OuKl"
 
-/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/dexalin
+/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/dexalinp
 	name = "inhaler EZ autoinjector"
-	chemname = "dexalin"
-	desc = "An EZ one-use autoinjector that injects medicine for anyone to self-administer to treat symptoms of oxygen deprivation."
-	maptext_label = "OuDx"
+	chemname = "dexalinp"
+	desc = "An EZ one-use autoinjector that injects medicine for anyone to self-administer for treating symptoms of oxygen deprivation."
+	maptext_label = "OuD+"
+
+/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/adrenaline_allergy
+	name = "EpWYPen"
+	chemname = "adrenaline"
+	desc = "It's an Epipen--or, WY's version of one. In case of allergic reaction, inject it in a fatty area on the stomach, thigh, or back of the arm."
+	amount_per_transfer_from_this = 1
+	volume = 1
+	maptext_label = "OuEpi"
+
 
 //TUTORIAL AUTOINJECTORS
 /obj/item/reagent_container/hypospray/autoinjector/tutorial
@@ -729,11 +744,11 @@
 
 	if(skilllock > SKILL_MEDICAL_DEFAULT)
 		if(skillcheck(user, SKILL_MEDICAL, skilllock))
-			. += SPAN_HELPFUL("It has a lock on it similar to pill bottles, but you know how to unlock it.")
+			. += SPAN_HELPFUL("It has a lock similar to pill bottles but you know how to unlock it.")
 		else
-			. += SPAN_WARNING("It has a lock on it similar to pill bottles. You do not have enough training in Medicine to know how to unlock it.")
+			. += SPAN_WARNING("It has a lock similar to pill bottles but you do not have enough training in Medicine to know how to unlock it.")
 	else
-		. += SPAN_HELPFUL("It doesn't have a lock on it, so anyone can use it.")
+		. += SPAN_HELPFUL("It doesn't have a lock on it. Anyone can use it.")
 
 /obj/item/reagent_container/hypospray/autoinjector/research/verb/flush_autoinjector()
 	set category = "Object"

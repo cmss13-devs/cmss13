@@ -4,15 +4,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
-"ab" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
-	name = "\improper Underground Armoury";
-	dir = 1;
-	req_access = null;
-	req_one_access = null
-	},
-/turf/open/floor/shiva/snow_mat,
-/area/varadero/interior/library)
 "ac" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/oob)
@@ -337,7 +328,7 @@
 	req_access = null;
 	req_one_access = null
 	},
-/turf/open/floor/asteroidfloor/north,
+/turf/open/floor/shiva/snow_mat,
 /area/varadero/interior/library)
 "lK" = (
 /obj/structure/closet/secure_closet/freezer/fridge/groceries,
@@ -362,6 +353,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
+"on" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	name = "\improper Underground Armoury";
+	dir = 1;
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/interior/library)
 "oW" = (
 /obj/item/tool/screwdriver{
 	pixel_x = -5;
@@ -859,12 +859,12 @@ aE
 aB
 aB
 ay
-kZ
+on
 ai
 Uk
 ai
 ai
-ab
+kZ
 "}
 (13,1,1) = {"
 re

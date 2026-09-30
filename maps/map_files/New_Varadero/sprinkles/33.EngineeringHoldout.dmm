@@ -45,11 +45,14 @@
 /turf/closed/wall/r_wall,
 /area/template_noop)
 "af" = (
-/turf/closed/wall/r_wall/unmeltable,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva,
 /area/template_noop)
 "ag" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/multi_tiles,
+/turf/closed/wall/r_wall/unmeltable,
 /area/template_noop)
 "ah" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -64,52 +67,48 @@
 /turf/open/floor/shiva/blue,
 /area/template_noop)
 "ai" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/multi_tiles,
+/area/template_noop)
+"aj" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/gibspawner/human,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
-"aj" = (
+"ak" = (
 /obj/structure/sign/poster/safety,
 /turf/closed/wall/r_wall,
 /area/template_noop)
-"ak" = (
+"al" = (
 /obj/structure/window_frame/colony/reinforced,
 /turf/open/floor/plating,
 /area/template_noop)
-"al" = (
+"am" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
-"am" = (
+"an" = (
 /obj/structure/sign/poster/propaganda{
 	pixel_x = 6;
 	pixel_y = 1
 	},
 /turf/closed/wall/r_wall,
 /area/template_noop)
-"an" = (
-/obj/structure/sign/poster/hunk,
-/turf/closed/wall/r_wall,
-/area/template_noop)
 "ao" = (
-/obj/structure/sign/poster/ad{
-	icon_state = "poster35"
-	},
+/obj/effect/acid_hole,
 /turf/closed/wall/r_wall,
 /area/template_noop)
 "ap" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/xtracks,
-/turf/open/floor/shiva,
+/obj/structure/sign/poster/hunk,
+/turf/closed/wall/r_wall,
 /area/template_noop)
 "aq" = (
-/obj/effect/acid_hole,
+/obj/structure/sign/poster/ad{
+	icon_state = "poster35"
+	},
 /turf/closed/wall/r_wall,
 /area/template_noop)
 "aY" = (
@@ -393,6 +392,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xtracks,
 /turf/open/floor/shiva,
 /area/template_noop)
 "sB" = (
@@ -883,10 +883,10 @@
 IE
 Ng
 Ng
-ak
+al
 SC
 Ng
-af
+ag
 Ng
 GY
 er
@@ -895,7 +895,7 @@ Ng
 aa
 "}
 (2,1,1) = {"
-am
+an
 wP
 cJ
 jg
@@ -912,8 +912,8 @@ Ng
 (3,1,1) = {"
 IE
 zQ
-ag
-ag
+ai
+ai
 Bi
 GU
 Ng
@@ -925,11 +925,11 @@ wk
 lb
 "}
 (4,1,1) = {"
-aq
+ao
 WQ
 RF
-al
-ag
+am
+ai
 NA
 Ng
 tP
@@ -944,7 +944,7 @@ IE
 ZX
 Ah
 uh
-ai
+aj
 ah
 GY
 bw
@@ -955,9 +955,9 @@ Nl
 ab
 "}
 (6,1,1) = {"
-an
+ap
 pz
-ag
+ai
 no
 Op
 kt
@@ -970,7 +970,7 @@ PA
 nL
 "}
 (7,1,1) = {"
-ao
+aq
 Fm
 Wk
 jD
@@ -989,7 +989,7 @@ IE
 OM
 RF
 lE
-ag
+ai
 yI
 Ng
 jE
@@ -1002,13 +1002,13 @@ LP
 (9,1,1) = {"
 IE
 lj
-ag
+ai
 lE
-ag
+ai
 Di
 GY
 qY
-ap
+rU
 uH
 vy
 Nl
@@ -1017,13 +1017,13 @@ ab
 (10,1,1) = {"
 IE
 Kg
-ag
+ai
 lE
-ag
+ai
 Gm
 Ng
 dN
-rU
+af
 vy
 uH
 Lc
@@ -1049,7 +1049,7 @@ IE
 IE
 sB
 ae
-aj
+ak
 IE
 IE
 IE

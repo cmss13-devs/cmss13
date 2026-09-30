@@ -16,16 +16,26 @@
 /datum/game_mode/colonialmarines/forward_base/pre_setup()
 	. = ..()
 	active_lz = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1)
+	for(var/obj/effect/landmark/lv624/fog_blocker/fog in GLOB.landmarks_list)
+		fog.time_to_dispel = 18 MINUTES // 00:23 if the pre-game length wasnt changed
 
 /datum/game_mode/colonialmarines/forward_base/post_setup()
 	. = ..()
-	addtimer(CALLBACK(src, PROC_REF(warn_resin_clear)), 15 MINUTES - ROUND_TIME)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "The mist is almost gone. In one minute, the tallhosts will be exposed. Gather yourselves and prepare to tear their nest apart.", "everything", QUEEN_MOTHER_ANNOUNCE), 14 MINUTES - ROUND_TIME)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "WARNING. HOSTILE CONTACT IMMINENT. Atmospheric obscuration is rapidly dissipating and will be lost within sixty seconds. ALL COMBAT PERSONNEL, assume defensive positions immediately.", "BASE PERIMETER ALERT", 'sound/effects/siren.ogg'), 14 MINUTES - ROUND_TIME)
+	addtimer(CALLBACK(src, PROC_REF(disable_base_comms)), 20 MINUTES - ROUND_TIME) // 00:25 if the pre-game length wasnt changed
+	addtimer(CALLBACK(src, PROC_REF(warn_resin_clear)), 18 MINUTES - ROUND_TIME) // 00:23 if the pre-game length wasnt changed
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "The mist is almost gone. In one minute, the tallhosts will be exposed. Gather yourselves and prepare to tear their nest apart.", "everything", QUEEN_MOTHER_ANNOUNCE), 17 MINUTES - ROUND_TIME)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "WARNING. HOSTILE CONTACT IMMINENT. Atmospheric obscuration is rapidly dissipating and will be lost within sixty seconds. ALL COMBAT PERSONNEL, assume defensive positions immediately.", "BASE PERIMETER ALERT", 'sound/effects/siren.ogg'), 17 MINUTES - ROUND_TIME)
 	var/obj/docking_port/stationary/marine_dropship/lz1/landing_zone = locate() in SSshuttle.stationary
 	SSshuttle.action_load(SSmapping.all_shuttle_templates[/datum/map_template/shuttle/normandy], landing_zone)
 	for(var/obj/structure/machinery/computer/shuttle/dropship/flight/console in GLOB.machines)
 		console.skip_time_lock = TRUE
+
+/datum/game_mode/colonialmarines/forward_base/proc/disable_base_comms()
+	marine_announcement("WARNING. BASE RELAY FAILURE. Military radio coverage is going offline. Seize and activate a civilian communications tower. Reestablish radio contact through the colony network.", "BASE COMMUNICATIONS ALERT", 'sound/AI/commandreport.ogg')
+	for(var/obj/structure/machinery/telecomms/relay/preset/tower/all/relay in GLOB.telecomms_list)
+		if(istype(get_area(relay), /area/forward_base))
+			relay.toggled = FALSE
+			relay.update_state()
 
 /datum/game_mode/colonialmarines/forward_base/warn_resin_clear(obj/docking_port/mobile/marine_dropship)
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding))
@@ -57,4 +67,4 @@
 	return ..()
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/forward_base
-	battery_duration = 35 MINUTES
+	battery_duration = 30 MINUTES // 00:35 if the pre-game length wasnt changed

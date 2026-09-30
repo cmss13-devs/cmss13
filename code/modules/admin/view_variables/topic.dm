@@ -4,7 +4,7 @@
 	if(!admin_holder.CheckAdminHref(href, href_list))
 		return
 
-	if(check_rights(R_MOD))
+	if(check_rights_for(src, R_MOD))
 		if(href_list["view_combat_logs"])
 			var/mob/A = locate(href_list["view_combat_logs"])
 

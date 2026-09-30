@@ -1,3 +1,8 @@
+#define FORWARD_BASE_FOG_DURATION (18 MINUTES) // From roundstart. 00:23 if the pre-game length wasnt changed
+#define FORWARD_BASE_FOG_WARNING (1 MINUTES) // How many minutes before FORWARD_BASE_FOG_DURATION. 00:24 if the pre-game length wasnt changed
+#define FORWARD_BASE_COMMS_FAILURE (2 MINUTES) // How many minutes after FORWARD_BASE_FOG_DURATION. 00:25 if the pre-game length wasnt changed
+#define FORWARD_BASE_TURRET_BATTERY_DURATION (30 MINUTES) // From roundstart. 00:35 if the pre-game length wasnt changed
+
 /datum/game_mode/colonialmarines/forward_base
 	name = GAMEMODE_FORWARD_BASE
 	config_tag = GAMEMODE_FORWARD_BASE
@@ -17,21 +22,21 @@
 	. = ..()
 	active_lz = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1)
 	for(var/obj/effect/landmark/lv624/fog_blocker/fog in GLOB.landmarks_list)
-		fog.time_to_dispel = 18 MINUTES // 00:23 if the pre-game length wasnt changed
+		fog.time_to_dispel = FORWARD_BASE_FOG_DURATION
 
 /datum/game_mode/colonialmarines/forward_base/post_setup()
 	. = ..()
-	addtimer(CALLBACK(src, PROC_REF(disable_base_comms)), 20 MINUTES - ROUND_TIME) // 00:25 if the pre-game length wasnt changed
-	addtimer(CALLBACK(src, PROC_REF(warn_resin_clear)), 18 MINUTES - ROUND_TIME) // 00:23 if the pre-game length wasnt changed
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "The mist is almost gone. In one minute, the tallhosts will be exposed. Gather yourselves and prepare to tear their nest apart.", "everything", QUEEN_MOTHER_ANNOUNCE), 17 MINUTES - ROUND_TIME)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "WARNING. HOSTILE CONTACT IMMINENT. Atmospheric obscuration is rapidly dissipating and will be lost within sixty seconds. ALL COMBAT PERSONNEL, assume defensive positions immediately.", "BASE PERIMETER ALERT", 'sound/effects/siren.ogg'), 17 MINUTES - ROUND_TIME)
+	addtimer(CALLBACK(src, PROC_REF(disable_base_comms)), FORWARD_BASE_FOG_DURATION + FORWARD_BASE_COMMS_FAILURE - ROUND_TIME)
+	addtimer(CALLBACK(src, PROC_REF(warn_resin_clear)), FORWARD_BASE_FOG_DURATION - ROUND_TIME)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "The mist is almost gone. In one minute, the tallhosts will be exposed. Gather yourselves and prepare to tear their nest apart.", "everything", QUEEN_MOTHER_ANNOUNCE), FORWARD_BASE_FOG_DURATION - FORWARD_BASE_FOG_WARNING - ROUND_TIME)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "WARNING. HOSTILE CONTACT IMMINENT. Atmospheric obscuration is rapidly dissipating and will be lost within sixty seconds. ALL COMBAT PERSONNEL, assume defensive positions immediately.", "BASE PERIMETER ALERT", 'sound/effects/siren.ogg'), FORWARD_BASE_FOG_DURATION - FORWARD_BASE_FOG_WARNING - ROUND_TIME)
 	var/obj/docking_port/stationary/marine_dropship/lz1/landing_zone = locate() in SSshuttle.stationary
 	SSshuttle.action_load(SSmapping.all_shuttle_templates[/datum/map_template/shuttle/normandy], landing_zone)
 	for(var/obj/structure/machinery/computer/shuttle/dropship/flight/console in GLOB.machines)
-		console.skip_time_lock = TRUE
+		console.time_lock = FORWARD_BASE_FOG_DURATION
 
 /datum/game_mode/colonialmarines/forward_base/proc/disable_base_comms()
-	marine_announcement("WARNING. BASE RELAY FAILURE. Military radio coverage is going offline. Seize and activate a civilian communications tower. Reestablish radio contact through the colony network.", "BASE COMMUNICATIONS ALERT", 'sound/AI/commandreport.ogg')
+	marine_announcement("WARNING. BASE RELAY BACKUP BATTERY DEPLETED. Military radio coverage is offline. Recommended action: hijack a civilian communications tower and reestablish contact through the colony network.", "BASE COMMUNICATIONS ALERT", 'sound/AI/commandreport.ogg')
 	for(var/obj/structure/machinery/telecomms/relay/preset/tower/all/relay in GLOB.telecomms_list)
 		if(istype(get_area(relay), /area/forward_base))
 			relay.toggled = FALSE
@@ -67,4 +72,9 @@
 	return ..()
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/forward_base
-	battery_duration = 30 MINUTES // 00:35 if the pre-game length wasnt changed
+	battery_duration = FORWARD_BASE_TURRET_BATTERY_DURATION
+
+#undef FORWARD_BASE_FOG_DURATION
+#undef FORWARD_BASE_FOG_WARNING
+#undef FORWARD_BASE_COMMS_FAILURE
+#undef FORWARD_BASE_TURRET_BATTERY_DURATION

@@ -282,7 +282,7 @@ as having entered the turf.
 		return
 
 	// Whether or not the explosion was caused by something that is containable. Currently, (explosive) grenades.
-	var/containable = istype(explosion_cause_data.weak_cause.resolve(), /obj/item/explosive/grenade)
+	var/containable = istype(explosion_cause_data.weak_cause?.resolve(), /obj/item/explosive/grenade)
 	var/smothered = FALSE
 
 	if(containable && power < EXPLOSION_DANGEROUS_POWER)

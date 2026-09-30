@@ -4,13 +4,22 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
+"ab" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	name = "\improper Underground Armoury";
+	dir = 1;
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/shiva/snow_mat,
+/area/varadero/interior/library)
 "ac" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/oob)
 "ad" = (
 /obj/structure/window/framed/colony,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/varadero/interior/library/restaraunt)
 "ae" = (
 /turf/open/floor/shiva/floor3,
@@ -24,7 +33,7 @@
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
 	dir = 8
 	},
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/varadero/interior/library/restaraunt)
 "ah" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -35,7 +44,7 @@
 	explo_proof = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/varadero/interior/library)
 "aj" = (
 /obj/structure/barricade/handrail/wire{
@@ -49,7 +58,7 @@
 	icon_state = "bodybag_open";
 	opened = 1
 	},
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/varadero/interior/library)
 "ak" = (
 /obj/effect/decal/cleanable/dirt,
@@ -77,7 +86,7 @@
 	explo_proof = 1
 	},
 /obj/structure/closet/bodybag,
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/varadero/interior/library)
 "ao" = (
 /obj/effect/landmark/corpsespawner/new_varadero/lacn_police,
@@ -94,7 +103,7 @@
 	explo_proof = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/varadero/interior/library)
 "aq" = (
 /obj/effect/landmark/crap_item,
@@ -122,7 +131,7 @@
 	},
 /obj/structure/machinery/portable_atmospherics/canister/empty,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/varadero/interior/library)
 "at" = (
 /obj/effect/decal/warning_stripes/asteroid{
@@ -168,7 +177,7 @@
 /obj/structure/catwalk{
 	explo_proof = 1
 	},
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/varadero/interior/library)
 "ay" = (
 /turf/open/floor/asteroidwarning/west,
@@ -185,7 +194,7 @@
 /obj/structure/catwalk{
 	explo_proof = 1
 	},
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/varadero/interior/library)
 "aB" = (
 /obj/effect/decal/cleanable/dirt,
@@ -201,12 +210,12 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/varadero/interior/library)
 "aD" = (
 /obj/structure/window/framed/colony,
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/varadero/interior/library/restaraunt)
 "aE" = (
 /obj/structure/fence/slim/door,
@@ -388,7 +397,7 @@
 /area/varadero/interior/library/restaraunt)
 "un" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/varadero/interior/library/restaraunt)
 "uH" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -671,7 +680,7 @@
 /obj/structure/catwalk{
 	explo_proof = 1
 	},
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/varadero/interior/library)
 "Vs" = (
 /obj/item/tool/kitchen/tray{
@@ -701,7 +710,7 @@
 	req_one_access = null;
 	req_access_txt = "100"
 	},
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/shiva/snow_mat,
 /area/varadero/interior/library/restaraunt)
 "ZE" = (
 /obj/effect/spawner/random/toy,
@@ -855,7 +864,7 @@ ai
 Uk
 ai
 ai
-kZ
+ab
 "}
 (13,1,1) = {"
 re

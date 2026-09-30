@@ -40,13 +40,19 @@
 	desc = "You cannot wade out any further."
 	icon_state = "map_blocker"
 
-/obj/structure/blocker/invisible_wall/cloudblocker
+/obj/structure/blocker/cloudblocker
 	name = "storm clouds" // same as fog blocker just lacks procs to prevent processing strain
 	desc = "A dense clumping of storm clouds, too thick to get a clear glimps through or traverse."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
 	opacity = TRUE
-	color = "#a2acb9"
+
+/obj/structure/blocker/cloudblocker/attack_hand(mob/M) // needed for fog to render????
+	to_chat(M, SPAN_NOTICE("You peer through the storm clouds, but it's impossible to tell what's hidden within..."))
+
+/obj/structure/blocker/cloudblocker/attack_alien(M)
+	attack_hand(M)
+	return XENO_NONCOMBAT_ACTION
 
 /obj/structure/blocker/fog
 	name = "dense fog"

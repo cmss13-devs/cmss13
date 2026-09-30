@@ -8,7 +8,7 @@
 	icon_state = "varadero"
 	can_build_special = TRUE //T-Comms structure
 	powernet_name = "ground"
-	temperature = TROPICAL_TEMP
+	temperature = 309.3 //kelvin, 97F, 36C
 	minimap_color = MINIMAP_AREA_COLONY
 
 //shuttle stuff
@@ -42,12 +42,14 @@
 	ambience_exterior = AMBIENCE_PRISON
 	//soundscape_playlist
 	sound_environment = SOUND_ENVIRONMENT_ROOM
+	temperature = T20C //293.15K, 68F, 20C. Insane levels of air conditioning but thems the temps the announcement has always said.
 
 /area/varadero/interior_protected
 	name = "New Varadero - Interior"
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 	icon_state = "NV_no_CAS"
+	temperature = TROPICAL_TEMP //303.7K, 27C, 81F cave temps are typically an area's year round average temp
 
 /area/varadero/interior/comms1
 	name = "New Varadero - Reception"
@@ -96,14 +98,14 @@
 //exterior areas
 
 /area/varadero/exterior/lz1_near
-	name = "New Varadero - Cargo Auxiliary Airfield"
+	name = "New Varadero - Cargo Auxiliary Space Port"
 	icon_state = "lz1"
 	linked_lz = DROPSHIP_LZ1
 	minimap_color = MINIMAP_AREA_LZ
 	is_landing_zone = TRUE
 
 /area/varadero/exterior/lz2_near
-	name = "New Varadero - LACN Navybase Airfield"
+	name = "New Varadero - LACN Navy Base Areospace Port"
 	icon_state = "lz2"
 	linked_lz = DROPSHIP_LZ2
 	minimap_color = MINIMAP_AREA_LZ
@@ -255,6 +257,7 @@
 	icon_state = "req4"
 	minimap_color = MINIMAP_AREA_ENGI
 	linked_lz = DROPSHIP_LZ2
+	temperature = T37C //310.15K, 98F. Generators and flimsy gararge door = hot room.
 
 /area/varadero/interior/toilets
 	name = "New Varadero - Restrooms"
@@ -325,6 +328,7 @@
 	power_environ = FALSE
 	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 	minimap_color = MINIMAP_AREA_CAVES
+	temperature = TROPICAL_TEMP
 
 /area/varadero/interior/caves/north_research
 	name = "New Varadero - North Research Caves"
@@ -353,8 +357,9 @@
 	icon_state = "deepcaves3"
 
 /area/varadero/interior_protected/caves/makeshift_tent
-	name = "New Varadero - Makeshift Tent"
+	name = "New Varadero - WY Portable Prefabricated Research Hub"
 	icon_state = "offices4"
+	temperature = T20C
 
 /area/varadero/interior_protected/caves/swcaves
 	name = "New Varadero - Southwest Caves"

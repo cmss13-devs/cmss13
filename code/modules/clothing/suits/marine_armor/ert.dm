@@ -1028,13 +1028,13 @@
 	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
 	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
 
-//======================//=LACN=\\==============================\\
+//========================//=LACN=\\=============================\\
 //===============================================================\\
 
-/obj/item/clothing/suit/storage/marine/light/vest/LACN
-	name = "LACN LM2 pattern armor"
-	desc = "A LACN variant of the Marine M2 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage. Notably this model of the M2 lacks the rigging and such of the later generation M2s still in use by the USCM making it easier to handle."
-	icon_state = "lacn_armor" //these sprites are all placeholders
+/obj/item/clothing/suit/storage/marine/light/vest/lacn
+	name = "\improper AF2 flak armor"
+	desc = "A distant cousin of the USCM's M3-VL pattern flak vest, designed for usage by the Fusiliers of the lacn and primarly intended for usage in shipside engagements. Protects the chest from ballistics, bladed objects and accidents. It also has a small leather pouch strapped to it for limited storage."
+	icon_state = "lacn_armor"
 	item_state = "lacn_armor"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
@@ -1049,3 +1049,78 @@
 	movement_compensation = SLOWDOWN_ARMOR_LIGHT
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	storage_slots = 3
+
+/obj/item/clothing/suit/storage/jacket/marine/lacn/flight
+	name = "\improper AF1-M4 flak vest"
+	desc = "A distant cousin of the USCM's M70 flak jacket, designed for usage by areospace crews and pilots of the lacn. Protects the chest from ballistics, bladed objects and accidents. It also has a small leather pouch strapped to it for limited storage."
+	icon_state = "lacn_flight"
+	item_state = "lacn_flight"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
+
+	blood_overlay_type = "armor"
+	flags_armor_protection = BODY_FLAG_CHEST
+	flags_cold_protection = BODY_FLAG_CHEST
+	flags_heat_protection = BODY_FLAG_CHEST
+	flags_bodypart_hidden = BODY_FLAG_CHEST
+	armor_melee = CLOTHING_ARMOR_VERYLOW //XvH victim
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW //HvH demon
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_VERYLOW
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	flags_atom = NO_GAMEMODE_SKIN
+	slowdown =  SLOWDOWN_ARMOR_VERY_LIGHT
+	has_buttons = FALSE
+	storage_slots = 3
+	time_to_unequip = 0.5 SECONDS
+	time_to_equip = 1 SECONDS
+	siemens_coefficient = 0.7
+	uniform_restricted = null
+
+/obj/item/clothing/suit/storage/marine/light/vest/lacn/police
+	name = "\improper AF2-P flak armor"
+	desc = "A distant cousin of the USCM's M3-VL pattern flak vest, designed for usage by the Army Policia of the lacn and primarly intended for usage in shipside engagements. Protects the chest from ballistics, bladed objects and accidents. It also has a small leather pouch strapped to it for limited storage."
+	icon_state = "lacn_police"
+	item_state = "lacn_police"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
+
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+
+/obj/item/clothing/suit/storage/webbing/brown/lacn
+	icon_state = "lacn_extwebbing"
+	item_state = "lacn_extwebbing"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
+
+/obj/item/clothing/suit/storage/jacket/marine/lacn/bridgecoat
+	name = "\improper LACN commander bridge coat"
+	desc = "A heavy coat custom fitted for an LACN Commander. Much like bridge coats of the USCM it too is based on a classical design, this coat is quite nice on cold nights in the Air conditioned CIC or a miserable cold night on a barren world."
+	icon_state = "lacn_bridge_coat"
+	item_state = "lacn_bridge_coat"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
+
+	blood_overlay_type = "coat"
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_ARMS
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	flags_atom = NO_GAMEMODE_SKIN
+	has_buttons = FALSE

@@ -1448,6 +1448,22 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	name = "\improper M2 MOLLE Backpack"
 	desc = "Tactical backpack manufactured by one of the Alphatech subsidiaries. Very lightweight backpack that utilizes UA standard MOLLE fastening systems, which allows easy access and optimal weight distribution. Standard issue heavy duty pack for US army troopers."
 
+/obj/item/storage/backpack/molle/lacn
+	name = "\improper LACN TA6 MOLLE Satchel"
+	desc = "Tactical satchel manufactured by one of the Alphatech subsidiaries. Very lightweight beltbag variant that utilizes UA standard MOLLE fastening systems. Standard issue for LACN base personal."
+	icon_state = "lacnbackpack"
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
+
+/obj/item/storage/backpack/molle/backpack/lacn
+	name = "\improper LACN TA6 MOLLE Rucksack"
+	desc = "A large tactical rucksack sometimes issued to members of the LACN. Somewhat unwieldly rucksack variant that utilizes UA standard MOLLE fastening systems. Designed to lug gear into the battlefield on longer expeditions."
+	worn_accessible = FALSE
+	icon_state = "lacnrucksack"
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+	)
+
 //----------WY----------
 
 /obj/item/storage/backpack/pmc

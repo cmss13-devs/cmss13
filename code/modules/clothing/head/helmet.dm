@@ -2236,3 +2236,39 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "rmc_helm_medic"
 	built_in_visors = list(new /obj/item/device/helmet_visor/medical/advanced)
 	start_down_visor_type = /obj/item/device/helmet_visor/medical/advanced
+
+//=LACN=\\
+
+/obj/item/clothing/head/helmet/marine/lacn
+	name = "\improper AF5 pattern fusilier helmet"
+	desc = "A standard helmet of the LACN designed primarly for usage in shipside engagements and made to easily couple with a emergency internal respiratory equipment if needed. Its primary usage is typically as a glorified hardhat."
+	icon_state = "lacn_helmet"
+	item_state = "lacn_helmet"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
+	)
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+
+/obj/item/clothing/head/helmet/marine/lacn/medic
+	name = "\improper AF5 pattern medic helmet"
+	built_in_visors = list(new /obj/item/device/helmet_visor/medical)
+	start_down_visor_type = /obj/item/device/helmet_visor/medical
+
+/obj/item/clothing/head/helmet/marine/lacn/utility
+	name = "\improper AFU25 flight deck helmet"
+	desc = "A standard flight deck helmet used by ground crews and air crews of the LACN pattern marine helmet, its comes with some light inbuilt hearing protection however its primary usage is as a glorified hardhat. This one has a green cover on it."
+	icon_state = "helmet_utility"
+	item_state = "helmet_utility"
+
+/obj/item/clothing/head/helmet/marine/lacn/utility/white
+	desc = "A standard flight deck helmet used by ground crews and air crews of the LACN pattern marine helmet, its comes with some light inbuilt hearing protection however its primary usage is as a glorified hardhat. This one has a white cover on it."
+	icon_state = "helmet_utilitywhite"
+	item_state = "helmet_utilitywhite"
+	built_in_visors = list(new /obj/item/device/helmet_visor/medical)
+	start_down_visor_type = /obj/item/device/helmet_visor/medical
+
+/obj/item/clothing/head/helmet/marine/lacn/utility/red
+	desc = "A standard flight deck helmet used by ground crews and air crews of the LACN pattern marine helmet, its comes with some light inbuilt hearing protection however its primary usage is as a glorified hardhat. This one has a red cover on it."
+	icon_state = "helmet_utilityred"
+	item_state = "helmet_utilityred"

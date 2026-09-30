@@ -440,7 +440,7 @@
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
 
 /obj/item/ammo_magazine/rifle/l42a/heap
-	name = "\improper L42A HEAP (10x24mm)"
+	name = "\improper L42A HEAP magazine (10x24mm)"
 	desc = "A high-explosive armor-piercing 10x24mm battle rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
@@ -499,7 +499,7 @@
 	default_ammo = /datum/ammo/bullet/rifle/holo_target/hunting
 	ammo_band_color = AMMO_BAND_COLOR_HOLOTARGETING
 
-
+//-------------------------------------------------------
 //M20A
 /obj/item/ammo_magazine/rifle/m20a
 	name = "\improper M20A magazine (10x24mm)"
@@ -513,6 +513,29 @@
 	ammo_band_icon = "+m20a_band"
 	ammo_band_icon_empty = "+m20a_band_e"
 
+/obj/item/ammo_magazine/rifle/m20a/empty
+	current_rounds = 0
+
+/obj/item/ammo_magazine/rifle/m20a/ap
+	name = "\improper M20A AP magazine (10x24mm)"
+	desc = "An armor-piercing 10x24mm assault rifle magazine."
+	default_ammo = /datum/ammo/bullet/rifle/ap
+	ammo_band_color = AMMO_BAND_COLOR_AP
+
+/obj/item/ammo_magazine/rifle/m20a/heap
+	name = "\improper M20A HEAP magazine (10x24mm)"
+	desc = "A high-explosive armor-piercing 10x24mm assault rifle magazine."
+	default_ammo = /datum/ammo/bullet/rifle/heap
+	ammo_band_color = AMMO_BAND_COLOR_HEAP
+
+/obj/item/ammo_magazine/rifle/m20a/heap/empty
+	current_rounds = 0
+
+/obj/item/ammo_magazine/rifle/m20a/rubber
+	name = "\improper M20A rubber magazine (10x24mm)"
+	desc = "A 10x24mm assault rifle magazine filled with rubber bullets."
+	default_ammo = /datum/ammo/bullet/rifle/rubber
+	ammo_band_color = AMMO_BAND_COLOR_RUBBER
 
 //-------------------------------------------------------
 // NSG 23 ASSAULT RIFLE - PMC PRIMARY RIFLE

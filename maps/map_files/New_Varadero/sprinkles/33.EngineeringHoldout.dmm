@@ -22,7 +22,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/template_noop)
 "ac" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
@@ -75,7 +75,7 @@
 /area/template_noop)
 "ak" = (
 /obj/structure/window_frame/colony/reinforced,
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/template_noop)
 "al" = (
 /obj/effect/decal/cleanable/dirt,
@@ -98,6 +98,18 @@
 /obj/structure/sign/poster/ad{
 	icon_state = "poster35"
 	},
+/turf/closed/wall/r_wall,
+/area/template_noop)
+"ap" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xtracks,
+/turf/open/floor/shiva,
+/area/template_noop)
+"aq" = (
+/obj/effect/acid_hole,
 /turf/closed/wall/r_wall,
 /area/template_noop)
 "aY" = (
@@ -159,7 +171,7 @@
 	icon_state = "medium"
 	},
 /obj/structure/window_frame/colony/reinforced,
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/template_noop)
 "fL" = (
 /obj/effect/decal/warning_stripes/asteroid{
@@ -194,7 +206,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/template_noop)
 "jD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -208,7 +220,6 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "jE" = (
-/obj/structure/machinery/power/apc/no_power/north,
 /obj/item/circuitboard/apc{
 	pixel_x = 9;
 	pixel_y = 10
@@ -218,14 +229,15 @@
 	pixel_y = -21
 	},
 /obj/effect/spawner/random/powercell,
-/turf/open/floor/plating/icefloor/asteroidplating,
+/obj/structure/machinery/power/apc/fully_broken/no_cell/north,
+/turf/open/floor/plating,
 /area/template_noop)
 "kr" = (
 /obj/structure/window_frame/colony/reinforced,
 /obj/item/shard{
 	icon_state = "large"
 	},
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/template_noop)
 "kt" = (
 /obj/effect/landmark/objective_landmark/medium,
@@ -261,7 +273,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/template_noop)
 "lj" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -280,7 +292,7 @@
 /obj/structure/flora/bush/ausbushes/pointybush{
 	pixel_y = 11
 	},
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/template_noop)
 "lX" = (
 /obj/structure/machinery/disposal,
@@ -311,7 +323,7 @@
 /obj/effect/spawner/random/gun/pistol,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/template_noop)
 "nL" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
@@ -390,7 +402,7 @@
 	req_one_access = null;
 	req_access_txt = "100"
 	},
-/turf/open/floor/shiva/floor3,
+/turf/open/floor/shiva/snow_mat,
 /area/template_noop)
 "tP" = (
 /obj/structure/surface/table,
@@ -500,8 +512,8 @@
 /turf/open/floor/shiva/blue/east,
 /area/template_noop)
 "wP" = (
-/obj/structure/machinery/vending/security,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/shiva/blue/northwest,
 /area/template_noop)
 "xP" = (
@@ -624,7 +636,7 @@
 /area/template_noop)
 "GY" = (
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/template_noop)
 "Ha" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -819,7 +831,6 @@
 	pixel_x = -8;
 	pixel_y = 8
 	},
-/obj/effect/decal/cleanable/blood/xtracks,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/gibspawner/human,
 /turf/open/floor/shiva,
@@ -843,7 +854,6 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/template_noop)
 "WQ" = (
-/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/blue/north,
 /area/template_noop)
@@ -915,7 +925,7 @@ wk
 lb
 "}
 (4,1,1) = {"
-IE
+aq
 WQ
 RF
 al
@@ -998,7 +1008,7 @@ ag
 Di
 GY
 qY
-rU
+ap
 uH
 vy
 Nl

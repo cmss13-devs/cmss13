@@ -32,6 +32,16 @@
 	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
+"ae" = (
+/obj/structure/window/framed/colony,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 4;
+	name = "\improper quarantine shutters";
+	needs_power = 0
+	},
+/obj/item/weapon/gun/shotgun/pump,
+/turf/open/floor/plating,
+/area/template_noop)
 "af" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/shiva/multi_tiles/west,
@@ -48,6 +58,12 @@
 	pixel_y = 5
 	},
 /turf/open/floor/shiva/red/north,
+/area/template_noop)
+"ai" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mfloor3"
+	},
+/turf/open/floor/shiva/wred/east,
 /area/template_noop)
 "aj" = (
 /obj/structure/disposalpipe/segment{
@@ -69,7 +85,7 @@
 /obj/item/shard{
 	icon_state = "large"
 	},
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/template_noop)
 "al" = (
 /obj/structure/flora/pottedplant{
@@ -116,6 +132,11 @@
 	},
 /obj/effect/spawner/gibspawner/human,
 /turf/open/floor/shiva/snow_mat/east,
+/area/template_noop)
+"ar" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/shield/riot,
+/turf/open/floor/shiva/wredfull,
 /area/template_noop)
 "as" = (
 /obj/structure/disposalpipe/segment{
@@ -183,7 +204,7 @@
 	name = "\improper quarantine shutters";
 	needs_power = 0
 	},
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/template_noop)
 "aD" = (
 /obj/effect/decal/cleanable/dirt,
@@ -354,6 +375,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mfloor4"
 	},
+/obj/item/clothing/suit/storage/hazardvest/medical_red,
 /turf/open/floor/shiva/multi_tiles/west,
 /area/template_noop)
 "bb" = (
@@ -409,6 +431,7 @@
 "bh" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/human,
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
 "bj" = (
@@ -564,7 +587,7 @@
 "bD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/window/framed/colony,
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/template_noop)
 "bE" = (
 /obj/structure/disposalpipe/segment,
@@ -717,6 +740,10 @@
 /area/template_noop)
 "et" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/shotgun/pump{
+	pixel_y = -5
+	},
 /turf/open/floor/shiva/red/north,
 /area/template_noop)
 "eu" = (
@@ -741,7 +768,7 @@
 	name = "\improper quarantine shutters";
 	needs_power = 0
 	},
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/template_noop)
 "eV" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
@@ -795,7 +822,6 @@
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
 "hG" = (
-/obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
@@ -1132,6 +1158,8 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/new_varadero/doctor/burst,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
 "qr" = (
@@ -1166,7 +1194,7 @@
 	color = "#8B7B5B"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/suit/storage/labcoat/chemist,
+/obj/item/clothing/suit/storage/labcoat/brown,
 /turf/open/floor/shiva/snow_mat/north,
 /area/template_noop)
 "rb" = (
@@ -1350,23 +1378,6 @@
 	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/template_noop)
-"yj" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/machinery/door/airlock/almayer/maint{
-	name = "\improper Underground Maintenance";
-	req_one_access = null;
-	req_access_txt = "100";
-	locked = 1
-	},
-/obj/structure/machinery/door/poddoor/hybrisa/shutters{
-	dir = 4;
-	name = "\improper quarantine shutters";
-	needs_power = 0
-	},
-/turf/open/floor/shiva/snow_mat/east,
-/area/template_noop)
 "yo" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/redfull/west,
@@ -1456,10 +1467,6 @@
 /area/template_noop)
 "BH" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/ammo_magazine/shotgun/buckshot{
-	pixel_x = 6;
-	pixel_y = -4
-	},
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "BS" = (
@@ -1512,15 +1519,6 @@
 /obj/structure/filingcabinet,
 /obj/item/paper/research_notes,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/redfull,
-/area/template_noop)
-"Dy" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/gibspawner/human,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "DC" = (
@@ -1658,7 +1656,6 @@
 	welded = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/shield/riot/ballistic,
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "HT" = (
@@ -1773,7 +1770,7 @@
 	name = "\improper quarantine shutters";
 	needs_power = 0
 	},
-/turf/open/floor/shiva/redfull,
+/turf/open/floor/shiva/snow_mat,
 /area/template_noop)
 "KR" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
@@ -1808,7 +1805,7 @@
 /area/template_noop)
 "MF" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor/plating/icefloor/asteroidplating,
+/turf/open/floor/plating,
 /area/template_noop)
 "MM" = (
 /obj/structure/barricade/handrail/wire{
@@ -1888,6 +1885,10 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = 6;
+	pixel_y = -4
+	},
 /turf/open/floor/shiva/wredfull,
 /area/template_noop)
 "PL" = (
@@ -1901,11 +1902,6 @@
 "PZ" = (
 /obj/effect/decal/hybrisa/trash,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/corpsespawner/new_varadero/doctor/burst,
-/obj/item/weapon/gun/shotgun/pump,
-/obj/effect/decal/cleanable/blood{
-	icon_state = "mfloor3"
-	},
 /turf/open/floor/shiva/redfull,
 /area/template_noop)
 "Qn" = (
@@ -1925,6 +1921,7 @@
 	layer = 2.991
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/under/marine/lacn/medic,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "QD" = (
@@ -1994,6 +1991,7 @@
 /obj/item/storage/pouch/sling,
 /obj/structure/closet/secure_closet/personal/patient,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/under/marine/lacn/medic,
 /turf/open/floor/shiva/floor3,
 /area/template_noop)
 "Sq" = (
@@ -2336,7 +2334,7 @@ bd
 bd
 aS
 rA
-zC
+aw
 ac
 ab
 eU
@@ -2431,9 +2429,9 @@ Cp
 ao
 be
 BH
-JS
+ar
 PZ
-Dy
+Xg
 aT
 Db
 eU
@@ -2445,7 +2443,7 @@ aA
 zC
 "}
 (11,1,1) = {"
-aw
+zC
 LY
 bI
 bA
@@ -2472,7 +2470,7 @@ wb
 zC
 aC
 aC
-aC
+ae
 Zr
 aC
 zC
@@ -2532,7 +2530,7 @@ oU
 bv
 my
 ui
-tE
+ai
 tE
 eu
 zQ
@@ -2810,7 +2808,7 @@ dB
 Io
 zC
 ay
-yj
+KQ
 bp
 dB
 ay

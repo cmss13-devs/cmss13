@@ -406,15 +406,19 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 //-------- LACN --------//
 #define JOB_LACN_MARINE "LACN Fusilier"
-#define JOB_LACN_MEDIC "LACN Médico"
+#define JOB_LACN_MEDIC "LACN Medico"
+#define JOB_LACN_ENGI "LACN Tecnico de combate"
+#define JOB_LACN_SL "LACN Lider de escuadra"
 #define JOB_LACN_PILOT "LACN Pilot"
+#define JOB_LACN_COMMANDER "LACN Comandante"
 #define JOB_LACN_GROUND "LACN Personal de Tierra"
 #define JOB_LACN_POLICE "LACN Policia"
-#define JOB_LACN_TANK "LACN Tripulante de vehículo"
+#define JOB_LACN_TANK "LACN Tripulante de vehiculo"
 #define JOB_LACN_FIREFIGHTER "LACN Bombero del aeropuerto"
 #define JOB_LACN_DOCTOR "LACN Tecnico medico"
+#define JOB_LACN_SYN "LACN persona sintetica"
 
-#define JOB_LACN_LIST list(JOB_LACN_PILOT, JOB_LACN_POLICE, JOB_LACN_GROUND, JOB_LACN_MEDIC, JOB_LACN_TANK, JOB_LACN_FIREFIGHTER, JOB_LACN_DOCTOR, JOB_LACN_MARINE)
+#define JOB_LACN_LIST list(JOB_LACN_COMMANDER, JOB_LACN_PILOT, JOB_LACN_POLICE, JOB_LACN_GROUND, JOB_LACN_DOCTOR, JOB_LACN_TANK, JOB_LACN_FIREFIGHTER, JOB_LACN_SYN, JOB_LACN_SL, JOB_LACN_ENGI, JOB_LACN_MEDIC, JOB_LACN_MARINE)
 
 //-------- UPP --------//
 #define JOB_UPP	"UPP Ryadovoy"

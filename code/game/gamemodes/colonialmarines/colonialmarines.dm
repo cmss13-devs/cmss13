@@ -95,10 +95,6 @@
 /obj/effect/landmark/lv624/door_blocker/xeno
 	time_to_dispel = 180 SECONDS
 
-/obj/effect/landmark/lv624/cloudblocker
-	name = "cloud blocker"
-	icon_state = "fog"
-
 /obj/effect/landmark/lv624/xeno_tunnel
 	name = "xeno tunnel"
 	icon_state = "xeno_tunnel"

@@ -1,10 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ae" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
-	},
-/turf/open/floor/almayer/plating,
-/area/event)
 "ah" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/almayer/plating,
@@ -70,12 +64,6 @@
 "gB" = (
 /obj/effect/landmark/start/synthetic,
 /turf/open/floor/almayer/plating,
-/area/event)
-"gT" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/event)
 "hc" = (
 /obj/structure/barricade/handrail/no_vault{
@@ -255,12 +243,6 @@
 "zQ" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/space)
-"Al" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/closed/wall/almayer/white,
-/area/event)
 "AF" = (
 /obj/structure/machinery/chem_storage/research{
 	dir = 1;
@@ -426,12 +408,6 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/event/dynamic)
-"NL" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer/plating,
-/area/event)
 "NU" = (
 /obj/effect/landmark/start/marine/smartgunner,
 /turf/open/floor/almayer/plating,
@@ -473,12 +449,6 @@
 /area/event)
 "Qe" = (
 /obj/effect/landmark/start/bridge,
-/turf/open/floor/almayer/plating,
-/area/event)
-"Qt" = (
-/obj/structure/pipes/vents/pump{
-	dir = 4
-	},
 /turf/open/floor/almayer/plating,
 /area/event)
 "Sa" = (
@@ -1052,7 +1022,7 @@ MF
 MF
 MF
 MF
-Qt
+MF
 MF
 MF
 MF
@@ -1104,7 +1074,7 @@ MF
 MF
 MF
 MF
-NL
+MF
 MF
 MF
 MF
@@ -1156,7 +1126,7 @@ MF
 MF
 UU
 oU
-NL
+MF
 MF
 MF
 MF
@@ -1208,7 +1178,7 @@ MF
 MF
 WG
 oU
-NL
+MF
 MF
 MF
 MF
@@ -1260,7 +1230,7 @@ MF
 MF
 kE
 oU
-gT
+oU
 oU
 MF
 MF
@@ -1312,7 +1282,7 @@ MF
 MF
 bS
 oU
-gT
+oU
 ci
 MF
 MF
@@ -1364,7 +1334,7 @@ Md
 MF
 Ms
 oU
-gT
+oU
 ci
 MF
 MF
@@ -1416,7 +1386,7 @@ oU
 oU
 oU
 oU
-gT
+oU
 oU
 oU
 MF
@@ -1468,7 +1438,7 @@ MF
 MF
 MF
 MF
-NL
+MF
 MF
 MF
 MF
@@ -1520,7 +1490,7 @@ MF
 MF
 MF
 MF
-NL
+MF
 MF
 MF
 sX
@@ -1572,8 +1542,8 @@ MF
 MF
 MF
 MF
-ae
-Qt
+MF
+MF
 MF
 MF
 MF
@@ -1624,7 +1594,7 @@ MF
 MF
 MF
 MF
-Al
+MF
 MF
 MF
 MF
@@ -1676,7 +1646,7 @@ MF
 MF
 Wy
 MF
-Al
+MF
 MF
 MF
 MF
@@ -1728,7 +1698,7 @@ MF
 MF
 MF
 MF
-Al
+MF
 MF
 MF
 MF
@@ -1780,7 +1750,7 @@ MF
 MF
 MF
 Es
-NL
+MF
 MF
 MF
 MF
@@ -1832,7 +1802,7 @@ MF
 MF
 GE
 MF
-NL
+MF
 MF
 MF
 MF
@@ -1884,7 +1854,7 @@ MF
 MF
 MF
 MF
-Qt
+MF
 MF
 MF
 MF

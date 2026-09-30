@@ -609,8 +609,6 @@
 			if(vent_id == pipoid.landing_gear_id)
 				linked_pipe = pipoid
 				linked_pipe.linked_gear = src
-	else
-		CRASH("Obj [src.name] | path [src.type]: at X[src.x] Y[src.y] Z[src.z] doesn't have a linked dropship.")
 
 /obj/structure/shuttle/part/dropship_mohawk/landing_gear_big/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(xeno.caste_type in allowed_castes)

@@ -121,7 +121,7 @@
 	langchat_speech(damage_dealt, get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small"))
 	practice_health -= damage_dealt
 	animation_flash_color(src, "#FF0000", 1)
-	playsound(loc, ballistic_hit, 20, TRUE, 7)
+	playsound(loc, SOUND_BALLISTIC_HIT, 20, TRUE, 7)
 	if(practice_health <= 0)
 		start_practice_health_reset()
 

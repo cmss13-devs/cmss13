@@ -203,7 +203,7 @@
 /datum/emote/living/carbon/human/pain/get_sound(mob/living/user)
 	if(ishuman_strict(user))
 		if(user.gender == MALE)
-			return male_pain
+			return SOUND_MALE_PAIN
 		else
 			return SOUND_FEMALE_PAIN
 
@@ -246,7 +246,7 @@
 /datum/emote/living/carbon/human/scream/get_sound(mob/living/user)
 	if(ishuman_strict(user))
 		if(user.gender == MALE)
-			return male_scream
+			return SOUND_MALE_SCREAM
 		else
 			return SOUND_FEMALE_SCREAM
 	if(isyautja(user))
@@ -370,9 +370,15 @@
 	if(ishumansynth_strict(user))
 		switch(user.faction)
 			if(FACTION_UPP, FACTION_HUNTED_UPP)
-				return SOUND_[user.gender]_UPP_WARCRY
+				if(user.gender == MALE)
+					return SOUND_MALE_UPP_WARCRY
+				else
+					return SOUND_UPP_FEMALE_WARCRY
 			else
-				return SOUND_[user.gender]_WARCRY
+				if(user.gender == MALE)
+					return SOUND_MALE_WARCRY
+				else
+					return SOUND_FEMALE_WARCRY
 
 /datum/emote/living/carbon/human/whimper
 	key = "whimper"

@@ -132,7 +132,7 @@
 					selected_camera = cameras[I]
 					break
 		current = selected_camera
-		playsound(src, terminal_type, 25, FALSE)
+		playsound(src, SOUND_KEYBOARD_ALT, 25, FALSE)
 
 		if(!selected_camera)
 			return TRUE

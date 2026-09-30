@@ -345,7 +345,7 @@
 		for(var/i = 0; i < 5; i++)
 			if(usr.action_busy)
 				return
-			playsound(loc, keyboard, KEYBOARD_SOUND_VOLUME, 1)
+			playsound(loc, SOUND_KEYBOARD, KEYBOARD_SOUND_VOLUME, 1)
 			if(!do_after(usr, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				return
 			if(i < 4)

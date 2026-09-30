@@ -627,17 +627,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(smoketime <= 0)
 		ash = TRUE
 
-/// Refills the pipe. Can be changed to an attackby later, if loose tobacco is added to vendors or something.
-/obj/item/clothing/mask/cigarette/pipe/attack_self(mob/user)
-	if(ash)
-		user.visible_message("[user] empties the ash out of \the [src].", "You empty the ash out of \the [src].")
-		new /obj/effect/decal/cleanable/ash(get_turf(user))
-		ash = FALSE
-	else if(smoketime <= 0)
-		to_chat(user, SPAN_NOTICE("You refill the pipe with tobacco."))
-		smoketime = initial(smoketime)
-	..()
-
 /obj/item/clothing/mask/cigarette/pipe/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/clothing/mask/cigarette) && !istype(W, /obj/item/clothing/mask/cigarette/pipe))
 		var/obj/item/clothing/mask/cigarette/C = W

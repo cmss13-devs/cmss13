@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed buried spawns handling namely to allow buried spawns if there's not atleast one xeno"

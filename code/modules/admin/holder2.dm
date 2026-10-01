@@ -52,6 +52,15 @@ GLOBAL_PROTECT(href_token)
 		return FALSE
 	return ..()
 
+/datum/admins/proc/associate_or_deadmin(client/target, force = FALSE)
+	if(!istype(target))
+		return
+
+	if(GLOB.deadmins[target.ckey])
+		add_verb(target, /client/proc/readmin_self)
+		return
+	associate(target, force)
+
 /datum/admins/proc/associate(client/C, force = FALSE)
 	if(!istype(C))
 		return
@@ -66,6 +75,7 @@ GLOBAL_PROTECT(href_token)
 	owner.tgui_say.load()
 	owner.update_special_keybinds()
 	GLOB.admins |= C
+	GLOB.deadmins[owner.ckey] = FALSE
 
 	if(rights & R_MOD)
 		notify_login()
@@ -127,15 +137,15 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 	if(!other)
 		return FALSE
 	if(rights_required && other.admin_holder?.rank)
-		if(check_client_rights(usr.client, rights_required, show_msg))
+		if(check_client_rights(other, rights_required, show_msg))
 			return TRUE
 		else if(show_msg)
-			to_chat(usr, SPAN_WARNING("You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required," ")]."))
+			to_chat(other, SPAN_WARNING("You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required," ")]."))
 	else
 		if(other.admin_holder)
 			return TRUE
 		else if(show_msg)
-			to_chat(usr, SPAN_WARNING("You are not a holder."))
+			to_chat(other, SPAN_WARNING("You are not a holder."))
 	return FALSE
 
 //probably a bit iffy - will hopefully figure out a better solution
@@ -156,7 +166,7 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 		return PROC_BLOCKED
 	if(admin_holder)
 		admin_holder.disassociate()
-		QDEL_NULL(admin_holder)
+		GLOB.deadmins[ckey] = TRUE
 	return TRUE
 
 /client/proc/readmin()

@@ -1,0 +1,1256 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"bj" = (
+/obj/structure/filingcabinet{
+	pixel_x = -10;
+	pixel_y = 10;
+	density = 0
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_2";
+	pixel_y = 11;
+	pixel_x = 7
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"bo" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	locked = 0
+	},
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23/extended,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo,
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
+/turf/open/floor/kutjevo/colors/red,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"by" = (
+/turf/open/floor/kutjevo/tan/grey_edge/southeast,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"cu" = (
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"cI" = (
+/obj/structure/filingcabinet/double{
+	pixel_y = 9;
+	density = 0
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/kutjevo/tan/grey_edge/southeast,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"eb" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
+	pixel_y = 39;
+	pixel_x = 3
+	},
+/obj/structure/surface/table/reinforced/black,
+/obj/item/storage/briefcase{
+	pixel_y = 4
+	},
+/turf/open/floor/kutjevo/tan/grey_inner_edge,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"eH" = (
+/obj/structure/prop/hybrisa/misc/cabinet{
+	dir = 8;
+	pixel_x = 5;
+	layer = 3.1;
+	pixel_y = 5
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/west,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"fK" = (
+/turf/open/asphalt/cement_sunbleached,
+/area/kutjevo/exterior/scrubland)
+"fX" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/sign/poster/safety{
+	pixel_y = 31;
+	pixel_x = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"gp" = (
+/obj/effect/decal/hybrisa/WY/WY1{
+	pixel_x = 16
+	},
+/turf/open/floor/kutjevo/grey,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"hh" = (
+/obj/structure/closet/crate/secure/weyland,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/item/storage/firstaid/adv,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/slugs,
+/turf/open/floor/kutjevo/colors/red,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"hj" = (
+/obj/structure/prop/server_equipment/yutani_server/off,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/kutjevo/tan/grey_inner_edge/north,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"il" = (
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"is" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8;
+	pixel_y = 3;
+	pixel_x = -5
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/northwest,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"jj" = (
+/obj/structure/coatrack,
+/obj/item/clothing/suit/storage/jacket/marine/corporate/brown{
+	pixel_y = 4;
+	pixel_x = 6
+	},
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"jo" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/noticeboard{
+	pixel_y = 32
+	},
+/obj/structure/noticeboard{
+	pixel_y = 33;
+	icon_state = "notices_4";
+	desc = null;
+	name = "sticky notes";
+	layer = 3.02
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"jL" = (
+/obj/item/trash/cigbutt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/kutjevo/grey,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"lr" = (
+/turf/open/floor/kutjevo/tan/multi_tiles/north,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"lB" = (
+/obj/structure/machinery/photocopier/wyphotocopier{
+	pixel_x = -2;
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = 5;
+	pixel_x = 20
+	},
+/turf/open/floor/kutjevo/tan/grey_inner_edge/east,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"lC" = (
+/obj/structure/window/framed/kutjevo,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"lE" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = 4;
+	pixel_x = -2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/kutjevo/tan/grey_edge/west,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"lW" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/obj/item/storage/briefcase/black{
+	pixel_y = 9;
+	pixel_x = 4
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/east,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"mC" = (
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
+	name = "Corporate Security Armory";
+	id = "corporate_security_armory"
+	},
+/turf/open/floor/kutjevo/colors/red,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"mT" = (
+/obj/item/trash/cigbutt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/sign/poster/wylogo{
+	pixel_y = 33;
+	pixel_x = 3
+	},
+/turf/open/floor/kutjevo/tan/grey_inner_edge/north,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"nz" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/machinery/computer/communications/simple{
+	dir = 8;
+	pixel_y = -10;
+	pixel_x = 1
+	},
+/obj/structure/machinery/computer/cameras{
+	dir = 8;
+	pixel_y = 11;
+	pixel_x = 1
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"nS" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_7";
+	pixel_y = 4;
+	pixel_x = 2
+	},
+/obj/item/prop/alien/hugger,
+/turf/open/floor/kutjevo/tan/grey_edge/east,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"oe" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_12";
+	pixel_y = 4;
+	pixel_x = 3
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/tan/grey_inner_edge/west,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"oh" = (
+/obj/structure/reagent_dispensers/water_cooler/stacks{
+	density = 0;
+	pixel_y = 13;
+	pixel_x = 4
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"pm" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/ashtray/bronze{
+	icon_state = "ashtray_half_bl";
+	pixel_y = 10;
+	pixel_x = 1
+	},
+/obj/item/reagent_container/food/drinks/sillycup{
+	pixel_x = -8;
+	pixel_y = -1
+	},
+/obj/item/reagent_container/food/drinks/sillycup{
+	pixel_x = 7
+	},
+/obj/item/clothing/mask/cigarette{
+	pixel_y = 15;
+	pixel_x = -8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"pV" = (
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/scrubland)
+"qO" = (
+/turf/open/floor/kutjevo/grey,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"qY" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/tan/multi_tiles/east,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"rF" = (
+/obj/item/paper/crumpled{
+	pixel_y = -5;
+	pixel_x = 6
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"rG" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/faxmachine/corporate{
+	pixel_y = 4;
+	pixel_x = -2
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/west,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"so" = (
+/turf/closed/wall/kutjevo/colony,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"sL" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_y = -12;
+	pixel_x = 2
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"tf" = (
+/obj/structure/filingcabinet/double{
+	pixel_y = 10;
+	density = 0
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/kutjevo/tan/grey_inner_edge,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"tC" = (
+/obj/item/trash/cigbutt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/kutjevo/tan/multi_tiles/east,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"tE" = (
+/obj/item/paper,
+/turf/open/floor/kutjevo/tan/grey_inner_edge/west,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"tV" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_y = -2;
+	pixel_x = -8
+	},
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = 12
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"tX" = (
+/obj/structure/closet/secure_closet/freezer/fridge/full{
+	pixel_y = 4;
+	pixel_x = 2
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"vh" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 1
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"vw" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8;
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"vI" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"wa" = (
+/turf/open/floor/kutjevo/tan/multi_tiles/east,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"we" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_11";
+	pixel_y = 17;
+	pixel_x = 5
+	},
+/obj/item/device/flashlight/lamp{
+	pixel_x = -9;
+	pixel_y = 10
+	},
+/obj/item/tool/pen{
+	pixel_y = -2;
+	pixel_x = -7
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/southwest,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"wg" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	locked = 0
+	},
+/obj/item/weapon/gun/smg/m39/corporate/no_lock,
+/obj/item/ammo_magazine/smg/m39,
+/obj/item/ammo_magazine/smg/m39,
+/obj/item/ammo_magazine/smg/m39,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate,
+/turf/open/floor/kutjevo/colors/red,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"wk" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/tan/grey_inner_edge/west,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"wq" = (
+/obj/structure/machinery/light,
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"xq" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8";
+	pixel_y = 8;
+	pixel_x = -2
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"xK" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/pistol/mod88,
+/obj/item/weapon/gun/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/colors/red/edge,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"ze" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/kutjevo/tan/grey_edge/east,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"zx" = (
+/turf/open/asphalt/cement_sunbleached,
+/area/template_noop)
+"zy" = (
+/obj/item/storage/belt/marine/wy,
+/turf/open/floor/kutjevo/colors/red/edge/east,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"zC" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/prop/server_equipment/laptop/closed{
+	pixel_y = 5;
+	pixel_x = -3
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_y = 7;
+	pixel_x = 12
+	},
+/obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/southwest,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"zU" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname,
+/turf/open/floor/kutjevo/grey,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Ak" = (
+/obj/structure/bed/chair/comfy/black,
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/tan/grey_inner_edge,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Aw" = (
+/obj/structure/machinery/light,
+/turf/open/floor/kutjevo/tan/grey_inner_edge/east,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Bz" = (
+/turf/open/floor/kutjevo/tan/grey_inner_edge/east,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Cv" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Di" = (
+/obj/structure/bed/chair/comfy/black,
+/obj/structure/prop/hybrisa/misc/machinery/screens/telescreenbrokespark{
+	pixel_y = 32;
+	pixel_x = -16
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"DT" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/computer/communications/simple{
+	pixel_y = 3;
+	pixel_x = -3
+	},
+/obj/item/reagent_container/food/drinks/cans/bugjuice{
+	pixel_y = 7;
+	pixel_x = 12
+	},
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Eg" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/grey,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Ev" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/reagent_container/food/snacks/packaged_hdogs{
+	pixel_x = -2
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_y = 9;
+	pixel_x = -4
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_y = 11;
+	pixel_x = 7
+	},
+/obj/structure/sign/calendar/wy{
+	pixel_y = 30;
+	pixel_x = -3
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/tan/grey_inner_edge/north,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Ex" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/kutjevo/tan/grey_edge/east,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"ED" = (
+/turf/open/floor/kutjevo/tan/grey_inner_edge/west,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Fp" = (
+/obj/structure/surface/rack,
+/obj/item/explosive/grenade/sebb,
+/obj/item/explosive/grenade/sebb,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/explosive/grenade/high_explosive,
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/kutjevo/colors/red/inner_corner/east,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"FA" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/window/reinforced,
+/obj/item/tool/lighter/zippo/executive{
+	pixel_y = 2;
+	pixel_x = -6
+	},
+/obj/item/storage/fancy/cigarettes/blackpack{
+	pixel_y = 4;
+	pixel_x = 6
+	},
+/obj/item/tool/pen/multicolor/fountain,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Ga" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Gm" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced,
+/obj/item/storage/secure/briefcase,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Gn" = (
+/obj/structure/surface/rack,
+/obj/item/device/toner{
+	pixel_y = 2
+	},
+/obj/item/device/toner{
+	pixel_y = -6
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/west,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"GE" = (
+/obj/item/trash/cigbutt/bcigbutt,
+/turf/open/floor/kutjevo/tan/grey_edge/west,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Hv" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Hw" = (
+/obj/structure/surface/table/almayer,
+/obj/item/ammo_box/magazine/nsg23/empty,
+/obj/structure/machinery/door_control{
+	id = "corporate_security_armory";
+	name = "Corporate Security Armory";
+	pixel_x = -26;
+	pixel_y = 4
+	},
+/turf/open/floor/kutjevo/colors/red,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"HQ" = (
+/obj/structure/bed/sofa/south/white/left{
+	pixel_y = 10
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Jg" = (
+/obj/item/clothing/glasses/regular/hippie{
+	pixel_y = -6;
+	pixel_x = -3
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/northeast,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"JT" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/asphalt/cement_sunbleached,
+/area/kutjevo/exterior/scrubland)
+"Ks" = (
+/obj/structure/machinery/light,
+/obj/structure/machinery/door_control{
+	id = "corporate_security_armory";
+	name = "Corporate Security Armory";
+	pixel_x = -26;
+	pixel_y = 4
+	},
+/turf/open/floor/kutjevo/tan/grey_inner_edge/east,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"KB" = (
+/turf/template_noop,
+/area/template_noop)
+"KE" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 8;
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Lw" = (
+/obj/structure/bed/chair/office/dark{
+	pixel_y = 1;
+	pixel_x = 3
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_y = -2;
+	pixel_x = -8
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Mo" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_y = -3;
+	pixel_x = -2
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/west,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Mt" = (
+/turf/open/floor/kutjevo/tan/grey_edge/east,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"MO" = (
+/obj/structure/bed/sofa/south/white{
+	pixel_y = 10
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Ni" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/door/window/eastright,
+/obj/structure/machinery/door/window/westleft,
+/obj/item/paper_bin/wy{
+	pixel_y = 10;
+	pixel_x = 2
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Nq" = (
+/obj/structure/bed/sofa/south/white/right{
+	pixel_y = 10
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"NA" = (
+/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/kutjevo,
+/turf/open/floor/kutjevo/colors/red/edge/west,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"NV" = (
+/obj/structure/machinery/microwave{
+	anchored = 0
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	layer = 2.8;
+	name = "????";
+	stat = 2
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Ob" = (
+/obj/structure/machinery/vending/coffee{
+	pixel_y = 18;
+	density = 0;
+	pixel_x = 12
+	},
+/obj/structure/reagent_dispensers/water_cooler/walk_past{
+	pixel_y = 18;
+	pixel_x = -6
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Oh" = (
+/obj/effect/decal/hybrisa/wy_huge_logo,
+/turf/open/floor/kutjevo/grey,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"OJ" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	pixel_y = -7;
+	pixel_x = 2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/kutjevo/tan/grey_edge/southwest,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"ON" = (
+/obj/item/ammo_magazine/handful/shotgun/buckshot,
+/turf/open/floor/kutjevo/colors/red/edge/north,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"OS" = (
+/turf/open/floor/kutjevo/tan/grey_edge/west,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"PD" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_box/rounds/smg{
+	bullet_amount = 144
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/colors/red/inner_corner/west,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Qq" = (
+/obj/item/ammo_magazine/rifle/nsg23,
+/turf/open/floor/kutjevo/colors/red/inner_corner/north,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Rs" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4;
+	pixel_y = 4;
+	pixel_x = -2
+	},
+/obj/structure/machinery/camera/autoname,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Ry" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8;
+	pixel_x = 1;
+	pixel_y = 4
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2";
+	pixel_y = -16
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"RF" = (
+/obj/item/trash/cigbutt,
+/turf/open/floor/kutjevo/tan/grey_edge/west,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Su" = (
+/obj/structure/bed/chair/comfy/hybrisa/blue{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"SB" = (
+/obj/item/trash/cigbutt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"SQ" = (
+/turf/open/floor/kutjevo/colors/red/tile,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Tz" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "applebush";
+	pixel_y = 4;
+	pixel_x = 4
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/east,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Uq" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 4;
+	pixel_x = -1;
+	pixel_y = 1
+	},
+/obj/structure/sign/poster/safety{
+	pixel_y = 33;
+	pixel_x = -1
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Vv" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Vw" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Wc" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_6";
+	pixel_y = 2;
+	pixel_x = 7
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/northwest,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"WF" = (
+/obj/structure/machinery/vending/snack{
+	pixel_y = 16;
+	pixel_x = -2;
+	density = 0
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/item/trash/buritto{
+	pixel_y = -10;
+	pixel_x = 3
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/kutjevo/tan/grey_edge/southeast,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"WP" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_magazine/pistol/mod88{
+	current_rounds = 0
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/kutjevo/exterior/scrubland)
+"Xc" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/machinery/faxmachine/corporate{
+	pixel_y = 4;
+	pixel_x = -2
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Xm" = (
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Yl" = (
+/turf/open/floor/kutjevo/colors/red/inner_corner,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Yn" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+"Zo" = (
+/obj/effect/landmark/corpsespawner/wygoon/kutjevo,
+/turf/open/floor/kutjevo/tan/grey_edge/northeast,
+/area/kutjevo/interior/complex/Northwest_Corporate_Office)
+
+(1,1,1) = {"
+so
+so
+so
+so
+so
+so
+so
+so
+so
+so
+so
+KB
+KB
+"}
+(2,1,1) = {"
+so
+tf
+GE
+GE
+OS
+Ks
+so
+hh
+Hw
+so
+so
+KB
+KB
+"}
+(3,1,1) = {"
+so
+bj
+Su
+FA
+cu
+Xm
+mC
+Yl
+NA
+Fp
+so
+KB
+KB
+"}
+(4,1,1) = {"
+so
+Xc
+nz
+Gm
+cu
+Xm
+mC
+ON
+SQ
+xK
+so
+KB
+KB
+"}
+(5,1,1) = {"
+so
+hj
+ze
+Mt
+Mt
+ED
+mC
+Qq
+zy
+PD
+so
+KB
+KB
+"}
+(6,1,1) = {"
+so
+eb
+OS
+OS
+OS
+Aw
+so
+wg
+bo
+so
+so
+KB
+KB
+"}
+(7,1,1) = {"
+so
+Rs
+vw
+cu
+cu
+rF
+so
+so
+so
+so
+so
+KB
+KB
+"}
+(8,1,1) = {"
+so
+fX
+KE
+cu
+cu
+OJ
+rG
+Gn
+lB
+so
+KB
+KB
+KB
+"}
+(9,1,1) = {"
+so
+Uq
+Vw
+cu
+cu
+cu
+tV
+sL
+vI
+so
+KB
+KB
+KB
+"}
+(10,1,1) = {"
+so
+Ry
+Lw
+cu
+by
+ze
+ze
+Mt
+tE
+so
+KB
+KB
+KB
+"}
+(11,1,1) = {"
+so
+oh
+cu
+cu
+Hv
+so
+so
+qO
+Eg
+so
+KB
+KB
+KB
+"}
+(12,1,1) = {"
+so
+tX
+cu
+cu
+jj
+so
+cI
+nS
+Jg
+so
+KB
+KB
+KB
+"}
+(13,1,1) = {"
+so
+jo
+NV
+cu
+Xm
+lC
+DT
+xq
+wq
+so
+KB
+KB
+KB
+"}
+(14,1,1) = {"
+so
+Ev
+Mt
+ze
+oe
+lC
+we
+eH
+is
+so
+KB
+KB
+KB
+"}
+(15,1,1) = {"
+so
+so
+qO
+Eg
+so
+so
+lC
+lC
+Ni
+so
+so
+so
+zx
+"}
+(16,1,1) = {"
+so
+WF
+OS
+Zo
+so
+Ak
+RF
+Mo
+OS
+lE
+Bz
+zU
+KB
+"}
+(17,1,1) = {"
+so
+HQ
+gp
+Cv
+so
+Di
+wa
+qO
+Oh
+wa
+Yn
+qO
+zx
+"}
+(18,1,1) = {"
+so
+MO
+qO
+SB
+zU
+Vv
+lr
+qO
+qO
+lr
+pm
+so
+KB
+"}
+(19,1,1) = {"
+so
+Nq
+jL
+Cv
+qO
+il
+lr
+qO
+qO
+lr
+Ga
+so
+KB
+"}
+(20,1,1) = {"
+so
+zC
+lW
+Wc
+so
+Ob
+qY
+qO
+qO
+tC
+vh
+so
+KB
+"}
+(21,1,1) = {"
+so
+so
+so
+so
+so
+mT
+Ex
+Tz
+ze
+ze
+wk
+so
+KB
+"}
+(22,1,1) = {"
+KB
+KB
+KB
+so
+so
+qO
+Eg
+so
+qO
+Eg
+so
+so
+KB
+"}
+(23,1,1) = {"
+KB
+KB
+KB
+so
+fK
+fK
+fK
+WP
+fK
+fK
+fK
+fK
+KB
+"}
+(24,1,1) = {"
+KB
+KB
+KB
+fK
+pV
+fK
+fK
+pV
+JT
+fK
+fK
+pV
+KB
+"}

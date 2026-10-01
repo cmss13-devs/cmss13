@@ -1,0 +1,7 @@
+2026-10-01:
+  Drathek:
+  - bugfix: Fixed buried spawns handling namely to allow buried spawns if there's
+      not atleast one xeno
+  Mary-Marilyn:
+  - bugfix: Fixed players receiving access to Aghost through another player's moderator
+      permissions.

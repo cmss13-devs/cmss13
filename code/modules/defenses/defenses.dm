@@ -10,6 +10,8 @@
 	use_power = USE_POWER_NONE
 	stat = DEFENSE_FUNCTIONAL
 	health = 200
+	needs_power = FALSE // these have abstract internal batteries.
+
 	var/list/faction_group
 	var/health_max = 200
 	var/turned_on = FALSE
@@ -40,9 +42,7 @@
 	var/obj/item/device/sentry_computer/linked_laptop = null
 	var/has_camera = FALSE
 	var/list/choice_categories = list()
-
 	var/list/selected_categories = list()
-
 
 /obj/structure/machinery/defenses/Initialize()
 	. = ..()

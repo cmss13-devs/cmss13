@@ -31,6 +31,8 @@
 
 /datum/game_mode/colonialmarines/forward_base/post_setup()
 	. = ..()
+	if(GLOB.almayer_orbital_cannon)
+		COOLDOWN_START(GLOB.almayer_orbital_cannon, ob_firing_cooldown, FORWARD_BASE_FOG_DURATION - ROUND_TIME)
 	addtimer(CALLBACK(src, PROC_REF(allow_base_burrowing)), FORWARD_BASE_FOG_DURATION - ROUND_TIME)
 	addtimer(CALLBACK(src, PROC_REF(disable_base_comms)), FORWARD_BASE_FOG_DURATION + FORWARD_BASE_COMMS_FAILURE - ROUND_TIME)
 	addtimer(CALLBACK(src, PROC_REF(warn_resin_clear)), FORWARD_BASE_FOG_DURATION - ROUND_TIME)

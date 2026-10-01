@@ -33,6 +33,15 @@
 /proc/_cos(X)
 	return cos(X)
 
+/proc/_findtext(Haystack, Needle, Start = 1, End = 0)
+	return findtext(Haystack, Needle, Start, End)
+
+/proc/_findtextEx(Haystack, Needle, Start = 1, End = 0)
+	return findtextEx(Haystack, Needle, Start, End)
+
+/proc/_flick(Icon, Object)
+	flick(Icon, Object)
+
 /proc/_get_dir(Loc1, Loc2)
 	return get_dir(Loc1, Loc2)
 
@@ -41,6 +50,9 @@
 
 /proc/_get_step(Ref, Dir)
 	return get_step(Ref, Dir)
+
+/proc/_hascall(object, procname)
+	return hascall(object, procname)
 
 /proc/_hearers(Depth = world.view, Center = usr)
 	return hearers(Depth, Center)
@@ -52,6 +64,8 @@
 	return istype(object, type)
 
 /proc/_ispath(path, type)
+	if(isnull(type))
+		return ispath(path)
 	return ispath(path, type)
 
 /proc/_length(E)
@@ -71,6 +85,9 @@
 
 /proc/_log(X, Y)
 	return log(X, Y)
+
+/proc/_uppertext(T)
+	return uppertext(T)
 
 /proc/_lowertext(T)
 	return lowertext(T)
@@ -144,6 +161,9 @@
 
 /proc/_range(Dist, Center = usr)
 	return range(Dist, Center)
+
+/proc/_rect_turfs(H_Radius = 0, V_Radius = 0, atom/Center)
+	return RECT_TURFS(H_Radius, V_Radius, Center)
 
 /proc/_regex(pattern, flags)
 	return regex(pattern, flags)
@@ -258,7 +278,7 @@
 	winset(player, control_id, params)
 
 /proc/_winget(player, control_id, params)
-	winget(player, control_id, params)
+	return winget(player, control_id, params)
 
 /proc/_text2path(text)
 	return text2path(text)
@@ -273,6 +293,15 @@
 		var/atom/atom_thing = thing
 		return icon_states(atom_thing.icon, mode)
 
+/proc/_view(Dist, Center = usr)
+	return view(Dist, Center)
+
+/proc/_viewers(Dist, Center = usr)
+	return viewers(Dist, Center)
+
+/proc/_generator(type = "num", A = 0, B = 1, rand = UNIFORM_RAND)
+	return generator(type, A, B, rand)
+
 /// Auxtools REALLY doesn't know how to handle filters as values;
 /// when passed as arguments to auxtools-called procs, they aren't simply treated as nulls -
 /// they don't even count towards the length of args.
@@ -286,3 +315,29 @@
 	if(!filter_index || filter_index < 1 || filter_index > length(target.filters))
 		return
 	animate(target.filters[filter_index], appearance = set_vars, time, loop, easing, flags)
+
+/proc/_is_type_in_typecache(thing_to_check, typecache)
+	return is_type_in_typecache(thing_to_check, typecache)
+
+/proc/_floor(a)
+	return floor(a)
+
+/proc/_ceil(a)
+	return ceil(a)
+
+/proc/_typesof(a, subtypes_only = FALSE)
+	. = typesof(a)
+	if(subtypes_only)
+		. -= a
+
+/proc/_html_encode(text)
+	return html_encode(text)
+
+/proc/_html_decode(text)
+	return html_decode(text)
+
+/proc/_url_encode(text)
+	return url_encode(text)
+
+/proc/_url_decode(text)
+	return url_decode(text)

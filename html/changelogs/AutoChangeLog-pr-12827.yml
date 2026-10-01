@@ -1,5 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - code_imp: "MedHUD HP bar will now only update when it needs to."
-  - code_imp: "MedHUD Status (death state, larva, etc) and revival minimap icon will not update on taking damage anymore. It still updates every 2 seconds or during major events."

@@ -931,7 +931,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "nu" = (
-/obj/item/weapon/gun/rifle/m16,
+/obj/item/weapon/gun/rifle/m20a,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
 "nB" = (
@@ -1204,9 +1204,9 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "sj" = (
-/obj/item/ammo_magazine/rifle/m16/ap,
-/obj/item/ammo_magazine/rifle/m16/ap,
-/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
 "sp" = (
@@ -1840,13 +1840,13 @@
 /area/bigredv2/caves/mining)
 "CU" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/weapon/gun/rifle/m20a,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "CW" = (

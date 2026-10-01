@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(ss13hub)
 	name = "SS13Hub"
-	wait = 30 SECONDS
+	wait = 5 MINUTES
 	runlevels = RUNLEVEL_INIT | RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
 
 /datum/controller/subsystem/ss13hub/Initialize()

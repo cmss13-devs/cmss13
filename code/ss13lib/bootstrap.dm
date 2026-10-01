@@ -49,5 +49,5 @@
 
 	while(TRUE)
 		perform_heartbeat()
-		sleep(300)
+		sleep(3000)
 #endif

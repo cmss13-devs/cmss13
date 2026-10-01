@@ -171,9 +171,7 @@
 #define SS13LIB_EXTERNAL_INIT
 
 /// If the codebase would like to handle the regular heartbeat to the hub
-/// instead of it being looped internally. This must fire at least every minute
-/// as servers are only considered active if they have had a successful heartbeat
-/// within the last two minutes. It is recommended to fire every 30 seconds.
+/// instead of it being looped internally. It is recommended to fire every 5 minutes.
 #define SS13LIB_EXTERNAL_HEARTBEAT
 
 /// If this is defined, SS13Lib will call this to notify in-game administrators

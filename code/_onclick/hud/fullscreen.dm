@@ -109,9 +109,8 @@
 
 /atom/movable/screen/fullscreen/clouds
 	icon_state = "clouds"
-	layer = FULLSCREEN_DAMAGE_LAYER
+	layer = FULLSCREEN_CLOUDS_LAYER
 	alpha = 175
-//	color = COLOR_BLACK
 
 /atom/movable/screen/fullscreen/oxy
 	icon_state = "oxydamageoverlay"

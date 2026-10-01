@@ -143,7 +143,7 @@
 /obj/docking_port/mobile/marine_dropship/multiz
 	multiz_ship = TRUE
 	use_ripples = FALSE
-	var/obj/effect/abstract/ripple/shadow/dropship_shadow/omaha/shuttle_shadow
+	var/shuttle_shadow
 
 /obj/docking_port/mobile/marine_dropship/multiz/omaha
 	name = "Omaha"

@@ -341,7 +341,11 @@
 	icon_state = "away2"
 
 /area/shuttle/multiz
-	var/obj/structure/dropship_roof/linked_roof
+	soundscape_interval = 30 //seconds
+	flags_area = AREA_NOBURROW
+	is_landing_zone = TRUE
+	ceiling = CEILING_REINFORCED_METAL
+	base_lighting_alpha = 0
 
 /area/shuttle/multiz/Entered(atom/movable/O, atom/oldloc)
 	if(ismob(O))
@@ -349,8 +353,9 @@
 		if(istype(subject_mob, /mob/hologram))
 			var/mob/hologram/hologram_mob = subject_mob
 			subject_mob = hologram_mob.linked_mob
-		var/atom/movable/screen/plane_master/roof_dropship/roof_plane = subject_mob.hud_used?.plane_masters["[DROPSHIP_ROOF_PLANE]"]
-		roof_plane?.Hide()
+		if(subject_mob)
+			var/atom/movable/screen/plane_master/roof_dropship/roof_plane = subject_mob.hud_used?.plane_masters["[DROPSHIP_ROOF_PLANE]"]
+			roof_plane?.Hide()
 	return ..()
 
 /area/shuttle/multiz/Exited(atom/movable/O, atom/oldloc)
@@ -359,16 +364,12 @@
 		if(istype(subject_mob, /mob/hologram))
 			var/mob/hologram/hologram_mob = subject_mob
 			subject_mob = hologram_mob.linked_mob
-		var/atom/movable/screen/plane_master/roof_dropship/roof_plane = subject_mob.hud_used?.plane_masters["[DROPSHIP_ROOF_PLANE]"]
-		roof_plane.Show()
+		if(subject_mob)
+			var/atom/movable/screen/plane_master/roof_dropship/roof_plane = subject_mob.hud_used?.plane_masters["[DROPSHIP_ROOF_PLANE]"]
+			roof_plane?.Show()
 	return ..()
 
 /area/shuttle/multiz/drop_omaha
-	soundscape_interval = 30 //seconds
-	flags_area = AREA_NOBURROW
-	is_landing_zone = TRUE
-	ceiling = CEILING_REINFORCED_METAL
-	base_lighting_alpha = 0
 
 /area/shuttle/multiz/drop_omaha/omaha
 	name = "\improper Dropship Omaha"
@@ -383,11 +384,6 @@
 	return TRUE
 
 /area/shuttle/multiz/drop_midway
-	soundscape_interval = 30 //seconds
-	flags_area = AREA_NOBURROW
-	is_landing_zone = TRUE
-	ceiling = CEILING_REINFORCED_METAL
-	base_lighting_alpha = 0
 
 /area/shuttle/multiz/drop_midway/midway
 	name = "\improper Dropship Midway"
@@ -395,9 +391,6 @@
 	base_muffle = MUFFLE_HIGH
 	base_lighting_alpha = 0 // 255
 	is_resin_allowed = FALSE
-	var/image/roof_image
-	var/roof_icon = 'icons/turf/midway/belly.dmi'
-	var/roof_icon_state = "roof"
 
 /area/shuttle/multiz/drop_midway/midway/Enter(atom/movable/O, atom/oldloc)
 	if(istype(O, /obj/structure/barricade))

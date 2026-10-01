@@ -168,6 +168,7 @@
 #define FULLSCREEN_PAIN_LAYER 17.2
 /// Vulture sniper/spotter scope
 #define FULLSCREEN_VULTURE_SCOPE_LAYER 17.21
+#define FULLSCREEN_CLOUDS_LAYER 17.22
 /// in critical
 #define FULLSCREEN_CRIT_LAYER 17.25
 

@@ -55,7 +55,7 @@
 /turf/open/shuttle/dropship/midway/basic,
 /area/shuttle/multiz/drop_midway/midway)
 "cL" = (
-/obj/structure/machinery/computer/overwatch/almayer/midway{
+/obj/structure/machinery/computer/overwatch/almayer/dropship/midway{
 	pixel_x = -6;
 	pixel_y = -10
 	},

@@ -80,7 +80,7 @@
 /turf/open/floor/almayer/plating,
 /area/event)
 "iT" = (
-/obj/docking_port/stationary/marine_dropship/almayer_hangar_omaha,
+/obj/docking_port/stationary/marine_dropship/almayer_hangar_midway,
 /turf/open_space,
 /area/event/dynamic)
 "jd" = (

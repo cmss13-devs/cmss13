@@ -153,6 +153,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	if((user.contents.Find(src) || (in_range(src, user) && istype(loc, /turf))) || (isSilicon(user)))
 		user.set_interaction(src)
+	if(camera_holder)
+		if(istype(get_area(camera_holder), /area/shuttle))
+			var/atom/movable/screen/plane_master/roof_dropship/roof_plane = user.hud_used?.plane_masters["[DROPSHIP_ROOF_PLANE]"]
+			roof_plane?.Hide()
 	tgui_interact(user)
 
 /obj/structure/machinery/computer/overwatch/get_examine_text(mob/user)
@@ -877,6 +881,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					disconnect_holder()
 				cam = new_cam
 				if(new_holder)
+					if(istype(get_area(new_holder), /area/shuttle))
+						var/atom/movable/screen/plane_master/roof_dropship/roof_plane = user.hud_used?.plane_masters["[DROPSHIP_ROOF_PLANE]"]
+						roof_plane?.Hide()
 					connect_holder(new_holder)
 
 		if("change_operator")
@@ -1259,6 +1266,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 	tacmap_component.on_unset_interaction(user)
 	tacmap_component.close_popout_tacmaps(user)
+	if(!istype(get_area(src), /area/shuttle))
+		var/atom/movable/screen/plane_master/roof_dropship/roof_plane = user.hud_used?.plane_masters["[DROPSHIP_ROOF_PLANE]"]
+		roof_plane?.Show()
 
 /// checks if the human has an overwatch camera at all
 /obj/structure/machinery/computer/overwatch/proc/marine_has_camera(mob/living/carbon/human/marine)
@@ -1649,30 +1659,29 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	icon = 'icons/obj/vehicles/interiors/arc.dmi'
 	icon_state = "overwatch_computer"
 
-/obj/structure/machinery/computer/overwatch/almayer/omaha
+/obj/structure/machinery/computer/overwatch/almayer/dropship
 	name = "Overwatch console"
 	density = FALSE
+	icon_state = "overwatch_module"
+	layer = WALL_OBJ_LAYER
+
+/obj/structure/machinery/computer/overwatch/almayer/dropship/omaha
 	icon = 'icons/obj/structures/machinery/omaha/modules.dmi'
 	icon_state = "overwatch_module"
-	layer = MOB_LAYER - 0.5
 
 /obj/structure/overwatch_dummy
 	density = FALSE
 	icon = 'icons/obj/structures/machinery/omaha/modules.dmi'
 	icon_state = "overwatch_module_dummy"
-	layer = MOB_LAYER + 0.01
+	layer = ABOVE_MOB_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	unslashable = TRUE
 	unacidable = TRUE
 	pixel_x = -6
 	pixel_y = -10
 
-/obj/structure/machinery/computer/overwatch/almayer/midway
-	name = "Overwatch console"
-	density = FALSE
+/obj/structure/machinery/computer/overwatch/almayer/dropship/midway
 	icon = 'icons/obj/structures/machinery/midway/modules.dmi'
-	icon_state = "overwatch_module"
-	layer = MOB_LAYER - 0.5
 
 /obj/structure/overwatch_dummy/midway
 	icon = 'icons/obj/structures/machinery/midway/modules.dmi'

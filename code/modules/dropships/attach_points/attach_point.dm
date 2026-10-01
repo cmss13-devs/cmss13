@@ -24,6 +24,7 @@
 	var/obj/effect/attach_point_dummy/linked_bottom_point
 
 /obj/effect/attach_point/Destroy()
+	linked_bottom_point = null
 	QDEL_NULL(installed_equipment)
 	return ..()
 
@@ -114,6 +115,10 @@
 		"max" = transverse + firing_arc_max
 	)
 
+// used to pass mob interactions to the linked_attach_point, aka our xeno clicks on this dummy item
+// and then that click interaction gets passed directly to the linked_attach_point
+// for example, our normal attach point is on z-level 4, whereas our dummy attach point is on z-level 3
+// if we click the dummy item on level 3, we basically have clicked the item on z-level 4, front-end wise
 /obj/effect/attach_point_dummy
 	name = "equipment attach point"
 	desc = "A place where heavy equipment can be installed with a powerloader."
@@ -122,7 +127,6 @@
 	unacidable = TRUE
 	anchored = TRUE
 	layer = ABOVE_TURF_LAYER
-	plane = GAME_PLANE
 	var/obj/effect/attach_point/linked_attach_point
 
 /obj/effect/attach_point_dummy/omaha

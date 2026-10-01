@@ -451,14 +451,14 @@
 	icon_state = "hatch-opening"
 	playsound(loc, 'sound/machines/nightcustard_motor_whirring.ogg', 75, 0)
 	playsound(loc, 'sound/machines/freesoundstock_step_ladder.ogg', 35, 0)
-	addtimer(CALLBACK(src, PROC_REF(finish_deploying)), deploy_speed,  TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT) //
+	addtimer(CALLBACK(src, PROC_REF(finish_deploying)), deploy_speed)
 
 /obj/structure/ladder/multiz/dropship/proc/finish_deploying()
 	name = "ladder"
 	icon_state = "hatch-open"
 	currently_adjusting = FALSE
 	var/turf/open/turf_below = SSmapping.get_turf_below(src.loc)
-	down.loc = turf_below
+	down.forceMove(turf_below)
 	down.update_icon()
 	deployed = TRUE
 	playsound(loc, 'sound/machines/freesoundstock_step_ladder.ogg', 30, 0)

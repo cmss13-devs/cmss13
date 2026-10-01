@@ -831,7 +831,7 @@
 /turf/closed/shuttle/dropship_omaha/wall_20,
 /area/shuttle/multiz/drop_omaha/omaha)
 "Ex" = (
-/obj/structure/machinery/computer/overwatch/almayer/omaha{
+/obj/structure/machinery/computer/overwatch/almayer/dropship/omaha{
 	pixel_y = -10;
 	pixel_x = -6;
 	layer = 3.01

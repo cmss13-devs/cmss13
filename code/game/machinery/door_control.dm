@@ -433,7 +433,7 @@
 	dir = EAST
 	normaldoorcontrol = CONTROL_NORMAL_DOORS
 	var/obj/structure/ladder/multiz/dropship/linked_ladder
-	id = "change_this"
+	id = ""
 
 /obj/structure/machinery/door_control/hatch_ladder/omaha
 	icon = 'icons/obj/structures/machinery/omaha/interior_item.dmi'
@@ -443,8 +443,8 @@
 	icon = 'icons/obj/structures/machinery/midway/interior_item.dmi'
 	id = "midway_cockpit_ladder"
 
-/obj/structure/machinery/door_control/hatch_ladder/attack_hand(mob/living/user) // if(is_reserved_level(z)
-	add_fingerprint(user) // removed xeno check. i am in control
+/obj/structure/machinery/door_control/hatch_ladder/attack_hand(mob/living/user)
+	add_fingerprint(user)
 	if(!linked_ladder)
 		for(var/obj/structure/ladder/multiz/dropship/target_ladder in range(1, src.loc))
 			if(target_ladder.id == id)
@@ -456,8 +456,8 @@
 	else
 		use_button(user)
 
-/obj/structure/machinery/door_control/hatch_ladder/handle_door() // test this and map it
-	if(linked_ladder.deployed) // add transit check
+/obj/structure/machinery/door_control/hatch_ladder/handle_door()
+	if(linked_ladder.deployed)
 		linked_ladder.undeploy()
 	else
 		linked_ladder.deploy()
@@ -573,6 +573,19 @@
 	var/obj/deployer/shuttle/dropship/dummy_part/rampazoid
 	var/obj/effect/drosphip_ramp_shadow/linked_shadow
 
+/obj/structure/machinery/door_control/shuttle_ramp/Destroy()
+	linked_dropship = null
+	first_ramps = list()
+	second_ramps = list()
+	third_ramps = list()
+	fourth_ramps = list()
+	fifth_ramps = list()
+	linked_railings = list()
+	linked_single_controller = null
+	rampazoid = null
+	linked_shadow = null
+	return ..()
+
 /obj/structure/machinery/door_control/shuttle_ramp/omaha_aft
 	icon = 'icons/obj/structures/machinery/omaha/interior_item.dmi'
 	icon_state = "ramp_control"
@@ -640,9 +653,12 @@
 		if(rampazoid.linked_deployable)
 			QDEL_NULL(rampazoid.linked_deployable)
 			rampazoid.linked_deployable = null
-		if(rampazoid.stored_turf)
-			rampazoid.stored_turf.ScrapeAway()
-			our_turf.update_vis_contents()
+		if(rampazoid.mode == "fifth")
+			var/turf/beneath = SSmapping.get_turf_below(rampazoid.loc)
+			beneath.ScrapeAway()
+		else
+			our_turf.ScrapeAway()
+		our_turf.update_vis_contents()
 		raise_things(rampazoid)
 	if(finality)
 		busy = FALSE
@@ -681,7 +697,7 @@
 			rampazoid.cached_icon_state = "[our_turf.icon_state]-low"
 
 		if(rampazoid.mode == "fifth")
-			rampazoid.stored_turf = turf_beneath.place_on_top(rampazoid.item_to_deploy)
+			turf_beneath.place_on_top(rampazoid.item_to_deploy)
 			rampazoid.linked_deployable = new rampazoid.item_to_deploy2(our_turf)
 			for(var/mob/living/carbon/morbius in our_turf.contents)
 				rampazoid.loc.Entered(morbius)
@@ -689,7 +705,7 @@
 			if(rampazoid.item_to_deploy2)
 				rampazoid.linked_deployable = new rampazoid.item_to_deploy2(turf_beneath)
 			lower_things(rampazoid)
-			rampazoid.stored_turf = our_turf.place_on_top(rampazoid.item_to_deploy)
+			our_turf.place_on_top(rampazoid.item_to_deploy)
 
 		if(rampazoid.linked_deployable)
 			rampazoid.linked_deployable.icon = rampazoid.cached_icon
@@ -782,7 +798,6 @@
 	if(do_after(xeno, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		if(linked_single_controller)
 			linked_single_controller.status = SHUTTLE_DOOR_BROKEN
-			broken = TRUE
 			broken = TRUE
 		lower()
 

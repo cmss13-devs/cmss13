@@ -18,6 +18,8 @@
 	var/colony_camera_mapload = TRUE
 	var/admin_console = FALSE
 	var/stay_connected = FALSE
+	var/ui_template_name = "CameraConsole"
+	var/datum/weakref/user_weakref
 
 /obj/structure/machinery/computer/cameras/Initialize(mapload)
 	. = ..()
@@ -74,21 +76,24 @@
 	SEND_SIGNAL(src, COMSIG_CAMERA_REFRESH)
 
 	if(!ui)
-		var/user_ref = WEAKREF(user)
-		var/is_living = isliving(user)
-		// Ghosts shouldn't count towards concurrent users, which produces
-		// an audible terminal_on click.
-		if(is_living)
-			concurrent_users += user_ref
-		// Turn on the console
-		if(length(concurrent_users) == 1 && is_living)
-			update_use_power(USE_POWER_ACTIVE)
+		if(user.Adjacent(src)) // holy fuuuuuuuuuck
+			var/user_ref = WEAKREF(user)
+			var/is_living = isliving(user)
+			// Ghosts shouldn't count towards concurrent users, which produces
+			// an audible terminal_on click.
+			if(is_living)
+				concurrent_users += user_ref
+				user_weakref = user_ref
+			// Turn on the console
+			if(length(concurrent_users) == 1 && is_living)
+				update_use_power(USE_POWER_ACTIVE)
 
-		SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)
+			SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)
 
-		// Open UI
-		ui = new(user, src, "CameraConsole", name)
-		ui.open()
+			// Open UI
+//			playsound(src, get_sfx("terminal_button"), 25, FALSE)
+			ui = new(user, src, "[ui_template_name]", name)
+			ui.open()
 
 /obj/structure/machinery/computer/cameras/ui_data()
 	var/list/data = list()
@@ -461,9 +466,9 @@
 	density = TRUE
 	layer = OBJ_LAYER - 0.01
 	network = list(CAMERA_NET_LASER_TARGETS)
+	ui_template_name = "DropshipGunneryConsole"
 	var/focused = FALSE
 	var/matrix_color = NV_COLOR_GREEN
-	var/datum/weakref/user_weakref
 	var/obj/docking_port/mobile/marine_dropship/linked_dropship
 	var/obj/structure/bed/chair/vehicle/midway_gunner/linked_chair
 	var/obj/structure/dropship_equipment/weapon/m90_minigun/linked_m90
@@ -478,8 +483,9 @@
 /obj/structure/machinery/computer/cameras/dropship/midway/gunnery/attack_hand(mob/user)
 	if(user_weakref)
 		var/mob/living/carbon/human/current_user = user_weakref.resolve()
-		to_chat(user, SPAN_WARNING("[current_user.name] is already using the [src.name]!"))
-		return
+		if(current_user)
+			to_chat(user, SPAN_WARNING("[current_user.name] is already using the [src.name]!"))
+			return
 	if(linked_m90)
 		return ..()
 	else
@@ -516,53 +522,35 @@
 	return
 
 /obj/structure/machinery/computer/cameras/dropship/midway/gunnery/get_available_cameras()
-	var/list/D = list()
-	for(var/obj/structure/machinery/camera/C in GLOB.cas_cameras)
-		if(!C.network)
+	var/list/cam_list = list()
+	for(var/obj/structure/machinery/camera/camerino as anything in GLOB.cas_cameras)
+		if(!camerino.network)
 			stack_trace("Camera in a cameranet has no camera network")
 			continue
-		if(!(islist(C.network)))
+		if(!(islist(camerino.network)))
 			stack_trace("Camera in a cameranet has a non-list camera network")
 			continue
-		var/list/tempnetwork = C.network & network
+		var/list/tempnetwork = camerino.network & network
 		if(length(tempnetwork))
-			D["[C.c_tag]"] = C
-	return D
+			cam_list["[camerino.c_tag]"] = camerino
+	return cam_list
 
 /obj/structure/machinery/computer/cameras/dropship/midway/gunnery/ui_close(mob/user)
 	if(focused)
 		if(user_weakref)
-			focus_mob()
-			if(!user.client?.prefs.custom_cursors)
-				current = null
-				user_weakref = null
-				return ..()
-			user.client.mouse_pointer_icon = initial(user.client.mouse_pointer_icon)
+			var/client/clientino = user.client
+			if(clientino)
+				focus_mob()
+				if(!user.client?.prefs.custom_cursors)
+					current = null
+					user_weakref = null
+					return ..()
+				user.client.mouse_pointer_icon = initial(user.client.mouse_pointer_icon)
 
 	current = null
 	user_weakref = null
-	addtimer(CALLBACK(src, PROC_REF(clear_refs)), 5) // has something to do with the processing, the value gets set again for some reason even tho we cleared it above
 	return ..()
 
-/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/proc/clear_refs()
-	user_weakref = null
-	current = null
-
-/obj/structure/machinery/computer/cameras/dropship/midway/gunnery/tgui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	SEND_SIGNAL(src, COMSIG_CAMERA_REFRESH)
-
-	if(!ui)
-		var/user_ref = WEAKREF(user)
-		var/is_living = isliving(user)
-		if(is_living)
-			user_weakref = user_ref
-
-		SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)
-
-		// Open UI
-		ui = new(user, src, "DropshipGunneryConsole", name)
-		ui.open()
 
 /obj/structure/machinery/computer/cameras/dropship/midway/gunnery/ui_act(action, params)
 	. = ..()
@@ -592,7 +580,7 @@
 				return
 
 		current = selected_camera
-		playsound(src, get_sfx("terminal_type"), 25, FALSE)
+		playsound(src, get_sfx("terminal_button"), 25, FALSE)
 
 		if(!selected_camera)
 			return TRUE
@@ -604,17 +592,18 @@
 
 /obj/structure/machinery/computer/cameras/dropship/midway/gunnery/proc/focus_mob()
 	var/mob/living/carbon/human/user = user_weakref.resolve()
-	user.remove_client_color_matrix("gunnery_visor", 0.75 SECONDS)
-	user.clear_fullscreen("gunnery_visor", 0.4 SECONDS)
-	user.clear_fullscreen("gunnery_visor_blur", 0.4 SECONDS)
-	user.clear_fullscreen("gunnery_clouds", 0.1 SECONDS)
-	playsound(user, 'sound/handling/toggle_nv2.ogg', 25)
+	if(user)
+		user.remove_client_color_matrix("gunnery_visor", 0.75 SECONDS)
+		user.clear_fullscreen("gunnery_visor", 0.4 SECONDS)
+		user.clear_fullscreen("gunnery_visor_blur", 0.4 SECONDS)
+		user.clear_fullscreen("gunnery_clouds", 0.1 SECONDS)
+		playsound(user, 'sound/handling/toggle_nv2.ogg', 25)
 
-	UnregisterSignal(user, COMSIG_MOB_POST_CLICK)
+		UnregisterSignal(user, COMSIG_MOB_POST_CLICK)
 
-	user.reset_view(user)
-	user.update_sight()
-	focused = FALSE
+		user.reset_view(user)
+		user.update_sight()
+		focused = FALSE
 
 /obj/structure/machinery/computer/cameras/dropship/midway/gunnery/proc/focus_camera(selected_camera)
 	var/mob/living/carbon/human/user = user_weakref.resolve()
@@ -636,8 +625,6 @@
 	if(!skillcheck(user, SKILL_PILOT, linked_m90.skill_required)) //only pilots can fire dropship weapons.
 		to_chat(user, SPAN_WARNING("You don't have the training to fire this weapon!"))
 		return FALSE
-//	if(!faction)
-//		return FALSE//no faction, no weapons
 	if(!user.allow_gun_usage)
 		to_chat(user, SPAN_WARNING("Your programming prevents you from operating dropship weaponry!"))
 		return FALSE

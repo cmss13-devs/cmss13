@@ -151,7 +151,6 @@
 	our_turf.update_vis_contents()
 	if(!istransparentturf(our_turf))
 		for(var/obj/vis_contents_holder/thing in our_turf.contents)
-			our_turf.contents -= thing
 			QDEL_NULL(thing)
 
 /obj/structure/shuttle/part/dropship_omaha/transparent/lower_left_wing
@@ -771,7 +770,6 @@
 	our_turf.update_vis_contents()
 	if(!istransparentturf(our_turf))
 		for(var/obj/vis_contents_holder/thing in our_turf.contents)
-			our_turf.contents -= thing
 			QDEL_NULL(thing)
 
 /obj/structure/shuttle/part/dropship_midway/transparent/lower_left_wing

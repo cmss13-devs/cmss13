@@ -599,6 +599,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		data["primary_lz"] = SSticker.mode.active_lz
 	data["alert_level"] = GLOB.security_level
 	data["evac_status"] = SShijack.evac_status
+	data["stable_orbit"] = SShijack.stable_orbit
+	data["hijack_started"] = SShijack.hijack_status >= HIJACK_OBJECTIVES_SHIP_INBOUND
+	data["can_enter_stable_orbit"] = user == SSticker.mode.acting_commander && SShijack.can_enter_stable_orbit()
 	data["world_time"] = world.time
 
 	data["time_request"] = cooldown_request
@@ -635,6 +638,15 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	var/mob/user = ui.user
 	switch(action)
+		if("stable_orbit")
+			if(!istype(src, /obj/structure/machinery/computer/overwatch/groundside_operations) || user != SSticker.mode.acting_commander)
+				return FALSE
+			if(!SShijack.enter_stable_orbit())
+				return FALSE
+			log_game("[key_name(user)] put the ship into stable orbit.")
+			message_admins("[key_name_admin(user)] put the ship into stable orbit.")
+			return TRUE
+
 		if("pick_squad")
 			if(current_squad)
 				return

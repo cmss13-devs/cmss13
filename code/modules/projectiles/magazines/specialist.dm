@@ -411,7 +411,7 @@
 
 /obj/item/ammo_magazine/rocket/upp
 	name = "\improper HJRA-12 High-Explosive Rocket"
-	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a standard high-explosive rocket for use against unarmored vehicles or structures, the most common use cases."
+	desc = "A rocket for the UPP's HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a standard high-explosive rocket for use against unarmored vehicles or structures, the most common use cases."
 
 	caliber = "95mm"
 	icon_state = "hjra_explosive"
@@ -430,23 +430,12 @@
 
 /obj/item/ammo_magazine/rocket/upp/at
 	name = "\improper HJRA-12 Anti-Tank Rocket"
-	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a standard anti-tank rocket designed to disable or destroy armored vehicles, but the disposable RPG-150 is usually prefered for this."
-
-	caliber = "95mm"
+	desc = "A rocket for the UPP's HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a standard anti-tank rocket designed to disable or destroy armored vehicles, but the disposable RPG-150 is usually prefered for anti-tank usage."
 	icon_state = "hjra_tank"
-
-	max_rounds = 1
 	default_ammo = /datum/ammo/rocket/ap/anti_tank
-	gun_type = /obj/item/weapon/gun/launcher/rocket/upp
-	reload_delay = 85
 
 /obj/item/ammo_magazine/rocket/upp/incen
 	name = "\improper HJRA-12 Thermobaric Rocket"
-	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a thermobaric rocket for anti-personnal or against emplacements. A similar load is used in the disposable URO-H launcher."
-	caliber = "95mm"
+	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a thermobaric rocket designed for use against emplacements and structures, the chemical compound used inside puts off a toxic smoke, avoid close contact. A similar load is used in the disposable URO-H launcher."
 	icon_state = "hjra_incen"
-
-	max_rounds = 1
 	default_ammo = /datum/ammo/rocket/wp/upp
-	gun_type = /obj/item/weapon/gun/launcher/rocket/upp
-	reload_delay = 85

@@ -218,6 +218,10 @@
 	do_smoke(loca = turf)
 	var/datum/reagent/napalm/upp/reagent = new()
 	new /obj/flamer_fire(turf, cause_data, reagent, 3)
+	var/datum/effect_system/smoke_spread/mustard/see_through/landingSmoke = new /datum/effect_system/smoke_spread/mustard/see_through //it's not actual mustard gas, but this gives the rocket a bit of flavoring
+
+	landingSmoke.set_up(5, 0, turf, null, 6, cause_data)
+	landingSmoke.start()
 
 /datum/ammo/rocket/wp/upp/on_hit_mob(mob/mob, obj/projectile/projectile)
 	drop_flame(get_turf(mob), projectile.weapon_cause_data)

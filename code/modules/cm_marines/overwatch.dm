@@ -1661,8 +1661,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 /obj/structure/machinery/computer/overwatch/almayer/dropship
 	name = "Overwatch console"
-	density = FALSE
+	icon = 'icons/obj/structures/machinery/omaha/modules.dmi'
 	icon_state = "overwatch_module"
+	density = FALSE
 	layer = WALL_OBJ_LAYER
 
 /obj/structure/machinery/computer/overwatch/almayer/dropship/omaha

@@ -31,6 +31,8 @@
 
 	minimum_evolve_time = 9 MINUTES
 
+	organ_type = /obj/item/organ/xeno/warrior
+
 	minimap_icon = "warrior"
 
 /mob/living/carbon/xenomorph/warrior
@@ -40,12 +42,10 @@
 	icon = 'icons/mob/xenos/castes/tier_2/warrior.dmi'
 	icon_size = 64
 	icon_state = "Warrior Walking"
-	plasma_types = list(PLASMA_CHITIN)
 	pixel_x = -16
 	old_x = -16
 	tier = 2
 	pull_speed = 2 // about what it was before, slightly faster
-	organ_value = 2000
 	base_actions = list(
 		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
@@ -68,6 +68,14 @@
 
 	skull = /obj/item/skull/warrior
 	pelt = /obj/item/pelt/warrior
+
+/obj/item/organ/xeno/warrior
+	name = "warrior heart"
+	icon_state = "heart_t2"
+	item_state = "heart_t2"
+	research_value = 2000
+
+	xeno_organ_flags = XENO_ORGAN_STRONG|XENO_ORGAN_HARDENED
 
 /datum/behavior_delegate/warrior_base
 	name = "Base Warrior Behavior Delegate"

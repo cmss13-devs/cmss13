@@ -8,6 +8,8 @@
 	var/allow_construction = TRUE //whether you can build things like barricades on this turf.
 	var/wet = 0 //whether the turf is wet (only used by floors).
 	var/supports_surgery = TRUE
+	/// Whether the turf allows mines when doing antigrief_protection checks
+	var/allow_mines = TRUE
 	var/scorchable = FALSE //if TRUE set to be an icon_state which is the full sprite version of whatever gets scorched --> for border turfs like grass edges and shorelines
 	var/scorchedness = 0 //how scorched is this turf 0 to 3
 	var/icon_state_before_scorching //this is really dumb, blame the mappers...
@@ -436,7 +438,7 @@
 /turf/open/beach/Entered(atom/movable/AM)
 	..()
 
-	if(AM.throwing || !ishuman(AM))
+	if(HAS_TRAIT(AM, TRAIT_LAUNCHED) || !ishuman(AM))
 		return
 
 	var/mob/living/carbon/human/H = AM
@@ -753,7 +755,7 @@
 
 	SEND_SIGNAL(AM, COMSIG_MOVABLE_ENTERED_RIVER, src, covered)
 
-	if(!iscarbon(AM) || AM.throwing)
+	if(!iscarbon(AM) || HAS_TRAIT(AM, TRAIT_LAUNCHED))
 		return
 
 	if(!covered)
@@ -1316,10 +1318,12 @@
 	icon = 'icons/turf/shuttle.dmi'
 	allow_construction = FALSE
 	supports_surgery = FALSE
+	allow_mines = FALSE
 
 /turf/open/shuttle/can_surgery
 	allow_construction = TRUE
 	supports_surgery = TRUE
+	allow_mines = TRUE
 
 /turf/open/shuttle/can_surgery/blue
 	name = "floor"

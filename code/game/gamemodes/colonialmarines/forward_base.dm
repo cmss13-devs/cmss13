@@ -20,20 +20,31 @@
 
 /datum/game_mode/colonialmarines/forward_base/pre_setup()
 	. = ..()
-	active_lz = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1)
+	for(var/obj/structure/machinery/computer/shuttle/dropship/flight/console in GLOB.machines)
+		if(console.linked_lz && istype(get_area(console), /area/forward_base))
+			active_lz = console
+			break
+	for(var/area/forward_base/bunker_area in GLOB.all_areas)
+		bunker_area.flags_area |= AREA_NOBURROW
 	for(var/obj/effect/landmark/lv624/fog_blocker/fog in GLOB.landmarks_list)
 		fog.time_to_dispel = FORWARD_BASE_FOG_DURATION
 
 /datum/game_mode/colonialmarines/forward_base/post_setup()
 	. = ..()
+	addtimer(CALLBACK(src, PROC_REF(allow_base_burrowing)), FORWARD_BASE_FOG_DURATION - ROUND_TIME)
 	addtimer(CALLBACK(src, PROC_REF(disable_base_comms)), FORWARD_BASE_FOG_DURATION + FORWARD_BASE_COMMS_FAILURE - ROUND_TIME)
 	addtimer(CALLBACK(src, PROC_REF(warn_resin_clear)), FORWARD_BASE_FOG_DURATION - ROUND_TIME)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "The mist is almost gone. In one minute, the tallhosts will be exposed. Gather yourselves and prepare to tear their nest apart.", "everything", QUEEN_MOTHER_ANNOUNCE), FORWARD_BASE_FOG_DURATION - FORWARD_BASE_FOG_WARNING - ROUND_TIME)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "WARNING. HOSTILE CONTACT IMMINENT. Atmospheric obscuration is rapidly dissipating and will be lost within sixty seconds. ALL COMBAT PERSONNEL, assume defensive positions immediately.", "BASE PERIMETER ALERT", 'sound/effects/siren.ogg'), FORWARD_BASE_FOG_DURATION - FORWARD_BASE_FOG_WARNING - ROUND_TIME)
-	var/obj/docking_port/stationary/marine_dropship/lz1/landing_zone = locate() in SSshuttle.stationary
+	var/obj/docking_port/stationary/marine_dropship/landing_zone = SSshuttle.getDock(active_lz.linked_lz)
 	SSshuttle.action_load(SSmapping.all_shuttle_templates[/datum/map_template/shuttle/normandy], landing_zone)
 	for(var/obj/structure/machinery/computer/shuttle/dropship/flight/console in GLOB.machines)
 		console.time_lock = FORWARD_BASE_FOG_DURATION
+
+/datum/game_mode/colonialmarines/forward_base/proc/allow_base_burrowing()
+	for(var/area/forward_base/bunker_area in GLOB.all_areas)
+		if(!(initial(bunker_area.flags_area) & AREA_NOBURROW))
+			bunker_area.flags_area &= ~AREA_NOBURROW
 
 /datum/game_mode/colonialmarines/forward_base/proc/disable_base_comms()
 	marine_announcement("WARNING. BASE RELAY BACKUP BATTERY DEPLETED. Military radio coverage is offline. Recommended action: hijack a civilian communications tower and reestablish contact through the colony network.", "BASE COMMUNICATIONS ALERT", 'sound/AI/commandreport.ogg')

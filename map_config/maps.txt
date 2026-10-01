@@ -53,6 +53,10 @@ endmap
 map kutjevo
 endmap
 
+map kutjevo_forward_base
+	voteweight 0
+endmap
+
 map sorokyne_strata
 	minplayers 110
 endmap

@@ -1,4 +1,0 @@
-author: "Mary-Marilyn"
-delete-after: True
-changes:
-  - bugfix: "Fixed players receiving access to Aghost through another player's moderator permissions."

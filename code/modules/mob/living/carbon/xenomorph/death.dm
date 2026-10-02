@@ -166,6 +166,8 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 	var/no_remains
 	if(!caste)
 		CRASH("CASTE ERROR: gib() was called without a caste. (name: [name], disposed: [QDELETED(src)], health: [health])")
+	if(gibbing)
+		CRASH("gib() was called multiple times. (name: [name], disposed: [QDELETED(src)], health: [health])")
 
 	switch(caste.caste_type)
 		if(XENO_CASTE_BOILER)

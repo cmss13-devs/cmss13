@@ -5,3 +5,13 @@
   Mary-Marilyn:
   - bugfix: Fixed players receiving access to Aghost through another player's moderator
       permissions.
+2026-10-02:
+  Drathek:
+  - bugfix: Survivor roles are now slotted in random order so that its random if whitelisted
+      survivors take slots first or not
+  - bugfix: Role weights for fax responders, predators, and whitelisted roles are
+      now set rather than falling back to shipside weight
+  MistChristmas:
+  - bugfix: Trial Admins can use the VV Combat logs again
+  fira:
+  - bugfix: Fix Check CKeys admin verb matching ckeys it shouldn't.

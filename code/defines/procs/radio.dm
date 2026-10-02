@@ -1,4 +1,6 @@
 /proc/get_frequency_name(display_freq)
+	if(display_freq == PUB_FREQ && istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base))
+		return "Bunker"
 	var/freq_text
 
 	// the name of the channel

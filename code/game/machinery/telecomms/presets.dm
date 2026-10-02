@@ -310,6 +310,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 					return
 				else
 					freq_listening |= DEPT_FREQS
+					if(istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base))
+						freq_listening |= PUB_FREQ
 			to_chat(user, SPAN_NOTICE("You add your faction's communication frequencies to \the [src]'s comm list."))
 			SSradio.update_cache()
 			return

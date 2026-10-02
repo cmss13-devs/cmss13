@@ -426,6 +426,8 @@ SUBSYSTEM_DEF(radio)
 	for(var/obj/structure/machinery/telecomms/T as anything in tcomm_machines_ground)
 		if((UNIVERSAL_FREQ in T.freq_listening) || (frequency in T.freq_listening))
 			target_zs += SSmapping.levels_by_trait(ZTRAIT_GROUND)
+			if(istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base))
+				target_zs += SSmapping.levels_by_trait(ZTRAIT_RESERVED)
 			break
 	for(var/obj/structure/machinery/telecomms/T as anything in tcomm_machines_almayer)
 		if((UNIVERSAL_FREQ in T.freq_listening) || (frequency in T.freq_listening))

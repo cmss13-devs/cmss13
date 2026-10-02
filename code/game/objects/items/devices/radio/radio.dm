@@ -109,13 +109,13 @@
 	for(var/channel in channels)
 		var/channel_key = channel_to_prefix(channel)
 		radio_channels += list(list(
-			"name" = channel,
+			"name" = channel == RADIO_CHANNEL_ALMAYER ? get_frequency_name(PUB_FREQ) : channel,
 			"status" = channels[channel] & FREQ_LISTENING,
 			"hotkey" = channel_key))
 
 	for(var/hear_channel in hear_only_channels)
 		hear_radio_channels += list(list(
-			"name" = hear_channel,
+			"name" = hear_channel == RADIO_CHANNEL_ALMAYER ? get_frequency_name(PUB_FREQ) : hear_channel,
 			"status" = hear_only_channels[hear_channel] & FREQ_LISTENING))
 
 	data["channels"] = radio_channels
@@ -155,6 +155,8 @@
 			. = TRUE
 		if("channel")
 			var/channel = params["channel"]
+			if(channel == "Bunker" && istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base))
+				channel = RADIO_CHANNEL_ALMAYER
 			if(channel in channels)
 				if(channels[channel] & FREQ_LISTENING)
 					channels[channel] &= ~FREQ_LISTENING
@@ -236,6 +238,9 @@
 
 	var/turf/position = get_turf(src)
 	if(QDELETED(position))
+		return
+
+	if(connection.frequency == PUB_FREQ && istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base) && !istype(get_area(src), /area/forward_base))
 		return
 
 	//#### Tagging the signal with all appropriate identity values ####//
@@ -346,6 +351,8 @@
 
 
 /obj/item/device/radio/proc/receive_range(freq, level)
+	if((freq ? freq : frequency) == PUB_FREQ && istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base) && !istype(get_area(src), /area/forward_base))
+		return -1
 	// check if this radio can receive on the given frequency, and if so,
 	// what the range is in which mobs will hear the radio
 	// returns: -1 if can't receive, range otherwise

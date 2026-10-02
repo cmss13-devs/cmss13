@@ -84,6 +84,16 @@
 	weed_food_states = list("Lesser_Drone_1","Lesser_Drone_2","Lesser_Drone_3")
 	weed_food_states_flipped = list("Lesser_Drone_1","Lesser_Drone_2","Lesser_Drone_3")
 
+/mob/living/carbon/xenomorph/lesser_drone/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+
+	GLOB.xeno_ghost_role_mobs += src
+
+/mob/living/carbon/xenomorph/lesser_drone/Destroy()
+	. = ..()
+
+	GLOB.xeno_ghost_role_mobs -= src
+
 /mob/living/carbon/xenomorph/lesser_drone/Login()
 	var/last_ckey_inhabited = persistent_ckey
 	. = ..()

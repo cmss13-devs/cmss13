@@ -38,6 +38,8 @@ GLOBAL_LIST_EMPTY_TYPED(xeno_mob_list, /mob/living/carbon/xenomorph)
 GLOBAL_LIST_EMPTY_TYPED(living_xeno_list, /mob/living/carbon/xenomorph)
 GLOBAL_LIST_EMPTY_TYPED(xeno_cultists, /mob/living/carbon/human)
 GLOBAL_LIST_EMPTY_TYPED(player_embryo_list, /obj/item/alien_embryo)
+/// List of playable facehuggers and lesser drones
+GLOBAL_LIST_EMPTY_TYPED(xeno_ghost_role_mobs, /mob/living/carbon/xenomorph)
 
 GLOBAL_LIST_EMPTY_TYPED(hellhound_list, /mob/living/carbon/xenomorph/hellhound)
 GLOBAL_LIST_EMPTY_TYPED(zombie_list, /mob/living/carbon/human)

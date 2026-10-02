@@ -1753,6 +1753,11 @@
 		return
 
 	for(var/datum/hivebuff/possible_hivebuff as anything in potential_hivebuffs)
+		if(possible_hivebuff == /datum/hivebuff/hive_surge)
+			var/datum/game_mode/colonialmarines/forward_base/mode = SSticker.mode
+			if(!istype(mode) || hivenumber != XENO_HIVE_NORMAL || !mode.hive_pylons_charged)
+				potential_hivebuffs -= possible_hivebuff
+				continue
 		// Round isn't old enough yet
 		if(ROUND_TIME < initial(possible_hivebuff.roundtime_to_enable))
 			potential_hivebuffs -= possible_hivebuff

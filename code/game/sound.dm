@@ -68,12 +68,16 @@
 	template.volume = vol
 	template.volume_cat = vol_cat
 
+	var/count
 	while(islist(template.file))
 		if(can_play_rare)
 			template.file = pick(template.file)
 			break
 		else
 			template.file = pick(soundin)
+		count++
+		if(count >= 10) // if for some reason it never stops being a list
+			break
 
 	if(echo)
 		template.echo = echo.Copy()
@@ -150,12 +154,16 @@
 	else
 		template.file = pick(soundin)
 
+	var/count
 	while(islist(template.file))
 		if(can_play_rare)
 			template.file = pick(template.file)
 			break
 		else
 			template.file = pick(soundin)
+		count++
+		if(count >= 10) // if for some reason it never stops being a list
+			break
 
 	if(random_freq)
 		if(random_freq == "minor")
@@ -187,12 +195,16 @@
 	template.status = status
 	template.volume_cat = vol_cat
 
+	var/count
 	while(islist(template.file))
 		if(can_play_rare)
 			template.file = pick(template.file)
 			break
 		else
 			template.file = pick(soundin)
+		count++
+		if(count >= 10) // if for some reason it never stops being a list
+			break
 
 	if(echo)
 		template.echo = echo.Copy()
@@ -223,12 +235,16 @@
 
 	var/can_play_rare = prob(1)
 
+	var/count
 	while(islist(template.file))
 		if(can_play_rare)
 			template.file = pick(template.file)
 			break
 		else
 			template.file = pick(soundin)
+		count++
+		if(count >= 10) // if for some reason it never stops being a list
+			break
 
 	if(echo)
 		template.echo = echo.Copy()

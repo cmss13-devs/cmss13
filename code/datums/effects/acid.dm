@@ -157,6 +157,14 @@
 	duration -= amount
 	if(duration <= 0)
 		return TRUE
+	if(acid_level == 3)
+		acid_level = 2
+		duration = min(duration, tier_max_duarions[acid_level])
+		mob_icon_state_path = "human_acid_enhanced"
+		if(ishuman(affected_atom))
+			var/mob/living/carbon/human/affected_human = affected_atom
+			affected_human.update_effects()
+			to_chat(affected_human, SPAN_WARNING("Your armor returns to normal."))
 	return FALSE
 
 /// Signal handler for COMSIG_GLOB_WEATHER_CHANGE to adjust duration, damage_per_process_human, and damage_per_process_object.

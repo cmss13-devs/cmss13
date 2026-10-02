@@ -16,6 +16,10 @@
 	name = CRUSHER_CHARGER
 	description = "In exchange for your shield, a little bit of your armor and damage, your slowdown resist from turrets, your influence under frenzy pheromones, your stomp no longer knocking down talls, and your ability to lock your direction, you gain a considerable amount of health, some speed, your stomp does extra damage when stomping over a grounded tall, and your charge is now manually-controlled and momentum-based; the further you go, the more damage and speed you will gain until you achieve maximum momentum, indicated by your roar. In addition, your armor is now directional, being the toughest on the front, weaker on the sides, and weakest from the back. In return, you gain an ability to tumble to pass through enemies and avoid enemy fire, and an ability to forcefully move enemies via ramming into them."
 	flavor_description = "Nothing stops this hive. This one will become both the immovable object and the unstoppable force."
+	health_mod = XENO_HEALTH_MOD_LARGE
+	speed_mod = XENO_SPEED_FASTMOD_TIER_3
+	armor_mod = -XENO_ARMOR_MOD_SMALL
+	damage_mod = -XENO_DAMAGE_MOD_SMALL
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/pounce/crusher_charge,
@@ -32,14 +36,9 @@
 	behavior_delegate_type = /datum/behavior_delegate/crusher_charger
 
 /datum/xeno_strain/charger/apply_strain(mob/living/carbon/xenomorph/crusher/crusher)
+	..() // stat modifiers
 	crusher.small_explosives_stun = FALSE
-	crusher.health_modifier += XENO_HEALTH_MOD_LARGE
-	crusher.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
-	crusher.armor_modifier -= XENO_ARMOR_MOD_SMALL
-	crusher.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 	crusher.ignore_aura = XENO_PHERO_FRENZY // no funny crushers going 7 morbillion kilometers per second
-	crusher.phero_modifier = -crusher.caste.aura_strength
-	crusher.recalculate_everything()
 
 /datum/behavior_delegate/crusher_charger
 	name = "Charger Crusher Behavior Delegate"

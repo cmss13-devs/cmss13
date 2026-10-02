@@ -27,7 +27,7 @@
 /// Expected behavior is that every receiver properly receives the drone's recovery pheromones at normal pheromone strength.
 /datum/unit_test/pheromones/transmit_castes/drone/Run(pheromone_type = XENO_PHERO_RECOVERY)
 	var/list/expected_pheromones = list()
-	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_NORMAL
+	expected_pheromones[pheromone_type] = /datum/caste_datum/drone::aura_strength
 
 	all_caste_reception_test(
 		abstract_emitter = new /datum/abstract_xenomorph(),
@@ -49,7 +49,7 @@
 /// Expected behavior is that every receiver properly receives the drone's recovery pheromones at strong pheromone strength.
 /datum/unit_test/pheromones/transmit_castes/drone/healer/Run(pheromone_type = XENO_PHERO_RECOVERY)
 	var/list/expected_pheromones = list()
-	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_STRONG
+	expected_pheromones[pheromone_type] = /datum/caste_datum/drone::aura_strength + /datum/xeno_strain/healer::phero_mod
 
 	all_caste_reception_test(
 		abstract_emitter = new /datum/abstract_xenomorph(
@@ -73,11 +73,11 @@
 /// Expected behavior is that every receiver properly receives the drone's recovery pheromones at strong pheromone strength.
 /datum/unit_test/pheromones/transmit_castes/drone/gardener/Run(pheromone_type = XENO_PHERO_RECOVERY)
 	var/list/expected_pheromones = list()
-	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_STRONG
+	expected_pheromones[pheromone_type] = /datum/caste_datum/drone::aura_strength + /datum/xeno_strain/gardener::phero_mod
 
 	all_caste_reception_test(
 		abstract_emitter = new /datum/abstract_xenomorph(
-			initialization_callback = CALLBACK(src, PROC_REF(set_strain_on_init), DRONE_HEALER)
+			initialization_callback = CALLBACK(src, PROC_REF(set_strain_on_init), DRONE_GARDENER)
 		),
 		pheromone_type = pheromone_type,
 		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), expected_pheromones)
@@ -97,7 +97,7 @@
 /// Expected behavior is that every receiver properly receives the drone's recovery pheromones at weak pheromone strength.
 /datum/unit_test/pheromones/transmit_castes/lesser/Run(pheromone_type = XENO_PHERO_RECOVERY)
 	var/list/expected_pheromones = list()
-	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_WEAK
+	expected_pheromones[pheromone_type] = /datum/caste_datum/lesser_drone::aura_strength
 
 	all_caste_reception_test(
 		abstract_emitter = new /datum/abstract_xenomorph(caste = XENO_CASTE_LESSER_DRONE),
@@ -119,7 +119,7 @@
 /// Expected behavior is that every receiver properly receives the hivelord's recovery pheromones at hivelord pheromone strength.
 /datum/unit_test/pheromones/transmit_castes/hivelord/Run(pheromone_type = XENO_PHERO_RECOVERY)
 	var/list/expected_pheromones = list()
-	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_HIVELORD
+	expected_pheromones[pheromone_type] = /datum/caste_datum/hivelord::aura_strength
 
 	all_caste_reception_test(
 		abstract_emitter = new /datum/abstract_xenomorph(caste = XENO_CASTE_HIVELORD),
@@ -141,7 +141,7 @@
 /// Expected behavior is that every receiver properly receives the hivelord's recovery pheromones at hivelord pheromone strength.
 /datum/unit_test/pheromones/transmit_castes/hivelord/resin_whisperer/Run(pheromone_type = XENO_PHERO_RECOVERY)
 	var/list/expected_pheromones = list()
-	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_HIVELORD
+	expected_pheromones[pheromone_type] = /datum/caste_datum/hivelord::aura_strength + /datum/xeno_strain/resin_whisperer::phero_mod
 
 	all_caste_reception_test(
 		abstract_emitter = new /datum/abstract_xenomorph(
@@ -166,7 +166,7 @@
 /// Expected behavior is that every receiver properly receives the hivelord's recovery pheromones at the unique designer pheromone strength.
 /datum/unit_test/pheromones/transmit_castes/hivelord/designer/Run(pheromone_type = XENO_PHERO_RECOVERY)
 	var/list/expected_pheromones = list()
-	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_HIVELORD + XENO_PHERO_MOD_LARGE
+	expected_pheromones[pheromone_type] = /datum/caste_datum/hivelord::aura_strength + /datum/xeno_strain/designer::phero_mod
 
 	all_caste_reception_test(
 		abstract_emitter = new /datum/abstract_xenomorph(
@@ -191,7 +191,7 @@
 /// Expected behavior is that every receiver properly receives the carrier's recovery pheromones at normal pheromone strength.
 /datum/unit_test/pheromones/transmit_castes/carrier/Run(pheromone_type = XENO_PHERO_RECOVERY)
 	var/list/expected_pheromones = list()
-	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_NORMAL
+	expected_pheromones[pheromone_type] = /datum/caste_datum/carrier::aura_strength
 
 	all_caste_reception_test(
 		abstract_emitter = new /datum/abstract_xenomorph(caste = XENO_CASTE_CARRIER),
@@ -213,7 +213,7 @@
 /// Expected behavior is that every receiver properly receives the carrier's recovery pheromones at strong pheromone strength.
 /datum/unit_test/pheromones/transmit_castes/carrier/eggsac/Run(pheromone_type = XENO_PHERO_RECOVERY)
 	var/list/expected_pheromones = list()
-	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_STRONG
+	expected_pheromones[pheromone_type] = /datum/caste_datum/carrier::aura_strength + /datum/xeno_strain/eggsac::phero_mod
 
 	all_caste_reception_test(
 		abstract_emitter = new /datum/abstract_xenomorph(
@@ -238,7 +238,7 @@
 /// Expected behavior is that every receiver properly receives the praetoreon's recovery pheromones at strong pheromone strength.
 /datum/unit_test/pheromones/transmit_castes/praetorian/Run(pheromone_type = XENO_PHERO_RECOVERY)
 	var/list/expected_pheromones = list()
-	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_STRONG
+	expected_pheromones[pheromone_type] = /datum/caste_datum/praetorian::aura_strength + /datum/xeno_strain/valkyrie::phero_mod
 
 	all_caste_reception_test(
 		abstract_emitter = new /datum/abstract_xenomorph(
@@ -263,7 +263,7 @@
 /// Expected behavior is that every receiver properly receives the queen's recovery pheromones at very strong pheromone strength.
 /datum/unit_test/pheromones/transmit_castes/queen/Run(pheromone_type = XENO_PHERO_RECOVERY)
 	var/list/expected_pheromones = list()
-	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_VERY_STRONG
+	expected_pheromones[pheromone_type] = /datum/caste_datum/queen::aura_strength
 
 	all_caste_reception_test(
 		abstract_emitter = new /datum/abstract_xenomorph(caste = XENO_CASTE_QUEEN),
@@ -285,7 +285,7 @@
 /// Expected behavior is that every receiver properly receives the king's recovery pheromones at overwhelming pheromone strength.
 /datum/unit_test/pheromones/transmit_castes/king/Run(pheromone_type = XENO_PHERO_RECOVERY)
 	var/list/expected_pheromones = list()
-	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_OVERWHELMING
+	expected_pheromones[pheromone_type] = /datum/caste_datum/king::aura_strength
 
 	all_caste_reception_test(
 		abstract_emitter = new /datum/abstract_xenomorph(caste = XENO_CASTE_KING),

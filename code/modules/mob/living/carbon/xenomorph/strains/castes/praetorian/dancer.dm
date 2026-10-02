@@ -4,6 +4,9 @@
 	description = "You lose all acid-based abilities and a small amount of your armor in exchange for increased movement speed, evasion, and unparalleled agility. This strain excels at rapid repositioning, bullet dodging, and phasing effortlessly through enemies and allies alike. Slashing enemies applies a red tag, altering how your tail abilities function. Tagged enemies cause Impale to strike twice and transform Tail Trip into a powerful knockdown instead of a brief stun. Your new Tail Stab adapts to your intent. When used in Disarm mode, it becomes a Blunt, armor-piercing strike. When enemies are brought close to death, yellow tags will spread to nearby foes. Slashing yellow-tagged enemies reduces the cooldown of your tail abilities, and using a tail trip or impale ability on a yellow-tagged target grants no cooldown penalty."
 	flavor_description = "A performance fit for a Queen, this one will become my instrument of death."
 	icon_state_prefix = "Dancer"
+	armor_mod = -XENO_ARMOR_MOD_VERY_SMALL
+	speed_mod = XENO_SPEED_FASTMOD_TIER_5
+	regen_mult = XENO_REGEN_MULTIPLIER_TIER_7
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/tail_stab,
@@ -24,14 +27,10 @@
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_dancer
 
 /datum/xeno_strain/dancer/apply_strain(mob/living/carbon/xenomorph/praetorian/prae)
-	prae.armor_modifier -= XENO_ARMOR_MOD_VERY_SMALL
-	prae.speed_modifier += XENO_SPEED_FASTMOD_TIER_5
-	prae.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_7
+	..() // stat modifiers
 	prae.claw_type = CLAW_TYPE_SHARP
 	prae.dodge_threshold = 6
-	prae.received_phero_caps["recovery"] = 3 //need to be limited, regens too fast with high strength phermones.
-
-	prae.recalculate_everything()
+	prae.received_phero_caps["recovery"] = XENO_PHERO_STRENGTH_STRONG //need to be limited, regens too fast with high strength phermones.
 
 #define DANCER_YELLOW_TAG_SPREAD_DURATION 7 SECONDS
 #define DANCER_YELLOW_TAG_SPREAD_CD 20 SECONDS

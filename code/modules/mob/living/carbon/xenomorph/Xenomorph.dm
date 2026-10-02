@@ -209,7 +209,8 @@
 	var/health_modifier = 0
 	var/armor_modifier = 0
 	var/explosivearmor_modifier = 0
-	var/plasmapool_modifier = 1
+	/// Normally a multiplier against plasma_max but if >1 and plasma_max is 0 this sets the new plasma
+	var/plasmapool_multiplier = 1
 	var/plasmagain_modifier = 0
 	var/tackle_chance_modifier = 0
 	var/tackle_min_modifier = 0
@@ -223,9 +224,6 @@
 	var/evasion_modifier = 0
 	var/attack_speed_modifier = 0
 	var/armor_integrity_modifier = 0
-
-	///Used to add plasma to strain if caste have 0 plasma_max
-	var/add_plasma = 0
 
 	var/list/modifier_sources
 	COOLDOWN_DECLARE(next_strain_reset)
@@ -1041,7 +1039,12 @@
 		health = maxHealth
 
 /mob/living/carbon/xenomorph/proc/recalculate_plasma()
-	var/new_plasma_max = (plasmapool_modifier * caste.plasma_max) + add_plasma
+	var/new_plasma_max = (plasmapool_multiplier * caste.plasma_max)
+
+	// Allow plasmapool to set plasma on a caste that has no plasma directly
+	if(!caste.plasma_max && plasmapool_multiplier > 1)
+		new_plasma_max = plasmapool_multiplier
+
 	if(!plasma_max && new_plasma_max <= 0)
 		return
 

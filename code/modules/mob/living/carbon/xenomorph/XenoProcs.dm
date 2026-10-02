@@ -224,6 +224,8 @@
 		var/datum/action/A = X
 		A.update_button_icon()
 
+	updatehealth()
+
 
 /mob/living/carbon/xenomorph/proc/gain_armor_percent(value)
 	armor_integrity = min(armor_integrity + value, 100)
@@ -302,12 +304,12 @@
 	var/datum/action/xeno_action/activable/pounce/pounceAction = get_action(src, /datum/action/xeno_action/activable/pounce)
 
 	// Unconscious or dead, or not throwing but used pounce.
-	if(!check_state() || (!throwing && !pounceAction.action_cooldown_check()))
+	if(!check_state() || (!HAS_TRAIT(src, TRAIT_LAUNCHED) && !pounceAction.action_cooldown_check()))
 		return
 
 	var/mob/living/carbon/carbon_mob = pounced_mob
 	if(carbon_mob.stat == DEAD || carbon_mob.mob_size >= MOB_SIZE_BIG || can_not_harm(pounced_mob) || carbon_mob == src)
-		throwing = FALSE
+		REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
 		return
 
 	if(pounceAction.can_be_shield_blocked)
@@ -318,7 +320,7 @@
 					SPAN_XENODANGER("We slam into [human_mob]!"), null, 5)
 				KnockDown(1)
 				Stun(1)
-				throwing = FALSE //Reset throwing manually.
+				REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT) //Reset throwing manually.
 				playsound(human_mob, "bonk", 75, FALSE) //bonk
 				return
 
@@ -327,14 +329,14 @@
 					SPAN_XENODANGER("[human_mob] body slams us!"), null, 5)
 				KnockDown(3)
 				Stun(3)
-				throwing = FALSE
+				REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
 				return
 			if(HAS_TRAIT(human_mob, TRAIT_POUNCE_RESISTANT) && prob(60))
 				visible_message(SPAN_DANGER("[human_mob] withstands being pounced and slams down [src]!"),
 					SPAN_XENODANGER("[human_mob] throws us down after withstanding the pounce!"), null, 5)
 				KnockDown(1.5)
 				Stun(1.5)
-				throwing = FALSE
+				REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
 				return
 
 
@@ -355,7 +357,7 @@
 	if(pounceAction.slash)
 		carbon_mob.attack_alien(src, pounceAction.slash_bonus_damage)
 
-	throwing = FALSE //Reset throwing since something was hit.
+	REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT) //Reset throwing since something was hit.
 
 /mob/living/carbon/xenomorph/proc/unfreeze_pounce()
 	REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
@@ -367,7 +369,7 @@
 	var/datum/action/xeno_action/activable/pounce/pounceAction = get_action(src, /datum/action/xeno_action/activable/pounce)
 
 	// Unconscious or dead, or not throwing but used pounce
-	if(!check_state() || (!throwing && !pounceAction.action_cooldown_check()))
+	if(!check_state() || (!HAS_TRAIT(src, TRAIT_LAUNCHED) && !pounceAction.action_cooldown_check()))
 		obj_launch_collision(O)
 		return
 
@@ -584,17 +586,28 @@
 
 
 // Handle queued actions.
-/mob/living/carbon/xenomorph/proc/handle_queued_action(atom/A)
+/mob/living/carbon/xenomorph/proc/handle_queued_action(atom/target)
+	. = FALSE
 	if(!queued_action || !istype(queued_action) || !(queued_action in actions))
+		clear_queued_action()
 		return
 
 	if(queued_action.can_use_action() && queued_action.action_cooldown_check())
-		queued_action.use_ability_wrapper(A)
+		queued_action.use_ability_wrapper(target)
+		. = TRUE
 
+	clear_queued_action()
+
+/// Clears any queued action
+/mob/living/carbon/xenomorph/proc/clear_queued_action()
 	queued_action = null
 
+	if(queued_action_timer != TIMER_ID_NULL)
+		deltimer(queued_action_timer)
+		queued_action_timer = TIMER_ID_NULL
+
 	if(client)
-		client.mouse_pointer_icon = initial(client.mouse_pointer_icon) // Reset our mouse pointer when we no longer have an action queued.
+		client.mouse_pointer_icon = initial(client.mouse_pointer_icon)
 
 /// Called when pulling something to either upgrade the grab or restrain the pulled mob
 /mob/living/carbon/xenomorph/proc/pull_power(obj/item/grab/grab_obj)
@@ -703,7 +716,6 @@
 
 	apply_damage(burn_amount, BURN)
 	to_chat(src, SPAN_DANGER("Our flesh, it melts!"))
-	updatehealth()
 	return TRUE
 
 /mob/living/carbon/xenomorph/get_role_name()

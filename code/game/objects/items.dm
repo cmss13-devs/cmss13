@@ -331,7 +331,7 @@
 	else if(isturf(loc) && HAS_TRAIT(user, TRAIT_HAULED))
 		return
 
-	throwing = 0
+	REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
 
 	if(loc == user)
 		if(!user.drop_inv_item_on_ground(src))
@@ -405,11 +405,12 @@
 /// Called just as an item is picked up (loc is not yet changed) and will return TRUE if the pickup wasn't canceled.
 /obj/item/proc/pickup(mob/user, silent)
 	SHOULD_CALL_PARENT(TRUE)
-	if((SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)) & COMSIG_ITEM_PICKUP_CANCELLED)
+	if(check_pickup_blocked(user))
 		if(!silent)
 			to_chat(user, SPAN_WARNING("Can't pick [src] up!"))
 			balloon_alert(user, "can't pick up")
 		return FALSE
+	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
 	SEND_SIGNAL(user, COMSIG_MOB_PICKUP_ITEM, src)
 	setDir(SOUTH)//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
 	if(pickup_sound && !silent && src.loc?.z)
@@ -1083,12 +1084,12 @@
  * Set the item up on a table.
  * @param target: table which is being used to host the item.
  */
-/obj/item/proc/set_to_table(obj/structure/surface/target)
-	if (do_after(usr, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+/obj/item/proc/set_to_table(obj/structure/surface/target, mob/user)
+	if (do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		table_setup = TRUE
-		usr.drop_inv_item_to_loc(src, target.loc)
+		user.drop_inv_item_to_loc(src, target.loc)
 	else
-		to_chat(usr, SPAN_WARNING("You fail to setup the [name]"))
+		to_chat(user, SPAN_WARNING("You fail to setup the [name]"))
 
 /**
  * Called to reset the state of the item to not be settled on the table.

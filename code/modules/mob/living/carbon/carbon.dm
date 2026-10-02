@@ -30,12 +30,6 @@
 	halbody = null
 
 
-/mob/living/carbon/Move(NewLoc, direct)
-	. = ..()
-	if(.)
-		if(nutrition && stat != DEAD)
-			nutrition -= HUNGER_FACTOR/5
-
 /mob/living/carbon/relaymove(mob/user, direction)
 	if(user.is_mob_incapacitated(TRUE))
 		return
@@ -67,7 +61,6 @@
 		return
 
 	apply_damage(severity, BRUTE, enviro=enviro)
-	updatehealth()
 
 	var/knock_value = min(round(severity*0.1, 1), 10)
 	if(knock_value > 0)

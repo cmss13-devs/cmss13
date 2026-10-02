@@ -12,7 +12,7 @@
 	icon = 'icons/obj/structures/machinery/omaha/misc.dmi'
 	icon_state = "deployer"
 	var/obj/docking_port/mobile/marine_dropship/linked_dropship
-	var/item_to_deploy
+	var/deployable
 	var/list/linked_items = list()
 
 /obj/deployer/shuttle/dropship/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
@@ -51,12 +51,12 @@
 
 /obj/deployer/shuttle/dropship/ramp_button
 	var/obj/structure/machinery/door_control/dropship_ramp_dummy/linked_button
-	item_to_deploy = /obj/structure/machinery/door_control/dropship_ramp_dummy
+	deployable = /obj/structure/machinery/door_control/dropship_ramp_dummy
 
 /obj/deployer/shuttle/dropship/ramp_button/omaha
-	item_to_deploy = /obj/structure/machinery/door_control/dropship_ramp_dummy/omaha_aft
+	deployable = /obj/structure/machinery/door_control/dropship_ramp_dummy/omaha_aft
 /obj/deployer/shuttle/dropship/ramp_button/midway
-	item_to_deploy = /obj/structure/machinery/door_control/dropship_ramp_dummy/midway_aft
+	deployable = /obj/structure/machinery/door_control/dropship_ramp_dummy/midway_aft
 
 /obj/deployer/shuttle/dropship/ramp_button/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	. = ..()
@@ -66,7 +66,7 @@
 			linked_button.pixel_y = 16
 		else
 			for(var/obj/structure/machinery/door_control/shuttle_ramp/original_button in range(8, src.loc))
-				linked_button = new item_to_deploy(SSmapping.get_turf_below(src.loc))
+				linked_button = new deployable(SSmapping.get_turf_below(src.loc))
 				linked_items += linked_button
 				linked_button.pixel_y = 16
 				linked_button.layer = FLY_LAYER
@@ -78,13 +78,13 @@
 
 /obj/deployer/shuttle/dropship/belly
 	var/obj/structure/shuttle/part/fuel_lines/lines
-	item_to_deploy = /obj/structure/shuttle/part/fuel_lines
+	deployable = /obj/structure/shuttle/part/fuel_lines
 
 /obj/deployer/shuttle/dropship/belly/omaha
-	item_to_deploy = /obj/structure/shuttle/part/fuel_lines/omaha
+	deployable = /obj/structure/shuttle/part/fuel_lines/omaha
 
 /obj/deployer/shuttle/dropship/belly/midway
-	item_to_deploy = /obj/structure/shuttle/part/fuel_lines/midway
+	deployable = /obj/structure/shuttle/part/fuel_lines/midway
 
 /obj/deployer/shuttle/dropship/belly/lateShuttleMove()
 	.=..()
@@ -96,7 +96,7 @@
 				if(lines)
 					lines.forceMove(final_turf)
 				else
-					lines = new item_to_deploy(final_turf)
+					lines = new deployable(final_turf)
 					linked_items += lines
 
 /obj/deployer/shuttle/dropship/landing_gear
@@ -107,16 +107,16 @@
 	var/obj/structure/shuttle/part/dropship_mohawk/landing_gear_big/land_gear
 	var/vent_id
 	var/obj/structure/shuttle/part/dropship_mohawk/landing_hatch_big/hatch_big
-	item_to_deploy = /obj/structure/shuttle/part/dropship_mohawk/landing_gear_big
-	var/item_to_deploy2 = /obj/structure/shuttle/part/dropship_mohawk/landing_hatch_big // get this a better name please
+	deployable = /obj/structure/shuttle/part/dropship_mohawk/landing_gear_big
+	var/deployable2 = /obj/structure/shuttle/part/dropship_mohawk/landing_hatch_big // get this a better name please
 
 /obj/deployer/shuttle/dropship/landing_gear/omaha
-	item_to_deploy = /obj/structure/shuttle/part/dropship_mohawk/landing_gear_big/omaha
-	item_to_deploy2 = /obj/structure/shuttle/part/dropship_mohawk/landing_hatch_big/omaha
+	deployable = /obj/structure/shuttle/part/dropship_mohawk/landing_gear_big/omaha
+	deployable2 = /obj/structure/shuttle/part/dropship_mohawk/landing_hatch_big/omaha
 
 /obj/deployer/shuttle/dropship/landing_gear/midway
-	item_to_deploy = /obj/structure/shuttle/part/dropship_mohawk/landing_gear_big/midway
-	item_to_deploy2 = /obj/structure/shuttle/part/dropship_mohawk/landing_hatch_big/midway
+	deployable = /obj/structure/shuttle/part/dropship_mohawk/landing_gear_big/midway
+	deployable2 = /obj/structure/shuttle/part/dropship_mohawk/landing_hatch_big/midway
 
 /obj/deployer/shuttle/dropship/landing_gear/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
 	. = ..()
@@ -128,13 +128,13 @@
 				if(land_gear)
 					land_gear.forceMove(final_turf)
 				else
-					land_gear = new item_to_deploy(final_turf, linked_dropship, vent_id)
+					land_gear = new deployable(final_turf, linked_dropship, vent_id)
 					linked_items += land_gear
 					land_gear.setDir(src.dir)
 				if(hatch_big)
 					hatch_big.forceMove(final_turf)
 				else
-					hatch_big = new item_to_deploy2(final_turf)
+					hatch_big = new deployable2(final_turf)
 					linked_items += hatch_big
 					hatch_big.setDir(src.dir)
 					hatch_big.pixel_x = offset_x
@@ -148,10 +148,10 @@
 	var/offset_y
 
 /obj/deployer/shuttle/dropship/fuel_attachment_point/omaha
-	item_to_deploy = /obj/effect/attach_point/fuel/dropship_omaha
+	deployable = /obj/effect/attach_point/fuel/dropship_omaha
 
 /obj/deployer/shuttle/dropship/fuel_attachment_point/midway
-	item_to_deploy = /obj/effect/attach_point/fuel/dropship_midway
+	deployable = /obj/effect/attach_point/fuel/dropship_midway
 
 /obj/deployer/shuttle/dropship/fuel_attachment_point/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
 	. = ..()
@@ -163,7 +163,7 @@
 				if(linked_point.installed_equipment)
 					linked_point.installed_equipment.forceMove(t_below)
 			else
-				linked_point = new item_to_deploy(t_below)
+				linked_point = new deployable(t_below)
 				linked_items += linked_point
 				linked_point.layer = FLY_LAYER + 0.01
 				linked_point.alpha = 225
@@ -179,10 +179,10 @@
 	var/offset_y
 
 /obj/deployer/shuttle/dropship/hardpoints/omaha
-	item_to_deploy = /obj/effect/attach_point_dummy/omaha
+	deployable = /obj/effect/attach_point_dummy/omaha
 
 /obj/deployer/shuttle/dropship/hardpoints/midway
-	item_to_deploy = /obj/effect/attach_point_dummy/midway
+	deployable = /obj/effect/attach_point_dummy/midway
 
 /obj/deployer/shuttle/dropship/hardpoints/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	. = ..()
@@ -193,7 +193,7 @@
 			if(linked_bottom)
 				linked_bottom.forceMove(target_turf)
 			else
-				linked_bottom = new item_to_deploy(target_turf)
+				linked_bottom = new deployable(target_turf)
 				linked_items += linked_bottom
 				linked_bottom.layer = FLY_LAYER + 0.01
 				for(var/obj/effect/attach_point/attachie in src.loc)
@@ -249,71 +249,71 @@
 
 	var/stored_icon_state
 	var/obj/structure/linked_deployable
-	var/item_to_deploy2
+	var/deployable2
 	var/cached_icon
 	var/cached_icon_state
 
 /obj/deployer/shuttle/dropship/dummy_part/omaha
-	item_to_deploy = /turf/open_space
+	deployable = /turf/open_space
 
 /obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_first
 	mode = "first"
-	item_to_deploy = /turf/open_space
+	deployable = /turf/open_space
 
 /obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_second
 	mode = "second"
-	item_to_deploy = /turf/open_space
-	item_to_deploy2 = /obj/structure/shuttle/part/dropship_omaha/structure_ramp
+	deployable = /turf/open_space
+	deployable2 = /obj/structure/shuttle/part/dropship_omaha/structure_ramp
 
 /obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_third
 	mode = "third"
-	item_to_deploy = /turf/open_space
-	item_to_deploy2 = /obj/structure/shuttle/part/dropship_omaha/structure_ramp
+	deployable = /turf/open_space
+	deployable2 = /obj/structure/shuttle/part/dropship_omaha/structure_ramp
 
 /obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_fourth
 	mode = "fourth"
-	item_to_deploy = /turf/open_space
-	item_to_deploy2 = /obj/structure/stairs/multiz/up/dropship_ramp/omaha
+	deployable = /turf/open_space
+	deployable2 = /obj/structure/stairs/multiz/up/dropship_ramp/omaha
 
 /obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_fifth
 	mode = "fifth"
-	item_to_deploy = /turf/closed/shuttle/dropship_omaha/wall_mid_52
-	item_to_deploy2 = /obj/structure/stairs/multiz/down/dropship_ramp/omaha
+	deployable = /turf/closed/shuttle/dropship_omaha/wall_mid_52
+	deployable2 = /obj/structure/stairs/multiz/down/dropship_ramp/omaha
 
 /obj/deployer/shuttle/dropship/dummy_part/midway
-	item_to_deploy = /turf/closed/shuttle/dropship_midway
+	deployable = /turf/closed/shuttle/dropship_midway
 
 //// midway ////
 
 /obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_first
 	mode = "first"
-	item_to_deploy = /turf/open_space
+	deployable = /turf/open_space
 
 /obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_second
 	mode = "second"
-	item_to_deploy = /turf/open_space
-	item_to_deploy2 = /obj/structure/shuttle/part/dropship_midway/structure_ramp
+	deployable = /turf/open_space
+	deployable2 = /obj/structure/shuttle/part/dropship_midway/structure_ramp
 
 /obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_third
 	mode = "third"
-	item_to_deploy = /turf/open_space
-	item_to_deploy2 = /obj/structure/shuttle/part/dropship_midway/structure_ramp
+	deployable = /turf/open_space
+	deployable2 = /obj/structure/shuttle/part/dropship_midway/structure_ramp
 
 /obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_fourth
 	mode = "fourth"
-	item_to_deploy = /turf/open_space
-	item_to_deploy2 = /obj/structure/stairs/multiz/up/dropship_ramp/midway
+	deployable = /turf/open_space
+	deployable2 = /obj/structure/stairs/multiz/up/dropship_ramp/midway
 
 /obj/deployer/shuttle/dropship/dummy_part/midway/adjustable_fifth
 	mode = "fifth"
-	item_to_deploy = /turf/closed/shuttle/dropship_midway/wall_mid_52
-	item_to_deploy2 = /obj/structure/stairs/multiz/down/dropship_ramp/midway
+	deployable = /turf/closed/shuttle/dropship_midway/wall_mid_52
+	deployable2 = /obj/structure/stairs/multiz/down/dropship_ramp/midway
 
 /obj/deployer/shuttle/dropship/m90_minigun
 	icon = 'icons/obj/structures/machinery/midway/misc_96x96.dmi'
 	icon_state = "m90_minigun_deployer"
-	item_to_deploy = /obj/structure/dropship_equipment/weapon/m90_minigun
-	var/item_to_deploy2 = /obj/effect/attach_point/weapon/dropship_midway/nose
+	deployable = /obj/structure/dropship_equipment/weapon/m90_minigun
+	var/deployable2 = /obj/effect/attach_point/weapon/dropship_midway/nose
 	invisibility = 0
 	layer = UNDER_TURF_LAYER
 	var/obj/structure/dropship_equipment/weapon/m90_minigun/linked_m90
@@ -326,8 +326,8 @@
 		if(linked_m90)
 			linked_m90.forceMove(turf_below)
 		else
-			linked_m90 = new item_to_deploy(turf_below)
-			linked_nose = new item_to_deploy2(turf_below)
+			linked_m90 = new deployable(turf_below)
+			linked_nose = new deployable2(turf_below)
 			linked_m90.linked_shuttle = src.linked_dropship
 
 			linked_nose.install_equipment(linked_m90)
@@ -347,8 +347,8 @@
 	var/deployed_already = FALSE
 	var/our_glob_list
 
-	item_to_deploy = /turf/open/shuttle/dropship/midway/basic/invisible
-	var/item_to_deploy2 = /turf/open/shuttle/dropship/midway/openspace // name this better please
+	deployable = /turf/open/shuttle/dropship/midway/basic/invisible
+	var/deployable2 = /turf/open/shuttle/dropship/midway/openspace // name this better please
 
 /obj/deployer/shuttle/dropship/roof_loader/Initialize()
 	. = ..()
@@ -365,7 +365,7 @@
 
 /obj/deployer/shuttle/dropship/roof_loader/omaha
 	template_preset = "omaha"
-	item_to_deploy = /turf/open/shuttle/dropship/omaha/basic/invisible
+	deployable = /turf/open/shuttle/dropship/omaha/basic/invisible
 
 /obj/deployer/shuttle/dropship/roof_loader/omaha/Initialize()
 	. = ..()
@@ -373,7 +373,7 @@
 
 /obj/deployer/shuttle/dropship/roof_loader/midway
 	template_preset = "midway"
-	item_to_deploy = /turf/open/shuttle/dropship/midway/basic/invisible
+	deployable = /turf/open/shuttle/dropship/midway/basic/invisible
 
 /obj/deployer/shuttle/dropship/roof_loader/midway/Initialize()
 	. = ..()
@@ -450,16 +450,16 @@
 
 	for(snake in linked_fauxes)
 		turf_loc = snake.loc
-		turf_loc.place_on_top(item_to_deploy)
+		turf_loc.place_on_top(deployable)
 	for(runner in linked_fauxes)
 		turf_loc = runner.loc
 		if(istransparentturf(turf_loc))
-			turf_loc.place_on_top(item_to_deploy2)
+			turf_loc.place_on_top(deployable2)
 		else
 			turf_loc.ScrapeAway() // just so that there's a bit of a gradeint being like tiled floor and then goes like plating, its gon look better this way trust me
 	for(canopius in linked_fauxes)
 		turf_loc = canopius.loc
-		turf_loc.place_on_top(item_to_deploy2)
+		turf_loc.place_on_top(deployable2)
 	for(swag in linked_fauxes) // cuts the underlying turf icon and replaces the turf with a transparent one but adds what hasnt been cut so it fits snugly
 		turf_loc = swag.loc
 		var/icon/turf_icon = icon(turf_loc.icon, turf_loc.icon_state, turf_loc.dir)
@@ -468,7 +468,7 @@
 		cutter.ChangeOpacity(256)
 		turf_icon.Blend(cutter, ICON_OVERLAY)
 		turf_icon.SwapColor(rgb(0, 0, 0, 255), rgb(0, 0, 0, 0))
-		turf_loc.place_on_top(item_to_deploy2)
+		turf_loc.place_on_top(deployable2)
 		turf_loc.overlays += turf_icon
 
 /obj/deployer/shuttle/dropship/roof_loader/proc/crush_shit()
@@ -495,17 +495,17 @@
 		fauxie.forceMove(locate(src.x + fauxie.recorded_offset_X, src.y + fauxie.recorded_offset_Y, target_turf.z))
 
 /obj/deployer/shuttle/dropship/fake_roof_deployer
-	item_to_deploy = /obj/structure/dropship_roof
+	deployable = /obj/structure/dropship_roof
 
 	var/image/roof_image
 	var/roof_icon = ""
 	var/obj/structure/dropship_roof/our_roof
 
 /obj/deployer/shuttle/dropship/fake_roof_deployer/omaha
-	item_to_deploy = /obj/structure/dropship_roof/omaha
+	deployable = /obj/structure/dropship_roof/omaha
 
 /obj/deployer/shuttle/dropship/fake_roof_deployer/midway
-	item_to_deploy = /obj/structure/dropship_roof/midway
+	deployable = /obj/structure/dropship_roof/midway
 
 /obj/deployer/shuttle/dropship/fake_roof_deployer/lateShuttleMove()
 	.=..()
@@ -514,7 +514,7 @@
 		if(our_roof)
 			our_roof.forceMove(target_turf)
 		else
-			our_roof = new item_to_deploy(target_turf)
+			our_roof = new deployable(target_turf)
 
 /obj/structure/dropship_roof
 	name = "dropship roof"

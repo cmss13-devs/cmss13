@@ -697,15 +697,15 @@
 			rampazoid.cached_icon_state = "[our_turf.icon_state]-low"
 
 		if(rampazoid.mode == "fifth")
-			turf_beneath.place_on_top(rampazoid.item_to_deploy)
-			rampazoid.linked_deployable = new rampazoid.item_to_deploy2(our_turf)
+			turf_beneath.place_on_top(rampazoid.deployable)
+			rampazoid.linked_deployable = new rampazoid.deployable2(our_turf)
 			for(var/mob/living/carbon/morbius in our_turf.contents)
 				rampazoid.loc.Entered(morbius)
 		else
-			if(rampazoid.item_to_deploy2)
-				rampazoid.linked_deployable = new rampazoid.item_to_deploy2(turf_beneath)
+			if(rampazoid.deployable2)
+				rampazoid.linked_deployable = new rampazoid.deployable2(turf_beneath)
 			lower_things(rampazoid)
-			our_turf.place_on_top(rampazoid.item_to_deploy)
+			our_turf.place_on_top(rampazoid.deployable)
 
 		if(rampazoid.linked_deployable)
 			rampazoid.linked_deployable.icon = rampazoid.cached_icon

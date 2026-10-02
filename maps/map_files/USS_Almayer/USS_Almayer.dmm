@@ -21152,7 +21152,7 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/hanger)
 "bcf" = (
-/obj/docking_port/stationary/marine_dropship/almayer_hangar_midway,
+/obj/docking_port/stationary/marine_dropship/almayer_hangar_omaha,
 /turf/open_space,
 /area/almayer/middeck/hanger)
 "bcg" = (
@@ -34246,7 +34246,7 @@
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/engineering/lower/workshop/hangar)
 "bFJ" = (
-/obj/docking_port/stationary/marine_dropship/almayer_hangar_omaha,
+/obj/docking_port/stationary/marine_dropship/almayer_hangar_midway,
 /turf/open_space,
 /area/almayer/middeck/hanger)
 "bFK" = (
@@ -88437,15 +88437,6 @@
 /obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/almayer/red,
 /area/almayer/lifeboat_pumps/north2)
-"taY" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/closed/wall/almayer/white,
-/area/almayer/medical/lower_medical_medbay)
 "tcd" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/radio{
@@ -146595,7 +146586,7 @@ xfT
 bst
 bJw
 rlZ
-taY
+aZK
 dTZ
 bHg
 hzs
@@ -146698,7 +146689,7 @@ eas
 bLS
 lJG
 rlZ
-taY
+aZK
 dTZ
 afp
 afc
@@ -146801,7 +146792,7 @@ xMs
 xMs
 bPz
 rlZ
-taY
+aZK
 dTZ
 afq
 afd
@@ -146904,7 +146895,7 @@ waD
 bkE
 lJG
 rlZ
-taY
+aZK
 dTZ
 afq
 afe
@@ -147007,7 +146998,7 @@ bez
 xMs
 bRP
 rlZ
-taY
+aZK
 dTZ
 aft
 eTB
@@ -172245,7 +172236,7 @@ azJ
 azJ
 azJ
 azJ
-bcf
+bFJ
 azJ
 azJ
 azJ
@@ -174511,7 +174502,7 @@ azJ
 azJ
 azJ
 azJ
-bFJ
+bcf
 azJ
 azJ
 azJ

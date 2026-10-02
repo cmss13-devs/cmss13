@@ -1361,18 +1361,16 @@
 //=========================//LACN\\================================\\
 
 /obj/item/clothing/under/marine/lacn
+	name = "\improper LACN Uniform"
+	desc = "A standard-issue uniform worn by members of the LACN. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "lacn_uniform"
 	worn_state = "lacn_uniform"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	item_icons = list(
-		WEAR_BODY = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
 	)
-
-/obj/item/clothing/under/marine/lacn/uniform
-	name = "\improper LACN Uniform"
-	desc = "A standard-issue uniform worn by members of the LACN. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
 
 /obj/item/clothing/under/marine/lacn/police
 	name = "\improper LACN Army Police Uniform"
@@ -1419,8 +1417,8 @@
 /obj/item/clothing/under/marine/lacn/co
 	name = "\improper LACN Commanding Officer Uniform"
 	desc = "A standard-issue jumpsuit worn by Commanders of the LACN. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
-	icon_state = "lacn_engi_alt"
-	worn_state = "lacn_engi_alt"
+	icon_state = "lacn_CO"
+	worn_state = "lacn_CO"
 
 /obj/item/clothing/under/rank/synthetic/lacn/synth
 	name = "\improper LACN Support Synthetic Uniform"
@@ -1431,7 +1429,7 @@
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	item_icons = list(
-		WEAR_BODY = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
 	)
 
 //=========================//Freelancer\\================================\\

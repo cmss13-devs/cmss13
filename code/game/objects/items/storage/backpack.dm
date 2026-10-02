@@ -1453,6 +1453,9 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	desc = "Tactical satchel manufactured by one of the Alphatech subsidiaries. Very lightweight beltbag variant that utilizes UA standard MOLLE fastening systems. Standard issue for LACN base personal."
 	icon_state = "lacnbackpack"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+	)
 
 /obj/item/storage/backpack/molle/backpack/lacn
 	name = "\improper LACN TA6 MOLLE Rucksack"

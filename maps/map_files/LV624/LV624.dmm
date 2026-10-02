@@ -1851,6 +1851,16 @@
 "ahf" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/north_jungle)
+"ahg" = (
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "LZ1: Nexus Landing Zone";
+	dwidth = 8;
+	width = 17;
+	dheight = 12;
+	height = 24
+	},
+/turf/open_space,
+/area/sky)
 "ahh" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_casing,
@@ -7295,16 +7305,6 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_west_jungle)
-"aLz" = (
-/obj/docking_port/stationary/marine_dropship/lz1{
-	name = "LZ1: Nexus Landing Zone";
-	dwidth = 8;
-	width = 17;
-	dheight = 12;
-	height = 24
-	},
-/turf/open_space,
-/area/sky)
 "aLF" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/grass/grass1,
@@ -95029,7 +95029,7 @@ qht
 qht
 qht
 qht
-aLz
+ahg
 qht
 qht
 qht

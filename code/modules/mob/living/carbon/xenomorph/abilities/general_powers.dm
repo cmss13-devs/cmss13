@@ -30,6 +30,7 @@
 		to_chat(xeno, SPAN_WARNING("Bad place for a garden!"))
 		return
 
+	var/list/to_convert
 	var/obj/effect/alien/weeds/node/node = locate() in turf
 	if(node)
 		if(node.weed_strength > xeno.weed_level)
@@ -43,9 +44,6 @@
 		if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, node, INTERRUPT_ALL))
 			to_chat(xeno, SPAN_WARNING("There's a pod here already! You decide to not replace it."))
 			return
-		to_chat(xeno, SPAN_NOTICE("We uproot and replace the weed node."))
-		playsound(xeno.loc, "alien_resin_break", 25)
-		qdel(node)
 
 	var/obj/effect/alien/resin/trap/resin_trap = locate() in turf
 	if(resin_trap)
@@ -73,9 +71,11 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	var/list/to_convert
 	if(node)
+		to_chat(xeno, SPAN_NOTICE("We uproot and replace the weed node."))
+		playsound(xeno.loc, "alien_resin_break", 25)
 		to_convert = node.children.Copy()
+		qdel(node)
 
 	xeno.visible_message(SPAN_XENONOTICE("\The [xeno] regurgitates a pulsating node and plants it on the ground!"),
 	SPAN_XENONOTICE("We regurgitate a pulsating node and plant it on the ground!"), null, 5)

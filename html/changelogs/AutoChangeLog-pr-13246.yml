@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Survivor roles are now slotted in random order so that its random if whitelisted survivors take slots first or not"
+  - bugfix: "Role weights for fax responders, predators, and whitelisted roles are now set rather than falling back to shipside weight"

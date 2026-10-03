@@ -169,6 +169,7 @@ GLOBAL_LIST_INIT(RESTRICTED_CAMERA_NETWORKS, list( //Those networks can only be 
 #define FLAMESHAPE_IRREGULAR "irregular"
 #define FLAMESHAPE_TRIANGLE "triangle"
 #define FLAMESHAPE_LINE "line"
+#define FLAMESHAPE_SQUARE "square"
 
 #define FLAME_REAGENT_USE_AMOUNT 1
 

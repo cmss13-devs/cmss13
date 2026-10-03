@@ -1432,7 +1432,159 @@
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down
 	icon_state = "rasputin15"
 
+/// UD-6 MOHAWK OMAHA ///
 
+/turf/open/shuttle/dropship/omaha
+	icon = 'icons/turf/omaha/floors.dmi'
+	icon_state = "basic"
+	dir = NORTH
+
+/turf/open/shuttle/dropship/omaha/basic
+	icon_state = "basic"
+
+/turf/open/shuttle/dropship/omaha/grated
+	icon_state = "grated"
+
+/turf/open/shuttle/dropship/omaha/external
+	icon_state = "external"
+
+/turf/open/shuttle/dropship/omaha/marked
+	icon_state = "marked"
+
+/turf/open/shuttle/dropship/omaha/openspace
+	name = "open space"
+	icon = 'icons/turf/floors/floors.dmi'
+	icon_state = "transparent"
+
+/turf/open/shuttle/dropship/omaha/basic/invisible
+	icon_state = "basic"
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/turf/open/shuttle/dropship/omaha/openspace/Initialize()
+	.=..()
+	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
+	update_vis_contents()
+
+/// RAMP ////
+
+/turf/open/shuttle/dropship/omaha/ramp
+	name = "Ramp"
+	icon = 'icons/turf/omaha/ramp.dmi'
+	icon_state = "ramp-10-low"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_00
+	icon_state = "ramp-1"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_01
+	icon_state = "ramp-2"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_02
+	icon_state = "ramp-3"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_10
+	icon_state = "ramp-4"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_11
+	icon_state = "ramp-5"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_12
+	icon_state = "ramp-6"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_20
+	icon_state = "ramp-7"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_21
+	icon_state = "ramp-8"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_22
+	icon_state = "ramp-9"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_30
+	icon_state = "ramp-10"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_31
+	icon_state = "ramp-11"
+
+/turf/open/shuttle/dropship/omaha/ramp/rampio_32
+	icon_state = "ramp-12"
+
+//// MIDWAY ///
+
+/turf/open/shuttle/dropship/midway
+	icon = 'icons/turf/midway/floors.dmi'
+	icon_state = "basic"
+	dir = NORTH
+
+/turf/open/shuttle/dropship/midway/basic
+	icon_state = "basic"
+
+/turf/open/shuttle/dropship/midway/grated
+	icon_state = "grated"
+
+/turf/open/shuttle/dropship/midway/external
+	icon_state = "external"
+
+/turf/open/shuttle/dropship/midway/marked
+	icon_state = "marked"
+
+/turf/open/shuttle/dropship/midway/openspace
+	name = "open space"
+	icon = 'icons/turf/floors/floors.dmi'
+	icon_state = "transparent"
+
+/turf/open/shuttle/dropship/midway/basic/invisible
+	icon_state = "basic"
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/turf/open/shuttle/dropship/midway/openspace/Initialize()
+	.=..()
+	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
+	update_vis_contents()
+
+/// MIDWAY RAMP ////
+
+/turf/open/shuttle/dropship/midway/ramp
+	name = "Ramp"
+	icon = 'icons/turf/midway/ramp.dmi'
+	icon_state = "ramp-10-low"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_00
+	icon_state = "ramp-1"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_01
+	icon_state = "ramp-2"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_02
+	icon_state = "ramp-3"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_10
+	icon_state = "ramp-4"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_11
+	icon_state = "ramp-5"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_12
+	icon_state = "ramp-6"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_20
+	icon_state = "ramp-7"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_21
+	icon_state = "ramp-8"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_22
+	icon_state = "ramp-9"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_30
+	icon_state = "ramp-10"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_31
+	icon_state = "ramp-11"
+
+/turf/open/shuttle/dropship/midway/ramp/rampio_32
+	icon_state = "ramp-12"
+
+/// MIDWAY END ///
 
 /turf/open/shuttle/predship
 	name = "ship floor"

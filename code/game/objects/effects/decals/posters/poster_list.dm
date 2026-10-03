@@ -516,3 +516,8 @@ Template
 	icon_state="poster101"
 	name = "Light of science"
 	desc = "Funded by Weyland-Yutani to try on improving the USCM's view of their research staff. This one, specifically, dates way back to when research laboratories were first estabilished onboard USCM patrol vessels, after a good amount of government lobbying. The art is geometric, but yet expressive with its vibrant warm colors, of an artistic style made by an unknown artist. The art itself is supposed to represent the burning light of 'Science', glowing and piercing the dark as a star, opening paths through the expansive obscure."
+
+/datum/poster/poster_102
+	icon_state="poster101"
+	name = "Con-Amalagated poster"
+	desc = "A poster for the con-am corporation. It looks far more colorful than the drab looking station it is found on."

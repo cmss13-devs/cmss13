@@ -13,50 +13,50 @@
 /obj/item/tank/emergency_oxygen/engi,
 /obj/item/clothing/mask/rebreather,
 /turf/open/floor/shiva/multi_tiles/east,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "d" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassbb_1"
 	},
 /turf/open/auto_turf/snow/layer3,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "h" = (
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "p" = (
 /turf/open/auto_turf/snow/layer3,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "r" = (
 /turf/open/auto_turf/snow/layer4,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "A" = (
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
 /area/shiva/interior/oob)
 "B" = (
 /obj/structure/largecrate/random/mini/chest/c,
 /turf/open/auto_turf/snow/layer3,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "C" = (
 /turf/closed/wall/shiva/prefabricated/pink,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "I" = (
 /turf/open/auto_turf/snow/layer2,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "L" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassall_1"
 	},
 /turf/open/auto_turf/snow/layer3,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "O" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassgb_2"
 	},
 /turf/open/auto_turf/snow/layer2,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "X" = (
 /turf/open/floor/shiva/radiator_tile,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 
 (1,1,1) = {"
 h

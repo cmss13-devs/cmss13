@@ -1101,7 +1101,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/supply/asrs/attack_hand(mob/user as mob)
-	if(!is_mainship_level(z))
+	if(!is_mainship_level(z) && !(istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base) && is_ground_level(z)))
 		return
 	if(!allowed(user))
 		to_chat(user, SPAN_DANGER("Access Denied."))

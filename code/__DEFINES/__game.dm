@@ -28,6 +28,7 @@
 #define MAP_ICE_COLONY "Ice Colony" // Highpop only
 #define MAP_LV_624 "LV-624"
 #define MAP_BIG_RED "Solaris Ridge"
+#define MAP_BIG_RED_FORWARD_BASE "Solaris Ridge - Forward Base"
 #define MAP_PRISON_STATION "Fiorina Cellblocks"
 #define MAP_PRISON_STATION_V3 "Fiorina Science Annex"
 #define MAP_WHISKEY_OUTPOST "Whiskey Outpost" // Unused
@@ -35,6 +36,7 @@
 #define MAP_SOROKYNE_STRATA "Sorokyne Strata"
 #define MAP_CORSAT "CORSAT" // Highpop only
 #define MAP_KUTJEVO "Kutjevo Refinery"
+#define MAP_KUTJEVO_FORWARD_BASE "Kutjevo Refinery - Forward Base"
 #define MAP_ICE_COLONY_V3 "Shivas Snowball" //Ice Rework, low pop enabled.
 #define MAP_RUNTIME "USS Runtime"
 #define MAP_LV522_CHANCES_CLAIM "LV-522 Chance's Claim"
@@ -47,6 +49,7 @@
 #define MAP_HUNTERSHIP "Hunter Ship"
 
 #define GAMEMODE_DISTRESS_SIGNAL "Distress Signal"
+#define GAMEMODE_FORWARD_BASE "Distress Signal: Forward Base"
 #define GAMEMODE_WHISKEY_OUTPOST "Whiskey Outpost"
 #define GAMEMODE_HIVE_WARS "Hive Wars"
 #define GAMEMODE_FACTION_CLASH "Faction Clash"

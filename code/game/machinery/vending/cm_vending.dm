@@ -1453,6 +1453,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		else
 			if(prod_type == /obj/item/device/radio/headset/almayer/marine)
 				prod_type = headset_type
+				if(istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base) && !squad_tag && user.assigned_squad)
+					prod_type = /obj/item/device/radio/headset/almayer/marine/self_setting
 			else if(prod_type == /obj/item/clothing/gloves/marine)
 				prod_type = gloves_type
 			if(stack_amount > 0 && ispath(prod_type, /obj/item/stack))

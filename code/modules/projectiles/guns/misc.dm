@@ -174,9 +174,9 @@
 			return FALSE
 
 
-/obj/item/weapon/gun/pkp
+/obj/item/weapon/gun/pkp//misinformation it's not based on a pkp
 	name = "\improper QYJ-72 General Purpose Machine Gun"
-	desc = "The QYJ-72 is the standard GPMG of the Union of Progressive Peoples, chambered in 7.62x54mmR, it fires a hard-hitting cartridge with a high rate of fire. With an extremely large box at 250 rounds, the QJY-72 is designed with suppressing fire and accuracy by volume of fire at its forefront. \n<b>Alt-click it to open the feed cover and allow for reloading.</b>"
+	desc = "The QYJ-72 is the standard GPMG of the Union of Progressive Peoples, chambered in 12x28mm, it fires a hard-hitting cartridge with a high rate of fire. With an extremely large box at 250 rounds, the QJY-72 is designed with overwhelming firepower and accuracy by volume of fire at its forefront. \n<b>Alt-click it to open the feed cover and allow for reloading.</b>"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/machineguns.dmi'
 	icon_state = "qjy72"
 	item_state = "qjy72"
@@ -232,13 +232,13 @@
 
 /obj/item/weapon/gun/pkp/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_10
+	fire_delay = FIRE_DELAY_TIER_11
 	burst_amount = BURST_AMOUNT_TIER_6
-	burst_delay = FIRE_DELAY_TIER_9
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+	burst_delay = FIRE_DELAY_TIER_11
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	fa_max_scatter = SCATTER_AMOUNT_TIER_8
-	scatter = SCATTER_AMOUNT_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_9
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
 	scatter_unwielded = SCATTER_AMOUNT_TIER_10
 	damage_mult = BASE_BULLET_DAMAGE_MULT

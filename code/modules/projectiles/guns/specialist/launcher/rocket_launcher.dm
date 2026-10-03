@@ -379,12 +379,13 @@
 //UPP Rocket Launcher
 
 /obj/item/weapon/gun/launcher/rocket/upp
-	name = "\improper HJRA-12 Handheld Anti-Tank Rocket Launcher"
-	desc = "The HJRA-12 Handheld Anti-Tank Rocket Launcher is the standard Anti-Armor weapon of the UPP. It is designed to be easy to use and to take out or disable armored vehicles."
+	name = "\improper HJRA-12 Handheld Anti-Tank Grenade Launcher"
+	desc = "The current standard anti-armor weapon of the UPPAC, the HJRA-12 is designed to be simple to use and manufacture, though quite heavy. It's widely produced; leaving it used by UPP-backed rebels just as often as actual Union soldiers."
+	desc_lore = "The HJRA-12 has a long and storied development history, first adopted in 2170 as a replacement for the older RPG-142 used throughout the Dog War. Today it's rarely issued out, mostly used to demolish structures from afar with thermobaric or high-explosive rockets for formations without armored or air support, the launcher itself is already quite heavy and the large rockets it fires only adds onto that, additionally the dedicated anti-tank rockets have poor preformance against larger and more modern tanks, leaving most anti-tank duties carried out by the disposable RPG-150, and demolition often carried out by the lighter URO-H thermobaric launcher."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/rocket_launchers.dmi'
 	icon_state = "hjra12"
 	item_state = "hjra12"
-	skill_locked = TRUE
+	skill_locked = FALSE
 	current_mag = /obj/item/ammo_magazine/rocket/upp/at
 	unacidable = TRUE
 	explo_proof = TRUE

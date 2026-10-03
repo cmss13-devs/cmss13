@@ -95,23 +95,23 @@
 /obj/item/ammo_box/rounds/smg/heap/empty
 	empty = TRUE
 
-//----------------5.45x39mm Ammunition Boxes (for UPP Type71 family)------------------
+//----------------10x27mm Ammunition Boxes (for UPP Type71 family)------------------
 
 /obj/item/ammo_box/rounds/type71
-	name = "\improper rifle ammunition box (5.45x39mm)"
-	desc = "A 5.45x39mm ammunition box. Used to refill Type71 magazines. It comes with a leather strap allowing to wear it on the back."
+	name = "\improper rifle ammunition box (10x27mm)"
+	desc = "A 10x27mm ammunition box. Used to refill Type71 magazines. It comes with a leather strap allowing to wear it on the back."
 	icon_state = "base_type71"
 	overlay_gun_type = "_rounds_type71"
 	overlay_content = "_type71_reg"
-	caliber = "5.45x39mm"
+	caliber = "10x27mm"
 	default_ammo = /datum/ammo/bullet/rifle/type71
 
 /obj/item/ammo_box/rounds/type71/empty
 	empty = TRUE
 
 /obj/item/ammo_box/rounds/type71/ap
-	name = "\improper rifle ammunition box (5.45x39mm AP)"
-	desc = "A 5.45x39mm armor-piercing ammunition box. Used to refill Type71 AP magazines. It comes with a leather strap allowing to wear it on the back."
+	name = "\improper rifle ammunition box (10x27mm AP)"
+	desc = "A 10x27mm armor-piercing ammunition box. Used to refill Type71 AP magazines. It comes with a leather strap allowing to wear it on the back."
 	icon_state = "base_type71"
 	overlay_gun_type = "_rounds_type71"
 	overlay_content = "_type71_ap"
@@ -121,8 +121,8 @@
 	empty = TRUE
 
 /obj/item/ammo_box/rounds/type71/heap
-	name = "rifle ammunition box (5.45x39mm HEAP)"
-	desc = "A 5.45x39mm high-explosive armor-piercing ammunition box. Used to refill Type71 HEAP magazines. It comes with a leather strap allowing to wear it on the back."
+	name = "rifle ammunition box (10x27mm HEAP)"
+	desc = "A 10x27mm high-explosive armor-piercing ammunition box. Used to refill Type71 HEAP magazines. It comes with a leather strap allowing to wear it on the back."
 	icon_state = "base_type71"
 	overlay_gun_type = "_rounds_type71"
 	overlay_content = "_type71_heap"

@@ -19,9 +19,8 @@
 /datum/equipment_preset/corpse/load_status(mob/living/carbon/human/new_human)
 	. = ..(new_human)
 
-	// These two values matter because they are checked on death for weed_food
-	new_human.undefibbable = TRUE
-	SEND_SIGNAL(new_human, COMSIG_HUMAN_SET_UNDEFIBBABLE)
+	// undefibbable matters because it is checked on death for weed_food
+	new_human.set_undefibbable()
 	if(xenovictim)
 		new_human.chestburst = 2
 

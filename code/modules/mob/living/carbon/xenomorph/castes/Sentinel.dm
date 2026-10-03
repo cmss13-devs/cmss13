@@ -95,6 +95,17 @@
 	if(skillcheck(carbon_target, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX ))
 		carbon_target.visible_message(SPAN_DANGER("[carbon_target] withstands the neurotoxin!"))
 		return original_damage //endurance 5 makes you immune to weak neurotoxin
+	//XvX code
+	if(isxeno(carbon_target) && carbon_target.mob_size < MOB_SIZE_BIG)
+		if(buffed_slashes == max_buffed_slashes)
+			to_chat(carbon_target, SPAN_XENOHIGHDANGER("You feel your muscles spasm, as [bound_xeno] slashes you with its neurotoxin coated claws!"))
+			carbon_target.visible_message(SPAN_DANGER("[carbon_target] stumbles as the neurotoxin overwhelms it!"))
+			carbon_target.Stun(0.5)
+			buffed_slashes --
+			return original_damage
+		else
+			carbon_target.visible_message(SPAN_DANGER("[carbon_target] easily resists the neurotoxin!"))
+			return original_damage
 	if(ishuman(carbon_target))
 		var/mob/living/carbon/human/human = carbon_target
 		if(human.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || human.species.flags & NO_NEURO)
@@ -102,7 +113,7 @@
 			return original_damage //species like zombies or synths are immune to neurotoxin
 		if (buffed_slashes)
 			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("Our slash applied a large amount of neurotoxin!"))
-			to_chat(carbon_target, SPAN_XENOHIGHDANGER("You feel your muscles, as [bound_xeno] slashes you with its neurotoxin coated claws!"))
+			to_chat(carbon_target, SPAN_XENOHIGHDANGER("You feel your muscles spasm, as [bound_xeno] slashes you with its neurotoxin coated claws!"))
 			var/datum/effects/sentinel_neuro_stacks/sns = null
 			for (var/datum/effects/sentinel_neuro_stacks/sentinel_neuro_stacks in human.effects_list)
 				sns = sentinel_neuro_stacks

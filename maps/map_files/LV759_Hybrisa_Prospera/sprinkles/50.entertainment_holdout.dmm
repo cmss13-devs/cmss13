@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ac" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/vents/pump_hybrisa,
 /obj/structure/sink{
 	dir = 4;
@@ -113,7 +113,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/strata_decals/grime/grime3,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "2"
 	},
@@ -315,13 +315,13 @@
 /area/template_noop)
 "md" = (
 /obj/structure/disposalpipe/segment,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/template_noop)
 "ok" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/cable/white{
 	color = "#007740";
 	icon_state = "1-4";
@@ -769,15 +769,15 @@
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "2"
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/template_noop)
 "IU" = (
 /obj/effect/decal/strata_decals/grime/grime4{
 	dir = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 9
 	},
@@ -901,7 +901,7 @@
 /area/template_noop)
 "ON" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "3"
 	},
@@ -980,7 +980,7 @@
 /area/template_noop)
 "SG" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 10;
 	pixel_y = 21

@@ -148,6 +148,11 @@
 	if(H.health <= 0)
 		qdel(H)
 
+	// Same rider-drop fix as the top-level remove_hardpoint(). Only tanks have the rider system.
+	if(!QDELETED(H))
+		var/obj/vehicle/multitile/tank/tank_owner = istype(owner, /obj/vehicle/multitile/tank) ? owner : null
+		tank_owner?.obj_mark_on_top(H)
+
 //Returns all activatable hardpoints
 /obj/item/hardpoint/holder/proc/get_activatable_hardpoints(seat)
 	var/list/hps = list()

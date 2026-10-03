@@ -68,6 +68,10 @@
 		if(!should_move)
 			return FALSE
 
+	var/list/old_center = _current_center()
+	var/old_z = z
+	var/old_dir = dir
+
 	var/turf/old_turf = get_turf(src)
 	forceMove(get_step(src, direction))
 
@@ -84,12 +88,20 @@
 	if(force && (health <= 0)) // Broken and forced movement (currently only xenos)
 		interior.drop_human_bodies(old_turf)
 
+	var/list/new_center = _current_center()
+	if(new_center[1] != old_center[1] || new_center[2] != old_center[2] || z != old_z || dir != old_dir)
+		_update_riders_after_motion(old_center[1], old_center[2], old_z, old_dir, new_center[1], new_center[2], dir, direction)
+
 	return TRUE
 
 // Rotates the vehicle by deg degrees if possible
 /obj/vehicle/multitile/proc/try_rotate(deg)
 	if(!can_rotate(deg))
 		return FALSE
+
+	var/list/old_center = _current_center()
+	var/old_z = z
+	var/old_dir = dir
 
 	move_momentum = move_momentum * move_turn_momentum_loss_factor
 	if(abs(move_momentum) < 0.5)
@@ -111,6 +123,10 @@
 		move_next_sound_play = world.time + 10
 
 	update_icon()
+
+	var/list/new_center = _current_center()
+	if(new_center[1] != old_center[1] || new_center[2] != old_center[2] || z != old_z || dir != old_dir)
+		_update_riders_after_motion(old_center[1], old_center[2], old_z, old_dir, new_center[1], new_center[2], dir)
 
 	return TRUE
 
@@ -171,9 +187,12 @@
 
 	// Crashed with something that stopped us
 	if(!can_move)
+		var/crash_momentum = move_momentum
 		move_momentum = floor(move_momentum/2)
 		update_next_move()
 		interior_crash_effect()
+		// A hard enough stop throws whoever was riding the hull off it.
+		_scatter_riders_on_crash(crash_momentum)
 
 	return can_move
 

@@ -230,10 +230,16 @@
 		else
 			clear_fullscreen("weather")
 
+// Riding a tank hull shields from ground fire elsewhere, but not from fire mounted on that same hull.
 /mob/living/handle_flamer_fire(obj/flamer_fire/fire, damage, delta_time)
+	if(is_on_tank_hull() && fire.get_tank_on_top_of() != get_tank_on_top_of())
+		return
 	. = ..()
 	fire.set_on_fire(src)
 
 /mob/living/handle_flamer_fire_crossed(obj/flamer_fire/fire)
+	if(is_on_tank_hull() && fire.get_tank_on_top_of() != get_tank_on_top_of())
+		return
 	. = ..()
 	fire.set_on_fire(src)
+

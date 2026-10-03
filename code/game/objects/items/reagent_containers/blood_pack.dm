@@ -162,6 +162,9 @@
 	connected_from = null
 	update_beam()
 
+/obj/item/reagent_container/blood/item_action_slot_check(mob/user, slot)
+	return FALSE // Do not add our verbs to mobs
+
 /obj/item/reagent_container/blood/verb/toggle_mode()
 	set category = "Object"
 	set name = "Toggle Mode"

@@ -2,15 +2,29 @@
 //Vehicle Ammo
 //*******************************************************************************/
 
-/datum/supply_packs/ammo_ltb_cannon
-	name = "LTB Cannon magazines (x6)"
+/datum/supply_packs/jp8_canisters
+	name = "JP-8 Canisters (x2)"
 	contains = list(
-		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
-		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
-		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
-		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
-		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
-		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
+		/obj/item/reagent_container/glass/beaker/jp8_canister/full,
+		/obj/item/reagent_container/glass/beaker/jp8_canister/full,
+	)
+	cost = 15
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "JP-8 canister crate"
+	group = "Vehicle Ammo"
+
+// Uses the single-round he_shell magazine to match what the LTB Cannon actually loads.
+/datum/supply_packs/ammo_ltb_cannon
+	name = "86x455mm HE Shells (x8)"
+	contains = list(
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
+		/obj/item/ammo_magazine/hardpoint/ltb_cannon/he_shell,
 	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
@@ -55,6 +69,19 @@
 	containername = "Primary Flamer fuel tanks crate"
 	group = "Vehicle Ammo"
 
+// Smoke-tank equivalent of the fuel-tank pack above.
+/datum/supply_packs/ammo_drgn_flamer_smoke
+	name = "DRG-N Offensive Flamer Unit smoke tanks (x3)"
+	contains = list(
+		/obj/item/ammo_magazine/hardpoint/primary_flamer/smoke,
+		/obj/item/ammo_magazine/hardpoint/primary_flamer/smoke,
+		/obj/item/ammo_magazine/hardpoint/primary_flamer/smoke,
+	)
+	cost = 30
+	containertype = /obj/structure/closet/crate/ammo/alt/flame
+	containername = "Primary Flamer smoke tanks crate"
+	group = "Vehicle Ammo"
+
 /datum/supply_packs/ammo_dualcannon
 	name = "PARS-159 Boyars Dualcannon magazines (x5)"
 	contains = list(
@@ -83,18 +110,25 @@
 	containername = "M92T Grenade Launcher ammo crate"
 	group = "Vehicle Ammo"
 
+// Mimicks the star shell pack in the explosive sections. Also, does it really make sense to have those cost 4k ??
 /datum/supply_packs/ammo_slauncher
-	name = "M34A2-A Multipurpose Turret smoke screen magazines (x4)"
+	name = "M74 AGM-S star shell packets (x8)"
 	contains = list(
-		/obj/item/ammo_magazine/hardpoint/turret_smoke,
-		/obj/item/ammo_magazine/hardpoint/turret_smoke,
-		/obj/item/ammo_magazine/hardpoint/turret_smoke,
+		/obj/item/storage/box/packet/flare,
+		/obj/item/storage/box/packet/flare,
+		/obj/item/storage/box/packet/flare,
+		/obj/item/storage/box/packet/flare,
+		/obj/item/storage/box/packet/flare,
+		/obj/item/storage/box/packet/flare,
+		/obj/item/storage/box/packet/flare,
+		/obj/item/storage/box/packet/flare,
 	)
-	cost = 20
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "M34A2-A Multipurpose Turret smoke screen ammo crate"
+	cost = 10
+	containertype = /obj/structure/closet/crate/explosives
+	containername = "M34A2-A Multipurpose Turret flare ammo crate"
 	group = "Vehicle Ammo"
 
+/*
 /datum/supply_packs/ammo_towlauncher
 	name = "TOW Launcher magazines (x3)"
 	contains = list(/obj/item/hardpoint/secondary/towlauncher)
@@ -102,17 +136,7 @@
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "TOW launcher ammo crate"
 	group = "Vehicle Ammo"
-
-/datum/supply_packs/ammo_m56_cupola
-	name = "M56 Cupola magazines (x2)"
-	contains = list(
-		/obj/item/ammo_magazine/hardpoint/m56_cupola,
-		/obj/item/ammo_magazine/hardpoint/m56_cupola,
-	)
-	cost = 20
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "M56 Cupola ammo crate"
-	group = "Vehicle Ammo"
+*/
 
 /datum/supply_packs/tank_flamer_ammo
 	name = "LZR-N Flamer Unit fuel tanks (x2)"
@@ -134,19 +158,6 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "Bleihagel RE-RE700 Frontal Cannon ammo crate"
-	group = "Vehicle Ammo"
-
-/datum/supply_packs/ammo_flarelauncher
-	name = "M-87F Flare Launcher magazines (x4)"
-	contains = list(
-		/obj/item/ammo_magazine/hardpoint/flare_launcher,
-		/obj/item/ammo_magazine/hardpoint/flare_launcher,
-		/obj/item/ammo_magazine/hardpoint/flare_launcher,
-		/obj/item/ammo_magazine/hardpoint/flare_launcher,
-	)
-	cost = 20
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "M-87F Flare Launcher ammo crate"
 	group = "Vehicle Ammo"
 
 /datum/supply_packs/ammo_arcsentry

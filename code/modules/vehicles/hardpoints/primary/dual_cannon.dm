@@ -12,22 +12,22 @@
 	damage_multiplier = 0.2
 
 	health = 500
-	firing_arc = 60
+	traverse_arc = 60
 
 	origins = list(0, 1)
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/boyars_dualcannon
 	max_clips = 2
 
-	use_muzzle_flash = TRUE
-	angle_muzzleflash = FALSE
+	// Disabled until muzzle flashes are reworked to follow a rotating weapon.
+	use_muzzle_flash = FALSE
 	muzzleflash_icon_state = "muzzle_flash_double"
 
-	muzzle_flash_pos = list(
-		"1" = list(11, -29),
-		"2" = list(-11, 10),
-		"4" = list(-14, 9),
-		"8" = list(14, 9)
+	px_offsets = list(
+		"1" = list(11, -39),
+		"2" = list(-10, 50),
+		"4" = list(-40, 24),
+		"8" = list(40, 24)
 	)
 
 	scatter = 1
@@ -46,3 +46,10 @@
 /obj/item/hardpoint/primary/dualcannon/pmc
 	icon_state = "dual_cannon_wy"
 	disp_icon_state = "dual_cannon_wy"
+
+	px_offsets = list(
+		"1" = list(11, -39),
+		"2" = list(-10, 50),
+		"4" = list(-40, 4),
+		"8" = list(40, 24)
+	)

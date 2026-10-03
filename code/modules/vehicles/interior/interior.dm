@@ -286,8 +286,14 @@
 
 	return FALSE
 
-// Moves the atom to the exterior
-/datum/interior/proc/exit(atom/movable/A, turf/exit_turf)
+/**
+ * Dry-run of exit()'s own validation, with no side effects.
+ * Whether `A` could actually get out through `exit_turf` right now.
+ *
+ * Arguments:
+ * * show_message = Whether to tell `A` "Something is blocking the exit!" on failure.
+ */
+/datum/interior/proc/can_exit(atom/movable/A, turf/exit_turf, show_message = TRUE)
 	if(!exit_turf)
 		exit_turf = get_turf(exterior)
 	if(!exit_turf)
@@ -311,15 +317,26 @@
 				continue
 
 		if(O.BlockedPassDirs(A, exit_dir))
-			if(ismob(A))
+			if(show_message && ismob(A))
 				to_chat(A, SPAN_WARNING("Something is blocking the exit!"))
 			return FALSE
+
+	return TRUE
+
+// Moves the atom to the exterior
+/datum/interior/proc/exit(atom/movable/A, turf/exit_turf)
+	if(!exit_turf)
+		exit_turf = get_turf(exterior)
+	if(!can_exit(A, exit_turf))
+		return FALSE
 
 	var/mob/living/mob
 	if(ismob(A))
 		mob = A
 		for(var/datum/action/minimap/user_map in mob.actions)
 			user_map.clear_locator_override()
+		// Undoes the automatic minimap tracking redirect, or the blip would stay stuck on the vehicle.
+		mob.cancel_override_minimap_tracking(exterior, mob)
 	A.forceMove(get_turf(exit_turf))
 	update_passenger_count()
 	return TRUE

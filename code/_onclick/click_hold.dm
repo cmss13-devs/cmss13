@@ -107,6 +107,19 @@
 	// Add the hovered atom to the trace
 	LAZYADD(mouse_trace_history, over_obj)
 
+/**
+ * Cursor tracking for anything that needs to follow the mouse around the map (currently just
+ * vehicle turret aiming).
+ */
+/atom/MouseEntered(location, control, params)
+	. = ..()
+
+	var/mob/hovering_mob = usr
+	if(!hovering_mob?.tracking_mouse_position)
+		return
+
+	SEND_SIGNAL(hovering_mob, COMSIG_MOB_MOUSEMOVE, src, location, control, params)
+
 /client/MouseDrop(datum/src_object, datum/over_object, src_location, over_location, src_control, over_control, params)
 	. = ..()
 	if(HAS_TRAIT(usr, TRAIT_HAULED))

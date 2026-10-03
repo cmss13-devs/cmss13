@@ -22,17 +22,30 @@
 	src.homing_target = homing_target
 
 /datum/component/homing_projectile/RegisterWithParent()
+	RegisterSignal(parent, COMSIG_BULLET_STEP, PROC_REF(step_retarget))
 	RegisterSignal(parent, COMSIG_BULLET_TERMINAL, PROC_REF(terminal_retarget))
 
 /datum/component/homing_projectile/UnregisterFromParent()
-	UnregisterSignal(parent, COMSIG_BULLET_TERMINAL)
+	UnregisterSignal(parent, list(COMSIG_BULLET_STEP, COMSIG_BULLET_TERMINAL))
 	homing_target = null
 
 /datum/component/homing_projectile/Destroy()
 	homing_target = null
 	return ..()
 
+// Continuously re-aims toward the target's live position every tick of flight
+/datum/component/homing_projectile/proc/step_retarget()
+	SIGNAL_HANDLER
+	if(QDELETED(homing_target))
+		return
+	var/obj/projectile/projectile = parent
+	var/turf/homing_turf = get_turf(homing_target)
+	if(!homing_turf || homing_turf == get_turf(projectile))
+		return
+	projectile.retarget(homing_turf, keep_angle = FALSE)
+
 /datum/component/homing_projectile/proc/terminal_retarget()
+	SIGNAL_HANDLER
 	var/obj/projectile/projectile = parent
 	var/turf/homing_turf = get_turf(homing_target)
 	projectile.speed *= 2 // Double speed to ensure hitting next tick despite eventual movement

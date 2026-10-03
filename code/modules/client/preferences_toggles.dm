@@ -246,6 +246,48 @@ CLIENT_VERB(toggle_ambient_occlusion)
 		return
 	plane_master.backdrop(src.mob)
 
+CLIENT_VERB(toggle_vehicle_simple_transmission)
+	set name = "Toggle Vehicle Simple Transmission"
+	set category = "Preferences.Vehicle"
+	set desc = "Toggles between manually shifting gears and letting the vehicle pick its own gear."
+
+	prefs.toggles_vehicle ^= VEHICLE_SIMPLE_TRANSMISSION
+	// TEMP removal for test merge/event cases.
+	//prefs.save_preferences()
+	to_chat(src, SPAN_BOLDNOTICE("Vehicles will [(prefs.toggles_vehicle & VEHICLE_SIMPLE_TRANSMISSION) ? "now shift gears automatically" : "no longer shift gears automatically"] for you (this round only)."))
+
+CLIENT_VERB(toggle_vehicle_simple_controls)
+	set name = "Toggle Vehicle Simple Controls"
+	set category = "Preferences.Vehicle"
+	set desc = "Toggles between tank-relative gas/brake/turn controls and legacy absolute-direction WASD controls."
+
+	prefs.toggles_vehicle ^= VEHICLE_SIMPLE_CONTROLS
+	// TEMP removal for test merge/event cases.
+	//prefs.save_preferences()
+	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.toggles_vehicle & VEHICLE_SIMPLE_CONTROLS) ? "now use simple directional vehicle controls" : "no longer use simple directional vehicle controls"] (this round only)."))
+
+CLIENT_VERB(toggle_vehicle_simple_acceleration)
+	set name = "Toggle Vehicle Simple Acceleration"
+	set category = "Preferences.Vehicle"
+	set desc = "Toggles between the continuous cruise-loop acceleration model and discrete keypress-driven momentum."
+
+	prefs.toggles_vehicle ^= VEHICLE_SIMPLE_ACCELERATION
+	// TEMP removal for test merge/event cases.
+	//prefs.save_preferences()
+	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.toggles_vehicle & VEHICLE_SIMPLE_ACCELERATION) ? "now use simple vehicle acceleration" : "no longer use simple vehicle acceleration"] (this round only)."))
+	if(mob)
+		SEND_SIGNAL(mob, COMSIG_MOB_VEHICLE_PREFS_CHANGED)
+
+CLIENT_VERB(toggle_vehicle_units_mph)
+	set name = "Toggle Vehicle Speed Units"
+	set category = "Preferences.Vehicle"
+	set desc = "Toggles the driver HUD's speed/acceleration readout between km/h and mph."
+
+	prefs.toggles_vehicle ^= VEHICLE_UNITS_MPH
+	// TEMP removal for test merge/event cases.
+	//prefs.save_preferences()
+	to_chat(src, SPAN_BOLDNOTICE("Vehicle HUDs will now show speed in [(prefs.toggles_vehicle & VEHICLE_UNITS_MPH) ? "mph" : "km/h"] for you (this round only)."))
+
 CLIENT_VERB(toggle_member_publicity)
 	set name = "Toggle Membership Publicity"
 	set category = "Preferences"

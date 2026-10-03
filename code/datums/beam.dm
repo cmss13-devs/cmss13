@@ -143,6 +143,12 @@
 	anchored = TRUE
 	var/datum/beam/owner
 
+/**
+ * A plain ebeam segment rendered above a tank's hull and riders, like Oppressor's Tail Seize rope.
+ */
+/obj/effect/ebeam/above_tank
+	layer = TANK_ABOVE_RIDER_LAYER
+
 /obj/effect/ebeam/laser
 	name = "laser beam"
 	desc = "A laser beam!"

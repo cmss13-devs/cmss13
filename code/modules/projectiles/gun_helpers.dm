@@ -1016,7 +1016,10 @@ DEFINES in setup.dm, referenced here.
 		return target
 	if(!istype(target, /atom/movable/screen/click_catcher))
 		return null
-	return params2turf(modifiers[SCREEN_LOC], get_turf(user), user.client)
+	// params2turf() treats its "origin" turf as the center of the client's viewport, which breaks for a
+	// seated vehicle crewman whose eye isn't their own body.
+	var/turf/anchor = get_turf(user.client?.get_eye()) || get_turf(user)
+	return params2turf(modifiers[SCREEN_LOC], anchor, user.client)
 
 /// check if the gun contains any light source that is currently turned on.
 /obj/item/weapon/gun/proc/light_sources()

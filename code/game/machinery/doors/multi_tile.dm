@@ -305,6 +305,14 @@
 	var/linked_to_turf
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/linked_console
 
+/**
+ * The tank's designed entry/exit point, so just open for it instead of the generic vehicle bump handling.
+ * Sets V.skip_crash_response_entirely, since this "blocked" attempt isn't a real crash.
+ */
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/handle_vehicle_bump(obj/vehicle/multitile/V)
+	bumpopen(V.get_seat_mob(VEHICLE_DRIVER))
+	V.skip_crash_response_entirely = TRUE
+	return FALSE
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ex_act(severity)
 	return

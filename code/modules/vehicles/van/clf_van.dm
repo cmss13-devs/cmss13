@@ -44,15 +44,31 @@
 		"abstract" = 1
 	)
 
-	movement_sound = 'sound/vehicles/tank_driving.ogg'
+	movement_sound = 'sound/vehicles/box_van_driving.ogg'
 	honk_sound = 'sound/vehicles/honk_2_truck.ogg'
 
 	vehicle_light_range = 8
 
 	move_max_momentum = 3
 
+	engine_on = FALSE
+
+	uses_gear_transmission = TRUE
+	current_gear = "P"
+	top_speed = 3.5
+	base_acceleration = 1
+	// Matches the ARC's own fuel consumption.
+	base_fuel_use = 0.175
+	idle_fuel_use_mult = 0.2
+	overdrive_speed_mult = 0.3
+	desant_momentum_cap = 0.35
+
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/locomotion/van_wheels,
+		/obj/item/hardpoint/engine/van,
+		/obj/item/hardpoint/fuel_tank/van,
+		/obj/item/hardpoint/radiator/civilian,
+		/obj/item/hardpoint/battery/civilian,
 	)
 
 	move_turn_momentum_loss_factor = 1
@@ -63,11 +79,6 @@
 	door_locked = FALSE
 
 	mob_size_required_to_hit = MOB_SIZE_XENO
-
-	var/overdrive_next = 0
-	var/overdrive_cooldown = 15 SECONDS
-	var/overdrive_duration = 3 SECONDS
-	var/overdrive_speed_mult = 0.3 // Additive (30% more speed, adds to 80% more speed)
 
 	var/momentum_loss_on_weeds_factor = 0.2
 
@@ -93,6 +104,66 @@
 
 	for(var/I in GLOB.player_list)
 		add_default_image(SSdcs, I)
+
+	gear_stats = build_gear_stats()
+	cruise_control_granularity = gear_stats["D"]["max_speed"] * CRUISE_CONTROL_DEFAULT_GRANULARITY_FRACTION
+
+/obj/vehicle/multitile/clf_van/add_seated_verbs(mob/living/M, seat)
+	if(!M.client)
+		return
+	add_verb(M.client, list(
+		/obj/vehicle/multitile/proc/get_status_info,
+	))
+	if(seat == VEHICLE_DRIVER)
+		add_verb(M.client, list(
+			/obj/vehicle/multitile/proc/toggle_door_lock,
+			/obj/vehicle/multitile/proc/activate_horn,
+			/obj/vehicle/multitile/proc/name_vehicle,
+			/obj/vehicle/multitile/proc/toggle_cruise_control,
+			/obj/vehicle/multitile/proc/set_cruise_control_granularity,
+			/obj/vehicle/multitile/proc/toggle_turn_signal_north,
+			/obj/vehicle/multitile/proc/toggle_turn_signal_south,
+			/obj/vehicle/multitile/proc/toggle_turn_signal_east,
+			/obj/vehicle/multitile/proc/toggle_turn_signal_west,
+			/obj/vehicle/multitile/proc/toggle_engine,
+		))
+		give_action(M, /datum/action/human_action/vehicle_action/toggle_door_lock)
+		give_action(M, /datum/action/human_action/vehicle_action/toggle_engine)
+		give_action(M, /datum/action/human_action/vehicle_action/use_phone)
+		if(!(M.client.prefs.toggles_vehicle & VEHICLE_SIMPLE_ACCELERATION))
+			give_action(M, /datum/action/human_action/vehicle_action/toggle_cruise_control)
+			give_action(M, /datum/action/human_action/vehicle_action/set_cruise_control_granularity)
+		RegisterSignal(M, COMSIG_MOB_VEHICLE_PREFS_CHANGED, PROC_REF(on_driver_prefs_changed))
+		start_crew_hud(M, VEHICLE_DRIVER)
+	refresh_hardpoint_actions()
+
+/obj/vehicle/multitile/clf_van/remove_seated_verbs(mob/living/M, seat)
+	if(!M.client)
+		return
+	remove_verb(M.client, list(
+		/obj/vehicle/multitile/proc/get_status_info,
+	))
+	if(seat == VEHICLE_DRIVER)
+		remove_verb(M.client, list(
+			/obj/vehicle/multitile/proc/toggle_door_lock,
+			/obj/vehicle/multitile/proc/activate_horn,
+			/obj/vehicle/multitile/proc/name_vehicle,
+			/obj/vehicle/multitile/proc/toggle_cruise_control,
+			/obj/vehicle/multitile/proc/set_cruise_control_granularity,
+			/obj/vehicle/multitile/proc/toggle_turn_signal_north,
+			/obj/vehicle/multitile/proc/toggle_turn_signal_east,
+			/obj/vehicle/multitile/proc/toggle_turn_signal_west,
+			/obj/vehicle/multitile/proc/toggle_turn_signal_south,
+			/obj/vehicle/multitile/proc/toggle_engine,
+		))
+		remove_action(M, /datum/action/human_action/vehicle_action/toggle_door_lock)
+		remove_action(M, /datum/action/human_action/vehicle_action/toggle_engine)
+		remove_action(M, /datum/action/human_action/vehicle_action/use_phone)
+		remove_action(M, /datum/action/human_action/vehicle_action/toggle_cruise_control)
+		remove_action(M, /datum/action/human_action/vehicle_action/set_cruise_control_granularity)
+		UnregisterSignal(M, COMSIG_MOB_VEHICLE_PREFS_CHANGED)
+		stop_crew_hud(M, VEHICLE_DRIVER)
+	SStgui.close_user_uis(M, src)
 
 /obj/vehicle/multitile/clf_van/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(mover in mobs_under) //can't collide with the thing you're buckled to
@@ -204,22 +275,10 @@
 
 /obj/vehicle/multitile/clf_van/handle_click(mob/living/user, atom/A, list/mods)
 	if(mods[SHIFT_CLICK] && !mods[ALT_CLICK])
-		if(overdrive_next > world.time)
-			to_chat(user, SPAN_WARNING("You can't activate overdrive yet! Wait [round((overdrive_next - world.time) / 10, 0.1)] seconds."))
-			return
-
-		misc_multipliers["move"] -= overdrive_speed_mult
-		addtimer(CALLBACK(src, PROC_REF(reset_overdrive)), overdrive_duration)
-
-		overdrive_next = world.time + overdrive_cooldown
-		to_chat(user, SPAN_NOTICE("You activate overdrive."))
-		playsound(src, 'sound/vehicles/overdrive_activate.ogg', 75, FALSE)
+		activate_overdrive(user)
 		return
 
 	return ..()
-
-/obj/vehicle/multitile/clf_van/proc/reset_overdrive()
-	misc_multipliers["move"] += overdrive_speed_mult
 
 /obj/vehicle/multitile/clf_van/get_projectile_hit_boolean(obj/projectile/P)
 	if(src == P.original) //clicking on the van itself will hit it.
@@ -281,6 +340,10 @@
 
 /obj/effect/vehicle_spawner/clf_van/decrepit/load_hardpoints(obj/vehicle/multitile/clf_van/V)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)
+	V.add_hardpoint(new /obj/item/hardpoint/engine/van)
+	V.add_hardpoint(new /obj/item/hardpoint/fuel_tank/van)
+	V.add_hardpoint(new /obj/item/hardpoint/radiator/civilian)
+	V.add_hardpoint(new /obj/item/hardpoint/battery/civilian)
 
 //PRESET: wheels installed
 /obj/effect/vehicle_spawner/clf_van/fixed/spawn_vehicle()
@@ -293,3 +356,7 @@
 
 /obj/effect/vehicle_spawner/clf_van/fixed/load_hardpoints(obj/vehicle/multitile/clf_van/V)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)
+	V.add_hardpoint(new /obj/item/hardpoint/engine/van)
+	V.add_hardpoint(new /obj/item/hardpoint/fuel_tank/van)
+	V.add_hardpoint(new /obj/item/hardpoint/radiator/civilian)
+	V.add_hardpoint(new /obj/item/hardpoint/battery/civilian)

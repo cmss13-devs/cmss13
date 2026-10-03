@@ -130,6 +130,7 @@
 	var/exit_time = V.entrance_speed
 	if(dragged_atom)
 		exit_time = 2 SECONDS
+	exit_time *= V.get_hatch_lock_result(M, FALSE)["delay_mult"]
 
 	to_chat(M, SPAN_NOTICE("You start climbing out of \the [interior.exterior]."))
 	if(!do_after(M, exit_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
@@ -151,8 +152,10 @@
 	interior.exit(M, exit_turf)
 
 /obj/structure/interior_exit/vehicle/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus)
+	var/obj/vehicle/multitile/V = interior.exterior
+	var/exit_time = 1 SECONDS * V.get_hatch_lock_result(M, FALSE)["delay_mult"]
 	to_chat(M, SPAN_NOTICE("You start climbing out of \the [interior.exterior]."))
-	if(!do_after(M, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+	if(!do_after(M, exit_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		to_chat(M, SPAN_WARNING("Something has interrupted you."))
 	else
 		interior.exit(M, get_exit_turf())

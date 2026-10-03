@@ -95,6 +95,9 @@ SUBSYSTEM_DEF(hijack)
 	/// If the ship is currently transiting in FTL
 	var/in_ftl = FALSE
 
+	/// Whether the ship is secured in orbit
+	var/stable_orbit = FALSE
+
 	/// If the ship has crashed onto a ground map and space turfs have been replaced with turf/open_space
 	var/crashed = FALSE
 
@@ -171,6 +174,9 @@ SUBSYSTEM_DEF(hijack)
 		// First fire
 		hijack_status = HIJACK_OBJECTIVES_STARTED
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FUEL_PUMP_UPDATE)
+		return
+
+	if(stable_orbit)
 		return
 
 	if(hijack_status == HIJACK_OBJECTIVES_DOCKED)
@@ -316,6 +322,34 @@ SUBSYSTEM_DEF(hijack)
 		current_run_progress_additive = 0
 		current_run_progress_multiplicative = 1
 
+/datum/controller/subsystem/hijack/proc/can_enter_stable_orbit()
+	if(stable_orbit || hijack_status != HIJACK_OBJECTIVES_SHIP_INBOUND)
+		return FALSE
+	for(var/obj/docking_port/mobile/marine_dropship/dropship in SSshuttle.mobile)
+		if(dropship.is_hijacked && (dropship.mode == SHUTTLE_PREARRIVAL || dropship.mode == SHUTTLE_CRASHED))
+			return FALSE
+	return TRUE
+
+/datum/controller/subsystem/hijack/proc/enter_stable_orbit()
+	if(!can_enter_stable_orbit())
+		return FALSE
+
+	stable_orbit = TRUE
+	last_run_progress_change = 0
+	estimated_time_left = INFINITY
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FUEL_PUMP_UPDATE)
+	shipwide_ai_announcement("EMERGENCY ORBITAL STABILIZATION BURN CHARGING. BRACE FOR VIOLENT MANEUVERING.", HIJACK_ANNOUNCE, sound('sound/effects/supercapacitors_charging.ogg'))
+	addtimer(CALLBACK(src, PROC_REF(complete_orbital_stabilization)), 5 SECONDS)
+	return TRUE
+
+/datum/controller/subsystem/hijack/proc/complete_orbital_stabilization()
+	shakeship(sstrength = 7, stime = 10, drop = TRUE)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ORBITAL STABILIZATION COMPLETE. FTL-DRIVE AND REACTOR SCUTTLING SYSTEMS LOCKED OUT. PUMPS INOPERABLE. ESCAPE PODS AND LIFEBOATS MUST RELY ON EXISTING RESERVES.", HIJACK_ANNOUNCE), 3 SECONDS)
+	for(var/hivenumber in GLOB.hive_datum)
+		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+		if(length(hive.totalXenos))
+			xeno_announcement(SPAN_XENOANNOUNCE("The metal hive shudders. Its pumps are now useless, destroying them will not bring it down. The talls are chosing to remain rather than flee."), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
+
 ///Called when the dropship has been called by the xenos
 /datum/controller/subsystem/hijack/proc/on_call_shuttle()
 	hijack_status = HIJACK_OBJECTIVES_SHIP_INBOUND
@@ -339,6 +373,9 @@ SUBSYSTEM_DEF(hijack)
 
 ///Called when the xeno dropship crashes into the Almayer and announces the current status of various objectives to marines
 /datum/controller/subsystem/hijack/proc/announce_status_on_crash()
+	if(stable_orbit)
+		return
+
 	var/message = ""
 
 	for(var/area/cycled_area as anything in progress_areas)

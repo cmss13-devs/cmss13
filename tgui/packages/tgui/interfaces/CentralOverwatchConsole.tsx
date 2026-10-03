@@ -74,6 +74,9 @@ type Data = {
   primary_lz: string;
   alert_level: number;
   evac_status: string;
+  stable_orbit: BooleanLike;
+  hijack_started: BooleanLike;
+  can_enter_stable_orbit: BooleanLike;
   world_time: number;
   distress_time_lock: number;
   time_request: number;
@@ -881,6 +884,36 @@ const EmergencyPanel = (props) => {
                 </Button.Confirm>
               )}
             </Stack.Item>
+            {!!data.hijack_started && (
+              <Stack.Item>
+                {data.stable_orbit ? (
+                  <Button
+                    inline
+                    width="100%"
+                    textAlign="center"
+                    mt="1px"
+                    icon="rocket"
+                    color="transperant"
+                  >
+                    STABLE ORBIT SECURED
+                  </Button>
+                ) : (
+                  <ButtonConfirm
+                    inline
+                    width="100%"
+                    textAlign="center"
+                    mt="1px"
+                    icon="rocket"
+                    color={data.can_enter_stable_orbit ? 'red' : 'transperant'}
+                    confirmContent="Confirm - This will disable FTL, scuttling & fueling"
+                    disabled={!data.can_enter_stable_orbit}
+                    onClick={() => act('stable_orbit')}
+                  >
+                    ENTER STABLE ORBIT
+                  </ButtonConfirm>
+                )}
+              </Stack.Item>
+            )}
           </Box>
         </Stack.Item>
       </Stack>

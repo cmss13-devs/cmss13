@@ -1320,7 +1320,17 @@
 	overlays.Cut()
 
 	if(length(contents))
-		overlays += "+[icon_state]_full"
+		for(var/obj/item/reagent_container/hypospray/autoinjector/autoinjector in contents)
+			if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch))
+				overlays += "+[icon_state]_full"
+			else
+				overlays += "+[icon_state]_full_research"
+			if(autoinjector.reagents?.total_volume)
+				var/image/filling
+				filling = image('icons/obj/items/clothing/pouches.dmi', src, "+[icon_state]_autoinjectorfull" )
+				filling.color = mix_color_from_reagents(inner.reagents.reagent_list)
+				overlays += filling
+
 	if(inner)
 		overlays += "+[icon_state]_loaded"
 		if(inner.reagents?.total_volume)

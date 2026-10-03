@@ -261,7 +261,7 @@
 			to_chat(user, SPAN_WARNING("The table is already occupied!"))
 			return
 		var/mob/living/carbon/human/M
-		if(ishuman(G.grabbed_thing))
+		if(ismob(G.grabbed_thing))
 			M = G.grabbed_thing
 			if(M.buckled)
 				to_chat(user, SPAN_WARNING("Unbuckle first!"))

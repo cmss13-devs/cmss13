@@ -3647,6 +3647,7 @@
 /turf/open/floor/almayer_hull,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "amp" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/almayer/emerald/southwest,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "amq" = (
@@ -3738,6 +3739,10 @@
 /turf/closed/wall/almayer/reinforced,
 /area/forward_base/engineering/lower)
 "amG" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 8
+	},
 /turf/open/floor/prison/floor_plate,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "amH" = (
@@ -4180,21 +4185,7 @@
 /turf/open/floor/almayer/green/west,
 /area/forward_base/living/briefing)
 "anR" = (
-/obj/structure/reagent_dispensers/water_cooler/walk_past{
-	pixel_y = 21;
-	pixel_x = -14;
-	layer = 2.9
-	},
-/obj/structure/reagent_dispensers/water_cooler/walk_past{
-	pixel_y = 21;
-	layer = 2.9;
-	pixel_x = -2
-	},
-/obj/structure/reagent_dispensers/water_cooler/walk_past{
-	pixel_y = 21;
-	pixel_x = 10;
-	layer = 2.9
-	},
+/obj/structure/machinery/vending/walkman,
 /turf/open/floor/almayer/green/northwest,
 /area/forward_base/living/briefing)
 "anS" = (
@@ -4285,7 +4276,6 @@
 /area/forward_base/engineering/lower)
 "aob" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/start/maint,
 /turf/open/floor/almayer,
 /area/forward_base/engineering/lower)
 "aoc" = (
@@ -4522,10 +4512,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/orange,
 /area/forward_base/engineering/lower)
-"aoG" = (
-/obj/effect/landmark/start/maint,
-/turf/open/floor/almayer,
-/area/forward_base/engineering/lower)
 "aoH" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -4751,6 +4737,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
 	},
+/obj/effect/landmark/start/maint,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/engineering/lower)
 "api" = (
@@ -4778,6 +4765,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 1
 	},
+/obj/effect/landmark/start/maint,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/engineering/lower)
 "apl" = (
@@ -5245,6 +5233,11 @@
 "aqH" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 8
+	},
+/obj/structure/reagent_dispensers/water_cooler/walk_past{
+	pixel_y = 21;
+	pixel_x = 14;
+	layer = 2.9
 	},
 /turf/open/floor/almayer/silverfull,
 /area/forward_base/living/briefing)
@@ -6498,6 +6491,9 @@
 	},
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/recharger,
+/obj/structure/sign/nosmoking_1{
+	pixel_x = -32
+	},
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/medical/lower_medical_lobby)
 "auf" = (
@@ -7133,7 +7129,10 @@
 /turf/open/floor/almayer/silver,
 /area/forward_base/hallways/lower/starboard_midship_hallway)
 "avI" = (
-/obj/structure/machinery/camera/autoname/almayer,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 1
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "avJ" = (
@@ -7515,15 +7514,24 @@
 /turf/open/floor/almayer/cargo_arrow,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "awL" = (
-/obj/structure/machinery/cm_vending/sorted/attachments,
+/obj/structure/machinery/cm_vending/sorted/attachments{
+	vend_dir = 2;
+	vend_dir_whitelist = list(9,5)
+	},
 /turf/open/floor/plating,
 /area/forward_base/squads/req)
 "awM" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo{
+	vend_dir = 2;
+	vend_dir_whitelist = list(8,4)
+	},
 /turf/open/floor/almayer/plating_striped/southwest,
 /area/forward_base/squads/req)
 "awN" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo,
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo{
+	vend_dir = 2;
+	vend_dir_whitelist = list(10,6)
+	},
 /turf/open/floor/almayer/plating_striped/east,
 /area/forward_base/squads/req)
 "awO" = (
@@ -7691,7 +7699,10 @@
 /turf/open/floor/almayer,
 /area/forward_base/squads/req)
 "axn" = (
-/obj/structure/machinery/camera/autoname/almayer,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 1
+	},
 /turf/open/floor/almayer/silver,
 /area/forward_base/hallways/lower/starboard_midship_hallway)
 "axo" = (
@@ -8292,6 +8303,7 @@
 /turf/closed/wall/almayer/reinforced,
 /area/forward_base/shipboard/brig/processing)
 "ayX" = (
+/obj/structure/machinery/vending/coffee,
 /turf/open/floor/almayer/blue/west,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "ayY" = (
@@ -8616,7 +8628,10 @@
 /turf/open/floor/almayer/plating/no_build,
 /area/forward_base/command/cic)
 "azX" = (
-/obj/structure/machinery/camera/autoname/almayer,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 1
+	},
 /turf/open/floor/almayer/red/west,
 /area/forward_base/shipboard/brig/processing)
 "azY" = (
@@ -8846,16 +8861,18 @@
 /turf/open/floor/almayer/redfull,
 /area/forward_base/command/cic)
 "aAA" = (
-/obj/structure/machinery/cm_vending/clothing/staff_officer{
-	pixel_x = 26;
-	density = 0
-	},
 /obj/effect/landmark/start/engineering,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	layer = 3.33;
 	pixel_x = -4;
 	pixel_y = -1
+	},
+/obj/structure/machinery/cm_vending/clothing/senior_officer{
+	density = 0;
+	req_access = list();
+	req_access_txt = "6";
+	pixel_x = 26
 	},
 /turf/open/floor/almayer/plating_striped/east,
 /area/forward_base/command/cic)
@@ -8871,6 +8888,10 @@
 	pixel_x = 26;
 	pixel_y = 0;
 	density = 0
+	},
+/obj/structure/sign/calendar/ua{
+	pixel_y = 27;
+	layer = 2.9
 	},
 /turf/open/floor/almayer/plating_stripedcorner,
 /area/forward_base/command/cic)
@@ -9254,6 +9275,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/structure/machinery/light,
 /turf/open/floor/wood/ship,
 /area/forward_base/command/cic)
 "aBp" = (
@@ -9349,7 +9371,6 @@
 	},
 /area/forward_base/shipboard/brig/processing)
 "aBB" = (
-/obj/structure/surface/rack,
 /obj/item/device/motiondetector/m717{
 	pixel_x = 7;
 	pixel_y = -6
@@ -9370,6 +9391,7 @@
 	pixel_x = 7;
 	pixel_y = 10
 	},
+/obj/structure/closet/secure_closet/brig,
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison{
 	dir = 4;
 	id = "bot_armory";
@@ -9378,13 +9400,13 @@
 /turf/open/floor/almayer/red2/west,
 /area/forward_base/shipboard/brig/processing)
 "aBC" = (
-/obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/combat{
 	pixel_y = 3
 	},
 /obj/item/weapon/gun/shotgun/combat{
 	pixel_y = -6
 	},
+/obj/structure/closet/secure_closet/brig,
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison{
 	dir = 4;
 	id = "bot_armory";
@@ -9393,13 +9415,13 @@
 /turf/open/floor/almayer/red2/west,
 /area/forward_base/shipboard/brig/processing)
 "aBD" = (
-/obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/combat{
 	pixel_y = 4
 	},
 /obj/item/weapon/gun/shotgun/combat{
 	pixel_y = -4
 	},
+/obj/structure/closet/secure_closet/brig,
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison{
 	dir = 4;
 	id = "bot_armory";
@@ -9408,7 +9430,6 @@
 /turf/open/floor/almayer/red2/west,
 /area/forward_base/shipboard/brig/processing)
 "aBE" = (
-/obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/slugs,
@@ -9417,6 +9438,7 @@
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
+/obj/structure/closet/secure_closet/brig,
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison{
 	dir = 4;
 	id = "bot_armory";
@@ -10693,7 +10715,6 @@
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/metal/almayer/west,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -11166,7 +11187,6 @@
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/almayer/plating_striped/southeast,
 /area/forward_base/underdeck/hangar)
 "aGl" = (
@@ -11753,7 +11773,7 @@
 /obj/structure/machinery/landinglight/delaytwo{
 	dir = 1
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer/plate,
 /area/forward_base/underdeck/hangar)
 "aHR" = (
 /obj/structure/machinery/landinglight,
@@ -11812,7 +11832,7 @@
 /obj/structure/machinery/landinglight/delaythree{
 	dir = 1
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer/plate,
 /area/forward_base/underdeck/hangar)
 "aIb" = (
 /obj/structure/machinery/landinglight/delaythree,
@@ -11906,7 +11926,7 @@
 /obj/structure/machinery/landinglight{
 	dir = 1
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer/plate,
 /area/forward_base/underdeck/hangar)
 "aIq" = (
 /obj/structure/machinery/light,
@@ -12439,13 +12459,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/underdeck/hangar)
-"aJX" = (
-/obj/structure/machinery/landinglight{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/plating/plating_catwalk,
-/area/forward_base/underdeck/hangar)
 "aJY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/landinglight/delayone{
@@ -12563,6 +12576,11 @@
 /turf/open/floor/plating,
 /area/forward_base/underdeck/hangar)
 "aKt" = (
+/obj/structure/machinery/door/airlock/almayer/command{
+	name = "\improper Hanger Flight Control";
+	req_one_access_txt = "19;22";
+	req_access = null
+	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/forward_base/underdeck/hangar)
 "aKu" = (
@@ -12581,6 +12599,7 @@
 /area/forward_base/command/securestorage)
 "aKw" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/forward_base/hallways/upper/port)
 "aKx" = (
@@ -13894,10 +13913,6 @@
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner"
 	},
-/obj/item/reagent_container/glass/minitank{
-	pixel_x = -16;
-	pixel_y = 5
-	},
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/medical/upper_medical)
@@ -14096,10 +14111,20 @@
 	name = "folded UPP Medical Tent";
 	desc = "A standard UPP Medical Tent. This one comes equipped with advanced field surgery facilities. Unfold in a suitable location to maximize health gains. Surgical Tray not included. ENTRANCE TO THE SOUTH."
 	},
-/obj/item/roller/surgical,
 /obj/item/reagent_container/glass/minitank{
-	pixel_x = -7;
-	pixel_y = 4
+	pixel_x = -8;
+	pixel_y = -4
+	},
+/obj/item/reagent_container/glass/minitank{
+	pixel_y = -4
+	},
+/obj/item/reagent_container/glass/minitank{
+	pixel_y = -4;
+	pixel_x = 7
+	},
+/obj/item/reagent_container/glass/minitank{
+	pixel_y = -4;
+	pixel_x = 14
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/medical/upper_medical)
@@ -14219,6 +14244,7 @@
 /area/forward_base/medical/chemistry)
 "aOA" = (
 /obj/structure/reagent_dispensers/tank/fuel/custom,
+/obj/item/tool/wrench,
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/medical/chemistry)
 "aOB" = (
@@ -14363,6 +14389,7 @@
 	icon_state = "W";
 	layer = 3.3
 	},
+/obj/structure/machinery/vending/cola/research,
 /turf/open/floor/almayer/no_build/plate,
 /area/forward_base/hallways/upper/port)
 "aOQ" = (
@@ -14483,6 +14510,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	layer = 3.3
+	},
+/obj/structure/machinery/vending/snack{
+	pixel_x = -2;
+	pixel_y = 1
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/forward_base/hallways/upper/port)
@@ -14687,6 +14718,9 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -27
+	},
 /turf/open/floor/almayer/sterile_green_corner/east,
 /area/forward_base/medical/medical_science)
 "aPz" = (
@@ -14756,7 +14790,7 @@
 	pixel_y = 19;
 	layer = 4.01
 	},
-/turf/open/floor/almayer/mono,
+/turf/open/floor/almayer/plate,
 /area/forward_base/medical/medical_science)
 "aPJ" = (
 /turf/open/floor/almayer/mono,
@@ -14765,7 +14799,7 @@
 /obj/structure/machinery/autolathe/medilathe/full{
 	dir = 4
 	},
-/turf/open/floor/almayer/mono,
+/turf/open/floor/almayer/plate,
 /area/forward_base/medical/medical_science)
 "aPL" = (
 /obj/structure/machinery/autolathe,
@@ -14776,7 +14810,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/almayer/mono,
+/turf/open/floor/almayer/plate,
 /area/forward_base/medical/medical_science)
 "aPM" = (
 /obj/structure/surface/rack,
@@ -14836,6 +14870,13 @@
 /obj/item/reagent_container/glass/beaker/large,
 /obj/item/reagent_container/glass/beaker/large,
 /obj/item/reagent_container/glass/beaker/large,
+/obj/item/storage/box/beakers{
+	pixel_x = -7;
+	pixel_y = 5
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_x = 6
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/medical/medical_science)
 "aPN" = (
@@ -14906,6 +14947,7 @@
 	icon_state = "door_warning2";
 	pixel_x = 1
 	},
+/obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer/research/containment/corner/east,
 /area/forward_base/medical/medical_science)
 "aPV" = (
@@ -15146,9 +15188,6 @@
 /obj/structure/machinery/power/apc/upgraded/power/north,
 /turf/open/floor/almayer/flooredge,
 /area/forward_base/medical/medical_science)
-"aQv" = (
-/turf/closed/wall/almayer/outer/internal,
-/area/forward_base/medical/medical_science)
 "aQw" = (
 /obj/structure/prop/dam/boulder/boulder2,
 /turf/open/auto_turf/sand/layer0,
@@ -15172,6 +15211,9 @@
 	pixel_x = -1;
 	explo_proof = 1
 	},
+/obj/structure/sign/safety/ref_chem_storage{
+	pixel_x = 32
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/medical/medical_science)
 "aQz" = (
@@ -15183,8 +15225,8 @@
 "aQA" = (
 /obj/structure/machinery/computer/research{
 	dir = 8;
-	pixel_y = 3;
-	pixel_x = -2
+	pixel_y = 8;
+	pixel_x = 3
 	},
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/radio/intercom{
@@ -15206,8 +15248,17 @@
 	name = "Main Research Laboratory Telephone";
 	phone_category = "Medical & Research Dept.";
 	phone_id = "Main Research Laboratory";
-	pixel_y = 16;
-	pixel_x = -7
+	pixel_y = 13;
+	pixel_x = -9
+	},
+/obj/structure/machinery/computer/med_data/laptop{
+	pixel_x = 3;
+	dir = 8;
+	pixel_y = -6
+	},
+/obj/item/device/reagent_scanner{
+	pixel_x = -11;
+	pixel_y = -4
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/medical/medical_science)
@@ -15296,6 +15347,14 @@
 	pixel_x = 5;
 	pixel_y = 13
 	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 1
+	},
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = 14;
+	pixel_x = -3
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/medical/medical_science)
 "aQK" = (
@@ -15324,8 +15383,24 @@
 	},
 /area/forward_base/medical/medical_science)
 "aQO" = (
-/obj/structure/noticeboard{
-	pixel_y = 31
+/obj/structure/closet/medical_wall{
+	pixel_y = 30
+	},
+/obj/item/storage/firstaid/fire{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/obj/item/storage/firstaid/o2{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = -6;
+	pixel_y = -2
 	},
 /turf/open/floor/almayer/greencorner/east,
 /area/forward_base/medical/medical_science)
@@ -15355,6 +15430,10 @@
 	explo_proof = 1;
 	density = 0;
 	layer = 3.1
+	},
+/obj/structure/sign/poster/art2{
+	pixel_y = 36;
+	pixel_x = -5
 	},
 /turf/open/floor/almayer/mono,
 /area/forward_base/medical/medical_science)
@@ -15673,6 +15752,14 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_pad)
+"aSg" = (
+/obj/effect/landmark/start/maint,
+/turf/open/floor/plating/plating_catwalk,
+/area/forward_base/engineering/lower)
+"aSh" = (
+/obj/structure/machinery/cm_vending/clothing/maintenance_technician,
+/turf/open/floor/almayer,
+/area/forward_base/engineering/lower)
 "aSi" = (
 /obj/structure/flora/grass/desert/lightgrass_11,
 /obj/effect/landmark/lv624/fog_blocker/short,
@@ -15697,10 +15784,143 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/closed/wall/kutjevo/rock,
 /area/kutjevo/exterior/lz_pad)
+"aSn" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/almayer/emerald/west,
+/area/forward_base/hallways/lower/port_midship_hallway)
+"aSo" = (
+/obj/structure/machinery/vending/cigarette/koorlander{
+	pixel_x = -1
+	},
+/turf/open/floor/almayer/blue/west,
+/area/forward_base/hallways/lower/port_midship_hallway)
+"aSp" = (
+/obj/structure/machinery/vending/cigarette/koorlander{
+	pixel_x = -1
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/living/briefing)
+"aSq" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 1
+	},
+/turf/open/floor/almayer/silverfull,
+/area/forward_base/medical/upper_medical)
+"aSr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/forward_base/hallways/upper/port)
+"aSs" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/underdeck/hangar)
+"aSt" = (
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/rad/empty,
+/obj/item/storage/firstaid/rad/empty,
+/obj/item/storage/firstaid/o2/empty,
+/obj/item/storage/firstaid/o2/empty,
+/obj/item/storage/firstaid/fire/empty,
+/obj/item/storage/firstaid/fire/empty,
+/obj/item/storage/firstaid/adv/empty,
+/obj/item/storage/firstaid/adv/empty,
+/obj/item/storage/firstaid/regular/empty,
+/obj/item/storage/firstaid/regular/empty,
+/turf/open/floor/almayer/sterile_green,
+/area/forward_base/medical/upper_medical)
 "aSu" = (
 /obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
+"aSv" = (
+/obj/structure/machinery/chem_simulator,
+/turf/open/floor/almayer/plate,
+/area/forward_base/medical/medical_science)
+"aSw" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/underdeck/hangar)
+"aSx" = (
+/obj/structure/barricade/handrail/medical{
+	dir = 8;
+	pixel_x = -2
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 8
+	},
+/turf/open/floor/almayer/sterile_green,
+/area/forward_base/medical/upper_medical)
+"aSy" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/underdeck/hangar)
+"aSz" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/underdeck/hangar)
+"aSA" = (
+/obj/structure/machinery/landinglight{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/underdeck/hangar)
+"aSB" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/almayer/plate,
+/area/forward_base/underdeck/hangar)
+"aSC" = (
+/obj/structure/machinery/landinglight/delaytwo{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/underdeck/hangar)
+"aSD" = (
+/obj/structure/machinery/landinglight/delayone{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/underdeck/hangar)
+"aSE" = (
+/obj/structure/machinery/landinglight{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/underdeck/hangar)
+"aSF" = (
+/obj/structure/machinery/landinglight/delaythree{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/underdeck/hangar)
+"aSG" = (
+/obj/structure/machinery/cm_vending/clothing/pilot_officer{
+	density = 0;
+	pixel_x = -28
+	},
+/turf/open/floor/almayer,
+/area/forward_base/underdeck/hangar)
+"aSH" = (
+/obj/effect/landmark/start/crew_chief,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/pilot_officer{
+	density = 0;
+	pixel_x = -28
+	},
+/turf/open/floor/almayer/silver/north,
+/area/forward_base/underdeck/hangar)
 "aVv" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -31194,7 +31414,7 @@ amq
 amr
 amq
 amq
-amq
+aSn
 amp
 amn
 amo
@@ -31700,7 +31920,7 @@ amN
 dxF
 dxF
 amI
-anC
+aSh
 anB
 anA
 anz
@@ -32035,15 +32255,15 @@ aRx
 amI
 aoO
 aoN
-anc
+aSg
 aoM
 aoL
-anc
+aSg
 aoK
 aoJ
 aoI
 aoH
-aoG
+anC
 anC
 aoF
 amI
@@ -32210,7 +32430,7 @@ aoK
 aoJ
 aoI
 aoH
-aoG
+anC
 anC
 apg
 amI
@@ -33514,7 +33734,7 @@ aqE
 amR
 amR
 amR
-atA
+aSp
 atD
 atB
 amR
@@ -36527,7 +36747,7 @@ azc
 aza
 ayZ
 ayY
-ayX
+aSo
 ayX
 ayW
 ayV
@@ -70745,8 +70965,8 @@ aEp
 aFa
 aEZ
 aEY
-aEX
-aEW
+aSH
+aSG
 aEV
 aET
 aES
@@ -70930,7 +71150,7 @@ aEq
 aEp
 aFt
 aFs
-aFq
+aSr
 aFo
 aFn
 aFm
@@ -71583,12 +71803,12 @@ aGT
 aGS
 aGQ
 aGV
-aGT
-aGS
-aGQ
-aGV
-aGT
-aGS
+aSD
+aSC
+aSF
+aSE
+aSD
+aSC
 aGW
 aGV
 aGT
@@ -72600,7 +72820,7 @@ aHo
 aHo
 aHo
 aHo
-aHF
+aSs
 aHZ
 aFS
 aFS
@@ -73588,18 +73808,18 @@ aJT
 aJS
 aJZ
 aJY
-aJX
+aJT
 aJS
 aJV
 aJU
 aJW
 aJS
 aJV
-aJU
-aJT
-aJS
-aJV
-aJU
+aSB
+aSA
+aSz
+aSy
+aSw
 aJT
 aJS
 aFP
@@ -75606,10 +75826,10 @@ aNk
 aMq
 aMq
 aMF
-aMC
+aSt
 aMq
 aNj
-aMq
+aSq
 aMe
 aMB
 aMk
@@ -75770,7 +75990,7 @@ aMq
 aNv
 aNu
 aNu
-aNu
+aSx
 aNt
 aMe
 aNs
@@ -77784,9 +78004,9 @@ aPP
 aPZ
 aPY
 aPP
+aPO
 aPJ
-aPJ
-aPJ
+aPO
 aRx
 dmD
 qOu
@@ -78116,7 +78336,7 @@ aQA
 aQz
 aQy
 aQx
-aQv
+aPu
 aQu
 aQt
 aQs
@@ -78445,7 +78665,7 @@ aPu
 aPu
 aPu
 aQO
-aRx
+aSv
 aRx
 dmD
 dmD
@@ -78612,8 +78832,8 @@ aQQ
 aPO
 aQa
 aQP
+aPO
 aRx
-dmD
 dmD
 dmD
 dmD
@@ -78780,7 +79000,7 @@ aQT
 aPu
 aRx
 aRx
-dmD
+aRx
 dmD
 dmD
 dmD
@@ -78948,7 +79168,7 @@ aPu
 aRx
 dmD
 dmD
-qOu
+dmD
 dmD
 qOu
 qOu

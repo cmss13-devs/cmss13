@@ -43,6 +43,9 @@
 /// UO4, Mayjor/Major
 #define PAY_SHORT_UO4 "UO4"
 
+/// UO4C, Kommandant/Commandant - Used for Atlan's Station Administrator/Head
+#define PAY_SHORT_UO4C "UO4C"
+
 /// UO4P, Political Commissar
 #define PAY_SHORT_UO4P "UO4P"
 

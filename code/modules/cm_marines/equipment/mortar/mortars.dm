@@ -35,7 +35,7 @@
 	/// if true, blows up the shell immediately
 	var/ship_side = FALSE
 	/// The max range the mortar can fire at
-	var/max_range = 64
+	var/max_range = 72
 	/// The min range the mortar can fire at
 	var/min_range = 15
 	/// True if in lase mode, else in coordinate mode
@@ -44,6 +44,7 @@
 	var/aiming = FALSE
 	/// True if mortar is ready to fire on lase mode.
 	var/aimed = FALSE
+	var/penetrating = FALSE
 
 	/// Linked laser designator to be used in lase mode, null if one isn't linked
 	var/obj/item/device/binoculars/range/designator/linked_designator
@@ -376,6 +377,7 @@
 	if(istype(item, /obj/item/mortar_shell))
 		var/obj/item/mortar_shell/mortar_shell = item
 		var/turf/target_turf = locate(targ_x + dial_x + offset_x, targ_y + dial_y + offset_y, targ_z)
+		var/success = FALSE
 		if(lase_mode)
 			if(!linked_designator)
 				to_chat(user, SPAN_WARNING("[src] is in laser targeting mode, but there is no laser designator linked!"))
@@ -404,12 +406,20 @@
 			if(!istype(target_area))
 				to_chat(user, SPAN_WARNING("This area is out of bounds!"))
 				return
-			if(CEILING_IS_PROTECTED(target_area.ceiling, CEILING_PROTECTION_TIER_2) || protected_by_pylon(TURF_PROTECTION_MORTAR, target_turf))
+			if(CEILING_IS_PROTECTED(target_area.ceiling, CEILING_PROTECTION_TIER_2) && (!mortar_shell.ceiling_penetrating)) //if the target is both underground and the shell-type isn't ceiling-penetrating
 				to_chat(user, SPAN_WARNING("You cannot hit the target. It is probably underground."))
 				return
-			if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_mortar_protection) && target_area.is_landing_zone)
-				to_chat(user, SPAN_WARNING("You cannot bomb the landing zone!"))
+			if(protected_by_pylon(TURF_PROTECTION_MORTAR, target_turf) && (!mortar_shell.ceiling_penetrating))
+				to_chat(user, SPAN_WARNING("You cannot hit the target. It is probably underground."))
 				return
+			if(protected_by_pylon(TURF_PROTECTION_MORTAR, target_turf) && (mortar_shell.ceiling_penetrating))
+				to_chat(user, SPAN_WARNING("You get the strongest feeling not even these expensive shells will make it where you're aiming.")) //prevent bypassing backline cap rules, this ordnance's best used in caves
+				return
+			if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_mortar_protection) && target_area.is_landing_zone)
+				to_chat(user, SPAN_WARNING("What the hell? Don't bomb the landing zone!"))
+				return
+			if((CEILING_IS_PROTECTED(target_area.ceiling, CEILING_PROTECTION_TIER_3)) || (CEILING_IS_PROTECTED(target_area.ceiling, CEILING_PROTECTION_TIER_2)) && (mortar_shell.ceiling_penetrating))
+				penetrating = TRUE //This shell is currently drilling a hole through the protected roof.
 
 		if(ship_side)
 			var/crash_occurred = (SSticker?.mode?.is_in_endgame)
@@ -425,12 +435,22 @@
 			if(deviation_turf && !lase_mode) // Mortar is accurate in lase mode
 				target_turf = deviation_turf
 
-		user.visible_message(SPAN_NOTICE("[user] starts loading \a [mortar_shell.name] into [src]."),
-		SPAN_NOTICE("You start loading \a [mortar_shell.name] into [src]."))
-		playsound(loc, 'sound/weapons/gun_mortar_reload.ogg', 50, 1)
-		busy = TRUE
-		var/success = do_after(user, 1.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE)
-		busy = FALSE
+		if(penetrating)
+			user.visible_message(SPAN_NOTICE("[user] starts inputting \the [mortar_shell.name]'s targeting depth into [src], before loading the shell in."),
+			SPAN_NOTICE("You take a moment to calculate \the [mortar_shell.name]'s depth-penetration into [src]'s targeting matrix, before loading the shell in."))
+			playsound(loc, 'sound/machines/computer_typing6.ogg', 50, 1)
+			busy = TRUE
+			success = do_after(user, 4.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE) //it takes a while
+			busy = FALSE
+
+		if(!penetrating)
+			user.visible_message(SPAN_NOTICE("[user] starts loading \a [mortar_shell.name] into [src]."),
+			SPAN_NOTICE("You start loading \a [mortar_shell.name] into [src]."))
+			playsound(loc, 'sound/weapons/gun_mortar_reload.ogg', 50, 1)
+			busy = TRUE
+			success = do_after(user, 1.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE)
+			busy = FALSE
+
 		if(success)
 			user.visible_message(SPAN_NOTICE("[user] loads \a [mortar_shell.name] into [src]."),
 			SPAN_NOTICE("You load \a [mortar_shell.name] into [src]."))
@@ -451,7 +471,15 @@
 
 			addtimer(CALLBACK(src, PROC_REF(handle_shell), target_turf, mortar_shell), travel_time)
 
-	if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
+//mortar decon
+/obj/structure/mortar/MouseDrop(over_object, src_location, over_location)
+	var/mob/living/carbon/user = usr
+	// If the user is unconscious or dead.
+	if(user.stat)
+		return
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+		return
+	if(over_object == user && in_range(src, user))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 			to_chat(user, SPAN_WARNING("You don't have the training to undeploy [src]."))
 			return
@@ -476,13 +504,9 @@
 				mortar.linked_designator = linked_designator
 			mortar.name = src.name
 			qdel(src)
+			user.put_in_active_hand(src)
 
-	if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
-		if(do_after(user, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			user.visible_message(SPAN_NOTICE("[user] toggles the targeting computer on [src]."),
-				SPAN_NOTICE("You toggle the targeting computer on [src]."))
-			computer_enabled = !computer_enabled
-			playsound(loc, 'sound/machines/switch.ogg', 25, 1)
+	update_icon()
 
 /obj/structure/mortar/ex_act(severity)
 	switch(severity)
@@ -510,7 +534,15 @@
 		QDEL_IN(effect, 5 SECONDS)
 		notify_ghosts(header = "Custom Shell", message = "A custom mortar shell is about to land at [get_area(target)].", source = effect)
 
-	playsound(target, 'sound/weapons/gun_mortar_travel.ogg', 50, 1)
+	if(istype(shell, /obj/item/mortar_shell/heplus)) // big shell warning for ghosts, the return
+		var/obj/effect/effect = new /obj/effect/mortar_effect(target)
+		QDEL_IN(effect, 5 SECONDS)
+		notify_ghosts(header = "Special Ordnance", message = "An ultra-explosive shell is about to land at [get_area(target)].", source = effect)
+
+	if(penetrating)
+		playsound(target, 'sound/weapons/gun_mortar_travel_penetrating.ogg', 50, 1) //special sound with drilling noises just to let you know you're not safe, placeholder, need something closer to a layered explosive dulled by a thick impact
+	if(!penetrating)
+		playsound(target, 'sound/weapons/gun_mortar_travel.ogg', 50, 1)
 	var/relative_dir
 	for(var/mob/mob in range(15, target))
 		if(get_turf(mob) == target)
@@ -545,6 +577,8 @@
 	var/dialing = test_dial_x || test_dial_y
 	var/attempt_info
 	var/can_fire = TRUE
+	if(lase_mode)
+		max_range = 80 //Lase mode has extra range, as you can't offset the coordinates manually.
 	if(ship_side)
 		attempt_info = SPAN_WARNING(("[user ? "You" : "[src]"] cannot aim the mortar while on a ship."))
 		can_fire = FALSE

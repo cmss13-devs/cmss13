@@ -23,6 +23,8 @@
 		health_threshold_dead = -150
 		health_threshold_crit = -100
 
+	move_eyelids(EYELID_SWITCH, 0.2, 3, EYELID_LOOP)
+
 /mob/living/carbon/human/clicked(mob/user, list/mods)
 	if(..())
 		return TRUE
@@ -1033,6 +1035,8 @@
 		number += cloth_item.eye_protection
 	if(glasses)
 		number += glasses.eye_protection
+	if(number == 0 && eyelids_status == EYELID_CLOSED_VOLUNTARILY)
+		return EYE_PROTECTION_FLAVOR
 
 	return clamp(number, EYE_PROTECTION_NEGATIVE, EYE_PROTECTION_WELDING)
 

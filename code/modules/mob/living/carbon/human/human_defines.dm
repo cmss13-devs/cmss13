@@ -188,6 +188,12 @@
 	// Haul resist cooldown
 	var/next_haul_resist
 
+	// State of them beady little eyes
+	var/eyelids_status = EYELID_OPEN
+
+	/// Active eyelid animation timer (so we can cancel / replace it).
+	var/eyelid_timer
+
 /client/var/cached_human_playtime
 
 /client/proc/get_total_human_playtime(skip_cache = FALSE)

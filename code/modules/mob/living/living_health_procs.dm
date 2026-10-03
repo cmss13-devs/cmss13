@@ -436,7 +436,13 @@
 	if(!eye_blurry)
 		clear_fullscreen("eye_blur", 0.5 SECONDS)
 		game_plane_master_controller.remove_filter("eye_blur")
+		if(ishuman(src))
+			var/mob/living/carbon/human/blurry_human = src
+			blurry_human.move_eyelids(EYELID_SWITCH, 0.2, 3, EYELID_LOOP)	//default eye blink rate
 		return
+	if(eye_blurry > 0 && ishuman(src))
+		var/mob/living/carbon/human/blurry_human = src
+		blurry_human.move_eyelids(EYELID_SWITCH, 0.2, 1, EYELID_LOOP)	//slightly faster eye blink rate
 
 	switch(client.prefs?.pain_overlay_pref_level)
 		if(PAIN_OVERLAY_IMPAIR)
@@ -462,6 +468,9 @@
 
 /mob/living/proc/EyeBlind(amount)
 	eye_blind = max(max(eye_blind, amount), 0)
+	if(amount != 0 && ishuman(src))
+		var/mob/living/carbon/human/blind_human = src
+		blind_human.move_eyelids(EYELID_SWITCH, 0.1, 0.2, 8)
 	return
 
 /mob/living/proc/SetEyeBlind(amount)

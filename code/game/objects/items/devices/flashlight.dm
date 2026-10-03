@@ -132,6 +132,7 @@
 							SPAN_NOTICE("You direct [src] to [assestment_target]'s eyes."))
 
 		if(ishuman_strict(assestment_target)) //robots and aliens are unaffected
+			assestment_target.move_eyelids(EYELID_OPEN, 1, null, 1, normal_blinking_after=assestment_target.stat==DEAD?FALSE:TRUE)
 			var/datum/internal_organ/eyes/eyes = assestment_target.internal_organs_by_name["eyes"]
 			var/datum/internal_organ/brain/brain = assestment_target.internal_organs_by_name["brain"]
 			if(assestment_target.stat == DEAD || assestment_target.sdisabilities & DISABILITY_BLIND || eyes.organ_status == ORGAN_BROKEN || brain.organ_status == ORGAN_BROKEN) //mob is dead, fully blind, or their eyes are

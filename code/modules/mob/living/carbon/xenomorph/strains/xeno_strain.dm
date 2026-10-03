@@ -16,6 +16,26 @@
 	/// Typepath of the [/datum/behavior_delegate] to add.
 	var/behavior_delegate_type
 
+	/// How much phero strength is modified by this strain. Applied in parent of apply_strain.
+	var/phero_mod = 0
+	/// How much slash damage is modified by this strain. Applied in parent of apply_strain.
+	var/damage_mod = 0
+	/// How much health is modified by this strain. Applied in parent of apply_strain.
+	var/health_mod = 0
+	/// How much armor is modified by this strain. Applied in parent of apply_strain.
+	var/armor_mod = 0
+	/// How much expolosive armor is modified by this strain. Applied in parent of apply_strain.
+	var/explosive_armor_mod = 0
+	/// How much speed is modified by this strain. Applied in parent of apply_strain.
+	var/speed_mod = 0
+	/// How much attack speed is modified by this strain (lower faster). Applied in parent of apply_strain.
+	var/attack_speed_mod = 0
+
+	/// Plasma pool multiplier that is modified by this strain. If the caste has no plasma_max and this is greater than 1 it will set the plasma directly. Applied in parent of apply_strain.
+	var/plasma_mult = 1
+	/// Regen multiplier that is modified by this strain. Applied in parent of apply_strain.
+	var/regen_mult = 1
+
 /**
  * Add this strain to `xeno`, replacing their actions and behavior holder.
  *
@@ -46,6 +66,7 @@
 		xeno.behavior_delegate.add_to_xeno()
 
 	apply_strain(xeno)
+	xeno.recalculate_everything()
 
 	xeno.update_icons()
 	xeno.hive.hive_ui.update_xeno_info()
@@ -62,8 +83,18 @@
  * Called when the strain is first added to the player.
  */
 /datum/xeno_strain/proc/apply_strain(mob/living/carbon/xenomorph/xeno)
-	// Override with custom behaviour.
-	return
+	SHOULD_CALL_PARENT(TRUE)
+
+	xeno.phero_modifier += phero_mod
+	xeno.damage_modifier += damage_mod
+	xeno.health_modifier += health_mod
+	xeno.armor_modifier += armor_mod
+	xeno.explosivearmor_modifier += explosive_armor_mod
+	xeno.speed_modifier += speed_mod
+	xeno.attack_speed_modifier += attack_speed_mod
+
+	xeno.plasmapool_multiplier = plasma_mult
+	xeno.regeneration_multiplier = regen_mult
 
 /mob/living/carbon/xenomorph/verb/purchase_strain()
 	set name = "Purchase Strain"

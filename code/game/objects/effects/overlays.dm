@@ -352,3 +352,81 @@
 	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "pool_splash"
 	effect_duration = 10 SECONDS
+
+/obj/effect/overlay/temp/dropship_reticle
+	name = "Targeting Reticle"
+	desc = "A targeting reticle for a dropship's HUD."
+	icon = 'icons/mob/hud/dropship_hud.dmi'
+	icon_state = "direct_fire_reticle"
+	anchored = TRUE
+	layer = ABOVE_LIGHTING_LAYER
+	plane = ABOVE_LIGHTING_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	alpha = 0
+	effect_duration = 600
+
+	var/image/reticle_image = null
+	var/shuttle_tag = null
+
+/obj/effect/overlay/temp/dropship_reticle/Initialize(mapload, ...)
+	. = ..()
+	if(!isturf(loc))
+		return INITIALIZE_HINT_QDEL
+	GLOB.dropship_reticles += src
+
+/obj/effect/overlay/temp/dropship_reticle/Destroy()
+	remove_from_all_clients()
+	GLOB.dropship_reticles -= src
+	return ..()
+
+/obj/effect/overlay/temp/dropship_reticle/proc/update_visibility_for_mob(mob/mob_user)
+	var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
+	if(dropship_hud?.can_see_reticles(mob_user))
+		if(mob_user.client)
+			mob_user.client.images += src.get_reticle_image()
+	else
+		if(mob_user.client)
+			mob_user.client.images -= src.get_reticle_image()
+
+/obj/effect/overlay/temp/dropship_reticle/proc/get_reticle_image()
+	if(!reticle_image)
+		reticle_image = image(icon, loc, icon_state, layer)
+		reticle_image.plane = ABOVE_LIGHTING_PLANE
+		reticle_image.alpha = 255
+	return reticle_image
+
+/obj/effect/overlay/temp/dropship_reticle/proc/update_target(x, y, z)
+	var/turf/new_loc = locate(x, y, z)
+	if(!new_loc)
+		return
+	forceMove(new_loc)
+	reticle_image = null
+
+/obj/effect/overlay/temp/dropship_reticle/proc/remove_from_all_clients()
+	var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
+	if(dropship_hud)
+		for(var/mob/mob_user in dropship_hud.hudusers)
+			if(mob_user.client)
+				if(reticle_image)
+					mob_user.client.images -= reticle_image
+	for(var/mob/living/carbon/human/mob_user in GLOB.alive_human_list)
+		if(mob_user.client && reticle_image)
+			mob_user.client.images -= reticle_image
+
+/obj/effect/overlay/temp/dropship_reticle/direct
+	name = "Impact Reticle"
+	desc = "The projected suborbital impact zone for a dropship's HUD."
+	icon = 'icons/mob/hud/dropship_hud.dmi'
+	icon_state = "impact_reticle"
+
+/obj/effect/overlay/temp/dropship_reticle/direct/proc/spawn_reticle(x, y, z)
+	return new /obj/effect/overlay/temp/dropship_reticle/direct(locate(x, y, z))
+
+/obj/effect/overlay/temp/dropship_reticle/firemission
+	name = "Firemission Reticle"
+	desc = "The projected firemission target zone for a dropship's HUD."
+	icon = 'icons/mob/hud/dropship_hud.dmi'
+	icon_state = "firemission_reticle"
+
+/obj/effect/overlay/temp/dropship_reticle/firemission/proc/spawn_reticle(x, y, z)
+	return new /obj/effect/overlay/temp/dropship_reticle/firemission(locate(x, y, z))

@@ -3,7 +3,7 @@
 // and abilities files hold the object declarations for the abilities
 
 // Plant weeds
-/datum/action/xeno_action/onclick/plant_weeds/use_ability(atom/atom)
+/datum/action/xeno_action/onclick/plant_weeds/use_ability(atom/atom, autoplanted)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!action_cooldown_check())
 		return
@@ -30,6 +30,7 @@
 		to_chat(xeno, SPAN_WARNING("Bad place for a garden!"))
 		return
 
+	var/list/to_convert
 	var/obj/effect/alien/weeds/node/node = locate() in turf
 	if(node)
 		if(node.weed_strength > xeno.weed_level)
@@ -43,9 +44,6 @@
 		if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, node, INTERRUPT_ALL))
 			to_chat(xeno, SPAN_WARNING("There's a pod here already! You decide to not replace it."))
 			return
-		to_chat(xeno, SPAN_NOTICE("We uproot and replace the weed node."))
-		playsound(xeno.loc, "alien_resin_break", 25)
-		qdel(node)
 
 	var/obj/effect/alien/resin/trap/resin_trap = locate() in turf
 	if(resin_trap)
@@ -73,9 +71,11 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	var/list/to_convert
 	if(node)
+		to_chat(xeno, SPAN_NOTICE("We uproot and replace the weed node."))
+		playsound(xeno.loc, "alien_resin_break", 25)
 		to_convert = node.children.Copy()
+		qdel(node)
 
 	xeno.visible_message(SPAN_XENONOTICE("\The [xeno] regurgitates a pulsating node and plants it on the ground!"),
 	SPAN_XENONOTICE("We regurgitate a pulsating node and plant it on the ground!"), null, 5)
@@ -89,9 +89,107 @@
 			qdel(cur_weed)
 
 	playsound(xeno.loc, "alien_resin_build", 25)
-	apply_cooldown()
+	if(autoplanted)
+		apply_cooldown(0)
+	else
+		apply_cooldown()
 	SEND_SIGNAL(xeno, COMSIG_XENO_PLANT_RESIN_NODE)
 	return ..()
+
+/datum/action/xeno_action/onclick/autoweeding_toggle/Destroy()
+	if(owner)
+		UnregisterSignal(owner, list(COMSIG_MOVABLE_MOVED, COMSIG_MOB_DEATH))
+	linked_planting = null
+	return ..()
+
+///Toggles automatic weeding
+/datum/action/xeno_action/onclick/autoweeding_toggle/use_ability(atom/atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!istype(xeno))
+		return
+
+	if(!linked_planting)
+		linked_planting = locate(/datum/action/xeno_action/onclick/plant_weeds) in xeno.actions
+		if(!linked_planting)
+			return
+
+	if(auto_weeding)
+		stop_autoweed(xeno)
+		return
+
+	RegisterSignal(xeno, COMSIG_MOVABLE_MOVED, PROC_REF(weed_on_move))
+	RegisterSignal(xeno, COMSIG_MOB_DEATH, PROC_REF(use_ability))
+	auto_weeding = TRUE
+	step_count = 0
+	button.icon_state = "template_active"
+	to_chat(xeno, SPAN_XENONOTICE("We will now automatically plant weeds."))
+
+	try_autoweed(xeno)
+
+	return ..()
+
+///signal handler for moving while autoweeding is active
+/datum/action/xeno_action/onclick/autoweeding_toggle/proc/weed_on_move(mob/living/carbon/xenomorph/xeno, atom/old_loc, move_dir, forced)
+	SIGNAL_HANDLER
+
+	// apparently forced isnt really used anywhere, but just in case atp
+	if(forced || !istype(xeno) || xeno.stat || HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
+		return
+
+	if(xeno.pulledby || xeno.buckled)
+		return
+
+	// check_state already handles these, but better return early so we dont have too much overhead
+	if(xeno.resting || xeno.body_position != STANDING_UP || xeno.is_mob_incapacitated())
+		return
+
+	step_count++
+	if(step_count < step_delay)
+		return
+	step_count = 0
+
+	INVOKE_ASYNC(src, PROC_REF(try_autoweed), xeno)
+
+/datum/action/xeno_action/onclick/autoweeding_toggle/proc/stop_autoweed(mob/living/carbon/xenomorph/xeno, silent = FALSE)
+	SIGNAL_HANDLER
+
+	if(!auto_weeding)
+		return
+	auto_weeding = FALSE
+
+	if(xeno)
+		UnregisterSignal(xeno, list(COMSIG_MOVABLE_MOVED, COMSIG_MOB_DEATH))
+		if(!silent)
+			to_chat(xeno, SPAN_XENONOTICE("We will no longer automatically plant weeds."))
+	button.icon_state = "template_xeno"
+
+/datum/action/xeno_action/onclick/autoweeding_toggle/proc/try_autoweed(mob/living/carbon/xenomorph/xeno)
+	if(!linked_planting || !linked_planting.action_cooldown_check())
+		return
+
+	var/plasma_cost = linked_planting.plasma_cost
+	if(xeno.plasma_max > 0 && (((xeno.plasma_stored - plasma_cost) / xeno.plasma_max) * 100 < 20))
+		to_chat(xeno, SPAN_XENONOTICE("We will no longer continue autoweeding for our plasma is too low."))
+		stop_autoweed(xeno, silent = TRUE)
+		return
+
+	var/turf/turf = xeno.loc
+	if(!istype(turf) || turf.density || turf.is_weedable < FULLY_WEEDABLE)
+		return
+
+	if(locate(/obj/effect/alien/weeds/node) in turf)
+		return
+
+	// if we are already standing on weeds, don't bother
+	var/obj/effect/alien/weeds/local_weeds = locate(/obj/effect/alien/weeds) in turf
+	if(local_weeds && local_weeds.parent)
+		return
+
+	// locate check rather than view + why would xenos care much about LOS for nodes anyway
+	if(locate(/obj/effect/alien/weeds/node) in orange(node_search_range, turf))
+		return
+
+	linked_planting.use_ability(turf, autoplanted = TRUE)
 
 /mob/living/carbon/xenomorph/lay_down()
 	if(!can_heal && !resting)
@@ -1116,7 +1214,7 @@
 	stabbing_xeno.animation_attack_on(target)
 	stabbing_xeno.flick_attack_overlay(target, stab_overlay)
 
-	var/damage = (stabbing_xeno.melee_damage_upper + stabbing_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * TAILSTAB_MOB_DAMAGE_MULTIPLIER
+	var/damage = (stabbing_xeno.melee_damage_upper + stabbing_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * damage_multiplier
 
 	if(stabbing_xeno.behavior_delegate && apply_behavior_delagate)
 		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_target(target)

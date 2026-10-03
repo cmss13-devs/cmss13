@@ -19,7 +19,7 @@
 	spit_types = list(/datum/ammo/xeno/acid/praetorian)
 	acid_level = 2
 
-	aura_strength = 3
+	aura_strength = XENO_PHERO_STRENGTH_STRONG
 
 	tackle_min = 2
 	tackle_max = 5
@@ -36,6 +36,7 @@
 	minimum_evolve_time = 15 MINUTES
 
 	minimap_icon = "praetorian"
+	organ_type = /obj/item/organ/xeno/praetorian
 
 	royal_caste = TRUE
 
@@ -45,13 +46,11 @@
 	desc = "A huge, looming beast of an alien."
 	icon_size = 64
 	icon_state = "Praetorian Walking"
-	plasma_types = list(PLASMA_PHEROMONE,PLASMA_NEUROTOXIN)
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3
-	organ_value = 3000
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/toggle_seethrough,
@@ -77,6 +76,16 @@
 
 	skull = /obj/item/skull/praetorian
 	pelt = /obj/item/pelt/praetorian
+
+/obj/item/organ/xeno/praetorian
+	name = "praetorian heart"
+	icon_state = "heart_t3"
+	item_state = "heart_t3"
+	research_value = 3000
+
+	// praetorian organs are the most desirable T3 caste due to the range of application,
+	// only the queen organ beats them
+	xeno_organ_flags = XENO_ORGAN_STRONG|XENO_ORGAN_HARDENED|XENO_ORGAN_TACHYCARDIA|XENO_ORGAN_ACID
 
 /datum/behavior_delegate/praetorian_base
 	name = "Base Praetorian Behavior Delegate"

@@ -13,7 +13,7 @@
 /turf/template_noop,
 /area/shuttle/ert)
 "d" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/generic/shuttle{
 	dir = 2
 	},
 /turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
@@ -76,7 +76,7 @@
 	},
 /area/shuttle/ert)
 "y" = (
-/obj/structure/machinery/door/airlock/almayer/generic,
+/obj/structure/machinery/door/airlock/almayer/generic/shuttle,
 /turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
 /area/shuttle/ert)
 "z" = (

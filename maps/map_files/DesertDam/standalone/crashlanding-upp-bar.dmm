@@ -880,6 +880,7 @@
 "pM" = (
 /obj/structure/bed/chair/dropship/passenger,
 /obj/item/storage/belt/medical/lifesaver/upp,
+/obj/effect/landmark/survivor_spawner/upp_mss,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "pO" = (
@@ -2226,6 +2227,7 @@
 	bullet_amount = 0
 	},
 /obj/effect/decal/cleanable/blood/oil/streak,
+/obj/effect/landmark/survivor_spawner/upp/soldier,
 /turf/open/shuttle/dropship/can_surgery/light_grey_bottom_left,
 /area/desert_dam/building/bar/bar)
 "Rl" = (

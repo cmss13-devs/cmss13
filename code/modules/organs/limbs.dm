@@ -51,9 +51,6 @@
 	///Embedded or implanter implanted items.
 	var/list/implants = list()
 
-	// how often wounds should be updated, a higher number means less often
-	var/wound_update_accuracy = 1
-
 	var/mob/living/carbon/human/owner = null
 	var/vital //Lose a vital limb, die immediately.
 
@@ -641,8 +638,7 @@ This function completely restores a damaged organ to perfect condition.
 
 /obj/limb/process()
 	// Process wounds, doing healing etc. Only do this every few ticks to save processing power
-	if(owner.life_tick % wound_update_accuracy == 0)
-		update_wounds()
+	update_wounds()
 
 	//Chem traces slowly vanish
 	if(owner.life_tick % 10 == 0)
@@ -705,8 +701,7 @@ This function completely restores a damaged organ to perfect condition.
 			heal_amt += 0.5 * 0.75 //Treated wounds heal faster
 
 		if(heal_amt)
-			//we only update wounds once in [wound_update_accuracy] ticks so have to emulate realtime
-			heal_amt = heal_amt * wound_update_accuracy
+			heal_amt = heal_amt
 			//configurable regen speed woo, no-regen hardcore or instaheal hugbox, choose your destiny
 			heal_amt = heal_amt * CONFIG_GET(number/organ_regeneration_multiplier)
 			// amount of healing is spread over all the wounds
@@ -734,7 +729,7 @@ This function completely restores a damaged organ to perfect condition.
 
 	// sync the organ's damage with its wounds
 	update_damages()
-	owner.update_damage_overlays()
+
 	if(wound_disappeared)
 		owner.update_med_icon()
 		remove_wound_bleeding()
@@ -1027,7 +1022,7 @@ This function completely restores a damaged organ to perfect condition.
 			SPAN_WARNING("You hear a terrible sound of ripping tendons and flesh!"), 3)
 
 			// Checks if the mob can feel pain or if they have at least oxycodone level of painkiller
-			if(body_part != BODY_FLAG_HEAD && owner.pain.feels_pain && owner.pain.reduction_pain < PAIN_REDUCTION_HEAVY)
+			if(body_part != BODY_FLAG_HEAD && owner.pain.feels_pain && owner.pain.reduction_pain < PAIN_REDUCTION_FULL)
 				INVOKE_ASYNC(owner, TYPE_PROC_REF(/mob, emote), pick("pain", "scream"))
 
 			if(organ)
@@ -1395,7 +1390,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	var/burnstate = copytext(damage_state, 2)
 	if(burnstate != "0")
 		burn_overlay.icon_state = "burn_[icon_name]_[burnstate]"
-		. += wound_overlay
+		. += burn_overlay
 
 /*
 			LIMB TYPES

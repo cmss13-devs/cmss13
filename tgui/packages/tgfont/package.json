@@ -4,10 +4,10 @@
   "type": "module",
   "version": "2.0.0",
   "scripts": {
-    "tgfont:build": "svgo icons && node svgtofont.mjs"
+    "tgfont:build": "svgo icons && bun svgtofont.ts"
   },
   "dependencies": {
-    "svgo": "^3.3.2",
-    "svgtofont": "^6.5.0"
+    "svgo": "^4.1.0",
+    "svgtofont": "^6.5.3"
   }
 }

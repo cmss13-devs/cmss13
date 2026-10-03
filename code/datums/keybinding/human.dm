@@ -179,3 +179,31 @@
 	human_user.do_pushups()
 
 	return TRUE
+
+/datum/keybinding/human/blow_whistle
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "blow_whistle"
+	full_name = "Blow Whistle"
+	keybind_signal = COMSIG_KB_HUMAN_BLOW_WHISTLE
+
+/datum/keybinding/human/blow_whistle/down(client/user)
+	. = ..()
+	if(.)
+		return
+
+	//Checks for whistle!
+	var/mob/living/carbon/human/human_user = user.mob
+	var/obj/item/clothing/accessory/device/whistle/whistling = locate() in human_user.contents
+	var/list/leader_clothes = list(human_user.w_uniform, human_user.wear_suit)
+	for(var/obj/item/clothing/accessory in leader_clothes)
+		if(!whistling && accessory?.accessories)
+			whistling = locate() in accessory.accessories
+			if(whistling)
+				break
+
+	if(!whistling)
+		return
+	whistling.attack_self(human_user)
+
+	return TRUE

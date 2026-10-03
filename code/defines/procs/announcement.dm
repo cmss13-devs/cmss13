@@ -40,7 +40,7 @@
 			if(!isobserver(X) && !istype(X)) //filter out any potential non-xenomorphs/observers mobs
 				targets.Remove(X)
 
-		announcement_helper(message, title, targets, sound(get_sfx("queen"),wait = 0,volume = 50))
+		announcement_helper(message, title, targets, sound(SOUND_QUEEN,wait = 0,volume = 50))
 	else
 		for(var/mob/M in targets)
 			if(isobserver(M))
@@ -49,7 +49,7 @@
 			if(!istype(X) || !X.ally_of_hivenumber(hivenumber)) //additionally filter out those of wrong hive
 				targets.Remove(X)
 
-		announcement_helper(message, title, targets, sound(get_sfx("queen"),wait = 0,volume = 50))
+		announcement_helper(message, title, targets, sound(SOUND_QUEEN,wait = 0,volume = 50))
 
 //xenomorph lore announcement
 /proc/xeno_lore_announcement(message, hivenumber, title = QUEEN_LORE_ANNOUNCE, sound_to_play = sound('sound/ambience/containment_breach1.ogg'))

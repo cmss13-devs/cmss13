@@ -140,7 +140,7 @@
 						knock_chance = min(knock_chance, 20)//If they don't know how it works (not Yautja) it's less useful.
 
 					if(prob(knock_chance))
-						playsound(loc, "alien_claw_metal", 25, 1)
+						playsound(loc, SOUND_ALIEN_CLAW_METAL, 25, 1)
 						attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] smashes off [src]'s [wear_mask.name]!"),
 						SPAN_DANGER("We smash off [src]'s [wear_mask.name]!"), null, 5)
 						drop_inv_item_on_ground(wear_mask)
@@ -194,7 +194,7 @@
 
 			apply_damage(f_damage, BRUTE, affecting, sharp = 1, edge = 1) //This should slicey dicey
 			if(acid_damage)
-				playsound(loc, "acid_strike", 25, 1)
+				playsound(loc, SOUND_ACID_STRIKE, 25, 1)
 				var/armor_block_acid = getarmor(affecting, ARMOR_BIO)
 				var/n_acid_damage = armor_damage_reduction(GLOB.marine_melee, acid_damage, armor_block_acid)
 				//nice messages so people know that armor works
@@ -546,7 +546,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] [xeno.slashes_verb] [src]!"),
 		SPAN_DANGER("We [xeno.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-	playsound(loc, "alien_claw_metal", 25, 1)
+	playsound(loc, SOUND_ALIEN_CLAW_METAL, 25, 1)
 	if(prob(10))
 		new /obj/effect/decal/cleanable/blood/oil(loc)
 	healthcheck()
@@ -557,7 +557,7 @@
 	if(status)
 		xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart!"),
 		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-		playsound(loc, "alien_claw_metal", 25, 1)
+		playsound(loc, SOUND_ALIEN_CLAW_METAL, 25, 1)
 		wires = 0 //wires all cut
 		light_disabled = 0
 		toggle_cam_status(xeno, TRUE)
@@ -778,7 +778,7 @@
 
 	if(!arePowerSystemsOn())
 		delay = 1 SECONDS
-		playsound(loc, "alien_doorpry", 25, TRUE)
+		playsound(loc, SOUND_ALIEN_DOORPRY, 25, TRUE)
 	else
 		switch(xeno.mob_size)
 			if(MOB_SIZE_XENO_SMALL, MOB_SIZE_XENO_VERY_SMALL)
@@ -787,7 +787,7 @@
 				delay = 1 SECONDS
 			if(MOB_SIZE_XENO)
 				delay = 3 SECONDS
-		playsound(loc, "alien_doorpry", 25, TRUE)
+		playsound(loc, SOUND_ALIEN_DOORPRY, 25, TRUE)
 
 	xeno.visible_message(SPAN_WARNING("[xeno] digs into [src] and begins to pry it open."),
 	SPAN_WARNING("We dig into [src] and begin to pry it open."), null, 5, CHAT_TYPE_XENO_COMBAT)
@@ -868,7 +868,7 @@
 		else
 			xeno.visible_message(SPAN_XENONOTICE("[xeno] claws [src]!"),
 			SPAN_XENONOTICE("We claw [src]."), null, null, CHAT_TYPE_XENO_COMBAT)
-			playsound(loc, "alien_resin_break", 25)
+			playsound(loc, SOUND_ALIEN_RESIN_BREAK, 25)
 
 		xeno.animation_attack_on(src)
 		if(hivenumber == xeno.hivenumber)
@@ -1049,7 +1049,7 @@
 	xeno.animation_attack_on(src)
 	xeno.visible_message(SPAN_DANGER("[xeno] [xeno.slashes_verb] [src]!"),
 	SPAN_DANGER("We [xeno.slash_verb] [src]!"), null, 5)
-	playsound(loc, "alien_claw_metal", 25, 1)
+	playsound(loc, SOUND_ALIEN_CLAW_METAL, 25, 1)
 	if(beenhit >= XENO_HITS_TO_CUT_WIRES)
 		set_broken()
 		visible_message(SPAN_DANGER("[src]'s electronics are destroyed!"), null, null, 5)
@@ -1238,6 +1238,6 @@
 	alien.animation_attack_on(src)
 	alien.visible_message(SPAN_DANGER("[alien] [alien.slashes_verb] [src]!"),
 	SPAN_DANGER("We [alien.slash_verb] [src]!"), null, 5)
-	playsound(loc, "alien_claw_metal", 25, 1)
+	playsound(loc, SOUND_ALIEN_CLAW_METAL, 25, 1)
 	attacked()
 	return XENO_ATTACK_ACTION

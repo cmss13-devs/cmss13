@@ -20,7 +20,7 @@
 		hive_ref.remove_construction(owner)
 	build_loc = get_turf(owner)
 	new build_type(build_loc, hive_ref)
-	playsound(build_loc, "alien_resin_build", 25)
+	playsound(build_loc, SOUND_ALIEN_RESIN_BUILD, 25)
 	qdel(owner)
 	qdel(src)
 
@@ -94,7 +94,7 @@
 		hive_ref.remove_construction(owner)
 	build_loc = get_turf(owner)
 	var/obj/effect/alien/resin/special/nest/newly_builtor = new build_type(build_loc, hive_ref)
-	playsound(build_loc, "alien_resin_build", 25)
+	playsound(build_loc, SOUND_ALIEN_RESIN_BUILD, 25)
 	if(newly_builtor)
 		newly_builtor.pred_nest.dir = direction_to_put_nest
 		newly_builtor.pred_nest.pixel_x = newly_builtor.pred_nest.buckling_x["[direction_to_put_nest]"]

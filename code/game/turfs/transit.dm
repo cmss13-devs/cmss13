@@ -228,10 +228,10 @@
 
 /mob/living/handle_airdrop(turf/target, dropship_name)
 	..()
-	playsound(target, "punch", rand(20, 70), TRUE)
-	playsound(target, "punch", rand(20, 70), TRUE)
-	playsound(target, "bone_break", rand(20, 70), TRUE)
-	playsound(target, "bone_break", rand(20, 70), TRUE)
+	playsound(target, SOUND_PUNCH, rand(20, 70), TRUE)
+	playsound(target, SOUND_PUNCH, rand(20, 70), TRUE)
+	playsound(target, SOUND_BONEBREAK, rand(20, 70), TRUE)
+	playsound(target, SOUND_BONEBREAK, rand(20, 70), TRUE)
 
 	KnockDown(10)
 	Stun(3)

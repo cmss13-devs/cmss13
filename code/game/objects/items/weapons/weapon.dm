@@ -1,7 +1,7 @@
 //items designed as weapon
 /obj/item/weapon
 	name = "weapon"
-	hitsound = "swing_hit"
+	hitsound = SOUND_SWING_HIT
 	flags_atom = FPRINT|QUICK_DRAWABLE
 
 	/// Base percentage chance of blocking something

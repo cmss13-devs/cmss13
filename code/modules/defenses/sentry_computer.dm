@@ -397,12 +397,12 @@
 			var/obj/structure/machinery/defenses/sentry = paired_sentry[sentry_index]
 			var/result = sentry.update_choice(usr, action, params["selection"])
 			if(result)
-				playsound(src, get_sfx("terminal_button"), 25, FALSE)
+				playsound(src, SOUND_TERMINAL_BUTTON, 25, FALSE)
 				return TRUE
 			switch(action)
 				if("set-camera")
 					current = sentry
-					playsound(src, get_sfx("terminal_button"), 25, FALSE)
+					playsound(src, SOUND_TERMINAL_BUTTON, 25, FALSE)
 					var/obj/structure/machinery/defenses/sentry/defense = sentry
 					if (defense.has_camera)
 						defense.set_range()
@@ -419,9 +419,9 @@
 			return FALSE
 		if("clear-camera")
 			current = null
-			playsound(src, get_sfx("terminal_button"), 25, FALSE)
+			playsound(src, SOUND_TERMINAL_BUTTON, 25, FALSE)
 			SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 			return TRUE
 		if("ui-interact")
-			playsound(src, get_sfx("terminal_button"), 25, FALSE)
+			playsound(src, SOUND_TERMINAL_BUTTON, 25, FALSE)
 			return FALSE

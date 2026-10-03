@@ -375,7 +375,7 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 			return
 
 /obj/structure/machinery/colony_floodlight/proc/set_damaged()
-	playsound(src, "glassbreak", 70, 1)
+	playsound(src, SOUND_GLASSBREAK, 70, 1)
 	damaged = TRUE
 	if(is_on)
 		set_light(0)

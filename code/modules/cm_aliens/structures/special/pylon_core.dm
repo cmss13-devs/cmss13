@@ -123,7 +123,7 @@
 		addtimer(CALLBACK(W, TYPE_PROC_REF(/obj/effect/alien/weeds, weed_expand), N), PYLON_WEEDS_REGROWTH_TIME, TIMER_UNIQUE)
 
 	to_chat(xeno, SPAN_XENONOTICE("We have successfully repaired \the [name]."))
-	playsound(loc, "alien_resin_build", 25)
+	playsound(loc, SOUND_ALIEN_RESIN_BUILD, 25)
 
 /obj/effect/alien/resin/special/pylon/proc/place_node()
 	var/obj/effect/alien/weeds/node/pylon/pylon_node = new node_type(loc, null, null, linked_hive)
@@ -373,7 +373,7 @@
 		return
 
 	visible_message(SPAN_DANGER("[src] engulfs [xeno] in resin!"))
-	playsound(src, "alien_resin_build", 25, 1)
+	playsound(src, SOUND_ALIEN_RESIN_BUILD, 25, 1)
 	qdel(xeno)
 
 	linked_hive.stored_larva += larva_amount

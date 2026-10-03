@@ -118,7 +118,7 @@
 			if(!buckled_mob)
 				return
 			buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"), SPAN_NOTICE("\The [user] pulls you free from \the [src]."), SPAN_NOTICE("You hear squelching."))
-			playsound(loc, "alien_resin_move", 50)
+			playsound(loc, SOUND_ALIEN_RESIN_MOVE, 50)
 			if(ishuman(buckled_mob))
 				var/mob/living/carbon/human/buckled_human = buckled_mob
 				log_interact(user, buckled_human, "[key_name(user)] unnested [key_name(buckled_human)] at [get_area_name(loc)]")
@@ -131,14 +131,14 @@
 			if(!buckled_mob)
 				return
 			buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"), SPAN_NOTICE("\The [user] pulls you free from \the [src]."), SPAN_NOTICE("You hear squelching."))
-			playsound(loc, "alien_resin_move", 50)
+			playsound(loc, SOUND_ALIEN_RESIN_MOVE, 50)
 			if(ishuman(buckled_mob))
 				var/mob/living/carbon/human/buckled_human = buckled_mob
 				log_interact(user, buckled_human, "[key_name(user)] unnested [key_name(buckled_human)] at [get_area_name(loc)]")
 			unbuckle()
 			return
 	health = max(0, health - thing.force)
-	playsound(loc, "alien_resin_break", 25)
+	playsound(loc, SOUND_ALIEN_RESIN_BREAK, 25)
 	user.animation_attack_on(src)
 	user.visible_message(SPAN_WARNING("\The [user] hits \the [src] with \the [thing]!"),
 	SPAN_WARNING("You hit \the [src] with \the [thing]!"))
@@ -181,7 +181,7 @@
 	buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"),
 	SPAN_NOTICE("\The [user] pulls you free from \the [src]."),
 	SPAN_NOTICE("You hear squelching."))
-	playsound(loc, "alien_resin_move", 50)
+	playsound(loc, SOUND_ALIEN_RESIN_MOVE, 50)
 	if(ishuman(buckled_mob))
 		var/mob/living/carbon/human/H = buckled_mob
 		if(isxeno(user))
@@ -284,7 +284,7 @@
 	M.visible_message(SPAN_XENONOTICE("[user] secretes a thick, vile resin, securing [M] into [src]!"),
 	SPAN_XENONOTICE("[user] drenches you in a foul-smelling resin, trapping you in [src]!"),
 	SPAN_NOTICE("You hear squelching."))
-	playsound(loc, "alien_resin_move", 50)
+	playsound(loc, SOUND_ALIEN_RESIN_MOVE, 50)
 
 /obj/structure/bed/nest/unbuckle(mob/user)
 	if(!buckled_mob)
@@ -345,7 +345,7 @@
 		M.animation_attack_on(src)
 		M.visible_message(SPAN_DANGER("\The [M] claws at \the [src]!"),
 		SPAN_DANGER("We claw at \the [src]."))
-		playsound(loc, "alien_resin_break", 25)
+		playsound(loc, SOUND_ALIEN_RESIN_BREAK, 25)
 		health -= (M.melee_damage_upper + 25) //Beef up the damage a bit
 		healthcheck()
 		return XENO_ATTACK_ACTION
@@ -356,7 +356,7 @@
 /obj/structure/bed/nest/attack_animal(mob/living/M as mob)
 	M.visible_message(SPAN_DANGER("\The [M] tears at \the [src]!"),
 		SPAN_DANGER("You tear at \the [src]."))
-	playsound(loc, "alien_resin_break", 25)
+	playsound(loc, SOUND_ALIEN_RESIN_BREAK, 25)
 	health -= 40
 	healthcheck()
 

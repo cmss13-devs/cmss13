@@ -189,7 +189,7 @@
 		return
 	if(!step(living_mob, direction))
 		living_mob.animation_attack_on(get_step(living_mob, direction))
-		playsound(living_mob.loc, "punch", 25, 1)
+		playsound(living_mob.loc, SOUND_PUNCH, 25, 1)
 		living_mob.visible_message(SPAN_DANGER("[living_mob] slams into an obstacle!"),
 			isxeno(living_mob) ? SPAN_XENODANGER("You slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		living_mob.apply_damage(MELEE_FORCE_TIER_2, enviro=damage_enviro)

@@ -16,8 +16,8 @@
 	)
 	mouse_pointer = 'icons/effects/mouse_pointer/smartgun_mouse/smartgun_base.dmi'
 
-	fire_sound = "gun_smartgun"
-	fire_rattle = "gun_smartgun_rattle"
+	fire_sound = SOUND_GUN_SMARTGUN
+	fire_rattle = SOUND_GUN_SMARTGUN_RATTLE
 	reload_sound = 'sound/weapons/handling/gun_sg_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_sg_unload.ogg'
 
@@ -898,8 +898,8 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/machineguns.dmi'
 	icon_state = "m56f"
 	item_state = "m56f"
-	fire_sound = "gun_smartgun_clf"
-	fire_rattle = "gun_smartgun_clf_rattle"
+	fire_sound = SOUND_GUN_SMARTGUN_CLF
+	fire_rattle = SOUND_GUN_SMARTGUN_CLF_RATTLE
 	random_spawn_chance = 100
 	random_cosmetic_chance = 100
 	current_mag = /obj/item/ammo_magazine/smartgun/rusty
@@ -980,7 +980,7 @@
 			balloon_alert(user, "*unjammed!*")
 		else
 			to_chat(user, SPAN_NOTICE("You start wildly racking the bolt back and forth attempting to unjam \the [src]!"))
-			playsound(src, "gun_jam_rack", 50, FALSE)
+			playsound(src, SOUND_GUN_JAM_RACK, 50, FALSE)
 			balloon_alert(user, "*rack*")
 		return
 	. = ..()

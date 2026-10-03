@@ -461,7 +461,7 @@
 		show_browser(usr, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name, extra_stylesheets=extra_stylesheets, extra_headers=extra_headers) // Update the window
 
 		update_icon()
-		playsound(src, "paper_writing", 15, TRUE)
+		playsound(src, SOUND_PAPER_WRITING, 15, TRUE)
 
 /obj/item/paper/attackby(obj/item/P, mob/user)
 	..()

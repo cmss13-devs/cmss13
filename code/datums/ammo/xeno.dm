@@ -161,8 +161,8 @@
 /datum/ammo/xeno/acid
 	name = "acid spit"
 	icon_state = "xeno_acid_weak"
-	sound_hit  = "acid_hit"
-	sound_bounce = "acid_bounce"
+	sound_hit  = SOUND_ACID_HIT
+	sound_bounce = SOUND_ACID_BOUNCE
 	damage_type = BURN
 	spit_cost = 25
 	flags_ammo_behavior = AMMO_ACIDIC|AMMO_XENO
@@ -375,7 +375,7 @@
 		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD || HAS_TRAIT(carbon, TRAIT_HAULED))
 			return
 	to_chat(moob,SPAN_HIGHDANGER("Acid covers your body! Oh fuck!"))
-	playsound(moob,"acid_strike",75,1)
+	playsound(moob,SOUND_ACID_STRIKE,75,1)
 	INVOKE_ASYNC(moob, TYPE_PROC_REF(/mob, emote), "pain") // why do I need this bullshit
 	drop_nade(get_turf(proj), proj,TRUE)
 	var/datum/effects/acid/acid_effect = locate() in moob.effects_list

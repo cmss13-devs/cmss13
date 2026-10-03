@@ -73,7 +73,7 @@
 
 	if(node)
 		to_chat(xeno, SPAN_NOTICE("We uproot and replace the weed node."))
-		playsound(xeno.loc, "alien_resin_break", 25)
+		playsound(xeno.loc, SOUND_ALIEN_RESIN_BREAK, 25)
 		to_convert = node.children.Copy()
 		qdel(node)
 
@@ -88,7 +88,7 @@
 				new /obj/effect/alien/weeds(target_turf, new_node)
 			qdel(cur_weed)
 
-	playsound(xeno.loc, "alien_resin_build", 25)
+	playsound(xeno.loc, SOUND_ALIEN_RESIN_BUILD, 25)
 	if(autoplanted)
 		apply_cooldown(0)
 	else
@@ -559,7 +559,7 @@
 		visible_message(SPAN_XENOWARNING("\The [src] begins to emit strange-smelling pheromones."),
 		SPAN_XENOWARNING("We begin to emit '[pheromone]' pheromones."), null, 5)
 		SEND_SIGNAL(src, COMSIG_XENO_START_EMIT_PHEROMONES, pheromone)
-		playsound(loc, "alien_drool", 25)
+		playsound(loc, SOUND_ALIEN_DROOL, 25)
 
 	if(isqueen(src) && hive && length(hive.xeno_leader_list) && anchored)
 		for(var/mob/living/carbon/xenomorph/L in hive.xeno_leader_list)
@@ -783,7 +783,7 @@
 		return
 
 	xeno.use_plasma(plasma_cost)
-	playsound(xeno.loc, "alien_resin_build", 25)
+	playsound(xeno.loc, SOUND_ALIEN_RESIN_BUILD, 25)
 	new /obj/effect/alien/resin/trap(turf, xeno)
 	to_chat(xeno, SPAN_XENONOTICE("We place a resin hole on the weeds, it still needs a sister to fill it with acid."))
 	return ..()
@@ -1038,7 +1038,7 @@
 	if(xeno.ammo.spit_windup)
 		spitting = TRUE
 		if(xeno.ammo.pre_spit_warn)
-			playsound(xeno.loc,"alien_drool", 55, 1)
+			playsound(xeno.loc,SOUND_ALIEN_DROOL, 55, 1)
 		to_chat(xeno, SPAN_WARNING("We begin to prepare a large spit!"))
 		xeno.visible_message(SPAN_WARNING("[xeno] prepares to spit a massive glob!"),
 		SPAN_WARNING("We begin to spit [xeno.ammo.name]!"))
@@ -1137,7 +1137,7 @@
 		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe our tail through the air!"))
 		apply_cooldown(cooldown_modifier = 0.1)
 		xeno_attack_delay(stabbing_xeno)
-		playsound(stabbing_xeno, "alien_tail_swipe", 50, TRUE)
+		playsound(stabbing_xeno, SOUND_ALIEN_TAIL_SWIPE, 50, TRUE)
 		return FALSE
 
 	if(stabbing_xeno.can_not_harm(targetted_atom))
@@ -1200,11 +1200,11 @@
 		if(prob(1))
 			playsound(target, 'sound/effects/comical_bonk.ogg', 50, TRUE)
 		else
-			playsound(target, "punch", 50, TRUE)
+			playsound(target, SOUND_PUNCH, 50, TRUE)
 		stab_overlay = "slam"
 	else
 		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] skewers [target] through the [limb ? limb.display_name : "chest"] with its razor sharp tail!"), SPAN_XENOWARNING("We skewer [target] through the [limb? limb.display_name : "chest"] with our razor sharp tail!"))
-		playsound(target, "alien_bite", 50, TRUE)
+		playsound(target, SOUND_ALIEN_BITE, 50, TRUE)
 		stab_overlay = "tail"
 	log_attack("[key_name(stabbing_xeno)] tailstabbed [key_name(target)] at [get_area_name(stabbing_xeno)]")
 	target.attack_log += text("\[[time_stamp()]\] <font color='orange'>was tailstabbed by [key_name(stabbing_xeno)]</font>")

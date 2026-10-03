@@ -231,7 +231,7 @@
 	switch(action)
 		if("submit")
 			submit_solution(params["solution"], params["offset"], ui.user)
-			playsound(src, "keyboard_alt", 15, vary=TRUE)
+			playsound(src, SOUND_KEYBOARD_ALT, 15, vary=TRUE)
 			return TRUE
 		if("finished_ping")
 			alert_on_comms_failure()
@@ -330,7 +330,7 @@
 	switch(action)
 		if("generate")
 			generate_challenge()
-			playsound(src, "keyboard_alt", 15, vary=TRUE)
+			playsound(src, SOUND_KEYBOARD_ALT, 15, vary=TRUE)
 			return TRUE
 
 /obj/structure/machinery/computer/almayer_encryption/decoder/insert_punch_card(obj/item/paper/punch_card/card, mob/living/user)

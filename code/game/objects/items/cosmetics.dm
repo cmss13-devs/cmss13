@@ -190,7 +190,7 @@
 		open = TRUE
 		to_chat(user, SPAN_NOTICE("You take the lid off."))
 		icon_state = icon_state_open
-		playsound(src, "pillbottle", 25, TRUE)
+		playsound(src, SOUND_PILLBOTTLE, 25, TRUE)
 
 /obj/item/facepaint/lipstick/purple
 	name = "purple lipstick"

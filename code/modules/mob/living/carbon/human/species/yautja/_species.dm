@@ -25,7 +25,7 @@
 	speech_sounds = list('sound/voice/pred_click1.ogg', 'sound/voice/pred_click2.ogg')
 	speech_chance = 100
 	death_message = "lets out a final bellowing cry, falling motionless and lifeless soon after..."
-	death_sound = "pred_death"
+	death_sound = SOUND_PRED_DEATH
 	darksight = 5
 	default_lighting_alpha = LIGHTING_PLANE_ALPHA_YAUTJA
 	flags_sight = SEE_MOBS
@@ -35,7 +35,7 @@
 
 	bloodsplatter_type = /obj/effect/bloodsplatter/yautjasplatter
 
-	burstscreams = list(MALE = "pred_preburst", FEMALE = "pred_preburst")
+	burstscreams = list(MALE = SOUND_PRED_PREBURST, FEMALE = SOUND_PRED_PREBURST)
 
 	heat_level_1 = 500
 	heat_level_2 = 700

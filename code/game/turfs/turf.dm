@@ -917,7 +917,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 				xeno_victim.Daze(height * 1.5 * stun_modifier)
 
 	if(damage_modifier > 0.5)
-		playsound(loc, "slam", 50, 1)
+		playsound(loc, SOUND_SLAM, 50, 1)
 
 /// Validate that a type of object can be deployed on this turf
 /turf/proc/validate_deployment(deployment_type)

@@ -480,7 +480,7 @@
 
 	/// Var that keeps track of in-progress wind-up spits like Bombard to prevent spitting multiple spits at the same time
 	var/spitting = FALSE
-	var/sound_to_play = "acid_spit"
+	var/sound_to_play = SOUND_ACID_SPIT
 	var/aim_turf = FALSE
 
 /datum/action/xeno_action/activable/xeno_spit/queen_macro //so it doesn't screw other macros up

@@ -41,4 +41,4 @@
 /mob/living/simple_animal/hostile/retaliate/clown/Initialize()
 	. = ..()
 	AddElement(/datum/element/waddling)
-	AddComponent(/datum/component/footstep, 2, 10, 4, 4, "clown_footstep", vary_ = 0)
+	AddComponent(/datum/component/footstep, 2, 10, 4, 4, SOUND_CLOWNSTEP, vary_ = 0)

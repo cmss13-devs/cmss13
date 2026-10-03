@@ -525,7 +525,7 @@
 	storage_slots = 6
 	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_CLICK_GATHER
 	can_hold = list(/obj/item/reagent_container/glass/beaker/vial,/obj/item/reagent_container/hypospray/autoinjector)
-	matter = list("plastic" = 2000)
+	matter = list("plastic" = 1000)
 	var/start_vials = 6
 	var/is_random
 
@@ -578,6 +578,34 @@
 		dump_into(M,user)
 	else
 		return ..()
+
+/obj/item/storage/fancy/vials/injector
+	name = "autoinjector storage box"
+	desc = "A box for storing sets of autoinjectors."
+	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector)
+	icon = 'icons/obj/items/autoinjectorbox.dmi'
+	icon_state = "autoinjectorbox0"
+	item_state = "autoinjectorbox"
+	icon_type = "autoinjector"
+	start_vials = 0
+
+/obj/item/storage/fancy/vials/stimulant
+	name = "stimulant storage box"
+	desc = "A box of performance improving stimulants."
+	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector)
+	icon = 'icons/obj/items/stimulantbox.dmi'
+	icon_state = "stimulantbox0"
+	item_state = "stimulantbox"
+	icon_type = "stimulant"
+	start_vials = 0
+
+/obj/item/storage/fancy/vials/stimulant/fill_preset_inventory()
+	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant( src )
 
 /obj/item/storage/lockbox/vials
 	name = "secure vial storage box"

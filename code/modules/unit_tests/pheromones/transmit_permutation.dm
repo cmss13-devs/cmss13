@@ -3,7 +3,7 @@
 /datum/unit_test/pheromones/transmit_permutation__identity_pair/Run()
 	var/list/datum/abstract_xenomorph/emitters = list(
 		new /datum/abstract_xenomorph(),
-		new /datum/abstract_xenomorph()
+		new /datum/abstract_xenomorph(),
 	)
 
 	var/list/list/expected_permutations = list(
@@ -37,7 +37,7 @@
 	var/list/datum/abstract_xenomorph/emitters = list(
 		new /datum/abstract_xenomorph(caste = XENO_CASTE_LESSER_DRONE),
 		new /datum/abstract_xenomorph(),
-		new /datum/abstract_xenomorph(caste = XENO_CASTE_QUEEN)
+		new /datum/abstract_xenomorph(caste = XENO_CASTE_QUEEN),
 	)
 
 	var/list/list/expected_permutations = list(

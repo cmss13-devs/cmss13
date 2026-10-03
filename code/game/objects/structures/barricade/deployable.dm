@@ -99,7 +99,7 @@
 	item_state = "folding"
 	item_state_slots = list(
 		WEAR_BACK = "folding",
-		WEAR_J_STORE = "folding"
+		WEAR_J_STORE = "folding",
 	)
 	icon = 'icons/obj/items/marine-items.dmi'
 	item_icons = list(

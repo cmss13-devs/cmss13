@@ -17,14 +17,14 @@
 		"1" = list(0, 21),
 		"2" = list(0, -32),
 		"4" = list(32, 0),
-		"8" = list(-32, 0)
+		"8" = list(-32, 0),
 	)
 
 	muzzle_flash_pos = list(
 		"1" = list(0, 59),
 		"2" = list(0, -74),
 		"4" = list(89, -4),
-		"8" = list(-89, -4)
+		"8" = list(-89, -4),
 	)
 
 	scatter = 2

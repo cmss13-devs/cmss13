@@ -10,5 +10,5 @@
 
 	buff_multipliers = list(
 		"cooldown" = 0.67,
-		"accuracy" = 1.67
+		"accuracy" = 1.67,
 	)

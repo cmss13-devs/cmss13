@@ -329,7 +329,7 @@
 	var/static/list/options = list(
 		"Psychic Radiance (100)" = icon(/datum/action/xeno_action::icon_file, "psychic_radiance"),
 		"Psychic Whisper (0)" = icon(/datum/action/xeno_action::icon_file, "psychic_whisper"),
-		"Give Order (100)" = icon(/datum/action/xeno_action::icon_file, "queen_order")
+		"Give Order (100)" = icon(/datum/action/xeno_action::icon_file, "queen_order"),
 	)
 
 	var/choice

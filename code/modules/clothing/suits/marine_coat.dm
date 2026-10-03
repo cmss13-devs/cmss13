@@ -4,7 +4,7 @@
 	desc = "What the hell is this doing here?"
 	icon = 'icons/obj/items/clothing/suits/suits_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi',
 	)
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	blood_overlay_type = "coat"
@@ -104,7 +104,7 @@
 /obj/item/clothing/suit/storage/jacket/marine/service/green
 	icon = 'icons/obj/items/clothing/suits/suits_by_map/desert.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/desert.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/desert.dmi',
 	)
 	flags_atom = NO_GAMEMODE_SKIN
 	initial_icon_state = "coat_officer"
@@ -162,7 +162,7 @@
 	icon_state = "RO_jacket"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi',
 	)
 	flags_atom = NO_GAMEMODE_SKIN
 
@@ -173,7 +173,7 @@
 	icon_state = "coat_mp"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi',
 	)
 	flags_atom = NO_GAMEMODE_SKIN
 	initial_icon_state = "coat_mp"
@@ -185,7 +185,7 @@
 	icon_state = "coat_warden"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi',
 	)
 	flags_atom = NO_GAMEMODE_SKIN
 	initial_icon_state = "coat_warden"
@@ -197,7 +197,7 @@
 	icon_state = "coat_cmp"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi',
 	)
 	flags_atom = NO_GAMEMODE_SKIN
 	initial_icon_state = "coat_cmp"
@@ -210,7 +210,7 @@
 	icon_state = "jacket_tanker"
 	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi',
 	)
 	initial_icon_state = "jacket_tanker"
 
@@ -220,7 +220,7 @@
 	icon_state = "chef_jacket"
 	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi',
 	)
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
@@ -238,7 +238,7 @@
 	icon_state = "coat_formal"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi',
 	)
 	initial_icon_state = "coat_formal"
 	armor_melee = CLOTHING_ARMOR_LOW
@@ -302,7 +302,7 @@
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	icon_state = "general_jacket"
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi',
 	)
 	item_state = "general_jacket"
 	has_buttons = FALSE
@@ -346,7 +346,7 @@
 	icon_state = "provost_jacket"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi',
 	)
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 
@@ -358,7 +358,7 @@
 	desc = "The jacket of the legendary Marine dress blues, virtually unchanged since the 19th century. You're wearing history, Marine. Don't let your ancestors down."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi',
 	)
 	icon_state = "e_jacket"
 	item_state = "e_jacket"
@@ -385,7 +385,7 @@
 	item_state = "cc_brown"
 	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi',
 	)
 	flags_atom = NO_GAMEMODE_SKIN
 	has_buttons = FALSE
@@ -404,7 +404,7 @@
 	item_state = "cc_blue"
 	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi',
 	)
 
 /obj/item/clothing/suit/storage/jacket/marine/correspondent
@@ -414,7 +414,7 @@
 	item_state = "correspondent_green"
 	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi',
 	)
 	flags_atom = NO_GAMEMODE_SKIN
 	has_buttons = FALSE
@@ -449,7 +449,7 @@
 	item_state = "vest_brown"
 	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi',
 	)
 	flags_bodypart_hidden = BODY_FLAG_CHEST
 	flags_atom = NO_GAMEMODE_SKIN
@@ -476,7 +476,7 @@
 	item_state = "corporate_ivy"
 	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi',
 	)
 	flags_atom = NO_GAMEMODE_SKIN
 	has_buttons = FALSE
@@ -516,7 +516,7 @@
 	item_state = "jacket_khaki"
 	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi',
 	)
 	flags_atom = NO_GAMEMODE_SKIN
 	has_buttons = FALSE
@@ -543,7 +543,7 @@
 	icon_state = "rmc_service"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi',
 	)
 	has_buttons = FALSE
 	flags_atom = NO_GAMEMODE_SKIN
@@ -571,7 +571,7 @@
 	initial_icon_state = "rmc_bomber"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi',
 	)
 
 // TWE - IASF - Imperial Armed Space Force
@@ -593,7 +593,7 @@
 	initial_icon_state = "iasf_jacket"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi',
 	)
 
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS

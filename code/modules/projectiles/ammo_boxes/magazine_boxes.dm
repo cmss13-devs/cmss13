@@ -1111,10 +1111,10 @@
 /obj/item/ammo_box/magazine/kt42/empty
 	empty = TRUE
 
-//-----------------------Beretta 92FS Pistol Mag Box-----------------------
+//-----------------------Beretta M92X Pistol Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/b92fs
-	name = "magazine box (Beretta 92FS x 16)"
+	name = "magazine box (Beretta M92X x 16)"
 	icon_state = "base_mk45"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = ""

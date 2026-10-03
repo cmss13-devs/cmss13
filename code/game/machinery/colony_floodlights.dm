@@ -434,3 +434,14 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 #undef FLOODLIGHT_REPAIR_WELD
 #undef FLOODLIGHT_REPAIR_CABLE
 #undef FLOODLIGHT_REPAIR_SCREW
+
+/obj/structure/machinery/colony_floodlight/alt
+	icon_state = "alt_flood_s_off"
+
+/obj/structure/machinery/colony_floodlight/alt/update_icon()
+	if(damaged)
+		icon_state = "alt_flood_s_dmg"
+	else if(is_on)
+		icon_state = "alt_flood_s_on"
+	else
+		icon_state = "alt_flood_s_off"

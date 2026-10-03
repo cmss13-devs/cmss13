@@ -65,3 +65,19 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
 
+/obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lasalle_security
+	name = "\improper M1 pattern corporate security armor"
+	desc = "A basic vest with a Lasalle Bionational logo on the right breast. This is commonly worn by low-level guards protecting Lasalle Bionational facilities."
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/LASALLE.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/LASALLE.dmi'
+	)
+
+	lamp_light_color = LIGHT_COLOR_XENON
+	light_color = LIGHT_COLOR_XENON
+	lamp_icon = "lamp_neon"
+
+/obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lasalle_security/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/wy)
+	AddElement(/datum/element/corp_label/bionational)

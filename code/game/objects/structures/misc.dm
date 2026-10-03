@@ -437,6 +437,23 @@
 /obj/structure/stairs/perspective/ice
 	icon = 'icons/obj/structures/stairs/perspective_stairs_ice.dmi'
 
+/obj/structure/stairs/perspective/ramp
+	icon = 'icons/obj/structures/stairs/perspective_stairs_ramp.dmi'
+	icon_state = "ramp_multi"
+
+/obj/structure/stairs/perspective/ramp/colorable
+	icon = 'icons/obj/structures/stairs/perspective_stairs_ramp.dmi'
+	icon_state = "ramp_multi_colorable"
+
+// Rock Stairs & Engi Temple
+
+/obj/structure/stairs/rock/colorable //instance these for the required icons
+	icon = 'icons/obj/structures/stairs/stairs_rock_colorable.dmi'
+	icon_state = "rock_stairs"
+
+/obj/structure/stairs/rock/engineer_temple //instance these for the required icons
+	icon = 'icons/obj/structures/stairs/stairs_temple.dmi'
+	icon_state = "rock_stairs"
 
 // Prop
 /obj/structure/ore_box
@@ -446,6 +463,7 @@
 	icon_state = "orebox0"
 	density = TRUE
 	anchored = FALSE
+	health = 400
 
 /obj/structure/ore_box/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -471,6 +489,58 @@
 	if(unslashable)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/woodhit.ogg', 25, 1)
+	deconstruct(FALSE)
+	xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+	SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
+	return TAILSTAB_COOLDOWN_NORMAL
+
+/obj/structure/ore_box/bullet_act(obj/projectile/projectile)
+	. = ..()
+	update_health(projectile.damage)
+
+/obj/structure/ore_box/alt
+	name = "metal ore box"
+	desc = "A heavy metal box used for storing ore."
+	icon_state = "orebox_alt_1"
+
+/obj/structure/ore_box/alt/alt_1
+	icon_state = "orebox_alt_2"
+
+/obj/structure/ore_box/alt/alt_2
+	icon_state = "orebox_alt_3"
+
+/obj/structure/ore_box/alt/alt_3
+	icon_state = "orebox_alt_4"
+
+/obj/structure/ore_box/alt/colorable
+	name = "metal ore box"
+	desc = "A heavy metal box used for storing ore."
+	icon_state = "orebox_alt_colorable"
+
+/obj/structure/ore_box/alt/metal_container_colorable
+	name = "metal container"
+	desc = "A heavy metal container used for storing various materials."
+	icon_state = "metal_box"
+
+/obj/structure/ore_box/alt/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(xeno.a_intent == INTENT_HARM)
+		if(unslashable)
+			return
+		xeno.animation_attack_on(src)
+		xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart!"))
+		playsound(src, 'sound/effects/metalhit.ogg')
+		to_chat(xeno, SPAN_WARNING("We slice the [src] apart!"))
+		deconstruct(FALSE)
+		return XENO_ATTACK_ACTION
+	else
+		attack_hand(xeno)
+		return XENO_NONCOMBAT_ACTION
+
+/obj/structure/ore_box/alt/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	if(unslashable)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	deconstruct(FALSE)
 	xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
 	SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)

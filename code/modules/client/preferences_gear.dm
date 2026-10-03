@@ -174,6 +174,11 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "Aviator shades, silver"
 	path = /obj/item/clothing/glasses/sunglasses/aviator/silver
 
+/datum/gear/eyewear/new_bimex/chrome
+	display_name = "BiMex Chromeline shades, chrome"
+	path = /obj/item/clothing/glasses/sunglasses/big/chrome
+	fluff_cost = 4
+
 /datum/gear/eyewear/new_bimex/black
 	display_name = "BiMex tactical shades, black"
 	path = /obj/item/clothing/glasses/sunglasses/big/new_bimex/black
@@ -1403,6 +1408,14 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 // /datum/gear/civilian/patch/hyperdyne
 // 	display_name = "Hyperdyne Corporation shoulder patch"
 // 	path = /obj/item/clothing/accessory/patch/hyperdyne_patch
+
+// /datum/gear/civilian/patch/lasalle
+// 	display_name = "Lasalle Bionational Corporation shoulder patch"
+// 	path = /obj/item/clothing/accessory/patch/lasalle
+
+// /datum/gear/civilian/patch/seegson
+// 	display_name = "Seegson Corporation shoulder patch"
+// 	path = /obj/item/clothing/accessory/patch/seegson
 
 // Misc Headwear
 

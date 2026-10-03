@@ -35,8 +35,7 @@
 			alert("That path is not allowed.")
 			return
 
-/datum/buildmode_mode/advanced/when_clicked(client/c, params, obj/object)
-	var/list/modifiers = params2list(params)
+/datum/buildmode_mode/advanced/when_clicked(client/c, list/modifiers, obj/object)
 	var/left_click = LAZYACCESS(modifiers, LEFT_CLICK)
 	var/right_click = LAZYACCESS(modifiers, RIGHT_CLICK)
 	var/alt_click = LAZYACCESS(modifiers, ALT_CLICK)

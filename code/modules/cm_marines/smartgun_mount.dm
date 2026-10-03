@@ -1207,19 +1207,18 @@
 	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 
 ///Update the target if you dragged your mouse
-/obj/structure/machinery/m56d_hmg/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
+/obj/structure/machinery/m56d_hmg/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, list/modifiers)
 	SIGNAL_HANDLER
-	set_target(get_turf_on_clickcatcher(over_object, operator, params))
+	set_target(get_turf_on_clickcatcher(over_object, operator, modifiers))
 	operator?.face_atom(target)
 
 ///Check if the gun can fire and add it to bucket auto_fire system if needed, or just fire the gun if not
-/obj/structure/machinery/m56d_hmg/proc/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
+/obj/structure/machinery/m56d_hmg/proc/start_fire(datum/source, atom/object, turf/location, control, list/modifiers, bypass_checks = FALSE)
 	SIGNAL_HANDLER
 
 	if (burst_firing)
 		return
 
-	var/list/modifiers = params2list(params)
 	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5])
 		return
 
@@ -1240,7 +1239,7 @@
 	if(QDELETED(object))
 		return
 
-	set_target(get_turf_on_clickcatcher(object, operator, params))
+	set_target(get_turf_on_clickcatcher(object, operator, modifiers))
 	if((gun_firemode == GUN_FIREMODE_SEMIAUTO) && COOLDOWN_FINISHED(src, semiauto_fire_cooldown))
 		COOLDOWN_START(src, semiauto_fire_cooldown, semiauto_cooldown_time)
 		fire_shot()

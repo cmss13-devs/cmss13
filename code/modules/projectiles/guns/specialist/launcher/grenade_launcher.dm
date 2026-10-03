@@ -31,6 +31,8 @@
 	var/open_chamber = TRUE
 	///Does it launch its grenades in a low arc or a high? Do they strike people in their path, or fly beyond?
 	var/is_lobbing = FALSE
+	///Whether this is an underslug launcher or not
+	var/underslug = FALSE
 	///Verboten munitions. This is a blacklist. Anything in this list isn't loadable.
 	var/disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade,
 										/obj/item/explosive/grenade/alien,
@@ -41,6 +43,8 @@
 										/obj/item/explosive/grenade/flashbang)
 	///What is this weapon permitted to fire? This is a whitelist. Anything in this list can be fired. Anything.
 	var/valid_munitions = list(/obj/item/explosive/grenade)
+
+	var/max_range = 20
 
 
 /obj/item/weapon/gun/launcher/grenade/set_gun_config_values()
@@ -139,6 +143,9 @@
 	if(!allowed_ammo_type(I))
 		to_chat(user, SPAN_WARNING("[src] can't fire this type of grenade!"))
 		return
+	if(underslug && !I.underslug_launchable)
+		to_chat(user, SPAN_WARNING("[src] can't fire this type of grenade!"))
+		return
 	if(length(cylinder.contents) >= internal_slots)
 		to_chat(user, SPAN_WARNING("[src] cannot hold more grenades!"))
 		return
@@ -165,17 +172,11 @@
 			to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from firing!"))
 			msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
 			return FALSE
-
-
-/obj/item/weapon/gun/launcher/grenade/afterattack(atom/target, mob/user, flag) //Not actually after the attack. After click, more like.
-	if(able_to_fire(user))
 		if(get_dist(target,user) <= 2)
 			var/obj/item/explosive/grenade/nade = cylinder.contents[1]
 			if(nade.dangerous)
 				to_chat(user, SPAN_WARNING("The grenade launcher beeps a warning noise. You are too close!"))
-				return
-		fire_grenade(target,user)
-
+				return FALSE
 
 /obj/item/weapon/gun/launcher/grenade/proc/fire_grenade(atom/target, mob/user)
 	set waitfor = 0
@@ -208,14 +209,16 @@
 	msg_admin_attack("[key_name_admin(user)] fired a grenade ([fired.name]) from \a ([name]).")
 	log_game("[key_name_admin(user)] used a grenade ([name]).")
 
-	fired.throw_range = 20
+	fired.throw_range = max_range
 	fired.det_time = min(10, fired.det_time)
 	fired.activate(user, FALSE)
 	fired.forceMove(get_turf(src))
-	fired.throw_atom(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
+	fired.throw_atom(target, max_range, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
 
-/obj/item/weapon/gun/launcher/grenade/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
-	return FALSE
+/obj/item/weapon/gun/launcher/grenade/Fire(atom/target, mob/living/user, list/modifiers, reflex, dual_wield)
+	if(able_to_fire(user))
+		fire_grenade(target, user)
+	return NONE
 
 //Doesn't use these. Listed for reference. - Really should just actually write these out so it can use Autofire
 /obj/item/weapon/gun/launcher/grenade/load_into_chamber()
@@ -398,3 +401,103 @@
 	desc = "A heavy, low-angle 40mm grenade launcher. Looks to be a hobbyist modification made to resemble a Vietnam War prop. This version has been modernized with an IFF enabled micro-computer. The wooden furniture is, in fact, made of painted hardened polykevlon."
 	icon_state = "m79"
 	icon_state = "m79"
+
+
+/obj/item/weapon/gun/launcher/grenade/ubarrel
+	icon = null
+	icon_state = null
+	is_lobbing = TRUE
+	preload = null
+	underslug = TRUE
+	var/breech_open = FALSE
+	var/cocked = FALSE
+	var/open_sound = 'sound/weapons/handling/ugl_open.ogg'
+	var/close_sound = 'sound/weapons/handling/ugl_close.ogg'
+
+/obj/item/weapon/gun/launcher/grenade/ubarrel/proc/toggle_breech(mob/living/user)
+	if(breech_open) // if it was ALREADY open
+		breech_open = FALSE
+		cocked = TRUE // by closing the gun we have cocked it and readied it to fire
+		to_chat(user, SPAN_NOTICE("You close \the [src]'s breech, cocking it!"))
+		playsound(src, close_sound, 15, 1)
+	else
+		breech_open = TRUE
+		cocked = FALSE
+		to_chat(user, SPAN_NOTICE("You open \the [src]'s breech!"))
+		playsound(src, open_sound, 15, 1)
+	SEND_SIGNAL(src, COMSIG_UNDERBARREL_GL_BREECH_TOGGLED)
+
+/obj/item/weapon/gun/launcher/grenade/ubarrel/unload(mob/user, reload_override, drop_override, loc_override)
+	if(!breech_open)
+		toggle_breech(user)
+		return
+	return ..()
+
+/obj/item/weapon/gun/launcher/grenade/ubarrel/able_to_fire(mob/living/user)
+	if(breech_open)
+		if(user)
+			to_chat(user, SPAN_WARNING("You must close the breech to fire \the [src]!"))
+			playsound(user, 'sound/weapons/gun_empty.ogg', 50, TRUE, 5)
+		return FALSE
+	if(!cocked)
+		if(user)
+			to_chat(user, SPAN_WARNING("You must cock \the [src] to fire it! (open and close the breech)"))
+			playsound(user, 'sound/weapons/gun_empty.ogg', 50, TRUE, 5)
+		return FALSE
+	. = ..()
+	if(!.)
+		return
+	return TRUE
+
+/obj/item/weapon/gun/launcher/grenade/ubarrel/attackby(obj/item/attacking_obj, mob/user)
+	if(!breech_open)
+		toggle_breech(user)
+		return
+	return ..()
+
+/obj/item/weapon/gun/launcher/grenade/ubarrel/fire_grenade(atom/target, mob/user)
+	. = ..()
+	cocked = FALSE
+
+/obj/item/weapon/gun/launcher/grenade/ubarrel/u1
+	name = "\improper internal U1 grenade launcher"
+	desc = "You shouldn't be reading this"
+	internal_slots = 3
+
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
+	cocked_sound = null
+	fire_sound = 'sound/weapons/gun_m92_attachable.ogg'
+	max_range = 7
+
+/obj/item/weapon/gun/launcher/grenade/ubarrel/mk1
+	name = "\improper internal MK1 grenade launcher"
+	desc = "You shouldn't be reading this"
+	internal_slots = 5
+
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
+	cocked_sound = null
+	fire_delay = 3 SECONDS
+	fire_sound = 'sound/weapons/gun_m92_attachable.ogg'
+	max_range = 10
+
+/obj/item/weapon/gun/launcher/grenade/ubarrel/m203
+	name = "\improper internal M203 grenade launcher"
+	desc = "You shouldn't be reading this"
+	internal_slots = 1
+
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
+	cocked_sound = null
+	fire_delay = 0.5 SECONDS
+	fire_sound = 'sound/weapons/gun_m92_attachable.ogg'
+	max_range = 14
+
+/obj/item/weapon/gun/launcher/grenade/ubarrel/u1rmc
+	name = "\improper internal U1 grenade launcher"
+	desc = "You shouldn't be reading this"
+	internal_slots = 5
+
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
+	cocked_sound = null
+	fire_delay = 2.4 SECONDS
+	fire_sound = 'sound/weapons/gun_m92_attachable.ogg'
+	max_range = 10

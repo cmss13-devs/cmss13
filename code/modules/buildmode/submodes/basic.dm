@@ -8,8 +8,7 @@
 	change the direction of built objects"
 	var/list/radial_menu_options = list()
 
-/datum/buildmode_mode/basic/when_clicked(client/admin_building, params, atom/clicked_atom)
-	var/list/modifiers = params2list(params)
+/datum/buildmode_mode/basic/when_clicked(client/admin_building, list/modifiers, atom/clicked_atom)
 
 	var/left_click = LAZYACCESS(modifiers, LEFT_CLICK)
 	var/right_click = LAZYACCESS(modifiers, RIGHT_CLICK)

@@ -9,9 +9,7 @@
 	throw_atom = null
 	return ..()
 
-/datum/buildmode_mode/throwing/when_clicked(client/c, params, obj/object)
-	var/list/modifiers = params2list(params)
-
+/datum/buildmode_mode/throwing/when_clicked(client/c, list/modifiers, obj/object)
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
 		if(isturf(object))
 			return

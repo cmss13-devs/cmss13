@@ -197,10 +197,14 @@ their unique feature is that a direct hit will buff your damage and firerate
 	new_handful.generate_handful(selection, default_caliber, 1, /obj/item/weapon/gun/lever_action)
 	return new_handful
 
-/obj/item/weapon/gun/lever_action/reload(mob/user, obj/item/ammo_magazine/magazine)
-
+/obj/item/weapon/gun/lever_action/can_reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(!magazine || !istype(magazine,/obj/item/ammo_magazine/handful)) //Can only reload with handfuls.
 		to_chat(user, SPAN_WARNING("You can't use that to reload!"))
+		return FALSE
+	return TRUE
+
+/obj/item/weapon/gun/lever_action/reload(mob/user, obj/item/ammo_magazine/magazine)
+	if(!can_reload(user, magazine))
 		return
 
 	var/mag_caliber = magazine.default_ammo //Handfuls can get deleted, so we need to keep this on hand for later.

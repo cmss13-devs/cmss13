@@ -89,7 +89,10 @@
 #define GUN_TRICKSTER (1<<19)
 /// If the gun can perform a warning shot
 #define GUN_CAN_WARNING_SHOT (1<<20)
+/// If the gun is an attachment
+#define GUN_IS_ATTACHMENT (1<<21)
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
+
 
 #define USES_STREAKS (1<<0)
 #define DANGEROUS_TO_ONEHAND_LEVER (1<<1)
@@ -109,6 +112,8 @@
 #define ATTACH_MELEE (1<<6)
 /// Override for attachies so you can fire them with a single hand . ONLY FOR PROJECTILES!!
 #define ATTACH_WIELD_OVERRIDE (1<<7)
+/// Has a unique action
+#define ATTACH_HAS_UNIQUE_ACTION (1<<8)
 
 //Ammo magazine defines, for flags_magazine
 
@@ -288,7 +293,6 @@
 
 #define THROW_MODE_OFF   0
 #define THROW_MODE_NORMAL   1
-#define THROW_MODE_HIGH  2
 
 #define XENO_ACID_GAS_BARRICADE_DAMAGE 8.5
 #define XENO_ACID_HMG_DAMAGE 10

@@ -37,7 +37,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 // This can be replaced with a more sophisticated solution later
 GLOBAL_LIST_INIT(whitelisted_client_procs, list(
-	/client/proc/toggle_ignore_self,
 	/client/proc/toggle_help_intent_safety,
 	/client/proc/toggle_auto_eject,
 	/client/proc/toggle_auto_eject_to_hand,

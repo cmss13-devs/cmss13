@@ -220,16 +220,22 @@
 
 	return FALSE
 
-/obj/item/weapon/gun/revolver/reload(mob/user, obj/item/ammo_magazine/magazine)
+/obj/item/weapon/gun/revolver/can_reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(flags_gun_features & GUN_BURST_FIRING)
-		return
+		return FALSE
 
 	if(!magazine || !istype(magazine))
 		to_chat(user, SPAN_WARNING("That's not gonna work!"))
-		return
+		return FALSE
 
 	if(magazine.current_rounds <= 0)
 		to_chat(user, SPAN_WARNING("That [magazine.name] is empty!"))
+		return FALSE
+	return TRUE
+
+
+/obj/item/weapon/gun/revolver/reload(mob/user, obj/item/ammo_magazine/magazine)
+	if(!can_reload(user, magazine))
 		return
 
 	if(current_mag) // the notes are probably a bit misleading since i modified some of it for mixing bullet type logic - nihi

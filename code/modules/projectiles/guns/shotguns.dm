@@ -141,17 +141,21 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/proc/check_chamber_position()
 	return 1
 
-
-/obj/item/weapon/gun/shotgun/reload(mob/user, obj/item/ammo_magazine/magazine)
+/obj/item/weapon/gun/shotgun/can_reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(flags_gun_features & GUN_BURST_FIRING)
-		return
+		return FALSE
 
 	if(!magazine || !istype(magazine,/obj/item/ammo_magazine/handful)) //Can only reload with handfuls.
 		to_chat(user, SPAN_WARNING("You can't use that to reload!"))
-		return
+		return FALSE
 
 	if(!check_chamber_position()) //For the double barrel.
 		to_chat(user, SPAN_WARNING("[src] has to be open!"))
+		return FALSE
+	return TRUE
+
+/obj/item/weapon/gun/shotgun/reload(mob/user, obj/item/ammo_magazine/magazine)
+	if(!can_reload(user, magazine))
 		return
 
 	//From here we know they are using shotgun type ammo and reloading via handful.
@@ -193,14 +197,18 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	return 1
 
-/obj/item/weapon/gun/shotgun/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
+/obj/item/weapon/gun/shotgun/start_fire(datum/source, atom/object, turf/location, control, list/modifiers, bypass_checks = FALSE)
+	set_gun_user(source)
+
+	if(!modifiers[LEFT_CLICK])
+		return ..()
+
 	if(!gun_user.Adjacent(object))
 		return ..()
 
 	if(!isliving(object))
 		return ..()
 
-	var/list/modifiers = params2list(params)
 	if(modifiers[CTRL_CLICK] || modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5])
 		return FALSE
 
@@ -214,9 +222,6 @@ can cause issues with ammo types getting mixed up during the burst.
 		return FALSE
 
 	if(gun_user.a_intent != INTENT_HARM)
-		return FALSE
-
-	if(gun_user == object) //Throw back to click logic here to handle self harm prefrence
 		return FALSE
 
 	if(QDELETED(object))
@@ -997,11 +1002,11 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil = RECOIL_AMOUNT_TIER_3
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
-/obj/item/weapon/gun/shotgun/double/mou53/reload(mob/user, obj/item/ammo_magazine/magazine)
+/obj/item/weapon/gun/shotgun/double/mou53/can_reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(ispath(magazine.default_ammo, /datum/ammo/bullet/shotgun/buckshot)) // No buckshot in this gun
 		to_chat(user, SPAN_WARNING("\The [src] cannot safely fire this type of shell!"))
-		return
-	..()
+		return FALSE
+	return ..()
 
 /obj/item/weapon/gun/shotgun/double/mou53/unique_action(mob/user)
 	if(!COOLDOWN_FINISHED(src, breach_action_cooldown))
@@ -1614,3 +1619,70 @@ can cause issues with ammo types getting mixed up during the burst.
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness)
 
 //-------------------------------------------------------
+
+/obj/item/weapon/gun/shotgun/ubarrel
+	name = "\improper internal u7 underbarrel shotgun"
+	desc = "You shouldn't be reading this"
+	icon = null
+	icon_state = null
+
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_WIELDED_FIRING_ONLY
+
+	fire_sound = 'sound/weapons/gun_shotgun_u7.ogg'
+	w_class = SIZE_MEDIUM
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/ubarrel
+	ammo = /datum/ammo/bullet/shotgun/buckshot/masterkey
+
+/obj/item/weapon/gun/shotgun/ubarrel/Initialize(mapload, spawn_empty)
+	. = ..()
+	add_bullet_traits(list(
+		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_turfs),
+		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 10.8, GLOB.damage_boost_breaching),
+		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_pylons)
+	))
+
+/obj/item/weapon/gun/shotgun/ubarrel/can_reload(mob/user, obj/item/ammo_magazine/magazine)
+	if(!ispath(magazine.default_ammo, /datum/ammo/bullet/shotgun/buckshot)) // No buckshot in this gun
+		to_chat(user, SPAN_WARNING("\The [src] only accepts buckshot!"))
+		return FALSE
+	return ..()
+
+/obj/item/weapon/gun/shotgun/ubarrel/m20a
+	name = "\improper internal U3 underbarrel shotgun"
+	desc = "You shouldn't be reading this"
+
+	fire_sound = 'sound/weapons/gun_shotgun_u7.ogg'
+	w_class = SIZE_MEDIUM
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/ubarrel
+	ammo = /datum/ammo/bullet/shotgun/buckshot/masterkey
+
+/obj/item/weapon/gun/shotgun/ubarrel/m20a/unloaded
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/ubarrel/unloaded
+
+/obj/item/weapon/gun/shotgun/ubarrel/af13
+	name = "\improper internal af13 underbarrel shotgun"
+	desc = "You shouldn't be reading this"
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_WIELDED_FIRING_ONLY
+
+	fire_sound = 'sound/weapons/gun_shotgun_u7.ogg'
+	w_class = SIZE_MEDIUM
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/af13
+	ammo = /datum/ammo/bullet/shotgun/buckshot/masterkey
+
+/obj/item/weapon/gun/shotgun/ubarrel/af13/Initialize(mapload, spawn_empty)
+	. = ..()
+	add_bullet_traits(list(
+		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 2*5, GLOB.damage_boost_turfs), // 3 hits to break down regular walls, about 6 to break down r-walls
+		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 3*10.8, GLOB.damage_boost_breaching), // 2-taps the R doors
+		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 2*5, GLOB.damage_boost_pylons)
+	))
+
+/obj/item/weapon/gun/shotgun/ubarrel/af13/can_reload(mob/user, obj/item/ammo_magazine/magazine)
+	if(!ispath(magazine.default_ammo, /datum/ammo/bullet/shotgun/buckshot)) // No buckshot in this gun
+		to_chat(user, SPAN_WARNING("\The [src] only accepts buckshot!"))
+		return FALSE
+	return ..()
+
+/obj/item/weapon/gun/shotgun/ubarrel/af13/b
+	name = "\improper internal af13-b underbarrel shotgun"
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/af13b

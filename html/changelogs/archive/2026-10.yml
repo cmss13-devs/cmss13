@@ -15,3 +15,6 @@
   - bugfix: Trial Admins can use the VV Combat logs again
   fira:
   - bugfix: Fix Check CKeys admin verb matching ckeys it shouldn't.
+2026-10-03:
+  Mary-Marilyn:
+  - maptweak: Shivas snowball is now locked to 100 pop

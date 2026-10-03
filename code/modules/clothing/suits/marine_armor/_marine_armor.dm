@@ -762,6 +762,13 @@
 	unacidable = TRUE
 	light_range = 5
 
+/obj/item/clothing/suit/storage/marine/M3G/equipped(mob/user, slot, silent)
+	. = ..()
+	if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
+		to_chat(user, SPAN_WARNING("This armor's pretty nifty, but you don't really seem to know how to use it to its best potential..."))
+		src.flags_inventory = BLOCKSHARPOBJ
+		return
+
 /obj/item/clothing/suit/storage/marine/M3T
 	name = "\improper M3-T light armor"
 	desc = "A custom set of M3 armor designed for users of long-ranged explosive weaponry."

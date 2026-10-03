@@ -1089,7 +1089,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 	if(!mind)
 		mind_initialize()
-
+	client?.player_details.larva_pool_time = null
 	mind.transfer_to(new_player)
 
 	qdel(src)

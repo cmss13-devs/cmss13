@@ -71,6 +71,7 @@ export const CSS_COLORS = [
   'yellow',
   'olive',
   'green',
+  'dark-green',
   'teal',
   'blue',
   'violet',

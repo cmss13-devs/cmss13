@@ -916,8 +916,7 @@
 	if(!faction)  faction =  "None"
 	if(!religion)
 		religion = RELIGION_AGNOSTICISM
-	if(!preferred_squad)
-		preferred_squad = "None"
+	preferred_squad = sanitize_list(preferred_squad, allow=GLOB.squad_preference_options)
 	preferred_spec = sanitize_list(preferred_spec, allow=GLOB.specialist_set_name_dict)
 
 	return 1

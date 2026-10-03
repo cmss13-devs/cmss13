@@ -496,7 +496,6 @@
 	if(add_medal_recommendation(usr))
 		to_chat(usr, SPAN_NOTICE("Recommendation successfully submitted."))
 
-
 /obj/item/device/radio/headset/almayer/mt
 	name = "engineering radio headset"
 	desc = "Useful for coordinating maintenance bars and orbital bombardments. Of robust and sturdy construction. To access the engineering channel, use :n."
@@ -585,7 +584,9 @@
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
+		"Kilo SL" = TRACKER_KSL,
+		"Oscar SL" = TRACKER_OSL,
 	)
 
 /obj/item/device/radio/headset/almayer/mcom/alt
@@ -743,7 +744,9 @@
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
+		"Kilo SL" = TRACKER_KSL,
+		"Oscar SL" = TRACKER_OSL,
 	)
 
 /obj/item/device/radio/headset/almayer/mcom/cdrcom/co
@@ -758,7 +761,9 @@
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
+		"Kilo SL" = TRACKER_KSL,
+		"Oscar SL" = TRACKER_OSL,
 	)
 
 /obj/item/device/radio/headset/almayer/mcom/sea
@@ -819,7 +824,9 @@
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
+		"Kilo SL" = TRACKER_KSL,
+		"Oscar SL" = TRACKER_OSL,
 	)
 
 /obj/item/device/radio/headset/almayer/marine/alpha/tl
@@ -863,7 +870,9 @@
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
+		"Kilo SL" = TRACKER_KSL,
+		"Oscar SL" = TRACKER_OSL,
 	)
 
 /obj/item/device/radio/headset/almayer/marine/bravo/tl
@@ -907,7 +916,9 @@
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
+		"Kilo SL" = TRACKER_KSL,
+		"Oscar SL" = TRACKER_OSL,
 	)
 
 /obj/item/device/radio/headset/almayer/marine/charlie/tl
@@ -951,7 +962,9 @@
 		"Charlie SL" = TRACKER_CSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
+		"Kilo SL" = TRACKER_KSL,
+		"Oscar SL" = TRACKER_OSL,
 	)
 
 /obj/item/device/radio/headset/almayer/marine/delta/tl
@@ -995,7 +1008,9 @@
 		"Charlie SL" = TRACKER_CSL,
 		"Delta SL" = TRACKER_DSL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
+		"Kilo SL" = TRACKER_KSL,
+		"Oscar SL" = TRACKER_OSL,
 	)
 
 /obj/item/device/radio/headset/almayer/marine/echo/tl
@@ -1019,7 +1034,7 @@
 /obj/item/device/radio/headset/almayer/marine/cryo
 	name = "marine foxtrot radio headset"
 	desc = "This is used by Foxtrot squad members. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	icon_state = "cryo_headset"
+	icon_state = "foxtrot_headset"
 	frequency = CRYO_FREQ
 
 /obj/item/device/radio/headset/almayer/marine/cryo/lead
@@ -1040,7 +1055,9 @@
 		"Charlie SL" = TRACKER_CSL,
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
+		"Kilo SL" = TRACKER_KSL,
+		"Oscar SL" = TRACKER_OSL,
 	)
 
 /obj/item/device/radio/headset/almayer/marine/cryo/tl
@@ -1069,66 +1086,90 @@
 //*************************************
 //-----SELF SETTING MARINE HEADSET-----
 //*************************************/
-//For events. Currently used for WO only. After equipping it, self_set() will adapt headset to marine.
+//Adapts itself to the wearer's squad and role. Gear is equipped before squads are assigned at round start,
+//but a vendor-bought headset arrives after, so we listen at both ends and let whichever happens last
+//configure us. Re-running rebrands and retunes on squad transfers, but the role key is only granted once.
+
+/obj/item/device/radio/headset/almayer/marine/self_setting
+	var/role_configured = FALSE
+	var/list/default_tracking_options
+
+/obj/item/device/radio/headset/almayer/marine/self_setting/Initialize()
+	. = ..()
+	default_tracking_options = inbuilt_tracking_options?.Copy()
+
+/obj/item/device/radio/headset/almayer/marine/self_setting/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	self_set()
+	RegisterSignal(user, COMSIG_SET_SQUAD, PROC_REF(self_set), TRUE)
+
+/obj/item/device/radio/headset/almayer/marine/self_setting/dropped(mob/user)
+	. = ..()
+	UnregisterSignal(user, COMSIG_SET_SQUAD)
 
 /obj/item/device/radio/headset/almayer/marine/self_setting/proc/self_set()
 	var/mob/living/carbon/human/H = loc
-	if(istype(H, /mob/living/carbon/human))
-		if(H.assigned_squad)
-			switch(H.assigned_squad.name)
-				if(SQUAD_MARINE_1)
-					name = "[SQUAD_MARINE_1] radio headset"
-					desc = "This is used by [SQUAD_MARINE_1] squad members."
-					icon_state = "alpha_headset"
-					frequency = ALPHA_FREQ
-				if(SQUAD_MARINE_2)
-					name = "[SQUAD_MARINE_2] radio headset"
-					desc = "This is used by [SQUAD_MARINE_2] squad members."
-					icon_state = "bravo_headset"
-					frequency = BRAVO_FREQ
-				if(SQUAD_MARINE_3)
-					name = "[SQUAD_MARINE_3] radio headset"
-					desc = "This is used by [SQUAD_MARINE_3] squad members."
-					icon_state = "charlie_headset"
-					frequency = CHARLIE_FREQ
-				if(SQUAD_MARINE_4)
-					name = "[SQUAD_MARINE_4] radio headset"
-					desc = "This is used by [SQUAD_MARINE_4] squad members."
-					icon_state = "delta_headset"
-					frequency = DELTA_FREQ
-				if(SQUAD_MARINE_5)
-					name = "[SQUAD_MARINE_5] radio headset"
-					desc = "This is used by [SQUAD_MARINE_5] squad members."
-					frequency = ECHO_FREQ
-				if(SQUAD_MARINE_CRYO)
-					name = "[SQUAD_MARINE_CRYO] radio headset"
-					desc = "This is used by [SQUAD_MARINE_CRYO] squad members."
-					frequency = CRYO_FREQ
+	if(!istype(H))
+		return
+	if(!H.assigned_squad)
+		return
+	var/key_type
+	var/role_locate_setting
+	inbuilt_tracking_options = default_tracking_options?.Copy()
+	volume = initial(volume)
 
-			switch(GET_DEFAULT_ROLE(H.job))
-				if(JOB_SQUAD_LEADER)
-					name = "marine leader " + name
-					keys += new /obj/item/device/encryptionkey/squadlead(src)
-					volume = RADIO_VOLUME_CRITICAL
-				if(JOB_SQUAD_MEDIC)
-					name = "marine hospital corpsman " + name
-					keys += new /obj/item/device/encryptionkey/med(src)
-				if(JOB_SQUAD_ENGI)
-					name = "marine combat technician " + name
-					keys += new /obj/item/device/encryptionkey/engi(src)
-				if(JOB_SQUAD_TEAM_LEADER)
-					name = "marine fireteam leader " + name
-					keys += new /obj/item/device/encryptionkey/jtac(src)
-				else
-					name = "marine " + name
+	name = "[lowertext(H.assigned_squad.name)] radio headset"
+	desc = "This is used by [H.assigned_squad.name] squad members."
+	var/squad_icon_state = "[lowertext(H.assigned_squad.name)]_headset"
+	icon_state = icon_exists(icon, squad_icon_state) ? squad_icon_state : initial(icon_state) // not every squad has a sprite (Intel)
 
-			set_frequency(frequency)
-			for(var/ch_name in channels)
-				secure_radio_connections[ch_name] = SSradio.add_object(src, GLOB.radiochannels[ch_name],  RADIO_CHAT)
-			recalculateChannels()
-			if(H.mind && H.hud_used && H.hud_used.locate_leader) //make SL tracker visible
-				H.hud_used.locate_leader.alpha = 255
-				H.hud_used.locate_leader.mouse_opacity = MOUSE_OPACITY_ICON
+	switch(GET_DEFAULT_ROLE(H.job))
+		if(JOB_SQUAD_LEADER)
+			name = "marine leader " + name
+			key_type = /obj/item/device/encryptionkey/squadlead
+			inbuilt_tracking_options = list(
+				"Squad Leader" = TRACKER_SL,
+				"Fireteam Leader" = TRACKER_FTL,
+				"Landing Zone" = TRACKER_LZ,
+				"Commanding Officer" = TRACKER_CO,
+				"Executive Officer" = TRACKER_XO,
+				"Alpha SL" = TRACKER_ASL,
+				"Bravo SL" = TRACKER_BSL,
+				"Charlie SL" = TRACKER_CSL,
+				"Delta SL" = TRACKER_DSL,
+				"Echo SL" = TRACKER_ESL,
+				"Foxtrot SL" = TRACKER_FSL,
+				"Intel SL" = TRACKER_ISL,
+				"Kilo SL" = TRACKER_KSL,
+				"Oscar SL" = TRACKER_OSL
+			)
+			inbuilt_tracking_options -= "[H.assigned_squad.name] SL"
+			role_locate_setting = TRACKER_LZ
+			volume = RADIO_VOLUME_CRITICAL
+		if(JOB_SQUAD_MEDIC)
+			name = "marine hospital corpsman " + name
+			key_type = /obj/item/device/encryptionkey/med
+		if(JOB_SQUAD_ENGI)
+			name = "marine combat technician " + name
+			key_type = /obj/item/device/encryptionkey/engi
+		if(JOB_SQUAD_TEAM_LEADER)
+			name = "marine fireteam leader " + name
+			key_type = /obj/item/device/encryptionkey/jtac
+			volume = RADIO_VOLUME_RAISED
+		else
+			name = "marine " + name
+
+	if(!role_configured)
+		if(key_type)
+			keys += new key_type(src)
+		if(role_locate_setting)
+			locate_setting = role_locate_setting
+	role_configured = TRUE
+
+	set_frequency(H.assigned_squad.radio_freq)
+	recalculateChannels()
+	if(H.has_item_in_ears(src))
+		add_hud_tracker(H)
 
 //Distress (ERT) headsets.
 

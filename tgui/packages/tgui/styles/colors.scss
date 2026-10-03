@@ -15,6 +15,7 @@ $orange: hsl(24, 89%, 53%) !default;
 $yellow: hsl(51, 97%, 51%) !default;
 $olive: hsl(68, 79%, 45%) !default;
 $green: hsl(134, 69%, 41%) !default;
+$dark-green: hsl(134, 100%, 21%) !default;
 $teal: hsl(177, 100%, 35%) !default;
 $blue: hsl(206, 73%, 47%) !default;
 $dark-blue: hsl(206, 100%, 25%) !default;
@@ -55,6 +56,7 @@ $_gen_map: (
   'yellow': $yellow,
   'olive': $olive,
   'green': $green,
+  'dark-green': $dark-green,
   'teal': $teal,
   'blue': $blue,
   'dark-blue': $dark-blue,

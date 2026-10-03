@@ -156,26 +156,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_tl, list(
 /obj/structure/machinery/cm_vending/clothing/tl/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_tl
 
-/obj/structure/machinery/cm_vending/clothing/tl/alpha
-	squad_tag = SQUAD_MARINE_1
-	req_access = list(ACCESS_MARINE_TL_PREP, ACCESS_MARINE_ALPHA)
-	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha/tl
-
-/obj/structure/machinery/cm_vending/clothing/tl/bravo
-	squad_tag = SQUAD_MARINE_2
-	req_access = list(ACCESS_MARINE_TL_PREP, ACCESS_MARINE_BRAVO)
-	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo/tl
-
-/obj/structure/machinery/cm_vending/clothing/tl/charlie
-	squad_tag = SQUAD_MARINE_3
-	req_access = list(ACCESS_MARINE_TL_PREP, ACCESS_MARINE_CHARLIE)
-	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie/tl
-
-/obj/structure/machinery/cm_vending/clothing/tl/delta
-	squad_tag = SQUAD_MARINE_4
-	req_access = list(ACCESS_MARINE_TL_PREP, ACCESS_MARINE_DELTA)
-	headset_type = /obj/item/device/radio/headset/almayer/marine/delta/tl
-
 //------------ESSENTIAL SETS---------------
 /obj/effect/essentials_set/tl
 	spawned_gear_list = list(

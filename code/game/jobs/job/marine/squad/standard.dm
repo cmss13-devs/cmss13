@@ -23,19 +23,3 @@
 	name = JOB_SQUAD_MARINE
 	icon_state = "marine_spawn"
 	job = /datum/job/marine/standard
-
-/obj/effect/landmark/start/marine/alpha
-	icon_state = "marine_spawn_alpha"
-	squad = SQUAD_MARINE_1
-
-/obj/effect/landmark/start/marine/bravo
-	icon_state = "marine_spawn_bravo"
-	squad = SQUAD_MARINE_2
-
-/obj/effect/landmark/start/marine/charlie
-	icon_state = "marine_spawn_charlie"
-	squad = SQUAD_MARINE_3
-
-/obj/effect/landmark/start/marine/delta
-	icon_state = "marine_spawn_delta"
-	squad = SQUAD_MARINE_4

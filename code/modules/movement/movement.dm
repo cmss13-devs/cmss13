@@ -77,6 +77,7 @@
 		. = FALSE
 	if (.)
 		Moved(oldloc, direct)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_POST_MOVE, oldloc)
 
 /// Called when `crossed_by` enters the atom's turf (via native Move() or doMove() if allowed).
 /// Does not return anything, only handles side effects from Crossed.

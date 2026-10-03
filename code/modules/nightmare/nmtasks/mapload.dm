@@ -78,6 +78,15 @@
 			arealist |= turf.loc
 		for(var/atom/movable/movable as anything in turf)
 			atomlist += movable // Much like initTemplateBounds() this only recurses content once. Never been an issue so far, but keep it in mind.
+		if(SSwater_overlays.is_water(turf))
+			var/turf/open/found_turf = turf
+			var/turf/open/water_turf = found_turf.water_type
+			var/datum/potential_water_overlay/water_data = new(water_turf.icon, water_turf.icon_state, found_turf.depth, found_turf.water_type)
+			SSwater_overlays.found_waters[water_data.create_index()] = water_data
+			for(var/direction in GLOB.alldirs)
+				found_turf = get_step(turf, direction)
+				if(found_turf && !SSwater_overlays.is_water(found_turf))
+					SSwater_overlays.turfs_to_process |= found_turf
 	SSatoms.InitializeAtoms(atomlist + arealist)
 	// We still defer lighting, area sorting, etc, to be done all in one go!
 	SEND_SIGNAL(src, COMSIG_NIGHTMARE_TAINTED_BOUNDS, bounds)

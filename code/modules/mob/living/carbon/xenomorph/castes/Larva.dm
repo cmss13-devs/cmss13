@@ -50,6 +50,8 @@
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 
+	water_config = /datum/water_overlay_config/xeno/larva
+
 	var/burrowable = TRUE //Can it be safely burrowed if it has no player?
 	var/state_override
 	/// Whether we're bloody, normal, or mature

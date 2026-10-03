@@ -52,6 +52,8 @@
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
+
+	water_config = /datum/water_overlay_config/xeno/small
 	claw_type = CLAW_TYPE_SHARP
 
 	tackle_min = 2

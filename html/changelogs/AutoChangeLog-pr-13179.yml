@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - code_imp: "Rearranged sentry variable defines some"
-  - bugfix: "Defenses (not just sentries) no longer are flagged as needing power since they handle power themselves"

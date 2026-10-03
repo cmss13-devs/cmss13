@@ -23,6 +23,17 @@
 		health_threshold_dead = -150
 		health_threshold_crit = -100
 
+	apply_mouth_visibility_to_viewers()
+
+/mob/living/carbon/human/proc/apply_mouth_visibility_to_viewers()
+	var/obj/limb/mouth/mouth = get_mouth()
+	if(!mouth)
+		return
+	for(var/client/found_client as anything in GLOB.clients)
+		if(found_client.prefs?.show_mouths)
+			continue
+		mouth.hide_for(found_client)
+
 /mob/living/carbon/human/clicked(mob/user, list/mods)
 	if(..())
 		return TRUE

@@ -128,7 +128,7 @@
 	icon_state = "gladiator"
 	item_state = "gladiator"
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
-	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEALLHAIR
+	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEALLHAIR|HIDEMOUTH
 	siemens_coefficient = 1
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_LOW
@@ -170,7 +170,6 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/head_64.dmi'
 	)
 
-
 /obj/item/clothing/head/helmet/roman/eaglebearer
 	name = "\improper Aquilifer's bear pelt mask"
 	desc = "a bear pelt and mask that was worn by a Roman Aquilifer, a prestigious role meant to inspire troops in battles."
@@ -181,7 +180,7 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/head_64.dmi'
 	)
-	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES
+	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEMOUTH
 	anti_hug = 1
 
 //===========================//MARINES HELMETS\\=================================\\

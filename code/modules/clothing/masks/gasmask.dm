@@ -12,7 +12,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_righthand.dmi',
 	)
 	flags_inventory = COVERMOUTH | COVEREYES | ALLOWINTERNALS | BLOCKGASEFFECT | ALLOWREBREATH | ALLOWCPR
-	flags_inv_hide = HIDEEARS|HIDEFACE|HIDELOWHAIR
+	flags_inv_hide = HIDEEARS|HIDEFACE|HIDELOWHAIR|HIDEMOUTH
 	flags_cold_protection = BODY_FLAG_HEAD
 	flags_equip_slot = SLOT_FACE|SLOT_WAIST
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
@@ -56,7 +56,7 @@
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	flags_inventory = COVERMOUTH|ALLOWINTERNALS|BLOCKGASEFFECT|ALLOWREBREATH
-	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR|HIDEMOUTH
 	flags_equip_slot = SLOT_FACE
 
 /obj/item/clothing/mask/gas/pmc/Initialize()
@@ -143,7 +143,7 @@
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/UPP.dmi'
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
-	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR|HIDEMOUTH
 
 //= CLF =\\
 
@@ -160,4 +160,4 @@
 	)
 	vision_impair = VISION_IMPAIR_NONE
 	eye_protection = EYE_PROTECTION_FLAVOR
-	flags_inv_hide = HIDEEARS|HIDEFACE
+	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEMOUTH

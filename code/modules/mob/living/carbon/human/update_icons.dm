@@ -74,6 +74,9 @@ There are several things that need to be remembered:
 */
 
 /mob/living/carbon/human/apply_overlay(cache_index)
+	if(isobj(overlays_standing[cache_index]))
+		overlays += overlays_standing[cache_index]
+		return
 	var/image/images = overlays_standing[cache_index]
 
 	if(!images)
@@ -324,6 +327,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	update_inv_shoes()
 	update_inv_s_store()
 	update_inv_wear_mask()
+	update_mouth()
 	update_inv_head()
 	update_inv_belt()
 	update_inv_back()
@@ -472,6 +476,11 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	overlays_standing[SHOES_LAYER] = I
 	apply_overlay(SHOES_LAYER)
 
+/mob/living/carbon/human/proc/update_mouth(speaking = 0)	//nothing else other than mouth should be in this layer
+	var/obj/limb/mouth/my_mouth = get_mouth()
+	if(my_mouth)
+		my_mouth.update_appearance(src, speaking)
+		vis_contents += my_mouth
 
 /mob/living/carbon/human/update_inv_s_store()
 	remove_overlay(SUIT_STORE_LAYER)

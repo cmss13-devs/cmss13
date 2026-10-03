@@ -127,33 +127,34 @@
 #define ORDER_FOCUS_MAX_LEVEL   50
 
 //Human Overlays Indexes used in update_icons/////////
-#define BODYPARTS_LAYER 43
-#define DAMAGE_LAYER 42
+#define BODYPARTS_LAYER 44
+#define DAMAGE_LAYER 43
 
-#define UNDERWEAR_LAYER 41
-#define UNDERSHIRT_LAYER 40
-#define MUTANTRACE_LAYER 39
+#define UNDERWEAR_LAYER 42
+#define UNDERSHIRT_LAYER 41
+#define MUTANTRACE_LAYER 40
 
 /// For use by Hunter Flay
-#define FLAY_LAYER 38
-#define UNIFORM_LAYER 37
+#define FLAY_LAYER 39
+#define UNIFORM_LAYER 38
 
 /// bs12 specific. this hack is probably gonna come back to haunt me
-#define TAIL_LAYER 36
+#define TAIL_LAYER 37
 
-#define ID_LAYER 35
-#define SHOES_LAYER 34
-#define GLOVES_LAYER 33
+#define ID_LAYER 36
+#define SHOES_LAYER 35
+#define GLOVES_LAYER 34
 
 /// For splint and gauze overlays
-#define MEDICAL_LAYER 32
+#define MEDICAL_LAYER 33
 
-#define SUIT_LAYER 31
-#define SUIT_GARB_LAYER 30
-#define SUIT_SQUAD_LAYER 29
-#define GLASSES_LAYER 28
-#define BELT_LAYER 27
-#define BACK_LAYER 26
+#define SUIT_LAYER 32
+#define SUIT_GARB_LAYER 31
+#define SUIT_SQUAD_LAYER 30
+#define GLASSES_LAYER 29
+#define BELT_LAYER 28
+#define BACK_LAYER 27
+#define MOUTH_LAYER 26
 #define HAIR_LAYER 25
 #define HAIR_GRADIENT_LAYER 24
 #define SUIT_STORE_LAYER 23
@@ -189,7 +190,7 @@
 /// If you're hit by an acid DoT
 #define EFFECTS_LAYER 1
 
-#define TOTAL_LAYERS 43
+#define TOTAL_LAYERS 44
 #define MAX_HEAD_GARB_LAYERS 6
 //////////////////////////////////
 

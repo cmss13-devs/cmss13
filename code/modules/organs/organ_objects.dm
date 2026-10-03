@@ -389,3 +389,4 @@
 
 	user.put_in_active_hand(O)
 	qdel(src)
+

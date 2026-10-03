@@ -428,10 +428,8 @@
 		addtimer(CALLBACK(src, PROC_REF(spawn_acid), xeno, turf, chance), 0.2 SECONDS * get_dist(turf, xeno))
 
 /datum/action/xeno_action/onclick/oozing_wounds/proc/spawn_acid(mob/living/carbon/xenomorph/xeno, turf/turf, chance)
-	if(empowered)
-		new /obj/effect/xenomorph/spray/despoiler/empowered(turf, create_cause_data(initial(xeno.caste_type), xeno), xeno.hivenumber)
-	else
-		new /obj/effect/xenomorph/spray/despoiler(turf, create_cause_data(initial(xeno.caste_type), xeno), xeno.hivenumber)
+
+	new /obj/effect/xenomorph/spray/despoiler(turf, create_cause_data(initial(xeno.caste_type), xeno), xeno.hivenumber)
 
 	if(prob(chance))
 		new /obj/effect/lingering_acid(turf, xeno.hivenumber)

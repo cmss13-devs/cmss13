@@ -1071,6 +1071,11 @@
 //*************************************/
 // self_set() adapts the headset to the marines squad and role.
 
+/obj/item/device/radio/headset/almayer/marine/self_setting/post_vendor_spawn_hook(mob/living/carbon/human/user)
+	..()
+	if(istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base))
+		self_set(user)
+
 /obj/item/device/radio/headset/almayer/marine/self_setting/proc/self_set(mob/living/carbon/human/H = loc)
 	if(istype(H, /mob/living/carbon/human))
 		if(H.assigned_squad)

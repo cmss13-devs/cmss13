@@ -240,7 +240,7 @@
 	if(QDELETED(position))
 		return
 
-	if(connection.frequency == PUB_FREQ && istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base) && !istype(get_area(src), /area/forward_base))
+	if(connection.frequency == PUB_FREQ && istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base) && !istype(get_area(src), /area/forward_base) && !(is_reserved_level(position.z) && istype(get_area(src), /area/shuttle)))
 		return
 
 	//#### Tagging the signal with all appropriate identity values ####//
@@ -351,7 +351,8 @@
 
 
 /obj/item/device/radio/proc/receive_range(freq, level)
-	if((freq ? freq : frequency) == PUB_FREQ && istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base) && !istype(get_area(src), /area/forward_base))
+	var/turf/position = get_turf(src)
+	if((freq ? freq : frequency) == PUB_FREQ && istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base) && !istype(get_area(src), /area/forward_base) && !(is_reserved_level(position?.z) && istype(get_area(src), /area/shuttle)))
 		return -1
 	// check if this radio can receive on the given frequency, and if so,
 	// what the range is in which mobs will hear the radio
@@ -360,7 +361,6 @@
 	if(!listening)
 		return -1
 	if(!(0 in level))
-		var/turf/position = get_turf(src)
 		if(QDELETED(position))
 			return FALSE
 		var/receive_z = position.z

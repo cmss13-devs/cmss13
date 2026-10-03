@@ -52,6 +52,8 @@
 
 /datum/game_mode/colonialmarines/forward_base/pre_setup()
 	. = ..()
+	SSradio.ground_to_reserved = TRUE
+	SSradio.update_cache()
 	for(var/obj/structure/machinery/computer/shuttle/dropship/flight/console in GLOB.machines)
 		if(console.linked_lz && istype(get_area(console), /area/forward_base))
 			active_lz = console

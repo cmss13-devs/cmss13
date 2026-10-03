@@ -1462,10 +1462,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 			else
 				new_item = new prod_type(target_turf)
 
-		if(istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base) && istype(new_item, /obj/item/device/radio/headset/almayer/marine/self_setting))
-			var/obj/item/device/radio/headset/almayer/marine/self_setting/headset = new_item
-			headset.self_set(user)
-
 		new_item.add_fingerprint(user)
 	else
 		new_item = new prod_type(target_turf)

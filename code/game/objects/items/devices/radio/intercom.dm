@@ -37,12 +37,12 @@
 		attack_self(user)
 
 /obj/item/device/radio/intercom/receive_range(freq, level)
-	if((freq ? freq : frequency) == PUB_FREQ && istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base) && !istype(get_area(src), /area/forward_base))
+	var/turf/position = get_turf(src)
+	if((freq ? freq : frequency) == PUB_FREQ && istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base) && !istype(get_area(src), /area/forward_base) && !(is_reserved_level(position?.z) && istype(get_area(src), /area/shuttle)))
 		return -1
 	if (!on)
 		return -1
 	if(!(0 in level))
-		var/turf/position = get_turf(src)
 		if(QDELETED(position) || !(position.z in level))
 			return -1
 	if (!src.listening)

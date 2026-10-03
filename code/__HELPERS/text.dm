@@ -390,6 +390,89 @@
 
 	return message
 
+/datum/text_dynamic_insertion_constants
+	// Formatting parameters that can be used in text dynamic insertion templates in the format {<key>:<formatting param>}
+	// Each constants must be a string in UPPER_CAMEL_CASE (e.g. FORMAT_PARAM), see regex in /proc/insert_text_into_template()
+	VAR_FINAL/const/NAME_ONLY = "NAME_ONLY"
+
+	VAR_FINAL/const/FORMAT_GROUP_IDX = 2
+
+/proc/format_replacement_text_field(atom/atom_to_reference, format_param, template_pos)
+	if (!istype(atom_to_reference))
+		return "[atom_to_reference]"
+
+	if (!format_param)
+		if (template_pos == 1)
+			return "[atom_to_reference]"
+		else
+			return replacetext("*sentence marker* [atom_to_reference]", "*sentence marker* ", "")
+
+	if (format_param == /datum/text_dynamic_insertion_constants::NAME_ONLY)
+		return "[atom_to_reference.name]"
+
+	CRASH("Invalid format_param passed: '[format_param]'")
+
+GLOBAL_ALIST_EMPTY(text_insertion_regex_by_key)
+
+/proc/insert_text_into_template(key, current_result, to_insert)
+	var/result = current_result
+	var/regex/search_regex = GLOB.text_insertion_regex_by_key[key]
+	if (isnull(search_regex))
+		search_regex = regex("\\{[key](:(\[A-Z_\]+))?\\}", "g")
+		GLOB.text_insertion_regex_by_key[key] = search_regex
+	var/template_pos = findtext(result, search_regex)
+	while (template_pos != 0)
+		var/replacement_text = format_replacement_text_field(to_insert, search_regex.group[/datum/text_dynamic_insertion_constants::FORMAT_GROUP_IDX], template_pos)
+		if (template_pos == 1)
+			result = replacetext(result, search_regex.match, replacement_text, template_pos, template_pos + length(search_regex.match))
+		else
+			result = replacetext(result, search_regex.match, replacement_text)
+		template_pos = findtext(result, search_regex, template_pos)
+	return result
+
+/**
+ * Proc for inserting strings into locations that are only known at runtime
+ *
+ * Every nth argument passed after `text_template` replaces any `{n}` in `message`
+ *
+ * Example:
+ * > If first argument is `chicken`, the second argument is `pie`, and the string template is "I love {1} and {2}",
+ * then the resulting text is "I love `chicken` and `pie`"
+ */
+/proc/text_dynamic_insertion(text_template, ...)
+	var/base_arg_count = 1
+	if (length(args) <= base_arg_count)
+		CRASH("No args passed for string template")
+	var/result = text_template
+	for (var/arg_idx in base_arg_count + 1 to length(args))
+		var/current_string_arg = arg_idx - base_arg_count
+		result = insert_text_into_template(current_string_arg, result, args[arg_idx])
+	return result
+
+/**
+ * Proc for inserting strings into locations that are only known at runtime
+ *
+ * The length `index_keys` MUST match the number of args to be inserted into the string template.
+ * Every nth argument passed after `index_keys` replaces any `{index_keys[n]}` in `message`.
+ *
+ * Example:
+ * > If index_keys=list("name", "age"), the first argument is `Lother`, the last argument is `5`, and the string template is "You are {age} years old now, {name}",
+ * then the resulting text is "You are `5` years old now, `Lother`"
+ */
+/proc/text_dynamic_insertion_custom(text_template, index_keys, ...)
+	var/base_arg_count = 2
+	if (!length(index_keys))
+		CRASH("No index keys passed")
+	if (length(index_keys) != (length(args) - base_arg_count))
+		CRASH("The size of index_keys MUST match the number of characters to insert")
+	var/result = text_template
+	// Start after index_keys
+	for (var/arg_idx in base_arg_count + 1 to length(args))
+		var/current_string_arg = arg_idx - base_arg_count
+		var/index_key = index_keys[current_string_arg]
+		result = insert_text_into_template(index_key, result, args[arg_idx])
+	return result
+
 #define SMALL_FONTS(FONTSIZE, MSG) "<span style=\"font-family: 'Small Fonts'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px;\">[MSG]</span>"
 #define SMALL_FONTS_CENTRED(FONTSIZE, MSG) "<center><span style=\"font-family: 'Small Fonts'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px;\">[MSG]</span></center>"
 #define SMALL_FONTS_COLOR(FONTSIZE, MSG, COLOR) "<span style=\"font-family: 'Small Fonts'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px; color: [COLOR];\">[MSG]</span>"

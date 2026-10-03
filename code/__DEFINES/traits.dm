@@ -142,6 +142,10 @@
 /// Example trait
 // #define TRAIT_X "t_x"
 
+//-- atom traits --
+/// This item can be ignited by items that can ignite (have the trait TRAIT_IGNITES)
+#define TRAIT_IGNITABLE "ignitable"
+
 //-- atom/movable traits --
 /// Apply this trait when a movable atom is launched
 #define TRAIT_LAUNCHED "launched"
@@ -343,6 +347,9 @@
 
 //This item is being dissolved. Used by yautja_cleaner.
 #define TRAIT_ITEM_DISSOLVING "item_dissolving"
+
+/// This item can ignite other atoms
+#define TRAIT_IGNITER "t_item_igniter"
 
 //-- structure traits --
 // TABLE TRAITS

@@ -3379,9 +3379,18 @@ Defined in conflicts.dm of the #defines folder.
 	var/round_usage_per_tile = 1
 	var/intense_mode = FALSE
 
-/obj/item/attachable/attached_gun/flamer/New()
-	..()
+/obj/item/attachable/attached_gun/flamer/Initialize(mapload, ...)
+	. = ..()
 	attachment_firing_delay = FIRE_DELAY_TIER_4 * 5
+	ADD_TRAIT(src, TRAIT_IGNITER, TRAIT_SOURCE_INHERENT)
+
+/obj/item/attachable/attached_gun/flamer/Attach(obj/item/weapon/gun/to_attach_to)
+	..()
+	ADD_TRAIT(to_attach_to, TRAIT_IGNITER, TRAIT_SOURCE_ATTACHMENT(slot))
+
+/obj/item/attachable/attached_gun/flamer/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
+	REMOVE_TRAIT(detaching_gun, TRAIT_IGNITER, TRAIT_SOURCE_ATTACHMENT(slot))
+	..()
 
 /obj/item/attachable/attached_gun/flamer/get_examine_text(mob/user)
 	. = ..()

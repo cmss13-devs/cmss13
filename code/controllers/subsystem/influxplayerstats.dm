@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(influxplayerstats)
 
 /datum/controller/subsystem/influxplayerstats/fire(resumed = FALSE)
 	if(!resumed)
-		currentrun = GLOB.human_mob_list + GLOB.xeno_mob_list + GLOB.marker_mob_list
+		currentrun = GLOB.human_mob_list + GLOB.xeno_mob_list + GLOB.marker_mob_list - GLOB.xeno_ghost_role_mobs
 
 	for(var/datum/influx_player_stats/stat as anything in stat_types)
 		var/list/ground_level = recorded_stats[IPS_GROUND_LEVEL][stat.key]

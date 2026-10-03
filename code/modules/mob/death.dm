@@ -14,9 +14,8 @@
 	qdel(src)
 
 /mob/proc/async_gib(cause)
-	gibbing = TRUE
 	INVOKE_ASYNC(src, PROC_REF(gib), cause)
-
+	gibbing = TRUE
 
 /mob/proc/gib_animation()
 	return

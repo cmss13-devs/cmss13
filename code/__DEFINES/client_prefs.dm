@@ -67,6 +67,8 @@
 #define TOGGLE_LEADERSHIP_SPOKEN_ORDERS (1<<21)
 ///Toggles the wield assist system for guns
 #define TOGGLE_WIELD_ASSIST (1<<22)
+///Toggles if you shout out the last name of people you point at on disarm/grab intent
+#define TOGGLE_SHOUTING_AT_POINTED_PEOPLE (1<<23)
 
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations.
 //=================================================

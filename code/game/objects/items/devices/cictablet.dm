@@ -31,6 +31,15 @@
 	AddComponent(/datum/component/tacmap, has_drawing_tools=TRUE, minimap_flag=minimap_flag, has_update=TRUE)
 	return ..()
 
+/*
+/obj/item/device/cotablet/equipped(mob/user, slot, silent)
+	. = ..()
+	if(ishuman(user))
+		var/datum/action/innate/message_squad/hud_action = locate(/datum/action/innate/message_squad) in user.actions
+		if(hud_action)
+			hud_action.ability_used_time = world.time
+*/
+
 /obj/item/device/cotablet/proc/disable_pmc()
 	if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		add_pmcs = FALSE

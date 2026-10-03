@@ -25,7 +25,7 @@
 	var/has_charge_meter = FALSE//do we use the charging overlay system or just have an empty overlay
 	var/charge_icon = "+stunrevolver_empty"//define on a per gun basis, used for the meter and empty icon on non meter guns
 
-	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_CAN_POINTBLANK
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	gun_category = GUN_CATEGORY_HANDGUN
 
 /obj/item/weapon/gun/energy/Initialize(mapload, spawn_empty)
@@ -65,6 +65,20 @@
 				overlays += charge_icon + "_25"
 			else
 				overlays += charge_icon + "_0"
+
+/obj/item/weapon/gun/energy/taser/get_ammo_type()
+	if(!ammo)
+		return list("unknown", "unknown")
+	else if(!in_chamber)
+		return list(ammo.hud_state, ammo.hud_state_empty)
+	else
+		return list(in_chamber.ammo.hud_state, in_chamber.ammo.hud_state_empty)
+
+/obj/item/weapon/gun/energy/taser/get_ammo_count()
+	if(!cell)
+		return 0
+	else
+		return FLOOR(cell.charge / max(charge_cost, 1),1)
 
 /obj/item/weapon/gun/energy/emp_act(severity)
 	. = ..()
@@ -128,7 +142,7 @@
 	w_class = SIZE_MEDIUM
 	gun_category = GUN_CATEGORY_HANDGUN
 	flags_equip_slot = SLOT_WAIST
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_ONE_HAND_WIELDED
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
 	ammo = /datum/ammo/energy/rxfm_eva
 	attachable_allowed = list(/obj/item/attachable/scope/variable_zoom/eva, /obj/item/attachable/eva_doodad)
 	starting_attachment_types = list(/obj/item/attachable/scope/variable_zoom/eva, /obj/item/attachable/eva_doodad)
@@ -232,7 +246,7 @@
 	charge_icon = "+taser"
 	black_market_value = 20
 	actions_types = list(/datum/action/item_action/taser/change_mode)
-	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_CAN_POINTBLANK|GUN_CANT_EXECUTE
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_CAN_POINTBLANK|GUN_CANT_EXECUTE|GUN_AMMO_COUNTER
 	/// Determines if the taser will hit any target, or if it checks for wanted status. Default is wanted only.
 	var/mode = TASER_MODE_P
 	var/skilllock = SKILL_POLICE_SKILLED

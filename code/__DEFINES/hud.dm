@@ -1,16 +1,5 @@
 #define HUD_MIDNIGHT "midnight"
-#define HUD_DARK "dark"
-#define HUD_BRONZE "bronze"
-#define HUD_GLASS "glass"
-#define HUD_GREEN "green"
-#define HUD_GREY "grey"
-#define HUD_HOLO "holographic"
-#define HUD_OLD "old"
-#define HUD_ORANGE "orange"
-#define HUD_RED "red"
-#define HUD_WHITE "white"
 #define HUD_ALIEN "alien"
-#define HUD_ROBOT "robot"
 
 // Consider these images/atoms as part of the UI/HUD (apart of the appearance_flags)
 /// Used for progress bars and chat messages

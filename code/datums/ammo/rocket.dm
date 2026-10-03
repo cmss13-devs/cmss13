@@ -6,6 +6,8 @@
 
 /datum/ammo/rocket
 	name = "high explosive rocket"
+	hud_state = "rocket_he"
+	hud_state_empty = "rocket_empty"
 	icon_state = "missile"
 	ping = null //no bounce off.
 	sound_bounce = "rocket_bounce"
@@ -38,6 +40,7 @@
 
 /datum/ammo/rocket/ap
 	name = "anti-armor rocket"
+	hud_state = "rocket_ap"
 	damage_falloff = 0
 	flags_ammo_behavior = AMMO_ROCKET|AMMO_HITS_TARGET_TURF
 
@@ -107,6 +110,7 @@
 
 /datum/ammo/rocket/ap/anti_tank
 	name = "anti-tank rocket"
+	hud_state = "rocket_at"
 	damage = 100
 	var/vehicle_slowdown_time = 5 SECONDS
 	shrapnel_chance = 5
@@ -157,6 +161,7 @@
 
 /datum/ammo/rocket/wp
 	name = "white phosphorous rocket"
+	hud_state = "rocket_fire"
 	flags_ammo_behavior = AMMO_ROCKET|AMMO_HITS_TARGET_TURF|AMMO_STRIKES_SURFACE
 	damage_type = BURN
 
@@ -233,6 +238,7 @@
 
 /datum/ammo/rocket/wp/quad
 	name = "thermobaric rocket"
+	hud_state = "rocket_thermobaric"
 	flags_ammo_behavior = AMMO_ROCKET|AMMO_STRIKES_SURFACE
 
 	damage = 100
@@ -288,6 +294,7 @@
 /datum/ammo/rocket/brute
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_HITS_TARGET_TURF|AMMO_SNIPER //sniper as we want good acc
 	name = "M5510 Laser-Guided Rocket"
+	hud_state = "rocket_brute"
 	icon_state = "brute"
 	///Chance per tile to spawn smoke
 	var/smoke_chance = 30

@@ -92,6 +92,7 @@
 	var/flashlight_cooldown = 0 //Cooldown for toggling the light
 	var/locate_cooldown = 0 //Cooldown for SL locator
 	var/armor_overlays[]
+	var/storage_capacity = 8
 	actions_types = list(/datum/action/item_action/toggle/lamp)
 	var/flags_marine_armor = ARMOR_SQUAD_OVERLAY|ARMOR_LAMP_OVERLAY
 	var/specialty = "M3 pattern marine" //Same thing here. Give them a specialty so that they show up correctly in vendors. speciality does NOTHING if you have NO_NAME_OVERRIDE
@@ -134,7 +135,7 @@
 		/obj/item/ammo_magazine/smg,
 		/obj/item/ammo_magazine/sniper,
 	)
-	pockets.max_storage_space = 8
+	pockets.max_storage_space = storage_capacity
 
 	light_holder = new(src)
 	AddElement(/datum/element/corp_label/armat)
@@ -282,6 +283,15 @@
 	storage_slots = 4
 	specialty = "M4 pattern marine"
 
+/obj/item/clothing/suit/storage/marine/medium/rto/mod_b
+	name = "\improper modified M4 pattern marine armor 'B'"
+	desc = "A modified suit of M4 pattern marine armor with a shoulder pauldron and spall guard. Its flexible mesh backing leaves plenty of room for pouches and field equipment."
+	icon_state = "MB"
+	specialty = "M4 pattern mod-'B' marine"
+	lamp_icon = "lampr"
+	storage_slots = null
+	storage_capacity = 10 //equivalent to 3 large and 1 tiny slot
+
 /obj/item/clothing/suit/storage/marine/medium/rto/army
 	name = "\improper Personal Body Armor System"
 	desc = "The Personnel Body Armor System is the standard issue armor of the US Army, adopted over the M4 series pattern armor during field trials. Surprisingly uncomfortable, but offering far superior protection to the M3 or M4 series armor. At four times the price."
@@ -421,6 +431,23 @@
 	armor_energy = CLOTHING_ARMOR_MEDIUM
 	specialty = "B12 pattern marine"
 	light_range = 5
+
+/obj/item/clothing/suit/storage/marine/medium/leader/mod_a
+	name = "\improper modified B12 pattern marine armor 'A'"
+	desc = "A modified suit of B12 pattern marine armor with reinforced shoulder plating and a plated sleeve. Some of the usual pouches have been removed to accommodate the extra armor."
+	icon_state = "MA"
+	armor_melee = CLOTHING_ARMOR_HIGH
+	storage_slots = 2
+	specialty = "B12 pattern mod-'A' marine"
+	lamp_icon = "lampr"
+
+/obj/item/clothing/suit/storage/marine/light/leader/mod_c
+	name = "\improper modified M3-L pattern marine armor"
+	desc = "A sleeveless suit of M3-L pattern light armor. Thin plates and compact pouches keep it light and easy to move in."
+	icon_state = "MC"
+	armor_variation = 0
+	specialty = "M3-L pattern mod marine"
+	lamp_icon = "lampr"
 
 /obj/item/clothing/suit/storage/marine/tanker
 	name = "\improper M3 pattern tanker armor"

@@ -45,3 +45,7 @@
 /area/interior/vehicle/arc
 	name = "\improper ARC interior"
 	icon_state = "arc"
+
+/area/interior/vehicle/blackfoot
+	name = "blackfoot interior"
+	ambience_exterior = 'sound/vehicles/vtol/interior.ogg'

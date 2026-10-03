@@ -168,8 +168,8 @@
 			SPAN_NOTICE("[user] tries to forcefully rip the writhing larva from your chest with \his [user.hand ? "left" : "right"] hand."),
 			SPAN_NOTICE("[user], with \his [user.hand ? "left" : "right"] hand, tries to forcefully rip the writhing larva from [target]'s chest!"))
 
-	to_chat(target, SPAN_HIGHDANGER("IT'S COMING OUT! BRACE YOURSELF!"))
-	if(target.stat == CONSCIOUS) //larba is fighting inside your chest
+	if(target.stat == CONSCIOUS)
+		to_chat(target, SPAN_WARNING("The pressure caused by the larva flailing in your chest is immense! You don't think you can take it!"))
 		target.emote("scream")
 
 	log_interact(user, target, "[key_name(user)] started to remove an embryo from [key_name(target)]'s ribcage.")
@@ -226,9 +226,9 @@
 /datum/surgery_step/remove_larva/failure(mob/living/carbon/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/datum/internal_organ/impacted_organ = pick(surgery.affected_limb.internal_organs)
 	user.affected_message(target,
-		SPAN_WARNING("Your [user.hand ? "left" : "right"] hand slips, bruising [target]'s [impacted_organ.name] and wounding the larva, who spills acid over your hand and into \his [surgery.affected_limb.cavity]!"),
-		SPAN_WARNING("[user]'s [user.hand ? "left" : "right"] hand slips, bruising your [impacted_organ.name] and wounding the larva, who spills acid over \his hand and into your [surgery.affected_limb.cavity]!"),
-		SPAN_WARNING("[user]'s [user.hand ? "left" : "right"] hand slips and wounds the larva, who spills acid all over \his hand, [target]'s [impacted_organ.name] and \his [surgery.affected_limb.cavity]! "))
+		SPAN_WARNING("Your [user.hand ? "left" : "right"] hand slips, bruising [target]'s [impacted_organ.name] and wounding the larva, who spills acid over your hand and into the surgical site!"),
+		SPAN_WARNING("[user]'s [user.hand ? "left" : "right"] hand slips, bruising your [impacted_organ.name] and wounding the larva, who spills acid over \his hand and into the surgical site!"),
+		SPAN_WARNING("[user]'s [user.hand ? "left" : "right"] hand slips and wounds the larva, who spills acid all over \his hand, [target]'s [impacted_organ.name] and into the surgical site!"))
 
 	if(target.stat == CONSCIOUS)
 		to_chat(target, SPAN_HIGHDANGER("Your [impacted_organ.name] burns like hell in your [surgery.affected_limb.cavity]!"))

@@ -831,7 +831,7 @@
 	new /obj/effect/overlay/temp/blinking_laser (impact)
 	sleep(10)
 	SA.source_mob = user
-	SA.detonate_on(impact, src)
+	SA.detonate_on(impact, src, user)
 	QDEL_NULL(impact_overlay)
 
 /obj/structure/dropship_equipment/weapon/proc/open_fire_firemission(obj/selected_target, mob/user = usr)
@@ -856,7 +856,7 @@
 	var/turf/impact = pick(possible_turfs)
 	sleep(3)
 	SA.source_mob = user
-	SA.detonate_on(impact, src)
+	SA.detonate_on(impact, src, user)
 
 /obj/structure/dropship_equipment/weapon/heavygun
 	name = "\improper GAU-21 30mm cannon"
@@ -1495,4 +1495,4 @@
 	var/turf/impact = pick(possible_turfs)
 	sleep(3)
 	SA.source_mob = user
-	SA.detonate_on(impact, src)
+	SA.detonate_on(impact, src, user)

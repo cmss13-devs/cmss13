@@ -815,7 +815,7 @@
 		if(!DEW.ammo_equipped.can_fire_at(TU, weapon_operator))
 			return FALSE
 
-		DEW.open_fire(LT.signal_loc)
+		DEW.open_fire(LT.signal_loc, weapon_operator)
 		return TRUE
 	return FALSE
 
@@ -953,7 +953,7 @@
 		source.y + offset_y,
 		source.z
 	)
-	var/result = firemission_envelope.execute_firemission(recorded_loc, target, dir, fmId)
+	var/result = firemission_envelope.execute_firemission(recorded_loc, target, dir, fmId, user)
 	if(result != FIRE_MISSION_ALL_GOOD)
 		to_chat(user, SPAN_WARNING("Screen beeps with an error: [firemission_envelope.mission_error]"))
 		return FALSE

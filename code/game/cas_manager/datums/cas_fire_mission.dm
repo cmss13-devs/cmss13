@@ -206,7 +206,7 @@
 				target_turfs += shootloc
 	return target_turfs
 
-/datum/cas_fire_mission/proc/execute_firemission(obj/structure/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, direction = NORTH, steps = 12, step_delay = 3, datum/cas_fire_envelope/envelope = null)
+/datum/cas_fire_mission/proc/execute_firemission(obj/structure/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, direction = NORTH, steps = 12, step_delay = 3, datum/cas_fire_envelope/envelope = null, mob/user)
 	if(initial_turf == null || check(linked_console) != FIRE_MISSION_ALL_GOOD)
 		return FIRE_MISSION_NOT_EXECUTABLE
 
@@ -258,7 +258,7 @@
 			var/turf/shootloc = locate(current_turf.x + sx*offset, current_turf.y + sy*offset, current_turf.z)
 			var/area/area = get_area(shootloc)
 			if(shootloc && !CEILING_IS_PROTECTED(area?.ceiling, CEILING_PROTECTION_TIER_3) && !protected_by_pylon(TURF_PROTECTION_CAS, shootloc))
-				item.weapon.open_fire_firemission(shootloc)
+				item.weapon.open_fire_firemission(shootloc, user)
 		sleep(step_delay)
 	if(envelope)
 		envelope.change_current_loc(null)

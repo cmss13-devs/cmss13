@@ -33,6 +33,8 @@
 
 	minimum_evolve_time = 15 MINUTES
 
+	organ_type = /obj/item/organ/xeno/boiler
+
 	minimap_icon = "boiler"
 
 /mob/living/carbon/xenomorph/boiler
@@ -42,7 +44,6 @@
 	icon = 'icons/mob/xenos/castes/tier_3/boiler.dmi'
 	icon_size = 64
 	icon_state = "Boiler Walking"
-	plasma_types = list(PLASMA_NEUROTOXIN)
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_BIG
@@ -79,6 +80,16 @@
 	)
 	skull = /obj/item/skull/boiler
 	pelt = /obj/item/pelt/boiler
+
+/obj/item/organ/xeno/boiler
+	name = "boiler heart"
+	icon_state = "heart_t3"
+	item_state = "heart_t3"
+	// high research value because obtaining this is not possible
+	// without a corrupted hive
+	research_value = 20000
+
+	xeno_organ_flags = XENO_ORGAN_STRONG|XENO_ORGAN_FRAGILE|XENO_ORGAN_ACID
 
 /mob/living/carbon/xenomorph/boiler/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
 	. = ..()

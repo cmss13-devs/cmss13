@@ -58,7 +58,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 			. = FALSE
 			climb_down(climber)
 
-	if(. && !mover.throwing && check_blocked())
+	if(. && !HAS_TRAIT(mover, TRAIT_LAUNCHED) && check_blocked())
 		to_chat(mover, SPAN_WARNING("It would be too dangerous to go that way."))
 		. = FALSE
 

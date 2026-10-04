@@ -1,0 +1,4 @@
+author: "Onetoughcreampuff"
+delete-after: True
+changes:
+  - bugfix: "Check Status should now account for decapitation"

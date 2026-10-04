@@ -9,6 +9,7 @@
 
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/mob/living/carbon/xenomorph/queen/living_xeno_queen
+	var/mob/living/carbon/xenomorph/king/living_xeno_king
 	var/egg_planting_range = 15
 
 	/// Toggles for the hive that are reset on queen death unless hive_flags_locked
@@ -1111,7 +1112,7 @@
 
 	for(var/mob_name in banished_ckeys)
 		if(banished_ckeys[mob_name] == user.ckey)
-			to_chat(user, SPAN_WARNING("You are banished from the [src], you may not rejoin unless the Queen re-admits you or dies."))
+			to_chat(user, SPAN_WARNING("You are banished from \the [src], you may not rejoin unless the Queen re-admits you or dies."))
 			return FALSE
 
 	var/mob/living/carbon/human/original_human = user.mind?.original
@@ -1675,6 +1676,7 @@
 		return
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("We rip out [xeno.iff_tag]! For the Hive!"))
 	xeno.adjustBruteLoss(50)
+	xeno.updatehealth()
 	xeno.iff_tag.forceMove(get_turf(xeno))
 	xeno.iff_tag = null
 
@@ -1688,6 +1690,7 @@
 			continue
 		xeno.visible_message(SPAN_XENOWARNING("[xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("We rip out [xeno.iff_tag]! For the hive!"))
 		xeno.adjustBruteLoss(50)
+		xeno.updatehealth()
 		xeno.iff_tag.forceMove(get_turf(xeno))
 		xeno.iff_tag = null
 	if(!length(defectors))

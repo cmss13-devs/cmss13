@@ -134,6 +134,10 @@
 
 	var/royal_caste = FALSE
 
+	var/organ_type = /obj/item/organ/xeno;
+	/// Time taken to regenerate the organ
+	var/organ_regen_time = 5 MINUTES
+
 
 /datum/caste_datum/can_vv_modify()
 	return FALSE

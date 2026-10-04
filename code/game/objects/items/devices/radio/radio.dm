@@ -30,6 +30,7 @@
 
 	var/datum/radio_frequency/radio_connection
 	var/list/datum/radio_frequency/secure_radio_connections = new
+	var/list/hear_only_channels = list() /// Used for the hear_only encryption keys.
 
 /obj/item/device/radio/proc/set_frequency(new_frequency)
 	SSradio.remove_object(src, frequency)
@@ -103,6 +104,7 @@
 	data["freqlock"] = freqlock
 
 	var/list/radio_channels = list()
+	var/list/hear_radio_channels = list()
 
 	for(var/channel in channels)
 		var/channel_key = channel_to_prefix(channel)
@@ -111,7 +113,13 @@
 			"status" = channels[channel] & FREQ_LISTENING,
 			"hotkey" = channel_key))
 
+	for(var/hear_channel in hear_only_channels)
+		hear_radio_channels += list(list(
+			"name" = hear_channel,
+			"status" = hear_only_channels[hear_channel] & FREQ_LISTENING))
+
 	data["channels"] = radio_channels
+	data["hear_channels"] = hear_radio_channels
 
 	data["command"] = volume
 	data["useCommand"] = use_volume
@@ -147,13 +155,20 @@
 			. = TRUE
 		if("channel")
 			var/channel = params["channel"]
-			if(!(channel in channels))
-				return
-			if(channels[channel] & FREQ_LISTENING)
-				channels[channel] &= ~FREQ_LISTENING
+			if(channel in channels)
+				if(channels[channel] & FREQ_LISTENING)
+					channels[channel] &= ~FREQ_LISTENING
+				else
+					channels[channel] |= FREQ_LISTENING
+				. = TRUE
+			else if(channel in hear_only_channels)
+				if(hear_only_channels[channel] & FREQ_LISTENING)
+					hear_only_channels[channel] &= ~FREQ_LISTENING
+				else
+					hear_only_channels[channel] |= FREQ_LISTENING
+				. = TRUE
 			else
-				channels[channel] |= FREQ_LISTENING
-			. = TRUE
+				return
 		if("command")
 			use_volume = !use_volume
 			. = TRUE
@@ -360,9 +375,15 @@
 	else
 		var/accept = (freq==frequency && listening)
 		if (!accept)
-			for (var/ch_name in channels)
+			for(var/ch_name in channels)
 				var/datum/radio_frequency/RF = secure_radio_connections[ch_name]
-				if (RF.frequency==freq && (channels[ch_name]&FREQ_LISTENING))
+				if(RF.frequency==freq && (channels[ch_name]&FREQ_LISTENING))
+					accept = 1
+					break
+		if(!accept)
+			for(var/ch_name in hear_only_channels)
+				var/datum/radio_frequency/RF = secure_radio_connections[ch_name]
+				if(RF.frequency==freq && (hear_only_channels[ch_name]&FREQ_LISTENING))
 					accept = 1
 					break
 		if (!accept)

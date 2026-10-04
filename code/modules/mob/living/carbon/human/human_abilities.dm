@@ -10,6 +10,7 @@
 
 /datum/action/human_action/toggle_voices //temp
 	name = "Toggle Voices"
+	action_icon_state = "cat"
 
 /datum/action/human_action/toggle_voices/action_activate()
 	. = ..()

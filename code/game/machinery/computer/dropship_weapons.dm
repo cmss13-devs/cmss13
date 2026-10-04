@@ -35,6 +35,10 @@
 	var/registered = FALSE
 
 	var/minimap_flag = MINIMAP_FLAG_USCM
+	/// tacmap embedded in the console's ui
+	var/datum/tacmap_holder/tacmap_holder
+	/// client ceiling layers used by the user viewing this console.
+	var/list/atom/movable/screen/minimap_ceiling_layer/ceiling_layers = list()
 	var/obj/effect/overlay/temp/dropship_reticle/direct_fire_reticle = null
 
 /obj/structure/machinery/computer/dropship_weapons/New()
@@ -54,6 +58,8 @@
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 /obj/structure/machinery/computer/dropship_weapons/Destroy()
+	QDEL_LIST_ASSOC_VAL(ceiling_layers)
+	QDEL_NULL(tacmap_holder)
 	if(selected_cas_signal)
 		UnregisterSignal(selected_cas_signal, COMSIG_PARENT_QDELETING)
 		selected_cas_signal = null
@@ -72,6 +78,15 @@
 
 /obj/structure/machinery/computer/dropship_weapons/proc/camera_mapname_update(source, value)
 	camera_map_name = value
+
+/obj/structure/machinery/computer/dropship_weapons/proc/unregister_tacmap(mob/user)
+	if(!tacmap_holder)
+		return
+
+	var/atom/movable/screen/minimap_ceiling_layer/ceiling_layer = ceiling_layers[user]
+	user.client?.clear_map(tacmap_holder.map_ref)
+	QDEL_NULL(ceiling_layer)
+	ceiling_layers -= user
 
 /obj/structure/machinery/computer/dropship_weapons/on_unset_interaction(mob/user)
 	. = ..()
@@ -164,14 +179,22 @@
 	if(!ui)
 		var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 		if(tacmap_component)
-			if(!tacmap_component.map_holder)
-				tacmap_component.map_holder = new(null, 2, minimap_flag, FALSE, FALSE)
-				tacmap_component.is_embedded = TRUE
+			if(!tacmap_holder)
+				var/list/ground_zlevels = SSmapping.levels_by_trait(ZTRAIT_GROUND)
+				if(length(ground_zlevels))
+					tacmap_holder = new(null, ground_zlevels[1], minimap_flag, drawing = TRUE, popup = FALSE, uncached = TRUE)
+					tacmap_component.is_embedded = TRUE
+			if(tacmap_holder?.map)
 				var/matrix/transform = matrix()
-				transform.Translate(-32, 14)
-				tacmap_component.map_holder.map.transform = transform
-				tacmap_component.map = tacmap_component.map_holder.map
-			user.client.register_map_obj(tacmap_component.map_holder.map)
+				transform.Translate(-16, 14)
+				tacmap_holder.map.transform = transform
+				tacmap_holder.map.del_on_map_removal = FALSE
+				user.client.register_map_obj(tacmap_holder.map)
+				var/atom/movable/screen/minimap_ceiling_layer/ceiling_layer = new(null, tacmap_holder.map_ref, tacmap_holder.map.target, transform)
+				ceiling_layers[user] = ceiling_layer
+				user.client.register_map_obj(ceiling_layer)
+			else
+				QDEL_NULL(tacmap_holder)
 		SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)
 		ui = new(user, src, "DropshipWeaponsConsole", "Weapons Console")
 		ui.open()
@@ -182,13 +205,7 @@
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 	if(tacmap_component)
 		tacmap_component.on_unset_interaction(user)
-		tacmap_component.ui_close(user)
-		if(tacmap_component.map_holder)
-			user.client?.clear_map(tacmap_component.map_holder.map_ref)
-			tacmap_component.map = null
-			qdel(tacmap_component.map_holder)
-			tacmap_component.map_holder = null
-			tacmap_component.interactees -= user
+	unregister_tacmap(user)
 	SEND_SIGNAL(src, COMSIG_CAMERA_UNREGISTER_UI, user)
 	simulation.stop_watching(user)
 
@@ -209,9 +226,8 @@
 /obj/structure/machinery/computer/dropship_weapons/ui_static_data(mob/user)
 	. = list()
 	.["camera_map_ref"] = camera_map_name
-	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
-	if(tacmap_component && tacmap_component.map_holder)
-		.["tactical_map_ref"] = tacmap_component.map_holder.map_ref
+	if(tacmap_holder)
+		.["tactical_map_ref"] = tacmap_holder.map_ref
 
 /obj/structure/machinery/computer/dropship_weapons/ui_data(mob/user)
 	. = list()
@@ -278,6 +294,7 @@
 		.["firemission_selected_laser"] = firemission_envelope.recorded_loc ? firemission_envelope.recorded_loc.get_name() : "NOT SELECTED"
 
 	.["configuration"] = configuration
+	.["ceiling_overlay_enabled"] = ceiling_layers[user]?.enabled
 	.["dummy_mode"] = simulation.dummy_mode
 	.["worldtime"] = world.time
 	.["nextdetonationtime"] = simulation.detonation_cooldown
@@ -293,6 +310,13 @@
 
 	var/mob/user = ui.user
 	switch(action)
+		if("toggle-ceiling-overlay")
+			var/atom/movable/screen/minimap_ceiling_layer/ceiling_layer = ceiling_layers[user]
+			if(!ceiling_layer)
+				return FALSE
+			ceiling_layer.set_enabled(!ceiling_layer.enabled)
+			return TRUE
+
 		if("button_push")
 			playsound(src, get_sfx("terminal_button"), 25, FALSE)
 			return FALSE

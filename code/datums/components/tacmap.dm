@@ -224,10 +224,12 @@ GLOBAL_LIST_INIT(tacmap_holders, list())
 /datum/tacmap_holder
 	var/map_ref
 	var/atom/movable/screen/minimap/map
+	var/owns_map = FALSE
 
-/datum/tacmap_holder/New(loc, zlevel, flags, drawing, popup = TRUE)
+/datum/tacmap_holder/New(loc, zlevel, flags, drawing, popup = TRUE, client/for_client, uncached = FALSE)
 	map_ref = "tacmap_[REF(src)]_map"
-	map = SSminimaps.fetch_minimap_object(zlevel, flags, live=TRUE, popup=popup, drawing=drawing)
+	map = SSminimaps.fetch_minimap_object(zlevel, flags, live=TRUE, popup=popup, drawing=drawing, for_client=for_client, uncached=uncached)
+	owns_map = !!for_client || uncached
 
 	if(!map)
 		return
@@ -240,5 +242,8 @@ GLOBAL_LIST_INIT(tacmap_holders, list())
 	map.transform = transform
 
 /datum/tacmap_holder/Destroy()
-	map = null
+	if(owns_map)
+		QDEL_NULL(map)
+	else
+		map = null
 	return ..()

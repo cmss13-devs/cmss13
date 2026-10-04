@@ -104,6 +104,7 @@ export type CasFiremission = {
 
 export type MapProps = {
   tactical_map_ref: string;
+  ceiling_overlay_enabled: boolean;
 };
 
 export const dirMap = (dir) => {

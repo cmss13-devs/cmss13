@@ -15085,10 +15085,6 @@
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sp)
-"aNM" = (
-/obj/structure/ladder/multiz,
-/turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/sp)
 "aNN" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -19490,10 +19486,6 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/shipboard/navigation)
 "aYs" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build/plate,
@@ -51965,7 +51957,7 @@
 	id = "southcheckpoint";
 	name = "\improper Checkpoint Shutters"
 	},
-/turf/closed/wall/almayer,
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/lower/l_a_p)
 "cwH" = (
 /obj/effect/decal/warning_stripes{
@@ -58564,8 +58556,8 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_s)
 "cLU" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
 	},
 /turf/open/floor/almayer/green,
 /area/almayer/hallways/lower/starboard_midship_hallway)
@@ -83755,6 +83747,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/port_emb)
 "oDy" = (
@@ -158950,7 +158943,7 @@ auT
 auT
 cww
 goM
-aKQ
+tcO
 bdH
 bdH
 bdH
@@ -159053,7 +159046,7 @@ auT
 gEh
 xhO
 hzu
-aKQ
+tcO
 bdH
 bdH
 bdH
@@ -159156,7 +159149,7 @@ auT
 cwF
 lYg
 cwn
-aKQ
+tcO
 bdH
 bdH
 bdH
@@ -159259,7 +159252,7 @@ auT
 ffx
 cvX
 tWp
-aKQ
+tcO
 bdH
 bdH
 bdH
@@ -159362,7 +159355,7 @@ auT
 cwG
 ljv
 tcO
-aKQ
+tcO
 bdH
 bdH
 bdH
@@ -183973,7 +183966,7 @@ aUz
 aYl
 aHs
 aNP
-aYe
+bwK
 aNH
 aHs
 aIi
@@ -184075,8 +184068,8 @@ aXw
 aZx
 aYo
 aNG
-aNR
-aNM
+bwK
+bwK
 aYs
 aNG
 aJE
@@ -184179,7 +184172,7 @@ bpU
 aYm
 aHs
 aYU
-aYI
+aIi
 aNH
 aHs
 aKf

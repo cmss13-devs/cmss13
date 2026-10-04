@@ -197,11 +197,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison,
 /area/abyssal/interior/command)
-"cc" = (
-/obj/effect/decal/floor_symbol/con_am/alt/top_2,
-/obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/darkpurple2/north,
-/area/abyssal/interior/science)
 "cd" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -844,7 +839,6 @@
 /area/abyssal/interior/science)
 "jr" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/decal/floor_symbol/con_am/alt/top_4,
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
 	},
@@ -1602,7 +1596,10 @@
 	pixel_y = 32
 	},
 /obj/item/tool/pen/green,
-/obj/effect/decal/floor_symbol/con_am,
+/obj/effect/decal/conam/half_logo{
+	pixel_x = -26;
+	pixel_y = -15
+	},
 /turf/open/floor/hybrisa/tile/green_bigtile/north,
 /area/abyssal/interior/liaison)
 "qM" = (
@@ -1671,7 +1668,6 @@
 	pixel_x = -10
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/decal/floor_symbol/con_am/alt/bottom_4,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/darkblue2full,
 /area/abyssal/interior/command)
@@ -1679,7 +1675,6 @@
 /obj/structure/machinery/firealarm{
 	pixel_y = 28
 	},
-/obj/effect/decal/floor_symbol/con_am/right,
 /turf/open/floor/hybrisa/tile/green_bigtile/north,
 /area/abyssal/interior/liaison)
 "rm" = (
@@ -1762,11 +1757,6 @@
 	},
 /turf/open/floor/engine,
 /area/abyssal/interior/science)
-"rV" = (
-/obj/effect/decal/floor_symbol/con_am/alt/bottom_3,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/darkblue2/southeast,
-/area/abyssal/interior/command)
 "rZ" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/machinery/light/small{
@@ -1824,7 +1814,6 @@
 /obj/structure/sign/poster/art{
 	pixel_y = 32
 	},
-/obj/effect/decal/floor_symbol/con_am/left,
 /turf/open/floor/hybrisa/tile/green_bigtile/northwest,
 /area/abyssal/interior/liaison)
 "sq" = (
@@ -2465,8 +2454,8 @@
 /area/abyssal/interior/command)
 "xH" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/decal/floor_symbol/con_am/alt,
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/conam/big_logo,
 /turf/open/floor/darkpurplecorners2,
 /area/abyssal/interior/science)
 "xR" = (
@@ -2553,10 +2542,6 @@
 	},
 /turf/open/floor/darkpurple2/east,
 /area/abyssal/interior/science)
-"yQ" = (
-/obj/effect/decal/floor_symbol/con_am/alt/top_4,
-/turf/open/floor/station/metal/floor/alt2,
-/area/abyssal/interior/corridor_east)
 "yS" = (
 /turf/open/floor/hybrisa/carpet/carpet_colorable/twe_blue,
 /area/abyssal/interior/liaison)
@@ -2848,7 +2833,7 @@
 /area/abyssal/interior/command)
 "Bk" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/decal/floor_symbol/con_am/alt,
+/obj/effect/decal/conam/big_logo,
 /turf/open/floor/darkblue2/southwest,
 /area/abyssal/interior/command)
 "Bm" = (
@@ -2968,10 +2953,6 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/shiva,
-/area/abyssal/interior/science)
-"Ci" = (
-/obj/effect/decal/floor_symbol/con_am/alt/bottom_2,
-/turf/open/floor/darkpurple2,
 /area/abyssal/interior/science)
 "Ck" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -3147,11 +3128,6 @@
 "DO" = (
 /turf/open/floor/darkpurple2/west,
 /area/abyssal/interior/science)
-"DR" = (
-/obj/effect/decal/floor_symbol/con_am/alt/bottom_3,
-/obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/darkpurple2,
-/area/abyssal/interior/science)
 "DS" = (
 /obj/structure/tunnel/maint_tunnel,
 /turf/open/floor/darkblue2full,
@@ -3265,10 +3241,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/abyssal/interior/science)
-"Fb" = (
-/obj/effect/decal/floor_symbol/con_am/alt/bottom_2,
-/turf/open/floor/darkblue2,
-/area/abyssal/interior/command)
 "Fd" = (
 /obj/structure/monorail{
 	dir = 6;
@@ -3304,16 +3276,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/hybrisa/tile/green_bigtile/northwest,
 /area/abyssal/interior/command)
-"Fr" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
-/obj/effect/decal/floor_symbol/con_am/alt/bottom_4,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/station/metal/floor/alt2,
-/area/abyssal/interior/corridor_east)
 "Ft" = (
 /obj/structure/pipes/vents/pump,
 /obj/item/device/radio/intercom{
@@ -4306,10 +4268,6 @@
 /obj/structure/window/framed/abyssal/blue,
 /turf/open/floor/engine,
 /area/abyssal/interior/science)
-"Or" = (
-/obj/effect/decal/floor_symbol/con_am/alt/top_1,
-/turf/open/floor/darkblue2/west,
-/area/abyssal/interior/command)
 "Oy" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -4522,10 +4480,6 @@
 	pixel_y = 16
 	},
 /turf/open/floor/darkpurple2/northwest,
-/area/abyssal/interior/science)
-"Qa" = (
-/obj/effect/decal/floor_symbol/con_am/alt/top_1,
-/turf/open/floor/darkpurplecorners2/east,
 /area/abyssal/interior/science)
 "Qe" = (
 /obj/structure/pipes/vents/scrubber,
@@ -4900,7 +4854,6 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/command)
 "TQ" = (
-/obj/effect/decal/floor_symbol/con_am/alt/top_3,
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/sign/poster/conam{
 	pixel_y = 32;
@@ -5191,11 +5144,6 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/hybrisa/tile/green_bigtile/southwest,
 /area/abyssal/interior/liaison)
-"Wv" = (
-/obj/effect/decal/floor_symbol/con_am/alt/top_3,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/darkblue2/east,
-/area/abyssal/interior/command)
 "Wy" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
@@ -5451,10 +5399,6 @@
 	anchored = 1
 	},
 /turf/open/floor/darkblue2/north,
-/area/abyssal/interior/command)
-"Zm" = (
-/obj/effect/decal/floor_symbol/con_am/alt/top_2,
-/turf/open/floor/prison,
 /area/abyssal/interior/command)
 "Zn" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -6501,8 +6445,8 @@ fy
 fy
 fy
 xw
-yQ
-Fr
+JS
+se
 Tb
 Dj
 vt
@@ -6829,7 +6773,7 @@ EG
 lU
 DC
 lU
-Or
+in
 Bk
 vf
 SF
@@ -6900,8 +6844,8 @@ Me
 Hb
 ul
 AL
-Zm
-Fb
+HA
+ya
 JP
 Nv
 Ae
@@ -6971,8 +6915,8 @@ Ho
 nE
 Kh
 gV
-Wv
-rV
+Fe
+cJ
 Rw
 jZ
 Fe
@@ -7368,7 +7312,7 @@ MR
 Yc
 tP
 tP
-Qa
+qD
 xH
 qW
 qW
@@ -7439,8 +7383,8 @@ qW
 TB
 Dj
 Dj
-cc
-Ci
+iU
+dC
 Dj
 Dj
 Rt
@@ -7511,7 +7455,7 @@ Dj
 Dj
 Dj
 TQ
-DR
+hD
 Dj
 Dj
 Dj

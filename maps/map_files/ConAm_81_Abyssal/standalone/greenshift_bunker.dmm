@@ -80,7 +80,6 @@
 /area/abyssal/interior/bunker)
 "hF" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/decal/floor_symbol/con_am/left,
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/abyssal/interior/bunker)
@@ -545,7 +544,6 @@
 	pixel_x = -6;
 	pixel_y = 12
 	},
-/obj/effect/decal/floor_symbol/con_am/right,
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/abyssal/interior/bunker)
@@ -773,7 +771,10 @@
 "Xf" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/decal/floor_symbol/con_am,
+/obj/effect/decal/conam/half_logo{
+	pixel_x = -26;
+	pixel_y = -15
+	},
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/abyssal/interior/bunker)
 "Xh" = (

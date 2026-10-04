@@ -227,6 +227,11 @@
 
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living/carbon/human, say_to_radios), used_radios, message, message_mode, verb, speaking)
 
+/mob/living/carbon/human/hear_say(message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null, sound/speech_sound, sound_vol, message_mode)
+	if(ishuman(speaker) && !hears_voices)
+		speech_sound = null
+	..()
+
 /mob/living/carbon/human/proc/say_to_radios(used_radios, message, message_mode, verb, speaking)
 	for(var/obj/item/device/radio/R in used_radios)
 		R.talk_into(src, message, message_mode, verb, speaking)

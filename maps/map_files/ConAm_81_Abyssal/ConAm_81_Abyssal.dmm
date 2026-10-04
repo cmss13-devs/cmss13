@@ -23,7 +23,6 @@
 /area/abyssal/interior/landing_zone)
 "aag" = (
 /obj/item/trash/cigbutt,
-/obj/effect/decal/floor_symbol/con_am/alt/top_3,
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/station/metal/alt_floor,
 /area/abyssal/interior/corridor_east)
@@ -680,7 +679,6 @@
 	dir = 1;
 	layer = 2.52
 	},
-/obj/effect/decal/floor_symbol/con_am/alt/bottom_3,
 /turf/open/floor/station/metal/alt_floor,
 /area/abyssal/interior/corridor_west)
 "acg" = (
@@ -1873,7 +1871,6 @@
 /area/abyssal/exterior/aft)
 "afq" = (
 /obj/structure/pipes/vents/scrubber,
-/obj/effect/decal/floor_symbol/con_am/alt/top_4,
 /turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "afr" = (
@@ -3332,7 +3329,6 @@
 	pixel_x = -10
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/decal/floor_symbol/con_am/alt/bottom_4,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/darkblue2full,
 /area/abyssal/interior/command)
@@ -3800,8 +3796,8 @@
 /area/abyssal/interior/dormitory)
 "ald" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/decal/floor_symbol/con_am/alt,
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/conam/big_logo/damage,
 /turf/open/floor/darkpurplecorners2,
 /area/abyssal/interior/science)
 "ale" = (
@@ -3875,10 +3871,6 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile,
 /area/abyssal/interior/maintenance/north)
-"alp" = (
-/obj/effect/decal/floor_symbol/con_am/alt/bottom_2,
-/turf/open/floor/darkpurple2,
-/area/abyssal/interior/science)
 "alq" = (
 /obj/structure/machinery/suit_storage_unit/compression_suit{
 	needs_power = 0
@@ -4142,6 +4134,16 @@
 	},
 /turf/open/floor/darkish,
 /area/abyssal/interior/liaison)
+"ame" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 1;
+	pixel_x = -1
+	},
+/obj/effect/decal/conam/half_logo/damage,
+/turf/open/floor/darkish,
+/area/abyssal/interior/landing_zone)
 "amf" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered/biege,
@@ -4216,7 +4218,6 @@
 	layer = 2.52
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/decal/floor_symbol/con_am/alt/bottom_2,
 /turf/open/floor/station/metal/alt_floor,
 /area/abyssal/interior/corridor_west)
 "amp" = (
@@ -4596,11 +4597,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/arrivals)
-"ani" = (
-/obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/decal/floor_symbol/con_am/left,
-/turf/open/floor/prison/floor_plate,
-/area/abyssal/interior/landing_zone)
 "anj" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
@@ -4612,12 +4608,9 @@
 /area/abyssal/exterior/aft)
 "ank" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/decal/floor_symbol/con_am,
-/turf/open/floor/prison/floor_plate,
-/area/abyssal/interior/landing_zone)
-"anl" = (
-/obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/decal/floor_symbol/con_am/right,
+/obj/effect/decal/conam/long_logo_right/damage{
+	pixel_x = -1
+	},
 /turf/open/floor/prison/floor_plate,
 /area/abyssal/interior/landing_zone)
 "anm" = (
@@ -4991,15 +4984,14 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/effect/decal/floor_symbol/con_am/alt,
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/conam/big_logo/damage,
 /turf/open/floor/station/metal/alt_floor,
 /area/abyssal/interior/corridor_east)
 "aog" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/effect/decal/floor_symbol/con_am/alt/bottom_3,
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -5129,14 +5121,9 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/south)
-"aox" = (
-/obj/effect/decal/floor_symbol/con_am/alt/top_1,
-/turf/open/floor/station/metal/alt_floor,
-/area/abyssal/interior/corridor_east)
 "aoy" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/decal/floor_symbol/con_am/alt/top_2,
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/station/metal/alt_floor,
 /area/abyssal/interior/corridor_east)
@@ -6381,7 +6368,6 @@
 /turf/open/floor/darkish,
 /area/abyssal/interior/landing_zone)
 "arr" = (
-/obj/effect/decal/floor_symbol/con_am/left,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	pixel_y = 1;
@@ -6417,7 +6403,6 @@
 /area/abyssal/interior/landing_zone)
 "aru" = (
 /obj/structure/disposalpipe/segment,
-/obj/effect/decal/floor_symbol/con_am,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	pixel_y = 1;
@@ -6447,7 +6432,6 @@
 /area/abyssal/interior/science)
 "arx" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/decal/floor_symbol/con_am/right,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_y = 1
@@ -7882,12 +7866,8 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_6"
 	},
-/obj/effect/decal/floor_symbol/con_am/alt,
+/obj/effect/decal/conam/big_logo,
 /turf/open/floor/station/metal/alt_floor,
-/area/abyssal/interior/corridor_west)
-"auE" = (
-/obj/effect/decal/floor_symbol/con_am/alt/bottom_4,
-/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "auF" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -8081,11 +8061,6 @@
 	},
 /turf/open/floor/darkish,
 /area/abyssal/interior/arrivals)
-"avb" = (
-/obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/decal/floor_symbol/con_am/alt/top_1,
-/turf/open/floor/station/metal/alt_floor,
-/area/abyssal/interior/corridor_west)
 "avc" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -8095,10 +8070,6 @@
 	pixel_y = 24
 	},
 /turf/open/floor/darkish,
-/area/abyssal/interior/corridor_west)
-"avd" = (
-/obj/effect/decal/floor_symbol/con_am/alt/top_3,
-/turf/open/floor/station/metal/alt_floor,
 /area/abyssal/interior/corridor_west)
 "ave" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -8855,24 +8826,21 @@
 /area/abyssal/interior/corridor_west)
 "awW" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/decal/floor_symbol/con_am/alt,
 /obj/effect/decal/large_stain{
 	layer = 2.52
 	},
+/obj/effect/decal/conam/big_logo/damage_1,
 /turf/open/floor/darkblue2/southwest,
-/area/abyssal/interior/command)
-"awX" = (
-/obj/effect/decal/floor_symbol/con_am/alt/bottom_3,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/darkblue2/southeast,
 /area/abyssal/interior/command)
 "awY" = (
 /obj/item/frame/table/almayer,
 /turf/open/floor/darkblue2full,
 /area/abyssal/interior/command)
 "awZ" = (
-/obj/effect/decal/floor_symbol/con_am/left,
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/conam/half_logo/damage_1{
+	pixel_y = -16
+	},
 /turf/open/floor/station/metal/alt_floor,
 /area/abyssal/interior/corridor_central)
 "axa" = (
@@ -8880,7 +8848,6 @@
 /turf/open/floor/plating/prison,
 /area/abyssal/interior/landing_zone)
 "axb" = (
-/obj/effect/decal/floor_symbol/con_am,
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/large_stain{
 	layer = 2.52
@@ -8896,7 +8863,6 @@
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/abyssal/interior/galley)
 "axd" = (
-/obj/effect/decal/floor_symbol/con_am/right,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/station/metal/alt_floor,
@@ -8939,12 +8905,7 @@
 	},
 /turf/open/floor/prison/redfull,
 /area/abyssal/interior/landing_zone)
-"axi" = (
-/obj/effect/decal/floor_symbol/con_am/alt/top_1,
-/turf/open/floor/darkblue2/west,
-/area/abyssal/interior/command)
 "axj" = (
-/obj/effect/decal/floor_symbol/con_am/alt/top_2,
 /obj/effect/decal/large_stain{
 	layer = 2.52;
 	pixel_y = -13
@@ -8961,11 +8922,6 @@
 	},
 /turf/open/floor/prison/red/north,
 /area/abyssal/interior/landing_zone)
-"axl" = (
-/obj/effect/decal/floor_symbol/con_am/alt/top_3,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/darkblue2/east,
-/area/abyssal/interior/command)
 "axm" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -8977,7 +8933,6 @@
 /area/abyssal/interior/corridor_east)
 "axn" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/decal/floor_symbol/con_am/alt/top_4,
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
 	},
@@ -12916,7 +12871,9 @@
 /obj/structure/sign/poster/art{
 	pixel_y = 32
 	},
-/obj/effect/decal/floor_symbol/con_am/left,
+/obj/effect/decal/conam/half_logo/damage{
+	pixel_y = -16
+	},
 /turf/open/floor/hybrisa/tile/green_bigtile/northwest,
 /area/abyssal/interior/liaison)
 "aGz" = (
@@ -12924,14 +12881,12 @@
 	pixel_y = 32
 	},
 /obj/item/tool/pen/green,
-/obj/effect/decal/floor_symbol/con_am,
 /turf/open/floor/hybrisa/tile/green_bigtile/north,
 /area/abyssal/interior/liaison)
 "aGA" = (
 /obj/structure/machinery/firealarm{
 	pixel_y = 28
 	},
-/obj/effect/decal/floor_symbol/con_am/right,
 /turf/open/floor/hybrisa/tile/green_bigtile/north,
 /area/abyssal/interior/liaison)
 "aGB" = (
@@ -13353,11 +13308,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/north)
-"aHv" = (
-/obj/effect/decal/floor_symbol/con_am/alt/bottom_3,
-/obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/darkpurple2,
-/area/abyssal/interior/science)
 "aHw" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -13365,10 +13315,6 @@
 	},
 /turf/open/floor/darkblue2/north,
 /area/abyssal/interior/command)
-"aHx" = (
-/obj/effect/decal/floor_symbol/con_am/alt/top_1,
-/turf/open/floor/darkpurplecorners2/east,
-/area/abyssal/interior/science)
 "aHy" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -13385,11 +13331,6 @@
 "aHz" = (
 /turf/open/floor/darkblue2/southeast,
 /area/abyssal/interior/command)
-"aHA" = (
-/obj/effect/decal/floor_symbol/con_am/alt/top_2,
-/obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/darkpurple2/north,
-/area/abyssal/interior/science)
 "aHB" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -13398,7 +13339,6 @@
 /turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "aHC" = (
-/obj/effect/decal/floor_symbol/con_am/alt/top_3,
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/sign/poster/conam{
 	pixel_y = 32;
@@ -15666,12 +15606,6 @@
 	},
 /turf/open/floor/station/metal/floor/alt1/west,
 /area/abyssal/interior/corridor_west)
-"aMY" = (
-/obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/decal/floor_symbol/con_am/alt/top_2,
-/turf/open/floor/station/metal/alt_floor,
-/area/abyssal/interior/corridor_west)
 "aMZ" = (
 /obj/structure/pipes/vents/scrubber,
 /turf/open/floor/hybrisa/tile/tilebeige,
@@ -15684,10 +15618,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/darkblue2/east,
-/area/abyssal/interior/command)
-"aNc" = (
-/obj/effect/decal/floor_symbol/con_am/alt/bottom_2,
-/turf/open/floor/darkblue2,
 /area/abyssal/interior/command)
 "aNd" = (
 /turf/open/floor/green/southeast,
@@ -22901,7 +22831,6 @@
 	icon_state = "pipe-c"
 	},
 /obj/structure/pipes/standard/manifold/hidden/cyan,
-/obj/effect/decal/floor_symbol/con_am/alt/bottom_2,
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/station/metal/alt_floor,
@@ -24024,14 +23953,13 @@
 "bgO" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/item/trash/wy_mre,
-/obj/effect/decal/floor_symbol/con_am/left,
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/conam/long_logo_left,
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/abyssal/interior/bunker)
 "bgP" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/decal/floor_symbol/con_am,
 /obj/effect/decal/large_stain{
 	layer = 2.52;
 	pixel_y = -14;
@@ -24051,7 +23979,6 @@
 	pixel_x = -6;
 	pixel_y = 12
 	},
-/obj/effect/decal/floor_symbol/con_am/right,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_7";
 	pixel_x = -8;
@@ -24059,6 +23986,9 @@
 	layer = 2.52
 	},
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/conam/long_logo_right{
+	pixel_x = -1
+	},
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/abyssal/interior/bunker)
 "bgR" = (
@@ -26128,7 +26058,8 @@
 "gIj" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/landmark/railgun_camera_pos,
-/turf/open/floor/prison/ramptop/east,
+/obj/effect/decal/conam/long_logo_left/damage,
+/turf/open/floor/prison/floor_plate,
 /area/abyssal/interior/landing_zone)
 "gKi" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -27009,7 +26940,7 @@
 "qFv" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/landmark/spycam_start,
-/turf/open/floor/prison/floor_plate,
+/turf/open/floor/prison/ramptop/east,
 /area/abyssal/interior/landing_zone)
 "qSs" = (
 /obj/structure/surface/table{
@@ -34273,7 +34204,7 @@ bkJ
 asu
 aaL
 aVt
-arq
+ame
 lKb
 aqE
 pxv
@@ -36112,9 +36043,9 @@ xqz
 xqz
 lKb
 rsl
-xqz
+vMG
 qFv
-xqz
+vMG
 rsl
 gHR
 xqz
@@ -36417,7 +36348,7 @@ fzT
 lKb
 gKi
 vMG
-ani
+xqz
 vMG
 roH
 baj
@@ -36721,7 +36652,7 @@ dgD
 abK
 gKi
 vMG
-anl
+xqz
 vMG
 roH
 afC
@@ -39282,7 +39213,7 @@ aPi
 aga
 aPu
 ane
-avb
+agw
 auD
 ahv
 age
@@ -39434,7 +39365,7 @@ asf
 aga
 aHB
 agT
-aMY
+avC
 amo
 ath
 aAp
@@ -39586,7 +39517,7 @@ aPi
 aga
 aUO
 atj
-avd
+ags
 acf
 ahv
 aur
@@ -39739,7 +39670,7 @@ afZ
 afV
 aXh
 afq
-auE
+aeW
 aMg
 ado
 aVQ
@@ -49028,7 +48959,7 @@ aNM
 aNM
 aNM
 aYA
-aox
+amn
 aof
 aYn
 aaw
@@ -50217,7 +50148,7 @@ aBu
 apa
 aQM
 apa
-axi
+apa
 awW
 aqC
 auX
@@ -50370,7 +50301,7 @@ aZM
 aJr
 aiG
 axj
-aNc
+amu
 aaY
 aIn
 aQg
@@ -50521,8 +50452,8 @@ biU
 biR
 aqZ
 biy
-axl
-awX
+biy
+bix
 biJ
 ajS
 aFA
@@ -51323,7 +51254,7 @@ bcv
 aet
 aev
 aqy
-aHx
+afF
 ald
 ahY
 aeG
@@ -51475,8 +51406,8 @@ bcw
 acS
 aaa
 aaa
-aHA
-alp
+agF
+alz
 aaa
 aaa
 agb
@@ -51628,7 +51559,7 @@ aaa
 aaa
 aaa
 aHC
-aHv
+aaP
 aaa
 aaa
 aaa

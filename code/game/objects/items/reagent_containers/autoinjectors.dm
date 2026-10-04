@@ -97,7 +97,10 @@
 						reagent_list_text += "and [chemical.volume / uses_left]u [chemical.name]"
 						break
 		if(uses_left > 0)
-			. += SPAN_NOTICE("It has [uses_left]/[max_uses] injections left and its label says each dose contains [reagent_list_text].")
+			if(max_uses == 1)
+				. += SPAN_NOTICE("It injects its entire payload and its label says each dose contains [reagent_list_text].")
+			else
+				. += SPAN_NOTICE("It has [uses_left]/[max_uses] injections left and its label says each dose contains [reagent_list_text].")
 			if(cannot_refill)
 				. += SPAN_WARNING("It has small label that says: Not refillable.")
 		else
@@ -123,7 +126,7 @@
 			var/frequency_word
 			for(var/datum/reagent/chemical in reagents.reagent_list)
 				var/doses = (chemical.overdose) / (chemical.volume / uses_left)
-				if(chemical.overdose == null)
+				if(chemical.overdose == 0)
 					. += SPAN_HELPFUL("You know [chemical.name] cannot be overdosed.")
 					return
 				if(isnull(min_doses_to_od) || doses < min_doses_to_od)
@@ -139,9 +142,9 @@
 					. += SPAN_WARNING("[chemical.volume / max_uses]u dose of [chemical.name] found in autoinjector exceeds [chemical.name]'s [chemical.overdose]u overdose limit.") */
 				// If you make a new autoinjector or modify an existing autoinjector's amount_per_transfer_from_this or volume variables, please uncomment the two lines above and else if the (floor(min_doses_to_od) < 4) to test it out. Autoinjectors with chemicals initialized into them should never overdose a patient after the first injection. - Puckaboo2
 				if(floor(min_doses_to_od) < 4)
-					. += SPAN_HELPFUL("You quickly calculate not to inject this more than [frequency_word].")
+					. += SPAN_HELPFUL("You know not to inject this autoinjector more than [frequency_word].")
 				else if(floor(min_doses_to_od) > 4)
-					. += SPAN_HELPFUL("You quickly calculate to not exceed [min_doses_to_od] doses.")
+					. += SPAN_HELPFUL("You know not to exceed [min_doses_to_od] doses.")
 
 /obj/item/reagent_container/hypospray/autoinjector/proc/get_autoinjector_examine_text(mob/user, max_uses)
 	. = list()

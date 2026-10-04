@@ -1,0 +1,4 @@
+author: "predatornc"
+delete-after: True
+changes:
+  - rscadd: "a new CL briefing has replaced the placeholder one on LV-624"

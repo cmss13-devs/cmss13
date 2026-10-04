@@ -417,8 +417,9 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 
 //Removes the ahelp verb and returns it after 2 minutes
 /datum/admin_help/proc/TimeoutVerb()
-	remove_verb(initiator, /client/proc/adminhelp)
-	initiator.adminhelptimerid = addtimer(CALLBACK(initiator, /client/proc/giveadminhelpverb), 1200, TIMER_STOPPABLE) //2 minute cooldown of admin helps
+	if(istype(initiator, /client))
+		remove_verb(initiator, /client/proc/adminhelp)
+		initiator.adminhelptimerid = addtimer(CALLBACK(initiator, /client/proc/giveadminhelpverb), 1200, TIMER_STOPPABLE) //2 minute cooldown of admin helps
 
 //private
 /datum/admin_help/proc/FullMonty(ref_src)
@@ -884,7 +885,7 @@ SET_PROTECTED_DATUM(/datum/admin_help)
 //
 
 /client/proc/giveadminhelpverb()
-	if(!src)
+	if(!src || !istype(src, /client)) // non-clients, like the dummy client, will cause a runtime if this is ran
 		return
 	add_verb(src, /client/proc/adminhelp)
 	deltimer(adminhelptimerid)
@@ -1125,7 +1126,7 @@ CLIENT_VERB(view_latest_ticket)
 				var/datum/datum_check = locate(word_with_brackets)
 				if(!istype(datum_check))
 					continue
-				msglist[i] = "<u><a href='byond://?_src_=vars;[HrefToken(forceGlobal = TRUE)];Vars=[word_with_brackets]'>[word]</A></u>"
+				msglist[i] = "<u><a href='byond://?_src_=vars;[HrefToken(forceGlobal = TRUE)];Vars=[word_with_brackets]'>[word]</a></u>"
 				modified = TRUE
 
 			if("#") // check if we're linking a ticket
@@ -1146,8 +1147,20 @@ CLIENT_VERB(view_latest_ticket)
 					if(AHELP_RESOLVED)
 						state_word = "Resolved"
 
-				msglist[i]= "<u><A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=[REF(ahelp_check)];ahelp_action=ticket'>[word] ([state_word] | [ahelp_check.initiator_key_name])</A></u>"
+				msglist[i]= "<u><a href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=[REF(ahelp_check)];ahelp_action=ticket'>[word] ([state_word] | [ahelp_check.initiator_key_name])</a></u>"
 				modified = TRUE
+
+			if("~") // Check if we're linking an OpenSearch Query
+				var/possible_query_id = text2num(copytext(word, 2))
+				if(!possible_query_id)
+					continue
+				var/datum/opensearch_query/query = SSopensearch.queries[possible_query_id]
+				if(!query)
+					continue
+
+				msglist[i] = "<u><a href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];osquery=[query.id]'>[word] ([query.name])</a></u>"
+				modified = TRUE
+
 
 	if(modified)
 		var/list/return_list = list()

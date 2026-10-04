@@ -302,7 +302,7 @@
 		return
 	else if (ishuman(user) && HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		on = !on
-		visible_message("You pry at the control valve on [src]. The machine shudders." , "[user] pries at the control valve on [src]. The entire machine shudders.")
+		user.visible_message("[user] pries at the control valve on [src]. The entire machine shudders." , "You pry at the control valve on [src]. The machine shudders.")
 
 		Update()
 
@@ -507,8 +507,8 @@
 	state = STATE_FUEL
 
 /obj/structure/prop/brazier/frame/full
-	name = "empty full brazier"
-	desc = "An empty brazier. Yet it's also full. What??? Use something hot to ignite it, like a welding tool."
+	name = "unlit brazier"
+	desc = "A brazier full of wood, though unlit. Something hot could ignite it."
 	icon_state = "brazier_frame_filled"
 	frame_type = /obj/structure/prop/brazier
 	state = STATE_IGNITE

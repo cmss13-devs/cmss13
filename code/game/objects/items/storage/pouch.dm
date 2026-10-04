@@ -513,7 +513,7 @@
 
 	can_hold = list(
 		/obj/item/ammo_magazine/pistol,
-		/obj/item/ammo_magazine/pistol/heavy,
+		/obj/item/ammo_magazine/pistol/deagle,
 		/obj/item/ammo_magazine/revolver,
 	)
 
@@ -1244,31 +1244,31 @@
 
 
 
-	var/obj/O = target
-	if(!O.reagents || length(O.reagents.reagent_list) < 1)
-		to_chat(user, SPAN_WARNING("[O] is empty!"))
+	var/obj/container = target
+	if(!container.reagents || length(container.reagents.reagent_list) < 1)
+		to_chat(user, SPAN_WARNING("[container] is empty!"))
 		return
 
-	var/amt_to_remove = clamp(O.reagents.total_volume, 0, inner.volume)
+	var/amt_to_remove = clamp(container.reagents.total_volume, 0, inner.volume)
 	if(!amt_to_remove)
-		to_chat(user, SPAN_WARNING("[O] is empty!"))
+		to_chat(user, SPAN_WARNING("[container] is empty!"))
 		return
 
 	//Fill our inner reagent canister
-	O.reagents.trans_to(inner, amt_to_remove)
+	container.reagents.trans_to(inner, amt_to_remove)
 
 	//Refill our autoinjector
 	if(length(contents) > 0)
 		fill_autoinjector(contents[1])
 
 	//Top up our inner reagent canister after filling up the injector
-	amt_to_remove = clamp(O.reagents.total_volume, 0, inner.volume)
+	amt_to_remove = clamp(container.reagents.total_volume, 0, inner.volume)
 	if(amt_to_remove)
-		O.reagents.trans_to(inner, amt_to_remove)
+		container.reagents.trans_to(inner, amt_to_remove)
 
 	playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
 
-	to_chat(user, SPAN_NOTICE("You refill the [src]."))
+	to_chat(user, SPAN_NOTICE("You refill [src]."))
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/get_examine_text(mob/user)
@@ -1310,9 +1310,9 @@
 	if(isxeno(user))
 		return
 	if(!inner)
-		return "This [src] has no container inside!"
+		return "[src] has no container inside!"
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
-		return "This [src] contains: [get_reagent_list_text()]"
+		return "[src] contains: [get_reagent_list_text()]"
 	else
 		return "You don't know what's in it."
 
@@ -1347,7 +1347,7 @@
 	to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 3 seconds..."))
 	if(do_after(usr, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		if(inner)
-			to_chat(usr, SPAN_NOTICE("You flush the [src]."))
+			to_chat(usr, SPAN_NOTICE("You flush [src]."))
 			inner.reagents.clear_reagents()
 			update_icon()
 

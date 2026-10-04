@@ -25,9 +25,9 @@
 		var/mob/living/carbon/human/targethuman = target
 		target_eyes = targethuman.internal_organs_by_name["eyes"]
 
-/datum/surgery/eye_repair/can_start(mob/user, mob/living/carbon/human/patient, obj/limb/L, obj/item/tool)
-	var/datum/internal_organ/eyes/E = patient.internal_organs_by_name["eyes"]
-	return E.robotic != ORGAN_ROBOT && (patient.sdisabilities & DISABILITY_BLIND || patient.disabilities & NEARSIGHTED || E.damage > 0)
+/datum/surgery/eye_repair/can_start(mob/user, mob/living/carbon/human/patient, obj/limb/patient_limb, obj/item/tool)
+	var/datum/internal_organ/eyes/patient_eyes = patient.internal_organs_by_name["eyes"]
+	return patient_eyes.robotic != ORGAN_ROBOT && (patient.sdisabilities & DISABILITY_BLIND || patient.disabilities & NEARSIGHTED || patient_eyes.damage > 0)
 
 //------------------------------------
 
@@ -58,7 +58,8 @@
 
 	log_interact(user, target, "[key_name(user)] separated the corneas on [key_name(target)]'s eyes with [tool], starting [surgery].")
 
-	to_chat(target, SPAN_WARNING("Everything goes blurry."))
+	if(target.stat == CONSCIOUS)
+		to_chat(target, SPAN_WARNING("Everything goes blurry."))
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW
 	target.disabilities |= NEARSIGHTED // My corneas! I can't see!
 
@@ -83,7 +84,7 @@
 	time = 2 SECONDS
 
 	preop_sound = 'sound/surgery/hemostat1.ogg'
-	success_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/surgery/hemostat2.ogg'
 	failure_sound = 'sound/surgery/organ1.ogg'
 
 /datum/surgery_step/lift_corneas/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -92,7 +93,7 @@
 		SPAN_NOTICE("[user] begins lifting the corneas and moving the lenses out of the way from your eyes with [tool]."),
 		SPAN_NOTICE("[user] begins lifting the corneas and moving the lenses out of the way from [target]'s eyes with [tool]."))
 
-	target.custom_pain("You feel pressure and pulling on the surface of your eyes!",1)
+	target.custom_pain("You feel pressure pulling away at your eyes!",1)
 	log_interact(user, target, "[key_name(user)] started lifting the corneas and moving the lenses out of the way from  [key_name(target)]'s eyes with [tool].")
 
 /datum/surgery_step/lift_corneas/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -178,7 +179,7 @@
 	log_interact(user, target, "[key_name(user)] begins to mend the damage to [key_name(target)]'s eyeballs with [tool].")
 
 /datum/surgery_step/mend_eyes/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	var/datum/internal_organ/eyes/E = target.internal_organs_by_name["eyes"]
+	var/datum/internal_organ/eyes/patient_eyes = target.internal_organs_by_name["eyes"]
 	if(target.sdisabilities & DISABILITY_BLIND)
 		user.affected_message(target,
 			SPAN_NOTICE("You finish laying [target]'s detached retinas back into place and mending the damaged optic nerves that caused total blindness."),
@@ -189,7 +190,7 @@
 			SPAN_NOTICE("You finish reshaping [target]'s corneas so they can focus light accurately again."),
 			SPAN_NOTICE("[user] finishes reshaping your corneas so they can focus light accurately again."),
 			SPAN_WARNING("[user] finishes reshaping [target]'s corneas so they can focus light accurately again."))
-	if(E && E.damage > 0)
+	if(patient_eyes && patient_eyes.damage > 0)
 		user.affected_message(target,
 			SPAN_NOTICE("You finish mending the damaged blood vessels within and the surface damage outside of [target]'s eyes."),
 			SPAN_NOTICE("[user] finishes mending the damaged blood vessels within and the surface damage outside of your eyes."),
@@ -237,7 +238,9 @@
 
 	log_interact(user, target, "[key_name(user)] cauterized the incision around [key_name(target)]'s eyes with [tool], ending [surgery].")
 
-	to_chat(target, SPAN_NOTICE("The pain in your eyeballs is gone and you can see again!"))
+	if(target.stat == CONSCIOUS)
+		to_chat(target, SPAN_NOTICE("You can see again!"))
+
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 	target.disabilities &= ~NEARSIGHTED
 	target.sdisabilities &= ~DISABILITY_BLIND

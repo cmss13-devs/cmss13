@@ -20,8 +20,8 @@
 	steps_to_take = steps
 	color = bcolor
 
-	var/mob/living/carbon/human/H = target
-	H.bloody_footsteps = steps_to_take
+	var/mob/living/carbon/human/target_human = target
+	target_human.bloody_footsteps = steps_to_take
 	LAZYADD(entered_bloody_turf, target)
 
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved), override = TRUE)
@@ -32,7 +32,7 @@
 		RegisterSignal(shoes, COMSIG_ITEM_DROPPED, PROC_REF(on_shoes_removed), override = TRUE)
 
 	if(dry_time)
-		addtimer(CALLBACK(src, PROC_REF(clear_blood), target), dry_time)
+		addtimer(CALLBACK(src, PROC_REF(clear_blood), WEAKREF(target)), dry_time)
 
 /datum/element/bloody_feet/Detach(datum/target, force)
 	UnregisterSignal(target, list(
@@ -45,17 +45,18 @@
 		UnregisterSignal(target_shoes[target], COMSIG_ITEM_DROPPED)
 		LAZYREMOVE(target_shoes, target)
 
-	var/mob/living/carbon/human/H = target
-	if(ishuman(H))
-		H.bloody_footsteps = 0
+	var/mob/living/carbon/human/target_human = target
+	if(ishuman(target_human))
+		target_human.bloody_footsteps = 0
 
 	return ..()
 
-/datum/element/bloody_feet/proc/on_moved(mob/living/carbon/human/target, oldLoc, direction)
+/datum/element/bloody_feet/proc/on_moved(mob/living/carbon/human/target, turf/old_loc, direction)
 	SIGNAL_HANDLER
-	INVOKE_ASYNC(src, PROC_REF(add_tracks), target, oldLoc, direction)
+	if(target.stat == CONSCIOUS)
+		INVOKE_ASYNC(src, PROC_REF(add_tracks), target, old_loc, direction)
 
-/datum/element/bloody_feet/proc/add_tracks(mob/living/carbon/human/target, oldLoc, direction)
+/datum/element/bloody_feet/proc/add_tracks(mob/living/carbon/human/target, turf/old_loc, direction)
 	if(GLOB.perf_flags & PERF_TOGGLE_NOBLOODPRINTS)
 		Detach(target)
 		return
@@ -66,27 +67,27 @@
 		return
 
 	var/turf/T_in = target.loc
-	var/turf/T_out = oldLoc
+	var/turf/T_out = old_loc
 
 	if(istype(T_in))
-		var/obj/effect/decal/cleanable/blood/tracks/footprints/FP = LAZYACCESS(T_in.cleanables, CLEANABLE_TRACKS)
-		if(FP)
-			var/image/I = LAZYACCESS(FP.steps_in, "[direction]")
-			if(!I)
-				FP.add_tracks(direction, color, FALSE)
+		var/obj/effect/decal/cleanable/blood/tracks/footprints/print = LAZYACCESS(T_in.cleanables, CLEANABLE_TRACKS)
+		if(print)
+			var/image/steps_image = LAZYACCESS(print.steps_in, "[direction]")
+			if(!steps_image)
+				print.add_tracks(direction, color, FALSE)
 		else
-			FP = new(T_in)
-			FP.add_tracks(direction, color, FALSE)
+			print = new(T_in)
+			print.add_tracks(direction, color, FALSE)
 
 	if(istype(T_out))
-		var/obj/effect/decal/cleanable/blood/tracks/footprints/FP = LAZYACCESS(T_out.cleanables, CLEANABLE_TRACKS)
-		if(FP)
-			var/image/I = LAZYACCESS(FP.steps_out, "[direction]")
-			if(!I)
-				FP.add_tracks(direction, color, TRUE)
+		var/obj/effect/decal/cleanable/blood/tracks/footprints/print = LAZYACCESS(T_out.cleanables, CLEANABLE_TRACKS)
+		if(print)
+			var/image/steps_image = LAZYACCESS(print.steps_out, "[direction]")
+			if(!steps_image)
+				print.add_tracks(direction, color, TRUE)
 		else
-			FP = new(T_out)
-			FP.add_tracks(direction, color, TRUE)
+			print = new(T_out)
+			print.add_tracks(direction, color, TRUE)
 
 	if(--target.bloody_footsteps <= 0)
 		Detach(target)
@@ -102,4 +103,7 @@
 
 /datum/element/bloody_feet/proc/clear_blood(datum/target)
 	SIGNAL_HANDLER
+	if(isweakref(target))
+		var/datum/weakref/target_ref = target
+		target = target_ref.resolve()
 	Detach(target)

@@ -88,7 +88,7 @@
 		thing.forceMove(above_current)
 	return
 
-/turf/closed/Enter(atom/movable/mover, atom/forget)
+/turf/closed/Enter(atom/movable/mover, atom/old_loc)
 	. = ..()
 	if(!mover.move_intentionally || !istype(mover,/mob/living))
 		return

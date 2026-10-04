@@ -217,7 +217,7 @@
 
 /obj/vehicle/multitile/van/get_projectile_hit_boolean(obj/projectile/P)
 	if(src == P.original) //clicking on the van itself will hit it.
-		var/hitchance = P.get_effective_accuracy()
+		var/hitchance = P.get_effective_accuracy(src)
 		if(prob(hitchance))
 			return TRUE
 	return FALSE

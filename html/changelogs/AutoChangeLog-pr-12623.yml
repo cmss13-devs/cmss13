@@ -1,4 +1,0 @@
-author: "TheDonkified"
-delete-after: True
-changes:
-  - refactor: "Refactors Crossed function so that all calls to Crossed must route to the parent Crossed function"

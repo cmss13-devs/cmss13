@@ -156,7 +156,7 @@
 	new /obj/item/bodybag/tarp/reactive/scout(src)
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/explosive/plastic(src)
-	new /obj/item/device/encryptionkey/jtac(src)
+	new /obj/item/device/encryptionkey/scout(src)
 	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
 		new /obj/item/device/binoculars/designator(src)
 	else
@@ -261,6 +261,8 @@
 	new /obj/item/tool/wrench(src)
 	new /obj/item/device/binoculars/range(src)
 	new /obj/item/device/binoculars/range/designator(src)
+	new /obj/item/storage/backpack/marine/satchel/rto(src)
+	new /obj/item/storage/backpack/marine/satchel/rto(src)
 
 
 //-----------------SPEC KIT BOX------------------
@@ -540,6 +542,7 @@
 	new /obj/item/device/binoculars/range/designator(src)
 	new /obj/item/device/encryptionkey/jtac(src)
 	new /obj/item/storage/backpack/marine/satchel/rto(src)
+	new /obj/item/pamphlet/upgradeable/jtac(src)
 
 /obj/item/storage/box/kit/mini_intel
 	name = "\improper Field Intelligence Support Kit"

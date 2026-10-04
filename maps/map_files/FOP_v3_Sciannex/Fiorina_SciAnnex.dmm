@@ -2649,9 +2649,9 @@
 "bJb" = (
 /obj/structure/closet/cabinet,
 /obj/item/device/encryptionkey/WY,
-/obj/item/weapon/gun/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/weapon/gun/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
 /turf/open/floor/wood,
 /area/fiorina/station/civres_blue)
 "bJn" = (
@@ -5299,15 +5299,6 @@
 /obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
-"dRO" = (
-/obj/effect/acid_hole{
-	dir = 4
-	},
-/turf/closed/wall/r_wall/prison_unmeltable{
-	desc = "A huge chunk of metal used to seperate rooms.";
-	name = "metal wall"
-	},
-/area/fiorina/oob)
 "dSM" = (
 /obj/effect/spawner/random/tool,
 /turf/open/floor/prison/darkpurplefull2,
@@ -10652,7 +10643,7 @@
 	pixel_x = 5;
 	pixel_y = 12
 	},
-/obj/item/weapon/gun/pistol/heavy,
+/obj/item/weapon/gun/pistol/deagle,
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
@@ -70042,7 +70033,7 @@ tPB
 vUP
 kIO
 pvD
-dRO
+pvD
 pvD
 pvD
 cKa

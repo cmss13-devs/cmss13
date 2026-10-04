@@ -50,6 +50,7 @@
 		"/datum/equipment_preset/synth/survivor/radiation_synth"
     ],
     "CO_insert_survivor_types": [
+        "/datum/equipment_preset/survivor/upp/mss",
         "/datum/equipment_preset/survivor/clf/coordinator"
     ],
     "colony_joe_types": [

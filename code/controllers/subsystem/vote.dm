@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(vote)
 	if(mode)
 		time_remaining = floor((started_time + CONFIG_GET(number/vote_period) - world.time)/10)
 
-		if(time_remaining < 0)
+		if(time_remaining < 0 || length(choices) == 1)
 			result()
 			reset()
 
@@ -69,6 +69,9 @@ SUBSYSTEM_DEF(vote)
 	var/greatest_votes = 0
 	var/total_votes = 0
 	var/list/choices_adjusted = list()
+
+	if(length(choices) == 1)
+		return list(choices[1])
 
 	// First read in the total amount of votes
 	for(var/option in choices)
@@ -356,6 +359,8 @@ SUBSYSTEM_DEF(vote)
 		initiator = initiator_key
 		started_time = world.time
 		on_vote_end = on_end
+		if(length(choices) == 1)
+			return
 		var/text = "[capitalize(mode)] vote started by [initiator]."
 		if(mode == "custom")
 			text += "<br>[question]"

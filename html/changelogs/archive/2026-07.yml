@@ -324,3 +324,34 @@
   neeshacark:
   - rscadd: Staff Officers now come fourth in the chain of command, and Field Doctors
       are after normal Doctors.
+2026-07-30:
+  NHC:
+  - balance: Removes Smoke AGMs and Hornet Shell Pointbuy options from most Vendors
+  - balance: Increases roundstart Hornet and Starshells in Squad prep and REQ. Also
+      increasing roundstart smoke AGMs in REQ.
+  Puckaboo2:
+  - bugfix: CLF Soldiers and CLF Survivor Medics no longer spawn with deployed Surgical
+      Beds in their inventories.
+  - bugfix: Roller Beds and Surgical Beds longer vend from vending machines and Doctor/Field
+      Doctor Essentials already deployed, so you no longer need to roll them up.
+  TheDonkified:
+  - refactor: Refactors Crossed function so that all calls to Crossed must route to
+      the parent Crossed function
+  Uristthedorf:
+  - balance: Survivors no longer spawn with plasteel.
+  sippykot:
+  - balance: M41AE2 holo-targetting box magazine holds 300 rounds (previously 200)
+2026-07-31:
+  AnCopper:
+  - balance: Xenos can no longer plant eggs within two tiles of ladders.
+  MistChristmas:
+  - rscadd: R4T now spins anti clockwise. As spinning it clockwise makes no sense...
+  - code_imp: Clean up some code related to lever action, onehanded chambering
+  - bugfix: A runtime related to the above.
+  - bugfix: If your hand is already broken, failing the r4t levering breaks your arm
+      and removes splints from both your hand and arm. As well as interrupting knitting
+      time. Otherwise just does it only for the hand.
+  Nihisohel:
+  - bugfix: Fixes a runtime related to attempting to stack a non-stackable item
+  fira:
+  - code_imp: Removed unused game code.

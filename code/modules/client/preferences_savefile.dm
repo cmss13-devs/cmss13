@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 36
+#define SAVEFILE_VERSION_MAX 37
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -244,6 +244,12 @@
 		toggles_insert |= (PLAY_INSERT_STANDARD|PLAY_INSERT_CORPORATE|PLAY_INSERT_LEADER|PLAY_INSERT_MEDIC|PLAY_INSERT_ENGINEER|PLAY_INSERT_SPECIALIST|PLAY_INSERT_SMARTGUNNER|PLAY_INSERT_SYNTH|PLAY_INSERT_CO) // enabled by default for new saves
 		S["toggles_insert"] << toggles_insert
 
+	if(savefile_version < 37)
+		var/toggles_insert
+		S["toggles_sound"] >> toggles_insert
+		toggles_insert |= (SOUND_ROUND_END)
+		S["toggles_sound"] << toggles_insert
+
 	if(updated_from)
 		RegisterSignal(owner, COMSIG_CLIENT_LOGGED_IN, PROC_REF(handle_logged_in))
 
@@ -350,6 +356,7 @@
 	S["ghost_orbit"] >> ghost_orbit
 	S["auto_observe"] >> auto_observe
 	S["CMTV_toggle_optout"] >> CMTV_toggle_optout
+	S["toggle_right_click_menu"] >> toggle_right_click_menu
 
 	S["human_name_ban"] >> human_name_ban
 
@@ -361,6 +368,7 @@
 	S["show_queen_name"] >> show_queen_name
 	S["show_minimap_ceiling_protection"] >> show_minimap_ceiling_protection
 	S["xeno_vision_level_pref"] >> xeno_vision_level_pref
+	S["xeno_defensive_grab_pref"] >> xeno_defensive_grab_pref
 	S["view_controller"] >> View_MC
 	S["observer_huds"] >> observer_huds
 	S["pref_special_job_options"] >> pref_special_job_options
@@ -515,6 +523,7 @@
 	show_queen_name = sanitize_integer(show_queen_name, FALSE, TRUE, FALSE)
 	show_minimap_ceiling_protection = sanitize_integer(show_minimap_ceiling_protection, FALSE, TRUE, FALSE)
 	xeno_vision_level_pref = sanitize_inlist(xeno_vision_level_pref, list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_HIGH_NVG, XENO_VISION_LEVEL_FULL_NVG), XENO_VISION_LEVEL_MID_NVG)
+	xeno_defensive_grab_pref = sanitize_islist(xeno_defensive_grab_pref, alist())
 	hear_vox = sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
 	hide_statusbar = sanitize_integer(hide_statusbar, FALSE, TRUE, FALSE)
 	no_radials_preference = sanitize_integer(no_radials_preference, FALSE, TRUE, FALSE)
@@ -522,6 +531,7 @@
 	auto_fit_viewport = sanitize_integer(auto_fit_viewport, FALSE, TRUE, TRUE)
 	adaptive_zoom = sanitize_integer(adaptive_zoom, 0, 2, 0)
 	tooltips = sanitize_integer(tooltips, FALSE, TRUE, TRUE)
+	toggle_right_click_menu = sanitize_integer(toggle_right_click_menu, FALSE, TRUE, TRUE)
 
 	synthetic_name = synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type = sanitize_inlist(synthetic_type, PLAYER_SYNTHS, initial(synthetic_type))
@@ -639,6 +649,7 @@
 	S["ghost_orbit"] << ghost_orbit
 	S["auto_observe"] << auto_observe
 	S["CMTV_toggle_optout"] << CMTV_toggle_optout
+	S["toggle_right_click_menu"] << toggle_right_click_menu
 
 	S["human_name_ban"] << human_name_ban
 
@@ -646,6 +657,7 @@
 	S["xeno_postfix"] << xeno_postfix
 	S["xeno_name_ban"] << xeno_name_ban
 	S["xeno_vision_level_pref"] << xeno_vision_level_pref
+	S["xeno_defensive_grab_pref"] << xeno_defensive_grab_pref
 	S["playtime_perks"] << playtime_perks
 	S["skip_playtime_ranks"] << skip_playtime_ranks
 	S["show_queen_name"] << show_queen_name

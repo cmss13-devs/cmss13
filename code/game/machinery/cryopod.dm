@@ -514,8 +514,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 			to_chat(usr, SPAN_WARNING("[src] is occupied."))
 			return
 
-		go_in_cryopod(usr)
 		willing = TRUE
+		go_in_cryopod(usr)
 		add_fingerprint(usr)
 
 

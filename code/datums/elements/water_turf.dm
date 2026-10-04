@@ -27,7 +27,7 @@
 /datum/element/water_turf/proc/on_enter(turf/open/source, atom/movable/mover)
 	SIGNAL_HANDLER
 	if(iscarbon(mover))
-		mover.AddComponent(/datum/component/water_overlay_effect, source, source.depth)
+		mover.AddComponent(/datum/component/water_overlay_effect, source)
 	if(!isliving(mover))
 		return
 	var/mob/living/living_mover = mover

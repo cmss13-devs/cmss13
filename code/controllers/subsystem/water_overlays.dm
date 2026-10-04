@@ -19,11 +19,13 @@ SUBSYSTEM_DEF(water_overlays)
 		"88" = 'icons/effects/water_overlay_effects/_88.dmi',   //queen
 	)
 
+
 /datum/potential_water_overlay
 	var/icon
 	var/icon_state
 	var/depth
 	var/water_type
+
 
 /datum/potential_water_overlay/New(icon, icon_state, depth, water_type)
 	src.icon = icon
@@ -31,8 +33,10 @@ SUBSYSTEM_DEF(water_overlays)
 	src.depth = depth
 	src.water_type = water_type
 
+
 /datum/potential_water_overlay/proc/create_index()
 	return "[water_type][icon][icon_state][depth]"
+
 
 /datum/controller/subsystem/water_overlays/Initialize()
 	for(var/turf/search_turf in GLOB.turfs)	//we're gonna cut down on the turfs we're gonna check to improve game start lag, ignoring water in nightmares...
@@ -64,8 +68,10 @@ SUBSYSTEM_DEF(water_overlays)
 	RegisterSignal(SSnightmare, COMSIG_NIGHTMARES_PREPARE_GAME_COMPLETE, PROC_REF(update_turfs_layers_near_water))
 	return SS_INIT_SUCCESS
 
+
 /datum/controller/subsystem/water_overlays/proc/get_icon_path(icon_size)
 	return icon_paths["[icon_size]"]
+
 
 /datum/controller/subsystem/water_overlays/proc/is_water(turf/potential_water)
 	if(potential_water == null || !istype(potential_water, /turf/open))
@@ -75,17 +81,20 @@ SUBSYSTEM_DEF(water_overlays)
 		return FALSE
 	return potential_water.turf_flags & (TURF_WATER | TURF_WATERLIKE)
 
+
 /datum/controller/subsystem/water_overlays/proc/is_full_water(turf/potential_water)
 	if(!is_water(potential_water))
 		return FALSE
 	var/turf/open/potential_open_water = potential_water
 	return potential_open_water.depth <= WATER_DEPTH_SHALLOW
 
+
 /datum/controller/subsystem/water_overlays/proc/is_coastline(turf/potential_coastline)
 	if(!is_water(potential_coastline))
 		return FALSE
 	var/turf/open/potential_open_coastline = potential_coastline
 	return potential_open_coastline.depth >= WATER_DEPTH_COAST_INTERMEDIATE
+
 
 /datum/controller/subsystem/water_overlays/proc/handle_toxic_states(in_icon)			//adds duplicate states for toxic water turfs so we can handle toxic states
 	if(in_icon == 'icons/turf/floors/desert_water.dmi')
@@ -95,8 +104,10 @@ SUBSYSTEM_DEF(water_overlays)
 		return return_list
 	return list(in_icon)
 
+
 /datum/controller/subsystem/water_overlays/proc/is_layer_underwater_turf(atom/to_check)
 	return to_check.layer == UNDER_WATER_TURF_LAYER
+
 
 /**	update_turfs_layers_near_water()
 *		this proc and those it call go through every turf in the game, and check if its near water
@@ -118,7 +129,9 @@ SUBSYSTEM_DEF(water_overlays)
 	generate_water_display_icons() //called again to handle nightmare water turfs (usually redundant or tiny)
 	UnregisterSignal(SSnightmare, COMSIG_NIGHTMARES_PREPARE_GAME_COMPLETE)
 
+
 #define ADDITIONAL_DEPTH_OFFSET 3
+
 
 /**
 *	water turfs are hardcoded to only have certain depths, but the shorelines take from their fulltile varients ---> turf/open var/water_type
@@ -164,7 +177,7 @@ SUBSYSTEM_DEF(water_overlays)
 					SSwater_overlays.water_overlay_icons["[texture_size]_[found_type]_[toxic]_[found_depth]"] = culled_water	//this is the default overlays, made according to depth
 
 					//	V V V V	resting overlays	V V V V
-					var/resting_key = found_depth >= -4 ? "coast" : "deep"
+					var/resting_key = found_depth >= WATER_DEPTH_COAST_INTERMEDIATE ? "coast" : "deep"
 					if(config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_SOME)
 						var/icon/resting_overlay = icon(sized_water_texture)
 						resting_overlay.AddAlphaMask(icon(SSwater_overlays.get_icon_path(config.icon_size), "culling_[config.icon_state_key]_resting_[resting_key]"))

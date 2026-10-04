@@ -9,11 +9,11 @@
 	var/obj/effect/water_overlay_effect/the_water
 	var/obj/effect/water_splash/water_overlay_splash/the_splash
 	var/turf/open/effect_turf	//the turf granting this effect, since its for thing that move into it should always be open
-	var/turf/old_effect_turf	//the turf granting this effect previously, set on inherit
 	var/hidden = HIDDEN_NONE	//for when we still want to preserve the effect but not display
 	var/water_depth = 0
 
-/datum/component/water_overlay_effect/Initialize(turf/input_turf, y_offset, tried_parent)
+
+/datum/component/water_overlay_effect/Initialize(turf/input_turf, tried_parent)
 	if((!ismob(parent) && !isobj(parent)) || !istype(input_turf, /turf/open))	//this should already be handled in the turfs creating this component, but a few backup checks cant hurt
 		return COMPONENT_INCOMPATIBLE
 
@@ -27,7 +27,7 @@
 
 	update_hidden()
 	var/mob/parent_mob = parent
-	if(SSwater_overlays.is_water(old_effect_turf) || SSwater_overlays.is_coastline(effect_turf))
+	if(SSwater_overlays.is_coastline(effect_turf))
 		update()
 	else
 		var/step_delay = 0	//we're going to call update() ideally halfway through the mobs movement animation
@@ -39,6 +39,7 @@
 
 		step_delay = max(world.tick_lag, step_delay)
 		addtimer(CALLBACK(src, PROC_REF(update)), step_delay * 0.6, TIMER_UNIQUE|TIMER_OVERRIDE)
+
 
 /datum/component/water_overlay_effect/Destroy()
 	var/atom/movable/movable_parent = parent
@@ -64,12 +65,14 @@
 	qdel(the_splash)
 	. = ..() //we need to do this last
 
+
 /datum/component/water_overlay_effect/InheritComponent(datum/component/component, i_am_original, turf/input_turf, y_offset)
 	effect_turf = input_turf
 	if(water_depth != y_offset)
 		water_depth = y_offset
 		update_hidden()
 		update()
+
 
 /datum/component/water_overlay_effect/RegisterWithParent(datum/target)
 	. = ..()
@@ -84,6 +87,7 @@
 	RegisterSignal(parent, COMSIG_HUMAN_HAULED, PROC_REF(handle_hauled))
 	if(isxeno(parent))
 		RegisterSignal(parent, COMSIG_XENO_POUNCE_STARTED, PROC_REF(handle_pounce))
+
 
 /datum/component/water_overlay_effect/UnregisterFromParent(datum/source, force)
 	. = ..()
@@ -100,6 +104,7 @@
 	if(isxeno(parent))
 		UnregisterSignal(parent, COMSIG_XENO_POUNCE_STARTED)
 
+
 /datum/component/water_overlay_effect/proc/handle_position_change(parent_source, oldloc, direction, forced)
 	SIGNAL_HANDLER	//simple checks if to remove, if it were a water turf then the comp already has inherited
 
@@ -109,6 +114,7 @@
 	if(moved_to_turf.depth >= WATER_DEPTH_LAND || (moved_to_turf.covered && water_blocker == null) || (moved_to_turf.covered && water_blocker && !water_blocker.dispersing))
 		qdel(src)
 		return
+
 
 /datum/component/water_overlay_effect/proc/handle_resting_change()
 	SIGNAL_HANDLER	//the effects should exist but as resting/unresting varients, update() to switch between them
@@ -126,9 +132,11 @@
 	effect_turf = laid_on_turf
 	update()
 
+
 /datum/component/water_overlay_effect/proc/handle_set_body_position()	//passthrough unless human, which actually use lying_angles
 	if(!ishuman(parent))
 		handle_resting_change()
+
 
 /datum/component/water_overlay_effect/proc/handle_buckle_change()
 	SIGNAL_HANDLER	//this is for in the case the affected mob buckles/gets-hauled/unhauled, update_hidden() and update()
@@ -142,6 +150,7 @@
 	update_hidden()
 	update()
 
+
 /datum/component/water_overlay_effect/proc/handle_layer_update(new_layer)
 	SIGNAL_HANDLER
 
@@ -149,10 +158,12 @@
 		var/mob/parent_mob = parent
 		parent_mob.layer = UNDER_WATER_MOB_LAYER
 
+
 /datum/component/water_overlay_effect/proc/handle_hauled(xenomorph)
 	SIGNAL_HANDLER
 
 	update_hidden()
+
 
 /datum/component/water_overlay_effect/proc/handle_landed(atom/movable/launchee, turf/landed_upon)
 	SIGNAL_HANDLER
@@ -161,15 +172,18 @@
 	update_hidden()
 	update()
 
+
 /datum/component/water_overlay_effect/proc/handle_pounce()
 	SIGNAL_HANDLER
 
 	var/my_turf = get_turf(parent)
 	new /obj/effect/water_splash(my_turf, TRUE)
 
+
 /datum/component/water_overlay_effect/proc/handle_death()
 	SIGNAL_HANDLER
 	update()
+
 
 /datum/component/water_overlay_effect/proc/update_hidden()
 	if(iscarbon(parent))
@@ -192,6 +206,7 @@
 			hidden = HIDDEN_PLAIN
 			return
 		hidden = HIDDEN_NONE
+
 
 /datum/component/water_overlay_effect/proc/update()
 	if(iscarbon(parent))
@@ -221,6 +236,7 @@
 		the_water.update_wateroverlay(effect_turf, parent, water_depth)	//now that we have all the layerings and splashe sorted, we add water to cover the parts of the body in that depth
 		affected_carbon.vis_contents |= the_water
 		affected_carbon.vis_contents |= the_splash
+
 
 #undef HIDDEN_NONE
 #undef HIDDEN_PLAIN

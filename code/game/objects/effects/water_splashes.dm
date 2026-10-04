@@ -11,15 +11,14 @@
 	layer = ABOVE_XENO_LAYER
 	var/lifetime = 2 SECONDS	//generous amount of time to let the animation play
 
+
 /obj/effect/water_splash/Initialize(mapload=FALSE, playsound = TRUE)
 	. = ..()
 	if(lifetime != INFINITY)
-		addtimer(CALLBACK(src, PROC_REF(destroy_effect)), lifetime)
+		QDEL_IN(src, lifetime)
 	if(playsound)
 		playsound(get_turf(src), "sound/effects/water/splash.ogg", 20, 1, 10, falloff=1)
 
-/obj/effect/water_splash/proc/destroy_effect()
-	qdel(src)
 
 //this is what water_overlay_effect puts on mobs that are in water
 /obj/effect/water_splash/water_overlay_splash
@@ -28,6 +27,7 @@
 	vis_flags = VIS_INHERIT_DIR
 	layer = FLOAT_LAYER
 	plane = FLOAT_PLANE
+
 
 /obj/effect/water_splash/water_overlay_splash/proc/update_wateroverlay(turf/water_turf, mob/living/carbon/affected_carbon, pixel_y_offset = 0, xeno_resting=FALSE)
 	icon_state = null

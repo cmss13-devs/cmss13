@@ -343,16 +343,24 @@
 /// Will return TRUE if reagents were deducted or no reagents were needed
 /obj/structure/machinery/cm_vending/sorted/medical/proc/try_deduct_chem(obj/item/reagent_container/container, mob/user)
 	var/missing_reagents = container.reagents.maximum_volume - container.reagents.total_volume
-	if(missing_reagents <= 0)
-		return TRUE
+	if(istype(container, /obj/item/reagent_container/hypospray/autoinjector))
+		var/obj/item/reagent_container/hypospray/autoinjector/autoinjector = container
+		if(is_type_in_list(autoinjector, chem_refill) && autoinjector.cannot_refill)
+			to_chat(user, SPAN_WARNING("[src] has no refill ID for [container] and refuses to fill it!"))
+			return FALSE
+
 	if(!(is_type_in_list(container, chem_refill)))
-		to_chat(user, SPAN_WARNING("[src] cannot refill [container]."))
+		to_chat(user, SPAN_WARNING("[src] has no refill ID for [container] and refuses to fill it!"))
 		return FALSE
+
 	if(chem_refill_volume < missing_reagents)
 		var/auto_refill = allow_supply_link_restock && get_supply_link()
 		to_chat(user, SPAN_WARNING("[src] blinks red and makes a buzzing noise as it rejects [container]. Looks like it doesn't have enough reagents [auto_refill ? "yet" : "left"]."))
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 		return FALSE
+
+	if(missing_reagents <= 0)
+		return TRUE
 
 	chem_refill_volume -= missing_reagents
 	to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it refills your [container.name]."))

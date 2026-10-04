@@ -36056,7 +36056,7 @@
 /area/caperiver/telecomms/telecomm_3)
 "fWm" = (
 /turf/closed/wall/kutjevo/colony/reinforced/hull,
-/area/space)
+/area/sky)
 "fWn" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ccad8f";
@@ -36594,7 +36594,7 @@
 /area/caperiver/outdoors/scrublands/central)
 "goO" = (
 /turf/closed/wall/abyssal/standard/unmeltable,
-/area/space)
+/area/sky)
 "goY" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/item/tool/warning_cone{
@@ -46551,7 +46551,7 @@
 /area/caperiver/outdoors/bushlands)
 "nIc" = (
 /turf/open_space,
-/area/space)
+/area/sky)
 "nIf" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10";
@@ -50450,7 +50450,7 @@
 /area/caperiver/indoors/conambase/bunker)
 "qCK" = (
 /turf/closed/wall/abyssal/blue/unmeltable,
-/area/space)
+/area/sky)
 "qDi" = (
 /obj/structure/platform/stone/soro/north,
 /turf/open/desert/rock,
@@ -50870,7 +50870,7 @@
 /area/caperiver/indoors/conambase/bunker)
 "qRg" = (
 /turf/closed/wall/strata_ice/rock,
-/area/space)
+/area/sky)
 "qSh" = (
 /obj/effect/decal/hybrisa/grate{
 	dir = 1
@@ -51392,7 +51392,7 @@
 /area/caperiver/indoors/miningbase/engi)
 "rjc" = (
 /turf/closed/wall/solaris/reinforced/hull,
-/area/space)
+/area/sky)
 "rjj" = (
 /obj/item/tool/crowbar/red{
 	pixel_x = -8;
@@ -54524,7 +54524,7 @@
 "tCn" = (
 /obj/structure/blocker/invisible_wall,
 /turf/closed/wall/wood,
-/area/space)
+/area/sky)
 "tCH" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/floor_marked/southwest,
@@ -55194,7 +55194,7 @@
 "udh" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open_space,
-/area/space)
+/area/sky)
 "udt" = (
 /obj/structure/flora/bush/canyon/tree,
 /turf/open/desert/rock,
@@ -55412,7 +55412,7 @@
 /area/caperiver/indoors/caves/s)
 "umw" = (
 /turf/closed/wall/strata_outpost/reinforced/hull,
-/area/space)
+/area/sky)
 "umB" = (
 /obj/structure/flora/bush/desert/cactus{
 	icon_state = "cactus_8"

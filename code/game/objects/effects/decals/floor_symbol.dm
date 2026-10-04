@@ -69,18 +69,6 @@
 
 //// Con-Am \\\\
 
-/obj/effect/decal/floor_symbol/con_am
-	name = "\improper Con-Am Logo"
-	icon_state = "conam_directional"
-
-/obj/effect/decal/floor_symbol/con_am/left
-	icon_state = "conam_directional1"
-
-/obj/effect/decal/floor_symbol/con_am/right
-	icon_state = "conam_directional2"
-
-// Bigger Alt
-
 /obj/effect/decal/floor_symbol/con_am/alt
 	icon_state = "conam_big_dir"
 

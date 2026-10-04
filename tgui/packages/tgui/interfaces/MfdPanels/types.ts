@@ -51,6 +51,7 @@ export type MedevacContext = {
 
 export type FiremissionContext = {
   firemission_data: Array<CasFiremission>;
+  firemission_max_length: number;
 };
 
 export type SentrySpec = {

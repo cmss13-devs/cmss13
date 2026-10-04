@@ -201,13 +201,47 @@ interface GimbalInfo {
 const ViewFiremissionMfdPanel = (
   props: MfdProps & { readonly firemission: CasFiremission },
 ) => {
-  const { data, act } = useBackend<DropshipProps>();
+  const { data, act } = useBackend<DropshipProps & FiremissionContext>();
   const { setPanelState } = mfdState(props.panelStateId);
   const { setSelectedFm } = fmState(props.panelStateId);
   const { editFm, setEditFm } = fmEditState(props.panelStateId);
   const { editFmWeapon, setEditFmWeapon } = fmWeaponEditState(
     props.panelStateId,
   );
+  const firemission = props.firemission;
+  const [firemissionLength, setFiremissionLength] = useState(
+    `${firemission.mission_length}`,
+  );
+
+  const parseLength = (value: string) => {
+    if (!/^\d+$/.test(value)) {
+      return;
+    }
+    const parsedLength = Number(value);
+    if (
+      !Number.isSafeInteger(parsedLength) ||
+      parsedLength < 1 ||
+      parsedLength > data.firemission_max_length
+    ) {
+      return;
+    }
+    return parsedLength;
+  };
+
+  const saveLength = (value: string) => {
+    const parsedLength = parseLength(value);
+    if (parsedLength === undefined) {
+      return;
+    }
+    act('firemission-set-length', {
+      firemission_tag: firemission.mission_tag,
+      firemission_length: parsedLength,
+    });
+  };
+
+  const parsedLength = parseLength(firemissionLength);
+  const canSaveLength =
+    parsedLength !== undefined && parsedLength !== firemission.mission_length;
 
   const rightButtons = [
     editFmWeapon === undefined
@@ -224,7 +258,6 @@ const ViewFiremissionMfdPanel = (
       }),
   ];
 
-  const firemission = props.firemission;
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
@@ -242,6 +275,12 @@ const ViewFiremissionMfdPanel = (
         editFm
           ? { children: 'VIEW', onClick: () => setEditFm(false) }
           : { children: 'EDIT', onClick: () => setEditFm(true) },
+        editFm && canSaveLength
+          ? {
+              children: 'SAVE',
+              onClick: () => saveLength(firemissionLength),
+            }
+          : {},
       ]}
       bottomButtons={[
         {
@@ -269,7 +308,24 @@ const ViewFiremissionMfdPanel = (
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
-              <Stack.Item>Length: {firemission.mission_length}</Stack.Item>
+              <Stack.Item>
+                {editFm ? (
+                  <Stack align="center">
+                    <Stack.Item>Length:</Stack.Item>
+                    <Stack.Item>
+                      <Input
+                        value={firemissionLength}
+                        type="number"
+                        width="50px"
+                        onInput={(event, value) => setFiremissionLength(value)}
+                        onEnter={(event, value) => saveLength(value)}
+                      />
+                    </Stack.Item>
+                  </Stack>
+                ) : (
+                  <>Length: {firemission.mission_length}</>
+                )}
+              </Stack.Item>
               <Stack.Item width="100%">
                 <FiremissionView
                   panelStateId={props.panelStateId}
@@ -630,6 +686,7 @@ export const FiremissionMfdPanel = (props: MfdProps) => {
   }
   return (
     <ViewFiremissionMfdPanel
+      key={firemission.mission_tag}
       panelStateId={props.panelStateId}
       firemission={firemission}
     />

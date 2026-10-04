@@ -286,6 +286,7 @@
 	if(firemission_envelope)
 		.["can_launch_firemission"] = !!selected_firemission && dropship.mode == SHUTTLE_CALL && firemission_envelope.stat != FIRE_MISSION_STATE_IDLE
 		.["firemission_data"] = get_firemission_data(user)
+		.["firemission_max_length"] = firemission_envelope.fire_length
 		.["firemission_state"] = firemission_envelope.stat
 		.["firemission_offset"] = firemission_envelope.recorded_offset
 		.["firemission_message"] = firemission_envelope.firemission_status_message()
@@ -459,6 +460,11 @@
 				return FALSE
 			ui_create_firemission(user, name, length_n)
 			return TRUE
+
+		if("firemission-set-length")
+			var/firemission_tag = text2num(params["firemission_tag"])
+			var/firemission_length = text2num(params["firemission_length"])
+			return ui_set_firemission_length(user, firemission_tag, firemission_length)
 
 		if("firemission-delete")
 			var/name = params["firemission_name"]
@@ -822,7 +828,7 @@
 		to_chat(weapon_operator, SPAN_WARNING("Name too short (at least 1 symbols)."))
 		return FALSE
 	// Check length
-	if(firemission_length < 1)
+	if(firemission_length < 1 || firemission_length != round(firemission_length))
 		to_chat(weapon_operator, SPAN_WARNING("Incorrect input format."))
 		return FALSE
 	if(firemission_length > firemission_envelope.fire_length)
@@ -838,6 +844,27 @@
 			return FALSE
 	//everything seems to be fine now
 	firemission_envelope.generate_mission(firemission_name, firemission_length)
+	return TRUE
+
+/obj/structure/machinery/computer/dropship_weapons/proc/ui_set_firemission_length(mob/weapon_operator, firemission_tag, firemission_length)
+	if(!skillcheck(weapon_operator, SKILL_PILOT, SKILL_PILOT_TRAINED))
+		to_chat(weapon_operator, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
+		return FALSE
+	if(firemission_envelope.stat != FIRE_MISSION_STATE_IDLE)
+		to_chat(weapon_operator, SPAN_WARNING("Vehicle has to be idle to allow Fire Mission editing and creation."))
+		return FALSE
+	if(firemission_tag < 1 || firemission_tag > length(firemission_envelope.missions))
+		to_chat(weapon_operator, SPAN_WARNING("Fire Mission ID corrupted or already deleted."))
+		return FALSE
+	if(firemission_length < 1 || firemission_length != round(firemission_length))
+		to_chat(weapon_operator, SPAN_WARNING("Incorrect input format."))
+		return FALSE
+	if(firemission_length > firemission_envelope.fire_length)
+		to_chat(weapon_operator, SPAN_WARNING("Fire Mission is longer than allowed by this vehicle."))
+		return FALSE
+
+	var/datum/cas_fire_mission/firemission = firemission_envelope.missions[firemission_tag]
+	firemission.mission_length = firemission_length
 	return TRUE
 
 /obj/structure/machinery/computer/dropship_weapons/proc/ui_delete_firemission(mob/weapon_operator, firemission_tag)

@@ -115,11 +115,20 @@
 	if(!client?.prefs.update_slot(player_rank.title))
 		return FALSE
 
+	var/datum/squad/chosen_squad
 	if(player_rank.flags_startup_parameters & ROLE_ADD_TO_SQUAD && player_rank.title != JOB_INTEL)
 		var/datum/equipment_preset/preset = new player_rank.gear_preset
-		var/datum/squad/predicted = GLOB.RoleAuthority.get_eligible_squad(player_rank.title, preset.faction, client?.prefs?.preferred_squad)
-		if(istype(predicted, /datum/squad/marine/cryo))
-			to_chat(src, SPAN_WARNING("[rank] is not available with your current squad preferences."))
+		var/list/preferred_squads = client?.prefs?.preferred_squad
+		chosen_squad = GLOB.RoleAuthority.get_eligible_squad(player_rank.title, preset.faction, preferred_squads)
+		if(!chosen_squad && length(preferred_squads) && GLOB.RoleAuthority.get_eligible_squad(player_rank.title, preset.faction, null))
+			if(tgui_alert(src, "None of the available role openings match your squad preferences. Join any available squad?", "Squad Preferences", list("Confirm", "Deny")) != "Confirm")
+				return FALSE
+			// The round, the player and the openings can all change while the prompt is up
+			if(QDELETED(src) || !client || spawning || SSticker.current_state != GAME_STATE_PLAYING || !GLOB.enter_allowed)
+				return FALSE
+			chosen_squad = GLOB.RoleAuthority.get_eligible_squad(player_rank.title, preset.faction, null)
+		if(!chosen_squad)
+			to_chat(src, SPAN_WARNING("[rank] is not available. No squad has an opening for it."))
 			return FALSE
 
 	if(!GLOB.RoleAuthority.assign_role(src, player_rank, latejoin = TRUE))
@@ -130,7 +139,7 @@
 	close_spawn_windows()
 
 	var/mob/living/carbon/human/character = create_character(TRUE) //creates the human and transfers vars and mind
-	GLOB.RoleAuthority.equip_role(character, player_rank, late_join = TRUE)
+	GLOB.RoleAuthority.equip_role(character, player_rank, late_join = TRUE, chosen_squad = chosen_squad)
 	if(character.ckey in GLOB.donator_items)
 		to_chat(character, SPAN_BOLDNOTICE("You have gear available in the personal gear vendor near Requisitions."))
 

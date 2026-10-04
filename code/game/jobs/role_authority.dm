@@ -315,7 +315,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		var/datum/equipment_preset/preset = new job.gear_preset
 		var/datum/squad/predicted = get_eligible_squad(job.title, preset.faction, player.client?.prefs?.preferred_squad, FALSE, simulated_fill)
 
-		if(istype(predicted, /datum/squad/marine/cryo))
+		if(!predicted)
 			job.current_positions--
 			unassigned_players += player
 			player.job = null
@@ -507,7 +507,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		M.job = null
 
 
-/datum/authority/branch/role/proc/equip_role(mob/living/new_mob, datum/job/new_job, turf/late_join)
+/datum/authority/branch/role/proc/equip_role(mob/living/new_mob, datum/job/new_job, turf/late_join, datum/squad/chosen_squad)
 	if(!istype(new_mob) || !istype(new_job))
 		return
 
@@ -544,7 +544,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		new_job.generate_entry_conditions(new_human) //Do any other thing that relates to their spawn.
 
 	if(new_job.flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
-		randomize_squad(new_human)
+		randomize_squad(new_human, chosen_squad = chosen_squad)
 
 	if(!late_join)
 		prioritize_specialist(new_human)
@@ -646,15 +646,13 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			lowest = squad
 			lowest_fill = fill
 
-	if(!lowest)
-		lowest = locate(/datum/squad/marine/cryo) in squads
-	else if(simulated_fill && slot_check)
+	if(lowest && simulated_fill && slot_check)
 		simulated_fill[lowest] = simulated_fill[lowest] || list()
 		simulated_fill[lowest][slot_check] = (simulated_fill[lowest][slot_check] || 0) + 1
 	return lowest
 
 //This proc is a bit of a misnomer, since there's no actual randomization going on.
-/datum/authority/branch/role/proc/randomize_squad(mob/living/carbon/human/human, skip_limit = FALSE)
+/datum/authority/branch/role/proc/randomize_squad(mob/living/carbon/human/human, skip_limit = FALSE, datum/squad/chosen_squad)
 	if(!human)
 		return
 
@@ -665,7 +663,13 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(human.assigned_squad) //Wait, we already have a squad. Get outta here!
 		return
 
-	var/datum/squad/target = get_eligible_squad(human.job, human.faction, human.client?.prefs?.preferred_squad, skip_limit)
+	if(chosen_squad?.put_marine_in_squad(human))
+		return
+
+	var/list/preferred_squads = human.client?.prefs?.preferred_squad
+	var/datum/squad/target = get_eligible_squad(human.job, human.faction, preferred_squads, skip_limit)
+	if(!target && length(preferred_squads))
+		target = get_eligible_squad(human.job, human.faction, null, skip_limit)
 	if(!target)
 		to_chat(human, "Something went wrong with randomize_squad()! Tell a coder!")
 		return

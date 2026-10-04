@@ -67,32 +67,6 @@
 /obj/effect/decal/floor_symbol/wy_3x1/right
 	icon_state = "wy_right"
 
-//// Con-Am \\\\
-
-/obj/effect/decal/floor_symbol/con_am/alt
-	icon_state = "conam_big_dir"
-
-/obj/effect/decal/floor_symbol/con_am/alt/bottom_2
-	icon_state = "conam_big_dir1"
-
-/obj/effect/decal/floor_symbol/con_am/alt/bottom_3
-	icon_state = "conam_big_dir2"
-
-/obj/effect/decal/floor_symbol/con_am/alt/bottom_4
-	icon_state = "conam_big_dir3"
-
-/obj/effect/decal/floor_symbol/con_am/alt/top_1
-	icon_state = "conam_big_dir4"
-
-/obj/effect/decal/floor_symbol/con_am/alt/top_2
-	icon_state = "conam_big_dir5"
-
-/obj/effect/decal/floor_symbol/con_am/alt/top_3
-	icon_state = "conam_big_dir6"
-
-/obj/effect/decal/floor_symbol/con_am/alt/top_4
-	icon_state = "conam_big_dir7"
-
 /obj/effect/decal/floor_symbol/uscm_3x3
 	name = "\improper USCM Logo"
 	icon_state = "uscm_center"

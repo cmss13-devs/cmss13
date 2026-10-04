@@ -5013,7 +5013,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/effect/decal/floor_symbol/con_am/alt/bottom_4,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -5128,7 +5127,6 @@
 /turf/open/floor/station/metal/alt_floor,
 /area/abyssal/interior/corridor_east)
 "aoz" = (
-/obj/effect/decal/floor_symbol/con_am/alt/top_4,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door_reinforced,
 /turf/open/floor/station/metal/floor/alt2,
 /area/abyssal/interior/corridor_east)
@@ -17360,10 +17358,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/dark,
 /area/abyssal/interior/dormitory)
-"aRz" = (
-/obj/item/shard,
-/turf/open/floor/station/metal/floor/east,
-/area/abyssal/interior/corridor_east)
 "aRA" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/disposalpipe/segment,
@@ -24617,6 +24611,7 @@
 /area/abyssal/interior/corridor_east)
 "bib" = (
 /obj/structure/pipes/vents/pump,
+/obj/item/shard,
 /turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_east)
 "bic" = (
@@ -49260,7 +49255,7 @@ aXY
 aXY
 aYN
 bib
-aRz
+avH
 avH
 aYC
 aag

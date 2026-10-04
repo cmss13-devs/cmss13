@@ -64,6 +64,10 @@ endmap
 map lv522_chances_claim
 endmap
 
+map lv522_chances_claim_forward_base
+	voteweight 0
+endmap
+
 map lv759_hybrisa_prospera
 	minplayers 130
 endmap

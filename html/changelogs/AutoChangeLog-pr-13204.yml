@@ -1,4 +1,0 @@
-author: "zzzmike"
-delete-after: True
-changes:
-  - qol: "Changes resin hole message to account for huggers rather than only acid"

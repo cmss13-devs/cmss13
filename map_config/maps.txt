@@ -45,6 +45,7 @@ endmap
 
 map shivas_snowball
 	minplayers 100
+	disabled
 endmap
 
 map kutjevo

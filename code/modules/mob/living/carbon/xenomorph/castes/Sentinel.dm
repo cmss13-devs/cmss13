@@ -27,6 +27,8 @@
 	behavior_delegate_type = /datum/behavior_delegate/sentinel_base
 	minimap_icon = "sentinel"
 
+	organ_type = /obj/item/organ/xeno/sentinel
+
 	minimum_evolve_time = 5 MINUTES
 
 /mob/living/carbon/xenomorph/sentinel
@@ -35,12 +37,10 @@
 	desc = "A slithery, spitting kind of alien."
 	icon_size = 48
 	icon_state = "Sentinel Walking"
-	plasma_types = list(PLASMA_NEUROTOXIN)
 	pixel_x = -12
 	old_x = -12
 	xenonid_pixel_x = -9
 	tier = 1
-	organ_value = 800
 	base_actions = list(
 		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
@@ -67,6 +67,15 @@
 
 	skull = /obj/item/skull/sentinel
 	pelt = /obj/item/pelt/sentinel
+
+/obj/item/organ/xeno/sentinel
+	name = "sentinel heart"
+	icon_state = "heart_t1"
+	item_state = "heart_t1"
+	research_value = 800
+
+	xeno_organ_flags = XENO_ORGAN_WEAK|XENO_ORGAN_ACID
+
 
 /datum/behavior_delegate/sentinel_base
 	name = "Base Sentinel Behavior Delegate"

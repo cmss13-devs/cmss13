@@ -2,6 +2,9 @@ GLOBAL_LIST_EMPTY(clients) //all clients
 GLOBAL_LIST_EMPTY(admins) //all clients whom are admins
 GLOBAL_PROTECT(admins)
 
+GLOBAL_LIST_EMPTY(deadmins)
+GLOBAL_PROTECT(deadmins)
+
 GLOBAL_LIST_EMPTY(directory) //all ckeys with associated client
 
 GLOBAL_DATUM(all_player_keys_regex, /regex)

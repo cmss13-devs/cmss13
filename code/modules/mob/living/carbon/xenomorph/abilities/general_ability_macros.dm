@@ -16,6 +16,13 @@
 	var/action_name = "Plant Weeds (75)"
 	handle_xeno_macro(src, action_name)
 
+/datum/action/xeno_action/verb/verb_toggle_autoweed()
+	set category = "Alien"
+	set name = "Toggle Autoweeding"
+	set hidden = TRUE
+	var/action_name = "Toggle Autoweeding"
+	handle_xeno_macro(src, action_name)
+
 /datum/action/xeno_action/verb/verb_mark_resin()
 	set category = "Alien.Essentials"
 	set name = "Mark Resin"

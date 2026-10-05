@@ -493,6 +493,21 @@
 	default_ammo = /datum/ammo/bullet/rifle/holo_target/hunting
 	ammo_band_color = AMMO_BAND_COLOR_HOLOTARGETING
 
+
+//M20A
+/obj/item/ammo_magazine/rifle/m20a
+	name = "\improper M20A magazine (10x24mm)"
+	desc = "A 10mm assault rifle magazine."
+	caliber = "10x24mm"
+	icon_state = "m20a"
+	default_ammo = /datum/ammo/bullet/rifle
+	max_rounds = 20
+	gun_type = /obj/item/weapon/gun/rifle/m20a
+	w_class = SIZE_MEDIUM
+	ammo_band_icon = "+m20a_band"
+	ammo_band_icon_empty = "+m20a_band_e"
+
+
 //-------------------------------------------------------
 // NSG 23 ASSAULT RIFLE - PMC PRIMARY RIFLE
 

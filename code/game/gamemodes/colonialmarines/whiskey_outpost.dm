@@ -673,7 +673,7 @@
 		return
 
 	if(!is_ground_level(user.z))
-		to_chat(user, "You have to be on the ground to use this or it won't transmit.")
+		to_chat(user, "You have to be on the ground to use this, or it won't transmit.")
 		return
 
 	activated = 1
@@ -681,15 +681,15 @@
 	w_class = 10
 	icon_state = "[icon_activated]"
 	playsound(src, 'sound/machines/twobeep.ogg', 15, 1)
-	to_chat(user, "You activate the [src]. Now toss it, the supplies will arrive in a moment!")
+	to_chat(user, "You activate [src]. Now toss it, the supplies will arrive in a moment!")
 
-	var/mob/living/carbon/C = user
-	if(istype(C) && !C.throw_mode)
-		C.toggle_throw_mode(THROW_MODE_NORMAL)
+	var/mob/living/carbon/person = user
+	if(istype(person) && !person.throw_mode)
+		person.toggle_throw_mode(THROW_MODE_NORMAL)
 
 	sleep(100) //10 seconds should be enough.
-	var/turf/T = get_turf(src) //Make sure we get the turf we're tossing this on.
-	drop_supplies(T, supply_drop)
+	var/turf/floor = get_turf(src) //Make sure we get the turf we're tossing this on.
+	drop_supplies(floor, supply_drop)
 	playsound(src,'sound/effects/bamf.ogg', 50, 1)
 	qdel(src)
 	return

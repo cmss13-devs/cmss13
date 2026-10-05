@@ -1266,3 +1266,13 @@
 
 /obj/item/ammo_box/magazine/l54/incen/empty
 	empty = TRUE
+
+
+/obj/item/ammo_box/magazine/m20a
+	name = "magazine box (M20A x10)"
+	magazine_type = /obj/item/ammo_magazine/rifle/m20a
+	num_of_magazines = 8
+	overlay_gun_type = "_m20a"
+
+/obj/item/ammo_box/magazine/m20a/empty
+	empty = TRUE

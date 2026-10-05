@@ -245,6 +245,8 @@
 	if(autoclose)
 		addtimer(CALLBACK(src, PROC_REF(autoclose)), normalspeed ? 15 SECONDS + openspeed : 5 DECISECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
+	SEND_SIGNAL(src, COMSIG_DOOR_OPEN)
+
 /obj/structure/machinery/door/proc/close(forced = FALSE)
 	if(density && !operating)
 		return TRUE
@@ -282,7 +284,9 @@
 		set_opacity(TRUE)
 		if(length(filler_turfs))
 			change_filler_opacity(opacity)
+
 	operating = DOOR_OPERATING_IDLE
+	SEND_SIGNAL(src, COMSIG_DOOR_CLOSE)
 
 /obj/structure/machinery/door/proc/requiresID()
 	return TRUE

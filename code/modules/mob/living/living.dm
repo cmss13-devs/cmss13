@@ -221,6 +221,8 @@
 	if(back && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
 		update_inv_back()
 
+	if(. && nutrition && stat != DEAD)
+		nutrition -= HUNGER_FACTOR/5
 
 
 /mob/proc/resist_grab(moving_resist)
@@ -333,7 +335,7 @@
 	if(buckled || now_pushing)
 		return
 
-	if(throwing)
+	if(HAS_TRAIT(src, TRAIT_LAUNCHED))
 		launch_impact(moving_atom)
 		return
 

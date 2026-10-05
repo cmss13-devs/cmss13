@@ -285,3 +285,23 @@
 2026-09-27:
   Onetoughcreampuff:
   - bugfix: Check Status should now account for decapitation
+2026-09-28:
+  ICA-usernameisunavailable:
+  - balance: Despoiler can no longer extinguish itself with oozing wounds.
+  Mary-Marilyn:
+  - bugfix: The body type examine text is no longer broken
+2026-09-29:
+  Andywastaken:
+  - bugfix: CMTV will no longer prematurely cut from OBs and other turf events.
+  Kugamo:
+  - bugfix: dead facehuggers no longer block xenos from building resin structures
+      atop them.
+  Mary-Marilyn:
+  - qol: The station undocking announcements now play 5 seconds after round end instead
+      of immediately.
+  - bugfix: Fixed a typo in the mercenary station undocking announcement.
+  - soundadd: Ported the PVE smartgun firing sound
+  Venuska1117:
+  - balance: Decloaking Predators using "Roar" ability now play loud sound clue for
+      their decloak.
+  - soundadd: Added new "decloak" sound for predators decloaked by predalien roar.

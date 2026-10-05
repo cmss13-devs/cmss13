@@ -62,7 +62,7 @@
 	set name = "Aghost"
 	set category = "Admin.Game"
 
-	if(!check_rights(R_MOD))
+	if(!check_client_rights(src, R_MOD))
 		return
 
 	var/new_STUI = 0

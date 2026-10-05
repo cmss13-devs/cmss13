@@ -1,0 +1,4 @@
+author: "JHINgle4ce"
+delete-after: True
+changes:
+  - bugfix: "fixed an issue where multiple characters could drag the same item simultaneously."

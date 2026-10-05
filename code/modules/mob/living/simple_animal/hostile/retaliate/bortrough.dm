@@ -57,7 +57,6 @@
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/bortrough/pounced_mob(mob/living/pounced_mob)
 	. = ..()
-	throwing = 0
 	start_pulling(pounced_mob, TRUE, simple_mob = TRUE)
 	MoveTo(target_mob_ref?.resolve(), 5, TRUE, 2 SECONDS, TRUE) //drag our target away
 

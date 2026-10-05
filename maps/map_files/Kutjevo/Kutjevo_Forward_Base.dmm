@@ -15315,6 +15315,9 @@
 	pixel_x = 1
 	},
 /obj/structure/bed/roller/heavy,
+/obj/item/chem_extractor,
+/obj/item/chem_extractor,
+/obj/item/chem_extractor,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/forward_base/medical/medical_science)
 "aQG" = (

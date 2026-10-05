@@ -66,10 +66,10 @@
 	. = ..() //we need to do this last
 
 
-/datum/component/water_overlay_effect/InheritComponent(datum/component/component, i_am_original, turf/input_turf, y_offset)
+/datum/component/water_overlay_effect/InheritComponent(datum/component/component, i_am_original, turf/input_turf)
 	effect_turf = input_turf
-	if(water_depth != y_offset)
-		water_depth = y_offset
+	if(water_depth != effect_turf.depth)
+		water_depth = effect_turf.depth
 		update_hidden()
 		update()
 

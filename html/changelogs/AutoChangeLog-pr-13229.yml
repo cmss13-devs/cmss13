@@ -1,0 +1,5 @@
+author: "Andywastaken"
+delete-after: True
+changes:
+  - rscadd: "Added helpful APC examine tips. Examining an APC will now tell you what tool to use to repair/build/dismantle, like wall girders."
+  - code_imp: "Replaced hardcoded APC status and APC cable coil amounts with defines."

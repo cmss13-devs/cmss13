@@ -1,0 +1,45 @@
+2026-10-01:
+  Drathek:
+  - bugfix: Fixed buried spawns handling namely to allow buried spawns if there's
+      not atleast one xeno
+  Mary-Marilyn:
+  - bugfix: Fixed players receiving access to Aghost through another player's moderator
+      permissions.
+2026-10-02:
+  Drathek:
+  - bugfix: Survivor roles are now slotted in random order so that its random if whitelisted
+      survivors take slots first or not
+  - bugfix: Role weights for fax responders, predators, and whitelisted roles are
+      now set rather than falling back to shipside weight
+  MistChristmas:
+  - bugfix: Trial Admins can use the VV Combat logs again
+  fira:
+  - bugfix: Fix Check CKeys admin verb matching ckeys it shouldn't.
+2026-10-03:
+  Mary-Marilyn:
+  - maptweak: Shivas snowball is now locked to 100 pop
+2026-10-04:
+  Kortev:
+  - maptweak: Remove two cubicles upper part of Press FAX, replaced with break room,
+      bathroom made bigger. Coffee, Cups, pizza box, and coffemaker added, alongside
+      trash bin
+  cuberound:
+  - rscadd: Adds 'Short Range Sensors' to the game. These towers will reveal the presence
+      of Xenomorphs on the minimap to the CIC within a range of 30 tiles. These are
+      not currently added to any map.
+  - rscadd: Adds the option for mappers to designate multiple randomly selected spawn
+      locations for Sensor Towers and Short Range Sensor Towers. This will function
+      similar to the randomly selected communication tower spawners. Each map by default
+      will spawn a single Sensor Tower and zero Small Sensor Towers. The JSON can
+      be edited by a mapper to increase the amount of small towers as desired. No
+      maps are edited to add sensor tower spawn locations in this PR.
+  zzzmike:
+  - qol: Changes resin hole message to account for huggers rather than only acid
+2026-10-05:
+  Nihisohel:
+  - rscadd: You can now use middle mouse button to open hat (boonie hats, etc) storage
+  - bugfix: You can use middle mouse button to open clothing storage items again
+  ghostsheet:
+  - bugfix: MOU53 examine will now show the correct shell order.
+  predatornc:
+  - rscadd: a new CL briefing has replaced the placeholder one on LV-624

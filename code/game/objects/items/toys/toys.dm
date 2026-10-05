@@ -165,6 +165,7 @@
 	qdel(src)
 
 /obj/item/toy/snappop/Crossed(H as mob|obj)
+	..()
 	if((ishuman(H))) //i guess carp and shit shouldn't set them off
 		var/mob/living/carbon/M = H
 		to_chat(M, SPAN_WARNING("You step on the snap pop!"))
@@ -667,7 +668,7 @@
 //Admin plushies
 /obj/item/toy/plush/yautja
 	name = "strange plush"
-	desc = "A plush doll depicting some sort of tall humanoid biped..?"
+	desc = "A plush doll depicting some sort of tall humanoid biped...?"
 	icon_state = "yautja"
 	black_market_value = 100
 

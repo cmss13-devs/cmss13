@@ -58,7 +58,7 @@
 		/obj/item/explosive/plastic,
 		/obj/item/device/binoculars/range,
 		/obj/item/map/current_map,
-		/obj/item/storage/box/zipcuffs,
+		/obj/item/storage/box/zipcuffs/small,
 	)
 
 /obj/effect/essentials_set/kit/svd

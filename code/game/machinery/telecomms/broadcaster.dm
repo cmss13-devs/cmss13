@@ -95,24 +95,28 @@
 	// --- Broadcast only to intercom devices ---
 	if(data == RADIO_FILTER_TYPE_INTERCOM)
 		for (var/datum/weakref/device_ref as anything in connection.devices["[RADIO_CHAT]"])
-			var/obj/item/device/radio/intercom/R = device_ref.resolve()
-			if(!R)
+			var/obj/item/device/radio/intercom/radio_device = device_ref.resolve()
+			if(!radio_device)
 				continue
-			var/atom/loc = R.loc
-			if(R.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
-				radios += R
+			var/atom/loc = radio_device.loc
+			if(!loc)
+				continue
+			if(radio_device.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
+				radios += radio_device
 
 	// --- Broadcast only to intercoms and shortwave radios ---
 	else if(data == RADIO_FILTER_TYPE_INTERCOM_AND_BOUNCER)
 		for (var/datum/weakref/device_ref as anything in connection.devices["[RADIO_CHAT]"])
-			var/obj/item/device/radio/R = device_ref.resolve()
-			if(!R)
+			var/obj/item/device/radio/radio_device = device_ref.resolve()
+			if(!radio_device)
 				continue
-			if(istype(R, /obj/item/device/radio/headset))
+			if(istype(radio_device, /obj/item/device/radio/headset))
 				continue
-			var/atom/loc = R.loc
-			if(R.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
-				radios += R
+			var/atom/loc = radio_device.loc
+			if(!loc)
+				continue
+			if(radio_device.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
+				radios += radio_device
 
 	/* Currently unused, but leaving incase someone revives agents or another use for it.
 	// --- Broadcast to antag radios! ---
@@ -128,14 +132,14 @@
 	// --- Broadcast to ALL radio devices ---
 	else
 		for (var/datum/weakref/device_ref as anything in connection.devices["[RADIO_CHAT]"])
-			var/obj/item/device/radio/R = device_ref.resolve()
-			if(!R)
+			var/obj/item/device/radio/radio_device = device_ref.resolve()
+			if(!radio_device)
 				continue
-			var/atom/loc = R.loc
-			if (!loc)
+			var/atom/loc = radio_device.loc
+			if(!loc)
 				continue
-			if(R.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
-				radios += R
+			if(radio_device.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
+				radios += radio_device
 
 	// Get a list of mobs who can hear from the radios we collected.
 	var/list/receive = get_mobs_in_radio_ranges(radios)

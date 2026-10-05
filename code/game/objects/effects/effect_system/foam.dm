@@ -68,7 +68,7 @@
 		if(!T)
 			continue
 
-		if(!T.Enter(src))
+		if(!T.Enter(src, loc))
 			continue
 
 		var/obj/effect/particle_effect/foam/F = locate() in T
@@ -93,6 +93,7 @@
 
 
 /obj/effect/particle_effect/foam/Crossed(atom/movable/AM)
+	..()
 	if(metal)
 		return
 	if (iscarbon(AM))

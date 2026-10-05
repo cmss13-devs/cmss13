@@ -586,7 +586,7 @@ Everything below isn't used or out of place.
 	name = "Survivor - LACN Commander"
 	assignment = "LACN Commander"
 	skills = /datum/skills/commander
-	paygrades = list(PAY_SHORT_NO5 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_LACNO5 = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "xo"
 	minimap_background = "background_shipside"
 	idtype = /obj/item/card/id/gold
@@ -609,7 +609,7 @@ Everything below isn't used or out of place.
 	suit.icon_state = "[suit.initial_icon_state]_o"
 	suit.buttoned = FALSE
 
-	var/obj/item/clothing/accessory/ranks/navy/o5/pin = new()
+	var/obj/item/clothing/accessory/ranks/navy/o5/lacn/pin = new()
 	suit.attach_accessory(new_human, pin)
 
 	new_human.equip_to_slot_or_del(suit, WEAR_JACKET)

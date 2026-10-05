@@ -46,10 +46,10 @@
 		return
 	go_out()
 
-/obj/structure/machinery/medical_pod/bodyscanner/ex_act(severity, datum/cause_data/cause_data)
+/obj/structure/machinery/medical_pod/bodyscanner/ex_act(severity, direction, datum/cause_data/cause_data)
 	for(var/atom/movable/A as mob|obj in src)
 		A.forceMove(loc)
-		A.ex_act(severity, , cause_data)
+		A.ex_act(severity, cause_data=cause_data)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))

@@ -318,8 +318,7 @@
 	var/broken = FALSE
 	buildstackamount = 0
 	can_rotate = FALSE
-	picked_up_item = null
-
+	foldabletype = null
 	unslashable = FALSE
 	unacidable = TRUE
 
@@ -329,6 +328,10 @@
 	var/mob_old_y = 0
 	var/allways_undense = FALSE
 
+	var/init_pixel_y
+	var/init_pixel_x
+	var/higher_layer
+
 /obj/structure/bed/chair/vehicle/Initialize()
 	. = ..()
 	chairbar = image(icon, "vehicle_bars")
@@ -337,6 +340,27 @@
 	addtimer(CALLBACK(src, PROC_REF(setup_buckle_offsets)), 1 SECONDS)
 
 	handle_rotation()
+
+	init_pixel_y = pixel_y
+	init_pixel_x = pixel_x
+
+/obj/structure/bed/chair/vehicle/update_shimmy_data(obj/structure/bed/chair/neighbor = null, force_update = FALSE)
+	.=..()
+
+	var/approachness = NORTH|SOUTH|EAST|WEST
+	var/internalness = NORTH|SOUTH|EAST|WEST
+
+	if(neighbor && neighbor.buckled_mob)
+		internalness &= ~turn(dir, 180)	//cant walk into filled seats
+		approachness &= ~turn(dir, 180)
+
+	if(force_update && buckled_mob)
+		buckled_mob.density = FALSE
+		density = TRUE
+		AddComponent(/datum/component/shimmy_around, \
+			approach_dirs = approachness, \
+			internal_dirs = internalness \
+		)
 
 /obj/structure/bed/chair/vehicle/proc/setup_buckle_offsets()
 	if(pixel_x != 0)
@@ -348,9 +372,13 @@
 	if(dir == NORTH)
 		layer = FLY_LAYER
 	else
-		layer = BELOW_MOB_LAYER
+		if(higher_layer)
+			layer = BELOW_MOB_LAYER + 0.01
+		else
+			layer = BELOW_MOB_LAYER
 	if(buckled_mob)
 		buckled_mob.setDir(dir)
+	update_shimmy_data()
 
 //------BUCKLING AND UNBUCKLING
 //trying to buckle a mob

@@ -517,7 +517,7 @@ const tweSplitter = (members: Array<Observable>) => {
   });
 
   const squads = [
-    buildSquadObservable('Imperial Armed Space Force', 'Orange', iasf),
+    buildSquadObservable('Imperial Armed Space Force', 'orange', iasf),
     buildSquadObservable('Royal Marines Commando', 'red', commando),
     buildSquadObservable('Other', 'grey', other),
   ];

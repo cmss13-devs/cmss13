@@ -1,0 +1,4 @@
+author: "Ghostsheet"
+delete-after: True
+changes:
+  - qol: "Added keybind for blowing into a whistle normally, unbound by default"

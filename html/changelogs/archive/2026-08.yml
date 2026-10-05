@@ -1,0 +1,557 @@
+2026-08-01:
+  Antlers:
+  - bugfix: Ladders are no longer exempt from clickdrag override
+  Drathek:
+  - bugfix: Fixed clusters being unable to convert towers because they're in core
+      weeds
+  PoltavskaPraca:
+  - balance: added ability to wear m5 gas mask + rail flashlight to headset, patrol
+      cap and subtypes,
+  - code_imp: changed some code regarding flashlight attachment, as well as update_icon().
+      Also m5 gasmask checks for clothing head subtypes, instead of just helmets now,
+      regarding bitflag application
+  - imageadd: added sprite variants for gasmask and onmob flashlight
+  matttheficus:
+  - rscadd: Scout now gets their own encryption key with expanded comms access.
+  - code_imp: Direct SL Orders now always go to SLs regardless of garble.
+  - code_imp: Squad Orders now go to RTO wearers regardless of garble.
+  - rscdel: removed a number of roles from the Command Comms channel.
+  - rscadd: Command Channel handheld radios.
+  - rscdel: removed RTO packs from a number of roles.
+  - rscadd: SLs get CIC Access for Briefs/Planning if needed.
+2026-08-02:
+  Bugwasabi:
+  - bugfix: Fixes welding fuel flames having the wrong color
+  Drathek:
+  - bugfix: Hopefully fixed runtimes causing infinite explosion recursion (namely
+      explosion entry should more properly be a directionless explosion, and more
+      ways for explosions to merge)
+  - bugfix: Explosion cells now merge even if the 2nd to spawn should be the survivor
+  - bugfix: Fixed oceans throwing/messaging ghosts
+  - code_imp: ChangeTurf now cleans up more references and passes autocells to the
+      new turf
+  - code_imp: Simplified some loop type checks for autocells and cellauto_cells
+  - rscdel: Removed some seemingly unnecessary sleeps during hijack shuttle crash
+  - bugfix: Hardcore trait/mode now triggers undefib signal to unlock stuff like spotter
+      sight
+  - bugfix: You now need to be conscious for bloody footprints to apply
+  - code_imp: Cleaned up code regarding bloody footprints and hopefully eliminated
+      the cause of flaky tests
+  - bugfix: Static tcomms no longer are "on" when initialized (namely for the purpose
+      of nuke decryption checks)
+  JackieEstegado:
+  - bugfix: Fixed being able to bypass id locks on bags by shaking or being able to
+      put an item inside.
+  - bugfix: Eyepiece NVGs no longer increase eye damage from welding when turned off.
+  - bugfix: Fixed fast cryo not properly applying to players that climbed into a cryopod
+      by themselves.
+  - bugfix: Fixed players mobs bugging out when attempted to be nested on a wall that
+      no longer exists.
+  - bugfix: Fixed attacking nests not having an attack delay.
+  - bugfix: Fixed a bug where an eggsac carrier could sustain infinite fragile eggs.
+  - rscadd: Fragile eggs are now counted against the sustain limit until they are
+      destroyed.
+  - rscadd: Fragile eggs that no longer have a hugger will quickly die.
+  LiquidPotroh:
+  - bugfix: fixed valkyrie retrieve resource consumption
+  PoltavskaPraca:
+  - rscdel: F1 is no longer hardcoded to open adminhelp
+  antlersss:
+  - bugfix: The duplicate dry foodstuffs freezer in the brig's kitchen is now an organics
+      freezer.
+  fira:
+  - rscadd: All living mobs can now be tracked by Motion Detectors and Sentries, among
+      others.
+  - rscadd: Jones and ARES now have appropriate IFF to avoid turrets.
+  - code_imp: Some internal mobs are now considered abstract and barred from certain
+      mechanics.
+  - refactor: Ranging backend (used by Sound, Motion Detector, Sentries, in particular)
+      has been replaced by something much more performant. This may come with side
+      effects.
+  - code_imp: Removed unnecessary rotation updates for projectiles. They may in rare
+      cases strafe a little rather than turning, but you shouldn't notice the difference.
+  halgmor:
+  - rscadd: Adds Corporal and Sergeant ranks to MST playtime progression
+  labeo0:
+  - bugfix: Fixed deagle incorrect ammo type. Fixed CO deagle ammo type.
+  - balance: Regular deagle ammo stats change from 55 damage/15 AP to 45 damage/30
+      AP. High-impact ammo stats change from 45 damage to 60
+  sippykot:
+  - code_imp: rank pins now prioritize uniforms instead of suits
+  - bugfix: XO formal uniform properly spawns with accessories like other uniforms
+2026-08-03:
+  Jesters-Ballad:
+  - spellcheck: fixed a typo.
+  Puckaboo2:
+  - bugfix: Combat Correspondent's HUD and minimap sprites are no longer identical
+      to MP's.
+  - imagetweak: Adds Thwomper's WO Mortar Crew HUD sprite.
+  Venuska1117:
+  - rscdel: Removed unused queen "bombard" and boiler "acid lance" code.
+  - rscdel: Removed remains of vanguard "pierce_spin" and "agility" code.
+  - rscdel: Removes most of xenos  _powers.dm files, exception is queen_powers.dm.
+  matttheficus:
+  - bugfix: fixed oversight with JTAC Kits. They come with a pamphlet now.
+  - bugfix: fixed oversight with Mortar Kits. They come with RTO bags now.
+  zzzmike:
+  - bugfix: fixed a message telling everyone nearby that they pried a valve
+2026-08-04:
+  antlersss:
+  - bugfix: Auto-holotag preferences are actually saved
+2026-08-05:
+  Drathek:
+  - balance: A hostile queen that sneaks on a shuttle will now trigger a hijack automatically
+      just before arrival
+  - balance: Queen pry on dropship airlocks is increased from 3s to 5s
+  - bugfix: Fixed grant transmute on hijack buff loop stopping early if it encounters
+      a king or xeno with the ability already
+  - bugfix: Hive buff purchase for transmute no longer is applied to queen
+  - balance: Xenos now can upgrade their grabs to a defensive grab which slows their
+      speed but protects the target so long as the xeno has atleast 25% health. The
+      upgraded grab is needed to restrain. (0.4s to upgrade instantly, 5s do_after
+      to restrain)
+  - rscadd: Added a preference (and verb to change the preference) to override the
+      defensive grab damage redirection threshold per caste. A setting of 100% disables
+      defensive grab entirely for that caste.
+  - bugfix: Grab upgrade icons now actually update
+  - bugfix: Warriors now stop fighting themselves to be the puller of a mob
+  - code_imp: Standardized implementation between xenos clicking self and clicking
+      their dragged target
+  cuberound:
+  - balance: if you are firing on another z level accuracy is impacted by how good
+      your character can see the target
+  fira:
+  - admin: Added OpenSearch Query Builder for in-game log searching
+  - code_imp: Optimized some aspects of chemical processing.
+2026-08-06:
+  PoltavskaPraca:
+  - bugfix: fixed door rotations
+  - code_imp: touched some code
+  - maptweak: touched shuttles a little bit, added new floor type and put them underneath
+      the airlocks
+  - imagetweak: changed dirs and made them saner for shuttle attachments sprites
+  zzzmike:
+  - balance: disabler capacity moved from 16 to 10, but the bolts are faster by one
+      speed level
+2026-08-07:
+  Nihisohel:
+  - rscadd: You can now split handfuls by attacking it with your other, empty hand,
+      or decrementing it by 1 to the other hand by using it inhand
+  - rscadd: Similarly, you can now directly remove handfuls from magazines by using
+      it inhand, assuming it has the refillable flag
+  - balance: Examine code has been given a massive facelift, from fanciful colors
+      to proper word grammar, shorter, and arguably, better formatting
+  - balance: Gun examining now care if you are adjacent to them, giving you information
+      appropriate to the adjacency. TLDR, you aren't gonna know the status of a guns
+      from afar such as if the magazine is loaded, or if its empty, or if the chamber
+      is loaded, but with an empty magazine unless you are next to, or holding the
+      weapon
+  - balance: You can now tell what kind of bullet is currently chambered for all guns,
+      or in the case of revolvers and break action shotguns, that are ready to fire,
+      following the caveats of the gun examination adjacency
+  - balance: You can now load individual bullets into specific individual chambers
+      of a revolvers cylinder, provided it is open
+  - spellcheck: Reduces the word verbiage of melee and throw force text
+  - spellcheck: Properly colorizes most of examine code, color coded based on danger/importance
+  - code_imp: Defines Cyan as a color span
+  - bugfix: Heavy buckshot shells no longer generate an incorrect ammo capacity
+  - code_imp: No longer hardcodes max_rounds on most generate_handful procs as the
+      argument is defunct now. As a result, max_rounds are now retrieved based on
+      handful type, which means contributors should be defining handfuls in the future,
+      although the parent is typically more than enough in most cases. As a stopgap
+      solution to problems that may occur, handfuls max_rounds are properly adjusted
+      if it exceeds the current_rounds
+  - bugfix: Revolver, lever_action, and shotgun handfuls now properly generate as
+      its typepath, rather than the handful parent
+  - bugfix: CO revolver belts can now hold revolver handfuls as well, similar to the
+      other revolver belt
+  - bugfix: Fixes suicide code not respecting the damage multiplier of a gun when
+      committing suicide on an otherwise head-exploding projectile
+  - refactor: Refactors firing_to_air bullet chambering to be more inline with the
+      suicide block's method
+  - refactor: Battlefield Executions are refactored into a flag rather than a signal,
+      and brought up to standard to suicide code and fire_to_air code
+  - code_imp: Only your head gets gibbed on battlefield execution rather than gibbing
+      your entire body with explosive ammo
+  - bugfix: Revolver cylinders no longer spin backwards when fired
+  - bugfix: Revolvers no longer automatically open when attempting to fire when empty
+  - rscadd: You can now rotate the cylinder of a revolver by a single position IF
+      you are wielding it, accompanied with a balloon alert. The balloon alert obviously
+      does not display during russian roulette
+  - bugfix: You can no longer use combat statistics to cheat russian roulette
+  - code_imp: Adds a comment on combat statistics code regarding the accuracy variable
+      differences
+  - bugfix: Battlefield Executions now properly use up its ammo on execution
+  - balance: Battlefield Executions are now tied to the gun, rather than the type
+      of ammo
+  - code_imp: Calibers can now be used as a list, rather than just a single defined
+      variable, fixes an exploit related to it, thankfully I'm the only one that knows
+      of it, is what I would say if this PR was merged months ago, and if an issue
+      related to it didn't just come up
+  - spellcheck: A19 magazines are worded just a tad bit more accurately
+  - code_imp: SHARP no longer overrides the parent proc with its old, defunct, unload
+      proc
+  - bugfix: Double barrel shotguns and its subtypes no longer unwield when you close
+      the chamber
+  - bugfix: Fixes bolt actions deleting inserted bullets
+  - bugfix: Fixes bolt actions allowing bullets to be inserted while the bolt is closed
+  - spellcheck: Adds some more text regarding bolt action... actions
+  - bugfix: Fixes the CO's M1911 Custom from being explodable and acidable, matching
+      with the rest of their sidearms
+  - bugfix: Fixes flamer attachment unnecessarily appending a cooldown on firing failures
+  - bugfix: Fixes rail flashlights breaking when turning it on during a detach by
+      forcing it off in the codeblock. Although, there could have been merit to just
+      prevent using any of the procs during a detach, but this worked just as fine.
+  - code_imp: Autodocs more than just a few variables, cleans up single letter variables,
+      and clarifies a few comments
+  - bugfix: Fixes negative falloff by clamping the falloff min value to 0
+  - bugfix: Fixes a bug related to wield assisting when the active hand does not contain
+      the gun, adds a failure text whenever this happens instead
+  labeo0:
+  - bugfix: Shooting target damage display now accounts for damage falloff.
+  - bugfix: Bullets hit shooting target without spriteclick too. As a result you can't
+      walk through a target but you can unanchor it to pass and xeno can break it.
+2026-08-08:
+  AnCopper:
+  - rscadd: Squad Leaders now buy a megaphone from their vendor for 5 points.
+  Armsdealer9876:
+  - bugfix: fixed Req Tutorial marines asking for impossible item
+  DangerRevolution:
+  - bugfix: Fixed the QYJ Machine Gun for the UPP having magazines that counted as
+      "small" in a backpack, it is now set to "medium" like the Smartgun magazines
+  NHC:
+  - code_imp: Renamed Basic medical optic, into SensorMate Optic
+  - imageadd: added icons for the SensorMate opics
+  - imagetweak: Changed Medical Optic hud icon to represent the itemsprite better
+  PoltavskaPraca:
+  - maptweak: changed dir on a door in a shuttle on hybrisa to match the new directions
+      for icon states
+  SpypigDev:
+  - bugfix: Restores the ability to knockout others in a boxing match
+  Venuska1117:
+  - refactor: Updates Berserker Ravager code for cleaner look and making it easier
+      to follow.
+2026-08-09:
+  JackieEstegado:
+  - bugfix: Fixed medbay chemical dispensers energy fully refilling each time a marine
+      latejoined.
+  - balance: Properly implement medbay chemical dispenser energy scaling, based on
+      the number of Hospital Corpsmen.
+2026-08-10:
+  Bibby0110:
+  - rscadd: SLs (and other leaders, determined by having big arrow) can now highlight
+      mobs for 4.5 seconds by pointing at them.
+  DangerRevolution:
+  - bugfix: Removed a light bulb floating off the side of the Normandy in mid air.
+  Drathek:
+  - code_imp: Rearranged unit testing code so it can be breakpointed correctly
+  - code_imp: Gamemodes can now specify a required_ready_players which is how many
+      must be ready to start the gamemode (set to 60 for WO)
+  - config: WO will now by default require 120 pop for voting instead of 140 (Also
+      cycles on 65 rounds instead of 75)
+  - bugfix: Fixed groundside operation panel not working on WO because there's no
+      almayer AA gun
+  - bugfix: Fixed WO CO and XO being unable to issue medals
+  - ui: Set TGUI input text for some medal writing inputs
+  - balance: Struggling when restrained by a xeno with a item that does any damage
+      now has a clamped lower end damage of 25
+  - balance: Struggling when restrained by a xeno with a item now only varies between
+      1/2-full of the damage instead of 1/4-full
+  JHINgle4ce:
+  - bugfix: fixed IS_DIAGONAL_DIR check
+  - refactor: usage of IS_DIAGONAL_DIR implemented
+  JohnFulpWillard:
+  - spellcheck: Fixed the description of Mess Technician's headset and updates the
+      encryption key name.
+  MistChristmas:
+  - rscadd: Full auto fire displays ammo counter every time it's divisible by 8.
+  - rscadd: Burstfire drops empty mags instead of holding onto them until the gun
+      is completely empty. Also bypasses your eject to hand preference if that would
+      unwield your gun during a burst.
+  - bugfix: Using guns on burst-fire now displays the ammo counter again.
+  - bugfix: Akimbo firing causing a signal override
+  - bugfix: Weird burst-fire queuing that could make it lose track of amount of shots
+      in a burst.
+  Namen-n:
+  - qol: Platforms can now be melted down.
+  SpypigDev:
+  - bugfix: Dead Yautja Bodies can now be tracked in Body Bags by bracers
+  antlersss:
+  - balance: Dropships and lifeboats can now depart while the main ship is still falling
+      to the ground.
+  - rscadd: Added new ARES announcement text to indicate when lifeboats are disabled.
+  matttheficus:
+  - bugfix: Intel aSLs now get Command Comms and they properly transfer on swapping
+      aSL.
+  - bugfix: XO RTO bag price oversight
+2026-08-11:
+  MistChristmas:
+  - bugfix: Message about not being able to perform surgery due to bad conditions...
+      the turf your standing on. I.E Water/Coast/Dropship
+2026-08-12:
+  SpypigDev:
+  - bugfix: Autodoc pods and cryo pods now account for eschars and third degree burns
+2026-08-13:
+  Drathek dimdimich1996:
+  - balance: Fuelpumps now can take damage from xenos during hijack (including most
+      acid sources)
+  - balance: Fuelpumps cannot be repaired, but have a sizeable health pool - the health
+      of the pump is what matters for hijack now rather than area power
+  - bugfix: Fixed bullet ping override offsets being ignored namely for vehicles (and
+      now fuelpumps)
+  - bugfix: Xenos now get more hijack sfx
+  - bugfix: Fixed weird crusher charge logic for handling of anchored objects.
+  - imageadd: Several new overlays and a destroyed state for fuelpumps by dimdimich1996
+  - code_imp: Boiler acid shotgun now properly flagged as AMMO_XENO
+  - code_imp: Fire extinguishers now always call extinguish_acid on their affected
+      atoms
+  - code_imp: xeno handle_collision procs should now perform less redundant typechecks
+  Venuska1117:
+  - refactor: Changes Runner bone_spur code to use get_turf() instead of locate().
+2026-08-14:
+  Jone62:
+  - code_imp: Adds a preference to toggle the end round sound theme
+  MistChristmas:
+  - bugfix: Burn kits and ointment are usable again on areas like the dropship
+  Oceany:
+  - bugfix: Synth maintenance station in req, replaced with old sprite
+  Puckaboo2:
+  - rscadd: During certain surgery steps, the patient will receive an indication that
+      they 'feel better' after pain recalculation.
+  - rscadd: Surgery missteps or fails that cause significant harm to an awake patient,
+      such as initiating an amputation, internal bleeding, bone fractures, and organ
+      contamination, will now cause the patient to occasionally *pain regardless of
+      whether they have the appropriate painkillers or not.
+  - rscadd: An awake patient, regardless of whether oxycodone is in their system,
+      will scream (not burst scream) when the doctor tries to pull a larva out. Pain
+      relief does not relieve pressure, after all.
+  - rscadd: Surgery missteps or failures that cause harm to the person operating or
+      being operated on will occasionally make the victims cry out in pain.
+  - rscadd: Acid that gushes violently from surgery fails will get all over the place!
+  - rscadd: Bone chips will spawn under the doctor successfully completing the "Remove
+      Bone Chips" step on a patient.
+  - rscadd: Adds some flavor text if the small chance of a doctor breaking ribs or
+      skulls while opening them with a retractor that tells yourself and your patient
+      that sometimes this happens--it's nobody's fault.
+  - rscadd: Adds HIGHDANGER warnings to patients undergoing an amputation whilst awake
+      and encourages telling the doctor to stop if the step was a mistake.
+  - balance: Each organ repaired during organ repair surgery requires a surgical stack.
+  - balance: Healing a hematoma no longer cures disabilities; you must take out brain
+      chips to do so. Doing so gives you good boy points in flavor text form!
+  - balance: You will be punished for not being careful while cutting pseudoroots
+      and your patient will take organ damage from it. Shame on you for using bad
+      tools or rushing.
+  - code_imp: Adds more captivating and descriptive flavor text during certain surgeries,
+      especially if the patient is awake and not under that numb juice.
+  - code_imp: Changes some surgery step noises to make more sense.
+  - bugfix: Surgery missteps or failures that cause significant harm to a patient,
+      such as contamination, internal bleeding, or bone fractures, will now be evident
+      in the surgery step text. Not to mention, the patient will scream at you.
+  - bugfix: Patients must be anesthetized with oxycodone for them not to feel their
+      limb being chopped off for whatever reason.
+  - bugfix: Nonbinary pronouns can now appear in surgical steps instead of defaulting
+      to 'his'.
+  - bugfix: Brain surgery overlays are no longer misaligned from the skull.
+  - spellcheck: Fixed some spelling and grammar errors.
+  - imagetweak: Polished the closed chest sprite to add the sternum and clavicles;
+      polished the open chest sprite and added some wet organs in there.
+  - imagetweak: Adds the human spriting template to the damage overlay icon as a reference.
+  - imagetweak: Resprites and realigns brain surgery overlays.
+  - qol: Adds sounds to surgery procedures that did not have any.
+  - soundadd: Adds a hemostat 'snipping' sound for the hemostat initiation step, adds
+      surgical line sound effects for initiation and scissor snip for completing the
+      step, and adds 3 different types of circular saw fail noises depending on what
+      the circular saw hits.
+  - soundtweak: hemostat1.ogg swapped and renamed to hemostat2.ogg to make way for
+      the new hemostat1.ogg
+  - soundtweak: Some surgical steps had their sounds replaced.
+  - soundtweak: Surgical sounds now don't have any 'lag' before playing.
+  Red-byte3D:
+  - bugfix: Ghosts now properly get moved to new xenos as they evolve / devo
+  cuberound:
+  - rscadd: extra tacmap buttons, allows moving up and down z level and changing from
+      ship to map on hud button map
+  cuberound, datimesmog:
+  - imageadd: ' new HUD element to track Neurotoxin stacks'
+  - imageadd: new HUD element for medhud to track Neurotoxin
+  labeo0:
+  - bugfix: Guaranteed slot T2 xenos cannot transmute over the T2 slot capacity
+  - bugfix: Xenos don't lose transmute by selecting their current caste.
+2026-08-15:
+  Antlers:
+  - spellcheck: The SEA's drill hat now refers to them as drill instructors rather
+      than drill sergeants.
+  Venuska1117:
+  - balance: Praetorian acid grenade got increased throwing speed and launch_type
+      changed to "HIGH_LAUNCH", allowing it to throw over more obstacles such as railings
+      or closets, but in exchange "explosion" time is increased from 1s to 1.25s
+  - bugfix: Fixed cades that got unwired not getting back their pass_flags.
+  Zenith, Aleksh. dimdimich1996:
+  - rscadd: adds various new thrall gear & expands their options.
+  - rscadd: adds the missing snow loadout gear, boots, rain-cover, netting.
+  - imageadd: adds arc icon for tech-tree.
+  - imagetweak: palette correction for prey_items.dmi
+2026-08-16:
+  Red-byte3D:
+  - imageadd: New ghillie sprite
+2026-08-17:
+  AnCopper:
+  - bugfix: The New Varadero LACN Commander is once again a Commander instead of a
+      LtCol
+  Namen-n:
+  - mapadd: added vehicle restrictions for caves on the LV522 Chances Claim map.
+  Unknownity:
+  - balance: Reinforced Walls now take 8 plasteel sheets to construct instead of 5.
+  - rscadd: Added one marine tip about being able to reinforce reagent and fuel tanks
+      with plasteel.
+  - refactor: Nuked some single letter vars in the girders file.
+2026-08-18:
+  MistChristmas:
+  - bugfix: Custom Hotkeys saving + as Add, and ARROWUP not being saved as North etc
+      for the arrow keys.
+2026-08-19:
+  BOBAMA:
+  - bugfix: generic survivors should no longer spawn during survivor team inserts,  generic
+      survivors should also no longer spawn on top of each other sometimes, and CO
+      survivors should no longer be able to duplicate non-co archetypes.
+2026-08-20:
+  Ammoniacres:
+  - balance: made it so Ravagers have a 25% chance to accidentally slash instead of
+      tackle on disarm intent!
+2026-08-21:
+  Unknownity:
+  - bugfix: Fixes some area oversights in Whiskey Outpost.
+2026-08-22:
+  Bibby0110:
+  - bugfix: Ravagers failing to tackle no longer announces the personal message to
+      everyone surrounding you
+  Drathek:
+  - code_imp: Added more pass flag bitfields for VV and unified them with a couple
+      defines
+  - code_imp: Unified barricade pass flag initialization with a define
+  Nihisohel:
+  - bugfix: Base Ravager Empower now processes properly
+  Rad Chandelier:
+  - rscadd: Adds a check of MRE side dishes before allowing MRE folding into trash;
+      Changes MRE weight class to small
+  - code_imp: All changes ported directly from PvE code
+  - qol: Adds check of MRE food items to allow storage into MRE
+  SpypigDev:
+  - bugfix: Invasive surgery now slices through splints
+  Venuska1117:
+  - bugfix: Made player unable to transmute as bulwark when they have stances active
+      like encasing plates or reflective plates.
+2026-08-24:
+  AnCopper:
+  - rscadd: Added a UPP Ministry of Space Security Officer CO survivor to the Trijent
+      Dam UPP insert.
+  MistChristmas:
+  - rscadd: Disclaimer regarding arrests to CMB Inspection ERTs
+  - bugfix: Transmute works again
+  - bugfix: Xeno surgery is possible again
+  - bugfix: Rav strains no longer claim you have giant oversized claws when you're
+      not the ravager.
+2026-08-25:
+  Drathek:
+  - bugfix: Fixed an exploit where you could stack/unstack acided things on the ground
+  - code_imp: COMSIG_ITEM_PICKUP now fires properly on pickup and COMSIG_MOVABLE_PRE_PICKUP
+      is used to check if pickup/interaction is allowed
+  LC4492:
+  - code_imp: Instead of Vs the thermal tarps are now Ms, following tradition.
+  - imagetweak: Updates the sprites for body, cryo and tarp bags to show an 'empty'
+      version of the sprite when the bag is empty, so it is now visually clear when
+      the bag has someone inside it or not.
+  - imagetweak: Changed 'holocards' on the cryobags from the 2x2 square on top of
+      the bag to recolored versions of the bodybag label, so they are now much bigger,
+      which helps you to notice it better, and now appear similar to a real life triage
+      card attached to the bag.
+  - imagetweak: Change tarps to use their currently unused closed version, of which
+      I've hand-crafted to now have a very smooth 'invisibility' transition, there's
+      also some small details that will make the bag look more 'alive' aswell.
+  - soundtweak: Changed the sounds of when the tarp bags are closed or opened to the
+      same sounds of body and cryo bags, given it just makes more sense.
+  Watermelon914:
+  - bugfix: Fixed gamemode vote not auto-resolving if there's only one option.
+2026-08-26:
+  AnCopper:
+  - bugfix: the UPP MSS CO Survivor now speaks Russian by default
+  Antlers:
+  - balance: Un-nerfs the crusher's melee attack slow after its bugfix, returning
+      it to 3.5 seconds
+  Red-byte3D:
+  - code_imp: Adds stelcrest unit tests
+  larentoun:
+  - bugfix: Using any item should now not immediately disarm the dart - disarming
+      is intended to be done with multitool.
+  - bugfix: Disarmed (inactive) SHARP darts now are truly inactive and safe.
+  - spellcheck: Incendiary dart description now says that's it is incendiary, not
+      explosive.
+  - balance: Disarming SHARP darts with multitool now converts them into usable ammo.
+  - rscadd: Can now use multitool on inactive darts. That means, 5 minute lifespan
+      auto-disarmed darts can now be reused as ammo with multitool.
+2026-08-27:
+  Puckaboo2:
+  - bugfix: Burn overlays now apply to mobs again.
+2026-08-28:
+  Armsdealer9876:
+  - bugfix: Poppy Pretzel recipe now uses poppies instead of seeds
+  JHINgle4ce:
+  - bugfix: fixes valkyrae fake use of retrieve
+  MistChristmas:
+  - bugfix: Bullets affected by reflective walls keeping their boosted damage.
+  - bugfix: Limits the amount of mobs that can stop reflective walls reflecting to
+      mob/living/carbon derivatives
+  Orchidfox:
+  - balance: Sentinel max neuro oxyloss now scales with neuro stacks
+  - balance: Sentinel maximum oxyloss lowered to 40
+  aquariofury:
+  - code_imp: moved rolling pin and spoon out of the contraband list
+  oceany-a11y:
+  - qol: Adds marine snow boot to the synth loadouts.
+  zzzmike:
+  - qol: Makes Cryo-marine-not-taken notice clearer
+2026-08-29:
+  Ansekishoku:
+  - rscadd: A combat sidearm belt that is capable of holding a sidearm, 3 rifle mags
+      and 2 pistol mags.
+  - imageadd: New smartgunner sidearm belt sprites
+2026-08-30:
+  IowaPotatoFarmer:
+  - rscadd: New unique synthetic survivor presets for the White Antre Research Facility.
+  Steelpoint, Drathek:
+  - code_imp: Closets and cm_vending vendors now are not intractable when they are
+      in the same tile as a dense door (allowing them to be hidden in the door's tile)
+  - maptweak: The Combat Information Centre of the USS Almayer has been refurnished
+      and overhauled. The objective of this overhaul is to transform the CIC into
+      a veritable command bunker that provides an improved experience for CIC personnel
+      to better communicate and coordinate amongst each other, whilst also improving
+      the security and personnel inflow of the CIC to diminish the need for non-USCM/civilian
+      personnel from being able to enter and leave the CIC as they please.
+  - maptweak: Two additional Overwatch stations have been installed in the CIC.
+  - maptweak: The CIC armory is now concealed and hidden within the CIC conference
+      room. It can be revealed by pressing the 'armoury' button.
+  - maptweak: The reception to the CIC has been refurbished to permit MP personnel
+      to perform guard duty.
+  - maptweak: The CIC lockdown has been changed from a single overall lockdown, to
+      three different tiers of lockdown. The external blast doors that lead into the
+      general CIC adjacent corridors are now the External Lockdown. The blastdoors
+      that prevent entry into the main CIC area is now the Interior Lockdown, with
+      the final lockdown being reserved for the central command bunker. This will
+      permit CIC staff to better control how they wish to secure the CIC during an
+      emergency.
+  Watermelon914:
+  - server: Added more influxdb stats for player status
+  fira:
+  - code_imp: Some sounds will now be emitted from the emitting object rather than
+      the ground position. This especially makes a difference for sounds originating
+      from your character, which won't be shifted when you move due to delay.
+2026-08-31:
+  JackieEstegado:
+  - bugfix: Fixed some acid holes on maps having the wrong orientation.
+  Red-byte3D:
+  - code_imp: Switched Valkyrie's rage ability from XENO_ACTION_CLICK to XENO_ACTION_QUEUE
+      this basically means that the ability no longer has to be chosen and will use
+      on your next clicking, meaning you can indirectly use it without clicking the
+      ability.
+  Venuska1117:
+  - balance: Acided Handrails no longer drop debris.

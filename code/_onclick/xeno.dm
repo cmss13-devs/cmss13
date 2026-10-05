@@ -116,8 +116,7 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 	return
 
 /mob/living/carbon/xenomorph/click(atom/target, list/mods)
-	if(queued_action)
-		handle_queued_action(target)
+	if(queued_action && handle_queued_action(target))
 		return TRUE
 
 	var/left_pressed = mods[LEFT_CLICK] == "1"

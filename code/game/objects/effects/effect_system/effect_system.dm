@@ -113,54 +113,74 @@ would spawn and follow the beaker, even if it is carried or thrown.
 	var/amount = 6
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	var/move_count = 0
+	var/time_waiting = 0
+	var/spark_speed = 0.2
 
-/obj/effect/particle_effect/sparks/New()
-	..()
+/obj/effect/particle_effect/sparks/Initialize(mapload, ...)
+	. = ..()
 	playsound(loc, "sparks", 25, 1)
-// var/turf/turf = src.loc
-// if (istype(turf, /turf))
-// turf.hotspot_expose(1000,100)
-	spawn (100)
-		qdel(src)
+	START_PROCESSING(SSfasteffects, src)
+	QDEL_IN(src, 10 SECONDS)
 
+/obj/effect/particle_effect/sparks/Destroy(force)
+	. = ..()
+	STOP_PROCESSING(SSfasteffects, src)
 
-/datum/effect_system/spark_spread
-	var/total_sparks = 0 // To stop it being spammed and lagging!
+/obj/effect/particle_effect/sparks/process(delta_time)
+	if (move_count == 0)
+		STOP_PROCESSING(SSfasteffects, src)
+		return PROCESS_KILL
 
-/datum/effect_system/spark_spread/set_up(n = 3, c = 0, loca)
-	if(n > 10)
-		n = 10
-	number = n
-	cardinals = c
-	if(istype(loca, /turf/))
-		location = loca
+	time_waiting += delta_time
+	for (var/iter = 0, iter < floor(time_waiting/spark_speed), iter++)
+		step(src, dir)
+		move_count--
+		if (move_count == 0)
+			STOP_PROCESSING(SSfasteffects, src)
+			return PROCESS_KILL
+		time_waiting -= spark_speed
+
+/datum/effect_system/spark_spread/set_up(particle_count = 3, cardinal_dirs_only = FALSE, target)
+	if(particle_count > 10)
+		particle_count = 10
+	number = particle_count
+	cardinals = cardinal_dirs_only
+	if(istype(target, /turf/))
+		location = target
 	else
-		location = get_turf(loca)
+		location = get_turf(target)
+
+/datum/effect_system/spark_spread/proc/create_sparks(current_particle)
+	if(holder)
+		location = get_turf(holder)
+	var/obj/effect/particle_effect/sparks/sparks = new /obj/effect/particle_effect/sparks(location)
+	var/direction
+	if(cardinals)
+		direction = pick(GLOB.cardinals)
+	else
+		direction = pick(GLOB.alldirs)
+	sparks.setDir(direction)
+	sparks.move_count = pick(1, 2, 3)
+	QDEL_IN(sparks, 2 SECONDS)
 
 /datum/effect_system/spark_spread/start(do_NOT_delete = FALSE)
-	var/i = 0
-	for(i=0, i<number, i++)
-		if(total_sparks > 20)
-			return
-		spawn(0)
-			if(holder)
-				location = get_turf(holder)
-			var/obj/effect/particle_effect/sparks/sparks = new /obj/effect/particle_effect/sparks(location)
-			total_sparks++
-			var/direction
-			if(cardinals)
-				direction = pick(GLOB.cardinals)
-			else
-				direction = pick(GLOB.alldirs)
-			for(i=0, i<pick(1,2,3), i++)
-				sleep(5)
-				step(sparks,direction)
-			spawn(20)
-				if(sparks)
-					qdel(sparks)
-				total_sparks--
+	var/current_particle = 0
+	for(current_particle=0, current_particle<min(number, 20), current_particle++)
+		INVOKE_ASYNC(src, PROC_REF(create_sparks), current_particle)
 	if(!do_NOT_delete)
 		QDEL_IN(src, 2 SECONDS)
+
+/datum/effect_system/spark_spread/proc/setup_and_start(particle_count = 3, cardinal_dirs_only = FALSE, target)
+	set_up(particle_count, cardinal_dirs_only, target)
+	start()
+
+/datum/effect_system/spark_spread/proc/setup_and_start_with_delay(particle_count = 3, cardinal_dirs_only = FALSE, target, delay = null)
+	var/datum/callback/callback = CALLBACK(src, PROC_REF(setup_and_start), particle_count, cardinal_dirs_only, target)
+	if (delay)
+		addtimer(callback, delay)
+	else
+		callback.Invoke()
 
 
 /////////////////////////////////////////////

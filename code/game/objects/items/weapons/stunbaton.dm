@@ -25,10 +25,6 @@
 	var/hitcost = 1000 //oh god why do power cells carry so much charge? We probably need to make a distinction between "industrial" sized power cells for APCs and power cells for everything else.
 	var/has_user_lock = TRUE //whether the baton prevents people without correct access from using it.
 
-/obj/item/weapon/baton/suicide_act(mob/user)
-	user.visible_message(SPAN_SUICIDE("[user] is putting the live [name] in \his mouth! It looks like \he's trying to commit suicide."))
-	return (FIRELOSS)
-
 /obj/item/weapon/baton/Initialize(mapload, ...)
 	. = ..()
 	bcell = new/obj/item/cell/high(src) //Fuckit lets givem all the good cells
@@ -113,12 +109,12 @@
 	var/mob/living/carbon/human/human_target = target
 	if(has_user_lock && !skillcheck(real_user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 		if(prob(70) && status)
-			to_chat(real_user, SPAN_WARNING("You hit yourself with the [src] during the struggle..."))
+			to_chat(real_user, SPAN_WARNING("You hit yourself with [src] during the struggle..."))
 			real_user.drop_held_item()
 			real_user.apply_effect(1,STUN)
 			human_target = real_user
 		if(prob(20) && !status) //a relatively reliable melee weapon when turned off.
-			to_chat(real_user, SPAN_WARNING("You grab the [src] incorrectly twisting your hand in the process."))
+			to_chat(real_user, SPAN_WARNING("You grab [src] incorrectly twisting your hand in the process."))
 			real_user.drop_held_item()
 			real_user.apply_effect(1,STUN)
 			real_user.apply_damage(force, BRUTE, pick("l_hand","r_hand"), no_limb_loss = TRUE)

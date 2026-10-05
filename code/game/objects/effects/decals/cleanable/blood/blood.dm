@@ -17,6 +17,7 @@
 	var/amount = 3
 	var/drying_time = 30 SECONDS
 	var/dry_start_time // If this dries, track the dry start time for footstep drying
+	var/apply_bloody_feet = TRUE
 	garbage = FALSE // Keep for atmosphere
 
 /obj/effect/decal/cleanable/blood/Destroy()
@@ -42,30 +43,40 @@
 		dry_start_time = world.time
 		addtimer(CALLBACK(src, PROC_REF(dry)), drying_time * (amount+1))
 
-/obj/effect/decal/cleanable/blood/Crossed(atom/movable/AM)
-	. = ..()
+/obj/effect/decal/cleanable/blood/Crossed(atom/movable/crossed_by)
+	..()
+
+	if(!apply_bloody_feet)
+		return
+
 	// Check if the blood is dry and only humans
 	// can make footprints
-	if(!amount || !ishuman(AM) || QDELETED(AM))
+	if(!amount)
 		return
-
+	if(QDELETED(crossed_by))
+		return
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/blood_optimization))
 		return
+	if(!ishuman(crossed_by))
+		return
 
-	var/mob/living/carbon/human/H = AM
-	H.add_blood(color, BLOOD_FEET)
+	var/mob/living/carbon/human/crossing_human = crossed_by
+	if(crossing_human.stat != CONSCIOUS)
+		return
+
+	crossing_human.add_blood(color, BLOOD_FEET)
+
+	if(GLOB.perf_flags & PERF_TOGGLE_NOBLOODPRINTS)
+		return
 
 	var/dry_time_left = 0
 	if(drying_time)
 		dry_time_left = max(0, drying_time - (world.time - dry_start_time))
 
-	if(GLOB.perf_flags & PERF_TOGGLE_NOBLOODPRINTS)
-		return
-
-	if(!H.bloody_footsteps)
-		H.AddElement(/datum/element/bloody_feet, dry_time_left, H.shoes, amount, color)
+	if(!crossing_human.bloody_footsteps)
+		crossing_human.AddElement(/datum/element/bloody_feet, dry_time_left, crossing_human.shoes, amount, color)
 	else
-		SEND_SIGNAL(H, COMSIG_HUMAN_BLOOD_CROSSED, amount, color, dry_time_left)
+		SEND_SIGNAL(crossing_human, COMSIG_HUMAN_BLOOD_CROSSED, amount, color, dry_time_left)
 
 /obj/effect/decal/cleanable/blood/proc/dry()
 	amount = 0

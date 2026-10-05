@@ -10,6 +10,14 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 #define APC_COVER_OPEN 1
 #define APC_COVER_REMOVED 2
 
+// APC power control board status:
+#define APC_ELECTRONICS_NONE 0
+#define APC_ELECTRONICS_INSTALLED 1
+#define APC_ELECTRONICS_SECURED 2
+
+/// Cable coil needed to wire an APC and given back when cut
+#define APC_CABLE_AMOUNT 10
+
 // APC charging status:
 #define APC_NOT_CHARGING 0
 #define APC_CHARGING 1
@@ -110,8 +118,8 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 	var/debug = 0
 	/// 0 = off, 1 = eqp and lights off, 2 = eqp off, 3 = all on.
 	var/autoflag = 0
-	/// 0 - none, 1 - plugged in, 2 - secured by screwdriver
-	var/has_electronics = 0
+	/// Power control board status
+	var/has_electronics = APC_ELECTRONICS_NONE
 	/// Used for the Blackout malf module
 	var/overload = 1
 	/// Used for counting how many times it has been hit, used for Aliens at the moment
@@ -369,7 +377,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 	terminal.master = src
 
 /obj/structure/machinery/power/apc/proc/init()
-	has_electronics = 2 //Installed and secured
+	has_electronics = APC_ELECTRONICS_SECURED
 	//Is starting with a power cell installed, create it and set its charge level
 	if(cell_type)
 		cell = new cell_type(src)
@@ -393,14 +401,37 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 /obj/structure/machinery/power/apc/get_examine_text(mob/user)
 	. = list(desc)
 
+	var/turf/apc_turf = get_turf(src)
+	var/tile_note = apc_turf?.intact_tile ? " The floor tile underneath must be pried up with a [SPAN_HELPFUL("crowbar")] before touching the terminal." : ""
+
 	if(stat & BROKEN)
-		. += SPAN_INFO("It appears to be completely broken. Bash it open with any tool.")
-		return
+		. += SPAN_INFO("It appears to be completely broken.")
+		if(!opened)
+			. += SPAN_NOTICE("Bash the damaged cover off with a [SPAN_HELPFUL("crowbar")] or [SPAN_HELPFUL("wrench")].")
+			return .
+		if(cell)
+			. += SPAN_NOTICE("Remove the [SPAN_HELPFUL("power cell")] with an empty hand.")
+			return .
+		switch(has_electronics)
+			if(APC_ELECTRONICS_SECURED)
+				. += SPAN_NOTICE("[SPAN_HELPFUL("Screwdriver")] to unfasten the charred power control board.")
+			if(APC_ELECTRONICS_INSTALLED)
+				if(terminal)
+					. += SPAN_NOTICE("[SPAN_HELPFUL("Wirecutters")] to cut the damaged power terminal.[tile_note]")
+				else
+					. += SPAN_NOTICE("[SPAN_HELPFUL("Crowbar")] to remove the charred power control board.")
+			if(APC_ELECTRONICS_NONE)
+				if(terminal)
+					. += SPAN_NOTICE("Replace the damaged frame with a new [SPAN_HELPFUL("APC frame")] to repair, or [SPAN_HELPFUL("wirecutters")] to cut the power terminal to dismantle.[tile_note]")
+				else
+					. += SPAN_NOTICE("Replace the damaged frame with a new [SPAN_HELPFUL("APC frame")] to repair, or [SPAN_HELPFUL("blowtorch")] the frame apart to dismantle.")
+		return .
+
 	if(opened)
 		if(has_electronics && terminal)
 			. += SPAN_INFO("The cover is [opened == APC_COVER_REMOVED ? "removed":"open"] and the power cell is [cell ? "installed":"missing"].")
 		else if (!has_electronics && terminal)
-			. += SPAN_INFO("There are some wires but no any electronics.")
+			. += SPAN_INFO("There are some wires but no electronics.")
 		else if (has_electronics && !terminal)
 			. += SPAN_INFO("Electronics installed but not wired.")
 		else
@@ -411,6 +442,53 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 			. += SPAN_INFO("The cover is closed. Something is wrong with it, it doesn't work.")
 		else
 			. += SPAN_INFO("The cover is closed.")
+
+	// Examine helper text
+	// Electrical fault, separate from construction.
+	if(shorted && !(stat & MAINT))
+		// Mending the main power wire clears the fault, so an intact wire has to be cut first
+		var/wire_fix = isWireCut(APC_WIRE_MAIN_POWER) ? "mend" : "cut and mend"
+		if(opened)
+			. += SPAN_NOTICE("It has an electrical fault. [SPAN_HELPFUL("Crowbar")] to close the cover, [SPAN_HELPFUL("screwdriver")] to expose the wiring, then use [SPAN_HELPFUL("wirecutters")] to [wire_fix] the main power wire.")
+		else if(!wiresexposed)
+			. += SPAN_NOTICE("It has an electrical fault. [SPAN_HELPFUL("Screwdriver")] to expose the wiring, then use [SPAN_HELPFUL("wirecutters")] to [wire_fix] the main power wire.")
+		else
+			. += SPAN_NOTICE("It has an electrical fault. Use [SPAN_HELPFUL("wirecutters")] to [wire_fix] the main power wire.")
+
+	if(!opened)
+		if(stat & MAINT)
+			. += SPAN_NOTICE("[SPAN_HELPFUL("Crowbar")] to open the cover and check the electronics.")
+		else if(!coverlocked)
+			. += SPAN_NOTICE("[SPAN_HELPFUL("Crowbar")] to open the cover.")
+		else if(wiresexposed)
+			. += SPAN_NOTICE("[SPAN_HELPFUL("Screwdriver")] to close the wiring panel.")
+		else if(locked)
+			. += SPAN_NOTICE("Use an [SPAN_HELPFUL("ID card")] to unlock the interface and disengage the cover lock.")
+		else
+			. += SPAN_NOTICE("Disengage the cover lock in the interface, then [SPAN_HELPFUL("crowbar")] to open.")
+		return .
+
+	switch(has_electronics)
+		if(APC_ELECTRONICS_NONE)
+			if(terminal)
+				. += SPAN_NOTICE("Insert a [SPAN_HELPFUL("power control board")] to build, or [SPAN_HELPFUL("wirecutters")] to cut the power terminal to dismantle.[tile_note]")
+			else
+				. += SPAN_NOTICE("Wire it with [SPAN_HELPFUL("[APC_CABLE_AMOUNT] cable coil")] to build, or [SPAN_HELPFUL("blowtorch")] the frame apart to dismantle.[tile_note]")
+		if(APC_ELECTRONICS_INSTALLED)
+			if(!terminal)
+				. += SPAN_NOTICE("Wire it with [SPAN_HELPFUL("[APC_CABLE_AMOUNT] cable coil")] to build, or [SPAN_HELPFUL("crowbar")] to remove the power control board.[tile_note]")
+			else if(cell)
+				. += SPAN_NOTICE("Remove the [SPAN_HELPFUL("power cell")] with an empty hand.")
+			else
+				. += SPAN_NOTICE("[SPAN_HELPFUL("Screwdriver")] to secure the power control board, or [SPAN_HELPFUL("wirecutters")] to cut the power terminal to dismantle.[tile_note]")
+		if(APC_ELECTRONICS_SECURED)
+			if(!cell)
+				. += SPAN_NOTICE("Insert a [SPAN_HELPFUL("power cell")] to finish, or [SPAN_HELPFUL("screwdriver")] to unfasten the power control board.")
+			else if(opened == APC_COVER_OPEN)
+				. += SPAN_NOTICE("[SPAN_HELPFUL("Crowbar")] to close the cover, or remove the [SPAN_HELPFUL("power cell")] with an empty hand to dismantle.")
+			else
+				. += SPAN_NOTICE("Remove the [SPAN_HELPFUL("power cell")] with an empty hand to dismantle.")
+	return .
 
 //Update the APC icon to show the three base states
 //Also add overlays for indicator lights
@@ -605,7 +683,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 	add_fingerprint(user)
 
 	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR) && opened)
-		if(has_electronics == 1)
+		if(has_electronics == APC_ELECTRONICS_INSTALLED)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no idea how to deconstruct [src]."))
 				return
@@ -615,8 +693,8 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 			playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] starts removing [src]'s power control board."),
 			SPAN_NOTICE("You start removing [src]'s power control board.")) //lpeters - fixed grammar issues
-			if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && has_electronics == 1)
-				has_electronics = 0
+			if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && has_electronics == APC_ELECTRONICS_INSTALLED)
+				has_electronics = APC_ELECTRONICS_NONE
 				if((stat & BROKEN))
 					user.visible_message(SPAN_NOTICE("[user] breaks [src]'s charred power control board and removes the remains."),
 					SPAN_NOTICE("You break [src]'s charred power control board and remove the remains."))
@@ -663,14 +741,14 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 				to_chat(user, SPAN_WARNING("Close the APC first.")) //Less hints more mystery!
 				return
 			else
-				if(has_electronics == 1 && terminal)
-					has_electronics = 2
+				if(has_electronics == APC_ELECTRONICS_INSTALLED && terminal)
+					has_electronics = APC_ELECTRONICS_SECURED
 					stat &= ~MAINT
 					playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 					user.visible_message(SPAN_NOTICE("[user] screws [src]'s circuit electronics into place."),
 					SPAN_NOTICE("You screw [src]'s circuit electronics into place."))
-				else if(has_electronics == 2)
-					has_electronics = 1
+				else if(has_electronics == APC_ELECTRONICS_SECURED)
+					has_electronics = APC_ELECTRONICS_INSTALLED
 					stat |= MAINT
 					playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 					user.visible_message(SPAN_NOTICE("[user] unfastens [src]'s circuit electronics."),
@@ -707,7 +785,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 				update_icon()
 			else
 				to_chat(user, SPAN_WARNING("Access denied."))
-	else if(iswire(attacking_item) && !terminal && opened && has_electronics != 2)
+	else if(iswire(attacking_item) && !terminal && opened && has_electronics != APC_ELECTRONICS_SECURED)
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [src]."))
 			return
@@ -715,13 +793,13 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 			to_chat(user, SPAN_WARNING("You must remove the floor plating in front of the APC first."))
 			return
 		var/obj/item/stack/cable_coil/coil = attacking_item
-		if(coil.get_amount() < 10)
+		if(coil.get_amount() < APC_CABLE_AMOUNT)
 			to_chat(user, SPAN_WARNING("You need more wires."))
 			return
 		user.visible_message(SPAN_NOTICE("[user] starts wiring [src]'s frame."),
 		SPAN_NOTICE("You start wiring [src]'s frame."))
 		playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
-		if(do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && !terminal && opened && has_electronics != 2)
+		if(do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && !terminal && opened && has_electronics != APC_ELECTRONICS_SECURED)
 			var/turf/turf = get_turf(src)
 			var/obj/structure/cable/cable = turf.get_cable_node()
 			if(prob(50) && electrocute_mob(usr, cable, cable))
@@ -729,12 +807,12 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 				spark.set_up(5, 1, src)
 				spark.start()
 				return
-			if(coil.use(10))
+			if(coil.use(APC_CABLE_AMOUNT))
 				user.visible_message(SPAN_NOTICE("[user] wires [src]'s frame."),
 				SPAN_NOTICE("You wire [src]'s frame."))
 				make_terminal()
 				connect_to_network()
-	else if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WIRECUTTERS) && terminal && opened && has_electronics != 2)
+	else if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WIRECUTTERS) && terminal && opened && has_electronics != APC_ELECTRONICS_SECURED)
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [attacking_item]."))
 			return
@@ -753,12 +831,12 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 				spark.set_up(5, 1, src)
 				spark.start()
 				return
-			new /obj/item/stack/cable_coil(loc,10)
+			new /obj/item/stack/cable_coil(loc, APC_CABLE_AMOUNT)
 			user.visible_message(SPAN_NOTICE("[user] removes [src]'s wiring and terminal."),
 			SPAN_NOTICE("You remove [src]'s wiring and terminal."))
 			qdel(terminal)
 			terminal = null
-	else if(istype(attacking_item, /obj/item/circuitboard/apc) && opened && has_electronics == 0 && !(stat & BROKEN))
+	else if(istype(attacking_item, /obj/item/circuitboard/apc) && opened && has_electronics == APC_ELECTRONICS_NONE && !(stat & BROKEN))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [attacking_item]."))
 			return
@@ -766,17 +844,17 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 		SPAN_NOTICE("You start inserting the power control board into [src]."))
 		playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 		if(do_after(user, 15, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			has_electronics = 1
+			has_electronics = APC_ELECTRONICS_INSTALLED
 			user.visible_message(SPAN_NOTICE("[user] inserts the power control board into [src]."),
 			SPAN_NOTICE("You insert the power control board into [src]."))
 			qdel(attacking_item)
-	else if(istype(attacking_item, /obj/item/circuitboard/apc) && opened && has_electronics == 0 && (stat & BROKEN))
+	else if(istype(attacking_item, /obj/item/circuitboard/apc) && opened && has_electronics == APC_ELECTRONICS_NONE && (stat & BROKEN))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [attacking_item]."))
 			return
 		to_chat(user, SPAN_WARNING("You cannot put the board inside, the frame is damaged."))
 		return
-	else if(iswelder(attacking_item) && opened && has_electronics == 0 && !terminal)
+	else if(iswelder(attacking_item) && opened && has_electronics == APC_ELECTRONICS_NONE && !terminal)
 		if(!HAS_TRAIT(attacking_item, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
@@ -1566,6 +1644,12 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, flatten_numeric_alist(alist(
 #undef APC_COVER_CLOSED
 #undef APC_COVER_OPEN
 #undef APC_COVER_REMOVED
+
+#undef APC_ELECTRONICS_NONE
+#undef APC_ELECTRONICS_INSTALLED
+#undef APC_ELECTRONICS_SECURED
+
+#undef APC_CABLE_AMOUNT
 
 #undef APC_NOT_CHARGING
 #undef APC_CHARGING

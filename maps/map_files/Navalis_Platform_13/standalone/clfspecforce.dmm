@@ -73,11 +73,6 @@
 /area/navalis/indoors/clf_shuttle)
 "fw" = (
 /obj/structure/surface/table/almayer,
-/obj/item/weapon/gun/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/almayer,
 /area/navalis/indoors/clf_shuttle)
@@ -253,7 +248,6 @@
 /obj/structure/machinery/faxmachine{
 	department = "CLF - Cell 42"
 	},
-/obj/item/paper/varadero/clf,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},

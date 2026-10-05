@@ -58,6 +58,10 @@
 	if(flags_obj & OBJ_CAN_ACCESSORIZE)
 		.+= SPAN_ORANGE("This object can be converted into an accessory. Use it in-hand to convert it!")
 
+	var/obj/item/storage/internal/pockets = get_pockets()
+	if(pockets && (pockets.storage_flags & STORAGE_ALLOW_DRAWING_METHOD_TOGGLE))
+		. += "\nCtrl + Click to swap storage drawing method."
+
 /obj/item/clothing/unique_action(mob/user)
 	if(flags_obj & OBJ_IS_STYLISH)
 		change_style(user)
@@ -632,5 +636,9 @@
 	if(pockets && !mods[SHIFT_CLICK] && mods[MIDDLE_CLICK] && CAN_PICKUP(user, src))
 		pockets.open(user)
 		return TRUE
+
+	if(pockets && loc == user && mods[CTRL_CLICK] && (pockets.storage_flags & STORAGE_ALLOW_DRAWING_METHOD_TOGGLE))
+		pockets.storage_draw_logic(pockets.name)
+		return
 
 	return ..()

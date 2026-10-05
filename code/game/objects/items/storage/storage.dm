@@ -83,6 +83,9 @@
 	if(mods[ALT_CLICK]  && loc == user && !user.get_active_hand())
 		return FALSE
 
+	if(mods[CTRL_CLICK] && loc == user && (storage_flags & STORAGE_ALLOW_DRAWING_METHOD_TOGGLE))
+		storage_draw_logic(name)
+
 	return ..()
 
 /obj/item/storage/proc/handle_mmb_open(mob/user)
@@ -1029,3 +1032,8 @@ Returns FALSE if no top level turf (a loc was null somewhere, or a non-turf atom
 	if(src && ishuman(usr))
 		instant_pill_grab_mode = !instant_pill_grab_mode
 		to_chat(usr, SPAN_NOTICE("You will now [instant_pill_grab_mode ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))
+
+/obj/item/storage/get_examine_text(mob/user)
+	. = ..()
+	if(storage_flags & STORAGE_ALLOW_DRAWING_METHOD_TOGGLE)
+		. += "\nCtrl + Click to swap storage drawing method."

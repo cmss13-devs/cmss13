@@ -632,7 +632,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 /mob/living/carbon/xenomorph/proc/hud_set_design_marks()
 	if(!client)
 		return
-	for(var/obj/effect/alien/resin/design/des in hive.designer_marks)
+	for(var/obj/effect/alien/resin/design/des in hive.architect_marks)
 		if(des.chosenMark)
 			client.images |= des.chosenMark
 

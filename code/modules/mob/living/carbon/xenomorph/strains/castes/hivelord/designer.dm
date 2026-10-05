@@ -1,8 +1,8 @@
-/datum/xeno_strain/designer
-	name = HIVELORD_DESIGNER
+/datum/xeno_strain/architect
+	name = HIVELORD_ARCHITECT
 	description = "You give up direct resin building, lose some plasma and health, but gain stronger pheromones and longer vision. You can place up to 36 design nodes: optimized nodes boost building by 50%, flexible nodes reduce plasma cost by 50%, and construct nodes allow anyone to donate plasma to build weedbound resin walls or doors, even on surfaces where we can't normally build. Some castes like hivelord, carrier, burrower and queen can stimulate construct nodes to make thick weedbound variant including gardener drone. You can mark nodes as walls or doors, remotely upgrade weed nodes, control doors, and remove nodes. Using Greater Resin Surge turns all design nodes into weaker reflective walls for temporary hive defense. Your tackle is slightly stronger, causing longer knockdowns."
-	flavor_description = "You are hive's designer, while you no longer build with your own claws, your influence shapes the very foundation of the swarm, allowing it to expand beyond limits."
-	icon_state_prefix = "Designer"
+	flavor_description = "You are hive's architect, while you no longer build with your own claws, your influence shapes the very foundation of the swarm, allowing it to expand beyond limits."
+	icon_state_prefix = "Architect"
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/secrete_resin/hivelord,
@@ -16,14 +16,14 @@
 		/datum/action/xeno_action/activable/place_design, //macro 3
 		/datum/action/xeno_action/onclick/toggle_design_icons, //macro 4
 		/datum/action/xeno_action/activable/greater_resin_surge, //macro 5
-		/datum/action/xeno_action/onclick/toggle_long_range/designer,
+		/datum/action/xeno_action/onclick/toggle_long_range/architect,
 		/datum/action/xeno_action/active_toggle/toggle_speed,
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
 	)
 
-	behavior_delegate_type = /datum/behavior_delegate/hivelord_designer
+	behavior_delegate_type = /datum/behavior_delegate/hivelord_architect
 
-/datum/xeno_strain/designer/apply_strain(mob/living/carbon/xenomorph/hivelord/hivelord)
+/datum/xeno_strain/architect/apply_strain(mob/living/carbon/xenomorph/hivelord/hivelord)
 	hivelord.available_design = list(
 		/obj/effect/alien/resin/design/speed_node,
 		/obj/effect/alien/resin/design/cost_node,
@@ -54,10 +54,10 @@
 			action.ability_primacy = XENO_NOT_PRIMARY_ACTION
 			continue
 
-/datum/behavior_delegate/hivelord_designer
-	name = "Hivelord Designer Behavior Delegate"
+/datum/behavior_delegate/hivelord_architect
+	name = "Hivelord Architect Behavior Delegate"
 
-/datum/behavior_delegate/hivelord_designer/append_to_stat()
+/datum/behavior_delegate/hivelord_architect/append_to_stat()
 	. = list()
 	. += "Nodes sustained: [length(bound_xeno.current_design)] / [bound_xeno.max_design_nodes]"
 
@@ -78,7 +78,7 @@
 	icon_state = "mark_door"
 
 // Far-sight
-/datum/action/xeno_action/onclick/toggle_long_range/designer
+/datum/action/xeno_action/onclick/toggle_long_range/architect
 	handles_movement = FALSE
 	should_delay = FALSE
 	ability_primacy = XENO_NOT_PRIMARY_ACTION

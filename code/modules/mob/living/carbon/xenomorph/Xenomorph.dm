@@ -327,13 +327,13 @@
 	var/obj/effect/alien/resin/fruit/selected_fruit = null
 	var/list/built_structures = list()
 
-	/// the typepath of the designer placeable we wanna put down.
+	/// the typepath of the architect placeable we wanna put down.
 	var/obj/effect/alien/resin/design/selected_design = null
-	/// List of available design marks for this designer.
+	/// List of available design marks for this architect.
 	var/list/available_design = list()
-	/// Stores the current design nodes placed by the designer.
+	/// Stores the current design nodes placed by the architect.
 	var/list/current_design = list()
-	/// Maximum design nodes the designer can place.
+	/// Maximum design nodes the architect can place.
 	var/max_design_nodes = 0
 	/// Currently selected design mark to place
 	var/selected_design_mark

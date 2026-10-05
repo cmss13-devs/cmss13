@@ -1471,7 +1471,7 @@
 
 
 //--------------------------------//
-//----// Designer Node Base //----//
+//----// Architect Node Base //----//
 //--------------------------------//
 
 /obj/effect/alien/resin/design
@@ -1520,7 +1520,7 @@
 
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(hive)
-		hive.designer_marks += src
+		hive.architect_marks += src
 		if(mark_meaning)
 			var/icon_state_to_use = get_marker_icon_state()
 			if(icon_state_to_use)
@@ -1536,7 +1536,7 @@
 /obj/effect/alien/resin/design/Destroy()
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(hive)
-		hive.designer_marks -= src
+		hive.architect_marks -= src
 		for(var/mob/living/carbon/xenomorph/xeno in hive.totalXenos)
 			if(xeno.client && chosenMark)
 				xeno.client.images -= chosenMark
@@ -1839,7 +1839,7 @@
 	if(istype(xeno.strain, /datum/xeno_strain/gardener))
 		thick_build = TRUE
 
-	if((xeno.caste_type in XENO_CONSTRUCT_NODE_BOOST) && !istype(xeno.strain, /datum/xeno_strain/designer))
+	if((xeno.caste_type in XENO_CONSTRUCT_NODE_BOOST) && !istype(xeno.strain, /datum/xeno_strain/architect))
 		thick_build = TRUE
 
 	addtimer(CALLBACK(src, PROC_REF(complete_construction), target_turf, mark_meaning, xeno), 4 SECONDS)

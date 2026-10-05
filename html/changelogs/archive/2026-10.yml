@@ -35,3 +35,11 @@
       maps are edited to add sensor tower spawn locations in this PR.
   zzzmike:
   - qol: Changes resin hole message to account for huggers rather than only acid
+2026-10-05:
+  Nihisohel:
+  - rscadd: You can now use middle mouse button to open hat (boonie hats, etc) storage
+  - bugfix: You can use middle mouse button to open clothing storage items again
+  ghostsheet:
+  - bugfix: MOU53 examine will now show the correct shell order.
+  predatornc:
+  - rscadd: a new CL briefing has replaced the placeholder one on LV-624

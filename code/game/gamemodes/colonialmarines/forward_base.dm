@@ -83,7 +83,7 @@
 			bunker_area.flags_area &= ~AREA_NOBURROW
 
 /datum/game_mode/colonialmarines/forward_base/proc/disable_base_comms()
-	marine_announcement("WARNING. BASE RELAY BACKUP BATTERY DEPLETED. Military radio coverage is offline. Recommended action: hijack a civilian communications tower and reestablish contact through the colony network.", "BASE COMMUNICATIONS ALERT", 'sound/AI/commandreport.ogg')
+	marine_announcement("WARNING. BASE RELAY BACKUP BATTERY DEPLETED. Military radio coverage is offline. Recommended action: activate a civilian communications tower to restore communications through the colony network.", "BASE COMMUNICATIONS ALERT", 'sound/AI/commandreport.ogg')
 	for(var/obj/structure/machinery/telecomms/relay/preset/tower/all/relay in GLOB.telecomms_list)
 		if(istype(get_area(relay), /area/forward_base))
 			relay.toggled = FALSE

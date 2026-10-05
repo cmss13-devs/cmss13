@@ -736,9 +736,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/nw)
-"ach" = (
-/turf/closed/wall/solaris/rock,
-/area/forward_base/hallways/lower/port_midship_hallway)
 "aci" = (
 /turf/open/floor/plating/asteroidwarning/south,
 /area/bigredv2/outside/filtration_cave_cas)
@@ -1035,13 +1032,6 @@
 /area/forward_base/shipboard/brig/processing)
 "adf" = (
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/forward_base/shipboard/brig/processing)
-"adg" = (
-/obj/structure/closet/secure_closet/brig,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/almayer/red/north,
 /area/forward_base/shipboard/brig/processing)
 "adh" = (
 /obj/structure/machinery/door_control/brbutton{
@@ -1635,9 +1625,9 @@
 /turf/open/floor/plating,
 /area/forward_base/squads/req)
 "afc" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+/obj/structure/disposalpipe/junction{
+	dir = 1;
+	icon_state = "pipe-y"
 	},
 /turf/open/antre/plating/direction_north/west_edge,
 /area/forward_base/hallways/lower/starboard_midship_hallway)
@@ -1661,6 +1651,10 @@
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 8;
 	name = "ship-grade camera"
+	},
+/obj/structure/disposalpipe/up/almayer{
+	dir = 8;
+	id = "almayerlink"
 	},
 /turf/open/floor/almayer/blue/west,
 /area/forward_base/hallways/lower/starboard_midship_hallway)
@@ -10083,6 +10077,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/whitegreen/southwest,
 /area/bigredv2/outside/medical)
+"aHs" = (
+/obj/structure/reagent_dispensers/tank/water,
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = 7
+	},
+/obj/item/tool/soap{
+	pixel_y = 6;
+	pixel_x = -6
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/hallways/lower/port_midship_hallway)
 "aHt" = (
 /turf/open/floor/almayer,
 /area/forward_base/engineering/lower)
@@ -11090,9 +11095,8 @@
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/hydroponics)
 "aKH" = (
-/obj/structure/coatrack{
-	pixel_x = 3;
-	pixel_y = 20
+/obj/structure/closet/walllocker{
+	pixel_y = 25
 	},
 /turf/open/floor/almayer/flooredge/southwest,
 /area/forward_base/command/corporateliaison)
@@ -11756,11 +11760,11 @@
 	pixel_x = -5;
 	pixel_y = 10
 	},
-/obj/item/reagent_container/glass/rag{
-	pixel_x = 4
-	},
 /obj/structure/machinery/light{
 	dir = 1
+	},
+/obj/item/storage/box/cups{
+	pixel_x = 5
 	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/living/briefing)
@@ -14263,6 +14267,9 @@
 /obj/item/trash/USCMtray{
 	pixel_x = 5;
 	pixel_y = 14
+	},
+/obj/item/storage/box/cups{
+	pixel_x = -11
 	},
 /turf/open/floor/almayer/green/northeast,
 /area/forward_base/living/briefing)
@@ -18304,6 +18311,9 @@
 /area/forward_base/squads/req)
 "bhD" = (
 /obj/structure/platform_decoration/metal/strata/east,
+/obj/item/tool/mop{
+	pixel_x = -9
+	},
 /turf/open/floor/almayer/green/west,
 /area/forward_base/squads/req)
 "bhE" = (
@@ -18712,7 +18722,7 @@
 /obj/structure/machinery/conveyor{
 	id = "lower_garbage"
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/plating_striped/east,
 /area/forward_base/hallways/lower/starboard_midship_hallway)
 "biR" = (
 /obj/item/device/radio/intercom{
@@ -21138,8 +21148,6 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
 "bqx" = (
-/obj/structure/bed,
-/obj/item/bedsheet/brown,
 /obj/structure/machinery/flasher{
 	id = "Cell 1";
 	pixel_x = -24
@@ -21377,19 +21385,23 @@
 /turf/open/floor/almayer/bluefull,
 /area/forward_base/command/cic)
 "bqZ" = (
-/obj/structure/bed,
-/obj/item/bedsheet/brown,
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	name = "General Listening Channel";
 	pixel_y = 26
 	},
+/obj/structure/bed/hybrisa/prisonbed,
+/obj/item/bedsheet/brown{
+	pixel_y = 10
+	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/shipboard/brig/processing)
 "bra" = (
-/obj/structure/bed,
-/obj/item/bedsheet/brown,
+/obj/item/bedsheet/brown{
+	pixel_y = 10
+	},
 /obj/structure/machinery/light,
+/obj/structure/bed/hybrisa/prisonbed,
 /turf/open/floor/almayer/plate,
 /area/forward_base/shipboard/brig/processing)
 "brb" = (
@@ -21891,11 +21903,6 @@
 	},
 /turf/open/floor/almayer/emeraldfull,
 /area/forward_base/command/cic)
-"bsp" = (
-/obj/structure/bed,
-/obj/item/bedsheet/brown,
-/turf/open/floor/almayer/red/north,
-/area/forward_base/shipboard/brig/processing)
 "bsq" = (
 /obj/structure/machinery/door/window/brigdoor/southright{
 	id = "Cell 2";
@@ -22126,16 +22133,18 @@
 /turf/open/floor/almayer/emerald/east,
 /area/forward_base/command/cic)
 "bsV" = (
-/obj/structure/machinery/flasher{
-	id = "Cell 2";
-	pixel_x = 24
-	},
-/obj/structure/bed,
-/obj/item/bedsheet/brown,
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	name = "General Listening Channel";
 	pixel_y = 26
+	},
+/obj/structure/bed/hybrisa/prisonbed,
+/obj/item/bedsheet/brown{
+	pixel_y = 10
+	},
+/obj/structure/machinery/flasher{
+	id = "Cell 2";
+	pixel_x = 24
 	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/shipboard/brig/processing)
@@ -22344,6 +22353,10 @@
 /turf/open/mars_cave/mars_dirt_7,
 /area/bigredv2/outside/s)
 "btE" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	invisibility = 101
+	},
 /turf/open/floor/almayer/red2/east,
 /area/forward_base/shipboard/brig/processing)
 "btF" = (
@@ -22506,6 +22519,15 @@
 "bud" = (
 /turf/open/mars_cave/mars_cave_19,
 /area/bigredv2/outside/s)
+"bue" = (
+/obj/item/tool/mop{
+	pixel_x = -9
+	},
+/obj/item/reagent_container/glass/bucket/janibucket{
+	pixel_x = 3
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/hallways/lower/port_midship_hallway)
 "buf" = (
 /obj/structure/flora/grass/desert/lightgrass_12,
 /obj/effect/landmark/lv624/fog_blocker/short,
@@ -27584,13 +27606,13 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/almayer/mono,
-/area/forward_base/hallways/upper/port)
+/area/forward_base/shipboard/weapon_room)
 "bKd" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/belt/utility/full,
 /obj/item/clothing/glasses/welding,
 /turf/open/floor/almayer/flooredge/north,
-/area/forward_base/hallways/upper/port)
+/area/forward_base/shipboard/weapon_room)
 "bKe" = (
 /obj/structure/machinery/power/apc/upgraded/power/north,
 /turf/open/floor/almayer/plate,
@@ -27693,16 +27715,16 @@
 	req_one_access_txt = "7;19"
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/forward_base/hallways/upper/port)
+/area/forward_base/shipboard/weapon_room)
 "bKv" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/almayer/flooredge/west,
-/area/forward_base/hallways/upper/port)
+/area/forward_base/shipboard/weapon_room)
 "bKw" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/no_build/plate,
-/area/forward_base/hallways/upper/port)
+/area/forward_base/shipboard/weapon_room)
 "bKx" = (
 /turf/open/floor/almayer/cargo,
 /area/forward_base/shipboard/weapon_room)
@@ -28000,6 +28022,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/underdeck/hangar)
+"bLu" = (
+/obj/structure/janitorialcart,
+/turf/open/floor/plating/plating_catwalk,
+/area/forward_base/hallways/lower/port_midship_hallway)
 "bLv" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -28474,6 +28500,13 @@
 "bMP" = (
 /turf/open/floor/almayer/blue/southeast,
 /area/forward_base/underdeck/hangar)
+"bMQ" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	invisibility = 101
+	},
+/turf/closed/wall/almayer/reinforced,
+/area/forward_base/command/cic)
 "bMR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -28813,6 +28846,13 @@
 	},
 /turf/open/floor/almayer/plating_striped/east,
 /area/forward_base/squads/req)
+"bNH" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/antre/plating/direction_north/east_edge,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
 "bNI" = (
 /turf/closed/wall/almayer/white,
 /area/forward_base/medical/upper_medical)
@@ -28915,9 +28955,33 @@
 "bNU" = (
 /turf/open/floor/almayer/plating_striped/north,
 /area/forward_base/squads/req)
+"bNV" = (
+/obj/structure/disposaloutlet,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating_striped/east,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
+"bNW" = (
+/obj/structure/machinery/conveyor_switch{
+	id = "lower_garbage"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
 "bNX" = (
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/medical/upper_medical)
+"bNY" = (
+/obj/structure/disposalpipe/down/almayer{
+	dir = 4;
+	id = "almayerlink"
+	},
+/turf/open/floor/almayer/silverfull,
+/area/forward_base/medical/chemistry)
 "bNZ" = (
 /obj/structure/machinery/medical_pod/bodyscanner{
 	dir = 1
@@ -29748,11 +29812,6 @@
 	dir = 4;
 	light_color = "#ccecff"
 	},
-/turf/open/floor/almayer/sterile_green,
-/area/forward_base/medical/upper_medical)
-"bQD" = (
-/obj/structure/medical_supply_link/green,
-/obj/structure/machinery/cm_vending/sorted/medical/upp,
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/medical/upper_medical)
 "bQE" = (
@@ -31018,28 +31077,18 @@
 /turf/open/asphalt/cement/cement15,
 /area/bigredv2/outside/lz1_north_cas)
 "bTg" = (
-/obj/structure/disposaloutlet,
-/obj/structure/disposalpipe/trunk{
-	dir = 4
-	},
-/turf/open/floor/almayer/plate,
-/area/forward_base/hallways/lower/starboard_midship_hallway)
-"bTh" = (
-/obj/structure/machinery/conveyor_switch{
+/obj/structure/machinery/conveyor{
 	id = "lower_garbage"
 	},
+/turf/open/floor/almayer/plating_striped/east,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
+"bTh" = (
+/obj/structure/disposalpipe/segment,
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
 /turf/open/floor/almayer/plate,
-/area/forward_base/hallways/lower/starboard_midship_hallway)
-"bTi" = (
-/turf/closed/wall/almayer/outer/internal,
 /area/forward_base/hallways/lower/starboard_midship_hallway)
 "bTj" = (
 /obj/structure/disposalpipe/segment,
@@ -31314,6 +31363,9 @@
 /area/bigredv2/caves_se)
 "bTX" = (
 /obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
 /turf/open/floor/almayer/silverfull,
 /area/forward_base/medical/chemistry)
 "bTY" = (
@@ -31371,6 +31423,9 @@
 /area/forward_base/medical/chemistry)
 "bUb" = (
 /obj/structure/machinery/power/apc/upgraded/power/west,
+/obj/item/tool/mop{
+	pixel_x = -9
+	},
 /turf/open/floor/almayer/silverfull,
 /area/forward_base/medical/upper_medical)
 "bUc" = (
@@ -53375,8 +53430,8 @@ aao
 aao
 aao
 aao
-aao
 ahZ
+ark
 ark
 ark
 ark
@@ -53588,8 +53643,8 @@ aao
 aao
 aao
 aao
-aao
 ahZ
+bNV
 bTg
 biQ
 ark
@@ -53801,8 +53856,8 @@ aao
 aao
 aao
 aao
-aao
 ahZ
+bNW
 bTh
 bGp
 ark
@@ -54015,8 +54070,8 @@ ahZ
 ahZ
 ahZ
 ahZ
-ahZ
-bTi
+ark
+ark
 bHk
 ark
 aix
@@ -54041,9 +54096,9 @@ adj
 aix
 aix
 auQ
-auR
-auS
-auS
+bLu
+bue
+aHs
 auT
 auX
 aan
@@ -61481,7 +61536,7 @@ blP
 blQ
 blQ
 blQ
-blQ
+bNH
 blQ
 blR
 blS
@@ -61913,7 +61968,7 @@ bod
 bog
 boh
 boi
-bnJ
+bMQ
 bnJ
 bnJ
 bol
@@ -62135,9 +62190,9 @@ boQ
 boQ
 boQ
 bol
-ach
-ach
-ach
+asR
+asR
+asR
 aao
 aao
 boT
@@ -62984,7 +63039,7 @@ bnJ
 brF
 brF
 brG
-adg
+brH
 brh
 brN
 brQ
@@ -63194,7 +63249,7 @@ bpJ
 bsn
 bso
 bnJ
-bsp
+bpZ
 bqy
 bsq
 bpZ
@@ -103892,10 +103947,10 @@ aAG
 bJI
 bJK
 bJL
-bGJ
-bGJ
-bGJ
-bGJ
+bIB
+bIB
+bIB
+bIB
 bJM
 bJN
 bJO
@@ -104105,10 +104160,10 @@ aAG
 bJY
 bKa
 bKb
-bGJ
+bIB
 bKc
 bKd
-bGJ
+bIB
 bKe
 bKf
 bKg
@@ -104321,7 +104376,7 @@ bKt
 bKu
 bKv
 bKw
-bGJ
+bIB
 bKx
 bJN
 bKy
@@ -104531,10 +104586,10 @@ aTf
 bGJ
 bGJ
 bGJ
-bGJ
-bKF
-bKF
-bGJ
+bIB
+bJC
+bJC
+bIB
 bKG
 bKH
 bKI
@@ -108985,8 +109040,8 @@ bbS
 bbS
 bbS
 bbS
+bNY
 aYi
-bbS
 bQp
 bOo
 bOn
@@ -109203,7 +109258,7 @@ bbS
 bTR
 bOo
 bQC
-bQD
+bQz
 bNI
 bNI
 bKF

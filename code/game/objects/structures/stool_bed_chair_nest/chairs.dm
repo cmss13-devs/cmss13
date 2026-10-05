@@ -271,6 +271,7 @@
 		internal_dirs = shimmy_data[INDEX_INTERNAL_DIRS], \
 		allowed_pass_flag = shimmy_data[INDEX_PASS_FLAGS])
 
+
 /obj/structure/bed/chair/proc/update_shimmy_data(obj/structure/bed/chair/neighbor = null, force_update = FALSE)
 	if(shimmy_data == null)
 		return	//this chair doesnt shimmy
@@ -280,9 +281,10 @@
 			approachness = EAST | WEST
 		if(EAST, WEST)
 			approachness = NORTH | SOUTH
-	var/internalness = NORTH|SOUTH|EAST|WEST
-	if(neighbor && neighbor.buckled_mob)
+	var/internalness = NORTH | SOUTH | EAST | WEST
+	if(neighbor && neighbor.buckled_mob || buckled_mob)
 		internalness &= ~dir	//cant walk into filled seats
+		internalness &= ~turn(dir, 180)
 		approachness &= ~turn(dir, 180)	//cant walk from behind into filled seats
 		approachness &= ~dir
 	var/offset = 14
@@ -331,12 +333,23 @@
 			allowed_pass_flag = shimmy_data[INDEX_PASS_FLAGS] \
 		)
 
+
 /obj/structure/bed/chair/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(buckled_mob && isliving(mover) && shimmy_data)
-		var/mob/living/L = mover
-		if(!(L.pass_flags && (L.pass_flags.flags_pass & shimmy_data[INDEX_PASS_FLAGS])))
+		var/mob/living/creature = mover
+
+		if(!creature.pass_flags)
 			return BLOCKED_MOVEMENT
+
+		// small crawlers that can pass should pass anyway
+		if(creature.pass_flags.flags_can_pass_all & PASS_TYPE_CRAWLER)
+			return ..()
+
+		if(!(creature.pass_flags.flags_pass & shimmy_data[INDEX_PASS_FLAGS]))
+			return BLOCKED_MOVEMENT
+
 	return ..()
+
 
 /obj/structure/bed/chair/unbuckle()
 	if(buckled_mob)

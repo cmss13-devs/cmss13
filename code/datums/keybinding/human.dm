@@ -203,7 +203,7 @@
 				break
 
 	if(!whistling)
-		to_chat(human_user, SPAN_DANGER("You do not have a whislte in reach."))
+		to_chat(human_user, SPAN_DANGER("You do not have a whistle in reach on your person!"))
 		return
 	whistling.attack_self(human_user)
 

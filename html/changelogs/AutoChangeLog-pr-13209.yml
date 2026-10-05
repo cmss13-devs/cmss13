@@ -1,0 +1,5 @@
+author: "Nihisohel"
+delete-after: True
+changes:
+  - rscadd: "You can now use middle mouse button to open hat (boonie hats, etc) storage"
+  - bugfix: "You can use middle mouse button to open clothing storage items again"

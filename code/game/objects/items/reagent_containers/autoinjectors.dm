@@ -80,10 +80,10 @@
 
 	if(reagents.reagent_list)
 		for(var/datum/reagent/chemical in reagents.reagent_list)
-			if(reagents.reagent_list.len == 1)
+			if(length(reagents.reagent_list) == 1)
 				reagent_list_text += "[chemical.volume / uses_left]u [chemical.name]"
 				break
-			else if(reagents.reagent_list.len > 1)
+			else if(length(reagents.reagent_list) > 1)
 				if(length(reagents.reagent_list) == 2)
 					if(chemical != reagents.reagent_list[reagents.reagent_list.len])
 						reagent_list_text += "[chemical.volume / uses_left]u [chemical.name]"
@@ -96,6 +96,7 @@
 					else
 						reagent_list_text += "and [chemical.volume / uses_left]u [chemical.name]"
 						break
+
 		if(uses_left > 0)
 			if(max_uses == 1)
 				. += SPAN_NOTICE("It injects its entire payload and its label says each dose contains [reagent_list_text].")
@@ -122,29 +123,29 @@
 
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
 		if(reagents && reagents.reagent_list)
-			var/min_doses_to_od = null
+			var/do_not_exceed_this_amount_of_doses = null
 			var/frequency_word
 			for(var/datum/reagent/chemical in reagents.reagent_list)
 				var/doses = (chemical.overdose) / (chemical.volume / uses_left)
 				if(chemical.overdose == 0)
 					. += SPAN_HELPFUL("You know [chemical.name] cannot be overdosed.")
 					return
-				if(isnull(min_doses_to_od) || doses < min_doses_to_od)
-					min_doses_to_od = doses
+				if(isnull(do_not_exceed_this_amount_of_doses) || doses < do_not_exceed_this_amount_of_doses)
+					do_not_exceed_this_amount_of_doses = doses
 
-			if(min_doses_to_od > 0)
-				switch(floor(min_doses_to_od))
+			if(do_not_exceed_this_amount_of_doses > 0)
+				switch(floor(do_not_exceed_this_amount_of_doses))
 					if(1) frequency_word += "once"
 					if(2) frequency_word += "twice"
 					if(3) frequency_word += "thrice"
 
-/* 				if(min_doses_to_od < 1)
-					. += SPAN_WARNING("[chemical.volume / max_uses]u dose of [chemical.name] found in autoinjector exceeds [chemical.name]'s [chemical.overdose]u overdose limit.") */
-				// If you make a new autoinjector or modify an existing autoinjector's amount_per_transfer_from_this or volume variables, please uncomment the two lines above and else if the (floor(min_doses_to_od) < 4) to test it out. Autoinjectors with chemicals initialized into them should never overdose a patient after the first injection. - Puckaboo2
-				if(floor(min_doses_to_od) < 4)
+/* 				if(do_not_exceed_this_amount_of_doses < 1)
+					CRASH("[chemical.volume / max_uses]u dose of [chemical.name] found in [src] exceeds [chemical.name]'s [chemical.overdose]u overdose limit.) */
+				// If you make a new autoinjector or modify an existing autoinjector's amount_per_transfer_from_this or volume variables, please uncomment the two lines above and else if the (floor(do_not_exceed_this_amount_of_doses) < 4) to test it out. Autoinjectors with chemicals initialized into them should never overdose a patient after the first injection. - Puckaboo2
+				if(floor(do_not_exceed_this_amount_of_doses) < 4)
 					. += SPAN_HELPFUL("You know not to inject this autoinjector more than [frequency_word].")
-				else if(floor(min_doses_to_od) > 4)
-					. += SPAN_HELPFUL("You know not to exceed [min_doses_to_od] doses.")
+				else
+					. += SPAN_HELPFUL("You know not to exceed [floor(do_not_exceed_this_amount_of_doses)] injections.")
 
 /obj/item/reagent_container/hypospray/autoinjector/proc/get_autoinjector_examine_text(mob/user, max_uses)
 	. = list()

@@ -343,10 +343,10 @@
 /// Will return TRUE if reagents were deducted or no reagents were needed
 /obj/structure/machinery/cm_vending/sorted/medical/proc/try_deduct_chem(obj/item/reagent_container/container, mob/user)
 	var/missing_reagents = container.reagents.maximum_volume - container.reagents.total_volume
-    var/cannot_refill = FALSE
+	var/cannot_refill = FALSE
 	if(istype(container, /obj/item/reagent_container/hypospray/autoinjector))
 		var/obj/item/reagent_container/hypospray/autoinjector/autoinjector = container
-        cannot_refill = autoinjector.cannot_refill
+		cannot_refill = autoinjector.cannot_refill
 
 	if(!(is_type_in_list(container, chem_refill)) || cannot_refill)
 		to_chat(user, SPAN_WARNING("[src] has no refill ID for [container] and refuses to fill it!"))

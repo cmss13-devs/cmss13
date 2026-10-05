@@ -371,7 +371,7 @@
 					return FALSE
 				if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/yautja))//No error message. It's a crystal, right? It totally doesn't have medicine in it.
 					return FALSE
-				else if(autoinjector.cannot_refill)
+				else if((is_type_in_list(autoinjector, chem_refill)) && autoinjector.cannot_refill || autoinjector.cannot_refill)
 					to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test with [autoinjector]'s custom multi-reagent receiver valve failed.'"))
 					return FALSE
 				else

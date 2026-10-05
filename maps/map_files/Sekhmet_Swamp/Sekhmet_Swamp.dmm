@@ -104,6 +104,10 @@
 /obj/structure/platform_decoration/metal/shiva,
 /turf/open/floor/plating/kutjevo,
 /area/sekhmet/int_reg/warehouse)
+"aaw" = (
+/obj/structure/flora/wood/stick4,
+/turf/open/gm/coast/dirt/swampbeachcorner/north_east,
+/area/sekhmet/outside/swamp)
 "aax" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/machinery/light/small{
@@ -96618,7 +96622,7 @@ iqA
 iqA
 bKe
 cHW
-mkN
+aaw
 bij
 spM
 mWX

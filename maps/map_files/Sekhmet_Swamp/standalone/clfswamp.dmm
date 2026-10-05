@@ -585,11 +585,6 @@
 /obj/structure/surface/table/almayer{
 	color = "#8B9490"
 	},
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/weapon/gun/pistol/heavy,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/sekhmet/int_reg/yard)
 "xK" = (
@@ -1475,7 +1470,7 @@ Oz
 Oz
 Mb
 bL
-ln
+FD
 Ge
 FD
 bL

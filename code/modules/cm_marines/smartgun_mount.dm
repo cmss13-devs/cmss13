@@ -532,7 +532,7 @@
 	unslashable = TRUE
 	unacidable = TRUE //stop the xeno me(l)ta.
 	density = TRUE
-	needs_power = FALS
+	needs_power = FALSE
 	layer = ABOVE_MOB_LAYER //no hiding the hmg beind corpse
 	use_power = USE_POWER_NONE
 	projectile_coverage = PROJECTILE_COVERAGE_LOW

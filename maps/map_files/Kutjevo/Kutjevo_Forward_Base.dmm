@@ -2929,14 +2929,13 @@
 /obj/structure/machinery/conveyor{
 	id = "lower_garbage"
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/plating_striped/east,
 /area/forward_base/hallways/lower/starboard_midship_hallway)
 "aka" = (
-/obj/structure/disposaloutlet,
-/obj/structure/disposalpipe/trunk{
-	dir = 4
+/obj/structure/machinery/conveyor{
+	id = "lower_garbage"
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/plating_striped/east,
 /area/forward_base/hallways/lower/starboard_midship_hallway)
 "akb" = (
 /obj/structure/machinery/door/poddoor/almayer{
@@ -3025,16 +3024,10 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/hallways/lower/starboard_midship_hallway)
 "ako" = (
-/obj/structure/machinery/conveyor_switch{
-	id = "lower_garbage"
-	},
+/obj/structure/disposalpipe/segment,
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
 	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
 	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/hallways/lower/starboard_midship_hallway)
@@ -3153,9 +3146,6 @@
 /obj/item/weapon/gun/rifle/mar40/carbine,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
-"akI" = (
-/turf/closed/wall/almayer/outer/internal,
-/area/forward_base/hallways/lower/starboard_midship_hallway)
 "akJ" = (
 /obj/structure/barricade/metal,
 /obj/structure/machinery/door_control{
@@ -8128,9 +8118,9 @@
 /turf/open/antre/plating/direction_north/west_edge,
 /area/forward_base/hallways/lower/starboard_midship_hallway)
 "ayu" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+/obj/structure/disposalpipe/junction{
+	dir = 1;
+	icon_state = "pipe-y"
 	},
 /turf/open/antre/plating/direction_north/west_edge,
 /area/forward_base/hallways/lower/starboard_midship_hallway)
@@ -8361,6 +8351,10 @@
 	dir = 8;
 	name = "ship-grade camera"
 	},
+/obj/structure/disposalpipe/up/almayer{
+	dir = 8;
+	id = "almayerlink"
+	},
 /turf/open/floor/almayer/blue/west,
 /area/forward_base/hallways/lower/starboard_midship_hallway)
 "azg" = (
@@ -8480,6 +8474,13 @@
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/forward_base/command/cic)
+"azv" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/antre/plating/direction_north/east_edge,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
 "azw" = (
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
@@ -8947,13 +8948,6 @@
 	},
 /turf/open/floor/almayer/red2/west,
 /area/forward_base/shipboard/brig/processing)
-"aAE" = (
-/obj/structure/closet/secure_closet/brig,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/almayer/red/north,
-/area/forward_base/shipboard/brig/processing)
 "aAF" = (
 /obj/structure/sign/safety/one,
 /turf/closed/wall/almayer/reinforced,
@@ -9069,6 +9063,9 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/shipboard/brig/processing)
+"aAR" = (
+/turf/closed/wall/almayer/outer/internal,
+/area/bigredv2/caves)
 "aAS" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/crew/alt{
@@ -9381,11 +9378,6 @@
 	},
 /turf/open/floor/almayer/plating/no_build,
 /area/forward_base/command/cic)
-"aBA" = (
-/turf/closed/wall/almayer/reinforced{
-	blend_objects = list(/obj/structure/window_frame,/obj/structure/window/framed)
-	},
-/area/forward_base/shipboard/brig/processing)
 "aBB" = (
 /obj/item/device/motiondetector/m717{
 	pixel_x = 7;
@@ -9407,7 +9399,9 @@
 	pixel_x = 7;
 	pixel_y = 10
 	},
-/obj/structure/closet/secure_closet/brig,
+/obj/structure/closet/secure_closet{
+	req_one_access = list(3,104)
+	},
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison{
 	dir = 4;
 	id = "bot_armory";
@@ -9422,7 +9416,9 @@
 /obj/item/weapon/gun/shotgun/combat{
 	pixel_y = -6
 	},
-/obj/structure/closet/secure_closet/brig,
+/obj/structure/closet/secure_closet{
+	req_one_access = list(3,104)
+	},
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison{
 	dir = 4;
 	id = "bot_armory";
@@ -9437,7 +9433,9 @@
 /obj/item/weapon/gun/shotgun/combat{
 	pixel_y = -4
 	},
-/obj/structure/closet/secure_closet/brig,
+/obj/structure/closet/secure_closet{
+	req_one_access = list(3,104)
+	},
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison{
 	dir = 4;
 	id = "bot_armory";
@@ -9454,7 +9452,9 @@
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
-/obj/structure/closet/secure_closet/brig,
+/obj/structure/closet/secure_closet{
+	req_one_access = list(3,104)
+	},
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison{
 	dir = 4;
 	id = "bot_armory";
@@ -14228,6 +14228,13 @@
 "aOt" = (
 /turf/closed/wall/almayer,
 /area/forward_base/medical/morgue)
+"aOu" = (
+/obj/structure/disposaloutlet,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating_striped/east,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
 "aOv" = (
 /obj/structure/medical_supply_link/green,
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
@@ -15951,6 +15958,16 @@
 	},
 /turf/open/floor/almayer/silver/north,
 /area/forward_base/underdeck/hangar)
+"aSI" = (
+/obj/structure/machinery/conveyor_switch{
+	id = "lower_garbage"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/hallways/lower/starboard_midship_hallway)
 "aVv" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -30245,8 +30262,8 @@ dxF
 dxF
 dxF
 dxF
-dxF
-aRx
+aAR
+aAR
 ajK
 ajK
 ajK
@@ -30412,8 +30429,8 @@ dxF
 dxF
 dxF
 dxF
-dxF
-aRx
+aAR
+aOu
 aka
 ajZ
 ajK
@@ -30579,8 +30596,8 @@ dxF
 dxF
 dxF
 dxF
-dxF
-aRx
+aAR
+aSI
 ako
 akn
 ajK
@@ -30746,9 +30763,9 @@ aRx
 aRx
 aRx
 aRx
-aRx
-aRx
-akI
+aAR
+ajK
+ajK
 akG
 ajK
 ahk
@@ -36603,7 +36620,7 @@ ayK
 ayH
 ayH
 ayH
-ayH
+azv
 ayH
 ayJ
 ayI
@@ -37784,7 +37801,7 @@ azn
 aAG
 aAG
 aAF
-aAE
+aBe
 aAp
 aAD
 aAC
@@ -38451,12 +38468,12 @@ azn
 azn
 dxF
 dxF
-aBA
+ayR
 aBE
 aBD
 aBC
 aBB
-aBA
+ayR
 dxF
 dxF
 agr

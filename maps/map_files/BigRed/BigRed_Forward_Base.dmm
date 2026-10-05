@@ -803,11 +803,6 @@
 "act" = (
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/filtration_cave_cas)
-"acu" = (
-/turf/closed/wall/almayer/reinforced{
-	blend_objects = list(/obj/structure/window_frame,/obj/structure/window/framed)
-	},
-/area/forward_base/shipboard/brig/processing)
 "acv" = (
 /obj/structure/filingcabinet/security,
 /obj/effect/landmark/objective_landmark/close,
@@ -855,7 +850,9 @@
 	pixel_x = 7;
 	pixel_y = 10
 	},
-/obj/structure/closet/secure_closet/brig,
+/obj/structure/closet/secure_closet{
+	req_one_access = list(3,104)
+	},
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison{
 	dir = 4;
 	id = "bot_armory";
@@ -915,7 +912,9 @@
 /obj/item/weapon/gun/shotgun/combat{
 	pixel_y = -6
 	},
-/obj/structure/closet/secure_closet/brig,
+/obj/structure/closet/secure_closet{
+	req_one_access = list(3,104)
+	},
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison{
 	dir = 4;
 	id = "bot_armory";
@@ -956,7 +955,9 @@
 /obj/item/weapon/gun/shotgun/combat{
 	pixel_y = -4
 	},
-/obj/structure/closet/secure_closet/brig,
+/obj/structure/closet/secure_closet{
+	req_one_access = list(3,104)
+	},
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison{
 	dir = 4;
 	id = "bot_armory";
@@ -1051,7 +1052,9 @@
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
-/obj/structure/closet/secure_closet/brig,
+/obj/structure/closet/secure_closet{
+	req_one_access = list(3,104)
+	},
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison{
 	dir = 4;
 	id = "bot_armory";
@@ -53431,7 +53434,7 @@ aao
 aao
 aao
 ahZ
-ark
+ahZ
 ark
 ark
 ark
@@ -63890,12 +63893,12 @@ bnJ
 bnJ
 aao
 aao
-acu
+bol
 adi
 acS
 acK
 acA
-acu
+bol
 aao
 aao
 aYe

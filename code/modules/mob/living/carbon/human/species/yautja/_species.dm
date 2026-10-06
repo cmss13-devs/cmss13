@@ -242,6 +242,10 @@
 				limb.max_damage = 150
 				limb.time_to_knit = 600 // 1 minute to self heal bone break, time is in tenths of a second
 
+	if(flags & HAS_MOUTH)
+		var/obj/limb/mouth/mandibles = hunter.get_mouth()
+		mandibles.icon_path = 'icons/mob/humans/yaut_mouth.dmi'
+
 	hunter.set_languages(list(LANGUAGE_YAUTJA))
 	hunter.hud_used?.hide_actions_toggle.update_button_icon(hunter)
 	give_action(hunter, /datum/action/yautja_emote_panel)

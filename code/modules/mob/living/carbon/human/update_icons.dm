@@ -659,6 +659,8 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		overlays_standing[FACEMASK_LAYER] = I
 		apply_overlay(FACEMASK_LAYER)
 
+	update_mouth()
+
 /mob/living/carbon/human/update_inv_back()
 	remove_overlay(BACK_LAYER)
 	if(!back)

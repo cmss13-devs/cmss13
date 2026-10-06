@@ -337,7 +337,6 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 	ap_ward_on = TRUE
 	slowdown += ap_ward_slowdown
-	START_PROCESSING(SSobj, src)
 	to_chat(wearer, SPAN_NOTICE("[src] braces. Armor-piercing hits can no longer fully pierce our armor!"))
 	update_ap_ward_actions()
 
@@ -347,33 +346,25 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 	ap_ward_on = FALSE
 	slowdown -= ap_ward_slowdown
-	STOP_PROCESSING(SSobj, src)
 	if(user)
 		to_chat(user, SPAN_NOTICE("[src]'s plates release!"))
 	update_ap_ward_actions()
-
-/obj/item/clothing/suit/armor/yautja/hunter/full/process()
-	if(!ap_ward_on)
-		return PROCESS_KILL
-
-	if(!ishuman(loc))
-		disable_ap_ward(null)
-		return PROCESS_KILL
-
-	var/mob/living/carbon/human/wearer = loc
-	if(wearer.wear_suit != src)
-		disable_ap_ward(wearer)
-		return PROCESS_KILL
-
-	var/obj/item/clothing/gloves/yautja/bracers = wearer.gloves
-	if(!istype(bracers) || !bracers.drain_power(wearer, ap_ward_drain))
-		disable_ap_ward(wearer)
-		return PROCESS_KILL
 
 /obj/item/clothing/suit/armor/yautja/hunter/full/dropped(mob/user)
 	if(ap_ward_on && ishuman(user))
 		disable_ap_ward(user)
 	return ..()
+
+/obj/item/clothing/suit/armor/yautja/hunter/full/modify_bullet_damage(damage_result, obj/projectile/bullet, ammo_flags)
+	if(!ap_ward_on)
+		return damage_result
+	if(bullet.ammo.penetration < ARMOR_PENETRATION_TIER_4)
+		return damage_result
+	if(bullet.ammo.penetration >= ARMOR_PENETRATION_TIER_10)
+		return damage_result
+	if(ammo_flags & AMMO_ROCKET)
+		return damage_result
+	return clamp(damage_result, 0, ap_ward_damage_cap)
 
 /obj/item/clothing/suit/armor/yautja/hunter/full/proc/update_ap_ward_actions()
 	for(var/datum/action/action as anything in actions)

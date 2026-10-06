@@ -1,5 +1,0 @@
-author: "Yachuk"
-delete-after: True
-changes:
-  - bugfix: "Fixes the issue where you cannot mount on an M2С in unpowered areas (ex. caves)"
-  - code_imp: "M56Ds and its children objects are no longer connected to the powergrid"

@@ -1810,7 +1810,7 @@
 "agQ" = (
 /obj/structure/flora/grass/desert/lightgrass_7,
 /turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/lz_pad)
+/area/kutjevo/exterior/scrubland)
 "agR" = (
 /obj/structure/flora/grass/desert/lightgrass_8,
 /turf/open/auto_turf/sand/layer0,
@@ -7519,7 +7519,7 @@
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
-/turf/open/floor/asteroidwarning/northeast,
+/turf/open/auto_turf/sand/layer0,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "awo" = (
 /obj/structure/barricade/metal/wired,
@@ -8016,7 +8016,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/asteroidwarning/northwest,
+/turf/open/asphalt/cement_sunbleached,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "axI" = (
 /obj/structure/closet/secure_closet/guncabinet,
@@ -15398,6 +15398,11 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/medical/medical_science)
+"aQh" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/structure/lz_sign/forward_base/solaris_base_sign,
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/lz_pad)
 "aQj" = (
 /obj/effect/landmark/start/researcher,
 /turf/open/floor/almayer/mono,
@@ -32815,7 +32820,7 @@ dxF
 dxF
 dxF
 sYd
-tHh
+bXl
 sYd
 sYd
 sYd
@@ -32982,7 +32987,7 @@ dxF
 dxF
 dxF
 sYd
-tHh
+bXl
 sYd
 sYd
 sYd
@@ -33149,7 +33154,7 @@ dxF
 dxF
 dxF
 sYd
-tHh
+bXl
 bXl
 bXl
 sYd
@@ -33485,7 +33490,7 @@ sYd
 sYd
 sYd
 sYd
-tHh
+bXl
 hrz
 hrz
 hrz
@@ -33652,7 +33657,7 @@ sYd
 sYd
 sYd
 sYd
-tHh
+bXl
 hrz
 hrz
 hrz
@@ -33814,12 +33819,12 @@ dxF
 dxF
 dxF
 dxF
-tHh
-tHh
-tHh
+bXl
+bXl
+bXl
 sYd
 sYd
-tHh
+bXl
 hrz
 hrz
 hrz
@@ -33980,13 +33985,13 @@ aqv
 dxF
 dxF
 dxF
-tHh
-tHh
-tHh
-tHh
+bXl
+bXl
+bXl
+bXl
 agQ
-aaS
-tHh
+sYd
+bXl
 hrz
 hrz
 hrz
@@ -36807,7 +36812,7 @@ agq
 agr
 agr
 agr
-agr
+aQh
 agw
 agp
 agp

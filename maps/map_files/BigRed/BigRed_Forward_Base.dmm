@@ -870,9 +870,7 @@
 	pixel_x = 7;
 	pixel_y = 10
 	},
-/obj/structure/closet/secure_closet{
-	req_one_access = list(3,104)
-	},
+/obj/structure/closet/secure_closet/guncabinet,
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison{
 	dir = 4;
 	id = "bot_armory";
@@ -926,15 +924,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "acK" = (
-/obj/item/weapon/gun/shotgun/combat{
-	pixel_y = 3
-	},
-/obj/item/weapon/gun/shotgun/combat{
-	pixel_y = -6
-	},
-/obj/structure/closet/secure_closet{
-	req_one_access = list(3,104)
-	},
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison{
 	dir = 4;
 	id = "bot_armory";
@@ -969,14 +958,9 @@
 /turf/open/floor/almayer/emerald/north,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "acS" = (
-/obj/item/weapon/gun/shotgun/combat{
-	pixel_y = 4
-	},
-/obj/item/weapon/gun/shotgun/combat{
-	pixel_y = -4
-	},
-/obj/structure/closet/secure_closet{
-	req_one_access = list(3,104)
+/obj/structure/machinery/light{
+	dir = 4;
+	invisibility = 101
 	},
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison{
 	dir = 4;
@@ -1071,17 +1055,11 @@
 /turf/open/floor/almayer/red/north,
 /area/forward_base/shipboard/brig/processing)
 "adi" = (
-/obj/item/ammo_magazine/shotgun/slugs,
-/obj/item/ammo_magazine/shotgun/slugs,
-/obj/item/ammo_magazine/shotgun/slugs,
-/obj/item/ammo_magazine/shotgun/slugs,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/structure/closet/secure_closet{
-	req_one_access = list(3,104)
-	},
+/obj/structure/closet/secure_closet/guncabinet/riot_control,
+/obj/item/weapon/shield/riot,
+/obj/item/vehicle_clamp,
+/obj/item/vehicle_clamp,
+/obj/item/vehicle_clamp,
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison{
 	dir = 4;
 	id = "bot_armory";
@@ -5947,7 +5925,9 @@
 /area/bigredv2/outside/dorms)
 "atz" = (
 /obj/structure/surface/table,
-/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot{
+	layer = 3.01
+	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -6562,6 +6542,53 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/antre/plating/corner_dir/north_east,
 /area/forward_base/hallways/lower/port_midship_hallway)
+"avF" = (
+/obj/structure/closet/secure_closet/guncabinet,
+/obj/item/weapon/gun/shotgun/combat{
+	pixel_y = 4
+	},
+/obj/item/weapon/gun/shotgun/combat{
+	pixel_y = -4
+	},
+/obj/item/weapon/gun/shotgun/combat{
+	pixel_y = 3
+	},
+/obj/item/weapon/gun/shotgun/combat{
+	pixel_y = -6
+	},
+/obj/item/ammo_magazine/shotgun/slugs{
+	layer = 3.01
+	},
+/obj/item/ammo_magazine/shotgun/slugs{
+	layer = 3.01
+	},
+/obj/item/ammo_magazine/shotgun/slugs{
+	layer = 3.01
+	},
+/obj/item/ammo_magazine/shotgun/slugs{
+	layer = 3.01
+	},
+/obj/item/ammo_magazine/shotgun/slugs{
+	layer = 3.01
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	layer = 3.01
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	layer = 3.01
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	layer = 3.01
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	layer = 3.01
+	},
+/obj/structure/sign/safety/ammunition{
+	pixel_x = 32;
+	pixel_y = -8
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/shipboard/brig/processing)
 "avG" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -8905,6 +8932,22 @@
 /turf/open/floor/almayer/green/west,
 /area/forward_base/living/briefing)
 "aDF" = (
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 6
+	},
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -9103,6 +9146,13 @@
 /obj/structure/machinery/cm_vending/sorted/tech/circuits,
 /turf/open/floor/almayer/orange/west,
 /area/forward_base/engineering/lower)
+"aEl" = (
+/obj/structure/machinery/vending/security/riot{
+	density = 0;
+	pixel_x = 26
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/forward_base/shipboard/brig/processing)
 "aEm" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/orange/west,
@@ -15430,6 +15480,9 @@
 /obj/item/reagent_container/glass/beaker,
 /obj/item/reagent_container/glass/beaker,
 /obj/structure/surface/table/almayer,
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_x = -7
+	},
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/medical/chemistry)
 "aXB" = (
@@ -17667,7 +17720,20 @@
 /area/bigredv2/outside/w)
 "beR" = (
 /obj/structure/surface/rack,
-/obj/item/folded_tent/reqs,
+/obj/item/folded_tent/reqs{
+	pixel_y = -7
+	},
+/obj/item/stack/sheet/cardboard/full_stack{
+	pixel_y = 4;
+	pixel_x = -6
+	},
+/obj/item/stack/sheet/cardboard/full_stack{
+	pixel_y = 4
+	},
+/obj/item/stack/sheet/cardboard/full_stack{
+	pixel_y = 4;
+	pixel_x = 6
+	},
 /turf/open/floor/almayer/plating,
 /area/forward_base/squads/req)
 "beS" = (
@@ -18323,6 +18389,27 @@
 "bgX" = (
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/space_port_lz2)
+"bgY" = (
+/obj/structure/closet/secure_closet/guncabinet,
+/obj/item/weapon/gun/rifle/m41a{
+	pixel_y = -4
+	},
+/obj/item/weapon/gun/rifle/m41a{
+	pixel_y = -4
+	},
+/obj/item/weapon/gun/rifle/m41a{
+	pixel_y = 4
+	},
+/obj/item/weapon/gun/rifle/m41a{
+	pixel_y = 4
+	},
+/obj/item/ammo_box/magazine,
+/obj/structure/sign/safety/hazard{
+	pixel_y = 6;
+	pixel_x = 32
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/shipboard/brig/processing)
 "bgZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/explosive/grenade/high_explosive/frag{
@@ -19206,6 +19293,10 @@
 /obj/structure/machinery/computer/supply,
 /turf/open/floor/almayer/plate,
 /area/forward_base/hallways/lower/port_midship_hallway)
+"bjQ" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/mars,
+/area/bigredv2/caves)
 "bjR" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
@@ -22535,10 +22626,6 @@
 /turf/open/mars_cave/mars_dirt_7,
 /area/bigredv2/outside/s)
 "btE" = (
-/obj/structure/machinery/light{
-	dir = 4;
-	invisibility = 101
-	},
 /turf/open/floor/almayer/red2/east,
 /area/forward_base/shipboard/brig/processing)
 "btF" = (
@@ -24552,6 +24639,7 @@
 "bAi" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/forward_base/squads/alpha_bravo_shared)
 "bAj" = (
@@ -24889,6 +24977,7 @@
 /area/bigredv2/caves/eta/storage)
 "bBw" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/forward_base/squads/alpha_bravo_shared)
 "bBx" = (
@@ -24938,6 +25027,8 @@
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
 	},
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/fire,
 /turf/open/floor/almayer/no_build/plate,
 /area/forward_base/squads/alpha_bravo_shared)
 "bBE" = (
@@ -25217,6 +25308,7 @@
 /area/bigredv2/caves/eta/xenobiology)
 "bCH" = (
 /obj/effect/decal/heavy_cable/node_s_w,
+/obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/forward_base/squads/alpha_bravo_shared)
 "bCI" = (
@@ -25236,6 +25328,7 @@
 /area/bigredv2/caves/eta/research)
 "bCL" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/largecrate/random/case,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/forward_base/squads/alpha_bravo_shared)
 "bCM" = (
@@ -25502,6 +25595,15 @@
 /area/bigredv2/caves/eta/living)
 "bDI" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack,
+/obj/item/device/defibrillator/synthetic{
+	pixel_y = -3;
+	pixel_x = 3
+	},
+/obj/item/storage/pouch/pistol{
+	pixel_x = -3;
+	pixel_y = 4
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/forward_base/squads/alpha_bravo_shared)
 "bDJ" = (
@@ -29555,6 +29657,24 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/forward_base/hallways/upper/port)
 "bOZ" = (
+/obj/item/ammo_box/magazine/misc/mre{
+	pixel_x = -6
+	},
+/obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/misc/mre{
+	pixel_x = -6
+	},
+/obj/item/ammo_box/magazine/misc/mre{
+	pixel_x = 8
+	},
+/obj/item/ammo_box/magazine/misc/mre{
+	pixel_x = 8;
+	pixel_y = 15
+	},
+/obj/item/ammo_box/magazine/misc/mre{
+	pixel_x = -6;
+	pixel_y = 15
+	},
 /turf/open/floor/almayer/cargo,
 /area/forward_base/squads/req)
 "bPa" = (
@@ -29702,6 +29822,9 @@
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/medical/upper_medical)
+"bPw" = (
+/turf/closed/wall/almayer/reinforced,
+/area/bigredv2/caves)
 "bPx" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/condiment/saltshaker{
@@ -29841,6 +29964,14 @@
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/medical/upper_medical)
+"bPQ" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/mars,
+/area/bigredv2/caves)
 "bPR" = (
 /obj/item/storage/box/gloves{
 	pixel_x = 5;
@@ -29949,6 +30080,15 @@
 "bQa" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/medical/chemistry)
 "bQb" = (
@@ -29984,6 +30124,18 @@
 /obj/item/clothing/accessory/patch/medic_patch,
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/medical/upper_medical)
+"bQg" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -6;
+	pixel_y = -9
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -7;
+	pixel_y = 13
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/mars,
+/area/bigredv2/caves)
 "bQh" = (
 /turf/open/mars/mars_dirt_11,
 /area/bigredv2/outside/n)
@@ -30398,6 +30550,10 @@
 /obj/effect/decal/heavy_cable/node_s_w,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/forward_base/medical/morgue)
+"bRa" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "bRb" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
 /obj/structure/machinery/light/red{
@@ -30644,14 +30800,19 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -27
 	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
 /turf/open/floor/almayer/sterile_green_corner/east,
 /area/forward_base/medical/medical_science)
 "bRE" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/reagent_analyzer{
-	pixel_y = 5;
-	pixel_x = -1;
-	explo_proof = 1
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
 	},
 /turf/open/floor/almayer/mono,
 /area/forward_base/medical/medical_science)
@@ -30668,18 +30829,32 @@
 /turf/closed/wall/almayer/research/containment/wall/north,
 /area/forward_base/medical/medical_science)
 "bRH" = (
-/obj/structure/machinery/xenoanalyzer,
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2";
-	dir = 8;
-	pixel_y = -1
+/obj/structure/machinery/flasher{
+	id = "BiohazStore";
+	layer = 2.1;
+	name = "Mounted Flash";
+	pixel_y = 30
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/surgery/circular_saw{
+	pixel_x = -1;
+	pixel_y = 4
+	},
+/obj/item/tool/surgery/retractor{
+	pixel_y = 3;
+	pixel_x = -2
+	},
+/obj/item/tool/surgery/scalpel,
+/obj/item/tool/surgery/hemostat{
+	pixel_x = -2;
+	pixel_y = 2
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2";
 	dir = 1;
 	pixel_x = 1
 	},
-/turf/open/floor/almayer/research/containment/corner,
+/turf/open/floor/almayer/research/containment/corner_var1,
 /area/forward_base/medical/medical_science)
 "bRI" = (
 /obj/structure/machinery/light/double/blue{
@@ -30754,8 +30929,12 @@
 /turf/open/floor/almayer/plate,
 /area/forward_base/medical/medical_science)
 "bRO" = (
-/obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk,
+/obj/structure/filingcabinet/research{
+	density = 0;
+	pixel_y = 20;
+	pixel_x = -1;
+	explo_proof = 1
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/medical/medical_science)
 "bRP" = (
@@ -30765,10 +30944,9 @@
 /turf/open/floor/almayer/plate,
 /area/forward_base/medical/medical_science)
 "bRR" = (
-/obj/structure/bed/chair/comfy{
-	buckling_y = 2;
-	pixel_y = 2;
-	dir = 8
+/obj/structure/disposalpipe/down/almayer{
+	dir = 8;
+	id = "almayerlink"
 	},
 /turf/open/floor/almayer/mono,
 /area/forward_base/medical/medical_science)
@@ -30837,22 +31015,25 @@
 /obj/item/storage/box/pillbottles{
 	pixel_x = 6
 	},
+/obj/item/storage/box/pillbottles{
+	pixel_x = 6
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_x = 6
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_x = 6
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/medical/medical_science)
 "bRT" = (
-/obj/structure/machinery/autolathe,
-/obj/structure/sign/safety/ref_chem_storage{
-	pixel_y = 28;
-	pixel_x = 7
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
 	},
+/obj/structure/machinery/power/apc/upgraded/power/north,
 /obj/structure/machinery/light{
 	dir = 8
-	},
-/turf/open/floor/almayer/plate,
-/area/forward_base/medical/medical_science)
-"bRU" = (
-/obj/structure/machinery/autolathe/medilathe/full{
-	dir = 4
 	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/medical/medical_science)
@@ -30864,28 +31045,34 @@
 /turf/open/floor/almayer/mono,
 /area/forward_base/medical/medical_science)
 "bRX" = (
-/obj/structure/machinery/chem_storage/medbay{
-	pixel_x = -2;
-	layer = 4
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
 	},
-/obj/structure/machinery/chem_storage/research{
-	pixel_x = -2;
-	pixel_y = 19;
-	layer = 4.01
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/centrifuge{
+	pixel_y = 8;
+	pixel_x = -1;
+	layer = 3.1
+	},
+/obj/item/reagent_container/glass/beaker/cryoxadone{
+	pixel_x = -3;
+	pixel_y = -5;
+	layer = 3.01
+	},
+/obj/item/reagent_container/glass/beaker/cryoxadone{
+	pixel_x = 6;
+	pixel_y = -10;
+	layer = 3.01
 	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/medical/medical_science)
 "bRY" = (
-/obj/structure/machinery/light/double/blue{
-	light_color = "#a7dbc7";
-	dir = 1
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2";
 	dir = 1;
 	pixel_x = 1
 	},
-/turf/open/floor/almayer/research/containment/floor2,
+/turf/open/floor/almayer/research/containment/corner/north,
 /area/forward_base/medical/medical_science)
 "bRZ" = (
 /turf/open/floor/almayer/research/containment/floor1,
@@ -30931,46 +31118,16 @@
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/forward_base/medical/medical_science)
-"bSd" = (
-/obj/structure/machinery/cm_vending/clothing/medical_crew/researcher{
-	density = 0;
-	pixel_x = -32
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/forward_base/medical/medical_science)
 "bSe" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/forward_base/medical/medical_science)
 "bSf" = (
-/obj/structure/machinery/flasher{
-	id = "BiohazStore";
-	layer = 2.1;
-	name = "Mounted Flash";
-	pixel_y = 30
-	},
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/tool/surgery/circular_saw{
-	pixel_x = -1;
-	pixel_y = 4
-	},
-/obj/item/tool/surgery/retractor{
-	pixel_y = 3;
-	pixel_x = -2
-	},
-/obj/item/tool/surgery/scalpel,
-/obj/item/tool/surgery/hemostat{
-	pixel_x = -2;
-	pixel_y = 2
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2";
 	dir = 1;
 	pixel_x = 1
 	},
-/turf/open/floor/almayer/research/containment/floor2,
+/turf/open/floor/almayer/research/containment/corner/east,
 /area/forward_base/medical/medical_science)
 "bSg" = (
 /turf/open/floor/almayer/research/containment/floor2,
@@ -30997,6 +31154,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	layer = 3.3
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
 	},
 /turf/open/floor/almayer,
 /area/forward_base/medical/medical_science)
@@ -31025,8 +31185,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/medical/medical_science)
 "bSn" = (
-/obj/structure/bed/chair/office/light{
-	dir = 4
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
 	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/medical/medical_science)
@@ -31034,35 +31194,14 @@
 /obj/effect/landmark/start/researcher,
 /turf/open/floor/almayer/mono,
 /area/forward_base/medical/medical_science)
-"bSp" = (
-/obj/structure/machinery/body_scanconsole{
-	dir = 8
-	},
-/turf/open/floor/almayer/flooredge/east,
-/area/forward_base/medical/medical_science)
-"bSq" = (
-/obj/structure/machinery/sleep_console{
-	dir = 8
-	},
-/turf/open/floor/almayer/flooredge/east,
-/area/forward_base/medical/medical_science)
 "bSr" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/centrifuge{
-	pixel_y = 8;
-	pixel_x = -1
+/obj/structure/machinery/reagent_analyzer{
+	pixel_y = 5;
+	pixel_x = -1;
+	explo_proof = 1
 	},
-/obj/item/reagent_container/glass/beaker/cryoxadone{
-	pixel_x = 6;
-	pixel_y = -10;
-	layer = 3.01
-	},
-/obj/item/reagent_container/glass/beaker/cryoxadone{
-	pixel_x = -3;
-	pixel_y = -5;
-	layer = 3.01
-	},
-/turf/open/floor/almayer/mono,
+/turf/open/floor/plating/plating_catwalk,
 /area/forward_base/medical/medical_science)
 "bSs" = (
 /obj/effect/decal/warning_stripes{
@@ -31156,48 +31295,17 @@
 /turf/open/floor/almayer/mono,
 /area/forward_base/medical/medical_science)
 "bSB" = (
-/obj/structure/machinery/computer/research{
-	dir = 8;
-	pixel_y = 8;
-	pixel_x = 3
-	},
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_x = 26;
-	pixel_y = -26
-	},
-/obj/structure/sign/safety/terminal{
-	layer = 2.5;
-	pixel_x = 32;
-	pixel_y = 6
-	},
-/obj/structure/sign/safety/intercom{
-	pixel_y = -8;
-	pixel_x = 32
-	},
-/obj/structure/transmitter/rotary{
-	name = "Main Research Laboratory Telephone";
-	phone_category = "Medical & Research Dept.";
-	phone_id = "Main Research Laboratory";
-	pixel_y = 13;
-	pixel_x = -9
-	},
-/obj/structure/machinery/computer/med_data/laptop{
-	pixel_x = 3;
-	dir = 8;
-	pixel_y = -6
-	},
-/obj/item/device/reagent_scanner{
-	pixel_x = -11;
-	pixel_y = -4
+/obj/structure/bed/chair/office/light{
+	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/medical/medical_science)
 "bSC" = (
 /obj/structure/machinery/photocopier/wyphotocopier{
 	pixel_y = 1
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 26
 	},
 /turf/open/floor/almayer/mono,
 /area/forward_base/medical/medical_science)
@@ -31223,6 +31331,10 @@
 	dir = 4;
 	pixel_x = 14
 	},
+/obj/structure/sign/safety/intercom{
+	pixel_y = 14;
+	pixel_x = 32
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/medical/medical_science)
 "bSF" = (
@@ -31234,22 +31346,24 @@
 /turf/open/floor/almayer/cargo_arrow,
 /area/forward_base/shipboard/weapon_room)
 "bSG" = (
+/obj/structure/machinery/autolathe,
+/obj/structure/sign/safety/ref_chem_storage{
+	pixel_y = 28;
+	pixel_x = 7
+	},
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/power/apc/upgraded/power/north,
-/turf/open/floor/almayer/flooredge,
+/turf/open/floor/almayer/mono,
 /area/forward_base/medical/medical_science)
 "bSH" = (
-/obj/structure/machinery/medical_pod/bodyscanner,
+/obj/structure/machinery/chem_storage/research,
 /turf/open/floor/almayer/mono,
 /area/forward_base/medical/medical_science)
 "bSI" = (
-/obj/structure/machinery/medical_pod/sleeper,
-/obj/structure/sign/safety/rewire{
-	layer = 2.4;
-	pixel_x = 8;
-	pixel_y = -26
+/obj/structure/machinery/chem_storage/medbay{
+	pixel_x = -2;
+	layer = 4
 	},
 /turf/open/floor/almayer/mono,
 /area/forward_base/medical/medical_science)
@@ -31291,10 +31405,6 @@
 /obj/item/reagent_container/glass/beaker{
 	pixel_x = 5;
 	pixel_y = 13
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera";
-	dir = 1
 	},
 /obj/item/reagent_container/glass/beaker/bluespace{
 	pixel_y = 14;
@@ -31368,6 +31478,13 @@
 "bSV" = (
 /turf/open/floor/almayer,
 /area/forward_base/medical/medical_science)
+"bSW" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 1
+	},
+/turf/open/floor/almayer/red/west,
+/area/bigredv2/caves)
 "bSX" = (
 /obj/structure/machinery/seed_extractor{
 	density = 0;
@@ -31943,13 +32060,6 @@
 	},
 /turf/open/floor/almayer/silverfull,
 /area/forward_base/medical/upper_medical)
-"bUw" = (
-/obj/structure/disposalpipe/down/almayer{
-	dir = 1;
-	id = "almayerlink"
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/forward_base/medical/medical_science)
 "bUx" = (
 /obj/structure/filingcabinet/research{
 	density = 0;
@@ -31966,6 +32076,9 @@
 "bUz" = (
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
 	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/medical/medical_science)
@@ -31999,10 +32112,442 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/forward_base/medical/morgue)
+"bUD" = (
+/obj/structure/machinery/light,
+/obj/structure/machinery/cm_vending/clothing/military_police_warden{
+	pixel_x = 28;
+	density = 0
+	},
+/turf/open/floor/almayer,
+/area/bigredv2/caves)
+"bUE" = (
+/obj/structure/machinery/computer/crew/alt{
+	dir = 4;
+	pixel_x = -16
+	},
+/obj/structure/machinery/power/apc/upgraded/power/south,
+/turf/open/floor/almayer/redfull,
+/area/bigredv2/caves)
+"bUF" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 7
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 4
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/item/trash/cigbutt{
+	icon_state = "ucigbutt";
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/structure/bed/chair{
+	dir = 4;
+	layer = 3.06
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/mars,
+/area/bigredv2/caves)
+"bUG" = (
+/turf/open/floor/almayer/red/west,
+/area/bigredv2/caves)
+"bUH" = (
+/turf/open/floor/almayer,
+/area/bigredv2/caves)
+"bUI" = (
+/obj/structure/surface/table/almayer,
+/obj/item/paper_bin/uscm{
+	pixel_y = 7;
+	pixel_x = 11
+	},
+/obj/item/tool/pen{
+	pixel_x = 7
+	},
+/obj/structure/machinery/computer/crew/alt{
+	dir = 4;
+	pixel_x = -5;
+	pixel_y = -3;
+	layer = 3
+	},
+/turf/open/floor/almayer/red2/southwest,
+/area/bigredv2/caves)
 "bUJ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement,
 /area/bigredv2/outside/filtration_cave_cas)
+"bUK" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/obj/structure/machinery/door_control{
+	id = "Cell Privacy Shutters";
+	name = "Cell Privacy Shutters";
+	pixel_x = 13;
+	pixel_y = 24;
+	req_access = list(3)
+	},
+/turf/open/floor/almayer/red2,
+/area/bigredv2/caves)
+"bUL" = (
+/obj/effect/landmark/start/warden,
+/turf/open/floor/almayer/red2,
+/area/bigredv2/caves)
+"bUM" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = -28;
+	pixel_x = 5
+	},
+/turf/open/floor/almayer/red2/southeast,
+/area/bigredv2/caves)
+"bUN" = (
+/obj/item/device/motiondetector/m717{
+	pixel_x = 7;
+	pixel_y = -6
+	},
+/obj/item/device/motiondetector/m717{
+	pixel_x = 7;
+	pixel_y = -2
+	},
+/obj/item/device/motiondetector/m717{
+	pixel_x = 7;
+	pixel_y = 2
+	},
+/obj/item/device/motiondetector/m717{
+	pixel_x = 7;
+	pixel_y = 6
+	},
+/obj/item/device/motiondetector/m717{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/obj/structure/closet/secure_closet{
+	req_one_access = list(3,104)
+	},
+/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
+	dir = 4;
+	id = "bot_armory";
+	emp_proof = 1
+	},
+/turf/open/floor/almayer/red2/west,
+/area/bigredv2/caves)
+"bUO" = (
+/obj/item/device/motiondetector/m717{
+	pixel_x = 7;
+	pixel_y = -6
+	},
+/obj/item/device/motiondetector/m717{
+	pixel_x = 7;
+	pixel_y = -2
+	},
+/obj/item/device/motiondetector/m717{
+	pixel_x = 7;
+	pixel_y = 2
+	},
+/obj/item/device/motiondetector/m717{
+	pixel_x = 7;
+	pixel_y = 6
+	},
+/obj/item/device/motiondetector/m717{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/obj/structure/closet/secure_closet/guncabinet,
+/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
+	dir = 4;
+	id = "bot_armory";
+	emp_proof = 1
+	},
+/turf/open/floor/almayer/red2/west,
+/area/bigredv2/caves)
+"bUP" = (
+/obj/structure/closet/secure_closet/guncabinet,
+/obj/item/weapon/gun/shotgun/combat{
+	pixel_y = 4
+	},
+/obj/item/weapon/gun/shotgun/combat{
+	pixel_y = -4
+	},
+/obj/item/weapon/gun/shotgun/combat{
+	pixel_y = 3
+	},
+/obj/item/weapon/gun/shotgun/combat{
+	pixel_y = -6
+	},
+/obj/item/ammo_magazine/shotgun/slugs{
+	layer = 3.01
+	},
+/obj/item/ammo_magazine/shotgun/slugs{
+	layer = 3.01
+	},
+/obj/item/ammo_magazine/shotgun/slugs{
+	layer = 3.01
+	},
+/obj/item/ammo_magazine/shotgun/slugs{
+	layer = 3.01
+	},
+/obj/item/ammo_magazine/shotgun/slugs{
+	layer = 3.01
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	layer = 3.01
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	layer = 3.01
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	layer = 3.01
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	layer = 3.01
+	},
+/obj/structure/sign/safety/ammunition{
+	pixel_x = 32;
+	pixel_y = -8
+	},
+/turf/open/floor/almayer/plate,
+/area/bigredv2/caves)
+"bUQ" = (
+/obj/structure/machinery/computer/card{
+	dir = 4;
+	pixel_x = -16
+	},
+/turf/open/floor/almayer/redcorner/west,
+/area/bigredv2/caves)
+"bUR" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/faxmachine/uscm/almayer/brig{
+	sub_name = "Processing";
+	pixel_x = -1;
+	pixel_y = -12
+	},
+/obj/item/storage/box/ids{
+	pixel_x = 3;
+	pixel_y = 8
+	},
+/obj/structure/transmitter/rotary{
+	name = "Brig Reception Telephone";
+	phone_category = "MP Dept.";
+	phone_id = "Brig Reception";
+	pixel_x = -9;
+	pixel_y = 6
+	},
+/turf/open/floor/almayer/red2/west,
+/area/bigredv2/caves)
+"bUS" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/sentencing,
+/obj/structure/machinery/computer/secure_data{
+	pixel_x = -20
+	},
+/turf/open/floor/almayer,
+/area/bigredv2/caves)
+"bUT" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/cameras/almayer_network{
+	pixel_x = -11
+	},
+/turf/open/floor/almayer,
+/area/bigredv2/caves)
+"bUU" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	invisibility = 101
+	},
+/turf/open/floor/almayer/red2/east,
+/area/bigredv2/caves)
+"bUV" = (
+/obj/item/weapon/gun/shotgun/combat{
+	pixel_y = 3
+	},
+/obj/item/weapon/gun/shotgun/combat{
+	pixel_y = -6
+	},
+/obj/structure/closet/secure_closet{
+	req_one_access = list(3,104)
+	},
+/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
+	dir = 4;
+	id = "bot_armory";
+	emp_proof = 1
+	},
+/turf/open/floor/almayer/red2/west,
+/area/bigredv2/caves)
+"bUW" = (
+/turf/open/floor/almayer/red2/east,
+/area/bigredv2/caves)
+"bUX" = (
+/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
+	dir = 4;
+	id = "bot_armory";
+	emp_proof = 1
+	},
+/turf/open/floor/almayer/red2/west,
+/area/bigredv2/caves)
+"bUY" = (
+/obj/structure/machinery/vending/security/riot{
+	density = 0;
+	pixel_x = 26
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/bigredv2/caves)
+"bUZ" = (
+/turf/open/space/basic,
+/area/bigredv2/caves)
+"bVa" = (
+/obj/effect/landmark/start/police,
+/turf/open/floor/almayer,
+/area/bigredv2/caves)
+"bVb" = (
+/obj/item/weapon/gun/shotgun/combat{
+	pixel_y = 4
+	},
+/obj/item/weapon/gun/shotgun/combat{
+	pixel_y = -4
+	},
+/obj/structure/closet/secure_closet{
+	req_one_access = list(3,104)
+	},
+/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
+	dir = 4;
+	id = "bot_armory";
+	emp_proof = 1
+	},
+/turf/open/floor/almayer/red2/west,
+/area/bigredv2/caves)
+"bVc" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/darkish,
+/area/bigredv2/caves)
+"bVd" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	invisibility = 101
+	},
+/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
+	dir = 4;
+	id = "bot_armory";
+	emp_proof = 1
+	},
+/turf/open/floor/almayer/red2/west,
+/area/bigredv2/caves)
+"bVe" = (
+/turf/open/floor/almayer/red/north,
+/area/bigredv2/caves)
+"bVf" = (
+/obj/structure/filingcabinet/documentation/uscm_mp{
+	pixel_x = 9;
+	pixel_y = 13;
+	can_block_movement = 0
+	},
+/turf/open/floor/almayer/red/north,
+/area/bigredv2/caves)
+"bVg" = (
+/obj/structure/closet/secure_closet/brig,
+/turf/open/floor/almayer/red/north,
+/area/bigredv2/caves)
+"bVh" = (
+/obj/structure/machinery/door_control/brbutton{
+	pixel_y = 26;
+	name = "Armory Lockdown";
+	id = "bot_armory";
+	req_access = list(3)
+	},
+/turf/open/floor/almayer/red/north,
+/area/bigredv2/caves)
+"bVi" = (
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/ammo_magazine/shotgun/slugs,
+/obj/item/ammo_magazine/shotgun/buckshot{
+	layer = 3.01
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	layer = 3.01
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	layer = 3.01
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	layer = 3.01
+	},
+/obj/structure/closet/secure_closet{
+	req_one_access = list(3,104)
+	},
+/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
+	dir = 4;
+	id = "bot_armory";
+	emp_proof = 1
+	},
+/turf/open/floor/almayer/red2/west,
+/area/bigredv2/caves)
+"bVj" = (
+/obj/structure/bed/chair,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/darkish,
+/area/bigredv2/caves)
+"bVk" = (
+/obj/structure/closet/secure_closet/guncabinet/riot_control,
+/obj/item/weapon/shield/riot,
+/obj/item/vehicle_clamp,
+/obj/item/vehicle_clamp,
+/obj/item/vehicle_clamp,
+/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
+	dir = 4;
+	id = "bot_armory";
+	emp_proof = 1
+	},
+/turf/open/floor/almayer/red2/west,
+/area/bigredv2/caves)
+"bVl" = (
+/obj/structure/closet/secure_closet/guncabinet,
+/obj/item/weapon/gun/rifle/m41a{
+	pixel_y = -4
+	},
+/obj/item/weapon/gun/rifle/m41a{
+	pixel_y = -4
+	},
+/obj/item/weapon/gun/rifle/m41a{
+	pixel_y = 4
+	},
+/obj/item/weapon/gun/rifle/m41a{
+	pixel_y = 4
+	},
+/obj/item/ammo_box/magazine,
+/obj/structure/sign/safety/hazard{
+	pixel_y = 6;
+	pixel_x = 32
+	},
+/turf/open/floor/almayer/plate,
+/area/bigredv2/caves)
+"bVm" = (
+/obj/structure/machinery/door/window/brigdoor/southright{
+	id = "Cell 1";
+	name = "Cell 1"
+	},
+/turf/open/floor/almayer/plate,
+/area/bigredv2/caves)
+"bVn" = (
+/obj/structure/machinery/brig_cell/cell_1,
+/turf/closed/wall/almayer/reinforced,
+/area/bigredv2/caves)
+"bVo" = (
+/obj/structure/sign/safety/one,
+/turf/closed/wall/almayer/reinforced,
+/area/bigredv2/caves)
+"bVp" = (
+/obj/structure/machinery/door/window/brigdoor/southright{
+	id = "Cell 2";
+	name = "Cell 2"
+	},
+/turf/open/floor/almayer/plate,
+/area/bigredv2/caves)
 "bVq" = (
 /obj/item/trash/chips{
 	pixel_y = 4;
@@ -32011,6 +32556,191 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/whitegreen/west,
 /area/bigredv2/outside/medical)
+"bVr" = (
+/obj/structure/machinery/brig_cell/cell_2,
+/turf/closed/wall/almayer/reinforced,
+/area/bigredv2/caves)
+"bVs" = (
+/turf/open/floor/almayer/plate,
+/area/bigredv2/caves)
+"bVt" = (
+/obj/item/bedsheet/brown{
+	pixel_y = 10
+	},
+/obj/structure/machinery/light,
+/obj/structure/bed/hybrisa/prisonbed,
+/turf/open/floor/almayer/plate,
+/area/bigredv2/caves)
+"bVu" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "Cell Privacy Shutters";
+	name = "\improper Cell Privacy  Shutters"
+	},
+/obj/structure/window/framed/almayer,
+/turf/open/floor/plating,
+/area/bigredv2/caves)
+"bVv" = (
+/obj/structure/machinery/flasher{
+	id = "Cell 1";
+	pixel_x = -24
+	},
+/turf/open/floor/almayer/red/north,
+/area/bigredv2/caves)
+"bVw" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 26
+	},
+/obj/structure/bed/hybrisa/prisonbed,
+/obj/item/bedsheet/brown{
+	pixel_y = 10
+	},
+/turf/open/floor/almayer/plate,
+/area/bigredv2/caves)
+"bVx" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 26
+	},
+/obj/structure/bed/hybrisa/prisonbed,
+/obj/item/bedsheet/brown{
+	pixel_y = 10
+	},
+/obj/structure/machinery/flasher{
+	id = "Cell 2";
+	pixel_x = 24
+	},
+/turf/open/floor/almayer/plate,
+/area/bigredv2/caves)
+"bVy" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/asteroidwarning/north,
+/area/bigredv2/caves)
+"bVz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out"
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/medical/medical_science)
+"bVA" = (
+/obj/structure/machinery/medical_pod/bodyscanner,
+/turf/open/floor/almayer/test_floor4,
+/area/forward_base/medical/medical_science)
+"bVB" = (
+/obj/structure/machinery/sleep_console,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/flooredge/west,
+/area/forward_base/medical/medical_science)
+"bVC" = (
+/obj/structure/machinery/vending/walkman,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/forward_base/hallways/upper/port)
+"bVD" = (
+/obj/structure/machinery/body_scanconsole{
+	pixel_y = 3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/flooredge/west,
+/area/forward_base/medical/medical_science)
+"bVE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/flooredge/west,
+/area/forward_base/medical/medical_science)
+"bVF" = (
+/obj/structure/machinery/cm_vending/clothing/medical_crew/researcher,
+/turf/open/floor/almayer/plate,
+/area/forward_base/medical/medical_science)
+"bVG" = (
+/obj/effect/landmark/start/researcher,
+/turf/open/floor/almayer,
+/area/forward_base/medical/medical_science)
+"bVH" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/mono,
+/area/forward_base/medical/medical_science)
+"bVI" = (
+/obj/structure/machinery/computer/research{
+	dir = 8;
+	pixel_y = 8;
+	pixel_x = 3
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_x = 26;
+	pixel_y = -26
+	},
+/obj/structure/sign/safety/terminal{
+	layer = 2.5;
+	pixel_x = 32;
+	pixel_y = 6
+	},
+/obj/structure/sign/safety/intercom{
+	pixel_y = -8;
+	pixel_x = 32
+	},
+/obj/structure/transmitter/rotary{
+	name = "Main Research Laboratory Telephone";
+	phone_category = "Medical & Research Dept.";
+	phone_id = "Main Research Laboratory";
+	pixel_y = 13;
+	pixel_x = -9
+	},
+/obj/structure/machinery/computer/med_data/laptop{
+	pixel_x = 3;
+	dir = 8;
+	pixel_y = -6
+	},
+/obj/item/device/reagent_scanner{
+	pixel_x = -11;
+	pixel_y = -4
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/medical/medical_science)
+"bVJ" = (
+/obj/structure/machinery/firealarm{
+	dir = 4;
+	pixel_x = 21
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/medical/medical_science)
+"bVK" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/item/storage/box/matches,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/forward_base/hallways/upper/starboard)
+"bVL" = (
+/obj/structure/machinery/xenoanalyzer,
+/turf/open/floor/almayer/research/containment/corner,
+/area/forward_base/medical/medical_science)
+"bVM" = (
+/turf/open/floor/almayer/research/containment/corner_var1/north,
+/area/forward_base/medical/medical_science)
 "bVX" = (
 /obj/structure/barricade/wooden{
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
@@ -50273,7 +51003,9 @@
 "wdV" = (
 /obj/structure/surface/rack,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot{
+	layer = 3.01
+	},
 /obj/item/ammo_magazine/shotgun/buckshot{
 	pixel_y = -8;
 	pixel_x = -6
@@ -51837,7 +52569,9 @@
 	pixel_x = -4;
 	pixel_y = 7
 	},
-/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot{
+	layer = 3.01
+	},
 /obj/item/reagent_container/food/snacks/packaged_burger,
 /obj/item/weapon/gun/shotgun/double/sawn,
 /turf/open/floor/plating/platingdmg3/west,
@@ -64652,10 +65386,10 @@ bnJ
 aao
 aao
 acw
-acw
-acw
-acw
-acw
+bgY
+aEl
+aEl
+avF
 acw
 aao
 aYe
@@ -64864,13 +65598,13 @@ bnJ
 aao
 aao
 aao
+acw
+acw
+acw
+acw
+acw
+acw
 aao
-aao
-aao
-aao
-aao
-aao
-aYe
 aYe
 buf
 aYe
@@ -72082,15 +72816,15 @@ aab
 aao
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+bVv
+bVs
+bVm
+bVe
+bUH
+bUQ
+bUG
+bSW
+bPw
 aao
 aao
 aao
@@ -72295,15 +73029,15 @@ aab
 aao
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+bVw
+bVt
+bVn
+bVf
+bVa
+bUH
+bUH
+bUD
+bPw
 aao
 aao
 aao
@@ -72508,15 +73242,15 @@ aab
 aao
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+bVu
+bVu
+bVo
+bVg
+bVa
+bUR
+bUI
+bPw
+bPw
 aao
 aao
 aao
@@ -72721,15 +73455,15 @@ aab
 aao
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+bVe
+bVs
+bVp
+bVe
+bVa
+bUS
+bUK
+bPw
+bPw
 aao
 aao
 aao
@@ -72934,15 +73668,15 @@ aab
 aao
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+bVx
+bVt
+bVr
+bVg
+bVa
+bUT
+bUL
+bUE
+bPw
 aao
 aao
 aao
@@ -73147,15 +73881,15 @@ aab
 aao
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+bPw
+bPw
+bPw
+bVh
+bUH
+bUU
+bUM
+bPw
+bPw
 aao
 aao
 aao
@@ -73362,12 +74096,12 @@ aao
 aao
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
+bPw
+bVi
+bVb
+bUV
+bUN
+bPw
 aao
 aao
 aao
@@ -73575,14 +74309,14 @@ aao
 aao
 aao
 aao
+acw
+acw
+acw
+acw
+acw
+acw
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+bjQ
 aao
 aao
 aao
@@ -73794,8 +74528,8 @@ aao
 aao
 aao
 aao
-aao
-aao
+bjQ
+bjQ
 aao
 aao
 aao
@@ -74000,15 +74734,15 @@ aao
 aao
 aao
 aao
+gNH
+gNH
+gNH
+gNH
+gNH
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+bPQ
+bjQ
 aao
 aao
 aao
@@ -74212,16 +74946,16 @@ aab
 aao
 aao
 aao
+bVy
+gNH
+bVc
+bVj
+bVc
+gNH
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+bUF
+bQg
+bjQ
 aao
 aao
 nEH
@@ -74851,15 +75585,15 @@ aab
 aao
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+bVv
+bVs
+bVm
+bVe
+bUH
+bUQ
+bUG
+bSW
+bPw
 aao
 aao
 aao
@@ -75064,15 +75798,15 @@ aab
 aao
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+bVw
+bVt
+bVn
+bVf
+bVa
+bUH
+bUH
+bUD
+bPw
 aao
 aao
 aao
@@ -75277,15 +76011,15 @@ aab
 aao
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+bVu
+bVu
+bVo
+bVg
+bVa
+bUR
+bUI
+bPw
+bPw
 aao
 aao
 aao
@@ -75490,15 +76224,15 @@ aab
 aao
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+bVe
+bVs
+bVp
+bVe
+bVa
+bUS
+bUK
+bPw
+bPw
 aao
 aao
 aao
@@ -75703,15 +76437,15 @@ aab
 aao
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+bVx
+bVt
+bVr
+bVg
+bVa
+bUT
+bUL
+bUE
+bPw
 aao
 aao
 aao
@@ -75916,15 +76650,15 @@ aab
 aao
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+bPw
+bPw
+bPw
+bVh
+bUH
+bUW
+bUM
+bPw
+bPw
 aao
 aao
 aao
@@ -76131,12 +76865,12 @@ aao
 aao
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
+bPw
+bVk
+bVd
+bUX
+bUO
+bPw
 aao
 aao
 aao
@@ -76344,14 +77078,14 @@ aao
 aao
 aao
 aao
+acw
+bVl
+bUY
+bUY
+bUP
+acw
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+bjQ
 aao
 aao
 aao
@@ -76557,14 +77291,14 @@ aao
 aao
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+acw
+acw
+acw
+acw
+acw
+acw
+bRa
+bjQ
 aao
 aao
 aao
@@ -76769,15 +77503,15 @@ aao
 aao
 aao
 aao
+bUZ
+bUZ
+bUZ
+bUZ
+bUZ
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+bPQ
+bjQ
 aao
 aao
 aao
@@ -76981,16 +77715,16 @@ aab
 aao
 aao
 aao
+bVy
+gNH
+gNH
+gNH
+gNH
+gNH
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+bUF
+bQg
+bjQ
 aao
 aao
 aao
@@ -102995,7 +103729,7 @@ bHP
 bMF
 bHR
 bHS
-bHa
+bVC
 aAG
 aAG
 aAG
@@ -110436,7 +111170,7 @@ bQH
 bUA
 bMv
 bGv
-bGv
+bVK
 bRb
 bRc
 bMZ
@@ -111072,7 +111806,7 @@ ebf
 ebf
 ahZ
 ahZ
-ahZ
+bRu
 bRG
 bRH
 bRI
@@ -111082,15 +111816,15 @@ bRM
 bRo
 bRN
 bRO
-bUw
+bRP
 bRQ
 bRR
 bRS
-bRo
+bVF
 bRo
 bRT
-bRU
-bRW
+bVA
+bVA
 bRX
 ahZ
 ebf
@@ -111285,8 +112019,8 @@ ebf
 ebf
 ebf
 ahZ
-ahZ
 bRG
+bVL
 bRY
 bRZ
 bSa
@@ -111295,16 +112029,16 @@ bRP
 bSc
 bRP
 bRW
-bRW
+bVH
 bRP
-bRW
+bVH
 bRP
-bSd
+bRP
 bSe
-bRP
-bRQ
-bRW
-bRQ
+bVE
+bVD
+bVB
+bVz
 ahZ
 ebf
 wso
@@ -111498,8 +112232,8 @@ ebf
 ebf
 ebf
 ahZ
-ahZ
 bRG
+bVM
 bSf
 bSg
 bSh
@@ -111511,12 +112245,12 @@ bSm
 bRP
 bSn
 bSo
-bSo
-bSo
+bVG
+bVG
 bSe
+bSV
 bRP
-bSp
-bSq
+bRP
 bSr
 ahZ
 ebf
@@ -111711,7 +112445,7 @@ ebf
 ebf
 ebf
 ahZ
-ahZ
+bSJ
 bRG
 bSs
 bSt
@@ -111935,14 +112669,14 @@ bRo
 bSN
 bRP
 bSO
+bVI
 ahZ
 ahZ
 ahZ
 ahZ
 ahZ
-ahZ
-ahZ
-ahZ
+bRW
+bRW
 ahZ
 ebf
 ebf
@@ -112149,14 +112883,14 @@ bRo
 bSP
 bab
 ahZ
+ahZ
 ebf
 ebf
 ebf
-ebf
-ebf
-ebf
-ebf
-ebf
+ahZ
+ahZ
+ahZ
+ahZ
 ebf
 wso
 wso
@@ -112360,7 +113094,7 @@ bSS
 bUz
 bUy
 bUx
-bRQ
+bVJ
 ahZ
 ebf
 ebf
@@ -112567,7 +113301,7 @@ ebf
 ahZ
 bSU
 bRP
-bRW
+bVH
 bSV
 bRW
 bRP

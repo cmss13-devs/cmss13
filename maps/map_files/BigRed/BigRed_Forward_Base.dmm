@@ -19293,10 +19293,6 @@
 /obj/structure/machinery/computer/supply,
 /turf/open/floor/almayer/plate,
 /area/forward_base/hallways/lower/port_midship_hallway)
-"bjQ" = (
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/mars,
-/area/bigredv2/caves)
 "bjR" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
@@ -29825,9 +29821,6 @@
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/medical/upper_medical)
-"bPw" = (
-/turf/closed/wall/almayer/reinforced,
-/area/bigredv2/caves)
 "bPx" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/condiment/saltshaker{
@@ -29967,14 +29960,6 @@
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/medical/upper_medical)
-"bPQ" = (
-/obj/item/trash/cigbutt{
-	pixel_x = -9;
-	pixel_y = -6
-	},
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/mars,
-/area/bigredv2/caves)
 "bPR" = (
 /obj/item/storage/box/gloves{
 	pixel_x = 5;
@@ -30127,18 +30112,6 @@
 /obj/item/clothing/accessory/patch/medic_patch,
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/medical/upper_medical)
-"bQg" = (
-/obj/item/trash/cigbutt{
-	pixel_x = -6;
-	pixel_y = -9
-	},
-/obj/item/trash/cigbutt{
-	pixel_x = -7;
-	pixel_y = 13
-	},
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/mars,
-/area/bigredv2/caves)
 "bQh" = (
 /turf/open/mars/mars_dirt_11,
 /area/bigredv2/outside/n)
@@ -30553,10 +30526,6 @@
 /obj/effect/decal/heavy_cable/node_s_w,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/forward_base/medical/morgue)
-"bRa" = (
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/caves)
 "bRb" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
 /obj/structure/machinery/light/red{
@@ -31481,13 +31450,6 @@
 "bSV" = (
 /turf/open/floor/almayer,
 /area/forward_base/medical/medical_science)
-"bSW" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera";
-	dir = 1
-	},
-/turf/open/floor/almayer/red/west,
-/area/bigredv2/caves)
 "bSX" = (
 /obj/structure/machinery/seed_extractor{
 	density = 0;
@@ -32115,442 +32077,10 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/forward_base/medical/morgue)
-"bUD" = (
-/obj/structure/machinery/light,
-/obj/structure/machinery/cm_vending/clothing/military_police_warden{
-	pixel_x = 28;
-	density = 0
-	},
-/turf/open/floor/almayer,
-/area/bigredv2/caves)
-"bUE" = (
-/obj/structure/machinery/computer/crew/alt{
-	dir = 4;
-	pixel_x = -16
-	},
-/obj/structure/machinery/power/apc/upgraded/power/south,
-/turf/open/floor/almayer/redfull,
-/area/bigredv2/caves)
-"bUF" = (
-/obj/item/trash/cigbutt{
-	pixel_x = -10;
-	pixel_y = 7
-	},
-/obj/item/trash/cigbutt{
-	pixel_x = 4
-	},
-/obj/item/trash/cigbutt{
-	pixel_x = -10;
-	pixel_y = 13
-	},
-/obj/item/trash/cigbutt{
-	icon_state = "ucigbutt";
-	pixel_x = 2;
-	pixel_y = 8
-	},
-/obj/structure/bed/chair{
-	dir = 4;
-	layer = 3.06
-	},
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/mars,
-/area/bigredv2/caves)
-"bUG" = (
-/turf/open/floor/almayer/red/west,
-/area/bigredv2/caves)
-"bUH" = (
-/turf/open/floor/almayer,
-/area/bigredv2/caves)
-"bUI" = (
-/obj/structure/surface/table/almayer,
-/obj/item/paper_bin/uscm{
-	pixel_y = 7;
-	pixel_x = 11
-	},
-/obj/item/tool/pen{
-	pixel_x = 7
-	},
-/obj/structure/machinery/computer/crew/alt{
-	dir = 4;
-	pixel_x = -5;
-	pixel_y = -3;
-	layer = 3
-	},
-/turf/open/floor/almayer/red2/southwest,
-/area/bigredv2/caves)
 "bUJ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement,
 /area/bigredv2/outside/filtration_cave_cas)
-"bUK" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 1
-	},
-/obj/structure/machinery/door_control{
-	id = "Cell Privacy Shutters";
-	name = "Cell Privacy Shutters";
-	pixel_x = 13;
-	pixel_y = 24;
-	req_access = list(3)
-	},
-/turf/open/floor/almayer/red2,
-/area/bigredv2/caves)
-"bUL" = (
-/obj/effect/landmark/start/warden,
-/turf/open/floor/almayer/red2,
-/area/bigredv2/caves)
-"bUM" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = -28;
-	pixel_x = 5
-	},
-/turf/open/floor/almayer/red2/southeast,
-/area/bigredv2/caves)
-"bUN" = (
-/obj/item/device/motiondetector/m717{
-	pixel_x = 7;
-	pixel_y = -6
-	},
-/obj/item/device/motiondetector/m717{
-	pixel_x = 7;
-	pixel_y = -2
-	},
-/obj/item/device/motiondetector/m717{
-	pixel_x = 7;
-	pixel_y = 2
-	},
-/obj/item/device/motiondetector/m717{
-	pixel_x = 7;
-	pixel_y = 6
-	},
-/obj/item/device/motiondetector/m717{
-	pixel_x = 7;
-	pixel_y = 10
-	},
-/obj/structure/closet/secure_closet{
-	req_one_access = list(3,104)
-	},
-/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
-	dir = 4;
-	id = "bot_armory";
-	emp_proof = 1
-	},
-/turf/open/floor/almayer/red2/west,
-/area/bigredv2/caves)
-"bUO" = (
-/obj/item/device/motiondetector/m717{
-	pixel_x = 7;
-	pixel_y = -6
-	},
-/obj/item/device/motiondetector/m717{
-	pixel_x = 7;
-	pixel_y = -2
-	},
-/obj/item/device/motiondetector/m717{
-	pixel_x = 7;
-	pixel_y = 2
-	},
-/obj/item/device/motiondetector/m717{
-	pixel_x = 7;
-	pixel_y = 6
-	},
-/obj/item/device/motiondetector/m717{
-	pixel_x = 7;
-	pixel_y = 10
-	},
-/obj/structure/closet/secure_closet/guncabinet,
-/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
-	dir = 4;
-	id = "bot_armory";
-	emp_proof = 1
-	},
-/turf/open/floor/almayer/red2/west,
-/area/bigredv2/caves)
-"bUP" = (
-/obj/structure/closet/secure_closet/guncabinet,
-/obj/item/weapon/gun/shotgun/combat{
-	pixel_y = 4
-	},
-/obj/item/weapon/gun/shotgun/combat{
-	pixel_y = -4
-	},
-/obj/item/weapon/gun/shotgun/combat{
-	pixel_y = 3
-	},
-/obj/item/weapon/gun/shotgun/combat{
-	pixel_y = -6
-	},
-/obj/item/ammo_magazine/shotgun/slugs{
-	layer = 3.01
-	},
-/obj/item/ammo_magazine/shotgun/slugs{
-	layer = 3.01
-	},
-/obj/item/ammo_magazine/shotgun/slugs{
-	layer = 3.01
-	},
-/obj/item/ammo_magazine/shotgun/slugs{
-	layer = 3.01
-	},
-/obj/item/ammo_magazine/shotgun/slugs{
-	layer = 3.01
-	},
-/obj/item/ammo_magazine/shotgun/buckshot{
-	layer = 3.01
-	},
-/obj/item/ammo_magazine/shotgun/buckshot{
-	layer = 3.01
-	},
-/obj/item/ammo_magazine/shotgun/buckshot{
-	layer = 3.01
-	},
-/obj/item/ammo_magazine/shotgun/buckshot{
-	layer = 3.01
-	},
-/obj/structure/sign/safety/ammunition{
-	pixel_x = 32;
-	pixel_y = -8
-	},
-/turf/open/floor/almayer/plate,
-/area/bigredv2/caves)
-"bUQ" = (
-/obj/structure/machinery/computer/card{
-	dir = 4;
-	pixel_x = -16
-	},
-/turf/open/floor/almayer/redcorner/west,
-/area/bigredv2/caves)
-"bUR" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm/almayer/brig{
-	sub_name = "Processing";
-	pixel_x = -1;
-	pixel_y = -12
-	},
-/obj/item/storage/box/ids{
-	pixel_x = 3;
-	pixel_y = 8
-	},
-/obj/structure/transmitter/rotary{
-	name = "Brig Reception Telephone";
-	phone_category = "MP Dept.";
-	phone_id = "Brig Reception";
-	pixel_x = -9;
-	pixel_y = 6
-	},
-/turf/open/floor/almayer/red2/west,
-/area/bigredv2/caves)
-"bUS" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/sentencing,
-/obj/structure/machinery/computer/secure_data{
-	pixel_x = -20
-	},
-/turf/open/floor/almayer,
-/area/bigredv2/caves)
-"bUT" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/cameras/almayer_network{
-	pixel_x = -11
-	},
-/turf/open/floor/almayer,
-/area/bigredv2/caves)
-"bUU" = (
-/obj/structure/machinery/light{
-	dir = 4;
-	invisibility = 101
-	},
-/turf/open/floor/almayer/red2/east,
-/area/bigredv2/caves)
-"bUV" = (
-/obj/item/weapon/gun/shotgun/combat{
-	pixel_y = 3
-	},
-/obj/item/weapon/gun/shotgun/combat{
-	pixel_y = -6
-	},
-/obj/structure/closet/secure_closet{
-	req_one_access = list(3,104)
-	},
-/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
-	dir = 4;
-	id = "bot_armory";
-	emp_proof = 1
-	},
-/turf/open/floor/almayer/red2/west,
-/area/bigredv2/caves)
-"bUW" = (
-/turf/open/floor/almayer/red2/east,
-/area/bigredv2/caves)
-"bUX" = (
-/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
-	dir = 4;
-	id = "bot_armory";
-	emp_proof = 1
-	},
-/turf/open/floor/almayer/red2/west,
-/area/bigredv2/caves)
-"bUY" = (
-/obj/structure/machinery/vending/security/riot{
-	density = 0;
-	pixel_x = 26
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/bigredv2/caves)
-"bUZ" = (
-/turf/open/space/basic,
-/area/bigredv2/caves)
-"bVa" = (
-/obj/effect/landmark/start/police,
-/turf/open/floor/almayer,
-/area/bigredv2/caves)
-"bVb" = (
-/obj/item/weapon/gun/shotgun/combat{
-	pixel_y = 4
-	},
-/obj/item/weapon/gun/shotgun/combat{
-	pixel_y = -4
-	},
-/obj/structure/closet/secure_closet{
-	req_one_access = list(3,104)
-	},
-/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
-	dir = 4;
-	id = "bot_armory";
-	emp_proof = 1
-	},
-/turf/open/floor/almayer/red2/west,
-/area/bigredv2/caves)
-"bVc" = (
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/floor/darkish,
-/area/bigredv2/caves)
-"bVd" = (
-/obj/structure/machinery/light{
-	dir = 4;
-	invisibility = 101
-	},
-/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
-	dir = 4;
-	id = "bot_armory";
-	emp_proof = 1
-	},
-/turf/open/floor/almayer/red2/west,
-/area/bigredv2/caves)
-"bVe" = (
-/turf/open/floor/almayer/red/north,
-/area/bigredv2/caves)
-"bVf" = (
-/obj/structure/filingcabinet/documentation/uscm_mp{
-	pixel_x = 9;
-	pixel_y = 13;
-	can_block_movement = 0
-	},
-/turf/open/floor/almayer/red/north,
-/area/bigredv2/caves)
-"bVg" = (
-/obj/structure/closet/secure_closet/brig,
-/turf/open/floor/almayer/red/north,
-/area/bigredv2/caves)
-"bVh" = (
-/obj/structure/machinery/door_control/brbutton{
-	pixel_y = 26;
-	name = "Armory Lockdown";
-	id = "bot_armory";
-	req_access = list(3)
-	},
-/turf/open/floor/almayer/red/north,
-/area/bigredv2/caves)
-"bVi" = (
-/obj/item/ammo_magazine/shotgun/slugs,
-/obj/item/ammo_magazine/shotgun/slugs,
-/obj/item/ammo_magazine/shotgun/slugs,
-/obj/item/ammo_magazine/shotgun/slugs,
-/obj/item/ammo_magazine/shotgun/buckshot{
-	layer = 3.01
-	},
-/obj/item/ammo_magazine/shotgun/buckshot{
-	layer = 3.01
-	},
-/obj/item/ammo_magazine/shotgun/buckshot{
-	layer = 3.01
-	},
-/obj/item/ammo_magazine/shotgun/buckshot{
-	layer = 3.01
-	},
-/obj/structure/closet/secure_closet{
-	req_one_access = list(3,104)
-	},
-/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
-	dir = 4;
-	id = "bot_armory";
-	emp_proof = 1
-	},
-/turf/open/floor/almayer/red2/west,
-/area/bigredv2/caves)
-"bVj" = (
-/obj/structure/bed/chair,
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/floor/darkish,
-/area/bigredv2/caves)
-"bVk" = (
-/obj/structure/closet/secure_closet/guncabinet/riot_control,
-/obj/item/weapon/shield/riot,
-/obj/item/vehicle_clamp,
-/obj/item/vehicle_clamp,
-/obj/item/vehicle_clamp,
-/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
-	dir = 4;
-	id = "bot_armory";
-	emp_proof = 1
-	},
-/turf/open/floor/almayer/red2/west,
-/area/bigredv2/caves)
-"bVl" = (
-/obj/structure/closet/secure_closet/guncabinet,
-/obj/item/weapon/gun/rifle/m41a{
-	pixel_y = -4
-	},
-/obj/item/weapon/gun/rifle/m41a{
-	pixel_y = -4
-	},
-/obj/item/weapon/gun/rifle/m41a{
-	pixel_y = 4
-	},
-/obj/item/weapon/gun/rifle/m41a{
-	pixel_y = 4
-	},
-/obj/item/ammo_box/magazine,
-/obj/structure/sign/safety/hazard{
-	pixel_y = 6;
-	pixel_x = 32
-	},
-/turf/open/floor/almayer/plate,
-/area/bigredv2/caves)
-"bVm" = (
-/obj/structure/machinery/door/window/brigdoor/southright{
-	id = "Cell 1";
-	name = "Cell 1"
-	},
-/turf/open/floor/almayer/plate,
-/area/bigredv2/caves)
-"bVn" = (
-/obj/structure/machinery/brig_cell/cell_1,
-/turf/closed/wall/almayer/reinforced,
-/area/bigredv2/caves)
-"bVo" = (
-/obj/structure/sign/safety/one,
-/turf/closed/wall/almayer/reinforced,
-/area/bigredv2/caves)
-"bVp" = (
-/obj/structure/machinery/door/window/brigdoor/southright{
-	id = "Cell 2";
-	name = "Cell 2"
-	},
-/turf/open/floor/almayer/plate,
-/area/bigredv2/caves)
 "bVq" = (
 /obj/item/trash/chips{
 	pixel_y = 4;
@@ -32559,69 +32089,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/whitegreen/west,
 /area/bigredv2/outside/medical)
-"bVr" = (
-/obj/structure/machinery/brig_cell/cell_2,
-/turf/closed/wall/almayer/reinforced,
-/area/bigredv2/caves)
-"bVs" = (
-/turf/open/floor/almayer/plate,
-/area/bigredv2/caves)
-"bVt" = (
-/obj/item/bedsheet/brown{
-	pixel_y = 10
-	},
-/obj/structure/machinery/light,
-/obj/structure/bed/hybrisa/prisonbed,
-/turf/open/floor/almayer/plate,
-/area/bigredv2/caves)
-"bVu" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Cell Privacy Shutters";
-	name = "\improper Cell Privacy  Shutters"
-	},
-/obj/structure/window/framed/almayer,
-/turf/open/floor/plating,
-/area/bigredv2/caves)
-"bVv" = (
-/obj/structure/machinery/flasher{
-	id = "Cell 1";
-	pixel_x = -24
-	},
-/turf/open/floor/almayer/red/north,
-/area/bigredv2/caves)
-"bVw" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = 26
-	},
-/obj/structure/bed/hybrisa/prisonbed,
-/obj/item/bedsheet/brown{
-	pixel_y = 10
-	},
-/turf/open/floor/almayer/plate,
-/area/bigredv2/caves)
-"bVx" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = 26
-	},
-/obj/structure/bed/hybrisa/prisonbed,
-/obj/item/bedsheet/brown{
-	pixel_y = 10
-	},
-/obj/structure/machinery/flasher{
-	id = "Cell 2";
-	pixel_x = 24
-	},
-/turf/open/floor/almayer/plate,
-/area/bigredv2/caves)
-"bVy" = (
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/floor/asteroidwarning/north,
-/area/bigredv2/caves)
 "bVz" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out"
@@ -72819,15 +72286,15 @@ aab
 aao
 aao
 aao
-bVv
-bVs
-bVm
-bVe
-bUH
-bUQ
-bUG
-bSW
-bPw
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -73032,15 +72499,15 @@ aab
 aao
 aao
 aao
-bVw
-bVt
-bVn
-bVf
-bVa
-bUH
-bUH
-bUD
-bPw
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -73245,15 +72712,15 @@ aab
 aao
 aao
 aao
-bVu
-bVu
-bVo
-bVg
-bVa
-bUR
-bUI
-bPw
-bPw
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -73458,15 +72925,15 @@ aab
 aao
 aao
 aao
-bVe
-bVs
-bVp
-bVe
-bVa
-bUS
-bUK
-bPw
-bPw
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -73671,15 +73138,15 @@ aab
 aao
 aao
 aao
-bVx
-bVt
-bVr
-bVg
-bVa
-bUT
-bUL
-bUE
-bPw
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -73884,15 +73351,15 @@ aab
 aao
 aao
 aao
-bPw
-bPw
-bPw
-bVh
-bUH
-bUU
-bUM
-bPw
-bPw
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -74099,12 +73566,12 @@ aao
 aao
 aao
 aao
-bPw
-bVi
-bVb
-bUV
-bUN
-bPw
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -74312,14 +73779,14 @@ aao
 aao
 aao
 aao
-acw
-acw
-acw
-acw
-acw
-acw
 aao
-bjQ
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -74531,8 +73998,8 @@ aao
 aao
 aao
 aao
-bjQ
-bjQ
+aao
+aao
 aao
 aao
 aao
@@ -74737,15 +74204,15 @@ aao
 aao
 aao
 aao
-gNH
-gNH
-gNH
-gNH
-gNH
 aao
 aao
-bPQ
-bjQ
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -74949,16 +74416,16 @@ aab
 aao
 aao
 aao
-bVy
-gNH
-bVc
-bVj
-bVc
-gNH
 aao
-bUF
-bQg
-bjQ
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 nEH
@@ -75588,15 +75055,15 @@ aab
 aao
 aao
 aao
-bVv
-bVs
-bVm
-bVe
-bUH
-bUQ
-bUG
-bSW
-bPw
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -75801,15 +75268,15 @@ aab
 aao
 aao
 aao
-bVw
-bVt
-bVn
-bVf
-bVa
-bUH
-bUH
-bUD
-bPw
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -76014,15 +75481,15 @@ aab
 aao
 aao
 aao
-bVu
-bVu
-bVo
-bVg
-bVa
-bUR
-bUI
-bPw
-bPw
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -76227,15 +75694,15 @@ aab
 aao
 aao
 aao
-bVe
-bVs
-bVp
-bVe
-bVa
-bUS
-bUK
-bPw
-bPw
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -76440,15 +75907,15 @@ aab
 aao
 aao
 aao
-bVx
-bVt
-bVr
-bVg
-bVa
-bUT
-bUL
-bUE
-bPw
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -76653,15 +76120,15 @@ aab
 aao
 aao
 aao
-bPw
-bPw
-bPw
-bVh
-bUH
-bUW
-bUM
-bPw
-bPw
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -76868,12 +76335,12 @@ aao
 aao
 aao
 aao
-bPw
-bVk
-bVd
-bUX
-bUO
-bPw
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -77081,14 +76548,14 @@ aao
 aao
 aao
 aao
-acw
-bVl
-bUY
-bUY
-bUP
-acw
 aao
-bjQ
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -77294,14 +76761,14 @@ aao
 aao
 aao
 aao
-acw
-acw
-acw
-acw
-acw
-acw
-bRa
-bjQ
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -77506,15 +76973,15 @@ aao
 aao
 aao
 aao
-bUZ
-bUZ
-bUZ
-bUZ
-bUZ
 aao
 aao
-bPQ
-bjQ
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -77718,16 +77185,16 @@ aab
 aao
 aao
 aao
-bVy
-gNH
-gNH
-gNH
-gNH
-gNH
 aao
-bUF
-bQg
-bjQ
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao

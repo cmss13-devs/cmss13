@@ -246,6 +246,8 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	var/obj/structure/ob_ammo/warhead/warhead = tray.warhead
 	tray.warhead = null
 	warhead.moveToNullspace()
+	// shows the general scatter area
+	warhead.start_tacmap_warning(T, (inaccurate_fuel + 1) * 3 * sqrt(2))
 	warhead.warhead_impact(target, warhead)
 
 	sleep(OB_CRASHING_DOWN)
@@ -383,9 +385,31 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	var/shake_frequency
 	var/max_shake_factor
 	var/max_knockdown_time
+	var/datum/fire_support_warning/tacmap_warning
+	var/tacmap_label = "OB UNKNOWN"
 
 	// Note that the warhead should be cleared of location by the firing proc,
 	// then auto-delete at the end of the warhead_impact implementation
+
+/obj/structure/ob_ammo/warhead/Destroy()
+	clear_tacmap_warning()
+	return ..()
+
+/obj/structure/ob_ammo/warhead/proc/clear_tacmap_warning()
+	QDEL_NULL(tacmap_warning)
+
+/obj/structure/ob_ammo/warhead/proc/get_tacmap_radius()
+	return 0
+
+/obj/structure/ob_ammo/warhead/proc/get_tacmap_duration()
+	return OB_TRAVEL_TIMING
+
+/obj/structure/ob_ammo/warhead/proc/start_tacmap_warning(turf/target, scatter)
+	clear_tacmap_warning()
+	if(!target)
+		return
+	var/effect_radius = get_tacmap_radius()
+	tacmap_warning = new(target, effect_radius ? effect_radius + scatter : 0, tacmap_label, get_tacmap_duration() + 30 SECONDS, "#ff635c")
 
 /obj/structure/ob_ammo/warhead/proc/warhead_impact(turf/target)
 	// make damn sure everyone hears it
@@ -429,6 +453,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 		target.ceiling_debris_check(5)
 		GLOB.orbital_cannon_cancellation["[cancellation_token]"] = null
 		return TRUE
+	clear_tacmap_warning()
 	return FALSE
 
 /// proc designed for handling ob camera shakes, takes the target location as input and calculates camera shake based off user location.
@@ -455,6 +480,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 		to_chat(user, SPAN_WARNING("You are thrown off balance and fall to the ground!"))
 
 /obj/structure/ob_ammo/warhead/explosive
+	tacmap_label = "OB HE"
 	name = "\improper HE orbital warhead"
 	warhead_kind = "explosive"
 	icon_state = "ob_warhead_1"
@@ -467,6 +493,12 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	var/standard_falloff = 30
 	var/clear_delay = 3
 	var/double_explosion_delay = 6
+
+/obj/structure/ob_ammo/warhead/explosive/get_tacmap_radius()
+	return max(clear_power / max(clear_falloff, clear_power / 100), standard_power / max(standard_falloff, standard_power / 100))
+
+/obj/structure/ob_ammo/warhead/explosive/get_tacmap_duration()
+	return ..() + 1 SECONDS + clear_delay + double_explosion_delay
 
 /obj/structure/ob_ammo/warhead/explosive/warhead_impact(turf/target, obj/structure/ob_ammo/warhead/warhead)
 	. = ..()
@@ -504,6 +536,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	qdel(src)
 
 /obj/structure/ob_ammo/warhead/incendiary
+	tacmap_label = "OB INCEN"
 	name = "\improper Incendiary orbital warhead"
 	warhead_kind = "incendiary"
 	icon_state = "ob_warhead_2"
@@ -518,6 +551,12 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	var/burn_level = 80
 	var/fire_color = LIGHT_COLOR_CYAN
 	var/fire_type = "white"
+
+/obj/structure/ob_ammo/warhead/incendiary/get_tacmap_radius()
+	return max(distance, clear_power / max(clear_falloff, clear_power / 100))
+
+/obj/structure/ob_ammo/warhead/incendiary/get_tacmap_duration()
+	return ..() + 1 SECONDS + clear_delay
 
 /obj/structure/ob_ammo/warhead/incendiary/warhead_impact(turf/target, obj/structure/ob_ammo/warhead/warhead)
 	. = ..()
@@ -536,6 +575,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	qdel(src)
 
 /obj/structure/ob_ammo/warhead/cluster
+	tacmap_label = "OB CLUSTER"
 	name = "\improper Cluster orbital warhead"
 	warhead_kind = "cluster"
 	icon_state = "ob_warhead_3"
@@ -547,6 +587,14 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	var/explosion_power = 350
 	var/explosion_falloff = 150
 	var/delay_between_clusters = 0.4 SECONDS // how long between each firing?
+	var/cluster_range = 12
+
+/obj/structure/ob_ammo/warhead/cluster/get_tacmap_radius()
+	// this factors in the outer limit of the cluster's explosion for the general overall area
+	return cluster_range * sqrt(2) + explosion_power / max(explosion_falloff, explosion_power / 100)
+
+/obj/structure/ob_ammo/warhead/cluster/get_tacmap_duration()
+	return ..() + total_amount * delay_between_clusters + 5 SECONDS
 
 /obj/structure/ob_ammo/warhead/cluster/warhead_impact(turf/target, obj/structure/ob_ammo/warhead/warhead)
 	. = ..()
@@ -558,8 +606,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 /obj/structure/ob_ammo/warhead/cluster/proc/start_cluster(turf/target, obj/structure/ob_ammo/warhead/warhead)
 	set waitfor = 0
 
-	var/range_num = 12
-	var/list/turf_list = RANGE_TURFS(range_num, target)
+	var/list/turf_list = RANGE_TURFS(cluster_range, target)
 
 	for(var/i = 1 to total_amount)
 		for(var/k = 1 to instant_amount)

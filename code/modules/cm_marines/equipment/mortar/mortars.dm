@@ -420,7 +420,14 @@
 			else
 				to_chat(user, SPAN_RED("You realize how bad of an idea this is and quickly stop."))
 				return
-		else
+		var/turf/predicted_target = target_turf
+		var/predicted_scatter = 0
+		if(!ship_side && !lase_mode)
+			predicted_target = locate(clamp(targ_x + dial_x, 1, world.maxx), clamp(targ_y + dial_y, 1, world.maxy), targ_z)
+			var/scatter_x = floor(abs(targ_x - x) / offset_per_turfs) + 1
+			var/scatter_y = floor(abs(targ_y - y) / offset_per_turfs) + 1
+			predicted_scatter = sqrt(scatter_x**2 + scatter_y**2)
+		if(!ship_side)
 			var/turf/deviation_turf = locate(target_turf.x + pick(-1,0,0,1), target_turf.y + pick(-1,0,0,1), target_turf.z) //Small amount of spread so that consecutive mortar shells don't all land on the same tile
 			if(deviation_turf && !lase_mode) // Mortar is accurate in lase mode
 				target_turf = deviation_turf
@@ -449,6 +456,8 @@
 			for(var/mob/mob in range(7))
 				shake_camera(mob, 3, 1)
 
+			if(!ship_side && (user.faction == FACTION_MARINE || (FACTION_MARINE in user.faction_group)))
+				mortar_shell.start_tacmap_warning(predicted_target, predicted_scatter, travel_time + 30 SECONDS)
 			addtimer(CALLBACK(src, PROC_REF(handle_shell), target_turf, mortar_shell), travel_time)
 
 	if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
@@ -497,6 +506,7 @@
 
 /obj/structure/mortar/proc/handle_shell(turf/target, obj/item/mortar_shell/shell)
 	if(protected_by_pylon(TURF_PROTECTION_MORTAR, target))
+		QDEL_NULL(shell.tacmap_warning)
 		firing = FALSE
 		return
 
@@ -536,6 +546,7 @@
 	new /obj/effect/overlay/temp/mortar_impact (target, shell)
 	sleep(2 SECONDS) // Wait out the rest of the landing time
 	target.ceiling_debris_check(2)
+	QDEL_NULL(shell.tacmap_warning)
 	if(!protected_by_pylon(TURF_PROTECTION_MORTAR, target))
 		shell.detonate(target)
 	qdel(shell)

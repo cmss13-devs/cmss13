@@ -109,6 +109,9 @@
 
 		// Clean up drawing tool references and mark CIC minimap inactive
 		var/atom/movable/screen/minimap/user_map = user_objects["map"]
+		user_map.aim_console = null
+		user_map.aim_operator = null
+		user_map.update_operator_aim_marker()
 		user_map?.active_draw_tool = null
 		user_map?.is_cic_minimap = FALSE
 
@@ -124,10 +127,14 @@
 		return
 
 	if(!map_holder)
-		map_holder = new(null, targetted_zlevel, minimap_flag, drawing=drawing)
+		map_holder = new(null, targetted_zlevel, minimap_flag, drawing=drawing, coordinate_console=istype(parent, /obj/structure/machinery/computer/overwatch) ? parent : null)
 
 	// Create per client minimap and tools for ceiling protection isolation
-	var/atom/movable/screen/minimap/user_map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, live=TRUE, popup=FALSE, drawing=drawing, for_client=user.client)
+	var/atom/movable/screen/minimap/user_map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, live=TRUE, popup=FALSE, drawing=drawing, for_client=user.client, coordinate_console=istype(parent, /obj/structure/machinery/computer/overwatch) ? parent : null)
+	if(istype(parent, /obj/structure/machinery/computer/dropship_weapons))
+		user_map.aim_console = parent
+		user_map.aim_operator = user
+		user_map.update_operator_aim_marker()
 	var/atom/movable/screen/exit_map/user_close_button = new(null, src)
 
 	// Apply drawing overlays to minimap
@@ -186,6 +193,8 @@
 		return
 
 	user.client.register_map_obj(map_holder.map)
+	map_holder.map.popout_viewers |= user.client
+	map_holder.map.update_fire_support_warnings()
 	ui = new(user, src, "TacticalMap")
 	ui.open()
 	user.client.using_popout_tacmap = TRUE
@@ -211,6 +220,7 @@
 		return
 
 	user.client.remove_from_screen(map_holder.map)
+	map_holder.map.popout_viewers -= user.client
 	user.client.using_popout_tacmap = FALSE
 
 GLOBAL_LIST_INIT(tacmap_holders, list())
@@ -219,9 +229,10 @@ GLOBAL_LIST_INIT(tacmap_holders, list())
 	var/map_ref
 	var/atom/movable/screen/minimap/map
 
-/datum/tacmap_holder/New(loc, zlevel, flags, drawing)
+/datum/tacmap_holder/New(loc, zlevel, flags, drawing, obj/structure/machinery/computer/overwatch/coordinate_console)
 	map_ref = "tacmap_[REF(src)]_map"
-	map = SSminimaps.fetch_minimap_object(zlevel, flags, live=TRUE, popup=TRUE, drawing=drawing)
+	map = SSminimaps.fetch_minimap_object(zlevel, flags, live=TRUE, popup=TRUE, drawing=drawing, coordinate_console=coordinate_console)
+	map.track_popout_viewers = TRUE
 
 	map.screen_loc = "[map_ref]:1,1"
 	map.assigned_map = map_ref

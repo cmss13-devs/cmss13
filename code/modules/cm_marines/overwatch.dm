@@ -803,7 +803,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				return
 			if(length(saved_coordinates) >= MAX_SAVED_COORDINATES)
 				popleft(saved_coordinates)
-			saved_coordinates += list(list("x" = text2num(params["x"]), "y" = text2num(params["y"]), "z" = text2num(params["z"])))
+			saved_coordinates += list(list("x" = text2num(params["x"]), "y" = text2num(params["y"]), "z" = text2num(params["z"]), "squad" = current_squad))
+			SSminimaps.refresh_fire_support_warnings()
 			return TRUE
 
 		if("change_coordinate_comment")

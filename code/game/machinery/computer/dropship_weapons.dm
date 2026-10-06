@@ -26,6 +26,7 @@
 
 	// Cameras
 	var/camera_target_id
+	var/list/operator_map_aims = list()
 	var/camera_width = 11
 	var/camera_height = 11
 	var/camera_map_name
@@ -49,7 +50,7 @@
 
 	// camera setup
 	AddComponent(/datum/component/camera_manager)
-	AddComponent(/datum/component/tacmap, has_drawing_tools = FALSE, minimap_flag = minimap_flag, has_update = FALSE)
+	AddComponent(/datum/component/tacmap, has_drawing_tools = FALSE, minimap_flag = minimap_flag | MINIMAP_FLAG_DROPSHIP, has_update = FALSE)
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 /obj/structure/machinery/computer/dropship_weapons/Destroy()
@@ -155,6 +156,7 @@
 
 /obj/structure/machinery/computer/dropship_weapons/ui_close(mob/user)
 	. = ..()
+	operator_map_aims -= user
 
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 	tacmap_component.on_unset_interaction(user)
@@ -302,6 +304,7 @@
 		if("set-camera")
 			var/target_camera = params["equipment_id"]
 			set_camera_target(target_camera)
+			set_operator_map_aim(user, get_cas_signal(target_camera), 0, 0)
 			return TRUE
 
 		if("set-camera-sentry")
@@ -415,6 +418,7 @@
 			var/y_offset_value = params["y_offset_value"]
 
 			camera_target_id = target_id
+			set_operator_map_aim(user, get_cas_signal(target_id), text2num(x_offset_value), text2num(y_offset_value))
 			var/datum/cas_signal/cas_sig = get_cas_signal(camera_target_id, valid_only = TRUE)
 			// we don't want rapid offset changes to trigger admin warnings
 			// and block the user from accessing TGUI
@@ -556,6 +560,29 @@
 			if(valid_only && !sig.valid_signal())
 				continue
 			return sig
+
+/obj/structure/machinery/computer/dropship_weapons/proc/set_operator_map_aim(mob/user, datum/cas_signal/signal, offset_x, offset_y)
+	if(!signal || !isnum(offset_x) || !isnum(offset_y))
+		operator_map_aims -= user
+	else
+		operator_map_aims[user] = list("signal" = signal, "x" = offset_x, "y" = offset_y)
+	var/datum/component/tacmap/component = GetComponent(/datum/component/tacmap)
+	var/list/user_objects = component?.interactees[user]
+	var/atom/movable/screen/minimap/user_map = user_objects?["map"]
+	user_map?.update_operator_aim_marker()
+
+/obj/structure/machinery/computer/dropship_weapons/proc/get_operator_map_aim(mob/user)
+	var/list/aim = operator_map_aims[user]
+	if(!aim)
+		return
+	var/datum/cas_signal/signal = aim["signal"]
+	var/datum/cas_iff_group/group = GLOB.cas_groups[faction]
+	if(QDELETED(signal) || !(signal in group?.cas_signals))
+		return
+	var/obj/source = signal.signal_loc
+	if(QDELETED(source) || !isturf(source.loc) || source.z != signal.z_initial)
+		return
+	return locate(source.x + aim["x"], source.y + aim["y"], source.z)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/set_camera_target(target_ref)
 	camera_area_equipment = null

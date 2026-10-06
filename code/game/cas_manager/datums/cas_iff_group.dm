@@ -4,9 +4,11 @@
 
 /datum/cas_iff_group/proc/add_signal(datum/cas_signal/signal)
 	cas_signals += signal
+	SSminimaps.refresh_fire_support_warnings()
 
 /datum/cas_iff_group/proc/remove_signal(datum/cas_signal/signal)
 	cas_signals -= signal
+	SSminimaps.refresh_fire_support_warnings()
 
 GLOBAL_DATUM_INIT(uscm_cas_group, /datum/cas_iff_group, new())
 GLOBAL_DATUM_INIT(upp_cas_group, /datum/cas_iff_group, new())

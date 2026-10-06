@@ -127,11 +127,12 @@
 			var/frequency_word
 			for(var/datum/reagent/chemical in reagents.reagent_list)
 				var/doses = (chemical.overdose) / (chemical.volume / uses_left)
-				if(chemical.overdose == 0)
-					. += SPAN_HELPFUL("You know [chemical.name] cannot be overdosed.")
-					return
 				if(isnull(do_not_exceed_this_amount_of_doses) || doses < do_not_exceed_this_amount_of_doses)
 					do_not_exceed_this_amount_of_doses = doses
+				if(chemical.overdose == 0)
+					. += SPAN_HELPFUL("You know [chemical.name] cannot be overdosed.")
+				else if(do_not_exceed_this_amount_of_doses < 1)
+					CRASH("Excessive dose for [chemical.name] detected in [src]: [chemical.volume / max_uses]u exceeds the [chemical.overdose]u overdose limit.")
 
 			if(do_not_exceed_this_amount_of_doses > 0)
 				switch(floor(do_not_exceed_this_amount_of_doses))
@@ -139,9 +140,6 @@
 					if(2) frequency_word += "twice"
 					if(3) frequency_word += "thrice"
 
-/* 				if(do_not_exceed_this_amount_of_doses < 1)
-					CRASH("[chemical.volume / max_uses]u dose of [chemical.name] found in [src] exceeds [chemical.name]'s [chemical.overdose]u overdose limit.) */
-				// If you make a new autoinjector or modify an existing autoinjector's amount_per_transfer_from_this or volume variables, please uncomment the two lines above and else if the (floor(do_not_exceed_this_amount_of_doses) < 4) to test it out. Autoinjectors with chemicals initialized into them should never overdose a patient after the first injection. - Puckaboo2
 				if(floor(do_not_exceed_this_amount_of_doses) < 4)
 					. += SPAN_HELPFUL("You know not to inject this autoinjector more than [frequency_word].")
 				else
@@ -178,7 +176,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/standard
 	name = "autoinjector"
 	chemname = "tricordrazine"
-	desc = "This was incorrectly spawned or mapped in. Please ahelp if the former or submit a bug report if the latter."
+	desc = "You're not supposed to see this. Ahelp and report it."
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	display_maptext = TRUE
@@ -356,7 +354,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/ez //path made explicitly to make child paths
 	name = "EZ autoinjector"
 	chemname = "tricordrazine"
-	desc = "You're not supposed to see this. Ahelp it."
+	desc = "You're not supposed to see this. Ahelp and report it."
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	icon_state = "empty_ez"
@@ -416,7 +414,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use
 	name = "EZ autoinjector"
 	chemname = "tricordrazine"
-	desc = "Please ahelp if the former or submit a bug report if the latter."
+	desc = "You're not supposed to see this. Ahelp and report it."
 	icon_state = "empty_single"
 	autoinjector_type = "autoinjector_single"
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -472,10 +470,18 @@
 /obj/item/reagent_container/hypospray/autoinjector/ez/one_use/adrenaline_allergy
 	name = "EpWYPen"
 	chemname = "adrenaline"
-	desc = "It's an Epipen--or, WY's version of one. In case of allergic reaction, inject it in a fatty area on the stomach, thigh, or back of the arm."
+	desc = "It's an Epipen--or, WY's version of one. In case of an allergic reaction, inject it in a fatty area on the stomach, thigh, or back of the arm."
 	amount_per_transfer_from_this = 1
 	volume = 1
-	maptext_label = "OuEpi"
+	maptext_label = "OuEp"
+
+/obj/item/reagent_container/hypospray/autoinjector/ez/one_use/adrenaline
+	name = "epinephrine EZ autoinjector"
+	chemname = "adrenaline"
+	desc = "An ez one-use autoinjector that injects epinephrine in preparation for restarting the heart with the aid of a defibrillator."
+	amount_per_transfer_from_this = 5
+	volume = 5
+	maptext_label = "OuEp"
 
 
 //TUTORIAL AUTOINJECTORS

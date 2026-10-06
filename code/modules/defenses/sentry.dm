@@ -9,39 +9,10 @@
 	icon = 'icons/obj/structures/machinery/defenses/sentry.dmi'
 	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 500-round drum magazine."
 	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_ENGPREP, ACCESS_MARINE_LEADER)
-	needs_power = FALSE // these have abstract internal batteries.
-	var/list/targets = list() // Lists of current potential targets
-	var/list/other_targets = list() //List of special target types to shoot at, if needed.
-	var/atom/movable/target = null
-	var/datum/shape/range_bounds
-	var/datum/effect_system/spark_spread/spark_system //The spark system, used for generating... sparks?
-	var/last_fired = 0
-	var/fire_delay = 4
-	var/immobile = FALSE //Used for prebuilt ones.
-	var/obj/item/ammo_magazine/ammo = new /obj/item/ammo_magazine/sentry
-	var/sentry_type = "uac_sentry" //Used for the icon
+
 	display_additional_stats = TRUE
-	/// Light strength when turned on
-	var/luminosity_strength = 5
-	/// Check if they have been upgraded or not, used for sentry post
-	var/upgraded = FALSE
-	var/omni_directional = FALSE
-	var/additional_rounds_stored = FALSE
-	var/sentry_range = SENTRY_RANGE
-
 	has_camera = TRUE
-
-	var/damage_mult = 1
-	var/accuracy_mult = 1
-	var/burst = 1
 	handheld_type = /obj/item/defenses/handheld/sentry
-
-	/// timer triggered when sentry gun shoots at a target to not spam the laptop
-	var/engaged_timer = null
-	/// timer triggered when sentry gun is low on ammo to not spam the laptop
-	var/low_ammo_timer = null
-	/// timer triggered when sentry gun is out of ammo to not spam the laptop
-	var/sent_empty_ammo = FALSE
 
 	/// action list is configurable for all subtypes, this is just an example
 	choice_categories = list(
@@ -53,6 +24,36 @@
 		// SENTRY_CATEGORY_ROF = ROF_SINGLE,
 		SENTRY_CATEGORY_IFF = FACTION_MARINE,
 	)
+
+	var/list/targets = list() // Lists of current potential targets
+	var/list/other_targets = list() //List of special target types to shoot at, if needed.
+	var/atom/movable/target = null
+	var/datum/shape/range_bounds
+	var/datum/effect_system/spark_spread/spark_system //The spark system, used for generating... sparks?
+	var/last_fired = 0
+	var/fire_delay = 4
+	var/immobile = FALSE //Used for prebuilt ones.
+	var/obj/item/ammo_magazine/ammo = new /obj/item/ammo_magazine/sentry
+	var/sentry_type = "uac_sentry" //Used for the icon
+
+	/// Light strength when turned on
+	var/luminosity_strength = 5
+	/// Check if they have been upgraded or not, used for sentry post
+	var/upgraded = FALSE
+	var/omni_directional = FALSE
+	var/additional_rounds_stored = FALSE
+	var/sentry_range = SENTRY_RANGE
+
+	var/damage_mult = 1
+	var/accuracy_mult = 1
+	var/burst = 1
+
+	/// timer triggered when sentry gun shoots at a target to not spam the laptop
+	var/engaged_timer = null
+	/// timer triggered when sentry gun is low on ammo to not spam the laptop
+	var/low_ammo_timer = null
+	/// timer triggered when sentry gun is out of ammo to not spam the laptop
+	var/sent_empty_ammo = FALSE
 
 	///Minimap iconstate to use for this sentry
 	var/minimap_icon_state = "sentry"

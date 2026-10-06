@@ -73,14 +73,14 @@
 			add_fingerprint(usr)
 
 /obj/item/storage/clicked(mob/user, list/mods)
-	if(!mods[SHIFT_CLICK] && mods[MIDDLE_CLICK] && CAN_PICKUP(user, src))
+	if(!mods[SHIFT_CLICK] && mods[MIDDLE_CLICK] && !mods[ALT_CLICK] && CAN_PICKUP(user, src))
 		handle_mmb_open(user)
 		return TRUE
 
 	//Allow alt-clicking to remove items directly from storage.
 	//Does so by passing the alt mod back to do_click(), which eventually delivers it to attack_hand().
 	//This ensures consistent click behaviour between alt-click and left-mouse drawing.
-	if(mods[ALT_CLICK]  && loc == user && !user.get_active_hand())
+	if(mods[ALT_CLICK] && mods[LEFT_CLICK] && loc == user && !user.get_active_hand())
 		return FALSE
 
 	return ..()

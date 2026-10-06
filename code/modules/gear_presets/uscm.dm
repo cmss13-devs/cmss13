@@ -418,6 +418,12 @@
 
 	minimap_icon = "leader"
 
+/datum/equipment_preset/uscm/leader/load_rank(mob/living/carbon/human/rankee, client/mob_client)
+	if(rankee?.client?.prefs?.pref_special_job_options[job_title])
+		var/paygrade_choice = get_paygrade_id_by_name(rankee.client.prefs.pref_special_job_options[job_title], GLOB.paygrades & paygrades)
+		return paygrade_choice
+	. = ..()
+
 /datum/equipment_preset/uscm/leader/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = get_backpack_item(new_human)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
@@ -479,6 +485,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/leader_equipped
+	parent_type = /datum/equipment_preset/uscm/leader
 	name = "USCM Squad Leader (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 

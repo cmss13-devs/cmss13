@@ -226,8 +226,25 @@
 /obj/structure/machinery/door_control/brbutton
 	icon_state = "big_red_button_wallv"
 
-
 /obj/structure/machinery/door_control/brbutton/alt
+	icon_state = "big_red_button_tablev"
+
+/obj/structure/machinery/door_control/single_use/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+
+/obj/structure/machinery/door_control/single_use/brbutton
+	icon_state = "big_red_button_wallv"
+
+/obj/structure/machinery/door_control/single_use/brbutton/alt
+	icon_state = "big_red_button_tablev"
+
+/obj/structure/machinery/door_control/single_use/temporary_lockdown/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+
+/obj/structure/machinery/door_control/single_use/temporary_lockdown/brbutton
+	icon_state = "big_red_button_wallv"
+
+/obj/structure/machinery/door_control/single_use/temporary_lockdown/brbutton/alt
 	icon_state = "big_red_button_tablev"
 
 /obj/structure/machinery/door_control/airlock
@@ -317,7 +334,7 @@
 
 /obj/structure/machinery/door_control/colony_lockdown/use_button(mob/living/user,force)
 	if(world.time < SSticker.mode.round_time_lobby + colony_lockdown_time)
-		to_chat(user, SPAN_WARNING("The colony-wide lockdown cannot be lifted yet. Please wait another [floor((SSticker.mode.round_time_lobby + colony_lockdown_time-world.time)/600)] minutes before trying again."))
+		to_chat(user, SPAN_WARNING("The colony-wide lockdown cannot be lifted yet. Please wait another [floor((SSticker.mode.round_time_lobby + colony_lockdown_time-world.time) DECISECONDS_TO_MINUTES)] minutes before trying again."))
 		return
 	if(used)
 		to_chat(user, SPAN_WARNING("The colony-wide lockdown has already been lifted."))
@@ -334,7 +351,7 @@
 
 /obj/structure/machinery/door_control/research_lockdown/use_button(mob/living/user,force)
 	if(world.time < SSticker.mode.round_time_lobby + colony_lockdown_time)
-		to_chat(user, SPAN_WARNING("The WY-Research-Facility lockdown cannot be lifted yet. Please wait another [floor((SSticker.mode.round_time_lobby + colony_lockdown_time-world.time)/600)] minutes before trying again."))
+		to_chat(user, SPAN_WARNING("The WY-Research-Facility lockdown cannot be lifted yet. Please wait another [floor((SSticker.mode.round_time_lobby + colony_lockdown_time-world.time) DECISECONDS_TO_MINUTES)] minutes before trying again."))
 		return
 	if(used)
 		to_chat(user, SPAN_WARNING("The WY-Research-Facility lockdown has already been lifted."))
@@ -424,3 +441,59 @@
 			handle_dropship(id)
 
 	desiredstate = !desiredstate
+
+/obj/structure/machinery/door_control/single_use
+	/// Whether this button has been pressed and is now non-functional
+	var/used = FALSE
+
+/obj/structure/machinery/door_control/single_use/handle_dropship(ship_id, force)
+	if(used && !force)
+		return
+	used = TRUE
+	return ..()
+
+/obj/structure/machinery/door_control/single_use/handle_door(force)
+	if(used && !force)
+		return
+	used = TRUE
+	return ..()
+
+/obj/structure/machinery/door_control/single_use/handle_cell_divider(force)
+	if(used && !force)
+		return
+	used = TRUE
+	return ..()
+
+/obj/structure/machinery/door_control/single_use/handle_pod(force)
+	if(used && !force)
+		return
+	used = TRUE
+	return ..()
+
+/obj/structure/machinery/door_control/single_use/temporary_lockdown
+	/// How long before the door is toggled again automatically
+	var/release_delay = 2 MINUTES
+
+/obj/structure/machinery/door_control/single_use/temporary_lockdown/handle_dropship(ship_id, force)
+	if(!used)
+		addtimer(CALLBACK(src, PROC_REF(handle_dropship), ship_id, TRUE), release_delay)
+		visible_message(SPAN_WARNING("<b>[src] beeps:</b> Automatic door lockdown [desiredstate == CONTROL_STATE_OPEN ? "begins" : "ends"] in [release_delay DECISECONDS_TO_MINUTES] minutes."))
+	return ..()
+
+/obj/structure/machinery/door_control/single_use/temporary_lockdown/handle_door(force)
+	if(!used)
+		addtimer(CALLBACK(src, PROC_REF(handle_door), TRUE), release_delay)
+		visible_message(SPAN_WARNING("<b>[src] beeps:</b> Automatic door lockdown [desiredstate == CONTROL_STATE_OPEN ? "begins" : "ends"] in [release_delay DECISECONDS_TO_MINUTES] minutes."))
+	return ..()
+
+/obj/structure/machinery/door_control/single_use/temporary_lockdown/handle_cell_divider(force)
+	if(!used)
+		addtimer(CALLBACK(src, PROC_REF(handle_cell_divider), TRUE), release_delay)
+		visible_message(SPAN_WARNING("<b>[src] beeps:</b> Automatic door lockdown [desiredstate == CONTROL_STATE_OPEN ? "begins" : "ends"] in [release_delay DECISECONDS_TO_MINUTES] minutes."))
+	return ..()
+
+/obj/structure/machinery/door_control/single_use/temporary_lockdown/handle_pod(force)
+	if(!used)
+		addtimer(CALLBACK(src, PROC_REF(handle_pod), TRUE), release_delay)
+		visible_message(SPAN_WARNING("<b>[src] beeps:</b> Automatic door lockdown [desiredstate == CONTROL_STATE_OPEN ? "begins" : "ends"] in [release_delay DECISECONDS_TO_MINUTES] minutes."))
+	return ..()

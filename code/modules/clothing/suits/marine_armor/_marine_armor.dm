@@ -443,11 +443,12 @@
 
 /obj/item/clothing/suit/storage/marine/light/leader/mod_c
 	name = "\improper modified M3-L pattern marine armor"
-	desc = "A sleeveless suit of M3-L pattern light armor. Thin plates and compact pouches keep it light and easy to move in."
+	desc = "A sleeveless suit of M3-L pattern light armor. Thin plates and compact pouches keep it light and easy to move in. Its shoulder-mounted flashlight is slightly more powerful compared to normal light armor."
 	icon_state = "MC"
 	armor_variation = 0
 	specialty = "M3-L pattern mod marine"
 	lamp_icon = "lampr"
+	light_range = 5
 
 /obj/item/clothing/suit/storage/marine/tanker
 	name = "\improper M3 pattern tanker armor"

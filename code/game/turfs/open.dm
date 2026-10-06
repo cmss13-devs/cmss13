@@ -22,6 +22,9 @@
 	update_water_element()
 	update_icon()
 
+	if(depth < WATER_DEPTH_COAST_DEPTHLESS && water_type)
+		SSwater_overlays.generate_water_overlay(water_type, depth)
+
 /turf/open/update_icon()
 	update_overlays()
 

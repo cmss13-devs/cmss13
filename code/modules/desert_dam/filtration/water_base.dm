@@ -26,6 +26,7 @@
 		var/turf/settings = water_type
 		icon = settings.icon
 		icon_state = settings.icon_state
+		SSwater_overlays.generate_water_overlay(water_type, created_depth)
 
 /obj/effect/blocker/water/proc/drain_spread(from_dir = 0)
 	if(!dispersing)

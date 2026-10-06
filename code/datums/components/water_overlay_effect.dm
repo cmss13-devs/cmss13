@@ -22,9 +22,6 @@
 	effect_turf = input_turf
 	water_depth = effect_turf.depth
 
-	if(isqueen(parent) || isking(parent))	//queen footsteps --- since this is a component we'll handle it along with the effect instead of just on water turfs
-		parent.AddComponent(/datum/component/footstep, 2 , 35, 11, 4, footstep_sounds_="alien_footstep_large_water")
-
 	update_hidden()
 	var/mob/parent_mob = parent
 	if(SSwater_overlays.is_coastline(effect_turf))
@@ -53,9 +50,6 @@
 			parent_mob.layer = initial(parent_mob.layer)
 		else
 			parent_mob.layer = BELOW_MOB_LAYER
-
-	if(isqueen(parent) || isking(parent))
-		parent.AddComponent(/datum/component/footstep, 2 , 35, 11, 4, footstep_sounds_="alien_footstep_large")
 
 	for(var/obj/found_obj in movable_parent.vis_contents)
 		if(found_obj == the_water || found_obj == the_splash)

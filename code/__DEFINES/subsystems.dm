@@ -135,6 +135,7 @@
 #define SS_INIT_LIGHTING 10
 #define SS_INIT_LAW 6
 #define SS_INIT_FZ_TRANSITIONS 5
+#define SS_INIT_WATEROVERLAYS 4.5
 #define SS_INIT_PROJECTILES 4.1
 #define SS_INIT_ATOMS   4
 #define SS_INIT_DECORATOR   3.7
@@ -156,7 +157,6 @@
 #define SS_INIT_STICKY -30
 #define SS_INIT_OBJECTIVES -32
 #define SS_INIT_MINIMAP    -34
-#define SS_INIT_WATEROVERLAYS -40
 #define SS_INIT_STATPANELS -98
 #define SS_INIT_CHAT    -100 //Should be last to ensure chat remains smooth during init.
 

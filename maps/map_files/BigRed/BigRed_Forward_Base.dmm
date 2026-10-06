@@ -29284,6 +29284,9 @@
 	dir = 4;
 	id = "almayerlink"
 	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
 /turf/open/floor/almayer/silverfull,
 /area/forward_base/medical/chemistry)
 "bNZ" = (
@@ -110323,7 +110326,7 @@ bbS
 bbS
 bbS
 bNY
-aYi
+bbS
 bQp
 bOo
 bOn

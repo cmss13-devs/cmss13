@@ -3079,6 +3079,7 @@
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
+/obj/structure/largecrate/random/barrel/brown,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "aky" = (
@@ -9284,6 +9285,10 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/shipboard/brig/processing)
+"aAR" = (
+/obj/structure/largecrate/random/barrel/black,
+/turf/open/floor/plating/plating_catwalk,
+/area/forward_base/hallways/lower/port_midship_hallway)
 "aAS" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/crew/alt{
@@ -14517,6 +14522,9 @@
 /area/forward_base/medical/chemistry)
 "aOx" = (
 /obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
 /turf/open/floor/almayer/silverfull,
 /area/forward_base/medical/chemistry)
 "aOy" = (
@@ -14901,6 +14909,16 @@
 /obj/structure/surface/rack,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/forward_base/hallways/upper/starboard)
+"aPn" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/almayer/plate,
+/area/forward_base/hallways/lower/port_midship_hallway)
 "aPo" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -10;
@@ -15098,6 +15116,10 @@
 "aPJ" = (
 /turf/open/floor/almayer/mono,
 /area/forward_base/medical/medical_science)
+"aPK" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/almayer/silverfull,
+/area/forward_base/medical/upper_medical)
 "aPL" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -15301,6 +15323,16 @@
 "aPY" = (
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/forward_base/medical/medical_science)
+"aPZ" = (
+/obj/structure/disposalpipe/down/almayer{
+	dir = 4;
+	id = "almayerlink"
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/turf/open/floor/almayer/silverfull,
+/area/forward_base/medical/chemistry)
 "aQa" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Research Hydroponics";
@@ -31426,9 +31458,9 @@ aJX
 aoG
 akA
 akz
-aky
+aPn
 akx
-akw
+aAR
 akv
 aku
 akt
@@ -76501,7 +76533,7 @@ aMq
 aMI
 aNk
 aNk
-aMq
+aPK
 aMq
 aMF
 aSt
@@ -77336,7 +77368,7 @@ aOd
 aOd
 aOd
 aOd
-aOf
+aPZ
 aOd
 aOo
 aMq

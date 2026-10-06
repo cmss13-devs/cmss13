@@ -43,3 +43,24 @@
   - bugfix: MOU53 examine will now show the correct shell order.
   predatornc:
   - rscadd: a new CL briefing has replaced the placeholder one on LV-624
+2026-10-06:
+  Andywastaken:
+  - rscadd: Added helpful APC examine tips. Examining an APC will now tell you what
+      tool to use to repair/build/dismantle, like wall girders.
+  - code_imp: Replaced hardcoded APC status and APC cable coil amounts with defines.
+  Drathek:
+  - bugfix: Admins.txt fallback should now only occur if fetch_api_admins fails (and
+      not just sleeps)
+  Ghostsheet:
+  - qol: Added keybind for blowing into a whistle normally, unbound by default
+  JHINgle4ce:
+  - bugfix: fixed an issue where multiple characters could drag the same item simultaneously.
+  Kugamo:
+  - code_imp: removed an unnecessary chair variable
+  - bugfix: shimmied mobs now get their offsets reset if the object being shimmied
+      around gets destroyed
+  - qol: you can now shimmy past seated people in immovable seats!
+  Yachuk:
+  - bugfix: "Fixes the issue where you cannot mount on an M2\u0421 in unpowered areas\
+      \ (ex. caves)"
+  - code_imp: M56Ds and its children objects are no longer connected to the powergrid

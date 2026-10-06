@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Admins.txt fallback should now only occur if fetch_api_admins fails (and not just sleeps)"

@@ -1,0 +1,6 @@
+author: "Kugamo"
+delete-after: True
+changes:
+  - code_imp: "removed an unnecessary chair variable"
+  - bugfix: "shimmied mobs now get their offsets reset if the object being shimmied around gets destroyed"
+  - qol: "you can now shimmy past seated people in immovable seats!"

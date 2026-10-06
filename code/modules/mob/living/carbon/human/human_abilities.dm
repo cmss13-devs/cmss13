@@ -10,6 +10,7 @@
 
 /datum/action/human_action/toggle_voices //temp
 	name = "Toggle Voices"
+	icon_file = 'icons/poopy.dmi'
 	action_icon_state = "cat"
 
 /datum/action/human_action/toggle_voices/action_activate()

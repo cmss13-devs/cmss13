@@ -20882,6 +20882,10 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/darkyellow2/southeast,
 /area/bigredv2/outside/engineering)
+"boT" = (
+/obj/structure/machinery/medical_pod/sleeper,
+/turf/open/floor/almayer/test_floor4,
+/area/forward_base/medical/medical_science)
 "boU" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
@@ -31285,6 +31289,7 @@
 /obj/structure/sign/safety/ref_chem_storage{
 	pixel_x = 32
 	},
+/obj/item/storage/box/monkeycubes,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/medical/medical_science)
 "bSE" = (
@@ -111289,7 +111294,7 @@ bVF
 bRo
 bRT
 bVA
-bVA
+boT
 bRX
 ahZ
 ebf

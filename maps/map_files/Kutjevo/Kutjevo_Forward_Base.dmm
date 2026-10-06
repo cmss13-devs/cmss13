@@ -15129,6 +15129,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/machinery/autolathe,
 /turf/open/floor/almayer/plate,
 /area/forward_base/medical/medical_science)
 "aPM" = (
@@ -15403,6 +15404,9 @@
 /obj/structure/lz_sign/forward_base/solaris_base_sign,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/lz_pad)
+"aQi" = (
+/turf/closed/wall/almayer/outer/internal,
+/area/bigredv2/caves)
 "aQj" = (
 /obj/effect/landmark/start/researcher,
 /turf/open/floor/almayer/mono,
@@ -15466,18 +15470,23 @@
 "aQs" = (
 /obj/structure/machinery/chem_storage/medbay{
 	pixel_x = -2;
-	layer = 4
+	layer = 3.9
+	},
+/obj/structure/machinery/chem_storage/research{
+	pixel_x = -2;
+	pixel_y = 19;
+	layer = 4;
+	density = 0
 	},
 /turf/open/floor/almayer/mono,
 /area/forward_base/medical/medical_science)
-"aQt" = (
-/obj/structure/machinery/chem_storage/research,
-/turf/open/floor/almayer/mono,
-/area/forward_base/medical/medical_science)
 "aQu" = (
-/obj/structure/machinery/autolathe,
-/obj/structure/machinery/light{
-	dir = 4
+/obj/structure/sign/safety/ref_chem_storage{
+	pixel_y = 28;
+	pixel_x = 7
+	},
+/obj/structure/machinery/autolathe/medilathe/full{
+	dir = 8
 	},
 /turf/open/floor/almayer/mono,
 /area/forward_base/medical/medical_science)
@@ -16513,6 +16522,9 @@
 	icon_state = "W";
 	layer = 3.3
 	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
 /turf/open/floor/almayer/flooredge/west,
 /area/forward_base/medical/medical_science)
 "aTC" = (
@@ -16527,14 +16539,16 @@
 	icon_state = "W";
 	layer = 3.3
 	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
 /turf/open/floor/almayer/flooredge/west,
 /area/forward_base/medical/medical_science)
 "aTE" = (
-/obj/structure/sign/safety/ref_chem_storage{
-	pixel_y = 28;
-	pixel_x = 7
+/obj/structure/machinery/light{
+	dir = 4
 	},
-/turf/open/floor/almayer/mono,
+/turf/open/floor/almayer/flooredge/west,
 /area/forward_base/medical/medical_science)
 "aTF" = (
 /obj/effect/decal/warning_stripes{
@@ -79053,7 +79067,7 @@ aQy
 aQx
 aPu
 aQu
-aQt
+aPJ
 aQs
 aRx
 aRx
@@ -79218,8 +79232,8 @@ aTI
 aRx
 aRx
 aRx
-aRx
-aRx
+aQi
+aPJ
 aTE
 aPJ
 aRx
@@ -79385,10 +79399,10 @@ aRx
 aRx
 dmD
 dmD
-dmD
-aRx
-aRx
-aRx
+aQi
+aQi
+aQi
+aQi
 aRx
 dmD
 qOu

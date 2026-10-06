@@ -19293,6 +19293,12 @@
 /obj/structure/machinery/computer/supply,
 /turf/open/floor/almayer/plate,
 /area/forward_base/hallways/lower/port_midship_hallway)
+"bjQ" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/flooredge/west,
+/area/forward_base/medical/medical_science)
 "bjR" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
@@ -30994,6 +31000,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/machinery/autolathe,
 /turf/open/floor/almayer/plate,
 /area/forward_base/medical/medical_science)
 "bRV" = (
@@ -31305,24 +31312,25 @@
 /turf/open/floor/almayer/cargo_arrow,
 /area/forward_base/shipboard/weapon_room)
 "bSG" = (
-/obj/structure/machinery/autolathe,
 /obj/structure/sign/safety/ref_chem_storage{
 	pixel_y = 28;
 	pixel_x = 7
 	},
-/obj/structure/machinery/light{
-	dir = 4
+/obj/structure/machinery/autolathe/medilathe/full{
+	dir = 8
 	},
-/turf/open/floor/almayer/mono,
-/area/forward_base/medical/medical_science)
-"bSH" = (
-/obj/structure/machinery/chem_storage/research,
 /turf/open/floor/almayer/mono,
 /area/forward_base/medical/medical_science)
 "bSI" = (
 /obj/structure/machinery/chem_storage/medbay{
 	pixel_x = -2;
-	layer = 4
+	layer = 3.9
+	},
+/obj/structure/machinery/chem_storage/research{
+	pixel_x = -2;
+	pixel_y = 19;
+	layer = 4;
+	density = 0
 	},
 /turf/open/floor/almayer/mono,
 /area/forward_base/medical/medical_science)
@@ -111919,7 +111927,7 @@ bSD
 bSE
 bRo
 bSG
-bSH
+bRW
 bSI
 ahZ
 ahZ
@@ -112131,8 +112139,8 @@ ahZ
 ahZ
 ahZ
 ahZ
-ahZ
 bRW
+bjQ
 bRW
 ahZ
 ebf
@@ -112343,7 +112351,7 @@ ahZ
 ahZ
 ebf
 ebf
-ebf
+ahZ
 ahZ
 ahZ
 ahZ

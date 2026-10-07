@@ -17,8 +17,6 @@
 	heal_standing = 0
 	heal_resting = 0
 
-	weed
-
 	innate_healing = 0
 
 	evolution_allowed = FALSE
@@ -56,6 +54,7 @@
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/onclick/haunt,
 		/datum/action/xeno_action/onclick/pumpkin_barrage,
+		/datum/action/xeno_action/activable/doom,
 	)
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_4/horseman.dmi'
@@ -67,10 +66,18 @@
 
 	var/sound_song = 'sound/halloween/placeholder_song.ogg'
 	var/sound_spawn = 'sound/halloween/placerholder_spawn.ogg'
-	//var/sound_idle = 'sound/halloween/placeholder_idle.ogg'
-	//var/sound_death = 'sound/halloween/placeholder_death.ogg'
-	var/idle_sound_delay_min = 20 SECONDS
-	var/idle_sound_delay_max = 45 SECONDS
+	var/list/sounds_idle = list(
+		'sound/halloween/idle_1.ogg',
+		'sound/halloween/idle_2.ogg',
+		'sound/halloween/idle_3.ogg',
+	)
+	var/list/sounds_death = list(
+		'sound/halloween/death1.ogg',
+		'sound/halloween/death2.ogg',
+		'sound/halloween/death_3.ogg',
+	)
+	var/idle_sound_delay_min = 15 SECONDS
+	var/idle_sound_delay_max = 25 SECONDS
 	var/next_idle_sound = 0
 	var/spawn_fog_radius = 3
 
@@ -91,17 +98,18 @@
 
 
 /mob/living/carbon/xenomorph/horseman/process(delta_time)
-	//if(stat == DEAD || world.time < next_idle_sound)
-		//return
-	//next_idle_sound = world.time + rand(idle_sound_delay_min, idle_sound_delay_max)
-	//playsound(src, sound_idle, 60, FALSE, 20)
+	if(stat == DEAD || world.time < next_idle_sound)
+		return
+	next_idle_sound = world.time + rand(idle_sound_delay_min, idle_sound_delay_max)
+	playsound(src, pick(sounds_idle), 60, FALSE, 45) // 45 tiles because i want people to hear this mfer laughing from fob
 
 /mob/living/carbon/xenomorph/horseman/death(cause, gibbed)
 	. = ..()
 	if(!.)
 		return
-	//for(var/client/player as anything in GLOB.clients)
-		//playsound_client(player, sound_death, vol = 75)
+	var/death_sound = pick(sounds_death)
+	for(var/client/player as anything in GLOB.clients)
+		playsound_client(player, death_sound, vol = 75)
 	UnregisterSignal(src, COMSIG_MOB_WEED_SLOWDOWN, PROC_REF(handle_weed_slowdown))
 
 
@@ -111,6 +119,10 @@
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 60 SECONDS
+
+	var/list/teleport_sound = list(
+		'sound/halloween/teleport_1.ogg',
+	)
 
 /datum/action/xeno_action/onclick/haunt/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -127,6 +139,7 @@
 		return
 	xeno.stop_pulling()
 	xeno.forceMove(get_haunt_turf(victim))
+	playsound(xeno, teleport_sound, 60, FALSE, 15)
 	to_chat(xeno, SPAN_XENONOTICE("We haunt [victim]."))
 	apply_cooldown()
 	return ..()

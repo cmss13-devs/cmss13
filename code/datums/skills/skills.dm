@@ -79,6 +79,9 @@
 	else
 		REMOVE_TRAIT(owner, TRAIT_LEADERSHIP, TRAIT_SOURCE_SKILL(skill_name))
 
+	if(is_skilled(SKILL_LEAD_MAX))
+		give_action(owner, /datum/action/human_action/call_to_attention)
+
 /datum/skill/overwatch
 	skill_name = SKILL_OVERWATCH
 	skill_level = SKILL_OVERWATCH_DEFAULT

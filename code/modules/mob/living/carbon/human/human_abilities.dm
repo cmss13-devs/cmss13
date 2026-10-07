@@ -47,6 +47,28 @@
 	action_icon_state = "order_focus"
 	order_type = COMMAND_ORDER_FOCUS
 
+/datum/action/human_action/call_to_attention
+	name = "Call to Attention"
+	action_icon_state = "call_to_attention"
+	cooldown = 1 MINUTES
+
+/datum/action/human_action/call_to_attention/action_activate()
+	var/mob/living/carbon/human/leader = owner
+	if(!can_use_action() || leader.is_mob_incapacitated())
+		return
+	. = ..()
+	leader.visible_message(SPAN_BOLDNOTICE("[leader] calls everyone to attention!"), SPAN_BOLDNOTICE("You call everyone to attention!"))
+	for(var/mob/living/carbon/human/target in view(world.view, leader))
+		if(target == leader || target.stat != CONSCIOUS || target.faction != leader.faction)
+			continue
+		addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon/human, salute_on_command)), rand(0 SECONDS, 2.5 SECONDS))
+
+/mob/living/carbon/human/proc/salute_on_command()
+	if(stat != CONSCIOUS)
+		return
+	manual_emote("salutes.")
+	playsound(src, 'sound/misc/salute.ogg', 50, FALSE)
+
 /datum/action/human_action/cycle_voice_level
 	name = "Cycle Voice Level"
 	action_icon_state = "leadership_voice_low"

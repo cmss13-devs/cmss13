@@ -235,6 +235,8 @@
 		var/phero_cap = receiver.received_phero_caps[phero_type]
 		if(!isnull(phero_cap))
 			expected_amount = min(expected_amount, phero_cap)
+		if(LAZYISIN(receiver.ignore_aura, phero_type))
+			expected_amount = 0
 		var/received_nothing = isnull(received_amount) || received_amount == 0
 		var/expected_nothing = isnull(expected_amount) || expected_amount == 0
 

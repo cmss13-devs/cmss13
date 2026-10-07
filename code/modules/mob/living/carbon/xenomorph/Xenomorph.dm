@@ -354,7 +354,8 @@
 	var/frenzy_aura = 0 //Strength of aura we are affected by. NOT THE ONE WE ARE EMITTING
 	var/warding_aura = 0
 	var/recovery_aura = 0
-	var/ignore_aura = FALSE // ignore a specific pherom, input type
+	/// Lazy list of pheros to ignore
+	var/list/ignore_aura = null
 
 	//////////////////////////////////////////////////////////////////
 	//

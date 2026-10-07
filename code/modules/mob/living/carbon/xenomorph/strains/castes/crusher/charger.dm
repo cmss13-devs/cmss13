@@ -38,7 +38,7 @@
 /datum/xeno_strain/charger/apply_strain(mob/living/carbon/xenomorph/crusher/crusher)
 	..() // stat modifiers
 	crusher.small_explosives_stun = FALSE
-	crusher.ignore_aura = XENO_PHERO_FRENZY // no funny crushers going 7 morbillion kilometers per second
+	crusher.ignore_aura = list(XENO_PHERO_FRENZY) // no funny crushers going 7 morbillion kilometers per second
 
 /datum/behavior_delegate/crusher_charger
 	name = "Charger Crusher Behavior Delegate"

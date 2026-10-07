@@ -159,8 +159,6 @@
 	// Iterate through all possible permutations
 	var/hallucinated_loops = 0
 	for (var/permutation = 0, permutation < (1 << (length(abstract_emitters) * bitmask_length)), permutation++)
-		log_test("Starting pheromone permutation [num2hex(permutation, 2)]...")
-
 		// Setting up each emitter state
 		var/hallucinated = FALSE
 		for (var/emitter_index in 1 to length(emitters))
@@ -209,7 +207,6 @@
 		wait_full_life_loops(1)
 
 		test_callback.Invoke(receiver, permutation - hallucinated_loops + 1)
-		log_test("...DONE")
 
 	if (original_wait)
 		SSxeno.wait = original_wait
@@ -275,23 +272,23 @@
 		// We expected to receive something for this type of pheromone and got nothing; FAIL
 		if (received_nothing)
 			if (permutation_index == null)
-				TEST_FAIL("[emitter_string][receiver_string] of hive [receiver.hivenumber] received no [phero_type] when expected to receive it at strength [expected_pheromones[phero_type]]")
+				TEST_FAIL("[emitter_string][receiver_string] of hive [receiver.hivenumber] received no [phero_type] when expected to receive it at strength [expected_amount]")
 			else
-				TEST_FAIL("[emitter_string][receiver_string] of permutation [num2hex(permutation_index - 1, 2)] received no [phero_type] when expected to receive it at strength [expected_pheromones[phero_type]]")
+				TEST_FAIL("[emitter_string][receiver_string] of permutation [num2hex(permutation_index - 1, 2)] received no [phero_type] when expected to receive it at strength [expected_amount]")
 			continue
 
 		// We got something, but it was the wrong strength
 		if (expected_amount != received_amount)
 			if (permutation_index == null)
-				TEST_FAIL("[emitter_string][receiver_string] of hive [receiver.hivenumber] received [phero_type] at strength [received_amount] when expected to receive it at strength [expected_pheromones[phero_type]]")
+				TEST_FAIL("[emitter_string][receiver_string] of hive [receiver.hivenumber] received [phero_type] at strength [received_amount] when expected to receive it at strength [expected_amount]")
 			else
-				TEST_FAIL("[emitter_string][receiver_string] of permutation [num2hex(permutation_index - 1, 2)] received [phero_type] at strength [received_amount] when expected to receive it at strength [expected_pheromones[phero_type]]")
+				TEST_FAIL("[emitter_string][receiver_string] of permutation [num2hex(permutation_index - 1, 2)] received [phero_type] at strength [received_amount] when expected to receive it at strength [expected_amount]")
 			continue
 
 		if (permutation_index == null)
-			TEST_NOTICE(src, "[emitter_string][receiver_string] of hive [receiver.hivenumber] received [phero_type] at strength [received_amount] when expected to receive it at strength [expected_pheromones[phero_type]]")
+			log_test("[emitter_string][receiver_string] of hive [receiver.hivenumber] received [phero_type] at strength [received_amount]")
 		else
-			TEST_NOTICE(src, "[emitter_string][receiver_string] of permutation [num2hex(permutation_index - 1, 2)] received [phero_type] at strength [received_amount] when expected to receive it at strength [expected_pheromones[phero_type]]")
+			log_test("[emitter_string][receiver_string] of permutation [num2hex(permutation_index - 1, 2)] received [phero_type] at strength [received_amount]")
 
 /datum/unit_test/pheromones/proc/permutable_pheromone_validation(list/expected_pheromone_permutatations, mob/living/carbon/xenomorph/receiver, permutation_index)
 	if (permutation_index > length(expected_pheromone_permutatations))

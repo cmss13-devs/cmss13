@@ -285,7 +285,7 @@
 #define XENO_HEALTH_QUEEN 1000 * XENO_UNIVERSAL_HPMULT
 #define XENO_HEALTH_IMMORTAL 1200 * XENO_UNIVERSAL_HPMULT
 #define XENO_HEALTH_KING 1500 * XENO_UNIVERSAL_HPMULT
-#define XENO_HEALTH_PUMPKING 23000 * XENO_UNIVERSAL_HPMULT // idont think this will be enough
+#define XENO_HEALTH_PUMPKING 15000 * XENO_UNIVERSAL_HPMULT // i dont think this will be enough, but it cant heal
 
 // Plasma bands
 #define XENO_NO_PLASMA 0

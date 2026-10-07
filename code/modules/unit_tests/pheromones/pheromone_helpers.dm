@@ -97,7 +97,14 @@
 			continue
 
 		abstract_receiver.caste = caste_type
-		hivemates += abstract_receiver.initialize(src)
+		var/mob/living/carbon/xenomorph/hivemate = abstract_receiver.initialize(src)
+		hivemates += hivemate
+
+		for(var/datum/xeno_strain/strain_type as anything in hivemate.caste.available_strains)
+			hivemate = abstract_receiver.initialize(src)
+			var/datum/xeno_strain/strain_instance = new strain_type()
+			strain_instance._add_to_xeno(hivemate)
+			hivemates += hivemate
 
 	emitter.emit_pheromones(pheromone_type)
 
@@ -214,6 +221,8 @@
 	if (receiver.warding_aura > 0)
 		received_pheromones[XENO_PHERO_WARDING] = receiver.warding_aura
 
+	var/receiver_string = receiver.strain?.name || receiver.caste_type
+
 	if (isnull(expected_pheromones) || !length(expected_pheromones))
 		// No pheromones were expected and no pheromones were received; PASS
 		if (!length(received_pheromones))
@@ -224,9 +233,9 @@
 			if (isnull(received_pheromones[phero_type]))
 				continue
 			if (permutation_index == null)
-				TEST_FAIL("Receiver [receiver.caste_type] of hive [receiver.hivenumber] received [phero_type] at strength [received_pheromones[phero_type]] when none was expected")
+				TEST_FAIL("Receiver [receiver_string] of hive [receiver.hivenumber] received [phero_type] at strength [received_pheromones[phero_type]] when none was expected")
 			else
-				TEST_FAIL("Receiver [receiver.caste_type] of permutation [num2hex(permutation_index - 1, 2)] received [phero_type] at strength [received_pheromones[phero_type]] when none was expected")
+				TEST_FAIL("Receiver [receiver_string] of permutation [num2hex(permutation_index - 1, 2)] received [phero_type] at strength [received_pheromones[phero_type]] when none was expected")
 		return
 
 	for (var/phero_type as anything in ALL_XENO_PHEROMONES)
@@ -247,25 +256,25 @@
 		// We received something for this type of pheromone when we shouldn't have; FAIL
 		if (expected_nothing)
 			if (permutation_index == null)
-				TEST_FAIL("Receiver [receiver.caste_type] of hive [receiver.hivenumber] received [phero_type] at strength [received_amount] when no [phero_type] was expected")
+				TEST_FAIL("Receiver [receiver_string] of hive [receiver.hivenumber] received [phero_type] at strength [received_amount] when no [phero_type] was expected")
 			else
-				TEST_FAIL("Receiver [receiver.caste_type] of permutation [num2hex(permutation_index - 1, 2)] received [phero_type] at strength [received_amount] when no [phero_type] was expected")
+				TEST_FAIL("Receiver [receiver_string] of permutation [num2hex(permutation_index - 1, 2)] received [phero_type] at strength [received_amount] when no [phero_type] was expected")
 			continue
 
 		// We expected to receive something for this type of pheromone and got nothing; FAIL
 		if (received_nothing)
 			if (permutation_index == null)
-				TEST_FAIL("Receiver [receiver.caste_type] of hive [receiver.hivenumber] received no [phero_type] when expected to receive it at strength [expected_pheromones[phero_type]]")
+				TEST_FAIL("Receiver [receiver_string] of hive [receiver.hivenumber] received no [phero_type] when expected to receive it at strength [expected_pheromones[phero_type]]")
 			else
-				TEST_FAIL("Receiver [receiver.caste_type] of permutation [num2hex(permutation_index - 1, 2)] received no [phero_type] when expected to receive it at strength [expected_pheromones[phero_type]]")
+				TEST_FAIL("Receiver [receiver_string] of permutation [num2hex(permutation_index - 1, 2)] received no [phero_type] when expected to receive it at strength [expected_pheromones[phero_type]]")
 			continue
 
 		// We got something, but it was the wrong strength
 		if (expected_amount != received_amount)
 			if (permutation_index == null)
-				TEST_FAIL("Receiver [receiver.caste_type] of hive [receiver.hivenumber] received [phero_type] at strength [received_amount] when expected to receive it at strength [expected_pheromones[phero_type]]")
+				TEST_FAIL("Receiver [receiver_string] of hive [receiver.hivenumber] received [phero_type] at strength [received_amount] when expected to receive it at strength [expected_pheromones[phero_type]]")
 			else
-				TEST_FAIL("Receiver [receiver.caste_type] of permutation [num2hex(permutation_index - 1, 2)] received [phero_type] at strength [received_amount] when expected to receive it at strength [expected_pheromones[phero_type]]")
+				TEST_FAIL("Receiver [receiver_string] of permutation [num2hex(permutation_index - 1, 2)] received [phero_type] at strength [received_amount] when expected to receive it at strength [expected_pheromones[phero_type]]")
 
 /datum/unit_test/pheromones/proc/permutable_pheromone_validation(list/expected_pheromone_permutatations, mob/living/carbon/xenomorph/receiver, permutation_index)
 	if (permutation_index > length(expected_pheromone_permutatations))

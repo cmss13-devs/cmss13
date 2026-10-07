@@ -30,9 +30,9 @@
 	var/speed_mod = 0
 	/// How much attack speed is modified by this strain (lower faster). Applied in parent of apply_strain.
 	var/attack_speed_mod = 0
+	/// How much plasma pool is modified by this strain. Applied in parent of apply_strain.
+	var/plasma_mod = 0
 
-	/// Plasma pool multiplier that is modified by this strain. If the caste has no plasma_max and this is greater than 1 it will set the plasma directly. Applied in parent of apply_strain.
-	var/plasma_mult = 1
 	/// Regen multiplier that is modified by this strain. Applied in parent of apply_strain.
 	var/regen_mult = 1
 
@@ -92,8 +92,8 @@
 	xeno.explosivearmor_modifier += explosive_armor_mod
 	xeno.speed_modifier += speed_mod
 	xeno.attack_speed_modifier += attack_speed_mod
+	xeno.plasmapool_modifier += plasma_mod
 
-	xeno.plasmapool_multiplier = plasma_mult
 	xeno.regeneration_multiplier = regen_mult
 
 /mob/living/carbon/xenomorph/verb/purchase_strain()

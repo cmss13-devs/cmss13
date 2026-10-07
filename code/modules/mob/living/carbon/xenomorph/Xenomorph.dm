@@ -209,8 +209,7 @@
 	var/health_modifier = 0
 	var/armor_modifier = 0
 	var/explosivearmor_modifier = 0
-	/// Normally a multiplier against plasma_max but if >1 and plasma_max is 0 this sets the new plasma
-	var/plasmapool_multiplier = 1
+	var/plasmapool_modifier = 0
 	var/plasmagain_modifier = 0
 	var/tackle_chance_modifier = 0
 	var/tackle_min_modifier = 0
@@ -1039,18 +1038,12 @@
 		health = maxHealth
 
 /mob/living/carbon/xenomorph/proc/recalculate_plasma()
-	var/new_plasma_max = (plasmapool_multiplier * caste.plasma_max)
-
-	// Allow plasmapool to set plasma on a caste that has no plasma directly
-	if(!caste.plasma_max && plasmapool_multiplier > 1)
-		new_plasma_max = plasmapool_multiplier
-
-	if(!plasma_max && new_plasma_max <= 0)
-		return
+	var/new_plasma_max = max(caste.plasma_max + plasmapool_modifier, 0)
 
 	plasma_gain = plasmagain_modifier + caste.plasma_gain
 	if(hive)
-		new_plasma_max += hive.hive_stat_modifier_flat["plasmapool"]
+		if(new_plasma_max) // Don't have a hive grant additive plasma to a xeno with no plasma
+			new_plasma_max += hive.hive_stat_modifier_flat["plasmapool"]
 		new_plasma_max *= hive.hive_stat_modifier_multiplier["plasmapool"]
 		plasma_gain += hive.hive_stat_modifier_flat["plasmagain"]
 		plasma_gain *= hive.hive_stat_modifier_multiplier["plasmagain"]

@@ -3,7 +3,7 @@
 	description = "You lose your corrosive acid, your ability to secrete thick resin, your ability to reinforce resin secretions, sacrifice your ability to plant weed nodes outside of weeds, and you sacrifice a fifth of your plasma reserves to enhance your vision and gain a stronger connection to the resin. You can now remotely place resin secretions including weed nodes up to a distance of twelve paces!"
 	flavor_description = "We let the resin guide us. It whispers, so listen closely."
 	icon_state_prefix = "Resin Whisperer"
-	plasma_mult = 0.8 // -20% plasma pool
+	plasma_mod = -(/datum/caste_datum/hivelord::plasma_max * 0.2) // -20% plasma pool
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/onclick/plant_weeds,

@@ -3,7 +3,7 @@
 	description = "You lose all of your abilities and you forfeit a chunk of your health and damage in exchange for a large amount of armor, a little bit of movement speed, increased attack speed, and brand new abilities that make you an assassin. Rush on your opponent to disorient them and Flurry to unleash a forward cleave that can hit and slow three talls and heal you for every tall you hit. Use your special AoE Tail Jab to knock talls away, doing more damage with direct hits and even more damage and a stun if they smack into walls. Finally, execute unconscious talls with a headbite to heal your wounds."
 	flavor_description = "Show no mercy! Slaughter them all!"
 	icon_state_prefix = "Vampire"
-	plasma_mult = XENO_NO_PLASMA
+	plasma_mod = -(/datum/caste_datum/lurker::plasma_max) // no plasma
 	health_mod = -XENO_HEALTH_MOD_MED
 	speed_mod = XENO_SPEED_FASTMOD_TIER_1
 	armor_mod = XENO_ARMOR_MOD_LARGE

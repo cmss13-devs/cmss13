@@ -6,7 +6,7 @@
 	explosive_armor_mod = XENO_EXPLOSIVE_ARMOR_TIER_1
 	health_mod = XENO_HEALTH_MOD_VERY_LARGE
 	armor_mod = XENO_ARMOR_MOD_SMALL
-	plasma_mult = XENO_PLASMA_TIER_2 // Actually sets it because normally no caste plasma_max
+	plasma_mod = XENO_PLASMA_TIER_2 // Normally has 0
 	speed_mod = XENO_SPEED_SLOWMOD_TIER_8
 
 	actions_to_remove = list(

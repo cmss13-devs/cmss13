@@ -6,7 +6,7 @@
 	health_mod = -XENO_HEALTH_MOD_LARGE
 	phero_mod = XENO_PHERO_MOD_LARGE
 	speed_mod = XENO_SPEED_TIER_3 //Lost 30% plasma in sac, you lost some weight
-	plasma_mult = 0.7 //-30% plasma pool
+	plasma_mod = -(/datum/caste_datum/hivelord::plasma_max * 0.3) //-30% plasma pool
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/secrete_resin/hivelord,

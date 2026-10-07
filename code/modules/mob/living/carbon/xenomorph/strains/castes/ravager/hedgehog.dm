@@ -3,7 +3,7 @@
 	description = "You lose your empower, charge, scissor cut, and some slash damage in exchange for more explosive resistance. Your resistance scales with your shard count and at 50% grants you immunity to some explosive stuns. You accumulate shards over time and when taking damage. You can use these shards to power three new abilities: Spike Shield which gives you a temporary shield that spits bone shards around you when damaged; Fire Spikes which launches spikes at your target to slow them and deal damage when they move; and Spike Shed which launches all your spikes, grants a temporary speed boost, and disables shard generation for thirty seconds."
 	flavor_description = "You will pierce them a million times, show them what it feels like. This one will become my shield."
 	icon_state_prefix = "Hedgehog"
-	plasma_mult = XENO_NO_PLASMA
+	plasma_mod = -(/datum/caste_datum/ravager::plasma_max) // no plasma
 	explosive_armor_mod = XENO_EXPOSIVEARMOR_MOD_SMALL
 	damage_mod = -XENO_DAMAGE_MOD_SMALL
 

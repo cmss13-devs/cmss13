@@ -174,13 +174,13 @@
 	if(istype(new_resin, /turf/closed))
 		for(var/mob/living/carbon/human/enclosed_human in new_resin.contents)
 			if(enclosed_human.stat == DEAD && enclosed_human.is_revivable(TRUE))
-				msg_admin_niche("[key_name_admin(src)] has built a closed resin structure, [new_resin.name], on top of a dead human, [key_name_admin(enclosed_human)], at [ADMIN_VERBOSEJMP(new_resin)]")
+				msg_admin_niche("[key_name_admin(src)] has built a closed resin structure, [new_resin.name], on top of a revivable human, [key_name_admin(enclosed_human)], at [ADMIN_VERBOSEJMP(new_resin)]")
 		for(var/turf/cardinal as anything in CARDINAL_TURFS(new_resin))
 			if(!is_enclosed_turf(cardinal))
 				continue
 			for(var/mob/living/carbon/human/enclosed_human in cardinal.contents)
 				if(enclosed_human.stat == DEAD && enclosed_human.is_revivable(TRUE))
-					msg_admin_niche("[key_name_admin(src)] has built a closed resin structure, [new_resin.name], enclosing a dead human, [key_name_admin(enclosed_human)], at [ADMIN_VERBOSEJMP(new_resin)]")
+					msg_admin_niche("[key_name_admin(src)] has built a closed resin structure, [new_resin.name], enclosing a revivable human, [key_name_admin(enclosed_human)], at [ADMIN_VERBOSEJMP(new_resin)]")
 
 
 	return SECRETE_RESIN_SUCCESS

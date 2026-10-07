@@ -217,7 +217,7 @@
 	var/regeneration_multiplier = 1
 	var/speed_modifier = 0
 	var/phero_modifier = 0
-	var/received_phero_caps = list()
+	var/alist/received_phero_caps = alist()
 	var/acid_modifier = 0
 	var/weed_modifier = 0
 	var/evasion_modifier = 0

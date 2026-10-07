@@ -393,8 +393,17 @@
 /datum/text_dynamic_insertion_constants
 	// Formatting parameters that can be used in text dynamic insertion templates in the format {<key>:<formatting param>}
 	// Each constants must be a string in UPPER_CAMEL_CASE (e.g. FORMAT_PARAM), see regex in /proc/insert_text_into_template()
+
+	/**
+	 * Will insert the name of an atom instead of the atom directly into a string
+	 * e.g., "I ate an {1:NAME_ONLY}" will be converted to "I ate an [food.name]" (as opposed to "I ate an [food]", which will automatically contain \the or \The macros because of BYOND)
+	 */
 	VAR_FINAL/const/NAME_ONLY = "NAME_ONLY"
 
+	/**
+	* The index to retrieve the capture group that contains any formatting parameters from the regex for inserting text into string templates
+	* See /proc/insert_text_into_template(...)
+	*/
 	VAR_FINAL/const/FORMAT_GROUP_IDX = 2
 
 /proc/format_replacement_text_field(atom/atom_to_reference, format_param, template_pos)

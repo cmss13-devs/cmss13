@@ -301,7 +301,7 @@
 		var/mob/living/living_target = target
 		living_target.IgniteMob()
 		return
-	..()
+	. = ..()
 
 
 /obj/item/tool/weldingtool/attack_self(mob/user)

@@ -1491,7 +1491,7 @@ and you're good to go.
 		active_attachable.fire_attachment(target, src, user)
 		return
 
-	..()
+	. = ..()
 
 
 /obj/item/weapon/gun/attack(mob/living/attacked_mob, mob/living/user, dual_wield)

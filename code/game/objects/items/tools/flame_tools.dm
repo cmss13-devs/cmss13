@@ -44,7 +44,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/tool/candle/get_ignitable_flavor_text(mob/living/user, atom/ignitable, obj/item/igniter)
 	return alist(
 		/obj/item/tool/weldingtool = SPAN_NOTICE("[user] casually lights [ignitable] with [igniter]."),
-		/datum = SPAN_NOTICE("[user] lights [ignitable] with [igniter]."),
+		/atom = SPAN_NOTICE("[user] lights [ignitable] with [igniter]."),
 	)
 
 /obj/item/tool/candle/check_can_ignite()

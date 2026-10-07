@@ -78,6 +78,12 @@ GLOBAL_DATUM(horseman_event, /datum/game_decorator/halloween/horseman)
 		horseman.key = candidate.key
 	qdel(candidate)
 
+	var/area_name = get_area_name(spawn_turf)
+
+	marine_announcement("#AL3RT S-S-S0METH-NG 15 H3R3 1NV35TIGATE [area_name]")
+	xeno_announcement("We feel an evil and malicious spirit has appeared in [area_name] beware...")
+	elder_overseer_message("Something wicked has arrived on the hunting grounds in [area_name]")
+
 	to_chat(horseman, SPAN_XENOANNOUNCE("HAUNT THE UNEXPECTING POOR SOULS OF THIS LAND.."))
 	to_chat(horseman, SPAN_XENOANNOUNCE("Please be aware that you are an event character, and are expected to atleast be a bit more upholding of the games life. Please do not try to focus one side, or side with any side. You are a third party meant to make the round fun for both sides equally, You can be an equalizer but do not break the balance of the round too much, obviously you are free to kill everyone, just dont rush the hive and claim you killed the xenos. You shouldn't be running around minmaxxing either, just have fun kill people and make it fun for people."))
 

@@ -4,15 +4,18 @@
 	var/target_id = 0
 	var/obj/structure/machinery/camera/cas/linked_cam
 	var/z_initial
+	/// Positioned CAS target image reused across eligible native maps.
 	var/image/minimap_blip
+	/// Position/color/label signature used to invalidate the cached target image.
 	var/minimap_blip_key
 
-/// store world coordinates on the marine
+/// stores the last gotten world coordinates from a marine's designator, specifically as a check for OW console's saved coords feature
 /mob/living/carbon/human/var/list/last_binocular_coordinate
 
-/// coords gotten by laser designator
+/// Exact planetside marine binocular readings acquired this round, shared across squads
 GLOBAL_LIST_EMPTY(acquired_binocular_coordinates)
 
+/// Saves a completed reading and authorizes its exact coordinates for Overwatch's saved coords minimap marker
 /mob/living/carbon/human/proc/save_binocular_coordinate(turf/location)
 	if(!location)
 		return
@@ -21,6 +24,7 @@ GLOBAL_LIST_EMPTY(acquired_binocular_coordinates)
 		GLOB.acquired_binocular_coordinates["[location.x],[location.y],[location.z]"] = TRUE
 	SSminimaps.refresh_fire_support_warnings()
 
+/// Displays the equipped viewer's reading and this console squad's verified saved targets
 /atom/movable/screen/minimap/proc/update_saved_coordinate_markers()
 	overlays -= saved_coordinate_overlays
 	saved_coordinate_overlays = list()
@@ -50,6 +54,7 @@ GLOBAL_LIST_EMPTY(acquired_binocular_coordinates)
 	saved_coordinate_cache = new_cache
 	overlays += saved_coordinate_overlays
 
+/// Reuses unchanged marker images and projects world coordinates onto the native map
 /atom/movable/screen/minimap/proc/add_saved_coordinate_marker(world_x, world_y, label, marker_color, datum/hud_displays/display, list/new_cache)
 	var/key = "[world_x]-[world_y]-[label]-[marker_color]-[display.x_offset]-[display.y_offset]"
 	var/image/marker = saved_coordinate_cache[key]

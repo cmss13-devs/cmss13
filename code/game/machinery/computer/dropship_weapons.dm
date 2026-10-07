@@ -50,7 +50,7 @@
 
 	// camera setup
 	AddComponent(/datum/component/camera_manager)
-	AddComponent(/datum/component/tacmap, has_drawing_tools = FALSE, minimap_flag = minimap_flag | MINIMAP_FLAG_DROPSHIP, has_update = FALSE)
+	AddComponent(/datum/component/tacmap/dropship, has_drawing_tools = FALSE, minimap_flag = minimap_flag | MINIMAP_FLAG_DROPSHIP, has_update = FALSE)
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 /obj/structure/machinery/computer/dropship_weapons/Destroy()

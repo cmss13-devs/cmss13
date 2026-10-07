@@ -852,22 +852,31 @@ SUBSYSTEM_DEF(minimaps)
 	var/is_observer_minimap = FALSE
 	/// Current drawing overlays for cleanup
 	var/list/current_drawing_overlays = list()
+	/// Incoming strike coverage, excluded from cic tacmap updates
 	var/list/fire_support_warning_overlays = list()
-	/// doesn't apply to the global minimap
+	/// Owner of a personal map, console minimaps don't apply to the shared minimap
 	var/client/warning_client
+	/// Identifies personal copies even when someone dcs
 	var/is_personal_copy = FALSE
-	/// cached base copy
+	/// Undisplayed base copy used to initialize personal map objects
 	var/is_cache_template = FALSE
-	/// popout maps can be shared by multiple people
+	/// Whether refresh eligibility is determined by the registered popout viewers
 	var/track_popout_viewers = FALSE
+	/// Clients currently displaying the popout map
 	var/list/client/popout_viewers = list()
+	/// OW console supplying squad specific saved coords
 	var/obj/structure/machinery/computer/overwatch/coordinate_console
+	/// Saved coords currently applied to this map
 	var/list/saved_coordinate_overlays = list()
+	/// Coords mapped to reusable markers
 	var/list/saved_coordinate_cache = list()
-	/// PO minimap exclusive markers
+	/// Active CAS signals visible to this dropship
 	var/list/cas_signal_overlays = list()
+	/// Dropship weapons console showing  the pilot's targeting reticle
 	var/obj/structure/machinery/computer/dropship_weapons/aim_console
+	/// Operator whose selected signal are shown on this map
 	var/mob/aim_operator
+	/// Reusable aim reticle, excluded from cic tacmap updates
 	var/image/operator_aim_marker
 	/// Max ratio to x_max/y_max you can scroll the map to
 	var/max_scroll_ratio = 0.8
@@ -1020,6 +1029,16 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap/Destroy()
 	SSminimaps.hashed_minimaps -= src
 	stop_polling = null
+	warning_client = null
+	coordinate_console = null
+	aim_console = null
+	aim_operator = null
+	operator_aim_marker = null
+	popout_viewers = null
+	fire_support_warning_overlays = null
+	saved_coordinate_overlays = null
+	saved_coordinate_cache = null
+	cas_signal_overlays = null
 	return ..()
 
 /**

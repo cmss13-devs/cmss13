@@ -1,10 +1,16 @@
 /// fire support area for minimap
 /datum/fire_support_warning
+	/// Requested impact origin in world coordinates
 	var/turf/target
+	/// Circular coverage radius
 	var/radius
+	/// Short description displayed above the minimap warning
 	var/label
+	/// Positioned native map image, drawn once and reused by all minimaps
 	var/image/blip
+	/// Outline color
 	var/warning_color
+	/// Used by firemissions, includes gimbal and firemission length
 	var/list/rectangle
 
 /datum/fire_support_warning/New(turf/target, radius, label, lifetime, warning_color = "#ffb347", list/rectangle)
@@ -25,6 +31,7 @@
 	blip = null
 	return ..()
 
+/// Builds the native map image only on first use, not on refresh
 /datum/fire_support_warning/proc/get_blip()
 	if(blip)
 		return blip
@@ -54,6 +61,7 @@
 	blip.maptext_y = diameter + 2
 	return blip
 
+/// Draws CAS firemission rectangle
 /datum/fire_support_warning/proc/get_rectangle_blip(datum/hud_displays/map)
 	var/width = (rectangle["max_x"] - rectangle["min_x"] + 1) * MINIMAP_SCALE
 	var/height = (rectangle["max_y"] - rectangle["min_y"] + 1) * MINIMAP_SCALE
@@ -72,6 +80,7 @@
 	blip.maptext_y = height + 2
 	return blip
 
+/// Refreshes visible transient minimap markers
 /datum/controller/subsystem/minimaps/proc/refresh_fire_support_warnings(skip_live = FALSE, list/shared_comms_cache)
 	if(!shared_comms_cache)
 		shared_comms_cache = list()
@@ -88,10 +97,10 @@
 	if(is_cache_template)
 		return FALSE
 	if(is_personal_copy || warning_client)
-		return warning_client && (src in warning_client.screen)
+		return (src in warning_client?.screen)
 	if(track_popout_viewers)
 		for(var/client/viewer as anything in popout_viewers)
-			if(viewer && (src in viewer.screen))
+			if(src in viewer?.screen)
 				return TRUE
 		return FALSE
 	return TRUE
@@ -112,12 +121,14 @@
 				return TRUE
 	return FALSE
 
+/// Comms exception applies only to a human wearing RTO pack/scout helm
 /datum/controller/subsystem/minimaps/proc/has_personal_tacmap_radio(mob/user)
 	if(!ishuman(user))
 		return FALSE
 	var/mob/living/carbon/human/human = user
 	return istype(human.back, /obj/item/storage/backpack/marine/satchel/rto) || istype(human.head, /obj/item/clothing/head/helmet/marine/radio_helmet/scout)
 
+/// Reapplies eligible strike coverage and the map's private markers.
 /atom/movable/screen/minimap/proc/update_fire_support_warnings(list/shared_comms_cache)
 	overlays -= fire_support_warning_overlays
 	fire_support_warning_overlays = list()
@@ -141,7 +152,7 @@
 	update_operator_aim_marker()
 	update_saved_coordinate_markers()
 
-/// renders individual copies
+/// Copies map appearance while excluding all fire support warnings
 /atom/movable/screen/minimap/proc/snapshot_without_fire_support_warnings()
 	var/image/snapshot = image(icon)
 	snapshot.appearance = appearance
@@ -152,6 +163,7 @@
 		snapshot.overlays -= operator_aim_marker
 	return snapshot
 
+/// Exports eligible coverage to the published map's size
 /datum/controller/subsystem/minimaps/proc/fire_support_warning_data(zlevel, mob/user)
 	var/list/result = list()
 	var/datum/hud_displays/map = minimaps_by_z["[zlevel]"]

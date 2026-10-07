@@ -773,6 +773,7 @@
 	ammo = null
 	selected_ability = null
 	clear_queued_action()
+	remove_xeno_shield()
 
 	if(organ_regen_timer != TIMER_ID_NULL)
 		deltimer(organ_regen_timer)

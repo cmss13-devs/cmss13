@@ -2280,6 +2280,8 @@ SUBSYSTEM_DEF(minimaps)
 			return MINIMAP_FLAG_YAUTJA_BADBLOOD
 		if(XENO_HIVE_HUNTED)
 			return MINIMAP_FLAG_XENO_HUNTED
+		if(XENO_HIVE_HORSEMAN)
+			return MINIMAP_FLAG_XENO_HORSEMAN
 	return 0
 
 /// Returns the highest world.time for all minimap_flags passed

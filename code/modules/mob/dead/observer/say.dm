@@ -61,5 +61,7 @@
 
 	to_chat(src, "<span class='game say'><span class='name'>[comm_paygrade][speaker_name]</span>[alt_name] [track][verb], <span class='message'><span class='[style]'>\"[message]\"</span></span></span>")
 	if(speech_sound && speaker.z == z && get_dist(speaker, src) <= GLOB.world_view_size)
+		if(ishuman_strict(speaker) && !hears_voices)
+			speech_sound = null
 		var/turf/source = get_turf(speaker)
 		playsound_client(client, speech_sound, source, sound_vol)

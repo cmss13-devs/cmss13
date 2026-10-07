@@ -20,6 +20,13 @@
 	var/mob/living/carbon/human/my_owner = owner
 	my_owner.hears_voices = !my_owner.hears_voices
 
+/datum/action/human_action/toggle_voices/ghost/action_activate()
+	. = ..()
+	if(!isobserver(owner))
+		return
+	var/mob/dead/observer/my_owner = owner
+	my_owner.hears_voices = !my_owner.hears_voices
+
 /datum/action/human_action/issue_order
 	name = "Issue Order"
 	action_icon_state = "order"

@@ -228,7 +228,7 @@
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living/carbon/human, say_to_radios), used_radios, message, message_mode, verb, speaking)
 
 /mob/living/carbon/human/hear_say(message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null, sound/speech_sound, sound_vol, message_mode)
-	if(ishuman(speaker) && !hears_voices)
+	if(ishuman_strict(speaker) && !hears_voices)
 		speech_sound = null
 	..()
 

@@ -422,7 +422,7 @@
 	if(rankee?.client?.prefs?.pref_special_job_options[job_title])
 		var/paygrade_choice = get_paygrade_id_by_name(rankee.client.prefs.pref_special_job_options[job_title], GLOB.paygrades & paygrades)
 		return paygrade_choice
-	. = ..()
+	return ..()
 
 /datum/equipment_preset/uscm/leader/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = get_backpack_item(new_human)

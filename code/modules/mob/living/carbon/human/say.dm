@@ -61,7 +61,7 @@
 	var/italics = FALSE
 	var/langchat_override
 	var/sound/speech_sound
-	var/sound_vol = 75
+	var/sound_vol = 60
 
 	if(!able_to_speak)
 		to_chat(src, SPAN_DANGER("You try to speak, but nothing comes out!"))

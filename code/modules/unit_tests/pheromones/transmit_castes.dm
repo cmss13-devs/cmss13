@@ -70,7 +70,7 @@
 	. = ..(pheromone_type = XENO_PHERO_WARDING)
 
 /// Spawns a single prime hive emitter drone of the gardener strain, along with a prime hive receiver of every possible xenomorph cast, then forces the drone to emit recovery pheromones.
-/// Expected behavior is that every receiver properly receives the drone's recovery pheromones at strong pheromone strength.
+/// Expected behavior is that every receiver properly receives the drone's recovery pheromones at normal pheromone strength.
 /datum/unit_test/pheromones/transmit_castes/drone/gardener/Run(pheromone_type = XENO_PHERO_RECOVERY)
 	var/list/expected_pheromones = list()
 	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_NORMAL // /datum/caste_datum/drone::aura_strength + /datum/xeno_strain/gardener::phero_mod

@@ -30,7 +30,7 @@
 	..() // stat modifiers
 	prae.claw_type = CLAW_TYPE_SHARP
 	prae.dodge_threshold = 6
-	prae.received_phero_caps["recovery"] = XENO_PHERO_STRENGTH_STRONG //need to be limited, regens too fast with high strength phermones.
+	prae.received_phero_caps[XENO_PHERO_RECOVERY] = XENO_PHERO_STRENGTH_STRONG //need to be limited, regens too fast with high strength phermones.
 
 #define DANCER_YELLOW_TAG_SPREAD_DURATION 7 SECONDS
 #define DANCER_YELLOW_TAG_SPREAD_CD 20 SECONDS

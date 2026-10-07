@@ -1207,7 +1207,7 @@
 		if(T.weeds)
 			on_weeds = TRUE
 
-		if(LinkBlocked(MW, MW.loc, T, forget=forget))
+		if(LinkBlocked(MW, MW.loc, T, denylist=forget))
 			failed = TRUE
 
 		for(var/a in T)

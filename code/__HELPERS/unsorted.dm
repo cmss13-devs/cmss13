@@ -142,7 +142,7 @@
 //
 // This is a copy-and-paste of the Enter() proc for turfs with tweaks related to the applications
 // of LinkBlocked
-/proc/LinkBlocked(mover_pass_flags, turf/start_turf, turf/target_turf, list/denylist)
+/proc/LinkBlocked(mover_pass_flags, turf/start_turf, turf/target_turf, list/denylist = list())
 	if(!istype(start_turf) || !istype(target_turf))
 		return null
 
@@ -151,18 +151,25 @@
 	if (!fdir)
 		return null
 
+	var/turf/next_turf = get_step(start_turf, fdir) //recursion
+	if(next_turf != target_turf)
+		var/intermediate_result = LinkBlocked(mover_pass_flags, start_turf, next_turf, denylist)
+		if(intermediate_result)
+			return intermediate_result
+		return LinkBlocked(mover_pass_flags, next_turf, target_turf, denylist)
+
 	var/fdWE = fdir & (fdir-1)
 	var/fdNS = fdir - fdWE
-	var/list/side_dirs = list() //not like left and right, but sides of the world
+	var/list/side_dirs = list() //not like left and right, but sides of the world N S or E W
 	for(var/dir in (list(fdWE, fdNS)))
 		if(dir)
-			side_dirs += fdWE
+			side_dirs += dir
 
 	var/list/obstacle_list = list()
 
 	var/atom/obstacle_atom
-	var/atom/movable/virtual_mover
-	virtual_mover.pass_flags = mover_pass_flags
+	var/atom/movable/virtual_mover = new
+	virtual_mover.pass_flags.flags_pass = mover_pass_flags
 	var/list/side_dirs_copy = side_dirs.Copy()
 
 	for (var/obstacle in start_turf) //First, check objects to block exit
@@ -176,6 +183,7 @@
 				obstacle_list += obstacle_atom
 				side_dirs.Remove(dir)
 	if(!LAZYLEN(side_dirs))
+		qdel(virtual_mover)
 		return pick(obstacle_list)
 
 	var/turf/side_turf
@@ -185,9 +193,9 @@
 	if(IS_DIAGONAL_DIR(fdir)) //intermediate steps
 		obstacle_list.Cut()
 		side_dirs_copy = side_dirs.Copy()
+		var/blocked = FALSE
 		for(var/dir in side_dirs_copy)
 			side_turf = get_step(start_turf, dir)
-			var/blocked = FALSE
 			if (side_turf.BlockedPassDirs(virtual_mover, dir))
 				obstacle_list += side_turf
 				side_dirs.Remove(dir)
@@ -202,10 +210,12 @@
 					obstacle_list += obstacle_atom
 					side_dirs.Remove(dir)
 					blocked = TRUE
+					break
 			if(!blocked)
 				dirs_from_sides += get_dir(side_turf, target_turf)
 			blocked = FALSE
 		if(!LAZYLEN(dirs_from_sides))
+			qdel(virtual_mover)
 			return pick(obstacle_list)
 		obstacle_list.Cut()
 	else
@@ -229,9 +239,12 @@
 			if (obstacle_atom.BlockedPassDirs(virtual_mover, dir))
 				obstacle_list += side_turf
 				dirs_from_sides.Remove(dir)
+				break
 	if(!LAZYLEN(dirs_from_sides))
+		qdel(virtual_mover)
 		return pick(obstacle_list)
 
+	qdel(virtual_mover)
 	return null // can link tiles therefore no obstacle returned
 
 /proc/TurfBlockedNonWindow(turf/loc)

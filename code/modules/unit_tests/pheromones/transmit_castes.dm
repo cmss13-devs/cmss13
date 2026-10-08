@@ -10,7 +10,7 @@
 			QDEL_NULL(dummy_xeno) // We only needed their base_actions
 
 			// Test all pheros on the caste
-			for(var/phero_type as anything in ALL_XENO_PHEROMONES)
+			for(var/phero_type in ALL_XENO_PHEROMONES)
 				var/list/expected_pheromones = list()
 				expected_pheromones[phero_type] = caste.aura_strength
 				all_caste_reception_test(
@@ -28,7 +28,7 @@
 				QDEL_NULL(strain_instance) // We only needed its actions_to_remove and actions_to_add
 
 				// Test all pheros on this strain
-				for(var/phero_type as anything in ALL_XENO_PHEROMONES)
+				for(var/phero_type in ALL_XENO_PHEROMONES)
 					var/list/expected_pheromones = list()
 					expected_pheromones[phero_type] = caste.aura_strength + strain_type::phero_mod
 					all_caste_reception_test(
@@ -51,7 +51,7 @@
 				QDEL_NULL(strain_instance) // We only needed its actions_to_add
 
 				// Test all pheros on this strain
-				for(var/phero_type as anything in ALL_XENO_PHEROMONES)
+				for(var/phero_type in ALL_XENO_PHEROMONES)
 					var/list/expected_pheromones = list()
 					expected_pheromones[phero_type] = caste.aura_strength + strain_type::phero_mod
 					all_caste_reception_test(

@@ -88,7 +88,7 @@
 	var/facing = get_dir(abduct_user, target_atom)
 	var/turf/turf = abduct_user.loc
 	var/turf/temp = abduct_user.loc
-	var/hook_pass_flags = PASS_OVER_THROW_ITEM
+	var/hook_pass_flags = PASS_OVER_THROW_ITEM | PASS_MOB_THRU
 	for(var/distance in 0 to max_distance)
 		temp = get_step(turf, facing)
 		if(!temp || temp.density || temp.opacity)

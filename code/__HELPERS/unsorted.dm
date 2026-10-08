@@ -159,90 +159,119 @@
 		return LinkBlocked(mover_pass_flags, next_turf, target_turf, denylist)
 
 	var/fdWE = fdir & (fdir-1)
-	var/fdNS = fdir - fdWE
-	var/list/side_dirs = list() //not like left and right, but sides of the world N S or E W
-	for(var/dir in (list(fdWE, fdNS)))
-		if(dir)
-			side_dirs += dir
-
+	var/list/possible_dirs_1 = list(fdWE, fdir - fdWE) //not like left and right, but sides of the world N S or E W
+	list_clear_nulls(possible_dirs_1)
+	var/list/possible_dirs_2 = list()
 	var/list/obstacle_list = list()
 
 	var/atom/obstacle_atom
 	var/atom/movable/virtual_mover = new
 	virtual_mover.pass_flags.flags_pass = mover_pass_flags
-	var/list/side_dirs_copy = side_dirs.Copy()
+	var/blocked = FALSE
 
-	for (var/obstacle in start_turf) //First, check objects to block exit
-		if (obstacle in denylist)
-			continue
-		if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
-			continue
-		obstacle_atom = obstacle
-		for(var/dir in side_dirs_copy)
+	for (var/dir in possible_dirs_1)
+		for (var/obstacle in start_turf) //First, check objects to block exit
+			if (obstacle in denylist)
+				continue
+			if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
+				continue
+			obstacle_atom = obstacle
+
 			if (obstacle_atom.BlockedExitDirs(virtual_mover, dir))
 				obstacle_list += obstacle_atom
-				side_dirs.Remove(dir)
-	if(!LAZYLEN(side_dirs))
+				blocked = TRUE
+				break
+		if(!blocked)
+			possible_dirs_2 += dir
+		blocked = FALSE
+	if(!LAZYLEN(possible_dirs_2))
 		qdel(virtual_mover)
 		return pick(obstacle_list)
 
-	var/turf/side_turf
-	var/list/dirs_from_sides = list()
+	if(IS_DIAGONAL_DIR(fdir))
+		for (var/obstacle in start_turf) //First, check objects to block exit
+			if (obstacle in denylist)
+				continue
+			if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
+				continue
+			obstacle_atom = obstacle
+
+			if (obstacle_atom.BlockedExitDirs(virtual_mover, fdir))
+				qdel(virtual_mover)
+				return obstacle_atom
 
 	// Check for atoms in adjacent turfs
-	if(IS_DIAGONAL_DIR(fdir)) //intermediate steps
-		obstacle_list.Cut()
-		side_dirs_copy = side_dirs.Copy()
-		var/blocked = FALSE
-		for(var/dir in side_dirs_copy)
-			side_turf = get_step(start_turf, dir)
-			if (side_turf.BlockedPassDirs(virtual_mover, dir))
-				obstacle_list += side_turf
-				side_dirs.Remove(dir)
-				continue
-			for(var/obstacle in side_turf)
-				if ((obstacle in denylist))
-					continue
-				if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
-					continue
-				obstacle_atom = obstacle
-				if (obstacle_atom.BlockedPassDirs(virtual_mover, dir))
-					obstacle_list += obstacle_atom
-					side_dirs.Remove(dir)
-					blocked = TRUE
-					break
-			if(!blocked)
-				dirs_from_sides += get_dir(side_turf, target_turf)
-			blocked = FALSE
-		if(!LAZYLEN(dirs_from_sides))
-			qdel(virtual_mover)
-			return pick(obstacle_list)
-		obstacle_list.Cut()
-	else
-		dirs_from_sides += fdir
-
-	// Check the turf itself
-	var/list/dirs_from_sides_copy = dirs_from_sides.Copy()
-
-	for(var/dir in dirs_from_sides_copy)
-		side_turf = get_step(start_turf, dir)
-		if (side_turf.BlockedPassDirs(virtual_mover, dir))
-			obstacle_list += side_turf
-			dirs_from_sides.Remove(dir)
+	obstacle_list.Cut()
+	possible_dirs_1.Cut()
+	for(var/dir in possible_dirs_2)
+		next_turf = get_step(start_turf, dir)
+		if (next_turf.BlockedPassDirs(virtual_mover, dir))
+			obstacle_list += next_turf
 			continue
-		for(var/obstacle in side_turf)
+		for(var/obstacle in next_turf)
 			if ((obstacle in denylist))
 				continue
 			if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
 				continue
 			obstacle_atom = obstacle
+
 			if (obstacle_atom.BlockedPassDirs(virtual_mover, dir))
-				obstacle_list += side_turf
-				dirs_from_sides.Remove(dir)
+				obstacle_list += obstacle_atom
+				blocked = TRUE
 				break
-	if(!LAZYLEN(dirs_from_sides))
+		var/next_dir = get_dir(next_turf, target_turf)
+		if(!blocked)
+			for(var/obstacle in next_turf)
+				if ((obstacle in denylist))
+					continue
+				if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
+					continue
+				obstacle_atom = obstacle
+
+				if (obstacle_atom.BlockedExitDirs(virtual_mover, next_dir))
+					obstacle_list += obstacle_atom
+					blocked = TRUE
+					break
+		if(!blocked)
+			possible_dirs_1 += next_dir
+		blocked = FALSE
+	if(!LAZYLEN(possible_dirs_1))
 		qdel(virtual_mover)
 		return pick(obstacle_list)
+
+	obstacle_list.Cut()
+	possible_dirs_2.Cut()
+	for(var/dir in possible_dirs_1) //target_turf checking
+		if (target_turf.BlockedPassDirs(virtual_mover, dir))
+			obstacle_list += next_turf
+			break
+		for(var/obstacle in target_turf)
+			if ((obstacle in denylist))
+				continue
+			if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
+				continue
+			obstacle_atom = obstacle
+
+			if (obstacle_atom.BlockedPassDirs(virtual_mover, dir))
+				obstacle_list += next_turf
+				blocked = TRUE
+				break
+			if(!blocked)
+				possible_dirs_2 += dir
+			blocked = FALSE
+	if(!LAZYLEN(possible_dirs_2))
+		qdel(virtual_mover)
+		return pick(obstacle_list)
+
+	for(var/obstacle in target_turf)
+		if ((obstacle in denylist))
+			continue
+		if (!isStructure(obstacle) && !ismob(obstacle) && !isVehicle(obstacle))
+			continue
+		obstacle_atom = obstacle
+		if (obstacle_atom.BlockedPassDirs(virtual_mover, fdir))
+			qdel(virtual_mover)
+			return obstacle_atom
 
 	qdel(virtual_mover)
 	return null // can link tiles therefore no obstacle returned

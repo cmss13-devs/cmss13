@@ -139,9 +139,6 @@
 
 // Among other things, used by flamethrower and boiler spray to calculate if flame/spray can pass through.
 // Returns an atom for specific effects (primarily flames and acid spray) that damage things upon contact
-//
-// This is a copy-and-paste of the Enter() proc for turfs with tweaks related to the applications
-// of LinkBlocked
 /proc/LinkBlocked(mover_pass_flags, turf/start_turf, turf/target_turf, list/denylist = list())
 	if(!istype(start_turf) || !istype(target_turf))
 		return null
@@ -159,7 +156,7 @@
 		return LinkBlocked(mover_pass_flags, next_turf, target_turf, denylist)
 
 	var/fdWE = fdir & (fdir-1)
-	var/list/possible_dirs_1 = list(fdWE, fdir - fdWE) //not like left and right, but sides of the world N S or E W
+	var/list/possible_dirs_1 = list(fdWE, fdir - fdWE) // fdir - fdWE = fdNS
 	list_clear_nulls(possible_dirs_1)
 	var/list/possible_dirs_2 = list()
 	var/list/obstacle_list = list()

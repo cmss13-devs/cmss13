@@ -246,3 +246,9 @@
 #define SKIN_COLOR_PALE2 "Pale 2"
 
 //--- end ---//
+
+// for obj/limb/mouth, specifically yautja's
+#define MANDIBLE_UPPER_RIGHT "ur"
+#define MANDIBLE_UPPER_LEFT "ul"
+#define MANDIBLE_LOWER_RIGHT "lr"
+#define MANDIBLE_LOWER_LEFT "ll"

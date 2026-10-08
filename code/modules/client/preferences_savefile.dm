@@ -396,6 +396,10 @@
 	S["pred_h_style"] >> predator_h_style
 	S["pred_skin_color"] >> predator_skin_color
 	S["pred_flavor_text"] >> predator_flavor_text
+	S["pred_mandible_ur"] >> predator_mandible_ur
+	S["pred_mandible_ul"] >> predator_mandible_ul
+	S["pred_mandible_lr"] >> predator_mandible_lr
+	S["pred_mandible_ll"] >> predator_mandible_ll
 
 	S["commander_status"] >> commander_status
 	S["co_sidearm"] >> commander_sidearm
@@ -556,6 +560,10 @@
 	predator_h_style = sanitize_inlist(predator_h_style, GLOB.yautja_hair_styles_list, initial(predator_h_style))
 	predator_skin_color = sanitize_inlist(predator_skin_color, PRED_SKIN_COLOR, initial(predator_skin_color))
 	predator_flavor_text = predator_flavor_text ? sanitize_text(predator_flavor_text, initial(predator_flavor_text)) : initial(predator_flavor_text)
+	predator_mandible_ur = sanitize_integer(predator_mandible_ur, FALSE, TRUE, TRUE)
+	predator_mandible_ul = sanitize_integer(predator_mandible_ul, FALSE, TRUE, TRUE)
+	predator_mandible_lr = sanitize_integer(predator_mandible_lr, FALSE, TRUE, TRUE)
+	predator_mandible_ll = sanitize_integer(predator_mandible_ll, FALSE, TRUE, TRUE)
 	commander_status = sanitize_inlist(commander_status, GLOB.whitelist_hierarchy, initial(commander_status))
 	commander_sidearm   = sanitize_inlist(commander_sidearm, (CO_GUNS + COUNCIL_CO_GUNS), initial(commander_sidearm))
 	co_career_path = sanitize_inlist(co_career_path, list("Infantry", "Engineering", "Medical", "Intel", "Logistics", "Aviation", "Tanker"), initial(co_career_path))
@@ -692,6 +700,10 @@
 	S["pred_h_style"] << predator_h_style
 	S["pred_skin_color"] << predator_skin_color
 	S["pred_flavor_text"] << predator_flavor_text
+	S["pred_mandible_ur"] << predator_mandible_ur
+	S["pred_mandible_ul"] << predator_mandible_ul
+	S["pred_mandible_lr"] << predator_mandible_lr
+	S["pred_mandible_ll"] << predator_mandible_ll
 
 	S["commander_status"] << commander_status
 	S["co_sidearm"] << commander_sidearm

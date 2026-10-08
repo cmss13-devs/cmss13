@@ -66,9 +66,7 @@
 /datum/sprite_accessory/yautja_mouth
 	icon = 'icons/mob/humans/yaut_mouth.dmi'
 	species_allowed = list(SPECIES_YAUTJA)
+	name = "pred"
 
 /datum/sprite_accessory/yautja_mouth/none
 	name = "none"
-
-/datum/sprite_accessory/yautja_mouth/full
-	name = "full"

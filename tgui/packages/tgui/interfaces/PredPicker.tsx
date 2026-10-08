@@ -71,6 +71,12 @@ type PredData = {
 
   skin_colors: { [key: string]: string };
 
+  show_mouth: BooleanLike;
+  mandible_ur: BooleanLike;
+  mandible_ul: BooleanLike;
+  mandible_lr: BooleanLike;
+  mandible_ll: BooleanLike;
+
   materials: string[];
   retro_materials: string[];
   translators: string[];
@@ -88,7 +94,8 @@ type ModalOptions =
   | 'mask_accessory'
   | 'caster'
   | 'bracer'
-  | 'cape_color';
+  | 'cape_color'
+  | 'mouth';
 
 export const PredPicker = () => {
   const { data, act } = useBackend<PredData>();
@@ -175,6 +182,14 @@ export const PredPicker = () => {
                   icon_state={`${selectedHair.icon}_s`}
                   width="64px"
                 />
+              </Button>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                tooltip="Mouth Settings"
+                onClick={() => setModal('mouth')}
+              >
+                Mouth
               </Button>
             </Stack.Item>
           </Stack>
@@ -679,6 +694,71 @@ const PredModal = (props: {
 
     case 'cape_color':
       return <CapeColorPicker close={close} />;
+
+    case 'mouth':
+      return (
+        <Section
+          title="Mouth Settings"
+          buttons={<Button icon="x" onClick={close} />}
+        >
+          <LabeledList>
+            <LabeledList.Item label="Show Mouth">
+              <Button.Checkbox
+                checked={!!data.show_mouth}
+                onClick={() => act('show_mouth')}
+              />
+            </LabeledList.Item>
+            <LabeledList.Item label="Mandibles">
+              <Stack mt={1}>
+                <Stack.Item grow>
+                  <Button
+                    fluid
+                    disabled={!data.show_mouth}
+                    selected={!!data.mandible_ul}
+                    onClick={() => act('mandible_ul')}
+                    color={!data.mandible_ul ? 'black' : undefined}
+                  >
+                    Upper Left
+                  </Button>
+                </Stack.Item>
+                <Stack.Item grow>
+                  <Button
+                    fluid
+                    disabled={!data.show_mouth}
+                    selected={!!data.mandible_ur}
+                    onClick={() => act('mandible_ur')}
+                    color={!data.mandible_ur ? 'black' : undefined}
+                  >
+                    Upper Right
+                  </Button>
+                </Stack.Item>
+                <Stack.Item grow>
+                  <Button
+                    fluid
+                    disabled={!data.show_mouth}
+                    selected={!!data.mandible_lr}
+                    onClick={() => act('mandible_lr')}
+                    color={!data.mandible_lr ? 'black' : undefined}
+                  >
+                    Lower Right
+                  </Button>
+                </Stack.Item>
+                <Stack.Item grow>
+                  <Button
+                    fluid
+                    disabled={!data.show_mouth}
+                    selected={!!data.mandible_ll}
+                    onClick={() => act('mandible_ll')}
+                    color={!data.mandible_ll ? 'black' : undefined}
+                  >
+                    Lower Right
+                  </Button>
+                </Stack.Item>
+              </Stack>
+            </LabeledList.Item>
+          </LabeledList>
+        </Section>
+      );
 
     default:
       break;

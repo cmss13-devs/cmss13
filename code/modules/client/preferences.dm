@@ -133,6 +133,10 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/predator_bracer_material = "ebony"
 	var/predator_cape_color = "#654321"
 	var/predator_flavor_text = ""
+	var/predator_mandible_ur = TRUE   // upper right
+	var/predator_mandible_ul = TRUE   // upper left
+	var/predator_mandible_lr = TRUE   // lower right
+	var/predator_mandible_ll = TRUE   // lower left
 	//CO-specific preferences
 	var/commander_sidearm = "Unica (camo comforting)"
 	var/co_career_path = "Infantry"

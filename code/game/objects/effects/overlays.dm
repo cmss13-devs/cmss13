@@ -76,8 +76,8 @@
 	var/end_y = start.y + dy * (mission_length + flight_margin)
 	var/radius_x = CEILING(silhouette.Width() / world.icon_size / 2, 1)
 	var/radius_y = CEILING(silhouette.Height() / world.icon_size / 2, 1)
-	var/turf/lower = locate(max(1, min(start_x, end_x) - radius_x), max(1, min(start_y, end_y) - radius_y), start.z)
-	var/turf/upper = locate(min(world.maxx, max(start_x, end_x) + radius_x), min(world.maxy, max(start_y, end_y) + radius_y), start.z)
+	var/turf/lower = locate(clamp(min(start_x, end_x) - radius_x, 1, world.maxx), clamp(min(start_y, end_y) - radius_y, 1, world.maxy), start.z)
+	var/turf/upper = locate(clamp(max(start_x, end_x) + radius_x, 1, world.maxx), clamp(max(start_y, end_y) + radius_y, 1, world.maxy), start.z)
 	var/canvas_width = (upper.x - lower.x + 1) * world.icon_size
 	var/canvas_height = (upper.y - lower.y + 1) * world.icon_size
 	var/icon/canvas = icon(silhouette)
@@ -85,7 +85,7 @@
 	canvas.DrawBox("#00000000", 1, 1, canvas_width, canvas_height)
 	var/icon/roof_mask = icon(canvas)
 	var/has_exposed_ground = FALSE
-	for(var/turf/open/ground in block(lower, upper))
+	for(var/turf/ground as anything in block(lower, upper))
 		var/area/ground_area = get_area(ground)
 		if(ground_area.ceiling != CEILING_NONE && ground_area.ceiling != CEILING_GLASS)
 			continue

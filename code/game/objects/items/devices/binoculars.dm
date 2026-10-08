@@ -106,6 +106,7 @@
 	. = ..()
 
 /obj/item/device/binoculars/range/update_icon()
+	overlays.Cut()
 	overlays += range_laser_overlay
 
 /obj/item/device/binoculars/range/get_examine_text(mob/user)
@@ -254,6 +255,7 @@
 	. = ..()
 
 /obj/item/device/binoculars/range/designator/update_icon()
+	overlays.Cut()
 	if(range_mode)
 		overlays += range_laser_overlay
 	else
@@ -419,8 +421,8 @@
 	var/scout_band = "scout_overlay"
 
 /obj/item/device/binoculars/range/designator/scout/update_icon()
+	. = ..()
 	overlays += scout_band
-	return ..()
 
 /obj/item/device/binoculars/range/designator/spotter
 	name = "spotter's laser designator"
@@ -443,6 +445,7 @@
 	return ..()
 
 /obj/item/device/binoculars/range/designator/spotter/update_icon()
+	overlays.Cut()
 	overlays += spotter_band
 	if(is_spotting)
 		overlays += spot_laser_overlay

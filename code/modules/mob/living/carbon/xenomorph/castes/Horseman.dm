@@ -55,6 +55,7 @@
 		/datum/action/xeno_action/onclick/haunt,
 		/datum/action/xeno_action/onclick/pumpkin_barrage,
 		/datum/action/xeno_action/activable/doom,
+		/datum/action/xeno_action/activable/boomerang_scythe,
 	)
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_4/horseman.dmi'
@@ -242,3 +243,101 @@
 
 /datum/effect_system/smoke_spread/horseman
 	smoke_type = /obj/effect/particle_effect/smoke/horseman
+/datum/action/xeno_action/activable/boomerang_scythe
+	name = "Boomerang Scythe"
+	action_icon_state = "spin_slash"
+	ability_primacy = XENO_PRIMARY_ACTION_3
+	action_type = XENO_ACTION_CLICK
+	xeno_cooldown = 12 SECONDS
+	var/scythe_range = 6
+
+/datum/action/xeno_action/activable/boomerang_scythe/use_ability(atom/affected_atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!istype(xeno) || !action_cooldown_check() || !xeno.check_state())
+		return
+	var/turf/start_turf = get_turf(xeno)
+	var/turf/aim_turf = get_turf(affected_atom)
+	if(!start_turf || !aim_turf || aim_turf == start_turf || aim_turf.z != start_turf.z)
+		return
+	if(!check_and_use_plasma_owner())
+		return
+	var/dx = aim_turf.x - start_turf.x
+	var/dy = aim_turf.y - start_turf.y
+	var/scale = scythe_range / max(abs(dx), abs(dy)) // all of this fucking sucks
+	var/turf/end_turf = locate(clamp(start_turf.x + round(dx * scale, 1), 1, world.maxx), clamp(start_turf.y + round(dy * scale, 1), 1, world.maxy), start_turf.z)
+	var/obj/effect/horseman_scythe/scythe = new(start_turf)
+	scythe.launch(xeno, get_line(start_turf, end_turf, FALSE))
+	playsound(xeno, 'sound/weapons/slashmiss.ogg', 50, TRUE)
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] hurls a schytee!"), SPAN_XENOWARNING("We hurl a schyte!"))
+	apply_cooldown()
+	return ..()
+
+/obj/effect/horseman_scythe
+	name = "spectral scythe"
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "predscythe"
+	anchored = TRUE
+	density = FALSE
+	layer = ABOVE_MOB_LAYER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	var/datum/weakref/owner_ref
+	var/list/turf/outbound_path
+	var/returning = FALSE
+	var/list/mob/living/hit_this_pass = list()
+	var/damage_min = 25
+	var/damage_max = 35
+	var/step_delay = 1
+	var/steps_left = 40
+
+/obj/effect/horseman_scythe/Destroy()
+	owner_ref = null
+	outbound_path = null
+	hit_this_pass = null
+	return ..()
+
+/obj/effect/horseman_scythe/proc/launch(mob/living/carbon/xenomorph/thrower, list/turf/path)
+	owner_ref = WEAKREF(thrower)
+	outbound_path = path
+	SpinAnimation(4, -1) // i was told anim_library is probably better for this but its too late
+	addtimer(CALLBACK(src, PROC_REF(fly)), step_delay)
+
+/obj/effect/horseman_scythe/proc/fly()
+	var/mob/living/carbon/xenomorph/thrower = owner_ref?.resolve()
+	steps_left--
+	if(QDELETED(thrower) || thrower.stat == DEAD || thrower.z != z || steps_left <= 0)
+		qdel(src)
+		return
+	if(!returning)
+		var/turf/next_turf = length(outbound_path) ? outbound_path[1] : null
+		if(next_turf && !blocks_scythe(next_turf))
+			outbound_path.Cut(1, 2)
+			move_and_slash(next_turf)
+			return
+		returning = TRUE
+		hit_this_pass.Cut()
+	var/turf/owner_turf = get_turf(thrower)
+	if(loc == owner_turf)
+		qdel(src)
+		return
+	move_and_slash(get_step_towards(src, owner_turf))
+
+/obj/effect/horseman_scythe/proc/move_and_slash(turf/next_turf)
+	if(!next_turf)
+		qdel(src)
+		return
+	forceMove(next_turf)
+	for(var/mob/living/victim in next_turf)
+		if(victim.stat == DEAD || (victim in hit_this_pass) || istype(victim, /mob/living/carbon/xenomorph/horseman))
+			continue
+		hit_this_pass += victim
+		victim.take_overall_damage(rand(damage_min, damage_max), 0, "spectral scythe")
+		playsound(next_turf, 'sound/weapons/bladeslice.ogg', 50, TRUE)
+	addtimer(CALLBACK(src, PROC_REF(fly)), step_delay)
+
+/obj/effect/horseman_scythe/proc/blocks_scythe(turf/target_turf)
+	if(target_turf.density)
+		return TRUE
+	for(var/obj/thing in target_turf)
+		if(thing.density)
+			return TRUE
+	return FALSE

@@ -11,12 +11,12 @@
 /turf/open/space/basic,
 /area/fiorina/oob)
 "c" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "wy27"
 	},
 /area/fiorina/oob)
 "e" = (
-/turf/closed/shuttle/ert/transparent{
+/turf/closed/shuttle/ert{
 	icon_state = "wy27"
 	},
 /area/fiorina/oob)
@@ -142,14 +142,14 @@ F
 h
 "}
 (2,1,1) = {"
-e
+c
 n
 V
 H
 K
 "}
 (3,1,1) = {"
-c
+e
 l
 w
 a

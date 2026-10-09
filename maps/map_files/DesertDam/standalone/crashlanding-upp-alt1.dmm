@@ -32,15 +32,15 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_civilian)
 "ag" = (
-/obj/structure/shuttle/part/ert/transparent/left_engine{
-	name = "Buran"
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
 	},
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/valley_civilian)
 "ah" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/effect/decal/sand_overlay/sand1/corner1{
-	dir = 4
+/obj/structure/shuttle/part/ert/transparent/left_engine{
+	name = "Buran"
 	},
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/valley_civilian)
@@ -1231,7 +1231,7 @@ nX
 nX
 nX
 Mp
-ah
+ag
 Yv
 ad
 PS
@@ -1433,7 +1433,7 @@ la
 la
 yl
 fA
-ag
+ah
 Yv
 ae
 nd

@@ -7,11 +7,8 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "ab" = (
-/obj/structure/machinery/door/airlock/sandstone/runed{
-	name = "Strange Temple";
-	dir = 1
-	},
-/turf/open/floor/sandstone/runed,
+/obj/structure/reagent_dispensers/tank/water/yautja,
+/turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "ac" = (
 /obj/structure/bed/chair/comfy/yautja{
@@ -62,13 +59,9 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "aj" = (
-/obj/structure/stairs/perspective{
-	color = "#b6a38f";
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/turf/template_noop,
-/area/template_noop)
+/obj/structure/reagent_dispensers/tank/fuel/yautja,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/desert_dam/interior/caves/temple)
 "ak" = (
 /obj/structure/bed/bedroll,
 /turf/open/floor/corsat/squareswood/north,
@@ -102,34 +95,41 @@
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "aq" = (
-/obj/structure/reagent_dispensers/tank/water/yautja,
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
-"ar" = (
-/obj/structure/reagent_dispensers/tank/fuel/yautja,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/desert_dam/interior/caves/temple)
-"as" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/head/hardhat,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
-"at" = (
+"ar" = (
 /obj/item/device/flashlight/lantern,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
-"au" = (
+"as" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/desert/rock,
+/area/desert_dam/interior/caves/temple)
+"at" = (
+/obj/effect/decal/remains/human,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/temple)
+"au" = (
+/obj/structure/machinery/door/airlock/sandstone/runed{
+	name = "Strange Temple";
+	dir = 1
+	},
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "av" = (
 /obj/structure/xenoautopsy/tank/hugger/yautja,
 /turf/open/shuttle/red,
 /area/desert_dam/interior/caves/temple)
 "aw" = (
-/obj/effect/decal/remains/human,
-/turf/open/desert/rock,
-/area/desert_dam/interior/caves/temple)
+/obj/structure/stairs/perspective{
+	color = "#b6a38f";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/turf/template_noop,
+/area/template_noop)
 "ax" = (
 /obj/structure/stairs/perspective{
 	color = "#b6a38f";
@@ -726,15 +726,15 @@ an
 an
 an
 ax
-aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
+aw
 MH
 MH
 Li
@@ -905,7 +905,7 @@ an
 td
 td
 td
-as
+aq
 oH
 MH
 mn
@@ -944,7 +944,7 @@ af
 ae
 IW
 MH
-aq
+ab
 AU
 mB
 mB
@@ -955,7 +955,7 @@ an
 "}
 (11,1,1) = {"
 td
-au
+as
 td
 td
 td
@@ -1001,15 +1001,15 @@ mB
 mB
 mB
 mB
-ab
+au
 mB
 ao
 "}
 (13,1,1) = {"
 td
-aw
-td
 at
+td
+ar
 td
 MH
 MH
@@ -1027,7 +1027,7 @@ AU
 mB
 Gz
 mB
-ab
+au
 mB
 ap
 "}
@@ -1040,7 +1040,7 @@ MH
 WV
 am
 mB
-ab
+au
 mB
 mB
 YH
@@ -1110,7 +1110,7 @@ an
 an
 "}
 (17,1,1) = {"
-au
+as
 td
 an
 an
@@ -1178,7 +1178,7 @@ mB
 mB
 mB
 mB
-ab
+au
 AU
 AU
 fl
@@ -1328,7 +1328,7 @@ AU
 AU
 MH
 Bm
-ar
+aj
 JZ
 MH
 an

@@ -214,15 +214,15 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/garage)
-"aL" = (
+"aM" = (
 /obj/item/stack/rods,
 /turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/medical/lobby)
-"aM" = (
+"aN" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/damaged3/west,
 /area/desert_dam/building/medical/lobby)
-"aN" = (
+"aO" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/medical_decals{
@@ -230,26 +230,22 @@
 	},
 /turf/open/floor/prison/whitegreencorner,
 /area/desert_dam/building/medical/lobby)
-"aO" = (
+"aP" = (
 /obj/effect/decal/medical_decals{
 	dir = 4;
 	icon_state = "triagedecalbottomleft"
 	},
 /turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/lobby)
-"aP" = (
+"aQ" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/machinery/light,
 /turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/lobby)
-"aQ" = (
+"aR" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/lobby)
-"aR" = (
-/obj/effect/decal/hybrisa/tiretrack,
-/turf/open/asphalt,
-/area/desert_dam/building/medical/garage)
 "aT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -259,23 +255,27 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "aU" = (
+/obj/effect/decal/hybrisa/tiretrack,
+/turf/open/asphalt,
+/area/desert_dam/building/medical/garage)
+"aV" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_medical)
-"aV" = (
+"aW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/sandbags/wired{
 	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_medical)
-"aW" = (
+"aX" = (
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/lobby)
-"aX" = (
+"aY" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/stack/sheet/metal{
 	pixel_x = 4;
@@ -283,13 +283,13 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/medical/lobby)
-"aY" = (
+"aZ" = (
 /obj/structure/bed/chair/comfy/teal{
 	dir = 8
 	},
 /turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/lobby)
-"aZ" = (
+"ba" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/bed/chair/comfy/teal{
 	dir = 4
@@ -297,11 +297,11 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/lobby)
-"ba" = (
+"bb" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/prison/whitegreenfull,
 /area/desert_dam/building/medical/lobby)
-"bb" = (
+"bc" = (
 /obj/structure/desertdam/decals/road_edge,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/warning_cone{
@@ -309,24 +309,18 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"bc" = (
+"bd" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
 	},
 /obj/item/tool/warning_cone,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"bd" = (
+"be" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl1"
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
-/area/desert_dam/exterior/valley/valley_medical)
-"be" = (
-/obj/structure/bed/roller,
-/obj/item/trash/used_stasis_bag,
-/obj/effect/decal/cleanable/blood,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_medical)
 "bf" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -335,9 +329,15 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "bg" = (
-/turf/open/asphalt/cement_sunbleached,
+/obj/structure/bed/roller,
+/obj/item/trash/used_stasis_bag,
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_medical)
 "bh" = (
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_medical)
+"bi" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/bed/chair/comfy/teal{
 	dir = 4
@@ -345,50 +345,44 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/whitegreen/northwest,
 /area/desert_dam/building/medical/lobby)
-"bi" = (
+"bj" = (
 /obj/effect/decal/hybrisa/tiretrack,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"bj" = (
+"bk" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
 	},
 /obj/item/ammo_magazine/smg/fp9000,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"bk" = (
+"bl" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal11"
 	},
 /obj/item/ammo_magazine/smg/fp9000,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"bl" = (
+"bm" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/barricade/handrail/medical{
 	dir = 4
 	},
 /turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/lobby)
-"bm" = (
+"bn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_magazine/smg/fp9000,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"bn" = (
+"bo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_medical)
-"bo" = (
+"bp" = (
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/prison/whitegreen/north,
-/area/desert_dam/building/medical/lobby)
-"bp" = (
-/obj/structure/barricade/handrail/medical{
-	dir = 4
-	},
-/turf/open/floor/prison/whitegreenfull,
 /area/desert_dam/building/medical/lobby)
 "bq" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -396,15 +390,21 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/lobby)
 "br" = (
+/obj/structure/barricade/handrail/medical{
+	dir = 4
+	},
+/turf/open/floor/prison/whitegreenfull,
+/area/desert_dam/building/medical/lobby)
+"bs" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/building/medical/lobby)
-"bs" = (
+"bt" = (
 /turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/medical/lobby)
-"bt" = (
+"bu" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/barricade/handrail/medical,
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -412,7 +412,7 @@
 	},
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/medical/lobby)
-"bu" = (
+"bv" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -420,18 +420,18 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/medical/lobby)
-"bv" = (
+"bw" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/shard,
 /turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/lobby)
-"bw" = (
+"bx" = (
 /obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/science,
 /obj/item/shard,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/building/medical/lobby)
-"bx" = (
+"by" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/barricade/sandbags/wired{
 	dir = 4
@@ -442,14 +442,14 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_medical)
-"by" = (
+"bz" = (
 /obj/item/stack/sheet/metal{
 	pixel_x = -3;
 	pixel_y = 3
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/lobby)
-"bz" = (
+"bA" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/reagent_container/food/drinks/coffee{
 	pixel_x = -4;
@@ -458,13 +458,13 @@
 /obj/item/clothing/glasses/hud/health,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/building/medical/lobby)
-"bA" = (
+"bB" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/shard,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/lobby)
-"bB" = (
+"bC" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/barricade/handrail/medical{
 	dir = 4
@@ -475,12 +475,12 @@
 	},
 /turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/lobby)
-"bC" = (
+"bD" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/lobby)
-"bD" = (
+"bE" = (
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
@@ -489,28 +489,28 @@
 /obj/item/shard,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/building/medical/lobby)
-"bE" = (
+"bF" = (
 /obj/effect/landmark/survivor_spawner/clf/trijent,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_medical)
-"bF" = (
+"bG" = (
 /obj/item/shard,
 /turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/lobby)
-"bG" = (
+"bH" = (
 /obj/item/ammo_magazine/smg/fp9000,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"bH" = (
+"bI" = (
 /obj/item/shard,
 /turf/open/floor/plating/platingdmg3/west,
 /area/desert_dam/building/medical/lobby)
-"bI" = (
+"bJ" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/trash/cigbutt,
 /turf/open/floor/plating/platingdmg2,
 /area/desert_dam/building/medical/lobby)
-"bJ" = (
+"bK" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -518,23 +518,16 @@
 /obj/item/trash/semki,
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/lobby)
-"bK" = (
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
-/area/desert_dam/exterior/valley/valley_medical)
 "bL" = (
-/obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/valley_medical)
 "bM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/valley_medical)
+"bN" = (
 /obj/structure/sign/poster/safety{
 	pixel_y = 32
-	},
-/turf/open/floor/prison/whitegreen/north,
-/area/desert_dam/building/medical/lobby)
-"bN" = (
-/obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/light{
-	dir = 1
 	},
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/lobby)
@@ -549,27 +542,34 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "bP" = (
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/whitegreen/north,
+/area/desert_dam/building/medical/lobby)
+"bQ" = (
+/obj/effect/decal/hybrisa/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/whitegreencorner/east,
 /area/desert_dam/building/medical/lobby)
-"bQ" = (
+"bR" = (
 /turf/closed/wall,
 /area/desert_dam/building/medical/outgoing)
-"bR" = (
+"bS" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	name = "\improper Medical Outgoing"
 	},
 /turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/outgoing)
-"bS" = (
+"bT" = (
 /obj/structure/largecrate/random/barrel/brown{
 	pixel_x = 6;
 	pixel_y = 6
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/valley_medical)
-"bT" = (
+"bU" = (
 /obj/structure/largecrate/random/case/small{
 	pixel_x = 2;
 	pixel_y = 6
@@ -584,11 +584,11 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/valley_medical)
-"bU" = (
+"bV" = (
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_medical)
-"bV" = (
+"bW" = (
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/medical/chemistry)
 "cb" = (
@@ -2922,7 +2922,7 @@ ET
 ET
 ET
 mt
-bb
+bc
 Rf
 xD
 xD
@@ -2995,9 +2995,9 @@ pU
 JD
 qY
 Wj
-bi
+bj
 qY
-aR
+aU
 aK
 UZ
 UZ
@@ -3033,7 +3033,7 @@ nh
 nh
 nh
 FG
-bc
+bd
 Rf
 aF
 aF
@@ -3088,25 +3088,25 @@ kH
 kH
 kH
 kH
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bS
+bW
+bW
+bW
+bW
+bW
+bW
+bW
+bT
 Yc
 gE
 JD
 Au
-bG
+bH
 Au
 Au
 Au
 JD
-bm
-bj
+bn
+bk
 rg
 UG
 qM
@@ -3131,8 +3131,8 @@ kH
 kH
 kH
 kH
-bV
-bT
+bW
+bU
 Yc
 oW
 Nc
@@ -3143,8 +3143,8 @@ Jt
 Jt
 Oe
 Jt
-bk
-bd
+bl
+be
 ID
 BZ
 Ad
@@ -3168,8 +3168,8 @@ kH
 kH
 kH
 kH
+bW
 bV
-bU
 cR
 aa
 Ql
@@ -3179,9 +3179,9 @@ ae
 Wg
 Wg
 ej
-bn
+bo
 Vo
-be
+bg
 ID
 ID
 pu
@@ -3205,20 +3205,20 @@ kH
 kH
 kH
 kH
-bV
+bW
 xx
 xx
 xx
 xx
-bK
+bL
 BE
-bE
-bg
-bg
+bF
+bh
+bh
 Ci
 cK
 BE
-bg
+bh
 Wg
 JW
 pu
@@ -3247,16 +3247,16 @@ kH
 kH
 kH
 xx
-bL
-aU
-bg
-bg
-bg
+bM
+aV
+bh
+bh
+bh
 xU
 Rb
 Lr
-bg
-aU
+bh
+aV
 Yc
 pu
 kH
@@ -3285,15 +3285,15 @@ kH
 kH
 xx
 ab
-aV
+aW
 vZ
 vZ
-bx
+by
 NA
 Yp
 vZ
 vZ
-aV
+aW
 Mc
 pu
 kH
@@ -3322,16 +3322,16 @@ kH
 kH
 xx
 jq
-bH
-aW
+bI
+aX
 pE
-by
-bs
-aW
+bz
+bt
+aX
 da
 pE
-aW
-aL
+aX
+aM
 pu
 kH
 kH
@@ -3357,18 +3357,18 @@ kH
 kH
 kH
 kH
-bQ
+bR
 Vs
-bI
+bJ
 TT
-bA
+bB
 le
 zf
 TT
 bq
 pE
-aX
-aM
+aY
+aN
 kH
 kH
 kH
@@ -3394,17 +3394,17 @@ kH
 kH
 kH
 kH
-bQ
+bR
 hh
 oi
 fO
 oi
-aM
+aN
 le
-bo
+bp
 cb
 Ui
-aY
+aZ
 dw
 kH
 kH
@@ -3431,18 +3431,18 @@ kH
 kH
 kH
 kH
-bQ
-bM
+bR
+bN
 Ds
 Cg
 Oq
 Ob
-bt
+bu
 Hk
 Cg
-bh
-aZ
-aN
+bi
+ba
+aO
 kH
 kH
 kH
@@ -3468,18 +3468,18 @@ kH
 kH
 kH
 kH
-bQ
-bN
+bR
+bP
 FF
 Ki
-bB
+bC
 WD
-bu
-bp
-bl
+bv
+br
+bm
 cS
-ba
-aO
+bb
+aP
 kH
 kH
 kH
@@ -3509,14 +3509,14 @@ gX
 Zx
 nO
 YP
-bC
+bD
 tn
-bv
+bw
 tn
 tn
 Ii
+aR
 aQ
-aP
 kH
 kH
 kH
@@ -3542,18 +3542,18 @@ kH
 kH
 kH
 kH
-bR
-bP
-bJ
-bF
-bD
-bz
-bw
-br
+bS
+bQ
+bK
+bG
+bE
+bA
+bx
+bs
 Di
 Zx
 YP
-aQ
+aR
 kH
 kH
 kH

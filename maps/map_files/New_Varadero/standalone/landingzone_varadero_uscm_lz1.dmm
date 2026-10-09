@@ -1,5 +1,11 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
+"ab" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
+"ac" = (
 /obj/structure/machinery/door_control/brbutton{
 	id = "undergroundhangarwest";
 	name = "West Dock Door";
@@ -8,13 +14,14 @@
 	},
 /turf/open/floor/plating/icefloor/warnplate/west,
 /area/varadero/interior/cargo)
-"ab" = (
-/obj/structure/bed/chair/wood/normal{
-	dir = 1
+"ad" = (
+/obj/structure/machinery/light,
+/obj/structure/barricade/metal/wired{
+	dir = 8
 	},
-/turf/open/floor/carpet,
-/area/varadero/interior/library)
-"ac" = (
+/turf/open/floor/shiva/red/west,
+/area/varadero/interior/morgue)
+"ae" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 8
 	},
@@ -26,21 +33,14 @@
 	},
 /turf/open/floor/plating/icefloor/warnplate/east,
 /area/varadero/exterior/lz1_near)
-"ad" = (
-/obj/structure/machinery/light,
-/obj/structure/barricade/metal/wired{
-	dir = 8
-	},
-/turf/open/floor/shiva/red/west,
-/area/varadero/interior/morgue)
-"ae" = (
+"af" = (
 /obj/structure/machinery/landinglight/spoke{
 	pixel_x = -1;
 	pixel_y = 54
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
-"af" = (
+"ag" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
 	},
@@ -57,6 +57,9 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
+"aj" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/cargo)
 "ak" = (
 /obj/effect/sentry_landmark/lz_1/bottom_left,
 /turf/open/floor/asteroidfloor/north,
@@ -4351,9 +4354,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/pontoon_beach)
-"KS" = (
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/cargo)
 "KU" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -6084,11 +6084,11 @@ BL
 BL
 BL
 BL
-KS
-KS
-KS
-KS
-KS
+aj
+aj
+aj
+aj
+aj
 XN
 IS
 MC
@@ -6147,11 +6147,11 @@ BL
 BL
 BL
 PQ
-KS
+aj
 JX
 MR
 Ot
-KS
+aj
 PQ
 XN
 HL
@@ -7777,7 +7777,7 @@ BL
 PQ
 PQ
 PQ
-ae
+af
 DS
 Ly
 DS
@@ -7793,7 +7793,7 @@ PQ
 PQ
 PQ
 jB
-aa
+ac
 xk
 xk
 xk
@@ -7919,7 +7919,7 @@ gB
 bi
 In
 jB
-ac
+ae
 Ae
 Ae
 eF
@@ -8209,7 +8209,7 @@ Us
 sl
 Hc
 xe
-af
+ag
 bA
 aF
 gd

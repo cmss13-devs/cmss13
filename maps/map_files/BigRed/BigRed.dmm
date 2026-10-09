@@ -1838,11 +1838,9 @@
 /turf/open/floor/darkpurple2/north,
 /area/bigredv2/caves/lambda/xenobiology)
 "agR" = (
-/obj/structure/machinery/recharge_station/alt{
-	dir = 8;
-	layer = 3.1
-	},
-/turf/open/floor/plating,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
 "agS" = (
 /obj/structure/machinery/light{
@@ -1914,15 +1912,12 @@
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "ahg" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/dark,
+/obj/effect/decal/cleanable/blood/writing,
+/turf/open/floor/darkyellowcorners2/north,
 /area/bigredv2/outside/filtration_plant)
 "ahh" = (
-/obj/structure/machinery/recharge_station/alt{
-	dir = 8
-	},
-/turf/open/floor/plating,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
 "ahi" = (
 /obj/effect/landmark/crap_item,
@@ -1959,8 +1954,11 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "aho" = (
-/obj/effect/decal/cleanable/blood/writing,
-/turf/open/floor/darkyellowcorners2/north,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 8;
+	layer = 3.1
+	},
+/turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
 "ahp" = (
 /obj/structure/machinery/camera/autoname{
@@ -1969,8 +1967,9 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "ahq" = (
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/dark,
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
 "ahr" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -2102,8 +2101,11 @@
 /turf/open/floor/asteroidwarning/southeast,
 /area/bigredv2/outside/nw)
 "ahU" = (
-/obj/effect/landmark/start/working_joe/colony,
-/obj/effect/landmark/late_join/working_joe/colony,
+/obj/structure/machinery/cryopod/joe/weyland{
+	pixel_y = 25;
+	pixel_x = 1;
+	density = 0
+	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
 "ahV" = (
@@ -2112,7 +2114,7 @@
 "ahW" = (
 /obj/structure/machinery/cryopod/joe/weyland{
 	pixel_y = 25;
-	pixel_x = 1;
+	pixel_x = -2;
 	density = 0
 	},
 /turf/open/floor/plating,
@@ -2122,10 +2124,8 @@
 /turf/open/mars,
 /area/bigredv2/outside/nw)
 "ahY" = (
-/obj/structure/machinery/cryopod/joe/weyland{
-	pixel_y = 25;
-	pixel_x = -2;
-	density = 0
+/obj/structure/machinery/recharge_station/alt{
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
@@ -61742,7 +61742,7 @@ bhU
 awp
 bkK
 bBg
-ahg
+agR
 agF
 agE
 bnE
@@ -61954,7 +61954,7 @@ nvn
 bhU
 awp
 bkL
-aho
+ahg
 fBo
 agG
 bng
@@ -62167,7 +62167,7 @@ wBu
 aHF
 awp
 bkM
-ahq
+ahh
 blV
 agI
 bnh
@@ -65148,8 +65148,8 @@ atJ
 asv
 asv
 awp
-ahW
 ahU
+ahq
 bkT
 bkU
 bkT
@@ -65361,8 +65361,8 @@ bep
 bep
 bqa
 awp
-ahY
-ahU
+ahW
+ahq
 bkU
 bkU
 bkU
@@ -65576,8 +65576,8 @@ bpX
 awp
 bkT
 blG
-ahh
-agR
+ahY
+aho
 bkT
 bkU
 awp

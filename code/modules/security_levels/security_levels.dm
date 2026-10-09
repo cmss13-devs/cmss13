@@ -33,9 +33,13 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 			if(SEC_LEVEL_DELTA)
 				if(announce)
 					var/name = "SELF-DESTRUCT SYSTEMS ACTIVE"
-					var/input = "DANGER, THE EMERGENCY DESTRUCT SYSTEM IS NOW ACTIVATED. PROCEED TO THE SELF-DESTRUCT CHAMBER FOR CONTROL ROD INSERTION."
+					var/input = "DANGER, THE EMERGENCY DESTRUCT SYSTEM IS NOW ACTIVATED."
 					marine_announcement(input, name, 'sound/AI/selfdestruct_short.ogg', logging = log)
 				GLOB.security_level = SEC_LEVEL_DELTA
+				if(!SShijack)
+					message_admins("Self destruct detonation is not possible!")
+					return
+				addtimer(CALLBACK(SShijack, TYPE_PROC_REF(/datum/controller/subsystem/hijack, detonate_sd_with_countdown)), 6 SECONDS)
 
 /proc/get_security_level()
 	switch(GLOB.security_level)

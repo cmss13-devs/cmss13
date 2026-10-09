@@ -364,21 +364,19 @@
 		else
 			if(!(is_type_in_list(autoinjector, chem_refill)))
 				if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/research)) //Autoinjector says, "Where's my pouch?"
-					to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test with [autoinjector]'s pressurized reagent canister receiver valve failed."))
+					to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test on [autoinjector]'s pressurized reagent canister receiver valve failed."))
 					return FALSE
 				if((is_type_in_list(autoinjector, stimpacks))) //Wait a minute...
-					to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test with [autoinjector]'s stimpack receiver valve failed."))
+					to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test on [autoinjector]'s stimpack receiver valve failed."))
 					return FALSE
 				if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/yautja))//No error message. It's a crystal, right? It totally doesn't have medicine in it.
 					return FALSE
-				else if((is_type_in_list(autoinjector, chem_refill)) && autoinjector.cannot_refill || autoinjector.cannot_refill)
-					to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test with [autoinjector]'s custom multi-reagent receiver valve failed.'"))
+				if(autoinjector.cannot_refill)
+					to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve cannot detect a refill valve on [autoinjector]."))
 					return FALSE
-				else
-					to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test with [autoinjector]'s receiver valve failed.'"))
-					return FALSE
+
 			if(!reagents.has_reagent(autoinjector.chemname, amount)) // Not enough reagents in the tank to refill the autoinjector.
-				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'Refill failed. [amount]u [autoinjector.chemname] is required to completely refill [autoinjector].'"))
+				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'Refill failed. [amount]u [autoinjector.chemname] is required to completely refill [autoinjector] or a partial refill may underdose the next patient.'"))
 				return FALSE
 			else
 				//FINALLY, the good shit that actually fills the autoinjector!

@@ -1,7 +1,0 @@
-author: "Unknownity"
-delete-after: True
-changes:
-  - balance: "Predaliens and Kings are now able to pry open locked dropships and containment airlocks."
-  - balance: "Predaliens and Kings are now able to lock the dropship but cannot start hijack on their own."
-  - balance: "King can now disable the lifeboats along with the Queen and Predalien."
-  - balance: "ERT Shuttles' airlocks are now reinforced but can be forced open by Queens/Predaliens/Kings and their consoles can also now be disabled by them."

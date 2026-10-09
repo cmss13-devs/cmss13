@@ -190,7 +190,8 @@
 	if(pulling)
 		REMOVE_TRAIT(pulling, TRAIT_FLOORED, CHOKEHOLD_TRAIT)
 		var/mob/M = pulling
-		pulling.pulledby = null
+		if(pulling.pulledby == src)
+			pulling.pulledby = null
 		pulling = null
 
 		grab_level = 0

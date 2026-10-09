@@ -1,4 +1,0 @@
-author: "ori-disillusion-mirnov"
-delete-after: True
-changes:
-  - bugfix: "runtime when trying to add and remove the ahelp verb from a dummy client"

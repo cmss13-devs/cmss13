@@ -714,10 +714,10 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	var/len = length(descriptions)
 	var/description = "It's open with "
-	for(var/i in 1 to len)
+	for(var/i = len, i >= 1, i--)
 		description += descriptions[i]
-		if(i < len)
-			if(i == len - 1)
+		if(i > 1)
+			if(i == 2)
 				description += " and "
 			else
 				description += ", "

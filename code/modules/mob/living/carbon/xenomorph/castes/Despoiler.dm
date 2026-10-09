@@ -29,6 +29,8 @@
 	minimum_evolve_time = 15 MINUTES
 	evolution_allowed = FALSE
 
+	organ_type = /obj/item/organ/xeno/despoiler
+
 
 /mob/living/carbon/xenomorph/despoiler
 	caste_type = XENO_CASTE_DESPOILER
@@ -36,13 +38,11 @@
 	desc = "An emaciated acidic terror, barely alive and constantly leaking acid."
 	icon_size = 64
 	icon_state = "Despoiler Walking"
-	plasma_types = list(PLASMA_NEUROTOXIN, PLASMA_PURPLE)
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3
-	organ_value = 3000
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/toggle_seethrough,
@@ -67,6 +67,14 @@
 
 	skull = /obj/item/skull/despoiler
 	pelt = /obj/item/pelt/despoiler
+
+/obj/item/organ/xeno/despoiler
+	name = "despoiler heart"
+	icon_state = "heart_t3"
+	item_state = "heart_t3"
+	research_value = 3000
+
+	xeno_organ_flags = XENO_ORGAN_STRONG|XENO_ORGAN_ACID|XENO_ORGAN_TACHYCARDIA
 
 /mob/living/carbon/xenomorph/despoiler/proc/update_hypertension()
 	var/image/holder = hud_list[SPECIAL_HUD]
@@ -328,9 +336,9 @@
 
 /datum/action/xeno_action/onclick/oozing_wounds/proc/spawn_acid(mob/living/carbon/xenomorph/xeno, turf/turf, empowered)
 	if(empowered)
-		new /obj/effect/xenomorph/spray/despoiler/empowered(turf, create_cause_data(initial(xeno.caste_type), src), xeno.hivenumber)
+		new /obj/effect/xenomorph/spray/despoiler/empowered(turf, create_cause_data(initial(xeno.caste_type), xeno), xeno.hivenumber)
 	else
-		new /obj/effect/xenomorph/spray/despoiler(turf, create_cause_data(initial(xeno.caste_type), src), xeno.hivenumber)
+		new /obj/effect/xenomorph/spray/despoiler(turf, create_cause_data(initial(xeno.caste_type), xeno), xeno.hivenumber)
 
 	if(prob(20))
 		new /obj/effect/lingering_acid(turf, xeno.hivenumber)

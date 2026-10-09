@@ -10085,12 +10085,12 @@
 "aSR" = (
 /obj/structure/pipes/vents/pump,
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/smg/mp27,
+/obj/item/weapon/gun/rifle/m20a,
 /turf/open/floor/redcorner/west,
 /area/bigredv2/outside/admin_building)
 "aSS" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/smg/mp27,
+/obj/item/weapon/gun/rifle/m20a,
 /turf/open/floor/redcorner/west,
 /area/bigredv2/outside/admin_building)
 "aST" = (
@@ -10463,6 +10463,8 @@
 /turf/open/floor/podhatchfloor,
 /area/bigredv2/outside/admin_building)
 "aVk" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/m20a,
 /turf/open/floor/redcorner/west,
 /area/bigredv2/outside/admin_building)
 "aVl" = (
@@ -24043,9 +24045,7 @@
 "iFT" = (
 /obj/structure/platform_decoration/metal/almayer/west,
 /obj/structure/platform_decoration/metal/almayer,
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/bluegrid/bcircuitoff,
 /area/bigredv2/caves/lambda/research)
 "iGp" = (
@@ -25532,9 +25532,7 @@
 "kkJ" = (
 /obj/structure/platform_decoration/metal/almayer/north,
 /obj/structure/platform_decoration/metal/almayer/east,
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /obj/item/stack/cable_coil/random,
 /turf/open/floor/bluegrid/bcircuitoff,
 /area/bigredv2/caves/lambda/research)
@@ -27990,9 +27988,7 @@
 /area/bigredv2/outside/space_port)
 "mSC" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/bluegrid/bcircuitoff,
 /area/bigredv2/caves/lambda/research)
 "mSS" = (
@@ -28694,9 +28690,9 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "nFB" = (
-/obj/item/weapon/gun/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
+/obj/item/weapon/gun/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/mars_cave/mars_cave_3,
 /area/bigredv2/caves/mining)
 "nGl" = (
@@ -32387,12 +32383,10 @@
 "rtV" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/landmark/corpsespawner/miner,
-/obj/item/weapon/gun/rifle/m16{
-	pixel_x = 10
-	},
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
 /obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
 "ruo" = (

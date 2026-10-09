@@ -1,3 +1,5 @@
+#define MARINE_TO_TOTAL_SPAWN_RATIO (1 - INITIAL_XENO_TO_MARINE_RATIO)
+
 /datum/job/marine/medic
 	title = JOB_SQUAD_MEDIC
 	total_positions = 16
@@ -9,8 +11,7 @@
 
 /datum/job/marine/medic/set_spawn_positions(count)
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-		if(target_squad)
-			target_squad.roles_cap[title] = medic_slot_formula(count)
+		target_squad.roles_cap[title] = medic_slot_formula(count * MARINE_TO_TOTAL_SPAWN_RATIO)
 
 /* RUCM CHANGE
 /datum/job/marine/medic/get_total_positions(latejoin=0)
@@ -23,8 +24,7 @@
 
 	if(latejoin)
 		for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-			if(target_squad)
-				target_squad.roles_cap[title] = slots
+			target_squad.roles_cap[title] = slots
 
 	return (slots*4)
 */
@@ -68,3 +68,5 @@ AddTimelock(/datum/job/marine/medic, list(
 /obj/effect/landmark/start/marine/medic/delta
 	icon_state = "medic_spawn_delta"
 	squad = SQUAD_MARINE_4
+
+#undef MARINE_TO_TOTAL_SPAWN_RATIO

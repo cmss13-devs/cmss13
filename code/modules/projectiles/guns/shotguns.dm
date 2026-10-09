@@ -92,7 +92,7 @@ can cause issues with ammo types getting mixed up during the burst.
 				if(new_handful)
 					user.put_in_hands(new_handful)
 				playsound(user, reload_sound, 25, TRUE)
-				to_chat(user, SPAN_WARNING("You eject a shell from the [src]'s chamber."))
+				to_chat(user, SPAN_WARNING("You eject a shell from [src]'s chamber."))
 			if(flags_gun_features & GUN_AMMO_COUNTER && user)
 				var/chambered = in_chamber ? TRUE : FALSE //useless, but for consistency
 				if(!silent)
@@ -709,10 +709,10 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	var/len = length(descriptions)
 	var/description = "It's open with "
-	for(var/i in 1 to len)
+	for(var/i = len, i >= 1, i--)
 		description += descriptions[i]
-		if(i < len)
-			if(i == len - 1)
+		if(i > 1)
+			if(i == 2)
 				description += " and "
 			else
 				description += ", "

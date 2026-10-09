@@ -919,6 +919,11 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(damage_modifier > 0.5)
 		playsound(loc, "slam", 50, 1)
 
+/// Validate that a type of object can be deployed on this turf
+/turf/proc/validate_deployment(deployment_type)
+	var/ret = SEND_SIGNAL(src, COMSIG_TURF_PRE_DEPLOYMENT, deployment_type)
+	return !(ret & COMPONENT_TURF_PRE_DEPLOYMENT_BLOCKED)
+
 /turf/proc/on_climb_down(victim)
 	if(!isxeno(victim))
 		return

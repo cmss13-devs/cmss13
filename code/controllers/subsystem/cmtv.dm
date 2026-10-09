@@ -467,7 +467,7 @@ SUBSYSTEM_DEF(cmtv)
 	if(!to_switch_to)
 		temporarily_observing_turf -= 10 SECONDS
 
-	temporarily_observing_turf = max(temporarily_observing_turf, 10 SECONDS)
+	COOLDOWN_START(src, temporarily_observing_turf, max(temporarily_observing_turf, 10 SECONDS))
 
 	if(current_perspective)
 		terminate_current_perspective(ticker_text = null)

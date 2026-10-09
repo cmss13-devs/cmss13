@@ -1,103 +1,307 @@
 2026-09-01:
-  Arom-beep:
-  - rscadd: A combat sidearm belt that is capable of holding a sidearm, 3 rifle mags
-      and 2 pistol mags.
-  - rscadd: New unique synthetic survivor presets for the White Antre Research Facility.
-  - rscadd: Added a UPP Ministry of Space Security Officer CO survivor to the Trijent
-      Dam UPP insert.
-  - rscadd: Disclaimer regarding arrests to CMB Inspection ERTs
-  - rscadd: Adds a check of MRE side dishes before allowing MRE folding into trash;
-      Changes MRE weight class to small
-  - balance: Sentinel max neuro oxyloss now scales with neuro stacks
-  - balance: Sentinel maximum oxyloss lowered to 40
-  - balance: Disarming SHARP darts with multitool now converts them into usable ammo.
-  - balance: Un-nerfs the crusher's melee attack slow after its bugfix, returning
-      it to 3.5 seconds
-  - balance: made it so Ravagers have a 25% chance to accidentally slash instead of
-      tackle on disarm intent!
-  - code_imp: Switched Valkyrie's rage ability from XENO_ACTION_CLICK to XENO_ACTION_QUEUE
-      this basically means that the ability no longer has to be chosen and will use
-      on your next clicking, meaning you can indirectly use it without clicking the
-      ability.
-  - code_imp: Bumped rust_g from 6.0.1 to 7.0.0
-  - code_imp: Closets and cm_vending vendors now are not intractable when they are
-      in the same tile as a dense door (allowing them to be hidden in the door's tile)
-  - code_imp: Some sounds will now be emitted from the emitting object rather than
-      the ground position. This especially makes a difference for sounds originating
-      from your character, which won't be shifted when you move due to delay.
-  - code_imp: moved rolling pin and spoon out of the contraband list
-  - code_imp: Adds stelcrest unit tests
-  - code_imp: COMSIG_ITEM_PICKUP now fires properly on pickup and COMSIG_MOVABLE_PRE_PICKUP
-      is used to check if pickup/interaction is allowed
-  - code_imp: Instead of Vs the thermal tarps are now Ms, following tradition.
-  - code_imp: Added more pass flag bitfields for VV and unified them with a couple
-      defines
-  - code_imp: Unified barricade pass flag initialization with a define
-  - code_imp: All changes ported directly from PvE code
-  - code_imp: Repaths reagent tanks for consistency.
-  - rscdel: MULEbots cannot run people over anymore. They still can't really move
-      either way.
-  - bugfix: Fixed some acid holes on maps having the wrong orientation.
-  - bugfix: Bullets affected by reflective walls keeping their boosted damage.
-  - bugfix: Limits the amount of mobs that can stop reflective walls reflecting to
-      mob/living/carbon derivatives
-  - bugfix: Poppy Pretzel recipe now uses poppies instead of seeds
-  - bugfix: Burn overlays now apply to mobs again.
-  - bugfix: fixes valkyrae fake use of retrieve
-  - bugfix: Using any item should now not immediately disarm the dart - disarming
-      is intended to be done with multitool.
-  - bugfix: Disarmed (inactive) SHARP darts now are truly inactive and safe
-  - bugfix: the UPP MSS CO Survivor now speaks Russian by default
-  - bugfix: Fixed an exploit where you could stack/unstack acided things on the ground
-  - bugfix: Fixed gamemode vote not auto-resolving if there's only one option.
-  - bugfix: Transmute works again
-  - bugfix: Rav strains no longer claim you have giant oversized claws when you're
-      not the ravager.
-  - bugfix: Xeno surgery is possible again
-  - bugfix: Base Ravager Empower now processes properly
-  - bugfix: Ravagers failing to tackle no longer announces the personal message to
-      everyone surrounding you
-  - bugfix: Invasive surgery now slices through splints
-  - bugfix: Made player unable to transmute as bulwark when they have stances active
-      like encasing plates or reflective plates.
-  - bugfix: Fixes some area oversights in Whiskey Outpost.
-  - bugfix: generic survivors should no longer spawn during survivor team inserts,
-      generic survivors should also no longer spawn on top of each other sometimes,
-      and CO survivors should no longer be able to duplicate non-co archetypes.
-  - bugfix: Custom Hotkeys saving + as Add, and ARROWUP not being saved as North etc
-      for the arrow keys.
-  - bugfix: The New Varadero LACN Commander is once again a Commander instead of a
-      LtCol
-  - bugfix: Added missing overlays to Yautja tanks.
-  - imageadd: New smartgunner sidearm belt sprites
-  - imageadd: Restock carts now have proper icons with fill overlays that add and
-      remove a little box every 5 units of supplies.
-  - imagetweak: Updates the sprites for body, cryo and tarp bags to show an 'empty'
-      version of the sprite when the bag is empty, so it is now visually clear when
-      the bag has someone inside it or not.
-  - imagetweak: Changed 'holocards' on the cryobags from the 2x2 square on top of
-      the bag to recolored versions of the bodybag label, so they are now much bigger,
-      which helps you to notice it better, and now appear similar to a real life triage
-      card attached to the bag.
-  - imagetweak: Change tarps to use their currently unused closed version, of which
-      I've hand-crafted to now have a very smooth 'invisibility' transition, there's
-      also some small details that will make the bag look more 'alive' aswell.
-  - mapadd: added vehicle restrictions for caves on the LV522 Chances Claim map.
-  - qol: Makes Cryo-marine-not-taken notice clearer
-  - qol: Adds marine snow boot to the synth loadouts.
-  - qol: Adds check of MRE food items to allow storage into MRE
-  - qol: Adds a fill indicator on reagent tanks that fills every 20%.
-  - qol: Added a dispensing and filling indicator to reagent tanks that changes from
-      green to orange.
-  - qol: 'Adds the following transfer amounts to tanks: 15, 25, 80, 120, 150, and
-      240.'
-  - server: Added more influxdb stats for player status
-  - soundtweak: Changed the sounds of when the tarp bags are closed or opened to the
-      same sounds of body and cryo bags, given it just makes more sense.
-  - spellcheck: Incendiary dart description now says that's it is incendiary, not
-      explosive.
   Drathek:
   - code_imp: Bumped rust_g from 6.0.1 to 7.0.0
   fira:
   - rscdel: MULEbots cannot run people over anymore. They still can't really move
       either way.
+2026-09-02:
+  Mary-Marilyn:
+  - balance: Reduced the M44 revolver's wielded scatter from 3 to 1.
+  - balance: Increased standard M44 ammunition damage from 72 to 85, armor penetration
+      from 5 to 10 and accurate range from 6 to 7 tiles.
+  - balance: Increased M44 marksman ammunition damage from 55 to 70 and armor penetration
+      from 35 to 40.
+  - balance: Increased M44 heavy ammunition damage from 35 to 65 and accurate range
+      from 6 to 7 tiles.
+  - balance: M44 heavy ammunition stuns for 0.5 seconds every third hit and slows
+      for 2s for every hit after that
+  - balance: The M44 sharpshooter stock now folds in 0.5 seconds and no longer slows
+      aiming
+  - balance: The M44 can now be fired with its sharpshooter stock folded.
+  - balance: Reduced M44 heavy and marksman speedloader costs to 5 points across the
+      board
+  - balance: Aim Assist is now available on the standard M56A2 Smartgun. It consumes
+      massive amounts of smartgun energy. The standard smartgun can only fire 750
+      rounds of aim assisted bullets with one DV9 battery.
+  - balance: Aim Assist has a -25% accuracy penalty when not directly clicking on
+      your target (meaning they may dodge the bullet)
+  - balance: Aim assist takes the current tile you're clicking on and automatically
+      snaps your bullet at the target.
+  - rscadd: Added numerous non-helmet options to the smartgun vendor
+  - balance: Removed widespread availability of DV9 batteries. Smartgunners now only
+      have the one that starts in their gun and the spare one from their kit. Recharge
+      them using defib rechargers. (Requistions can still order a DV9 crate)
+  - rscadd: Added functionality to remove the DV9 battery from your smartgun with
+      a screwdriver
+  - qol: Removed the Smartgun accuracy and recoil toggles and made their effects inherent
+      to the gun.
+  - rscdel: Removed the Smartgun autofire system.
+  Orchidfox:
+  - qol: RTO bag moved to SL mandatory gear
+2026-09-03:
+  Antlers:
+  - code_imp: Added pheromone unit tests to the repo's CI suite
+  - code_imp: Added new defines for pheromone types and strength
+  - bugfix: Banished xenomorphs will no longer receive pheromones from their former
+      hive, and vice versa
+  Kashargul:
+  - code_imp: update tgui dependencies
+  Mary-Marilyn:
+  - soundadd: Added new pulse rifle sounds for the MK1
+  fira:
+  - code_imp: Optimized human wound overlays by bundling updates
+2026-09-04:
+  Watermelon914:
+  - balance: Reworked research gameplay loop to be more xeno-body focused. Hydroponic
+      chemicals still exist but are no longer generated as part of recipes, and are
+      not a research target anymore. Xenomorph organs can be cultivated into weed
+      nodes and glands by placing them on the floor and then placing them on weeds.
+      These glands produce chemicals which can then be extracted, which are necessary
+      to research the more lategame chemicals.
+2026-09-05:
+  TheDonkified:
+  - refactor: Replace throwing and rebounding datum-level vars with traits
+2026-09-06:
+  Nihisohel:
+  - bugfix: Synthetic USCM Recruiters no longer have the habit of picking up a random
+      potato and throwing it on their shoulder to show off
+  Puckaboo2:
+  - spellcheck: Kills some 'this the stick' and 'the the stick'  grammar errors.
+  - spellcheck: More spell checks.
+  fira:
+  - bugfix: Many sources of Xeno heal (except healer which already worked) are now
+      instantaneous instead of incurring an up to 2 seconds random delay, visually
+      and for mob effects.
+  - bugfix: Dealing damage with VV is now instantaneous.
+  - code_imp: MedHUD HP bar will now only update when it needs to.
+  - code_imp: MedHUD Status (death state, larva, etc) and revival minimap icon will
+      not update on taking damage anymore. It still updates every 2 seconds or during
+      major events.
+  - code_imp: Optimized minimap marker logic.
+2026-09-07:
+  Drathek:
+  - server: Juke build now checks last_define_params for whether to rebuild dm
+  - balance: Initial slot calculation no longer allows infinite xeno slots to be more
+      accurate to the actual slotting afterwards
+  - balance: Technically squad medic and engineer limit calculations have changed,
+      but should ultimately be the same
+  - code_imp: Removed/Moved some XvX code to specifically XvX files
+  - config: Removed two unnecessary configs xeno_number_divider and surv_number_divider
+  - ui: Some lobby menu buttons are now disabled while the game is starting
+  Drathek PoltavskaPraca:
+  - qol: Admin help is bound by default to F1 again for hotkey set
+  - bugfix: Accessing options and messages and profiling is possible again
+  - bugfix: Fixed incorrect triggering of conflicting keybinding detection for switch
+      input key
+  - bugfix: Screenshot auto is now possible again via hotkeys, broken up into two
+      binds, and is bound to F2/Shift+F2 for the hotkey set
+  MistChristmas:
+  - bugfix: Brig Timers being oversized and flowing off of the maptext
+  ori-disillusion-mirnov:
+  - code_imp: add .sh file for update paths
+  - code_imp: toggle crest unit tests
+  - spellcheck: fixed a typo in steelcrest abilities unit test
+2026-09-08:
+  Detective-Google:
+  - balance: fire resistance boon cost increased from 1 to 2.
+  Fira, antlersss:
+  - balance: Sentries and mounted guns like M56D and M2C cannot be deployed inside
+      tents anymore.
+  Mary-Marilyn:
+  - bugfix: Station ERTs no longer continue spawning after round end.
+  - rscadd: Added undocking announcements when a station abandons the Almayer.
+  MistChristmas:
+  - bugfix: Add html encoding to Flavour Text
+  - code_imp: Add an arugment to get_line to account for objects transitioning z levels.
+      Currently used for throwing and shooting.
+  - bugfix: Being able to throw people off the map on WARF. Being able to shoot xenos
+      on the ground from CIC.
+  Puckaboo2:
+  - spellcheck: Fixed all sentences that end with ".!", "!.", "..?", ".?", "?."
+  Venuska1117:
+  - refactor: Updates Spitter code for cleaner look and making it easier to follow.
+  - refactor: Updates Trapper Boiler code for cleaner look and making it easier to
+      follow.
+  - refactor: Updates Vampire code for cleaner look and making it easier to follow.
+  - bugfix: Added missing cooldown check on vampire headbite and early return check
+      if target is DEAD.
+  - refactor: Changes Carrier single letter vars to use snake_case.
+  Watermelon914:
+  - admin: Admins will stay deadminned when they deadmin through reconnects/reloadadmin
+  labeo0:
+  - bugfix: welding goggles tint does not stay when they are taken off
+2026-09-09:
+  Venuska1117:
+  - refactor: Updates Oppressor Praetorian code for cleaner look and making it easier
+      to follow.
+  Yachuk:
+  - balance: changed MD ping animation from 1 to 2 seconds
+  wgtjunior743:
+  - rscadd: an Encryption key variant that you can only hear a channel and not talk
+      on it.
+  - rscadd: Give the IO and POs a command key variant which they can only hear it.
+2026-09-11:
+  Drathek:
+  - bugfix: Fixed some places where damage wasn't updating health (namely facehuggers
+      and lessers off weeds)
+2026-09-12:
+  Drathek:
+  - bugfix: Fixed sentry subsystem using blocking http requests
+  PoltavskaPraca:
+  - imageadd: added an icon sprite for automated weeding
+  - qol: added autoweeding ability (toggleable) to a bunch of drone-adjacent castes.
+      Autoweeding automatically plants weed nodes as you move based on distance. At
+      20% plasma total or lower it becomes disabled automatically. Weeds planted via
+      autoweeding have the same cost as the usual.
+  Unknownity:
+  - bugfix: PMC Synthetic survivors now start with a shortwave radio inside their
+      backpack.
+  ori-disillusion-mirnov:
+  - bugfix: fixed runtime in clean_observe_target() by adding a check for a client
+  - bugfix: other possible set_eye related runtimes from lacking a client
+2026-09-13:
+  Atebite:
+  - ui: Redesigned the USCM late join menu
+  Detective-Google:
+  - imageadd: the CO turtleneck can now have the sleeves rolled, and no longer has
+      a sprite hole in the right side.
+  IowaPotatoFarmer:
+  - rscadd: Added a handful of new nightmare inserts to Kutjevo Refinery.
+  Mary-Marilyn:
+  - soundadd: Added a unique victory theme for the Three World Empire.
+  - imageadd: Added a new Three World Empire victory card.
+  - bugfix: Fixed the CLF incorrectly displaying the UPP victory card.
+  - bugfix: Fixes eye-blur becoming permanent if you re-entered your body late after
+      being revived
+2026-09-14:
+  PoltavskaPraca:
+  - imageadd: added mouse cursor different sprites
+  - qol: new mouse cursors for smartgunner, changes based on if we are using ap/frontline
+      mode
+2026-09-15:
+  fira:
+  - bugfix: Rocket/LTB/HPC now explode on clicked turf properly again rather than
+      flying by. Make SURE you click on what you want to explode, not the general
+      direction.
+  - rscdel: Removed Explosive Ammo properties. It only mattered for BE/Suicide with
+      HE Mateba, and it does that anyway.
+  - balance: Caster Eradicator (HPC) / Dual Plasma Cannons had scatter disabled to
+      target ground properly. Little difference that makes if that thing is pointed
+      at you.
+2026-09-16:
+  Dimdimich1996, AmoryBlaine, DetectiveGoogle:
+  - rscadd: New colony rifle, M20A Harrington, similar stats to an M16.
+  - maptweak: static M16 spawns on Solaris have been replaced by the M20A.
+  Drathek:
+  - code_imp: Updated some code regarding dress vendor and snowflake vendor to satisfy
+      new checks
+  - code_imp: Updated loop logic for legendary property setup
+  Steelpoint:
+  - maptweak: Removes invisible fog tiles on New Varadero. These tiles are not currently
+      visible to players.
+2026-09-18:
+  Drathek:
+  - code_imp: Rearranged sentry variable defines some
+  - bugfix: Defenses (not just sentries) no longer are flagged as needing power since
+      they handle power themselves
+  TheDonkified:
+  - refactor: Extract path-matching logic into a helper function
+  - code_imp: Add unit tests for new helper
+2026-09-19:
+  Drathek:
+  - balance: Marines can no longer deploy mines in shuttle turfs
+2026-09-20:
+  Antlers:
+  - bugfix: Renamed neuropathic's chemical property abbreviation to "NPA," as "NPT"
+      is already taken by nephrotoxic
+  - bugfix: Runed sandstone bricks no longer stack with their regular counterparts
+      in inventories
+  - bugfix: Xenos can no longer crawl through holes in walls while incapacitated or
+      resting by click-dragging their sprite onto the hole
+  Drathek:
+  - bugfix: Fixed a div by zero runtime with explosion properties at level 0
+2026-09-21:
+  Kugamo:
+  - rscadd: ' xenos can now track their KING in their HUD compass'
+  Mary-Marilyn:
+  - qol: Examining a character now shows their body type and a rough estimate of their
+      age.
+2026-09-22:
+  Drathek:
+  - balance: Synth and CO survivors now respect the normal survivor limit
+  - admin: Ported various VV, protection, and SDQL differences from TG
+  Kugamo:
+  - rscadd: Flayed corpses no longer identifiable by name.
+  - spellcheck: Wording of examined humans' age, size, and build streamlined.
+  Mary-Marilyn:
+  - rscadd: Humans can now destroy metal ledges with welding tools and rock ledges
+      with shovels or entrenching tools.
+  - rscadd: Added a pamphlet introducing new players to the setting and major factions.
+      There are also a few strewn throughout the Almayer.
+  MistChristmas:
+  - bugfix: Dual fire Dual Wielding works again.
+  Onetoughcreampuff:
+  - rscadd: Added requested mentor autoresponses
+  PoltavskaPraca:
+  - rscadd: 'Can now disable right click menu in the preferences -> settings, left
+      upper corner: Right-click Contextual Menu. It is ON by default. Can even shoot
+      and do a lot of stuff with RMB instead of LMB.'
+  Steelpoint:
+  - bugfix: Reinforced woden window frames will now be visible in game. They were
+      previously invisible.
+  Unknownity:
+  - balance: Predaliens and Kings are now able to pry open locked dropships and containment
+      airlocks.
+  - balance: Predaliens and Kings are now able to lock the dropship but cannot start
+      hijack on their own.
+  - balance: King can now disable the lifeboats along with the Queen and Predalien.
+  - balance: ERT Shuttles' airlocks are now reinforced but can be forced open by Queens/Predaliens/Kings
+      and their consoles can also now be disabled by them.
+  cuberound:
+  - bugfix: larvas stop getting extra evo points over their threshold as every other
+      caste if queen does not enter ovi for over 3 minutes roundstart
+  labeo0:
+  - qol: Allows setting up fax backpack by clicking a table
+  - bugfix: Facehuggers/larvas can no longer scuttle under doors with placed barricades
+      to bypass them.
+  - bugfix: Facehuggers can no longer click-hug humans lying down behind the barricades
+  ori-disillusion-mirnov:
+  - bugfix: runtime when trying to add and remove the ahelp verb from a dummy client
+  osaka-fuuri:
+  - rscadd: Added 'Strain Information' Verb
+2026-09-23:
+  Antlers:
+  - rscadd: Pill bottles can now be broken open by knives and other sharp objects,
+      breaking them and spilling their pills out onto the floor
+  - rscadd: Pill bottles can be fixed by using a wirecutter to pinch and bend the
+      lid back into place with the correct medical skill (surgery >=1)
+  - bugfix: Humans without the necessary medical skill can no longer scoop up pills
+      from the ground into pill bottles
+2026-09-26:
+  Red-byte3D:
+  - rscadd: Unit test for weeds
+  - bugfix: Fixed a small issue with boiler effect code,
+  - bugfix: Weeds no longer decay first to re-weed, they just parent onto the node.
+2026-09-27:
+  Onetoughcreampuff:
+  - bugfix: Check Status should now account for decapitation
+2026-09-28:
+  ICA-usernameisunavailable:
+  - balance: Despoiler can no longer extinguish itself with oozing wounds.
+  Mary-Marilyn:
+  - bugfix: The body type examine text is no longer broken
+2026-09-29:
+  Andywastaken:
+  - bugfix: CMTV will no longer prematurely cut from OBs and other turf events.
+  Kugamo:
+  - bugfix: dead facehuggers no longer block xenos from building resin structures
+      atop them.
+  Mary-Marilyn:
+  - qol: The station undocking announcements now play 5 seconds after round end instead
+      of immediately.
+  - bugfix: Fixed a typo in the mercenary station undocking announcement.
+  - soundadd: Ported the PVE smartgun firing sound
+  Venuska1117:
+  - balance: Decloaking Predators using "Roar" ability now play loud sound clue for
+      their decloak.
+  - soundadd: Added new "decloak" sound for predators decloaked by predalien roar.

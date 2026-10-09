@@ -34,11 +34,13 @@
 	tacklestrength_min = 3
 	tacklestrength_max = 4
 
-	aura_strength = 2
+	aura_strength = XENO_PHERO_STRENGTH_NORMAL
 
 	minimum_evolve_time = 1 MINUTES
 
 	minimap_icon = "drone"
+
+	organ_type = /obj/item/organ/xeno/drone
 
 /datum/caste_datum/drone/New()
 	. = ..()
@@ -52,9 +54,8 @@
 	icon = 'icons/mob/xenos/castes/tier_1/drone.dmi'
 	icon_size = 48
 	icon_state = "Drone Walking"
-	plasma_types = list(PLASMA_PURPLE)
+	plasma_types = list(PLASMA_PHEROMONE)
 	tier = 1
-	organ_value = 800
 	pixel_x = -12
 	old_x = -12
 	xenonid_pixel_x = -8
@@ -71,6 +72,7 @@
 		/datum/action/xeno_action/onclick/choose_resin, //second macro
 		/datum/action/xeno_action/activable/secrete_resin, //third macro
 		/datum/action/xeno_action/activable/transfer_plasma, //fourth macro
+		/datum/action/xeno_action/onclick/autoweeding_toggle,
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -85,6 +87,15 @@
 	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
 	skull = /obj/item/skull/drone
 	pelt = /obj/item/pelt/drone
+
+/obj/item/organ/xeno/drone
+	name = "drone heart"
+	icon_state = "heart_t1"
+	item_state = "heart_t1"
+	research_value = 800
+
+	xeno_organ_flags = XENO_ORGAN_WEAK|XENO_ORGAN_SUPPORT
+
 
 /mob/living/carbon/xenomorph/drone/tutorial
 	AUTOWIKI_SKIP(TRUE)

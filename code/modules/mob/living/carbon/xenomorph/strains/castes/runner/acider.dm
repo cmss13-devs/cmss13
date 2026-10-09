@@ -20,6 +20,8 @@
 	runner.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
 	runner.armor_modifier += XENO_ARMOR_MOD_MED
 	runner.health_modifier += XENO_HEALTH_MOD_ACIDER
+	// Uses vehicle_damage_modifier specifically, not damage_modifier which would also buff mob damage.
+	runner.vehicle_damage_modifier += XENO_DAMAGE_TIER_2
 
 	runner.recalculate_everything()
 
@@ -62,6 +64,9 @@
 	var/mutable_appearance/drool_applied_icon
 	var/mutable_appearance/acid_overlays_icon
 
+	/// The acid half of the current strike against a tank, applied as a separate hit right after.
+	var/pending_tank_acid_damage = 0
+
 /datum/behavior_delegate/runner_acider/New()
 	. = ..()
 	drool_applied_icon = mutable_appearance('icons/mob/xenos/castes/tier_1/runner_strain_overlays.dmi', "Acider Runner Walking")
@@ -84,25 +89,48 @@
 	if(caboom_trigger)
 		. += "FOR THE HIVE!: in [caboom_left] seconds"
 
-/datum/behavior_delegate/runner_acider/melee_attack_additional_effects_target(mob/living/carbon/target_mob)
-	if(ishuman(target_mob)) //Will acid be applied to the mob
-		var/mob/living/carbon/human/target_human = target_mob
+/**
+ * Splits this strike's damage into a brute half and an acid half against a vehicle, rolling both wound pools.
+ */
+/datum/behavior_delegate/runner_acider/melee_attack_modify_damage(original_damage, atom/target)
+	if(!istype(target, /obj/vehicle/multitile))
+		return ..()
+	pending_tank_acid_damage = round(original_damage / 2)
+	return original_damage - pending_tank_acid_damage
+
+/datum/behavior_delegate/runner_acider/melee_attack_additional_effects_target(atom/target_mob)
+	// A vehicle tops up acid glands directly, at half the standing-marine rate.
+	if(istype(target_mob, /obj/vehicle/multitile))
+		modify_acid(acid_slash_regen_standing / 2)
+		addtimer(CALLBACK(src, PROC_REF(combat_gen_end)), combat_gen_timer, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_STOPPABLE)
+		combat_gen_active = TRUE
+		drool_overlay_active = TRUE
+		if(pending_tank_acid_damage > 0)
+			var/obj/vehicle/multitile/vehicle = target_mob
+			vehicle.take_damage_type(pending_tank_acid_damage, "acid", bound_xeno)
+			pending_tank_acid_damage = 0
+		return
+
+	var/mob/living/carbon/target = target_mob
+
+	if(ishuman(target)) //Will acid be applied to the mob
+		var/mob/living/carbon/human/target_human = target
 		if(target_human.buckled && istype(target_human.buckled, /obj/structure/bed/nest))
 			return
 		if(target_human.stat == DEAD)
 			return
 
-	var/datum/effects/acid/acid_effect = locate() in target_mob.effects_list
+	var/datum/effects/acid/acid_effect = locate() in target.effects_list
 	if(acid_effect)
 		acid_effect.prolong_duration()
 	else
-		new /datum/effects/acid(target_mob, bound_xeno, initial(bound_xeno.caste_type))
-	if(isxeno_human(target_mob)) //Will the runner get acid stacks
-		var/obj/item/alien_embryo/embryo = locate(/obj/item/alien_embryo) in target_mob.contents
+		new /datum/effects/acid(target, bound_xeno, initial(bound_xeno.caste_type))
+	if(isxeno_human(target)) //Will the runner get acid stacks
+		var/obj/item/alien_embryo/embryo = locate(/obj/item/alien_embryo) in target.contents
 		if(embryo?.stage >= 4) //very late stage hugged in case the runner unnests them
 			return
 
-		if(target_mob.body_position == LYING_DOWN)
+		if(target.body_position == LYING_DOWN)
 			modify_acid(acid_slash_regen_lying)
 			return
 		modify_acid(acid_slash_regen_standing)

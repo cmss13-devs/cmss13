@@ -28,6 +28,7 @@ type Data = {
     mags?: number;
     max_mags?: number;
     fpw: BooleanLike;
+    wounds: { name: string; tier: number }[];
   }[];
 };
 
@@ -123,6 +124,15 @@ const HardpointsView = (props) => {
       ) : (
         <NoticeBox danger>Hardpoint destroyed!</NoticeBox>
       )}
+      {hardpoint.wounds.length ? (
+        <Box mt={0.5}>
+          {hardpoint.wounds.map((wound, woundIndex) => (
+            <NoticeBox key={woundIndex} danger>
+              {wound.name} (Tier {wound.tier})
+            </NoticeBox>
+          ))}
+        </Box>
+      ) : null}
       <Box height="3px" />
       {hardpoint.uses_ammo ? (
         <Flex direction="row">

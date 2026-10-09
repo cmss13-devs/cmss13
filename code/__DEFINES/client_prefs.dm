@@ -71,6 +71,21 @@
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations.
 //=================================================
 
+//toggles_vehicle bits from /datum/preferences
+//=================================================
+///Vehicle picks its own gear automatically instead of the driver shifting manually.
+#define VEHICLE_SIMPLE_TRANSMISSION (1<<0)
+///Vehicle controls use legacy WASD movement instead of tank-relative gas/brake/turn.
+#define VEHICLE_SIMPLE_CONTROLS (1<<1)
+///Vehicle acceleration uses keypress-driven momentum instead of the continuous cruise loop
+#define VEHICLE_SIMPLE_ACCELERATION (1<<2)
+///Driver HUD shows speed/acceleration in mph instead of the default km/h
+#define VEHICLE_UNITS_MPH (1<<3)
+
+///Default toggles_vehicle value.
+#define TOGGLES_VEHICLE_DEFAULT 0
+//=================================================
+
 #define JOB_SLOT_RANDOMISED_SLOT -1
 #define JOB_SLOT_CURRENT_SLOT 0
 #define JOB_SLOT_RANDOMISED_TEXT "Randomise name and appearance"

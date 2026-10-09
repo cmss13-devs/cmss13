@@ -154,6 +154,45 @@
 			else
 				color = null
 
+/// Human body zone to vehicle hardpoint slot, keeps the vehicle doll in sync with the human doll.
+GLOBAL_LIST_INIT(human_zone_to_vehicle_part, list(
+	"head" = HDPT_TURRET,
+	"eyes" = HDPT_VISUAL_SENSORS,
+	"mouth" = HDPT_IFF_MODULE,
+	"chest" = WOUND_SLOT_HULL,
+	"r_arm" = HDPT_PRIMARY,
+	"r_hand" = HDPT_PRIMARY,
+	"l_arm" = HDPT_SECONDARY,
+	"l_hand" = HDPT_SECONDARY,
+	"groin" = WOUND_SLOT_HULL,
+	"r_leg" = HDPT_TREADS,
+	"l_leg" = HDPT_TREADS,
+	"r_foot" = HDPT_TREADS,
+	"l_foot" = HDPT_TREADS,
+))
+
+/// Vehicle hardpoint slot to the vehicle doll's own highlight icon_state in zone_sel.dmi.
+GLOBAL_LIST_INIT(vehicle_part_to_zone_sel_icon_state, list(
+	(HDPT_TURRET) = "turret",
+	(HDPT_VISUAL_SENSORS) = "sensor",
+	(HDPT_IFF_MODULE) = "iff",
+	(WOUND_SLOT_HULL) = "hull",
+	(HDPT_PRIMARY) = "primary",
+	(HDPT_SECONDARY) = "secondary",
+	(HDPT_TREADS) = "treads",
+))
+
+/// Reverse of human_zone_to_vehicle_part. First match wins where several zones share a part.
+GLOBAL_LIST_INIT(vehicle_part_to_human_zone, list(
+	(HDPT_TURRET) = "head",
+	(HDPT_VISUAL_SENSORS) = "eyes",
+	(HDPT_IFF_MODULE) = "mouth",
+	(WOUND_SLOT_HULL) = "chest",
+	(HDPT_PRIMARY) = "r_arm",
+	(HDPT_SECONDARY) = "l_arm",
+	(HDPT_TREADS) = "r_leg",
+))
+
 /atom/movable/screen/zone_sel
 	name = "damage zone"
 	icon_state = "zone_sel"
@@ -162,6 +201,119 @@
 /atom/movable/screen/zone_sel/update_icon(mob/living/user)
 	overlays.Cut()
 	overlays += image('icons/mob/hud/zone_sel.dmi', "[selecting]")
+
+/**
+ * Vehicle-part doll shown directly above the human doll, cycles together with it.
+ * Has its own body silhouette and 7-state highlight overlay instead of reusing the human doll's.
+ */
+/atom/movable/screen/zone_sel/vehicle
+	name = "vehicle part"
+	icon_state = "zone_sel_vehicle"
+
+/atom/movable/screen/zone_sel/vehicle/update_icon(mob/living/user)
+	overlays.Cut()
+	var/vehicle_part = GLOB.human_zone_to_vehicle_part[selecting] || WOUND_SLOT_HULL
+	overlays += image('icons/mob/hud/zone_sel.dmi', GLOB.vehicle_part_to_zone_sel_icon_state[vehicle_part] || "hull")
+
+/**
+ *
+ * Let me explain what this does and why it is needed, for anyone wondering why there is a giant tank ascii art in here.
+ *
+ * Adding a separate targeting system was a headache and half. I used an image to ascii converter online to pass the tank targeting doll sprite that Holdeman made to
+ * make the ascii list below, and then I slowly built it up and refined it so it was 'pixel perfect' comparing to a zoomed up version in aseprite.
+ *
+ * Why was this needed? Well, when you click the targeting doll, BYOND's clicked() will hand you the pixel you clicked in. This is a set of coordinates with X from 1-32
+ * and Y from 1-32.
+ *
+ * This set of coordinates is then compared against that list, and it returns the matching ASCII key of the part it hit. D. H. I. T. C. '.' - Etc.
+ *
+ * So, why do we need to do this instead of doing whatever the human targeting doll already does??, you may ask, and to that, I reply:
+ *
+ * A vehicle's shape is more complex than a human doll. The treads aren't one continuous, rectangular shape. The hull has a big hole in the middle, which is then
+ * filled by another hardpoint. The shapes of the guns and other hardpoints are complex. This is compared to hte human doll which is a selection of rectangles and squares.
+ * If we followed the same approach that the human doll targeting resolve uses, we'd be looking at an enormous set of x_ranges and switch(icon_y) -> switch(icon_x)
+ * lines of code. Just take a look at how the human doll handles it and you'll understand why I didn't do it like that. Or maybe I didn't see an obvious easy way.
+ *
+ * So,
+ * Instead of writing code that is algebraically complex and nigh unmaintainable to represent those complex shapes, I've decided to use an ASCII hitmap, which
+ * is both easier to build, tweak, test, and maintain. But it is 'different', yes.
+ *
+ * In short, the way this works is: We get the XY coordinates from clicked() when clicking the doll sprite and figure out to which part they resolve...
+ * By comparing them to the hitmap below, grabbing whatever letter it lands on. It's fast, reliable and also pixel perfect!
+ *  - BWSB
+ */
+GLOBAL_LIST_INIT(vehicle_doll_hitmap, list("................................",
+										   "................................",
+										   "....DDDDDD............DDDDDD....",
+										   "....DDDDDDHHHHHHHHHHHHDDDDDD....",
+										   "....DDDDHHHHHIHHHHHHHHHHDDDD....",
+										   "....DDDDHHHHHIHHHHHHHHHHDDDD....",
+										   "....DDDDHHHHHIHHHHHHHHHHDDDD....",
+										   "....DDDDHHHHTITTTTTTHHHHDDDD....",
+										   "....DDDDHHHTTITTTTTTTHHHDDDD....",
+										   "....DDDDHHTTTITTTTTTTTHHDDDD....",
+										   "....DDDDHHTTIITTTTCCTTHHDDDD....",
+										   "....DDDDHTTIIITTTCCCCTTHDDDD....",
+										   "....DDDDHTTIIITTTCCCCTTHDDDD....",
+										   "....DDDDHHTIIITTTCCCCTHHDDDD....",
+										   "....DDDDHHTTTTTTTTCCCTHHDDDD....",
+										   "....DDDDHHHTTTTTTTCCCHHHDDDD....",
+										   "....DDDDHHHTTTTPPTCCCHHHDDDD....",
+										   "....DDDDHHHTTTPPPPCCCHHHDDDD....",
+										   "....DDDDHHHTTTPPPPCCCHHHDDDD....",
+										   "....DDDDHHHHTTPPPPTCHHHHDDDD....",
+										   "....DDDDHHHHHHPPPPHHHHHHDDDD....",
+										   "....DDDDHHHHHHPPPPHHHHHHDDDD....",
+										   "....DDDDHHHHHHPPPPHHHHHHDDDD....",
+										   "....DDDDHHHHHHPPPPSSSSSHDDDD....",
+										   "....DDDDHHHHHHPPPPSSSSSHDDDD....",
+										   "....DDDDDDHHHHPPPPSSSSDDDDDD....",
+										   "....DDDDDDHHHHPPPPSSSSDDDDDD....",
+										   "....DDDDDDHHHHHPPHSSSSDDDDDD....",
+										   "....DDDDDDHHHHHHHHHHHHDDDDDD....",
+										   "....DDDDDDHHHHHHHHHHHHDDDDDD....",
+										   "....DDDDDD............DDDDDD....",
+										   "................................"))
+
+/// vehicle_doll_hitmap character to hardpoint slot.
+GLOBAL_LIST_INIT(vehicle_doll_hitmap_chars, list(
+	"I" = HDPT_IFF_MODULE,
+	"S" = HDPT_VISUAL_SENSORS,
+	"P" = HDPT_PRIMARY,
+	"C" = HDPT_SECONDARY,
+	"T" = HDPT_TURRET,
+	"D" = HDPT_TREADS,
+	"H" = WOUND_SLOT_HULL,
+))
+
+/atom/movable/screen/zone_sel/vehicle/proc/get_vehicle_part_at(icon_x, icon_y)
+	if(icon_x < 1 || icon_x > 32 || icon_y < 1 || icon_y > 32)
+		return null
+	var/row_string = GLOB.vehicle_doll_hitmap[33 - icon_y]
+	var/hit_char = copytext(row_string, icon_x, icon_x + 1)
+	return GLOB.vehicle_doll_hitmap_chars[hit_char]
+
+/atom/movable/screen/zone_sel/vehicle/clicked(mob/user, list/mods)
+	// Deliberately not calling ..(), the immediate parent is the human doll's own hit-test switch.
+	// Replicating the real base check directly instead.
+	if(!user)
+		return TRUE
+	if(isobserver(user))
+		return TRUE
+
+	var/icon_x = text2num(mods[ICON_X])
+	var/icon_y = text2num(mods[ICON_Y])
+	var/old_selecting = selecting
+
+	var/vehicle_part = get_vehicle_part_at(icon_x, icon_y)
+	if(!vehicle_part)
+		return 1
+
+	selecting = GLOB.vehicle_part_to_human_zone[vehicle_part] || "chest"
+
+	if(old_selecting != selecting)
+		user.select_body_zone(selecting)
+	return 1
 
 /atom/movable/screen/zone_sel/clicked(mob/user, list/mods)
 	if (..())
@@ -223,8 +375,7 @@
 							selecting = "eyes"
 
 	if(old_selecting != selecting)
-		user.zone_selected = selecting
-		update_icon(user)
+		user.select_body_zone(selecting)
 	return 1
 
 /atom/movable/screen/gun

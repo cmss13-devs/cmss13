@@ -47,6 +47,7 @@
 	var/atom/movable/screen/unique_action
 
 	var/atom/movable/screen/zone_sel/zone_sel
+	var/atom/movable/screen/zone_sel/vehicle/vehicle_zone_sel
 	var/atom/movable/screen/pull_icon
 	var/atom/movable/screen/throw_icon
 	var/atom/movable/screen/oxygen_icon
@@ -155,6 +156,7 @@
 	unique_action = null
 
 	zone_sel = null
+	vehicle_zone_sel = null
 	pull_icon = null
 	throw_icon = null
 	oxygen_icon = null
@@ -415,6 +417,18 @@
 		zone_sel.color = ui_color
 	zone_sel.update_icon(mymob)
 	static_inventory += zone_sel
+
+/// Vehicle-part doll, placed directly above the human doll.
+/datum/hud/proc/draw_vehicle_zone_sel(datum/custom_hud/ui_datum, ui_alpha, ui_color)
+	vehicle_zone_sel = new /atom/movable/screen/zone_sel/vehicle()
+	vehicle_zone_sel.icon = ui_datum.ui_style_icon
+	vehicle_zone_sel.screen_loc = ui_datum.ui_vehicle_zonesel
+	if(ui_alpha)
+		vehicle_zone_sel.alpha = ui_alpha
+	if(ui_color)
+		vehicle_zone_sel.color = ui_color
+	vehicle_zone_sel.update_icon(mymob)
+	static_inventory += vehicle_zone_sel
 
 // Re-render all alerts - also called in /datum/hud/show_hud() because it's needed there
 /datum/hud/proc/reorganize_alerts(mob/viewmob)

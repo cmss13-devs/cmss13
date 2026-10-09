@@ -1,3 +1,15 @@
+/**
+ * Snaps a client's camera pixel offset back to (0,0), cancelling any in-flight animate() chain instead of just assigning the var.
+ * A vehicle crash's camera shake could otherwise leave a driver's view permanently offset.
+ *
+ * Arguments:
+ * * client_to_reset = Client whose camera offset to reset.
+ */
+/proc/reset_client_pixel_offset(client/client_to_reset)
+	if(!client_to_reset)
+		return
+	animate(client_to_reset, pixel_x = 0, pixel_y = 0, time = 0)
+
 //regular vehicle seats for general vehicles.
 /obj/structure/bed/chair/comfy/vehicle
 	name = "seat"
@@ -42,22 +54,33 @@
 	if(QDELETED(buckled_mob))
 		M.unset_interaction()
 		vehicle.set_seated_mob(seat, null)
+		// Also clears the oxy overlay and blur filter, or they'd stick on this mob after leaving.
+		vehicle.clear_visual_sensor_overlay(M)
 		if(M.client)
 			M.client.change_view(GLOB.world_view_size, vehicle)
-			M.client.set_pixel_x(0)
-			M.client.set_pixel_y(0)
+			reset_client_pixel_offset(M.client)
 			M.reset_view()
+			if(isliving(M))
+				var/mob/living/living_mob = M
+				if(living_mob.observed_atom)
+					QDEL_NULL(living_mob.observed_atom)
 	else
 		if(M.stat == DEAD)
 			unbuckle()
 			return
+		if(M.client)
+			// Force eye to genuinely change (away, then back) instead of a no-op reassignment to the same value.
+			M.client.set_eye(null)
 		vehicle.set_seated_mob(seat, M)
 		if(M && M.client)
-			M.client.change_view(8, vehicle)
+			reset_client_pixel_offset(M.client)
+			M.client.change_view(VEHICLE_SEAT_VIEW_RADIUS, vehicle)
+			vehicle.update_visual_sensor_overlay(M)
 
 /obj/structure/bed/chair/comfy/vehicle/clicked(mob/user, list/mods) // If you're buckled, you can shift-click on the seat in order to return to camera-view
 	if(user == buckled_mob && mods[SHIFT_CLICK] && !user.is_mob_incapacitated())
-		user.client.change_view(8, vehicle)
+		reset_client_pixel_offset(user.client)
+		user.client.change_view(VEHICLE_SEAT_VIEW_RADIUS, vehicle)
 		vehicle.set_seated_mob(seat, user)
 		return TRUE
 	else
@@ -188,21 +211,26 @@
 	if(QDELETED(buckled_mob))
 		M.unset_interaction()
 		vehicle.set_seated_mob(seat, null)
+		// Also clears the oxy overlay and blur filter, or they'd stick on this mob after leaving.
+		vehicle.clear_visual_sensor_overlay(M)
 		if(M.client)
 			M.client.change_view(GLOB.world_view_size, vehicle)
-			M.client.set_pixel_x(0)
-			M.client.set_pixel_y(0)
+			reset_client_pixel_offset(M.client)
 	else
 		if(M.stat != CONSCIOUS)
 			unbuckle()
 			return
+		if(M.client)
+			M.client.set_eye(null) // see comfy/vehicle/handle_afterbuckle()'s comment - forces a genuine eye change instead of a possible no-op reassignment
 		vehicle.set_seated_mob(seat, M)
 		if(M && M.client)
+			reset_client_pixel_offset(M.client)
 			if(istype(vehicle, /obj/vehicle/multitile/apc))
 				var/obj/vehicle/multitile/apc/APC = vehicle
 				M.client.change_view(APC.gunner_view_buff, vehicle)
 			else
-				M.client.change_view(8, vehicle)
+				M.client.change_view(VEHICLE_SEAT_VIEW_RADIUS, vehicle)
+			vehicle.update_visual_sensor_overlay(M)
 
 /obj/structure/bed/chair/comfy/vehicle/gunner/armor/update_icon()
 	overlays.Cut()
@@ -268,18 +296,23 @@
 	if(QDELETED(buckled_mob))
 		M.unset_interaction()
 		vehicle.set_seated_mob(seat, null)
+		// Also clears the oxy overlay and blur filter, or they'd stick on this mob after leaving.
+		vehicle.clear_visual_sensor_overlay(M)
 		if(M.client)
 			M.client.change_view(GLOB.world_view_size, vehicle)
-			M.client.set_pixel_x(0)
-			M.client.set_pixel_y(0)
+			reset_client_pixel_offset(M.client)
 			M.reset_view()
 	else
 		if(M.stat == DEAD)
 			unbuckle()
 			return
+		if(M.client)
+			M.client.set_eye(null) // see comfy/vehicle/handle_afterbuckle()'s comment - forces a genuine eye change instead of a possible no-op reassignment
 		vehicle.set_seated_mob(seat, M)
 		if(M && M.client)
-			M.client.change_view(8, vehicle)
+			reset_client_pixel_offset(M.client)
+			M.client.change_view(VEHICLE_SEAT_VIEW_RADIUS, vehicle)
+			vehicle.update_visual_sensor_overlay(M)
 
 		if(vehicle.health < initial(vehicle.health) / 2)
 			to_chat(M, SPAN_WARNING("\The [vehicle] is too damaged to operate the Firing Port Weapon!"))

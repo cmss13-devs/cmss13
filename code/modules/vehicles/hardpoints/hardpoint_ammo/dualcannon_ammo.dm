@@ -6,7 +6,8 @@
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/vehicles.dmi'
 	w_class = SIZE_LARGE
 	default_ammo = /datum/ammo/bullet/tank/dualcannon
-	max_rounds = 60
+	// Boyars was pretty underwhelming in testing, so, I've upped max rounds from 60 to 100 - BWSB
+	max_rounds = 100
 	gun_type = /obj/item/hardpoint/primary/dualcannon
 
 /obj/item/ammo_magazine/hardpoint/boyars_dualcannon/update_icon()

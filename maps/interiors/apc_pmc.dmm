@@ -150,6 +150,14 @@
 /area/space)
 "u" = (
 /obj/effect/landmark/interior/spawn/weapons_loader/wy,
+/obj/effect/landmark/interior/spawn/intercom{
+	pixel_x = 9;
+	pixel_y = -6
+	},
+/obj/effect/landmark/interior/spawn/telephone/wy{
+	pixel_x = -2;
+	pixel_y = -6
+	},
 /turf/open/shuttle/vehicle/floor_3_6,
 /area/interior/vehicle/apc)
 "v" = (
@@ -253,10 +261,6 @@
 	},
 /obj/structure/bed/chair/vehicle/white{
 	pixel_x = 8
-	},
-/obj/effect/landmark/interior/spawn/telephone/wy{
-	pixel_x = 5;
-	pixel_y = 30
 	},
 /obj/structure/extinguisher_cabinet/lifeboat{
 	icon = 'icons/obj/vehicles/interiors/general_wy.dmi';

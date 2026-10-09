@@ -11,7 +11,7 @@
 	damage_multiplier = 0.11
 
 	health = 350
-	firing_arc = 120
+	traverse_arc = 120
 
 	origins = list(0, -1)
 

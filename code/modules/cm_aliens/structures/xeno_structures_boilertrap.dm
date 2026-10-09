@@ -58,6 +58,21 @@
 	to_chat(M, SPAN_XENOHIGHDANGER("You are caught by a trap made of foul resin!"))
 	qdel(src)
 
+/**
+ * A vehicle can't be rooted like a mob. Instead, driving over the spike costs it speed and momentum.
+ */
+/obj/effect/alien/resin/boilertrap/proc/trigger_vehicle_collision(obj/vehicle/multitile/vehicle)
+	if(vehicle.uses_gear_transmission)
+		vehicle.current_speed *= BOILER_TRAP_VEHICLE_MOMENTUM_RETAINED
+		vehicle.move_momentum = vehicle.current_speed
+	else
+		vehicle.move_momentum *= BOILER_TRAP_VEHICLE_MOMENTUM_RETAINED
+
+	playsound(src, "alien_resin_break", 25)
+	if(bound_xeno)
+		to_chat(bound_xeno, SPAN_XENOWARNING("[vehicle] crushes through one of our traps!"))
+	qdel(src)
+
 /obj/effect/alien/resin/boilertrap/attack_alien(mob/living/carbon/xenomorph/X)
 	to_chat(X, SPAN_XENOWARNING("Best not to meddle with that trap."))
 	return XENO_NO_DELAY_ACTION
@@ -70,7 +85,14 @@
 		if (X.hivenumber != hivenumber)
 			trigger_trap(A)
 	else if(ishuman(A))
+		// boiler's foul resin 'spikes' do not stab you through the tank
+		var/mob/living/M = A
+		if(M && M.is_on_tank_hull())
+			return
 		trigger_trap(A)
+	else if(isVehicleMultitile(A))
+		var/obj/vehicle/multitile/vehicle = A
+		trigger_vehicle_collision(vehicle)
 
 /obj/effect/hole_tripwire_boiler
 	name = "hole tripwire"
@@ -92,4 +114,11 @@
 		return
 
 	if(ishuman(A))
+		// mobs atop the tank shouldn't trigger tripwires
+		var/mob/living/M = A
+		if(M && M.is_on_tank_hull())
+			return
 		linked_trap.trigger_trap(A)
+	else if(isVehicleMultitile(A))
+		var/obj/vehicle/multitile/vehicle = A
+		linked_trap.trigger_vehicle_collision(vehicle)

@@ -261,6 +261,7 @@
 	is_groundmap_turf = TRUE
 	minimap_color = MINIMAP_MARS_DIRT
 	is_weedable = SEMI_WEEDABLE
+	traction = 0.8
 
 
 /turf/open/mars_cave
@@ -268,6 +269,7 @@
 	icon = 'icons/turf/floors/bigred.dmi'
 	icon_state = "mars_cave_1"
 	is_groundmap_turf = TRUE
+	traction = 0.9
 
 /turf/open/mars_cave/Initialize(mapload, ...)
 	. = ..()
@@ -357,6 +359,7 @@
 	icon = 'icons/turf/floors/bigred.dmi'
 	icon_state = "mars_dirt_1"
 	minimap_color = MINIMAP_DIRT
+	traction = 0.85
 
 /turf/open/mars_dirt/Initialize(mapload, ...)
 	. = ..()
@@ -434,6 +437,7 @@
 	name = "Beach"
 	icon = 'icons/turf/floors/beach.dmi'
 	supports_surgery = FALSE
+	traction = 0.6
 
 /turf/open/beach/Entered(atom/movable/AM)
 	..()
@@ -450,16 +454,19 @@
 	name = "Sand"
 	icon_state = "sand"
 	supports_surgery = TRUE
+	traction = 0.8
 
 /turf/open/beach/coastline
 	name = "Coastline"
 	icon = 'icons/turf/beach2.dmi'
 	icon_state = "sandwater"
+	traction = 0.75
 
 /turf/open/beach/water
 	name = "Water"
 	icon_state = "water"
 	can_bloody = FALSE
+	traction = 0.4
 
 /turf/open/beach/water/Initialize(mapload, ...)
 	. = ..()
@@ -469,6 +476,7 @@
 	name = "Water"
 	icon_state = "water"
 	can_bloody = FALSE
+	traction = 0.4
 
 /turf/open/beach/water2/Initialize(mapload, ...)
 	. = ..()
@@ -486,6 +494,7 @@
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "desert"
 	is_groundmap_turf = TRUE
+	traction = 0.85
 
 /turf/open/gm/attackby(obj/item/I, mob/user)
 
@@ -522,6 +531,7 @@
 	icon_state = "desert"
 	baseturfs = /turf/open/gm/dirt
 	minimap_color = MINIMAP_DIRT
+	traction = 0.8
 
 /turf/open/gm/dirt/beach
 	icon_state = "beach"
@@ -730,6 +740,7 @@
 	supports_surgery = FALSE
 	minimap_color = MINIMAP_WATER
 	is_weedable = NOT_WEEDABLE
+	traction = 0.4
 
 /turf/open/gm/river/Initialize(mapload, ...)
 	. = ..()
@@ -818,8 +829,12 @@
 
 /turf/open/gm/river/poison/Entered(mob/living/M)
 	..()
-	if(istype(M))
-		M.apply_damage(55,TOX)
+	if(!istype(M))
+		return
+	// Riding on a vehicle's hull keeps them out of the water despite sharing its tile.
+	if(M.is_atop_vehicle())
+		return
+	M.apply_damage(55,TOX)
 
 /turf/open/gm/river/darkred_pool
 	color = "#990000"
@@ -885,6 +900,7 @@
 	baseturfs = /turf/open/gm/coast
 	supports_surgery = FALSE
 	is_weedable = NOT_WEEDABLE
+	traction = 0.75
 
 /turf/open/gm/coast/north
 
@@ -940,6 +956,7 @@
 	minimap_color = MINIMAP_WATER
 	is_groundmap_turf = FALSE // Not real ground
 	fishing_allowed = TRUE
+	traction = 0.4
 
 
 /turf/open/gm/riverdeep/Initialize(mapload, ...)
@@ -981,6 +998,7 @@
 	icon = 'icons/turf/ice.dmi'
 	icon_state = "ice_floor"
 	baseturfs = /turf/open/ice
+	traction = 0.7
 
 
 //Randomize ice floor sprite
@@ -996,6 +1014,7 @@
 	name = "asphalt"
 	icon = 'icons/turf/floors/asphalt.dmi'
 	icon_state = "sunbleached_asphalt"
+	traction = 1.2
 	baseturfs = /turf/open/asphalt
 
 /turf/open/asphalt/tile
@@ -1151,6 +1170,7 @@
 	name = "wet grass"
 	desc = "Thick, long, wet grass."
 	icon = 'icons/turf/floors/jungle.dmi'
+	traction = 0.8
 	icon_state = "grass1"
 	var/icon_spawn_state = "grass1"
 	baseturfs = /turf/open/jungle
@@ -1254,6 +1274,7 @@
 	icon_spawn_state = "water"
 	can_bloody = FALSE
 	supports_surgery = FALSE
+	traction = 0.4
 
 
 /turf/open/jungle/water/Initialize(mapload, ...)

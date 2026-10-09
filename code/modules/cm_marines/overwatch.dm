@@ -123,6 +123,33 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	UnregisterSignal(camera_holder, COMSIG_BROADCAST_SEE_EMOTE)
 	camera_holder = null
 
+/**
+ * Fully releases whatever this console is currently watching.
+ * Stops every concurrent user's view and tears down the camera_holder signal hookup.
+ */
+/obj/structure/machinery/computer/overwatch/proc/release_camera()
+	if(!cam)
+		return
+	for(var/datum/weakref/user_ref in concurrent_users)
+		var/mob/concurrent = user_ref.resolve()
+		if(!concurrent)
+			continue
+		stop_watching_camera(concurrent, cam)
+		concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
+	if(camera_holder)
+		disconnect_holder()
+	cam = null
+
+/**
+ * Forces this console off a camera it's currently watching, if that camera is the one given.
+ * Used when a vehicle's overwatch gets reassigned to a different squad.
+ */
+/obj/structure/machinery/computer/overwatch/proc/force_release_if_watching(obj/structure/machinery/camera/target_cam)
+	if(!target_cam || cam != target_cam)
+		return
+	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("Camera feed lost - the tracked vehicle has been reassigned to a different squad's command network.")]")
+	release_camera()
+
 /obj/structure/machinery/computer/overwatch/attackby(obj/I as obj, mob/user as mob)  //Can't break or disassemble.
 	return
 
@@ -359,6 +386,29 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				data["squad_leader"] = marine_data[1]
 				leader_count++
 				marine_count--
+
+	// Vehicles whose overwatch is assigned to this squad (tank, APC, ...).
+	// Listed separately from the marine loop above, a vehicle isn't a marine role.
+	// Always shown once assigned, regardless of IFF state.
+	for(var/obj/vehicle/multitile/watched_vehicle in current_squad.overwatch_vehicles)
+		if(!watched_vehicle)
+			continue
+		var/turf/vehicle_turf = get_turf(watched_vehicle)
+		if(!vehicle_turf)
+			continue
+		switch(z_hidden)
+			if(HIDE_ALMAYER)
+				if(is_mainship_level(vehicle_turf.z))
+					continue
+			if(HIDE_GROUND)
+				if(is_ground_level(vehicle_turf.z))
+					continue
+		var/area/vehicle_area = get_area(watched_vehicle)
+		var/obj/structure/machinery/camera/vehicle_cam = watched_vehicle.get_camera()
+		var/vehicle_has_camera = vehicle_cam && vehicle_cam.can_use()
+		// Vehicle-appropriate labels instead of the human defaults.
+		var/vehicle_data = list(list("name" = watched_vehicle.name, "state" = vehicle_has_camera ? "Operational" : "Unmanned", "has_helmet" = vehicle_has_camera, "role" = "Vehicle", "acting_sl" = "", "fteam" = "", "distance" = "N/A", "area_name" = vehicle_area ? sanitize_area(vehicle_area.name) : "???", "ref" = REF(watched_vehicle), "rank" = "", "no_camera_label" = "IFF OFFLINE"))
+		data["marines"] += vehicle_data
 
 	for(var/obj/structure/overwatch_camera_tripod/tripod_camera as anything in GLOB.deployed_tripod_cameras) // add cameras to list o' marines
 		if(current_squad && current_squad.name != "Root")
@@ -675,17 +725,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Overwatch systems deactivated. Goodbye, [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"].")]")
 			operator = null
 			current_squad = null
-			if(cam)
-				for(var/datum/weakref/user_ref in concurrent_users)
-					var/mob/concurrent = user_ref.resolve()
-					if(!concurrent)
-						continue
-					stop_watching_camera(concurrent)
-					concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-			cam = null
-			if(camera_holder)
-				disconnect_holder()
-			camera_holder = null
+			release_camera()
 			ui.close()
 			return TRUE
 
@@ -835,6 +875,11 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				new_holder = Human.get_camera_holder()
 				if(new_holder)
 					new_cam = new_holder.get_camera()
+			else if(istype(target_ref, /obj/vehicle/multitile))
+				var/obj/vehicle/multitile/vehicle_target = target_ref
+				cam_target = vehicle_target
+				new_cam = vehicle_target.get_camera()
+				new_holder = new_cam
 			else if(istype(target_ref, /obj/structure/overwatch_camera_tripod))
 				var/obj/structure/overwatch_camera_tripod/tripod_camera = target_ref
 				if(tripod_camera.camera)
@@ -849,18 +894,15 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				if(cam == new_cam) //if we switch to a console that is already watching this cam
 					return
 			if(!new_cam || !new_cam.can_use())
-				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Searching for camera. No camera found for this target!")]")
+				if(istype(cam_target, /obj/vehicle/multitile))
+					to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Searching for camera. This vehicle's IFF module is offline or unavailable!")]")
+				else
+					to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Searching for camera. No camera found for this target!")]")
 			else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
-				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping camera view.")]")
-				for(var/datum/weakref/user_ref in concurrent_users)
-					var/mob/concurrent = user_ref.resolve()
-					if(!concurrent)
-						continue
-					stop_watching_camera(concurrent)
-					concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-				disconnect_holder()
-				cam = null
-			else if(user.client.view != GLOB.world_view_size)
+				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping camera view of [cam_target].")]")
+				release_camera()
+			else if(!cam && user.client.view != GLOB.world_view_size)
+				// Only a concern when this console isn't already watching something itself.
 				to_chat(user, SPAN_WARNING("You're too busy peering through binoculars."))
 			else
 				for(var/datum/weakref/user_ref in concurrent_users)
@@ -869,6 +911,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 						continue
 					if(cam)
 						concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
+						// Clear the old camera's view_change_sources entry before registering the new one,
+						// or its widened view_range would linger alongside the new camera's.
+						concurrent.client?.change_view(GLOB.world_view_size, cam)
 					start_watching_camera(concurrent, new_cam)
 					if(cam_target)
 						set_onscreen_text(concurrent, cam_target)
@@ -1219,16 +1264,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(user.is_mob_incapacitated(TRUE) || ui_status(user) == UI_CLOSE || user.blinded) //user can't see - not sure why canmove is here.
 		user.unset_interaction()
 	else if(!cam || !cam.can_use()) //camera doesn't work, is no longer selected or is gone
-		for(var/datum/weakref/user_ref in concurrent_users)
-			var/mob/concurrent = user_ref.resolve()
-			if(!concurrent)
-				continue
-			if(cam)
-				concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-			stop_watching_camera(concurrent)
-		if(camera_holder)
-			disconnect_holder()
-		cam = null
+		release_camera()
 
 /obj/structure/machinery/computer/overwatch/on_set_interaction(mob/user)
 	if(user.interactee != src)
@@ -1249,7 +1285,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(!isRemoteControlling(user) && concurrent_users)
 		if(cam)
 			user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-		stop_watching_camera(user)
+		stop_watching_camera(user, cam)
 		concurrent_users -= WEAKREF(user)
 
 /obj/structure/machinery/computer/overwatch/ui_close(mob/user)
@@ -1548,6 +1584,11 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 /obj/structure/machinery/computer/overwatch/proc/start_watching_camera(mob/watcher, atom/target)
 	watcher.reset_view(target)
+	// reset_view() only moves the eye, it never touches the client's view size.
+	// Reset symmetrically in stop_watching_camera() below.
+	if(istype(target, /obj/structure/machinery/camera))
+		var/obj/structure/machinery/camera/watched_cam = target
+		watcher.client?.change_view(watched_cam.view_range, target)
 
 	var/atom/movable/plane_master_controller/non_master/plane_controller = watcher.hud_used.plane_master_controllers[PLANE_MASTERS_NON_MASTER]
 	if(!plane_controller)
@@ -1569,6 +1610,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 /obj/structure/machinery/computer/overwatch/proc/stop_watching_camera(mob/watcher, atom/target)
 	watcher.reset_view(null) // This will call the below proc via the above registered signal
 	//Why so complicated? Many things may reset our view (resisting being the most common one)
+	// `target` must match `source` from start_watching_camera(), or the widened view stays stuck.
+	watcher.client?.change_view(GLOB.world_view_size, target) // undoes any view_range widening from start_watching_camera() above
 
 /obj/structure/machinery/computer/overwatch/proc/clear_overwatch_overlay(client/watcher)
 	SIGNAL_HANDLER
@@ -1628,6 +1671,16 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 		watcher.hud_used.overwatch_text.maptext = name_part + location_part + job_part + living_part
 
+	else if(istype(target, /obj/vehicle/multitile))
+		var/obj/vehicle/multitile/watched_vehicle = target
+		var/area/current_area = get_area(watched_vehicle)
+
+		var/name_part = "<span class='langchat langchat_yell'>[watched_vehicle.name]</span><br>"
+		var/location_part = "<span class='langchat' style='font-size: 7px;'>[current_area ? sanitize_area(current_area.name) : "Unknown"]</span><br>"
+		var/job_part = "<span class='langchat' style='font-size: 6px;'>Vehicle - </span>"
+		var/living_part = "<span class='langchat' style='color: [(watched_vehicle.health > 0) ? "green" : "red"]'>[(watched_vehicle.health > 0) ? "Operational" : "Destroyed"]</span>"
+
+		watcher.hud_used.overwatch_text.maptext = name_part + location_part + job_part + living_part
 	else if(istype(target, /obj/structure/overwatch_camera_tripod)) // on-screen text - in theory you can't click on a downed camera
 		var/obj/structure/overwatch_camera_tripod/tripod = target
 		var/area/current_area = get_area(tripod)

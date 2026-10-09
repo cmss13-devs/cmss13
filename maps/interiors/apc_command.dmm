@@ -372,6 +372,10 @@
 /area/space)
 "Y" = (
 /obj/effect/landmark/interior/spawn/weapons_loader,
+/obj/effect/landmark/interior/spawn/intercom{
+	pixel_x = 9;
+	pixel_y = -5
+	},
 /turf/open/shuttle/vehicle/floor_3_6,
 /area/interior/vehicle/apc/command)
 

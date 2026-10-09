@@ -16,7 +16,6 @@
 }
 
 SHOW_ON_STATUSBAR(/mob)
-SHOW_ON_STATUSBAR(/obj/item)
 SHOW_ON_STATUSBAR(/obj/structure)
 SHOW_ON_STATUSBAR(/obj/effect)
 SHOW_ON_STATUSBAR(/atom/movable/screen/action_button)
@@ -27,7 +26,6 @@ SHOW_ON_STATUSBAR(/atom/movable/screen/resist)
 SHOW_ON_STATUSBAR(/atom/movable/screen/act_intent)
 SHOW_ON_STATUSBAR(/atom/movable/screen/pull)
 SHOW_ON_STATUSBAR(/atom/movable/screen/xenonightvision)
-SHOW_ON_STATUSBAR(/atom/movable/screen/toggle_inv)
 SHOW_ON_STATUSBAR(/obj/vehicle)
 SHOW_ON_STATUSBAR(/turf/closed)
 

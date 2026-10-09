@@ -298,6 +298,7 @@
 			INVOKE_NEXT_TICK(src, PROC_REF(update_minimap_icon), wearer)
 			if(minimap_type)
 				add_minimap(user)
+				user?.hud_used.minimap_button.icon_state = "minimap"
 
 /obj/item/device/radio/headset/dropped(mob/living/carbon/human/user)
 	UnregisterSignal(user, list(
@@ -324,6 +325,7 @@
 		SSminimaps.remove_marker(wearer)
 		if(minimap_type)
 			remove_minimap(wearer)
+			user?.hud_used.minimap_button.icon_state = "minimap_off"
 	wearer = null
 	..()
 

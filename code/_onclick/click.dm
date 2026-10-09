@@ -236,7 +236,7 @@
 	A.attack_remote(src)
 	return TRUE
 
-/atom/proc/clicked(mob/user, list/mods)
+/atom/proc/clicked(mob/user, list/mods, location, params)
 	if (mods[SHIFT_CLICK] && !mods[MIDDLE_CLICK])
 		if(can_examine(user))
 			examine(user)
@@ -254,7 +254,7 @@
 		return TRUE
 	return FALSE
 
-/atom/movable/clicked(mob/user, list/mods)
+/atom/movable/clicked(mob/user, list/mods, location, params)
 	if (..())
 		return TRUE
 

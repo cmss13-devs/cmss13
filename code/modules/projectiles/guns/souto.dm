@@ -10,7 +10,7 @@
 	has_empty_icon = 0
 	ammo = /datum/ammo/souto
 	var/range = 6 // This var is used as range for the weapon/toy.
-	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG
 	var/obj/item/storage/backpack/souto/soutopack
 	current_mag = null
 	auto_retrieval_slot = WEAR_IN_BACK

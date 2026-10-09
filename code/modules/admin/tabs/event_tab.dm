@@ -63,6 +63,10 @@
 	if(!check_rights(R_ADMIN))
 		return
 
+	if(GLOB.security_level == SEC_LEVEL_DELTA)
+		to_chat(usr, "The security level is already delta. Its too late now.")
+		return
+
 	var/list/options = list(num2seclevel(SEC_LEVEL_GREEN), num2seclevel(SEC_LEVEL_BLUE), num2seclevel(SEC_LEVEL_RED), num2seclevel(SEC_LEVEL_DELTA)) - get_security_level()
 	var/new_level = tgui_input_list(usr, "It's currently code [get_security_level()].", "Select new security level", options)
 	if(!new_level)

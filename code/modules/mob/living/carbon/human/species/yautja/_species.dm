@@ -6,7 +6,7 @@
 	burn_mod = 0.65
 	reagent_tag = IS_YAUTJA
 	mob_flags = KNOWS_TECHNOLOGY
-	flags = IS_WHITELISTED|HAS_SKIN_COLOR|NO_CLONE_LOSS|NO_POISON|NO_NEURO|SPECIAL_BONEBREAK|NO_SHRAPNEL|HAS_HARDCRIT
+	flags = IS_WHITELISTED|HAS_SKIN_COLOR|NO_CLONE_LOSS|NO_POISON|NO_NEURO|SPECIAL_BONEBREAK|NO_SHRAPNEL|HAS_HARDCRIT|HAS_MOUTH
 	mob_inherent_traits = list(
 		TRAIT_YAUTJA_TECH,
 		TRAIT_SUPER_STRONG,
@@ -241,6 +241,10 @@
 				limb.min_broken_damage = 145
 				limb.max_damage = 150
 				limb.time_to_knit = 600 // 1 minute to self heal bone break, time is in tenths of a second
+
+	if(flags & HAS_MOUTH)
+		var/obj/limb/mouth/mandibles = hunter.get_mouth()
+		mandibles.icon_path = 'icons/mob/humans/yaut_mouth.dmi'
 
 	hunter.set_languages(list(LANGUAGE_YAUTJA))
 	hunter.hud_used?.hide_actions_toggle.update_button_icon(hunter)

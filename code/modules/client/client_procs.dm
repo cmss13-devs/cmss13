@@ -61,6 +61,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_leadership_spoken_orders,
 	/client/proc/toggle_cocking_to_hand,
 	/client/proc/toggle_wield_assist,
+	/client/proc/toggle_moving_mouths,
 ))
 
 /client/proc/reduce_minute_count()
@@ -1167,3 +1168,17 @@ GLOBAL_LIST_INIT(community_awards, get_community_awards())
 		for(var/award in GLOB.community_awards[ckey])
 			full_prefix += "[icon2html(GLOB.ooc_rank_dmi, GLOB.clients, award)]"
 		return full_prefix
+
+/client/proc/execute_moving_mouth_setting(setting)
+	if(setting)
+		for(var/mob/living/carbon/human/mouthy_human in GLOB.human_mob_list)
+			if(mouthy_human.species && mouthy_human.species.flags & HAS_MOUTH)
+				var/obj/limb/mouth/mouth_to_show = mouthy_human.get_mouth()
+				if(mouth_to_show)
+					mouth_to_show.show_to(src)
+	else
+		for(var/mob/living/carbon/human/mouthy_human in GLOB.human_mob_list)
+			if(mouthy_human.species && mouthy_human.species.flags & HAS_MOUTH)
+				var/obj/limb/mouth/mouth_to_hide = mouthy_human.get_mouth()
+				if(mouth_to_hide)
+					mouth_to_hide.hide_for(src)

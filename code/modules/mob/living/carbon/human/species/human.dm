@@ -86,7 +86,7 @@
 	name_plural = "Humans"
 	primitive = /mob/living/carbon/human/monkey
 	unarmed_type = /datum/unarmed_attack/punch
-	flags = HAS_SKIN_TONE|HAS_LIPS|HAS_UNDERWEAR|HAS_HARDCRIT|HAS_SKIN_COLOR
+	flags = HAS_SKIN_TONE|HAS_LIPS|HAS_UNDERWEAR|HAS_HARDCRIT|HAS_SKIN_COLOR|HAS_MOUTH
 	mob_flags = KNOWS_TECHNOLOGY
 	special_body_types = TRUE
 	fire_sprite_prefix = "Standing"
@@ -129,7 +129,7 @@
 	name_plural = "Thralls"
 	pain_type = /datum/pain/yautja
 	stamina_type = /datum/stamina/none
-	flags = HAS_SKIN_TONE|HAS_LIPS|HAS_UNDERWEAR|HAS_HARDCRIT|HAS_SKIN_COLOR|NO_SHRAPNEL
+	flags = HAS_SKIN_TONE|HAS_LIPS|HAS_UNDERWEAR|HAS_HARDCRIT|HAS_SKIN_COLOR|NO_SHRAPNEL|HAS_MOUTH
 	mob_inherent_traits = list(
 		TRAIT_DEXTROUS,
 		TRAIT_IRON_TEETH,

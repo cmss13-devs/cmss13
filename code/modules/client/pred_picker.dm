@@ -118,6 +118,12 @@
 
 	.["cape_color"] = prefs.predator_cape_color
 
+	.["show_mouth"] = (prefs.m_style != "none")
+	.["mandible_ur"] = prefs.predator_mandible_ur
+	.["mandible_ul"] = prefs.predator_mandible_ul
+	.["mandible_lr"] = prefs.predator_mandible_lr
+	.["mandible_ll"] = prefs.predator_mandible_ll
+
 /datum/pred_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 
@@ -304,6 +310,24 @@
 				return
 
 			prefs.predator_cape_color = sanitize_hexcolor(color)
+
+		if("show_mouth")
+			if(prefs.m_style == "none")
+				prefs.m_style = "pred"          // or the default Yautja style
+			else
+				prefs.m_style = "none"
+
+		if("mandible_ur")
+			prefs.predator_mandible_ur = !prefs.predator_mandible_ur
+
+		if("mandible_ul")
+			prefs.predator_mandible_ul = !prefs.predator_mandible_ul
+
+		if("mandible_lr")
+			prefs.predator_mandible_lr = !prefs.predator_mandible_lr
+
+		if("mandible_ll")
+			prefs.predator_mandible_ll = !prefs.predator_mandible_ll
 
 	prefs.update_preview_icon()
 	return TRUE

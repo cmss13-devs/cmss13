@@ -30,16 +30,6 @@
 	C.toggle_throw_mode(throw_mode)
 	return TRUE
 
-/datum/keybinding/carbon/toggle_throw_mode/high
-	hotkey_keys = list("Ctrl+R", "Ctrl+Southwest") // END
-	classic_keys = list("Ctrl+R", "Ctrl+Southwest")
-	name = "toggle_high_throw_mode"
-	full_name = "Toggle high throw mode"
-	description = "Toggle throwing the current item or not. This one does a high throw."
-	category = CATEGORY_CARBON
-	keybind_signal = COMSIG_KB_CARBON_TOGGLETHROWMODE_HIGH_DOWN
-	throw_mode = THROW_MODE_HIGH
-
 /datum/keybinding/carbon/cycle_intent
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Insert")

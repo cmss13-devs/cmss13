@@ -255,6 +255,9 @@
 		update_icon()
 		QDEL_IN(src, rand(125, 200))
 
+/obj/effect/alien/egg/attackby_secondary(obj/item/attack_item, mob/living/user, list/mods)
+	return attackby(attack_item, user, mods)
+
 /obj/effect/alien/egg/attackby(obj/item/W, mob/living/user)
 	if(health <= 0)
 		return

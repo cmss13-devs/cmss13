@@ -382,28 +382,27 @@
 		SEND_SIGNAL(hardpoint, COMSIG_GUN_INTERRUPT_FIRE) //abort fire when crew leaves
 
 /// Relays crew mouse release to active hardpoint.
-/obj/vehicle/multitile/proc/crew_mouseup(datum/source, atom/object, turf/location, control, params)
+/obj/vehicle/multitile/proc/crew_mouseup(datum/source, atom/object, turf/location, control, list/modifiers)
 	SIGNAL_HANDLER
 	var/obj/item/hardpoint/hardpoint = get_mob_hp(source)
 	if(!hardpoint)
 		return
 
-	hardpoint.stop_fire(source, object, location, control, params)
+	hardpoint.stop_fire(source, object, location, control, modifiers)
 
 /// Relays crew mouse movement to active hardpoint.
-/obj/vehicle/multitile/proc/crew_mousedrag(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
+/obj/vehicle/multitile/proc/crew_mousedrag(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, list/modifiers)
 	SIGNAL_HANDLER
 	var/obj/item/hardpoint/hardpoint = get_mob_hp(source)
 	if(!hardpoint)
 		return
 
-	hardpoint.change_target(source, src_object, over_object, src_location, over_location, src_control, over_control, params)
+	hardpoint.change_target(source, src_object, over_object, src_location, over_location, src_control, over_control, modifiers)
 
 /// Checks for special control keybinds, else relays crew mouse press to active hardpoint.
-/obj/vehicle/multitile/proc/crew_mousedown(datum/source, atom/object, turf/location, control, params)
+/obj/vehicle/multitile/proc/crew_mousedown(datum/source, atom/object, turf/location, control, list/modifiers)
 	SIGNAL_HANDLER
 
-	var/list/modifiers = params2list(params)
 	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5]) //don't step on examine, point, etc
 		return
 
@@ -423,7 +422,7 @@
 		to_chat(source, SPAN_WARNING("Please select an active hardpoint first."))
 		return
 
-	hardpoint.start_fire(source, object, location, control, params)
+	hardpoint.start_fire(source, object, location, control, modifiers)
 
 /obj/vehicle/multitile/proc/handle_player_entrance(mob/M)
 	if(!M || M.client == null)

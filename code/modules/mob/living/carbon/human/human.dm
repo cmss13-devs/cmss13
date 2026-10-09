@@ -1918,7 +1918,7 @@
 	HTML += "<tt>"
 	show_browser(src, HTML, "Update Flavor Text", "flavor_changes", width = 430, height = 430)
 
-/mob/living/carbon/human/throw_item(atom/target)
+/mob/living/carbon/human/throw_item(atom/target, throw_high = FALSE)
 	if(!throw_allowed)
 		var/obj/item/I = get_active_hand()
 		if(I.throwforce) // for hurty stuff only

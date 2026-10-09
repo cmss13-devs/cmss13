@@ -101,7 +101,7 @@
 		return
 	if (client && client.prefs && client.prefs.toggle_prefs & TOGGLE_DIRECTIONAL_ATTACK)
 		next_move += 0.25 SECONDS //Slight delay on missed directional attacks. If it finds a mob in the target tile, this will be overwritten by the attack delay.
-		return UnarmedAttack(get_step(src, Get_Compass_Dir(src, A)), tile_attack = TRUE, ignores_resin = TRUE)
+		return UnarmedAttack(get_step(src, Get_Compass_Dir(src, A)), FALSE, list(), tile_attack = TRUE, ignores_resin = TRUE)
 	return FALSE
 
 /**The parent proc, will default to UnarmedAttack behaviour unless overridden
@@ -142,6 +142,7 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 			activate_ability = right_pressed
 		if(XENO_ABILITY_CLICK_SHIFT)
 			activate_ability = left_pressed && shift_pressed
+
 
 	if(activate_ability && selected_ability)
 		if(istype(target, /atom/movable/screen))

@@ -292,6 +292,7 @@
 	if(slowed && !superslowed)
 		. += XENO_SLOWED_AMOUNT
 
+	. += CONFIG_GET(number/alien_delay)
 	var/list/L = list("speed" = .)
 	SEND_SIGNAL(src, COMSIG_XENO_MOVEMENT_DELAY, L)
 	. = L["speed"]

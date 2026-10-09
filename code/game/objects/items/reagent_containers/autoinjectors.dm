@@ -85,13 +85,13 @@
 				break
 			else if(length(reagents.reagent_list) > 1)
 				if(length(reagents.reagent_list) == 2)
-					if(chemical != reagents.reagent_list[reagents.reagent_list.len])
+					if(chemical != reagents.reagent_list[length(reagents.reagent_list)])
 						reagent_list_text += "[chemical.volume / uses_left]u [chemical.name]"
 					else
 						reagent_list_text += " and [chemical.volume / uses_left]u [chemical.name]"
 						break
 				else if(length(reagents.reagent_list) > 2)
-					if(chemical != reagents.reagent_list[reagents.reagent_list.len])
+					if(chemical != reagents.reagent_list[length(reagents.reagent_list)])
 						reagent_list_text += "[chemical.volume / uses_left]u [chemical.name], "
 					else
 						reagent_list_text += "and [chemical.volume / uses_left]u [chemical.name]"
@@ -123,7 +123,7 @@
 
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
 		if(reagents && reagents.reagent_list)
-			var/do_not_exceed_this_amount_of_doses = null
+			var/do_not_exceed_this_amount_of_doses
 			var/frequency_word
 			for(var/datum/reagent/chemical in reagents.reagent_list)
 				var/doses = (chemical.overdose) / (chemical.volume / uses_left)
@@ -655,6 +655,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison/get_autoinjector_info_text(mob/user, max_uses)
 	. = list()
+
 	if(reagents && reagents.reagent_list)
 		. += SPAN_WARNING("It has no label! You have no idea of what and how much it injects per dose!")
 	else
@@ -844,7 +845,7 @@
 //REAGENT POUCH AUTOINJECTORS
 /obj/item/reagent_container/hypospray/autoinjector/research/reagent_pouch
 	name = "reagent canister pouch autoinjector (15u)"
-	desc = "An autoinjector specifically designed to fit inside and refill only from pressurized reagent canister pouches with filled canisters inside."
+	desc = "A special autoinjector from research designed to fit inside and refill from a pressurized reagent canister pouch, provided it has a canister inside."
 	skilllock = SKILL_MEDICAL_MEDIC
 	volume = 90
 	amount_per_transfer_from_this = 15

@@ -13,6 +13,7 @@ BSQL_PROTECT_DATUM(/datum/entity/ticket)
 /datum/entity_meta/ticket
 	entity_type = /datum/entity/ticket
 	table_name = "ticket"
+	key_field = "round_id"
 	field_types = list(
 		"ticket"=DB_FIELDTYPE_BIGINT,
 		"action"=DB_FIELDTYPE_STRING_LARGE,

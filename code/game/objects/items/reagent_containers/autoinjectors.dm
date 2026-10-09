@@ -189,8 +189,6 @@
 	desc = "An autoinjector that injects a general-use medicine for slowly treating the four types of damage."
 	maptext_label = "Tc"
 
-/obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine/random_amount
-	cannot_refill = TRUE
 /obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine/random_amount/Initialize()
 	. = ..()
 	var/amount = rand(1, 6)
@@ -230,8 +228,6 @@
 	desc = "An autoinjector that injects a weak but effective painkiller for trauma."
 	maptext_label = "Tr"
 
-/obj/item/reagent_container/hypospray/autoinjector/standard/tramadol/random_amount
-	cannot_refill = TRUE
 /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol/random_amount/Initialize()
 	. = ..()
 	var/amount = rand(1, 6)
@@ -264,8 +260,6 @@
 	desc = "An autoinjector that injects a common burn-salving medicine."
 	maptext_label = "Kl"
 
-/obj/item/reagent_container/hypospray/autoinjector/standard/kelotane/random_amount
-	cannot_refill = TRUE
 /obj/item/reagent_container/hypospray/autoinjector/standard/kelotane/random_amount/Initialize()
 	. = ..()
 	var/amount = rand(1, 6)
@@ -290,8 +284,6 @@
 	desc = "An autoinjector that injects a common brute-mending medicine."
 	maptext_label = "Bi"
 
-/obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine/random_amount
-	cannot_refill = TRUE
 /obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine/random_amount/Initialize()
 	. = ..()
 	var/amount = rand(1, 6)

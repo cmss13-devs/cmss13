@@ -112,6 +112,9 @@
 			icon_state = "pinonfar"
 	spawn(5) .()
 
+/obj/item/device/pinpointer/advpinpointer/item_action_slot_check(mob/user, slot)
+	return FALSE // Do not add our verbs to mobs
+
 /obj/item/device/pinpointer/advpinpointer/verb/toggle_mode()
 	set category = "Object"
 	set name = "Toggle Pinpointer Mode"

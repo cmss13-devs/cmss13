@@ -83,7 +83,7 @@ GLOBAL_DATUM_INIT(collide_allows_movement_blocker_configuration, /datum/blocker_
 	// a direct to go towards the target turf and specify where the blockers are
 	// relative to the mover
 	var/turf/target_turf = get_step(run_loc_floor_bottom_left, NORTHEAST)
-	var/turf/mover_start_turf = get_step(target_turf, GLOB.reverse_dir[target_direction])
+	var/turf/mover_start_turf = get_step(target_turf, REVERSE_DIR(target_direction))
 	var/atom/movable/test_mover/mover = allocate(/atom/movable/test_mover, mover_start_turf)
 	mover.add_temp_pass_flags(PASS_ALL)
 	for (var/blocker_position in blocker_positions)

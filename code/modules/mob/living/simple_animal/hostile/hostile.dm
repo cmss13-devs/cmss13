@@ -153,7 +153,7 @@
 	if(prob(break_stuff_probability))
 		for(var/dir in GLOB.cardinals) // North, South, East, West
 			for(var/obj/structure/window/obstacle in get_step(src, dir))
-				if(obstacle.dir == GLOB.reverse_dir[dir]) // So that windows get smashed in the right order
+				if(obstacle.dir == REVERSE_DIR(dir)) // So that windows get smashed in the right order
 					obstacle.attack_animal(src)
 					return
 			var/obj/structure/obstacle = locate(/obj/structure, get_step(src, dir))

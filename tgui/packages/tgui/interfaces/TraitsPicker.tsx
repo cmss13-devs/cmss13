@@ -52,8 +52,9 @@ export const TraitsPicker = () => {
               ))}
               scrollable
               height="490px"
+              pb="45px"
             >
-              <Stack vertical height="430px">
+              <Stack vertical pl="2px">
                 <Stack.Item>
                   <Stack vertical>
                     {selected.traits.map((trait) => (
@@ -71,7 +72,7 @@ export const TraitsPicker = () => {
               title={`Added (${starting_points - trait_points}/${starting_points} points)`}
               fill
             >
-              <Stack vertical>
+              <Stack vertical pl="2px" pr="2px">
                 {traits.map((trait) => (
                   <Stack.Item key={trait.name}>
                     <RenderTrait trait={trait} />

@@ -12,7 +12,7 @@ GLOBAL_LIST_EMPTY(marine_officers)
 	var/mob/living/carbon/human/dead_leader
 	var/job_cannot_be_overridden = list(
 		JOB_XO,
-		JOB_CO
+		JOB_CO,
 	)
 
 	var/faction = FACTION_MARINE

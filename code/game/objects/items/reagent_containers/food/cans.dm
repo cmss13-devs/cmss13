@@ -25,7 +25,7 @@
 	icon = 'icons/obj/items/food/drinkcans.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/food_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/food_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/food_righthand.dmi',
 	)
 
 /obj/item/reagent_container/food/drinks/cans/attackby(obj/item/opening_tool as obj, mob/user as mob)

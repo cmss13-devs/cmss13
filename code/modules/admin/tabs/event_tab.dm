@@ -367,10 +367,17 @@
 		return
 
 	var/list/options = list(
-		"Weyland-Yutani", "High Command", "Provost", "Press",
-		"Colonial Marshal Bureau", "Union of Progressive Peoples",
-		"Three World Empire", "Colonial Liberation Front",
-		"Other", "Cancel")
+		"Weyland-Yutani",
+		"High Command",
+		"Provost",
+		"Press",
+		"Colonial Marshal Bureau",
+		"Union of Progressive Peoples",
+		"Three World Empire",
+		"Colonial Liberation Front",
+		"Other",
+		"Cancel",
+		)
 	var/answer = tgui_input_list(src, "Which kind of faxes would you like to see?", "Faxes", options)
 	switch(answer)
 		if("Weyland-Yutani")

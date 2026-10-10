@@ -37,9 +37,9 @@
 	var/list/dir_alerts[4] // 4 dirs, bitflags
 
 	// MUST be in same order as FIREDOOR_ALERT_*
-	var/list/ALERT_STATES=list(
+	var/list/ALERT_STATES = list(
 		"hot",
-		"cold"
+		"cold",
 	)
 
 /obj/structure/machinery/door/firedoor/Initialize()

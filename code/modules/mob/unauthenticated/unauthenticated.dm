@@ -179,9 +179,9 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 	unauthenticated_menu = new(client, "fullscreen_browser")
 	unauthenticated_menu.initialize(
 		assets = list(
-				get_asset_datum(/datum/asset/simple/tgui),
-				get_asset_datum(/datum/asset/simple/namespaced/chakrapetch)
-			)
+			get_asset_datum(/datum/asset/simple/tgui),
+			get_asset_datum(/datum/asset/simple/namespaced/chakrapetch),
+		)
 	)
 
 	tgui_interact(src)

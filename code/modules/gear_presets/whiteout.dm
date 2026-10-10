@@ -6,7 +6,19 @@
 	assignment = JOB_DS_CU
 	role_comm_title = "WO"
 	job_title = JOB_DS_CU
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_FRENCH, LANGUAGE_SCANDINAVIAN, LANGUAGE_SPANISH, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_TSL) //Synths after all.
+	languages = list(
+		LANGUAGE_ENGLISH,
+		LANGUAGE_JAPANESE,
+		LANGUAGE_CHINESE,
+		LANGUAGE_RUSSIAN,
+		LANGUAGE_GERMAN,
+		LANGUAGE_FRENCH,
+		LANGUAGE_SCANDINAVIAN,
+		LANGUAGE_SPANISH,
+		LANGUAGE_YAUTJA,
+		LANGUAGE_XENOMORPH,
+		LANGUAGE_TSL,
+		) //Synths after all.
 	skills = /datum/skills/everything //They are Synths, programmed for Everything.
 	minimap_icon = "whiteout"
 	minimap_background = "background_mp"

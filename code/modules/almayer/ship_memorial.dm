@@ -22,7 +22,8 @@
 	unacidable = TRUE
 	//Sound files that play when a hallucination pops up.
 	///Voicelines for male ghosts.
-	var/list/hallucination_sounds = list('sound/hallucinations/ghost_whisper_01.ogg',
+	var/list/hallucination_sounds = list(
+		'sound/hallucinations/ghost_whisper_01.ogg',
 		'sound/hallucinations/ghost_whisper_02.ogg',
 		'sound/hallucinations/ghost_whisper_03.ogg',
 		'sound/hallucinations/ghost_whisper_04.ogg',
@@ -34,10 +35,11 @@
 		'sound/hallucinations/ghost_whisper_10.ogg',
 		'sound/hallucinations/ghost_whisper_11.ogg',
 		'sound/hallucinations/ghost_whisper_12.ogg',
-		'sound/hallucinations/ghost_whisper_13.ogg'
-		)
+		'sound/hallucinations/ghost_whisper_13.ogg',
+	)
 	///Voicelines for female ghosts.
-	var/list/hallucination_sounds_female = list('sound/hallucinations/ghost_whisper_female_01.ogg',
+	var/list/hallucination_sounds_female = list(
+		'sound/hallucinations/ghost_whisper_female_01.ogg',
 		'sound/hallucinations/ghost_whisper_female_02.ogg',
 		'sound/hallucinations/ghost_whisper_female_03.ogg',
 		'sound/hallucinations/ghost_whisper_female_04.ogg',
@@ -51,8 +53,8 @@
 		'sound/hallucinations/ghost_whisper_female_12.ogg',
 		'sound/hallucinations/ghost_whisper_female_13.ogg',
 		'sound/hallucinations/ghost_whisper_female_14.ogg',
-		'sound/hallucinations/ghost_whisper_female_15.ogg'
-		)
+		'sound/hallucinations/ghost_whisper_female_15.ogg',
+	)
 	///All mobs that went through a squad flashback.
 	var/list/went_through_flashback = list()
 	///Weakrefs of mobs of the dogtags that are placed on the slab.

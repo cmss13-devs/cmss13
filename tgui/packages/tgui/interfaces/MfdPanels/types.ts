@@ -51,6 +51,7 @@ export type MedevacContext = {
 
 export type FiremissionContext = {
   firemission_data: Array<CasFiremission>;
+  firemission_max_length: number;
 };
 
 export type SentrySpec = {
@@ -104,6 +105,7 @@ export type CasFiremission = {
 
 export type MapProps = {
   tactical_map_ref: string;
+  ceiling_overlay_enabled: boolean;
 };
 
 export const dirMap = (dir) => {

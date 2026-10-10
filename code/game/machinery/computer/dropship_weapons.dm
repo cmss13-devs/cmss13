@@ -35,6 +35,11 @@
 	var/registered = FALSE
 
 	var/minimap_flag = MINIMAP_FLAG_USCM
+	/// tacmap embedded in the console's ui
+	var/datum/tacmap_holder/tacmap_holder
+	/// client ceiling layers used by the user viewing this console.
+	var/list/atom/movable/screen/minimap_ceiling_layer/ceiling_layers = list()
+	var/obj/effect/overlay/temp/dropship_reticle/direct_fire_reticle = null
 
 /obj/structure/machinery/computer/dropship_weapons/New()
 	..()
@@ -49,16 +54,39 @@
 
 	// camera setup
 	AddComponent(/datum/component/camera_manager)
-	AddComponent(/datum/component/tacmap, has_drawing_tools = FALSE, minimap_flag = minimap_flag, has_update = FALSE)
+	AddComponent(/datum/component/tacmap, has_drawing_tools = FALSE, minimap_flag = minimap_flag, has_update = TRUE)
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 /obj/structure/machinery/computer/dropship_weapons/Destroy()
-	. = ..()
+	QDEL_LIST_ASSOC_VAL(ceiling_layers)
+	QDEL_NULL(tacmap_holder)
+	if(selected_cas_signal)
+		UnregisterSignal(selected_cas_signal, COMSIG_PARENT_QDELETING)
+		selected_cas_signal = null
+	selected_equipment = null
+	clear_direct_fire_reticle()
 	QDEL_NULL(firemission_envelope)
 	UnregisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED)
+	. = ..()
+
+/obj/structure/machinery/computer/dropship_weapons/proc/clear_direct_fire_reticle(atom/movable/screen/plane_master/above_lighting = null)
+	if(!direct_fire_reticle)
+		return
+	if(above_lighting)
+		above_lighting.vis_contents -= direct_fire_reticle
+	QDEL_NULL(direct_fire_reticle)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/camera_mapname_update(source, value)
 	camera_map_name = value
+
+/obj/structure/machinery/computer/dropship_weapons/proc/unregister_tacmap(mob/user)
+	if(!tacmap_holder)
+		return
+
+	var/atom/movable/screen/minimap_ceiling_layer/ceiling_layer = ceiling_layers[user]
+	user.client?.clear_map(tacmap_holder.map_ref)
+	QDEL_NULL(ceiling_layer)
+	ceiling_layers -= user
 
 /obj/structure/machinery/computer/dropship_weapons/on_unset_interaction(mob/user)
 	. = ..()
@@ -149,6 +177,24 @@
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
+		var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+		if(tacmap_component)
+			if(!tacmap_holder)
+				var/list/ground_zlevels = SSmapping.levels_by_trait(ZTRAIT_GROUND)
+				if(length(ground_zlevels))
+					tacmap_holder = new(null, ground_zlevels[1], minimap_flag, drawing = TRUE, popup = FALSE, uncached = TRUE)
+					tacmap_component.is_embedded = TRUE
+			if(tacmap_holder?.map)
+				var/matrix/transform = matrix()
+				transform.Translate(-16, 14)
+				tacmap_holder.map.transform = transform
+				tacmap_holder.map.del_on_map_removal = FALSE
+				user.client.register_map_obj(tacmap_holder.map)
+				var/atom/movable/screen/minimap_ceiling_layer/ceiling_layer = new(null, tacmap_holder.map_ref, tacmap_holder.map.target, transform)
+				ceiling_layers[user] = ceiling_layer
+				user.client.register_map_obj(ceiling_layer)
+			else
+				QDEL_NULL(tacmap_holder)
 		SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)
 		ui = new(user, src, "DropshipWeaponsConsole", "Weapons Console")
 		ui.open()
@@ -157,8 +203,9 @@
 	. = ..()
 
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
-	tacmap_component.on_unset_interaction(user)
-	tacmap_component.ui_close(user)
+	if(tacmap_component)
+		tacmap_component.on_unset_interaction(user)
+	unregister_tacmap(user)
 	SEND_SIGNAL(src, COMSIG_CAMERA_UNREGISTER_UI, user)
 	simulation.stop_watching(user)
 
@@ -179,6 +226,8 @@
 /obj/structure/machinery/computer/dropship_weapons/ui_static_data(mob/user)
 	. = list()
 	.["camera_map_ref"] = camera_map_name
+	if(tacmap_holder)
+		.["tactical_map_ref"] = tacmap_holder.map_ref
 
 /obj/structure/machinery/computer/dropship_weapons/ui_data(mob/user)
 	. = list()
@@ -237,6 +286,7 @@
 	if(firemission_envelope)
 		.["can_launch_firemission"] = !!selected_firemission && dropship.mode == SHUTTLE_CALL && firemission_envelope.stat != FIRE_MISSION_STATE_IDLE
 		.["firemission_data"] = get_firemission_data(user)
+		.["firemission_max_length"] = firemission_envelope.fire_length
 		.["firemission_state"] = firemission_envelope.stat
 		.["firemission_offset"] = firemission_envelope.recorded_offset
 		.["firemission_message"] = firemission_envelope.firemission_status_message()
@@ -245,6 +295,7 @@
 		.["firemission_selected_laser"] = firemission_envelope.recorded_loc ? firemission_envelope.recorded_loc.get_name() : "NOT SELECTED"
 
 	.["configuration"] = configuration
+	.["ceiling_overlay_enabled"] = ceiling_layers[user]?.enabled
 	.["dummy_mode"] = simulation.dummy_mode
 	.["worldtime"] = world.time
 	.["nextdetonationtime"] = simulation.detonation_cooldown
@@ -260,6 +311,13 @@
 
 	var/mob/user = ui.user
 	switch(action)
+		if("toggle-ceiling-overlay")
+			var/atom/movable/screen/minimap_ceiling_layer/ceiling_layer = ceiling_layers[user]
+			if(!ceiling_layer)
+				return FALSE
+			ceiling_layer.set_enabled(!ceiling_layer.enabled)
+			return TRUE
+
 		if("button_push")
 			playsound(src, get_sfx("terminal_button"), 25, FALSE)
 			return FALSE
@@ -403,6 +461,11 @@
 			ui_create_firemission(user, name, length_n)
 			return TRUE
 
+		if("firemission-set-length")
+			var/firemission_tag = text2num(params["firemission_tag"])
+			var/firemission_length = text2num(params["firemission_length"])
+			return ui_set_firemission_length(user, firemission_tag, firemission_length)
+
 		if("firemission-delete")
 			var/name = params["firemission_name"]
 			ui_delete_firemission(user, name)
@@ -512,13 +575,6 @@
 			RegisterSignal(linked_shuttle.paradrop_signal, COMSIG_PARENT_QDELETING, PROC_REF(clear_locked_turf_and_lock_aft))
 			RegisterSignal(linked_shuttle, COMSIG_SHUTTLE_SETMODE, PROC_REF(clear_locked_turf_and_lock_aft))
 			return TRUE
-		if("mapview")
-			var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
-			if(user in tacmap_component.interactees)
-				tacmap_component.on_unset_interaction(user)
-			else
-				tacmap_component.show_tacmap(user)
-
 /obj/structure/machinery/computer/dropship_weapons/proc/open_aft_for_paradrop()
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttle_tag)
 	if(!shuttle || !shuttle.paradrop_signal || shuttle.mode != SHUTTLE_CALL)
@@ -561,9 +617,21 @@
 	camera_area_equipment = null
 	if(firemission_envelope)
 		firemission_envelope.untrack_object()
+	if(selected_cas_signal)
+		UnregisterSignal(selected_cas_signal, COMSIG_PARENT_QDELETING)
+		selected_cas_signal = null
 
 	var/datum/cas_signal/target = get_cas_signal(target_ref)
 	camera_target_id = target_ref
+	clear_direct_fire_reticle()
+
+	if(target && target.signal_loc)
+		selected_cas_signal = target
+		RegisterSignal(selected_cas_signal, COMSIG_PARENT_QDELETING, PROC_REF(on_cas_signal_deleted))
+		var/turf/target_turf = get_turf(target.signal_loc)
+		if(target_turf)
+			direct_fire_reticle = new /obj/effect/overlay/temp/dropship_reticle(target_turf)
+
 	if(!target)
 		SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 		return
@@ -575,6 +643,15 @@
 		cam_height = cam_height * 1.5
 
 	SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET, target.linked_cam, cam_width, cam_height)
+
+/obj/structure/machinery/computer/dropship_weapons/proc/on_cas_signal_deleted(datum/cas_signal/source)
+	SIGNAL_HANDLER
+	if(source != selected_cas_signal)
+		return
+	selected_cas_signal = null
+	camera_target_id = null
+	clear_direct_fire_reticle()
+	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_screen_mode()
 	. = 0
@@ -738,7 +815,7 @@
 		if(!DEW.ammo_equipped.can_fire_at(TU, weapon_operator))
 			return FALSE
 
-		DEW.open_fire(LT.signal_loc)
+		DEW.open_fire(LT.signal_loc, weapon_operator)
 		return TRUE
 	return FALSE
 
@@ -751,7 +828,7 @@
 		to_chat(weapon_operator, SPAN_WARNING("Name too short (at least 1 symbols)."))
 		return FALSE
 	// Check length
-	if(!firemission_length)
+	if(firemission_length < 1 || firemission_length != round(firemission_length))
 		to_chat(weapon_operator, SPAN_WARNING("Incorrect input format."))
 		return FALSE
 	if(firemission_length > firemission_envelope.fire_length)
@@ -767,6 +844,27 @@
 			return FALSE
 	//everything seems to be fine now
 	firemission_envelope.generate_mission(firemission_name, firemission_length)
+	return TRUE
+
+/obj/structure/machinery/computer/dropship_weapons/proc/ui_set_firemission_length(mob/weapon_operator, firemission_tag, firemission_length)
+	if(!skillcheck(weapon_operator, SKILL_PILOT, SKILL_PILOT_TRAINED))
+		to_chat(weapon_operator, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
+		return FALSE
+	if(firemission_envelope.stat != FIRE_MISSION_STATE_IDLE)
+		to_chat(weapon_operator, SPAN_WARNING("Vehicle has to be idle to allow Fire Mission editing and creation."))
+		return FALSE
+	if(firemission_tag < 1 || firemission_tag > length(firemission_envelope.missions))
+		to_chat(weapon_operator, SPAN_WARNING("Fire Mission ID corrupted or already deleted."))
+		return FALSE
+	if(firemission_length < 1 || firemission_length != round(firemission_length))
+		to_chat(weapon_operator, SPAN_WARNING("Incorrect input format."))
+		return FALSE
+	if(firemission_length > firemission_envelope.fire_length)
+		to_chat(weapon_operator, SPAN_WARNING("Fire Mission is longer than allowed by this vehicle."))
+		return FALSE
+
+	var/datum/cas_fire_mission/firemission = firemission_envelope.missions[firemission_tag]
+	firemission.mission_length = firemission_length
 	return TRUE
 
 /obj/structure/machinery/computer/dropship_weapons/proc/ui_delete_firemission(mob/weapon_operator, firemission_tag)
@@ -855,7 +953,7 @@
 		source.y + offset_y,
 		source.z
 	)
-	var/result = firemission_envelope.execute_firemission(recorded_loc, target, dir, fmId)
+	var/result = firemission_envelope.execute_firemission(recorded_loc, target, dir, fmId, user)
 	if(result != FIRE_MISSION_ALL_GOOD)
 		to_chat(user, SPAN_WARNING("Screen beeps with an error: [firemission_envelope.mission_error]"))
 		return FALSE

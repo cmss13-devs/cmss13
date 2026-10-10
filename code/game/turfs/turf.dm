@@ -27,6 +27,7 @@
 /turf
 	icon = 'icons/turf/floors/floors.dmi'
 	plane = GAME_PLANE
+	datum_flags = DF_STATIC_OBJECT
 
 	///Used by floors to indicate the floor is a tile (otherwise its plating)
 	var/intact_tile = TRUE

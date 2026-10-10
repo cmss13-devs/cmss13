@@ -50,6 +50,7 @@ GLOBAL_LIST_INIT(note_categories, list("Admin", "Merit", "Whitelist"))
 #define ARES_MARK(user) "(<a href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];AresMark=[REF(user)]'>MARK</a>)"
 #define ARES_REPLY(user, ref) "(<a href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];AresReply=[REF(user)];AresRef=[ref]'>RPLY</a>)"
 #define ADMIN_VIEW_BUG_REPORT(datum) "<a href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];view_bug_report=[REF(datum)]'>VIEW REPORT</a>"
+#define ADMIN_LUAVIEW_CHUNK(state, log_index) "(<a href='byond://?_src_=holder;[HrefToken(forceGlobal = TRUE)];lua_state=[REF(state)];log_index=[log_index]'>VIEW CODE</a>)"
 
 /atom/proc/Admin_Coordinates_Readable(area_name, admin_jump_ref)
 	var/turf/T = get_turf(src)

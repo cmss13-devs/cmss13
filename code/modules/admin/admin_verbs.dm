@@ -231,6 +231,7 @@ GLOBAL_LIST_INIT(admin_verbs_debug_advanced, list(
 	/client/proc/callproc_datum,
 	/client/proc/callproc,
 	/client/proc/SDQL2_query,
+	/client/proc/open_lua_editor
 ))
 
 GLOBAL_LIST_INIT(clan_verbs, list(

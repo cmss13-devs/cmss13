@@ -214,7 +214,7 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 
 	if(world.time > nextHumanBioscan)
 		GLOB.last_human_bioscan = world.time
-		GLOB.bioscan_data.ares_bioscan(FALSE)
+		GLOB.bioscan_data.ares_bioscan(istype(src, /datum/game_mode/colonialmarines/forward_base))
 
 
 /datum/game_mode/proc/count_xenos(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED, ZTRAIT_MARINE_MAIN_SHIP)))

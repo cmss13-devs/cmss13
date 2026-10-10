@@ -19,6 +19,10 @@ endmap
 map bigredv2
 endmap
 
+map bigred_forward_base
+	voteweight 0
+endmap
+
 map prison_station_fop
 	disabled
 endmap
@@ -50,11 +54,19 @@ endmap
 map kutjevo
 endmap
 
+map kutjevo_forward_base
+	voteweight 0
+endmap
+
 map sorokyne_strata
 	minplayers 110
 endmap
 
 map lv522_chances_claim
+endmap
+
+map lv522_chances_claim_forward_base
+	voteweight 0
 endmap
 
 map lv759_hybrisa_prospera

@@ -539,7 +539,7 @@
 	if(hive.hivenumber != XENO_HIVE_NORMAL)
 		remove_verb(src, /mob/living/carbon/xenomorph/verb/view_tacmaps)
 
-	if(hive.hivenumber == XENO_HIVE_FORSAKEN)
+	if(hive.see_humans_on_tacmap)
 		update_minimap_see_humans()
 	else
 		minimap_ref = WEAKREF(new minimap_type(hive_number=hive.hivenumber))
@@ -975,7 +975,7 @@
 	if(!QDELETED(organ))
 		organ.hivenumber = new_hivenumber
 
-	if(new_hivenumber == XENO_HIVE_FORSAKEN)
+	if(new_hive.see_humans_on_tacmap)
 		update_minimap_see_humans()
 
 	generate_name()

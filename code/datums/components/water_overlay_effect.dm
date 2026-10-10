@@ -105,7 +105,10 @@
 	var/turf/open/gm/moved_to_turf = get_turf(parent_source)
 	var/obj/effect/blocker/water/water_blocker = locate(/obj/effect/blocker/water/) in moved_to_turf.contents
 
-	if(moved_to_turf.depth >= WATER_DEPTH_LAND || (moved_to_turf.covered && water_blocker == null) || (moved_to_turf.covered && water_blocker && !water_blocker.dispersing))
+	if(moved_to_turf.depth >= WATER_DEPTH_LAND || \
+	(moved_to_turf.covered && water_blocker == null) || \
+	(moved_to_turf.covered && water_blocker && !water_blocker.dispersing) || \
+	moved_to_turf.turf_flags & TURF_CATWALKED)
 		qdel(src)
 		return
 

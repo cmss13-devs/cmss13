@@ -14,8 +14,9 @@
 		return ELEMENT_INCOMPATIBLE
 
 	var/turf/open/open_target = target
-	if(open_target.depth >= WATER_DEPTH_LAND || open_target.covered)
-		return ELEMENT_INCOMPATIBLE
+	if(open_target.depth >= WATER_DEPTH_LAND || open_target.covered || open_target.turf_flags & TURF_CATWALKED)
+		open_target.RemoveElement(/datum/element/water_turf)
+		return
 
 	RegisterSignal(open_target, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
 	RegisterSignal(open_target, COMSIG_TURF_LAUNCHED_LANDING, PROC_REF(on_landed_on))

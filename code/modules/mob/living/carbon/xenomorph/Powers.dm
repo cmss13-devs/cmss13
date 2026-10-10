@@ -15,10 +15,14 @@
 				if(total_resin_cost > plasma_max && (XENO_RESIN_BASE_COST + resin_construct.cost) < plasma_max)
 					total_resin_cost = plasma_max
 
+	var/turf/current_turf = get_turf(target)
+
 	if(action_busy && !can_stack_builds)
 		return SECRETE_RESIN_FAIL
 	if(!check_state())
 		return SECRETE_RESIN_FAIL
+	for(var/obj/effect/alien/resin/design/cost_node/cn in current_turf.contents)
+		total_resin_cost -= (total_resin_cost / 2)
 	if(use_plasma && !check_plasma(total_resin_cost))
 		return SECRETE_RESIN_FAIL
 	if(SSinterior.in_interior(src))
@@ -30,8 +34,6 @@
 		if(current_amount >= resin_construct.max_per_xeno)
 			to_chat(src, SPAN_XENOWARNING("We've already built the maximum possible structures we can!"))
 			return SECRETE_RESIN_FAIL
-
-	var/turf/current_turf = get_turf(target)
 
 	if(extra_build_dist != IGNORE_BUILD_DISTANCE && get_dist(src, target) > src.caste.max_build_dist + extra_build_dist) // Hivelords and eggsac carriers have max_build_dist of 1, drones and queens 0
 		to_chat(src, SPAN_XENOWARNING("We can't build from that far!"))
@@ -102,9 +104,6 @@
 
 	for(var/obj/effect/alien/resin/design/speed_node/sn in current_turf.contents)
 		wait_time -= ((resin_construct.build_time * caste.build_time_mult) / 2)
-
-	for(var/obj/effect/alien/resin/design/cost_node/cn in current_turf.contents)
-		total_resin_cost -= (total_resin_cost / 2)
 
 	if(!resin_construct.can_build_here(current_turf, src))
 		return SECRETE_RESIN_FAIL

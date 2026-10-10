@@ -162,8 +162,6 @@
 // Defender Headbutt
 /datum/action/xeno_action/activable/headbutt/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/fendy = owner
-	if(!istype(fendy))
-		return
 
 	if(!isxeno_human(target_atom) || fendy.can_not_harm(target_atom))
 		return
@@ -174,9 +172,6 @@
 	if(!action_cooldown_check())
 		return
 
-	if(!check_and_use_plasma_owner())
-		return
-
 	if(fendy.fortify && !usable_while_fortified)
 		to_chat(fendy, SPAN_XENOWARNING("We cannot use headbutt while fortified."))
 		return
@@ -185,16 +180,21 @@
 	if(carbone.stat == DEAD)
 		return
 
+	if(HAS_TRAIT(fendy, TRAIT_LAUNCHED))
+		return
+
 	var/distance = get_dist(fendy, carbone)
 	var/max_distance = 3 - (fendy.crest_defense * 2)
-
 	if(distance > max_distance)
 		return
 
-	if(!fendy.crest_defense)
-		fendy.throw_atom(get_step_towards(carbone, fendy), 3, SPEED_SLOW, fendy, tracking=TRUE)
-	if(!fendy.Adjacent(carbone))
+	if(!check_and_use_plasma_owner())
 		return
+
+	if(!fendy.crest_defense && distance > 1)
+		fendy.throw_atom(get_step_towards(carbone, fendy), 3, SPEED_SLOW, fendy, tracking=TRUE)
+		if(!fendy.Adjacent(carbone))
+			return
 
 	carbone.last_damage_data = create_cause_data(fendy.caste_type, fendy)
 	fendy.visible_message(SPAN_XENOWARNING("[fendy] rams [carbone] with its armored crest!"),

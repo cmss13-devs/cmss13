@@ -2684,6 +2684,10 @@
 	layer = ABOVE_MOB_LAYER
 	health = 3000
 
+/obj/structure/prop/hybrisa/misc/concretestatue/scrawled
+	desc = "A decorative statue with the Weyland-Yutani 'Wings' adorned on it. Someone has painted the words 'Wheres God?' on it. You hope its just paint..."
+	icon_state = "concretesculpture_scrawled"
+
 /obj/structure/prop/hybrisa/misc/detonator
 	name = "detonator"
 	desc = "A detonator for explosives, armed and ready."

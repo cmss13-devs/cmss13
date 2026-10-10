@@ -359,6 +359,9 @@
 			creature.emote("gasp")
 	return TRUE
 
+/obj/effect/particle_effect/smoke/mustard/see_through
+	opacity = FALSE
+
 /////////////////////////////////////////////
 // Phosphorus Gas
 /////////////////////////////////////////////

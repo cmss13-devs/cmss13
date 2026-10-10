@@ -529,9 +529,7 @@
 /turf/closed/wall,
 /area/varadero/interior/dock_control)
 "ahD" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /obj/item/stack/rods{
 	pixel_x = 10;
 	pixel_y = -4
@@ -960,9 +958,7 @@
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
 	},
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -1;
 	pixel_y = 9;
@@ -972,14 +968,12 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
 "aAC" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pool)
 "aAX" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
-	name = "LZ2: Palm Airfield"
+	name = "LZ2: NE: Palm Airfield"
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
@@ -1268,9 +1262,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/security)
 "aIm" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/shuttle/red,
 /area/varadero/interior_protected/vessel)
 "aIq" = (
@@ -3077,9 +3069,7 @@
 /obj/structure/bed/stool{
 	icon_state = "stool_alt"
 	},
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
 "chs" = (
@@ -6659,9 +6649,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/wood,
 /area/varadero/interior/beach_bar)
 "fhh" = (
@@ -7614,9 +7602,7 @@
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior/caves/north_research)
 "fUC" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -7792,9 +7778,7 @@
 /turf/open/floor/shiva/greenfull/west,
 /area/varadero/interior/medical)
 "fZP" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/caves/east)
 "fZQ" = (
@@ -10019,9 +10003,7 @@
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/electrical)
 "hVi" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
 "hVL" = (
@@ -10140,9 +10122,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/eastbeach)
 "ibi" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 25000
 	},
@@ -10429,9 +10409,7 @@
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 25000
 	},
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/caves/east)
@@ -11467,9 +11445,7 @@
 /area/varadero/exterior/pontoon_beach)
 "iZT" = (
 /obj/structure/machinery/power/apc/no_power/west,
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/shiva/blue,
 /area/varadero/interior/maintenance)
 "jab" = (
@@ -16480,9 +16456,7 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/comms3)
 "noR" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
 "npi" = (
@@ -17889,15 +17863,11 @@
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
 	},
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/shiva/blue/east,
 /area/varadero/interior/maintenance)
 "oBq" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/monsoon)
 "oBs" = (
@@ -17942,7 +17912,6 @@
 /area/varadero/interior/laundry)
 "oCi" = (
 /obj/item/shard{
-	icon_state = "medium";
 	name = "ice shard"
 	},
 /turf/open/floor/shiva/multi_tiles,
@@ -18424,7 +18393,7 @@
 /area/varadero/interior/security)
 "oXw" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "LZ1: Pontoon Dock"
+	name = "LZ1: NW: Pontoon Dock"
 	},
 /turf/open/floor/plating/icefloor,
 /area/varadero/exterior/lz1_near)
@@ -21617,9 +21586,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/electrical)
 "rpN" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/shiva/blue/north,
 /area/varadero/interior/maintenance)
 "rpT" = (
@@ -22687,9 +22654,7 @@
 /turf/open/floor/shiva/snow_mat,
 /area/varadero/interior/maintenance)
 "sfj" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/caves/east)
 "sfs" = (
@@ -23304,9 +23269,7 @@
 /area/varadero/interior/hall_N)
 "sCp" = (
 /obj/item/stack/sheet/metal,
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/caves/east)
@@ -23858,9 +23821,7 @@
 /obj/structure/barricade/handrail/wire{
 	layer = 3.1
 	},
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pool)
 "tcX" = (
@@ -25610,9 +25571,7 @@
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 25000
 	},
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
 "uEz" = (
@@ -26478,9 +26437,7 @@
 /area/varadero/exterior/lz1_near)
 "vmY" = (
 /obj/item/stack/rods,
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /obj/item/stack/sheet/metal,
 /turf/open/shuttle/red,
 /area/varadero/interior_protected/vessel)
@@ -26953,9 +26910,7 @@
 /area/varadero/exterior/pontoon_beach)
 "vEi" = (
 /obj/structure/window_frame/colony/reinforced,
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/caves/east)
@@ -26985,9 +26940,7 @@
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
 	},
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
@@ -27003,9 +26956,7 @@
 /obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
 	},
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pool)
 "vGQ" = (

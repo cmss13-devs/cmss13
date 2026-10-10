@@ -1,24 +1,24 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/closed/wall/shiva/prefabricated/pink,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "l" = (
 /turf/open/auto_turf/snow/layer4,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "s" = (
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "z" = (
 /turf/open/auto_turf/snow/layer3,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "B" = (
 /obj/item/weapon/gun/boltaction,
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "E" = (
 /obj/effect/spawner/random/tool,
 /turf/open/auto_turf/ice/layer1,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 
 (1,1,1) = {"
 s

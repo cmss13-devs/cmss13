@@ -190,3 +190,30 @@
 	name = "Ikit"
 	desc = "An albino rat with a tiny collar around it's neck, it must belong to someone. Hope it doesn't have some sort of genetically engineered disease or something..."
 	icon_state = "rat_white"
+
+// Frog
+
+/obj/item/holder/frog
+	name = "frog"
+	desc = "A small amphibian."
+	icon = 'icons/mob/animal.dmi'
+	icon_state = "frog_green"
+	item_state = "frog_green"
+	item_state_slots = list(WEAR_HEAD = "frog_green")
+	w_class = SIZE_TINY
+	flags_equip_slot = SLOT_EAR|SLOT_HEAD
+
+/obj/item/holder/frog/green
+	icon_state = "frog_green"
+	item_state = "frog_green"
+	item_state_slots = list(WEAR_HEAD = "frog_green")
+
+/obj/item/holder/frog/blue
+	icon_state = "frog_blue"
+	item_state = "frog_blue"
+	item_state_slots = list(WEAR_HEAD = "frog_blue")
+
+/obj/item/holder/frog/brown
+	icon_state = "frog_brown"
+	item_state = "frog_brown"
+	item_state_slots = list(WEAR_HEAD = "frog_brown")

@@ -1,0 +1,13 @@
+[
+    {
+        "type": "map_sprinkle",
+        "path": "sprinkles/"
+    },
+	{
+	"type": "map_insert",
+	"landmark": "clfswamp",
+	"chance": 1.0,
+	"path": "standalone/clfswamp.dmm",
+	"when": { "lvevent": "clfswamp" }
+	}
+]

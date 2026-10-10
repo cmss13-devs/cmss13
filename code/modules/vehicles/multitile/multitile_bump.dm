@@ -603,6 +603,20 @@
 	var/mob_moved = FALSE
 	var/mob_knocked_down = is_mob_incapacitated()
 
+	// A front hit scoops the marine onto the hull instead of leaving them stuck underneath, only a stun.
+	var/obj/vehicle/multitile/tank/tank_rammer = istype(V, /obj/vehicle/multitile/tank) ? V : null
+	var/front_hit = tank_rammer && (get_dir(tank_rammer, src) == tank_rammer.dir)
+	if(front_hit)
+		// Captured before apply_effect(WEAKEN) drops whatever's in both hands from the knockdown.
+		var/obj/item/prev_l_hand = l_hand
+		var/obj/item/prev_r_hand = r_hand
+		apply_effect(2, WEAKEN)
+		// Deferred a tick, the tank's locs don't include this tile yet so mark_on_top() would reject it.
+		addtimer(CALLBACK(tank_rammer, TYPE_PROC_REF(/obj/vehicle/multitile/tank, mark_on_top_after_ram), src, prev_l_hand, prev_r_hand), 0)
+		visible_message(SPAN_DANGER("\The [V] scoops up \the [src]!"), SPAN_DANGER("\The [V] scoops you up!"))
+		log_attack("[key_name(src)] was scooped up by [key_name(driver)] with [V].")
+		return TRUE
+
 	if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
 		if(!mob_knocked_down)
 			var/direction_taken = pick(45, 0, -45)
@@ -804,8 +818,23 @@
 		return . = ..()
 
 //CRUSHER CHARGE COLLISION
-//Crushers going top speed can charge into & move vehicles with broken/without locmotion module
+/**
+ * Handles something bumping into this vehicle.
+ * Does nothing for our own riders. Crushers going top speed can charge into & move vehicles with
+ * broken/without locomotion module. Otherwise, attempts to climb the bumper onto the hull
+ * (climb_onto(), multitile_riding.dm).
+ */
 /obj/vehicle/multitile/Collided(atom/A)
+	if(_is_our_rider(A))
+		return
+
+	if(!ismob(A))
+		if(isobj(A))
+			var/obj/O = A
+			if(O.buckled_mob)
+				Collided(O.buckled_mob)
+		return ..()
+
 	. = ..()
 
 	if(iscrusher(A))
@@ -826,3 +855,24 @@
 		log_attack("\The [src] was rammed [do_move ? "and pushed " : " "]by [key_name(C)].")
 		playsound(loc, 'sound/effects/metal_crash.ogg', 35)
 		interior_crash_effect()
+		return
+
+	// Anything else walking into the hull is trying to climb onto it.
+	if(!isliving(A))
+		return
+	var/mob/living/M = A
+	if(M.action_busy)
+		return
+	if(M.pulledby || HAS_TRAIT(M, TRAIT_LAUNCHED))
+		return
+	var/turf/facing_turf = get_step(get_turf(M), M.dir)
+	if(!facing_turf)
+		return
+	if(M.resting)
+		// A resting mob crawling into/under the vehicle should just slide through, never become a tracked rider here.
+		M.forceMove(facing_turf)
+		return
+	if(get_turf(M) in locs)
+		return
+
+	climb_onto(M, facing_turf)

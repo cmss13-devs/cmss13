@@ -41,6 +41,11 @@
 	// List of verbs to give when a mob is seated in each seat type
 	var/list/seat_verbs
 
+	/// Every mob currently riding atop this vehicle's hull. Maintained by mark_on_top()/clear_on_top().
+	var/list/on_top_mobs = list()
+	/// Every obj currently sitting atop this vehicle's hull. Maintained by obj_mark_on_top()/obj_clear_on_top().
+	var/list/on_top_obj = list()
+
 	move_delay = VEHICLE_SPEED_STATIC
 	// The next world.time when the vehicle can move
 	var/next_move = 0
@@ -48,6 +53,8 @@
 	var/move_momentum = 0
 	// How much momentum the vehicle can achieve
 	var/move_max_momentum = 5
+	/// Fraction of move_max_momentum above which this vehicle can't safely carry riders. 0 means always desant-able (tank, APC).
+	var/desant_momentum_cap = 0
 	// How much momentum is lost when turning/rotating the vehicle
 	var/move_turn_momentum_loss_factor = 0.5
 	// Determines how much slower the vehicle is when it lacks its full momentum
@@ -216,6 +223,15 @@
 		return
 
 /obj/vehicle/multitile/Destroy()
+	for(var/mob/living/M in on_top_mobs.Copy())
+		if(M)
+			clear_on_top(M)
+	for(var/obj/O in on_top_obj.Copy())
+		if(O)
+			obj_clear_on_top(O)
+	on_top_mobs.Cut()
+	on_top_obj.Cut()
+
 	if(!QDELETED(interior))
 		QDEL_NULL(interior)
 

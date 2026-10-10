@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - server: "Many cmdb tables now have an index"

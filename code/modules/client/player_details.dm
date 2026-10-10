@@ -8,12 +8,9 @@ GLOBAL_LIST_EMPTY(player_details) // ckey -> /datum/player_details
 	var/list/played_names = list() //List of names this key played under this round
 	var/orientation_leaflet_opened = FALSE
 	var/byond_version = "Unknown"
-	/// The descriminator for larva pool ordering: Generally set to timeofdeath except for facehuggers/admin z-level play
-	var/larva_pool_time
-
-/datum/player_details/New()
-	larva_pool_time = world.time
-	return ..()
+	/// The descriminator for larva pool ordering: Generally set to timeofdeath except for facehuggers/admin z-level play.
+	/// Will be null if the player hasn't ever observed or died yet.
+	var/larva_pool_time = null
 
 /proc/log_played_names(ckey, ...)
 	if(!ckey)

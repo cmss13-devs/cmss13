@@ -137,6 +137,10 @@
 		if(81 to 90)
 			overlays += image(icon, icon_state = "+fuelpump_health_90")
 
+	if(SShijack.stable_orbit)
+		icon_state = "fuelpump_off"
+		return
+
 	if(SShijack.hijack_status < HIJACK_OBJECTIVES_STARTED)
 		if(stat & NOPOWER)
 			icon_state = "fuelpump_off"
@@ -163,6 +167,10 @@
 	stat &= ~NOPOWER // Avoid caring about NOPOWER stat in parent implementation
 	. = ..()
 	stat |= not_powered
+
+	if(SShijack.stable_orbit)
+		. += SPAN_NOTICE("The emergency burn seems to have taken quite a toll on it. It has been rendered inoperable.")
+		return
 
 	if(inoperable())
 		return

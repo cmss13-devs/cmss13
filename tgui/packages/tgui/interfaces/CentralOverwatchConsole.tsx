@@ -853,7 +853,7 @@ const EmergencyPanel = (props) => {
                   mt="1px"
                   icon="radiation"
                   color="red"
-                  confirmContent="Confirm - No FTL; evac fuel once SD finishes"
+                  confirmContent="Confirm? No FTL. Evacuation available once SD irreversible"
                   onClick={() => act('hijack_plan', { plan: 'scuttle' })}
                 >
                   PREPARE SELF-DESTRUCT
@@ -919,7 +919,7 @@ const EmergencyPanel = (props) => {
                     mt="1px"
                     icon="rocket"
                     color="red"
-                    confirmContent="Confirm - No FTL. Fuel evacuation craft"
+                    confirmContent="Confirm? No FTL. Fuel evacuation craft only"
                     onClick={() => act('hijack_plan', { plan: 'evacuate' })}
                   >
                     FUEL EVAC WITHOUT FTL

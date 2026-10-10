@@ -506,8 +506,8 @@ SUBSYSTEM_DEF(hijack)
 /// Passes the SD ETA for status panels
 /datum/controller/subsystem/hijack/proc/get_sd_eta()
 	if(sd_detonated)
-		if(world.time < sd_detonation_time)
-			return "[duration2text_sec(sd_detonation_time - world.time)]"
+		if(REALTIMEOFDAY < sd_detonation_time)
+			return "[duration2text_sec(sd_detonation_time - REALTIMEOFDAY)]"
 		return "Complete"
 
 	if(hijack_plan == HIJACK_ROUTE_SCUTTLE && !sd_unlocked)
@@ -740,15 +740,20 @@ SUBSYSTEM_DEF(hijack)
 		if(istype(mob_area, /area/almayer/engineering/lower/engine_core))
 			to_chat(current_mob, SPAN_BOLDWARNING("The air sears your flesh as the fusion engines enter runaway meltdown!"))
 
+/// So the SD audio countdown doesn't desync from lag. Other choice was to cut up the audio into separate smaller chuinks, but I didn't like that
+/datum/controller/subsystem/hijack/proc/wait_until_sd_time(target_time)
+	while(REALTIMEOFDAY < target_time)
+		sleep(world.tick_lag)
+
 /// Sends the timed evacuation and xeno announcements during the self destruct grace period
 /datum/controller/subsystem/hijack/proc/announce_sd_grace_period()
-	sleep(10 SECONDS)
+	wait_until_sd_time(sd_detonation_time - 110 SECONDS)
 	xeno_announcement(SPAN_XENOANNOUNCE("You have failed me, and your failure condemns your sisters to burn with this metal hive. The tallhosts flee from their own hive killer. Hunt them. Tear them from their escape vessels. If the hive must die, let no tallhost escape it."), "everything", "Queen Mother Psychic Directive")
-	sleep(60 SECONDS)
+	wait_until_sd_time(sd_detonation_time - 50 SECONDS)
 	if(evac_status == EVACUATION_STATUS_NOT_INITIATED && initiate_evacuation(TRUE))
 		shipwide_ai_announcement("ALERT: Emergency evacuation procedures automatically initiated. Self-destruct detonation in fifty seconds.", HIJACK_ANNOUNCE, quiet = TRUE)
 	xeno_announcement(SPAN_XENOANNOUNCE("DO NOT LET THEM ESCAPE."), "everything", "Queen Mother Psychic Directive")
-	sleep(35 SECONDS)
+	wait_until_sd_time(sd_detonation_time - 15 SECONDS)
 	shipwide_ai_announcement("WARNING: Evacuation order confirmed. Launching all lifeboats. Self-destruct detonation in fifteen seconds.", HIJACK_ANNOUNCE, quiet = TRUE)
 	xeno_announcement(SPAN_XENOANNOUNCE("KILL THEM."), "everything", "Queen Mother Psychic Directive")
 	launch_lifeboats()
@@ -773,9 +778,9 @@ SUBSYSTEM_DEF(hijack)
 
 /// Randomly releases smoke from vents and scrubbers
 /datum/controller/subsystem/hijack/proc/spew_sd_smoke(detonation_time)
-	while(world.time < detonation_time)
-		sleep(rand(3 SECONDS, 6 SECONDS))
-		if(world.time >= detonation_time)
+	while(REALTIMEOFDAY < detonation_time)
+		wait_until_sd_time(REALTIMEOFDAY + rand(3 SECONDS, 6 SECONDS))
+		if(REALTIMEOFDAY >= detonation_time)
 			return
 
 		var/list/available_vents = list()
@@ -783,7 +788,7 @@ SUBSYSTEM_DEF(hijack)
 			if(!vent.welded)
 				available_vents += vent
 
-		var/smoke_bursts = world.time >= detonation_time - 1 MINUTES ? rand(2, 3) : rand(1, 2)
+		var/smoke_bursts = REALTIMEOFDAY >= detonation_time - 1 MINUTES ? rand(2, 3) : rand(1, 2)
 		smoke_bursts = min(smoke_bursts, length(available_vents))
 		for(var/i = 1; i <= smoke_bursts; i++)
 			var/obj/structure/pipes/vents/vent = pick_n_take(available_vents)
@@ -795,8 +800,8 @@ SUBSYSTEM_DEF(hijack)
 			vent.visible_message(SPAN_WARNING("[vent] suddenly spews smoke!"), SPAN_WARNING("You hear pressurized gas hissing."), 5)
 
 /datum/controller/subsystem/hijack/proc/overload_sd_generators(detonation_time)
-	sleep(max(0, detonation_time - world.time - 1 MINUTES))
-	if(world.time >= detonation_time)
+	wait_until_sd_time(detonation_time - 1 MINUTES)
+	if(REALTIMEOFDAY >= detonation_time)
 		return
 
 	var/list/obj/structure/machinery/power/power_generator/reactor/generators = list()
@@ -808,10 +813,10 @@ SUBSYSTEM_DEF(hijack)
 		generators += generator
 		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), meltdown_cause, 2, get_turf(generator), BURN_TIME_TIER_5 + 10, BURN_LEVEL_TIER_3, FLAMESHAPE_DEFAULT, null)
 
-	sleep(max(0, detonation_time - world.time - 5 SECONDS))
-	while(length(generators) && world.time < detonation_time)
+	wait_until_sd_time(detonation_time - 5 SECONDS)
+	while(length(generators) && REALTIMEOFDAY < detonation_time)
 		for(var/obj/structure/machinery/power/power_generator/reactor/generator as anything in shuffle(generators))
-			if(world.time >= detonation_time)
+			if(REALTIMEOFDAY >= detonation_time)
 				return
 			var/turf/generator_turf = get_turf(generator)
 			if(QDELETED(generator) || !generator_turf)
@@ -819,15 +824,15 @@ SUBSYSTEM_DEF(hijack)
 				continue
 
 			INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), generator_turf, 300, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, meltdown_cause)
-			sleep(2)
+			wait_until_sd_time(REALTIMEOFDAY + 2)
 
 /datum/controller/subsystem/hijack/proc/shake_sd_grace_period(detonation_time)
-	while(world.time < detonation_time)
-		sleep(rand(15 SECONDS, 20 SECONDS))
-		if(world.time >= detonation_time)
+	while(REALTIMEOFDAY < detonation_time)
+		wait_until_sd_time(REALTIMEOFDAY + rand(15 SECONDS, 20 SECONDS))
+		if(REALTIMEOFDAY >= detonation_time)
 			return
 
-		var/time_remaining = detonation_time - world.time
+		var/time_remaining = detonation_time - REALTIMEOFDAY
 		var/shake_stage = round((2 MINUTES - time_remaining) / (30 SECONDS))
 		shakeship(rand(3, 4) + shake_stage, rand(5, 7) + shake_stage, time_remaining <= 30 SECONDS)
 
@@ -836,15 +841,15 @@ SUBSYSTEM_DEF(hijack)
 
 	SSticker?.roundend_check_paused = TRUE
 	sd_detonated = TRUE
-	sd_detonation_time = world.time + 2 MINUTES
 	start_sd_emergency_lighting()
 	critically_heat_engine_room()
+	sd_detonation_time = REALTIMEOFDAY + 2 MINUTES
 	shipwide_ai_announcement("ALERT: Fusion reactor meltdown is irreversible. Emergency detonation in two minutes. Evacuation craft fully fueled. Evacuate immediately.", HIJACK_ANNOUNCE, sound('sound/AI/selfdestruct_2m.ogg'))
 	INVOKE_ASYNC(src, PROC_REF(shake_sd_grace_period), sd_detonation_time)
 	INVOKE_ASYNC(src, PROC_REF(announce_sd_grace_period))
 	INVOKE_ASYNC(src, PROC_REF(spew_sd_smoke), sd_detonation_time)
 	INVOKE_ASYNC(src, PROC_REF(overload_sd_generators), sd_detonation_time)
-	sleep(93 SECONDS)
+	wait_until_sd_time(sd_detonation_time - 27 SECONDS)
 
 	var/creak_picked = pick('sound/effects/creak1.ogg', 'sound/effects/creak2.ogg', 'sound/effects/creak3.ogg')
 	for(var/mob/current_mob as anything in GLOB.mob_list)
@@ -854,9 +859,9 @@ SUBSYSTEM_DEF(hijack)
 
 		playsound_client(current_mob.client, creak_picked, vol=50)
 
-	sleep(7 SECONDS)
+	wait_until_sd_time(sd_detonation_time - 20 SECONDS)
 	shipwide_ai_announcement("ALERT: Fusion reactors dangerously overloaded. Runaway meltdown in reactor core imminent.", HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
-	sleep(5 SECONDS)
+	wait_until_sd_time(sd_detonation_time - 15 SECONDS)
 
 	var/list/alive_mobs = list() //Everyone who will be destroyed on the zlevel(s).
 	var/list/dead_mobs = list() //Everyone who only needs to see the cinematic.
@@ -873,7 +878,7 @@ SUBSYSTEM_DEF(hijack)
 			alive_mobs |= current_mob
 			shake_camera(current_mob, 110, 4)
 
-	sleep(10 SECONDS)
+	wait_until_sd_time(sd_detonation_time - 5 SECONDS)
 	/*Hardcoded for now, since this was never really used for anything else.
 	Would ideally use a better system for showing cutscenes.*/
 	var/atom/movable/screen/cinematic/explosion/explosive_cinematic = new()
@@ -882,10 +887,10 @@ SUBSYSTEM_DEF(hijack)
 		if(current_mob?.loc && current_mob.client)
 			current_mob.client.add_to_screen(explosive_cinematic)  //They may have disconnected in the mean time.
 
-	sleep(1.5 SECONDS) //Extra 1.5 seconds to look at the ship.
+	wait_until_sd_time(sd_detonation_time - 3.5 SECONDS) //Extra 1.5 seconds to look at the ship
 	flick("intro_nuke", explosive_cinematic)
 
-	sleep(3.5 SECONDS)
+	wait_until_sd_time(sd_detonation_time)
 	for(var/mob/current_mob as anything in alive_mobs)
 		var/turf/current_mob_turf = get_turf(current_mob)
 		if(!current_mob_turf) //Who knows, maybe they escaped, or don't exist anymore.
@@ -905,7 +910,7 @@ SUBSYSTEM_DEF(hijack)
 		playsound_client(player, 'sound/effects/explosionfar.ogg', vol=90)
 
 
-	sleep(0.5 SECONDS)
+	wait_until_sd_time(sd_detonation_time + 0.5 SECONDS)
 
 	SSticker?.roundend_check_paused = FALSE
 	if(SSticker?.mode)

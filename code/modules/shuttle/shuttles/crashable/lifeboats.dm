@@ -51,6 +51,7 @@
 /obj/docking_port/mobile/crashable/lifeboat/evac_launch(force = FALSE)
 	if(force)
 		forced_launch = TRUE
+		addtimer(CALLBACK(src, PROC_REF(check)), max(0, SShijack.sd_detonation_time - 5 SECONDS - REALTIMEOFDAY), TIMER_CLIENT_TIME)
 	if(mode != SHUTTLE_IDLE)
 		return
 
@@ -68,6 +69,11 @@
 	setTimer(ignitionTime)
 	alarm_sound_loop.stop()
 	playing_launch_announcement_alarm = FALSE
+
+/obj/docking_port/mobile/crashable/lifeboat/timeLeft(divisor)
+	. = ..()
+	if(forced_launch && mode == SHUTTLE_IGNITING)
+		. = min(., round(max(0, SShijack.sd_detonation_time - 5 SECONDS - REALTIMEOFDAY) / (divisor > 0 ? divisor : 10), 1))
 
 /obj/docking_port/mobile/crashable/lifeboat/crash_check()
 	. = ..()

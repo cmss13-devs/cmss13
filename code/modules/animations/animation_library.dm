@@ -176,11 +176,14 @@ Can look good elsewhere as well.*/
 
 /mob/living/proc/animation_attack_on(atom/A, pixel_offset = 8)
 	SEND_SIGNAL(src, COMSIG_MOB_ANIMATING)
+
 	if(A.clone)
 		if(src.Adjacent(A.clone))
 			A = A.clone
 	if(buckled || anchored || HAS_TRAIT(src, TRAIT_HAULED) || LAZYLEN(buckled_mobs)) //it would look silly.
 		return
+	var/initial_pixel_x = pixel_x //we use this instead of initial(pixel_x) to preserve any preexisting offsets
+	var/initial_pixel_y = pixel_y //we use this instead of initial(pixel_x) to preserve any preexisting offsets
 	var/pixel_x_diff = 0
 	var/pixel_y_diff = 0
 	var/direction = get_dir(src, A)
@@ -207,7 +210,7 @@ Can look good elsewhere as well.*/
 			pixel_x_diff = -pixel_offset
 			pixel_y_diff = -pixel_offset
 	animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, time = 2, flags = ANIMATION_PARALLEL)
-	animate(pixel_x = initial(pixel_x), pixel_y = initial(pixel_y), time = 2)
+	animate(pixel_x = initial_pixel_x, pixel_y = initial_pixel_y, time = 2)
 
 /atom/proc/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
 	if(!sections)

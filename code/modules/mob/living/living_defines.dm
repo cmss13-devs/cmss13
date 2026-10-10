@@ -151,3 +151,6 @@
 	var/atom/observed_atom
 
 	var/nutrition = NUTRITION_NORMAL // This should be on /human
+
+	///for water_overlays
+	var/datum/water_overlay_config/water_config = /datum/water_overlay_config

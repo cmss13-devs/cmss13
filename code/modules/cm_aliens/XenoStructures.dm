@@ -71,9 +71,9 @@
 	else
 		tforce = AM:throwforce
 	if(istype(src, /obj/effect/alien/resin/sticky))
-		playsound(loc, "alien_resin_move", 25)
+		playsound(loc, SOUND_ALIEN_RESIN_MOVE, 25)
 	else
-		playsound(loc, "alien_resin_break", 25)
+		playsound(loc, SOUND_ALIEN_RESIN_BREAK, 25)
 	health = max(0, health - tforce)
 	healthcheck()
 
@@ -88,9 +88,9 @@
 		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"),
 		SPAN_XENONOTICE("We claw \the [src]."))
 		if(istype(src, /obj/effect/alien/resin/sticky))
-			playsound(loc, "alien_resin_move", 25)
+			playsound(loc, SOUND_ALIEN_RESIN_MOVE, 25)
 		else
-			playsound(loc, "alien_resin_break", 25)
+			playsound(loc, SOUND_ALIEN_RESIN_BREAK, 25)
 
 		var/damage_to_structure = M.melee_damage_upper + XENO_DAMAGE_TIER_7
 		// Builders can destroy beefy things in maximum 5 hits
@@ -105,9 +105,9 @@
 	M.visible_message(SPAN_DANGER("[M] tears \the [src]!"),
 	SPAN_DANGER("You tear \the [name]."))
 	if(istype(src, /obj/effect/alien/resin/sticky))
-		playsound(loc, "alien_resin_move", 25)
+		playsound(loc, SOUND_ALIEN_RESIN_MOVE, 25)
 	else
-		playsound(loc, "alien_resin_break", 25)
+		playsound(loc, SOUND_ALIEN_RESIN_BREAK, 25)
 	health -= 40
 	healthcheck()
 
@@ -119,9 +119,9 @@
 		var/damage = W.force * W.demolition_mod * RESIN_MELEE_DAMAGE_MULTIPLIER
 		health -= damage
 		if(istype(src, /obj/effect/alien/resin/sticky))
-			playsound(loc, "alien_resin_move", 25)
+			playsound(loc, SOUND_ALIEN_RESIN_MOVE, 25)
 		else
-			playsound(loc, "alien_resin_break", 25)
+			playsound(loc, SOUND_ALIEN_RESIN_BREAK, 25)
 		healthcheck()
 	return ..()
 
@@ -416,7 +416,7 @@
 		user.animation_attack_on(src)
 		health -= W.force * RESIN_MELEE_DAMAGE_MULTIPLIER * W.demolition_mod
 		to_chat(user, "You hit the [name] with your [W.name]!")
-		playsound(loc, "alien_resin_move", 25)
+		playsound(loc, SOUND_ALIEN_RESIN_MOVE, 25)
 		healthcheck()
 		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 	else
@@ -439,7 +439,7 @@
 	if(open || !loc)
 		return //already open
 	isSwitchingStates = TRUE
-	playsound(loc, "alien_resin_move", 25)
+	playsound(loc, SOUND_ALIEN_RESIN_MOVE, 25)
 	flick("[mineralType]opening",src)
 	addtimer(CALLBACK(src, PROC_REF(finish_open)), 3 DECISECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
@@ -472,7 +472,7 @@
 		return
 
 	isSwitchingStates = TRUE
-	playsound(loc, "alien_resin_move", 25)
+	playsound(loc, SOUND_ALIEN_RESIN_MOVE, 25)
 	flick("[mineralType]closing",src)
 	addtimer(CALLBACK(src, PROC_REF(finish_close)), 3 DECISECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
@@ -493,7 +493,7 @@
 	qdel(src)
 
 /obj/structure/mineral_door/resin/CheckHardness()
-	playsound(loc, "alien_resin_move", 25)
+	playsound(loc, SOUND_ALIEN_RESIN_MOVE, 25)
 	..()
 
 /obj/structure/mineral_door/resin/Destroy()
@@ -825,7 +825,7 @@
 
 /obj/effect/alien/resin/resin_pillar/process()
 	if(prob(25))
-		playsound(loc, "alien_resin_break", 25, TRUE)
+		playsound(loc, SOUND_ALIEN_RESIN_BREAK, 25, TRUE)
 
 /obj/effect/alien/resin/resin_pillar/proc/start_decay(brittle_time_override, collapse_time_override)
 	time_to_brittle = brittle_time_override
@@ -843,7 +843,7 @@
 		T.update_connections(TRUE)
 		T.update_icon()
 
-	playsound(loc, "alien_resin_break", 25, TRUE)
+	playsound(loc, SOUND_ALIEN_RESIN_BREAK, 25, TRUE)
 	START_PROCESSING(SSobj, src)
 	addtimer(CALLBACK(src, PROC_REF(collapse), TRUE), time_to_collapse)
 	brittle = TRUE
@@ -861,7 +861,7 @@
 	else
 		visible_message(SPAN_DANGER("[src]'s structure collapses under the blow!"))
 
-	playsound(loc, "alien_resin_break", 25, TRUE)
+	playsound(loc, SOUND_ALIEN_RESIN_BREAK, 25, TRUE)
 	qdel(src)
 
 //bullet_act() by default only pings, so it's not overridden here. it should not damage, only ping even post-brittle

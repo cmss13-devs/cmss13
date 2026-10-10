@@ -1424,7 +1424,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	desc = "A complex kit of alien tools and medicines."
 	icon_state = "medicomp"
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	use_sound = "toolbox"
+	use_sound = SOUND_TOOLBOX
 	w_class = SIZE_MEDIUM
 	storage_flags = STORAGE_FLAGS_DEFAULT
 	flags_item = ITEM_PREDATOR

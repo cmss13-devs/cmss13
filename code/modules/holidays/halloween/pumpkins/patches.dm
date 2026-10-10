@@ -53,7 +53,7 @@
 /obj/structure/pumpkin_patch/attackby(obj/item/tool, mob/user)
 	if(has_vines && (tool.sharp == IS_SHARP_ITEM_ACCURATE || tool.sharp == IS_SHARP_ITEM_BIG))
 		to_chat(user, SPAN_NOTICE("You cut down the vines."))
-		playsound(loc, "alien_resin_break", 25)
+		playsound(loc, SOUND_ALIEN_RESIN_BREAK, 25)
 		has_vines = FALSE
 		update_icon()
 		if(pumpkin_count < 1 && !has_vines)

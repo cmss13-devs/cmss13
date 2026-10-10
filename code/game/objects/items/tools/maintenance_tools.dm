@@ -528,7 +528,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
 	)
-	hitsound = "swing_hit"
+	hitsound = SOUND_SWING_HIT
 	w_class = SIZE_LARGE
 	force = MELEE_FORCE_STRONG
 	flags_equip_slot = SLOT_SUIT_STORE
@@ -609,7 +609,7 @@
 			return
 		user.visible_message(SPAN_DANGER("[user] jams [src] into [attacked_door] and starts to pry it open."),
 		SPAN_DANGER("You jam [src] into [attacked_door] and start to pry it open."))
-		playsound(src, "pry", 15, TRUE)
+		playsound(src, SOUND_PRY, 15, TRUE)
 		if(!do_after(user, prying_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			return
 
@@ -640,7 +640,7 @@
 
 	user.visible_message(SPAN_DANGER("[user] begins to disable [attacked_door]'s bolts!"),
 	SPAN_NOTICE("You start to disable [attacked_door]'s bolts."))
-	playsound(attacked_door, "pry", 25, TRUE)
+	playsound(attacked_door, SOUND_PRY, 25, TRUE)
 
 	if(!do_after(user, unbolt_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
 		to_chat(user, SPAN_WARNING("You decide not to disable the bolts on [attacked_door]."))

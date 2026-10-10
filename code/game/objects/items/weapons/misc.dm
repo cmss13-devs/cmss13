@@ -41,7 +41,7 @@
 	. = ..()
 	new/obj/item/shard(src.loc)
 	new/obj/item/shard(src.loc)
-	playsound(src, "shatter", 25, 1)
+	playsound(src, SOUND_SHATTER, 25, 1)
 	qdel(src)
 
 /obj/item/weapon/broken_glass
@@ -68,7 +68,7 @@
 	. = ..()
 	new/obj/item/shard(src.loc)
 	new/obj/item/shard(src.loc)
-	playsound(src, "shatter", 25, 1)
+	playsound(src, SOUND_SHATTER, 25, 1)
 	qdel(src)
 
 /obj/item/weapon/dart

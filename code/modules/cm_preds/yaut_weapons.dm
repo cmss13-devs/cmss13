@@ -210,7 +210,7 @@
 				animate(target, pixel_y = target.pixel_y + 64, time = 4, easing = SINE_EASING)
 				sleep(4)
 				playsound(target, 'sound/effects/bang.ogg', 25, 0)
-				playsound(target,"slam", 50, 1)
+				playsound(target,SOUND_SLAM, 50, 1)
 				animate(target, pixel_y = 0, time = 4, easing = BOUNCE_EASING)
 				sleep(10) // This is so people don't spam click and lineup 300 executions, i know its probably not the best way to do it.
 				executing = FALSE
@@ -266,7 +266,7 @@
 	UnregisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY)
 
 /mob/living/carbon/human/proc/start_stomping(mob/user)
-	AddComponent(/datum/component/footstep, 4, 25, 11, 2, "alien_footstep_medium")
+	AddComponent(/datum/component/footstep, 4, 25, 11, 2, SOUND_ALIEN_FOOTSTEP_MEDIUM)
 	addtimer(CALLBACK(src, PROC_REF(stop_stomping)), 10 SECONDS)
 
 /mob/living/carbon/human/proc/stop_stomping(mob/user, obj/item/weapon/bracer_attachment/chain_gauntlets/yautja_glove)
@@ -413,7 +413,7 @@
 	edge = TRUE
 	embeddable = FALSE
 	w_class = SIZE_LARGE
-	hitsound = "clan_sword_hit"
+	hitsound = SOUND_CLAN_SWORD_HIT
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 1 SECONDS
 	unacidable = TRUE

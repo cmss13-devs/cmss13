@@ -272,7 +272,7 @@
 
 	switch(action)
 		if("button-push")
-			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
+			playsound(loc, SOUND_TERMINAL_BUTTON, KEYBOARD_SOUND_VOLUME, 1)
 			return FALSE
 		if("open")
 			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
@@ -301,7 +301,7 @@
 			var/dockId = params["target"]
 			var/list/local_data = ui_data(usr)
 			var/found = FALSE
-			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
+			playsound(loc, SOUND_TERMINAL_BUTTON, KEYBOARD_SOUND_VOLUME, 1)
 			for(var/destination in local_data["destinations"])
 				if(destination["id"] == dockId)
 					found = TRUE

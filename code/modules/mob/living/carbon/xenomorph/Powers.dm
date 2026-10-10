@@ -90,7 +90,7 @@
 					SPAN_XENONOTICE("We regurgitate some resin and thicken [target], using [total_resin_cost] plasma."), null, 5)
 				if(use_plasma)
 					use_plasma(total_resin_cost)
-				playsound(loc, "alien_resin_build", 25)
+				playsound(loc, SOUND_ALIEN_RESIN_BUILD, 25)
 			target.add_hiddenprint(src) //so admins know who thickened the walls
 			return TRUE
 
@@ -144,7 +144,7 @@
 		if(message)
 			visible_message(SPAN_XENONOTICE("[src] regurgitates a thick substance and shapes it into \a [resin_construct.construction_name]!"),
 				SPAN_XENONOTICE("We regurgitate some resin and shape it into \a [resin_construct.construction_name][use_plasma ? " at the cost of a total [total_resin_cost] plasma" : ""]."), null, 5)
-			playsound(loc, "alien_resin_build", 25)
+			playsound(loc, SOUND_ALIEN_RESIN_BUILD, 25)
 		return SECRETE_RESIN_SUCCESS
 
 	if(!resin_construct.can_build_here(current_turf, src))
@@ -155,7 +155,7 @@
 	if(message)
 		visible_message(SPAN_XENONOTICE("[src] regurgitates a thick substance and shapes it into \a [resin_construct.construction_name]!"),
 			SPAN_XENONOTICE("We regurgitate some resin and shape it into \a [resin_construct.construction_name][use_plasma ? " at the cost of a total [total_resin_cost] plasma" : ""]."), null, 5)
-		playsound(loc, "alien_resin_build", 25)
+		playsound(loc, SOUND_ALIEN_RESIN_BUILD, 25)
 
 	var/atom/new_resin = resin_construct.build(current_turf, hivenumber, src)
 	if(succeeded)
@@ -230,7 +230,7 @@
 	var/remaining_constructions = max_constructions - hive.get_structure_count(structure_template.name)
 	visible_message(SPAN_XENONOTICE("A thick substance emerges from the ground and shapes into \a [new_structure]."),
 		SPAN_XENONOTICE("We designate a new [structure_template] construction. ([remaining_constructions]/[max_constructions] remaining)"), null, 5)
-	playsound(new_structure, "alien_resin_build", 25)
+	playsound(new_structure, SOUND_ALIEN_RESIN_BUILD, 25)
 
 	if(hive.living_xeno_queen)
 		xeno_message("Hive: A new <b>[structure_template]<b> construction has been designated at [sanitize_area(current_area_name)]!", 3, hivenumber)
@@ -261,7 +261,7 @@
 			return FALSE
 
 	var/obj/effect/alien/resin/marker/NM = new /obj/effect/alien/resin/marker(target_turf, src)
-	playsound(target_turf, "alien_resin_build", 25)
+	playsound(target_turf, SOUND_ALIEN_RESIN_BUILD, 25)
 
 	if(!found_weeds)
 		to_chat(src, SPAN_XENOMINORWARNING("We made the resin mark on ground with no weeds, it will break soon without any."))

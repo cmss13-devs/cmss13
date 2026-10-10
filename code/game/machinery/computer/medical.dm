@@ -276,7 +276,7 @@
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return
 
-	playsound(src, get_sfx("terminal_button"), 25, FALSE)
+	playsound(src, SOUND_TERMINAL_BUTTON, 25, FALSE)
 
 	switch(action)
 		if("log_in")

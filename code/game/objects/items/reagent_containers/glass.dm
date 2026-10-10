@@ -199,7 +199,7 @@
 		user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."),
 		SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
 		AddComponent(/datum/component/label, tmp_label)
-		playsound(src, "paper_writing", 15, TRUE)
+		playsound(src, SOUND_PAPER_WRITING, 15, TRUE)
 		return
 
 	if(istype(attacking_object, /obj/item/storage/pill_bottle)) //dumping a pill bottle's contents in a container

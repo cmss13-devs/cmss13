@@ -114,7 +114,7 @@
 	if(.)
 		return
 
-	playsound(src, "keyboard", 15, 1)
+	playsound(src, SOUND_KEYBOARD, 15, 1)
 
 	switch (action)
 		if ("set_menu")

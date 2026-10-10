@@ -3012,7 +3012,7 @@
 			boxtotagto = boxes[length(boxes)]
 
 		boxtotagto.boxtag = "[boxtotagto.boxtag][t]"
-		playsound(src, "paper_writing", 15, TRUE)
+		playsound(src, SOUND_PAPER_WRITING, 15, TRUE)
 		update_icon()
 		return
 	..()
@@ -3485,7 +3485,7 @@
 	icon_state = "chunk"
 	item_state = "chunk"
 	item_state_slots = list(WEAR_AS_GARB = "chunkbox")
-	hitsound = "swing_hit"
+	hitsound = SOUND_SWING_HIT
 	force = 15
 	throwforce = 10
 	attack_speed = 10

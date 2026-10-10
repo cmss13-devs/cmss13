@@ -10,7 +10,7 @@
 	item_state = "toolkit"
 	throw_speed = SPEED_FAST
 	throw_range = 8
-	use_sound = "toolbox"
+	use_sound = SOUND_TOOLBOX
 	matter = list("plastic" = 2000)
 	can_hold = list(
 		/obj/item/circuitboard,

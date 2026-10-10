@@ -77,7 +77,7 @@
 		if(!input_text || !in_range(src, usr) && loc != usr)
 			return
 		created_name = input_text
-		playsound(src, "paper_writing", 15, TRUE)
+		playsound(src, SOUND_PAPER_WRITING, 15, TRUE)
 		return
 
 	if(istype(attacking_item, /obj/item/stack/sheet/glass))

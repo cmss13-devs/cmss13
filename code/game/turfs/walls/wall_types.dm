@@ -185,7 +185,7 @@
 
 /turf/closed/wall/almayer/research/containment/wall/divide/proc/change_weeds()
 	for(var/obj/effect/alien/W in src) // Destroy all alien things on the divider (traps, special structures, etc)
-		playsound(src, "alien_resin_break", 25)
+		playsound(src, SOUND_ALIEN_RESIN_BREAK, 25)
 		qdel(W)
 
 
@@ -1344,7 +1344,7 @@
 	M.animation_attack_on(src)
 	M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"),
 	SPAN_XENONOTICE("You claw \the [src]."))
-	playsound(src, "alien_resin_break", 25)
+	playsound(src, SOUND_ALIEN_RESIN_BREAK, 25)
 	if (M.hivenumber == hivenumber)
 		take_damage(ceil(HEALTH_WALL_XENO * 0.25)) //Four hits for a regular wall
 	else
@@ -1355,7 +1355,7 @@
 	if(!(W.flags_item & NOBLUDGEON))
 		user.animation_attack_on(src)
 		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER*W.demolition_mod, user)
-		playsound(src, "alien_resin_break", 25)
+		playsound(src, SOUND_ALIEN_RESIN_BREAK, 25)
 	else
 		return attack_hand(user)
 
@@ -1537,7 +1537,7 @@
 	else if (isobj(AM))
 		var/obj/O = AM
 		tforce = O.throwforce
-	playsound(src, "alien_resin_break", 25)
+	playsound(src, SOUND_ALIEN_RESIN_BREAK, 25)
 	take_damage(tforce)
 
 
@@ -1553,7 +1553,7 @@
 	M.animation_attack_on(src)
 	M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"),
 	SPAN_XENONOTICE("We claw \the [src]."))
-	playsound(src, "alien_resin_break", 25)
+	playsound(src, SOUND_ALIEN_RESIN_BREAK, 25)
 	if (M.hivenumber == hivenumber)
 		take_damage(ceil(HEALTH_WALL_XENO * 0.25)) //Four hits for a regular wall
 	else
@@ -1564,7 +1564,7 @@
 /turf/closed/wall/resin/attack_animal(mob/living/M)
 	M.visible_message(SPAN_DANGER("[M] tears \the [src]!"),
 	SPAN_DANGER("You tear \the [name]."))
-	playsound(src, "alien_resin_break", 25)
+	playsound(src, SOUND_ALIEN_RESIN_BREAK, 25)
 	M.animation_attack_on(src)
 	take_damage(80)
 
@@ -1584,7 +1584,7 @@
 	if(!(W.flags_item & NOBLUDGEON))
 		user.animation_attack_on(src)
 		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER*W.demolition_mod, user)
-		playsound(src, "alien_resin_break", 25)
+		playsound(src, SOUND_ALIEN_RESIN_BREAK, 25)
 		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 	else
 		return attack_hand(user)

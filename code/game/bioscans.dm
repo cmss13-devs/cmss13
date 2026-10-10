@@ -158,6 +158,6 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 	log_game("BIOSCAN: Queen Mother bioscan completed. [content]")
 	/// Shout it at everyone
 	for(var/mob/current_mob as anything in GLOB.living_xeno_list)
-		current_mob << sound(get_sfx("queen"), wait = 0, volume = 50)
+		current_mob << sound(SOUND_QUEEN, wait = 0, volume = 50)
 		to_chat(current_mob, title)
 		to_chat(current_mob, content)

@@ -86,7 +86,7 @@
 			else if(page == paper_left)
 				screen = 0
 			page++
-			playsound(loc, "pageturn", 15, 1)
+			playsound(loc, SOUND_PAGETURN, 15, 1)
 		if(href_list["prev_page"])
 			if(page == 1)
 				return
@@ -95,7 +95,7 @@
 			else if(page == paper_left)
 				screen = 1
 			page--
-			playsound(loc, "pageturn", 15, 1)
+			playsound(loc, SOUND_PAGETURN, 15, 1)
 		if(href_list["remove"])
 			if(length(contents) < page)
 				page = length(contents)

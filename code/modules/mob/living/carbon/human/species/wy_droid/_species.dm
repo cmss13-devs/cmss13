@@ -21,7 +21,7 @@
 	wy_droid.AddElement(/datum/element/corp_label/wy)
 
 /datum/species/synthetic/gen_two/gen_one/wy_droid/handle_death(mob/living/carbon/human/dying_droid)
-	playsound(get_turf(dying_droid),"wy_droid_death", 25, FALSE)
+	playsound(get_turf(dying_droid),SOUND_WY_DROID_DEATH, 25, FALSE)
 
 /datum/species/synthetic/gen_two/gen_one/wy_droid/handle_on_fire(humanoidmob)
 	. = ..()
@@ -119,7 +119,7 @@
 	name = "W-Y Combat Android Cloaker"
 
 /datum/species/synthetic/gen_two/gen_one/wy_droid/cloaker/handle_death(mob/living/carbon/human/dying_droid)
-	playsound(get_turf(dying_droid),"wy_droid_cloaker_death", 25, FALSE)
+	playsound(get_turf(dying_droid),SOUND_WY_DROID_CLOAKER_DEATH, 25, FALSE)
 
 /datum/species/synthetic/gen_two/gen_one/wy_droid/non_deathsquad
 	name = "W-Y Combat Android (Weaker)"

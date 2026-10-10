@@ -46,7 +46,7 @@
 /datum/xeno_shield/proc/on_removal()
 	if(linked_xeno && istype(linked_xeno, /mob/living/carbon/xenomorph) && shield_source == XENO_SHIELD_SOURCE_GARDENER)
 		linked_xeno.balloon_alert(linked_xeno, "our carapace shell crumbles!", text_color = "#17997280")
-		playsound(linked_xeno, "shield_shatter", 25, 1)
+		playsound(linked_xeno, SOUND_SHIELD_SHATTER, 25, 1)
 	return
 
 /datum/xeno_shield/proc/begin_decay()

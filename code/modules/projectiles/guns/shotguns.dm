@@ -25,7 +25,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	fire_delay_group = list(FIRE_DELAY_GROUP_SHOTGUN)
 
 	fire_sound = 'sound/weapons/gun_shotgun.ogg'
-	reload_sound = "shell_load"
+	reload_sound = SOUND_SHELL_LOAD
 	cocked_sound = 'sound/weapons/gun_shotgun_reload.ogg'
 	var/break_sound = 'sound/weapons/handling/gun_mou_open.ogg'
 	var/seal_sound = 'sound/weapons/handling/gun_mou_close.ogg'
@@ -353,7 +353,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	icon_state = "mk221"
 	item_state = "mk221"
 
-	fire_sound = "gun_shotgun_tactical"
+	fire_sound = SOUND_GUN_SHOTGUN_TACTICAL
 	firesound_volume = 20
 	current_mag = /obj/item/ammo_magazine/internal/shotgun
 	attachable_allowed = list(
@@ -1133,7 +1133,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	else
 		to_chat(user, SPAN_NOTICE("Two empty shells fall to [floor] as you open the [initial(name)]."))
 
-	playsound(user, "gun_casing_shotgun", 25, TRUE)
+	playsound(user, SOUND_GUN_CASING_SHOTGUN, 25, TRUE)
 
 	for(var/I in 1 to fired_shots)
 		fired_casing.transform = matrix(rand(0,359), MATRIX_ROTATE)*matrix(rand(-14,14), rand(-14,14), MATRIX_TRANSLATE)
@@ -1252,7 +1252,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	user.apply_effect(3, DAZE)
 	if(!suicide && !step(user, behind_angle))
 		user.animation_attack_on(behind_turf)
-		playsound(user.loc, "punch", 25, TRUE)
+		playsound(user.loc, SOUND_PUNCH, 25, TRUE)
 		var/blocker = LinkBlocked(user, start_turf, behind_turf) //returns any objects blocking the user from moving back.
 		if(blocker)
 			user.visible_message(SPAN_DANGER("[user] slams into [blocker]!"),
@@ -1277,7 +1277,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	flags_equip_slot = SLOT_BACK
 	fire_sound = 'sound/weapons/gun_shotgun.ogg'
 	firesound_volume = 60
-	var/pump_sound = "shotgunpump"
+	var/pump_sound = SOUND_SHOTGUNPUMP
 	var/pump_delay //Higher means longer delay.
 	var/recent_pump //world.time to see when they last pumped it.
 	var/pumped = FALSE //Used to see if the shotgun has already been pumped.

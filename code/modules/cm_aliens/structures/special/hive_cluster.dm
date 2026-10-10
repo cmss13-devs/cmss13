@@ -166,7 +166,7 @@
 		addtimer(CALLBACK(W, TYPE_PROC_REF(/obj/effect/alien/weeds, weed_expand), node), CLUSTER_WEEDS_REGROWTH_TIME, TIMER_UNIQUE)
 
 	to_chat(xeno, SPAN_XENONOTICE("We have successfully repaired \the [name]."))
-	playsound(loc, "alien_resin_build", 25)
+	playsound(loc, SOUND_ALIEN_RESIN_BUILD, 25)
 
 /obj/effect/alien/resin/special/cluster/proc/place_node()
 	var/obj/effect/alien/weeds/node/pylon/cluster/W = new node_type(loc, null, null, linked_hive)

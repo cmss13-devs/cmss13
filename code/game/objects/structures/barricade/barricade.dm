@@ -153,7 +153,7 @@
 				SPAN_DANGER("The barbed wire slices into you!"))
 				living_carbon.apply_damage(10, enviro=TRUE)
 				living_carbon.apply_effect(2, WEAKEN) //Leaping into barbed wire is VERY bad
-				playsound(living_carbon, "bonk", 75, FALSE)
+				playsound(living_carbon, SOUND_BONK, 75, FALSE)
 	..()
 
 /obj/structure/barricade/Collided(atom/movable/atom_movable)

@@ -208,7 +208,7 @@
 
 /obj/item/trash/ceramic_plate/launch_impact(atom/hit_atom)
 	. = ..()
-	playsound(get_turf(src), "shatter", 50, TRUE)
+	playsound(get_turf(src), SOUND_SHATTER, 50, TRUE)
 	visible_message(SPAN_DANGER("\The [src] shatters into a thousand tiny fragments!"))
 	qdel(src)
 

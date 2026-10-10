@@ -505,4 +505,4 @@
 			return TRUE
 
 	if(playsound)
-		playsound(src, "keyboard_alt", 15, 1)
+		playsound(src, SOUND_KEYBOARD_ALT, 15, 1)

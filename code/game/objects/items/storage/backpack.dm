@@ -23,7 +23,7 @@
 		/obj/item/storage/toolkit = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
 		/obj/item/storage/firstaid/regular/response = list(SKILL_MEDICAL, SKILL_MEDICAL_DEFAULT),
 		)
-	drop_sound = "armorequip"
+	drop_sound = SOUND_ARMOREQUIP
 	var/worn_accessible = FALSE //whether you can access its content while worn on the back
 	var/obj/item/card/id/locking_id = null
 	var/is_id_lockable = FALSE

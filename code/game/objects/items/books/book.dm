@@ -80,7 +80,7 @@
 				else
 					src.name = newtitle
 					src.title = newtitle
-					playsound(src, "paper_writing", 15, TRUE)
+					playsound(src, SOUND_PAPER_WRITING, 15, TRUE)
 			if("Contents")
 				var/content = strip_html(input(usr, "Write your book's contents (HTML NOT allowed):"),8192)
 				if(!content)
@@ -88,7 +88,7 @@
 					return
 				else
 					src.dat += content
-					playsound(src, "paper_writing", 15, TRUE)
+					playsound(src, SOUND_PAPER_WRITING, 15, TRUE)
 			if("Author")
 				var/newauthor = stripped_input(usr, "Write the author's name:")
 				if(!newauthor)
@@ -96,7 +96,7 @@
 					return
 				else
 					src.author = newauthor
-					playsound(src, "paper_writing", 15, TRUE)
+					playsound(src, SOUND_PAPER_WRITING, 15, TRUE)
 			else
 				return
 

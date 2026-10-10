@@ -315,7 +315,7 @@
 				targets_to_hit.apply_effect(get_xeno_stun_duration(targets_to_hit, 1), WEAKEN)
 			else
 				xeno.visible_message(SPAN_XENODANGER("[xeno] claws [targets_to_hit]!"), SPAN_XENODANGER("We claw [targets_to_hit]!"))
-				playsound(get_turf(targets_to_hit), "alien_claw_flesh", 30, 1)
+				playsound(get_turf(targets_to_hit), SOUND_ALIEN_CLAW_FLESH, 30, 1)
 
 			targets_to_hit.apply_armoured_damage(get_xeno_damage_slash(targets_to_hit, damage), ARMOR_MELEE, BRUTE, "chest", 20)
 

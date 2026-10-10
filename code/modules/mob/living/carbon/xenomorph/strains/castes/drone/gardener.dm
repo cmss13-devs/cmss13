@@ -108,7 +108,7 @@
 			return
 		xeno.adjustBruteLoss(health_cost)
 		xeno.updatehealth()
-		playsound(xeno.loc, "alien_resin_build", 25)
+		playsound(xeno.loc, SOUND_ALIEN_RESIN_BUILD, 25)
 		xeno.current_fruits.Add(fruit)
 		xeno.behavior_delegate?.on_update_icons()
 

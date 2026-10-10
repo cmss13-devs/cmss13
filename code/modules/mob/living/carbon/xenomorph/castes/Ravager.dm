@@ -187,7 +187,7 @@
 				bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]"),
 				SPAN_XENONOTICE("ATTACK!!!! Wait- we're not allowed to attack hosts anymore..."))
 				return XENO_ATTACK_ACTION
-		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] fumbles stupidly for a moment, then slashes [target_carbon]!"), 
+		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] fumbles stupidly for a moment, then slashes [target_carbon]!"),
 			SPAN_HIGHDANGER("Your oversized claws and small mind get in the way of restraining, slashing [target_carbon]!"), message_flags=CHAT_TYPE_XENO_COMBAT)
 		return INTENT_HARM
 
@@ -401,7 +401,7 @@
 				continue
 			ravager_user.flick_attack_overlay(carbon_target, "slash")
 			carbon_target.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
-			playsound(get_turf(carbon_target), "alien_claw_flesh", 30, TRUE)
+			playsound(get_turf(carbon_target), SOUND_ALIEN_CLAW_FLESH, 30, TRUE)
 
 			if(should_sslow)
 				new /datum/effects/xeno_slow/superslow(carbon_target, ravager_user, ttl = superslow_duration)

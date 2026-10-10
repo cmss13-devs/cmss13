@@ -56,7 +56,7 @@
 
 	if(isturf(loc))
 		if(++miaow_counter >= rand(20, 30)) //Increase the meow variable each tick. Play it at random intervals.
-			playsound(loc, "cat_meow", 15, 1, 4)
+			playsound(loc, SOUND_CAT_MEOW, 15, 1, 4)
 			miaow_counter = 0 //Reset the counter
 		if(stat == CONSCIOUS && !resting && !buckled)
 			for(var/mob/prey in view(1,src))
@@ -80,7 +80,7 @@
 						livingprey.apply_damage(attack_damage,BRUTE)
 						livingprey.apply_effect(1,SLOW)
 						livingprey.KnockDown(1,1)
-					playsound(src.loc, "alien_claw_flesh", 25, 1)
+					playsound(src.loc, SOUND_ALIEN_CLAW_FLESH, 25, 1)
 					break
 
 	..()

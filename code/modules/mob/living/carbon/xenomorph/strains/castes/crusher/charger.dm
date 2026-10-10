@@ -143,7 +143,7 @@
 	var/start_charging = HAS_TRAIT(Xeno, TRAIT_CHARGING)
 	SEND_SIGNAL(Xeno, COMSIG_XENO_STOP_MOMENTUM)
 	Xeno.flags_atom |= DIRLOCK
-	playsound(Xeno,"alien_tail_swipe", 50, 1)
+	playsound(Xeno,SOUND_ALIEN_TAIL_SWIPE, 50, 1)
 
 	Xeno.use_plasma(plasma_cost)
 
@@ -228,7 +228,7 @@
 			SPAN_DANGER("[xeno] smashes straight into \the [src]!"),
 			SPAN_XENODANGER("You smash straight into \the [src]!")
 		)
-		playsound(loc, "punch", 25, TRUE)
+		playsound(loc, SOUND_PUNCH, 25, TRUE)
 		tip_over()
 		step_away(src, xeno)
 		step_away(src, xeno)
@@ -246,7 +246,7 @@
 			SPAN_DANGER("[xeno] smashes straight into \the [src]!"),
 			SPAN_XENODANGER("You smash straight into \the [src]!")
 		)
-		playsound(loc, "punch", 25, TRUE)
+		playsound(loc, SOUND_PUNCH, 25, TRUE)
 		tip_over()
 		charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_QUARTER)
 		return XENO_CHARGE_TRY_MOVE
@@ -260,7 +260,7 @@
 		charger_ability.stop_momentum()
 		return
 
-	playsound(loc, "punch", 25, TRUE)
+	playsound(loc, SOUND_PUNCH, 25, TRUE)
 	Dismantle(TRUE)
 	charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_QUARTER)
 	return XENO_CHARGE_TRY_MOVE
@@ -436,7 +436,7 @@
 // Humans
 
 /mob/living/carbon/human/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
-	playsound(loc, "punch", 25, TRUE)
+	playsound(loc, SOUND_PUNCH, 25, TRUE)
 	attack_log += text("\[[time_stamp()]\] <font color='orange'>was xeno charged by [xeno] ([xeno.ckey])</font>")
 	xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>xeno charged [src] ([src.ckey])</font>")
 	log_attack("[xeno] ([xeno.ckey]) xeno charged [src] ([src.ckey])")
@@ -470,7 +470,7 @@
 
 /mob/living/carbon/xenomorph/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(charger_ability.momentum)
-		playsound(loc, "punch", 25, TRUE)
+		playsound(loc, SOUND_PUNCH, 25, TRUE)
 		if(!xeno.ally_of_hivenumber(hivenumber))
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>was xeno charged by [xeno] ([xeno.ckey])</font>")
 			xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>xeno charged [src] ([ckey])</font>")
@@ -517,7 +517,7 @@
 // Other mobs
 
 /mob/living/carbon/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
-	playsound(loc, "punch", 25, TRUE)
+	playsound(loc, SOUND_PUNCH, 25, TRUE)
 	attack_log += text("\[[time_stamp()]\] <font color='orange'>was xeno charged by [xeno] ([xeno.ckey])</font>")
 	xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>xeno charged [src] ([src.ckey])</font>")
 	log_attack("[xeno] ([xeno.ckey]) xeno charged [src] ([src.ckey])")

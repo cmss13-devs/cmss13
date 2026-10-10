@@ -452,7 +452,7 @@
 		user.visible_message(SPAN_WARNING("\The [src] on [user]'s head break with a crinkling noise."),
 			SPAN_WARNING("Your [src.name] break with a crinkling noise."),
 			SPAN_WARNING("You hear a crinkling noise, as if something was broken in your helmet."))
-		playsound(user, "bone_break", 30, TRUE)
+		playsound(user, SOUND_BONEBREAK, 30, TRUE)
 		src.color = "#4e4e4e"
 		if(shape != NVG_SHAPE_COSMETIC)
 			shape = NVG_SHAPE_BROKEN
@@ -659,7 +659,7 @@
 			to_chat(user, SPAN_NOTICE("You cannot write on [src] in this state."))
 			return
 		scribble = new_text
-		playsound(src, "paper_writing", 15, TRUE)
+		playsound(src, SOUND_PAPER_WRITING, 15, TRUE)
 	return TRUE
 
 /obj/item/prop/helmetgarb/compass

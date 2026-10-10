@@ -190,7 +190,6 @@
 	if(!HAS_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES))
 		xeno_player.throw_atom(get_step_towards(carbon_target, xeno_player), 2, SPEED_SLOW, xeno_player, tracking=TRUE)
 	if(!xeno_player.Adjacent(carbon_target))
-		on_cooldown_end()
 		return
 
 	carbon_target.last_damage_data = create_cause_data(xeno_player.caste_type, xeno_player)

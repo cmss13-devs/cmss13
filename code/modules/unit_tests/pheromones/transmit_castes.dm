@@ -4,7 +4,7 @@
 /// Please ensure you add the appropriate unit tests to this module before including said caste/strain in this test's coverage list.
 /datum/unit_test/pheromones/transmit_castes/coverage/Run()
 	// Put any new castes/strains that can emit pheromones in here after creating a transmit_castes test for said variation
-	var/list/emitting_castes = list(XENO_CASTE_DRONE, XENO_CASTE_LESSER_DRONE, XENO_CASTE_HIVELORD, XENO_CASTE_CARRIER, XENO_CASTE_QUEEN, XENO_CASTE_KING) // Only count castes that can emit with their base strain
+	var/list/emitting_castes = list(XENO_CASTE_DRONE, XENO_CASTE_LESSER_DRONE, XENO_CASTE_HIVELORD, XENO_CASTE_CARRIER, XENO_CASTE_QUEEN, XENO_CASTE_KING, XENO_CASTE_BURROWER) // Only count castes that can emit with their base strain
 	var/list/emitting_strains = list(DRONE_HEALER, DRONE_GARDENER, CARRIER_EGGSAC, HIVELORD_DESIGNER, HIVELORD_RESIN_WHISPERER, PRAETORIAN_VALKYRIE)
 
 	for (var/caste_name in ALL_XENO_CASTES)
@@ -46,10 +46,10 @@
 	. = ..(pheromone_type = XENO_PHERO_WARDING)
 
 /// Spawns a single prime hive emitter drone of the healer strain, along with a prime hive receiver of every possible xenomorph cast, then forces the drone to emit recovery pheromones.
-/// Expected behavior is that every receiver properly receives the drone's recovery pheromones at strong pheromone strength.
+/// Expected behavior is that every receiver properly receives the drone's recovery pheromones at normal pheromone strength.
 /datum/unit_test/pheromones/transmit_castes/drone/healer/Run(pheromone_type = XENO_PHERO_RECOVERY)
 	var/list/expected_pheromones = list()
-	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_STRONG
+	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_NORMAL
 
 	all_caste_reception_test(
 		abstract_emitter = new /datum/abstract_xenomorph(
@@ -60,20 +60,20 @@
 	)
 
 /// Spawns a single prime hive emitter drone of the healer strain, along with a prime hive receiver of every possible xenomorph cast, then forces the drone to emit frenzy pheromones.
-/// Expected behavior is that every receiver properly receives the drone's frenzy pheromones at strong pheromone strength.
+/// Expected behavior is that every receiver properly receives the drone's frenzy pheromones at normal pheromone strength.
 /datum/unit_test/pheromones/transmit_castes/drone/healer/frenzy/Run()
 	. = ..(pheromone_type = XENO_PHERO_FRENZY)
 
 /// Spawns a single prime hive emitter drone of the healer strain, along with a prime hive receiver of every possible xenomorph cast, then forces the drone to emit warding pheromones.
-/// Expected behavior is that every receiver properly receives the drone's warding pheromones at strong pheromone strength.
+/// Expected behavior is that every receiver properly receives the drone's warding pheromones at normal pheromone strength.
 /datum/unit_test/pheromones/transmit_castes/drone/healer/warding/Run()
 	. = ..(pheromone_type = XENO_PHERO_WARDING)
 
 /// Spawns a single prime hive emitter drone of the gardener strain, along with a prime hive receiver of every possible xenomorph cast, then forces the drone to emit recovery pheromones.
-/// Expected behavior is that every receiver properly receives the drone's recovery pheromones at strong pheromone strength.
+/// Expected behavior is that every receiver properly receives the drone's recovery pheromones at normal pheromone strength.
 /datum/unit_test/pheromones/transmit_castes/drone/gardener/Run(pheromone_type = XENO_PHERO_RECOVERY)
 	var/list/expected_pheromones = list()
-	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_STRONG
+	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_NORMAL
 
 	all_caste_reception_test(
 		abstract_emitter = new /datum/abstract_xenomorph(
@@ -84,12 +84,12 @@
 	)
 
 /// Spawns a single prime hive emitter drone of the gardener strain, along with a prime hive receiver of every possible xenomorph cast, then forces the drone to emit frenzy pheromones.
-/// Expected behavior is that every receiver properly receives the drone's frenzy pheromones at strong pheromone strength.
+/// Expected behavior is that every receiver properly receives the drone's frenzy pheromones at normal pheromone strength.
 /datum/unit_test/pheromones/transmit_castes/drone/gardener/frenzy/Run()
 	. = ..(pheromone_type = XENO_PHERO_FRENZY)
 
 /// Spawns a single prime hive emitter drone of the gardener strain, along with a prime hive receiver of every possible xenomorph cast, then forces the drone to emit warding pheromones.
-/// Expected behavior is that every receiver properly receives the drone's warding pheromones at strong pheromone strength.
+/// Expected behavior is that every receiver properly receives the drone's warding pheromones at normal pheromone strength.
 /datum/unit_test/pheromones/transmit_castes/drone/gardener/warding/Run()
 	. = ..(pheromone_type = XENO_PHERO_WARDING)
 
@@ -188,10 +188,10 @@
 	. = ..(pheromone_type = XENO_PHERO_WARDING)
 
 /// Spawns a single prime hive emitter carrier, along with a prime hive receiver of every possible xenomorph cast, then forces the carrier to emit recovery pheromones.
-/// Expected behavior is that every receiver properly receives the carrier's recovery pheromones at normal pheromone strength.
+/// Expected behavior is that every receiver properly receives the carrier's recovery pheromones at strong pheromone strength.
 /datum/unit_test/pheromones/transmit_castes/carrier/Run(pheromone_type = XENO_PHERO_RECOVERY)
 	var/list/expected_pheromones = list()
-	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_NORMAL
+	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_STRONG
 
 	all_caste_reception_test(
 		abstract_emitter = new /datum/abstract_xenomorph(caste = XENO_CASTE_CARRIER),
@@ -200,12 +200,12 @@
 	)
 
 /// Spawns a single prime hive emitter carrier, along with a prime hive receiver of every possible xenomorph cast, then forces the carrier to emit frenzy pheromones.
-/// Expected behavior is that every receiver properly receives the carrier's frenzy pheromones at normal pheromone strength.
+/// Expected behavior is that every receiver properly receives the carrier's frenzy pheromones at strong pheromone strength.
 /datum/unit_test/pheromones/transmit_castes/carrier/frenzy/Run()
 	. = ..(pheromone_type = XENO_PHERO_FRENZY)
 
 /// Spawns a single prime hive emitter carrier, along with a prime hive receiver of every possible xenomorph cast, then forces the carrier to emit warding pheromones.
-/// Expected behavior is that every receiver properly receives the carrier's warding pheromones at normal pheromone strength.
+/// Expected behavior is that every receiver properly receives the carrier's warding pheromones at strong pheromone strength.
 /datum/unit_test/pheromones/transmit_castes/carrier/warding/Run()
 	. = ..(pheromone_type = XENO_PHERO_WARDING)
 
@@ -301,6 +301,28 @@
 /// Spawns a single prime hive emitter king, along with a prime hive receiver of every possible xenomorph cast, then forces the king to emit warding pheromones.
 /// Expected behavior is that every receiver properly receives the king's warding pheromones at overwhelming pheromone strength.
 /datum/unit_test/pheromones/transmit_castes/king/warding/Run()
+	. = ..(pheromone_type = XENO_PHERO_WARDING)
+
+/// Spawns a single prime hive emitter burrower, along with a prime hive receiver of every possible xenomorph cast, then forces the burrower to emit recovery pheromones.
+/// Expected behavior is that every receiver properly receives the burrower's recovery pheromones at normal pheromone strength.
+/datum/unit_test/pheromones/transmit_castes/burrower/Run(pheromone_type = XENO_PHERO_RECOVERY)
+	var/list/expected_pheromones = list()
+	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_NORMAL
+
+	all_caste_reception_test(
+		abstract_emitter = new /datum/abstract_xenomorph(caste = XENO_CASTE_BURROWER),
+		pheromone_type = pheromone_type,
+		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), expected_pheromones)
+	)
+
+/// Spawns a single prime hive emitter burrower, along with a prime hive receiver of every possible xenomorph cast, then forces the burrower to emit recovery pheromones.
+/// Expected behavior is that every receiver properly receives the burrower's frenzy pheromones at normal pheromone strength.
+/datum/unit_test/pheromones/transmit_castes/burrower/frenzy/Run()
+	. = ..(pheromone_type = XENO_PHERO_FRENZY)
+
+/// Spawns a single prime hive emitter burrower, along with a prime hive receiver of every possible xenomorph cast, then forces the burrower to emit recovery pheromones.
+/// Expected behavior is that every receiver properly receives the burrower's warding pheromones at normal pheromone strength.
+/datum/unit_test/pheromones/transmit_castes/burrower/warding/Run()
 	. = ..(pheromone_type = XENO_PHERO_WARDING)
 
 /// An initialization callback for abstract xenomorphs that sets the strain of the target xenomorph.

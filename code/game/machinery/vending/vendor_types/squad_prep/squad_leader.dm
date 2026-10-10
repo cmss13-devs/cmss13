@@ -132,11 +132,20 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 
 GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Standard Marine Apparel", 0, list(/obj/item/clothing/under/marine, /obj/item/clothing/shoes/marine/knife, /obj/item/clothing/gloves/marine, /obj/item/device/radio/headset/almayer/marine, /obj/item/clothing/head/helmet/marine/leader), MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
-		list("B12 Pattern Armor", 0, /obj/item/clothing/suit/storage/marine/medium/leader, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Standard Marine Apparel", 0, list(/obj/item/clothing/under/marine, /obj/item/clothing/shoes/marine/knife, /obj/item/clothing/gloves/marine, /obj/item/device/radio/headset/almayer/marine), MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("MRE", 0, /obj/item/storage/box/mre, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Map", 0, /obj/item/map/current_map, MARINE_CAN_BUY_MAP, VENDOR_ITEM_MANDATORY),
 		list("USCM Radio Telephone Pack", 0, /obj/item/storage/backpack/marine/satchel/rto, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
+
+		list("HELMET (CHOOSE 1)", 0, null, null, null),
+		list("M11 Pattern Helmet", 0, /obj/item/clothing/head/helmet/marine/leader, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
+		list("M11-R Pattern Helmet", 0, /obj/item/clothing/head/helmet/marine/leader/mod, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
+
+		list("ARMOR (CHOOSE 1)", 0, null, null, null),
+		list("B12 Pattern Armor", 0, /obj/item/clothing/suit/storage/marine/medium/leader, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Modified B12 Pattern Armor 'A'", 0, /obj/item/clothing/suit/storage/marine/medium/leader/mod_a, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Modified M4 Pattern Armor 'B'", 0, /obj/item/clothing/suit/storage/marine/medium/rto/mod_b, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Modified M3-L Pattern Armor 'C'", 0, /obj/item/clothing/suit/storage/marine/light/leader/mod_c, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),
 		list("G8-A General Utility Pouch", 0, /obj/item/storage/backpack/general_belt, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),

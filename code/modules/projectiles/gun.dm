@@ -2018,7 +2018,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		gun_accuracy_mult = max(0.1, gun_accuracy_mult - max(0,movement_onehanded_acc_penalty_mult * HIT_ACCURACY_MULT_TIER_3))
 		gun_scatter += max(0, movement_onehanded_acc_penalty_mult * SCATTER_AMOUNT_TIER_10)
 
-	if(dual_wield) //akimbo firing gives terrible accuracy
+	if(dual_wield && !(flags_gun_features & GUN_AKIMBO_ALLOWED)) //akimbo firing gives terrible accuracy
 		gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(5,7))
 		gun_scatter += SCATTER_AMOUNT_TIER_3
 

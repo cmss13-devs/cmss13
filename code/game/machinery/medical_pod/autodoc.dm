@@ -137,8 +137,8 @@
 			occupant.apply_damage(-occupant.getOxyLoss(), OXY) // keep them breathing, pretend they get IV dexplus
 			if(filtering)
 				var/filtered = 0
-				for(var/datum/reagent/x in occupant.reagents.reagent_list)
-					occupant.reagents.remove_reagent(x.id, 3) // same as sleeper, may need reducing
+				for(var/datum/reagent/chemical in occupant.reagents.reagent_list)
+					occupant.reagents.remove_reagent(chemical.id, 3) // same as sleeper, may need reducing
 					filtered += 3
 				if(!filtered)
 					filtering = 0
@@ -169,7 +169,12 @@
 					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Trauma repair surgery complete.")
 			if(heal_burn)
 				if(occupant.getFireLoss() > 0)
-					occupant.heal_limb_damage(0, 3, robo_repair=TRUE)
+					for(var/obj/limb/burned_limb as anything in occupant.limbs_to_process)	// slight cheat to save cost
+						if(burned_limb.status & (LIMB_ESCHAR|LIMB_THIRD_DEGREE_BURNS))
+							burned_limb.status &= ~(LIMB_ESCHAR|LIMB_THIRD_DEGREE_BURNS)
+							burned_limb.heal_damage(0, burned_limb.burn_healing_threshold)
+							return
+					occupant.heal_limb_damage(0, 3, robo_repair=TRUE)	// only starts general repairs once priority wounds are tended
 					if(prob(10))
 						visible_message("\The [src] whirrs and clicks as it grafts synthetic skin.")
 						to_chat(occupant, SPAN_INFO("You feel your burned flesh being sliced away and replaced."))

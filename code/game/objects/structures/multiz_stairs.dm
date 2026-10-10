@@ -5,7 +5,10 @@
 
 /obj/structure/stairs/multiz/Initialize(mapload, ...)
 	. = ..()
-	RegisterSignal(loc, COMSIG_TURF_ENTERED, PROC_REF(on_turf_entered))
+	// COMSIG_MOVABLE_TURF_ENTERED to handle ChangeTurf
+	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(register_with_turf))
+	if(!mapload)
+		register_with_turf()
 	for(var/turf/blocked_turf in range(1, src))
 		blockers += WEAKREF(new /obj/effect/build_blocker(blocked_turf, src))
 		blockers += WEAKREF(new /obj/structure/blocker/anti_cade(blocked_turf))
@@ -15,7 +18,12 @@
 	QDEL_LIST(blockers)
 	return ..()
 
-/obj/structure/stairs/multiz/proc/on_turf_entered(turf/source, atom/movable/enterer)
+/// Handler for callback of COMSIG_MOVABLE_TURF_ENTERED (turf changed)
+/obj/structure/stairs/multiz/proc/register_with_turf()
+	SIGNAL_HANDLER
+	RegisterSignal(loc, COMSIG_TURF_ENTERED, PROC_REF(on_stairs_moved))
+
+/obj/structure/stairs/multiz/proc/on_stairs_moved(turf/source, atom/movable/enterer)
 	SIGNAL_HANDLER
 	if(!istype(enterer, /mob))
 		return
@@ -143,8 +151,21 @@
 				LAZYADD(from_turf_to_images[from_turf], destination_turf_images[to_turf])
 				break // we found stairs that work, go on to the next turf
 		if(length(from_turf_to_images[from_turf]))
-			RegisterSignal(from_turf, COMSIG_TURF_ENTERED, PROC_REF(handle_entered), TRUE)
+			RegisterSignal(from_turf, COMSIG_TURF_ENTERED, PROC_REF(handle_entered), override=TRUE)
+			RegisterSignal(from_turf, COMSIG_PRE_TURF_CHANGE, PROC_REF(handle_pre_turf_change), override=TRUE)
 
+/// Handler for COMSIG_PRE_TURF_CHANGE to set post_change_callbacks
+/datum/staircase/proc/handle_pre_turf_change(turf/source, path, list/new_baseturfs, flags, list/post_change_callbacks)
+	SIGNAL_HANDLER
+	post_change_callbacks += CALLBACK(src, PROC_REF(re_register_from_turf_signals), source)
+
+/// Re-registers the COMSIG_TURF_ENTERED and COMSIG_PRE_TURF_CHANGE for handle_pre_turf_change
+/datum/staircase/proc/re_register_from_turf_signals(turf/new_turf)
+	SHOULD_NOT_SLEEP(TRUE)
+	RegisterSignal(new_turf, COMSIG_TURF_ENTERED, PROC_REF(handle_entered))
+	RegisterSignal(new_turf, COMSIG_PRE_TURF_CHANGE, PROC_REF(handle_pre_turf_change))
+
+/// Handles COMSIG_TURF_ENTERED for mobs that enters a from_turf to register handle_movement and handle_deleted
 /datum/staircase/proc/handle_entered(turf/originator, atom/what_did_it)
 	SIGNAL_HANDLER
 
@@ -161,7 +182,7 @@
 
 	in_range_mob += mover
 
-
+/// Handles COMSIG_MOVABLE_MOVED for mobs that were in a from_turf
 /datum/staircase/proc/handle_movement(mob/mover, old_loc, direction)
 	SIGNAL_HANDLER
 
@@ -180,6 +201,7 @@
 	in_range_mob -= mover
 	UnregisterSignal(mover, list(COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING))
 
+/// Handles COMSIG_PARENT_QDELETING for mobs that were in a from_turf
 /datum/staircase/proc/handle_deleted(atom/updater)
 	SIGNAL_HANDLER
 

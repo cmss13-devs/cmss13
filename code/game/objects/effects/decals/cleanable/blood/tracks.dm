@@ -8,6 +8,7 @@
 	var/going_state="blood2"
 	cleanable_type = CLEANABLE_TRACKS
 	overlay_on_initialize = TRUE
+	apply_bloody_feet = FALSE
 
 	var/list/steps_in
 	var/list/steps_out
@@ -16,9 +17,6 @@
 
 	/// Amount of pixels to shift either way in an attempt to make the tracks more organic
 	var/transverse_amplitude = 3
-
-/obj/effect/decal/cleanable/blood/tracks/Crossed()
-	return
 
 /obj/effect/decal/cleanable/blood/tracks/can_place_cleanable()
 	return FALSE

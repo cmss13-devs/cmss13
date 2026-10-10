@@ -76,6 +76,14 @@ of predators), but can be added to include variant game modes (like humans vs. h
 	if(dat)
 		to_world("[dat]")
 
+/datum/game_mode/proc/declare_completion_announce_colony_joes()
+	if(length(colony_joes))
+		var/dat = "<br>"
+		dat += SPAN_ROUNDBODY("<br>The Colony Working Joes were:")
+		for(var/entry in colony_joes)
+			dat += "<br>[entry] was [colony_joes[entry]["Name"]] [SPAN_BOLDNOTICE("([colony_joes[entry]["Status"]])")]"
+		to_world("[dat]")
+
 
 /datum/game_mode/proc/declare_completion_announce_medal_awards()
 	set waitfor = 0
@@ -276,6 +284,7 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 	var/num_WY = 0
 	var/num_UPP = 0
 	var/num_CLF = 0
+	var/num_TWE = 0
 	var/num_headcount = 0
 
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
@@ -293,12 +302,16 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 			num_CLF++
 			num_headcount++
 			continue
+		if(current_human.faction in FACTION_LIST_TWE)
+			num_TWE++
+			num_headcount++
+			continue
 		if(current_human.faction == FACTION_MARINE)
 			num_marines++
 			num_headcount++
 			continue
 		num_headcount++
-	return list("marine_headcount" = num_marines,"WY_headcount" = num_WY,"UPP_headcount" = num_UPP,"CLF_headcount" = num_CLF,"total_headcount" = num_headcount)
+	return list("marine_headcount" = num_marines,"WY_headcount" = num_WY,"UPP_headcount" = num_UPP,"CLF_headcount" = num_CLF,"TWE_headcount" = num_TWE,"total_headcount" = num_headcount)
 
 /*
 #undef QUEEN_DEATH_COUNTDOWN

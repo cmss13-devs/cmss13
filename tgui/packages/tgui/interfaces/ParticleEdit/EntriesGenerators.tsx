@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-undef */
 import { useBackend } from 'tgui/backend';
 import {
   Button,

@@ -956,13 +956,3 @@
 			</html>
 			"}
 
-
-/obj/item/book/manual/orbital_cannon_manual/New()
-	. = ..()
-
-	LAZYADD(GLOB.objects_of_interest, src)
-
-/obj/item/book/manual/orbital_cannon_manual/Destroy()
-	. = ..()
-
-	LAZYREMOVE(GLOB.objects_of_interest, src)

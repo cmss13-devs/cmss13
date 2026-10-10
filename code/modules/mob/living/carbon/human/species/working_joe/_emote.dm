@@ -10,6 +10,8 @@
 	var/haz_sound
 	/// Path to upp joe variant sound
 	var/upp_joe_sound
+	/// Path to Daniel variant sound
+	var/daniel_sound
 	/// What Working Joe types can use this emote
 	var/joe_flag = WORKING_JOE_EMOTE
 
@@ -18,4 +20,6 @@
 		return haz_sound
 	if(isuppjoe(user) && upp_joe_sound)
 		return upp_joe_sound
+	if(isdaniel(user) && daniel_sound)
+		return daniel_sound
 	return sound

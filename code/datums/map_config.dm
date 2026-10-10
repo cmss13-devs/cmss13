@@ -59,6 +59,8 @@
 	var/list/CO_insert_survivor_types
 	var/list/CO_insert_survivor_types_by_variant
 
+	var/list/colony_joe_types
+
 	var/list/defcon_triggers = list(5150, 4225, 2800, 1000, 0.0)
 
 	var/survivor_message = "You are a survivor of the attack on the colony. You worked or lived in the archaeology colony, and managed to avoid the alien attacks... until now."
@@ -81,6 +83,8 @@
 
 	/// If truthy this is config for a round overridden map: search for override maps in data/, instead of using a path in maps/
 	var/override_map
+
+	var/short_sensor_count = 0
 
 /datum/map_config/New()
 	survivor_types = list(
@@ -326,6 +330,23 @@
 		pathed_CO_insert_survivor_types += CO_insert_survivor_typepath
 	CO_insert_survivor_types = pathed_CO_insert_survivor_types.Copy()
 
+	if(islist(json["colony_joe_types"]))
+		colony_joe_types = json["colony_joe_types"]
+	else if ("colony_joe_types" in json)
+		log_world("map_config colony_joe_types is not a list!")
+		return
+
+	var/list/pathed_colony_joe_types = list()
+	for(var/joe_type in colony_joe_types)
+		var/colony_joe_typepath = joe_type
+		if(!ispath(colony_joe_typepath))
+			colony_joe_typepath = text2path(joe_type)
+			if(!ispath(colony_joe_typepath))
+				log_world("[joe_type] isn't a proper typepath, removing from colony_joe_typepath list")
+				continue
+		pathed_colony_joe_types += colony_joe_typepath
+	colony_joe_types = pathed_colony_joe_types.Copy()
+
 	if (islist(json["monkey_types"]))
 		monkey_types = list()
 		for(var/monkey in json["monkey_types"])
@@ -426,8 +447,12 @@
 			log_world("map_config map_item_type is not a proper typepath!")
 			return
 
+	if(json["short_sensor_count"])
+		short_sensor_count = text2num(json["short_sensor_count"])
+
 	if(json["nightmare_path"])
 		nightmare_path = json["nightmare_path"]
+
 
 	if(islist(json["environment_traits"]))
 		environment_traits = json["environment_traits"]
@@ -445,10 +470,10 @@
 			if(!(g in gamemode_names))
 				log_world("map_config has an invalid gamemode name!")
 				return
-			if(g == "Extended") // always allow extended
+			if(g == GAMEMODE_EXTENDED) // always allow extended
 				continue
 			gamemodes += g
-		gamemodes += "Extended"
+		gamemodes += GAMEMODE_EXTENDED
 	else if(!isnull(json["gamemodes"]))
 		log_world("map_config gamemodes is not a list!")
 		return

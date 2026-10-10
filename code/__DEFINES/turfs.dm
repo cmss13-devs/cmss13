@@ -34,3 +34,9 @@
 #define TURF_FROM_COORDS_LIST(List) (locate(List[1], List[2], List[3]))
 
 #define IS_OPAQUE_TURF(turf) (turf.directional_opacity == ALL_CARDINALS)
+
+// Types of deployables for the purpose of COMSIG_TURF_PRE_DEPLOYMENT
+/// Deployable is a mounted gun
+#define TURF_DEPLOYABLE_GUN "gun"
+/// Deployable is an automated sentry
+#define TURF_DEPLOYABLE_SENTRY "sentry"

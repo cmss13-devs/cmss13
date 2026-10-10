@@ -8,12 +8,14 @@
 	entry_message_body = "<a href='[generate_wiki_link()]'>You are second in command aboard the [MAIN_SHIP_NAME],</a> and are in next in the chain of command after the Commanding Officer. Where applicable, you must abide by the <a href='[CONFIG_GET(string/wikiarticleurl)][URL_WIKI_CO_RULES]'>Commanding Officer Code of Conduct</a>. You may need to fill in for other duties if areas are understaffed, and you are given access to do so. Make the USCM proud!"
 	return ..()
 
-/datum/job/command/executive/generate_entry_conditions(mob/living/M, whitelist_status)
+/datum/job/command/executive/generate_entry_conditions(mob/living/player, whitelist_status)
 	. = ..()
-	GLOB.marine_leaders[JOB_XO] = M
-	RegisterSignal(M, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_leader_candidate))
+	GLOB.marine_leaders[JOB_XO] = player
+	if(!GLOB.marine_leaders[JOB_CO])
+		SSticker.mode.acting_commander = player
+	RegisterSignal(player, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_leader_candidate))
 
-/datum/job/command/executive/proc/cleanup_leader_candidate(mob/M)
+/datum/job/command/executive/proc/cleanup_leader_candidate(mob/player)
 	SIGNAL_HANDLER
 	GLOB.marine_leaders -= JOB_XO
 

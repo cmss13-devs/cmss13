@@ -13,7 +13,7 @@
 	/// The specific riding component subtype we're loading our instructions from, don't leave this as default please!
 	var/riding_component_type = /datum/component/riding
 
-/datum/element/ridable/Attach(atom/movable/target, component_type = /datum/component/riding)
+/datum/element/ridable/Attach(atom/movable/target, component_type = /datum/component/riding/creature)
 	. = ..()
 	if(!ismovable(target))
 		return COMPONENT_INCOMPATIBLE
@@ -25,9 +25,11 @@
 	riding_component_type = component_type
 
 	RegisterSignal(target, COMSIG_MOVABLE_PREBUCKLE, PROC_REF(check_mounting))
+	ENABLE_BITFIELD(target.buckle_flags, CAN_BUCKLE)
 
-/datum/element/ridable/Detach(datum/target)
+/datum/element/ridable/Detach(atom/movable/target)
 	UnregisterSignal(target, list(COMSIG_MOVABLE_PREBUCKLE, COMSIG_PARENT_ATTACKBY))
+	DISABLE_BITFIELD(target.buckle_flags, CAN_BUCKLE)
 	return ..()
 
 /// Someone is buckling to this movable, which is literally the only thing we care about

@@ -1,0 +1,1 @@
+/obj/item/weapon/gun/pistol/heavy/@SUBTYPES : /obj/item/weapon/gun/pistol/deagle/@SUBTYPES{@OLD}

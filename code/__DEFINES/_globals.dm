@@ -9,6 +9,21 @@
 /// Creates an empty global initializer, do not use
 #define GLOBAL_UNMANAGED(X) /datum/controller/global_vars/proc/InitGlobal##X() { return; }
 
+#define GLOBAL_MANAGED_MULTIPLE(X)\
+/datum/controller/global_vars/proc/InitGlobal##X(){\
+	##X = CollectGlobal##X();\
+}\
+/datum/controller/global_vars/proc/CollectGlobal##X(){\
+	CAN_BE_REDEFINED(TRUE);\
+	return list();\
+}
+
+#define GLOBAL_MULTIPLE_UPDATE(X, NewValue)\
+/datum/controller/global_vars/CollectGlobal##X(){\
+	. = ..();\
+	. += ##NewValue;\
+}
+
 /// Creates name keyed subtype instance list
 #define GLOBAL_SUBTYPE_INDEXED(X, TypePath, Index)\
 /datum/controller/global_vars/proc/InitGlobal##X(){\
@@ -68,6 +83,8 @@
 
 /// Create a global const var, do not use
 #define GLOBAL_VAR_CONST(X, InitValue) GLOBAL_RAW(/const/##X) = InitValue; GLOBAL_UNMANAGED(X)
+
+#define GLOBAL_MULTIPLE(X) GLOBAL_RAW(/list/##X); GLOBAL_MANAGED_MULTIPLE(X)
 
 /// Create a list global with an initializer expression
 #define GLOBAL_LIST_INIT(X, InitValue) GLOBAL_RAW(/list/##X); GLOBAL_MANAGED(X, InitValue)

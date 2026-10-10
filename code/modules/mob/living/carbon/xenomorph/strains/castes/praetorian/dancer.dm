@@ -27,7 +27,6 @@
 	prae.armor_modifier -= XENO_ARMOR_MOD_VERY_SMALL
 	prae.speed_modifier += XENO_SPEED_FASTMOD_TIER_5
 	prae.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_7
-	prae.plasma_types = list(PLASMA_CATECHOLAMINE)
 	prae.claw_type = CLAW_TYPE_SHARP
 	prae.dodge_threshold = 6
 	prae.received_phero_caps["recovery"] = 3 //need to be limited, regens too fast with high strength phermones.

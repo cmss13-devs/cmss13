@@ -45,11 +45,13 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 /obj/structure/machinery/telecomms/Initialize(mapload, ...)
 	. = ..()
 	GLOB.telecomms_list += src
-	tcomms_startup()
+	if(toggled)
+		tcomms_startup()
 
 /obj/structure/machinery/telecomms/Destroy()
 	GLOB.telecomms_list -= src
-	tcomms_shutdown()
+	if(on)
+		tcomms_shutdown()
 	return ..()
 
 /obj/structure/machinery/telecomms/update_icon()

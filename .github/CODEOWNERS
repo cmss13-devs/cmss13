@@ -7,20 +7,22 @@
 # Fira
 
 /.dockerignore @Fira
-/code/controllers/subsystem/atoms.dm @Fira
-/code/controllers/subsystem/mapping.dm @Fira
 /code/controllers/subsystem/sound.dm @Fira
-/code/controllers/subsystem/predships.dm @Fira
-/code/controllers/subsystem/quadtrees.dm @Fira
-/code/datums/quadtree.dm @Fira
+/code/controllers/subsystem/influxdriver.dm @Fira
+/code/controllers/subsystem/influxmcstats.dm @Fira
+/code/controllers/subsystem/influxstats.dm @Fira
+/code/controllers/subsystem/mapgrids.dm @Fira
+/code/controllers/subsystem/nightmare.dm @Fira
+/code/controllers/subsystem/opensearch.dm @Fira
+/code/datums/components/mapcoords.dm @Fira
+/code/datums/mapgrid.dm @Fira
+/code/datums/mapgrid_manager.dm @Fira
+/code/datums/opensearch/ @Fira
 /code/datums/soundOutput.dm @Fira
-/code/game/cas_manager/ @Fira
-/code/game/machinery/computer/dropship_weapons.dm @Fira
 /code/game/sound.dm @Fira
-/code/game/world.dm @Fira
-/code/modules/mapping/reader.dm @Fira
-/code/modules/mapping/map_template.dm @Fira
 /code/modules/nightmare/ @Fira
+/code/modules/tents/ @Fira
+/maps/Nightmare/ @Fira
 /tools/docker/ @Fira
 /Dockerfile @Fira
 

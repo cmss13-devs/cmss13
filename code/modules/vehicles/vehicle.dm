@@ -13,7 +13,6 @@
 		VEHICLE_DRIVER = null
 	)
 
-	var/attack_log = null
 	var/on = 0
 	health = 100
 	var/maxhealth = 100
@@ -252,9 +251,6 @@
 	H.put_in_hands(cell)
 	cell = null
 	powercheck()
-
-/obj/vehicle/proc/RunOver(mob/living/carbon/human/H)
-	return //write specifics for different vehicles
 
 /obj/vehicle/afterbuckle(mob/M)
 	. = ..()

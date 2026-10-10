@@ -136,7 +136,7 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 		QDEL_IN(client, 10 SECONDS)
 		return FALSE
 
-	message_admins("Non-BYOND user [new_ckey] (previously [key]) has been authenticated via [request.authentication_method].")
+	message_admins("Non-BYOND user [new_ckey] (previously [ckey]) has been authenticated via [request.authentication_method].")
 
 	STOP_PROCESSING(SSauthentication, src)
 

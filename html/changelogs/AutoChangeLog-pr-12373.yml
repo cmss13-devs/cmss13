@@ -1,4 +1,0 @@
-author: "Ammoniacres"
-delete-after: True
-changes:
-  - bugfix: "fixed unpowered doors being unable to be opened by maintenance jacks (for humans)"

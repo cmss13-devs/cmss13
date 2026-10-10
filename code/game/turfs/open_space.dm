@@ -16,7 +16,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	plane = OPEN_SPACE_PLANE_START
 	is_weedable = NOT_WEEDABLE
 
-/turf/open_space/Initialize()
+/turf/open_space/Initialize(mapload, ...)
 	pass_flags = GLOB.pass_flags_cache[type]
 
 	if (isnull(pass_flags))
@@ -27,13 +27,41 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		initialize_pass_flags()
 
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
+
+	#if defined(UNIT_TESTS) || defined(TESTING)
+	// Assert when testing that this open_space is placed somewhere valid
+	if(!istype(get_area(src), /area/misc/testroom))
+		var/turf/below = get_turf_below()
+		while(istype(below, /turf/open_space))
+			below = SSmapping.get_turf_below(below)
+		if(!below)
+			stack_trace("[src] at [COORD(src)] falls through the world!")
+	#endif
+
+	// We don't call parent and this is important
+	for(var/atom/movable/thing in src)
+		Entered(thing)
+
 	return INITIALIZE_HINT_LATELOAD
 
-/turf/open_space/Enter(atom/movable/mover, atom/forget)
+/turf/open_space/Enter(atom/movable/mover, atom/old_loc)
 	. = ..()
-	if(. && !mover.throwing && isliving(mover) && check_blocked())
+
+	if(!isliving(mover))
+		return
+
+	if(. && mover.move_intentionally)
+		var/mob/living/climber = mover
+		if(climber.a_intent == INTENT_HARM)
+			. = TRUE
+		else
+			. = FALSE
+			climb_down(climber)
+
+	if(. && !HAS_TRAIT(mover, TRAIT_LAUNCHED) && check_blocked())
 		to_chat(mover, SPAN_WARNING("It would be too dangerous to go that way."))
-		return FALSE
+		. = FALSE
+
 
 /turf/open_space/Entered(atom/movable/entered_movable, atom/old_loc)
 	. = ..()
@@ -53,8 +81,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	var/turf/below = get_turf_below()
 	var/depth = 0
 	while(below)
-		new /obj/vis_contents_holder(src, below, depth)
-		if(!istransparentturf(below))
+		var/below_transparent = istransparentturf(below)
+		new /obj/vis_contents_holder(src, below, depth, !below_transparent || !istype(below, /turf/open_space))
+		if(!below_transparent)
 			break
 		below = SSmapping.get_turf_below(below)
 		depth++
@@ -70,6 +99,15 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		to_chat(user, SPAN_WARNING("It would be too dangerous to go that way."))
 		return
 
+	var/turf/below = get_turf_below()
+	while(istype(below, /turf/open_space))
+		below = SSmapping.get_turf_below(below)
+	if(!below)
+		to_chat(user, SPAN_WARNING("You can't go that way."))
+		return
+
+	user.visible_message(SPAN_WARNING("[user] starts climbing down."), SPAN_WARNING("You start climbing down."))
+
 	var/climb_down_time = 1 SECONDS
 	if(ishuman_strict(user))
 		climb_down_time = 2.5 SECONDS
@@ -80,7 +118,18 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		else
 			climb_down_time = 1 SECONDS
 
-	user.visible_message(SPAN_WARNING("[user] starts climbing down."), SPAN_WARNING("You start climbing down."))
+	var/list/grabbed_things = list()
+	var/hands_full = FALSE
+	for(var/obj/item/in_hand in list(user.l_hand, user.r_hand))
+		hands_full = TRUE
+		if(istype(in_hand, /obj/item/grab))
+			var/obj/item/grab/grabbing = in_hand
+			grabbed_things += grabbing.grabbed_thing
+			grabbing.grabbed_thing.forceMove(user.loc)
+		climb_down_time *= 1.2
+
+	if(hands_full)
+		to_chat(user, SPAN_INFO("Trying to climb with your hands full is slowing you down."))
 
 	if(!do_after(user, climb_down_time, INTERRUPT_ALL, BUSY_ICON_CLIMBING))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
@@ -88,23 +137,29 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	user.visible_message(SPAN_WARNING("[user] climbs down."), SPAN_WARNING("You climb down."))
 
-	var/turf/below = get_turf_below()
-	while(istype(below, /turf/open_space))
-		below = SSmapping.get_turf_below(below)
-
 	user.forceMove(below)
+	for(var/atom/movable/thing as anything in grabbed_things) // grabbed things aren't moved to the tile immediately to: make the animation better, preserve the grab
+		thing.forceMove(below)
 	below.on_climb_down(user)
-	return
 
 /turf/open_space/proc/check_fall(atom/movable/movable, kill_if_blocked=TRUE)
 	if(movable.flags_atom & NO_ZFALL)
 		return
+
+	if(SSticker.current_state < GAME_STATE_PLAYING)
+		return // Don't drop mapped in stuff
+
+	if(movable.loc != src && length(movable.locs) > 1)
+		return // Ignore multiloc things unless their primary loc is here
 
 	var/height = 1
 	var/turf/below = get_turf_below()
 	while(istype(below, /turf/open_space))
 		below = SSmapping.get_turf_below(below)
 		height++
+
+	if(!below)
+		return
 
 	movable.forceMove(below)
 	movable.onZImpact(below, height)

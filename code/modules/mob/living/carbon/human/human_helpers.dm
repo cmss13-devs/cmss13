@@ -143,29 +143,14 @@
 				return null
 
 /mob/living/carbon/human/proc/set_limb_icons()
-	var/datum/skin_color/set_skin_color = GLOB.skin_color_list[skin_color]
-	var/datum/body_size/set_body_size = GLOB.body_size_list[body_size]
-	var/datum/body_type/set_body_type = GLOB.body_type_list[body_type]
+	var/datum/skin_color/set_skin_color = GLOB.skin_color_list[skin_color] || GLOB.skin_color_list[SKIN_COLOR_PALE2]
+	var/skin_color_icon = set_skin_color?.icon_name
 
-	var/skin_color_icon
-	var/body_size_icon
-	var/body_type_icon
+	var/datum/body_size/set_body_size = GLOB.body_size_list[body_size] || GLOB.body_size_list[BODY_SIZE_AVERAGE]
+	var/body_size_icon = set_body_size?.icon_name
 
-	if(!set_skin_color)
-		skin_color_icon = "pale2"
-	else
-		skin_color_icon = set_skin_color.icon_name
-
-	if(!set_body_size)
-		body_size_icon = "avg"
-	else
-		body_size_icon = set_body_size.icon_name
-
-
-	if(!set_body_type)
-		body_type_icon = "lean"
-	else
-		body_type_icon = set_body_type.icon_name
+	var/datum/body_type/set_body_type = GLOB.body_type_list[body_type] || GLOB.body_type_list[BODY_TYPE_LEAN]
+	var/body_type_icon = set_body_type?.icon_name
 
 	if(isspeciesyautja(src))
 		skin_color_icon = skin_color
@@ -324,26 +309,27 @@
 			to_chat(src, SPAN_NOTICE("Your source of light shorts out."))
 
 
+
 /mob/living/carbon/human/a_intent_change(intent as num)
 	. = ..()
 	if(HAS_TRAIT(src, TRAIT_INTENT_EYES) && (src.stat != DEAD)) //1st gen synths change eye color based on intent. But not when they're dead.
 		switch(a_intent)
-			if(INTENT_HELP) //Green, defalt
-				r_eyes = 0
-				g_eyes = 255
-				b_eyes = 0
+			if(INTENT_HELP) //Green, default
+				r_eyes = species.eyes_help[1]
+				g_eyes = species.eyes_help[2]
+				b_eyes = species.eyes_help[3]
 			if(INTENT_DISARM) //Blue
-				r_eyes = 90
-				g_eyes = 90
-				b_eyes = 253
+				r_eyes = species.eyes_disarm[1]
+				g_eyes = species.eyes_disarm[2]
+				b_eyes = species.eyes_disarm[3]
 			if(INTENT_GRAB) //Orange, since yellow doesn't show at all!
-				r_eyes = 239
-				g_eyes = 167
-				b_eyes = 0
+				r_eyes = species.eyes_grab[1]
+				g_eyes = species.eyes_grab[2]
+				b_eyes = species.eyes_grab[3]
 			if(INTENT_HARM) //RED!
-				r_eyes = 255
-				g_eyes = 0
-				b_eyes = 0
+				r_eyes = species.eyes_harm[1]
+				g_eyes = species.eyes_harm[2]
+				b_eyes = species.eyes_harm[3]
 		update_body()
 
 /mob/living/carbon/human/proc/is_bleeding()

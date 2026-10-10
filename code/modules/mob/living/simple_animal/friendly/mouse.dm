@@ -84,6 +84,7 @@
 	return
 
 /mob/living/simple_animal/small/mouse/Crossed(AM as mob|obj)
+	..()
 	if( ishuman(AM) )
 		if(!ckey && stat == UNCONSCIOUS)
 			set_stat(CONSCIOUS)
@@ -93,7 +94,6 @@
 			var/mob/M = AM
 			to_chat(M, SPAN_NOTICE("[icon2html(src, M)] Squeek!"))
 			M << 'sound/effects/mousesqueek.ogg'
-	..()
 
 /mob/living/simple_animal/small/mouse/death()
 	layer = ABOVE_LYING_MOB_LAYER

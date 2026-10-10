@@ -155,3 +155,24 @@
 	say_message = "Abandoning search."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/task_update/patrolling_routine
+	key = "patrollingroutine"
+	sound = 'sound/voice/joe/daniel/patrolling_routine.ogg'
+	say_message = "Patrolling routine engaged."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/task_update/clearing_the_queue
+	key = "clearingthequeue"
+	sound = 'sound/voice/joe/daniel/clearing_the_queue.ogg'
+	say_message = "Clearing the query queue."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/task_update/seeking_protocol
+	key = "seekingprotocol"
+	sound = 'sound/voice/joe/daniel/seeking_protocol.ogg'
+	say_message = "Initiating seeking protocol 23."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = DANIEL_EMOTE

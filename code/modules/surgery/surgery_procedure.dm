@@ -62,7 +62,7 @@
 	. = ..()
 
 ///Catch-all proc for additional preconditions for starting the surgery. Return FALSE if the surgery can't be done.
-/datum/surgery/proc/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
+/datum/surgery/proc/can_start(mob/user, mob/living/carbon/patient, obj/limb/patient_limb, obj/item/tool)
 	return TRUE
 	//Might add the surgery computer later
 
@@ -97,7 +97,7 @@
 	for(var/mob/living/potential_blocker in get_turf(target))
 		if(potential_blocker == user || potential_blocker == target)
 			continue
-		to_chat(user, SPAN_WARNING("You can't operate when you don't have enough space! Remove everybody else."))
+		to_chat(user, SPAN_WARNING("You can't operate when you don't have enough space! Remove everybody else from the area!"))
 		return FALSE
 
 	if(user == target)
@@ -108,20 +108,31 @@
 			to_chat(user, SPAN_WARNING("You can't perform surgery on the same \
 				[user.zone_selected == "r_hand"||user.zone_selected == "l_hand" ? "hand":"arm"] you're using!"))
 			return FALSE
-	var/datum/surgery_step/current_step = GLOB.surgery_step_list[steps[status]]
-	if(current_step)
-		if(current_step.attempt_step(user, target, user.zone_selected, tool, src, repeating)) //First, try this step.
+	var/next = status
+	var/datum/surgery_step/current_step = GLOB.surgery_step_list[steps[next]]
+	var/list/attempted_steps = list()
+	while(current_step)
+		// attempt the step
+		if(current_step.attempt_step(user, target, user.zone_selected, tool, src, repeating, next-status))
 			return TRUE
-		var/datum/surgery_step/next_step
-		if(current_step.skip_step_criteria(user, target, user.zone_selected, tool, src) && status < length(steps)) //If that doesn't work but the step is optional and not the last in the list, try the next step.
-			next_step = GLOB.surgery_step_list[steps[status + 1]]
-			if(next_step.attempt_step(user, target, user.zone_selected, tool, src, skipped = TRUE))
-				return TRUE
-		if(tool && is_surgery_tool(tool)) //Just because you used the wrong tool doesn't mean you meant to whack the patient with it...
-			if(next_step)
-				to_chat(user, SPAN_WARNING("You can't [current_step.desc] with \the [tool], or [next_step.desc]."))
-			else
-				to_chat(user, SPAN_WARNING("You can't [current_step.desc] with \the [tool]."))
-			return FALSE //...but you might be wanting to use it on them anyway. If on help intent, the help-intent safety will apply for this attack.
-	return FALSE
+		attempted_steps += current_step
+		// check if its an optional step
+		if(!current_step.skip_step_criteria(user, target, user.zone_selected, tool, src))
+			if(tool && is_surgery_tool(tool)) //Just because you used the wrong tool doesn't mean you meant to whack the patient with it...
+				var/hint_msg
+				for(var/datum/surgery_step/step as anything in attempted_steps)
+					if(hint_msg)
+						if(step == current_step)
+							hint_msg += ", or [step.desc]"
+						else
+							hint_msg += ", [step.desc]"
+					else
+						hint_msg = "You can't [step.desc] with [tool]"
+				to_chat(user, SPAN_WARNING("[hint_msg]."))
+			return FALSE
+		// step was optional, try the next if it exists
+		if(++next > length(steps))
+			break
+		current_step = GLOB.surgery_step_list[steps[next]]
 
+	return FALSE

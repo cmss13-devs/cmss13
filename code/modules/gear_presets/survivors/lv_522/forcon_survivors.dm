@@ -287,9 +287,9 @@
 				sidearmbelt = /obj/item/storage/belt/gun/mateba/mtr6m
 				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
 			if(CO_GUN_DEAGLE)
-				sidearm = /obj/item/weapon/gun/pistol/heavy/co
+				sidearm = /obj/item/weapon/gun/pistol/deagle/co
 				sidearmbelt = /obj/item/storage/belt/gun/m4a3
-				sidearmammo = /obj/item/ammo_magazine/pistol/heavy/super
+				sidearmammo = /obj/item/ammo_magazine/pistol/deagle/super
 			if(CO_GUN_M1911C)
 				sidearm = /obj/item/weapon/gun/pistol/m1911/custom
 				sidearmbelt = /obj/item/storage/belt/gun/m4a3
@@ -316,9 +316,9 @@
 				sidearmbelt = /obj/item/storage/belt/gun/mateba/council
 				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
 			if(CO_GUN_DEAGLE_COUNCIL)
-				sidearm = /obj/item/weapon/gun/pistol/heavy/co/gold
+				sidearm = /obj/item/weapon/gun/pistol/deagle/co/gold
 				sidearmbelt = /obj/item/storage/belt/gun/m4a3/black
-				sidearmammo = /obj/item/ammo_magazine/pistol/heavy/super
+				sidearmammo = /obj/item/ammo_magazine/pistol/deagle/super
 
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
@@ -337,7 +337,6 @@
 	new_human.equip_to_slot_or_del(new sidearmammo(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new sidearmammo(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new sidearm(new_human), WEAR_R_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/cigarette/cigar(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo/gold(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/bottle/davenport(new_human), WEAR_IN_BACK)

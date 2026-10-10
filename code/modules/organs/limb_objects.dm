@@ -6,54 +6,38 @@
 	///What bone would be in this limb?
 	var/bone_type
 
-/obj/item/limb/New(loc, mob/living/carbon/human/H)
+/obj/item/limb/New(loc, mob/living/carbon/human/limbus)
 	..(loc)
-	if(!istype(H))
+	if(!istype(limbus))
 		return
 
 	//Forming icon for the limb
 
 	//Setting base icon for this mob's race
 	var/icon/base
-	if(H.species && H.species.icobase)
-		base = icon(H.species.icobase)
+	if(limbus.species && limbus.species.icobase)
+		base = icon(limbus.species.icobase)
 	else
 		base = icon('icons/mob/humans/species/r_human.dmi')
 
 
 	icon = base
-	var/datum/skin_color/set_skin_color = GLOB.skin_color_list[H.skin_color]
-	var/datum/body_type/set_body_type = GLOB.body_type_list[H.body_type]
-	var/datum/body_size/set_body_size = GLOB.body_size_list[H.body_size]
+	var/datum/skin_color/set_skin_color = GLOB.skin_color_list[limbus.skin_color] || GLOB.skin_color_list[SKIN_COLOR_PALE2]
+	var/skin_color_icon = set_skin_color?.icon_name
 
-	var/skin_color_icon
-	var/body_type_icon
-	var/body_size_icon
+	var/datum/body_type/set_body_type = GLOB.body_type_list[limbus.body_type] || GLOB.body_type_list[BODY_TYPE_LEAN]
+	var/body_type_icon = set_body_type?.icon_name
 
-	if(!set_skin_color)
-		skin_color_icon = "pale2"
-	else
-		skin_color_icon = set_skin_color.icon_name
+	var/datum/body_size/set_body_size = GLOB.body_size_list[limbus.body_size] || GLOB.body_size_list[BODY_SIZE_AVERAGE]
+	var/body_size_icon = set_body_size?.icon_name
 
-	if(!set_body_type)
-		body_type_icon = "lean"
-	else
-		body_type_icon = set_body_type.icon_name
+	if(isspeciesyautja(limbus))
+		skin_color_icon = limbus.skin_color
+		body_type_icon = limbus.body_type
 
-	if(!set_body_size)
-		body_size_icon = "avg"
-	else
-		body_size_icon = set_body_size.icon_name
-
-	if(isspeciesyautja(H))
-		skin_color_icon = H.skin_color
-		body_type_icon = H.body_type
-
-	icon_state = "[get_limb_icon_name(H.species, body_size_icon, body_type_icon, H.gender, name, skin_color_icon, H.body_presentation)]"
+	icon_state = "[get_limb_icon_name(limbus.species, body_size_icon, body_type_icon, limbus.gender, name, skin_color_icon, limbus.body_presentation)]"
 	setDir(SOUTH)
 	apply_transform(turn(transform, rand(70,130)))
-
-
 
 /obj/item/limb/arm/l_arm
 	name = "left arm"

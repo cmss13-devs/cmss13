@@ -17,7 +17,8 @@
 /obj/effect/attach_point/fuel/dropship2{
 	dir = 1;
 	pixel_x = -32;
-	attach_id = 11
+	attach_id = 11;
+	adjusted_pixel = 1
 	},
 /turf/closed/shuttle/dropship2/transparent{
 	icon_state = "33"

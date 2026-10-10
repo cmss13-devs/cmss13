@@ -2518,6 +2518,12 @@
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/lv759/indoors/caves/south_west_caves)
+"agG" = (
+/obj/structure/machinery/recharge_station/alt{
+	dir = 8
+	},
+/turf/open/floor/corsat,
+/area/lv759/indoors/wy_research_complex/hallwaysoutheast)
 "agH" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2"
@@ -2604,6 +2610,12 @@
 	},
 /turf/open/floor/hybrisa/engineership/engineer_floor9,
 /area/lv759/indoors/derelict_ship)
+"agT" = (
+/obj/structure/machinery/recharge_station/alt{
+	dir = 8
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/meridian/meridian_foyer)
 "agU" = (
 /obj/structure/prop/hybrisa/cavedecor/stalagmite4{
 	pixel_x = -4;
@@ -32508,10 +32520,10 @@
 /obj/structure/machinery/light/small/blue{
 	dir = 8
 	},
-/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 5
 	},
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/corsat,
 /area/lv759/indoors/power_plant/equipment_west)
 "dRm" = (
@@ -41075,8 +41087,9 @@
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv759/outdoors/colony_streets/central_streets)
 "ffH" = (
-/obj/structure/machinery/recharge_station{
-	layer = 2.9
+/obj/structure/machinery/recharge_station/alt{
+	dir = 8;
+	layer = 3.1
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/indoors/meridian/meridian_foyer)
@@ -45057,7 +45070,7 @@
 	layer = 2
 	},
 /obj/structure/surface/table/almayer,
-/obj/item/tool/kitchen/utensil/pfork{
+/obj/item/tool/kitchen/utensil/fork/plastic{
 	pixel_x = -16;
 	pixel_y = 1
 	},
@@ -45742,7 +45755,6 @@
 /turf/closed/wall/hybrisa/colony,
 /area/lv759/indoors/apartment/northapartments)
 "fRe" = (
-/obj/structure/machinery/recharge_station,
 /obj/structure/catwalk/prison,
 /obj/structure/barricade/handrail{
 	dir = 8
@@ -45751,6 +45763,7 @@
 	pixel_y = 32;
 	color = "#b96a37"
 	},
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/weymart/backrooms)
 "fRh" = (
@@ -53459,7 +53472,7 @@
 /turf/open/floor/prison,
 /area/lv759/outdoors/colony_streets/south_west_street)
 "haK" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/corsat,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "haN" = (
@@ -62233,7 +62246,9 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/caves/north_west_caves)
 "ipT" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 8
+	},
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "iqa" = (
@@ -66822,12 +66837,14 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_street)
 "iZh" = (
-/obj/structure/machinery/recharge_station,
 /obj/structure/cable/white{
 	color = "#9f8700";
 	icon_state = "4-8";
 	layer = 5;
 	level = 2
+	},
+/obj/structure/machinery/recharge_station/alt{
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
@@ -67157,8 +67174,8 @@
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/casino/casino_vault)
 "jbL" = (
-/obj/structure/machinery/recharge_station,
 /obj/effect/decal/cleanable/cobweb2,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/plating,
 /area/lv759/indoors/colonial_marshals/southwest_maintenance)
 "jbM" = (
@@ -67410,10 +67427,10 @@
 	dir = 1;
 	layer = 2
 	},
-/obj/item/tool/kitchen/utensil/pspoon{
+/obj/item/tool/kitchen/utensil/spoon/plastic{
 	pixel_y = 1
 	},
-/obj/item/tool/kitchen/utensil/pknife{
+/obj/item/tool/kitchen/utensil/knife/plastic{
 	pixel_x = 8;
 	pixel_y = -1
 	},
@@ -73379,7 +73396,7 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/lv759/outdoors/caveplateau)
 "jZG" = (
-/obj/item/tool/kitchen/utensil/pfork,
+/obj/item/tool/kitchen/utensil/fork/plastic,
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
 	},
@@ -75834,7 +75851,6 @@
 /turf/open/floor/plating/plating_catwalk/aicore/white,
 /area/lv759/indoors/apartment/westbedrooms)
 "krP" = (
-/obj/structure/machinery/recharge_station,
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
@@ -75845,6 +75861,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
+	},
+/obj/structure/machinery/recharge_station/alt{
+	dir = 8
 	},
 /turf/open/floor/prison/darkbrown2/north,
 /area/lv759/indoors/recycling_plant/synthetic_storage)
@@ -81138,7 +81157,10 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/mining_outpost/south)
 "lgi" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	layer = 3.1;
+	dir = 8
+	},
 /turf/open/floor/corsat,
 /area/lv759/indoors/wy_research_complex/hallwaysoutheast)
 "lgl" = (
@@ -95894,8 +95916,8 @@
 /turf/open/hybrisa/street/roadlines4,
 /area/lv759/outdoors/colony_streets/north_east_street)
 "nri" = (
-/obj/item/tool/kitchen/utensil/pknife,
-/obj/item/tool/kitchen/utensil/pspoon,
+/obj/item/tool/kitchen/utensil/knife/plastic,
+/obj/item/tool/kitchen/utensil/spoon/plastic,
 /obj/structure/surface/table/almayer{
 	color = "#848484"
 	},
@@ -99126,7 +99148,7 @@
 	name = "\improper UA Prepared Meal (cornbread)";
 	pixel_y = 9
 	},
-/obj/item/tool/kitchen/utensil/pknife,
+/obj/item/tool/kitchen/utensil/knife/plastic,
 /obj/structure/surface/table/almayer{
 	color = "#848484"
 	},
@@ -101743,7 +101765,7 @@
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/mining_outpost/northeast)
 "oiA" = (
-/obj/structure/machinery/m56d_hmg/mg_turret/dropship,
+/obj/structure/machinery/m56d_hmg/mg_turret,
 /obj/structure/barricade/sandbags,
 /obj/item/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/dark,
@@ -102348,11 +102370,11 @@
 	pixel_x = 7;
 	pixel_y = 10
 	},
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/ammo_magazine/pistol/heavy,
-/obj/item/weapon/gun/pistol/heavy,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/ammo_magazine/pistol/deagle,
+/obj/item/weapon/gun/pistol/deagle,
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
@@ -108588,7 +108610,6 @@
 /turf/open/floor/hybrisa/tile/cuppajoesfloor,
 /area/lv759/indoors/spaceport/cuppajoes)
 "plg" = (
-/obj/structure/machinery/recharge_station,
 /obj/structure/catwalk/prison,
 /obj/structure/barricade/handrail{
 	dir = 8
@@ -108601,6 +108622,7 @@
 	pixel_x = -17;
 	pixel_y = 32
 	},
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/weymart/backrooms)
 "pll" = (
@@ -112620,10 +112642,13 @@
 /area/lv759/indoors/caves/south_west_caves)
 "pQv" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/recharge_station,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
+	},
+/obj/structure/machinery/cryopod/joe/weyland{
+	pixel_x = 2;
+	pixel_y = 25
 	},
 /turf/open/floor/prison/darkbrown2/north,
 /area/lv759/indoors/recycling_plant/synthetic_storage)
@@ -117998,7 +118023,7 @@
 /area/lv759/indoors/bar/entertainment)
 "qII" = (
 /obj/item/trash/tray,
-/obj/item/tool/kitchen/utensil/pfork,
+/obj/item/tool/kitchen/utensil/fork/plastic,
 /obj/structure/surface/table/almayer{
 	color = "#848484"
 	},
@@ -133957,6 +133982,8 @@
 /obj/effect/spawner/random/toolbox{
 	layer = 4
 	},
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/prison/cell_stripe/north,
 /area/lv759/indoors/recycling_plant/synthetic_storage)
 "sZX" = (
@@ -134770,7 +134797,6 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "tfr" = (
-/obj/structure/machinery/recharge_station,
 /obj/structure/catwalk/prison,
 /obj/structure/barricade/handrail{
 	dir = 8
@@ -134783,6 +134809,7 @@
 	pixel_x = -17;
 	pixel_y = 32
 	},
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/weymart/backrooms)
 "tfu" = (
@@ -136205,7 +136232,9 @@
 /turf/open/floor/kutjevo/grey,
 /area/lv759/indoors/meridian/meridian_maintenance_east)
 "toU" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 1
+	},
 /turf/open/floor/corsat,
 /area/lv759/indoors/power_plant/equipment_east)
 "toX" = (
@@ -145783,14 +145812,13 @@
 /turf/open/floor/hybrisa/tile/cementflat,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south)
 "uLE" = (
-/obj/structure/machinery/recharge_station,
-/obj/structure/sign/poster/corporate{
-	layer = 2.9;
-	pixel_y = 32
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
+	},
+/obj/structure/machinery/cryopod/joe/weyland{
+	pixel_y = 25;
+	pixel_x = -1
 	},
 /turf/open/floor/prison/darkbrown2/north,
 /area/lv759/indoors/recycling_plant/synthetic_storage)
@@ -146008,7 +146036,8 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds2{
 	id = "sh_dropship2";
-	name = "\improper WY-LWI StarGlider SG-200 airlock"
+	name = "\improper WY-LWI StarGlider SG-200 airlock";
+	dir = 2
 	},
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/spaceport/starglider)
@@ -147771,10 +147800,11 @@
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/south_east_street)
 "uZr" = (
-/obj/item/stack/sheet/cardboard/small_stack{
-	pixel_x = 8
-	},
 /obj/structure/pipes/vents/pump,
+/obj/item/stack/sheet/cardboard/small_stack{
+	pixel_x = 8;
+	layer = 2.9
+	},
 /turf/open/floor/almayer/plating/northeast,
 /area/lv759/indoors/power_plant/equipment_west)
 "uZt" = (
@@ -155075,6 +155105,8 @@
 /obj/effect/decal/cleanable/dirt/alt_dirt{
 	color = "#140400"
 	},
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
 /turf/open/floor/prison/cell_stripe/north,
 /area/lv759/indoors/recycling_plant/synthetic_storage)
 "weu" = (
@@ -156423,9 +156455,6 @@
 /turf/open/floor/kutjevo/grey,
 /area/lv759/indoors/recycling_plant/garage)
 "woF" = (
-/obj/effect/acid_hole{
-	explo_proof = 1
-	},
 /obj/structure/blocker/invisible_wall,
 /turf/closed/shuttle/dropship_wy/StarGlider{
 	icon_state = "79";
@@ -159400,19 +159429,19 @@
 "wNf" = (
 /obj/structure/surface/table,
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/weapon/twohanded/lungemine{
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/item/weapon/twohanded/lungemine/damaged{
 	pixel_y = 17;
 	pixel_x = -2
 	},
-/obj/item/weapon/twohanded/lungemine{
-	pixel_y = 1;
-	pixel_x = 1
-	},
-/obj/item/weapon/twohanded/lungemine{
+/obj/item/weapon/twohanded/lungemine/damaged{
 	pixel_y = 9
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
+/obj/item/weapon/twohanded/lungemine/damaged{
+	pixel_x = 1;
+	pixel_y = 1
 	},
 /turf/open/floor/hybrisa/tile/tileblue,
 /area/lv759/indoors/mining_outpost/south)
@@ -159940,7 +159969,7 @@
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/caves/wy_research_complex_entrance)
 "wSf" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/corsat,
 /area/lv759/indoors/wy_research_complex/hallwaysouthwest)
 "wSj" = (
@@ -166909,7 +166938,9 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/colonial_marshals/holding_cells)
 "xSS" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 1
+	},
 /turf/open/floor/corsat/box,
 /area/lv759/indoors/wy_research_complex/researchanddevelopment)
 "xSU" = (
@@ -169186,7 +169217,9 @@
 /turf/open/floor/hybrisa/carpet/carpetgreendeco,
 /area/lv759/indoors/hospital/break_room)
 "yjV" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 1
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/hospital/east_hallway)
 "yjW" = (
@@ -178805,7 +178838,7 @@ wHK
 mRp
 dNA
 mMH
-lgi
+agG
 lgi
 mMH
 lwP
@@ -199115,7 +199148,7 @@ iDz
 hfZ
 jxV
 avI
-ffH
+agT
 ffH
 uAb
 gax

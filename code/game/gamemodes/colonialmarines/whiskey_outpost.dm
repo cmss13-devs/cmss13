@@ -11,7 +11,8 @@
 /datum/game_mode/whiskey_outpost
 	name = GAMEMODE_WHISKEY_OUTPOST
 	config_tag = GAMEMODE_WHISKEY_OUTPOST
-	required_players = 140
+	required_players = 120 // Ultimately controlled by /datum/config_entry/number/whiskey_required_players
+	required_ready_players = 60
 	xeno_bypass_timer = 1
 	static_comms_amount = 0
 	flags_round_type = MODE_NEW_SPAWN
@@ -21,7 +22,7 @@
 		/datum/job/civilian/synthetic/whiskey = JOB_SYNTH,
 		/datum/job/command/warrant/whiskey = JOB_CHIEF_POLICE,
 		/datum/job/command/bridge/whiskey = JOB_SO,
-		/datum/job/command/tank_crew/whiskey = JOB_TANK_CREW,
+		/datum/job/command/warden/whiskey = JOB_WARDEN,
 		/datum/job/command/police/whiskey = JOB_POLICE,
 		/datum/job/command/pilot/whiskey = JOB_CAS_PILOT,
 		/datum/job/logistics/requisition/whiskey = JOB_CHIEF_REQUISITION,
@@ -80,13 +81,15 @@
 	starting_round_modifiers = list(/datum/gamemode_modifier/permadeath, /datum/gamemode_modifier/more_crit, /datum/gamemode_modifier/disable_wj_spawns)
 
 	votable = TRUE
-	vote_cycle = 75 // approx. once every 5 days, if it wins the vote
+	vote_cycle = 65 // approx. once every 5 days, if it wins the vote
 
 	taskbar_icon = 'icons/taskbar/gml_wo.png'
 
 /datum/game_mode/whiskey_outpost/New()
 	. = ..()
 	required_players = CONFIG_GET(number/whiskey_required_players)
+	if(!isnull(required_ready_players))
+		required_ready_players = min(required_ready_players, required_players) // Don't ever require more ready than voting
 
 /datum/game_mode/whiskey_outpost/get_roles_list()
 	return GLOB.ROLES_WO
@@ -238,7 +241,6 @@
 			J.total_positions = J.current_positions
 		J.current_positions = J.get_total_positions(TRUE)
 	to_world("<B>New players may no longer join the game.</B>")
-	message_admins("Wave one has begun. Disabled new player game joining.")
 	message_admins("Wave one has begun. Disabled new player game joining except for replacement of cryoed marines.")
 	world.update_status()
 
@@ -279,7 +281,7 @@
 		to_world(SPAN_ROUNDBODY("Well done, you've secured LV-624 for the hive!"))
 		to_world(SPAN_ROUNDBODY("It will be another five years before the USCM returns to the Neroid Sector, with the arrival of the 2nd 'Falling Falcons' Battalion and the USS Almayer."))
 		to_world(SPAN_ROUNDBODY("The xenomorph hive on LV-624 remains unthreatened until then..."))
-		world << sound('sound/misc/Game_Over_Man.ogg')
+		send_end_round_music('sound/misc/Game_Over_Man.ogg')
 		if(GLOB.round_statistics)
 			GLOB.round_statistics.round_result = MODE_INFESTATION_X_MAJOR
 			if(GLOB.round_statistics.current_map)
@@ -292,7 +294,7 @@
 		to_world(SPAN_ROUNDBODY("The signal rings out to the USS Alistoun, and Dust Raiders stationed elsewhere in the Neroid Sector begin to converge on LV-624."))
 		to_world(SPAN_ROUNDBODY("Eventually, the Dust Raiders secure LV-624 and the entire Neroid Sector in 2182, pacifiying it and establishing peace in the sector for decades to come."))
 		to_world(SPAN_ROUNDBODY("The USS Almayer and the 2nd 'Falling Falcons' Battalion are never sent to the sector and are spared their fate in 2186."))
-		world << sound('sound/misc/hell_march.ogg')
+		send_end_round_music('sound/misc/hell_march.ogg')
 		if(GLOB.round_statistics)
 			GLOB.round_statistics.round_result = MODE_INFESTATION_M_MAJOR
 			if(GLOB.round_statistics.current_map)
@@ -303,7 +305,7 @@
 		log_game("Round end result - no winners")
 		to_world(SPAN_ROUND_HEADER("NOBODY WON!"))
 		to_world(SPAN_ROUNDBODY("How? Don't ask me..."))
-		world << 'sound/misc/sadtrombone.ogg'
+		send_end_round_music('sound/misc/sadtrombone.ogg')
 		if(GLOB.round_statistics)
 			GLOB.round_statistics.round_result = MODE_INFESTATION_DRAW_DEATH
 
@@ -671,7 +673,7 @@
 		return
 
 	if(!is_ground_level(user.z))
-		to_chat(user, "You have to be on the ground to use this or it won't transmit.")
+		to_chat(user, "You have to be on the ground to use this, or it won't transmit.")
 		return
 
 	activated = 1
@@ -679,15 +681,15 @@
 	w_class = 10
 	icon_state = "[icon_activated]"
 	playsound(src, 'sound/machines/twobeep.ogg', 15, 1)
-	to_chat(user, "You activate the [src]. Now toss it, the supplies will arrive in a moment!")
+	to_chat(user, "You activate [src]. Now toss it, the supplies will arrive in a moment!")
 
-	var/mob/living/carbon/C = user
-	if(istype(C) && !C.throw_mode)
-		C.toggle_throw_mode(THROW_MODE_NORMAL)
+	var/mob/living/carbon/person = user
+	if(istype(person) && !person.throw_mode)
+		person.toggle_throw_mode(THROW_MODE_NORMAL)
 
 	sleep(100) //10 seconds should be enough.
-	var/turf/T = get_turf(src) //Make sure we get the turf we're tossing this on.
-	drop_supplies(T, supply_drop)
+	var/turf/floor = get_turf(src) //Make sure we get the turf we're tossing this on.
+	drop_supplies(floor, supply_drop)
 	playsound(src,'sound/effects/bamf.ogg', 50, 1)
 	qdel(src)
 	return

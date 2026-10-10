@@ -23,16 +23,18 @@
 			total_positions_so_far = positions
 	return positions
 
-/datum/job/command/intel/generate_entry_conditions(mob/living/M, whitelist_status)
+/datum/job/command/intel/generate_entry_conditions(mob/living/candidate, whitelist_status)
 	. = ..()
 	if(!islist(GLOB.marine_officers[JOB_INTEL]))
 		GLOB.marine_officers[JOB_INTEL] = list()
-	GLOB.marine_officers[JOB_INTEL] += M
-	RegisterSignal(M, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_leader_candidate))
+	GLOB.marine_officers[JOB_INTEL] += candidate
+	RegisterSignal(candidate, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_leader_candidate))
 
-/datum/job/command/intel/proc/cleanup_leader_candidate(mob/M)
+/datum/job/command/intel/proc/cleanup_leader_candidate(mob/candidate)
 	SIGNAL_HANDLER
-	GLOB.marine_officers[JOB_INTEL] -= M
+	GLOB.marine_officers[JOB_INTEL] -= candidate
+	if(!length(GLOB.marine_leaders[JOB_INTEL]))
+		qdel(GLOB.marine_leaders[JOB_INTEL])
 
 AddTimelock(/datum/job/command/intel, list(
 	JOB_SQUAD_ROLES = 5 HOURS

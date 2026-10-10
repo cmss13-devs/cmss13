@@ -1,3 +1,5 @@
+SET_PROTECTED_DATUM(/datum/controller/configuration)
+
 /datum/controller/configuration
 	name = "Configuration"
 
@@ -27,7 +29,6 @@
 	if(IsAdminAdvancedProcCall())
 		alert_proccall("configuration admin_reload")
 		return PROC_BLOCKED
-	log_admin("[key_name(usr)] has forcefully reloaded the configuration from disk.")
 	message_admins("[key_name_admin(usr)] has forcefully reloaded the configuration from disk.")
 	full_wipe()
 	Load(world.params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
@@ -162,6 +163,9 @@
 		_entries[esname] = E
 		_entries_by_type[I] = E
 
+		if(E.protection & (CONFIG_ENTRY_SENSITIVE|CONFIG_ENTRY_SENSITIVE_KEY))
+			GLOB.protected_config_entries += E
+
 
 /datum/controller/configuration/proc/RemoveEntry(datum/config_entry/CE)
 	entries -= CE.name
@@ -256,6 +260,9 @@
 /datum/controller/configuration/can_vv_get(var_name)
 	return (var_name != NAMEOF(src, entries_by_type) || !hiding_entries_by_type) && ..()
 
+/datum/controller/configuration/vv_edit_var(var_name, var_value)
+	var/list/banned_edits = list(NAMEOF(src, entries_by_type), NAMEOF(src, entries), NAMEOF(src, directory))
+	return !(var_name in banned_edits) && ..()
 
 /datum/controller/configuration/stat_entry(msg)
 	msg = "Edit"

@@ -694,7 +694,11 @@
 			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's APOLLO processor may be offline or destroyed."))
 			return FALSE
 
-	ares_apollo_talk(input)
+	var/prompt = tgui_alert(src, "Do you want an APOLLO report (shipside) or an ARTEMIS report (groundside)?", "Choose.", list("APOLLO", "ARTEMIS"), 20 SECONDS)
+	if(prompt == "APOLLO")
+		ares_apollo_talk(input)
+	if(prompt == "ARTEMIS")
+		ares_artemis_talk(input)
 	message_admins("[key_name_admin(src)] has created an AI APOLLO report")
 	log_admin("AI APOLLO report: [input]")
 

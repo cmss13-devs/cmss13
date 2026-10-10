@@ -11,7 +11,7 @@ em {font-style: normal; font-weight: bold;}
 .motd a, .motd a:link, .motd a:visited, .motd a:active, .motd a:hover
 	{color: #638500;}
 
-.prefix { font-weight: bold;}
+.prefix { font-weight: bolder;}
 
 .ooc { font-weight: bold;}
 .adminobserverooc {color: #0099cc; font-weight: bold;}
@@ -76,9 +76,18 @@ em {font-style: normal; font-weight: bold;}
 .huge { font-size: 5}
 
 .bold {font-weight: bold;}
+.italic {font-style: italic;}
 .underline {text-decoration: underline;}
 
+.admin_blue {color: #386aff;}
+.blue {color: #1F5AFF;}
+.debug_orange {color: #ff8c1a;}
 .green {color: #00ff00;}
+.maroon {color: #800000;}
+.orange {color: #EBA000;}
+.purple {color: #602D7B;}
+.red {color: #FF0000;}
+.darker_red {color: #A03C14;}
 
 .normal {font-style: normal;}
 
@@ -101,6 +110,7 @@ h1.alert, h2.alert {color: #000000;}
 .rose {color: #ff5050;}
 .info {color: #0000CC;}
 .debuginfo {color: #493D26; font-style: italic;}
+.debugnotice {color: #ff8c1a; font-weight: bold;}
 .notice {color: #000099;}
 .xenonotice {color: #2a623d;}
 .xenoboldnotice {color: #2a623d; font-weight: bold;}

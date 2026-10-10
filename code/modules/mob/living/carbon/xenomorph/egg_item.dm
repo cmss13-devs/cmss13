@@ -99,6 +99,9 @@
 		return
 	if(!user.check_alien_construction(T, ignore_nest = TRUE))
 		return
+	if(locate(/obj/structure/ladder) in range(2, T))
+		to_chat(user, SPAN_XENOWARNING("We cannot plant [src] so close to a ladder."))
+		return
 	if(!user.check_plasma(30))
 		return
 

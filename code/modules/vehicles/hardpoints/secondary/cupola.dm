@@ -5,7 +5,7 @@
 	icon_state = "m56_cupola"
 	disp_icon = "tank"
 	disp_icon_state = "m56cupola"
-	activation_sounds = list('sound/weapons/gun_smartgun1.ogg', 'sound/weapons/gun_smartgun2.ogg', 'sound/weapons/gun_smartgun3.ogg', 'sound/weapons/gun_smartgun4.ogg')
+	activation_sounds = list('sound/weapons/heavy_weapon_firing_sounds/gun_smartgun1.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun2.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun3.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun4.ogg')
 
 	health = 350
 	firing_arc = 120

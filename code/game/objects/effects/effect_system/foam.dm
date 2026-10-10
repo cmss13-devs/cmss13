@@ -68,7 +68,7 @@
 		if(!T)
 			continue
 
-		if(!T.Enter(src))
+		if(!T.Enter(src, loc))
 			continue
 
 		var/obj/effect/particle_effect/foam/F = locate() in T
@@ -93,6 +93,7 @@
 
 
 /obj/effect/particle_effect/foam/Crossed(atom/movable/AM)
+	..()
 	if(metal)
 		return
 	if (iscarbon(AM))
@@ -131,7 +132,7 @@
 		for(var/datum/reagent/R in carry.reagent_list)
 			carried_reagents += R.id
 
-/datum/effect_system/foam_spread/start()
+/datum/effect_system/foam_spread/start(do_NOT_delete = FALSE)
 	set waitfor = 0
 	var/obj/effect/particle_effect/foam/F = locate() in location
 	if(F)
@@ -149,6 +150,9 @@
 				F.reagents.add_reagent(id, 1, null, 1) //makes a safety call because all reagents should have already reacted anyway
 		else
 			F.reagents.add_reagent("water", 1, safety = 1)
+
+	if(!do_NOT_delete)
+		qdel(src)
 
 
 

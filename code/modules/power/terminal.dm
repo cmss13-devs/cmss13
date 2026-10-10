@@ -5,6 +5,7 @@
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "term"
 	desc = "It's an underfloor wiring terminal for power equipment."
+	plane = FLOOR_PLANE
 	level = 1
 	var/obj/structure/machinery/power/master = null
 	anchored = TRUE

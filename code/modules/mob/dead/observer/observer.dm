@@ -1436,7 +1436,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(eta_status)
 			. += "Evacuation Goal: [eta_status]"
 
-		if(SShijack.sd_unlocked)
+		if(SShijack.sd_unlocked || SShijack.hijack_plan == HIJACK_ROUTE_SCUTTLE)
 			. += "Self Destruct Goal: [SShijack.get_sd_eta()]"
 
 	if(client.prefs?.be_special & BE_ALIEN)

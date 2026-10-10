@@ -147,7 +147,7 @@
 		var/eta_status = SShijack.get_evac_eta()
 		if(eta_status)
 			. += "Evacuation Goals: [eta_status]"
-		if(SShijack.sd_unlocked)
+		if(SShijack.sd_unlocked || SShijack.hijack_plan == HIJACK_ROUTE_SCUTTLE)
 			. += "Self Destruct Status: [SShijack.get_sd_eta()]"
 
 /mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)

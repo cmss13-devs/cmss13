@@ -74,9 +74,10 @@ type Data = {
   primary_lz: string;
   alert_level: number;
   evac_status: string;
-  stable_orbit: BooleanLike;
+  hijack_plan: 'ftl' | 'scuttle' | 'evacuate';
+  sd_unlocked: BooleanLike;
   hijack_started: BooleanLike;
-  can_enter_stable_orbit: BooleanLike;
+  can_select_hijack_plan: BooleanLike;
   world_time: number;
   distress_time_lock: number;
   time_request: number;
@@ -844,15 +845,39 @@ const EmergencyPanel = (props) => {
               </ButtonConfirm>
             </Stack.Item>
             <Stack.Item>
-              <Button
-                inline
-                width="100%"
-                icon="ban"
-                mt="1px"
-                color="transperant"
-              >
-                SELF-DESTRUCT DISABLED
-              </Button>
+              {data.can_select_hijack_plan ? (
+                <ButtonConfirm
+                  inline
+                  width="100%"
+                  textAlign="center"
+                  mt="1px"
+                  icon="radiation"
+                  color="red"
+                  confirmContent="Confirm - No FTL; evac fuel once SD finishes"
+                  onClick={() => act('hijack_plan', { plan: 'scuttle' })}
+                >
+                  PREPARE SELF-DESTRUCT
+                </ButtonConfirm>
+              ) : (
+                <Button
+                  inline
+                  width="100%"
+                  textAlign="center"
+                  icon={
+                    data.sd_unlocked || data.hijack_plan === 'scuttle'
+                      ? 'radiation'
+                      : 'ban'
+                  }
+                  mt="1px"
+                  color="transperant"
+                >
+                  {data.sd_unlocked
+                    ? 'REACTOR SCUTTLING AVAILABLE'
+                    : data.hijack_plan === 'scuttle'
+                      ? 'SCUTTLING SELECTED'
+                      : 'SELF-DESTRUCT DISABLED'}
+                </Button>
+              )}
             </Stack.Item>
             <Stack.Item>
               {!canRequest && (
@@ -886,7 +911,20 @@ const EmergencyPanel = (props) => {
             </Stack.Item>
             {!!data.hijack_started && (
               <Stack.Item>
-                {data.stable_orbit ? (
+                {data.can_select_hijack_plan ? (
+                  <ButtonConfirm
+                    inline
+                    width="100%"
+                    textAlign="center"
+                    mt="1px"
+                    icon="rocket"
+                    color="red"
+                    confirmContent="Confirm - No FTL. Fuel evacuation craft"
+                    onClick={() => act('hijack_plan', { plan: 'evacuate' })}
+                  >
+                    FUEL EVAC WITHOUT FTL
+                  </ButtonConfirm>
+                ) : (
                   <Button
                     inline
                     width="100%"
@@ -895,22 +933,10 @@ const EmergencyPanel = (props) => {
                     icon="rocket"
                     color="transperant"
                   >
-                    STABLE ORBIT SECURED
+                    {data.hijack_plan === 'evacuate'
+                      ? 'EVACUATION ONLY SELECTED'
+                      : 'FUEL EVAC WITHOUT FTL'}
                   </Button>
-                ) : (
-                  <ButtonConfirm
-                    inline
-                    width="100%"
-                    textAlign="center"
-                    mt="1px"
-                    icon="rocket"
-                    color={data.can_enter_stable_orbit ? 'red' : 'transperant'}
-                    confirmContent="Confirm - This will disable FTL, scuttling & fueling"
-                    disabled={!data.can_enter_stable_orbit}
-                    onClick={() => act('stable_orbit')}
-                  >
-                    ENTER STABLE ORBIT
-                  </ButtonConfirm>
                 )}
               </Stack.Item>
             )}

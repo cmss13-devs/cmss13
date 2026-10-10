@@ -520,7 +520,7 @@
 						to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, systems damaged\"."))
 						return
 
-				if(SShijack.current_progress < SShijack.early_launch_required_progress)
+				if(!SShijack.sd_detonated && (SShijack.hijack_plan == HIJACK_ROUTE_SCUTTLE || SShijack.current_progress < SShijack.early_launch_required_progress))
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, fuel insufficient\"."))
 					return
 
@@ -560,16 +560,16 @@
 		if(lifeboat.status == LIFEBOAT_LOCKED)
 			to_chat(xeno, SPAN_WARNING("We already wrested away control of this metal bird."))
 			return XENO_NO_DELAY_ACTION
-		if(lifeboat.mode == SHUTTLE_CALL)
-			to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the metal bird mid-flight."))
+		if(lifeboat.forced_launch || lifeboat.mode == SHUTTLE_CALL)
+			to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the metal bird's launch."))
 			return XENO_NO_DELAY_ACTION
 
 		xeno_attack_delay(xeno)
 		if(do_after(usr, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(lifeboat.status == LIFEBOAT_LOCKED)
 				return XENO_NO_DELAY_ACTION
-			if(lifeboat.mode == SHUTTLE_CALL)
-				to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the metal bird mid-flight."))
+			if(lifeboat.forced_launch || lifeboat.mode == SHUTTLE_CALL)
+				to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the metal bird's launch."))
 				return XENO_NO_DELAY_ACTION
 			lifeboat.status = LIFEBOAT_LOCKED
 			lifeboat.available = FALSE

@@ -28,6 +28,9 @@
 			air.linked_shuttle = src
 
 /obj/docking_port/mobile/crashable/escape_shuttle/proc/cancel_evac()
+	if(launched || mode != SHUTTLE_IDLE)
+		return
+
 	door_handler.control_doors("force-unlock")
 	evac_set = FALSE
 
@@ -106,7 +109,10 @@
 	if(SShijack.crashed)
 		return TRUE
 
-	if(SShijack.hijack_status >= HIJACK_OBJECTIVES_FTL_CRASH)
+	if(SShijack.sd_detonated)
+		return FALSE
+
+	if(SShijack.hijack_plan != HIJACK_ROUTE_SCUTTLE && SShijack.hijack_status >= HIJACK_OBJECTIVES_FTL_CRASH)
 		return FALSE
 
 	if(prob(crash_land_chance))

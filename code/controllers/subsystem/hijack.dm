@@ -5,7 +5,7 @@ SUBSYSTEM_DEF(hijack)
 	priority   = SS_PRIORITY_HIJACK
 	init_order = SS_INIT_HIJACK
 
-	///Required progress to safely arrive at our destination
+	/// Required progress to complete the selected hijack route
 	var/required_progress = 100
 
 	/// The progress at which the ship will enter FTL
@@ -82,6 +82,8 @@ SUBSYSTEM_DEF(hijack)
 
 	/// If the self destruct has/is detonating
 	var/sd_detonated = FALSE
+	/// When the self destruct grace period ends
+	var/sd_detonation_time = 0
 
 	/// If a generator has ever been overloaded in the past this round
 	var/generator_ever_overloaded = FALSE
@@ -95,8 +97,8 @@ SUBSYSTEM_DEF(hijack)
 	/// If the ship is currently transiting in FTL
 	var/in_ftl = FALSE
 
-	/// Whether the ship is secured in orbit
-	var/stable_orbit = FALSE
+	/// The commanders chosen route to hijack
+	var/hijack_plan = HIJACK_ROUTE_FTL
 
 	/// If the ship has crashed onto a ground map and space turfs have been replaced with turf/open_space
 	var/crashed = FALSE
@@ -157,7 +159,7 @@ SUBSYSTEM_DEF(hijack)
 		msg = " Complete"
 		return ..()
 
-	msg = " Progress: [current_progress]% | Last run: [last_run_progress_change]"
+	msg = " Progress: [current_progress / required_progress * 100]% | Last run: [last_run_progress_change]"
 	return ..()
 
 /datum/controller/subsystem/hijack/fire(resumed = FALSE)
@@ -174,9 +176,6 @@ SUBSYSTEM_DEF(hijack)
 		// First fire
 		hijack_status = HIJACK_OBJECTIVES_STARTED
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FUEL_PUMP_UPDATE)
-		return
-
-	if(stable_orbit)
 		return
 
 	if(hijack_status == HIJACK_OBJECTIVES_DOCKED)
@@ -198,22 +197,21 @@ SUBSYSTEM_DEF(hijack)
 		TIMER_COOLDOWN_START(src, COOLDOWN_POSTHIJACK_ERT, 5 MINUTES)
 		return
 
+	if(!resumed && sd_unlocked && !sd_detonated && overloaded_generators)
+		sd_time_remaining -= wait
+		if(!engine_room_heated && (sd_time_remaining <= (max((1 - round(overloaded_generators / maximum_overload_generators, 0.01)) * sd_max_time, sd_min_time) * 0.66)))
+			heat_engine_room()
+
+		if(!ares_sd_announced && (sd_time_remaining <= (max((1 - round(overloaded_generators / maximum_overload_generators, 0.01)) * sd_max_time, sd_min_time) * 0.5)))
+			announce_sd_halfway()
+
+		if(!engine_room_superheated && (sd_time_remaining <= (max((1 - round(overloaded_generators / maximum_overload_generators, 0.01)) * sd_max_time, sd_min_time) * 0.33)))
+			superheat_engine_room()
+
+		if((sd_time_remaining <= 0) && !sd_detonated)
+			detonate_sd()
+
 	if(hijack_status == HIJACK_OBJECTIVES_FTL_CRASH || hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
-		// Crashed state to handle SD
-		if(sd_unlocked && overloaded_generators)
-			sd_time_remaining -= wait
-			if(!engine_room_heated && (sd_time_remaining <= (max((1 - round(overloaded_generators / maximum_overload_generators, 0.01)) * sd_max_time, sd_min_time) * 0.66)))
-				heat_engine_room()
-
-			if(!ares_sd_announced && (sd_time_remaining <= (max((1 - round(overloaded_generators / maximum_overload_generators, 0.01)) * sd_max_time, sd_min_time) * 0.5)))
-				announce_sd_halfway()
-
-			if(!engine_room_superheated && (sd_time_remaining <= (max((1 - round(overloaded_generators / maximum_overload_generators, 0.01)) * sd_max_time, sd_min_time) * 0.33)))
-				superheat_engine_room()
-
-			if((sd_time_remaining <= 0) && !sd_detonated)
-				detonate_sd()
-
 		// Handle power shortage by ship being cracked in half
 		if(crashed && hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
 			for(var/obj/structure/machinery/power/apc/almayer/apc as anything in apcs)
@@ -226,9 +224,11 @@ SUBSYSTEM_DEF(hijack)
 		return
 
 	if(!SSticker.mode.count_marines(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)))
+		if(sd_unlocked)
+			return // Keep the scuttling countdown running after the crew evacuates.
 		// All marines dead, stop objective progression
 		if(in_ftl || hijack_status == HIJACK_OBJECTIVES_STARTED)
-			shipwide_ai_announcement("No USCM life signs detected on board. [in_ftl ? "Maintaining course to [spaceport.name]." : "Deactivating hyperdrive charge cycle."]")
+			shipwide_ai_announcement("No USCM life signs detected on board. [in_ftl ? "Maintaining course to [spaceport.name]." : "Discontinuing emergency fueling operations."]")
 		can_fire = FALSE
 		return
 
@@ -261,15 +261,14 @@ SUBSYSTEM_DEF(hijack)
 				return
 
 	if(hijack_status == HIJACK_OBJECTIVES_STARTED)
-		if(current_progress >= required_progress)
+		if(current_progress >= required_progress && hijack_plan == HIJACK_ROUTE_FTL)
 			// Progress is now complete to leave FTL
-			if(hijack_status <= HIJACK_OBJECTIVES_STARTED)
-				hijack_status = HIJACK_OBJECTIVES_COMPLETE
-				leave_ftl()
-				addtimer(CALLBACK(src, PROC_REF(initiate_docking_procedures)), 10 SECONDS)
+			hijack_status = HIJACK_OBJECTIVES_COMPLETE
+			leave_ftl()
+			addtimer(CALLBACK(src, PROC_REF(initiate_docking_procedures)), 10 SECONDS)
 			return
 
-		if(current_progress >= ftl_required_progress && !in_ftl)
+		if(hijack_plan == HIJACK_ROUTE_FTL && current_progress >= ftl_required_progress && !in_ftl)
 			// Progress is now able to enter FTL
 			initiate_ftl_charge()
 
@@ -313,6 +312,11 @@ SUBSYSTEM_DEF(hijack)
 				initiate_ground_crash()
 			return
 
+		if(hijack_plan != HIJACK_ROUTE_FTL && current_progress >= required_progress)
+			hijack_status = HIJACK_OBJECTIVES_COMPLETE
+			shipwide_ai_announcement("EMERGENCY ORBITAL STABILIZATION BURN CHARGING. BRACE FOR VIOLENT MANEUVERING.", HIJACK_ANNOUNCE, sound('sound/effects/supercapacitors_charging.ogg'))
+			addtimer(CALLBACK(src, PROC_REF(complete_orbital_stabilization)), 5 SECONDS)
+
 		if(current_progress >= announce_checkpoint)
 			// Announce the progress checkpoint
 			announce_progress()
@@ -322,33 +326,38 @@ SUBSYSTEM_DEF(hijack)
 		current_run_progress_additive = 0
 		current_run_progress_multiplicative = 1
 
-/datum/controller/subsystem/hijack/proc/can_enter_stable_orbit()
-	if(stable_orbit || hijack_status != HIJACK_OBJECTIVES_SHIP_INBOUND)
+	if(hijack_plan == HIJACK_ROUTE_SCUTTLE && hijack_status == HIJACK_OBJECTIVES_COMPLETE && !sd_unlocked && !admin_sd_blocked)
+		unlock_self_destruct()
+
+/datum/controller/subsystem/hijack/proc/can_select_hijack_plan()
+	if(hijack_plan != HIJACK_ROUTE_FTL || hijack_status != HIJACK_OBJECTIVES_SHIP_INBOUND)
 		return FALSE
 	for(var/obj/docking_port/mobile/marine_dropship/dropship in SSshuttle.mobile)
 		if(dropship.is_hijacked && (dropship.mode == SHUTTLE_PREARRIVAL || dropship.mode == SHUTTLE_CRASHED))
 			return FALSE
 	return TRUE
 
-/datum/controller/subsystem/hijack/proc/enter_stable_orbit()
-	if(!can_enter_stable_orbit())
+/datum/controller/subsystem/hijack/proc/select_hijack_plan(new_plan)
+	if(!can_select_hijack_plan())
+		return FALSE
+	if(new_plan != HIJACK_ROUTE_SCUTTLE && new_plan != HIJACK_ROUTE_EVACUATE)
 		return FALSE
 
-	stable_orbit = TRUE
-	last_run_progress_change = 0
-	estimated_time_left = INFINITY
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FUEL_PUMP_UPDATE)
-	shipwide_ai_announcement("EMERGENCY ORBITAL STABILIZATION BURN CHARGING. BRACE FOR VIOLENT MANEUVERING.", HIJACK_ANNOUNCE, sound('sound/effects/supercapacitors_charging.ogg'))
-	addtimer(CALLBACK(src, PROC_REF(complete_orbital_stabilization)), 5 SECONDS)
+	hijack_plan = new_plan
+	required_progress = ftl_required_progress
+	if(hijack_plan == HIJACK_ROUTE_SCUTTLE)
+		shipwide_ai_announcement("Command override accepted. Quantum jump cancelled. Maintain fuel pumps to supply the fusion reactors for scuttling. Evacuation fuel will be released once reactor meltdown is irreversible.", HIJACK_ANNOUNCE)
+	else
+		shipwide_ai_announcement("Command override accepted. Quantum jump cancelled. Maintain fuel pumps to fuel lifeboat and escape pod reserves.", HIJACK_ANNOUNCE)
 	return TRUE
 
 /datum/controller/subsystem/hijack/proc/complete_orbital_stabilization()
 	shakeship(sstrength = 7, stime = 10, drop = TRUE)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "ORBITAL STABILIZATION COMPLETE. FTL-DRIVE AND REACTOR SCUTTLING SYSTEMS LOCKED OUT. PUMPS INOPERABLE. ESCAPE PODS AND LIFEBOATS MUST RELY ON EXISTING RESERVES.", HIJACK_ANNOUNCE), 3 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "STABLE ORBIT SECURED. FUEL PUMPS NO LONGER REQUIRED TO MAINTAIN ALTITUDE.", HIJACK_ANNOUNCE, null), 3 SECONDS)
 	for(var/hivenumber in GLOB.hive_datum)
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		if(length(hive.totalXenos))
-			xeno_announcement(SPAN_XENOANNOUNCE("The metal hive shudders. Its pumps are now useless, destroying them will not bring it down. The talls are chosing to remain rather than flee."), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("The metal hive shudders. Destroying its pumps will no longer bring it down."), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
 
 ///Called when the dropship has been called by the xenos
 /datum/controller/subsystem/hijack/proc/on_call_shuttle()
@@ -373,9 +382,6 @@ SUBSYSTEM_DEF(hijack)
 
 ///Called when the xeno dropship crashes into the Almayer and announces the current status of various objectives to marines
 /datum/controller/subsystem/hijack/proc/announce_status_on_crash()
-	if(stable_orbit)
-		return
-
 	var/message = ""
 
 	for(var/area/cycled_area as anything in progress_areas)
@@ -387,7 +393,14 @@ SUBSYSTEM_DEF(hijack)
 		message += "[cycled_area] - [new_area_state ? "Online" : "Offline"]\n"
 		progress_areas[cycled_area] = new_area_state
 
-	message += "\nCritical damage sustained to ship systems. Altitude rapidly decreasing. Initiating sublight burn to exit AO.\nMaintain fueling functionality to initiate quantum jump to [spaceport.name]."
+	message += "\nCritical damage sustained to ship systems."
+	switch(hijack_plan)
+		if(HIJACK_ROUTE_FTL)
+			message += " Altitude rapidly decreasing. Initiating sublight burn to exit AO.\nMaintain fueling functionality to initiate quantum jump to [spaceport.name]."
+		if(HIJACK_ROUTE_SCUTTLE)
+			message += "\nQuantum jump disabled by command. Maintain fuel pumps to enable manual reactor overload. Lifeboats and escape pods fuel will be released once the self-destruct finishes charging."
+		if(HIJACK_ROUTE_EVACUATE)
+			message += "\nQuantum jump disabled by command. Maintain fuel pumps to replenish lifeboat and escape pod reserves."
 
 	marine_announcement(message, HIJACK_ANNOUNCE)
 
@@ -399,6 +412,10 @@ SUBSYSTEM_DEF(hijack)
 ///Called to announce to xenos the state of evacuation progression
 /datum/controller/subsystem/hijack/proc/announce_progress()
 	var/announce = announce_checkpoint / initial(announce_checkpoint)
+	if(hijack_plan != HIJACK_ROUTE_FTL)
+		if(announce_checkpoint > ftl_required_progress)
+			return
+		announce = announce_checkpoint / ftl_required_progress * 4
 
 	var/marine_warning_areas = ""
 	var/xeno_warning_areas = ""
@@ -450,6 +467,17 @@ SUBSYSTEM_DEF(hijack)
 			if(4)
 				xeno_announcement(SPAN_XENOANNOUNCE("The talls have completed their goals!"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
 
+	if(hijack_plan == HIJACK_ROUTE_SCUTTLE)
+		marine_announcement("Reactor fuel reserves at [round(announce_checkpoint / ftl_required_progress * 100)]%.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : marine_no_repairable]", HIJACK_ANNOUNCE)
+		return
+
+	if(hijack_plan == HIJACK_ROUTE_EVACUATE)
+		if(current_progress >= required_progress)
+			shipwide_ai_announcement("Evacuation fuel reserves replenished. Lifeboats and escape pods ready for safe departure.", HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
+		else
+			marine_announcement("Evacuation fuel reserves at [round(announce_checkpoint / required_progress * 100)]%.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : marine_no_repairable]", HIJACK_ANNOUNCE)
+		return
+
 	switch(announce)
 		if(1)
 			marine_announcement("Emergency fuel replenishment is at 50%. Tachyon field accelerators currently charging.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : marine_no_repairable]", HIJACK_ANNOUNCE)
@@ -462,6 +490,10 @@ SUBSYSTEM_DEF(hijack)
 
 /// Passes the ETA for status panels
 /datum/controller/subsystem/hijack/proc/get_evac_eta()
+	if(sd_detonated)
+		return "Complete"
+	if(hijack_plan == HIJACK_ROUTE_SCUTTLE)
+		return "Not fueling"
 	switch(hijack_status)
 		if(HIJACK_OBJECTIVES_STARTED)
 			if(estimated_time_left == INFINITY)
@@ -474,10 +506,15 @@ SUBSYSTEM_DEF(hijack)
 /// Passes the SD ETA for status panels
 /datum/controller/subsystem/hijack/proc/get_sd_eta()
 	if(sd_detonated)
+		if(world.time < sd_detonation_time)
+			return "[duration2text_sec(sd_detonation_time - world.time)]"
 		return "Complete"
 
+	if(hijack_plan == HIJACK_ROUTE_SCUTTLE && !sd_unlocked)
+		return "Fueling: [clamp(round(current_progress / ftl_required_progress * 100), 0, 100)]%"
+
 	if(overloaded_generators <= 0)
-		return "Never"
+		return "Ready"
 
 	return "[duration2text_sec(sd_time_remaining)]"
 
@@ -493,8 +530,8 @@ SUBSYSTEM_DEF(hijack)
 //~~~~~~~~~~~~~~~~~~~~~~~~ EVAC STUFF ~~~~~~~~~~~~~~~~~~~~~~~~//
 
 /// Initiates evacuation by announcing and then prepping all lifepods/lifeboats
-/datum/controller/subsystem/hijack/proc/initiate_evacuation()
-	if(evac_status == EVACUATION_STATUS_INITIATED || (evac_admin_denied & FLAGS_EVACUATION_DENY))
+/datum/controller/subsystem/hijack/proc/initiate_evacuation(force = FALSE)
+	if(evac_status == EVACUATION_STATUS_INITIATED || (!force && (evac_admin_denied & FLAGS_EVACUATION_DENY)))
 		return FALSE
 	if(in_ftl)
 		return FALSE
@@ -514,7 +551,7 @@ SUBSYSTEM_DEF(hijack)
 
 /// Cancels evacuation, tells lifepods/lifeboats and status_displays
 /datum/controller/subsystem/hijack/proc/cancel_evacuation(silent = FALSE)
-	if(evac_status == EVACUATION_STATUS_NOT_INITIATED)
+	if(sd_detonated || evac_status == EVACUATION_STATUS_NOT_INITIATED)
 		return FALSE
 
 	evac_status = EVACUATION_STATUS_NOT_INITIATED
@@ -544,6 +581,15 @@ SUBSYSTEM_DEF(hijack)
 		var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = lifeboat_dock.get_docked()
 		if(lifeboat && lifeboat.available)
 			lifeboat.status = LIFEBOAT_INACTIVE
+
+/// Forces lifeboats to launch
+/datum/controller/subsystem/hijack/proc/launch_lifeboats()
+	for(var/obj/docking_port/mobile/crashable/lifeboat/lifeboat in SSshuttle.mobile)
+		var/obj/docking_port/stationary/lifeboat_dock = lifeboat.get_docked()
+		if(!lifeboat_dock || !is_mainship_level(lifeboat_dock.z))
+			continue
+
+		INVOKE_ASYNC(lifeboat, TYPE_PROC_REF(/obj/docking_port/mobile/crashable/lifeboat, evac_launch), TRUE)
 
 /// Unlocks all marine dropship and optionally ert dropship doors on the mainship
 /datum/controller/subsystem/hijack/proc/unlock_all_dropship_doors(include_ert=TRUE)
@@ -623,10 +669,15 @@ SUBSYSTEM_DEF(hijack)
 
 //~~~~~~~~~~~~~~~~~~~~~~~~ SD STUFF ~~~~~~~~~~~~~~~~~~~~~~~~//
 
-/// After a crash, marines can optionally hold SD for a time for a stalemate instead of a xeno minor
+/// Permits reactor overloading after a crash or scuttling  is fueled
 /datum/controller/subsystem/hijack/proc/unlock_self_destruct(from_ftl = FALSE)
+	if(sd_unlocked)
+		return
 	sd_time_remaining = sd_max_time
 	sd_unlocked = TRUE
+	if(hijack_plan == HIJACK_ROUTE_SCUTTLE)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(shipwide_ai_announcement), "Reactor fueling complete. Proceed to the reactor core to overload the S-52 fusion reactors.", HIJACK_ANNOUNCE, sound('sound/AI/selfdestruct_manual.ogg')), 8 SECONDS)
+		return
 	shipwide_ai_announcement("[from_ftl ? "Hyperdrive tachyon shunt no longer operable. Lifeboats and pods re-enabled. " : ""]Remaining fuel transferred to on board fusion generators to permit scuttling.", HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
 
 /// Signal handler for COMSIG_GLOB_GENERATOR_SET_OVERLOADING
@@ -678,15 +729,122 @@ SUBSYSTEM_DEF(hijack)
 		if(istype(mob_area, /area/almayer/engineering/lower/engine_core))
 			to_chat(current_mob, SPAN_BOLDWARNING("The room feels incredibly hot, you can't take much more of this!"))
 
+/datum/controller/subsystem/hijack/proc/critically_heat_engine_room()
+	var/area/engine_room = GLOB.areas_by_type[/area/almayer/engineering/lower/engine_core]
+	engine_room.firealert()
+	engine_room.temperature = T0C + 200
+	for(var/mob/current_mob as anything in GLOB.living_player_list)
+		if(current_mob?.stat != CONSCIOUS)
+			continue
+		var/area/mob_area = get_area(current_mob)
+		if(istype(mob_area, /area/almayer/engineering/lower/engine_core))
+			to_chat(current_mob, SPAN_BOLDWARNING("The air sears your flesh as the fusion engines enter runaway meltdown!"))
+
+/// Sends the timed evacuation and xeno announcements during the self destruct grace period
+/datum/controller/subsystem/hijack/proc/announce_sd_grace_period()
+	sleep(10 SECONDS)
+	xeno_announcement(SPAN_XENOANNOUNCE("You have failed me, and your failure condemns your sisters to burn with this metal hive. The tallhosts flee from their own hive killer. Hunt them. Tear them from their escape vessels. If the hive must die, let no tallhost escape it."), "everything", "Queen Mother Psychic Directive")
+	sleep(60 SECONDS)
+	if(evac_status == EVACUATION_STATUS_NOT_INITIATED && initiate_evacuation(TRUE))
+		shipwide_ai_announcement("ALERT: Emergency evacuation procedures automatically initiated. Self-destruct detonation in fifty seconds.", HIJACK_ANNOUNCE, quiet = TRUE)
+	xeno_announcement(SPAN_XENOANNOUNCE("DO NOT LET THEM ESCAPE."), "everything", "Queen Mother Psychic Directive")
+	sleep(35 SECONDS)
+	shipwide_ai_announcement("WARNING: Evacuation order confirmed. Launching all lifeboats. Self-destruct detonation in fifteen seconds.", HIJACK_ANNOUNCE, quiet = TRUE)
+	xeno_announcement(SPAN_XENOANNOUNCE("KILL THEM."), "everything", "Queen Mother Psychic Directive")
+	launch_lifeboats()
+
 /datum/controller/subsystem/hijack/proc/announce_sd_halfway()
 	ares_sd_announced = TRUE
 	shipwide_ai_announcement("ALERT: Fusion reactor meltdown has reached fifty percent.", HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
 
+/// Makes the entire ship have red emergency lights
+/datum/controller/subsystem/hijack/proc/start_sd_emergency_lighting()
+	for(var/area/ship_area as anything in GLOB.ship_areas)
+		if(istype(ship_area, /area/space))
+			continue
+
+		ship_area.set_base_lighting(new_base_lighting_color = LIGHT_COLOR_RED, new_alpha = 105)
+		for(var/obj/structure/machinery/light/ship_light in ship_area)
+			ship_light.needs_power = FALSE
+			ship_light.brightness = min(ship_light.brightness, 4)
+			ship_light.on = TRUE
+			ship_light.update(FALSE)
+			ship_light.set_light(ship_light.on ? ship_light.brightness : 0, l_color = LIGHT_COLOR_RED)
+
+/// Randomly releases smoke from vents and scrubbers
+/datum/controller/subsystem/hijack/proc/spew_sd_smoke(detonation_time)
+	while(world.time < detonation_time)
+		sleep(rand(3 SECONDS, 6 SECONDS))
+		if(world.time >= detonation_time)
+			return
+
+		var/list/available_vents = list()
+		for(var/obj/structure/pipes/vents/vent in GLOB.mainship_pipes)
+			if(!vent.welded)
+				available_vents += vent
+
+		var/smoke_bursts = world.time >= detonation_time - 1 MINUTES ? rand(2, 3) : rand(1, 2)
+		smoke_bursts = min(smoke_bursts, length(available_vents))
+		for(var/i = 1; i <= smoke_bursts; i++)
+			var/obj/structure/pipes/vents/vent = pick_n_take(available_vents)
+			var/turf/vent_turf = get_turf(vent)
+			var/datum/effect_system/smoke_spread/smoke = new()
+			smoke.set_up(1, 0, vent_turf, null, 6)
+			smoke.start()
+			playsound(vent_turf, 'sound/effects/smoke.ogg', 25, TRUE, 4)
+			vent.visible_message(SPAN_WARNING("[vent] suddenly spews smoke!"), SPAN_WARNING("You hear pressurized gas hissing."), 5)
+
+/datum/controller/subsystem/hijack/proc/overload_sd_generators(detonation_time)
+	sleep(max(0, detonation_time - world.time - 1 MINUTES))
+	if(world.time >= detonation_time)
+		return
+
+	var/list/obj/structure/machinery/power/power_generator/reactor/generators = list()
+	var/datum/cause_data/meltdown_cause = create_cause_data("fusion reactor meltdown")
+	for(var/obj/structure/machinery/power/power_generator/reactor/generator in GLOB.machines)
+		if(!generator.is_ship_reactor)
+			continue
+
+		generators += generator
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), meltdown_cause, 2, get_turf(generator), BURN_TIME_TIER_5 + 10, BURN_LEVEL_TIER_3, FLAMESHAPE_DEFAULT, null)
+
+	sleep(max(0, detonation_time - world.time - 5 SECONDS))
+	while(length(generators) && world.time < detonation_time)
+		for(var/obj/structure/machinery/power/power_generator/reactor/generator as anything in shuffle(generators))
+			if(world.time >= detonation_time)
+				return
+			var/turf/generator_turf = get_turf(generator)
+			if(QDELETED(generator) || !generator_turf)
+				generators -= generator
+				continue
+
+			INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), generator_turf, 300, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, meltdown_cause)
+			sleep(2)
+
+/datum/controller/subsystem/hijack/proc/shake_sd_grace_period(detonation_time)
+	while(world.time < detonation_time)
+		sleep(rand(15 SECONDS, 20 SECONDS))
+		if(world.time >= detonation_time)
+			return
+
+		var/time_remaining = detonation_time - world.time
+		var/shake_stage = round((2 MINUTES - time_remaining) / (30 SECONDS))
+		shakeship(rand(3, 4) + shake_stage, rand(5, 7) + shake_stage, time_remaining <= 30 SECONDS)
+
 /datum/controller/subsystem/hijack/proc/detonate_sd()
 	set waitfor = FALSE
 
-	sd_detonated = TRUE
 	SSticker?.roundend_check_paused = TRUE
+	sd_detonated = TRUE
+	sd_detonation_time = world.time + 2 MINUTES
+	start_sd_emergency_lighting()
+	critically_heat_engine_room()
+	shipwide_ai_announcement("ALERT: Fusion reactor meltdown is irreversible. Emergency detonation in two minutes. Evacuation craft fully fueled. Evacuate immediately.", HIJACK_ANNOUNCE, sound('sound/AI/selfdestruct_2m.ogg'))
+	INVOKE_ASYNC(src, PROC_REF(shake_sd_grace_period), sd_detonation_time)
+	INVOKE_ASYNC(src, PROC_REF(announce_sd_grace_period))
+	INVOKE_ASYNC(src, PROC_REF(spew_sd_smoke), sd_detonation_time)
+	INVOKE_ASYNC(src, PROC_REF(overload_sd_generators), sd_detonation_time)
+	sleep(93 SECONDS)
 
 	var/creak_picked = pick('sound/effects/creak1.ogg', 'sound/effects/creak2.ogg', 'sound/effects/creak3.ogg')
 	for(var/mob/current_mob as anything in GLOB.mob_list)
@@ -694,18 +852,11 @@ SUBSYSTEM_DEF(hijack)
 		if(!current_turf || !current_mob.client || !is_mainship_level(current_turf.z))
 			continue
 
-		to_chat(current_mob, SPAN_BOLDWARNING("The ship's deck worryingly creaks underneath you."))
 		playsound_client(current_mob.client, creak_picked, vol=50)
 
 	sleep(7 SECONDS)
-	shakeship(2, 10, TRUE)
-
 	shipwide_ai_announcement("ALERT: Fusion reactors dangerously overloaded. Runaway meltdown in reactor core imminent.", HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
 	sleep(5 SECONDS)
-
-	var/sound_picked = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
-	for(var/client/player as anything in GLOB.clients)
-		playsound_client(player, sound_picked, vol=90)
 
 	var/list/alive_mobs = list() //Everyone who will be destroyed on the zlevel(s).
 	var/list/dead_mobs = list() //Everyone who only needs to see the cinematic.
@@ -771,7 +922,7 @@ SUBSYSTEM_DEF(hijack)
 /// Called when pumps failed before FTL initiated to crash onto the ground map
 /datum/controller/subsystem/hijack/proc/initiate_ground_crash()
 	hijack_status = HIJACK_OBJECTIVES_GROUND_CRASH
-	marine_announcement("Tachyon quantum jump drive deactivated due to insufficient fueling. Entry into atmosphere imminent.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
+	marine_announcement("[hijack_plan == HIJACK_ROUTE_FTL ? "Tachyon quantum jump drive deactivated due to insufficient fueling." : "Fuel supply lost. Sublight engines unable to maintain altitude."] Entry into atmosphere imminent.", HIJACK_ANNOUNCE, sound('sound/mecha/internaldmgalarm.ogg'))
 	play_sfx_for_shipside_xenos('sound/mecha/internaldmgalarm.ogg')
 
 	// Figure out the main Z by assuming the LZs are on that Z

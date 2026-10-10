@@ -202,8 +202,25 @@
 		start_functioning(FALSE)
 	buildstate = clamp(buildstate + 1, BUILDSTATE_FUNCTIONAL, BUILDSTATE_DAMAGE_WELD)
 
+/obj/structure/machinery/power/power_generator/reactor/proc/handle_grace_period_interaction(mob/user)
+	if(!is_ship_reactor || !SShijack.sd_detonated)
+		return FALSE
+
+	if(!ishuman(user))
+		to_chat(user, SPAN_DANGER("[src] is too hot to touch!"))
+		return TRUE
+
+	var/mob/living/carbon/human/human_user = user
+	var/hand = human_user.hand ? "l_hand" : "r_hand"
+	to_chat(human_user, SPAN_HIGHDANGER("The heat from [src] sears your [human_user.hand ? "left" : "right"] hand!"))
+	human_user.apply_damage(25, BURN, hand)
+	human_user.emote("pain")
+	return TRUE
+
 /obj/structure/machinery/power/power_generator/reactor/attack_hand(mob/user)
 	. = TRUE
+	if(handle_grace_period_interaction(user))
+		return FALSE
 	if(overloaded)
 		to_chat(user, SPAN_DANGER("[src] is not responding to your attempt to shut the reactor down."))
 		return FALSE
@@ -219,6 +236,8 @@
 		visible_message(SPAN_NOTICE("[user] starts to hold [src]'s emergency start lever."))
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD, src))
 			to_chat(user, SPAN_NOTICE("You let go of the emergency start lever."))
+			return FALSE
+		if(handle_grace_period_interaction(user))
 			return FALSE
 		start_functioning(TRUE)
 		return
@@ -240,6 +259,9 @@
 	if(xeno.action_busy)
 		to_chat(xeno, SPAN_WARNING("You cannot damage [src] while doing something else."))
 		return
+	if(is_ship_reactor && SShijack.sd_detonated)
+		to_chat(xeno, SPAN_DANGER("The reactor meltdown has progressed too far to stop!"))
+		return
 
 	if(overloaded)
 		xeno.animation_attack_on(src)
@@ -255,6 +277,9 @@
 		if(!do_after(xeno, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, numticks = 20))
 			to_chat(xeno, SPAN_DANGER("You stop damaging [src]."))
 			break
+		if(is_ship_reactor && SShijack.sd_detonated)
+			to_chat(xeno, SPAN_DANGER("The reactor meltdown has progressed too far to stop!"))
+			return
 		xeno.animation_attack_on(src)
 		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 		xeno.visible_message(SPAN_DANGER("[xeno] [xeno.slashes_verb] [src], [is_on ? "disabling" : "damaging"] it!"))
@@ -276,6 +301,8 @@
 	//Fuel Cells
 	if(user.action_busy)
 		return
+	if(handle_grace_period_interaction(user))
+		return
 
 	if(istype(attacking_item, /obj/item/fuel_cell))
 		var/obj/item/fuel_cell/cell = attacking_item
@@ -285,6 +312,8 @@
 
 		to_chat(user, SPAN_NOTICE("You start inserting [cell] into [src]."))
 		if(!do_after(user, 10 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_BUILD, src))
+			return
+		if(handle_grace_period_interaction(user))
 			return
 
 		if(!user.drop_inv_item_to_loc(cell, src))
@@ -305,6 +334,8 @@
 
 		to_chat(user, SPAN_NOTICE("You start prying [fusion_cell] out of [src]."))
 		if(!do_after(user, 10 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_BUILD, src))
+			return
+		if(handle_grace_period_interaction(user))
 			return
 
 		to_chat(user, SPAN_NOTICE("You remove [fusion_cell] from [src]."))
@@ -355,6 +386,8 @@
 		to_chat(user, SPAN_WARNING("You start [overloaded ? "restoring" : "overloading"] the safeties on [src]."))
 		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 			return
+		if(handle_grace_period_interaction(user))
+			return
 
 		if(inoperable())
 			to_chat(user, SPAN_WARNING("[src] needs to be working and have external power in order to be [overloaded ? "restored" : "overloaded"]."))
@@ -403,6 +436,8 @@
 
 /obj/structure/machinery/power/power_generator/reactor/ex_act(severity)
 	. = FALSE
+	if(is_ship_reactor && SShijack.sd_detonated)
+		return
 	if(severity <= EXPLOSION_THRESHOLD_MLOW)
 		return
 
@@ -464,6 +499,8 @@
 
 	to_chat(user, SPAN_NOTICE("You start repairing [src] with [tool]."))
 	if(!do_after(user, repair_time, INTERRUPT_ALL, BUSY_ICON_BUILD, src))
+		return
+	if(handle_grace_period_interaction(user))
 		return
 
 	return TRUE

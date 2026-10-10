@@ -9,6 +9,8 @@
 	height = 7
 	var/available = TRUE // can be used for evac? false if queenlocked or if in transit already
 	var/status = LIFEBOAT_INACTIVE // -1 queen locked, 0 locked til evac, 1 working
+	/// Whether the self destruct sequence has committed the lifeboat to launching
+	var/forced_launch = FALSE
 	var/list/doors = list()
 	var/survivors = 0
 
@@ -46,9 +48,17 @@
 	preferred_direction = EAST
 	port_direction = EAST
 
-/obj/docking_port/mobile/crashable/lifeboat/evac_launch()
-	if (status == LIFEBOAT_LOCKED)
+/obj/docking_port/mobile/crashable/lifeboat/evac_launch(force = FALSE)
+	if(force)
+		forced_launch = TRUE
+	if(mode != SHUTTLE_IDLE)
 		return
+
+	if(status == LIFEBOAT_LOCKED && !force)
+		return
+	if(force)
+		status = LIFEBOAT_ACTIVE
+		available = TRUE
 
 	. = ..()
 
@@ -63,6 +73,12 @@
 	. = ..()
 
 	if(SShijack.crashed)
+		return TRUE
+
+	if(SShijack.sd_detonated)
+		return FALSE
+
+	if(SShijack.hijack_plan == HIJACK_ROUTE_SCUTTLE)
 		return TRUE
 
 	if(SShijack.hijack_status >= HIJACK_OBJECTIVES_FTL_CRASH)

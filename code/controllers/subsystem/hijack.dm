@@ -398,7 +398,7 @@ SUBSYSTEM_DEF(hijack)
 		if(HIJACK_ROUTE_FTL)
 			message += " Altitude rapidly decreasing. Initiating sublight burn to exit AO.\nMaintain fueling functionality to initiate quantum jump to [spaceport.name]."
 		if(HIJACK_ROUTE_SCUTTLE)
-			message += "\nQuantum jump disabled by command. Maintain fuel pumps to enable manual reactor overload. Lifeboats and escape pods fuel will be released once the self-destruct finishes charging."
+			message += "\nQuantum jump disabled by command. Maintain fuel pumps to enable manual reactor overload. Lifeboat and escape pod fuel will be released once self-destruct becomes irreversible."
 		if(HIJACK_ROUTE_EVACUATE)
 			message += "\nQuantum jump disabled by command. Maintain fuel pumps to replenish lifeboat and escape pod reserves."
 
@@ -779,7 +779,7 @@ SUBSYSTEM_DEF(hijack)
 /// Randomly releases smoke from vents and scrubbers
 /datum/controller/subsystem/hijack/proc/spew_sd_smoke(detonation_time)
 	while(REALTIMEOFDAY < detonation_time)
-		wait_until_sd_time(REALTIMEOFDAY + rand(3 SECONDS, 6 SECONDS))
+		sleep(rand(3 SECONDS, 6 SECONDS))
 		if(REALTIMEOFDAY >= detonation_time)
 			return
 
@@ -788,7 +788,7 @@ SUBSYSTEM_DEF(hijack)
 			if(!vent.welded)
 				available_vents += vent
 
-		var/smoke_bursts = REALTIMEOFDAY >= detonation_time - 1 MINUTES ? rand(2, 3) : rand(1, 2)
+		var/smoke_bursts = REALTIMEOFDAY >= detonation_time - 1 MINUTES ? rand(6, 9) : rand(3, 6)
 		smoke_bursts = min(smoke_bursts, length(available_vents))
 		for(var/i = 1; i <= smoke_bursts; i++)
 			var/obj/structure/pipes/vents/vent = pick_n_take(available_vents)
@@ -824,11 +824,11 @@ SUBSYSTEM_DEF(hijack)
 				continue
 
 			INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), generator_turf, 300, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, meltdown_cause)
-			wait_until_sd_time(REALTIMEOFDAY + 2)
+			sleep(2)
 
 /datum/controller/subsystem/hijack/proc/shake_sd_grace_period(detonation_time)
 	while(REALTIMEOFDAY < detonation_time)
-		wait_until_sd_time(REALTIMEOFDAY + rand(15 SECONDS, 20 SECONDS))
+		sleep(rand(15 SECONDS, 20 SECONDS))
 		if(REALTIMEOFDAY >= detonation_time)
 			return
 

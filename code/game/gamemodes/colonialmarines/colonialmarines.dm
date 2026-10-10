@@ -587,6 +587,8 @@
 
 	var/list/shortly_exploding_pipes = list()
 	var/explode_count = SShijack?.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH ? HIJACK_CRASHED_EXPLOSION_COUNT : HIJACK_EXPLOSION_COUNT
+	if(SShijack?.sd_detonated)
+		explode_count *= 2
 	for(var/i = 1 to explode_count)
 		shortly_exploding_pipes += pick(GLOB.mainship_pipes)
 
@@ -594,7 +596,7 @@
 		exploding_pipe.warning_explode(5 SECONDS)
 
 	addtimer(CALLBACK(src, PROC_REF(shake_ship)), 5 SECONDS)
-	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, 15 SECONDS)
+	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_BARRAGE, SShijack?.sd_detonated ? 7.5 SECONDS : 15 SECONDS)
 
 ///Checks for humans groundside after hijack, spawns forsaken if requirements met
 /datum/game_mode/colonialmarines/proc/check_ground_humans()

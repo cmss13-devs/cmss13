@@ -1,5 +1,6 @@
 GLOBAL_LIST_INIT(bitfields, generate_bitfields())
 
+ABSTRACT_TYPE(/datum/bitfield)
 /// Specifies a bitfield for smarter debugging
 /datum/bitfield
 	/// The variable name that contains the bitfield

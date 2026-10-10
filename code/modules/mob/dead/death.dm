@@ -1,3 +1,5 @@
+ABSTRACT_TYPE(/mob/dead)
+
 /mob/dead/dust() //ghosts can't be vaporised.
 	return
 

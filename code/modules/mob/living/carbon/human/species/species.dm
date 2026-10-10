@@ -2,6 +2,7 @@
 	Datum-based species. Should make for much cleaner and easier to maintain mutantrace code.
 */
 
+ABSTRACT_TYPE(/datum/species)
 /datum/species
 	///Used for isx(y) checking of species groups
 	var/group

@@ -170,7 +170,6 @@
 	"workbench.settings.applyToAllProfiles": [
 		"chat.disableAIFeatures"
 	],
-	// gemini stuff comes bundled with some google extensions
 	"cloudcode.apigee.gemini.options": {
 		"enterpriseContext": {
 			"enabled": false,

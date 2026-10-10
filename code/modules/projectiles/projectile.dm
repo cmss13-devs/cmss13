@@ -960,6 +960,12 @@
 			if(xeno.hivenumber == hivenumber)
 				return FALSE
 
+		//XvX code
+		if(isxeno(bullet.firer) && isxeno(src))
+			var/mob/living/carbon/xenomorph/xeno = bullet.firer
+			if(src.dir in reverse_nearby_direction(xeno.dir) && prob(40)) //xenos have a 40% chance to dodge spits if directly facing the source
+				src.evasion = 100
+
 		if(dodge_threshold > 0)
 			if(body_position == LYING_DOWN || stat == UNCONSCIOUS)
 				projectiles_counted = 0

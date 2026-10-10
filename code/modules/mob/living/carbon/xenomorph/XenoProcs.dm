@@ -308,7 +308,7 @@
 		return
 
 	var/mob/living/carbon/carbon_mob = pounced_mob
-	if(carbon_mob.stat == DEAD || carbon_mob.mob_size >= MOB_SIZE_BIG || can_not_harm(pounced_mob) || carbon_mob == src)
+	if(carbon_mob.stat == DEAD || carbon_mob.mob_size < MOB_SIZE_IMMOBILE || can_not_harm(pounced_mob) || carbon_mob == src)
 		REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
 		return
 
@@ -339,6 +339,21 @@
 				REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
 				return
 
+	//XvX code
+	if(isxeno(carbon_mob))
+		var/mob/living/carbon/xenomorph/xeno_mob = carbon_mob
+		if(xeno_mob.mob_size < MOB_SIZE_BIG)
+			pounceAction.knockdown_duration /= 2
+			return
+		if(xeno_mob.mob_size == MOB_SIZE_BIG && (xeno_mob.tier > 2))
+			pounceAction.knockdown_duration /= 4
+			if(xeno_mob.dir in reverse_nearby_direction(dir)) //yo watch out
+				visible_message(SPAN_DANGER("[xeno_mob] withstands being pounced and slams down [src]!"),
+				SPAN_XENODANGER("[xeno_mob] throws us down after withstanding the pounce!"), null, 5)
+				KnockDown(2)
+				Stun(1.5)
+				REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
+				return
 
 	visible_message(SPAN_DANGER("[src] [pounceAction.action_text] onto [carbon_mob]!"), SPAN_XENODANGER("We [pounceAction.action_text] onto [carbon_mob]!"), null, 5)
 

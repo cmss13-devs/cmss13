@@ -226,7 +226,7 @@
 	var/distance = 6 // 6 for runners, 4 for ravagers and praes
 
 	var/knockdown = TRUE // Should we knock down the target?
-	var/knockdown_duration = 1 // 1 for runners, 3 for lurkers.
+	var/knockdown_duration = 1 // 1 for runners, 2.5 for lurkers.
 										// ONLY USED IF THE POUNCE KNOCKS DOWN
 
 	var/slash = FALSE // Do we slash upon reception?

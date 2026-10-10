@@ -124,14 +124,15 @@
 	. = ..(living_mob, lunge, should_neckgrab)
 
 	if(.) //successful pull
+		var/duration = get_xeno_stun_duration(living_mob, 2)
+		//XvX code
 		if(isxeno(living_mob))
 			var/mob/living/carbon/xenomorph/xeno = living_mob
-			if(xeno.tier >= 2) // Tier 2 castes or higher immune to warrior grab stuns
-				return
+			if(xeno.mob_size == MOB_SIZE_BIG) // Big xenos get out of lunges a lot faster
+				duration /= 2
 
-		if(should_neckgrab && living_mob.mob_size < MOB_SIZE_BIG)
+		if(should_neckgrab && living_mob.mob_size < MOB_SIZE_IMMOBILE)
 			living_mob.drop_held_items()
-			var/duration = get_xeno_stun_duration(living_mob, 2)
 			living_mob.KnockDown(duration)
 			living_mob.Stun(duration)
 			if(living_mob.pulledby != src)
@@ -270,12 +271,20 @@
 	if(carbon == fling_user.pulling)
 		fling_user.stop_pulling()
 
-	if(carbon.mob_size >= MOB_SIZE_BIG)
-		to_chat(fling_user, SPAN_XENOWARNING("[carbon] is too big for us to fling!"))
-		return
-
 	if(!check_and_use_plasma_owner())
 		return
+
+	if(carbon.mob_size == MOB_SIZE_BIG)
+		fling_distance = 1
+		stun_power = 0
+
+	if(carbon.mob_size == MOB_SIZE_IMMOBILE)
+		playsound(carbon, 'sound/weapons/alien_knockdown.ogg', 25, 1)
+		fling_user.flick_attack_overlay(carbon, "disarm")
+		fling_user.visible_message(SPAN_XENOWARNING("[fling_user] pathetically shoves [carbon]!"), SPAN_XENOWARNING("We effortlessly caress [carbon]!"))
+		step_away(carbon, fling_user, 2)
+		apply_cooldown()
+		return ..()
 
 	fling_user.visible_message(SPAN_XENOWARNING("[fling_user] effortlessly flings [carbon] to the side!"), SPAN_XENOWARNING("We effortlessly fling [carbon] to the side!"))
 	playsound(carbon,'sound/weapons/alien_claw_block.ogg', 75, 1)

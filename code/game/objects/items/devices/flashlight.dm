@@ -348,6 +348,7 @@
 /obj/item/device/flashlight/flare/Initialize()
 	. = ..()
 	set_light_color(flame_tint)
+	ADD_TRAIT(src, TRAIT_IGNITER, TRAIT_SOURCE_INHERENT)
 
 /obj/item/device/flashlight/flare/update_icon()
 	overlays?.Cut()

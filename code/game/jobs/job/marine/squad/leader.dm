@@ -7,10 +7,25 @@
 	gear_preset = /datum/equipment_preset/uscm/leader
 	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>You are responsible for the men and women of your squad.</a> Make sure they are on task, working together, and communicating. You are also in charge of communicating with command and letting them know about the situation first hand. Keep out of harm's way."
 
+	job_options = list("Sergeant" = "Sgt", "Staff Sergeant" = "SSgt", "Gunnery Sergeant" = "GySgt")
+
+/datum/job/marine/leader/filter_job_option(mob/job_applicant)
+	. = ..()
+	var/list/filtered_job_options = list(job_options[1])
+
+	if(job_applicant?.client?.prefs)
+		if(get_job_playtime(job_applicant.client, JOB_SQUAD_LEADER) >= JOB_PLAYTIME_TIER_1)
+			filtered_job_options += list(job_options[2])
+		if(get_job_playtime(job_applicant.client, JOB_SQUAD_LEADER) >= JOB_PLAYTIME_TIER_3)
+			filtered_job_options += list(job_options[3])
+
+	return filtered_job_options
+
 /datum/job/marine/leader/whiskey
 	title = JOB_WO_SQUAD_LEADER
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/wo/marine/sl
+	job_options = null
 
 AddTimelock(/datum/job/marine/leader, list(
 	JOB_SQUAD_ROLES = 10 HOURS

@@ -1,4 +1,7 @@
 #define SURVIVOR_TO_TOTAL_SPAWN_RATIO 1/9
+// Total connected players needed at roundstart for each extra whitelist survivor slot
+#define SYNTH_SURVIVOR_MIN_POP 60
+#define CO_SURVIVOR_MIN_POP 80
 
 GLOBAL_LIST_EMPTY(spawned_survivors)
 
@@ -16,6 +19,8 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	var/hostile = FALSE
 	/// How many survs have been spawned total
 	var/static/total_spawned = 0
+	/// If this role counts towards the survivor slot limit
+	var/counts_towards_survivor_limit = TRUE
 	/// Assoc list of new_player to landmark that have been slotted
 	var/list/slotted_landmarks
 	/// List of survivor landmarks for the current scenario sorted by priority
@@ -31,22 +36,22 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 
 /datum/job/civilian/survivor/get_total_positions(latejoin)
 	var/normal_positions = ..()
+	if(!counts_towards_survivor_limit)
+		return normal_positions
 
-	// Determine the normal surv limit
 	var/datum/job/civilian/survivor/base_job = GLOB.RoleAuthority.roles_by_path[/datum/job/civilian/survivor]
 	if(!base_job)
 		stack_trace("/datum/job/civilian/survivor is not present in GLOB.RoleAuthority.roles_by_path!")
 		return 0
 	var/base_positions = latejoin ? base_job.total_positions : base_job.spawn_positions
 
-	// Count all current_positions
-	var/exisiting_positions = 0
+	var/existing_positions = 0
 	for(var/surv_type in typesof(/datum/job/civilian/survivor))
 		var/datum/job/civilian/survivor/surv_job = GLOB.RoleAuthority.roles_by_path[surv_type]
-		if(surv_job)
-			exisiting_positions += surv_job.current_positions
+		if(surv_job?.counts_towards_survivor_limit)
+			existing_positions += surv_job.current_positions
 
-	var/available_positions = max(min(base_positions - exisiting_positions, normal_positions), 0)
+	var/available_positions = max(min(base_positions - existing_positions, normal_positions - current_positions), 0)
 	return available_positions + current_positions // check_role_entry() checks our own current_positions count already
 
 /datum/job/civilian/survivor/create_landmark_lists()
@@ -281,7 +286,7 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	job_options = null
 
 /datum/job/civilian/survivor/synth/set_spawn_positions(count)
-	return
+	counts_towards_survivor_limit = length(GLOB.clients) < SYNTH_SURVIVOR_MIN_POP
 
 /datum/job/civilian/survivor/synth/create_landmark_lists()
 	slotted_landmarks = list()
@@ -348,7 +353,10 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	spawn_positions = 0
 	job_options = null
 
-/datum/job/civilian/survivor/commanding_officer/set_spawn_positions()
+/datum/job/civilian/survivor/commanding_officer/set_spawn_positions(count)
+	counts_towards_survivor_limit = length(GLOB.clients) < CO_SURVIVOR_MIN_POP
+	total_positions = 0
+	spawn_positions = 0
 	var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
 	var/list/CO_insert_survivor_types = SSmapping.configs[GROUND_MAP].CO_insert_survivor_types
 	if(!length(CO_survivor_types) && !length(CO_insert_survivor_types))

@@ -410,3 +410,9 @@
 /// Check if the string `haystack` begins with the string `needle`.
 /proc/string_starts_with(haystack, needle)
 	return (copytext(haystack, 1, length(needle) + 1) == needle)
+
+/proc/starts_with_any(input_text, list/beginnings)
+	for(var/beginning in beginnings)
+		if(!!findtext(input_text, beginning, 1, LAZYLEN(beginning)+1))
+			return TRUE
+	return FALSE

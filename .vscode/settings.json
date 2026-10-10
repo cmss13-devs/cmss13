@@ -198,5 +198,5 @@
 	"chat.agent.sandbox.retryWithAllowNetworkRequests": false,
 	"chat.tools.riskAssessment.enabled": false,
 	"git.addAICoAuthor": "all",
-	"dotnetAcquisitionExtension.enableLanguageModelTools": false,
+	"dotnetAcquisitionExtension.enableLanguageModelTools": false
 }

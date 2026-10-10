@@ -419,6 +419,14 @@
 /turf/closed/shuttle/dropship_twe/transparent
 	opacity = FALSE
 
+/turf/closed/shuttle/dropship_lb
+	name = "\improper UD2-LB 'Remedy'"
+	icon = 'icons/turf/dropship_lb.dmi'
+	icon_state = "0,0"
+
+/turf/closed/shuttle/dropship_lb/transparent
+	opacity = FALSE
+
 /turf/closed/shuttle/ert
 	icon = 'icons/turf/ert_shuttle.dmi'
 	icon_state = "stan4"

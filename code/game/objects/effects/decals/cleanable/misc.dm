@@ -182,9 +182,6 @@
 		if(!H.shoes && prob(50))
 			H.contract_disease(new /datum/disease/black_goo)
 
-
-
-
 /obj/effect/decal/cleanable/mucus
 	name = "mucus"
 	desc = "Disgusting mucus."
@@ -195,3 +192,31 @@
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "mucus"
 	random_icon_states = list("mucus")
+
+/obj/effect/broken_tile
+	icon = 'icons/effects/broken_tiles.dmi'
+	icon_state = "triple"
+	layer = TURF_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/effect/broken_tile/double
+	icon_state = "double"
+
+/obj/effect/broken_tile/single
+	icon_state = "single"
+
+/obj/effect/broken_tile/angle
+	icon_state = "angle"
+
+/obj/effect/broken_tile/colorable
+	icon_state = "c_triple"
+
+/obj/effect/broken_tile/colorable/double
+	icon_state = "c_double"
+
+/obj/effect/broken_tile/colorable/single
+	icon_state = "c_single"
+
+/obj/effect/broken_tile/colorable/angle
+	icon_state = "c_angle"

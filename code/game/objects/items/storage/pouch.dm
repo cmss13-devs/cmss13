@@ -152,6 +152,7 @@
 		/obj/item/tool/crowbar,
 		/obj/item/storage/pill_bottle/packet,
 		/obj/item/stack/medical/bruise_pack,
+		/obj/item/stack/medical/ointment,
 		/obj/item/device/radio,
 		/obj/item/attachable/bayonet,
 		/obj/item/stack/medical/splint,
@@ -182,6 +183,18 @@
 	new /obj/item/stack/medical/bruise_pack(src)
 	new /obj/item/device/radio(src)
 	new /obj/item/attachable/bayonet/wy(src)
+	new /obj/item/stack/medical/splint(src)
+
+/obj/item/storage/pouch/survival/full/lasalle
+	icon_state = "soctools"
+
+/obj/item/storage/pouch/survival/full/lasalle/fill_preset_inventory()
+	new /obj/item/device/flashlight/lantern/alt(src)
+	new /obj/item/tool/crowbar/tactical(src)
+	new /obj/item/storage/pill_bottle/packet/kelo_oxy_mix(src) // fire colony has lot's of map hazards, effective kelo/oxy mix is necessary here, probably not on other maps.
+	new /obj/item/stack/medical/ointment(src)
+	new /obj/item/device/radio(src)
+	new /obj/item/attachable/bayonet/lb(src)
 	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/pouch/survival/synth
@@ -312,6 +325,13 @@
 
 /obj/item/storage/pouch/firstaid/ert/wy
 	icon_state = "wy_firstaid"
+
+/obj/item/storage/pouch/firstaid/ert/wy/near_empty
+	icon_state = "wy_firstaid"
+
+/obj/item/storage/pouch/firstaid/ert/wy/near_empty/fill_preset_inventory()
+	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless(src)
 
 ///Pistol pouch.
 /obj/item/storage/pouch/pistol

@@ -73,6 +73,46 @@
 	containername = "\improper M402 mortar flare shells crate"
 	group = "Mortar"
 
+/datum/supply_packs/ammo_mortar_he_plus
+	name = "M402 HCHE mortar crate (x4 HE+)"
+	cost = 45
+	contains = list(
+		/obj/item/mortar_shell/heplus,
+		/obj/item/mortar_shell/heplus,
+		/obj/item/mortar_shell/heplus,
+		/obj/item/mortar_shell/heplus,
+	)
+	containertype = /obj/structure/closet/crate/secure/mortar_ammo
+	containername = "\improper M402 HCHE high-capacity mortar crate"
+	group = "Mortar"
+
+/datum/supply_packs/ammo_mortar_incend_plus
+	name = "M402 HTVSF-Incendiary mortar crate (x4 Pen-Incend)"
+	cost = 30
+	contains = list(
+		/obj/item/mortar_shell/incendiary/pierce,
+		/obj/item/mortar_shell/incendiary/pierce,
+		/obj/item/mortar_shell/incendiary/pierce,
+		/obj/item/mortar_shell/incendiary/pierce,
+	)
+	containertype = /obj/structure/closet/crate/secure/mortar_ammo
+	containername = "\improper M402 HTVSF-Incendiary mortar crate"
+	group = "Mortar"
+
+/datum/supply_packs/ammo_mortar_thermobarics
+	name = "M402 SFAE-Vacuum mortar shell (x4 Thermobarics)"
+	cost = 30
+	contains = list(
+		/obj/item/mortar_shell/incendiary/thermobaric,
+		/obj/item/mortar_shell/incendiary/thermobaric,
+		/obj/item/mortar_shell/incendiary/thermobaric,
+		/obj/item/mortar_shell/incendiary/thermobaric,
+	)
+	containertype = /obj/structure/closet/crate/secure/mortar_ammo
+	containername = "\improper M402 HTVSF-Incendiary mortar crate"
+	group = "Mortar"
+
+//Honestly due for removal.
 /datum/supply_packs/ammo_mortar_frag
 	name = "M402 mortar shells crate (x6 Frag)"
 	cost = 10

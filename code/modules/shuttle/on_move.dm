@@ -49,6 +49,8 @@ All ShuttleMove procs go here
 				return
 			if(istype(thing, /obj/structure/machinery/floodlight/landing/floor))
 				return
+			if(istype(thing, /obj/faux_turf))
+				return
 
 			// SSshuttle also removes these in remove_ripples, but its timing is weird
 			if(!istype(thing, /obj/effect))
@@ -79,6 +81,9 @@ All ShuttleMove procs go here
 	var/shuttle_boundary = baseturfs.Find(/turf/baseturf_skipover/shuttle)
 	if(shuttle_boundary)
 		oldT.ScrapeAway(length(baseturfs) - shuttle_boundary + 1)
+		var/turf/turf_above = SSmapping.get_turf_above(oldT)
+		if(turf_above)
+			turf_above.update_vis_contents()
 
 	if(rotation)
 		shuttleRotate(rotation) //see shuttle_rotate.dm
@@ -270,7 +275,7 @@ All ShuttleMove procs go here
 		if(pixel_y == 8)
 			higher_layer = TRUE
 	else
-		pixel_y = 0
+		pixel_y = init_pixel_y
 		if(dir == NORTH)
 			pixel_x = init_pixel_x
 		else
@@ -422,5 +427,11 @@ All ShuttleMove procs go here
 		installed_equipment.pixel_y = pixel_y
 		installed_equipment.pixel_x = pixel_x
 
-
-
+/obj/docking_port/mobile/marine_dropship/multiz/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
+	. = ..()
+	if(is_reserved_level(src.z))
+		for(var/area/our_areas in shuttle_areas)
+			our_areas.set_base_lighting(our_areas.base_lighting_color, 255)
+	else
+		for(var/area/our_areas in shuttle_areas)
+			our_areas.set_base_lighting(our_areas.base_lighting_color, 0)

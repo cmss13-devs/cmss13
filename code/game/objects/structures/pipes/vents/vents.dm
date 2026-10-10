@@ -183,3 +183,37 @@
 	playsound(loc, 'sound/effects/smoke.ogg', 25, 1, 4)
 	gas_holder.set_up(radius, 0, get_turf(src), null, 10)
 	gas_holder.start()
+
+/obj/structure/pipes/vents/dropship
+	name = "\improper maintenance hatch"
+	icon ='icons/obj/structures/machinery/omaha/misc.dmi'
+	icon_state = "panel_full"
+
+	flags_atom = NO_ZFALL
+	unacidable = TRUE
+	explo_proof = TRUE
+	anchored = TRUE
+
+/obj/structure/pipes/vents/dropship/update_icon()
+	return
+
+/obj/structure/pipes/vents/dropship/attackby(obj/item/W, mob/user)
+	to_chat(user, SPAN_NOTICE("There's nothing to adjust in [src.name]!"))
+	return
+
+/obj/structure/pipes/vents/dropship/panel_half
+	icon_state = "panel_half"
+
+/obj/structure/pipes/vents/dropship/panel_full
+	icon_state = "panel_full"
+
+/obj/structure/pipes/vents/dropship/entrance
+	name = "\improper shafts connector"
+	icon = 'icons/obj/pipes/pipes.dmi'
+	icon_state = "cap"
+	layer = ATMOS_PIPE_SUPPLY_LAYER
+	level = 1
+	invisibility = 101
+
+	var/obj/structure/shuttle/part/dropship_mohawk/landing_gear_big/linked_gear
+	var/landing_gear_id

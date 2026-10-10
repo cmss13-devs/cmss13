@@ -133,22 +133,26 @@
 
 		ventcrawl_message_busy = world.time + 20
 		playsound(src, pick('sound/effects/alien_ventcrawl1.ogg', 'sound/effects/alien_ventcrawl2.ogg'), 25, 1)
-		var/turf/alert_turf = get_turf(src) //Pipe segments aren't guaranteed to be visible
-		alert_turf.visible_message(SPAN_HIGHDANGER("You hear something squeezing through the ducts."))
-		to_chat(user, SPAN_NOTICE("You begin to climb out of [src]"))
-		animate_ventcrawl()
-		user.remove_specific_pipe_image(src)
-		if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND))
+		if(istype(src, /obj/structure/pipes/vents/dropship/entrance))
+			var/obj/structure/pipes/vents/dropship/entrance/our_entrance = src
+			our_entrance.leave_landing_gear(user, direction)
+		else
+			var/turf/alert_turf = get_turf(src) //Pipe segments aren't guaranteed to be visible
+			alert_turf.visible_message(SPAN_HIGHDANGER("You hear something squeezing through the ducts."))
+			to_chat(user, SPAN_NOTICE("You begin to climb out of [src]."))
+			animate_ventcrawl()
+			user.remove_specific_pipe_image(src)
+			if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND))
+				animate_ventcrawl_reset()
+				return
+
 			animate_ventcrawl_reset()
+			user.remove_ventcrawl()
+			user.forceMove(src.loc)
+			user.visible_message(SPAN_HIGHDANGER("[user] climbs out of [src]."), SPAN_NOTICE("You climb out of [src]."))
+			playsound(user, pick('sound/effects/alien_ventpass1.ogg', 'sound/effects/alien_ventpass2.ogg'), 35, 1)
+
 			return
-
-		animate_ventcrawl_reset()
-		user.remove_ventcrawl()
-		user.forceMove(src.loc)
-		user.visible_message(SPAN_HIGHDANGER("[user] climbs out of [src]."), SPAN_NOTICE("You climb out of [src]."))
-		playsound(user, pick('sound/effects/alien_ventpass1.ogg', 'sound/effects/alien_ventpass2.ogg'), 35, 1)
-
-		return
 
 	user.forceMove(next_pipe)
 	user.client?.set_eye(next_pipe) //if we don't do this, Byond only updates the eye every tick - required for smooth movement
@@ -158,6 +162,23 @@
 		user.last_played_vent = world.time
 		playsound(src, pick('sound/effects/alien_ventcrawl1.ogg', 'sound/effects/alien_ventcrawl2.ogg'), 25, 1)
 
+/obj/structure/pipes/vents/dropship/entrance/proc/leave_landing_gear(mob/living/user, direction)
+	if(is_reserved_level(src.z) || src.linked_gear.linked_dropship.is_hijacked)
+		to_chat(user, SPAN_NOTICE("It would be in our best interest to not leave the dropship right now..."))
+		return
+	var/turf/alert_turf = get_turf(src.linked_gear)
+	alert_turf.visible_message(SPAN_HIGHDANGER("You hear something squeezing through the ducts."))
+	to_chat(user, SPAN_NOTICE("You begin to climb out of [src.linked_gear]."))
+
+	user.remove_specific_pipe_image(src)
+	if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND))
+		return
+	user.remove_ventcrawl()
+	var/list/target_locs = alert_turf.AdjacentTurfs()
+	user.forceMove(pick(target_locs))
+	user.visible_message(SPAN_HIGHDANGER("[user] climbs out of [src.linked_gear]."), SPAN_NOTICE("You climb out of [src.linked_gear]."))
+	playsound(user, pick('sound/effects/alien_ventpass1.ogg', 'sound/effects/alien_ventpass2.ogg'), 35, 1)
+	return
 
 /obj/structure/pipes/proc/animate_ventcrawl(speed = 3, loop_amount = -1, sections = 4)
 	animate(src, pixel_x = rand(-2,2), pixel_y = rand(-2,2), time = speed, loop = loop_amount, easing = JUMP_EASING)

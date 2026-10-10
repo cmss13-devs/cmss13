@@ -200,8 +200,11 @@
 
 	launching_data.dist = 0
 	for (var/turf/T in path)
-		if (!src || !HAS_TRAIT(src, TRAIT_LAUNCHED) || loc != last_loc || !isturf(src.loc))
+		if (!src || !HAS_TRAIT(src, TRAIT_LAUNCHED) || !isturf(src.loc))
 			break
+		if(loc != last_loc)
+			if(get_dist(src, launching_data.target) > get_dist(last_loc, launching_data.target))
+				break
 		if (!launching_data || QDELETED(launching_data))
 			early_exit = TRUE
 			break

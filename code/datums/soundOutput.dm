@@ -228,3 +228,13 @@ CLIENT_VERB(adjust_volume_lobby_music)
 	set name = "Adjust Volume LobbyMusic"
 	set category = "Preferences.Sound"
 	adjust_volume_prefs(VOLUME_LOBBY, "Set the volume for Lobby Music", SOUND_CHANNEL_LOBBY)
+
+CLIENT_VERB(adjust_human_voice_sound)
+	set name = "Adjust Volume HumanVoice"
+	set category = "Preferences.Sound"
+	adjust_volume_prefs(VOLUME_HUMAN_VOICES, "Set the volume for Human Voice SFX", 0)
+
+CLIENT_VERB(adjust_xeno_voice_sound)
+	set name = "Adjust Volume XenoVoice"
+	set category = "Preferences.Sound"
+	adjust_volume_prefs(VOLUME_XENO_VOICES, "Set the volume for Xeno Voice SFX", 0)

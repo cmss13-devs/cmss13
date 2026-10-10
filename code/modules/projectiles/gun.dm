@@ -554,7 +554,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	else
 		set_gun_user(null)
 
-		if(slot in list(WEAR_J_STORE, WEAR_BACK)) //When you stow your weapon on your back or in the suit storage slot, you're not shoving it up your ass. The light should stay on and keep emitting (unless you're putting a shotgun in a scabbard)
+		if(slot in list(WEAR_J_STORE, WEAR_BACK)) //When you stow your weapon on your back or in the suit storage slot, you're not shoving it up your ass. The light should stay on and keep illuminating (unless you're putting a shotgun in a scabbard)
 			if(HAS_TRAIT_FROM_ONLY(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user)))
 				REMOVE_TRAIT(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user))
 			return ..()

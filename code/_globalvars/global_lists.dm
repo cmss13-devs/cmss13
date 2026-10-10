@@ -228,6 +228,7 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_YAUTJA = new /datum/hive_status/yautja(),
 	XENO_HIVE_YAUTJA_BADBLOOD = new /datum/hive_status/yautja_bad(),
 	XENO_HIVE_HUNTED = new /datum/hive_status/hunted(),
+	XENO_HIVE_HORSEMAN = new /datum/hive_status/horseman(),
 	XENO_HIVE_RENEGADE = new /datum/hive_status/corrupted/renegade(),
 	XENO_HIVE_TUTORIAL = new /datum/hive_status/tutorial()
 ))

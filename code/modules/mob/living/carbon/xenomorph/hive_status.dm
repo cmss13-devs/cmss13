@@ -1475,6 +1475,25 @@
 /datum/hive_status/hunted/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	return FALSE
 
+/datum/hive_status/horseman
+	name = "Horseman Hive"
+	reporting_id = "horseman"
+	hivenumber = XENO_HIVE_HORSEMAN
+	color = "#ff7518"
+	ui_color = "#ff7518"
+
+	dynamic_evolution = FALSE
+	allow_no_queen_actions = TRUE
+	allow_no_queen_evo = TRUE
+	allow_queen_evolve = FALSE
+	latejoin_burrowed = FALSE
+	tacmap_requires_queen_ovi = FALSE
+
+	need_round_end_check = TRUE
+
+/datum/hive_status/horseman/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
+	return FALSE
+
 /datum/hive_status/mutated
 	name = FACTION_XENOMORPH_MUTATED
 	reporting_id = "mutated"

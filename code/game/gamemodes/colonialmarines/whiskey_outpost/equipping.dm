@@ -228,10 +228,3 @@ Assist both the Bunker Crew Master and the Quartermaster in their duties."}
 This could be the story of the world! 'Brave Marines in brutal combat with unknown hostile alien lifeforms!' It'd surely get Mr. Parkerson to notice you in the office if you brought him a story like this!
 You just gotta get out of this jungle to tell the tale!"}
 
-//this calls  self-setting headsets for marines AFTER they are assigned squads
-/datum/game_mode/whiskey_outpost/proc/self_set_headset(mob/living/carbon/human/H)
-	if(!istype(H))
-		return
-	var/obj/item/device/radio/headset/almayer/marine/self_setting/headset = H.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine/self_setting)
-	if(headset)
-		headset.self_set()

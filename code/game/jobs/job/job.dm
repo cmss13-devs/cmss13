@@ -318,10 +318,6 @@
 			GLOB.RoleAuthority.randomize_squad(human)
 		GLOB.RoleAuthority.prioritize_specialist(human)
 
-		if(Check_WO() && GLOB.job_squad_roles.Find(GET_DEFAULT_ROLE(human.job))) //activates self setting proc for marine headsets for WO
-			var/datum/game_mode/whiskey_outpost/WO = SSticker.mode
-			WO.self_set_headset(human)
-
 		var/assigned_squad
 		if(human.assigned_squad)
 			assigned_squad = human.assigned_squad.name

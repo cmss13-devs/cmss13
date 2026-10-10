@@ -669,7 +669,7 @@
 
 /obj/item/storage/box/autoinjectors/fill_preset_inventory()
 	for(var/i = 0; i < 7; i++)
-		new /obj/item/reagent_container/hypospray/autoinjector/empty(src)
+		new /obj/item/reagent_container/hypospray/autoinjector/research(src)
 
 
 /obj/item/storage/box/twobore

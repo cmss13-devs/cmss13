@@ -4,6 +4,7 @@
 	Custom runtime handling
 */
 
+
 // Early errors handling:
 //  For all these cases were errors might occur before logging/debugguer is ready, we stash them away
 //  Can't trust static initializers here so default/values must be handled at runtime

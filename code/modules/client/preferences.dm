@@ -355,9 +355,12 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 		if(!IsGuestKey(owner.key))
 			unlock_content = owner.IsByondMember()
 			load_path(owner.ckey)
-			if(!fexists(path))
+			if(!fexists(path)) // No existing json, try to migrate and then load
 				try_savefile_tree_migration()
-			load_savefile()
+				load_savefile()
+			else if(!load_savefile()) // Existing json, try loading it otherwise fallback to a migration
+				if(try_savefile_tree_migration())
+					load_savefile() // This only needs to occur after a successful migration here because the previous attempt already new'd a savefile
 			if(load_preferences())
 				if(load_character())
 					loaded = TRUE

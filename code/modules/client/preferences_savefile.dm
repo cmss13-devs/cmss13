@@ -261,7 +261,7 @@
 	var/old_path = path
 	load_path(owner.ckey)
 	if(!fexists(old_path))
-		return
+		return FALSE
 	var/datum/json_savefile/json_savefile = new(path)
 	json_savefile.import_byond_savefile(new /savefile(old_path))
 	json_savefile.save()
@@ -299,12 +299,12 @@
 	if(!path)
 		CRASH("Attempted to load savefile without first loading a path!")
 	savefile = new /datum/json_savefile(path)
+	return savefile && !savefile.errored
 
 /datum/preferences/proc/load_preferences()
 	if(!savefile)
 		stack_trace("Attempted to load the preferences of [owner] without a savefile; did you forget to call load_savefile?")
-		load_savefile()
-		if(!savefile)
+		if(!load_savefile())
 			stack_trace("Failed to load the savefile for [owner] after manually calling load_savefile; something is very wrong.")
 			return FALSE
 

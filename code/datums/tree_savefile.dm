@@ -8,6 +8,8 @@
 /datum/json_savefile
 	var/path = ""
 	var/alist/tree
+	/// Whether the last load call errored
+	var/errored = FALSE
 	/// Cooldown that tracks the time between attempts to download the savefile.
 	COOLDOWN_DECLARE(download_cooldown)
 
@@ -37,19 +39,29 @@ GENERAL_PROTECT_DATUM(/datum/json_savefile)
 /datum/json_savefile/proc/remove_entry(key)
 	tree -= key
 
-/// Wipes the entire tree
+/// Wipes the entire tree and ensure it is an alist
 /datum/json_savefile/proc/wipe()
-	tree?.Cut()
+	if(!islist(tree))
+		tree = alist()
+		return
+	tree.Cut()
 
 /datum/json_savefile/proc/load()
 	if(!path || !fexists(path))
+		errored = FALSE
 		return FALSE
 	try
 		tree = json_decode(file2text(path))
+		if(!islist(tree))
+			throw EXCEPTION("Not a list")
+		errored = FALSE
 		return TRUE
 	catch(var/exception/err)
 		stack_trace("failed to load savefile at '[path]': [err]")
 		fcopy(path, path + ".broken")
+		fdel(path)
+		wipe()
+		errored = TRUE
 		return FALSE
 
 /datum/json_savefile/proc/save()

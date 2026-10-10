@@ -47,6 +47,9 @@
 	/// icons specific to this clothing item as an accessory
 	var/list/accessory_icons = null
 
+/obj/item/clothing/proc/modify_bullet_damage(damage_result, obj/projectile/bullet, ammo_flags)
+		return damage_result
+
 /obj/item/clothing/get_examine_text(mob/user)
 	. = ..()
 	for(var/obj/item/clothing/accessory/attached in accessories)

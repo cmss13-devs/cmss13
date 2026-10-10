@@ -186,17 +186,14 @@
 		return
 
 	var/distance = get_dist(fendy, carbone)
-
 	var/max_distance = 3 - (fendy.crest_defense * 2)
 
 	if(distance > max_distance)
 		return
 
 	if(!fendy.crest_defense)
-		apply_cooldown()
 		fendy.throw_atom(get_step_towards(carbone, fendy), 3, SPEED_SLOW, fendy, tracking=TRUE)
 	if(!fendy.Adjacent(carbone))
-		on_cooldown_end()
 		return
 
 	carbone.last_damage_data = create_cause_data(fendy.caste_type, fendy)

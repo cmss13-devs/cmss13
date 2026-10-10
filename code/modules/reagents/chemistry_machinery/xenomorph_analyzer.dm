@@ -33,6 +33,11 @@
 			continue
 		technology_purchased[upgrade_type] = 0
 
+	RegisterSignal(SSdcs, COMSIG_GLOB_BIOMASS_GAIN, PROC_REF(gain_biomass))
+
+/obj/structure/machinery/xenoanalyzer/proc/gain_biomass(obj/relay_tower, biomass_added)
+	biomass_points += biomass_added
+
 /obj/structure/machinery/xenoanalyzer/attack_hand(mob/user)
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))

@@ -48,6 +48,10 @@
 	modifier_name = "Blood Optimizations"
 	modifier_desc = "Blood dries instantly, footsteps cannot get bloodied."
 
+/datum/gamemode_modifier/disable_bullet_casing
+	modifier_name = "Disable Casing Ejection"
+	modifier_desc = "Bullet casings don't eject for guns that have them, except during commanding officer executions and ceiling fire."
+
 /datum/gamemode_modifier/defib_past_armor
 	modifier_name = "Strong Defibrillators"
 	modifier_desc = "Allows defibrillators to ignore armor when reviving."

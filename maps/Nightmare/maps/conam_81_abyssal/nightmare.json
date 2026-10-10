@@ -1,0 +1,17 @@
+[
+	{ "type": "map_sprinkle", "path": "sprinkles/" },
+    {
+		"type": "map_insert",
+		"landmark": "greenshift1",
+		"chance": 1.0,
+		"path": "standalone/greenshift_hive_remove.dmm",
+		"when": { "$gamemode": "Extended - No Spawn" }
+	},
+    {
+		"type": "map_insert",
+		"landmark": "greenshift2",
+		"chance": 1.0,
+		"path": "standalone/greenshift_bunker.dmm",
+		"when": { "$gamemode": "Extended - No Spawn" }
+	}
+]

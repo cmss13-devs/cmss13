@@ -1308,3 +1308,33 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	)
 	icon_state = "iasf_co_cap"
 	item_state = "iasf_co_cap"
+
+//=LACN=\\
+
+/obj/item/clothing/head/lacn
+	name = "\improper LACN patrol cap"
+	desc = "A standard issue patrol cap issued as part of the non-combat uniform for LACN personal stationed planetside. It comes with a protective neck flap to protect from sunburn."
+	icon_state = "lacn_patrolcap"
+	item_state = "lacn_patrolcap"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
+	)
+
+/obj/item/clothing/head/lacn/boonie
+	name = "\improper LACN patrol boonie"
+	desc = "A standard issue patrol boonie issued as part of the non-combat uniform for LACN personal stationed planetside. It comes with a protective neck flap to protect from sunburn."
+	icon_state = "lacn_patrolboonie"
+	item_state = "lacn_patrolboonie"
+
+/obj/item/clothing/head/lacn/socap
+	name = "\improper LACN mariner cap"
+	desc = "A mariner's cap, it comes with an in-built headset, a common sight both aboard vessels or in Naval Areo-Space Stations of the LACN. It features a gold LACN emblem and the words \"<b>New Varadero Naval Areo-Space Station</b>\" emblazened just beneath."
+	icon_state = "lacn_socap"
+	item_state = "lacn_socap"
+
+/obj/item/clothing/head/lacn/copeaked
+	name = "\improper LACN peaked officer cap"
+	desc = "A peaked service cap worn by officers of the Latin American Colonial Navy, it comes with an in-built headset. It features a gold LACN emblem and a glossy black visor. Best avoid scuffing that visor unless you have some polish on you."
+	icon_state = "lacn_copeaked"
+	item_state = "lacn_copeaked"

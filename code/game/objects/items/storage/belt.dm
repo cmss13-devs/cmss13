@@ -3097,3 +3097,69 @@
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/l54())
 	for(var/i in 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/l54(src)
+
+//LATIN AMERICAN COLONIAL NAVY
+/obj/item/storage/belt/marine/lacn
+	name = "\improper TA270A2 pattern ammo bandolier"
+	desc = "The TA270A2 is the bandolier configuration of the TAI270 ammo load rig of the LACN. Good for carrying around extra ammo in the heat of the jungle. The A2 specifically is deisgned to fit the LACN's needs for load-bearing equipment that was not reliant on inbuilt load bearings such as the leather straps of the M3 Pattern Chestplates."
+	icon_state = "lacn_ammobelt"
+	item_state = "lacn_ammobelt"
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+	)
+	item_state_slots = list(
+		WEAR_L_HAND = "upp_belt",
+		WEAR_R_HAND = "upp_belt"
+	)
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+
+/obj/item/storage/belt/shotgun/lacn
+	name = "\improper TA270A2 pattern shotgun shell bandolier"
+	desc = "The TA270A2 is the bandolier configuration of the uncommon TA270 shell load rig of the LACN. Good for carrying around extra shells in the heat of the jungle. The A2 specifically is deisgned to fit the LACN's needs for load-bearing equipment that was not reliant on inbuilt load rigging such as the leather straps of the M3 Pattern Chestplates."
+	icon_state = "lacn_shotgunbelt"
+	item_state = "lacn_shotgunbelt"
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+	)
+	item_state_slots = list(
+		WEAR_L_HAND = "upp_belt",
+		WEAR_R_HAND = "upp_belt"
+	)
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+
+/obj/item/storage/belt/shotgun/lacn/fill_preset_inventory()
+	for(var/i in 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/slug(src)
+
+/obj/item/storage/belt/medical/lifesaver/lacn
+	name = "\improper TA270 pattern lifesaver bag"
+	desc = "The TA270 is the load-bearing equipment of the LACN. This configuration mounts a duffel bag filled with a range of injectors and light medical supplies, and is common among medics. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
+	icon_state = "lacn_medbelt"
+	item_state = "lacn_medbelt"
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+	)
+	item_state_slots = list(
+		WEAR_L_HAND = "upp_belt",
+		WEAR_R_HAND = "upp_belt"
+	)
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+
+/obj/item/storage/belt/medical/lifesaver/lacn/partial/fill_preset_inventory()
+	new /obj/item/storage/pill_bottle/packet/bicaridine(src)
+	new /obj/item/storage/pill_bottle/packet/kelotane(src)
+	new /obj/item/storage/pill_bottle/packet/tramadol(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/storage/pill_bottle/packet/tricordrazine(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/device/healthanalyzer(src)

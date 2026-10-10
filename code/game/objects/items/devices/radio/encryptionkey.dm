@@ -243,6 +243,10 @@
 	name = "\improper Army Radio Encryption Key"
 	channels = list(SQUAD_ARMY = TRUE, RADIO_CHANNEL_COLONY = TRUE)
 
+/obj/item/device/encryptionkey/soc/lacn
+	name = "\improper LACN Radio Encryption Key"
+	channels = list(SQUAD_LACN = TRUE, RADIO_CHANNEL_COLONY = TRUE)
+
 //ERT, PMC
 
 /obj/item/device/encryptionkey/dutch

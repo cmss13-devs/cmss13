@@ -31,6 +31,13 @@
 				help_shake_act(attacking_mob)
 				return 1
 
+			if(ishuman(attacking_mob) && stat == DEAD && attacking_mob.zone_selected == "eyes")
+				if(eyelids_status == EYELID_OPEN)
+					eyelids_status = EYELID_CLOSED
+					update_body()
+					attacking_mob.visible_message(SPAN_NOTICE("[attacking_mob] respectfully closes the lifeless eyes of [src]."), SPAN_NOTICE("You respectfully close the lifeless eyes of [src]."), null, 7)
+					return 1
+
 			if(species.flags & IS_SYNTHETIC)
 				to_chat(attacking_mob, SPAN_DANGER("Your hands compress the metal chest uselessly..."))
 				return 0

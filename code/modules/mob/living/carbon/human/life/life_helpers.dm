@@ -224,4 +224,5 @@
 	med_hud_set_health()
 	med_hud_set_armor()
 	med_hud_set_status()
+	move_eyelids(EYELID_SWITCH, 0.2, 3, EYELID_LOOP)	//start moving eyelids normally again
 

@@ -183,7 +183,7 @@
 	L.update_action_buttons()
 
 /proc/get_action(mob/action_mob, action_path)
-	for(var/datum/action/action in action_mob.actions)
+	for(var/datum/action/action as anything in action_mob.actions)
 		if(istype(action, action_path))
 			return action
 

@@ -5,8 +5,8 @@ import { useBackend } from '../../backend';
 import type { CallInfo, LuaEditorData, LuaEditorModal } from './types';
 
 type TaskManagerProps = {
-  setToCall: Dispatch<SetStateAction<CallInfo>>;
-  setModal: Dispatch<SetStateAction<LuaEditorModal>>;
+  readonly setToCall: Dispatch<SetStateAction<CallInfo>>;
+  readonly setModal: Dispatch<SetStateAction<LuaEditorModal>>;
 };
 
 export const TaskManager = (props: TaskManagerProps) => {

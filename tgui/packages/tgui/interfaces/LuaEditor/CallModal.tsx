@@ -6,9 +6,9 @@ import { ListMapper } from './ListMapper';
 import type { CallInfo, LuaEditorData, LuaEditorModal } from './types';
 
 type CallModalProps = {
-  setModal: Dispatch<SetStateAction<LuaEditorModal>>;
-  toCall: CallInfo;
-  setToCall: Dispatch<SetStateAction<CallInfo | undefined>>;
+  readonly setModal: Dispatch<SetStateAction<LuaEditorModal>>;
+  readonly toCall: CallInfo;
+  readonly setToCall: Dispatch<SetStateAction<CallInfo | undefined>>;
 };
 
 export const CallModal = (props: CallModalProps) => {

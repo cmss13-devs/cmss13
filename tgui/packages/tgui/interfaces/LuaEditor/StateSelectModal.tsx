@@ -5,7 +5,7 @@ import { useBackend } from '../../backend';
 import type { LuaEditorData, LuaEditorModal } from './types';
 
 type StateSelectModalProps = {
-  setModal: (modal: LuaEditorModal) => void;
+  readonly setModal: (modal: LuaEditorModal) => void;
 };
 
 export const StateSelectModal = (props: StateSelectModalProps) => {

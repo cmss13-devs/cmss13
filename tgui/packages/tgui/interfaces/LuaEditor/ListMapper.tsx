@@ -1,3 +1,4 @@
+import type { BooleanLike } from 'common/react';
 import React, {
   type ComponentProps,
   type Dispatch,
@@ -11,7 +12,6 @@ import {
   Section,
   Tooltip,
 } from 'tgui/components';
-import type { BooleanLike } from 'common/react';
 
 import { useBackend } from '../../backend';
 import { logger } from '../../logging';
@@ -98,7 +98,7 @@ const mapListVariants = (list: any[], variants: VariantList) => {
 };
 
 type ListMapperProps = ComponentProps<typeof Box> & {
-  list: ListElement[];
+  readonly list: ListElement[];
 } & Partial<{
     variants: VariantList;
     editable: BooleanLike;

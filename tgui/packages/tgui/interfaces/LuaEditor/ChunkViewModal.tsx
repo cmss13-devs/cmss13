@@ -6,9 +6,9 @@ import { sanitizeText } from '../../sanitize';
 import type { LuaEditorModal } from './types';
 
 type ChunkViewModalProps = {
-  setModal: Dispatch<SetStateAction<LuaEditorModal>>;
-  viewedChunk: string;
-  setViewedChunk: Dispatch<SetStateAction<string | undefined>>;
+  readonly setModal: Dispatch<SetStateAction<LuaEditorModal>>;
+  readonly viewedChunk: string;
+  readonly setViewedChunk: Dispatch<SetStateAction<string | undefined>>;
 };
 
 export const ChunkViewModal = (props: ChunkViewModalProps) => {

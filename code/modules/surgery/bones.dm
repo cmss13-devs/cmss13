@@ -6,7 +6,7 @@
 
 /datum/surgery/bone_repair
 	name = "Bone Repair Surgery"
-	possible_locs = ALL_LIMBS
+	possible_locs = list("head","chest","l_leg","l_foot","r_leg","r_foot","l_arm","l_hand","r_arm","r_hand")
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
@@ -17,6 +17,10 @@
 	)
 	var/affected_bone //Used for messaging.
 
+/datum/surgery/bone_repair/groin
+	possible_locs = list("groin")
+	invasiveness = list(SURGERY_DEPTH_DEEP)
+
 /datum/surgery/bone_repair/New(surgery_target, surgery_location, surgery_limb)
 	..()
 	if(affected_limb)
@@ -25,8 +29,11 @@
 				affected_bone = "ribs"
 			if("head")
 				affected_bone = "skull"
-			if("groin")
-				affected_bone = "pelvis"
+
+/datum/surgery/bone_repair/groin/New(surgery_target, surgery_location, surgery_limb)
+	..()
+	if(affected_limb)
+		affected_bone = "pelvis"
 
 /datum/surgery/bone_repair/can_start(mob/user, mob/living/carbon/patient, obj/limb/patient_limb, obj/item/tool)
 	return patient_limb.status & LIMB_BROKEN
@@ -188,7 +195,7 @@
 	target.custom_pain("You feel your fractured bones shifting around in your [surgery.affected_limb.display_name]! It feels horrible!", 1)
 	log_interact(user, target, "[key_name(user)] attempted to begin setting bones in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")
 
-/datum/surgery_step/set_bones/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
+/datum/surgery_step/set_bones/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
 	if(surgery.affected_bone)
 		user.affected_message(target,
 			SPAN_NOTICE("You set [target]'s [surgery.affected_bone]."),
@@ -206,6 +213,7 @@
 
 	surgery.affected_limb.status &= ~(LIMB_SPLINTED|LIMB_SPLINTED_INDESTRUCTIBLE|LIMB_BROKEN)
 	surgery.affected_limb.perma_injury = 0
+	target.update_surgery_overlays()
 	target.pain.recalculate_pain()
 	log_interact(user, target, "[key_name(user)] successfully set bones in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 

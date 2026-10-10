@@ -124,8 +124,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 			target.apply_damage(5, TOX)
 
 	for(var/datum/internal_organ/int_organ as anything in surgery.affected_limb.internal_organs)
-		if(int_organ && int_organ.damage > 0)
-			int_organ.take_damage(dam_amt,0)
+		int_organ.take_damage(dam_amt,0)
 
 	log_interact(user, target, "[key_name(user)] failed to mend organs in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
 	return FALSE

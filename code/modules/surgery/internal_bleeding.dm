@@ -37,15 +37,15 @@
 	target.custom_pain("The searing pain in your [surgery.affected_limb.display_name] is unbearable!", 1)
 	log_interact(user, target, "[key_name(user)] began repairing internal bleeding in [key_name(target)]'s [surgery.affected_limb.display_name], beginning [surgery].")
 
-/datum/surgery_step/fix_vein/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/fix_vein/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_IB)
 	if(!user.statistic_exempt && ishuman(target))
 		user.life_ib_total++
 
 	user.affected_message(target,
-		SPAN_NOTICE("You finish repairing [target]'s damaged vein."),
-		SPAN_NOTICE("[user] finishes repairing your damaged vein."),
-		SPAN_NOTICE("[user] finishes repairing [target]'s damaged vein."))
+		SPAN_NOTICE("You finish repairing [target]'s damaged vein and cleaning the excess blood from the surgical site."),
+		SPAN_NOTICE("[user] finishes repairing your damaged vein and cleaning the excess blood from the surgical site"),
+		SPAN_NOTICE("[user] finishes repairing [target]'s damaged vein and cleaning the excess blood from the surgical site."))
 
 	for(var/datum/wound/W as anything in surgery.affected_limb.wounds)
 		if(W.internal)
@@ -56,6 +56,8 @@
 	if(prob(40))
 		user.add_blood(target.get_blood_color(), BLOOD_HANDS)
 
+	surgery.affected_limb.incision_int_bleeding_flag_check()
+	target.update_surgery_overlays()
 	target.pain.recalculate_pain()
 	log_interact(user, target, "[key_name(user)] successfully repaired internal bleeding in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
 

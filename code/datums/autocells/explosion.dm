@@ -45,6 +45,8 @@
 	var/reflection_power_multiplier = 0.4
 	/// Whether the damage is considered to be from an environmental source
 	var/enviro = FALSE
+	/// Whether the explosion has been smothered
+	var/smothered = FALSE
 
 	//Diagonal cells have a small delay when branching off from a non-diagonal cell. This helps the explosion look circular
 	var/delay = 0
@@ -187,6 +189,9 @@
 		else
 			power -= resistance
 
+	if(smothered)
+		power -= power_falloff * EXPLOSION_SMOTHER_FALLOFF_MULTIPLIER // Smothered explosions have higher falloff!
+
 	if(power <= 0)
 		qdel(src)
 		return
@@ -276,6 +281,44 @@ as having entered the turf.
 	if(!epicenter)
 		return
 
+	var/cause = explosion_cause_data?.resolve_cause() // What caused the explosion?
+	var/containable = istype(cause, /obj/item/explosive/grenade) // Is the cause containable? (currently, only grenades)
+	var/smothered = FALSE // Given to automata_cell/explosion later to check against
+
+	if(containable)
+		var/obj/item/explosive/grenade/cause_grenade = cause
+		var/obj/item/explosive/grenade/high_explosive/airburst/cause_airburst = cause_grenade
+		if(istype(cause_grenade) && !istype(cause_airburst) && power < EXPLOSION_DANGEROUS_POWER)
+			// An alive human or xenomorph lying flat on the epicenter smothers the blast with their body.
+			for(var/mob/living/blocker in epicenter)
+				if(blocker.resting && blocker.stat == CONSCIOUS && blocker.a_intent ==  INTENT_DISARM)
+					if(blocker.mob_size == MOB_SIZE_XENO_VERY_SMALL) // Could be interesting to see allowed tbh
+						continue
+
+					for(var/mob/shielded_mob in range(EXPLOSION_SMOTHER_MESSAGE_TRIGGER_RANGE, epicenter))
+						if(shielded_mob == blocker || shielded_mob.stat == DEAD)
+							continue
+						var/gender_object_pronoun = blocker.gender == MALE ? "himself" : blocker.gender == PLURAL ? "herself" : "themselves"
+						var/gender_possessive_pronoun = blocker.gender == MALE ? "his" : blocker.gender == PLURAL ? "her" : "their"
+						epicenter.visible_message(SPAN_HIGHDANGER("<b>[blocker]</b> throws [gender_object_pronoun] onto the grenade to shield [gender_possessive_pronoun] fellow [ishuman(blocker) ? "people" : "sisters"]!"), null, 7)
+						break
+
+					// Simulates additional shrapnel damage, trying to do this in create_shrapnel() causes the mob to die before the exposion ever happens (since shrapnel is created after the explosion)
+					var/obj/item/explosive/grenade/high_explosive/cause_grenade_high_explosive = cause_grenade
+					if(istype(cause_grenade_high_explosive))
+						for(var/i=0;i<round(cause_grenade_high_explosive.shrapnel_count * EXPLOSION_SMOTHER_SHRAPNEL_PERCENT);i++)
+							var/obj/projectile/S = new(epicenter, explosion_cause_data)
+							S.generate_bullet(new cause_grenade_high_explosive.shrapnel_type)
+							S.projectile_flags |= PROJECTILE_SHRAPNEL
+							blocker.bullet_act(S, null)
+
+					blocker.take_overall_damage(power * EXPLOSION_SMOTHER_DAMAGE_MULTIPLIER) // Adds ontop of the already existing explosive damage from face-tanking
+					if((power >= EXPLOSION_DANGEROUS_POWER - 30) && blocker.health < 300)
+						blocker.gib() // goodbye cruel world
+
+					smothered = TRUE
+					break
+
 	if(!istype(explosion_cause_data))
 		if(explosion_cause_data)
 			stack_trace("cell_explosion called with string cause ([explosion_cause_data]) instead of datum")
@@ -306,7 +349,7 @@ as having entered the turf.
 	if(QDELETED(E))
 		return
 
-	if(power >= 150) //shockwave for anything over 150 power
+	if(power >= EXPLOSION_DANGEROUS_POWER) //shockwave for anything over 150* power
 		new /obj/effect/shockwave(epicenter, power/60)
 
 	E.power = power
@@ -315,8 +358,9 @@ as having entered the turf.
 	E.direction = direction
 	E.explosion_cause_data = explosion_cause_data
 	E.enviro = enviro
+	E.smothered = smothered
 
-	if(power >= 100) // powerful explosions send out some special effects
+	if(power >= 100 && !smothered) // powerful explosions send out some special effects
 		epicenter = get_turf(epicenter) // the ex_acts might have changed the epicenter
 		new /obj/shrapnel_effect(epicenter)
 

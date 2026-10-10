@@ -398,8 +398,8 @@
 
 /obj/item/weapon/gun/pistol/t73
 	name = "\improper Type 73 pistol"
-	desc = "The Type 73 is the once-standard issue sidearm of the UPP Armed Collective. Whilst it was officially replaced with the NP92 series, it remains popular with veteran UPP troops for it's familiarity, extra firepower, and reliability."
-	desc_lore = "Originally a joint project between the then-fledgling UPP and the now-defunct CANC, the Type 73 was first adopted in 2122, since then it's served the Union well, with the limited use-case of pistols not requiring much advancement, the design remained mostly unchanged throughout most of its lifespan. \nThe Type 73 series is considered to be one of the most widely produced handguns of the 22nd century, with production far exceeding UPPAC requirements surplus batches tend to end up in the hands of forces attempting to arm themselves on a budget. Users include the Union of Progressive Peoples, Colonial Liberation Front, and just about any mercenary, rebel, or pirate group out there."
+	desc = "The Type 73 is the once-standard issue sidearm of the UPP Armed Collective. Whilst it has been officially replaced with the NP92 series, it remains popular with veteran UPP troops for it's familiarity, extra firepower, and reliability."
+	desc_lore = "Originally a joint project between the then-fledgling UPP and the now-defunct CANC, the Type 73 was first adopted in 2122, since then it's served the Union well, with the design remained mostly unchanged throughout most of its lifespan. \nThe Type 73 series is considered to be one of the most widely produced handguns of the 22nd century, with production far exceeding UPPAC requirements surplus batches tend to end up in the hands of forces attempting to arm themselves on a budget. Users include the Union of Progressive Peoples, Colonial Liberation Front, and just about any mercenary, rebel, or pirate group out there."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/pistols.dmi'
 	icon_state = "tt"
 	item_state = "tt"
@@ -435,7 +435,7 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
 
 /obj/item/weapon/gun/pistol/t73/loadout
-	desc = "The Type 73 is the once-standard issue sidearm of the UPP Armed Collective. Whilst it was officially replaced with the NP92 series, it remains popular with veteran UPP troops for it's familiarity and extra firepower. <span class='notice'> This one looks worn, and won't be as effective in combat.</span>"
+	desc = "The Type 73 is the once-standard issue sidearm of the UPP Armed Collective. Whilst it has been officially replaced with the NP92 series, it remains popular with veteran UPP troops for it's familiarity and extra firepower. <span class='notice'> This one looks worn, and won't be as effective in combat.</span>"
 
 /obj/item/weapon/gun/pistol/t73/loadout/set_gun_config_values()
 	..()

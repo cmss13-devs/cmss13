@@ -818,10 +818,6 @@
 /datum/effect_system/smoke_spread/mustard
 	smoke_type = /obj/effect/particle_effect/smoke/mustard
 
-
-/datum/effect_system/smoke_spread/mustard/see_through
-	smoke_type = /obj/effect/particle_effect/smoke/mustard/see_through
-
 /datum/effect_system/smoke_spread/phosphorus
 	smoke_type = /obj/effect/particle_effect/smoke/phosphorus
 	var/intensity

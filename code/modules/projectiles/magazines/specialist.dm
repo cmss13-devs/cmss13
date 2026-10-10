@@ -436,6 +436,6 @@
 
 /obj/item/ammo_magazine/rocket/upp/incen
 	name = "\improper HJRA-12 Thermobaric Rocket"
-	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a thermobaric rocket designed for use against emplacements and structures, the chemical compound used inside puts off a toxic smoke, avoid close contact. A similar load is used in the disposable URO-H launcher."
+	desc = "A rocket for the UPP's HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a thermobaric rocket designed for use against emplacements and structures. A similar load is used in the disposable URO-H launcher."
 	icon_state = "hjra_incen"
 	default_ammo = /datum/ammo/rocket/wp/upp

@@ -218,22 +218,26 @@
 	do_smoke(loca = turf)
 	var/datum/reagent/napalm/upp/reagent = new()
 	new /obj/flamer_fire(turf, cause_data, reagent, 3)
-	var/datum/effect_system/smoke_spread/mustard/see_through/landingSmoke = new /datum/effect_system/smoke_spread/mustard/see_through //it's not actual mustard gas, but this gives the rocket a bit of flavoring
-
-	landingSmoke.set_up(5, 0, turf, null, 6, cause_data)
-	landingSmoke.start()
 
 /datum/ammo/rocket/wp/upp/on_hit_mob(mob/mob, obj/projectile/projectile)
 	drop_flame(get_turf(mob), projectile.weapon_cause_data)
+	cell_explosion(get_turf(mob), 100, 75, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF, null, projectile.weapon_cause_data)
+//	explosion(projectile.loc,  -1, 2, 4, 5, , , ,projectile.weapon_cause_data)
 
 /datum/ammo/rocket/wp/upp/on_hit_obj(obj/object, obj/projectile/projectile)
 	drop_flame(get_turf(object), projectile.weapon_cause_data)
+	cell_explosion(get_turf(object), 100, 75, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF, null, projectile.weapon_cause_data)
+//	explosion(projectile.loc,  -1, 2, 4, 5, , , ,projectile.weapon_cause_data)
 
 /datum/ammo/rocket/wp/upp/on_hit_turf(turf/turf, obj/projectile/projectile)
 	drop_flame(turf, projectile.weapon_cause_data)
+	cell_explosion(get_turf(turf), 100, 75, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF, null, projectile.weapon_cause_data)
+//	explosion(projectile.loc,  -1, 2, 4, 5, , , ,projectile.weapon_cause_data)
 
 /datum/ammo/rocket/wp/upp/do_at_max_range(obj/projectile/projectile)
 	drop_flame(get_turf(projectile), projectile.weapon_cause_data)
+	cell_explosion(get_turf(projectile), 100, 75, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF, null, projectile.weapon_cause_data)
+//	explosion(projectile.loc,  -1, 2, 4, 5, , , ,projectile.weapon_cause_data)
 
 /datum/ammo/rocket/wp/quad
 	name = "thermobaric rocket"

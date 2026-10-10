@@ -40,7 +40,7 @@
 /area/lv624/lazarus/main_hall)
 "h" = (
 /obj/structure/machinery/light/small,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "i" = (
@@ -70,8 +70,8 @@
 	pixel_y = -2
 	},
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
-/obj/effect/landmark/crap_item,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "m" = (
@@ -106,8 +106,8 @@
 /obj/structure/surface/rack{
 	layer = 2.5
 	},
-/obj/effect/landmark/crap_item,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/melee_weapon,
 /obj/item/ammo_magazine/smg/m39/extended,
 /obj/item/weapon/gun/smg/m39,
 /turf/open/floor/cult,
@@ -134,8 +134,8 @@
 /obj/structure/surface/rack{
 	layer = 2.5
 	},
-/obj/effect/landmark/crap_item,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/melee_weapon,
 /obj/item/ammo_magazine/smg/m39/extended,
 /obj/item/weapon/gun/smg/m39,
 /turf/open/floor/cult,
@@ -155,7 +155,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/east_central_jungle)
 "A" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "B" = (

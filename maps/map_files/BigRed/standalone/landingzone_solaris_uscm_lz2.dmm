@@ -10,7 +10,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port_lz2)
 "v" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port_lz2)
 

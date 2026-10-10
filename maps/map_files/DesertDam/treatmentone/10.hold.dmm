@@ -1195,7 +1195,7 @@
 /area/desert_dam/building/water_treatment_one/breakroom)
 "Qz" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/item/reagent_container/food/drinks/cans/beer{
 	pixel_y = 5
 	},
@@ -1232,7 +1232,7 @@
 /area/desert_dam/building/water_treatment_one/breakroom)
 "Ry" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/hallway)
 "RK" = (

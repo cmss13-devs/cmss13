@@ -16,6 +16,7 @@
 	var/mission_error
 
 	var/stat = FIRE_MISSION_STATE_IDLE
+	var/exit_phase_end = 0 // end of the firemission sequence
 
 	var/recorded_dir = NORTH
 	var/recorded_offset = 0
@@ -278,8 +279,14 @@
 /// Step 5: Actually executes the fire mission updating stat to FIRE_MISSION_STATE_FIRING and then FIRE_MISSION_STATE_OFF_TARGET
 /datum/cas_fire_envelope/proc/open_fire(atom/target_turf,datum/cas_fire_mission/mission,dir)
 	stat = FIRE_MISSION_STATE_FIRING
-	mission.execute_firemission(linked_console, target_turf, dir, fire_length, step_delay, src)
+	var/result = mission.execute_firemission(linked_console, target_turf, dir, fire_length, step_delay, src)
 	stat = FIRE_MISSION_STATE_OFF_TARGET
+	// shadow effect only appears after firemission finishes firing
+	var/exit_duration = min(CAS_SHADOW_EXIT_DURATION, exit_phase_end - world.time)
+	if(result == FIRE_MISSION_ALL_GOOD && exit_duration > 0)
+		var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(linked_console.shuttle_tag)
+		if(dropship)
+			show_cas_exit_shadow(get_turf(target_turf), dir, mission.mission_length, exit_duration, dropship)
 
 /// Step 6: Sets the fire mission stat to FIRE_MISSION_STATE_COOLDOWN
 /datum/cas_fire_envelope/proc/flyoff()
@@ -301,6 +308,7 @@
 		mission_error = "Target is off bounds or obstructed."
 		return
 	to_chat(usr, SPAN_ALERT("Fire Mission underway!"))
+	exit_phase_end = world.time + flyoff_period
 
 	var/obj/effect/firemission_effect = new(target_turf)
 

@@ -19,6 +19,7 @@
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 40
 	gun_type = /obj/item/weapon/gun/rifle/m41a
+	flags_magazine = AMMUNITION_REFILLABLE | JUNGLE_STYLE_ABLE
 	ammo_band_icon = "+m41a_band"
 	ammo_band_icon_empty = "+m41a_band_e"
 
@@ -290,6 +291,7 @@
 	gun_type = /obj/item/weapon/gun/rifle/lmg
 	flags_magazine = AMMUNITION_CANNOT_REMOVE_BULLETS|AMMUNITION_REFILLABLE|AMMUNITION_SLAP_TRANSFER
 	flags_atom = FPRINT|CONDUCT|MAP_COLOR_INDEX
+	flags_magazine = AMMUNITION_REFILLABLE
 	ammo_band_icon = "+m41ae2_band"
 	ammo_band_icon_empty = "+m41ae2_band_e"
 

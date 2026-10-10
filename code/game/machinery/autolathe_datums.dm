@@ -483,6 +483,11 @@
 	path = /obj/item/storage/fancy/vials/empty
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
+/datum/autolathe/recipe/medilathe/injector_box
+	name = "autoinjector box"
+	path = /obj/item/storage/fancy/vials/injector
+	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
+
 /datum/autolathe/recipe/medilathe/surgical_tray
 	name = "surgical tray"
 	path = /obj/item/storage/surgical_tray/empty

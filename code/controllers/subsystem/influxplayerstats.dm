@@ -49,6 +49,8 @@ SUBSYSTEM_DEF(influxplayerstats)
 			continue
 
 		var/turf/target_turf = get_turf(target)
+		if(!target_turf)
+			continue
 		var/list/level_stats
 		if(is_mainship_level(target_turf.z) || is_reserved_level(target_turf.z))
 			level_stats = recorded_stats[IPS_SHIP_LEVEL]

@@ -160,6 +160,38 @@
 		return "Weapon [weapon_string] has not enough ammunition to complete this Fire Mission."
 	return "Unknown Error"
 
+/// rectangle minimap area for firemission
+/datum/cas_fire_mission/proc/get_tacmap_rectangle(direction)
+	if(mission_length < 1 || !(direction in GLOB.cardinals))
+		return null
+	var/min_gimbal
+	var/max_gimbal
+	for(var/datum/cas_fire_mission_record/record as anything in records)
+		var/active = FALSE
+		for(var/offset in record.offsets)
+			if(isnum(offset))
+				active = TRUE
+				break
+		if(!active)
+			continue
+		var/list/limits = record.get_offsets()
+		if(!limits)
+			continue
+		min_gimbal = isnull(min_gimbal) ? limits["min"] : min(min_gimbal, limits["min"])
+		max_gimbal = isnull(max_gimbal) ? limits["max"] : max(max_gimbal, limits["max"])
+	if(isnull(min_gimbal))
+		return null
+	var/last_tile = mission_length - 1
+	switch(direction)
+		if(NORTH)
+			return list("min_x" = min_gimbal, "max_x" = max_gimbal, "min_y" = 0, "max_y" = last_tile)
+		if(SOUTH)
+			return list("min_x" = -max_gimbal, "max_x" = -min_gimbal, "min_y" = -last_tile, "max_y" = 0)
+		if(EAST)
+			return list("min_x" = 0, "max_x" = last_tile, "min_y" = -max_gimbal, "max_y" = -min_gimbal)
+		if(WEST)
+			return list("min_x" = -last_tile, "max_x" = 0, "min_y" = min_gimbal, "max_y" = max_gimbal)
+
 /datum/cas_fire_mission/proc/execute_firemission(obj/structure/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, direction = NORTH, steps = 12, step_delay = 3, datum/cas_fire_envelope/envelope = null)
 	if(initial_turf == null || check(linked_console) != FIRE_MISSION_ALL_GOOD)
 		return FIRE_MISSION_NOT_EXECUTABLE

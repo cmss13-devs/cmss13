@@ -623,8 +623,27 @@
 /obj/item/device/flashlight/flare/signal/Initialize()
 	. = ..()
 	fuel = rand(160 SECONDS, 200 SECONDS)
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(roof_indicator))
 
-/obj/item/device/flashlight/flare/signal/flare_burn_down() // Empty proc to override parent.
+/obj/item/device/flashlight/flare/signal/proc/get_roof_icon_state()
+	var/area/flare_area = get_area(src)
+	if(flare_area?.ceiling > CEILING_METAL)
+		return "cas_flare-red"
+	if(flare_area?.ceiling == CEILING_METAL)
+		return "cas_flare-yellow"
+	return "cas_flare-on"
+
+/obj/item/device/flashlight/flare/signal/update_icon()
+	. = ..()
+	if(on)
+		icon_state = get_roof_icon_state()
+
+/obj/item/device/flashlight/flare/signal/proc/roof_indicator()
+	SIGNAL_HANDLER
+	if(on && icon_state != get_roof_icon_state())
+		update_icon()
+
+/obj/item/device/flashlight/flare/signal/flare_burn_down()
 	return
 
 /obj/item/device/flashlight/flare/signal/attack_self(mob/living/carbon/human/user)

@@ -6295,7 +6295,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/hallways/lower/starboard_midship_hallway)
 "atr" = (
-/obj/structure/closet/crate,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -6303,12 +6302,14 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/structure/machinery/floodlight,
 /turf/open/floor/almayer/plate,
 /area/forward_base/engineering/lower/workshop)
 "ats" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/machinery/floodlight,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/engineering/lower/workshop)
 "att" = (
@@ -15411,6 +15412,10 @@
 /obj/effect/landmark/start/researcher,
 /turf/open/floor/almayer/mono,
 /area/forward_base/medical/medical_science)
+"aQk" = (
+/obj/structure/machinery/medical_pod/sleeper,
+/turf/open/floor/almayer/test_floor4,
+/area/forward_base/medical/medical_science)
 "aQl" = (
 /obj/structure/machinery/autodispenser{
 	pixel_x = -1;
@@ -15524,6 +15529,7 @@
 /obj/structure/sign/safety/ref_chem_storage{
 	pixel_x = 32
 	},
+/obj/item/storage/box/monkeycubes,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/medical/medical_science)
 "aQz" = (
@@ -15616,7 +15622,6 @@
 	pixel_x = 1
 	},
 /obj/structure/bed/roller/heavy,
-/obj/item/organ/xeno/drone,
 /obj/item/organ/xeno/drone,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/forward_base/medical/medical_science)
@@ -78567,7 +78572,7 @@ aTG
 aPu
 aPL
 aTA
-aTA
+aQk
 aPI
 aRx
 dmD

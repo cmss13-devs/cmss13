@@ -43,7 +43,6 @@
 	plasma_cost = 30
 	cooldown_message = "We recovered our stamina and are ready to quake the earth again."
 
-
 	var/damage = 65
 
 	var/distance = 2
@@ -265,6 +264,7 @@
 	plasma_cost = 25
 	xeno_cooldown = 10 SECONDS
 	cooldown_message = "We recovered our stamina and can now tumble about again."
+
 /datum/action/xeno_action/activable/tumble/proc/on_end_throw(start_charging)
 	var/mob/living/carbon/xenomorph/Xeno = owner
 	Xeno.flags_atom &= ~DIRLOCK

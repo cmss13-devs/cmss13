@@ -471,7 +471,7 @@
 /datum/action/xeno_action/onclick/set_hugger_reserve/use_ability(atom/Atom)
 	var/mob/living/carbon/xenomorph/carrier/carrier = owner
 	carrier.huggers_reserved = tgui_input_number(usr,
-		"How many facehuggers would we like to keep safe from Observers wanting to join as facehuggers?",
+		"How many facehuggers would you like to keep safe from Observers wanting to join as facehuggers?",
 		"How many to reserve?",
 		carrier.huggers_reserved, carrier.huggers_max, 0
 	)

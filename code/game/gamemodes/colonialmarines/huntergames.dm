@@ -99,7 +99,6 @@
 	var/last_tally
 	var/contestants[]
 	var/supply_votes[]
-	bypass_checks = TRUE
 
 	var/ticks_passed = 0
 	var/drops_disabled = 0

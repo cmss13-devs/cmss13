@@ -33,7 +33,7 @@
 	action_type = XENO_ACTION_ACTIVATE
 	xeno_cooldown = 10 SECONDS
 	plasma_cost = 20
-	cooldown_message = "You can clearly see the weakpoints of fallen talls again."
+	cooldown_message = "We can clearly see the weakpoints of fallen talls again."
 
 	var/buff_duration = 50
 

@@ -56,6 +56,7 @@
 		/datum/action/xeno_action/onclick/pumpkin_barrage,
 		/datum/action/xeno_action/activable/doom,
 		/datum/action/xeno_action/activable/boomerang_scythe,
+		/datum/action/xeno_action/onclick/entomb,
 	)
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_4/horseman.dmi'
@@ -341,3 +342,79 @@
 		if(thing.density)
 			return TRUE
 	return FALSE
+
+
+/datum/action/xeno_action/onclick/entomb
+	name = "Entomb"
+	action_icon_state = "place_trap"
+	ability_primacy = XENO_PRIMARY_ACTION_4
+	action_type = XENO_ACTION_CLICK
+	xeno_cooldown = 30 SECONDS
+	var/entomb_duration = 6 SECONDS
+
+/datum/action/xeno_action/onclick/entomb/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!istype(xeno) || !action_cooldown_check() || !xeno.check_state())
+		return
+	var/list/view_size = getviewsize(xeno.client?.view || GLOB.world_view_size)
+	var/x_radius = floor(view_size[1] / 2)
+	var/y_radius = floor(view_size[2] / 2)
+	var/list/mob/living/carbon/human/victims = list()
+	for(var/mob/living/carbon/human/victim in view(max(x_radius, y_radius), xeno))
+		if(victim.stat == DEAD || !isturf(victim.loc) || victim.buckled || victim.anchored)
+			continue
+		if(abs(victim.x - xeno.x) > x_radius || abs(victim.y - xeno.y) > y_radius)
+			continue
+		victims += victim
+	if(!length(victims))
+		to_chat(xeno, SPAN_XENOWARNING("There's no one in sight to entomb."))
+		return
+	if(!check_and_use_plasma_owner())
+		return
+	for(var/mob/living/carbon/human/victim as anything in victims)
+		var/obj/structure/closet/coffin/horseman/coffin = new(victim.loc)
+		coffin.entomb(victim, entomb_duration)
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] raises its claws, and coffins burst from the ground!"), SPAN_XENOWARNING("We entomb everyone in sight!"))
+	apply_cooldown()
+	return ..()
+
+/obj/structure/closet/coffin/horseman
+	name = "haunted coffin"
+	desc = "Somebody is is pounding on the lid."
+	icon_state = "uscm_coffin"
+	icon_closed = "uscm_coffin"
+	icon_opened = "uscm_coffin_open"
+	fill_from_loc = FALSE
+	exit_stun = 0
+
+/obj/structure/closet/coffin/horseman/Initialize(mapload, ...)
+	. = ..()
+	update_icon()
+
+/obj/structure/closet/coffin/horseman/update_icon()
+	..()
+	var/matrix/rotation = matrix()
+	rotation.Turn(-90)
+	if(!opened)
+		rotation.Translate(-6, 0)
+	apply_transform(rotation)
+
+/obj/structure/closet/coffin/horseman/Destroy()
+	if(!opened)
+		dump_contents()
+	return ..()
+
+/obj/structure/closet/coffin/horseman/proc/entomb(mob/living/carbon/human/victim, duration)
+	victim.pulledby?.stop_pulling()
+	victim.stop_pulling()
+	victim.forceMove(src)
+	welded = TRUE
+	playsound(src, 'sound/effects/woodhit.ogg', 50, TRUE)
+	to_chat(victim, SPAN_HIGHDANGER("A coffin slam shut around you!"))
+	addtimer(CALLBACK(src, PROC_REF(release)), duration)
+
+/obj/structure/closet/coffin/horseman/proc/release()
+	welded = FALSE
+	open(null, TRUE)
+	visible_message(SPAN_NOTICE("[src] dissapears."))
+	qdel(src)

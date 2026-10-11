@@ -117,6 +117,7 @@
 
 	return sanitized_gear
 
+/// Returns a new list with each entry in passed data interpolated into a string (e.g. converting typepaths to strings)
 /proc/stringify_list(data)
 	var/string_list = list()
 

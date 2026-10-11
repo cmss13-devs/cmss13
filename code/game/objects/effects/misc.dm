@@ -75,7 +75,7 @@
 	dir = EAST
 	layer = 100
 	pixel_z = 192
-	var/fall_duration = 1 SECONDS
+	var/fall_duration = 1 SECONDS 	//Time it takes for the pipe to hit the ground
 
 /obj/effect/falling_pipe/Initialize(mapload, mob/shooter)
 	. = ..()

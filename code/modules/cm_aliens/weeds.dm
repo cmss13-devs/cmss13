@@ -583,6 +583,8 @@
 	// Make all the children look for a new parent node
 	for(var/obj/effect/alien/weeds/child as anything in children)
 		remove_child(child)
+		if(QDELETED(child))
+			continue
 		addtimer(CALLBACK(child, PROC_REF(avoid_orphanage)), WEED_BASE_DECAY_SPEED + rand(0, 1 SECONDS)) // Slight variation whilst decaying
 
 	. = ..()

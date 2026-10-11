@@ -1,0 +1,4 @@
+author: "JHINgle4ce"
+delete-after: True
+changes:
+  - rscdel: "Removed platform overlay"

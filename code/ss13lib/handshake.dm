@@ -24,13 +24,15 @@
 	)
 
 #ifdef SS13LIB_AUTH_METHODS
-	var/list/auth_methods = SS13LIB_AUTH_METHODS
+	var/list/auth_methods
+	SS13LIB_SAFELY("SS13LIB_AUTH_METHODS", auth_methods = SS13LIB_AUTH_METHODS)
 	if(length(auth_methods))
 		handshake_body["auth_methods"] = auth_methods
 #endif
 
 #ifdef SS13LIB_ENGINE
-	var/engine = SS13LIB_ENGINE
+	var/engine
+	SS13LIB_SAFELY("SS13LIB_ENGINE", engine = SS13LIB_ENGINE)
 	if(length(engine))
 		handshake_body["engine"] = engine
 #endif

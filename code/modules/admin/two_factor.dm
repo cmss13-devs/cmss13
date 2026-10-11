@@ -40,7 +40,7 @@
 
 	WAIT_DB_READY
 
-	var/address = user.address
+	var/address = SS13LIB_CLIENT_ADDRESS(user)
 	if(!address)
 		address = "127.0.0.1"
 

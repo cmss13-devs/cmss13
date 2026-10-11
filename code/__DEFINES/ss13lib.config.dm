@@ -16,7 +16,11 @@
 #define SS13LIB_ENGINE_MAX_VERSION CONFIG_GET(string/ss13lib_engine_max_version)
 #define SS13LIB_ENGINE_BLACKLISTED_VERSIONS CONFIG_GET(str_list/ss13lib_engine_blacklisted_versions)
 
-#define SS13LIB_ROUND_MAP_NAME SSmapping.configs[GROUND_MAP].map_name
+#define SS13LIB_ROUND_MAP_NAME ss13lib_round_map_name()
+
+/proc/ss13lib_round_map_name()
+	var/datum/map_config/ground_map = LAZYACCESS(SSmapping?.configs, GROUND_MAP)
+	return ground_map?.map_name
 
 GLOBAL_VAR(round_started_at)
 #define SS13LIB_ROUND_STARTED_AT_UNIX GLOB.round_started_at
@@ -28,6 +32,9 @@ GLOBAL_VAR(round_started_at)
 
 #define SS13LIB_ATTEST_DOMAIN CONFIG_GET(string/verified_domain)
 #define SS13LIB_ATTEST_PRIVKEY CONFIG_GET(string/verified_domain_privkey)
+
+#define SS13LIB_RELAY_ENABLED
+#define SS13LIB_RELAY_SECRET CONFIG_GET(string/ss13lib_relay_secret)
 
 #define SS13LIB_ED25519_SIGN(privkey, message) rustg_ed25519_sign(privkey, message)
 #define SS13LIB_UNIX_EPOCH rustg_unix_timestamp()

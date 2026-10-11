@@ -19,7 +19,7 @@
 		return ..() //shunt world topic banchecks to purely to byond's internal ban system
 
 	var/client/C = GLOB.directory[ckey]
-	if (C && ckey == C.ckey && computer_id == C.computer_id && address == C.address)
+	if (C && ckey == C.ckey && computer_id == C.computer_id && address == SS13LIB_CLIENT_ADDRESS(C))
 		return //don't recheck connected clients.
 
 	//Guest Checking

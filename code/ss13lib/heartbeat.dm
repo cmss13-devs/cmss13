@@ -8,7 +8,7 @@
 			blacklist_warned = TRUE
 			SS13LIB_WARNING_LOG("This server is currently hidden from the hub listing due to a content policy violation.")
 #ifdef SS13LIB_MESSAGE_ADMINS
-			SS13LIB_MESSAGE_ADMINS("SS13Hub: This server is currently hidden from the hub listing due to a content policy violation.")
+			SS13LIB_SAFELY("SS13LIB_MESSAGE_ADMINS", SS13LIB_MESSAGE_ADMINS("SS13Hub: This server is currently hidden from the hub listing due to a content policy violation."))
 #endif
 	else if(blacklist_warned)
 		blacklist_warned = FALSE
@@ -43,6 +43,6 @@
 /// to display announcements to server operators.
 /datum/ss13lib/proc/on_hub_announcement(id, title, body, kind)
 #ifdef SS13LIB_MESSAGE_ADMINS
-	SS13LIB_MESSAGE_ADMINS("SS13Hub Announcement: [title]")
+	SS13LIB_SAFELY("SS13LIB_MESSAGE_ADMINS", SS13LIB_MESSAGE_ADMINS("SS13Hub Announcement: [title]"))
 #endif
 	SS13LIB_INFO_LOG("Hub announcement ([kind]): [title] - [body]")

@@ -374,7 +374,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		log_access("PREAUTHORIZATION: user [found_ckey] connected via [oidc_type].")
 		ckey = found_ckey
 
-		var/is_banned = world.IsBanned(ckey, address, computer_id, byond_user = FALSE)
+		var/is_banned = world.IsBanned(ckey, SS13LIB_CLIENT_ADDRESS(src), computer_id, byond_user = FALSE)
 		if(is_banned)
 			to_chat_immediate("You are unable to connect to this server: [is_banned["reason"]]")
 			log_access("PREAUTHORIZATION: user [found_ckey] disconnected due to IsBanned check.")
@@ -463,7 +463,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		prefs = new /datum/preferences(src)
 		GLOB.preferences_datums[ckey] = prefs
 	prefs.client_reconnected(src)
-	prefs.last_ip = address //these are gonna be used for banning
+	prefs.last_ip = SS13LIB_CLIENT_ADDRESS(src) //these are gonna be used for banning
 	prefs.last_id = computer_id //these are gonna be used for banning
 	fps = prefs.fps
 
@@ -569,7 +569,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	if(CONFIG_GET(flag/ooc_country_flags))
 		spawn if(src)
-			ip2country(address, src)
+			ip2country(SS13LIB_CLIENT_ADDRESS(src), src)
 
 	//////////////
 	//DISCONNECT//
@@ -623,14 +623,15 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 /// Handles login-related logging and associated notifications
 /client/proc/notify_login()
-	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[byond_version].[byond_build]")
+	var/real_address = SS13LIB_CLIENT_ADDRESS(src)
+	log_access("Login: [key_name(src)] from [real_address ? real_address : "localhost"]-[computer_id] || BYOND v[byond_version].[byond_build]")
 
 	if(CONFIG_GET(flag/log_access))
 		for(var/mob/M in GLOB.player_list)
 			if( M.key && (M.key != key) )
 				var/matches
-				if( (M.lastKnownIP == address) )
-					matches += "IP ([address])"
+				if( (M.lastKnownIP == real_address) )
+					matches += "IP ([real_address])"
 				if( (connection != "web") && (M.computer_id == computer_id) )
 					if(matches)
 						matches += " and "
@@ -1071,6 +1072,10 @@ CLIENT_VERB(action_hide_menu)
 
 /client/proc/check_localhost_status()
 	if(CONFIG_GET(flag/no_localhost_rank))
+		return FALSE
+
+	// Relayed players arrive from the relay's address, which may well be loopback
+	if(SS13LIB_IS_RELAYED(src))
 		return FALSE
 
 	var/static/list/localhost_addresses = list("127.0.0.1", "::1")

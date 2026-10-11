@@ -83,7 +83,7 @@
 	if(!player)
 		return
 
-	var/persistent_ip = target.client?.address || player.last_known_ip
+	var/persistent_ip = SS13LIB_CLIENT_ADDRESS(target.client) || player.last_known_ip
 	var/persistent_cid = target.client?.computer_id || player.last_known_cid
 
 	var/message = tgui_input_text(user, "What message should be given to the impacted users?", "BuildABan", encode = FALSE)

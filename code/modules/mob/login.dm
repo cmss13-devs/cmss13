@@ -1,7 +1,7 @@
 /// Handles setting lastKnownIP and computer_id for use by the ban systems
 /mob/proc/update_Login_details()
 	if(client)
-		lastKnownIP = client.address
+		lastKnownIP = SS13LIB_CLIENT_ADDRESS(client)
 		computer_id = client.computer_id
 
 /mob/Login()

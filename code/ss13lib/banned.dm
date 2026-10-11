@@ -16,16 +16,25 @@
 		SS13LIB_INFO_LOG("Allowing guest [key] through IsBanned (pending SS13Hub authentication).")
 		return FALSE
 
-	if(findtext(key, SS13LIB_CKEY_SUFFIX, -length(SS13LIB_CKEY_SUFFIX)))
-		SS13LIB_WARNING_LOG("Rejecting [key]: BYOND user using reserved SS13Hub suffix.")
-		return list("reason" = "bad_ckey", "desc" = "Reason: This CKEY is not allowed. Please create a new one.")
-
-	// This user is not a Guest and should be handled by the usual /world/IsBanned,
+	// This user is not a Guest and should be handled by the usual /world/IsBanned. That includes
+	// SS13Hub keys, codebases also call IsBanned for offline checks (e.g. connection history), so
+	// BYOND users using the hub suffix are turned away in handle_client() instead.
 	return null
 
 /// When we send a Guest that we've already screened (and they have failed to authenticate)
 /// we just send them back into world.IsBanned() to determine if they should exit or not
 /datum/ss13lib/var/isbanned_hook_ignore = list()
+
+/datum/ss13lib/proc/has_hub_suffix(key)
+	return findtext(key, SS13LIB_CKEY_SUFFIX, -length(SS13LIB_CKEY_SUFFIX))
+
+/datum/ss13lib/proc/reject_hub_suffix(client/new_client)
+	if(!has_hub_suffix(new_client.key))
+		return FALSE
+	SS13LIB_WARNING_LOG("Rejecting [new_client.key]: BYOND user using reserved SS13Hub suffix.")
+	new_client << "This key is reserved for SS13Hub accounts. Please use a different BYOND key, or join through the SS13 launcher."
+	del(new_client)
+	return TRUE
 
 /// If a specified **key** is a Guest account
 /datum/ss13lib/proc/is_guest(key)

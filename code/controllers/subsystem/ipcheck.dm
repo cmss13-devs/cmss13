@@ -243,6 +243,8 @@ SUBSYSTEM_DEF(ipcheck)
 	if(!player_entity)
 		player_entity = setup_player_entity(ckey)
 
+	var/real_address = SS13LIB_CLIENT_ADDRESS(src)
+
 	if(!SSipcheck.is_enabled(src))
 		return
 
@@ -271,27 +273,27 @@ SUBSYSTEM_DEF(ipcheck)
 			return TRUE
 		return
 
-	var/intel_state = SSipcheck.get_address_intel_state(address)
+	var/intel_state = SSipcheck.get_address_intel_state(real_address)
 	queries_today++
 
 	var/connection_rejected = FALSE
 	switch(intel_state)
 		if(IPCHECK_BAD_IP)
 			if(CONFIG_GET(flag/ipcheck_reject_bad))
-				log_access("IPCHECK: [ckey] ([address]) was flagged as a VPN and disconnected.")
+				log_access("IPCHECK: [ckey] ([real_address]) was flagged as a VPN and disconnected.")
 				to_chat_immediate(src, SPAN_BOLDNOTICE("Your connection has been detected as a VPN."))
 				connection_rejected = TRUE
 			else
-				log_access("IPCHECK: [ckey] ([address]) was flagged as a VPN and allowed to connect.")
+				log_access("IPCHECK: [ckey] ([real_address]) was flagged as a VPN and allowed to connect.")
 				message_admins("IPCHECK: [key_name_admin(src)] has been flagged as a VPN.")
 
 		if(IPCHECK_UNKNOWN_INTERNAL_ERROR)
 			if(CONFIG_GET(flag/ipcheck_reject_unknown))
-				log_access("IPCHECK: [ckey] ([address]) unable to be checked due to an error and disconnected.")
+				log_access("IPCHECK: [ckey] ([real_address]) unable to be checked due to an error and disconnected.")
 				to_chat_immediate(src, SPAN_BOLDNOTICE("Your connection cannot be processed at this time."))
 				connection_rejected = TRUE
 			else
-				log_access("IPCHECK: [ckey] ([address]) unable to be checked due to an error and was allowed to connect.")
+				log_access("IPCHECK: [ckey] ([real_address]) unable to be checked due to an error and was allowed to connect.")
 				message_admins("IPCHECK: [key_name_admin(src)] was unable to be checked due to an error.")
 
 	if(!connection_rejected)

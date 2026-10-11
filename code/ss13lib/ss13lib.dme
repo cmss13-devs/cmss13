@@ -16,5 +16,6 @@
 #include "http.dm"
 #include "topic.dm"
 #include "launcher.dm"
+#include "relay.dm"
 #include "restart.dm"
 #include "z__internal_undefs.dm"

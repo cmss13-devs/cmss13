@@ -510,12 +510,12 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(!player_data.first_join_date)
 		player_data.find_first_join_date()
 	player_data.last_login = "[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]"
-	player_data.last_known_ip = address
+	player_data.last_known_ip = SS13LIB_CLIENT_ADDRESS(src)
 	player_data.last_known_cid = computer_id
 	if(!player_data.byond_account_age)
 		player_data.load_byond_account_age()
 	player_data.save()
-	record_login_triplet(player.ckey, address, computer_id)
+	record_login_triplet(player.ckey, SS13LIB_CLIENT_ADDRESS(src), computer_id)
 	player_data.sync()
 
 	if(isSenator(src))

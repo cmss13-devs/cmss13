@@ -768,3 +768,7 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/string/verified_domain_privkey
 	protection = CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_LOCKED
+
+/// Shared with this server's ss13relay (its SS13RELAY_SECRET). Empty rejects every relay announce.
+/datum/config_entry/string/ss13lib_relay_secret
+	protection = CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_SENSITIVE

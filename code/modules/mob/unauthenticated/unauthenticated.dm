@@ -56,7 +56,7 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 
 	var/datum/entity/authentication_request/access_entity = DB_ENTITY(/datum/entity/authentication_request)
 	access_entity.access_code = access_code
-	access_entity.ip = client.address
+	access_entity.ip = SS13LIB_CLIENT_ADDRESS(client)
 	access_entity.cid = "[client.computer_id]"
 	access_entity.time = time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")
 	access_entity.save()
@@ -97,7 +97,7 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 			DB_COMP("access_code", DB_EQUALS, code ? code : access_code),
 			DB_COMP("time", DB_GREATER, time2text(world.timeofday - 3 HOURS, "YYYY-MM-DD hh:mm:ss")),
 			DB_COMP("approved", DB_EQUALS, TRUE),
-			DB_COMP("ip", DB_EQUALS, client.address),
+			DB_COMP("ip", DB_EQUALS, SS13LIB_CLIENT_ADDRESS(client)),
 			DB_COMP("cid", DB_EQUALS, "[client.computer_id]")
 		)
 	)
@@ -130,7 +130,7 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 		notify_unauthenticated_menu()
 		sleep(1)
 
-	var/banned = world.IsBanned(new_ckey, client.address, client.computer_id, real_bans_only = TRUE, guest_bypass_with_ext_auth = FALSE)
+	var/banned = world.IsBanned(new_ckey, SS13LIB_CLIENT_ADDRESS(client), client.computer_id, real_bans_only = TRUE, guest_bypass_with_ext_auth = FALSE)
 	if(banned)
 		unauthenticated_menu.send_message("banned", banned)
 		QDEL_IN(client, 10 SECONDS)

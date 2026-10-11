@@ -22,14 +22,28 @@
 	var/static/_ = SS13LIB
 #endif
 
+/datum/ss13lib
+	/// SS13LIB_SAFELY's catch target
+	var/exception/codebase_error
+	/// macros whose runtime errors we've already logged, as most run on every hub poll.
+	var/list/codebase_errors_logged = list()
+
+/datum/ss13lib/proc/log_codebase_error(macro_name, exception/error)
+	if(macro_name in codebase_errors_logged)
+		return
+	codebase_errors_logged += macro_name
+	SS13LIB_ERROR_LOG("[macro_name] caused a runtime error and was skipped: [error]. Further errors from it won't be logged.")
+
 /datum/ss13lib/proc/start()
 	SS13LIB_INFO_LOG("SS13Lib v[SS13LIB_VERSION] starting.")
+	restore_relay_address()
 	if(!perform_handshake())
 		ready = TRUE
 		return FALSE
 
 #ifdef SS13LIB_ATTEST_DOMAIN
-	var/domain = SS13LIB_ATTEST_DOMAIN
+	var/domain
+	SS13LIB_SAFELY("SS13LIB_ATTEST_DOMAIN", domain = SS13LIB_ATTEST_DOMAIN)
 
 	if(length(domain) && !perform_attestation(domain))
 		SS13LIB_WARNING_LOG("Domain attestation failed, server will continue without verification.")

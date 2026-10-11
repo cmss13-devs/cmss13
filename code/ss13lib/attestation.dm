@@ -11,9 +11,11 @@
 		SS13LIB_WARNING_LOG("Cannot attest: missing server_id or nonce.")
 		return FALSE
 
-	var/timestamp = SS13LIB_UNIX_EPOCH
+	var/timestamp
+	SS13LIB_SAFELY("SS13LIB_UNIX_EPOCH", timestamp = SS13LIB_UNIX_EPOCH)
 	var/message = "[src.server_id]:[src.nonce]:[timestamp]"
-	var/signature = SS13LIB_ED25519_SIGN(SS13LIB_ATTEST_PRIVKEY, message)
+	var/signature
+	SS13LIB_SAFELY("SS13LIB_ED25519_SIGN", signature = SS13LIB_ED25519_SIGN(SS13LIB_ATTEST_PRIVKEY, message))
 
 	if(!signature || length(signature) != SS13LIB_ED25519_SIGNATURE_BASE64_LENGTH)
 		SS13LIB_WARNING_LOG("Attestation signing failed: [signature]")

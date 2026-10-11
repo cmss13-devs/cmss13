@@ -8,13 +8,23 @@
 #define SS13LIB_CLIENT var/ss13lib_client_return = (SS13LIB).handle_client(src, args[1]); if (ss13lib_client_return) return ss13lib_client_return
 
 /// Consumers must call this as early as possible in /world/Topic
-#define SS13LIB_TOPIC var/ss13lib_topic_return = (SS13LIB).handle_topic(args[1]); if(ss13lib_topic_return) return ss13lib_topic_return
+#define SS13LIB_TOPIC var/ss13lib_topic_return = (SS13LIB).handle_topic(args[1], args[2]); if(ss13lib_topic_return) return ss13lib_topic_return
 
 /// Consumers must call this at the start of /client/IsBanned()
 #define SS13LIB_ISBANNED var/ss13lib_ban_return = (SS13LIB).handle_banned(args[1], args[2], args[3]); if(!isnull(ss13lib_ban_return)) return ss13lib_ban_return
 
 /// Consumers must call this as early as possible in /world/Reboot
 #define SS13LIB_REBOOT (SS13LIB).handle_reboot()
+
+/// The player's real IP address. Use this instead of `client.address` anywhere an IP matters.
+/// For players who joined with an SS13Hub ticket this is the IP the hub saw them request it
+/// from, which is the only way to learn the real IP of a player connecting through ss13relay.
+#define SS13LIB_CLIENT_ADDRESS(C) (SS13LIB).client_address(C)
+
+/// TRUE if the client is connected through this server's ss13relay. Always FALSE unless
+/// SS13LIB_RELAY_ENABLED is defined. Codebases that keep any localhost-based logic should
+/// exclude relayed clients with this.
+#define SS13LIB_IS_RELAYED(C) (SS13LIB).is_relayed(C)
 
 //! CONFIGURATION
 
@@ -207,6 +217,18 @@
 /// Required if SS13LIB_ATTEST_DOMAIN is defined.
 #define SS13LIB_UNIX_EPOCH // rustg_unix_timestamp()
 
+//! SS13RELAY
+//! Optional. Lets Steam-launcher players connect through ss13relay using Steam
+//! Datagram Relay. See the README's "Relay support" section before enabling.
+
+/// Enables relay support. While no relay is running this changes nothing, so it is safe to
+/// enable ahead of deploying a relay. With a relay, players connecting through it must
+/// authenticate with an SS13Hub ticket, and their real IP comes from the hub.
+// #define SS13LIB_RELAY_ENABLED
+
+/// The secret shared with the relay's SS13RELAY_SECRET. Required if SS13LIB_RELAY_ENABLED is defined.
+#define SS13LIB_RELAY_SECRET // CONFIG_GET(string/ss13relay_secret)
+
 #endif
 
 /datum/ss13lib_auth_response
@@ -229,3 +251,6 @@
 	var/steam_id
 	/// Whether the user's Steam account is limited (hasn't spent $5). TRUE if limited or unknown, null if no Steam account.
 	var/steam_limited
+	/// The IPv4 address the user requested their ticket from. For players connecting through an
+	/// SS13Relay this is their real IP, see SS13LIB_CLIENT_ADDRESS.
+	var/ip

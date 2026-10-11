@@ -15,7 +15,6 @@
 		/datum/action/xeno_action/activable/secrete_resin/remote/whisperer, //third macro
 		/datum/action/xeno_action/onclick/toggle_long_range/whisperer, //fourth macro
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord, // readding it so it gets at the end of the ability list
-		/datum/action/xeno_action/active_toggle/toggle_speed, // readding it so it gets at the end of the ability list
 	)
 
 /datum/xeno_strain/resin_whisperer/apply_strain(mob/living/carbon/xenomorph/hivelord/hivelord)
@@ -47,7 +46,7 @@
 
 	no_cooldown_msg = TRUE
 
-	build_speed_mod = 2.5
+	build_speed_mod = 2.2
 
 	macro_path = /datum/action/xeno_action/verb/verb_coerce_resin
 	action_type = XENO_ACTION_CLICK
@@ -59,7 +58,7 @@
 	xeno_cooldown = 1.5 SECONDS // Slower than a drone, faster than a queen.
 	xeno_cooldown_interrupt_penalty = 1 SECONDS // Penalty for being interrupted
 	xeno_cooldown_fail = 0.5 // She specializes in this, which is why she adapts better after mistakes.
-	build_speed_mod = 1.5 // She builds the walls and then proceeds to the next ones as planned without any unnecessary waiting.
+	build_speed_mod = 1 // Updated dynamically based on the distance to the target.
 
 /datum/action/xeno_action/activable/secrete_resin/remote/use_ability(atom/target_atom, mods)
 	if(!can_remote_build())
@@ -94,15 +93,18 @@
 			return
 
 	// since actions are instanced per hivelord, and only one construction can be made at a time, tweaking the datum on the fly here is fine. you're going to have to figure something out if these conditions change, though
+	var/mob/living/carbon/xenomorph/hivelord = owner
 	if(care_about_adjacency)
-		if(owner.Adjacent(target_turf))
-			build_speed_mod = 1
+		var/max_build_distance = hivelord.caste.max_build_dist + hivelord.extra_build_dist
+		var/distance = clamp(get_dist(hivelord, target_turf), 1, max_build_distance)
+		var/distance_ratio = clamp((distance - 1) / 5, 0, 1) // Reach maximum build time at 6 tiles.
+		build_speed_mod = 1 + (distance_ratio * 1.2)
+
+		if(hivelord.Adjacent(target_turf))
 			xeno_cooldown = 1 SECONDS
 		else
-			build_speed_mod = initial(build_speed_mod)
 			xeno_cooldown = initial(xeno_cooldown)
 
-	var/mob/living/carbon/xenomorph/hivelord = owner
 	if(!..())
 		return
 

@@ -113,7 +113,7 @@
 // Native BYOND handling for multitile movement is not compatible with how we calculate collisions
 /datum/element/multitile/proc/move_override(atom/movable/multitile, turf/new_turf)
 	SIGNAL_HANDLER
-	var/direction = get_dir(multitile, new_turf)
+	var/direction = get_dir(get_turf(multitile), new_turf)
 	var/turf/min_turf = locate(multitile.x + x_offset, multitile.y + y_offset, multitile.z)
 
 	var/list/old_turfs = CORNER_BLOCK(min_turf, width, height)
@@ -121,8 +121,9 @@
 	min_turf = locate(new_turf.x + x_offset, new_turf.y + y_offset, new_turf.z)
 
 	var/movement_blocked = FALSE
+	var/list/turf/turfs_to_enter = CORNER_BLOCK(min_turf, width, height)
 	// Iterate through all blocks in the new location for tank
-	for(var/turf/to_enter as anything in CORNER_BLOCK(min_turf, width, height))
+	for(var/turf/to_enter as anything in turfs_to_enter)
 		if(to_enter in old_turfs)
 			// Handling for barricades and other structures that we did not collide with originally
 			// since they were facing the same direction as the movement

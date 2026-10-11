@@ -6,7 +6,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	xeno_cooldown = 1 SECONDS
-	plasma_cost = 20
+	plasma_cost = 30
 	ability_uses_acid_overlay = TRUE
 
 // Scatterspit
@@ -37,6 +37,7 @@
 	var/duration = 40
 	var/minimal_speed_buff_amount = 0.2 // Goes from despoiler and becomes faster than lurker / slower than acid runner
 	var/minimal_armor_buff_amount = 15 //spitter level
+	var/plasma_gain = 100
 
 /datum/action/xeno_action/activable/tail_stab/sentinel/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb)
 	. = ..()
@@ -53,6 +54,7 @@
 	var/speed_buff_amount = max(minimal_speed_buff_amount, (stacks/5)/10) //[0.2; 0.6]
 	var/armor_buff_amount = max(minimal_armor_buff_amount, (stacks/6)*5) //[15; 25]
 	target.apply_armoured_damage(stacks, ARMOR_MELEE, BURN, limb ? limb.name : "chest") //not more than basic tail stab
+	stabbing_xeno.gain_plasma(stacks/sns.max_stacks * plasma_gain)
 	sns.increment_stack_count(-stacks/2)
 
 	stabbing_xeno.speed_modifier -= speed_buff_amount

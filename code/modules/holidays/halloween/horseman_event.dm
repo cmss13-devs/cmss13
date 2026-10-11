@@ -1,6 +1,6 @@
-#define HORSEMAN_EARLIEST_SPAWN (1 MINUTES)
+#define HORSEMAN_EARLIEST_SPAWN (20 MINUTES)
 #define HORSEMAN_DELAY_MIN (0 MINUTES)
-#define HORSEMAN_DELAY_MAX (1 MINUTES)
+#define HORSEMAN_DELAY_MAX (30 MINUTES)
 #define HORSEMAN_POLL_TIMEOUT (20 SECONDS)
 #define HORSEMAN_RETRY_DELAY (1 MINUTES)
 #define HORSEMAN_SPAWN_RANGE_MIN 5
@@ -22,7 +22,11 @@ GLOBAL_DATUM(horseman_event, /datum/game_decorator/halloween/horseman)
 /datum/game_decorator/halloween/horseman/decorate()
 	if(!istype(SSticker.mode, /datum/game_mode/colonialmarines))
 		return
-	message_admins("Horseman will spawn[duration2text(spawn_time)] round time, if it doesnt feel free to spawn one from the admin event tab.")
+	var/earliest = max(HORSEMAN_EARLIEST_SPAWN, world.time + SHUTTLE_TIME_LOCK)
+	spawn_time = earliest + rand(HORSEMAN_DELAY_MIN, HORSEMAN_DELAY_MAX)
+	addtimer(CALLBACK(src, PROC_REF(try_start)), spawn_time - world.time)
+	message_admins("Horseman will spawn at [duration2text(spawn_time)] round time, if it doesnt feel free to spawn one from the admin event tab.")
+
 
 /datum/game_decorator/halloween/horseman/proc/try_start()
 	if(spawned || SSticker.current_state != GAME_STATE_PLAYING)
@@ -81,7 +85,7 @@ GLOBAL_DATUM(horseman_event, /datum/game_decorator/halloween/horseman)
 	var/area_name = get_area_name(spawn_turf)
 
 	marine_announcement("#AL3RT S-S-S0METH-NG 15 H3R3 1NV35TIGATE [area_name]")
-	xeno_announcement("We feel an evil and malicious spirit has appeared in [area_name] beware...")
+	xeno_announcement("We feel an evil and malicious spirit has appeared in [area_name] beware...", "everything", XENO_GENERAL_ANNOUNCE)
 	elder_overseer_message("Something wicked has arrived on the hunting grounds in [area_name]")
 
 	to_chat(horseman, SPAN_XENOANNOUNCE("HAUNT THE UNEXPECTING POOR SOULS OF THIS LAND.."))

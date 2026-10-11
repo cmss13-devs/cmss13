@@ -99,6 +99,7 @@
 	var/last_tally
 	var/contestants[]
 	var/supply_votes[]
+	bypass_checks = TRUE
 
 	var/ticks_passed = 0
 	var/drops_disabled = 0
@@ -107,6 +108,9 @@
 
 	votable = FALSE // borkeds
 	taskbar_icon = 'icons/taskbar/gml_hgames.png'
+
+/datum/game_mode/huntergames/can_start(bypass_checks = FALSE)
+	return TRUE
 
 /obj/effect/step_trigger/hell_hound_blocker/Trigger(mob/living/carbon/xenomorph/hellhound/H)
 	if(istype(H))

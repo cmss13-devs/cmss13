@@ -21529,6 +21529,10 @@
 "bgX" = (
 /turf/open/floor/almayer_hull/outerhull_dir/northwest,
 /area/white_antre/outdoors/facility_exterior)
+"bgY" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/plate,
+/area/white_antre/oob)
 "bgZ" = (
 /turf/closed/wall/hybrisa/research/reinforced/hull,
 /area/white_antre/indoors/upper_level/medical)
@@ -28683,10 +28687,6 @@
 "bDM" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/squares,
-/area/white_antre/oob)
-"bDN" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/corsat/plate,
 /area/white_antre/oob)
 "bDO" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -149145,7 +149145,7 @@ aiP
 ajx
 ajx
 bDM
-bDN
+bgY
 bDM
 bhK
 cwM
@@ -149201,9 +149201,9 @@ ciD
 acN
 aQi
 bDM
-bDN
+bgY
 bDM
-bDN
+bgY
 aiP
 ajx
 ajv
@@ -149370,7 +149370,7 @@ acN
 aQi
 bEv
 bDM
-bDN
+bgY
 aiP
 ajx
 aiP
@@ -149537,7 +149537,7 @@ chZ
 aQo
 bgZ
 bEw
-bDN
+bgY
 aiP
 bDg
 bDf

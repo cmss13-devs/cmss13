@@ -35,3 +35,49 @@
       maps are edited to add sensor tower spawn locations in this PR.
   zzzmike:
   - qol: Changes resin hole message to account for huggers rather than only acid
+2026-10-05:
+  Nihisohel:
+  - rscadd: You can now use middle mouse button to open hat (boonie hats, etc) storage
+  - bugfix: You can use middle mouse button to open clothing storage items again
+  ghostsheet:
+  - bugfix: MOU53 examine will now show the correct shell order.
+  predatornc:
+  - rscadd: a new CL briefing has replaced the placeholder one on LV-624
+2026-10-06:
+  Andywastaken:
+  - rscadd: Added helpful APC examine tips. Examining an APC will now tell you what
+      tool to use to repair/build/dismantle, like wall girders.
+  - code_imp: Replaced hardcoded APC status and APC cable coil amounts with defines.
+  Drathek:
+  - bugfix: Admins.txt fallback should now only occur if fetch_api_admins fails (and
+      not just sleeps)
+  Ghostsheet:
+  - qol: Added keybind for blowing into a whistle normally, unbound by default
+  JHINgle4ce:
+  - bugfix: fixed an issue where multiple characters could drag the same item simultaneously.
+  Kugamo:
+  - code_imp: removed an unnecessary chair variable
+  - bugfix: shimmied mobs now get their offsets reset if the object being shimmied
+      around gets destroyed
+  - qol: you can now shimmy past seated people in immovable seats!
+  Yachuk:
+  - bugfix: "Fixes the issue where you cannot mount on an M2\u0421 in unpowered areas\
+      \ (ex. caves)"
+  - code_imp: M56Ds and its children objects are no longer connected to the powergrid
+2026-10-10:
+  Drathek:
+  - qol: Character slot selection now displays the current slot differently
+  - bugfix: Preference version upgrades now trigger a save immediately
+  - bugfix: Debugger option quick start will now set CO job selection regardless of
+      save data existing
+  - server: Preferences now use json
+  - server: Many cmdb tables now have an index
+2026-10-12:
+  JHINgle4ce:
+  - bugfix: fixed blank R&D contracts
+  - bugfix: allows xeno to interact through xeno special structures
+  - rscdel: Removed platform overlay
+  Puckaboo2:
+  - qol: You can close an incision on a sawed and closed skull/ribcage without needing
+      bone gel first in case you run out of bone gel and need to close the patient
+      NOW.

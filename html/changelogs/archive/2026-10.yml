@@ -72,3 +72,12 @@
       save data existing
   - server: Preferences now use json
   - server: Many cmdb tables now have an index
+2026-10-12:
+  JHINgle4ce:
+  - bugfix: fixed blank R&D contracts
+  - bugfix: allows xeno to interact through xeno special structures
+  - rscdel: Removed platform overlay
+  Puckaboo2:
+  - qol: You can close an incision on a sawed and closed skull/ribcage without needing
+      bone gel first in case you run out of bone gel and need to close the patient
+      NOW.

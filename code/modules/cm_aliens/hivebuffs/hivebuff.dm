@@ -231,7 +231,7 @@
 		var/turf/turf = get_turf(current_human)
 		if(is_ground_level(turf?.z))
 			groundside_humans++
-			if(groundside_humans >= 12)
+			if(groundside_humans >= 2)
 				return TRUE
 
 	return FALSE

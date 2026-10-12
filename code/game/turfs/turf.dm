@@ -197,6 +197,8 @@
 		layer = UNDER_WATER_TURF_LAYER
 		plane = FLOOR_PLANE
 		for(var/obj/structure/structure in contents)		//decals, railings, stairs etc
+			if(istype(structure, /obj/structure/fence))
+				continue
 			var/icon/icon_check = icon(structure.icon, structure.icon_state)
 			if(icon_check.Width() <= 32 && structure.layer < ABOVE_MOB_LAYER)
 				structure.layer = UNDER_WATER_TURF_LAYER + 0.01

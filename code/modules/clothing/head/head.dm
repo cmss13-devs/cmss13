@@ -597,6 +597,11 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	QDEL_NULL(pockets)
 	return ..()
 
+/obj/item/clothing/head/cmcap/get_pockets()
+	if(pockets)
+		return pockets
+	return ..()
+
 /obj/item/clothing/head/cmcap/attack_hand(mob/user)
 	if(loc != user)
 		..(user)
@@ -1215,7 +1220,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/drillhat
 	name = "\improper USCM drill hat"
-	desc = "A formal hat worn by drill sergeants. Police that moustache."
+	desc = "A formal hat worn by drill instructors. Police that moustache."
 	icon_state = "drillhat"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(

@@ -69,7 +69,7 @@
 
 /obj/structure/dropship_equipment/attackby(obj/item/item, mob/user)
 	if(istype(item, /obj/item/powerloader_clamp))
-		if((SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)) & COMSIG_ITEM_PICKUP_CANCELLED) //acided
+		if(check_pickup_blocked(user) & COMPONENT_PICKUP_CANCELED_ACID) //acided
 			to_chat(user, SPAN_WARNING("[src] is covered in acid!"))
 			balloon_alert(user, "its covered in acid!")
 			return

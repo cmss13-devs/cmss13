@@ -252,9 +252,6 @@
 	cell = null
 	powercheck()
 
-/obj/vehicle/proc/RunOver(mob/living/carbon/human/H)
-	return //write specifics for different vehicles
-
 /obj/vehicle/afterbuckle(mob/M)
 	. = ..()
 	if(. && buckled_mob == M)

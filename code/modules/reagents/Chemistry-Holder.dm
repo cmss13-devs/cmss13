@@ -559,6 +559,8 @@
 		if(my_atom)
 			for(var/datum/chem_property/P as anything in D.properties)
 				P.reagent_added(my_atom, D, amount)
+				if(isliving(my_atom))
+					P.on_start(my_atom)
 
 		update_total()
 		my_atom?.on_reagent_change()

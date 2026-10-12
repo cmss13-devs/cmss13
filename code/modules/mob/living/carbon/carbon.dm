@@ -30,12 +30,6 @@
 	halbody = null
 
 
-/mob/living/carbon/Move(NewLoc, direct)
-	. = ..()
-	if(.)
-		if(nutrition && stat != DEAD)
-			nutrition -= HUNGER_FACTOR/5
-
 /mob/living/carbon/relaymove(mob/user, direction)
 	if(user.is_mob_incapacitated(TRUE))
 		return
@@ -67,7 +61,6 @@
 		return
 
 	apply_damage(severity, BRUTE, enviro=enviro)
-	updatehealth()
 
 	var/knock_value = min(round(severity*0.1, 1), 10)
 	if(knock_value > 0)
@@ -133,8 +126,8 @@
 	if(istype(get_active_hand(), /obj/item))
 		var/obj/item/item = get_active_hand()
 		if(item.force > 0)
-			var/limited_force = min(item.force, 35)
-			var/damage_of_item = rand(floor(limited_force / 4), limited_force)
+			var/force_range = clamp(item.force, MELEE_FORCE_NORMAL, MELEE_FORCE_STRONG)
+			var/damage_of_item = rand(floor(force_range / 2), force_range)
 
 			xeno.last_damage_data = create_cause_data("scuffling", src)
 			attack_log += "\[[time_stamp()]\]<font color='red'> Attacked [key_name(xeno)] with [item.name] (INTENT: [uppertext(intent_text(a_intent))]) (DAMTYPE: [uppertext(BRUTE)])</font>"

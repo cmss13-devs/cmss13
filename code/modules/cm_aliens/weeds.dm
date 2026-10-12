@@ -192,6 +192,9 @@
 	SEND_SIGNAL(crossing_mob, COMSIG_MOB_WEED_SLOWDOWN, slowdata, src)
 	var/final_slowdown = slowdata["movement_slowdown"]
 
+	// Reduces slowdown by 70%
+	if(HAS_TRAIT(crossing_mob, TRAIT_WEED_RESISTANT))
+		final_slowdown *= 0.3
 	crossing_mob.next_move_slowdown = max(crossing_mob.next_move_slowdown, POSITIVE(final_slowdown))
 
 // Uh oh, we might be dying!
@@ -580,6 +583,8 @@
 	// Make all the children look for a new parent node
 	for(var/obj/effect/alien/weeds/child as anything in children)
 		remove_child(child)
+		if(QDELETED(child))
+			continue
 		addtimer(CALLBACK(child, PROC_REF(avoid_orphanage)), WEED_BASE_DECAY_SPEED + rand(0, 1 SECONDS)) // Slight variation whilst decaying
 
 	. = ..()

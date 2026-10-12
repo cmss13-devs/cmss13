@@ -377,6 +377,9 @@
 	rank_short = PAY_SHORT_NO5
 	icon_state = "ranks_no5"
 
+/obj/item/clothing/accessory/ranks/navy/o5/lacn
+	rank_short = PAY_SHORT_LACNO5
+
 /obj/item/clothing/accessory/ranks/navy/o6
 	name = "rank boards"
 	rank_short = PAY_SHORT_NO6

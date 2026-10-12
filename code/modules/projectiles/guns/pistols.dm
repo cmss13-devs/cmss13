@@ -455,6 +455,9 @@
 		/obj/item/attachable/heavy_barrel,
 	)
 
+/obj/item/weapon/gun/pistol/t73/leader/standard
+	current_mag = /obj/item/ammo_magazine/pistol/t73
+
 /obj/item/weapon/gun/pistol/t73/leader/handle_starting_attachment()
 	..()
 	var/obj/item/attachable/lasersight/TT = new(src)

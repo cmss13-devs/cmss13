@@ -138,7 +138,7 @@
 
 /datum/config_entry/number/whiskey_required_players
 	min_val = 0
-	config_entry_value = 140
+	config_entry_value = 120
 	integer = TRUE
 
 /datum/config_entry/number/nuclear_lock_marines_percentage

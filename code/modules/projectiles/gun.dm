@@ -297,7 +297,7 @@
 		AddComponent(/datum/component/gun_hush)
 	update_icon() //for things like magazine overlays
 	gun_firemode = gun_firemode_list[1] || GUN_FIREMODE_SEMIAUTO
-	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_bursting)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing))) //This should go after handle_starting_attachment() and setup_firemodes() to get the proper values set.
+	AddComponent(/datum/component/automatedfire/autofire, fire_delay, burst_delay, burst_amount, gun_firemode, autofire_slow_mult, CALLBACK(src, PROC_REF(set_bursting)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), CALLBACK(src, PROC_REF(set_auto_firing))) //This should go after handle_starting_attachment() and setup_firemodes() to get the proper values set.
 
 /obj/item/weapon/gun/proc/set_gun_attachment_offsets()
 	attachable_offset = null
@@ -1250,14 +1250,15 @@ and you're good to go.
 
 			// This is where the magazine is auto-ejected
 			if(current_mag.current_rounds <= 0 && flags_gun_features & GUN_AUTO_EJECTOR)
-				if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF))
+				if((user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_OFF))
 					update_icon()
-				else if (!(flags_gun_features & GUN_BURST_FIRING) || !in_chamber) // Magazine will only unload once burstfire is over
+				else
 					var/drop_to_ground = TRUE
-					if (user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND))
-						drop_to_ground = FALSE
-						unwield(user)
-						user.swap_hand()
+					if(user.client?.prefs?.toggle_prefs & TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND)
+						if(!(flags_gun_features & GUN_BURST_FIRING) || ((flags_gun_features & GUN_BURST_FIRING) && burst_amount >= shots_fired)) //Don't mess with our hands if we're not done with the burst yet.
+							drop_to_ground = FALSE
+							unwield(user)
+							user.swap_hand()
 					unload(user, TRUE, drop_to_ground) // We want to quickly autoeject the magazine. This proc does the rest based on magazine type. User can be passed as null.
 					playsound(src, empty_sound, 25, 1)
 					SEND_SIGNAL(user, COMSIG_MOB_GUN_EMPTY, src)
@@ -1335,7 +1336,6 @@ and you're good to go.
 	var/fired_by_akimbo = FALSE
 	if(dual_wield)
 		fired_by_akimbo = TRUE
-		gun_user = null
 
 	//Dual wielding. Do we have a gun in the other hand and is it the same category?
 	var/obj/item/weapon/gun/akimbo = user.get_inactive_hand()
@@ -1344,6 +1344,9 @@ and you're good to go.
 			dual_wield = TRUE //increases recoil, increases scatter, and reduces accuracy.
 
 	var/fire_return = handle_fire(target, user, params, reflex, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
+	if((gun_firemode == GUN_FIREMODE_AUTOMATIC && current_mag?.current_rounds % 8 == 0) || (gun_firemode == GUN_FIREMODE_BURSTFIRE && burst_amount <= shots_fired) || gun_firemode == GUN_FIREMODE_SEMIAUTO)
+		display_ammo(user)
+
 	if(!fire_return)
 		return fire_return
 
@@ -1790,7 +1793,7 @@ and you're good to go.
 				admin_msg = "[key_name(user)] lost at Russian Roulette with \a [name] in [get_area(user)] [ffl]"
 
 			var/obj/limb/head = user.get_limb("head") // carnage
-			if(projectile_to_fire.ammo.bonus_projectiles_type || projectile_to_fire.ammo.flags_ammo_behavior == AMMO_EXPLOSIVE || (projectile_to_fire.ammo.damage * damage_mult) >= 80)
+			if(projectile_to_fire.ammo.bonus_projectiles_type || (projectile_to_fire.ammo.damage * damage_mult) >= 80)
 				user.visible_message(SPAN_HIGHDANGER(uppertext("[user]'s head explodes into a cloud of blood and bone by their [name], oh God.")))
 				head.droplimb(FALSE, TRUE)
 				user.spawn_gibs()
@@ -1872,14 +1875,14 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 		if(flags_gun_features & GUN_TRIGGER_SAFETY)
 			to_chat(user, SPAN_WARNING("The safety is on!"))
-			gun_user.balloon_alert(gun_user, "safety on")
+			user.balloon_alert(user, "safety on")
 			return
 
-		if(gun_user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (gun_user.a_intent == INTENT_HELP))
+		if(user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (user.a_intent == INTENT_HELP))
 			if(world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
-				to_chat(gun_user, SPAN_DANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
-				gun_user.balloon_alert(gun_user, "help intent safety")
-				click_empty(gun_user)
+				to_chat(user, SPAN_DANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
+				user.balloon_alert(user, "help intent safety")
+				click_empty(user)
 			return FALSE
 
 		if(active_attachable)
@@ -2276,6 +2279,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(gun_firemode == GUN_FIREMODE_AUTOMATIC)
 		reset_fire()
 		display_ammo(gun_user)
+	else if(gun_firemode == GUN_FIREMODE_BURSTFIRE && (flags_gun_features & GUN_BURST_FIRING))
+		return
 	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 
 /obj/item/weapon/gun/proc/set_gun_user(mob/to_set)
@@ -2312,8 +2317,12 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		set_gun_user(source)
 
 	var/list/modifiers = params2list(params)
-	if(modifiers[CTRL_CLICK] || modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5])
+	if(modifiers[CTRL_CLICK] || modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5]) // if we dont remove 'modifiers[RIGHT_CLICK]' here, we will get access to faultless PB with shotguns
 		return FALSE
+	if(ishuman(gun_user))
+		var/mob/living/carbon/human/H = gun_user // basically there so that we DON'T shoot while tryna use spec gun abilities via RMB !AND! so that we DO shoot if we use spec stuff via MMB/shift+LMB
+		if(H.selected_ability && modifiers[RIGHT_CLICK] && H.client.prefs.xeno_ability_click_mode == XENO_ABILITY_CLICK_RIGHT)
+			return FALSE
 
 	// Don't allow doing anything else if inside a container of some sort, like a locker.
 	if(!isturf(gun_user.loc))
@@ -2363,9 +2372,10 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	set_target(get_turf_on_clickcatcher(object, gun_user, params))
 	if((gun_firemode == GUN_FIREMODE_SEMIAUTO) || active_attachable)
 		if(Fire(object, gun_user, modifiers))
-			display_ammo(gun_user)
 			reset_fire()
 		return COMSIG_MOB_CLICK_HANDLED
+	else if(gun_firemode == GUN_FIREMODE_BURSTFIRE && (flags_gun_features & GUN_BURST_FIRING))
+		return FALSE
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE)
 	return COMSIG_MOB_CLICK_HANDLED
 
@@ -2557,7 +2567,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	simulate_recoil(2, user)
 
 	var/obj/limb/head = execution_target.get_limb("head")
-	if(projectile_to_fire.ammo.bonus_projectiles_type || projectile_to_fire.ammo.flags_ammo_behavior & AMMO_EXPLOSIVE || (projectile_to_fire.ammo.damage * damage_mult) >= 80)
+	if(projectile_to_fire.ammo.bonus_projectiles_type || (projectile_to_fire.ammo.damage * damage_mult) >= 80)
 		execution_target.visible_message(SPAN_HIGHDANGER(uppertext("[execution_target]'s head explodes into a cloud of blood and bone by [user]'s [name], oh God.")),
 			SPAN_HIGHDANGER("Your head explodes into a cloud of blood and bone, goddamn.")) // lol
 		head.droplimb(FALSE, TRUE)

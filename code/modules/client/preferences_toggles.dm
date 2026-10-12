@@ -65,6 +65,14 @@ CLIENT_VERB(togglerebootsound)
 	prefs.save_preferences()
 	to_chat(src, "You will [(prefs.toggles_sound & SOUND_REBOOT) ? "now" : "no longer"] hear server reboot sounds.")
 
+CLIENT_VERB(toggleroundendmusic)
+	set name = "Hear/Silence Round End Music"
+	set category = "Preferences.Sound"
+	set desc = "Toggles hearing the round end music."
+	prefs.toggles_sound ^= SOUND_ROUND_END
+	prefs.save_preferences()
+	to_chat(src, "You will [(prefs.toggles_sound & SOUND_ROUND_END ) ? "now" : "no longer"] hear the round end music.")
+
 CLIENT_VERB(togglemidis)
 	set name = "Silence Current Admin Sound"
 	set category = "Preferences.Sound"

@@ -27,6 +27,8 @@
 	var/obj/item/reagent_container/glass/output_container
 	///Where we take chemicals from
 	var/obj/structure/machinery/smartfridge/chemistry/linked_storage
+	///Optionally connected chemical storage system
+	var/chemical_network = "Research"
 
 	///the program of chem datums to dispense, 1 = memory, 2 = box
 	var/list/list/programs = list(list(),list())
@@ -330,8 +332,13 @@
 		else
 			amount = min(program_amount[program]["[R.name]"] * multiplier, space)
 
+		var/obj/structure/machinery/chem_storage/network = GLOB.chemical_data.chemical_networks[chemical_network]
+		var/amt = network.additional_chemicals[R.id] || 0
+		if(amt >= amount)
+			network.additional_chemicals[R.id] -= amount
+			container.reagents.add_reagent(R.id, amount)
 		//Check and use stored chemicals first. This doesn't consume energy.
-		if(smartlink && linked_storage)
+		else if(smartlink && linked_storage)
 			var/skip
 			for(var/obj/item/reagent_container/C in linked_storage.contents)
 				if(!C.reagents)

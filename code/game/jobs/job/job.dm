@@ -16,8 +16,8 @@
 	var/total_positions_so_far = 0
 	/// Can admins modify positions to it
 	var/allow_additional = 0
-	///If it can be scaled with playercount
-	var/scaled = 0
+	///If it can be scaled with playercount (Will control whether set_spawn_positions is normally called with a count of unassigned players)
+	var/scaled = FALSE
 	///How many players have this job
 	var/current_positions = 0
 	///Supervisors, who this person answers to directly. Should be a string, shown to the player when they enter the game.
@@ -205,8 +205,10 @@
 		return GLOB.equipment_presets.gear_path_presets_list[gear_preset].role_comm_title
 	return ""
 
+/// Use this to set limits on positions.
+/// Normally only called if scaled is TRUE with an unassigned count but there are exceptions e.g. survivors, xenos, and preds with the preassigned count.
 /datum/job/proc/set_spawn_positions(count)
-	return spawn_positions
+	return
 
 /datum/job/proc/create_landmark_lists()
 	return
@@ -342,6 +344,8 @@
 			if(pod)
 				pod.go_in_cryopod(human, TRUE)
 				break
+
+		human.assigned_equipment_preset?.equip_spawn_lore(human)
 
 		human.sec_hud_set_ID()
 		human.hud_set_squad()

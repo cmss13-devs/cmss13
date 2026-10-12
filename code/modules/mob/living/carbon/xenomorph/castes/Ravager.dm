@@ -33,6 +33,8 @@
 
 	minimum_evolve_time = 15 MINUTES
 
+	organ_type = /obj/item/organ/xeno/ravager
+
 	minimap_icon = "ravager"
 
 /mob/living/carbon/xenomorph/ravager
@@ -42,14 +44,12 @@
 	icon = 'icons/mob/xenos/castes/tier_3/ravager.dmi'
 	icon_size = 64
 	icon_state = "Ravager Walking"
-	plasma_types = list(PLASMA_CATECHOLAMINE)
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3
 	pixel_x = -16
 	old_x = -16
 	claw_type = CLAW_TYPE_VERY_SHARP
-	organ_value = 3000
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_XENO_FRENZY
 
 	base_actions = list(
@@ -73,6 +73,18 @@
 	skull = /obj/item/skull/ravager
 	pelt = /obj/item/pelt/ravager
 
+/obj/item/organ/xeno/ravager
+	name = "ravager heart"
+	icon_state = "heart_t3"
+	item_state = "heart_t3"
+	research_value = 3000
+
+	xeno_organ_flags = XENO_ORGAN_STRONG|XENO_ORGAN_TACHYCARDIA|XENO_ORGAN_HARDENED
+
+/mob/living/carbon/xenomorph/ravager/get_examine_text(mob/user)
+	. = ..()
+	if(isxeno(user) || isobserver(user))
+		. += "[SPAN_DANGER("This one's dangerous claws make it very risky to tackle hosts.")]"
 
 // Mutator delegate for base ravager
 /datum/behavior_delegate/ravager_base
@@ -128,6 +140,55 @@
 		return
 
 	if(mid_charge && target_carbon)
+		return INTENT_HARM
+
+	// If the ravager fails RNG, they perform an accidental slash instead!
+	if(bound_xeno.a_intent == INTENT_DISARM && prob(25)) // 1/4 chance
+		if(bound_xeno.claw_restrained())
+			bound_xeno.animation_attack_on(target_carbon)
+			bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] almost slashes [target_carbon]!"),
+			SPAN_XENONOTICE("We feel the strongest urge to destroy [target_carbon], but the Queen holds us back!"))
+			return XENO_ATTACK_ACTION
+
+		if(bound_xeno.can_not_harm(target_carbon, check_hive_flags=FALSE)) // We manually check hive_flags later
+			bound_xeno.animation_attack_on(bound_xeno)
+			bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]"),
+			SPAN_XENONOTICE("We nibble [bound_xeno]"))
+			return XENO_ATTACK_ACTION
+
+		if(bound_xeno.behavior_delegate && bound_xeno.behavior_delegate.handle_slash(bound_xeno))
+			return XENO_NO_DELAY_ACTION
+
+		if(target_carbon.stat == DEAD)
+			to_chat(bound_xeno, SPAN_WARNING("We raise our claws to attack [target_carbon]!- but... they're already dead."))
+			return XENO_NO_DELAY_ACTION
+
+		if(bound_xeno.caste && !bound_xeno.caste.is_intelligent)
+			var/embryo_allied = FALSE
+			if(target_carbon.status_flags & XENO_HOST)
+				for(var/obj/item/alien_embryo/embryo in target_carbon)
+					if(HIVE_ALLIED_TO_HIVE(bound_xeno.hivenumber, embryo.hivenumber))
+						embryo_allied = TRUE
+						break
+
+			if(embryo_allied)
+				if(HAS_TRAIT(bound_xeno, TRAIT_NESTED))
+					bound_xeno.animation_attack_on(target_carbon)
+					bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]"),
+					SPAN_XENONOTICE("ATTACK!!!! Oh- [target_carbon] has a sister inside..."))
+					return XENO_NO_DELAY_ACTION
+				if(!HAS_FLAG(bound_xeno.hive.hive_flags, XENO_SLASH_INFECTED))
+					bound_xeno.animation_attack_on(target_carbon)
+					bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]"),
+					SPAN_XENONOTICE("ATTACK!!!! Oh- [target_carbon] has a sister inside..."))
+					return XENO_ATTACK_ACTION
+			if(!HAS_FLAG(bound_xeno.hive.hive_flags, XENO_SLASH_NORMAL))
+				bound_xeno.animation_attack_on(target_carbon)
+				bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]"),
+				SPAN_XENONOTICE("ATTACK!!!! Wait- we're not allowed to attack hosts anymore..."))
+				return XENO_ATTACK_ACTION
+		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] fumbles stupidly for a moment, then slashes [target_carbon]!"), 
+			SPAN_HIGHDANGER("Your oversized claws and small mind get in the way of restraining, slashing [target_carbon]!"), message_flags=CHAT_TYPE_XENO_COMBAT)
 		return INTENT_HARM
 
 /datum/action/xeno_action/onclick/empower/use_ability(atom/target)

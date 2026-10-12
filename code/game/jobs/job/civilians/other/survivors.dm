@@ -22,20 +22,47 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	var/list/available_landmarks
 	/// List of all generic survivor landmarks (INSERT_NONE and lowest priority)
 	var/list/generic_landmarks
+	/// Flag to determine if there is an insert, if there is but a player has opted out of too many archetypes, we can know to simply not spawn them.
+	var/insert_present_flag = FALSE
 
 /datum/job/civilian/survivor/set_spawn_positions(count)
 	spawn_positions = clamp((floor(count * SURVIVOR_TO_TOTAL_SPAWN_RATIO)), 2, 8)
 	total_positions = spawn_positions
+
+/datum/job/civilian/survivor/get_total_positions(latejoin)
+	var/normal_positions = ..()
+
+	// Determine the normal surv limit
+	var/datum/job/civilian/survivor/base_job = GLOB.RoleAuthority.roles_by_path[/datum/job/civilian/survivor]
+	if(!base_job)
+		stack_trace("/datum/job/civilian/survivor is not present in GLOB.RoleAuthority.roles_by_path!")
+		return 0
+	var/base_positions = latejoin ? base_job.total_positions : base_job.spawn_positions
+
+	// Count all current_positions
+	var/exisiting_positions = 0
+	for(var/surv_type in typesof(/datum/job/civilian/survivor))
+		var/datum/job/civilian/survivor/surv_job = GLOB.RoleAuthority.roles_by_path[surv_type]
+		if(surv_job)
+			exisiting_positions += surv_job.current_positions
+
+	var/available_positions = max(min(base_positions - exisiting_positions, normal_positions), 0)
+	return available_positions + current_positions // check_role_entry() checks our own current_positions count already
 
 /datum/job/civilian/survivor/create_landmark_lists()
 	slotted_landmarks = list()
 	available_landmarks = list()
 	generic_landmarks = list()
 
+	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.generic_survivor_spawns) //make a list of all valid generic spawns
+		generic_landmarks += spawner
+
 	var/hostile_scenario = SSnightmare.get_scenario_is_hostile_survivor()
 	for(var/priority = 1 to LOWEST_SPAWN_PRIORITY)
 		if(length(GLOB.survivor_spawns_by_priority["[priority]"]))
 			for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.survivor_spawns_by_priority["[priority]"])
+				if(!insert_present_flag && spawner.archetype != INSERT_NONE) //set flag for an insert being present
+					insert_present_flag = TRUE
 				if(spawner.archetype == INSERT_SYNTH) //Don't add synths or COs to normal survivor spawns
 					continue
 				if(spawner.archetype == INSERT_CO)
@@ -70,10 +97,6 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	if(!new_player?.client)
 		return FALSE
 
-	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.generic_survivor_spawns) //make a list of all valid generic spawns
-		if(spawner.check_can_spawn(new_player))
-			generic_landmarks += spawner
-
 	var/list/valid_prefs
 	LAZYINITLIST(valid_prefs)
 	valid_prefs = get_valid_prefs(new_player)
@@ -82,18 +105,24 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 		no_insert_archetypes = TRUE
 	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in available_landmarks) // for inserts with a higher than default priority to spawn (all of them)
 		// There is an insert and player has opted out of inserts, return FALSE
-		if(spawner.archetype != INSERT_NONE && no_insert_archetypes)
+		if(no_insert_archetypes && spawner.archetype != INSERT_NONE)
 			return FALSE
 		if(LAZYISIN(valid_prefs, spawner.archetype) || (spawner.archetype == INSERT_NONE && spawner.spawn_priority != LOWEST_SPAWN_PRIORITY)) //only add landmarks that match prefs or generic ones with elevated priority (none exist yet)
 			slotted_landmarks[new_player] = spawner
 			available_landmarks -= spawner
+			GLOB.survivor_spawns_by_priority -= spawner
 			return TRUE
+
+	if(insert_present_flag) // There is an insert, but you didn't qualify for ANY spots in it, likely due to disabling most (but not all!) prefs. A shame... a real shame...
+		return FALSE
 
 	// There is no insert, so now we have to assign a random generic spawn
 	var/obj/effect/landmark/survivor_spawner/spawner = SAFEPICK(generic_landmarks)
 
 	if(spawner) //if there is a generic spawn, use it
 		slotted_landmarks[new_player] = spawner
+		generic_landmarks -= spawner
+		GLOB.generic_survivor_spawns -= spawner
 		return TRUE
 	return FALSE
 
@@ -252,12 +281,15 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	job_options = null
 
 /datum/job/civilian/survivor/synth/set_spawn_positions(count)
-	return spawn_positions
+	return
 
 /datum/job/civilian/survivor/synth/create_landmark_lists()
 	slotted_landmarks = list()
 	available_landmarks = list()
 	generic_landmarks = list()
+
+	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.generic_survivor_spawns) //make a list of all valid generic spawns
+		generic_landmarks += spawner
 
 	var/hostile_scenario = SSnightmare.get_scenario_is_hostile_survivor()
 	for(var/priority = 1 to LOWEST_SPAWN_PRIORITY)
@@ -272,10 +304,6 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	if(!new_player?.client)
 		return FALSE
 
-	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.generic_survivor_spawns) //make a list of all valid generic spawns
-		if(spawner.check_can_spawn(new_player))
-			generic_landmarks += spawner
-
 	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in available_landmarks)
 		if(spawner.archetype == INSERT_SYNTH) //only pass synth landmarks
 			// If there's an insert but we don't have the pref, return FALSE
@@ -283,12 +311,15 @@ AddTimelock(/datum/job/civilian/survivor, list(
 				return FALSE
 			slotted_landmarks[new_player] = spawner
 			available_landmarks -= spawner
+			GLOB.survivor_spawns_by_priority -= spawner
 			return TRUE
 
 	// There is no insert, so now we have to assign a random generic spawn
 	var/obj/effect/landmark/survivor_spawner/spawner = SAFEPICK(generic_landmarks)
 	if(spawner) //if there is a generic spawn, use it
 		slotted_landmarks[new_player] = spawner
+		generic_landmarks -= spawner
+		GLOB.generic_survivor_spawns -= spawner
 		return TRUE
 
 	return FALSE
@@ -324,12 +355,15 @@ AddTimelock(/datum/job/civilian/survivor, list(
 		return
 	total_positions = 1
 	spawn_positions = 1
-	return spawn_positions
 
 /datum/job/civilian/survivor/commanding_officer/create_landmark_lists()
 	slotted_landmarks = list()
 	available_landmarks = list()
 	generic_landmarks = list()
+
+	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.generic_survivor_spawns) //make a list of all valid generic spawns
+		generic_landmarks += spawner
+
 
 	var/hostile_scenario = SSnightmare.get_scenario_is_hostile_survivor()
 	for(var/priority = 1 to LOWEST_SPAWN_PRIORITY)
@@ -344,10 +378,6 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	if(!new_player?.client)
 		return FALSE
 
-	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.generic_survivor_spawns) //make a list of all valid generic spawns
-		if(spawner.check_can_spawn(new_player))
-			generic_landmarks += spawner
-
 	//insert CO or map that allowed a CO to roll but has an insert with no CO, spawn as if normal survivor
 	var/list/valid_prefs
 	LAZYINITLIST(valid_prefs)
@@ -359,12 +389,14 @@ AddTimelock(/datum/job/civilian/survivor, list(
 				return FALSE
 			slotted_landmarks[new_player] = spawner
 			available_landmarks -= spawner
+			GLOB.survivor_spawns_by_priority -= spawner
 			return TRUE
 	// There is no insert, so now we have to assign a random generic spawn
-	var/obj/effect/landmark/survivor_spawner/spawner = pick(generic_landmarks)
+	var/obj/effect/landmark/survivor_spawner/spawner = SAFEPICK(generic_landmarks)
 	if(spawner) //if there is a generic spawn, use it
 		slotted_landmarks[new_player] = spawner
 		generic_landmarks -= spawner
+		GLOB.generic_survivor_spawns -= spawner
 		return TRUE
 	return FALSE
 

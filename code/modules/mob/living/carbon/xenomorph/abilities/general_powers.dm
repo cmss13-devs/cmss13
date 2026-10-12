@@ -785,7 +785,7 @@
 	xeno.use_plasma(plasma_cost)
 	playsound(xeno.loc, "alien_resin_build", 25)
 	new /obj/effect/alien/resin/trap(turf, xeno)
-	to_chat(xeno, SPAN_XENONOTICE("We place a resin hole on the weeds, it still needs a sister to fill it with acid."))
+	to_chat(xeno, SPAN_XENONOTICE("We place a resin hole on the weeds, it still needs a sister to fill it with acid or a facehugger."))
 	return ..()
 
 /turf/proc/check_xeno_trap_placement(mob/living/carbon/xenomorph/xeno)

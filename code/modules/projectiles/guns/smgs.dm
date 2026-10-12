@@ -584,12 +584,12 @@
 /obj/item/weapon/gun/smg/pps43/extended_mag
 	current_mag = /obj/item/ammo_magazine/smg/pps43/extended
 //-------------------------------------------------------
-//MSP-64
+//PPZ-49/64
 
 /obj/item/weapon/gun/smg/bizon
-	name = "\improper MSP-64 Submachinegun"
-	desc = "The standard submachinegun of the UPP, sporting an unusual 64 round helical magazine, it has a high fire-rate, but suffers from poor precision at range."
-	desc_lore = "The MSP-64 orignates as a sister project to the NP92 handgun, intended to replace the VU-292 submachinegun in police and orbital use whilst using the newly developed 8.6x20mm caseless round. Whilst a normal carbine was more than sufficent for rear-line troops and vehicle crews, a lower-powered pistol cartridge was deemed superior for the purpose of avoiding overpenetration in enviroments like space stations or civilian centers. The design, whilst having several flaws such as poor accuracy over range, proved easy to produce and even easier to copy. Today it's used not just by the Union, but also plenty of small-time mercenaries, rebels, corporate security teams, and just about everything in-between."
+	name = "\improper PPZ-49/64 Submachinegun"
+	desc = "The PPZ-49 'Vol', also known as the 'Ox', is one of several submachineguns fielded by the UPP. This one is a rarer 49/64 model, chambered in the same 8.6x20mm round used by the NP92 and with the stock replaced with a standard pistol grip, it's designed to be a less penetrating and more nimble alternative for use at close ranges. Loads from a unique 64 round helical magazine."
+	desc_lore = "The PPZ-49 'Vol' was initially designed by the Zaytsev Design Bureau, at the request of the Ministry of Space Security as a lightweight option for its security forces within surface facilities, featuring greater penetration than most other submachineguns in common service that render it less than desirable in heavily populated spaces or on space-stations. \nIn the late 2160s, the Space Operating Forces requested a variant in the comparatively lighter 8.6x20mm caseless round as opposed to the 9.5x20mm used by the original PPZ-49, alongside a removable stock for use in compact spaces. The newly adopted PPZ-49/64 has since seen widespread adoption across the SOF and People's Armed Police, alongside major use by other smaller police forces in the Union."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/smgs.dmi'
 	icon_state = "type64"
 	item_state = "type64"

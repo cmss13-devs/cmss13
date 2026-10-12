@@ -14,7 +14,7 @@
 		list("PRIMARY FIREARMS", -1, null, null),
 		list("Type 71 Pulse Rifle", floor(scale * 60), /obj/item/weapon/gun/rifle/type71, VENDOR_ITEM_REGULAR),
 		list("Type 71 Pulse Rifle Carbine", floor(scale * 20), /obj/item/weapon/gun/rifle/type71/carbine, VENDOR_ITEM_REGULAR),
-		list("MSP-64 Submachinegun", floor(scale * 60), /obj/item/weapon/gun/smg/bizon/upp, VENDOR_ITEM_REGULAR),
+		list("PPZ-49/64 Submachinegun", floor(scale * 60), /obj/item/weapon/gun/smg/bizon/upp, VENDOR_ITEM_REGULAR),
 		list("Type 23 Riot Shotgun", floor(scale * 20), /obj/item/weapon/gun/shotgun/type23, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", -1, null, null),
@@ -154,7 +154,7 @@
 	listed_products = list(
 		list("REGULAR AMMUNITION", -1, null, null),
 		list("Type 71 Magazine (10x27mm)", floor(scale * 100), /obj/item/ammo_magazine/rifle/type71, VENDOR_ITEM_REGULAR),
-		list("MSP-64 Helical Magazine (8.6x20mm)", floor(scale * 100), /obj/item/ammo_magazine/smg/bizon, VENDOR_ITEM_REGULAR),
+		list("PPZ-49/64 Helical Magazine (8.6x20mm)", floor(scale * 100), /obj/item/ammo_magazine/smg/bizon, VENDOR_ITEM_REGULAR),
 		list("Box of Heavy Buckshot Shells (8g)", floor(scale * 56), /obj/item/ammo_magazine/shotgun/heavy/buckshot, VENDOR_ITEM_REGULAR),
 		list("Box of Heavy Slugs (8g)", floor(scale * 56), /obj/item/ammo_magazine/shotgun/heavy/slug, VENDOR_ITEM_REGULAR),
 		list("Box of Heavy Flechette Shells (8g)", floor(scale * 56), /obj/item/ammo_magazine/shotgun/heavy/flechette, VENDOR_ITEM_REGULAR),
@@ -173,7 +173,7 @@
 		list("MAGAZINE BOXES", -1, null, null),
 		list("Magazine box (Type 71 Rifle x 10)", 0, /obj/item/ammo_box/magazine/type71, VENDOR_ITEM_REGULAR),
 		list("Magazine box (AP Type 71 Rifle x 10)", 0, /obj/item/ammo_box/magazine/type71/ap, VENDOR_ITEM_REGULAR),
-		list("Magazine box (MSP-64 Submachinegun x 10)", 0, /obj/item/ammo_box/magazine/type64, VENDOR_ITEM_REGULAR),
+		list("Magazine box (PPZ-49/64 Submachinegun x 10)", 0, /obj/item/ammo_box/magazine/type64, VENDOR_ITEM_REGULAR),
 		list("Magazine box (Type 73 Pistol x 16)", 0, /obj/item/ammo_box/magazine/type73, VENDOR_ITEM_REGULAR),
 		list("Speed loaders box (ZhNK-72 x 12)", 0, /obj/item/ammo_box/magazine/zhnk, VENDOR_ITEM_REGULAR),
 		list("Magazine box (Type19 x 12)", 0, /obj/item/ammo_box/magazine/type19, VENDOR_ITEM_REGULAR),

@@ -1,5 +1,5 @@
 /datum/supply_packs/upp/Type64_x10
-	name = "UPP MSP-64 Submachinegun (x10)"
+	name = "UPP PPZ-49/64 Submachinegun (x10)"
 	contains = list(
 		/obj/item/weapon/gun/smg/bizon/upp,
 		/obj/item/weapon/gun/smg/bizon/upp,
@@ -14,7 +14,7 @@
 	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/weapon
-	containername = "MSP-64 Submachinegun Crate"
+	containername = "PPZ-49/64 Submachinegun Crate"
 	group = "UPP Weapons"
 
 /datum/supply_packs/upp/Type23_x10

@@ -71,14 +71,14 @@
 		list("PRIMARY FIREARMS", 0, null, null, null),
 		list("Type 71 Pulse Rifle", 20, /obj/item/weapon/gun/rifle/type71, null, VENDOR_ITEM_RECOMMENDED),
 		list("Type 71 Pulse Rifle Carbine", 20, /obj/item/weapon/gun/rifle/type71/carbine, null, VENDOR_ITEM_REGULAR),
-		list("MSP-64 Submachinegun", 20, /obj/item/weapon/gun/smg/bizon/upp, null, VENDOR_ITEM_REGULAR),
+		list("PPZ-49/64 Submachinegun", 20, /obj/item/weapon/gun/smg/bizon/upp, null, VENDOR_ITEM_REGULAR),
 		list("Type 23 Riot Shotgun", 20, /obj/item/weapon/gun/shotgun/type23, null, VENDOR_ITEM_REGULAR),
 
 
 		list("PRIMARY AMMUNITION", 0, null, null, null),
 		list("Type 71 AP Magazine (10x27mm)", 15, /obj/item/ammo_magazine/rifle/type71/ap, null, VENDOR_ITEM_REGULAR),
 		list("Type 71 Magazine (10x27mm)", 5, /obj/item/ammo_magazine/rifle/type71, null, VENDOR_ITEM_REGULAR),
-		list("MSP-64 Helical Magazine (8.6x20mm)", 5, /obj/item/ammo_magazine/smg/bizon, null, VENDOR_ITEM_REGULAR),
+		list("PPZ-49/64 Helical Magazine (8.6x20mm)", 5, /obj/item/ammo_magazine/smg/bizon, null, VENDOR_ITEM_REGULAR),
 		list("Handful of Heavy Buckshot Shells (8g)", 5, /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", 0, null, null, null),
@@ -114,13 +114,13 @@
 		list("PRIMARY FIREARMS", -1, null, null),
 		list("Type 71 Pulse Rifle", 20, /obj/item/weapon/gun/rifle/type71, null, VENDOR_ITEM_REGULAR),
 		list("Type 71 Pulse Rifle Carbine", 20, /obj/item/weapon/gun/rifle/type71/carbine, null, VENDOR_ITEM_REGULAR),
-		list("MSP-64 Submachinegun", 20, /obj/item/weapon/gun/smg/bizon/upp, null, VENDOR_ITEM_REGULAR),
+		list("PPZ-49/64 Submachinegun", 20, /obj/item/weapon/gun/smg/bizon/upp, null, VENDOR_ITEM_REGULAR),
 		list("Type 23 Riot Shotgun", 20, /obj/item/weapon/gun/shotgun/type23, null, VENDOR_ITEM_REGULAR),
 
 		list("PRIMARY AMMUNITION", -1, null, null),
 		list("Type 71 AP Magazine (10x27mm)", 60, /obj/item/ammo_magazine/rifle/type71/ap, null, VENDOR_ITEM_REGULAR),
 		list("Type 71 Magazine (10x27mm)", 60, /obj/item/ammo_magazine/rifle/type71, null, VENDOR_ITEM_RECOMMENDED),
-		list("MSP-64 Helical Magazine (8.6x20mm)", 60, /obj/item/ammo_magazine/smg/bizon, null, VENDOR_ITEM_REGULAR),
+		list("PPZ-49/64 Helical Magazine (8.6x20mm)", 60, /obj/item/ammo_magazine/smg/bizon, null, VENDOR_ITEM_REGULAR),
 		list("Handful of Heavy Buckshot Shells (8g)", 60, /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", -1, null, null),

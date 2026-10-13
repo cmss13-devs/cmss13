@@ -361,31 +361,33 @@
 		if(autoinjector.reagents.total_volume >= autoinjector.reagents.maximum_volume) //Autoinjector is full!
 			to_chat(user, SPAN_NOTICE("[autoinjector] is full."))
 			return FALSE
-		if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/research)) //Autoinjector says, "Where's my pouch?"
-			to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test on [autoinjector]'s pressurized reagent canister receiver valve failed.'"))
-			return FALSE
-		if((is_type_in_list(autoinjector, stimpacks))) //Wait a minute...
-			to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test on [autoinjector]'s stimpack receiver valve failed.'"))
-			return FALSE
-		if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/yautja)) //No error message. It's a crystal, right? It totally doesn't have medicine in it.
-			return FALSE
-		if(autoinjector.cannot_refill)
-			to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve cannot detect a refill valve on [autoinjector].'"))
-			return FALSE
 		if(!is_type_in_list(autoinjector, chem_refill))
-			to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 Smartflow valve compatibility test on [autoinjector]'s custom receiver valve failed.'"))
-			return FALSE
-		else if(!reagents.has_reagent(autoinjector.chemname, amount)) // Not enough reagents in the tank to refill the autoinjector.
-			to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'Refill failed. [amount]u [autoinjector.chemname] is required to completely refill [autoinjector] or a partial refill may underdose the next patient.'"))
-			return FALSE
+			if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/research)) //Autoinjector says, "Where's my pouch?"
+				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test on [autoinjector]'s pressurized reagent canister receiver valve failed.'"))
+				return FALSE
+			else if ((is_type_in_list(autoinjector, stimpacks))) //Wait a minute...
+				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve compatibility test on [autoinjector]'s stimpack receiver valve failed.'"))
+				return FALSE
+			else if(istype(autoinjector, /obj/item/reagent_container/hypospray/autoinjector/yautja)) //No error message. It's a crystal, right? It totally doesn't have medicine in it.
+				return FALSE
+			else if(autoinjector.cannot_refill)
+				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 SmartFlow valve cannot detect a refill valve on [autoinjector].'"))
+				return FALSE
+			else
+				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'MS-11 Smartflow valve compatibility test on [autoinjector]'s custom receiver valve failed.'"))
+				return FALSE
 		else
-			//FINALLY, the good shit that actually fills the autoinjector!
-			reagents.trans_id_to(autoinjector, autoinjector.chemname, amount) //fill this bih
-			autoinjector.uses_left = autoinjector.volume / autoinjector.amount_per_transfer_from_this
-			autoinjector.update_icon()
-			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
-			to_chat(user, SPAN_INFO("You successfully refill [autoinjector] with [src]!"))
-			return TRUE
+			if(!reagents.has_reagent(autoinjector.chemname, amount)) // Not enough reagents in the tank to refill the autoinjector.
+				to_chat(user, SPAN_WARNING("[src]'s small LED blinks red and its robotic synthesizer says, 'Refill failed. [amount]u [autoinjector.chemname] is required to completely refill [autoinjector] or a partial refill may underdose the next patient.'"))
+				return FALSE
+			else
+				//FINALLY, the good shit that actually fills the autoinjector!
+				reagents.trans_id_to(autoinjector, autoinjector.chemname, amount) //fill this bih
+				autoinjector.uses_left = autoinjector.volume / autoinjector.amount_per_transfer_from_this
+				autoinjector.update_icon()
+				playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
+				to_chat(user, SPAN_INFO("You successfully refill [autoinjector] with [src]!"))
+				return TRUE
 
 /obj/item/reagent_container/glass/minitank/update_icon()
 	overlays.Cut()

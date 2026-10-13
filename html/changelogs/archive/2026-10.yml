@@ -81,3 +81,6 @@
   - qol: You can close an incision on a sawed and closed skull/ribcage without needing
       bone gel first in case you run out of bone gel and need to close the patient
       NOW.
+2026-10-13:
+  Taushai:
+  - bugfix: fixed the preview dummy disappearing after reconnecting to the same round.

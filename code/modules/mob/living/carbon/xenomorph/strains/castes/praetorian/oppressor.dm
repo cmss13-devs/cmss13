@@ -194,7 +194,7 @@
 		if(2)
 			captured_message = "rooted two targets"
 		if(3 to INFINITY)
-			captured_message = "stunned [target_count] targets"
+			captured_message = "stunned [num_of_targets] targets"
 
 	if(captured_message)
 		abduct_user.balloon_alert(abduct_user, captured_message, text_color = "#51a16c")

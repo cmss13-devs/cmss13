@@ -49,6 +49,8 @@
 	to_chat(human, SPAN_ROLE_BODY("Your squad is here to assist in the defence of [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
 	to_chat(human, SPAN_BOLDWARNING("If you wish to cryo or ghost upon spawning in, you must ahelp and inform staff so you can be replaced."))
 
+	human.assigned_equipment_preset?.equip_spawn_lore(human)
+
 	sleep(10)
 	if(!mind)
 		human.free_for_ghosts()

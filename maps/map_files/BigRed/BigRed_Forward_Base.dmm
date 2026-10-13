@@ -29818,6 +29818,13 @@
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/medical/upper_medical)
+"bPw" = (
+/obj/structure/bed/roller/heavy,
+/obj/item/chem_extractor,
+/obj/item/chem_extractor,
+/obj/item/chem_extractor,
+/turf/open/floor/almayer/mono,
+/area/forward_base/medical/medical_science)
 "bPx" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/condiment/saltshaker{
@@ -29957,6 +29964,24 @@
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/medical/upper_medical)
+"bPQ" = (
+/obj/structure/machinery/door_display/research_cell{
+	id = "Biohazard Storage";
+	name = "Biohazard Storage Control";
+	layer = 3.125;
+	pixel_x = 26;
+	dir = 8;
+	pixel_y = -3
+	},
+/obj/structure/machinery/door_control{
+	id = "W_Biohazard Storage";
+	name = "Biohazard Storage Windows";
+	pixel_y = 12;
+	req_one_access_txt = "19;28";
+	pixel_x = 23
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/medical/medical_science)
 "bPR" = (
 /obj/item/storage/box/gloves{
 	pixel_x = 5;
@@ -30109,6 +30134,14 @@
 /obj/item/clothing/accessory/patch/medic_patch,
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/medical/upper_medical)
+"bQg" = (
+/obj/structure/bed/roller/heavy,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/item/organ/xeno/drone,
+/turf/open/floor/almayer/mono,
+/area/forward_base/medical/medical_science)
 "bQh" = (
 /turf/open/mars/mars_dirt_11,
 /area/bigredv2/outside/n)
@@ -30523,6 +30556,9 @@
 /obj/effect/decal/heavy_cable/node_s_w,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/forward_base/medical/morgue)
+"bRa" = (
+/turf/open/floor/almayer/flooredge/east,
+/area/forward_base/medical/medical_science)
 "bRb" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
 /obj/structure/machinery/light/red{
@@ -30707,18 +30743,25 @@
 /turf/closed/wall/almayer/research/containment/wall/west,
 /area/forward_base/medical/medical_science)
 "bRw" = (
-/obj/structure/disposalpipe/up/almayer{
-	dir = 2;
-	id = "almayerlink_med_req"
-	},
-/turf/closed/wall/almayer/research/containment/wall/west,
+/obj/structure/machinery/xenoanalyzer,
+/turf/open/floor/almayer,
 /area/forward_base/medical/medical_science)
 "bRx" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/surgery/circular_saw{
+	pixel_x = -1;
+	pixel_y = 4
 	},
-/turf/closed/wall/almayer/research/containment/wall/west,
+/obj/item/tool/surgery/retractor{
+	pixel_y = 3;
+	pixel_x = -2
+	},
+/obj/item/tool/surgery/scalpel,
+/obj/item/tool/surgery/hemostat{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/turf/open/floor/almayer,
 /area/forward_base/medical/medical_science)
 "bRy" = (
 /turf/closed/wall/almayer/research/containment/wall/corner{
@@ -30797,58 +30840,21 @@
 "bRG" = (
 /turf/closed/wall/almayer/research/containment/wall/north,
 /area/forward_base/medical/medical_science)
-"bRH" = (
-/obj/structure/machinery/flasher{
-	id = "BiohazStore";
-	layer = 2.1;
-	name = "Mounted Flash";
-	pixel_y = 30
-	},
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/tool/surgery/circular_saw{
-	pixel_x = -1;
-	pixel_y = 4
-	},
-/obj/item/tool/surgery/retractor{
-	pixel_y = 3;
-	pixel_x = -2
-	},
-/obj/item/tool/surgery/scalpel,
-/obj/item/tool/surgery/hemostat{
-	pixel_x = -2;
-	pixel_y = 2
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2";
-	dir = 1;
-	pixel_x = 1
-	},
-/turf/open/floor/almayer/research/containment/corner_var1,
-/area/forward_base/medical/medical_science)
 "bRI" = (
-/obj/structure/machinery/light/double/blue{
-	light_color = "#a7dbc7";
-	dir = 8
+/obj/structure/machinery/door_control{
+	id = "Biohazard Storage_2";
+	name = "Biohazard Storage Windows";
+	pixel_y = 30;
+	req_one_access_txt = "19;28";
+	pixel_x = 11
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2";
-	dir = 8;
-	pixel_y = -1
-	},
-/turf/open/floor/almayer/research/containment/floor2/west,
+/turf/open/floor/almayer/flooredge/east,
 /area/forward_base/medical/medical_science)
 "bRJ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2";
-	dir = 8;
-	pixel_y = 1
+/obj/structure/bed/chair/comfy{
+	dir = 8
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2";
-	pixel_x = 1
-	},
-/obj/structure/machinery/iv_drip,
-/turf/open/floor/almayer/research/containment/corner/east,
+/turf/open/floor/almayer/flooredge/east,
 /area/forward_base/medical/medical_science)
 "bRK" = (
 /obj/effect/decal/cleanable/dirt,
@@ -30866,25 +30872,8 @@
 /turf/closed/wall/almayer/research/containment/wall/south,
 /area/forward_base/medical/medical_science)
 "bRM" = (
-/obj/structure/machinery/door_display/research_cell{
-	id = "Biohazard Storage";
-	name = "Biohazard Storage Control";
-	pixel_y = 24;
-	layer = 3.125;
-	pixel_x = -4
-	},
-/obj/structure/machinery/door_control{
-	id = "W_Biohazard Storage";
-	name = "Biohazard Storage Windows";
-	pixel_y = 26;
-	req_one_access_txt = "19;28";
-	pixel_x = 11
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/turf/open/floor/almayer/plate,
+/obj/structure/machinery/light,
+/turf/open/floor/almayer/flooredge/east,
 /area/forward_base/medical/medical_science)
 "bRN" = (
 /obj/structure/sign/safety/ref_chem_storage{
@@ -31007,6 +30996,19 @@
 /obj/structure/machinery/autolathe,
 /turf/open/floor/almayer/plate,
 /area/forward_base/medical/medical_science)
+"bRU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/research/containment/corner2,
+/area/forward_base/medical/medical_science)
 "bRV" = (
 /obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/white,
@@ -31037,45 +31039,18 @@
 /turf/open/floor/almayer/plate,
 /area/forward_base/medical/medical_science)
 "bRY" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2";
-	dir = 1;
-	pixel_x = 1
+/obj/structure/machinery/door/poddoor/shutters/almayer/containment{
+	id = "Biohazard Storage_2";
+	name = "\improper Biohazard Storage Chamber";
+	dir = 2
 	},
-/turf/open/floor/almayer/research/containment/corner/north,
+/turf/closed/wall/almayer/research/containment/wall/purple{
+	icon_state = "containment_window_small"
+	},
 /area/forward_base/medical/medical_science)
 "bRZ" = (
-/turf/open/floor/almayer/research/containment/floor1,
-/area/forward_base/medical/medical_science)
-"bSa" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning3";
-	dir = 8;
-	pixel_y = -9
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning3";
-	dir = 4;
-	pixel_y = -9
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "cargo_arrow3"
-	},
-/turf/open/floor/almayer/research/containment/entrance/north,
-/area/forward_base/medical/medical_science)
-"bSb" = (
-/obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
-	id = "Biohazard Storage";
-	locked = 1;
-	name = "\improper Biohazard Storage Chamber";
-	dir = 2
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer/containment{
-	id = "Biohazard Storage";
-	name = "\improper Biohazard Storage Chamber";
-	dir = 2
-	},
-/turf/open/floor/almayer/test_floor4,
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/plating/plating_catwalk,
 /area/forward_base/medical/medical_science)
 "bSc" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
@@ -31088,19 +31063,22 @@
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/forward_base/medical/medical_science)
+"bSd" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/containment{
+	id = "W_Biohazard Storage";
+	name = "\improper Biohazard Storage Chamber";
+	dir = 4
+	},
+/turf/closed/wall/almayer/research/containment/wall/purple{
+	icon_state = "containment_window_small";
+	dir = 8
+	},
+/area/forward_base/medical/medical_science)
 "bSe" = (
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/forward_base/medical/medical_science)
 "bSf" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2";
-	dir = 1;
-	pixel_x = 1
-	},
-/turf/open/floor/almayer/research/containment/corner/east,
-/area/forward_base/medical/medical_science)
-"bSg" = (
-/turf/open/floor/almayer/research/containment/floor2,
+/turf/closed/wall/almayer/research/containment/wall/connect_w,
 /area/forward_base/medical/medical_science)
 "bSh" = (
 /obj/effect/decal/warning_stripes{
@@ -31110,25 +31088,18 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/forward_base/medical/medical_science)
 "bSi" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer/containment{
-	id = "W_Biohazard Storage";
+/obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
+	id = "Biohazard Storage";
+	locked = 1;
 	name = "\improper Biohazard Storage Chamber";
-	dir = 2
+	dir = 4
 	},
-/turf/closed/wall/almayer/research/containment/wall/purple{
-	dir = 1;
-	icon_state = "containment_window_h"
+/obj/structure/machinery/door/poddoor/shutters/almayer/containment{
+	id = "Biohazard Storage";
+	name = "\improper Biohazard Storage Chamber";
+	dir = 4
 	},
-/area/forward_base/medical/medical_science)
-"bSj" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
-/obj/effect/decal/cleanable/dirt{
-	layer = 2.52
-	},
-/turf/open/floor/almayer,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/forward_base/medical/medical_science)
 "bSk" = (
 /obj/effect/decal/cleanable/generic,
@@ -31164,6 +31135,33 @@
 /obj/effect/landmark/start/researcher,
 /turf/open/floor/almayer/mono,
 /area/forward_base/medical/medical_science)
+"bSp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = -1
+	},
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7";
+	dir = 4
+	},
+/turf/open/floor/almayer/research/containment/floor2/west,
+/area/forward_base/medical/medical_science)
+"bSq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	dir = 1;
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/research/containment/corner/west,
+/area/forward_base/medical/medical_science)
 "bSr" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/reagent_analyzer{
@@ -31174,43 +31172,53 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/medical/medical_science)
 "bSs" = (
+/turf/closed/wall/almayer/research/containment/wall/divide{
+	remote_id = "W_Containment_Cell_Umbilical_2"
+	},
+/area/forward_base/medical/medical_science)
+"bSt" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2";
+	dir = 8;
+	pixel_y = -1
+	},
+/obj/structure/machinery/camera/autoname/almayer/containment{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
 	dir = 1;
 	pixel_x = 1
 	},
-/obj/structure/bed/roller/heavy,
-/obj/item/organ/xeno/drone,
-/obj/item/organ/xeno/drone,
-/turf/open/floor/almayer/research/containment/floor2,
-/area/forward_base/medical/medical_science)
-"bSt" = (
-/obj/structure/pipes/vents/scrubber/no_boom{
-	welded = 1;
-	name = "Secure Reinforced Air Scrubber"
-	},
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/corner,
 /area/forward_base/medical/medical_science)
 "bSu" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2";
-	pixel_x = 1
+	dir = 8;
+	pixel_y = -1
 	},
-/obj/structure/bed/roller/heavy,
-/obj/item/chem_extractor,
-/obj/item/chem_extractor,
-/obj/item/chem_extractor,
-/turf/open/floor/almayer/research/containment/floor2,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/forward_base/medical/medical_science)
 "bSv" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer/containment{
-	id = "W_Biohazard Storage";
-	name = "\improper Biohazard Storage Chamber";
-	dir = 2
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning3";
+	dir = 1;
+	pixel_x = -5
 	},
-/turf/closed/wall/almayer/research/containment/wall/purple{
-	icon_state = "containment_window_h"
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning3";
+	dir = 1;
+	pixel_x = -5;
+	pixel_y = -17
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_arrow3";
+	dir = 8;
+	pixel_y = 1;
+	pixel_x = 2
+	},
+/turf/open/floor/almayer/research/containment/corner/east,
 /area/forward_base/medical/medical_science)
 "bSw" = (
 /obj/structure/cable{
@@ -31221,10 +31229,6 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
-"bSx" = (
-/obj/structure/reagent_dispensers/tank/fuel/custom,
-/turf/open/floor/almayer,
-/area/forward_base/medical/medical_science)
 "bSy" = (
 /obj/structure/barricade/handrail{
 	dir = 8
@@ -31325,6 +31329,9 @@
 	dir = 8
 	},
 /turf/open/floor/almayer/mono,
+/area/forward_base/medical/medical_science)
+"bSH" = (
+/turf/closed/wall/almayer/outer/internal,
 /area/forward_base/medical/medical_science)
 "bSI" = (
 /obj/structure/machinery/chem_storage/medbay{
@@ -31449,6 +31456,9 @@
 /area/forward_base/medical/medical_science)
 "bSV" = (
 /turf/open/floor/almayer,
+/area/forward_base/medical/medical_science)
+"bSW" = (
+/turf/closed/wall/almayer/research/containment/wall/connect_e2,
 /area/forward_base/medical/medical_science)
 "bSX" = (
 /obj/structure/machinery/seed_extractor{
@@ -32025,6 +32035,13 @@
 	},
 /turf/open/floor/almayer/silverfull,
 /area/forward_base/medical/upper_medical)
+"bUw" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/research/containment/floor2,
+/area/forward_base/medical/medical_science)
 "bUx" = (
 /obj/structure/filingcabinet/research{
 	density = 0;
@@ -32077,6 +32094,66 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/forward_base/medical/morgue)
+"bUD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_x = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/research/containment/corner/north,
+/area/forward_base/medical/medical_science)
+"bUE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 8;
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 1;
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/research/containment/corner,
+/area/forward_base/medical/medical_science)
+"bUF" = (
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 1;
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/research/containment/floor2,
+/area/forward_base/medical/medical_science)
+"bUG" = (
+/obj/structure/machinery/camera/autoname/almayer/containment,
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 1;
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/research/containment/floor2,
+/area/forward_base/medical/medical_science)
+"bUH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 1;
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/research/containment/corner/west,
+/area/forward_base/medical/medical_science)
 "bUJ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement,
@@ -32205,11 +32282,17 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/forward_base/hallways/upper/starboard)
 "bVL" = (
-/obj/structure/machinery/xenoanalyzer,
-/turf/open/floor/almayer/research/containment/corner,
-/area/forward_base/medical/medical_science)
-"bVM" = (
-/turf/open/floor/almayer/research/containment/corner_var1/north,
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 8;
+	pixel_y = 1;
+	layer = 2.50
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/research/containment/corner3,
 /area/forward_base/medical/medical_science)
 "bVX" = (
 /obj/structure/barricade/wooden{
@@ -111063,13 +111146,13 @@ ahZ
 ahZ
 ahZ
 bUC
-ahZ
-bRu
-bRv
+bSH
+bSH
+bSH
 bRw
 bRx
-bRy
-bRo
+bQg
+bPw
 bRo
 bRz
 bRA
@@ -111275,13 +111358,13 @@ ebf
 ebf
 ebf
 ahZ
-ahZ
 bRu
-bRG
-bRH
+bRv
+bRv
+bRy
 bRI
 bRJ
-bRL
+bRa
 bRM
 bRo
 bRN
@@ -111487,15 +111570,15 @@ ebf
 ebf
 ebf
 ebf
-ebf
 ahZ
 bRG
+bUE
 bVL
 bRY
 bRZ
-bSa
-bSb
+bRQ
 bRP
+bPQ
 bSc
 bRP
 bRW
@@ -111700,15 +111783,15 @@ ebf
 ebf
 ebf
 ebf
-ebf
 ahZ
 bRG
-bVM
-bSf
-bSg
+bUF
 bSh
+bSf
+bRv
+bSd
 bSi
-bSj
+bRy
 bRo
 bSl
 bSm
@@ -111913,15 +111996,15 @@ ebf
 ebf
 ebf
 ebf
-ebf
 ahZ
-bSJ
 bRG
+bUG
+bUw
 bSs
 bSt
 bSu
 bSv
-bSx
+bRL
 bRo
 bSz
 bSA
@@ -112126,15 +112209,15 @@ ebf
 ebf
 ebf
 ebf
-ebf
 ahZ
-ahZ
-bSJ
-bSK
-bSK
-bSK
-bSM
-bRo
+bRG
+bUH
+bUD
+bSs
+bSq
+bSp
+bRU
+bRL
 bRo
 bSN
 bRP
@@ -112339,15 +112422,15 @@ ebf
 ebf
 ebf
 ebf
-ebf
-ebf
 ahZ
-ahZ
-bRo
-bRo
-bRo
-bRo
-bRo
+bSJ
+bSK
+bSK
+bSW
+bSK
+bSK
+bSK
+bSM
 bRo
 bRo
 bSP
@@ -112552,17 +112635,17 @@ ebf
 ebf
 ebf
 ebf
-ebf
-ebf
-ebf
 ahZ
-bSQ
-bSR
-bSS
-bSS
-bSS
-bUz
-bUy
+ahZ
+ahZ
+ahZ
+bRo
+bRo
+bRo
+bRo
+bRo
+bRo
+bRo
 bUx
 bVJ
 ahZ
@@ -112769,13 +112852,13 @@ ebf
 ebf
 ebf
 ahZ
-bSU
-bRP
-bVH
-bSV
-bRW
-bRP
-bSc
+bSQ
+bSR
+bSS
+bSS
+bSS
+bUz
+bUy
 bST
 ahZ
 ahZ
@@ -112982,14 +113065,14 @@ ebf
 ebf
 ebf
 ahZ
-bSX
-bSY
-bSS
-bSS
-bSS
-bSS
-bRo
-ahZ
+bSU
+bRP
+bVH
+bSV
+bRW
+bRP
+bSc
+bST
 ahZ
 ebf
 ebf
@@ -113195,15 +113278,15 @@ ebf
 ebf
 ebf
 ahZ
+bSX
+bSY
+bSS
+bSS
+bSS
+bSS
 ahZ
 ahZ
 ahZ
-ahZ
-ahZ
-ahZ
-ahZ
-ahZ
-ebf
 wso
 wso
 xze
@@ -113407,14 +113490,14 @@ ebf
 ebf
 ebf
 ebf
-ebf
-ebf
-ebf
-ebf
-ebf
-ebf
-ebf
-ebf
+ahZ
+ahZ
+ahZ
+ahZ
+ahZ
+ahZ
+ahZ
+ahZ
 ebf
 wso
 wso

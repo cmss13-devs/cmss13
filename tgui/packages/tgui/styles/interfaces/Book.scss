@@ -45,12 +45,53 @@
     }
   }
 
+  .PageNavigation {
+    position: absolute;
+    bottom: 30px;
+    left: 32px;
+    width: 588px;
+    font:
+      14px Arial,
+      sans-serif;
+  }
+
   .HeaderImage {
     filter: grayscale(1);
   }
 
   .TextArea {
     color: white;
+  }
+  .LorePage {
+    box-sizing: border-box;
+    width: 620px;
+    height: 530px;
+    margin: 0 10px;
+    padding: 16px;
+    font:
+      15px/1.4 Arial,
+      sans-serif;
+
+    h2 {
+      margin: 0 0 12px;
+      padding: 0;
+      font-size: 22px;
+    }
+
+    p {
+      display: flow-root;
+      margin: 0 0 16px;
+    }
+
+    img {
+      float: right;
+      margin: 0 0 8px 12px;
+      object-fit: contain;
+
+      &.PixelArt {
+        image-rendering: pixelated;
+      }
+    }
   }
 
   pre {

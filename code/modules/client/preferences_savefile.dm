@@ -403,7 +403,7 @@
 	predator_mandible_lr = savefile.tree["pred_mandible_lr"]
 	predator_mandible_ll = savefile.tree["pred_mandible_ll"]
 
-	show_mouths = savefile.tree["show_mouths"] >>
+	show_mouths = savefile.tree["show_mouths"]
 
 	commander_status = savefile.tree["commander_status"]
 	commander_sidearm = savefile.tree["co_sidearm"]
@@ -778,10 +778,11 @@
 
 	savefile.tree["custom_keybinds"] = custom_keybinds
 
+	savefile.tree["show_mouths"] = show_mouths
+
 	if(write)
 		savefile.save()
 
-	S["show_mouths"] << show_mouths
 
 	return TRUE
 

@@ -16643,6 +16643,7 @@
 	dir = 8
 	},
 /obj/item/organ/xeno/drone,
+/obj/item/organ/xeno/drone,
 /turf/open/floor/almayer/mono,
 /area/forward_base/medical/medical_science)
 "aTS" = (

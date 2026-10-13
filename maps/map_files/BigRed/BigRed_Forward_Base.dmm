@@ -30840,6 +30840,29 @@
 "bRG" = (
 /turf/closed/wall/almayer/research/containment/wall/north,
 /area/forward_base/medical/medical_science)
+"bRH" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/firealarm{
+	dir = 4;
+	pixel_x = 21
+	},
+/obj/structure/machinery/centrifuge{
+	pixel_y = 8;
+	pixel_x = -1;
+	layer = 3.1
+	},
+/obj/item/reagent_container/glass/beaker/cryoxadone{
+	pixel_x = -3;
+	pixel_y = -5;
+	layer = 3.01
+	},
+/obj/item/reagent_container/glass/beaker/cryoxadone{
+	pixel_x = 6;
+	pixel_y = -10;
+	layer = 3.01
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/medical/medical_science)
 "bRI" = (
 /obj/structure/machinery/door_control{
 	id = "Biohazard Storage_2";
@@ -31017,26 +31040,11 @@
 /turf/open/floor/almayer/mono,
 /area/forward_base/medical/medical_science)
 "bRX" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N"
-	},
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/centrifuge{
-	pixel_y = 8;
-	pixel_x = -1;
+/obj/structure/machinery/cryopod{
+	pixel_y = 6;
 	layer = 3.1
 	},
-/obj/item/reagent_container/glass/beaker/cryoxadone{
-	pixel_x = -3;
-	pixel_y = -5;
-	layer = 3.01
-	},
-/obj/item/reagent_container/glass/beaker/cryoxadone{
-	pixel_x = 6;
-	pixel_y = -10;
-	layer = 3.01
-	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/test_floor4,
 /area/forward_base/medical/medical_science)
 "bRY" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment{
@@ -31060,6 +31068,9 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/medical/medical_science)
+"bSa" = (
+/turf/closed/wall/almayer/white,
+/area/forward_base/hallways/upper/starboard)
 "bSc" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Research Hydroponics";
@@ -32175,12 +32186,14 @@
 /turf/open/floor/whitegreen/west,
 /area/bigredv2/outside/medical)
 "bVz" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out"
-	},
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera";
 	dir = 1
+	},
+/obj/effect/landmark/late_join/researcher,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
 	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/medical/medical_science)
@@ -32274,13 +32287,6 @@
 /obj/item/device/reagent_scanner{
 	pixel_x = -11;
 	pixel_y = -4
-	},
-/turf/open/floor/almayer/plate,
-/area/forward_base/medical/medical_science)
-"bVJ" = (
-/obj/structure/machinery/firealarm{
-	dir = 4;
-	pixel_x = 21
 	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/medical/medical_science)
@@ -107536,11 +107542,11 @@ beu
 bMv
 bNe
 bNu
-bMv
+bSa
 bNv
 bNw
 bNx
-bMv
+bSa
 bNy
 bMY
 bNz
@@ -112655,7 +112661,7 @@ bRo
 bRo
 bRo
 bUx
-bVJ
+bRQ
 ahZ
 ebf
 ebf
@@ -112868,7 +112874,7 @@ bSS
 bUz
 bUy
 bST
-ahZ
+bRH
 ahZ
 ebf
 ebf
@@ -113082,7 +113088,7 @@ bRP
 bSc
 bST
 ahZ
-ebf
+ahZ
 ebf
 ebf
 kTm

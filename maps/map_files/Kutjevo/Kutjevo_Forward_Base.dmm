@@ -15100,26 +15100,11 @@
 	},
 /area/forward_base/medical/medical_science)
 "aPI" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N"
-	},
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/centrifuge{
-	pixel_y = 8;
-	pixel_x = -1;
+/obj/structure/machinery/cryopod{
+	pixel_y = 6;
 	layer = 3.1
 	},
-/obj/item/reagent_container/glass/beaker/cryoxadone{
-	pixel_x = -3;
-	pixel_y = -5;
-	layer = 3.01
-	},
-/obj/item/reagent_container/glass/beaker/cryoxadone{
-	pixel_x = 6;
-	pixel_y = -10;
-	layer = 3.01
-	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/test_floor4,
 /area/forward_base/medical/medical_science)
 "aPJ" = (
 /turf/open/floor/almayer/mono,
@@ -15272,6 +15257,29 @@
 	},
 /turf/open/floor/almayer/flooredge/east,
 /area/forward_base/medical/medical_science)
+"aPW" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/firealarm{
+	dir = 4;
+	pixel_x = 21
+	},
+/obj/structure/machinery/centrifuge{
+	pixel_y = 8;
+	pixel_x = -1;
+	layer = 3.1
+	},
+/obj/item/reagent_container/glass/beaker/cryoxadone{
+	pixel_x = -3;
+	pixel_y = -5;
+	layer = 3.01
+	},
+/obj/item/reagent_container/glass/beaker/cryoxadone{
+	pixel_x = 6;
+	pixel_y = -10;
+	layer = 3.01
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/medical/medical_science)
 "aPX" = (
 /turf/closed/wall/almayer/research/containment/wall/north,
 /area/forward_base/medical/medical_science)
@@ -15299,6 +15307,9 @@
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/forward_base/medical/medical_science)
+"aQb" = (
+/turf/closed/wall/almayer/white,
+/area/forward_base/hallways/upper/starboard)
 "aQd" = (
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/auto_turf/sand/layer1,
@@ -15339,9 +15350,6 @@
 /obj/structure/lz_sign/forward_base/solaris_base_sign,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/lz_pad)
-"aQi" = (
-/turf/closed/wall/almayer/outer/internal,
-/area/bigredv2/caves)
 "aQj" = (
 /obj/effect/landmark/start/researcher,
 /turf/open/floor/almayer/mono,
@@ -16416,13 +16424,6 @@
 	},
 /turf/open/floor/almayer/silverfull,
 /area/forward_base/medical/upper_medical)
-"aTr" = (
-/obj/structure/machinery/firealarm{
-	dir = 4;
-	pixel_x = 21
-	},
-/turf/open/floor/almayer/plate,
-/area/forward_base/medical/medical_science)
 "aTs" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -16459,12 +16460,14 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/Northwest_Colony)
 "aTz" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out"
-	},
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera";
 	dir = 1
+	},
+/obj/effect/landmark/late_join/researcher,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
 	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/medical/medical_science)
@@ -75668,11 +75671,11 @@ avK
 aKW
 aLK
 aLX
-aKW
+aQb
 aLW
 aLV
 aLU
-aKW
+aQb
 aLT
 aLk
 aLS
@@ -79354,7 +79357,7 @@ aTI
 aRx
 aRx
 aRx
-aQi
+aRx
 aPJ
 aTE
 aPJ
@@ -79521,10 +79524,10 @@ aRx
 aRx
 dmD
 dmD
-aQi
-aQi
-aQi
-aQi
+aRx
+aRx
+aRx
+aRx
 aRx
 dmD
 qOu
@@ -79683,7 +79686,7 @@ aPu
 aPu
 aPu
 aTt
-aTr
+aPO
 aRx
 dmD
 dmD
@@ -79850,7 +79853,7 @@ aQQ
 aTs
 aTu
 aQP
-aRx
+aPW
 aRx
 dmD
 dmD
@@ -80018,7 +80021,7 @@ aPP
 aQa
 aQP
 aRx
-dmD
+aRx
 dmD
 dmD
 qOu

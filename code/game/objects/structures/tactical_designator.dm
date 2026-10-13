@@ -212,6 +212,9 @@
 	var/mob/living/marked_target
 	var/image/mark_overlay
 	var/image/direction_overlay
+	/// Cached rendering state; unchanged processing ticks must not rebuild overlays.
+	var/overlays_initialized = FALSE
+	var/last_arrow_angle
 	/// Number of guided missiles still tracking this designation.
 	var/incoming_missiles = 0
 
@@ -263,8 +266,10 @@
 		qdel(src)
 		return
 	if(marked_target)
-		forceMove(get_turf(marked_target))
-		signal?.linked_cam?.forceMove(loc)
+		var/turf/target_turf = get_turf(marked_target)
+		if(loc != target_turf)
+			forceMove(target_turf)
+			signal?.linked_cam?.forceMove(loc)
 		update_mark_overlays()
 
 /obj/effect/overlay/temp/laser_target/tactical/proc/can_track_target()
@@ -275,25 +280,38 @@
 
 /// Switch between locked on and incoming missile target effects.
 /obj/effect/overlay/temp/laser_target/tactical/proc/change_incoming_missiles(amount)
+	var/was_incoming = incoming_missiles > 0
 	incoming_missiles = max(0, incoming_missiles + amount)
-	update_mark_overlays()
+	if(was_incoming != (incoming_missiles > 0))
+		update_mark_overlays()
 
 /obj/effect/overlay/temp/laser_target/tactical/proc/update_mark_overlays()
 	if(QDELETED(marked_target) || !mark_overlay || !direction_overlay)
 		return
-	marked_target.overlays -= mark_overlay
-	marked_target.overlays -= direction_overlay
-	mark_overlay.icon_state = incoming_missiles ? "laser_fired" : "laser_lockon"
-	mark_overlay.pixel_x = -marked_target.pixel_x + marked_target.base_pixel_x
-	mark_overlay.pixel_y = (marked_target.icon_size - world.icon_size) * 0.5 - marked_target.pixel_y + marked_target.base_pixel_y
-	direction_overlay.pixel_x = mark_overlay.pixel_x
-	direction_overlay.pixel_y = mark_overlay.pixel_y
+	var/next_state = incoming_missiles ? "laser_fired" : "laser_lockon"
+	var/offset_x = -marked_target.pixel_x + marked_target.base_pixel_x
+	var/offset_y = (marked_target.icon_size - world.icon_size) * 0.5 - marked_target.pixel_y + marked_target.base_pixel_y
+	var/position_changed = mark_overlay.pixel_x != offset_x || mark_overlay.pixel_y != offset_y
+	if(!overlays_initialized || position_changed || mark_overlay.icon_state != next_state)
+		marked_target.overlays -= mark_overlay
+		mark_overlay.icon_state = next_state
+		mark_overlay.pixel_x = offset_x
+		mark_overlay.pixel_y = offset_y
+		marked_target.overlays += mark_overlay
+
 	var/mob/living/spotter = get_spotter()
-	var/matrix/arrow_rotation = matrix()
-	arrow_rotation.Turn(Get_Angle(marked_target, spotter ? spotter : designator))
-	direction_overlay.transform = arrow_rotation
-	marked_target.overlays += mark_overlay
-	marked_target.overlays += direction_overlay
+	var/arrow_angle = Get_Angle(marked_target, spotter ? spotter : designator)
+	if(!overlays_initialized || position_changed || last_arrow_angle != arrow_angle)
+		marked_target.overlays -= direction_overlay
+		direction_overlay.pixel_x = offset_x
+		direction_overlay.pixel_y = offset_y
+		if(!overlays_initialized || last_arrow_angle != arrow_angle)
+			var/matrix/arrow_rotation = matrix()
+			arrow_rotation.Turn(arrow_angle)
+			direction_overlay.transform = arrow_rotation
+			last_arrow_angle = arrow_angle
+		marked_target.overlays += direction_overlay
+	overlays_initialized = TRUE
 
 /datum/action/tactical_designator_range
 	name = "Adjust Scope Range"

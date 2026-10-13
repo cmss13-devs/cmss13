@@ -629,6 +629,7 @@
 		return TRUE
 
 /obj/item/clothing/attackby_secondary(obj/item/attack_item, mob/living/user, list/mods)
+	. = ..()
 	var/obj/item/storage/internal/pockets = get_pockets()
 	if(pockets && CAN_PICKUP(user, src))
 		pockets.open(user)

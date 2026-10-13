@@ -1352,6 +1352,7 @@
 	return XENO_ATTACK_ACTION
 
 /turf/closed/wall/resin/attackby_secondary(obj/item/attack_item, mob/living/user, list/mods)
+	. = ..()
 	return attackby(attack_item, user)
 
 /obj/structure/alien/movable_wall/attackby(obj/item/W, mob/living/user)

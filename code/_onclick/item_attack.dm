@@ -22,6 +22,7 @@
 	return FALSE
 
 /atom/proc/attackby_secondary(obj/item/attack_item, mob/living/user, list/mods)
+	SHOULD_CALL_PARENT(TRUE)
 	return FALSE
 
 
@@ -42,9 +43,10 @@
 
 /mob/living/attackby_secondary(obj/item/attack_item, mob/living/user, list/mods)
 	if(HAS_TRAIT(user, TRAIT_HAULED))
-		return
+		return ..()
 	if(istype(attack_item) && ismob(user))
 		return attack_item.attack_secondary(src, user)
+	return ..()
 
 
 // Proximity_flag is 1 if this afterattack was called on something adjacent, in your square, or on your person.
@@ -53,6 +55,7 @@
 	return FALSE
 
 /obj/item/proc/afterattack_secondary(atom/target, mob/user, proximity_flag, list/mods)
+	SHOULD_CALL_PARENT(TRUE)
 	return FALSE
 
 /obj/item/proc/attack(mob/living/M, mob/living/user)

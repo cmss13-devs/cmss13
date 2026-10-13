@@ -385,6 +385,7 @@
 		return XENO_ATTACK_ACTION
 
 /obj/effect/alien/weeds/attackby_secondary(obj/item/attack_item, mob/living/user, list/mods)
+	. = ..()
 	return attackby(attack_item, user, mods)
 
 /obj/effect/alien/weeds/attackby(obj/item/attacking_item, mob/living/user)
@@ -447,6 +448,7 @@
 	hibernate = TRUE
 
 /obj/effect/alien/weeds/weedwall/attackby_secondary(obj/item/attack_item, mob/living/user, list/mods)
+	. = ..()
 	return attackby(attack_item, user, mods)
 
 /obj/effect/alien/weeds/weedwall/attackby(obj/item/attacking_item, mob/living/user)

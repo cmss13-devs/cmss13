@@ -116,6 +116,7 @@
 
 
 /obj/effect/alien/resin/attackby_secondary(obj/item/attack_item, mob/living/user, list/mods)
+	. = ..()
 	return attackby(attack_item, user, mods)
 
 /obj/effect/alien/resin/attackby(obj/item/W, mob/user)
@@ -373,6 +374,7 @@
 	tiles_with = list(/obj/structure/mineral_door/resin)
 
 /obj/structure/mineral_door/resin/attackby_secondary(obj/item/attack_item, mob/living/user, list/mods)
+	. = ..()
 	return attackby(attack_item, user)
 
 /obj/structure/mineral_door/resin/Initialize(mapload, hive)
@@ -890,6 +892,7 @@
 	return ..()
 
 /obj/effect/alien/resin/resin_pillar/attackby_secondary(obj/item/attack_item, mob/living/user, list/mods)
+	. = ..()
 	return attackby(attack_item, user, mods)
 
 /obj/effect/alien/resin/resin_pillar/attackby(obj/item/W, mob/living/user)

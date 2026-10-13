@@ -252,6 +252,7 @@ DEFINES in setup.dm, referenced here.
 		to_chat(user, SPAN_WARNING("[src]'s magnetic sling automatically yanks it into your back."))
 
 /obj/item/weapon/gun/attackby_secondary(obj/item/attack_item, mob/living/user, list/mods)
+	. = ..()
 	try_activate_attachable_weapon()
 	if(!active_attachable || !(active_attachable.flags_attach_features & ATTACH_RELOADABLE))
 		return

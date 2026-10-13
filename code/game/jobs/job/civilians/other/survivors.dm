@@ -29,6 +29,26 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	spawn_positions = clamp((floor(count * SURVIVOR_TO_TOTAL_SPAWN_RATIO)), 2, 8)
 	total_positions = spawn_positions
 
+/datum/job/civilian/survivor/get_total_positions(latejoin)
+	var/normal_positions = ..()
+
+	// Determine the normal surv limit
+	var/datum/job/civilian/survivor/base_job = GLOB.RoleAuthority.roles_by_path[/datum/job/civilian/survivor]
+	if(!base_job)
+		stack_trace("/datum/job/civilian/survivor is not present in GLOB.RoleAuthority.roles_by_path!")
+		return 0
+	var/base_positions = latejoin ? base_job.total_positions : base_job.spawn_positions
+
+	// Count all current_positions
+	var/exisiting_positions = 0
+	for(var/surv_type in typesof(/datum/job/civilian/survivor))
+		var/datum/job/civilian/survivor/surv_job = GLOB.RoleAuthority.roles_by_path[surv_type]
+		if(surv_job)
+			exisiting_positions += surv_job.current_positions
+
+	var/available_positions = max(min(base_positions - exisiting_positions, normal_positions), 0)
+	return available_positions + current_positions // check_role_entry() checks our own current_positions count already
+
 /datum/job/civilian/survivor/create_landmark_lists()
 	slotted_landmarks = list()
 	available_landmarks = list()
@@ -261,7 +281,7 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	job_options = null
 
 /datum/job/civilian/survivor/synth/set_spawn_positions(count)
-	return spawn_positions
+	return
 
 /datum/job/civilian/survivor/synth/create_landmark_lists()
 	slotted_landmarks = list()
@@ -335,7 +355,6 @@ AddTimelock(/datum/job/civilian/survivor, list(
 		return
 	total_positions = 1
 	spawn_positions = 1
-	return spawn_positions
 
 /datum/job/civilian/survivor/commanding_officer/create_landmark_lists()
 	slotted_landmarks = list()

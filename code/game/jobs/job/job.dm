@@ -208,7 +208,7 @@
 /// Use this to set limits on positions.
 /// Normally only called if scaled is TRUE with an unassigned count but there are exceptions e.g. survivors, xenos, and preds with the preassigned count.
 /datum/job/proc/set_spawn_positions(count)
-	return spawn_positions
+	return
 
 /datum/job/proc/create_landmark_lists()
 	return
@@ -344,6 +344,8 @@
 			if(pod)
 				pod.go_in_cryopod(human, TRUE)
 				break
+
+		human.assigned_equipment_preset?.equip_spawn_lore(human)
 
 		human.sec_hud_set_ID()
 		human.hud_set_squad()

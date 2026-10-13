@@ -187,7 +187,7 @@
 
 /datum/chem_property/negative/neuropathic
 	name = PROPERTY_NEUROPATHIC
-	code = "NPT"
+	code = "NPA"
 	description = "Activates the somatosensory system causing neuropathic pain all over the body. Unlike nociceptive pain, this is not caused to any tissue damage and is solely perceptive."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_STIMULANT

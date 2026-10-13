@@ -53,6 +53,32 @@ GLOBAL_REAL(SSdatabase, /datum/controller/subsystem/database_query_manager)
 	queries_standby = list()
 	NEW_SS_GLOBAL(SSdatabase)
 
+/datum/controller/subsystem/database_query_manager/can_vv_get(var_name)
+	if(var_name == NAMEOF(src, connection))
+		return FALSE
+	if(var_name == NAMEOF(src, queries_active))
+		return FALSE
+	if(var_name == NAMEOF(src, queries_current))
+		return FALSE
+	if(var_name == NAMEOF(src, queries_standby))
+		return FALSE
+	if(var_name == NAMEOF(src, queries_new))
+		return FALSE
+	return ..()
+
+/datum/controller/subsystem/database_query_manager/vv_edit_var(var_name, var_value)
+	if(var_name == NAMEOF(src, connection))
+		return FALSE
+	if(var_name == NAMEOF(src, queries_active))
+		return FALSE
+	if(var_name == NAMEOF(src, queries_current))
+		return FALSE
+	if(var_name == NAMEOF(src, queries_standby))
+		return FALSE
+	if(var_name == NAMEOF(src, queries_new))
+		return FALSE
+	return ..()
+
 /datum/controller/subsystem/database_query_manager/proc/start_up()
 	set waitfor = FALSE
 

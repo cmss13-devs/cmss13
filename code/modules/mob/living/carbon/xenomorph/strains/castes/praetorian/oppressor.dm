@@ -186,9 +186,9 @@
 				continue
 			targets += target
 
-	var/target_count = length(targets)
+	var/num_of_targets = LAZYLEN(targets)
 	var/captured_message = null
-	switch(target_count)
+	switch(num_of_targets)
 		if(1)
 			captured_message = "slowed one target"
 		if(2)
@@ -207,7 +207,6 @@
 
 		target.apply_effect(0.2, WEAKEN)
 
-		var/num_of_targets = LAZYLEN(targets)
 		switch(num_of_targets)
 			if(1)
 				new /datum/effects/xeno_slow(target, abduct_user, null, null, 2.5 SECONDS)

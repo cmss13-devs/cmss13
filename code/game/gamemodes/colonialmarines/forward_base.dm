@@ -116,6 +116,12 @@
 			main_hive.tacmap_requires_queen_ovi = FALSE
 			SEND_SIGNAL(main_hive, COMSIG_XENO_REVEAL_TACMAP)
 			xeno_announcement("There is only a handful of tallhosts left, they are now visible on our hive mind map.", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
+	if(main_hive.see_humans_on_tacmap)
+		for(var/mob/living/carbon/human/human as anything in GLOB.alive_human_list)
+			if(isturf(human.loc) && !istype(human.buckled, /obj/structure/bed/nest) && istype(get_area(human), /area/forward_base))
+				return ..()
+		round_finished = MODE_INFESTATION_X_MAJOR
+		return
 	return ..()
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/forward_base

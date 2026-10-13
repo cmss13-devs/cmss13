@@ -85,13 +85,16 @@
 		playsound(loc, species.death_sound, 50, 1)
 
 	// Finding the last guy for anti-delay.
-	if(SSticker.mode && SSticker.mode.is_in_endgame && SSticker.current_state != GAME_STATE_FINISHED && is_mainship_level(z))
+	var/is_forward_base = istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base)
+	var/list/human_levels = SSmapping.levels_by_trait(is_forward_base ? ZTRAIT_GROUND : ZTRAIT_MARINE_MAIN_SHIP)
+	if(SSticker.mode && (SSticker.mode.is_in_endgame || is_forward_base) && SSticker.current_state != GAME_STATE_FINISHED && (z in human_levels))
 		var/mob/last_living_human
 		var/shipside_humans_count = 0
 		var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 		var/see_humans_on_tacmap = main_hive.see_humans_on_tacmap
 		for(var/mob/living/carbon/human/cur_human as anything in GLOB.alive_human_list)
-			if(!is_mainship_level(cur_human.z)) // This doesn't detect lockers
+			var/turf/human_turf = get_turf(cur_human)
+			if(!(human_turf?.z in human_levels))
 				continue
 			shipside_humans_count++
 			if(last_living_human && see_humans_on_tacmap)

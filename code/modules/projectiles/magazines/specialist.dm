@@ -109,6 +109,10 @@
 	gun_type = /obj/item/weapon/gun/smartgun
 	flags_magazine = AMMUNITION_REFILLABLE|AMMUNITION_SLAP_TRANSFER
 
+/obj/item/ammo_magazine/smartgun/flamer_fire_act(damage, datum/cause_data/flame_cause_data)
+	if(!QDELETED(src))
+		qdel(src)
+
 /obj/item/ammo_magazine/smartgun/rusty
 	name = "rusty M56 smartgun drum"
 	icon_state = "m56f_drum"

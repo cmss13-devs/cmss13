@@ -1483,6 +1483,7 @@
 #include "code\game\objects\structures\sink.dm"
 #include "code\game\objects\structures\surface.dm"
 #include "code\game\objects\structures\tables_racks.dm"
+#include "code\game\objects\structures\tactical_designator.dm"
 #include "code\game\objects\structures\tank_dispenser.dm"
 #include "code\game\objects\structures\temple_rubble.dm"
 #include "code\game\objects\structures\tyrargo_props.dm"

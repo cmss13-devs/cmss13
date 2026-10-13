@@ -31050,6 +31050,14 @@
 /area/forward_base/medical/medical_science)
 "bRZ" = (
 /obj/structure/machinery/iv_drip,
+/obj/structure/machinery/door_control{
+	id = "W_Containment_Cell_Umbilical_1";
+	name = "Umbilical Containment Connection Port";
+	pixel_y = 0;
+	req_one_access_txt = "19;28";
+	normaldoorcontrol = 4;
+	pixel_x = 28
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/medical/medical_science)
 "bSc" = (
@@ -31173,7 +31181,7 @@
 /area/forward_base/medical/medical_science)
 "bSs" = (
 /turf/closed/wall/almayer/research/containment/wall/divide{
-	remote_id = "W_Containment_Cell_Umbilical_2"
+	remote_id = "W_Containment_Cell_Umbilical_1"
 	},
 /area/forward_base/medical/medical_science)
 "bSt" = (

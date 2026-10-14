@@ -226,7 +226,7 @@
 	var/groundside_weight = 0
 	var/total_marine_weight = 0
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
-		if(!(ishuman_strict(current_human)))
+		if(!ishuman_strict(current_human))
 			continue
 
 		if(should_block_game_interaction(current_human))

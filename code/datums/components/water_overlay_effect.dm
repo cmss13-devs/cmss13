@@ -10,8 +10,9 @@
 	var/obj/effect/water_splash/water_overlay_splash/the_splash
 	var/turf/open/effect_turf	//the turf granting this effect, since its for thing that move into it should always be open
 	var/hidden = HIDDEN_NONE	//for when we still want to preserve the effect but not display
+	var/layer_before   // the layer the mob had before *we* touched it
+	var/we_own_layer = FALSE
 	var/water_depth = 0
-	var/layer_before
 
 
 /datum/component/water_overlay_effect/Initialize(turf/input_turf, tried_parent)
@@ -45,13 +46,7 @@
 	animate(parent, pixel_y = initial(movable_parent.pixel_y), 0.2 SECONDS)
 	movable_parent.plane = initial(movable_parent.plane)
 
-	if(ismob(parent))
-		var/mob/parent_mob = parent
-		if(!parent_mob.stat == DEAD)
-			parent_mob.layer = layer_before
-		else
-			layer_before = parent_mob.layer
-			parent_mob.layer = BELOW_MOB_LAYER
+	release_layer()
 
 	for(var/obj/found_obj in movable_parent.vis_contents)
 		if(found_obj == the_water || found_obj == the_splash)
@@ -124,6 +119,7 @@
 			return
 
 	var/turf/laid_on_turf = get_turf(parent)
+
 	if(istype(laid_on_turf, /turf/open))
 		var/turf/open/open_laid_on_turf = laid_on_turf
 		water_depth = open_laid_on_turf.depth
@@ -137,10 +133,11 @@
 		handle_resting_change()
 
 
-/datum/component/water_overlay_effect/proc/handle_buckle_change()
-	SIGNAL_HANDLER	//this is for in the case the affected mob buckles/gets-hauled/unhauled, update_hidden() and update()
+/datum/component/water_overlay_effect/proc/handle_buckle_change()	//this is for in the case the affected mob buckles/gets-hauled/unhauled, update_hidden() and update()
+	SIGNAL_HANDLER
 
 	var/turf/unbuckled_turf = get_turf(parent)
+
 	if(istype(unbuckled_turf, /turf/open))
 		var/turf/open/open_buckled_turf = unbuckled_turf
 		water_depth = open_buckled_turf.depth
@@ -150,14 +147,12 @@
 	update()
 
 
-/// when resting the mobs layer is reset, if done while in water we set layer to under waters :o)
-/datum/component/water_overlay_effect/proc/handle_layer_update(new_layer)
+/datum/component/water_overlay_effect/proc/handle_layer_update(new_layer)	//if something tries to change the layer of our mob while we are altering it...
 	SIGNAL_HANDLER
 
-	if(!hidden && ismob(parent))
-		var/mob/parent_mob = parent
-		layer_before = parent_mob.layer
-		parent_mob.layer = UNDER_WATER_MOB_LAYER
+	if(we_own_layer && !hidden)
+		var/mob/M = parent
+		M.layer = UNDER_WATER_MOB_LAYER
 
 
 /datum/component/water_overlay_effect/proc/handle_hauled(xenomorph)
@@ -183,15 +178,43 @@
 
 /datum/component/water_overlay_effect/proc/handle_death()
 	SIGNAL_HANDLER
+
 	update()
 
 
+/// this proc just stores the layer of the mob and sets a var saying we are controlling the layer now
+/datum/component/water_overlay_effect/proc/claim_layer()
+	if(we_own_layer)	//already claimed
+		return
+	var/atom/movable/movable_parent = parent
+	layer_before = movable_parent.layer
+	we_own_layer = TRUE
+
+
+/// this proc releases control over the layer and sets the mobs layer back to what it was before we claimed it
+/datum/component/water_overlay_effect/proc/release_layer()
+	if(!we_own_layer)	//already released
+		return
+	var/atom/movable/movable_parent = parent
+	if(ismob(movable_parent))
+		var/mob/parent_mob = movable_parent
+		if(parent_mob.stat == DEAD)
+			parent_mob.layer = BELOW_MOB_LAYER
+		else
+			parent_mob.layer = layer_before
+	else
+		movable_parent.layer = layer_before
+	movable_parent.plane = GAME_PLANE
+	we_own_layer = FALSE
+
+
+/// this proc determines whether the water_overlay_effect ought ot not display or not, and does so
 /datum/component/water_overlay_effect/proc/update_hidden()
 	if(iscarbon(parent))
 		var/mob/living/carbon/input_carbon = parent
 		if(HAS_TRAIT(input_carbon, TRAIT_HAULED) || (input_carbon.pulledby && input_carbon.pulledby.grab_level >= GRAB_CARRY))
 			if(!hidden) //if it wasnt hidden before but now is
-				layer_before = input_carbon.layer
+				claim_layer()
 				animate(parent, pixel_y = water_depth, layer = UNDER_WATER_MOB_LAYER-0.01, 0.2 SECONDS)
 				input_carbon.plane = initial(input_carbon.plane)
 				the_water.overlays.Cut()
@@ -201,8 +224,7 @@
 		else if(water_depth == WATER_DEPTH_COAST_DEPTHLESS || input_carbon.buckled || HAS_TRAIT(input_carbon, TRAIT_LAUNCHED))
 			if(!hidden) //if it wasnt hidden before but now is
 				animate(input_carbon, pixel_y = initial(input_carbon.pixel_y), 0.2 SECONDS) //remove offset
-				input_carbon.layer = layer_before != null ? layer_before : initial(input_carbon.layer)
-				input_carbon.plane = initial(input_carbon.plane)
+				release_layer()
 				the_water.overlays.Cut()
 				the_splash.icon_state = null
 			hidden = HIDDEN_PLAIN
@@ -210,6 +232,7 @@
 		hidden = HIDDEN_NONE
 
 
+/// the workhorse of the water_overlay_effect; adds the overlay and splash, moves the mob down to depth
 /datum/component/water_overlay_effect/proc/update()
 	if(iscarbon(parent))
 		if(hidden)	//the mob is hauled, or fireman carried
@@ -223,18 +246,14 @@
 			qdel(src)
 			return
 
-		layer_before = affected_carbon.layer
-		animate(affected_carbon, pixel_y = water_depth, layer = UNDER_WATER_MOB_LAYER, 0.2 SECONDS)	//if there is a meaningful difference in depth, change layerings and animate the mob "down" to where it should be
+		claim_layer()	//if there is a meaningful difference in depth, change layerings and animate the mob "down" to where it should be
+		animate(affected_carbon, pixel_y = water_depth, layer = UNDER_WATER_MOB_LAYER, 0.2 SECONDS)
 		affected_carbon.appearance_flags |= KEEP_TOGETHER					//this eliminates the water overlays extending past the mobs exisiting sprite, and alot of overhead as a result
+		affected_carbon.plane = FLOOR_PLANE
 
 		var/xeno_resting = (isxeno(affected_carbon) && (affected_carbon.resting || affected_carbon.body_position == LYING_DOWN))
 		if(SSwater_overlays.is_coastline(effect_turf) || xeno_resting) 				//unless its a coast, things here will never need to be "below" the turf south of it (they should always be shallow/be a gradient of depth)
-			affected_carbon.layer = layer_before == null ? initial(affected_carbon.layer) : layer_before
-			affected_carbon.plane = initial(affected_carbon.plane)
-		else
-			layer_before = affected_carbon.layer
-			affected_carbon.layer = UNDER_WATER_MOB_LAYER	//in the case theres a dropoff.. ei turf south is high and the one we're in is "deep".
-			affected_carbon.plane = FLOOR_PLANE				//to achieve this affect we alter the layer and plane for anything in water
+			release_layer()
 
 		the_splash.update_wateroverlay(effect_turf, parent, water_depth, xeno_resting)
 		the_water.update_wateroverlay(effect_turf, parent, water_depth)	//now that we have all the layerings and splashe sorted, we add water to cover the parts of the body in that depth

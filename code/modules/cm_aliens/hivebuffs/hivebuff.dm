@@ -103,7 +103,7 @@
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive does not have the required number of available pylons! We require [number_of_required_pylons]"))
 		return FALSE
 
-	if(!_check_danger())
+	if(get_groundside_marine_weight_ratio() < XENO_BOON_REQUIRED_DANGER)
 		to_chat(purchasing_mob, SPAN_XENONOTICE("There is not enough danger to warrant hive buffs."))
 		return FALSE
 
@@ -217,31 +217,37 @@
 /datum/hivebuff/proc/_check_num_required_pylons()
 	return number_of_required_pylons >= hive.active_endgame_pylons
 
+/// Checks if the ROUND_TIME meets our roundtime_to_enable
 /datum/hivebuff/proc/_roundtime_check()
-	if(ROUND_TIME > roundtime_to_enable)
-		return TRUE
-	return FALSE
+	return ROUND_TIME > roundtime_to_enable
 
-/datum/hivebuff/proc/_check_danger()
-	var/groundside_humans = 0
+/// Gets the ratio of role weight of marines groundside / total
+/proc/get_groundside_marine_weight_ratio()
+	var/groundside_weight = 0
+	var/total_marine_weight = 0
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
-		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
+		if(!(ishuman_strict(current_human)))
 			continue
+
+		if(should_block_game_interaction(current_human))
+			continue
+
+		var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[current_human.job]
+		if(!job)
+			continue
+
+		var/weight = GLOB.RoleAuthority.calculate_role_weight(job)
 
 		var/turf/turf = get_turf(current_human)
 		if(is_ground_level(turf?.z))
-			groundside_humans++
-			if(groundside_humans >= 12)
-				return TRUE
+			groundside_weight += weight
+		total_marine_weight += weight
 
-	return FALSE
+	return groundside_weight / total_marine_weight
 
 /// Checks if the hive can afford to purchase the buff returns TRUE if they can purchase and FALSE if not.
 /datum/hivebuff/proc/_check_can_afford_buff()
-	if(hive.buff_points < cost)
-		return FALSE
-
-	return TRUE
+	return hive.buff_points >= cost
 
 /// Checks if this buff is already active in the hive. Returns TRUE if passed FALSE if not.
 /datum/hivebuff/proc/_check_pass_active()

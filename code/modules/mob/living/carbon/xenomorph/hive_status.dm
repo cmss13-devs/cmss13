@@ -872,7 +872,9 @@
 			embryo.hivenumber = XENO_HIVE_FORSAKEN
 		potential_host.update_med_icon()
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
-		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
+		if(!ishuman_strict(current_human))
+			continue
+		if(should_block_game_interaction(current_human))
 			continue
 		var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[current_human.job]
 		if(!job)
@@ -1171,7 +1173,9 @@
 /datum/hive_status/proc/check_if_hit_larva_from_pylon_limit()
 	var/groundside_humans_weighted_count = 0
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
-		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
+		if(!ishuman_strict(current_human))
+			continue
+		if(should_block_game_interaction(current_human))
 			continue
 		var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[current_human.job]
 		if(!job)

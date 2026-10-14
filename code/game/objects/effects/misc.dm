@@ -114,7 +114,7 @@
 
 /obj/effect/falling_bird
 	name = "falling bird"
-	icon = 'icons/obj/items/birds.dmi'
+	icon = 'icons/mob/birds.dmi'
 	icon_state = "crow_dead"
 	layer = 100
 	pixel_z = 192

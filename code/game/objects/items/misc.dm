@@ -1,11 +1,11 @@
 /obj/item/dead_bird
 	name = "dead bird"
 	desc = "A bird with a bullet hole in it. It appears to have ignored the warning shot."
-	icon = 'icons/obj/items/birds.dmi'
+	icon = 'icons/mob/birds.dmi'
 	icon_state = "crow_dead"
 	item_icons = list(
-		WEAR_L_HAND = 'icons/obj/items/birds.dmi',
-		WEAR_R_HAND = 'icons/obj/items/birds.dmi',
+		WEAR_L_HAND = 'icons/mob/birds.dmi',
+		WEAR_R_HAND = 'icons/mob/birds.dmi',
 	)
 	w_class = SIZE_SMALL
 

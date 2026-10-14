@@ -24513,12 +24513,12 @@
 /turf/open/floor/redfull/northwest,
 /area/bigredv2/caves/eta/research)
 "bzN" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
 /obj/effect/landmark/late_join/charlie,
-/obj/effect/landmark/start/marine/alpha,
+/obj/effect/landmark/start/marine/tl/charlie,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_y = 0
+	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/squads/alpha_bravo_shared)
 "bzO" = (
@@ -25984,8 +25984,8 @@
 /turf/open/floor/almayer/cargo,
 /area/forward_base/squads/alpha_bravo_shared)
 "bEY" = (
-/obj/effect/landmark/start/marine/medic/bravo,
 /obj/effect/landmark/late_join/bravo,
+/obj/effect/landmark/start/marine/tl/bravo,
 /turf/open/floor/almayer/plate,
 /area/forward_base/squads/alpha_bravo_shared)
 "bEZ" = (
@@ -26232,6 +26232,11 @@
 /turf/open/floor/almayer/plate,
 /area/forward_base/squads/alpha_bravo_shared)
 "bFK" = (
+/obj/structure/machinery/cryopod/right{
+	density = 0;
+	pixel_x = 22
+	},
+/obj/effect/landmark/start/marine/tl/alpha,
 /turf/open/floor/almayer/flooredge/southwest,
 /area/forward_base/squads/alpha_bravo_shared)
 "bFL" = (
@@ -31072,6 +31077,19 @@
 "bSa" = (
 /turf/closed/wall/almayer/white,
 /area/forward_base/hallways/upper/starboard)
+"bSb" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/landmark/start/marine/tl/delta,
+/obj/effect/landmark/late_join/delta,
+/turf/open/floor/almayer/plate,
+/area/forward_base/squads/alpha_bravo_shared)
 "bSc" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Research Hydroponics";
@@ -100513,8 +100531,8 @@ ajP
 bwE
 aix
 aix
-aix
-ajP
+bwC
+bSb
 bwE
 ajP
 bwF

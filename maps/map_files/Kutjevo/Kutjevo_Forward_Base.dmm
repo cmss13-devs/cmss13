@@ -9899,12 +9899,12 @@
 /turf/open/floor/almayer/plate,
 /area/forward_base/squads/alpha_bravo_shared)
 "aCg" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
 /obj/effect/landmark/late_join/charlie,
-/obj/effect/landmark/start/marine/alpha,
+/obj/effect/landmark/start/marine/tl/charlie,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_y = 0
+	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/squads/alpha_bravo_shared)
 "aCh" = (
@@ -10201,8 +10201,8 @@
 /turf/open/floor/almayer/plate,
 /area/forward_base/squads/alpha_bravo_shared)
 "aDd" = (
-/obj/effect/landmark/start/marine/medic/bravo,
 /obj/effect/landmark/late_join/bravo,
+/obj/effect/landmark/start/marine/tl/bravo,
 /turf/open/floor/almayer/plate,
 /area/forward_base/squads/alpha_bravo_shared)
 "aDe" = (
@@ -10627,6 +10627,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/squads/alpha_bravo_shared)
 "aEj" = (
+/obj/structure/machinery/cryopod/right{
+	density = 0;
+	pixel_x = 22
+	},
+/obj/effect/landmark/start/marine/tl/alpha,
 /turf/open/floor/almayer/flooredge/southwest,
 /area/forward_base/squads/alpha_bravo_shared)
 "aEk" = (
@@ -15310,6 +15315,19 @@
 "aQb" = (
 /turf/closed/wall/almayer/white,
 /area/forward_base/hallways/upper/starboard)
+"aQc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/landmark/start/marine/tl/delta,
+/obj/effect/landmark/late_join/delta,
+/turf/open/floor/almayer/plate,
+/area/forward_base/squads/alpha_bravo_shared)
 "aQd" = (
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/auto_turf/sand/layer1,
@@ -70160,8 +70178,8 @@ ahO
 aBY
 ahk
 ahk
-ahk
-ahO
+aBZ
+aQc
 aBY
 ahO
 aBX

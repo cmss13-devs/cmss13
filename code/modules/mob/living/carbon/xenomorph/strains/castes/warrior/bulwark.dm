@@ -49,16 +49,18 @@
 	var/frontal_armor = BULWARK_DIR_ARMOR
 	var/sided_armor = BULWARK_DIR_ARMOR
 
+	/// Used to countdown BULWARK_REFLECTIVE_TIME.
+	var/reflective_start_time = -1
+
 /datum/behavior_delegate/warrior_bulwark/append_to_stat()
 	. = list()
 	. += "Front Armor: +[frontal_armor]"
 	. += "Side Armor: +[sided_armor]"
 	if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_ENCLOSED_PLATES))
 		. += "Encased Plates: -[XENO_DAMAGE_MOD_BULWARK] Claws Damage."
-	var/datum/action/xeno_action/onclick/reflective_shield/ability_used = get_action(bound_xeno, /datum/action/xeno_action/onclick/reflective_shield)
-	if(ability_used.reflective_start_time != -1)
+	if(reflective_start_time != -1)
 		var/time_left = null
-		time_left = (BULWARK_REFLECTIVE_TIME - (world.time - ability_used.reflective_start_time)) / 10
+		time_left = (BULWARK_REFLECTIVE_TIME - (world.time - reflective_start_time)) / 10
 		. += "Reflective Plates Remaining Time: [time_left] second\s."
 		return
 
@@ -81,14 +83,18 @@
 	if(bound_xeno.stat == DEAD)
 		return
 
-	if(!HAS_TRAIT(bound_xeno, TRAIT_ABILITY_REFLECTIVE_PLATES))
+	if(!HAS_TRAIT(bound_xeno, TRAIT_INCAPACITATED) && !HAS_TRAIT(bound_xeno, TRAIT_FLOORED))
+		if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_REFLECTIVE_PLATES) && bound_xeno.health > 0)
+			bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Warrior Shield Reflective"
+			return TRUE
+
 		if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_ENCLOSED_PLATES) && bound_xeno.health > 0)
 			bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Warrior Shield"
 			return TRUE
 
-	if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_REFLECTIVE_PLATES) && bound_xeno.health > 0)
-		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Warrior Shield Reflective"
-		return TRUE
+	else
+		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Warrior Shield Knocked Down"
+
 
 /datum/behavior_delegate/warrior_bulwark/melee_attack_additional_effects_target(mob/living/carbon/carbon_target)
 	if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_ENCLOSED_PLATES))
@@ -126,6 +132,9 @@
 	if(!istype(behavior))
 		return
 
+	RegisterSignal(xeno_player, COMSIG_XENO_ENTER_CRIT, PROC_REF(unconscious_check))
+	RegisterSignal(xeno_player, COMSIG_MOB_DEATH, PROC_REF(unconscious_check))
+
 	ADD_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES, TRAIT_SOURCE_ABILITY("enclosed_plates"))
 	to_chat(xeno_player, SPAN_XENOWARNING("We raise our plates and form a shield."))
 	xeno_player.ability_speed_modifier += speed_debuff
@@ -148,6 +157,9 @@
 	var/datum/behavior_delegate/warrior_bulwark/behavior = xeno_player.behavior_delegate
 	if(!istype(behavior))
 		return
+
+	UnregisterSignal(xeno_player, COMSIG_XENO_ENTER_CRIT)
+	UnregisterSignal(xeno_player, COMSIG_MOB_DEATH)
 
 	REMOVE_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES, TRAIT_SOURCE_ABILITY("enclosed_plates"))
 	to_chat(xeno_player, SPAN_XENOWARNING("We lower our plates."))
@@ -289,6 +301,9 @@
 
 /datum/action/xeno_action/onclick/reflective_shield/use_ability()
 	var/mob/living/carbon/xenomorph/warrior/xeno_player = owner
+	var/datum/behavior_delegate/warrior_bulwark/behavior = xeno_player.behavior_delegate
+	if(!behavior)
+		return
 
 	XENO_ACTION_CHECK(xeno_player)
 
@@ -309,7 +324,7 @@
 	xeno_player.update_icons()
 	xeno_player.create_shield(BULWARK_REFLECTIVE_TIME, "shield2")
 	button.icon_state = "template_active"
-	reflective_start_time = world.time
+	behavior.reflective_start_time = world.time
 	reflective_safe_click_cooldown = world.time + 1 SECONDS
 
 	to_chat(xeno_player, SPAN_XENOWARNING("We adjust our plates and prepare for incoming frontal attacks!"))
@@ -325,6 +340,9 @@
 
 /datum/action/xeno_action/onclick/reflective_shield/proc/remove_reflective_shield()
 	var/mob/living/carbon/xenomorph/warrior/xeno_player = owner
+	var/datum/behavior_delegate/warrior_bulwark/behavior = xeno_player.behavior_delegate
+	if(!behavior)
+		return
 
 	var/datum/action/xeno_action/onclick/reflective_shield/ability_used = get_action(xeno_player, /datum/action/xeno_action/onclick/reflective_shield)
 	if(!istype(ability_used))
@@ -347,11 +365,11 @@
 		deltimer(ability_used.reflective_shield_timer_id)
 		ability_used.reflective_shield_timer_id = TIMER_ID_NULL
 
-	if(ability_used.reflective_start_time > 0)
-		var/used_ratio = round((world.time - ability_used.reflective_start_time) / ability_used.duration, 0.1)
+	if(behavior.reflective_start_time > 0)
+		var/used_ratio = round((world.time - behavior.reflective_start_time) / ability_used.duration, 0.1)
 		ability_used.reflective_recharge_time = (BULWARK_REFLECTIVE_TIME * used_ratio * ability_used.reflective_refund_multiplier) + 6 SECONDS
 
-	ability_used.reflective_start_time = -1
+	behavior.reflective_start_time = -1
 	apply_cooldown_override(ability_used.reflective_recharge_time)
 
 /mob/living/carbon/xenomorph/warrior/get_reflection_chance(obj/projectile/bullet)
@@ -391,3 +409,11 @@
 /datum/action/xeno_action/proc/apply_custom_cooldown()
 	apply_cooldown()
 	xeno_cooldown = initial(xeno_cooldown) //We revert cooldown back to original value (after it got applied)
+
+/datum/action/xeno_action/onclick/toggle_plates/proc/unconscious_check()
+	SIGNAL_HANDLER
+
+	if(QDELETED(owner))
+		return
+
+	disengage_plates()

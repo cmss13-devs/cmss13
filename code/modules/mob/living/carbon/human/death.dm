@@ -103,6 +103,8 @@
 			last_living_human = cur_human
 
 		if(!see_humans_on_tacmap && shipside_humans_count < (main_hive.get_real_total_xeno_count() * HIJACK_RATIO_FOR_TACMAP))
+			if(is_forward_base)
+				GLOB.enter_allowed = FALSE
 			xeno_announcement("There is only a handful of tallhosts left, they are now visible on our hive mind map.", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 			main_hive.see_humans_on_tacmap = TRUE
 			main_hive.tacmap_requires_queen_ovi = FALSE
@@ -123,6 +125,7 @@
 			if(istype(delayer.back, /obj/item/storage/backpack/marine/satchel/scout_cloak))
 				var/obj/item/storage/backpack/marine/satchel/scout_cloak/delayer_cloak = delayer.back
 				if(delayer_cloak.camo_active)
+					delayer_cloak.cloak_cooldown = 0 //Tries fixing a bug in FB
 					delayer_cloak.deactivate_camouflage(delayer)
 				if((delayer_cloak.cloak_cooldown - world.time) < 30 MINUTES)
 					to_chat(delayer, SPAN_WARNING("Your [delayer_cloak] fizzles out and breaks!"))

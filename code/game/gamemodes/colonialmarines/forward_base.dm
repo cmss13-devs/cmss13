@@ -112,6 +112,7 @@
 			if(is_ground_level(human_turf?.z))
 				groundside_humans++
 		if(groundside_humans < main_hive.get_real_total_xeno_count() * HIJACK_RATIO_FOR_TACMAP)
+			GLOB.enter_allowed = FALSE
 			main_hive.see_humans_on_tacmap = TRUE
 			main_hive.tacmap_requires_queen_ovi = FALSE
 			SEND_SIGNAL(main_hive, COMSIG_XENO_REVEAL_TACMAP)

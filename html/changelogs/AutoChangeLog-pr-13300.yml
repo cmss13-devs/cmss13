@@ -1,5 +1,0 @@
-author: "TrollerNoob"
-delete-after: True
-changes:
-  - rscadd: "Signal Flare's flashing light changes color depending on the roof. Green in open/glass, yellow in metal, red in anything higher."
-  - imageadd: "Added Yellow and Red flashing light states for Signal Flare."

@@ -287,7 +287,6 @@
 		return FALSE
 
 	hive.buff_points -= cost
-	hive.check_if_hit_larva_from_pylon_limit()
 	return TRUE
 
 /datum/hivebuff/proc/_seek_queen_approval(mob/living/purchasing_mob)

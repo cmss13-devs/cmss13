@@ -273,8 +273,8 @@
 	var/lifesteal_range =  1
 
 	var/datum/behavior_delegate/ravager_berserker/behavior = xeno.behavior_delegate
-	if(behavior.rage == 0)
-		to_chat(xeno, SPAN_XENODANGER("We cannot eviscerate when we have 0 rage!"))
+	if(behavior.rage < behavior.max_rage)
+		to_chat(xeno, SPAN_XENODANGER("We need [behavior.max_rage] rage stacks to eviscerate!"))
 		return
 	damage = damage_at_rage_levels[clamp(behavior.rage, 1, behavior.max_rage)]
 	range = range_at_rage_levels[clamp(behavior.rage, 1, behavior.max_rage)]

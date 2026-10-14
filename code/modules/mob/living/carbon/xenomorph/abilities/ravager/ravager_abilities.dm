@@ -87,7 +87,6 @@
 
 /datum/action/xeno_action/activable/eviscerate
 	name = "Eviscerate"
-	desc = "Requires five rage stacks to unleash a devastating windmill attack."
 	action_icon_state = "rav_eviscerate"
 	macro_path = /datum/action/xeno_action/verb/verb_eviscerate
 	action_type = XENO_ACTION_ACTIVATE

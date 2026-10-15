@@ -921,7 +921,7 @@
 
 	gear = sanitize_gear(gear, owner)
 
-	traits = sanitize_list(traits)
+	traits = sanitize_traits(traits, owner)
 	read_traits = FALSE
 	trait_points = initial(trait_points)
 
@@ -1006,12 +1006,12 @@
 	save_data["sec_record"] = sec_record
 	save_data["gen_record"] = gen_record
 	save_data["organ_data"] = organ_data
-	save_data["gear"] = save_gear(gear)
+	save_data["gear"] = stringify_list(gear)
 	save_data["job_loadout"] = save_loadout(loadout)
 	save_data["origin"] = origin
 	save_data["faction"] = faction
 	save_data["religion"] = religion
-	save_data["traits"] = traits
+	save_data["traits"] = stringify_list(traits)
 
 	save_data["weyland_yutani_relation"] = weyland_yutani_relation
 	save_data["preferred_squad"] = preferred_squad

@@ -236,12 +236,10 @@
 		if(!job)
 			continue
 
-		var/weight = GLOB.RoleAuthority.calculate_role_weight(job)
-
 		var/turf/turf = get_turf(current_human)
 		if(is_ground_level(turf?.z))
-			groundside_weight += weight
-		total_marine_weight += weight
+			groundside_weight += job.role_weight
+		total_marine_weight += job.role_weight
 
 	return groundside_weight / total_marine_weight
 

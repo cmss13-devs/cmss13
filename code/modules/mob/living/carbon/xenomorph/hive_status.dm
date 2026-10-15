@@ -879,7 +879,7 @@
 			continue
 		var/turf/turf = get_turf(current_human)
 		if(is_mainship_level(turf?.z))
-			shipside_humans_weighted_count += GLOB.RoleAuthority.calculate_role_weight(job)
+			shipside_humans_weighted_count += job.role_weight
 	hijack_burrowed_surge = TRUE
 	hijack_burrowed_left = max(ceil(shipside_humans_weighted_count * 0.5) - xenos_count, 5)
 	hivecore_cooldown = FALSE

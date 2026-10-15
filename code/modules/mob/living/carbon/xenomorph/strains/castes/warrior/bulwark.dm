@@ -261,7 +261,7 @@
 		if(carbon_target.mob_size < MOB_SIZE_BIG)
 			carbon_target.apply_effect(get_xeno_stun_duration(carbon_target, 1), WEAKEN)
 
-		to_chat(carbon_target, SPAN_XENOWARNING("We are tripped by [xeno_player]'s tail swing!"))
+		to_chat(carbon_target, SPAN_XENOWARNING("You are tripped by [xeno_player]'s tail swing!"))
 		playsound(carbon_target,'sound/weapons/alien_claw_block.ogg', 50, 1)
 
 	var/hit_grenade = FALSE

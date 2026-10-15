@@ -4,12 +4,12 @@
 /area/forward_base/chances/command/cic
 	name = "\improper Forward Base Combat Information Center"
 	icon_state = "cic"
-	flags_area = AREA_NOBURROW
+	flags_area = AREA_NOBURROW|AREA_NOTUNNEL
 
 /area/forward_base/chances/command/cic_equipment
 	name = "\improper Forward Base Senior Officer Equipment Rooms"
 	icon_state = "cic"
-	flags_area = AREA_NOBURROW
+	flags_area = AREA_NOBURROW|AREA_NOTUNNEL
 
 /area/forward_base/chances/command/corporateliaison
 	name = "\improper Forward Base Corporate Liaison Office"

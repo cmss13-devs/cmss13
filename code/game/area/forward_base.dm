@@ -2,7 +2,8 @@
 	name = "\improper Forward Base"
 	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "almayer"
-	ceiling = CEILING_METAL
+	flags_area = AREA_NOTUNNEL
+	ceiling = CEILING_REINFORCED_METAL
 	ceiling_muffle = FALSE
 	sound_environment = SOUND_ENVIRONMENT_ROOM
 	weather_enabled = FALSE
@@ -15,7 +16,7 @@
 /area/forward_base/command/cic
 	name = "\improper Forward Base Combat Information Center"
 	icon_state = "cic"
-	flags_area = AREA_NOBURROW
+	flags_area = AREA_NOBURROW|AREA_NOTUNNEL
 
 /area/forward_base/command/combat_correspondent
 	name = "\improper Forward Base Combat Correspondent Office"

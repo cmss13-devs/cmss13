@@ -1,0 +1,4 @@
+author: "Venuska1117"
+delete-after: True
+changes:
+  - refactor: "Updates Ravager code with new define and spaces."

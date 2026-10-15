@@ -1,0 +1,1888 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ap" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_51,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"ay" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_11,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"aQ" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_16,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"aT" = (
+/obj/deployer/shuttle/dropship/gibber,
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = -8
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"aZ" = (
+/turf/closed/shuttle/dropship_omaha/wall_00,
+/area/shuttle/multiz/drop_omaha/omaha)
+"bc" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"be" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_10{
+	pixel_x = -32
+	},
+/turf/closed/shuttle/dropship_omaha/wall_70,
+/area/shuttle/multiz/drop_omaha/omaha)
+"bg" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_23,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"bp" = (
+/obj/deployer/shuttle/dropship/landing_gear/omaha{
+	vent_id = 10
+	},
+/obj/deployer/shuttle/dropship/gibber,
+/turf/closed/shuttle/dropship_omaha/wall_30,
+/area/shuttle/multiz/drop_omaha/omaha)
+"bt" = (
+/obj/structure/shuttle/part/decal/dropship_omaha/platform_decal{
+	dir = 8
+	},
+/obj/structure/machinery/door/poddoor/railing/omaha{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"bw" = (
+/obj/structure/machinery/light/dropship/double,
+/turf/open/shuttle/dropship/omaha/external,
+/area/shuttle/multiz/drop_omaha/omaha)
+"bX" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_01,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"cj" = (
+/obj/structure/machinery/light/dropship/double{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = 16
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = -8;
+	dir = 1
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = 8;
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"cV" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	pixel_x = -8;
+	pixel_y = 20
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"cW" = (
+/obj/structure/machinery/light/dropship/double,
+/obj/effect/attach_point/crew_weapon/dropship_omaha/floor,
+/turf/open/shuttle/dropship/omaha/marked,
+/area/shuttle/multiz/drop_omaha/omaha)
+"dK" = (
+/turf/closed/shuttle/dropship_omaha/wall_mid_42,
+/area/shuttle/multiz/drop_omaha/omaha)
+"dM" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_23,
+/obj/deployer/shuttle/dropship/gibber,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"dO" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_30,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"dZ" = (
+/turf/closed/shuttle/dropship_omaha/wall_23,
+/area/shuttle/multiz/drop_omaha/omaha)
+"ej" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_06,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"en" = (
+/turf/closed/shuttle/dropship_omaha/wall_mid_12,
+/area/shuttle/multiz/drop_omaha/omaha)
+"er" = (
+/obj/item/device/radio/intercom/omaha{
+	pixel_y = 28
+	},
+/obj/structure/shuttle/part/decal/dropship_omaha/decal,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"ev" = (
+/obj/structure/shuttle/part/decal/dropship_omaha/stairs_decal_bot,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"eE" = (
+/obj/item/device/radio/intercom/omaha{
+	pixel_x = 20
+	},
+/obj/structure/shuttle/part/decal/dropship_omaha/platform{
+	dir = 1
+	},
+/obj/structure/pipes/vents/dropship/panel_full,
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"fj" = (
+/turf/closed/shuttle/dropship_omaha/wall_mid_50,
+/area/shuttle/multiz/drop_omaha/omaha)
+"fn" = (
+/turf/closed/shuttle/dropship_omaha/wall_04,
+/area/shuttle/multiz/drop_omaha/omaha)
+"fD" = (
+/turf/closed/shuttle/dropship_omaha/wall_mid_61,
+/area/shuttle/multiz/drop_omaha/omaha)
+"fR" = (
+/turf/closed/shuttle/dropship_omaha/wall_22,
+/area/shuttle/multiz/drop_omaha/omaha)
+"fS" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_31,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"fX" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_04,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"gu" = (
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = -8
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"gB" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_04,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"gC" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_01,
+/obj/structure/shuttle/part/dropship_omaha/transparent/weapon_hardpoint_right,
+/obj/effect/attach_point/weapon/dropship_omaha/right_fore,
+/obj/deployer/shuttle/dropship/hardpoints/omaha{
+	map_offset_y = -1;
+	map_offset_x = -1;
+	offset_y = 1
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"gR" = (
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 4;
+	pixel_x = -8;
+	pixel_y = 16
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 4;
+	pixel_x = -8
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"gZ" = (
+/obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_fifth,
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_31{
+	pixel_y = -32
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"hm" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_13,
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_14{
+	density = 0;
+	pixel_x = 32
+	},
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"hW" = (
+/turf/closed/shuttle/dropship_omaha/wall_01,
+/area/shuttle/multiz/drop_omaha/omaha)
+"iq" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_21,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"iN" = (
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 8;
+	pixel_x = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"iO" = (
+/obj/structure/pipes/vents/dropship/entrance{
+	landing_gear_id = 6;
+	dir = 1
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"iS" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_41,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"jp" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	pixel_x = 8;
+	pixel_y = 20
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"jq" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_02,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"jy" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_12{
+	dir = 1
+	},
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"jF" = (
+/turf/closed/shuttle/dropship_omaha/wall_mid_13,
+/area/shuttle/multiz/drop_omaha/omaha)
+"jK" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_21{
+	pixel_x = 32
+	},
+/turf/closed/shuttle/dropship_omaha/wall_81,
+/area/shuttle/multiz/drop_omaha/omaha)
+"jZ" = (
+/obj/structure/machinery/camera/autoname/almayer/dropship_omaha{
+	dir = 1;
+	pixel_y = -16
+	},
+/obj/structure/shuttle/part/decal/dropship_omaha/decal,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"kk" = (
+/turf/closed/shuttle/dropship_omaha/wall_mid_02,
+/area/shuttle/multiz/drop_omaha/omaha)
+"kS" = (
+/obj/structure/machinery/door/airlock/hatch/cockpit/omaha{
+	dir = 1;
+	name = "command"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"kU" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_14,
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_24{
+	density = 0;
+	pixel_y = 32
+	},
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"kV" = (
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = 8;
+	dir = 1
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = -8;
+	dir = 1
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"li" = (
+/obj/deployer/shuttle/dropship/landing_gear/omaha{
+	map_offset_x = -1;
+	vent_id = 6
+	},
+/obj/deployer/shuttle/dropship/gibber,
+/turf/closed/shuttle/dropship_omaha/wall_31,
+/area/shuttle/multiz/drop_omaha/omaha)
+"lA" = (
+/obj/item/device/radio/intercom/omaha{
+	pixel_y = 28
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = 30;
+	pixel_y = -16
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = 8
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"md" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_22,
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_23{
+	density = 0;
+	pixel_x = 32
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"mL" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_11,
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_21{
+	density = 0;
+	pixel_y = 32
+	},
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"mP" = (
+/obj/structure/pipes/vents/dropship/panel_half{
+	dir = 8
+	},
+/obj/structure/shuttle/part/decal/dropship_omaha/platform_decal{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"mT" = (
+/turf/closed/shuttle/dropship_omaha/wall_mid_70,
+/area/shuttle/multiz/drop_omaha/omaha)
+"nv" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_00,
+/obj/structure/shuttle/part/dropship_omaha/transparent/lower_left_wing{
+	pixel_x = -32;
+	pixel_y = -16
+	},
+/obj/deployer/shuttle/dropship/hardpoints/omaha{
+	map_offset_x = 3;
+	offset_y = 2;
+	map_offset_y = -1
+	},
+/obj/effect/attach_point/weapon/dropship_omaha/left_wing,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"oi" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_13,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"ow" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_04,
+/obj/structure/shuttle/part/dropship_omaha/transparent/weapon_hardpoint_left,
+/obj/effect/attach_point/weapon/dropship_omaha/left_fore,
+/obj/deployer/shuttle/dropship/hardpoints/omaha{
+	map_offset_y = -1;
+	map_offset_x = 1;
+	offset_y = 1
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"pc" = (
+/obj/structure/machinery/door/airlock/hatch/cockpit/omaha{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"pv" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_12,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"pG" = (
+/obj/deployer/shuttle/dropship/fuel_attachment_point/omaha{
+	offset_y = 16;
+	offset_x = -16
+	},
+/turf/closed/shuttle/dropship_omaha/wall_51,
+/area/shuttle/multiz/drop_omaha/omaha)
+"pO" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_20,
+/obj/deployer/shuttle/dropship/gibber,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"pU" = (
+/obj/deployer/shuttle/dropship/gibber,
+/turf/closed/shuttle/dropship_omaha/wall_41,
+/area/shuttle/multiz/drop_omaha/omaha)
+"qb" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_00,
+/obj/deployer/shuttle/dropship/belly/omaha,
+/obj/deployer/shuttle/dropship/fake_roof_deployer/omaha,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"qe" = (
+/obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_first,
+/obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_01,
+/obj/structure/machinery/light/dropship/double,
+/turf/open/shuttle/dropship/omaha/ramp/rampio_01,
+/area/shuttle/multiz/drop_omaha/omaha)
+"qz" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_50,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"qB" = (
+/turf/closed/shuttle/dropship_omaha/wall_mid_11,
+/area/shuttle/multiz/drop_omaha/omaha)
+"qL" = (
+/obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_third,
+/obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_20,
+/turf/open/shuttle/dropship/omaha/ramp/rampio_20,
+/area/shuttle/multiz/drop_omaha/omaha)
+"qR" = (
+/obj/structure/pipes/vents/dropship/panel_half{
+	dir = 4
+	},
+/obj/structure/shuttle/part/decal/dropship_omaha/platform_decal{
+	dir = 8
+	},
+/obj/structure/machinery/door/poddoor/railing/omaha{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"qT" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_13,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"rV" = (
+/obj/structure/machinery/light/dropship/double{
+	dir = 4;
+	pixel_x = 12;
+	pixel_y = 16
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = 8;
+	dir = 1
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = -8;
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"rW" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_00,
+/turf/closed/shuttle/dropship_omaha/wall_mid_14,
+/area/shuttle/multiz/drop_omaha/omaha)
+"sz" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_22,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"sM" = (
+/obj/structure/machinery/prop/almayer/CICmap/omaha{
+	pixel_x = -16;
+	pixel_y = -16;
+	layer = 2
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"sZ" = (
+/turf/closed/shuttle/dropship_omaha/wall_mid_60,
+/area/shuttle/multiz/drop_omaha/omaha)
+"tk" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_02,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"tx" = (
+/obj/structure/shuttle/part/decal/dropship_omaha/platform{
+	dir = 1
+	},
+/obj/structure/pipes/vents/dropship/panel_full,
+/obj/structure/machinery/light/dropship/double{
+	dir = 8;
+	pixel_x = -12
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"tF" = (
+/obj/structure/machinery/door/airlock/hatch/side_hatch/omaha{
+	id = "port_door";
+	name = "omaha starboard access"
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"tH" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_03,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"uk" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_32,
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_33{
+	density = 0;
+	pixel_x = 32
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"uu" = (
+/obj/deployer/shuttle/dropship/gibber,
+/turf/closed/shuttle/dropship_omaha/wall_mid_30,
+/area/shuttle/multiz/drop_omaha/omaha)
+"uB" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_13,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"uE" = (
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = -8;
+	dir = 1
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = 8;
+	dir = 1
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"uQ" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_00,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"uX" = (
+/turf/closed/shuttle/dropship_omaha/wall_95,
+/area/shuttle/multiz/drop_omaha/omaha)
+"ve" = (
+/obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_second,
+/obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_10,
+/turf/open/shuttle/dropship/omaha/ramp/rampio_10,
+/area/shuttle/multiz/drop_omaha/omaha)
+"vo" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_12,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"vE" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_12,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"vM" = (
+/obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_fourth,
+/turf/open/shuttle/dropship/omaha/ramp/rampio_30,
+/area/shuttle/multiz/drop_omaha/omaha)
+"vX" = (
+/obj/deployer/shuttle/dropship/fuel_attachment_point/omaha{
+	offset_y = 16;
+	offset_x = 16
+	},
+/turf/closed/shuttle/dropship_omaha/wall_50,
+/area/shuttle/multiz/drop_omaha/omaha)
+"wm" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_02,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"wo" = (
+/obj/deployer/shuttle/dropship/gibber,
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = 8;
+	dir = 1
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = -8;
+	dir = 1
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"wC" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_10,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"wN" = (
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 4;
+	pixel_x = -8;
+	pixel_y = 16
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 4;
+	pixel_x = -8
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"wQ" = (
+/turf/closed/shuttle/dropship_omaha/wall_90,
+/area/shuttle/multiz/drop_omaha/omaha)
+"xc" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_33,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"xh" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_30,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"xn" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_14,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"xo" = (
+/obj/structure/pipes/vents/dropship/panel_half{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"yd" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_11,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"yu" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_21,
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_20{
+	pixel_x = -32
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"yF" = (
+/obj/structure/machinery/computer/shuttle/dropship/flight/omaha{
+	pixel_x = -17;
+	pixel_y = -10
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"yG" = (
+/turf/closed/shuttle/dropship_omaha/wall_94,
+/area/shuttle/multiz/drop_omaha/omaha)
+"yL" = (
+/turf/closed/shuttle/dropship_omaha/wall_25,
+/area/shuttle/multiz/drop_omaha/omaha)
+"yQ" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_21,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"zi" = (
+/obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_third,
+/obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_21,
+/turf/open/shuttle/dropship/omaha/ramp/rampio_22,
+/area/shuttle/multiz/drop_omaha/omaha)
+"zv" = (
+/turf/closed/shuttle/dropship_omaha/wall_mid_00,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Ab" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_22,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Ag" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_36,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Ah" = (
+/turf/closed/shuttle/dropship_omaha/wall_06,
+/area/shuttle/multiz/drop_omaha/omaha)
+"AM" = (
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 8;
+	pixel_x = 8;
+	pixel_y = 16
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 8;
+	pixel_x = 8
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"AU" = (
+/turf/closed/shuttle/dropship_omaha/wall_93,
+/area/shuttle/multiz/drop_omaha/omaha)
+"BA" = (
+/obj/deployer/shuttle/dropship/gibber,
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = 8;
+	dir = 1
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = -8;
+	dir = 1
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Cr" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_15,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"CE" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_01,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Dj" = (
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_y = 20;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_y = 20;
+	pixel_x = -8
+	},
+/obj/structure/pipes/vents/dropship/panel_full{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Dm" = (
+/obj/structure/machinery/door_control/side_hatch/omaha_hatch_left{
+	pixel_y = 32
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Dp" = (
+/obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_first,
+/obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_00,
+/obj/effect/drosphip_ramp_shadow,
+/turf/open/shuttle/dropship/omaha/ramp/rampio_00,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Dq" = (
+/obj/structure/machinery/computer/cameras/dropship/omaha{
+	pixel_x = -16;
+	pixel_y = -6
+	},
+/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_01,
+/obj/structure/pipes/vents/dropship/panel_full,
+/obj/structure/bed/chair/vehicle/omaha_pilot{
+	dir = 1;
+	layer = 3.02;
+	pixel_y = -6
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Dw" = (
+/obj/docking_port/mobile/marine_dropship/multiz/omaha,
+/obj/structure/machinery/door_control/shuttle_ramp/omaha_aft{
+	pixel_y = 32
+	},
+/obj/deployer/shuttle/dropship/roof_loader/omaha,
+/obj/effect/attach_point/crew_weapon/dropship_omaha/floor,
+/turf/open/shuttle/dropship/omaha/marked,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Dy" = (
+/obj/deployer/shuttle/dropship/gibber,
+/turf/closed/shuttle/dropship_omaha/wall_mid_31,
+/area/shuttle/multiz/drop_omaha/omaha)
+"DK" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/dropship{
+	pixel_x = -28;
+	pixel_y = -5
+	},
+/obj/structure/dropship_vendor_dummy{
+	pixel_x = -28;
+	pixel_y = -5
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"DS" = (
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 8;
+	pixel_x = 8;
+	pixel_y = 16
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 8;
+	pixel_x = 8
+	},
+/obj/structure/pipes/vents/dropship/entrance{
+	dir = 8;
+	landing_gear_id = 5
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Ei" = (
+/obj/structure/shuttle/part/decal/dropship_omaha/platform_decal{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 6
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Es" = (
+/turf/closed/shuttle/dropship_omaha/wall_20,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Ex" = (
+/obj/structure/machinery/computer/overwatch/almayer/dropship/omaha{
+	pixel_y = -10;
+	pixel_x = -6;
+	layer = 3.01
+	},
+/obj/structure/overwatch_dummy,
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	dir = 4;
+	layer = 3.50
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"EB" = (
+/obj/structure/machinery/door/airlock/hatch/side_hatch/omaha{
+	dir = 8;
+	id = "port_door";
+	name = "omaha port access"
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"ER" = (
+/obj/deployer/shuttle/dropship/gibber,
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = 8
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"FF" = (
+/turf/closed/shuttle/dropship_omaha/wall_mid_04,
+/area/shuttle/multiz/drop_omaha/omaha)
+"FX" = (
+/obj/structure/shuttle/part/decal/dropship_omaha/stairs_decal_bot,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Gc" = (
+/obj/structure/machinery/door_control/side_hatch/omaha_hatch_right{
+	pixel_y = 32
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"GF" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_12,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"GR" = (
+/obj/structure/machinery/camera/autoname/almayer/dropship_omaha{
+	pixel_y = 32
+	},
+/obj/structure/shuttle/part/decal/dropship_omaha/platform_decal{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Hi" = (
+/obj/item/cpr_dummy{
+	pixel_y = -1
+	},
+/obj/structure/shuttle/part/decal/dropship_omaha/platform_decal{
+	dir = 4
+	},
+/obj/structure/machinery/door/poddoor/railing/omaha{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Hk" = (
+/obj/structure/pipes/vents/dropship/panel_half{
+	dir = 4
+	},
+/obj/structure/shuttle/part/decal/dropship_omaha/platform_decal{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"HH" = (
+/obj/structure/machinery/light/dropship/double{
+	dir = 4;
+	pixel_x = 12;
+	pixel_y = -16
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	dir = 4;
+	layer = 3.51
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"HX" = (
+/obj/structure/pipes/vents/dropship/panel_half{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Iy" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_03,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"IN" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_01,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"IV" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_24,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Jw" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_10,
+/obj/deployer/shuttle/dropship/gibber,
+/turf/closed/shuttle/dropship_omaha/wall_mid_21,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Jy" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_03,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"JQ" = (
+/turf/closed/shuttle/dropship_omaha/wall_mid_54,
+/area/shuttle/multiz/drop_omaha/omaha)
+"JU" = (
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 4;
+	pixel_x = -8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Ky" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_11,
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_10{
+	density = 0;
+	pixel_x = -32
+	},
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"KH" = (
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = 8
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"KK" = (
+/obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_fourth,
+/turf/open/shuttle/dropship/omaha/ramp/rampio_31,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Lm" = (
+/turf/closed/shuttle/dropship_omaha/wall_03,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Lr" = (
+/obj/structure/shuttle/part/decal/dropship_omaha/decal,
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Lt" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_03,
+/turf/closed/shuttle/dropship_omaha/wall_mid_10,
+/area/shuttle/multiz/drop_omaha/omaha)
+"LH" = (
+/obj/deployer/shuttle/dropship/ramp_button/omaha,
+/turf/closed/shuttle/dropship_omaha/wall_mid_53,
+/area/shuttle/multiz/drop_omaha/omaha)
+"LR" = (
+/turf/closed/shuttle/dropship_omaha/wall_02,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Mc" = (
+/turf/closed/shuttle/dropship_omaha/wall_mid_51,
+/area/shuttle/multiz/drop_omaha/omaha)
+"MD" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_40,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"MP" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_05,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Nf" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_11,
+/obj/structure/shuttle/part/dropship_omaha/transparent/weapon_hardpoint_right,
+/obj/effect/attach_point/electronics/dropship_omaha,
+/obj/deployer/shuttle/dropship/hardpoints/omaha{
+	map_offset_y = -1;
+	map_offset_x = -1;
+	offset_y = 1
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"NE" = (
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 8;
+	pixel_x = 8;
+	pixel_y = 16
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 8;
+	pixel_x = 8
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"NQ" = (
+/obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_second,
+/obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_11,
+/turf/open/shuttle/dropship/omaha/ramp/rampio_12,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Ob" = (
+/turf/closed/shuttle/dropship_omaha/wall_mid_55,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Og" = (
+/turf/closed/shuttle/dropship_omaha/wall_mid_53,
+/area/shuttle/multiz/drop_omaha/omaha)
+"OE" = (
+/obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_first,
+/obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_02,
+/turf/open/shuttle/dropship/omaha/ramp/rampio_02,
+/area/shuttle/multiz/drop_omaha/omaha)
+"OI" = (
+/obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_fifth,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_32{
+	pixel_y = -32
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"OL" = (
+/obj/structure/machinery/camera/autoname/almayer/dropship_omaha{
+	dir = 4;
+	pixel_x = -16
+	},
+/obj/structure/machinery/light/dropship/double{
+	pixel_x = -12;
+	pixel_y = -16;
+	dir = 8
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Pa" = (
+/obj/deployer/shuttle/dropship/gibber,
+/turf/closed/shuttle/dropship_omaha/wall_40,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Pc" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_13,
+/obj/deployer/shuttle/dropship/landing_gear/omaha{
+	dir = 1;
+	vent_id = 9
+	},
+/obj/deployer/shuttle/dropship/gibber,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Pi" = (
+/obj/structure/shuttle/part/decal/dropship_omaha/stairs_decal_bot,
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"PQ" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_20{
+	pixel_x = -32
+	},
+/turf/closed/shuttle/dropship_omaha/wall_80,
+/area/shuttle/multiz/drop_omaha/omaha)
+"PT" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_23,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Qc" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_14,
+/obj/effect/attach_point/electronics/dropship_omaha,
+/obj/structure/shuttle/part/dropship_omaha/transparent/weapon_hardpoint_left,
+/obj/deployer/shuttle/dropship/hardpoints/omaha{
+	map_offset_y = -1;
+	map_offset_x = 1;
+	offset_y = 1
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Qi" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_11,
+/obj/deployer/shuttle/dropship/landing_gear/omaha{
+	dir = 1;
+	map_offset_x = -1;
+	vent_id = 5
+	},
+/obj/deployer/shuttle/dropship/gibber,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"QA" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_31,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"QU" = (
+/turf/closed/shuttle/dropship_omaha/wall_91,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Sg" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_32,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Sh" = (
+/obj/structure/pipes/vents/dropship/entrance{
+	landing_gear_id = 10;
+	dir = 1
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"SB" = (
+/obj/structure/shuttle/part/decal/dropship_omaha/stairs_platform{
+	dir = 1
+	},
+/obj/structure/pipes/standard/manifold/fourway/hidden/supply,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"SR" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9
+	},
+/turf/closed/shuttle/dropship_omaha/wall_mid_13,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Te" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/right_22,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Tf" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_31,
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_30{
+	density = 0;
+	pixel_x = -32
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Ts" = (
+/obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_fifth,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_30{
+	pixel_y = -32
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Tu" = (
+/obj/structure/machinery/computer/dropship_weapons/dropship_omaha{
+	pixel_x = -17;
+	pixel_y = -8
+	},
+/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_02,
+/obj/structure/pipes/vents/dropship/panel_full,
+/obj/structure/bed/chair/vehicle/omaha_pilot{
+	dir = 1;
+	layer = 3.02;
+	pixel_y = -6
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Tw" = (
+/obj/structure/shuttle/part/decal/dropship_omaha/platform_decal{
+	dir = 8
+	},
+/obj/structure/machinery/door/poddoor/railing/omaha{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Tz" = (
+/obj/structure/shuttle/part/decal/dropship_omaha/decal,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"TN" = (
+/turf/closed/shuttle/dropship_omaha/wall_mid_41,
+/area/shuttle/multiz/drop_omaha/omaha)
+"TO" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_14,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Us" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/cockpit/nose_03,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Ux" = (
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Uz" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_11{
+	pixel_x = 32
+	},
+/turf/closed/shuttle/dropship_omaha/wall_71,
+/area/shuttle/multiz/drop_omaha/omaha)
+"UN" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/right_02,
+/obj/structure/shuttle/part/dropship_omaha/transparent/lower_right_wing{
+	pixel_y = -16
+	},
+/obj/deployer/shuttle/dropship/hardpoints/omaha{
+	offset_y = 2;
+	map_offset_x = -3;
+	map_offset_y = -1
+	},
+/obj/effect/attach_point/weapon/dropship_omaha/right_wing,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"UU" = (
+/obj/structure/shuttle/part/decal/dropship_omaha/platform_decal{
+	dir = 4
+	},
+/obj/structure/machinery/door/poddoor/railing/omaha{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Vd" = (
+/turf/closed/shuttle/dropship_omaha/wall_mid_71,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Vg" = (
+/turf/closed/shuttle/dropship_omaha/wall_11,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Vy" = (
+/turf/closed/shuttle/dropship_omaha/wall_mid_40,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Vz" = (
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 4;
+	pixel_x = -8;
+	pixel_y = 16
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger/adjustable_layer{
+	dir = 4;
+	pixel_x = -8
+	},
+/obj/structure/pipes/vents/dropship/entrance{
+	dir = 4;
+	landing_gear_id = 9
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"VN" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_01{
+	pixel_x = 32
+	},
+/turf/closed/shuttle/dropship_omaha/wall_61,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Wd" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Wf" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_30,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Wr" = (
+/obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_fourth,
+/turf/open/shuttle/dropship/omaha/ramp/rampio_32,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Wt" = (
+/obj/item/device/radio/intercom/omaha{
+	pixel_y = 28
+	},
+/obj/structure/machinery/camera/autoname/almayer/dropship_omaha{
+	dir = 8;
+	pixel_x = 16
+	},
+/turf/open/shuttle/dropship/omaha/external,
+/area/shuttle/multiz/drop_omaha/omaha)
+"WI" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_13,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"WW" = (
+/obj/structure/ladder/multiz/dropship/omaha,
+/obj/structure/machinery/door_control/hatch_ladder/omaha{
+	pixel_x = 16;
+	pixel_y = 5
+	},
+/obj/structure/shuttle/part/decal/dropship_omaha/decal,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Xi" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
+/turf/closed/shuttle/dropship_omaha/wall_mid_11,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Xk" = (
+/obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_second,
+/turf/open/shuttle/dropship/omaha/ramp/rampio_11,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Xo" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/bottom/bottom_10,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"XK" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_14,
+/obj/deployer/shuttle/dropship/gibber,
+/turf/closed/shuttle/dropship_omaha/wall_mid_20,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Ya" = (
+/obj/structure/shuttle/part/decal/dropship_omaha/decal,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 27
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Yb" = (
+/obj/item/device/radio/intercom/omaha{
+	pixel_y = 28
+	},
+/obj/structure/machinery/camera/autoname/almayer/dropship_omaha{
+	dir = 4;
+	pixel_x = -16
+	},
+/turf/open/shuttle/dropship/omaha/external,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Yf" = (
+/turf/closed/shuttle/dropship_omaha/wall_10,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Yl" = (
+/turf/template_noop,
+/area/space)
+"Yt" = (
+/turf/closed/shuttle/dropship_omaha/wall_05,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Yy" = (
+/turf/closed/shuttle/dropship_omaha/wall_mid_52,
+/area/shuttle/multiz/drop_omaha/omaha)
+"YD" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Zf" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/body/body_00{
+	pixel_x = -32
+	},
+/turf/closed/shuttle/dropship_omaha/wall_60,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Zg" = (
+/turf/closed/shuttle/dropship_omaha/wall_mid_43,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Zh" = (
+/obj/deployer/shuttle/dropship/dummy_part/omaha/adjustable_third,
+/turf/open/shuttle/dropship/omaha/ramp/rampio_21,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Zn" = (
+/turf/closed/shuttle/dropship_omaha/wall_92,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Zp" = (
+/obj/item/device/radio/intercom/omaha{
+	pixel_y = 28
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = -30;
+	pixel_y = -16
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle/omaha_passenger{
+	pixel_x = 8
+	},
+/turf/open/shuttle/dropship/omaha/grated,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Zr" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/nose/left_01,
+/turf/template_noop,
+/area/shuttle/multiz/drop_omaha/omaha)
+"Zv" = (
+/obj/structure/pipes/vents/dropship/panel_half{
+	dir = 8
+	},
+/obj/structure/shuttle/part/decal/dropship_omaha/platform_decal{
+	dir = 4
+	},
+/obj/structure/machinery/door/poddoor/railing/omaha{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+"ZR" = (
+/obj/structure/shuttle/part/dropship_omaha/transparent/wings/left_12,
+/turf/open/shuttle/dropship/omaha/basic,
+/area/shuttle/multiz/drop_omaha/omaha)
+
+(1,1,1) = {"
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+"}
+(2,1,1) = {"
+Yl
+Yl
+Yl
+Yl
+Yl
+Zr
+Tf
+yu
+Ky
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+"}
+(3,1,1) = {"
+Yl
+Yl
+Yl
+Yl
+mL
+tk
+Sg
+Ab
+ZR
+nv
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+"}
+(4,1,1) = {"
+Yl
+Yl
+Yl
+sz
+vo
+Iy
+xc
+dM
+Pc
+CE
+qz
+MD
+dO
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+"}
+(5,1,1) = {"
+Yl
+Yl
+Yl
+PT
+WI
+ow
+Vy
+uu
+XK
+Lt
+Wt
+bw
+wQ
+PQ
+be
+Zf
+vX
+Pa
+bp
+Es
+Wf
+Yl
+Yl
+Yl
+"}
+(6,1,1) = {"
+Yl
+Yl
+Yl
+IV
+Qc
+fj
+TN
+OL
+DK
+qB
+zv
+EB
+QU
+Zp
+uE
+KH
+cj
+ER
+BA
+Xi
+Yf
+aZ
+Xo
+qb
+"}
+(7,1,1) = {"
+Yl
+wC
+uQ
+mT
+sZ
+Mc
+gR
+HX
+HX
+Vz
+Og
+Dm
+Zn
+Ei
+UU
+UU
+Hi
+Zv
+mP
+JU
+wN
+hW
+ay
+bX
+"}
+(8,1,1) = {"
+Yl
+yd
+Dq
+tx
+jZ
+Yy
+er
+bc
+bc
+bc
+kS
+Wd
+FX
+Ts
+vM
+qL
+ve
+Dp
+dZ
+jp
+Sh
+LR
+pv
+wm
+"}
+(9,1,1) = {"
+Yl
+jy
+yF
+SB
+Tz
+pc
+Lr
+Ux
+sM
+en
+kk
+Dw
+Pi
+gZ
+KK
+Zh
+Xk
+qe
+LH
+Dj
+cW
+Lm
+qT
+tH
+"}
+(10,1,1) = {"
+Yl
+oi
+Tu
+eE
+WW
+Og
+Ya
+YD
+YD
+YD
+kS
+Wd
+ev
+OI
+Wr
+zi
+NQ
+OE
+fR
+cV
+iO
+fn
+xn
+gB
+"}
+(11,1,1) = {"
+Yl
+TO
+Us
+Vd
+fD
+JQ
+AM
+xo
+xo
+DS
+Og
+Gc
+AU
+GR
+bt
+bt
+Tw
+qR
+Hk
+iN
+NE
+Yt
+Cr
+MP
+"}
+(12,1,1) = {"
+Yl
+Yl
+Yl
+iq
+Nf
+Ob
+dK
+HH
+Ex
+jF
+FF
+tF
+yG
+lA
+kV
+gu
+rV
+aT
+wo
+SR
+Vg
+Ah
+aQ
+ej
+"}
+(13,1,1) = {"
+Yl
+Yl
+Yl
+Te
+vE
+gC
+Zg
+Dy
+Jw
+rW
+Yb
+bw
+uX
+jK
+Uz
+VN
+pG
+pU
+li
+yL
+Ag
+Yl
+Yl
+Yl
+"}
+(14,1,1) = {"
+Yl
+Yl
+Yl
+bg
+uB
+jq
+xh
+pO
+Qi
+IN
+ap
+iS
+QA
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+"}
+(15,1,1) = {"
+Yl
+Yl
+Yl
+Yl
+kU
+Jy
+fS
+yQ
+GF
+UN
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+"}
+(16,1,1) = {"
+Yl
+Yl
+Yl
+Yl
+Yl
+fX
+uk
+md
+hm
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+"}
+(17,1,1) = {"
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+"}

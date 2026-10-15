@@ -59,9 +59,6 @@
 	name = "\improper Alamo Landing Zone"
 	icon_state = "away1"
 
-
-
-
 /area/shuttle/drop2
 	//soundscape_playlist = list('sound/soundscape/drum1.ogg')
 	soundscape_interval = 30 //seconds
@@ -342,3 +339,60 @@
 /area/shuttle/distress/arrive_s_engi
 	name = "\improper VIP Shuttle"
 	icon_state = "away2"
+
+/area/shuttle/multiz
+	soundscape_interval = 30 //seconds
+	flags_area = AREA_NOBURROW
+	is_landing_zone = TRUE
+	ceiling = CEILING_REINFORCED_METAL
+	base_lighting_alpha = 0
+
+/area/shuttle/multiz/Entered(atom/movable/O, atom/oldloc)
+	if(ismob(O))
+		var/mob/subject_mob = O
+		if(istype(subject_mob, /mob/hologram))
+			var/mob/hologram/hologram_mob = subject_mob
+			subject_mob = hologram_mob.linked_mob
+		if(subject_mob)
+			var/atom/movable/screen/plane_master/roof_dropship/roof_plane = subject_mob.hud_used?.plane_masters["[DROPSHIP_ROOF_PLANE]"]
+			roof_plane?.Hide()
+	return ..()
+
+/area/shuttle/multiz/Exited(atom/movable/O, atom/oldloc)
+	if(ismob(O))
+		var/mob/subject_mob = O
+		if(istype(subject_mob, /mob/hologram))
+			var/mob/hologram/hologram_mob = subject_mob
+			subject_mob = hologram_mob.linked_mob
+		if(subject_mob)
+			var/atom/movable/screen/plane_master/roof_dropship/roof_plane = subject_mob.hud_used?.plane_masters["[DROPSHIP_ROOF_PLANE]"]
+			roof_plane?.Show()
+	return ..()
+
+/area/shuttle/multiz/drop_omaha
+
+/area/shuttle/multiz/drop_omaha/omaha
+	name = "\improper Dropship Omaha"
+	icon_state = "shuttlered"
+	base_muffle = MUFFLE_HIGH
+	base_lighting_alpha = 0
+	is_resin_allowed = FALSE
+
+/area/shuttle/multiz/drop_omaha/Enter(atom/movable/O, atom/oldloc)
+	if(istype(O, /obj/structure/barricade))
+		return FALSE
+	return TRUE
+
+/area/shuttle/multiz/drop_midway
+
+/area/shuttle/multiz/drop_midway/midway
+	name = "\improper Dropship Midway"
+	icon_state = "shuttlered"
+	base_muffle = MUFFLE_HIGH
+	base_lighting_alpha = 0 // 255
+	is_resin_allowed = FALSE
+
+/area/shuttle/multiz/drop_midway/midway/Enter(atom/movable/O, atom/oldloc)
+	if(istype(O, /obj/structure/barricade))
+		return FALSE
+	return TRUE

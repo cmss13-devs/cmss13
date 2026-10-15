@@ -17,6 +17,7 @@
 	var/invuln = null
 	var/bugged = 0
 	var/obj/item/frame/camera/assembly = null
+	var/cas_camera = FALSE
 
 	// WIRES
 	var/wires = 63 // 0b111111
@@ -42,8 +43,12 @@
 	var/list/owner_factions = FACTION_LIST_NEUTRAL
 
 GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
+GLOBAL_LIST_EMPTY_TYPED(cas_cameras, /obj/structure/machinery/camera)
+
 /obj/structure/machinery/camera/Initialize(mapload, ...)
 	. = ..()
+	if(cas_camera)
+		GLOB.cas_cameras += src
 	GLOB.all_cameras += src
 	WireColorToFlag = randomCameraWires()
 	assembly = new(src)
@@ -83,6 +88,8 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 
 /obj/structure/machinery/camera/Destroy()
 	GLOB.all_cameras -= src
+	if(cas_camera)
+		GLOB.cas_cameras -= src
 	. = ..()
 	QDEL_NULL(assembly)
 
@@ -349,6 +356,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 	invuln = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
+	cas_camera = TRUE
 
 	network = list(CAMERA_NET_LASER_TARGETS)
 	colony_camera_mapload = FALSE

@@ -82,3 +82,12 @@
 
 /obj/structure/machinery/door/poddoor/railing/upp
 	id = "supply_elevator_railing_upp"
+
+/obj/structure/machinery/door/poddoor/railing/omaha
+	icon = 'icons/obj/structures/machinery/omaha/railing.dmi'
+	id = DROPSHIP_OMAHA
+
+/obj/structure/machinery/door/poddoor/railing/midway
+	icon = 'icons/obj/structures/machinery/midway/railing.dmi'
+	id = DROPSHIP_MIDWAY
+

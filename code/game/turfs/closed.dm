@@ -356,6 +356,390 @@
 	icon = 'icons/turf/dropship2.dmi'
 	icon_state = "1"
 
+/turf/closed/shuttle/dropship_omaha
+	name = "\improper Omaha"
+	icon = 'icons/turf/omaha/walls.dmi'
+	icon_state = "1,0"
+	dir = NORTH
+
+/turf/closed/shuttle/dropship_omaha/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/dropship_omaha/wall_00
+	icon_state = "1,0"
+
+/turf/closed/shuttle/dropship_omaha/wall_01
+	icon_state = "2,0"
+
+/turf/closed/shuttle/dropship_omaha/wall_02
+	icon_state = "3,0"
+
+/turf/closed/shuttle/dropship_omaha/wall_03
+	icon_state = "4,0"
+
+/turf/closed/shuttle/dropship_omaha/wall_04
+	icon_state = "5,0"
+
+/turf/closed/shuttle/dropship_omaha/wall_05
+	icon_state = "6,0"
+
+/turf/closed/shuttle/dropship_omaha/wall_06
+	icon_state = "7,0"
+
+/turf/closed/shuttle/dropship_omaha/wall_10
+	icon_state = "1,1"
+
+/turf/closed/shuttle/dropship_omaha/wall_11
+	icon_state = "7,1"
+
+/turf/closed/shuttle/dropship_omaha/wall_20
+	icon_state = "0,2"
+
+/turf/closed/shuttle/dropship_omaha/wall_21
+	icon_state = "1,2"
+
+/turf/closed/shuttle/dropship_omaha/wall_22
+	icon_state = "2,2"
+
+/turf/closed/shuttle/dropship_omaha/wall_23
+	icon_state = "6,2"
+
+/turf/closed/shuttle/dropship_omaha/wall_24
+	icon_state = "7,2"
+
+/turf/closed/shuttle/dropship_omaha/wall_25
+	icon_state = "8,2"
+
+/turf/closed/shuttle/dropship_omaha/wall_30
+	icon_state = "0,3"
+
+/turf/closed/shuttle/dropship_omaha/wall_31
+	icon_state = "8,3"
+
+/turf/closed/shuttle/dropship_omaha/wall_40
+	icon_state = "0,4"
+
+/turf/closed/shuttle/dropship_omaha/wall_41
+	icon_state = "8,4"
+
+/turf/closed/shuttle/dropship_omaha/wall_50
+	icon_state = "0,5"
+
+/turf/closed/shuttle/dropship_omaha/wall_51
+	icon_state = "8,5"
+
+/turf/closed/shuttle/dropship_omaha/wall_60
+	icon_state = "0,6"
+
+/turf/closed/shuttle/dropship_omaha/wall_61
+	icon_state = "8,6"
+
+/turf/closed/shuttle/dropship_omaha/wall_70
+	icon_state = "0,7"
+
+/turf/closed/shuttle/dropship_omaha/wall_71
+	icon_state = "8,7"
+
+/turf/closed/shuttle/dropship_omaha/wall_80
+	icon_state = "0,8"
+
+/turf/closed/shuttle/dropship_omaha/wall_81
+	icon_state = "8,8"
+
+/turf/closed/shuttle/dropship_omaha/wall_90
+	icon_state = "0,9"
+
+/turf/closed/shuttle/dropship_omaha/wall_91
+	icon_state = "1,9"
+
+/turf/closed/shuttle/dropship_omaha/wall_92
+	icon_state = "2,9"
+
+/turf/closed/shuttle/dropship_omaha/wall_93
+	icon_state = "6,9"
+
+/turf/closed/shuttle/dropship_omaha/wall_94
+	icon_state = "7,9"
+
+/turf/closed/shuttle/dropship_omaha/wall_95
+	icon_state = "8,9"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_00
+	icon_state = "1,11"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_01
+	icon_state = "2,11"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_02
+	icon_state = "4,11"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_03
+	icon_state = "6,11"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_04
+	icon_state = "7,11"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_10
+	icon_state = "0,12"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_11
+	icon_state = "1,12"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_12
+	icon_state = "4,12"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_13
+	icon_state = "7,12"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_14
+	icon_state = "8,12"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_20
+	icon_state = "0,13"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_21
+	icon_state = "8,13"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_30
+	icon_state = "0,14"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_31
+	icon_state = "8,14"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_40
+	icon_state = "0,15"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_41
+	icon_state = "1,15"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_42
+	icon_state = "7,15"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_43
+	icon_state = "8,15"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_50
+	icon_state = "1,16"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_51
+	icon_state = "2,16"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_52
+	icon_state = "3,16"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_53
+	icon_state = "5,16"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_54
+	icon_state = "6,16"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_55
+	icon_state = "7,16"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_60
+	icon_state = "2,17"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_61
+	icon_state = "6,17"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_70
+	icon_state = "2,18"
+
+/turf/closed/shuttle/dropship_omaha/wall_mid_71
+	icon_state = "6,18"
+
+/turf/closed/shuttle/dropship_midway
+	name = "\improper Midway"
+	icon = 'icons/turf/midway/walls.dmi'
+	icon_state = "1,0"
+	dir = NORTH
+
+/turf/closed/shuttle/dropship_midway/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/dropship_midway/wall_00
+	icon_state = "1,0"
+
+/turf/closed/shuttle/dropship_midway/wall_01
+	icon_state = "2,0"
+
+/turf/closed/shuttle/dropship_midway/wall_02
+	icon_state = "3,0"
+
+/turf/closed/shuttle/dropship_midway/wall_03
+	icon_state = "4,0"
+
+/turf/closed/shuttle/dropship_midway/wall_04
+	icon_state = "5,0"
+
+/turf/closed/shuttle/dropship_midway/wall_05
+	icon_state = "6,0"
+
+/turf/closed/shuttle/dropship_midway/wall_06
+	icon_state = "7,0"
+
+/turf/closed/shuttle/dropship_midway/wall_10
+	icon_state = "1,1"
+
+/turf/closed/shuttle/dropship_midway/wall_11
+	icon_state = "7,1"
+
+/turf/closed/shuttle/dropship_midway/wall_20
+	icon_state = "0,2"
+
+/turf/closed/shuttle/dropship_midway/wall_21
+	icon_state = "1,2"
+
+/turf/closed/shuttle/dropship_midway/wall_22
+	icon_state = "2,2"
+
+/turf/closed/shuttle/dropship_midway/wall_23
+	icon_state = "6,2"
+
+/turf/closed/shuttle/dropship_midway/wall_24
+	icon_state = "7,2"
+
+/turf/closed/shuttle/dropship_midway/wall_25
+	icon_state = "8,2"
+
+/turf/closed/shuttle/dropship_midway/wall_30
+	icon_state = "0,3"
+
+/turf/closed/shuttle/dropship_midway/wall_31
+	icon_state = "8,3"
+
+/turf/closed/shuttle/dropship_midway/wall_40
+	icon_state = "0,4"
+
+/turf/closed/shuttle/dropship_midway/wall_41
+	icon_state = "8,4"
+
+/turf/closed/shuttle/dropship_midway/wall_50
+	icon_state = "0,5"
+
+/turf/closed/shuttle/dropship_midway/wall_51
+	icon_state = "8,5"
+
+/turf/closed/shuttle/dropship_midway/wall_60
+	icon_state = "0,6"
+
+/turf/closed/shuttle/dropship_midway/wall_61
+	icon_state = "8,6"
+
+/turf/closed/shuttle/dropship_midway/wall_70
+	icon_state = "0,7"
+
+/turf/closed/shuttle/dropship_midway/wall_71
+	icon_state = "8,7"
+
+/turf/closed/shuttle/dropship_midway/wall_80
+	icon_state = "0,8"
+
+/turf/closed/shuttle/dropship_midway/wall_81
+	icon_state = "8,8"
+
+/turf/closed/shuttle/dropship_midway/wall_90
+	icon_state = "0,9"
+
+/turf/closed/shuttle/dropship_midway/wall_91
+	icon_state = "1,9"
+
+/turf/closed/shuttle/dropship_midway/wall_92
+	icon_state = "2,9"
+
+/turf/closed/shuttle/dropship_midway/wall_93
+	icon_state = "6,9"
+
+/turf/closed/shuttle/dropship_midway/wall_94
+	icon_state = "7,9"
+
+/turf/closed/shuttle/dropship_midway/wall_95
+	icon_state = "8,9"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_00
+	icon_state = "1,11"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_01
+	icon_state = "2,11"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_02
+	icon_state = "4,11"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_03
+	icon_state = "6,11"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_04
+	icon_state = "7,11"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_10
+	icon_state = "0,12"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_11
+	icon_state = "1,12"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_12
+	icon_state = "4,12"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_13
+	icon_state = "7,12"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_14
+	icon_state = "8,12"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_20
+	icon_state = "0,13"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_21
+	icon_state = "8,13"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_30
+	icon_state = "0,14"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_31
+	icon_state = "8,14"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_40
+	icon_state = "0,15"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_41
+	icon_state = "1,15"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_42
+	icon_state = "7,15"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_43
+	icon_state = "8,15"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_50
+	icon_state = "1,16"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_51
+	icon_state = "2,16"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_52
+	icon_state = "3,16"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_53
+	icon_state = "5,16"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_54
+	icon_state = "6,16"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_55
+	icon_state = "7,16"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_60
+	icon_state = "2,17"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_61
+	icon_state = "6,17"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_70
+	icon_state = "2,18"
+
+/turf/closed/shuttle/dropship_midway/wall_mid_71
+	icon_state = "6,18"
+
 /turf/closed/shuttle/dropship2/transparent
 	opacity = FALSE
 

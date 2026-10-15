@@ -40,6 +40,16 @@
 	req_one_access = list(ACCESS_UPP_FLIGHT)
 	faction = FACTION_UPP
 
+/obj/structure/machinery/computer/shuttle/dropship/flight/omaha
+	icon = 'icons/obj/structures/machinery/omaha/controls.dmi'
+	density = TRUE
+	layer = 3.01
+
+/obj/structure/machinery/computer/shuttle/dropship/flight/midway
+	icon = 'icons/obj/structures/machinery/midway/controls.dmi'
+	density = TRUE
+	layer = 3.01
+
 /obj/structure/machinery/computer/shuttle/dropship/flight/Initialize(mapload, ...)
 	. = ..()
 	compatible_landing_zones = get_landing_zones()

@@ -413,6 +413,7 @@ SUBSYSTEM_DEF(shuttle)
  * * destination_port - The station docking port to send the shuttle to once loaded
  * * to_replace - A shuttle to replace, otherwise we create a new one
 */
+
 /datum/controller/subsystem/shuttle/proc/action_load(datum/map_template/shuttle/loading_template, obj/docking_port/stationary/destination_port, obj/docking_port/mobile/to_replace)
 	// Check for an existing preview
 	if(preview_shuttle && (loading_template != preview_template))

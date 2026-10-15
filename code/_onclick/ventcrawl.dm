@@ -39,7 +39,7 @@
 /mob/living/simple_animal/big/corgi/puppy/can_ventcrawl()
 	return TRUE
 
-/mob/living/proc/handle_ventcrawl(atom/clicked_on)
+/mob/living/proc/handle_ventcrawl(atom/clicked_on, dont_skip_checks = TRUE)
 	if(stat)
 		to_chat(src, SPAN_WARNING("We must be conscious to do this!"))
 		return
@@ -47,19 +47,22 @@
 	if(is_mob_incapacitated())
 		to_chat(src, SPAN_WARNING("We can't vent crawl while we are stunned!"))
 		return
-
 	var/obj/structure/pipes/vents/vent_found
-	if(clicked_on && Adjacent(clicked_on))
-		vent_found = clicked_on
-		if(!istype(vent_found))
-			vent_found = null
+	if(dont_skip_checks)
+		if(clicked_on && Adjacent(clicked_on))
+			vent_found = clicked_on
+			if(!istype(vent_found))
+				vent_found = null
 
-	if(!vent_found)
-		vent_found = locate(/obj/structure/pipes/vents/) in range(1, src)
+		if(!vent_found)
+			vent_found = locate(/obj/structure/pipes/vents/) in range(1, src)
 
-	if(!vent_found)
-		to_chat(src, SPAN_WARNING("We must be standing on or beside an air vent to enter it."))
-		return
+		if(!vent_found)
+			to_chat(src, SPAN_WARNING("We must be standing on or beside an air vent to enter it."))
+			return
+	else
+		if(istype(clicked_on, /obj/structure/pipes/vents))
+			vent_found = clicked_on
 
 	if(vent_found.welded)
 		to_chat(src, SPAN_WARNING("This vent is closed off, we cannot climb through it."))

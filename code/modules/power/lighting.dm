@@ -263,6 +263,21 @@
 	desc = "A lighting fixture used by aircraft vehicles. Its glass covering is a bright, fluorescent blue."
 	light_color = LIGHT_COLOR_BLUE
 
+/obj/structure/machinery/light/dropship/double
+	icon_state = "ptube1"
+	base_state = "ptube"
+	desc = "A lighting fixture that can be fitted with two bright fluorescent light tubes for that extra eye-watering goodness."
+	light_power = 0.9
+
+/obj/structure/machinery/light/dropship/double/blue
+	icon_state = "bptube1"
+	base_state = "bptube"
+	desc = "A lighting fixture that can be fitted with two bright blue fluorescent light tubes for that extra eye-watering goodness."
+	light_color = LIGHT_COLOR_XENON
+
+/obj/structure/machinery/light/dropship/double/set_pixel_location()
+	return
+
 /obj/structure/machinery/light/built/Initialize()
 	. = ..()
 	status = LIGHT_EMPTY

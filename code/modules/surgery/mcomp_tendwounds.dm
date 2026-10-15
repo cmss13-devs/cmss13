@@ -161,6 +161,7 @@
 	. = ..()
 	if((. in tools_lit) && !tool.heat_source)
 		return FALSE
+
 /datum/surgery_step/cauterize/mclamp_wound/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(user == target)
 		user.visible_message(SPAN_NOTICE("[user] begins to close the treated wounds on their body with [tool]."),

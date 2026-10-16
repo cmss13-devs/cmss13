@@ -283,6 +283,8 @@ SUBSYSTEM_DEF(mapping)
 	for(var/path in paths)
 		var/list/filelist = flist(path)
 		for(var/map in filelist)
+			if(!findtext(map, ".dmm", -4))
+				continue
 			var/datum/map_template/T = new(path = "[path][map]", rename = "[map]")
 			map_templates[T.name] = T
 

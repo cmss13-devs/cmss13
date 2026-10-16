@@ -1392,7 +1392,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		to_chat(user, SPAN_WARNING("\The [target] cannot be moved by any means, why dissolve it?"))
 		return FALSE
 	if(isliving(target.loc))
-		to_chat(user, SPAN_WARNING("You cannot dissolve the [target] while it is being held."))
+		to_chat(user, SPAN_WARNING("You cannot dissolve [target] while it is being held."))
 		return
 	if(istype(target, /obj/item/tool/yautja_cleaner))
 		to_chat(user, SPAN_WARNING("You cannot dissolve more dissolving fluid."))

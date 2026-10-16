@@ -162,7 +162,7 @@
 	if(current_mag && current_mag.chamber_closed) //We're not spinning while it's open. Could screw up reloading.
 		if(flags_item & WIELDED)
 			rotate_cylinder(user)
-			to_chat(user, SPAN_NOTICE("You rotate the cylinder of the [src]."))
+			to_chat(user, SPAN_NOTICE("You rotate the cylinder of [src]."))
 			playsound(user, hand_reload_sound, 25, 1)
 			if(!russian_roulette) // look, i know it doesnt make sense given that you have to open the cylinder to actually check the bullet type, but bear with me here... #balance....
 				var/ammo_path = current_mag.chamber_contents[current_mag.chamber_position]
@@ -174,7 +174,7 @@
 				user.balloon_alert(user, bullet_name) // this might be funny with some bullet names
 		else
 			current_mag.chamber_position = rand(1,current_mag.max_rounds)
-			to_chat(user, SPAN_NOTICE("You spin the cylinder of the [src]."))
+			to_chat(user, SPAN_NOTICE("You spin the cylinder of [src]."))
 			playsound(user, cocked_sound, 25, 1)
 			russian_roulette = TRUE //Sets to play RR. Resets when the gun is emptied.
 

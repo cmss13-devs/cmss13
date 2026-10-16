@@ -4,6 +4,7 @@
 	var/target_id = 0
 	var/obj/structure/machinery/camera/cas/linked_cam
 	var/z_initial
+	var/datum/weakref/designator_ref // only lases will receive target selection feedback from CAS
 
 /datum/cas_signal/New(location)
 	z_initial = z_descend(location)

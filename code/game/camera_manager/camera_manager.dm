@@ -18,8 +18,10 @@
 	var/target_width
 	var/target_height
 	var/list/cam_plane_masters
+	var/list/cas_hud_overlays
 	var/isXRay = FALSE
 	var/render_mode = RENDER_MODE_TARGET
+	var/nvg_enabled = FALSE
 
 /datum/component/camera_manager/Initialize()
 	. = ..()
@@ -37,6 +39,7 @@
 	cam_background.appearance_flags |= TILE_BOUND
 
 	cam_plane_masters = list()
+	cas_hud_overlays = list()
 	for(var/plane in subtypesof(/atom/movable/screen/plane_master) - /atom/movable/screen/plane_master/blackness)
 		var/atom/movable/screen/plane_master/instance = new plane()
 		add_plane(instance)
@@ -45,6 +48,8 @@
 	. = ..()
 	range_turfs = null
 	current_area = null
+	hide_pilot_camera()
+	cas_hud_overlays = null
 	QDEL_LIST_ASSOC_VAL(cam_plane_masters)
 	QDEL_NULL(cam_background)
 	QDEL_NULL(cam_screen)
@@ -62,6 +67,40 @@
 	instance.screen_loc = "[map_name]:CENTER"
 	cam_plane_masters["[instance.plane]"] = instance
 
+/datum/component/camera_manager/proc/show_pilot_camera(mob/user)
+	if(user && parent && istype(parent, /obj/structure/machinery/computer/dropship_weapons))
+		if(length(cas_hud_overlays))
+			return
+		for(var/plane_id in cam_plane_masters)
+			var/atom/movable/screen/plane_master/plane = cam_plane_masters[plane_id]
+			var/atom/movable/screen/fullscreen/pilot_camera/pilot_overlay = new()
+			var/atom/movable/screen/plane_master/screen_plane = plane
+			pilot_overlay.assigned_map = map_name
+			pilot_overlay.pixel_x = -224
+			pilot_overlay.pixel_y = -224
+			pilot_overlay.screen_loc = null
+			pilot_overlay.layer = screen_plane.layer + 1
+			pilot_overlay.plane = screen_plane.plane
+			screen_plane.vis_contents += pilot_overlay
+			cas_hud_overlays[pilot_overlay] = screen_plane
+
+/datum/component/camera_manager/proc/hide_pilot_camera()
+	if(!cas_hud_overlays)
+		return
+	for(var/atom/movable/screen/fullscreen/pilot_camera/pilot_overlay as anything in cas_hud_overlays)
+		var/atom/movable/screen/plane_master/plane = cas_hud_overlays[pilot_overlay]
+		if(plane)
+			plane.vis_contents -= pilot_overlay
+		qdel(pilot_overlay)
+	cas_hud_overlays.Cut()
+
+/datum/component/camera_manager/proc/clear_dropship_reticle()
+	if(!istype(parent, /obj/structure/machinery/computer/dropship_weapons))
+		return
+	var/obj/structure/machinery/computer/dropship_weapons/console = parent
+	var/atom/movable/screen/plane_master/above_lighting = cam_plane_masters["[ABOVE_LIGHTING_PLANE]"]
+	console.clear_direct_fire_reticle(above_lighting)
+
 /datum/component/camera_manager/proc/register(source, mob/user)
 	SIGNAL_HANDLER
 	var/client/user_client = user.client
@@ -71,6 +110,7 @@
 	user_client.register_map_obj(cam_background)
 	for(var/plane_id in cam_plane_masters)
 		user_client.register_map_obj(cam_plane_masters[plane_id])
+	show_pilot_camera(user)
 
 /datum/component/camera_manager/proc/unregister(source, mob/user)
 	SIGNAL_HANDLER
@@ -78,6 +118,8 @@
 	if(!user_client)
 		return
 	user_client.clear_map(map_name)
+	hide_pilot_camera()
+	clear_dropship_reticle()
 
 /datum/component/camera_manager/RegisterWithParent()
 	. = ..()
@@ -106,6 +148,7 @@
 	SIGNAL_HANDLER
 	if(current)
 		UnregisterSignal(current, COMSIG_PARENT_QDELETING)
+	clear_dropship_reticle()
 	current_area = null
 	current = null
 	target_x = null
@@ -149,6 +192,7 @@
 
 /datum/component/camera_manager/proc/enable_nvg(source, power, matrixcol)
 	SIGNAL_HANDLER
+	nvg_enabled = TRUE
 	for(var/plane_id in cam_plane_masters)
 		var/atom/movable/screen/plane_master/plane = cam_plane_masters["[plane_id]"]
 		plane.add_filter("nvg", 1, color_matrix_filter(color_matrix_from_string(matrixcol)))
@@ -156,6 +200,7 @@
 
 /datum/component/camera_manager/proc/disable_nvg()
 	SIGNAL_HANDLER
+	nvg_enabled = FALSE
 	for(var/plane_id in cam_plane_masters)
 		var/atom/movable/screen/plane_master/plane = cam_plane_masters["[plane_id]"]
 		plane.remove_filter("nvg")
@@ -236,6 +281,71 @@
 	for(var/turf/visible_turf in visible_things)
 		visible_turfs += visible_turf
 
+	var/turf/center_turf = null
+	var/allow_render = FALSE
+	var/cas_camera = (parent && istype(parent, /obj/structure/machinery/computer/dropship_weapons))
+
+	// Check if this is a dropship weapons console with an active firemission in ON_TARGET or FIRING state
+	if(cas_camera)
+		var/obj/structure/machinery/computer/dropship_weapons/console = parent
+		if(console.firemission_envelope && (console.firemission_envelope.stat == FIRE_MISSION_STATE_ON_TARGET || console.firemission_envelope.stat == FIRE_MISSION_STATE_FIRING))
+			allow_render = TRUE
+
+	if(render_mode == RENDER_MODE_AREA && current_area && target_z)
+		center_turf = locate(current_area.center_x, current_area.center_y, target_z)
+	else if(render_mode == RENDER_MODE_TARGET && last_camera_turf)
+		center_turf = last_camera_turf
+	else
+		return
+
+	if(cas_camera && !allow_render)
+		var/area/laser_area = get_area(center_turf)
+		var/camera_blocked = !istype(laser_area) || CEILING_IS_PROTECTED(laser_area.ceiling, CEILING_PROTECTION_TIER_1)
+		if(!camera_blocked)
+			camera_blocked = center_turf.is_signal_obstructed()
+		if(camera_blocked)
+			// Try to raise camera to a higher Z level with a valid floor
+			var/turf/raised = raise_camera_z(center_turf)
+			if(!raised)
+				show_camera_static()
+				return
+			// Raise the camera view to the higher Z level
+			center_turf = raised
+			// Show visible turfs at the raised Z level
+			var/view_range
+			if(render_mode == RENDER_MODE_AREA && target_width && target_height)
+				view_range = "[target_width]x[target_height]"
+			else if(current)
+				view_range = current.view_range
+			else
+				view_range = DEFAULT_MAP_SIZE
+			visible_turfs = list()
+			var/list/raised_visible = isXRay ? range(view_range, center_turf) : view(view_range, center_turf)
+			for(var/turf/raised_turf in raised_visible)
+				// Replace open turfs with the ground turfs below them
+				if(istransparentturf(raised_turf))
+					var/turf/below = raised_turf
+					while(below && istransparentturf(below))
+						below = SSmapping.get_turf_below(below)
+					if(below)
+						visible_turfs += below
+						continue
+				visible_turfs += raised_turf
+
+	// Spawn Dropship Reticle
+	if(cas_camera)
+		var/obj/structure/machinery/computer/dropship_weapons/console = parent
+		clear_dropship_reticle()
+
+		// Create dropship reticle
+		console.direct_fire_reticle = new /obj/effect/overlay/temp/dropship_reticle(center_turf)
+
+		// Add the reticle image to clients
+		var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
+		if(dropship_hud)
+			for(var/mob/hud_user in dropship_hud.hudusers)
+				console.direct_fire_reticle.update_visibility_for_mob(hud_user)
+
 	var/list/bbox = get_bbox_of_atoms(visible_turfs)
 	var/size_x = bbox[3] - bbox[1] + 1
 	var/size_y = bbox[4] - bbox[2] + 1
@@ -243,6 +353,20 @@
 	cam_screen.vis_contents = visible_turfs
 	cam_background.icon_state = "clear"
 	cam_background.fill_rect(1, 1, size_x, size_y)
+
+/// Attempts to raise the camera view to a higher Z level when the current view is obstructed.
+/datum/component/camera_manager/proc/raise_camera_z(turf/origin)
+	var/turf/highest_floor = null
+	var/turf/check = origin
+	while(check)
+		var/turf/above = SSmapping.get_turf_above(check)
+		if(!above)
+			break
+		// Skip open turfs, we still have static vision as the fallback just incase there's nothing mapped on the z level above
+		if(!istype(above, /turf/open/space) && !istype(above, /turf/open_space))
+			highest_floor = above
+		check = above
+	return highest_floor
 
 #undef DEFAULT_MAP_SIZE
 #undef RENDER_MODE_TARGET

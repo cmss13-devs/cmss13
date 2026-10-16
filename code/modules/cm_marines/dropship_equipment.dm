@@ -785,6 +785,16 @@
 			ammo_travelling_time = max(ammo_travelling_time - 20, 10)
 			break
 
+	var/list/possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
+	var/turf/impact = pick(possible_turfs)
+	var/obj/effect/overlay/temp/dropship_reticle/direct/impact_overlay
+	if(impact)
+		impact_overlay = new /obj/effect/overlay/temp/dropship_reticle/direct(impact)
+		if(GLOB.huds[MOB_HUD_DROPSHIP])
+			for(var/mob/pilot in GLOB.huds[MOB_HUD_DROPSHIP].hudusers)
+				if(pilot)
+					impact_overlay.update_visibility_for_mob(pilot)
+
 	msg_admin_niche("[key_name(user)] is direct-firing [SA] onto [selected_target] at ([target_turf.x],[target_turf.y],[target_turf.z]) [ADMIN_JMP(target_turf)]")
 	if(ammo_travelling_time && !istype(SA, /obj/structure/ship_ammo/rocket/thermobaric))
 		var/total_seconds = max(floor(ammo_travelling_time/10),1)
@@ -792,12 +802,22 @@
 			sleep(10)
 			if(!selected_target || !selected_target.loc)//if laser disappeared before we reached the target,
 				ammo_accuracy_range++ //accuracy decreases
+				ammo_accuracy_range = min(ammo_accuracy_range, ammo_max_inaccuracy)
+				QDEL_NULL(impact_overlay)
+				possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
+				impact = pick(possible_turfs)
+				if(impact)
+					impact_overlay = new /obj/effect/overlay/temp/dropship_reticle/direct(impact)
+					if(GLOB.huds[MOB_HUD_DROPSHIP])
+						for(var/mob/pilot in GLOB.huds[MOB_HUD_DROPSHIP].hudusers)
+							if(pilot)
+								impact_overlay.update_visibility_for_mob(pilot)
 
 	// clamp back to maximum inaccuracy
 	ammo_accuracy_range = min(ammo_accuracy_range, ammo_max_inaccuracy)
-
-	var/list/possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
-	var/turf/impact = pick(possible_turfs)
+	if(!impact)
+		possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
+		impact = pick(possible_turfs)
 
 	if(ammo_travelling_time && istype(SA, /obj/structure/ship_ammo/rocket/thermobaric))
 		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1, 15)
@@ -811,7 +831,8 @@
 	new /obj/effect/overlay/temp/blinking_laser (impact)
 	sleep(10)
 	SA.source_mob = user
-	SA.detonate_on(impact, src)
+	SA.detonate_on(impact, src, user)
+	QDEL_NULL(impact_overlay)
 
 /obj/structure/dropship_equipment/weapon/proc/open_fire_firemission(obj/selected_target, mob/user = usr)
 	set waitfor = 0
@@ -835,7 +856,7 @@
 	var/turf/impact = pick(possible_turfs)
 	sleep(3)
 	SA.source_mob = user
-	SA.detonate_on(impact, src)
+	SA.detonate_on(impact, src, user)
 
 /obj/structure/dropship_equipment/weapon/heavygun
 	name = "\improper GAU-21 30mm cannon"
@@ -1474,4 +1495,4 @@
 	var/turf/impact = pick(possible_turfs)
 	sleep(3)
 	SA.source_mob = user
-	SA.detonate_on(impact, src)
+	SA.detonate_on(impact, src, user)

@@ -160,7 +160,7 @@
 	if(!T)
 		return FALSE
 
-	if(direction == GLOB.reverse_dir[T.dir] || direction == T.dir)
+	if(direction == REVERSE_DIR(T.dir) || direction == T.dir)
 		return FALSE
 
 	T.user_rotation(user, turning_angle(T.dir, direction))

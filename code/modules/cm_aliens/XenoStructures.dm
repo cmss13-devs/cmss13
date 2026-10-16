@@ -1452,7 +1452,7 @@
 			// Set the direction the explosion is traveling in
 			E.direction = dir
 
-			if(dir in GLOB.diagonals)
+			if(IS_DIAGONAL_DIR(dir))
 				E.range--
 
 			switch(E.range)

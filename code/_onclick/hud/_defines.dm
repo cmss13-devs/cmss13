@@ -35,3 +35,5 @@
 #define ui_alert3 "EAST-1:28,CENTER+3:23"
 #define ui_alert4 "EAST-1:28,CENTER+2:21"
 #define ui_alert5 "EAST-1:28,CENTER+1:19"
+#define ui_ceiling_indicator "EAST-1:26,CENTER+3:7"
+#define ui_ceiling_indicator_xeno "EAST-1:26,CENTER+3:23"

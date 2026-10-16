@@ -99,7 +99,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "aO" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
 "aP" = (
@@ -119,7 +119,7 @@
 /area/bigredv2/outside/marshal_office)
 "aZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "ba" = (
@@ -267,7 +267,7 @@
 /area/bigredv2/outside/marshal_office)
 "bR" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "bV" = (
@@ -417,7 +417,7 @@
 /area/bigredv2/outside/marshal_office)
 "cE" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "cF" = (

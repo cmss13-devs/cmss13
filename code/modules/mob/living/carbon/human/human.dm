@@ -16,9 +16,6 @@
 	AddElement(/datum/element/strippable, GLOB.strippable_human_items, TYPE_PROC_REF(/mob/living/carbon/human, should_strip))
 	. = ..()
 
-	if(SSticker?.mode?.hardcore)
-		hardcore = TRUE //For WO disposing of corpses
-
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/more_crit))
 		health_threshold_dead = -150
 		health_threshold_crit = -100

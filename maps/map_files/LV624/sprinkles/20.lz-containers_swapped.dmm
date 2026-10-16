@@ -9,11 +9,11 @@
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
 "f" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
 "g" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/loadingarea/west,
 /area/lv624/lazarus/landing_zones/lz1)
 "j" = (

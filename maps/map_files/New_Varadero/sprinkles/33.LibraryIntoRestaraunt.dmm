@@ -8,7 +8,7 @@
 /obj/item/device/flashlight/lamp/green{
 	pixel_y = -2
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 "ba" = (
@@ -286,7 +286,7 @@
 /area/varadero/interior/library/restaraunt)
 "yZ" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 "zi" = (

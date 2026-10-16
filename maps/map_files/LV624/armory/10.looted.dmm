@@ -54,7 +54,7 @@
 /area/lv624/lazarus/security)
 "k" = (
 /obj/structure/machinery/light/small,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/platingdmg3,
 /area/lv624/lazarus/main_hall)
 "l" = (

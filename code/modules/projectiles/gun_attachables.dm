@@ -4049,7 +4049,10 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = SCATTER_AMOUNT_TIER_9
 	recoil_mod = RECOIL_AMOUNT_TIER_5
 	burst_scatter_mod = 0
-	delay_mod = FIRE_DELAY_TIER_11
+	if(istype(gun, /obj/item/weapon/gun/pkp))
+		delay_mod = 0
+	else
+		delay_mod = FIRE_DELAY_TIER_11
 	//if we are no longer on full auto, don't bother switching back to the old firemode
 	if(full_auto_switch && gun.gun_firemode == GUN_FIREMODE_AUTOMATIC && gun.gun_firemode != old_firemode)
 		gun.do_toggle_firemode(user, null, old_firemode)
@@ -4093,6 +4096,8 @@ Defined in conflicts.dm of the #defines folder.
 				burst_scatter_mod = -SCATTER_AMOUNT_TIER_8
 				if(istype(gun, /obj/item/weapon/gun/rifle/sniper/M42A))
 					delay_mod = -FIRE_DELAY_TIER_7
+				if(istype(gun, /obj/item/weapon/gun/pkp))
+					delay_mod = 0
 				else
 					delay_mod = -FIRE_DELAY_TIER_12
 				gun.recalculate_attachment_bonuses()
@@ -4181,10 +4186,14 @@ Defined in conflicts.dm of the #defines folder.
 	flags_attach_features = ATTACH_ACTIVATION
 
 /obj/item/attachable/bipod/pkp
-	name = "pkp bipod"
+	name = "QYJ-72 bipod"
 	desc = "A simple set of telescopic poles to keep a weapon stabilized during firing."
 	icon_state = "qjy72_bipod"
 	attach_icon = "qjy72_bipod"
+
+/obj/item/attachable/bipod/pkp/New()
+	..()
+	delay_mod = 0
 
 /obj/item/attachable/bipod/vulture
 	name = "heavy bipod"

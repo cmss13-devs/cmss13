@@ -96,7 +96,7 @@
 		UnregisterSignal(parent, COMSIG_XENO_POUNCE_STARTED)
 
 
-/datum/component/water_overlay_effect/proc/handle_position_change(parent_source, oldloc, direction, forced)
+/datum/component/water_overlay_effect/proc/handle_position_change(atom/movable/parent_source, turf/newloc)
 	SIGNAL_HANDLER	//simple checks if to remove, if it were a water turf then the comp already has inherited
 
 	var/turf/open/gm/moved_to_turf = get_turf(parent_source)

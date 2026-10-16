@@ -57,6 +57,8 @@ SUBSYSTEM_DEF(minimaps)
 	var/list/atom/movable/screen/minimap/client_minimap_copies = list()
 	///assoc list storing frozen overlay states when updates are sent
 	var/list/frozen_overlay_states = list()
+	///firesupport area coverage, not included in frozen marker lists
+	var/list/datum/fire_support_warning/fire_support_warnings = list()
 
 /datum/controller/subsystem/minimaps/Initialize()
 	initialized = TRUE
@@ -79,10 +81,14 @@ SUBSYSTEM_DEF(minimaps)
 	removal_cbs = SSminimaps.removal_cbs
 	updaters_by_datum = SSminimaps.updaters_by_datum
 	drawn_images = SSminimaps.drawn_images
+	fire_support_warnings = SSminimaps.fire_support_warnings
 
 /datum/controller/subsystem/minimaps/fire(resumed)
 	var/static/iteration = 0
+	var/static/list/shared_comms_cache
 	var/depthcount = 0
+	if(!resumed || !shared_comms_cache)
+		shared_comms_cache = list()
 	for(var/datum/minimap_updater/updater as anything in update_targets_unsorted)
 		if(depthcount < iteration) //under high load update in chunks
 			depthcount++
@@ -115,11 +121,16 @@ SUBSYSTEM_DEF(minimaps)
 		if(length(target.current_drawing_overlays))
 			combined_overlays += target.current_drawing_overlays
 		updater.minimap.overlays = combined_overlays
+		if(target.should_refresh_transient_markers())
+			target.update_fire_support_warnings(shared_comms_cache)
 		depthcount++
 		iteration++
 		if(MC_TICK_CHECK)
 			return
 	iteration = 0
+	// Live maps were refreshed above; only frozen maps need a separate pass.
+	refresh_fire_support_warnings(skip_live = TRUE, shared_comms_cache = shared_comms_cache)
+	shared_comms_cache = null
 
 ///Creates a minimap for a particular z level
 /datum/controller/subsystem/minimaps/proc/load_new_z(datum/dcs, datum/space_level/z_level)
@@ -688,7 +699,7 @@ SUBSYSTEM_DEF(minimaps)
  * * zlevel: zlevel to fetch map for
  * * flags: map flags to fetch from
  */
-/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, live, popup, drawing, client/for_client)
+/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, live, popup, drawing, client/for_client, obj/structure/machinery/computer/overwatch/coordinate_console)
 	if(!zlevel || zlevel <= 0 || !SSminimaps.initialized)
 		return null
 	if(!SSminimaps.minimaps_by_z["[zlevel]"])
@@ -698,16 +709,24 @@ SUBSYSTEM_DEF(minimaps)
 		return null
 
 	var/hash = "[zlevel]-[flags]-[live]-[popup]-[drawing]"
+	if(coordinate_console)
+		hash += "-overwatch-[REF(coordinate_console)]"
 
 	if(for_client || (!popup && !live))
 		var/client_hash = "[hash][for_client ? "-[REF(for_client)]" : ""]"
 
 		if(hashed_minimaps[client_hash])
-			return hashed_minimaps[client_hash]
+			var/atom/movable/screen/minimap/cached_map = hashed_minimaps[client_hash]
+			cached_map.update_fire_support_warnings()
+			return cached_map
 
 		if(!hashed_minimaps[hash])
 			// Create and cache the base minimap
 			var/atom/movable/screen/minimap/base_map = new(null, null, zlevel, flags, live, popup, drawing)
+			base_map.coordinate_console = coordinate_console
+			base_map.is_cache_template = TRUE
+			if(base_map.live)
+				remove_updater(base_map)
 			if(!base_map.icon)
 				CRASH("Empty and unusable minimap generated for '[zlevel]-[flags]-[live]-[popup]'")
 			hashed_minimaps[hash] = base_map
@@ -727,6 +746,9 @@ SUBSYSTEM_DEF(minimaps)
 		map.x_max = cached_base.x_max
 		map.y_max = cached_base.y_max
 		map.choices_by_mob = list()
+		map.warning_client = for_client
+		map.is_personal_copy = !!for_client
+		map.coordinate_console = coordinate_console
 		map.stop_polling = list()
 
 		// Set observer flag based on flags
@@ -761,14 +783,21 @@ SUBSYSTEM_DEF(minimaps)
 					map.update_drawing_overlay(show_cic_drawings = FALSE)
 
 		hashed_minimaps[client_hash] = map
+		map.update_fire_support_warnings()
 		return map
 
 	var/atom/movable/screen/minimap/map = hashed_minimaps[hash]
 	if(!map)
 		map = new(null, null, zlevel, flags, live, popup, drawing)
+		map.coordinate_console = coordinate_console
 		if(!map.icon) //Don't wanna save an unusable minimap for a z-level.
 			CRASH("Empty and unusable minimap generated for '[zlevel]-[flags]-[live]-[popup]'") //Can be caused by atoms calling this proc before minimap subsystem initializing.
 		hashed_minimaps[hash] = map
+	if(map.is_cache_template)
+		map.is_cache_template = FALSE
+		if(map.live && !updaters_by_datum[map])
+			add_to_updaters(map, flags, zlevel, drawing, labels=drawing)
+	map.update_fire_support_warnings()
 	return map
 
 ///fetches the drawing icon for a minimap flag and returns it, creating it if needed. assumes minimap_flag is ONE flag
@@ -823,6 +852,32 @@ SUBSYSTEM_DEF(minimaps)
 	var/is_observer_minimap = FALSE
 	/// Current drawing overlays for cleanup
 	var/list/current_drawing_overlays = list()
+	/// Incoming strike coverage, excluded from cic tacmap updates
+	var/list/fire_support_warning_overlays = list()
+	/// Owner of a personal map, console minimaps don't apply to the shared minimap
+	var/client/warning_client
+	/// Identifies personal copies even when someone dcs
+	var/is_personal_copy = FALSE
+	/// Undisplayed base copy used to initialize personal map objects
+	var/is_cache_template = FALSE
+	/// Whether refresh eligibility is determined by the registered popout viewers
+	var/track_popout_viewers = FALSE
+	/// Clients currently displaying the popout map
+	var/list/client/popout_viewers = list()
+	/// OW console supplying squad specific saved coords
+	var/obj/structure/machinery/computer/overwatch/coordinate_console
+	/// Saved coords currently applied to this map
+	var/list/saved_coordinate_overlays = list()
+	/// Coords mapped to reusable markers
+	var/list/saved_coordinate_cache = list()
+	/// Active CAS signals visible to this dropship
+	var/list/cas_signal_overlays = list()
+	/// Dropship weapons console showing  the pilot's targeting reticle
+	var/obj/structure/machinery/computer/dropship_weapons/aim_console
+	/// Operator whose selected signal are shown on this map
+	var/mob/aim_operator
+	/// Reusable aim reticle, excluded from cic tacmap updates
+	var/image/operator_aim_marker
 	/// Max ratio to x_max/y_max you can scroll the map to
 	var/max_scroll_ratio = 0.8
 
@@ -974,6 +1029,16 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap/Destroy()
 	SSminimaps.hashed_minimaps -= src
 	stop_polling = null
+	warning_client = null
+	coordinate_console = null
+	aim_console = null
+	aim_operator = null
+	operator_aim_marker = null
+	popout_viewers = null
+	fire_support_warning_overlays = null
+	saved_coordinate_overlays = null
+	saved_coordinate_cache = null
+	cas_signal_overlays = null
 	return ..()
 
 /**
@@ -1136,7 +1201,7 @@ SUBSYSTEM_DEF(minimaps)
 			to_chat(owner, SPAN_WARNING("You already have a minimap open!"))
 			return FALSE
 		var/list/atom/movable/screen/actions = list()
-		map = SSminimaps.fetch_minimap_object(owner.z, map.minimap_flags, map.live, FALSE, map.drawing)
+		map = SSminimaps.fetch_minimap_object(owner.z, map.minimap_flags, map.live, FALSE, map.drawing, for_client=owner.client)
 		for(var/path in drawing_tools)
 			actions += new path(null, owner.z, minimap_flags, map, null)
 		drawing_actions = actions
@@ -2008,7 +2073,10 @@ SUBSYSTEM_DEF(minimaps)
 	user.client.images += drawn_image
 	var/icon/flat_drawing = icon(user.client.RenderIcon(drawn_image))
 	user.client.images -= drawn_image
-	var/icon/flat_map = icon(user.client.RenderIcon(linked_map))
+	var/image/map_snapshot = linked_map.snapshot_without_fire_support_warnings()
+	user.client.images += map_snapshot
+	var/icon/flat_map = icon(user.client.RenderIcon(map_snapshot))
+	user.client.images -= map_snapshot
 	if(!flat_map || !flat_drawing)
 		to_chat(user, SPAN_WARNING("A critical error has occurred!! Contact a coder."))
 		return FALSE
@@ -2034,7 +2102,7 @@ SUBSYSTEM_DEF(minimaps)
 		return FALSE
 	var/flat_tacmap_png = SSassets.transport.get_asset_url(flat_tacmap_key)
 	var/flat_drawing_png = SSassets.transport.get_asset_url(flat_drawing_key)
-	var/datum/flattened_tacmap/new_flat = new(flat_tacmap_png, flat_tacmap_key)
+	var/datum/flattened_tacmap/new_flat = new(flat_tacmap_png, flat_tacmap_key, linked_map.target)
 	var/datum/drawing_data/draw_data = new(flat_drawing_png, user, flat_drawing_key)
 
 	GLOB.xeno_flat_tacmap_data += new_flat
@@ -2057,7 +2125,10 @@ SUBSYSTEM_DEF(minimaps)
 	user.client.images += drawn_image
 	var/icon/flat_drawing = icon(user.client.RenderIcon(drawn_image))
 	user.client.images -= drawn_image
-	var/icon/flat_map = icon(user.client.RenderIcon(linked_map))
+	var/image/map_snapshot = linked_map.snapshot_without_fire_support_warnings()
+	user.client.images += map_snapshot
+	var/icon/flat_map = icon(user.client.RenderIcon(map_snapshot))
+	user.client.images -= map_snapshot
 	if(!flat_map || !flat_drawing)
 		to_chat(user, SPAN_WARNING("A critical error has occurred!! Contact a coder."))
 		return FALSE
@@ -2083,7 +2154,7 @@ SUBSYSTEM_DEF(minimaps)
 		return FALSE
 	var/flat_tacmap_png = SSassets.transport.get_asset_url(flat_tacmap_key)
 	var/flat_drawing_png = SSassets.transport.get_asset_url(flat_drawing_key)
-	var/datum/flattened_tacmap/new_flat = new(flat_tacmap_png, flat_tacmap_key)
+	var/datum/flattened_tacmap/new_flat = new(flat_tacmap_png, flat_tacmap_key, linked_map.target)
 	var/datum/drawing_data/draw_data = new(flat_drawing_png, user, flat_drawing_key)
 
 	GLOB.uscm_flat_tacmap_data += new_flat
@@ -2102,8 +2173,10 @@ SUBSYSTEM_DEF(minimaps)
 	var/flat_tacmap
 	var/asset_key
 	var/time
+	var/zlevel
 
-/datum/flattened_tacmap/New(flat_tacmap, asset_key)
+/datum/flattened_tacmap/New(flat_tacmap, asset_key, zlevel)
+	src.zlevel = zlevel
 	src.flat_tacmap = flat_tacmap
 	src.asset_key = asset_key
 	src.time = time_stamp()
@@ -2139,7 +2212,7 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/up/simple/clicked(mob/user, list/modifiers)
 	if(!SSmapping.same_z_map(linked_map.target, linked_map.target+1))
 		return
-	var/atom/movable/screen/minimap/new_linked_map = SSminimaps.fetch_minimap_object(linked_map.target+1, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+	var/atom/movable/screen/minimap/new_linked_map = SSminimaps.fetch_minimap_object(linked_map.target+1, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, for_client=user.client)
 	update_shown_map(user, new_linked_map)
 
 
@@ -2154,7 +2227,7 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/down/simple/clicked(mob/user, list/modifiers)
 	if(!SSmapping.same_z_map(linked_map.target, linked_map.target-1))
 		return
-	var/atom/movable/screen/minimap/new_linked_map = SSminimaps.fetch_minimap_object(linked_map.target-1, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+	var/atom/movable/screen/minimap/new_linked_map = SSminimaps.fetch_minimap_object(linked_map.target-1, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, for_client=user.client)
 	update_shown_map(user, new_linked_map)
 
 /atom/movable/screen/minimap_tool/change_map
@@ -2166,20 +2239,20 @@ SUBSYSTEM_DEF(minimaps)
 	var/atom/movable/screen/minimap/new_linked_map
 	if(SSmapping.level_has_any_trait(linked_map.target, list(ZTRAIT_GROUND)))
 		if(SSmapping.level_has_any_trait(user.z, list(ZTRAIT_MARINE_MAIN_SHIP)))
-			new_linked_map = SSminimaps.fetch_minimap_object(user.z, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+			new_linked_map = SSminimaps.fetch_minimap_object(user.z, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, for_client=user.client)
 			for(var/datum/action/minimap/map in user.actions)
 				user.client.add_to_screen(map.locator)
 		else
-			new_linked_map = SSminimaps.fetch_minimap_object(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)[1], linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+			new_linked_map = SSminimaps.fetch_minimap_object(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)[1], linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, for_client=user.client)
 			for(var/datum/action/minimap/map in user.actions)
 				user.client.remove_from_screen(map.locator)
 	else
 		if(SSmapping.level_has_any_trait(user.z, list(ZTRAIT_GROUND)))
-			new_linked_map = SSminimaps.fetch_minimap_object(user.z, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+			new_linked_map = SSminimaps.fetch_minimap_object(user.z, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, for_client=user.client)
 			for(var/datum/action/minimap/map in user.actions)
 				user.client.add_to_screen(map.locator)
 		else
-			new_linked_map = SSminimaps.fetch_minimap_object(SSmapping.levels_by_trait(ZTRAIT_GROUND)[1] , linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+			new_linked_map = SSminimaps.fetch_minimap_object(SSmapping.levels_by_trait(ZTRAIT_GROUND)[1] , linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, for_client=user.client)
 			for(var/datum/action/minimap/map in user.actions)
 				user.client.remove_from_screen(map.locator)
 

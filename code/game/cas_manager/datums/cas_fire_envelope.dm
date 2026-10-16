@@ -23,12 +23,17 @@
 
 	var/obj/effect/firemission_guidance/guidance
 	var/atom/tracked_object
+	var/datum/fire_support_warning/tacmap_warning
+	var/datum/cas_fire_mission/warning_mission
+	var/turf/warning_target
+	var/warning_direction
 
 /datum/cas_fire_envelope/New()
 	..()
 	missions = list()
 
 /datum/cas_fire_envelope/Destroy(force, ...)
+	clear_tacmap_warning()
 	linked_console = null
 	untrack_object()
 	return ..()
@@ -42,6 +47,7 @@
 /datum/cas_fire_envelope/proc/update_weapons(list/obj/structure/dropship_equipment/weapon/weapons)
 	for(var/datum/cas_fire_mission/mission in missions)
 		mission.update_weapons(weapons, fire_length)
+	refresh_tacmap_warning()
 
 /datum/cas_fire_envelope/proc/generate_mission(firemission_name, length)
 	if(!missions || !linked_console || !fire_length)
@@ -87,12 +93,15 @@
 	if(check_result == FIRE_MISSION_CODE_ERROR)
 		return FIRE_MISSION_NOT_EXECUTABLE
 	if(check_result == FIRE_MISSION_ALL_GOOD)
+		refresh_tacmap_warning()
 		return FIRE_MISSION_ALL_GOOD
 	if(check_result == FIRE_MISSION_WEAPON_OUT_OF_AMMO)
+		refresh_tacmap_warning()
 		return FIRE_MISSION_ALL_GOOD
 
 	mission_error = mission.error_message(check_result)
 	if(skip_checks)
+		refresh_tacmap_warning()
 		return FIRE_MISSION_ALL_GOOD
 
 	//we have mission error. Fill the thing and restore previous state
@@ -277,9 +286,15 @@
 
 /// Step 5: Actually executes the fire mission updating stat to FIRE_MISSION_STATE_FIRING and then FIRE_MISSION_STATE_OFF_TARGET
 /datum/cas_fire_envelope/proc/open_fire(atom/target_turf,datum/cas_fire_mission/mission,dir)
+	if(QDELETED(mission))
+		clear_tacmap_warning()
+		stat = FIRE_MISSION_STATE_OFF_TARGET
+		return
+	refresh_tacmap_warning()
 	stat = FIRE_MISSION_STATE_FIRING
 	mission.execute_firemission(linked_console, target_turf, dir, fire_length, step_delay, src)
 	stat = FIRE_MISSION_STATE_OFF_TARGET
+	addtimer(CALLBACK(src, PROC_REF(clear_tacmap_warning)), 1 SECONDS)
 
 /// Step 6: Sets the fire mission stat to FIRE_MISSION_STATE_COOLDOWN
 /datum/cas_fire_envelope/proc/flyoff()
@@ -287,7 +302,34 @@
 
 /// Step 7: Sets the fire mission stat to FIRE_MISSION_STATE_IDLE
 /datum/cas_fire_envelope/proc/end_cooldown()
+	clear_tacmap_warning()
 	stat = FIRE_MISSION_STATE_IDLE
+
+/datum/cas_fire_envelope/proc/clear_tacmap_warning()
+	SIGNAL_HANDLER
+	if(warning_mission)
+		UnregisterSignal(warning_mission, COMSIG_PARENT_QDELETING)
+	warning_mission = null
+	warning_target = null
+	QDEL_NULL(tacmap_warning)
+
+/datum/cas_fire_envelope/proc/refresh_tacmap_warning()
+	QDEL_NULL(tacmap_warning)
+	if(!warning_mission || !warning_target || linked_console?.faction != FACTION_MARINE)
+		return
+	var/list/rectangle = warning_mission.get_tacmap_rectangle(warning_direction)
+	if(rectangle)
+		tacmap_warning = new(warning_target, 0, "CAS", execution_start + fire_length * step_delay + 30 SECONDS, "#54c7ec", rectangle)
+
+/datum/cas_fire_envelope/proc/start_tacmap_warning(datum/cas_fire_mission/mission, turf/target, direction)
+	clear_tacmap_warning()
+	if(QDELETED(mission) || !target || linked_console?.faction != FACTION_MARINE)
+		return
+	warning_mission = mission
+	warning_target = target
+	warning_direction = direction
+	RegisterSignal(mission, COMSIG_PARENT_QDELETING, PROC_REF(clear_tacmap_warning))
+	refresh_tacmap_warning()
 
 
 /datum/cas_fire_envelope/proc/execute_firemission_unsafe(datum/cas_signal/signal, turf/target_turf, dir, datum/cas_fire_mission/mission)
@@ -301,6 +343,7 @@
 		mission_error = "Target is off bounds or obstructed."
 		return
 	to_chat(usr, SPAN_ALERT("Fire Mission underway!"))
+	start_tacmap_warning(mission, target_turf, dir)
 
 	var/obj/effect/firemission_effect = new(target_turf)
 

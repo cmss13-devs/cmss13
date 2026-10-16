@@ -37,6 +37,7 @@ GLOBAL_DATUM_INIT(tacmap_viewer, /datum/tacmap_viewer, new)
 		factions += "Hive"
 
 	data["factions"] = factions
+	data["fire_support_warnings"] = list()
 
 	var/uscm_length = length(GLOB.uscm_drawing_tacmap_data)
 	if(uscm_length == 0)
@@ -47,6 +48,8 @@ GLOBAL_DATUM_INIT(tacmap_viewer, /datum/tacmap_viewer, new)
 		var/datum/drawing_data/selected_draw_data = GLOB.uscm_drawing_tacmap_data[uscm_length]
 		data["uscm_map"] = selected_flat ? selected_flat.flat_tacmap : null
 		data["uscm_svg"] = selected_draw_data ? selected_draw_data.draw_data : null
+		if(("USCM" in factions) || isobserver(user))
+			data["fire_support_warnings"] = SSminimaps.fire_support_warning_data(selected_flat?.zlevel, user)
 
 	var/xeno_length = length(GLOB.xeno_drawing_tacmap_data)
 	if(xeno_length == 0)

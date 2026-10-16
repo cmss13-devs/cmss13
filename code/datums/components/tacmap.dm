@@ -109,6 +109,7 @@
 
 		// Clean up drawing tool references and mark CIC minimap inactive
 		var/atom/movable/screen/minimap/user_map = user_objects["map"]
+		release_user_map(user_map, user)
 		user_map?.active_draw_tool = null
 		user_map?.is_cic_minimap = FALSE
 
@@ -124,10 +125,11 @@
 		return
 
 	if(!map_holder)
-		map_holder = new(null, targetted_zlevel, minimap_flag, drawing=drawing)
+		map_holder = new(null, targetted_zlevel, minimap_flag, drawing=drawing, coordinate_console=get_coordinate_console())
 
 	// Create per client minimap and tools for ceiling protection isolation
-	var/atom/movable/screen/minimap/user_map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, live=TRUE, popup=FALSE, drawing=drawing, for_client=user.client)
+	var/atom/movable/screen/minimap/user_map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, live=TRUE, popup=FALSE, drawing=drawing, for_client=user.client, coordinate_console=get_coordinate_console())
+	configure_user_map(user_map, user)
 	var/atom/movable/screen/exit_map/user_close_button = new(null, src)
 
 	// Apply drawing overlays to minimap
@@ -186,6 +188,8 @@
 		return
 
 	user.client.register_map_obj(map_holder.map)
+	map_holder.map.popout_viewers |= user.client
+	map_holder.map.update_fire_support_warnings()
 	ui = new(user, src, "TacticalMap")
 	ui.open()
 	user.client.using_popout_tacmap = TRUE
@@ -211,6 +215,7 @@
 		return
 
 	user.client.remove_from_screen(map_holder.map)
+	map_holder.map.popout_viewers -= user.client
 	user.client.using_popout_tacmap = FALSE
 
 GLOBAL_LIST_INIT(tacmap_holders, list())
@@ -219,9 +224,10 @@ GLOBAL_LIST_INIT(tacmap_holders, list())
 	var/map_ref
 	var/atom/movable/screen/minimap/map
 
-/datum/tacmap_holder/New(loc, zlevel, flags, drawing)
+/datum/tacmap_holder/New(loc, zlevel, flags, drawing, obj/structure/machinery/computer/overwatch/coordinate_console)
 	map_ref = "tacmap_[REF(src)]_map"
-	map = SSminimaps.fetch_minimap_object(zlevel, flags, live=TRUE, popup=TRUE, drawing=drawing)
+	map = SSminimaps.fetch_minimap_object(zlevel, flags, live=TRUE, popup=TRUE, drawing=drawing, coordinate_console=coordinate_console)
+	map.track_popout_viewers = TRUE
 
 	map.screen_loc = "[map_ref]:1,1"
 	map.assigned_map = map_ref
@@ -233,3 +239,30 @@ GLOBAL_LIST_INIT(tacmap_holders, list())
 /datum/tacmap_holder/Destroy()
 	map = null
 	return ..()
+
+/// Coordinate source supplied by specialized console components
+/datum/component/tacmap/proc/get_coordinate_console()
+	return null
+
+/// Console setup of a viewer's private map
+/datum/component/tacmap/proc/configure_user_map(atom/movable/screen/minimap/user_map, mob/user)
+	return
+
+/// Removes console state when a viewer closes their map
+/datum/component/tacmap/proc/release_user_map(atom/movable/screen/minimap/user_map, mob/user)
+	return
+
+/// Separate cache entries for each of the squads in the OW console's minimap
+/datum/component/tacmap/overwatch/get_coordinate_console()
+	return parent
+
+/// Dropship minimap reticle appears only for the pilot
+/datum/component/tacmap/dropship/configure_user_map(atom/movable/screen/minimap/user_map, mob/user)
+	user_map.aim_console = parent
+	user_map.aim_operator = user
+	user_map.update_operator_aim_marker()
+
+/datum/component/tacmap/dropship/release_user_map(atom/movable/screen/minimap/user_map, mob/user)
+	user_map.aim_console = null
+	user_map.aim_operator = null
+	user_map.update_operator_aim_marker()

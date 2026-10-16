@@ -66993,6 +66993,11 @@
 "jnX" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "CIC Lockdown";
+	name = "\improper Combat Information Center Blast Door"
+	},
 /turf/open/floor/plating,
 /area/almayer/command/cic)
 "jot" = (
@@ -72435,6 +72440,11 @@
 	closeOtherId = "ciclobby_n";
 	id_tag = "cic_exterior";
 	name = "\improper Combat Information Center"
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "CIC Lockdown";
+	name = "\improper Combat Information Center Blast Door"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/cic)
@@ -84826,6 +84836,11 @@
 	closeOtherId = "ciclobby_s";
 	id_tag = "cic_exterior";
 	name = "\improper Combat Information Center"
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "CIC Lockdown";
+	name = "\improper Combat Information Center Blast Door"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/cic)

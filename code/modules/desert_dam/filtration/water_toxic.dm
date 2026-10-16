@@ -76,6 +76,10 @@
 		if(HAS_TRAIT(M, TRAIT_HAULED))
 			return
 
+		// riding on a vehicle's hull keeps them out of the water despite sharing its tile.
+		if(M.is_atop_vehicle())
+			return
+
 		cause_damage(M)
 		START_PROCESSING(SSobj, src)
 		return
@@ -102,6 +106,10 @@
 
 	var/targets_present = 0
 	for(var/mob/living/carbon/M in range(0, src))
+		// Riders sit on the vehicle's tiles, so they turn up here too. Not counted as present
+		// either, so a tank parked in the water with only riders aboard lets this stop processing.
+		if(M.is_atop_vehicle())
+			continue
 		targets_present++
 		cause_damage(M)
 	for(var/obj/vehicle/multitile/V in range(0, src))

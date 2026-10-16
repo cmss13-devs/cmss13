@@ -70,6 +70,10 @@
 		if (X.hivenumber != hivenumber)
 			trigger_trap(A)
 	else if(ishuman(A))
+		// boiler's foul resin 'spikes' do not stab you through the tank
+		var/mob/living/M = A
+		if(M && M.is_on_tank_hull())
+			return
 		trigger_trap(A)
 
 /obj/effect/hole_tripwire_boiler
@@ -92,4 +96,8 @@
 		return
 
 	if(ishuman(A))
+		// mobs atop the tank shouldn't trigger tripwires
+		var/mob/living/M = A
+		if(M && M.is_on_tank_hull())
+			return
 		linked_trap.trigger_trap(A)

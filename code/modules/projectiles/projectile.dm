@@ -91,6 +91,9 @@
 	var/damage_boosted = 0
 	var/last_damage_mult = 1
 
+	/// Tracks if the projectile is inside obj/vehicle/multitile/tank
+	var/obj/vehicle/multitile/tank/inside_tank = null
+
 	/// How much of the path could the projectile trevel on source and end z level
 	var/traveled_in_open = 0
 	var/traveled_in_closed = 0
@@ -210,7 +213,7 @@
 		forceMove(starting) //Put us on the turf, if we're not.
 
 	target_turf = get_turf(target)
-	if(!target_turf || !starting || target_turf == starting) //This shouldn't happen, but it can.
+	if(!target_turf || !starting)
 		qdel(src)
 		return
 	src.firer = firer
@@ -222,6 +225,14 @@
 
 	permutated |= src //Don't try to hit self.
 	src.shot_from = shot_from
+
+	// Riders share the vehicle's tiles, so a same-turf shot is now a real case. Resolve the hit right
+	// here via scan_a_turf() instead of silently vanishing the shot.
+	if(target_turf == starting)
+		src.speed = speed
+		scan_a_turf(starting)
+		qdel(src)
+		return
 
 	setDir(get_dir(loc, target_turf))
 
@@ -405,7 +416,18 @@
 	if(distance_travelled == floor(ammo.max_range / 2))
 		ammo.do_at_half_range(src)
 	if(distance_travelled >= ammo.max_range)
-		ammo.do_at_max_range(src)
+		// A short-range shot can run out of range while still over a vehicle's footprint.
+		// Hit it here instead of quietly vanishing. AMMO_PASSES_OVER_VEHICLES skips this entirely.
+		var/obj/vehicle/multitile/tank/tank_here
+		if(!(ammo.flags_ammo_behavior & AMMO_PASSES_OVER_VEHICLES))
+			tank_here = inside_tank || (locate(/obj/vehicle/multitile) in next_turf)
+			if(tank_here in permutated)
+				tank_here = null
+		if(tank_here)
+			ammo.on_hit_obj(tank_here, src)
+			tank_here.bullet_act(src)
+		else
+			ammo.do_at_max_range(src)
 		speed = 0
 		return TRUE
 
@@ -435,6 +457,24 @@
 	// Not a turf, keep moving
 	if(!istype(turf))
 		return FALSE
+
+	// Check if we're inside a tank and trying to exit
+	if(inside_tank)
+		var/tank_found = (inside_tank in turf)
+
+		// hits the tank if there are no tank parts inside the turf
+		if(!tank_found)
+			// unless it was shot by a mob atop the tank...
+			if(isliving(firer))
+				var/mob/living/M = firer
+				if(M.is_on_tank_hull())
+					return FALSE
+			// ...or this ammo is flagged to always fly over vehicles entirely (AMMO_PASSES_OVER_VEHICLES).
+			if(ammo.flags_ammo_behavior & AMMO_PASSES_OVER_VEHICLES)
+				return FALSE
+			ammo.on_hit_obj(inside_tank, src)
+			inside_tank.bullet_act(src)
+			return TRUE
 
 	if(turf.density) // Handle wall hit
 		if(turf in permutated)
@@ -487,6 +527,12 @@
 		if(turf && turf.loc)
 			turf.bullet_act(src)
 		return TRUE
+
+	// Entering any of a vehicle's tiles marks inside_tank
+	if(!inside_tank)
+		var/obj/vehicle/multitile/tank/tank_here = locate(/obj/vehicle/multitile) in turf
+		if(tank_here && !(tank_here in permutated))
+			inside_tank = tank_here
 	return FALSE
 
 /obj/projectile/proc/handle_object(obj/obj)
@@ -494,6 +540,18 @@
 	if(obj in permutated)
 		return FALSE
 	permutated |= obj
+
+	var/obj/vehicle/multitile/tank/M = istype(obj, /obj/vehicle/multitile/tank) ? obj : null
+
+	// this block allows projectiles fired from outside the tank to travel inside it.
+	if(M)
+		if(!inside_tank)
+			inside_tank = M
+			return FALSE
+		else if(inside_tank == M)
+			return FALSE
+		else // if inside_tank exists but is not M, it means we're firing on another tank, so, we return true.
+			return TRUE
 
 	var/hit_chance = obj.get_projectile_hit_boolean(src)
 	if(hit_chance) // Calculated from combination of both ammo accuracy and gun accuracy
@@ -653,7 +711,9 @@
 
 /obj/projectile/proc/check_canhit(turf/current_turf, turf/next_turf, list/ignore_list)
 	var/proj_dir = get_dir(current_turf, next_turf)
-	if((proj_dir & (proj_dir - 1)) && !current_turf.Adjacent(next_turf, ignore_list = ignore_list) && current_turf.z == next_turf.z)
+	// this would otherwise block diagonal shots at the tank
+	var/next_turf_is_vehicle = locate(/obj/vehicle/multitile) in next_turf
+	if((proj_dir & (proj_dir - 1)) && !next_turf_is_vehicle && !current_turf.Adjacent(next_turf, ignore_list = ignore_list) && current_turf.z == next_turf.z)
 		ammo.on_hit_turf(current_turf, src)
 		current_turf.bullet_act(src)
 		return TRUE

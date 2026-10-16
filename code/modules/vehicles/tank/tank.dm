@@ -76,6 +76,22 @@
 	explosive_resistance = 400
 	minimap_icon_state = "tank"
 
+	/// world.time must be past this before riders stop taking the moving-tank firing penalty.
+	var/on_top_mobs_shooting_inaccuracy_time = 0
+
+/// TRUE while `user` is a Praetorian Dancer with its Dodge ability active. Grants instant tank climbing.
+/obj/vehicle/multitile/tank/has_instant_dancer_climb(mob/living/user)
+	if(!isxeno(user))
+		return FALSE
+	var/mob/living/carbon/xenomorph/xeno_user = user
+	var/datum/behavior_delegate/praetorian_dancer/dancer_behavior = xeno_user.behavior_delegate
+	return istype(dancer_behavior) && dancer_behavior.dodge_activated
+
+/obj/vehicle/multitile/tank/update_next_move()
+	var/anti_build_factor = 1/((max(abs(move_momentum), 1)/move_max_momentum) * move_momentum_build_factor)
+	on_top_mobs_shooting_inaccuracy_time = world.time + move_delay * move_momentum_build_factor * anti_build_factor * misc_multipliers["move"] * 5
+	. = ..()
+
 /obj/vehicle/multitile/tank/initialize_cameras(change_tag = FALSE)
 	if(!camera)
 		camera = new /obj/structure/machinery/camera/vehicle(src)

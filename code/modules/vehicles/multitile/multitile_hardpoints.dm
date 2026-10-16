@@ -243,4 +243,10 @@
 		visible_message(SPAN_WARNING("\The [src] disintegrates into useless pile of scrap under the damage it suffered."))
 		qdel(old)
 
+	// Register the dropped hardpoint as an on-top object too, so it doesn't get left behind and
+	// rendered under the hull's sprite next time the tank moves.
+	if(!QDELETED(old))
+		var/obj/vehicle/multitile/tank/tank_self = istype(src, /obj/vehicle/multitile/tank) ? src : null
+		tank_self?.obj_mark_on_top(old)
+
 	update_icon()

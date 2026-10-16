@@ -388,6 +388,10 @@
 	opacity = FALSE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = ABOVE_OBJ_LAYER
+	// Lets a puddle on a vehicle's footprint ride along atop it instead of staying behind when it moves.
+	is_allowed_atop_vehicle = TRUE
+	// You ain't crashing your way out of this one, PVT Ryan 'Drive' Gosling.
+	immune_to_tank_crash_scatter = TRUE
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/damage = 20
 	var/slow_amt = 4
@@ -408,10 +412,27 @@
 	animate(src, alpha = 127, time = decay_time)
 	QDEL_IN(src, decay_time)
 
+	// A vehicle already parked on this tile when the puddle spawns never triggers Crossed(), so check directly.
+	var/obj/vehicle/multitile/vehicle_here = locate() in loc
+	if(vehicle_here)
+		mount_on_vehicle(vehicle_here)
+
+/obj/effect/lingering_acid/proc/mount_on_vehicle(obj/vehicle/multitile/vehicle)
+	vehicle.obj_mark_on_top(src)
+
 /obj/effect/lingering_acid/Crossed(atom/movable/movable)
 	. = ..()
+	if(isVehicleMultitile(movable))
+		var/obj/vehicle/multitile/vehicle = movable
+		mount_on_vehicle(vehicle)
+		return
+
 	var/mob/living/carbon/carbon = movable
 	if(!istype(carbon))
+		return
+
+	// Mounted atop a tank: only a mob riding atop that same tank can actually be "crossing" this puddle.
+	if(is_atop_vehicle() && carbon.get_tank_on_top_of() != get_tank_on_top_of())
 		return
 
 	if(carbon.ally_of_hivenumber(hivenumber))

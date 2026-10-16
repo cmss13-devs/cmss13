@@ -410,7 +410,7 @@
 
 // Hivelord strain flags
 #define HIVELORD_RESIN_WHISPERER "Resin Whisperer"
-#define HIVELORD_DESIGNER "Designer"
+#define HIVELORD_ARCHITECT "Architect"
 
 // Carrier strain flags
 #define CARRIER_EGGSAC "Eggsac"
@@ -791,8 +791,9 @@
 
 // turf weedable states
 #define NOT_WEEDABLE 0
-#define SEMI_WEEDABLE 1
-#define FULLY_WEEDABLE 2
+#define HARDLY_WEEDABLE 1
+#define SEMI_WEEDABLE 2
+#define FULLY_WEEDABLE 3
 
 #define TAILSTAB_COOLDOWN_NONE 0
 #define TAILSTAB_COOLDOWN_VERY_LOW 0.1

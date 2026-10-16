@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - maptweak: "Fixes several hull window tiles in the researcher observation deck on White Antre Research Facility not having floors underneath them."

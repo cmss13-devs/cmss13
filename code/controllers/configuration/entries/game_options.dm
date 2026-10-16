@@ -128,7 +128,13 @@
 
 ///Used to determine how many extra larva you want per burst if nested. Supports fractions. See /datum/hive_status/proc/increase_larva_after_burst()
 /datum/config_entry/number/extra_larva_per_nested_burst
-	config_entry_value = 1
+	config_entry_value = 0.5
+	integer = FALSE
+
+///Used to determine how many extra larva are granted on survivor perma death during the first hour.
+///Supports fractions. See /datum/job/civilian/survivor/proc/grant_larva_on_death()
+/datum/config_entry/number/larva_for_surv_death
+	config_entry_value = 0.5
 	integer = FALSE
 
 /datum/config_entry/number/embryo_burst_timer

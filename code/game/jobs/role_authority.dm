@@ -205,20 +205,11 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		medic_job.set_spawn_positions(GLOB.players_preassigned)
 
 	// Set survivor starting amount based on marines assigned
-	var/datum/job/SJ = temp_roles_for_mode[JOB_SURVIVOR]
-	if(istype(SJ))
-		SJ.set_spawn_positions(GLOB.players_preassigned)
-		SJ.create_landmark_lists()
-
-	var/datum/job/CO_surv_job = temp_roles_for_mode[JOB_CO_SURVIVOR]
-	if(istype(CO_surv_job))
-		CO_surv_job.set_spawn_positions(GLOB.players_preassigned)
-		CO_surv_job.create_landmark_lists()
-
-	var/datum/job/synth_surv_job = temp_roles_for_mode[JOB_SYNTH_SURVIVOR]
-	if(istype(synth_surv_job))
-		synth_surv_job.set_spawn_positions(GLOB.players_preassigned)
-		synth_surv_job.create_landmark_lists()
+	for(var/job_name, job_datum in temp_roles_for_mode)
+		if(istype(job_datum, /datum/job/civilian/survivor))
+			var/datum/job/civilian/survivor/surv_job_datum = job_datum
+			surv_job_datum.set_spawn_positions(GLOB.players_preassigned)
+			surv_job_datum.create_landmark_lists()
 
 	var/chance = trim(file2text("data/predchance.txt"))
 	if(chance)

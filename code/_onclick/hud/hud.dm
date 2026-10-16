@@ -53,6 +53,7 @@
 	var/atom/movable/screen/fire_icon
 	var/atom/movable/screen/healths
 	var/atom/movable/screen/bodytemp_icon
+	var/atom/movable/screen/ceiling_indicator/ceiling_indicator
 
 	var/atom/movable/screen/gun_setting_icon
 	var/atom/movable/screen/gun_item_use_icon
@@ -99,6 +100,10 @@
 
 	overwatch_text = new(null, src)
 	static_inventory += overwatch_text
+
+	if(isliving(owner))
+		ceiling_indicator = new(null, src)
+		infodisplay += ceiling_indicator
 
 /datum/hud/Destroy()
 	if(mymob.hud_used == src)
@@ -161,6 +166,7 @@
 	fire_icon = null
 	healths = null
 	bodytemp_icon = null
+	ceiling_indicator = null
 
 	gun_setting_icon = null
 	gun_item_use_icon = null

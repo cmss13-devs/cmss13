@@ -367,6 +367,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	switch(J.title)
 		if(JOB_SURVIVOR)
 			return 1
+		if(JOB_SURVIVOR_UNLIMITED)
+			return 1
 		if(JOB_SYNTH_SURVIVOR)
 			return 1
 		if(JOB_CO_SURVIVOR)

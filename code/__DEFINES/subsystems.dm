@@ -109,8 +109,9 @@
 // Subsystems shutdown in the reverse of the order they initialize in
 // The numbers just define the ordering, they are meaningless otherwise.
 
+#define SS_INIT_TIMER 100
 #define SS_INIT_PROFILER 86
-#define SS_INIT_INPUT   85
+#define SS_INIT_INPUT 85
 #define SS_INIT_CMTV 84
 #define SS_INIT_TOPIC 83
 #define SS_INIT_LOBBYART 82
@@ -118,15 +119,14 @@
 #define SS_INIT_INFLUXDRIVER 28
 #define SS_INIT_GARBAGE 24
 #define SS_INIT_EVENTS 23.5
-#define SS_INIT_HIJACK 22.6
 #define SS_INIT_REDIS 22.5
 #define SS_INIT_REAGENTS 22.1
 #define SS_INIT_MAPPING 22
-#define SS_INIT_NIGHTMARE   21.5
+#define SS_INIT_NIGHTMARE 21.5
 #define SS_INIT_TIMETRACK 21.1
-#define SS_INIT_HUMANS  21
+#define SS_INIT_HUMANS 21
 #define SS_INIT_WHO 20
-#define SS_INIT_POWER   19
+#define SS_INIT_POWER 19
 #define SS_INIT_IPCHECK 18
 #define SS_INIT_PREDSHIPS 17
 #define SS_INIT_MAPGRIDS 15
@@ -136,28 +136,28 @@
 #define SS_INIT_LAW 6
 #define SS_INIT_FZ_TRANSITIONS 5
 #define SS_INIT_PROJECTILES 4.1
-#define SS_INIT_ATOMS   4
-#define SS_INIT_DECORATOR   3.7
+#define SS_INIT_ATOMS 4
+#define SS_INIT_DECORATOR 3.7
 #define SS_INIT_SHUTTLE 3.5
-#define SS_INIT_LANDMARK    3.2
-#define SS_INIT_MACHINES   3
+#define SS_INIT_LANDMARK 3.2
+#define SS_INIT_MACHINES 3
 #define SS_INIT_INTERIOR 2.7
-#define SS_INIT_TECHTREE    2.5
+#define SS_INIT_TECHTREE 2.5
 #define SS_INIT_RADIO 2
 #define SS_INIT_ASSETS 1
-#define SS_INIT_TIMER   100
 #define SS_INIT_UNSPECIFIED 0
 #define SS_INIT_SOUND -5 // Just to ignore all sounds above notably during SSatoms init
 #define SS_INIT_TICKER -21
-#define SS_INIT_VOTE   -23
-#define SS_INIT_DATABASE   -27
-#define SS_INIT_ENTITYMANAGER   -28
-#define SS_INIT_PLAYTIME   -29
+#define SS_INIT_HIJACK -22
+#define SS_INIT_VOTE -23
+#define SS_INIT_DATABASE -27
+#define SS_INIT_ENTITYMANAGER -28
+#define SS_INIT_PLAYTIME -29
 #define SS_INIT_STICKY -30
 #define SS_INIT_OBJECTIVES -32
-#define SS_INIT_MINIMAP    -34
+#define SS_INIT_MINIMAP -34
 #define SS_INIT_STATPANELS -98
-#define SS_INIT_CHAT    -100 //Should be last to ensure chat remains smooth during init.
+#define SS_INIT_CHAT -100 //Should be last to ensure chat remains smooth during init.
 
 // Subsystem fire priority, from lowest to highest priority
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)

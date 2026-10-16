@@ -914,6 +914,14 @@
 		firemission_envelope.change_current_loc(shootloc)
 	return TRUE
 
+/obj/structure/prop/dropship_weapons/dropship1
+	name = "\improper 'Alamo' weapons controls"
+	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
+	icon_state = "consoleright"
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
 /obj/structure/machinery/computer/dropship_weapons/dropship1
 	name = "\improper 'Alamo' weapons controls"
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)

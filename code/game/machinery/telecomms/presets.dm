@@ -221,6 +221,9 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	/// Whether this tower has already triggered a garble event
 	var/garble_event_triggered = FALSE
 
+	/// The amount of time it has spent broadcasting online (reset when broken)
+	var/time_broadcasting = 0
+
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/Initialize(mapload, ...)
 	. = ..()
 	// COMSIG_MOVABLE_TURF_ENTERED to handle ChangeTurf
@@ -267,6 +270,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	if(on) //now, if it went on it now uses power
 		garble_event_triggered = FALSE
 		use_power = USE_POWER_IDLE
+		if(MODE_HAS_FLAG(MODE_SURVIVE))
+			START_PROCESSING(SSslowobj, src)
 		message_admins("[key_name(user)] turned \the [src] in [commarea] ON. [ADMIN_JMP(commloc.loc)]")
 	else
 		use_power = USE_POWER_NONE
@@ -326,10 +331,23 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	..()
 	if(inoperable())
 		handle_xeno_acquisition()
+		time_broadcasting = 0
+		if(MODE_HAS_FLAG(MODE_SURVIVE))
+			STOP_PROCESSING(SSslowobj, src)
 		if(!garble_event_triggered && (COMM_FREQ in freq_listening))
 			garble_event_triggered = TRUE
 			SSradio.update_cache()
 			addtimer(CALLBACK(src, PROC_REF(delayed_marine_failure)), 10 SECONDS)
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/process(delta_time)
+	// Assumption is that this only processes for MODE_SURVIVE
+	if(ROUND_TIME < 5 MINUTES)
+		return // Too early to start counting
+	if(on && operable(NOPOWER))
+		time_broadcasting += delta_time SECONDS
+	if(time_broadcasting > 20 MINUTES && istype(SSticker.mode, /datum/game_mode/survive))
+		var/datum/game_mode/survive/mode = SSticker.mode
+		mode.initiate_evacuation()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/delayed_marine_failure()
 	SSradio.faction_coms_clarity[FACTION_MARINE] = CONFIG_GET(number/announcement_min_clarity)

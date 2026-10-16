@@ -480,6 +480,8 @@
 	else
 		for(var/a in subtypesof(/datum/game_mode))
 			var/datum/game_mode/G = a
+			if(initial(G.config_tag) == GAMEMODE_FORWARD_BASE) // do NOT select a map not made for this mode
+				continue
 			gamemodes += initial(G.config_tag)
 
 	defaulted = FALSE

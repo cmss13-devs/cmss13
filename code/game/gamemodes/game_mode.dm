@@ -89,6 +89,10 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_PRESETUP)
 	return 1
 
+/// Whether drones still have their expanded T2 evo
+/datum/game_mode/proc/allow_early_drone_evolution()
+	return !SSobjectives.first_drop_complete
+
 ///Triggered partway through the first drop, based on DROPSHIP_DROP_MSG_DELAY. Marines are underway but haven't yet landed.
 /datum/game_mode/proc/ds_first_drop(obj/docking_port/mobile/marine_dropship)
 	return

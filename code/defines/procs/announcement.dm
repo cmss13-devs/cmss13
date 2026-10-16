@@ -81,12 +81,12 @@
 	if(faction_to_display == FACTION_MARINE)
 		for(var/mob/current_mob in targets)
 			var/turf/current_turf = get_turf(current_mob)
-			var/is_shipside = is_mainship_level(current_turf?.z)
+			var/has_local_announcements = is_mainship_level(current_turf?.z) || istype(get_area(current_turf), /area/forward_base)
 
 			if(isobserver(current_mob)) //observers see everything
 				if(current_mob.client?.prefs?.toggles_chat & CHAT_GHOSTANNOUNCECLARITY)
 					continue // Valid target w/o garble
-				if(!is_shipside && !(current_turf?.z in coms_zs))
+				if(!has_local_announcements && !(current_turf?.z in coms_zs))
 					targets_to_garble += current_mob
 				continue // Valid target
 
@@ -95,10 +95,10 @@
 				targets -= current_human
 				continue // Invalid target
 
-			if(is_shipside && !(istype(GLOB.master_mode, /datum/game_mode/extended/faction_clash))) // People on ship see everything, unless it is faction clash
+			if(has_local_announcements && !(istype(GLOB.master_mode, /datum/game_mode/extended/faction_clash))) // People on the ship or in the bunker hear the local PA, unless it is faction clash
 				continue // Valid target w/o garble
 
-			if(!is_shipside && !(current_turf?.z in coms_zs))
+			if(!has_local_announcements && !(current_turf?.z in coms_zs))
 				targets_to_garble += current_human
 
 			// If they have iff AND a marine headset they will receive announcements
@@ -124,12 +124,12 @@
 	else if(faction_to_display == "Everyone (-Yautja)")
 		for(var/mob/current_mob in targets)
 			var/turf/current_turf = get_turf(current_mob)
-			var/is_shipside = is_mainship_level(current_turf?.z)
+			var/has_local_announcements = is_mainship_level(current_turf?.z) || istype(get_area(current_turf), /area/forward_base)
 
 			if(isobserver(current_mob)) //observers see everything
 				if(current_mob.client?.prefs?.toggles_chat & CHAT_GHOSTANNOUNCECLARITY)
 					continue // Valid target w/o garble
-				if(!is_shipside && !(current_turf?.z in coms_zs))
+				if(!has_local_announcements && !(current_turf?.z in coms_zs))
 					targets_to_garble += current_mob
 				continue // Valid target
 
@@ -138,18 +138,18 @@
 				targets -= current_human
 				continue // Invalid target
 
-			if(!is_shipside && !(current_turf?.z in coms_zs))
+			if(!has_local_announcements && !(current_turf?.z in coms_zs))
 				targets_to_garble += current_human
 
 	else
 		for(var/mob/current_mob in targets)
 			var/turf/current_turf = get_turf(current_mob)
-			var/is_shipside = is_mainship_level(current_turf?.z)
+			var/has_local_announcements = is_mainship_level(current_turf?.z) || istype(get_area(current_turf), /area/forward_base)
 
 			if(isobserver(current_mob)) //observers see everything
 				if(current_mob.client?.prefs?.toggles_chat & CHAT_GHOSTANNOUNCECLARITY)
 					continue // Valid target w/o garble
-				if(!is_shipside && !(current_turf?.z in coms_zs))
+				if(!has_local_announcements && !(current_turf?.z in coms_zs))
 					targets_to_garble += current_mob
 				continue // Valid target
 
@@ -162,7 +162,7 @@
 				targets -= current_human
 				continue // Invalid target
 
-			if(!is_shipside && !(current_turf?.z in coms_zs))
+			if(!has_local_announcements && !(current_turf?.z in coms_zs))
 				targets_to_garble += current_human
 
 	if(!isnull(signature))
@@ -173,7 +173,7 @@
 //AI announcement that uses talking into comms
 /proc/ai_announcement(message, sound_to_play = sound('sound/misc/interference.ogg'), logging = ARES_LOG_MAIN)
 	for(var/mob/M in (GLOB.human_mob_list + GLOB.dead_mob_list))
-		if((isobserver(M) && M.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) || ishuman(M) && is_mainship_level(M.z))
+		if((isobserver(M) && M.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) || ishuman(M) && (is_mainship_level(M.z) || istype(get_area(M), /area/forward_base)))
 			playsound_client(M.client, sound_to_play, M, vol = 45)
 
 	for(var/mob/living/silicon/decoy/ship_ai/AI in GLOB.ai_mob_list)
@@ -202,15 +202,15 @@
 		return FALSE
 	. = ..()
 
-//AI shipside announcement, that uses announcement mechanic instead of talking into comms
-//to ensure that all humans on ship hear it regardless of comms and power
+//AI local PA announcement, that uses announcement mechanic instead of talking into comms
+//to ensure that all humans on the ship or in the bunker hear it regardless of comms and power
 /proc/shipwide_ai_announcement(message, title = MAIN_AI_SYSTEM, sound_to_play = sound('sound/misc/interference.ogg'), signature, ares_logging = ARES_LOG_MAIN, quiet = FALSE)
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
 	for(var/mob/target as anything in targets)
 		if(isobserver(target))
 			continue
 		var/turf/target_turf = get_turf(target)
-		if(!ishuman(target) || isyautja(target) || !is_mainship_level(target_turf?.z))
+		if(!ishuman(target) || isyautja(target) || (!is_mainship_level(target_turf?.z) && !istype(get_area(target_turf), /area/forward_base)))
 			targets.Remove(target)
 
 	if(!isnull(signature))

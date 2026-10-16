@@ -88,6 +88,30 @@
 	skull = /obj/item/skull/drone
 	pelt = /obj/item/pelt/drone
 
+/mob/living/carbon/xenomorph/drone/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+	if(hive && !should_block_game_interaction(src))
+		if(!hive.living_xeno_queen && !get_action(src, /datum/action/xeno_action/onclick/evolve))
+			var/datum/action/xeno_action/onclick/evolve/evolve_action = new()
+			evolve_action.give_to(src)
+		RegisterSignal(hive, COMSIG_HIVE_NEW_QUEEN, PROC_REF(handle_queen))
+
+/// SIGNAL_HANDLER for COMSIG_HIVE_NEW_QUEEN to handle granting/removing evolve button
+/mob/living/carbon/xenomorph/drone/proc/handle_queen(datum/hive_status/hive, mob/living/carbon/xenomorph/queen/new_queen)
+	SIGNAL_HANDLER
+
+	var/datum/action/xeno_action/onclick/evolve/evolve_action = get_action(src, /datum/action/xeno_action/onclick/evolve)
+	if(new_queen)
+		// New queen: Remove evolve action if we still need evo
+		if(evolve_action && evolution_stored < evolution_threshold)
+			qdel(evolve_action)
+		return
+	// Queen death: Add evolve action if we don't already have it
+	if(evolve_action)
+		return
+	evolve_action = new()
+	evolve_action.give_to(src)
+
 /obj/item/organ/xeno/drone
 	name = "drone heart"
 	icon_state = "heart_t1"

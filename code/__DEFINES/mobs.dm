@@ -176,6 +176,15 @@
 
 //=================================================
 
+/*   SPECIAL LIGHTING DEFINES   */
+
+#define SPECIAL_LIGHTING_PREROUND "preround"
+#define SPECIAL_LIGHTING_SUNSET "sunset"
+#define SPECIAL_LIGHTING_SUNRISE "sunrise"
+#define SPECIAL_LIGHTING_SELF_DESTRUCTION "self destruction"
+
+//=================================================
+
 //Languages!
 #define LANGUAGE_HUMAN 1
 #define LANGUAGE_ALIEN 2

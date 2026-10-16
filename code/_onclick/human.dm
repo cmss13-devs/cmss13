@@ -98,6 +98,7 @@
 	return
 
 /atom/proc/attack_hand_secondary(mob/user)
+	SHOULD_CALL_PARENT(TRUE)
 	return
 
 /mob/living/carbon/human/MouseDrop_T(atom/dropping, mob/living/user)

@@ -146,4 +146,5 @@
 	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 /obj/item/proc/attack_secondary(mob/living/target, mob/living/user)
+	SHOULD_CALL_PARENT(TRUE)
 	return

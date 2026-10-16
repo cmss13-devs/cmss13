@@ -97,12 +97,6 @@
 	update_icon()
 	return TRUE
 
-/obj/item/weapon/gun/energy/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
-	qdel(projectile_to_fire)
-	if(refund)
-		cell.charge += charge_cost
-	return TRUE
-
 /obj/item/weapon/gun/energy/get_examine_text(mob/user)
 	. = ..()
 	if(has_charge_meter && cell)

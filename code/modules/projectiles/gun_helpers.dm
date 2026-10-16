@@ -62,12 +62,6 @@ DEFINES in setup.dm, referenced here.
 	Also where the gun will do final attachment calculations if the gun fired an attachment bullet.
 	This must return positive to continue burst firing or so that you don't hear *click*.
 
-	delete_bullet() //Important for point blanking and jams, but can be called on for other reasons (that are
-	not currently used). If the gun makes a bullet but doesn't fire it, this will be called on through clear_jam().
-	This is also used to delete the bullet when you directly fire a bullet without going through the Fire() process,
-	like with the mentioned point blanking/suicide.
-
-
 	Other procs are pretty self explanatory, and what is listed above is what you should usually change for unusual
 	cases. So long as the gun can return true on able_to_fire() then move on to load_into_chamber() and finally
 	reload_into_chamber(), you're in good shape. Those three procs basically make up the fire cycle, and if they

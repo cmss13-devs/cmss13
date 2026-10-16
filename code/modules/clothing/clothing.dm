@@ -623,6 +623,7 @@
 	return null
 
 /obj/item/clothing/attack_hand_secondary(mob/user)
+	. = ..()
 	var/obj/item/storage/internal/pockets = get_pockets()
 	if(pockets && CAN_PICKUP(user, src))
 		pockets.open(user)

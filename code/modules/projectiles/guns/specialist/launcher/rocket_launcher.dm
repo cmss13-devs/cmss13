@@ -90,14 +90,6 @@
 /obj/item/weapon/gun/launcher/rocket/reload_into_chamber(mob/user)
 	return TRUE
 
-/obj/item/weapon/gun/launcher/rocket/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
-	if(!current_mag)
-		return
-	qdel(projectile_to_fire)
-	if(refund)
-		current_mag.current_rounds++
-	return TRUE
-
 /obj/item/weapon/gun/launcher/rocket/proc/make_rocket(mob/user, drop_override = 0, empty = 1)
 	if(!current_mag)
 		return
@@ -332,9 +324,6 @@
 /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/can_reload(mob/user, obj/item/ammo_magazine/magazine)
 	to_chat(usr, SPAN_WARNING("You cannot reload \the [src]!"))
 	return FALSE
-
-/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/reload(mob/user, obj/item/ammo_magazine/magazine)
-	return can_reload(user, magazine)
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/unload()
 	to_chat(usr, SPAN_WARNING("You cannot unload \the [src]!"))

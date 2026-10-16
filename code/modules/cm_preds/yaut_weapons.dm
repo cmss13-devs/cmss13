@@ -1390,12 +1390,6 @@
 	update_icon()
 	return TRUE
 
-/obj/item/weapon/gun/launcher/spike/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
-	qdel(projectile_to_fire)
-	if(refund)
-		spikes++
-	return TRUE
-
 /obj/item/weapon/gun/energy/yautja
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/pred.dmi'
 	icon_state = null
@@ -1486,12 +1480,6 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/reload_into_chamber()
 	update_icon()
-	return TRUE
-
-/obj/item/weapon/gun/energy/yautja/plasmarifle/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
-	qdel(projectile_to_fire)
-	if(refund)
-		charge_time += 7
 	return TRUE
 
 #define FIRE_MODE_STANDARD "Standard"
@@ -1588,13 +1576,6 @@
 		return TRUE //Enough charge for a shot.
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/reload_into_chamber()
-	return TRUE
-
-/obj/item/weapon/gun/energy/yautja/plasmapistol/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
-	qdel(projectile_to_fire)
-	if(refund)
-		charge_time += shot_cost
-		log_debug("Plasma Pistol refunded shot.")
 	return TRUE
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/use_unique_action()
@@ -1773,15 +1754,6 @@
 		return TRUE //Enough charge for a shot.
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/reload_into_chamber()
-	return TRUE
-
-/obj/item/weapon/gun/energy/yautja/plasma_caster/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
-	qdel(projectile_to_fire)
-	if(refund)
-		source.charge += charge_cost
-		var/perc = source.charge / source.charge_max * 100
-		var/mob/living/carbon/human/user = usr //Hacky...
-		user.update_power_display(perc)
 	return TRUE
 
 #undef FLAY_STAGE_SCALP

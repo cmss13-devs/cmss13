@@ -1267,9 +1267,6 @@ and you're good to go.
 
 	return in_chamber //Returns the projectile if it's actually successful.
 
-/obj/item/weapon/gun/proc/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
-	return
-
 /obj/item/weapon/gun/proc/clear_jam(obj/projectile/projectile_to_fire, mob/user as mob) //Guns jamming, great.
 	flags_gun_features &= ~GUN_BURST_FIRING // Also want to turn off bursting, in case that was on. It probably was.
 	extra_delay = 2 + (burst_delay + extra_delay)*2 // Some extra delay before firing again.
@@ -1461,9 +1458,10 @@ and you're good to go.
 #define EXECUTION_CHECK (attacked_mob.stat == UNCONSCIOUS || attacked_mob.is_mob_restrained()) && (user.zone_selected=="head") && ((user.a_intent == INTENT_DISARM) || (user.a_intent == INTENT_GRAB))
 
 /obj/item/weapon/gun/attack_secondary(mob/living/target, mob/living/user)
+	. = ..()
 	try_activate_attachable_weapon()
 	if(!active_attachable)
-		return ..()
+		return
 	active_attachable.attack(target, user)
 
 /obj/item/weapon/gun/attack(mob/living/attacked_mob, mob/living/user, dual_wield)

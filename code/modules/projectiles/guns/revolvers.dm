@@ -324,12 +324,6 @@
 		rotate_cylinder()
 		return 1
 
-/obj/item/weapon/gun/revolver/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
-	qdel(projectile_to_fire)
-	if(refund && current_mag)
-		current_mag.current_rounds++
-	return TRUE
-
 // FLUFF kinda
 /obj/item/weapon/gun/revolver/proc/close_chamber(mob/user)
 	if(current_mag && !current_mag.chamber_closed)

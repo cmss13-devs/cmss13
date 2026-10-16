@@ -776,15 +776,6 @@ can cause issues with ammo types getting mixed up during the burst.
 		return in_chamber
 	//We can't make a projectile without a mag or active attachable.
 
-
-/obj/item/weapon/gun/shotgun/double/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
-	qdel(projectile_to_fire)
-	if(!current_mag)
-		return
-	if(refund)
-		current_mag.current_rounds++
-	return TRUE
-
 /obj/item/weapon/gun/shotgun/double/reload_into_chamber(mob/user)
 	if(!current_mag)
 		return

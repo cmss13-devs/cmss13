@@ -96,6 +96,8 @@
 #define SMARTGUNNER_BACKPACK_OVERRIDE (1<<15)
 /// The item will incur click delay if an empty adjacent tile is clicked
 #define ADJACENT_CLICK_DELAY (1<<16)
+/// The item can initiate a jungle magazine construct
+#define JUNGLE_MAG_BINDER (1<<17)
 //==========================================================================================
 
 

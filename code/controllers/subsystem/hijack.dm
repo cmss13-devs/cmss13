@@ -508,7 +508,7 @@ SUBSYSTEM_DEF(hijack)
 		if(lifeboat && lifeboat.available)
 			lifeboat.status = LIFEBOAT_INACTIVE
 
-/// Unlocks all marine dropship and optionally ert dropship doors on the mainship
+/// Unlocks all marine dropship, escape pod, and optionally ert dropship doors on the mainship
 /datum/controller/subsystem/hijack/proc/unlock_all_dropship_doors(include_ert=TRUE)
 	for(var/obj/docking_port/mobile/shuttle as anything in SSshuttle.mobile)
 		var/turf/location = get_turf(shuttle)

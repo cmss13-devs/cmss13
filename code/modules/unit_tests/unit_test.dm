@@ -164,7 +164,10 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 	var/duration = REALTIMEOFDAY
 
 	log_world("::group::[test_path]")
-	test.Run()
+	try
+		test.Run()
+	catch(var/exception/exception)
+		test.Fail("Test runtimed: [exception.name]\nStack trace: [exception.desc]", exception.file, exception.line)
 
 	duration = REALTIMEOFDAY - duration
 	GLOB.current_test = null

@@ -15,6 +15,7 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 	// color = ... (Colors can be names - "red, green, grey, cyan" or a HEX color code "#FF0000")
 	var/dat // Page content
 	var/html_link = ""
+	/// will reflect the current state of the map, folded=TRUE (small item, undreadable) folded=FALSE (large item, readable)
 	var/folded = FALSE
 
 
@@ -54,7 +55,6 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 		item_state = "map"
 		map_reader.update_inv_l_hand()
 		map_reader.update_inv_r_hand()
-		return
 	else
 		to_chat(usr, SPAN_INFO("You fold up the map, its now much smaller."))
 		w_class = SIZE_TINY
@@ -63,7 +63,6 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 		item_state = ""
 		map_reader.update_inv_l_hand()
 		map_reader.update_inv_r_hand()
-		return
 
 
 /obj/item/map/attack()
@@ -105,8 +104,8 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 
 				</html>
 			"}
-	show_browser(usr, dat, name, "papermap", width = 1280, height = 720)
-	onclose(usr, "papermap", src, "test")
+	show_browser(usr, dat, name, "papermap", width = 1280, height = 720, use_onclose = FALSE)
+	onclose(usr, "papermap", src)
 
 
 /obj/item/map/Topic(href, href_list)

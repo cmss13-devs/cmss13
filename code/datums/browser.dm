@@ -157,7 +157,11 @@
 		setup_onclose()
 
 /datum/browser/proc/setup_onclose()
-	return //ITS BROKEN ITS BROKEN ITS BROKEN
+	set waitfor = 0 //winexists sleeps, so we don't need to.
+	for(var/i in 1 to 10)
+		if(user && winexists(user, window_id))
+			onclose(user, window_id, ref)
+			break
 
 /datum/browser/proc/close()
 	if(!isnull(window_id))//null check because this can potentially nuke goonchat
@@ -251,7 +255,20 @@ CLIENT_VERB(windowclose, atomref as text|null, params as text|null)
 		mob.unset_interaction()
 	return
 
-/proc/show_browser(client/target, browser_content, browser_name, id = null, window_options = null, closeref, width, height, existing_container = FALSE, list/extra_stylesheets, list/extra_headers)
+/proc/show_browser( \
+    client/target, \
+    browser_content, \
+    browser_name, \
+    id = null, \
+    window_options = null, \
+    closeref, \
+    width, \
+    height, \
+    existing_container = FALSE, \
+    list/extra_stylesheets, \
+    list/extra_headers, \
+    use_onclose = TRUE \
+)
 	if(!target)
 		return
 	if(!istype(target))
@@ -279,7 +296,7 @@ CLIENT_VERB(windowclose, atomref as text|null, params as text|null)
 	for(var/header in extra_headers)
 		popup.add_head_content(header)
 
-	popup.open()
+	popup.open(use_onclose)
 
 /datum/browser/modal
 	var/opentime = 0

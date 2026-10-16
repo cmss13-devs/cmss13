@@ -137,6 +137,10 @@
 		playsound(loc, 'sound/items/megaphone.ogg', 100, FALSE, TRUE)
 		user.langchat_speech(message, langchat_long_listeners, speaking, additional_styles = list("langchat_announce"), split_long_messages = TRUE)
 
+		if(ishuman(user))
+			var/mob/living/carbon/human/speaking_human = user
+			speaking_human.move_mouth_message(message)
+
 		COOLDOWN_START(src, spam_cooldown, spam_cooldown_time)
 
 	// not on active hand

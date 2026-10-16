@@ -27,7 +27,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	flags_atom = FPRINT|CONDUCT
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE
+	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMOUTH
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	actions_types = list(/datum/action/item_action/toggle)
 	siemens_coefficient = 0.9
@@ -51,14 +51,14 @@
 	if(up)
 		vision_impair = VISION_IMPAIR_ULTRA
 		flags_inventory |= COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
-		flags_inv_hide |= HIDEEARS|HIDEEYES|HIDEFACE
+		flags_inv_hide |= HIDEEARS|HIDEEYES|HIDEFACE|HIDEMOUTH
 		icon_state = initial(icon_state)
 		eye_protection = initial(eye_protection)
 		to_chat(usr, SPAN_NOTICE("You flip [src] down to protect your eyes."))
 	else
 		vision_impair = VISION_IMPAIR_NONE
 		flags_inventory &= ~(COVEREYES|COVERMOUTH|BLOCKSHARPOBJ)
-		flags_inv_hide &= ~(HIDEEARS|HIDEEYES|HIDEFACE)
+		flags_inv_hide &= ~(HIDEEARS|HIDEEYES|HIDEFACE|HIDEMOUTH)
 		icon_state = "[initial(icon_state)]up"
 		eye_protection = EYE_PROTECTION_NONE
 		to_chat(usr, SPAN_NOTICE("You push [src] up out of your face."))
@@ -131,7 +131,7 @@
 	icon_state = "hardhat0_pumpkin"//Could stand to be renamed
 	item_state = "hardhat0_pumpkin"
 	flags_inventory = COVEREYES|COVERMOUTH
-	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEALLHAIR
+	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEALLHAIR|HIDEMOUTH
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_EYES
 	var/brightness_on = 2 //luminosity when on
 	var/on = 0

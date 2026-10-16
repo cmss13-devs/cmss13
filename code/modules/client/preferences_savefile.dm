@@ -398,6 +398,12 @@
 	predator_h_style = savefile.tree["pred_h_style"]
 	predator_skin_color = savefile.tree["pred_skin_color"]
 	predator_flavor_text = savefile.tree["pred_flavor_text"]
+	predator_mandible_ur = savefile.tree["pred_mandible_ur"]
+	predator_mandible_ul = savefile.tree["pred_mandible_ul"]
+	predator_mandible_lr = savefile.tree["pred_mandible_lr"]
+	predator_mandible_ll = savefile.tree["pred_mandible_ll"]
+
+	show_mouths = savefile.tree["show_mouths"]
 
 	commander_status = savefile.tree["commander_status"]
 	commander_sidearm = savefile.tree["co_sidearm"]
@@ -578,6 +584,10 @@
 	predator_h_style = sanitize_inlist(predator_h_style, GLOB.yautja_hair_styles_list, initial(predator_h_style))
 	predator_skin_color = sanitize_inlist(predator_skin_color, PRED_SKIN_COLOR, initial(predator_skin_color))
 	predator_flavor_text = predator_flavor_text ? sanitize_text(predator_flavor_text, initial(predator_flavor_text)) : initial(predator_flavor_text)
+	predator_mandible_ur = sanitize_integer(predator_mandible_ur, FALSE, TRUE, TRUE)
+	predator_mandible_ul = sanitize_integer(predator_mandible_ul, FALSE, TRUE, TRUE)
+	predator_mandible_lr = sanitize_integer(predator_mandible_lr, FALSE, TRUE, TRUE)
+	predator_mandible_ll = sanitize_integer(predator_mandible_ll, FALSE, TRUE, TRUE)
 	commander_status = sanitize_inlist(commander_status, GLOB.whitelist_hierarchy, initial(commander_status))
 	commander_sidearm   = sanitize_inlist(commander_sidearm, (CO_GUNS + COUNCIL_CO_GUNS), initial(commander_sidearm))
 	co_career_path = sanitize_inlist(co_career_path, list("Infantry", "Engineering", "Medical", "Intel", "Logistics", "Aviation", "Tanker"), initial(co_career_path))
@@ -613,6 +623,8 @@
 	show_cooldown_messages = sanitize_integer(show_cooldown_messages, FALSE, TRUE, FALSE)
 
 	chem_presets = sanitize_islist(chem_presets, list())
+
+	show_mouths = sanitize_integer(show_mouths, FALSE, TRUE, TRUE)
 
 	if(!observer_huds)
 		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE, "Hunter HUD"= FALSE, HUD_MENTOR_SIGHT = FALSE)
@@ -710,6 +722,10 @@
 	savefile.tree["pred_h_style"] = predator_h_style
 	savefile.tree["pred_skin_color"] = predator_skin_color
 	savefile.tree["pred_flavor_text"] = predator_flavor_text
+	savefile.tree["pred_mandible_ur"] = predator_mandible_ur
+	savefile.tree["pred_mandible_ul"] = predator_mandible_ul
+	savefile.tree["pred_mandible_lr"] = predator_mandible_lr
+	savefile.tree["pred_mandible_ll"] = predator_mandible_ll
 
 	savefile.tree["commander_status"] = commander_status
 	savefile.tree["co_sidearm"] = commander_sidearm
@@ -762,8 +778,11 @@
 
 	savefile.tree["custom_keybinds"] = custom_keybinds
 
+	savefile.tree["show_mouths"] = show_mouths
+
 	if(write)
 		savefile.save()
+
 
 	return TRUE
 
@@ -793,6 +812,7 @@
 		body_presentation = save_data["body_presentation"]
 		language = save_data["language"]
 		spawnpoint = save_data["spawnpoint"]
+		m_style = save_data["mouth_style_name"]
 
 		//colors to be consolidated into hex strings (requires some work with dna code)
 		r_hair = save_data["hair_red"]
@@ -876,6 +896,7 @@
 	skin_color = sanitize_skin_color(skin_color)
 	body_type = sanitize_body_type(body_type)
 	body_size = sanitize_body_size(body_size)
+	m_style = sanitize_inlist(m_style, GLOB.mouth_styles_list, initial(m_style))
 	r_hair = sanitize_integer(r_hair, 0, 255, initial(r_hair))
 	g_hair = sanitize_integer(g_hair, 0, 255, initial(g_hair))
 	b_hair = sanitize_integer(b_hair, 0, 255, initial(b_hair))
@@ -983,6 +1004,7 @@
 	save_data["backbag"] = backbag
 	//save_data["blood_type"] = blood_type
 	save_data["spawnpoint"] = spawnpoint
+	save_data["mouth_style_name"] << m_style
 
 	//Jobs
 	save_data["alternate_option"] = alternate_option

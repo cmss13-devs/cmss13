@@ -123,6 +123,11 @@
 /// Dictates whether we appear as unknown.
 #define HIDEFACE (1<<11)
 
+/// if set on worn item will make the mouth clenched when speaking (whistle, cigarette, knife etc)
+#define HIDEMOUTHCLENCHED (1<<12)
+/// if set will hide the mouth completely (masks, scarves)
+#define HIDEMOUTH (1<<13)
+
 
 //==========================================================================================
 

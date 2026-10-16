@@ -1335,19 +1335,23 @@
 	else
 		. = "No reagents"
 
-/obj/item/storage/pouch/pressurized_reagent_canister/verb/flush_container()
-	set category = "Weapons"
-	set name = "Flush Container"
-	set desc = "Forces the container to empty its reagents."
+/obj/item/storage/pouch/pressurized_reagent_canister/verb/flush_canister()
+	set category = "Object"
+	set name = "Flush Canister In Pouch"
+	set desc = "Forces the reagent canister inside the pouch to empty its reagents."
 	set src in usr
 	if(!inner)
-		to_chat(usr, SPAN_WARNING("There is no container inside this pouch!"))
+		to_chat(usr, SPAN_WARNING("There is no canister inside [src]!"))
+		return
+	if(inner.reagents.total_volume <= 0)
+		to_chat(usr, SPAN_NOTICE("[src] is already empty."))
 		return
 
 	to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 3 seconds..."))
 	if(do_after(usr, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		if(inner)
-			to_chat(usr, SPAN_NOTICE("You flush [src]."))
+			playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
+			to_chat(usr, SPAN_WARNING("You work the flush valve and successfully flush [inner]'s contents!"))
 			inner.reagents.clear_reagents()
 			update_icon()
 

@@ -7,6 +7,7 @@
 	var/covered = 1 //1 for theres the cover, 0 if there isn't.
 	unslashable = TRUE
 	unacidable = TRUE
+	plane = FLOOR_PLANE
 	layer = CATWALK_LAYER
 
 /obj/structure/catwalk/Initialize()

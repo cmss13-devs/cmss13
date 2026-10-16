@@ -1358,6 +1358,79 @@
 	icon_state = "cmb_swatleader_uniform"
 	worn_state = "cmb_swatleader_uniform"
 
+//=========================//LACN\\================================\\
+
+/obj/item/clothing/under/marine/lacn
+	name = "\improper LACN Uniform"
+	desc = "A standard-issue uniform worn by members of the LACN. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "lacn_uniform"
+	worn_state = "lacn_uniform"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	)
+
+/obj/item/clothing/under/marine/lacn/police
+	name = "\improper LACN Army Police Uniform"
+	desc = "A standard-issue uniform worn by LACN Army Police. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "lacn_police"
+	worn_state = "lacn_police"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+
+/obj/item/clothing/under/marine/lacn/pilot
+	name = "\improper LACN Flightsuit"
+	desc = "A standard-issue flightsuit worn by LACN Pilots. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "lacn_flightsuit"
+	worn_state = "lacn_flightsuit"
+	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
+
+/obj/item/clothing/under/marine/lacn/medic
+	name = "\improper LACN Medical Technician jumpsuit"
+	desc = "Standard-issue jumpsuit worn by LACN Medical Technicians. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "lacn_medic"
+	worn_state = "lacn_medic"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+
+/obj/item/clothing/under/marine/lacn/req
+	name = "\improper LACN Utility Jumpsuit"
+	desc = "A standard-issue jumpsuit worn by LACN logistics personal. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "lacn_req"
+	worn_state = "lacn_req"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+
+/obj/item/clothing/under/marine/lacn/engi
+	name = "\improper LACN Engineer Uniform"
+	desc = "A standard-issue uniform worn by LACN engineering and maintenace personal. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "lacn_engi"
+	worn_state = "lacn_engi"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
+
+/obj/item/clothing/under/marine/lacn/engi/alt
+	name = "\improper LACN Utility Jumpsuit"
+	desc = "A standard-issue jumpsuit worn by LACN engineering and maintenace personal. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "lacn_engi_alt"
+	worn_state = "lacn_engi_alt"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+
+/obj/item/clothing/under/marine/lacn/co
+	name = "\improper LACN Commanding Officer Uniform"
+	desc = "A standard-issue jumpsuit worn by Commanders of the LACN. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "lacn_CO"
+	worn_state = "lacn_CO"
+
+/obj/item/clothing/under/rank/synthetic/lacn/synth
+	name = "\improper LACN Support Synthetic Uniform"
+	desc = "A standard-issue uniform worn by synthetics of the LACN."
+	icon_state = "lacn_synth"
+	worn_state = "lacn_synth"
+	flags_jumpsuit = FALSE
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	)
 
 //=========================//Freelancer\\================================\\
 

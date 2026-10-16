@@ -1486,6 +1486,17 @@
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_MARINE
 
+/obj/item/device/radio/headset/almayer/sof/survivor_lacn
+	name = "LACN garrisoner radio headset"
+	desc = "Used by LACN personnel and their private contractors working on LACN vessels and installations. All the text written on it seems to be written in Spanish and Portuguese."
+	icon_state = "ro_headset" //placeholder?
+	frequency = LACN_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/soc/lacn)
+	additional_hud_types = list(MOB_HUD_FACTION_LACN, MOB_HUD_FACTION_MARINE)
+	volume = RADIO_VOLUME_QUIET
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_MARINE
+
 /obj/item/device/radio/headset/almayer/mcom/vc
 	name = "marine vehicle crew radio headset"
 	desc = "Used by USCM vehicle crew, features a non-standard brace. Channels are as follows: :v - marine command, :n - engineering, :m - medbay, :u - requisitions."

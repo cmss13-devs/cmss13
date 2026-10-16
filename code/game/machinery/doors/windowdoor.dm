@@ -22,7 +22,7 @@
 /obj/structure/machinery/door/window/Destroy()
 	QDEL_NULL(electronics)
 	density = FALSE
-	playsound(src, "windowshatter", 50, 1)
+	playsound(src, SOUND_WINDOWSHATTER, 50, 1)
 	. = ..()
 
 /obj/structure/machinery/door/window/initialize_pass_flags(datum/pass_flags_container/PF)

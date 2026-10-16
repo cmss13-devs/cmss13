@@ -179,7 +179,7 @@
 	if(!can_build_gland(target, user))
 		return
 
-	playsound(plant_target, "alien_resin_build", 25)
+	playsound(plant_target, SOUND_ALIEN_RESIN_BUILD, 25)
 	new /obj/effect/alien/weeds/node(plant_target, null, null, GLOB.hive_datum[hivenumber])
 	qdel(src)
 
@@ -268,7 +268,7 @@
 
 	if(!can_build_gland(target, user))
 		return
-	playsound(target, "alien_resin_build", 25)
+	playsound(target, SOUND_ALIEN_RESIN_BUILD, 25)
 	var/obj/effect/alien/resin/chem_producer/producer = new to_construct(target)
 	if(xeno_organ_flags & XENO_ORGAN_FRESH)
 		producer.name = "enhanced [producer.name]"

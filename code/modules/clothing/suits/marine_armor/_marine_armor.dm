@@ -100,8 +100,8 @@
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	time_to_unequip = 20
 	time_to_equip = 20
-	pickup_sound = "armorequip"
-	drop_sound = "armorequip"
+	pickup_sound = SOUND_ARMOREQUIP
+	drop_sound = SOUND_ARMOREQUIP
 	equip_sounds = list('sound/handling/putting_on_armor1.ogg')
 	var/armor_variation = 0
 	/// The dmi where the grayscale squad overlays are contained

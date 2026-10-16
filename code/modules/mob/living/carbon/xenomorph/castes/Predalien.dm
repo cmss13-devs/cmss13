@@ -96,7 +96,7 @@
 		hunter_data.dishonored_set = src
 		hud_set_hunter()
 
-	AddComponent(/datum/component/footstep, 4, 25, 11, 2, "alien_footstep_medium")
+	AddComponent(/datum/component/footstep, 4, 25, 11, 2, SOUND_ALIEN_FOOTSTEP_MEDIUM)
 
 /mob/living/carbon/xenomorph/predalien/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	death(cause, gibbed = TRUE)
@@ -237,7 +237,7 @@ You must still listen to the queen.
 				xeno.flick_attack_overlay(target_carbon, "tail")
 				playsound(get_turf(target_carbon), 'sound/effects/gibbed.ogg', 30, 1)
 				target_carbon.apply_effect(get_xeno_stun_duration(target_carbon, 0.5), WEAKEN)
-				playsound(get_turf(target_carbon), "alien_claw_flesh", 30, 1)
+				playsound(get_turf(target_carbon), SOUND_ALIEN_CLAW_FLESH, 30, 1)
 				target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, base_damage_aoe + damage_scale_aoe * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 			playsound(owner, 'sound/voice/predalien_death.ogg', 75, 0, status = 0)
 		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
@@ -405,7 +405,7 @@ You must still listen to the queen.
 	var/datum/behavior_delegate/predalien_base/predalienbehavior = xeno.behavior_delegate
 
 	playsound(target_carbon, 'sound/effects/bang.ogg', 25, 0)
-	playsound(target_carbon,"slam", 50, 1)
+	playsound(target_carbon,SOUND_SLAM, 50, 1)
 	animate(target_carbon, pixel_y = 0, time = 4, easing = BOUNCE_EASING) //animates the smash
 	target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, smash_damage + smash_scale * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 

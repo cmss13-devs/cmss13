@@ -93,7 +93,7 @@
 	if(bcell && bcell.charge > hitcost)
 		status = !status
 		to_chat(user, SPAN_NOTICE("[src] is now [status ? "on" : "off"]."))
-		playsound(loc, "sparks", 25, 1, 6)
+		playsound(loc, SOUND_SPARKS, 25, 1, 6)
 		update_icon()
 	else
 		status = 0

@@ -51,8 +51,8 @@
 	icon = 'icons/landmarks.dmi'
 	icon_state = "prop_gun"
 	flags_item = TWOHANDED
-	pickup_sound = "gunequip"
-	drop_sound = "gunrustle"
+	pickup_sound = SOUND_GUNEQUIP
+	drop_sound = SOUND_GUNRUSTLE
 	pickupvol = 7
 	dropvol = 15
 

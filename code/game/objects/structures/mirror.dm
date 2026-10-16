@@ -78,7 +78,7 @@
 /obj/structure/mirror/proc/shatter(mob/living/carbon/human/user, grabbed = FALSE)
 	shattered = TRUE
 	icon_state = "mirror_broke"
-	playsound(src, "shatter", 70, 1)
+	playsound(src, "SOUND_SHATTER", 70, 1)
 	desc = "Oh no, seven years of bad luck!"
 	var/obj/item/shard/mirror_shard = new(loc)
 	if(!user)

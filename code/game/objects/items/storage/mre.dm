@@ -13,7 +13,7 @@
 	can_hold = list()
 	storage_slots = 4
 	max_w_class = SIZE_SMALL
-	use_sound = "rip"
+	use_sound = SOUND_RIP
 	var/trash_item = /obj/item/trash/uscm_mre
 	var/icon_closed = "mealpack"
 	var/icon_opened = "mealpackopened"

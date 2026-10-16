@@ -13,7 +13,7 @@
 	icon_state = "secure"
 	flags_atom = FPRINT|CONDUCT
 	force = 8
-	hitsound = "swing_hit"
+	hitsound = SOUND_SWING_HIT
 	throw_speed = SPEED_FAST
 	throw_range = 4
 	w_class = SIZE_LARGE

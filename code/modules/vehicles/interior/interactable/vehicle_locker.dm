@@ -133,7 +133,7 @@
 /obj/structure/vehicle_locker/on_pocket_close(watchers)
 	if(!watchers)
 		icon_state = initial(icon_state)
-		playsound(src.loc, "toolbox", 25, TRUE, 3)
+		playsound(src.loc, SOUND_TOOLBOX, 25, TRUE, 3)
 
 /obj/structure/vehicle_locker/tank
 	name = "storage compartment"
@@ -155,7 +155,7 @@
 
 /obj/structure/vehicle_locker/med/on_pocket_close(watchers)
 	if(!watchers)
-		playsound(src.loc, "toolbox", 25, TRUE, 3)
+		playsound(src.loc, SOUND_TOOLBOX, 25, TRUE, 3)
 
 /obj/structure/vehicle_locker/med/update_icon()
 	if(has_tray)

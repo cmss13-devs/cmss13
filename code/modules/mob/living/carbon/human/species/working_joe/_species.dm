@@ -14,7 +14,7 @@
 	emote_panel_type = /datum/joe_emote_panel/hazard
 
 /datum/species/synthetic/gen_two/gen_one/working_joe/hazard/handle_death(mob/living/carbon/human/dying_joe, gibbed)
-	playsound(get_turf(dying_joe), "hj_death", 25, FALSE)
+	playsound(get_turf(dying_joe), SOUND_HJ_DEATH, 25, FALSE)
 
 /datum/species/synthetic/gen_two/gen_one/working_joe/upp
 	name = SYNTH_UPP_JOE
@@ -22,7 +22,7 @@
 	emote_panel_type = /datum/joe_emote_panel/upp
 
 /datum/species/synthetic/gen_two/gen_one/working_joe/upp/handle_death(mob/living/carbon/human/dying_joe, gibbed)
-	playsound(get_turf(dying_joe), "upp_wj_death", 25, FALSE)
+	playsound(get_turf(dying_joe), SOUND_UPP_WJ_DEATH, 25, FALSE)
 
 /datum/species/synthetic/gen_two/gen_one/working_joe/daniel
 	name = SYNTH_DANIEL
@@ -36,7 +36,7 @@
 	eyes_harm = list(255, 0, 0)
 
 /datum/species/synthetic/gen_two/gen_one/working_joe/daniel/handle_death(mob/living/carbon/human/dying_joe, gibbed)
-	playsound(get_turf(dying_joe), "daniel_death", 25, FALSE)
+	playsound(get_turf(dying_joe), SOUND_DANIEL_DEATH, 25, FALSE)
 
 /datum/species/synthetic/gen_two/gen_one/working_joe/handle_post_spawn(mob/living/carbon/human/joe)
 	. = ..()
@@ -44,7 +44,7 @@
 
 // Special death noise for Working Joe
 /datum/species/synthetic/gen_two/gen_one/working_joe/handle_death(mob/living/carbon/human/dying_joe, gibbed)
-	playsound(get_turf(dying_joe), "wj_death", 25, FALSE)
+	playsound(get_turf(dying_joe), SOUND_WJ_DEATH, 25, FALSE)
 
 /// Open the WJ's emote panel, which allows them to use voicelines
 /datum/species/synthetic/gen_two/gen_one/working_joe/open_emote_panel()

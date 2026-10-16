@@ -329,7 +329,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			return TRUE
 
 		if("keyboard")
-			playsound(src, "keyboard", 15, 1)
+			playsound(src, SOUND_KEYBOARD, 15, 1)
 
 /obj/structure/machinery/computer/supply/ui_status(mob/user)
 	. = ..()
@@ -1270,28 +1270,28 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	//mendoza notices the bad guy
 
-	play_sound_handler("alien_growl", 0.5 SECONDS)
-	play_sound_handler("male_scream", 1 SECONDS)
+	play_sound_handler(SOUND_ALIEN_GROWL, 0.5 SECONDS)
+	play_sound_handler(SOUND_MALE_SCREAM, 1 SECONDS)
 
 	//mendoza is attacked by it
-	play_sound_handler("alien_claw_flesh", 2 SECONDS)
-	play_sound_handler("alien_claw_flesh", 2.5 SECONDS)
-	play_sound_handler(pick("male_scream", "male_pain"), 3 SECONDS)
+	play_sound_handler(SOUND_ALIEN_CLAW_FLESH, 2 SECONDS)
+	play_sound_handler(SOUND_ALIEN_CLAW_FLESH, 2.5 SECONDS)
+	play_sound_handler(pick(SOUND_MALE_SCREAM, SOUND_MALE_PAIN), 3 SECONDS)
 
 	//reacting...
-	play_sound_handler("gun_shotgun_tactical", 4 SECONDS)
-	play_sound_handler("gun_shotgun_tactical", 5 SECONDS)
-	play_sound_handler("m4a3", 6 SECONDS)
-	play_sound_handler("m4a3", 6.5 SECONDS)
-	play_sound_handler("m4a3", 7 SECONDS)
-	play_sound_handler("m4a3", 7.5 SECONDS)
+	play_sound_handler(SOUND_GUN_SHOTGUN_TACTICAL, 4 SECONDS)
+	play_sound_handler(SOUND_GUN_SHOTGUN_TACTICAL, 5 SECONDS)
+	play_sound_handler(SOUND_M4A3, 6 SECONDS)
+	play_sound_handler(SOUND_M4A3, 6.5 SECONDS)
+	play_sound_handler(SOUND_M4A3, 7 SECONDS)
+	play_sound_handler(SOUND_M4A3, 7.5 SECONDS)
 
 	//it didnt work.
-	play_sound_handler(pick("male_scream", "male_pain"), 8.5 SECONDS)
-	play_sound_handler(pick("male_scream", "male_pain"), 9 SECONDS)
+	play_sound_handler(pick(SOUND_MALE_SCREAM, SOUND_MALE_PAIN), 8.5 SECONDS)
+	play_sound_handler(pick(SOUND_MALE_SCREAM, SOUND_MALE_PAIN), 9 SECONDS)
 
 	// he's dead!
-	play_sound_handler("alien_bite", 10 SECONDS)
+	play_sound_handler(SOUND_ALIEN_BITE, 10 SECONDS)
 	play_sound_handler('sound/handling/click_2.ogg', 11 SECONDS) // armor suit light turns off (cause he died)
 
 	var/list/turf/open/clear_turfs = list()

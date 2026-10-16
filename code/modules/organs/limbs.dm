@@ -1195,7 +1195,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 				SPAN_WARNING("You hear a loud cracking sound coming from [owner]!"),
 				SPAN_HIGHDANGER("Something feels like it shattered in your [display_name]!"),
 				SPAN_HIGHDANGER("You hear a sickening crack!"))
-			playsound(owner, "bone_break", 45, TRUE)
+			playsound(owner, SOUND_BONEBREAK, 45, TRUE)
 		start_processing()
 		if(status & LIMB_ROBOT)
 			status = LIMB_ROBOT|LIMB_UNCALIBRATED_PROSTHETIC

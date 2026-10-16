@@ -536,7 +536,7 @@
 	icon_state = "lapd_2019"
 	item_state = "highpower" //placeholder
 
-	fire_sound = "gun_pkd"
+	fire_sound = SOUND_GUN_PKD
 	fire_rattle = 'sound/weapons/gun_pkd_fire01_rattle.ogg'
 	reload_sound = 'sound/weapons/handling/pkd_speed_load.ogg'
 	cocked_sound = 'sound/weapons/handling/pkd_cock.wav'
@@ -655,7 +655,7 @@
 	icon_state = "zhnk72"
 	item_state = "zhnk72"
 
-	fire_sound = "gun_pkd" //sounds stolen from bladerunner revolvers bc they aren't used and sound awesome
+	fire_sound = SOUND_GUN_PKD //sounds stolen from bladerunner revolvers bc they aren't used and sound awesome
 	fire_rattle = 'sound/weapons/gun_pkd_fire01_rattle.ogg'
 	reload_sound = 'sound/weapons/handling/pkd_speed_load.ogg'
 	cocked_sound = 'sound/weapons/handling/pkd_cock.wav' // gotta change this to something else now that you can rotate the cylinder by a single position

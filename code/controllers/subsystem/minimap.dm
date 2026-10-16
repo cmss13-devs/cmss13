@@ -1997,7 +1997,7 @@ SUBSYSTEM_DEF(minimaps)
 	message_admins("[key_name(user)] has updated the <a href='byond://?tacmaps_panel=1'>tactical map</a>.")
 
 /atom/movable/screen/minimap_tool/update/proc/announce_xeno(mob/user)
-	playsound_client(user.client, get_sfx("queen"))
+	playsound_client(user.client, SOUND_QUEEN)
 
 	// Trigger a refresh of all non-live xeno minimaps with new drawings
 	SSminimaps.refresh_static_minimaps(minimap_flag)

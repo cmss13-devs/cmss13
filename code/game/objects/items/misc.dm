@@ -54,7 +54,7 @@
 		user.visible_message(SPAN_NOTICE("[user] grips [src] tightly."), SPAN_NOTICE("You grip [src] tightly."))
 		flags_item |= NODROP|FORCEDROP_CONDITIONAL
 		ADD_TRAIT(user, TRAIT_HOLDS_CANE, TRAIT_SOURCE_ITEM)
-		user.AddComponent(/datum/component/footstep, 6, 35, 4, 1, "cane_step")
+		user.AddComponent(/datum/component/footstep, 6, 35, 4, 1, SOUND_CANE_STEP)
 		gripped = TRUE
 	else
 		user.visible_message(SPAN_NOTICE("[user] loosens \his grip on [src]."), SPAN_NOTICE("You loosen your grip on [src]."))

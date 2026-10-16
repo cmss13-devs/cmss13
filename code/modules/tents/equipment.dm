@@ -101,7 +101,7 @@
 /obj/structure/tent_curtain/attack_hand(mob/user)
 	. = ..()
 	if(!.)
-		playsound(loc, "rustle", 10, TRUE, 4)
+		playsound(loc, SOUND_RUSTLE, 10, TRUE, 4)
 		density = !density
 		update_icon()
 		return TRUE

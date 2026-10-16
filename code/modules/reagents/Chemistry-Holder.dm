@@ -331,7 +331,7 @@
 								to_chat(victim, SPAN_WARNING("\A large [pick("chunk", "drop", "lump")] of [pick("foam", "bubbles", "froth")] misses You narrowly!"))
 								return
 							if(!prob(min(victim.getarmor(null, ARMOR_BIO)*2, 100)) && created_volume >= 5)
-								playsound(victim, "acid_sizzle", 15, TRUE)
+								playsound(victim, SOUND_ACID_SIZZLE, 15, TRUE)
 								to_chat(victim, SPAN_BOLDWARNING("[my_atom] chemicals from [my_atom] splash on you!"))
 								victim.reagents.add_reagent(result_to_splash.id, max(1+rand(0,2), rand(4,6)))
 								victim.reagents.add_reagent(recipe_to_splash.id, max(1+rand(0,2), rand(4,6)))

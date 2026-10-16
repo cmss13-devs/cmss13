@@ -63,7 +63,7 @@
 	desc = "A sturdy case designed to store and charge xenomorph IFF tags. Provided by the Wey-Yu Research and Data(TM) Division."
 	icon = 'icons/obj/items/Marine_Research.dmi'
 	icon_state = "tag_box"
-	use_sound = "toolbox"
+	use_sound = SOUND_TOOLBOX
 	storage_slots = 8
 	can_hold = list(
 		/obj/item/iff_tag,

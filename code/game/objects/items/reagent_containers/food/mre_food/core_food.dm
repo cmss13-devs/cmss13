@@ -32,7 +32,7 @@
 	M.put_in_hands(I)
 	I.add_fingerprint(M)
 	to_chat(M, SPAN_NOTICE("You pull open the package of the meal!"))
-	playsound(loc, "rip", 15, 1)
+	playsound(loc, SOUND_RIP, 15, 1)
 	qdel(src)
 	return
 

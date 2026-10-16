@@ -125,7 +125,7 @@
 	user.visible_message(SPAN_NOTICE("[user] turns [src] [ready? "on and takes the [fluff_tool] out" : "off and puts the [fluff_tool] back in"]."),
 	SPAN_NOTICE("You turn [src] [ready? "on and take the [fluff_tool] out" : "off and put the [fluff_tool] back in"]."))
 	if(should_spark)
-		playsound(get_turf(src), "sparks", 15, 1, 0)
+		playsound(get_turf(src), SOUND_SPARKS, 15, 1, 0)
 	if(ready)
 		w_class = SIZE_LARGE
 		playsound(get_turf(src), sound_safety_on, 25, 0)

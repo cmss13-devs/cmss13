@@ -121,7 +121,7 @@
 		SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
 		msg_admin_niche("[key_name(usr)] changed [src]'s name to [tmp_label] [ADMIN_JMP(src)]")
 		AddComponent(/datum/component/label, tmp_label)
-		playsound(src, "paper_writing", 15, TRUE)
+		playsound(src, SOUND_PAPER_WRITING, 15, TRUE)
 		return
 
 	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))

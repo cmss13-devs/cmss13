@@ -397,7 +397,7 @@
 				continue
 			ravager_user.flick_attack_overlay(carbon_target, "slash")
 			carbon_target.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
-			playsound(get_turf(carbon_target), "alien_claw_flesh", 30, TRUE)
+			playsound(get_turf(carbon_target), SOUND_ALIEN_CLAW_FLESH, 30, TRUE)
 
 			if(HAS_TRAIT(ravager_user, TRAIT_ABILITY_SUPER_EMPOWER))
 				new /datum/effects/xeno_slow/superslow(carbon_target, ravager_user, ttl = superslow_duration)

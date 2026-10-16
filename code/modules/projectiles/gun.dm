@@ -6,8 +6,8 @@
 	desc = "It's a gun. It's pretty terrible, though."
 	icon_state = ""
 	item_state = "gun"
-	pickup_sound = "gunequip"
-	drop_sound = "gunrustle"
+	pickup_sound = SOUND_GUNEQUIP
+	drop_sound = SOUND_GUNRUSTLE
 	pickupvol = 7
 	dropvol = 15
 	matter = null
@@ -2202,7 +2202,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			if(flashlight.activate_attachment(src, xeno, TRUE))
 				slashed_light = TRUE
 	if(slashed_light)
-		playsound(loc, "alien_claw_metal", 25, 1)
+		playsound(loc, SOUND_ALIEN_CLAW_METAL, 25, 1)
 		xeno.animation_attack_on(src)
 		xeno.visible_message(SPAN_XENOWARNING("[xeno] slashes the lights on [src]!"), SPAN_XENONOTICE("You slash the lights on [src]!"))
 	return XENO_ATTACK_ACTION

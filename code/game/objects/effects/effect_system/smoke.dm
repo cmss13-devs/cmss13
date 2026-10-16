@@ -566,7 +566,7 @@
 	for(var/obj/structure/barricade/barricade in cur_turf)
 		barricade.corrosive_acid_act(XENO_ACID_GAS_BARRICADE_DAMAGE)
 		if(prob(75)) // anti sound spam
-			playsound(src, pick("acid_sizzle", "acid_hit"), 25)
+			playsound(src, pick(SOUND_ACID_SIZZLE, SOUND_ACID_HIT), 25)
 
 	for(var/obj/vehicle/multitile/vehicle in cur_turf)
 		vehicle.take_damage_type(15, "acid")

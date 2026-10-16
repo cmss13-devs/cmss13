@@ -103,6 +103,8 @@ var/path_type = "/obj/item/baseball_bat"
 
 * Changes to the `/config` tree must be made in a way that allows for updating server deployments while preserving previous behaviour. This is due to the fact that the config tree is to be considered owned by the user and not necessarily updated alongside the remainder of the code. The code to preserve previous behaviour may be removed at some point in the future given the OK by maintainers.
 
+* Any use of sounds should be done using the defines in sound_define.dm. Do not directly link a file, make a new define if there isn't one already.
+
 ## Structural
 ### No duplicated code (Don't repeat yourself)
 Copying code from one place to another may be suitable for small, short-time projects, but /tg/station is a long-term project and highly discourages this.

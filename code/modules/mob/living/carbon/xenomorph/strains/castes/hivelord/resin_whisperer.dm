@@ -112,7 +112,7 @@
 	var/datum/resin_construction/resing_construction = GLOB.resin_constructions_list[hivelord.selected_resin]
 	target_turf.visible_message(SPAN_XENONOTICE("The weeds begin pulsating wildly and secrete resin in the shape of \a [resing_construction.construction_name]!"), null, 5)
 	to_chat(owner, SPAN_XENONOTICE("We focus our plasma into the weeds below us and force the weeds to secrete resin in the shape of \a [resing_construction.construction_name]."))
-	playsound(target_turf, "alien_resin_build", 25)
+	playsound(target_turf, SOUND_ALIEN_RESIN_BUILD, 25)
 	return TRUE
 
 // By default, the xeno must be on a weed tile in order to build from a distance.

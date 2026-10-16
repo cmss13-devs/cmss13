@@ -25,7 +25,7 @@
 	var/datum/item_storage_box/stored_ISB //! This contains what previously was known as stored_start, stored_continue, and stored_end
 	var/atom/movable/screen/close/closer = null
 	var/foldable = null
-	var/use_sound = "rustle" //sound played when used. null for no sound.
+	var/use_sound = SOUND_RUSTLE //sound played when used. null for no sound.
 	var/opened = FALSE //Has it been opened before?
 	var/list/content_watchers //list of mobs currently seeing the storage's contents
 	var/storage_flags = STORAGE_FLAGS_DEFAULT
@@ -828,7 +828,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 						update_icon(-transferred_handfuls)
 					else
 						break
-				playsound(user.loc, "rustle", 15, TRUE, 6)
+				playsound(user.loc, SOUND_RUSTLE, 15, TRUE, 6)
 				ammo_dumping.update_icon()
 			else
 				to_chat(user, SPAN_WARNING("[src] is full."))
@@ -857,7 +857,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		origin_storage.remove_from_storage(new_item, user)
 		handle_item_insertion(new_item, TRUE, user) //quiet insertion
 
-	playsound(user.loc, "rustle", 15, TRUE, 6)
+	playsound(user.loc, SOUND_RUSTLE, 15, TRUE, 6)
 	return TRUE
 
 /obj/item/storage/Initialize()

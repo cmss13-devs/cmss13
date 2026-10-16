@@ -502,7 +502,7 @@
 			balloon_alert(user, "*unjammed!*")
 		else
 			to_chat(user, SPAN_NOTICE("You start wildly racking the bolt back and forth attempting to unjam \the [src]!"))
-			playsound(src, "gun_jam_rack", 50, FALSE)
+			playsound(src, SOUND_GUN_JAM_RACK, 50, FALSE)
 			balloon_alert(user, "*rack*")
 		return
 	. = ..()
@@ -763,7 +763,7 @@
 			balloon_alert(user, "*unjammed!*")
 		else
 			to_chat(user, SPAN_NOTICE("You start wildly racking the bolt back and forth attempting to unjam \the [src]!"))
-			playsound(src, "gun_jam_rack", 50, FALSE)
+			playsound(src, SOUND_GUN_JAM_RACK, 50, FALSE)
 			balloon_alert(user, "*rack*")
 		return
 	. = ..()

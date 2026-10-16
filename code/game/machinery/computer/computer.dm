@@ -132,7 +132,7 @@
 	. = ..()
 	if(!.) //not broken or unpowered
 		if(ishuman(usr))
-			playsound(src, "keyboard", 15, 1)
+			playsound(src, SOUND_KEYBOARD, 15, 1)
 
 /obj/structure/machinery/computer/fixer
 	var/all_configs

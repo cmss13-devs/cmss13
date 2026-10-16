@@ -186,7 +186,7 @@
 	inhand_y_dimension = 64
 	force = 15
 	throwforce = 5
-	hitsound = "swing_hit"
+	hitsound = SOUND_SWING_HIT
 	unacidable = TRUE
 	explo_proof = TRUE
 	item_icons = list(

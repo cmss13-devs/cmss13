@@ -268,7 +268,7 @@
 			addtimer(CALLBACK(src, PROC_REF(print_document), selected_document), 3.4 SECONDS)
 
 	if(playsound)
-		playsound(src, "keyboard_alt", 15, 1)
+		playsound(src, SOUND_KEYBOARD_ALT, 15, 1)
 
 
 

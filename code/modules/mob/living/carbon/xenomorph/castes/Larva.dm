@@ -40,7 +40,7 @@
 	health_threshold_dead = -25
 	gib_chance = 25
 	mob_size = MOB_SIZE_SMALL
-	speaking_noise = "larva_talk"
+	speaking_noise = SOUND_LARVA_TALK
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
@@ -225,7 +225,7 @@
 		return FALSE
 
 	last_roar_time = current_time
-	playsound(loc, "alien_roar_larva", 15)
+	playsound(loc, SOUND_ALIEN_ROAR_LARVA, 15)
 	return TRUE
 
 /mob/living/carbon/xenomorph/larva/is_xeno_grabbable()

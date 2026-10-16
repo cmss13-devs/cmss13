@@ -287,7 +287,7 @@
 	force = MELEE_FORCE_WEAK
 	force_wielded = 1
 	attack_verb = list("whacked")
-	hitsound = "swing_hit"
+	hitsound = SOUND_SWING_HIT
 	shield_chance = SHIELD_CHANCE_NONE
 	shield_type = SHIELD_NONE
 
@@ -296,7 +296,7 @@
 	var/wielded_attack_verb = list("charged")
 	var/wielded_hitsound = null
 	var/unwielded_attack_verb = list("whacked")
-	var/unwielded_hitsound = "swing_hit"
+	var/unwielded_hitsound = SOUND_SWING_HIT
 
 	/// This controls how strong the explosion will be on the lunge mine. Higher is better.
 	var/detonation_force = 200

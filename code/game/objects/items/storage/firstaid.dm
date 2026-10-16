@@ -18,7 +18,7 @@
 	var/empty_icon = "kit_empty"
 	throw_speed = SPEED_FAST
 	throw_range = 8
-	use_sound = "toolbox"
+	use_sound = SOUND_TOOLBOX
 	matter = list("plastic" = 2000)
 	can_hold = list(
 		/obj/item/device/healthanalyzer,
@@ -637,7 +637,7 @@
 	)
 	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_QUICK_GATHER|STORAGE_DISABLE_USE_EMPTY
 	storage_slots = null
-	use_sound = "pillbottle"
+	use_sound = SOUND_PILLBOTTLE
 	max_storage_space = 16
 	var/skilllock = SKILL_MEDICAL_MEDIC
 	var/pill_type_to_fill //type of pill to use to fill in the bottle in /Initialize()

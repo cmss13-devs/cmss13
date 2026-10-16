@@ -18,9 +18,9 @@
 /datum/emote/living/carbon/human/yautja/fake_sound/malescream
 	override_say = "Human scream (male)"
 	key = "malescream"
-	sound = "male_scream"
+	sound = SOUND_MALE_SCREAM
 
 /datum/emote/living/carbon/human/yautja/fake_sound/femalescream
 	override_say = "Human scream (female)"
 	key = "femalescream"
-	sound = "female_scream"
+	sound = SOUND_FEMALE_SCREAM

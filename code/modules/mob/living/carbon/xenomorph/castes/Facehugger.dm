@@ -288,7 +288,7 @@
 		return FALSE
 
 	last_roar_time = current_time
-	playsound(loc, "alien_roar_larva", 15)
+	playsound(loc, SOUND_ALIEN_ROAR_LARVA, 15)
 	return TRUE
 
 /mob/living/carbon/xenomorph/facehugger/get_status_tab_items()

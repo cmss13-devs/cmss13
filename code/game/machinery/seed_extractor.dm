@@ -25,7 +25,7 @@
 				container.remove_from_storage(item)
 				item.moveToNullspace()
 
-		playsound(user.loc, "rustle", 15, 1, 6)
+		playsound(user.loc, SOUND_RUSTLE, 15, 1, 6)
 	else
 		extract(object, user)
 

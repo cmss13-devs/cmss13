@@ -261,7 +261,7 @@
 	var/mob/user = ui.user
 	switch(action)
 		if("button_push")
-			playsound(src, get_sfx("terminal_button"), 25, FALSE)
+			playsound(src, SOUND_TERMINAL_BUTTON, 25, FALSE)
 			return FALSE
 
 		if("select_equipment")

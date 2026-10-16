@@ -7,7 +7,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/briefcases_righthand.dmi',
 	)
 	icon_state = "implantbox"
-	use_sound = "toolbox"
+	use_sound = SOUND_TOOLBOX
 	storage_slots = 5
 	can_hold = list(/obj/item/device/implanter)
 	w_class = SIZE_SMALL

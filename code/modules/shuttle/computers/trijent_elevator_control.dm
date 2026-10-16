@@ -119,5 +119,5 @@
 			SSshuttle.moveShuttle(shuttle.id, dockId, TRUE)
 			return TRUE
 		if("button-push")
-			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME * 2, 1)
+			playsound(loc, SOUND_TERMINAL_BUTTON, KEYBOARD_SOUND_VOLUME * 2, 1)
 			return FALSE

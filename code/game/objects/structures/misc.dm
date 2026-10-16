@@ -121,7 +121,7 @@
 	langchat_speech(damage_dealt, get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small"))
 	practice_health -= damage_dealt
 	animation_flash_color(src, "#FF0000", 1)
-	playsound(loc, get_sfx("ballistic_hit"), 20, TRUE, 7)
+	playsound(loc, SOUND_BALLISTIC_HIT, 20, TRUE, 7)
 	if(practice_health <= 0)
 		start_practice_health_reset()
 
@@ -230,7 +230,7 @@
 
 	new broken_state(loc)
 	new /obj/item/shard(loc)
-	playsound(src, "shatter", 25, 1)
+	playsound(src, "SOUND_SHATTER", 25, 1)
 
 	if(occupant)
 		occupant = new occupant(loc) //needed for the hugger variant

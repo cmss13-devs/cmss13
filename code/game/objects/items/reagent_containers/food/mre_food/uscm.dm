@@ -476,7 +476,7 @@
 	icon = 'icons/obj/items/food/mre_food/uscm.dmi'
 	icon_state = "spread"
 	desc = "A creamy and cheesy spread, made out of a processed cheese. Combines well with tortillas and other snacks."
-	open_sound = "rip"
+	open_sound = SOUND_RIP
 	open_message = "You pull open the package of the spread!"
 	volume = 6
 	var/flavor = "cheese spread"

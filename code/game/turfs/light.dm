@@ -88,7 +88,7 @@
 
 /turf/open/floor/light/attack_alien(mob/living/carbon/xenomorph/xeno_attacker) //Xeno breaking light, this makes them basically flashlight that needs a new bulb to go back on
 	if(!(turf_flags & TURF_BROKEN))
-		playsound(src, "windowshatter", 25, 1)
+		playsound(src, SOUND_WINDOWSHATTER, 25, 1)
 		xeno_attacker.animation_attack_on(src)
 		xeno_attacker.visible_message(SPAN_DANGER("\The [xeno_attacker] smashes \the [src]!"),
 		SPAN_DANGER("You smash \the [src]!"),

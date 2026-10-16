@@ -183,7 +183,7 @@
 		overlay_shields()
 
 	if(shielded) // We were shielded, but damage went through.
-		playsound(src, "shield_shatter", 50, 1)
+		playsound(src, SOUND_SHIELD_SHATTER, 50, 1)
 
 	switch(damagetype)
 		if(BRUTE)
@@ -292,7 +292,7 @@
 				victim.add_blood(get_blood_color(), BLOOD_BODY)
 				acid_splash_last = world.time
 				handle_blood_splatter(get_dir(src, victim), 1 SECONDS)
-				playsound(victim, "acid_sizzle", 25, TRUE)
+				playsound(victim, SOUND_ACID_SIZZLE, 25, TRUE)
 				animation_flash_color(victim, "#FF0000") //pain hit flicker
 
 /mob/living/carbon/xenomorph/get_target_lock(access_to_check)

@@ -378,7 +378,7 @@
 
 	usr.visible_message(SPAN_WARNING("[usr] flips [src]!"),
 	SPAN_WARNING("You flip [src]!"))
-	playsound(loc, "metalbang", 25)
+	playsound(loc, SOUND_METALBANG, 25)
 
 	if(climbable)
 		structure_shaken()

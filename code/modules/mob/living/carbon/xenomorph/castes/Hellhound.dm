@@ -51,7 +51,7 @@
 	age = XENO_NO_AGE
 
 	speaking_key = "h"
-	speaking_noise = "hiss_talk"
+	speaking_noise = SOUND_HISS_TALK
 	langchat_color = "#9c7463"
 
 	slash_verb = "bite"
@@ -175,8 +175,8 @@
 
 	hellhound_gorger.visible_message(SPAN_XENODANGER("[hellhound_gorger] gorges at [carbon] with it's spikes."))
 	carbon.apply_armoured_damage(gorge_damage, BRUTE)
-	playsound(hellhound_gorger, "giant_lizard_growl", 30)
-	playsound(carbon, "alien_bite", 30)
+	playsound(hellhound_gorger, SOUND_GIANT_LIZARD_GROWL, 30)
+	playsound(carbon, SOUND_ALIEN_BITE, 30)
 
 /datum/action/xeno_action/onclick/sense_owner/use_ability(atom/layer)
 	var/mob/living/carbon/xenomorph/hellhound/xeno = owner

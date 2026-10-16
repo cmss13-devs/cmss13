@@ -157,7 +157,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(heat_source || burnt)
 		return
 	heat_source = 1000
-	playsound(src.loc,"match",15, 1, 3)
+	playsound(src.loc,SOUND_MATCH,15, 1, 3)
 	damtype = "burn"
 	icon_state = "[initial(icon_state)]_lit"
 	item_state = "[initial(item_state)]_lit"
@@ -841,9 +841,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 			if(istype(src, /obj/item/tool/lighter/zippo) )
 				user.visible_message(SPAN_ROSE("Without even breaking stride, [user] flips open and lights [src] in one smooth movement."))
-				playsound(src.loc,"zippo_open",10, 1, 3)
+				playsound(src.loc,SOUND_ZIPPO_OPEN,10, 1, 3)
 			else
-				playsound(src.loc,"lighter",10, 1, 3)
+				playsound(src.loc,SOUND_LIGHTER,10, 1, 3)
 				if(prob(95))
 					user.visible_message(SPAN_NOTICE("After a few attempts, [user] manages to light [src]."))
 
@@ -875,7 +875,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(!silent)
 			if(istype(src, /obj/item/tool/lighter/zippo) )
 				bearer.visible_message(SPAN_ROSE("You hear a quiet click, as [bearer] shuts off [src] without even looking at what they're doing."))
-				playsound(src.loc,"zippo_close",10, 1, 3)
+				playsound(src.loc,SOUND_ZIPPO_CLOSE,10, 1, 3)
 			else
 				bearer.visible_message(SPAN_NOTICE("[bearer] quietly shuts off [src]."))
 

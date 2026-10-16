@@ -19,7 +19,7 @@
 	force = 6
 	movement_onehanded_acc_penalty_mult = 3
 	wield_delay = WEAPON_DELAY_VERY_FAST //If you modify your pistol to be two-handed, it will still be fast to aim
-	fire_sound = "m4a3"
+	fire_sound = SOUND_M4A3
 	firesound_volume = 25
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
@@ -343,7 +343,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/pistols.dmi'
 	icon_state = "np92"
 	item_state = "np92"
-	fire_sound = "88m4"
+	fire_sound = SOUND_88M4
 	current_mag = /obj/item/ammo_magazine/pistol/np92
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	attachable_allowed = list(
@@ -752,7 +752,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/pistols.dmi'
 	icon_state = "_88m4" // to comply with css standards
 	item_state = "_88m4"
-	fire_sound = "88m4"
+	fire_sound = SOUND_88M4
 	firesound_volume = 20
 	reload_sound = 'sound/weapons/gun_88m4_reload.ogg'
 	unload_sound = 'sound/weapons/gun_88m4_unload.ogg'

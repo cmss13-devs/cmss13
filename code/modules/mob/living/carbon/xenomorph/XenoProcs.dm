@@ -321,7 +321,7 @@
 				KnockDown(1)
 				Stun(1)
 				REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT) //Reset throwing manually.
-				playsound(human_mob, "bonk", 75, FALSE) //bonk
+				playsound(human_mob, SOUND_BONK, 75, FALSE) //bonk
 				return
 
 			if(isyautja(human_mob) && prob(75))//Body slam the fuck out of xenos jumping at your front.

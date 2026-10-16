@@ -103,7 +103,7 @@
 		var/impact_damage = (1 + MOB_SIZE_COEFF/(mob_size + 1))*THROW_SPEED_DENSE_COEFF*cur_speed
 		apply_damage(impact_damage)
 		visible_message(SPAN_DANGER("\The [name] slams into [O]!"), null, null, 5) //feedback to know that you got slammed into a wall and it hurt
-		playsound(O,"slam", 50, 1)
+		playsound(O,SOUND_SLAM, 50, 1)
 	..()
 
 //This is called when the mob or human is thrown into a dense turf or wall
@@ -116,7 +116,7 @@
 		var/impact_damage = (1 + MOB_SIZE_COEFF/(mob_size + 1))*THROW_SPEED_DENSE_COEFF*cur_speed
 		apply_damage(impact_damage)
 		visible_message(SPAN_DANGER("\The [name] slams into [T]!"), null, null, 5) //feedback to know that you got slammed into a wall and it hurt
-		playsound(T,"slam", 50, 1)
+		playsound(T,SOUND_SLAM, 50, 1)
 	..()
 
 /mob/living/proc/near_wall(direction, distance=1)

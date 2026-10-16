@@ -188,7 +188,7 @@
 /obj/item/device/assembly/prox_sensor/attack_alien(mob/living/carbon/xenomorph/xeno)
 	. = ..()
 	if(scanning)
-		playsound(loc, "alien_claw_metal", 25, 1)
+		playsound(loc, SOUND_ALIEN_CLAW_METAL, 25, 1)
 		xeno.animation_attack_on(src)
 		xeno.visible_message(SPAN_XENOWARNING("[xeno] slashes [src], turning it off!"), SPAN_XENONOTICE("You slash [src], turning it off!"))
 		toggle_scan()

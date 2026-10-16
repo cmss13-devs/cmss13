@@ -10,7 +10,7 @@
 	Gun.flags_gun_features |= GUN_SILENCED
 	Gun.muzzle_flash = null
 	if(!HAS_TRAIT_FROM(Gun, TRAIT_GUN_SILENCED, TRAIT_SOURCE_INHERENT))
-		Gun.fire_sound = "gun_silenced"
+		Gun.fire_sound = SOUND_GUN_SILENCED
 
 /datum/element/traitbound/gun_silenced/Detach(datum/target)
 	var/obj/item/weapon/gun/Gun = target
@@ -31,7 +31,7 @@
 	Gun.flags_gun_features |= GUN_SILENCED
 	Gun.muzzle_flash = null
 	if(!HAS_TRAIT_FROM(Gun, TRAIT_GUN_SILENCED_ALT, TRAIT_SOURCE_INHERENT))
-		Gun.fire_sound = "gun_silenced_alt"
+		Gun.fire_sound = SOUND_GUN_SILENCED_ALT
 
 /datum/element/traitbound/gun_silenced/alt/Detach(datum/target)
 	var/obj/item/weapon/gun/Gun = target

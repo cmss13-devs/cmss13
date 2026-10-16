@@ -218,7 +218,7 @@
 
 	apply_damage(shock_damage, BURN, def_zone, used_weapon="Electrocution", enviro=TRUE)
 
-	playsound(loc, "sparks", 25, 1)
+	playsound(loc, SOUND_SPARKS, 25, 1)
 	if(shock_damage > 10)
 		src.visible_message(
 			SPAN_DANGER("[src] was shocked by [source]!"),
@@ -417,14 +417,14 @@
 			animation_attack_on(target, 6)
 			//The volume of the sound takes the minimum between the distance thrown or the max range an item, but no more than 15. Short throws are quieter. Invisible mobs do no sound.
 			if(alpha >= 50)
-				playsound(src, "throwing", min(5*min(get_dist(loc,target),thrown_thing.throw_range), 15), vary = TRUE, sound_range = 6)
+				playsound(src, SOUND_THROWING, min(5*min(get_dist(loc,target),thrown_thing.throw_range), 15), vary = TRUE, sound_range = 6)
 			drop_inv_item_on_ground(I, TRUE)
 			thrown_thing.throw_atom(target, thrown_thing.throw_range, SPEED_SLOW, src, spin_throw, HIGH_LAUNCH)
 		else
 			animation_attack_on(target, 6)
 			//The volume of the sound takes the minimum between the distance thrown or the max range an item, but no more than 15. Short throws are quieter. Invisible mobs do no sound.
 			if(alpha >= 50)
-				playsound(src, "throwing", min(5*min(get_dist(loc,target),thrown_thing.throw_range), 15), vary = TRUE, sound_range = 6)
+				playsound(src, SOUND_THROWING, min(5*min(get_dist(loc,target),thrown_thing.throw_range), 15), vary = TRUE, sound_range = 6)
 			drop_inv_item_on_ground(I, TRUE)
 			thrown_thing.throw_atom(target, thrown_thing.throw_range, thrown_thing.throw_speed, src, spin_throw)
 

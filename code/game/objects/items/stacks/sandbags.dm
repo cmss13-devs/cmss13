@@ -30,7 +30,7 @@
 			var/obj/item/stack/sandbags_empty/E = src
 			src = null
 			var/replace = (user.get_inactive_hand() == E)
-			playsound(user.loc, "rustle", 30, 1, 6)
+			playsound(user.loc, SOUND_RUSTLE, 30, 1, 6)
 			E.use(1)
 			if(!E && replace)
 				user.put_in_hands(new_bags)

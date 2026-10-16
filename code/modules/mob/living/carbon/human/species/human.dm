@@ -92,7 +92,7 @@
 	fire_sprite_prefix = "Standing"
 	fire_sprite_sheet = 'icons/mob/humans/onmob/OnFire.dmi'
 
-	burstscreams = list(MALE = "male_preburst", FEMALE = "female_preburst")
+	burstscreams = list(MALE = SOUND_MALE_PREBURST, FEMALE = SOUND_FEMALE_PREBURST)
 
 /datum/species/human/handle_on_fire(humanoidmob)
 	. = ..()

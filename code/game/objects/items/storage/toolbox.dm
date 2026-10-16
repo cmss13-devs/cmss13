@@ -16,7 +16,7 @@
 	throw_speed = SPEED_FAST
 	throw_range = 7
 	w_class = SIZE_LARGE
-	use_sound = "toolbox"
+	use_sound = SOUND_TOOLBOX
 
 	attack_verb = list("robusted")
 

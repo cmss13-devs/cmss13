@@ -235,7 +235,7 @@
 
 	var/barrage_size = max(round((time_charged / max_charge_time) * max_volley), min_volley) + modifier
 	playsound(xeno, "alien_roarhiss", 30, 0, status = 0)
-	playsound(xeno.loc, "acid_spit", 25, 1)
+	playsound(xeno.loc, SOUND_ACID_SPIT, 25, 1)
 	for(var/index in 1 to barrage_size)
 		var/initial_angle = Get_Angle(xeno, target)
 		var/rand_angle = rand(-scatter, scatter)
@@ -273,7 +273,7 @@
 	var/list/turfs = orange(1, get_turf(xeno)) - get_step(xeno.loc, REVERSE_DIR(xeno.dir))
 	for(var/turf/turf in turfs)
 		for(var/mob/living/carbon/human/target in turf)
-			playsound(target.loc, "acid_strike", 25, 1)
+			playsound(target.loc, SOUND_ACID_STRIKE, 25, 1)
 			var/armor_block_acid = target.getarmor("chest", ARMOR_BIO)
 			var/n_acid_damage = armor_damage_reduction(GLOB.marine_melee, damage, armor_block_acid)
 			if(n_acid_damage <= 0.34*damage)

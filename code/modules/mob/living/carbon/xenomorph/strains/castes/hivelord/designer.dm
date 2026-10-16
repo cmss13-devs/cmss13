@@ -323,7 +323,7 @@
 				set_hive_data(Res, Res.hivenumber)
 
 			to_chat(xeno, SPAN_NOTICE("We create a weedbound wall."))
-			playsound(placed, "alien_resin_build", 25)
+			playsound(placed, SOUND_ALIEN_RESIN_BUILD, 25)
 		else
 			to_chat(xeno, SPAN_WARNING("A wall already exists here."))
 
@@ -341,7 +341,7 @@
 				set_hive_data(Res, Res.hivenumber)
 
 			to_chat(xeno, SPAN_NOTICE("We create a weedbound door."))
-			playsound(new_structure, "alien_resin_build", 25)
+			playsound(new_structure, SOUND_ALIEN_RESIN_BUILD, 25)
 		else
 			to_chat(xeno, SPAN_WARNING("A door already exists here."))
 
@@ -521,7 +521,7 @@
 		bound_weed = new_weed
 		RegisterSignal(bound_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
 	else
-		playsound(src, "alien_resin_break", 25)
+		playsound(src, SOUND_ALIEN_RESIN_BREAK, 25)
 		ScrapeAway()
 
 /turf/closed/wall/resin/weedbound/normal/spawn_nutriplasm(turf/Turf)
@@ -607,7 +607,7 @@
 		bound_weed = new_weed
 		RegisterSignal(bound_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
 	else
-		playsound(src, "alien_resin_break", 25)
+		playsound(src, SOUND_ALIEN_RESIN_BREAK, 25)
 		Dismantle()
 
 /obj/structure/mineral_door/resin/weedbound/normal/spawn_nutriplasm(turf/Turf)
@@ -742,7 +742,7 @@
 			if(good_wall)
 				good_wall.hivenumber = xeno.hivenumber
 				set_hive_data(good_wall, xeno.hivenumber)
-			playsound(node_loc, "alien_resin_build", 25)
+			playsound(node_loc, SOUND_ALIEN_RESIN_BUILD, 25)
 
 		qdel(node)
 		xeno.current_design -= node
@@ -904,7 +904,7 @@
 
 		xeno.visible_message(SPAN_XENONOTICE("Weeds around [target_atom] start to twitch and pump substance towards it, thickening it in process!"),
 			SPAN_XENONOTICE("We start to channel nutrients towards [target_atom], using [plasma_cost] plasma."), null, 5)
-		playsound(target_atom, "alien_resin_build", 25)
+		playsound(target_atom, SOUND_ALIEN_RESIN_BUILD, 25)
 
 		target_atom.add_hiddenprint(xeno) //Tracks who reinforced it for admins
 		return TRUE
@@ -960,7 +960,7 @@
 		if(!design)
 			to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find node to place! Contact a coder!"))
 			return
-		playsound(xeno.loc, "alien_resin_build", 25)
+		playsound(xeno.loc, SOUND_ALIEN_RESIN_BUILD, 25)
 		xeno.current_design.Add(design) //Add Node to list.
 
 	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/cost_node))
@@ -982,7 +982,7 @@
 		if(!design)
 			to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find node to place! Contact a coder!"))
 			return
-		playsound(xeno.loc, "alien_resin_build", 25)
+		playsound(xeno.loc, SOUND_ALIEN_RESIN_BUILD, 25)
 		xeno.current_design.Add(design)
 
 	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/construct_node))
@@ -1006,7 +1006,7 @@
 		if(!design)
 			to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find node to place! Contact a coder!"))
 			return
-		playsound(xeno.loc, "alien_resin_build", 25)
+		playsound(xeno.loc, SOUND_ALIEN_RESIN_BUILD, 25)
 		xeno.current_design.Add(design)
 	apply_cooldown()
 	return ..()

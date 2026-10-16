@@ -231,7 +231,7 @@
 					label.apply_label()
 				to_chat(user, SPAN_NOTICE("You have successfully renamed [oldname] to [target]."))
 				obj_target.renamedByPlayer = TRUE
-				playsound(target, "paper_writing", 15, TRUE)
+				playsound(target, SOUND_PAPER_WRITING, 15, TRUE)
 
 		if(penchoice == "Description")
 			var/input = tgui_input_text(user, "Describe [target]", "Description", "[target.desc]", 140)
@@ -245,7 +245,7 @@
 				target.AddComponent(/datum/component/rename, target.name, input)
 				to_chat(user, SPAN_NOTICE("You have successfully changed [target]'s description."))
 				obj_target.renamedByPlayer = TRUE
-				playsound(target, "paper_writing", 15, TRUE)
+				playsound(target, SOUND_PAPER_WRITING, 15, TRUE)
 
 		if(penchoice == "Reset")
 			if(QDELETED(target) || !CAN_PICKUP(user, obj_target))

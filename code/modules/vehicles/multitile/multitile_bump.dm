@@ -584,7 +584,7 @@
 
 	visible_message(SPAN_DANGER("\The [V] rams \the [src]!"), SPAN_DANGER("\The [V] rams you! Get out of the way!"))
 	if(dmg)
-		playsound(loc, "punch", 25, 1)
+		playsound(loc, SOUND_PUNCH, 25, 1)
 		last_damage_data = create_cause_data("[initial(V.name)] roadkill", driver)
 		log_attack("[key_name(src)] was rammed by [key_name(driver)] with [V].")
 		if(faction == driver.faction)
@@ -631,7 +631,7 @@
 
 	visible_message(SPAN_DANGER("\The [V] rams \the [src]!"), SPAN_DANGER("\The [V] rams you! Get out of the way!"))
 	if(dmg)
-		playsound(loc, "punch", 25, 1)
+		playsound(loc, SOUND_PUNCH, 25, 1)
 		last_damage_data = create_cause_data("[initial(V.name)] roadkill", driver)
 		log_attack("[key_name(src)] was rammed by [key_name(driver)] with [V].")
 		if(faction == driver.faction)
@@ -642,7 +642,7 @@
 	if(mob_knocked_down)
 		return TRUE
 	else if (mob_moved)
-		playsound(loc, "punch", 25, 1)
+		playsound(loc, SOUND_PUNCH, 25, 1)
 
 	return TRUE
 
@@ -759,7 +759,7 @@
 		if(momentum_penalty)
 			V.move_momentum = floor(V.move_momentum*0.8)
 			V.update_next_move()
-		playsound(loc, "punch", 25, 1)
+		playsound(loc, SOUND_PUNCH, 25, 1)
 		return TRUE
 
 	return FALSE
@@ -788,7 +788,7 @@
 
 		//medium-to-heavy vehicles will still push fortified defender back but without dealing damage. Need to change snowplow effects later
 		if(!is_mob_incapacitated())
-			playsound(loc, "punch", 25, 1)
+			playsound(loc, SOUND_PUNCH, 25, 1)
 			visible_message(SPAN_DANGER("\The [V] rams fortified [src], pushing it away!"), SPAN_DANGER("You can't stop \the [V] from pushing you when it rams you!"))
 			var/list/slots = V.get_activatable_hardpoints()
 			for(var/slot in slots)

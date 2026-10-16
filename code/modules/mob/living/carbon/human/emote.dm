@@ -203,15 +203,15 @@
 /datum/emote/living/carbon/human/pain/get_sound(mob/living/user)
 	if(ishuman_strict(user))
 		if(user.gender == MALE)
-			return get_sfx("male_pain")
+			return SOUND_MALE_PAIN
 		else
-			return get_sfx("female_pain")
+			return SOUND_FEMALE_PAIN
 
 	if(isyautja(user))
-		return get_sfx("pred_pain")
+		return SOUND_PRED_PAIN
 
 	if(iswydroid(user))
-		return get_sfx("wy_droid_pain")
+		return SOUND_WY_DROID_PAIN
 
 /datum/emote/living/carbon/human/pain/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
@@ -246,11 +246,11 @@
 /datum/emote/living/carbon/human/scream/get_sound(mob/living/user)
 	if(ishuman_strict(user))
 		if(user.gender == MALE)
-			return get_sfx("male_scream")
+			return SOUND_MALE_SCREAM
 		else
-			return get_sfx("female_scream")
+			return SOUND_FEMALE_SCREAM
 	if(isyautja(user))
-		return get_sfx("pred_pain")
+		return SOUND_PRED_PAIN
 
 /datum/emote/living/carbon/human/scream/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
@@ -370,9 +370,15 @@
 	if(ishumansynth_strict(user))
 		switch(user.faction)
 			if(FACTION_UPP, FACTION_HUNTED_UPP)
-				return get_sfx("[user.gender]_upp_warcry")
+				if(user.gender == MALE)
+					return SOUND_MALE_UPP_WARCRY
+				else
+					return SOUND_UPP_FEMALE_WARCRY
 			else
-				return get_sfx("[user.gender]_warcry")
+				if(user.gender == MALE)
+					return SOUND_MALE_WARCRY
+				else
+					return SOUND_FEMALE_WARCRY
 
 /datum/emote/living/carbon/human/whimper
 	key = "whimper"

@@ -83,7 +83,7 @@
 
 /mob/living/carbon/xenomorph/king/Initialize()
 	. = ..()
-	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
+	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, SOUND_ALIEN_FOOTSTEP_LARGE)
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(post_move))
 	if(!should_block_game_interaction(src, TRUE)) // don't let admin-level kings mess up alliances
 		hive = GLOB.hive_datum[hivenumber]

@@ -134,7 +134,7 @@
 		return
 
 	if(sound_play)
-		playsound(xeno,"acid_strike", 35, 1)
+		playsound(xeno,SOUND_ACID_STRIKE, 35, 1)
 		sound_play = FALSE
 		addtimer(VARSET_CALLBACK(src, sound_play, TRUE), 2 SECONDS)
 
@@ -142,7 +142,7 @@
 		to_chat(xeno, SPAN_XENODANGER("We decide to cancel our gas shroud."))
 		return
 
-	playsound(xeno,"acid_sizzle", 50, 1)
+	playsound(xeno,SOUND_ACID_SIZZLE, 50, 1)
 
 	if(xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas/acid])
 		spicy_gas = new /datum/effect_system/smoke_spread/xeno_acid

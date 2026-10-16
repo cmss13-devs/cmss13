@@ -93,7 +93,7 @@
 	echo_list[ECHO_OBSTRUCTION] = -500
 	cell_explosion(picked_atom, 1000, 200, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, cause_data)
 	shakeship(5, 5, FALSE, FALSE)
-	playsound(picked_atom, "bigboom", 50, 1, 200, echo = echo_list)
+	playsound(picked_atom, SOUND_BIGBOOM, 50, 1, 200, echo = echo_list)
 	playsound(picked_atom, pick(hit_sound), 50, 1, 200, echo = echo_list)
 
 	if(announce)
@@ -129,9 +129,9 @@
 	echo_list[ECHO_OBSTRUCTION] = -500
 	cell_explosion(picked_atom, 500, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, cause_data)
 	shakeship(5, 5, FALSE, FALSE)
-	playsound(picked_atom, "bigboom", 50, 1, 200, echo = echo_list)
+	playsound(picked_atom, SOUND_BIGBOOM, 50, 1, 200, echo = echo_list)
 	playsound(picked_atom, pick(hit_sound), 50, 1, 200, echo = echo_list)
-	playsound(picked_atom, "pry", 25, 1, 200, echo = echo_list)
+	playsound(picked_atom, SOUND_PRY, 25, 1, 200, echo = echo_list)
 
 	if(announce)
 		shipwide_ai_announcement("WARNING, [capitalize(name)] HIT SHIP HULL, CAUSED MASSIVE DAMAGE!", MAIN_AI_SYSTEM, 'sound/effects/double_klaxon.ogg')
@@ -149,13 +149,13 @@
 	for(var/turf/turf in range(7, picked_atom))
 		turf_list += turf
 
-	playsound(picked_atom, "pry", 25, 1, 200, echo = echo_list)
+	playsound(picked_atom, SOUND_PRY, 25, 1, 200, echo = echo_list)
 	playsound(picked_atom, pick(hit_sound), 50, 1, 200, echo = echo_list)
-	playsound(picked_atom, "bigboom", 50, 1, 200, echo = echo_list)
+	playsound(picked_atom, SOUND_BIGBOOM, 50, 1, 200, echo = echo_list)
 	for(var/i = 1 to 12)
 		var/turf/turf = pick(turf_list)
 		cell_explosion(turf, 100, 10, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, cause_data)
-		playsound(turf, "bigboom", 40, 1, 20, echo = echo_list)
+		playsound(turf, SOUND_BIGBOOM, 40, 1, 20, echo = echo_list)
 		if(shake)
 			shakeship(2, 2, FALSE, FALSE)
 		sleep(1)

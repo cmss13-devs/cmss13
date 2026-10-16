@@ -295,7 +295,7 @@
 			H.last_damage_data = create_cause_data("macho bullshit", user)
 			user.animation_attack_on(H)
 			user.flick_attack_overlay(H, "punch")
-			playsound(user.loc, "punch", 25, 1)
+			playsound(user.loc, SOUND_PUNCH, 25, 1)
 			H.apply_damage(5, BRUTE, "chest", 1)
 
 			if(!H.stat && H.pain.feels_pain)

@@ -345,7 +345,7 @@
 		for(var/i = 0; i < 5; i++)
 			if(usr.action_busy)
 				return
-			playsound(loc, get_sfx("keyboard"), KEYBOARD_SOUND_VOLUME, 1)
+			playsound(loc, SOUND_KEYBOARD, KEYBOARD_SOUND_VOLUME, 1)
 			if(!do_after(usr, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				return
 			if(i < 4)
@@ -528,7 +528,7 @@
 			update_equipment(is_optimised, FALSE)
 			var/list/local_data = ui_data(user)
 			var/found = FALSE
-			playsound(loc, get_sfx("terminal_button"), 5, 1)
+			playsound(loc, SOUND_TERMINAL_BUTTON, 5, 1)
 			for(var/destination in local_data["destinations"])
 				if(destination["id"] == dock_id)
 					found = TRUE
@@ -556,7 +556,7 @@
 			stop_playing_launch_announcement_alarm()
 			return TRUE
 		if("button-push")
-			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
+			playsound(loc, SOUND_TERMINAL_BUTTON, KEYBOARD_SOUND_VOLUME, 1)
 			return FALSE
 		if("door-control")
 			if(!shuttle)
@@ -594,7 +594,7 @@
 			shuttle.automated_hangar_id = almayer_lz
 			shuttle.automated_lz_id = ground_lz
 			shuttle.automated_delay = delay
-			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
+			playsound(loc, SOUND_TERMINAL_BUTTON, KEYBOARD_SOUND_VOLUME, 1)
 			if(shuttle.faction == FACTION_MARINE)
 				log_ares_flight(user.name, "Enabled autopilot for Dropship [shuttle.name].")
 			var/log = "[key_name(user)] has enabled auto pilot on '[shuttle.name]'"
@@ -607,7 +607,7 @@
 			shuttle.automated_hangar_id = null
 			shuttle.automated_lz_id = null
 			shuttle.automated_delay = null
-			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
+			playsound(loc, SOUND_TERMINAL_BUTTON, KEYBOARD_SOUND_VOLUME, 1)
 			if(shuttle.faction == FACTION_MARINE)
 				log_ares_flight(user.name, "Disabled autopilot for Dropship [shuttle.name].")
 			var/log = "[key_name(user)] has disabled auto pilot on '[shuttle.name]'"

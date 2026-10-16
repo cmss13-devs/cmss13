@@ -80,7 +80,7 @@
 /obj/structure/machinery/optable/attack_alien(mob/living/carbon/xenomorph/alien, mob/living/user)
 	if(buckled_mob)
 		to_chat(alien, SPAN_XENONOTICE("You rip the tubes away from the host, releasing it!"))
-		playsound(alien, "alien_claw_flesh", 25, 1)
+		playsound(alien, SOUND_ALIEN_CLAW_FLESH, 25, 1)
 		unbuckle(user)
 	else
 		. = ..()

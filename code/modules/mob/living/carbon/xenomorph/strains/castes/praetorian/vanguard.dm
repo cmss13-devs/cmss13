@@ -211,7 +211,7 @@
 
 		dash_user.flick_attack_overlay(targets_in_range, "slash")
 		targets_in_range.apply_armoured_damage(get_xeno_damage_slash(targets_in_range, damage), ARMOR_MELEE, BRUTE)
-		playsound(get_turf(targets_in_range), "alien_claw_flesh", 30, 1)
+		playsound(get_turf(targets_in_range), SOUND_ALIEN_CLAW_FLESH, 30, 1)
 	dash_user.visible_message(SPAN_XENODANGER("[dash_user] slashes its claws through the area around it!"), SPAN_XENODANGER("We slash our claws through the area around us!"))
 	dash_user.spin_circle()
 

@@ -154,7 +154,7 @@
 	armor_buffs_active_target = TRUE
 	behavior.raging = TRUE
 
-	playsound(get_turf(raging_valkyrie), "alien_roar", 40)
+	playsound(get_turf(raging_valkyrie), SOUND_ALIEN_ROAR, 40)
 	to_chat(raging_valkyrie, SPAN_XENODANGER("Our rage drives us forward, our healing and armor is increased."))
 	raging_valkyrie.create_custom_empower(icolor = "#a31010", ialpha = 200, small_xeno = TRUE)
 	raging_valkyrie.add_filter("raging", 1, list("type" = "outline", "color" = "#a31010", "size" = 1))
@@ -165,7 +165,7 @@
 	RegisterSignal(raging_valkyrie, list(COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE), PROC_REF(calculate_damage_mitigation_self))
 
 	if(istype(buffing_target.caste, /datum/caste_datum/crusher) || istype(buffing_target.caste, /datum/caste_datum/ravager)) // i wouldve made this a list() but for some reason it didnt work.
-		playsound(get_turf(buffing_target), "alien_roar", 40)
+		playsound(get_turf(buffing_target), SOUND_ALIEN_ROAR, 40)
 		buffing_target.create_custom_empower(icolor = "#a31010", ialpha = 200, small_xeno = TRUE)
 		buffing_target.add_filter("raging", 1, list("type" = "outline", "color" = "#a31010", "size" = 1))
 		buffing_target.speed_modifier -= speed_buff_amount
@@ -173,7 +173,7 @@
 		buffing_target.recalculate_speed()
 		addtimer(CALLBACK(src, PROC_REF(remove_target_speed)), speed_buff_dur)
 	else
-		playsound(get_turf(buffing_target), "alien_roar", 40)
+		playsound(get_turf(buffing_target), SOUND_ALIEN_ROAR, 40)
 		buffing_target.create_custom_empower(icolor = "#a31010", ialpha = 200, small_xeno = TRUE)
 		buffing_target.add_filter("raging", 1, list("type" = "outline", "color" = "#a31010", "size" = 1))
 		buffing_target.armor_modifier += target_armor_buff

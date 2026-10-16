@@ -35,6 +35,9 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 		forceMove(above)
 		return
 
+
+	return
+
 /mob/hologram/movement_delay()
 	. = -2 // Very fast speed, so they can navigate through easily, they can't ever have movement delay whilst as a hologram
 

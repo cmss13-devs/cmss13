@@ -49,7 +49,7 @@
 /datum/cm_objective/recover_corpses/post_round_start()
 	activate()
 
-/datum/cm_objective/recover_corpses/proc/handle_mob_deaths(datum/source, mob/living/carbon/dead_mob, gibbed)
+/datum/cm_objective/recover_corpses/proc/handle_mob_deaths(datum/source, mob/living/carbon/dead_mob, cause, gibbed)
 	SIGNAL_HANDLER
 
 	if(!iscarbon(dead_mob))

@@ -12,7 +12,7 @@
 	///In which tab the upgrade should be.
 	var/upgrade_type
 	///Path to the item, upgrade, if any.
-	var/item_reference
+	var/obj_reference
 	///Clearance requirment to buy this upgrade. 5x is level 6. Why is it not that way? no one knows.
 	var/clearance_req = 5
 	///The change of price for item per purchase, recommended for mass producing stuff or limited upgrade.
@@ -24,9 +24,9 @@
 
 ///gets called once the product is purchased, override if you need to pass any special arguments or have special behavior on purchase.
 /datum/research_upgrades/proc/on_purchase(turf/machine_loc)
-	if(isnull(item_reference))
+	if(isnull(obj_reference))
 		return
-	new item_reference(machine_loc)
+	new obj_reference(machine_loc)
 
 /datum/research_upgrades/machinery
 	name = "Machinery"
@@ -82,7 +82,7 @@
 	desc = "Research upgrade for Reagent grinder, technology on this disk makes storing and grinding procedures more effective, increasing both speed and product capacity of the grinder."
 	behavior = RESEARCH_UPGRADE_ITEM
 	value_upgrade = 500
-	item_reference = /obj/item/research_upgrades/grinderspeed
+	obj_reference = /obj/item/research_upgrades/grinderspeed
 	upgrade_type = ITEM_MACHINERY_UPGRADE
 	clearance_req = 2
 
@@ -92,7 +92,7 @@
 	desc = "Research upgrade for Sleeper system, technology on this disk is used on a sleeper to allow wider spectrum of chemicals to be administered, as well as upgrading dialysis software."
 	behavior = RESEARCH_UPGRADE_ITEM
 	value_upgrade = 500
-	item_reference = /obj/item/research_upgrades/sleeper
+	obj_reference = /obj/item/research_upgrades/sleeper
 	upgrade_type = ITEM_MACHINERY_UPGRADE
 	clearance_req = 1
 
@@ -101,7 +101,7 @@
 	desc = "A chemical extractor that can be used to extract chemicals from a specified vessel. Sends them to the tagged chemical network. These ones are configured for research."
 	behavior = RESEARCH_UPGRADE_ITEM
 	value_upgrade = 1000
-	item_reference = /obj/item/chem_extractor
+	obj_reference = /obj/item/chem_extractor
 	upgrade_type = ITEM_MACHINERY_UPGRADE
 	clearance_req = 2
 
@@ -135,6 +135,38 @@
 
 	new /obj/item/paper/research_notes(machine_loc, GLOB.chemical_reagents_list[endgame_chem.id], "synthesis", TRUE)
 
+/datum/research_upgrades/item/headset_x
+	name = "X993A1-X Control Headset"
+	desc = "This headset is designed to be grafted into a live, braindead XX-121 specimen, allowing personnel to remotely operate its body. Requires a matching -M headset."
+	value_upgrade = 400
+	clearance_req = 2
+	change_purchase = -50
+	minimum_price = 100
+	behavior = RESEARCH_UPGRADE_ITEM
+	upgrade_type = ITEM_ACCESSORY_UPGRADE
+	obj_reference = /obj/effect/spawner/xeno_headset_and_pamphlet
+
+/obj/effect/spawner/xeno_headset_and_pamphlet
+	name = "xenomorp heaset and pample"
+	desc = "xenomrp h eadset and paplet"
+	icon = 'icons/obj/items/new_assemblies.dmi'
+	icon_state = "signaller"
+
+/obj/effect/spawner/xeno_headset_and_pamphlet/Initialize(mapload, ...)
+	. = ..()
+	new /obj/item/clothing/head/control_headset_xeno(loc)
+	//new /obj/item/paper/ todo make a pamhplet or something BORING!!!!!!!!!
+
+/datum/research_upgrades/item/headset_m
+	name = "X993A1-M Control Headset"
+	desc = "The companion piece to the -X version. Required to remotely operate XX-121 grafted with the X93A1-X."
+	value_upgrade = 400
+	clearance_req = 2
+	change_purchase = -50
+	minimum_price = 100
+	behavior = RESEARCH_UPGRADE_ITEM
+	upgrade_type = ITEM_ACCESSORY_UPGRADE
+	obj_reference = /obj/item/clothing/head/control_headset_marine
 
 /datum/research_upgrades/item/research_credits
 	name = "Research Contract Reroll"
@@ -142,7 +174,7 @@
 	value_upgrade = 1000
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
-	item_reference = /obj/item/research_upgrades/reroll
+	obj_reference = /obj/item/research_upgrades/reroll
 	change_purchase = 200
 	maximum_price = 2000
 	clearance_req = 4
@@ -153,7 +185,7 @@
 	value_upgrade = 3000
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
-	item_reference = /obj/item/tool/surgery/scalpel/laser/advanced
+	obj_reference = /obj/item/tool/surgery/scalpel/laser/advanced
 	clearance_req = 3
 
 /datum/research_upgrades/item/incision_management
@@ -163,7 +195,7 @@
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 	clearance_req = 3
-	item_reference = /obj/item/tool/surgery/scalpel/manager
+	obj_reference = /obj/item/tool/surgery/scalpel/manager
 
 
 /datum/research_upgrades/item/nanosplints
@@ -189,7 +221,7 @@
 	maximum_price = 1000
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
-	item_reference = /obj/item/ammo_magazine/flamer_tank/custom/upgraded
+	obj_reference = /obj/item/ammo_magazine/flamer_tank/custom/upgraded
 
 /datum/research_upgrades/item/flamer_tank/smoke
 	name = "Upgraded Incinerator Smoke Tank"
@@ -199,7 +231,7 @@
 	change_purchase = 50
 	minimum_price = 100
 	maximum_price = 500
-	item_reference = /obj/item/ammo_magazine/flamer_tank/smoke/upgraded
+	obj_reference = /obj/item/ammo_magazine/flamer_tank/smoke/upgraded
 
 /datum/research_upgrades/armor
 	name = "Armor"
@@ -212,7 +244,7 @@
 	behavior = RESEARCH_UPGRADE_ITEM
 	clearance_req = 6
 	upgrade_type = ITEM_ARMOR_UPGRADE
-	item_reference = /obj/item/clothing/accessory/health/research_plate/translator
+	obj_reference = /obj/item/clothing/accessory/health/research_plate/translator
 
 /datum/research_upgrades/armor/coagulator
 	name = "Active Blood Coagulator Plate"
@@ -223,7 +255,7 @@
 	change_purchase = -200
 	minimum_price = 200
 	upgrade_type = ITEM_ARMOR_UPGRADE
-	item_reference = /obj/item/clothing/accessory/health/research_plate/coagulator
+	obj_reference = /obj/item/clothing/accessory/health/research_plate/coagulator
 
 
 /datum/research_upgrades/armor/emergency_injector
@@ -235,7 +267,7 @@
 	change_purchase = -100
 	minimum_price = 100
 	upgrade_type = ITEM_ARMOR_UPGRADE
-	item_reference = /obj/item/clothing/accessory/health/research_plate/emergency_injector
+	obj_reference = /obj/item/clothing/accessory/health/research_plate/emergency_injector
 
 /datum/research_upgrades/armor/ceramic
 	name = "Ceramic Armor Plate"
@@ -246,7 +278,7 @@
 	upgrade_type = ITEM_ARMOR_UPGRADE
 	change_purchase = -100
 	minimum_price = 200
-	item_reference = /obj/item/clothing/accessory/health/ceramic_plate
+	obj_reference = /obj/item/clothing/accessory/health/ceramic_plate
 
 /datum/research_upgrades/armor/preservation
 	name = "Death Preservation Plate"
@@ -257,5 +289,5 @@
 	upgrade_type = ITEM_ARMOR_UPGRADE
 	change_purchase = -100
 	minimum_price = 100
-	item_reference = /obj/item/clothing/accessory/health/research_plate/anti_decay
+	obj_reference = /obj/item/clothing/accessory/health/research_plate/anti_decay
 

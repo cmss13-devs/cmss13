@@ -525,6 +525,7 @@ SUBSYSTEM_DEF(minimaps)
  */
 /datum/controller/subsystem/minimaps/proc/add_marker(atom/target, hud_flags = NONE, image/blip, image_x, image_y, is_label=FALSE)
 	if(!hud_flags || !blip)
+		return
 		CRASH("Invalid marker added to subsystem")
 
 	// Legacy behavior: track mobs one level in

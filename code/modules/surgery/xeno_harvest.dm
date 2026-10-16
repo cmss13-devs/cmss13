@@ -1,6 +1,6 @@
 //Research stuff to extract stuff from xenomorphs for goodies. In other words, to extract useful material that could be used to upgrade marines etc.
 
-/datum/surgery/xenomorph
+/datum/surgery/xenomorph_harvest
 	name = "Experimental Harvesting Surgery"
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
 	required_surgery_skill = SKILL_SURGERY_TRAINED

@@ -92,3 +92,13 @@
 2026-10-15:
   Venuska1117:
   - refactor: Updates Ravager code with new define and spaces.
+2026-10-16:
+  Drathek:
+  - bugfix: Traits are now sanitized in preferences like gear and should load properly
+      again
+  - ui: Fixed synth slots in loadout UI just overflowing off screen
+  - ui: Fixed loadout/trait UIs overflowing scrollbars & misc layout changes
+  Steelpoint:
+  - maptweak: Fixes several hull window tiles in the researcher observation deck on
+      White Antre Research Facility not having floors underneath them.
+  - maptweak: On Chances Claim, several missing air pipes have been added to A-Block.

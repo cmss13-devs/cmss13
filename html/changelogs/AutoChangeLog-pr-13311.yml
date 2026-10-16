@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Traits are now sanitized in preferences like gear and should load properly again"
-  - ui: "Fixed synth slots in loadout UI just overflowing off screen"
-  - ui: "Fixed loadout/trait UIs overflowing scrollbars & misc layout changes"

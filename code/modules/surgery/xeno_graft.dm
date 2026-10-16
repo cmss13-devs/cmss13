@@ -23,8 +23,17 @@
 	if((patient.tier > 2 || isqueen(patient)) && !istype(tool, /obj/item/tool/surgery/scalpel/laser/advanced))
 		to_chat(user, SPAN_DANGER("Chitin of this kind is too thick for an ordinary tool, you would need something special."))
 		return FALSE
-	if(patient.stat != DEAD && patient.organ)
+
+	if(patient.head == /obj/item/clothing/head/control_headset_xeno)
+		to_chat(user, SPAN_WARNING("It already has a headset!"))
+		return
+
+	// Only on allowed castes (aka has a sprite)
+	if(!(patient.caste in list(XENO_CASTE_DRONE)))
+		return FALSE
+	if(patient.stat != DEAD)
 		return TRUE
+
 	return FALSE
 
 /datum/surgery_step/xenomorph/install_connections
@@ -98,11 +107,11 @@
 		SPAN_NOTICE("[user] connects the [tool] to the [target.caste_type]!"),
 		SPAN_NOTICE("You connect the [tool] to the [target.caste_type]!"))
 	if(!HAS_TRAIT(target, TRAIT_XENO_BRAINDEAD))
-		to_chat(user, SPAN_NOTICE("Nothing seems to happen."))
+		to_chat(user, SPAN_NOTICE("You notice the Xenomorph is still twitching and drooling. Was this a waste of time?"))
 		return
 
-
 	var/obj/item/clothing/head/control_headset_xeno/headset = tool
+	headset.forceMove(target)
 	target.xeno_put_in_slot(headset, WEAR_HEAD)
 	target.update_inv_head()
 

@@ -7,6 +7,8 @@
 	xeno_icon_state = "headset"
 	xeno_types = list(/mob/living/carbon/xenomorph/drone)
 	var/obj/structure/machinery/camera/camera
+	/// Old hive saved just in case
+	var/saved_hive
 
 /obj/item/clothing/head/control_headset_xeno/Initialize(mapload, ...)
 	. = ..()
@@ -19,7 +21,7 @@
 /obj/item/clothing/head/control_headset_xeno/attack(mob/living/M, mob/living/user)
 	if(!isxeno(M))
 		return ..()
-	to_chat(user, SPAN_NOTICE("You can't just shove the headset onto a xenomorph! You need to graft the neural connections in place."))
+	to_chat(user, SPAN_NOTICE("You can't just shove the headset onto a xenomorph! You need to surgically graft the neural connections in place."))
 	return
 
 /obj/item/clothing/head/control_headset_xeno/equipped(mob/living/carbon/xenomorph/xuser, slot, silent)
@@ -28,16 +30,33 @@
 		if(!(slot == SLOT_HEAD))
 			return
 		dropped(xuser)
-		xuser.visible_message(SPAN_WARNING("[src] falls off [xuser]'s head."))
+		xuser.visible_message(SPAN_WARNING("[src] falls off [xuser]'s comparatively tiny head."))
 		return
 	playsound(xuser, 'sound/machines/screen_output1.ogg', 50)
 	xuser.visible_message(SPAN_NOTICE("Sensors start to beep and mechanisms whirr as the control headset is grafted onto [xuser]'s head."))
-	xuser.AddComponent(/datum/component/xeno_control_headset)
+	xuser.AddComponent(/datum/component/xeno_control_headset, src)
+	saved_hive = xuser.hive
 	xuser.set_hive_and_update(XENO_HIVE_CONTROLLED)
 	// Create their vis object if needed
 	if(!xuser.head_icon_holder)
 		xuser.head_icon_holder = new(null, xuser)
 		xuser.vis_contents += xuser.head_icon_holder
+
+/obj/item/clothing/head/control_headset_xeno/unequipped(mob/living/carbon/xenomorph/xuser, slot)
+	. = ..()
+	if(!(slot == SLOT_HEAD))
+		return
+
+	// Component removal handled in component
+	xuser.visible_message(SPAN_NOTICE("[src] is forcibly ripped from [xuser]'s head!"))
+	xuser.set_hive_and_update(saved_hive)
+	xuser.apply_damage(rand(50, 100), BURN)
+	var/datum/effect_system/spark_spread/spark_system = new
+	spark_system.set_up(5, 0, xuser)
+	spark_system.attach(xuser)
+	spark_system.start()
+	new /obj/effect/spawner/gibspawner/robot(xuser.loc)
+	qdel(src)
 
 /obj/item/clothing/head/control_headset_marine
 	name = "X993A1-M Control Headset"
@@ -50,13 +69,29 @@
 	armor_melee = CLOTHING_ARMOR_LOW
 	actions_types = list(/datum/action/item_action/control_xenomorph)
 	vision_impair = VISION_IMPAIR_HIGH
-	// Connected in its own dm
+	/// Connected in its own dm
 	var/obj/structure/machinery/relay_tower/connected_tower
+	/// List of xenomorphs manually linked to.
+	var/list/mob/living/carbon/xenomorph/connected_xenos
 
 /obj/item/clothing/head/control_headset_marine/get_examine_text(mob/user)
 	. = ..()
 	if(connected_tower)
 		. += SPAN_NOTICE("It is currently linked to a relay tower, extending its range and generating combat data.")
+
+/obj/item/clothing/head/control_headset_marine/attack(mob/living/M, mob/living/user)
+
+	if(M in connected_xenos)
+		to_chat(user, SPAN_WARNING("[M] is already linked to this headset!"))
+		return
+
+	if(isxeno(M))
+		to_chat(user, SPAN_NOTICE("You connect [src] to the headset grafted onto [M]"))
+		playsound(user, 'sound/machines/screen_output1.ogg', 50) // todo replace
+		LAZYADD(connected_xenos, M)
+		return
+
+	return ..()
 
 /obj/item/clothing/head/control_headset_marine/equipped(mob/user, slot, silent)
 	. = ..()
@@ -71,29 +106,38 @@
 /obj/item/clothing/head/control_headset_marine/proc/lose_control(mob/user)
 	SEND_SIGNAL(user, COMSIG_XENO_CONTROL_HEADSET_UNCONTROL)
 
-/datum/action/item_action/control_xenomorph/New(mob/living/user, obj/item/holder)
+/datum/action/item_action/control_xenomorph
+	var/obj/item/clothing/head/control_headset_marine/connected_headset
+
+/datum/action/item_action/control_xenomorph/New(obj/item/holder)
 	..()
 	name = name
 	button.name = name
 	button.overlays.Cut()
-	var/image/IMG = image('icons/mob/hud/actions_xeno.dmi', button, "rav_enrage")
+	var/image/IMG = image('icons/mob/hud/actions_xeno.dmi', button, "rav_enrage") // todo sprite
 	button.overlays += IMG
+
+	connected_headset = holder
 
 /datum/action/item_action/control_xenomorph/action_activate()
 	..()
 	if(!can_use_action())
 		return
 
-	if(!length(GLOB.controlled_xenos))
-		to_chat(owner, SPAN_WARNING("There are no controllable xenomorphs."))
+	if(!length(connected_headset.connected_xenos))
+		to_chat(owner, SPAN_WARNING("No body is connected. Use the headset to interact with a controllable xenomorph!"))
 		return
 
-	var/mob/living/carbon/xenomorph/picked_xeno = tgui_input_list(owner, "Available Xenomorphs", "Control", GLOB.controlled_xenos, theme = "hive_status")
+	var/mob/living/carbon/xenomorph/picked_xeno = tgui_input_list(owner, "Available Xenomorphs", "Control", connected_headset.connected_xenos, theme = "hive_status")
 	if(!picked_xeno)
 		return
 
+	if(HAS_TRAIT(picked_xeno, TRAIT_XENO_CONTROLLED))
+		to_chat(owner, SPAN_NOTICE("Someone is already controlling this xenomorph."))
+		return
+
 	to_chat(owner, SPAN_NOTICE("You start connecting to [picked_xeno]'s headset..."))
-	if(!do_after(owner, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+	if(!do_after(owner, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(owner, SPAN_WARNING("You were interrupted!"))
 		return
 
@@ -107,7 +151,7 @@
 		return FALSE
 
 	if(human.head != holder_item)
-		to_chat(owner, SPAN_WARNING("You should probably wear the headest first."))
+		to_chat(owner, SPAN_WARNING("You should probably wear the headset first."))
 		return FALSE
 
 	return TRUE
@@ -125,4 +169,18 @@
 	var/obj/item/clothing/head/control_headset_xeno/headset = new(src)
 	xeno_put_in_slot(headset, WEAR_HEAD)
 	update_inv_head()
+
+
+/mob/verb/spawn_testing()
+	set category = "Admin.Events"
+	set name = "spawn testing"
+	set desc = "gingus"
+
+	var/place = usr.loc
+
+	var/mob/living/carbon/xenomorph/drone/dummy = new (place)
+	dummy.add_hat()
+	new /obj/item/clothing/head/control_headset_marine(place)
+	new /obj/structure/largecrate/machine/relay_tower(place)
+	new /obj/item/tool/crowbar(place)
 

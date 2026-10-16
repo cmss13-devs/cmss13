@@ -1058,23 +1058,24 @@
 
 /datum/chem_property/positive/disrupting/reagent_added(atom/A, datum/reagent/R, amount)
 	. = ..()
-	var/obj/item/xeno_egg/E = A
-	if(!istype(E))
+	var/obj/item/xeno_egg/egg = A
+	if(!istype(egg))
 		return
 
 	if(amount < 10)
 		return
 
-	if(E.flags_embryo & FLAG_EMBRYO_BRAINDEAD)
+	if(egg.flags_embryo & FLAG_EMBRYO_BRAINDEAD)
 		return
 
 	// smooth egg for smooth brain
-	E.visible_message(SPAN_DANGER("\The [E] shrinks slightly, the wrinkles on it smoothing away."))
-	E.transform *= 0.9
+	var/turf/eggplace = get_turf(egg)
+	eggplace.visible_message(SPAN_DANGER("\The [egg] shrinks slightly, the wrinkles on it smoothing away."))
+	egg.transform *= 0.9
 
-	playsound(E, 'sound/effects/attackblob.ogg', 25, TRUE)
+	playsound(egg, 'sound/effects/attackblob.ogg', 25, TRUE)
 
-	E.flags_embryo |= FLAG_EMBRYO_BRAINDEAD
+	egg.flags_embryo |= FLAG_EMBRYO_BRAINDEAD
 
 /datum/chem_property/positive/neutralizing
 	name = PROPERTY_NEUTRALIZING

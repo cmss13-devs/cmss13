@@ -2,28 +2,48 @@
 This component is for xenomorphs with a control headset grafted on.
 */
 
-GLOBAL_LIST_EMPTY_TYPED(controlled_xenos, /mob/living/carbon/xenomorph)
-
 /datum/component/xeno_control_headset
 	dupe_mode = COMPONENT_DUPE_UNIQUE
 	var/being_controlled = FALSE
 	var/mob/controlling_human
+	var/obj/item/clothing/head/control_headset_xeno/xeno_set
 	var/obj/item/clothing/head/control_headset_marine/controlling_set
 	// 4 screens' worth of range without a tower
 	var/maximum_range = 28
 	var/point_slash_counter = 0
+	var/static/list/actions_to_remove = list(
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/activable/place_construction,
+		/datum/action/xeno_action/onclick/choose_resin,
+		/datum/action/xeno_action/activable/secrete_resin,
+		/datum/action/xeno_action/activable/transfer_plasma,
+		/datum/action/xeno_action/onclick/autoweeding_toggle,
+	)
 
-/datum/component/xeno_control_headset/Initialize()
+/datum/component/xeno_control_headset/Initialize(obj/item/clothing/head/control_headset_xeno/xeno_set_arg)
 	if(!isxeno(parent))
 		return COMPONENT_INCOMPATIBLE
-	GLOB.controlled_xenos += parent
+	var/mob/living/carbon/xenomorph/parent_xeno = parent
+	// Remove things that a human controlling a xeno probably shouldn't be able to do
+	for(var/datum/action/action in parent_xeno.actions)
+		if(action.type in actions_to_remove)
+			remove_action(parent_xeno, action.type)
+
+	parent_xeno.bubble_icon = "robot"
+
+	// ???
+	remove_verb(parent_xeno, /mob/living/carbon/xenomorph/verb/view_tacmaps)
 	give_action(parent, /datum/action/lose_control)
+	xeno_set = xeno_set_arg
 	. = ..()
 
 /datum/component/xeno_control_headset/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)
 	RegisterSignal(parent, list(COMSIG_XENO_DEATH, COMSIG_XENO_CONTROL_HEADSET_UNCONTROL, COMSIG_ATOM_EMP_ACT), PROC_REF(lose_control))
 	RegisterSignal(parent, COMSIG_XENO_CONTROL_HEADSET_CONTROL, PROC_REF(take_control))
+
+	RegisterSignal(parent, COMSIG_LIVING_SPEAK, PROC_REF(handle_speech))
 
 	// These signals are for gathering intel and research points.
 	RegisterSignal(parent, COMSIG_XENO_ALIEN_ATTACK, PROC_REF(slashing_point_gain))
@@ -40,6 +60,7 @@ GLOBAL_LIST_EMPTY_TYPED(controlled_xenos, /mob/living/carbon/xenomorph)
 
 // Every 10 xeno-on-xeno slashes, give a smidgen of intel and research points
 /datum/component/xeno_control_headset/proc/slashing_point_gain(mob/parenter)
+	SIGNAL_HANDLER
 	point_slash_counter++
 	if(point_slash_counter >= 10)
 		point_gain(1)
@@ -47,6 +68,7 @@ GLOBAL_LIST_EMPTY_TYPED(controlled_xenos, /mob/living/carbon/xenomorph)
 // Every kill, give a bit of intel and research points
 // Is there a better way to confirm a kill??
 /datum/component/xeno_control_headset/proc/kill_points_gain(mob/corpse, datum/cause_data/cause, gibbed)
+	SIGNAL_HANDLER
 	// Check who actually killed 'em
 	var/mob/murderer = cause.weak_mob.resolve()
 	if(murderer != parent)
@@ -72,7 +94,7 @@ GLOBAL_LIST_EMPTY_TYPED(controlled_xenos, /mob/living/carbon/xenomorph)
 	to_chat(xeno, SPAN_XENONOTICE("You have taken control of [xeno]."))
 	ADD_TRAIT(parent, TRAIT_XENO_CONTROLLED, REF(src))
 
-	RegisterSignal(controlling_human, list(COMSIG_MOB_DEATH), PROC_REF(lose_control))
+	RegisterSignal(controlling_human, list(COMSIG_MOB_DEATH, COMSIG_MOB_LOGOUT), PROC_REF(lose_control))
 	RegisterSignal(xeno, COMSIG_MOVABLE_MOVED, PROC_REF(check_distance))
 
 /datum/component/xeno_control_headset/proc/check_distance(mob/living/carbon/xenomorph/controlled_xeno)
@@ -113,3 +135,15 @@ GLOBAL_LIST_EMPTY_TYPED(controlled_xenos, /mob/living/carbon/xenomorph)
 
 	being_controlled = FALSE
 	controlling_human = null
+
+/datum/component/xeno_control_headset/proc/handle_speech(name, message)
+	SIGNAL_HANDLER
+	var/mob/living/carbon/xenomorph/parent_xeno = parent
+
+	var/list/mob/viewers = get_mobs_in_view(7, parent_xeno)
+	parent_xeno.langchat_speech(message, viewers, controlling_human.get_default_language(), controlling_human.langchat_color, FALSE)
+	to_chat(viewers, "[SPAN_BOLD("[parent_xeno]'s voice synthesizer says,")] \"[message]\"") // WHERE THE FUCK IS ROBOT SPEECH
+	parent_xeno.show_speech_bubble(viewers, parent_xeno.bubble_icon + parent_xeno.say_test(message), bubble_prefix = TRUE)
+	playsound(parent_xeno.loc, 'sound/effects/radiostatic.ogg', 15, 1)
+
+	return COMPONENT_OVERRIDE_SPEAK

@@ -1006,6 +1006,11 @@
 	if(!HAS_TRAIT(reacted_mob, TRAIT_XENO_BRAINDEAD))
 		return
 
+	if(ispredalienlarva(reacted_mob))
+		reacted_mob.visible_message(SPAN_NOTICE("The larva twitches and starts transforming into a hideous abomination!"))
+		reacted_mob.perform_evolution(XENO_CASTE_PREDALIEN)
+		return
+
 	if(islarva(reacted_mob) && evolution_type)
 		reacted_mob.visible_message(SPAN_NOTICE("The larva writhes as it absorbs the plasma..."))
 		reacted_mob.perform_evolution(evolution_type)

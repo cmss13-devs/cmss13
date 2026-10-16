@@ -1304,7 +1304,7 @@
 	name = FACTION_XENOMORPH_CONTROLLED
 	reporting_id = "controlled"
 	hivenumber = XENO_HIVE_CONTROLLED
-	prefix = "Controlled "
+	prefix = "controlled "
 	color = "#828296"
 	ui_color = "#828296"
 

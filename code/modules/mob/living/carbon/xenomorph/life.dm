@@ -43,6 +43,9 @@
 	if(should_block_game_interaction(src) && (!area || !(area.flags_area & AREA_ALLOW_XENO_JOIN)))
 		return //xenos on admin z level don't count
 
+	if(HAS_TRAIT(src, TRAIT_XENO_CONTROLLED))
+		return
+
 	to_chat(client, SPAN_ALERTWARNING("You are inactive and will be available to ghosts in [XENO_AVAILABLE_TIMER] second\s!"))
 	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 

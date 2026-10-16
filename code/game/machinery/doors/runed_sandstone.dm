@@ -108,7 +108,7 @@
 	operating = DOOR_OPERATING_OPENING
 	do_animate("opening")
 	icon_state = "door0"
-	set_opacity(0)
+	set_opacity(FALSE)
 
 	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	return TRUE
@@ -120,9 +120,6 @@
 	layer = open_layer
 	density = FALSE
 	update_icon()
-	set_opacity(0)
-	if(length(filler_turfs))
-		change_filler_opacity(opacity)
 
 	operating = DOOR_OPERATING_IDLE
 	SEND_SIGNAL(src, COMSIG_DOOR_OPEN)

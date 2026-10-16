@@ -1,21 +1,14 @@
 //Terribly sorry for the code doubling, but things go derpy otherwise.
 /obj/structure/machinery/door/airlock/multi_tile
-	width = 2
+	height = 2
 	damage_cap = 650 // Bigger = more endurable
 	assembly_type = /obj/structure/airlock_assembly/multi_tile
-
-/obj/structure/machinery/door/airlock/multi_tile/close(forced = FALSE) //Nasty as hell O(n^2) code but unfortunately necessary
-	for(var/turf/turf_tile in locs)
-		for(var/obj/vehicle/multitile/vehicle_tile in turf_tile)
-			addtimer(CALLBACK(src, PROC_REF(close), forced), 6 SECONDS + openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
-			return FALSE
-
-	return ..()
 
 /obj/structure/machinery/door/airlock/multi_tile/Initialize()
 	. = ..()
 	update_icon()
 
+// TODO: properly subtype these doors instead of having them branch off in a multitile subtype
 /obj/structure/machinery/door/airlock/multi_tile/glass
 	name = "Glass Airlock"
 	icon = 'icons/obj/structures/doors/Door2x1glass.dmi'
@@ -264,7 +257,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/containment
 	opacity = TRUE
-	width = 3
+	height = 3
 	unslashable = TRUE
 	unacidable = TRUE
 	no_panel = 1
@@ -295,7 +288,7 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear
 	opacity = TRUE
-	width = 3
+	height = 3
 	unslashable = TRUE
 	unacidable = TRUE
 	no_panel = 1
@@ -305,6 +298,9 @@
 	var/linked_to_turf
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/linked_console
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/Initialize()
+	pass()
+	. = ..()
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ex_act(severity)
 	return
@@ -404,7 +400,7 @@
 	icon = 'icons/obj/structures/doors/dropship_upp_cargo.dmi'
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside
-	width = 2
+	height = 2
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds1
 	name = "\improper Alamo crew hatch"
@@ -527,7 +523,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/elevator
 	icon = 'icons/obj/structures/doors/4x1_elevator.dmi'
 	icon_state = "door_closed"
-	width = 4
+	height = 4
 	openspeed = 22
 
 /obj/structure/machinery/door/airlock/multi_tile/elevator/research

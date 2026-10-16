@@ -29,8 +29,6 @@
 	)
 	var/glass = AIRLOCK_NOGLASS // see defines
 	var/created_name = null
-	/// Used for multitile assemblies
-	var/width = 1
 
 /obj/structure/airlock_assembly/Initialize(mapload, ...)
 	. = ..()
@@ -45,7 +43,7 @@
 		if(STATE_STANDARD)
 			if(anchored)
 				var/temp = ""
-				if(width == 1)
+				if(height == 1)
 					temp += "It looks like a [SPAN_HELPFUL("wrench")] will unsecure it."
 				helpmessage += "[temp]You can insert an [SPAN_HELPFUL("airlock circuit")]."
 				if(!glass)
@@ -128,7 +126,7 @@
 		if(STATE_STANDARD)
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WRENCH))
 				//Moving wide doors is wonky and doesn't work properly, if it's fixed we could make it unwrenchable again
-				if(width > 1 && anchored)
+				if(height > 1 && anchored)
 					to_chat(user, SPAN_WARNING("[src] cannot be unwrenched."))
 					return
 				if(!anchored)
@@ -257,7 +255,6 @@
 					door.name = created_name
 				else
 					door.name = base_name
-				door.handle_multidoor()
 				electronics.forceMove(door)
 				qdel(src)
 				return
@@ -274,36 +271,18 @@
 
 /obj/structure/airlock_assembly/proc/get_airlock_path()
 	//For some reason multi_tile doors have different paths... can't say it isn't annoying
-	if (width > 1)
+	if (height > 1)
 		return "/obj/structure/machinery/door/airlock/multi_tile/almayer/[airlock_type][glass ? "" : "/solid"]"
 	return "/obj/structure/machinery/door/airlock/almayer/[airlock_type][glass ? "/glass" : ""]"
-
-/// Used for overloading proc in multi_tile
-/obj/structure/airlock_assembly/proc/update_collision_box()
-	return
 
 /obj/structure/airlock_assembly/multi_tile
 	icon = 'icons/obj/structures/doors/airlock_assembly2x1.dmi'
 	icon_state = "assembly_generic0"
-	width = 2
+	height = 2
 
 /obj/structure/airlock_assembly/multi_tile/Initialize(mapload, ...)
 	. = ..()
-	update_collision_box()
 	update_icon()
-
-/obj/structure/airlock_assembly/multi_tile/Move()
-	. = ..()
-	update_collision_box()
-
-/obj/structure/airlock_assembly/multi_tile/update_collision_box()
-	if(dir in list(EAST, WEST))
-		bound_width = width * world.icon_size
-		bound_height = world.icon_size
-	else
-		bound_width = world.icon_size
-		bound_height = width * world.icon_size
-
 
 #undef STATE_STANDARD
 #undef STATE_CIRCUIT

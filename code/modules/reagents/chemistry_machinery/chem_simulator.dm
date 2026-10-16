@@ -21,7 +21,7 @@
 	health = STRUCTURE_HEALTH_REINFORCED
 	layer = BELOW_OBJ_LAYER
 	density = TRUE
-	bound_x = 32
+	x_offset = 1
 
 	var/obj/item/paper/research_report/target
 	var/obj/item/paper/research_report/reference

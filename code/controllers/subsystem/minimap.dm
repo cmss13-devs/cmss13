@@ -1529,9 +1529,9 @@ SUBSYSTEM_DEF(minimaps)
 	layer = TACMAP_LAYER
 	plane = ABOVE_TACMAP_PLANE
 	///x offset of the minimap icon for this zlevel. mostly used for shorthand
-	var/x_offset
+	var/map_icon_x_offset
 	///y offset of the minimap icon for this zlevel. mostly used for shorthand
-	var/y_offset
+	var/map_icon_y_offset
 	///zlevel that this minimap tool applies to and which it will be drawing on
 	var/zlevel
 	/// active mouse icon when the tool is selected
@@ -1562,8 +1562,8 @@ SUBSYSTEM_DEF(minimaps)
 
 ///Setter for the offsets of the x and y of drawing based on the input z, and the drawn_image
 /atom/movable/screen/minimap_tool/proc/set_zlevel(zlevel, minimap_flag)
-	x_offset = SSminimaps.minimaps_by_z["[zlevel]"] ? SSminimaps.minimaps_by_z["[zlevel]"].x_offset : 0
-	y_offset = SSminimaps.minimaps_by_z["[zlevel]"] ? SSminimaps.minimaps_by_z["[zlevel]"].y_offset : 0
+	map_icon_x_offset = SSminimaps.minimaps_by_z["[zlevel]"] ? SSminimaps.minimaps_by_z["[zlevel]"].x_offset : 0
+	map_icon_y_offset = SSminimaps.minimaps_by_z["[zlevel]"] ? SSminimaps.minimaps_by_z["[zlevel]"].y_offset : 0
 	drawn_image = SSminimaps.get_drawing_image(zlevel, minimap_flag)
 
 /atom/movable/screen/minimap_tool/MouseEntered(location, control, params)
@@ -1612,7 +1612,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/list/freedraw_queue = list()
 	var/list/last_coords
 	/// Width of the lines this is going to draw
-	var/width = 0
+	var/line_width = 0
 
 	/// Whether we're drawing right now. Used to no-op clickdrag macros that we want to blackhole without deleting the verb from the client
 	var/drawing
@@ -1698,8 +1698,8 @@ SUBSYSTEM_DEF(minimaps)
 		var/px = vector.x + plane_master.cur_x_shift
 		var/py = vector.y + plane_master.cur_y_shift
 
-		if(width)
-			draw_line_width(last_coords, list(px, py), slate, width)
+		if(line_width)
+			draw_line_width(last_coords, list(px, py), slate, line_width)
 		else
 			draw_line(last_coords, list(px, py), slate)
 		last_coords = list(px, py)
@@ -1847,7 +1847,7 @@ SUBSYSTEM_DEF(minimaps)
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_erase.dmi'
 	screen_loc = "15,10"
 	color = null
-	width = 5
+	line_width = 5
 
 /atom/movable/screen/minimap_tool/label
 	icon_state = "label"
@@ -1900,8 +1900,8 @@ SUBSYSTEM_DEF(minimaps)
 
 	var/list/modifiers = params2list(params)
 	var/list/pixel_coords = params2screenpixel(modifiers["screen-loc"])
-	var/x = (pixel_coords[1] - x_offset + plane_master.cur_x_shift) / MINIMAP_SCALE
-	var/y = (pixel_coords[2] - y_offset + plane_master.cur_y_shift) / MINIMAP_SCALE
+	var/x = (pixel_coords[1] - map_icon_x_offset + plane_master.cur_x_shift) / MINIMAP_SCALE
+	var/y = (pixel_coords[2] - map_icon_y_offset + plane_master.cur_y_shift) / MINIMAP_SCALE
 	var/c_x = clamp(CEILING(x, 1), 1, world.maxx)
 	var/c_y = clamp(CEILING(y, 1), 1, world.maxy)
 	var/turf/target = locate(c_x, c_y, zlevel)
@@ -2208,8 +2208,8 @@ SUBSYSTEM_DEF(minimaps)
 	return TRUE
 
 /atom/movable/screen/minimap_tool/popout/set_zlevel(zlevel, minimap_flag)
-	x_offset = SSminimaps.minimaps_by_z["[zlevel]"] ? SSminimaps.minimaps_by_z["[zlevel]"].x_offset : 0
-	y_offset = SSminimaps.minimaps_by_z["[zlevel]"] ? SSminimaps.minimaps_by_z["[zlevel]"].y_offset : 0
+	map_icon_x_offset = SSminimaps.minimaps_by_z["[zlevel]"] ? SSminimaps.minimaps_by_z["[zlevel]"].x_offset : 0
+	map_icon_y_offset = SSminimaps.minimaps_by_z["[zlevel]"] ? SSminimaps.minimaps_by_z["[zlevel]"].y_offset : 0
 
 /datum/proc/send_tacmap_assets_latejoin(mob/user)
 	if(!user.client)

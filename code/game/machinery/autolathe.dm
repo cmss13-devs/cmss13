@@ -614,7 +614,7 @@ GLOBAL_LIST_INIT(autolathe_wire_descriptions, flatten_numeric_alist(alist(
 	recipes = null
 	categories = null
 	density = TRUE
-	bound_x = 32
+	x_offset = 1
 	storage_capacity = list("glass" = 0, "plastic" = 0)
 	stored_material =  list("glass" = 0, "plastic" = 0)
 	disabled_categories = AUTOLATHE_MEDILATHE_DISABLED_CATS_LIST

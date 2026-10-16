@@ -111,8 +111,8 @@
 	desc = "It's locked and seems to be broken down, forget driving this."
 	icon = 'icons/obj/structures/props/vehicles/armored_truck_wy_black.dmi'
 	icon_state = "armored_truck_wy_black"
-	bound_height = 64
-	bound_width = 96
+	height = 2
+	width = 3
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
 	projectile_coverage = 85
@@ -150,8 +150,8 @@
 	desc = "It's locked and seems to be broken down, forget driving this."
 	icon = 'icons/obj/structures/props/vehicles/ambulance.dmi'
 	icon_state = "ambulance"
-	bound_height = 64
-	bound_width = 96
+	height = 2
+	width = 3
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
 
@@ -165,8 +165,8 @@
 	desc = "It's locked and seems to be broken down, forget driving this."
 	icon = 'icons/obj/structures/props/vehicles/long_truck_wy_blue.dmi'
 	icon_state = "longtruck_wy_blue"
-	bound_height = 64
-	bound_width = 128
+	height = 2
+	width = 4
 	density = TRUE
 
 /obj/structure/prop/hybrisa/vehicles/Long_Truck/Blue
@@ -203,8 +203,8 @@
 	desc = "It's locked and seems to be broken down, forget driving this."
 	icon = 'icons/obj/structures/props/vehicles/small_truck_turquoise_cargo.dmi'
 	icon_state = "small_truck_turquoise_cargo"
-	bound_height = 32
-	bound_width = 64
+	height = 1
+	width = 2
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
 	projectile_coverage = 60
@@ -267,8 +267,8 @@
 	desc = "It's locked and seems to be broken down, forget driving this."
 	icon = 'icons/obj/structures/props/vehicles/box_van_hyperdyne.dmi'
 	icon_state = "box_van_hyperdyne"
-	bound_height = 32
-	bound_width = 64
+	height = 1
+	width = 2
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
 	projectile_coverage = 20
@@ -303,8 +303,8 @@
 	desc = "The 'Mono-Spectra', a mass-produced civilian vehicle for the colonial markets, in and outside of the United Americas. Produced by 'Meridian' a car marque and associated operating division of the Weyland-Yutani Corporation."
 	icon = 'icons/obj/structures/props/vehicles/meridian_red.dmi'
 	icon_state = "meridian_red"
-	bound_height = 32
-	bound_width = 64
+	height = 1
+	width = 2
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
@@ -587,8 +587,8 @@
 	desc = "It's locked and seems to be broken down, forget driving this."
 	icon = 'icons/obj/structures/props/vehicles/crawler_wy_1.dmi'
 	icon_state = "crawler_wy_1"
-	bound_height = 32
-	bound_width = 64
+	height = 1
+	width = 2
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
 
@@ -613,8 +613,8 @@
 	desc = "It is a tread bound crawler used in harsh conditions. Supplied by The Kelland Mining Company; A subsidiary of Weyland Yutani."
 	icon = 'icons/obj/structures/props/vehicles/mining_crawler.dmi'
 	icon_state = "mining_crawler_1"
-	bound_height = 32
-	bound_width = 64
+	height = 1
+	width = 2
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
 
@@ -633,8 +633,8 @@
 	desc = "Burned-out vehicles block your path, their charred frames and shattered glass hinting at recent chaos. The acrid smell of smoke lingers."
 	icon = 'icons/obj/structures/props/vehicles/car_pileup.dmi'
 	icon_state = "car_pileup"
-	bound_height = 96
-	bound_width = 128
+	height = 3
+	width = 4
 	unslashable = TRUE
 	unacidable = TRUE
 	density = TRUE
@@ -652,8 +652,8 @@
 	icon = 'icons/obj/structures/props/natural/boulder_largedark.dmi'
 	icon_state = "boulder_largedark1"
 	density = TRUE
-	bound_height = 64
-	bound_width = 64
+	height = 2
+	width = 2
 
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark1
 	icon_state = "boulder_largedark1"
@@ -670,8 +670,8 @@
 	icon = 'icons/obj/structures/props/natural/boulder_widedark.dmi'
 	icon_state = "boulderwidedark"
 	density = TRUE
-	bound_height = 32
-	bound_width = 64
+	height = 1
+	width = 2
 
 /obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder1
 	icon_state = "boulderwidedark"
@@ -985,8 +985,8 @@
 	density = TRUE
 	climbable = TRUE
 	breakable = TRUE
-	bound_height = 32
-	bound_width = 64
+	height = 1
+	width = 2
 	debris = list(/obj/item/stack/sheet/metal)
 	health = 150
 
@@ -1001,8 +1001,8 @@
 	density = TRUE
 	climbable = TRUE
 	breakable = TRUE
-	bound_height = 32
-	bound_width = 64
+	height = 1
+	width = 2
 	debris = list(/obj/item/stack/sheet/wood)
 	health = 100
 
@@ -1016,8 +1016,8 @@
 	icon = 'icons/obj/structures/tables_64x64.dmi'
 	icon_state = "table_pool"
 	density = TRUE
-	bound_height = 32
-	bound_width = 64
+	height = 1
+	width = 2
 	climbable = TRUE
 	breakable = TRUE
 	debris = list(/obj/item/stack/sheet/wood)
@@ -1028,8 +1028,8 @@
 	icon = 'icons/obj/structures/tables_64x64.dmi'
 	icon_state = "table_cards"
 	density = TRUE
-	bound_height = 32
-	bound_width = 64
+	height = 1
+	width = 2
 	climbable = TRUE
 	breakable = TRUE
 	debris = list(/obj/item/stack/sheet/wood)
@@ -1170,8 +1170,8 @@
 	name = "colossal specimen containment cell"
 	desc = "A colossal cryogenic tube with yellow-tinted glass towers before you, housing a hulking, monstrous entity. Is it alive, or in a deep slumber? Cold mist swirls around the base as a low hum fills the air."
 	icon_state = "giant_xeno_cryo"
-	bound_height = 128
-	bound_width = 64
+	height = 4
+	width = 2
 	unslashable = TRUE
 	unacidable = TRUE
 	explo_proof = TRUE
@@ -1208,7 +1208,7 @@
 	desc = "Before you lies a behemoth of what looks like a 'hypersleep chamber', dwarfing everything around it. Within, a fossilized alien presence lies dormant. The chamber itself bears the scars of a violent past, with holes melted in its outer shell, as if something within had erupted outwards with some unknown force. The desiccated remains of the occupant are twisted and contorted, suggesting a violent demise that occurred long ago."
 	icon = 'icons/obj/structures/props/engineers/engineerPod.dmi'
 	icon_state = "pod_broken"
-	bound_height = 96
+	height = 3
 	density = TRUE
 
 /obj/structure/prop/hybrisa/engineer/giantpod
@@ -1216,8 +1216,8 @@
 	desc = "Before you stands an imposing structure, what looks like a colossal 'hypersleep chamber' of alien design, unlike anything you've ever encountered. Its intricate patterns and unfamiliar symbols hint at technologies far beyond human comprehension. Yet, despite its grandeur, the chamber is empty, devoid of any sign of life."
 	icon = 'icons/obj/structures/props/engineers/engineerPod.dmi'
 	icon_state = "pod"
-	bound_height = 96
-	bound_width = 64
+	height = 3
+	width = 2
 	unslashable = TRUE
 	unacidable = TRUE
 	density = TRUE
@@ -1278,8 +1278,8 @@
 	desc = "Before you looms a towering alien console, its design defying all familiarity and logic. It's a marvel of unknown technology, adorned with intricate patterns and pulsating lights that dance with otherworldly energy. What purpose does this enigmatic device serve? The answer eludes you..."
 	icon = 'icons/obj/structures/props/engineers/consoles.dmi'
 	icon_state = "engineerconsole"
-	bound_height = 32
-	bound_width = 32
+	height = 1
+	width = 1
 	unslashable = TRUE
 	unacidable = TRUE
 	explo_proof = TRUE
@@ -1288,8 +1288,8 @@
 /obj/structure/prop/hybrisa/engineer/engineerpillar
 	icon = 'icons/obj/structures/props/engineers/hybrisaengineerpillarangled.dmi'
 	icon_state = "engineerpillar_SW1fade"
-	bound_height = 64
-	bound_width = 128
+	height = 2
+	width = 4
 	unslashable = TRUE
 	unacidable = TRUE
 	explo_proof = TRUE
@@ -1410,8 +1410,8 @@
 	desc = "The engine appears to have severe damage."
 	icon = 'icons/obj/structures/props/dropship/dropshipdamage.dmi'
 	icon_state = "dropship_engine_damage"
-	bound_height = 64
-	bound_width = 96
+	height = 2
+	width = 3
 	unslashable = TRUE
 	unacidable = TRUE
 	explo_proof = TRUE
@@ -1422,8 +1422,8 @@
 	desc = "The engine appears to have severe damage."
 	icon = 'icons/obj/structures/props/dropship/dropshipdamage.dmi'
 	icon_state = "dropship_engine_damage_nofire"
-	bound_height = 64
-	bound_width = 96
+	height = 2
+	width = 3
 	unslashable = TRUE
 	unacidable = TRUE
 	explo_proof = TRUE
@@ -1434,8 +1434,8 @@
 	desc = "A long refueling hose that connects to various types of dropships."
 	icon = 'icons/obj/structures/props/dropship/dropshipdamage.dmi'
 	icon_state = "fuelline1"
-	bound_height = 64
-	bound_width = 96
+	height = 2
+	width = 3
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -1444,8 +1444,8 @@
 	desc = "A long refueling hose that connects to various types of dropships."
 	icon = 'icons/obj/structures/props/dropship/dropshipdamage.dmi'
 	icon_state = "fuelline2"
-	bound_height = 64
-	bound_width = 96
+	height = 2
+	width = 3
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -1456,8 +1456,8 @@
 	desc = "What remains of a Weyland-Yutani Pilot. Their entire head is missing. Where'd it roll off to?..."
 	icon = 'icons/obj/structures/props/hybrisa/64x96-props.dmi'
 	icon_state = "pilotbody_decap1"
-	bound_height = 64
-	bound_width = 96
+	height = 2
+	width = 3
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -1466,8 +1466,8 @@
 	desc = "What remains of a Weyland-Yutani Pilot. Their entire head is missing. Where'd it roll off to?..."
 	icon = 'icons/obj/structures/props/hybrisa/64x96-props.dmi'
 	icon_state = "pilotbody_decap2"
-	bound_height = 64
-	bound_width = 96
+	height = 2
+	width = 3
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -1530,8 +1530,8 @@
 	name = "graffiti"
 	icon = 'icons/obj/structures/props/hybrisa/64x96-props.dmi'
 	icon_state = "zgraffiti4"
-	bound_height = 64
-	bound_width = 96
+	height = 2
+	width = 3
 	unslashable = TRUE
 	unacidable = TRUE
 	breakable = TRUE
@@ -1599,16 +1599,16 @@
 	name = "barrel"
 	icon = 'icons/obj/structures/props/hybrisa/64x64_props.dmi'
 	icon_state = "zbarrelfireon"
-	bound_height = 32
-	bound_width = 32
+	height = 1
+	width = 1
 	density = TRUE
 
 /obj/structure/prop/hybrisa/misc/firebarreloff
 	name = "barrel"
 	icon = 'icons/obj/structures/props/hybrisa/misc_props.dmi'
 	icon_state = "zfirebarreloff"
-	bound_height = 32
-	bound_width = 32
+	height = 1
+	width = 1
 	density = TRUE
 
 // Misc
@@ -1721,8 +1721,8 @@
 	desc = "A slot machine."
 	icon = 'icons/obj/structures/props/furniture/slot_machines.dmi'
 	icon_state = "slotmachine"
-	bound_width = 32
-	bound_height = 32
+	width = 1
+	height = 1
 	anchored = TRUE
 	density = TRUE
 	layer = WINDOW_LAYER
@@ -1732,8 +1732,8 @@
 	name = "slot machine"
 	desc = "A broken slot machine."
 	icon_state = "slotmachine_broken"
-	bound_width = 32
-	bound_height = 32
+	width = 1
+	height = 1
 	anchored = TRUE
 	density = TRUE
 	layer = WINDOW_LAYER
@@ -1914,8 +1914,8 @@
 	icon = 'icons/obj/structures/props/hybrisa/computers.dmi'
 	name = "computer"
 	icon_state = "mapping_comp"
-	bound_width = 32
-	bound_height = 32
+	width = 1
+	height = 1
 	anchored = TRUE
 	density = TRUE
 	health = 150
@@ -2028,8 +2028,8 @@
 	icon = 'icons/obj/structures/machinery/science_machines_64x32.dmi'
 	name = "synthesis simulator"
 	icon_state = "modifier"
-	bound_width = 64
-	bound_height = 32
+	width = 2
+	height = 1
 	anchored = TRUE
 	density = TRUE
 	health = 150
@@ -2305,8 +2305,8 @@
 	desc = "A cargo container."
 	icon = 'icons/obj/structures/props/containers/containersextended.dmi'
 	icon_state = "blackwyleft"
-	bound_height = 32
-	bound_width = 32
+	height = 1
+	width = 1
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/cargo_container/hybrisa/containersextended/blueleft
@@ -2476,8 +2476,8 @@
 	name = "\improper machinery"
 	icon = 'icons/obj/structures/props/hybrisa/64x64_props.dmi'
 	icon_state = "buildingventbig1"
-	bound_width = 64
-	bound_height = 32
+	width = 2
+	height = 1
 	density = TRUE
 	health = 200
 	anchored = TRUE
@@ -2655,8 +2655,8 @@
 	desc = "A decorative concrete planter with seating attached, the seats are fitted with synthetic leather, they've faded in time.."
 	icon = 'icons/obj/structures/props/hybrisa/64x64_props.dmi'
 	icon_state = "planterseats"
-	bound_width = 32
-	bound_height = 64
+	width = 1
+	height = 2
 	density = TRUE
 	health = 1500
 	anchored = TRUE
@@ -2674,8 +2674,8 @@
 	desc = "A decorative statue with the Weyland-Yutani 'Wings' adorned on it, A corporate brutalist piece of art."
 	icon = 'icons/obj/structures/props/hybrisa/64x64_props.dmi'
 	icon_state = "concretesculpture"
-	bound_width = 64
-	bound_height = 64
+	width = 2
+	height = 2
 	density = TRUE
 	anchored = TRUE
 	unslashable = TRUE
@@ -2847,8 +2847,8 @@
 	desc = "A metal frame, with seats that are fitted with synthetic leather, they've faded in time."
 	icon = 'icons/obj/structures/props/hybrisa/64x64_props.dmi'
 	icon_state = "seatedbench"
-	bound_width = 32
-	bound_height = 64
+	width = 1
+	height = 2
 	layer = BELOW_MOB_LAYER
 	density = FALSE
 	anchored = TRUE
@@ -2861,8 +2861,8 @@
 	icon = 'icons/obj/structures/props/phonebox.dmi'
 	icon_state = "phonebox_off_broken"
 	layer = ABOVE_MOB_LAYER
-	bound_width = 32
-	bound_height = 32
+	width = 1
+	height = 1
 	density = TRUE
 	anchored = TRUE
 
@@ -2955,8 +2955,8 @@
 	name = "neon sign"
 	icon = 'icons/obj/structures/props/wall_decorations/hybrisa64x64_signs.dmi'
 	icon_state = "jacksopen_on"
-	bound_height = 64
-	bound_width = 64
+	height = 2
+	width = 2
 	layer = BILLBOARD_LAYER
 	health = 100
 
@@ -3128,8 +3128,8 @@
 	icon = 'icons/obj/structures/props/wall_decorations/32x64_hybrisabillboards.dmi'
 	icon_state = "billboard_bigger"
 	health = 150
-	bound_width = 64
-	bound_height = 32
+	width = 2
+	height = 1
 	density = FALSE
 	anchored = TRUE
 
@@ -3205,8 +3205,8 @@
 	desc = "A road sign."
 	icon = 'icons/obj/structures/props/hybrisa/64x64_props.dmi'
 	icon_state = "roadsign_1"
-	bound_width = 64
-	bound_height = 32
+	width = 2
+	height = 1
 	density = FALSE
 	anchored = TRUE
 	layer = BILLBOARD_LAYER
@@ -3227,7 +3227,7 @@
 	name = "robotic arm"
 	desc = "A robust robotic arm used in a range of mechanical processes, including assembly and packaging."
 	icon_state = "factory_roboticarm"
-	bound_width = 32
+	width = 1
 	anchored = TRUE
 	health = 100
 	layer = BIG_XENO_LAYER

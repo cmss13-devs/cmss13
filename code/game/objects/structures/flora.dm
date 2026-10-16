@@ -171,8 +171,8 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	unslashable = TRUE
 	explo_proof = TRUE
 	layer = ABOVE_XENO_LAYER
-	bound_height = 128
-	bound_width = 128
+	height = 4
+	width = 4
 
 /obj/structure/roof/flora/tree/jungle/bigtreeTL
 	name = "huge tree"

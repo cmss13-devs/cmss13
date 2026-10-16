@@ -203,11 +203,11 @@ SUBSYSTEM_DEF(shuttle)
 	// from our perspective
 	switch(dock_dir)
 		if(NORTH, SOUTH)
-			transit_width += M.width
-			transit_height += M.height
+			transit_width += M.covered_width
+			transit_height += M.covered_height
 		if(EAST, WEST)
-			transit_width += M.height
-			transit_height += M.width
+			transit_width += M.covered_height
+			transit_height += M.covered_width
 
 /*
 	to_chat(world, "The attempted transit dock will be [transit_width] width, and \)

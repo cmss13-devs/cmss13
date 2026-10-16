@@ -8,12 +8,14 @@
 
 	req_access = list(ACCESS_MARINE_CREWMAN)
 	vendor_role = list(JOB_TANK_CREW)
-	bound_width = 64
 
 	unslashable = TRUE
 
 	vend_delay = 4 SECONDS
 	vend_sound = 'sound/machines/medevac_extend.ogg'
+
+	width = 2
+	height = 1
 
 	var/selected_vehicle
 	var/budget_points = 0

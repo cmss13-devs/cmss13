@@ -2,12 +2,11 @@
 	name = "Cargo Container"
 	desc = "A huge industrial shipping container.\nYou aren't supposed to see this."
 	icon = 'icons/obj/structures/props/containers/contain.dmi'
-	bound_width = 32
-	bound_height = 64
 	density = TRUE
 	health = 200
 	opacity = TRUE
 	anchored = TRUE
+	height = 2
 	///multiples any demage taken from bullets
 	var/bullet_damage_multiplier = 0.2
 	///multiples any demage taken from explosion
@@ -291,8 +290,8 @@
 	name = "Cargo Container"
 	desc = "A huge industrial shipping container."
 	icon = 'icons/obj/structures/props/containers/containHorizont.dmi'
-	bound_width = 64
-	bound_height = 32
+	width = 2
+	height = 1
 	density = TRUE
 	health = 200
 	opacity = TRUE

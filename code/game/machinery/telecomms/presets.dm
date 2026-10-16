@@ -202,9 +202,9 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	icon_state = "static1"
 	toggled = FALSE
 	on = FALSE
-	bound_height = 64
-	bound_width = 64
 	freq_listening = list(COLONY_FREQ)
+	width = 2
+	height = 2
 	var/toggle_cooldown = 0
 
 	/// Tower has been taken over by xenos, is not usable

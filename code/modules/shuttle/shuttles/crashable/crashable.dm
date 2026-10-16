@@ -80,8 +80,8 @@
 		var/turf/turf_picked = pick(potential_turfs)
 
 		var/obj/docking_port/stationary/crashable/temp_crashable_port = new(turf_picked)
-		temp_crashable_port.width = width
-		temp_crashable_port.height = height
+		temp_crashable_port.covered_width = width
+		temp_crashable_port.covered_height = height
 		temp_crashable_port.id = id
 
 		if(!check_crash_point(temp_crashable_port))

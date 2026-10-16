@@ -56,3 +56,5 @@
 /// Called when an atom is crossed by a movable atom
 #define COMSIG_ATOM_CROSSED "atom_crossed"
 
+/// Called when a multitile atom's bounds set set
+#define COMSIG_ATOM_MULTITILE_SET_BOUNDS "atom_multitile_set_bounds"

@@ -4,9 +4,10 @@
 	desc = "It is a machine that pumps fuel around the ship."
 	icon = 'icons/obj/structures/machinery/fuelpump.dmi'
 	icon_state = "fuelpump_off"
-	bound_width = 128
 	pixel_x = -64
-	bound_x = -64
+	width = 4
+	height = 1
+	x_offset = -2
 	health = 2500
 	density = TRUE
 	anchored = TRUE

@@ -118,7 +118,7 @@
 /datum/teleporter/proc/check_vehicle_safety(obj/vehicle/multitile/vehicle, location_id)
 	var/list/turf/location_turfs = locations[location_id]
 
-	var/parts_count = (vehicle.bound_width / world.icon_size) * (vehicle.bound_height / world.icon_size)
+	var/parts_count = (vehicle.width) * (vehicle.height)
 	var/current_count = 0
 
 	if(!location_turfs)

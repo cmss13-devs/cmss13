@@ -9,7 +9,7 @@
 	use_power = USE_POWER_NONE
 	wrenchable = FALSE
 	idle_power_usage = 40
-	bound_x = 32
+	x_offset = 1
 	///assoc list containing the path to every upgrade followed by a number representing times this tech was bought. used by price inflation mechanic to increase/decrease price depending on the amount of times you bought it.
 	var/list/technology_purchased = list()
 	var/biomass_points = 1000 //most important thing in this --giving 1k as an experiment roundstart.

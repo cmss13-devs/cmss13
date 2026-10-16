@@ -561,6 +561,7 @@
 	else
 		pixel_x = initial(pixel_x)
 		pixel_y = initial(pixel_y)
+		// TODO: fix this
 		bound_width = initial(bound_width)
 		bound_height = initial(bound_height)
 		icon_state = initial(icon_state)
@@ -716,8 +717,6 @@
 	name = "abstract weapon"
 	icon = 'icons/obj/structures/props/dropship/dropship_equipment64.dmi'
 	equip_categories = list(DROPSHIP_WEAPON)
-	bound_width = 32
-	bound_height = 64
 	uses_ammo = TRUE
 	is_weapon = TRUE
 	screen_mode = 1
@@ -732,14 +731,13 @@
 	var/fire_mission_only = TRUE
 
 /obj/structure/dropship_equipment/weapon/update_equipment()
+	// TODO: fix this
 	if(ship_base)
 		setDir(ship_base.dir)
-		bound_width = 32
-		bound_height = 32
+		RemoveElement(/datum/element/multitile, width, height, can_block_movement)
 	else
 		setDir(initial(dir))
-		bound_width = initial(bound_width)
-		bound_height = initial(bound_height)
+		AddElement(/datum/element/multitile, width, height, can_block_movement)
 	update_icon()
 
 /obj/structure/dropship_equipment/weapon/equipment_interact(mob/user)

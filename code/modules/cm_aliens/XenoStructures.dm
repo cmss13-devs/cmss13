@@ -755,8 +755,8 @@
 	icon = 'icons/obj/structures/alien/structures96x96.dmi'
 	icon_state = "resin_pillar"
 	invisibility = INVISIBILITY_MAXIMUM
-	var/width = 3
-	var/height = 3
+	width = 3
+	height = 3
 	var/time_to_brittle = 45 SECONDS
 	var/time_to_collapse = 45 SECONDS
 
@@ -771,8 +771,6 @@
 /obj/effect/alien/resin/resin_pillar/Initialize(mapload, ...)
 	. = ..()
 	//playsound(granite shuffling)
-	bound_width = width * world.icon_size
-	bound_height = height * world.icon_size
 	playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25, FALSE)
 	if(mapload) //this should never be called in mapload, but in case it is
 		name = "calcified resin pillar"

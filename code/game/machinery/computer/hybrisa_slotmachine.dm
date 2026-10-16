@@ -23,8 +23,6 @@
 	desc = "A slot machine."
 	icon = 'icons/obj/structures/props/furniture/slot_machines.dmi'
 	icon_state = "slotmachine"
-	bound_width = 32
-	bound_height = 32
 	anchored = TRUE
 	density = TRUE
 	layer = BIG_XENO_LAYER

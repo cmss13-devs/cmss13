@@ -3,6 +3,7 @@
 	anchored = TRUE
 	opacity = FALSE
 	density = FALSE
+	can_block_movement = FALSE
 	layer = WALL_OBJ_LAYER
 	var/deconstructable = TRUE
 

@@ -14,7 +14,7 @@
 	ceiling = CEILING_REINFORCED_METAL
 	base_lighting_alpha = 0
 
-/area/shuttle/drop1/Enter(atom/movable/O, atom/oldloc)
+/area/shuttle/drop1/Enter(atom/movable/O, atom/forget)
 	if(istype(O, /obj/structure/barricade))
 		return FALSE
 	return TRUE
@@ -58,7 +58,6 @@
 /area/shuttle/drop1/lz1
 	name = "\improper Alamo Landing Zone"
 	icon_state = "away1"
-
 
 
 

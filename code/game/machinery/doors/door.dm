@@ -14,7 +14,6 @@
 	var/open_layer = DOOR_OPEN_LAYER
 	var/closed_layer = DOOR_CLOSED_LAYER
 	var/id = ""
-	var/width = 1
 
 	var/secondsElectrified = 0
 	var/visible = TRUE
@@ -26,8 +25,6 @@
 	var/normalspeed = TRUE
 	/// Time to open/close airlock, default is 1 second.
 	var/openspeed = 1 SECONDS
-	/// Fixes multi_tile doors opacity issues.
-	var/list/filler_turfs = list() //Previously this was just var, because no one had forseen someone creating doors more than 2 tiles wide
 	/// Stops it being forced open through normal means (Hunters/Zombies/Aliens).
 	var/heavy = FALSE
 	/// Resistance to masterkey
@@ -37,55 +34,32 @@
 /obj/structure/machinery/door/Initialize(mapload, ...)
 	. = ..()
 	layer = density ? closed_layer : open_layer
-	handle_multidoor()
+	if (height > 1)
+		RegisterSignal(src, COMSIG_ATOM_SET_OPACITY, PROC_REF(handle_opacity_change))
+	RegisterSignal(src, list(COMSIG_MOVABLE_MOVED, COMSIG_MOVABLE_MOVED_TO_NULLSPACE, COMSIG_ATOM_MULTITILE_SET_BOUNDS), PROC_REF(set_filler_turfs))
+
+/obj/structure/machinery/door/proc/handle_opacity_change(source, new_opacity)
+	SIGNAL_HANDLER
+	for (var/turf/filler_turf as anything in locs)
+		filler_turf.set_opacity(new_opacity)
+
+/obj/structure/machinery/door/proc/set_filler_turfs(source, list/atom/old_locs)
+	SIGNAL_HANDLER
+	// Reset all filler_turfs because it is not necessarily equal to locate_filler_turfs()
+	for (var/turf/filler_turf as anything in old_locs)
+		filler_turf.set_opacity(null)
+
+	for (var/turf/filler_turf as anything in locs)
+		filler_turf.set_opacity(opacity)
 
 /obj/structure/machinery/door/Destroy()
 	. = ..()
-	if(length(filler_turfs) && width > 1)
-		change_filler_opacity(0) // It still doesn't check for walls, might want to add checking that in the future
-		filler_turfs = null
 	density = FALSE
 
 /obj/structure/machinery/door/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = NONE
-
-/// Also refreshes filler_turfs list.
-/obj/structure/machinery/door/proc/change_filler_opacity(new_opacity)
-	// I have no idea why do we null opacity first before... changing it
-	for(var/turf/filler_turf as anything in filler_turfs)
-		filler_turf.set_opacity(null)
-
-	filler_turfs = list()
-	for(var/turf/filler as anything in locate_filler_turfs())
-		filler.set_opacity(new_opacity)
-		filler_turfs += filler
-
-/// Updates collision box and opacity of multi_tile airlocks.
-/obj/structure/machinery/door/proc/handle_multidoor()
-	if(width > 1)
-		if(dir in list(EAST, WEST))
-			bound_width = width * world.icon_size
-			bound_height = world.icon_size
-		else
-			bound_width = world.icon_size
-			bound_height = width * world.icon_size
-		change_filler_opacity(opacity)
-
-/// Finds turfs which should be filler ones.
-/obj/structure/machinery/door/proc/locate_filler_turfs()
-	var/turf/filler_temp
-	var/list/located_turfs = list()
-
-	for(var/i in 1 to width - 1)
-		if (dir in list(EAST, WEST))
-			filler_temp = locate(x + i, y, z)
-		else
-			filler_temp = locate(x, y + i, z)
-		if (filler_temp)
-			located_turfs += filler_temp
-	return located_turfs
 
 /obj/structure/machinery/door/proc/borders_space()
 	return !!(locate(/turf/open/space) in range(1, src))
@@ -226,8 +200,6 @@
 	operating = DOOR_OPERATING_OPENING
 	do_animate("opening")
 	set_opacity(FALSE)
-	if(length(filler_turfs))
-		change_filler_opacity(opacity)
 	addtimer(CALLBACK(src, PROC_REF(finish_open)), openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	return TRUE
 
@@ -248,6 +220,9 @@
 	SEND_SIGNAL(src, COMSIG_DOOR_OPEN)
 
 /obj/structure/machinery/door/proc/close(forced = FALSE)
+	for (var/turf/turf in locs)
+		for (var/obj/vehicle/multitile/vehicle_tile in turf.movement_blockers)
+			return FALSE
 	if(density && !operating)
 		return TRUE
 	if(operating && !forced)
@@ -282,9 +257,6 @@
 	update_icon()
 	if(visible && !glass)
 		set_opacity(TRUE)
-		if(length(filler_turfs))
-			change_filler_opacity(opacity)
-
 	operating = DOOR_OPERATING_IDLE
 	SEND_SIGNAL(src, COMSIG_DOOR_CLOSE)
 
@@ -297,17 +269,6 @@
 		return
 	if(!density && !operating)
 		close()
-
-/obj/structure/machinery/door/Move(new_loc, new_dir)
-	. = ..()
-	if(width > 1)
-		if(dir in list(EAST, WEST))
-			bound_width = width * world.icon_size
-			bound_height = world.icon_size
-		else
-			bound_width = world.icon_size
-			bound_height = width * world.icon_size
-		change_filler_opacity(opacity)
 
 /obj/structure/machinery/door/morgue
 	icon = 'icons/obj/structures/doors/doormorgue.dmi'

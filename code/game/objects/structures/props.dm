@@ -7,7 +7,7 @@
 	unacidable = TRUE
 	density = TRUE
 	layer = ABOVE_FLY_LAYER
-	bound_height = 96
+	height = 3
 
 /obj/structure/prop/dam
 	density = TRUE
@@ -17,7 +17,7 @@
 	desc = "An old mining drill, seemingly used for mining. And possibly drilling."
 	icon = 'icons/obj/structures/props/industrial/drill.dmi'
 	icon_state = "drill"
-	bound_height = 96
+	height = 3
 	var/on = FALSE//if this is set to on by default, the drill will start on, doi
 
 /obj/structure/prop/dam/drill/attackby(obj/item/W, mob/user)
@@ -49,10 +49,10 @@
 	desc = "An old truck, seems to be broken down."
 	icon = 'icons/obj/structures/props/vehicles/vehicles.dmi'
 	icon_state = "truck"
-	bound_height = 64
-	bound_width = 64
 	unslashable = TRUE
 	unacidable = TRUE
+	height = 2
+	width = 2
 
 /obj/structure/prop/dam/truck/damaged
 	icon_state = "truck_damaged"
@@ -72,10 +72,10 @@
 	desc = "An old van, seems to be broken down."
 	icon = 'icons/obj/structures/props/vehicles/vehicles.dmi'
 	icon_state = "van"
-	bound_height = 64
-	bound_width = 64
 	unslashable = TRUE
 	unacidable = TRUE
+	height = 2
+	width = 2
 
 /obj/structure/prop/dam/van/damaged
 	icon_state = "van_damaged"
@@ -84,10 +84,10 @@
 	name = "cargo crane"
 	icon = 'icons/obj/structures/props/vehicles/vehicles.dmi'
 	icon_state = "crane"
-	bound_height = 64
-	bound_width = 64
 	unslashable = TRUE
 	unacidable = TRUE
+	width = 2
+	height = 2
 
 /obj/structure/prop/dam/crane/damaged
 	icon_state = "crane_damaged"
@@ -217,8 +217,8 @@
 	name = "boulder"
 	desc = "A large rock. It's not cooking anything."
 	icon = 'icons/obj/structures/props/natural/boulder_large.dmi'
-	bound_height = 64
-	bound_width = 64
+	width = 2
+	height = 2
 
 /obj/structure/prop/dam/large_boulder/boulder1
 	icon_state = "boulder_large1"
@@ -230,8 +230,8 @@
 	name = "boulder"
 	desc = "A large rock. It's not cooking anything."
 	icon = 'icons/obj/structures/props/natural/boulder_wide.dmi'
-	bound_height = 32
-	bound_width = 64
+	width = 2
+	height = 1
 
 /obj/structure/prop/dam/wide_boulder/boulder1
 	icon_state = "boulder1"
@@ -292,9 +292,9 @@
 	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
+	width = 1
+	height = 3
 	var/on = FALSE
-	bound_width = 32
-	bound_height = 96
 
 /obj/structure/prop/turbine/attackby(obj/item/W, mob/user)
 	. = ..()
@@ -349,9 +349,9 @@
 	name = "power transformer"
 	icon = 'icons/obj/structures/props/industrial/power_transformer.dmi'
 	icon_state = "transformer"
-	bound_width = 64
-	bound_height = 64
 	desc = "A passive electrical component that controls where and which circuits power flows into."
+	height = 2
+	width = 2
 
 //cash registers
 
@@ -798,10 +798,10 @@
 	desc = "An old van, seems to be broken down."
 	icon = 'icons/obj/structures/props/vehicles/vehicles.dmi'
 	icon_state = "van"
-	bound_height = 64
-	bound_width = 64
 	unslashable = FALSE
 	unacidable = FALSE
+	width = 2
+	height = 2
 
 /obj/structure/prop/vehicles/crawler
 	name = "colony crawler"
@@ -1158,8 +1158,8 @@
 	icon = 'icons/obj/structures/props/static_defence_prop.dmi'
 	icon_state = "gun_platform"
 	layer = XENO_HIDING_LAYER
-	bound_height = 32
-	bound_width = 64
+	height = 1
+	width = 2
 	density = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
@@ -1206,7 +1206,7 @@
 	name = "Spirit Phone, The Game, The Movie: II"
 
 //INVULNERABLE PROPS
-
+// TODO: Fix this because there are conflicting obj paths LOL
 /obj/structure/prop/invuln
 	layer = ABOVE_MOB_LAYER
 	density = TRUE
@@ -1252,8 +1252,6 @@
 	icon_state = "fab"
 	density = TRUE
 	layer = 3
-	bound_width = 32
-	bound_height = 32
 
 /obj/structure/prop/invuln/ice_prefab/trim
 	layer = ABOVE_MOB_LAYER
@@ -1275,8 +1273,8 @@
 	icon = 'icons/obj/structures/props/ice_colony/fabs_64.dmi'
 	icon_state = "orange"//instance icons
 	layer = 3
-	bound_width = 64
-	bound_height = 64
+	height = 2
+	width = 2
 
 /obj/structure/prop/invuln/ice_prefab/standalone/trim
 	icon_state = "orange_trim"//instance icons
@@ -1581,8 +1579,8 @@
 	desc = "A grim mound of body bags stacked haphazardly."
 	icon = 'icons/obj/structures/props/64x64_bodybag_pile.dmi'
 	icon_state = "bodybag_pile"
-	bound_height = 64
-	bound_width = 64
+	height = 2
+	width = 2
 	density = TRUE
 	layer = BIG_XENO_LAYER
 
@@ -1591,8 +1589,8 @@
 	desc = "A grim mound of body bags stacked haphazardly, their surfaces blackened and blistered from intense heat. The contents are partially burned."
 	icon = 'icons/obj/structures/props/64x64_bodybag_pile.dmi'
 	icon_state = "bodybag_pile"
-	bound_height = 64
-	bound_width = 64
+	height = 2
+	width = 2
 	density = TRUE
 	dir = 4
 	layer = BIG_XENO_LAYER

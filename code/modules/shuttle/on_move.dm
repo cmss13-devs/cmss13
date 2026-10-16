@@ -56,8 +56,11 @@ All ShuttleMove procs go here
 
 		qdel(thing)
 
-
-/// Called on the old turf to move the turf data
+/**
+ * Called on the old turf to move the turf data
+ *
+ * Returns the original turf as a clone of the new turf or a whole new turf generated via ChangeTurf()
+ */
 /turf/proc/onShuttleMove(turf/newT, list/movement_force, move_dir)
 	if(newT == src) // In case of in place shuttle rotation shenanigans.
 		return
@@ -67,8 +70,8 @@ All ShuttleMove procs go here
 	if(!shuttle_boundary)
 		CRASH("A turf queued to move via shuttle somehow had no skipover in baseturfs. [src]([type]):[loc]")
 	var/depth = length(baseturfs) - shuttle_boundary + 1
-	newT.CopyOnTop(src, 1, depth, TRUE)
-	return TRUE
+	var/turf/final_turf = newT.CopyOnTop(src, 1, depth, TRUE)
+	return final_turf
 
 /// Called on the new turf after everything has been moved
 /turf/proc/afterShuttleMove(turf/oldT, rotation)
@@ -103,10 +106,7 @@ All ShuttleMove procs go here
 	if(newT == oldT) // In case of in place shuttle rotation shenanigans.
 		return
 
-	if(loc != oldT) // This is for multi tile objects
-		return
-
-	loc = newT
+	forceMove(newT)
 
 	return TRUE
 
@@ -346,7 +346,6 @@ All ShuttleMove procs go here
 	setDir(old_dir)
 	for(var/turf/closed/shuttle/tr_walls in old_locs)
 		tr_walls.set_opacity(1)
-	handle_multidoor()
 
 /*
 /obj/structure/ladder/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)

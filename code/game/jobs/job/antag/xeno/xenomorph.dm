@@ -8,6 +8,7 @@
 	spawn_positions = -1
 	total_positions = -1
 	scaled = TRUE
+	role_weight = 1
 
 /datum/job/antag/xenos/proc/calculate_extra_spawn_positions(count)
 	return max((floor(count * INITIAL_XENO_TO_MARINE_RATIO)), 0)

@@ -1212,7 +1212,7 @@ Additional game mode variables.
 		if(human.faction == FACTION_MARINE)
 			uscm_personnel_count++
 			var/datum/job/job = GET_MAPPED_ROLE(human.job)
-			marine_pop_size += GLOB.RoleAuthority.calculate_role_weight(job)
+			marine_pop_size += job.role_weight
 
 	//This gives a decimal value representing a scaling multiplier. Cannot go below 1
 	gear_scale = max(marine_pop_size / MARINE_GEAR_SCALING_NORMAL, 1)
@@ -1240,8 +1240,8 @@ Additional game mode variables.
 		chem_storage.calculate_dynamic_storage(energy_scale)
 
 /// Updates [var/latejoin_tally] and [var/gear_scale] based on role weights of latejoiners/cryoers. Delta is the amount of role positions added/removed
-/datum/game_mode/proc/latejoin_update(role, delta = 1)
-	var/weight = GLOB.RoleAuthority.calculate_role_weight(role)
+/datum/game_mode/proc/latejoin_update(datum/job/role, delta = 1)
+	var/weight = role.role_weight
 	latejoin_tally += weight * delta
 	update_gear_scale(weight * delta)
 

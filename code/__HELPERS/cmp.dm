@@ -68,3 +68,7 @@ GLOBAL_LIST_INIT(cmp_field, "name")
 /// Assumes the client on the observer is not null
 /proc/cmp_obs_larvapooltime_asc(mob/dead/observer/A, mob/dead/observer/B)
 	return A.client.player_details.larva_pool_time - B.client.player_details.larva_pool_time
+
+/// Compares player_details based on their larva_pool_time value in ascending order
+/proc/cmp_player_larvapooltime_asc(datum/player_details/A, datum/player_details/B)
+	return A.larva_pool_time - B.larva_pool_time

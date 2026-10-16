@@ -109,7 +109,7 @@
 		"is_contract_picked" = GLOB.chemical_data.picked_chem,
 		"world_time" = world.time,
 		"next_reroll" = GLOB.chemical_data.next_reroll,
-		"contract_cooldown" = (GLOB.chemical_data.picked_chem ? RESEARCH_CONTRACT_PICKED : RESEARCH_CONTRACT_NOT_PICKED)
+		"contract_cooldown" = (GLOB.chemical_data.picked_chem ? RESEARCH_CONTRACT_PICKED : RESEARCH_CONTRACT_NOT_PICKED),
 	)
 	return data
 

@@ -317,7 +317,7 @@
 		"An'khos-ir",
 		"Vhe'talid",
 		"Da'thol-ai",
-		"Ve'kirad"
+		"Ve'kirad",
 	)
 	var/codename = pick(mcaste_names)
 	new_human.change_real_name(new_human, codename)
@@ -388,7 +388,7 @@
 		"An'khos-ir",
 		"Vhe'talid",
 		"Da'thol-ai",
-		"Ve'kirad"
+		"Ve'kirad",
 	)
 	var/codename = ("Enforcer " + pick(mcaste_names))
 	new_human.change_real_name(new_human, codename)

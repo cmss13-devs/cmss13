@@ -103,7 +103,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		"blood_amount" = target_mob.blood_volume,
 		"holocard" = get_holo_card_color(target_mob),
 		"hugged" = (locate(/obj/item/alien_embryo) in target_mob),
-		"ui_mode" = ui_mode
+		"ui_mode" = ui_mode,
 	)
 
 	var/internal_bleeding = FALSE //do they have internal bleeding anywhere
@@ -206,7 +206,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				"limb_eschar" = eschar,
 				"bleeding" = bleeding_check,
 				"implant" = implant,
-				"internal_bleeding" = internal_bleeding_check
+				"internal_bleeding" = internal_bleeding_check,
 			)
 			//broken-ness and splints
 			var/limb_status = null
@@ -299,7 +299,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				"name" = organ.name,
 				"damage" = organ.damage,
 				"status" = organ.organ_status == ORGAN_BROKEN ? "Broken" : "Bruised",
-				"robotic" = organ.robotic
+				"robotic" = organ.robotic,
 			)
 			damaged_organs += list(current_organ)
 		data["damaged_organs"] = damaged_organs
@@ -470,7 +470,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 					"type" = disease.spread,
 					"stage" = disease.stage,
 					"max_stage" = disease.max_stages,
-					"cure" = disease.cure
+					"cure" = disease.cure,
 				)
 				diseases += list(current_disease)
 		if(length(diseases))

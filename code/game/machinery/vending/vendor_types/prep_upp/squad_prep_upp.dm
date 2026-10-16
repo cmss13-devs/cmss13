@@ -166,5 +166,5 @@
 
 		list("UTILITIES", -1, null, null),
 		list("M5 Bayonet", floor(scale * 20), /obj/item/attachable/bayonet/upp, VENDOR_ITEM_REGULAR),
-		list("M94 Marking Flare Pack", floor(scale * 10), /obj/item/storage/box/m94, VENDOR_ITEM_RECOMMENDED)
+		list("M94 Marking Flare Pack", floor(scale * 10), /obj/item/storage/box/m94, VENDOR_ITEM_RECOMMENDED),
 	)

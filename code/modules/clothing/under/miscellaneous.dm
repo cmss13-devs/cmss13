@@ -215,5 +215,5 @@
 	item_state = "roman_tunic"
 	icon = 'icons/obj/items/clothing/uniforms/misc_ert_colony.dmi'
 	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/misc_ert_colony.dmi'
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/misc_ert_colony.dmi',
 	)

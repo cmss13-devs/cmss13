@@ -68,7 +68,7 @@
 			"Set len" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_LIST_SET_LENGTH),
 			"Shuffle" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_LIST_SHUFFLE),
 			"Show VV To Player" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_EXPOSE),
-			"---"
+			"---",
 			)
 		for(var/i in 1 to length(dropdownoptions))
 			var/name = dropdownoptions[i]

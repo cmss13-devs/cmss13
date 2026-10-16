@@ -82,9 +82,18 @@
 
 	if(superslowed)
 		. += HUMAN_SUPERSLOWED_AMOUNT
-
-	if(slowed && !superslowed)
-		. += HUMAN_SLOWED_AMOUNT
+	else
+		var/datum/effects/sentinel_neuro_stacks/sns = null
+		for (var/datum/effects/sentinel_neuro_stacks/sentinel_neuro_stacks in src.effects_list)
+			sns = sentinel_neuro_stacks
+			break
+		var/sns_slow = 0
+		if(istype(sns))
+			sns_slow = sns.stack_count * sns.slowdown_per_stack
+		var/slow = 0
+		if(slowed)
+			slow = HUMAN_SLOWED_AMOUNT
+		. += max(sns_slow, slow)
 
 	. += CONFIG_GET(number/human_delay)
 	var/list/movedata = list("move_delay" = .)

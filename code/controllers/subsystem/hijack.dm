@@ -523,6 +523,10 @@ SUBSYSTEM_DEF(hijack)
 			var/obj/docking_port/mobile/emergency_response/dropship = shuttle
 			dropship.control_doors("unlock")
 			continue
+		if(istype(shuttle, /obj/docking_port/mobile/crashable/escape_shuttle))
+			var/obj/docking_port/mobile/crashable/escape_shuttle/escape_shuttle = shuttle
+			if(escape_shuttle.door_handler.status == SHUTTLE_DOOR_LOCKED)
+				escape_shuttle.door_handler.control_doors("force-unlock")
 
 /// Changes whether the mobile docking_ports on the mainship are operating (launchable)
 /datum/controller/subsystem/hijack/proc/allow_dropship_launching(include_marine_dropship=FALSE)

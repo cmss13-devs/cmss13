@@ -66,6 +66,15 @@ GLOBAL_VAR_INIT(log_end, world.system_type == UNIX ? ascii2text(13) : "")
 	GLOB.STUI.admin.Add("\[[time]]ADMIN: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
+/proc/log_lua(text)
+	var/time = time_stamp()
+	GLOB.admin_log.Add(text)
+	if (CONFIG_GET(flag/log_admin_lua))
+		WRITE_LOG(GLOB.world_game_log, "ADMIN LUA: [text]")
+		LOG_REDIS("admin", "\[[time]\] [text]")
+	GLOB.STUI.admin.Add("\[[time]]ADMIN LUA: [text]")
+	GLOB.STUI.processing |= STUI_LOG_ADMIN
+
 /proc/log_asset(text)
 	GLOB.asset_log.Add(text)
 	if (CONFIG_GET(flag/log_asset))

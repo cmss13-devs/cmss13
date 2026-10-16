@@ -3554,3 +3554,77 @@
 	. = ..()
 	reagents.add_reagent("bread", 4)
 	reagents.add_reagent("sodiumchloride", 1)
+
+/obj/item/reagent_container/food/snacks/kipferl
+	name = "kipferl"
+	desc = "A small crescent shaped cookie. Wait, what's it called again?"
+	icon_state = "kipferl"
+	icon = 'icons/obj/items/food/upp_dishes.dmi'
+	filling_color = "#DBC94F"
+
+/obj/item/reagent_container/food/snacks/kipferl/Initialize()
+	. = ..()
+	switch(rand(1,8))
+		if(1)
+			name = "kipferl"
+		if(2)
+			name = "kipfl"
+		if(3)
+			name = "kipfil"
+		if(4)
+			name = "kifli"
+		if(5)
+			name = "kifla"
+		if(6)
+			name = "kifle"
+		if(7)
+			name = "kielc"
+		if(8)
+			name = "kiflice"
+	reagents.add_reagent("bread", 4)
+	reagents.add_reagent("sugar", 1)
+	bitesize = 2
+
+/obj/item/reagent_container/food/snacks/pasta_salad
+	name = "Pasta Salad"
+	desc = "A cold mix of pasta, onions, tomatoes and a vinaigrette."
+	icon_state = "pasta_salad"
+	icon = 'icons/obj/items/food/upp_dishes.dmi'
+	trash = /obj/item/trash/snack_bowl
+	filling_color = "#d4c89f"
+
+/obj/item/reagent_container/food/snacks/pasta_salad/Initialize()
+	. = ..()
+	reagents.add_reagent("noodles", 8)
+	reagents.add_reagent("vegetable", 2)
+	bitesize = 4
+
+/obj/item/reagent_container/food/snacks/potato_salad
+	name = "Potato Salad"
+	desc = "A cold mix of potatoes, boiled eggs, mayonaise and a barely noticable amount of dill."
+	icon_state = "potato_salad"
+	icon = 'icons/obj/items/food/upp_dishes.dmi'
+	trash = /obj/item/trash/snack_bowl
+	filling_color = "#d4c89f"
+
+/obj/item/reagent_container/food/snacks/potato_salad/Initialize()
+	. = ..()
+	reagents.add_reagent("potato", 5)
+	reagents.add_reagent("vegetable", 2)
+	reagents.add_reagent("egg", 3)
+	bitesize = 4
+
+/obj/item/reagent_container/food/snacks/goulash
+	name = "goulash"
+	desc = "Contains some sort of meat, assorted vegetables and an overwhelming amount of paprika. Best served hot!"
+	icon_state = "goulash"
+	icon = 'icons/obj/items/food/upp_dishes.dmi'
+	trash = /obj/item/trash/snack_bowl
+	filling_color = "#350f0f"
+
+/obj/item/reagent_container/food/snacks/goulash/Initialize()
+	. = ..()
+	reagents.add_reagent("vegetable", 2)
+	reagents.add_reagent("meatprotein", 6)
+	reagents.add_reagent("hotsauce", 2)
+	bitesize = 6

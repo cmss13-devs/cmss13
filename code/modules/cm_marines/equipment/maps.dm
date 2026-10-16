@@ -34,6 +34,13 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 	initialize_map()
 
 
+/obj/item/map/clicked(mob/user, list/mods)
+	if(mods["alt"])
+		fold_unfold()
+		return TRUE
+	return ..()
+
+
 /obj/item/map/verb/fold_unfold()
 	set name = "Fold/Unfold"
 	set category = null

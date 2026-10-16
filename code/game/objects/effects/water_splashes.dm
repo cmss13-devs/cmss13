@@ -73,7 +73,7 @@
 				splash_state = "deep"
 	else
 		splash_state = affected_carbon.stat == DEAD ? "empty" : "bubbles"
-	icon = SSwater_overlays.get_icon_path(config.icon_size)
+	icon = SSwater_overlays.icon_paths["[config.icon_size]"]
 	icon_state = splash_state
 
 

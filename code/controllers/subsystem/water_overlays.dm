@@ -21,13 +21,7 @@ SUBSYSTEM_DEF(water_overlays)
 
 
 /datum/controller/subsystem/water_overlays/Initialize()
-	for(var/turf/search_turf in GLOB.turfs)	//we're gonna cut down on the turfs we're gonna check to improve game start lag, ignoring water in nightmares...
-		if(is_water(search_turf))
-			for(var/direction in GLOB.alldirs)
-				var/turf/found_turf = get_step(search_turf, direction)
-				if(found_turf && !is_water(found_turf))
-					turfs_to_process |= found_turf
-		CHECK_TICK
+	// This MUST stay early — turfs call generate_water_overlay during their Initialize
 	for(var/datum/water_overlay_config/config_type as anything in subtypesof(/datum/water_overlay_config))
 		var/size = "[initial(config_type.icon_size)]"
 		if(!configs_by_size[size])
@@ -36,10 +30,6 @@ SUBSYSTEM_DEF(water_overlays)
 		configs_by_size[size] += config_type
 	RegisterSignal(SSnightmare, COMSIG_NIGHTMARES_PREPARE_GAME_COMPLETE, PROC_REF(update_turfs_layers_near_water))
 	return SS_INIT_SUCCESS
-
-
-/datum/controller/subsystem/water_overlays/proc/get_icon_path(icon_size)
-	return icon_paths["[icon_size]"]
 
 
 /datum/controller/subsystem/water_overlays/proc/is_water(turf/potential_water)
@@ -74,10 +64,6 @@ SUBSYSTEM_DEF(water_overlays)
 	return list(in_icon)
 
 
-/datum/controller/subsystem/water_overlays/proc/is_layer_underwater_turf(atom/to_check)
-	return to_check.layer == UNDER_WATER_TURF_LAYER
-
-
 /**	update_turfs_layers_near_water()
 *		this proc and those it call go through every turf in the game, and check if its near water
 *		we need to do this because we alter the layer of mob in water so they appear below turfs south of them
@@ -89,12 +75,22 @@ SUBSYSTEM_DEF(water_overlays)
 /datum/controller/subsystem/water_overlays/proc/update_turfs_layers_near_water()
 	SIGNAL_HANDLER
 	var/list/altered_turfs = list()
+
+	for(var/turf/search_turf in GLOB.turfs)
+		if(is_water(search_turf))
+			for(var/direction in GLOB.alldirs)
+				var/turf/found_turf = get_step(search_turf, direction)
+				if(found_turf && !is_water(found_turf))
+					turfs_to_process |= found_turf
+
 	for(var/turf/current_turf in turfs_to_process)
 		if(current_turf in altered_turfs)
 			continue
 		altered_turfs |= current_turf.near_water_layering_fix(altered_turfs)
+
 	for(var/turf/current_turf in altered_turfs)
 		current_turf.near_water_layering_cleanup()
+
 	UnregisterSignal(SSnightmare, COMSIG_NIGHTMARES_PREPARE_GAME_COMPLETE)
 
 
@@ -124,9 +120,9 @@ SUBSYSTEM_DEF(water_overlays)
 				continue
 			for(var/datum/water_overlay_config/config as anything in configs_of_this_size)	//could be streamlined by removing configs thatd result in the same overlays being generated
 				//	V V V V	construct water texture	V V V V
-				var/icon/sized_water_texture = icon(SSwater_overlays.get_icon_path(config.icon_size),"empty")		//this is what will eventually be our water texture
+				var/icon/sized_water_texture = icon(icon_paths["[config.icon_size]"],"empty")		//this is what will eventually be our water texture
 				var/icon/turf_texture = icon(working_icon, found_icon_state)   													//this is the actual texture we'll use to create the water texture
-				var/icon/subtraction_texture = icon(SSwater_overlays.get_icon_path(config.icon_size), "culling_mask")//this is the part of it we'll keep, rest will become "air"
+				var/icon/subtraction_texture = icon(icon_paths["[config.icon_size]"], "culling_mask")//this is the part of it we'll keep, rest will become "air"
 				var/texture_width = sized_water_texture.Width()
 				var/pieces = round(texture_width / 32) + (texture_width / 32 > round(texture_width / 32) ? 1 : 0)      //since mobs wont always be 32x32 the water texture will need be build out of 32x32 parts
 				for(var/i=0, i<pieces, i++)
@@ -144,19 +140,19 @@ SUBSYSTEM_DEF(water_overlays)
 				var/resting_key = input_depth >= WATER_DEPTH_COAST_INTERMEDIATE ? "coast" : "deep"
 				if(config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_SOME)
 					var/icon/resting_overlay = icon(sized_water_texture)
-					resting_overlay.AddAlphaMask(icon(SSwater_overlays.get_icon_path(config.icon_size), "culling_[config.icon_state_key]_resting_[resting_key]"))
+					resting_overlay.AddAlphaMask(icon(icon_paths["[config.icon_size]"], "culling_[config.icon_state_key]_resting_[resting_key]"))
 					SSwater_overlays.water_overlay_icons["32_[water_type]_[toxic]_[input_depth]_[config.icon_state_key]_resting"] = resting_overlay
 				else if(config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_ANGLED)
 					var/icon/resting_east = icon(sized_water_texture)
 					var/icon/resting_west = icon(sized_water_texture)
-					resting_east.AddAlphaMask(icon(SSwater_overlays.get_icon_path(config.icon_size), "culling_[config.icon_state_key]_resting_[resting_key]_e"))
-					resting_west.AddAlphaMask(icon(SSwater_overlays.get_icon_path(config.icon_size), "culling_[config.icon_state_key]_resting_[resting_key]_w"))
+					resting_east.AddAlphaMask(icon(icon_paths["[config.icon_size]"], "culling_[config.icon_state_key]_resting_[resting_key]_e"))
+					resting_west.AddAlphaMask(icon(icon_paths["[config.icon_size]"], "culling_[config.icon_state_key]_resting_[resting_key]_w"))
 					SSwater_overlays.water_overlay_icons["32_[water_type]_[toxic]_[input_depth]_[config.icon_state_key]_resting_e"] = resting_east
 					SSwater_overlays.water_overlay_icons["32_[water_type]_[toxic]_[input_depth]_[config.icon_state_key]_resting_w"] = resting_west
 				//	V V V V	specialized water overlays	V V V V
 				if(config.special_culling_mask)	// * water_overlay_special * these mobs look weird with the default overlays, we use special culling masks for them
 					var/icon/special_icon = icon(sized_water_texture)
-					var/icon/special_mask = icon(SSwater_overlays.get_icon_path(config.icon_size), "culling_[config.icon_state_key]")
+					var/icon/special_mask = icon(icon_paths["[config.icon_size]"], "culling_[config.icon_state_key]")
 					special_icon.AddAlphaMask(special_mask)
 					SSwater_overlays.water_overlay_icons["[texture_size]_[water_type]_[toxic]_[input_depth]_[config.icon_state_key]"] = special_icon
 		toxic = toxic == WATER_TOXIC_NO ? WATER_TOXIC_DISPERSING : WATER_TOXIC_YES

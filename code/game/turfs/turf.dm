@@ -138,7 +138,7 @@
 */
 /turf/proc/near_water_layering_fix(list/already_altered)	//so big mobs dont clip into the ground when standing in water
 	var/list/return_list = list()							//and they can still look like they're below turfs south of them
-	if(SSwater_overlays.is_water(src) || SSwater_overlays.is_layer_underwater_turf(src))
+	if(SSwater_overlays.is_water(src) || src.layer == UNDER_WATER_TURF_LAYER)
 		return return_list
 	for(var/direction_check in GLOB.cardinals)
 		if(direction_check == NORTH)
@@ -197,8 +197,6 @@
 		layer = UNDER_WATER_TURF_LAYER
 		plane = FLOOR_PLANE
 		for(var/obj/structure/structure in contents)		//decals, railings, stairs etc
-			if(istype(structure, /obj/structure/fence))
-				continue
 			var/icon/icon_check = icon(structure.icon, structure.icon_state)
 			if(icon_check.Width() <= 32 && structure.layer < ABOVE_MOB_LAYER)
 				structure.layer = UNDER_WATER_TURF_LAYER + 0.01
@@ -207,8 +205,8 @@
 		layer = initial(layer)
 		plane = initial(plane)
 		for(var/obj/structure/structure in contents)
-			structure.layer = initial(layer)
-			structure.plane = initial(plane)
+			structure.layer = initial(structure.layer)
+			structure.plane = initial(structure.plane)
 
 /obj/vis_contents_holder
 	plane = OPEN_SPACE_PLANE_START

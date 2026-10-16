@@ -3,6 +3,8 @@
 	description = "You trade your ranged abilities and acid to gain the ability to emit strong pheromones and buff other Xenomorphs, giving them extra armor. An ability that knocks down people in a 2 by 3 in front of you while also throwing back grenades. You get an ability that rejuvenates everyone in a certain range depending on your rage. You also trade your tailstab for an extinguisher, while it doesn't do damage it can put out both enemies and allies. This can be used to extinguish people on fire to help capture them."
 	flavor_description = "This one will deny her sisters' deaths until they earn it. Fight or be forgotten."
 	icon_state_prefix = "Warden"
+	speed_mod = XENO_SPEED_SLOWMOD_TIER_5
+	armor_mod = XENO_ARMOR_MOD_SMALL
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/tail_stab,
@@ -20,14 +22,11 @@
 		/datum/action/xeno_action/activable/prae_retrieve,
 	)
 
-
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_valkyrie
 
 /datum/xeno_strain/valkyrie/apply_strain(mob/living/carbon/xenomorph/praetorian/prae)
-	prae.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
-	prae.armor_modifier += XENO_ARMOR_MOD_SMALL
+	..() // stat modifiers
 	prae.claw_type = CLAW_TYPE_VERY_SHARP
-	prae.recalculate_everything()
 
 /datum/behavior_delegate/praetorian_valkyrie
 	name = "Praetorian Valkyrie Behavior Delegate"

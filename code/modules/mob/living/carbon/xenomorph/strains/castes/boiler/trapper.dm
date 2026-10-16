@@ -2,6 +2,9 @@
 	name = BOILER_TRAPPER
 	description = "You trade your ability to bombard, lance, and dump your acid in order to gain some speed and the ability to create acid explosions and restrain enemies within them. With your longer-range vision, set up traps that immobilize your opponents and place acid mines which deal damage to enemies and barricades and reduce the cooldown of your trap deployment for every enemy hit. Finally, hit enemies with your Acid Shotgun ability which adds a stack of insight to empower the next trap you place once you reach a maximum of ten insight. A point-blank shot or a shot on a stunned target will instantly apply ten stacks."
 	flavor_description = "The battlefield is my canvas, this one, my painter. Melt them where they stand."
+	armor_mod = -XENO_ARMOR_MOD_LARGE // no armor
+	health_mod = -XENO_HEALTH_MOD_MED
+	speed_mod = XENO_SPEED_SLOWMOD_TIER_5 // compensating for base buffs
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/xeno_spit/bombard,
@@ -23,17 +26,14 @@
 	if(!istype(boiler))
 		return FALSE
 
+	..() // stat modifiers
+
 	if(boiler.is_zoomed)
 		boiler.zoom_out()
 
 	boiler.tileoffset = 0
 	boiler.viewsize = TRAPPER_VIEWRANGE
 	boiler.ammo = GLOB.ammo_list[boiler.caste.spit_types[1]]
-	boiler.armor_modifier -= XENO_ARMOR_MOD_LARGE // no armor
-	boiler.health_modifier -= XENO_HEALTH_MOD_MED
-
-	boiler.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5 // compensating for base buffs
-	boiler.recalculate_everything()
 
 /datum/behavior_delegate/boiler_trapper
 	name = "Boiler Trapper Behavior Delegate"

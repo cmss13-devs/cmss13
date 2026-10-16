@@ -141,9 +141,9 @@
 			for(var/mob/living/carbon/xenomorph/target as anything in GLOB.living_xeno_list)
 				if(target.ignores_pheromones)
 					continue
-				if(target.ignore_aura == current_aura)
+				if(LAZYISIN(target.ignore_aura, current_aura))
 					continue
-				if(target.ignore_aura == leader_current_aura)
+				if(LAZYISIN(target.ignore_aura, leader_current_aura))
 					continue
 				if(!SSmapping.same_z_map(target.z, z))
 					continue

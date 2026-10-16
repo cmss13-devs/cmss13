@@ -31,6 +31,7 @@ This component is for xenomorphs with a control headset grafted on.
 			remove_action(parent_xeno, action.type)
 
 	parent_xeno.bubble_icon = "robot"
+	parent_xeno.speaking_noise = 'sound/effects/radiostatic.ogg'
 
 	// ???
 	remove_verb(parent_xeno, /mob/living/carbon/xenomorph/verb/view_tacmaps)
@@ -142,8 +143,7 @@ This component is for xenomorphs with a control headset grafted on.
 
 	var/list/mob/viewers = get_mobs_in_view(7, parent_xeno)
 	parent_xeno.langchat_speech(message, viewers, controlling_human.get_default_language(), controlling_human.langchat_color, FALSE)
-	to_chat(viewers, "[SPAN_BOLD("[parent_xeno]'s voice synthesizer says,")] \"[message]\"") // WHERE THE FUCK IS ROBOT SPEECH
+	to_chat(viewers, "[SPAN_BOLD("[parent_xeno]'s voice synthesizer says,")] \"[message]\"") // Someone removed the robot span so it doesn't get one.
 	parent_xeno.show_speech_bubble(viewers, parent_xeno.bubble_icon + parent_xeno.say_test(message), bubble_prefix = TRUE)
-	playsound(parent_xeno.loc, 'sound/effects/radiostatic.ogg', 15, 1)
 
 	return COMPONENT_OVERRIDE_SPEAK

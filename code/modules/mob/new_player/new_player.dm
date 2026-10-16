@@ -18,6 +18,8 @@
 
 	/// Late join UI for this player
 	var/datum/late_join/late_join_ui
+	/// Squad picked in the latejoin menu. If unset it uses the character's saved squad preference.
+	var/latejoin_preferred_squad
 
 	/// The message that we are displaying to the user. If a list, each list element is displayed on its own line
 	var/lobby_confirmation_message
@@ -101,9 +103,9 @@
 
 	qdel(src)
 
-/mob/new_player/proc/AttemptLateSpawn(rank)
+/mob/new_player/proc/AttemptLateSpawn(rank, squad_name)
 	var/datum/job/player_rank = GLOB.RoleAuthority.roles_for_mode[rank]
-	if (src != usr)
+	if(src != usr || spawning)
 		return FALSE
 	if(SSticker.current_state != GAME_STATE_PLAYING)
 		to_chat(usr, SPAN_WARNING("The round is either not ready, or has already finished!"))
@@ -112,18 +114,31 @@
 		to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
 		return FALSE
 
-	if(!client?.prefs.update_slot(player_rank.title))
+	if(!client?.prefs.update_slot(player_rank.title) || !client || spawning)
 		return FALSE
+
+	var/datum/squad/selected_squad
+	if(!isnull(squad_name))
+		var/list/available_squads = GLOB.RoleAuthority.get_latejoin_squads(player_rank)
+		if(istext(squad_name))
+			selected_squad = available_squads?[squad_name]
+		// Squad buttons skip the normal squad picker, so we need to check for a free slot separately here.
+		player_rank.get_total_positions(TRUE)
+		var/open_slots = selected_squad?.get_joinable_role_slots(GET_DEFAULT_ROLE(player_rank.title))
+		if(!selected_squad || (!isnull(open_slots) && open_slots <= 0))
+			to_chat(src, SPAN_WARNING("That squad no longer has an opening for [rank]. Please choose another."))
+			return FALSE
 
 	if(!GLOB.RoleAuthority.assign_role(src, player_rank, latejoin = TRUE))
 		to_chat(src, SPAN_WARNING("[rank] is not available. Please try another."))
 		return FALSE
 
 	spawning = TRUE
+	var/preferred_squad = latejoin_preferred_squad
 	close_spawn_windows()
 
 	var/mob/living/carbon/human/character = create_character(TRUE) //creates the human and transfers vars and mind
-	GLOB.RoleAuthority.equip_role(character, player_rank, late_join = TRUE)
+	GLOB.RoleAuthority.equip_role(character, player_rank, late_join = TRUE, selected_squad = selected_squad, preferred_squad_override = preferred_squad)
 	if(character.ckey in GLOB.donator_items)
 		to_chat(character, SPAN_BOLDNOTICE("You have gear available in the personal gear vendor near Requisitions."))
 
@@ -167,70 +182,6 @@
 	character.client.init_verbs()
 	qdel(src)
 	return TRUE
-
-/mob/new_player/proc/late_choices_upp()
-	var/mills = world.time // 1/10 of a second, not real milliseconds but whatever
-	//var/secs = ((mills % 36000) % 600) / 10 //Not really needed, but I'll leave it here for refrence... or something
-	var/mins = (mills % 36000) / 600
-	var/hours = mills / 36000
-
-	var/dat = "<html><body onselectstart='return false;'><center>"
-	dat += "Round Duration: [floor(hours)]h [floor(mins)]m<br>"
-
-	if(SShijack)
-		switch(SShijack.evac_status)
-			if(EVACUATION_STATUS_INITIATED)
-				dat += "<font color='red'><b>The [MAIN_SHIP_NAME] is being evacuated.</b></font><br>"
-
-	dat += "Choose from the following open positions:<br>"
-	var/roles_show = FLAG_SHOW_ALL_JOBS
-
-	for(var/i in GLOB.RoleAuthority.roles_for_mode)
-		var/datum/job/J = GLOB.RoleAuthority.roles_for_mode[i]
-		if(!GLOB.RoleAuthority.check_role_entry(src, J, latejoin = TRUE, faction = FACTION_UPP))
-			continue
-		var/active = 0
-		// Only players with the job assigned and AFK for less than 10 minutes count as active
-		for(var/mob/M in GLOB.player_list)
-			if(M.client && M.job == J.title)
-				active++
-		if(roles_show & FLAG_SHOW_CIC && GLOB.ROLES_CIC_ANTAG.Find(J.title))
-			dat += "Command:<br>"
-			roles_show ^= FLAG_SHOW_CIC
-
-		else if(roles_show & FLAG_SHOW_AUXIL_SUPPORT && GLOB.ROLES_AUXIL_SUPPORT_ANTAG.Find(J.title))
-			dat += "<hr>Auxiliary Combat Support:<br>"
-			roles_show ^= FLAG_SHOW_AUXIL_SUPPORT
-
-		else if(roles_show & FLAG_SHOW_MISC && GLOB.ROLES_MISC_ANTAG.Find(J.title))
-			dat += "<hr>Other:<br>"
-			roles_show ^= FLAG_SHOW_MISC
-
-		else if(roles_show & FLAG_SHOW_POLICE && GLOB.ROLES_POLICE_ANTAG.Find(J.title))
-			dat += "<hr>Military Police:<br>"
-			roles_show ^= FLAG_SHOW_POLICE
-
-		else if(roles_show & FLAG_SHOW_ENGINEERING && GLOB.ROLES_ENGINEERING_ANTAG.Find(J.title))
-			dat += "<hr>Engineering:<br>"
-			roles_show ^= FLAG_SHOW_ENGINEERING
-
-		else if(roles_show & FLAG_SHOW_REQUISITION && GLOB.ROLES_REQUISITION_ANTAG.Find(J.title))
-			dat += "<hr>Requisitions:<br>"
-			roles_show ^= FLAG_SHOW_REQUISITION
-
-		else if(roles_show & FLAG_SHOW_MEDICAL && GLOB.ROLES_MEDICAL_ANTAG.Find(J.title))
-			dat += "<hr>Medbay:<br>"
-			roles_show ^= FLAG_SHOW_MEDICAL
-
-		else if(roles_show & FLAG_SHOW_MARINES && GLOB.ROLES_MARINES_ANTAG.Find(J.title))
-			dat += "<hr>Marines:<br>"
-			roles_show ^= FLAG_SHOW_MARINES
-
-		dat += "<a href='byond://?src=\ref[src];lobby_choice=SelectedJob;antag=1;job_selected=[J.title]'>[J.disp_title] ([J.current_positions]) (Active: [active])</a><br>"
-
-	dat += "</center>"
-	show_browser(src, dat, "Late Join", "latechoices", width = 420, height = 700)
-
 
 /mob/new_player/proc/create_character(is_late_join = FALSE)
 	spawning = TRUE
@@ -294,7 +245,6 @@
 	return 0
 
 /mob/proc/close_spawn_windows() // Somehow spawn menu stays open for non-newplayers
-	close_browser(src, "latechoices") //closes late choices window
 	close_browser(src, "playersetup") //closes the player setup window
 	src << sound(null, repeat = 0, wait = 0, volume = 85, channel = SOUND_CHANNEL_LOBBY) // Stops lobby music.
 

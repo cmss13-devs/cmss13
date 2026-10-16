@@ -49,6 +49,8 @@
 /atom/movable/screen/ceiling_indicator/Initialize(mapload, datum/hud/owner_hud)
 	. = ..()
 	hud = owner_hud
+	if(!hud?.mymob)
+		return
 	if(isxeno(hud.mymob))
 		screen_loc = ui_ceiling_indicator_xeno
 	RegisterSignal(hud.mymob, COMSIG_MOVABLE_MOVED, PROC_REF(on_owner_moved))

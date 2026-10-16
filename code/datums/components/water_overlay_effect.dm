@@ -67,7 +67,7 @@
 
 /datum/component/water_overlay_effect/RegisterWithParent(datum/target)
 	. = ..()
-	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(handle_position_change))
+	RegisterSignal(parent, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(handle_position_change))
 	RegisterSignal(parent, COMSIG_MOVABLE_LAUNCHED_LANDED, PROC_REF(handle_landed))
 	RegisterSignal(parent, COMSIG_MOB_UNHAULED, PROC_REF(handle_buckle_change))
 	RegisterSignal(parent, COMSIG_MOB_DEATH, PROC_REF(handle_death))
@@ -83,7 +83,7 @@
 /datum/component/water_overlay_effect/UnregisterFromParent(datum/source, force)
 	. = ..()
 	UnregisterSignal(parent, list(
-		COMSIG_MOVABLE_MOVED,
+		COMSIG_MOVABLE_TURF_ENTERED,
 		COMSIG_LIVING_SET_LYING_ANGLE,
 		COMSIG_LIVING_SET_BODY_POSITION,
 		COMSIG_LIVING_SET_BUCKLED,

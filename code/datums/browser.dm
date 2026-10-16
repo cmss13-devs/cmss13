@@ -256,18 +256,18 @@ CLIENT_VERB(windowclose, atomref as text|null, params as text|null)
 	return
 
 /proc/show_browser( \
-    client/target, \
-    browser_content, \
-    browser_name, \
-    id = null, \
-    window_options = null, \
-    closeref, \
-    width, \
-    height, \
-    existing_container = FALSE, \
-    list/extra_stylesheets, \
-    list/extra_headers, \
-    use_onclose = TRUE \
+	client/target, \
+	browser_content, \
+	browser_name, \
+	id = null, \
+	window_options = null, \
+	closeref, \
+	width, \
+	height, \
+	existing_container = FALSE, \
+	list/extra_stylesheets, \
+	list/extra_headers, \
+	use_onclose = TRUE \
 )
 	if(!target)
 		return

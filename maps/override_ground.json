@@ -13,6 +13,7 @@
     "traits": [{ "Ground": true }],
     "gamemodes": [
         "Distress Signal",
+        "Survival",
         "Hunter Games",
         "Hive Wars",
         "Faction Clash",

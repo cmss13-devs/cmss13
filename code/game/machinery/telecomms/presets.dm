@@ -355,7 +355,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 			mode.initiate_evacuation()
 	else if(time_broadcasting > (SURVIVE_DISTRESS_SIGNAL_TIME / 2) && !announced_broadcasting_halfway)
 		survivor_announcement("Attention. Attention. Evacuation order is in effect.", sound_to_play='sound/effects/siren.ogg')
-		xeno_announcement("The tallhosts are trying to call for help. Stop them before they manage to find a way to escape.")
+		xeno_announcement("The tallhosts are trying to call for help. Stop them before they manage to find a way to escape.", "everything", QUEEN_MOTHER_ANNOUNCE)
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/delayed_marine_failure()
 	SSradio.faction_coms_clarity[FACTION_MARINE] = CONFIG_GET(number/announcement_min_clarity)

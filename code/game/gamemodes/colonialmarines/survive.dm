@@ -102,8 +102,8 @@
 /datum/game_mode/survive/proc/mode_announcement()
 	to_world(SPAN_ROUNDHEADER("The current game mode is - SURVIVAL!"))
 	to_world(SPAN_ROUNDBODY("The colony on [SSmapping.configs[GROUND_MAP].map_name] has come under attack from alien forces."))
-	to_world(SPAN_ROUNDBODY("Most of your colleagues have already fled or perished, but maybe those left can manage to call for help."))
-	to_world(SPAN_ROUNDBODY("Try to hold communications online long enough for someone to receive the distress signal."))
+	to_world(SPAN_ROUNDBODY("Most survivors have already fled or perished, but maybe those left can manage to call for help."))
+	to_world(SPAN_ROUNDBODY("Maybe if communications remain online long enough someone will receive the distress signal."))
 
 /datum/game_mode/survive/proc/map_announcement()
 	var/rendered_announce_text = SSmapping.configs[GROUND_MAP].survive_announce_text || "Attention. Attention. Evacuation order is in effect."
@@ -155,7 +155,7 @@
 	survivor_announcement("[ert.arrival_message] We are enroute to [dock].")
 
 /datum/game_mode/survive/proc/on_shuttle_arrival(obj/docking_port/stationary/port, obj/docking_port/mobile/arriving_shuttle)
-	xeno_announcement(SPAN_XENOANNOUNCE("A dropship has landed. The tallhosts are escaping!"), "everything")
+	xeno_announcement(SPAN_XENOANNOUNCE("A dropship has landed. The tallhosts are escaping!"), "everything", QUEEN_MOTHER_ANNOUNCE)
 
 /datum/game_mode/survive/spawn_static_comms()
 	// Force all to be broken always

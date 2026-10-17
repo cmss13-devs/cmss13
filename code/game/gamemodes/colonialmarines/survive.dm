@@ -142,10 +142,14 @@
 		return
 
 	var/obj/docking_port/stationary/dock = pick(dock_options)
+	RegisterSignal(dock, COMSIG_SHUTTLE_ARRIVAL, PROC_REF(on_shuttle_arrival))
 	SSshuttle.moveShuttleToDock(shuttle, dock, TRUE)
 	var/datum/emergency_call/ert = SSticker.mode.get_specific_call(/datum/emergency_call/solar_devils/survivor_response, TRUE, FALSE)
 	shuttle.distress_beacon = ert
 	survivor_announcement("[ert.arrival_message] We are enroute to [dock].")
+
+/datum/game_mode/survive/proc/on_shuttle_arrival(obj/docking_port/stationary/port, obj/docking_port/mobile/arriving_shuttle)
+	xeno_announcement(SPAN_XENOANNOUNCE("A dropship has landed. The tallhosts are escaping!"), "everything")
 
 /datum/game_mode/survive/spawn_static_comms()
 	// Force all to be broken always

@@ -267,7 +267,7 @@
 
 /obj/docking_port/stationary/emergency_response/on_arrival(obj/docking_port/mobile/arriving_shuttle)
 	. = ..()
-	if(istype(arriving_shuttle, /obj/docking_port/mobile/emergency_response))
+	if(!is_external && istype(arriving_shuttle, /obj/docking_port/mobile/emergency_response))
 		var/obj/docking_port/mobile/emergency_response/ert = arriving_shuttle
 		ert.control_doors("unlock", force=TRUE)
 
@@ -345,6 +345,7 @@
 		WARNING("No external airlocks for [src]")
 
 /obj/docking_port/stationary/emergency_response/external/on_arrival(obj/docking_port/mobile/arriving_shuttle)
+	..()
 	for(var/door in external_airlocks)
 		INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 

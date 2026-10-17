@@ -286,6 +286,8 @@
 
 /// Called when a new shuttle arrives
 /obj/docking_port/stationary/proc/on_arrival(obj/docking_port/mobile/arriving_shuttle)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_SHUTTLE_ARRIVAL, arriving_shuttle)
 	turn_off_landing_lights()
 	return
 

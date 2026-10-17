@@ -51,6 +51,11 @@
 
 	..()
 
+	if(!length(GLOB.observer_starts))
+		var/obj/comms_poi = locate(/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms)
+		var/turf/comms_turf = get_turf(comms_poi)
+		new /obj/effect/landmark/observer_start(comms_turf)
+
 	var/obj/structure/tunnel/T
 	var/i = 0
 	var/turf/t

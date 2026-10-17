@@ -426,6 +426,8 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	total_positions = -1
 	spawn_positions = -1
 
+OverrideTimelock(/datum/job/civilian/survivor/unlimited, list())
+
 /datum/job/civilian/survivor/unlimited/set_spawn_positions(count)
 	return
 

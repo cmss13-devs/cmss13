@@ -40,9 +40,7 @@
 		storedarea.name = areaname
 		areaimage.loc = storedarea // color our area
 
-/datum/buildmode_mode/area_edit/when_clicked(client/c, params, object)
-	var/list/modifiers = params2list(params)
-
+/datum/buildmode_mode/area_edit/when_clicked(client/c, list/modifiers, object)
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
 		if(!storedarea)
 			to_chat(c, SPAN_WARNING("Configure or select the area you want to paint first!"))
@@ -59,9 +57,7 @@
 		storedarea = get_area(T)
 		areaimage.loc = storedarea // color our area
 
-/datum/buildmode_mode/area_edit/handle_selected_area(client/c, params)
-	var/list/modifiers = params2list(params)
-
+/datum/buildmode_mode/area_edit/handle_selected_area(client/c, list/modifiers)
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
 		var/choice = alert("Are you sure you want to fill area?", "Area Fill Confirmation", "Yes", "No")
 		if(choice != "Yes")

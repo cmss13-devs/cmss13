@@ -357,7 +357,7 @@
 	ghost_orbit = savefile.tree["ghost_orbit"]
 	auto_observe = savefile.tree["auto_observe"]
 	CMTV_toggle_optout = savefile.tree["CMTV_toggle_optout"]
-	toggle_right_click_menu = savefile.tree["toggle_right_click_menu"]
+	secondary_interaction_mb = savefile.tree["secondary_interaction_mb"]
 
 	human_name_ban = savefile.tree["human_name_ban"]
 
@@ -553,7 +553,7 @@
 	auto_fit_viewport = sanitize_integer(auto_fit_viewport, FALSE, TRUE, TRUE)
 	adaptive_zoom = sanitize_integer(adaptive_zoom, 0, 2, 0)
 	tooltips = sanitize_integer(tooltips, FALSE, TRUE, TRUE)
-	toggle_right_click_menu = sanitize_integer(toggle_right_click_menu, FALSE, TRUE, TRUE)
+	secondary_interaction_mb = sanitize_inlist(secondary_interaction_mb, list(RIGHT_CLICK, BUTTON4, BUTTON5), RIGHT_CLICK)
 
 	synthetic_name = synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type = sanitize_inlist(synthetic_type, PLAYER_SYNTHS, initial(synthetic_type))
@@ -668,7 +668,7 @@
 	savefile.tree["ghost_orbit"] = ghost_orbit
 	savefile.tree["auto_observe"] = auto_observe
 	savefile.tree["CMTV_toggle_optout"] = CMTV_toggle_optout
-	savefile.tree["toggle_right_click_menu"] = toggle_right_click_menu
+	savefile.tree["secondary_interaction_mb"] = secondary_interaction_mb
 
 	savefile.tree["human_name_ban"] = human_name_ban
 

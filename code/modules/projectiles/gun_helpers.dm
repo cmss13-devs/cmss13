@@ -62,12 +62,6 @@ DEFINES in setup.dm, referenced here.
 	Also where the gun will do final attachment calculations if the gun fired an attachment bullet.
 	This must return positive to continue burst firing or so that you don't hear *click*.
 
-	delete_bullet() //Important for point blanking and jams, but can be called on for other reasons (that are
-	not currently used). If the gun makes a bullet but doesn't fire it, this will be called on through clear_jam().
-	This is also used to delete the bullet when you directly fire a bullet without going through the Fire() process,
-	like with the mentioned point blanking/suicide.
-
-
 	Other procs are pretty self explanatory, and what is listed above is what you should usually change for unusual
 	cases. So long as the gun can return true on able_to_fire() then move on to load_into_chamber() and finally
 	reload_into_chamber(), you're in good shape. Those three procs basically make up the fire cycle, and if they
@@ -124,13 +118,21 @@ DEFINES in setup.dm, referenced here.
 	unwield(user)
 	return ..()
 
+/obj/item/weapon/gun/attack_self_secondary(mob/user)
+	. = ..()
+	if(active_attachable)
+		active_attachable.attack_self(user)
+
+/obj/item/weapon/gun/attack_hand_secondary(mob/user)
+	. = ..()
+	try_activate_attachable_weapon()
+	if(active_attachable)
+		active_attachable.attack_hand(user)
+
 /obj/item/weapon/gun/attack_hand(mob/user)
 	var/obj/item/weapon/gun/in_hand = user.get_inactive_hand()
 
 	if(in_hand == src && (flags_item & TWOHANDED))
-		if(active_attachable)
-			if(active_attachable.unload_attachment(user))
-				return
 		unload(user)//It has to be held if it's a two hander.
 		return
 	else
@@ -201,6 +203,11 @@ DEFINES in setup.dm, referenced here.
 	to_chat(user, SPAN_NOTICE(message))
 	return TRUE
 
+/obj/item/weapon/gun/afterattack_secondary(atom/target, mob/user, proximity_flag, list/mods)
+	. = ..()
+	if(ismob(target) && proximity_flag)
+		return try_bludgeon(target, user)
+
 /obj/item/weapon/gun/proc/handle_retrieval(mob/living/carbon/human/user, retrieval_slot)
 	if (!ishuman(user))
 		return FALSE
@@ -238,13 +245,22 @@ DEFINES in setup.dm, referenced here.
 	if(user.equip_to_slot_if_possible(src, WEAR_BACK))
 		to_chat(user, SPAN_WARNING("[src]'s magnetic sling automatically yanks it into your back."))
 
+/obj/item/weapon/gun/attackby_secondary(obj/item/attack_item, mob/living/user, list/mods)
+	. = ..()
+	try_activate_attachable_weapon()
+	if(!active_attachable || !(active_attachable.flags_attach_features & ATTACH_RELOADABLE))
+		return
+
+	if(check_inactive_hand(user))
+		active_attachable.reload_attachment(attack_item, user)
+
 //Clicking stuff onto the gun.
 //Attachables & Reloading
-/obj/item/weapon/gun/attackby(obj/item/attack_item, mob/user)
+/obj/item/weapon/gun/attackby(obj/item/attack_item, mob/user, list/mods)
 	if(flags_gun_features & GUN_BURST_FIRING)
 		return
 
-	if(istype(attack_item, /obj/item/prop/helmetgarb/gunoil))
+	if(istype(attack_item, /obj/item/prop/helmetgarb/gunoil) && !(flags_gun_features & GUN_IS_ATTACHMENT))
 		var/oil_verb = pick("lubes", "oils", "cleans", "tends to", "gently strokes")
 		if(do_after(user, 3 SECONDS, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_FRIENDLY, status_effect = SLOW))
 			user.visible_message("[user] [oil_verb] [src]. It shines like new.", "You oil up and immaculately clean [src]. It shines like new.")
@@ -252,28 +268,20 @@ DEFINES in setup.dm, referenced here.
 		else
 			return
 
+	for(var/slot in attachments)
+		var/obj/item/attachable/attached_gun/attachment = attachments[slot]
+		if(!istype(attachment) || !(attachment.flags_attach_features & ATTACH_ACTIVATION))
+			continue
+		if(attachment.handle_silent_reload(attack_item, user))
+			return ATTACKBY_HINT_NO_AFTERATTACK
 
-	if(istype(attack_item,/obj/item/attachable))
+	if(istype(attack_item,/obj/item/attachable) && !(flags_gun_features & GUN_IS_ATTACHMENT))
 		if(check_inactive_hand(user))
 			attach_to_gun(user,attack_item)
-
-	//the active attachment is reloadable
-	else if(active_attachable && active_attachable.flags_attach_features & ATTACH_RELOADABLE)
-		if(check_inactive_hand(user))
-			if(istype(attack_item,/obj/item/ammo_magazine))
-				var/obj/item/ammo_magazine/attachment_magazine = attack_item
-				if(istype(src, attachment_magazine.gun_type))
-					to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
-					playsound(user, active_attachable.activation_sound, 15, 1)
-					active_attachable.activate_attachment(src, null, TRUE)
-					reload(user,attachment_magazine)
-					return
-			active_attachable.reload_attachment(attack_item, user)
-
 	else if(istype(attack_item,/obj/item/ammo_magazine))
 		if(check_inactive_hand(user))
-			reload(user,attack_item)
-
+			reload(user, attack_item)
+			return ATTACKBY_HINT_NO_AFTERATTACK
 
 //tactical reloads
 /obj/item/weapon/gun/MouseDrop_T(atom/dropping, mob/living/carbon/human/user)
@@ -376,22 +384,38 @@ DEFINES in setup.dm, referenced here.
 				//  \\
 //----------------------------------------------------------
 
+/obj/item/weapon/gun/proc/is_attached_to_gun(obj/item/weapon/gun/target)
+	if(!istype(target))
+		return FALSE
+
+	if(target.active_attachable && target.active_attachable.attached_gun == src)
+		return TRUE
+	return FALSE
+
+/obj/item/weapon/gun/proc/check_active_hand(mob/user)
+	if(user)
+		var/obj/item/weapon/gun/in_hand = user.get_active_hand()
+		if(!is_attached_to_gun(in_hand) && in_hand != src) //It has to be held.
+			to_chat(user, SPAN_WARNING("You have to hold [src] to do that!"))
+			return FALSE
+	return TRUE
+
 /obj/item/weapon/gun/proc/check_inactive_hand(mob/user)
 	if(user)
 		var/obj/item/weapon/gun/in_hand = user.get_inactive_hand()
-		if( in_hand != src ) //It has to be held.
+		if(!is_attached_to_gun(in_hand) && in_hand != src) //It has to be held.
 			to_chat(user, SPAN_WARNING("You have to hold [src] to do that!"))
-			return
-	return 1
+			return FALSE
+	return TRUE
 
 /obj/item/weapon/gun/proc/check_both_hands(mob/user)
 	if(user)
 		var/obj/item/weapon/gun/in_handL = user.l_hand
 		var/obj/item/weapon/gun/in_handR = user.r_hand
-		if( in_handL != src && in_handR != src ) //It has to be held.
+		if(in_handL != src && !is_attached_to_gun(in_handL) && in_handR != src && !is_attached_to_gun(in_handR)) //It has to be held.
 			to_chat(user, SPAN_WARNING("You have to hold [src] to do that!"))
-			return
-	return 1
+			return FALSE
+	return TRUE
 
 /obj/item/weapon/gun/proc/has_attachment(attachment)
 	if(!attachment)
@@ -1010,8 +1034,7 @@ DEFINES in setup.dm, referenced here.
 	return FALSE
 
 ///Helper proc that processes a clicked target, if the target is not black tiles, it will not change it. If they are it will return the turf of the black tiles. It will return null if the object is a screen object other than black tiles.
-/proc/get_turf_on_clickcatcher(atom/target, mob/user, params)
-	var/list/modifiers = params2list(params)
+/proc/get_turf_on_clickcatcher(atom/target, mob/user, list/modifiers)
 	if(!istype(target, /atom/movable/screen))
 		return target
 	if(!istype(target, /atom/movable/screen/click_catcher))

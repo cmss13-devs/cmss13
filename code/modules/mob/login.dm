@@ -25,6 +25,7 @@
 
 	client.images = null
 	client.screen = null //remove hud items just in case
+	client.set_right_click_menu_mode(shift_to_open_context_menu && client.prefs.secondary_interaction_mb == RIGHT_CLICK)
 	client.render_plates_shown = alist()
 	if(!hud_used)
 		create_hud()
@@ -63,10 +64,6 @@
 			CB.Invoke()
 
 	client.init_verbs()
-	if(client.prefs.toggle_right_click_menu)
-		client.set_right_click_menu_mode(shift_only = FALSE)
-	else
-		client.set_right_click_menu_mode(shift_only = TRUE)
 	client.tgui_say?.load()
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MOB_LOGGED_IN, src)

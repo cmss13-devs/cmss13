@@ -521,7 +521,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 		return
 
 	next_move += 6 // stop insane pickup speed
-	UnarmedAttack(pickupify)
+	UnarmedAttack(pickupify, FALSE, list())
 
 /mob/verb/pull_item(atom/movable/pullify in view(1, usr))
 	set name = "Pull"
@@ -623,19 +623,35 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 
 /mob/proc/get_ability_mouse_key()
 	if(!client)
-		return XENO_ABILITY_CLICK_MIDDLE
+		return XENO_ABILITY_CLICK_RIGHT
 
 	return client.prefs.xeno_ability_click_mode
+
+/mob/proc/get_secondary_interact_key()
+	if(!client)
+		return RIGHT_CLICK
+	return client.prefs.secondary_interaction_mb
 
 /proc/xeno_ability_mouse_pref_to_string(preference_value)
 	switch(preference_value)
 		if(XENO_ABILITY_CLICK_MIDDLE)
 			return "middle click"
-		if(XENO_ABILITY_CLICK_RIGHT)
-			return "right click"
 		if(XENO_ABILITY_CLICK_SHIFT)
 			return "shift click"
-	return "middle click"
+		if(XENO_ABILITY_CLICK_RIGHT)
+			return "right click"
+	return "right click"
+
+/proc/secondary_mouse_pref_to_string(preference_value)
+	switch(preference_value)
+		if(RIGHT_CLICK)
+			return "right click"
+		if(BUTTON4)
+			return "mouse button 4"
+		if(BUTTON5)
+			return "mouse button 5"
+	return "right click"
+
 
 /mob/proc/get_ability_mouse_name()
 	var/ability = get_ability_mouse_key()

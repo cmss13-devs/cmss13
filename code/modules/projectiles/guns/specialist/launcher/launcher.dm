@@ -42,6 +42,12 @@
 				new preload(cylinder)
 		update_icon()
 
+/obj/item/weapon/gun/launcher/get_max_ammo_count()
+	return cylinder.storage_slots
+
+/obj/item/weapon/gun/launcher/get_current_ammo_count()
+	return length(cylinder.contents)
+
 /obj/item/weapon/gun/launcher/Destroy(force)
 	QDEL_NULL(cylinder)
 	return ..()

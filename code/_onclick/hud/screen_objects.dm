@@ -338,10 +338,7 @@
 	if(user.is_mob_incapacitated())
 		return TRUE
 
-	if (mods[CTRL_CLICK])
-		carbon.toggle_throw_mode(THROW_MODE_HIGH)
-	else
-		carbon.toggle_throw_mode(THROW_MODE_NORMAL)
+	carbon.toggle_throw_mode(THROW_MODE_NORMAL)
 	return TRUE
 
 /atom/movable/screen/drop

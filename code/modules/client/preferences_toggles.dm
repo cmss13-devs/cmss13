@@ -274,7 +274,6 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 	set desc = "Toggles a specific toggleable preference."
 
 	var/list/pref_buttons = list(
-		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ignore_self'>Toggle the Ability to Hurt Yourself</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_help_intent_safety'>Toggle Help Intent Safety</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject'>Toggle Guns Auto-Ejecting Magazines</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject_to_hand'>Toggle Guns Auto-Ejecting Magazines to Your Hands</a><br>",
@@ -306,14 +305,6 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 	var/height = 50+24*length(pref_buttons)
 
 	show_browser(src, dat, "Toggle Preferences", "togglepreferences", width = 475, height = height)
-
-/client/proc/toggle_ignore_self() // Toggle whether anything will happen when you click yourself in non-help intent
-	prefs.toggle_prefs ^= TOGGLE_IGNORE_SELF
-	if(prefs.toggle_prefs & TOGGLE_IGNORE_SELF)
-		to_chat(src,SPAN_BOLDNOTICE( "Clicking on yourself in non-help intent will no longer do anything."))
-	else
-		to_chat(src, SPAN_BOLDNOTICE("Clicking on yourself in non-help intent can harm you again."))
-	prefs.save_preferences()
 
 /client/proc/toggle_help_intent_safety() // Toggle whether anything will happen when you click on someone with help intent
 	prefs.toggle_prefs ^= TOGGLE_HELP_INTENT_SAFETY

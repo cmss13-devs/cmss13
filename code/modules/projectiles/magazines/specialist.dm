@@ -168,6 +168,10 @@
 	max_rounds = 1
 	default_ammo = /datum/ammo/flare
 
+/obj/item/ammo_magazine/internal/flare/ubarrel
+	max_rounds = 3
+	default_ammo = /datum/ammo/flare/no_ignite
+
 //-------------------------------------------------------
 //M5 RPG
 

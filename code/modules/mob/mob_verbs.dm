@@ -1,35 +1,9 @@
-
-
 /mob/verb/mode()
 	set name = "Activate Held Object"
 	set category = "Object"
 	set src = usr
 
-	if (usr.is_mob_incapacitated())
-		return
-
-	if(hand)
-		var/obj/item/W = l_hand
-		if (W)
-			W.attack_self(src)
-			update_inv_l_hand()
-	else
-		var/obj/item/W = r_hand
-		if (W)
-			W.attack_self(src)
-			update_inv_r_hand()
-	if(next_move < world.time)
-		next_move = world.time + 2
-	return
-
-/mob/verb/toggle_normal_throw()
-	set name = "Toggle Normal Throw"
-	set category = "IC"
-	set hidden = TRUE
-	set src = usr
-
-	to_chat(usr, SPAN_DANGER("This mob type cannot throw items."))
-	return
+	execute_mode()
 
 /mob/verb/view_stats()
 	set category = "OOC.Records"
@@ -40,15 +14,6 @@
 		return
 	if(client && client.player_entity)
 		client.player_data.tgui_interact(src)
-
-/mob/verb/toggle_high_toss()
-	set name = "Toggle High Toss"
-	set category = "IC"
-	set hidden = TRUE
-	set src = usr
-
-	to_chat(usr, SPAN_DANGER("This mob type cannot throw items."))
-	return
 
 /mob/proc/point_to(atom/target in view())
 	//set name = "Point To"

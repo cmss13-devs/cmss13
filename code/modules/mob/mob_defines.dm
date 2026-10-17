@@ -20,6 +20,8 @@
 	/// the username() of the last mob that logged in
 	var/persistent_username
 
+	var/shift_to_open_context_menu = TRUE
+
 	/*A bunch of this stuff really needs to go under their own defines instead of being globally attached to mob.
 	A variable should only be globally attached to turfs/obj/whatever, when it is in fact needed as such.
 	The current method unnecessarily clusters up the variable list, especially for humans (although rearranging won't really clean it up a lot but the difference will be noticeable for other mobs).

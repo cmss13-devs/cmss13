@@ -37,9 +37,8 @@
 			mods -= LEFT_CLICK
 		else
 			mods -= RIGHT_CLICK
-		params = list2params(mods)
 
-	var/click_signal_result = SEND_SIGNAL(mob, COMSIG_MOB_MOUSEDOWN, atom_clicked, turf_of_atom_clicked, skin_ctl, params) & (COMSIG_MOB_CLICK_CANCELED|COMSIG_MOB_CLICK_HANDLED)
+	var/click_signal_result = SEND_SIGNAL(mob, COMSIG_MOB_MOUSEDOWN, atom_clicked, turf_of_atom_clicked, skin_ctl, mods) & (COMSIG_MOB_CLICK_CANCELED|COMSIG_MOB_CLICK_HANDLED)
 	if(click_signal_result)
 		if(click_signal_result & COMSIG_MOB_CLICK_HANDLED)
 			mob.face_atom(atom_clicked)
@@ -65,6 +64,8 @@
 		if(!isturf(turf_of_atom_clicked)) //If clickdragging something in your own inventory, it's probably a deliberate attempt to open something, tactical-reload, etc. Don't click it.
 			return //'turf_of_atom_clicked' is actually 'location', and if it isn't a turf, the item is most likely a HUD screen or in inventory somewhere.
 
+		// Allows above code to override param values via modifying the mods.
+		params = list2params(mods)
 		Click(atom_clicked, turf_of_atom_clicked, skin_ctl, params)
 
 /client/MouseUp(atom/atom_clicked, turf/turf_of_atom_clicked, skin_ctl, params)
@@ -76,13 +77,13 @@
 	if(click_catcher_click)
 		params += CLICK_CATCHER_ADD_PARAM
 	holding_click = FALSE
+	var/list/mods = params2list(params)
 
-	if(SEND_SIGNAL(mob, COMSIG_MOB_MOUSEUP, atom_clicked, turf_of_atom_clicked, skin_ctl, params) & (COMSIG_MOB_CLICK_CANCELED|COMSIG_MOB_CLICK_HANDLED) || ignore_next_click)
+	if(SEND_SIGNAL(mob, COMSIG_MOB_MOUSEUP, atom_clicked, turf_of_atom_clicked, skin_ctl, mods) & (COMSIG_MOB_CLICK_CANCELED|COMSIG_MOB_CLICK_HANDLED) || ignore_next_click)
 		return
 
-	var/list/mods = params2list(params)
 	if(mods[LEFT_CLICK])
-		SEND_SIGNAL(src, COMSIG_CLIENT_LMB_UP, atom_clicked, params)
+		SEND_SIGNAL(src, COMSIG_CLIENT_LMB_UP, atom_clicked, mods)
 
 /client/MouseDrag(atom/src_obj, atom/over_obj, turf/src_loc, turf/over_loc, src_ctl, over_ctl, params)
 	if(!over_obj)
@@ -92,13 +93,13 @@
 	CONVERT_CLICK_CATCHER(over_obj, over_loc, click_catcher_click)
 	if(click_catcher_click)
 		params += CLICK_CATCHER_ADD_PARAM
+	var/list/mods = params2list(params)
 
-	if(SEND_SIGNAL(mob, COMSIG_MOB_MOUSEDRAG, src_obj, over_obj, src_loc, over_loc, src_ctl, over_ctl, params) & COMSIG_MOB_CLICK_CANCELED)
+	if(SEND_SIGNAL(mob, COMSIG_MOB_MOUSEDRAG, src_obj, over_obj, src_loc, over_loc, src_ctl, over_ctl, mods) & COMSIG_MOB_CLICK_CANCELED)
 		return
 
-	var/list/mods = params2list(params)
 	if(mods[LEFT_CLICK])
-		SEND_SIGNAL(src, COMSIG_CLIENT_LMB_DRAG, src_obj, over_obj, params)
+		SEND_SIGNAL(src, COMSIG_CLIENT_LMB_DRAG, src_obj, over_obj, mods)
 
 	var/atom/last_atom = LAZYACCESS(mouse_trace_history, length(mouse_trace_history))
 	if(over_obj == last_atom)

@@ -11,9 +11,7 @@
 	power = tgui_input_number(c?.mob, "How much explosive power should the blast have?", "Set power", 1200)
 	falloff = tgui_input_number(c?.mob, "How much falloff should the blast have?", "Set falloff", 400)
 
-/datum/buildmode_mode/boom/when_clicked(client/c, params, object)
-	var/list/modifiers = params2list(params)
-
+/datum/buildmode_mode/boom/when_clicked(client/c, list/modifiers, object)
 	var/location
 	if(isturf(object))
 		location = object

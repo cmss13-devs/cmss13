@@ -12,7 +12,7 @@
 		selected_ability.on_deselect(src)
 	if(!ability)
 		selected_ability = null
-		if(client?.prefs.toggle_right_click_menu)
+		if(client?.prefs.secondary_interaction_mb != RIGHT_CLICK)
 			client.set_right_click_menu_mode(shift_only = FALSE)
 		return
 	selected_ability = ability

@@ -61,6 +61,7 @@
 	main_hive.allow_queen_evolve = FALSE
 	main_hive.evolution_without_ovipositor = TRUE
 	main_hive.allow_no_queen_actions = TRUE
+	main_hive.allow_no_queen_evo = TRUE
 
 	var/obj/structure/tunnel/tunnel
 	var/i = 0

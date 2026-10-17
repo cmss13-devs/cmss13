@@ -11,18 +11,70 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 	item_state = "map"
 	throw_speed = SPEED_FAST
 	throw_range = 5
-	w_class = SIZE_TINY
+	w_class = SIZE_MEDIUM
 	// color = ... (Colors can be names - "red, green, grey, cyan" or a HEX color code "#FF0000")
 	var/dat // Page content
 	var/html_link = ""
+	/// will reflect the current state of the map, folded=TRUE (small item, undreadable) folded=FALSE (large item, readable)
+	var/folded = FALSE
+
 
 /obj/item/map/attack_self(mob/user) //Open the map
 	..()
+	if(folded)
+		fold_unfold()
+		return
 	user.visible_message(SPAN_NOTICE("[user] opens the [src.name]."))
+	item_state =  "[icon_state]_studied"
+	if(ishuman(user))
+		var/mob/living/carbon/human/map_reader = user
+		if(map_reader && (map_reader.get_active_hand() == src || map_reader.get_inactive_hand() == src))
+			map_reader.update_inv_l_hand()
+			map_reader.update_inv_r_hand()
 	initialize_map()
+
+
+/obj/item/map/clicked(mob/user, list/mods)
+	if(mods["alt"])
+		fold_unfold()
+		return TRUE
+	return ..()
+
+
+/obj/item/map/verb/fold_unfold()
+	set name = "Fold/Unfold"
+	set category = null
+	set src in usr
+
+	if(!ishuman(usr) || usr.stat==DEAD)
+		return
+
+	var/mob/living/carbon/human/map_reader = usr
+	if(usr.get_active_hand() != src && usr.get_inactive_hand() != src)
+		to_chat(usr, SPAN_WARNING("You need to be holding the map."))
+		return
+
+	if(folded)
+		to_chat(usr, SPAN_INFO("You unfold the map, it takes up much more space now."))
+		w_class = SIZE_MEDIUM
+		folded = FALSE
+		icon_state = "map"
+		item_state = "map"
+		map_reader.update_inv_l_hand()
+		map_reader.update_inv_r_hand()
+	else
+		to_chat(usr, SPAN_INFO("You fold up the map, its now much smaller."))
+		w_class = SIZE_TINY
+		folded = TRUE
+		icon_state = "map_folded"
+		item_state = ""
+		map_reader.update_inv_l_hand()
+		map_reader.update_inv_r_hand()
+
 
 /obj/item/map/attack()
 	return
+
 
 /obj/item/map/proc/initialize_map()
 	var/wikiurl = CONFIG_GET(string/wikiurl)
@@ -59,7 +111,20 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 
 				</html>
 			"}
-	show_browser(usr, dat, name, "papermap", width = 1280, height = 720)
+	show_browser(usr, dat, name, "papermap", width = 1280, height = 720, use_onclose = FALSE)
+	onclose(usr, "papermap", src)
+
+
+/obj/item/map/Topic(href, href_list)
+	. = ..()
+	if(href_list["close"])
+		item_state = initial(item_state)
+		if(ishuman(usr))
+			var/mob/living/carbon/human/map_reader = usr
+			if(map_reader && (map_reader.get_active_hand() == src || map_reader.get_inactive_hand() == src))
+				map_reader.update_inv_l_hand()
+				map_reader.update_inv_r_hand()
+
 
 /obj/item/map/lazarus_landing_map
 	name = "\improper Lazarus Landing Map"

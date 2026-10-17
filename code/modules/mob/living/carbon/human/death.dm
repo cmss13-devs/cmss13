@@ -99,6 +99,8 @@
 			else
 				if(!is_ground_level(cur_human.z)) // This doesn't detect lockers
 					continue
+			if(!ishuman_strict(cur_human))
+				continue
 			human_count++
 			if(last_living_human && see_humans_on_tacmap)
 				last_living_human = null

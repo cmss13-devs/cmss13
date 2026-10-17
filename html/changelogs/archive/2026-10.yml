@@ -102,3 +102,13 @@
   - maptweak: Fixes several hull window tiles in the researcher observation deck on
       White Antre Research Facility not having floors underneath them.
   - maptweak: On Chances Claim, several missing air pipes have been added to A-Block.
+2026-10-17:
+  IowaPotatoFarmer:
+  - balance: The M16s on Kutjevo Refinery have been replaced by M20A rifles.
+  Steelpoint:
+  - maptweak: The reception bell in the Almayer computer laboratory is now properly
+      anchored, and can thus now be rung.
+  - maptweak: The front reception door control for the Corporate Liaison office entrance
+      now functions as intended.
+  - maptweak: Adds a set of blastdoors to the eastern section of the CIC conference
+      room.

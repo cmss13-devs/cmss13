@@ -244,4 +244,16 @@
 /// default skin color
 #define SKIN_COLOR_PALE2 "Pale 2"
 
+/// eyelid states
+#define EYELID_OPEN "open"
+#define EYELID_CLOSED "closed"
+#define EYELID_CLOSED_VOLUNTARILY "closed_voluntarily"
+#define EYELID_SWITCH "switch"
+
+/// How long the lids stay closed during a normal life blink
+#define EYELID_BLINK_CLOSED_TIME (0.15 SECONDS)
+
+/// Base open interval between normal blinks (seconds, before status modifiers)
+#define EYELID_BLINK_OPEN_BASE 3
+
 //--- end ---//

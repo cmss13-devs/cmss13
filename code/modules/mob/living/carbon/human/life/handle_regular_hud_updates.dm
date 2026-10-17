@@ -81,7 +81,7 @@
 				clear_fullscreen("brute")
 
 
-		if(blinded)
+		if(blinded || eyelids_status == EYELID_CLOSED_VOLUNTARILY)
 			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
 		else
 			clear_fullscreen("blind")
@@ -213,6 +213,7 @@
 /mob/living/carbon/human/on_dazed_trait_gain(datum/source)
 	. = ..()
 	overlay_fullscreen("eye_blurry", /atom/movable/screen/fullscreen/impaired, 5)
+
 /mob/living/carbon/human/on_dazed_trait_loss(datum/source)
 	. = ..()
 	clear_fullscreen("eye_blurry")

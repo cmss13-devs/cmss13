@@ -150,7 +150,7 @@
 	var/obj/docking_port/stationary/dock = pick(dock_options)
 	RegisterSignal(dock, COMSIG_SHUTTLE_ARRIVAL, PROC_REF(on_shuttle_arrival))
 	SSshuttle.moveShuttleToDock(shuttle, dock, TRUE)
-	var/datum/emergency_call/ert = SSticker.mode.get_specific_call(/datum/emergency_call/solar_devils/survivor_response, TRUE, FALSE)
+	var/datum/emergency_call/ert = SSticker.mode.get_specific_call(/datum/emergency_call/solar_devils_full/survivor_response, TRUE, FALSE)
 	shuttle.distress_beacon = ert
 	survivor_announcement("[ert.arrival_message] We are enroute to [dock].")
 

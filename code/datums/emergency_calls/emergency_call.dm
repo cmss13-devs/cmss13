@@ -36,7 +36,8 @@
 	var/objective_info //For additional info in the objectives txt
 	var/probability = 0
 	var/hostility //For ERTs who are either hostile or friendly by random chance.
-	var/list/datum/mind/members = list() //Currently-joined members.
+	/// Weakrefs to all currently-joined minds
+	var/list/datum/weakref/members = list()
 	var/list/datum/mind/candidates = list() //Potential candidates for enlisting.
 	var/name_of_spawn = /obj/effect/landmark/ert_spawns/distress //If we want to set up different spawn locations
 	var/item_spawn = /obj/effect/landmark/ert_spawns/distress/item
@@ -337,7 +338,7 @@
 	var/i = 0
 	if(length(picked_candidates))
 		for(var/datum/mind/M in picked_candidates)
-			members += M
+			members += WEAKREF(M)
 			i++
 			if(i > mob_max)
 				break //Some logic. Hopefully this will never happen..
@@ -355,8 +356,9 @@
 		else
 			marine_announcement(arrival_message, "Intercepted Transmission:")
 
-	for(var/datum/mind/spawned as anything in members)
-		if(ishuman(spawned.current))
+	for(var/datum/weakref/spawned_ref as anything in members)
+		var/datum/mind/spawned = spawned_ref.resolve()
+		if(ishuman(spawned?.current))
 			var/mob/living/carbon/human/spawned_human = spawned.current
 			var/obj/item/card/id/id = spawned_human.get_idcard()
 			if(id)

@@ -163,3 +163,21 @@ GLOBAL_LIST_INIT_TYPED(sentry_spawns, /list/obj/effect/sentry_landmark, list())
 
 /obj/effect/sentry_landmark/lz_2/bottom_right
 	position = SENTRY_BOTTOM_RIGHT
+
+GLOBAL_LIST_EMPTY(marked_atoms_by_id)
+
+/obj/effect/marked_atom
+	icon = 'icons/landmarks.dmi'
+	icon_state = "o_red"
+	invisibility = INVISIBILITY_MAXIMUM
+	var/id = ""
+
+/obj/effect/marked_atom/Initialize(mapload, ...)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/effect/marked_atom/LateInitialize()
+	. = ..()
+	if(!id)
+		CRASH("[name] ([type]) at [get_area(src)] has no id!")
+	LAZYADDASSOCLIST(GLOB.marked_atoms_by_id, id, src)

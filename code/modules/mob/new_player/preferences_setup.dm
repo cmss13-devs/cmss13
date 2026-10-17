@@ -255,8 +255,8 @@
 
 	return JOB_SQUAD_MARINE
 
-/datum/preferences/proc/job_pref_to_gear_preset()
-	var/high_priority = get_high_priority_job()
+/datum/preferences/proc/job_pref_to_gear_preset(override)
+	var/high_priority = override || get_high_priority_job()
 
 	switch(high_priority)
 		// USCM JOBS
@@ -389,6 +389,13 @@
 			return J.gear_preset_whitelist["[JOB_PREDATOR][J.get_whitelist_status(owner)]"]
 		if(JOB_PRED_SURVIVOR)
 			return /datum/equipment_preset/yautja/stranded
+		else
+			if(!override)
+				var/mappings = GLOB.gamemode_role_mappings[GLOB.master_mode]
+				var/datum/job/original_job = GLOB.RoleAuthority.roles_by_name[high_priority]
+				var/datum/job/mapped_job = mappings?[original_job?.type]
+				if(mapped_job)
+					return job_pref_to_gear_preset(mapped_job)
 
 	return /datum/equipment_preset/uscm/private_equipped
 

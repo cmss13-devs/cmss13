@@ -126,6 +126,7 @@
 	SE.invisibility = INVISIBILITY_ABSTRACT
 	NW.invisibility = INVISIBILITY_ABSTRACT
 	NE.invisibility = INVISIBILITY_ABSTRACT
+	..()
 
 /obj/docking_port/stationary/vehicle_elevator/adminlevel
 	name = "Adminlevel Vehicle Elevator Dock"

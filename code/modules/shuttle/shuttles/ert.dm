@@ -74,7 +74,7 @@
 			if("lock")
 				INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, lock))
 			if("unlock")
-				INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, unlock))
+				INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, unlock), force)
 			if("force-lock-launch")
 				INVOKE_ASYNC(src, PROC_REF(lockdown_door_launch), door)
 
@@ -227,6 +227,37 @@
 	if(!starboard_door)
 		WARNING("No starboard door found for [src]")
 
+// ERT Alamo
+/obj/docking_port/mobile/emergency_response/ert_alamo
+	name = "Alamo Response Shuttle"
+	id = MOBILE_SHUTTLE_ID_ERT_ALAMO
+	preferred_direction = SOUTH
+	width = 11
+	height = 21
+	dwidth = 5
+	dheight = 10
+
+/obj/docking_port/mobile/emergency_response/ert_alamo/Initialize(mapload)
+	. = ..()
+	for(var/place in shuttle_areas)
+		for(var/obj/structure/machinery/door/air in place)
+			if(!air.borders_space())
+				external_doors -= air
+
+/obj/docking_port/mobile/emergency_response/ert_alamo/initiate_docking(obj/docking_port/stationary/new_dock, movement_direction, force)
+	. = ..()
+	if(. != DOCKING_SUCCESS)
+		return
+
+	if(!is_ground_level(z))
+		return
+
+	if(!distress_beacon || !distress_beacon.home_base)
+		return
+
+	var/obj/structure/machinery/computer/shuttle/ert/console = getControlConsole()
+	console.must_launch_home = TRUE
+
 // Generic ERT Dock
 /obj/docking_port/stationary/emergency_response
 	width  = 7
@@ -236,9 +267,9 @@
 
 /obj/docking_port/stationary/emergency_response/on_arrival(obj/docking_port/mobile/arriving_shuttle)
 	. = ..()
-	if(istype(arriving_shuttle, /obj/docking_port/mobile/emergency_response))
+	if(!is_external && istype(arriving_shuttle, /obj/docking_port/mobile/emergency_response))
 		var/obj/docking_port/mobile/emergency_response/ert = arriving_shuttle
-		ert.control_doors("unlock", force = FALSE)
+		ert.control_doors("unlock", force=TRUE)
 
 	if(lockdown_on_land)
 		var/obj/structure/machinery/computer/shuttle/ert/console = arriving_shuttle.getControlConsole()
@@ -314,6 +345,7 @@
 		WARNING("No external airlocks for [src]")
 
 /obj/docking_port/stationary/emergency_response/external/on_arrival(obj/docking_port/mobile/arriving_shuttle)
+	..()
 	for(var/door in external_airlocks)
 		INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
@@ -454,6 +486,10 @@
 /datum/map_template/shuttle/big_ert
 	name = "Boarding Shuttle"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT_BIG
+
+/datum/map_template/shuttle/ert_alamo
+	name = "Alamo Response Shuttle"
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT_ALAMO
 
 // FTL umbilical_cord stuff
 

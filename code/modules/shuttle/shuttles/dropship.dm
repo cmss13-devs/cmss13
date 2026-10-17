@@ -318,13 +318,20 @@
 
 /obj/docking_port/stationary/marine_dropship/on_arrival(obj/docking_port/mobile/arriving_shuttle)
 	. = ..()
-	var/obj/docking_port/mobile/marine_dropship/dropship = arriving_shuttle
+	var/obj/docking_port/mobile/shuttle = arriving_shuttle
+	var/obj/docking_port/mobile/marine_dropship/marine_dropship
+	if(istype(shuttle, /obj/docking_port/mobile/marine_dropship))
+		marine_dropship = shuttle
 
-	if(auto_open && istype(arriving_shuttle, /obj/docking_port/mobile/marine_dropship))
-		dropship.in_flyby = FALSE
-		dropship.control_doors("unlock", "all", force=FALSE)
-		var/obj/structure/machinery/computer/shuttle/dropship/flight/console = dropship.getControlConsole()
-		console?.update_equipment()
+	if(auto_open)
+		if(marine_dropship)
+			marine_dropship.in_flyby = FALSE
+			marine_dropship.control_doors("unlock", "all", force=FALSE)
+			var/obj/structure/machinery/computer/shuttle/dropship/flight/console = marine_dropship.getControlConsole()
+			console?.update_equipment()
+		else if(istype(shuttle, /obj/docking_port/mobile/emergency_response))
+			var/obj/docking_port/mobile/emergency_response/ert_shuttle = shuttle
+			ert_shuttle.control_doors("unlock", force=FALSE)
 	if(is_ground_level(z) && !SSobjectives.first_drop_complete)
 		SSticker.mode.ds_first_landed(src)
 		SSticker.mode.flags_round_type |= MODE_DS_LANDED
@@ -333,13 +340,16 @@
 		xeno_announcement(SPAN_XENOANNOUNCE("The dropship has landed."), "everything")
 		xeno_announce = FALSE
 
-	for(var/obj/structure/dropship_equipment/eq as anything in dropship.equipments)
-		eq.on_arrival()
-
-	if(dropship.is_hijacked || !is_mainship_level(z))
+	if(!marine_dropship)
 		return
 
-	for(var/area/checked_area in dropship.shuttle_areas)
+	for(var/obj/structure/dropship_equipment/eq as anything in marine_dropship.equipments)
+		eq.on_arrival()
+
+	if(marine_dropship.is_hijacked || !is_mainship_level(z))
+		return
+
+	for(var/area/checked_area in marine_dropship.shuttle_areas)
 		for(var/mob/living/carbon/xenomorph/checked_xeno in checked_area)
 			if(checked_xeno.stat == DEAD || (FACTION_MARINE in checked_xeno.iff_tag?.faction_groups))
 				continue
@@ -351,6 +361,10 @@
 
 /obj/docking_port/stationary/marine_dropship/on_departure(obj/docking_port/mobile/departing_shuttle)
 	. = ..()
+
+	if(!istype(departing_shuttle, /obj/docking_port/mobile/marine_dropship))
+		return
+
 	var/obj/docking_port/mobile/marine_dropship/dropship = departing_shuttle
 	for(var/obj/structure/dropship_equipment/eq as anything in dropship.equipments)
 		eq.on_launch()

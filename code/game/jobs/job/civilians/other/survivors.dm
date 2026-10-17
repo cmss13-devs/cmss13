@@ -420,3 +420,33 @@ AddTimelock(/datum/job/civilian/survivor, list(
 
 		SSticker.mode.survivors_by_type_amounts[preferred_variant] += 1
 		return
+
+/datum/job/civilian/survivor/unlimited
+	title = JOB_SURVIVOR_UNLIMITED
+	total_positions = -1
+	spawn_positions = -1
+
+/datum/job/civilian/survivor/unlimited/setup_requirements(list/L)
+	return list() // No timelock
+
+/datum/job/civilian/survivor/unlimited/set_spawn_positions(count)
+	return
+
+/datum/job/civilian/survivor/unlimited/create_landmark_lists()
+	if(!isnull(available_landmarks))
+		return // Already set up
+	..()
+
+/datum/job/civilian/survivor/unlimited/assign_landmark(mob/new_player)
+	create_landmark_lists()
+	var/prev_generic_landmarks = length(generic_landmarks)
+	. = ..()
+	if(.)
+		// Put the landmark back
+		var/spawner = slotted_landmarks[new_player]
+		if(length(generic_landmarks) < prev_generic_landmarks)
+			generic_landmarks += spawner
+			GLOB.generic_survivor_spawns += spawner
+		else
+			available_landmarks += spawner
+			GLOB.survivor_spawns_by_priority += spawner

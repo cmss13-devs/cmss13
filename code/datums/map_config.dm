@@ -40,6 +40,7 @@
 
 	var/announce_text = ""
 	var/infection_announce_text = ""
+	var/survive_announce_text = ""
 	var/liaison_briefing = ""
 	var/list/co_briefing_files = list()
 
@@ -428,6 +429,9 @@
 
 	if(json["infection_announce_text"])
 		infection_announce_text = json["infection_announce_text"]
+
+	if(json["survive_announce_text"])
+		survive_announce_text = json["survive_announce_text"]
 
 	if(json["liaison_briefing"])
 		liaison_briefing = json["liaison_briefing"]

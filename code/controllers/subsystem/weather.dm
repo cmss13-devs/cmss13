@@ -230,37 +230,37 @@ SUBSYSTEM_DEF(weather)
 
 
 /// LIGHTNING FLASH: Fullbright all rainy areas for [flash_duration], then fade back over [fade_duration].
-/datum/controller/subsystem/weather/proc/lightning_flash_weather_areas(flash_duration = 0.5 SECONDS, fade_duration = 2 SECONDS, fade_steps = 10)
-	if(!weather_areas || lightninging)
+/datum/controller/subsystem/weather/proc/lightning_flash_weather_areas(flash_duration = 0.5 SECONDS, fade_duration = 2 SECONDS, fade_steps = 12)
+	if(!length(weather_areas) || lightninging)
 		return
 
 	lightninging = TRUE
 
 	for(var/area/weather_area as anything in weather_areas)
+		if(QDELETED(weather_area))
+			continue
 		weather_area.set_base_lighting(new_base_lighting_color = COLOR_WHITE, new_alpha = 255)
-		addtimer(CALLBACK(src, PROC_REF(lightning_fade_weather_area), weather_area, fade_duration, fade_steps), flash_duration)
+
+	addtimer(CALLBACK(src, PROC_REF(lightning_fade_step), 1, fade_duration, fade_steps), flash_duration)
 
 
-/// Step an area's base lighting from lightning flashes' fullbright back to [old_alpha]/[old_color] over [fade_duration].
-/datum/controller/subsystem/weather/proc/lightning_fade_weather_area(area/weather_area, old_alpha, old_color, fade_duration = 2 SECONDS, fade_steps = 20)
-	if(QDELETED(weather_area) || fade_steps < 1)
+/// fades the base lighting of an area back to 0 (from fullbright after lightning). Recurses until done
+/datum/controller/subsystem/weather/proc/lightning_fade_step(current_step, fade_duration, fade_steps)
+	if(current_step > fade_steps)
+		lightninging = FALSE
 		return
 
-	var/start_alpha = 255
-	var/end_alpha = 0
+	var/t = current_step / fade_steps
+	var/eased = 1 - (1 - t) * (1 - t) * (1 - t)	//cubic easing
+	var/target_alpha = (current_step == fade_steps) ? 0 : round(255 * (1 - eased))
+
+	for(var/area/weather_area as anything in weather_areas)
+		if(QDELETED(weather_area))
+			continue
+		weather_area.set_base_lighting(new_base_lighting_color = COLOR_WHITE, new_alpha = target_alpha)
+
 	var/step_time = fade_duration / fade_steps
-
-	for(var/animation_step in 1 to fade_steps)
-		var/t = animation_step / fade_steps
-		var/eased = 1 - (1 - t) * (1 - t) * (1 - t)	//cubic easing
-		var/target_alpha = round(start_alpha + (end_alpha - start_alpha) * eased)
-
-		if(animation_step == fade_steps)
-			target_alpha = end_alpha // exact landing
-
-		addtimer(CALLBACK(weather_area, TYPE_PROC_REF(/area, set_base_lighting), COLOR_WHITE, target_alpha), step_time * animation_step)
-
-	lightninging = FALSE
+	addtimer(CALLBACK(src, PROC_REF(lightning_fade_step), current_step + 1, fade_duration, fade_steps), step_time)
 
 
 /obj/effect/weather_vfx_holder

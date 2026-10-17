@@ -1,0 +1,6 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - maptweak: "The reception bell in the Almayer computer laboratory is now properly anchored, and can thus now be rung."
+  - maptweak: "The front reception door control for the Corporate Liaison office entrance now functions as intended."
+  - maptweak: "Adds a set of blastdoors to the eastern section of the CIC conference room."

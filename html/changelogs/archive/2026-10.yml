@@ -72,3 +72,33 @@
       save data existing
   - server: Preferences now use json
   - server: Many cmdb tables now have an index
+2026-10-12:
+  JHINgle4ce:
+  - bugfix: fixed blank R&D contracts
+  - bugfix: allows xeno to interact through xeno special structures
+  - rscdel: Removed platform overlay
+  Puckaboo2:
+  - qol: You can close an incision on a sawed and closed skull/ribcage without needing
+      bone gel first in case you run out of bone gel and need to close the patient
+      NOW.
+2026-10-13:
+  Taushai:
+  - bugfix: fixed the preview dummy disappearing after reconnecting to the same round.
+2026-10-14:
+  TrollerNoob:
+  - rscadd: Signal Flare's flashing light changes color depending on the roof. Green
+      in open/glass, yellow in metal, red in anything higher.
+  - imageadd: Added Yellow and Red flashing light states for Signal Flare.
+2026-10-15:
+  Venuska1117:
+  - refactor: Updates Ravager code with new define and spaces.
+2026-10-16:
+  Drathek:
+  - bugfix: Traits are now sanitized in preferences like gear and should load properly
+      again
+  - ui: Fixed synth slots in loadout UI just overflowing off screen
+  - ui: Fixed loadout/trait UIs overflowing scrollbars & misc layout changes
+  Steelpoint:
+  - maptweak: Fixes several hull window tiles in the researcher observation deck on
+      White Antre Research Facility not having floors underneath them.
+  - maptweak: On Chances Claim, several missing air pipes have been added to A-Block.

@@ -176,6 +176,8 @@
 				return
 		fire_grenade(target,user)
 
+		var/atom/movable/screen/gun_ammo_counter/counter = user?.hud_used.gun_ammo_counter
+		counter.update_hud(user)
 
 /obj/item/weapon/gun/launcher/grenade/proc/fire_grenade(atom/target, mob/user)
 	set waitfor = 0
@@ -214,12 +216,24 @@
 	fired.forceMove(get_turf(src))
 	fired.throw_atom(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
 
+/obj/item/weapon/gun/launcher/grenade/get_ammo_type()
+	if(length(cylinder.contents) == 0)
+		return list("grenade_empty", "grenade_empty")
+	else
+		var/obj/item/explosive/grenade/F = cylinder.contents[1]
+		return list(F.hud_state, F.hud_state_empty)
+
+/obj/item/weapon/gun/launcher/grenade/get_ammo_count()
+	return length(cylinder.contents)
+
+//Doesn't use these. Listed for reference.
 /obj/item/weapon/gun/launcher/grenade/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
 	return FALSE
 
 //Doesn't use these. Listed for reference. - Really should just actually write these out so it can use Autofire
 /obj/item/weapon/gun/launcher/grenade/load_into_chamber()
 	return
+
 /obj/item/weapon/gun/launcher/grenade/reload_into_chamber()
 	return
 
@@ -274,7 +288,7 @@
 	explo_proof = TRUE
 	matter = list("metal" = 6000)
 	actions_types = list(/datum/action/item_action/toggle_firing_level)
-
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	attachable_allowed = list(/obj/item/attachable/magnetic_harness)
 	flags_item = TWOHANDED|NO_CRYO_STORE
 	map_specific_decoration = TRUE
@@ -362,6 +376,7 @@
 	icon_state = "m85a1"
 	item_state = "m85a1"
 	flags_equip_slot = SLOT_BACK
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	preload = /obj/item/explosive/grenade/slug/baton
 	is_lobbing = TRUE
 	actions_types = list(/datum/action/item_action/toggle_firing_level)

@@ -43,8 +43,6 @@
 	tier = 1
 	base_actions = list(
 		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab/sentinel,
 		/datum/action/xeno_action/activable/corrosive_acid/weak,
@@ -211,7 +209,7 @@
 		behavior.buffed_slashes = behavior.max_buffed_slashes
 
 	to_chat(paraslash_user, SPAN_XENOHIGHDANGER("Our next three slashes will apply neurotoxin!"))
-	button.icon_state = "template_active"
+	button.icon_state = "template_xeno_active"
 
 	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
 

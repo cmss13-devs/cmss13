@@ -250,11 +250,15 @@ CLIENT_VERB(fit_viewport)
 		var/height = text2num(map_size[2])
 		desired_width = floor(height * aspect_ratio)
 
+	// mainwindow.split has gamewindow to the left, which is split 25/75 between hudwindow and mapwindow
+	var/combined_width = desired_width * 4/3
+
 	var/split_size = splittext(sizes["mainwindow.split.size"], "x")
 	var/split_width = text2num(split_size[1])
 	// Always leave at least 240px of verb panel for the poor sod to switch back if they made a mistake
-	if(split_width - desired_width < 240)
-		desired_width = split_width - 240
+	if(split_width - combined_width < 240)
+		combined_width = split_width - 240
+		desired_width = floor(combined_width * 0.75)
 
 	if (text2num(map_size[1]) == desired_width || split_width == 0)
 		// If split_width is 0, it likely means they are minimized and we don't know what the window size would be
@@ -263,7 +267,7 @@ CLIENT_VERB(fit_viewport)
 
 	// Calculate and apply a best estimate
 	// +4 pixels are for the width of the splitter's handle
-	var/pct = 100 * (desired_width + 4) / split_width
+	var/pct = 100 * (combined_width + 4) / split_width
 	winset(src, "mainwindow.split", "splitter=[pct]")
 
 	// Apply an ever-lowering offset until we finish or fail

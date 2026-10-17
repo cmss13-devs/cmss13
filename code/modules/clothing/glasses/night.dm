@@ -190,6 +190,7 @@
 		if(user)
 			if(user.client)
 				user.client.change_view(8, src)
+				user?.hud_used.screen_border.alpha = 0
 		START_PROCESSING(SSobj, src)
 	else
 		linked_smartgun = null
@@ -197,6 +198,7 @@
 		if(user)
 			if(user.client)
 				user.client.change_view(GLOB.world_view_size, src)
+				user?.hud_used.screen_border.alpha = 255
 		STOP_PROCESSING(SSobj, src)
 
 	var/datum/action/item_action/m56_goggles/far_sight/FT = locate(/datum/action/item_action/m56_goggles/far_sight) in actions

@@ -57,14 +57,26 @@
 		var/turf/comms_turf = get_turf(comms_poi)
 		new /obj/effect/landmark/observer_start(comms_turf)
 
-	var/obj/structure/tunnel/T
+	var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	main_hive.allow_queen_evolve = FALSE
+	main_hive.evolution_without_ovipositor = TRUE
+	main_hive.allow_no_queen_actions = TRUE
+
+	var/obj/structure/tunnel/tunnel
 	var/i = 0
-	var/turf/t
+	var/turf/location
 	while(length(GLOB.xeno_tunnels) && i++ < 3)
-		t = get_turf(pick_n_take(GLOB.xeno_tunnels))
-		T = new(t)
-		T.id = "hole[i]"
+		location = get_turf(pick_n_take(GLOB.xeno_tunnels))
+		tunnel = new(location)
+		tunnel.id = "hole[i]"
 	return TRUE
+
+/datum/game_mode/survive/transform_queen(datum/mind/ghost_mind, turf/xeno_turf, hivenumber)
+	var/turf/origin = locate(xeno_turf.x-3, xeno_turf.y-3, xeno_turf.z)
+	var/datum/map_template/template = SSmapping.map_templates["Queen_Resin.dmm"]
+	if(!template?.load(origin, centered=FALSE, delete=TRUE))
+		stack_trace("Queen resin template failed to load!")
+	..()
 
 /* Post-setup */
 //This happens after create_character, so our mob SHOULD be valid and built by now, but without job data.
@@ -80,6 +92,7 @@
 	addtimer(CALLBACK(src, PROC_REF(mode_announcement)), 10 DECISECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
 	addtimer(CALLBACK(SSentity_manager, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, select), /datum/entity/survivor_survival), 7 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(release_the_queen)), 30 MINUTES)
 
 	return ..()
 
@@ -131,6 +144,8 @@
 	is_in_endgame = TRUE
 	force_end_at = world.time + 15 MINUTES
 
+	release_the_queen()
+
 	var/datum/map_template/shuttle/new_shuttle = SSmapping.shuttle_templates[MOBILE_SHUTTLE_ID_ERT_ALAMO]
 	shuttle = SSshuttle.load_template_to_transit(new_shuttle)
 	shuttle.control_doors("force-lock", force=TRUE, external_only=TRUE)
@@ -157,6 +172,18 @@
 /datum/game_mode/survive/proc/on_shuttle_arrival(obj/docking_port/stationary/port, obj/docking_port/mobile/arriving_shuttle)
 	xeno_announcement(SPAN_XENOANNOUNCE("A dropship has landed. The tallhosts are escaping!"), "everything", QUEEN_MOTHER_ANNOUNCE)
 
+/datum/game_mode/survive/proc/release_the_queen()
+	if(!length(GLOB.marked_atoms_by_id["queen_bubble"]))
+		return
+
+	var/turf/current
+	for(var/obj/effect/marked_atom/marker as anything in GLOB.marked_atoms_by_id["queen_bubble"])
+		current = marker.loc
+		current.ChangeTurf(/turf/open/auto_turf/hybrisa_auto_turf/layer1)
+		qdel(marker)
+	playsound(current, "acid_hit", 25, TRUE)
+	GLOB.marked_atoms_by_id["queen_bubble"] = null
+
 /datum/game_mode/survive/spawn_static_comms()
 	// Force all to be broken always
 	for(var/obj/effect/landmark/static_comms/tower as anything in GLOB.comm_tower_landmarks_net_one)
@@ -172,19 +199,6 @@
 		return FALSE //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
 
 	if(!round_finished)
-		var/datum/hive_status/hive
-		for(var/hivenumber in GLOB.hive_datum)
-			hive = GLOB.hive_datum[hivenumber]
-			if(!hive.xeno_queen_timer)
-				continue
-			if(!hive.living_xeno_queen && hive.xeno_queen_timer < world.time)
-				var/time_remaining = (QUEEN_DEATH_COUNTDOWN + hive.xeno_queen_timer) - world.time
-				if(time_remaining <= 59 SECONDS)
-					var/seconds_left = round(time_remaining / 10)
-					xeno_message("The Hive is ready for a new Queen to evolve. The Hive will collapse in [seconds_left] seconds without a Queen.", 3, hive.hivenumber)
-				else
-					xeno_message("The Hive is ready for a new Queen to evolve. The Hive can only survive for a limited time without a Queen!", 3, hive.hivenumber)
-
 		// Automated bioscan / Queen Mother message
 		if(world.time > bioscan_current_interval) //If world time is greater than required bioscan time.
 			announce_bioscans() //Announce the results of the bioscan to both sides.
@@ -207,15 +221,6 @@
 			if(GLOB.round_should_check_for_win)
 				check_win()
 			round_checkwin = 0
-
-		if(!evolution_ovipositor_threshold && ROUND_TIME >= round_time_evolution_ovipositor)
-			for(var/hivenumber in GLOB.hive_datum)
-				hive = GLOB.hive_datum[hivenumber]
-				hive.evolution_without_ovipositor = FALSE
-				if(hive.living_xeno_queen && !hive.living_xeno_queen.ovipositor)
-					to_chat(hive.living_xeno_queen, SPAN_XENODANGER("It is time to settle down and let your children grow."))
-			evolution_ovipositor_threshold = TRUE
-			msg_admin_niche("Xenomorphs now require the queen's ovipositor for evolution progress.")
 
 		if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding) && world.time >= SSticker.round_start_time + round_time_resin)
 			MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
@@ -278,36 +283,6 @@
 				//Some Queen is alive, we shouldn't end the game yet
 				.[2]++
 	return .
-
-/datum/game_mode/survive/check_queen_status(hivenumber, immediately = FALSE)
-	if(!(flags_round_type & MODE_SURVIVE))
-		return
-
-	if(is_in_endgame)
-		return // Don't handle hive collapse for hijack
-
-	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-	if(hive.need_round_end_check && !hive.can_delay_round_end())
-		return
-
-	if(!immediately)
-		//We want to make sure that another queen didn't die in the interim.
-		addtimer(CALLBACK(src, PROC_REF(check_queen_status), hivenumber, TRUE), QUEEN_DEATH_COUNTDOWN, TIMER_UNIQUE|TIMER_OVERRIDE)
-		return
-
-	if(round_finished)
-		return
-
-	for(var/cur_number in GLOB.hive_datum)
-		hive = GLOB.hive_datum[cur_number]
-		if(hive.need_round_end_check && !hive.can_delay_round_end())
-			continue
-		if(hive.living_xeno_queen && !should_block_game_interaction(hive.living_xeno_queen.loc))
-			//Some Queen is alive, we shouldn't end the game yet
-			return
-
-	round_finished = MODE_SURVIVE_S_MAJOR
-	log_game("Survival Hive collapse!")
 
 /**
  * Checks if the round is over

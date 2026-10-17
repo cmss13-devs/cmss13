@@ -563,6 +563,8 @@
 		current = get_step(current, direction)
 		if(istype(current, /turf/open))
 			return current
+		if(!istype(current, /turf/closed/wall/mineral/bone_resin/burrowable))
+			return null
 	return null
 
 /turf/closed/wall/mineral/bone_resin/burrowable/get_examine_text(mob/user)

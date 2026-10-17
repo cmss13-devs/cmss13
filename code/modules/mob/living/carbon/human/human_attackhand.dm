@@ -215,6 +215,13 @@
 	if(w_uniform)
 		w_uniform.add_fingerprint(mob)
 
+	if(is_napping)
+		mob.visible_message(SPAN_NOTICE("[mob] shakes [src] awake!"), SPAN_NOTICE("You shake [src] awake!"), null, 4)
+		to_chat(src, SPAN_NOTICE("[mob] shakes you awake!"))
+		wake_from_nap(rapid_blink = TRUE)
+		playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+		return
+
 	var/shaken_friend = FALSE
 
 	if(HAS_TRAIT(src, TRAIT_FLOORED) || HAS_TRAIT(src, TRAIT_KNOCKEDOUT) || body_position == LYING_DOWN || sleeping)

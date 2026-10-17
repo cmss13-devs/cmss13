@@ -191,8 +191,17 @@
 	// State of them beady little eyes
 	var/eyelids_status = EYELID_OPEN
 
-	/// Active eyelid animation timer (so we can cancel / replace it).
+	/// Active emote/sequence timer only. Null = life owns blinking.
 	var/eyelid_timer
+
+	/// world.time when life is allowed to perform the next normal blink
+	var/next_blink_at = 0
+
+	/// for the sleeping emote
+	var/is_napping = FALSE
+
+	/// Timer for periodic snoring while napping
+	var/nap_snore_timer
 
 /client/var/cached_human_playtime
 

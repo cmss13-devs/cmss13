@@ -37,6 +37,9 @@ SUBSYSTEM_DEF(weather)
 	/// List of all cleanables that are outside that will be cleaned up by active weather
 	var/list/obj/effect/decal/cleanable/cleanable_list = list()
 
+	/// To prevent overlap between lightning changing the lighting of weather areas
+	var/lightninging = FALSE
+
 /datum/controller/subsystem/weather/Initialize(start_timeofday)
 	// Set up our map delegate datum for supported maps
 	// The ONLY place where things should depend on map_tag
@@ -225,6 +228,41 @@ SUBSYSTEM_DEF(weather)
 		if(!is_weather_event)
 			mob.clear_fullscreen("weather")
 
+
+/// LIGHTNING FLASH: Fullbright all rainy areas for [flash_duration], then fade back over [fade_duration].
+/datum/controller/subsystem/weather/proc/lightning_flash_weather_areas(flash_duration = 0.5 SECONDS, fade_duration = 2 SECONDS, fade_steps = 12)
+	if(!length(weather_areas) || lightninging)
+		return
+
+	lightninging = TRUE
+
+	for(var/area/weather_area as anything in weather_areas)
+		if(QDELETED(weather_area))
+			continue
+		weather_area.set_base_lighting(new_base_lighting_color = COLOR_WHITE, new_alpha = 255)
+
+	addtimer(CALLBACK(src, PROC_REF(lightning_fade_step), 1, fade_duration, fade_steps), flash_duration)
+
+
+/// fades the base lighting of an area back to 0 (from fullbright after lightning). Recurses until done
+/datum/controller/subsystem/weather/proc/lightning_fade_step(current_step, fade_duration, fade_steps)
+	if(current_step > fade_steps)
+		lightninging = FALSE
+		return
+
+	var/t = current_step / fade_steps
+	var/eased = 1 - (1 - t) * (1 - t) * (1 - t)	//cubic easing
+	var/target_alpha = (current_step == fade_steps) ? 0 : round(255 * (1 - eased))
+
+	for(var/area/weather_area as anything in weather_areas)
+		if(QDELETED(weather_area))
+			continue
+		weather_area.set_base_lighting(new_base_lighting_color = COLOR_WHITE, new_alpha = target_alpha)
+
+	var/step_time = fade_duration / fade_steps
+	addtimer(CALLBACK(src, PROC_REF(lightning_fade_step), current_step + 1, fade_duration, fade_steps), step_time)
+
+
 /obj/effect/weather_vfx_holder
 	name = "weather vfx holder"
 	icon = 'icons/effects/weather.dmi'
@@ -238,3 +276,4 @@ SUBSYSTEM_DEF(weather)
 /obj/effect/weather_vfx_holder/hybrisa_rain
 	icon_state = "hybrisa_rain"
 	alpha = 50
+

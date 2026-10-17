@@ -6,10 +6,10 @@
 /obj/effect/marked_atom{
 	id = "queen_bubble"
 	},
-/turf/closed/wall/mineral/bone_resin,
+/turf/closed/wall/mineral/bone_resin/burrowable,
 /area/template_noop)
 "F" = (
-/turf/closed/wall/mineral/bone_resin,
+/turf/closed/wall/mineral/bone_resin/burrowable,
 /area/template_noop)
 "L" = (
 /obj/effect/alien/weeds/node,

@@ -865,7 +865,6 @@
 	if(mods[ALT_CLICK] && !isnull(hold) && loc == user && !user.get_active_hand()) //To pass quick-draw attempts to storage. See storage.dm for explanation.
 		return
 	if(mods[CTRL_CLICK] && loc == user && (hold.storage_flags & STORAGE_ALLOW_DRAWING_METHOD_TOGGLE))
-		hold.storage_draw_logic()
 		return
 	. = ..()
 

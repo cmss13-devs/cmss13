@@ -176,7 +176,7 @@
 /obj/structure/machinery/computer/shuttle/ert/tgui_interact(mob/user, datum/tgui/ui)
 	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
 
-	if(ert.distress_beacon && ishuman(user))
+	if(ert.distress_beacon && length(ert.distress_beacon.members) && ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		var/obj/item/card/id/id = human_user.get_active_hand()
 		if(!istype(id))

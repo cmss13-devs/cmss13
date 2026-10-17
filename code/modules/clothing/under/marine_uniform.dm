@@ -949,6 +949,7 @@
 	worn_state = "co_turtleneck"
 	specialty = "captain's turtleneck"
 	flags_atom = NO_GAMEMODE_SKIN
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/dress
 	name = "marine formal service uniform"

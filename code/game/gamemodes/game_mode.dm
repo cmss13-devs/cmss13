@@ -27,6 +27,8 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	var/required_ready_players = null
 	/// The number of players required to start this gamemode when secret
 	var/required_players_secret = 0
+	/// The number of players before this gamemode is not available for voting
+	var/max_players = 0
 	var/ert_disabled = 0
 	var/force_end_at = 0
 	var/xeno_evo_speed = 0 // if not 0 - gives xeno an evo boost/nerf

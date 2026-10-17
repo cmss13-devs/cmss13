@@ -9,6 +9,7 @@
 	name = GAMEMODE_SURVIVE
 	config_tag = GAMEMODE_SURVIVE
 	required_players = 1 //Need at least one player, but really we need 2.
+	max_players = 50
 	corpses_to_spawn = 0
 	flags_round_type = MODE_SURVIVE|MODE_INFESTATION|MODE_FOG_ACTIVATED|MODE_NEW_SPAWN|MODE_NO_LATEJOIN
 	static_comms_amount = 1

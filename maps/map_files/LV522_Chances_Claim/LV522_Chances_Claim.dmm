@@ -1382,29 +1382,8 @@
 /area/lv522/indoors/a_block/corpo/glass)
 "aeO" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 8
-	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison,
-/area/lv522/indoors/a_block/security)
-"aeP" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/prison/darkredfull2,
-/area/lv522/indoors/a_block/security)
-"aeQ" = (
-/obj/structure/window/framed/strata/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	dir = 4;
-	id = "Sec-Kitchen-Lockdown";
-	name = "\improper Storm Shutters"
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/corsat/marked,
 /area/lv522/indoors/a_block/security)
 "aeR" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
@@ -8217,7 +8196,6 @@
 	pixel_y = 8
 	},
 /obj/item/clothing/head/fedora,
-/obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/security)
@@ -68711,7 +68689,7 @@ aYD
 uDb
 gLk
 uDb
-tLE
+uDb
 dXt
 lhT
 gvH
@@ -68917,7 +68895,7 @@ jft
 jft
 wue
 oPs
-aeP
+uVj
 xrr
 kiO
 dEY
@@ -69123,7 +69101,7 @@ sjy
 qTx
 qTx
 sjy
-aeQ
+qTx
 qTx
 sjy
 sjy

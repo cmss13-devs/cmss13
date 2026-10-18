@@ -177,21 +177,15 @@
 	if(!length(GLOB.marked_atoms_by_id["queen_bubble"]))
 		return
 
-	var/turf/current
 	for(var/obj/effect/marked_atom/marker as anything in GLOB.marked_atoms_by_id["queen_bubble"])
-		current = marker.loc
-		current.ChangeTurf(/turf/open/auto_turf/hybrisa_auto_turf/layer1)
+		addtimer(CALLBACK(src, PROC_REF(crumble_wall), marker.loc), rand(2 SECONDS))
 		qdel(marker)
-	playsound(current, "acid_hit", 25, TRUE)
-	GLOB.marked_atoms_by_id["queen_bubble"] = null
 
-/datum/game_mode/survive/spawn_static_comms()
-	// Force all to be broken always
-	for(var/obj/effect/landmark/static_comms/tower as anything in GLOB.comm_tower_landmarks_net_one)
-		tower.broken_on_spawn = TRUE
-	for(var/obj/effect/landmark/static_comms/tower as anything in GLOB.comm_tower_landmarks_net_two)
-		tower.broken_on_spawn = TRUE
-	..()
+/datum/game_mode/survive/proc/crumble_wall(turf/wall)
+	if(prob(50))
+		playsound(wall, 'sound/effects/rock_creaking.ogg', 25, TRUE)
+		wall.visible_message(SPAN_WARNING("[wall] crumbles apart!"))
+	wall.ChangeTurf(/turf/open/auto_turf/hybrisa_auto_turf/layer1)
 
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
 /datum/game_mode/survive/process()

@@ -235,32 +235,43 @@ SUBSYSTEM_DEF(weather)
 		return
 
 	lightninging = TRUE
+	var/list/starting_values = list()
 
 	for(var/area/weather_area as anything in weather_areas)
+		starting_values["[weather_area]"] = list(weather_area.base_lighting_alpha, weather_area.base_lighting_color)
 		if(QDELETED(weather_area))
 			continue
-		weather_area.set_base_lighting(new_base_lighting_color = COLOR_WHITE, new_alpha = 255)
+		weather_area.set_base_lighting(new_base_lighting_color = "#e5fcff", new_alpha = 255)
 
-	addtimer(CALLBACK(src, PROC_REF(lightning_fade_step), 1, fade_duration, fade_steps), flash_duration)
+	addtimer(CALLBACK(src, PROC_REF(lightning_fade_step), 1, fade_duration, fade_steps, starting_values), flash_duration)
 
 
 /// fades the base lighting of an area back to 0 (from fullbright after lightning). Recurses until done
-/datum/controller/subsystem/weather/proc/lightning_fade_step(current_step, fade_duration, fade_steps)
+/datum/controller/subsystem/weather/proc/lightning_fade_step(current_step, fade_duration, fade_steps, list/starting_values)
 	if(current_step > fade_steps)
 		lightninging = FALSE
 		return
 
 	var/t = current_step / fade_steps
-	var/eased = 1 - (1 - t) * (1 - t) * (1 - t)	//cubic easing
-	var/target_alpha = (current_step == fade_steps) ? 0 : round(255 * (1 - eased))
+	var/eased = 1 - (1 - t) ** 3.5
 
 	for(var/area/weather_area as anything in weather_areas)
 		if(QDELETED(weather_area))
 			continue
-		weather_area.set_base_lighting(new_base_lighting_color = COLOR_WHITE, new_alpha = target_alpha)
+
+		var/original_alpha = starting_values["[weather_area]"][1]
+		var/original_color = starting_values["[weather_area]"][2]
+		var/target_alpha = round(LERP(255, original_alpha, eased))
+		var/target_color = BlendRGB("#e5fcff", original_color, eased)
+
+		if(current_step == fade_steps)
+			target_alpha = original_alpha
+			target_color = original_color
+
+		weather_area.set_base_lighting(target_color, target_alpha)
 
 	var/step_time = fade_duration / fade_steps
-	addtimer(CALLBACK(src, PROC_REF(lightning_fade_step), current_step + 1, fade_duration, fade_steps), step_time)
+	addtimer(CALLBACK(src, PROC_REF(lightning_fade_step), current_step + 1, fade_duration, fade_steps, starting_values), step_time)
 
 
 /obj/effect/weather_vfx_holder

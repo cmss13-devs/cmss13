@@ -75,8 +75,22 @@
 /datum/game_mode/survive/transform_queen(datum/mind/ghost_mind, turf/xeno_turf, hivenumber)
 	var/turf/origin = locate(xeno_turf.x-3, xeno_turf.y-3, xeno_turf.z)
 	var/datum/map_template/template = SSmapping.map_templates["Queen_Resin.dmm"]
+
+	// Edgecase: Move any living mobs out of the way of the template while it loads
+	var/turf/safe_spot = get_step(origin, WEST)
+	var/list/existing_mobs = list()
+	for(var/turf/current as anything in CORNER_BLOCK(origin, template.width, template.height))
+		for(var/mob/living/obstruction in current)
+			existing_mobs[obstruction] = current
+			obstruction.forceMove(safe_spot)
+
 	if(!template?.load(origin, centered=FALSE, delete=TRUE))
 		stack_trace("Queen resin template failed to load!")
+
+	// Move those mobs back
+	for(var/mob/living/obstruction as anything in existing_mobs)
+		obstruction.forceMove(existing_mobs[obstruction])
+
 	..()
 
 /* Post-setup */

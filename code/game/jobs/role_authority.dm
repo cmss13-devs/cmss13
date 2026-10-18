@@ -285,8 +285,11 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		// No roundstart queen? We need a drone to evolve (and will refund their larva)
 		var/datum/job/antag/xenos/queen/queen_job = temp_roles_for_mode[JOB_XENOMORPH_QUEEN]
 		if(queen_job && queen_job.current_positions == 0)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "My children it is time. Evolve a queen and thrive.", hive.hivenumber, QUEEN_MOTHER_ANNOUNCE), (/datum/caste_datum/drone::minimum_evolve_time - 5 SECONDS))
-			hive.RegisterSignal(hive, COMSIG_HIVE_NEW_QUEEN, TYPE_PROC_REF(/datum/hive_status, grant_extra_larva_on_queen))
+			if(hive.allow_queen_evolve)
+				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "My children it is time. Evolve a queen and thrive.", hive.hivenumber, QUEEN_MOTHER_ANNOUNCE), (/datum/caste_datum/drone::minimum_evolve_time - 5 SECONDS))
+				hive.RegisterSignal(hive, COMSIG_HIVE_NEW_QUEEN, TYPE_PROC_REF(/datum/hive_status, grant_extra_larva_on_queen))
+			else
+				hive.stored_larva++
 
 	/*===============================================================*/
 

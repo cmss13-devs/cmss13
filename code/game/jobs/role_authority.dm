@@ -122,7 +122,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		roles_for_mode[role_name] = J
 
 	// Also shuffle survivors since some are tied together
-	var/list/snowflakes = GLOB.ROLES_WHITELISTED|GLOB.ROLES_SPECIAL
+	var/list/snowflakes = GLOB.ROLES_WHITELISTED|GLOB.ROLES_SPECIAL|JOB_SURVIVOR_UNLIMITED
 	var/list/shuffled_snowflakes = shuffle(snowflakes)
 	for(var/i in 1 to length(snowflakes))
 		var/old_index = roles_for_mode.Find(snowflakes[i])

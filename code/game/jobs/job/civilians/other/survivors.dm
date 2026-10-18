@@ -280,6 +280,11 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	spawn_positions = 1
 	job_options = null
 
+/datum/job/civilian/survivor/synth/get_total_positions(latejoin)
+	if(MODE_HAS_FLAG(MODE_SURVIVE)) // Survive mode doesn't share slots since base survivor type not in use
+		return latejoin ? total_positions : spawn_positions
+	return ..()
+
 /datum/job/civilian/survivor/synth/set_spawn_positions(count)
 	return
 
@@ -347,6 +352,11 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	total_positions = 0
 	spawn_positions = 0
 	job_options = null
+
+/datum/job/civilian/survivor/commanding_officer/get_total_positions(latejoin)
+	if(MODE_HAS_FLAG(MODE_SURVIVE)) // Survive mode doesn't share slots since base survivor type not in use
+		return latejoin ? total_positions : spawn_positions
+	return ..()
 
 /datum/job/civilian/survivor/commanding_officer/set_spawn_positions()
 	var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types

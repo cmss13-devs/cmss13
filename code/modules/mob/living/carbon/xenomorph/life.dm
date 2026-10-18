@@ -66,7 +66,8 @@
 				got_evolution_message = TRUE
 
 			if(ROUND_TIME < XENO_ROUNDSTART_BOOSTED_EVO_TIME)
-				evolution_stored += progress_amount
+				if(ovipositor_check)
+					evolution_stored += progress_amount
 				return
 
 			if(evolution_stored > evolution_threshold + progress_amount)
@@ -75,6 +76,9 @@
 
 		else
 			evolution_stored += progress_amount
+			if(evolution_stored >= evolution_threshold)
+				evolve_message()
+				got_evolution_message = TRUE
 
 /mob/living/carbon/xenomorph/proc/evolve_message()
 

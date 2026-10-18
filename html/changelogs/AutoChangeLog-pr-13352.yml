@@ -1,0 +1,4 @@
+author: "Kugamo"
+delete-after: True
+changes:
+  - bugfix: "Lightning briefly flashes the groundmap again."

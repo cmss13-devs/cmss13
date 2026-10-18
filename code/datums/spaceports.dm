@@ -47,7 +47,7 @@
 
 /datum/spaceport/vanguard/lancer
 	name = "Geldmann Outpost"
-	undocking_message = "What the fuck are those thingS? Whatever is inside your ship is coming for us next. We're blowing the umbilical. Contract's over. I'm sorry"
+	undocking_message = "What the fuck are those things? Whatever is inside your ship is coming for us next. We're blowing the umbilical. Contract's over. I'm sorry."
 	allies = list(
 		/datum/emergency_call/mercs/friendly, //left out elite since they're way too OP.
 	)

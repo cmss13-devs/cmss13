@@ -601,6 +601,11 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	QDEL_NULL(pockets)
 	return ..()
 
+/obj/item/clothing/head/cmcap/get_pockets()
+	if(pockets)
+		return pockets
+	return ..()
+
 /obj/item/clothing/head/cmcap/attack_hand(mob/user)
 	if(loc != user)
 		..(user)

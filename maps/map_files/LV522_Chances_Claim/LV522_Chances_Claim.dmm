@@ -1406,6 +1406,11 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/a_block/security)
+"aeR" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/turf/open/floor/corsat,
+/area/lv522/atmos/east_reactor/south)
 "aff" = (
 /obj/structure/platform_decoration/metal/almayer/west,
 /obj/effect/decal/warning_stripes{
@@ -12895,6 +12900,7 @@
 "gHF" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor/south)
 "gHN" = (
@@ -53178,7 +53184,7 @@ lhD
 lhD
 loD
 cfg
-cfg
+xrF
 lhD
 lhD
 loD
@@ -67013,7 +67019,7 @@ jDN
 iGl
 qjG
 qjG
-mkh
+aeR
 aeF
 oUq
 qpy
@@ -67218,7 +67224,7 @@ mkh
 jDN
 qjG
 qjG
-mkh
+aeR
 saC
 oUq
 saC
@@ -67424,7 +67430,7 @@ qjG
 jDN
 qjG
 qjG
-wGq
+yje
 saC
 saC
 saC

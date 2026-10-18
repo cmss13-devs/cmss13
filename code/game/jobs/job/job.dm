@@ -210,7 +210,7 @@
 /datum/job/proc/set_spawn_positions(count)
 	return
 
-/datum/job/proc/create_landmark_lists()
+/datum/job/proc/create_landmark_lists(force)
 	return
 
 /datum/job/proc/spawn_and_equip(mob/new_player/player)

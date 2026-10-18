@@ -1354,19 +1354,47 @@
 /area/lv522/atmos/cargo_intake)
 "aeJ" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv522/indoors/a_block/bridges/corpo)
+"aeK" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv522/indoors/a_block/bridges/corpo)
+"aeL" = (
+/obj/structure/curtain/red,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/lv522/indoors/a_block/executive)
+"aeM" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/a_block/corpo/glass)
+"aeN" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/indoors/a_block/corpo/glass)
+"aeO" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security)
-"aeK" = (
+"aeP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/a_block/security)
-"aeL" = (
+"aeQ" = (
 /obj/structure/window/framed/strata/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
@@ -1378,27 +1406,6 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/a_block/security)
-"aeM" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/prison/darkredfull2,
-/area/lv522/indoors/a_block/bridges/corpo)
-"aeN" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/prison/darkredfull2,
-/area/lv522/indoors/a_block/bridges/corpo)
-"aeO" = (
-/obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/lv522/indoors/a_block/corpo/glass)
-"aeP" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/prison/floor_plate,
-/area/lv522/indoors/a_block/corpo/glass)
 "aff" = (
 /obj/structure/platform_decoration/metal/almayer/west,
 /obj/effect/decal/warning_stripes{
@@ -68492,7 +68499,7 @@ vbX
 sLk
 sLk
 sLk
-aeJ
+aeO
 ndb
 pRR
 ueX
@@ -68674,8 +68681,8 @@ iLg
 uiQ
 uwY
 uTv
-aeP
-aeO
+aeN
+aeM
 vEY
 beB
 mSc
@@ -68904,7 +68911,7 @@ jft
 jft
 wue
 oPs
-aeK
+aeP
 xrr
 kiO
 dEY
@@ -69110,7 +69117,7 @@ sjy
 qTx
 qTx
 sjy
-aeL
+aeQ
 qTx
 sjy
 sjy
@@ -70532,7 +70539,7 @@ tQi
 jdn
 tQi
 tQi
-aeM
+aeJ
 uyt
 tQi
 gwb
@@ -70738,7 +70745,7 @@ xlI
 mev
 mev
 xlI
-aeN
+aeK
 uyt
 mev
 odT
@@ -71150,7 +71157,7 @@ xjF
 vtp
 ack
 xjF
-giX
+aeL
 giX
 iMw
 jzC

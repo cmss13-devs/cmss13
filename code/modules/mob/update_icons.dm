@@ -19,6 +19,10 @@
 /mob/proc/update_inv_back()
 	return
 
+/mob/proc/update_held_items()
+	update_inv_l_hand()
+	update_inv_r_hand()
+
 /mob/proc/update_inv_l_hand()
 	return
 

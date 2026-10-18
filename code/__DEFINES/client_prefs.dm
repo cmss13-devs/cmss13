@@ -8,7 +8,7 @@
 //=================================================
 ///Xeno abilities are activated using middle mouse
 #define XENO_ABILITY_CLICK_MIDDLE 1
-///Xeno abilities are activated using shift right click
+///Xeno abilities are activated using shift left click
 #define XENO_ABILITY_CLICK_SHIFT 2
 ///Xeno abilities are activated using right click
 #define XENO_ABILITY_CLICK_RIGHT 3
@@ -19,7 +19,7 @@
 
 //toggle_prefs bits from /datum/preferences
 //=================================================
-///Determines whether you will not hurt yourself when clicking yourself
+///Determines whether you will not hurt yourself when clicking yourself (UNUSED/REMOVED, FEEL FREE TO REPLACE)
 #define TOGGLE_IGNORE_SELF (1<<0)
 ///Determines whether help intent will be completely harmless
 #define TOGGLE_HELP_INTENT_SAFETY (1<<1)

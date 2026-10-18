@@ -126,7 +126,33 @@
 
 	if(!inactive_hand)
 		return
-	human_user.click_adjacent(inactive_hand, active_hand)
+	var/list/mods = list()
+	mods[LEFT_CLICK] = "1"
+	human_user.click_adjacent(inactive_hand, active_hand, mods)
+	return TRUE
+
+/datum/keybinding/human/inventory/interact_other_hand_secondary
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "secondary_interact_other_hand"
+	full_name = "Secondary Interact With Other Hand"
+	keybind_signal = COMSIG_KB_HUMAN_INTERACT_OTHER_HAND
+
+/datum/keybinding/human/inventory/interact_other_hand_secondary/down(client/user)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/human/human_user = user.mob
+
+	var/active_hand = human_user.get_active_hand()
+	var/inactive_hand = human_user.get_inactive_hand()
+
+	if(!inactive_hand)
+		return
+	var/list/mods = list()
+	mods[human_user.get_secondary_interact_key()] = "1"
+	human_user.click_adjacent(inactive_hand, active_hand, mods)
 	return TRUE
 
 #define INTERACT_KEYBIND_COOLDOWN_TIME (0.2 SECONDS)

@@ -139,8 +139,8 @@
 	dirbutton.update_icon()
 	return TRUE
 
-/datum/buildmode/proc/InterceptClickOn(mob/user, params, atom/object)
-	if(mode.when_clicked(user.client, params, object))
+/datum/buildmode/proc/InterceptClickOn(mob/user, list/mods, atom/object)
+	if(mode.when_clicked(user.client, mods, object))
 		return FALSE //cancel the intercept
 	return TRUE // no doing underlying actions
 

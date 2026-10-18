@@ -95,7 +95,7 @@
 	if(HAS_TRAIT(src, TRAIT_ABILITY_ENCLOSED_PLATES))
 		return "Warrior_plates_[severity]"
 
-/mob/living/carbon/xenomorph/warrior/throw_item(atom/target)
+/mob/living/carbon/xenomorph/warrior/throw_item(atom/target, throw_high = FALSE)
 	toggle_throw_mode(THROW_MODE_OFF)
 
 /mob/living/carbon/xenomorph/warrior/stop_pulling()

@@ -345,7 +345,7 @@
 
 // Due to storage type consolidation this should get used more now.
 // I have cleaned it up a little, but it could probably use more.  -Sayu
-/obj/item/attackby(obj/item/W, mob/user)
+/obj/item/attackby(obj/item/W, mob/user, list/mods)
 	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACKED, W, user) & COMPONENT_CANCEL_ITEM_ATTACK)
 		return
 
@@ -1176,7 +1176,7 @@
 
 	// For guns, check if we should use the active attachable instead
 	var/obj/item/weapon/gun/gun = src
-	if(isgun(gun) && gun.active_attachable)
+	if(isgun(gun) && gun.active_attachable && (gun.active_attachable.flags_attach_features & ATTACH_HAS_UNIQUE_ACTION))
 		src = gun.active_attachable
 
 	unique_action(usr)

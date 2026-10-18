@@ -522,17 +522,17 @@
 		to_chat(user, SPAN_WARNING("[name] Ammo: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds : 0)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
 
 /// Reset variables used in firing and remove the gun from the autofire system.
-/obj/item/hardpoint/proc/stop_fire(datum/source, atom/object, turf/location, control, params)
+/obj/item/hardpoint/proc/stop_fire(datum/source, atom/object, turf/location, control, list/modifiers)
 	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 	if(auto_firing)
 		reset_fire() //automatic fire doesn't reset itself from COMSIG_GUN_STOP_FIRE
 
 /// Update the target if you dragged your mouse.
-/obj/item/hardpoint/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
-	set_target(get_turf_on_clickcatcher(over_object, source, params))
+/obj/item/hardpoint/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, list/modifiers)
+	set_target(get_turf_on_clickcatcher(over_object, source, modifiers))
 
 /// Check if the gun can fire and add it to bucket autofire system if needed, or just fire the gun if not.
-/obj/item/hardpoint/proc/start_fire(datum/source, atom/object, turf/location, control, params)
+/obj/item/hardpoint/proc/start_fire(datum/source, atom/object, turf/location, control, list/modifiers)
 	if(istype(object, /atom/movable/screen))
 		return
 
@@ -544,10 +544,10 @@
 			to_chat(source, SPAN_WARNING("You need to wait [SPAN_HELPFUL(COOLDOWN_SECONDSLEFT(src, fire_cooldown))] seconds before [name] can be used again."))
 		return
 
-	set_target(get_turf_on_clickcatcher(object, source, params))
+	set_target(get_turf_on_clickcatcher(object, source, modifiers))
 
 	if(gun_firemode == GUN_FIREMODE_SEMIAUTO)
-		var/fire_return = try_fire(object, source, params)
+		var/fire_return = try_fire(object, source, modifiers)
 		//end-of-fire, show ammo (if changed)
 		if(fire_return == AUTOFIRE_CONTINUE)
 			reset_fire()
@@ -556,7 +556,7 @@
 		SEND_SIGNAL(src, COMSIG_GUN_FIRE)
 
 /// Wrapper proc for the autofire system to ensure the important args aren't null.
-/obj/item/hardpoint/proc/fire_wrapper(atom/target, mob/living/user, params)
+/obj/item/hardpoint/proc/fire_wrapper(atom/target, mob/living/user, list/modifiers)
 	if(!target)
 		target = src.target
 	if(!user)
@@ -564,10 +564,10 @@
 	if(!target || !user)
 		return NONE
 
-	return try_fire(target, user, params)
+	return try_fire(target, user, modifiers)
 
 /// Tests if firing should be interrupted, otherwise fires.
-/obj/item/hardpoint/proc/try_fire(atom/target, mob/living/user, params)
+/obj/item/hardpoint/proc/try_fire(atom/target, mob/living/user, list/modifiers)
 	if(health <= 0)
 		to_chat(user, SPAN_WARNING("<b>\The [name] is broken!</b>"))
 		return NONE
@@ -580,10 +580,10 @@
 		to_chat(user, SPAN_WARNING("<b>The target is not within your firing arc!</b>"))
 		return NONE
 
-	return handle_fire(target, user, params)
+	return handle_fire(target, user, modifiers)
 
 /// Actually fires the gun, sets up the projectile and fires it.
-/obj/item/hardpoint/proc/handle_fire(atom/target, mob/living/user, params)
+/obj/item/hardpoint/proc/handle_fire(atom/target, mob/living/user, list/modifiers)
 	var/turf/origin_turf = get_origin_turf()
 
 	var/obj/projectile/projectile_to_fire = generate_bullet(user, origin_turf)

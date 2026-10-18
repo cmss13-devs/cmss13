@@ -2546,7 +2546,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
-		/obj/item/attachable/attached_gun/shotgun/af13b,
+		/obj/item/attachable/attached_gun/shotgun/af13/b,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/scope/mini/nsg23,
@@ -2583,7 +2583,7 @@
 
 /obj/item/weapon/gun/rifle/l23/breacher/handle_starting_attachment() //Adds L23-B's breaching shotgun
 	..()
-	var/obj/item/attachable/attached_gun/shotgun/af13b/S = new(src)
+	var/obj/item/attachable/attached_gun/shotgun/af13/b/S = new(src)
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
 	update_attachable(S.slot)

@@ -88,15 +88,15 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff, faction_group)
 	))
 
-/obj/item/hardpoint/primary/arc_sentry/fire_wrapper(atom/target, mob/living/user, params)
+/obj/item/hardpoint/primary/arc_sentry/fire_wrapper(atom/target, mob/living/user, list/modifiers)
 	if(!target)
 		target = src.target
 	if(!target)
 		return NONE
 
-	return try_fire(target, null, params)
+	return try_fire(target, null, modifiers)
 
-/obj/item/hardpoint/primary/arc_sentry/start_fire(datum/source, atom/object, turf/location, control, params)
+/obj/item/hardpoint/primary/arc_sentry/start_fire(datum/source, atom/object, turf/location, control, list/modifiers)
 	if(QDELETED(object))
 		return
 	if(!COOLDOWN_FINISHED(src, fire_cooldown))

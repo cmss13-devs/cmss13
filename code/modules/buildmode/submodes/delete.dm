@@ -10,9 +10,7 @@
 #define CONFIRM_YES "Yes"
 #define CONFIRM_NO "No"
 
-/datum/buildmode_mode/delete/when_clicked(client/c, params, object)
-	var/list/modifiers = params2list(params)
-
+/datum/buildmode_mode/delete/when_clicked(client/c, list/modifiers, object)
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
 		if(isturf(object))
 			var/turf/T = object

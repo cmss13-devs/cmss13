@@ -88,13 +88,6 @@
 /obj/item/weapon/gun/energy/yautja/plasmacarbine/reload_into_chamber()
 	return TRUE
 
-/obj/item/weapon/gun/energy/yautja/plasmacarbine/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
-	qdel(projectile_to_fire)
-	if(refund)
-		charge_time += shot_cost
-		log_debug("Plasma carbine refunded shot.")
-	return TRUE
-
 /obj/item/weapon/gun/energy/yautja/plasmacarbine/use_unique_action()
 	switch(mode)
 		if(FIRE_MODE_INCENDIARY)
@@ -269,11 +262,4 @@
 		return TRUE
 
 /obj/item/weapon/gun/energy/yautja/cannon/reload_into_chamber()
-	return TRUE
-
-/obj/item/weapon/gun/energy/yautja/cannon/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
-	qdel(projectile_to_fire)
-	if(refund)
-		source.charge += charge_cost
-		log_debug("Plasma cannons refunded shot.")
 	return TRUE

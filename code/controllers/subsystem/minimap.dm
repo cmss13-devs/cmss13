@@ -1001,9 +1001,8 @@ SUBSYSTEM_DEF(minimaps)
  * x and y minimap centering is reverted, then the x2 scaling of the map is removed
  * round up to correct if an odd pixel was clicked and make sure its valid
  */
-/atom/movable/screen/minimap/proc/on_click(mob/source, atom/A, params)
+/atom/movable/screen/minimap/proc/on_click(mob/source, atom/A, list/modifiers)
 	SIGNAL_HANDLER
-	var/list/modifiers = params2list(params)
 	if(!modifiers[CTRL_CLICK])
 		return
 	// we only care about absolute coords because the map is fixed to 1,1 so no client stuff
@@ -1588,7 +1587,7 @@ SUBSYSTEM_DEF(minimaps)
  * handles actions when the mouse is held down while the tool is active.
  * returns COMSIG_MOB_CLICK_CANCELED to continue handling, NONE to cancel
  */
-/atom/movable/screen/minimap_tool/proc/on_mousedown(mob/source, atom/object, location, control, params)
+/atom/movable/screen/minimap_tool/proc/on_mousedown(mob/source, atom/object, location, control, list/modifiers)
 	SIGNAL_HANDLER
 	if(!(src in source.client.screen))
 		UnregisterSignal(source, COMSIG_MOB_MOUSEDOWN)
@@ -1710,7 +1709,7 @@ SUBSYSTEM_DEF(minimaps)
 	SSminimaps.refresh_cic_drawing_overlays(zlevel, minimap_flag)
 	freedraw_queue = list()
 
-/atom/movable/screen/minimap_tool/draw_tool/on_mousedown(mob/source, atom/object, location, control, params)
+/atom/movable/screen/minimap_tool/draw_tool/on_mousedown(mob/source, atom/object, location, control, list/modifiers)
 	. = ..()
 	if(!.)
 		return
@@ -1727,7 +1726,6 @@ SUBSYSTEM_DEF(minimaps)
 	if(!plane_master)
 		return
 
-	var/list/modifiers = params2list(params)
 	var/list/pixel_coords = params2screenpixel(modifiers["screen-loc"])
 	pixel_coords = list(pixel_coords[1] + plane_master.cur_x_shift, pixel_coords[2] + plane_master.cur_y_shift)
 	if(modifiers[BUTTON] == MIDDLE_CLICK)
@@ -1877,7 +1875,7 @@ SUBSYSTEM_DEF(minimaps)
 
 	SSminimaps.refresh_cic_drawing_overlays(zlevel, minimap_flag)
 
-/atom/movable/screen/minimap_tool/label/on_mousedown(mob/source, atom/object, location, control, params)
+/atom/movable/screen/minimap_tool/label/on_mousedown(mob/source, atom/object, location, control, list/modifiers)
 	. = ..()
 	if(!.)
 		return
@@ -1886,11 +1884,11 @@ SUBSYSTEM_DEF(minimaps)
 	if (control != "mapwindow.map")
 		return COMSIG_MOB_CLICK_CANCELED
 
-	INVOKE_ASYNC(src, PROC_REF(async_mousedown), source, object, location, control, params)
+	INVOKE_ASYNC(src, PROC_REF(async_mousedown), source, object, location, control, modifiers)
 	return COMSIG_MOB_CLICK_CANCELED
 
 ///async mousedown for the actual label placement handling
-/atom/movable/screen/minimap_tool/label/proc/async_mousedown(mob/source, atom/object, location, control, params)
+/atom/movable/screen/minimap_tool/label/proc/async_mousedown(mob/source, atom/object, location, control, list/modifiers)
 	// this is really [/atom/movable/screen/minimap/proc/get_coords_from_click] copypaste since we
 	// want to also cancel the click if they click src and I can't be bothered to make it even more generic rn
 	var/atom/movable/screen/plane_master/minimap/plane_master = source.hud_used.plane_masters["[TACMAP_PLANE]"]
@@ -1898,7 +1896,6 @@ SUBSYSTEM_DEF(minimaps)
 	if(!plane_master)
 		return
 
-	var/list/modifiers = params2list(params)
 	var/list/pixel_coords = params2screenpixel(modifiers["screen-loc"])
 	var/x = (pixel_coords[1] - x_offset + plane_master.cur_x_shift) / MINIMAP_SCALE
 	var/y = (pixel_coords[2] - y_offset + plane_master.cur_y_shift) / MINIMAP_SCALE

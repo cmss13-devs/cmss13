@@ -33,6 +33,9 @@
 /atom/proc/AICtrlClick()
 	return
 
+/atom/proc/AIRightClick()
+	return
+
 /atom/proc/AIAltClick()
 	return
 

@@ -42,9 +42,12 @@
 			current_mag = soutopack.internal_mag
 		return ..()
 
-/obj/item/weapon/gun/souto/reload(mob/user, obj/item/ammo_magazine/magazine)
+/obj/item/weapon/gun/souto/can_reload(mob/user, obj/item/ammo_magazine/magazine)
 	to_chat(user, SPAN_WARNING("[src]'s feed system cannot be reloaded manually."))
-	return
+	return FALSE
+
+/obj/item/weapon/gun/souto/reload(mob/user, obj/item/ammo_magazine/magazine)
+	return can_reload(user, magazine)
 
 /obj/item/weapon/gun/souto/unload(mob/user, reload_override = 0, drop_override = 0, loc_override = 0)
 	to_chat(user, SPAN_WARNING("You cannot unload [src]."))

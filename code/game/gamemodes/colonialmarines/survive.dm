@@ -340,14 +340,55 @@
 		if(MODE_SURVIVE_S_MAJOR)
 			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg','sound/theme/winning_triumph3.ogg')
 			end_icon = "marine_major"
+			var/static/list/faction_victories = list(
+				"WY_headcount" = list(
+					"musical_track" = 'sound/theme/lastmanstanding_wy.ogg',
+					"end_icon" = "wy_major",
+					"name" = "Weyland-Yutani",
+				),
+				"UPP_headcount" = list(
+					"musical_track" = 'sound/theme/lastmanstanding_upp.ogg',
+					"end_icon" = "upp_major",
+					"name" = "Union of Progressive Peoples",
+				),
+				"CLF_headcount" = list(
+					"musical_track" = 'sound/theme/lastmanstanding_clf.ogg',
+					"end_icon" = "clf_major",
+					"name" = "Colonial Liberation Front",
+				),
+				"TWE_headcount" = list(
+					"musical_track" = 'sound/theme/lastmanstanding_twe.ogg',
+					"end_icon" = "twe_major",
+					"name" = "Three World Empire",
+				),
+				"marine_headcount" = list(
+					"musical_track" = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg','sound/theme/winning_triumph3.ogg'),
+					"end_icon" = "marine_major",
+				),
+			)
+			var/list/headcount = count_per_faction()
+			var/living = headcount["total_headcount"]
+			for(var/faction in faction_victories)
+				if((headcount[faction] / living) <= MAJORITY)
+					continue
+				var/list/victory = faction_victories[faction]
+				musical_track = victory["musical_track"]
+				end_icon = victory["end_icon"]
+				var/faction_name = victory["name"]
+				if(faction_name)
+					var/victory_message = "3rd party victory: [faction_name]"
+					log_game(victory_message)
+					message_admins(victory_message)
+				break
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_survivor_victories++
 				GLOB.round_statistics.current_map.total_survivor_majors++
 		if(MODE_SURVIVE_X_MINOR)
 			var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
+			musical_track = 'sound/theme/neutral_melancholy1.ogg'
 			end_icon = "xeno_minor"
 			if(living_player_list[1] && !living_player_list[2]) // If Xeno Minor but Xenos are dead and Humans are alive, see which faction is the last standing
-				var/static/list/faction_victories = list(
+				var/static/list/faction_timeouts = list(
 					"WY_headcount" = list(
 						"musical_track" = 'sound/theme/lastmanstanding_wy.ogg',
 						"end_icon" = "wy_major",
@@ -375,10 +416,10 @@
 				)
 				var/list/headcount = count_per_faction()
 				var/living = headcount["total_headcount"]
-				for(var/faction in faction_victories)
+				for(var/faction in faction_timeouts)
 					if((headcount[faction] / living) <= MAJORITY)
 						continue
-					var/list/victory = faction_victories[faction]
+					var/list/victory = faction_timeouts[faction]
 					musical_track = victory["musical_track"]
 					end_icon = victory["end_icon"]
 					var/faction_name = victory["name"]
@@ -387,13 +428,51 @@
 						log_game(victory_message)
 						message_admins(victory_message)
 					break
-			else
-				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_xeno_slaughters++
 		if(MODE_SURVIVE_S_EXTRACT)
 			musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
 			end_icon = "marine_minor"
+			var/static/list/faction_extracts = list(
+				"WY_headcount" = list(
+					"musical_track" = 'sound/theme/lastmanstanding_wy.ogg',
+					"end_icon" = "wy_major",
+					"name" = "Weyland-Yutani",
+				),
+				"UPP_headcount" = list(
+					"musical_track" = 'sound/theme/lastmanstanding_upp.ogg',
+					"end_icon" = "upp_major",
+					"name" = "Union of Progressive Peoples",
+				),
+				"CLF_headcount" = list(
+					"musical_track" = 'sound/theme/lastmanstanding_clf.ogg',
+					"end_icon" = "clf_major",
+					"name" = "Colonial Liberation Front",
+				),
+				"TWE_headcount" = list(
+					"musical_track" = 'sound/theme/lastmanstanding_twe.ogg',
+					"end_icon" = "twe_major",
+					"name" = "Three World Empire",
+				),
+				"marine_headcount" = list(
+					"musical_track" = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg'),
+					"end_icon" = "marine_minor",
+				),
+			)
+			var/list/headcount = count_per_faction()
+			var/living = headcount["total_headcount"]
+			for(var/faction in faction_extracts)
+				if((headcount[faction] / living) <= MAJORITY)
+					continue
+				var/list/victory = faction_extracts[faction]
+				musical_track = victory["musical_track"]
+				end_icon = victory["end_icon"]
+				var/faction_name = victory["name"]
+				if(faction_name)
+					var/victory_message = "3rd party victory: [faction_name]"
+					log_game(victory_message)
+					message_admins(victory_message)
+				break
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_survivor_victories++
 		if(MODE_SURVIVE_DRAW_DEATH)

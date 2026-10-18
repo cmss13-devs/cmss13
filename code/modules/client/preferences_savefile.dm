@@ -252,7 +252,6 @@
 		RegisterSignal(owner, COMSIG_CLIENT_LOGGED_IN, PROC_REF(handle_logged_in))
 
 	savefile_version = SAVEFILE_VERSION_MAX
-	save_preferences()
 	return TRUE
 
 /// Attempts to load a preferences.sav for the owner and migrate it to a save tree
@@ -313,8 +312,10 @@
 		return FALSE
 
 	//Conversion
+	var/dirty = FALSE
 	savefile_version = savefile.tree["version"]
 	if(!savefile_version || !isnum(savefile_version) || savefile_version != SAVEFILE_VERSION_MAX)
+		dirty = TRUE
 		if(!savefile_update())  //handles updates
 			savefile_version = SAVEFILE_VERSION_MAX
 			save_character()
@@ -483,6 +484,9 @@
 		owner.typing_indicators = FALSE
 	else
 		owner.typing_indicators = TRUE
+
+	if(dirty)
+		save_preferences()
 
 	return TRUE
 

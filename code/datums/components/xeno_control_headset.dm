@@ -8,9 +8,10 @@ This component is for xenomorphs with a control headset grafted on.
 	var/mob/controlling_human
 	var/obj/item/clothing/head/control_headset_xeno/xeno_set
 	var/obj/item/clothing/head/control_headset_marine/controlling_set
-	// 4 screens' worth of range without a tower
-	var/maximum_range = 28
+	// 6 screens' worth of range
+	var/maximum_range = 42
 	var/point_slash_counter = 0
+	/// Things that a human wouldn't be able to do when puppeting a xeno around. Removed on insertion of the headset.
 	var/static/list/actions_to_remove = list(
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/emit_pheromones,
@@ -26,6 +27,7 @@ This component is for xenomorphs with a control headset grafted on.
 		return COMPONENT_INCOMPATIBLE
 	var/mob/living/carbon/xenomorph/parent_xeno = parent
 	// Remove things that a human controlling a xeno probably shouldn't be able to do
+	// The headset installation is an irreversible process, and the creature is necessarily braindead anyways. So removing anything permanently isn't a problem.
 	for(var/datum/action/action in parent_xeno.actions)
 		if(action.type in actions_to_remove)
 			remove_action(parent_xeno, action.type)
@@ -77,10 +79,19 @@ This component is for xenomorphs with a control headset grafted on.
 	point_gain(3)
 
 /datum/component/xeno_control_headset/proc/point_gain(point_multiplier = 1)
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_SEND_RELAY_POINTS, point_multiplier)
+	var/intel_point_gain = OBJECTIVE_LOW_VALUE * point_multiplier
+	var/datum/techtree/tree = GET_TREE(TREE_MARINE)
+	tree.add_points(intel_point_gain)
+
+	var/biomass_points_gain = 200 * point_multiplier
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_BIOMASS_GAIN, biomass_points_gain)
+	to_chat(parent, SPAN_NOTICE("Your headset informs you that enough data has been acquired to increase intel and research points!"))
+	// todo msgs
 
 /datum/component/xeno_control_headset/proc/take_control(mob/parenter, mob/controller, obj/item/control_set)
 	SIGNAL_HANDLER
+
+	// todo check args to ensure controling set delivery
 
 	var/mob/living/carbon/xenomorph/xeno = parent
 	if(being_controlled)
@@ -101,21 +112,17 @@ This component is for xenomorphs with a control headset grafted on.
 /datum/component/xeno_control_headset/proc/check_distance(mob/living/carbon/xenomorph/controlled_xeno)
 	SIGNAL_HANDLER
 
-	var/true_max_range = maximum_range
-	if(controlling_set?.connected_tower)
-		true_max_range = maximum_range * controlling_set.connected_tower.range_boost
-
-	// bro
+	// this has become a lot more finicky since z-levels...
 	if(controlled_xeno.z != controlling_human.z)
 		lose_control()
 
 	var/control_range = get_dist(controlled_xeno, controlling_human)
 
-	if(control_range == true_max_range * 0.5)
+	if(control_range == maximum_range * 0.5)
 		to_chat(controlled_xeno, SPAN_BOLDWARNING("Your headset's connection to your body is growing weak."))
-	else if(control_range == true_max_range * 0.75)
+	else if(control_range == maximum_range * 0.75)
 		to_chat(controlled_xeno, SPAN_BOLDWARNING("Your headset's connection to your body is about to break!"))
-	else if(control_range >= true_max_range)
+	else if(control_range >= maximum_range)
 		to_chat(controlled_xeno, SPAN_BOLDWARNING("You've lost your connection to this body!"))
 		lose_control()
 

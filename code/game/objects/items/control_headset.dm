@@ -69,15 +69,13 @@
 	armor_melee = CLOTHING_ARMOR_LOW
 	actions_types = list(/datum/action/item_action/control_xenomorph)
 	vision_impair = VISION_IMPAIR_HIGH
-	/// Connected in its own dm
-	var/obj/structure/machinery/relay_tower/connected_tower
 	/// List of xenomorphs manually linked to.
 	var/list/mob/living/carbon/xenomorph/connected_xenos
 
 /obj/item/clothing/head/control_headset_marine/get_examine_text(mob/user)
 	. = ..()
-	if(connected_tower)
-		. += SPAN_NOTICE("It is currently linked to a relay tower, extending its range and generating combat data.")
+	if(length(connected_xenos))
+		. += SPAN_NOTICE("It is currently linked to the following subjects: [english_list(connected_xenos)]")
 
 /obj/item/clothing/head/control_headset_marine/attack(mob/living/M, mob/living/user)
 
@@ -87,7 +85,6 @@
 
 	if(isxeno(M))
 		to_chat(user, SPAN_NOTICE("You connect [src] to the headset grafted onto [M]"))
-		playsound(user, 'sound/machines/screen_output1.ogg', 50) // todo replace
 		LAZYADD(connected_xenos, M)
 		return
 
@@ -141,8 +138,7 @@
 		to_chat(owner, SPAN_WARNING("You were interrupted!"))
 		return
 
-	var/obj/item/clothing/head/control_headset_marine/headset_holder = holder_item
-	SEND_SIGNAL(picked_xeno, COMSIG_XENO_CONTROL_HEADSET_CONTROL, owner, headset_holder.connected_tower)
+	SEND_SIGNAL(picked_xeno, COMSIG_XENO_CONTROL_HEADSET_CONTROL, owner, connected_headset)
 
 /datum/action/item_action/control_xenomorph/can_use_action()
 	var/mob/living/carbon/human/human = owner
@@ -174,13 +170,12 @@
 /mob/verb/spawn_testing()
 	set category = "Admin.Events"
 	set name = "spawn testing"
-	set desc = "gingus"
+	set desc = "spawns xenomorph and helmet and helmet"
 
 	var/place = usr.loc
 
 	var/mob/living/carbon/xenomorph/drone/dummy = new (place)
 	dummy.add_hat()
 	new /obj/item/clothing/head/control_headset_marine(place)
-	new /obj/structure/largecrate/machine/relay_tower(place)
 	new /obj/item/tool/crowbar(place)
 

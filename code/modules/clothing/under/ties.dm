@@ -855,7 +855,7 @@
 /obj/item/clothing/accessory/storage/Initialize()
 	. = ..()
 	hold = new hold(src)
-	hold.storage_flags = STORAGE_FLAGS_POUCH
+	hold.storage_flags |= STORAGE_FLAGS_POUCH
 
 /obj/item/clothing/accessory/storage/Destroy()
 	QDEL_NULL(hold)

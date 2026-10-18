@@ -185,3 +185,6 @@ GLOBAL_LIST_EMPTY(marked_atoms_by_id)
 /obj/effect/marked_atom/Destroy(force)
 	LAZYREMOVE(GLOB.marked_atoms_by_id[id], src)
 	return ..()
+
+/obj/effect/marked_atom/queen_bubble
+	id = "queen_bubble"

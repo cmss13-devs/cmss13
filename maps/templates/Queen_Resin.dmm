@@ -3,9 +3,7 @@
 /turf/template_noop,
 /area/template_noop)
 "f" = (
-/obj/effect/marked_atom{
-	id = "queen_bubble"
-	},
+/obj/effect/marked_atom/queen_bubble,
 /turf/closed/wall/mineral/bone_resin/burrowable,
 /area/template_noop)
 "F" = (

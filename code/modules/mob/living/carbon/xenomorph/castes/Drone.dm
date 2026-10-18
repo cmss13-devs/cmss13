@@ -91,7 +91,7 @@
 /mob/living/carbon/xenomorph/drone/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	. = ..()
 	if(hive && !should_block_game_interaction(src))
-		if(!hive.living_xeno_queen && !get_action(src, /datum/action/xeno_action/onclick/evolve))
+		if(!hive.living_xeno_queen && hive.allow_queen_evolve && !get_action(src, /datum/action/xeno_action/onclick/evolve))
 			var/datum/action/xeno_action/onclick/evolve/evolve_action = new()
 			evolve_action.give_to(src)
 		RegisterSignal(hive, COMSIG_HIVE_NEW_QUEEN, PROC_REF(handle_queen))
@@ -108,6 +108,8 @@
 		return
 	// Queen death: Add evolve action if we don't already have it
 	if(evolve_action)
+		return
+	if(!hive.allow_queen_evolve)
 		return
 	evolve_action = new()
 	evolve_action.give_to(src)

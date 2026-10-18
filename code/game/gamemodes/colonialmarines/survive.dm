@@ -122,6 +122,7 @@
 /datum/game_mode/survive/proc/map_announcement()
 	var/rendered_announce_text = SSmapping.configs[GROUND_MAP].survive_announce_text || "Attention. Attention. Evacuation order is in effect."
 	survivor_announcement(rendered_announce_text, sound_to_play='sound/effects/siren.ogg')
+	play_sfx_for_groundside_xenos('sound/effects/siren.ogg')
 	lore_announcement()
 
 /datum/game_mode/survive/proc/lore_announcement()
@@ -137,6 +138,14 @@
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_lore_announcement), "Something is happening. Be on guard.", "everything", QUEEN_MOTHER_ANNOUNCE, 'sound/ambience/containment_breach1.ogg'), 30 SECONDS)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "Another, hostile, hive is making an escape from this metal cage, prepare yourselves as a chance to escape may occur soon.", "everything", QUEEN_MOTHER_ANNOUNCE), 1.5 MINUTES)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "My children. I sense the hostile, putrid, hive has fled this area, but some of the hosts that entrapped you remain alive within this metal complex. Defeat these hosts to showcase your supremacy!", "everything", QUEEN_MOTHER_ANNOUNCE), 165 SECONDS)
+
+/// Plays the passed sfx for any xenos groundside
+/datum/game_mode/survive/proc/play_sfx_for_groundside_xenos(sound/soundin, vol=45)
+	for(var/mob/living/carbon/xenomorph as anything in GLOB.xeno_mob_list)
+		var/turf/xeno_turf = get_turf(xenomorph)
+		if(!xeno_turf || !is_ground_level(xeno_turf.z))
+			continue
+		playsound_client(xenomorph.client, soundin, vol=vol)
 
 /datum/game_mode/survive/proc/initiate_evacuation()
 	set waitfor = FALSE

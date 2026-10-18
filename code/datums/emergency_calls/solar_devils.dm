@@ -93,6 +93,7 @@
 /datum/emergency_call/solar_devils_full/survivor_response
 	arrival_message = "This is the Solar Devils of the USCM 2nd Division, responding to your distress beacon."
 	objectives = "Assist local civilians in evacuation. Further orders may be forthcoming."
+	probability = 0
 	mob_min = 1
 	shuttle_id = ""
 	home_base = /datum/lazy_template/ert/uscm_station_large_pad

@@ -84,3 +84,16 @@
 	max_medics = 2
 	max_heavies = 2
 	max_synths = 1
+
+/datum/emergency_call/clf/survivor_response
+	arrival_message = "Backup has arrived. Don't keep us waiting."
+	objectives = "Assist the local force in withdrawing from the colony."
+	probability = 0
+	mob_min = 1
+	shuttle_id = ""
+
+/datum/emergency_call/clf/survivor_response/get_spawn_point(is_for_items)
+	if(!shuttle && istype(SSticker.mode, /datum/game_mode/survive))
+		var/datum/game_mode/survive/survival_mode = SSticker.mode
+		shuttle = survival_mode.shuttle
+	return ..()

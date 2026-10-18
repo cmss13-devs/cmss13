@@ -45,8 +45,12 @@
 	if(. != DOCKING_SUCCESS)
 		return
 
-	if(!is_mainship_level(z))
-		return
+	if(MODE_HAS_FLAG(MODE_SURVIVE))
+		if(!is_ground_level(z))
+			return
+	else
+		if(!is_mainship_level(z))
+			return
 
 	if(!distress_beacon || !distress_beacon.home_base)
 		return
@@ -239,10 +243,9 @@
 
 /obj/docking_port/mobile/emergency_response/ert_alamo/Initialize(mapload)
 	. = ..()
-	for(var/place in shuttle_areas)
-		for(var/obj/structure/machinery/door/air in place)
-			if(!air.borders_space())
-				external_doors -= air
+	for(var/obj/structure/machinery/door/air as anything in external_doors)
+		if(air.name == "cockpit")
+			external_doors -= air
 
 /obj/docking_port/mobile/emergency_response/ert_alamo/initiate_docking(obj/docking_port/stationary/new_dock, movement_direction, force)
 	. = ..()

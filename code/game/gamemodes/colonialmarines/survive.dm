@@ -158,7 +158,10 @@
 
 	release_the_queen()
 
-	var/datum/map_template/shuttle/new_shuttle = SSmapping.shuttle_templates[MOBILE_SHUTTLE_ID_ERT_ALAMO]
+	var/hostile = SSnightmare.get_scenario_is_hostile_survivor() // ASSUMPTION: Only hostile type is CLF
+
+	var/shuttle_id = hostile ? MOBILE_SHUTTLE_ID_ERT1 : MOBILE_SHUTTLE_ID_ERT_ALAMO
+	var/datum/map_template/shuttle/new_shuttle = SSmapping.shuttle_templates[shuttle_id]
 	shuttle = SSshuttle.load_template_to_transit(new_shuttle)
 	shuttle.control_doors("force-lock", force=TRUE, external_only=TRUE)
 
@@ -170,6 +173,26 @@
 			continue
 		dock_options += dock
 
+	// Fallback: Try to convert dropship sized pads to ert pads
+	if(!length(dock_options))
+		for(var/obj/docking_port/stationary/dock as anything in SSshuttle.stationary)
+			if(dock.dwidth != 0 && (dock.id == DROPSHIP_LZ1 || dock.id == DROPSHIP_LZ2))
+				dock.dwidth = 0
+				dock.width = 7
+				dock.dheight = 0
+				dock.height = 13
+				switch(dock.dir)
+					if(NORTH)
+						dock.forceMove(locate(dock.x-3, dock.y-6, dock.z))
+					if(EAST)
+						dock.forceMove(locate(dock.x-6, dock.y+3, dock.z))
+					if(SOUTH)
+						dock.forceMove(locate(dock.x+3, dock.y+6, dock.z))
+					if(WEST)
+						dock.forceMove(locate(dock.x+6, dock.y-3, dock.z))
+				if(shuttle.canDock(dock) == SHUTTLE_CAN_DOCK)
+					dock_options += dock
+
 	if(!length(dock_options))
 		message_admins("Auto shuttle has no lzs available.")
 		return
@@ -177,7 +200,9 @@
 	var/obj/docking_port/stationary/dock = pick(dock_options)
 	RegisterSignal(dock, COMSIG_SHUTTLE_ARRIVAL, PROC_REF(on_shuttle_arrival))
 	SSshuttle.moveShuttleToDock(shuttle, dock, TRUE)
-	var/datum/emergency_call/ert = SSticker.mode.get_specific_call(/datum/emergency_call/solar_devils_full/survivor_response, TRUE, FALSE)
+
+	var/ert_type = hostile ? /datum/emergency_call/clf/survivor_response : /datum/emergency_call/solar_devils_full/survivor_response
+	var/datum/emergency_call/ert = SSticker.mode.get_specific_call(ert_type, TRUE, FALSE)
 	shuttle.distress_beacon = ert
 	survivor_announcement("[ert.arrival_message] We are enroute to [dock].")
 

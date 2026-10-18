@@ -49,7 +49,7 @@
 
 #define IS_MODE_COMPILED(MODE) (ispath(text2path("/datum/game_mode/"+(MODE))))
 
-#define MODE_HAS_FLAG(flag) (SSticker.mode.flags_round_type & flag)
+#define MODE_HAS_FLAG(flag) (SSticker.mode?.flags_round_type & flag)
 #define MODE_HAS_MODIFIER(modifier_type) (SSticker.mode?.get_gamemode_modifier(modifier_type))
 #define MODE_SET_MODIFIER(modifier_type, enabled) (SSticker.mode?.set_gamemode_modifier(modifier_type, enabled))
 

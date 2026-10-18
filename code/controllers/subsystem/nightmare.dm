@@ -146,8 +146,6 @@ SUBSYSTEM_DEF(nightmare)
 
 /// Returns whether the ground context indicates a hostile survivor scenario
 /datum/controller/subsystem/nightmare/proc/get_scenario_is_hostile_survivor()
-	if(GLOB.master_mode == GAMEMODE_SURVIVE)
-		return FALSE
 	// Assumption: Only ground context is relevant
 	var/datum/nmcontext/ground_context = contexts[NIGHTMARE_CTX_GROUND]
 	var/scenario = ground_context.get_scenario_value(NIGHTMARE_SCENARIO_HOSTILE_SURVIVOR)

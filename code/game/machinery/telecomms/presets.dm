@@ -353,6 +353,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		if(istype(SSticker.mode, /datum/game_mode/survive))
 			var/datum/game_mode/survive/mode = SSticker.mode
 			mode.initiate_evacuation()
+			return PROCESS_KILL
 	else if(time_broadcasting > (SURVIVE_DISTRESS_SIGNAL_TIME / 2) && !announced_broadcasting_halfway)
 		announced_broadcasting_halfway = TRUE
 		survivor_announcement("Attention. Attention. Evacuation order is in effect.", sound_to_play='sound/effects/siren.ogg')

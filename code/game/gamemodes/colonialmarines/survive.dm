@@ -139,6 +139,8 @@
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "My children. I sense the hostile, putrid, hive has fled this area, but some of the hosts that entrapped you remain alive within this metal complex. Defeat these hosts to showcase your supremacy!", "everything", QUEEN_MOTHER_ANNOUNCE), 165 SECONDS)
 
 /datum/game_mode/survive/proc/initiate_evacuation()
+	set waitfor = FALSE
+
 	if(is_in_endgame)
 		return
 

@@ -1385,7 +1385,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security)
-"aeR" = (
+"aeP" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /obj/effect/landmark/corpsespawner/colonist/burst,
 /turf/open/floor/corsat,
@@ -66997,7 +66997,7 @@ jDN
 iGl
 qjG
 qjG
-aeR
+aeP
 aeF
 oUq
 qpy
@@ -67202,7 +67202,7 @@ mkh
 jDN
 qjG
 qjG
-aeR
+aeP
 saC
 oUq
 saC

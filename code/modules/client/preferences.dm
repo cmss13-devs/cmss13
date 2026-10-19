@@ -344,6 +344,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	/// The same keybinds, but in an array of {"keybinding": /datum/keybinding/custom}
 	var/list/key_to_custom_keybind = list()
 
+	/// Whether a savefile tree migration occured (not saved to disk)
+	var/performed_json_upgrade = FALSE
+
 /datum/preferences/New(client/owner)
 	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 

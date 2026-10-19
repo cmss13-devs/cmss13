@@ -296,9 +296,13 @@
 			question = tgui_alert(owner, "Are really sure you wish to restore from backup? WARNING: This will irreversibly discard any recent changes to your preferences and reimport from the old file.", "Restore preferences from backup?", list("No", "Yes"))
 			if(question == "Yes")
 				to_chat(owner, SPAN_NOTICE("Restoring preferences from backup..."))
+				var/current_human_name_ban = savefile.tree["human_name_ban"] // Its dumb these are here
+				var/current_xeno_name_ban = savefile.tree["xeno_name_ban"]
 				try_savefile_tree_migration()
 				load_savefile()
-				load_preferences() // This will result in handle_prompt_user_for_update()
+				savefile.tree["human_name_ban"] = current_human_name_ban
+				savefile.tree["xeno_name_ban"] = current_xeno_name_ban
+				load_preferences() // This will result in handle_prompt_user_for_update() as well as a save
 				load_character()
 				return
 		// To manually retrigger: Call this proc on their preferences with the argument 37
@@ -510,7 +514,7 @@
 	else
 		owner.typing_indicators = TRUE
 
-	if(dirty)
+	if(dirty) // We don't currently have character upgrades to worry about
 		save_preferences()
 
 	return TRUE

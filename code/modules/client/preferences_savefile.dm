@@ -753,9 +753,6 @@
 
 	savefile.tree["lastchangelog"] = lastchangelog
 
-	savefile.tree["job_loadout"] = save_loadout(loadout)
-	savefile.tree["job_loadout_names"] = loadout_slot_names
-
 	savefile.tree["tgui_fancy"] = tgui_fancy
 	savefile.tree["tgui_lock"] = tgui_lock
 	savefile.tree["window_scale"] = window_scale

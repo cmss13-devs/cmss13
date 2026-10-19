@@ -288,8 +288,6 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			if(hive.allow_queen_evolve)
 				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "My children it is time. Evolve a queen and thrive.", hive.hivenumber, QUEEN_MOTHER_ANNOUNCE), (/datum/caste_datum/drone::minimum_evolve_time - 5 SECONDS))
 				hive.RegisterSignal(hive, COMSIG_HIVE_NEW_QUEEN, TYPE_PROC_REF(/datum/hive_status, grant_extra_larva_on_queen))
-			else
-				hive.stored_larva++
 
 	/*===============================================================*/
 

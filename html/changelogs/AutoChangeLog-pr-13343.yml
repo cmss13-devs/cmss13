@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed Halloween cobweb decorator not applying transform for rotation and scale"

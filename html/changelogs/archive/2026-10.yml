@@ -112,3 +112,19 @@
       now functions as intended.
   - maptweak: Adds a set of blastdoors to the eastern section of the CIC conference
       room.
+2026-10-19:
+  Drathek:
+  - bugfix: Fixed Halloween cobweb decorator not applying transform for rotation and
+      scale
+  Kugamo:
+  - bugfix: Locked escape pod doors will now unlock upon FTL initiation.
+  - bugfix: Lightning briefly flashes the groundmap again.
+  Puckaboo2:
+  - code_imp: Tweaked some text to sound more fluid and less informal.
+  - spellcheck: Corrects grammar, misspells, and missing punctuation in xeno caste
+      files.
+  - spellcheck: Any use of first or second person in regard to xeno castes has been
+      changed to third person.
+  labeo0:
+  - qol: You can Ctrl+Click storage items capable of changing storage drawing methods.
+      Examining these items gives a note in chat about it.

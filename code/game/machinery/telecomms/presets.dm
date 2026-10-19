@@ -232,6 +232,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(register_with_turf))
 	if(!mapload)
 		register_with_turf()
+	if(MODE_HAS_FLAG(MODE_SURVIVE))
+		START_PROCESSING(SSslowobj, src)
 
 /// Handler for callback of COMSIG_MOVABLE_TURF_ENTERED (turf changed)
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/register_with_turf(atom/movable/source, turf/new_turf)
@@ -273,7 +275,6 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		garble_event_triggered = FALSE
 		use_power = USE_POWER_IDLE
 		if(MODE_HAS_FLAG(MODE_SURVIVE))
-			START_PROCESSING(SSslowobj, src)
 			visible_message(SPAN_NOTICE("[user] configures a distress signal for transmission."))
 		message_admins("[key_name(user)] turned \the [src] in [commarea] ON. [ADMIN_JMP(commloc.loc)]")
 	else
@@ -334,10 +335,6 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	..()
 	if(inoperable())
 		handle_xeno_acquisition()
-		time_broadcasting = 0
-		announced_broadcasting_halfway = FALSE
-		if(MODE_HAS_FLAG(MODE_SURVIVE))
-			STOP_PROCESSING(SSslowobj, src)
 		if(!garble_event_triggered && (COMM_FREQ in freq_listening))
 			garble_event_triggered = TRUE
 			SSradio.update_cache()
@@ -347,8 +344,14 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	// ASSUMPTION: We'd only be processing for MODE_SURVIVE
 	if(ROUND_TIME < 5 MINUTES)
 		return // Too early to start counting
-	if(on && operable(NOPOWER))
+
+	if(on && operable(NOPOWER)) // On and powered
 		time_broadcasting += delta_time SECONDS
+	else if(inoperable()) // Busted
+		time_broadcasting = max(time_broadcasting - delta_time SECONDS, 0)
+		if(time_broadcasting < (SURVIVE_DISTRESS_SIGNAL_TIME / 2))
+			announced_broadcasting_halfway = FALSE
+
 	if(time_broadcasting > SURVIVE_DISTRESS_SIGNAL_TIME)
 		if(istype(SSticker.mode, /datum/game_mode/survive))
 			var/datum/game_mode/survive/mode = SSticker.mode

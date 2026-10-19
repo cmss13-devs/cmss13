@@ -449,6 +449,7 @@
 
 	lastchangelog = savefile.tree["lastchangelog"]
 
+	loadout = savefile.tree["job_loadout"]
 	loadout_slot_names = savefile.tree["job_loadout_names"]
 
 	show_cooldown_messages = savefile.tree["show_cooldown_messages"]
@@ -610,6 +611,7 @@
 	pref_special_job_options = sanitize_islist(pref_special_job_options, list())
 	pref_job_slots = sanitize_islist(pref_job_slots, list())
 
+	loadout = sanitize_loadout(loadout, owner)
 	loadout_slot_names = sanitize_islist(loadout_slot_names, list())
 
 	show_cooldown_messages = sanitize_integer(show_cooldown_messages, FALSE, TRUE, FALSE)
@@ -843,7 +845,6 @@
 		gen_record = save_data["gen_record"]
 		organ_data = save_data["organ_data"]
 		gear = save_data["gear"]
-		loadout = save_data["job_loadout"]
 		origin = save_data["origin"]
 		faction = save_data["faction"]
 		religion = save_data["religion"]
@@ -923,7 +924,6 @@
 		organ_data = list()
 
 	gear = sanitize_gear(gear, owner)
-	loadout = sanitize_loadout(loadout, owner)
 
 	traits = sanitize_traits(traits, owner)
 	read_traits = FALSE

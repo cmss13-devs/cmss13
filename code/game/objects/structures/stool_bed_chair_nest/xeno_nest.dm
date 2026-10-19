@@ -215,10 +215,6 @@
 		to_chat(user, SPAN_WARNING("Gross! We're not touching that stuff."))
 		return
 
-	if(isyautja(mob) && !force_nest)
-		to_chat(user, SPAN_WARNING("\The [mob] seems to be wearing some kind of resin-resistant armor!"))
-		return
-
 	if(mob == user)
 		return
 
@@ -367,44 +363,3 @@
 	unbuckle()
 	ghost_of_buckled_mob = null
 	return ..()
-
-/obj/structure/bed/nest/structure
-	name = "thick alien nest"
-	desc = "A very thick nest, oozing with a thick sticky substance."
-	layer = ABOVE_SPECIAL_RESIN_STRUCTURE_LAYER
-	icon_state = "pred_nest"
-	force_nest = TRUE
-	var/obj/effect/alien/resin/special/nest/linked_structure
-
-/obj/structure/bed/nest/structure/Initialize(mapload, hive, obj/effect/alien/resin/special/nest/to_link)
-	. = ..()
-	buckling_y = list("[NORTH]" = -19, "[SOUTH]" = 27, "[EAST]" = 3, "[WEST]" = 3)
-	buckling_x = list("[NORTH]" = 0, "[SOUTH]" = 0, "[EAST]" = -17, "[WEST]" = 18)
-
-	if(to_link)
-		linked_structure = to_link
-		health = linked_structure.health
-
-/obj/structure/bed/nest/structure/Destroy()
-	. = ..()
-	if(linked_structure)
-		linked_structure.pred_nest = null
-		QDEL_NULL(linked_structure)
-
-/obj/structure/bed/nest/structure/attack_hand(mob/user)
-	if(!isxeno(user))
-		to_chat(user, SPAN_NOTICE("The sticky resin is too strong for you to do anything to this nest."))
-		return FALSE
-	. = ..()
-
-/obj/structure/bed/nest/structure/afterbuckle(mob/current_mob)
-	. = ..()
-	switch(buckled_mob.dir)
-		if(NORTH)
-			buckled_mob.dir = SOUTH
-		if(SOUTH)
-			buckled_mob.dir = NORTH
-		if(EAST)
-			buckled_mob.dir = WEST
-		if(WEST)
-			buckled_mob.dir = EAST

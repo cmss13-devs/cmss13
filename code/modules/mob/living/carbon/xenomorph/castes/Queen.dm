@@ -705,7 +705,7 @@
 		if(length(hive.open_xeno_leader_positions))
 			// Open leader slots
 			var/mob/living/carbon/xenomorph/xeno = SAFEPICK(GLOB.living_xeno_list)
-			if(xeno && xeno.hive_pos == NORMAL_XENO && !islarva(xeno))
+			if(xeno && xeno.hive_pos == NORMAL_XENO && xeno.tier > 0)
 				hive.add_hive_leader(xeno)
 			return
 

@@ -979,14 +979,15 @@ Additional game mode variables.
 	return QS
 
 /datum/game_mode/proc/transform_queen(datum/mind/ghost_mind, turf/xeno_turf, hivenumber = XENO_HIVE_NORMAL)
-	var/mob/living/original = ghost_mind.current
+	var/mob/living/original = ghost_mind?.current
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-	if(hive.living_xeno_queen || !original || !original.client)
-		return
+	if(ghost_mind && (hive.living_xeno_queen || !original || !original.client))
+		return null
 
-	var/mob/living/carbon/xenomorph/new_queen = new /mob/living/carbon/xenomorph/queen(xeno_turf, null, hivenumber)
-	ghost_mind.transfer_to(new_queen) //The mind is fine, since we already labeled them as a xeno. Away they go.
-	ghost_mind.name = ghost_mind.current.name
+	var/mob/living/carbon/xenomorph/queen/new_queen = new (xeno_turf, null, hivenumber)
+	if(ghost_mind)
+		ghost_mind.transfer_to(new_queen) //The mind is fine, since we already labeled them as a xeno. Away they go.
+		ghost_mind.name = ghost_mind.current.name
 
 	new_queen.generate_name()
 
@@ -1003,6 +1004,7 @@ Additional game mode variables.
 		to_chat(new_queen, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
 
 	new_queen.update_icons()
+	return new_queen
 
 //===================================================\\
 

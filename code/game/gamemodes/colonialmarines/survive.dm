@@ -91,12 +91,9 @@
 	for(var/mob/living/obstruction as anything in existing_mobs)
 		obstruction.forceMove(existing_mobs[obstruction])
 
-	..()
+	return ..()
 
 /* Post-setup */
-//This happens after create_character, so our mob SHOULD be valid and built by now, but without job data.
-//We move it later with transform_survivor but they might flicker at any start_loc spawn landmark effects then disappear.
-//Xenos and survivors should not spawn anywhere until we transform them.
 /datum/game_mode/survive/post_setup()
 	initialize_post_marine_gear_list()
 	spawn_smallhosts()
@@ -109,7 +106,23 @@
 	addtimer(CALLBACK(SSentity_manager, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, select), /datum/entity/survivor_survival), 7 MINUTES)
 	addtimer(CALLBACK(src, PROC_REF(release_the_queen)), 30 MINUTES)
 
-	return ..()
+	. = ..()
+
+	var/datum/job/antag/xenos/queen/queen_job = GLOB.RoleAuthority.roles_for_mode[JOB_XENOMORPH_QUEEN]
+	if(queen_job && queen_job.current_positions)
+		return .
+
+	// No roundstart queen so lets make a claimable one that does some basics
+	var/obj/effect/landmark/queen_spawn/queen_spawn = SAFEPICK(GLOB.queen_spawns)
+	var/turf/queen_location
+	if(queen_spawn)
+		queen_location = get_turf(queen_spawn)
+	if(!queen_spawn)
+		queen_location = get_turf(pick(GLOB.xeno_spawns))
+	var/mob/living/carbon/xenomorph/queen/new_queen = transform_queen(null, queen_location)
+	new_queen.auto_queen = TRUE
+	new_queen.free_for_ghosts(TRUE)
+	return .
 
 /datum/game_mode/survive/proc/spawn_smallhosts()
 	if(!GLOB.players_preassigned)
@@ -139,8 +152,8 @@
 	play_sfx_for_groundside_xenos('sound/effects/siren.ogg')
 	lore_announcement()
 
+/// A proc that will queue up announcements for the lore of the map.
 /datum/game_mode/survive/proc/lore_announcement()
-	//A proc that will queue up announcements for the lore of the map.
 	switch(SSmapping.configs[GROUND_MAP].map_name)
 		if(MAP_TYRARGO_RIFT)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "My children. A great battle rages across this world, a world slathered in hosts for our taking! However, these hosts fight back with great ferocity. I have directed your sub-hive to this area, you will create a mighty cordon here to cover our western flank whilst another sub-hive overtakes a stronghold to your east that is filled with thousands of hosts!\n\nIn order to aid you, I have dispatched a legion of disposable drones ahead of you, they are far less intelligent than you, but will suffice in waylaying any remaining hostile hosts to your west until you have secured yourselves.", "everything", QUEEN_MOTHER_ANNOUNCE), 20 SECONDS)

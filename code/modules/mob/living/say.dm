@@ -19,7 +19,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	":n" = RADIO_CHANNEL_ENGI, ".n" = RADIO_CHANNEL_ENGI, "#n" = RADIO_CHANNEL_UPP_ENGI,
 	":o" = RADIO_CHANNEL_COLONY, ".o" = RADIO_CHANNEL_COLONY, "#o" = RADIO_CHANNEL_PMC_CCT,
 	":p" = RADIO_CHANNEL_MP , ".p" = RADIO_CHANNEL_MP , "#p" = RADIO_CHANNEL_PMC_GEN,
-	":q" = RADIO_CHANNEL_ROYAL_MARINE, ".q" = RADIO_CHANNEL_ROYAL_MARINE,
+	":q" = RADIO_CHANNEL_ROYAL_MARINE, ".q" = RADIO_CHANNEL_ROYAL_MARINE, // wheres #q?
 	"#r" = RADIO_CHANNEL_YAUTJA, //r .r and :r reserved for Right hand
 	":s" = SQUAD_ARMY, ".s" = SQUAD_ARMY, "#s" = RADIO_CHANNEL_YAUTJA_OVERSEER,
 	":t" = RADIO_CHANNEL_INTEL, ".t" = RADIO_CHANNEL_INTEL, "#t" = RADIO_CHANNEL_UPP_KDO,
@@ -31,7 +31,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 	":1" = RADIO_CHANNEL_WY_PUB, ".1" = RADIO_CHANNEL_WY_PUB, "#1" = RADIO_CHANNEL_WY_PUB,
 	":2" = RADIO_CHANNEL_CIA, ".2" = RADIO_CHANNEL_CIA, "#2" = RADIO_CHANNEL_CIA,
-	//1-9 available
+	":3" = SQUAD_LACN, ".3" = SQUAD_LACN, "#3" = SQUAD_LACN,
+	//4-9 available
 ))
 
 /proc/channel_to_prefix(channel)

@@ -2236,3 +2236,51 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "rmc_helm_medic"
 	built_in_visors = list(new /obj/item/device/helmet_visor/medical/advanced)
 	start_down_visor_type = /obj/item/device/helmet_visor/medical/advanced
+
+//=LACN=\\
+
+/obj/item/clothing/head/helmet/marine/lacn
+	name = "\improper AF5 pattern fusilier helmet"
+	desc = "A standard helmet of the LACN designed primarly for usage in shipside engagements and made to easily couple with a emergency internal respiratory equipment if needed. Its primary usage is typically as a glorified hardhat."
+	icon_state = "lacn_helmet"
+	item_state = "lacn_helmet"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
+	)
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+
+/obj/item/clothing/head/helmet/marine/lacn/medic
+	name = "\improper AF5 pattern medic helmet"
+	built_in_visors = list(new /obj/item/device/helmet_visor/medical)
+	start_down_visor_type = /obj/item/device/helmet_visor/medical
+
+/obj/item/clothing/head/helmet/marine/lacn/utility
+	name = "\improper AFU25 flight deck helmet"
+	desc = "A standard flight deck helmet used by ground crews and air crews of the LACN pattern marine helmet, its comes with some light inbuilt hearing protection however its primary usage is as a glorified hardhat. This one has a green cover on it."
+	icon_state = "helmet_utility"
+	item_state = "helmet_utility"
+
+/obj/item/clothing/head/helmet/marine/lacn/utility/white
+	desc = "A standard flight deck helmet used by ground crews and air crews of the LACN pattern marine helmet, its comes with some light inbuilt hearing protection however its primary usage is as a glorified hardhat. This one has a white cover on it."
+	icon_state = "helmet_utilitywhite"
+	item_state = "helmet_utilitywhite"
+	built_in_visors = list(new /obj/item/device/helmet_visor/medical)
+	start_down_visor_type = /obj/item/device/helmet_visor/medical
+
+/obj/item/clothing/head/helmet/marine/lacn/utility/red
+	desc = "A standard flight deck helmet used by ground crews and air crews of the LACN pattern marine helmet, its comes with some light inbuilt hearing protection however its primary usage is as a glorified hardhat. This one has a red cover on it."
+	icon_state = "helmet_utilityred"
+	item_state = "helmet_utilityred"
+
+/obj/item/clothing/head/helmet/marine/lacn/pilot
+	name = "\improper HGU-51A/P fighter helmet" // Emergency helmet from Alien but as a navy flight helmet
+	desc = "A standard fighter pilot helmet used across multiple branches of the United America’s militaries. It sports an integrated MS4401 oxygen mask, REDAR hose and special nuclear flash protective visors. It has been purpose engineered to increase survivability in a vacume or high atmosphere in the case of bail outs or canopy breachs, however they are no substitute for a actual pressure suit. Ever since the 2110s less portable itterations of older HGU models have wormed their way onto the civilian market under the name of Activated Star Helmets."
+	icon_state = "fighterhelmet"
+	item_state = "fighterhelmet"
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = HIDEEARS|HIDEALLHAIR

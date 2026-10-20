@@ -272,6 +272,21 @@
 	roundstart = FALSE
 	locked = TRUE
 
+/datum/squad/marine/lacn
+	name = SQUAD_LACN
+	use_stripe_overlay = FALSE
+	equipment_color = "#55eba8"
+	chat_color = "#88e7b0"
+	radio_freq = LACN_FREQ
+	background_icon = "background_wo"
+	minimap_color = "#55eba8"
+
+	prepend_squad_name_to_assignment = FALSE
+
+	active = FALSE
+	roundstart = FALSE
+	locked = TRUE
+
 //############################### UPP Squads
 /datum/squad/upp
 	name = "Root"

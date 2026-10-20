@@ -351,7 +351,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 
 // ---- Trucker Survivor
 
-// Used in Kutjevo Refinery, LV-624, New Varadero, Solaris Ridge and Trijent Dam.
+// Used in Kutjevo Refinery, LV-624, Solaris Ridge and Trijent Dam.
 
 /datum/equipment_preset/survivor/trucker
 	name = "Survivor - Trucker"
@@ -426,7 +426,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 
 // ----- Interstellar Commerce Commission Survivor
 
-// Used in Trijent Dam and New Varadero.
+// Used in Trijent Dam.
 /datum/equipment_preset/survivor/interstellar_commerce_commission_liaison
 	name = "Survivor - Interstellar Commerce Commission Liaison"
 	assignment = "Interstellar Commerce Commission Corporate Liaison"

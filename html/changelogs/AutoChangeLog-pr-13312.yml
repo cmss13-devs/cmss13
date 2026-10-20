@@ -1,0 +1,4 @@
+author: "ComboTombo"
+delete-after: True
+changes:
+  - balance: "Weapon lights now keep illuminating when the weapon is stowed away in the back slot or suit storage slot, but they'll be dimmed by 15% (compared to when the weapon is in your hands or on the ground."

@@ -93,6 +93,7 @@
 	var/last_x = "UNKNOWN"
 	var/last_y = "UNKNOWN"
 	var/last_z = "UNKNOWN"
+	var/max_distance = 23
 
 	/// Normally used for the small green dot signifying coordinations-obtaining mode.
 	var/range_laser_overlay = "laser_range"
@@ -152,7 +153,6 @@
 			return FALSE
 		if(user.sight & SEE_TURFS)
 			var/list/turf/path = get_line(user, targeted_atom, include_start_atom = FALSE)
-			var/max_distance = 23
 			if(path.len > max_distance)
 				to_chat(user, SPAN_WARNING("Target is too far!"))
 				return FALSE

@@ -128,3 +128,7 @@
   labeo0:
   - qol: You can Ctrl+Click storage items capable of changing storage drawing methods.
       Examining these items gives a note in chat about it.
+2026-10-20:
+  ComboTombo:
+  - rscadd: Added M41A Mk1 rifle kits
+  - balance: Re-added M41A Mk1 rifles to the SL vendor

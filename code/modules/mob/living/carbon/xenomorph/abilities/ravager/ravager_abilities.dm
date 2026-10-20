@@ -135,6 +135,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	plasma_cost = 0
 	xeno_cooldown = 10 SECONDS
+
 	// Config
 	var/shard_cost = 75
 	var/ammo_type = /datum/ammo/xeno/bone_chips

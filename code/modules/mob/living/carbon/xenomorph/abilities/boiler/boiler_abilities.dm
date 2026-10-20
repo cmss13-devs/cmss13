@@ -47,7 +47,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_acid_shroud
 	/// Allows the sound to play. Flipped to false when sound is triggered and true after a timer. This prevents soundspam
 	var/sound_play = TRUE
-	cooldown_message = "Our stomach sufficiently fills with gas and our pores are opened again. We can now shroud ourselves with acid."
+	cooldown_message = "Our stomach has sufficiently filled with gas and our pores are opened again. We can now shroud ourselves with acid."
 
 	/// These are actions that will be placed on cooldown for the cooldown_duration when activates
 	var/action_types_to_cd = list(
@@ -77,7 +77,7 @@
 	var/empowered = FALSE
 	var/empowering_charge_counter = 0
 	var/empower_charge_max = 10
-	cooldown_message = "Our stomach expanded enough to construct and fill traps."
+	cooldown_message = "Our stomach has expanded enough to construct and fill traps."
 
 /datum/action/xeno_action/activable/acid_mine
 	name = "Acid Mine"
@@ -104,7 +104,7 @@
 	ability_uses_acid_overlay = TRUE
 
 	var/ammo_type = /datum/ammo/xeno/acid_shotgun
-	cooldown_message = "Our stomach sufficiently fills with acid to shoot acid pellets again. "
+	cooldown_message = "Our stomach has sufficiently filled with enough acid to shoot acid pellets again. "
 
 /datum/action/xeno_action/onclick/toggle_long_range/trapper
 	handles_movement = FALSE
@@ -113,4 +113,4 @@
 
 /datum/action/xeno_action/activable/tail_stab/boiler
 	name = "Toxic Tail Stab"
-	cooldown_message = "Our tail's acid stores fill up again and we can stab with it."
+	cooldown_message = "Our tail's acid stores have filled up enough to stab with it."

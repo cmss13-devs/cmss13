@@ -41,7 +41,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 18 SECONDS
 	plasma_cost = 30
-	cooldown_message = "We recovered our stamina and are ready to quake the earth again."
+	cooldown_message = "We have recovered enough of our stamina to quake the earth again."
 
 	var/damage = 65
 
@@ -59,7 +59,7 @@
 	damage = 75
 	distance = 3
 	xeno_cooldown = 12 SECONDS
-	cooldown_message = "We recovered our stamina and are ready to crush tallhost chests again."
+	cooldown_message = "We have recovered our stamina. We are ready to crush tallhost chests again."
 
 /datum/action/xeno_action/onclick/crusher_shield
 	name = "Defensive Shield"
@@ -72,7 +72,7 @@
 	var/shield_amount = 200
 	var/explosion_immunity_dur = 2.5 SECONDS
 	var/shield_dur = 7 SECONDS
-	cooldown_message = "We begin to feel empowered and we are ready to shield ourselves."
+	cooldown_message = "We are ready to shield ourselves."
 
 /datum/action/xeno_action/activable/fling/charger
 	name = "Headbutt"
@@ -263,7 +263,7 @@
 
 	plasma_cost = 25
 	xeno_cooldown = 10 SECONDS
-	cooldown_message = "We recovered our stamina and can now tumble about again."
+	cooldown_message = "We have recovered enough of our stamina to tumble about again."
 
 /datum/action/xeno_action/activable/tumble/proc/on_end_throw(start_charging)
 	var/mob/living/carbon/xenomorph/Xeno = owner

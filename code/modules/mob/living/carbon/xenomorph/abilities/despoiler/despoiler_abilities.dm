@@ -46,7 +46,7 @@
 	xeno_cooldown = 25 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 100
-	cooldown_message = "We regained enough energy to to spill our blood for the hive."
+	cooldown_message = "We have regained enough energy to to spill our blood for the hive."
 
 /datum/action/xeno_action/onclick/catalyze
 	name = "Catalyze"

@@ -462,7 +462,7 @@
 	var/original_no_evo_setting
 
 /datum/hivebuff/survival_evac_surge/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)
-	hive.stored_larva += GLOB.players_preassigned
+	hive.stored_larva += max(GLOB.players_preassigned, 10)
 	value_before_buff = SSxevolution.get_evolution_boost_power(hive.hivenumber)
 	hive.override_evilution(value_before_buff * 2, TRUE)
 	hive.allow_no_queen_evo = original_no_evo_setting

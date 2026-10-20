@@ -1759,6 +1759,7 @@
 			potential_hivebuffs -= possible_hivebuff
 			continue
 
+		// If there are enough pylons
 		if(initial(possible_hivebuff.number_of_required_pylons) > LAZYLEN(active_endgame_pylons) && !admin)
 			potential_hivebuffs -= possible_hivebuff
 			continue
@@ -1792,6 +1793,11 @@
 			if(locate(possible_hivebuff) in used_hivebuffs)
 				potential_hivebuffs -= possible_hivebuff
 				continue
+
+		// If the buff is admin only
+		if(possible_hivebuff.is_admin_exclusive && !admin)
+			potential_hivebuffs -= possible_hivebuff
+			continue
 
 	return potential_hivebuffs
 

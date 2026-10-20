@@ -39,7 +39,7 @@
 	/// Flavour message to announce to the hive on buff expiry. Narrated to all players in the hive.
 	var/cease_flavourmessage
 
-	/// Minor or Major buff. Governs announcements made and importance.
+	/// Minor or Major buff. Governs importance.
 	var/tier = HIVEBUFF_TIER_MINOR
 	/// Number of pylons required to buy the buff
 	var/number_of_required_pylons = 1
@@ -47,6 +47,8 @@
 	var/is_combineable = TRUE
 	///If this buff can be used more than once a round.
 	var/is_reusable = TRUE
+	///If this buff is admin only.
+	var/is_admin_exclusive = FALSE
 	/// Time that the buff is active for if it is a timed buff.
 	var/duration
 	/// Time that the buff is on cooldown after ending
@@ -117,6 +119,9 @@
 
 	if(!_check_pass_reusable())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive has already used [name] and cannot use it again!"))
+		return FALSE
+
+	if(is_admin_exclusive)
 		return FALSE
 
 	var/datum/hivebuff/cooldown_buff = locate(type) in hive.cooldown_hivebuffs
@@ -443,6 +448,30 @@
 /datum/hivebuff/evo_buff/major/on_cease()
 	. = ..()
 	hive.allow_no_queen_evo = FALSE
+
+/datum/hivebuff/survival_evac_surge
+	name = "Boon of Horde"
+	desc = "Grants many larva, and doubles evolution speed for 5 minutes without an ovipositor."
+	tier = HIVEBUFF_TIER_MAJOR
+	engage_flavourmessage = "The hive swells with power!"
+	duration = 15 MINUTES
+	number_of_required_pylons = 0
+	is_admin_exclusive = TRUE
+	is_combineable = FALSE
+	var/value_before_buff
+	var/original_no_evo_setting
+
+/datum/hivebuff/survival_evac_surge/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)
+	hive.stored_larva += GLOB.players_preassigned
+	value_before_buff = SSxevolution.get_evolution_boost_power(hive.hivenumber)
+	hive.override_evilution(value_before_buff * 2, TRUE)
+	hive.allow_no_queen_evo = original_no_evo_setting
+	hive.allow_no_queen_evo = TRUE
+	return TRUE
+
+/datum/hivebuff/survival_evac_surge/on_cease()
+	hive.override_evilution(value_before_buff, FALSE)
+	hive.allow_no_queen_evo = original_no_evo_setting
 
 /datum/hivebuff/game_ender_caste
 	name = "His Grace"

@@ -185,6 +185,9 @@
 
 	release_the_queen()
 
+	var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	main_hive.attempt_apply_hivebuff_admin(/datum/hivebuff/survival_evac_surge)
+
 	var/hostile = SSnightmare.get_scenario_is_hostile_survivor() // ASSUMPTION: Only hostile type is CLF
 
 	var/shuttle_id = hostile ? MOBILE_SHUTTLE_ID_ERT1 : MOBILE_SHUTTLE_ID_ERT_ALAMO

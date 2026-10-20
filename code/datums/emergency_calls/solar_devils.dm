@@ -90,7 +90,7 @@
 	to_chat(mob, SPAN_ROLE_BODY("You are a member of the 3rd Battalion 'Solar Devils', part of the USCM's 2nd Division, 1st Regiment. Unlike most of the USS Almayer's troops, you are well-trained and properly-equipped career marines. Semper Fidelis."))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
 
-/datum/emergency_call/solar_devils_full/survivor_response
+/datum/emergency_call/solar_devils/survivor_response
 	arrival_message = "This is the Solar Devils of the USCM 2nd Division, responding to your distress beacon."
 	objectives = "Assist local civilians in evacuation. Further orders may be forthcoming."
 	probability = 0
@@ -98,7 +98,7 @@
 	shuttle_id = ""
 	home_base = /datum/lazy_template/ert/uscm_station_large_pad
 
-/datum/emergency_call/solar_devils_full/survivor_response/get_spawn_point(is_for_items)
+/datum/emergency_call/solar_devils/survivor_response/get_spawn_point(is_for_items)
 	if(!shuttle && istype(SSticker.mode, /datum/game_mode/survive))
 		var/datum/game_mode/survive/survival_mode = SSticker.mode
 		shuttle = survival_mode.shuttle

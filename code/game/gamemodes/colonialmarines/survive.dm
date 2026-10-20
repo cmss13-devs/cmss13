@@ -228,7 +228,7 @@
 	RegisterSignal(dock, COMSIG_SHUTTLE_ARRIVAL, PROC_REF(on_shuttle_arrival))
 	SSshuttle.moveShuttleToDock(shuttle, dock, TRUE)
 
-	var/ert_type = hostile ? /datum/emergency_call/clf/survivor_response : /datum/emergency_call/solar_devils_full/survivor_response
+	var/ert_type = hostile ? /datum/emergency_call/clf/survivor_response : /datum/emergency_call/solar_devils/survivor_response
 	var/datum/emergency_call/ert = SSticker.mode.get_specific_call(ert_type, TRUE, FALSE)
 	shuttle.distress_beacon = ert
 	survivor_announcement("[ert.arrival_message] We are enroute to [dock].")

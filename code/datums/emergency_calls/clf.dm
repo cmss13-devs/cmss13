@@ -90,6 +90,7 @@
 	objectives = "Assist the local force in withdrawing from the colony."
 	probability = 0
 	mob_min = 1
+	mob_max = 6
 	shuttle_id = ""
 
 /datum/emergency_call/clf/survivor_response/get_spawn_point(is_for_items)

@@ -799,7 +799,7 @@
 		var/fix_time = 0
 		var/surgery_skill = user.skills.get_skill_level(SKILL_SURGERY)
 		switch (surgery_skill) // Having precise hands helps with bending fiddly plastic
-			if (SKILL_SURGERY_NOVICE)
+			if (SKILL_SURGERY_NOVICE, SKILL_SURGERY_ASSISTANT)
 				fix_time = 4 SECONDS
 				user.visible_message(SPAN_NOTICE("[user] fiddles with [src] for a moment, before bending the rim back into place with [inhand]."), SPAN_NOTICE("After fiddling with it for a moment, you grip the end of the bent lid of [src] with [inhand] and begin bending the plastic rim into useable form."))
 			if (SKILL_SURGERY_TRAINED)

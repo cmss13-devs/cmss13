@@ -7,7 +7,7 @@
 	name = "Brain Repair Surgery"
 	possible_locs = list("head")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
-	required_surgery_skill = SKILL_SURGERY_TRAINED
+	required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	pain_reduction_required = PAIN_REDUCTION_MEDIUM //Brain doesn't actually have much in the way of nerve endings.
 	steps = list(/datum/surgery_step/remove_bone_chips)
 	var/dmg_min = 0

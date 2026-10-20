@@ -99,7 +99,7 @@
 	desc = "A pamphlet used to quickly impart vital knowledge on medical surgery... it doesn't seem to teach you how to use other medical applications or devices, strangely."
 	icon_state = "pamphlet_medical"
 	skill_upgrade = SKILL_SURGERY
-	skill_cap = 2
+	skill_cap = SKILL_SURGERY_TRAINED
 
 /obj/item/pamphlet/upgradeable/vehicles
 	name = "vehicle training manual"

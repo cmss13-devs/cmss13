@@ -86,6 +86,11 @@
 						do_observe(target)
 						return TRUE
 
+			if(HAS_TRAIT(xeno, TRAIT_XENO_BRAINDEAD))
+				to_chat(src, SPAN_WARNING("That Xenomorph has no brain for you to take over!"))
+				do_observe(target)
+				return TRUE
+
 			if(tgui_alert(src, "Are you sure you want to transfer yourself into [xeno]?", "Confirm Transfer", list("Yes", "No")) != "Yes")
 				do_observe(target)
 				return TRUE

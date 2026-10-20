@@ -1056,6 +1056,27 @@
 	var/mob/living/carbon/xenomorph/xeno = M
 	xeno.AddComponent(/datum/component/status_effect/interference, volume * potency * 1.2, 90)
 
+/datum/chem_property/positive/disrupting/reagent_added(atom/A, datum/reagent/R, amount)
+	. = ..()
+	var/obj/item/xeno_egg/egg = A
+	if(!istype(egg))
+		return
+
+	if(amount < 10)
+		return
+
+	if(egg.flags_embryo & FLAG_EMBRYO_BRAINDEAD)
+		return
+
+	// smooth egg for smooth brain
+	var/turf/eggplace = get_turf(egg)
+	eggplace.visible_message(SPAN_DANGER("\The [egg] shrinks slightly, the wrinkles on it smoothing away."))
+	egg.transform *= 0.9
+
+	playsound(egg, 'sound/effects/attackblob.ogg', 25, TRUE)
+
+	egg.flags_embryo |= FLAG_EMBRYO_BRAINDEAD
+
 /datum/chem_property/positive/neutralizing
 	name = PROPERTY_NEUTRALIZING
 	code = "NEU"

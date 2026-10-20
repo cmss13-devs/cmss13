@@ -441,7 +441,7 @@
 	var/original_no_evo_setting
 
 /datum/hivebuff/evo_buff/major/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)
-	hive.allow_no_queen_evo = original_no_evo_setting
+	original_no_evo_setting = hive.allow_no_queen_evo
 	hive.allow_no_queen_evo = TRUE
 	return ..()
 
@@ -465,7 +465,7 @@
 	hive.stored_larva += max(GLOB.players_preassigned, 10)
 	value_before_buff = SSxevolution.get_evolution_boost_power(hive.hivenumber)
 	hive.override_evilution(value_before_buff * 2, TRUE)
-	hive.allow_no_queen_evo = original_no_evo_setting
+	original_no_evo_setting = hive.allow_no_queen_evo
 	hive.allow_no_queen_evo = TRUE
 	return TRUE
 

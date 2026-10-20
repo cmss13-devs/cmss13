@@ -209,6 +209,7 @@
 		for(var/obj/structure/structure in contents)
 			structure.layer = initial(structure.layer)
 			structure.plane = initial(structure.plane)
+	update_icon()	//rebakes the overlays to new layer >:()
 
 /obj/vis_contents_holder
 	plane = OPEN_SPACE_PLANE_START

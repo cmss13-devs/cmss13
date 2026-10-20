@@ -1746,20 +1746,20 @@
 
 
 /// Get a list of hivebuffs which can be bought now.
-/datum/hive_status/proc/get_available_hivebuffs()
+/datum/hive_status/proc/get_available_hivebuffs(admin)
 	var/list/potential_hivebuffs = subtypesof(/datum/hivebuff)
 
 	// First check if we any pylons which are capable of supporting hivebuffs
-	if(!LAZYLEN(active_endgame_pylons))
+	if(!LAZYLEN(active_endgame_pylons) && !admin)
 		return
 
 	for(var/datum/hivebuff/possible_hivebuff as anything in potential_hivebuffs)
 		// Round isn't old enough yet
-		if(ROUND_TIME < initial(possible_hivebuff.roundtime_to_enable))
+		if(ROUND_TIME < initial(possible_hivebuff.roundtime_to_enable) && !admin)
 			potential_hivebuffs -= possible_hivebuff
 			continue
 
-		if(initial(possible_hivebuff.number_of_required_pylons) > LAZYLEN(active_endgame_pylons))
+		if(initial(possible_hivebuff.number_of_required_pylons) > LAZYLEN(active_endgame_pylons) && !admin)
 			potential_hivebuffs -= possible_hivebuff
 			continue
 
@@ -1788,20 +1788,27 @@
 				continue
 
 		// If the buff is not reusable check against used hivebuffs.
-		if(!initial(possible_hivebuff.is_reusable))
+		if(!initial(possible_hivebuff.is_reusable) && !admin)
 			if(locate(possible_hivebuff) in used_hivebuffs)
 				potential_hivebuffs -= possible_hivebuff
 				continue
 
 	return potential_hivebuffs
 
-/datum/hive_status/proc/attempt_apply_hivebuff(datum/hivebuff/hivebuff, mob/living/purchasing_player, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
-	var/datum/hivebuff/new_buff = new hivebuff(src)
+/datum/hive_status/proc/attempt_apply_hivebuff(datum/hivebuff/hivebuff_type, mob/living/carbon/xenomorph/purchasing_player, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
+	var/datum/hivebuff/new_buff = new hivebuff_type(src)
 	if(!new_buff._on_engage(purchasing_player, purchased_pylon))
 		qdel(new_buff)
 		return FALSE
 	return TRUE
 
+/datum/hive_status/proc/attempt_apply_hivebuff_admin(datum/hivebuff/hivebuff_type, mob/purchasing_admin, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
+	var/datum/hivebuff/new_buff = new hivebuff_type(src)
+	new_buff.engage_flavourmessage = replacetext(new_buff.engage_flavourmessage, "The Queen", "Queen Mother")
+	if(!new_buff._on_engage_admin(purchasing_admin, purchased_pylon))
+		qdel(new_buff)
+		return FALSE
+	return TRUE
 
 //Xeno Resin Mark Shit, the very best place for it too :0)
 //Defines at the bottom of this list here will show up at the top in the mark menu

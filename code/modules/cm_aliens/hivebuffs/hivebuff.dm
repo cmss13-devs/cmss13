@@ -185,6 +185,58 @@
 		_on_cease()
 	return TRUE
 
+///Wrapper for on_engage() as admin to do minimal checks to be actually purchased as well as adding buff to the active_hivebuffs and used_hivebuffs for the hive.
+/datum/hivebuff/proc/_on_engage_admin(mob/purchasing_admin, obj/effect/alien/resin/special/pylon/purchased_pylon)
+	if(!_check_pass_active())
+		to_chat(purchasing_admin, SPAN_XENONOTICE("The hive still has [name] active!"))
+		return FALSE
+
+	if(!_check_pass_combineable())
+		var/active_buffs = ""
+		for(var/buff in hive.active_hivebuffs)
+			active_buffs += buff + " "
+		active_buffs = trim_right(active_buffs)
+		to_chat(purchasing_admin, SPAN_XENONOTICE("[name] cannot be used with other active buffs! Wait for those to end first. Active buffs: [active_buffs]"))
+		return FALSE
+
+	if(!handle_special_checks())
+		to_chat(purchasing_admin, SPAN_XENONOTICE(special_fail_message))
+		return FALSE
+
+	// Actually process the buff and apply effects - If the buff succeeds engage_message will return TRUE, if it fails there should be an engage_failure_message set.
+	if(!on_engage(purchased_pylon))
+		if(engage_failure_message && istext(engage_failure_message))
+			to_chat(purchasing_admin, SPAN_XENONOTICE(engage_failure_message))
+			return
+		else
+			stack_trace("[purchasing_admin || "System"] attempted to purchase a hive buff: [name] and failed to engage and returned an invalid failure message or no failure message.")
+			return
+
+	// All checks have passed.
+
+	for(var/mob/living/carbon/xenomorph/xeno in hive.totalXenos)
+		apply_buff_effects(xeno)
+
+	if(apply_on_new_xeno)
+		RegisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN, PROC_REF(_handle_xenomorph_new))
+
+	message_admins("[purchasing_admin || "System"] has purchased a hive buff: [name] for [hive.hivenumber].")
+
+	// Add to the relevant hive lists.
+	LAZYADD(hive.used_hivebuffs, src)
+	LAZYADD(hive.active_hivebuffs, src)
+
+	// Announce to our hive that we've completed.
+	_announce_buff_engage()
+
+	// If we need a timer to call _on_cease() we add it here and store the id, used for deleting the timer if we Destroy().
+	// If we have no duration to the buff then we call _on_cease() immediately.
+	if(duration)
+		cease_timer_id = addtimer(CALLBACK(src, PROC_REF(_on_cease)), duration, TIMER_STOPPABLE|TIMER_DELETE_ME)
+	else
+		_on_cease()
+	return TRUE
+
 /// Behaviour for the buff goes in here.
 /// IMPORTANT: If you buff has any kind of conditions which can fail. Set an engage_failure_message and return FALSE.
 /// If your buff succeeds you must return TRUE

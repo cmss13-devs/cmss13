@@ -8,6 +8,7 @@ import {
   Input,
   LabeledControls,
   NumberInput,
+  ProgressBar,
   Section,
   Stack,
   Table,
@@ -69,6 +70,9 @@ type Data = {
   ob_safety: Boolean;
   supply_cooldown: number;
   operator: string;
+  radio_clarity: number;
+  clarity_color: string;
+  clarity_status: string;
 };
 
 export const OverwatchConsole = (props) => {
@@ -76,7 +80,7 @@ export const OverwatchConsole = (props) => {
 
   return (
     <Window
-      width={800}
+      width={860}
       height={600}
       theme={data.theme ? data.theme : 'crtblue'}
     >
@@ -213,77 +217,140 @@ const MainDashboard = (props) => {
         </>
       }
     >
-      <Table mb="5px">
-        <Table.Row bold>
-          <Table.Cell textAlign="center">PRIMARY ORDERS</Table.Cell>
-          <Table.Cell textAlign="center">SECONDARY ORDERS</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell textAlign="center">
-            {primary_objective ? primary_objective : 'NONE'}
-          </Table.Cell>
-          <Table.Cell textAlign="center">
-            {secondary_objective ? secondary_objective : 'NONE'}
-          </Table.Cell>
-        </Table.Row>
-      </Table>
-      <Box textAlign="center">
-        <Button
-          inline
-          width="23%"
-          icon="envelope"
-          onClick={() => act('set_primary')}
-        >
-          SET PRIMARY
-        </Button>
-        {primary_objective && (
-          <Button
-            inline
-            width="23%"
-            icon="person"
-            onClick={() => act('remind_primary')}
-          >
-            REMIND PRIMARY
-          </Button>
-        )}
-        <Button
-          inline
-          width="23%"
-          icon="envelope"
-          onClick={() => act('set_secondary')}
-        >
-          SET SECONDARY
-        </Button>
-        {secondary_objective && (
-          <Button
-            inline
-            width="23%"
-            icon="person"
-            onClick={() => act('remind_secondary')}
-          >
-            REMIND SECONDARY
-          </Button>
-        )}
-      </Box>
-
-      <Box textAlign="center">
-        <Button
-          inline
-          width="45%"
-          icon="envelope"
-          onClick={() => act('message')}
-        >
-          MESSAGE SQUAD
-        </Button>
-        <Button
-          inline
-          width="45%"
-          icon="person"
-          onClick={() => act('sl_message')}
-        >
-          MESSAGE SQUAD LEADER
-        </Button>
-      </Box>
+      <Stack vertical={false} justify="space-between" align="stretch">
+        <Stack.Item grow={1} mr={1}>
+          <Table mb="5px">
+            <Table.Row bold>
+              <Table.Cell width="50%" textAlign="center">
+                PRIMARY ORDERS
+              </Table.Cell>
+              <Table.Cell textAlign="center">SECONDARY ORDERS</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell textAlign="center">
+                {primary_objective ? primary_objective : 'NONE'}
+              </Table.Cell>
+              <Table.Cell textAlign="center">
+                {secondary_objective ? secondary_objective : 'NONE'}
+              </Table.Cell>
+            </Table.Row>
+          </Table>
+          <Table style={{ border: 'none', background: 'none' }}>
+            <Table.Row style={{ border: 'none', background: 'none' }}>
+              <Table.Cell
+                width="50%"
+                style={{ border: 'none' }}
+                textAlign="right"
+              >
+                <Stack vertical={false} justify="flex-end">
+                  <Button
+                    inline
+                    mt={0.5}
+                    width="49%"
+                    icon="envelope"
+                    style={{ textAlign: 'Center' }}
+                    onClick={() => act('set_primary')}
+                  >
+                    SET PRIMARY
+                  </Button>
+                  {primary_objective && (
+                    <Button
+                      width="49%"
+                      inline
+                      mt={0.5}
+                      icon="person"
+                      style={{ textAlign: 'Center' }}
+                      onClick={() => act('remind_primary')}
+                    >
+                      REMIND PRIMARY
+                    </Button>
+                  )}
+                </Stack>
+              </Table.Cell>
+              <Table.Cell style={{ border: 'none' }} textAlign="left">
+                <Stack vertical={false} justify="flex-start">
+                  <Button
+                    inline
+                    mt={0.5}
+                    width="49%"
+                    icon="envelope"
+                    style={{ textAlign: 'Center' }}
+                    onClick={() => act('set_secondary')}
+                  >
+                    SET SECONDARY
+                  </Button>
+                  {secondary_objective && (
+                    <Button
+                      inline
+                      mt={0.5}
+                      width="49%"
+                      style={{ textAlign: 'Center' }}
+                      icon="person"
+                      onClick={() => act('remind_secondary')}
+                    >
+                      REMIND SECONDARY
+                    </Button>
+                  )}
+                </Stack>
+              </Table.Cell>
+            </Table.Row>
+            <Table.Row style={{ border: 'none', background: 'none' }}>
+              <Table.Cell
+                width="50%"
+                style={{ border: 'none' }}
+                textAlign="right"
+              >
+                <Button
+                  inline
+                  mt={0.5}
+                  width="65%"
+                  icon="envelope"
+                  style={{ textAlign: 'Center' }}
+                  onClick={() => act('message')}
+                >
+                  MESSAGE SQUAD
+                </Button>
+              </Table.Cell>
+              <Table.Cell
+                width="50%"
+                style={{ border: 'none' }}
+                textAlign="left"
+              >
+                <Button
+                  inline
+                  mt={0.5}
+                  width="65%"
+                  icon="envelope"
+                  style={{ textAlign: 'Center' }}
+                  onClick={() => act('sl_message')}
+                >
+                  MESSAGE SQUAD LEADER
+                </Button>
+              </Table.Cell>
+            </Table.Row>
+          </Table>
+        </Stack.Item>
+        <Stack.Item width="120px">
+          <Box>
+            <Box textAlign="center" bold color="label" mb={0.5}>
+              SIGNAL CLARITY
+            </Box>
+            <Box textAlign="center" mb={1} fontSize="12px">
+              {data.clarity_status}
+            </Box>
+            <ProgressBar
+              value={Number(data.radio_clarity) / 100}
+              color={data.clarity_color || 'red'}
+              height="18px"
+            >
+              {''}
+            </ProgressBar>
+            <Box textAlign="center" mt={0.5} bold color="white">
+              {data.radio_clarity}%
+            </Box>
+          </Box>
+        </Stack.Item>
+      </Stack>
     </Section>
   );
 };

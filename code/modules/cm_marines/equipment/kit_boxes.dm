@@ -156,7 +156,7 @@
 	new /obj/item/bodybag/tarp/reactive/scout(src)
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/explosive/plastic(src)
-	new /obj/item/device/encryptionkey/jtac(src)
+	new /obj/item/device/encryptionkey/scout(src)
 	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
 		new /obj/item/device/binoculars/designator(src)
 	else
@@ -261,6 +261,8 @@
 	new /obj/item/tool/wrench(src)
 	new /obj/item/device/binoculars/range(src)
 	new /obj/item/device/binoculars/range/designator(src)
+	new /obj/item/storage/backpack/marine/satchel/rto(src)
+	new /obj/item/storage/backpack/marine/satchel/rto(src)
 
 
 //-----------------SPEC KIT BOX------------------
@@ -271,7 +273,7 @@
 	desc = "A paper box. Open it and get a specialist kit."
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "spec_kit"
-	var/list/allowed_roles_list = list(JOB_SQUAD_SPECIALIST, JOB_WO_SQUAD_SPECIALIST, JOB_WO_CREWMAN)
+	var/list/allowed_roles_list = list(JOB_SQUAD_SPECIALIST, JOB_WO_SQUAD_SPECIALIST, JOB_WO_WARDEN)
 
 	///Used for cryo specs who already have "foxtrot" appended to their ID assignments
 	var/squad_assignment_update = TRUE
@@ -463,7 +465,7 @@
 	new /obj/item/ammo_magazine/rifle/m4ra/ap(src)
 
 /obj/item/storage/box/kit/m41a_kit
-	name = "\improper M41A Rifle Kit"
+	name = "\improper M41A Mk2 Rifle Kit"
 	pro_case_overlay = "pursuit"
 
 /obj/item/storage/box/kit/m41a_kit/fill_preset_inventory()
@@ -473,6 +475,18 @@
 	new /obj/item/attachable/extended_barrel(src)
 	new /obj/item/ammo_magazine/rifle/ap(src)
 	new /obj/item/ammo_magazine/rifle/ap(src)
+
+/obj/item/storage/box/kit/m41aMK1_kit
+	name = "\improper M41A Mk1 Rifle Kit"
+	pro_case_overlay = "pursuit"
+
+/obj/item/storage/box/kit/m41aMK1_kit/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/m41aMK1(src)
+	new /obj/item/attachable/attached_gun/shotgun(src)
+	new /obj/item/attachable/suppressor(src)
+	new /obj/item/ammo_magazine/rifle/m41aMK1(src)
+	new /obj/item/ammo_magazine/rifle/m41aMK1(src)
+	new /obj/item/ammo_magazine/rifle/m41aMK1/ap(src)
 
 /obj/item/storage/box/kit/heavy_support
 	name = "\improper Forward HPR Shield Kit"
@@ -540,6 +554,7 @@
 	new /obj/item/device/binoculars/range/designator(src)
 	new /obj/item/device/encryptionkey/jtac(src)
 	new /obj/item/storage/backpack/marine/satchel/rto(src)
+	new /obj/item/pamphlet/upgradeable/jtac(src)
 
 /obj/item/storage/box/kit/mini_intel
 	name = "\improper Field Intelligence Support Kit"

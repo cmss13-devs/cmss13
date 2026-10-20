@@ -1,0 +1,4 @@
+author: "Kugamo"
+delete-after: True
+changes:
+  - bugfix: "Fixes mops attacking weeds instead of cleaning them"

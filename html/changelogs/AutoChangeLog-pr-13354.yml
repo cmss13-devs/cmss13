@@ -1,0 +1,4 @@
+author: "Kugamo"
+delete-after: True
+changes:
+  - bugfix: "Fixes visual bug, showing fake items in hand after stacking them in certain bags with those inventories open."

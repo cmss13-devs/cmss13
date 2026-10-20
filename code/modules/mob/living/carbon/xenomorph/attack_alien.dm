@@ -9,7 +9,7 @@
 
 // this proc could use refactoring at some point
 /mob/living/carbon/human/attack_alien(mob/living/carbon/xenomorph/attacking_xeno, dam_bonus, unblockable = FALSE)
-	if(attacking_xeno.fortify || HAS_TRAIT(attacking_xeno, TRAIT_ABILITY_BURROWED))
+	if(attacking_xeno.fortify || HAS_TRAIT(attacking_xeno, TRAIT_ABILITY_BURROWED) || HAS_TRAIT(attacking_xeno, TRAIT_ABILITY_REFLECTIVE_PLATES))
 		return XENO_NO_DELAY_ACTION
 
 	if(HAS_TRAIT(src, TRAIT_HAULED))
@@ -206,8 +206,6 @@
 
 			SEND_SIGNAL(attacking_xeno, COMSIG_HUMAN_ALIEN_ATTACK, src)
 
-			updatehealth()
-
 		if(INTENT_DISARM)
 			if(attacking_xeno.legcuffed && isyautja(src))
 				to_chat(attacking_xeno, SPAN_XENODANGER("We don't have the dexterity to tackle the headhunter with that thing on our leg!"))
@@ -403,7 +401,10 @@
 	if(is_wired)
 		xeno.visible_message(SPAN_DANGER("The barbed wire slices into [xeno]!"),
 		SPAN_DANGER("The barbed wire slices into us!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-		xeno.apply_damage(10, enviro=TRUE)
+		if(istype(xeno.strain, /datum/xeno_strain/bulwark))
+			xeno.apply_damage(5, enviro=TRUE)
+		else
+			xeno.apply_damage(10, enviro=TRUE)
 	return XENO_ATTACK_ACTION
 
 /obj/structure/barricade/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
@@ -1036,62 +1037,6 @@
 		SPAN_DANGER("We [alien.slash_verb] \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
-/datum/shuttle/ferry/marine/proc/hijack(mob/living/carbon/xenomorph/xeno, shuttle_tag)
-	if(!queen_locked) //we have not hijacked it yet
-		if(world.time < SHUTTLE_LOCK_TIME_LOCK)
-			to_chat(xeno, SPAN_XENODANGER("We can't mobilize the strength to hijack the shuttle yet. Please wait another [time_left_until(SHUTTLE_LOCK_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
-			return
-
-		var/message
-		if(shuttle_tag == "Ground Transport 1") // CORSAT monorail
-			message = "We have wrested away remote control of the metal crawler! Rejoice!"
-		else
-			message = "We have wrested away remote control of the metal bird! Rejoice!"
-			if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding))
-				MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
-
-		to_chat(xeno, SPAN_XENONOTICE("We interact with the machine and disable remote control."))
-		xeno_message(SPAN_XENOANNOUNCE("[message]"),3,xeno.hivenumber)
-		last_locked = world.time
-		if(GLOB.almayer_orbital_cannon)
-			GLOB.almayer_orbital_cannon.is_disabled = TRUE
-			addtimer(CALLBACK(GLOB.almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
-		queen_locked = 1
-
-/datum/shuttle/ferry/marine/proc/door_override(mob/living/carbon/xenomorph/xeno, shuttle_tag)
-	if(!door_override)
-		to_chat(xeno, SPAN_XENONOTICE("We override the doors."))
-		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"),3,xeno.hivenumber)
-		last_door_override = world.time
-		door_override = 1
-
-		var/ship_id = "sh_dropship1"
-		if(shuttle_tag == DROPSHIP_NORMANDY)
-			ship_id = "sh_dropship2"
-		if(shuttle_tag == DROPSHIP_SAIPAN)
-			ship_id = "sh_dropship3"
-		if(shuttle_tag == DROPSHIP_MORANA)
-			ship_id = "sh_dropship4"
-		if(shuttle_tag == DROPSHIP_DEVANA)
-			ship_id = "sh_dropship5"
-
-
-		for(var/obj/structure/machinery/door/airlock/dropship_hatch/ship in GLOB.machines)
-			if(ship.id == ship_id)
-				ship.unlock()
-
-		var/obj/structure/machinery/door/airlock/multi_tile/almayer/reardoor
-		switch(ship_id)
-			if("sh_dropship1")
-				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1/ship in GLOB.machines)
-					reardoor = ship
-			if("sh_dropship2")
-				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/ship in GLOB.machines)
-					reardoor = ship
-		if(!reardoor)
-			CRASH("Shuttle crashed trying to override invalid rear door with shuttle id [ship_id]")
-		reardoor.unlock()
-
 //APCs.
 /obj/structure/machinery/power/apc/attack_alien(mob/living/carbon/xenomorph/xeno)
 
@@ -1141,8 +1086,7 @@
 		to_chat(xeno, SPAN_WARNING("It's already damaged."))
 		return XENO_NO_DELAY_ACTION
 	xeno.animation_attack_on(src)
-	xeno.visible_message(SPAN_DANGER("[xeno] slashes away at [src]!"),
-	SPAN_DANGER("We slash and claw at the bright light!"), max_distance = 5, message_flags = CHAT_TYPE_XENO_COMBAT)
+	xeno.visible_message("[xeno] slashes away at [src]!","We slash and claw at the bright light!", max_distance = 5, message_flags = CHAT_TYPE_XENO_COMBAT)
 	health = max(health - rand(xeno.melee_damage_lower, xeno.melee_damage_upper), 0)
 	if(!health)
 		set_damaged()
@@ -1163,13 +1107,13 @@
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
-/obj/structure/machinery/colony_floodlight_switch/antre/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/machinery/colony_floodlight_switch/antre/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(!is_on)
-		to_chat(M, SPAN_WARNING("We stare at the [src] clulessly. It's just some weird metal thing."))
+		to_chat(xeno, SPAN_WARNING("We stare at [src] clulessly. It's just some weird metal thing."))
 		return XENO_NO_DELAY_ACTION
 	if(!damaged)
-		M.animation_attack_on(src)
-		M.visible_message("[M] slashes away at [src]!","We slash and claw at the bright light!", max_distance = 5, message_flags = CHAT_TYPE_XENO_COMBAT)
+		xeno.animation_attack_on(src)
+		xeno.visible_message("[xeno] slashes away at [src]!","We slash and claw at the bright light!", max_distance = 5, message_flags = CHAT_TYPE_XENO_COMBAT)
 		damaged = TRUE
 		alarming = FALSE
 		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
@@ -1180,7 +1124,7 @@
 		playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 		return XENO_ATTACK_ACTION
 	else
-		to_chat(M, SPAN_WARNING("It's already damaged."))
+		to_chat(xeno, SPAN_WARNING("It's already damaged."))
 		return XENO_NO_DELAY_ACTION
 
 /obj/structure/machinery/colony_floodlight/attack_larva(mob/living/carbon/xenomorph/larva/xeno)

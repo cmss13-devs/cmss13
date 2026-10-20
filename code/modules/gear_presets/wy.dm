@@ -108,7 +108,7 @@
 
 /datum/equipment_preset/wy/exec_supervisor/lawyer/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/secure/briefcase(new_human), WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/secure/briefcase(new_human), WEAR_L_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/black(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/tie/black(new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/corporate/black(new_human), WEAR_JACKET)
@@ -171,7 +171,7 @@
 	job_title = JOB_DEPUTY_DIRECTOR
 	minimap_icon = "dep_director"
 	paygrades = list(PAY_SHORT_WYC10 = JOB_PLAYTIME_TIER_0)
-	gun_type = /obj/item/storage/belt/gun/m4a3/heavy/co_golden
+	gun_type = /obj/item/storage/belt/gun/m4a3/deagle/co_golden
 
 /datum/equipment_preset/wy/manager/director
 	name = "Corporate - K - Director"

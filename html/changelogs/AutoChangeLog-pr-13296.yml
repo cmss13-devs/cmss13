@@ -1,0 +1,5 @@
+author: "Drulikar"
+delete-after: True
+changes:
+  - admin: "Cardinally enclosed reviveable bodies are now niche logged"
+  - admin: "Tweaked niche log for building a resin wall ontop of a reviveable body"

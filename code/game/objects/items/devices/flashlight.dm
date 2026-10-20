@@ -623,8 +623,27 @@
 /obj/item/device/flashlight/flare/signal/Initialize()
 	. = ..()
 	fuel = rand(160 SECONDS, 200 SECONDS)
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(roof_indicator))
 
-/obj/item/device/flashlight/flare/signal/flare_burn_down() // Empty proc to override parent.
+/obj/item/device/flashlight/flare/signal/proc/get_roof_icon_state()
+	var/area/flare_area = get_area(src)
+	if(flare_area?.ceiling > CEILING_METAL)
+		return "cas_flare-red"
+	if(flare_area?.ceiling == CEILING_METAL)
+		return "cas_flare-yellow"
+	return "cas_flare-on"
+
+/obj/item/device/flashlight/flare/signal/update_icon()
+	. = ..()
+	if(on)
+		icon_state = get_roof_icon_state()
+
+/obj/item/device/flashlight/flare/signal/proc/roof_indicator()
+	SIGNAL_HANDLER
+	if(on && icon_state != get_roof_icon_state())
+		update_icon()
+
+/obj/item/device/flashlight/flare/signal/flare_burn_down()
 	return
 
 /obj/item/device/flashlight/flare/signal/attack_self(mob/living/carbon/human/user)
@@ -650,7 +669,7 @@
 		if(activate_message)
 			visible_message(SPAN_DANGER("[src]'s flame reaches full strength. It's fully active now."), null, 5)
 		var/turf/target_turf = get_turf(src)
-		msg_admin_niche("Flare target [src] has been activated by [key_name(user, 1)] at ([target_turf.x], [target_turf.y], [target_turf.z]). (<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[target_turf.x];Y=[target_turf.y];Z=[target_turf.z]'>JMP LOC</a>)")
+		msg_admin_niche("Flare target [src] has been activated by [key_name(user, 1)] at ([target_turf.x], [target_turf.y], [target_turf.z]). [ADMIN_JUMP_COORDS(target_turf.x, target_turf.y, target_turf.z)]")
 		log_game("Flare target [src] has been activated by [key_name(user, 1)] at ([target_turf.x], [target_turf.y], [target_turf.z]).")
 		return TRUE
 

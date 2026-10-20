@@ -29,6 +29,8 @@
 
 	minimum_evolve_time = 5 MINUTES
 
+	organ_type = /obj/item/organ/xeno/runner
+
 	minimap_icon = "runner"
 
 /mob/living/carbon/xenomorph/runner
@@ -40,7 +42,6 @@
 	icon_size = 64
 	buckle_flags = CAN_BUCKLE
 	layer = MOB_LAYER
-	plasma_types = list(PLASMA_CATECHOLAMINE)
 	tier = 1
 	pixel_x = -16  //Needed for 2x2
 	old_x = -16
@@ -48,7 +49,6 @@
 	base_pixel_y = -20
 	pull_speed = -0.5
 	viewsize = 9
-	organ_value = 500 //worthless
 
 	mob_size = MOB_SIZE_XENO_SMALL
 
@@ -76,6 +76,15 @@
 
 	skull = /obj/item/skull/runner
 	pelt = /obj/item/pelt/runner
+
+/obj/item/organ/xeno/runner
+	name = "runner heart"
+	icon_state = "heart_t1"
+	item_state = "heart_t1"
+	research_value = 500
+
+	xeno_organ_flags = XENO_ORGAN_WEAK|XENO_ORGAN_TACHYCARDIA
+
 
 /mob/living/carbon/xenomorph/runner/initialize_pass_flags(datum/pass_flags_container/pass_flags_container)
 	..()
@@ -109,3 +118,26 @@
 	var/datum/action/xeno_action/onclick/xenohide/hide = get_action(bound_xeno, /datum/action/xeno_action/onclick/xenohide)
 	if(hide)
 		hide.post_attack()
+
+/datum/action/xeno_action/activable/runner_skillshot/use_ability(atom/affected_atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!istype(xeno))
+		return
+
+	if(!affected_atom || affected_atom.layer >= FLY_LAYER || !isturf(xeno.loc))
+		return
+
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
+
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] fires a burst of bone chips at [affected_atom]!"), SPAN_XENOWARNING("We fire a burst of bone chips at [affected_atom]!"))
+
+	var/turf/target = get_turf(affected_atom)
+	var/obj/projectile/projectile = new /obj/projectile(xeno.loc, create_cause_data(initial(xeno.caste_type), xeno))
+
+	var/datum/ammo/ammo_datum = GLOB.ammo_list[ammo_type]
+
+	projectile.generate_bullet(ammo_datum)
+	projectile.fire_at(target, xeno, xeno, ammo_datum.max_range, ammo_datum.shell_speed)
+
+	apply_cooldown()
+	return ..()

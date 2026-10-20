@@ -97,6 +97,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	var/hudfix_method = TRUE //TRUE to change anchor to user, FALSE to shift by py_shift
 	var/py_shift = 0
 	var/entry_animation = TRUE
+	COOLDOWN_DECLARE(radial_menu)
 
 /datum/radial_menu/Destroy()
 	Reset()
@@ -282,18 +283,29 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		current_page = WRAP(current_page + 1,1,pages+1)
 		update_screen_objects()
 
-/datum/radial_menu/proc/show_to(mob/M)
+/datum/radial_menu/proc/show_to(mob/user)
 	if(current_user)
 		hide()
-	if(!M.client || !anchor)
+	if(!user.client || !anchor)
 		return
-	current_user = M.client
+	current_user = user.client
 	//Blank
 	menu_holder = image(icon = 'icons/effects/effects.dmi', loc = anchor, icon_state = "nothing", layer = ABOVE_HUD_LAYER)
 	menu_holder.plane = ABOVE_HUD_PLANE
 	menu_holder.appearance_flags |= KEEP_APART
 	menu_holder.vis_contents += elements + close_button
 	current_user.images += menu_holder
+
+/datum/radial_menu/proc/refresh(mob/user)
+	if(!(COOLDOWN_FINISHED(src, radial_menu)))
+		return
+	if(current_user)
+		hide()
+	if(!user.client || !anchor)
+		return
+	current_user = user.client
+	current_user.images += menu_holder
+	COOLDOWN_START(src, radial_menu, 2 SECONDS)
 
 /datum/radial_menu/proc/hide()
 	if(current_user)
@@ -321,10 +333,15 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	if(!uniqueid)
 		uniqueid = "defmenu_[REF(user)]_[REF(anchor)]"
 
-	if(GLOB.radial_menus[uniqueid])
-		return
+	var/datum/radial_menu/menu
 
-	var/datum/radial_menu/menu = new
+	if(GLOB.radial_menus[uniqueid])
+		menu = GLOB.radial_menus[uniqueid]
+		menu.refresh(user)
+		return
+	else
+		menu = new
+
 	GLOB.radial_menus[uniqueid] = menu
 	if(radius)
 		menu.radius = radius
@@ -338,6 +355,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		use_labels = FALSE
 	menu.set_choices(choices, tooltips, use_labels)
 	menu.show_to(user)
+	COOLDOWN_START(menu, radial_menu, 2 SECONDS)
 	menu.wait(user, anchor, require_near)
 	var/answer = menu.selected_choice
 	qdel(menu)

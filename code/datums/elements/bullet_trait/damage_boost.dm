@@ -79,7 +79,7 @@ GLOBAL_LIST_INIT(damage_boost_vehicles, typecacheof(/obj/vehicle/multitile))
 				active_damage_mult = damage_mult
 		if("wall")
 			var/turf/closed/wall/hit_wall = hit_atom
-			if(locate(/mob/living) in hit_wall)
+			if(locate(/mob/living/carbon) in hit_wall)
 				active_damage_mult = 1 //block bonus damage reflected on mobs from wall turfs
 			else
 				active_damage_mult = damage_mult

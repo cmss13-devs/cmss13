@@ -74,6 +74,20 @@ IN_USE used for vending/denying
 	. = ..()
 	cm_build_inventory(get_listed_products(), 1, 3)
 
+	// Make us uninteractable if hidden by a door
+	for(var/obj/structure/machinery/door/door in loc)
+		RegisterSignal(door, list(COMSIG_DOOR_OPEN, COMSIG_DOOR_CLOSE), PROC_REF(check_doors))
+		if(door.density)
+			mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/// This will update the mouse_opacity depending on if any of the doors in our loc have density
+/obj/structure/machinery/cm_vending/proc/check_doors()
+	for(var/obj/structure/machinery/door/door in loc)
+		if(door.density)
+			mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+			return
+	mouse_opacity = initial(mouse_opacity)
+
 /obj/structure/machinery/cm_vending/update_icon()
 	//restoring sprite to initial
 	overlays.Cut()
@@ -1023,26 +1037,26 @@ GLOBAL_LIST_EMPTY(vending_products)
 	.["vendor_type"] = "sorted"
 	.["displayed_categories"] = vendor_user_inventory_list(user, null, 4)
 
-/obj/structure/machinery/cm_vending/sorted/MouseDrop_T(atom/movable/A, mob/user)
+/obj/structure/machinery/cm_vending/sorted/MouseDrop_T(atom/movable/dropped_thing, mob/user)
 
 	if(inoperable())
 		return
 
-	if(!isturf(A.loc) && !ishuman(A.loc))
+	if(!isturf(dropped_thing.loc) && !ishuman(dropped_thing.loc))
 		return
 
 	if(user.stat || user.is_mob_restrained())
 		return
 
-	if(get_dist(user, src) > 1 || get_dist(src, A) > 1)
+	if(get_dist(user, src) > 1 || get_dist(src, dropped_thing) > 1)
 		return
 
 	if(!ishuman(user))
 		return
 
 	// Try to bulk restock using a container
-	if(istype(A, /obj/item/storage))
-		var/obj/item/storage/container = A
+	if(istype(dropped_thing, /obj/item/storage) && !istype(dropped_thing, /obj/item/storage/pill_bottle))
+		var/obj/item/storage/container = dropped_thing
 		if(!length(container.contents))
 			return
 		if(being_restocked)
@@ -1071,11 +1085,11 @@ GLOBAL_LIST_EMPTY(vending_products)
 		SPAN_NOTICE("You finish stocking [src] with supplies."))
 		return
 
-	if(istype(A, /obj/item))
-		stock(A, user)
+	if(istype(dropped_thing, /obj/item))
+		stock(dropped_thing, user)
 
 /obj/structure/machinery/cm_vending/sorted/proc/stock(obj/item/item_to_stock, mob/user)
-	if(istype(item_to_stock, /obj/item/storage))
+	if(istype(item_to_stock, /obj/item/storage) && !istype(item_to_stock, /obj/item/storage/pill_bottle))
 		return FALSE
 
 	var/list/stock_listed_products = get_listed_products(user)
@@ -1101,6 +1115,16 @@ GLOBAL_LIST_EMPTY(vending_products)
 			else if(istype(item_to_stock, /obj/item/stack))
 				var/obj/item/stack/item_stack = item_to_stock
 				partial_stacks = item_stack.amount % item_stack.max_amount
+
+			else if(istype(item_to_stock, /obj/item/storage/pill_bottle))
+				var/obj/item/storage/pill_bottle/pillbottle = item_to_stock
+				var/count = 0
+				for(var/obj/item/reagent_container/pill in pillbottle.contents)
+					if(pill.type == pillbottle.pill_type_to_fill)
+						count++
+				if(count != pillbottle.max_storage_space)
+					to_chat(user, SPAN_WARNING("[pillbottle] needs to be full of it's own kind of pills to restocked!"))
+					return FALSE
 
 			if(!additional_restock_checks(item_to_stock, user, vendspec))
 				// the error message needs to go in the proc
@@ -1183,18 +1207,22 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/effect/essentials_set
 	var/list/spawned_gear_list
 
-/obj/effect/essentials_set/New(loc)
-	..()
+/obj/effect/essentials_set/Initialize(mapload, ...)
+	. = ..()
+	if(loc) // Don't spawn stuff in nullspace please
+		spawn_stuff()
+	return INITIALIZE_HINT_QDEL
+
+/obj/effect/essentials_set/proc/spawn_stuff()
 	for(var/typepath in spawned_gear_list)
 		if(spawned_gear_list[typepath])
 			new typepath(loc, spawned_gear_list[typepath])
 		else
 			new typepath(loc)
-	qdel(src)
 
 //same thing, but spawns only 1 item from the list
-/obj/effect/essentials_set/random/New(loc)
-	if(!spawned_gear_list)
+/obj/effect/essentials_set/random/spawn_stuff()
+	if(!length(spawned_gear_list))
 		return
 
 	var/typepath = pick(spawned_gear_list)
@@ -1202,7 +1230,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 		new typepath(loc, TRUE)
 	else
 		new typepath(loc)
-	qdel(src)
 
 
 //---helper glob data

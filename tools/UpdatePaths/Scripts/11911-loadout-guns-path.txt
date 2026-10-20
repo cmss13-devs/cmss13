@@ -1,0 +1,4 @@
+/obj/item/storage/box/clf : /obj/item/storage/box/fluff_gun/clf{@OLD}
+/obj/item/storage/box/upp : /obj/item/storage/box/fluff_gun/upp{@OLD}
+/obj/item/storage/box/action : /obj/item/storage/box/fluff_gun/action{@OLD}
+/obj/item/storage/box/plinker : /obj/item/storage/box/fluff_gun/plinker{@OLD}

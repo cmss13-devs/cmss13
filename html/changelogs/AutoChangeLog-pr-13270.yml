@@ -1,0 +1,5 @@
+author: "Ghostsheet"
+delete-after: True
+changes:
+  - balance: "Increased XM88 bullet speed by 4."
+  - balance: "XM88 can no longer use barrel charger and extended barrel."

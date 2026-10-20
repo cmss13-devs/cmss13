@@ -378,6 +378,9 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	. = ..()
 	new /obj/item/device/radio/headset/almayer/mcom/spare(src)
 	new /obj/item/device/cotablet(src)
+	new /obj/item/device/radio/marine/command(src)
+	new /obj/item/device/radio/marine/command(src)
+	new /obj/item/device/radio/marine/command(src)
 
 /obj/structure/closet/secure_closet/cmdcabinet/comms_mp
 	name = "communications cabinet"

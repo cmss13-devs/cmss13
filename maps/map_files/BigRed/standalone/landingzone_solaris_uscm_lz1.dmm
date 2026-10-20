@@ -155,7 +155,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 32
 	},
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "cF" = (

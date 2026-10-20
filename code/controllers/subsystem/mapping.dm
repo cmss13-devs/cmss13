@@ -165,7 +165,9 @@ SUBSYSTEM_DEF(mapping)
 		for (var/i in 1 to total_z)
 			traits += list(default_traits)
 	else if (total_z != length(traits))  // mismatch
-		INIT_ANNOUNCE("WARNING: [length(traits)] trait sets specified for [total_z] z-levels in [path]!")
+		var/warning = "WARNING: [length(traits)] trait sets specified for [total_z] z-levels in [path]!"
+		INIT_ANNOUNCE(warning)
+		stack_trace(warning)
 		if (total_z < length(traits))  // ignore extra traits
 			traits.Cut(total_z + 1)
 		while (total_z > length(traits))  // fall back to defaults on extra levels

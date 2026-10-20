@@ -4,6 +4,7 @@
 	icon_state = "x2"
 	anchored = TRUE
 	unacidable = TRUE
+	flags_atom = NO_ZFALL
 
 	var/invisibility_value = INVISIBILITY_MAXIMUM
 	var/spawn_chance = 100
@@ -456,9 +457,9 @@
 	icon_state = "mo_spawn"
 	job = /datum/job/command/pilot/whiskey
 
-/obj/effect/landmark/start/whiskey/tank_crew
+/obj/effect/landmark/start/whiskey/warden
 	icon_state = "spec_hg_spawn"
-	job = /datum/job/command/tank_crew/whiskey
+	job = /datum/job/command/warden/whiskey
 
 /obj/effect/landmark/start/whiskey/intel
 	icon_state = "io_spawn"
@@ -529,6 +530,11 @@
 	name = "working joe late join"
 	icon_state = "late_join_misc"
 	job = JOB_WORKING_JOE
+
+/obj/effect/landmark/late_join/working_joe/colony
+	name = "colony working joe late join"
+	icon_state = "late_join_misc"
+	job = JOB_COLONY_JOE
 
 /obj/effect/landmark/late_join/dzho_automaton
 	name = "dzho automaton late join"
@@ -674,6 +680,43 @@
 	GLOB.comm_tower_landmarks_net_two -= src
 	return ..()
 
+//****************************************** SENSORS ************************************************//
+
+/obj/effect/landmark/sensors
+	name = "sensors spawn"
+	icon = 'icons/obj/structures/machinery/motion_sensor_v2.dmi'
+	icon_state = "sensor_sdmm"
+
+/obj/effect/landmark/sensors/Initialize(mapload, ...)
+	GLOB.sensor_tower_landmarks += src
+	. = ..()
+
+/obj/effect/landmark/sensors/Destroy()
+	GLOB.sensor_tower_landmarks -= src
+	return ..()
+
+/obj/effect/landmark/sensors/proc/spawn_tower()
+	new/obj/structure/machinery/sensortower(loc)
+
+
+/obj/effect/landmark/short_range_sensors
+	name = "short range sensors spawn"
+	icon = 'icons/obj/structures/machinery/motion_sensor_v2.dmi'
+	icon_state = "sensors_tower_small_sdmm"
+
+/obj/effect/landmark/short_range_sensors/Initialize(mapload, ...)
+	GLOB.small_sensor_tower_landmarks += src
+	. = ..()
+
+/obj/effect/landmark/short_range_sensors/Destroy()
+	GLOB.small_sensor_tower_landmarks -= src
+	return ..()
+
+/obj/effect/landmark/short_range_sensors/proc/spawn_tower()
+	new/obj/structure/machinery/sensortower/short_range(loc)
+	qdel(src)
+
+
 // AMMO SPAWN (tyrargo)
 
 // m41a ammo
@@ -772,7 +815,7 @@
 		GLOB.zombie_landmarks -= src
 	anim(loc, loc, 'icons/mob/mob.dmi', null, "zombie_rise", 12, SOUTH)
 	observer.see_invisible = SEE_INVISIBLE_LIVING
-	observer.client.set_eye(src) // gives the player a second to orient themselves to the spawn zone
+	observer.client?.set_eye(src) // gives the player a second to orient themselves to the spawn zone
 	addtimer(CALLBACK(src, PROC_REF(handle_zombie_spawn), observer), 1 SECONDS)
 
 /obj/effect/landmark/zombie/proc/handle_zombie_spawn(mob/dead/observer/observer)
@@ -780,7 +823,7 @@
 	if(!zombie.hud_used)
 		zombie.create_hud()
 	arm_equipment(zombie, /datum/equipment_preset/other/zombie, randomise = TRUE, count_participant = TRUE, mob_client = observer.client, show_job_gear = TRUE)
-	observer.client.set_eye(zombie)
+	observer.client?.set_eye(zombie)
 	observer.mind.transfer_to(zombie)
 	if(spawns_left <= 0)
 		qdel(src)

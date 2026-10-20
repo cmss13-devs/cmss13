@@ -1,0 +1,4 @@
+author: "ComboTombo"
+delete-after: True
+changes:
+  - balance: "Re-added large magazine pouches and large shotgun shell pouches to rifleman, engineer, and medic vendors"

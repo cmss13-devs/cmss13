@@ -1,0 +1,134 @@
+2026-10-01:
+  Drathek:
+  - bugfix: Fixed buried spawns handling namely to allow buried spawns if there's
+      not atleast one xeno
+  Mary-Marilyn:
+  - bugfix: Fixed players receiving access to Aghost through another player's moderator
+      permissions.
+2026-10-02:
+  Drathek:
+  - bugfix: Survivor roles are now slotted in random order so that its random if whitelisted
+      survivors take slots first or not
+  - bugfix: Role weights for fax responders, predators, and whitelisted roles are
+      now set rather than falling back to shipside weight
+  MistChristmas:
+  - bugfix: Trial Admins can use the VV Combat logs again
+  fira:
+  - bugfix: Fix Check CKeys admin verb matching ckeys it shouldn't.
+2026-10-03:
+  Mary-Marilyn:
+  - maptweak: Shivas snowball is now locked to 100 pop
+2026-10-04:
+  Kortev:
+  - maptweak: Remove two cubicles upper part of Press FAX, replaced with break room,
+      bathroom made bigger. Coffee, Cups, pizza box, and coffemaker added, alongside
+      trash bin
+  cuberound:
+  - rscadd: Adds 'Short Range Sensors' to the game. These towers will reveal the presence
+      of Xenomorphs on the minimap to the CIC within a range of 30 tiles. These are
+      not currently added to any map.
+  - rscadd: Adds the option for mappers to designate multiple randomly selected spawn
+      locations for Sensor Towers and Short Range Sensor Towers. This will function
+      similar to the randomly selected communication tower spawners. Each map by default
+      will spawn a single Sensor Tower and zero Small Sensor Towers. The JSON can
+      be edited by a mapper to increase the amount of small towers as desired. No
+      maps are edited to add sensor tower spawn locations in this PR.
+  zzzmike:
+  - qol: Changes resin hole message to account for huggers rather than only acid
+2026-10-05:
+  Nihisohel:
+  - rscadd: You can now use middle mouse button to open hat (boonie hats, etc) storage
+  - bugfix: You can use middle mouse button to open clothing storage items again
+  ghostsheet:
+  - bugfix: MOU53 examine will now show the correct shell order.
+  predatornc:
+  - rscadd: a new CL briefing has replaced the placeholder one on LV-624
+2026-10-06:
+  Andywastaken:
+  - rscadd: Added helpful APC examine tips. Examining an APC will now tell you what
+      tool to use to repair/build/dismantle, like wall girders.
+  - code_imp: Replaced hardcoded APC status and APC cable coil amounts with defines.
+  Drathek:
+  - bugfix: Admins.txt fallback should now only occur if fetch_api_admins fails (and
+      not just sleeps)
+  Ghostsheet:
+  - qol: Added keybind for blowing into a whistle normally, unbound by default
+  JHINgle4ce:
+  - bugfix: fixed an issue where multiple characters could drag the same item simultaneously.
+  Kugamo:
+  - code_imp: removed an unnecessary chair variable
+  - bugfix: shimmied mobs now get their offsets reset if the object being shimmied
+      around gets destroyed
+  - qol: you can now shimmy past seated people in immovable seats!
+  Yachuk:
+  - bugfix: "Fixes the issue where you cannot mount on an M2\u0421 in unpowered areas\
+      \ (ex. caves)"
+  - code_imp: M56Ds and its children objects are no longer connected to the powergrid
+2026-10-10:
+  Drathek:
+  - qol: Character slot selection now displays the current slot differently
+  - bugfix: Preference version upgrades now trigger a save immediately
+  - bugfix: Debugger option quick start will now set CO job selection regardless of
+      save data existing
+  - server: Preferences now use json
+  - server: Many cmdb tables now have an index
+2026-10-12:
+  JHINgle4ce:
+  - bugfix: fixed blank R&D contracts
+  - bugfix: allows xeno to interact through xeno special structures
+  - rscdel: Removed platform overlay
+  Puckaboo2:
+  - qol: You can close an incision on a sawed and closed skull/ribcage without needing
+      bone gel first in case you run out of bone gel and need to close the patient
+      NOW.
+2026-10-13:
+  Taushai:
+  - bugfix: fixed the preview dummy disappearing after reconnecting to the same round.
+2026-10-14:
+  TrollerNoob:
+  - rscadd: Signal Flare's flashing light changes color depending on the roof. Green
+      in open/glass, yellow in metal, red in anything higher.
+  - imageadd: Added Yellow and Red flashing light states for Signal Flare.
+2026-10-15:
+  Venuska1117:
+  - refactor: Updates Ravager code with new define and spaces.
+2026-10-16:
+  Drathek:
+  - bugfix: Traits are now sanitized in preferences like gear and should load properly
+      again
+  - ui: Fixed synth slots in loadout UI just overflowing off screen
+  - ui: Fixed loadout/trait UIs overflowing scrollbars & misc layout changes
+  Steelpoint:
+  - maptweak: Fixes several hull window tiles in the researcher observation deck on
+      White Antre Research Facility not having floors underneath them.
+  - maptweak: On Chances Claim, several missing air pipes have been added to A-Block.
+2026-10-17:
+  IowaPotatoFarmer:
+  - balance: The M16s on Kutjevo Refinery have been replaced by M20A rifles.
+  Steelpoint:
+  - maptweak: The reception bell in the Almayer computer laboratory is now properly
+      anchored, and can thus now be rung.
+  - maptweak: The front reception door control for the Corporate Liaison office entrance
+      now functions as intended.
+  - maptweak: Adds a set of blastdoors to the eastern section of the CIC conference
+      room.
+2026-10-19:
+  Drathek:
+  - bugfix: Fixed Halloween cobweb decorator not applying transform for rotation and
+      scale
+  Kugamo:
+  - bugfix: Locked escape pod doors will now unlock upon FTL initiation.
+  - bugfix: Lightning briefly flashes the groundmap again.
+  Puckaboo2:
+  - code_imp: Tweaked some text to sound more fluid and less informal.
+  - spellcheck: Corrects grammar, misspells, and missing punctuation in xeno caste
+      files.
+  - spellcheck: Any use of first or second person in regard to xeno castes has been
+      changed to third person.
+  labeo0:
+  - qol: You can Ctrl+Click storage items capable of changing storage drawing methods.
+      Examining these items gives a note in chat about it.
+2026-10-20:
+  ComboTombo:
+  - rscadd: Added M41A Mk1 rifle kits
+  - balance: Re-added M41A Mk1 rifles to the SL vendor

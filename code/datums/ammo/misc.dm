@@ -66,7 +66,7 @@
 	landingsmoke = null
 
 /datum/ammo/flamethrower/sentry_flamer
-	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER|AMMO_FLAME
+	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER|AMMO_FLAME|AMMO_NO_DEFLECT
 	flamer_reagent_id = "napalmx"
 
 	accuracy = HIT_ACCURACY_TIER_8
@@ -83,21 +83,11 @@
 /datum/ammo/flamethrower/sentry_flamer/glob
 	max_range = 14
 	accurate_range = 10
-	var/datum/effect_system/smoke_spread/phosphorus/smoke
-
-/datum/ammo/flamethrower/sentry_flamer/glob/New()
-	. = ..()
-	smoke = new()
 
 /datum/ammo/flamethrower/sentry_flamer/glob/drop_flame(turf/T, datum/cause_data/cause_data)
 	if(!istype(T))
 		return
-	smoke.set_up(1, 0, T, new_cause_data = cause_data)
-	smoke.start()
-
-/datum/ammo/flamethrower/sentry_flamer/glob/Destroy()
-	qdel(smoke)
-	return ..()
+	do_smoke(loca = T, cause_data = cause_data)
 
 /datum/ammo/flamethrower/sentry_flamer/mini
 	name = "normal fire"
@@ -266,39 +256,29 @@
 	shrapnel_chance = 0
 	loaded_icon = "expl"
 	arrow_icon = "arrow_expl_active"
-	var/datum/effect_system/smoke_spread/smoke
 
 /datum/ammo/arrow/expl/dynamic
 	name = "explosive dynamic arrow"
 	handful_type = /obj/item/arrow/dynamic_warhead
 
-/datum/ammo/arrow/expl/New()
-	. = ..()
-	smoke = new()
-
 /datum/ammo/arrow/expl/on_hit_mob(mob/mob,obj/projectile/projectile)
 	cell_explosion(get_turf(mob), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
-	smoke.set_up(1, get_turf(mob))
-	smoke.start()
+	do_smoke(loca = mob)
 
 /datum/ammo/arrow/expl/on_hit_obj(obj/object,obj/projectile/projectile)
 	cell_explosion(get_turf(projectile), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
-	smoke.set_up(1, get_turf(projectile))
-	smoke.start()
+	do_smoke(projectile)
 /datum/ammo/arrow/expl/on_hit_turf(turf/turf, obj/projectile/projectile)
 	if(turf.density && isturf(projectile.loc))
 		cell_explosion(get_turf(projectile), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
-		smoke.set_up(1, get_turf(projectile))
-		smoke.start()
+		do_smoke(projectile)
 	else
 		cell_explosion(turf, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
-		smoke.set_up(1, turf)
-		smoke.start()
+		do_smoke(loca = turf)
 
 /datum/ammo/arrow/expl/do_at_max_range(obj/projectile/projectile, mob/firer)
 	cell_explosion(get_turf(projectile), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
-	smoke.set_up(1, get_turf(projectile))
-	smoke.start()
+	do_smoke(projectile)
 
 /datum/ammo/arrow/emp
 	name = "activated EMP arrow"

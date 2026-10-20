@@ -8,6 +8,7 @@
 	explo_proof = TRUE
 	icon = 'icons/landmarks.dmi'
 	icon_state = "map_blocker"
+	flags_atom = NO_ZFALL
 
 /obj/structure/blocker/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -188,10 +189,3 @@
 
 /obj/structure/blocker/forcefield/human/bulletproof/get_projectile_hit_boolean()
 	return TRUE
-
-// for fuel pump since it's a large sprite.
-/obj/structure/blocker/fuelpump
-	name = "\improper Fuel Pump"
-	desc = "It is a machine that pumps fuel around the ship."
-	invisibility = 101
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

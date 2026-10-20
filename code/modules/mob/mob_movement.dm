@@ -186,7 +186,8 @@ CLIENT_VERB(drop_item)
 			move_delay += mob.next_move_slowdown
 			mob.next_move_slowdown = 0
 		if((mob.flags_atom & DIRLOCK) && mob.dir != direct)
-			move_delay += MOVE_REDUCTION_DIRECTION_LOCKED // by Geeves
+			if(!HAS_TRAIT(mob, TRAIT_NO_DIR_LOCK_SLOWDOWN))
+				move_delay += MOVE_REDUCTION_DIRECTION_LOCKED // by Geeves
 
 		mob.cur_speed = clamp(10/(move_delay + 0.5), MIN_SPEED, MAX_SPEED)
 		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL // We pre-set this now for the crawling case. If crawling do_after fails, next_movement would be set after the attempt end instead of now.

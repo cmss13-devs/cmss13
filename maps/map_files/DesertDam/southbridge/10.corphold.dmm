@@ -46,16 +46,38 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "ah" = (
-/obj/effect/blocker/water/toxic/Group_2,
 /obj/structure/largecrate/random/mini/ammo{
 	pixel_y = 8;
 	pixel_x = 4
 	},
-/turf/open/asphalt/tile,
-/area/desert_dam/exterior/river/riverside_east)
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_y = 8;
+	pixel_x = 4
+	},
+/turf/template_noop,
+/area/template_noop)
 "ai" = (
 /obj/structure/flora/grass/desert/lightgrass_3,
 /turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"aj" = (
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mgibbl3"
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"ak" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"al" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "am" = (
 /obj/structure/surface/rack,
@@ -74,6 +96,8 @@
 "bb" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/prop/colony/used_flare,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "bB" = (
@@ -83,11 +107,6 @@
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/south_valley_dam)
-"bG" = (
-/obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/gm/river/desert/shallow_edge/north,
-/area/desert_dam/exterior/river/riverside_east)
 "bS" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -109,24 +128,17 @@
 	dir = 1
 	},
 /obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"cw" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/gm/river/desert/shallow_edge/northwest,
-/area/desert_dam/exterior/river/riverside_east)
 "dg" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
 	},
 /obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"dh" = (
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/desert/desert_shore/shore_corner2/west,
-/area/desert_dam/exterior/river/riverside_east)
 "dI" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -151,11 +163,6 @@
 /obj/item/prop/colony/used_flare,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"en" = (
-/obj/structure/platform/metal/almayer,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/desert/desert_shore/shore_corner2,
-/area/desert_dam/exterior/river/riverside_east)
 "et" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/sand_overlay/sand1/corner1,
@@ -168,20 +175,6 @@
 /obj/item/prop/alien/hugger,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
-"fa" = (
-/obj/structure/platform/metal/almayer,
-/obj/structure/platform/metal/almayer/east,
-/turf/open/desert/dirt/dirt2,
-/area/desert_dam/exterior/river/riverside_east)
-"fP" = (
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/gm/river/desert/shallow_edge/northwest,
-/area/desert_dam/exterior/river/riverside_east)
-"hj" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/gm/river/desert/shallow,
-/area/desert_dam/exterior/river/riverside_east)
 "hl" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/valley/south_valley_dam)
@@ -201,10 +194,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"hV" = (
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/gm/river/desert/shallow_corner/north,
-/area/desert_dam/exterior/river/riverside_east)
 "ic" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl3"
@@ -262,6 +251,8 @@
 	dir = 1
 	},
 /obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "kC" = (
@@ -288,10 +279,6 @@
 /obj/structure/desertdam/decals/road_edge,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"lf" = (
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/gm/river/desert/shallow_edge/north,
-/area/desert_dam/exterior/river/riverside_east)
 "lj" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/asphalt/tile,
@@ -312,16 +299,6 @@
 "ml" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_medical)
-"my" = (
-/obj/structure/platform/metal/almayer,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/desert/desert_shore/shore_corner2/east,
-/area/desert_dam/exterior/river/riverside_east)
-"mB" = (
-/obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/desert/desert_shore/desert_shore1,
-/area/desert_dam/exterior/river/riverside_east)
 "mC" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
@@ -383,10 +360,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"pu" = (
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/desert/desert_shore/shore_corner2/east,
-/area/desert_dam/exterior/river/riverside_east)
 "pE" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal6"
@@ -426,20 +399,16 @@
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "2"
 	},
+/obj/item/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"qA" = (
-/obj/effect/blocker/water/toxic/Group_2,
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal2"
-	},
-/turf/open/asphalt,
-/area/desert_dam/exterior/river/riverside_east)
 "qS" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_medical)
 "rb" = (
 /obj/structure/desertdam/decals/road_edge,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -454,13 +423,10 @@
 	icon_state = "road_edge_decal2"
 	},
 /obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"sh" = (
-/obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/gm/river/desert/shallow_edge/north,
-/area/desert_dam/exterior/river/riverside_east)
 "sj" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
@@ -487,29 +453,10 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
-"sS" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/structure/platform/metal/almayer/east,
-/turf/open/desert/dirt/dirt2,
-/area/desert_dam/exterior/valley/south_valley_dam)
-"ti" = (
-/obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/desert/desert_shore/desert_shore1,
-/area/desert_dam/exterior/river/riverside_east)
-"tF" = (
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/gm/river/desert/deep,
-/area/desert_dam/exterior/river/riverside_east)
 "ug" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/south_valley_dam)
-"uL" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/desert/desert_shore/shore_corner2/north,
-/area/desert_dam/exterior/river/riverside_east)
 "uM" = (
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/asphalt/tile,
@@ -522,10 +469,8 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "uX" = (
-/obj/structure/platform/metal/almayer,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/desert/desert_shore/desert_shore1,
-/area/desert_dam/exterior/river/riverside_east)
+/turf/template_noop,
+/area/template_noop)
 "vb" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
@@ -543,10 +488,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"vl" = (
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/desert/desert_shore/shore_corner2,
-/area/desert_dam/exterior/river/riverside_east)
 "vq" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -566,15 +507,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"vV" = (
-/obj/structure/disposalpipe/segment,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/asphalt/tile,
-/area/desert_dam/exterior/river/riverside_east)
-"wb" = (
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/gm/river/desert/shallow_edge/southeast,
-/area/desert_dam/exterior/river/riverside_east)
 "wj" = (
 /obj/structure/desertdam/decals/road_stop{
 	icon_state = "stop_decal5"
@@ -594,14 +526,6 @@
 /obj/structure/platform/metal/almayer/west,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/valley/south_valley_dam)
-"xd" = (
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/gm/river/desert/shallow_edge/covered/north,
-/area/desert_dam/exterior/river/riverside_east)
-"xg" = (
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/gm/river/desert/shallow,
-/area/desert_dam/exterior/river/riverside_east)
 "xh" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
@@ -642,6 +566,8 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "yq" = (
 /obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/valley_medical)
 "zq" = (
@@ -654,10 +580,6 @@
 /obj/structure/prop/hybrisa/vehicles/Armored_Truck/WY_White,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"AB" = (
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/desert/desert_shore/desert_shore1/north,
-/area/desert_dam/exterior/river/riverside_east)
 "AN" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
@@ -674,22 +596,15 @@
 /obj/structure/flora/grass/desert/lightgrass_2,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
-"Bp" = (
-/obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/gm/river/desert/shallow_edge,
-/area/desert_dam/exterior/river/riverside_east)
 "BC" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached20,
 /area/desert_dam/exterior/valley/valley_medical)
-"BV" = (
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/gm/river/desert/shallow_corner/east,
-/area/desert_dam/exterior/river/riverside_east)
 "Ce" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/river/riverside_east)
@@ -717,22 +632,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"Dt" = (
-/obj/effect/blocker/water/toxic/Group_2,
-/obj/structure/desertdam/decals/road_edge,
-/turf/open/asphalt,
-/area/desert_dam/exterior/river/riverside_east)
-"DE" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/desert/desert_shore/desert_shore1/north,
-/area/desert_dam/exterior/river/riverside_east)
-"DV" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/desert/desert_shore/desert_shore1/north,
-/area/desert_dam/exterior/valley/south_valley_dam)
 "EU" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -740,10 +639,10 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "EW" = (
-/obj/effect/blocker/water/toxic/Group_2,
 /obj/item/ammo_casing/bullet,
-/turf/open/gm/river/desert/shallow_edge/covered/north,
-/area/desert_dam/exterior/river/riverside_east)
+/obj/item/ammo_casing/bullet,
+/turf/template_noop,
+/area/template_noop)
 "Fd" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal12"
@@ -761,11 +660,6 @@
 /obj/item/prop/alien/hugger,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"FB" = (
-/obj/effect/blocker/water/toxic/Group_2,
-/obj/structure/disposalpipe/segment,
-/turf/open/gm/river/desert/deep,
-/area/desert_dam/exterior/river/riverside_east)
 "FC" = (
 /obj/structure/bed/roller,
 /obj/structure/closet/bodybag,
@@ -821,20 +715,10 @@
 /obj/structure/closet/bodybag,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_medical)
-"Im" = (
-/obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/gm/river/desert/shallow_edge,
-/area/desert_dam/exterior/river/riverside_east)
 "It" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
 /area/desert_dam/exterior/valley/south_valley_dam)
-"Iw" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/desert/desert_shore/shore_corner2/west,
-/area/desert_dam/exterior/river/riverside_east)
 "IA" = (
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -850,10 +734,6 @@
 /obj/effect/spawner/random/sentry/lowchance,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"JU" = (
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/gm/river/desert/shallow_edge/covered,
-/area/desert_dam/exterior/river/riverside_east)
 "JW" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -911,13 +791,10 @@
 	pixel_x = -15;
 	pixel_y = -21
 	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"KQ" = (
-/obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/desert/desert_shore/desert_shore1/north,
-/area/desert_dam/exterior/river/riverside_east)
 "Lm" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /turf/open/asphalt/tile,
@@ -936,10 +813,6 @@
 	current_rounds = 0
 	},
 /turf/open/asphalt,
-/area/desert_dam/exterior/river/riverside_east)
-"Mc" = (
-/obj/structure/platform/metal/almayer,
-/turf/open/desert/dirt/dirt2,
 /area/desert_dam/exterior/river/riverside_east)
 "MG" = (
 /obj/item/ammo_magazine/smg/m39{
@@ -961,15 +834,6 @@
 /obj/item/prop/colony/used_flare,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
-"Nb" = (
-/obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/gm/river/desert/shallow,
-/area/desert_dam/exterior/river/riverside_east)
-"Nm" = (
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/asphalt/tile,
-/area/desert_dam/exterior/river/riverside_east)
 "NN" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /obj/effect/decal/sand_overlay/sand1/corner1{
@@ -1001,10 +865,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/river/riverside_east)
-"Ow" = (
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/gm/river/desert/shallow_edge,
-/area/desert_dam/exterior/river/riverside_east)
 "OG" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl3"
@@ -1016,11 +876,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_medical)
-"Pc" = (
-/obj/structure/platform/metal/almayer,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/desert/desert_shore/shore_edge1,
-/area/desert_dam/exterior/river/riverside_east)
 "Pe" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -1055,11 +910,6 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
-"PT" = (
-/obj/structure/platform_decoration/metal/almayer/east,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/desert/desert_shore/desert_shore1/north,
-/area/desert_dam/exterior/river/riverside_east)
 "PW" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
@@ -1067,10 +917,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"Qc" = (
-/obj/structure/platform/metal/almayer/north,
-/turf/open/desert/dirt/dirt2,
-/area/desert_dam/exterior/valley/south_valley_dam)
 "Qv" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
@@ -1082,10 +928,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"QY" = (
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/asphalt,
-/area/desert_dam/exterior/river/riverside_east)
 "RN" = (
 /obj/structure/fence,
 /turf/open/desert/dirt,
@@ -1100,11 +942,6 @@
 "Sn" = (
 /obj/structure/desertdam/decals/road_edge,
 /turf/open/asphalt,
-/area/desert_dam/exterior/river/riverside_east)
-"Tf" = (
-/obj/structure/platform/metal/almayer,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/desert/desert_shore/shore_edge1/west,
 /area/desert_dam/exterior/river/riverside_east)
 "TD" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -1127,10 +964,6 @@
 /obj/effect/spawner/random/gun/corporate,
 /obj/effect/landmark/corpsespawner/wygoon/lead/trijent,
 /turf/open/asphalt,
-/area/desert_dam/exterior/river/riverside_east)
-"Uj" = (
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/riverside_east)
 "UI" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -1157,11 +990,6 @@
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"Vx" = (
-/obj/structure/platform/metal/almayer,
-/obj/structure/platform/metal/almayer/west,
-/turf/open/desert/dirt/dirt2,
-/area/desert_dam/exterior/river/riverside_east)
 "VB" = (
 /obj/item/ammo_magazine/smg/m39{
 	current_rounds = 0
@@ -1203,10 +1031,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/valley_medical)
-"Xf" = (
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/desert/desert_shore/desert_shore1,
-/area/desert_dam/exterior/river/riverside_east)
 "XS" = (
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/south_valley_dam)
@@ -1216,11 +1040,6 @@
 "Yi" = (
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/south_valley_dam)
-"YF" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/desert/desert_shore/shore_edge1/east,
-/area/desert_dam/exterior/river/riverside_east)
 "YJ" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/asphalt,
@@ -1230,11 +1049,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_medical)
-"Zp" = (
-/obj/structure/platform_decoration/metal/almayer/west,
-/obj/effect/blocker/water/toxic/Group_2,
-/turf/open/desert/desert_shore/desert_shore1/north,
-/area/desert_dam/exterior/river/riverside_east)
 "Zz" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -1252,14 +1066,14 @@ MO
 bB
 kC
 WJ
-hj
-xg
-lf
-tF
-tF
-tF
-tF
-Ow
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
 uX
 uM
 RN
@@ -1278,14 +1092,14 @@ MO
 bS
 oN
 xS
-Iw
-xg
-lf
-tF
-tF
-tF
-BV
-wb
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
 uX
 NN
 CC
@@ -1304,14 +1118,14 @@ MO
 bB
 kC
 WJ
-DE
-xg
-lf
-tF
-tF
-tF
-Ow
-xg
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
 uX
 uM
 RN
@@ -1330,20 +1144,20 @@ Qv
 bB
 kC
 WJ
-YF
-dh
-lf
-tF
-tF
-tF
-Ow
-pu
-Tf
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
 uM
 RN
 pZ
 Ds
-ht
+ak
 Ks
 hU
 bb
@@ -1356,15 +1170,15 @@ MO
 bB
 kC
 WJ
-Qc
-AB
-lf
-tF
-tF
-tF
-Ow
-Xf
-Mc
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
 uM
 RN
 pH
@@ -1382,15 +1196,15 @@ MO
 bB
 kC
 WJ
-Qc
-AB
-lf
-tF
-tF
-tF
-Ow
-Xf
-Mc
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
 uM
 RN
 ih
@@ -1408,15 +1222,15 @@ vb
 Gd
 oN
 Kz
-sS
-KQ
-sh
-tF
-tF
-tF
-Bp
-mB
-fa
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
 xu
 CC
 Py
@@ -1437,11 +1251,11 @@ ug
 Yi
 GJ
 ah
-tF
-tF
-tF
-Nm
-Nm
+uX
+uX
+uX
+uX
+uX
 vJ
 na
 BC
@@ -1463,11 +1277,11 @@ xl
 sy
 Sn
 EW
-Uj
-Uj
-Uj
-JU
-Dt
+uX
+uX
+uX
+uX
+uX
 Pr
 oS
 le
@@ -1476,7 +1290,7 @@ Kc
 Po
 uO
 hU
-Po
+aj
 Gk
 FC
 "}
@@ -1488,14 +1302,14 @@ XW
 Na
 jR
 Ua
-xd
-tF
-Uj
-tF
-Uj
-QY
+uX
+uX
+uX
+uX
+uX
+uX
 LU
-ht
+ak
 zq
 Zz
 ny
@@ -1514,14 +1328,14 @@ ZY
 XW
 ag
 Ce
-Uj
-Uj
-tF
-tF
-Uj
-QY
+uX
+uX
+uX
+uX
+uX
+uX
 dI
-ht
+al
 Ke
 TZ
 ny
@@ -1540,12 +1354,12 @@ sI
 sI
 UI
 Wt
-tF
-Uj
-Uj
-Uj
-JU
-qA
+uX
+uX
+uX
+uX
+uX
+uX
 Od
 lo
 lo
@@ -1566,12 +1380,12 @@ It
 Fm
 Fm
 lj
-vV
-FB
-FB
-FB
-vV
-vV
+uX
+uX
+uX
+uX
+uX
+uX
 lj
 MJ
 et
@@ -1590,15 +1404,15 @@ ZY
 MO
 nV
 Yi
-DV
-Nb
-bG
-tF
-tF
-tF
-Im
-ti
-Vx
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
 Lm
 CC
 Bj
@@ -1616,15 +1430,15 @@ XW
 MO
 LA
 wx
-PT
-xg
-lf
-tF
-tF
-tF
-Ow
-Xf
-Mc
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
 uM
 RN
 Vc
@@ -1642,15 +1456,15 @@ sI
 ar
 LA
 Ku
-Zp
-fP
-hV
-tF
-tF
-tF
-Ow
-vl
-Pc
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
 uM
 RN
 ih
@@ -1668,14 +1482,14 @@ wk
 wk
 hl
 Yi
-DE
-lf
-tF
-tF
-tF
-tF
-Ow
-xg
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
 uX
 uM
 RN
@@ -1694,20 +1508,20 @@ iJ
 jv
 IA
 IA
-uL
-lf
-tF
-tF
-tF
-tF
-Ow
-xg
-en
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
 uM
 RN
 ih
 ab
-zq
+ht
 ic
 xh
 bW
@@ -1720,15 +1534,15 @@ XS
 WD
 am
 IA
-hj
-lf
-tF
-tF
-tF
-tF
-Ow
-xg
-my
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
 NN
 CC
 kT
@@ -1746,14 +1560,14 @@ XS
 XS
 XS
 jv
-cw
-hV
-tF
-tF
-tF
-tF
-Ow
-xg
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
 uX
 uM
 RN

@@ -99,3 +99,5 @@
 
 /// From /mob/living/carbon/xenomorph/larva/proc/chest_burst
 #define COMSIG_XENO_BURSTED "xeno_burst"
+
+#define COMSIG_XENO_ORGAN_REMOVED "xeno_organ_removed"

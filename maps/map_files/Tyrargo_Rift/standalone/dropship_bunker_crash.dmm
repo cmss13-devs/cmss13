@@ -184,7 +184,7 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
-/obj/structure/machinery/m56d_hmg/mg_turret/dropship,
+/obj/structure/machinery/m56d_hmg/mg_turret,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
 "ap" = (

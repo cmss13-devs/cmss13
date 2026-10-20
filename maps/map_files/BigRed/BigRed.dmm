@@ -114,7 +114,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 32
 	},
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aaB" = (
@@ -1953,12 +1953,24 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
+"aho" = (
+/obj/structure/machinery/recharge_station/alt{
+	dir = 8;
+	layer = 3.1
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/filtration_plant)
 "ahp" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
+"ahq" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/plating,
+/area/bigredv2/outside/filtration_plant)
 "ahr" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/dark,
@@ -2088,13 +2100,35 @@
 "ahT" = (
 /turf/open/floor/asteroidwarning/southeast,
 /area/bigredv2/outside/nw)
+"ahU" = (
+/obj/structure/machinery/cryopod/joe/weyland{
+	pixel_y = 25;
+	pixel_x = 1;
+	density = 0
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/filtration_plant)
 "ahV" = (
 /turf/open/mars/mars_dirt_12,
 /area/bigredv2/outside/nw)
+"ahW" = (
+/obj/structure/machinery/cryopod/joe/weyland{
+	pixel_y = 25;
+	pixel_x = -2;
+	density = 0
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/filtration_plant)
 "ahX" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/mars,
 /area/bigredv2/outside/nw)
+"ahY" = (
+/obj/structure/machinery/recharge_station/alt{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/filtration_plant)
 "aia" = (
 /obj/structure/machinery/door_control{
 	id = "Marshal Offices";
@@ -10051,12 +10085,12 @@
 "aSR" = (
 /obj/structure/pipes/vents/pump,
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/smg/mp27,
+/obj/item/weapon/gun/rifle/m20a,
 /turf/open/floor/redcorner/west,
 /area/bigredv2/outside/admin_building)
 "aSS" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/smg/mp27,
+/obj/item/weapon/gun/rifle/m20a,
 /turf/open/floor/redcorner/west,
 /area/bigredv2/outside/admin_building)
 "aST" = (
@@ -10429,6 +10463,8 @@
 /turf/open/floor/podhatchfloor,
 /area/bigredv2/outside/admin_building)
 "aVk" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/m20a,
 /turf/open/floor/redcorner/west,
 /area/bigredv2/outside/admin_building)
 "aVl" = (
@@ -14222,8 +14258,8 @@
 /turf/open/floor/almayer/test_floor4,
 /area/bigredv2/outside/engineering)
 "bok" = (
-/obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random,
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/engineering)
 "boq" = (
@@ -15612,7 +15648,9 @@
 /turf/open/floor/darkblue2/west,
 /area/bigredv2/caves/eta/storage)
 "bxw" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 8
+	},
 /turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bxx" = (
@@ -20651,7 +20689,9 @@
 /area/bigredv2/caves/mining)
 "eWB" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 1
+	},
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/dorms)
 "eWE" = (
@@ -24005,9 +24045,7 @@
 "iFT" = (
 /obj/structure/platform_decoration/metal/almayer/west,
 /obj/structure/platform_decoration/metal/almayer,
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/bluegrid/bcircuitoff,
 /area/bigredv2/caves/lambda/research)
 "iGp" = (
@@ -25195,7 +25233,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "jYF" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/almayer/test_floor4,
 /area/bigredv2/outside/engineering)
 "jYL" = (
@@ -25494,9 +25532,7 @@
 "kkJ" = (
 /obj/structure/platform_decoration/metal/almayer/north,
 /obj/structure/platform_decoration/metal/almayer/east,
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /obj/item/stack/cable_coil/random,
 /turf/open/floor/bluegrid/bcircuitoff,
 /area/bigredv2/caves/lambda/research)
@@ -27952,9 +27988,7 @@
 /area/bigredv2/outside/space_port)
 "mSC" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/bluegrid/bcircuitoff,
 /area/bigredv2/caves/lambda/research)
 "mSS" = (
@@ -28656,9 +28690,9 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "nFB" = (
-/obj/item/weapon/gun/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
+/obj/item/weapon/gun/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/mars_cave/mars_cave_3,
 /area/bigredv2/caves/mining)
 "nGl" = (
@@ -32349,12 +32383,10 @@
 "rtV" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/landmark/corpsespawner/miner,
-/obj/item/weapon/gun/rifle/m16{
-	pixel_x = 10
-	},
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
 /obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
 "ruo" = (
@@ -32656,7 +32688,9 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 1
+	},
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/dorms)
 "rKP" = (
@@ -36605,11 +36639,12 @@
 /area/bigredv2/outside/n)
 "vCd" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/twohanded/lungemine{
+/obj/item/weapon/twohanded/lungemine/damaged{
 	pixel_y = 8
 	},
-/obj/item/weapon/twohanded/lungemine{
-	pixel_y = -7
+/obj/item/weapon/twohanded/lungemine/damaged{
+	pixel_y = 3;
+	pixel_x = 7
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
@@ -65113,8 +65148,8 @@ atJ
 asv
 asv
 awp
-bkT
-bkU
+ahU
+ahq
 bkT
 bkU
 bkT
@@ -65326,8 +65361,8 @@ bep
 bep
 bqa
 awp
-bkU
-bkU
+ahW
+ahq
 bkU
 bkU
 bkU
@@ -65541,8 +65576,8 @@ bpX
 awp
 bkT
 blG
-bkT
-bkU
+ahY
+aho
 bkT
 bkU
 awp

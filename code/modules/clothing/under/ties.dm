@@ -855,6 +855,7 @@
 /obj/item/clothing/accessory/storage/Initialize()
 	. = ..()
 	hold = new hold(src)
+	hold.storage_flags |= STORAGE_FLAGS_POUCH
 
 /obj/item/clothing/accessory/storage/Destroy()
 	QDEL_NULL(hold)
@@ -862,6 +863,8 @@
 
 /obj/item/clothing/accessory/storage/clicked(mob/user, list/mods)
 	if(mods[ALT_CLICK] && !isnull(hold) && loc == user && !user.get_active_hand()) //To pass quick-draw attempts to storage. See storage.dm for explanation.
+		return
+	if(mods[CTRL_CLICK] && loc == user && (hold.storage_flags & STORAGE_ALLOW_DRAWING_METHOD_TOGGLE))
 		return
 	. = ..()
 
@@ -908,6 +911,11 @@
 	if(.)
 		C.w_class = initial(C.w_class)
 		C.verbs -= /obj/item/clothing/suit/storage/verb/toggle_draw_mode
+
+/obj/item/clothing/accessory/storage/get_examine_text(mob/user)
+	. = ..()
+	if(hold.storage_flags & STORAGE_ALLOW_DRAWING_METHOD_TOGGLE)
+		. += "\nCtrl + Click to swap storage drawing method."
 
 /obj/item/storage/internal/accessory/webbing
 	bypass_w_limit = list(
@@ -1232,7 +1240,6 @@
 	max_storage_space = 5
 	can_hold = list(
 		/obj/item/tool/kitchen/utensil/knife,
-		/obj/item/tool/kitchen/utensil/pknife,
 		/obj/item/tool/kitchen/knife,
 		/obj/item/attachable/bayonet,
 		/obj/item/weapon/throwing_knife,
@@ -1571,6 +1578,10 @@ Wrist Accessories
 	name = "urban raincover"
 	icon_state = "raincover_urban"
 
+/obj/item/clothing/accessory/helmet/cover/raincover/snow
+	name = "snow raincover"
+	icon_state = "raincover_snow"
+
 /obj/item/clothing/accessory/helmet/cover/netting
 	name = "combat netting"
 	desc = "Probably combat netting for a helmet. Probably just an extra hairnet that got ordered for the phantom Almayer cooking staff. Probably useless."
@@ -1587,3 +1598,7 @@ Wrist Accessories
 /obj/item/clothing/accessory/helmet/cover/netting/urban
 	name = "urban combat netting"
 	icon_state = "netting_urban"
+
+/obj/item/clothing/accessory/helmet/cover/netting/snow
+	name = "snow combat netting"
+	icon_state = "netting_snow"

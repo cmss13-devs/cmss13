@@ -1,0 +1,4 @@
+author: "Ghostsheet"
+delete-after: True
+changes:
+  - rscadd: "Allow general pouches to hold flare boxes."

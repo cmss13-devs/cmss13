@@ -46,7 +46,7 @@
 
 	/// Extra armor when fortified and facing bullets.
 	var/frontal_armor = 5
-	cooldown_message = "Our muscles are primed for another curl."
+	cooldown_message = "We have regained enough stamina to curl up and take damage for our sisters."
 
 /datum/action/xeno_action/activable/fortify/steel_crest
 	frontal_armor = 15

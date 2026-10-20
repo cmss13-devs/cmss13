@@ -15,7 +15,7 @@
 	// Config
 	var/damage = 45
 	var/shield_regen_threshold = 2
-	cooldown_message = "Our tail is no longer exhausted and we can Pierce again!"
+	cooldown_message = "Our tail is no longer exhausted. We can Pierce with it again!"
 
 /datum/action/xeno_action/activable/pounce/prae_dash
 	name = "Dash"
@@ -51,7 +51,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 12 SECONDS
-	cooldown_message = "They cannot escape our grasp, now! We are ready to cleave!"
+	cooldown_message = "They cannot escape our grasp, now! We are ready to Cleave again!"
 
 	// Root config
 	var/root_duration_unbuffed = 1 SECONDS
@@ -129,7 +129,7 @@
 	// Config
 	var/max_distance = 6
 	var/windup = 8 DECISECONDS
-	cooldown_message = "Our tail twitches eagerly. Don't let them run away!"
+	cooldown_message = "Our tail twitches eagerly with energy. We are ready to snatch tallhosts again."
 
 /datum/action/xeno_action/activable/oppressor_punch
 	name = "Dislocate"
@@ -142,7 +142,7 @@
 
 	// Configurables
 	var/damage = 20
-	cooldown_message = "Our arms are ready to clobber our foes!"
+	cooldown_message = "Our mighty arms and fists are primed to clobber our foes!"
 
 
 // This one is more tightly coupled than I'd like, but oh well
@@ -169,7 +169,7 @@
 	// Config
 	var/fling_dist = 3
 	var/windup = 2 DECISECONDS
-	cooldown_message = "Our tail twitches like it wants to coil and lash again!"
+	cooldown_message = "Our tail twitches eagerly with energy. We are ready to coil it up and lash our foes!"
 
 ////////// Dancer Abilities
 
@@ -204,7 +204,7 @@
 	var/dodge_timer = TIMER_ID_NULL
 	var/speed_buff_amount = 0.5
 	var/afterimage_interval = 1 DECISECONDS
-	cooldown_message = "Our muscles and tendons are limber! We feel fast as a speeding boom tube!"
+	cooldown_message = "Our muscles and tendons feel limber enough tofeel fast as a speeding boom tube!"
 
 /datum/action/xeno_action/activable/prae_tail_trip
 	name = "Tail Trip"

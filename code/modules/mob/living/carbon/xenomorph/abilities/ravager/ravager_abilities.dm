@@ -38,7 +38,7 @@
 
 	// State
 	var/activated_once = FALSE
-	cooldown_message = "We feel empowered again!"
+	cooldown_message = "We have enough energy to shield ourselves again!"
 
 // Rav "Scissor Cut"
 /datum/action/xeno_action/activable/scissor_cut

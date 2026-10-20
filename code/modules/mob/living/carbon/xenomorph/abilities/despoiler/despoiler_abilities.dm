@@ -8,7 +8,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	plasma_cost = 100
 	ability_uses_acid_overlay = TRUE
-	cooldown_message = "We have repleted our acid stores and are ready to Barrage."
+	cooldown_message = "We have replenished our acid stores and are ready to Barrage."
 
 	var/start_time
 	var/min_volley = 1
@@ -37,7 +37,7 @@
 	var/empowered_distance = 5
 	var/weaken_duration = 1
 	var/damage = 30
-	cooldown_message = "We have repleted our acid stores are ready to slash and leave puddles."
+	cooldown_message = "We have replenished our acid stores are ready to slash and leave puddles."
 
 /datum/action/xeno_action/onclick/oozing_wounds
 	name = "Oozing Wounds"

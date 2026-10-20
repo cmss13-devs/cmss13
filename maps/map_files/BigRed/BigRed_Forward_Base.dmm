@@ -12912,7 +12912,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
 "aPR" = (
-/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/antag,
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/almayer/cargo,
 /area/forward_base/engineering/lower/workshop)
 "aPS" = (

@@ -5429,7 +5429,7 @@
 /turf/open/floor/almayer/mono,
 /area/forward_base/engineering/lower/workshop)
 "ara" = (
-/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/antag,
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/almayer/cargo,
 /area/forward_base/engineering/lower/workshop)
 "arb" = (

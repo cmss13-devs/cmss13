@@ -80,7 +80,7 @@
 	hive = xenohive
 
 	if(!engage_flavourmessage)
-		engage_flavourmessage = "The Queen has purchased [name]."
+		engage_flavourmessage = "The Queen has granted us [name]."
 	if(!cease_flavourmessage)
 		cease_flavourmessage = "The [name] has expired."
 
@@ -345,7 +345,7 @@
 	desc = "Provides 5 larva instantly to the hive."
 	radial_icon = "larba"
 
-	engage_flavourmessage = "The Queen has purchased 5 extra larva to join the hive!"
+	engage_flavourmessage = "The Queen has blessed us with 5 extra larva to join the hive!"
 	cost = 5
 	number_of_required_pylons = 1
 	is_reusable = FALSE
@@ -377,7 +377,7 @@
 	desc = "Doubles evolution speed for 10 minutes and allows evolution progress without an ovipositor."
 	tier = HIVEBUFF_TIER_MAJOR
 
-	engage_flavourmessage = "The Queen has blessed us with faster evolution."
+	engage_flavourmessage = "The Queen has blessed us with faster evolution even without an ovipositor."
 	duration = 10 MINUTES
 	cost = 2
 	number_of_required_pylons = 2

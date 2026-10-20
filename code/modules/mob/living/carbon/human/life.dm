@@ -96,3 +96,14 @@
 	// Remove this once effects have been ported to trait signals (blinded, dazed, etc)
 	if(stat != .)
 		handle_regular_hud_updates()
+		if(species?.flags & HAS_EYELIDS)	// Close eyes when going unconscious (e.g. damage KO); reopen on waking unless voluntarily closed
+			if(stat == UNCONSCIOUS)
+				if(eyelid_timer)
+					deltimer(eyelid_timer)
+					eyelid_timer = null
+				if(eyelids_status != EYELID_CLOSED_VOLUNTARILY && eyelids_status != EYELID_CLOSED)
+					apply_eyelid_state(EYELID_CLOSED)
+			else if(. == UNCONSCIOUS && stat == CONSCIOUS)
+				if(eyelids_status != EYELID_CLOSED_VOLUNTARILY)
+					apply_eyelid_state(EYELID_OPEN)
+					next_blink_at = world.time + 1 SECONDS

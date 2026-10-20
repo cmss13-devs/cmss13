@@ -504,7 +504,7 @@
 
 /mob/living/carbon/human/proc/end_eyelid_sequence()
 	eyelid_timer = null
-	if(stat == DEAD || eyelids_status == EYELID_CLOSED_VOLUNTARILY)
+	if(stat == DEAD || stat == UNCONSCIOUS || eyelids_status == EYELID_CLOSED_VOLUNTARILY)
 		return
 	apply_eyelid_state(EYELID_OPEN)
 	// small gap before life takes over again
@@ -515,8 +515,18 @@
 /mob/living/carbon/human/proc/handle_eyelid_blinking()
 	if(!(species?.flags & HAS_EYELIDS))
 		return
+
 	if(stat == DEAD || eyelids_status == EYELID_CLOSED_VOLUNTARILY)
 		return
+
+	if(stat == UNCONSCIOUS)	// Unconscious but alive: keep eyes closed (damage KO, etc.)
+		if(eyelids_status != EYELID_CLOSED)
+			if(eyelid_timer)
+				deltimer(eyelid_timer)
+				eyelid_timer = null
+			apply_eyelid_state(EYELID_CLOSED)
+		return
+
 	if(eyelid_timer) // emote/sequence owns the lids right now
 		return
 
@@ -540,7 +550,7 @@
 
 /mob/living/carbon/human/proc/finish_normal_blink(open_hold)
 	eyelid_timer = null
-	if(stat == DEAD || eyelids_status == EYELID_CLOSED_VOLUNTARILY)
+	if(stat == DEAD || stat == UNCONSCIOUS || eyelids_status == EYELID_CLOSED_VOLUNTARILY)
 		return
 	apply_eyelid_state(EYELID_OPEN)
 	next_blink_at = world.time + open_hold

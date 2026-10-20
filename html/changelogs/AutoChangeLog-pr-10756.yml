@@ -1,0 +1,7 @@
+author: "NHC"
+delete-after: True
+changes:
+  - rscadd: "added skirt uniforms to the dress blues uniform vendor for enlisted, officers and command."
+  - rscdel: "removes service uniform from the dress blues uniform vendor for officers"
+  - imageadd: "added icons for service, formal, command uniform with skirt"
+  - imageadd: "changed commander's grey unfirom item sprite to 1 dir"

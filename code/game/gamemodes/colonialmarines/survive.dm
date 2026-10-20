@@ -121,8 +121,12 @@
 		queen_location = get_turf(pick(GLOB.xeno_spawns))
 	var/mob/living/carbon/xenomorph/queen/new_queen = transform_queen(null, queen_location)
 	new_queen.auto_queen = TRUE
-	new_queen.free_for_ghosts(TRUE)
+	addtimer(CALLBACK(src, PROC_REF(set_queen_free), new_queen), 30 SECONDS)
 	return .
+
+/datum/game_mode/survive/proc/set_queen_free(mob/living/carbon/xenomorph/queen/new_queen)
+	if(!new_queen.client)
+		new_queen.free_for_ghosts(TRUE, 'sound/effects/xeno_newlarva.ogg')
 
 /datum/game_mode/survive/proc/spawn_smallhosts()
 	if(!GLOB.players_preassigned)

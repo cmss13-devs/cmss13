@@ -591,7 +591,7 @@
 			break
 
 	if(target_xeno == user_xeno)
-		to_chat(user_xeno, SPAN_XENOWARNING("Why would we banish oruselves?"))
+		to_chat(user_xeno, SPAN_XENOWARNING("Why would we banish ourselves?"))
 		return
 
 	if(target_xeno.banished)

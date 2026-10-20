@@ -423,7 +423,6 @@
 /datum/hivebuff/evo_buff/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)
 	value_before_buff = SSxevolution.get_evolution_boost_power(hive.hivenumber)
 	hive.override_evilution(value_before_buff * 2, TRUE)
-
 	return TRUE
 
 /datum/hivebuff/evo_buff/on_cease()
@@ -439,15 +438,16 @@
 	cost = 2
 	number_of_required_pylons = 2
 	radial_icon = "health_m"
+	var/original_no_evo_setting
 
 /datum/hivebuff/evo_buff/major/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)
+	hive.allow_no_queen_evo = original_no_evo_setting
 	hive.allow_no_queen_evo = TRUE
-
 	return ..()
 
 /datum/hivebuff/evo_buff/major/on_cease()
 	. = ..()
-	hive.allow_no_queen_evo = FALSE
+	hive.allow_no_queen_evo = original_no_evo_setting
 
 /datum/hivebuff/survival_evac_surge
 	name = "Boon of Horde"

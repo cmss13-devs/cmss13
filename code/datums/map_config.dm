@@ -55,10 +55,7 @@
 	var/list/synth_survivor_types_by_variant
 
 	var/list/CO_survivor_types
-	var/list/CO_survivor_types_by_variant
-
 	var/list/CO_insert_survivor_types
-	var/list/CO_insert_survivor_types_by_variant
 
 	var/list/colony_joe_types
 

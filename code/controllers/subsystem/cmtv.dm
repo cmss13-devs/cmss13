@@ -213,6 +213,10 @@ SUBSYSTEM_DEF(cmtv)
 		var/datum/mob_hud/hud_datum = GLOB.huds[hud]
 		hud_datum.add_hud_to(camera_mob, camera_mob)
 
+	var/obj/effect/landmark/observer_start/spawn_point = SAFEPICK(GLOB.observer_starts)
+	if(istype(spawn_point))
+		new_mob.forceMove(spawn_point.loc)
+
 /// For events we want to occur at the beginning of the round - eg, when the map becomes actually visible
 /datum/controller/subsystem/cmtv/proc/handle_roundstart()
 	addtimer(CALLBACK(src, PROC_REF(restart_chat), 10 SECONDS))

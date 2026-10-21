@@ -65,6 +65,14 @@
 
 /datum/game_mode/colonialmarines/forward_base/post_setup()
 	. = ..()
+	var/datum/tech/arc/arc_tech = SStechtree.trees[TREE_MARINE]?.get_node(/datum/tech/arc)
+	if(arc_tech)
+		arc_tech.supply_pack_type = /datum/supply_packs/arc_components
+		arc_tech.name = "ARC Components"
+		arc_tech.node.name = arc_tech.name
+		arc_tech.desc = "Purchases the components needed for the broken ARC in the base garage. Components are delivered through ASRS."
+		arc_tech.announce_name = "ARC COMPONENTS AUTHORIZED"
+		arc_tech.announce_message = "Replacement components for the base's ARC have been authorized and will be delivered through ASRS."
 	if(GLOB.almayer_orbital_cannon)
 		COOLDOWN_START(GLOB.almayer_orbital_cannon, ob_firing_cooldown, FORWARD_BASE_FOG_DURATION - ROUND_TIME)
 	addtimer(CALLBACK(src, PROC_REF(allow_base_burrowing)), FORWARD_BASE_FOG_DURATION - ROUND_TIME)

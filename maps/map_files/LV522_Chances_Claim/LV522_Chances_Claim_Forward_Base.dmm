@@ -20658,6 +20658,7 @@
 /turf/open/floor/almayer,
 /area/forward_base/chances/underdeck/hangar)
 "hJM" = (
+/obj/effect/vehicle_spawner/arc/broken,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/almayer/uscm/southface,
 /area/forward_base/chances/hallways/lower/north)

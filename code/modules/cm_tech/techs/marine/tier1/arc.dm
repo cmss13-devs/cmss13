@@ -12,13 +12,18 @@
 
 	flags = TREE_FLAG_MARINE
 
+	// ARC component crate for Forward Base instead of the entire vehicle
+	var/supply_pack_type
+
 
 /datum/tech/arc/can_unlock(mob/unlocking_mob)
 	. = ..()
+	if(!.)
+		return FALSE
 
 	var/obj/structure/machinery/cm_vending/gear/vehicle_crew/gearcomp = GLOB.VehicleGearConsole
 
-	if(gearcomp.selected_vehicle == "TANK")
+	if(gearcomp && gearcomp.selected_vehicle == "TANK")
 		to_chat(unlocking_mob, SPAN_WARNING ("A vehicle has already been selected for this operation."))
 		return FALSE
 
@@ -27,6 +32,15 @@
 
 /datum/tech/arc/on_unlock()
 	. = ..()
+
+	if(supply_pack_type)
+		var/datum/supply_order/new_order = new()
+		new_order.ordernum = GLOB.supply_controller.ordernum++
+		new_order.objects = list(GLOB.supply_packs_datums[supply_pack_type])
+		new_order.orderedby = MAIN_AI_SYSTEM
+		new_order.approvedby = MAIN_AI_SYSTEM
+		GLOB.supply_controller.shoppinglist += new_order
+		return TRUE
 
 	var/obj/structure/machinery/computer/supply/asrs/vehicle/comp = GLOB.VehicleElevatorConsole
 	var/obj/structure/machinery/cm_vending/gear/vehicle_crew/gearcomp = GLOB.VehicleGearConsole

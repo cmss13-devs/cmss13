@@ -15528,6 +15528,10 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/medical/medical_science)
+"aQn" = (
+/obj/effect/vehicle_spawner/arc/broken,
+/turf/open/floor/plating/plating_catwalk,
+/area/forward_base/engineering/lower/workshop)
 "aQo" = (
 /obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
 	id = "Biohazard Storage";
@@ -34857,7 +34861,7 @@ aqv
 ats
 arv
 aSK
-arv
+aQn
 arv
 atr
 aqv

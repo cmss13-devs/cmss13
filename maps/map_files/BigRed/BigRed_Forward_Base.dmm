@@ -31486,6 +31486,10 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"bSx" = (
+/obj/effect/vehicle_spawner/arc/broken,
+/turf/open/floor/plating/plating_catwalk,
+/area/forward_base/engineering/lower/workshop)
 "bSy" = (
 /obj/structure/barricade/handrail{
 	dir = 8
@@ -59042,7 +59046,7 @@ aMU
 aWp
 aSf
 bOa
-aSf
+bSx
 aSf
 aWq
 aMU

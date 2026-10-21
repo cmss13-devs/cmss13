@@ -132,3 +132,33 @@
   ComboTombo:
   - rscadd: Added M41A Mk1 rifle kits
   - balance: Re-added M41A Mk1 rifles to the SL vendor
+2026-10-21:
+  ComboTombo:
+  - balance: Re-added large magazine pouches and large shotgun shell pouches to rifleman,
+      engineer, and medic vendors
+  - balance: Weapon lights now keep illuminating when the weapon is stowed away in
+      the back slot or suit storage slot, but they'll be dimmed by 15% (compared to
+      when the weapon is in your hands or on the ground.
+  Drulikar:
+  - admin: Cardinally enclosed reviveable bodies are now niche logged
+  - admin: Tweaked niche log for building a resin wall ontop of a reviveable body
+  Ghostsheet:
+  - rscadd: Allow general pouches to hold flare boxes.
+  - balance: Increased XM88 bullet speed by 4.
+  - balance: XM88 can no longer use barrel charger and extended barrel.
+  Kugamo:
+  - bugfix: Fixes visual bug, showing fake items in hand after stacking them in certain
+      bags with those inventories open.
+  - bugfix: Fixes mops attacking weeds instead of cleaning them
+  NHC:
+  - rscadd: added skirt uniforms to the dress blues uniform vendor for enlisted, officers
+      and command.
+  - rscdel: removes service uniform from the dress blues uniform vendor for officers
+  - imageadd: added icons for service, formal, command uniform with skirt
+  - imageadd: changed commander's grey unfirom item sprite to 1 dir
+  Puckaboo2:
+  - spellcheck: Adds a few missing periods in some files.
+  Sulaboy:
+  - balance: Webbing accessories in Rifleman Vendor no longer cost points.
+  kleinerstation13:
+  - balance: FORECON Squad Leader survivor now gets construction 1 skill

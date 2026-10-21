@@ -419,7 +419,13 @@
 			if(mobs_by_jobs[job_by_chain])
 				var/list/mob/living/candidates = list()
 				for(var/mob/living/candidate as anything in mobs_by_jobs[job_by_chain])
-					if(!is_mob_cryoing(candidate))
+					//Check for command job bans
+					var/command_jobban = FALSE
+					for(var/job_ban_job as anything in JOB_COMMAND_ROLES_LIST)
+						if(jobban_isbanned(candidate, job_ban_job))
+							command_jobban = TRUE
+							break
+					if(!command_jobban && !is_mob_cryoing(candidate))
 						candidates += candidate
 				if(length(candidates))
 					person_in_charge = pick(candidates)

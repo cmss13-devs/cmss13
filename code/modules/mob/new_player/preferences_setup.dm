@@ -389,6 +389,10 @@
 			return J.gear_preset_whitelist["[JOB_PREDATOR][J.get_whitelist_status(owner)]"]
 		if(JOB_PRED_SURVIVOR)
 			return /datum/equipment_preset/yautja/stranded
+		if(JOB_XENOMORPH_QUEEN)
+			return /datum/equipment_preset/xeno_suit/queen
+		if(JOB_XENOMORPH)
+			return /datum/equipment_preset/xeno_suit
 		else
 			if(!override)
 				var/mappings = GLOB.gamemode_role_mappings[GLOB.master_mode]

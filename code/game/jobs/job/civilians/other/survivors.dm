@@ -257,15 +257,21 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	if(picked_spawner.equipment)
 		arm_equipment(equipping_human, picked_spawner.equipment, FALSE, TRUE)
 	else
-		var/preferred_variant = ANY_SURVIVOR
-		if(equipping_human.client?.prefs?.pref_special_job_options[JOB_SURVIVOR] != ANY_SURVIVOR)
-			preferred_variant = equipping_human.client?.prefs?.pref_special_job_options[JOB_SURVIVOR]
+		var/datum/job/mapped_job = GLOB.RoleAuthority.role_mappings[JOB_SURVIVOR]
+		var/survivor_job_title = mapped_job?.title || JOB_SURVIVOR
+		var/preferred_variant = equipping_human.client?.prefs?.pref_special_job_options[survivor_job_title] || ANY_SURVIVOR
+		if(preferred_variant != ANY_SURVIVOR)
 			if(MAX_SURVIVOR_PER_TYPE[preferred_variant] != -1 && SSticker.mode.survivors_by_type_amounts[preferred_variant] && SSticker.mode.survivors_by_type_amounts[preferred_variant] >= MAX_SURVIVOR_PER_TYPE[preferred_variant])
+				// Soft cap met
 				preferred_variant = ANY_SURVIVOR
 
-		var/list/survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].survivor_types
-		arm_equipment(equipping_human, pick(survivor_types), FALSE, TRUE)
+		var/list/survivor_types
+		if(preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant]))
+			survivor_types = SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant]
+		else
+			survivor_types = SSmapping.configs[GROUND_MAP].survivor_types
 
+		arm_equipment(equipping_human, pick(survivor_types), FALSE, TRUE)
 		SSticker.mode.survivors_by_type_amounts[preferred_variant] += 1
 
 AddTimelock(/datum/job/civilian/survivor, list(
@@ -342,15 +348,21 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	if(picked_spawner.synth_equipment) //insert with synth
 		arm_equipment(equipping_human, picked_spawner.synth_equipment, FALSE, TRUE) //use synth equipmnent
 	else //else, use player prefs
-		var/preferred_variant = ANY_SURVIVOR
-		if(equipping_human.client?.prefs?.pref_special_job_options[JOB_SURVIVOR] != ANY_SURVIVOR)
-			preferred_variant = equipping_human.client?.prefs?.pref_special_job_options[JOB_SURVIVOR]
+		var/datum/job/mapped_job = GLOB.RoleAuthority.role_mappings[JOB_SURVIVOR]
+		var/survivor_job_title = mapped_job?.title || JOB_SURVIVOR
+		var/preferred_variant = equipping_human.client?.prefs?.pref_special_job_options[survivor_job_title] || ANY_SURVIVOR
+		if(preferred_variant != ANY_SURVIVOR)
 			if(MAX_SURVIVOR_PER_TYPE[preferred_variant] != -1 && SSticker.mode.survivors_by_type_amounts[preferred_variant] && SSticker.mode.survivors_by_type_amounts[preferred_variant] >= MAX_SURVIVOR_PER_TYPE[preferred_variant])
+				// Soft cap met
 				preferred_variant = ANY_SURVIVOR
 
-		var/list/synth_survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].synth_survivor_types
-		arm_equipment(equipping_human, pick(synth_survivor_types), FALSE, TRUE)
+		var/list/synth_survivor_types
+		if(preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant]))
+			synth_survivor_types = SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant]
+		else
+			synth_survivor_types = SSmapping.configs[GROUND_MAP].synth_survivor_types
 
+		arm_equipment(equipping_human, pick(synth_survivor_types), FALSE, TRUE)
 		SSticker.mode.survivors_by_type_amounts[preferred_variant] += 1
 
 /datum/job/civilian/survivor/commanding_officer
@@ -425,22 +437,10 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
 	if(picked_spawner.equipment) //insert with CO, filtered by assign_landmark()
 		arm_equipment(equipping_human, picked_spawner.equipment, FALSE, TRUE)
-		return
 	else if(length(CO_survivor_types)) //map with guaranteed CO slot
 		arm_equipment(equipping_human, pick(CO_survivor_types), FALSE, TRUE)
-		return
 	else //map that has an insert that enabled rolling for CO but the insert didn't fire and there is no default CO equipment, thus equip as a normal survivor
-		var/preferred_variant = ANY_SURVIVOR
-		if(equipping_human.client?.prefs?.pref_special_job_options[JOB_SURVIVOR] != ANY_SURVIVOR)
-			preferred_variant = equipping_human.client?.prefs?.pref_special_job_options[JOB_SURVIVOR]
-			if(MAX_SURVIVOR_PER_TYPE[preferred_variant] != -1 && SSticker.mode.survivors_by_type_amounts[preferred_variant] && SSticker.mode.survivors_by_type_amounts[preferred_variant] >= MAX_SURVIVOR_PER_TYPE[preferred_variant])
-				preferred_variant = ANY_SURVIVOR
-
-		var/list/survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].survivor_types
-		arm_equipment(equipping_human, pick(survivor_types), FALSE, TRUE)
-
-		SSticker.mode.survivors_by_type_amounts[preferred_variant] += 1
-		return
+		..()
 
 /datum/job/civilian/survivor/unlimited
 	title = JOB_SURVIVOR_UNLIMITED

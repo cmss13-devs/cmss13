@@ -9,7 +9,8 @@
 /datum/game_mode/colonialmarines/forward_base
 	name = GAMEMODE_FORWARD_BASE
 	config_tag = GAMEMODE_FORWARD_BASE
-	votable = FALSE
+	votable = TRUE
+	max_players = 85
 	var/hive_pylon_timer
 	var/hive_pylons_charged = FALSE
 

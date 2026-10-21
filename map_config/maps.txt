@@ -20,7 +20,7 @@ map bigredv2
 endmap
 
 map bigred_forward_base
-	voteweight 0
+	voteweight 1
 endmap
 
 map prison_station_fop
@@ -54,7 +54,7 @@ map kutjevo
 endmap
 
 map kutjevo_forward_base
-	voteweight 0
+	voteweight 1
 endmap
 
 map sorokyne_strata

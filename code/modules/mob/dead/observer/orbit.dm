@@ -197,9 +197,13 @@
 				if(add_to_infected)
 					infected += list(serialized)
 
+				var/escaped_checks = SSticker.mode.is_in_endgame && !(human.faction in FACTION_LIST_ERT_ALL) && !(isyautja(human))
+
 				if(human.job in FAX_RESPONDER_JOB_LIST)
 					responders += list(serialized)
-				else if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(human.z) && !(human.faction in FACTION_LIST_ERT_ALL) && !(isyautja(human)))
+				else if(escaped_checks && !is_mainship_level(human.z) && !MODE_HAS_FLAG(MODE_SURVIVE))
+					escaped += list(serialized)
+				else if(escaped_checks && !is_ground_level(human.z) && MODE_HAS_FLAG(MODE_SURVIVE))
 					escaped += list(serialized)
 				else if(human.faction in FACTION_LIST_WY)
 					wy += list(serialized)

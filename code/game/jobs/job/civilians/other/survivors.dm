@@ -149,6 +149,9 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	if(!.)
 		return .
 
+	if(MODE_HAS_FLAG(MODE_SURVIVE))
+		return TRUE // Hostile/non-hostile preference is ignored for this mode
+
 	if(SSnightmare.get_scenario_is_hostile_survivor())
 		return HAS_FLAG(client.prefs?.toggles_survivor, PLAY_SURVIVOR_HOSTILE)
 	else

@@ -14922,17 +14922,97 @@
 /turf/open/floor/whitegreen/southwest,
 /area/bigredv2/caves/lambda/virology)
 "aWa" = (
-/obj/structure/surface/rack,
-/obj/item/storage/firstaid/rad/empty,
-/obj/item/storage/firstaid/rad/empty,
-/obj/item/storage/firstaid/o2/empty,
-/obj/item/storage/firstaid/o2/empty,
-/obj/item/storage/firstaid/fire/empty,
-/obj/item/storage/firstaid/fire/empty,
-/obj/item/storage/firstaid/adv/empty,
-/obj/item/storage/firstaid/adv/empty,
-/obj/item/storage/firstaid/regular/empty,
-/obj/item/storage/firstaid/regular/empty,
+/obj/structure/surface/table/almayer,
+/obj/item/storage/syringe_case{
+	pixel_y = -5
+	},
+/obj/item/tool/surgery/bonegel/empty{
+	layer = 3.01;
+	pixel_x = -6;
+	pixel_y = 11
+	},
+/obj/item/tool/surgery/bonegel/empty{
+	layer = 3.01;
+	pixel_x = -6;
+	pixel_y = 11
+	},
+/obj/item/tool/surgery/bonegel/empty{
+	layer = 3.01;
+	pixel_x = -6;
+	pixel_y = 11
+	},
+/obj/item/roller/surgical{
+	pixel_x = 11;
+	pixel_y = 11
+	},
+/obj/item/roller/surgical{
+	pixel_x = 11;
+	pixel_y = 11
+	},
+/obj/item/roller/surgical{
+	pixel_x = 11;
+	pixel_y = 11
+	},
+/obj/item/roller/surgical{
+	pixel_x = 11;
+	pixel_y = 11
+	},
+/obj/item/storage/syringe_case{
+	pixel_y = -5
+	},
+/obj/item/storage/syringe_case{
+	pixel_y = -5
+	},
+/obj/item/storage/syringe_case{
+	pixel_y = -5
+	},
+/obj/item/storage/syringe_case{
+	pixel_y = -5
+	},
+/obj/item/storage/syringe_case{
+	pixel_y = -5
+	},
+/obj/item/storage/syringe_case{
+	pixel_y = -5
+	},
+/obj/item/storage/syringe_case{
+	pixel_y = -5
+	},
+/obj/item/storage/syringe_case{
+	pixel_y = -5
+	},
+/obj/item/storage/syringe_case{
+	pixel_y = -5
+	},
+/obj/item/storage/syringe_case{
+	pixel_y = -5
+	},
+/obj/item/tool/weldingtool{
+	pixel_x = -12;
+	pixel_y = 0
+	},
+/obj/item/tool/weldingtool{
+	pixel_x = -12;
+	pixel_y = 0
+	},
+/obj/item/stack/cable_coil{
+	pixel_y = -1;
+	pixel_x = -12
+	},
+/obj/item/stack/cable_coil{
+	pixel_y = -1;
+	pixel_x = -12
+	},
+/obj/item/clothing/head/welding{
+	pixel_x = -10;
+	pixel_y = 2;
+	layer = 3.01
+	},
+/obj/item/clothing/head/welding{
+	pixel_x = -10;
+	pixel_y = 2;
+	layer = 3.01
+	},
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/medical/upper_medical)
 "aWb" = (
@@ -15850,6 +15930,7 @@
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/virology)
 "aYD" = (
+/obj/structure/machinery/computer/crew,
 /turf/open/floor/almayer/silverfull,
 /area/forward_base/medical/lower_medical_lobby)
 "aYE" = (
@@ -18268,12 +18349,17 @@
 /turf/open/floor/bot/north,
 /area/bigredv2/outside/cargo)
 "bgF" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/desk_bell{
+	anchored = 1;
+	pixel_x = 6;
+	pixel_y = 1
+	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 2;
 	id = "ROlobby2";
 	name = "\improper RO Line 2"
 	},
-/obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/forward_base/squads/req)
 "bgG" = (
@@ -18793,12 +18879,17 @@
 /turf/open/floor/almayer/plating_striped/north,
 /area/forward_base/squads/req)
 "bip" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/desk_bell{
+	anchored = 1;
+	pixel_x = -6;
+	pixel_y = 1
+	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 2;
 	id = "ROlobby1";
 	name = "\improper RO Line 1"
 	},
-/obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/forward_base/squads/req)
 "biq" = (
@@ -29808,19 +29899,110 @@
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/medical/upper_medical)
 "bPu" = (
-/obj/structure/machinery/disposal,
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/adv{
+	pixel_y = -10
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_y = -10
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_y = -10
+	},
+/obj/item/storage/firstaid/fire{
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/fire{
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/toxin{
+	pixel_y = 6
+	},
+/obj/item/storage/firstaid/toxin{
+	pixel_y = 6
+	},
+/obj/item/storage/firstaid/toxin{
+	pixel_y = 6
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /obj/structure/sign/nosmoking_2{
 	pixel_x = 2;
 	pixel_y = 31
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/medical/upper_medical)
 "bPv" = (
-/obj/structure/medical_supply_link/green,
-/obj/structure/machinery/cm_vending/sorted/medical/blood,
+/obj/structure/surface/rack,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/full{
+	pixel_y = 5
+	},
+/obj/item/storage/belt/medical/full{
+	pixel_y = 5
+	},
+/obj/item/storage/belt/medical/full{
+	pixel_y = 5
+	},
+/obj/item/reagent_container/hypospray{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/hypospray{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/hypospray{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/hypospray{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/glass/minitank{
+	pixel_x = 5;
+	pixel_y = -1
+	},
+/obj/item/reagent_container/glass/minitank{
+	pixel_x = 5;
+	pixel_y = -1
+	},
+/obj/item/reagent_container/glass/minitank{
+	pixel_x = 5;
+	pixel_y = -1
+	},
+/obj/item/reagent_container/glass/minitank{
+	pixel_x = 5;
+	pixel_y = -1
+	},
+/obj/item/reagent_container/glass/minitank{
+	pixel_x = 5;
+	pixel_y = -1
+	},
+/obj/item/reagent_container/glass/minitank{
+	pixel_x = 5;
+	pixel_y = -1
+	},
+/obj/item/device/helmet_visor/medical/advanced{
+	pixel_y = 7;
+	pixel_x = 4
+	},
+/obj/item/device/helmet_visor/medical/advanced{
+	pixel_y = 7;
+	pixel_x = 4
+	},
+/obj/item/device/helmet_visor/medical/advanced{
+	pixel_y = 7;
+	pixel_x = 4
+	},
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/medical/upper_medical)
 "bPw" = (
@@ -31011,6 +31193,10 @@
 /obj/item/storage/box/pillbottles{
 	pixel_x = 6
 	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_y = 9;
+	pixel_x = -7
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/medical/medical_science)
 "bRT" = (
@@ -31118,6 +31304,30 @@
 "bSf" = (
 /turf/closed/wall/almayer/research/containment/wall/connect_w,
 /area/forward_base/medical/medical_science)
+"bSg" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/syringes{
+	pixel_x = -7;
+	pixel_y = 8
+	},
+/obj/item/storage/box/gloves{
+	pixel_x = 7;
+	pixel_y = 8
+	},
+/obj/item/storage/box/syringes{
+	pixel_x = -7
+	},
+/obj/item/storage/box/masks{
+	pixel_x = 7
+	},
+/obj/item/device/reagent_scanner{
+	pixel_x = -3
+	},
+/obj/item/device/reagent_scanner{
+	pixel_x = 3
+	},
+/turf/open/floor/almayer/sterile_green,
+/area/forward_base/medical/upper_medical)
 "bSh" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2";
@@ -31139,6 +31349,13 @@
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/forward_base/medical/medical_science)
+"bSj" = (
+/obj/structure/machinery/status_display{
+	pixel_y = -30;
+	pixel_x = -1
+	},
+/turf/open/floor/almayer/silverfull,
+/area/forward_base/medical/upper_medical)
 "bSk" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
@@ -31207,6 +31424,8 @@
 	pixel_x = -1;
 	explo_proof = 1
 	},
+/obj/item/clothing/accessory/storage/black_vest/acid_harness,
+/obj/item/clothing/accessory/storage/black_vest/acid_harness,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/medical/medical_science)
 "bSs" = (
@@ -31365,6 +31584,18 @@
 	},
 /obj/structure/machinery/autolathe/medilathe/full{
 	dir = 8
+	},
+/obj/item/stack/sheet/mineral/plastic{
+	amount = 15;
+	pixel_x = -1
+	},
+/obj/item/stack/sheet/metal{
+	amount = 20
+	},
+/obj/item/stack/sheet/glass{
+	amount = 20;
+	pixel_x = 2;
+	pixel_y = 3
 	},
 /turf/open/floor/almayer/mono,
 /area/forward_base/medical/medical_science)
@@ -107990,7 +108221,7 @@ bUd
 bUb
 bOo
 bOo
-bOo
+bSj
 bNI
 bNZ
 bNI
@@ -109062,7 +109293,7 @@ bNI
 bPu
 bPv
 bOo
-bQz
+bSg
 bNI
 bOu
 bOv

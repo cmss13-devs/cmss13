@@ -199,7 +199,12 @@ SUBSYSTEM_DEF(cmtv)
 		camera_mob.do_observe(current_perspective)
 
 /datum/controller/subsystem/cmtv/proc/setup_camera_mob()
-	var/mob/dead/observer/new_mob = new(locate(1, 1, 1))
+	var/starting_loc = locate(1, 1, 1)
+	var/obj/effect/landmark/observer_start/spawn_point = SAFEPICK(GLOB.observer_starts)
+	if(spawn_point?.loc)
+		starting_loc = spawn_point.loc
+
+	var/mob/dead/observer/new_mob = new(starting_loc)
 	new_mob.client = camera_operator
 	new_mob.see_invisible = HIDE_INVISIBLE_OBSERVER
 	new_mob.alpha = 0
@@ -212,10 +217,6 @@ SUBSYSTEM_DEF(cmtv)
 	for(var/hud in list(MOB_HUD_MEDICAL_OBSERVER, MOB_HUD_XENO_STATUS, MOB_HUD_FACTION_OBSERVER))
 		var/datum/mob_hud/hud_datum = GLOB.huds[hud]
 		hud_datum.add_hud_to(camera_mob, camera_mob)
-
-	var/obj/effect/landmark/observer_start/spawn_point = SAFEPICK(GLOB.observer_starts)
-	if(istype(spawn_point))
-		new_mob.forceMove(spawn_point.loc)
 
 /// For events we want to occur at the beginning of the round - eg, when the map becomes actually visible
 /datum/controller/subsystem/cmtv/proc/handle_roundstart()

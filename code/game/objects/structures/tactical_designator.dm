@@ -218,25 +218,25 @@
 	/// Number of guided missiles still tracking this designation.
 	var/incoming_missiles = 0
 
-/obj/effect/overlay/temp/laser_target/tactical/New(loc, squad_name, mob/living/carbon/human/user, tracking_id, obj/structure/vulture_spotter_tripod/tactical/source, mob/living/target)
-	if(target)
+/obj/effect/overlay/temp/laser_target/tactical/New(loc, squad_name, mob/living/carbon/human/user, tracking_id, obj/structure/vulture_spotter_tripod/tactical/designator, mob/living/marked_target)
+	if(marked_target)
 		icon_state = ""
 		mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	..(loc, squad_name, user, tracking_id)
-	designator = source
-	marked_target = target
+	src.designator = designator
+	src.marked_target = marked_target
 	if(signal)
 		signal.penetrates_roof = TRUE
-		signal.direct_fire_only = !!target
-		if(target)
+		signal.direct_fire_only = !!marked_target
+		if(marked_target)
 			signal.name += " (direct fire only)"
-	if(target)
+	if(marked_target)
 		mark_overlay = image('icons/effects/Targeted.dmi', icon_state = "laser_lockon")
 		direction_overlay = image(icon('icons/effects/Targeted.dmi', "laser_lockon_direction", NORTH))
 		direction_overlay.appearance_flags = RESET_TRANSFORM
 		update_mark_overlays()
-		RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(update_target))
-		RegisterSignal(target, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_DEATH), PROC_REF(target_lost))
+		RegisterSignal(marked_target, COMSIG_MOVABLE_MOVED, PROC_REF(update_target))
+		RegisterSignal(marked_target, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_DEATH), PROC_REF(target_lost))
 	START_PROCESSING(SSobj, src)
 
 /obj/effect/overlay/temp/laser_target/tactical/Destroy()
@@ -275,9 +275,6 @@
 /obj/effect/overlay/temp/laser_target/tactical/proc/can_track_target()
 	return designator?.can_designate(marked_target ? marked_target : get_turf(src))
 
-/obj/effect/overlay/temp/laser_target/tactical/proc/get_spotter()
-	return designator?.scope_user?.resolve()
-
 /// Switch between locked on and incoming missile target effects.
 /obj/effect/overlay/temp/laser_target/tactical/proc/change_incoming_missiles(amount)
 	var/was_incoming = incoming_missiles > 0
@@ -299,8 +296,7 @@
 		mark_overlay.pixel_y = offset_y
 		marked_target.overlays += mark_overlay
 
-	var/mob/living/spotter = get_spotter()
-	var/arrow_angle = Get_Angle(marked_target, spotter ? spotter : designator)
+	var/arrow_angle = Get_Angle(marked_target, user ? user : designator)
 	if(!overlays_initialized || position_changed || last_arrow_angle != arrow_angle)
 		marked_target.overlays -= direction_overlay
 		direction_overlay.pixel_x = offset_x
@@ -318,9 +314,9 @@
 	action_icon_state = "designator_range"
 	var/datum/weakref/designator
 
-/datum/action/tactical_designator_range/New(Target, override_icon_state, obj/structure/vulture_spotter_tripod/tactical/tripod)
+/datum/action/tactical_designator_range/New(target, override_icon_state, obj/structure/vulture_spotter_tripod/tactical/designator)
 	. = ..()
-	designator = WEAKREF(tripod)
+	src.designator = WEAKREF(designator)
 
 /datum/action/tactical_designator_range/action_activate()
 	. = ..()
@@ -332,10 +328,10 @@
 /obj/effect/overlay/temp/laser_target/tactical/scout
 	var/turf/operator_turf
 
-/obj/effect/overlay/temp/laser_target/tactical/scout/New(loc, squad_name, mob/living/carbon/human/user, tracking_id, obj/item/device/binoculars/range/designator/scout/source, mob/living/target)
-	source_binoc = source
+/obj/effect/overlay/temp/laser_target/tactical/scout/New(loc, squad_name, mob/living/carbon/human/user, tracking_id, obj/item/device/binoculars/range/designator/scout/source_binoc, mob/living/marked_target)
+	src.source_binoc = source_binoc
 	operator_turf = get_turf(user)
-	..(loc, squad_name, user, tracking_id, null, target)
+	..(loc, squad_name, user, tracking_id, null, marked_target)
 	if(signal)
 		signal.penetrates_roof = FALSE
 	RegisterSignal(user, list(COMSIG_MOVABLE_MOVED, COMSIG_MOB_DEATH, COMSIG_PARENT_QDELETING), PROC_REF(target_lost))
@@ -351,6 +347,3 @@
 /obj/effect/overlay/temp/laser_target/tactical/scout/can_track_target()
 	var/obj/item/device/binoculars/range/designator/scout/source = source_binoc
 	return !QDELETED(source) && get_turf(user) == operator_turf && source.can_designate_target(marked_target, user)
-
-/obj/effect/overlay/temp/laser_target/tactical/scout/get_spotter()
-	return user

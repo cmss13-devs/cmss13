@@ -428,7 +428,7 @@
 	var/current_acquisition = ++mark_acquisition_serial
 	var/acquisition_time = target_acquisition_delay
 	if(user.skills)
-		acquisition_time = max(15, acquisition_time - 25 * user.skills.get_skill_level(SKILL_JTAC))
+		acquisition_time = max(1.5 SECONDS, acquisition_time - (2.5 SECONDS) * user.skills.get_skill_level(SKILL_JTAC))
 	playsound(src, 'sound/effects/nightvision.ogg', 35)
 	to_chat(user, SPAN_NOTICE("Acquiring target. Stand still."))
 	var/acquired = do_after(user, acquisition_time, INTERRUPT_ALL, BUSY_ICON_GENERIC)

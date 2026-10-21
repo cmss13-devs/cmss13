@@ -177,7 +177,7 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 /obj/structure/machinery/colony_floodlight
 	name = "colony floodlight"
 	icon = 'icons/obj/structures/machinery/big_floodlight.dmi'
-	icon_state = "flood_mapping"
+	icon_state = "flood_s_mapping"
 	density = TRUE
 	anchored = TRUE
 	layer = ABOVE_XENO_LAYER

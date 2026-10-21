@@ -405,6 +405,40 @@
 #undef INDEX_APPROACH_DIRS
 #undef INDEX_INTERNAL_DIRS
 
+//stacks of chairs (for mapping)
+/obj/structure/bed/chair/stack
+	name = "CHANGE THE STACKED_SIZE VARIABLE IF YOU NEED LESS MORE CHAIRS"
+	desc = "this gets turned into a stack of chairs when the game initializes this obj, this exists soley for mappers to make chair stacks. :o)\nIf you override the stacked_size, The sprite wont update in the DMM editor, dont worry"
+	icon = 'icons/obj/structures/props/64x64.dmi'
+	icon_state = "stacked_chairs_3"
+	stacked_size = 3
+
+/obj/structure/bed/chair/stack/Initialize()
+	. = ..()
+	var/obj/structure/bed/chair/the_stack = new(get_turf(src))
+	the_stack.dir = dir
+	for(var/i=1;i<stacked_size;i++)
+		the_stack.contents += new/obj/item/weapon/twohanded/folded_metal_chair()
+		the_stack.stacked_size++
+		the_stack.update_overlays()
+		the_stack.layer = ABOVE_MOB_LAYER
+		the_stack.unslashable = TRUE
+		the_stack.can_buckle = FALSE
+		the_stack.density = TRUE
+		the_stack.flags_can_pass_all_temp -= PASS_OVER
+		the_stack.projectile_coverage = PROJECTILE_COVERAGE_HIGH
+	qdel(src)
+
+/obj/structure/bed/chair/stack/three
+
+/obj/structure/bed/chair/stack/four
+	icon_state = "stacked_chairs_4"
+	stacked_size = 4
+
+/obj/structure/bed/chair/stack/five
+	icon_state = "stacked_chairs_5"
+	stacked_size = 5
+
 //Chair types
 /obj/structure/bed/chair/bolted
 	desc = "A rectangular metallic frame sitting on four legs with a back panel. Designed to fit the sitting position, more or less comfortably. It appears to be bolted to the ground."

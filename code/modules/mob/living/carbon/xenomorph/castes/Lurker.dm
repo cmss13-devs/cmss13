@@ -84,10 +84,14 @@
 	var/invis_start_time = -1 // Special value for when we're not invisible
 	var/invis_duration = 30 SECONDS // so we can display how long the lurker is invisible to it
 	var/buffed_slash_damage_ratio = 1.2
-	var/slash_slow_duration = 35
+	var/slash_slow_duration = 3.5 SECONDS
 
 	// State
 	var/next_slash_buffed = FALSE
+
+	// Used by append_to_start()
+	var/cd_timer_id = TIMER_ID_NULL
+	var/speed_buff = 0
 
 /datum/behavior_delegate/lurker_base/melee_attack_modify_damage(original_damage, mob/living/carbon/target_carbon)
 	if (!isxeno_human(target_carbon))
@@ -142,6 +146,7 @@
 	if(lurker_pounce_action)
 		lurker_pounce_action.knockdown = TRUE // pounce knocks down
 		lurker_pounce_action.freeze_self = TRUE
+		lurker_pounce_action.display_buffed = TRUE
 	ADD_TRAIT(bound_xeno, TRAIT_CLOAKED, TRAIT_SOURCE_ABILITY("cloak"))
 	RegisterSignal(bound_xeno, COMSIG_MOB_EFFECT_CLOAK_CANCEL, PROC_REF(decloak_handler))
 	bound_xeno.stealth = TRUE
@@ -153,35 +158,28 @@
 	if(lurker_pounce_action)
 		lurker_pounce_action.knockdown = FALSE // pounce no longer knocks down
 		lurker_pounce_action.freeze_self = FALSE
+		lurker_pounce_action.display_buffed = FALSE
 	bound_xeno.stealth = FALSE
 	REMOVE_TRAIT(bound_xeno, TRAIT_CLOAKED, TRAIT_SOURCE_ABILITY("cloak"))
 	UnregisterSignal(bound_xeno, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 	invis_start_time = -1
 
 /datum/behavior_delegate/lurker_base/append_to_stat()
+	ats_lurker()
 	. = list()
-
-	// Invisible
-	if(invis_start_time != -1)
-		var/time_left = (invis_duration-(world.time - invis_start_time)) / 10
-		. += "Invisibility Remaining: [time_left] second\s."
-		return
-
-	var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invisibility_action = get_action(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
-	if(!lurker_invisibility_action)
-		return
-
+	. += "Walking Speed: +[bound_xeno.stealth ? (speed_buff * 100) : 0]%"
+	if(invis_start_time != -1) // Invisible
+		. += "Invisibility Remaining: [(invis_duration - (world.time - invis_start_time)) / 10] seconds."
 	if(!bound_xeno.client?.prefs.show_cooldown_messages)
 		return
-
-	// Recharged
-	if(lurker_invisibility_action.cooldown_timer_id == TIMER_ID_NULL)
+	if(cd_timer_id == TIMER_ID_NULL) // Recharged
 		. += "Invisibility Recharge: Ready."
-		return
+	. += "Invisibility Recharge: [timeleft(cd_timer_id) / 10] seconds." // Recharging
 
-	// Recharging
-	var/time_left = timeleft(lurker_invisibility_action.cooldown_timer_id) / 10
-	. += "Invisibility Recharge: [time_left] second\s."
+/datum/behavior_delegate/lurker_base/proc/ats_lurker()
+	var/datum/action/xeno_action/onclick/lurker_invisibility/ability_action = get_action(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
+	cd_timer_id = ability_action.cooldown_timer_id
+	speed_buff = ability_action.speed_buff
 
 /datum/behavior_delegate/lurker_base/on_collide(atom/movable/movable_atom)
 	. = ..()
@@ -263,6 +261,9 @@
 	var/datum/behavior_delegate/lurker_base/behavior = xeno.behavior_delegate
 	behavior.on_invisibility()
 
+	var/datum/action/xeno_action/activable/pounce/lurker/buffed_pounce = get_action(xeno, /datum/action/xeno_action/activable/pounce/lurker)
+	buffed_pounce.display_buffed = TRUE
+
 	// if we go off early, this also works fine.
 	invis_timer_id = addtimer(CALLBACK(src, PROC_REF(invisibility_off)), duration, TIMER_STOPPABLE)
 
@@ -303,6 +304,8 @@
 	apply_cooldown_override(recharge_time)
 
 	behavior.on_invisibility_off()
+	var/datum/action/xeno_action/activable/pounce/lurker/buffed_pounce = get_action(xeno, /datum/action/xeno_action/activable/pounce/lurker)
+	buffed_pounce.display_buffed = FALSE
 
 /datum/action/xeno_action/onclick/lurker_invisibility/ability_cooldown_over()
 	if(owner.client?.prefs.show_cooldown_messages)

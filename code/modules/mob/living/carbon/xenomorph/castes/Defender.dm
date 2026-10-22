@@ -95,6 +95,29 @@
 /datum/behavior_delegate/defender_base
 	name = "Base Defender Behavior Delegate"
 
+	// Used by append_to_start()
+	var/front_armor = 0
+	var/armor_buff = 0
+	var/speed_debuff = 0
+	var/fortify_armor = 0
+
+/datum/behavior_delegate/defender_base/append_to_stat()
+	ats_defender()
+	. = list()
+	. += "Walking Speed: -[bound_xeno.crest_defense ? (speed_debuff * 100) : 0]%"
+	. += "Armor Increase: +[(bound_xeno.crest_defense ? armor_buff : 0) + (bound_xeno.fortify ? fortify_armor : 0)]"
+	. += "Front Armor: +[bound_xeno.fortify ? front_armor : 0]"
+	. += "Explosion Stun: [bound_xeno.small_explosives_stun ? "Yes" : "No"]"
+
+/datum/behavior_delegate/defender_base/proc/ats_defender()
+	var/datum/action/xeno_action/activable/fortify/ability_action = get_action(bound_xeno, /datum/action/xeno_action/activable/fortify)
+	front_armor = ability_action.frontal_armor
+	fortify_armor = ability_action.armor_buff
+
+	var/datum/action/xeno_action/onclick/toggle_crest/crest_action = get_action(bound_xeno, /datum/action/xeno_action/onclick/toggle_crest)
+	armor_buff = crest_action.armor_buff
+	speed_debuff = crest_action.speed_debuff
+
 /datum/behavior_delegate/defender_base/on_update_icons()
 	if(bound_xeno.stat == DEAD)
 		return
@@ -137,6 +160,7 @@
 	return ..()
 
 /datum/action/xeno_action/onclick/toggle_crest/proc/headcrest_switch(mob/living/carbon/xenomorph/xeno, crest_state)
+	var/datum/action/xeno_action/activable/headbutt/headbutt_used = get_action(xeno, /datum/action/xeno_action/activable/headbutt)
 	if(xeno.crest_defense == crest_state)
 		return
 
@@ -148,6 +172,7 @@
 		xeno.crest_defense = TRUE
 		xeno.mob_size = MOB_SIZE_BIG //knockback immune
 		button.icon_state = "template_active"
+		headbutt_used.display_buffed = TRUE
 	else
 		to_chat(xeno, SPAN_XENOWARNING("We raise our crest."))
 
@@ -156,6 +181,7 @@
 		xeno.crest_defense = FALSE
 		xeno.mob_size = MOB_SIZE_XENO //no longer knockback immune
 		button.icon_state = "template_xeno"
+		headbutt_used.display_buffed = FALSE
 
 	xeno.update_icons()
 
@@ -341,14 +367,14 @@
 
 /datum/action/xeno_action/activable/fortify/proc/apply_modifiers(mob/living/carbon/xenomorph/xeno, fortify_state)
 	if(fortify_state)
-		xeno.armor_deflection_buff += 30
-		xeno.armor_explosive_buff += 60
+		xeno.armor_deflection_buff += armor_buff
+		xeno.armor_explosive_buff += explosion_res
 		ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Fortify"))
 		xeno.anchored = TRUE
 		xeno.small_explosives_stun = FALSE
 	else
-		xeno.armor_deflection_buff -= 30
-		xeno.armor_explosive_buff -= 60
+		xeno.armor_deflection_buff -= armor_buff
+		xeno.armor_explosive_buff -= explosion_res
 		xeno.small_explosives_stun = TRUE
 
 /datum/action/xeno_action/activable/fortify/proc/check_directional_armor(mob/living/carbon/xenomorph/defendy, list/damagedata)

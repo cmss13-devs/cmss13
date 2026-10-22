@@ -34,7 +34,7 @@
 	var/shards_per_projectile = 10
 	var/shards_per_slash = 15
 	var/armor_buff_per_fifty_shards = 2.50
-	var/shard_lock_duration = 150
+	var/shard_lock_duration = 15 SECONDS
 	var/shard_lock_speed_mod = 0.45
 
 	// Shard state
@@ -44,10 +44,17 @@
 	// Armor buff state
 	var/times_armor_buffed = 0
 
+	// Used by append_to_start()
+	var/locked_shards_start_time = -1
+
 /datum/behavior_delegate/ravager_hedgehog/append_to_stat()
 	. = list()
 	. += "Bone Shards: [shards]/[max_shards]"
-	. += "Shards Armor Bonus: [times_armor_buffed*armor_buff_per_fifty_shards]"
+	. += "Explosion Stun: [bound_xeno.small_explosives_stun ? "Yes" : "No"]"
+	. += "Shards Armor Bonus: [times_armor_buffed * armor_buff_per_fifty_shards]"
+	. += "Walking Speed: +[shards_locked ? (shard_lock_speed_mod * 100) : 0]%"
+	if(locked_shards_start_time != -1)
+		. += "Shards Cooldown: [(shard_lock_duration - (world.time - locked_shards_start_time)) / 10] Seconds"
 
 /datum/behavior_delegate/ravager_hedgehog/proc/lock_shards()
 
@@ -61,6 +68,7 @@
 
 	shards = 0
 	shards_locked = TRUE
+	locked_shards_start_time = world.time
 	addtimer(CALLBACK(src, PROC_REF(unlock_shards)), shard_lock_duration)
 
 /datum/behavior_delegate/ravager_hedgehog/proc/unlock_shards()
@@ -73,6 +81,7 @@
 	bound_xeno.speed_modifier += shard_lock_speed_mod
 	bound_xeno.recalculate_speed()
 	shards_locked = FALSE
+	locked_shards_start_time = -1
 
 // Return true if we have enough shards, false otherwise
 /datum/behavior_delegate/ravager_hedgehog/proc/check_shards(amount)

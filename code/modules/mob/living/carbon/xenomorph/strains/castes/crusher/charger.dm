@@ -48,6 +48,12 @@
 	var/side_armor = 15
 	var/datum/action/xeno_action/onclick/charger_charge/my_action // TODO: Move most behavior logic in this action into this behavior_delegate instead
 
+/datum/behavior_delegate/crusher_charger/append_to_stat()
+	. = list()
+	. += "Front Armor: +[frontal_armor]"
+	. += "Side Armor: +[side_armor]"
+	. += "Explosion Stun: [bound_xeno.small_explosives_stun ? "Yes" : "No"]"
+
 /datum/behavior_delegate/crusher_charger/add_to_xeno()
 	RegisterSignal(bound_xeno, COMSIG_MOB_SET_FACE_DIR, PROC_REF(cancel_dir_lock))
 	RegisterSignal(bound_xeno, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(apply_directional_armor))
@@ -67,7 +73,6 @@
 	SIGNAL_HANDLER
 	var/projectile_direction = damagedata["direction"]
 	if(xeno.dir & REVERSE_DIR(projectile_direction))
-		// During the charge windup, crusher gets an extra 15 directional armor in the direction its charging
 		damagedata["armor"] += frontal_armor
 	else
 		for(var/side_direction in get_perpen_dir(xeno.dir))

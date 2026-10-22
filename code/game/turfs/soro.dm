@@ -203,6 +203,10 @@
 	icon_state = "browndirt_road"
 	baseturfs = /turf/open/asphalt
 
+/turf/open/asphalt/brown/unweedable
+	allow_construction = FALSE
+	is_weedable = NOT_WEEDABLE
+
 /turf/closed/wall/strata_ice/rock
 	name = "rock wall"
 	icon = 'icons/turf/walls/jungle_soro_rock_walls.dmi'

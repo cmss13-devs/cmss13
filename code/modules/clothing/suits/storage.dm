@@ -9,6 +9,7 @@
 	pockets.max_w_class = SIZE_SMALL //fit only small items
 	pockets.max_storage_space = 4
 	flags_atom |= USES_HEARING
+	pockets.storage_flags = STORAGE_FLAGS_POUCH
 
 /obj/item/clothing/suit/storage/Destroy()
 	QDEL_NULL(pockets)

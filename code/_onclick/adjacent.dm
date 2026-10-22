@@ -37,7 +37,7 @@
 
 	if(turf_zero.x == x || turf_zero.y == y)
 		// Check for border blockages
-		return turf_zero.ClickCross(get_dir(turf_zero,src), border_only = 1, ignore_list = ignore_list) && src.ClickCross(get_dir(src,turf_zero), border_only = 1, target_atom = target, ignore_list = ignore_list)
+		return turf_zero.ClickCross(get_dir(turf_zero,src), border_only = 1, target_atom = target, ignore_list = ignore_list, reacher = neighbor) && src.ClickCross(get_dir(src,turf_zero), border_only = 1, target_atom = target, ignore_list = ignore_list, reacher = neighbor)
 
 	// Not orthagonal
 	var/in_dir = get_dir(neighbor,src) // eg. northwest (1+8)
@@ -45,14 +45,14 @@
 	var/d2 = in_dir - d1 // eg north (1+8) - 8 = 1
 
 	for(var/d in list(d1,d2))
-		if(!turf_zero.ClickCross(d, border_only = 1, ignore_list = ignore_list))
+		if(!turf_zero.ClickCross(d, border_only = 1, target_atom = target, ignore_list = ignore_list, reacher = neighbor))
 			continue // could not leave turf_zero in that direction
 
 		var/turf/turf_one = get_step(turf_zero,d)
-		if(!turf_one || turf_one.density || !turf_one.ClickCross(get_dir(turf_one,turf_zero)|get_dir(turf_one,src), border_only = 0, ignore_list = ignore_list))
+		if(!turf_one || turf_one.density || !turf_one.ClickCross(get_dir(turf_one,turf_zero)|get_dir(turf_one,src), border_only = 0, target_atom = target, ignore_list = ignore_list, reacher = neighbor))
 			continue // couldn't enter or couldn't leave turf_one
 
-		if(!src.ClickCross(get_dir(src,turf_one), border_only = 1, target_atom = target, ignore_list = ignore_list))
+		if(!src.ClickCross(get_dir(src,turf_one), border_only = 1, target_atom = target, ignore_list = ignore_list, reacher = neighbor))
 			continue // could not enter src
 
 		return TRUE // we don't care about our own density
@@ -134,13 +134,15 @@ Quick adjacency (to turf):
 	This is defined as any dense ON_BORDER object, or any dense object without throwpass.
 	The border_only flag allows you to not objects (for source and destination squares)
 */
-/turf/proc/ClickCross(target_dir, border_only, target_atom = null, list/ignore_list)
+/turf/proc/ClickCross(target_dir, border_only, target_atom = null, list/ignore_list, atom/reacher = null)
 	for(var/obj/object in src)
 		if(object in ignore_list)
 			continue
 
 		if(!object.density || object == target_atom || object.throwpass)
 			continue // throwpass is used for anything you can click through
+		if(isxeno(reacher) && istype(object, /obj/effect/alien/resin/special))
+			continue
 
 		if(object.flags_atom & ON_BORDER) // windows have throwpass but are on border, check them first
 			if(object.dir & target_dir || object.dir&(object.dir-1)) // full tile windows are just diagonals mechanically

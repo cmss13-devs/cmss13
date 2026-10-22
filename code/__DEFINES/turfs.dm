@@ -14,6 +14,13 @@
 ///Returns all turfs in a zlevel
 #define Z_TURFS(ZLEVEL) block(1, 1, (ZLEVEL), world.maxx, world.maxy, (ZLEVEL))
 
+/// Returns the cardinal (4 neighboring turfs) of the given atom in clockwise order
+#define CARDINAL_TURFS(center) list( \
+	get_step(center, NORTH), \
+	get_step(center, EAST), \
+	get_step(center, SOUTH), \
+	get_step(center, WEST))
+
 /// Returns a list of turfs in the rectangle specified by BOTTOM LEFT corner and height/width
 #define CORNER_BLOCK(corner, width, height) CORNER_BLOCK_OFFSET(corner, width, height, 0, 0)
 
@@ -40,3 +47,10 @@
 #define TURF_DEPLOYABLE_GUN "gun"
 /// Deployable is an automated sentry
 #define TURF_DEPLOYABLE_SENTRY "sentry"
+
+/// Returns whether the passed atom has a closed turf in all four cardinals
+/proc/is_enclosed_turf(atom/center)
+	var/count = 0
+	for(var/turf/closed/cardinal in CARDINAL_TURFS(center))
+		count++
+	return count == 4

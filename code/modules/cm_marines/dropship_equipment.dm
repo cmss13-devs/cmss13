@@ -799,7 +799,7 @@
 	if(SA.laser_guided && istype(selected_target, /obj/effect/overlay/temp/laser_target/tactical))
 		var/obj/effect/overlay/temp/laser_target/tactical/mark = selected_target
 		if(mark.marked_target)
-			guide_missile(mark, SA, user, ammo_travelling_time, ammo_max_inaccuracy)
+			guide_missile(mark, SA, user, ammo_travelling_time, ammo_max_inaccuracy, impact, impact_overlay)
 			return
 	if(ammo_travelling_time && !istype(SA, /obj/structure/ship_ammo/rocket/thermobaric))
 		var/total_seconds = max(floor(ammo_travelling_time/10),1)
@@ -840,9 +840,12 @@
 	QDEL_NULL(impact_overlay)
 
 /// Reacquire only the original mark. Losing it sends the missile toward its last known position.
-/obj/structure/dropship_equipment/weapon/proc/guide_missile(obj/effect/overlay/temp/laser_target/tactical/mark, obj/structure/ship_ammo/ammo, mob/user, travel_time, lost_accuracy)
+/obj/structure/dropship_equipment/weapon/proc/guide_missile(obj/effect/overlay/temp/laser_target/tactical/mark, obj/structure/ship_ammo/ammo, mob/user, travel_time, lost_accuracy, turf/impact, obj/effect/overlay/temp/dropship_reticle/direct/impact_overlay)
 	var/mob/living/target = mark.marked_target
-	var/turf/impact = get_turf(mark)
+	var/turf/last_target_turf = get_turf(mark)
+	// Preserve the initial scatter
+	var/offset_x = impact.x - last_target_turf.x
+	var/offset_y = impact.y - last_target_turf.y
 	mark.change_incoming_missiles(1)
 	to_chat(target, SPAN_HIGHDANGER("Something is incoming from above! Find cover quickly!"))
 	playsound(target, 'sound/effects/IncomingRocket.ogg', 70, TRUE)
@@ -855,11 +858,14 @@
 		if(!lock_lost)
 			if(QDELETED(mark) || !mark.can_track_target() || !mark.signal?.valid_signal() || !cas_direct_fire_visible(target))
 				lock_lost = TRUE
-				impact = pick(RANGE_TURFS(lost_accuracy, impact))
+				impact = pick(RANGE_TURFS(lost_accuracy, last_target_turf))
 				if(!QDELETED(mark))
 					mark.change_incoming_missiles(-1)
 			else
-				impact = get_turf(target)
+				last_target_turf = get_turf(target)
+				impact = locate(clamp(last_target_turf.x + offset_x, 1, world.maxx), clamp(last_target_turf.y + offset_y, 1, world.maxy), last_target_turf.z)
+		if(!QDELETED(impact_overlay))
+			impact_overlay.update_guidance(impact, !lock_lost)
 		if(!warning_started && world.time >= warning_time && !QDELETED(ammo))
 			warning_started = TRUE
 			if(ammo.warning_sound)
@@ -871,6 +877,7 @@
 			break
 		sleep(min(0.2 SECONDS, arrival_time - world.time))
 	QDEL_NULL(impact_warning)
+	QDEL_NULL(impact_overlay)
 	if(!lock_lost && !QDELETED(mark))
 		mark.change_incoming_missiles(-1)
 	if(QDELETED(ammo) || !impact || !cas_direct_fire_visible(impact) || protected_by_pylon(TURF_PROTECTION_CAS, impact))

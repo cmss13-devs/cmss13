@@ -55,7 +55,7 @@ SUBSYSTEM_DEF(landmark_init)
 		// Quota times, pick a random turf, spawn an item there, then remove that turf from the list.
 		for (var/i in 1 to pool.quota)
 			var/turf/spawn_point = pool.turfs[rand(1, length(pool.turfs))]
-			var/atom/movable/newly_spawned = new pool.type_to_spawn(spawn_point)
+			new pool.type_to_spawn(spawn_point)
 			pool.turfs -= spawn_point
 
 	return SS_INIT_SUCCESS

@@ -27423,32 +27423,15 @@
 /turf/open/floor/almayer/cargo_arrow/west,
 /area/forward_base/living/offices/cryo)
 "bIu" = (
-/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/almayer/cargo_arrow/west,
 /area/forward_base/living/offices/cryo)
 "bIv" = (
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/flooredge/north,
-/area/forward_base/living/offices/cryo)
-"bIw" = (
-/obj/effect/landmark/observer_start,
-/obj/effect/landmark/late_join,
-/obj/effect/landmark/ert_spawns/distress_cryo,
 /turf/open/floor/almayer/mono,
-/area/forward_base/living/offices/cryo)
-"bIx" = (
-/obj/effect/landmark/late_join,
-/obj/effect/landmark/ert_spawns/distress_cryo,
-/turf/open/floor/almayer/mono,
-/area/forward_base/living/offices/cryo)
-"bIy" = (
-/obj/effect/landmark/late_join,
-/obj/effect/landmark/ert_spawns/distress_cryo,
-/obj/structure/machinery/light,
-/turf/open/floor/almayer/flooredgesmooth/south,
 /area/forward_base/living/offices/cryo)
 "bIz" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -27584,11 +27567,6 @@
 /obj/effect/landmark/ert_spawns/distress_cryo,
 /obj/effect/landmark/late_join,
 /obj/effect/landmark/start/tank_crew,
-/turf/open/floor/almayer/flooredge/west,
-/area/forward_base/living/offices/cryo)
-"bIR" = (
-/obj/effect/landmark/ert_spawns/distress_cryo,
-/obj/effect/landmark/late_join,
 /turf/open/floor/almayer/flooredge/west,
 /area/forward_base/living/offices/cryo)
 "bIS" = (
@@ -27739,17 +27717,14 @@
 /turf/open/floor/wood/ship,
 /area/forward_base/command/corporateliaison)
 "bJo" = (
-/obj/structure/machinery/cryopod{
-	pixel_y = 6
-	},
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/almayer/cargo,
+/turf/open/floor/almayer/flooredgesmooth/east,
 /area/forward_base/living/offices/cryo)
 "bJp" = (
-/obj/effect/landmark/ert_spawns/distress_cryo,
-/obj/effect/landmark/late_join,
 /turf/open/floor/almayer/flooredgesmooth/east,
 /area/forward_base/living/offices/cryo)
 "bJq" = (
@@ -31485,6 +31460,11 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"bSx" = (
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
+/turf/open/floor/almayer/flooredgesmooth/south,
+/area/forward_base/living/offices/cryo)
 "bSy" = (
 /obj/structure/barricade/handrail{
 	dir = 8
@@ -32179,12 +32159,6 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/shipboard/weapon_room)
-"bUg" = (
-/obj/effect/landmark/ert_spawns/distress_cryo,
-/obj/effect/landmark/late_join,
-/obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/flooredgesmooth/east,
-/area/forward_base/living/offices/cryo)
 "bUh" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
@@ -32432,6 +32406,23 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement,
 /area/bigredv2/outside/filtration_cave_cas)
+"bUK" = (
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
+/obj/structure/machinery/light,
+/turf/open/floor/almayer/flooredgesmooth/south,
+/area/forward_base/living/offices/cryo)
+"bUL" = (
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
+/turf/open/floor/almayer/flooredge/north,
+/area/forward_base/living/offices/cryo)
+"bUM" = (
+/turf/open/floor/almayer/flooredge/west,
+/area/forward_base/living/offices/cryo)
+"bUN" = (
+/turf/open/floor/almayer/mono,
+/area/forward_base/living/offices/cryo)
 "bVq" = (
 /obj/item/trash/chips{
 	pixel_y = 4;
@@ -103561,9 +103552,9 @@ bGg
 bGQ
 bGQ
 bGg
-bGg
-bGg
-bGg
+bId
+bId
+bId
 bGg
 bHT
 bHT
@@ -103774,9 +103765,9 @@ bGg
 bIc
 bIc
 bGg
-bId
-bId
-bId
+bUL
+bJf
+bSx
 bGg
 bIe
 bIe
@@ -103987,9 +103978,9 @@ bGg
 bIt
 bIu
 bIv
-bIw
-bIx
-bIy
+bUL
+bJf
+bSx
 bGg
 bIe
 bIe
@@ -104196,13 +104187,13 @@ bIN
 bIO
 bIr
 aAG
-bGg
 bIP
 bIQ
-bIP
-bIP
-bIR
-bIP
+bUM
+bId
+bId
+bId
+bId
 bGg
 bIe
 bIe
@@ -104409,13 +104400,13 @@ bJd
 bJd
 bJc
 aAG
-bGg
-bId
+bIP
 bJe
-bId
-bId
-bJf
-bId
+bUN
+bIP
+bIP
+bIP
+bIP
 bGg
 bIe
 bIe
@@ -104622,13 +104613,13 @@ bJc
 bJc
 bJn
 aAG
-bGg
+bIP
 bJo
 bJp
-bIP
-bIP
-bUg
-bIP
+bJf
+bUL
+bJf
+bUK
 bGg
 bIB
 bIB

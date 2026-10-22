@@ -1725,16 +1725,9 @@
 /obj/structure/flora/grass/desert/lightgrass_6,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_pad)
-"agA" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#8D8468";
-	dir = 8
-	},
-/turf/open/auto_turf/sand/layer2,
-/area/kutjevo/exterior/lz_pad)
 "agB" = (
 /obj/structure/flora/grass/desert/lightgrass_4,
-/turf/open/auto_turf/sand/layer2,
+/turf/open/floor/asteroidwarning,
 /area/kutjevo/exterior/lz_pad)
 "agC" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
@@ -7522,7 +7515,7 @@
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
-/turf/open/auto_turf/sand/layer0,
+/turf/open/floor/asteroidwarning/northeast,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "awo" = (
 /obj/structure/barricade/metal/wired,
@@ -8029,7 +8022,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/asphalt/cement_sunbleached,
+/turf/open/floor/asteroidwarning/northwest,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "axI" = (
 /obj/structure/closet/secure_closet/guncabinet,
@@ -11598,28 +11591,13 @@
 "aGD" = (
 /turf/open/floor/almayer/plating,
 /area/forward_base/shipboard/weapon_room)
-"aGE" = (
-/obj/effect/landmark/late_join,
-/obj/effect/landmark/ert_spawns/distress_cryo,
-/obj/structure/machinery/light,
-/turf/open/floor/almayer/flooredgesmooth/south,
-/area/forward_base/living/offices/cryo)
-"aGF" = (
-/obj/effect/landmark/late_join,
-/obj/effect/landmark/ert_spawns/distress_cryo,
-/turf/open/floor/almayer/mono,
-/area/forward_base/living/offices/cryo)
-"aGG" = (
-/obj/effect/landmark/observer_start,
-/obj/effect/landmark/late_join,
-/obj/effect/landmark/ert_spawns/distress_cryo,
-/turf/open/floor/almayer/mono,
-/area/forward_base/living/offices/cryo)
 "aGH" = (
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/almayer/flooredge/north,
+/turf/open/floor/almayer/mono,
 /area/forward_base/living/offices/cryo)
 "aGI" = (
 /turf/open/floor/almayer/cargo_arrow/west,
@@ -11755,11 +11733,6 @@
 	},
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany/east)
-"aHc" = (
-/obj/effect/landmark/ert_spawns/distress_cryo,
-/obj/effect/landmark/late_join,
-/turf/open/floor/almayer/flooredge/west,
-/area/forward_base/living/offices/cryo)
 "aHd" = (
 /obj/effect/landmark/ert_spawns/distress_cryo,
 /obj/effect/landmark/late_join,
@@ -12002,18 +11975,15 @@
 /turf/open/floor/almayer/plating_striped/west,
 /area/forward_base/shipboard/weapon_room)
 "aHL" = (
-/obj/effect/landmark/ert_spawns/distress_cryo,
-/obj/effect/landmark/late_join,
 /turf/open/floor/almayer/flooredgesmooth/east,
 /area/forward_base/living/offices/cryo)
 "aHM" = (
-/obj/structure/machinery/cryopod{
-	pixel_y = 6
-	},
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/almayer/cargo,
+/turf/open/floor/almayer/flooredgesmooth/east,
 /area/forward_base/living/offices/cryo)
 "aHN" = (
 /obj/structure/machinery/light,
@@ -15527,6 +15497,13 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/medical/medical_science)
+"aQn" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#8D8468";
+	dir = 8
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_pad)
 "aQo" = (
 /obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
 	id = "Biohazard Storage";
@@ -15686,6 +15663,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/medical/medical_science)
+"aQD" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#8D8468";
+	dir = 8
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_pad)
 "aQE" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning3";
@@ -15931,7 +15915,7 @@
 /area/kutjevo/exterior/lz_pad)
 "aRl" = (
 /obj/structure/flora/grass/desert/lightgrass_3,
-/turf/open/auto_turf/sand/layer2,
+/turf/open/floor/asteroidwarning/southwest,
 /area/kutjevo/exterior/lz_pad)
 "aRm" = (
 /obj/structure/flora/grass/desert/lightgrass_3,
@@ -16148,7 +16132,7 @@
 "aSf" = (
 /obj/structure/flora/grass/desert/lightgrass_5,
 /obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/auto_turf/sand/layer1,
+/turf/open/asphalt/cement_sunbleached,
 /area/kutjevo/exterior/lz_pad)
 "aSg" = (
 /obj/effect/landmark/start/maint,
@@ -16674,6 +16658,9 @@
 	},
 /turf/open/floor/almayer/silverfull,
 /area/forward_base/medical/upper_medical)
+"aTr" = (
+/turf/open/floor/asteroidwarning,
+/area/kutjevo/exterior/lz_pad)
 "aTs" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -16693,6 +16680,9 @@
 /obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
 /area/forward_base/medical/medical_science)
+"aTv" = (
+/turf/open/floor/asteroidwarning/southeast,
+/area/kutjevo/exterior/lz_pad)
 "aTw" = (
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/kutjevo/plate,
@@ -16829,6 +16819,9 @@
 	},
 /turf/open/floor/almayer/research/containment/corner3,
 /area/forward_base/medical/medical_science)
+"aTL" = (
+/turf/open/floor/asteroidwarning/southwest,
+/area/kutjevo/exterior/lz_pad)
 "aTM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -17020,6 +17013,37 @@
 	},
 /turf/open/floor/almayer/research/containment/corner/west,
 /area/forward_base/medical/medical_science)
+"aUf" = (
+/turf/open/floor/asteroidwarning/northwest,
+/area/kutjevo/exterior/lz_pad)
+"aUg" = (
+/turf/open/floor/asteroidwarning/north,
+/area/kutjevo/exterior/lz_pad)
+"aUh" = (
+/turf/open/floor/asteroidwarning/northeast,
+/area/kutjevo/exterior/lz_pad)
+"aUi" = (
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
+/turf/open/floor/almayer/flooredgesmooth/south,
+/area/forward_base/living/offices/cryo)
+"aUj" = (
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
+/obj/structure/machinery/light,
+/turf/open/floor/almayer/flooredgesmooth/south,
+/area/forward_base/living/offices/cryo)
+"aUk" = (
+/obj/effect/landmark/ert_spawns/distress_cryo,
+/obj/effect/landmark/late_join,
+/turf/open/floor/almayer/flooredge/north,
+/area/forward_base/living/offices/cryo)
+"aUl" = (
+/turf/open/floor/almayer/flooredge/west,
+/area/forward_base/living/offices/cryo)
+"aUm" = (
+/turf/open/floor/almayer/mono,
+/area/forward_base/living/offices/cryo)
 "aVv" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -35520,7 +35544,7 @@ auM
 amf
 auL
 ame
-acx
+tHh
 tHh
 aSc
 aSm
@@ -35687,7 +35711,7 @@ ajL
 ajL
 ava
 ajL
-agA
+aQn
 tHh
 tHh
 aSm
@@ -35852,9 +35876,9 @@ akL
 auu
 avv
 ajL
-tHh
+aUf
 aRl
-aRj
+agK
 tHh
 tHh
 aSm
@@ -36019,11 +36043,11 @@ akL
 auu
 avI
 ajL
-tHh
+aUg
 agB
 tHh
 tHh
-tHh
+aQn
 aSm
 aSm
 aiJ
@@ -36186,8 +36210,8 @@ amk
 auu
 akB
 avV
-tHh
-tHh
+aUg
+aTr
 tHh
 tHh
 tHh
@@ -36354,7 +36378,7 @@ akw
 awo
 ajL
 awn
-tHh
+aTv
 tHh
 avU
 tHh
@@ -36520,15 +36544,15 @@ aSN
 aSM
 awE
 awD
-aaS
-aaS
-aaS
-aaS
-aaS
-agq
-agq
-agq
-agq
+agp
+agp
+agp
+agp
+agp
+agw
+agw
+agw
+agw
 aSf
 agq
 aaS
@@ -37022,13 +37046,13 @@ akw
 awo
 ajL
 axH
-agp
-agp
-agp
-agp
-agw
-agw
-agw
+aTL
+aQD
+aaS
+aaS
+agq
+agq
+agq
 agw
 agw
 agw
@@ -37188,8 +37212,8 @@ ake
 auu
 akB
 avV
-aaS
-aaS
+aUg
+aTr
 aaS
 agt
 aaS
@@ -37355,8 +37379,8 @@ akL
 auu
 avv
 ajL
-aaS
-aaS
+aUh
+aTv
 aaS
 agu
 aaS
@@ -72601,9 +72625,9 @@ aFb
 aFz
 aFz
 aFb
-aFb
-aFb
-aFb
+aGq
+aGq
+aGq
 aFb
 aFX
 aFX
@@ -72768,9 +72792,9 @@ aFb
 aGr
 aGr
 aFb
-aGq
-aGq
-aGq
+aUk
+aHw
+aUi
 aFb
 aGp
 aGp
@@ -72935,9 +72959,9 @@ aFb
 aGJ
 aGI
 aGH
-aGG
-aGF
-aGE
+aUk
+aHw
+aUi
 aFb
 aGp
 aGp
@@ -73098,13 +73122,13 @@ aHf
 aHe
 aGL
 amN
-aFb
 aHa
 aHd
-aHa
-aHa
-aHc
-aHa
+aUl
+aGq
+aGq
+aGq
+aGq
 aFb
 aGp
 aGp
@@ -73265,13 +73289,13 @@ aHz
 aHz
 aHy
 amN
-aFb
-aGq
+aHa
 aHx
-aGq
-aGq
-aHw
-aGq
+aUm
+aHa
+aHa
+aHa
+aHa
 aFb
 aGp
 aGp
@@ -73432,13 +73456,13 @@ aHy
 aHy
 aHN
 amN
-aFb
+aHa
 aHM
 aHL
-aHa
-aHa
-aHL
-aHa
+aHw
+aUk
+aHw
+aUj
 aFb
 aGB
 aGB

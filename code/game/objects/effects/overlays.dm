@@ -363,7 +363,7 @@
 	plane = ABOVE_LIGHTING_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	alpha = 0
-	effect_duration = 600
+	effect_duration = 1 MINUTES
 
 	var/image/reticle_image = null
 	var/shuttle_tag = null
@@ -405,11 +405,11 @@
 /obj/effect/overlay/temp/dropship_reticle/proc/remove_from_all_clients()
 	var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
 	if(dropship_hud)
-		for(var/mob/mob_user in dropship_hud.hudusers)
+		for(var/mob/mob_user as anything in dropship_hud.hudusers)
 			if(mob_user.client)
 				if(reticle_image)
 					mob_user.client.images -= reticle_image
-	for(var/mob/living/carbon/human/mob_user in GLOB.alive_human_list)
+	for(var/mob/living/carbon/human/mob_user as anything in GLOB.alive_human_list)
 		if(mob_user.client && reticle_image)
 			mob_user.client.images -= reticle_image
 

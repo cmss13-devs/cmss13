@@ -40,7 +40,7 @@
 		.["records"] += list(record.ui_data(user))
 
 /datum/cas_fire_mission/proc/clear_firemission_reticles(list/firemission_reticles)
-	for(var/obj/effect/overlay/temp/dropship_reticle/firemission/reticle in firemission_reticles)
+	for(var/obj/effect/overlay/temp/dropship_reticle/firemission/reticle as anything in firemission_reticles)
 		if(reticle)
 			qdel(reticle)
 	firemission_reticles.Cut()
@@ -197,7 +197,7 @@
 		if(step > next_step)
 			current_turf = get_step(current_turf, direction)
 			next_step += tally_step
-		for(var/datum/cas_fire_mission_record/record in records)
+		for(var/datum/cas_fire_mission_record/record as anything in records)
 			if(length(record.offsets) < step || record.offsets[step] == null || record.offsets[step] == "-")
 				continue
 			var/offset = record.offsets[step]
@@ -212,12 +212,12 @@
 
 	var/list/all_firemission_reticles = list()
 	var/list/all_target_turfs = get_all_target_turfs(initial_turf, direction, steps)
-	for(var/turf/impact_turf in all_target_turfs)
+	for(var/turf/impact_turf as anything in all_target_turfs)
 		if(impact_turf)
 			var/obj/effect/overlay/temp/dropship_reticle/firemission/firemission_reticle = new /obj/effect/overlay/temp/dropship_reticle/firemission(impact_turf)
 			all_firemission_reticles += firemission_reticle
 			if(GLOB.huds[MOB_HUD_DROPSHIP])
-				for(var/mob/hud_user in GLOB.huds[MOB_HUD_DROPSHIP].hudusers)
+				for(var/mob/hud_user as anything in GLOB.huds[MOB_HUD_DROPSHIP].hudusers)
 					if(hud_user)
 						firemission_reticle.update_visibility_for_mob(hud_user)
 

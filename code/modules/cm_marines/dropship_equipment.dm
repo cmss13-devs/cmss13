@@ -791,7 +791,7 @@
 	if(impact)
 		impact_overlay = new /obj/effect/overlay/temp/dropship_reticle/direct(impact)
 		if(GLOB.huds[MOB_HUD_DROPSHIP])
-			for(var/mob/pilot in GLOB.huds[MOB_HUD_DROPSHIP].hudusers)
+			for(var/mob/pilot as anything in GLOB.huds[MOB_HUD_DROPSHIP].hudusers)
 				if(pilot)
 					impact_overlay.update_visibility_for_mob(pilot)
 
@@ -809,7 +809,7 @@
 				if(impact)
 					impact_overlay = new /obj/effect/overlay/temp/dropship_reticle/direct(impact)
 					if(GLOB.huds[MOB_HUD_DROPSHIP])
-						for(var/mob/pilot in GLOB.huds[MOB_HUD_DROPSHIP].hudusers)
+						for(var/mob/pilot as anything in GLOB.huds[MOB_HUD_DROPSHIP].hudusers)
 							if(pilot)
 								impact_overlay.update_visibility_for_mob(pilot)
 

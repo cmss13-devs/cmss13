@@ -68,21 +68,22 @@
 	cam_plane_masters["[instance.plane]"] = instance
 
 /datum/component/camera_manager/proc/show_pilot_camera(mob/user)
-	if(user && parent && istype(parent, /obj/structure/machinery/computer/dropship_weapons))
-		if(length(cas_hud_overlays))
-			return
-		for(var/plane_id in cam_plane_masters)
-			var/atom/movable/screen/plane_master/plane = cam_plane_masters[plane_id]
-			var/atom/movable/screen/fullscreen/pilot_camera/pilot_overlay = new()
-			var/atom/movable/screen/plane_master/screen_plane = plane
-			pilot_overlay.assigned_map = map_name
-			pilot_overlay.pixel_x = -224
-			pilot_overlay.pixel_y = -224
-			pilot_overlay.screen_loc = null
-			pilot_overlay.layer = screen_plane.layer + 1
-			pilot_overlay.plane = screen_plane.plane
-			screen_plane.vis_contents += pilot_overlay
-			cas_hud_overlays[pilot_overlay] = screen_plane
+	if(!user || !istype(parent, /obj/structure/machinery/computer/dropship_weapons))
+		return
+	if(length(cas_hud_overlays))
+		return
+	for(var/plane_id in cam_plane_masters)
+		var/atom/movable/screen/plane_master/plane = cam_plane_masters[plane_id]
+		var/atom/movable/screen/fullscreen/pilot_camera/pilot_overlay = new()
+		var/atom/movable/screen/plane_master/screen_plane = plane
+		pilot_overlay.assigned_map = map_name
+		pilot_overlay.pixel_x = -224
+		pilot_overlay.pixel_y = -224
+		pilot_overlay.screen_loc = null
+		pilot_overlay.layer = screen_plane.layer + 1
+		pilot_overlay.plane = screen_plane.plane
+		screen_plane.vis_contents += pilot_overlay
+		cas_hud_overlays[pilot_overlay] = screen_plane
 
 /datum/component/camera_manager/proc/hide_pilot_camera()
 	if(!cas_hud_overlays)
@@ -343,7 +344,7 @@
 		// Add the reticle image to clients
 		var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
 		if(dropship_hud)
-			for(var/mob/hud_user in dropship_hud.hudusers)
+			for(var/mob/hud_user as anything in dropship_hud.hudusers)
 				console.direct_fire_reticle.update_visibility_for_mob(hud_user)
 
 	var/list/bbox = get_bbox_of_atoms(visible_turfs)

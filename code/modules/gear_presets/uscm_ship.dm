@@ -5,13 +5,13 @@
 	minimum_age = 20
 	languages = list(LANGUAGE_ENGLISH)
 
-	utility_under = list(/obj/item/clothing/under/marine/officer/command)
+	utility_under = list(/obj/item/clothing/under/marine/officer/command, /obj/item/clothing/under/marine/officer/command/skirt)
 	utility_hat = list(/obj/item/clothing/head/cmcap)
 	utility_gloves = list(/obj/item/clothing/gloves/marine)
 	utility_shoes = list(/obj/item/clothing/shoes/marine/knife)
 	utility_extra = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
-	service_under = list(/obj/item/clothing/under/marine/officer/bridge)
+	service_under = list(/obj/item/clothing/under/marine/dress, /obj/item/clothing/under/marine/dress/skirt)
 	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/service, /obj/item/clothing/suit/storage/jacket/marine/service/mp)
 	service_hat = list(/obj/item/clothing/head/cmcap)
 	service_shoes = list(/obj/item/clothing/shoes/dress)

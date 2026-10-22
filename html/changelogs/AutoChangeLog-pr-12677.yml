@@ -1,5 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - rscadd: "Adds 'Short Range Sensors' to the game. These towers will reveal the presence of Xenomorphs on the minimap to the CIC within a range of 30 tiles. These are not currently added to any map."
-  - rscadd: "Adds the option for mappers to designate multiple randomly selected spawn locations for Sensor Towers and Short Range Sensor Towers. This will function similar to the randomly selected communication tower spawners. Each map by default will spawn a single Sensor Tower and zero Small Sensor Towers. The JSON can be edited by a mapper to increase the amount of small towers as desired. No maps are edited to add sensor tower spawn locations in this PR."

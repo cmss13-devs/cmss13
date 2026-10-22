@@ -111,6 +111,7 @@
 	alpha = 80
 	appearance_flags = RESET_ALPHA | TILE_BOUND | PIXEL_SCALE
 	garbage = FALSE
+	overlay_on_initialize = FALSE
 
 /obj/effect/decal/cleanable/cobweb2/dynamic/Initialize(mapload, targetdir, webscale = 1.0)
 	alpha += floor(webscale * 120)

@@ -55,7 +55,8 @@
 	if(!length(GLOB.observer_starts))
 		var/obj/comms_poi = locate(/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms)
 		var/turf/comms_turf = get_turf(comms_poi)
-		new /obj/effect/landmark/observer_start(comms_turf)
+		if(comms_turf)
+			new /obj/effect/landmark/observer_start(comms_turf)
 
 	var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	main_hive.allow_queen_evolve = FALSE
@@ -112,6 +113,10 @@
 	if(queen_job && queen_job.current_positions)
 		return .
 
+	#ifdef RUNTIME_MAP
+	return . // No queen spawns
+	#endif
+
 	// No roundstart queen so lets make a claimable one that does some basics
 	var/obj/effect/landmark/queen_spawn/queen_spawn = SAFEPICK(GLOB.queen_spawns)
 	var/turf/queen_location
@@ -121,10 +126,10 @@
 		queen_location = get_turf(pick(GLOB.xeno_spawns))
 	var/mob/living/carbon/xenomorph/queen/new_queen = transform_queen(null, queen_location)
 	new_queen.auto_queen = TRUE
-	addtimer(CALLBACK(src, PROC_REF(set_queen_free), new_queen), 30 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(offer_to_ghosts), new_queen), 30 SECONDS)
 	return .
 
-/datum/game_mode/survive/proc/set_queen_free(mob/living/carbon/xenomorph/queen/new_queen)
+/datum/game_mode/survive/proc/offer_to_ghosts(mob/living/carbon/xenomorph/queen/new_queen)
 	if(!new_queen.client)
 		new_queen.free_for_ghosts(TRUE, 'sound/effects/xeno_newlarva.ogg')
 

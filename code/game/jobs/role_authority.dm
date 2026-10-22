@@ -507,7 +507,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		M.job = null
 
 
-/datum/authority/branch/role/proc/equip_role(mob/living/new_mob, datum/job/new_job, turf/late_join, datum/squad/chosen_squad)
+/datum/authority/branch/role/proc/equip_role(mob/living/new_mob, datum/job/new_job, turf/late_join)
 	if(!istype(new_mob) || !istype(new_job))
 		return
 
@@ -544,7 +544,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		new_job.generate_entry_conditions(new_human) //Do any other thing that relates to their spawn.
 
 	if(new_job.flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
-		randomize_squad(new_human, chosen_squad = chosen_squad)
+		randomize_squad(new_human)
 
 	if(!late_join)
 		prioritize_specialist(new_human)
@@ -651,8 +651,15 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		simulated_fill[lowest][slot_check] = (simulated_fill[lowest][slot_check] || 0) + 1
 	return lowest
 
-//This proc is a bit of a misnomer, since there's no actual randomization going on.
-/datum/authority/branch/role/proc/randomize_squad(mob/living/carbon/human/human, skip_limit = FALSE, datum/squad/chosen_squad)
+/**
+ * Places a squad-role marine in a squad. Despite the name, nothing is random: it tries the player's
+ * preferred squads in order, then falls back to the least-filled squad with an opening for their role.
+ *
+ * Arguments:
+ * * human - The marine to place. Does nothing if they are already in a squad.
+ * * skip_limit - If TRUE, squad role caps are ignored.
+ */
+/datum/authority/branch/role/proc/randomize_squad(mob/living/carbon/human/human, skip_limit = FALSE)
 	if(!human)
 		return
 
@@ -663,15 +670,13 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(human.assigned_squad) //Wait, we already have a squad. Get outta here!
 		return
 
-	if(chosen_squad?.put_marine_in_squad(human))
-		return
-
 	var/list/preferred_squads = human.client?.prefs?.preferred_squad
 	var/datum/squad/target = get_eligible_squad(human.job, human.faction, preferred_squads, skip_limit)
 	if(!target && length(preferred_squads))
 		target = get_eligible_squad(human.job, human.faction, null, skip_limit)
 	if(!target)
 		to_chat(human, "Something went wrong with randomize_squad()! Tell a coder!")
+		stack_trace("randomize_squad() found no squad with a [human.job] opening for [key_name(human)].")
 		return
 	target.put_marine_in_squad(human)
 

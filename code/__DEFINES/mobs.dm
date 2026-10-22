@@ -140,6 +140,7 @@
 #define XENO_HIVE_YAUTJA "xeno_hive_yautja"
 #define XENO_HIVE_YAUTJA_BADBLOOD "xeno_hive_yautja_badblood"
 #define XENO_HIVE_HUNTED "xeno_hive_hunted"
+#define XENO_HIVE_HORSEMAN "xeno_hive_horseman"
 #define XENO_HIVE_RENEGADE "xeno_hive_renegade"
 
 #define XENO_HIVE_TUTORIAL "xeno_hive_tutorial"

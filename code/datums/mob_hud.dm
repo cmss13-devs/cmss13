@@ -23,6 +23,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	MOB_HUD_XENO_HIVE_FORSAKEN = new /datum/mob_hud/xeno/xeno_hive_forsaken(),
 	MOB_HUD_XENO_HIVE_YAUTJA = new /datum/mob_hud/xeno/xeno_hive_yautja(),
 	MOB_HUD_XENO_HIVE_HUNTED = new /datum/mob_hud/xeno/xeno_hive_hunted(),
+	MOB_HUD_XENO_HIVE_HORSEMAN = new /datum/mob_hud/xeno/xeno_hive_horseman(),
 	MOB_HUD_XENO_HIVE_RENEGADE = new /datum/mob_hud/xeno/xeno_hive_renegade(),
 	MOB_HUD_XENO_HIVE_TUTORIAL = new /datum/mob_hud/xeno/xeno_hive_tutorial(),
 	MOB_HUD_XENO_HOSTILE = new /datum/mob_hud/xeno_hostile(),
@@ -201,6 +202,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 /datum/mob_hud/xeno/xeno_hive_forsaken
 /datum/mob_hud/xeno/xeno_hive_yautja
 /datum/mob_hud/xeno/xeno_hive_hunted
+/datum/mob_hud/xeno/xeno_hive_horseman
 /datum/mob_hud/xeno/xeno_hive_k_series
 /datum/mob_hud/xeno/xeno_hive_renegade
 /datum/mob_hud/xeno/xeno_hive_tutorial
@@ -372,6 +374,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_YAUTJA]
 		if(XENO_HIVE_HUNTED)
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_HUNTED]
+		if(XENO_HIVE_HORSEMAN)
+			hud = GLOB.huds[MOB_HUD_XENO_HIVE_HORSEMAN]
 		if(XENO_HIVE_RENEGADE)
 			hud = GLOB.huds[MOB_HUD_XENO_HIVE_RENEGADE]
 		if(XENO_HIVE_TUTORIAL)

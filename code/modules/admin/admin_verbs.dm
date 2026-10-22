@@ -141,6 +141,7 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/cmd_admin_medals_panel, // Marine and Xeno medals editor panel
 	/client/proc/force_event,
 	/client/proc/toggle_events,
+	/client/proc/force_horseman_event,
 	/client/proc/shakeshipverb,
 	/client/proc/adminpanelweapons,
 	/client/proc/admin_general_quarters,

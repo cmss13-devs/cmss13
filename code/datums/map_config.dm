@@ -259,7 +259,7 @@
 				log_world("[surv_type] isn't a proper typepath, removing from survivor_types list")
 				continue
 		pathed_survivor_types += survivor_typepath
-	survivor_types = pathed_survivor_types.Copy()
+	survivor_types = pathed_survivor_types
 
 	survivor_types_by_variant = list()
 	for(var/surv_type in survivor_types)
@@ -284,7 +284,7 @@
 				log_world("[synth_surv_type] isn't a proper typepath, removing from synth_survivor_types list")
 				continue
 		pathed_synth_survivor_types += synth_survivor_typepath
-	synth_survivor_types = pathed_synth_survivor_types.Copy()
+	synth_survivor_types = pathed_synth_survivor_types
 
 	synth_survivor_types_by_variant = list()
 	for(var/surv_type in synth_survivor_types)
@@ -309,7 +309,7 @@
 				log_world("[CO_surv_type] isn't a proper typepath, removing from CO_survivor_types list")
 				continue
 		pathed_CO_survivor_types += CO_survivor_typepath
-	CO_survivor_types = pathed_CO_survivor_types.Copy()
+	CO_survivor_types = pathed_CO_survivor_types
 
 	if(islist(json["CO_insert_survivor_types"]))
 		CO_insert_survivor_types = json["CO_insert_survivor_types"]
@@ -326,7 +326,7 @@
 				log_world("[CO_insert_surv_type] isn't a proper typepath, removing from CO_insert_survivor_types list")
 				continue
 		pathed_CO_insert_survivor_types += CO_insert_survivor_typepath
-	CO_insert_survivor_types = pathed_CO_insert_survivor_types.Copy()
+	CO_insert_survivor_types = pathed_CO_insert_survivor_types
 
 	if(islist(json["colony_joe_types"]))
 		colony_joe_types = json["colony_joe_types"]
@@ -343,7 +343,7 @@
 				log_world("[joe_type] isn't a proper typepath, removing from colony_joe_typepath list")
 				continue
 		pathed_colony_joe_types += colony_joe_typepath
-	colony_joe_types = pathed_colony_joe_types.Copy()
+	colony_joe_types = pathed_colony_joe_types
 
 	if (islist(json["monkey_types"]))
 		monkey_types = list()

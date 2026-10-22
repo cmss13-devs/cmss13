@@ -366,13 +366,13 @@
 
 	flags_obj = OBJ_ORGANIC
 	layer = DOOR_CLOSED_LAYER
-	tiles_with = list(/obj/structure/mineral_door/resin)
+	tiles_with = list(/turf/closed/wall/resin, /obj/structure/mineral_door/resin)
 
 /obj/structure/mineral_door/resin/Initialize(mapload, hive)
 	. = ..()
 	relativewall()
 	relativewall_neighbours()
-	for(var/turf/closed/wall/W in orange(1))
+	for(var/turf/closed/wall/W in orange(1, src))
 		W.update_connections()
 		W.update_icon()
 

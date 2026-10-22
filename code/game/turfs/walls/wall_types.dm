@@ -539,6 +539,8 @@
 	icon_state = "bone_resin"
 	walltype = WALL_BONE_RESIN
 	turf_flags = TURF_HULL
+	tiles_with = list(/turf/closed/wall/mineral/bone_resin)
+	blend_objects = list(/obj/structure/mineral_door/resin/bone_resin)
 
 /turf/closed/wall/mineral/bone_resin/k_series //mineral wall because, reasons bro.
 	desc = "A wall made of molted resin. Seems these yellow xenomorphs are fast builders."

@@ -27,6 +27,8 @@
 	var/datum/tacmap_holder/map_holder
 	///Is drawing enabled
 	var/drawing
+	///Is this tacmap embedded in parent UI
+	var/is_embedded = FALSE
 
 
 /datum/component/tacmap/Initialize(has_drawing_tools, minimap_flag, has_update, drawing)
@@ -174,6 +176,10 @@
 	user.client.using_main_tacmap = TRUE
 
 /datum/component/tacmap/ui_status(mob/user, datum/ui_state/state)
+	// For embedded tacmap, delegate to parent's UI status
+	if(is_embedded)
+		return parent.ui_status(user, state)
+
 	if(get_dist(parent, user) > 1)
 		return UI_CLOSE
 
@@ -223,10 +229,15 @@ GLOBAL_LIST_INIT(tacmap_holders, list())
 /datum/tacmap_holder
 	var/map_ref
 	var/atom/movable/screen/minimap/map
+	var/owns_map = FALSE
 
-/datum/tacmap_holder/New(loc, zlevel, flags, drawing, obj/structure/machinery/computer/overwatch/coordinate_console)
+/datum/tacmap_holder/New(loc, zlevel, flags, drawing, popup = TRUE, client/for_client, uncached = FALSE, obj/structure/machinery/computer/overwatch/coordinate_console)
 	map_ref = "tacmap_[REF(src)]_map"
-	map = SSminimaps.fetch_minimap_object(zlevel, flags, live=TRUE, popup=TRUE, drawing=drawing, coordinate_console=coordinate_console)
+	map = SSminimaps.fetch_minimap_object(zlevel, flags, live=TRUE, popup=popup, drawing=drawing, for_client=for_client, uncached=uncached, coordinate_console=coordinate_console)
+	owns_map = !!for_client || uncached
+
+	if(!map)
+		return
 	map.track_popout_viewers = TRUE
 
 	map.screen_loc = "[map_ref]:1,1"
@@ -237,7 +248,10 @@ GLOBAL_LIST_INIT(tacmap_holders, list())
 	map.transform = transform
 
 /datum/tacmap_holder/Destroy()
-	map = null
+	if(owns_map)
+		QDEL_NULL(map)
+	else
+		map = null
 	return ..()
 
 /// Coordinate source supplied by specialized console components

@@ -1352,6 +1352,34 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/strata_outpost/reinforced,
 /area/lv522/atmos/cargo_intake)
+"aeJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv522/indoors/a_block/bridges/corpo)
+"aeK" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv522/indoors/a_block/bridges/corpo)
+"aeL" = (
+/obj/structure/curtain/red,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/lv522/indoors/a_block/executive)
+"aeM" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/a_block/corpo/glass)
+"aeN" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/indoors/a_block/corpo/glass)
 "aff" = (
 /obj/structure/platform_decoration/metal/almayer/west,
 /obj/effect/decal/warning_stripes{
@@ -43881,8 +43909,10 @@
 /turf/open/auto_turf/shale/layer1,
 /area/sky)
 "wtI" = (
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/a_block/bridges/corpo)
 "wtK" = (
@@ -68639,8 +68669,8 @@ iLg
 uiQ
 uwY
 uTv
-vpO
-mnX
+aeN
+aeM
 vEY
 beB
 mSc
@@ -70497,7 +70527,7 @@ tQi
 jdn
 tQi
 tQi
-nTX
+aeJ
 uyt
 tQi
 gwb
@@ -70703,7 +70733,7 @@ xlI
 mev
 mev
 xlI
-uyt
+aeK
 uyt
 mev
 odT
@@ -71115,7 +71145,7 @@ xjF
 vtp
 ack
 xjF
-giX
+aeL
 giX
 iMw
 jzC

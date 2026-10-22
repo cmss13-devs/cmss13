@@ -72,6 +72,25 @@
 	containername = "replacement telecommunications crate"
 	group = "Operations"
 
+/datum/supply_packs/portable_telecomms
+	name = "Portable Telecommunications Unit"
+	contains = list(
+		/obj/structure/machinery/constructable_frame/porta_comms,
+		/obj/item/circuitboard/machine/telecomms/relay/tower,
+		/obj/item/stock_parts/manipulator,
+		/obj/item/stock_parts/manipulator,
+		/obj/item/stock_parts/subspace/filter,
+		/obj/item/stock_parts/subspace/filter,
+		/obj/item/cell,
+		/obj/item/cell,
+		/obj/item/stack/cable_coil,
+		/obj/item/stack/cable_coil,
+	)
+	cost = 40
+	containertype = /obj/structure/closet/crate/supply
+	containername = "portable telecommunications crate"
+	group = "Operations"
+
 /datum/supply_packs/nuclearbomb
 	name = "Decrypted Operational Blockbuster"
 	contains = list(

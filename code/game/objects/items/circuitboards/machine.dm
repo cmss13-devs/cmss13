@@ -214,7 +214,7 @@ to destroy them and players will be able to make replacements.
 
 /obj/item/circuitboard/machine/telecomms/relay/tower
 	name = "\improper TC-4T Telecommunications Circuit Board"
-	build_path = /obj/structure/machinery/telecomms/relay/preset/tower
+	build_path = /obj/structure/machinery/telecomms/relay/preset/tower/portable
 
 	frame_desc = "A TC-4T telecommunications circuit board. Requires 2 Power Cells, 2 Cable Coils and a Subspace Communications Dish."
 	req_components = list(

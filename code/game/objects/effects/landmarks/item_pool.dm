@@ -10,6 +10,8 @@
 
 	// Initialized everywhere
 	var/pool_name // Holds the UUID of the pool
+	/// If non-null, limits this item pool to only this game mode
+	var/mode_flags
 
 /obj/effect/landmark/item_pool_spawner/Initialize(mapload, ...)
 	. = ..()
@@ -41,3 +43,8 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot
 	icon_state = "ipool_bubshot"
 	type_to_spawn = /obj/item/ammo_magazine/shotgun/buckshot
+
+/obj/effect/landmark/item_pool_spawner/survivor_mode
+	pool_name = "Survivor mode pool"
+	icon_state = "ipool_surv_mode"
+	mode_flags = MODE_SURVIVE

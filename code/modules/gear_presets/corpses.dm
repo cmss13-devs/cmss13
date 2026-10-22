@@ -528,7 +528,7 @@
 	name = "Corpse - Colonist Random"
 
 /datum/equipment_preset/corpse/colonist/random/load_gear(mob/living/carbon/human/new_human)
-	var/random_surv_type = pick(SSmapping.configs[GROUND_MAP].survivor_types)
+	var/random_surv_type = pick(SSmapping.configs[GROUND_MAP].get_relevant_survivor_types())
 	var/datum/equipment_preset/survivor/surv_equipment = new random_surv_type
 	surv_equipment.load_gear(new_human)
 

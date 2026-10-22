@@ -268,11 +268,12 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 				// Soft cap met
 				preferred_variant = ANY_SURVIVOR
 
+		var/list/types_by_variant = SSmapping.configs[GROUND_MAP].get_relevant_survivor_types_by_variant()
 		var/list/survivor_types
-		if(preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant]))
-			survivor_types = SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant]
+		if(preferred_variant != ANY_SURVIVOR && length(types_by_variant[preferred_variant]))
+			survivor_types = types_by_variant[preferred_variant]
 		else
-			survivor_types = SSmapping.configs[GROUND_MAP].survivor_types
+			survivor_types = SSmapping.configs[GROUND_MAP].get_relevant_survivor_types()
 
 		arm_equipment(equipping_human, pick(survivor_types), FALSE, TRUE)
 		SSticker.mode.survivors_by_type_amounts[preferred_variant] += 1
@@ -359,9 +360,10 @@ AddTimelock(/datum/job/civilian/survivor, list(
 				// Soft cap met
 				preferred_variant = ANY_SURVIVOR
 
+		var/list/types_by_variant = SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant
 		var/list/synth_survivor_types
-		if(preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant]))
-			synth_survivor_types = SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant]
+		if(preferred_variant != ANY_SURVIVOR && length(types_by_variant[preferred_variant]))
+			synth_survivor_types = types_by_variant[preferred_variant]
 		else
 			synth_survivor_types = SSmapping.configs[GROUND_MAP].synth_survivor_types
 

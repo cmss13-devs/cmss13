@@ -1031,7 +1031,7 @@ Additional game mode variables.
 		return survivor_non_event_transform(ghost.current, picked_spawn, is_synth, is_CO)
 
 /datum/game_mode/proc/survivor_old_equipment(mob/living/carbon/human/equipping_human, is_synth = FALSE, is_CO = FALSE)
-	var/list/survivor_types = SSmapping.configs[GROUND_MAP].survivor_types
+	var/list/survivor_types = SSmapping.configs[GROUND_MAP].get_relevant_survivor_types()
 
 	//creates soft caps for survivor variants, if there are more than the maximum of your preference you get a completely random variant which can include your preference, should minimize stacking while allowing for interesting randomness
 	var/preferred_variant = ANY_SURVIVOR
@@ -1041,9 +1041,13 @@ Additional game mode variables.
 			preferred_variant = ANY_SURVIVOR
 
 	if(is_synth)
-		survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].synth_survivor_types
+		var/list/types_by_variant = SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant
+		if(preferred_variant != ANY_SURVIVOR && length(types_by_variant[preferred_variant]))
+			survivor_types = types_by_variant[preferred_variant]
 	else
-		survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].survivor_types
+		var/list/types_by_variant = SSmapping.configs[GROUND_MAP].get_relevant_survivor_types_by_variant()
+		if(preferred_variant != ANY_SURVIVOR && length(types_by_variant[preferred_variant]))
+			survivor_types = types_by_variant[preferred_variant]
 	if(is_CO)
 		survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
 

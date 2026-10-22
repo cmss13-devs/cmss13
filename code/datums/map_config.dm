@@ -51,6 +51,9 @@
 	var/list/survivor_types
 	var/list/survivor_types_by_variant
 
+	var/list/survivor_types_mode_override
+	var/list/survivor_types_by_variant_mode_override
+
 	var/list/synth_survivor_types
 	var/list/synth_survivor_types_by_variant
 
@@ -483,9 +486,53 @@
 			var/datum/game_mode/G = a
 			gamemodes += initial(G.config_tag)
 
+	if (islist(json["survivor_types_mode_override"]))
+		survivor_types_mode_override = json["survivor_types_mode_override"]
+	else if ("survivor_types_mode_override" in json)
+		log_world("map_config survivor_types_mode_override is not a list!")
+		return
+
+	var/list/pathed_survivor_types_mode_override = list()
+	for(var/mode,options in survivor_types_mode_override)
+		if(!(mode in gamemode_names))
+			log_world("map_config has an invalid survivor_types_mode_override gamemode key!")
+			continue
+		if(mode == GAMEMODE_DISTRESS_SIGNAL)
+			log_world("survivor_types_mode_override should not override [GAMEMODE_DISTRESS_SIGNAL]! Use survivor_types instead.")
+		pathed_survivor_types_mode_override[mode] = list()
+		for(var/surv_type in options)
+			var/survivor_typepath = surv_type
+			if(!ispath(survivor_typepath))
+				survivor_typepath = text2path(surv_type)
+				if(!ispath(survivor_typepath))
+					log_world("[surv_type] isn't a proper typepath, removing from survivor_types_mode_override list")
+					continue
+			pathed_survivor_types_mode_override[mode] += survivor_typepath
+	survivor_types_mode_override = pathed_survivor_types_mode_override
+
+	survivor_types_by_variant_mode_override = list()
+	for(var/mode,options in survivor_types_mode_override)
+		survivor_types_by_variant_mode_override[mode] = list()
+		for(var/surv_type in options)
+			var/datum/equipment_preset/survivor/surv_equipment = surv_type
+			var/survivor_variant = initial(surv_equipment.survivor_variant)
+			if(!survivor_types_by_variant_mode_override[mode][survivor_variant])
+				survivor_types_by_variant_mode_override[mode][survivor_variant] = list()
+			survivor_types_by_variant_mode_override[mode][survivor_variant] += surv_type
+
 	defaulted = FALSE
 	return TRUE
 #undef CHECK_EXISTS
+
+/// Returns survivor_types respecting any survivor_types_mode_override for the current mode
+/datum/map_config/proc/get_relevant_survivor_types()
+	var/list/data = survivor_types_mode_override[GLOB.master_mode]
+	return data || survivor_types
+
+/// Returns survivor_types respecting any survivor_types_mode_override for the current mode
+/datum/map_config/proc/get_relevant_survivor_types_by_variant()
+	var/list/data = survivor_types_by_variant_mode_override[GLOB.master_mode]
+	return data || survivor_types_by_variant
 
 /datum/map_config/proc/GetFullMapPaths()
 	var/dirpath = "maps/[map_path]"

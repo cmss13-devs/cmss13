@@ -293,6 +293,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		tower.spawn_tower()
 	QDEL_LIST(GLOB.comm_tower_landmarks_net_one)
 	QDEL_LIST(GLOB.comm_tower_landmarks_net_two)
+	QDEL_LIST(GLOB.comm_tower_landmarks_survivor)
 
 /datum/game_mode/proc/send_end_round_music(musical_track)
 	if(!musical_track)

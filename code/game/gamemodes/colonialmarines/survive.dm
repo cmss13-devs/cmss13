@@ -73,6 +73,19 @@
 		tunnel.id = "hole[i]"
 	return TRUE
 
+/datum/game_mode/survive/spawn_static_comms()
+	var/list/options = GLOB.comm_tower_landmarks_survivor
+	if(!length(options))
+		options = GLOB.comm_tower_landmarks_net_one + GLOB.comm_tower_landmarks_net_two
+	for(var/i = 1 to static_comms_amount)
+		var/obj/effect/landmark/static_comms/tower = pick_n_take(options)
+		if(!tower)
+			continue
+		tower.spawn_tower()
+	QDEL_LIST(GLOB.comm_tower_landmarks_net_one)
+	QDEL_LIST(GLOB.comm_tower_landmarks_net_two)
+	QDEL_LIST(GLOB.comm_tower_landmarks_survivor)
+
 /datum/game_mode/survive/transform_queen(datum/mind/ghost_mind, turf/xeno_turf, hivenumber)
 	var/turf/origin = locate(xeno_turf.x-3, xeno_turf.y-3, xeno_turf.z)
 	var/datum/map_template/template = SSmapping.map_templates["Queen_Resin.dmm"]

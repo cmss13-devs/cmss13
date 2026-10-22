@@ -11530,8 +11530,6 @@
 /turf/open/floor/yellowfull,
 /area/bigredv2/outside/hydroponics)
 "aLF" = (
-/obj/effect/landmark/start/working_joe,
-/obj/effect/landmark/late_join/working_joe,
 /turf/open/floor/almayer/orange/southeast,
 /area/forward_base/engineering/lower)
 "aLG" = (
@@ -14733,6 +14731,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
+	},
+/obj/effect/vehicle_spawner/arc/broken{
+	dir = 4
 	},
 /turf/open/floor/almayer,
 /area/forward_base/engineering/lower/workshop)
@@ -31424,8 +31425,6 @@
 	pixel_x = -1;
 	explo_proof = 1
 	},
-/obj/item/clothing/accessory/storage/black_vest/acid_harness,
-/obj/item/clothing/accessory/storage/black_vest/acid_harness,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/medical/medical_science)
 "bSs" = (
@@ -31486,10 +31485,6 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
-"bSx" = (
-/obj/effect/vehicle_spawner/arc/broken,
-/turf/open/floor/plating/plating_catwalk,
-/area/forward_base/engineering/lower/workshop)
 "bSy" = (
 /obj/structure/barricade/handrail{
 	dir = 8
@@ -32316,12 +32311,6 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/forward_base/medical/medical_science)
 "bUx" = (
-/obj/structure/filingcabinet/research{
-	density = 0;
-	pixel_y = 20;
-	pixel_x = -1;
-	explo_proof = 1
-	},
 /turf/open/floor/almayer/greencorner/east,
 /area/forward_base/medical/medical_science)
 "bUy" = (
@@ -32335,6 +32324,9 @@
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
+/obj/item/clothing/accessory/storage/black_vest/acid_harness,
+/obj/item/clothing/accessory/storage/black_vest/acid_harness,
+/obj/structure/surface/rack,
 /turf/open/floor/almayer/plate,
 /area/forward_base/medical/medical_science)
 "bUA" = (
@@ -32427,6 +32419,15 @@
 	},
 /turf/open/floor/almayer/research/containment/corner/west,
 /area/forward_base/medical/medical_science)
+"bUI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/landmark/start/working_joe,
+/obj/effect/landmark/late_join/working_joe,
+/turf/open/floor/almayer/plating_striped,
+/area/forward_base/hallways/upper/port)
 "bUJ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement,
@@ -59046,7 +59047,7 @@ aMU
 aWp
 aSf
 bOa
-bSx
+aSf
 aSf
 aWq
 aMU
@@ -102707,7 +102708,7 @@ aix
 bGJ
 bTL
 bTF
-bTy
+bUI
 ahZ
 bwB
 bwB

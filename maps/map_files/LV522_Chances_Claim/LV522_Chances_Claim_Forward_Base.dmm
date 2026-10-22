@@ -1369,6 +1369,21 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/asphalt/cement/cement3,
 /area/lv522/outdoors/nw_rockies)
+"aez" = (
+/obj/item/stack/sheet/mineral/plastic{
+	amount = 15;
+	pixel_x = -1
+	},
+/obj/item/stack/sheet/metal{
+	amount = 20
+	},
+/obj/item/stack/sheet/glass{
+	amount = 20;
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/forward_base/chances/medical/medical_science)
 "aeB" = (
 /obj/structure/sign/safety/hazard{
 	pixel_x = 32;
@@ -2211,10 +2226,6 @@
 	},
 /obj/structure/machinery/cm_vending/sorted/attachments/squad,
 /turf/open/floor/almayer/plate,
-/area/forward_base/chances/squads/lower)
-"ahf" = (
-/obj/structure/machinery/cm_vending/sorted/attachments/squad,
-/turf/closed/wall/almayer/reinforced,
 /area/forward_base/chances/squads/lower)
 "ahg" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6244,6 +6255,7 @@
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
+/obj/item/book/manual/research_and_development,
 /turf/open/floor/wood/ship,
 /area/forward_base/chances/medical/medical_science)
 "bTd" = (
@@ -11539,7 +11551,6 @@
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel/far)
 "dTR" = (
-/obj/structure/surface/rack,
 /obj/item/device/motiondetector/m717{
 	pixel_x = 7;
 	pixel_y = -6
@@ -11559,6 +11570,19 @@
 /obj/item/device/motiondetector/m717{
 	pixel_x = 7;
 	pixel_y = 10
+	},
+/obj/structure/closet/secure_closet/guncabinet,
+/obj/item/weapon/shield/riot{
+	pixel_x = -8
+	},
+/obj/item/weapon/shield/riot{
+	pixel_x = -8
+	},
+/obj/item/weapon/shield/riot{
+	pixel_x = -8
+	},
+/obj/item/weapon/shield/riot{
+	pixel_x = -8
 	},
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison{
 	dir = 4;
@@ -14451,6 +14475,7 @@
 	pixel_y = -10;
 	layer = 3.01
 	},
+/obj/item/storage/box/monkeycubes,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/chances/medical/medical_science)
 "ffY" = (
@@ -16903,23 +16928,24 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
 "ghe" = (
-/obj/structure/surface/rack,
-/obj/item/weapon/gun/shotgun/combat{
-	pixel_y = 4
-	},
-/obj/item/weapon/gun/shotgun/combat{
+/obj/structure/closet/secure_closet/guncabinet,
+/obj/item/weapon/gun/rifle/m41a{
 	pixel_y = -4
 	},
+/obj/item/weapon/gun/rifle/m41a{
+	pixel_y = -4
+	},
+/obj/item/weapon/gun/rifle/m41a{
+	pixel_y = 4
+	},
+/obj/item/weapon/gun/rifle/m41a{
+	pixel_y = 4
+	},
+/obj/item/ammo_box/magazine,
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison{
 	dir = 4;
 	id = "bot_armory";
 	emp_proof = 1
-	},
-/obj/item/weapon/gun/shotgun/combat{
-	pixel_y = -6
-	},
-/obj/item/weapon/gun/shotgun/combat{
-	pixel_y = -6
 	},
 /turf/open/floor/almayer/red2/west,
 /area/forward_base/chances/shipboard/brig)
@@ -18882,6 +18908,7 @@
 /obj/structure/sign/safety/ref_chem_storage{
 	pixel_y = 32
 	},
+/obj/item/reagent_container/glass/beaker/bluespace,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/chances/medical/medical_science)
 "gXJ" = (
@@ -20676,6 +20703,7 @@
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
+/obj/item/tool/wrench,
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/chances/medical/chemistry)
 "hJZ" = (
@@ -20750,6 +20778,8 @@
 /obj/item/reagent_container/glass/beaker/large,
 /obj/item/reagent_container/glass/beaker/large,
 /obj/item/reagent_container/glass/beaker/large,
+/obj/item/clothing/accessory/storage/black_vest/acid_harness,
+/obj/item/clothing/accessory/storage/black_vest/acid_harness,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/chances/medical/medical_science)
 "hKu" = (
@@ -23071,6 +23101,9 @@
 	},
 /obj/structure/bed/roller/heavy,
 /obj/effect/decal/hybrisa/dirt,
+/obj/item/chem_extractor,
+/obj/item/chem_extractor,
+/obj/item/chem_extractor,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/forward_base/chances/medical/medical_science)
 "iIY" = (
@@ -29287,7 +29320,6 @@
 /turf/open/floor/almayer/orange2/north,
 /area/forward_base/chances/engineering/lower)
 "ldo" = (
-/obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/slugs,
@@ -29296,6 +29328,19 @@
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
+/obj/structure/closet/secure_closet/guncabinet,
+/obj/item/weapon/gun/shotgun/combat{
+	pixel_y = 4
+	},
+/obj/item/weapon/gun/shotgun/combat{
+	pixel_y = 4
+	},
+/obj/item/weapon/gun/shotgun/combat{
+	pixel_y = -6
+	},
+/obj/item/weapon/gun/shotgun/combat{
+	pixel_y = -6
+	},
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison{
 	dir = 4;
 	id = "bot_armory";
@@ -31055,6 +31100,7 @@
 	pixel_x = 1
 	},
 /obj/structure/bed/roller/heavy,
+/obj/item/organ/xeno/drone,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/forward_base/chances/medical/medical_science)
 "lOU" = (
@@ -35338,6 +35384,9 @@
 /obj/structure/machinery/cm_vending/clothing/medical_crew/researcher{
 	density = 0;
 	pixel_x = -32
+	},
+/obj/structure/sign/calendar/wy{
+	pixel_y = 29
 	},
 /turf/open/floor/wood/ship,
 /area/forward_base/chances/medical/medical_science)
@@ -44554,10 +44603,25 @@
 /turf/open/floor/prison/kitchen,
 /area/lv522/indoors/a_block/kitchen)
 "rao" = (
-/obj/structure/sign/calendar/wy{
-	pixel_y = 29
+/obj/structure/closet/medical_wall{
+	pixel_y = 30
 	},
-/obj/item/book/manual/research_and_development,
+/obj/item/storage/firstaid/fire{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/obj/item/storage/firstaid/o2{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = -6;
+	pixel_y = -2
+	},
 /turf/open/floor/wood/ship,
 /area/forward_base/chances/medical/medical_science)
 "rar" = (
@@ -47107,6 +47171,7 @@
 	pixel_x = 10;
 	pixel_y = 13
 	},
+/obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer/research/containment/floor1,
 /area/forward_base/chances/medical/medical_science)
 "rXB" = (
@@ -58512,8 +58577,9 @@
 /area/lv522/indoors/b_block/hydro)
 "wnP" = (
 /obj/structure/machinery/door/airlock/almayer/marine/shared{
-	name = "\improper Squad Commtech Preparations";
-	req_one_access = list(17)
+	name = "\improper Squad Engineering Preparations";
+	req_one_access = list(11);
+	dir = 4
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/forward_base/chances/squads/lower)
@@ -67269,7 +67335,7 @@ gHW
 gHW
 gHW
 gHW
-ahf
+afO
 afO
 afO
 afO
@@ -111385,7 +111451,7 @@ hKt
 baT
 lEJ
 jAa
-fgn
+aez
 iXu
 iAA
 bGb

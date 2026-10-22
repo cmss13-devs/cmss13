@@ -480,21 +480,5 @@
 
 /obj/item/device/helmet_visor/pilot/deactivate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
 	. = ..()
-	// Remove protection flags from pilots when they deactivate their HUD
-	var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
-	// Remove the dropship HUD datum from the user
-	if(user && ismob(user))
-		if(dropship_hud)
-			// Remove all dropship HUD overlays for this user
-			dropship_hud.remove_hud_from(user, attached_helmet)
-			// Remove from hudusers if present
-			if(user in dropship_hud.hudusers)
-				dropship_hud.hudusers -= user
-			// Force remove all friendly/enemy overlays
-			for(var/mob/target_mob in dropship_hud.hudmobs)
-				dropship_hud.remove_from_single_hud(user, target_mob)
-	// Remove any stuck reticle overlays from the client
-	if(user?.client)
-		for(var/image/Image_Reticle in user.client.images)
-			if(Image_Reticle.icon_state == "direct_fire_reticle" || Image_Reticle.icon_state == "impact_reticle" || Image_Reticle.icon_state == "firemission_reticle")
-				user.client.images -= Image_Reticle
+	for(var/obj/effect/overlay/temp/dropship_reticle/reticle as anything in GLOB.dropship_reticles)
+		reticle.update_visibility_for_mob(user)

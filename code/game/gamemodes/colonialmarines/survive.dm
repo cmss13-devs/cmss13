@@ -204,6 +204,7 @@
 
 	is_in_endgame = TRUE
 	force_end_at = world.time + 15 MINUTES
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_SURVIVOR_EVAC)
 
 	release_the_queen()
 
@@ -697,6 +698,22 @@
 	for(var/datum/http_request/request in requests)
 		addtimer(CALLBACK(request, TYPE_PROC_REF(/datum/http_request, begin_async)), (2 * incrementer) SECONDS)
 		incrementer++
+
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac/LateInitialize()
+	if(!MODE_HAS_FLAG(MODE_SURVIVE))
+		qdel(src)
+		return
+
+	new /obj/structure/blocker/fog/survivor_evac(loc, INFINITY)
+	qdel(src)
+
+/obj/effect/landmark/lv624/door_blocker/survivor_evac/LateInitialize()
+	if(!MODE_HAS_FLAG(MODE_SURVIVE))
+		qdel(src)
+		return
+
+	new /obj/structure/blocker/door/survivor_evac(loc, INFINITY)
+	qdel(src)
 
 #undef MONKEYS_TO_TOTAL_RATIO
 #undef PODLOCKS_OPEN_WAIT

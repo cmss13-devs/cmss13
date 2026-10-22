@@ -1,15 +1,15 @@
-// These specify locations for a pool of items to be spawned in a random subset of these turfs
-
+/// These specify locations for a pool of items to be spawned in a random subset of these turfs.
+/// They are initialized into one "master" item pool spawner datum. The landmark SS will use that to get these values.
+/// Technically only the settings for the last of this pool_name matter.
 /obj/effect/landmark/item_pool_spawner
-
-	// These are initialized on one "master" item pool spawner landmark, and left blank everywhere else. The landmark SS will use that one to get these values.
-	// Technically you can have more than one, if they're different values you're gonna get inconsistent behavior though
-	// Best to just make one master like I've done here and call it good, it should just *work* as long as
-	var/type_to_spawn // Type variable indicating our datum type (holds which items we need to use, etc).. THIS NEEDS TO BE MOVABLE OR CODE WILL BORK
-	var/quota // Max # of items to spawn
-
-	// Initialized everywhere
-	var/pool_name // Holds the UUID of the pool
+	/// Holds the UUID of the pool
+	var/pool_name
+	/// The type or types of item to spawn. If this is a list, it will pick one from that list x multiplier.
+	var/type_to_spawn
+	/// Max # of items to spawn for the pool.
+	var/quota
+	/// How many of type_to_spawn to spawn
+	var/multiplier = 1
 	/// If non-null, limits this item pool to only this game mode
 	var/mode_flags
 

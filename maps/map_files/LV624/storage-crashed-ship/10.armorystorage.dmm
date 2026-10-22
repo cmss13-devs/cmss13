@@ -89,7 +89,7 @@
 /turf/open/floor/dark,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "v" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/dark,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "x" = (
@@ -168,7 +168,7 @@
 /turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "K" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
 "N" = (
@@ -232,7 +232,7 @@
 /obj/item/weapon/gun/rifle/mar40{
 	pixel_y = 6
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)

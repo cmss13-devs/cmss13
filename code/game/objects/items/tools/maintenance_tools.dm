@@ -96,25 +96,29 @@
 			item_state = "tac_screwdriver"
 
 
-	return
+/obj/item/tool/screwdriver/attack(mob/living/carbon/target, mob/living/carbon/user)
+	. = ..()
 
+	if(!istype(target))
+		return
 
-
-/obj/item/tool/screwdriver/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	if(!istype(M))
-		return ..()
 	if(user.zone_selected != "eyes") // && user.zone_selected != "head")
-		return ..()
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
-		if(E)
-			var/safety = H.get_eye_protection()
+		return
+
+	if(check_hunter_games()) // stabbing everyone in the eyes and instantly blinding them isn't very good for this.
+		return
+
+	if(ishuman(target))
+		var/mob/living/carbon/human/human_target = target
+		var/datum/internal_organ/eyes/eyes = human_target.internal_organs_by_name["eyes"]
+		if(eyes)
+			var/safety = human_target.get_eye_protection()
 			if(!safety)
-				user.visible_message(SPAN_DANGER("[user] stabs [H] in the eyes with [src]!"),
-					SPAN_DANGER("You stab [H] in the eyes with [src]!"))
-				E.take_damage(rand(8,20))
-	return ..()
+				user.visible_message(SPAN_DANGER("[user] stabs [human_target] in the eyes with [src]!"),
+					SPAN_DANGER("You stab [human_target] in the eyes with [src]!"))
+				eyes.take_damage(rand(8,20))
+
+
 /obj/item/tool/screwdriver/tactical
 	name = "tactical screwdriver"
 	desc = "Sharp, matte black, and deadly. In a pinch this will substitute for a pencil in a fight."

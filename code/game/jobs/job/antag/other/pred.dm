@@ -49,10 +49,19 @@
 
 
 /datum/job/antag/predator/announce_entry_message(mob/new_predator, account, whitelist_status)
-	to_chat(new_predator, SPAN_NOTICE("You are <B>Yautja</b>, a great and noble hunter!"))
-	to_chat(new_predator, SPAN_NOTICE("Follow the guidance of your elders and experienced hunters."))
-	to_chat(new_predator, SPAN_NOTICE("Hunt at your discretion, yet be observant rather than violent."))
-	to_chat(new_predator, SPAN_NOTICE("Most importantly, remember that dying in battle is the highest honour a Yautja could ask for."))
+	if(SSticker.mode == GAMEMODE_HUNTER_GAMES)
+		to_chat(new_predator, "You are an honorable <B>Yautja</b> Hunter.")
+		to_chat(new_predator, "You and your huntmates have taken this human colony over.")
+		to_chat(new_predator, "Your objective, on this new game preserve, is to find the strongest prey from this batch of lowly humans.")
+		to_chat(new_predator, "To this end, you force them to fight to the death. With whatever means are available to them, one thing remains true.")
+		to_chat(new_predator, "There can only be one.")
+		to_chat(new_predator, "Ultimately, you are an observer of the games, and they are for your amusement.")
+		to_chat(new_predator, "Light interference in the interest of a more interesting battle is permitted, but hunting the contestants is not.")
+	else
+		to_chat(new_predator, SPAN_NOTICE("You are <B>Yautja</b>, a great and noble hunter!"))
+		to_chat(new_predator, SPAN_NOTICE("Follow the guidance of your elders and experienced hunters."))
+		to_chat(new_predator, SPAN_NOTICE("Hunt at your discretion, yet be observant rather than violent."))
+		to_chat(new_predator, SPAN_NOTICE("Most importantly, remember that dying in battle is the highest honour a Yautja could ask for."))
 
 /datum/job/antag/predator/generate_entry_conditions(mob/living/M, whitelist_status)
 	. = ..()

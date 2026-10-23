@@ -11,7 +11,7 @@
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
 	armor_deflection = XENO_ARMOR_TIER_2
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_HELLHOUND
+	speed = XENO_SPEED_TIER_6 + XENO_SPEED_FASTMOD_TIER_3
 
 	deevolves_to = list(XENO_CASTE_SPITTER)
 	acid_level = 3
@@ -230,17 +230,19 @@
 	var/modifier = 0
 	if(delegate.next_ability_empowered)
 		delegate.next_ability_empowered = FALSE
-		modifier += empower_modifier
+		modifier = round((time_charged / max_charge_time) * empower_modifier)
 		xeno.overlays -= delegate.empowered_overlay
 
 	var/barrage_size = max(round((time_charged / max_charge_time) * max_volley), min_volley) + modifier
 	playsound(xeno, "alien_roarhiss", 30, 0, status = 0)
 	playsound(xeno.loc, "acid_spit", 25, 1)
+	var/list/barricade_damage = list()
 	for(var/index in 1 to barrage_size)
 		var/initial_angle = Get_Angle(xeno, target)
 		var/rand_angle = rand(-scatter, scatter)
 		var/turf/new_target = get_angle_target_turf(xeno, initial_angle + rand_angle, rand(1, 6))
-		var/obj/projectile/proj = new (get_turf(xeno), create_cause_data(xeno.ammo.name, xeno))
+		var/obj/projectile/despoiler/proj = new (get_turf(xeno), create_cause_data(xeno.ammo.name, xeno))
+		proj.barricade_damage = barricade_damage
 		var/matrix/scale_matrix = matrix()
 		var/factor = rand(0.9, 1.33)
 		scale_matrix.Scale(factor, factor)
@@ -252,22 +254,38 @@
 
 /datum/action/xeno_action/activable/pounce/caustic_embrace/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
+	if(!action_cooldown_check() || xeno.action_busy)
+		return
+
 	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
-	if(delegate.next_ability_empowered)
+	windup = delegate.next_ability_empowered
+	tracks_target = !windup
+	if(windup)
 		distance = empowered_distance
 	else
 		distance = initial(distance)
 
 	. = ..()
 
-/datum/action/xeno_action/activable/pounce/caustic_embrace/additional_effects_always()
+/datum/action/xeno_action/activable/pounce/caustic_embrace/pre_windup_effects()
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
 	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
+	windup = delegate.next_ability_empowered
+	if(!windup)
+		distance = initial(distance)
+		return
+
+	delegate.next_ability_empowered = FALSE
+	xeno.overlays -= delegate.empowered_overlay
+	xeno.visible_message(SPAN_XENODANGER("[xeno] rears back, acid dripping from its jaws!"), SPAN_XENONOTICE("We prepare to charge!"))
+	playsound(xeno, "acid_spit", 40, TRUE)
+	new /obj/effect/xenomorph/xeno_telegraph/yellow(get_turf(xeno), windup_duration)
+
+/datum/action/xeno_action/activable/pounce/caustic_embrace/additional_effects_always()
+	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
 	xeno.emote("roar")
 
-	if(delegate.next_ability_empowered)
-		delegate.next_ability_empowered = FALSE
-		xeno.overlays -= delegate.empowered_overlay
+	if(windup)
 		return // Handled in additional_effects()
 
 	var/list/turfs = orange(1, get_turf(xeno)) - get_step(xeno.loc, REVERSE_DIR(xeno.dir))
@@ -287,14 +305,13 @@
 
 /datum/action/xeno_action/activable/pounce/caustic_embrace/additional_effects(mob/living/carbon/target)
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
-	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
 
-	if(!delegate.next_ability_empowered)
+	if(!windup)
 		return
 
 	xeno.visible_message(SPAN_XENODANGER("[xeno] ravages [target] as it charges at them!"), SPAN_XENODANGER("We ruthlessly ravage [target] as we charge at them!"))
 	target.apply_effect(weaken_duration, WEAKEN)
-	target.attack_alien(xeno, rand(xeno.melee_damage_lower, xeno.melee_damage_upper))
+	target.attack_alien(xeno)
 	xeno.flick_attack_overlay(target, "embrace_slash")
 
 	var/datum/effects/acid/acid_effect = locate() in target.effects_list
@@ -401,12 +418,20 @@
 
 /obj/effect/lingering_acid/Initialize(mapload, hive)
 	. = ..()
+	for(var/obj/effect/lingering_acid/acid in loc)
+		if(acid != src && !QDELETED(acid))
+			return INITIALIZE_HINT_QDEL
+
 	if (hive)
 		hivenumber = hive
 
 	var/decay_time = rand(15 SECONDS, 20 SECONDS)
 	animate(src, alpha = 127, time = decay_time)
 	QDEL_IN(src, decay_time)
+
+/obj/effect/lingering_acid/extinguish_acid()
+	qdel(src)
+	return TRUE
 
 /obj/effect/lingering_acid/Crossed(atom/movable/movable)
 	. = ..()

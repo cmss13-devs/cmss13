@@ -328,7 +328,7 @@
 	RegisterSignal(xeno, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(check_directional_projectile_armor))
 
 	ADD_TRAIT(xeno, TRAIT_ABILITY_FORTIFY, TRAIT_SOURCE_ABILITY("fortify"))
-	to_chat(xeno, SPAN_XENOWARNING("We tuck ourself into a defensive stance."))
+	to_chat(xeno, SPAN_XENOWARNING("We tuck ourselves into a defensive stance."))
 	if(xeno.selected_ability != src)
 		button.icon_state = "template_active"
 

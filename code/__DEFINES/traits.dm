@@ -268,7 +268,7 @@
 /// Mob can open xeno doors and hugger/traps ignore them
 #define TRAIT_XENO_RECOGNIZED "xeno_recognized"
 
-// -- ability traits --
+// -- general ability traits --
 /// Xenos with this trait cannot have plasma transferred to them
 #define TRAIT_ABILITY_NO_PLASMA_TRANSFER "t_ability_no_plasma_transfer"
 /// Shows that the xeno queen is on ovi
@@ -284,6 +284,12 @@
 #define TRAIT_ABILITY_CREST "t_ability_crest"
 /// Used by defender and steel crest to engage fortify stance.
 #define TRAIT_ABILITY_FORTIFY "t_ability_fortify"
+/// Used by ravager pounce to charge at enemies.
+#define TRAIT_ABILITY_POUNCE_CHARGE "t_ability_pounce_charge"
+/// Used for empower windup before ravager get empowered.
+#define TRAIT_ABILITY_PRE_EMPOWER "t_ability_pre_empower"
+/// Used by empower to give ravager boost to abilities after meeting target threshold.
+#define TRAIT_ABILITY_SUPER_EMPOWER "t_ability_super_empower"
 /// Used by shielder to check stance.
 #define TRAIT_ABILITY_ENCLOSED_PLATES "t_ability_enclosed_plates"
 /// Used by shielder for reflective plates.

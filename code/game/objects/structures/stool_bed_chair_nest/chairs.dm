@@ -458,11 +458,11 @@
 
 //stacks of chairs (for mapping)
 /obj/structure/bed/chair/stack
-	name = "CHANGE THE STACKED_SIZE VARIABLE IF YOU NEED LESS MORE CHAIRS"
-	desc = "this gets turned into a stack of chairs when the game initializes this obj, this exists soley for mappers to make chair stacks. :o)\nIf you override the stacked_size, The sprite wont update in the DMM editor, dont worry"
-	icon = 'icons/obj/structures/props/64x64.dmi'
-	icon_state = "stacked_chairs_3"
-	stacked_size = 3
+	name = "Stack of Chairs Spawner; this one has 2 chairs. just use /obj/structure/bed/chair for 1"
+	desc = "this gets turned into a stack of chairs on game start (LateInit), this exists soley for mappers to make chair stacks. :o)"
+	icon = 'icons/landmarks.dmi'
+	icon_state = "chairs_stack"
+	stacked_size = 2
 
 /obj/structure/bed/chair/stack/Initialize()
 	. = ..()
@@ -471,23 +471,25 @@
 	for(var/i=1;i<stacked_size;i++)
 		the_stack.contents += new/obj/item/weapon/twohanded/folded_metal_chair()
 		the_stack.stacked_size++
-		the_stack.update_overlays()
-		the_stack.layer = ABOVE_MOB_LAYER
-		the_stack.unslashable = TRUE
-		the_stack.can_buckle = FALSE
-		the_stack.density = TRUE
-		the_stack.flags_can_pass_all_temp -= PASS_OVER
-		the_stack.projectile_coverage = PROJECTILE_COVERAGE_HIGH
+	the_stack.update_overlays()
+	the_stack.layer = ABOVE_MOB_LAYER
+	the_stack.unslashable = TRUE
+	the_stack.can_buckle = FALSE
+	the_stack.density = TRUE
+	the_stack.flags_can_pass_all_temp -= PASS_OVER
+	the_stack.projectile_coverage = PROJECTILE_COVERAGE_HIGH
 	qdel(src)
 
 /obj/structure/bed/chair/stack/three
+	name = "Stack of Chairs Spawner; this one has 3 chairs."
+	stacked_size = 3
 
 /obj/structure/bed/chair/stack/four
-	icon_state = "stacked_chairs_4"
+	name = "Stack of Chairs Spawner; this one has 4 chairs."
 	stacked_size = 4
 
 /obj/structure/bed/chair/stack/five
-	icon_state = "stacked_chairs_5"
+	name = "Stack of Chairs Spawner; this one has 5 chairs. override stacked_size for more"
 	stacked_size = 5
 
 //Chair types

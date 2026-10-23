@@ -70,7 +70,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/servers)
 "aV" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing{
 	icon_state = "casing_8"
 	},
 /turf/open/floor/prison/darkpurple2/northwest,
@@ -325,7 +325,7 @@
 /turf/open/floor/prison,
 /area/event/metal/dynamic)
 "iw" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing{
 	icon_state = "casing_6_1"
 	},
 /turf/open/floor/prison/darkpurple2,
@@ -345,7 +345,7 @@
 /turf/open/floor/prison/darkpurple2/north,
 /area/fiorina/tumor/servers)
 "jo" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing{
 	dir = 6;
 	icon_state = "casing_10_1"
 	},
@@ -662,7 +662,7 @@
 /turf/open/floor/plating/prison,
 /area/event/metal/dynamic)
 "wZ" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing{
 	icon_state = "casing_8"
 	},
 /turf/open/floor/prison/darkpurple2,

@@ -28,10 +28,8 @@
 	var/mob/living/mob_lying_on_turf
 
 	for(var/mob/living/target_mob in epicenter) //find a mob at the epicenter. Non-prone mobs take priority
-		if(target_mob.density)
-			if(!mob_standing_on_turf)
-				mob_standing_on_turf = target_mob
-			continue
+		if(target_mob.density && !mob_standing_on_turf)
+			mob_standing_on_turf = target_mob
 		if(!mob_lying_on_turf)
 			mob_lying_on_turf = target_mob
 
@@ -49,19 +47,19 @@
 	var/atom/source = epicenter
 
 	if(mob_standing_on_turf && isturf(mob_standing_on_turf.loc))
-		source = mob_standing_on_turf//we designate any mob standing on the turf as the "source" so that they don't simply get hit by every projectile
+		source = mob_standing_on_turf //we designate any mob standing on the turf as the "source" so that they don't simply get hit by every projectile
 
 	var/hit_prob = 100 * on_hit_coefficient
 	var/direct_hits = 0
 
 	if(direct_hit_target)
-		for(var/i = 0, i < shrapnel_number, i++)
+		for(var/i = 0; i < shrapnel_number; i++)
 			if(prob(hit_prob))
 				direct_hits++
 
 	var/datum/ammo/shrapnel_ammo = new shrapnel_type
 
-	for(var/i = 0, i < direct_hits, i++)
+	for(var/i = 0; i < direct_hits; i++)
 		var/obj/projectile/shrapnel_proj = new(epicenter, cause_data)
 		shrapnel_proj.generate_bullet(shrapnel_ammo)
 		shrapnel_proj.ammo.on_hit_mob(direct_hit_target, shrapnel_proj)
@@ -70,7 +68,7 @@
 	var/projectiles_to_fire = shrapnel_number - direct_hits
 	var/current_angle = initial_angle
 
-	for(var/i = 0, i < projectiles_to_fire, i++)
+	for(var/i = 0; i < projectiles_to_fire; i++)
 		var/obj/projectile/shrapnel_proj = new(epicenter, cause_data)
 		shrapnel_proj.generate_bullet(shrapnel_ammo)
 		var/angle = current_angle + rand(-angle_randomization, angle_randomization)

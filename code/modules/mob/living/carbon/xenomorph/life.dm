@@ -63,7 +63,8 @@
 				got_evolution_message = TRUE
 
 			if(ROUND_TIME < XENO_ROUNDSTART_BOOSTED_EVO_TIME)
-				evolution_stored += progress_amount
+				if(ovipositor_check)
+					evolution_stored += progress_amount
 				return
 
 			if(evolution_stored > evolution_threshold + progress_amount)
@@ -72,6 +73,9 @@
 
 		else
 			evolution_stored += progress_amount
+			if(evolution_stored >= evolution_threshold)
+				evolve_message()
+				got_evolution_message = TRUE
 
 /mob/living/carbon/xenomorph/proc/evolve_message()
 	to_chat(src, SPAN_XENODANGER("Our carapace crackles and our tendons strengthen. We are ready to <a href='byond://?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
@@ -306,6 +310,9 @@
 	if(hud_used.alien_armor_display)
 		var/armor_stacks = min((get_armor_integrity_percentage() * 0.01) * HUD_ARMOR_STATES_XENO, HUD_ARMOR_STATES_XENO)
 		hud_used.alien_armor_display.icon_state = "armor_[floor(armor_stacks)]0"
+
+	// Update dropship HUD overlays
+	init_dropship_hud_overlays()
 
 	return TRUE
 

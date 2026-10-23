@@ -1,0 +1,4 @@
+author: "Kugamo"
+delete-after: True
+changes:
+  - imagetweak: "North facing wooden barricades sprites are now on the north side of tiles and just as short as the south facing sprite, making them less confusing."

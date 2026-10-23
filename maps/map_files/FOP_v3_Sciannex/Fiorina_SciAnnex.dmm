@@ -3877,16 +3877,8 @@
 /turf/open/floor/prison/whitepurple/north,
 /area/fiorina/station/research_cells/west)
 "cIQ" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/stack/three{
 	dir = 4
-	},
-/obj/structure/bed/chair{
-	dir = 4;
-	pixel_y = 4
-	},
-/obj/structure/bed/chair{
-	dir = 4;
-	pixel_y = 8
 	},
 /turf/open/floor/prison/floor_marked/southwest,
 /area/fiorina/station/park)
@@ -5996,12 +5988,9 @@
 /turf/open/floor/prison/yellow/east,
 /area/fiorina/station/lowsec/east)
 "euz" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/stack/three{
 	dir = 4;
-	pixel_y = 4
+	stacked_size = 2
 	},
 /turf/open/floor/prison/bright_clean_marked/southwest,
 /area/fiorina/station/medbay)
@@ -7173,16 +7162,8 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/tumor/aux_engi)
 "fpq" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/stack/three{
 	dir = 4
-	},
-/obj/structure/bed/chair{
-	dir = 4;
-	pixel_y = 4
-	},
-/obj/structure/bed/chair{
-	dir = 4;
-	pixel_y = 8
 	},
 /turf/open/floor/prison/bright_clean_marked/southwest,
 /area/fiorina/station/medbay)

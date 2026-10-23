@@ -750,20 +750,20 @@
 		name = default_name
 		overlays += image("icon"=src.icon,"icon_state"=icon_overlay,"layer"=ABOVE_MOB_LAYER,"dir" = dir)
 
-/turf/open/gm/river/Entered(atom/movable/AM)
+/turf/open/gm/river/Entered(atom/movable/entered)
 	..()
 
-	SEND_SIGNAL(AM, COMSIG_MOVABLE_ENTERED_RIVER, src, covered)
+	SEND_SIGNAL(entered, COMSIG_MOVABLE_ENTERED_RIVER, src, covered)
 
-	if(!iscarbon(AM) || HAS_TRAIT(AM, TRAIT_LAUNCHED))
+	if(!iscarbon(entered) || HAS_TRAIT(entered, TRAIT_LAUNCHED))
 		return
 
 	if(!covered)
-		var/mob/living/carbon/C = AM
+		var/mob/living/carbon/C = entered
 		var/river_slowdown = base_river_slowdown
 
 		if(ishuman(C))
-			var/mob/living/carbon/human/H = AM
+			var/mob/living/carbon/human/H = entered
 			cleanup(H)
 			if(H.gloves && rand(0,100) < 60)
 				if(istype(H.gloves,/obj/item/clothing/gloves/yautja/hunter))
@@ -780,8 +780,8 @@
 
 		C.next_move_slowdown += river_slowdown
 
-	if(ishuman(AM))
-		var/mob/living/carbon/human/H = AM
+	if(ishuman(entered))
+		var/mob/living/carbon/human/H = entered
 		if(H.bloody_footsteps)
 			SEND_SIGNAL(H, COMSIG_HUMAN_CLEAR_BLOODY_FEET)
 

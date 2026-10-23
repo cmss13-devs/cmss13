@@ -12,10 +12,10 @@ GLOBAL_LIST(ob_type_fuel_requirements)
 	density = TRUE
 	anchored = TRUE
 	layer = LADDER_LAYER
-	bound_width = 128
-	bound_height = 64
-	bound_y = 64
 	unacidable = TRUE
+	width = 4
+	height = 2
+	y_offset = 2
 	var/obj/structure/orbital_tray/tray
 	var/chambered_tray = FALSE
 	var/loaded_tray = FALSE
@@ -29,8 +29,8 @@ GLOBAL_LIST(ob_type_fuel_requirements)
 	COOLDOWN_DECLARE(ob_chambering_cooldown) //cooldown for chambering the gun
 	var/chamber_cooldown_time = 250 SECONDS
 
-/obj/structure/orbital_cannon/New()
-	..()
+/obj/structure/orbital_cannon/Initialize(mapload, ...)
+	. = ..()
 	if(!GLOB.almayer_orbital_cannon)
 		GLOB.almayer_orbital_cannon = src
 
@@ -267,11 +267,11 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	throwpass = TRUE
 	climbable = TRUE
 	layer = LADDER_LAYER + 0.01
-	bound_width = 64
-	bound_height = 32
 	unacidable = TRUE
 	pixel_y = -9
 	pixel_x = -6
+	width = 2
+	height = 1
 	var/obj/structure/ob_ammo/warhead/warhead
 	var/obj/structure/orbital_cannon/linked_ob
 	var/fuel_amt = 0

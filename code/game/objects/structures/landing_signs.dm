@@ -3,9 +3,9 @@
 	desc = "Woah nelly, report this on GITLAB and ping a Spriter."
 	icon = 'icons/obj/structures/props/landing_signs.dmi'
 	icon_state = "laz_sign"
-	bound_width = 64
-	bound_height = 64
 	density = TRUE
+	height = 2
+	width = 2
 
 /obj/structure/lz_sign/lazarus_sign
 	name = "Lazarus Landing Sign"

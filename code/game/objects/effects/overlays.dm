@@ -179,6 +179,16 @@
 	var/datum/cas_signal/signal
 	var/mob/living/carbon/human/user
 
+/obj/effect/overlay/temp/debug
+	effect_duration = 3 SECONDS
+	icon = 'icons/mob/hud/screen1.dmi'
+	icon_state = "big_arrow"
+
+/obj/effect/overlay/temp/debug/Initialize(mapload, text)
+	. = ..()
+
+	maptext = MAPTEXT(text)
+
 /obj/effect/overlay/temp/laser_target/New(loc, squad_name, _user, tracking_id)
 	..()
 	user = _user

@@ -11,14 +11,6 @@
 
 	health = 1000
 
-	//How big the vehicle is in pixels, defined facing SOUTH, which is the byond default (i.e. a 3x3 vehicle is going to be 96x96) ~Cakey
-	bound_width = 32
-	bound_height = 32
-
-	//How much to offset the hitbox of the vehicle from the bottom-left source, defined facing SOUTH, which is the byond default (i.e. a 3x3 vehicle should have x/y at -32/-32) ~Cakey
-	bound_x = 0
-	bound_y = 0
-
 	can_buckle = FALSE
 
 	light_system = MOVABLE_LIGHT
@@ -177,11 +169,12 @@
 /obj/vehicle/multitile/Initialize()
 	. = ..()
 
+	flags_atom |= DIRLOCK
+
 	var/angle_to_turn = turning_angle(SOUTH, dir)
 	rotate_entrances(angle_to_turn)
-	rotate_bounds(angle_to_turn)
 
-	if(bound_width > world.icon_size || bound_height > world.icon_size)
+	if(width > 1 || height > 1)
 		lighting_holder = new(src)
 		lighting_holder.set_light_range(vehicle_light_range)
 		lighting_holder.set_light_power(vehicle_light_power)
@@ -281,10 +274,6 @@
 
 /obj/vehicle/multitile/proc/load_damage()
 	return
-
-// Gets the dimensions of the vehicle hitbox, aka the dimensions of the vehicle itself
-/obj/vehicle/multitile/proc/get_dimensions()
-	return list("width" = (bound_width / world.icon_size), "height" = (bound_height / world.icon_size))
 
 //Returns the ratio of damage to take, just a housekeeping thing
 /obj/vehicle/multitile/proc/get_dmg_multi(type)

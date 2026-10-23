@@ -53,14 +53,12 @@
 
 	RegisterSignal(src, COMSIG_DROPSHIP_ADD_EQUIPMENT, PROC_REF(add_equipment))
 	RegisterSignal(src, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(remove_equipment))
-	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_dir_change))
 
 /obj/docking_port/mobile/marine_dropship/Destroy(force)
 	. = ..()
 	qdel(door_control)
 	UnregisterSignal(src, COMSIG_DROPSHIP_ADD_EQUIPMENT)
 	UnregisterSignal(src, COMSIG_DROPSHIP_REMOVE_EQUIPMENT)
-	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
 
 /obj/docking_port/mobile/marine_dropship/proc/send_for_flyby()
 	in_flyby = TRUE
@@ -99,12 +97,6 @@
 /obj/docking_port/mobile/marine_dropship/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()
 	control_doors("force-lock-launch", "all", force=TRUE, asynchronous = FALSE)
-
-/obj/docking_port/mobile/marine_dropship/proc/on_dir_change(datum/source, old_dir, new_dir)
-	SIGNAL_HANDLER
-	for(var/place in shuttle_areas)
-		for(var/obj/structure/machinery/door/air in place)
-			air.handle_multidoor(old_dir, new_dir)
 
 /obj/docking_port/mobile/marine_dropship/alamo
 	name = "Alamo"

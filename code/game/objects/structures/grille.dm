@@ -17,19 +17,7 @@
 		PF.flags_can_pass_all = PASS_THROUGH|PASS_BUILDING_ONLY
 
 /obj/structure/grille/fence
-	var/width = 3
 	health = 50
-
-/obj/structure/grille/fence/Initialize()
-	. = ..()
-
-	if(width > 1)
-		if(dir in list(EAST, WEST))
-			bound_width = width * world.icon_size
-			bound_height = world.icon_size
-		else
-			bound_width = world.icon_size
-			bound_height = width * world.icon_size
 
 /obj/structure/grille/fence/healthcheck()
 	if(health <= 0)

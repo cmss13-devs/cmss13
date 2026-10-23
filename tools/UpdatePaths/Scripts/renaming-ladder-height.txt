@@ -1,0 +1,1 @@
+/obj/structure/ladder/@SUBTYPES{height=@ANY} : /obj/structure/ladder/@SUBTYPES{@OLD; height=@SKIP; ladder_height=@OLD:height}

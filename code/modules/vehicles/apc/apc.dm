@@ -9,11 +9,11 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	pixel_x = -48
 	pixel_y = -48
 
-	bound_width = 96
-	bound_height = 96
+	width = 3
+	height = 3
 
-	bound_x = -32
-	bound_y = -32
+	x_offset = -1
+	y_offset = -1
 
 	interior_map = /datum/map_template/interior/apc
 

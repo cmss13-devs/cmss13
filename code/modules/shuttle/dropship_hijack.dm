@@ -18,7 +18,7 @@
 			apc.overload_lighting()
 			apc.set_broken()
 
-	var/centre_x = crash_site.x + (crash_site.width / 2)
+	var/centre_x = crash_site.x + (crash_site.covered_width / 2)
 	//determine outside of ship location
 	var/y_travel = 1
 	var/obj/outer_target = new()

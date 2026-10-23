@@ -10,7 +10,7 @@
 	/// Used to link up ladders that are above and below
 	var/id = null
 	/// The 'height' of the ladder. higher numbers are considered physically higher
-	var/height = 0
+	var/ladder_height = 0
 	/// The ladder below this one
 	var/obj/structure/ladder/down
 	/// The ladder above this one
@@ -42,14 +42,13 @@
 /obj/structure/ladder/LateInitialize()
 	. = ..()
 
-	for(var/i in GLOB.ladder_list)
-		var/obj/structure/ladder/L = i
-		if(L.id == id)
-			if(L.height == (height - 1))
-				down = L
+	for(var/obj/structure/ladder/ladder as anything in GLOB.ladder_list)
+		if(ladder.id == id)
+			if(ladder.ladder_height == (ladder_height - 1))
+				down = ladder
 				continue
-			if(L.height == (height + 1))
-				up = L
+			if(ladder.ladder_height == (ladder_height + 1))
+				up = ladder
 				continue
 
 		if(up && down) //If both our connections are filled

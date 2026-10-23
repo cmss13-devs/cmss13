@@ -11,11 +11,8 @@
 	icon_state = "van_base"
 	pixel_y = 8
 
-	bound_width = 64
-	bound_height = 64
-
-	bound_x = 0
-	bound_y = 0
+	width = 2
+	height = 2
 
 	interior_map = /datum/map_template/interior/box_van
 

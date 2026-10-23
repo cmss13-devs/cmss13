@@ -270,7 +270,7 @@
 	return
 
 /obj/item/hardpoint/proc/get_root_origins()
-	return list(-owner.bound_x / world.icon_size, -owner.bound_y / world.icon_size)
+	return list(-owner.x_offset, -owner.y_offset)
 
 // Resets the hardpoint rotation to south
 /obj/item/hardpoint/proc/reset_rotation()
@@ -282,7 +282,7 @@
 
 	// Update origins
 	var/list/root_coords = get_root_origins()
-	var/list/center_coords = list(owner.bound_width / (2*world.icon_size), owner.bound_height / (2*world.icon_size))
+	var/list/center_coords = list(owner.width / 2, owner.height / 2)
 	var/list/origin_coords_abs = list(origins[1] + root_coords[1], origins[2] + root_coords[2])
 
 	origin_coords_abs[1] = origin_coords_abs[1] + 0.5

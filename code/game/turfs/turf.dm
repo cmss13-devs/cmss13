@@ -1,29 +1,3 @@
-/*
-/turf
-
-	/open - all turfs with density = FALSE are turf/open
-
-		/floor - floors are constructed floor as opposed to natural grounds
-
-		/space
-
-		/shuttle - shuttle floors are separated from real floors because they're magic
-
-		/snow - snow is one type of non-floor open turf
-
-	/closed - all turfs with density = TRUE are turf/closed
-
-		/wall - walls are constructed walls as opposed to natural solid turfs
-
-			/r_wall
-
-		/shuttle - shuttle walls are separated from real walls because they're magic, and don't smoothes with walls.
-
-		/ice_rock - ice_rock is one type of non-wall closed turf
-
-*/
-
-
 /turf
 	icon = 'icons/turf/floors/floors.dmi'
 	plane = GAME_PLANE
@@ -71,6 +45,9 @@
 
 	/// Can xenomorph weeds grow on the tile
 	var/is_weedable = FULLY_WEEDABLE
+
+	///Lazylist of movable atoms that can block movement
+	var/list/atom/movable/movement_blockers
 
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE) // this doesn't parent call for optimisation reasons
@@ -195,6 +172,7 @@
 	if(below)
 		below.multiz_del(dir=UP)
 
+	LAZYCLEARLIST(movement_blockers)
 	if(force)
 		..()
 		//this will completely wipe turf state
@@ -256,93 +234,207 @@
 
 // Handles whether an atom is able to enter the src turf
 /turf/Enter(atom/movable/mover, atom/oldloc)
-	if(QDELETED(mover))
-		return FALSE // Prevent anything deleted from moving to limit side effects
-	if(!isturf(oldloc))
+	#define START_TURF 1
+	#define DIAGONAL_TURF_LONG 2
+	#define DIAGONAL_TURF_LAT 3
+	#define TARGET_TURF 4
+	#define PROCESS_POTENTIAL_BLOCKER(blocker) \
+	if (turf_type == START_TURF) { \
+		blocking_dir = (blocker.BlockedExitDirs(mover, target_dir) & target_dir); \
+	} else if (turf_type == DIAGONAL_TURF_LONG && (blocker.BlockedExitDirs(mover, latitudinal_dir) || blocker.BlockedPassDirs(mover, longitudinal_dir))) { \
+		blocking_dir = longitudinal_dir; \
+	} \
+	else if (turf_type == DIAGONAL_TURF_LAT && (blocker.BlockedExitDirs(mover, longitudinal_dir) || blocker.BlockedPassDirs(mover, latitudinal_dir))) { \
+		blocking_dir = latitudinal_dir; \
+	} \
+	else if (turf_type == TARGET_TURF) { \
+		blocking_dir = (blocker.BlockedPassDirs(mover, target_dir) & target_dir); \
+	} \
+	else { \
+		blocking_dir = NO_BLOCKED_MOVEMENT; \
+	} \
+	/* uncomment macro_breakpoint for breakpoints */ \
+	macro_breakpoint("process potential blocker, calculated blocking_dir"); \
+	if (blocking_dir & target_dir) { \
+		/* uncomment macro_breakpoint for breakpoints */ \
+		macro_breakpoint("process potential blocker, blocker found"); \
+		if (!longitudinal_dir || blocking_dir & longitudinal_dir) { \
+			longitudinal_dir_count += 1; \
+		} \
+		if (!latitudinal_dir || blocking_dir & latitudinal_dir) { \
+			latitudinal_dir_count += 1; \
+		} \
+		if (blocker.flags_atom & ON_BORDER) { \
+			LAZYSET(border_blockers, blocker, blocking_dir); \
+		} \
+		else { \
+			LAZYSET(non_border_blockers, blocker, blocking_dir); \
+		} \
+	}
+
+	#define PROCESS_POTENTIAL_BLOCKERS \
+	if ((!longitudinal_dir || longitudinal_dir_count) && (!latitudinal_dir || latitudinal_dir_count)) { \
+		was_blocked = FALSE; \
+		for (var/border_blocker in border_blockers) { \
+			/* uncomment macro_breakpoint for breakpoints */ \
+			macro_breakpoint("process potential blockers, border blocker"); \
+			if (!(mover.Collide(border_blocker) & MOVABLE_COLLIDE_NOT_BLOCKED)) { \
+				/* uncomment macro_breakpoint for breakpoints */ \
+				macro_breakpoint("process potential blockers, border blocker blocked"); \
+				was_blocked = TRUE; \
+			} \
+			border_blockers -= border_blocker; \
+		} \
+		if (was_blocked) { return FALSE; } \
+		for (var/non_border_blocker in non_border_blockers) { \
+			/* uncomment macro_breakpoint for breakpoints */ \
+			macro_breakpoint("process potential blockers, non border blocker"); \
+			if (!(mover.Collide(non_border_blocker) & MOVABLE_COLLIDE_NOT_BLOCKED)) { \
+				/* uncomment macro_breakpoint for breakpoints */ \
+				macro_breakpoint("process potential blockers, non border blocker blocked"); \
+				was_blocked = TRUE; \
+			} \
+			blocking_dir = non_border_blockers[non_border_blocker]; \
+			if (!longitudinal_dir || blocking_dir & longitudinal_dir) { \
+				longitudinal_dir_count -= 1; \
+			} \
+			if (!latitudinal_dir || blocking_dir & latitudinal_dir) { \
+				latitudinal_dir_count -= 1; \
+			} \
+			non_border_blockers -= non_border_blocker; \
+		} \
+		if (was_blocked) { return FALSE; }; \
+	}
+	// end defines
+
+	. = TRUE
+	if (QDELETED(mover) || !isturf(mover.loc))
 		return FALSE
 
-	var/override = SEND_SIGNAL(mover, COMSIG_MOVABLE_TURF_ENTER, src)
-	override |= SEND_SIGNAL(src, COMSIG_TURF_ENTER, mover)
+	// TODO: make it so we do not actually modify args passed to Enter but instead send a signal for Enter forget overrides that is set by multitile element
+	var/list/forget
+	// oldloc is not a list when Enter is called internally
+	if (isturf(oldloc))
+		forget = list(oldloc)
+	else if (islist(oldloc))
+		var/list/oldloc_list = oldloc
+		forget = oldloc_list.Copy()
+	else
+		// Not entering from a turf or a list of turfs, will do signal checks and then unblock enter
+		forget = list()
+
+	var/override = SEND_SIGNAL(mover, COMSIG_MOVABLE_TURF_ENTER, src, forget)
+	override |= SEND_SIGNAL(src, COMSIG_TURF_ENTER, mover, forget)
 	if(override)
 		return override & COMPONENT_TURF_ALLOW_MOVEMENT
 
 	if(isobserver(mover) || istype(mover, /obj/projectile))
 		return TRUE
 
-	var/fdir = get_dir(mover, src)
-	if (!fdir)
+	// Not entering from a turf or list of turfs, bypass collision checks
+	if(!LAZYLEN(forget))
 		return TRUE
 
-	var/fd1 = fdir&(fdir-1) // X-component if fdir diagonal, 0 otherwise
-	var/fd2 = fdir - fd1 // Y-component if fdir diagonal, fdir otherwise
+	/// the actual dir between the start and target turf
+	var/target_dir = get_dir(mover, src)
+	if (!target_dir)
+		return TRUE
 
-	var/blocking_dir = 0 // The directions that the mover's path is being blocked by
+	/// NORTH or SOUTH component of target direction
+	var/longitudinal_dir = target_dir & (target_dir-1)
+	/// The number of blockers for longitudinal_dir
+	var/longitudinal_dir_count = 0
+	/// EAST or WEST component of target direction
+	var/latitudinal_dir = target_dir - longitudinal_dir
+	/// The number of blockers for latitudinal_dir
+	var/latitudinal_dir_count = 0
+	/// Assoc list of blockers that are at the edge of a turf, prioritized when checking blockers.
+	/// The key is the blocker itself and the value is the direction the blocker is blocking.
+	var/list/border_blockers = list()
+	/// Assoc list of blockers that are not on the edge of a turf.
+	/// The key is the blocker itself and the value is the direction the blocker is blocking.
+	var/list/non_border_blockers = list()
 
-	blocking_dir |= oldloc.BlockedExitDirs(mover, fdir)
-	if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-		mover.Collide(oldloc)
-		return FALSE
-	for (var/atom/movable/obstacle as anything in oldloc) //First, check objects to block exit
-		if (mover == obstacle)
+	var/was_blocked
+
+	/// The direction that mover's path is being blocked by
+	var/blocking_dir
+	var/turf/turf_to_check
+	var/atom/movable/obstacle
+	var/turf_type
+
+	/**
+	 * Check atoms in the current turf (including turf itself)
+	 *
+	 * For each atom, including the current turf, we check:
+	 * 1. Whether that atom will allow us to exit in either the longitudinal
+	 * or latitudinal directions
+	 */
+	turf_type = START_TURF
+	var/turf/start_turf = mover.loc
+	PROCESS_POTENTIAL_BLOCKER(start_turf)
+	for (obstacle as anything in start_turf.movement_blockers) //First, check objects to block exit
+		if (obstacle in (forget | list(mover)))
 			continue
-		if (!obstacle.can_block_movement)
+		PROCESS_POTENTIAL_BLOCKER(obstacle)
+	PROCESS_POTENTIAL_BLOCKERS
+
+	/**
+	 * Check atoms in the adjacent turf (including turf itself) to the EAST or WEST when moving diagonally
+	 *
+	 * For each atom, including the turf to the EAST or WEST, we check:
+	 * 1. Whether that atom will block us from exiting into the target turf from its turf (by NORTH or SOUTH depending on latitudinal_dir)
+	 * 2. Whether that atom will block us from entering into its turf from the current turf (by EAST or WEST depending on longitudinal_dir)
+	 */
+	turf_type = DIAGONAL_TURF_LONG
+	if (!mover.move_intentionally && longitudinal_dir && longitudinal_dir != target_dir)
+		turf_to_check = get_step(start_turf, longitudinal_dir)
+		PROCESS_POTENTIAL_BLOCKER(turf_to_check)
+		for (obstacle as anything in turf_to_check.movement_blockers)
+			if (obstacle in (forget | list(mover)))
+				continue
+			PROCESS_POTENTIAL_BLOCKER(obstacle)
+		PROCESS_POTENTIAL_BLOCKERS
+
+
+	/**
+	 * Check atoms in the adjacent turf (including turf itself) to the NORTH or SOUTH when moving diagonally
+	 *
+	 * For each atom, including the turf to the NORTH or SOUTH, we check:
+	 * 1. Whether that atom will block us from exiting into the target turf from its turf (by EAST or WEST depending on longitudinal_dir)
+	 * 2. Whether that atom will block us from entering into its turf from the current turf (by NORTH or SOUTH depending on latitudinal_dir)
+	 */
+	turf_type = DIAGONAL_TURF_LAT
+	if (!mover.move_intentionally && latitudinal_dir && latitudinal_dir != target_dir)
+		turf_to_check = get_step(start_turf, latitudinal_dir)
+		PROCESS_POTENTIAL_BLOCKER(turf_to_check)
+		for (obstacle as anything in turf_to_check.movement_blockers)
+			if(obstacle in forget | list(mover))
+				continue
+			PROCESS_POTENTIAL_BLOCKER(obstacle)
+		PROCESS_POTENTIAL_BLOCKERS
+
+	/**
+	 * Check atoms in the target turf (including turf itself)
+	 *
+	 * For each atom, including the target turf, we check:
+	 * 1. Whether that atom will allow us to enter in either the longitudinal or
+	 * latitudinal directions
+	 */
+	turf_type = TARGET_TURF
+	PROCESS_POTENTIAL_BLOCKER(src)
+	for (obstacle as anything in src.movement_blockers) // Finally, check atoms in the target turf
+		if (obstacle in forget | list(mover))
 			continue
-		blocking_dir |= obstacle.BlockedExitDirs(mover, fdir)
-		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-			mover.Collide(obstacle)
-			return FALSE
+		PROCESS_POTENTIAL_BLOCKER(obstacle)
+	PROCESS_POTENTIAL_BLOCKERS
 
-	// if we are thrown, moved, dragged, or in any other way abused by code - check our diagonals
-	if(!mover.move_intentionally)
-		// Check objects in adjacent turf EAST/WEST
-		if(fd1 && fd1 != fdir)
-			var/turf/T = get_step(mover, fd1)
-			if (T.BlockedExitDirs(mover, fd2) || T.BlockedPassDirs(mover, fd1))
-				blocking_dir |= fd1
-				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-					mover.Collide(T)
-					return FALSE
-			for(var/atom/movable/obstacle as anything in T)
-				if (!obstacle.can_block_movement)
-					continue
-				if (obstacle.BlockedExitDirs(mover, fd2) || obstacle.BlockedPassDirs(mover, fd1))
-					blocking_dir |= fd1
-					if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-						mover.Collide(obstacle)
-						return FALSE
-
-		// Check for borders in adjacent turf NORTH/SOUTH
-		if(fd2 && fd2 != fdir)
-			var/turf/T = get_step(mover, fd2)
-			if (T.BlockedExitDirs(mover, fd1) || T.BlockedPassDirs(mover, fd2))
-				blocking_dir |= fd2
-				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-					mover.Collide(T)
-					return FALSE
-			for(var/atom/movable/obstacle as anything in T)
-				if (!obstacle.can_block_movement)
-					continue
-				if (obstacle.BlockedExitDirs(mover, fd1) || obstacle.BlockedPassDirs(mover, fd2))
-					blocking_dir |= fd2
-					if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-						mover.Collide(obstacle)
-						return FALSE
-					break
-
-	//Next, check the turf itself
-	blocking_dir |= BlockedPassDirs(mover, fdir)
-	if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-		mover.Collide(src)
-		return FALSE
-	for(var/atom/movable/obstacle as anything in src) //Then, check atoms in the target turf
-		if (!obstacle.can_block_movement)
-			continue
-		blocking_dir |= obstacle.BlockedPassDirs(mover, fdir)
-		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-			if(!mover.Collide(obstacle))
-				return FALSE
-
-	return TRUE //Nothing found to block so return success!
+	#undef PROCESS_POTENTIAL_BLOCKER
+	#undef PROCESS_POTENTIAL_BLOCKERS
+	#undef START_TURF
+	#undef DIAGONAL_TURF_LONG
+	#undef DIAGONAL_TURF_LAT
+	#undef TARGET_TURF
 
 /turf/Entered(atom/movable/entered_movable, atom/OldLoc)
 	SHOULD_CALL_PARENT(TRUE)
@@ -359,6 +451,17 @@
 	if(OldLoc != src)
 		for(var/datum/automata_cell/explosion/cell as anything in autocells)
 			cell.on_turf_entered(entered_movable)
+
+	if (entered_movable.can_block_movement)
+		LAZYOR(movement_blockers, entered_movable)
+
+// No need to register deletion signal, this call happens automatically when any movable is destroyed via `moveToNullspace()` call
+/turf/Exited(atom/movable/mover)
+	if (!istype(mover))
+		return
+
+	if (mover.can_block_movement)
+		LAZYREMOVE(movement_blockers, mover)
 
 /turf/proc/is_plating()
 	return 0
@@ -452,6 +555,7 @@
 
 // Creates a new turf
 // new_baseturfs can be either a single type or list of types, formatted the same as baseturfs. see turf.dm
+// TODO: Consider making it so that any registered signals and components are transferred to the new turf
 /turf/proc/ChangeTurf(path, list/new_baseturfs, flags)
 	switch(path)
 		if(null)
@@ -562,7 +666,7 @@
 	var/L[] = new()
 	FOR_DOVIEW(var/turf/t, 1, src, HIDE_INVISIBLE_OBSERVER)
 		if(!t.density)
-			if(!LinkBlocked(src, t) && !TurfBlockedNonWindow(t))
+			if(!LinkBlocked(src, t))
 				L.Add(t)
 	FOR_DOVIEW_END
 	return L
@@ -571,7 +675,7 @@
 	var/L[] = new()
 	FOR_DOVIEW(var/turf/t, 1, src, HIDE_INVISIBLE_OBSERVER)
 		if(!t.density)
-			if(!LinkBlocked(src, t) && !TurfBlockedNonWindow(t))
+			if(!LinkBlocked(src, t))
 				L.Add(t)
 	FOR_DOVIEW_END
 	return L
@@ -852,9 +956,6 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		T.icon_state = icon_state
 	if(T.icon != icon)
 		T.icon = icon
-	//if(color)
-	// T.atom_colours = atom_colours.Copy()
-	// T.update_atom_colour()
 	if(T.dir != dir)
 		T.setDir(dir)
 	return T

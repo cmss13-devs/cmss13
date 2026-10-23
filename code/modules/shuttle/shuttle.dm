@@ -26,9 +26,9 @@
 	///this should point -away- from the dockingport door, ie towards the ship
 	dir = NORTH
 	///size of covered area, perpendicular to dir
-	var/width = 0
+	var/covered_width = 0
 	///size of covered area, parallel to dir
-	var/height = 0
+	var/covered_height = 0
 	///position relative to covered area, perpendicular to dir
 	var/dwidth = 0
 	///position relative to covered area, parallel to dir
@@ -95,8 +95,8 @@
 	return list(
 		_x + (-dwidth*cos) - (-dheight*sin),
 		_y + (-dwidth*sin) + (-dheight*cos),
-		_x + (-dwidth+width-1)*cos - (-dheight+height-1)*sin,
-		_y + (-dwidth+width-1)*sin + (-dheight+height-1)*cos
+		_x + (-dwidth+covered_width-1)*cos - (-dheight+covered_height-1)*sin,
+		_y + (-dwidth+covered_width-1)*sin + (-dheight+covered_height-1)*cos
 		)
 
 /// Return number of turfs
@@ -123,8 +123,8 @@
 		if(EAST)
 			cos = 0
 			sin = -1
-	var/_x = L[1] + (floor(width/2))*cos - (floor(height/2))*sin
-	var/_y = L[2] + (floor(width/2))*sin + (floor(height/2))*cos
+	var/_x = L[1] + (floor(covered_width/2))*cos - (floor(covered_height/2))*sin
+	var/_y = L[2] + (floor(covered_width/2))*sin + (floor(covered_height/2))*cos
 	return locate(_x, _y, z)
 
 //returns turfs within our projected rectangle in a specific order.
@@ -145,9 +145,9 @@
 
 	. = list()
 
-	for(var/dx in 0 to width-1)
+	for(var/dx in 0 to covered_width-1)
 		var/compX = dx-dwidth
-		for(var/dy in 0 to height-1)
+		for(var/dy in 0 to covered_height-1)
 			var/compY = dy-dheight
 			// realX = _x + compX*cos - compY*sin
 			// realY = _y + compY*cos - compX*sin
@@ -260,7 +260,7 @@
 		landing_lights.Cut()
 	. = ..()
 
-/obj/docking_port/stationary/Moved(atom/oldloc, dir, forced)
+/obj/docking_port/stationary/Moved(atom/old_loc, list/atom/old_locs, dir, forced)
 	. = ..()
 	if(area_type) // We already have one
 		return
@@ -460,11 +460,11 @@
 		port_y_offset = min_y - y
 
 	if(dir in list(EAST, WEST))
-		src.width = height
-		src.height = width
+		src.covered_width = height
+		src.covered_height = width
 	else
-		src.width = width
-		src.height = height
+		src.covered_width = width
+		src.covered_height = height
 
 	switch(dir)
 		if(NORTH)
@@ -591,13 +591,13 @@
 	if(dwidth > S.dwidth)
 		return SHUTTLE_DWIDTH_TOO_LARGE
 
-	if(width-dwidth > S.width-S.dwidth)
+	if(width-dwidth > S.covered_width-S.dwidth)
 		return SHUTTLE_WIDTH_TOO_LARGE
 
 	if(dheight > S.dheight)
 		return SHUTTLE_DHEIGHT_TOO_LARGE
 
-	if(height-dheight > S.height-S.dheight)
+	if(height-dheight > S.covered_height-S.dheight)
 		return SHUTTLE_HEIGHT_TOO_LARGE
 
 	//check the dock isn't occupied

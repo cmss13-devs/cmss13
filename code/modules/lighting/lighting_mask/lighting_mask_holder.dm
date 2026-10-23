@@ -17,6 +17,6 @@
 	QDEL_NULL(held_mask)
 	return ..()
 
-/obj/effect/lighting_mask_holder/Moved(atom/OldLoc, Dir)
+/obj/effect/lighting_mask_holder/Moved(atom/old_loc, list/atom/old_locs, dir)
 	. = ..()
 	held_mask?.queue_mask_update()//held mask can be null when it is deleted

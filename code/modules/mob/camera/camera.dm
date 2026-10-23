@@ -10,9 +10,10 @@
 	move_on_shuttle = FALSE
 
 /mob/camera/forceMove(atom/destination)
-	var/oldloc = loc
+	var/old_loc = loc
+	var/old_locs = locs
 	loc = destination
-	Moved(oldloc, NONE, TRUE)
+	Moved(old_loc, old_locs, NONE, TRUE)
 
 /mob/camera/drop_held_item()
 	return

@@ -9,10 +9,8 @@
 	health = 200
 	appearance_flags = TILE_BOUND
 
-	/// Turf dimensions along the X axis, beginning from left, at ground level
-	var/x_dim = 2
-	/// Turf dimensions along the Y axis, beginning from bottom, at ground level
-	var/y_dim = 4
+	width = 2
+	height = 4
 
 	/// How much cold protection to add to entering humans - Full body clothing means complete (1) protection
 	/// Insulated enough to protect armorless patients in the medical tent
@@ -25,8 +23,6 @@
 
 /obj/structure/tent/Initialize(mapload, ...)
 	. = ..()
-	bound_width = x_dim * world.icon_size
-	bound_height = y_dim * world.icon_size
 	// COMSIG_MOVABLE_TURF_ENTERED to handle ChangeTurf
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(register_turf_signals))
 	register_turf_signals()
@@ -193,17 +189,17 @@
 /obj/structure/tent/big
 	icon_state = "big_interior"
 	roof_state = "big_top"
-	x_dim = 3
-	y_dim = 4
+	width = 3
+	height = 4
 
 /obj/structure/tent/reqs
 	icon_state = "reqs_interior"
 	roof_state = "reqs_top"
-	x_dim = 4
-	y_dim = 4
+	width = 4
+	height = 4
 
 /obj/structure/tent/mess
 	icon_state = "reqs_interior"
 	roof_state = "mess_top"
-	x_dim = 4
-	y_dim = 4
+	width = 4
+	height = 4

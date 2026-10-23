@@ -12,7 +12,7 @@
 	active_power_usage = 1000
 	layer = BELOW_OBJ_LAYER
 	density = TRUE
-	bound_x = 32
+	x_offset = 1
 
 	var/network = "Ground"
 	var/recharge_cooldown = 15

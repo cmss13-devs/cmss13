@@ -570,6 +570,7 @@
 #include "code\datums\elements\effects\fading.dm"
 #include "code\datums\elements\effects\pixel_shifting.dm"
 #include "code\datums\elements\effects\temporary.dm"
+#include "code\datums\elements\multitile\multitile.dm"
 #include "code\datums\elements\traitbound\_traitbound.dm"
 #include "code\datums\elements\traitbound\crawler.dm"
 #include "code\datums\elements\traitbound\gun_silenced.dm"

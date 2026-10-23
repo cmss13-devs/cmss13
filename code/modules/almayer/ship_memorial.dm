@@ -16,8 +16,8 @@
 	desc = "A ship memorial dedicated to the triumphs of the USCM and the fallen marines of this ship. On the left there are grand tales of victory etched into the slab. On the right there is a list of famous marines who have fallen in combat serving the USCM."
 	icon = 'icons/obj/structures/props/almayer/almayer_props64.dmi'
 	icon_state = "ship_memorial"
-	bound_width = 64
-	bound_height = 32
+	width = 2
+	height = 1
 	unslashable = TRUE
 	unacidable = TRUE
 	//Sound files that play when a hallucination pops up.

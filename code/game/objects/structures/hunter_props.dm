@@ -410,8 +410,8 @@
 	icon_state = "pred_trophy_vendor_top_left"
 	layer = TABLE_LAYER
 	throwpass = TRUE
-	bound_width = 32
-	bound_height = 32
+	width = 1
+	height = 1
 	density = TRUE
 	climbable = TRUE
 
@@ -513,8 +513,8 @@
 	anchored = TRUE
 	layer = BIG_XENO_LAYER
 	density = TRUE
-	bound_height = 64
-	bound_width = 64
+	height = 2
+	width = 2
 
 /obj/structure/prop/hunter/ancient_temple/giant_statue/base
 	icon = 'icons/obj/structures/props/hunter/ancientsatuebase.dmi'
@@ -524,8 +524,8 @@
 	anchored = TRUE
 	layer = BELOW_MOB_LAYER
 	density = TRUE
-	bound_height = 64
-	bound_width = 64
+	height = 2
+	width = 2
 
 /obj/structure/prop/hunter/ancient_temple/giant_statue/base/colorable
 	icon_state = "statue_base_big_colorable"
@@ -602,8 +602,8 @@
 	anchored = TRUE
 	layer = BIG_XENO_LAYER
 	density = TRUE
-	bound_width = 64
-	bound_height = 64
+	width = 2
+	height = 2
 
 /obj/structure/prop/hunter/ancient_temple/large_bars/water
 	icon_state = "temple_large_bars_water"
@@ -621,8 +621,8 @@
 	anchored = TRUE
 	layer = BIG_XENO_LAYER
 	density = TRUE
-	bound_width = 64
-	bound_height = 64
+	width = 2
+	height = 2
 
 /// Breakable Ancient-Temple Walls
 /obj/structure/prop/hunter/ancient_temple/collapsed_wall

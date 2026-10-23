@@ -14,10 +14,14 @@
 	/// Bed-like behaviour, forces mob.lying = buckle_lying if not set to [NO_BUCKLE_LYING].
 	var/buckle_lying = NO_BUCKLE_LYING
 	var/buckle_flags = NONE
+	/// Whether the atom is an obstacle that should be considered for passing
+	var/can_block_movement = FALSE
 
-	var/acid_damage = 0 //Counter for stomach acid damage. At ~60 ticks, dissolved
+	/// Counter for stomach acid damage. At ~60 ticks, dissolved
+	var/acid_damage = 0
 
-	var/move_intentionally = FALSE // this is for some deep stuff optimization. This means that it is regular movement that can only be NSWE and you don't need to perform checks on diagonals. ALWAYS reset it back to FALSE when done
+	// this is for some deep stuff optimization. This means that it is regular movement that can only be NSWE and you don't need to perform checks on diagonals. ALWAYS reset it back to FALSE when done
+	var/move_intentionally = FALSE
 
 	/// How much this mob|object is worth when lowered into the ASRS pit while the black market is unlocked.
 	var/black_market_value = 0
@@ -39,6 +43,16 @@
 
 	/// A weakref to the mob currently interacting with us.
 	var/datum/weakref/interactor
+
+	/// Width of the atom when facing SOUTH (by default at 32 pixel scale, e.g. 1 width = 32 pixel bound_width)
+	var/width = 1
+	/// Height of the atom when facing SOUTH (by default at 32 pixel scale, e.g. 1 height = 32 pixel bound_height)
+	var/height = 1
+
+	/// How much to offset hitbox on x-axis when facing SOUTH (by default at 32 pixel scale, e.g. 1 x_offset = 32 pixel bound_x)
+	var/x_offset = 0
+	/// How much to offset hitbox on y-axis when facing SOUTH (by default at 32 pixel scale, e.g. 1 y_offset = 32 pixel bound_y)
+	var/y_offset = 0
 
 //===========================================================================
 /atom/movable/Destroy(force)
@@ -67,7 +81,8 @@
 	if(length(vis_contents))
 		vis_contents.Cut()
 	. = ..()
-	moveToNullspace() //so we move into null space. Must be after ..() b/c atom's Dispose handles deleting our lighting stuff
+	//so we move into null space. Must be after ..() b/c atom's Dispose handles deleting our lighting stuff
+	moveToNullspace()
 
 	QDEL_NULL(light)
 	QDEL_NULL(static_light)
@@ -141,6 +156,15 @@
 		AddComponent(/datum/component/overlay_lighting)
 	if(light_system == DIRECTIONAL_LIGHT)
 		AddComponent(/datum/component/overlay_lighting, is_directional = TRUE)
+	if (loc)
+		loc.Entered(src)
+
+	if (width > 1 || height > 1)
+		var/datum/multitile_params/params = get_multitile_params()
+		var/dynamic
+		if (!isnull(params))
+			dynamic = params.dynamic
+		AddElement(/datum/element/multitile, width, height, can_block_movement, x_offset, y_offset, dynamic)
 
 /atom/movable/proc/update_emissive_block()
 	// This one is incredible.
@@ -284,8 +308,9 @@
  */
 /atom/movable/proc/abstract_move(atom/new_loc)
 	var/atom/old_loc = loc
+	var/list/atom/old_locs = locs
 	loc = new_loc
-	Moved(old_loc)
+	Moved(old_loc, old_locs)
 
 //called when a mob tries to breathe while inside us.
 /atom/movable/proc/handle_internal_lifeform(mob/lifeform_inside_me)

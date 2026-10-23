@@ -4,8 +4,6 @@
 	icon = 'icons/obj/structures/props/phonebox.dmi'
 	icon_state = "phonebox_on_empty_closed"
 	density = TRUE
-	bound_width = 32
-	bound_height = 64
 	material = MATERIAL_METAL
 	anchored = TRUE
 	layer = BETWEEN_OBJECT_ITEM_LAYER
@@ -28,8 +26,8 @@
 	icon = 'icons/obj/structures/props/phonebox.dmi'
 	icon_state = "phonebox_off_empty_closed"
 	density = TRUE
-	bound_width = 32
-	bound_height = 64
+	width = 1
+	height = 2
 	material = MATERIAL_METAL
 	anchored = TRUE
 	layer = BETWEEN_OBJECT_ITEM_LAYER
@@ -92,8 +90,6 @@
 	icon = 'icons/obj/structures/props/phonebox.dmi'
 	icon_state = "phonebox_off_empty_closed"
 	desc = "It's a phonebox, outdated but reliable technology. These are used to communicate throughout the colony and connected colonies without interference. As reliable as they are, it seems the line is down."
-	bound_width = 32
-	bound_height = 64
 	density = TRUE
 	anchored = TRUE
 	use_power = 0

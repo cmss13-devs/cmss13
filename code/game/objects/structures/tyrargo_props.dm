@@ -58,8 +58,8 @@
 	icon_state = "medical_tent"
 	health = 300
 	layer = ABOVE_FLY_LAYER
-	bound_height = 96
-	bound_width = 96
+	height = 3
+	width = 3
 	density = TRUE
 
 /obj/structure/prop/tyrargo/large_tents/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
@@ -106,7 +106,7 @@
 	health = 300
 	density = TRUE
 	layer = ABOVE_FLY_LAYER
-	bound_height = 32
+	height = 1
 
 /obj/structure/prop/tyrargo/illuminator/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
 	if(unslashable)
@@ -128,8 +128,8 @@
 	health = 500
 	density = TRUE
 	layer = ABOVE_FLY_LAYER
-	bound_height = 64
-	bound_width = 64
+	height = 2
+	width = 2
 
 /obj/structure/prop/tyrargo/watchtower/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
 	if(unslashable)
@@ -167,7 +167,7 @@
 	icon_state = "tyrargo_checkpoint_sign"
 	layer = WALL_OBJ_LAYER
 	density = TRUE
-	bound_width = 64
+	width = 2
 
 /obj/structure/prop/tyrargo/military_checkpoint_sign/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
 	if(unslashable)
@@ -208,7 +208,7 @@
 	desc = "Emergency response vehicle used by the Throop Rescue and Recovery organization. A private group that assists in rapid response, search and rescue operations."
 	icon = 'icons/obj/structures/props/vehicles/armored_truck_trr.dmi'
 	icon_state = "armored_truck_trr"
-	bound_height = 32
+	height = 1
 	layer = 4.2
 
 // Traffic Sign
@@ -290,5 +290,5 @@
 	desc = "Emergency response vehicle used by the Throop Rescue and Recovery organization. A private group that assists in rapid response, search and rescue operations."
 	icon = 'icons/obj/structures/props/vehicles/armored_truck_trr.dmi'
 	icon_state = "armored_truck_trr"
-	bound_height = 32
+	height = 1
 	layer = 4.2

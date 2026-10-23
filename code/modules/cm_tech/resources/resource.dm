@@ -13,9 +13,6 @@
 	var/resources_per_second = RESOURCE_PER_SECOND
 	var/active = FALSE
 
-	var/width = 2
-	var/height = 2
-
 	var/time_to_repair = 10 SECONDS
 	var/time_to_build = 15 SECONDS
 
@@ -39,9 +36,6 @@
 
 /obj/structure/resource_node/Initialize(mapload, play_ambient_noise = TRUE)
 	. = ..()
-	bound_width = width * world.icon_size
-	bound_height = height * world.icon_size
-
 	src.play_ambient_noise = play_ambient_noise
 
 	if(is_area_controller)

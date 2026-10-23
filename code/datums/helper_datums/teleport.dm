@@ -96,7 +96,6 @@
 
 	var/turf/destturf
 	var/turf/curturf = get_turf(teleatom)
-	var/area/destarea = get_area(destination)
 	if(precision)
 		var/list/posturfs = circlerangeturfs(destination,precision)
 		destturf = SAFEPICK(posturfs)
@@ -121,8 +120,6 @@
 			playSpecials(destturf,effectout,soundout)
 	if(C)
 		C.forceMove(destturf)
-
-	destarea.Entered(teleatom)
 
 	return 1
 

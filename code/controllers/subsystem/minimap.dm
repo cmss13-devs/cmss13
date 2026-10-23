@@ -303,7 +303,11 @@ SUBSYSTEM_DEF(minimaps)
 	for(var/cic_hash in cic_drawings)
 		var/image/cic_drawing = cic_drawings[cic_hash]
 		if(cic_drawing)
-			var/image/transmitted_copy = new(cic_drawing.icon, cic_drawing.icon_state, cic_drawing.layer, cic_drawing.dir)
+			var/icon/transmitted_icon = cic_drawing.icon
+			if(!cic_drawing.maptext)
+				transmitted_icon = icon(cic_drawing.icon)
+				transmitted_icon.Crop(1, 1, MINIMAP_PIXEL_SIZE, MINIMAP_PIXEL_SIZE)
+			var/image/transmitted_copy = new(transmitted_icon, cic_drawing.icon_state, cic_drawing.layer, cic_drawing.dir)
 			transmitted_copy.pixel_x = cic_drawing.pixel_x
 			transmitted_copy.pixel_y = cic_drawing.pixel_y
 			transmitted_copy.plane = TACMAP_PLANE
@@ -688,7 +692,7 @@ SUBSYSTEM_DEF(minimaps)
  * * zlevel: zlevel to fetch map for
  * * flags: map flags to fetch from
  */
-/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, live, popup, drawing, client/for_client)
+/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, live, popup, drawing, client/for_client, uncached = FALSE)
 	if(!zlevel || zlevel <= 0 || !SSminimaps.initialized)
 		return null
 	if(!SSminimaps.minimaps_by_z["[zlevel]"])
@@ -699,10 +703,10 @@ SUBSYSTEM_DEF(minimaps)
 
 	var/hash = "[zlevel]-[flags]-[live]-[popup]-[drawing]"
 
-	if(for_client || (!popup && !live))
+	if(for_client || uncached || (!popup && !live))
 		var/client_hash = "[hash][for_client ? "-[REF(for_client)]" : ""]"
 
-		if(hashed_minimaps[client_hash])
+		if(!uncached && hashed_minimaps[client_hash])
 			return hashed_minimaps[client_hash]
 
 		if(!hashed_minimaps[hash])
@@ -760,7 +764,8 @@ SUBSYSTEM_DEF(minimaps)
 					// No frozen state available, apply current transmitted drawings only
 					map.update_drawing_overlay(show_cic_drawings = FALSE)
 
-		hashed_minimaps[client_hash] = map
+		if(!uncached)
+			hashed_minimaps[client_hash] = map
 		return map
 
 	var/atom/movable/screen/minimap/map = hashed_minimaps[hash]
@@ -929,6 +934,33 @@ SUBSYSTEM_DEF(minimaps)
 	var/icon/ceiling_overlay = SSminimaps.create_ceiling_overlay(owner_client, target)
 	if(ceiling_overlay)
 		add_filter("ceiling_protection", 9, layering_filter(icon = ceiling_overlay, blend_mode = BLEND_OVERLAY))
+
+/// client ceiling layer for minimaps embedded in a console
+/atom/movable/screen/minimap_ceiling_layer
+	name = ""
+	plane = TACMAP_PLANE
+	layer = TACMAP_LAYER + 0.1
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	blend_mode = BLEND_OVERLAY
+	appearance_flags = NONE
+	var/target_zlevel
+	var/enabled = FALSE
+
+/atom/movable/screen/minimap_ceiling_layer/Initialize(mapload, map_ref, target_zlevel, matrix/map_transform)
+	. = ..()
+	src.target_zlevel = target_zlevel
+	assigned_map = map_ref
+	screen_loc = "[map_ref]:1,1"
+	transform = map_transform
+
+/atom/movable/screen/minimap_ceiling_layer/proc/set_enabled(new_enabled)
+	enabled = new_enabled
+	if(!enabled)
+		icon = null
+		return
+
+	var/datum/hud_displays/hud_data = SSminimaps.minimaps_by_z["[target_zlevel]"]
+	icon = hud_data?.cached_ceiling_overlay
 
 /// Updates drawing overlay for this minimap based on what drawings should be visible
 /atom/movable/screen/minimap/proc/update_drawing_overlay(show_cic_drawings = FALSE)

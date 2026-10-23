@@ -15,6 +15,7 @@
 	// Config
 	var/damage = 45
 	var/shield_regen_threshold = 2
+	cooldown_message = "Our tail is no longer exhausted. We can Pierce with it again!"
 
 /datum/action/xeno_action/activable/pounce/prae_dash
 	name = "Dash"
@@ -25,6 +26,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 11 SECONDS
 	plasma_cost = 50
+	cooldown_message = "We feel empowered! The largest crowds cannot stop our body from moving!"
 
 	// Config options
 	distance = 5
@@ -49,6 +51,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 12 SECONDS
+	cooldown_message = "They cannot escape our grasp, now! We are ready to Cleave again!"
 
 	// Root config
 	var/root_duration_unbuffed = 1 SECONDS
@@ -112,6 +115,7 @@
 	charge_time = 0.5 SECONDS
 	xeno_cooldown = 15 SECONDS
 	ability_primacy = XENO_TAIL_STAB
+	cooldown_message = "Our tail is no longer tired! We can seize control of our enemies again!"
 
 /datum/action/xeno_action/activable/prae_abduct
 	name = "Abduct"
@@ -125,6 +129,7 @@
 	// Config
 	var/max_distance = 6
 	var/windup = 8 DECISECONDS
+	cooldown_message = "Our tail twitches eagerly with energy. We are ready to snatch tallhosts again."
 
 /datum/action/xeno_action/activable/oppressor_punch
 	name = "Dislocate"
@@ -137,6 +142,7 @@
 
 	// Configurables
 	var/damage = 20
+	cooldown_message = "Our mighty arms and fists are primed to clobber our foes!"
 
 
 // This one is more tightly coupled than I'd like, but oh well
@@ -163,6 +169,7 @@
 	// Config
 	var/fling_dist = 3
 	var/windup = 2 DECISECONDS
+	cooldown_message = "Our tail twitches eagerly with energy. We are ready to coil it up and lash our foes!"
 
 ////////// Dancer Abilities
 
@@ -183,6 +190,7 @@
 	var/range = 2
 
 	var/impale_click_miss_cooldown = 0.7 SECONDS
+	cooldown_message = "We are ready to impale another foe!"
 
 /datum/action/xeno_action/onclick/prae_dodge
 	name = "Dodge"
@@ -196,6 +204,7 @@
 	var/dodge_timer = TIMER_ID_NULL
 	var/speed_buff_amount = 0.5
 	var/afterimage_interval = 1 DECISECONDS
+	cooldown_message = "Our muscles and tendons feel limber enough tofeel fast as a speeding boom tube!"
 
 /datum/action/xeno_action/activable/prae_tail_trip
 	name = "Tail Trip"
@@ -238,6 +247,7 @@
 	knockdown = FALSE
 	slash = FALSE
 	freeze_self = FALSE
+	cooldown_message = "Our legs are ready to take us at unparalleled speeds."
 
 /datum/action/xeno_action/activable/prae_acid_ball
 	name = "Acid Ball"
@@ -250,6 +260,7 @@
 
 	var/activation_delay = 1 SECONDS
 	var/prime_delay = 1.25 SECONDS
+	cooldown_message = "Our acid glands fill enough to shoot acid balls again!"
 
 /datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/acid_ball_user = owner
@@ -308,6 +319,8 @@
 	xeno_cooldown = 10 SECONDS
 	ability_primacy = XENO_TAIL_STAB
 
+	cooldown_message = "Our tail is filled with harmless acid again."
+
 /datum/action/xeno_action/activable/valkyrie_rage
 	name = "Tantrum"
 	action_icon_state = "warden_heal"
@@ -344,7 +357,7 @@
 
 	//knockdown range
 	var/gallop_range = 3
-
+	cooldown_message = "Our tail feels sturdy as a metal pillar! We can toss anything with it!"
 
 /datum/action/xeno_action/onclick/fight_or_flight
 	name = "Fight or Flight"
@@ -359,6 +372,7 @@
 	var/low_rage_range = 4
 	var/high_rage_range = 6
 	var/rejuvenate_cost = 75
+	cooldown_message = "We feel an overwhelming urge to keep our sisters alive!"
 
 /datum/action/xeno_action/activable/prae_retrieve
 
@@ -374,3 +388,4 @@
 	var/max_distance = 7
 	var/windup = 6
 	var/retrieve_cost = 100
+	cooldown_message = "We are ready to retrieve endangered sisters again!"

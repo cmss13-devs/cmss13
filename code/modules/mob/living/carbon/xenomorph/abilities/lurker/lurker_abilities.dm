@@ -33,6 +33,7 @@
 	action_type = XENO_ACTION_ACTIVATE
 	xeno_cooldown = 10 SECONDS
 	plasma_cost = 20
+	cooldown_message = "We can clearly see the weakpoints of fallen talls again."
 
 	var/buff_duration = 50
 
@@ -76,3 +77,4 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 10 SECONDS
+	cooldown_message = "Both of our mouths thirst for blood!"

@@ -8,6 +8,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	plasma_cost = 100
 	ability_uses_acid_overlay = TRUE
+	cooldown_message = "We have replenished our acid stores and are ready to Barrage."
 
 	var/start_time
 	var/min_volley = 1
@@ -36,14 +37,16 @@
 	var/empowered_distance = 5
 	var/weaken_duration = 1
 	var/damage = 30
+	cooldown_message = "We have replenished our acid stores are ready to slash and leave puddles."
 
 /datum/action/xeno_action/onclick/oozing_wounds
-	name = "Oozing wounds"
+	name = "Oozing Wounds"
 	action_icon_state = "oozing_wounds"
 	macro_path = /datum/action/xeno_action/verb/oozing_wounds
 	xeno_cooldown = 25 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 100
+	cooldown_message = "We have regained enough energy to to spill our blood for the hive."
 
 /datum/action/xeno_action/onclick/catalyze
 	name = "Catalyze"
@@ -52,6 +55,7 @@
 	xeno_cooldown = 20 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	plasma_cost = 0
+	cooldown_message = "We are ready to consume a Hypertension stack."
 
 	var/duration = 10 SECONDS
 

@@ -1,7 +1,7 @@
 /datum/xeno_strain/oppressor
 	// Dread it, run from it, destiny still arrives... or should I say, I do
 	name = PRAETORIAN_OPPRESSOR
-	description = "You abandon all of your acid-based abilities, your dash, some speed, and a bit of your slash damage for some resistance against small explosives, slashes that deal extra damage to prone targets, and a powerful hook ability that pulls up to three enemies towards you, slows them, and has varying effects depending on how many enemies you pull. You also gain a powerful punch that reduces your other abilities' cooldowns, pierces through armor, and does double damage in addition to rooting slowed targets. You can also knock enemies back and slow them with your new Tail Lash and quickly grab a tall, slow it, and pull it towards you with your unique Tail Stab."
+	description = "We abandon all of our acid-based abilities, our dash, some speed, and a bit of our slash damage for some resistance against small explosives, slashes that deal extra damage to prone targets, and several powerful abilities. Our Abduct ability pulls up to three non-prone enemies towards us, slows them, and has varying effects depending on how many victims we pull. Our Dislocate ability deals armor-piercing damage, extra damage to slowed enemies, and reduces all ability cooldowns by 5 seconds if it lands. We exchange our tail stab for Tail Seize, which has a shorter windup, extra range, and grabs and slows enemies. Finally, Tail Lash, after a windup, knocks back and slows anything in a 2x3 cone in front of us."
 	flavor_description = "My reach is endless, this one will pull down the heavens."
 	icon_state_prefix = "Oppressor"
 
@@ -163,7 +163,7 @@
 
 	ADD_TRAIT(abduct_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
 	if(!do_after(abduct_user, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
-		to_chat(abduct_user, SPAN_XENOWARNING("You relax your tail."))
+		to_chat(abduct_user, SPAN_XENOWARNING("We relax our tail."))
 		apply_cooldown()
 
 		for(var/obj/effect/xenomorph/xeno_telegraph/xenotelegraph in telegraph_atom_list)

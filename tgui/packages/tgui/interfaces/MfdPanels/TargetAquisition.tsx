@@ -4,12 +4,7 @@ import { useBackend, useSharedState } from 'tgui/backend';
 import { Box, Icon, Stack } from 'tgui/components';
 
 import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
-import {
-  mfdState,
-  useFiremissionXOffsetValue,
-  useFiremissionYOffsetValue,
-  useLazeTarget,
-} from './stateManagers';
+import { mfdState, useLazeTarget } from './stateManagers';
 import type {
   CasFiremission,
   EquipmentContext,
@@ -317,9 +312,6 @@ export const lazeMapper = (offset) => {
   const { act, data } = useBackend<TargetContext>();
   const { setSelectedTarget } = useLazeTarget();
 
-  const { fmXOffsetValue } = useFiremissionXOffsetValue();
-  const { fmYOffsetValue } = useFiremissionYOffsetValue();
-
   const target =
     data.targets_data.length > offset ? data.targets_data[offset] : undefined;
   const isDebug = target?.target_name.includes('debug');
@@ -343,8 +335,8 @@ export const lazeMapper = (offset) => {
           setSelectedTarget(target.target_tag);
           act('firemission-dual-offset-camera', {
             target_id: target.target_tag,
-            x_offset_value: fmXOffsetValue,
-            y_offset_value: fmYOffsetValue,
+            x_offset_value: data.firemission_x_offset,
+            y_offset_value: data.firemission_y_offset,
           });
         }
       : () => {
@@ -389,8 +381,9 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
   );
   const { quickMode, setQuickMode } = useQuickMode(props.panelStateId);
 
-  const { fmXOffsetValue } = useFiremissionXOffsetValue();
-  const { fmYOffsetValue } = useFiremissionYOffsetValue();
+  const targetingSystem = data.equipment_data.find(
+    (equipment) => equipment.shorthand === 'Targeting',
+  );
 
   const strikeConfigLabel =
     strikeMode === 'weapon'
@@ -438,8 +431,8 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
                   ? directionLookup[strikeDirection]
                   : 0,
                 target_id: selectedTarget,
-                offset_x_value: fmXOffsetValue,
-                offset_y_value: fmYOffsetValue,
+                offset_x_value: data.firemission_x_offset,
+                offset_y_value: data.firemission_y_offset,
               });
             }
             if (strikeMode === 'weapon') {
@@ -475,7 +468,18 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
             }
           },
         },
-        {},
+        targetingSystem
+          ? {
+              children: 'WTS',
+              borderColor: targetingSystem.data?.enabled
+                ? '#ff0000'
+                : undefined,
+              onClick: () =>
+                act('deploy-equipment', {
+                  equipment_id: targetingSystem.mount_point,
+                }),
+            }
+          : {},
         {
           children: targetOffset > 0 ? <Icon name="arrow-up" /> : undefined,
           onClick: () => {
@@ -612,7 +616,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
               </Stack.Item>
               <Stack.Item>
                 <h3>
-                  Offset {fmXOffsetValue},{fmYOffsetValue}
+                  Offset {data.firemission_x_offset},{data.firemission_y_offset}
                 </h3>
               </Stack.Item>
               <Stack.Item>

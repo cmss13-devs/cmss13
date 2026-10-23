@@ -12,6 +12,8 @@
 	var/obj/structure/dropship_equipment/installed_equipment
 	/// What kind of equipment this base accepts
 	var/base_category
+	/// Bitflag representing the equipment category accepted by this attach point
+	var/category_flag = NONE
 	/// Identifier used to refer to the dropship it belongs to
 	var/ship_tag
 	/// Static numbered identifier for singular attach points
@@ -37,7 +39,7 @@
 	if(!istype(clamp.loaded, /obj/structure/dropship_equipment))
 		return
 	var/obj/structure/dropship_equipment/ds_equipment = clamp.loaded
-	if(!(base_category in ds_equipment.equip_categories))
+	if(!(category_flag & ds_equipment.compatible_category_flags))
 		to_chat(user, SPAN_WARNING("[ds_equipment] doesn't fit on [src]."))
 		return
 	if(installed_equipment)
@@ -73,6 +75,7 @@
 	name = "weapon system attach point"
 	icon_state = "equip_base_front"
 	base_category = DROPSHIP_WEAPON
+	category_flag = DROPSHIP_CATEGORY_WEAPON
 	layer = ABOVE_OBJ_LAYER
 	var/firing_arc_min
 	var/firing_arc_max

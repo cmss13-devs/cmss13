@@ -26,11 +26,13 @@
 	//code below is to eliminate mapped in chair stacks, and turn all of the chairs into a single stacked chair
 
 	var/turf/found_turf = get_turf(src)
-	if(!found_turf)
+	if(!found_turf || isnull(foldabletype))
 		return
 
 	var/list/found_chairs = list()
 	for(var/obj/structure/bed/chair/found_chair in found_turf)
+		if(!found_chair.foldabletype)
+			continue
 		found_chairs += found_chair
 
 	if(length(found_chairs) <= 1)

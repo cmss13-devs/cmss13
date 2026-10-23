@@ -33,8 +33,7 @@
 
 			if(ishuman(attacking_mob) && stat == DEAD && attacking_mob.zone_selected == "eyes")
 				if(eyelids_status == EYELID_OPEN)
-					eyelids_status = EYELID_CLOSED
-					update_body()
+					apply_eyelid_state(EYELID_CLOSED)
 					attacking_mob.visible_message(SPAN_NOTICE("[attacking_mob] respectfully closes the lifeless eyes of [src]."), SPAN_NOTICE("You respectfully close the lifeless eyes of [src]."), null, 7)
 					return 1
 

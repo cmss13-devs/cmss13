@@ -476,14 +476,20 @@
 
 
 /mob/living/carbon/human/proc/apply_eyelid_state(state)
+	if(eyelids_status == EYELID_FLAYED && state != EYELID_FLAYED)
+		return
+
 	eyelids_status = state
-	update_body()
+	update_eyes()
 
 
 /// Finite eyelid sequence for emotes / forced animations.
 /// period = seconds each step is held. times = number of state flips (1 = single change + optional reopen).
 /mob/living/carbon/human/proc/move_eyelids(state, period = 0.15, times = 1)
 	if(!(species?.flags & HAS_EYELIDS))
+		return
+
+	if(eyelids_status == EYELID_FLAYED)	//flayed means no eyelids, stays open D:
 		return
 
 	if(eyelid_timer)

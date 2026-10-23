@@ -145,6 +145,8 @@ There are several things that need to be remembered:
 	apply_overlay(BODYPARTS_LAYER)
 
 	update_undergarments()
+	update_eyes()
+
 
 /// Recalculates and reapplies damage overlays to every limb
 /mob/living/carbon/human/proc/update_damage_overlays()
@@ -160,6 +162,27 @@ There are several things that need to be remembered:
 	overlays_standing[DAMAGE_LAYER] = damage_overlays
 
 	apply_overlay(DAMAGE_LAYER)
+
+
+/mob/living/carbon/human/proc/update_eyes()
+	remove_overlay(EYES_LAYER)
+
+	var/obj/limb/head/head = get_limb("head")
+
+	if(!head || (head.status & LIMB_DESTROYED))
+		return
+
+	if(!(species.flags & HAS_EYELIDS) || eyelids_status == EYELID_OPEN || eyelids_status == EYELID_FLAYED)
+		var/image/eyes = image('icons/mob/humans/onmob/human_face.dmi', species.eyes, layer = -EYES_LAYER)
+		eyes.color = list(null, null, null, null, rgb(r_eyes, g_eyes, b_eyes))
+		. += eyes
+
+		if(HAS_TRAIT(src, TRAIT_INTENT_EYES))
+			. += emissive_appearance(icon = 'icons/mob/humans/onmob/human_face.dmi', icon_state = species.eyes)
+
+		overlays_standing[EYES_LAYER] = eyes
+		apply_overlay(EYES_LAYER)
+
 
 /// If this human should have underwear, reapply the overlays
 /mob/living/carbon/human/proc/update_undergarments()

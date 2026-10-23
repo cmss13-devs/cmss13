@@ -650,7 +650,7 @@
 
 /obj/item/weapon/gun/revolver/upp
 	name = "\improper ZHNK-72 revolver"
-	desc = "The ZHNK-72 is a UPP designed revolver. The ZHNK-72 is used by the UPP armed forces in a policing role as well as limited numbers in the hands of SNCOs."
+	desc = "The ZHNK-72 is a revolver designed and produced in the UPP, it's mostly used by the People's Armed Police, though certain stocks have reached the UPP Army and SOF."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/revolvers.dmi'
 	icon_state = "zhnk72"
 	item_state = "zhnk72"

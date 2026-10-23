@@ -2030,3 +2030,10 @@
 		if(PULSE_THREADY)
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
 // output for machines^ ^^^^^^^output for people^^^^^^^^^
+
+/// If undefibbable is FALSE, this will set undefibbable TRUE and send the signal COMSIG_HUMAN_SET_UNDEFIBBABLE
+/mob/living/carbon/human/proc/set_undefibbable()
+	if(undefibbable)
+		return // Already set
+	undefibbable = TRUE
+	SEND_SIGNAL(src, COMSIG_HUMAN_SET_UNDEFIBBABLE)

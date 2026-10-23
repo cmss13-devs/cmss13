@@ -72,6 +72,9 @@
 	containername = "replacement telecommunications crate"
 	group = "Operations"
 
+
+//Make it buyable i guess, even though you really shouldnt need to
+
 /datum/supply_packs/portable_telecomms
 	name = "Portable Telecommunications Unit"
 	contains = list(

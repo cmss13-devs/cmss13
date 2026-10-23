@@ -34,12 +34,14 @@
 	var/upright_projectile_coverage = PROJECTILE_COVERAGE_LOW
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_UNSUITED
 
+
 /obj/structure/surface/table/Initialize()
 	. = ..()
 
-	for(var/obj/structure/surface/table/T in src.loc)
+	for(var/obj/structure/surface/table/T in loc)
 		if(T != src)
 			qdel(T)
+
 	if(flipped)
 		projectile_coverage = flipped_projectile_coverage
 	else
@@ -47,6 +49,115 @@
 
 	update_adjacent()
 	update_icon()
+	return INITIALIZE_HINT_LATELOAD
+
+
+/obj/structure/surface/table/LateInitialize()
+	if(!flipped)
+		return
+
+	if(HAS_TRAIT(src, TRAIT_TABLE_FLIPPING))	// Already handled as part of another table's group
+		return
+
+	apply_mapped_flip()
+
+
+/// Apply full in-game flip state for tables mapped with flipped = TRUE.
+/obj/structure/surface/table/proc/apply_mapped_flip()
+	var/list/group = get_connected_flipped_tables()
+	var/flip_dir = resolve_mapped_flip_dir(group)
+
+	if(!flip_dir)	// Bend/invalid shape — don't leave inconsistent half-flipped tables
+		for(var/obj/structure/surface/table/T as anything in group)
+			T.flipped = FALSE
+			T.projectile_coverage = T.upright_projectile_coverage
+			T.update_icon()
+			T.update_adjacent()
+		return
+
+	for(var/obj/structure/surface/table/T as anything in group)
+		T.apply_flip_state(flip_dir)
+
+
+/obj/structure/surface/table/proc/get_connected_flipped_tables()
+	var/list/group = list()
+	var/list/queue = list(src)
+	while(length(queue))
+		var/obj/structure/surface/table/T = queue[1]
+		queue.Cut(1, 2)
+		if(T in group)
+			continue
+		group += T
+		for(var/d in GLOB.cardinals)
+			var/obj/structure/surface/table/N = locate() in get_step(T, d)
+			if(N?.flipped && !(N in group))
+				queue += N
+	return group
+
+
+/// Returns a cardinal flip direction, or null if the group is not a straight line (for mapping)
+/obj/structure/surface/table/proc/resolve_mapped_flip_dir(list/group)
+	var/min_x = INFINITY
+	var/max_x = -INFINITY
+	var/min_y = INFINITY
+	var/max_y = -INFINITY
+
+	for(var/obj/structure/surface/table/T as anything in group)
+		min_x = min(min_x, T.x)
+		max_x = max(max_x, T.x)
+		min_y = min(min_y, T.y)
+		max_y = max(max_y, T.y)
+
+	var/width = max_x - min_x
+	var/height = max_y - min_y
+
+	if(width == 0 && height == 0)	// Single table: use mapped dir if cardinal, else keep SOUTH
+		return (dir in GLOB.cardinals) ? dir : SOUTH
+
+	if(width > 0 && height > 0)	// Must be a straight row or column
+		return null
+
+	if(height == 0)	// Also reject gaps / non-line shapes: every tile on the segment should be in the group
+		for(var/x = min_x to max_x)	// horizontal row → flip N/S (orthogonal to E-W run)
+			var/found = FALSE
+			for(var/obj/structure/surface/table/T as anything in group)
+				if(T.x == x && T.y == min_y)
+					found = TRUE
+					break
+			if(!found)
+				return null
+		if(dir == NORTH || dir == SOUTH)
+			return dir
+		return SOUTH
+
+	for(var/y = min_y to max_y)	// vertical column → flip E/W
+		var/found = FALSE
+		for(var/obj/structure/surface/table/T as anything in group)
+			if(T.y == y && T.x == min_x)
+				found = TRUE
+				break
+		if(!found)
+			return null
+	if(dir == EAST || dir == WEST)
+		return dir
+	return EAST
+
+
+/// Same end state as flip(), without player checks / throwing / cascading (for mapping)
+/obj/structure/surface/table/proc/apply_flip_state(direction)
+	verbs -= /obj/structure/surface/table/verb/do_flip
+	verbs += /obj/structure/surface/table/proc/do_put
+
+	projectile_coverage = flipped_projectile_coverage
+	setDir(direction)
+	layer = (dir == NORTH) ? initial(layer) : FLY_LAYER
+	flipped = TRUE
+	flags_can_pass_all_temp &= ~PASS_UNDER
+	flags_atom |= ON_BORDER
+
+	update_icon()
+	update_adjacent()
+
 
 /obj/structure/surface/table/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

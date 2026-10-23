@@ -88,7 +88,7 @@ BSQL_PROTECT_DATUM(/datum/entity/clan)
 		"honor",
 		"clan_player_id" = "id",
 		"clan_name" = "clan.name",
-		"ckey" = "player.ckey"
+		"ckey" = "player.ckey",
 	)
 	order_by = list("clan_rank" = DB_ORDER_BY_DESC)
 
@@ -101,6 +101,6 @@ BSQL_PROTECT_DATUM(/datum/entity/clan)
 	destination_entity = /datum/view_record/clan_view
 	fields = list(
 		"name",
-		"clan_id" = "id"
+		"clan_id" = "id",
 	)
 	order_by = list("name" = DB_ORDER_BY_ASC)

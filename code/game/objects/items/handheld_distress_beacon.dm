@@ -96,7 +96,14 @@
 
 	beacon_type = "Bodyguard beacon"
 	recipient = "the Corporate Security Division"
-	ert_paths = list(/datum/emergency_call/wy_bodyguard, /datum/emergency_call/wy_bodyguard/ppo, /datum/emergency_call/wy_bodyguard/pmc/sec, /datum/emergency_call/wy_bodyguard/pmc, /datum/emergency_call/wy_bodyguard/commando, /datum/emergency_call/wy_bodyguard/android) // "Weyland-Yutani Goon (Executive Bodyguard Detail)"
+	ert_paths = list(
+		/datum/emergency_call/wy_bodyguard,
+		/datum/emergency_call/wy_bodyguard/ppo,
+		/datum/emergency_call/wy_bodyguard/pmc/sec,
+		/datum/emergency_call/wy_bodyguard/pmc,
+		/datum/emergency_call/wy_bodyguard/commando,
+		/datum/emergency_call/wy_bodyguard/android,
+		) // "Weyland-Yutani Goon (Executive Bodyguard Detail)"
 	ert_short_names = list("SEND WY CIV GUARD", "SEND PERSONAL PROTECTION", "SEND PMC RIOT", "SEND PMC", "SEND COMMANDO", "SEND COMBAT ANDROID")
 
 // Provost office distress beacon held by Inspectors+

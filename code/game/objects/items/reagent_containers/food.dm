@@ -4,7 +4,7 @@
 /obj/item/reagent_container/food
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/food_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/food_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/food_righthand.dmi',
 	)
 	possible_transfer_amounts = null
 	volume = 50 //Sets the default container amount for all food items.

@@ -16,14 +16,14 @@
 		"1" = list(0, 21),
 		"2" = list(0, -32),
 		"4" = list(32, 0),
-		"8" = list(-32, 0)
+		"8" = list(-32, 0),
 	)
 
 	muzzle_flash_pos = list(
 		"1" = list(0, 57),
 		"2" = list(0, -67),
 		"4" = list(77, 0),
-		"8" = list(-77, 0)
+		"8" = list(-77, 0),
 	)
 
 	scatter = 18 //base scatter, modified by stake_delay_mult

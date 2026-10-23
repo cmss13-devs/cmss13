@@ -107,7 +107,7 @@
 	var/list/targets = list()
 	var/list/sound_type_list = list(
 		"Meme" = SOUND_ADMIN_MEME,
-		"Atmospheric" = SOUND_ADMIN_ATMOSPHERIC
+		"Atmospheric" = SOUND_ADMIN_ATMOSPHERIC,
 	)
 
 	var/style = tgui_input_list(src, "Who do you want to play this to?", "Select Listeners", list("Globally", "Xenos", "Marines", "Ghosts", "All In View Range", "Single Mob"))

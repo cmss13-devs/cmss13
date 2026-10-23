@@ -17,7 +17,7 @@
 		"1" = list(0, 21),
 		"2" = list(0, -32),
 		"4" = list(32, 1),
-		"8" = list(-32, 1)
+		"8" = list(-32, 1),
 	)
 
 	use_muzzle_flash = FALSE

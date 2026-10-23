@@ -25,7 +25,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		"right" = list(-2, 0),
 		"rear left" = list(1, 2),
 		"rear center" = list(0, 2),
-		"rear right" = list(-1, 2)
+		"rear right" = list(-1, 2),
 	)
 
 	entrance_speed = 0.5 SECONDS
@@ -68,7 +68,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		"bullet" = 0.6,
 		"explosive" = 0.7,
 		"blunt" = 0.7,
-		"abstract" = 1
+		"abstract" = 1,
 	)
 
 	move_max_momentum = 2

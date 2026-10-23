@@ -8,7 +8,7 @@
 	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/ranks.dmi'
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/ranks.dmi',
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/ranks.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/ranks.dmi',
 	)
 	var/rank = "Private"
 	var/rank_short = PAY_SHORT_ME1

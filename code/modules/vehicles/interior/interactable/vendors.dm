@@ -86,7 +86,7 @@
 		list("Synth-Graft", floor(scale * 2), /obj/item/tool/surgery/synthgraft, VENDOR_ITEM_REGULAR),
 		list("Health Analyzer", floor(scale * 4), /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR),
 		list("Stasis Bag", floor(scale * 6), /obj/item/bodybag/cryobag, VENDOR_ITEM_REGULAR),
-		list("Syringe", floor(scale * 3), /obj/item/reagent_container/syringe, VENDOR_ITEM_REGULAR)
+		list("Syringe", floor(scale * 3), /obj/item/reagent_container/syringe, VENDOR_ITEM_REGULAR),
 	)
 
 //MED APC version of Blood Dispenser

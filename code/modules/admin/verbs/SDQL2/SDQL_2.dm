@@ -1203,11 +1203,12 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 	var/list/whitespace = list(" ", "\n", "\t")
 	var/list/single = list("(", ")", ",", "+", "-", ".", "\[", "]", "{", "}", ";", ":")
 	var/list/multi = list(
-					"=" = list("", "="),
-					"<" = list("", "=", ">"),
-					">" = list("", "="),
-					"!" = list("", "="),
-					"@" = list("\["))
+		"=" = list("", "="),
+		"<" = list("", "=", ">"),
+		">" = list("", "="),
+		"!" = list("", "="),
+		"@" = list("\["),
+	)
 
 	var/word = ""
 	var/list/query_list = list()

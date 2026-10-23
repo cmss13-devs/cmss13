@@ -6,7 +6,7 @@
 	blood_overlay_type = "hardhat"
 	icon = 'icons/obj/items/clothing/hats/hardhats.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hardhats.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hardhats.dmi',
 	)
 	light_range = 4
 	light_power = 2

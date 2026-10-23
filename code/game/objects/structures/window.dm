@@ -773,6 +773,56 @@
 	basestate = "wood_rwindow"
 	window_frame = /obj/structure/window_frame/wood/reinforced
 
+/obj/structure/window/framed/wood/plain
+	icon_state = "wood_plain_window0"
+	basestate = "wood_plain_window"
+	window_frame = /obj/structure/window_frame/wood/plain
+
+/obj/structure/window/framed/wood/reinforced/plain
+	icon_state = "wood_plain_rwindow0"
+	basestate = "wood_plain_rwindow"
+	window_frame = /obj/structure/window_frame/wood/plain
+
+/obj/structure/window/framed/wood/blue
+	icon_state = "wood_blue_window0"
+	basestate = "wood_blue_window"
+	window_frame = /obj/structure/window_frame/wood/blue
+
+/obj/structure/window/framed/wood/reinforced/blue
+	icon_state = "wood_blue_rwindow0"
+	basestate = "wood_blue_rwindow"
+	window_frame = /obj/structure/window_frame/wood/blue
+
+/obj/structure/window/framed/wood/green
+	icon_state = "wood_green_window0"
+	basestate = "wood_green_window"
+	window_frame = /obj/structure/window_frame/wood/green
+
+/obj/structure/window/framed/wood/reinforced/green
+	icon_state = "wood_green_rwindow0"
+	basestate = "wood_green_rwindow"
+	window_frame = /obj/structure/window_frame/wood/green
+
+/obj/structure/window/framed/wood/purple
+	icon_state = "wood_purple_window0"
+	basestate = "wood_purple_window"
+	window_frame = /obj/structure/window_frame/wood/purple
+
+/obj/structure/window/framed/wood/reinforced/purple
+	icon_state = "wood_purple_rwindow0"
+	basestate = "wood_purple_rwindow"
+	window_frame = /obj/structure/window_frame/wood/purple
+
+/obj/structure/window/framed/wood/teal
+	icon_state = "wood_teal_window0"
+	basestate = "wood_teal_window"
+	window_frame = /obj/structure/window_frame/wood/teal
+
+/obj/structure/window/framed/wood/reinforced/teal
+	icon_state = "wood_teal_rwindow0"
+	basestate = "wood_teal_rwindow"
+	window_frame = /obj/structure/window_frame/wood/teal
+
 //Sorokyne Strata windows
 
 /obj/structure/window/framed/strata

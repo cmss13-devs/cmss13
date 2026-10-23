@@ -25,6 +25,17 @@
 
 /obj/item/device/vulture_spotter_scope/skillless
 
+/obj/item/device/vulture_spotter_scope/designator
+	name = "\improper M708 laser designator"
+	desc = "A laser designator camera that mounts on an M707 spotting tripod to provide accurate target aquisition to laser guided munitions."
+	icon_state = "rangefinder_scope"
+	item_state = "rangefinder"
+	flags_atom = FPRINT|CONDUCT|MAP_COLOR_INDEX
+
+/obj/item/device/vulture_spotter_scope/designator/Initialize(mapload, datum/weakref/rifle)
+	. = ..()
+	select_gamemode_skin(type)
+
 /obj/item/device/vulture_spotter_tripod
 	name = "\improper M707 spotter tripod"
 	desc = "A tripod, meant for stabilizing a spotting scope for the M707 anti-materiel rifle."
@@ -41,6 +52,9 @@
 
 /obj/item/device/vulture_spotter_tripod/attack_self(mob/user)
 	. = ..()
+	deploy_tripod(user)
+
+/obj/item/device/vulture_spotter_tripod/proc/deploy_tripod(mob/user)
 	user.balloon_alert(user, "setting up tripod")
 	if(!do_after(user, 1.5 SECONDS, target = user))
 		return

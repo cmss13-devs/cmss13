@@ -419,6 +419,15 @@
 	icon = 'icons/mob/hud/dropship_hud.dmi'
 	icon_state = "impact_reticle"
 
+/// Keep the shared HUD image in sync as a guided missile tracks or loses its target.
+/obj/effect/overlay/temp/dropship_reticle/direct/proc/update_guidance(turf/impact, locked_on)
+	if(loc != impact)
+		forceMove(impact)
+	icon_state = locked_on ? "lock_on_reticle" : "impact_reticle"
+	if(reticle_image)
+		reticle_image.loc = impact
+		reticle_image.icon_state = icon_state
+
 /obj/effect/overlay/temp/dropship_reticle/direct/proc/spawn_reticle(x, y, z)
 	return new /obj/effect/overlay/temp/dropship_reticle/direct(locate(x, y, z))
 

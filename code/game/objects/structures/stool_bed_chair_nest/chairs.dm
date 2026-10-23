@@ -23,7 +23,8 @@
 		verbs.Remove(/obj/structure/bed/chair/verb/rotate)
 	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(handle_rotation_on_dir_change))
 
-	//code below is to eliminate mapped in chair stacks, and turn all of the chairs into a single stacked chair
+/obj/structure/bed/chair/LateInitialize()
+	. = ..()
 
 	var/turf/found_turf = get_turf(src)
 	if(!found_turf || isnull(foldabletype))

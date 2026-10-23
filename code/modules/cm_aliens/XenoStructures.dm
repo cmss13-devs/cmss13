@@ -578,10 +578,10 @@
 
 /obj/structure/mineral_door/resin/bone_resin
 	name = "skeletal resin door"
-	icon_state = "skeletal resin"
+	icon_state = "bone resin"
 	health = INFINITY
 	hardness = INFINITY
-	mineralType = "skeletal resin"
+	mineralType = "bone resin"
 	tiles_with = list(/turf/closed/wall/mineral/bone_resin, /obj/structure/mineral_door/resin/bone_resin)
 
 /obj/structure/mineral_door/resin/bone_resin/attack_alien(mob/living/carbon/xenomorph/xeno)

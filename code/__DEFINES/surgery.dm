@@ -64,7 +64,7 @@ unless the surgical tool is completely unsuited to what it's being used for.*/
 // SURGICAL TOOLS    //
 /////////////////////////////
 
-//Lists of tools and surgery time multipliers when using them. These are shared lists - a number of steps have their own individual lists.
+//Lists of tools and surgery time multipliers when using them. These are shared lists - a number of steps have their own individual lists. Some individual lists were turned into defines for sound applications.
 
 ///Tools routinely used to hit people, which wouldn't make sense to give 'you can't open an incision with xyz' messages.
 #define SURGERY_TOOLS_NO_INIT_MSG list(\
@@ -123,7 +123,20 @@ See also /datum/surgery_step/cut_larval_pseudoroots, /datum/surgery_step/retract
 	/obj/item/tool/kitchen/utensil/fork = SURGERY_TOOL_MULT_AWFUL\
 	)
 
-//Generic 'SURGERY_TOOLS_PRY' is only used by /datum/surgery_step/peel_skin at present. /datum/surgery_step/retract_skin also has that list, with incision tools added.
+///Tools used to pry open specifically incisions. Contains INCISION tools at lengthy delays, mainly so surgeons can dramatically slash open incisions with them.
+#define SURGERY_TOOLS_PRY list(\
+	/obj/item/tool/surgery/retractor = SURGERY_TOOL_MULT_IDEAL,\
+	/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_SUBOPTIMAL,\
+	/obj/item/tool/crowbar = SURGERY_TOOL_MULT_SUBSTITUTE,\
+	/obj/item/tool/wirecutters = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,\
+	/obj/item/maintenance_jack = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,\
+	/obj/item/tool/kitchen/utensil/fork = SURGERY_TOOL_MULT_AWFUL,\
+	/obj/item/attachable/bayonet = SURGERY_TOOL_MULT_AWFUL,\
+	/obj/item/tool/surgery/scalpel = SURGERY_TOOL_MULT_AWFUL,\
+	/obj/item/tool/kitchen/knife = SURGERY_TOOL_MULT_AWFUL,\
+	/obj/item/weapon/throwing_knife = SURGERY_TOOL_MULT_AWFUL,\
+	/obj/item/shard = SURGERY_TOOL_MULT_AWFUL\
+	)
 
 ///Tools used to pry things very finely. No crowbar, fork works decently; it can't pinch, but it's easier to maneuver precisely than wirecutters.
 #define SURGERY_TOOLS_PRY_DELICATE list(\
@@ -153,6 +166,13 @@ See also /datum/surgery_step/cut_larval_pseudoroots, /datum/surgery_step/retract
 	/obj/item/clothing/head/headband = SURGERY_TOOL_MULT_AWFUL\
 	)
 
+///Tools used to apply a skin graft after Eschar removal surgery.
+#define SURGERY_TOOLS_APPLY_GRAFT list(\
+	/obj/item/stack/medical/advanced/ointment = SURGERY_TOOL_MULT_IDEAL,\
+	/obj/item/tool/surgery/synthgraft = SURGERY_TOOL_MULT_IDEAL,\
+	/obj/item/stack/medical/advanced/ointment/predator = SURGERY_TOOL_MULT_SUBSTITUTE,\
+	/obj/item/stack/medical/ointment = SURGERY_TOOL_MULT_AWFUL,\
+	)
 /////////////////////////////
 // BONES SHATTER    //
 /////////////////////////////

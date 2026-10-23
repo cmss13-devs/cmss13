@@ -260,17 +260,17 @@ CLIENT_VERB(windowclose, atomref as text|null, params as text|null)
  *
  * @param target The client (or mob, which is resolved to its client) that will see the window.
  * @param browser_content The HTML body/content to display inside the window.
- * @param browser_name Title shown in the window’s title bar.
+ * @param browser_name Title shown in the window's title bar.
  * @param id Optional window ID. If null, `browser_name` is used as the window ID.
  * @param window_options Optional string of BYOND window options (e.g. "can_close=1;can_minimize=1").
- * @param closeref Optional atom reference passed to the browser’s internal onclose handler.
+ * @param closeref Optional atom reference passed to the browser's internal onclose handler.
  *                 Only used when `use_onclose` is TRUE.
  * @param width Optional window width in pixels.
  * @param height Optional window height in pixels.
  * @param existing_container If truthy, treated as the name of a pre-defined skin element
  *                           the browser should open into instead of a new window.
  * @param extra_stylesheets Optional assoc list of stylesheet name → file to include.
- * @param extra_headers Optional list of extra strings to inject into the page’s `<head>`.
+ * @param extra_headers Optional list of extra strings to inject into the page's `<head>`.
  * @param use_onclose If TRUE (default), the browser will automatically register its own
  *                    onclose handler after a short delay (via setup_onclose).
  *                    Set to FALSE when you need to call onclose() yourself with a custom
@@ -292,6 +292,7 @@ CLIENT_VERB(windowclose, atomref as text|null, params as text|null)
 	list/extra_headers, \
 	use_onclose = TRUE \
 )
+	if(!target)
 		return
 	if(!istype(target))
 		if(ismob(target))

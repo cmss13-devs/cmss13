@@ -38,7 +38,6 @@
 	QDEL_NULL(fire_reagent)
 	QDEL_NULL(pain)
 	QDEL_NULL(stamina)
-	QDEL_NULL(hallucinations)
 	status_effects = null
 
 /// Clear all running status effects assuming deletion

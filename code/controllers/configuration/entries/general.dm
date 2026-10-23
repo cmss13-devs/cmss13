@@ -78,6 +78,10 @@ Administrative related.
 /datum/config_entry/flag/log_admin
 	protection = CONFIG_ENTRY_LOCKED
 
+/datum/config_entry/flag/log_admin_lua
+	protection = CONFIG_ENTRY_LOCKED
+
+
 /datum/config_entry/flag/log_adminchat
 	protection = CONFIG_ENTRY_LOCKED
 

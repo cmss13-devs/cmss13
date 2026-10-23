@@ -3,6 +3,16 @@
 #endif // 1 to use the default behaviour;
 								// 2 for preloading absolutely everything;
 
+/// If uncommented, Dreamluau will be fully disabled.
+// #define DISABLE_DREAMLUAU
+
+// OpenDream currently doesn't support byondapi, so automatically disable it on OD,
+// unless CIBUILDING is defined - we still want to lint dreamluau-related code.
+// Get rid of this whenever it does have support.
+#ifdef OPENDREAM_REAL
+#define DISABLE_DREAMLUAU
+#endif
+
 // If this is uncommented, will attempt to load prof.dll (windows) or libprof.so (unix)
 // byond-tracy is not shipped with CM code. Build it yourself here: https://github.com/mafemergency/byond-tracy/
 //#define BYOND_TRACY

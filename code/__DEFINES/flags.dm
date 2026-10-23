@@ -23,6 +23,8 @@
 #define DF_USE_TAG (1<<0)
 #define DF_VAR_EDITED (1<<1)
 #define DF_ISPROCESSING (1<<2)
+/// Placed on datums that have a static, constant reference. Primarily only used for turfs.
+#define DF_STATIC_OBJECT (1<<3)
 
 // Bitflags for emotes, used in var/emote_type of the emote datum
 /// Is the emote audible

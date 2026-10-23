@@ -75,7 +75,15 @@ GLOBAL_REAL_VAR(total_runtimes)
 		GLOB.STUI.processing |= STUI_LOG_RUNTIME
 	else
 		stui_init_runtimes.Add(text)
-
+#ifndef DISABLE_DREAMLUAU
+	var/list/state_stack = GLOB.lua_state_stack
+	var/is_lua_call = length(state_stack)
+	var/list/lua_stacks = list()
+	if(is_lua_call)
+		for(var/level in 1 to state_stack.len)
+			lua_stacks += list(splittext(DREAMLUAU_GET_TRACEBACK(level), "\n"))
+		SSlua.log_involved_runtime(E, list(text), lua_stacks)
+#endif
 	log_runtime("runtime error: [E.name]\n[E.desc]")
 
 /datum/static_callee

@@ -1093,6 +1093,9 @@
 
 		damage_result = armor_damage_reduction(GLOB.marine_ranged, damage, armor, bullet.ammo.penetration)
 
+		if(wear_suit)
+			damage_result = wear_suit.modify_bullet_damage(damage_result, bullet, ammo_flags)
+
 		if(damage_result <= 5)
 			to_chat(src,SPAN_XENONOTICE("Our armor absorbs the force of [bullet]!"))
 		if(damage_result <= 3)

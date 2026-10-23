@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - bugfix: "Fix Check CKeys admin verb matching ckeys it shouldn't."

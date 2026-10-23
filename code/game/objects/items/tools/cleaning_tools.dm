@@ -56,7 +56,7 @@
 /obj/item/tool/mop/afterattack(atom/A, mob/living/user, proximity)
 	if(!proximity)
 		return
-	if(istype(A, /turf) || istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay))
+	if(istype(A, /turf) || istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay) || istype(A, /obj/effect/alien/weeds))
 		if(reagents.total_volume < 1)
 			to_chat(user, SPAN_NOTICE("Your mop is dry!"))
 			return

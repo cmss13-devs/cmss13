@@ -209,7 +209,7 @@
 	var/health_modifier = 0
 	var/armor_modifier = 0
 	var/explosivearmor_modifier = 0
-	var/plasmapool_modifier = 1
+	var/plasmapool_modifier = 0
 	var/plasmagain_modifier = 0
 	var/tackle_chance_modifier = 0
 	var/tackle_min_modifier = 0
@@ -217,15 +217,12 @@
 	var/regeneration_multiplier = 1
 	var/speed_modifier = 0
 	var/phero_modifier = 0
-	var/received_phero_caps = list()
+	var/alist/received_phero_caps = alist()
 	var/acid_modifier = 0
 	var/weed_modifier = 0
 	var/evasion_modifier = 0
 	var/attack_speed_modifier = 0
 	var/armor_integrity_modifier = 0
-
-	///Used to add plasma to strain if caste have 0 plasma_max
-	var/add_plasma = 0
 
 	var/list/modifier_sources
 	COOLDOWN_DECLARE(next_strain_reset)
@@ -357,7 +354,8 @@
 	var/frenzy_aura = 0 //Strength of aura we are affected by. NOT THE ONE WE ARE EMITTING
 	var/warding_aura = 0
 	var/recovery_aura = 0
-	var/ignore_aura = FALSE // ignore a specific pherom, input type
+	/// Lazy list of pheros to ignore
+	var/list/ignore_aura = null
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -775,6 +773,7 @@
 	ammo = null
 	selected_ability = null
 	clear_queued_action()
+	remove_xeno_shield()
 
 	if(organ_regen_timer != TIMER_ID_NULL)
 		deltimer(organ_regen_timer)
@@ -1041,13 +1040,12 @@
 		health = maxHealth
 
 /mob/living/carbon/xenomorph/proc/recalculate_plasma()
-	var/new_plasma_max = (plasmapool_modifier * caste.plasma_max) + add_plasma
-	if(!plasma_max && new_plasma_max <= 0)
-		return
+	var/new_plasma_max = max(caste.plasma_max + plasmapool_modifier, 0)
 
 	plasma_gain = plasmagain_modifier + caste.plasma_gain
 	if(hive)
-		new_plasma_max += hive.hive_stat_modifier_flat["plasmapool"]
+		if(new_plasma_max) // Don't have a hive grant additive plasma to a xeno with no plasma
+			new_plasma_max += hive.hive_stat_modifier_flat["plasmapool"]
 		new_plasma_max *= hive.hive_stat_modifier_multiplier["plasmapool"]
 		plasma_gain += hive.hive_stat_modifier_flat["plasmagain"]
 		plasma_gain *= hive.hive_stat_modifier_multiplier["plasmagain"]

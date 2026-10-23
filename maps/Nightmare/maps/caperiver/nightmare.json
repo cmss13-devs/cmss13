@@ -1,0 +1,10 @@
+[
+	{ "type": "map_sprinkle", "path": "sprinkles/" },
+    {
+		"type": "map_insert",
+		"landmark": "clfbridgecrash",
+		"chance": 1.0,
+		"path": "standalone/clfbridgecrash.dmm",
+		"when": { "lvevent": "clf" }
+	}
+]

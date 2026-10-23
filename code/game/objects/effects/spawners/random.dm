@@ -682,3 +682,36 @@
 		/obj/structure/ob_ammo/warhead/cluster
 	)
 	return pick(spawnables)
+
+// Materials
+
+/obj/effect/spawner/random/mats
+	name = "random mats"
+	desc = "This is a random material spawner."
+	icon_state = "supply"
+
+/obj/effect/spawner/random/mats/item_to_spawn()
+	var/list/spawnables = list(
+		/obj/item/stack/sheet/plasteel/med_small_stack,
+		/obj/item/stack/sheet/plasteel/medium_stack,
+		/obj/item/stack/sheet/metal/small_stack,
+		/obj/item/stack/sheet/metal/med_small_stack,
+		/obj/item/stack/sheet/metal/medium_stack,
+		/obj/item/stack/sheet/metal/large_stack,
+		/obj/item/stack/sheet/wood/large_stack,
+		/obj/item/stack/sheet/cardboard/small_stack,
+		/obj/item/stack/sheet/cardboard/full_stack,
+		/obj/item/stack/sandbags/small_stack,
+		/obj/item/stack/sandbags/large_stack,
+		/obj/item/stack/sandbags_empty/full
+		)
+	return pick(spawnables)
+
+/obj/effect/spawner/random/mats/lowchance
+	spawn_nothing_percentage = 80
+
+/obj/effect/spawner/random/mats/midchance
+	spawn_nothing_percentage = 50
+
+/obj/effect/spawner/random/mats/highchance
+	spawn_nothing_percentage = 20

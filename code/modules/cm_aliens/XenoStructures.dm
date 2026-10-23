@@ -1024,19 +1024,7 @@
 		STOP_PROCESSING(SSobj, src)
 		return
 
-	var/groundside_humans = 0
-	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
-		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
-			continue
-
-		var/turf/turf = get_turf(current_human)
-		if(is_ground_level(turf?.z))
-			groundside_humans += 1
-
-			if(groundside_humans > 12)
-				break
-
-	if(groundside_humans < 12)
+	if(get_groundside_marine_weight_ratio() < XENO_BOON_REQUIRED_DANGER)
 		// Too few marines are now groundside, hatch immediately
 		start_vote()
 		addtimer(CALLBACK(src, PROC_REF(roll_candidates)), 20 SECONDS)

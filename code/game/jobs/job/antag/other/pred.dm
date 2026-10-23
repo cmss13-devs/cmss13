@@ -7,6 +7,7 @@
 	flags_whitelist = WHITELIST_YAUTJA
 	supervisors = "Ancients"
 	gear_preset = /datum/equipment_preset/yautja/blooded
+	role_weight = 0
 
 	handle_spawn_and_equip = TRUE
 
@@ -68,6 +69,7 @@
 	supervisors = "Ancients"
 	flags_whitelist = NO_FLAGS
 	gear_preset = /datum/equipment_preset/yautja/non_wl
+	role_weight = 0
 
 	handle_spawn_and_equip = TRUE
 
@@ -92,9 +94,9 @@
 	flags_whitelist = WHITELIST_YAUTJA
 	handle_spawn_and_equip = TRUE
 	gear_preset = /datum/equipment_preset/yautja/stranded
+	role_weight = 1
 	var/survivor_job = JOB_STRANDED_PRED
 	var/override_job = FALSE
-
 
 /datum/job/antag/pred_surv/bad_blood
 	title = JOB_BADBLOOD

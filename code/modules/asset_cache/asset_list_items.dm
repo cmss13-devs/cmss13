@@ -501,6 +501,13 @@
 /datum/asset/spritesheet/gun_lineart_modes
 	name = "gunlineartmodes"
 
+/datum/asset/spritesheet/dropship_ammo_lineart
+	name = "dropshipammolineart"
+
+/datum/asset/spritesheet/dropship_ammo_lineart/register()
+	InsertAll("ammo", 'icons/obj/structures/props/dropship/lineart.dmi')
+	..()
+
 /datum/asset/spritesheet/gun_lineart_modes/register()
 	InsertAll("", 'icons/obj/items/weapons/guns/lineart_modes.dmi')
 	..()

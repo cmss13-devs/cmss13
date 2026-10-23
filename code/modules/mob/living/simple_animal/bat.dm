@@ -10,6 +10,12 @@
 	speak_emote = list("screeches")
 	emote_hear = list("screeches")
 
+
+/mob/living/simple_animal/small/bat/Initialize(mapload, ...)
+	. = ..()
+	mob_flags |= MOB_FLYING
+
+
 /mob/living/simple_animal/small/bat/Life(delta_time)
 	. = ..()
 	if(!ckey && stat == CONSCIOUS && prob(5))

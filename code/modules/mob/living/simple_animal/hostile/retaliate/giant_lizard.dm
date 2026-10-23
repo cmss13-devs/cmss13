@@ -43,6 +43,8 @@
 	attack_same = FALSE
 	langchat_color = LIGHT_COLOR_GREEN
 
+	water_config = /datum/water_overlay_config/large
+
 	///Reference to the ZZzzz sleep overlay when resting.
 	var/sleep_overlay
 	///Reference to the tongue flick overlay.

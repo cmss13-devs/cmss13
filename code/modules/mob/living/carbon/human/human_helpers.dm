@@ -467,3 +467,23 @@
 		headset = wear_r_ear
 	if(headset)
 		headset.update_minimap_icon()
+
+/mob/living/carbon/human/proc/move_mouth_message(message)
+	var/words_spoken = 1
+	for(var/i in 1 to length(message))
+		var/char = copytext(message, i, i + 1)
+		if(char == " ")
+			words_spoken++
+	move_mouth(words_spoken, langchat_styles == "" ? 1 : 2)
+
+/mob/living/carbon/human/proc/move_mouth(times, yelling = FALSE, timing_override = null)
+	update_mouth(yelling)
+	if(times && !timing_override)
+		addtimer(CALLBACK(src, PROC_REF(update_mouth)), 0.4*times SECONDS)
+	else if (timing_override)
+		times = 0
+		addtimer(CALLBACK(src, PROC_REF(update_mouth)), timing_override SECONDS)
+
+/mob/living/carbon/human/proc/get_mouth()
+	for(var/obj/limb/mouth/my_mouth in src)
+		return my_mouth

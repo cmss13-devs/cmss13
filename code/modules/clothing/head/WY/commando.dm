@@ -12,7 +12,7 @@
 	armor_bomb = CLOTHING_ARMOR_VERYHIGH
 	armor_internaldamage = CLOTHING_ARMOR_VERYHIGH
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR|HIDEMOUTH
 	clothing_traits = list(TRAIT_EAR_PROTECTION)
 	anti_hug = 6
 	built_in_visors = list(new /obj/item/device/helmet_visor/medical/advanced)
@@ -49,7 +49,7 @@
 	armor_bio = CLOTHING_ARMOR_VERYHIGHPLUS
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ|BLOCKGASEFFECT|FULL_DECAP_PROTECTION
-	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR|HIDEMOUTH
 	flags_marine_helmet = HELMET_DAMAGE_OVERLAY
 	unacidable = TRUE
 	anti_hug = 100

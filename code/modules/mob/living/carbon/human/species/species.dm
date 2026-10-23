@@ -175,7 +175,11 @@
 	var/obj/limb/leg/r_leg/RL = new(H, G, H)
 	H.limbs += RL
 	H.limbs += new /obj/limb/foot/r_foot(H, RL, H)
-	H.limbs += new /obj/limb/head(H, C, H)
+	var/obj/limb/head/human_head = new(H, C, H)
+	H.limbs += human_head
+
+	if(flags & HAS_MOUTH)
+		new /obj/limb/mouth(H, human_head, H)	//doesnt go in limbs for technical reasons
 
 	for(var/organ in has_organ)
 		var/organ_type = has_organ[organ]

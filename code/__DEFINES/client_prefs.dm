@@ -67,6 +67,8 @@
 #define TOGGLE_LEADERSHIP_SPOKEN_ORDERS (1<<21)
 ///Toggles the wield assist system for guns
 #define TOGGLE_WIELD_ASSIST (1<<22)
+///Toggles the visibility of moving mouths
+#define TOGGLE_MOVING_MOUTHS (1<<23)
 
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations.
 //=================================================

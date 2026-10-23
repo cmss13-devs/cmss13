@@ -461,21 +461,10 @@
 	icon_state = "water"
 	can_bloody = FALSE
 
-/turf/open/beach/water/Initialize(mapload, ...)
-	. = ..()
-	overlays += image("icon"='icons/turf/floors/beach.dmi',"icon_state"="water2","layer"=MOB_LAYER+0.1)
-
 /turf/open/beach/water2
 	name = "Water"
 	icon_state = "water"
 	can_bloody = FALSE
-
-/turf/open/beach/water2/Initialize(mapload, ...)
-	. = ..()
-	overlays += image("icon"='icons/turf/floors/beach.dmi',"icon_state"="water5","layer"=MOB_LAYER+0.1)
-
-
-
 
 
 //LV ground
@@ -729,7 +718,7 @@
 	baseturfs = /turf/open/gm/river
 	supports_surgery = FALSE
 	minimap_color = MINIMAP_WATER
-	is_weedable = NOT_WEEDABLE
+	is_weedable = HARDLY_WEEDABLE
 
 /turf/open/gm/river/Initialize(mapload, ...)
 	. = ..()
@@ -746,9 +735,10 @@
 	if(covered)
 		name = covered_name
 		overlays += image("icon"=src.cover_icon,"icon_state"=cover_icon_state,"layer"=CATWALK_LAYER,"dir" = dir)
-	else
-		name = default_name
-		overlays += image("icon"=src.icon,"icon_state"=icon_overlay,"layer"=ABOVE_MOB_LAYER,"dir" = dir)
+	// else
+	//	name = default_name
+	//	overlays += image("icon"=src.icon,"icon_state"=icon_overlay,"layer"=ABOVE_MOB_LAYER,"dir" = dir)
+	// Disabled water overlays because they were conflicting with hardened weed spreading by looking ugly.
 
 /turf/open/gm/river/Entered(atom/movable/AM)
 	..()
@@ -814,6 +804,7 @@
 
 /turf/open/gm/river/poison/Initialize(mapload, ...)
 	. = ..()
+	is_weedable = NOT_WEEDABLE
 	overlays += image("icon"='icons/effects/effects.dmi',"icon_state"="greenglow","layer"=MOB_LAYER+0.1)
 
 /turf/open/gm/river/poison/Entered(mob/living/M)
@@ -884,7 +875,7 @@
 	icon_state = "beach"
 	baseturfs = /turf/open/gm/coast
 	supports_surgery = FALSE
-	is_weedable = NOT_WEEDABLE
+	is_weedable = HARDLY_WEEDABLE
 
 /turf/open/gm/coast/north
 
@@ -940,11 +931,7 @@
 	minimap_color = MINIMAP_WATER
 	is_groundmap_turf = FALSE // Not real ground
 	fishing_allowed = TRUE
-
-
-/turf/open/gm/riverdeep/Initialize(mapload, ...)
-	. = ..()
-	overlays += image("icon"='icons/turf/ground_map.dmi',"icon_state"="water","layer"=MOB_LAYER+0.1)
+	is_weedable = HARDLY_WEEDABLE
 
 /turf/open/gm/river/no_overlay
 	no_overlay = TRUE
@@ -1154,7 +1141,7 @@
 	icon_state = "grass1"
 	var/icon_spawn_state = "grass1"
 	baseturfs = /turf/open/jungle
-	is_weedable = NOT_WEEDABLE
+	is_weedable = HARDLY_WEEDABLE
 
 /turf/open/jungle/Initialize(mapload, ...)
 	. = ..()

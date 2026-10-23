@@ -105,6 +105,7 @@
 // Helper proc that checks and uses plasma if possible, returning TRUE
 // if the use was successful
 /datum/action/xeno_action/proc/check_and_use_plasma_owner(plasma_to_use)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	if(!check_plasma_owner(plasma_to_use))
 		return FALSE
 
@@ -114,6 +115,7 @@
 // Checks the host Xeno's plasma. Returns TRUE if the amount of plasma
 // is sufficient to use the ability and FALSE otherwise.
 /datum/action/xeno_action/proc/check_plasma_owner(plasma_to_use)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	if(!owner)
 		return
 
@@ -126,6 +128,7 @@
 
 // Uses plasma on the owner.
 /datum/action/xeno_action/proc/use_plasma_owner(plasma_to_use)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	if(!owner)
 		return
 

@@ -264,6 +264,8 @@
 		envelope.change_current_loc(null)
 	clear_firemission_reticles(all_firemission_reticles)
 
+	return FIRE_MISSION_ALL_GOOD
+
 
 /**
  * Used only in the simulation room, proper tracking is done in the add_user_to_tracking envelop.

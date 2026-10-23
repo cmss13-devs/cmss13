@@ -364,6 +364,19 @@
 /obj/effect/landmark/survivor_spawner/clf_synth,
 /turf/open/floor/almayer/bluecorner/north,
 /area/lv624/lazarus/crashed_ship)
+"bi" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
+"bj" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
+"bk" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/west_caves)
 "by" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/west_caves)
@@ -1417,6 +1430,7 @@
 /area/lv624/lazarus/crashed_ship)
 "LV" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "Mm" = (
@@ -2218,7 +2232,7 @@ Hj
 Hj
 "}
 (7,1,1) = {"
-LV
+bk
 aT
 Hj
 Hj
@@ -2265,7 +2279,7 @@ Hj
 Yj
 "}
 (8,1,1) = {"
-LV
+bk
 aT
 aT
 Hj
@@ -2312,7 +2326,7 @@ Hj
 Yj
 "}
 (9,1,1) = {"
-LV
+bk
 aT
 aT
 aT
@@ -2359,7 +2373,7 @@ Hj
 Yj
 "}
 (10,1,1) = {"
-LV
+bk
 aT
 aT
 aT
@@ -2406,7 +2420,7 @@ Hj
 Yj
 "}
 (11,1,1) = {"
-LV
+bk
 aT
 aT
 aT
@@ -3784,7 +3798,7 @@ Hj
 Hj
 Hj
 Hj
-Ab
+bi
 Ab
 Ab
 Ab
@@ -3831,7 +3845,7 @@ Hj
 Hj
 Hj
 Hj
-Ab
+bi
 Ab
 Ab
 Ab
@@ -3877,13 +3891,13 @@ Hj
 Hj
 Hj
 Hj
-Ab
-Ab
-Ab
-Ab
-Ab
-Ab
-Ab
+bi
+bi
+bj
+bj
+bj
+bi
+bi
 Hj
 Hj
 Hj
@@ -3929,7 +3943,7 @@ Ab
 Ab
 Ab
 Ab
-Ab
+bi
 Hj
 Hj
 Hj

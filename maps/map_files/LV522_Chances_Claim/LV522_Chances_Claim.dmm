@@ -176,6 +176,7 @@
 "aaE" = (
 /obj/effect/landmark/lv624/fog_blocker/short,
 /obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/closed/wall/strata_outpost,
 /area/lv522/landing_zone_1/ceiling)
 "aaF" = (
@@ -685,6 +686,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "acG" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/asphalt/cement/cement1,
 /area/lv522/atmos/filt)
 "acH" = (
@@ -1314,6 +1316,7 @@
 "aeB" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/closed/wall/strata_outpost/reinforced,
 /area/lv522/atmos/way_in_command_centre)
 "aeC" = (
@@ -1380,6 +1383,94 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/corpo/glass)
+"aeO" = (
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/landing_zone_2)
+"aeP" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/landing_zone_2)
+"aeQ" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/landing_zone_2)
+"aeR" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/landing_zone_2)
+"aeS" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/northwest,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/landing_zone_2)
+"aeT" = (
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
+/turf/open/floor/prison/darkbrownfull2,
+/area/lv522/landing_zone_2)
+"aeU" = (
+/obj/structure/largecrate/random,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
+/turf/open/floor/prison/darkbrownfull2,
+/area/lv522/landing_zone_2)
+"aeV" = (
+/obj/structure/machinery/floodlight/landing,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
+/turf/open/floor/prison/darkbrownfull2,
+/area/lv522/landing_zone_2)
+"aeW" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
+/turf/closed/wall/strata_outpost,
+/area/lv522/landing_zone_1/ceiling)
+"aeX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
+/turf/open/floor/prison/darkbrownfull2,
+/area/lv522/landing_zone_2)
+"aeY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/lv522/landing_zone_2)
+"aeZ" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/landing_zone_1/ceiling)
+"afa" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
+/turf/open/floor/prison/greenfull/east,
+/area/lv522/landing_zone_1/ceiling)
+"afb" = (
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/lv522/landing_zone_2)
+"afc" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/landing_zone_2)
+"afd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/landing_zone_1/ceiling)
+"afe" = (
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/landing_zone_1/ceiling)
 "aff" = (
 /obj/structure/platform_decoration/metal/almayer/west,
 /obj/effect/decal/warning_stripes{
@@ -1390,10 +1481,49 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/garden)
+"afg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
+/turf/open/floor/prison/darkbrownfull2,
+/area/lv522/landing_zone_2/ceiling)
+"afh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/landing_zone_1/ceiling)
+"afi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
+/turf/open/floor/prison/greenfull/east,
+/area/lv522/landing_zone_1/ceiling)
+"afj" = (
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
+/turf/open/floor/prison/darkbrownfull2,
+/area/lv522/landing_zone_2/ceiling)
+"afk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/static_comms/net_survivor,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/indoors/c_block/cargo)
+"afl" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/static_comms/net_survivor,
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/admin)
+"afm" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/closed/wall/strata_outpost,
+/area/lv522/atmos/way_in_command_centre)
 "afn" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor)
+"afo" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/way_in_command_centre)
 "afp" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/head/hardhat/dblue{
@@ -1403,6 +1533,11 @@
 /obj/item/clothing/head/hardhat/white,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor)
+"afq" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/east_reactor/south)
 "afr" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -1410,6 +1545,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/indoors/b_block/bridge)
+"afs" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/east_reactor/south)
 "aft" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -1417,6 +1556,34 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/b_block/bridge)
+"afu" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/floor/prison,
+/area/lv522/atmos/way_in_command_centre)
+"afv" = (
+/obj/structure/pipes/standard/manifold/fourway/hidden/green,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/floor/prison,
+/area/lv522/atmos/way_in_command_centre)
+"afw" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/floor/shiva/radiator_tile2,
+/area/lv522/atmos/way_in_command_centre)
+"afx" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/floor/prison/cell_stripe/west,
+/area/lv522/atmos/way_in_command_centre)
+"afy" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/nw_rockies)
+"afz" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/nw_rockies)
 "afA" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/prop/server_equipment/laptop/on{
@@ -1425,6 +1592,43 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor)
+"afB" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/nw_rockies)
+"afC" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/containers)
+"afD" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/nw_rockies)
+"afE" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/asphalt/cement/cement12,
+/area/lv522/outdoors/nw_rockies)
+"afF" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/nw_rockies)
+"afG" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/nw_rockies)
+"afH" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/reactor_garage)
 "afI" = (
 /obj/item/reagent_container/food/drinks/cans/beer{
 	pixel_x = -21;
@@ -1437,6 +1641,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
+"afJ" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/asphalt/cement/cement1,
+/area/lv522/atmos/filt)
+"afK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/nw_rockies)
 "afL" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin{
@@ -1448,6 +1663,45 @@
 /obj/effect/landmark/corpsespawner/colonist/burst,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor/south)
+"afM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/nw_rockies)
+"afN" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/floor/corsat,
+/area/lv522/atmos/cargo_intake)
+"afO" = (
+/obj/structure/largecrate/random,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/floor/prison/floor_marked,
+/area/lv522/outdoors/nw_rockies)
+"afP" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/nw_rockies)
+"afQ" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/floor/corsat,
+/area/lv522/atmos/reactor_garage)
+"afR" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/containers)
+"afS" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/containers)
+"afT" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/cargo_intake)
 "afX" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement/cement12,
@@ -2129,6 +2383,7 @@
 	name = "Emergency Lockdown"
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/corsat/marked,
 /area/lv522/landing_zone_1/ceiling)
 "aFN" = (
@@ -2483,6 +2738,7 @@
 /area/lv522/indoors/c_block/cargo)
 "aTw" = (
 /obj/structure/bed/chair,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/landing_zone_2/ceiling)
 "aTA" = (
@@ -6712,6 +6968,7 @@
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/platform/metal/almayer,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_2)
 "dkB" = (
@@ -6736,6 +6993,7 @@
 	pixel_x = 5;
 	pixel_y = 4
 	},
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/landing_zone_2/ceiling)
 "dkL" = (
@@ -9803,6 +10061,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/landing_zone_2/ceiling)
 "eSW" = (
@@ -10155,6 +10414,7 @@
 "feu" = (
 /obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/landing_zone_2/ceiling)
 "feF" = (
@@ -10502,6 +10762,7 @@
 /area/lv522/indoors/a_block/kitchen)
 "fpn" = (
 /obj/structure/largecrate,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/outdoors/nw_rockies)
 "fpr" = (
@@ -10935,6 +11196,7 @@
 /obj/item/tool/pen/blue/clicky,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "fDr" = (
@@ -10965,6 +11227,7 @@
 	registered_name = "John Smith"
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "fEF" = (
@@ -11036,6 +11299,7 @@
 /area/lv522/outdoors/nw_rockies)
 "fGN" = (
 /obj/structure/largecrate,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/asphalt/cement/cement12,
 /area/lv522/outdoors/nw_rockies)
 "fGU" = (
@@ -11163,6 +11427,7 @@
 	name = "Emergency Lockdown"
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/corsat/marked,
 /area/lv522/landing_zone_1)
 "fLM" = (
@@ -11303,6 +11568,7 @@
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "fPc" = (
 /obj/structure/largecrate/random/barrel/true_random,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/asphalt/cement/cement1,
 /area/lv522/atmos/filt)
 "fPB" = (
@@ -12689,6 +12955,7 @@
 	name = "Emergency Lockdown"
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/corsat/marked,
 /area/lv522/landing_zone_1)
 "gDz" = (
@@ -14618,6 +14885,7 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/closed/wall/strata_outpost/reinforced,
 /area/lv522/atmos/way_in_command_centre)
 "hJG" = (
@@ -16911,6 +17179,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/floor/prison/cell_stripe/west,
 /area/lv522/atmos/way_in_command_centre)
 "iWz" = (
@@ -17139,6 +17408,7 @@
 /area/lv522/outdoors/colony_streets/containers)
 "jdf" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/static_comms/net_survivor,
 /obj/effect/landmark/static_comms/net_two,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/indoors/c_block/t_comm)
@@ -17396,6 +17666,7 @@
 "jkZ" = (
 /obj/structure/platform_decoration/metal/almayer/east,
 /obj/structure/platform/metal/almayer,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_2)
 "jlc" = (
@@ -18439,6 +18710,7 @@
 /area/lv522/indoors/a_block/admin)
 "jLk" = (
 /obj/structure/cargo_container/wy/left,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/landing_zone_2)
 "jLo" = (
@@ -18503,6 +18775,7 @@
 /area/lv522/indoors/c_block/mining)
 "jMy" = (
 /obj/structure/cargo_container/kelland/left,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison,
 /area/lv522/landing_zone_2)
 "jMZ" = (
@@ -19107,6 +19380,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/atmos/way_in_command_centre)
 "kca" = (
@@ -19687,6 +19961,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/landing_zone_2/ceiling)
 "koG" = (
@@ -20704,6 +20979,7 @@
 	name = "Emergency Lockdown"
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/corsat/marked,
 /area/lv522/landing_zone_1/ceiling)
 "kPO" = (
@@ -21368,6 +21644,7 @@
 "lfA" = (
 /obj/structure/closet/crate,
 /obj/item/weapon/classic_baton,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/landing_zone_2)
 "lfU" = (
@@ -22304,6 +22581,7 @@
 /area/lv522/indoors/lone_buildings/engineering)
 "lHH" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/landing_zone_2/ceiling)
 "lHL" = (
@@ -22682,6 +22960,7 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "lUf" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/static_comms/net_survivor,
 /obj/effect/landmark/static_comms/net_one,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/indoors/lone_buildings/outdoor_bot)
@@ -22762,6 +23041,7 @@
 	pixel_x = 5;
 	pixel_y = 8
 	},
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/landing_zone_2/ceiling)
 "lVD" = (
@@ -23217,6 +23497,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/landing_zone_2/ceiling)
 "mjT" = (
@@ -24577,6 +24858,7 @@
 /obj/structure/machinery/computer/cameras/wooden_tv{
 	pixel_y = 6
 	},
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/landing_zone_2/ceiling)
 "mQq" = (
@@ -24911,6 +25193,7 @@
 /obj/structure/machinery/prop/almayer/computer/PC{
 	pixel_y = 9
 	},
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/landing_zone_2/ceiling)
 "naw" = (
@@ -25789,6 +26072,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "nvt" = (
@@ -27508,6 +27792,7 @@
 	},
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "opO" = (
@@ -28464,6 +28749,7 @@
 	dir = 8
 	},
 /obj/structure/machinery/disposal,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/landing_zone_2/ceiling)
 "oRr" = (
@@ -29047,6 +29333,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/nw_rockies)
 "piD" = (
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/landing_zone_2/ceiling)
 "piE" = (
@@ -29123,6 +29410,7 @@
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 4
 	},
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/landing_zone_2/ceiling)
 "pmg" = (
@@ -30371,6 +30659,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/landing_zone_2/ceiling)
 "pWB" = (
@@ -31334,6 +31623,7 @@
 "qvJ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/static_comms/net_survivor,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/dorms)
 "qvM" = (
@@ -32825,6 +33115,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/atmos/way_in_command_centre)
 "raQ" = (
@@ -33070,6 +33361,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/landing_zone_2/ceiling)
 "rex" = (
@@ -34182,6 +34474,7 @@
 	name = "Emergency Lockdown"
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/corsat/marked,
 /area/lv522/landing_zone_1/ceiling)
 "rIZ" = (
@@ -34244,6 +34537,7 @@
 /turf/open/floor/corsat/brown/west,
 /area/lv522/atmos/cargo_intake)
 "rKS" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/floor/corsat,
 /area/lv522/atmos/reactor_garage)
 "rKW" = (
@@ -34558,6 +34852,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/landing_zone_2/ceiling)
 "rRJ" = (
@@ -34788,6 +35083,7 @@
 	pixel_y = 8
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/landing_zone_2/ceiling)
 "rZc" = (
@@ -34816,6 +35112,7 @@
 /turf/open/floor/prison/greenfull,
 /area/lv522/indoors/a_block/bridges/dorms_fitness)
 "rZL" = (
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/landing_zone_2/ceiling)
 "sag" = (
@@ -35177,6 +35474,7 @@
 	icon_state = "keys"
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "sje" = (
@@ -35389,6 +35687,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/mining)
 "snX" = (
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/closed/wall/strata_outpost,
 /area/lv522/landing_zone_2/ceiling)
 "soh" = (
@@ -36081,6 +36380,7 @@
 /obj/structure/machinery/prop/almayer/computer/PC{
 	dir = 1
 	},
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/landing_zone_2/ceiling)
 "sHk" = (
@@ -36126,6 +36426,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "sIK" = (
@@ -36672,6 +36973,7 @@
 	name = "Emergency Lockdown"
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/corsat/marked,
 /area/lv522/landing_zone_1)
 "sSW" = (
@@ -37303,6 +37605,7 @@
 /obj/structure/machinery/faxmachine{
 	pixel_y = 5
 	},
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/landing_zone_2/ceiling)
 "tlX" = (
@@ -37338,6 +37641,7 @@
 	pixel_y = 1
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "tmX" = (
@@ -38866,6 +39170,7 @@
 "tZP" = (
 /obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/landing_zone_2/ceiling)
 "tZR" = (
@@ -39121,6 +39426,7 @@
 	},
 /obj/structure/machinery/light,
 /obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "ufU" = (
@@ -39657,6 +39963,7 @@
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "utq" = (
@@ -39687,6 +39994,7 @@
 	pixel_x = 4
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "uue" = (
@@ -40213,6 +40521,7 @@
 	pixel_x = 9;
 	pixel_y = 9
 	},
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/landing_zone_2/ceiling)
 "uGT" = (
@@ -41124,6 +41433,7 @@
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/landing_zone_2/ceiling)
 "vdz" = (
@@ -41412,6 +41722,7 @@
 /area/lv522/landing_zone_1/ceiling)
 "vjF" = (
 /obj/structure/cargo_container/horizontal/blue/bottom,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/landing_zone_2)
 "vjG" = (
@@ -41638,6 +41949,7 @@
 /area/lv522/atmos/way_in_command_centre)
 "vpp" = (
 /obj/structure/window/framed/strata/reinforced,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/corsat/marked,
 /area/lv522/landing_zone_2/ceiling)
 "vpq" = (
@@ -42674,6 +42986,7 @@
 	name = "Emergency Lockdown"
 	},
 /obj/effect/landmark/lv624/fog_blocker/short,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/corsat/marked,
 /area/lv522/landing_zone_1/ceiling)
 "vNY" = (
@@ -42725,6 +43038,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2
 	},
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/corsat/marked,
 /area/lv522/landing_zone_2/ceiling)
 "vPl" = (
@@ -44330,6 +44644,7 @@
 /obj/structure/cargo_container/wy/mid{
 	health = 5000
 	},
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/landing_zone_2)
 "wEE" = (
@@ -47472,6 +47787,7 @@
 	},
 /obj/item/tool/screwdriver,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/landing_zone_2/ceiling)
 "yjT" = (
@@ -51439,11 +51755,11 @@ ien
 ien
 ien
 ien
-tFx
+aeW
 rIM
 rIM
 rIM
-tFx
+aeW
 rnT
 aaa
 ttT
@@ -53709,7 +54025,7 @@ max
 max
 max
 osN
-tFx
+aeW
 ymc
 tFx
 tFx
@@ -54770,7 +55086,7 @@ vTT
 vTT
 vTT
 tFx
-tFx
+aeW
 cpy
 cpy
 eYM
@@ -54945,7 +55261,7 @@ max
 tZh
 pAj
 fnA
-tFx
+aeW
 ymc
 xXO
 ymc
@@ -54976,7 +55292,7 @@ yhU
 nEq
 yhU
 uPo
-tFx
+aeW
 eYM
 eYM
 eYM
@@ -55182,7 +55498,7 @@ vUX
 nEq
 yhU
 vAW
-tFx
+aeW
 eYM
 jwh
 sdN
@@ -55388,7 +55704,7 @@ yhU
 yhU
 yhU
 ggS
-tFx
+aeW
 hgI
 mug
 wfP
@@ -55800,7 +56116,7 @@ vVi
 nEq
 ggS
 tVj
-tFx
+aeW
 brf
 ujg
 jJF
@@ -55874,7 +56190,7 @@ tiQ
 tiQ
 vtc
 acH
-gat
+afK
 gsZ
 uWO
 uWO
@@ -55974,13 +56290,13 @@ dPP
 max
 max
 osN
-tFx
-tFx
+aeW
+aeW
 nuU
 fDj
 opt
-tFx
-tFx
+aeW
+aeW
 fLF
 fLF
 ien
@@ -55990,7 +56306,7 @@ fLF
 ien
 fLF
 gCP
-tFx
+aeW
 vCE
 yhU
 tKS
@@ -56185,7 +56501,7 @@ aaE
 rIM
 rIM
 rIM
-tFx
+aeW
 fnA
 veQ
 veQ
@@ -56198,11 +56514,11 @@ veQ
 sbF
 aFf
 fDF
-tKS
-mvP
-yhU
+afh
+afd
+aeZ
 utm
-tFx
+aeW
 cpy
 cpy
 cpy
@@ -56212,7 +56528,7 @@ wdI
 vAW
 tVj
 tFx
-tFx
+aeW
 cpy
 cpy
 cpy
@@ -56288,7 +56604,7 @@ iTW
 auG
 gat
 gsZ
-uWO
+afB
 uWO
 uWO
 jVa
@@ -56404,20 +56720,20 @@ max
 gxZ
 aFf
 sjd
-rzz
-nEq
-oPR
+afi
+afe
+afa
 utx
-tFx
+aeW
 cpy
 cpy
 cpy
 cpy
-tFx
-tFx
-tFx
-tFx
-tFx
+aeW
+aeW
+aeW
+aeW
+aeW
 cpy
 cpy
 cpy
@@ -56491,11 +56807,11 @@ eJZ
 tiQ
 vtc
 vtc
-iod
-gat
-gsZ
-uWO
-uWO
+afO
+afM
+afE
+afB
+afB
 uWO
 jVa
 uWO
@@ -56608,13 +56924,13 @@ max
 max
 max
 gxZ
-tFx
-tFx
+aeW
+aeW
 sIE
 tmL
 ufS
-tFx
-tFx
+aeW
+aeW
 cpy
 fnA
 veQ
@@ -56700,8 +57016,8 @@ vtc
 iod
 gat
 gsZ
-uWO
-uWO
+afB
+afB
 uWO
 jVa
 uWO
@@ -56815,11 +57131,11 @@ max
 max
 gXH
 tXZ
-tFx
+aeW
 rIM
 rIM
 rIM
-tFx
+aeW
 akj
 pHA
 xVV
@@ -56906,7 +57222,7 @@ ePK
 auG
 gat
 gsZ
-uWO
+afB
 uWO
 uWO
 jVa
@@ -57112,7 +57428,7 @@ fmv
 auG
 adZ
 gsZ
-uWO
+afB
 uWO
 uWO
 jVa
@@ -57318,9 +57634,9 @@ fol
 auG
 gat
 gsZ
+afD
 uWO
-uWO
-uWO
+afz
 jVa
 wbt
 wbt
@@ -57524,11 +57840,11 @@ foO
 fFS
 gdJ
 gqG
-uWO
+afD
 uWO
 uWO
 jVa
-wbt
+afy
 wbt
 bry
 pJb
@@ -57730,7 +58046,7 @@ fol
 auG
 gat
 gsZ
-uWO
+afD
 uWO
 uWO
 jVa
@@ -57936,7 +58252,7 @@ fol
 aec
 gbQ
 gsZ
-uWO
+afD
 uWO
 uWO
 jVa
@@ -58142,8 +58458,8 @@ fol
 fGh
 fYP
 gsZ
-uWO
-uWO
+afB
+afB
 uWO
 adC
 wbt
@@ -58348,8 +58664,8 @@ ePK
 fGH
 bcU
 gsZ
-uWO
-uWO
+afB
+afB
 uWO
 jVa
 rWS
@@ -58551,10 +58867,10 @@ tiQ
 tiQ
 tiQ
 vtc
-uSo
+afP
 gdX
 gtX
-uWO
+afB
 uWO
 uWO
 jVa
@@ -58758,11 +59074,11 @@ tiQ
 vtc
 vtc
 fGN
+afD
+afF
+afB
 uWO
-hRu
-uWO
-uWO
-uWO
+afz
 ien
 wbt
 wbt
@@ -59377,7 +59693,7 @@ tiQ
 vtc
 fIe
 uWO
-hRu
+afG
 uWO
 uWO
 wbt
@@ -63286,7 +63602,7 @@ dXX
 saC
 saC
 saC
-aeH
+afN
 iAv
 mEG
 alx
@@ -63491,9 +63807,9 @@ dXX
 saC
 saC
 saC
-wBR
-aeH
-iAv
+afT
+afN
+afH
 fsV
 fLA
 oVO
@@ -64111,7 +64427,7 @@ saC
 oXk
 wBR
 aeH
-rKS
+afQ
 fuf
 qqJ
 gfu
@@ -64320,8 +64636,8 @@ xXV
 aeH
 rKS
 rKS
-iAv
-iAv
+afH
+afH
 iAv
 iAv
 rqE
@@ -64526,8 +64842,8 @@ eUs
 xXV
 aeH
 rvg
-aeH
-iAv
+afN
+afH
 iAv
 iAv
 rqE
@@ -65149,15 +65465,15 @@ xXV
 saC
 saC
 saC
-oUq
-oUq
+afo
+afo
 oUq
 isF
 isF
-oUq
-oUq
-oUq
-oUq
+afo
+afo
+afo
+afo
 oUq
 oUq
 oUq
@@ -65354,16 +65670,16 @@ abf
 aba
 saC
 saC
-oUq
-oUq
-oUq
-oUq
-pNc
+afo
+afo
+afo
+afo
+afx
 iWy
-tnN
-tnN
-tnN
-oUq
+afw
+afw
+afw
+afo
 tnN
 ksf
 kEL
@@ -65560,8 +65876,8 @@ yaw
 yaw
 saC
 saC
-oUq
-oUq
+afo
+afo
 hJB
 uQF
 iti
@@ -65775,7 +66091,7 @@ vBI
 vBI
 vBI
 pRh
-qQN
+afu
 kmP
 vBI
 vBI
@@ -65981,7 +66297,7 @@ wfK
 wfK
 wfK
 pYP
-ixD
+afv
 xnk
 wfK
 wfK
@@ -66393,7 +66709,7 @@ ixs
 lxN
 tnN
 tmC
-oUq
+afo
 xQq
 saC
 saC
@@ -67013,8 +67329,8 @@ oUq
 yjp
 yjp
 yjp
-yjp
-yjp
+afm
+afm
 yjp
 oUq
 oUq
@@ -68249,7 +68565,7 @@ oUq
 oUq
 oUq
 oUq
-oUq
+afo
 yjp
 sOe
 nzt
@@ -68660,8 +68976,8 @@ jwT
 jFG
 xZE
 xZE
-xZE
-aeC
+afs
+afq
 men
 wrC
 kZe
@@ -68866,8 +69182,8 @@ xLi
 nMC
 nNi
 kco
-xZE
-aeC
+afs
+afq
 xZE
 wrC
 wrC
@@ -69072,7 +69388,7 @@ nGU
 nMT
 nOg
 kdf
-xZE
+afs
 aeC
 xZE
 xZE
@@ -69153,7 +69469,7 @@ yhi
 vNi
 nNA
 mtM
-rqA
+afk
 gXc
 yhi
 wiE
@@ -69278,7 +69594,7 @@ qjG
 nNf
 yld
 kdL
-xZE
+afs
 aeC
 dHF
 dHF
@@ -69484,7 +69800,7 @@ jwV
 nNf
 yld
 kel
-xZE
+afs
 aeC
 vGp
 qSH
@@ -69690,7 +70006,7 @@ jBr
 jJa
 jWZ
 yaC
-xZE
+afs
 aeC
 spy
 qnS
@@ -69896,7 +70212,7 @@ oiW
 faK
 fwo
 hQU
-xZE
+afs
 aeC
 nQQ
 qSH
@@ -70102,7 +70418,7 @@ oiW
 faZ
 jXp
 jlh
-xZE
+afs
 aeC
 jGa
 qSH
@@ -70308,7 +70624,7 @@ oiW
 faZ
 jYj
 tiQ
-xZE
+afs
 aeC
 xZE
 qSH
@@ -70514,7 +70830,7 @@ qjG
 faZ
 yaC
 kgb
-xZE
+afs
 aeC
 kKD
 qSH
@@ -70720,7 +71036,7 @@ qjG
 jJj
 jYu
 kdf
-xZE
+afs
 aeC
 jOw
 qSH
@@ -70926,7 +71242,7 @@ xsE
 jJa
 kaQ
 sfc
-xZE
+afs
 aeC
 xZE
 qSH
@@ -71132,7 +71448,7 @@ jCb
 nNf
 yld
 yaC
-xZE
+afs
 aeC
 kdx
 vGp
@@ -71338,7 +71654,7 @@ jCb
 nNf
 qjG
 kgm
-xZE
+afs
 aeC
 svK
 sRI
@@ -71544,7 +71860,7 @@ jCc
 jJI
 fwo
 khG
-xZE
+afs
 aeC
 xZE
 isa
@@ -71750,7 +72066,7 @@ jCq
 hSO
 yaC
 kiT
-xZE
+afs
 aeC
 iel
 svK
@@ -71955,8 +72271,8 @@ xZE
 xZE
 xZE
 xZE
-xZE
-xZE
+afs
+afs
 aeC
 sRI
 vGp
@@ -72161,8 +72477,8 @@ xZE
 xZE
 xZE
 xZE
-xZE
-xZE
+afs
+afs
 aeC
 xZE
 isa
@@ -72366,8 +72682,8 @@ xZE
 xZE
 xZE
 xZE
-xZE
-xZE
+afs
+afs
 xZE
 aeC
 tNQ
@@ -72571,7 +72887,7 @@ xZE
 xZE
 xZE
 aeE
-aeC
+afq
 aeC
 aeC
 aeC
@@ -72776,8 +73092,8 @@ aaK
 xZE
 xZE
 xZE
-aeC
-xZE
+afq
+afs
 wDj
 wDj
 wDj
@@ -72981,7 +73297,7 @@ yld
 yaC
 xZE
 xZE
-xZE
+afs
 aeC
 wDj
 nJV
@@ -73186,8 +73502,8 @@ aaS
 yld
 yaC
 xZE
-xZE
-xZE
+afs
+afs
 aeC
 wDj
 aJS
@@ -73391,8 +73707,8 @@ oiW
 oiW
 yld
 yaC
-xZE
-xZE
+afs
+afs
 xZE
 aeC
 wDj
@@ -73597,7 +73913,7 @@ oiW
 fwj
 fwo
 hTd
-xZE
+afs
 xZE
 alI
 alI
@@ -73803,7 +74119,7 @@ aaS
 yld
 saC
 saC
-xZE
+afs
 alI
 alI
 gib
@@ -74624,8 +74940,8 @@ aaQ
 aaR
 aaR
 aaQ
-xZE
-xZE
+afs
+afs
 xZE
 xZE
 xZE
@@ -74831,7 +75147,7 @@ oiW
 oiW
 dmE
 xZE
-xZE
+afs
 cpy
 cpy
 cpy
@@ -75690,7 +76006,7 @@ waZ
 pVo
 wGY
 hJG
-mEz
+afl
 iwt
 anM
 jUn
@@ -76884,10 +77200,10 @@ cpy
 cpy
 acG
 acG
-acG
-acG
-acG
-acG
+afJ
+afJ
+afJ
+afJ
 acG
 fPc
 ien
@@ -77088,14 +77404,14 @@ cpy
 cpy
 cpy
 ien
-cDO
-lBM
+afS
+afR
 lBM
 pvZ
 pvZ
 nEh
-pvZ
-pvZ
+afC
+afC
 xNk
 ien
 cpy
@@ -78048,9 +78364,9 @@ eXG
 viu
 leU
 pfk
-hIf
-hIf
-hIf
+aeT
+aeT
+aeT
 vuL
 leU
 qQa
@@ -78253,12 +78569,12 @@ viu
 leU
 xat
 lfA
-rVR
-hIf
+aeX
+aeT
 rqn
-iGr
-iGr
-gRp
+aeU
+aeU
+aeV
 oSk
 leU
 qQa
@@ -78269,9 +78585,9 @@ eXG
 eXG
 eXG
 eXG
-jjG
-eXG
-eXG
+aeP
+aeO
+aeO
 cpy
 cpy
 bMX
@@ -78456,25 +78772,25 @@ tos
 dhH
 viu
 xat
-gRp
-iGr
-iGr
-uIn
+aeV
+aeU
+aeU
+aeY
 acT
 rqn
 qvA
 lhE
-iGr
-iGr
-hIf
+aeU
+aeU
+aeT
 oSk
 qQa
 eXG
 eXG
 eXG
-eXG
-eXG
-eXG
+aeO
+aeO
+aeO
 jjG
 eXG
 eXG
@@ -78661,7 +78977,7 @@ vDo
 hVH
 qCM
 xat
-hIf
+aeT
 jLk
 jMy
 qGI
@@ -78674,10 +78990,10 @@ kBj
 dIi
 vjF
 vjF
-oSk
-leU
-qQa
-eXG
+aeS
+aeR
+aeQ
+aeO
 eXG
 eXG
 eXG
@@ -78865,9 +79181,9 @@ ien
 ien
 ien
 ien
-hIf
-hIf
-hIf
+aeT
+aeT
+aeT
 wEo
 pXu
 kiY
@@ -80096,7 +80412,7 @@ vpp
 vpp
 snX
 snX
-qvA
+afb
 rVR
 qle
 aIp
@@ -80506,7 +80822,7 @@ lHH
 lHH
 lHH
 rew
-rOb
+afj
 pme
 vpp
 hIf
@@ -80713,7 +81029,7 @@ rZL
 lHH
 piD
 piD
-fOX
+afg
 vPb
 wDa
 vJr
@@ -80918,7 +81234,7 @@ lHH
 eSQ
 tZP
 rZL
-fOX
+afg
 uGO
 vpp
 hIf
@@ -81123,7 +81439,7 @@ pWx
 vdx
 dkJ
 lVA
-fOX
+afg
 mjE
 snX
 snX
@@ -81744,7 +82060,7 @@ uwT
 cpy
 cpy
 cpy
-bQm
+afc
 jLo
 hIf
 sTR

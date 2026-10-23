@@ -146,6 +146,9 @@ export const WeaponMfdPanel = (props: MfdProps) => {
   const { data, act } = useBackend<EquipmentContext>();
   const { targetOffset, setTargetOffset } = useTargetOffset(props.panelStateId);
   const weap = data.equipment_data.find((x) => x.mount_point === weaponState);
+  const targetingSystem = data.equipment_data.find(
+    (equipment) => equipment.shorthand === 'Targeting',
+  );
   const targets = range(targetOffset, targetOffset + 5).map((x) =>
     lazeMapper(x),
   );
@@ -181,7 +184,18 @@ export const WeaponMfdPanel = (props: MfdProps) => {
       ]}
       topButtons={[
         { children: 'EQUIP', onClick: () => setPanelState('equipment') },
-        {},
+        targetingSystem
+          ? {
+              children: 'WTS',
+              borderColor: targetingSystem.data?.enabled
+                ? '#ff0000'
+                : undefined,
+              onClick: () =>
+                act('deploy-equipment', {
+                  equipment_id: targetingSystem.mount_point,
+                }),
+            }
+          : {},
         {},
         {},
         {

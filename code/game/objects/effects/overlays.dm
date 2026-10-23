@@ -230,48 +230,148 @@
 /obj/effect/overlay/temp/ob_impact
 	name = "ob impact animation"
 	effect_duration = 12
-	var/atom/shell
 	var/size_mod = 1
 
 /obj/effect/overlay/temp/ob_impact/Initialize(mapload, atom/owner, size)
 	. = ..()
-	if (!owner)
+	if(!owner)
 		log_debug("Created a [type] without `owner`")
-		qdel(src)
-		return
-	shell = owner
+		return INITIALIZE_HINT_QDEL
 	size_mod = size
-	appearance = shell.appearance
-	transform = matrix().Turn(-90)
-	transform *= size_mod
+	appearance = owner.appearance
+	var/matrix/shell_transform = matrix().Turn(-90)
+	shell_transform *= size_mod
+	apply_transform(shell_transform)
 	add_filter("motionblur", 1, motion_blur_filter(x = 5, y = 0)) //either im stupid and dont know what its supposed to look like or it needs to be x because it got rotated
 	layer = initial(layer)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	pixel_y = 6000
-	animate(src, pixel_y = -100, time=10)
-	animate(icon_state=null, icon=null, time=2) // to vanish it immediately
+	animate(src, pixel_y = -100, time= 1 SECONDS)
+	animate(icon_state=null, icon=null, time= 0.2 SECONDS) // to vanish it immediately
 
 //same as above but for mortar shells
 /obj/effect/overlay/temp/mortar_impact
 	name = "mortar impact animation"
 	effect_duration = 22
-	var/atom/shell
 
 /obj/effect/overlay/temp/mortar_impact/Initialize(mapload, atom/owner)
 	. = ..()
-	if (!owner)
+	if(!owner)
 		log_debug("Created a [type] without `owner`")
-		qdel(src)
-		return
-	shell = owner
-	appearance = shell.appearance
-	transform = matrix().Turn(-180)
+		return INITIALIZE_HINT_QDEL
+	appearance = owner.appearance
+	apply_transform(matrix().Turn(-180))
 	add_filter("motionblur", 1, motion_blur_filter(x = 0, y = 1))
 	layer = initial(layer)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	pixel_y = 3000
-	animate(src, pixel_y = -50, time=2 SECONDS)
-	animate(icon_state=null, icon=null, time=2) // to vanish it immediately
+	animate(src, pixel_y = -50, time = 2 SECONDS)
+	animate(icon_state = null, icon = null, time = 0.2 SECONDS)
+
+/// Falling projectile animation for CAS missiles.
+/obj/effect/overlay/temp/cas_rocket_impact
+	name = "cas rocket impact animation"
+	effect_duration = 1.8 SECONDS
+	light_system = MOVABLE_LIGHT
+	light_range = 1.5
+	light_power = 0.5
+	light_color = LIGHT_COLOR_FIRE
+	light_on = TRUE
+	var/size_multiplier = 1.2
+
+/obj/effect/overlay/temp/cas_rocket_impact/Initialize(mapload, atom/owner, rocket_size = 1.2)
+	. = ..()
+	if(!owner)
+		log_debug("Created a [type] without `owner`")
+		return INITIALIZE_HINT_QDEL
+	size_multiplier = rocket_size
+	icon = owner.icon
+	icon_state = "[initial(owner.icon_state)]_proj"
+	var/matrix/rocket_transform = matrix().Turn(90)
+	rocket_transform *= size_multiplier
+	apply_transform(rocket_transform)
+	var/datum/component/overlay_lighting/projectile_light = GetComponent(/datum/component/overlay_lighting)
+	projectile_light.set_pixel_offset(16, 16)
+	add_filter("motionblur", 1, motion_blur_filter(x = 2, y = 0))
+	layer = initial(layer)
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	pixel_x = -16
+	pixel_y = 4000
+	animate(src, pixel_y = 0, time = 1 SECONDS)
+	animate(icon_state = null, icon = null, time = 0.2 SECONDS)
+
+/// Falling projectile animation for CAS minirockets.
+/obj/effect/overlay/temp/cas_minirocket_impact
+	name = "cas minirocket impact animation"
+	effect_duration = 1.5 SECONDS
+	light_system = MOVABLE_LIGHT
+	light_range = 1
+	light_power = 0.5
+	light_color = LIGHT_COLOR_FIRE
+	light_on = TRUE
+
+/obj/effect/overlay/temp/cas_minirocket_impact/Initialize(mapload, atom/owner)
+	. = ..()
+	if(!owner)
+		log_debug("Created a [type] without `owner`")
+		return INITIALIZE_HINT_QDEL
+	icon = owner.icon
+	icon_state = "[initial(owner.icon_state)]_proj"
+	var/matrix/minirocket_transform = matrix().Turn(90)
+	minirocket_transform *= 0.8
+	apply_transform(minirocket_transform)
+	add_filter("motionblur", 1, motion_blur_filter(x = 1, y = 0))
+	layer = initial(layer)
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	pixel_y = 4000
+	animate(src, pixel_y = 0, time = 0.8 SECONDS)
+	animate(icon_state = null, icon = null, time = 0.2 SECONDS)
+
+/// Falling projectile animation for GAU rounds.
+/obj/effect/overlay/temp/cas_cannon_impact
+	name = "cas cannon impact animation"
+	effect_duration = 1.2 SECONDS
+
+/obj/effect/overlay/temp/cas_cannon_impact/Initialize(mapload, atom/owner)
+	. = ..()
+	if(!owner)
+		log_debug("Created a [type] without `owner`")
+		return INITIALIZE_HINT_QDEL
+	icon = owner.icon
+	icon_state = "[initial(owner.icon_state)]_proj"
+	var/matrix/cannon_transform = matrix().Turn(-180)
+	cannon_transform *= 1.2
+	apply_transform(cannon_transform)
+	add_filter("motionblur", 1, motion_blur_filter(x = 0, y = 1))
+	layer = initial(layer)
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	pixel_y = 4000
+	animate(src, pixel_y = 0, time = 0.8 SECONDS)
+	animate(icon_state = null, icon = null, time = 0.2 SECONDS)
+
+/// Falling projectile animation for cluster bombs.
+/obj/effect/overlay/temp/cas_cluster_impact
+	name = "cas cluster impact animation"
+	effect_duration = 1.8 SECONDS
+	var/size_multiplier = 1.5
+
+/obj/effect/overlay/temp/cas_cluster_impact/Initialize(mapload, atom/owner, bomb_size = 1.3)
+	. = ..()
+	if(!owner)
+		log_debug("Created a [type] without `owner`")
+		return INITIALIZE_HINT_QDEL
+	size_multiplier = bomb_size
+	icon = owner.icon
+	icon_state = "[initial(owner.icon_state)]_mini"
+	var/matrix/bomb_transform = matrix()
+	bomb_transform *= size_multiplier
+	apply_transform(bomb_transform)
+	layer = initial(layer)
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	pixel_x = -16
+	pixel_y = 2000
+	animate(src, pixel_y = 0, time = 1 SECONDS)
+	animate(icon_state = null, icon = null, time = 0.2 SECONDS)
 
 /obj/effect/overlay/temp/emp_sparks
 	icon = 'icons/effects/effects.dmi'

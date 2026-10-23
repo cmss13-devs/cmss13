@@ -93,11 +93,12 @@
 	lockdown_door(air)
 
 /obj/docking_port/mobile/emergency_response/proc/lockdown_door(obj/structure/machinery/door/airlock/air)
-	air.safe = 0
-	air.unlock()
-	air.close()
-	air.lock()
-	air.safe = 1
+	var/old_safe = air.safe
+	air.safe = FALSE
+	air.unlock(TRUE)
+	air.close(TRUE)
+	air.lock(TRUE)
+	air.safe = old_safe
 
 /obj/docking_port/mobile/emergency_response/proc/on_dir_change(datum/source, old_dir, new_dir)
 	SIGNAL_HANDLER

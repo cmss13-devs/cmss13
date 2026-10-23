@@ -462,7 +462,7 @@
 		new_order.approvedby = MAIN_AI_SYSTEM
 		GLOB.supply_controller.shoppinglist += new_order
 		for(var/obj/structure/machinery/medical_pod/autodoc/target in GLOB.machines)
-			if(is_mainship_level(target.z))
+			if(is_mainship_level(target.z) || istype(get_area(target), /area/forward_base))
 				target.skilllock = SKILL_SURGERY_DEFAULT // lowers skill-lock to 0
 		ai_silent_announcement("WARNING: Cryopod release cycle DELAYED for MEDICAL PERSONNEL. Releasing Emergency Override Disks for AUTODOC Systems.", ".G")
 		return log_admin("No Shipside Doctor found = Autodoc Upgrade Supplies ordered and AutoDoc skill locks released.")

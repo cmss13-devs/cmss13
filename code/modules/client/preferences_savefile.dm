@@ -368,6 +368,7 @@
 	skip_playtime_ranks = savefile.tree["skip_playtime_ranks"]
 	show_queen_name = savefile.tree["show_queen_name"]
 	show_minimap_ceiling_protection = savefile.tree["show_minimap_ceiling_protection"]
+	minimap_opacity = savefile.tree["minimap_opacity"]
 	xeno_vision_level_pref = savefile.tree["xeno_vision_level_pref"]
 	xeno_defensive_grab_pref = savefile.tree["xeno_defensive_grab_pref"]
 	View_MC = savefile.tree["view_controller"]
@@ -544,6 +545,7 @@
 	skip_playtime_ranks = sanitize_integer(skip_playtime_ranks, 0, 1, 1)
 	show_queen_name = sanitize_integer(show_queen_name, FALSE, TRUE, FALSE)
 	show_minimap_ceiling_protection = sanitize_integer(show_minimap_ceiling_protection, FALSE, TRUE, FALSE)
+	minimap_opacity = sanitize_integer(minimap_opacity, 20, 100, 100)
 	xeno_vision_level_pref = sanitize_inlist(xeno_vision_level_pref, list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_HIGH_NVG, XENO_VISION_LEVEL_FULL_NVG), XENO_VISION_LEVEL_MID_NVG)
 	xeno_defensive_grab_pref = sanitize_islist(xeno_defensive_grab_pref, alist())
 	hear_vox = sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
@@ -681,6 +683,7 @@
 	savefile.tree["skip_playtime_ranks"] = skip_playtime_ranks
 	savefile.tree["show_queen_name"] = show_queen_name
 	savefile.tree["show_minimap_ceiling_protection"] = show_minimap_ceiling_protection
+	savefile.tree["minimap_opacity"] = minimap_opacity
 
 	savefile.tree["view_controller"] = View_MC
 	savefile.tree["observer_huds"] = observer_huds

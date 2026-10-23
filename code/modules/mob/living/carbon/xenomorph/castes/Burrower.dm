@@ -398,7 +398,7 @@
 		msg = "[msg] ([get_area_name(tunnelobj)])"
 		log_admin("[key_name(xenomorph)] has named a new tunnel \"[msg]\".")
 		msg_admin_niche("[xenomorph]/([key_name(xenomorph)]) has named a new tunnel \"[msg]\".")
-		tunnelobj.tunnel_desc = "[msg]"
+		tunnelobj.set_tunnel_desc("[msg]", description)
 
 	if(xenomorph.hive.living_xeno_queen || xenomorph.hive.allow_no_queen_actions)
 		for(var/mob/living/carbon/xenomorph/target_for_message as anything in xenomorph.hive.totalXenos)

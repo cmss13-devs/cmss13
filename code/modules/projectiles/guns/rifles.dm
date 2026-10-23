@@ -137,6 +137,7 @@
 /obj/item/weapon/gun/rifle/m41a/army
 	starting_attachment_types = list(/obj/item/attachable/reddot, /obj/item/attachable/attached_gun/grenade, /obj/item/attachable/stock/rifle/collapsible)
 
+
 /obj/item/weapon/gun/rifle/m41a/army/full
 	current_mag = /obj/item/ammo_magazine/rifle/heap
 

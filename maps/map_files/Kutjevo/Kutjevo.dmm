@@ -1865,12 +1865,15 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_pad)
-"ahd" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "cave_hold"
-	},
+"ahe" = (
 /turf/closed/wall/kutjevo/rock,
-/area/kutjevo/interior/oob)
+/area/kutjevo/interior/colony_central)
+"ahf" = (
+/turf/closed/wall/kutjevo/rock,
+/area/kutjevo/interior/colony_northeast)
+"ahg" = (
+/turf/closed/wall/kutjevo/rock,
+/area/kutjevo/interior/colony_north)
 "ahp" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -8506,11 +8509,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/kutjevo/multi_tiles/southwest,
 /area/kutjevo/interior/oob)
-"kFx" = (
-/obj/structure/platform/stone/kutjevo,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/colony_north)
 "kFF" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
@@ -45703,8 +45701,8 @@ dxF
 dxF
 dxF
 dxF
-wTt
-ahd
+ahg
+dxF
 dxF
 dxF
 dxF
@@ -45869,9 +45867,9 @@ dxF
 dxF
 dxF
 dxF
-wTt
-wTt
-bEH
+ahg
+ahg
+ahg
 dxF
 dxF
 dxF
@@ -46034,11 +46032,11 @@ dxF
 dxF
 dxF
 dxF
-bEH
-bEH
-wTt
-wTt
-bEH
+ahg
+ahg
+ahg
+ahg
+ahg
 dxF
 dxF
 dxF
@@ -46195,16 +46193,16 @@ bkR
 bkR
 wTt
 dxF
-wTt
-kFx
+ahg
+ahg
 dxF
-wTt
-wTt
-wTt
-wTt
-jBX
-wTt
-bEH
+ahg
+ahg
+ahg
+ahg
+ahg
+ahg
+ahg
 dxF
 dxF
 dxF
@@ -46360,18 +46358,18 @@ wQg
 bkR
 hSU
 bkR
-wTt
-wTt
-wTt
 gGz
 pxl
-wTt
-wTt
-wTt
-bEH
-wTt
-wTt
-bEH
+ahg
+ahg
+ahg
+ahg
+ahg
+ahg
+ahg
+ahg
+ahg
+ahg
 dxF
 dxF
 dxF
@@ -46535,10 +46533,10 @@ dxF
 dxF
 dxF
 dxF
-bEH
-wTt
-bEH
-bEH
+ahg
+ahg
+ahg
+ahg
 dxF
 dxF
 dxF
@@ -46705,7 +46703,7 @@ dxF
 dxF
 dxF
 dxF
-wTt
+ahg
 dxF
 dxF
 dxF
@@ -46872,7 +46870,7 @@ dxF
 dxF
 dxF
 dxF
-wTt
+ahg
 dxF
 dxF
 dxF
@@ -46897,8 +46895,8 @@ dxF
 dxF
 dxF
 dxF
-nlv
-uiK
+ahe
+ahe
 ipD
 ehq
 uwI
@@ -46913,7 +46911,7 @@ mnT
 uiK
 pLI
 xqQ
-uiK
+ahe
 dxF
 dxF
 dxF
@@ -47039,8 +47037,8 @@ dxF
 dxF
 dxF
 dxF
-wTt
-jBX
+ahg
+ahg
 dxF
 dxF
 dxF
@@ -47063,9 +47061,9 @@ dxF
 dxF
 dxF
 dxF
-nlv
-uiK
-uiK
+ahe
+ahe
+ahe
 dxF
 dxF
 dxF
@@ -47079,8 +47077,8 @@ uiK
 dxF
 dxF
 dxF
-uiK
-nlv
+ahe
+ahe
 dxF
 dxF
 dxF
@@ -47206,8 +47204,8 @@ dxF
 dxF
 dxF
 dxF
-wTt
-wTt
+ahg
+ahg
 dxF
 dxF
 dxF
@@ -47230,8 +47228,8 @@ dxF
 dxF
 dxF
 dxF
-nlv
-uiK
+ahe
+ahe
 dxF
 dxF
 dxF
@@ -47247,8 +47245,8 @@ dxF
 dxF
 dxF
 dxF
-uiK
-nlv
+ahe
+ahe
 dxF
 dxF
 dxF
@@ -47398,7 +47396,7 @@ dxF
 dxF
 dxF
 dxF
-uiK
+ahe
 dxF
 dxF
 dxF
@@ -47414,8 +47412,8 @@ dxF
 dxF
 dxF
 dxF
-nlv
-uiK
+ahe
+ahe
 dxF
 dxF
 dxF
@@ -47581,8 +47579,8 @@ dxF
 dxF
 dxF
 dxF
-uiK
-uiK
+ahe
+ahe
 dxF
 dxF
 uiK
@@ -50570,7 +50568,7 @@ dxF
 dxF
 dxF
 dxF
-kZz
+ahf
 aeE
 kZz
 nlv
@@ -50736,8 +50734,8 @@ dxF
 dxF
 dxF
 dxF
-kZz
-kZz
+ahf
+ahf
 dxF
 dxF
 nlv
@@ -50903,8 +50901,8 @@ dxF
 dxF
 dxF
 dxF
-kZz
-kZz
+ahf
+ahf
 dxF
 dxF
 dxF
@@ -51068,10 +51066,10 @@ kZz
 dxF
 dxF
 dxF
-kZz
-kZz
-kZz
-kZz
+ahf
+ahf
+ahf
+ahf
 dxF
 dxF
 dxF
@@ -51235,8 +51233,8 @@ kZz
 dxF
 dxF
 dxF
-kZz
-sNZ
+ahf
+ahf
 dxF
 dxF
 dxF
@@ -51402,7 +51400,7 @@ dxF
 dxF
 dxF
 dxF
-sNZ
+ahf
 dxF
 dxF
 dxF
@@ -51565,12 +51563,12 @@ bsl
 jQo
 bsl
 bsl
-kZz
-kZz
 oYz
-kZz
-kZz
-sNZ
+ahf
+ahf
+ahf
+ahf
+ahf
 dxF
 dxF
 dxF
@@ -51732,11 +51730,11 @@ bsl
 bsl
 bsl
 bsl
-kZz
-kZz
 oYs
 drg
-kZz
+ahf
+ahf
+ahf
 dxF
 dxF
 dxF
@@ -52407,8 +52405,8 @@ dxF
 dxF
 dxF
 dxF
-bsl
-sNZ
+ahf
+ahf
 dxF
 dxF
 dxF
@@ -52573,11 +52571,11 @@ dxF
 dxF
 dxF
 dxF
-bsl
-kZz
-kZz
-kZz
-kZz
+ahf
+ahf
+ahf
+ahf
+ahf
 dxF
 dxF
 dxF
@@ -52740,7 +52738,7 @@ dxF
 dxF
 dxF
 dxF
-kZz
+ahf
 dxF
 dxF
 dxF
@@ -52907,7 +52905,7 @@ dxF
 dxF
 dxF
 dxF
-kZz
+ahf
 dxF
 dxF
 dxF

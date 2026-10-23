@@ -28,7 +28,7 @@
 	flags_ammo_behavior = AMMO_XENO|AMMO_IGNORE_RESIST|AMMO_SKIPS_ALIENS
 	spit_cost = 25
 	var/effect_power = XENO_NEURO_TIER_4
-	var/drain_power = 2
+	var/drain_power = 1
 	var/increment_amount = 5
 	var/datum/callback/neuro_callback
 
@@ -58,19 +58,15 @@
 	if(!apply_effect)
 		return
 
-	if(!apply_effect)
-		return
-
 	if(!isxeno(M))
 		if(insta_neuro)
 			if(M.GetKnockDownDuration() < 3) // Why are you not using KnockDown(3) ? Do you even know 3 is SIX seconds ? So many questions left unanswered.
 				M.KnockDown(power)
 				M.Stun(power)
 				return
-
-		if(ishuman(M))
-			M.apply_effect(4, SUPERSLOW)
-			M.visible_message(SPAN_DANGER("[M]'s movements are slowed."))
+			if(ishuman(M))
+				M.apply_effect(4, SUPERSLOW)
+				M.visible_message(SPAN_DANGER("[M]'s movements are slowed."))
 
 		var/no_clothes_neuro = FALSE
 
@@ -99,7 +95,7 @@
 		M.Stun(0.7)
 		M.visible_message(SPAN_DANGER("[M] falls prone."))
 
-/datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/projectile/P)
+/datum/ammo/xeno/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	if(ishuman(M))
 		var/mob/living/carbon/human/human = M
 		if(human.status_flags & XENO_HOST)
@@ -112,6 +108,7 @@
 
 		if (!sns)
 			sns = new /datum/effects/sentinel_neuro_stacks(human)
+
 		sns.increment_stack_count(increment_amount)
 
 	neuro_callback.Invoke(M, effect_power, drain_power, FALSE, TRUE, TRUE)
@@ -131,7 +128,7 @@
 	drain_power = 4
 
 	accuracy = HIT_ACCURACY_TIER_5*2
-	max_range = 6 - 1
+	max_range = 5
 
 /datum/ammo/xeno/toxin/queen/on_hit_mob(mob/M,obj/projectile/P)
 	neuro_callback.Invoke(M, effect_power, drain_power, TRUE, TRUE, FALSE)

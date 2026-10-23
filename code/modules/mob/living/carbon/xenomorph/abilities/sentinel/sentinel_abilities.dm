@@ -34,9 +34,10 @@
 /datum/action/xeno_action/activable/tail_stab/sentinel
 	name = "Catalytic Shock Tailstab"
 	damage_multiplier = 1
-	var/duration = 35
-	var/speed_buff_amount = 0.8 // Go from shit slow to kindafast
-	var/armor_buff_amount = 25 // hopefully-minor buff so they can close the distance
+	var/duration = 40
+	var/minimal_speed_buff_amount = 0.2 // Goes from despoiler and becomes faster than lurker / slower than acid runner
+	var/minimal_armor_buff_amount = 15 //spitter level
+	var/plasma_gain = 100
 
 /datum/action/xeno_action/activable/tail_stab/sentinel/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb)
 	. = ..()
@@ -50,18 +51,20 @@
 	if(!sns)
 		return
 	var/stacks = sns.stack_count
+	var/speed_buff_amount = max(minimal_speed_buff_amount, (stacks/5)/10) //[0.2; 0.6]
+	var/armor_buff_amount = max(minimal_armor_buff_amount, (stacks/6)*5) //[15; 25]
+	target.apply_armoured_damage(stacks, ARMOR_MELEE, BURN, limb ? limb.name : "chest") //not more than basic tail stab
+	stabbing_xeno.gain_plasma(stacks/sns.max_stacks * plasma_gain)
 	sns.increment_stack_count(-stacks/2)
-	target.apply_armoured_damage(stacks*1.2, ARMOR_MELEE, BURN, limb ? limb.name : "chest")
-	if(stacks < 10)
-		return
+
 	stabbing_xeno.speed_modifier -= speed_buff_amount
 	stabbing_xeno.armor_modifier += armor_buff_amount
 	stabbing_xeno.recalculate_speed()
 	stabbing_xeno.recalculate_armor()
-	addtimer(CALLBACK(src, PROC_REF(remove_effects)), duration)
+	addtimer(CALLBACK(src, PROC_REF(remove_effects), speed_buff_amount, armor_buff_amount), duration)
 	to_chat(stabbing_xeno, SPAN_XENOWARNING("We are slightly faster and more armored for a small amount of time."))
 
-/datum/action/xeno_action/activable/tail_stab/sentinel/proc/remove_effects()
+/datum/action/xeno_action/activable/tail_stab/sentinel/proc/remove_effects(speed_buff_amount, armor_buff_amount)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if (!istype(xeno))
 		return
@@ -70,7 +73,7 @@
 	xeno.armor_modifier -= armor_buff_amount
 	xeno.recalculate_speed()
 	xeno.recalculate_armor()
-	to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our movement speed slow down!"))
+	to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our movement speed slow down and chitin grow weaker!"))
 
 /datum/action/xeno_action/activable/draining_bite
 	name = "Draining bite"

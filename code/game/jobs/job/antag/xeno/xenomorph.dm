@@ -35,7 +35,7 @@
 	if(istype(xeno_spawn) && xeno_spawn.species)
 		human_to_transform.set_species(xeno_spawn.species)
 	else
-		var/list/survivor_types = SSmapping.configs[GROUND_MAP].survivor_types
+		var/list/survivor_types = SSmapping.configs[GROUND_MAP].get_relevant_survivor_types()
 		arm_equipment(human_to_transform, pick(survivor_types), FALSE, FALSE)
 
 	for(var/obj/item/device/radio/radio in human_to_transform.contents_recursive())

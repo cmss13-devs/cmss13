@@ -767,7 +767,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 
 			dat += "<div id='column2'>"
-			dat += "<h2><b><u>Survivor Settings:</u></b></h2>"
+			dat += "<h2><b><u>Survivor Settings<br>(Ignored on Survive Mode):</u></b></h2>"
 			dat += "<b>Spawn as Hostile:</b> <a href='byond://?_src_=prefs;preference=toggles_survivor;flag=[PLAY_SURVIVOR_HOSTILE]'><b>[toggles_survivor & PLAY_SURVIVOR_HOSTILE ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Non-Hostile:</b> <a href='byond://?_src_=prefs;preference=toggles_survivor;flag=[PLAY_SURVIVOR_NON_HOSTILE]'><b>[toggles_survivor & PLAY_SURVIVOR_NON_HOSTILE ? "Yes" : "No"]</b></a><br>"
 

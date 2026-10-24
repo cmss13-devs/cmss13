@@ -685,6 +685,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "acG" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/asphalt/cement/cement1,
 /area/lv522/atmos/filt)
 "acH" = (
@@ -1314,6 +1315,7 @@
 "aeB" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/closed/wall/strata_outpost/reinforced,
 /area/lv522/atmos/way_in_command_centre)
 "aeC" = (
@@ -1380,6 +1382,87 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/corpo/glass)
+"aeO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/static_comms/net_survivor,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/indoors/c_block/cargo)
+"aeP" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/static_comms/net_survivor,
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/admin)
+"aeQ" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/closed/wall/strata_outpost,
+/area/lv522/atmos/way_in_command_centre)
+"aeR" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/way_in_command_centre)
+"aeS" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/east_reactor/south)
+"aeT" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/east_reactor/south)
+"aeU" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/floor/prison,
+/area/lv522/atmos/way_in_command_centre)
+"aeV" = (
+/obj/structure/pipes/standard/manifold/fourway/hidden/green,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/floor/prison,
+/area/lv522/atmos/way_in_command_centre)
+"aeW" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/floor/shiva/radiator_tile2,
+/area/lv522/atmos/way_in_command_centre)
+"aeX" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/floor/prison/cell_stripe/west,
+/area/lv522/atmos/way_in_command_centre)
+"aeY" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/nw_rockies)
+"aeZ" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/nw_rockies)
+"afa" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/nw_rockies)
+"afb" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/containers)
+"afc" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/nw_rockies)
+"afd" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/asphalt/cement/cement12,
+/area/lv522/outdoors/nw_rockies)
+"afe" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/nw_rockies)
 "aff" = (
 /obj/structure/platform_decoration/metal/almayer/west,
 /obj/effect/decal/warning_stripes{
@@ -1390,10 +1473,53 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/garden)
+"afg" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/nw_rockies)
+"afh" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/reactor_garage)
+"afi" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/asphalt/cement/cement1,
+/area/lv522/atmos/filt)
+"afj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/nw_rockies)
+"afk" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/nw_rockies)
+"afl" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/floor/corsat,
+/area/lv522/atmos/cargo_intake)
+"afm" = (
+/obj/structure/largecrate/random,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/floor/prison/floor_marked,
+/area/lv522/outdoors/nw_rockies)
 "afn" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor)
+"afo" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/nw_rockies)
 "afp" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/head/hardhat/dblue{
@@ -1403,6 +1529,11 @@
 /obj/item/clothing/head/hardhat/white,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor)
+"afq" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/floor/corsat,
+/area/lv522/atmos/reactor_garage)
 "afr" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -1410,6 +1541,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/indoors/b_block/bridge)
+"afs" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/containers)
 "aft" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -1417,6 +1552,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/b_block/bridge)
+"afu" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/containers)
+"afv" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/floor/corsat/plate,
+/area/lv522/atmos/cargo_intake)
 "afA" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/prop/server_equipment/laptop/on{
@@ -10502,6 +10646,7 @@
 /area/lv522/indoors/a_block/kitchen)
 "fpn" = (
 /obj/structure/largecrate,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/outdoors/nw_rockies)
 "fpr" = (
@@ -11036,6 +11181,7 @@
 /area/lv522/outdoors/nw_rockies)
 "fGN" = (
 /obj/structure/largecrate,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/asphalt/cement/cement12,
 /area/lv522/outdoors/nw_rockies)
 "fGU" = (
@@ -11303,6 +11449,7 @@
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "fPc" = (
 /obj/structure/largecrate/random/barrel/true_random,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/asphalt/cement/cement1,
 /area/lv522/atmos/filt)
 "fPB" = (
@@ -14618,6 +14765,7 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/closed/wall/strata_outpost/reinforced,
 /area/lv522/atmos/way_in_command_centre)
 "hJG" = (
@@ -16911,6 +17059,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/floor/prison/cell_stripe/west,
 /area/lv522/atmos/way_in_command_centre)
 "iWz" = (
@@ -17139,6 +17288,7 @@
 /area/lv522/outdoors/colony_streets/containers)
 "jdf" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/static_comms/net_survivor,
 /obj/effect/landmark/static_comms/net_two,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/indoors/c_block/t_comm)
@@ -19107,6 +19257,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/atmos/way_in_command_centre)
 "kca" = (
@@ -22682,6 +22833,7 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "lUf" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/static_comms/net_survivor,
 /obj/effect/landmark/static_comms/net_one,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/indoors/lone_buildings/outdoor_bot)
@@ -31334,6 +31486,7 @@
 "qvJ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/static_comms/net_survivor,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/dorms)
 "qvM" = (
@@ -32825,6 +32978,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/atmos/way_in_command_centre)
 "raQ" = (
@@ -34244,6 +34398,7 @@
 /turf/open/floor/corsat/brown/west,
 /area/lv522/atmos/cargo_intake)
 "rKS" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/floor/corsat,
 /area/lv522/atmos/reactor_garage)
 "rKW" = (
@@ -55874,7 +56029,7 @@ tiQ
 tiQ
 vtc
 acH
-gat
+afj
 gsZ
 uWO
 uWO
@@ -56288,7 +56443,7 @@ iTW
 auG
 gat
 gsZ
-uWO
+afa
 uWO
 uWO
 jVa
@@ -56491,11 +56646,11 @@ eJZ
 tiQ
 vtc
 vtc
-iod
-gat
-gsZ
-uWO
-uWO
+afm
+afk
+afd
+afa
+afa
 uWO
 jVa
 uWO
@@ -56700,8 +56855,8 @@ vtc
 iod
 gat
 gsZ
-uWO
-uWO
+afa
+afa
 uWO
 jVa
 uWO
@@ -56906,7 +57061,7 @@ ePK
 auG
 gat
 gsZ
-uWO
+afa
 uWO
 uWO
 jVa
@@ -57112,7 +57267,7 @@ fmv
 auG
 adZ
 gsZ
-uWO
+afa
 uWO
 uWO
 jVa
@@ -57318,9 +57473,9 @@ fol
 auG
 gat
 gsZ
+afc
 uWO
-uWO
-uWO
+aeZ
 jVa
 wbt
 wbt
@@ -57524,11 +57679,11 @@ foO
 fFS
 gdJ
 gqG
-uWO
+afc
 uWO
 uWO
 jVa
-wbt
+aeY
 wbt
 bry
 pJb
@@ -57730,7 +57885,7 @@ fol
 auG
 gat
 gsZ
-uWO
+afc
 uWO
 uWO
 jVa
@@ -57936,7 +58091,7 @@ fol
 aec
 gbQ
 gsZ
-uWO
+afc
 uWO
 uWO
 jVa
@@ -58142,8 +58297,8 @@ fol
 fGh
 fYP
 gsZ
-uWO
-uWO
+afa
+afa
 uWO
 adC
 wbt
@@ -58348,8 +58503,8 @@ ePK
 fGH
 bcU
 gsZ
-uWO
-uWO
+afa
+afa
 uWO
 jVa
 rWS
@@ -58551,10 +58706,10 @@ tiQ
 tiQ
 tiQ
 vtc
-uSo
+afo
 gdX
 gtX
-uWO
+afa
 uWO
 uWO
 jVa
@@ -58758,11 +58913,11 @@ tiQ
 vtc
 vtc
 fGN
+afc
+afe
+afa
 uWO
-hRu
-uWO
-uWO
-uWO
+aeZ
 ien
 wbt
 wbt
@@ -59377,7 +59532,7 @@ tiQ
 vtc
 fIe
 uWO
-hRu
+afg
 uWO
 uWO
 wbt
@@ -63286,7 +63441,7 @@ dXX
 saC
 saC
 saC
-aeH
+afl
 iAv
 mEG
 alx
@@ -63491,9 +63646,9 @@ dXX
 saC
 saC
 saC
-wBR
-aeH
-iAv
+afv
+afl
+afh
 fsV
 fLA
 oVO
@@ -64111,7 +64266,7 @@ saC
 oXk
 wBR
 aeH
-rKS
+afq
 fuf
 qqJ
 gfu
@@ -64320,8 +64475,8 @@ xXV
 aeH
 rKS
 rKS
-iAv
-iAv
+afh
+afh
 iAv
 iAv
 rqE
@@ -64526,8 +64681,8 @@ eUs
 xXV
 aeH
 rvg
-aeH
-iAv
+afl
+afh
 iAv
 iAv
 rqE
@@ -65149,15 +65304,15 @@ xXV
 saC
 saC
 saC
-oUq
-oUq
+aeR
+aeR
 oUq
 isF
 isF
-oUq
-oUq
-oUq
-oUq
+aeR
+aeR
+aeR
+aeR
 oUq
 oUq
 oUq
@@ -65354,16 +65509,16 @@ abf
 aba
 saC
 saC
-oUq
-oUq
-oUq
-oUq
-pNc
+aeR
+aeR
+aeR
+aeR
+aeX
 iWy
-tnN
-tnN
-tnN
-oUq
+aeW
+aeW
+aeW
+aeR
 tnN
 ksf
 kEL
@@ -65560,8 +65715,8 @@ yaw
 yaw
 saC
 saC
-oUq
-oUq
+aeR
+aeR
 hJB
 uQF
 iti
@@ -65775,7 +65930,7 @@ vBI
 vBI
 vBI
 pRh
-qQN
+aeU
 kmP
 vBI
 vBI
@@ -65981,7 +66136,7 @@ wfK
 wfK
 wfK
 pYP
-ixD
+aeV
 xnk
 wfK
 wfK
@@ -66393,7 +66548,7 @@ ixs
 lxN
 tnN
 tmC
-oUq
+aeR
 xQq
 saC
 saC
@@ -67013,8 +67168,8 @@ oUq
 yjp
 yjp
 yjp
-yjp
-yjp
+aeQ
+aeQ
 yjp
 oUq
 oUq
@@ -68249,7 +68404,7 @@ oUq
 oUq
 oUq
 oUq
-oUq
+aeR
 yjp
 sOe
 nzt
@@ -68660,8 +68815,8 @@ jwT
 jFG
 xZE
 xZE
-xZE
-aeC
+aeT
+aeS
 men
 wrC
 kZe
@@ -68866,8 +69021,8 @@ xLi
 nMC
 nNi
 kco
-xZE
-aeC
+aeT
+aeS
 xZE
 wrC
 wrC
@@ -69072,7 +69227,7 @@ nGU
 nMT
 nOg
 kdf
-xZE
+aeT
 aeC
 xZE
 xZE
@@ -69153,7 +69308,7 @@ yhi
 vNi
 nNA
 mtM
-rqA
+aeO
 gXc
 yhi
 wiE
@@ -69278,7 +69433,7 @@ qjG
 nNf
 yld
 kdL
-xZE
+aeT
 aeC
 dHF
 dHF
@@ -69484,7 +69639,7 @@ jwV
 nNf
 yld
 kel
-xZE
+aeT
 aeC
 vGp
 qSH
@@ -69690,7 +69845,7 @@ jBr
 jJa
 jWZ
 yaC
-xZE
+aeT
 aeC
 spy
 qnS
@@ -69896,7 +70051,7 @@ oiW
 faK
 fwo
 hQU
-xZE
+aeT
 aeC
 nQQ
 qSH
@@ -70102,7 +70257,7 @@ oiW
 faZ
 jXp
 jlh
-xZE
+aeT
 aeC
 jGa
 qSH
@@ -70308,7 +70463,7 @@ oiW
 faZ
 jYj
 tiQ
-xZE
+aeT
 aeC
 xZE
 qSH
@@ -70514,7 +70669,7 @@ qjG
 faZ
 yaC
 kgb
-xZE
+aeT
 aeC
 kKD
 qSH
@@ -70720,7 +70875,7 @@ qjG
 jJj
 jYu
 kdf
-xZE
+aeT
 aeC
 jOw
 qSH
@@ -70926,7 +71081,7 @@ xsE
 jJa
 kaQ
 sfc
-xZE
+aeT
 aeC
 xZE
 qSH
@@ -71132,7 +71287,7 @@ jCb
 nNf
 yld
 yaC
-xZE
+aeT
 aeC
 kdx
 vGp
@@ -71338,7 +71493,7 @@ jCb
 nNf
 qjG
 kgm
-xZE
+aeT
 aeC
 svK
 sRI
@@ -71544,7 +71699,7 @@ jCc
 jJI
 fwo
 khG
-xZE
+aeT
 aeC
 xZE
 isa
@@ -71750,7 +71905,7 @@ jCq
 hSO
 yaC
 kiT
-xZE
+aeT
 aeC
 iel
 svK
@@ -71955,8 +72110,8 @@ xZE
 xZE
 xZE
 xZE
-xZE
-xZE
+aeT
+aeT
 aeC
 sRI
 vGp
@@ -72161,8 +72316,8 @@ xZE
 xZE
 xZE
 xZE
-xZE
-xZE
+aeT
+aeT
 aeC
 xZE
 isa
@@ -72366,8 +72521,8 @@ xZE
 xZE
 xZE
 xZE
-xZE
-xZE
+aeT
+aeT
 xZE
 aeC
 tNQ
@@ -72571,7 +72726,7 @@ xZE
 xZE
 xZE
 aeE
-aeC
+aeS
 aeC
 aeC
 aeC
@@ -72776,8 +72931,8 @@ aaK
 xZE
 xZE
 xZE
-aeC
-xZE
+aeS
+aeT
 wDj
 wDj
 wDj
@@ -72981,7 +73136,7 @@ yld
 yaC
 xZE
 xZE
-xZE
+aeT
 aeC
 wDj
 nJV
@@ -73186,8 +73341,8 @@ aaS
 yld
 yaC
 xZE
-xZE
-xZE
+aeT
+aeT
 aeC
 wDj
 aJS
@@ -73391,8 +73546,8 @@ oiW
 oiW
 yld
 yaC
-xZE
-xZE
+aeT
+aeT
 xZE
 aeC
 wDj
@@ -73597,7 +73752,7 @@ oiW
 fwj
 fwo
 hTd
-xZE
+aeT
 xZE
 alI
 alI
@@ -73803,7 +73958,7 @@ aaS
 yld
 saC
 saC
-xZE
+aeT
 alI
 alI
 gib
@@ -74624,8 +74779,8 @@ aaQ
 aaR
 aaR
 aaQ
-xZE
-xZE
+aeT
+aeT
 xZE
 xZE
 xZE
@@ -74831,7 +74986,7 @@ oiW
 oiW
 dmE
 xZE
-xZE
+aeT
 cpy
 cpy
 cpy
@@ -75690,7 +75845,7 @@ waZ
 pVo
 wGY
 hJG
-mEz
+aeP
 iwt
 anM
 jUn
@@ -76884,10 +77039,10 @@ cpy
 cpy
 acG
 acG
-acG
-acG
-acG
-acG
+afi
+afi
+afi
+afi
 acG
 fPc
 ien
@@ -77088,14 +77243,14 @@ cpy
 cpy
 cpy
 ien
-cDO
-lBM
+afu
+afs
 lBM
 pvZ
 pvZ
 nEh
-pvZ
-pvZ
+afb
+afb
 xNk
 ien
 cpy

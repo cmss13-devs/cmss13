@@ -680,6 +680,17 @@
 	GLOB.comm_tower_landmarks_net_two -= src
 	return ..()
 
+/obj/effect/landmark/static_comms/net_survivor
+	icon_state = "comms_landmark"
+
+/obj/effect/landmark/static_comms/net_survivor/Initialize(mapload, ...)
+	. = ..()
+	GLOB.comm_tower_landmarks_survivor += src
+
+/obj/effect/landmark/static_comms/net_survivor/Destroy()
+	GLOB.comm_tower_landmarks_survivor -= src
+	return ..()
+
 //****************************************** SENSORS ************************************************//
 
 /obj/effect/landmark/sensors

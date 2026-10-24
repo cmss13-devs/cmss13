@@ -55,6 +55,7 @@
 #define GAMEMODE_INFECTION "Infection"
 #define GAMEMODE_EXTENDED "Extended"
 #define GAMEMODE_EXTENDED_NO_SPAWN "Extended - No Spawn"
+#define GAMEMODE_SURVIVE "Survival"
 
 /// Number of players before we switch to lowpop maps only (LV, BR, Prison).
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130

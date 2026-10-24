@@ -349,6 +349,7 @@
 /turf/open/floor/shiva/yellowfull/west,
 /area/varadero/interior/comms1)
 "abk" = (
+/obj/effect/landmark/static_comms/net_survivor,
 /obj/effect/landmark/static_comms/net_one,
 /turf/open/floor/platebot,
 /area/varadero/interior/comms1)
@@ -380,6 +381,10 @@
 "abs" = (
 /turf/open_space,
 /area/sky/level4)
+"abt" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/central)
 "abu" = (
 /obj/item/stack/sheet/wood,
 /obj/item/shard{
@@ -401,6 +406,56 @@
 /obj/structure/machinery/cryopod/joe/weyland/alt,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/north)
+"aby" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/central)
+"abz" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior_protected/caves/central)
+"abA" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/swcaves)
+"abB" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/central)
+"abC" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior_protected/caves/central)
+"abD" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/swcaves)
+"abE" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior_protected/caves/central)
+"abF" = (
+/obj/structure/prop/rock/brown,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/central)
+"abG" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/maintenance/south)
+"abH" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/maintenance/south)
+"abI" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/maintenance/south)
+"abJ" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/maintenance/south)
 "abK" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 4
@@ -411,6 +466,90 @@
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/swcaves)
+"abM" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/maintenance/south)
+"abN" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/gm/dirt,
+/area/varadero/interior_protected/caves/swcaves)
+"abO" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/gm/dirt,
+/area/varadero/interior_protected/caves/swcaves)
+"abP" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/central)
+"abQ" = (
+/obj/structure/prop/rock/brown,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/central)
+"abR" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior_protected/caves/central)
+"abS" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/central)
+"abT" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior_protected/caves/central)
+"abU" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior_protected/caves/central)
+"abV" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/central)
+"abW" = (
+/obj/structure/prop/rock/brown,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
+"abX" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/digsite)
+"abY" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
+"abZ" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/gm/dirt,
+/area/varadero/interior_protected/caves/digsite)
+"aca" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/digsite)
+"acb" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/swcaves)
+"acc" = (
+/obj/effect/landmark/static_comms/net_survivor,
+/turf/open/floor/shiva/blue,
+/area/varadero/interior/administration)
+"acd" = (
+/obj/effect/landmark/static_comms/net_survivor,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/north_research)
+"ace" = (
+/obj/effect/landmark/static_comms/net_survivor,
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
 "acO" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/beakers,
@@ -25013,6 +25152,7 @@
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/monsoon)
 "udb" = (
+/obj/effect/landmark/static_comms/net_survivor,
 /obj/effect/landmark/static_comms/net_two,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/north)
@@ -31313,7 +31453,7 @@ pGs
 pGs
 geo
 geo
-jQa
+acb
 pGs
 pGs
 pGs
@@ -31495,8 +31635,8 @@ pGs
 jQa
 jQa
 jQa
-jQa
-jQa
+acb
+acb
 pGs
 pGs
 gxQ
@@ -31679,7 +31819,7 @@ jQa
 jQa
 jQa
 jQa
-jQa
+abA
 jQa
 jQa
 jQa
@@ -31861,7 +32001,7 @@ jQa
 jQa
 jQa
 jQa
-jQa
+abA
 jQa
 jQa
 jQa
@@ -31877,7 +32017,7 @@ geo
 jQa
 jQa
 jQa
-jQa
+abD
 jQa
 jQa
 pGs
@@ -32042,8 +32182,8 @@ jQa
 jQa
 geo
 geo
-jQa
-jQa
+abD
+abA
 jQa
 geo
 jQa
@@ -32225,11 +32365,11 @@ jQa
 jQa
 jQa
 jQa
-jQa
+abA
 jQa
 geo
 jQa
-jQa
+abD
 jYZ
 jQa
 geo
@@ -32407,7 +32547,7 @@ jQa
 jQa
 jQa
 jQa
-jQa
+abA
 jQa
 geo
 jQa
@@ -32589,8 +32729,8 @@ jQa
 jQa
 gxQ
 pGs
-jQa
-jQa
+acb
+acb
 jQa
 jQa
 jQa
@@ -32963,7 +33103,7 @@ abL
 jQa
 geo
 geo
-jQa
+abD
 jQa
 jQa
 jQa
@@ -33158,7 +33298,7 @@ jQa
 jQa
 jQa
 geo
-jQa
+abD
 jQa
 jQa
 pGs
@@ -34979,7 +35119,7 @@ pGs
 pGs
 pGs
 jQa
-jQa
+abD
 jQa
 jQa
 jQa
@@ -35161,7 +35301,7 @@ pGs
 pGs
 jQa
 jQa
-jQa
+abD
 jQa
 jQa
 jQa
@@ -35531,7 +35671,7 @@ jQa
 jQa
 jQa
 jQa
-jQa
+abD
 geo
 pGs
 pGs
@@ -35713,7 +35853,7 @@ geo
 jQa
 jQa
 jQa
-geo
+abN
 jQa
 jQa
 pGs
@@ -35820,7 +35960,7 @@ oPQ
 xCn
 xCn
 xCn
-xCn
+acd
 pGs
 pGs
 uHY
@@ -36264,7 +36404,7 @@ jQa
 jQa
 jQa
 jQa
-jQa
+abD
 jYZ
 jQa
 jQa
@@ -38077,7 +38217,7 @@ jQa
 jQa
 jQa
 jQa
-jQa
+abA
 jQa
 jQa
 jQa
@@ -38259,7 +38399,7 @@ jQa
 jQa
 jQa
 jQa
-jQa
+abA
 vct
 rgz
 jQa
@@ -38440,8 +38580,8 @@ jQa
 rgz
 rgz
 rgz
-jQa
-jQa
+abD
+abA
 jQa
 abL
 jQa
@@ -38623,7 +38763,7 @@ rgz
 rgz
 jQa
 jQa
-jQa
+abA
 jQa
 jQa
 jQa
@@ -38805,7 +38945,7 @@ jQa
 jQa
 jQa
 jQa
-jQa
+abA
 jQa
 jQa
 pGs
@@ -38987,8 +39127,8 @@ jQa
 jQa
 jQa
 pGs
-geo
-geo
+abO
+abO
 pGs
 pGs
 pGs
@@ -42092,9 +42232,9 @@ hoC
 pGs
 pGs
 pGs
-jQa
-jQa
-jQa
+abA
+abA
+abA
 pGs
 pGs
 pGs
@@ -42214,7 +42354,7 @@ oTJ
 qvo
 pWm
 bNC
-ugW
+acc
 xgG
 qvo
 qvo
@@ -44085,15 +44225,15 @@ pGs
 pGs
 pGs
 ksX
-cto
-fLu
-cto
+abG
+abI
+abG
 ksX
-aOg
-aOg
-mCF
-mCF
-mCF
+abE
+abE
+abt
+abt
+abB
 pGs
 pGs
 pGs
@@ -44258,8 +44398,8 @@ xxk
 mCF
 pGs
 pGs
-hoC
-hoC
+abQ
+abQ
 mCF
 wBc
 hoC
@@ -44275,7 +44415,7 @@ hoC
 mCF
 aOg
 wBc
-mCF
+abB
 pGs
 pGs
 pGs
@@ -44440,8 +44580,8 @@ xxk
 mCF
 aOg
 aOg
-mCF
-aOg
+abB
+abC
 aOg
 aOg
 mCF
@@ -44449,8 +44589,8 @@ mCF
 pGs
 pGs
 ksX
-cto
-cto
+abJ
+abJ
 cto
 ksX
 hoC
@@ -44619,14 +44759,14 @@ cto
 etv
 xxk
 xxk
-mCF
+aby
 aOg
 aOg
 dda
-gCh
+abR
 hiE
 mCF
-aOg
+abz
 aOg
 pGs
 pGs
@@ -44805,7 +44945,7 @@ mCF
 aOg
 xGV
 gCh
-gCh
+abR
 mCF
 mCF
 aOg
@@ -44820,7 +44960,7 @@ ksX
 pGs
 mCF
 mCF
-mCF
+aby
 mCF
 gsm
 pGs
@@ -44987,7 +45127,7 @@ mCF
 mCF
 aOg
 hiE
-aOg
+abE
 aOg
 aOg
 mCF
@@ -45167,11 +45307,11 @@ tcX
 ksX
 vOo
 aOg
-qZR
+abT
 aOg
+abE
 aOg
-aOg
-aOg
+abz
 mCF
 aOg
 aOg
@@ -45351,7 +45491,7 @@ mCF
 aOg
 aOg
 mCF
-hoC
+abF
 mCF
 mCF
 mCF
@@ -45551,7 +45691,7 @@ aOg
 mCF
 mCF
 mCF
-mCF
+aby
 pGs
 pGs
 pGs
@@ -46078,7 +46218,7 @@ ksX
 pGs
 mCF
 mCF
-mCF
+abt
 mCF
 mCF
 mCF
@@ -46260,7 +46400,7 @@ ksX
 pGs
 mCF
 mCF
-mCF
+abt
 mCF
 mCF
 mCF
@@ -46440,19 +46580,19 @@ etv
 cto
 ksX
 mCF
+aby
+mCF
+abt
 mCF
 mCF
-mCF
-mCF
-mCF
-mCF
+aby
 mCF
 hoC
 pGs
 ksX
 kgC
 qYd
-cto
+abJ
 cto
 cto
 cto
@@ -46547,7 +46687,7 @@ djh
 jzZ
 jzZ
 gyw
-jzZ
+ace
 jzZ
 jzZ
 sia
@@ -46624,8 +46764,8 @@ cba
 mCF
 mCF
 jdm
-mCF
-mCF
+abB
+abB
 mCF
 mCF
 aOg
@@ -46805,10 +46945,10 @@ xxk
 ksX
 aOg
 mCF
-mCF
-aOg
-aOg
-mCF
+abB
+abC
+abC
+abB
 mCF
 aOg
 aOg
@@ -46990,7 +47130,7 @@ mCF
 aOg
 xGV
 aOg
-mCF
+abt
 mCF
 mCF
 aOg
@@ -47172,9 +47312,9 @@ aOg
 phA
 aOg
 aOg
-wBc
+abP
 mCF
-mCF
+aby
 aOg
 aOg
 pGs
@@ -47190,7 +47330,7 @@ hoC
 pGs
 pGs
 mCF
-mCF
+aby
 aOg
 mCF
 pGs
@@ -47354,7 +47494,7 @@ aOg
 aOg
 mCF
 mCF
-mCF
+abt
 mCF
 mCF
 mCF
@@ -47533,12 +47673,12 @@ iaM
 eEd
 mCF
 mCF
+aby
 mCF
 mCF
+abF
 mCF
-hoC
-mCF
-mCF
+aby
 mCF
 mCF
 mCF
@@ -47899,7 +48039,7 @@ pGs
 pGs
 mCF
 mCF
-mCF
+abt
 mCF
 aOg
 aOg
@@ -47908,7 +48048,7 @@ mCF
 mCF
 ksX
 cto
-cto
+abJ
 cto
 ksX
 mCF
@@ -47919,7 +48059,7 @@ mCF
 aOg
 xGV
 aOg
-aOg
+abz
 mCF
 pGs
 pGs
@@ -48081,7 +48221,7 @@ pGs
 pGs
 mCF
 mCF
-mCF
+abt
 mCF
 aOg
 aOg
@@ -48263,7 +48403,7 @@ pGs
 pGs
 pGs
 mCF
-mCF
+abt
 mCF
 mCF
 aOg
@@ -48450,7 +48590,7 @@ hoC
 mCF
 aOg
 phA
-aOg
+abz
 mCF
 ksX
 cto
@@ -48460,7 +48600,7 @@ ksX
 mCF
 mCF
 mCF
-mCF
+aby
 mCF
 mCF
 hoC
@@ -48639,7 +48779,7 @@ cto
 cto
 cto
 xEG
-mCF
+aby
 aOg
 aOg
 mCF
@@ -48817,7 +48957,7 @@ aOg
 mCF
 hoC
 pGs
-cto
+abJ
 cto
 cto
 iDn
@@ -48832,7 +48972,7 @@ pGs
 mCF
 mCF
 mCF
-mCF
+aby
 pGs
 mCF
 mCF
@@ -49364,19 +49504,19 @@ jdm
 mCF
 cba
 xxk
-xxk
+abM
 cto
 ksX
 mCF
 aOg
 aOg
-mCF
+aby
 mCF
 pGs
 pGs
 hoC
 mCF
-mCF
+aby
 mCF
 xGV
 aOg
@@ -49549,7 +49689,7 @@ cto
 cto
 cto
 xxk
-mCF
+aby
 aOg
 rWN
 mCF
@@ -49733,19 +49873,19 @@ cto
 rgg
 mCF
 mCF
-aOg
-mCF
-mCF
+abC
+abt
+abt
 pGs
 pGs
 pGs
+abt
+abt
 mCF
-mCF
-mCF
 aOg
 aOg
 aOg
-aOg
+abz
 aBK
 mCF
 pGs
@@ -49915,14 +50055,14 @@ cto
 ksX
 hoC
 mCF
-mCF
+abt
 aOg
 mCF
 mCF
 hoC
 mCF
 mCF
-mCF
+abt
 mCF
 mCF
 mCF
@@ -50097,14 +50237,14 @@ qEG
 ksX
 pGs
 hoC
+abt
 mCF
 mCF
 mCF
 mCF
 mCF
 mCF
-mCF
-mCF
+abt
 hoC
 mCF
 mCF
@@ -50289,10 +50429,10 @@ mCF
 pGs
 pGs
 pGs
-mCF
-mCF
-mCF
-mCF
+abt
+abt
+abt
+abt
 pGs
 pGs
 pGs
@@ -50637,9 +50777,9 @@ iFb
 iFb
 iFb
 ksX
-cto
-cto
-xxk
+abG
+abG
+abH
 ksX
 ksX
 ksX
@@ -54114,7 +54254,7 @@ pGs
 pGs
 mCF
 aOg
-mCF
+aby
 mCF
 pGs
 pGs
@@ -54476,10 +54616,10 @@ pGs
 pGs
 pGs
 pGs
-mCF
-mCF
-mCF
-mCF
+abt
+abt
+abt
+abt
 pGs
 pGs
 pGs
@@ -54639,14 +54779,14 @@ xxk
 hBA
 mCF
 mCF
-mCF
+aby
 mCF
 mCF
 mCF
 hoC
 mCF
 mCF
-mCF
+aby
 mCF
 pGs
 pGs
@@ -55002,7 +55142,7 @@ aOg
 pGs
 hoC
 mCF
-mCF
+aby
 mCF
 mCF
 mCF
@@ -55190,11 +55330,11 @@ mCF
 pGs
 pGs
 pGs
-hoC
-mCF
-mCF
-mCF
-mCF
+abF
+abt
+abt
+abt
+abt
 pGs
 pGs
 gsm
@@ -55203,7 +55343,7 @@ aOg
 mCF
 mCF
 mCF
-mCF
+aby
 mCF
 mCF
 hoC
@@ -55351,7 +55491,7 @@ kbQ
 qIF
 ofC
 kbQ
-kbQ
+abY
 kbQ
 kbQ
 kbQ
@@ -55542,7 +55682,7 @@ kbQ
 mCF
 wOR
 mCF
-jdm
+abS
 mCF
 mCF
 aOg
@@ -55556,7 +55696,7 @@ pGs
 bUZ
 mCF
 mCF
-mCF
+aby
 mCF
 mCF
 aOg
@@ -55727,11 +55867,11 @@ mCF
 mCF
 pGs
 pGs
-mCF
-mCF
-mCF
-mCF
-aOg
+abt
+abt
+abt
+abt
+abE
 pGs
 pGs
 pGs
@@ -55902,11 +56042,11 @@ pGs
 pGs
 pGs
 pGs
-jqw
-mCF
-iHE
-aOg
-hoC
+abW
+abB
+abU
+abE
+abF
 pGs
 pGs
 mCF
@@ -55926,7 +56066,7 @@ mCF
 mCF
 mCF
 mCF
-mCF
+aby
 mCF
 mCF
 mCF
@@ -56085,7 +56225,7 @@ pGs
 pGs
 pGs
 pGs
-bUZ
+abV
 iHE
 aOg
 mCF
@@ -56274,7 +56414,7 @@ lVQ
 aOg
 mCF
 mCF
-mCF
+aby
 mCF
 mCF
 mCF
@@ -56634,7 +56774,7 @@ pGs
 pGs
 pGs
 mCF
-mCF
+aby
 mCF
 mCF
 mCF
@@ -56823,7 +56963,7 @@ mCF
 mCF
 mCF
 mCF
-mCF
+aby
 mCF
 mCF
 mCF
@@ -58990,7 +59130,7 @@ iFQ
 bsf
 hre
 bsf
-hre
+abZ
 bsf
 hre
 bsf
@@ -59172,7 +59312,7 @@ iFQ
 bsf
 puq
 hre
-bsf
+aca
 bsf
 bsf
 puq
@@ -59354,9 +59494,9 @@ fBV
 hre
 hre
 hre
-hre
+abZ
 bsf
-bsf
+abX
 oWx
 oWx
 pDX
@@ -59533,10 +59673,10 @@ bGU
 rvD
 bGU
 iFQ
-bsf
+abX
 hre
 bsf
-bsf
+aca
 bsf
 bsf
 oXo
@@ -59718,7 +59858,7 @@ iFQ
 hre
 bsf
 bsf
-hre
+abZ
 bsf
 bsf
 bsf

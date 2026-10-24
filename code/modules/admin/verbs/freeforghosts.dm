@@ -16,7 +16,7 @@
 
 	M.free_for_ghosts(notify)
 
-/mob/proc/free_for_ghosts(notify)
+/mob/proc/free_for_ghosts(notify, ghost_sound)
 	if(mind || client)
 		ghostize(FALSE)
 
@@ -25,7 +25,7 @@
 	if(!notify)
 		return
 
-	notify_ghosts(header = "Freed Mob", message = "A mob is now available for ghosts. Name: [real_name], Job: [job ? job : ""]", enter_link = "claim_freed=[REF(src)]", source = src, action = NOTIFY_ORBIT)
+	notify_ghosts(header = "Freed Mob", message = "A freed mob is now available for ghosts. Name: [real_name], Job: [job ? job : ""]", enter_link = "claim_freed=[REF(src)]", source = src, action = NOTIFY_ORBIT, ghost_sound = ghost_sound)
 
 /client/proc/free_all_mobs_in_view()
 	set name = "Free All Mobs"

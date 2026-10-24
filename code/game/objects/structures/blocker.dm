@@ -54,7 +54,9 @@
 		return INITIALIZE_HINT_QDEL
 
 	dir = pick(CARDINAL_DIRS)
-	QDEL_IN(src, time_to_dispel + rand(-5 SECONDS, 5 SECONDS))
+
+	if(time_to_dispel < INFINITY)
+		QDEL_IN(src, time_to_dispel + rand(-5 SECONDS, 5 SECONDS))
 
 /obj/structure/blocker/fog/attack_hand(mob/M)
 	to_chat(M, SPAN_NOTICE("You peer through the fog, but it's impossible to tell what's on the other side..."))
@@ -62,6 +64,13 @@
 /obj/structure/blocker/fog/attack_alien(M)
 	attack_hand(M)
 	return XENO_NONCOMBAT_ACTION
+
+/obj/structure/blocker/fog/survivor_evac/Initialize(mapload, time_to_dispel)
+	. = ..()
+	RegisterSignal(SSdcs, COMSIG_GLOB_SURVIVOR_EVAC, PROC_REF(cleanup))
+
+/obj/structure/blocker/fog/survivor_evac/proc/cleanup()
+	QDEL_IN(src, rand(5 SECONDS))
 
 /obj/structure/blocker/door
 	name = "shutter"
@@ -77,7 +86,9 @@
 		return INITIALIZE_HINT_QDEL
 
 	dir = pick(CARDINAL_DIRS)
-	QDEL_IN(src, time_to_dispel)
+
+	if(time_to_dispel < INFINITY)
+		QDEL_IN(src, time_to_dispel)
 
 /obj/structure/blocker/door/attack_hand(mob/M)
 	to_chat(M, SPAN_NOTICE("Won't budge, you'll have to wait until the all-clear is sent."))
@@ -85,6 +96,13 @@
 /obj/structure/blocker/door/attack_alien(M)
 	attack_hand(M)
 	return XENO_NONCOMBAT_ACTION
+
+/obj/structure/blocker/door/survivor_evac/Initialize(mapload, time_to_dispel)
+	. = ..()
+	RegisterSignal(SSdcs, COMSIG_GLOB_SURVIVOR_EVAC, PROC_REF(cleanup))
+
+/obj/structure/blocker/door/survivor_evac/proc/cleanup()
+	QDEL_IN(src, rand(5 SECONDS))
 
 /obj/structure/blocker/preserve_edge
 	name = "dense fog"

@@ -456,10 +456,10 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	. = ..()
 	if(.)
 		// Put the landmark back
-		var/spawner = slotted_landmarks[new_player]
+		var/obj/effect/landmark/survivor_spawner/spawner = slotted_landmarks[new_player]
 		if(length(generic_landmarks) < prev_generic_landmarks)
 			generic_landmarks += spawner
 			GLOB.generic_survivor_spawns += spawner
 		else
 			available_landmarks += spawner
-			GLOB.survivor_spawns_by_priority += spawner
+			GLOB.survivor_spawns_by_priority["[spawner.spawn_priority]"] += spawner

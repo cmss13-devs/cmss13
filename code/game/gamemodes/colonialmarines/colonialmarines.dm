@@ -321,7 +321,7 @@
 	clear_proximity_resin()
 
 	var/list/announcement_mobs = list()
-	for(var/area/area in marine_dropship.shuttle_areas)
+	for(var/area/area as anything in marine_dropship.shuttle_areas)
 		for(var/mob/mob in area)
 			shake_camera(mob, steps = 3, strength = 1)
 			announcement_mobs += mob
@@ -346,7 +346,6 @@
 		if(islist(area_lz))
 			if(!(active_lz.linked_lz in area_lz))
 				continue
-
 		else if(area_lz != active_lz.linked_lz)
 			continue
 

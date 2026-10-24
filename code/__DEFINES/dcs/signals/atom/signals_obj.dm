@@ -33,6 +33,9 @@
 /// shuttle mode change
 #define COMSIG_SHUTTLE_SETMODE "shuttle_setmode"
 
+/// from /obj/docking_port/stationary/proc/on_prearrival() : (landing shuttle)
+#define COMSIG_SHUTTLE_PREARRIVAL "shuttle_prearrival"
+
 /// from /obj/docking_port/stationary/proc/on_arrival() : (landing shuttle)
 #define COMSIG_SHUTTLE_ARRIVAL "shuttle_arrival"
 

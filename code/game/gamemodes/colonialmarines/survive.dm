@@ -251,6 +251,7 @@
 		return
 
 	var/obj/docking_port/stationary/dock = pick(dock_options)
+	RegisterSignal(dock, COMSIG_SHUTTLE_PREARRIVAL, PROC_REF(on_shuttle_prearrival))
 	RegisterSignal(dock, COMSIG_SHUTTLE_ARRIVAL, PROC_REF(on_shuttle_arrival))
 	SSshuttle.moveShuttleToDock(shuttle, dock, TRUE)
 
@@ -259,8 +260,65 @@
 	shuttle.distress_beacon = ert
 	survivor_announcement("[ert.arrival_message] We are enroute to [dock].")
 
+/// SIGNAL_HANDLER for COMSIG_SHUTTLE_PREARRIVAL to handle weedkiller smoke
+/datum/game_mode/survive/proc/on_shuttle_prearrival(obj/docking_port/stationary/port, obj/docking_port/mobile/arriving_shuttle)
+	SIGNAL_HANDLER
+
+	var/hostile = SSnightmare.get_scenario_is_hostile_survivor() // ASSUMPTION: Only hostile type is CLF
+	var/list/announcement_mobs = list()
+	for(var/area/area as anything in arriving_shuttle.shuttle_areas)
+		for(var/mob/mob in area)
+			shake_camera(mob, steps = 3, strength = 1)
+			announcement_mobs += mob
+	announcement_helper("Dropship dispersing [/obj/effect/particle_effect/smoke/weedkiller::name] due to potential biological infestation.", hostile ? CLF_COMMAND_ANNOUNCE : MAIN_AI_SYSTEM, announcement_mobs, 'sound/effects/rocketpod_fire.ogg')
+
+	var/obj/structure/machinery/computer/shuttle/console
+	if(port.id == /obj/structure/machinery/computer/shuttle/dropship/flight/lz1::linked_lz)
+		console = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1)
+	else if(port.id == /obj/structure/machinery/computer/shuttle/dropship/flight/lz2::linked_lz)
+		console = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2)
+	clear_proximity_resin(console)
+
+/// SIGNAL_HANDLER for COMSIG_SHUTTLE_ARRIVAL to handle announcement to xenos and allow LZ weeding
 /datum/game_mode/survive/proc/on_shuttle_arrival(obj/docking_port/stationary/port, obj/docking_port/mobile/arriving_shuttle)
+	SIGNAL_HANDLER
+
 	xeno_announcement(SPAN_XENOANNOUNCE("A dropship has landed. The tallhosts are escaping!"), "everything", QUEEN_MOTHER_ANNOUNCE)
+	MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
+
+/datum/game_mode/survive/proc/clear_proximity_resin(obj/structure/machinery/computer/shuttle/dropship/flight/active_lz)
+	if(!active_lz)
+		return FALSE
+
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding))
+		msg_admin_niche("Skipped weed killer event due to lz_weeding modifier already getting set")
+		return FALSE
+
+	var/datum/cause_data/cause_data = create_cause_data(/obj/effect/particle_effect/smoke/weedkiller::name)
+
+	for(var/area/near_area as anything in GLOB.all_areas)
+		var/area_lz = near_area.linked_lz
+		if(!area_lz)
+			continue
+
+		if(islist(area_lz))
+			if(!(active_lz.linked_lz in area_lz))
+				continue
+		else if(area_lz != active_lz.linked_lz)
+			continue
+
+		for(var/turf/turf in near_area)
+			if(turf.density)
+				if(!istype(turf, /turf/closed/wall))
+					continue
+				var/turf/closed/wall/wall = turf
+				if(wall.turf_flags & TURF_HULL)
+					continue
+			new /obj/effect/particle_effect/smoke/weedkiller(turf, null, cause_data)
+
+		near_area.purge_weeds()
+
+	return TRUE
 
 /datum/game_mode/survive/proc/release_the_queen()
 	if(!length(GLOB.marked_atoms_by_id["queen_bubble"]))

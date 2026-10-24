@@ -284,7 +284,6 @@
 	pixel_x = 6;
 	pixel_y = 32
 	},
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/plating/icefloor/warnplate/east,
 /area/varadero/exterior/lz1_near)
 "aba" = (
@@ -551,57 +550,6 @@
 /obj/effect/landmark/static_comms/net_survivor,
 /turf/open/floor/carpet,
 /area/varadero/interior/library)
-"acf" = (
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
-/turf/closed/wall/r_wall,
-/area/varadero/interior/maintenance/north)
-"acg" = (
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/oob)
-"ach" = (
-/obj/structure/window/framed/colony,
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
-/turf/open/floor/plating/icefloor,
-/area/varadero/interior/maintenance/north)
-"aci" = (
-/obj/structure/window/framed/colony/reinforced,
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
-/turf/open/floor/plating,
-/area/varadero/interior/maintenance/north)
-"acj" = (
-/obj/structure/sign/safety/bulkhead_door,
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
-/turf/closed/wall/r_wall,
-/area/varadero/interior/maintenance/north)
-"ack" = (
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/lz2_near)
-"acl" = (
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
-/turf/open/floor/asteroidfloor/north,
-/area/varadero/exterior/lz2_near)
-"acm" = (
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/exterior/lz2_near)
-"acn" = (
-/obj/structure/flora/bush/ausbushes/ywflowers,
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
-/turf/open/gm/dirt,
-/area/varadero/exterior/lz2_near)
-"aco" = (
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/lz1_near)
-"acp" = (
-/obj/structure/platform/metal/kutjevo_smooth{
-	climb_delay = 1
-	},
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/pontoon_beach)
 "acO" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/beakers,
@@ -1767,7 +1715,6 @@
 	name = "Pontoon South Door";
 	openspeed = 17
 	},
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/plating/icefloor/warnplate/north,
 /area/varadero/interior/maintenance/north)
 "aVt" = (
@@ -1978,7 +1925,6 @@
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
 	},
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/pontoon_beach/lz)
 "bdc" = (
@@ -5085,7 +5031,6 @@
 /obj/item/reagent_container/food/drinks/cans/souto/grape,
 /obj/item/reagent_container/food/drinks/cans/souto/lime,
 /obj/item/reagent_container/food/drinks/cans/souto/grape,
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
 "dKW" = (
@@ -5223,7 +5168,6 @@
 /area/varadero/exterior/lz2_near)
 "dOm" = (
 /obj/structure/barricade/handrail/wire,
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
 "dOS" = (
@@ -5602,7 +5546,6 @@
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
 	},
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pontoon_beach/lz)
 "egV" = (
@@ -7917,7 +7860,6 @@
 	pixel_y = 12
 	},
 /obj/item/trash/barcardine,
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
 "fXG" = (
@@ -9041,7 +8983,6 @@
 /area/varadero/interior/maintenance/security/south)
 "gVd" = (
 /obj/structure/fence,
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/gm/coast/north,
 /area/varadero/exterior/lz2_near)
 "gVq" = (
@@ -12925,7 +12866,6 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/maintenance/north)
 "kdq" = (
@@ -13342,7 +13282,6 @@
 /area/varadero/interior/hall_SE)
 "kyz" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/autoname,
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/wood,
 /area/varadero/interior/maintenance/north)
 "kyA" = (
@@ -13672,7 +13611,6 @@
 	},
 /obj/structure/surface/table,
 /obj/item/paper_bin,
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
 "kLd" = (
@@ -16882,7 +16820,6 @@
 /area/varadero/interior/hall_NW)
 "nCl" = (
 /obj/structure/fence,
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz2_near)
 "nCE" = (
@@ -18280,7 +18217,6 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
 "oJm" = (
@@ -18289,7 +18225,6 @@
 	name = "Underground Hangar Power Substation";
 	req_access = null
 	},
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/maintenance/north)
 "oJv" = (
@@ -18689,7 +18624,6 @@
 /area/varadero/interior/maintenance/north)
 "oZJ" = (
 /obj/structure/fence,
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/gm/coast/south,
 /area/varadero/exterior/lz2_near)
 "paq" = (
@@ -19216,7 +19150,6 @@
 	req_one_access = null;
 	req_access = null
 	},
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/maintenance/north)
 "ptM" = (
@@ -20356,7 +20289,6 @@
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
 	},
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
 "qlS" = (
@@ -20441,7 +20373,6 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/maintenance/north)
 "qpZ" = (
@@ -20701,7 +20632,6 @@
 /obj/structure/sign/safety/hazard{
 	pixel_x = 15
 	},
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/closed/wall/r_wall,
 /area/varadero/interior/maintenance/north)
 "qzq" = (
@@ -20955,7 +20885,6 @@
 /area/varadero/exterior/monsoon)
 "qIs" = (
 /obj/structure/platform_decoration/metal/kutjevo/east,
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
 "qIF" = (
@@ -21331,7 +21260,6 @@
 	pixel_x = 8;
 	pixel_y = -6
 	},
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
 "qVL" = (
@@ -24129,7 +24057,6 @@
 "teH" = (
 /obj/structure/window/framed/colony,
 /obj/structure/sign/banners/happybirthdaysteve,
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/plating/icefloor,
 /area/varadero/interior/maintenance/north)
 "teT" = (
@@ -25675,7 +25602,6 @@
 	icon_state = "hr_kutjevo";
 	name = "support struts"
 	},
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
 "uww" = (
@@ -27745,7 +27671,6 @@
 /turf/open/floor/shiva,
 /area/varadero/interior/technical_storage)
 "waP" = (
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/floor/plating/icefloor/warnplate/east,
 /area/varadero/exterior/lz1_near)
 "wba" = (
@@ -27860,7 +27785,6 @@
 	pixel_x = -1;
 	pixel_y = 22
 	},
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/closed/wall/r_wall,
 /area/varadero/interior/maintenance/north)
 "wff" = (
@@ -27891,7 +27815,6 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
 "wfR" = (
@@ -29832,7 +29755,6 @@
 /area/varadero/interior/research)
 "xNA" = (
 /obj/structure/fence,
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
 "xNR" = (
@@ -30036,7 +29958,6 @@
 /obj/structure/sign/safety/one{
 	pixel_x = 15
 	},
-/obj/effect/landmark/lv624/fog_blocker/survivor_evac,
 /turf/closed/wall,
 /area/varadero/interior/maintenance/north)
 "xVX" = (
@@ -40923,12 +40844,12 @@ wMw
 mcr
 dEJ
 qpK
-aci
-acg
+qAp
+huF
 ptC
-aci
-aci
-acf
+qAp
+qAp
+bgE
 bgE
 erK
 qAp
@@ -41110,7 +41031,7 @@ hcz
 wMw
 ojm
 huy
-aci
+qAp
 qVO
 cOj
 cfs
@@ -41656,7 +41577,7 @@ wMw
 wMw
 wMw
 wMw
-aci
+qAp
 hyr
 eaQ
 hyr
@@ -41838,7 +41759,7 @@ wMw
 wMw
 bOu
 sTT
-acf
+bgE
 jTL
 jTL
 lpJ
@@ -42020,7 +41941,7 @@ wMw
 wMw
 wMw
 wMw
-aci
+qAp
 nwi
 igQ
 kCb
@@ -42203,10 +42124,10 @@ wMw
 wMw
 wMw
 weJ
-aci
-acj
-aci
-acf
+qAp
+coz
+qAp
+bgE
 hyr
 hyr
 weG
@@ -42388,7 +42309,7 @@ paq
 rkA
 wMw
 mcr
-acg
+huF
 aCY
 hyr
 weG
@@ -42570,7 +42491,7 @@ wMw
 wMw
 vLV
 wMw
-acg
+huF
 coz
 qzb
 erK
@@ -43480,7 +43401,7 @@ wMw
 wMw
 vLV
 mcr
-acg
+huF
 bgE
 qzb
 erK
@@ -43844,7 +43765,7 @@ rSA
 wMw
 rSA
 wMw
-ach
+sid
 hyr
 hyr
 hyr
@@ -44205,10 +44126,10 @@ dii
 wMw
 xVQ
 kyz
-ach
-acg
-acg
-acg
+sid
+huF
+huF
+huF
 aqw
 giN
 cTV
@@ -44351,9 +44272,9 @@ egU
 dKy
 qVD
 fXu
-aco
-aco
-aco
+asx
+asx
+asx
 wMw
 wMw
 pbp
@@ -44535,7 +44456,7 @@ viu
 viu
 viu
 wEz
-aco
+asx
 asx
 xOI
 qoE
@@ -44567,7 +44488,7 @@ mrC
 asx
 asx
 asx
-ach
+sid
 aSe
 rFv
 hQP
@@ -44717,7 +44638,7 @@ qwQ
 qwQ
 pAX
 iOM
-aco
+asx
 fZB
 asx
 wMw
@@ -44749,7 +44670,7 @@ mrC
 asx
 fZB
 asx
-ach
+sid
 kEB
 sSp
 hlw
@@ -44899,8 +44820,8 @@ qwQ
 qwQ
 qwQ
 nYY
-aco
-aco
+asx
+asx
 wCR
 uvu
 rSf
@@ -44931,7 +44852,7 @@ mrC
 asx
 dlr
 asx
-acf
+bgE
 pTg
 ycY
 jfA
@@ -45082,7 +45003,7 @@ qwQ
 qwQ
 xDT
 sjb
-acp
+sLr
 uvY
 qIs
 kKX
@@ -45091,9 +45012,9 @@ wfK
 wfK
 ebm
 pGs
-aco
-aco
-aco
+asx
+asx
+asx
 pGs
 pGs
 oJb
@@ -45101,9 +45022,9 @@ wfK
 wfK
 ebm
 pGs
-aco
-aco
-aco
+asx
+asx
+asx
 pGs
 pGs
 oJb
@@ -45113,7 +45034,7 @@ qlE
 pGs
 pGs
 pGs
-acg
+huF
 hLt
 egV
 bTf
@@ -53817,12 +53738,12 @@ pdK
 fpq
 cVq
 mtT
-acm
+lTg
 nCl
 nCl
 nCl
-ack
-ack
+aQN
+aQN
 pGs
 pGs
 pGs
@@ -53834,15 +53755,15 @@ pGs
 nCl
 nCl
 nCl
-ack
+aQN
 dOm
-ack
+aQN
 nCl
 nCl
 nCl
 nCl
 nCl
-ack
+aQN
 wlB
 gDr
 pGs
@@ -54024,7 +53945,7 @@ tCV
 iQr
 iQr
 tCV
-acl
+iQr
 iQr
 sIK
 foE
@@ -54206,7 +54127,7 @@ aCX
 tCV
 iQr
 iQr
-acl
+iQr
 tCV
 vAt
 vuA
@@ -54388,7 +54309,7 @@ bSQ
 qNu
 wlB
 wlB
-ack
+aQN
 wlB
 aKJ
 mrR
@@ -55116,7 +55037,7 @@ doH
 gXw
 aQN
 wlB
-acm
+lTg
 wlB
 uAM
 pGs
@@ -55298,7 +55219,7 @@ wlB
 ghW
 wlB
 wlB
-acn
+rBq
 wlB
 xmL
 deE
@@ -55844,7 +55765,7 @@ wlB
 lTg
 wlB
 hPq
-ack
+aQN
 wlB
 xmL
 qTE

@@ -11,6 +11,7 @@
 	var/list/channels = list()
 	var/list/tracking_options
 	var/abstract = FALSE
+	var/hear_only = FALSE
 
 /obj/item/device/encryptionkey/binary
 	icon_state = "binary_key"
@@ -37,6 +38,10 @@
 	name = "Command Encryption Key"
 	icon_state = "cap_key"
 	channels = list(RADIO_CHANNEL_COMMAND = TRUE)
+
+/obj/item/device/encryptionkey/command/hear
+	name = "Command Encryption Key (Receive only)"
+	hear_only = TRUE
 
 /obj/item/device/encryptionkey/jtac
 	name = "\improper JTAC Radio Encryption Key"

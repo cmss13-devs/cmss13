@@ -885,6 +885,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	var/helm_mounted_light_power = 2
 	var/helm_mounted_light_range = 3
+	var/dim_light = TRUE // As per maintainer request, rail flashlights will be dimmed when the weapon they're attached to is put away in the suit slot or back slot
 
 	var/datum/action/item_action/activation
 	var/obj/item/attached_item
@@ -970,9 +971,13 @@ Defined in conflicts.dm of the #defines folder.
 
 	var/obj/item/weapon/gun/attached_gun = loc
 
+	var/applied_light_mod = light_mod
+	if(dim_light && attached_gun.rail_light_stowed)
+		applied_light_mod *= DIMMED_RAIL_LIGHT_MULT
+
 	if(toggle_on && !light_on)
-		attached_gun.set_light_range(attached_gun.light_range + light_mod)
-		attached_gun.set_light_power(attached_gun.light_power + (light_mod * 0.5))
+		attached_gun.set_light_range(attached_gun.light_range + applied_light_mod)
+		attached_gun.set_light_power(attached_gun.light_power + (applied_light_mod * 0.5))
 		if(!(attached_gun.flags_gun_features & GUN_FLASHLIGHT_ON))
 			attached_gun.set_light_color(COLOR_WHITE)
 			attached_gun.set_light_on(TRUE)
@@ -980,8 +985,8 @@ Defined in conflicts.dm of the #defines folder.
 			attached_gun.flags_gun_features |= GUN_FLASHLIGHT_ON
 
 	if(!toggle_on && light_on)
-		attached_gun.set_light_range(attached_gun.light_range - light_mod)
-		attached_gun.set_light_power(attached_gun.light_power - (light_mod * 0.5))
+		attached_gun.set_light_range(attached_gun.light_range - applied_light_mod)
+		attached_gun.set_light_power(attached_gun.light_power - (applied_light_mod * 0.5))
 		if(attached_gun.flags_gun_features & GUN_FLASHLIGHT_ON)
 			attached_gun.set_light_on(FALSE)
 			light_on = FALSE
@@ -1037,6 +1042,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "flashgrip_a"
 	light_mod = 5
 	slot = "under"
+	dim_light = FALSE
 	attachment_action_type = /datum/action/item_action/toggle/flashlight_grip
 	original_state = "flashgrip"
 	original_attach = "flashgrip_a"
@@ -1060,6 +1066,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "vplaserlight_a"
 	light_mod = 5
 	slot = "under"
+	dim_light = FALSE
 	attachment_action_type = /datum/action/item_action/toggle/flashlight_grip
 	original_state = "vplaserlight"
 	original_attach = "vplaserlight_a"
@@ -1308,7 +1315,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/scope/variable_zoom/proc/toggle_zoom_level()
 	if(using_scope)
-		to_chat(usr, SPAN_WARNING("You can't change the zoom setting on the [src] while you're looking through it!"))
+		to_chat(usr, SPAN_WARNING("You can't change the zoom setting on [src] while you're looking through it!"))
 		return
 	if(zoom_level == ZOOM_LEVEL_2X)
 		zoom_level = ZOOM_LEVEL_4X
@@ -3020,6 +3027,20 @@ Defined in conflicts.dm of the #defines folder.
 
 	revolver.flags_equip_slot |= SLOT_WAIST
 
+
+/obj/item/attachable/stock/m20a
+	name = "\improper M20A stock"
+	desc = "The M20A's standard polymer stock."
+	slot = "stock"
+	melee_mod = 5
+	size_mod = 1
+	icon_state = "m20astock"
+	attach_icon = "m20astock_a"
+	pixel_shift_x = 40
+	pixel_shift_y = 14
+	hud_offset_mod = 3
+
+
 // ======== Underbarrel Attachments ======== //
 
 
@@ -3591,6 +3612,23 @@ Defined in conflicts.dm of the #defines folder.
 					qdel(mag)
 			return
 	to_chat(user, SPAN_WARNING("[src] only accepts shotgun buckshot."))
+
+
+/obj/item/attachable/attached_gun/shotgun/m20a/unloaded
+	current_rounds = 0
+
+/obj/item/attachable/attached_gun/shotgun/m20a
+	name = "\improper U3 underbarrel shotgun"
+	desc = "An ARMAT U3 tactical shotgun. Integrated into the M20A Harrington rifle. Only capable of loading up to five buckshot shells, this one seems less effective at smashing down doors."
+	icon_state = "masterkey"
+	attach_icon = "masterkey_a"
+	flags_attach_features = ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON
+	hidden = TRUE
+
+
+/obj/item/attachable/attached_gun/shotgun/m20a/set_bullet_traits()
+	return
+
 
 /obj/item/attachable/attached_gun/shotgun/af13 //NSG underslung shottie
 	name = "\improper AF13 underbarrel shotgun"

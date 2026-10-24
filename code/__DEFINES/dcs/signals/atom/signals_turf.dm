@@ -21,6 +21,10 @@
  */
 #define COMSIG_TURF_ENTERED "turf_entered"
 
+/// Called when something attempts to deploy on the turf
+#define COMSIG_TURF_PRE_DEPLOYMENT "turf_pre_deployment"
+	#define COMPONENT_TURF_PRE_DEPLOYMENT_BLOCKED (1<<0)
+
 /// Called when a bullet hits a turf
 #define COMSIG_TURF_BULLET_ACT "turf_bullet_act"
 	#define COMPONENT_BULLET_ACT_OVERRIDE (1<<0)

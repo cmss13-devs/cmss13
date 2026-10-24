@@ -146,7 +146,7 @@
 	var/turf/T = get_turf(usr)
 	if(istype(T, /turf/open))
 		var/turf/open/floor = T
-		if(!floor.allow_construction)
+		if(!floor.allow_construction || !floor.validate_deployment(TURF_DEPLOYABLE_GUN))
 			to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
 			return FALSE
 	var/fail = FALSE
@@ -250,7 +250,7 @@
 	var/turf/T = get_turf(user)
 	if(istype(T, /turf/open))
 		var/turf/open/floor = T
-		if(!floor.allow_construction)
+		if(!floor.allow_construction || !floor.validate_deployment(TURF_DEPLOYABLE_GUN))
 			to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
 			return FALSE
 	var/fail = FALSE
@@ -532,6 +532,7 @@
 	unslashable = TRUE
 	unacidable = TRUE //stop the xeno me(l)ta.
 	density = TRUE
+	needs_power = FALSE
 	layer = ABOVE_MOB_LAYER //no hiding the hmg beind corpse
 	use_power = USE_POWER_NONE
 	projectile_coverage = PROJECTILE_COVERAGE_LOW

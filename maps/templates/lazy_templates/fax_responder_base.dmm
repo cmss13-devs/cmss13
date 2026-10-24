@@ -48,6 +48,18 @@
 /obj/item/tool/warning_cone,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/adminlevel/ert_station/fax_response_station/exterior)
+"ah" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/sorted/marine_food{
+	pixel_y = 16;
+	wrenchable = 0;
+	density = 0;
+	name = "\improper Food Vendor";
+	desc = "Contains replica military prepared meals.";
+	pixel_x = 10
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
 "ai" = (
 /obj/item/device/flashlight/lamp/tripod/grey{
 	anchored = 1;
@@ -55,12 +67,77 @@
 	},
 /turf/open/asphalt/cement,
 /area/adminlevel/ert_station/fax_response_station/exterior)
+"aj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/vending/coffee{
+	pixel_x = 4;
+	wrenchable = 0;
+	prices = list();
+	pixel_y = 16;
+	density = 0;
+	wires = 12
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"ak" = (
+/obj/structure/machinery/computer/arcade{
+	pixel_y = 17;
+	density = 0
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"al" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Bathroom";
+	dir = 1
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
 "am" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "an" = (
 /turf/open/auto_turf/snow/layer1,
 /area/adminlevel/ert_station/fax_response_station/exterior)
+"ao" = (
+/obj/structure/window/reinforced/toughened{
+	dir = 8
+	},
+/obj/item/tool/soap,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/adminlevel/ert_station/fax_response_station)
+"ap" = (
+/obj/structure/surface/table/woodentable,
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
+	pixel_y = 29
+	},
+/obj/item/pizzabox/pizza_galaxy/meat,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"aq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/woodentable,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"ar" = (
+/obj/structure/surface/table/woodentable,
+/obj/structure/machinery/hybrisa/coffee_machine{
+	pixel_y = 13;
+	pixel_x = 1
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -8;
+	pixel_y = -1
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 6
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -1;
+	pixel_y = -1
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
 "az" = (
 /obj/structure/machinery/cryopod/no_store{
 	pixel_y = 13
@@ -891,17 +968,6 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
-"jf" = (
-/obj/structure/machinery/cm_vending/sorted/marine_food{
-	pixel_y = 16;
-	wrenchable = 0;
-	density = 0;
-	name = "\improper Food Vendor";
-	desc = "Contains replica military prepared meals.";
-	pixel_x = 10
-	},
-/turf/open/floor/wood/ship,
-/area/adminlevel/ert_station/fax_response_station)
 "ji" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	icon_state = "almayer_pdoor";
@@ -928,17 +994,9 @@
 /turf/open/asphalt,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "jm" = (
-/obj/structure/window/reinforced/toughened{
-	layer = 2.99
-	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/emails{
-	dir = 1
-	},
-/obj/item/paper_bin{
-	pixel_x = -14;
-	pixel_y = 5;
-	layer = 2.98
+/obj/structure/machinery/disposal{
+	pixel_y = -3;
+	pixel_x = 4
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -2212,15 +2270,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/shiva/radiator_tile2,
 /area/adminlevel/ert_station/fax_response_station)
-"xj" = (
-/obj/structure/window/reinforced/toughened,
-/obj/structure/window/reinforced/toughened{
-	dir = 8
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/device/flashlight/lamp,
-/turf/open/floor/wood/ship,
-/area/adminlevel/ert_station/fax_response_station)
 "xm" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/light,
@@ -2419,23 +2468,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/red/northwest,
-/area/adminlevel/ert_station/fax_response_station)
-"zw" = (
-/obj/structure/window/reinforced/toughened,
-/obj/structure/window/reinforced/toughened{
-	dir = 4
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/device/flashlight/lamp,
-/obj/item/paper_bin{
-	pixel_x = -14;
-	pixel_y = 5
-	},
-/obj/item/tool/pen/red/clicky{
-	pixel_x = -15;
-	pixel_y = 2
-	},
-/turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "zy" = (
 /obj/structure/bed/chair/comfy{
@@ -2920,17 +2952,6 @@
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/red,
-/area/adminlevel/ert_station/fax_response_station)
-"DL" = (
-/obj/structure/machinery/vending/coffee{
-	pixel_x = 4;
-	wrenchable = 0;
-	prices = list();
-	pixel_y = 16;
-	density = 0;
-	wires = 12
-	},
-/turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "DP" = (
 /obj/structure/flora/jungle/vines/light_3,
@@ -3724,10 +3745,12 @@
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "LX" = (
-/obj/structure/flora/pottedplant/random{
-	pixel_y = 6;
-	pixel_x = -5;
-	layer = 4
+/obj/structure/window/framed/kutjevo/reinforced{
+	not_damageable = 1;
+	not_deconstructable = 1;
+	health = 999999;
+	unacidable = 1;
+	unslashable = 1
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -3832,15 +3855,11 @@
 /turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/fax_response_station)
 "Nt" = (
-/obj/structure/machinery/computer/arcade{
-	pixel_y = 17;
-	density = 0
-	},
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood/ship,
+/turf/closed/wall/kutjevo/colony/reinforced/hull,
 /area/adminlevel/ert_station/fax_response_station)
 "Nx" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
@@ -3872,9 +3891,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "NU" = (
-/obj/structure/window/reinforced/toughened,
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/emails{
+/obj/structure/bed/chair/comfy/beige{
 	dir = 1
 	},
 /turf/open/floor/wood/ship,
@@ -4859,6 +4876,9 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/comfy/beige{
+	dir = 8
+	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "ZP" = (
@@ -6745,7 +6765,7 @@ Ry
 wl
 gX
 xK
-bH
+ap
 NU
 LX
 TW
@@ -6785,9 +6805,9 @@ Ry
 wl
 gX
 xK
-TW
-zw
-wZ
+aq
+NU
+LX
 wZ
 Di
 wZ
@@ -6827,7 +6847,7 @@ gX
 xK
 ZL
 wZ
-wZ
+al
 wZ
 Ba
 Tg
@@ -6866,8 +6886,8 @@ wl
 gX
 xK
 wZ
-xj
 wZ
+LX
 wZ
 wg
 ID
@@ -6905,9 +6925,9 @@ Ry
 wl
 gX
 xK
-bH
+ar
 jm
-wZ
+LX
 wZ
 fo
 yR
@@ -6947,8 +6967,8 @@ gX
 xK
 xK
 xK
-jf
-TW
+xK
+ah
 rX
 AQ
 Nx
@@ -6986,9 +7006,9 @@ wl
 gX
 xK
 NV
+Ph
 xK
-DL
-TW
+aj
 fo
 pl
 xK
@@ -7026,8 +7046,8 @@ wl
 gX
 xK
 bf
+Ph
 Dw
-wZ
 wZ
 cX
 bX
@@ -7066,9 +7086,9 @@ wl
 gX
 xK
 sI
-xK
+ao
 Nt
-wZ
+ak
 fo
 tJ
 xK

@@ -197,8 +197,6 @@
 				if(!anchored)
 					gib()
 
-	updatehealth()
-
 /// Abstract version of the silicon, to be used when the mob is just an internal proxy
 /mob/living/silicon/abstract
 	mob_flags = MOB_ABSTRACT

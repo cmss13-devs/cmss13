@@ -919,6 +919,11 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(damage_modifier > 0.5)
 		playsound(loc, "slam", 50, 1)
 
+/// Validate that a type of object can be deployed on this turf
+/turf/proc/validate_deployment(deployment_type)
+	var/ret = SEND_SIGNAL(src, COMSIG_TURF_PRE_DEPLOYMENT, deployment_type)
+	return !(ret & COMPONENT_TURF_PRE_DEPLOYMENT_BLOCKED)
+
 /turf/proc/on_climb_down(victim)
 	if(!isxeno(victim))
 		return
@@ -932,4 +937,8 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	xeno_victim.Superslow(1)
 	xeno_victim.Slow(1.5)
 	xeno_victim.Daze(1)
+
+/turf/proc/is_signal_obstructed()
+	var/area/laser_area = get_area(src)
+	return !istype(laser_area) || CEILING_IS_PROTECTED(laser_area.ceiling, CEILING_PROTECTION_TIER_2)
 

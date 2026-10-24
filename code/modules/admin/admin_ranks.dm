@@ -83,12 +83,14 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 	return rights
 
 /proc/load_admins()
+	set waitfor = FALSE
+
 	//Clear profile access
 	for(var/admin in world.GetConfig("admin"))
 		log_debug("Clearing [admin] from APP/admin.")
 		world.SetConfig("APP/admin", admin, null)
 
-	if(CONFIG_GET(string/cmdb_url) && CONFIG_GET(string/cmdb_api_key) && fetch_api_admins())
+	if(fetch_api_admins())
 		return
 
 	//clear the datums references
@@ -160,7 +162,7 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 	var/datum/admins/D = new /datum/admins(rank, rights, ckey, extra_titles)
 
 	//find the client for a ckey if they are connected and associate them with the new admin datum
-	INVOKE_ASYNC(D, TYPE_PROC_REF(/datum/admins, associate), GLOB.directory[ckey])
+	INVOKE_ASYNC(D, TYPE_PROC_REF(/datum/admins, associate_or_deadmin), GLOB.directory[ckey])
 
 /datum/config_entry/string/cmdb_url
 	protection = CONFIG_ENTRY_LOCKED
@@ -244,8 +246,6 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
  * ```
  */
 /proc/fetch_api_admins()
-	set waitfor = FALSE
-
 	var/api_url = CONFIG_GET(string/cmdb_url)
 	var/api_key = CONFIG_GET(string/cmdb_api_key)
 
@@ -351,7 +351,7 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 
 		var/datum/admins/admin_datum = new(changed_user["display_name"], final_rights, changed_user["ckey"], additional_title)
 
-		INVOKE_ASYNC(admin_datum, TYPE_PROC_REF(/datum/admins, associate), GLOB.directory[changed_user["ckey"]])
+		INVOKE_ASYNC(admin_datum, TYPE_PROC_REF(/datum/admins, associate_or_deadmin), GLOB.directory[changed_user["ckey"]])
 
 		cached_api_response[changed_user["ckey"]] = changed_user
 

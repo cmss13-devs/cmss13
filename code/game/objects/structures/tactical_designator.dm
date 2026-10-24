@@ -182,8 +182,8 @@
 		QDEL_NULL(laser)
 		to_chat(user, SPAN_NOTICE("Designation cancelled."))
 		return TRUE
-	if(!isliving(targeted_atom) && !isturf(targeted_atom))
-		return TRUE
+	if(!isliving(targeted_atom))
+		targeted_atom = get_turf(targeted_atom)
 	if(!can_designate(targeted_atom))
 		return TRUE
 	acquire_target(targeted_atom, user)

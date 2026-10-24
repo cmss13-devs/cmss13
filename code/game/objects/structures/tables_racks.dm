@@ -34,12 +34,14 @@
 	var/upright_projectile_coverage = PROJECTILE_COVERAGE_LOW
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_UNSUITED
 
+
 /obj/structure/surface/table/Initialize()
 	. = ..()
 
-	for(var/obj/structure/surface/table/T in src.loc)
+	for(var/obj/structure/surface/table/T in loc)
 		if(T != src)
 			qdel(T)
+
 	if(flipped)
 		projectile_coverage = flipped_projectile_coverage
 	else
@@ -47,6 +49,115 @@
 
 	update_adjacent()
 	update_icon()
+	return INITIALIZE_HINT_LATELOAD
+
+
+/obj/structure/surface/table/LateInitialize()
+	if(!flipped)
+		return
+
+	if(HAS_TRAIT(src, TRAIT_TABLE_FLIPPING))	// Already handled as part of another table's group
+		return
+
+	apply_mapped_flip()
+
+
+/// Apply full in-game flip state for tables mapped with flipped = TRUE.
+/obj/structure/surface/table/proc/apply_mapped_flip()
+	var/list/group = get_connected_flipped_tables()
+	var/flip_dir = resolve_mapped_flip_dir(group)
+
+	if(!flip_dir)	// Bend/invalid shape — don't leave inconsistent half-flipped tables
+		for(var/obj/structure/surface/table/T as anything in group)
+			T.flipped = FALSE
+			T.projectile_coverage = T.upright_projectile_coverage
+			T.update_icon()
+			T.update_adjacent()
+		return
+
+	for(var/obj/structure/surface/table/T as anything in group)
+		T.apply_flip_state(flip_dir)
+
+
+/obj/structure/surface/table/proc/get_connected_flipped_tables()
+	var/list/group = list()
+	var/list/queue = list(src)
+	while(length(queue))
+		var/obj/structure/surface/table/T = queue[1]
+		queue.Cut(1, 2)
+		if(T in group)
+			continue
+		group += T
+		for(var/d in GLOB.cardinals)
+			var/obj/structure/surface/table/N = locate() in get_step(T, d)
+			if(N?.flipped && !(N in group))
+				queue += N
+	return group
+
+
+/// Returns a cardinal flip direction, or null if the group is not a straight line (for mapping)
+/obj/structure/surface/table/proc/resolve_mapped_flip_dir(list/group)
+	var/min_x = INFINITY
+	var/max_x = -INFINITY
+	var/min_y = INFINITY
+	var/max_y = -INFINITY
+
+	for(var/obj/structure/surface/table/T as anything in group)
+		min_x = min(min_x, T.x)
+		max_x = max(max_x, T.x)
+		min_y = min(min_y, T.y)
+		max_y = max(max_y, T.y)
+
+	var/width = max_x - min_x
+	var/height = max_y - min_y
+
+	if(width == 0 && height == 0)	// Single table: use mapped dir if cardinal, else keep SOUTH
+		return (dir in GLOB.cardinals) ? dir : SOUTH
+
+	if(width > 0 && height > 0)	// Must be a straight row or column
+		return null
+
+	if(height == 0)	// Also reject gaps / non-line shapes: every tile on the segment should be in the group
+		for(var/x = min_x to max_x)	// horizontal row → flip N/S (orthogonal to E-W run)
+			var/found = FALSE
+			for(var/obj/structure/surface/table/T as anything in group)
+				if(T.x == x && T.y == min_y)
+					found = TRUE
+					break
+			if(!found)
+				return null
+		if(dir == NORTH || dir == SOUTH)
+			return dir
+		return SOUTH
+
+	for(var/y = min_y to max_y)	// vertical column → flip E/W
+		var/found = FALSE
+		for(var/obj/structure/surface/table/T as anything in group)
+			if(T.y == y && T.x == min_x)
+				found = TRUE
+				break
+		if(!found)
+			return null
+	if(dir == EAST || dir == WEST)
+		return dir
+	return EAST
+
+
+/// Same end state as flip(), without player checks / throwing / cascading (for mapping)
+/obj/structure/surface/table/proc/apply_flip_state(direction)
+	verbs -= /obj/structure/surface/table/verb/do_flip
+	verbs += /obj/structure/surface/table/proc/do_put
+
+	projectile_coverage = flipped_projectile_coverage
+	setDir(direction)
+	layer = (dir == NORTH) ? initial(layer) : FLY_LAYER
+	flipped = TRUE
+	flags_can_pass_all_temp &= ~PASS_UNDER
+	flags_atom |= ON_BORDER
+
+	update_icon()
+	update_adjacent()
+
 
 /obj/structure/surface/table/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -245,7 +356,11 @@
 /obj/structure/surface/table/MouseDrop(over_object, src_location, over_location)
 	. = ..()
 	if(.)
-		return .
+		return
+
+	// Must start on this table (src) and release on the dragging mob
+	if(over_object != usr)
+		return
 
 	if(flipped)
 		do_put()
@@ -352,6 +467,7 @@
 		return FALSE
 	return TRUE
 
+
 /obj/structure/surface/table/verb/do_flip()
 	set name = "Flip table"
 	set desc = "Flips a non-reinforced table."
@@ -359,6 +475,7 @@
 	set src in oview(1)
 
 	if(!can_touch(usr))
+		to_chat(usr, SPAN_WARNING("You can't reach [src]."))
 		return
 
 	if(usr.mob_size == MOB_SIZE_SMALL)
@@ -377,7 +494,7 @@
 		return
 
 	usr.visible_message(SPAN_WARNING("[usr] flips [src]!"),
-	SPAN_WARNING("You flip [src]!"))
+		SPAN_WARNING("You flip [src]!"))
 	playsound(loc, "metalbang", 25)
 
 	if(climbable)
@@ -387,31 +504,37 @@
 
 /obj/structure/surface/table/proc/unflipping_check(direction)
 	if(world.time < flip_cooldown)
-		to_chat(usr, SPAN_WARNING("You have moved a table too recently."))
+		to_chat(usr, SPAN_WARNING("This table has been moved too recently."))
 		return FALSE
 
-	FOR_DOVIEW(var/mob/living/mob_behind_table, 0, src, HIDE_INVISIBLE_OBSERVER)
-		to_chat(usr, SPAN_WARNING("[mob_behind_table] is in the way of [src]."))
-		FOR_DVIEW_END
-		return FALSE
-	FOR_DVIEW_END
+	var/turf/table_turf = get_turf(src)	// Anyone standing on this table's tile blocks putting it back
+	if(table_turf)
+		for(var/mob/living/mob_on_table in table_turf)
+			to_chat(usr, SPAN_WARNING("[mob_on_table] is in the way of [src]."))
+			return FALSE
 
-	var/list/directions = list()
+	var/list/dirs_to_check = list()	// If we're checking a specific side, only that dir; else both sides along the flip axis
 	if(direction)
-		directions.Add(direction)
+		dirs_to_check += direction
 	else
-		directions.Add(turn(src.dir,-90))
-		directions.Add(turn(src.dir,90))
-	for(var/new_dir in directions)
-		var/obj/structure/surface/table/adjacent_table = locate() in get_step(loc, new_dir)
+		dirs_to_check += turn(dir, -90)
+		dirs_to_check += turn(dir, 90)
+
+	for(var/check_dir in dirs_to_check)
+		var/obj/structure/surface/table/adjacent_table = locate() in get_step(loc, check_dir)
 		if(!adjacent_table)
 			continue
-		if(adjacent_table.flipped && adjacent_table.dir == src.dir && !adjacent_table.unflipping_check(new_dir))
+		// Same-facing flipped neighbor must also be clear to unflip
+		if(adjacent_table.flipped && adjacent_table.dir == dir && !adjacent_table.unflipping_check(check_dir))
 			return FALSE
-	for(var/obj/structure/structure_behind_table in get_turf(src))
-		if((structure_behind_table.flags_atom & ON_BORDER) && structure_behind_table.density && structure_behind_table != src) //We would put back on a structure that wouldn't allow it
-			to_chat(usr, SPAN_WARNING("[structure_behind_table] is in the way of [src]."))
+
+	for(var/obj/structure/structure_on_tile in loc)	// Dense ON_BORDER structures on this tile would conflict with standing the table back up
+		if(structure_on_tile == src)
+			continue
+		if((structure_on_tile.flags_atom & ON_BORDER) && structure_on_tile.density)
+			to_chat(usr, SPAN_WARNING("[structure_on_tile] is in the way of [src]."))
 			return FALSE
+
 	return TRUE
 
 /obj/structure/surface/table/proc/do_put()
@@ -421,12 +544,17 @@
 	set src in oview(1)
 
 	if(!can_touch(usr))
+		to_chat(usr, SPAN_WARNING("You can't reach [src]."))
 		return
 
 	if(!unflipping_check())
 		return
 
 	unflip()
+
+	usr.visible_message(SPAN_NOTICE("[usr] puts [src] back upright."),
+		SPAN_NOTICE("You put [src] back upright."))
+	playsound(loc, "metalbang", 15)
 
 	flip_cooldown = world.time + 5 SECONDS
 
@@ -435,7 +563,7 @@
  */
 /obj/structure/surface/table/proc/flip(direction, skip_straight_check=FALSE)
 	if(world.time < flip_cooldown)
-		to_chat(usr, SPAN_WARNING("You have moved a table too recently."))
+		to_chat(usr, SPAN_WARNING("This table has been moved too recently."))
 		return FALSE
 
 	if(!skip_straight_check && !(straight_table_check(turn(direction, 90)) && straight_table_check(turn(direction, -90))))
@@ -497,6 +625,11 @@
 
 	return TRUE
 
+/obj/structure/surface/table/flipped
+	icon_state = "flip0"
+	dir = SOUTH
+	flipped = TRUE
+
 /*
  * Wooden tables
  */
@@ -509,12 +642,26 @@
 	table_prefix = "wood"
 	health = 50
 
+
+/obj/structure/surface/table/woodentable/flipped
+	icon_state = "woodflip0"
+	dir = SOUTH
+	flipped = TRUE
+
+
 /obj/structure/surface/table/woodentable/poor
 	name = "poor wooden table"
 	desc = "A semi-poorly constructed wood surface resting on four legs. Useful to put stuff on. Can be flipped in emergencies to act as cover."
 	icon_state = "pwoodtable"
 	parts = /obj/item/frame/table/wood/poor
 	table_prefix = "pwood"
+
+
+/obj/structure/surface/table/woodentable/poor/flipped
+	icon_state = "pwoodflip0"
+	dir = SOUTH
+	flipped = TRUE
+
 
 /obj/structure/surface/table/woodentable/fancy
 	name = "fancy wooden table"
@@ -531,6 +678,7 @@
 	table_prefix = "fbwood"
 
 /obj/structure/surface/table/woodentable/fancy/flip(direction)
+	to_chat(usr, SPAN_WARNING("This table cannot be flipped, its bolted to the ground!"))
 	return 0 //That is mahogany!
 /*
  * Gambling tables
@@ -543,6 +691,14 @@
 	parts = /obj/item/frame/table/gambling
 	table_prefix = "gamble"
 	health = 50
+
+
+/obj/structure/surface/table/gamblingtable/flipped
+	icon_state = "gambleflip0"
+	dir = SOUTH
+	flipped = TRUE
+
+
 /*
  * Reinforced tables
  */
@@ -557,6 +713,7 @@
 	parts = /obj/item/frame/table/reinforced
 
 /obj/structure/surface/table/reinforced/flip(direction)
+	to_chat(usr, SPAN_WARNING("This table cannot be flipped, its bolted to the ground!"))
 	return 0 //No, just no. It's a full desk, you can't flip that
 
 /obj/structure/surface/table/reinforced/attackby(obj/item/W as obj, mob/user as mob)
@@ -594,10 +751,23 @@
 
 	. = ..()
 
+/obj/structure/surface/table/reinforced/flipped	//It has flipped icon_states, not to mention lv624 var edits them to be flipped...
+	icon_state = "reinfflip0"
+	dir = SOUTH
+	flipped = TRUE
+
+
 /obj/structure/surface/table/reinforced/prison
 	desc = "A square metal surface resting on four legs. This one has side panels, making it useful as a desk, but impossible to flip."
 	icon_state = "prisontable"
 	table_prefix = "prison"
+
+
+/obj/structure/surface/table/reinforced/prison/flipped	//It has flipped icon_states, just going to leave this here... maybe to be unused
+	icon_state = "prisonflip0"
+	dir = SOUTH
+	flipped = TRUE
+
 
 /obj/structure/surface/table/reinforced/rostock_blend
 	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."
@@ -670,6 +840,12 @@
 	icon_state = "almtable"
 	table_prefix = "alm"
 	parts = /obj/item/frame/table/almayer
+
+/obj/structure/surface/table/almayer/flipped
+	icon_state = "almflip0"
+	dir = SOUTH
+	flipped = TRUE
+
 
 /obj/structure/surface/table/reinforced/cloth
 	name = "cloth table"

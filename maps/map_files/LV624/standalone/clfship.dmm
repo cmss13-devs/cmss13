@@ -377,6 +377,10 @@
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
+"bl" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/west_barrens)
 "by" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/west_caves)
@@ -4039,9 +4043,9 @@ vw
 vw
 vw
 vw
-vw
-vw
-vw
+bl
+bl
+bl
 vw
 Yj
 Yj
@@ -4086,9 +4090,9 @@ vw
 vw
 vw
 vw
-vw
-vw
-vw
+bl
+bl
+bl
 vw
 Yj
 Yj

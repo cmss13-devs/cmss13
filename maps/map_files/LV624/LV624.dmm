@@ -2151,6 +2151,11 @@
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
+"ait" = (
+/obj/item/tool/shovel,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/west_barrens)
 "aiu" = (
 /obj/effect/landmark/corpsespawner/miner,
 /turf/open/floor/redyellowfull,
@@ -2188,6 +2193,11 @@
 /obj/effect/spawner/random/tech_supply,
 /turf/open/floor/plating/warnplate/north,
 /area/lv624/ground/barrens/east_barrens/ceiling)
+"aiC" = (
+/obj/structure/ore_box,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/west_barrens)
 "aiD" = (
 /obj/structure/sink{
 	pixel_y = 30
@@ -35053,11 +35063,11 @@ rcY
 ahL
 hZW
 ahy
-xwr
-lTZ
-xwr
-xwr
+aho
+ait
 ahp
+ahp
+aho
 xwr
 xwr
 oyx
@@ -35277,12 +35287,12 @@ aif
 ahL
 ahJ
 ahx
+aho
 xwr
 xwr
 xwr
-aho
-aho
-aho
+xwr
+xwr
 xwr
 iNB
 oyx
@@ -35501,12 +35511,12 @@ ahy
 ahy
 ahx
 ahx
-xwr
+aho
 xwr
 ajR
 jTP
-aho
-aho
+xwr
+xwr
 xwr
 oyx
 aZa
@@ -35724,12 +35734,12 @@ xwr
 xwr
 xwr
 xwr
-alg
+aiC
+aho
 xwr
 xwr
 xwr
 xwr
-ahp
 xwr
 xwr
 oyx
@@ -35947,13 +35957,13 @@ aho
 xwr
 xwr
 xwr
-xwr
-xwr
 aho
-ahp
-ahp
-ahp
-ahp
+aho
+aho
+xwr
+xwr
+xwr
+xwr
 xwr
 xwr
 aZa
@@ -36171,9 +36181,9 @@ aho
 aho
 xwr
 xwr
+aho
+aho
 xwr
-aho
-aho
 xwr
 xwr
 xwr
@@ -36395,9 +36405,9 @@ aho
 aho
 ahp
 ahp
-ahp
 aho
-aht
+aho
+jTP
 xwr
 xwr
 aZa

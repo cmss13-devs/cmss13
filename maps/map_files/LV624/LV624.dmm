@@ -1921,19 +1921,19 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "aht" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/obj/item/tool/shovel,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/west_barrens)
 "ahu" = (
+/obj/structure/ore_box,
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
+/area/lv624/ground/barrens/west_barrens)
 "ahv" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/sand_temple)
 "ahw" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -1950,7 +1950,8 @@
 /turf/open/floor/redyellowfull,
 /area/lv624/ground/barrens/west_barrens/ceiling)
 "ahA" = (
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "ahB" = (
@@ -1958,34 +1959,33 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "ahC" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
+"ahD" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
-"ahD" = (
+"ahE" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"ahE" = (
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/east_barrens)
 "ahF" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "ahG" = (
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
+/area/lv624/ground/barrens/east_barrens)
 "ahH" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "ahI" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/gm/dirt,
-/area/lv624/ground/barrens/west_barrens)
+/area/lv624/ground/caves/sand_temple)
 "ahJ" = (
 /obj/structure/girder,
 /turf/open/floor/redyellowfull,
@@ -2014,9 +2014,10 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/containers)
 "ahP" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/gm/dirt,
-/area/lv624/ground/barrens/east_barrens)
+/area/lv624/ground/barrens/west_barrens)
 "ahQ" = (
 /obj/structure/surface/table/reinforced{
 	flipped = 1
@@ -2036,7 +2037,7 @@
 /area/lv624/ground/barrens/central_barrens)
 "ahU" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
-/turf/open/floor,
+/turf/open/gm/dirt,
 /area/lv624/ground/barrens/east_barrens)
 "ahV" = (
 /obj/effect/landmark/crap_item,
@@ -2047,35 +2048,35 @@
 /turf/open/floor/redyellowfull,
 /area/lv624/ground/barrens/west_barrens/ceiling)
 "ahX" = (
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/central_barrens)
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/floor,
+/area/lv624/ground/barrens/east_barrens)
 "ahY" = (
-/obj/effect/decal/remains/xeno,
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/central_barrens)
 "ahZ" = (
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/obj/effect/decal/remains/xeno,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/central_barrens)
 "aia" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/central_barrens)
 "aib" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/central_barrens)
+"aic" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
-"aic" = (
+"aid" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/containers)
-"aid" = (
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/sand_temple)
 "aie" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/redyellowfull,
@@ -2085,19 +2086,19 @@
 /turf/open/floor/redyellowfull,
 /area/lv624/ground/barrens/west_barrens/ceiling)
 "aig" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/central_barrens)
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "aih" = (
 /obj/structure/largecrate/random,
 /obj/item/tool/crowbar/red,
 /turf/open/floor/plating/warnplate/northwest,
 /area/lv624/ground/barrens/east_barrens/ceiling)
 "aii" = (
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
-/turf/open/floor,
-/area/lv624/ground/barrens/containers)
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/central_barrens)
 "aij" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/close,
@@ -2112,7 +2113,7 @@
 /area/lv624/ground/barrens/east_barrens/ceiling)
 "ail" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
-/turf/open/floor/bot/north,
+/turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "aim" = (
 /obj/structure/surface/table,
@@ -2144,18 +2145,18 @@
 /turf/open/floor/plating/warnplate/northeast,
 /area/lv624/ground/barrens/east_barrens/ceiling)
 "air" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/west_barrens)
+"ais" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/floor/bot/north,
+/area/lv624/ground/barrens/containers)
+"ait" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/central_barrens)
-"ais" = (
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/north_east_barrens)
-"ait" = (
-/obj/item/tool/shovel,
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/west_barrens)
 "aiu" = (
 /obj/effect/landmark/corpsespawner/miner,
 /turf/open/floor/redyellowfull,
@@ -2194,10 +2195,9 @@
 /turf/open/floor/plating/warnplate/north,
 /area/lv624/ground/barrens/east_barrens/ceiling)
 "aiC" = (
-/obj/structure/ore_box,
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/gm/dirt,
-/area/lv624/ground/barrens/west_barrens)
+/area/lv624/ground/barrens/north_east_barrens)
 "aiD" = (
 /obj/structure/sink{
 	pixel_y = 30
@@ -35064,7 +35064,7 @@ ahL
 hZW
 ahy
 aho
-ait
+aht
 ahp
 ahp
 aho
@@ -35734,7 +35734,7 @@ xwr
 xwr
 xwr
 xwr
-aiC
+ahu
 aho
 xwr
 xwr
@@ -36613,7 +36613,7 @@ abS
 abS
 abS
 aho
-aht
+air
 aho
 xwr
 xwr
@@ -36841,7 +36841,7 @@ aho
 aho
 ahp
 ahp
-ahI
+ahP
 aho
 aho
 xwr
@@ -42656,7 +42656,7 @@ abS
 abS
 abS
 abS
-ahX
+ahY
 wVk
 wVk
 wVk
@@ -42880,9 +42880,9 @@ abS
 abS
 abS
 abS
-ahX
-ahX
-ahX
+ahY
+ahY
+ahY
 wVk
 wVk
 afy
@@ -43105,8 +43105,8 @@ abS
 abS
 abS
 wVk
-ahX
-ahX
+ahY
+ahY
 wvP
 wVk
 wVk
@@ -43330,7 +43330,7 @@ abS
 wVk
 wVk
 wVk
-aia
+aib
 wVk
 wVk
 wVk
@@ -43552,14 +43552,14 @@ abS
 wVk
 wVk
 wVk
-air
+ait
 wVk
-ahZ
-ahZ
-ahZ
+aia
+aia
+aia
+aia
 ahZ
 ahY
-ahX
 afk
 afk
 wVk
@@ -43782,8 +43782,8 @@ wVk
 wVk
 wVk
 wVk
-aig
-ahY
+aii
+ahZ
 wVk
 afk
 wVk
@@ -44006,8 +44006,8 @@ aet
 aet
 wVk
 wVk
-ahX
-ahX
+ahY
+ahY
 wVk
 wVk
 wVk
@@ -44228,10 +44228,10 @@ aeN
 qjf
 qjf
 qjf
-air
+ait
 wVk
 wVk
-ahZ
+aia
 wVk
 wVk
 wVk
@@ -44455,7 +44455,7 @@ aex
 aex
 aex
 wVk
-ahZ
+aia
 wVk
 wVk
 csM
@@ -44670,7 +44670,7 @@ pDt
 aem
 qjf
 aex
-aii
+ail
 qjf
 qjf
 qjf
@@ -44679,7 +44679,7 @@ qjf
 qjf
 aex
 wVk
-ahZ
+aia
 wVk
 wVk
 wVk
@@ -44900,10 +44900,10 @@ qjf
 qjf
 aff
 qjf
-aii
+ail
 aex
 wVk
-aia
+aib
 lQC
 lQC
 muz
@@ -45127,9 +45127,9 @@ qjf
 qjf
 aex
 qjf
-ahE
-ahE
-ahE
+ahG
+ahG
+ahG
 xVb
 nqv
 syx
@@ -45351,9 +45351,9 @@ qjf
 qjf
 aex
 qjf
-ahE
-ahE
-ahE
+ahG
+ahG
+ahG
 xVb
 nqv
 nqv
@@ -45568,16 +45568,16 @@ qjf
 aex
 qjf
 qjf
-aic
+aid
 xNK
 xNK
 qjf
-aii
+ail
 aex
 qjf
 qjf
-ahE
-ahE
+ahG
+ahG
 fpn
 uSy
 nnL
@@ -45801,7 +45801,7 @@ pcz
 qjf
 qjf
 lQC
-ahP
+ahU
 qIw
 xVb
 pcd
@@ -46025,7 +46025,7 @@ aex
 qjf
 qjf
 lQC
-ahP
+ahU
 lQC
 xVb
 jLv
@@ -46249,7 +46249,7 @@ aet
 aet
 aet
 aet
-ahP
+ahU
 lQC
 fpn
 uSy
@@ -46458,10 +46458,10 @@ adM
 adR
 oeN
 pDt
-ais
+aiC
 aem
 qjf
-ail
+ais
 qjf
 qjf
 qjf
@@ -46470,10 +46470,10 @@ qjf
 qjf
 qjf
 aex
-aii
+ail
 qjf
 qjf
-ahP
+ahU
 tMB
 lQC
 fpn
@@ -46697,7 +46697,7 @@ aex
 qjf
 qjf
 qjf
-ahE
+ahG
 lQC
 lQC
 lQC
@@ -46922,7 +46922,7 @@ qjf
 afZ
 qjf
 pim
-ahE
+ahG
 lQC
 lQC
 lQC
@@ -47145,8 +47145,8 @@ jvl
 qjf
 aga
 qjf
-ahE
-ahE
+ahG
+ahG
 lQC
 lQC
 lQC
@@ -47369,7 +47369,7 @@ kzE
 qjf
 agb
 qjf
-ahE
+ahG
 lQC
 lQC
 lQC
@@ -47593,7 +47593,7 @@ aex
 qjf
 xNK
 qjf
-ahP
+ahU
 lQC
 lQC
 lQC
@@ -47805,19 +47805,19 @@ pDt
 pDt
 aen
 xNK
-aic
+aid
 xNK
 qjf
 qjf
 qjf
 qjf
 qjf
-aii
+ail
 aex
 qjf
 qjf
 qjf
-ahU
+ahX
 lQC
 lQC
 nIA
@@ -48041,7 +48041,7 @@ afd
 afd
 afd
 kPL
-ahP
+ahU
 lQC
 lQC
 lQC
@@ -48487,8 +48487,8 @@ qjf
 qjf
 aex
 afR
-aib
-ahE
+aic
+ahG
 agr
 agz
 agL
@@ -48703,16 +48703,16 @@ aen
 xNK
 xNK
 aeH
-aii
+ail
 aeQ
 qjf
 qjf
 qjf
 qjf
-ail
+ais
 qjf
-aib
-ahE
+aic
+ahG
 lQC
 lQC
 lQC
@@ -48936,9 +48936,9 @@ aex
 aex
 qjf
 qjf
-ahE
-ahE
-ahE
+ahG
+ahG
+ahG
 lQC
 lQC
 tMB
@@ -49161,8 +49161,8 @@ qjf
 qjf
 qjf
 lQC
-ahE
-ahE
+ahG
+ahG
 lQC
 lQC
 lQC
@@ -49385,7 +49385,7 @@ afd
 afd
 agc
 lQC
-ahE
+ahG
 hHR
 lQC
 lQC
@@ -49602,7 +49602,7 @@ xNK
 xNK
 aeE
 xNK
-aic
+aid
 xNK
 xNK
 xNK
@@ -49831,9 +49831,9 @@ xNK
 xNK
 bfc
 xNK
-aic
+aid
 lQC
-ahE
+ahG
 hHR
 hHR
 hHR
@@ -50057,7 +50057,7 @@ xNK
 xNK
 xNK
 lQC
-ahP
+ahU
 lQC
 hHR
 hHR
@@ -50281,7 +50281,7 @@ xNK
 ahv
 ahv
 lQC
-ahP
+ahU
 tMB
 lQC
 hHR
@@ -50505,7 +50505,7 @@ ahv
 ahv
 ahv
 ahv
-ahE
+ahG
 lQC
 lQC
 lQC
@@ -51630,11 +51630,11 @@ ahv
 ahv
 ahv
 ahv
-ahu
-ahA
-ahA
-ahu
-ahu
+ahw
+ahC
+ahC
+ahw
+ahw
 xch
 xch
 xch
@@ -51857,8 +51857,8 @@ xch
 xch
 xch
 xch
-ahu
 ahw
+ahA
 xch
 xch
 xch
@@ -52082,7 +52082,7 @@ xch
 xch
 xch
 xch
-ahA
+ahC
 xch
 xch
 xch
@@ -52306,7 +52306,7 @@ xch
 xch
 oGr
 abz
-ahA
+ahC
 xch
 xch
 xch
@@ -52522,7 +52522,7 @@ qeW
 btX
 cag
 agX
-ahG
+ahI
 agX
 agX
 xch
@@ -52530,7 +52530,7 @@ xch
 xch
 xch
 xch
-ahA
+ahC
 xch
 xch
 xch
@@ -52749,12 +52749,12 @@ agX
 agX
 ahv
 ahv
-ahu
+ahw
 xch
 xch
 ffC
-ahu
-ahu
+ahw
+ahw
 oGr
 ukE
 oGr
@@ -52972,13 +52972,13 @@ agX
 agX
 agX
 ahv
+ahD
+ahw
 ahC
-ahu
-ahA
-ahA
-ahA
-ahu
-ahu
+ahC
+ahC
+ahw
+ahw
 xch
 xch
 rGZ
@@ -53197,7 +53197,7 @@ agX
 agX
 ahv
 ahv
-ahu
+ahw
 xch
 xch
 xch
@@ -53417,7 +53417,7 @@ poE
 agX
 agX
 agX
-ahG
+ahI
 agX
 agX
 ahv
@@ -54311,7 +54311,7 @@ ksB
 uMD
 agX
 boe
-aid
+aig
 boe
 agX
 kqL
@@ -54759,7 +54759,7 @@ wUz
 bkP
 boe
 boe
-ahG
+ahI
 agX
 hUD
 iLM
@@ -54983,7 +54983,7 @@ cJY
 dDa
 boe
 agX
-ahG
+ahI
 boe
 agX
 agX
@@ -56104,7 +56104,7 @@ ahv
 fqS
 agX
 agX
-ahG
+ahI
 ahv
 ahv
 ahv
@@ -56556,7 +56556,7 @@ agX
 agX
 ahv
 ahv
-ahu
+ahw
 fgS
 fgS
 fgS
@@ -56779,7 +56779,7 @@ agX
 pDK
 agX
 agX
-ahD
+ahE
 xch
 xch
 fgS
@@ -57000,10 +57000,10 @@ nLf
 rac
 agX
 agX
-ahG
+ahI
 agX
 agX
-ahA
+ahC
 xch
 xch
 xch
@@ -57227,7 +57227,7 @@ agX
 agX
 agX
 agX
-ahA
+ahC
 xch
 xch
 rGZ
@@ -57451,8 +57451,8 @@ agX
 agX
 ahv
 ahv
-ahu
-ahu
+ahw
+ahw
 xch
 xch
 xch

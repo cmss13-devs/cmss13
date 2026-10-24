@@ -367,20 +367,20 @@
 "bi" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/gm/dirt,
-/area/lv624/ground/caves/south_west_caves)
+/area/lv624/ground/barrens/west_barrens)
 "bj" = (
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "bk" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
+"bl" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
-"bl" = (
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/west_barrens)
 "by" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/west_caves)
@@ -2236,7 +2236,7 @@ Hj
 Hj
 "}
 (7,1,1) = {"
-bk
+bl
 aT
 Hj
 Hj
@@ -2283,7 +2283,7 @@ Hj
 Yj
 "}
 (8,1,1) = {"
-bk
+bl
 aT
 aT
 Hj
@@ -2330,7 +2330,7 @@ Hj
 Yj
 "}
 (9,1,1) = {"
-bk
+bl
 aT
 aT
 aT
@@ -2377,7 +2377,7 @@ Hj
 Yj
 "}
 (10,1,1) = {"
-bk
+bl
 aT
 aT
 aT
@@ -2424,7 +2424,7 @@ Hj
 Yj
 "}
 (11,1,1) = {"
-bk
+bl
 aT
 aT
 aT
@@ -3802,7 +3802,7 @@ Hj
 Hj
 Hj
 Hj
-bi
+bj
 Ab
 Ab
 Ab
@@ -3849,7 +3849,7 @@ Hj
 Hj
 Hj
 Hj
-bi
+bj
 Ab
 Ab
 Ab
@@ -3895,13 +3895,13 @@ Hj
 Hj
 Hj
 Hj
-bi
-bi
 bj
 bj
+bk
+bk
+bk
 bj
-bi
-bi
+bj
 Hj
 Hj
 Hj
@@ -3947,7 +3947,7 @@ Ab
 Ab
 Ab
 Ab
-bi
+bj
 Hj
 Hj
 Hj
@@ -4043,9 +4043,9 @@ vw
 vw
 vw
 vw
-bl
-bl
-bl
+bi
+bi
+bi
 vw
 Yj
 Yj
@@ -4090,9 +4090,9 @@ vw
 vw
 vw
 vw
-bl
-bl
-bl
+bi
+bi
+bi
 vw
 Yj
 Yj

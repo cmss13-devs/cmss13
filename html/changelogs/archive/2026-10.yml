@@ -181,3 +181,7 @@
   - bugfix: Minimap now properly displays inside the console window, and is live updated.
   - refactor: Refactored direct fire code to properly update the impact area when
       the signal is lost mid-transit.
+2026-10-24:
+  Kugamo:
+  - imagetweak: North facing wooden barricades sprites are now on the north side of
+      tiles and just as short as the south facing sprite, making them less confusing.

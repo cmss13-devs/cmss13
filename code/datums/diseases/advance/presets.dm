@@ -15,16 +15,6 @@
 		symptoms = list(new/datum/symptom/cough)
 	..(process, D, copy)
 
-
-// Voice Changing
-
-/datum/disease/advance/voice_change/New(process = 1, datum/disease/advance/D, copy = 0)
-	if(!D)
-		name = "Epiglottis Mutation"
-		symptoms = list(new/datum/symptom/voice_change)
-	..(process, D, copy)
-
-
 // Toxin Filter
 
 /datum/disease/advance/heal/New(process = 1, datum/disease/advance/D, copy = 0)

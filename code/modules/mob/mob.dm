@@ -216,13 +216,6 @@
 	for(var/mob/current in hearers(hear_dist, loc))
 		current.show_message(message, SHOW_MESSAGE_AUDIBLE, deaf_message, SHOW_MESSAGE_VISIBLE, message_flags = message_flags)
 
-/atom/proc/ranged_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
-	var/view_dist = 7
-	if(max_distance)
-		view_dist = max_distance
-	for(var/mob/M in orange(view_dist, src))
-		M.show_message(message, SHOW_MESSAGE_VISIBLE, blind_message, SHOW_MESSAGE_AUDIBLE, message_flags)
-
 
 /mob/proc/findname(msg)
 	for(var/mob/M in GLOB.mob_list)
@@ -385,22 +378,38 @@
 	SIGNAL_HANDLER
 	reset_view(null)
 
-/mob/proc/point_to_atom(atom/A, turf/T)
+/mob/proc/point_to_atom(atom/pointed_at, turf/turf_pointed_at)
 	var/mob/living/carbon/human/mob = src
 	var/datum/squad/squad = null
 	if(ishuman(mob))
 		squad = mob.assigned_squad
 	if(!check_improved_pointing()) //Squad Leaders and above have reduced cooldown and get a bigger arrow
 		recently_pointed_to = world.time + 2.5 SECONDS
-		new /obj/effect/overlay/temp/point(T, src, A)
+		new /obj/effect/overlay/temp/point(turf_pointed_at, src, pointed_at)
 	else
 		recently_pointed_to = world.time + 10
+		var/outline_color = "#282d8f" // Default color for people with command skill but no squad
 		if(isnull(squad)) //If they get the big arrow but aren't in a squad, they get the default green arrow
-			new /obj/effect/overlay/temp/point/big(T, src, A)
+			new /obj/effect/overlay/temp/point/big(turf_pointed_at, src, pointed_at)
 		else
-			new /obj/effect/overlay/temp/point/big/squad(T, src, A, squad.equipment_color)
-	visible_message("<b>[src]</b> points to [A]", null, null, 5)
+			new /obj/effect/overlay/temp/point/big/squad(turf_pointed_at, src, pointed_at, squad.equipment_color)
+			outline_color = squad.equipment_color
+
+		if(ismob(pointed_at) && ishuman(mob))
+			var/outline_name = "point_outline_[REF(src)]"
+			var/outline_size = 0.25
+			if(skills)
+				var/leadership_level = skills.get_skill_level(SKILL_LEADERSHIP)
+				outline_size += leadership_level * 0.25
+
+			pointed_at.add_filter(outline_name, 2, list("type" = "outline", "color" = outline_color, "size" = outline_size))
+			addtimer(CALLBACK(pointed_at, PROC_REF(disable_point_outline), outline_name), 4.5 SECONDS)
+
+	visible_message("<b>[src]</b> points to [pointed_at]", null, null, 5)
 	return TRUE
+
+/mob/proc/disable_point_outline(outline_name)
+	remove_filter(outline_name)
 
 ///Is this mob important enough to point with big arrows?
 /mob/proc/check_improved_pointing()
@@ -478,10 +487,10 @@
 	if ( QDELETED(AM) || !usr || src==AM || !isturf(loc) || !isturf(AM.loc) ) //if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
 		return
 
-	if (AM.anchored || AM.throwing)
+	if (AM.anchored || HAS_TRAIT(AM, TRAIT_LAUNCHED))
 		return
 
-	if(throwing || is_mob_incapacitated())
+	if(HAS_TRAIT(src, TRAIT_LAUNCHED) || is_mob_incapacitated())
 		return
 
 	if(HAS_TRAIT(src, TRAIT_HAULED))
@@ -514,10 +523,6 @@
 		animation_attack_on(AM)
 		playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 		flick_attack_overlay(AM, "grab")
-
-	if(!QDELETED(AM.pulledby) && !QDELETED(M))
-		visible_message(SPAN_WARNING("[src] has broken [AM.pulledby]'s grip on [M]!"), null, null, 5)
-		AM.pulledby.stop_pulling()
 
 	var/pull_response = AM.pull_response(src)
 	if(!pull_response) // If I'm not allowed to pull you I won't. Stop here.
@@ -554,6 +559,11 @@
 			return
 	else if(istype(AM, /obj))
 		AM.add_fingerprint(src)
+
+	if(!QDELETED(AM.pulledby) && AM.pulledby != src)
+		var/mob/previous_puller = AM.pulledby
+		visible_message(SPAN_WARNING("[src] has broken [AM.pulledby]'s grip on [M]!"), null, null, 5)
+		previous_puller.stop_pulling()
 
 	pulling = AM
 	AM.pulledby = src

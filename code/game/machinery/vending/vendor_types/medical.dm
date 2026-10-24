@@ -15,7 +15,7 @@
 	unacidable = TRUE
 
 /obj/structure/medical_supply_link/ex_act(severity, direction)
-	return FALSE
+	return
 
 /obj/structure/medical_supply_link/Initialize()
 	. = ..()

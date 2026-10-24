@@ -623,18 +623,20 @@
 	xeno_announcement("By [user_xeno]'s will, [target_xeno] has been banished from the hive!\n\n[reason]", user_xeno.hivenumber, title=SPAN_ANNOUNCEMENT_HEADER_BLUE("Banishment"))
 	to_chat(target_xeno, FONT_SIZE_LARGE(SPAN_XENOWARNING("The [user_xeno] has banished you from the hive! Other xenomorphs may now attack you freely, but your link to the hivemind remains, preventing you from harming other sisters.")))
 
-	target_xeno.banished = TRUE
-	target_xeno.hud_update_banished()
-	target_xeno.lock_evolve = TRUE
-	user_xeno.hive.banished_ckeys[target_xeno.name] = target_xeno.ckey
-	addtimer(CALLBACK(src, PROC_REF(remove_banish), user_xeno.hive, target_xeno.name), 30 MINUTES)
-
+	do_banish(user_xeno, target_xeno)
 	message_admins("[key_name_admin(user_xeno)] has banished [key_name_admin(target_xeno)]. Reason: [reason]")
 	return
 
+/datum/action/xeno_action/proc/do_banish(mob/living/carbon/xenomorph/queen/user_xeno, mob/living/carbon/xenomorph/target_xeno)
+	target_xeno.banished = TRUE
+	target_xeno.hud_update_banished()
+	target_xeno.lock_evolve = TRUE
+
+	target_xeno.hive.banished_ckeys[target_xeno.name] = target_xeno.ckey
+	addtimer(CALLBACK(src, PROC_REF(remove_banish), target_xeno.hive, target_xeno.name), 30 MINUTES)
+
 /datum/action/xeno_action/proc/remove_banish(datum/hive_status/hive, name)
 	hive.banished_ckeys.Remove(name)
-
 
 // Readmission = un-banish
 
@@ -682,13 +684,18 @@
 		if(!user_xeno.check_state() || !check_and_use_plasma_owner(plasma_cost))
 			return
 
-		to_chat(target_xeno, FONT_SIZE_LARGE(SPAN_XENOWARNING("The [user_xeno] has readmitted you into the hive.")))
-		target_xeno.banished = FALSE
-		target_xeno.hud_update_banished()
-		target_xeno.lock_evolve = FALSE
+		do_readmit(user_xeno, target_xeno)
 
 	user_xeno.hive.banished_ckeys.Remove(banished_name)
 	return
+
+/datum/action/xeno_action/onclick/manage_hive/proc/do_readmit(mob/living/carbon/xenomorph/queen/user_xeno, mob/living/carbon/xenomorph/target_xeno)
+	if (user_xeno)
+		to_chat(target_xeno, FONT_SIZE_LARGE(SPAN_XENOWARNING("The [user_xeno] has readmitted you into the hive.")))
+
+	target_xeno.banished = FALSE
+	target_xeno.hud_update_banished()
+	target_xeno.lock_evolve = FALSE
 
 /datum/action/xeno_action/onclick/eye
 	name = "Enter Eye Form"

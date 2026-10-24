@@ -69,6 +69,7 @@
 		to_chat(user, SPAN_NOTICE("[src] is now [armed ? "armed" : "disarmed"]"))
 
 /obj/item/restraint/legcuffs/beartrap/Crossed(atom/movable/AM)
+	..()
 	if(armed)
 		if(ismob(AM))
 			var/mob/M = AM
@@ -92,8 +93,6 @@
 					armed = 0
 					var/mob/living/simple_animal/SA = AM
 					SA.health -= 20
-	..()
-
 
 /obj/item/restraint/legcuffs/xeno_restraints
 	name = "xeno restraints"

@@ -139,6 +139,7 @@
 	desc = "A lighting fixture. Great for illuminating dark areas."
 	anchored = TRUE
 	layer = FLY_LAYER
+	flags_atom = FPRINT|NO_ZFALL
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 20

@@ -79,14 +79,16 @@
 	return SPAN_NOTICE("\A [name] is flipped down.")
 
 /obj/item/device/helmet_visor/medical
-	name = "basic medical optic"
-	icon_state = "med_sight"
+	name = "sensormate optic"
+	icon_state = "sensor_sight"
 	hud_type = MOB_HUD_MEDICAL_ADVANCED
-	action_icon_string = "med_sight_down"
-	helmet_overlay = "med_sight_right"
+	action_icon_string = "sensor_sight_down"
+	helmet_overlay = "sensor_sight_right"
 
 /obj/item/device/helmet_visor/medical/advanced
 	name = "advanced medical optic"
+	icon_state = "med_sight"
+	action_icon_string = "med_sight_down"
 	helmet_overlay = "med_sight_right"
 	var/datum/weakref/equipped_user
 
@@ -453,3 +455,30 @@
 	icon_state = "po_visor_yellow"
 	action_icon_string = "po_visor_yellow_down"
 	helmet_overlay = "po_visor_yellow"
+
+/obj/item/device/helmet_visor/pilot
+	name = "pilot optic"
+	desc = "A tactical eyepiece able to be affixed to a USCM Pilot's helmet. It filters flight data and targeting information to a Heads-up Display."
+	icon_state = "pilot_sight"
+	hud_type = MOB_HUD_DROPSHIP
+	action_icon_string = "pilot_sight_down"
+	helmet_overlay = "pilot_sight_left"
+
+/obj/item/device/helmet_visor/pilot/can_toggle(mob/living/carbon/human/user)
+	. = ..()
+	if(!.)
+		return
+	if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
+		to_chat(user, SPAN_NOTICE("You are not skilled enough to use [src]."))
+		return FALSE
+	return TRUE
+
+/obj/item/device/helmet_visor/pilot/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
+	. = ..()
+	for(var/obj/effect/overlay/temp/dropship_reticle/reticle as anything in GLOB.dropship_reticles)
+		reticle.update_visibility_for_mob(user)
+
+/obj/item/device/helmet_visor/pilot/deactivate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
+	. = ..()
+	for(var/obj/effect/overlay/temp/dropship_reticle/reticle as anything in GLOB.dropship_reticles)
+		reticle.update_visibility_for_mob(user)

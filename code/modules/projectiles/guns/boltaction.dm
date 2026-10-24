@@ -128,6 +128,28 @@
 	in_chamber = null
 	return TRUE
 
+/obj/item/weapon/gun/boltaction/ready_in_chamber()
+	if(in_chamber)
+		return in_chamber
+	return ..()
+
+/obj/item/weapon/gun/boltaction/insert_bullet(mob/user)
+	if(bolted)
+		to_chat(user, SPAN_WARNING("You need to open the bolt first!"))
+		return
+	return ..()
+
+/obj/item/weapon/gun/boltaction/attack_hand(mob/user)
+	if(loc == user && !bolted && user.get_inactive_hand() == src)
+		if(in_chamber)
+			to_chat(user, SPAN_NOTICE("You remove the [SPAN_ORANGE(in_chamber.name)] from the [name]'s chamber."))
+			unload_chamber(user, TRUE)
+			return
+		if(!current_mag || current_mag.current_rounds <= 0)
+			to_chat(user, SPAN_WARNING("There is nothing loaded in the [name]'s chamber!"))
+			return
+	return ..()
+
 /obj/item/weapon/gun/boltaction/cock(mob/user)
 	return
 

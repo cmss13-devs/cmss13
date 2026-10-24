@@ -47,10 +47,8 @@
 
 	if(!istype(xeno))
 		return
-	if(!xeno.check_state())
-		return
-	if(!action_cooldown_check())
-		return
+
+	XENO_ACTION_CHECK(xeno)
 
 	xeno.visible_message(SPAN_DANGER("[xeno] drags its claws in a wide area in front of it!"),
 	SPAN_XENOWARNING("We unleash a barrage of slashes!"))
@@ -113,16 +111,11 @@
 	return ..()
 
 /datum/action/xeno_action/activable/tail_jab/use_ability(atom/targeted_atom)
-
 	var/mob/living/carbon/xenomorph/xeno = owner
 	var/mob/living/carbon/hit_target = targeted_atom
 	var/distance = get_dist(xeno, hit_target)
 
-	if(!action_cooldown_check())
-		return
-
-	if(!xeno.check_state())
-		return
+	XENO_ACTION_CHECK(xeno)
 
 	if(distance > 2)
 		return
@@ -217,7 +210,13 @@
 
 	var/mob/living/carbon/target_carbon = target_atom
 
+	XENO_ACTION_CHECK(xeno)
+
 	if(xeno.can_not_harm(target_carbon))
+		return
+
+	if(target_carbon.stat == DEAD)
+		to_chat(xeno, SPAN_XENODANGER("They are already dead!"))
 		return
 
 	if(!(HAS_TRAIT(target_carbon, TRAIT_KNOCKEDOUT) || target_carbon.stat == UNCONSCIOUS)) //called knocked out because for some reason .stat seems to have a delay .
@@ -226,12 +225,6 @@
 
 	if(!xeno.Adjacent(target_carbon))
 		to_chat(xeno, SPAN_XENOHIGHDANGER("We can only headbite an unconscious, adjacent target!"))
-		return
-
-	if(xeno.stat == UNCONSCIOUS)
-		return
-
-	if(xeno.stat == DEAD)
 		return
 
 	if(xeno.action_busy)

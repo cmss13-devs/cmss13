@@ -132,8 +132,8 @@
 			to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
 			active_attachable.activate_attachment(src, null, TRUE)
 		else
-			active_attachable.fire_attachment(target, src, user) //Fire it.
-			active_attachable.last_fired = world.time
+			if(active_attachable.fire_attachment(target, src, user)) //Fire it.
+				active_attachable.last_fired = world.time
 		return NONE
 
 	if(flags_gun_features & GUN_TRIGGER_SAFETY)
@@ -772,6 +772,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		PF.flags_pass = PASS_FLAGS_FLAME
 
 /obj/flamer_fire/Crossed(atom/movable/atom_movable)
+	..()
 	atom_movable.handle_flamer_fire_crossed(src)
 
 /obj/flamer_fire/proc/type_b_debuff_xeno_armor(mob/living/carbon/xenomorph/X)

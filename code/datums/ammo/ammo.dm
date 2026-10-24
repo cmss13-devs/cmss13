@@ -74,6 +74,7 @@
 	/// How fast the projectile moves.
 	var/shell_speed = AMMO_SPEED_TIER_1
 
+	///the typepath of the current handful, you only need to worry about this if the guns primary method of reloading are through handfuls, but its good practice to set it
 	var/handful_type = /obj/item/ammo_magazine/handful
 	var/handful_color
 	/// custom handful sprite, for shotgun shells or etc.

@@ -153,7 +153,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	handle_processing(M, mods, delta_time)
 	if(QDELETED(src)) //proc above could have deleted us
 		return
-	holder.remove_reagent(id, custom_metabolism * delta_time)
+
+	holder.remove_reagent_by_reference(src, custom_metabolism * delta_time)
 
 	if(adj_temp && M.bodytemperature != target_temp)
 		if(adj_temp > 0) // heating
@@ -186,7 +187,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 //Main Processing
 /datum/reagent/proc/handle_processing(mob/living/M, list/mods, delta_time)
-	for(var/datum/chem_property/P in properties)
+	for(var/datum/chem_property/P as anything in properties)
 		//A level of 1 == 0.5 potency, which is equal to REM (0.2/0.4) in the old system
 		//That means the level of the property by default is the number of REMs the effect had in the old system
 		var/potency = mods[REAGENT_EFFECT] * ((P.level+mods[REAGENT_BOOST]) * LEVEL_TO_POTENCY_MULTIPLIER)
@@ -297,8 +298,14 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 			if(CHEM_CLASS_ULTRA)
 				GLOB.chemical_gen_classes_list["C6"] += id
 				GLOB.chemical_data.add_chemical_objective(src)
-			if(CHEM_CLASS_HYDRO)
-				GLOB.chemical_gen_classes_list["H1"] += id
+			if(CHEM_CLASS_XENO_BASIC)
+				GLOB.chemical_gen_classes_list["X1"] += id
+				GLOB.chemical_data.add_chemical_objective(src)
+			if(CHEM_CLASS_XENO_SPECIALIZED)
+				GLOB.chemical_gen_classes_list["X2"] += id
+				GLOB.chemical_data.add_chemical_objective(src)
+			if(CHEM_CLASS_XENO_ROYAL)
+				GLOB.chemical_gen_classes_list["X3"] += id
 				GLOB.chemical_data.add_chemical_objective(src)
 		GLOB.chemical_gen_classes_list["C"] += id
 	if(gen_tier)

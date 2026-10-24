@@ -33,7 +33,6 @@
 	)
 	hivelord.selected_design = /obj/effect/alien/resin/design/speed_node
 	hivelord.selected_design_mark = /datum/design_mark/resin_wall
-	hivelord.plasma_types = list(PLASMA_NUTRIENT, PLASMA_PHEROMONE)
 	hivelord.max_design_nodes = 36
 	hivelord.viewsize = WHISPERER_VIEWRANGE
 	hivelord.health_modifier -= XENO_HEALTH_MOD_LARGE

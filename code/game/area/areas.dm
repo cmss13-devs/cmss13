@@ -432,11 +432,15 @@
 	else if(istype(thing, /obj/structure/machinery))
 		add_machine(thing)
 
-/area/Exited(atom/movable/thing)
+/area/Exited(atom/movable/thing, atom/newloc)
 	if(istype(thing, /obj/structure/machinery))
 		remove_machine(thing)
 	else if(ismob(thing))
+		var/area/new_area = get_area(newloc)
+		if(new_area == src)
+			return
 		var/mob/exiting_mob = thing
+		SEND_SIGNAL(src, COMSIG_AREA_MOB_EXITED, exiting_mob, new_area)
 		exiting_mob?.client?.soundOutput?.update_ambience(target_area = null, ambience_override = null, force_update = TRUE)
 
 /area/proc/add_machine(obj/structure/machinery/machine)

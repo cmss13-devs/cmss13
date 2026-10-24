@@ -10,7 +10,7 @@
 	ping = null //no bounce off.
 	sound_bounce = "rocket_bounce"
 	damage_falloff = 0
-	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ROCKET|AMMO_STRIKES_SURFACE
+	flags_ammo_behavior = AMMO_ROCKET|AMMO_STRIKES_SURFACE|AMMO_HITS_TARGET_TURF
 
 	accuracy = HIT_ACCURACY_TIER_2
 	accurate_range = 7
@@ -39,7 +39,7 @@
 /datum/ammo/rocket/ap
 	name = "anti-armor rocket"
 	damage_falloff = 0
-	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ROCKET
+	flags_ammo_behavior = AMMO_ROCKET|AMMO_HITS_TARGET_TURF
 
 	accuracy = HIT_ACCURACY_TIER_8
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_9
@@ -131,7 +131,7 @@
 /datum/ammo/rocket/ltb
 	name = "cannon round"
 	icon_state = "ltb"
-	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ROCKET|AMMO_STRIKES_SURFACE
+	flags_ammo_behavior = AMMO_ROCKET|AMMO_STRIKES_SURFACE|AMMO_HITS_TARGET_TURF
 
 	accuracy = HIT_ACCURACY_TIER_3
 	accurate_range = 32
@@ -157,7 +157,7 @@
 
 /datum/ammo/rocket/wp
 	name = "white phosphorous rocket"
-	flags_ammo_behavior = AMMO_ROCKET|AMMO_EXPLOSIVE|AMMO_STRIKES_SURFACE
+	flags_ammo_behavior = AMMO_ROCKET|AMMO_HITS_TARGET_TURF|AMMO_STRIKES_SURFACE
 	damage_type = BURN
 
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
@@ -197,7 +197,7 @@
 
 /datum/ammo/rocket/wp/upp
 	name = "extreme-intensity incendiary rocket"
-	flags_ammo_behavior = AMMO_ROCKET|AMMO_EXPLOSIVE|AMMO_STRIKES_SURFACE
+	flags_ammo_behavior = AMMO_ROCKET|AMMO_HITS_TARGET_TURF|AMMO_STRIKES_SURFACE
 	damage_type = BURN
 
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6

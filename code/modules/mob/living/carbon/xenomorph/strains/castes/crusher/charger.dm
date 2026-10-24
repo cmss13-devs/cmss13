@@ -37,7 +37,7 @@
 	crusher.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
 	crusher.armor_modifier -= XENO_ARMOR_MOD_SMALL
 	crusher.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-	crusher.ignore_aura = "frenzy" // no funny crushers going 7 morbillion kilometers per second
+	crusher.ignore_aura = XENO_PHERO_FRENZY // no funny crushers going 7 morbillion kilometers per second
 	crusher.phero_modifier = -crusher.caste.aura_strength
 	crusher.recalculate_everything()
 
@@ -83,6 +83,79 @@
 /datum/behavior_delegate/crusher_charger/on_life()
 	if(world.time > my_action.last_charge_move + 0.5 SECONDS)
 		my_action.stop_momentum()
+
+
+
+/datum/action/xeno_action/onclick/charger_charge/use_ability(atom/Target)
+	var/mob/living/carbon/xenomorph/Xeno = owner
+
+	activated = !activated
+	var/will_charge = "[activated ? "now" : "no longer"]"
+	to_chat(Xeno, SPAN_XENONOTICE("We will [will_charge] charge when moving."))
+	if(activated)
+		RegisterSignal(Xeno, COMSIG_MOVABLE_MOVED, PROC_REF(handle_movement))
+		RegisterSignal(Xeno, COMSIG_LIVING_SET_BODY_POSITION, PROC_REF(handle_position_change))
+		RegisterSignal(Xeno, COMSIG_ATOM_DIR_CHANGE, PROC_REF(handle_dir_change))
+		RegisterSignal(Xeno, COMSIG_XENO_RECALCULATE_SPEED, PROC_REF(update_speed))
+		RegisterSignal(Xeno, COMSIG_XENO_STOP_MOMENTUM, PROC_REF(stop_momentum))
+		RegisterSignal(Xeno, COMSIG_MOVABLE_ENTERED_RIVER, PROC_REF(handle_river))
+		RegisterSignal(Xeno, COMSIG_LIVING_PRE_COLLIDE, PROC_REF(handle_collision))
+		RegisterSignal(Xeno, COMSIG_XENO_START_CHARGING, PROC_REF(start_charging))
+		button.icon_state = "template_active"
+	else
+		stop_momentum()
+		UnregisterSignal(Xeno, list(
+			COMSIG_MOVABLE_MOVED,
+			COMSIG_LIVING_SET_BODY_POSITION,
+			COMSIG_ATOM_DIR_CHANGE,
+			COMSIG_XENO_RECALCULATE_SPEED,
+			COMSIG_MOVABLE_ENTERED_RIVER,
+			COMSIG_LIVING_PRE_COLLIDE,
+			COMSIG_XENO_STOP_MOMENTUM,
+			COMSIG_XENO_START_CHARGING,
+		))
+		button.icon_state = "template_xeno"
+	return ..()
+
+
+
+/datum/action/xeno_action/activable/tumble/use_ability(atom/Target)
+	if(!action_cooldown_check())
+		return
+	var/mob/living/carbon/xenomorph/Xeno = owner
+	if (!Xeno.check_state())
+		return
+	if(Xeno.plasma_stored <= plasma_cost)
+		return
+	var/target_dist = get_dist(Xeno, Target)
+	var/dir_between = get_dir(Xeno, Target)
+	var/target_dir
+	for(var/perpen_dir in get_perpen_dir(Xeno.dir))
+		if(dir_between & perpen_dir)
+			target_dir = perpen_dir
+			break
+
+	if(!target_dir)
+		return
+
+	Xeno.visible_message(SPAN_XENOWARNING("[Xeno] tumbles over to the side!"), SPAN_XENOHIGHDANGER("We tumble over to the side!"))
+	Xeno.spin(5,1) // note: This spins the sprite and DOES NOT affect directional armor
+	var/start_charging = HAS_TRAIT(Xeno, TRAIT_CHARGING)
+	SEND_SIGNAL(Xeno, COMSIG_XENO_STOP_MOMENTUM)
+	Xeno.flags_atom |= DIRLOCK
+	playsound(Xeno,"alien_tail_swipe", 50, 1)
+
+	Xeno.use_plasma(plasma_cost)
+
+	var/target = get_step(get_step(Xeno, target_dir), target_dir)
+	var/list/collision_callbacks = list(/mob/living/carbon/human = CALLBACK(src, PROC_REF(handle_mob_collision)))
+	var/list/end_throw_callbacks = list(CALLBACK(src, PROC_REF(on_end_throw), start_charging))
+	Xeno.throw_atom(target, target_dist, SPEED_FAST, launch_type = LOW_LAUNCH, pass_flags = PASS_CRUSHER_CHARGE, end_throw_callbacks = end_throw_callbacks, collision_callbacks = collision_callbacks)
+
+	apply_cooldown()
+	return ..()
+
+
 
 // Fallback proc for shit that doesn't have a collision def
 
@@ -203,11 +276,27 @@
 /obj/structure/barricade/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(charger_ability.momentum)
 		visible_message(
-			SPAN_DANGER("[xeno] rams into \the [src] and skids to a halt!"),
-			SPAN_XENOWARNING("You ram into \the [src] and skid to a halt!")
+			SPAN_DANGER("[xeno] rams into [src] and skids to a halt!"),
+			SPAN_XENOWARNING("You ram into [src] and skid to a halt!")
 		)
-		take_damage(charger_ability.momentum * 22)
+		take_damage(CHARGER_DAMAGE_CADE)
 		playsound(src, barricade_hitsound, 25, TRUE)
+
+	charger_ability.stop_momentum()
+
+// Fuel pumps
+
+/obj/structure/machinery/fuelpump/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+	if(charger_ability.momentum)
+		visible_message(
+			SPAN_DANGER("[xeno] rams into [src] and skids to a halt!"),
+			SPAN_XENOWARNING("You ram into [src] and skid to a halt!")
+		)
+		update_health(CHARGER_DAMAGE_CADE)
+		if(charger_ability.momentum > 3)
+			playsound(src, 'sound/effects/metalscrape.ogg', 25, TRUE)
+		else
+			playsound(src, 'sound/effects/metalhit.ogg', 25, TRUE)
 
 	charger_ability.stop_momentum()
 
@@ -663,74 +752,6 @@
 		return XENO_CHARGE_TRY_MOVE
 
 	charger_ability.stop_momentum()
-
-/datum/action/xeno_action/onclick/charger_charge/use_ability(atom/Target)
-	var/mob/living/carbon/xenomorph/Xeno = owner
-
-	activated = !activated
-	var/will_charge = "[activated ? "now" : "no longer"]"
-	to_chat(Xeno, SPAN_XENONOTICE("We will [will_charge] charge when moving."))
-	if(activated)
-		RegisterSignal(Xeno, COMSIG_MOVABLE_MOVED, PROC_REF(handle_movement))
-		RegisterSignal(Xeno, COMSIG_LIVING_SET_BODY_POSITION, PROC_REF(handle_position_change))
-		RegisterSignal(Xeno, COMSIG_ATOM_DIR_CHANGE, PROC_REF(handle_dir_change))
-		RegisterSignal(Xeno, COMSIG_XENO_RECALCULATE_SPEED, PROC_REF(update_speed))
-		RegisterSignal(Xeno, COMSIG_XENO_STOP_MOMENTUM, PROC_REF(stop_momentum))
-		RegisterSignal(Xeno, COMSIG_MOVABLE_ENTERED_RIVER, PROC_REF(handle_river))
-		RegisterSignal(Xeno, COMSIG_LIVING_PRE_COLLIDE, PROC_REF(handle_collision))
-		RegisterSignal(Xeno, COMSIG_XENO_START_CHARGING, PROC_REF(start_charging))
-		button.icon_state = "template_active"
-	else
-		stop_momentum()
-		UnregisterSignal(Xeno, list(
-			COMSIG_MOVABLE_MOVED,
-			COMSIG_LIVING_SET_BODY_POSITION,
-			COMSIG_ATOM_DIR_CHANGE,
-			COMSIG_XENO_RECALCULATE_SPEED,
-			COMSIG_MOVABLE_ENTERED_RIVER,
-			COMSIG_LIVING_PRE_COLLIDE,
-			COMSIG_XENO_STOP_MOMENTUM,
-			COMSIG_XENO_START_CHARGING,
-		))
-		button.icon_state = "template_xeno"
-	return ..()
-
-/datum/action/xeno_action/activable/tumble/use_ability(atom/Target)
-	if(!action_cooldown_check())
-		return
-	var/mob/living/carbon/xenomorph/Xeno = owner
-	if (!Xeno.check_state())
-		return
-	if(Xeno.plasma_stored <= plasma_cost)
-		return
-	var/target_dist = get_dist(Xeno, Target)
-	var/dir_between = get_dir(Xeno, Target)
-	var/target_dir
-	for(var/perpen_dir in get_perpen_dir(Xeno.dir))
-		if(dir_between & perpen_dir)
-			target_dir = perpen_dir
-			break
-
-	if(!target_dir)
-		return
-
-	Xeno.visible_message(SPAN_XENOWARNING("[Xeno] tumbles over to the side!"), SPAN_XENOHIGHDANGER("We tumble over to the side!"))
-	Xeno.spin(5,1) // note: This spins the sprite and DOES NOT affect directional armor
-	var/start_charging = HAS_TRAIT(Xeno, TRAIT_CHARGING)
-	SEND_SIGNAL(Xeno, COMSIG_XENO_STOP_MOMENTUM)
-	Xeno.flags_atom |= DIRLOCK
-	playsound(Xeno,"alien_tail_swipe", 50, 1)
-
-	Xeno.use_plasma(plasma_cost)
-
-	var/target = get_step(get_step(Xeno, target_dir), target_dir)
-	var/list/collision_callbacks = list(/mob/living/carbon/human = CALLBACK(src, PROC_REF(handle_mob_collision)))
-	var/list/end_throw_callbacks = list(CALLBACK(src, PROC_REF(on_end_throw), start_charging))
-	Xeno.throw_atom(target, target_dist, SPEED_FAST, launch_type = LOW_LAUNCH, pass_flags = PASS_CRUSHER_CHARGE, end_throw_callbacks = end_throw_callbacks, collision_callbacks = collision_callbacks)
-
-	apply_cooldown()
-	return ..()
-
 
 
 #undef CHARGER_DESTROY

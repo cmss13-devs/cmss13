@@ -9,6 +9,7 @@
 
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/mob/living/carbon/xenomorph/queen/living_xeno_queen
+	var/mob/living/carbon/xenomorph/king/living_xeno_king
 	var/egg_planting_range = 15
 
 	/// Toggles for the hive that are reset on queen death unless hive_flags_locked
@@ -890,19 +891,29 @@
 
 /datum/hive_status/proc/bless_on_hijack()
 	xeno_maptext("My Children, the time has come to assault the Metal Hive. Evolve now into castes best suited for the task!", "Queen Mother") // NOTE: sends a maptext to all xenos globally, hence not in below loop
+
+	// Grant transmute
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
-		if(xeno.caste.tier > 3)
-			return
+		if(xeno.caste.tier < 1 || xeno.caste.tier > 3)
+			continue
 
 		if(get_action(xeno, /datum/action/xeno_action/onclick/transmute))
-			return
+			continue
 
+		var/datum/action/xeno_action/onclick/transmute/transmute_action = new()
+		transmute_action.give_to(xeno)
 
-		if(xeno.caste.tier > 0)
-			add_verb(xeno, /mob/living/carbon/xenomorph/proc/transmute_verb)
-			var/datum/action/xeno_action/onclick/transmute/transmute_action = new()
-			transmute_action.give_to(xeno)
+	// Reset ovi & make combat effective queen
+	if(living_xeno_queen)
+		var/datum/action/xeno_action/onclick/grow_ovipositor/ovi_ability = get_action(living_xeno_queen, /datum/action/xeno_action/onclick/grow_ovipositor)
+		ovi_ability?.reduce_cooldown(ovi_ability.xeno_cooldown)
+		if(!living_xeno_queen.queen_aged)
+			living_xeno_queen.make_combat_effective()
 
+	// Buff evilution temporarily
+	var/original_evilution = evolution_bonus
+	override_evilution(XENO_HIJACK_EVILUTION_BUFF, TRUE)
+	addtimer(CALLBACK(src, PROC_REF(override_evilution), original_evilution, FALSE), XENO_HIJACK_EVILUTION_TIME)
 
 /datum/hive_status/proc/free_respawn(client/C)
 	stored_larva++
@@ -938,10 +949,11 @@
 		spawning_area = living_xeno_queen
 	else
 		for(var/mob/living/carbon/xenomorpheus as anything in totalXenos)
+			spawning_area = xenomorpheus
 			if(islarva(xenomorpheus) || isxeno_builder(xenomorpheus)) //next to xenos that should be in a safe spot
-				spawning_area = xenomorpheus
+				break
 	if(!spawning_area)
-		spawning_area = pick(totalXenos) // FUCK IT JUST GO ANYWHERE
+		spawning_area = pick(GLOB.xeno_spawns) // ITS DEADPOP BOYS
 	var/list/turf_list
 	for(var/turf/open/open_turf in orange(3, spawning_area))
 		if(istype(open_turf, /turf/open/space))
@@ -1101,7 +1113,7 @@
 
 	for(var/mob_name in banished_ckeys)
 		if(banished_ckeys[mob_name] == user.ckey)
-			to_chat(user, SPAN_WARNING("You are banished from the [src], you may not rejoin unless the Queen re-admits you or dies."))
+			to_chat(user, SPAN_WARNING("You are banished from \the [src], you may not rejoin unless the Queen re-admits you or dies."))
 			return FALSE
 
 	var/mob/living/carbon/human/original_human = user.mind?.original
@@ -1665,6 +1677,7 @@
 		return
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("We rip out [xeno.iff_tag]! For the Hive!"))
 	xeno.adjustBruteLoss(50)
+	xeno.updatehealth()
 	xeno.iff_tag.forceMove(get_turf(xeno))
 	xeno.iff_tag = null
 
@@ -1678,6 +1691,7 @@
 			continue
 		xeno.visible_message(SPAN_XENOWARNING("[xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("We rip out [xeno.iff_tag]! For the hive!"))
 		xeno.adjustBruteLoss(50)
+		xeno.updatehealth()
 		xeno.iff_tag.forceMove(get_turf(xeno))
 		xeno.iff_tag = null
 	if(!length(defectors))

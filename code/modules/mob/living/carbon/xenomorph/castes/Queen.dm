@@ -37,7 +37,7 @@
 	tackle_max = 6
 	tackle_chance = 55
 
-	aura_strength = 4
+	aura_strength = XENO_PHERO_STRENGTH_VERY_STRONG
 	tacklestrength_min = 5
 	tacklestrength_max = 6
 
@@ -49,6 +49,8 @@
 
 	royal_caste = TRUE
 
+	organ_type = /obj/item/organ/xeno/queen
+	organ_regen_time = 10 MINUTES
 
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:
@@ -272,7 +274,7 @@
 	desc = "A huge, looming alien creature. The biggest and the baddest."
 	icon_size = 64
 	icon_state = "Queen Walking"
-	plasma_types = list(PLASMA_ROYAL,PLASMA_CHITIN,PLASMA_PHEROMONE,PLASMA_NEUROTOXIN)
+	plasma_types = list(PLASMA_ROYAL)
 	attacktext = "bites"
 	attack_sound = null
 	friendly = "nuzzles"
@@ -286,7 +288,6 @@
 	hive_pos = XENO_QUEEN
 	small_explosives_stun = FALSE
 	pull_speed = 3 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
-	organ_value = 8000 // queen is expensive
 	claw_type = CLAW_TYPE_VERY_SHARP
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_NO_IGNITE
 
@@ -329,6 +330,7 @@
 		/datum/action/xeno_action/onclick/manage_hive,
 		/datum/action/xeno_action/onclick/send_thoughts,
 		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/autoweeding_toggle,
 	)
 
 	inherent_verbs = list(
@@ -361,8 +363,8 @@
 		/datum/action/xeno_action/activable/info_marker/queen,
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
-		/datum/action/xeno_action/onclick/shift_spits,
-		//second macro
+		/datum/action/xeno_action/onclick/shift_spits, //second macro
+		/datum/action/xeno_action/onclick/autoweeding_toggle,
 	)
 
 	// Abilities they get when they've successfully aged.
@@ -385,13 +387,19 @@
 
 	bubble_icon = "alienroyal"
 
+/obj/item/organ/xeno/queen
+	name = "queen heart"
+	icon_state = "heart_t3"
+	item_state = "heart_t3"
+	research_value = 8000
+
+	xeno_organ_flags = XENO_ORGAN_ROYAL|XENO_ORGAN_HARDENED|XENO_ORGAN_TACHYCARDIA|XENO_ORGAN_ACID|XENO_ORGAN_SUPPORT
+
+
 /mob/living/carbon/xenomorph/queen/set_resting(new_resting, silent, instant)
 	if(ovipositor && new_resting)
 		return
 	return ..()
-
-/mob/living/carbon/xenomorph/queen/get_organ_icon()
-	return "heart_t3"
 
 /mob/living/carbon/xenomorph/queen/corrupted
 	AUTOWIKI_SKIP(TRUE)
@@ -678,7 +686,7 @@
 	return COMPONENT_SCREECH_ACT_CANCEL
 
 /mob/living/carbon/xenomorph/queen/proc/screech_ready()
-	to_chat(src, SPAN_WARNING("You feel your throat muscles vibrate. You are ready to screech again."))
+	to_chat(src, SPAN_WARNING("We feel our throat muscles vibrate. We are ready to screech again."))
 	for(var/Z in actions)
 		var/datum/action/A = Z
 		A.update_button_icon()
@@ -705,7 +713,7 @@
 	if(isxeno(victim))
 		var/mob/living/carbon/xenomorph/xeno = victim
 		if(hivenumber == xeno.hivenumber)
-			to_chat(src, SPAN_WARNING("You can't bring yourself to harm a fellow sister to this magnitude."))
+			to_chat(src, SPAN_WARNING("We can't bring ourselves to harm a fellow sister to this magnitude."))
 			return FALSE
 
 	var/turf/cur_loc = victim.loc
@@ -719,7 +727,7 @@
 		return FALSE
 
 	visible_message(SPAN_XENOWARNING("[src] begins slowly lifting [victim] into the air."),
-	SPAN_XENOWARNING("You begin focusing your anger as you slowly lift [victim] into the air."))
+	SPAN_XENOWARNING("We begin focusing our anger as we slowly lift [victim] into the air."))
 	if(do_after(src, 80, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
 		if(!victim)
 			return FALSE
@@ -731,7 +739,7 @@
 		use_plasma(200)
 
 		visible_message(SPAN_XENODANGER("[src] viciously smashes and wrenches [victim] apart!"),
-		SPAN_XENODANGER("You suddenly unleash pure anger on [victim], instantly wrenching \him apart!"))
+		SPAN_XENODANGER("We suddenly unleash pure anger on [victim], instantly wrenching \him apart!"))
 		emote("roar")
 
 		attack_log += text("\[[time_stamp()]\] <font color='red'>gibbed [key_name(victim)]</font>")

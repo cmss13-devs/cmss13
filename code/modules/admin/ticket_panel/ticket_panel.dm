@@ -63,7 +63,7 @@
 		"status" = status,
 		"timestamp" = AH.time_activity["opened_at"],
 		"closed_at" = AH.time_activity["closed_at"],
-		"claimed_by" = AH.marked_admin,
+		"claimed_by" = AH.marked_admin_key_name,
 		"all_responses" = formatted_responses,
 		"viewer_is_claiming" = (AH.marked_admin == (viewer ? viewer.ckey : usr?.ckey) ? TRUE : FALSE),
 		"is_archived" = (AH.state != AHELP_ACTIVE),

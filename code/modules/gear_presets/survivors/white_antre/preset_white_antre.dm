@@ -359,3 +359,199 @@
 	new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/grant/high(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/unique/tier_four(new_human.back), WEAR_IN_BACK)
 	..()
+
+// Synths
+
+/datum/equipment_preset/synth/survivor/white_antre
+	flags = EQUIPMENT_PRESET_STUB
+
+/datum/equipment_preset/synth/survivor/white_antre/civilian
+	name = "Survivor - White Antre - Synthetic - Civilian"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+	survivor_variant = CIVILIAN_SURVIVOR
+
+/datum/equipment_preset/synth/survivor/white_antre/civilian/load_gear(mob/living/carbon/human/new_human)
+	var/choice = rand(1,5)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
+	switch(choice)
+		if(1) // Supervisor
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/workwear(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black(new_human), WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/wy(new_human), WEAR_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/coffeecup/wy, WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/device/binoculars(new_human), WEAR_R_HAND)
+		if(2) // Colonist
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/blue(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/utility_vest(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(new_human), WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/soft/trucker(new_human), WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/toolbox/mechanical(new_human), WEAR_L_HAND)
+		if(3) // Office Worker 1
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/detective/grey(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clipboard(new_human), WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/tool/pen/clicky(new_human), WEAR_R_HAND)
+		if(4) // Office Worker 2
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/detective/neutral(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup/brown(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clipboard(new_human), WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/tool/pen/clicky(new_human), WEAR_R_HAND)
+		if(5) // Office Worker 3
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blazer(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup/brown(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clipboard(new_human), WEAR_L_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/tool/pen/clicky(new_human), WEAR_R_HAND)
+	..()
+
+/datum/equipment_preset/synth/survivor/white_antre/engineer
+	name = "Survivor - White Antre - Synthetic - Engineer"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+	survivor_variant = ENGINEERING_SURVIVOR
+
+/datum/equipment_preset/synth/survivor/white_antre/engineer/load_gear(mob/living/carbon/human/new_human)
+	var/choice = rand(1,3)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/engineering_utility/alt(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/med_small_stack(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/dblue(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
+
+	switch(choice)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/sanitation(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/toolbox/mechanical(new_human), WEAR_L_HAND)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/blue(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/toolbox/electrical(new_human), WEAR_L_HAND)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/hybrisa/engineering_utility_oversuit/alt(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/toolbox/electrical(new_human), WEAR_L_HAND)
+	..()
+
+/datum/equipment_preset/synth/survivor/white_antre/medical
+	name = "Survivor - White Antre - Synthetic - Medical"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	idtype = /obj/item/card/id/silver/clearance_badge
+
+	survivor_variant = MEDICAL_SURVIVOR
+
+/datum/equipment_preset/synth/survivor/white_antre/medical/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/lightblue(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/pen(new_human), WEAR_R_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/med(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(new_human), WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(new_human), WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/stethoscope(new_human), WEAR_ACCESSORY)
+	..()
+
+/datum/equipment_preset/synth/survivor/white_antre/site_security
+	name = "Survivor - White Antre - Synthetic - Site Security"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	idtype = /obj/item/card/id/silver/cl
+	role_comm_title = "WY Syn"
+	assignment = JOB_WY_GOON_SYNTH
+	job_title = JOB_WY_GOON_SYNTH
+	faction = FACTION_WY
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	minimap_icon = "goon_synth"
+	minimap_background = "background_goon"
+
+	survivor_variant = SECURITY_SURVIVOR
+
+/datum/equipment_preset/synth/survivor/white_antre/site_security/load_gear(mob/living/carbon/human/new_human)
+	var/choice = rand(1,2)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth/corporate(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/WY/full/synth(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/pmc(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton(new_human), WEAR_L_HAND)
+
+	switch(choice)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/wy_cap(new_human), WEAR_HEAD)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa(new_human), WEAR_HEAD)
+	..()
+
+/datum/equipment_preset/synth/survivor/white_antre/scientist_xenobiologist
+	name = "Survivor - White Antre - Synthetic - Xenobiologist"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	idtype = /obj/item/card/id/silver/clearance_badge/scientist
+
+	survivor_variant = SCIENTIST_SURVIVOR
+
+/datum/equipment_preset/synth/survivor/white_antre/scientist_xenobiologist/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/researcher(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/researcher(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/unique/tier_three(new_human),  WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector(new_human), WEAR_L_HAND)
+	..()
+
+/datum/equipment_preset/synth/survivor/white_antre/corporate_synth
+	name = "Survivor - White Antre - Synthetic - Corporate Junior Director Synthetic"
+	job_title = JOB_WY_SEC_SYNTH
+	assignment = "W-Y Junior Director Synthetic"
+	idtype = /obj/item/card/id/silver/cl
+	role_comm_title = "WY Jr. Dir. Syn"
+	faction = FACTION_WY
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	idtype = /obj/item/card/id/silver/cl
+	minimap_icon = "wy_syn"
+	minimap_background = "background_goon"
+	origin_override = ORIGIN_WY
+
+	survivor_variant = CORPORATE_SURVIVOR
+
+/datum/equipment_preset/synth/survivor/white_antre/corporate_synth/load_gear(mob/living/carbon/human/new_human)
+	var/choice = rand(1,3)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/coffee(new_human), WEAR_L_HAND)
+
+	switch(choice)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/wy_exec_suit_uniform(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black(new_human), WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup/brown(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/tool/pen/clicky(new_human.back), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clipboard(new_human.back), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/spacecash/c1000(new_human.back), WEAR_IN_BACK)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/suspenders(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(new_human), WEAR_EYES)
+			new_human.equip_to_slot_or_del(new /obj/item/tool/pen/clicky(new_human.back), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clipboard(new_human.back), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/spacecash/c1000(new_human.back), WEAR_IN_BACK)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/detective/grey(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/trenchcoat(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black(new_human), WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
+			new_human.equip_to_slot_or_del(new /obj/item/tool/pen/clicky(new_human.back), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clipboard(new_human.back), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/spacecash/c1000(new_human.back), WEAR_IN_BACK)
+	..()

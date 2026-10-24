@@ -302,7 +302,7 @@
 		return
 	else if (ishuman(user) && HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		on = !on
-		visible_message("You pry at the control valve on [src]. The machine shudders." , "[user] pries at the control valve on [src]. The entire machine shudders.")
+		user.visible_message("[user] pries at the control valve on [src]. The entire machine shudders." , "You pry at the control valve on [src]. The machine shudders.")
 
 		Update()
 
@@ -507,8 +507,8 @@
 	state = STATE_FUEL
 
 /obj/structure/prop/brazier/frame/full
-	name = "empty full brazier"
-	desc = "An empty brazier. Yet it's also full. What??? Use something hot to ignite it, like a welding tool."
+	name = "unlit brazier"
+	desc = "A brazier full of wood, though unlit. Something hot could ignite it."
 	icon_state = "brazier_frame_filled"
 	frame_type = /obj/structure/prop/brazier
 	state = STATE_IGNITE
@@ -757,6 +757,32 @@
 	desc = "Apparently at one point, Hawaii had beaches."
 	icon = 'icons/obj/structures/props/ice_colony/Hula.dmi'
 	icon_state = "Hula_Gal"
+
+/obj/structure/prop/ice_colony/hula_girl/Initialize()
+	. = ..()
+	START_PROCESSING(SSobj, src)
+
+/obj/structure/prop/ice_colony/hula_girl/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+/obj/structure/prop/ice_colony/hula_girl/process() //i got you 4 years later monkey -TrollerNoob
+	var/area/current_area = get_area(src)
+	if(istype(current_area, /area/shuttle))
+		var/obj/docking_port/mobile/found_shuttle = null
+		for(var/obj/docking_port/mobile/shuttle in SSshuttle.mobile)
+			if(get_area(shuttle) == current_area)
+				found_shuttle = shuttle
+				break
+		if(found_shuttle)
+			icon_state = initial(icon_state)
+			switch(found_shuttle.mode)
+				if(SHUTTLE_IGNITING)
+					icon_state = "Hula_Gal_Bounce"
+				if(SHUTTLE_CALL, SHUTTLE_RECALL)
+					icon_state = "Hula_Gal_Wild"
+			return
+	icon_state = initial(icon_state)
 
 /obj/structure/prop/ice_colony/tiger_rug
 	name = "tiger rug"
@@ -1485,6 +1511,7 @@
 	icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
 	icon_state = "rope"
 	density = FALSE
+	flags_atom = FPRINT|NO_ZFALL
 
 /obj/structure/prop/pred_flight
 	name = "hunter flight console"

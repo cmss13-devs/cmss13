@@ -40,11 +40,9 @@
 //Those are dealt with in their caste files.
 /mob/living/carbon/xenomorph/get_status_tab_items()
 	. = ..()
-
-	. += "Name: [name]"
-
 	. += ""
 
+	. += "Name: [name]"
 	. += "Health: [floor(health)]/[floor(maxHealth)]"
 	. += "Armor: [floor(0.01*armor_integrity*armor_deflection)+(armor_deflection_buff-armor_deflection_debuff)]/[floor(armor_deflection)]"
 	. += "Plasma: [floor(plasma_stored)]/[floor(plasma_max)]"
@@ -55,17 +53,6 @@
 		shieldtotal += XS.amount
 
 	. += "Shield: [shieldtotal]"
-
-	if(selected_ability)
-		. += ""
-		. += "Selected Ability: [selected_ability.name]"
-		if(selected_ability.charges != NO_ACTION_CHARGES)
-			. += "Charges Left: [selected_ability.charges]"
-
-		if(selected_ability.cooldown_timer_id != TIMER_ID_NULL && client?.prefs.show_cooldown_messages)
-			. += "On Cooldown: [DisplayTimeText(timeleft(selected_ability.cooldown_timer_id))]"
-
-	. += ""
 
 	var/stored_evolution = floor(evolution_stored)
 	var/evolve_progress

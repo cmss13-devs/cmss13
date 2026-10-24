@@ -157,6 +157,21 @@
 
 	return original_damage + burn_damage
 
+/datum/behavior_delegate/despoiler_base/proc/change_display(buffed = FALSE)
+	var/datum/action/xeno_action/activable/acid_barrage/barrage_used = get_action(bound_xeno, /datum/action/xeno_action/activable/acid_barrage)
+	var/datum/action/xeno_action/onclick/oozing_wounds/oozing_used = get_action(bound_xeno, /datum/action/xeno_action/onclick/oozing_wounds)
+	var/datum/action/xeno_action/activable/pounce/caustic_embrace/embrace_used = get_action(bound_xeno, /datum/action/xeno_action/activable/pounce/caustic_embrace)
+
+	if(!buffed)
+		barrage_used.display_buffed = FALSE
+		oozing_used.display_buffed = FALSE
+		embrace_used.display_buffed = FALSE
+	else
+		barrage_used.display_buffed = TRUE
+		oozing_used.display_buffed = TRUE
+		embrace_used.display_buffed = TRUE
+
+
 /datum/action/xeno_action/activable/tail_stab/despoiler/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb, apply_behavior_delagate = FALSE)
 	. = ..()
 	var/datum/effects/acid/acid_effect = locate() in target.effects_list
@@ -230,6 +245,7 @@
 	var/modifier = 0
 	if(delegate.next_ability_empowered)
 		delegate.next_ability_empowered = FALSE
+		delegate.change_display(FALSE)
 		modifier += empower_modifier
 		xeno.overlays -= delegate.empowered_overlay
 
@@ -267,6 +283,7 @@
 
 	if(delegate.next_ability_empowered)
 		delegate.next_ability_empowered = FALSE
+		delegate.change_display(FALSE)
 		xeno.overlays -= delegate.empowered_overlay
 		return // Handled in additional_effects()
 
@@ -327,6 +344,7 @@
 
 	if(empowered)
 		delegate.next_ability_empowered = FALSE
+		delegate.change_display(FALSE)
 		xeno.overlays -= delegate.empowered_overlay
 
 	for(var/turf/turf in orange(acid_range, get_turf(xeno)))
@@ -363,6 +381,7 @@
 
 	delegate.hypertension_stacks--
 	delegate.next_ability_empowered = TRUE
+	delegate.change_display(TRUE)
 	delegate.empowered_overlay = image('icons/mob/xenos/castes/tier_3/despoiler.dmi', "hypertension")
 	delegate.empowered_overlay.layer = FLY_LAYER
 	delegate.empowered_overlay.plane = ABOVE_GAME_PLANE
@@ -378,6 +397,7 @@
 		to_chat(owner, SPAN_XENOHIGHDANGER("We waited too long, our next ability is no longer empowered!"))
 		xeno.overlays -= delegate.empowered_overlay
 		delegate.next_ability_empowered = FALSE
+		delegate.change_display(FALSE)
 
 /obj/effect/lingering_acid
 	name = "acid"

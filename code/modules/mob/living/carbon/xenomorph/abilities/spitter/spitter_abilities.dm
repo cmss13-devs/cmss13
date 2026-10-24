@@ -3,6 +3,7 @@
 
 /datum/action/xeno_action/activable/xeno_spit/spitter
 	name = "Spit Acid"
+	var/better_spit = FALSE
 
 /datum/action/xeno_action/onclick/charge_spit
 	name = "Charge Spit"

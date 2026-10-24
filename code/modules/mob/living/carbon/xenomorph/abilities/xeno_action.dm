@@ -30,6 +30,9 @@
 	/// Should the ability trigger an acid overlay for their respective caste upon action selection and deselection.
 	var/ability_uses_acid_overlay = FALSE
 
+	/// When set to TRUE, it will change button visual to "yellow" frame, remember to add FALSE later to stop.
+	var/display_buffed = FALSE
+
 /datum/action/xeno_action/New(Target, override_icon_state)
 	. = ..()
 	if(charges != NO_ACTION_CHARGES)
@@ -92,6 +95,7 @@
 /datum/action/xeno_action/update_button_icon()
 	if(!button)
 		return
+	button.icon_state = visual_button_upgrade(button.icon_state)
 	if(!can_use_action())
 		button.color = rgb(128,0,0,128)
 	else if(!action_cooldown_check())
@@ -101,6 +105,21 @@
 			button.color = rgb(240,180,0,200)
 	else
 		button.color = rgb(255,255,255,255)
+
+/// Used to display "upgraded" icon or overlay on button to visually indicate that ability A is powered by ability B.
+/datum/action/xeno_action/proc/visual_button_upgrade(current_icon_state)
+	current_icon_state = remove_upgrade_button_suffix(current_icon_state, "_buffed")
+
+	if(!display_buffed)
+		return current_icon_state
+
+	return "[current_icon_state]_buffed"
+
+/datum/action/xeno_action/proc/remove_upgrade_button_suffix(current_icon_state, suffix)
+	if(copytext(current_icon_state, length(current_icon_state) - length(suffix) + 1) != suffix)
+		return current_icon_state
+
+	return copytext(current_icon_state, 1, length(current_icon_state) - length(suffix) + 1)
 
 // Helper proc that checks and uses plasma if possible, returning TRUE
 // if the use was successful
@@ -201,6 +220,7 @@
 		if(ability_uses_acid_overlay && !xeno.resting && xeno.stat != DEAD)
 			if(!HAS_TRAIT(xeno, TRAIT_FLOORED))
 				xeno.overlays |= xeno.acid_overlay
+	update_button_icon()
 
 
 // Called when a different action is clicked on and this one is deselected.
@@ -209,6 +229,7 @@
 	if(ability_uses_acid_overlay)
 		xeno.overlays -= xeno.acid_overlay
 	button.icon_state = "template_xeno"
+	update_button_icon()
 
 /datum/action/xeno_action/activable/remove_from(mob/living/carbon/xenomorph/xeno)
 	..()

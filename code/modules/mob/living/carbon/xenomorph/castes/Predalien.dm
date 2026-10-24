@@ -153,9 +153,34 @@ You must still listen to the queen.
 	var/kills = 0
 	var/max_kills = 10
 
+	// Used by append_to_start()
+	var/roar_damage = 0
+	var/roar_speed = 0
+	var/roar_buff = FALSE
+	var/rush_speed = 0
+	var/rush_armor = 0
+	var/rush_speed_buff = FALSE
+	var/rush_armor_buff = FALSE
+
 /datum/behavior_delegate/predalien_base/append_to_stat()
+	predalien_ats()
 	. = list()
 	. += "Kills: [kills]/[max_kills]"
+	. += "Melee Increase: +[((kills != 0 ? (kills * 2.5) : 0) + (roar_buff ? (roar_damage * kills) : 0))]"
+	. += "Armor Increase: +[rush_armor_buff ? rush_armor : 0]"
+	. += "Walking Speed: [(((roar_buff ? (roar_speed * kills) : 0) + (rush_speed_buff ? rush_speed : 0)) * 100)]%"
+
+/datum/behavior_delegate/predalien_base/proc/predalien_ats()
+	var/datum/action/xeno_action/onclick/predalien_roar/ability_action = get_action(bound_xeno, /datum/action/xeno_action/onclick/predalien_roar)
+	roar_damage = ability_action.bonus_damage_scale
+	roar_speed = ability_action.bonus_speed_scale
+	roar_buff = ability_action.roar_bonus
+
+	var/datum/action/xeno_action/onclick/feralrush/rush_action = get_action(bound_xeno, /datum/action/xeno_action/onclick/feralrush)
+	rush_speed = rush_action.speed_buff_amount
+	rush_armor = rush_action.armor_buff_amount
+	rush_speed_buff = rush_action.speed_buff
+	rush_armor_buff = rush_action.armor_buff
 
 /datum/behavior_delegate/predalien_base/on_kill_mob(mob/target_mob)
 	. = ..()
@@ -194,13 +219,15 @@ You must still listen to the queen.
 			if(!istype(behavior))
 				continue
 			new /datum/effects/xeno_buff(target_carbon, xeno, ttl = (0.25 SECONDS * behavior.kills + 3 SECONDS), bonus_damage = bonus_damage_scale * behavior.kills, bonus_speed = (bonus_speed_scale * behavior.kills))
+			roar_bonus = TRUE
+			addtimer(CALLBACK(src, PROC_REF(disable_bonus)), (0.25 SECONDS * behavior.kills + 3 SECONDS))
 	FOR_DVIEW_END
 
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/onclick/predalien_roar/proc/disable_filter(mob/living/carbon/human/target_human)
-	target_human.remove_filter("uncloack")
+/datum/action/xeno_action/onclick/predalien_roar/proc/disable_bonus()
+	roar_bonus = FALSE
 
 /datum/action/xeno_action/activable/feralfrenzy/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner

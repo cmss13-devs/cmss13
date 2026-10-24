@@ -19,6 +19,8 @@
 	deevolves_to = list(XENO_CASTE_SENTINEL)
 	acid_level = 2
 
+	behavior_delegate_type = /datum/behavior_delegate/spitter_base
+
 	tackle_min = 2
 	tackle_max = 6
 	tackle_chance = 45
@@ -76,6 +78,25 @@
 
 	xeno_organ_flags = XENO_ORGAN_STRONG|XENO_ORGAN_ACID
 
+/datum/behavior_delegate/spitter_base
+	name = "Spitter Behavior Delegate"
+
+	// Used by append_to_start()
+	var/speed_stat = 0
+	var/armor_stat = 0
+	var/charge_buff = FALSE
+
+/datum/behavior_delegate/spitter_base/append_to_stat()
+	ats_spitter()
+	. = list()
+	. += "Walking Speed: +[charge_buff ? (speed_stat * 100) : 0]%"
+	. += "Armor Increase: +[charge_buff ? armor_stat : 0]"
+
+/datum/behavior_delegate/spitter_base/proc/ats_spitter()
+	var/datum/action/xeno_action/onclick/charge_spit/ability_action = get_action(bound_xeno, /datum/action/xeno_action/onclick/charge_spit)
+	charge_buff = ability_action.buffs_active
+	speed_stat = ability_action.speed_buff_amount
+	armor_stat = ability_action.armor_buff_amount
 
 /datum/action/xeno_action/onclick/charge_spit/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/zenomorf = owner
@@ -100,6 +121,10 @@
 	zenomorf.recalculate_speed()
 	zenomorf.recalculate_armor()
 
+	var/datum/action/xeno_action/activable/xeno_spit/spitter/buffed_spit = get_action(zenomorf, /datum/action/xeno_action/activable/xeno_spit/spitter)
+	buffed_spit.display_buffed = TRUE
+	buffed_spit.better_spit = TRUE
+
 	/// Though the ability's other buffs are supposed to last for its duration, it's only supposed to enhance one spit.
 	RegisterSignal(zenomorf, COMSIG_XENO_POST_SPIT, PROC_REF(disable_spatter))
 
@@ -123,6 +148,9 @@
 	if(!istype(zenomorf))
 		return
 
+	var/datum/action/xeno_action/activable/xeno_spit/spitter/buffed_spit = get_action(zenomorf, /datum/action/xeno_action/activable/xeno_spit/spitter)
+	buffed_spit.display_buffed = FALSE
+
 	zenomorf.speed_modifier += speed_buff_amount
 	zenomorf.armor_modifier -= armor_buff_amount
 	zenomorf.recalculate_speed()
@@ -130,6 +158,21 @@
 	to_chat(zenomorf, SPAN_XENOHIGHDANGER("We feel our movement speed slow down!"))
 	disable_spatter()
 	buffs_active = FALSE
+
+/datum/action/xeno_action/activable/xeno_spit/spitter/use_ability(atom/target_atom)
+	. = ..()
+	display_buffed = FALSE
+
+	if(better_spit) //We draw player attention to help them realize spit + spray combo exist.
+		better_spit = FALSE
+		var/datum/action/xeno_action/activable/spray_acid/spitter/buffed_spray = get_action(owner, /datum/action/xeno_action/activable/spray_acid/spitter)
+		buffed_spray.display_buffed = TRUE
+
+		addtimer(CALLBACK(src, PROC_REF(remove_visual)), 4 SECONDS)
+
+/datum/action/xeno_action/activable/xeno_spit/spitter/proc/remove_visual()
+	var/datum/action/xeno_action/activable/spray_acid/spitter/buffed_spray = get_action(owner, /datum/action/xeno_action/activable/spray_acid/spitter)
+	buffed_spray.display_buffed = FALSE
 
 /datum/action/xeno_action/activable/tail_stab/spitter/use_ability(atom/target_atom)
 	var/target = ..()

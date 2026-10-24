@@ -73,10 +73,10 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 				if(spawner.hostile == hostile_scenario)
 					available_landmarks += spawner
 
-
+/// Returns a list of all the archetypes the player has opted into, if none, they don't get a spot
 /datum/job/civilian/survivor/proc/get_valid_prefs(mob/new_player)
-	var/list/insert_prefs
-	LAZYINITLIST(insert_prefs) // return a list of all the archetypes the player has opted into, if none, you don't get a spot
+	var/list/insert_prefs = list()
+
 	if(HAS_FLAG(new_player.client.prefs.toggles_insert, PLAY_INSERT_STANDARD))
 		insert_prefs += INSERT_STANDARD
 	if(HAS_FLAG(new_player.client.prefs.toggles_insert, PLAY_INSERT_CORPORATE))
@@ -95,22 +95,16 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	return insert_prefs
 
 /datum/job/civilian/survivor/assign_landmark(mob/new_player)
-
-
 	if(!new_player?.client)
 		return FALSE
 
-	var/list/valid_prefs
-	LAZYINITLIST(valid_prefs)
-	valid_prefs = get_valid_prefs(new_player)
-	var/no_insert_archetypes = FALSE
-	if(LAZYLEN(valid_prefs) == 0) //If the player's valid_preds list is 0, they have opted out of all possible insert archetypes and cannot spawn if an insert is present
-		no_insert_archetypes = TRUE
+	var/list/valid_prefs = get_valid_prefs(new_player)
+	var/no_insert_archetypes = length(valid_prefs) == 0 // If the player's valid_prefs list is 0, they have opted out of all possible insert archetypes and cannot spawn if an insert is present
 	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in available_landmarks) // for inserts with a higher than default priority to spawn (all of them)
 		// There is an insert and player has opted out of inserts, return FALSE
 		if(no_insert_archetypes && spawner.archetype != INSERT_NONE)
 			return FALSE
-		if(LAZYISIN(valid_prefs, spawner.archetype) || (spawner.archetype == INSERT_NONE && spawner.spawn_priority != LOWEST_SPAWN_PRIORITY)) //only add landmarks that match prefs or generic ones with elevated priority (none exist yet)
+		if((spawner.archetype in valid_prefs) || (spawner.archetype == INSERT_NONE && spawner.spawn_priority != LOWEST_SPAWN_PRIORITY)) //only add landmarks that match prefs or generic ones with elevated priority (none exist yet)
 			slotted_landmarks[new_player] = spawner
 			available_landmarks -= spawner
 			GLOB.survivor_spawns_by_priority -= spawner
@@ -417,11 +411,9 @@ AddTimelock(/datum/job/civilian/survivor, list(
 		return FALSE
 
 	//insert CO or map that allowed a CO to roll but has an insert with no CO, spawn as if normal survivor
-	var/list/valid_prefs
-	LAZYINITLIST(valid_prefs)
-	valid_prefs = get_valid_prefs(new_player)
+	var/list/valid_prefs = get_valid_prefs(new_player)
 	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in available_landmarks)
-		if(spawner.archetype == INSERT_CO || LAZYISIN(valid_prefs, spawner.archetype) || (spawner.archetype == INSERT_NONE && spawner.spawn_priority != LOWEST_SPAWN_PRIORITY)) //only add landmarks that match prefs or CO or generic ones. CO landmarks are always the highest priority, so if one exists, it will get picked first
+		if(spawner.archetype == INSERT_CO || (spawner.archetype in valid_prefs) || (spawner.archetype == INSERT_NONE && spawner.spawn_priority != LOWEST_SPAWN_PRIORITY)) //only add landmarks that match prefs or CO or generic ones. CO landmarks are always the highest priority, so if one exists, it will get picked first
 			//If there is an insert but the player has it disabled in prefs, return FALSE
 			if(!HAS_FLAG(new_player.client.prefs.toggles_insert, PLAY_INSERT_CO))
 				return FALSE

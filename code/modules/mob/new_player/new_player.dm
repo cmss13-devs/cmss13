@@ -320,7 +320,8 @@
 /mob/new_player/get_status_tab_items()
 	. = ..()
 	. += ""
-	. += "Game Mode: [GLOB.master_mode]"
+	if(SSticker.current_state != GAME_STATE_STARTUP)
+		. += "Game Mode: [GLOB.master_mode]"
 
 	if(SSticker.HasRoundStarted())
 		return

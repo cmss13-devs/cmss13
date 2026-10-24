@@ -1407,7 +1407,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/get_status_tab_items()
 	. = ..()
 	. += ""
-	. += "Game Mode: [GLOB.master_mode]"
+	if(SSticker.current_state != GAME_STATE_STARTUP)
+		. += "Game Mode: [GLOB.master_mode]"
 
 	if(!SSticker.HasRoundStarted())
 		var/time_remaining = SSticker.GetTimeLeft()

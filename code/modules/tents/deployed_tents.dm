@@ -31,15 +31,16 @@
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(register_turf_signals))
 	register_turf_signals()
 
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("jungle")
-			icon = 'icons/obj/structures/tents_deployed_jungle.dmi'
-		if("desert")
-			icon = 'icons/obj/structures/tents_deployed_desert.dmi'
-		if("snow")
-			icon = 'icons/obj/structures/tents_deployed_snow.dmi'
-		if("urban")
-			icon = 'icons/obj/structures/tents_deployed_urban.dmi'
+	if(icon == 'icons/obj/structures/tents_deployed_classic.dmi')
+		switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+			if("jungle")
+				icon = 'icons/obj/structures/tents_deployed_jungle.dmi'
+			if("desert")
+				icon = 'icons/obj/structures/tents_deployed_desert.dmi'
+			if("snow")
+				icon = 'icons/obj/structures/tents_deployed_snow.dmi'
+			if("urban")
+				icon = 'icons/obj/structures/tents_deployed_urban.dmi'
 
 	if(roof_state)
 		roof_image = image(icon, src, roof_state)
@@ -205,5 +206,27 @@
 /obj/structure/tent/mess
 	icon_state = "reqs_interior"
 	roof_state = "mess_top"
+	x_dim = 4
+	y_dim = 4
+
+/obj/structure/tent/forward_base
+	icon = 'icons/obj/structures/tents_deployed_massive.dmi'
+	appearance_flags = NONE
+
+/obj/structure/tent/forward_base/reqs
+	icon_state = "fb_reqs_interior"
+	roof_state = "fb_reqs_top"
+	x_dim = 7
+	y_dim = 6
+
+/obj/structure/tent/forward_base/med
+	icon_state = "fb_med_interior"
+	roof_state = "fb_med_top"
+	x_dim = 8
+	y_dim = 5
+
+/obj/structure/tent/forward_base/jtac
+	icon_state = "fb_jtac_interior"
+	roof_state = "fb_jtac_top"
 	x_dim = 4
 	y_dim = 4

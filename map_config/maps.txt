@@ -16,6 +16,10 @@ map lv624
 	default
 endmap
 
+map lv624_forward_base
+	voteweight 1
+endmap
+
 map bigredv2
 endmap
 
@@ -65,7 +69,7 @@ map lv522_chances_claim
 endmap
 
 map lv522_chances_claim_forward_base
-	voteweight 0
+	voteweight 1
 endmap
 
 map lv759_hybrisa_prospera

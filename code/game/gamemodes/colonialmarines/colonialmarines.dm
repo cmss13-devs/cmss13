@@ -718,9 +718,15 @@
 		hive = GLOB.hive_datum[cur_number]
 		if(hive.need_round_end_check && !hive.can_delay_round_end())
 			continue
-		if(hive.living_xeno_queen && !should_block_game_interaction(hive.living_xeno_queen.loc))
+		if(hive.living_xeno_queen)
 			var/turf/queen_turf = get_turf(hive.living_xeno_queen)
-			if(queen_turf?.z in z_levels)
+			var/in_z_levels = (queen_turf?.z in z_levels) && !should_block_game_interaction(queen_turf)
+			if(!in_z_levels && queen_turf && SSinterior.in_interior(queen_turf))
+				var/datum/interior/current_interior = SSinterior.get_interior_by_coords(queen_turf.x, queen_turf.y, queen_turf.z)
+				if(current_interior?.exterior?.loc)
+					queen_turf = current_interior.exterior.loc
+					in_z_levels = (queen_turf.z in z_levels) && !should_block_game_interaction(queen_turf)
+			if(in_z_levels)
 				//Some Queen is alive, we shouldn't end the game yet
 				.[2]++
 	return .

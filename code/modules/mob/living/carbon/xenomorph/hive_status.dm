@@ -1821,19 +1821,24 @@
 	if(!ishuman_strict(person))
 		return
 
-	// Finding the last guy for anti-delay.
+	var/turf/person_loc = get_turf(person)
+	if(SSinterior.in_interior(person_loc))
+		var/datum/interior/current_interior = SSinterior.get_interior_by_coords(person_loc.x, person_loc.y, person_loc.z)
+		if(current_interior?.exterior)
+			person_loc = current_interior.exterior.loc
+
 	var/survive_mode = MODE_HAS_FLAG(MODE_SURVIVE)
-	var/relevant_z = is_mainship_level(person.z) || (survive_mode && is_ground_level(person.z))
+	var/relevant_z = is_mainship_level(person_loc.z) || (survive_mode && is_ground_level(person_loc.z))
 	if(SSticker.mode?.is_in_endgame && SSticker.current_state != GAME_STATE_FINISHED && relevant_z)
 		var/mob/last_living_human
 		var/human_count = 0
 
 		for(var/mob/living/carbon/human/cur_human as anything in GLOB.alive_human_list)
 			if(!survive_mode)
-				if(!is_mainship_level(cur_human.z)) // This doesn't detect lockers
+				if(!is_mainship_level(cur_human.z)) // This doesn't detect lockers or vans
 					continue
 			else
-				if(!is_ground_level(cur_human.z)) // This doesn't detect lockers
+				if(!is_ground_level(cur_human.z)) // This doesn't detect lockers or vans
 					continue
 			if(HAS_TRAIT(cur_human, TRAIT_NESTED))
 				continue

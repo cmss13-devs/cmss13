@@ -220,11 +220,26 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 /datum/game_mode/proc/count_xenos(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED, ZTRAIT_MARINE_MAIN_SHIP)))
 	var/num_xenos = 0
 	for(var/mob/living/carbon/xenomorph/current as anything in GLOB.living_xeno_list)
-		if((current?.z in z_levels) && !istype(current.loc, /turf/open/space) && !istype(current.loc, /area/adminlevel/ert_station/fax_response_station)) //If they have a z var, they are on a turf.
+		var/turf/xeno_loc = get_turf(current)
+		if(!xeno_loc)
+			continue
+
+		var/in_z_levels = (xeno_loc.z in z_levels)
+		if(!in_z_levels && SSinterior.in_interior(xeno_loc))
+			var/datum/interior/current_interior = SSinterior.get_interior_by_coords(xeno_loc.x, xeno_loc.y, xeno_loc.z)
+			if(current_interior?.exterior?.loc)
+				xeno_loc = current_interior.exterior.loc
+				in_z_levels = (xeno_loc.z in z_levels) && !should_block_game_interaction(xeno_loc)
+
+		if(in_z_levels && !istype(current.loc, /turf/open/space) && !istype(current.loc, /area/adminlevel/ert_station/fax_response_station))
 			if(should_block_game_interaction(current))
 				continue
 			num_xenos++
+
 	return num_xenos
+
+/datum/game_mode/proc/count_humans_and_xenos_debug() // TODO: Remove this
+	return count_humans_and_xenos(SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND)))
 
 /// Counts living mobs in the form of list(humans,xenos) that aren't hosts or in an area that avoids bioscan (if non-human) and can delay the round
 /datum/game_mode/proc/count_humans_and_xenos(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED, ZTRAIT_MARINE_MAIN_SHIP)))
@@ -232,13 +247,24 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 	var/num_xenos = 0
 
 	for(var/mob/current as anything in GLOB.alive_mob_list)
-		if((current?.z in z_levels) && !istype(current.loc, /turf/open/space) && !istype(current.loc, /area/adminlevel/ert_station/fax_response_station)) //If they have a z var, they are on a turf.
+		var/turf/person_loc = get_turf(current)
+		if(!person_loc)
+			continue
+
+		var/in_z_levels = (person_loc.z in z_levels)
+		if(!in_z_levels && SSinterior.in_interior(person_loc))
+			var/datum/interior/current_interior = SSinterior.get_interior_by_coords(person_loc.x, person_loc.y, person_loc.z)
+			if(current_interior?.exterior?.loc)
+				person_loc = current_interior.exterior.loc
+				in_z_levels = (person_loc.z in z_levels) && !should_block_game_interaction(person_loc)
+
+		if(in_z_levels && !istype(person_loc.loc, /turf/open/space) && !istype(person_loc.loc, /area/adminlevel/ert_station/fax_response_station))
 			if(should_block_game_interaction(current))
 				continue
 
 			if(ishuman(current) && !isyautja(current) && !(current.status_flags & XENO_HOST) && !iszombie(current))
 				var/mob/living/carbon/human/current_human = current
-				if(((current_human.species && current_human.species.name == "Human") || (current_human.is_important)) && !current_human.hivenumber) //only real humans count, or those we have set to also be included
+				if((current_human.species?.name == "Human" || current_human.is_important) && !current_human.hivenumber) //only real humans count, or those we have set to also be included
 					num_humans++
 			else
 				var/area/area = get_area(current)

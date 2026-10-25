@@ -176,7 +176,7 @@
 	old_x = -16
 	melee_damage_lower = XENO_DAMAGE_TIER_5
 	melee_damage_upper = XENO_DAMAGE_TIER_5
-	health = XENO_HEALTH_QUEEN
+	health = HORDE_MODE_HEALTH_BOSS
 	move_to_delay = 4.5
 	kill_reward = 3000
 	mob_size = MOB_SIZE_BIG
@@ -226,7 +226,7 @@
 	if(!Adjacent(target_mob))
 		return
 
-	if(prob(65))
+	if(prob(10))
 		fling(target_mob, 2, STUN = FALSE)
 		return
 

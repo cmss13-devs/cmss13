@@ -255,6 +255,9 @@
 		projectile.fire_at(target_mob, src, src, projectile_type.max_range, projectile_type.shell_speed)
 		COOLDOWN_START(src, ranged_cooldown, ranged_delay)
 
+	if(!target_mob_ref && target_mob)
+		target_mob_ref = WEAKREF(target_mob)
+
 	if((!target_mob && hivenumber != XENO_HIVE_CORRUPTED) || target_mob.stat == DEAD)
 		find_random_target()
 		ForceMoveToTarget()

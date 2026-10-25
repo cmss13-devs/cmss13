@@ -1203,7 +1203,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(src.client in SShorde_mode.player_clients)
-		to_chat(src, SPAN_WARNING("You were already in the round! You'll be rejuvenated at the end of this wave."))
+		to_chat(src, SPAN_WARNING("You were already in the round! Someone has to revive you to be put back in."))
 		return
 
 	var/mob/new_player/player = src

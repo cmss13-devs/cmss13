@@ -383,7 +383,7 @@
 		to_chat(user, SPAN_WARNING("[magazine] is already full!"))
 		return
 	if(istype(magazine, /obj/item/ammo_magazine/flamer_tank))
-		var/obj/item/ammo_magazine/flamer_tank/tank = src
+		var/obj/item/ammo_magazine/flamer_tank/tank = magazine
 		if(length(tank.reagents.reagent_list) >= tank.max_rounds)
 			to_chat(user, SPAN_WARNING("[tank] is already full!"))
 			return

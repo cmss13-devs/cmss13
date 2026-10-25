@@ -419,7 +419,7 @@
 /datum/action/horde_mode_action/rush
 	cooldown_length = 14 SECONDS
 	required_distance_to_target = 7
-	var/speed_mod = HORDE_MODE_SPEED_MOD_HIGH
+	var/speed_mod = HORDE_MODE_SPEED_MOD_EXTREMELY_HIGH
 	var/rush_length = 2 SECONDS
 	var/has_footstep = FALSE
 	var/footstep_sound = "alien_footstep_large"

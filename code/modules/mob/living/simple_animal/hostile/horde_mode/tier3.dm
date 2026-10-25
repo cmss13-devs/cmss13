@@ -9,7 +9,7 @@
 	maxHealth = HORDE_MODE_HEALTH_BOSS
 	melee_damage_upper = HORDE_MODE_DAMAGE_MEDIUM
 	melee_damage_lower = HORDE_MODE_DAMAGE_LOW
-	move_to_delay = HORDE_MODE_SPEED_SLOW
+	move_to_delay = HORDE_MODE_SPEED_FAST
 	slash_delay = HORDE_MODE_ATTACK_DELAY_FAST
 
 	icon_size = 64

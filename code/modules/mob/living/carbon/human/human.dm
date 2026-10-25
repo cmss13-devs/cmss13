@@ -173,6 +173,9 @@
 			break
 
 /mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
+	if(HAS_TRAIT(src, TRAIT_PERK_EXPLOSIVE_RESISTANCE)) //cant be bothered to remove the other checks
+		return
+
 	if(body_position == LYING_DOWN && direction > 0)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 

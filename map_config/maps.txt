@@ -17,7 +17,7 @@ map lv624
 endmap
 
 map lv624_forward_base
-	voteweight 1
+	voteweight 0
 endmap
 
 map bigredv2

@@ -40,7 +40,7 @@
 "ai" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/blocker/invisible_wall,
-/turf/closed/wall/r_wall,
+/turf/open/gm/dirt,
 /area/horde_mode/outside)
 "aj" = (
 /obj/structure/flora/jungle/vines/light_1,
@@ -68,7 +68,9 @@
 /turf/open/floor/white,
 /area/horde_mode/medical)
 "ap" = (
-/obj/structure/window_frame/colony/reinforced/horde_mode,
+/obj/structure/window_frame/colony/reinforced/horde_mode{
+	explo_proof = 1
+	},
 /obj/structure/blocker/forcefield/horde_mode,
 /turf/open/floor/plating,
 /area/horde_mode/medical)
@@ -119,7 +121,8 @@
 	name = "Door";
 	unacidable = 1;
 	unslashable = 1;
-	dir = 4
+	dir = 4;
+	explo_proof = 1
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor,
@@ -171,7 +174,9 @@
 /turf/closed/wall/indestructible/other,
 /area/horde_mode/science)
 "aM" = (
-/obj/structure/window_frame/colony/reinforced/horde_mode,
+/obj/structure/window_frame/colony/reinforced/horde_mode{
+	explo_proof = 1
+	},
 /obj/structure/blocker/forcefield/horde_mode,
 /turf/open/floor/plating,
 /area/horde_mode/science)
@@ -216,7 +221,9 @@
 /turf/open/floor/loadingarea/north,
 /area/horde_mode/lobby)
 "aZ" = (
-/obj/structure/window_frame/colony/reinforced/horde_mode,
+/obj/structure/window_frame/colony/reinforced/horde_mode{
+	explo_proof = 1
+	},
 /obj/structure/blocker/forcefield/horde_mode,
 /turf/open/floor/plating,
 /area/horde_mode/lobby)
@@ -977,7 +984,9 @@
 /turf/open/floor/whiteyellowfull/east,
 /area/horde_mode/center)
 "mK" = (
-/obj/structure/window_frame/colony/reinforced/horde_mode,
+/obj/structure/window_frame/colony/reinforced/horde_mode{
+	explo_proof = 1
+	},
 /obj/structure/blocker/forcefield/horde_mode,
 /turf/open/floor/plating,
 /area/horde_mode/engineering)
@@ -1103,7 +1112,8 @@
 	icon_state = "door_closed";
 	name = "Door";
 	unacidable = 1;
-	unslashable = 1
+	unslashable = 1;
+	explo_proof = 1
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating,
@@ -1485,7 +1495,9 @@
 	},
 /area/horde_mode/center)
 "CA" = (
-/obj/structure/window_frame/colony/reinforced/horde_mode,
+/obj/structure/window_frame/colony/reinforced/horde_mode{
+	explo_proof = 1
+	},
 /obj/structure/blocker/forcefield/horde_mode,
 /turf/open/floor/plating,
 /area/horde_mode/center)
@@ -1985,7 +1997,8 @@
 	icon_state = "door_closed";
 	name = "Door";
 	unacidable = 1;
-	unslashable = 1
+	unslashable = 1;
+	explo_proof = 1
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/vault,
@@ -2056,7 +2069,8 @@
 	icon_state = "door_closed";
 	name = "Door";
 	unacidable = 1;
-	unslashable = 1
+	unslashable = 1;
+	explo_proof = 1
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/white,
@@ -2132,7 +2146,8 @@
 	icon_state = "door_closed";
 	name = "Door";
 	unacidable = 1;
-	unslashable = 1
+	unslashable = 1;
+	explo_proof = 1
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/white,
@@ -2204,7 +2219,8 @@
 	icon_state = "door_closed";
 	name = "Door";
 	unacidable = 1;
-	unslashable = 1
+	unslashable = 1;
+	explo_proof = 1
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/whiteyellowcorner/east,

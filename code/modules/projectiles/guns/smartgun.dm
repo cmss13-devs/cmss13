@@ -1109,3 +1109,6 @@
 	scatter = SCATTER_AMOUNT_TIER_10
 	recoil = RECOIL_OFF
 	damage_mult = BASE_BULLET_DAMAGE_MULT
+
+/obj/item/weapon/gun/smartgun/horde_mode/able_to_fire(mob/living/user)
+	return TRUE

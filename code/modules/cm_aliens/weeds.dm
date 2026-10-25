@@ -592,7 +592,7 @@
 		remove_child(child)
 		if(QDELETED(child))
 			continue
-		addtimer(CALLBACK(child, PROC_REF(avoid_orphanage)), decay_speed + rand(0, 1 SECONDS) // Slight variation whilst decaying
+		addtimer(CALLBACK(child, PROC_REF(avoid_orphanage)), decay_speed + rand(0, 1 SECONDS)) // Slight variation whilst decaying
 
 	. = ..()
 

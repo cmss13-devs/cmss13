@@ -30,6 +30,7 @@
 	desc = "A laser designator camera that mounts on an M707 spotting tripod to provide accurate target aquisition to laser guided munitions."
 	icon_state = "rangefinder_scope"
 	item_state = "rangefinder"
+	w_class = SIZE_SMALL
 	flags_atom = FPRINT|CONDUCT|MAP_COLOR_INDEX
 
 /obj/item/device/vulture_spotter_scope/designator/Initialize(mapload, datum/weakref/rifle)
@@ -41,6 +42,7 @@
 	desc = "A tripod, meant for stabilizing a spotting scope for the M707 anti-materiel rifle."
 	icon_state = "vulture_tripod"
 	item_state = "electronic"
+	w_class = SIZE_SMALL
 	icon = 'icons/obj/items/binoculars.dmi'
 	flags_atom = FPRINT|CONDUCT
 	unacidable = TRUE

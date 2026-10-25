@@ -1,7 +1,7 @@
 /// Distress Signal Global Setup Structure spawners
 /obj/effect/landmark/structure_spawner/setup/distress
 	name = "abstract distress spawner"
-	mode_flags = MODE_INFESTATION|MODE_SURVIVE // MODE_SURVIVE TEMPORARY
+	mode_flags = MODE_INFESTATION
 
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall
 	name = "Distress Xeno wall spawner"

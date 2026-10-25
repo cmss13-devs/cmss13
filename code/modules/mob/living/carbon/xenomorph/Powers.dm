@@ -49,6 +49,10 @@
 	if(!alien_weeds || alien_weeds.secreting)
 		return SECRETE_RESIN_FAIL
 
+	if(alien_weeds.hivenumber != hivenumber)
+		to_chat(src, SPAN_DANGER("These aren't our weeds!"))
+		return
+
 	if(extra_build_dist != IGNORE_BUILD_DISTANCE && get_dist(src, target) > src.caste.max_build_dist + extra_build_dist)
 		return handle_building_node(target, resin_construct)
 
@@ -216,7 +220,7 @@
 
 	var/obj/effect/alien/resin/building_node/found_node = locate() in get_turf(target)
 	if(found_node)
-		to_chat(src, SPAN_WARNING("You clear the psychic mark from that location."))
+		to_chat(src, SPAN_WARNING("We clear the psychic mark from that location."))
 		qdel(found_node)
 		return SECRETE_RESIN_FAIL
 
@@ -300,18 +304,21 @@
 
 	try_fill_node(A)
 
-/obj/effect/fill_spot/proc/try_fill_node(A)
+/obj/effect/fill_spot/proc/try_fill_node(atom/movable/A)
 	var/mob/living/carbon/xenomorph/wanderer = A
 	if(!istype(wanderer))
 		return
 	if(wanderer != linked_node.planter)
 		return
 	var/datum/caste_datum/wanderer_caste = wanderer.caste
-	var/datum/resin_construction/type_to_build
+	var/datum/resin_construction/type_to_build = null
 	// We look for a type of the intended build, allowing hivelords to build on nodes designated by drones,
 	// and also queen whose resin is different for some reason.
 	for(var/i in wanderer_caste.resin_build_order)
-		if(i in typesof(linked_node.resin_type))
+		if(i == linked_node.resin_type)
+			type_to_build = i
+		// We prefer an exact match if possible, otherwise any type will do
+		if(ispath(i, linked_node.resin_type) && (type_to_build == null))
 			type_to_build = i
 	// Doesn't have an appropiate type
 	if(!type_to_build)
@@ -320,7 +327,7 @@
 		var/obj/effect/fill_spot/extra_node = locate() in get_turf(wanderer)
 		if(extra_node)
 			INVOKE_ASYNC(extra_node, PROC_REF(try_fill_node), wanderer) // async so the spent node gets deleted now
-		qdel(linked_node)
+		QDEL_NULL(linked_node)
 
 /obj/effect/client_image_holder/resin_building_node
 	desc = "A psychic node to mark future building spots."

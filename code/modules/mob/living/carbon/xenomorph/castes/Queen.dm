@@ -624,6 +624,7 @@
 		health = maxHealth
 
 /mob/living/carbon/xenomorph/queen/Destroy()
+	QDEL_NULL_LIST(nodes_in_queue)
 	if(observed_xeno)
 		overwatch(observed_xeno, TRUE)
 

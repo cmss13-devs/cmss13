@@ -126,7 +126,7 @@
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/remove_from(mob/living/carbon/xenomorph/xeno)
 	..()
-	UnregisterSignal(xeno, COMSIG_XENO_FINISH_BUILDING, PROC_REF(build_from_queue))
+	UnregisterSignal(xeno, COMSIG_XENO_FINISH_BUILDING)
 
 // queenos don't need weeds under them to build on ovi
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/can_remote_build()

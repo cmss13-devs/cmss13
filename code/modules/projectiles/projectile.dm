@@ -544,9 +544,9 @@
 
 	if((MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_attacking_corpses) && target_living.stat == DEAD) || (target_living in permutated))
 		return FALSE
-	if(isanimalhordemode(firer) && isanimalhordemode(L))
+	if(isanimalhordemode(firer) && isanimalhordemode(target_living))
 		var/mob/living/xeno_owner = firer
-		if(xeno_owner.faction == L.faction)
+		if(xeno_owner.faction == target_living.faction)
 			return FALSE
 
 	if(is_target_xeno)

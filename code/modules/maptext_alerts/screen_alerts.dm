@@ -19,8 +19,7 @@
 	if(cancel_duplicate)
 		for(var/atom/i in client.screen_texts)
 			if(i.type == text_box.type)
-				return	if(!client)
-		return
+				return
 
 	if(!client)
 		return

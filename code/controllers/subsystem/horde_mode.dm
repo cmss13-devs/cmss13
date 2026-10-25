@@ -75,9 +75,6 @@ SUBSYSTEM_DEF(horde_mode)
 	if(!amount_to_spawn && !length(current_xenos) && !round_ended)
 		COOLDOWN_START(src, round_cooldown, (20 + round) SECONDS)
 		round_ended = TRUE
-		for(var/list/player_in_list as anything in current_players)
-			var/mob/living/player_mob = player_in_list["mob"]
-			player_mob.rejuvenate()
 		send_player_message(SPAN_HIGHDANGER("Seems like the horde has died down... Take a breather and ready yourself for the next one."))
 
 	if(!amount_to_spawn && !length(current_xenos) && COOLDOWN_FINISHED(src, round_cooldown))

@@ -52,10 +52,10 @@ SUBSYSTEM_DEF(horde_mode)
 		if(istype(areas, /area/horde_mode))
 			map_areas += areas
 
-	if(length(map_areas))
-		return SS_INIT_SUCCESS
-	else
+	if(!length(map_areas))
 		return SS_INIT_FAILURE
+
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/horde_mode/fire(resumed = FALSE)
 	if(!length(current_players) || !COOLDOWN_FINISHED(src, round_cooldown))
@@ -138,8 +138,8 @@ SUBSYSTEM_DEF(horde_mode)
 		xeno_damage_mod += 0.025
 		amount_to_spawn = 3*round+2
 		specialists_to_spawn = max_specialists
-		if(spawn_max <= 5)
-			spawn_max = clamp(2 + floor(round / 3), 2, 5)
+		if(spawn_max <= 5 + current_players.length())
+			spawn_max = clamp(2 + floor(round / 3), 2, 5 + current_players.length())
 		round_ended = FALSE
 		for(var/area/all_areas in map_areas)
 			all_areas.base_lighting_alpha += 7

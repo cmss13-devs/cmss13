@@ -612,12 +612,15 @@
 	icon_state = "grassbeach"
 	turf_flags = TURF_WATER
 	water_type = /turf/open/gm/river
+	depth = WATER_DEPTH_COAST_INTERMEDIATE
+	layer = UNDER_WATER_TURF_LAYER
 
 /turf/open/gm/grass/grassbeach/north
 	depth = WATER_DEPTH_COAST_INTERMEDIATE
 
 /turf/open/gm/grass/grassbeach/south
 	dir = 1
+	depth = WATER_DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/grass/grassbeach/west
 	dir = 4

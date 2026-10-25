@@ -255,7 +255,7 @@
 		projectile.fire_at(target_mob, src, src, projectile_type.max_range, projectile_type.shell_speed)
 		COOLDOWN_START(src, ranged_cooldown, ranged_delay)
 
-	if(!target_mob && hivenumber != XENO_HIVE_CORRUPTED)
+	if((!target_mob && hivenumber != XENO_HIVE_CORRUPTED) || target_mob.stat == DEAD)
 		find_random_target()
 		ForceMoveToTarget()
 	else if(!target_mob && hivenumber == XENO_HIVE_CORRUPTED)
@@ -304,15 +304,6 @@
 		else
 			find_random_xeno_target()
 		ForceMoveToTarget()
-
-	if(target_mob.stat == DEAD)
-		LoseTarget()
-		if(hivenumber != XENO_HIVE_CORRUPTED)
-			find_random_target()
-		else
-			find_random_xeno_target()
-		ForceMoveToTarget()
-
 
 	if(stat == DEAD || HAS_TRAIT(src, TRAIT_INCAPACITATED) || HAS_TRAIT(src, TRAIT_FLOORED) || HAS_TRAIT(src, TRAIT_IMMOBILIZED))
 		return

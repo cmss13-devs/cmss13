@@ -37,7 +37,23 @@
 		target_mob_ref = WEAKREF(target_mob)
 		return
 
-	target_mob = SShorde_mode.return_random_player()
+	// try to get someone near us so we dont run through the entire marine force for one guy, unless we fail
+	for(var/attempts in 1 to 4)
+		var/candidate = SShorde_mode.return_random_player()
+
+		switch(attempts)
+			if(1)
+				if(get_dist(src, candidate) <= 10)
+					target_mob = candidate
+					break
+
+			if(2)
+				if(get_dist(src, candidate) <= 20)
+					target_mob = candidate
+					break
+
+			if(3)
+				target_mob = candidate
 
 ///Gives us a random target to hunt down.
 /mob/living/simple_animal/hostile/alien/horde_mode/proc/find_random_xeno_target()

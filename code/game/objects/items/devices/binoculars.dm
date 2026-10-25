@@ -388,26 +388,10 @@
 				SEND_SIGNAL(src, COMSIG_DESIGNATOR_LASE_OFF)
 				break
 
-// binos feedback ping requires the dropship to be in the air AND planetside comms to be online
 /obj/item/device/binoculars/range/designator/proc/acknowledge_cas_target(obj/structure/machinery/computer/dropship_weapons/console)
-	var/turf/location = get_turf(src)
-	if(!laser || !location || !is_ground_level(location.z) || !COOLDOWN_FINISHED(src, cas_acknowledgment_cooldown))
-		return
-	var/relay_online = FALSE
-	for(var/obj/structure/machinery/telecomms/relay/relay in SSradio.tcomm_machines_ground)
-		if(relay.on && !relay.inoperable(EMPED))
-			relay_online = TRUE
-			break
-	if(!relay_online)
-		return
-	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(console.shuttle_tag)
-	if(!dropship)
-		return
-	if(!istype(dropship.get_docked(), /obj/docking_port/stationary/transit))
-		return
+	if(!COOLDOWN_FINISHED(src, cas_acknowledgment_cooldown) || !send_cas_target_feedback(src, laser, console))
+		return FALSE
 	COOLDOWN_START(src, cas_acknowledgment_cooldown, 1 SECONDS)
-	playsound(src, 'sound/machines/twobeep.ogg', 15, FALSE)
-	to_chat(laser.user, SPAN_NOTICE("The designator chirps: [dropship.name] has acquired your laser."))
 	return TRUE
 
 //IMPROVED LASER DESIGNATER, faster cooldown, faster target acquisition, can be found only in scout spec kit

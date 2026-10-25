@@ -824,6 +824,7 @@
 			return FALSE
 
 		DEW.open_fire(LT.signal_loc, weapon_operator)
+		LT.notify_cas_fire(src)
 		return TRUE
 	return FALSE
 
@@ -978,9 +979,16 @@
 		return
 	if(!target.valid_signal())
 		return
-	var/obj/item/device/binoculars/range/designator/designator = target.designator_ref?.resolve()
-	// avoids the c/d if the feedback fails to send
-	if(designator?.acknowledge_cas_target(src))
+	var/obj/designator = target.designator_ref?.resolve()
+	var/acknowledged = FALSE
+	if(istype(designator, /obj/item/device/binoculars/range/designator))
+		var/obj/item/device/binoculars/range/designator/binoculars = designator
+		acknowledged = binoculars.acknowledge_cas_target(src)
+	else if(istype(designator, /obj/structure/vulture_spotter_tripod/tactical))
+		var/obj/structure/vulture_spotter_tripod/tactical/tripod = designator
+		acknowledged = tripod.acknowledge_cas_target(src)
+	// Only remember successful feedback, so a target selected before takeoff can retry.
+	if(acknowledged)
 		acknowledged_target_ref = WEAKREF(target)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/on_feedback_shuttle_move()

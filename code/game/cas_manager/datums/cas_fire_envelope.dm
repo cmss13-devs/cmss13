@@ -314,6 +314,8 @@
 		mission_error = "Target is off bounds or obstructed."
 		return
 	to_chat(user, SPAN_ALERT("Fire Mission underway!"))
+	// Confirm the accepted mission before the lase can end during the approach.
+	signal?.notify_cas_fire(linked_console, TRUE)
 	exit_phase_end = world.time + flyoff_period
 
 	var/obj/effect/firemission_effect = new(target_turf)

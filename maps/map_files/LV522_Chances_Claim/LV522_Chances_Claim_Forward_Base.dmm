@@ -31101,6 +31101,7 @@
 	},
 /obj/structure/bed/roller/heavy,
 /obj/item/organ/xeno/drone,
+/obj/item/organ/xeno/drone,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/forward_base/chances/medical/medical_science)
 "lOU" = (

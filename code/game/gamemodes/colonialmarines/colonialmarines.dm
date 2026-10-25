@@ -445,6 +445,16 @@
 			card.access = new_access
 			announce_addendum += "\nSenior Command access added to ID."
 
+	//Add Overwatch skill (needed for Overwatch Consoles)
+	if(person_in_charge.skills.get_skill_level(SKILL_OVERWATCH) < SKILL_OVERWATCH_TRAINED)
+		person_in_charge.skills.set_skill(SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED)
+		announce_addendum += "\nCryo-sleep overwatch training has been verified."	//maybe change it to just additional training has been certified?
+
+	//Add Intel skill (needed for decrypt comms garble)
+	if(person_in_charge.skills.get_skill_level(SKILL_INTEL) < SKILL_INTEL_TRAINED)
+		person_in_charge.skills.set_skill(SKILL_INTEL, SKILL_INTEL_TRAINED)
+		announce_addendum += "\nCryo-sleep intel training has been verified."
+
 	announce_addendum += "\nA Command headset is available in the Command Tablet cabinet."
 
 	//does an announcement to the crew about the commander & alerts admins to that change for logs.

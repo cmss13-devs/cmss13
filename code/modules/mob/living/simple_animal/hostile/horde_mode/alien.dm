@@ -27,33 +27,84 @@
 	var/death_bonus = 0
 	///How many points do you get for killing them?
 	var/kill_reward = 150
+	///How far can our current target get until we change targets?
+	var/ai_range = 16
+	/// The time interval before this xeno should forcefully get a new target
+	var/forced_retarget_time = (10 SECONDS)
+	COOLDOWN_DECLARE(forced_retarget_cooldown)
 	var/mob/target_mob
 	affected_by_fire = TRUE
 
 ///Gives us a random target to hunt down.
 /mob/living/simple_animal/hostile/alien/horde_mode/proc/find_random_target()
 	if(length(SShorde_mode.corrupted_xenos) && prob(66))
-		target_mob = pick(SShorde_mode.corrupted_xenos)
+		var/list/viable_targets = list()
+		var/atom/movable/closest_target
+		var/smallest_distance = INFINITY
+
+		var/list/valid_targets = SShorde_mode.corrupted_xenos
+
+		for(var/atom/movable/potential_target as anything in valid_targets)
+			if(z != potential_target.z)
+				continue
+
+			var/distance = get_dist(src, potential_target)
+
+			if(distance > ai_range)
+				continue
+
+			viable_targets += potential_target
+
+			if(smallest_distance <= distance)
+				continue
+
+			closest_target = potential_target
+			smallest_distance = distance
+
+		if(isnull(closest_target))
+			target_mob = pick(SShorde_mode.corrupted_xenos)
+			target_mob_ref = WEAKREF(target_mob)
+			stance = HOSTILE_STANCE_ATTACK
+			return
+
+		target_mob = closest_target
 		target_mob_ref = WEAKREF(target_mob)
+		stance = HOSTILE_STANCE_ATTACK
 		return
 
-	// try to get someone near us so we dont run through the entire marine force for one guy, unless we fail
-	for(var/attempts in 1 to 4)
-		var/candidate = SShorde_mode.return_random_player()
+	// we stealing from pve
+	var/list/viable_targets = list()
+	var/atom/movable/closest_target
+	var/smallest_distance = INFINITY
 
-		switch(attempts)
-			if(1)
-				if(get_dist(src, candidate) <= 10)
-					target_mob = candidate
-					break
+	var/list/valid_targets = SShorde_mode.return_all_players()
 
-			if(2)
-				if(get_dist(src, candidate) <= 20)
-					target_mob = candidate
-					break
+	for(var/atom/movable/potential_target as anything in valid_targets)
+		if(z != potential_target.z)
+			continue
 
-			if(3)
-				target_mob = candidate
+		var/distance = get_dist(src, potential_target)
+
+		if(distance > ai_range)
+			continue
+
+		viable_targets += potential_target
+
+		if(smallest_distance <= distance)
+			continue
+
+		closest_target = potential_target
+		smallest_distance = distance
+
+	if(isnull(closest_target))
+		target_mob = SShorde_mode.return_random_player()
+		target_mob_ref = WEAKREF(target_mob)
+		stance = HOSTILE_STANCE_ATTACK
+		return
+
+	target_mob = closest_target
+	target_mob_ref = WEAKREF(target_mob)
+	stance = HOSTILE_STANCE_ATTACK
 
 ///Gives us a random target to hunt down.
 /mob/living/simple_animal/hostile/alien/horde_mode/proc/find_random_xeno_target()

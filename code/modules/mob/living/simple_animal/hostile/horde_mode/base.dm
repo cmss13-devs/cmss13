@@ -255,13 +255,22 @@
 		projectile.fire_at(target_mob, src, src, projectile_type.max_range, projectile_type.shell_speed)
 		COOLDOWN_START(src, ranged_cooldown, ranged_delay)
 
-	if(!target_mob_ref && target_mob)
-		target_mob_ref = WEAKREF(target_mob)
+	if(!target_mob)
+		if(hivenumber == XENO_HIVE_CORRUPTED)
+			COOLDOWN_START(src, forced_retarget_cooldown, forced_retarget_time)
+			find_random_xeno_target()
+			ForceMoveToTarget()
+		else
+			COOLDOWN_START(src, forced_retarget_cooldown, forced_retarget_time)
+			find_random_target()
+			ForceMoveToTarget()
 
-	if((!target_mob && hivenumber != XENO_HIVE_CORRUPTED) || target_mob.stat == DEAD)
+	if(hivenumber != XENO_HIVE_CORRUPTED && (QDELETED(target_mob) || target_mob.stat == DEAD || get_dist(target_mob, src) > ai_range || COOLDOWN_FINISHED(src, forced_retarget_cooldown)))
+		COOLDOWN_START(src, forced_retarget_cooldown, forced_retarget_time)
 		find_random_target()
 		ForceMoveToTarget()
-	else if(!target_mob && hivenumber == XENO_HIVE_CORRUPTED)
+	else if(hivenumber == XENO_HIVE_CORRUPTED && (QDELETED(target_mob) || target_mob.stat == DEAD || get_dist(target_mob, src) > ai_range || COOLDOWN_FINISHED(src, forced_retarget_cooldown)))
+		COOLDOWN_START(src, forced_retarget_cooldown, forced_retarget_time)
 		find_random_xeno_target()
 		ForceMoveToTarget()
 

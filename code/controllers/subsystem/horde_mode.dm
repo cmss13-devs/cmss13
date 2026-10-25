@@ -130,7 +130,7 @@ SUBSYSTEM_DEF(horde_mode)
 		handle_new_xenos()
 		xeno_health_mod += 0.025
 		xeno_damage_mod += 0.025
-		amount_to_spawn = (3*round+2) + current_players.len / 3
+		amount_to_spawn = round((3*round+2) + current_players.len / 2)
 		specialists_to_spawn = max_specialists
 		if(spawn_max <= 5 + current_players.len)
 			spawn_max = clamp(2 + floor(round / 3), 2, 5 + current_players.len)
@@ -175,36 +175,30 @@ SUBSYSTEM_DEF(horde_mode)
 		spawnable_xenos.Add(/mob/living/simple_animal/hostile/alien/horde_mode/burrower)
 		max_specialists = 6
 		send_player_message(SPAN_XENOHIGHDANGER("You hear something digging under you..."))
+		send_player_message(Gibberish("The USS Thunderhawk is nearing orbit, hold out a bit longer.", 20), TRUE)
 	if(round == 16)
+		spawnable_xenos.Add(/mob/living/simple_animal/hostile/alien/horde_mode/lurker/vampire)
 		spawnable_xenos.Add(/mob/living/simple_animal/hostile/alien/horde_mode/drone/healer)
 		spawnable_xenos.Add(/mob/living/simple_animal/hostile/alien/horde_mode/drone/gardener)
 		max_specialists = 7
 		send_player_message(SPAN_XENOHIGHDANGER("Something has changed..."))
 	if(round == 18)
+		spawnable_xenos.Add(/mob/living/simple_animal/hostile/alien/horde_mode/hivelord)
 		spawnable_xenos.Add(/mob/living/simple_animal/hostile/alien/horde_mode/runner/acid)
+		spawnable_bosses.Add(/mob/living/simple_animal/hostile/alien/horde_mode/ravager)
+		bosses_to_spawn++
 		max_specialists = 8
-		send_player_message(SPAN_XENOHIGHDANGER("You hear the sizzling of something melting..."))
+		send_player_message(SPAN_XENOHIGHDANGER("A killer is loose..."))
+	if(round == 19)
+		spawnable_bosses.Add(/mob/living/simple_animal/hostile/alien/horde_mode/boss)
+		bosses_to_spawn = 2
+		max_specialists = 10
+		send_player_message(SPAN_XENOHIGHDANGER("The USS Thunderhawk is in orbit. We are sending in gunships to recon the area. Hang tight, it's almost over."), TRUE)
+		sleep(5 SECONDS)
 	if(round == 20)
 		spawnable_xenos.Add(/mob/living/simple_animal/hostile/alien/horde_mode/defender/steelcrest)
 		max_specialists = 9
-		send_player_message(SPAN_XENOHIGHDANGER("A bulwark is roaming..."))
-	if(round == 22)
-		spawnable_xenos.Add(/mob/living/simple_animal/hostile/alien/horde_mode/lurker/vampire)
-		max_specialists = 10
-		send_player_message(SPAN_XENOHIGHDANGER("You see something hungry for blood..."))
-	if(round == 24)
-		spawnable_xenos.Add(/mob/living/simple_animal/hostile/alien/horde_mode/hivelord)
-		send_player_message(SPAN_XENOHIGHDANGER("Stronger weeds start appearing..."))
-	if(round == 28)
-		spawnable_bosses.Add(/mob/living/simple_animal/hostile/alien/horde_mode/ravager)
-		bosses_to_spawn++
-		send_player_message(SPAN_XENOHIGHDANGER("A killer is loose..."))
-	if(round == 29)
-		spawnable_bosses.Add(/mob/living/simple_animal/hostile/alien/horde_mode/boss)
-		bosses_to_spawn++
-		send_player_message(SPAN_XENOHIGHDANGER("The USS Thunderhawk is in orbit. We are sending in gunships to recon the area. Hang tight, it's almost over."), TRUE)
-		sleep(5 SECONDS)
-	if(round == 30)
+		bosses_to_spawn = 5
 		send_player_message(SPAN_XENOHIGHDANGER("Signal flares will be dropped at center point in T-10 seconds. Utilize them for CAS until our transport ship can get closer."), TRUE)
 		sleep(5 SECONDS)
 
@@ -219,7 +213,7 @@ SUBSYSTEM_DEF(horde_mode)
 		if(radio_message)
 			playsound_client(player_mob.client, 'sound/effects/radiostatic.ogg', player_mob.loc, 50, FALSE)
 			player_mob.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>Incoming Transmission:</u></span><br>" + "[message]", /atom/movable/screen/text/screen_text/command_order, LIGHT_COLOR_BLUE)
-			return
+			continue
 
 		to_chat(player_mob, message)
 
@@ -231,6 +225,15 @@ SUBSYSTEM_DEF(horde_mode)
 			all_players += player_mob
 	if(length(all_players))
 		return pick(all_players)
+
+/datum/controller/subsystem/horde_mode/proc/return_all_players()
+	var/list/all_players = list()
+	for(var/list/player_in_list as anything in current_players)
+		var/mob/living/player_mob = player_in_list["mob"]
+		if(player_mob.stat != DEAD)
+			all_players += player_mob
+	if(length(all_players))
+		return all_players
 
 /datum/controller/subsystem/horde_mode/proc/return_random_xeno()
 	var/list/all_xenos = list()

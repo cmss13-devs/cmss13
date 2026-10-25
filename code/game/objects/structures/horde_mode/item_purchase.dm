@@ -731,7 +731,7 @@
 // Weapon mystery box
 /////////////////////
 /obj/structure/mystery_purchase/weapons
-	high_tier_gear = list(/obj/item/weapon/gun/flamer/m240, /obj/item/weapon/gun/rifle/m46c/horde_mode, /obj/item/weapon/gun/shotgun/combat/marsoc, /obj/item/weapon/gun/rifle/m41aMK1)
+	high_tier_gear = list(/obj/item/weapon/gun/flamer/m240, /obj/item/weapon/gun/rifle/m46c/horde_mode, /obj/item/weapon/gun/shotgun/combat/marsoc, /obj/item/weapon/gun/rifle/m41aMK1, /obj/item/weapon/gun/smartgun/horde_mode)
 	med_tier_gear = list(/obj/item/weapon/gun/lever_action/r4t, /obj/item/weapon/gun/shotgun/combat/buckshot, /obj/item/weapon/gun/rifle/mar40/lmg, /obj/item/weapon/gun/rifle/m41a, /obj/item/weapon/gun/rifle/type71/carbine, /obj/item/weapon/gun/rifle/lmg, /obj/item/weapon/gun/rifle/xm177)
 	low_tier_gear = list(/obj/item/weapon/gun/rifle/m4ra, /obj/item/weapon/gun/smg/mp5, /obj/item/weapon/gun/smg/fp9000, /obj/item/weapon/gun/rifle/mar40/lmg, /obj/item/weapon/gun/rifle/mar40/carbine)
 

@@ -61,7 +61,7 @@
 	var/datum/health_scan/last_health_display
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	var/own_orbit_size = 0
-	var/observer_actions = list(/datum/action/observer_action/join_xeno, /datum/action/observer_action/join_lesser_drone)
+	var/observer_actions = list(/datum/action/observer_action/join_xeno, /datum/action/observer_action/join_lesser_drone, /datum/action/observer_action/join_horde_mode)
 	var/datum/action/minimap/observer/minimap
 	///The last message for this player with their larva pool information
 	var/larva_pool_cached_message
@@ -1198,6 +1198,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Join Horde Mode"
 	set desc = "Select a freed mob by staff."
 
+	join_in_horde_mode()
+
+/mob/dead/proc/join_in_horde_mode()
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
 		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 		return
@@ -1220,7 +1223,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		setup_human(spawned_marine, player, FALSE)
 		arm_equipment(spawned_marine, /datum/equipment_preset/uscm/horde_mode_marine, FALSE, TRUE)
 
-		SShorde_mode.current_players += list(list("mob" = spawned_marine, "points" = 500, "client" = src.client))
+		SShorde_mode.current_players += list(list("mob" = spawned_marine, "points" = 500, "client" = spawned_marine.client))
 		spawned_marine.pain = new /datum/pain/human_hero()
 		spawned_marine.status_flags |= NO_PERMANENT_DAMAGE
 

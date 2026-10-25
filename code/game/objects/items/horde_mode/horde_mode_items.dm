@@ -164,7 +164,14 @@
 	if(..())
 		return
 
-	target.heal_overall_damage(target.species.total_health * 0.33, target.species.total_health * 0.33)
+	if(target.stat == DEAD)
+		for(var/list/player_in_list as anything in SShorde_mode.current_players)
+			var/mob/living/player_mob = player_in_list["mob"]
+			if(player_mob == target)
+				var/client/target_client = player_in_list["client"]
+				if(!isnull(target_client))
+					show_blurb(target_client.mob, 15, "You have been revived! Return to your body to start playing again.", null, "center", "center", COLOR_RED, null, null, 0.5)
+	target.rejuvenate()
 
 //SPEED STIM
 /////////////

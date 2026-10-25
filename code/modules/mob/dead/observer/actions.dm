@@ -118,6 +118,19 @@
 	if(SSticker.mode.check_xeno_late_join(owner))
 		SSticker.mode.attempt_to_join_as_lesser_drone(owner)
 
+/datum/action/observer_action/join_horde_mode
+	name = "Join Horde Mode"
+	action_icon_state = "join_lesser_drone"
+
+/datum/action/observer_action/join_horde_mode/action_activate()
+	. = ..()
+	if(!owner.client)
+		return
+
+	var/mob/dead/dead_owner = owner
+
+	dead_owner.join_in_horde_mode()
+
 /datum/keybinding/observer
 	category = CATEGORY_OBSERVER
 	weight = WEIGHT_DEAD

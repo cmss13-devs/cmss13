@@ -72,7 +72,7 @@
 	var/mob/living/target_mob = target_mob_ref?.resolve()
 	if(!target_mob || SA_attackable(target_mob))
 		stance = HOSTILE_STANCE_IDLE
-	if(target_mob in ListTargets(10))
+	if(target_mob in ListTargets(16))
 		stance = HOSTILE_STANCE_ATTACKING
 		walk_to(src, target_mob, 1, move_to_delay)
 
@@ -82,7 +82,7 @@
 	if(!target_mob || SA_attackable(target_mob))
 		LoseTarget()
 		return 0
-	if(!(target_mob in ListTargets(10)))
+	if(!(target_mob in ListTargets(16)))
 		LostTarget()
 		return 0
 	if(get_dist(src, target_mob) <= 1) //Attacking
@@ -144,18 +144,21 @@
 	if(!stat && mobility_flags & MOBILITY_MOVE)
 		switch(stance)
 			if(HOSTILE_STANCE_IDLE)
-				target_mob_ref = WEAKREF(FindTarget())
+				if(!istype(src, /mob/living/simple_animal/hostile/alien/horde_mode)) //stop messing with this it breaks targetting >:(
+					target_mob_ref = WEAKREF(FindTarget())
 
 			if(HOSTILE_STANCE_ATTACK)
 				if(!target_mob_ref)
-					target_mob_ref = WEAKREF(FindTarget())
+					if(!istype(src, /mob/living/simple_animal/hostile/alien/horde_mode)) //stop messing with this it breaks targetting >:(
+						target_mob_ref = WEAKREF(FindTarget())
 				if(destroy_surroundings)
 					DestroySurroundings()
 				MoveToTarget()
 
 			if(HOSTILE_STANCE_ATTACKING)
 				if(!target_mob_ref)
-					target_mob_ref = WEAKREF(FindTarget())
+					if(!istype(src, /mob/living/simple_animal/hostile/alien/horde_mode)) //stop messing with this it breaks targetting >:(
+						target_mob_ref = WEAKREF(FindTarget())
 				if(!AttackTarget() && destroy_surroundings)
 					DestroySurroundings()
 

@@ -14,7 +14,12 @@
 
 		if(icon)
 			msg += "[icon2html(icon, user)] "
-		msg += "<EM>[src]</EM>!\n"
+		msg += "<EM>[src]</EM>"
+
+		if(mob_flags & MOB_FLAYED)
+			msg += " Its outer flesh has been removed...\n"
+		else
+			msg += "!\n"
 
 		if(species && species.flags & IS_SYNTHETIC)
 			msg += "<span style='font-weight: bold; color: purple;'>You sense this creature is not organic.\n</span>"
@@ -102,50 +107,59 @@
 
 	if(id_paygrade)
 		msg += "<EM>[rank_display] </EM>"
-	msg += "<EM>[src]</EM>!\n"
 
-	//uniform
-	if(w_uniform && !skipjumpsuit)
-		msg += "[t_He] [t_is] [w_uniform.get_examine_location(src, user, WEAR_BODY, t_He, t_his, t_him, t_has, t_is)].\n"
+	msg += "<EM>[src]</EM>\n"
+
+	if(mob_flags & MOB_FLAYED)
+		msg += SPAN_ITALIC(" ...You cannot tell anymore, [t_He] doesn't have a face!\n")
+		msg += SPAN_BOLDWARNING("[uppertext(t_his)] SKIN HAS BEEN PEELED OFF.\n")
+
+	if(ishuman_strict(src))
+		var/age_description
+		switch(clamp(age, AGE_MIN, AGE_MAX))
+			if(AGE_MIN to 25)
+				age_description = "a young adult"
+			if(26 to 35)
+				age_description = "an adult"
+			if(36 to 55)
+				age_description = "a middle-aged adult"
+			if(56 to 75)
+				age_description = "an older adult"
+			if(76 to AGE_MAX)
+				age_description = "an elderly adult"
+
+		var/body_size_description
+		switch(body_size)
+			if(BODY_SIZE_THIN)
+				body_size_description = "thin"
+			if(BODY_SIZE_AVERAGE)
+				body_size_description = "average-sized"
+			if(BODY_SIZE_LARGE)
+				body_size_description = "large"
+
+		var/body_type_description
+		switch(body_type)
+			if(BODY_TYPE_NOMUSCLE)
+				body_type_description = "unmuscular"
+			if(BODY_TYPE_LEAN)
+				body_type_description = "lean"
+			if(BODY_TYPE_RIPPED)
+				body_type_description = "muscular"
+
+		if(!skipface && !skipjumpsuit && body_size_description && body_type_description && mob_flags & MOB_FLAYED)
+			msg += "[t_He] [t_has] a [SPAN_BOLD(body_size_description)], [SPAN_BOLD(body_type_description)] build.\n"
+		else if(!skipface && !skipjumpsuit && body_size_description && body_type_description)
+			msg += "[t_He] [t_is] [SPAN_BOLD(age_description)], with a [SPAN_BOLD(body_size_description)], [SPAN_BOLD(body_type_description)] build.\n"
+		else if(!skipface)
+			msg += "[t_He] [t_is] [SPAN_BOLD(age_description)].\n"
+		else if(!skipjumpsuit && body_size_description && body_type_description)
+			msg += "[capitalize(t_his)] face is hidden, but [t_his] build is [SPAN_BOLD(body_size_description)] and [SPAN_BOLD(body_type_description)].\n"
+		else
+			msg += "[capitalize(t_his)] face is hidden.\n"
 
 	//head
 	if(head)
 		msg += "[t_He] [t_is] wearing [head.get_examine_line(user)] [head.get_examine_location(src, user, WEAR_HEAD, t_He, t_his, t_him, t_has, t_is)].\n"
-
-	//suit/armor
-	if(wear_suit)
-		msg += "[t_He] [t_is] [wear_suit.get_examine_location(src, user, WEAR_JACKET, t_He, t_his, t_him, t_has, t_is)].\n"
-	//suit/armor storage
-	if(s_store && !skipsuitstorage)
-		msg += "[t_He] [t_is] carrying [s_store.get_examine_line(user)] [s_store.get_examine_location(src, user, WEAR_J_STORE, t_He, t_his, t_him, t_has, t_is)].\n"
-
-	//back
-	if(back)
-		msg += "[t_He] [t_has] [back.get_examine_line(user)] [back.get_examine_location(src, user, WEAR_BACK, t_He, t_his, t_him, t_has, t_is)].\n"
-
-	//left hand
-	if(l_hand)
-		msg += "[t_He] [t_is] holding [l_hand.get_examine_line(user)] [l_hand.get_examine_location(src, user, WEAR_L_HAND, t_He, t_his, t_him, t_has, t_is)].\n"
-
-	//right hand
-	if(r_hand)
-		msg += "[t_He] [t_is] holding [r_hand.get_examine_line(user)] [r_hand.get_examine_location(src, user, WEAR_R_HAND, t_He, t_his, t_him, t_has, t_is)].\n"
-
-	//gloves
-	if(gloves && !skipgloves)
-		msg += "[t_He] [t_has] [gloves.get_examine_line(user)] [gloves.get_examine_location(src, user, WEAR_HANDS, t_He, t_his, t_him, t_has, t_is)].\n"
-	else if(hands_blood_color)
-		msg += SPAN_WARNING("[t_He] [t_has] [(hands_blood_color != COLOR_OIL) ? "blood" : "oil"]-stained hands!\n")
-
-	//belt
-	if(belt)
-		msg += "[t_He] [t_has] [belt.get_examine_line(user)] [belt.get_examine_location(src, user, WEAR_WAIST, t_He, t_his, t_him, t_has, t_is)].\n"
-
-	//shoes
-	if(shoes && !skipshoes)
-		msg += "[t_He] [t_is] wearing [shoes.get_examine_line(user)] [shoes.get_examine_location(src, user, WEAR_FEET, t_He, t_his, t_him, t_has, t_is)].\n"
-	else if(feet_blood_color)
-		msg += SPAN_WARNING("[t_He] [t_has] [(feet_blood_color != COLOR_OIL) ? "blood" : "oil"]-stained feet!\n")
 
 	//mask
 	if(wear_mask && !skipmask)
@@ -161,6 +175,46 @@
 			msg += "[t_He] [t_has] [wear_l_ear.get_examine_line(user)] [wear_l_ear.get_examine_location(src, user, WEAR_L_EAR, t_He, t_his, t_him, t_has, t_is)].\n"
 		if(wear_r_ear)
 			msg += "[t_He] [t_has] [wear_r_ear.get_examine_line(user)] [wear_r_ear.get_examine_location(src, user, WEAR_R_EAR, t_He, t_his, t_him, t_has, t_is)].\n"
+
+	//suit/armor
+	if(wear_suit)
+		msg += "[t_He] [t_is] [wear_suit.get_examine_location(src, user, WEAR_JACKET, t_He, t_his, t_him, t_has, t_is)].\n"
+
+	//suit/armor storage
+	if(s_store && !skipsuitstorage)
+		msg += "[t_He] [t_is] carrying [s_store.get_examine_line(user)] [s_store.get_examine_location(src, user, WEAR_J_STORE, t_He, t_his, t_him, t_has, t_is)].\n"
+
+	//uniform
+	if(w_uniform && !skipjumpsuit)
+		msg += "[t_He] [t_is] [w_uniform.get_examine_location(src, user, WEAR_BODY, t_He, t_his, t_him, t_has, t_is)].\n"
+
+	//back
+	if(back)
+		msg += "[t_He] [t_has] [back.get_examine_line(user)] [back.get_examine_location(src, user, WEAR_BACK, t_He, t_his, t_him, t_has, t_is)].\n"
+
+	//gloves
+	if(gloves && !skipgloves)
+		msg += "[t_He] [t_has] [gloves.get_examine_line(user)] [gloves.get_examine_location(src, user, WEAR_HANDS, t_He, t_his, t_him, t_has, t_is)].\n"
+	else if(hands_blood_color)
+		msg += SPAN_WARNING("[t_He] [t_has] [(hands_blood_color != COLOR_OIL) ? "blood" : "oil"]-stained hands!\n")
+
+	//left hand
+	if(l_hand)
+		msg += "[t_He] [t_is] holding [l_hand.get_examine_line(user)] [l_hand.get_examine_location(src, user, WEAR_L_HAND, t_He, t_his, t_him, t_has, t_is)].\n"
+
+	//right hand
+	if(r_hand)
+		msg += "[t_He] [t_is] holding [r_hand.get_examine_line(user)] [r_hand.get_examine_location(src, user, WEAR_R_HAND, t_He, t_his, t_him, t_has, t_is)].\n"
+
+	//belt
+	if(belt)
+		msg += "[t_He] [t_has] [belt.get_examine_line(user)] [belt.get_examine_location(src, user, WEAR_WAIST, t_He, t_his, t_him, t_has, t_is)].\n"
+
+	//shoes
+	if(shoes && !skipshoes)
+		msg += "[t_He] [t_is] wearing [shoes.get_examine_line(user)] [shoes.get_examine_location(src, user, WEAR_FEET, t_He, t_his, t_him, t_has, t_is)].\n"
+	else if(feet_blood_color)
+		msg += SPAN_WARNING("[t_He] [t_has] [(feet_blood_color != COLOR_OIL) ? "blood" : "oil"]-stained feet!\n")
 
 	//ID
 	if(wear_id)
@@ -553,11 +607,12 @@
 	. += msg
 
 
-	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH) || observer)
 		var/obj/item/clothing/gloves/yautja/hunter/bracers = gloves
 		if(istype(bracers) && bracers.name_active)
-			. += SPAN_BLUE("Their bracers identifies them as [SPAN_BOLD("[real_name].")]")
-		. += SPAN_BLUE("[src] has the scent of [life_kills_total] defeated prey.")
+			. += SPAN_BLUE("Their bracers identify them as [SPAN_BOLD("[real_name].")]")
+		if(!observer)
+			. += SPAN_BLUE("[src] has the scent of [life_kills_total] defeated prey.")
 		if(src.hunter_data.hunted)
 			. += SPAN_ORANGE("[src] is being hunted by [src.hunter_data.hunter.real_name].")
 
@@ -573,6 +628,11 @@
 
 		if(src.hunter_data.youngblood)
 			. += SPAN_GREEN("[src] is being taught by [src.hunter_data.hunter.real_name].")
+
+		if(faction == FACTION_YAUTJA_BADBLOOD)
+			. += SPAN_RED("THEY ARE A BAD BLOOD!")
+		else if(faction == FACTION_YAUTJA_STRANDED)
+			. += SPAN_ORANGE("They are not of your hunting party.")
 
 
 //Helper procedure. Called by /mob/living/carbon/human/get_examine_text() and /mob/living/carbon/human/Topic() to determine HUD access to security and medical records.

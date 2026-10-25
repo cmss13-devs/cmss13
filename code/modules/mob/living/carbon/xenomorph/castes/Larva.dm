@@ -16,6 +16,7 @@
 	can_be_revived = FALSE
 
 	minimap_icon = "larva"
+	organ_type = null
 
 /datum/caste_datum/larva/predalien
 	caste_type = XENO_CASTE_PREDALIEN_LARVA
@@ -63,9 +64,11 @@
 	if(larva_state == LARVA_STATE_BLOODY && evolution_stored >= evolution_threshold / 2)
 		larva_state = LARVA_STATE_NORMAL
 		generate_name()
+		update_icons()
 	else if(larva_state == LARVA_STATE_NORMAL && evolution_stored >= evolution_threshold)
 		larva_state = LARVA_STATE_MATURE
 		generate_name()
+		update_icons()
 	return ..()
 
 /mob/living/carbon/xenomorph/larva/warn_away_timer()
@@ -113,6 +116,11 @@
 
 	hivenumber = XENO_HIVE_DELTA
 
+/mob/living/carbon/xenomorph/larva/k_series
+	AUTOWIKI_SKIP(TRUE)
+
+	hivenumber = XENO_HIVE_K_SERIES
+
 /mob/living/carbon/xenomorph/larva/mutated
 	AUTOWIKI_SKIP(TRUE)
 
@@ -135,7 +143,7 @@
 	hud_set_hunter()
 
 /mob/living/carbon/xenomorph/larva/evolve_message()
-	to_chat(src, SPAN_XENODANGER("Strength ripples through your small form. You are ready to be shaped to the Queen's will. <a href='byond://?src=\ref[src];evolve=1;'>Evolve</a>"))
+	to_chat(src, SPAN_XENODANGER("Strength ripples through our small form. We are ready to be shaped to the Queen's will. <a href='byond://?src=\ref[src];evolve=1;'>Evolve</a>"))
 	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
 	var/datum/action/xeno_action/onclick/evolve/evolve_action = new()
@@ -213,7 +221,7 @@
 	// Otherwise, ""roar""!
 	var/current_time = world.time
 	if(current_time - last_roar_time < 1 SECONDS)
-		to_chat(src, SPAN_WARNING("You must wait before roaring again."))
+		to_chat(src, SPAN_WARNING("We must wait before roaring again."))
 		return FALSE
 
 	last_roar_time = current_time

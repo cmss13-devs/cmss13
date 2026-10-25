@@ -155,6 +155,110 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
 	)
 
+/obj/item/clothing/under/marine/field_doctor
+	name = "\improper USCM field doctor uniform"
+	desc = "Standard-issue field doctor fatigues. They have shards of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "marine_medic_field"
+	worn_state = "marine_medic_field"
+	specialty = "USCM Field Doctor"
+
+/obj/item/clothing/under/marine/field_doctor/jungle
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+
+/obj/item/clothing/under/marine/field_doctor/desert
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/desert.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/desert.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/field_doctor/classic
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/classic.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/classic.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/field_doctor/snow
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/snow.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/field_doctor/urban
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/urban.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/urban.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+
+	)
+/obj/item/clothing/under/marine/field_doctor/scrubs
+	name = "\improper USCM field doctor camo scrubs"
+	desc = "Standard-issue field doctor scrubs. While they do not have shards of light kevlar for protection, they are made of a special fiber that provides minor protection against biohazards and radiation, with the added bonus of coming in camo."
+	icon_state = "marine_medic_field_scrubs"
+	worn_state = "marine_medic_field_scrubs"
+	specialty = "USCM Field Doctor"
+
+	//No robustness for you if you want sterile clothes.
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	flags_jumpsuit = FALSE
+
+/obj/item/clothing/under/marine/field_doctor/scrubs/jungle
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+
+/obj/item/clothing/under/marine/field_doctor/scrubs/desert
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/desert.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/desert.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/field_doctor/scrubs/classic
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/classic.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/classic.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/field_doctor/scrubs/snow
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/snow.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/field_doctor/scrubs/urban
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/urban.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/urban.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+	)
+
+
 /obj/item/clothing/under/marine/engineer
 	name = "\improper USCM ComTech uniform"
 	desc = "Standard-issue Marine combat technician fatigues. They have shards of light Kevlar to help protect against stabbing weapons and bullets."
@@ -682,6 +786,12 @@
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 
+/obj/item/clothing/under/marine/officer/bridge/skirt
+	name = "marine service skirt uniform"
+	desc = "A steel grey skirt paired with a tan shirt worn by members of the USCM. Do the corps proud. It has pads of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "BO_jumpsuit_skirt"
+	worn_state = "BO_jumpsuit_skirt"
+
 /obj/item/clothing/under/marine/officer/boiler
 	name = "marine operations uniform"
 	desc = "An operations uniform worn by members of the USCM. Do the corps proud. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
@@ -741,6 +851,12 @@
 	)
 	specialty = "USCM officer"
 	flags_atom = FPRINT && NO_GAMEMODE_SKIN
+
+/obj/item/clothing/under/marine/officer/command/skirt
+	name = "\improper USCM officer skirt uniform"
+	desc = "The well-ironed skirt and button-up uniform of a USCM officer. The skirt has rather spacious pockets sewn into it, showing the wearers high rank. It has pads of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "CO_jumpskirt"
+	worn_state = "CO_jumpskirt"
 
 /obj/item/clothing/under/marine/officer/general
 	name = "USCM Service 'C' Officer Uniform"
@@ -802,8 +918,8 @@
 	item_state_slots = list(WEAR_BODY = "ot_jumpsuit")
 
 /obj/item/clothing/under/marine/officer/researcher
-	name = "researcher clothes"
-	desc = "A simple set of civilian clothes worn by researchers."
+	name = "blue sweater and light tan pants"
+	desc = "Believe it or not, this was the favorite clothing combination of academic scholars across the stars for a long time, thankfully they have been growing a better... aesthetical sense in recent years, decreasing it's popularity."
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	icon_state = "research_jumpsuit"
@@ -825,7 +941,7 @@
 /obj/item/clothing/under/marine/officer/formal/servicedress
 	name = "commanding officer's dress shirt"
 	desc = "The shirt and tie of a two-piece Navy service dress uniform for high-ranking officers. Wear with style and substance."
-	specialty = "captain's service dress"
+	specialty = "commander's service dress"
 	icon_state = "CO_service"
 	worn_state = "CO_service"
 	flags_atom = NO_GAMEMODE_SKIN
@@ -835,7 +951,7 @@
 	desc = "A well-ironed USCM officer uniform  intended for parades or hot weather. Wear this with pride."
 	icon_state = "co_gray"
 	worn_state = "co_gray"
-	specialty = "captain's gray formal"
+	specialty = "commander's gray formal"
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/under/marine/officer/formal/turtleneck
@@ -843,8 +959,9 @@
 	desc = "A well-ironed USCM officer uniform intended for more formal or somber events. Wear this with pride."
 	icon_state = "co_turtleneck"
 	worn_state = "co_turtleneck"
-	specialty = "captain's turtleneck"
+	specialty = "commander's turtleneck"
 	flags_atom = NO_GAMEMODE_SKIN
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/dress
 	name = "marine formal service uniform"
@@ -858,6 +975,12 @@
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	flags_jumpsuit = FALSE
 	black_market_value = 15
+
+/obj/item/clothing/under/marine/dress/skirt
+	name = "marine formal service skirt uniform"
+	desc = "A steel grey skirt paired with a formal shirt typically worn by marines of the USCM. Practical, while still being more formal than the standard service uniform."
+	icon_state = "formal_jumpsuit_skirt"
+	worn_state = "formal_jumpsuit_skirt"
 
 /obj/item/clothing/under/marine/dress/command
 	name = "marine officer formal service uniform"
@@ -977,7 +1100,7 @@
 
 /obj/item/clothing/under/marine/veteran/pmc
 	name = "\improper PMC fatigues"
-	desc = "A white set of fatigues, designed for private security operators. The symbol of the Weyland-Yutani corporation is emblazoned on the suit."
+	desc = "A white set of fatigues, designed for private security operators. The symbol of the Weyland-Yutani corporation is embroidered on the suit."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi',
@@ -1005,7 +1128,7 @@
 
 /obj/item/clothing/under/marine/veteran/pmc/leader
 	name = "\improper PMC command fatigues"
-	desc = "A white set of fatigues, designed for private security operators. The symbol of the Weyland-Yutani corporation is emblazoned on the suit. This particular suit looks like it belongs to a high-ranking officer."
+	desc = "A white set of fatigues, designed for private security operators. The symbol of the Weyland-Yutani corporation is embroidered on the suit. This particular suit looks like it belongs to a high-ranking officer."
 	icon_state = "officer_jumpsuit"
 	worn_state = "officer_jumpsuit"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
@@ -1022,14 +1145,14 @@
 
 /obj/item/clothing/under/marine/veteran/pmc/engineer
 	name = "\improper PMC engineer fatigues"
-	desc = "A black and orange set of fatigues, designed for private security technicians. The symbol of the Weyland-Yutani corporation is emblazoned on the suit."
+	desc = "A black and orange set of fatigues, designed for private security technicians. The symbol of the Weyland-Yutani corporation is embroidered on the suit."
 	icon_state = "engineer_jumpsuit"
 	worn_state = "engineer_jumpsuit"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/veteran/pmc/guard
 	name = "\improper PMC guard fatigues"
-	desc = "A black and orange set of fatigues, designed for private security enforcer personnel. The symbol of the Weyland-Yutani corporation is emblazoned on the suit."
+	desc = "A black and orange set of fatigues, designed for private security enforcer personnel. The symbol of the Weyland-Yutani corporation is embroidered on the suit."
 	icon_state = "guard_jumpsuit"
 	worn_state = "guard_jumpsuit"
 
@@ -1153,6 +1276,12 @@
 	desc = "A set of Officer UPP fatigues, mass-produced for the armed-forces of the Union of Progressive Peoples. A rare sight, especially in ICC zones. This particular set sports the dark drab pattern of the UPP 17th battalion, 'Smoldering Sons', operating in the sparse UPP frontier in the Anglo-Japanese arm."
 	icon_state = "upp_uniform_officer"
 	worn_state = "upp_uniform_officer"
+
+/obj/item/clothing/under/marine/veteran/UPP/officer/mss
+	name = "\improper UPP MSS officer service uniform"
+	desc = "A service uniform worn by officers of the Ministry of Space Security, the UPP's internal security and intelligence service. The MSS concerns itself with espionage, counterintelligence, political loyalty, and threats to the Union, both foreign and domestic."
+	icon_state = "upp_uniform_service"
+	worn_state = "upp_uniform_service"
 
 /obj/item/clothing/under/marine/veteran/UPP/civi1
 	name = "\improper UPP Civilian-style Orange overalls"
@@ -1325,7 +1454,7 @@
 
 /obj/item/clothing/under/marine/veteran/mercenary
 	name = "\improper Mercenary fatigues"
-	desc = "A thick, beige suit with a red armband. There is an unknown symbol is emblazoned on the suit."
+	desc = "A thick, beige suit with a red armband. There is an unknown symbol is embroidered on the suit."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/CLF.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/CLF.dmi',
@@ -1336,13 +1465,13 @@
 
 /obj/item/clothing/under/marine/veteran/mercenary/miner
 	name = "\improper Mercenary miner fatigues"
-	desc = "A beige suit with a red armband. It looks a little thin, like it wasn't designed for protection. There is an unknown symbol is emblazoned on the suit."
+	desc = "A beige suit with a red armband. It looks a little thin, like it wasn't designed for protection. There is an unknown symbol is embroidered on the suit."
 	icon_state = "mercenary_miner_uniform"
 	worn_state = "mercenary_miner_uniform"
 
 /obj/item/clothing/under/marine/veteran/mercenary/support
 	name = "\improper Mercenary engineer fatigues"
-	desc = "A blue suit with yellow accents, used by engineers. There is an unknown symbol is emblazoned on the suit."
+	desc = "A blue suit with yellow accents, used by engineers. There is an unknown symbol is embroidered on the suit."
 	icon_state = "mercenary_engineer_uniform"
 	worn_state = "mercenary_engineer_uniform"
 
@@ -1657,8 +1786,8 @@
 	worn_state = "corporate_blue"
 
 /obj/item/clothing/under/marine/reporter
-	name = "combat correspondent uniform"
-	desc = "A relaxed and robust uniform fit for any potential reporting needs."
+	name = "white work shirt and grey pants"
+	desc = "A relaxed and robust clothing fit for any apparel needs."
 	icon_state = "cc_white"
 	worn_state = "cc_white"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
@@ -1668,14 +1797,17 @@
 	)
 
 /obj/item/clothing/under/marine/reporter/black
+	name = "black work shirt and dark tan pants"
 	icon_state = "cc_black"
 	worn_state = "cc_black"
 
 /obj/item/clothing/under/marine/reporter/orange
+	name = "orange work shirt and black pants"
 	icon_state = "cc_orange"
 	worn_state = "cc_orange"
 
 /obj/item/clothing/under/marine/reporter/red
+	name = "red work shirt and bright tan pants"
 	icon_state = "cc_red"
 	worn_state = "cc_red"
 
@@ -1859,6 +1991,18 @@
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UPP.dmi',
 	)
 	flags_item = NO_CRYO_STORE
+
+/obj/item/clothing/under/rank/synthetic/daniel
+	name = "android suit"
+	desc = "An orange uniform used by Daniel synthetics."
+	icon_state = "mt_daniel"
+	worn_state = "mt_daniel"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/WY.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi',
+	)
+	flags_item = NO_CRYO_STORE
+
 
 /obj/item/clothing/under/rank/synthetic/joe
 	name = "\improper Working Joe Uniform"
@@ -2130,4 +2274,3 @@
 	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
 	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
 	hood_type = /obj/item/clothing/head/helmet/marine/cbrn_hood/advanced
-

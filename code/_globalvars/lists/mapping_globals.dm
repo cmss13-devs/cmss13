@@ -10,6 +10,7 @@ GLOBAL_LIST_EMPTY(queen_spawns)
 GLOBAL_LIST_EMPTY(xeno_spawns)
 GLOBAL_LIST_EMPTY(xeno_hive_spawns)
 GLOBAL_LIST_EMPTY(survivor_spawns_by_priority)
+GLOBAL_LIST_EMPTY(generic_survivor_spawns)
 GLOBAL_LIST_EMPTY(corpse_spawns)
 
 GLOBAL_LIST_EMPTY(yautja_spawnpoints)
@@ -19,6 +20,7 @@ GLOBAL_LIST_EMPTY(yautja_teleports)
 GLOBAL_LIST_EMPTY(yautja_teleport_descs)
 GLOBAL_LIST_EMPTY(yautja_young_teleports)
 GLOBAL_LIST_EMPTY(yautja_young_descs)
+GLOBAL_LIST_EMPTY_TYPED(badblood_spawns, /turf)
 
 GLOBAL_LIST_EMPTY(thunderdome_one)
 GLOBAL_LIST_EMPTY(thunderdome_two)
@@ -73,5 +75,8 @@ GLOBAL_LIST_EMPTY_TYPED(objective_landmarks_science, /obj/effect/landmark/object
 
 GLOBAL_LIST_EMPTY(comm_tower_landmarks_net_one)
 GLOBAL_LIST_EMPTY(comm_tower_landmarks_net_two)
+
+GLOBAL_LIST_EMPTY(sensor_tower_landmarks)
+GLOBAL_LIST_EMPTY(small_sensor_tower_landmarks)
 
 GLOBAL_LIST_EMPTY(landmarks_list) //list of all landmarks created

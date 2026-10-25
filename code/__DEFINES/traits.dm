@@ -142,6 +142,12 @@
 /// Example trait
 // #define TRAIT_X "t_x"
 
+//-- atom/movable traits --
+/// Apply this trait when a movable atom is launched
+#define TRAIT_LAUNCHED "launched"
+/// Apply this trait when a movable atom is rebounding
+#define TRAIT_REBOUNDING "rebounding"
+
 //-- mob traits --
 /// Apply this to make a mob not dense, and remove it when you want it to no longer make them undense, other sources of undensity will still apply. Always define a unique source when adding a new instance of this!
 #define TRAIT_UNDENSE "undense"
@@ -169,6 +175,8 @@
 #define TRAIT_VALKYRIE_ARMORED "trait_valkyrie_armored"
 /// Prevents mob from riding mobs when buckled onto something
 #define TRAIT_CANT_RIDE "cant_ride"
+/// Makes mob immune to dir lock slowdown.
+#define TRAIT_NO_DIR_LOCK_SLOWDOWN "no_dir_lock_slowdown"
 
 // SPECIES TRAITS
 /// Knowledge of Yautja technology
@@ -263,7 +271,12 @@
 #define TRAIT_PERK_REVIVE "t_p_revive"
 #define TRAIT_PERK_GUNNUT "t_p_gunnut"
 
-// -- ability traits --
+/// Mob is resistant to xenomorph weeds
+#define TRAIT_WEED_RESISTANT "weed_resistant"
+/// Mob can open xeno doors and hugger/traps ignore them
+#define TRAIT_XENO_RECOGNIZED "xeno_recognized"
+
+// -- general ability traits --
 /// Xenos with this trait cannot have plasma transferred to them
 #define TRAIT_ABILITY_NO_PLASMA_TRANSFER "t_ability_no_plasma_transfer"
 /// Shows that the xeno queen is on ovi
@@ -272,6 +285,20 @@
 #define TRAIT_ABILITY_BURROWED "t_ability_burrowed"
 /// Xenos with this trait can toggle long sight while resting.
 #define TRAIT_ABILITY_SIGHT_IGNORE_REST "t_ability_sight_ignore_rest"
+
+
+// -- specific ability traits --
+/// Used by ravager pounce to charge at enemies.
+#define TRAIT_ABILITY_POUNCE_CHARGE "t_ability_pounce_charge"
+/// Used for empower windup before ravager get empowered.
+#define TRAIT_ABILITY_PRE_EMPOWER "t_ability_pre_empower"
+/// Used by empower to give ravager boost to abilities after meeting target threshold.
+#define TRAIT_ABILITY_SUPER_EMPOWER "t_ability_super_empower"
+/// Used by shielder to check stance.
+#define TRAIT_ABILITY_ENCLOSED_PLATES "t_ability_enclosed_plates"
+/// Used by shielder for reflective plates.
+#define TRAIT_ABILITY_REFLECTIVE_PLATES "t_ability_reflective_plates"
+
 
 //-- item traits --
 // TOOL TRAITS
@@ -299,6 +326,8 @@
 #define TRAIT_GUN_SILENCED "t_gun_silenced"
 
 #define TRAIT_GUN_SILENCED_ALT "t_gun_silenced_alt" // Different sound
+
+#define TRAIT_GUN_BAYONET "t_gun_bayonet"
 
 #define TRAIT_GUN_BIPODDED "t_gun_bipodded"
 
@@ -351,6 +380,8 @@ GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_DEXTROUS,
 	TRAIT_REAGENT_SCANNER,
 	TRAIT_ABILITY_BURROWED,
+	TRAIT_ABILITY_ENCLOSED_PLATES,
+	TRAIT_ABILITY_REFLECTIVE_PLATES,
 	TRAIT_VULTURE_USER,
 	TRAIT_IN_TUTORIAL,
 	TRAIT_SPEC_KIT,
@@ -363,6 +394,10 @@ GLOBAL_LIST_INIT(mob_traits, list(
 	quirks have it's own panel so we don't need them here.
 */
 GLOBAL_LIST_INIT(traits_by_type, list(
+	/atom/movable = list(
+		"TRAIT_LAUNCHED" = TRAIT_LAUNCHED,
+		"TRAIT_REBOUNDING" = TRAIT_REBOUNDING,
+	),
 	/mob = list(
 		"TRAIT_KNOCKEDOUT" = TRAIT_KNOCKEDOUT,
 		"TRAIT_IMMOBILIZED" = TRAIT_IMMOBILIZED,
@@ -550,3 +585,9 @@ GLOBAL_LIST(trait_name_map)
 #define TURF_Z_TRANSPARENT_TRAIT "turf_z_transparent"
 /// traits from wall hiding
 #define WALL_HIDING_TRAIT "wallhiding"
+/// traits from reagents
+#define TRAIT_SOURCE_REAGENT(reagent_id) "reagent_[reagent_id]"
+/// traits from being launched
+#define LAUNCHED_TRAIT "launched"
+/// traits from rebounding
+#define REBOUNDING_TRAIT "rebounding"

@@ -10,6 +10,16 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 			"classic" = kb.classic_keys,
 		))
 
+/proc/keybind_to_keyboardMap(keybind, list/mods)
+	var/list/tempList = list()
+	for(var/i in mods)
+		tempList += GLOB._kbMap[i]
+	if(GLOB._kbMap[keybind])
+		tempList += GLOB._kbMap[keybind]
+	else
+		tempList += keybind
+	return tempList.Join("+")
+
 /datum/tgui_macro
 	var/client/owner
 	var/datum/preferences/prefs
@@ -66,12 +76,6 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 
 			var/old_key = params["old_key"]
 
-			var/mods = sortList(params["key_mods"]).Join("+")
-
-			var/full_key = params["key"]
-			if(mods)
-				full_key = "[mods]+[full_key]"
-
 			if(!params["key"])
 				if(kbinds[old_key])
 					kbinds[old_key] -= kb_name
@@ -82,13 +86,7 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 				prefs.save_preferences()
 				return
 
-			var/list/tempList = list()
-			for(var/i in splittext(full_key, "+"))
-				if(GLOB._kbMap[i])
-					tempList += GLOB._kbMap[i]
-				else
-					tempList += i
-			full_key = tempList.Join("+")
+			var/full_key = keybind_to_keyboardMap(params["key"], params["key_mods"])
 
 			if(kb_name in kbinds[full_key]) //We pressed the same key combination that was already bound here, so let's remove to re-add and re-sort.
 				kbinds[full_key] -= kb_name
@@ -135,10 +133,9 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 			var/keybind_type = params["keybind_type"]
 			if(!(keybind_type in list(KEYBIND_TYPE_SAY, KEYBIND_TYPE_ME, KEYBIND_TYPE_PICKSAY)))
 				return TRUE
-
-			var/keybind = params["keybind"]
+			var/keybind = keybind_to_keyboardMap(params["key"], params["key_mods"])
 			if(!keybind)
-				return TRUE
+				keybind = params["keybind"]
 
 			var/contents = params["contents"]
 
@@ -164,13 +161,12 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 						contents = jointext(contents, ", ")
 					contents = strip_html(contents, MAX_MESSAGE_LEN)
 
-			for(var/i in GLOB._kbMap)
-				keybind = replacetext(keybind, i, GLOB._kbMap[i])
-
 			var/when_human = sanitize_integer(params["when_human"], FALSE, TRUE, TRUE)
 			var/when_xeno = sanitize_integer(params["when_xeno"], FALSE, TRUE, TRUE)
+			var/when_yautja = sanitize_integer(params["when_yautja"], FALSE, TRUE, TRUE)
+			var/when_synth = sanitize_integer(params["when_synth"], FALSE, TRUE, TRUE)
 
-			prefs.custom_keybinds[index] = list("type" = keybind_type, "keybinding" = keybind, "contents" = contents, "when_human" = when_human, "when_xeno" = when_xeno)
+			prefs.custom_keybinds[index] = list("type" = keybind_type, "keybinding" = keybind, "contents" = contents, "when_human" = when_human, "when_xeno" = when_xeno, "when_yautja" = when_yautja, "when_synth" = when_synth)
 			prefs.load_custom_keybinds()
 
 			prefs.save_preferences()

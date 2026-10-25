@@ -50,6 +50,12 @@
 			"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/command/council,
 			"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/command/council
 			)
+		if("Research")
+			gear_preset_whitelist = list(
+			"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm/research,
+			"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/research/council,
+			"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/research/council
+			)
 
 /datum/job/civilian/synthetic/New()
 	. = ..()

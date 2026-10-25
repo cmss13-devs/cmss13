@@ -596,6 +596,12 @@
 	name = "Garage - Restroom"
 	icon_state = "garage"
 
+// Administrative Records Bureau Complex
+
+/area/lv759/indoors/admin_records
+	name = "Weyland-Yutani - Administrative Records Bureau Complex"
+	icon_state = "wyoffice"
+
 // Meridian Offices & Factory Floor
 
 /area/lv759/indoors/meridian/meridian_foyer
@@ -1150,6 +1156,14 @@
 /area/lv759/indoors/recycling_plant_waste_disposal_incinerator
 	name = "Weyland-Yutani - Resource Recovery Facility - Waste Disposal Incinerating Room"
 	icon_state = "recycling"
+	linked_lz = DROPSHIP_LZ1
+
+// Fire Station
+
+/area/lv759/indoors/fire_station
+	name = "Fire Station"
+	icon_state = "fire_station"
+	minimap_color = MINIMAP_AREA_SEC
 	linked_lz = DROPSHIP_LZ1
 
 // Restrooms

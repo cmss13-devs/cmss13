@@ -168,11 +168,6 @@
 		return 1
 	return 0
 
-/datum/shuttle/ferry/proc/can_optimize()
-	if(!(moving_status == SHUTTLE_WARMUP || process_state == WAIT_LAUNCH || process_state == FORCE_LAUNCH) && !transit_optimized && !recharging)
-		return 1
-	return 0
-
 //returns 1 if the shuttle is getting ready to move, but is not in transit yet
 /datum/shuttle/ferry/proc/is_launching()
 	return (moving_status == SHUTTLE_WARMUP || process_state == WAIT_LAUNCH || process_state == FORCE_LAUNCH)

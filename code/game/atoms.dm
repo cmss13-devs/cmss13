@@ -194,15 +194,6 @@ directive is properly returned.
 /atom/proc/can_be_syringed()
 	return flags_atom & CAN_BE_SYRINGED
 
-/*//Convenience proc to see whether a container can be accessed in a certain way.
-
-	proc/can_subract_container()
-		return flags & EXTRACT_CONTAINER
-
-	proc/can_add_container()
-		return flags & INSERT_CONTAINER
-*/
-
 /atom/proc/allow_drop()
 	return 1
 
@@ -300,25 +291,25 @@ directive is properly returned.
 	return
 
 /atom/proc/add_hiddenprint(mob/living/M)
-	if(!M || QDELETED(M) || !M.key || !(flags_atom  & FPRINT) || fingerprintslast == M.key)
+	if(!M || QDELETED(M) || !M.ckey || !(flags_atom  & FPRINT) || fingerprintslast == M.ckey)
 		return
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if (H.gloves)
-			fingerprintshidden += "\[[time_stamp()]\] (Wearing gloves). Real name: [H.real_name], Key: [H.key]"
+			fingerprintshidden += "\[[time_stamp()]\] (Wearing gloves). Real name: [H.real_name], CKEY: [H.ckey]"
 		else
-			fingerprintshidden += "\[[time_stamp()]\] Real name: [H.real_name], Key: [H.key]"
+			fingerprintshidden += "\[[time_stamp()]\] Real name: [H.real_name], CKEY: [H.ckey]"
 	else
-		fingerprintshidden += "\[[time_stamp()]\] Real name: [M.real_name], Key: [M.key]"
-	fingerprintslast = M.key
+		fingerprintshidden += "\[[time_stamp()]\] Real name: [M.real_name], CKEY: [M.ckey]"
+	fingerprintslast = M.ckey
 
 
 /atom/proc/add_fingerprint(mob/living/M)
-	if(!M || QDELETED(M) || !M.key || !(flags_atom & FPRINT) || fingerprintslast == M.key)
+	if(!M || QDELETED(M) || !M.ckey || !(flags_atom & FPRINT) || fingerprintslast == M.ckey)
 		return
 	if(!fingerprintshidden)
 		fingerprintshidden = list()
-	fingerprintslast = M.key
+	fingerprintslast = M.ckey
 
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -326,15 +317,15 @@ directive is properly returned.
 		//Fibers~
 		blood_touch(H)
 
-		fingerprintslast = M.key
+		fingerprintslast = M.ckey
 
 		//Now, deal with gloves.
 		if (H.gloves && H.gloves != src)
-			fingerprintshidden += "\[[time_stamp()]\](Wearing gloves). Real name: [H.real_name], Key: [H.key]"
+			fingerprintshidden += "\[[time_stamp()]\](Wearing gloves). Real name: [H.real_name], CKEY: [H.ckey]"
 		else
-			fingerprintshidden += "\[[time_stamp()]\]Real name: [H.real_name], Key: [H.key]"
+			fingerprintshidden += "\[[time_stamp()]\]Real name: [H.real_name], CKEY: [H.ckey]"
 	else
-		fingerprintshidden +=  "\[[time_stamp()]\]Real name: [M.real_name], Key: [M.key]"
+		fingerprintshidden +=  "\[[time_stamp()]\]Real name: [M.real_name], CKEY: [M.ckey]"
 
 
 
@@ -379,7 +370,11 @@ directive is properly returned.
 /atom/proc/flamer_fire_act(dam = BURN_LEVEL_TIER_1, datum/cause_data/flame_cause_data)
 	return
 
+//Xeno Abilities Proc's.
 /atom/proc/acid_spray_act()
+	return
+
+/atom/proc/corrosive_acid_act()
 	return
 
 
@@ -685,7 +680,7 @@ Parameters are passed from New.
 		var/datum/effect_system/spark_spread/spark_system = new
 		spark_system.set_up(5, 0, src)
 		spark_system.attach(src)
-		spark_system.start(src)
+		spark_system.start()
 	return CHECKS_PASSED
 
 ///Turn on the light, should be called by a timer
@@ -824,5 +819,3 @@ Parameters are passed from New.
 	. += "[VV_HREF_TARGETREF(refid, VV_HK_AUTO_RENAME, "<b id='name'>[src]</b>")]"
 	. += "<br><font size='1'><a href='byond://?_src_=vars;[HrefToken()];rotatedatum=[refid];rotatedir=left'><<</a> <a href='byond://?_src_=vars;[HrefToken()];datumedit=[refid];varnameedit=dir' id='dir'>[dir2text(dir) || dir]</a> <a href='byond://?_src_=vars;[HrefToken()];rotatedatum=[refid];rotatedir=right'>>></a></font>"
 
-/atom/Exited(atom/movable/AM, direction)
-	SEND_SIGNAL(src, COMSIG_ATOM_EXITED, AM, direction)

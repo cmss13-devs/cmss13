@@ -2,6 +2,7 @@
 	caste_type = XENO_CASTE_KING
 	caste_desc = "The end of the line."
 	tier = 4
+	is_intelligent = TRUE
 
 	melee_damage_lower = XENO_DAMAGE_TIER_6
 	melee_damage_upper = XENO_DAMAGE_TIER_8
@@ -24,6 +25,7 @@
 	tackle_max = 10
 
 	minimap_icon = "xenoqueen"
+	organ_type = /obj/item/organ/xeno/king
 
 /mob/living/carbon/xenomorph/king
 	caste_type = XENO_CASTE_KING
@@ -32,21 +34,20 @@
 	icon = 'icons/mob/xenos/castes/tier_4/king.dmi'
 	icon_size = 64
 	icon_state = "King Walking"
-	plasma_types = list(PLASMA_CHITIN)
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_IMMOBILE
 	tier = 4
 	small_explosives_stun = FALSE
 	counts_for_slots = FALSE
-	organ_value = 50000
 
 	claw_type = CLAW_TYPE_VERY_SHARP
 	age = -1
-	aura_strength = 6
+	aura_strength = XENO_PHERO_STRENGTH_OVERWHELMING
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE
 
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
@@ -67,12 +68,17 @@
 	skull = /obj/item/skull/king
 	pelt = /obj/item/pelt/king
 
-/mob/living/carbon/xenomorph/king/get_organ_icon()
-	return "heart_t3"
+/obj/item/organ/xeno/king
+	name = "king heart"
+	icon_state = "heart_t3"
+	item_state = "heart_t3"
+	research_value = 50000
+
+	xeno_organ_flags = XENO_ORGAN_ROYAL|XENO_ORGAN_HARDENED|XENO_ORGAN_TACHYCARDIA
 
 /mob/living/carbon/xenomorph/king/Destroy()
 	UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)
-
+	hive.living_xeno_king = null
 	return ..()
 
 /mob/living/carbon/xenomorph/king/Initialize()
@@ -84,6 +90,7 @@
 		hive.banned_allies = list("All")
 		if(hive.break_all_alliances())
 			xeno_message(SPAN_XENOANNOUNCE("With the arrival of the King, all alliances have been broken."), 3, hivenumber)
+		hive.living_xeno_king = src
 
 /mob/living/carbon/xenomorph/king/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	. = ..()
@@ -129,6 +136,7 @@
 
 /mob/living/carbon/xenomorph/king/death(cause, gibbed)
 	. = ..()
+	hive.living_xeno_king = null
 	if(hive)
 		hive.setup_banned_allies()
 
@@ -156,7 +164,7 @@
 		log_attack("[key_name(xeno)] hit [key_name(carbon)] with [name]")
 		playsound(carbon, pick(slash_sounds), 30, TRUE)
 
-	xeno.visible_message(SPAN_DANGER("[xeno] slices around itself!"), SPAN_NOTICE("We slice around ourself!"))
+	xeno.visible_message(SPAN_DANGER("[xeno] slices around itself!"), SPAN_NOTICE("We slice around ourselves!"))
 	apply_cooldown()
 	..()
 
@@ -325,7 +333,7 @@
 
 	var/turf/template_turf = get_step(target_turf, SOUTHWEST)
 
-	to_chat(xeno, SPAN_XENONOTICE("Our muscles tense as we prepare ourself for a giant leap."))
+	to_chat(xeno, SPAN_XENONOTICE("Our muscles tense as we prepare ourselves for a giant leap."))
 	xeno.make_jittery(2 SECONDS)
 	if(!do_after(xeno, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		to_chat(xeno, SPAN_XENONOTICE("We relax our muslces and end our leap."))

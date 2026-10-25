@@ -90,6 +90,9 @@
 	. = ..()
 
 /obj/effect/alien/resin/trap/HasProximity(atom/movable/victim)
+	if(HAS_TRAIT(victim, TRAIT_XENO_RECOGNIZED))
+		return
+
 	switch(trap_type)
 		if(RESIN_TRAP_HUGGER)
 			if(can_hug(victim, hivenumber) && !isyautja(victim) && !issynth(victim) && !isthrall(victim))
@@ -271,6 +274,7 @@
 	..()
 
 /obj/effect/alien/resin/trap/Crossed(atom/A)
+	..()
 	if(ismob(A) || isVehicleMultitile(A))
 		HasProximity(A)
 
@@ -293,6 +297,7 @@
 	. = ..()
 
 /obj/effect/trap_tripwire/Crossed(atom/A)
+	..()
 	if(!linked_trap)
 		qdel(src)
 		return

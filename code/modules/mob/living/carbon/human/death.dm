@@ -19,6 +19,10 @@
 		spawn_gibs()
 		return
 
+	var/turf/death_turf = get_turf(src)
+	if(!should_block_game_interaction(src, TRUE) && (is_ground_level(death_turf.z) || is_mainship_level(death_turf.z) || is_reserved_level(death_turf.z)))
+		new /mob/dead/mob_marker(death_turf, src)
+
 	undefibbable = TRUE
 
 	..()
@@ -139,6 +143,9 @@
 		death_message = "valiantly falls to the ground, dead, unable to continue."
 
 	. = ..(cause, gibbed, death_message)
+
+	// Update dropship HUD overlays to show dead state
+	init_dropship_hud_overlays()
 
 	// stat is now set
 	var/datum/cause_data/death_data = cause

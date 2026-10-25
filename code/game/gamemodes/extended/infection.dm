@@ -1,7 +1,7 @@
 //THIS IS A BLANK LABEL ONLY SO PEOPLE CAN SEE WHEN WE RUNNIN DIS BITCH.   Should probably write a real one one day.  Maybe.
 /datum/game_mode/infection
-	name = "Infection"
-	config_tag = "Infection"
+	name = GAMEMODE_INFECTION
+	config_tag = GAMEMODE_INFECTION
 	required_players = 0 //otherwise... no zambies
 	latejoin_larva_drop = 0
 	flags_round_type = MODE_INFECTION //Apparently without this, the game mode checker ignores this as a potential legit game mode.
@@ -75,7 +75,7 @@
 				possible_survivors -= A
 
 		if(length(possible_survivors)) //We may have stripped out all the contenders, so check again.
-			var/i = surv_starting_num
+			var/i = 0
 			var/datum/mind/new_survivor
 			while(i > 0)
 				if(!length(possible_survivors))

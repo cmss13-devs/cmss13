@@ -386,11 +386,13 @@
 /area/lv522/outdoors/nw_rockies)
 "abu" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/corsat/marked,
 /area/lv522/atmos/cargo_intake)
 "abv" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/corsat/marked,
 /area/lv522/atmos/cargo_intake)
 "abw" = (
@@ -726,6 +728,7 @@
 /obj/structure/machinery/door_control/brbutton{
 	id = "Reactor_e_entry_4"
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/strata_outpost/reinforced,
 /area/lv522/atmos/filt)
 "acR" = (
@@ -1294,6 +1297,29 @@
 /obj/structure/machinery/computer/objective,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
+"aey" = (
+/obj/item/device/binoculars/range/designator,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/asphalt/cement/cement3,
+/area/lv522/outdoors/nw_rockies)
+"aez" = (
+/obj/effect/landmark/survivor_spawner/lv522_forecon_major,
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/admin)
+"aeA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/lv522_forecon_synth,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/a_block/admin)
+"aeB" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/way_in_command_centre)
+"aeC" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/east_reactor/south)
 "aeD" = (
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
@@ -1305,6 +1331,55 @@
 	},
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/mining)
+"aeE" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/east_reactor/south)
+"aeF" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/way_in_command_centre)
+"aeG" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/filt)
+"aeH" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/corsat,
+/area/lv522/atmos/cargo_intake)
+"aeI" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/cargo_intake)
+"aeJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv522/indoors/a_block/bridges/corpo)
+"aeK" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv522/indoors/a_block/bridges/corpo)
+"aeL" = (
+/obj/structure/curtain/red,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/lv522/indoors/a_block/executive)
+"aeM" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/a_block/corpo/glass)
+"aeN" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/indoors/a_block/corpo/glass)
 "aff" = (
 /obj/structure/platform_decoration/metal/almayer/west,
 /obj/effect/decal/warning_stripes{
@@ -9914,6 +9989,7 @@
 /area/lv522/outdoors/colony_streets/south_east_street)
 "eZq" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/strata_outpost/reinforced,
 /area/lv522/atmos/cargo_intake)
 "eZC" = (
@@ -10764,6 +10840,7 @@
 	dir = 4;
 	id = "Reactor_e_entry_4"
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/corsat/marked,
 /area/lv522/atmos/filt)
 "fzV" = (
@@ -13396,12 +13473,6 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/filt)
-"hao" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/closed/wall/strata_outpost/reinforced,
-/area/lv522/atmos/filt)
 "haq" = (
 /turf/open/floor/strata/white_cyan3,
 /area/lv522/indoors/a_block/medical/glass)
@@ -14844,6 +14915,7 @@
 	dir = 4;
 	id = "Reactor_entry_2"
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/corsat/marked,
 /area/lv522/atmos/way_in_command_centre)
 "hPI" = (
@@ -16262,6 +16334,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/corsat/marked,
 /area/lv522/atmos/way_in_command_centre)
 "iGQ" = (
@@ -23698,8 +23771,8 @@
 	icon_state = "flammable_pipe_3";
 	pixel_x = -3
 	},
-/turf/open/floor/corsat/marked,
-/area/lv522/atmos/west_reactor)
+/turf/closed/wall/mineral/bone_resin,
+/area/lv522/oob)
 "mwh" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/cheesie,
@@ -31816,6 +31889,7 @@
 /obj/structure/machinery/door_control/brbutton{
 	id = "Reactor_entry_2"
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/lv522/oob)
 "qHI" = (
@@ -33614,6 +33688,7 @@
 /area/lv522/indoors/a_block/medical)
 "rvg" = (
 /obj/item/stack/sheet/metal,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/corsat,
 /area/lv522/atmos/cargo_intake)
 "rvh" = (
@@ -43834,8 +43909,10 @@
 /turf/open/auto_turf/shale/layer1,
 /area/sky)
 "wtI" = (
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/a_block/bridges/corpo)
 "wtK" = (
@@ -45472,7 +45549,7 @@
 	icon_state = "flammable_pipe_3";
 	pixel_x = 2
 	},
-/turf/open/floor/corsat/marked,
+/turf/closed/wall/mineral/bone_resin,
 /area/lv522/atmos/west_reactor)
 "xni" = (
 /obj/structure/bed/chair{
@@ -46701,7 +46778,7 @@
 /turf/open/asphalt/cement/cement3,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "xTJ" = (
-/obj/item/tool/kitchen/utensil/pknife{
+/obj/item/tool/kitchen/utensil/knife/plastic{
 	pixel_x = -9
 	},
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -52880,12 +52957,12 @@ saC
 bJE
 lhD
 bXq
-xmT
+cvP
 tiQ
 xrF
 saC
 hAk
-xmT
+cvP
 tiQ
 saC
 saC
@@ -56824,7 +56901,7 @@ ijv
 eyM
 iTX
 ePK
-ePK
+aeI
 ePK
 auG
 gat
@@ -58060,7 +58137,7 @@ dAG
 jmW
 iTX
 iTX
-ePK
+aeI
 fol
 fGh
 fYP
@@ -58266,7 +58343,7 @@ iEq
 eAz
 iTX
 ePK
-ePK
+aeI
 ePK
 fGH
 bcU
@@ -62189,7 +62266,7 @@ frZ
 gXR
 gXR
 hvE
-bHA
+aey
 bHA
 uSo
 xyL
@@ -63209,7 +63286,7 @@ dXX
 saC
 saC
 saC
-xXV
+aeH
 iAv
 mEG
 alx
@@ -63415,7 +63492,7 @@ saC
 saC
 saC
 wBR
-xXV
+aeH
 iAv
 fsV
 fLA
@@ -63621,7 +63698,7 @@ saC
 saC
 oXk
 wBR
-xXV
+aeH
 rKS
 qqJ
 urp
@@ -64033,7 +64110,7 @@ saC
 saC
 oXk
 wBR
-xXV
+aeH
 rKS
 fuf
 qqJ
@@ -64240,7 +64317,7 @@ iyE
 eGs
 rdf
 xXV
-xXV
+aeH
 rKS
 rKS
 iAv
@@ -64447,9 +64524,9 @@ nMl
 wBR
 eUs
 xXV
-xXV
+aeH
 rvg
-xXV
+aeH
 iAv
 iAv
 iAv
@@ -66307,7 +66384,7 @@ aaW
 aaW
 aaU
 wGq
-oUq
+aeF
 tnN
 hKK
 lzb
@@ -66513,7 +66590,7 @@ qjG
 qjG
 qjG
 wGq
-oUq
+aeF
 dNe
 hMb
 lzb
@@ -66719,7 +66796,7 @@ qjG
 qjG
 oeU
 mkh
-oUq
+aeF
 tnN
 hNf
 sLc
@@ -66925,7 +67002,7 @@ iGl
 qjG
 qjG
 mkh
-oUq
+aeF
 oUq
 qpy
 vnX
@@ -68366,19 +68443,19 @@ qjG
 saC
 saC
 saC
-oUq
-oUq
+aeF
+aeF
 qHD
 hPq
 hPq
 iGM
 hPq
-oUq
-oUq
-oUq
-oUq
-oUq
-oUq
+aeF
+aeF
+aeF
+aeF
+aeF
+aeB
 yjp
 sOe
 uhF
@@ -68584,7 +68661,7 @@ jFG
 xZE
 xZE
 xZE
-xZE
+aeC
 men
 wrC
 kZe
@@ -68592,8 +68669,8 @@ iLg
 uiQ
 uwY
 uTv
-vpO
-mnX
+aeN
+aeM
 vEY
 beB
 mSc
@@ -68790,7 +68867,7 @@ nMC
 nNi
 kco
 xZE
-xZE
+aeC
 xZE
 wrC
 wrC
@@ -68996,7 +69073,7 @@ nMT
 nOg
 kdf
 xZE
-xZE
+aeC
 xZE
 xZE
 wrC
@@ -69202,7 +69279,7 @@ nNf
 yld
 kdL
 xZE
-xZE
+aeC
 dHF
 dHF
 dHF
@@ -69408,7 +69485,7 @@ nNf
 yld
 kel
 xZE
-xZE
+aeC
 vGp
 qSH
 qSH
@@ -69614,7 +69691,7 @@ jJa
 jWZ
 yaC
 xZE
-xZE
+aeC
 spy
 qnS
 uRL
@@ -69820,7 +69897,7 @@ faK
 fwo
 hQU
 xZE
-xZE
+aeC
 nQQ
 qSH
 trV
@@ -70026,7 +70103,7 @@ faZ
 jXp
 jlh
 xZE
-xZE
+aeC
 jGa
 qSH
 adz
@@ -70232,7 +70309,7 @@ faZ
 jYj
 tiQ
 xZE
-xZE
+aeC
 xZE
 qSH
 trV
@@ -70438,7 +70515,7 @@ faZ
 yaC
 kgb
 xZE
-xZE
+aeC
 kKD
 qSH
 trV
@@ -70450,7 +70527,7 @@ tQi
 jdn
 tQi
 tQi
-nTX
+aeJ
 uyt
 tQi
 gwb
@@ -70644,7 +70721,7 @@ jJj
 jYu
 kdf
 xZE
-xZE
+aeC
 jOw
 qSH
 trV
@@ -70656,7 +70733,7 @@ xlI
 mev
 mev
 xlI
-uyt
+aeK
 uyt
 mev
 odT
@@ -70850,7 +70927,7 @@ jJa
 kaQ
 sfc
 xZE
-xZE
+aeC
 xZE
 qSH
 trV
@@ -71056,7 +71133,7 @@ nNf
 yld
 yaC
 xZE
-xZE
+aeC
 kdx
 vGp
 trV
@@ -71068,7 +71145,7 @@ xjF
 vtp
 ack
 xjF
-giX
+aeL
 giX
 iMw
 jzC
@@ -71262,7 +71339,7 @@ nNf
 qjG
 kgm
 xZE
-xZE
+aeC
 svK
 sRI
 trV
@@ -71468,7 +71545,7 @@ jJI
 fwo
 khG
 xZE
-xZE
+aeC
 xZE
 isa
 trV
@@ -71674,7 +71751,7 @@ hSO
 yaC
 kiT
 xZE
-xZE
+aeC
 iel
 svK
 trV
@@ -71880,7 +71957,7 @@ xZE
 xZE
 xZE
 xZE
-xZE
+aeC
 sRI
 vGp
 trV
@@ -72086,7 +72163,7 @@ xZE
 xZE
 xZE
 xZE
-xZE
+aeC
 xZE
 isa
 trV
@@ -72292,7 +72369,7 @@ xZE
 xZE
 xZE
 xZE
-xZE
+aeC
 tNQ
 vGp
 trV
@@ -72493,12 +72570,12 @@ hSi
 xZE
 xZE
 xZE
-xZE
-xZE
-xZE
-xZE
-xZE
-xZE
+aeE
+aeC
+aeC
+aeC
+aeC
+aeE
 vTx
 vTx
 trV
@@ -72699,7 +72776,7 @@ aaK
 xZE
 xZE
 xZE
-xZE
+aeC
 xZE
 wDj
 wDj
@@ -72905,7 +72982,7 @@ yaC
 xZE
 xZE
 xZE
-xZE
+aeC
 wDj
 nJV
 elX
@@ -73111,7 +73188,7 @@ yaC
 xZE
 xZE
 xZE
-xZE
+aeC
 wDj
 aJS
 ezo
@@ -73317,7 +73394,7 @@ yaC
 xZE
 xZE
 xZE
-xZE
+aeC
 wDj
 cPg
 eJR
@@ -74553,7 +74630,7 @@ xZE
 xZE
 xZE
 xZE
-xZE
+aeC
 wDj
 rhh
 rtX
@@ -76400,7 +76477,7 @@ sYl
 sYl
 sYl
 gUv
-hao
+shD
 shD
 cpy
 cpy
@@ -76599,14 +76676,14 @@ cpy
 cpy
 cpy
 cpy
-shD
+aeG
 acQ
 fzK
 fzK
 fzK
 fzK
-shD
-shD
+aeG
+aeG
 cpy
 ien
 cpy
@@ -78495,7 +78572,7 @@ fRk
 ibk
 qcd
 mEx
-sWr
+aez
 lxZ
 lHV
 wGY
@@ -79318,7 +79395,7 @@ lsa
 svf
 ydV
 sWT
-oGF
+aeA
 dkq
 iBr
 wGY

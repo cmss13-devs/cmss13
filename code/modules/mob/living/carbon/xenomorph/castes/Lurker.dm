@@ -25,6 +25,7 @@
 	heal_resting = 1.5
 
 	minimum_evolve_time = 9 MINUTES
+	organ_type = /obj/item/organ/xeno/lurker
 
 	minimap_icon = "lurker"
 
@@ -34,13 +35,12 @@
 	desc = "A beefy, fast alien with sharp claws."
 	icon_size = 48
 	icon_state = "Lurker Walking"
-	plasma_types = list(PLASMA_CATECHOLAMINE)
 	pixel_x = -12
 	old_x = -12
 	xenonid_pixel_x = -9
 	tier = 2
-	organ_value = 2000
 	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
@@ -66,6 +66,15 @@
 
 	skull = /obj/item/skull/lurker
 	pelt = /obj/item/pelt/lurker
+
+/obj/item/organ/xeno/lurker
+	name = "lurker heart"
+	icon_state = "heart_t2"
+	item_state = "heart_t2"
+	research_value = 2000
+
+	xeno_organ_flags = XENO_ORGAN_STRONG|XENO_ORGAN_TACHYCARDIA
+
 
 /datum/behavior_delegate/lurker_base
 	name = "Base Lurker Behavior Delegate"
@@ -245,7 +254,6 @@
 		return ..()
 
 	button.icon_state = "template_active"
-	xeno.update_icons() // callback to make the icon_state indicate invisibility is in lurker/update_icon
 
 	animate(xeno, alpha = alpha_amount, time = 0.1 SECONDS, easing = QUAD_EASING)
 
@@ -279,7 +287,6 @@
 	to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our invisibility end!"))
 
 	button.icon_state = "template_xeno"
-	xeno.update_icons()
 
 	xeno.speed_modifier += speed_buff
 	xeno.recalculate_speed()

@@ -88,7 +88,7 @@
 
 /datum/paygrade/army/e9
 	paygrade = PAY_SHORT_AE9
-	name = "Master Sergeant"
+	name = "Sergeant Major"
 	prefix = "SGM"
 	rank_pin = /obj/item/clothing/accessory/ranks/army/e9
 	ranking = 9

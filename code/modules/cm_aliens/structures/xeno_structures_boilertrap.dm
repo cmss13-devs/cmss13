@@ -63,14 +63,14 @@
 	return XENO_NO_DELAY_ACTION
 
 /obj/effect/alien/resin/boilertrap/Crossed(atom/A)
+	..()
+
 	if (isxeno(A))
 		var/mob/living/carbon/xenomorph/X = A
 		if (X.hivenumber != hivenumber)
 			trigger_trap(A)
 	else if(ishuman(A))
 		trigger_trap(A)
-
-	return ..()
 
 /obj/effect/hole_tripwire_boiler
 	name = "hole tripwire"
@@ -86,6 +86,7 @@
 	return ..()
 
 /obj/effect/hole_tripwire_boiler/Crossed(atom/A)
+	..()
 	if(!linked_trap)
 		qdel(src)
 		return

@@ -34,7 +34,7 @@
 		if("set_flavor_text")
 			if(!params["category"])
 				return
-			prefs.flavor_texts[params["category"]] = params["text"]
+			prefs.flavor_texts[params["category"]] = html_encode(params["text"])
 			return TRUE
 
 	return TRUE

@@ -241,26 +241,27 @@ window "popupwindow"
 		can-resize = false
 
 window "preferencewindow"
- 	elem "preferencewindow"
- 		type = MAIN
- 		pos = 281,0
- 		background-color = none
- 		is-visible = false
- 		statusbar = false
- 	elem "preferencebrowser"
- 		type = BROWSER
- 		pos = 0,240
+	elem "preferencewindow"
+		type = MAIN
+		pos = 281,0
+		size = 1x480
+		background-color = none
+		is-visible = false
+		statusbar = false
+	elem "preferencebrowser"
+		type = BROWSER
+		pos = 0,240
 		size = 0x0
- 		anchor1 = 0,0
- 		anchor2 = 100,100
- 		background-color = none
- 		saved-params = ""
- 	elem "preview"
- 		type = MAP
- 		pos = 0,-10
- 		size = 0x250
- 		anchor1 = 0,0
- 		anchor2 = 100,0
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = none
+		saved-params = ""
+	elem "preview"
+		type = MAP
+		pos = 0,-10
+		size = 0x250
+		anchor1 = 0,0
+		anchor2 = 100,0
 
 window "statwindow"
 	elem "statwindow"
@@ -281,17 +282,17 @@ window "statwindow"
 		saved-params = ""
 
 window "tgui_say"
- 	elem "tgui_say"
- 		type = MAIN
- 		size = 380x30
- 		is-visible = false
- 		saved-params = ""
- 		statusbar = false
- 		can-minimize = false
- 	elem "browser"
- 		type = BROWSER
- 		pos = 0,0
- 		size = 380x30
- 		anchor1 = 0,0
- 		anchor2 = 0,0
- 		saved-params = ""
+	elem "tgui_say"
+		type = MAIN
+		size = 380x30
+		is-visible = false
+		saved-params = ""
+		statusbar = false
+		can-minimize = false
+	elem "browser"
+		type = BROWSER
+		pos = 0,0
+		size = 380x30
+		anchor1 = 0,0
+		anchor2 = 0,0
+		saved-params = ""

@@ -598,7 +598,7 @@ GLOBAL_LIST_INIT(autolathe_wire_descriptions, flatten_numeric_alist(alist(
 	spawn_full = TRUE
 
 /obj/structure/machinery/autolathe/armylathe/attack_hand(mob/user)
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+	if(!(user.job in list(JOB_ORDNANCE_TECH,JOB_WO_ORDNANCE_TECH)))
 		to_chat(user, SPAN_WARNING("You have no idea how to operate the [name]."))
 		return FALSE
 	. = ..()

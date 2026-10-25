@@ -51,6 +51,7 @@
 		C.update_icon()
 
 /obj/effect/blocker/water/toxic/Crossed(atom/A)
+	..()
 	if(toxic == WATER_TOXIC_NO)
 		return
 

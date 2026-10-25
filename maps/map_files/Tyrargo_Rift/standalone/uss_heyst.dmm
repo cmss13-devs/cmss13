@@ -53,7 +53,7 @@
 "aj" = (
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = 4;
@@ -1559,7 +1559,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = 4;
@@ -4301,7 +4301,7 @@
 "Hy" = (
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_y = 20;
@@ -4476,7 +4476,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "Jl" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/almayer,
 /area/tyrargo/indoors/heyst)
 "Jo" = (
@@ -5839,7 +5839,7 @@
 "Yp" = (
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_y = 8;

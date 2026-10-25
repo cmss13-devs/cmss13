@@ -34,17 +34,17 @@
 "af" = (
 /obj/structure/prop/hunter/trophy_display,
 /obj/structure/blocker/invisible_wall,
-/turf/closed/wall/cult/dark_temple,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/prep_room/desert/interior)
 "ag" = (
 /obj/structure/prop/hunter/trophy_display/top_center,
 /obj/structure/blocker/invisible_wall,
-/turf/closed/wall/cult/dark_temple,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/prep_room/desert/interior)
 "ah" = (
 /obj/structure/prop/hunter/trophy_display/top_right,
 /obj/structure/blocker/invisible_wall,
-/turf/closed/wall/cult/dark_temple,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/prep_room/desert/interior)
 "ai" = (
 /obj/item/weapon/shield/riot/yautja{
@@ -52,7 +52,7 @@
 	layer = 2.9;
 	pixel_x = 1
 	},
-/turf/closed/wall/cult/dark_temple,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/prep_room/desert)
 "aj" = (
 /obj/structure/machinery/door_control/yautja{
@@ -302,7 +302,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/yautja_grounds/desert/south)
 "bu" = (
-/turf/closed/wall/cult/dark_temple,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/temple/entrance/desert)
 "bv" = (
 /obj/structure/prop/dam/wide_boulder/boulder1,
@@ -983,7 +983,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/yautja_grounds/caves)
 "dX" = (
-/turf/closed/wall/cult/dark_temple,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/prep_room/desert)
 "dY" = (
 /obj/item/weapon/broken_bottle,
@@ -1557,7 +1557,7 @@
 /area/yautja_grounds/caves/north_west)
 "gI" = (
 /obj/structure/prop/brazier/frame/full/torch,
-/turf/closed/wall/cult/dark_temple,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/temple/entrance/desert)
 "gJ" = (
 /turf/open/mars_cave/mars_dirt_5,
@@ -2200,7 +2200,7 @@
 /turf/open/floor/engine/cult,
 /area/yautja_grounds/temple)
 "jB" = (
-/obj/structure/showcase/yautja{
+/obj/structure/showcase/yautja/ancient{
 	dir = 4
 	},
 /obj/structure/barricade/handrail/sandstone/b/dark{
@@ -2370,7 +2370,7 @@
 	anchored = 1;
 	layer = 2.9
 	},
-/turf/closed/wall/cult/dark_temple,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/temple)
 "jW" = (
 /obj/structure/platform_decoration/metal/hunter/north{
@@ -2405,7 +2405,7 @@
 	pixel_y = -7;
 	pixel_x = -4
 	},
-/turf/closed/wall/cult/dark_temple,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/temple)
 "ka" = (
 /obj/structure/barricade/handrail/sandstone/b/dark{
@@ -3356,7 +3356,7 @@
 /area/yautja_grounds/caves)
 "Cj" = (
 /obj/structure/prop/brazier/torch,
-/turf/closed/wall/cult/dark_temple,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/temple)
 "Co" = (
 /obj/structure/closet/coffin/predator,
@@ -3484,7 +3484,7 @@
 /turf/open/gm/river/desert/shallow_edge/northwest,
 /area/yautja_grounds/caves)
 "MT" = (
-/turf/closed/wall/cult/dark_temple,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/temple)
 "MX" = (
 /obj/structure/platform/stone/kutjevo/west,
@@ -3570,7 +3570,7 @@
 /area/yautja_grounds/temple)
 "Um" = (
 /obj/structure/prop/brazier/torch,
-/turf/closed/wall/cult/dark_temple,
+/turf/closed/wall/cult/dark_temple/hunting_grounds,
 /area/yautja_grounds/prep_room/desert)
 "Up" = (
 /turf/open/floor/engine/cult,
@@ -3587,7 +3587,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/yautja_grounds/temple)
 "Vr" = (
-/obj/structure/showcase/yautja{
+/obj/structure/showcase/yautja/ancient{
 	dir = 4
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,

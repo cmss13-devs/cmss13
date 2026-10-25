@@ -138,7 +138,7 @@
 
 /datum/config_entry/number/whiskey_required_players
 	min_val = 0
-	config_entry_value = 140
+	config_entry_value = 120
 	integer = TRUE
 
 /datum/config_entry/number/nuclear_lock_marines_percentage
@@ -147,7 +147,7 @@
 	max_val = 100
 	integer = TRUE
 
-/// The rate of comms clarity percent decay per fire of SSradio (30 SECONDS)
+/// The rate of comms clarity percent decay for challenges per fire of SSradio (30 SECONDS)
 /datum/config_entry/number/announcement_clarity_decay
 	min_val = 0
 	config_entry_value = 2.5
@@ -205,3 +205,26 @@
 	config_entry_value = 95
 	max_val = 100
 	integer = TRUE
+
+/// How likely a Predator Survivor is to spawn without a hunt round.
+/datum/config_entry/number/pred_survivor_huntless_chance
+	min_val = 0
+	config_entry_value = 10
+	max_val = 100
+
+/// For YAUTJA_SURV_HUNT: Whether the predator survivor is JOB_BADBLOOD (otherwise JOB_STRANDED_PRED)
+/datum/config_entry/number/pred_survivor_badblood_weight
+	min_val = 0
+	config_entry_value = 50
+	max_val = 100
+
+/// For YAUTJA_SURV_NO_HUNT: Whether the predator survivor is JOB_BADBLOOD (otherwise JOB_STRANDED_PRED)
+/datum/config_entry/number/pred_survivor_badblood_weight_huntless
+	min_val = 0
+	config_entry_value = 75
+	max_val = 100
+
+/// How many spawn_positions and total_slots for a predator survivor
+/datum/config_entry/number/pred_survivor_slots
+	min_val = 0
+	config_entry_value = 1

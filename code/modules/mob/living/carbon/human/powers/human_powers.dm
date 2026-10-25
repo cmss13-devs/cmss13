@@ -141,44 +141,6 @@
 		if(M.stat == 2)
 			M.gib(create_cause_data("gutting", usr))
 
-/mob/living/carbon/human/proc/commune()
-	set category = "Abilities.Psychic"
-	set name = "Commune with creature"
-	set desc = "Send a telepathic message to an unlucky recipient."
-
-	var/list/targets = list()
-	var/target = null
-	var/text = null
-
-	targets += getmobs() //Fill list, prompt user with list
-	target = tgui_input_list(usr, "Select a creature!", "Speak to creature", targets)
-
-	if(!target)
-		return
-
-	text = input("What would you like to say?", "Speak to creature", null, null)
-
-	text = trim(strip_html(text))
-
-	if(!text)
-		return
-
-	var/mob/M = targets[target]
-
-	if(istype(M, /mob/dead/observer) || M.stat == DEAD)
-		to_chat(src, "Not even a [species.name] can speak to the dead.")
-		return
-
-	log_say("[key_name(src)] communed to [key_name(M)]: [text] (AREA: [get_area_name(loc)])")
-
-	to_chat(M, SPAN_NOTICE("Like lead slabs crashing into the ocean, alien thoughts drop into your mind: [text]"))
-	if(istype(M,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = M
-		if(H.species.name == species.name)
-			return
-		to_chat(H, SPAN_DANGER("Your nose begins to bleed..."))
-		H.drip(1)
-
 /mob/living/carbon/human/proc/psychic_whisper(mob/target_mob as mob in oview())
 	set name = "Psychic Whisper"
 	set desc = "Whisper silently to someone over a distance."

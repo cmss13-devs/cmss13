@@ -52,10 +52,7 @@ SUBSYSTEM_DEF(horde_mode)
 		if(istype(areas, /area/horde_mode))
 			map_areas += areas
 
-	if(!length(map_areas))
-		return SS_INIT_FAILURE
-
-	return SS_INIT_SUCCESS
+	return SS_INIT_SUCCESS // we dont have to worry about there not being the areas because this will only be on tm with the proper map loaded :)
 
 /datum/controller/subsystem/horde_mode/fire(resumed = FALSE)
 	if(!length(current_players) || !COOLDOWN_FINISHED(src, round_cooldown))

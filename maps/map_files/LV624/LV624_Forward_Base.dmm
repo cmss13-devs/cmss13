@@ -794,9 +794,7 @@
 /obj/structure/barricade/handrail{
 	layer = 3
 	},
-/obj/structure/machinery/computer/arcade{
-	layer = 2.98\
-	},
+/obj/structure/machinery/computer/arcade,
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
@@ -1699,6 +1697,10 @@
 /obj/structure/fence/overgrown,
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/colony/west_nexus_road)
+"agy" = (
+/obj/structure/machinery/computer/arcade,
+/turf/open/floor/plating,
+/area/lv624/ground/barrens/central_barrens)
 "agz" = (
 /obj/structure/cargo_container/horizontal/blue/middle,
 /turf/open/gm/dirt,
@@ -25573,6 +25575,7 @@
 /area/lv624/ground/caves/west_caves)
 "grZ" = (
 /obj/effect/landmark/objective_landmark/science,
+/obj/structure/machinery/computer/arcade,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "gsq" = (
@@ -53940,7 +53943,7 @@ ajW
 afX
 agg
 grZ
-ajW
+agy
 pOK
 ajW
 ajW

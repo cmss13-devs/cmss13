@@ -3846,7 +3846,6 @@
 	density = 0;
 	pixel_y = 22
 	},
-/obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/almayer/blackfull,
 /area/forward_base/lv624/command/cic)
 "anQ" = (
@@ -4872,7 +4871,6 @@
 /turf/open/floor/whiteblue/east,
 /area/lv624/lazarus/medbay)
 "aqR" = (
-/obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/prop/almayer/CICmap,
 /turf/open/floor/almayer,
@@ -17097,13 +17095,13 @@
 /turf/open/floor/almayer/purple/west,
 /area/forward_base/lv624/hallways/east)
 "bbh" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
-	name = "\improper Research Containment"
-	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
+	name = "\improper Research Containment"
+	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/forward_base/lv624/research)
 "bbi" = (
@@ -20008,10 +20006,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/lv624/preps)
-"bjz" = (
-/obj/structure/flora/jungle/vines,
-/turf/closed/wall/almayer,
-/area/forward_base/lv624/preps)
 "bjA" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -20083,10 +20077,6 @@
 	},
 /obj/structure/pipes/vents/pump/on,
 /turf/open/floor/almayer/floor,
-/area/forward_base/lv624/preps)
-"bjK" = (
-/obj/structure/flora/jungle/vines/light_2,
-/turf/closed/wall/almayer,
 /area/forward_base/lv624/preps)
 "bjL" = (
 /obj/structure/disposalpipe/segment{
@@ -22383,6 +22373,7 @@
 "bqJ" = (
 /obj/structure/bed/roller/heavy,
 /obj/item/organ/xeno/drone,
+/obj/item/organ/xeno/drone,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/lv624/research)
 "bqK" = (
@@ -22411,6 +22402,8 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
+/obj/item/chem_extractor,
+/obj/item/chem_extractor,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/lv624/research)
 "bqN" = (
@@ -22938,7 +22931,6 @@
 	layer = 2.52
 	},
 /obj/structure/disposalpipe/trunk,
-/turf/open/floor/plating/plating_catwalk,
 /turf/open/floor/almayer/cargo,
 /area/forward_base/lv624/intel)
 "btC" = (
@@ -23105,7 +23097,6 @@
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/office/lobby_door,
 /obj/structure/disposalpipe/segment,
-/obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 1
 	},
@@ -23243,20 +23234,6 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
-"bux" = (
-/obj/structure/window/framed/almayer/hull,
-/turf/closed/wall/almayer,
-/area/forward_base/lv624/reqs)
-"buy" = (
-/obj/structure/window/framed/almayer/hull,
-/obj/structure/window/framed/almayer/hull,
-/turf/closed/wall/almayer,
-/area/forward_base/lv624/reqs)
-"buz" = (
-/obj/structure/window/framed/almayer/hull,
-/obj/structure/window/framed/almayer/hull,
-/turf/open/floor/plating,
-/area/forward_base/lv624/reqs)
 "buB" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
 	name = "\improper Research Department"
@@ -23264,7 +23241,6 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/forward_base/lv624/research)
@@ -75977,11 +75953,11 @@ qht
 qht
 aRw
 aRw
-bux
-bux
+apJ
+apJ
 aRw
-buy
-buz
+apJ
+apJ
 aRw
 aRw
 aRw
@@ -80921,7 +80897,7 @@ bch
 bku
 bkk
 bbK
-bjz
+baL
 bbo
 bbb
 aWT
@@ -81145,9 +81121,9 @@ bky
 atZ
 bbX
 bbK
-bjK
-bjK
-bjz
+baL
+baL
+baL
 aWT
 aWT
 aWT

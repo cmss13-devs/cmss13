@@ -5876,6 +5876,9 @@
 /area/forward_base/engineering/lower/workshop)
 "asu" = (
 /obj/structure/pipes/vents/pump/on,
+/obj/effect/vehicle_spawner/arc/broken{
+	dir = 4
+	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/engineering/lower/workshop)
 "asv" = (
@@ -6091,9 +6094,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
-	},
-/obj/effect/vehicle_spawner/arc/broken{
-	dir = 4
 	},
 /turf/open/floor/almayer,
 /area/forward_base/engineering/lower/workshop)
@@ -14996,6 +14996,10 @@
 	layer = 2.52
 	},
 /obj/structure/largecrate/random/case/double,
+/obj/item/toy/plush/gnarp{
+	pixel_x = -1;
+	pixel_y = 2
+	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/hallways/lower/port_midship_hallway)
 "aPo" = (

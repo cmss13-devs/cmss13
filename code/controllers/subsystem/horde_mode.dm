@@ -138,8 +138,8 @@ SUBSYSTEM_DEF(horde_mode)
 		xeno_damage_mod += 0.025
 		amount_to_spawn = 3*round+2
 		specialists_to_spawn = max_specialists
-		if(spawn_max <= 5 + current_players.length)
-			spawn_max = clamp(2 + floor(round / 3), 2, 5 + current_players.length)
+		if(spawn_max <= 5 + current_players.len)
+			spawn_max = clamp(2 + floor(round / 3), 2, 5 + current_players.len)
 		round_ended = FALSE
 		for(var/area/all_areas in map_areas)
 			all_areas.base_lighting_alpha += 7

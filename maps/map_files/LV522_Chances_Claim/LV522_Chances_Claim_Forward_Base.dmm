@@ -1384,6 +1384,20 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/chances/medical/medical_science)
+"aeA" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/reagent_analyzer{
+	pixel_y = 5;
+	pixel_x = -1;
+	explo_proof = 1
+	},
+/obj/structure/sign/safety/terminal{
+	layer = 2.5;
+	pixel_x = 32;
+	pixel_y = 6
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/forward_base/chances/medical/medical_science)
 "aeB" = (
 /obj/structure/sign/safety/hazard{
 	pixel_x = 32;
@@ -14460,22 +14474,7 @@
 /turf/open/floor/strata/white_cyan1/east,
 /area/lv522/indoors/a_block/medical/glass)
 "ffX" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/centrifuge{
-	pixel_y = 8;
-	pixel_x = -1
-	},
-/obj/item/reagent_container/glass/beaker/cryoxadone{
-	pixel_x = -3;
-	pixel_y = -5;
-	layer = 3.01
-	},
-/obj/item/reagent_container/glass/beaker/cryoxadone{
-	pixel_x = 6;
-	pixel_y = -10;
-	layer = 3.01
-	},
-/obj/item/storage/box/monkeycubes,
+/obj/structure/machinery/chem_simulator,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/chances/medical/medical_science)
 "ffY" = (
@@ -33255,18 +33254,23 @@
 /area/forward_base/chances/shipboard/brig)
 "mHS" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/reagent_analyzer{
-	pixel_y = 5;
-	pixel_x = -1;
-	explo_proof = 1
+/obj/structure/machinery/centrifuge{
+	pixel_y = 8;
+	pixel_x = -1
 	},
+/obj/item/reagent_container/glass/beaker/cryoxadone{
+	pixel_x = -3;
+	pixel_y = -5;
+	layer = 3.01
+	},
+/obj/item/reagent_container/glass/beaker/cryoxadone{
+	pixel_x = 6;
+	pixel_y = -10;
+	layer = 3.01
+	},
+/obj/item/storage/box/monkeycubes,
 /obj/structure/machinery/light{
 	dir = 4
-	},
-/obj/structure/sign/safety/terminal{
-	layer = 2.5;
-	pixel_x = 32;
-	pixel_y = 6
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/chances/medical/medical_science)
@@ -112064,8 +112068,8 @@ rao
 bTb
 owD
 rHh
-fgn
 eVy
+aeA
 mHS
 ffX
 lRr
@@ -112273,7 +112277,7 @@ rKe
 tXF
 tXF
 rKe
-rKe
+fgn
 fgn
 fgn
 rKe
@@ -112478,7 +112482,7 @@ rzq
 rzq
 rzq
 rzq
-rzq
+rKe
 rKe
 rKe
 rKe

@@ -225,7 +225,7 @@
 	icon_state = "door_closed"
 	has_hover_effect = FALSE
 	primary_purchase = null
-	primary_cost = 500
+	primary_cost = 1000
 	density = TRUE
 	anchored = TRUE
 	opacity = TRUE
@@ -252,12 +252,15 @@
 
 		for(var/obj/structure/item_purchase/door/doors_in_area in loc.loc)
 			if(doors_in_area.door_id == door_id)
-				var/obj/structure/prop/horde_mode/door_open/open = new(doors_in_area.loc)
-				open.icon = icon
-				open.dir = dir
-				qdel(doors_in_area)
+				doors_in_area.open()
 
 		playsound(user.loc, 'sound/effects/horde_mode/purchase_successful.ogg')
+
+/obj/structure/item_purchase/door/proc/open()
+	var/obj/structure/prop/horde_mode/door_open/opening = new(loc)
+	opening.icon = icon
+	opening.dir = dir
+	qdel(src)
 
 /obj/structure/item_purchase/door/get_examine_text(mob/user)
 	. = list()
@@ -782,103 +785,105 @@
 	unacidable = TRUE
 
 /obj/structure/upgrade_station/attackby(obj/item/weapon/gun/item_to_upgrade, mob/user)
-	var/weapon_path = item_to_upgrade.type
-	var/outline_color = "#b1007c"
-	var/alpha = 70
-	outline_color += num2text(alpha, 2, 16)
+	if(!item_to_upgrade.upgraded)
+		var/weapon_path = item_to_upgrade.type
+		var/outline_color = "#b1007c"
+		var/alpha = 70
+		outline_color += num2text(alpha, 2, 16)
 
-	item_to_upgrade.add_filter("outline", 1, outline_filter(size = 2, color = outline_color))
+		item_to_upgrade.add_filter("outline", 1, outline_filter(size = 2, color = outline_color))
+		item_to_upgrade.upgraded = TRUE
 
-	//Yes, almost all of these are references to random pieces of media/famous people.
-	switch(weapon_path)
-		if(/obj/item/weapon/gun/flamer/m240)
-			item_to_upgrade.name = "\proper Meltdown"
-			item_to_upgrade.desc = SPAN_DANGER("Things are going to be pretty hot in here soon.")
-			item_to_upgrade.set_fire_delay(FIRE_DELAY_TIER_7)
-			item_to_upgrade.gun_firemode_list |= GUN_FIREMODE_AUTOMATIC
-			new /obj/item/ammo_magazine/flamer_tank/high_combustion(loc)
+		//Yes, almost all of these are references to random pieces of media/famous people.
+		switch(weapon_path)
+			if(/obj/item/weapon/gun/flamer/m240)
+				item_to_upgrade.name = "\proper Meltdown"
+				item_to_upgrade.desc = SPAN_DANGER("Things are going to be pretty hot in here soon.")
+				item_to_upgrade.set_fire_delay(FIRE_DELAY_TIER_7)
+				item_to_upgrade.gun_firemode_list |= GUN_FIREMODE_AUTOMATIC
+				new /obj/item/ammo_magazine/flamer_tank/high_combustion(loc)
 
-		if(/obj/item/weapon/gun/rifle/m4ra)
-			item_to_upgrade.name = "\proper Recon"
-			item_to_upgrade.desc = SPAN_DANGER("The last thing they'll ever see.")
-			item_to_upgrade.damage_mult += 0.15
-			item_to_upgrade.ammo_override = /datum/ammo/bullet/rifle/ap/penetrating
-			if(item_to_upgrade.in_chamber)
-				item_to_upgrade.ready_in_chamber()
+			if(/obj/item/weapon/gun/rifle/m4ra)
+				item_to_upgrade.name = "\proper Recon"
+				item_to_upgrade.desc = SPAN_DANGER("The last thing they'll ever see.")
+				item_to_upgrade.damage_mult += 0.15
+				item_to_upgrade.ammo_override = /datum/ammo/bullet/rifle/ap/penetrating
+				if(item_to_upgrade.in_chamber)
+					item_to_upgrade.ready_in_chamber()
 
-		if(/obj/item/weapon/gun/rifle/m46c/horde_mode)
-			item_to_upgrade.name = "\proper Primas"
-			item_to_upgrade.desc = SPAN_DANGER("I lead the way.")
-			item_to_upgrade.ammo_override = /datum/ammo/bullet/rifle/incendiary/napalmx
-			item_to_upgrade.damage_mult += 0.6
-			if(item_to_upgrade.in_chamber)
-				item_to_upgrade.ready_in_chamber()
+			if(/obj/item/weapon/gun/rifle/m46c/horde_mode)
+				item_to_upgrade.name = "\proper Primas"
+				item_to_upgrade.desc = SPAN_DANGER("I lead the way.")
+				item_to_upgrade.ammo_override = /datum/ammo/bullet/rifle/incendiary/napalmx
+				item_to_upgrade.damage_mult += 0.6
+				if(item_to_upgrade.in_chamber)
+					item_to_upgrade.ready_in_chamber()
 
-		if(/obj/item/weapon/gun/lever_action/r4t)
-			item_to_upgrade.name = "\proper Judgement Day"
-			item_to_upgrade.desc = SPAN_DANGER("They forgot to say please.")
-			item_to_upgrade.ammo_override = /datum/ammo/bullet/rifle/explosive/light
-			item_to_upgrade.recoil_unwielded -= RECOIL_AMOUNT_TIER_2
-			item_to_upgrade.accuracy_mult_unwielded += HIT_ACCURACY_MULT_TIER_10
-			item_to_upgrade.scatter_unwielded -= SCATTER_AMOUNT_TIER_5
-			item_to_upgrade.movement_onehanded_acc_penalty_mult -= 4
+			if(/obj/item/weapon/gun/lever_action/r4t)
+				item_to_upgrade.name = "\proper Judgement Day"
+				item_to_upgrade.desc = SPAN_DANGER("They forgot to say please.")
+				item_to_upgrade.ammo_override = /datum/ammo/bullet/rifle/explosive/light
+				item_to_upgrade.recoil_unwielded -= RECOIL_AMOUNT_TIER_2
+				item_to_upgrade.accuracy_mult_unwielded += HIT_ACCURACY_MULT_TIER_10
+				item_to_upgrade.scatter_unwielded -= SCATTER_AMOUNT_TIER_5
+				item_to_upgrade.movement_onehanded_acc_penalty_mult -= 4
 
-		if(/obj/item/weapon/gun/rifle/l42a/abr40)
-			item_to_upgrade.name = "\proper Old Glory"
-			item_to_upgrade.desc = SPAN_DANGER("It has ever been my staunch companion and protection.")
-			item_to_upgrade.damage_mult += 1.5
-			item_to_upgrade.accuracy_mult += HIT_ACCURACY_MULT_TIER_7
+			if(/obj/item/weapon/gun/rifle/l42a/abr40)
+				item_to_upgrade.name = "\proper Old Glory"
+				item_to_upgrade.desc = SPAN_DANGER("It has ever been my staunch companion and protection.")
+				item_to_upgrade.damage_mult += 1.5
+				item_to_upgrade.accuracy_mult += HIT_ACCURACY_MULT_TIER_7
 
-		if(/obj/item/weapon/gun/rifle/m41a)
-			item_to_upgrade.name = "\proper Recompense"
-			item_to_upgrade.desc = SPAN_DANGER("Forgive your enemies, but never forget their names.")
-			item_to_upgrade.modify_fire_delay(-0.5)
-			item_to_upgrade.damage_mult += 0.5
-			item_to_upgrade.chance_to_keep_ammo = 33
+			if(/obj/item/weapon/gun/rifle/m41a)
+				item_to_upgrade.name = "\proper Recompense"
+				item_to_upgrade.desc = SPAN_DANGER("Forgive your enemies, but never forget their names.")
+				item_to_upgrade.modify_fire_delay(-0.5)
+				item_to_upgrade.damage_mult += 0.5
+				item_to_upgrade.chance_to_keep_ammo = 33
 
-		if(/obj/item/weapon/gun/rifle/m41aMK1)
-			item_to_upgrade.name = "\proper THIS MACHINE"
-			item_to_upgrade.desc = SPAN_DANGER("KILLS UPP.")
-			item_to_upgrade.set_burst_delay(1)
-			item_to_upgrade.do_toggle_firemode(user, GUN_FIREMODE_BURSTFIRE)
-			item_to_upgrade.remove_firemode(GUN_FIREMODE_SEMIAUTO, user)
-			item_to_upgrade.remove_firemode(GUN_FIREMODE_AUTOMATIC, user)
+			if(/obj/item/weapon/gun/rifle/m41aMK1)
+				item_to_upgrade.name = "\proper THIS MACHINE"
+				item_to_upgrade.desc = SPAN_DANGER("KILLS UPP.")
+				item_to_upgrade.set_burst_delay(1)
+				item_to_upgrade.do_toggle_firemode(user, GUN_FIREMODE_BURSTFIRE)
+				item_to_upgrade.remove_firemode(GUN_FIREMODE_SEMIAUTO, user)
+				item_to_upgrade.remove_firemode(GUN_FIREMODE_AUTOMATIC, user)
 
-		if(/obj/item/weapon/gun/shotgun/combat/marsoc)
-			item_to_upgrade.name = "\proper Adjudicator"
-			item_to_upgrade.desc = SPAN_DANGER("Delivering justice one shell at a time.")
-			item_to_upgrade.damage_mult += 0.8
-			item_to_upgrade.accuracy_mult += HIT_ACCURACY_MULT_TIER_10
-			item_to_upgrade.scatter -= SCATTER_AMOUNT_TIER_8
-			item_to_upgrade.ammo_override = /datum/ammo/bullet/shotgun/flechette
-			item_to_upgrade.set_fire_delay(FIRE_DELAY_TIER_10)
-			item_to_upgrade.chance_to_keep_ammo = 50
-			if(item_to_upgrade.in_chamber)
-				item_to_upgrade.ready_in_chamber()
+			if(/obj/item/weapon/gun/shotgun/combat/marsoc)
+				item_to_upgrade.name = "\proper Adjudicator"
+				item_to_upgrade.desc = SPAN_DANGER("Delivering justice one shell at a time.")
+				item_to_upgrade.damage_mult += 0.8
+				item_to_upgrade.accuracy_mult += HIT_ACCURACY_MULT_TIER_10
+				item_to_upgrade.scatter -= SCATTER_AMOUNT_TIER_8
+				item_to_upgrade.ammo_override = /datum/ammo/bullet/shotgun/flechette
+				item_to_upgrade.set_fire_delay(FIRE_DELAY_TIER_10)
+				item_to_upgrade.chance_to_keep_ammo = 50
+				if(item_to_upgrade.in_chamber)
+					item_to_upgrade.ready_in_chamber()
 
-		if(/obj/item/weapon/gun/pistol/m4a3)
-			item_to_upgrade.name = "\proper FUBAR"
-			item_to_upgrade.desc = SPAN_DANGER("You wanna explain the math of this to me?")
-			item_to_upgrade.ammo_override = /datum/ammo/grenade_container/rifle
-			if(item_to_upgrade.in_chamber)
-				item_to_upgrade.ready_in_chamber()
+			if(/obj/item/weapon/gun/pistol/m4a3)
+				item_to_upgrade.name = "\proper FUBAR"
+				item_to_upgrade.desc = SPAN_DANGER("You wanna explain the math of this to me?")
+				item_to_upgrade.ammo_override = /datum/ammo/grenade_container/rifle
+				if(item_to_upgrade.in_chamber)
+					item_to_upgrade.ready_in_chamber()
 
-		if(/obj/item/weapon/gun/smg/m39)
-			item_to_upgrade.name = "\proper Big Trouble"
-			item_to_upgrade.desc = SPAN_DANGER("God, aren't you even gonna kiss her goodbye?")
-			item_to_upgrade.modify_fire_delay(-0.25)
-			item_to_upgrade.modify_burst_delay(-0.5)
-			item_to_upgrade.damage_mult += 0.25
-			item_to_upgrade.chance_to_keep_ammo = 50
-			item_to_upgrade.burst_scatter_mult -= 2
+			if(/obj/item/weapon/gun/smg/m39)
+				item_to_upgrade.name = "\proper Big Trouble"
+				item_to_upgrade.desc = SPAN_DANGER("God, aren't you even gonna kiss her goodbye?")
+				item_to_upgrade.modify_fire_delay(-0.25)
+				item_to_upgrade.modify_burst_delay(-0.5)
+				item_to_upgrade.damage_mult += 0.25
+				item_to_upgrade.chance_to_keep_ammo = 50
+				item_to_upgrade.burst_scatter_mult -= 2
 
-		if(/obj/item/weapon/gun/smg/mp5)
-			item_to_upgrade.name = "\proper Detective's Sidearm"
-			item_to_upgrade.desc = SPAN_DANGER("Now you have a machine gun. Ho, ho, ho.")
-			item_to_upgrade.set_fire_delay(FIRE_DELAY_TIER_12)
-			item_to_upgrade.set_burst_delay(FIRE_DELAY_TIER_12)
-			item_to_upgrade.chance_to_keep_ammo = 66
-			item_to_upgrade.burst_scatter_mult -= 2
+			if(/obj/item/weapon/gun/smg/mp5)
+				item_to_upgrade.name = "\proper Detective's Sidearm"
+				item_to_upgrade.desc = SPAN_DANGER("Now you have a machine gun. Ho, ho, ho.")
+				item_to_upgrade.set_fire_delay(FIRE_DELAY_TIER_12)
+				item_to_upgrade.set_burst_delay(FIRE_DELAY_TIER_12)
+				item_to_upgrade.chance_to_keep_ammo = 66
+				item_to_upgrade.burst_scatter_mult -= 2
 
 /////////////////////
 // HOVERING EFFECT //

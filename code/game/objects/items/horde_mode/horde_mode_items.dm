@@ -140,7 +140,7 @@
 /obj/item/horde_mode/stim/injector/proc/inject(mob/living/carbon/human/target, mob/living/user)
 	if(throw_away)
 		to_chat(user, SPAN_WARNING("[src] is expended!"))
-		return
+		return FALSE
 
 	playsound(loc, 'sound/items/air_release.ogg', 70)
 	overlays = null

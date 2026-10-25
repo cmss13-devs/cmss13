@@ -130,7 +130,7 @@ SUBSYSTEM_DEF(horde_mode)
 		handle_new_xenos()
 		xeno_health_mod += 0.025
 		xeno_damage_mod += 0.025
-		amount_to_spawn = 3*round+2
+		amount_to_spawn = (3*round+2) + current_players.len / 3
 		specialists_to_spawn = max_specialists
 		if(spawn_max <= 5 + current_players.len)
 			spawn_max = clamp(2 + floor(round / 3), 2, 5 + current_players.len)

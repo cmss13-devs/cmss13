@@ -1351,7 +1351,6 @@
 /turf/open/floor/bluecorner,
 /area/horde_mode/science)
 "ya" = (
-/obj/structure/surface/table/uninteractable,
 /obj/structure/mirror{
 	icon_state = "mirror_broke";
 	pixel_x = 30
@@ -1362,6 +1361,7 @@
 	name = "General Listening Channel";
 	pixel_y = 30
 	},
+/obj/structure/mystery_purchase/weapons,
 /turf/open/floor/freezerfloor,
 /area/horde_mode/science)
 "yG" = (

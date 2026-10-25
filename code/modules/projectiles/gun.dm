@@ -213,6 +213,8 @@
 
 	var/auto_retrieval_slot
 
+	var/upgraded = FALSE
+
 	/** An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
 	that will be given to a projectile with the current ammo datum**/
 	var/list/list/traits_to_give

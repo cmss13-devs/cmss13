@@ -48,3 +48,50 @@
 	pool_name = "Survivor mode pool"
 	icon_state = "ipool_surv_mode"
 	mode_flags = MODE_SURVIVE
+
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms
+	type_to_spawn = list(/obj/item/weapon/gun/rifle/m20a,
+	/obj/item/weapon/gun/rifle/m20a,
+	/obj/item/weapon/gun/rifle/m20a,
+	/obj/item/weapon/gun/rifle/mar40,
+	/obj/item/weapon/gun/rifle/mar40,
+	/obj/item/weapon/gun/rifle/nsg23/no_lock/stripped
+	)
+	quota = 5
+	multiplier = 1
+
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies
+	type_to_spawn = list(/obj/item/ammo_magazine/rifle/m20a,
+	/obj/item/ammo_magazine/rifle/m20a,
+	/obj/item/ammo_magazine/rifle/m20a,
+	/obj/item/ammo_magazine/rifle/mar40,
+	/obj/item/ammo_magazine/rifle/mar40,
+	/obj/item/ammo_magazine/rifle/nsg23
+	)
+	quota = 5
+	multiplier = 6
+
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies
+	type_to_spawn = list(/obj/item/storage/firstaid/adv,
+	/obj/item/storage/firstaid/regular,
+	/obj/item/stack/medical/advanced/bruise_pack/upgraded,
+	/obj/item/stack/medical/advanced/ointment/upgraded,
+	/obj/item/stack/medical/splint/nano
+	)
+	quota = 5
+	multiplier = 3
+
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies
+	type_to_spawn = list(/obj/item/stack/sheet/metal/med_large_stack,
+	/obj/item/stack/sheet/metal/medium_stack,
+	/obj/item/stack/sheet/metal/med_small_stack,
+	/obj/item/stack/sheet/plasteel/medium_stack)
+	quota = 5
+	multiplier = 2
+
+/obj/effect/landmark/item_pool_spawner/survivor_mode/special_gear
+	type_to_spawn = list(/obj/effect/spawner/random/sentry/highchance,
+	/obj/effect/spawner/random/supply_kit
+	)
+	quota = 1
+	multiplier = 1

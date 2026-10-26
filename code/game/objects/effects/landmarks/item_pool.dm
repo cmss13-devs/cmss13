@@ -57,7 +57,7 @@
 		/obj/item/weapon/gun/rifle/m20a,
 		/obj/item/weapon/gun/rifle/mar40,
 		/obj/item/weapon/gun/rifle/mar40,
-		/obj/item/weapon/gun/rifle/nsg23/no_lock/stripped
+		/obj/item/weapon/gun/rifle/nsg23/no_lock/stripped,
 	)
 	quota = 5
 	multiplier = 1
@@ -70,7 +70,7 @@
 		/obj/item/ammo_magazine/rifle/m20a,
 		/obj/item/ammo_magazine/rifle/mar40,
 		/obj/item/ammo_magazine/rifle/mar40,
-		/obj/item/ammo_magazine/rifle/nsg23
+		/obj/item/ammo_magazine/rifle/nsg23,
 	)
 	quota = 5
 	multiplier = 6
@@ -82,7 +82,7 @@
 		/obj/item/storage/firstaid/regular,
 		/obj/item/stack/medical/advanced/bruise_pack/upgraded,
 		/obj/item/stack/medical/advanced/ointment/upgraded,
-		/obj/item/stack/medical/splint/nano
+		/obj/item/stack/medical/splint/nano,
 	)
 	quota = 5
 	multiplier = 3
@@ -93,7 +93,8 @@
 		/obj/item/stack/sheet/metal/med_large_stack,
 		/obj/item/stack/sheet/metal/medium_stack,
 		/obj/item/stack/sheet/metal/med_small_stack,
-		/obj/item/stack/sheet/plasteel/medium_stack)
+		/obj/item/stack/sheet/plasteel/medium_stack,
+	)
 	quota = 5
 	multiplier = 2
 
@@ -101,7 +102,7 @@
 	pool_name = "Special gear spawner pool"
 	type_to_spawn = list(
 		/obj/effect/spawner/random/sentry/highchance,
-		/obj/effect/spawner/random/supply_kit
+		/obj/effect/spawner/random/supply_kit,
 	)
 	quota = 1
 	multiplier = 1

@@ -130,7 +130,6 @@
 		character.put_in_hands(new /obj/item/storage/box/kit/cryo_self_defense(character.loc))
 
 	GLOB.data_core.manifest_inject(character)
-	SSticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc. //TODO!!!!! ~Carn
 	SSticker.mode.latejoin_update(player_rank)
 	SSticker.mode.update_gear_scale()
 	SSticker.mode.update_energy_scale()

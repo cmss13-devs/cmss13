@@ -137,11 +137,7 @@
 	else
 		mind = new /datum/mind(key, ckey)
 		mind.original = src
-		if(SSticker)
-			SSticker.minds += mind
-		else
-			world.log << "## DEBUG: mind_initialize(): No ticker ready yet! Please inform Carn"
-		. = 1 //successfully created a new mind
+		. = TRUE //successfully created a new mind
 	if(!mind.name)
 		mind.name = real_name
 	mind.current = src

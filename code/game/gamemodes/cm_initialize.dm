@@ -466,7 +466,6 @@ Additional game mode variables.
 	// This is usually done in assign_role, a proc which is not executed in this case, since check_joe_late_join is running its own checks.
 	joe_job.current_positions++
 	GLOB.RoleAuthority.equip_role(new_joe, joe_job, new_joe.loc)
-	SSticker.minds += new_joe.mind
 	return new_joe
 
 //===================================================\\
@@ -555,7 +554,6 @@ Additional game mode variables.
 	// This is usually done in assign_role, a proc which is not executed in this case, since check_fax_responder_late_join is running its own checks.
 	fax_responder_job.current_positions++
 	GLOB.RoleAuthority.equip_role(new_responder, fax_responder_job, new_responder.loc)
-	SSticker.minds += new_responder.mind
 
 	message_admins(FONT_SIZE_XL(SPAN_RED("[key_name(new_responder)] joined as a [sub_job].")))
 	new_responder.add_fax_responder()
@@ -1340,5 +1338,4 @@ Additional game mode variables.
 	joe_job.current_positions++
 	GLOB.RoleAuthority.equip_role(new_joe, joe_job, new_joe.loc)
 	GLOB.data_core.manifest_inject(new_joe)
-	SSticker.minds += new_joe.mind
 	return new_joe

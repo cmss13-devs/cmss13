@@ -258,7 +258,7 @@
 
 	if(hive)
 		new_xeno.set_hive_and_update(hive.hivenumber)
-		if(!affected_mob.first_xeno && hive.hive_location && !ismonkey(affected_mob) && !issurvivorjob(affected_mob.job))
+		if(!affected_mob.first_xeno && hive.hive_location && !ismonkey(affected_mob) && !(FACTION_SURVIVOR in affected_mob.faction_group))
 			hive.increase_larva_after_burst(is_nested)
 			hive.hive_ui.update_burrowed_larva()
 

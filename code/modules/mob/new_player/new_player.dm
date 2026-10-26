@@ -105,6 +105,8 @@
 	var/datum/job/player_rank = GLOB.RoleAuthority.roles_for_mode[rank]
 	if (src != usr)
 		return FALSE
+	if(spawning)
+		return FALSE
 	if(SSticker.current_state != GAME_STATE_PLAYING)
 		to_chat(usr, SPAN_WARNING("The round is either not ready, or has already finished!"))
 		return FALSE
@@ -114,6 +116,24 @@
 
 	if(!client?.prefs.update_slot(player_rank.title))
 		return FALSE
+
+	// randomize_squad() places them at spawn; this only checks that it will find a squad they agree to
+	if(player_rank.flags_startup_parameters & ROLE_ADD_TO_SQUAD && player_rank.title != JOB_INTEL)
+		var/datum/equipment_preset/preset = new player_rank.gear_preset
+		var/list/preferred_squads = client?.prefs?.preferred_squad
+		if(!GLOB.RoleAuthority.get_eligible_squad(player_rank.title, preset.faction, preferred_squads))
+			var/datum/squad/any_open_squad = length(preferred_squads) ? GLOB.RoleAuthority.get_eligible_squad(player_rank.title, preset.faction, null) : null
+			if(!any_open_squad)
+				to_chat(src, SPAN_WARNING("[rank] is not available. No squad has an opening for it."))
+				return FALSE
+			if(tgui_alert(src, "None of the available role openings match your squad preferences. Join any available squad?", "Squad Preferences", list("Confirm", "Deny")) != "Confirm")
+				return FALSE
+			// The round, the player and the openings can all change while the prompt is up
+			if(QDELETED(src) || !client || spawning || SSticker.current_state != GAME_STATE_PLAYING || !GLOB.enter_allowed)
+				return FALSE
+			if(!GLOB.RoleAuthority.get_eligible_squad(player_rank.title, preset.faction, null))
+				to_chat(src, SPAN_WARNING("[rank] is no longer available. The last squad opening for it was taken."))
+				return FALSE
 
 	if(!GLOB.RoleAuthority.assign_role(src, player_rank, latejoin = TRUE))
 		to_chat(src, SPAN_WARNING("[rank] is not available. Please try another."))

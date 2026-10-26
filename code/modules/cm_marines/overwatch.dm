@@ -58,6 +58,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/add_pmcs = FALSE
 	var/show_command_squad = FALSE
 	var/tgui_interaction_distance = 1
+	/// Can this overwatch console override / not care about the current overwatch officer
+	var/can_override_overwatch_officer = FALSE
 
 	var/list/invalid_turfs = list(/turf/open/space, /turf/open_space, /turf/open/slippery)
 
@@ -79,6 +81,15 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	no_skill_req = TRUE
 	show_command_squad = TRUE
 	tgui_interaction_distance = 3
+	can_override_overwatch_officer = TRUE
+	/// Squad role within Assault, Support and Security - decides which section it will be able to watch. If it stays as null it will allow to view all of them
+	var/role
+
+/obj/structure/machinery/computer/overwatch/groundside_operations/section
+	name = "Section Overwatch Console"
+	icon_state = "overwatch"
+	no_skill_req = FALSE
+	req_access = list(ACCESS_MARINE_COMMAND)
 
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
@@ -221,7 +232,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	if(current_squad.squad_leader)
 		var/turf/SL_turf = get_turf(current_squad.squad_leader)
-		SL_z = SL_turf.z
+		if(SL_turf)
+			SL_z = SL_turf.z
 
 	for(var/marine in current_squad.marines_list)
 		if(!marine)
@@ -277,7 +289,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					else if(marine_human.job != JOB_SQUAD_LEADER)
 						acting_sl = " (acting SL)"
 					is_squad_leader = TRUE
-				else if(current_turf && (current_turf.z == SL_z))
+				else if(current_turf && SL_z && (current_turf.z == SL_z))
 					distance = "[get_dist(marine_human, current_squad.squad_leader)] ([dir2text_short(Get_Compass_Dir(current_squad.squad_leader, marine_human))])"
 
 
@@ -559,22 +571,22 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 /obj/structure/machinery/computer/overwatch/groundside_operations/ui_data(mob/user)
 	var/list/data = list()
-
 	pack_radio_data(data)
+	data["executive"] = isnull(role)
 	data["theme"] = ui_theme
 
 	if(!current_squad)
 		data["squad_list"] = list()
 		for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
-			if(current_squad.active && !current_squad.overwatch_officer && current_squad.faction == faction && current_squad.name != "Root")
+			if(current_squad.active && (!role || current_squad.squad_role == role) &&!current_squad.overwatch_officer && current_squad.faction == faction && current_squad.name != "Root")
 				data["squad_list"] += current_squad.name
 		return data
 
 	data["current_squad"] = current_squad.name
 
 	for(var/datum/squad/index_squad in GLOB.RoleAuthority.squads)
-		if(index_squad.active && index_squad.faction == faction && index_squad.name != "Root")
-			var/list/squad_data = list(list("name" = index_squad.name, "primary_objective" = index_squad.primary_objective, "secondary_objective" = index_squad.secondary_objective, "overwatch_officer" = index_squad.overwatch_officer, "ref" = REF(index_squad)))
+		if(index_squad.active && (!role || index_squad.squad_role == role) && index_squad.faction == faction && index_squad.name != "Root")
+			var/list/squad_data = list(list("name" = index_squad.name, "primary_objective" = index_squad.primary_objective, "secondary_objective" = index_squad.secondary_objective, "overwatch_officer" = index_squad.overwatch_officer?.name, "ref" = REF(index_squad)))
 			data["squad_data"] += squad_data
 
 	data["z_hidden"] = z_hidden
@@ -606,6 +618,18 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/datum/squad/marine/echo/echo_squad = locate() in GLOB.RoleAuthority.squads
 	data["echo_squad_active"] = echo_squad.active
 
+	var/has_supply_pad = FALSE
+	var/obj/structure/closet/crate/supply_crate
+	if(current_squad.drop_pad)
+		supply_crate = locate() in current_squad.drop_pad.loc
+		has_supply_pad = TRUE
+	data["can_launch_crates"] = has_supply_pad
+	data["has_crate_loaded"] = supply_crate
+
+	data["saved_coordinates"] = list()
+	for(var/i in 1 to length(saved_coordinates))
+		data["saved_coordinates"] += list(list("x" = saved_coordinates[i]["x"], "y" = saved_coordinates[i]["y"], "z" = saved_coordinates[i]["z"], "comment" = saved_coordinates[i]["comment"], "index" = i))
+
 	return data
 
 /obj/structure/machinery/computer/overwatch/ui_state(mob/user)
@@ -628,6 +652,18 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	// if none of the above were true, something is very wrong
 	return UI_CLOSE
 
+/obj/structure/machinery/computer/overwatch/proc/pick_section()
+	return TRUE
+
+/obj/structure/machinery/computer/overwatch/groundside_operations/section/pick_section(mob/user)
+	var/section = tgui_input_list(user, "Choose a section to overwatch:", "Section Selection", list(SQUAD_ROLE_ASSAULT, SQUAD_ROLE_SUPPORT, SQUAD_ROLE_SECURITY))
+
+	if(!section)
+		return FALSE
+
+	role = section
+	return TRUE
+
 /obj/structure/machinery/computer/overwatch/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
@@ -638,16 +674,20 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		if("pick_squad")
 			if(current_squad)
 				return
+
+			if(!pick_section(user))
+				return
+
 			var/datum/squad/selected_squad
 			for(var/datum/squad/searching_squad in GLOB.RoleAuthority.squads)
-				if(searching_squad.active && !searching_squad.overwatch_officer && searching_squad.faction == faction && searching_squad.name == params["squad"])
+				if(searching_squad.active && (!searching_squad.overwatch_officer || can_override_overwatch_officer) && searching_squad.faction == faction && searching_squad.name == params["squad"])
 					selected_squad = searching_squad
 					break
 
 			if(!selected_squad)
 				return
 
-			if(selected_squad.assume_overwatch(user))
+			if(selected_squad.assume_overwatch(user) || can_override_overwatch_officer)
 				current_squad = selected_squad
 				operator = user
 				if(current_squad.name == "Root")
@@ -785,6 +825,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Orbital bombardment cannon not yet ready to fire again! Please wait [COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)/10] seconds.")]")
 			else
 				handle_bombard(user)
+			return TRUE
 
 		if("dropsupply")
 			if(isnull(params["x"]) || isnull(params["y"]) || isnull(params["z"]))
@@ -793,10 +834,13 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			y_supply = text2num(params["y"])
 			z_supply = text2num(params["z"])
 			if(current_squad)
-				if(!COOLDOWN_FINISHED(current_squad, next_supplydrop))
+				if(!current_squad.drop_pad)
+					to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("This squad has no supply pad to launch to!")]")
+				else if(!COOLDOWN_FINISHED(current_squad, next_supplydrop))
 					to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Supply drop not yet ready to launch again!")]")
 				else
 					handle_supplydrop(user)
+			return TRUE
 
 		if("save_coordinates")
 			if(isnull(params["x"]) || isnull(params["y"]) || isnull(params["z"]))
@@ -905,6 +949,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 		if("red_alert")
 			set_security_level(SEC_LEVEL_RED)
+			return TRUE
 
 		if("change_sec_level")
 			var/list/alert_list = list(num2seclevel(SEC_LEVEL_GREEN), num2seclevel(SEC_LEVEL_BLUE))
@@ -924,6 +969,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			log_game("[key_name(user)] has changed the security level to [get_security_level()].")
 			message_admins("[key_name_admin(user)] has changed the security level to [get_security_level()].")
 			log_ares_security("Manual Security Update", "Changed the security level to [get_security_level()].", user)
+			return TRUE
 
 		if("gather_index_squad_data")
 			var/squad = params["squad"]
@@ -935,6 +981,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 						current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's don't know how
 			else
 				current_squad = locate(params["squad"])
+			return TRUE
 
 		if("announce")
 			var/mob/living/carbon/human/human_user = user	// does not use operator, in case they are not operating, and cannot be operated by another operator, on behalf of the operator
@@ -1027,6 +1074,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				return
 			echo_squad.engage_squad(TRUE)
 			message_admins("[key_name(user)] activated Echo Squad for '[reason]'.")
+			return TRUE
 
 		if("distress")
 			if(!SSticker.mode)
@@ -1068,6 +1116,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			log_game("[key_name(user)] has called for an emergency evacuation.")
 			message_admins("[key_name_admin(user)] has called for an emergency evacuation.")
 			log_ares_security("Initiate Evacuation", "Called for an emergency evacuation.", user)
+			return TRUE
 
 		if("evacuation_cancel")
 			var/mob/living/carbon/human/human_user = user
@@ -1090,6 +1139,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			log_game("[key_name(user)] has canceled the emergency evacuation.")
 			message_admins("[key_name_admin(user)] has canceled the emergency evacuation.")
 			log_ares_security("Cancel Evacuation", "Cancelled the emergency evacuation.", user)
+			return TRUE
 
 		if("general_quarters")
 			var/datum/ares_datacore/datacore = GLOB.ares_datacore
@@ -1705,26 +1755,6 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		if(squad == glob_squad.name)
 			glob_squad.drop_pad = null
 	return ..()
-
-/obj/structure/supply_drop/alpha
-	icon_state = "alphadrop"
-	squad = SQUAD_MARINE_1
-
-/obj/structure/supply_drop/bravo
-	icon_state = "bravodrop"
-	squad = SQUAD_MARINE_2
-
-/obj/structure/supply_drop/charlie
-	icon_state = "charliedrop"
-	squad = SQUAD_MARINE_3
-
-/obj/structure/supply_drop/delta
-	icon_state = "deltadrop"
-	squad = SQUAD_MARINE_4
-
-/obj/structure/supply_drop/echo //extra supply drop pad
-	icon_state = "echodrop"
-	squad = SQUAD_MARINE_5
 
 //======UPP=======
 

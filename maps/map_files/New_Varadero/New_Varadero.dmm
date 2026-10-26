@@ -539,176 +539,172 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/swcaves)
 "acc" = (
-/obj/effect/landmark/static_comms/net_survivor,
-/turf/open/floor/shiva/blue,
-/area/varadero/interior/administration)
-"acd" = (
-/obj/effect/landmark/static_comms/net_survivor,
-/turf/open/auto_turf/sand_white/layer1,
-/area/varadero/interior/caves/north_research)
-"ace" = (
-/obj/effect/landmark/static_comms/net_survivor,
-/turf/open/floor/carpet,
-/area/varadero/interior/library)
-"acf" = (
 /obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
 /turf/open/floor/shiva/snow_mat,
 /area/varadero/interior/security)
+"acd" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/security)
+"ace" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/security)
+"acf" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
 "acg" = (
 /obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
-/turf/open/floor/shiva/floor3,
-/area/varadero/interior/security)
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
 "ach" = (
-/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
-/turf/open/floor/shiva/floor3,
-/area/varadero/interior/security)
-"aci" = (
-/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance/security/south)
-"acj" = (
-/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/maintenance/security/south)
-"ack" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/security)
-"acl" = (
+"aci" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/security)
-"acm" = (
+"acj" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/security)
-"acn" = (
+"ack" = (
 /obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/caves/east)
-"aco" = (
+"acl" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/security)
-"acp" = (
+"acm" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_SE)
-"acq" = (
+"acn" = (
 /obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
 /turf/open/floor/shiva/red/west,
 /area/varadero/interior/security)
-"acr" = (
+"aco" = (
 /obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
 /turf/open/floor/shiva/red/west,
 /area/varadero/interior/security)
-"acs" = (
+"acp" = (
+/obj/effect/landmark/static_comms/net_survivor,
+/turf/open/floor/shiva/blue,
+/area/varadero/interior/administration)
+"acq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/junction,
 /obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_SE)
-"act" = (
+"acr" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/security)
-"acu" = (
+"acs" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/security)
-"acv" = (
+"act" = (
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
-"acw" = (
+"acu" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
-"acx" = (
+"acv" = (
 /obj/effect/landmark/item_pool_spawner/survivor_mode/special_gear,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/administration)
-"acy" = (
+"acw" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
 /turf/open/floor/carpet,
 /area/varadero/interior/security)
-"acz" = (
+"acx" = (
 /obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
-"acA" = (
+"acy" = (
 /obj/effect/landmark/item_pool_spawner/survivor_mode/special_gear,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
-"acB" = (
+"acz" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/floor/shiva/wred,
 /area/varadero/interior/medical)
-"acC" = (
+"acA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
-"acD" = (
+"acB" = (
 /obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance)
-"acE" = (
+"acC" = (
 /obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_NW)
-"acF" = (
+"acD" = (
 /obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/medical)
-"acG" = (
+"acE" = (
 /obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
-"acH" = (
+"acF" = (
 /obj/effect/landmark/item_pool_spawner/survivor_mode/special_gear,
 /turf/open/floor/wood,
 /area/varadero/interior/court)
-"acI" = (
+"acG" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_N)
-"acJ" = (
+"acH" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/medical)
-"acK" = (
+"acI" = (
+/obj/effect/landmark/static_comms/net_survivor,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/north_research)
+"acJ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -718,6 +714,10 @@
 /obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_N)
+"acK" = (
+/obj/effect/landmark/static_comms/net_survivor,
+/turf/open/floor/carpet,
+/area/varadero/interior/library)
 "acL" = (
 /obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -36201,7 +36201,7 @@ oPQ
 xCn
 xCn
 xCn
-acd
+acI
 pGs
 pGs
 uHY
@@ -38569,7 +38569,7 @@ oZw
 kzJ
 oZw
 kzJ
-acI
+acG
 lVP
 lVP
 lVP
@@ -38756,7 +38756,7 @@ kuX
 kuX
 kuX
 kuX
-acE
+acC
 kuX
 kuX
 kuX
@@ -39296,7 +39296,7 @@ rHv
 nxW
 wlQ
 saq
-acJ
+acH
 maN
 faq
 qNI
@@ -39844,10 +39844,10 @@ vsP
 cAX
 kDF
 nZd
-acF
+acD
 maN
 maN
-acF
+acD
 maN
 maN
 qcN
@@ -40565,7 +40565,7 @@ eul
 bLB
 xWY
 hvO
-acK
+acJ
 rHv
 nxW
 qDv
@@ -40583,10 +40583,10 @@ spd
 lBf
 nxW
 nkd
-acB
+acz
 nxW
 qqA
-acw
+acu
 qqA
 ykw
 ibP
@@ -42038,7 +42038,7 @@ qcN
 qBn
 qqA
 eBf
-acC
+acA
 kIK
 kIK
 ueP
@@ -42595,7 +42595,7 @@ oTJ
 qvo
 pWm
 bNC
-acc
+acp
 xgG
 qvo
 qvo
@@ -43127,7 +43127,7 @@ sgy
 peA
 qVl
 qcN
-acD
+acB
 qqA
 aQc
 qvo
@@ -43659,7 +43659,7 @@ pXL
 oMs
 xWY
 hvO
-acK
+acJ
 rHv
 nnw
 jCE
@@ -43680,7 +43680,7 @@ xgG
 xJx
 oiM
 rzM
-acx
+acv
 kaY
 jDO
 uEz
@@ -43851,7 +43851,7 @@ wdh
 lEM
 rNo
 qcN
-acF
+acD
 rsM
 gwW
 qcN
@@ -44395,7 +44395,7 @@ xNY
 qqA
 qqA
 aQc
-acG
+acE
 kWZ
 rVZ
 aQc
@@ -46928,7 +46928,7 @@ djh
 jzZ
 jzZ
 gyw
-ace
+acK
 jzZ
 jzZ
 sia
@@ -47488,7 +47488,7 @@ cMf
 khb
 urd
 ara
-acH
+acF
 iGm
 nZk
 hPD
@@ -49328,10 +49328,10 @@ oGc
 oGc
 kyr
 eVU
-acs
+acq
 oGc
 oGc
-acp
+acm
 bNi
 lEc
 tSg
@@ -49883,7 +49883,7 @@ qDw
 wVf
 mMd
 gUX
-aci
+acf
 qYw
 lBn
 lBn
@@ -50054,12 +50054,12 @@ vqY
 oaR
 xvF
 gwG
-act
+acr
 krP
 xvF
 gwG
 xOo
-acg
+acd
 xOo
 nHA
 xvF
@@ -50248,7 +50248,7 @@ wVf
 pSu
 gUX
 eVy
-acj
+acg
 eVy
 eVy
 xTD
@@ -50412,13 +50412,13 @@ fEZ
 pGs
 wVf
 swj
-acA
-idw
 acy
+idw
+acw
 gyX
 eTb
 mnc
-acu
+acs
 krP
 wVf
 wVf
@@ -50437,7 +50437,7 @@ orx
 aOh
 cNK
 tUA
-aci
+acf
 eVy
 gUX
 pYn
@@ -50595,7 +50595,7 @@ pGs
 wVf
 unw
 idw
-acz
+acx
 idw
 idw
 wVf
@@ -50604,8 +50604,8 @@ xMq
 fqY
 wVf
 qPk
-acq
-acg
+acn
+acd
 uFJ
 eMD
 wVf
@@ -50801,7 +50801,7 @@ xMq
 vnU
 xvF
 gUX
-acj
+acg
 tlc
 ygy
 qTL
@@ -50964,7 +50964,7 @@ wVf
 wVf
 wVf
 hJl
-acm
+acj
 krP
 xvF
 gwG
@@ -51510,7 +51510,7 @@ dos
 idw
 wVf
 ivX
-act
+acr
 krP
 wVf
 wVf
@@ -51696,23 +51696,23 @@ xMq
 oVr
 uFJ
 uFJ
-acr
+aco
 xOo
 uFJ
 rsL
 uFJ
 kMN
-aco
+acl
 irj
 rsL
 diW
 pJn
-acg
+acd
 rwh
 wVf
 vLU
 pJn
-acg
+acd
 wku
 cKC
 xOo
@@ -51894,7 +51894,7 @@ hoG
 xvF
 vLU
 eye
-ach
+ace
 wku
 xOo
 qEa
@@ -52051,7 +52051,7 @@ gWu
 xvF
 etE
 swi
-acz
+acx
 izy
 hJw
 wVf
@@ -52252,7 +52252,7 @@ uFJ
 eHB
 wVf
 dQr
-acm
+acj
 bPL
 tUd
 wVf
@@ -52429,7 +52429,7 @@ pGs
 pGs
 wVf
 jtI
-acg
+acd
 uoO
 mnc
 kCT
@@ -52965,7 +52965,7 @@ jqw
 kbQ
 pGs
 ouy
-acv
+act
 oZv
 cNK
 cNK
@@ -52989,7 +52989,7 @@ aFM
 wVf
 wVf
 pRy
-acf
+acc
 mIG
 xvF
 eVy
@@ -53331,7 +53331,7 @@ ofC
 nZP
 eVy
 gUX
-aci
+acf
 eVy
 eJD
 jsg
@@ -53527,10 +53527,10 @@ wVf
 wVf
 xOo
 xOo
-ack
+ach
 mnc
 mnc
-acl
+aci
 xMq
 kYn
 wVf
@@ -53703,7 +53703,7 @@ pGs
 pGs
 wVf
 sBN
-acg
+acd
 xOo
 xOo
 aRL
@@ -53713,7 +53713,7 @@ vrO
 vAg
 wVf
 gwG
-ack
+ach
 iPI
 fLn
 jhv
@@ -54436,7 +54436,7 @@ kbQ
 qIF
 sgk
 kbQ
-acn
+ack
 kbQ
 pGs
 aaW

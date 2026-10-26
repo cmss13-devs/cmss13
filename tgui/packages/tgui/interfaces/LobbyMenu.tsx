@@ -39,6 +39,7 @@ type LobbyData = {
 
   confirmation_message?: string | string[];
 
+  survivor_replace_uscm: BooleanLike;
   upp_enabled: BooleanLike;
   xenomorph_enabled: BooleanLike;
   predator_enabled: BooleanLike;
@@ -304,6 +305,7 @@ const LobbyButtons = (props: {
     predator_enabled,
     fax_responder_enabled,
     upp_enabled,
+    survivor_replace_uscm,
     tutorials_ready,
     xenomorph_enabled,
   } = data;
@@ -464,16 +466,29 @@ const LobbyButtons = (props: {
           <>
             <Stack.Item>
               <Stack>
-                <Stack.Item grow>
-                  <LobbyButton
-                    index={6}
-                    disabled={!!round_starting}
-                    onClick={() => act('late_join')}
-                    icon="users"
-                  >
-                    Join the USCM
-                  </LobbyButton>
-                </Stack.Item>
+                {!survivor_replace_uscm ? (
+                  <Stack.Item grow>
+                    <LobbyButton
+                      index={6}
+                      disabled={!!round_starting}
+                      onClick={() => act('late_join')}
+                      icon="users"
+                    >
+                      Join the USCM
+                    </LobbyButton>
+                  </Stack.Item>
+                ) : (
+                  <Stack.Item grow>
+                    <LobbyButton
+                      index={6}
+                      disabled={!!round_starting}
+                      onClick={() => act('late_join_survivor')}
+                      icon="users"
+                    >
+                      Join the Survivors
+                    </LobbyButton>
+                  </Stack.Item>
+                )}
                 <Stack.Item>
                   <LobbyButton
                     icon="list"

@@ -65,6 +65,8 @@ GLOBAL_DATUM_INIT(late_join_tgui, /datum/late_join, new)
 
 /datum/late_join/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
+	if(MODE_HAS_FLAG(MODE_SURVIVE))
+		return // No modifying your UI to get here isn't an option
 	var/mob/new_player/user = ui.user
 	var/success = user.AttemptLateSpawn(action)
 	if(success)

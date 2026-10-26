@@ -205,7 +205,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		medic_job.set_spawn_positions(GLOB.players_preassigned)
 
 	// Set survivor starting amount based on marines assigned
-	var/datum/job/SJ = temp_roles_for_mode[JOB_SURVIVOR]
+	var/datum/job/SJ = GET_MAPPED_ROLE(JOB_SURVIVOR)
 	if(istype(SJ))
 		SJ.set_spawn_positions(GLOB.players_preassigned)
 		SJ.create_landmark_lists()
@@ -407,12 +407,12 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 /datum/authority/branch/role/proc/assign_role(mob/new_player/M, datum/job/J, latejoin = FALSE)
 	if(ismob(M) && istype(J))
-		if(check_role_entry(M, J, latejoin) && J.assign_landmark(M))
+		if(check_role_entry(M, J, latejoin) && J.assign_landmark(M, latejoin))
 			M.job = J.title
 			J.current_positions++
 			return TRUE
 
-/datum/authority/branch/role/proc/check_role_entry(mob/new_player/M, datum/job/J, latejoin = FALSE, faction)
+/datum/authority/branch/role/proc/check_role_entry(mob/new_player/M, datum/job/J, latejoin=FALSE, faction, ignore_positions=FALSE)
 	if(jobban_isbanned(M, J.title))
 		return FALSE
 	if(J.role_ban_alternative && jobban_isbanned(M, J.role_ban_alternative))
@@ -423,8 +423,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		return FALSE
 	if(!J.check_whitelist_status(M))
 		return FALSE
-	if(J.total_positions != -1 && J.get_total_positions(latejoin) <= J.current_positions)
-		return FALSE
+	if(!ignore_positions)
+		if(J.total_positions != -1 && J.get_total_positions(latejoin) <= J.current_positions)
+			return FALSE
 	if(latejoin && !J.late_joinable)
 		return FALSE
 	if(faction && faction != J.faction_menu)

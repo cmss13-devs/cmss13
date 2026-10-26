@@ -164,7 +164,7 @@
 	return TRUE
 
 /// Returns whether the new_player was able to be assigned a landmark
-/datum/job/proc/assign_landmark(mob/new_player)
+/datum/job/proc/assign_landmark(mob/new_player, latejoin)
 	return TRUE
 
 /datum/job/proc/get_role_requirements(client/C)
@@ -371,6 +371,7 @@
 
 /// Intended to be overwritten to handle when a job has variants that can be selected.
 /datum/job/proc/handle_job_options(option)
+	SHOULD_NOT_SLEEP(TRUE)
 	return
 
 /// Intended to be overwritten to handle any requirements for specific job variations that can be selected

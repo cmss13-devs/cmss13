@@ -11,16 +11,14 @@
 	required_players = 1 //Need at least one player, but really we need 2.
 	max_players = 50
 	corpses_to_spawn = 0
-	flags_round_type = MODE_SURVIVE|MODE_INFESTATION|MODE_FOG_ACTIVATED|MODE_NEW_SPAWN|MODE_NO_LATEJOIN
+	flags_round_type = MODE_SURVIVE|MODE_INFESTATION|MODE_FOG_ACTIVATED|MODE_NEW_SPAWN
 	static_comms_amount = 1
 	role_mappings = list(/datum/job/civilian/survivor/unlimited = JOB_SURVIVOR)
 	var/round_status_flags
 	var/next_stat_check = 0
 	var/list/running_round_stats = list()
+	/// The shuttle (if any) spawned by initiate_evacuation
 	var/obj/docking_port/mobile/emergency_response/shuttle
-
-/datum/game_mode/survive/can_start(bypass_checks)
-	return TRUE
 
 /datum/game_mode/survive/announce()
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("The current map is - [SSmapping.configs[GROUND_MAP].map_name]!"))
@@ -778,6 +776,80 @@
 
 	new /obj/structure/blocker/door/survivor_evac(loc, INFINITY)
 	qdel(src)
+
+//===================================================\\
+
+			//SURVIVOR LATEJOIN INITIALIZE\\
+
+//===================================================\\
+
+/datum/game_mode/survive/proc/attempt_to_join_as_locker_survivor(mob/new_player/user)
+	if(SSticker.current_state != GAME_STATE_PLAYING)
+		to_chat(user, SPAN_WARNING("The round is either not ready, or has already finished!"))
+		return FALSE
+
+	if(is_in_endgame)
+		to_chat(user, SPAN_WARNING("It is too late to join this round. It will end in [DisplayTimeText(SSticker.mode.force_end_at - world.time, 1)]."))
+		return FALSE
+
+	if(ROUND_TIME > 15 MINUTES)
+		to_chat(user, SPAN_WARNING("It is too late to join this round."))
+		return FALSE
+
+	if(!GLOB.enter_allowed)
+		to_chat(user, SPAN_WARNING("There is an administrative lock on entering the game!"))
+		return FALSE
+
+	var/datum/job/civilian/survivor/unlimited/job = GLOB.RoleAuthority.roles_by_name[JOB_SURVIVOR_UNLIMITED]
+	if(!job)
+		return FALSE
+
+	if(!user.client?.prefs.update_slot(job.title))
+		return FALSE
+
+	var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	if(main_hive.stored_larva > 0)
+		to_chat(user, SPAN_WARNING("There are not enough xenomorph players to allow more survivors right now."))
+		return FALSE
+
+	if(!GLOB.RoleAuthority.assign_role(user, job, latejoin=TRUE)) // This updates current_positions so needs to be last
+		if(GLOB.RoleAuthority.check_role_entry(user, job, latejoin=TRUE, ignore_positions=TRUE))
+			to_chat(user, SPAN_WARNING("There are no more spawnpoints for late join available."))
+		else
+			to_chat(user, SPAN_WARNING("You are not elgible to play as a survivor."))
+		return FALSE
+
+	if(job.job_options && user.client?.prefs?.pref_special_job_options[job.title])
+		job.handle_job_options(user.client.prefs.pref_special_job_options[job.title])
+	var/mob/living/carbon/human/character = job.spawn_in_player(user, TRUE)
+	if(istype(character))
+		job.equip_job(character)
+		if(character.client)
+			var/client/client = character.client
+			if(client.player_data && client.player_data.playtime_loaded && length(client.player_data.playtimes) == 0)
+				msg_admin_niche("NEW PLAYER: <b>[key_name(user, 1, 1, 0)]</b>. IP: [user.lastKnownIP], CID: [user.computer_id]")
+			send_tacmap_assets_latejoin(character)
+			client.init_verbs()
+
+	SSticker.mode.latejoin_update(job)
+
+	var/latejoin_larva_drop = SSticker.mode.latejoin_larva_drop
+
+	if(ROUND_TIME < XENO_ROUNDSTART_LATEJOIN_LARVA_TIME)
+		latejoin_larva_drop = SSticker.mode.latejoin_larva_drop_early
+
+	if(latejoin_larva_drop && SSticker.mode.latejoin_tally - SSticker.mode.latejoin_larva_used >= latejoin_larva_drop)
+		SSticker.mode.latejoin_larva_used += latejoin_larva_drop
+		var/datum/hive_status/hive
+		for(var/hivenumber in GLOB.hive_datum)
+			hive = GLOB.hive_datum[hivenumber]
+			if(hive.latejoin_burrowed == TRUE)
+				if(length(hive.totalXenos) && (hive.hive_location || ROUND_TIME < XENO_ROUNDSTART_LATEJOIN_LARVA_TIME))
+					hive.stored_larva++
+					hive.hive_ui.update_burrowed_larva()
+
+	qdel(user)
+	return TRUE
 
 #undef MONKEYS_TO_TOTAL_RATIO
 #undef PODLOCKS_OPEN_WAIT

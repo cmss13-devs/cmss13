@@ -279,6 +279,7 @@
 			to_chat(xeno, SPAN_XENONOTICE("We channel nutrients towards the node, morphing it in the process."))
 			playsound(xeno.loc, "alien_resin_build", 25)
 			return
+		return
 
 	var/obj/effect/alien/resin/design/existing_node = locate(/obj/effect/alien/resin/design) in target_turf
 	if(existing_node && xeno.selected_design_mark)

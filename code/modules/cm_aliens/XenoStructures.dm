@@ -1537,7 +1537,7 @@
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(hive)
 		hive.architect_marks -= src
-		for(var/mob/living/carbon/xenomorph/xeno in hive.totalXenos)
+		for(var/mob/living/carbon/xenomorph/xeno as anything in hive.totalXenos)
 			if(xeno.client && chosenMark)
 				xeno.client.images -= chosenMark
 				xeno.hud_set_design_marks()

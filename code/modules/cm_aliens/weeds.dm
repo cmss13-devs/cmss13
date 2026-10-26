@@ -365,7 +365,7 @@
 		if(!on_hardly_weedable)
 			icon_state = "weed[icon_dir]"
 		else
-			icon_dir = rand(0,3)
+			icon_dir = rand(0, 3)
 			icon_state = "webbing_omni[icon_dir]"
 
 	else if(my_dir == 0) //no weeds in any direction

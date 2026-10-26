@@ -834,7 +834,10 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		return
 
 	target.last_damage_data = weapon_cause_data
-	target.apply_damage(burn_damage, BURN) //This makes fire stronk.
+	(!HAS_TRAIT(target, TRAIT_ABILITY_POUNCE))
+		target.apply_damage(burn_damage, BURN) //This makes fire stronk.
+	else
+		target.apply_damage(burn_damage * 1.5, BURN) // We take x1.5 times more damage in exchange of not getting ignited.
 
 	var/variant_burn_msg = null
 	switch(fire_variant) //Fire variant special message appends.

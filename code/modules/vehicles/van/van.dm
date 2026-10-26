@@ -298,7 +298,7 @@
 			if(pushed)
 				if(side_push)
 					movement_sound = "tire_screech"
-					RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(restore_movement_sound_after_screech), override = TRUE)
+					RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(restore_movement_sound_after_screech))
 				else
 					movement_sound = null
 			else

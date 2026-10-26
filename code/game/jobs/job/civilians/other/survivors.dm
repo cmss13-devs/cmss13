@@ -149,6 +149,8 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 		character.send_to_lobby()
 		return null
 
+	slotted_landmarks -= new_player
+
 	character.forceMove(get_turf(picked_spawner))
 
 	handle_equip_gear(character, picked_spawner)

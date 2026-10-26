@@ -241,7 +241,7 @@
 			else
 				channels += ch_name
 				channels[ch_name] = key.channels[ch_name]
-				
+
 		for(var/tracking_option in key.tracking_options)
 			tracking_options[tracking_option] = key.tracking_options[tracking_option]
 		if(key.translate_apollo)
@@ -295,6 +295,10 @@
 				user.show_hud_tracker()
 			if(misc_tracking)
 				SStracking.start_misc_tracking(user)
+			INVOKE_NEXT_TICK(src, PROC_REF(update_minimap_icon), wearer)
+			if(minimap_type)
+				add_minimap(user)
+		else if(FACTION_SURVIVOR in user.faction_group)
 			INVOKE_NEXT_TICK(src, PROC_REF(update_minimap_icon), wearer)
 			if(minimap_type)
 				add_minimap(user)

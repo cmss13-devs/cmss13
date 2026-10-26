@@ -133,33 +133,33 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	else
 		return HAS_FLAG(client.prefs?.toggles_survivor, PLAY_SURVIVOR_NON_HOSTILE)
 
-/datum/job/civilian/survivor/spawn_in_player(mob/new_player/new_player_mob)
+/datum/job/civilian/survivor/spawn_in_player(mob/new_player/new_player)
 	. = ..()
 
 	total_spawned++
 
-	var/mob/living/carbon/human/human_mob = .
+	var/mob/living/carbon/human/character = .
 
-	GLOB.spawned_survivors += WEAKREF(human_mob)
+	GLOB.spawned_survivors += WEAKREF(character)
 
-	var/obj/effect/landmark/survivor_spawner/picked_spawner = slotted_landmarks[new_player_mob]
+	var/obj/effect/landmark/survivor_spawner/picked_spawner = slotted_landmarks[new_player]
 	if(!picked_spawner)
 		// Generally this shouldn't happen since role authority shouldn't be rolling us for a survivor in a hostile scenario
-		message_admins("Failed to spawn_in_player [key_name_admin(human_mob)] as a survivor! This likely means NIGHTMARE_SCENARIO_HOSTILE_SURVIVOR is incorrect for this map!")
-		human_mob.send_to_lobby()
-		qdel(human_mob)
+		message_admins("Failed to spawn_in_player [key_name_admin(character)] as a survivor! This likely means NIGHTMARE_SCENARIO_HOSTILE_SURVIVOR is incorrect for this map!")
+		character.send_to_lobby()
+		qdel(character)
 		return null
 
-	human_mob.forceMove(get_turf(picked_spawner))
+	character.forceMove(get_turf(picked_spawner))
 
-	handle_equip_gear(human_mob, picked_spawner)
+	handle_equip_gear(character, picked_spawner)
 
 	if(picked_spawner.roundstart_damage_max > 0)
 		if(istype(picked_spawner) && picked_spawner.roundstart_damage_max > 0)
 			for(var/i in 0 to picked_spawner.roundstart_damage_times)
-				human_mob.take_limb_damage(rand(picked_spawner.roundstart_damage_min, picked_spawner.roundstart_damage_max), 0)
+				character.take_limb_damage(rand(picked_spawner.roundstart_damage_min, picked_spawner.roundstart_damage_max), 0)
 
-	human_mob.name = human_mob.get_visible_name()
+	character.name = character.get_visible_name()
 
 	if(length(picked_spawner.intro_text))
 		intro_text = picked_spawner.intro_text
@@ -171,9 +171,9 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 		hostile = TRUE
 
 	if(counts_for_larva)
-		RegisterSignal(human_mob, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(grant_larva_on_death))
+		RegisterSignal(character, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(grant_larva_on_death))
 
-	new /datum/cm_objective/move_mob/almayer/survivor(human_mob)
+	new /datum/cm_objective/move_mob/almayer/survivor(character)
 
 /// SIGNAL_HANDLER for COMSIG_HUMAN_SET_UNDEFIBBABLE to grant main hive larva
 /datum/job/civilian/survivor/proc/grant_larva_on_death(mob/living/carbon/human/survivor)

@@ -510,7 +510,7 @@ AddTimelock(/datum/job/civilian/survivor, list(
 			LAZYADD(spawner.latejoin_lockers, reference)
 			latejoin_lockers |= reference
 
-	log_debug("Configured [length(latejoin_lockers)] late join lockers. (Insert Present? [insert_present_flag])")
+	log_debug("Configured [length(latejoin_lockers)] late join lockers.[insert_present_flag ? " (Insert Present)" : ""]")
 
 /datum/job/civilian/survivor/unlimited/assign_landmark(mob/new_player, latejoin)
 	create_landmark_lists() // Survive mode wants survivors in the precount

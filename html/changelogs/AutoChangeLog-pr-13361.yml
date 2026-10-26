@@ -1,0 +1,6 @@
+author: "Ghostsheet"
+delete-after: True
+changes:
+  - qol: "ARES aCO selection now goes all the way down the chain of command to most roles."
+  - qol: "ARES aCO selection gives Overwatch and Intel skill, to allow access to Overwatch Consoles and Comms Decryption."
+  - qol: "Groundside Operations Console can now promote aSL."

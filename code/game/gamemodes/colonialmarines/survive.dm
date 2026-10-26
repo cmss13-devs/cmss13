@@ -286,6 +286,12 @@
 	MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
 	RegisterSignal(port, COMSIG_SHUTTLE_DEPARTURE, PROC_REF(on_shuttle_depart))
 
+	// Force LZ1 shutters to open on chances claim in case theres no responders to open it
+	if(port.id == DROPSHIP_LZ1 && SSmapping.configs[GROUND_MAP].map_name == MAP_LV522_CHANCES_CLAIM)
+		for(var/obj/structure/machinery/door/poddoor/shutter in GLOB.machines)
+			if(shutter.id == "LZ1_Lockdown_Lo" && shutter.density)
+				INVOKE_ASYNC(shutter, TYPE_PROC_REF(/obj/structure/machinery/door, open))
+
 /// SIGNAL_HANDLER for COMSIG_SHUTTLE_DEPARTURE to handle antidelay
 /datum/game_mode/survive/proc/on_shuttle_depart(obj/docking_port/stationary/port, obj/docking_port/mobile/arriving_shuttle)
 	SIGNAL_HANDLER

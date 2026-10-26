@@ -90,8 +90,10 @@ Additional game mode variables.
 	/// List of role titles to override to different roles when starting game
 	var/list/role_mappings
 
-	//current amount of survivors by type
+	/// Current amount of survivors by type
 	var/list/survivors_by_type_amounts = list()
+	/// Current amount of survivors by insert type (only currently relevent for survivor unlimited)
+	var/list/survivors_by_insert_type_amounts
 
 	//Bioscan related.
 	var/bioscan_current_interval = 5 MINUTES//5 minutes in

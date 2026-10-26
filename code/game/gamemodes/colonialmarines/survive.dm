@@ -14,6 +14,7 @@
 	flags_round_type = MODE_SURVIVE|MODE_INFESTATION|MODE_FOG_ACTIVATED|MODE_NEW_SPAWN
 	static_comms_amount = 1
 	role_mappings = list(/datum/job/civilian/survivor/unlimited = JOB_SURVIVOR)
+	survivors_by_insert_type_amounts = list()
 	var/round_status_flags
 	var/next_stat_check = 0
 	var/list/running_round_stats = list()

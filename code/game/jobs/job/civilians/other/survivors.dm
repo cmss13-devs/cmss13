@@ -494,8 +494,6 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	if(!isnull(latejoin_lockers) && !force)
 		return // Already set up
 
-	shuffle_inplace(generic_landmarks) // We shuffle these since we don't use pick
-
 	latejoin_lockers = list()
 
 	var/list/spawners = available_landmarks
@@ -516,6 +514,29 @@ AddTimelock(/datum/job/civilian/survivor, list(
 
 	log_debug("Configured [length(latejoin_lockers)] late join lockers.[insert_present_flag ? " (Insert Present)" : ""]")
 
+/// Takes a list of survivor_spawner with insert archetypes and performs a weighted pick for one
+/datum/job/civilian/survivor/proc/pick_fallback_spawner(list/spawner_options)
+	RETURN_TYPE(/obj/effect/landmark/survivor_spawner)
+
+	var/static/list/standard_pickweights = INSERT_TYPE_FALLBACK_PICK_WEIGHT
+	var/list/archetypes = list()
+
+	// Figure out what archetypes are even available
+	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in spawner_options)
+		if(!(spawner.archetype in archetypes))
+			archetypes[spawner.archetype] = standard_pickweights[spawner.archetype]
+
+	// Pick one
+	var/selected_type = pick_weight(archetypes)
+
+	// Return one with that type we picked
+	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in spawner_options)
+		if(spawner.archetype == selected_type)
+			return spawner
+
+	stack_trace("pick_fallback_spawner failed!") // Shouldn't happen unless you're misusing this proc
+	return spawner_options[1]
+
 /datum/job/civilian/survivor/unlimited/assign_landmark(mob/new_player, latejoin)
 	create_landmark_lists() // Survive mode wants survivors in the precount
 
@@ -525,7 +546,9 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	if(slotted_landmarks[new_player] != null)
 		return TRUE // Already assigned a landmark (namely precount may have slotted us)
 
-	// Should only differ from /datum/job/civilian/survivor/assign_landmark in that we don't remove the landmark and if late joining only treat landmarks with lockers as valid
+	// Mostly should replicate /datum/job/civilian/survivor/assign_landmark but latejoins require lockers, we don't consume the landmarks (and so select differently)
+	var/static/list/standard_caps_per_insert_type = MAX_SURVIVOR_UNLIMITED_PER_INSERT_TYPE
+	var/list/skipped = list()
 	var/list/valid_prefs = get_valid_prefs(new_player)
 	var/no_insert_archetypes = length(valid_prefs) == 0 // If the player's valid_prefs list is 0, they have opted out of all possible insert archetypes and cannot spawn if an insert is present
 	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in available_landmarks) // for inserts with a higher than default priority to spawn (all of them)
@@ -535,14 +558,26 @@ AddTimelock(/datum/job/civilian/survivor, list(
 		if(latejoin && !LAZYLEN(spawner.latejoin_lockers))
 			continue
 		if((spawner.archetype in valid_prefs) || (spawner.archetype == INSERT_NONE && spawner.spawn_priority != LOWEST_SPAWN_PRIORITY)) //only add landmarks that match prefs or generic ones with elevated priority (none exist yet)
+			if(standard_caps_per_insert_type[spawner.archetype] != -1 && SSticker.mode.survivors_by_insert_type_amounts[spawner.archetype] && SSticker.mode.survivors_by_insert_type_amounts[spawner.archetype] >= standard_caps_per_insert_type[spawner.archetype])
+				// Soft cap met
+				skipped += spawner
+				continue
+
 			slotted_landmarks[new_player] = spawner
+			SSticker.mode.survivors_by_insert_type_amounts[spawner.archetype] += 1
 			return TRUE
+
+	if(length(skipped))
+		var/obj/effect/landmark/survivor_spawner/spawner = pick_fallback_spawner(skipped)
+		slotted_landmarks[new_player] = spawner
+		SSticker.mode.survivors_by_insert_type_amounts[spawner.archetype] += 1
+		return TRUE
 
 	if(insert_present_flag) // There is an insert, but you didn't qualify for ANY spots in it, likely due to disabling most (but not all!) prefs. A shame... a real shame...
 		return FALSE
 
 	// There is no insert, so now we have to assign a random generic spawn
-	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in generic_landmarks)
+	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in shuffle(generic_landmarks))
 		if(latejoin && !LAZYLEN(spawner.latejoin_lockers))
 			continue
 		slotted_landmarks[new_player] = spawner

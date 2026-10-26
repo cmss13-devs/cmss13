@@ -147,7 +147,6 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 		// Generally this shouldn't happen since role authority shouldn't be rolling us for a survivor in a hostile scenario
 		message_admins("Failed to spawn_in_player [key_name_admin(character)] as a survivor! This likely means NIGHTMARE_SCENARIO_HOSTILE_SURVIVOR is incorrect for this map!")
 		character.send_to_lobby()
-		qdel(character)
 		return null
 
 	character.forceMove(get_turf(picked_spawner))

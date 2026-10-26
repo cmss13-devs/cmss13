@@ -1105,6 +1105,16 @@ const SquadMonitor = (props) => {
                         <Table.Cell p="2px" collapsing>
                           {marine.distance}
                         </Table.Cell>
+                        <Table.Cell p="2px">
+                          <Button
+                            icon="arrow-up"
+                            color="green"
+                            tooltip="Promote marine to Squad Leader"
+                            onClick={() =>
+                              act('replace_lead', { ref: marine.ref })
+                            }
+                          />
+                        </Table.Cell>
                       </Table.Row>
                     );
                   })

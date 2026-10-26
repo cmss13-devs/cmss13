@@ -185,3 +185,27 @@
   Kugamo:
   - imagetweak: North facing wooden barricades sprites are now on the north side of
       tiles and just as short as the south facing sprite, making them less confusing.
+2026-10-26:
+  TrollerNoob:
+  - rscadd: The USCM has begun a rollout of the advanced M708 Tactical Laser Designator
+      to JTAC operators across the fleet!
+  - rscadd: Added the M708 Tactical Laser Designator, an advanced laser designator
+      that must be mounted on a tripod. Capable of lasing quicker, lasing into metal
+      roofs and locking onto moving targets for laser guided munitions. Requires JTAC
+      level 1.
+  - rscadd: Added M708 Tactical Laser Designator to FTL essential kit, JTAC kits and
+      Requisitions.
+  - rscadd: Added ability for the Scout Laser Designator to lock onto moving targets
+      for laser guided munitions.
+  - balance: Added laser guided homing mechanic to the Dropship's LAU-444 Guided Missile
+      Launcher munitions. Only direct fired missiles can be laser guided to the target,
+      given they're under an open/glass roof.
+  - qol: Added tooltip in the M82-F flare gun's description about using Unique Action
+      to fire flares into the sky.
+  - bugfix: Fixed flares in the sky being destroyed by conventional means such as
+      ground explosions.
+  - imageadd: Added biome sprites for the M708 Tactical Laser Designator.
+  - imageadd: Added laser designator screen overlay for the M708 Tactical Laser Designator.
+  - imageadd: Added action button icon for zeroing the M708 Tactical Laser Designator.
+  - imageadd: Added lock on and incoming missile target effects.
+  - imageadd: Added lock on CAS HUD state.

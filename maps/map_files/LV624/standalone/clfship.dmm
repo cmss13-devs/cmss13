@@ -381,6 +381,14 @@
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
+"bm" = (
+/obj/structure/closet,
+/turf/open/floor/platingdmg1,
+/area/lv624/lazarus/crashed_ship)
+"bn" = (
+/obj/structure/closet,
+/turf/open/floor/damaged3/west,
+/area/lv624/lazarus/crashed_ship)
 "by" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/west_caves)
@@ -781,6 +789,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
+/obj/structure/closet,
 /turf/open/floor/almayer/greencorner/east,
 /area/lv624/lazarus/crashed_ship)
 "ok" = (
@@ -2526,7 +2535,7 @@ Mv
 Tz
 ro
 kp
-Qf
+bm
 Xx
 ug
 dN
@@ -2573,7 +2582,7 @@ gn
 Bc
 Qf
 Xq
-Bc
+bn
 Qf
 mS
 wr

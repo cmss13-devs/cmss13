@@ -301,10 +301,14 @@
 
 /// Called when the docked shuttle ignites
 /obj/docking_port/stationary/proc/on_dock_ignition(obj/docking_port/mobile/departing_shuttle)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_SHUTTLE_IGNITION, departing_shuttle)
 	turn_on_landing_lights()
 
 /// Called when a shuttle is about to complete undocking from this stationary dock (already physically gone)
 /obj/docking_port/stationary/proc/on_departure(obj/docking_port/mobile/departing_shuttle)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_SHUTTLE_DEPARTURE, departing_shuttle)
 	turn_off_landing_lights()
 
 //returns first-found touching shuttleport

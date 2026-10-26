@@ -119,6 +119,7 @@
 	SE.invisibility = 0
 	NW.invisibility = 0
 	NE.invisibility = 0
+	..()
 
 // And make it invisible again when the elevator returns.
 /obj/docking_port/stationary/vehicle_elevator/almayer/on_arrival(obj/docking_port/mobile/arriving_shuttle)

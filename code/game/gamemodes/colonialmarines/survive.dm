@@ -284,6 +284,14 @@
 
 	xeno_announcement(SPAN_XENOANNOUNCE("A dropship has landed. The tallhosts are escaping!"), "everything", QUEEN_MOTHER_ANNOUNCE)
 	MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
+	RegisterSignal(port, COMSIG_SHUTTLE_DEPARTURE, PROC_REF(on_shuttle_depart))
+
+/// SIGNAL_HANDLER for COMSIG_SHUTTLE_DEPARTURE to handle antidelay
+/datum/game_mode/survive/proc/on_shuttle_depart(obj/docking_port/stationary/port, obj/docking_port/mobile/arriving_shuttle)
+	SIGNAL_HANDLER
+
+	var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	main_hive?.check_antidelay(force=TRUE)
 
 /datum/game_mode/survive/proc/clear_proximity_resin(obj/structure/machinery/computer/shuttle/dropship/flight/active_lz)
 	if(!active_lz)

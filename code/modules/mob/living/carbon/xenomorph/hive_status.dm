@@ -1816,19 +1816,19 @@
 		return FALSE
 	return TRUE
 
-/// Call this to perform antidelay checks for this hive when a person dies or is nested
-/datum/hive_status/proc/check_antidelay(mob/living/carbon/human/person)
-	if(!ishuman_strict(person))
+/// Call this to perform antidelay checks for this hive when a person dies or is nested (force to ignore checking person)
+/datum/hive_status/proc/check_antidelay(mob/living/carbon/human/person, force)
+	if(!force && !ishuman_strict(person))
 		return
 
 	var/turf/person_loc = get_turf(person)
-	if(SSinterior.in_interior(person_loc))
+	if(!force && SSinterior.in_interior(person_loc))
 		var/datum/interior/current_interior = SSinterior.get_interior_by_coords(person_loc.x, person_loc.y, person_loc.z)
 		if(current_interior?.exterior)
 			person_loc = current_interior.exterior.loc
 
 	var/survive_mode = MODE_HAS_FLAG(MODE_SURVIVE)
-	var/relevant_z = is_mainship_level(person_loc.z) || (survive_mode && is_ground_level(person_loc.z))
+	var/relevant_z = force || is_mainship_level(person_loc.z) || (survive_mode && is_ground_level(person_loc.z))
 	if(SSticker.mode?.is_in_endgame && SSticker.current_state != GAME_STATE_FINISHED && relevant_z)
 		var/mob/last_living_human
 		var/human_count = 0

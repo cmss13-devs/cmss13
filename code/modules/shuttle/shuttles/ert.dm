@@ -354,6 +354,7 @@
 		INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 /obj/docking_port/stationary/emergency_response/external/on_departure(obj/docking_port/mobile/departing_shuttle)
+	..()
 	for(var/door in external_airlocks)
 		INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 

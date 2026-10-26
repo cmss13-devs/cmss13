@@ -2,7 +2,7 @@
 	name = "\improper Forward Base"
 	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "almayer"
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOBURROW|AREA_NOTUNNEL
 	ceiling = CEILING_REINFORCED_METAL
 	ceiling_muffle = FALSE
 	sound_environment = SOUND_ENVIRONMENT_ROOM

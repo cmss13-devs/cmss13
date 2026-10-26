@@ -59,8 +59,6 @@
 		if(console.linked_lz && istype(get_area(console), /area/forward_base))
 			active_lz = console
 			break
-	for(var/area/forward_base/bunker_area in GLOB.all_areas)
-		bunker_area.flags_area |= AREA_NOBURROW
 	for(var/obj/effect/landmark/lv624/fog_blocker/fog in GLOB.landmarks_list)
 		fog.time_to_dispel = FORWARD_BASE_FOG_DURATION
 
@@ -76,7 +74,6 @@
 		arc_tech.announce_message = "Replacement components for the base's ARC have been authorized and will be delivered through ASRS."
 	if(GLOB.almayer_orbital_cannon)
 		COOLDOWN_START(GLOB.almayer_orbital_cannon, ob_firing_cooldown, FORWARD_BASE_FOG_DURATION - ROUND_TIME)
-	addtimer(CALLBACK(src, PROC_REF(allow_base_burrowing)), FORWARD_BASE_FOG_DURATION - ROUND_TIME)
 	addtimer(CALLBACK(src, PROC_REF(disable_base_comms)), FORWARD_BASE_FOG_DURATION + FORWARD_BASE_COMMS_FAILURE - ROUND_TIME)
 	addtimer(CALLBACK(src, PROC_REF(warn_resin_clear)), FORWARD_BASE_FOG_DURATION - ROUND_TIME)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "The mist is almost gone. In one minute, the tallhosts will be exposed. Gather yourselves and prepare to tear their nest apart.", "everything", QUEEN_MOTHER_ANNOUNCE), FORWARD_BASE_FOG_DURATION - FORWARD_BASE_FOG_WARNING - ROUND_TIME)
@@ -85,11 +82,6 @@
 	SSshuttle.action_load(SSmapping.all_shuttle_templates[/datum/map_template/shuttle/normandy], landing_zone)
 	for(var/obj/structure/machinery/computer/shuttle/dropship/flight/console in GLOB.machines)
 		console.time_lock = FORWARD_BASE_FOG_DURATION
-
-/datum/game_mode/colonialmarines/forward_base/proc/allow_base_burrowing()
-	for(var/area/forward_base/bunker_area in GLOB.all_areas)
-		if(!(initial(bunker_area.flags_area) & AREA_NOBURROW))
-			bunker_area.flags_area &= ~AREA_NOBURROW
 
 /datum/game_mode/colonialmarines/forward_base/proc/disable_base_comms()
 	marine_announcement("WARNING. BASE RELAY BACKUP BATTERY DEPLETED. Military radio coverage is offline. Recommended action: activate a civilian communications tower to restore communications through the colony network.", "BASE COMMUNICATIONS ALERT", 'sound/AI/commandreport.ogg')

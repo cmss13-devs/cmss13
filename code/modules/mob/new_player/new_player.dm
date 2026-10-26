@@ -131,8 +131,6 @@
 
 	GLOB.data_core.manifest_inject(character)
 	SSticker.mode.latejoin_update(player_rank)
-	SSticker.mode.update_gear_scale()
-	SSticker.mode.update_energy_scale()
 
 	var/latejoin_larva_drop = SSticker.mode.latejoin_larva_drop
 

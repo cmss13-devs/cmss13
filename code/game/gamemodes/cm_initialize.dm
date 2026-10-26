@@ -580,6 +580,12 @@ Additional game mode variables.
 	return TRUE
 
 
+//===================================================\\
+
+			//Xenomorph INITIALIZE\\
+
+//===================================================\\
+
 // Helper proc to set some constants
 /proc/setup_new_xeno(datum/mind/new_xeno)
 	new_xeno.roundstart_picked = TRUE
@@ -1183,6 +1189,7 @@ Additional game mode variables.
 		current_survivors -= survivor
 	return 1
 
+
 //===================================================\\
 
 			//MARINE GEAR INITIALIZE\\
@@ -1243,11 +1250,12 @@ Additional game mode variables.
 			continue
 		chem_storage.calculate_dynamic_storage(energy_scale)
 
-/// Updates [var/latejoin_tally] and [var/gear_scale] based on role weights of latejoiners/cryoers. Delta is the amount of role positions added/removed
+/// Updates [var/latejoin_tally], [var/gear_scale] and [var/energy_scale] based on role weights of latejoiners/cryoers. Delta is the amount of role positions added/removed
 /datum/game_mode/proc/latejoin_update(role, delta = 1)
 	var/weight = GLOB.RoleAuthority.calculate_role_weight(role)
 	latejoin_tally += weight * delta
 	update_gear_scale(weight * delta)
+	update_energy_scale()
 
 // for the toolbox
 /datum/game_mode/proc/end_round_message()

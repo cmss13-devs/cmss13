@@ -452,6 +452,11 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	else //map that has an insert that enabled rolling for CO but the insert didn't fire and there is no default CO equipment, thus equip as a normal survivor
 		..()
 
+/datum/job/civilian/survivor/commanding_officer/spawn_in_player(mob/new_player/new_player)
+	. = ..()
+	if(MODE_HAS_FLAG(MODE_SURVIVE)) // Also treat them as a late join for survive mode since its too awkward to precount them due to set_spawn_positions implementation
+		SSticker.mode.latejoin_tally += GLOB.RoleAuthority.calculate_role_weight(src)
+
 /datum/job/civilian/survivor/unlimited
 	title = JOB_SURVIVOR_UNLIMITED
 	total_positions = 0

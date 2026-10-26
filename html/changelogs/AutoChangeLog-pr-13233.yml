@@ -1,0 +1,5 @@
+author: "JHINgle4ce"
+delete-after: True
+changes:
+  - maptweak: "changed a position of a xeno spawn point so it doesn't spawn outside 522 reactor zone"
+  - maptweak: "deleted random light in the air on 522"

@@ -377,18 +377,18 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "bl" = (
+/obj/structure/closet,
+/turf/open/floor/platingdmg1,
+/area/lv624/lazarus/crashed_ship)
+"bm" = (
+/obj/structure/closet,
+/turf/open/floor/damaged3/west,
+/area/lv624/lazarus/crashed_ship)
+"bn" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
-"bm" = (
-/obj/structure/closet,
-/turf/open/floor/platingdmg1,
-/area/lv624/lazarus/crashed_ship)
-"bn" = (
-/obj/structure/closet,
-/turf/open/floor/damaged3/west,
-/area/lv624/lazarus/crashed_ship)
 "by" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/west_caves)
@@ -2245,7 +2245,7 @@ Hj
 Hj
 "}
 (7,1,1) = {"
-bl
+bn
 aT
 Hj
 Hj
@@ -2292,7 +2292,7 @@ Hj
 Yj
 "}
 (8,1,1) = {"
-bl
+bn
 aT
 aT
 Hj
@@ -2339,7 +2339,7 @@ Hj
 Yj
 "}
 (9,1,1) = {"
-bl
+bn
 aT
 aT
 aT
@@ -2386,7 +2386,7 @@ Hj
 Yj
 "}
 (10,1,1) = {"
-bl
+bn
 aT
 aT
 aT
@@ -2433,7 +2433,7 @@ Hj
 Yj
 "}
 (11,1,1) = {"
-bl
+bn
 aT
 aT
 aT
@@ -2535,7 +2535,7 @@ Mv
 Tz
 ro
 kp
-bm
+bl
 Xx
 ug
 dN
@@ -2582,7 +2582,7 @@ gn
 Bc
 Qf
 Xq
-bn
+bm
 Qf
 mS
 wr

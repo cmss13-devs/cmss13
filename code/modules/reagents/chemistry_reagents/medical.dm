@@ -438,7 +438,6 @@
 	data = 0
 	properties = list(PROPERTY_CURING = 2)
 
-
 /datum/reagent/medical/host_stabilizer
 	name = "Xenomorph embryotic secretion"
 	id = "host_stabilizer"

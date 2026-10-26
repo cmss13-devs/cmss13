@@ -205,7 +205,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		medic_job.set_spawn_positions(GLOB.players_preassigned)
 
 	// Set survivor starting amount based on marines assigned
-	var/datum/job/SJ = GET_MAPPED_ROLE(JOB_SURVIVOR)
+	var/datum/job/SJ = temp_roles_for_mode[JOB_SURVIVOR]
 	if(istype(SJ))
 		SJ.set_spawn_positions(GLOB.players_preassigned)
 		SJ.create_landmark_lists()

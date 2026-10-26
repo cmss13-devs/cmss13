@@ -16,11 +16,10 @@
 	spawn_positions = max((floor(count * INITIAL_XENO_TO_MARINE_RATIO)), 1)
 	total_positions = spawn_positions
 
-/datum/job/antag/xenos/spawn_in_player(mob/new_player/NP)
+/datum/job/antag/xenos/spawn_in_player(mob/new_player/new_player)
 	. = ..()
-	var/mob/living/carbon/human/H = .
-
-	transform_to_xeno(H, XENO_HIVE_NORMAL)
+	var/mob/living/carbon/human/character = .
+	transform_to_xeno(character, XENO_HIVE_NORMAL)
 
 /datum/job/antag/xenos/proc/transform_to_xeno(mob/living/carbon/human/human_to_transform, hive_index)
 	var/datum/mind/new_xeno = human_to_transform.mind

@@ -51,7 +51,8 @@
 
 /obj/effect/landmark/item_pool_spawner/survivor_mode/firearms
 	pool_name = "Firearm spawner pool"
-	type_to_spawn = list(/obj/item/weapon/gun/rifle/m20a,
+	type_to_spawn = list(
+	/obj/item/weapon/gun/rifle/m20a,
 	/obj/item/weapon/gun/rifle/m20a,
 	/obj/item/weapon/gun/rifle/m20a,
 	/obj/item/weapon/gun/rifle/mar40,
@@ -63,7 +64,8 @@
 
 /obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies
 	pool_name = "Ammo spawner pool"
-	type_to_spawn = list(/obj/item/ammo_magazine/rifle/m20a,
+	type_to_spawn = list(
+	/obj/item/ammo_magazine/rifle/m20a,
 	/obj/item/ammo_magazine/rifle/m20a,
 	/obj/item/ammo_magazine/rifle/m20a,
 	/obj/item/ammo_magazine/rifle/mar40,
@@ -75,7 +77,8 @@
 
 /obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies
 	pool_name = "Medical spawner pool"
-	type_to_spawn = list(/obj/item/storage/firstaid/adv,
+	type_to_spawn = list(
+	/obj/item/storage/firstaid/adv,
 	/obj/item/storage/firstaid/regular,
 	/obj/item/stack/medical/advanced/bruise_pack/upgraded,
 	/obj/item/stack/medical/advanced/ointment/upgraded,
@@ -86,7 +89,8 @@
 
 /obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies
 	pool_name = "Construction supplies spawner pool"
-	type_to_spawn = list(/obj/item/stack/sheet/metal/med_large_stack,
+	type_to_spawn = list(
+	/obj/item/stack/sheet/metal/med_large_stack,
 	/obj/item/stack/sheet/metal/medium_stack,
 	/obj/item/stack/sheet/metal/med_small_stack,
 	/obj/item/stack/sheet/plasteel/medium_stack)

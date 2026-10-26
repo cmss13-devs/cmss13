@@ -571,8 +571,8 @@
 
 /turf/closed/wall/mineral/bone_resin/burrowable/get_examine_text(mob/user)
 	. = ..()
-	if(islarva(user))
-		. += SPAN_HELPFUL("We maybe could burrow through to the other side.")
+	if(isxeno(user))
+		. += SPAN_HELPFUL("We maybe could burrow through to the other side as a larva.")
 
 //Misc walls
 

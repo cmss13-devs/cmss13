@@ -2022,6 +2022,22 @@
 /obj/structure/machinery/big_computers/messaging_server/brown
 	icon_state = "messageserver_brown"
 
+/obj/structure/machinery/big_computers/computerdark/computer1
+	name = "colonial operations terminal"
+	icon_state = "dark_computer_radar"
+
+/obj/structure/machinery/big_computers/computerdark/computer2
+	name = "colonial operations terminal"
+	icon_state = "dark_computer_radar1"
+
+/obj/structure/machinery/big_computers/computerdark/computer3
+	name = "colonial operations terminal"
+	icon_state = "dark_computer_radar2"
+
+/obj/structure/machinery/big_computers/computerdark/computer4
+	name = "colonial operations terminal"
+	icon_state = "dark_computer_mps"
+
 // Science Computer Stuff
 
 /obj/structure/machinery/big_computers/science_big

@@ -3,9 +3,9 @@ GLOBAL_LIST_EMPTY(item_pool_landmarks)
 SUBSYSTEM_DEF(landmark_init)
 	name = "Landmark Init"
 	init_order = SS_INIT_LANDMARK
-	flags = SS_NO_FIRE
+	flags = SS_NO_INIT
 
-/datum/controller/subsystem/landmark_init/Initialize()
+/datum/controller/subsystem/landmark_init/fire(resumed)
 	// List of all the datums we need to loop through
 	var/list/datum/item_pool_holder/pools = list()
 
@@ -58,7 +58,7 @@ SUBSYSTEM_DEF(landmark_init)
 				new type_to_spawn(spawn_point)
 			pool.turfs -= spawn_point
 
-	return SS_INIT_SUCCESS
+	can_fire = FALSE
 
 // Java bean thingy to hold what I need to populate these
 /datum/item_pool_holder

@@ -59,7 +59,7 @@
 		/obj/item/weapon/gun/rifle/mar40,
 		/obj/item/weapon/gun/rifle/nsg23/no_lock/stripped,
 	)
-	quota = 5
+	quota = 8
 	multiplier = 1
 
 /obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies

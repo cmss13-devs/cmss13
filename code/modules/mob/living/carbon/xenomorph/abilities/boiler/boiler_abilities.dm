@@ -104,7 +104,7 @@
 	ability_uses_acid_overlay = TRUE
 
 	var/ammo_type = /datum/ammo/xeno/acid_shotgun
-	cooldown_message = "Our stomach has sufficiently filled with enough acid to shoot acid pellets again. "
+	cooldown_message = "Our stomach has sufficiently filled with enough acid to shoot acid pellets again."
 
 /datum/action/xeno_action/onclick/toggle_long_range/trapper
 	handles_movement = FALSE

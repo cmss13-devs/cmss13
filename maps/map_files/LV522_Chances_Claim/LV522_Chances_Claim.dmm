@@ -1571,6 +1571,15 @@
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/cargo_intake)
+"afy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/prison,
+/area/lv522/indoors/lone_buildings/outdoor_bot)
+"afz" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/prison,
+/area/lv522/indoors/lone_buildings/outdoor_bot)
 "afA" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/prop/server_equipment/laptop/on{
@@ -1579,6 +1588,36 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor)
+"afB" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/special_gear,
+/turf/open/floor/prison,
+/area/lv522/indoors/lone_buildings/storage_blocks/south)
+"afC" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/prison,
+/area/lv522/indoors/lone_buildings/storage_blocks/south)
+"afD" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/prison,
+/area/lv522/indoors/lone_buildings/engineering)
+"afE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/special_gear,
+/turf/open/floor/wood,
+/area/lv522/indoors/b_block/bar)
+"afF" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/prison,
+/area/lv522/indoors/c_block/garage)
+"afG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/prison,
+/area/lv522/indoors/c_block/t_comm)
+"afH" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/prison/darkbrownfull2,
+/area/lv522/indoors/c_block/garage)
 "afI" = (
 /obj/item/reagent_container/food/drinks/cans/beer{
 	pixel_x = -21;
@@ -1591,6 +1630,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
+"afJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/plating,
+/area/lv522/indoors/c_block/garage)
+"afK" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/special_gear,
+/turf/open/floor/strata/white_cyan1,
+/area/lv522/indoors/lone_buildings/chunk)
 "afL" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin{
@@ -1602,10 +1650,114 @@
 /obj/effect/landmark/corpsespawner/colonist/burst,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor/south)
+"afM" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/strata/white_cyan2/west,
+/area/lv522/indoors/a_block/medical)
+"afN" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/a_block/kitchen)
+"afO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/strata/white_cyan2/west,
+/area/lv522/indoors/a_block/medical)
+"afP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/kitchen/glass)
+"afQ" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/strata/white_cyan3/north,
+/area/lv522/indoors/a_block/medical)
+"afR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/a_block/kitchen)
+"afS" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/indoors/a_block/hallway)
+"afT" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/kitchen)
+"afU" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/prison/darkredfull2,
+/area/lv522/indoors/a_block/security)
+"afV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/security)
+"afW" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/security)
 "afX" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement/cement12,
 /area/lv522/outdoors/colony_streets/central_streets)
+"afY" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/a_block/security)
+"afZ" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/a_block/security)
+"aga" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/plating,
+/area/lv522/indoors/a_block/security)
+"agb" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/prison/blue/east,
+/area/lv522/indoors/a_block/admin)
+"agc" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/security/glass)
+"agd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/security)
+"age" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/a_block/security/glass)
+"agf" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/a_block/security)
+"agg" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/security/glass)
 "agh" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
@@ -1613,6 +1765,28 @@
 /obj/structure/platform/metal/almayer/east,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
+"agi" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/a_block/bridges/corpo)
+"agj" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/a_block/bridges/corpo)
+"agk" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/indoors/a_block/bridges/corpo)
+"agl" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/a_block/bridges/corpo)
+"agm" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/corpo/glass)
 "agt" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/east,
@@ -2102,6 +2276,7 @@
 /area/lv522/indoors/a_block/hallway)
 "axD" = (
 /obj/effect/decal/cleanable/blood/drip,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/bridges/op_centre)
 "axN" = (
@@ -3199,6 +3374,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
 /turf/open/floor/plating,
 /area/lv522/indoors/a_block/security)
 "biN" = (
@@ -8576,6 +8752,7 @@
 "efk" = (
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/floor/prison/blue_plate/north,
 /area/lv522/indoors/a_block/hallway)
 "efy" = (
@@ -9936,6 +10113,7 @@
 /area/lv522/indoors/a_block/kitchen)
 "eSx" = (
 /obj/effect/spider/spiderling/nogrow,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security/glass)
 "eSO" = (
@@ -13112,6 +13290,7 @@
 "gLg" = (
 /obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen/glass)
 "gLk" = (
@@ -16579,6 +16758,7 @@
 	dir = 5
 	},
 /obj/item/ammo_magazine/handful/shotgun,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/security)
 "iJx" = (
@@ -18680,6 +18860,7 @@
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 20
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/corpo/glass)
 "jNQ" = (
@@ -18916,6 +19097,7 @@
 /area/lv522/outdoors/colony_streets/north_street)
 "jUg" = (
 /obj/item/ammo_box/magazine/l42a/ap,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security)
 "jUk" = (
@@ -22588,6 +22770,7 @@
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 20
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/c_block/t_comm)
 "lML" = (
@@ -25240,6 +25423,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/security)
 "nem" = (
@@ -25959,6 +26143,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "nwj" = (
@@ -26942,6 +27127,7 @@
 /obj/effect/decal/cleanable/vomit{
 	icon_state = "vomit_2"
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/floor/strata/white_cyan3/east,
 /area/lv522/indoors/a_block/medical/glass)
 "nXi" = (
@@ -28009,6 +28195,7 @@
 	icon_state = "medium"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/t_comm)
 "ozJ" = (
@@ -32473,6 +32660,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/generic,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/kitchen)
 "qQZ" = (
@@ -39473,6 +39661,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
 /turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/engineering)
 "ukt" = (
@@ -39761,6 +39950,7 @@
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 8
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security)
 "urY" = (
@@ -40165,6 +40355,7 @@
 "uDs" = (
 /obj/item/clothing/head/CMB,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/security)
 "uDP" = (
@@ -41153,6 +41344,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods,
 /obj/item/stack/sheet/metal,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/special_gear,
 /turf/open/floor/prison/blue_plate,
 /area/lv522/indoors/a_block/admin)
 "vaA" = (
@@ -42655,6 +42847,7 @@
 "vKe" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/special_gear,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/bridges/op_centre)
 "vKl" = (
@@ -52818,7 +53011,7 @@ vHo
 udM
 nJv
 sQD
-rwM
+afD
 vzd
 cNO
 rwM
@@ -53439,7 +53632,7 @@ vpa
 xdD
 rwM
 rwM
-rwM
+afD
 eXU
 lKu
 xvQ
@@ -58589,7 +58782,7 @@ kmH
 lZY
 mBF
 vgs
-wDy
+afE
 rRa
 mBF
 mBF
@@ -59654,7 +59847,7 @@ fni
 bZK
 uvk
 wvt
-wHF
+afz
 wHF
 fPa
 wHF
@@ -60481,7 +60674,7 @@ wHF
 wHF
 vou
 tQp
-wvt
+afy
 wvt
 hMd
 bZK
@@ -60890,7 +61083,7 @@ yjT
 bZK
 xjz
 wvt
-wvt
+afy
 wpa
 wpa
 wvt
@@ -64129,7 +64322,7 @@ vXc
 lSq
 trZ
 xnu
-cia
+afK
 oVA
 cia
 tEC
@@ -65128,7 +65321,7 @@ sjy
 kSZ
 kNw
 urM
-xxs
+agd
 uDb
 uVj
 sjy
@@ -65421,8 +65614,8 @@ bwF
 aPe
 nnG
 yfu
-yfu
-yfu
+afC
+afB
 vMX
 ylo
 hdG
@@ -65549,7 +65742,7 @@ jmd
 eWF
 oLW
 mbF
-jft
+afU
 xbj
 sjy
 mNR
@@ -65627,7 +65820,7 @@ qbG
 aPe
 nnG
 yfu
-yfu
+afC
 yfu
 wHj
 ylo
@@ -65961,7 +66154,7 @@ jft
 mBr
 nee
 leh
-xxs
+afV
 dzd
 sjy
 gfH
@@ -66154,7 +66347,7 @@ mLb
 urY
 sjy
 whz
-qGC
+agg
 eSx
 dsA
 mqH
@@ -66163,7 +66356,7 @@ xDP
 iNX
 sPp
 ndb
-vbX
+afZ
 vbX
 vZy
 uDb
@@ -66384,7 +66577,7 @@ xGf
 xiG
 qpJ
 fCl
-yca
+afP
 jfO
 jfO
 gLg
@@ -67188,7 +67381,7 @@ kRZ
 sAU
 qGC
 jpc
-azl
+age
 qGC
 ebn
 sjy
@@ -67601,12 +67794,12 @@ mqH
 sxp
 ukK
 azl
-qGC
+agc
 ort
 sjy
 mpI
 xxs
-xxs
+afV
 nrP
 uDb
 xxs
@@ -68409,7 +68602,7 @@ uii
 uuW
 uHN
 vpO
-wwM
+agm
 bsR
 qXU
 qXU
@@ -68652,7 +68845,7 @@ qfP
 ycv
 uKa
 ucM
-uKa
+afN
 ycv
 qfP
 ycv
@@ -69665,7 +69858,7 @@ uDb
 uVj
 dEY
 kpP
-iXT
+aga
 pLT
 sjy
 flI
@@ -69880,7 +70073,7 @@ nOB
 dEY
 xiG
 xGf
-pNs
+afT
 lxL
 xGf
 xiG
@@ -70264,7 +70457,7 @@ wKg
 wKg
 vtl
 koG
-rfe
+agk
 rfe
 wKg
 wKg
@@ -70277,7 +70470,7 @@ tdD
 sjy
 uVj
 qDr
-xxs
+afV
 nrP
 uDb
 uMV
@@ -70476,7 +70669,7 @@ wtI
 vfb
 gIa
 opl
-opl
+agi
 opl
 kEN
 ben
@@ -70492,14 +70685,14 @@ ogf
 nLD
 xen
 oXQ
-jQk
+afW
 uMc
 xxs
 dEY
 xiG
 xDJ
 nfP
-wob
+afR
 xDJ
 tVN
 qTG
@@ -70676,11 +70869,11 @@ qCe
 nTX
 tQi
 jdn
-tQi
+agl
 tQi
 aeJ
 uyt
-tQi
+agj
 gwb
 gwb
 xZz
@@ -70690,13 +70883,13 @@ tQF
 lhT
 xxs
 qDr
-nrP
+agf
 xxs
 lhT
 gvH
 oGp
 uDb
-eUh
+afY
 nud
 nud
 uDb
@@ -76473,7 +76666,7 @@ gfl
 mMQ
 mWF
 njH
-psT
+afS
 poQ
 pzs
 rEj
@@ -76684,7 +76877,7 @@ dua
 gdO
 tTK
 edw
-pXx
+afQ
 hID
 tTK
 tTK
@@ -77120,7 +77313,7 @@ rMd
 xBs
 uuD
 nVf
-pNY
+afG
 cUX
 rEm
 pNY
@@ -77905,7 +78098,7 @@ lHd
 iuW
 ylY
 wGY
-oHQ
+agb
 oHQ
 gqh
 oHQ
@@ -77945,7 +78138,7 @@ bdi
 qUs
 usP
 ioT
-pNY
+afG
 swW
 wOU
 bJG
@@ -79366,7 +79559,7 @@ gbR
 oLG
 oLG
 lhP
-oLG
+afM
 oHB
 gbR
 rlX
@@ -79382,7 +79575,7 @@ ujq
 tID
 uya
 hdq
-uya
+afH
 xCY
 xCY
 xCY
@@ -79569,7 +79762,7 @@ lGA
 tTK
 vyH
 gbR
-gbR
+afO
 oLG
 lhP
 gbR
@@ -79597,7 +79790,7 @@ vDr
 vjn
 cUG
 syy
-uaI
+afF
 vBN
 arq
 anv
@@ -80217,7 +80410,7 @@ xjO
 whW
 uaI
 tID
-uaI
+afF
 xCY
 hUq
 vVp
@@ -80618,7 +80811,7 @@ xlN
 cSO
 vpD
 tKM
-vpD
+afJ
 cSO
 vpD
 cSO
@@ -80834,7 +81027,7 @@ ryk
 xjO
 pzj
 wzt
-uaI
+afF
 xCY
 cUG
 oqD

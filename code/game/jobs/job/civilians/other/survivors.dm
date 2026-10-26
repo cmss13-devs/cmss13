@@ -155,33 +155,32 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	else
 		return HAS_FLAG(client.prefs?.toggles_survivor, PLAY_SURVIVOR_NON_HOSTILE)
 
-/datum/job/civilian/survivor/spawn_in_player(mob/new_player/new_player)
+/datum/job/civilian/survivor/spawn_in_player(mob/new_player/NP)
 	. = ..()
 	total_spawned++
 
-	var/mob/living/carbon/human/character = .
+	var/mob/living/carbon/human/H = .
 
-	GLOB.spawned_survivors += WEAKREF(character)
+	GLOB.spawned_survivors += WEAKREF(H)
 
-	var/obj/effect/landmark/survivor_spawner/picked_spawner = slotted_landmarks[new_player]
+	var/obj/effect/landmark/survivor_spawner/picked_spawner = slotted_landmarks[NP]
 	if(!picked_spawner)
 		// Generally this shouldn't happen since role authority shouldn't be rolling us for a survivor in a hostile scenario
-		message_admins("Failed to spawn_in_player [key_name_admin(character)] as a survivor! This likely means NIGHTMARE_SCENARIO_HOSTILE_SURVIVOR is incorrect for this map!")
-		character.send_to_lobby()
+		message_admins("Failed to spawn_in_player [key_name_admin(H)] as a survivor! This likely means NIGHTMARE_SCENARIO_HOSTILE_SURVIVOR is incorrect for this map!")
+		H.send_to_lobby()
+		qdel(H)
 		return null
 
-	slotted_landmarks -= new_player
+	H.forceMove(get_turf(picked_spawner))
 
-	character.forceMove(get_turf(picked_spawner))
-
-	handle_equip_gear(character, picked_spawner)
+	handle_equip_gear(H, picked_spawner)
 
 	if(picked_spawner.roundstart_damage_max > 0)
 		if(istype(picked_spawner) && picked_spawner.roundstart_damage_max > 0)
 			for(var/i in 0 to picked_spawner.roundstart_damage_times)
-				character.take_limb_damage(rand(picked_spawner.roundstart_damage_min, picked_spawner.roundstart_damage_max), 0)
+				H.take_limb_damage(rand(picked_spawner.roundstart_damage_min, picked_spawner.roundstart_damage_max), 0)
 
-	character.name = character.get_visible_name()
+	H.name = H.get_visible_name()
 
 	if(length(picked_spawner.intro_text))
 		intro_text = picked_spawner.intro_text
@@ -192,7 +191,7 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	if(picked_spawner.hostile)
 		hostile = TRUE
 
-	new /datum/cm_objective/move_mob/almayer/survivor(character)
+	new /datum/cm_objective/move_mob/almayer/survivor(H)
 
 /datum/job/civilian/survivor/generate_entry_message(mob/living/carbon/human/survivor)
 	if(intro_text)

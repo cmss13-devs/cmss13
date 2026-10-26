@@ -489,7 +489,7 @@
 			xeno.throw_atom(get_step(xeno, pick(GLOB.cardinals)), 1, 3, xeno, TRUE)
 			charger_ability.stop_momentum() // We assume the other crusher'sparks handle_charge_collision() kicks in and stuns us too.
 			for(var/mob/living/carbon/carbon_target in range(7, xeno))
-				to_chat(carbon_target, SPAN_WARNING("[xeno]'s' colliding causes the ground to shake!"))
+				to_chat(carbon_target, SPAN_WARNING("[xeno]'s colliding causes the ground to shake!"))
 				shake_camera(carbon_target, 2, 3)
 				if(get_dist(xeno, carbon_target) <= 3 && !xeno.can_not_harm(carbon_target))
 					if(carbon_target.mob_size >= MOB_SIZE_BIG)

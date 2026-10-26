@@ -563,6 +563,7 @@
 /obj/structure/sign/calendar/upp{
 	pixel_y = 29
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
 /turf/open/floor/strata/red1,
 /area/strata/interior/outpost/security)
 "abH" = (
@@ -6356,6 +6357,7 @@
 /area/strata/interior/outpost/security)
 "arz" = (
 /obj/structure/pipes/vents/pump,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/outpost/security)
 "arA" = (
@@ -6371,6 +6373,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/security)
 "arC" = (
@@ -9674,6 +9677,7 @@
 /area/strata/interior/outpost/engi)
 "aAv" = (
 /obj/structure/barricade/handrail/strata,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/engi)
 "aAw" = (
@@ -13085,6 +13089,7 @@
 /area/strata/exterior/marsh/spring_marshes)
 "aKp" = (
 /obj/structure/pipes/vents/pump,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/interior/outpost/engi)
 "aKq" = (
@@ -13163,6 +13168,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi)
 "aKB" = (
@@ -26880,6 +26886,7 @@
 	dir = 1;
 	color = "#858680"
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/strata/exterior/outpost_decks)
 "byO" = (
@@ -30409,6 +30416,7 @@
 	pixel_x = 6;
 	pixel_y = 10
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/security)
 "bIJ" = (
@@ -32367,6 +32375,10 @@
 	},
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/interior/checkpoints/north_armor)
+"bOq" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/strata/cyan2/east,
+/area/strata/interior/outpost/med)
 "bOr" = (
 /obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/strata/floor3,
@@ -32374,6 +32386,10 @@
 "bOs" = (
 /turf/open/floor/strata/cyan2/east,
 /area/strata/interior/mining_outpost/canteen)
+"bOt" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/exterior/outpost_decks)
 "bOu" = (
 /obj/item/clothing/mask/gas/upp_pfb,
 /turf/open/floor/strata/white_cyan2/west,
@@ -32582,6 +32598,10 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/far_north_outpost)
+"bOZ" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/outpost/med)
 "bPa" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood/wood_broken6,
@@ -33715,6 +33735,10 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/far_north_outpost)
+"bRY" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/strata,
+/area/strata/interior/outpost/med)
 "bRZ" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -33974,6 +33998,13 @@
 	},
 /turf/open/floor/wood/wood_broken,
 /area/strata/interior/wooden_ruins)
+"bSE" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/strata/floor2,
+/area/strata/interior/outpost/med)
 "bSF" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -34116,6 +34147,10 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
+"bTa" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/prison/darkyellowfull2,
+/area/strata/exterior/outpost_decks)
 "bTb" = (
 /obj/item/weapon/twohanded/folded_metal_chair{
 	pixel_x = -4;
@@ -34477,6 +34512,10 @@
 	},
 /turf/open/gm/river/soro,
 /area/strata/exterior/far_north_outpost)
+"bTS" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/strata/cyan1/east,
+/area/strata/interior/outpost/med)
 "bTT" = (
 /obj/effect/blocker/sorokyne_hot_water,
 /obj/effect/mist/steam{
@@ -34768,6 +34807,13 @@
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/wood,
 /area/strata/interior/wooden_ruins)
+"bUF" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
 "bUG" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/wood/wood_broken6,
@@ -35089,6 +35135,10 @@
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/wood,
 /area/strata/interior/wooden_ruins)
+"bVu" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/strata/white_cyan3,
+/area/strata/interior/outpost/med)
 "bVv" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/gun/launcher/grenade/m81/m85a1,
@@ -35110,6 +35160,13 @@
 /obj/structure/cargo_container/hd/left,
 /turf/open/floor/strata/yellow3/north,
 /area/strata/interior/secure_checkpoint)
+"bVz" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/strata/white_cyan3/north,
+/area/strata/interior/outpost/med)
 "bVA" = (
 /obj/structure/cargo_container/hd/mid,
 /turf/open/floor/strata/yellow3/north,
@@ -36503,6 +36560,11 @@
 /obj/effect/decal/strata_decals/mud_corner,
 /turf/open/gm/dirt/brown,
 /area/strata/interior/bball_cave)
+"bZq" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/strata/floor2,
+/area/strata/interior/outpost/med)
 "bZr" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 9
@@ -36649,6 +36711,10 @@
 /obj/item/trash/upp_mre,
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/far_north_outpost)
+"bZN" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/strata/fake_wood,
+/area/strata/interior/outpost/med)
 "bZO" = (
 /obj/item/ammo_casing,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -36957,6 +37023,10 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/strata/interior/bball_cave)
+"caC" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/strata/white_cyan3/west,
+/area/strata/interior/outpost/med)
 "caD" = (
 /obj/item/clothing/mask/gas/upp_pfb,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -37120,6 +37190,10 @@
 "caW" = (
 /turf/open/floor/strata,
 /area/strata/exterior/deep_jungle/ruin)
+"caX" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/special_gear,
+/turf/open/floor/strata/fake_wood,
+/area/strata/interior/administration)
 "caY" = (
 /obj/structure/fence/slim/upp,
 /turf/open/gm/dirt/brown,
@@ -37260,6 +37334,11 @@
 /obj/structure/cargo_container/upp/mk6/left,
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/far_north_outpost)
+"cbu" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/strata/white_cyan3/east,
+/area/strata/interior/outpost/med)
 "cbv" = (
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/strata/floor3,
@@ -37337,6 +37416,10 @@
 	},
 /turf/open/floor/strata,
 /area/strata/exterior/deep_jungle/old_tunnels)
+"cbF" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/strata/floor3,
+/area/strata/interior/outpost/admin)
 "cbG" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 6
@@ -37369,6 +37452,10 @@
 	},
 /turf/open/gm/dirt/brown/variant_1,
 /area/strata/interior/bball_cave)
+"cbL" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/strata/floor3/east,
+/area/strata/exterior/outpost_decks)
 "cbM" = (
 /obj/effect/decal/remains/xeno,
 /obj/effect/decal/strata_decals/mud_corner{
@@ -37524,6 +37611,19 @@
 "ccc" = (
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/exterior/outpost_decks)
+"ccd" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/strata/blue1,
+/area/strata/interior/outpost/admin)
+"cce" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/outpost/foyer)
+"ccf" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/prison/darkyellowfull2,
+/area/strata/exterior/outpost_decks)
 "ccg" = (
 /obj/item/stool{
 	pixel_y = 11
@@ -37540,18 +37640,57 @@
 "cci" = (
 /turf/open/floor/strata/floor3,
 /area/strata/interior/bball)
+"ccj" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/strata,
+/area/strata/interior/outpost/admin)
 "cck" = (
 /obj/structure/machinery/light{
 	dir = 8
 	},
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/exterior/outpost_platform)
+"ccl" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/strata,
+/area/strata/interior/outpost/engi)
+"ccm" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/strata/blue1,
+/area/strata/interior/outpost/admin)
 "ccn" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
 /turf/open/floor/strata/red1,
 /area/strata/interior/outpost/security)
+"cco" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/strata/floor3,
+/area/strata/interior/outpost/engi)
+"ccp" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"ccq" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/strata/red1,
+/area/strata/interior/outpost/security)
+"ccr" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/strata,
+/area/strata/interior/outpost/security)
+"ccs" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/prison/darkyellowfull2,
+/area/strata/interior/outpost/engi)
 "cct" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/machinery/door/airlock/almayer/maint/colony,
@@ -37561,6 +37700,22 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/maint)
+"ccv" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
+"ccw" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/strata,
+/area/strata/interior/outpost/engi)
+"ccx" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/strata,
+/area/strata/interior/outpost/engi)
 "ccy" = (
 /obj/structure/fence/slim/upp,
 /turf/open/floor/strata/floor3/east,
@@ -37573,12 +37728,72 @@
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/north)
+"ccA" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/outpost/engi)
+"ccB" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/strata/fake_wood,
+/area/strata/interior/outpost/security)
+"ccC" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/outpost/engi)
 "ccD" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt/corner{
 	dir = 1
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/north)
+"ccE" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/strata/fake_wood,
+/area/strata/interior/outpost/security)
+"ccF" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/strata/red1,
+/area/strata/interior/outpost/security)
+"ccG" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/outpost/engi)
+"ccH" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/strata/red1,
+/area/strata/interior/outpost/security)
+"ccI" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/strata/red1,
+/area/strata/interior/outpost/security)
+"ccJ" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/strata/floor3,
+/area/strata/interior/outpost/security)
+"ccK" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/strata/floor3,
+/area/strata/interior/outpost/security)
+"ccL" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/strata/floor3,
+/area/strata/interior/outpost/security)
+"ccM" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/strata,
+/area/strata/interior/outpost/security)
+"ccN" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/special_gear,
+/turf/open/floor/strata/fake_wood,
+/area/strata/interior/bball)
 "ccV" = (
 /obj/structure/machinery/weather_siren{
 	dir = 1;
@@ -46510,6 +46725,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/canteen)
 "lPF" = (
@@ -48485,6 +48701,7 @@
 	layer = 3.5
 	},
 /obj/structure/platform/metal/stair_cut/strata_right,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/exterior/outpost_decks)
 "owp" = (
@@ -51056,6 +51273,7 @@
 /obj/effect/spawner/random/toolbox{
 	pixel_y = 12
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/special_gear,
 /turf/open/floor/plating/platebot,
 /area/strata/interior/outpost/engi/drome/shuttle)
 "rMv" = (
@@ -54723,6 +54941,7 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/floor/strata/cyan2/east,
 /area/strata/interior/outpost/med)
 "woU" = (
@@ -55744,6 +55963,7 @@
 /area/strata/exterior/outpost_decks)
 "xGi" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/med)
 "xGI" = (
@@ -67806,7 +68026,7 @@ csm
 boj
 chX
 buQ
-ctS
+caX
 bAK
 ctS
 qbK
@@ -71460,7 +71680,7 @@ foN
 foN
 cuP
 cuP
-ukx
+ccp
 cuP
 iLJ
 bDj
@@ -71641,7 +71861,7 @@ aPx
 aNZ
 aNZ
 aNZ
-aPx
+ccf
 cuX
 cuX
 aTn
@@ -71650,7 +71870,7 @@ sMj
 aYm
 bal
 foN
-foN
+cbL
 fxM
 foN
 foN
@@ -71841,7 +72061,7 @@ fBC
 cva
 fBC
 cuP
-uaQ
+bUF
 bhk
 bhk
 bhk
@@ -72852,7 +73072,7 @@ aac
 aac
 aac
 aac
-cuP
+ccv
 ccc
 pil
 pUY
@@ -72861,7 +73081,7 @@ uab
 ccc
 cuP
 oKo
-aIV
+cco
 aUV
 aUV
 aUV
@@ -73031,7 +73251,7 @@ cuP
 ccc
 ccc
 cuP
-cuP
+ccv
 ccc
 ccc
 cuP
@@ -73042,7 +73262,7 @@ aUV
 aUV
 fdL
 blb
-brB
+cce
 agf
 bfy
 bfy
@@ -73058,7 +73278,7 @@ bsk
 vlm
 bxN
 oFc
-xXX
+bZN
 bJX
 vlm
 foN
@@ -73408,7 +73628,7 @@ bsq
 buV
 bxP
 bvr
-xXX
+bZN
 hwo
 bOE
 foN
@@ -73738,7 +73958,7 @@ bDj
 aHt
 aIV
 aIV
-dgB
+ccl
 bDI
 bDk
 aPD
@@ -73768,7 +73988,7 @@ cnc
 cvc
 jkp
 aFk
-iLJ
+bTa
 foN
 cva
 uvz
@@ -73903,7 +74123,7 @@ bGU
 aHh
 avN
 axd
-dgB
+ccl
 dgB
 roI
 dgB
@@ -74105,7 +74325,7 @@ cwr
 woo
 nYA
 pnD
-nYA
+cbu
 rJX
 nYH
 nsB
@@ -74283,7 +74503,7 @@ bsx
 nsB
 bye
 ePE
-brO
+caC
 brO
 brO
 lHk
@@ -74464,7 +74684,7 @@ nYA
 nYA
 nYA
 pzX
-mJu
+bVu
 nsB
 cdG
 nsB
@@ -74809,11 +75029,11 @@ abq
 byF
 bBX
 ryK
-ryK
+bTS
 bOx
 ryK
 nsB
-dVb
+bVz
 mJu
 nsB
 cdG
@@ -75306,7 +75526,7 @@ oKo
 ayK
 aAo
 aBS
-aMZ
+ccw
 aIV
 bEX
 aGr
@@ -75474,7 +75694,7 @@ bIA
 bIA
 tab
 bXq
-dgB
+ccl
 dgB
 bXq
 tBc
@@ -75522,7 +75742,7 @@ woo
 hQq
 qYm
 vgW
-bdS
+bRY
 bdS
 wzZ
 dvV
@@ -75649,7 +75869,7 @@ bJh
 awJ
 tab
 bXq
-dgB
+ccl
 dgB
 bXq
 oKa
@@ -75663,7 +75883,7 @@ vBs
 dCb
 oKo
 aKA
-dgB
+ccl
 aNc
 aNc
 aPI
@@ -75678,7 +75898,7 @@ bdi
 bfV
 biD
 bll
-bll
+cbF
 cik
 cik
 cik
@@ -75864,7 +76084,7 @@ msG
 bTE
 nsB
 dVb
-mJu
+bVu
 vlm
 jkf
 jkf
@@ -75877,7 +76097,7 @@ rwD
 nfU
 cva
 xqv
-cva
+bOt
 cva
 jyO
 bqr
@@ -76186,7 +76406,7 @@ tWO
 bIN
 rxB
 dgB
-dgB
+ccl
 dgB
 dgB
 dgB
@@ -76366,7 +76586,7 @@ bbs
 bbs
 uBw
 bbs
-bbs
+ccj
 oJm
 bbs
 oJm
@@ -76526,13 +76746,13 @@ bVM
 ast
 oKo
 auD
-bXq
+ccG
 aIV
 bXq
 aAt
 aBW
 dgB
-dgB
+ccl
 aFf
 nvd
 biH
@@ -76547,7 +76767,7 @@ jIV
 blN
 blN
 blN
-blN
+ccd
 bsK
 blN
 bfP
@@ -76736,7 +76956,7 @@ qQx
 rJJ
 qQx
 woo
-buY
+bZq
 buY
 ltw
 mJu
@@ -76881,7 +77101,7 @@ axp
 bXq
 bXq
 ufI
-orc
+ccx
 dgB
 aMX
 jiH
@@ -76905,7 +77125,7 @@ aMc
 bll
 ugT
 bll
-bll
+cbF
 bll
 wdr
 wdr
@@ -77267,8 +77487,8 @@ dVb
 mJu
 nsB
 bOE
-ryK
-ryK
+bTS
+bTS
 dvq
 ryK
 vnC
@@ -77377,7 +77597,7 @@ cdA
 cci
 bBg
 bSz
-bQk
+ccN
 bQk
 bQk
 bHV
@@ -77408,7 +77628,7 @@ ubj
 qAq
 scp
 oKo
-aMX
+ccs
 dgB
 bfM
 biH
@@ -77614,12 +77834,12 @@ bOG
 bOG
 ceY
 ltw
-mJu
+bVu
 oWt
 nsB
 nsB
 nsB
-hof
+bSE
 nsB
 vlm
 xAF
@@ -77750,7 +77970,7 @@ ijo
 awh
 asA
 gAm
-ceI
+ccI
 avZ
 aEc
 aSX
@@ -77759,7 +77979,7 @@ dLT
 bFA
 aEc
 ceI
-cdZ
+ccq
 cik
 aJo
 aOu
@@ -77930,7 +78150,7 @@ awa
 bDj
 aQV
 bFA
-bFA
+ccA
 bXq
 oKo
 ceI
@@ -78104,7 +78324,7 @@ twi
 awc
 bDj
 bFA
-bXq
+ccC
 bXq
 bXq
 aUS
@@ -78628,9 +78848,9 @@ ddK
 bWM
 ijo
 isj
+ccE
 gAm
-gAm
-gAm
+ccB
 cdc
 cdW
 ceI
@@ -78675,10 +78895,10 @@ vtz
 xlg
 xlg
 xlg
-vtz
+bOZ
 voe
 mCx
-vyl
+bOq
 nIS
 vlm
 mCx
@@ -78804,7 +79024,7 @@ bWM
 ijo
 abG
 gAm
-gAm
+ccE
 gAm
 cdd
 cdX
@@ -78968,17 +79188,17 @@ awJ
 awJ
 dZl
 cea
-cdZ
+ccH
 aoD
 gAm
-gAm
+ccB
 arz
 aCe
 bXw
 auI
 ijo
 ceI
-cak
+ccF
 cdZ
 cdZ
 cdc
@@ -79021,7 +79241,7 @@ csQ
 bWZ
 ckG
 rpA
-vtz
+bOZ
 ryK
 ryK
 uFT
@@ -79331,7 +79551,7 @@ caf
 lOI
 aAB
 aCb
-cfx
+ccr
 cfx
 ceI
 igf
@@ -79509,7 +79729,7 @@ uau
 cdY
 cdY
 bIh
-cfx
+ccr
 cik
 cgT
 cik
@@ -79671,15 +79891,15 @@ wto
 cdZ
 cdZ
 cdZ
-cdZ
+ccq
 cdZ
 cdZ
 xRA
 ceI
-cdZ
+ccH
 ceI
 wto
-cdZ
+ccq
 cdZ
 cdZ
 cdZ
@@ -79844,7 +80064,7 @@ awJ
 bTk
 lOI
 cfx
-cfx
+ccM
 tJJ
 cfx
 arB
@@ -80193,13 +80413,13 @@ bIA
 awJ
 awJ
 jdC
-gAm
+ccB
 atJ
 ijo
 aqz
 arC
 aqz
-bZD
+ccJ
 ijo
 awf
 ceI
@@ -80372,9 +80592,9 @@ gAm
 atJ
 ijo
 bII
-bZD
-bZD
-bZD
+ccL
+ccJ
+ccK
 ijo
 bVU
 cah
@@ -80553,7 +80773,7 @@ asG
 ijo
 bYR
 axA
-gAm
+ccB
 gAm
 gAm
 cdZ
@@ -80562,7 +80782,7 @@ jUG
 cfx
 cdZ
 ugT
-blN
+ccm
 otZ
 nzU
 bDo
@@ -81075,7 +81295,7 @@ arF
 arG
 ijo
 bGY
-cfx
+ccr
 bZD
 ijo
 cea

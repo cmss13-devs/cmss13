@@ -170,8 +170,10 @@
 				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
 				return FALSE
 
-			if(!client)
-				return FALSE
+			if(client.player_data?.playtime_loaded && (client.get_total_xeno_playtime() < CONFIG_GET(number/notify_new_player_age)) && !length(client.prefs.completed_tutorials))
+				if(tgui_alert(src, "You have little playtime and haven't completed any tutorials. Would you like to go to the tutorial menu?", "Tutorial", list("Yes", "No")) == "Yes")
+					tutorial_menu()
+					return FALSE
 
 			if(SSticker.mode.check_xeno_late_join(src))
 				var/new_xeno = SSticker.mode.attempt_to_join_as_xeno(src, FALSE)

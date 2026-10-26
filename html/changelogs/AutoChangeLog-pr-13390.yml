@@ -1,0 +1,4 @@
+author: "TrollerNoob"
+delete-after: True
+changes:
+  - bugfix: "Fixed M708's lase from canceling early whenever an explosion happened near it."

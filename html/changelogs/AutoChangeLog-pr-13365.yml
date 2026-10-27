@@ -1,0 +1,4 @@
+author: "Mary-Marilyn"
+delete-after: True
+changes:
+  - balance: "Nurses can now do advanced surgery, but are 20% slower than doctors and more likely to fail with makeshift tools or poor operating conditions."

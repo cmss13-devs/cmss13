@@ -192,7 +192,7 @@
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
 
 /turf/open/desert/desert_shore/get_all_water_icons()
-    return list('icons/turf/floors/desert_water.dmi', 'icons/turf/floors/desert_water_transition.dmi', 'icons/turf/floors/desert_water_toxic.dmi')
+	return list('icons/turf/floors/desert_water.dmi', 'icons/turf/floors/desert_water_transition.dmi', 'icons/turf/floors/desert_water_toxic.dmi')
 
 /turf/open/desert/desert_shore/desert_shore1
 	name = "shore"
@@ -336,7 +336,7 @@
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
 
 /turf/open/desert/cave/cave_shore/get_all_water_icons()
-    return list('icons/turf/floors/desert_water.dmi', 'icons/turf/floors/desert_water_transition.dmi', 'icons/turf/floors/desert_water_toxic.dmi')
+	return list('icons/turf/floors/desert_water.dmi', 'icons/turf/floors/desert_water_transition.dmi', 'icons/turf/floors/desert_water_toxic.dmi')
 
 /turf/open/desert/cave/cave_shore/east
 	dir = EAST
@@ -373,7 +373,7 @@
 	update_overlays()
 
 /turf/open/gm/river/desert/get_all_water_icons()
-    return list('icons/turf/floors/desert_water.dmi', 'icons/turf/floors/desert_water_transition.dmi', 'icons/turf/floors/desert_water_toxic.dmi')
+	return list('icons/turf/floors/desert_water.dmi', 'icons/turf/floors/desert_water_transition.dmi', 'icons/turf/floors/desert_water_toxic.dmi')
 
 //shallow water
 /turf/open/gm/river/desert/shallow

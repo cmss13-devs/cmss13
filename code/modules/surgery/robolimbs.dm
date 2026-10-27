@@ -12,7 +12,7 @@
 	)
 	possible_locs = EXTREMITY_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
-	required_surgery_skill = SKILL_SURGERY_TRAINED
+	required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	pain_reduction_required = NONE
 	requires_bodypart = FALSE
 	requires_bodypart_type = LIMB_AMPUTATED
@@ -31,7 +31,7 @@
 /datum/surgery_step/connect_prosthesis/tool_check(mob/user, obj/item/robot_parts/tool, datum/surgery/surgery)
 	. = ..()
 	if(. && (!tool.part || !(user.zone_selected in tool.part)))
-		to_chat(user, SPAN_WARNING("[tool] cannot be used to replace a missing [parse_zone(user.zone_selected)]"))
+		to_chat(user, SPAN_WARNING("[tool] cannot be used to replace a missing [parse_zone(user.zone_selected)]."))
 		return FALSE
 
 /datum/surgery_step/connect_prosthesis/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/robot_parts/tool, tool_type, datum/surgery/surgery)

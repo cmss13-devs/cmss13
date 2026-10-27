@@ -322,7 +322,7 @@
 		return
 
 	if(fortify_state)
-		to_chat(xeno, SPAN_XENOWARNING("We tuck ourself into a defensive stance."))
+		to_chat(xeno, SPAN_XENOWARNING("We tuck ourselves into a defensive stance."))
 		RegisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(check_directional_armor))
 		xeno.mob_size = MOB_SIZE_IMMOBILE //knockback immune
 		xeno.mob_flags &= ~SQUEEZE_UNDER_VEHICLES

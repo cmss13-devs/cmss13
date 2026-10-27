@@ -151,15 +151,15 @@
 
 		if(bound_xeno.can_not_harm(target_carbon, check_hive_flags=FALSE)) // We manually check hive_flags later
 			bound_xeno.animation_attack_on(bound_xeno)
-			bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]"),
-			SPAN_XENONOTICE("We nibble [bound_xeno]"))
+			bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]."),
+			SPAN_XENONOTICE("We nibble [bound_xeno]."))
 			return XENO_ATTACK_ACTION
 
 		if(bound_xeno.behavior_delegate && bound_xeno.behavior_delegate.handle_slash(bound_xeno))
 			return XENO_NO_DELAY_ACTION
 
 		if(target_carbon.stat == DEAD)
-			to_chat(bound_xeno, SPAN_WARNING("We raise our claws to attack [target_carbon]!- but... they're already dead."))
+			to_chat(bound_xeno, SPAN_WARNING("[target_carbon] is dead. We need another target!"))
 			return XENO_NO_DELAY_ACTION
 
 		if(bound_xeno.caste && !bound_xeno.caste.is_intelligent)
@@ -173,22 +173,23 @@
 			if(embryo_allied)
 				if(HAS_TRAIT(bound_xeno, TRAIT_NESTED))
 					bound_xeno.animation_attack_on(target_carbon)
-					bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]"),
-					SPAN_XENONOTICE("ATTACK!!!! Oh- [target_carbon] has a sister inside..."))
+					bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]."),
+					SPAN_XENONOTICE("Lower our claws! [target_carbon] has a sister inside!"))
 					return XENO_NO_DELAY_ACTION
 				if(!HAS_FLAG(bound_xeno.hive.hive_flags, XENO_SLASH_INFECTED))
 					bound_xeno.animation_attack_on(target_carbon)
-					bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]"),
-					SPAN_XENONOTICE("ATTACK!!!! Oh- [target_carbon] has a sister inside..."))
+					bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]."),
+					SPAN_XENONOTICE("Lower our claws! [target_carbon] has a sister inside!"))
 					return XENO_ATTACK_ACTION
 			if(!HAS_FLAG(bound_xeno.hive.hive_flags, XENO_SLASH_NORMAL))
 				bound_xeno.animation_attack_on(target_carbon)
-				bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]"),
-				SPAN_XENONOTICE("ATTACK!!!! Wait- we're not allowed to attack hosts anymore..."))
+				bound_xeno.visible_message(SPAN_NOTICE("[bound_xeno] nibbles [target_carbon]."),
+				SPAN_XENONOTICE("Lower our claws! The Queen decreed we can no longer harm hosts!"))
 				return XENO_ATTACK_ACTION
 		bound_xeno.visible_message(SPAN_DANGER("[bound_xeno] fumbles stupidly for a moment, then slashes [target_carbon]!"),
-			SPAN_HIGHDANGER("Your oversized claws and small mind get in the way of restraining, slashing [target_carbon]!"), message_flags=CHAT_TYPE_XENO_COMBAT)
+			SPAN_HIGHDANGER("Our oversized claws and small mind get in the way of restraining [target_carbon] and we slash \him instead..."), message_flags=CHAT_TYPE_XENO_COMBAT)
 		return INTENT_HARM
+
 
 /datum/action/xeno_action/onclick/empower/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -196,7 +197,7 @@
 	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_PRE_EMPOWER))
 		XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
-		xeno.visible_message(SPAN_XENODANGER("[xeno] starts empowering!"), SPAN_XENODANGER("We start empowering ourself!"))
+		xeno.visible_message(SPAN_XENODANGER("[xeno] starts empowering!"), SPAN_XENODANGER("We start empowering ourselves!"))
 		ADD_TRAIT(xeno, TRAIT_ABILITY_PRE_EMPOWER, TRAIT_SOURCE_ABILITY("pre_empower"))
 		button.icon_state = "template_active"
 		get_initial_shield()

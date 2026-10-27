@@ -451,7 +451,7 @@
 	name = "Open Bone"
 	priority = SURGERY_PRIORITY_LOW
 	possible_locs = list("chest","head")
-	required_surgery_skill = SKILL_SURGERY_TRAINED
+	required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	steps = list(
 		/datum/surgery_step/saw_encased,
 		/datum/surgery_step/cauterize/abort, //fuck, forgot I don't have enough bone gel/rods
@@ -624,7 +624,7 @@
 	priority = SURGERY_PRIORITY_MINIMUM
 	possible_locs = list("chest","head")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
-	required_surgery_skill = SKILL_SURGERY_TRAINED
+	required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	steps = list(
 		/datum/surgery_step/close_encased_step,
 		/datum/surgery_step/cauterize/abort, //fuck, forgot I don't have enough bone gel/rods

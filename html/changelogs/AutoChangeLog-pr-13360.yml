@@ -1,0 +1,4 @@
+author: "carlarctg"
+delete-after: True
+changes:
+  - rscdel: "Removes heavy nest and allows nesting normally for predators"

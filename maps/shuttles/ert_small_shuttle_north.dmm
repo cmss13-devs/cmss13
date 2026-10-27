@@ -137,7 +137,7 @@
 /turf/open/floor/almayer/tcomms,
 /area/shuttle/ert)
 "F" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/shuttle{
 	dir = 1;
 	id = "port_door"
 	},
@@ -190,7 +190,7 @@
 /turf/open/floor/almayer/tcomms,
 /area/shuttle/ert)
 "W" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/shuttle{
 	dir = 1;
 	id = "starboard_door"
 	},

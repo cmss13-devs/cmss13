@@ -261,7 +261,7 @@
 
 /obj/structure/window_frame/wood/reinforced
 	icon_state = "wood_window0_frame"
-	basestate = "wood_rwindow"
+	basestate = "wood_window"
 	reinforced = TRUE
 	window_type = /obj/structure/window/framed/wood/reinforced
 

@@ -33,15 +33,12 @@
 /datum/element/water_turf/proc/on_enter(turf/open/source, atom/movable/mover)
 	SIGNAL_HANDLER
 
-	if(isliving(mover))
-		var/mob/living/living_mob = mover
-		if(living_mob.mob_flags & MOB_FLYING)
-			return
-		mover.AddComponent(/datum/component/water_overlay_effect, source)
-	else
+	if(!isliving(mover))
 		return
-
 	var/mob/living/living_mover = mover
+	if(living_mover.mob_flags & MOB_FLYING)
+		return
+	mover.AddComponent(/datum/component/water_overlay_effect, source)
 	if(source.depth <= WATER_DEPTH_COAST_SHALLOW && living_mover.m_intent == MOVE_INTENT_RUN)	//walking doesnt make sounds from moving through water
 		var/soundname = source.depth >= WATER_DEPTH_COAST_INTERMEDIATE ? "shallowwading" : (source.depth >= WATER_DEPTH_SHALLOW ? "wading":"deepwading")
 		playsound(source, soundname, 10, 1, 10, falloff=1)

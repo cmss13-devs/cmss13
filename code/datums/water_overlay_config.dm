@@ -25,7 +25,7 @@
 	icon_size = 64
 
 /datum/water_overlay_config/xeno
-	resting_behavior = WATER_OVERLAY_CONFIG_RESTING_IMMERSE
+	resting_behavior = WATER_OVERLAY_CONFIG_RESTING_NONE
 
 /datum/water_overlay_config/xeno/larva
 	use_splash = FALSE

@@ -2,16 +2,22 @@ SUBSYSTEM_DEF(water_overlays)
 	name = "Water Overlays"
 	init_order = SS_INIT_WATEROVERLAYS
 	flags = SS_NO_FIRE
-	var/list/turfs_to_process = list()
-	var/list/texture_sizes = list(32, 48, 64, 88)
-	var/list/generated_water_overlays = list()
+	/// the master list, holds all the water overlays (sprites) used by water_overlay_effect components
 	var/list/water_overlay_icons = list()
+	/// this list gets an entry for each water turf that already has had overlays generated for it
+	var/list/generated_water_overlays = list()
+	/// used and emptied each time update_turfs_layers_near_water() is ran, holds turfs around water we might want to relayer
+	var/list/turfs_to_process = list()
+	/// used and emptied each time update_turfs_layers_near_water() is ran, holds turfs we did alter the layer for so as to not redo
+	var/list/relayered_turfs = list()
+	/// this holds a list of all datum/water_overlay_config types, ordered by sprite size (used for generating the overlays)
 	var/list/configs_by_size = list(
 		"32" = list(),
 		"48" = list(),
 		"64" = list(),
 		"88" = list(),
 	)
+	/// this holds paths to the dmis used by each config size
 	var/list/icon_paths = list(
 		"32" = 'icons/effects/water_overlay_effects/_32.dmi',   //humans, etc
 		"48" = 'icons/effects/water_overlay_effects/_48.dmi',   //facehugger, drone
@@ -21,19 +27,18 @@ SUBSYSTEM_DEF(water_overlays)
 
 
 /datum/controller/subsystem/water_overlays/Initialize()
-	// This MUST stay early — turfs call generate_water_overlay during their Initialize
+	// This MUST stay early — turfs call generate_water_overlay during their Initialize (the configs_by_size needs to have been populated by then)
 	for(var/datum/water_overlay_config/config_type as anything in subtypesof(/datum/water_overlay_config))
 		var/size = "[initial(config_type.icon_size)]"
 		if(!configs_by_size[size])
 			stack_trace("water_overlay_config [config_type] has unsupported icon_size [size]")
 			continue
 		configs_by_size[size] += config_type
-	RegisterSignal(SSnightmare, COMSIG_NIGHTMARES_PREPARE_GAME_COMPLETE, PROC_REF(update_turfs_layers_near_water))
 	return SS_INIT_SUCCESS
 
 
 /datum/controller/subsystem/water_overlays/proc/is_water(turf/potential_water)
-	if(potential_water == null || !istype(potential_water, /turf/open))
+	if(isnull(potential_water) || !istype(potential_water, /turf/open))
 		return FALSE
 	var/turf/open/potential_open_water = potential_water
 	if(potential_open_water.covered || potential_open_water.depth >= WATER_DEPTH_LAND || potential_open_water.turf_flags & TURF_CATWALKED)
@@ -55,15 +60,6 @@ SUBSYSTEM_DEF(water_overlays)
 	return potential_open_coastline.depth >= WATER_DEPTH_COAST_INTERMEDIATE
 
 
-/datum/controller/subsystem/water_overlays/proc/handle_toxic_states(in_icon)			//adds duplicate states for toxic water turfs so we can handle toxic states
-	if(in_icon == 'icons/turf/floors/desert_water.dmi')
-		var/list/return_list = list('icons/turf/floors/desert_water.dmi')
-		return_list += 'icons/turf/floors/desert_water_transition.dmi'
-		return_list += 'icons/turf/floors/desert_water_toxic.dmi'
-		return return_list
-	return list(in_icon)
-
-
 /**	update_turfs_layers_near_water()
 *		this proc and those it call go through every turf in the game, and check if its near water
 *		we need to do this because we alter the layer of mob in water so they appear below turfs south of them
@@ -72,52 +68,61 @@ SUBSYSTEM_DEF(water_overlays)
 *		this is fine since turfs are visually rendered below everything usually, changing their layer to further down..
 *		shouldnt affect anything other than making mobs in water not clip below them
 */
-/datum/controller/subsystem/water_overlays/proc/update_turfs_layers_near_water()
-	SIGNAL_HANDLER
-	var/list/altered_turfs = list()
+/datum/controller/subsystem/water_overlays/proc/update_turfs_layers_near_water(turf/water_turf)
+	for(var/direction in GLOB.alldirs)
+		var/turf/found_turf = get_step(water_turf, direction)
+		if(found_turf && !is_water(found_turf))
+			turfs_to_process |= found_turf
 
-	for(var/turf/search_turf in GLOB.turfs)
-		if(is_water(search_turf))
-			for(var/direction in GLOB.alldirs)
-				var/turf/found_turf = get_step(search_turf, direction)
-				if(found_turf && !is_water(found_turf))
-					turfs_to_process |= found_turf
-
-	for(var/turf/current_turf in turfs_to_process)
-		if(current_turf in altered_turfs)
+	for(var/turf/current_turf as anything in turfs_to_process)
+		if(current_turf in relayered_turfs)
 			continue
-		altered_turfs |= current_turf.near_water_layering_fix(altered_turfs)
+		relayered_turfs |= current_turf.near_water_layering_fix(relayered_turfs)
 
-	for(var/turf/current_turf in altered_turfs)
+	for(var/turf/current_turf as anything in relayered_turfs)
 		current_turf.near_water_layering_cleanup()
 
-	UnregisterSignal(SSnightmare, COMSIG_NIGHTMARES_PREPARE_GAME_COMPLETE)
+	turfs_to_process.Cut()
+	relayered_turfs.Cut()
 
 
 #define ADDITIONAL_DEPTH_OFFSET 3
 
 
 /**
-*	water turfs are hardcoded to only have certain depths, but the shorelines take from their fulltile varients ---> turf/open var/water_type
-*	so for coasts we only generate a very shallow overlay of their fulltile varient, this greatly shrinks the amount we need to make
-*	for each of these we generate a water overlay for each size mobs' textures can have: 32, 48, 64, and 88 ---> texture_sizes
-*	in addition to those for extra deep water turfs we also generate an icon that will cover the mob completely
-*	some mobs look weird with just the default overlay, so for those we generate additional overlays using unique culling masks ---> water_overlay_special
-*	and lastly 2 more overlays for resting humans per waterturf. and there, all the overlays we'll every need all in one neat list :0)
+*	Water turfs do not have built in overlays anymore. They are now added directly on mobs upon entering these water turfs, handled by the component: /datum/component/water_overlay_effect
+*	Its unfesible to generate an overlay everytime a mob enters water, instead each water turf calles this proc to generate them all when all the atoms are first initialized..
+*	and the results are added into a list in this subsystem to be fetched by the water_overlay components when needed: SSwater_overlays.water_overlay_icons
+*
+*	Every water turf uses a var water_type which is necessary because of water turfs like coasts, using their icon would add sand/dirt/grass into the water overlay texture
+*	Since every water turf is calling this proc on their init, we use generated_water_overlays and their depth and water_type as a key; determining if its already ran or not
+*
+*	Not every mob gets the same overlay, theres about 6 different sprite sizes mobs have, and lots behave differently in water and so need additional/different overlays.. e.g. humans resting in water
+*	So we use datum/water_overlay_config to inform each water turf what overlays we need (every mob ought to have one, or they ought not get a water overlay)
+*	for each config we check if the turf's depth applies and generate an overlay accordingly (some mobs ignore water while resting as some depths, or only use one overlay regardless of depth)
+*
+*	we use |= when adding overlays to eliminate duplicates, and since this proc is only ran once after the water turfs are initialized.. not to mention all congfigs complicating things
+*	coding checks for duplicates before running the logic seems not really worth the investment
+*
+*	ADDITIONAL NOTES:
+*	Because coasts generate overlays based off their water_type and because many coasts share the same depth, instead of having 8 or 12 overlays generated for every coast type we basically only generate 3(one for each coast depth)
+*	@param input_icons should be a list of all the different icons the water turf uses (get_all_water_icons)
+*	@param water_type should be the water_type var all water turfs have
+*	@param input_depth should be the depth var all water turfs have
 */
-/datum/controller/subsystem/water_overlays/proc/generate_water_overlay(water_type, input_depth)
+/datum/controller/subsystem/water_overlays/proc/generate_water_overlay(list/input_icons, water_type, input_depth)
 	if(generated_water_overlays["[water_type]_[input_depth]"])
 		return
 	generated_water_overlays["[water_type]_[input_depth]"] = TRUE
 	var/turf/open/water_turf = water_type
-	var/found_icon = water_turf.icon
 	var/found_icon_state = water_turf.icon_state
 	var/toxic = WATER_TOXIC_NO	//this works as a iterator... used exclusively for water turfs that use 'icons/turf/floors/desert_water.dmi' which have 2 addtional varients
-	for(var/working_icon in handle_toxic_states(found_icon))	//if the water turf can be toxic, we need to run a loop for each possiblity, handle_toxic_states returns a list[1] for waters that dont have that possibility or a list[3] for those that do
+	for(var/working_icon in input_icons)	//if the water turf can be toxic, we need to run a loop for each possiblity, thus this is a list
 		for(var/texture_size in configs_by_size)
 			var/list/configs_of_this_size = configs_by_size[texture_size]
 			if(!length(configs_of_this_size))
 				continue
+
 			for(var/datum/water_overlay_config/config as anything in configs_of_this_size)	//could be streamlined by removing configs thatd result in the same overlays being generated
 				//	V V V V	construct water texture	V V V V
 				var/icon/sized_water_texture = icon(icon_paths["[config.icon_size]"],"empty")		//this is what will eventually be our water texture
@@ -130,12 +135,14 @@ SUBSYSTEM_DEF(water_overlays)
 						sized_water_texture.Blend(turf_texture, ICON_OVERLAY, (i*32)+1, (j*32)+1)     //place our 32x32 textures on our water texture every 32 pixels
 				if((config.immerse_behavior != WATER_OVERLAY_CONFIG_IMMERSE_NONE || config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_IMMERSE) && input_depth <= config.immerse_at_depth)
 					SSwater_overlays.water_overlay_icons["[texture_size]_[water_type]_[toxic]_[input_depth]_immersed"] = icon(sized_water_texture)	// for the full water overlay
+
 				//	V V V V	construct depthed overlay for mob texture size	V V V V
 				var/icon/culled_water = icon(sized_water_texture)
 				var/texture_height = sized_water_texture.Height()
 				subtraction_texture.Shift(SOUTH, (texture_height + input_depth - ADDITIONAL_DEPTH_OFFSET), FALSE)         //we move it down to "water level" if we're not using a custom mob culling mask
 				culled_water.AddAlphaMask(subtraction_texture)
 				SSwater_overlays.water_overlay_icons["[texture_size]_[water_type]_[toxic]_[input_depth]"] = culled_water	//this is the default overlays, made according to depth
+
 				//	V V V V	resting overlays	V V V V
 				var/resting_key = input_depth >= WATER_DEPTH_COAST_INTERMEDIATE ? "coast" : "deep"
 				if(config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_SOME)
@@ -149,12 +156,14 @@ SUBSYSTEM_DEF(water_overlays)
 					resting_west.AddAlphaMask(icon(icon_paths["[config.icon_size]"], "culling_[config.icon_state_key]_resting_[resting_key]_w"))
 					SSwater_overlays.water_overlay_icons["32_[water_type]_[toxic]_[input_depth]_[config.icon_state_key]_resting_e"] = resting_east
 					SSwater_overlays.water_overlay_icons["32_[water_type]_[toxic]_[input_depth]_[config.icon_state_key]_resting_w"] = resting_west
+
 				//	V V V V	specialized water overlays	V V V V
 				if(config.special_culling_mask)	// * water_overlay_special * these mobs look weird with the default overlays, we use special culling masks for them
 					var/icon/special_icon = icon(sized_water_texture)
 					var/icon/special_mask = icon(icon_paths["[config.icon_size]"], "culling_[config.icon_state_key]")
 					special_icon.AddAlphaMask(special_mask)
 					SSwater_overlays.water_overlay_icons["[texture_size]_[water_type]_[toxic]_[input_depth]_[config.icon_state_key]"] = special_icon
+
 		toxic = toxic == WATER_TOXIC_NO ? WATER_TOXIC_DISPERSING : WATER_TOXIC_YES
 
 

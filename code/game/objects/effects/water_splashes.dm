@@ -29,50 +29,62 @@
 	plane = FLOAT_PLANE
 
 
-/obj/effect/water_splash/water_overlay_splash/proc/update_wateroverlay(turf/water_turf, mob/living/carbon/affected_carbon, pixel_y_offset = 0, xeno_resting=FALSE)
+/obj/effect/water_splash/water_overlay_splash/proc/update_wateroverlay(turf/water_turf, mob/living/carbon/affected_carbon, water_depth = 0, xeno_resting = FALSE)
 	icon_state = null
 	icon = null
+
 	var/datum/water_overlay_config/config = affected_carbon.water_config
 	if(!config || !config.use_splash)
 		return
 
 	var/is_resting = affected_carbon.resting || affected_carbon.body_position == LYING_DOWN || HAS_TRAIT(affected_carbon, TRAIT_FLOORED)
+	var/is_immersed = FALSE
+	switch(config.immerse_behavior)
+		if(WATER_OVERLAY_CONFIG_IMMERSE_NONE)
+			is_immersed = FALSE
+		if(WATER_OVERLAY_CONFIG_IMMERSE_ALWAYS)
+			is_immersed = TRUE
+		if(WATER_OVERLAY_CONFIG_IMMERSE_DEPTHED)
+			is_immersed = (water_depth <= config.immerse_at_depth)
+		if(WATER_OVERLAY_CONFIG_IMMERSE_WHEN_RESTING_ALWAYS)
+			is_immersed = is_resting
+		if(WATER_OVERLAY_CONFIG_IMMERSE_WHEN_RESTING_DEPTHED)
+			is_immersed = is_resting && (water_depth <= config.immerse_at_depth)
+
+	if(is_immersed)	// fully under → no splash
+		return
+
+	// resting with no resting splash
 	if(is_resting && config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_NONE)
 		return
 
-	var/is_immersed = config.immerse_behavior != WATER_OVERLAY_CONFIG_IMMERSE_NONE && (\
-		(config.immerse_behavior == WATER_OVERLAY_CONFIG_IMMERSE_ALWAYS) || \
-		(config.immerse_behavior == WATER_OVERLAY_CONFIG_IMMERSE_WHEN_RESTING_ALWAYS && is_resting) || \
-		(config.immerse_behavior == WATER_OVERLAY_CONFIG_IMMERSE_DEPTHED && pixel_y_offset <= config.immerse_at_depth) || \
-		(config.immerse_behavior == WATER_OVERLAY_CONFIG_IMMERSE_WHEN_RESTING_DEPTHED && is_resting &&  pixel_y_offset <= config.immerse_at_depth))\
-		? TRUE : FALSE
 	var/splash_state
-
-	if(!is_immersed)
-		if(is_resting && config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_ANGLED)
-			var/resting_dir = affected_carbon.get_lying_angle() == 270 ? "e" : "w"
-			if(pixel_y_offset >= WATER_DEPTH_COAST_INTERMEDIATE)
-				splash_state = "[config.icon_state_key]_resting_coast_[resting_dir]"
-			else if(pixel_y_offset <= WATER_DEPTH_SHALLOW)
-				splash_state = "[config.icon_state_key]_resting_deep_[resting_dir]"
-		else if(is_resting && config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_SOME)
-			if(pixel_y_offset >= WATER_DEPTH_COAST_INTERMEDIATE)
-				splash_state = "[config.icon_state_key]_resting_coast"
-			else if(pixel_y_offset <= WATER_DEPTH_SHALLOW)
-				splash_state = "[config.icon_state_key]_resting_deep"
-		else
-			if(pixel_y_offset == WATER_DEPTH_COAST_SHALLOW) //shallow coast
-				splash_state = "coast_shallow"
-			else if(pixel_y_offset == WATER_DEPTH_COAST_INTERMEDIATE) //deep coast
-				splash_state = "coast_deep"
-			else if(pixel_y_offset == WATER_DEPTH_SHALLOW) //shallows
-				splash_state = "shallow"
-			else if(pixel_y_offset == WATER_DEPTH_INTERMEDIATE)	//intermediate depth
-				splash_state = "intermediate"
-			else //pixel_y_offset== WATER_DEPTH_DEEP -- deep water
-				splash_state = "deep"
+	if(is_resting && config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_ANGLED)
+		var/resting_dir = affected_carbon.get_lying_angle() == 270 ? "e" : "w"
+		if(water_depth >= WATER_DEPTH_COAST_INTERMEDIATE)
+			splash_state = "[config.icon_state_key]_resting_coast_[resting_dir]"
+		else if(water_depth <= WATER_DEPTH_SHALLOW)
+			splash_state = "[config.icon_state_key]_resting_deep_[resting_dir]"
+	else if(is_resting && config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_SOME)
+		if(water_depth >= WATER_DEPTH_COAST_INTERMEDIATE)
+			splash_state = "[config.icon_state_key]_resting_coast"
+		else if(water_depth <= WATER_DEPTH_SHALLOW)
+			splash_state = "[config.icon_state_key]_resting_deep"
 	else
-		splash_state = affected_carbon.stat == DEAD ? "empty" : "bubbles"
+		if(water_depth == WATER_DEPTH_COAST_SHALLOW)
+			splash_state = "coast_shallow"
+		else if(water_depth == WATER_DEPTH_COAST_INTERMEDIATE)
+			splash_state = "coast_deep"
+		else if(water_depth == WATER_DEPTH_SHALLOW)
+			splash_state = "shallow"
+		else if(water_depth == WATER_DEPTH_INTERMEDIATE)
+			splash_state = "intermediate"
+		else
+			splash_state = "deep"
+
+	if(!splash_state)
+		return
+
 	icon = SSwater_overlays.icon_paths["[config.icon_size]"]
 	icon_state = splash_state
 

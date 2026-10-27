@@ -21,8 +21,8 @@
 /obj/structure/catwalk/Destroy()
 	. = ..()
 	var/turf/my_turf = get_turf(src)
-	if(my_turf)
-		my_turf.turf_flags &= ~TURF_CATWALKED
+	my_turf?.turf_flags &= ~TURF_CATWALKED
+	return ..()
 
 /obj/structure/catwalk/Moved(atom/oldloc, direction, Forced)
 	. = ..()
@@ -42,14 +42,14 @@
 		var/turf/check_turf = get_step(src, NORTH)
 		var/obj/effect/blocker/water/water_blocker = locate(/obj/effect/blocker/water) in turf
 		var/layer_to_use = CATWALK_LAYER
-		if(src.layer == UNDER_WATER_TURF_LAYER)
+		if(layer == UNDER_WATER_TURF_LAYER)
 			if(SSwater_overlays.is_water(check_turf))
 				if(water_blocker && water_blocker.dispersing)
-					layer_to_use = UNDER_WATER_TURF_LAYER +0.01
+					layer_to_use = UNDER_WATER_CATWALK_LAYER
 				else
 					layer_to_use = TURF_LAYER
 			else
-				layer_to_use = UNDER_WATER_TURF_LAYER +0.01
+				layer_to_use = UNDER_WATER_CATWALK_LAYER
 		layer = layer_to_use
 	icon_state = base_state
 

@@ -16,7 +16,10 @@
 
 
 /datum/component/water_overlay_effect/Initialize(turf/input_turf, tried_parent)
-	if((!ismob(parent) && !isobj(parent)) || !istype(input_turf, /turf/open))	//this should already be handled in the turfs creating this component, but a few backup checks cant hurt
+	//this should already be handled in the turfs creating this component, but a few backup checks cant hurt
+	if(!ismob(parent) && !isobj(parent))
+		return COMPONENT_INCOMPATIBLE
+	if(!istype(input_turf, /turf/open))
 		return COMPONENT_INCOMPATIBLE
 
 	the_splash = new /obj/effect/water_splash/water_overlay_splash(null, water_depth <= WATER_DEPTH_SHALLOW)	//if the waters deep enough --> SPLASH SOUND! :DDDD
@@ -48,9 +51,8 @@
 
 	release_layer()
 
-	for(var/obj/found_obj in movable_parent.vis_contents)
-		if(found_obj == the_water || found_obj == the_splash)
-			movable_parent.vis_contents -= found_obj
+	movable_parent.vis_contents -= the_water
+	movable_parent.vis_contents -= the_splash
 
 	qdel(the_water)
 	qdel(the_splash)
@@ -102,10 +104,16 @@
 	var/turf/open/gm/moved_to_turf = get_turf(parent_source)
 	var/obj/effect/blocker/water/water_blocker = locate(/obj/effect/blocker/water/) in moved_to_turf.contents
 
-	if(moved_to_turf.depth >= WATER_DEPTH_LAND || \
-	(moved_to_turf.covered && water_blocker == null) || \
-	(moved_to_turf.covered && water_blocker && !water_blocker.dispersing) || \
-	moved_to_turf.turf_flags & TURF_CATWALKED)
+	if(moved_to_turf.depth >= WATER_DEPTH_LAND)
+		qdel(src)
+		return
+	if(moved_to_turf.covered && water_blocker == null)
+		qdel(src)
+		return
+	if(moved_to_turf.covered && water_blocker && !water_blocker.dispersing)
+		qdel(src)
+		return
+	if(moved_to_turf.turf_flags & TURF_CATWALKED)
 		qdel(src)
 		return
 
@@ -151,8 +159,8 @@
 	SIGNAL_HANDLER
 
 	if(we_own_layer && !hidden)
-		var/mob/M = parent
-		M.layer = UNDER_WATER_MOB_LAYER
+		var/mob/parent_mob = parent
+		parent_mob.layer = UNDER_WATER_MOB_LAYER
 
 
 /datum/component/water_overlay_effect/proc/handle_hauled(xenomorph)
@@ -174,7 +182,8 @@
 	SIGNAL_HANDLER
 
 	var/my_turf = get_turf(parent)
-	new /obj/effect/water_splash(my_turf, TRUE)
+	if(my_turf)
+		new /obj/effect/water_splash(my_turf, TRUE)
 
 
 /datum/component/water_overlay_effect/proc/handle_death()

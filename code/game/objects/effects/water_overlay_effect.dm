@@ -1,5 +1,4 @@
 //	we use an object because critically  we dont want to alter the hitboxes.. like we would by having these as part of the mob sprite
-//	and the water overlay is created to over extend past just the pixels of the body sprites, to cover armors/backpacks/inhands/alt sprites etc
 //	it can have its color and alpha adjusted as well, the sprites of water turfs are opaque... also like if we ever wanted to add quicksand or mud thats easy now
 
 /obj/effect/water_overlay_effect
@@ -20,27 +19,29 @@
 		return
 
 	var/is_resting = overlaid_mob.resting || overlaid_mob.body_position == LYING_DOWN
-	if(is_resting && config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_NONE)
-		return
 
-	var/key = ""
+	// immersion (can apply while resting or standing)
 	var/should_immerse = FALSE
 	switch(config.immerse_behavior)
 		if(WATER_OVERLAY_CONFIG_IMMERSE_NONE)
 			should_immerse = FALSE
 		if(WATER_OVERLAY_CONFIG_IMMERSE_ALWAYS)
 			should_immerse = TRUE
-		if(WATER_OVERLAY_CONFIG_IMMERSE_DEPTHED, WATER_OVERLAY_CONFIG_RESTING_IMMERSE)
-			should_immerse = (config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_IMMERSE && is_resting) || (pixel_y_offset <= config.immerse_at_depth)
+		if(WATER_OVERLAY_CONFIG_IMMERSE_DEPTHED)
+			should_immerse = (pixel_y_offset <= config.immerse_at_depth)
 		if(WATER_OVERLAY_CONFIG_IMMERSE_WHEN_RESTING_ALWAYS)
 			should_immerse = is_resting
 		if(WATER_OVERLAY_CONFIG_IMMERSE_WHEN_RESTING_DEPTHED)
 			should_immerse = is_resting && (pixel_y_offset <= config.immerse_at_depth)
 
+	var/key = ""
 	if(should_immerse)
 		key = "_immersed"
 	else if(is_resting)
+		// resting
 		switch(config.resting_behavior)
+			if(WATER_OVERLAY_CONFIG_RESTING_NONE)
+				return  // no overlay while resting (unless immersed above)
 			if(WATER_OVERLAY_CONFIG_RESTING_USE_DEFAULT)
 				key = ""
 			if(WATER_OVERLAY_CONFIG_RESTING_SOME)
@@ -53,13 +54,21 @@
 					key = "_[config.icon_state_key]_resting_w"
 				else
 					key = "_[config.icon_state_key]_resting"
-	else	//we're standing
+			if(WATER_OVERLAY_CONFIG_RESTING_IMMERSE)
+				key = "_immersed"
+	else
 		if(config.special_culling_mask && config.icon_state_key)
 			key = "_[config.icon_state_key]"
 
 	var/toxic_key = 0
-	if(istype(water_turf, /turf/open/gm/river/desert) || istype(water_turf, /turf/open/desert/desert_shore))
+	if(istype(water_turf, /turf/open/gm/river/desert))
 		var/turf/open/gm/river/desert/toxic_turf = water_turf
+		toxic_key = toxic_turf.toxic
+	else if(istype(water_turf, /turf/open/desert/desert_shore))
+		var/turf/open/desert/desert_shore/toxic_turf = water_turf
+		toxic_key = toxic_turf.toxic
+	else if(istype(water_turf, /turf/open/desert/cave/cave_shore))
+		var/turf/open/desert/desert_shore/toxic_turf = water_turf
 		toxic_key = toxic_turf.toxic
 
 	var/icon_size = config.icon_size

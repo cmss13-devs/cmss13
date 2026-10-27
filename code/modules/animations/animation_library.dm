@@ -183,7 +183,7 @@ Can look good elsewhere as well.*/
 	if(buckled || anchored || HAS_TRAIT(src, TRAIT_HAULED) || LAZYLEN(buckled_mobs)) //it would look silly.
 		return
 	var/initial_pixel_x = pixel_x //we use this instead of initial(pixel_x) to preserve any preexisting offsets
-	var/initial_pixel_y = pixel_y //we use this instead of initial(pixel_x) to preserve any preexisting offsets
+	var/initial_pixel_y = pixel_y //we use this instead of initial(pixel_y) to preserve any preexisting offsets
 	var/pixel_x_diff = 0
 	var/pixel_y_diff = 0
 	var/direction = get_dir(src, A)

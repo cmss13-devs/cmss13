@@ -31,19 +31,19 @@
 			layer = ABOVE_MOB_LAYER
 		if(NORTH)
 			if(is_water)
-				layer = UNDER_WATER_TURF_LAYER + 0.01
+				layer = UNDER_WATER_PLATFORMS_LAYER
 				plane = FLOOR_PLANE
 			else
 				layer = TURF_LAYER
 		if(EAST)
 			if(is_water)
-				layer = UNDER_WATER_TURF_LAYER + 0.01
+				layer = UNDER_WATER_PLATFORMS_LAYER
 				plane = FLOOR_PLANE
 			else
 				layer = MOB_LAYER
 		if(WEST)
 			if(is_water)
-				layer = UNDER_WATER_TURF_LAYER + 0.01
+				layer = UNDER_WATER_PLATFORMS_LAYER
 				plane = FLOOR_PLANE
 			else
 				layer = MOB_LAYER
@@ -226,7 +226,7 @@
 			layer = ABOVE_MOB_LAYER
 		else
 			if(SSwater_overlays.is_water(get_turf(src)))
-				layer = UNDER_WATER_TURF_LAYER + 0.01
+				layer = UNDER_WATER_PLATFORMS_LAYER
 				plane = FLOOR_PLANE
 			else
 				layer = MOB_LAYER

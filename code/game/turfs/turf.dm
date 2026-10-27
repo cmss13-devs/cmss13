@@ -140,22 +140,20 @@
 	var/list/return_list = list()							//and they can still look like they're below turfs south of them
 	if(SSwater_overlays.is_water(src) || src.layer == UNDER_WATER_TURF_LAYER)
 		return return_list
-	for(var/direction_check in GLOB.cardinals)
-		if(direction_check == NORTH)
-			continue
+	for(var/direction_check in (GLOB.cardinals - NORTH))
 		var/turf/neighbor = get_step(src, direction_check)
 		if(neighbor && SSwater_overlays.is_water(neighbor))
 			if(!(src in return_list))
 				set_below_watermobs_visually(TRUE)
-			return_list |= src
+			return_list += src
 			var/turf/rightwards_turf = get_step(src, turn(direction_check, 90))
 			if(rightwards_turf && !SSwater_overlays.is_water(rightwards_turf) && !(rightwards_turf in return_list) && !(rightwards_turf in already_altered))
 				rightwards_turf.set_below_watermobs_visually(TRUE)
-				return_list |= rightwards_turf
+				return_list += rightwards_turf
 			var/turf/leftwards_turf = get_step(src, turn(direction_check, -90))
 			if(leftwards_turf && !SSwater_overlays.is_water(leftwards_turf) && !(leftwards_turf in return_list) && !(leftwards_turf in already_altered))
 				leftwards_turf.set_below_watermobs_visually(TRUE)
-				return_list |= leftwards_turf
+				return_list += leftwards_turf
 	return return_list
 
 /**	near_water_layering_cleanup()
@@ -169,7 +167,7 @@
 /turf/proc/near_water_layering_cleanup() // if any of the turfs we changed above have water above them, we reset them
 	var/list/return_list = list()
 	var/turf/checking_turf = get_step(src, SOUTH)	// this should be already handled, but was seeing some weird behaviour
-	if(checking_turf == null)
+	if(!checking_turf)
 		return
 	if(SSwater_overlays.is_full_water(checking_turf) && layer != UNDER_WATER_TURF_LAYER)
 		set_below_watermobs_visually(TRUE)
@@ -201,7 +199,7 @@
 				continue
 			var/icon/icon_check = icon(structure.icon, structure.icon_state)
 			if(icon_check.Width() <= 32 && structure.layer < ABOVE_MOB_LAYER)
-				structure.layer = UNDER_WATER_TURF_LAYER + 0.01
+				structure.layer = UNDER_WATER_STRUCTURE_LAYER
 				structure.plane = FLOOR_PLANE
 	else
 		layer = initial(layer)

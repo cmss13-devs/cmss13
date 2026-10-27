@@ -4,7 +4,7 @@
 	opacity = FALSE
 	unacidable = TRUE
 	alpha = 0
-	layer = UNDER_WATER_TURF_LAYER + 0.01
+	layer = UNDER_WATER_PLATFORMS_LAYER
 	plane = FLOOR_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	flags_atom = NO_ZFALL
@@ -26,7 +26,9 @@
 		var/turf/settings = water_type
 		icon = settings.icon
 		icon_state = settings.icon_state
-		SSwater_overlays.generate_water_overlay(water_type, created_depth)
+		var/turf/open/water_path = water_type
+		var/water_type_icon = initial(water_path.icon)
+		SSwater_overlays.generate_water_overlay(list(water_type_icon), water_type, created_depth)
 
 /obj/effect/blocker/water/proc/drain_spread(from_dir = 0)
 	if(!dispersing)

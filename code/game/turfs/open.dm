@@ -23,7 +23,7 @@
 	update_icon()
 
 	if(depth < WATER_DEPTH_COAST_DEPTHLESS && water_type)
-		SSwater_overlays.generate_water_overlay(water_type, depth)
+		SSwater_overlays.generate_water_overlay(get_all_water_icons(), water_type, depth)
 
 /turf/open/update_icon()
 	update_overlays()
@@ -151,17 +151,15 @@
 			if(3)
 				. += "Well Done."
 
-/turf/open/proc/update_water_element(force=null)
-	if(force == TRUE || force == null && depth < WATER_DEPTH_LAND && !covered)
+/turf/open/proc/update_water_element(force)
+	if(force || depth < WATER_DEPTH_LAND && !covered)
 		AddElement(/datum/element/water_turf)
 	else
 		RemoveElement(/datum/element/water_turf)
 
 /turf/open/proc/set_covered(setting)
 	if(setting)
-		covered = TRUE
-	else
-		covered = FALSE
+		covered = setting
 	update_water_element()
 	update_overlays()
 
@@ -173,11 +171,11 @@
 	water_type = set_type
 	layer = UNDER_WATER_TURF_LAYER
 	for(var/obj/structure/catwalk/catwalk in contents)
-		catwalk.layer = UNDER_WATER_TURF_LAYER
-		layer = UNDER_WATER_TURF_LAYER - 0.01
+		catwalk.layer = UNDER_WATER_CATWALK_LAYER
+		layer = UNDER_WATER_TURF_LAYER
 	for(var/obj/found_object in contents)
 		if(found_object.layer == UNDERFLOOR_OBJ_LAYER)
-			found_object.layer = UNDER_WATER_TURF_LAYER + 0.005
+			found_object.layer = UNDER_WATER_UNDERFLOOR_LAYER
 	update_icon()	//some turfs overlay themselves with a catwalk, we need to update the layer of that overlay
 	update_water_element(TRUE)
 
@@ -187,10 +185,14 @@
 	water_type = null
 	layer = initial(layer)
 	for(var/obj/found_object in contents)
-		if(found_object.layer == UNDER_WATER_TURF_LAYER + 0.005)
-			found_object.layer = UNDERFLOOR_OBJ_LAYER
+		if(found_object.layer < TURF_LAYER)	// e.i. UNDER_WATER_...
+			found_object.layer = initial(found_object.layer)
 	update_icon()
 	update_water_element(FALSE)
+
+
+/turf/open/proc/get_all_water_icons()
+	return list(icon)
 
 // Black & invisible to the mouse. used by vehicle interiors
 /turf/open/void
@@ -615,6 +617,14 @@
 	depth = WATER_DEPTH_COAST_INTERMEDIATE
 	layer = UNDER_WATER_TURF_LAYER
 
+/turf/open/gm/grass/grassbeach/Initialize(mapload, ...)
+	. = ..()
+	return INITIALIZE_HINT_ROUNDSTART
+
+/turf/open/gm/grass/grassbeach/LateInitialize(mapload)
+	. = ..()
+	SSwater_overlays.update_turfs_layers_near_water(src)
+
 /turf/open/gm/grass/grassbeach/north
 	depth = WATER_DEPTH_COAST_INTERMEDIATE
 
@@ -633,6 +643,13 @@
 /turf/open/gm/grass/gbcorner
 	icon_state = "gbcorner"
 
+/turf/open/gm/grass/gbcorner/Initialize(mapload, ...)
+	. = ..()
+	return INITIALIZE_HINT_ROUNDSTART
+
+/turf/open/gm/grass/gbcorner/LateInitialize(mapload)
+	. = ..()
+	SSwater_overlays.update_turfs_layers_near_water(src)
 
 /turf/open/gm/grass/gbcorner/north_west
 	depth = WATER_DEPTH_COAST_SHALLOW
@@ -786,6 +803,11 @@
 /turf/open/gm/river/Initialize(mapload, ...)
 	. = ..()
 	update_icon()
+	return INITIALIZE_HINT_ROUNDSTART
+
+/turf/open/gm/river/LateInitialize(mapload)
+	. = ..()
+	SSwater_overlays.update_turfs_layers_near_water(src)
 
 /turf/open/gm/river/update_icon()
 	..()
@@ -798,14 +820,14 @@
 		var/turf/check_turf = get_step(src, NORTH)
 		var/obj/effect/blocker/water/water_blocker = locate(/obj/effect/blocker/water) in contents
 		var/layer_to_use = CATWALK_LAYER
-		if(src.layer == UNDER_WATER_TURF_LAYER)
+		if(layer == UNDER_WATER_TURF_LAYER)
 			if(SSwater_overlays.is_water(check_turf))
 				if(water_blocker && water_blocker.dispersing)
-					layer_to_use = UNDER_WATER_TURF_LAYER +0.01
+					layer_to_use = UNDER_WATER_PLATFORMS_LAYER
 				else
 					layer_to_use = TURF_LAYER
 			else
-				layer_to_use = UNDER_WATER_TURF_LAYER +0.01
+				layer_to_use = UNDER_WATER_PLATFORMS_LAYER
 		overlays += image("icon"=src.cover_icon,"icon_state"=cover_icon_state,"layer"= layer_to_use,"dir" = dir)
 
 /turf/open/gm/river/Entered(atom/movable/AM)
@@ -931,7 +953,7 @@
 			var/mob/living/unlucky_living = entered_movable
 			unlucky_living.KnockDown(1.5) //swept off your feet!
 		if(!SSwater_overlays.is_full_water(target_turf))			//below we put the mob on the shore, if needed
-			for(var/i = 1 to 3)				//currents dont operate outside water
+			for(var/i in 1 to 3)				//currents dont operate outside water
 				var/found_water = FALSE
 				var/list/check_dirs = list(get_dir(target_turf, src))
 				check_dirs += turn(check_dirs[1], 45)
@@ -971,6 +993,14 @@
 	layer = UNDER_WATER_TURF_LAYER
 	turf_flags = TURF_WATER
 	water_type = /turf/open/gm/river
+
+/turf/open/gm/coast/Initialize(mapload, ...)
+	. = ..()
+	return INITIALIZE_HINT_ROUNDSTART
+
+/turf/open/gm/coast/LateInitialize(mapload)
+	. = ..()
+	SSwater_overlays.update_turfs_layers_near_water(src)
 
 /turf/open/gm/coast/north
 	depth = WATER_DEPTH_COAST_INTERMEDIATE
@@ -1036,6 +1066,14 @@
 	fishing_allowed = TRUE
 	depth = WATER_DEPTH_INTERMEDIATE //used for the offset of mobs that enter it (see water_overlay_effect.dm)
 
+/turf/open/gm/riverdeep/Initialize(mapload, ...)
+	. = ..()
+	return INITIALIZE_HINT_ROUNDSTART
+
+/turf/open/gm/riverdeep/LateInitialize(mapload)
+	. = ..()
+	SSwater_overlays.update_turfs_layers_near_water(src)
+
 //ELEVATOR SHAFT-----------------------------------//
 /turf/open/gm/empty
 	name = "empty space"
@@ -1055,6 +1093,15 @@
 	can_bloody = FALSE
 	supports_surgery = FALSE
 	depth = WATER_DEPTH_INTERMEDIATE //used for water_overlay_effect
+	layer = UNDER_WATER_TURF_LAYER
+
+/turf/open/nostromowater/Initialize(mapload, ...)
+	. = ..()
+	return INITIALIZE_HINT_ROUNDSTART
+
+/turf/open/nostromowater/LateInitialize(mapload)
+	. = ..()
+	SSwater_overlays.update_turfs_layers_near_water(src)
 
 //Ice Colony grounds
 

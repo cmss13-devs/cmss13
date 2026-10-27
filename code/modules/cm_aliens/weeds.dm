@@ -77,7 +77,7 @@
 	if(turf)
 		turf.weeds = src
 		weeded_turf = turf
-		layer = turf.layer == UNDER_WATER_TURF_LAYER ? UNDER_WATER_TURF_LAYER + 0.005 : initial(layer)
+		layer = turf.layer == UNDER_WATER_TURF_LAYER ? UNDER_WATER_WEEDS_LAYER : initial(layer)
 		SEND_SIGNAL(turf, COMSIG_WEEDNODE_GROWTH) // Currently for weed_food wakeup
 
 	// COMSIG_MOVABLE_TURF_ENTERED to handle ChangeTurf

@@ -1,0 +1,4 @@
+author: "Mary-Marilyn"
+delete-after: True
+changes:
+  - rscadd: "Shipside warning shots now have a 1% chance to knock a ceiling pipe down."

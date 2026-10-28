@@ -776,6 +776,18 @@
 /obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/cargo)
+"acY" = (
+/obj/structure/closet,
+/turf/open/floor/shiva/greenfull/west,
+/area/varadero/interior/hall_SE)
+"acZ" = (
+/obj/structure/closet,
+/turf/open/floor/shiva/yellow,
+/area/varadero/interior/electrical)
+"ada" = (
+/obj/structure/closet,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/north)
 "adw" = (
 /turf/closed/wall/r_wall,
 /area/varadero/interior/cargo)
@@ -23428,6 +23440,7 @@
 /obj/structure/barricade/handrail/wire{
 	dir = 4
 	},
+/obj/structure/closet,
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/cargo)
 "suE" = (
@@ -40538,7 +40551,7 @@ lFl
 lFl
 lFl
 huF
-hyr
+ada
 hyr
 acP
 weG
@@ -50272,7 +50285,7 @@ uMu
 uLY
 pEE
 tEJ
-uLY
+acY
 bkM
 pKs
 bkM
@@ -52945,7 +52958,7 @@ leO
 rKL
 mSf
 kCA
-rsB
+acZ
 wOO
 thp
 thp

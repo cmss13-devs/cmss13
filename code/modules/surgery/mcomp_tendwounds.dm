@@ -2,7 +2,7 @@
 	name = "Tend Wounds"
 	possible_locs = DEFENSE_ZONES_LIVING //all hud aiming locations are suitable for yautja to target.
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
-	required_surgery_skill = SKILL_SURGERY_TRAINED
+	required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	var/required_trait = TRAIT_YAUTJA_TECH// Only predators can do this
 
 	pain_reduction_required = 0
@@ -182,7 +182,7 @@
 
 	if(user == target)
 		user.visible_message(SPAN_NOTICE("[user] finishes closing the treated wounds on their body with [tool]."),
-			SPAN_HELPFUL("You finish closing the treated wounds on your body with [tool]"))
+			SPAN_HELPFUL("You finish closing the treated wounds on your body with [tool]."))
 	else
 		user.affected_message(target,
 			SPAN_HELPFUL("You finish closing [target]'s treated wounds with [tool]."),

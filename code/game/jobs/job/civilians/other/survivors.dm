@@ -496,19 +496,33 @@ AddTimelock(/datum/job/civilian/survivor, list(
 
 	latejoin_lockers = list()
 
+	var/list/possible_lockers = list()
+	for(var/obj/structure/closet/locker as anything in GLOB.closet_list)
+		if(!is_ground_level(locker.z) || should_block_game_interaction(locker))
+			continue
+		if(locker.ever_opened)
+			continue
+		if(locker.type != /obj/structure/closet) // TODO: For now we strict type
+			continue
+		if(!locker.store_mobs || locker.wall_mounted || !locker.anchored)
+			continue
+		possible_lockers += locker
+
 	var/list/spawners = available_landmarks
 	if(!insert_present_flag) // generics not relevant if an insert is present
 		spawners |= generic_landmarks
 	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in spawners)
 		var/area/spawner_area = get_area(spawner)
-		for(var/obj/structure/closet/locker as anything in GLOB.closet_list)
+		for(var/obj/structure/closet/locker as anything in possible_lockers)
 			if(locker.loc?.loc != spawner_area)
 				continue
-			if(locker.ever_opened)
-				continue
-			if(!locker.store_mobs || locker.wall_mounted || !locker.anchored || locker.type != /obj/structure/closet) // TODO: For now we strict type
-				continue
 			var/datum/weakref/reference = WEAKREF(locker)
+			LAZYADD(spawner.latejoin_lockers, reference)
+			latejoin_lockers |= reference
+
+		if(!LAZYLEN(spawner.latejoin_lockers) && length(possible_lockers))
+			// Try to ensure every spawner has atleast one latejoin possibility
+			var/datum/weakref/reference = WEAKREF(pick(possible_lockers))
 			LAZYADD(spawner.latejoin_lockers, reference)
 			latejoin_lockers |= reference
 

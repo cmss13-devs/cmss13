@@ -20,6 +20,8 @@
 	var/list/running_round_stats = list()
 	/// The shuttle (if any) spawned by initiate_evacuation
 	var/obj/docking_port/mobile/emergency_response/shuttle
+	/// Whether the queen has been released
+	var/is_queen_released = FALSE
 
 /datum/game_mode/survive/announce()
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("The current map is - [SSmapping.configs[GROUND_MAP].map_name]!"))
@@ -87,6 +89,7 @@
 
 /datum/game_mode/survive/transform_queen(datum/mind/ghost_mind, turf/xeno_turf, hivenumber)
 	var/turf/origin = locate(xeno_turf.x-3, xeno_turf.y-3, xeno_turf.z)
+	var/turf/tunnel_spot = get_step(xeno_turf, EAST)
 	var/datum/map_template/template = SSmapping.map_templates["Queen_Resin.dmm"]
 
 	// Edgecase: Move any living mobs out of the way of the template while it loads
@@ -103,6 +106,10 @@
 	// Move those mobs back
 	for(var/mob/living/obstruction as anything in existing_mobs)
 		obstruction.forceMove(existing_mobs[obstruction])
+
+	// Make a tunnel
+	var/obj/structure/tunnel/tunnel = new(tunnel_spot)
+	tunnel.id = "queencave"
 
 	return ..()
 
@@ -334,6 +341,8 @@
 	return TRUE
 
 /datum/game_mode/survive/proc/release_the_queen()
+	is_queen_released = TRUE
+
 	if(!length(GLOB.marked_atoms_by_id["queen_bubble"]))
 		return
 

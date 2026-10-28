@@ -261,10 +261,17 @@
 		to_chat(user, SPAN_WARNING("The tunnel is too crowded, wait for others to exit!"))
 		return XENO_NO_DELAY_ACTION
 
-	var/tunnel_time = TUNNEL_ENTER_XENO_DELAY
-
 	if(user.banished)
 		return XENO_NO_DELAY_ACTION
+
+	var/is_queen = isqueen(user)
+	var/tunnel_time = TUNNEL_ENTER_XENO_DELAY
+
+	if(is_queen && istype(SSticker.mode, /datum/game_mode/survive))
+		var/datum/game_mode/survive/survive_mode = SSticker.mode
+		if(!survive_mode.is_queen_released)
+			to_chat(user, SPAN_WARNING("It is too early to tunnel out yet."))
+			return XENO_NO_DELAY_ACTION
 
 	if(user.mob_size >= MOB_SIZE_BIG) //Big xenos take WAY longer
 		tunnel_time = TUNNEL_ENTER_BIG_XENO_DELAY
@@ -294,7 +301,7 @@
 
 	user.forceMove(src) //become one with the tunnel
 
-	if(isqueen(user))
+	if(is_queen)
 		var/mob/living/carbon/xenomorph/queen/queen_user = user
 		queen_user.end_temporary_maturity()
 

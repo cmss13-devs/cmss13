@@ -163,6 +163,9 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 						if(!isqueen(xeno))
 							xeno.can_heal = FALSE
 					notify_ghosts(header = "Last Xenomorph", message = "There is only one Xenomorph left: [xeno.name].", source = xeno, action = NOTIFY_ORBIT)
+					if(istype(SSticker.mode, /datum/game_mode/survive))
+						var/datum/game_mode/survive/game_mode = SSticker.mode
+						game_mode.release_the_queen()
 				else if(num_xenos <= 4 && istype(SSticker.mode, /datum/game_mode/survive))
 					var/datum/game_mode/survive/game_mode = SSticker.mode
 					game_mode.release_the_queen()

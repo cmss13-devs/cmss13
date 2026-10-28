@@ -454,7 +454,7 @@
 	layer = DOOR_OPEN_LAYER
 	addtimer(CALLBACK(src, PROC_REF(close)), close_delay, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
-/obj/structure/mineral_door/resin/proc/close_blocked()
+/obj/structure/mineral_door/resin/proc/close_blocked(already_closing)
 	for(var/turf/turf in locs)
 		for(var/mob/living/living_mob in turf)
 			if(living_mob.stat == DEAD)
@@ -467,7 +467,7 @@
 	if(!open || !loc || isSwitchingStates)
 		return //already closed or changing
 	//Can't close if someone is blocking it
-	if(close_blocked())
+	if(close_blocked(already_closing=FALSE))
 		addtimer(CALLBACK(src, PROC_REF(close)), close_delay, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 		return
 
@@ -486,7 +486,7 @@
 	isSwitchingStates = FALSE
 	layer = DOOR_CLOSED_LAYER
 
-	if(close_blocked())
+	if(close_blocked(already_closing=TRUE))
 		open()
 
 /obj/structure/mineral_door/resin/Dismantle(devastated = 0)
@@ -591,6 +591,27 @@
 
 	TryToSwitchState(xeno)
 	return XENO_NONCOMBAT_ACTION
+
+/obj/structure/mineral_door/resin/bone_resin/close_blocked(already_closing)
+	var/list/crushables = list()
+	for(var/turf/turf in locs)
+		for(var/mob/living/living_mob in turf)
+			if(living_mob.stat == DEAD)
+				continue
+			if(!HAS_TRAIT(living_mob, TRAIT_MERGED_WITH_WEEDS))
+				if(!already_closing && ishuman(living_mob))
+					if(!HAS_TRAIT(living_mob, TRAIT_HAULED))
+						crushables += living_mob
+					continue
+				return TRUE
+
+	for(var/mob/living/carbon/human/victim as anything in crushables)
+		victim.apply_damage(15, BRUTE)
+		victim.emote("pain")
+		victim.Stun(1)
+		victim.KnockDown(1)
+		visible_message(SPAN_DANGER("[src] crushes [victim]!"))
+	return FALSE
 
 /obj/structure/mineral_door/resin/bone_resin/attackby(obj/item/W, mob/living/user)
 	return attack_hand(user)

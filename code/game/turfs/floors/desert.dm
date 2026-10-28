@@ -170,14 +170,6 @@
 	turf_flags = TURF_WATER
 	water_type = /turf/open/gm/river/desert/shallow
 
-/turf/open/desert/desert_shore/Initialize(mapload, ...)
-	. = ..()
-	return INITIALIZE_HINT_ROUNDSTART
-
-/turf/open/desert/desert_shore/LateInitialize(mapload)
-	. = ..()
-	SSwater_overlays.update_turfs_layers_near_water(src)
-
 /turf/open/desert/desert_shore/update_icon()
 	..()
 	switch(toxic)
@@ -191,7 +183,7 @@
 			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
 
-/turf/open/desert/desert_shore/get_all_water_icons()
+/turf/open/desert/desert_shore/get_all_possible_icon_files()
 	return list('icons/turf/floors/desert_water.dmi', 'icons/turf/floors/desert_water_transition.dmi', 'icons/turf/floors/desert_water_toxic.dmi')
 
 /turf/open/desert/desert_shore/desert_shore1
@@ -335,7 +327,7 @@
 			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
 
-/turf/open/desert/cave/cave_shore/get_all_water_icons()
+/turf/open/desert/cave/cave_shore/get_all_possible_icon_files()
 	return list('icons/turf/floors/desert_water.dmi', 'icons/turf/floors/desert_water_transition.dmi', 'icons/turf/floors/desert_water_toxic.dmi')
 
 /turf/open/desert/cave/cave_shore/east
@@ -372,7 +364,7 @@
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
 	update_overlays()
 
-/turf/open/gm/river/desert/get_all_water_icons()
+/turf/open/gm/river/desert/get_all_possible_icon_files()
 	return list('icons/turf/floors/desert_water.dmi', 'icons/turf/floors/desert_water_transition.dmi', 'icons/turf/floors/desert_water_toxic.dmi')
 
 //shallow water

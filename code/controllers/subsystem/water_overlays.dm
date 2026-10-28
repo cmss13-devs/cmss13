@@ -6,10 +6,6 @@ SUBSYSTEM_DEF(water_overlays)
 	var/list/water_overlay_icons = list()
 	/// this list gets an entry for each water turf that already has had overlays generated for it
 	var/list/generated_water_overlays = list()
-	/// used and emptied each time update_turfs_layers_near_water() is ran, holds turfs around water we might want to relayer
-	var/list/turfs_to_process = list()
-	/// used and emptied each time update_turfs_layers_near_water() is ran, holds turfs we did alter the layer for so as to not redo
-	var/list/relayered_turfs = list()
 	/// this holds a list of all datum/water_overlay_config types, ordered by sprite size (used for generating the overlays)
 	var/list/configs_by_size = list(
 		"32" = list(),
@@ -60,15 +56,18 @@ SUBSYSTEM_DEF(water_overlays)
 	return potential_open_coastline.depth >= WATER_DEPTH_COAST_INTERMEDIATE
 
 
-/**	update_turfs_layers_near_water()
-*		this proc and those it call go through every turf in the game, and check if its near water
-*		we need to do this because we alter the layer of mob in water so they appear below turfs south of them
-*		but since we dont want this visual for when tall mobs stand on the northern shore of a body of water
-*		we have to change the layer of these turfs to below the mobs' in water
-*		this is fine since turfs are visually rendered below everything usually, changing their layer to further down..
-*		shouldnt affect anything other than making mobs in water not clip below them
-*/
+/**
+ * update_turfs_layers_near_water()
+ * Goes through the given water turf's neighbors and adjusts layering on adjacent non-water turfs.
+ * We lower mob layers while in water so they render under turfs to their south (making them look submerged
+ * under the bank). For the northern shore this would incorrectly make tall mobs standing on land clip under
+ * the water, so those land turfs (and the ones flanking them) are pushed further down instead.
+ * Turfs already sit below everything else visually, so the only effect is preventing the unwanted clip.
+ */
 /datum/controller/subsystem/water_overlays/proc/update_turfs_layers_near_water(turf/water_turf)
+	var/list/turfs_to_process = list()
+	var/list/relayered_turfs = list()
+
 	for(var/direction in GLOB.alldirs)
 		var/turf/found_turf = get_step(water_turf, direction)
 		if(found_turf && !is_water(found_turf))
@@ -81,9 +80,6 @@ SUBSYSTEM_DEF(water_overlays)
 
 	for(var/turf/current_turf as anything in relayered_turfs)
 		current_turf.near_water_layering_cleanup()
-
-	turfs_to_process.Cut()
-	relayered_turfs.Cut()
 
 
 #define ADDITIONAL_DEPTH_OFFSET 3
@@ -106,11 +102,13 @@ SUBSYSTEM_DEF(water_overlays)
 *
 *	ADDITIONAL NOTES:
 *	Because coasts generate overlays based off their water_type and because many coasts share the same depth, instead of having 8 or 12 overlays generated for every coast type we basically only generate 3(one for each coast depth)
-*	@param input_icons should be a list of all the different icons the water turf uses (get_all_water_icons)
+*	@param input_icons should be a list of all the different icons the water turf uses (get_all_possible_icon_files)
 *	@param water_type should be the water_type var all water turfs have
 *	@param input_depth should be the depth var all water turfs have
 */
 /datum/controller/subsystem/water_overlays/proc/generate_water_overlay(list/input_icons, water_type, input_depth)
+	if(input_depth >= WATER_DEPTH_COAST_DEPTHLESS)
+		return
 	if(generated_water_overlays["[water_type]_[input_depth]"])
 		return
 	generated_water_overlays["[water_type]_[input_depth]"] = TRUE

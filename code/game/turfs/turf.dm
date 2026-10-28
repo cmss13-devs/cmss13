@@ -138,14 +138,14 @@
 */
 /turf/proc/near_water_layering_fix(list/already_altered)	//so big mobs dont clip into the ground when standing in water
 	var/list/return_list = list()							//and they can still look like they're below turfs south of them
-	if(SSwater_overlays.is_water(src) || src.layer == UNDER_WATER_TURF_LAYER)
+	if(SSwater_overlays.is_water(src) || layer == UNDER_WATER_TURF_LAYER)
 		return return_list
 	for(var/direction_check in (GLOB.cardinals - NORTH))
 		var/turf/neighbor = get_step(src, direction_check)
 		if(neighbor && SSwater_overlays.is_water(neighbor))
 			if(!(src in return_list))
 				set_below_watermobs_visually(TRUE)
-			return_list += src
+				return_list += src
 			var/turf/rightwards_turf = get_step(src, turn(direction_check, 90))
 			if(rightwards_turf && !SSwater_overlays.is_water(rightwards_turf) && !(rightwards_turf in return_list) && !(rightwards_turf in already_altered))
 				rightwards_turf.set_below_watermobs_visually(TRUE)

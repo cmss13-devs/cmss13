@@ -22,8 +22,14 @@
 	update_water_element()
 	update_icon()
 
-	if(depth < WATER_DEPTH_COAST_DEPTHLESS && water_type)
-		SSwater_overlays.generate_water_overlay(get_all_water_icons(), water_type, depth)
+	if(SSwater_overlays.is_water(src))
+		SSwater_overlays.generate_water_overlay(get_all_possible_icon_files(), water_type, depth)
+		return INITIALIZE_HINT_ROUNDSTART	// Defer the neighbor-layer fix until every turf exists
+
+/turf/open/LateInitialize(mapload)
+	. = ..()
+	if(SSwater_overlays.is_water(src))	//double checking here in case some subtype uses LateInitialize()
+		SSwater_overlays.update_turfs_layers_near_water(src)
 
 /turf/open/update_icon()
 	update_overlays()
@@ -158,7 +164,7 @@
 		RemoveElement(/datum/element/water_turf)
 
 /turf/open/proc/set_covered(setting)
-	if(setting)
+	if(!isnull(setting))
 		covered = setting
 	update_water_element()
 	update_overlays()
@@ -190,8 +196,8 @@
 	update_icon()
 	update_water_element(FALSE)
 
-
-/turf/open/proc/get_all_water_icons()
+/// Returns returns a list of all values var/icon is set to over the course of the lifetime of this turf. Mostly for water turfs that change their icon when purified (water overlays needs to know)
+/turf/open/proc/get_all_possible_icon_files()
 	return list(icon)
 
 // Black & invisible to the mouse. used by vehicle interiors
@@ -617,14 +623,6 @@
 	depth = WATER_DEPTH_COAST_INTERMEDIATE
 	layer = UNDER_WATER_TURF_LAYER
 
-/turf/open/gm/grass/grassbeach/Initialize(mapload, ...)
-	. = ..()
-	return INITIALIZE_HINT_ROUNDSTART
-
-/turf/open/gm/grass/grassbeach/LateInitialize(mapload)
-	. = ..()
-	SSwater_overlays.update_turfs_layers_near_water(src)
-
 /turf/open/gm/grass/grassbeach/north
 	depth = WATER_DEPTH_COAST_INTERMEDIATE
 
@@ -642,14 +640,6 @@
 
 /turf/open/gm/grass/gbcorner
 	icon_state = "gbcorner"
-
-/turf/open/gm/grass/gbcorner/Initialize(mapload, ...)
-	. = ..()
-	return INITIALIZE_HINT_ROUNDSTART
-
-/turf/open/gm/grass/gbcorner/LateInitialize(mapload)
-	. = ..()
-	SSwater_overlays.update_turfs_layers_near_water(src)
 
 /turf/open/gm/grass/gbcorner/north_west
 	depth = WATER_DEPTH_COAST_SHALLOW
@@ -799,15 +789,6 @@
 	layer = UNDER_WATER_TURF_LAYER
 	turf_flags = TURF_WATER
 	water_type = /turf/open/gm/river
-
-/turf/open/gm/river/Initialize(mapload, ...)
-	. = ..()
-	update_icon()
-	return INITIALIZE_HINT_ROUNDSTART
-
-/turf/open/gm/river/LateInitialize(mapload)
-	. = ..()
-	SSwater_overlays.update_turfs_layers_near_water(src)
 
 /turf/open/gm/river/update_icon()
 	..()
@@ -994,14 +975,6 @@
 	turf_flags = TURF_WATER
 	water_type = /turf/open/gm/river
 
-/turf/open/gm/coast/Initialize(mapload, ...)
-	. = ..()
-	return INITIALIZE_HINT_ROUNDSTART
-
-/turf/open/gm/coast/LateInitialize(mapload)
-	. = ..()
-	SSwater_overlays.update_turfs_layers_near_water(src)
-
 /turf/open/gm/coast/north
 	depth = WATER_DEPTH_COAST_INTERMEDIATE
 
@@ -1066,14 +1039,6 @@
 	fishing_allowed = TRUE
 	depth = WATER_DEPTH_INTERMEDIATE //used for the offset of mobs that enter it (see water_overlay_effect.dm)
 
-/turf/open/gm/riverdeep/Initialize(mapload, ...)
-	. = ..()
-	return INITIALIZE_HINT_ROUNDSTART
-
-/turf/open/gm/riverdeep/LateInitialize(mapload)
-	. = ..()
-	SSwater_overlays.update_turfs_layers_near_water(src)
-
 //ELEVATOR SHAFT-----------------------------------//
 /turf/open/gm/empty
 	name = "empty space"
@@ -1094,14 +1059,6 @@
 	supports_surgery = FALSE
 	depth = WATER_DEPTH_INTERMEDIATE //used for water_overlay_effect
 	layer = UNDER_WATER_TURF_LAYER
-
-/turf/open/nostromowater/Initialize(mapload, ...)
-	. = ..()
-	return INITIALIZE_HINT_ROUNDSTART
-
-/turf/open/nostromowater/LateInitialize(mapload)
-	. = ..()
-	SSwater_overlays.update_turfs_layers_near_water(src)
 
 //Ice Colony grounds
 

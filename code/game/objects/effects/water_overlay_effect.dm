@@ -68,7 +68,7 @@
 		var/turf/open/desert/desert_shore/toxic_turf = water_turf
 		toxic_key = toxic_turf.toxic
 	else if(istype(water_turf, /turf/open/desert/cave/cave_shore))
-		var/turf/open/desert/desert_shore/toxic_turf = water_turf
+		var/turf/open/desert/cave/cave_shore/toxic_turf = water_turf
 		toxic_key = toxic_turf.toxic
 
 	var/icon_size = config.icon_size

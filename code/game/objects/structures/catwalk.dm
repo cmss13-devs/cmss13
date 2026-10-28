@@ -19,7 +19,6 @@
 		my_open_turf.stop_being_water()
 
 /obj/structure/catwalk/Destroy()
-	. = ..()
 	var/turf/my_turf = get_turf(src)
 	my_turf?.turf_flags &= ~TURF_CATWALKED
 	return ..()

@@ -1769,11 +1769,6 @@
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/nw_rockies)
-"agj" = (
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
-/turf/open/floor/corsat,
-/area/lv522/atmos/reactor_garage)
 "agk" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/auto_turf/shale/layer1,
@@ -64455,7 +64450,7 @@ saC
 oXk
 wBR
 aeH
-agj
+rKS
 fuf
 qqJ
 gfu
@@ -64661,7 +64656,7 @@ iyE
 eGs
 rdf
 xXV
-aeH
+agf
 rKS
 rKS
 agb

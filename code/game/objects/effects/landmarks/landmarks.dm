@@ -656,6 +656,8 @@
 	var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/commstower = new (loc)
 	if(broken_on_spawn)
 		commstower.update_health(damage = health) //fuck it up
+	if(MODE_HAS_FLAG(MODE_SURVIVE))
+		new /obj/item/pamphlet/skill/comms_repair(loc) // To ensure theres atleast one that can work on it
 	qdel(src)
 
 /obj/effect/landmark/static_comms/net_one

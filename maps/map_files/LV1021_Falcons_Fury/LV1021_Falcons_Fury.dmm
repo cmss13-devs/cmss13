@@ -20997,21 +20997,6 @@
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_north)
-"baQ" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766";
-	dir = 8;
-	pixel_y = 6;
-	pixel_x = -17
-	},
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766";
-	pixel_x = -20;
-	pixel_y = 19;
-	dir = 10
-	},
-/turf/open/auto_turf/lv_sand_alt/layer0,
-/area/lv1021/indoors/caves/cave_north)
 "baR" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 10
@@ -79887,10 +79872,10 @@ wzQ
 aob
 baF
 aob
-wzQ
+abB
 abB
 aTX
-wzQ
+abB
 aol
 pPm
 jIA
@@ -80048,13 +80033,13 @@ spz
 arh
 aob
 aob
-wzQ
+aob
 aob
 baK
 baI
 aob
 aob
-wzQ
+abB
 abB
 bay
 baD
@@ -80386,7 +80371,7 @@ hXq
 wzQ
 aob
 aob
-wzQ
+aob
 wzQ
 wzQ
 wzQ
@@ -80597,7 +80582,7 @@ wzQ
 wzQ
 aVa
 pPm
-wzQ
+pPm
 wzQ
 wzQ
 abq
@@ -80887,7 +80872,7 @@ hXq
 hXq
 hXq
 baG
-wzQ
+aob
 wzQ
 wzQ
 mnd
@@ -81054,7 +81039,7 @@ hXq
 aob
 lzj
 baJ
-wzQ
+aob
 wzQ
 wzQ
 mnd
@@ -82882,8 +82867,8 @@ baW
 aob
 wzQ
 wzQ
-aob
-aob
+wzQ
+hXq
 hXq
 hXq
 aob
@@ -83050,7 +83035,7 @@ baM
 aob
 aob
 aob
-baQ
+baG
 aob
 baE
 aob

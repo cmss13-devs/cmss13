@@ -54,6 +54,7 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 		folded = FALSE
 		icon_state = "map"
 		item_state = being_studied ? "[icon_state]_studied" : "map"	// If we were studying it, keep the studied in-hand; otherwise normal map state.
+		playsound(user.loc, "map_unfold", 25, 1, 3)
 	else
 		to_chat(user, SPAN_INFO("You fold up the map; it's now much smaller."))
 		w_class = SIZE_TINY
@@ -61,6 +62,7 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 		icon_state = "map_folded"
 		item_state = "" // no distinct folded in-hand
 		being_studied = FALSE
+		playsound(user.loc, "map_fold", 25, 1, 3)
 
 	update_held_sprites(user)
 

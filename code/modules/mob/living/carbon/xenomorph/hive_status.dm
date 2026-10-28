@@ -1829,7 +1829,7 @@
 
 	var/survive_mode = MODE_HAS_FLAG(MODE_SURVIVE)
 	var/relevant_z = force || is_mainship_level(person_loc.z) || (survive_mode && is_ground_level(person_loc.z))
-	if(SSticker.mode?.is_in_endgame && SSticker.current_state != GAME_STATE_FINISHED && relevant_z)
+	if((SSticker.mode?.is_in_endgame || survive_mode) && SSticker.current_state != GAME_STATE_FINISHED && relevant_z)
 		var/mob/last_living_human
 		var/human_count = 0
 

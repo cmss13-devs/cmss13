@@ -231,3 +231,10 @@
   - balance: Hideable xenos now unhide when performing any busy action, which is any
       action that creates a spinning progress circle.
   - bugfix: Fixed playable huggers being able to infect you as they die.
+2026-10-28:
+  Ammoniacres:
+  - balance: removed the Trapper boiler strain.
+  carlarctg:
+  - rscdel: Removes heavy nest and allows nesting normally for predators
+  kleinerstation13:
+  - balance: Increased the damage of the M20A colony rifle

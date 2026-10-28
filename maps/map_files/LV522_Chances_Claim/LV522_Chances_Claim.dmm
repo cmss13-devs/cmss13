@@ -1769,16 +1769,16 @@
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/nw_rockies)
-"agk" = (
+"agj" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/containers)
-"agl" = (
+"agk" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/containers)
-"agm" = (
+"agl" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/cargo_intake)
@@ -63830,7 +63830,7 @@ dXX
 saC
 saC
 saC
-agm
+agl
 agf
 agb
 fsV
@@ -77427,8 +77427,8 @@ cpy
 cpy
 cpy
 ien
-agl
 agk
+agj
 lBM
 pvZ
 pvZ

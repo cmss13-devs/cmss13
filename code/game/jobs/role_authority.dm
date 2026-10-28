@@ -279,8 +279,12 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(istype(hive))
 		// Now we take spare unfilled xeno slots and make them larva
 		if(istype(XJ))
-			hive.stored_larva += max(0, (XJ.total_positions - XJ.current_positions) \
-			+ (XJ.calculate_extra_spawn_positions(alternate_option_assigned)))
+			hive.stored_larva += max(0, (XJ.total_positions - XJ.current_positions) + (XJ.calculate_extra_spawn_positions(alternate_option_assigned)))
+			SSticker.mode.latejoin_tally += XJ.calculate_remainder_spawn_positions(GLOB.players_preassigned + alternate_option_assigned)
+			if(SSticker.mode.latejoin_tally - SSticker.mode.latejoin_larva_used >= SSticker.mode.latejoin_larva_drop_early)
+				SSticker.mode.latejoin_larva_used += SSticker.mode.latejoin_larva_drop_early
+				hive.stored_larva++
+			hive.hive_ui.update_burrowed_larva()
 
 		// No roundstart queen? We need a drone to evolve (and will refund their larva)
 		var/datum/job/antag/xenos/queen/queen_job = temp_roles_for_mode[JOB_XENOMORPH_QUEEN]

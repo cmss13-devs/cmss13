@@ -1642,7 +1642,7 @@
 
 /obj/item/weapon/gun/rifle/type71/flamer
 	name = "\improper Type 71-F pulse rifle"
-	desc = "An uncommon variant of the UPPAC SOF's standard rifle, the Type 71-F trades out the commonly attached grenade launcher with an underbarrel flamethrower, allowing greater close-quarters capabilities and foliage clearage."
+	desc = "An uncommon variant of the UPPAC SOF's standard rifle, the Type 71-F trades out the commonly attached grenade launcher for an underbarrel flamethrower, allowing greater close-quarters capabilities and foliage clearage."
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight, // Rail
 		/obj/item/attachable/magnetic_harness,
@@ -1692,8 +1692,8 @@
 
 /obj/item/weapon/gun/rifle/type71/carbine
 	name = "\improper Type 71-C pulse carbine"
-	desc = "A carbine variant of the UPPAC SOF's standard rifle, the Type 71-C is a smaller and lighter version of the standard Type 71, primarily issued to troops intended to be going into close quarters, backline troops, and vehicle crews. It fires faster than a standard rifle, but the lower muzzle velocity lowers damage output."
-	desc_lore = "The Type 71-C exists originally as a personal defense weapon for troops not expected to get into contact, like backline logistics or vehicle crews, however the shortening of the gas-system in the design of the weapon led to a noticibly higher fire-rate. This combined with the standard explosive-filled rounds exploding with the same force even with the lower muzzle velocity led to the 71-C's adoption as a general use close-quarters weapon. \nIt is officially recommended to fire in short bursts unless otherwise necessary, prolonged fire has been known to greatly increase wear on the carbine, and in certain cases cause catastrophic malfunctions."
+	desc = "A carbine variant of the UPPAC SOF's standard rifle, the Type 71-C is a smaller and lighter version of the standard Type 71, primarily issued to non-combat troops, or those expecting close quarters fighting. It fires faster than the standard rifle, but the shorter barrel lowers damage output."
+	desc_lore = "The Type 71-C was initially developed as a personal defense weapon for troops not expected to frequently engage in combat, such as logistics or vehicle crews. Features such as an overall lighter and smaller frame as well as a faster fire-rate than the standard rifle have left it a popular choice with even frontline troops who are going into close quarters, or simply just want a lighter weapon."
 	icon_state = "type71c"
 	item_state = "type71c"
 

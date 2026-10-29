@@ -3087,6 +3087,13 @@
 	pixel_x = -6;
 	pixel_y = 8
 	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5
+	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5;
+	pixel_x = -5
+	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_medbay)
 "ahh" = (
@@ -5822,6 +5829,22 @@
 /obj/structure/platform_decoration/metal/almayer_smooth/north,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/port_fore)
+"aoA" = (
+/obj/structure/machinery/door/airlock/almayer/command/reinforced{
+	name = "\improper Combat Information Center"
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "CIC Lockdown";
+	name = "\improper Combat Information Center Blast Door"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "CIC_Conference";
+	name = "\improper CIC Conference Shutters";
+	dir = 4
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/command/cicconference)
 "aoB" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 8
@@ -38560,6 +38583,17 @@
 	pixel_x = 4;
 	pixel_y = 8
 	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5;
+	pixel_x = -5
+	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5
+	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5;
+	pixel_x = 5
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/charlie)
 "bRg" = (
@@ -39820,6 +39854,17 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5;
+	pixel_x = -5
+	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5
+	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5;
+	pixel_x = 5
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
 "bTO" = (
@@ -39949,7 +39994,8 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/office/lobby_door,
 /obj/structure/machinery/door/airlock/almayer/glass{
 	name = "\improper Weyland-Yutani Office Reception";
-	dir = 2
+	dir = 2;
+	id_tag = "cl_office_door"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/corporateliaison)
@@ -40786,8 +40832,8 @@
 	id = "Containment Cell 3";
 	dir = 2;
 	req_one_access = list(28,206,207);
-	queen_pryable = 0;
-	locked = 1
+	locked = 1;
+	queen_pryable = 0
 	},
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
@@ -43054,8 +43100,8 @@
 	id = "Containment Cell 2";
 	dir = 2;
 	req_one_access = list(28,206,207);
-	queen_pryable = 0;
-	locked = 1
+	locked = 1;
+	queen_pryable = 0
 	},
 /obj/structure/machinery/door/poddoor/almayer/biohazard/white{
 	dir = 4
@@ -43254,6 +43300,13 @@
 /area/almayer/hallways/hangar)
 "caO" = (
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5
+	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5;
+	pixel_x = -5
+	},
 /turf/open/floor/almayer/silver/west,
 /area/almayer/living/briefing)
 "caP" = (
@@ -49844,6 +49897,13 @@
 	pixel_y = 13
 	},
 /obj/structure/machinery/light,
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5
+	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5;
+	pixel_x = -5
+	},
 /turf/open/floor/almayer/blue,
 /area/almayer/living/bridgebunks)
 "cpk" = (
@@ -58427,6 +58487,13 @@
 	pixel_x = -5;
 	pixel_y = 8
 	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5
+	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5;
+	pixel_x = -5
+	},
 /turf/open/floor/almayer/red/south,
 /area/almayer/shipboard/brig/general_equipment)
 "fyD" = (
@@ -66960,6 +67027,13 @@
 	pixel_x = -6;
 	pixel_y = -9
 	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5
+	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5;
+	pixel_x = -5
+	},
 /turf/open/floor/almayer/mono,
 /area/almayer/engineering/upper_engineering/port)
 "jnD" = (
@@ -66991,12 +67065,12 @@
 /area/almayer/underdeck/req)
 "jnX" = (
 /obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
 	id = "CIC Lockdown";
 	name = "\improper Combat Information Center Blast Door"
 	},
-/obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/plating,
 /area/almayer/command/cic)
 "jot" = (
@@ -68947,6 +69021,17 @@
 /area/almayer/engineering/lower/engine_core)
 "kiM" = (
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5;
+	pixel_x = -5
+	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5
+	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5;
+	pixel_x = 5
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
 "kiR" = (
@@ -70149,8 +70234,16 @@
 	pixel_x = 14;
 	pixel_y = 20
 	},
-/obj/item/trash/USCMtray{
-	pixel_y = 7
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5;
+	pixel_x = -5
+	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5
+	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5;
+	pixel_x = 5
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/alpha)
@@ -71661,6 +71754,11 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
 	name = "\improper Combat Information Center"
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "CIC Lockdown";
+	name = "\improper Combat Information Center Blast Door"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "CIC_Conference";
@@ -73211,6 +73309,17 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/mirror{
 	pixel_y = 32
+	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5;
+	pixel_x = -5
+	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5
+	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5;
+	pixel_x = 5
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/alpha)
@@ -84736,7 +84845,8 @@
 	},
 /obj/item/desk_bell{
 	pixel_y = 11;
-	pixel_x = -7
+	pixel_x = -7;
+	anchored = 1
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "IO Lab Shutters";
@@ -85932,6 +86042,10 @@
 /obj/item/trash/cigbutt{
 	pixel_x = 1;
 	pixel_y = 5
+	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5;
+	pixel_x = -5
 	},
 /turf/open/floor/almayer/green/southeast,
 /area/almayer/squads/req)
@@ -87703,6 +87817,17 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 2
+	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5;
+	pixel_x = -5
+	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5
+	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5;
+	pixel_x = 5
 	},
 /turf/open/floor/almayer/blue,
 /area/almayer/squads/delta)
@@ -92351,16 +92476,20 @@
 /area/almayer/medical/medical_science)
 "uuj" = (
 /obj/structure/surface/table/almayer,
-/obj/item/trash/USCMtray{
-	pixel_x = 5
-	},
-/obj/item/reagent_container/food/condiment/hotsauce/cholula{
-	pixel_x = -12;
-	pixel_y = 14
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
 	pixel_x = -1
+	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5;
+	pixel_x = -5
+	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5
+	},
+/obj/item/lore_book/marine_cryosleep{
+	ground_offset_x = 5;
+	pixel_x = 5
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/bravo)
@@ -203543,7 +203672,7 @@ atb
 aAs
 lso
 aAs
-yaX
+aoA
 aAs
 atb
 awz

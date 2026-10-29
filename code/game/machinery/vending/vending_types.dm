@@ -541,6 +541,7 @@
 		/obj/item/device/radio/headset = 6,
 		/obj/item/device/flashlight = 4,
 		/obj/item/tool/crew_monitor = 1,
+		/obj/item/lore_book/marine_cryosleep = 50,
 	)
 	contraband = list(/obj/item/storage/fancy/cigar = 2,/obj/item/tool/lighter/zippo = 2)
 

@@ -26,3 +26,5 @@
 #define MAX_NAME_LEN 28
 #define MAX_PRESET_NAME_LEN 20
 #define MAX_MESSAGE_CHUNKS 20
+
+#define WRAP_BRACKETS(to_resolve) "\[[to_resolve]\]"

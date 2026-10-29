@@ -61,3 +61,6 @@
 
 ///from /mob/living/proc/set_lying_angle
 #define COMSIG_LIVING_SET_LYING_ANGLE "living_set_lying_angle"
+
+///from do_after
+#define COMSIG_LIVING_PRE_DOAFTER "living_pre_doafter"

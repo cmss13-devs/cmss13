@@ -90,6 +90,7 @@
 /// If the gun can perform a warning shot
 #define GUN_CAN_WARNING_SHOT (1<<20)
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
+#define DIMMED_RAIL_LIGHT_MULT 0.85 // As per maintainer request, weapons in the suit slot or back slot will have their rail flashlights dimmed by 25%
 
 #define USES_STREAKS (1<<0)
 #define DANGEROUS_TO_ONEHAND_LEVER (1<<1)

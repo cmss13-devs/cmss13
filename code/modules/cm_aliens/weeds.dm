@@ -388,6 +388,10 @@
 	if(explo_proof)
 		return FALSE
 
+	// Allows mops and soap to clean the tile under the weeds
+	if(istype(attacking_item, /obj/item/tool/mop) || istype(attacking_item, /obj/item/tool/soap))
+		return FALSE
+
 	if(QDELETED(attacking_item) || QDELETED(user) || (attacking_item.flags_item & NOBLUDGEON))
 		return 0
 
@@ -583,6 +587,8 @@
 	// Make all the children look for a new parent node
 	for(var/obj/effect/alien/weeds/child as anything in children)
 		remove_child(child)
+		if(QDELETED(child))
+			continue
 		addtimer(CALLBACK(child, PROC_REF(avoid_orphanage)), WEED_BASE_DECAY_SPEED + rand(0, 1 SECONDS)) // Slight variation whilst decaying
 
 	. = ..()

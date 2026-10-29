@@ -544,6 +544,9 @@
 			// Don't need weakrefs to this or the hive core, since there's only one possible target.
 			options["Queen"] = list(null, TRACKER_QUEEN)
 
+		if(user.hive.living_xeno_king)
+			options["King"] = list(user.hive.living_xeno_king, TRACKER_KING)
+
 		if(user.hive.hive_location)
 			options["Hive Core"] = list(null, TRACKER_HIVE)
 
@@ -567,7 +570,7 @@
 	if(HAS_TRAIT(user, TRAIT_ABILITY_BURROWED) || user.is_mob_incapacitated() || user.buckled)
 		return FALSE
 	//Xenos should not be able to track tunnels. Queen's weakref is equal to null if selected.
-	if(tracker_type != TRACKER_LEADER || !tracking_ref)
+	if((tracker_type != TRACKER_LEADER && tracker_type  != TRACKER_KING) || !tracking_ref)
 		user.overwatch(user.hive.living_xeno_queen)
 		return
 	user.overwatch(tracking_ref.resolve())

@@ -588,6 +588,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(prefs)
 		prefs.owner = null
 		QDEL_NULL(prefs.preview_dummy)
+		QDEL_NULL(prefs.preview_front)
+		QDEL_NULL(prefs.rotate_left)
+		QDEL_NULL(prefs.rotate_right)
 
 	if(admin_holder)
 		admin_holder.owner = null

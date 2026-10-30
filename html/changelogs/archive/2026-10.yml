@@ -238,3 +238,8 @@
   - rscdel: Removes heavy nest and allows nesting normally for predators
   kleinerstation13:
   - balance: Increased the damage of the M20A colony rifle
+2026-10-30:
+  Sulaboy:
+  - rscadd: Adds Autoinjector Box
+  - balance: Reduces plastic value of Vial Box print 2500 to 1250
+  - balance: Reduces plastic value of Vial Box recycle 2000 to 1000

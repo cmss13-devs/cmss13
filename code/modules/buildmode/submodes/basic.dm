@@ -117,7 +117,7 @@
 				var/atom/built_atom = new build_picked(get_turf(clicked_atom))
 				if(picked_option != "Reinforced Table")
 					built_atom.setDir(BM.build_dir)
-	if(istype(clicked_atom, /obj))
+	else if(istype(clicked_atom, /obj))
 		var/obj/clicked_object = clicked_atom
 		var/destruction_switch = "Make Indestructible"
 		if(clicked_atom.unacidable || clicked_atom.explo_proof || clicked_object.health == -1)

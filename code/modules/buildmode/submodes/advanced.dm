@@ -23,16 +23,16 @@
 	var/list/must_include = list("icon_state", "dir")
 
 /datum/buildmode_mode/advanced/change_settings(client/c)
-	var/target_path = input(c, "Enter typepath:", "Typepath", "/obj/structure/closet")
+	var/target_path = tgui_input_text(c, "Enter typepath:", "Typepath", "/obj/structure/closet")
 	objholder = text2path(target_path)
 	if(!ispath(objholder))
 		objholder = pick_closest_path(target_path)
 		if(!objholder)
-			alert("No path was selected")
+			tgui_alert(c, "No path was selected")
 			return
 		else if(ispath(objholder, /area))
 			objholder = null
-			alert("That path is not allowed.")
+			tgui_alert(c, "That path is not allowed.")
 			return
 
 /datum/buildmode_mode/advanced/when_clicked(client/c, params, obj/object)
@@ -47,7 +47,7 @@
 			objholder = object.type
 			if(shift_click)
 				copied_vars = filter_vars(object)
-			to_chat(c, SPAN_NOTICE("[initial(object.name)] ([object.type]) selected."))
+			to_chat(c, SPAN_NOTICE("[initial(object.name)] ([object.type]) selected[shift_click ? " with variables." : "."]"))
 		else
 			to_chat(c, SPAN_NOTICE("[initial(object.name)] is not a turf, object, or mob! Please select again."))
 	else if(left_click)

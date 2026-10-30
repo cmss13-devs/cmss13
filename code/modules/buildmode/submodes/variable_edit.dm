@@ -21,7 +21,7 @@
 	if(!check_rights(R_DEBUG, FALSE))
 		return
 
-	var/list/locked = list("vars", "key", "ckey", "client", "icon")
+	var/list/locked = list("vars", "key", "ckey", "client", "persistent_ckey", "username")
 	selected_key = tgui_input_text(c, "Enter variable name:", "Variable Name", "name")
 	if(selected_key in locked)
 		to_chat(c, SPAN_WARNING("Editing [selected_key] is not allowed."))

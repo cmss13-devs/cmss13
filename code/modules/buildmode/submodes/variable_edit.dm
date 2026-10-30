@@ -27,9 +27,11 @@
 		to_chat(c, SPAN_WARNING("Editing [selected_key] is not allowed."))
 		Reset()
 		return
-	var/list/types = list(VV_NUM, VV_TEXT, VV_ICON, VV_COLOR, VV_COLOR_MATRIX, VV_ATOM_REFERENCE, VV_DATUM_REFERENCE, VV_MOB_REFERENCE, VV_NULL, VV_INFINITY, VV_WEAKREF, VV_MATRIX)
+	var/list/types = list(VV_NUM, VV_TEXT, VV_ICON, VV_COLOR, VV_COLOR_MATRIX, VV_ATOM_REFERENCE, VV_DATUM_REFERENCE, VV_MOB_REFERENCE, VV_ATOM_TYPE, VV_DATUM_TYPE, VV_TYPE, VV_NULL, VV_INFINITY, VV_WEAKREF)
 	if(selected_key in GLOB.bitfields)
 		types += VV_BITFIELD
+	if(c.admin_holder.marked_datum)
+		types += VV_MARKED_DATUM
 	var/type = tgui_input_list(c, "Select variable type:", "Type", types)
 	if(!type)
 		return

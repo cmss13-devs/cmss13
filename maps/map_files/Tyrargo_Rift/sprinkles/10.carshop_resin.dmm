@@ -366,7 +366,7 @@
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/tyrargo/indoors/admin/ground)
 "pR" = (
@@ -397,8 +397,8 @@
 /area/tyrargo/outdoors/colony_streets/north)
 "qu" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north)
 "qw" = (
@@ -592,7 +592,7 @@
 /area/tyrargo/indoors/gararge/ground)
 "wz" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/tyrargo/indoors/admin/ground)
 "wE" = (
@@ -605,7 +605,7 @@
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/ammo_magazine/rifle/ar10,
 /turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/tyrargo/indoors/admin/ground)
@@ -750,7 +750,7 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north)
 "BS" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_exterior/north)
 "Cd" = (
@@ -991,7 +991,7 @@
 /turf/open/floor/strata/orange_edge/west,
 /area/tyrargo/indoors/admin/ground)
 "JT" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/marked,
 /area/tyrargo/indoors/admin/ground)
 "Kh" = (
@@ -1088,7 +1088,7 @@
 /area/tyrargo/outdoors/colony_exterior/north)
 "Nw" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/weapon/gun/rifle/ar10{
 	pixel_y = -3;
 	pixel_x = -1
@@ -1142,8 +1142,8 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north)
 "PX" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/north)
 "Qg" = (
@@ -1154,7 +1154,7 @@
 /turf/open/asphalt,
 /area/tyrargo/indoors/gararge/ground)
 "Qq" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/tyrargo/indoors/admin/ground)
@@ -1402,7 +1402,7 @@
 /area/tyrargo/outdoors/colony_streets/north)
 "Zd" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north)
 "Zo" = (

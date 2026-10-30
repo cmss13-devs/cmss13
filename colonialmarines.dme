@@ -1202,6 +1202,7 @@
 #include "code\game\objects\effects\decals\remains.dm"
 #include "code\game\objects\effects\decals\strata_decals.dm"
 #include "code\game\objects\effects\decals\warning_stripes.dm"
+#include "code\game\objects\effects\decals\cleanable\casings.dm"
 #include "code\game\objects\effects\decals\cleanable\cleanable.dm"
 #include "code\game\objects\effects\decals\cleanable\fuel.dm"
 #include "code\game\objects\effects\decals\cleanable\misc.dm"

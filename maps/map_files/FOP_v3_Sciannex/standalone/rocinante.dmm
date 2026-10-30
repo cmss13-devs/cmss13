@@ -1,30 +1,30 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/plating/panelscorched,
 /area/fiorina/station/clf_ship)
 "ab" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/platingdmg3,
 /area/fiorina/station/clf_ship)
 "ac" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/damaged3/west,
 /area/fiorina/station/clf_ship)
 "ad" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/panelscorched,
 /area/fiorina/station/park)
 "ae" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg3,
 /area/fiorina/station/park)
 "af" = (
@@ -99,7 +99,7 @@
 	},
 /area/fiorina/station/clf_ship)
 "ap" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 1
 	},
@@ -125,10 +125,10 @@
 /turf/open/floor/plating,
 /area/fiorina/station/clf_ship)
 "as" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating,
 /area/fiorina/station/clf_ship)
 "at" = (
@@ -140,9 +140,9 @@
 /turf/open/floor/plating,
 /area/fiorina/station/park)
 "av" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/warnplate/north,
 /area/fiorina/station/clf_ship)
 "aw" = (
@@ -176,8 +176,8 @@
 /area/fiorina/station/park)
 "aB" = (
 /obj/item/stack/rods,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg3,
 /area/fiorina/station/park)
 "aC" = (
@@ -190,10 +190,10 @@
 /turf/open/floor/almayer/green/northeast,
 /area/fiorina/station/clf_ship)
 "aD" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/panelscorched,
 /area/fiorina/station/park)
 "aE" = (
@@ -278,7 +278,7 @@
 /turf/open/floor/delivery,
 /area/fiorina/station/clf_ship)
 "ds" = (
-/obj/item/ammo_casing/shell{
+/obj/effect/decal/cleanable/ammo_casing/shell{
 	icon_state = "shell_9_1"
 	},
 /obj/effect/spawner/random/gun/shotgun/highchance,
@@ -615,8 +615,8 @@
 /turf/open/floor/almayer/orange/northeast,
 /area/fiorina/station/clf_ship)
 "mj" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating,
 /area/fiorina/station/clf_ship)
 "mw" = (
@@ -626,9 +626,9 @@
 /turf/open/floor/almayer/green/east,
 /area/fiorina/station/clf_ship)
 "mG" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/platebot,
 /area/fiorina/station/clf_ship)
 "mM" = (
@@ -693,8 +693,8 @@
 /turf/open/floor/plating/panelscorched,
 /area/fiorina/station/clf_ship)
 "nC" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/warnplate/north,
 /area/fiorina/station/clf_ship)
 "nD" = (
@@ -704,7 +704,7 @@
 	pixel_y = 4
 	},
 /obj/effect/landmark/corpsespawner/prison_security,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/panelscorched,
 /area/fiorina/station/clf_ship)
 "nF" = (
@@ -807,7 +807,7 @@
 /area/fiorina/station/clf_ship)
 "ry" = (
 /obj/effect/landmark/corpsespawner/clf,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating,
 /area/fiorina/station/clf_ship)
@@ -874,9 +874,9 @@
 	dir = 4;
 	icon_state = "metal_1"
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating,
 /area/fiorina/station/clf_ship)
 "vm" = (
@@ -890,9 +890,9 @@
 /obj/item/stack/rods,
 /obj/effect/landmark/corpsespawner/clf,
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating,
 /area/fiorina/station/clf_ship)
 "vz" = (
@@ -983,7 +983,7 @@
 /area/fiorina/station/clf_ship)
 "yw" = (
 /obj/item/stack/rods,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/warnplate/north,
 /area/fiorina/station/clf_ship)
 "yx" = (
@@ -1008,14 +1008,14 @@
 /area/fiorina/station/clf_ship)
 "zy" = (
 /obj/item/ammo_magazine/smg/fp9000,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating,
 /area/fiorina/station/clf_ship)
 "zM" = (
 /obj/item/stack/rods,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg3,
 /area/fiorina/station/clf_ship)
 "zY" = (
@@ -1038,7 +1038,7 @@
 /turf/open/floor/prison/darkbrown2/north,
 /area/fiorina/station/park)
 "Av" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
@@ -1089,7 +1089,7 @@
 /area/fiorina/station/clf_ship)
 "BS" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/platebot,
 /area/fiorina/station/clf_ship)
 "BZ" = (
@@ -1144,7 +1144,7 @@
 /area/fiorina/station/clf_ship)
 "Dn" = (
 /obj/item/weapon/gun/smg/fp9000,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/barricade/metal/wired{
 	dir = 1;
 	icon_state = "metal_2"
@@ -1291,9 +1291,9 @@
 /turf/open/floor/plating,
 /area/fiorina/station/park)
 "HF" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/transit_hub)
 "HZ" = (
@@ -1319,7 +1319,7 @@
 /turf/closed/wall/prison,
 /area/fiorina/station/park)
 "IR" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/delivery,
 /area/fiorina/station/clf_ship)
 "IY" = (
@@ -1453,7 +1453,7 @@
 "Md" = (
 /obj/effect/landmark/corpsespawner/prison_security,
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/damaged3/west,
 /area/fiorina/station/clf_ship)
 "Ml" = (
@@ -1486,7 +1486,7 @@
 /area/fiorina/station/clf_ship)
 "MF" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/panelscorched,
 /area/fiorina/station/clf_ship)
@@ -1776,9 +1776,9 @@
 /turf/open/floor/almayer/blue/southeast,
 /area/fiorina/station/clf_ship)
 "UM" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/park)
 "UN" = (
@@ -1870,7 +1870,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating,
 /area/fiorina/station/park)
 "Wt" = (
@@ -1894,8 +1894,8 @@
 /turf/open/floor/plating,
 /area/fiorina/station/clf_ship)
 "Xf" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/weapon/gun/rifle/mar40/carbine,
 /turf/open/floor/plating/panelscorched,
 /area/fiorina/station/clf_ship)

@@ -2951,7 +2951,7 @@
 /turf/open/mars_cave/mars_cave_3,
 /area/yautja_grounds/caves/north_west)
 "md" = (
-/obj/item/ammo_casing/bullet{
+/obj/effect/decal/cleanable/ammo_casing{
 	icon_state = "cartridge_10_1"
 	},
 /turf/open/mars_cave/mars_cave_3,

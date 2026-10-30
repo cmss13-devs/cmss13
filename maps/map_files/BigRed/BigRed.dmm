@@ -7660,8 +7660,8 @@
 /turf/open/floor/whitegreen/east,
 /area/bigredv2/caves/lambda/virology)
 "aJk" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/mars,
 /area/bigredv2/outside/c)
 "aJm" = (
@@ -15315,7 +15315,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/lz2_south_cas)
 "buU" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "buY" = (
@@ -17688,7 +17688,7 @@
 "bOR" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/whiteblue/southeast,
 /area/bigredv2/outside/medical)
 "bPe" = (
@@ -17852,7 +17852,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigred/ground/garage_workshop)
 "bWw" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "bXe" = (
@@ -17903,7 +17903,7 @@
 /area/bigredv2/outside/nw/ceiling)
 "bZH" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
@@ -18406,7 +18406,7 @@
 /area/bigredv2/caves/mining)
 "cDC" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "cDG" = (
@@ -18584,7 +18584,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "cMB" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
 "cMU" = (
@@ -19042,7 +19042,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
 "dpU" = (
@@ -19398,8 +19398,8 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/nw)
 "dHs" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
 "dHH" = (
@@ -19618,8 +19618,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
 "dTI" = (
@@ -19628,8 +19628,8 @@
 /area/bigredv2/outside/e)
 "dUc" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "dUi" = (
@@ -19825,7 +19825,7 @@
 /area/bigredv2/caves/mining)
 "ecC" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
 "ecK" = (
@@ -20616,8 +20616,8 @@
 /area/bigredv2/outside/telecomm/n_cave)
 "eTK" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "eUs" = (
@@ -20881,7 +20881,7 @@
 "fik" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "fin" = (
@@ -24653,9 +24653,9 @@
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "jyS" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/mars,
 /area/bigredv2/outside/c)
 "jyZ" = (
@@ -25341,7 +25341,7 @@
 	icon_state = "triagedecalbottomleft"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
 "keg" = (
@@ -27368,8 +27368,8 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/c)
 "mnu" = (
-/obj/item/ammo_casing/shell,
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/shotgun/double/with_stock,
 /turf/open/floor/wood,
@@ -27621,7 +27621,7 @@
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/n)
 "mAv" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
@@ -29077,7 +29077,7 @@
 /area/bigredv2/outside/cargo)
 "odN" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/whiteblue,
 /area/bigredv2/outside/medical)
 "oea" = (
@@ -29353,7 +29353,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "oqr" = (
@@ -30345,7 +30345,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/nw)
 "pqj" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
@@ -30465,11 +30465,11 @@
 	pixel_y = 8;
 	pixel_x = -18
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/corpsespawner/security/marshal,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/body,
@@ -30710,7 +30710,7 @@
 /area/bigredv2/outside/ne)
 "pMc" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/redcorner,
 /area/bigredv2/outside/marshal_office)
@@ -31252,9 +31252,9 @@
 	pixel_x = -18
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "qnr" = (
@@ -31385,7 +31385,7 @@
 /area/bigredv2/outside/nw)
 "qtT" = (
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/wood,
@@ -31787,8 +31787,8 @@
 /area/bigredv2/landing/console2)
 "qNX" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/redcorner,
 /area/bigredv2/outside/marshal_office)
 "qOC" = (
@@ -31890,7 +31890,7 @@
 /area/bigredv2/outside/e)
 "qRI" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
 "qSg" = (
@@ -32417,7 +32417,7 @@
 	pixel_y = 8;
 	pixel_x = -18
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/corpsespawner/security,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/body,
@@ -32880,7 +32880,7 @@
 /turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
 "rSM" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/c)
 "rTc" = (
@@ -33331,7 +33331,7 @@
 /turf/open/mars_cave/mars_cave_18,
 /area/bigredv2/outside/lz1_telecomm_cas)
 "sjQ" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /obj/effect/landmark/corpsespawner/colonist,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/wood,
@@ -33755,7 +33755,7 @@
 "sCT" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/plating,
 /area/bigredv2/outside/medical)
 "sDs" = (
@@ -34150,7 +34150,7 @@
 /area/bigredv2/outside/c)
 "tcI" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "tcP" = (
@@ -34768,7 +34768,7 @@
 "tFH" = (
 /obj/structure/bed/chair/comfy,
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet{
+/obj/effect/decal/cleanable/ammo_casing{
 	icon_state = "cartridge_10_1"
 	},
 /turf/open/floor/wood,
@@ -35039,7 +35039,7 @@
 /area/bigredv2/caves_research)
 "tRM" = (
 /obj/structure/barricade/deployable,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/mars,
 /area/bigredv2/outside/c)
 "tRV" = (
@@ -36890,7 +36890,7 @@
 /turf/open/mars/mars_dirt_8,
 /area/bigredv2/outside/s)
 "vPL" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/mars,
 /area/bigredv2/outside/c)
 "vPP" = (
@@ -37033,7 +37033,7 @@
 /area/bigredv2/outside/space_port)
 "vXt" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/redcorner,
 /area/bigredv2/outside/marshal_office)
 "vXF" = (
@@ -37514,7 +37514,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "wuP" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/c)
 "wvk" = (
@@ -37565,7 +37565,7 @@
 "wAd" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "wBq" = (
@@ -37739,7 +37739,7 @@
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/eta)
 "wIR" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/whiteblue/north,
 /area/bigredv2/outside/medical)
 "wJd" = (
@@ -37803,7 +37803,7 @@
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/filtration_plant)
 "wMn" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/xtracks,
 /turf/open/floor/whitegreencorner/east,
 /area/bigredv2/outside/medical)
@@ -38629,7 +38629,7 @@
 /turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/medical)
 "xHb" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/weapon/gun/pistol/holdout{
 	pixel_x = -8;
 	pixel_y = 11
@@ -39058,7 +39058,7 @@
 /area/bigredv2/caves/mining)
 "ych" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "ycM" = (

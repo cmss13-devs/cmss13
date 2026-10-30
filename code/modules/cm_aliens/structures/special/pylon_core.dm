@@ -162,6 +162,9 @@
 
 /obj/effect/alien/resin/special/pylon/endgame/Destroy()
 	LAZYREMOVE(linked_hive.active_endgame_pylons, src)
+	if(istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base))
+		var/datum/game_mode/colonialmarines/forward_base/mode = SSticker.mode
+		mode.update_hive_surge(linked_hive)
 	if(activated)
 		activated = FALSE
 
@@ -197,6 +200,9 @@
 			xeno_announcement(SPAN_XENOANNOUNCE("Another hive has harnessed the tall's communication relay at [get_area_name(src)].[linked_hive.faction_is_ally(checked_hive.name) ? "" : " Stop them!"]"), hivenumber, XENO_GENERAL_ANNOUNCE)
 
 	activated = TRUE
+	if(istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base))
+		var/datum/game_mode/colonialmarines/forward_base/mode = SSticker.mode
+		mode.update_hive_surge(linked_hive)
 	linked_hive.check_if_hit_larva_from_pylon_limit()
 	addtimer(CALLBACK(src, PROC_REF(give_royal_resin)), XENO_PYLON_ACTIVATION_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_LOOP|TIMER_DELETE_ME)
 

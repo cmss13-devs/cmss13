@@ -28,8 +28,8 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(tier == 1 && hive.allow_queen_evolve && !hive.living_xeno_queen)
 		castes_available |= XENO_CASTE_QUEEN
 
-	// Allow drones to evo into any T2 before first drop
-	if(caste_type == XENO_CASTE_DRONE && !SSobjectives.first_drop_complete)
+	// Allow drones to evo into any T2 before first drop / fog drop on Forward Base.
+	if(caste_type == XENO_CASTE_DRONE && SSticker.mode.allow_early_drone_evolution())
 		castes_available = caste.early_evolves_to.Copy()
 
 	castes_available -= hive.blacklisted_castes

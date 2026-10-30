@@ -241,7 +241,7 @@
 			else
 				channels += ch_name
 				channels[ch_name] = key.channels[ch_name]
-				
+
 		for(var/tracking_option in key.tracking_options)
 			tracking_options[tracking_option] = key.tracking_options[tracking_option]
 		if(key.translate_apollo)
@@ -1069,10 +1069,14 @@
 //*************************************
 //-----SELF SETTING MARINE HEADSET-----
 //*************************************/
-//For events. Currently used for WO only. After equipping it, self_set() will adapt headset to marine.
+// self_set() adapts the headset to the marines squad and role.
 
-/obj/item/device/radio/headset/almayer/marine/self_setting/proc/self_set()
-	var/mob/living/carbon/human/H = loc
+/obj/item/device/radio/headset/almayer/marine/self_setting/post_vendor_spawn_hook(mob/living/carbon/human/user)
+	..()
+	if(istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base))
+		self_set(user)
+
+/obj/item/device/radio/headset/almayer/marine/self_setting/proc/self_set(mob/living/carbon/human/H = loc)
 	if(istype(H, /mob/living/carbon/human))
 		if(H.assigned_squad)
 			switch(H.assigned_squad.name)

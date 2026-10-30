@@ -27,6 +27,8 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	var/required_ready_players = null
 	/// The number of players required to start this gamemode when secret
 	var/required_players_secret = 0
+	/// The number of players before this gamemode is not available for voting
+	var/max_players = 0
 	var/ert_disabled = 0
 	var/force_end_at = 0
 	var/xeno_evo_speed = 0 // if not 0 - gives xeno an evo boost/nerf
@@ -88,6 +90,10 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	initialize_gamemode_modifiers()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_PRESETUP)
 	return 1
+
+/// Whether drones still have their expanded T2 evo
+/datum/game_mode/proc/allow_early_drone_evolution()
+	return !SSobjectives.first_drop_complete
 
 ///Triggered partway through the first drop, based on DROPSHIP_DROP_MSG_DELAY. Marines are underway but haven't yet landed.
 /datum/game_mode/proc/ds_first_drop(obj/docking_port/mobile/marine_dropship)

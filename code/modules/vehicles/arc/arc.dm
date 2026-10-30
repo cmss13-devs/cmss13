@@ -262,8 +262,17 @@
 	load_hardpoints(ARC)
 	handle_direction(ARC)
 	ARC.update_icon()
+	return ARC
 
 /obj/effect/vehicle_spawner/arc/load_hardpoints(obj/vehicle/multitile/arc/vehicle)
 	vehicle.add_hardpoint(new /obj/item/hardpoint/locomotion/arc_wheels)
 	vehicle.add_hardpoint(new /obj/item/hardpoint/primary/arc_sentry)
 	vehicle.add_hardpoint(new /obj/item/hardpoint/support/arc_antenna)
+
+/obj/effect/vehicle_spawner/arc/broken/spawn_vehicle()
+	var/obj/vehicle/multitile/arc/vehicle = ..()
+	load_damage(vehicle)
+	vehicle.update_icon()
+
+/obj/effect/vehicle_spawner/arc/broken/load_hardpoints(obj/vehicle/multitile/arc/vehicle)
+	return

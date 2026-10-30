@@ -8,6 +8,8 @@
 	var/list/maprotatechoices = list()
 	for(var/map in config.maplist[GROUND_MAP])
 		var/datum/map_config/VM = config.maplist[GROUND_MAP][map]
+		if(GLOB.master_mode == GAMEMODE_FORWARD_BASE && !(GAMEMODE_FORWARD_BASE in VM.gamemodes))
+			continue
 		var/mapname = VM.map_name
 		if(VM == config.defaultmaps[GROUND_MAP])
 			mapname += " (Default)"
@@ -154,6 +156,8 @@
 	if(accept_mapchange == "Yes")
 		for(var/map in config.maplist[GROUND_MAP])
 			VM = config.maplist[GROUND_MAP][map]
+			if(modeset == GAMEMODE_FORWARD_BASE && !(GAMEMODE_FORWARD_BASE in VM.gamemodes))
+				continue
 			var/mapname = VM.map_name
 			if(VM == config.defaultmaps[GROUND_MAP])
 				mapname += " (Default)"

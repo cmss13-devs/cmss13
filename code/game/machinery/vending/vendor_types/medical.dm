@@ -567,6 +567,8 @@
 		return
 	if(Check_WO())
 		return
+	if(istype(get_area(src), /area/forward_base))
+		return
 	var/turf/location = get_turf(src)
 	if(location && is_ground_level(location.z))
 		random_unstock()

@@ -918,6 +918,55 @@
 /obj/item/weapon/gun/pistol/vp78/army/heap
 	current_mag = /obj/item/ammo_magazine/pistol/vp78/heap
 
+/obj/item/weapon/gun/pistol/vp78/vp78m6
+	name = "\improper VP78M6 pistol"
+	desc = "The VP78M6, often called the 'Mod Six', or just 'Sixes', are enhanced variants of the VP78 combat pistol. Smoother trigger assemblies, formed grips, longer shrouded barrels. These M6's have been modified to have special counterweights in the receivers and under the barrels to resist muzzle climb, allowing for much better handling, so much better, in fact, that holding just one doesn't feel right."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
+	icon_state = "vp78m6"
+	item_state = "vp78m6"
+	fire_sound = 'sound/weapons/gun_vp78m6_fire.ogg'
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AKIMBO_ALLOWED
+	var/last_firing_sound_time = -1 //makes it not rupture your eardrums when dual wield firing
+
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor/sleek,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight/vp,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/extended_barrel,
+	)
+
+/obj/item/weapon/gun/pistol/vp78/vp78m6/handle_starting_attachment()
+	if(LAZYLEN(starting_attachment_types))
+		for(var/path in starting_attachment_types)
+			var/obj/item/attachable/starting_attachment = new path(src)
+			starting_attachment.Attach(src)
+			update_attachable(starting_attachment.slot)
+
+	var/obj/item/attachable/lasersight/vp/attachment = new(src)
+	attachment.flags_attach_features &= ~ATTACH_REMOVABLE
+	attachment.hidden = FALSE
+	attachment.Attach(src)
+	update_attachable(attachment.slot)
+
+/obj/item/weapon/gun/pistol/vp78/vp78m6/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 20, "rail_x" = 10, "rail_y" = 23, "under_x" = 21, "under_y" = 13, "stock_x" = 18, "stock_y" = 14)
+
+/obj/item/weapon/gun/pistol/vp78/vp78m6/play_firing_sounds(obj/projectile/projectile_to_fire, mob/user)
+	if(!user || flags_gun_features & GUN_SILENCED || active_attachable?.flags_attach_features & ATTACH_PROJECTILE || projectile_to_fire.ammo?.sound_override)
+		return ..()
+
+	var/obj/item/weapon/gun/pistol/vp78/vp78m6/other_pistol = user.get_active_hand() == src ? user.get_inactive_hand() : user.get_active_hand()
+	if(istype(other_pistol) && other_pistol != src && other_pistol.fire_sound == fire_sound && other_pistol.last_firing_sound_time == world.time)
+		return
+
+	last_firing_sound_time = world.time
+	return ..()
+
 
 //-------------------------------------------------------
 /*

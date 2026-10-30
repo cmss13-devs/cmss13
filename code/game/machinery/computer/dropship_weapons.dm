@@ -932,8 +932,7 @@
 		to_chat(weapons_operator, SPAN_WARNING("Target lost or obstructed."))
 		return FALSE
 
-	update_location(weapons_operator, cas_sig)
-	return TRUE
+	return update_location(weapons_operator, cas_sig)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/initiate_firemission(mob/user, fmId, dir, offset_x, offset_y)
 	set waitfor = 0

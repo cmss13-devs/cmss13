@@ -415,9 +415,6 @@
 // Carrier strain flags
 #define CARRIER_EGGSAC "Eggsac"
 
-// Boiler strain flags
-#define BOILER_TRAPPER "Trapper"
-
 // Runner strain flags
 #define RUNNER_ACIDER "Acider"
 
@@ -655,7 +652,6 @@
 #define XENO_STRUCTURE_EGGMORPH  "egg morpher"
 #define XENO_STRUCTURE_RECOVERY  "recovery node"
 #define XENO_STRUCTURE_PLASMA_TREE "plasma tree"
-#define XENO_STRUCTURE_NEST  "thick resin nest"
 
 #define RESIN_TRAP_EMPTY 0
 #define RESIN_TRAP_HUGGER 1
@@ -758,7 +754,6 @@
 #define FIRE_MULTIPLIER_DEADLY		3
 
 #define WHISPERER_VIEWRANGE 10
-#define TRAPPER_VIEWRANGE 13
 
 #define SECRETE_RESIN_INTERRUPT -1
 #define SECRETE_RESIN_FAIL 0

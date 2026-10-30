@@ -84,3 +84,157 @@
 2026-10-13:
   Taushai:
   - bugfix: fixed the preview dummy disappearing after reconnecting to the same round.
+2026-10-14:
+  TrollerNoob:
+  - rscadd: Signal Flare's flashing light changes color depending on the roof. Green
+      in open/glass, yellow in metal, red in anything higher.
+  - imageadd: Added Yellow and Red flashing light states for Signal Flare.
+2026-10-15:
+  Venuska1117:
+  - refactor: Updates Ravager code with new define and spaces.
+2026-10-16:
+  Drathek:
+  - bugfix: Traits are now sanitized in preferences like gear and should load properly
+      again
+  - ui: Fixed synth slots in loadout UI just overflowing off screen
+  - ui: Fixed loadout/trait UIs overflowing scrollbars & misc layout changes
+  Steelpoint:
+  - maptweak: Fixes several hull window tiles in the researcher observation deck on
+      White Antre Research Facility not having floors underneath them.
+  - maptweak: On Chances Claim, several missing air pipes have been added to A-Block.
+2026-10-17:
+  IowaPotatoFarmer:
+  - balance: The M16s on Kutjevo Refinery have been replaced by M20A rifles.
+  Steelpoint:
+  - maptweak: The reception bell in the Almayer computer laboratory is now properly
+      anchored, and can thus now be rung.
+  - maptweak: The front reception door control for the Corporate Liaison office entrance
+      now functions as intended.
+  - maptweak: Adds a set of blastdoors to the eastern section of the CIC conference
+      room.
+2026-10-19:
+  Drathek:
+  - bugfix: Fixed Halloween cobweb decorator not applying transform for rotation and
+      scale
+  Kugamo:
+  - bugfix: Locked escape pod doors will now unlock upon FTL initiation.
+  - bugfix: Lightning briefly flashes the groundmap again.
+  Puckaboo2:
+  - code_imp: Tweaked some text to sound more fluid and less informal.
+  - spellcheck: Corrects grammar, misspells, and missing punctuation in xeno caste
+      files.
+  - spellcheck: Any use of first or second person in regard to xeno castes has been
+      changed to third person.
+  labeo0:
+  - qol: You can Ctrl+Click storage items capable of changing storage drawing methods.
+      Examining these items gives a note in chat about it.
+2026-10-20:
+  ComboTombo:
+  - rscadd: Added M41A Mk1 rifle kits
+  - balance: Re-added M41A Mk1 rifles to the SL vendor
+2026-10-21:
+  ComboTombo:
+  - balance: Re-added large magazine pouches and large shotgun shell pouches to rifleman,
+      engineer, and medic vendors
+  - balance: Weapon lights now keep illuminating when the weapon is stowed away in
+      the back slot or suit storage slot, but they'll be dimmed by 15% (compared to
+      when the weapon is in your hands or on the ground.
+  Drulikar:
+  - admin: Cardinally enclosed reviveable bodies are now niche logged
+  - admin: Tweaked niche log for building a resin wall ontop of a reviveable body
+  Ghostsheet:
+  - rscadd: Allow general pouches to hold flare boxes.
+  - balance: Increased XM88 bullet speed by 4.
+  - balance: XM88 can no longer use barrel charger and extended barrel.
+  Kugamo:
+  - bugfix: Fixes visual bug, showing fake items in hand after stacking them in certain
+      bags with those inventories open.
+  - bugfix: Fixes mops attacking weeds instead of cleaning them
+  NHC:
+  - rscadd: added skirt uniforms to the dress blues uniform vendor for enlisted, officers
+      and command.
+  - rscdel: removes service uniform from the dress blues uniform vendor for officers
+  - imageadd: added icons for service, formal, command uniform with skirt
+  - imageadd: changed commander's grey unfirom item sprite to 1 dir
+  Puckaboo2:
+  - spellcheck: Adds a few missing periods in some files.
+  Sulaboy:
+  - balance: Webbing accessories in Rifleman Vendor no longer cost points.
+  kleinerstation13:
+  - balance: FORECON Squad Leader survivor now gets construction 1 skill
+2026-10-23:
+  Steelpoint:
+  - maptweak: Removes several tiny dead end and small bypass areas on Kutjevo .
+  TrollerNoob:
+  - rscadd: The last trip to Chinook 91 GSO station has seen a massive overhaul to
+      the Almayer's Aerospace fleet! Be on the lookout for further upgrades, Pilots.
+  - rscadd: Hula Girl now shakes and bobs as the Alamo flies!
+  - rscadd: Added the Pilot Optic to all pilot helmets, a tactical eyepiece that gives
+      the ability to see IFF HUDs on friends and foe, firemission and direct fire
+      impact zones and (in the future!) dangerous antiair or chaff zones.
+  - ui: Dropship Weapon Console camera given its own unique overlay.
+  - bugfix: Fixed CAS Camera being able to see into Metal and stronger roofs. You'll
+      be able to see your Firemission play out still.
+  - bugfix: Fixed missing Firemission Length input during Firemission Creation.
+  - bugfix: Fixed null mount point on left electronic slot for the Normandy.
+  - bugfix: Fixed Laser and GAU ammo not properly recording the owner for kills
+  - bugfix: Minimap now properly displays inside the console window, and is live updated.
+  - refactor: Refactored direct fire code to properly update the impact area when
+      the signal is lost mid-transit.
+2026-10-24:
+  Kugamo:
+  - imagetweak: North facing wooden barricades sprites are now on the north side of
+      tiles and just as short as the south facing sprite, making them less confusing.
+2026-10-26:
+  TrollerNoob:
+  - rscadd: The USCM has begun a rollout of the advanced M708 Tactical Laser Designator
+      to JTAC operators across the fleet!
+  - rscadd: Added the M708 Tactical Laser Designator, an advanced laser designator
+      that must be mounted on a tripod. Capable of lasing quicker, lasing into metal
+      roofs and locking onto moving targets for laser guided munitions. Requires JTAC
+      level 1.
+  - rscadd: Added M708 Tactical Laser Designator to FTL essential kit, JTAC kits and
+      Requisitions.
+  - rscadd: Added ability for the Scout Laser Designator to lock onto moving targets
+      for laser guided munitions.
+  - balance: Added laser guided homing mechanic to the Dropship's LAU-444 Guided Missile
+      Launcher munitions. Only direct fired missiles can be laser guided to the target,
+      given they're under an open/glass roof.
+  - qol: Added tooltip in the M82-F flare gun's description about using Unique Action
+      to fire flares into the sky.
+  - bugfix: Fixed flares in the sky being destroyed by conventional means such as
+      ground explosions.
+  - imageadd: Added biome sprites for the M708 Tactical Laser Designator.
+  - imageadd: Added laser designator screen overlay for the M708 Tactical Laser Designator.
+  - imageadd: Added action button icon for zeroing the M708 Tactical Laser Designator.
+  - imageadd: Added lock on and incoming missile target effects.
+  - imageadd: Added lock on CAS HUD state.
+2026-10-27:
+  Ghostsheet:
+  - qol: ARES aCO selection now goes all the way down the chain of command to most
+      roles.
+  - qol: ARES aCO selection gives Overwatch and Intel skill, to allow access to Overwatch
+      Consoles and Comms Decryption.
+  - qol: Groundside Operations Console can now promote aSL.
+  JHINgle4ce:
+  - maptweak: changed a position of a xeno spawn point so it doesn't spawn outside
+      522 reactor zone
+  - maptweak: deleted random light in the air on 522
+  Mary-Marilyn:
+  - rscadd: Shipside warning shots now have a 1% chance to knock a ceiling pipe down.
+  - balance: Nurses can now do advanced surgery, but are 20% slower than doctors and
+      more likely to fail with makeshift tools or poor operating conditions.
+  TrollerNoob:
+  - bugfix: Fixed M708's lase from canceling early whenever an explosion happened
+      near it.
+  Watermelon914:
+  - balance: Hideable xenos now unhide when performing any busy action, which is any
+      action that creates a spinning progress circle.
+  - bugfix: Fixed playable huggers being able to infect you as they die.
+2026-10-28:
+  Ammoniacres:
+  - balance: removed the Trapper boiler strain.
+  carlarctg:
+  - rscdel: Removes heavy nest and allows nesting normally for predators
+  kleinerstation13:
+  - balance: Increased the damage of the M20A colony rifle

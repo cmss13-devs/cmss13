@@ -1,0 +1,6 @@
+author: "Sulaboy"
+delete-after: True
+changes:
+  - rscadd: "Adds Autoinjector Box"
+  - balance: "Reduces plastic value of Vial Box print 2500 to 1250"
+  - balance: "Reduces plastic value of Vial Box recycle 2000 to 1000"

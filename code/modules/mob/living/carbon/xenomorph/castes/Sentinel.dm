@@ -102,7 +102,7 @@
 			return original_damage //species like zombies or synths are immune to neurotoxin
 		if (buffed_slashes)
 			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("Our slash applied a large amount of neurotoxin!"))
-			to_chat(carbon_target, SPAN_XENOHIGHDANGER("You feel your muscles, as [bound_xeno] slashes you with its neurotoxin coated claws!"))
+			to_chat(carbon_target, SPAN_XENOHIGHDANGER("You feel yourself losing muscular control as [bound_xeno] slashes you with its neurotoxin coated claws!"))
 			var/datum/effects/sentinel_neuro_stacks/sns = null
 			for (var/datum/effects/sentinel_neuro_stacks/sentinel_neuro_stacks in human.effects_list)
 				sns = sentinel_neuro_stacks
@@ -148,7 +148,7 @@
 		return
 
 	slowspit_user.visible_message(SPAN_XENOWARNING("[slowspit_user] spits at [target]!"),
-	SPAN_XENOWARNING("You spit at [target]!") )
+	SPAN_XENOWARNING("We spit at [target]!") )
 	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
 	playsound(slowspit_user.loc, sound_to_play, 25, 1)
 
@@ -168,7 +168,7 @@
 		return
 
 	if(!action_cooldown_check())
-		to_chat(src, SPAN_WARNING("We must wait for your spit glands to refill."))
+		to_chat(src, SPAN_WARNING("We must wait for our spit glands to refill."))
 		return
 
 	var/turf/current_turf = get_turf(scatterspit_user)
@@ -180,7 +180,7 @@
 		return
 
 	scatterspit_user.visible_message(SPAN_XENOWARNING("[scatterspit_user] spits at [target]!"),
-	SPAN_XENOWARNING("You spit at [target]!") )
+	SPAN_XENOWARNING("We spit at [target]!") )
 	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
 	playsound(scatterspit_user.loc, sound_to_play, 25, 1)
 

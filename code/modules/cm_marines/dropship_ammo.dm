@@ -12,6 +12,8 @@
 	var/fire_mission_delay = 4
 	/// Time to impact in deciseconds
 	var/travelling_time = 100
+	/// Tracks an active tactical laser mark during direct fire transit.
+	var/laser_guided = FALSE
 	/// Type of dropship equipment that accepts this type of ammo.
 	var/obj/structure/dropship_equipment/equipment_type
 	/// Ammunition count remaining
@@ -103,12 +105,14 @@
 /obj/structure/ship_ammo/get_examine_text(mob/user)
 	. = ..()
 	. += "Moving this will require some sort of lifter."
+	if(laser_guided)
+		. += SPAN_NOTICE("IR Laser guided.")
 
 //what to show to the user that examines the weapon we're loaded on.
 /obj/structure/ship_ammo/proc/show_loaded_desc(mob/user)
 	return "It's loaded with \a [src]."
 
-/obj/structure/ship_ammo/proc/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
+/obj/structure/ship_ammo/proc/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from, mob/firing_mob)
 	return
 
 /obj/structure/ship_ammo/proc/can_fire_at(turf/impact, mob/user)
@@ -185,7 +189,7 @@
 	else
 		return "It's loaded with an empty [name]."
 
-/obj/structure/ship_ammo/heavygun/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
+/obj/structure/ship_ammo/heavygun/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from, mob/firing_mob)
 	set waitfor = 0
 	var/list/turf_list = RANGE_TURFS(bullet_spread_range, impact)
 	var/soundplaycooldown = 0
@@ -194,7 +198,7 @@
 	for(var/i = 1 to ammo_used_per_firing)
 		sleep(1)
 		var/turf/impact_tile = pick(turf_list)
-		var/datum/cause_data/cause_data = create_cause_data(fired_from.name, source_mob)
+		var/datum/cause_data/cause_data = create_cause_data(fired_from.name, firing_mob)
 		impact_tile.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(GLOB.alldirs), cause_data)
 		create_shrapnel(impact_tile,1,0,0,shrapnel_type,cause_data,FALSE,100) //simulates a bullet
 		for(var/atom/movable/explosion_effect in impact_tile)
@@ -289,6 +293,7 @@
 	max_inaccuracy = 5
 	point_cost = 0
 	fire_mission_delay = 4
+	laser_guided = TRUE
 
 /obj/structure/ship_ammo/rocket/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	qdel(src)

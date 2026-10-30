@@ -17,12 +17,6 @@
 	selected_key = null
 	selected_value = null
 
-#define TYPE_TEXT "text"
-#define TYPE_NUMBER "number"
-#define TYPE_MOB_REFERENCE "mob reference"
-#define TYPE_OBJ_REFERENCE "object reference"
-#define TYPE_TURF_REFERENCE "turf reference"
-
 /datum/buildmode_mode/varedit/change_settings(client/c)
 	if(!check_rights(R_DEBUG, FALSE))
 		return
@@ -31,29 +25,20 @@
 	selected_key = tgui_input_text(c, "Enter variable name:", "Variable Name", "name")
 	if(selected_key in locked)
 		to_chat(c, SPAN_WARNING("Editing [selected_key] is not allowed."))
+		Reset()
 		return
-	var/type = tgui_input_list(c, "Select variable type:", "Type", list(TYPE_TEXT, TYPE_NUMBER, TYPE_MOB_REFERENCE, TYPE_OBJ_REFERENCE, TYPE_TURF_REFERENCE))
-
+	var/list/types = list(VV_NUM, VV_TEXT, VV_ICON, VV_COLOR, VV_COLOR_MATRIX, VV_ATOM_REFERENCE, VV_DATUM_REFERENCE, VV_MOB_REFERENCE, VV_NULL, VV_INFINITY, VV_WEAKREF, VV_MATRIX)
+	if(selected_key in GLOB.bitfields)
+		types += VV_BITFIELD
+	var/type = tgui_input_list(c, "Select variable type:", "Type", types)
 	if(!type)
 		return
 
-	switch(type)
-		if(TYPE_TEXT)
-			selected_value = input(usr,"Enter variable value:" ,"Value", "value") as text
-		if(TYPE_NUMBER)
-			selected_value = input(usr,"Enter variable value:" ,"Value", 0) as num
-		if(TYPE_MOB_REFERENCE)
-			selected_value = input(usr,"Enter variable value:" ,"Value") as mob in GLOB.mob_list
-		if(TYPE_OBJ_REFERENCE)
-			selected_value = input(usr,"Enter variable value:" ,"Value") as obj in world
-		if(TYPE_TURF_REFERENCE)
-			selected_value = input(usr,"Enter variable value:" ,"Value") as turf in GLOB.turfs
-
-#undef TYPE_TEXT
-#undef TYPE_NUMBER
-#undef TYPE_MOB_REFERENCE
-#undef TYPE_OBJ_REFERENCE
-#undef TYPE_TURF_REFERENCE
+	var/list/result = c.vv_get_value(type, var_name=selected_key)
+	if(!result["class"])
+		return
+	selected_value = result["value"]
+	to_chat(c, SPAN_NOTICE("Stored [selected_key] = [selected_value]"))
 
 /datum/buildmode_mode/varedit/when_clicked(client/c, params, obj/object)
 	var/list/modifiers = params2list(params)
@@ -66,6 +51,7 @@
 			message_admins("[key_name(c)] modified [object.name]'s [selected_key] to [selected_value]")
 		else
 			to_chat(c, SPAN_DANGER("[initial(object.name)] does not have a var called '[selected_key]'"))
+
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		if(object.vars.Find(selected_key))
 			var/reset_value = initial(object.vars[selected_key])
@@ -75,5 +61,3 @@
 			message_admins("[key_name(c)] modified [object.name]'s [selected_key] to [reset_value]")
 		else
 			to_chat(c, SPAN_DANGER("[initial(object.name)] does not have a var called '[selected_key]'"))
-
-

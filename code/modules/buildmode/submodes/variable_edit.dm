@@ -24,15 +24,18 @@
 #define TYPE_TURF_REFERENCE "turf reference"
 
 /datum/buildmode_mode/varedit/change_settings(client/c)
-	var/list/locked = list("vars", "key", "ckey", "client", "icon")
+	if(!check_rights(R_DEBUG, FALSE))
+		return
 
-	selected_key = input(usr,"Enter variable name:" ,"Name", "name")
-	if((selected_key in locked) && !check_rights(R_DEBUG, FALSE))
-		return TRUE
-	var/type = tgui_input_list(usr,"Select variable type:", "Type", list(TYPE_TEXT, TYPE_NUMBER, TYPE_MOB_REFERENCE, TYPE_OBJ_REFERENCE, TYPE_TURF_REFERENCE))
+	var/list/locked = list("vars", "key", "ckey", "client", "icon")
+	selected_key = tgui_input_text(c, "Enter variable name:", "Variable Name", "name")
+	if(selected_key in locked)
+		to_chat(c, SPAN_WARNING("Editing [selected_key] is not allowed."))
+		return
+	var/type = tgui_input_list(c, "Select variable type:", "Type", list(TYPE_TEXT, TYPE_NUMBER, TYPE_MOB_REFERENCE, TYPE_OBJ_REFERENCE, TYPE_TURF_REFERENCE))
 
 	if(!type)
-		return TRUE
+		return
 
 	switch(type)
 		if(TYPE_TEXT)
@@ -58,19 +61,19 @@
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
 		if(object.vars.Find(selected_key))
 			if(!object.vv_edit_var(selected_key, selected_value))
-				to_chat(usr, SPAN_WARNING("Your edit was rejected by the object."))
+				to_chat(c, SPAN_WARNING("Your edit was rejected by the object."))
 				return
-			message_admins("[key_name(usr)] modified [object.name]'s [selected_key] to [selected_value]")
+			message_admins("[key_name(c)] modified [object.name]'s [selected_key] to [selected_value]")
 		else
-			to_chat(usr, SPAN_DANGER("[initial(object.name)] does not have a var called '[selected_key]'"))
+			to_chat(c, SPAN_DANGER("[initial(object.name)] does not have a var called '[selected_key]'"))
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		if(object.vars.Find(selected_key))
 			var/reset_value = initial(object.vars[selected_key])
 			if(!object.vv_edit_var(selected_key, reset_value))
-				to_chat(usr, SPAN_WARNING("Your edit was rejected by the object."))
+				to_chat(c, SPAN_WARNING("Your edit was rejected by the object."))
 				return
-			message_admins("[key_name(usr)] modified [object.name]'s [selected_key] to [reset_value]")
+			message_admins("[key_name(c)] modified [object.name]'s [selected_key] to [reset_value]")
 		else
-			to_chat(usr, SPAN_DANGER("[initial(object.name)] does not have a var called '[selected_key]'"))
+			to_chat(c, SPAN_DANGER("[initial(object.name)] does not have a var called '[selected_key]'"))
 
 

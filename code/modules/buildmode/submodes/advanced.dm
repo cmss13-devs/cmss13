@@ -14,7 +14,7 @@
 
 	var/list/ignore_vars = list("old_turf", "loc", "ckey", "key", "vars", "verbs", \
 		"locs", "contents", "vis_locs", "vis_contents", "client", "linked_pylons", \
-		"x", "y", "z", "disposed")
+		"x", "y", "z", "disposed", "wall_connections", "neighbors_bitfield", "pixloc")
 	// Might be better to move to a whitelist system instead. If there are too many runtimes/issues,
 	// turn this into a whitelist system and whitelist vars like icon_state, overlays and ids
 
@@ -81,7 +81,10 @@
 			continue
 
 		if(islist(temp_value))
-			temp_value = copyListList(temp_value)
+			if(variable != "overlays" && variable != "underlays")
+				temp_value = copyListList(temp_value) // This will just badindex on overlays because its special
+			else
+				temp_value = temp_value:Copy()
 
 		A.vars[variable] = temp_value
 		if(istype(A, /atom/movable))

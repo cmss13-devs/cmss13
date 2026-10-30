@@ -107,6 +107,11 @@
 /datum/behavior_delegate/boiler_base
 	name = "Base Boiler Behavior Delegate"
 
+	var/neuro_tail = FALSE
+
+/datum/behavior_delegate/boiler_base/append_to_stat()
+	. = list()
+	. += "Tail Type: [neuro_tail ? "Neurotoxin" : "Acidic"]"
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/use_ability(atom/affected_atom)
 	. = ..()
@@ -166,6 +171,14 @@
 
 /datum/action/xeno_action/onclick/shift_spits/boiler/use_ability(atom/affected_atom)
 	. = ..()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/boiler_base/behavior = xeno.behavior_delegate
+	if(!behavior)
+		return
+	if(xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas/acid])
+		behavior.neuro_tail = FALSE
+	else if(xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas])
+		behavior.neuro_tail = TRUE
 	apply_cooldown()
 
 /datum/action/xeno_action/activable/tail_stab/boiler/use_ability(atom/affected_atom)

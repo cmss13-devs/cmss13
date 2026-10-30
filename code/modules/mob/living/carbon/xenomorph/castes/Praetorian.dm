@@ -89,8 +89,15 @@
 
 /datum/behavior_delegate/praetorian_base
 	name = "Base Praetorian Behavior Delegate"
+
 	///reward for hitting shots instead of spamming acid ball
 	var/reward_shield = 15
+	var/maximum_shield = 45
+
+/datum/behavior_delegate/praetorian_base/append_to_stat()
+	. = list()
+	. += "Shield on Spit: [reward_shield]."
+	. += "Max Shield from Spit: [maximum_shield]."
 
 /datum/behavior_delegate/praetorian_base/ranged_attack_additional_effects_target(atom/target_atom)
 	if(!ishuman(target_atom))
@@ -113,6 +120,6 @@
 /datum/behavior_delegate/praetorian_base/ranged_attack_additional_effects_self(atom/target_atom)
 	if(!ismob(target_atom))
 		return
-	bound_xeno.add_xeno_shield(reward_shield, XENO_SHIELD_SOURCE_BASE_PRAE, add_shield_on = TRUE, max_shield = 45)
+	bound_xeno.add_xeno_shield(reward_shield, XENO_SHIELD_SOURCE_BASE_PRAE, add_shield_on = TRUE, max_shield = maximum_shield)
 	to_chat(bound_xeno, SPAN_NOTICE("Our exoskeleton shimmers for a fraction of a second as the acid coats our target."))
 	return

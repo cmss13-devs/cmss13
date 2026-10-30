@@ -85,6 +85,31 @@
 	var/buffed_slashes = 0
 	var/increment_amount = 10
 
+	// Used by append_to_stat
+	var/slash_duration = 0
+	var/slash_duration_start_time = -1
+	var/tail_speed = 0
+	var/tail_armor = 0
+	var/tail_buff = FALSE
+
+/datum/behavior_delegate/sentinel_base/append_to_stat()
+	ats_spitter()
+	. = list()
+	. += "Buffed Slashes: [buffed_slashes]/[max_buffed_slashes]"
+	. += "Walking Speed: +[tail_buff ? (tail_speed * 100) : 0]%"
+	. += "Armor Increase: +[tail_buff ? tail_armor : 0]"
+	if(slash_duration_start_time != -1)
+		. += "Buffed Slash Duration: [(slash_duration - (world.time - slash_duration_start_time)) / 10] Seconds."
+
+/datum/behavior_delegate/sentinel_base/proc/ats_spitter()
+	var/datum/action/xeno_action/onclick/paralyzing_slash/ability_action = get_action(bound_xeno, /datum/action/xeno_action/onclick/paralyzing_slash)
+	slash_duration = ability_action.buff_duration
+
+	var/datum/action/xeno_action/activable/tail_stab/sentinel/tail_action = get_action(bound_xeno, /datum/action/xeno_action/activable/tail_stab/sentinel)
+	tail_speed = tail_action.speed_buff_amount
+	tail_armor = tail_action.armor_buff_amount
+	tail_buff = tail_action.tail_buffed
+
 /datum/behavior_delegate/sentinel_base/melee_attack_modify_damage(original_damage, mob/living/carbon/carbon_target)
 	if (!buffed_slashes)
 		return original_damage
@@ -117,6 +142,7 @@
 		var/datum/action/xeno_action/onclick/paralyzing_slash/ability = get_action(bound_xeno, /datum/action/xeno_action/onclick/paralyzing_slash)
 		if (ability && istype(ability))
 			ability.button.icon_state = "template_xeno"
+		slash_duration_start_time = -1
 	return original_damage
 
 /datum/behavior_delegate/sentinel_base/override_intent(mob/living/carbon/target_carbon)
@@ -213,6 +239,7 @@
 	to_chat(paraslash_user, SPAN_XENOHIGHDANGER("Our next three slashes will apply neurotoxin!"))
 	button.icon_state = "template_active"
 
+	behavior.slash_duration_start_time = world.time
 	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
 
 	apply_cooldown()
@@ -220,14 +247,15 @@
 
 /datum/action/xeno_action/onclick/paralyzing_slash/proc/unbuff_slash()
 	var/mob/living/carbon/xenomorph/unbuffslash_user = owner
-	if (!istype(unbuffslash_user))
+	if(!istype(unbuffslash_user))
 		return
 	var/datum/behavior_delegate/sentinel_base/behavior = unbuffslash_user.behavior_delegate
-	if (istype(behavior))
+	if(istype(behavior))
 		// In case slash has already landed
-		if (!behavior.buffed_slashes)
+		if(!behavior.buffed_slashes)
 			return
 		behavior.buffed_slashes = 0
+	behavior.slash_duration_start_time = -1
 
 	to_chat(unbuffslash_user, SPAN_XENODANGER("We have waited too long, our slash will no longer apply neurotoxin!"))
 	button.icon_state = "template_xeno"

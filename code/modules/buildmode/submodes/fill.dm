@@ -2,24 +2,25 @@
 
 /datum/buildmode_mode/fill
 	key = "fill"
-	help = "Left Mouse Button on turf/obj/mob = Select corner\n\
-	Left Mouse Button + Alt on turf/obj/mob = Delete region\n\
-	Right Mouse Button on buildmode button = Select object type"
+	help = "Right Mouse Button on buildmode button = Select object type\n\
+	Left Mouse Button on turf/obj/mob = Select corner\n\
+	Left Mouse Button + Alt on turf/obj/mob = Select object type\n\
+	Left Mouse Button + Ctrl after selection = Delete region instead"
 
 	use_corner_selection = TRUE
 	var/objholder = null
 
 /datum/buildmode_mode/fill/change_settings(client/c)
-	var/target_path = input(c, "Enter typepath:" ,"Typepath","/obj/structure/closet")
+	var/target_path = tgui_input_text(c, "Enter typepath:" ,"Typepath", "/obj/structure/closet")
 	objholder = text2path(target_path)
 	if(!ispath(objholder))
 		objholder = pick_closest_path(target_path)
 		if(!objholder)
-			alert("No path has been selected.")
+			tgui_alert(c, "No path has been selected.")
 			return
-		else if(ispath(objholder, /area))
+		if(ispath(objholder, /area))
 			objholder = null
-			alert("Area paths are not supported for this mode, use the area edit mode instead.")
+			tgui_alert(c, "Area paths are not supported for this mode, use the area edit mode instead.")
 			return
 	deselect_region()
 
@@ -38,35 +39,31 @@
 		return
 	..()
 
-#define CONFIRM_NO "No"
-#define CONFIRM_YES "Yes"
-
 /datum/buildmode_mode/fill/handle_selected_area(client/c, params)
 	var/list/modifiers = params2list(params)
 
 	if(LAZYACCESS(modifiers, ALT_CLICK))
 		return
 	if(LAZYACCESS(modifiers, LEFT_CLICK)) //rectangular
+		var/selection_size = abs(cornerA.x - cornerB.x) * abs(cornerA.y - cornerB.y)
+		if(selection_size > FILL_WARNING_MIN) // Confirm fill if the number of tiles in the selection is greater than FILL_WARNING_MIN
+			if(tgui_alert(c, "Your selected area is [selection_size] tiles! Continue?", "Large Fill Confirmation", list("Yes", "No")) != "Yes")
+				return
+		var/list/affected_area = block(get_turf(cornerA),get_turf(cornerB))
 		if(LAZYACCESS(modifiers, CTRL_CLICK))
-			var/list/deletion_area = block(get_turf(cornerA),get_turf(cornerB))
-			for(var/turf/T as anything in deletion_area)
-				for(var/atom/movable/AM in T)
+			for(var/turf/current_turf as anything in affected_area)
+				for(var/atom/movable/AM in current_turf)
 					qdel(AM)
-				T.ScrapeAway(INFINITY, CHANGETURF_DEFER_CHANGE)
-			var/selection_size = abs(cornerA.x - cornerB.x) * abs(cornerA.y - cornerB.y)
-			if(selection_size > FILL_WARNING_MIN) // Confirm fill if the number of tiles in the selection is greater than FILL_WARNING_MIN
-				var/choice = alert("Your selected area is [selection_size] tiles! Continue?", "Large Fill Confirmation", CONFIRM_YES, CONFIRM_NO)
-				if(choice != CONFIRM_YES)
-					return
-			for(var/turf/T as anything in deletion_area)
-				if(ispath(objholder,/turf))
-					T = T.ChangeTurf(objholder)
-					T.setDir(BM.build_dir)
-				else
-					var/obj/A = new objholder(T)
-					A.setDir(BM.build_dir)
-			log_admin("Build Mode: [key_name(c)] with path [objholder], filled the region from [AREACOORD(cornerA)] through [AREACOORD(cornerB)]")
+				current_turf.ScrapeAway(INFINITY, CHANGETURF_DEFER_CHANGE)
+			log_admin("Build Mode: [key_name(c)] with path [objholder], deleted the region from [AREACOORD(cornerA)] through [AREACOORD(cornerB)]")
+			return
+		for(var/turf/current_turf as anything in affected_area)
+			if(ispath(objholder, /turf))
+				current_turf = current_turf.ChangeTurf(objholder)
+				current_turf.setDir(BM.build_dir)
+			else
+				var/obj/thing = new objholder(current_turf)
+				thing.setDir(BM.build_dir)
+		log_admin("Build Mode: [key_name(c)] with path [objholder], filled the region from [AREACOORD(cornerA)] through [AREACOORD(cornerB)]")
 
 #undef FILL_WARNING_MIN
-#undef CONFIRM_YES
-#undef CONFIRM_NO

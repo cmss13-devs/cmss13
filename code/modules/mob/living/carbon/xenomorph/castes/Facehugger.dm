@@ -60,6 +60,8 @@
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 
+	water_config = /datum/water_overlay_config/xeno/small/facehugger
+
 	icon_xeno = 'icons/mob/xenos/castes/tier_0/facehugger.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_0/xenonid_crab.dmi'
 

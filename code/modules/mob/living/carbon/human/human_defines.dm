@@ -188,6 +188,9 @@
 	// Haul resist cooldown
 	var/next_haul_resist
 
+	// water overlays config
+	water_config = /datum/water_overlay_config/human
+
 /client/var/cached_human_playtime
 
 /client/proc/get_total_human_playtime(skip_cache = FALSE)

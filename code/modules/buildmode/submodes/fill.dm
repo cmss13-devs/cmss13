@@ -51,9 +51,11 @@
 				return
 		var/list/affected_area = block(get_turf(cornerA),get_turf(cornerB))
 		if(LAZYACCESS(modifiers, CTRL_CLICK))
+			if(tgui_alert(c, "You are performing a delete region option. This will delete all atoms and turfs in the region. Continue?", "Delete Region Confirmation", list("Yes", "No")) != "Yes")
+				return
 			for(var/turf/current_turf as anything in affected_area)
-				for(var/atom/movable/AM in current_turf)
-					qdel(AM)
+				for(var/atom/movable/current_atom in current_turf)
+					qdel(current_atom)
 				current_turf.ScrapeAway(INFINITY, CHANGETURF_DEFER_CHANGE)
 			log_admin("Build Mode: [key_name(c)] with path [objholder], deleted the region from [AREACOORD(cornerA)] through [AREACOORD(cornerB)]")
 			return

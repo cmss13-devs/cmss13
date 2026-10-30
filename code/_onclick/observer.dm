@@ -13,8 +13,6 @@
 
 /mob/dead/observer/do_click(atom/A, location, params)
 	. = ..()
-	if(check_click_intercept(params, A))
-		return
 
 	if(SEND_SIGNAL(src, COMSIG_OBSERVER_CLICKON, A, params) & COMSIG_MOB_CLICK_CANCELED)
 		return

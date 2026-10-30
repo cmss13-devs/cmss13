@@ -28,7 +28,7 @@
 
 	if(LAZYACCESS(modifiers, LEFT_CLICK) && LAZYACCESS(modifiers, ALT_CLICK))
 		if(istype(object, /turf) || istype(object, /obj) || istype(object, /mob))
-			objholder = object
+			objholder = object.type
 			to_chat(c, SPAN_NOTICE("[initial(object.name)] ([object.type]) selected."))
 		else
 			to_chat(c, SPAN_NOTICE("[initial(object.name)] is not a turf, object, or mob! Please select again."))

@@ -53,6 +53,8 @@
 		JOB_SQUAD_TEAM_LEADER = 2,
 		JOB_SQUAD_LEADER = 1,
 	)
+	/// Roles that can only join this squad through CIC transfers (ASS future proofing)
+	var/list/transfer_only_roles = list()
 	/// Squad roles actual number of players list
 	var/list/roles_in = list()
 	/// Squad headsets default radio frequency
@@ -580,6 +582,13 @@
 				targets_to_garble += current_mob
 
 	return targets_to_garble
+
+/datum/squad/proc/get_joinable_role_slots(role, skip_limit = FALSE)
+	if(role in transfer_only_roles)
+		return 0
+	if(skip_limit || isnull(roles_cap[role]))
+		return null
+	return max(0, roles_cap[role] - roles_in[role])
 
 //Straight-up insert a marine into a squad.
 //This sets their ID, increments the total count, and so on. Everything else is done in job_controller.dm.

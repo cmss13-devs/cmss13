@@ -280,6 +280,9 @@
 	var/obj/item/skull/skull = /obj/item/skull
 	var/obj/item/pelt/pelt = /obj/item/pelt
 
+	///Prefix for damage states caste.caste_type by default
+	var/damage_state_prefix
+
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -389,11 +392,14 @@
 	/// cooldown between throwing facehuggers
 	var/hugger_throw_cooldown = 0
 
+
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	if(old_xeno && old_xeno.hivenumber)
 		src.hivenumber = old_xeno.hivenumber
 	else if(hivenumber)
 		src.hivenumber = hivenumber
+
+	damage_state_prefix = caste_type
 
 	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_HIVEMIND)) // The hive may alter this list
 

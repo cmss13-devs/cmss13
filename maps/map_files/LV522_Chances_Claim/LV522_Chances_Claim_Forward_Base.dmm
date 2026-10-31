@@ -1396,6 +1396,10 @@
 	pixel_x = 32;
 	pixel_y = 6
 	},
+/obj/structure/disposalpipe/down/almayer{
+	dir = 1;
+	id = "chances_research_disposal"
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/chances/medical/medical_science)
 "aeB" = (
@@ -1562,6 +1566,15 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/garden)
+"afg" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/forward_base/chances/hallways/lower/east)
 "afh" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/asphalt/cement/cement4,
@@ -1846,6 +1859,12 @@
 	pixel_y = 13
 	},
 /turf/open/floor/plating/plating_catwalk,
+/area/forward_base/chances/hallways/lower/east)
+"agb" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/antre/plating/direction_north/west_edge,
 /area/forward_base/chances/hallways/lower/east)
 "agc" = (
 /obj/effect/decal/warning_stripes{
@@ -2241,6 +2260,12 @@
 /obj/structure/machinery/cm_vending/sorted/attachments/squad,
 /turf/open/floor/almayer/plate,
 /area/forward_base/chances/squads/lower)
+"ahf" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/antre/plating/direction_north/east_edge,
+/area/forward_base/chances/hallways/lower/east)
 "ahg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep{
@@ -2643,6 +2668,16 @@
 	},
 /turf/open/floor/almayer/plating_striped/south,
 /area/forward_base/chances/command/securestorage)
+"ahX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/forward_base/chances/hallways/lower/east)
+"ahY" = (
+/obj/structure/machinery/chem_simulator,
+/turf/open/floor/almayer,
+/area/forward_base/chances/medical/medical_science)
 "ahZ" = (
 /obj/structure/closet/crate,
 /obj/item/clothing/under/colonist,
@@ -14001,6 +14036,9 @@
 	pixel_y = -3;
 	density = 0
 	},
+/obj/structure/disposalpipe/trunk{
+	dir = 2
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/chances/medical/medical_science)
 "eVW" = (
@@ -14221,7 +14259,8 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/junction{
-	dir = 4
+	dir = 8;
+	icon_state = "pipe-j2"
 	},
 /turf/open/antre/plating/corner_dir/north_west,
 /area/forward_base/chances/hallways/lower_south)
@@ -14473,10 +14512,6 @@
 	},
 /turf/open/floor/strata/white_cyan1/east,
 /area/lv522/indoors/a_block/medical/glass)
-"ffX" = (
-/obj/structure/machinery/chem_simulator,
-/turf/open/floor/plating/plating_catwalk,
-/area/forward_base/chances/medical/medical_science)
 "ffY" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/almayer,
@@ -17153,7 +17188,8 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/junction{
-	dir = 4
+	dir = 8;
+	icon_state = "pipe-j2"
 	},
 /turf/open/antre/plating/direction_west/east_north,
 /area/forward_base/chances/hallways/lower_south)
@@ -25845,7 +25881,10 @@
 /turf/open/floor/prison/blue_plate/north,
 /area/lv522/indoors/a_block/admin)
 "jMs" = (
-/obj/structure/disposalpipe/segment,
+/obj/structure/disposalpipe/junction{
+	dir = 2;
+	icon_state = "pipe-j2"
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/chances/hallways/lower/east)
 "jMv" = (
@@ -26487,6 +26526,10 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/up/almayer{
+	dir = 8;
+	id = "chances_research_disposal"
+	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/chances/hallways/lower/east)
 "jZD" = (
@@ -31099,8 +31142,12 @@
 	pixel_x = 1
 	},
 /obj/structure/bed/roller/heavy,
-/obj/item/organ/xeno/drone,
-/obj/item/organ/xeno/drone,
+/obj/item/organ/xeno/drone{
+	pixel_x = -8
+	},
+/obj/item/organ/xeno/drone{
+	pixel_x = 8
+	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/forward_base/chances/medical/medical_science)
 "lOU" = (
@@ -60957,7 +61004,10 @@
 /turf/open/floor/almayer/plate,
 /area/forward_base/chances/living/briefing)
 "xmZ" = (
-/obj/structure/disposalpipe/junction,
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	icon_state = "pipe-y"
+	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/antre/plating/corner_dir,
 /area/forward_base/chances/hallways/lower_south)
@@ -71486,7 +71536,7 @@ tUB
 gLv
 bEZ
 dOL
-oRo
+afg
 jDT
 ykC
 ggS
@@ -71692,7 +71742,7 @@ kZL
 kZL
 kZL
 stv
-vVi
+agb
 vVi
 vVi
 nRo
@@ -71898,7 +71948,7 @@ afY
 afV
 kZL
 fOo
-wrW
+ahf
 wrW
 wrW
 xRv
@@ -72104,7 +72154,7 @@ oRo
 rBG
 vtL
 rBG
-rBG
+ahX
 rBG
 rBG
 rBG
@@ -111865,7 +111915,7 @@ rHh
 lyl
 jAa
 jAa
-jAa
+ahY
 jAa
 jAa
 ogh
@@ -112071,7 +112121,7 @@ rHh
 eVy
 aeA
 mHS
-ffX
+fgn
 lRr
 lRr
 gjP

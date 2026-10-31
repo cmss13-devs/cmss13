@@ -102,6 +102,8 @@
 /datum/game_mode/colonialmarines/forward_base/check_win()
 	if(SSticker.current_state != GAME_STATE_PLAYING || round_started > 0 || round_finished)
 		return
+	if(ROUND_TIME < 10 MINUTES)
+		return
 	if(!count_marines(SSmapping.levels_by_trait(ZTRAIT_GROUND)))
 		round_finished = MODE_INFESTATION_X_MAJOR
 		return

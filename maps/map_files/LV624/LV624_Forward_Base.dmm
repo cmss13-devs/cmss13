@@ -1945,7 +1945,6 @@
 /area/forward_base/lv624/brig/cells)
 "ahp" = (
 /obj/effect/landmark/start/marine/leader/alpha,
-/obj/effect/landmark/late_join/alpha,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/lv624/preps/leader/cryo)
 "ahq" = (
@@ -2010,6 +2009,24 @@
 	},
 /turf/open/floor/plating,
 /area/forward_base/lv624/preps/leader/cryo)
+"ahD" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/research/main_terminal{
+	pixel_y = 7;
+	pixel_x = -5;
+	dir = 4
+	},
+/obj/structure/machinery/computer/med_data/laptop{
+	pixel_x = -5;
+	pixel_y = -7;
+	dir = 4
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = 9;
+	pixel_y = 13
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/forward_base/lv624/research)
 "ahE" = (
 /obj/structure/closet/secure_closet/brig,
 /obj/effect/decal/cleanable/dirt{
@@ -2314,6 +2331,7 @@
 /area/lv624/ground/barrens/east_barrens/ceiling)
 "aiK" = (
 /obj/structure/machinery/chem_dispenser,
+/obj/item/reagent_container/glass/beaker/bluespace,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -2474,6 +2492,17 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/forward_base/lv624/living/briefing)
+"ajn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer/sterile_green_side/north,
+/area/forward_base/lv624/research)
 "ajo" = (
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/colony/west_tcomms_road)
@@ -4622,7 +4651,6 @@
 	layer = 2.52
 	},
 /obj/effect/landmark/start/marine/leader/delta,
-/obj/effect/landmark/late_join/delta,
 /obj/structure/machinery/status_display{
 	pixel_y = -30
 	},
@@ -4660,14 +4688,12 @@
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
-/obj/effect/landmark/late_join/bravo,
 /obj/effect/landmark/start/marine/leader/charlie,
 /obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/almayer/plate,
 /area/forward_base/lv624/preps/leader/cryo)
 "aqn" = (
 /obj/effect/landmark/start/marine/spec/delta,
-/obj/effect/landmark/late_join/delta,
 /obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/almayer/plate,
 /area/forward_base/lv624/preps/spec/cryo)
@@ -7731,7 +7757,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/lv624/command/cic)
 "azD" = (
-/obj/effect/landmark/late_join/charlie,
 /obj/effect/landmark/start/marine/leader/bravo,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/lv624/preps/leader/cryo)
@@ -7911,7 +7936,6 @@
 	layer = 2.52
 	},
 /obj/effect/landmark/start/marine/spec/charlie,
-/obj/effect/landmark/late_join/alpha,
 /obj/structure/machinery/status_display{
 	pixel_y = -30
 	},
@@ -9110,12 +9134,10 @@
 	layer = 2.52
 	},
 /obj/effect/landmark/start/marine/spec/alpha,
-/obj/effect/landmark/late_join/alpha,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/lv624/preps/spec/cryo)
 "aDD" = (
 /obj/effect/landmark/start/marine/spec/bravo,
-/obj/effect/landmark/late_join/bravo,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/lv624/preps/spec/cryo)
 "aDE" = (
@@ -9162,7 +9184,6 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "aDN" = (
 /obj/effect/landmark/start/marine/medic/bravo,
-/obj/effect/landmark/late_join/bravo,
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
@@ -9177,12 +9198,10 @@
 /area/lv624/ground/jungle/west_central_jungle)
 "aDQ" = (
 /obj/effect/landmark/start/marine/medic/bravo,
-/obj/effect/landmark/late_join/bravo,
 /turf/open/floor/almayer/plate,
 /area/forward_base/lv624/preps/corpsman/cryo)
 "aDR" = (
 /obj/effect/landmark/start/marine/medic/delta,
-/obj/effect/landmark/late_join/delta,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/lv624/preps/corpsman/cryo)
 "aDS" = (
@@ -9193,7 +9212,6 @@
 /area/lv624/lazarus/toilet)
 "aDU" = (
 /obj/effect/landmark/start/marine/medic/delta,
-/obj/effect/landmark/late_join/delta,
 /turf/open/floor/almayer/plate,
 /area/forward_base/lv624/preps/corpsman/cryo)
 "aDV" = (
@@ -9228,7 +9246,6 @@
 /area/lv624/lazarus/quart)
 "aDZ" = (
 /obj/effect/landmark/start/marine/tl/delta,
-/obj/effect/landmark/late_join/delta,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/lv624/preps/corpsman/cryo)
 "aEa" = (
@@ -9291,7 +9308,6 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "aEm" = (
 /obj/effect/landmark/start/marine/tl/charlie,
-/obj/effect/landmark/late_join/charlie,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/lv624/preps/comtech/cryo)
 "aEn" = (
@@ -9300,17 +9316,14 @@
 /area/lv624/lazarus/fitness)
 "aEo" = (
 /obj/effect/landmark/start/marine/engineer/charlie,
-/obj/effect/landmark/late_join/charlie,
 /turf/open/floor/almayer/plate,
 /area/forward_base/lv624/preps/comtech/cryo)
 "aEp" = (
 /obj/effect/landmark/start/marine/engineer/charlie,
-/obj/effect/landmark/late_join/charlie,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/lv624/preps/comtech/cryo)
 "aEq" = (
 /obj/effect/landmark/start/marine/engineer/delta,
-/obj/effect/landmark/late_join/delta,
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
@@ -9318,7 +9331,6 @@
 /area/forward_base/lv624/preps/comtech/cryo)
 "aEr" = (
 /obj/effect/landmark/start/marine/engineer/delta,
-/obj/effect/landmark/late_join/delta,
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
@@ -9732,7 +9744,6 @@
 /area/lv624/lazarus/quart)
 "aFz" = (
 /obj/effect/landmark/start/marine/medic/charlie,
-/obj/effect/landmark/late_join/charlie,
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
@@ -9796,12 +9807,10 @@
 /area/lv624/lazarus/quartstorage)
 "aFI" = (
 /obj/effect/landmark/start/marine/medic/charlie,
-/obj/effect/landmark/late_join/charlie,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/lv624/preps/corpsman/cryo)
 "aFJ" = (
 /obj/effect/landmark/start/marine/medic/alpha,
-/obj/effect/landmark/late_join/alpha,
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
@@ -9815,7 +9824,6 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "aFL" = (
 /obj/effect/landmark/start/marine/medic/alpha,
-/obj/effect/landmark/late_join/alpha,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/lv624/preps/corpsman/cryo)
 "aFM" = (
@@ -9826,7 +9834,6 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "aFN" = (
 /obj/effect/landmark/start/marine/tl/alpha,
-/obj/effect/landmark/late_join/alpha,
 /turf/open/floor/almayer/plate,
 /area/forward_base/lv624/preps/corpsman/cryo)
 "aFO" = (
@@ -9937,12 +9944,10 @@
 /area/lv624/lazarus/landing_zones/lz2)
 "aGi" = (
 /obj/effect/landmark/start/marine/tl/bravo,
-/obj/effect/landmark/late_join/bravo,
 /turf/open/floor/almayer/plate,
 /area/forward_base/lv624/preps/comtech/cryo)
 "aGj" = (
 /obj/effect/landmark/start/marine/engineer/bravo,
-/obj/effect/landmark/late_join/bravo,
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
@@ -10006,7 +10011,6 @@
 /area/lv624/lazarus/quart)
 "aGv" = (
 /obj/effect/landmark/start/marine/engineer/bravo,
-/obj/effect/landmark/late_join/bravo,
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
@@ -10030,7 +10034,6 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "aGA" = (
 /obj/effect/landmark/start/marine/engineer/alpha,
-/obj/effect/landmark/late_join/alpha,
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
@@ -10048,7 +10051,6 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "aGD" = (
 /obj/effect/landmark/start/marine/engineer/alpha,
-/obj/effect/landmark/late_join/alpha,
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
@@ -11562,6 +11564,7 @@
 /area/forward_base/lv624/living/kitchen)
 "aKY" = (
 /obj/structure/machinery/chem_dispenser,
+/obj/item/reagent_container/glass/beaker/bluespace,
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/lv624/medical/pharmacy)
 "aKZ" = (
@@ -15680,12 +15683,10 @@
 "aXl" = (
 /obj/structure/machinery/power/apc/power/west,
 /obj/effect/landmark/start/marine/smartgunner/delta,
-/obj/effect/landmark/late_join/delta,
 /turf/open/floor/almayer/plate,
 /area/forward_base/lv624/preps/smartgunner/cryo)
 "aXm" = (
 /obj/effect/landmark/start/marine/smartgunner/charlie,
-/obj/effect/landmark/late_join/charlie,
 /turf/open/floor/almayer/plate,
 /area/forward_base/lv624/preps/smartgunner/cryo)
 "aXn" = (
@@ -15707,7 +15708,6 @@
 	pixel_y = 28
 	},
 /obj/effect/landmark/start/marine/smartgunner/bravo,
-/obj/effect/landmark/late_join/bravo,
 /turf/open/floor/almayer/plate,
 /area/forward_base/lv624/preps/smartgunner/cryo)
 "aXq" = (
@@ -17061,20 +17061,51 @@
 /turf/closed/wall/almayer/white,
 /area/forward_base/lv624/research)
 "bbd" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/research{
-	pixel_y = 7;
-	pixel_x = -5;
-	dir = 4
+/obj/structure/surface/rack,
+/obj/item/storage/fancy/vials{
+	pixel_y = 9
 	},
-/obj/structure/machinery/computer/med_data/laptop{
-	pixel_x = -5;
-	pixel_y = -7;
-	dir = 4
+/obj/item/storage/fancy/vials{
+	pixel_y = 9
 	},
-/obj/item/reagent_container/food/drinks/coffeecup/wy{
-	pixel_x = 9;
-	pixel_y = 13
+/obj/item/storage/fancy/vials{
+	pixel_y = 9
+	},
+/obj/item/storage/fancy/vials{
+	pixel_y = 9
+	},
+/obj/item/storage/fancy/vials{
+	pixel_y = 9
+	},
+/obj/item/storage/fancy/vials{
+	pixel_y = 9
+	},
+/obj/item/storage/fancy/vials{
+	pixel_y = 9
+	},
+/obj/item/storage/fancy/vials/empty{
+	pixel_y = -2
+	},
+/obj/item/storage/fancy/vials/empty{
+	pixel_y = -2
+	},
+/obj/item/storage/fancy/vials/empty{
+	pixel_y = -2
+	},
+/obj/item/storage/fancy/vials/empty{
+	pixel_y = -2
+	},
+/obj/item/storage/fancy/vials/empty{
+	pixel_y = -2
+	},
+/obj/item/storage/fancy/vials/empty{
+	pixel_y = -2
+	},
+/obj/item/storage/fancy/vials/empty{
+	pixel_y = -2
+	},
+/obj/item/storage/fancy/vials/empty{
+	pixel_y = -2
 	},
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/forward_base/lv624/research)
@@ -20079,9 +20110,9 @@
 /turf/open/floor/almayer/floor,
 /area/forward_base/lv624/preps)
 "bjL" = (
-/obj/structure/disposalpipe/segment{
+/obj/structure/disposalpipe/junction{
 	dir = 4;
-	icon_state = "pipe-c"
+	icon_state = "pipe-y"
 	},
 /turf/open/floor/almayer/sterile_green_side/southeast,
 /area/forward_base/lv624/research)
@@ -20143,6 +20174,10 @@
 /turf/open/floor/almayer/red/north,
 /area/forward_base/lv624/preps)
 "bjU" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
@@ -20294,6 +20329,10 @@
 /turf/open/floor/almayer,
 /area/forward_base/lv624/research/fabrication)
 "bkl" = (
+/obj/structure/machinery/chem_master/vial{
+	pixel_y = 2;
+	explo_proof = 1
+	},
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 1
 	},
@@ -20381,8 +20420,8 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/photocopier/wyphotocopier{
-	pixel_y = 1
+/obj/structure/bookcase/manuals/research_and_development{
+	pixel_y = 10
 	},
 /turf/open/floor/almayer/test_floor5,
 /area/forward_base/lv624/research/fabrication)
@@ -20425,6 +20464,18 @@
 	pixel_y = 18
 	},
 /obj/structure/pipes/vents/pump/on,
+/obj/item/stack/sheet/mineral/plastic{
+	amount = 15;
+	pixel_x = -1
+	},
+/obj/item/stack/sheet/metal{
+	amount = 20
+	},
+/obj/item/stack/sheet/glass{
+	amount = 20;
+	pixel_x = 2;
+	pixel_y = 3
+	},
 /turf/open/floor/almayer/mono,
 /area/forward_base/lv624/research/fabrication)
 "bkz" = (
@@ -22367,7 +22418,6 @@
 /area/forward_base/lv624/research/containment)
 "bqI" = (
 /obj/effect/landmark/start/marine/smartgunner/alpha,
-/obj/effect/landmark/late_join/alpha,
 /turf/open/floor/almayer/plate,
 /area/forward_base/lv624/preps/smartgunner/cryo)
 "bqJ" = (
@@ -22473,8 +22523,8 @@
 	icon_state = "S";
 	pixel_y = -1
 	},
-/obj/structure/bookcase/manuals/research_and_development{
-	pixel_y = 10
+/obj/structure/machinery/photocopier/wyphotocopier{
+	pixel_y = 1
 	},
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/forward_base/lv624/research)
@@ -81793,7 +81843,7 @@ bdi
 bbc
 bkl
 bkb
-bjV
+ajn
 bjL
 bjA
 baS
@@ -82694,7 +82744,7 @@ bmU
 bbh
 bcc
 atx
-bbr
+ahD
 bqW
 bqD
 biT

@@ -35,6 +35,7 @@
 /area/forward_base/lv624/intel/prep
 
 /area/forward_base/lv624/landing/console
+	ceiling = CEILING_NONE
 
 /area/forward_base/lv624/liasion
 
@@ -84,6 +85,9 @@
 
 /area/forward_base/lv624/research/fabrication
 
+/area/forward_base/lv624/tent
+	ceiling = CEILING_NONE
+
 /area/forward_base/lv624/tent/commander_tent
 
 /area/forward_base/lv624/tent/correspondent_tent
@@ -97,3 +101,4 @@
 /area/forward_base/lv624/tent/reqs_tent
 
 /area/forward_base/lv624/tent_camp
+	ceiling = CEILING_NONE

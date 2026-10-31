@@ -10,6 +10,18 @@
 	requires_power = FALSE //Temporary
 	unlimited_power = TRUE //Temporary
 
+	var/static/xeno_alert_cooldown = 0
+
+/area/forward_base/Entered(atom/movable/thing, atom/OldLoc)
+	. = ..()
+	if(!isxeno(thing) || !OldLoc || get_area(OldLoc) == src || !COOLDOWN_FINISHED(src, xeno_alert_cooldown))
+		return
+	var/mob/living/carbon/xenomorph/xeno = thing
+	if(xeno.stat == DEAD || (FACTION_MARINE in xeno.iff_tag?.faction_groups))
+		return
+	COOLDOWN_START(src, xeno_alert_cooldown, 5 MINUTES)
+	shipwide_ai_announcement("Unidentified lifesigns detected inside the base. Recommendation: lockdown of exterior access ports, including ducting and ventilation.", "Unidentified Lifesigns", 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
+
 /area/forward_base/command
 	minimap_color = MINIMAP_AREA_COMMAND
 

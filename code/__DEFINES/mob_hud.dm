@@ -75,6 +75,7 @@
 #define MOB_HUD_XENO_HIVE_TUTORIAL 40
 #define MOB_HUD_XENO_HIVE_K_SERIES 41
 #define MOB_HUD_DROPSHIP 42
+#define MOB_HUD_XENO_HIVE_HORSEMAN 43
 
 //for SL/FTL/LZ targeting on locator huds
 #define TRACKER_SL "track_sl"

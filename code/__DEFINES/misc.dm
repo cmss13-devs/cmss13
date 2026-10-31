@@ -60,6 +60,8 @@
 #define AREA_NOTUNNEL (1<<9)
 /// Flags the area as heavily ventilated clearing most /obj/effect/particle_effect in a few ticks.
 #define AREA_HEAVILY_VENTILATED (1<<10)
+/// Flags the area as not being a valid location for a para-drop to land on..
+#define AREA_NO_PARA (1<<11)
 
 /// Default number of ticks for do_after
 #define DA_DEFAULT_NUM_TICKS 5

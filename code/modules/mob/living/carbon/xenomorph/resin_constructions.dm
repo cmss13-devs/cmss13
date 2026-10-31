@@ -20,14 +20,16 @@
 	/// Whether this construction gets more expensive the more saturated the area is
 	var/scaling_cost = FALSE
 
+	var/buildnode_icon = "buildnode_wall"
+
 /datum/resin_construction/proc/can_build_here(turf/T, mob/living/carbon/xenomorph/X)
 	var/mob/living/carbon/xenomorph/blocker = locate() in T
 	if(blocker && blocker != X && blocker.stat != DEAD)
 		to_chat(X, SPAN_WARNING("Can't do that with [blocker] in the way!"))
-		return FALSE
+		return UNBUILDABLE_TURF
 
 	if(!istype(T))
-		return FALSE
+		return UNBUILDABLE_TURF
 
 	if(T.is_weedable < FULLY_WEEDABLE)
 		var/has_node = FALSE
@@ -37,11 +39,11 @@
 
 		if(!has_node)
 			to_chat(X, SPAN_WARNING("You can't do that here without design nodes."))
-			return FALSE
+			return UNBUILDABLE_TURF
 
 		if(!check_for_wall_or_door())
 			to_chat(X, SPAN_WARNING("This terrain is unsuitable for other resin secretions, only walls and doors can be built on this node."))
-			return FALSE
+			return UNBUILDABLE_TURF
 
 	var/area/AR = get_area(T)
 	if(isnull(AR) || !(AR.is_resin_allowed))
@@ -49,45 +51,45 @@
 			to_chat(X, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
 			return
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
-		return FALSE
+		return UNBUILDABLE_TURF
 
 	if(!(AR.resin_construction_allowed)) //disable resin walls not weed, in special circumstances EG. Stairs and Dropship turfs
 		to_chat(X, SPAN_WARNING("You sense this is not a suitable area for expanding the hive."))
-		return FALSE
+		return UNBUILDABLE_TURF
 
 	var/obj/effect/alien/weeds/alien_weeds = locate() in T
 	if(!alien_weeds)
 		to_chat(X, SPAN_WARNING("You can only shape on weeds. Find some resin before you start building!"))
-		return FALSE
+		return UNBUILDABLE_TURF
 
 	if(alien_weeds?.block_structures >= BLOCK_ALL_STRUCTURES)
 		to_chat(X, SPAN_WARNING("\The [alien_weeds] block the construction of any structures!"))
-		return FALSE
+		return UNBUILDABLE_TURF
 
 	var/obj/vehicle/V = locate() in T
 	if(V)
 		to_chat(X, SPAN_WARNING("You cannot build under \the [V]!"))
-		return FALSE
+		return UNBUILDABLE_TURF
 
 	if(alien_weeds.linked_hive.hivenumber != X.hivenumber)
 		to_chat(X, SPAN_WARNING("These weeds do not belong to your hive!"))
-		return FALSE
+		return UNBUILDABLE_TURF
 
 	if(istype(T, /turf/closed/wall)) // Can't build in walls with no density
 		to_chat(X, SPAN_WARNING("This area is too unstable to support a construction."))
-		return FALSE
+		return UNBUILDABLE_TURF
 
 	if(!X.check_alien_construction(T, check_doors = !can_build_on_doors))
-		return FALSE
+		return UNBUILDABLE_TURF
 
 	if(range_between_constructions)
 		for(var/i in long_range(range_between_constructions, T))
 			var/atom/A = i
 			if(A.type == build_path)
 				to_chat(X, SPAN_WARNING("This is too close to another similar structure!"))
-				return FALSE
+				return UNBUILDABLE_TURF
 
-	return TRUE
+	return ALLOWED_TURF
 
 /datum/resin_construction/proc/check_for_wall_or_door()
 	return FALSE
@@ -228,10 +230,11 @@
 
 	build_path = /obj/structure/mineral_door/resin
 	build_animation_effect = /obj/effect/resin_construct/door
+	buildnode_icon = "buildnode_door"
 
 /datum/resin_construction/resin_obj/door/can_build_here(turf/T, mob/living/carbon/xenomorph/X)
 	if (!..())
-		return FALSE
+		return UNBUILDABLE_TURF
 
 	var/wall_support = FALSE
 	for(var/D in GLOB.cardinals)
@@ -246,7 +249,7 @@
 
 	if(!wall_support)
 		to_chat(X, SPAN_WARNING("Resin doors need a wall or resin door next to them to stand up."))
-		return FALSE
+		return UNSUPPORTED_TURF
 
 	return TRUE
 
@@ -284,6 +287,7 @@
 	build_time = 1 SECONDS
 
 	build_path = /obj/effect/alien/resin/sticky
+	buildnode_icon = "buildnode_sticky"
 
 // Fast Resin
 /datum/resin_construction/resin_obj/fast_resin
@@ -294,6 +298,7 @@
 	build_time = 1 SECONDS
 
 	build_path = /obj/effect/alien/resin/sticky/fast
+	buildnode_icon = "buildnode_fast"
 
 /datum/resin_construction/resin_obj/resin_spike
 	name = "Resin Spike"
@@ -303,6 +308,7 @@
 	max_per_xeno = 15
 
 	build_path = /obj/effect/alien/resin/spike
+	buildnode_icon = "buildnode_spike"
 
 /datum/resin_construction/resin_obj/acid_pillar
 	name = "Acid Pillar"
@@ -317,6 +323,7 @@
 	build_time = 12 SECONDS
 
 	range_between_constructions = 5
+	buildnode_icon = "buildnode_pillar"
 
 /datum/resin_construction/resin_obj/shield_dispenser
 	name = "Shield Pillar"

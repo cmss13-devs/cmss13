@@ -101,3 +101,5 @@
 #define COMSIG_XENO_BURSTED "xeno_burst"
 
 #define COMSIG_XENO_ORGAN_REMOVED "xeno_organ_removed"
+
+#define COMSIG_XENO_FINISH_BUILDING "xeno_finish_building"

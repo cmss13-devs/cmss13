@@ -73,6 +73,7 @@
 	observer.set_lighting_alpha_from_pref(client)
 	spawning = TRUE
 	observer.started_as_observer = TRUE
+	client.player_details.larva_pool_time = world.time
 
 	close_spawn_windows()
 

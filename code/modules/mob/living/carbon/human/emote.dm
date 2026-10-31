@@ -28,9 +28,19 @@
 	key_third_person = "blinks"
 	message = "blinks."
 
+/datum/emote/living/carbon/human/blink/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/mob/living/carbon/human/human_starer = user
+	human_starer.move_eyelids(EYELID_CLOSED, 0.2)
+
 /datum/emote/living/carbon/human/blink_rapid
 	key = "rapidblink"
 	message = "blinks rapidly."
+
+/datum/emote/living/carbon/human/blink_rapid/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/mob/living/carbon/human/human_starer = user
+	human_starer.move_eyelids(EYELID_SWITCH, 0.1, 8)
 
 /datum/emote/living/carbon/human/bow
 	key = "bow"
@@ -111,6 +121,11 @@
 	key_third_person = "glares"
 	message = "glares."
 	message_param = "glares at %t."
+
+/datum/emote/living/carbon/human/glare/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/mob/living/carbon/human/human_starer = user
+	human_starer.move_eyelids(EYELID_OPEN, 5)
 
 /datum/emote/living/carbon/human/golfclap
 	key = "golfclap"
@@ -217,6 +232,8 @@
 	. = ..()
 	if(!.)
 		return FALSE
+	var/mob/living/carbon/human/painful_human = user
+	painful_human.move_eyelids(EYELID_CLOSED, 0.1, 4)
 
 /datum/emote/living/carbon/human/pain/run_langchat(mob/living/user, group)
 	if(!ishuman_strict(user))
@@ -296,17 +313,35 @@
 	message = "sneezes!"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/sneeze/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/mob/living/carbon/human/human_sneezer = user
+	human_sneezer.move_eyelids(EYELID_CLOSED, 0.5)
+
+
 /datum/emote/living/carbon/human/snore
 	key = "snore"
 	key_third_person = "snores"
 	message = "snores."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/snore/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/mob/living/carbon/human/H = user
+	if(H.is_napping || H.eyelids_status == EYELID_CLOSED_VOLUNTARILY)
+		return
+	H.move_eyelids(EYELID_CLOSED, 5)
+
 /datum/emote/living/carbon/human/stare
 	key = "stare"
 	key_third_person = "stares"
 	message = "stares."
 	message_param = "stares at %t."
+
+/datum/emote/living/carbon/human/stare/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/mob/living/carbon/human/human_starer = user
+	human_starer.move_eyelids(EYELID_OPEN, 5)
 
 /datum/emote/living/carbon/human/signal
 	key = "signal"
@@ -410,3 +445,81 @@
 /datum/emote/living/carbon/human/burstscream/run_langchat(mob/living/user, list/group)
 	. = ..()
 	user.show_speech_bubble(group, "pain")
+
+/datum/emote/living/carbon/human/closeeyes
+	key = "closeeyes"
+	key_third_person = "closeseyes"
+	message = "closes their eyes."
+
+/datum/emote/living/carbon/human/closeeyes/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/mob/living/carbon/human/H = user
+	if(H.eyelid_timer)
+		deltimer(H.eyelid_timer)
+		H.eyelid_timer = null
+	H.apply_eyelid_state(EYELID_CLOSED_VOLUNTARILY)
+	H.overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
+	// reminder timer can still use eyelid_timer; life ignores blinking while status is voluntary
+	H.eyelid_timer = addtimer(CALLBACK(src, PROC_REF(closed_eyes_reminder), H, world.time), 30 SECONDS, TIMER_STOPPABLE)
+
+
+/datum/emote/living/carbon/human/closeeyes/proc/closed_eyes_reminder(mob/living/carbon/human/human_user, start_time)
+	if(human_user.eyelids_status == EYELID_CLOSED_VOLUNTARILY)
+		var/elapsed_time = world.time - start_time
+		to_chat(human_user, SPAN_INFO("You voluntarily closed your eyes [elapsed_time < 600 ? "[elapsed_time/10] seconds" : "[elapsed_time/600] minutes" ] ago, use *openeyes to see again."))
+		human_user.eyelid_timer = addtimer(CALLBACK(src, PROC_REF(closed_eyes_reminder), human_user, start_time), (elapsed_time < 600 ? 30 : (elapsed_time < 3000 ? 60 : 120)) SECONDS, TIMER_STOPPABLE)
+
+/datum/emote/living/carbon/human/openeyes
+	key = "openeyes"
+	key_third_person = "openseyes"
+	message = "opens their eyes."
+
+/datum/emote/living/carbon/human/openeyes/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/mob/living/carbon/human/H = user
+	if(H.is_napping)
+		H.wake_from_nap(rapid_blink = FALSE)
+		return
+	// existing openeyes logic...
+	if(H.eyelid_timer)
+		deltimer(H.eyelid_timer)
+		H.eyelid_timer = null
+	H.apply_eyelid_state(EYELID_OPEN)
+	H.clear_fullscreen("blind")
+	H.next_blink_at = world.time + 1 SECONDS
+
+/datum/emote/living/carbon/human/nap	//like closeeyes but with more flavour
+	key = "nap"
+	key_third_person = "naps"
+	message = "settles in for a nap."
+
+/datum/emote/living/carbon/human/nap/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/mob/living/carbon/human/H = user
+	if(H.stat != CONSCIOUS)
+		return
+	H.start_napping()
+
+/datum/emote/living/carbon/human/sleep_emote	//same as nap
+	key = "sleep"
+	key_third_person = "sleeps"
+	message = "drifts off to sleep."
+
+/datum/emote/living/carbon/human/sleep_emote/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/mob/living/carbon/human/H = user
+	if(H.stat != CONSCIOUS)
+		return
+	H.start_napping()
+
+/datum/emote/living/carbon/human/wake	//openeyes does this too, but intuitively this should exist
+	key = "wake"
+	key_third_person = "wakes"
+	message = "wakes up."
+
+/datum/emote/living/carbon/human/wake/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/mob/living/carbon/human/H = user
+	if(H.is_napping)
+		H.wake_from_nap(rapid_blink = FALSE)
+

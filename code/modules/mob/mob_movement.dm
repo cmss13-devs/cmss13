@@ -101,6 +101,9 @@ CLIENT_VERB(drop_item)
 		if(HAS_TRAIT(human, TRAIT_HAULED))
 			human.handle_haul_resist()
 			return
+		if(human.is_napping)
+			human.wake_from_nap(rapid_blink = FALSE)
+			human.visible_message(SPAN_NOTICE("[src] stirs and opens their eyes."), SPAN_NOTICE("You jolt awake as you start moving."))
 
 	if(world.time < next_movement)
 		return

@@ -467,3 +467,155 @@
 		headset = wear_r_ear
 	if(headset)
 		headset.update_minimap_icon()
+
+
+/mob/living/carbon/human/proc/resolve_eyelid_state(state)
+	if(state == EYELID_SWITCH)
+		return eyelids_status == EYELID_OPEN ? EYELID_CLOSED : EYELID_OPEN
+	return state
+
+
+/mob/living/carbon/human/proc/apply_eyelid_state(state)
+	if(eyelids_status == EYELID_FLAYED && state != EYELID_FLAYED)
+		return
+
+	eyelids_status = state
+	update_eyes()
+
+
+/// Finite eyelid sequence for emotes / forced animations.
+/// period = seconds each step is held. times = number of state flips (1 = single change + optional reopen).
+/mob/living/carbon/human/proc/move_eyelids(state, period = 0.15, times = 1)
+	if(!(species?.flags & HAS_EYELIDS))
+		return
+
+	if(eyelids_status == EYELID_FLAYED)	//flayed means no eyelids, stays open D:
+		return
+
+	if(eyelid_timer)
+		deltimer(eyelid_timer)
+		eyelid_timer = null
+
+	apply_eyelid_state(resolve_eyelid_state(state))
+
+	if(times <= 1)
+		// Single forced state. If we closed, schedule reopen so life can resume afterwards.
+		if(eyelids_status == EYELID_CLOSED)
+			eyelid_timer = addtimer(CALLBACK(src, PROC_REF(end_eyelid_sequence)), period SECONDS, TIMER_STOPPABLE)
+		return
+
+	// Multi-step sequence (rapidblink, pain, etc.)
+	eyelid_timer = addtimer(CALLBACK(src, PROC_REF(move_eyelids), EYELID_SWITCH, period, times - 1), period SECONDS, TIMER_STOPPABLE)
+
+
+/mob/living/carbon/human/proc/end_eyelid_sequence()
+	eyelid_timer = null
+	if(stat == DEAD || stat == UNCONSCIOUS || eyelids_status == EYELID_CLOSED_VOLUNTARILY)
+		return
+	apply_eyelid_state(EYELID_OPEN)
+	// small gap before life takes over again
+	next_blink_at = world.time + 1 SECONDS
+
+
+/// Life-driven normal blinking. Called from Life().
+/mob/living/carbon/human/proc/handle_eyelid_blinking()
+	if(!(species?.flags & HAS_EYELIDS))
+		return
+
+	if(stat == DEAD || eyelids_status == EYELID_CLOSED_VOLUNTARILY)
+		return
+
+	if(stat == UNCONSCIOUS)	// Unconscious but alive: keep eyes closed (damage KO, etc.)
+		if(eyelids_status != EYELID_CLOSED)
+			if(eyelid_timer)
+				deltimer(eyelid_timer)
+				eyelid_timer = null
+			apply_eyelid_state(EYELID_CLOSED)
+		return
+
+	if(eyelid_timer) // emote/sequence owns the lids right now
+		return
+
+	if(!next_blink_at)	// First-time offset so a crowd doesn't all blink together
+		next_blink_at = world.time + rand(0, 30) // 0–3s spread
+
+	if(world.time < next_blink_at)
+		return
+
+	var/open_hold	// Interval until the *next* blink after this one finishes
+	if(eye_blind)
+		open_hold = 0.2 SECONDS
+	else if(eye_blurry)
+		open_hold = 1 SECONDS
+	else
+		open_hold = (EYELID_BLINK_OPEN_BASE + rand(-0.5, 0.5)) SECONDS
+
+	apply_eyelid_state(EYELID_CLOSED)	// Close now, timer will reopen
+	eyelid_timer = addtimer(CALLBACK(src, PROC_REF(finish_normal_blink), open_hold), EYELID_BLINK_CLOSED_TIME, TIMER_STOPPABLE)
+
+
+/mob/living/carbon/human/proc/finish_normal_blink(open_hold)
+	eyelid_timer = null
+	if(stat == DEAD || stat == UNCONSCIOUS || eyelids_status == EYELID_CLOSED_VOLUNTARILY)
+		return
+	apply_eyelid_state(EYELID_OPEN)
+	next_blink_at = world.time + open_hold
+
+
+/// Enter nap: close eyes, rest, blinded, periodic snoring.
+/mob/living/carbon/human/proc/start_napping()
+	if(!(species?.flags & HAS_EYELIDS))
+		return
+	if(stat == DEAD || is_napping)
+		return
+
+	if(eyelid_timer)
+		deltimer(eyelid_timer)
+		eyelid_timer = null
+	if(nap_snore_timer)
+		deltimer(nap_snore_timer)
+		nap_snore_timer = null
+
+	is_napping = TRUE
+	lay_down()
+	apply_eyelid_state(EYELID_CLOSED_VOLUNTARILY)
+	overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
+
+	// first snore after a short delay, then on a loop
+	nap_snore_timer = addtimer(CALLBACK(src, PROC_REF(nap_snore)), rand(8, 15) SECONDS, TIMER_STOPPABLE)
+
+
+/// Periodic snore while still napping.
+/mob/living/carbon/human/proc/nap_snore()
+	nap_snore_timer = null
+	if(!is_napping || stat == DEAD)
+		return
+	emote("snore")
+	nap_snore_timer = addtimer(CALLBACK(src, PROC_REF(nap_snore)), rand(20, 50) SECONDS, TIMER_STOPPABLE)
+
+
+/// Wake up form a nap
+/mob/living/carbon/human/proc/wake_from_nap(rapid_blink = FALSE)
+	if(!is_napping)
+		return
+
+	is_napping = FALSE
+	if(nap_snore_timer)
+		deltimer(nap_snore_timer)
+		nap_snore_timer = null
+	if(eyelid_timer)
+		deltimer(eyelid_timer)
+		eyelid_timer = null
+
+	clear_fullscreen("blind")
+
+	if(stat == DEAD)
+		apply_eyelid_state(EYELID_CLOSED) // stay closed if they died mid-nap
+		return
+
+	if(rapid_blink)
+		// flutter then resume normal life blinking
+		move_eyelids(EYELID_SWITCH, 0.1, 6)
+	else
+		apply_eyelid_state(EYELID_OPEN)
+		next_blink_at = world.time + 1 SECONDS

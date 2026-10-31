@@ -77,7 +77,7 @@
 		/obj/item/corncob,
 		/obj/item/poster,
 		/obj/item/book/manual/barman_recipes,
-		/obj/item/book/manual/chef_recipes,
+		/obj/item/chef_recipes,
 		/obj/item/toy/bikehorn,
 		/obj/item/toy/beach_ball,
 		/obj/item/weapon/banhammer,

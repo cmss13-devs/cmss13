@@ -132,5 +132,12 @@ GLOBAL_VAR(obfs_z)
 
 /// List of giant lizards that are alive.
 GLOBAL_LIST_EMPTY(giant_lizards_alive)
+
+// cooking
+/// List of valid recipes
+GLOBAL_LIST_INIT_TYPED(pcwj_recipe_dictionary, /datum/cooking/recipe, initialize_recipe_dictionary())
+/// List of steps for the cookbook
+GLOBAL_LIST_INIT_TYPED(pcwj_cookbook_lookup, /datum/cooking/recipe, initialize_cookbook_lookup())
+
 /// List of FCT Field Camera Tripods
 GLOBAL_LIST_EMPTY_TYPED(deployed_tripod_cameras, /obj/structure/overwatch_camera_tripod)

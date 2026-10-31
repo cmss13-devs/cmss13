@@ -38,6 +38,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_acider_acid
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
+
 	var/acid_cost = 100
 
 /datum/action/xeno_action/activable/acider_for_the_hive
@@ -46,4 +47,19 @@
 	macro_path = /datum/action/xeno_action/verb/verb_acider_sacrifice
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
+
 	var/minimal_acid = 200
+	var/caboom_timer = 20
+	var/caboom_left = 20
+	var/caboom_loop = 1
+
+	var/caboom_left_display = 20 SECONDS
+
+	var/caboom_trigger
+	var/caboom_last_proc
+	var/list/caboom_sound = list('sound/effects/runner_charging_1.ogg','sound/effects/runner_charging_2.ogg')
+
+	var/caboom_acid_ratio = 200
+	var/caboom_burn_damage_ratio = 5
+	var/caboom_burn_range_ratio = 100
+	var/caboom_struct_acid_type = /obj/effect/xenomorph/acid

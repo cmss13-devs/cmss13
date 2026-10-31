@@ -99,6 +99,7 @@
 	zenomorf.armor_modifier += armor_buff_amount
 	zenomorf.recalculate_speed()
 	zenomorf.recalculate_armor()
+	start_duration_display(duration)
 
 	/// Though the ability's other buffs are supposed to last for its duration, it's only supposed to enhance one spit.
 	RegisterSignal(zenomorf, COMSIG_XENO_POST_SPIT, PROC_REF(disable_spatter))
@@ -116,6 +117,7 @@
 		zenomorf.balloon_alert(zenomorf, "our spits are back to normal", text_color = "#93ec78")
 		zenomorf.ammo = GLOB.ammo_list[/datum/ammo/xeno/acid] // el codigo de mierda es mi ciudad
 	UnregisterSignal(zenomorf, COMSIG_XENO_POST_SPIT)
+	end_duration_display()
 
 /datum/action/xeno_action/onclick/charge_spit/proc/remove_effects()
 	var/mob/living/carbon/xenomorph/zenomorf = owner

@@ -10,13 +10,11 @@
 
 /datum/buildmode_mode/basic/when_clicked(client/admin_building, params, atom/clicked_atom)
 	var/list/modifiers = params2list(params)
-
 	var/left_click = LAZYACCESS(modifiers, LEFT_CLICK)
 	var/right_click = LAZYACCESS(modifiers, RIGHT_CLICK)
 	var/alt_click = LAZYACCESS(modifiers, ALT_CLICK)
 	var/ctrl_click = LAZYACCESS(modifiers, CTRL_CLICK)
-	if(istype(clicked_atom, /atom/movable/screen/radial)) //we're actively using radials in basic mode, so don't intercept any clicks that target those.
-		return TRUE
+
 	if(istype(clicked_atom, /turf))
 		var/turf/clicked_turf = clicked_atom
 		if(left_click && !alt_click && !ctrl_click)
@@ -119,7 +117,7 @@
 				var/atom/built_atom = new build_picked(get_turf(clicked_atom))
 				if(picked_option != "Reinforced Table")
 					built_atom.setDir(BM.build_dir)
-	if(istype(clicked_atom, /obj))
+	else if(istype(clicked_atom, /obj))
 		var/obj/clicked_object = clicked_atom
 		var/destruction_switch = "Make Indestructible"
 		if(clicked_atom.unacidable || clicked_atom.explo_proof || clicked_object.health == -1)

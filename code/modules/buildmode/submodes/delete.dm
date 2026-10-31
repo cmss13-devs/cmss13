@@ -25,14 +25,14 @@
 			if(isturf(object))
 				return
 			var/atom/deleting = object
-			var/action_type = tgui_alert(usr, "Strict type ([deleting.type]) or type and all subtypes?", "Type Selection", list(DELETE_STRICT, DELETE_TYPE_AND_SUBTYPES, DELETE_CANCEL))
+			var/action_type = tgui_alert(c, "Strict type ([deleting.type]) or type and all subtypes?", "Type Selection", list(DELETE_STRICT, DELETE_TYPE_AND_SUBTYPES, DELETE_CANCEL))
 			if(action_type == DELETE_CANCEL || !action_type)
 				return
 
-			if(tgui_alert(usr,"Are you really sure you want to delete all instances of type [deleting.type]?", "Confirmation", list(CONFIRM_YES, CONFIRM_NO)) != CONFIRM_YES)
+			if(tgui_alert(c, "Are you really sure you want to delete all instances of type [deleting.type]?", "Confirmation", list(CONFIRM_YES, CONFIRM_NO)) != CONFIRM_YES)
 				return
 
-			if(tgui_alert(usr,"Second confirmation required. Delete?", "Double Confirmation", list(CONFIRM_YES, CONFIRM_NO)) != CONFIRM_YES)
+			if(tgui_alert(c, "Second confirmation required. Delete?", "Double Confirmation", list(CONFIRM_YES, CONFIRM_NO)) != CONFIRM_YES)
 				return
 
 			var/o_type = deleting.type
@@ -45,10 +45,10 @@
 							qdel(obj)
 						CHECK_TICK
 					if(!i)
-						to_chat(usr, "No instances of this type exist.")
+						to_chat(c, "No instances of this type exist.")
 						return
-					log_admin("[key_name(usr)] deleted all instances of type [o_type] ([i] instances deleted) ")
-					message_admins(SPAN_NOTICE("[key_name(usr)] deleted all instances of type [o_type] ([i] instances deleted) "))
+					log_admin("[key_name(c)] deleted all instances of type [o_type] ([i] instances deleted) ")
+					message_admins(SPAN_NOTICE("[key_name(c)] deleted all instances of type [o_type] ([i] instances deleted) "))
 				if(DELETE_TYPE_AND_SUBTYPES)
 					var/i = 0
 					for(var/obj in world)
@@ -57,10 +57,10 @@
 							qdel(obj)
 						CHECK_TICK
 					if(!i)
-						to_chat(usr, "No instances of this type exist.")
+						to_chat(c, "No instances of this type exist.")
 						return
-					log_admin("[key_name(usr)] deleted all instances of type or subtype of [o_type] ([i] instances deleted) ")
-					message_admins(SPAN_NOTICE("[key_name(usr)] deleted all instances of type or subtype of [o_type] ([i] instances deleted) "))
+					log_admin("[key_name(c)] deleted all instances of type or subtype of [o_type] ([i] instances deleted) ")
+					message_admins(SPAN_NOTICE("[key_name(c)] deleted all instances of type or subtype of [o_type] ([i] instances deleted) "))
 
 #undef DELETE_STRICT
 #undef DELETE_TYPE_AND_SUBTYPES

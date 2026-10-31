@@ -197,13 +197,14 @@
 
 
 /mob/living/carbon/xenomorph/handle_regular_status_updates(regular_update = TRUE)
+	var/need_update_health = TRUE
+
 	if(regular_update && health <= 0 && (!caste || (fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !on_fire)) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure
 		if(!check_weeds_for_healing()) //In crit, damage is maximal if you're caught off weeds
 			apply_damage(2.5 - warding_aura*0.5, BRUTE) //Warding can heavily lower the impact of bleedout. Halved at 2.5 phero, stopped at 5 phero
 		else
 			apply_damage(-warding_aura, BRUTE)
-
-	updatehealth()
+		need_update_health = FALSE
 
 	if(health > 0 && stat != DEAD) //alive and not in crit! Turn on their vision.
 		see_in_dark = 50
@@ -216,9 +217,11 @@
 			blinded = TRUE
 			if(regular_update && halloss > 0)
 				apply_damage(-3, HALLOSS)
+				need_update_health = FALSE
 		else if(sleeping)
 			if(regular_update && halloss > 0)
 				apply_damage(-3, HALLOSS)
+				need_update_health = FALSE
 			if(regular_update && mind)
 				if((mind.active && client != null) || immune_to_ssd)
 					sleeping = max(sleeping - 1, 0)
@@ -233,12 +236,16 @@
 					apply_damage(-3, HALLOSS)
 				else
 					apply_damage(-1, HALLOSS)
+				need_update_health = FALSE
 
 		if(regular_update)
 			if(eye_blurry)
-				src.ReduceEyeBlur(1)
+				ReduceEyeBlur(1)
 
 			handle_statuses()//natural decrease of stunned, knocked_down, etc...
+
+	if(need_update_health)
+		updatehealth()
 
 	return TRUE
 
@@ -326,7 +333,6 @@ Make sure their actual health updates immediately.*/
 	apply_damage(min(-(maxHealth / 60 + 0.5 + (maxHealth / 60) * recov/2)*(m) + heal_penalty, 0), BURN)
 	apply_damage(min(-(maxHealth * 0.1 + 0.5 + (maxHealth * 0.1) * recov/2)*(m) + heal_penalty, 0), OXY)
 	apply_damage(min(-(maxHealth / 5 + 0.5 + (maxHealth / 5) * recov/2)*(m) + heal_penalty, 0), TOX)
-	updatehealth()
 
 
 /mob/living/carbon/xenomorph/proc/handle_environment()
@@ -339,7 +345,6 @@ Make sure their actual health updates immediately.*/
 	if(caste && !(fire_immunity & FIRE_IMMUNITY_NO_DAMAGE))
 		if(env_temperature > (T0C + 66))
 			apply_damage((env_temperature - (T0C + 66)) / 5, BURN) //Might be too high, check in testing.
-			updatehealth() //Make sure their actual health updates immediately
 			if(prob(20))
 				to_chat(src, SPAN_WARNING("You feel a searing heat!"))
 

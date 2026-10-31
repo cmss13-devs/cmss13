@@ -95,6 +95,7 @@
 #include "subsystem_init.dm"
 #include "tgui_create_message.dm"
 #include "timer_sanity.dm"
+#include "toggle_crest.dm"
 #include "tutorials.dm"
 #include "xeno_strains.dm"
 #include "movement\collisions_can_pass_flags.dm"
@@ -109,6 +110,7 @@
 #include "pheromones\transmit_hive.dm"
 #include "pheromones\transmit_permutation.dm"
 #include "pheromones\pheromone_helpers.dm"
+#include "helpers\unsorted.dm"
 
 // Unit tests backend
 #include "focus_only_tests.dm"

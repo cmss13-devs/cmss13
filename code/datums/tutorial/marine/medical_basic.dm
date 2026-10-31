@@ -20,6 +20,7 @@
 	message_to_player("The first kind of damage is <b>Brute</b>, the most common kind. It represents physical trauma from things like punches, weapons, or guns.")
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.adjustBruteLoss(10)
+	living_mob.updatehealth()
 	addtimer(CALLBACK(src, PROC_REF(brute_tutorial_2)), 4 SECONDS)
 
 /datum/tutorial/marine/medical_basic/proc/brute_tutorial_2()
@@ -54,6 +55,7 @@
 	update_objective("")
 	var/mob/living/living_mob = tutorial_mob
 	living_mob.adjustFireLoss(10)
+	living_mob.updatehealth()
 	addtimer(CALLBACK(src, PROC_REF(burn_tutorial)), 4 SECONDS)
 
 /datum/tutorial/marine/medical_basic/proc/burn_tutorial()

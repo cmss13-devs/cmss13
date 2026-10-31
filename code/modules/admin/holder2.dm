@@ -52,6 +52,15 @@ GLOBAL_PROTECT(href_token)
 		return FALSE
 	return ..()
 
+/datum/admins/proc/associate_or_deadmin(client/target, force = FALSE)
+	if(!istype(target))
+		return
+
+	if(GLOB.deadmins[target.ckey])
+		add_verb(target, /client/proc/readmin_self)
+		return
+	associate(target, force)
+
 /datum/admins/proc/associate(client/C, force = FALSE)
 	if(!istype(C))
 		return
@@ -66,6 +75,7 @@ GLOBAL_PROTECT(href_token)
 	owner.tgui_say.load()
 	owner.update_special_keybinds()
 	GLOB.admins |= C
+	GLOB.deadmins[owner.ckey] = FALSE
 
 	if(rights & R_MOD)
 		notify_login()
@@ -156,7 +166,7 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 		return PROC_BLOCKED
 	if(admin_holder)
 		admin_holder.disassociate()
-		QDEL_NULL(admin_holder)
+		GLOB.deadmins[ckey] = TRUE
 	return TRUE
 
 /client/proc/readmin()

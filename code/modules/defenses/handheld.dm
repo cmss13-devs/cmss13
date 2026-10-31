@@ -71,7 +71,7 @@
 		return
 	if(istype(T, /turf/open))
 		var/turf/open/floor = T
-		if(!floor.allow_construction)
+		if(!floor.allow_construction || !floor.validate_deployment(TURF_DEPLOYABLE_SENTRY))
 			to_chat(user, SPAN_WARNING("You cannot deploy \a [src] here, find a more secure surface!"))
 			return FALSE
 	else

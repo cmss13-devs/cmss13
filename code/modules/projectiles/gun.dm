@@ -1793,7 +1793,7 @@ and you're good to go.
 				admin_msg = "[key_name(user)] lost at Russian Roulette with \a [name] in [get_area(user)] [ffl]"
 
 			var/obj/limb/head = user.get_limb("head") // carnage
-			if(projectile_to_fire.ammo.bonus_projectiles_type || projectile_to_fire.ammo.flags_ammo_behavior == AMMO_EXPLOSIVE || (projectile_to_fire.ammo.damage * damage_mult) >= 80)
+			if(projectile_to_fire.ammo.bonus_projectiles_type || (projectile_to_fire.ammo.damage * damage_mult) >= 80)
 				user.visible_message(SPAN_HIGHDANGER(uppertext("[user]'s head explodes into a cloud of blood and bone by their [name], oh God.")))
 				head.droplimb(FALSE, TRUE)
 				user.spawn_gibs()
@@ -2563,7 +2563,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	simulate_recoil(2, user)
 
 	var/obj/limb/head = execution_target.get_limb("head")
-	if(projectile_to_fire.ammo.bonus_projectiles_type || projectile_to_fire.ammo.flags_ammo_behavior & AMMO_EXPLOSIVE || (projectile_to_fire.ammo.damage * damage_mult) >= 80)
+	if(projectile_to_fire.ammo.bonus_projectiles_type || (projectile_to_fire.ammo.damage * damage_mult) >= 80)
 		execution_target.visible_message(SPAN_HIGHDANGER(uppertext("[execution_target]'s head explodes into a cloud of blood and bone by [user]'s [name], oh God.")),
 			SPAN_HIGHDANGER("Your head explodes into a cloud of blood and bone, goddamn.")) // lol
 		head.droplimb(FALSE, TRUE)

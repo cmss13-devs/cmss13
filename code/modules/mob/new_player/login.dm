@@ -37,6 +37,8 @@
 			)
 	)
 
+	late_join_ui = new()
+
 	tgui_interact(src)
 
 /mob/new_player/tgui_interact(mob/user, datum/tgui/ui)
@@ -64,6 +66,7 @@
 
 	.["tutorials_ready"] = SSticker?.current_state == GAME_STATE_PLAYING
 	.["round_start"] = !SSticker || !SSticker.mode || SSticker.current_state <= GAME_STATE_PREGAME
+	.["round_starting"] = SSticker && (SSticker.current_state == GAME_STATE_SETTING_UP || SSticker.current_state == GAME_STATE_PREGAME && SSticker.time_left <= 0)
 	.["readied"] = ready
 
 	.["confirmation_message"] = lobby_confirmation_message
@@ -142,7 +145,7 @@
 					tutorial_menu()
 					return FALSE
 
-			late_choices()
+			late_join_ui.tgui_interact(src)
 			return TRUE
 
 		if("late_join_upp")

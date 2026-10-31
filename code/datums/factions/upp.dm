@@ -3,18 +3,10 @@
 	faction_tag = FACTION_UPP
 	base_icon_file = 'icons/mob/hud/factions/upp.dmi'
 
-/datum/faction/upp/modify_hud_holder(image/holder, mob/living/carbon/human/human)
-	var/icon/override_icon_file
-	var/hud_icon_state
+/datum/faction/upp/modify_hud_holder_from_data(image/holder, location, job_rank, paygrade, assignment, rank_fallback, rank_override, datum/squad/squad)
+	var/hud_icon_state = null
 	var/default_color = FALSE //so squad units get red icons as survs and ERT
-	var/datum/squad/squad = human.assigned_squad
-
-	var/_role = human.job
-	if(!_role)
-		var/obj/item/card/id/id_card = human.get_idcard()
-		if(id_card)
-			_role = id_card.rank
-	switch(_role)
+	switch(job_rank)
 		if(JOB_UPP_MEDIC)
 			hud_icon_state = "med"
 			default_color = TRUE
@@ -57,14 +49,16 @@
 			hud_icon_state = "log"
 		if(JOB_UPP_COMMISSAR, JOB_UPP_MSS_OFFICER)
 			hud_icon_state = "commi"
+
 	if(hud_icon_state)
-		var/icon/file_to_use = override_icon_file ? override_icon_file : base_icon_file
-		holder.overlays += image(file_to_use, human, "upp_background")
-		var/image/rank_icon_image = image(file_to_use, human, "upp_[hud_icon_state]")
+		holder.overlays += image(base_icon_file, location, "upp_background")
+		var/image/rank_icon_image = image(base_icon_file, location, "upp_[hud_icon_state]")
 		if(istype(squad))
-			human.langchat_color = human.assigned_squad.chat_color
+			var/mob/living/carbon/human/human = location
+			if(istype(human))
+				human.langchat_color = squad.chat_color // This really ought to be done elsewhere
 			rank_icon_image.color = squad.equipment_color
-			var/image/squad_circle = image(file_to_use, human, "upp_squad_circle")
+			var/image/squad_circle = image(base_icon_file, location, "upp_squad_circle")
 			squad_circle.color = squad.equipment_color
 			holder.overlays += squad_circle
 		else

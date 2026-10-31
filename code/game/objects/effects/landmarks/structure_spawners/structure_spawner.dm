@@ -8,6 +8,8 @@
 	var/is_turf = FALSE
 	/// One of required gamemode flags for this to apply
 	var/mode_flags = NO_FLAGS
+	/// Whether to perform apply in post_setup instead. Ignored if target_location specified in apply.
+	var/delay_apply = FALSE
 
 /obj/effect/landmark/structure_spawner/Initialize(mapload, ...)
 	. = ..()
@@ -29,8 +31,11 @@
 /// Actually spawn this if applicable
 /obj/effect/landmark/structure_spawner/proc/apply(atom/target_location)
 	SHOULD_NOT_SLEEP(TRUE)
+	if(delay_apply && !target_location)
+		return
 	if(!validate())
 		return
+	delay_apply = FALSE
 	if(!target_location)
 		target_location = get_spawn_location()
 	if(is_turf)
@@ -38,8 +43,11 @@
 		return T?.place_on_top(path_to_spawn)
 	return new path_to_spawn(target_location)
 
-/// Post-Setup hook, mainly to delete unused landmarks. By default delete all non-applicable ones
+/// Post-Setup hook, mainly to delete unused landmarks or to perform a delayed apply. By default delete all non-applicable ones
 /obj/effect/landmark/structure_spawner/proc/post_setup()
+	if(delay_apply)
+		delay_apply = FALSE
+		apply()
 	if(validate())
 		return TRUE
 	qdel(src)
@@ -48,6 +56,10 @@
 /// Setup spawners will all be evaluated by game mode on start, and deleted after
 /obj/effect/landmark/structure_spawner/setup
 	name = "abstract gamemode structure spawner"
+
 /obj/effect/landmark/structure_spawner/setup/post_setup()
+	if(delay_apply)
+		delay_apply = FALSE
+		apply()
 	qdel(src)
 	return FALSE

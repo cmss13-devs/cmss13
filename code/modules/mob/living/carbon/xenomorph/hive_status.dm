@@ -1746,20 +1746,21 @@
 
 
 /// Get a list of hivebuffs which can be bought now.
-/datum/hive_status/proc/get_available_hivebuffs()
+/datum/hive_status/proc/get_available_hivebuffs(admin)
 	var/list/potential_hivebuffs = subtypesof(/datum/hivebuff)
 
 	// First check if we any pylons which are capable of supporting hivebuffs
-	if(!LAZYLEN(active_endgame_pylons))
+	if(!LAZYLEN(active_endgame_pylons) && !admin)
 		return
 
 	for(var/datum/hivebuff/possible_hivebuff as anything in potential_hivebuffs)
 		// Round isn't old enough yet
-		if(ROUND_TIME < initial(possible_hivebuff.roundtime_to_enable))
+		if(ROUND_TIME < initial(possible_hivebuff.roundtime_to_enable) && !admin)
 			potential_hivebuffs -= possible_hivebuff
 			continue
 
-		if(initial(possible_hivebuff.number_of_required_pylons) > LAZYLEN(active_endgame_pylons))
+		// If there are enough pylons
+		if(initial(possible_hivebuff.number_of_required_pylons) > LAZYLEN(active_endgame_pylons) && !admin)
 			potential_hivebuffs -= possible_hivebuff
 			continue
 
@@ -1788,20 +1789,99 @@
 				continue
 
 		// If the buff is not reusable check against used hivebuffs.
-		if(!initial(possible_hivebuff.is_reusable))
+		if(!initial(possible_hivebuff.is_reusable) && !admin)
 			if(locate(possible_hivebuff) in used_hivebuffs)
 				potential_hivebuffs -= possible_hivebuff
 				continue
 
+		// If the buff is admin only
+		if(possible_hivebuff.is_admin_exclusive && !admin)
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
 	return potential_hivebuffs
 
-/datum/hive_status/proc/attempt_apply_hivebuff(datum/hivebuff/hivebuff, mob/living/purchasing_player, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
-	var/datum/hivebuff/new_buff = new hivebuff(src)
+/datum/hive_status/proc/attempt_apply_hivebuff(datum/hivebuff/hivebuff_type, mob/living/carbon/xenomorph/purchasing_player, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
+	var/datum/hivebuff/new_buff = new hivebuff_type(src)
 	if(!new_buff._on_engage(purchasing_player, purchased_pylon))
 		qdel(new_buff)
 		return FALSE
 	return TRUE
 
+/datum/hive_status/proc/attempt_apply_hivebuff_admin(datum/hivebuff/hivebuff_type, mob/purchasing_admin, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
+	var/datum/hivebuff/new_buff = new hivebuff_type(src)
+	new_buff.engage_flavourmessage = replacetext(new_buff.engage_flavourmessage, "The Queen", "Queen Mother")
+	if(!new_buff._on_engage_admin(purchasing_admin, purchased_pylon))
+		qdel(new_buff)
+		return FALSE
+	return TRUE
+
+/// Call this to perform antidelay checks for this hive when a person dies or is nested (force to ignore checking person)
+/datum/hive_status/proc/check_antidelay(mob/living/carbon/human/person, force)
+	if(!force && !ishuman_strict(person))
+		return
+
+	var/turf/person_loc = get_turf(person)
+	if(!force && SSinterior.in_interior(person_loc))
+		var/datum/interior/current_interior = SSinterior.get_interior_by_coords(person_loc.x, person_loc.y, person_loc.z)
+		if(current_interior?.exterior)
+			person_loc = current_interior.exterior.loc
+
+	var/survive_mode = MODE_HAS_FLAG(MODE_SURVIVE)
+	var/relevant_z = force || is_mainship_level(person_loc.z) || (survive_mode && is_ground_level(person_loc.z))
+	if((SSticker.mode?.is_in_endgame || survive_mode) && SSticker.current_state != GAME_STATE_FINISHED && relevant_z)
+		var/mob/last_living_human
+		var/human_count = 0
+
+		for(var/mob/living/carbon/human/cur_human as anything in GLOB.alive_human_list)
+			if(!survive_mode)
+				if(!is_mainship_level(cur_human.z)) // This doesn't detect lockers or vans
+					continue
+			else
+				if(!is_ground_level(cur_human.z)) // This doesn't detect lockers or vans
+					continue
+			if(HAS_TRAIT(cur_human, TRAIT_NESTED))
+				continue
+			if(!ishuman_strict(cur_human))
+				continue
+			human_count++
+			if(last_living_human && see_humans_on_tacmap)
+				last_living_human = null
+				break
+			last_living_human = cur_human
+
+		if(!see_humans_on_tacmap && human_count < (get_real_total_xeno_count() * HIJACK_RATIO_FOR_TACMAP))
+			xeno_announcement("There is only a handful of tallhosts left, they are now visible on our hive mind map.", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
+			see_humans_on_tacmap = TRUE
+			tacmap_requires_queen_ovi = FALSE
+			SEND_SIGNAL(src, COMSIG_XENO_REVEAL_TACMAP)
+
+		if(last_living_human && human_count == 1)
+			if((GLOB.last_qm_callout + 2 MINUTES) < world.time)
+				GLOB.last_qm_callout = world.time
+				// Tell the xenos where the human is.
+				xeno_announcement("I sense the last tallhost hiding in [get_area_name(last_living_human)].", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
+				// Tell the human he is the last guy.
+				if(last_living_human.client)
+					to_chat(last_living_human, SPAN_ANNOUNCEMENT_HEADER_BLUE("Panic creeps up your spine. You realize that you are the last survivor."))
+				//tell the ghosts
+				notify_ghosts(header = "Last Human", message = "There is only one person left: [last_living_human.real_name]!", source = last_living_human, action = NOTIFY_ORBIT)
+			//disable delaycloaks
+			var/mob/living/carbon/human/delayer = last_living_human
+			if(istype(delayer.back, /obj/item/storage/backpack/marine/satchel/scout_cloak))
+				var/obj/item/storage/backpack/marine/satchel/scout_cloak/delayer_cloak = delayer.back
+				if(delayer_cloak.camo_active)
+					delayer_cloak.deactivate_camouflage(delayer)
+				if((delayer_cloak.cloak_cooldown - world.time) < 30 MINUTES)
+					to_chat(delayer, SPAN_WARNING("Your [delayer_cloak] fizzles out and breaks!"))
+				delayer_cloak.cloak_cooldown = world.time + 1 HOURS //fuck you
+			if(istype(delayer.wear_suit, /obj/item/clothing/suit/storage/marine/ghillie))
+				var/obj/item/clothing/suit/storage/marine/ghillie/delayer_armour = delayer.wear_suit
+				if(delayer_armour.camo_active)
+					delayer_armour.deactivate_camouflage(delayer)
+				if(delayer_armour.can_camo)
+					delayer_armour.can_camo = FALSE //fuck you
+					to_chat(delayer, SPAN_WARNING("Your [delayer_armour]'s camo system breaks!"))
 
 //Xeno Resin Mark Shit, the very best place for it too :0)
 //Defines at the bottom of this list here will show up at the top in the mark menu

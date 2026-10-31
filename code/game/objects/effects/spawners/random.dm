@@ -3,8 +3,12 @@
 	desc = "This item type is used to spawn random objects at round-start."
 	icon = 'icons/landmarks.dmi'
 	icon_state = "x3"
-	var/spawn_nothing_percentage = 0 // this variable determines the likelyhood that this random object will not spawn anything
+	/// This variable determines the likelyhood that this random object will not spawn anything
+	var/spawn_nothing_percentage = 0
+	/// Whether to wait until roundstart to spawn_item
 	var/spawn_on_roundstart = FALSE
+	/// If non-null, only spawns on this game mode - should only generally be used in conjunction with spawn_on_roundstart
+	var/mode_flags
 
 // creates a new object and deletes itself
 /obj/effect/spawner/random/Initialize()
@@ -15,12 +19,15 @@
 			alpha = 0
 			return INITIALIZE_HINT_ROUNDSTART
 		else
+			if(mode_flags && !MODE_HAS_FLAG(mode_flags))
+				return INITIALIZE_HINT_QDEL
 			spawn_item()
 
 	return INITIALIZE_HINT_QDEL
 
 /obj/effect/spawner/random/LateInitialize()
-	spawn_item()
+	if(!mode_flags || MODE_HAS_FLAG(mode_flags))
+		spawn_item()
 	qdel(src)
 
 // this function should return a specific item to spawn

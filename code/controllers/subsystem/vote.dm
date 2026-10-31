@@ -280,8 +280,10 @@ SUBSYSTEM_DEF(vote)
 					if(initial(cur_mode.config_tag))
 						cur_mode = new mode_type
 						var/vote_cycle_met = !initial(cur_mode.vote_cycle) || (text2num(SSperf_logging?.round?.id) % initial(cur_mode.vote_cycle) == 0)
-						var/min_players_met = length(GLOB.clients) >= cur_mode.required_players
-						if(initial(cur_mode.votable) && vote_cycle_met && min_players_met)
+						var/client_count = length(GLOB.clients)
+						var/min_players_met = client_count >= cur_mode.required_players
+						var/max_players_met = client_count <= cur_mode.max_players || !cur_mode.max_players
+						if(initial(cur_mode.votable) && vote_cycle_met && min_players_met && max_players_met)
 							choices += initial(cur_mode.config_tag)
 						qdel(cur_mode)
 			if("groundmap")

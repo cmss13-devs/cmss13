@@ -19,6 +19,9 @@
 /datum/lazy_template/ert/uscm_station
 	map_name = "uscm_ert_station"
 
+/datum/lazy_template/ert/uscm_station_large_pad
+	map_name = "uscm_ert_station_large_pad"
+
 /datum/lazy_template/ert/yautja_station
 	map_name = "yautja_ert_station"
 

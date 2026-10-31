@@ -90,8 +90,10 @@ Additional game mode variables.
 	/// List of role titles to override to different roles when starting game
 	var/list/role_mappings
 
-	//current amount of survivors by type
+	/// Current amount of survivors by type
 	var/list/survivors_by_type_amounts = list()
+	/// Current amount of survivors by insert type (only currently relevent for survivor unlimited)
+	var/list/survivors_by_insert_type_amounts
 
 	//Bioscan related.
 	var/bioscan_current_interval = 5 MINUTES//5 minutes in
@@ -197,7 +199,7 @@ Additional game mode variables.
 		return FALSE
 
 	var/pred_rank = pred_job.get_whitelist_status(pred_candidate.client)
-	if(show_warning && tgui_alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(pred_rank)] predator.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+	if(show_warning && tgui_alert(pred_candidate, "Confirm joining the hunt? You will join as \a [lowertext(pred_rank)] predator.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
 		return FALSE
 
 	if(pred_rank != CLAN_RANK_LEADER && !pred_candidate.client.check_whitelist_status(WHITELIST_YAUTJA_LEADER|WHITELIST_YAUTJA_COUNCIL))
@@ -415,7 +417,7 @@ Additional game mode variables.
 			to_chat(joe_candidate, SPAN_WARNING("You already were a Colony Working Joe! Give someone else a chance."))
 		return FALSE
 
-	if(show_warning && tgui_alert(joe_candidate, "Confirm joining as a Colony Working Joe.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+	if(show_warning && tgui_alert(joe_candidate, "Confirm joining as a Colony Working Joe?", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
 		return FALSE
 
 	if(joe_job.current_positions >= joe_job.total_positions)
@@ -466,7 +468,6 @@ Additional game mode variables.
 	// This is usually done in assign_role, a proc which is not executed in this case, since check_joe_late_join is running its own checks.
 	joe_job.current_positions++
 	GLOB.RoleAuthority.equip_role(new_joe, joe_job, new_joe.loc)
-	SSticker.minds += new_joe.mind
 	return new_joe
 
 //===================================================\\
@@ -482,7 +483,7 @@ Additional game mode variables.
 		if(show_warning)
 			to_chat(responder, SPAN_WARNING("You are not whitelisted!"))
 		return FALSE
-	if(show_warning && tgui_alert(responder, "Confirm joining as a Fax Responder.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+	if(show_warning && tgui_alert(responder, "Confirm joining as a Fax Responder?", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
 		return FALSE
 	if(!get_fax_responder_slots(responder))
 		if(show_warning)
@@ -555,7 +556,6 @@ Additional game mode variables.
 	// This is usually done in assign_role, a proc which is not executed in this case, since check_fax_responder_late_join is running its own checks.
 	fax_responder_job.current_positions++
 	GLOB.RoleAuthority.equip_role(new_responder, fax_responder_job, new_responder.loc)
-	SSticker.minds += new_responder.mind
 
 	message_admins(FONT_SIZE_XL(SPAN_RED("[key_name(new_responder)] joined as a [sub_job].")))
 	new_responder.add_fax_responder()
@@ -581,6 +581,12 @@ Additional game mode variables.
 		return FALSE
 	return TRUE
 
+
+//===================================================\\
+
+			//Xenomorph INITIALIZE\\
+
+//===================================================\\
 
 // Helper proc to set some constants
 /proc/setup_new_xeno(datum/mind/new_xeno)
@@ -979,14 +985,15 @@ Additional game mode variables.
 	return QS
 
 /datum/game_mode/proc/transform_queen(datum/mind/ghost_mind, turf/xeno_turf, hivenumber = XENO_HIVE_NORMAL)
-	var/mob/living/original = ghost_mind.current
+	var/mob/living/original = ghost_mind?.current
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-	if(hive.living_xeno_queen || !original || !original.client)
-		return
+	if(ghost_mind && (hive.living_xeno_queen || !original || !original.client))
+		return null
 
-	var/mob/living/carbon/xenomorph/new_queen = new /mob/living/carbon/xenomorph/queen(xeno_turf, null, hivenumber)
-	ghost_mind.transfer_to(new_queen) //The mind is fine, since we already labeled them as a xeno. Away they go.
-	ghost_mind.name = ghost_mind.current.name
+	var/mob/living/carbon/xenomorph/queen/new_queen = new (xeno_turf, null, hivenumber)
+	if(ghost_mind)
+		ghost_mind.transfer_to(new_queen) //The mind is fine, since we already labeled them as a xeno. Away they go.
+		ghost_mind.name = ghost_mind.current.name
 
 	new_queen.generate_name()
 
@@ -1003,6 +1010,7 @@ Additional game mode variables.
 		to_chat(new_queen, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
 
 	new_queen.update_icons()
+	return new_queen
 
 //===================================================\\
 
@@ -1029,7 +1037,7 @@ Additional game mode variables.
 		return survivor_non_event_transform(ghost.current, picked_spawn, is_synth, is_CO)
 
 /datum/game_mode/proc/survivor_old_equipment(mob/living/carbon/human/equipping_human, is_synth = FALSE, is_CO = FALSE)
-	var/list/survivor_types = SSmapping.configs[GROUND_MAP].survivor_types
+	var/list/survivor_types = SSmapping.configs[GROUND_MAP].get_relevant_survivor_types()
 
 	//creates soft caps for survivor variants, if there are more than the maximum of your preference you get a completely random variant which can include your preference, should minimize stacking while allowing for interesting randomness
 	var/preferred_variant = ANY_SURVIVOR
@@ -1039,9 +1047,13 @@ Additional game mode variables.
 			preferred_variant = ANY_SURVIVOR
 
 	if(is_synth)
-		survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].synth_survivor_types
+		var/list/types_by_variant = SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant
+		if(preferred_variant != ANY_SURVIVOR && length(types_by_variant[preferred_variant]))
+			survivor_types = types_by_variant[preferred_variant]
 	else
-		survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].survivor_types
+		var/list/types_by_variant = SSmapping.configs[GROUND_MAP].get_relevant_survivor_types_by_variant()
+		if(preferred_variant != ANY_SURVIVOR && length(types_by_variant[preferred_variant]))
+			survivor_types = types_by_variant[preferred_variant]
 	if(is_CO)
 		survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
 
@@ -1179,6 +1191,7 @@ Additional game mode variables.
 		current_survivors -= survivor
 	return 1
 
+
 //===================================================\\
 
 			//MARINE GEAR INITIALIZE\\
@@ -1239,11 +1252,12 @@ Additional game mode variables.
 			continue
 		chem_storage.calculate_dynamic_storage(energy_scale)
 
-/// Updates [var/latejoin_tally] and [var/gear_scale] based on role weights of latejoiners/cryoers. Delta is the amount of role positions added/removed
+/// Updates [var/latejoin_tally], [var/gear_scale] and [var/energy_scale] based on role weights of latejoiners/cryoers. Delta is the amount of role positions added/removed
 /datum/game_mode/proc/latejoin_update(role, delta = 1)
 	var/weight = GLOB.RoleAuthority.calculate_role_weight(role)
 	latejoin_tally += weight * delta
 	update_gear_scale(weight * delta)
+	update_energy_scale()
 
 // for the toolbox
 /datum/game_mode/proc/end_round_message()
@@ -1310,7 +1324,7 @@ Additional game mode variables.
 				to_chat(joe_candidate, SPAN_WARNING("Only [joe_max] Working Joes may spawn per round."))
 			return
 
-	if(show_warning && tgui_alert(joe_candidate, "Confirm joining as a Working Joe.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+	if(show_warning && tgui_alert(joe_candidate, "Confirm joining as a Working Joe?", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
 		return
 
 	return TRUE
@@ -1334,5 +1348,4 @@ Additional game mode variables.
 	joe_job.current_positions++
 	GLOB.RoleAuthority.equip_role(new_joe, joe_job, new_joe.loc)
 	GLOB.data_core.manifest_inject(new_joe)
-	SSticker.minds += new_joe.mind
 	return new_joe

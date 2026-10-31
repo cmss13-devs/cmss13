@@ -138,6 +138,10 @@ SUBSYSTEM_DEF(hijack)
 	var/list/datum/powernet/powernets = list()
 
 /datum/controller/subsystem/hijack/Initialize(timeofday)
+	if(GLOB.master_mode == GAMEMODE_SURVIVE)
+		can_fire = FALSE
+		return SS_INIT_NO_NEED
+
 	RegisterSignal(SSdcs, COMSIG_GLOB_GENERATOR_SET_OVERLOADING, PROC_REF(on_generator_overload))
 
 	var/spaceport_to_use = pick(subtypesof(/datum/spaceport))
@@ -159,6 +163,10 @@ SUBSYSTEM_DEF(hijack)
 
 /datum/controller/subsystem/hijack/fire(resumed = FALSE)
 	if(!SSticker?.mode?.is_in_endgame)
+		return
+
+	if(GLOB.master_mode == GAMEMODE_SURVIVE)
+		can_fire = FALSE
 		return
 
 	if(SSticker.current_state == GAME_STATE_FINISHED)

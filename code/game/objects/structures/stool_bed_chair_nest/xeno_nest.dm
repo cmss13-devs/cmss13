@@ -259,6 +259,9 @@
 	if(!human)
 		return TRUE
 
+	var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	main_hive?.check_antidelay(human)
+
 	//Disabling motion detectors and other stuff they might be carrying
 	human.start_nesting_cooldown()
 	human.disable_special_flags()

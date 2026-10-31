@@ -12,6 +12,8 @@
 	var/hostile = FALSE
 	/// The archetype of this spawner
 	var/archetype = INSERT_NONE
+	/// Lazy list of automatically determined nearby locker weakrefs that can satisfy this landmark
+	var/list/datum/weakref/latejoin_lockers
 
 	var/spawn_priority = LOWEST_SPAWN_PRIORITY
 

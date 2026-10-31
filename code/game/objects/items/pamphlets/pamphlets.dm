@@ -281,6 +281,27 @@
 	trait = /datum/character_trait/skills/vc
 	bypass_pamphlet_limit = TRUE
 
+/obj/item/pamphlet/skill/comms_repair
+	name = "engineer instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge of maintaining and repairing machinery."
+	icon_state = "pamphlet_construction"
+	bypass_pamphlet_limit = TRUE
+	unacidable = TRUE
+	layer = /obj/structure/machinery/telecomms/relay/preset/tower::layer // So it can appear above the tower
+
+/obj/item/pamphlet/skill/comms_repair/can_use(mob/living/carbon/human/user)
+	. = ..()
+	if(. && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+		to_chat(user, SPAN_WARNING("You know this already!"))
+		return FALSE
+
+/obj/item/pamphlet/skill/comms_repair/on_use(mob/living/carbon/human/user)
+	if(user.skills.get_skill_level(SKILL_ENGINEER) == 0)
+		to_chat(user, SPAN_NOTICE("You read over \the [name] a few times, learning a new skill."))
+	else
+		to_chat(user, SPAN_NOTICE("You review \the [name], further reinforcing your knowledge of the skill."))
+	user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
+
 //-------//
 //trait based pamphlets
 //------//

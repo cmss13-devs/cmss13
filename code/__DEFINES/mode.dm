@@ -17,6 +17,8 @@
 #define EVACUATION_STATUS_IN_PROGRESS 2
 #define EVACUATION_STATUS_COMPLETE 3
 
+#define SURVIVE_DISTRESS_SIGNAL_TIME 15 MINUTES
+
 #define NUCLEAR_TIME_LOCK 90 MINUTES
 #define NUKE_EXPLOSION_INACTIVE 0
 #define NUKE_EXPLOSION_ACTIVE 1
@@ -47,7 +49,7 @@
 
 #define IS_MODE_COMPILED(MODE) (ispath(text2path("/datum/game_mode/"+(MODE))))
 
-#define MODE_HAS_FLAG(flag) (SSticker.mode.flags_round_type & flag)
+#define MODE_HAS_FLAG(flag) (SSticker.mode?.flags_round_type & flag)
 #define MODE_HAS_MODIFIER(modifier_type) (SSticker.mode?.get_gamemode_modifier(modifier_type))
 #define MODE_SET_MODIFIER(modifier_type, enabled) (SSticker.mode?.set_gamemode_modifier(modifier_type, enabled))
 
@@ -68,6 +70,7 @@
 #define MODE_THUNDERSTORM (1<<13)// Enables thunderstorm effects on maps that are compatible with it. (Lit exterior tiles, rain effects)
 #define MODE_FACTION_CLASH (1<<14)// Disables scopes, sniper sentries, OBs, shooting corpses, dragging enemy corpses, stripping enemy corpses, increase armor bullet/bomb/internal damage protection
 #define MODE_COLONY_JOE (1<<15) // Enables joes spawning on the colony
+#define MODE_SURVIVE (1<<16)
 
 #define ROUNDSTATUS_FOG_DOWN 1
 #define ROUNDSTATUS_PODDOORS_OPEN 2
@@ -153,9 +156,8 @@ GLOBAL_LIST_INIT(ROLES_GROUND, GLOB.ROLES_XENO + ROLES_SPECIAL + ROLES_WHITELIST
 
 GLOBAL_LIST_INIT(ROLES_DISTRESS_SIGNAL, GLOB.ROLES_USCM + GLOB.ROLES_GROUND)
 GLOBAL_LIST_INIT(ROLES_FACTION_CLASH, ROLES_USCM + JOB_PREDATOR)
-
 GLOBAL_LIST_INIT(ROLES_CM_VS_UPP, (ROLES_USCM + UPP_JOB_LIST)- JOB_CAS_PILOT - JOB_ORDNANCE_TECH)
-
+GLOBAL_LIST_INIT(ROLES_SURVIVE, GLOB.ROLES_XENO + JOB_SURVIVOR_UNLIMITED + ROLES_WHITELISTED)
 
 GLOBAL_LIST_INIT(ROLES_UNASSIGNED, list(JOB_SQUAD_MARINE))
 //Role lists used for switch() checks in show_blurb_uscm(). Cosmetic, determines ex. "Engineering, USS Almayer", "2nd Bat. 'Falling Falcons'" etc.

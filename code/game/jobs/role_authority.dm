@@ -122,7 +122,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		roles_for_mode[role_name] = J
 
 	// Also shuffle survivors since some are tied together
-	var/list/snowflakes = GLOB.ROLES_WHITELISTED|GLOB.ROLES_SPECIAL
+	var/list/snowflakes = GLOB.ROLES_WHITELISTED|GLOB.ROLES_SPECIAL|JOB_SURVIVOR_UNLIMITED
 	var/list/shuffled_snowflakes = shuffle(snowflakes)
 	for(var/i in 1 to length(snowflakes))
 		var/old_index = roles_for_mode.Find(snowflakes[i])
@@ -367,6 +367,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	switch(J.title)
 		if(JOB_SURVIVOR)
 			return 1
+		if(JOB_SURVIVOR_UNLIMITED)
+			return 1
 		if(JOB_SYNTH_SURVIVOR)
 			return 1
 		if(JOB_CO_SURVIVOR)
@@ -405,12 +407,12 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 /datum/authority/branch/role/proc/assign_role(mob/new_player/M, datum/job/J, latejoin = FALSE)
 	if(ismob(M) && istype(J))
-		if(check_role_entry(M, J, latejoin) && J.assign_landmark(M))
+		if(check_role_entry(M, J, latejoin) && J.assign_landmark(M, latejoin))
 			M.job = J.title
 			J.current_positions++
 			return TRUE
 
-/datum/authority/branch/role/proc/check_role_entry(mob/new_player/M, datum/job/J, latejoin = FALSE, faction)
+/datum/authority/branch/role/proc/check_role_entry(mob/new_player/M, datum/job/J, latejoin=FALSE, faction, ignore_positions=FALSE)
 	if(jobban_isbanned(M, J.title))
 		return FALSE
 	if(J.role_ban_alternative && jobban_isbanned(M, J.role_ban_alternative))
@@ -421,8 +423,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		return FALSE
 	if(!J.check_whitelist_status(M))
 		return FALSE
-	if(J.total_positions != -1 && J.get_total_positions(latejoin) <= J.current_positions)
-		return FALSE
+	if(!ignore_positions)
+		if(J.total_positions != -1 && J.get_total_positions(latejoin) <= J.current_positions)
+			return FALSE
 	if(latejoin && !J.late_joinable)
 		return FALSE
 	if(faction && faction != J.faction_menu)

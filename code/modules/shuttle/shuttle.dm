@@ -284,28 +284,32 @@
 /obj/docking_port/stationary/proc/on_crash()
 	return
 
-/// Called when a new shuttle arrives
-/obj/docking_port/stationary/proc/on_arrival(obj/docking_port/mobile/arriving_shuttle)
-	turn_off_landing_lights()
-	return
-
 /// Called when a new shuttle is about to arrive
 /obj/docking_port/stationary/proc/on_prearrival(obj/docking_port/mobile/arriving_shuttle, landing_sound)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_SHUTTLE_PREARRIVAL, arriving_shuttle)
 	if(!landing_lights_on)
 		turn_on_landing_lights()
 		if(landing_sound)
 			playsound(return_center_turf(), landing_sound, 60, 0, falloff=4)
-	return
+
+/// Called when a new shuttle arrives
+/obj/docking_port/stationary/proc/on_arrival(obj/docking_port/mobile/arriving_shuttle)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_SHUTTLE_ARRIVAL, arriving_shuttle)
+	turn_off_landing_lights()
 
 /// Called when the docked shuttle ignites
 /obj/docking_port/stationary/proc/on_dock_ignition(obj/docking_port/mobile/departing_shuttle)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_SHUTTLE_IGNITION, departing_shuttle)
 	turn_on_landing_lights()
-	return
 
 /// Called when a shuttle is about to complete undocking from this stationary dock (already physically gone)
 /obj/docking_port/stationary/proc/on_departure(obj/docking_port/mobile/departing_shuttle)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_SHUTTLE_DEPARTURE, departing_shuttle)
 	turn_off_landing_lights()
-	return
 
 //returns first-found touching shuttleport
 /obj/docking_port/stationary/get_docked()
@@ -1011,15 +1015,14 @@
 	else
 		. = "unknown"
 
-
-// attempts to locate /obj/structure/machinery/computer/shuttle with matching ID inside the shuttle
+/// attempts to locate /obj/structure/machinery/computer/shuttle with matching ID in the shuttle's areas
 /obj/docking_port/mobile/proc/getControlConsole()
-	for(var/place in shuttle_areas)
-		var/area/shuttle/shuttle_area = place
-		for(var/obj/structure/machinery/computer/shuttle/S in shuttle_area)
-			if(S.shuttleId == id)
-				return S
+	for(var/area/shuttle/shuttle_area as anything in shuttle_areas)
+		for(var/obj/structure/machinery/computer/shuttle/computer in shuttle_area)
+			if(computer.shuttleId == id)
+				return computer
 	return null
+
 /*
 /obj/docking_port/mobile/proc/hyperspace_sound(phase, list/areas)
 	var/s

@@ -232,7 +232,7 @@ SUBSYSTEM_DEF(mapping)
 		ground_base_path = "data/"
 	Loadground(FailedZs, ground_map.map_name, ground_map.map_path, ground_map.map_file, ground_map.traits, ZTRAITS_GROUND, override_map_path = ground_base_path)
 
-	if(!ground_map.disable_ship_map)
+	if(!ground_map.disable_ship_map && trim(file2text("data/mode.txt")) != GAMEMODE_SURVIVE)
 		var/datum/map_config/ship_map = configs[SHIP_MAP]
 		var/ship_base_path = "maps/"
 		if(ship_map.override_map)
@@ -283,6 +283,8 @@ SUBSYSTEM_DEF(mapping)
 	for(var/path in paths)
 		var/list/filelist = flist(path)
 		for(var/map in filelist)
+			if(!findtext(map, ".dmm", -4))
+				continue
 			var/datum/map_template/T = new(path = "[path][map]", rename = "[map]")
 			map_templates[T.name] = T
 

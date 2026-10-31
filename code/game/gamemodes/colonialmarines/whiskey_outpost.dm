@@ -124,7 +124,7 @@
 
 	CONFIG_SET(flag/remove_gun_restrictions, TRUE)
 	sleep(10)
-	to_world(SPAN_ROUND_HEADER("The current game mode is - WHISKEY OUTPOST!"))
+	to_world(SPAN_ROUNDHEADER("The current game mode is - WHISKEY OUTPOST!"))
 	to_world(SPAN_ROUNDBODY("It is the year 2177 on the planet LV-624, five years before the arrival of the USS Almayer and the 2nd 'Falling Falcons' Battalion in the sector."))
 	to_world(SPAN_ROUNDBODY("The 3rd 'Dust Raiders' Battalion is charged with establishing a USCM presence in the Neroid Sector."))
 	to_world(SPAN_ROUNDBODY("[SSmapping.configs[GROUND_MAP].map_name], one of the Dust Raider bases being established in the sector, has come under attack from unrecognized alien forces."))
@@ -277,7 +277,7 @@
 		GLOB.round_statistics.track_round_end()
 	if(finished == WO_XENOS_WON)
 		log_game("Round end result - xenos won")
-		to_world(SPAN_ROUND_HEADER("The Xenos have successfully defended their hive from colonization."))
+		to_world(SPAN_ROUNDHEADER("The Xenos have successfully defended their hive from colonization."))
 		to_world(SPAN_ROUNDBODY("Well done, you've secured LV-624 for the hive!"))
 		to_world(SPAN_ROUNDBODY("It will be another five years before the USCM returns to the Neroid Sector, with the arrival of the 2nd 'Falling Falcons' Battalion and the USS Almayer."))
 		to_world(SPAN_ROUNDBODY("The xenomorph hive on LV-624 remains unthreatened until then..."))
@@ -290,7 +290,7 @@
 
 	else if(finished == WO_MARINES_WON)
 		log_game("Round end result - marines won")
-		to_world(SPAN_ROUND_HEADER("Against the onslaught, the marines have survived."))
+		to_world(SPAN_ROUNDHEADER("Against the onslaught, the marines have survived."))
 		to_world(SPAN_ROUNDBODY("The signal rings out to the USS Alistoun, and Dust Raiders stationed elsewhere in the Neroid Sector begin to converge on LV-624."))
 		to_world(SPAN_ROUNDBODY("Eventually, the Dust Raiders secure LV-624 and the entire Neroid Sector in 2182, pacifiying it and establishing peace in the sector for decades to come."))
 		to_world(SPAN_ROUNDBODY("The USS Almayer and the 2nd 'Falling Falcons' Battalion are never sent to the sector and are spared their fate in 2186."))
@@ -303,7 +303,7 @@
 
 	else
 		log_game("Round end result - no winners")
-		to_world(SPAN_ROUND_HEADER("NOBODY WON!"))
+		to_world(SPAN_ROUNDHEADER("NOBODY WON!"))
 		to_world(SPAN_ROUNDBODY("How? Don't ask me..."))
 		send_end_round_music('sound/misc/sadtrombone.ogg')
 		if(GLOB.round_statistics)

@@ -283,6 +283,11 @@
 
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(MODE_HAS_FLAG(MODE_SURVIVE))
+		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but we can't comprehend their meaning."))
+		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
+		return XENO_NONCOMBAT_ACTION
+
 	// if the shuttleid is null or the shuttleid references a shuttle that has been removed from play, pick one
 	if(!shuttleId || !SSshuttle.getShuttle(shuttleId, FALSE))
 		var/list/alternatives = alternative_shuttles()

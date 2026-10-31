@@ -1865,6 +1865,10 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_pad)
+"ahd" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/special_gear,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/colony_south/power2/south)
 "ahe" = (
 /turf/closed/wall/kutjevo/rock,
 /area/kutjevo/interior/colony_central)
@@ -1874,17 +1878,103 @@
 "ahg" = (
 /turf/closed/wall/kutjevo/rock,
 /area/kutjevo/interior/colony_north)
+"ahh" = (
+/obj/structure/machinery/light/small,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/colony_south/power2/south)
+"ahi" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/colony_south)
+"ahj" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/colony_south)
+"ahk" = (
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/colony_south/power2/south)
+"ahl" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/exterior/runoff_bridge)
+"ahm" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/botany/east_tech)
+"ahn" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/botany/east)
+"aho" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/floor/almayer/research/containment/floor1,
+/area/kutjevo/interior/colony_south/power2)
 "ahp" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
+"ahq" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/floor/kutjevo/multi_tiles/east,
+/area/kutjevo/interior/colony_south/power2)
+"ahr" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/floor/kutjevo/colors/orange,
+/area/kutjevo/interior/colony_south/power2)
+"ahs" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/colony_south/power2)
+"aht" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/kutjevo/tan/multi_tiles/east,
+/area/kutjevo/interior/complex/botany)
+"ahu" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/botany)
+"ahv" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/kutjevo/colors,
+/area/kutjevo/interior/complex/botany)
+"ahw" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/kutjevo/colors/green,
+/area/kutjevo/interior/complex/botany)
+"ahx" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/complex/botany/east_tech)
+"ahy" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/complex/botany/east_tech)
 "ahz" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers{
 	icon_state = "brflowers_1"
 	},
 /turf/open/gm/grass/grass1/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
+"ahA" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/colony_south)
+"ahB" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/botany)
+"ahC" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/interior/colony_south)
 "ahD" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -1902,10 +1992,279 @@
 /obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/kutjevo/multi_tiles/southwest,
 /area/kutjevo/interior/colony_south/power2)
+"ahF" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/kutjevo/colors/green,
+/area/kutjevo/interior/complex/botany)
+"ahG" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/complex/botany)
+"ahH" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/complex/botany)
+"ahI" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/kutjevo/tan/multi_tiles/east,
+/area/kutjevo/interior/complex/botany/east)
+"ahJ" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/colony_south)
+"ahK" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/kutjevo/colors,
+/area/kutjevo/interior/complex/botany)
+"ahL" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/colony_south)
+"ahM" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/colony_south)
+"ahN" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/kutjevo/multi_tiles/east,
+/area/kutjevo/interior/complex/botany)
+"ahO" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/power_pt2_electric_boogaloo)
+"ahP" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/floor/kutjevo/plate,
+/area/kutjevo/interior/colony_south)
+"ahQ" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/kutjevo/multi_tiles/east,
+/area/kutjevo/interior/complex/botany)
+"ahR" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/floor/kutjevo/plate,
+/area/kutjevo/interior/colony_central)
+"ahS" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/floor/kutjevo/tan/alt_edge/west,
+/area/kutjevo/interior/colony_central)
+"ahT" = (
+/obj/effect/landmark/static_comms/net_survivor,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/botany)
+"ahU" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/complex/botany/east)
+"ahV" = (
+/obj/effect/landmark/static_comms/net_survivor,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/power_pt2_electric_boogaloo)
+"ahW" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/colony_central)
+"ahX" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/colony_central)
+"ahY" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/colony_central)
+"ahZ" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/interior/colony_central)
+"aia" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/colony_central)
+"aib" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/kutjevo/colors/orange/edge/west,
+/area/kutjevo/interior/power_pt2_electric_boogaloo)
+"aic" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/interior/colony_central)
+"aid" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/kutjevo/colors/green,
+/area/kutjevo/interior/complex/botany)
+"aie" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/kutjevo/colors/orange/tile,
+/area/kutjevo/interior/power_pt2_electric_boogaloo)
+"aif" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = 8;
+	pixel_y = 9
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/complex/botany)
+"aig" = (
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/kutjevo/colors,
+/area/kutjevo/interior/complex/botany)
+"aih" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/kutjevo/colors/orange/edge/east,
+/area/kutjevo/interior/power_pt2_electric_boogaloo)
+"aii" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/complex/botany)
+"aij" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/runoff_river)
+"aik" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/construction/east)
+"ail" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/complex_border/botany_medical_cave)
+"aim" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/special_gear,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/east)
+"ain" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/complex_border/botany_medical_cave)
+"aio" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/complex/med)
+"aip" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med)
+"aiq" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/kutjevo/colors,
+/area/kutjevo/interior/complex/med/locks)
+"air" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/kutjevo/colors,
+/area/kutjevo/interior/complex/med/locks)
+"ais" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med)
+"ait" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/kutjevo/colors/purple,
+/area/kutjevo/interior/complex/med/locks)
+"aiu" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/closed/wall/kutjevo/rock,
+/area/kutjevo/interior/colony_central)
+"aiv" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"aiw" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/kutjevo/multi_tiles/north,
+/area/kutjevo/exterior/complex_border/med_rec)
+"aix" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/exterior/complex_border/med_rec)
+"aiy" = (
+/obj/effect/landmark/static_comms/net_survivor,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"aiz" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/cells)
+"aiA" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/kutjevo/colors/purple,
+/area/kutjevo/interior/construction/north)
+"aiB" = (
+/obj/effect/landmark/static_comms/net_survivor,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/construction/north)
+"aiC" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"aiD" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/colony_north)
+"aiE" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/colony_north)
+"aiF" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/colony_north)
+"aiG" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/closed/wall/kutjevo/colony/reinforced,
+/area/kutjevo/interior/colony_northeast)
+"aiH" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/kutjevo/tiles,
+/area/kutjevo/exterior/complex_border/med_rec)
+"aiI" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/kutjevo/colors/purple/edge/east,
+/area/kutjevo/interior/construction/north)
 "aiJ" = (
 /obj/effect/sentry_landmark/lz_2/top_left,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_pad)
+"aiK" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/interior/colony_north)
+"aiL" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med/operating)
+"aiM" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/special_gear,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/north)
+"aiN" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/construction/north)
+"aiO" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_y = 13
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/gm/grass/grass1/weedable,
+/area/kutjevo/exterior/complex_border/med_park)
+"aiP" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/gm/dirtgrassborder2/wall2,
+/area/kutjevo/exterior/complex_border/med_park)
+"aiQ" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/kutjevo/colors/cyan/edge/north,
+/area/kutjevo/interior/complex/med/operating)
+"aiR" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/special_gear,
+/turf/open/gm/dirt2,
+/area/kutjevo/exterior/complex_border/med_park)
 "akH" = (
 /obj/item/weapon/gun/rifle/mar40/carbine,
 /turf/open/floor/kutjevo/multi_tiles,
@@ -2115,6 +2474,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/interior/construction/east)
 "axN" = (
@@ -4285,6 +4645,7 @@
 /area/kutjevo/exterior/Northwest_Colony)
 "dJk" = (
 /obj/structure/machinery/light,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany)
 "dJT" = (
@@ -4657,6 +5018,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/interior/construction/east)
 "emn" = (
@@ -5169,6 +5531,7 @@
 /turf/open/floor/kutjevo/tan/alt_edge/west,
 /area/kutjevo/interior/colony_central)
 "fbZ" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/colony_central)
 "fcB" = (
@@ -5574,6 +5937,7 @@
 /obj/structure/flora/grass/desert{
 	icon_state = "heavygrass_6"
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "fQg" = (
@@ -6672,6 +7036,7 @@
 /area/kutjevo/interior/colony_south/power2)
 "hBD" = (
 /obj/item/trash/cheesie,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_central)
 "hCc" = (
@@ -6755,6 +7120,7 @@
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/interior/construction/east)
 "hET" = (
@@ -7269,6 +7635,7 @@
 /turf/open/floor/kutjevo/multi_tiles/southwest,
 /area/kutjevo/interior/colony_south/power2)
 "iMR" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/kutjevo/interior/colony_central)
 "iNt" = (
@@ -8157,6 +8524,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/botany)
 "kjk" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/colony_central)
 "kkB" = (
@@ -8206,6 +8574,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = -28
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
 /turf/open/floor/kutjevo/colors/purple/edge/west,
 /area/kutjevo/interior/construction/north)
 "kne" = (
@@ -8392,6 +8761,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
 /turf/open/floor/kutjevo/multi_tiles/east,
 /area/kutjevo/interior/complex/botany)
 "kAf" = (
@@ -8943,6 +9313,7 @@
 /area/kutjevo/exterior/complex_border/med_rec)
 "lpF" = (
 /obj/structure/machinery/power/apc/no_power/north,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/floor/kutjevo/colors/cyan/edge/north,
 /area/kutjevo/interior/complex/med/triage)
 "lpJ" = (
@@ -8990,6 +9361,7 @@
 /area/kutjevo/interior/power/comms)
 "ltv" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/colony_south/power2)
 "ltU" = (
@@ -10196,6 +10568,7 @@
 "ntr" = (
 /obj/structure/platform_decoration/stone/kutjevo/west,
 /obj/structure/platform_decoration/stone/kutjevo,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "nty" = (
@@ -10575,6 +10948,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/oob/dev_room)
 "nPA" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/floor/kutjevo/tan/grey_edge/east,
 /area/kutjevo/interior/colony_central)
 "nPG" = (
@@ -10664,6 +11038,7 @@
 /area/kutjevo/interior/power)
 "nYb" = (
 /obj/effect/spawner/random/tool,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/exterior/construction)
 "nYz" = (
@@ -11200,6 +11575,7 @@
 /area/kutjevo/exterior/scrubland)
 "oMw" = (
 /obj/effect/landmark/survivor_spawner,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/foremans_office)
 "oMS" = (
@@ -11338,6 +11714,7 @@
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/interior/construction/east)
 "oVX" = (
@@ -11916,6 +12293,7 @@
 /area/kutjevo/interior/complex/med)
 "pLI" = (
 /obj/structure/platform_decoration/stone/kutjevo,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_central)
 "pLN" = (
@@ -12985,12 +13363,14 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/colony_south/power2)
 "rHL" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/floor/kutjevo/tan/grey_edge,
 /area/kutjevo/interior/colony_central)
 "rHQ" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/floor/kutjevo/tiles,
 /area/kutjevo/interior/complex/med/operating)
 "rIn" = (
@@ -13271,12 +13651,14 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/construction/east)
 "sdX" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/interior/colony_central)
 "sef" = (
@@ -15257,6 +15639,7 @@
 /turf/open/floor/kutjevo/colors/purple/edge/north,
 /area/kutjevo/interior/construction/north)
 "vgw" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/floor/kutjevo/colors/cyan/edge/east,
 /area/kutjevo/interior/complex/med)
 "vgX" = (
@@ -15402,6 +15785,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/kutjevo/interior/power)
 "vxe" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/floor/kutjevo/tan/alt_edge/west,
 /area/kutjevo/interior/colony_south)
 "vxM" = (
@@ -15442,6 +15826,7 @@
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib2"
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany)
 "vDS" = (
@@ -31356,7 +31741,7 @@ oex
 xKb
 amb
 iYo
-iYo
+aiv
 iYo
 uHP
 pGO
@@ -31725,7 +32110,7 @@ eXm
 oln
 aeI
 lce
-kDS
+ahu
 kDS
 kDS
 ekJ
@@ -31862,7 +32247,7 @@ iYo
 uHP
 koX
 iTg
-iYo
+aiv
 iYo
 iYo
 iYo
@@ -31880,7 +32265,7 @@ dic
 axN
 dic
 axN
-dic
+aij
 dic
 dic
 dic
@@ -32352,7 +32737,7 @@ pCS
 wLp
 lkC
 wLp
-iYo
+aiv
 iYo
 iYo
 iYo
@@ -32383,20 +32768,20 @@ dxF
 dxF
 dxF
 eXm
-qgW
-egZ
+ahH
+aii
 sYA
 eSP
 qgW
 vDS
 qgW
 kDS
-kDS
+ahT
 nLg
 kDS
 kDS
 kDS
-kDS
+ahu
 qgW
 vDS
 qgW
@@ -32517,7 +32902,7 @@ nQI
 ofX
 pCS
 wLp
-uHP
+aiC
 wLp
 iYo
 iYo
@@ -32526,7 +32911,7 @@ iYo
 iYo
 iYo
 iYo
-iYo
+aiy
 oUM
 sGs
 vNt
@@ -32555,7 +32940,7 @@ kDS
 sYA
 kDS
 qgW
-vDS
+ahF
 qgW
 kDS
 kDS
@@ -32885,7 +33270,7 @@ eXm
 dax
 wUd
 qgW
-qgW
+ahG
 kDS
 pgl
 qPa
@@ -32899,7 +33284,7 @@ dUZ
 vDS
 kDS
 qgW
-vDS
+ahF
 sVC
 wOU
 sVx
@@ -33005,7 +33390,7 @@ dxF
 dxF
 kkH
 tpk
-ogo
+aiQ
 ltU
 gRi
 phz
@@ -33057,7 +33442,7 @@ wpY
 kDS
 aRh
 mGE
-qgW
+ahG
 kDS
 sYA
 kDS
@@ -33227,7 +33612,7 @@ vDS
 aRh
 pgl
 kDS
-kDS
+ahB
 kDS
 kDS
 kDS
@@ -33239,7 +33624,7 @@ vDS
 vDS
 vDS
 vDS
-vDS
+ahw
 kDS
 cAt
 cAt
@@ -33384,7 +33769,7 @@ fpO
 hxd
 bWc
 vDS
-vDS
+ahw
 cWL
 tBB
 vES
@@ -33541,13 +33926,13 @@ oVX
 oVX
 uIg
 cjO
-cjO
+aio
 uIg
 wff
 wff
 fpO
 wff
-wff
+ail
 wff
 gBI
 cPt
@@ -33566,7 +33951,7 @@ qPO
 qPO
 qPO
 qgW
-qgW
+ahG
 vDS
 qgW
 nAo
@@ -33674,7 +34059,7 @@ gZq
 crT
 quy
 tUm
-epG
+aiP
 uri
 ahz
 onP
@@ -33723,7 +34108,7 @@ nvd
 juO
 hVg
 nLg
-juO
+aif
 lHs
 cau
 ulo
@@ -33848,7 +34233,7 @@ lwL
 oww
 nty
 cbg
-rhK
+aiL
 nZw
 rhK
 rhK
@@ -33870,7 +34255,7 @@ snr
 lxd
 snr
 oVX
-oVX
+ais
 snr
 lxd
 uIg
@@ -34004,7 +34389,7 @@ dxF
 dxF
 mxB
 mxB
-cEq
+aiR
 cEq
 kOR
 wTk
@@ -34067,7 +34452,7 @@ lHs
 lHs
 mbS
 tZI
-qgW
+ahH
 rme
 lHs
 kDS
@@ -34223,14 +34608,14 @@ bnQ
 bnQ
 lHs
 kDS
-kDS
+ahB
 eOM
 uLa
 hFH
 ury
 rxb
 kct
-qgW
+ahG
 xOV
 qHH
 cAt
@@ -34238,7 +34623,7 @@ qgW
 rme
 tRp
 kDS
-kDS
+ahB
 tRp
 hHi
 ycN
@@ -34344,7 +34729,7 @@ diV
 tUm
 baC
 ujo
-pYf
+aiO
 jUP
 hqN
 rlB
@@ -34400,7 +34785,7 @@ wNW
 qgW
 sef
 abz
-cAt
+ahK
 qgW
 rme
 tRp
@@ -34409,7 +34794,7 @@ kDS
 tRp
 hHi
 ycN
-ycN
+aht
 hHi
 tRp
 pSs
@@ -34561,7 +34946,7 @@ kDS
 qgW
 uLa
 sef
-qgW
+ahG
 qgW
 cht
 vPE
@@ -34571,7 +34956,7 @@ rKl
 qgW
 rme
 lHs
-kDS
+ahB
 alh
 mbS
 mbS
@@ -34882,7 +35267,7 @@ jzl
 jzl
 wff
 nnf
-wff
+ain
 wff
 eXm
 eXm
@@ -35057,7 +35442,7 @@ tFh
 rme
 tqC
 eOD
-qgr
+aig
 cAt
 cAt
 cAt
@@ -35244,7 +35629,7 @@ kDS
 kDS
 wyp
 kDS
-kDS
+ahu
 kDS
 kDS
 fNe
@@ -35363,7 +35748,7 @@ asQ
 jfH
 yjI
 yjI
-yjI
+aiz
 yjI
 pSU
 cjO
@@ -35391,7 +35776,7 @@ vDQ
 qgW
 tqC
 vDS
-cAt
+ahv
 cAt
 cAt
 cAt
@@ -35400,7 +35785,7 @@ vDS
 nsU
 rme
 rme
-rme
+ahN
 nsU
 vDS
 kDS
@@ -35411,7 +35796,7 @@ cAt
 cAt
 cAt
 cAt
-cAt
+ahv
 cAt
 cAt
 kDS
@@ -35522,7 +35907,7 @@ rlB
 ryB
 nsd
 pfz
-pfz
+aiH
 pfz
 jhb
 eCY
@@ -35545,7 +35930,7 @@ oVX
 oVX
 ePV
 snr
-snr
+aip
 ePV
 wff
 wff
@@ -35569,12 +35954,12 @@ qgW
 qgW
 qgW
 iwV
-vDS
+ahw
 kDS
 kDS
 kDS
 kDS
-kDS
+ahB
 bGX
 kDS
 kDS
@@ -35707,7 +36092,7 @@ snr
 ldU
 vnO
 aEU
-snr
+aip
 oVX
 snr
 ePV
@@ -35728,11 +36113,11 @@ mbp
 vDS
 vDS
 vDS
-qMC
+aid
 vDS
 vDS
 nCM
-rme
+ahQ
 rme
 rme
 mgP
@@ -36086,7 +36471,7 @@ jxT
 iub
 fyD
 fyD
-fyD
+ahl
 arG
 cqX
 fyD
@@ -36238,7 +36623,7 @@ xkk
 xkk
 oOl
 njQ
-oOl
+ahI
 xkk
 jnS
 hHi
@@ -36399,7 +36784,7 @@ oQc
 oQc
 oQc
 yir
-xkk
+ahU
 yir
 xkk
 hCu
@@ -36706,12 +37091,12 @@ gld
 gld
 pRI
 oVX
-oVX
+ais
 oVX
 pRI
 snr
 oVX
-snr
+aip
 lcs
 orY
 kRM
@@ -37065,7 +37450,7 @@ tWv
 ubR
 eSH
 stt
-stt
+aib
 stt
 stt
 stt
@@ -37084,7 +37469,7 @@ hvq
 gdX
 vHL
 vHL
-nKh
+ahn
 nKh
 wtH
 dic
@@ -37234,7 +37619,7 @@ sPV
 rQY
 rQY
 rQY
-rQY
+ahV
 rQY
 rQY
 rQY
@@ -37352,7 +37737,7 @@ aaD
 aaC
 aaA
 aaA
-aaD
+aiN
 tAX
 mCL
 tAX
@@ -37381,7 +37766,7 @@ slF
 slF
 slF
 slF
-slF
+aiq
 slF
 nsF
 kOo
@@ -37531,7 +37916,7 @@ gew
 sCG
 twn
 vfr
-xNf
+aiA
 lAb
 kAE
 nAc
@@ -37545,7 +37930,7 @@ rES
 mGW
 slF
 slF
-slF
+air
 slF
 slF
 slF
@@ -37855,7 +38240,7 @@ aaA
 sbz
 aau
 rqD
-xNf
+aiA
 xNf
 aay
 vfr
@@ -37915,7 +38300,7 @@ hMu
 qaS
 nbu
 jKN
-jKN
+ahx
 nbu
 sAe
 hMu
@@ -38026,7 +38411,7 @@ xNf
 rGm
 aau
 wOI
-ikW
+aiI
 ikW
 ikW
 mrI
@@ -38230,7 +38615,7 @@ xWK
 bKH
 qYn
 bpT
-ppB
+aih
 ppB
 aor
 rQY
@@ -38356,7 +38741,7 @@ aaz
 aaC
 aau
 uQa
-aaA
+aiM
 aaA
 alo
 cPv
@@ -38406,7 +38791,7 @@ rQY
 rQY
 rQY
 rQY
-rQY
+ahO
 epR
 kHm
 cFJ
@@ -38734,7 +39119,7 @@ ubR
 nsa
 lah
 lah
-lah
+aie
 lah
 nMz
 dip
@@ -38865,7 +39250,7 @@ aas
 aas
 hma
 aas
-aas
+aiB
 aas
 sCG
 twn
@@ -38879,7 +39264,7 @@ gld
 gld
 cPR
 aQG
-aQG
+ait
 aQG
 kni
 bKH
@@ -38922,7 +39307,7 @@ fAT
 rIL
 uBG
 kGM
-nbu
+ahm
 nbu
 nbu
 jKN
@@ -39084,7 +39469,7 @@ rIL
 rIL
 rIL
 rIL
-rIL
+ahy
 cyM
 rIL
 fWl
@@ -39608,7 +39993,7 @@ acw
 adt
 acw
 acw
-adc
+ahd
 acZ
 acR
 acJ
@@ -39878,7 +40263,7 @@ ydQ
 fyT
 ibc
 fyT
-qnB
+aiw
 nRY
 pmv
 bKH
@@ -40210,7 +40595,7 @@ nFM
 nZp
 fjm
 fyT
-ibc
+aix
 fyT
 qnB
 kSH
@@ -41176,10 +41561,10 @@ dxF
 dxF
 dxF
 dxF
-bkR
-bkR
-bkR
-bkR
+aiD
+aiD
+aiD
+aiD
 dxF
 dxF
 bEH
@@ -41348,7 +41733,7 @@ hSU
 bkR
 bkR
 bEH
-bEH
+aiK
 bkR
 bkR
 bkR
@@ -41515,7 +41900,7 @@ bkR
 bkR
 bkR
 bEH
-bkR
+aiD
 bkR
 bkR
 bEH
@@ -41682,9 +42067,9 @@ bkR
 bkR
 bkR
 bkR
-bkR
+aiF
 fOO
-wTt
+aiE
 dxF
 dxF
 dxF
@@ -42356,9 +42741,9 @@ bkR
 tyq
 bkR
 dxF
-bkR
-bkR
-bEH
+aiD
+aiD
+aiK
 dxF
 dxF
 dxF
@@ -42565,7 +42950,7 @@ dxF
 dxF
 aac
 wOX
-aah
+aim
 aah
 joL
 aac
@@ -42595,7 +42980,7 @@ slx
 qGx
 shX
 duu
-okv
+aho
 aeF
 mMH
 mMH
@@ -42603,10 +42988,10 @@ npL
 dxF
 dxF
 acW
-acF
-qOP
-mMH
-fgJ
+ahk
+ahj
+ahi
+ahh
 jhS
 acF
 mMH
@@ -42762,7 +43147,7 @@ slx
 qGx
 klE
 tXK
-fTk
+ahq
 aeG
 mMH
 qOP
@@ -42929,7 +43314,7 @@ slx
 qGx
 qGx
 tXK
-qGx
+ahr
 aeG
 mMH
 mMH
@@ -43096,7 +43481,7 @@ mLw
 xVZ
 xVZ
 tXK
-mLw
+ahs
 aeG
 mMH
 mMH
@@ -43430,7 +43815,7 @@ slx
 qGx
 klE
 tXK
-fTk
+ahq
 aeG
 mMH
 mMH
@@ -43544,12 +43929,12 @@ uiK
 dxF
 dxF
 dxF
-mnT
+ahW
 cJn
 mnT
 mnT
 uiK
-nlv
+ahZ
 dxF
 dxF
 dxF
@@ -43597,7 +43982,7 @@ slx
 qGx
 shX
 tXK
-okv
+aho
 aeF
 mMH
 mMH
@@ -43711,12 +44096,12 @@ nlv
 mnT
 mnT
 dxF
-nlv
-mnT
-mnT
-uiK
-mnT
-nlv
+ahZ
+ahW
+aia
+ahX
+aia
+ahZ
 aac
 aac
 aac
@@ -43877,13 +44262,13 @@ nlv
 mnT
 mnT
 mnT
-mnT
-uiK
-mnT
-mnT
+ahW
+ahY
 mnT
 mnT
-uiK
+mnT
+mnT
+ahY
 pih
 jtD
 bsm
@@ -44050,7 +44435,7 @@ cEz
 mnT
 mnT
 nlv
-uiK
+ahY
 pih
 euj
 jjt
@@ -44216,8 +44601,8 @@ mnT
 mnT
 mnT
 mnT
-nlv
-nlv
+ahZ
+ahZ
 oUP
 uOk
 oUP
@@ -44384,14 +44769,14 @@ mnT
 mnT
 uiK
 mnT
-mnT
-mnT
-mnT
-uiK
-mnT
-nlv
-nlv
-nlv
+ahW
+ahW
+ahW
+ahY
+ahW
+ahZ
+ahZ
+ahZ
 kFF
 wSU
 eNl
@@ -44553,12 +44938,12 @@ mnT
 mnT
 uiK
 uiK
+ahY
+ahY
+ahY
 uiK
-uiK
-uiK
-uiK
-uiK
-nlv
+ahY
+ahZ
 oUP
 oUP
 xvg
@@ -44571,7 +44956,7 @@ mnT
 mnT
 oUP
 kcd
-euj
+aik
 oSK
 oUP
 dxF
@@ -44724,8 +45109,8 @@ mnT
 mnT
 mnT
 uiK
-uiK
-uiK
+ahY
+ahY
 sdX
 hEF
 axK
@@ -44733,14 +45118,14 @@ sdn
 sdn
 emi
 oVO
-dYB
-uiK
-mnT
-dYB
+ahR
+ahX
+aia
+ahR
 iMR
 fbZ
 rHL
-dYB
+ahR
 dxF
 rfE
 rfE
@@ -44892,7 +45277,7 @@ uiK
 mnT
 cEz
 mnT
-uiK
+ahY
 hBD
 mSq
 cvj
@@ -44907,27 +45292,27 @@ mnT
 kjk
 nPA
 kjk
-dYB
-nlv
-nlv
+ahR
+ahZ
+ahZ
 dxF
 dxF
-nlv
-nlv
-nlv
+ahZ
+ahZ
+ahZ
 rdm
 rdm
 rdm
 rdm
 rdm
 rdm
-bpj
-bpj
-mMH
-mMH
-bpj
-bpj
-bpj
+ahL
+ahA
+ahi
+ahi
+ahA
+ahA
+ahA
 dxF
 dxF
 dxF
@@ -45040,7 +45425,7 @@ bkR
 wTt
 wTt
 bkR
-bkR
+aiD
 bkR
 mnT
 mnT
@@ -45071,24 +45456,24 @@ mnT
 mnT
 uiK
 nlv
+ahR
 dYB
-dYB
-dYB
+ahR
 mnT
 mnT
 mnT
 nlv
 nlv
-uiK
-uiK
-mnT
+ahY
+ahY
+ahW
 rdm
 rdm
 rdm
 rdm
 rdm
 rdm
-mMH
+ahM
 bpj
 bpj
 bpj
@@ -45207,7 +45592,7 @@ bkR
 hSU
 bkR
 bkR
-bkR
+aiD
 bkR
 mnT
 mnT
@@ -45248,13 +45633,13 @@ mnT
 mnT
 dYB
 mnT
-mnT
-dYB
-dYB
-dYB
-aaY
-bpj
-mMH
+ahW
+ahR
+ahR
+ahR
+ahP
+ahL
+ahM
 xnT
 bpj
 bpj
@@ -45374,7 +45759,7 @@ wTt
 bEH
 bkR
 bkR
-bkR
+aiD
 bkR
 mnT
 mnT
@@ -45417,8 +45802,8 @@ uiK
 mnT
 fbK
 fbK
-fbK
-fbK
+ahS
+ahS
 vxe
 oXH
 mMH
@@ -45541,7 +45926,7 @@ dxF
 wTt
 bEH
 bEH
-bEH
+aiK
 wTt
 nlv
 mnT
@@ -46758,13 +47143,13 @@ dxF
 dxF
 dxF
 dxF
-bpj
-oXH
-bpj
-npL
-bpj
-npL
-mMH
+ahA
+ahJ
+ahA
+ahC
+ahA
+ahC
+ahi
 dxF
 dxF
 jKI
@@ -47396,7 +47781,7 @@ dxF
 dxF
 dxF
 dxF
-ahe
+aiu
 dxF
 dxF
 dxF
@@ -47547,7 +47932,7 @@ dxF
 dxF
 wTt
 bEH
-bkR
+aiD
 uiK
 mnT
 mnT
@@ -47586,7 +47971,7 @@ dxF
 uiK
 nlv
 nlv
-nlv
+aic
 mnT
 mnT
 yfo
@@ -47714,7 +48099,7 @@ bkR
 wTt
 wTt
 wTt
-bkR
+aiD
 mnT
 uiK
 mnT
@@ -47753,7 +48138,7 @@ nlv
 mnT
 mnT
 mnT
-mnT
+aia
 mnT
 mnT
 rmt
@@ -47881,7 +48266,7 @@ wTt
 bEH
 hSU
 wTt
-wTt
+aiE
 uiK
 uiK
 mnT
@@ -47920,7 +48305,7 @@ mnT
 mnT
 mnT
 mnT
-mnT
+aia
 mnT
 mnT
 yfo
@@ -48048,7 +48433,7 @@ wTt
 bkR
 bEH
 wTt
-wTt
+aiE
 mnT
 mnT
 uiK
@@ -48087,7 +48472,7 @@ mnT
 mnT
 lGj
 mnT
-mnT
+ahW
 mnT
 uiK
 lEA
@@ -48215,7 +48600,7 @@ wTt
 wTt
 wTt
 wTt
-bkR
+aiF
 dxF
 dxF
 uiK
@@ -48254,8 +48639,8 @@ mnT
 mnT
 mnT
 mnT
-mnT
-uiK
+ahW
+ahY
 mnT
 mnT
 mnT
@@ -48382,15 +48767,15 @@ bkR
 rfH
 rfH
 rfH
+aiG
 rfH
 rfH
-rfH
-uiK
-mnT
-mnT
-mnT
-mnT
-uiK
+ahY
+aia
+aia
+aia
+aia
+ahY
 dxF
 dxF
 dxF
@@ -48421,9 +48806,9 @@ mnT
 mnT
 mnT
 mnT
-mnT
-nlv
-mnT
+ahW
+ahZ
+ahW
 dxF
 lEA
 lEA
@@ -48552,7 +48937,7 @@ dxF
 dxF
 dxF
 dxF
-uiK
+ahY
 mnT
 mnT
 mnT
@@ -48589,7 +48974,7 @@ mnT
 mnT
 mnT
 mnT
-uiK
+ahY
 dxF
 dxF
 lEA
@@ -49065,9 +49450,9 @@ dxF
 dxF
 dxF
 dxF
-mnT
-mnT
-uiK
+aia
+aia
+ahX
 dxF
 dxF
 dxF
@@ -49255,10 +49640,10 @@ dxF
 dxF
 dxF
 dxF
-mnT
-mnT
-mnT
-uiK
+aia
+aia
+aia
+ahX
 dxF
 lEA
 lEA

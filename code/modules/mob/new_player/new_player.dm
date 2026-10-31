@@ -69,19 +69,17 @@
 
 	if(!client.prefs?.preview_dummy)
 		client.prefs.update_preview_icon()
-	var/mob/dead/observer/observer = new(get_turf(pick(GLOB.observer_starts + GLOB.latejoin)), client.prefs.preview_dummy)
+
+	var/spawn_landmark = SAFEPICK(GLOB.observer_starts) || SAFEPICK(GLOB.latejoin) || pick(GLOB.comm_tower_landmarks_net_one + GLOB.comm_tower_landmarks_net_two + GLOB.comm_tower_landmarks_survivor)
+	if(!istype(spawn_landmark, /obj/effect/landmark/observer_start))
+		to_chat(src, SPAN_DANGER("Could not locate an observer spawn point. Use the Teleport verbs to jump if needed."))
+	var/mob/dead/observer/observer = new(get_turf(spawn_landmark), client.prefs.preview_dummy)
 	observer.set_lighting_alpha_from_pref(client)
 	spawning = TRUE
 	observer.started_as_observer = TRUE
 
 	close_spawn_windows()
 
-	var/obj/effect/landmark/observer_start/spawn_point = SAFEPICK(GLOB.observer_starts)
-	if(istype(spawn_point))
-		to_chat(src, SPAN_NOTICE("Now teleporting."))
-		observer.forceMove(spawn_point.loc)
-	else
-		to_chat(src, SPAN_DANGER("Could not locate an observer spawn point. Use the Teleport verbs to jump if needed."))
 	observer.icon = 'icons/mob/humans/species/r_human.dmi'
 	observer.icon_state = "anglo_example"
 	observer.alpha = 127
@@ -132,10 +130,7 @@
 		character.put_in_hands(new /obj/item/storage/box/kit/cryo_self_defense(character.loc))
 
 	GLOB.data_core.manifest_inject(character)
-	SSticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc. //TODO!!!!! ~Carn
 	SSticker.mode.latejoin_update(player_rank)
-	SSticker.mode.update_gear_scale()
-	SSticker.mode.update_energy_scale()
 
 	var/latejoin_larva_drop = SSticker.mode.latejoin_larva_drop
 
@@ -322,7 +317,8 @@
 /mob/new_player/get_status_tab_items()
 	. = ..()
 	. += ""
-	. += "Game Mode: [GLOB.master_mode]"
+	if(SSticker.current_state != GAME_STATE_STARTUP)
+		. += "Game Mode: [GLOB.master_mode]"
 
 	if(SSticker.HasRoundStarted())
 		return

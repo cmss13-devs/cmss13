@@ -1202,7 +1202,7 @@
 			if(target.check_tod() && target.is_revivable())
 				msg += "They're not breathing."
 			else
-				if(has_limb("head"))
+				if(target.has_limb("head"))
 					msg += "Their eyes have gone blank, there are no signs of life."
 				else
 					msg += "They are definitely dead."

@@ -90,7 +90,12 @@
 	if(active || user.action_busy)
 		return
 
-	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
+	var/turf/open/target_turf = user.loc
+	if(!istype(target_turf))
+		to_chat(user, SPAN_WARNING("You can't deploy that here!"))
+		return
+
+	if(antigrief_protection && user.faction == FACTION_MARINE && (explosive_antigrief_check(src, user) || !target_turf.allow_mines))
 		to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from planting!"))
 		msg_admin_niche("[key_name(user)] attempted to plant \a [name] in [ADMIN_VERBOSEJMP(src)]")
 		return

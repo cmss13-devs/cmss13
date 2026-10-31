@@ -1,7 +1,7 @@
 /datum/xeno_strain/watcher
 	name = FACEHUGGER_WATCHER
-	description = "You lose your ability to hide in exchange to see further. This enables you to stalk your host from a distance and wait for the perfect opportunity to strike."
-	flavor_description = "No need to hide when you can see the danger."
+	description = "We lose our ability to hide in exchange to see further. This enables we to stalk our host from a distance and wait for the perfect opportunity to strike."
+	flavor_description = "No need to hide when we can see the danger."
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/onclick/xenohide,

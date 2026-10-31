@@ -214,7 +214,7 @@
 			attacking_xeno.animation_attack_on(src)
 			if(!unblockable && check_shields(attacking_xeno.name, get_dir(src, attacking_xeno), custom_response = TRUE)) // Blocking check
 				attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno]'s tackle is blocked by [src]'s shield!"),
-				SPAN_DANGER("We tackle is blocked by [src]'s shield!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+				SPAN_DANGER("Our tackle is blocked by [src]'s shield!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				return XENO_ATTACK_ACTION
 			attacking_xeno.flick_attack_overlay(src, "disarm")
 

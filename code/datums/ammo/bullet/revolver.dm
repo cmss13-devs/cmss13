@@ -82,9 +82,9 @@
 	))
 
 /datum/ammo/bullet/revolver/upp
-	name = "heavy revolver bullet"
+	name = "high-powered revolver bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
-	penetration = ARMOR_PENETRATION_TIER_4
+	penetration = ARMOR_PENETRATION_TIER_8
 	damage = 70
 
 
@@ -99,7 +99,7 @@
 	max_range = 6
 	damage = 40 // + TIER_4 * 3
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
-	penetration = ARMOR_PENETRATION_TIER_8
+	penetration = ARMOR_PENETRATION_TIER_4
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	shrapnel_chance = 100
 	shrapnel_type = /obj/item/shard/shrapnel/upp

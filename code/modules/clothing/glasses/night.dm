@@ -106,6 +106,10 @@
 	req_skill = null
 	req_skill_level = null
 
+/obj/item/clothing/glasses/night/m42_night_goggles/upp/medic
+	name = "\improper Type 11 commando medical goggles"
+	hud_type = MOB_HUD_MEDICAL_ADVANCED
+
 /obj/item/clothing/glasses/night/m42_night_goggles/rmc
 	name = "\improper Royal Marine Commando marksmans goggles"
 	gender = PLURAL

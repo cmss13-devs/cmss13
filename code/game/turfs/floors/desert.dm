@@ -164,7 +164,7 @@
 	icon_state = "shore1"
 	var/toxic = 0
 	supports_surgery = FALSE
-	is_weedable = NOT_WEEDABLE
+	is_weedable = HARDLY_WEEDABLE
 
 /turf/open/desert/desert_shore/update_icon()
 	..()
@@ -172,12 +172,14 @@
 		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_YES)
 			set_light(2)
 			icon = 'icons/turf/floors/desert_water_toxic.dmi'
+			is_weedable = NOT_WEEDABLE
 		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_NO)
 			set_light(0)
 			icon = 'icons/turf/floors/desert_water.dmi'
 		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_DISPERSING)
 			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
+			is_weedable = NOT_WEEDABLE
 
 /turf/open/desert/desert_shore/desert_shore1
 	name = "shore"
@@ -260,6 +262,7 @@
 /turf/open/desert/cave
 	icon = 'icons/turf/floors/desertdam_map.dmi'
 	icon_state = "outer_cave_floor1"
+	is_weedable = HARDLY_WEEDABLE
 
 //desert floor to outer cave floor transition
 /turf/open/desert/cave/desert_into_outer_cave_floor
@@ -287,6 +290,7 @@
 	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "shore_caves"
 	var/toxic = 0
+	is_weedable = HARDLY_WEEDABLE
 
 /turf/open/desert/cave/cave_shore/update_icon()
 	..()
@@ -294,12 +298,14 @@
 		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_YES)
 			set_light(2)
 			icon = 'icons/turf/floors/desert_water_toxic.dmi'
+			is_weedable = NOT_WEEDABLE
 		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_NO)
 			set_light(0)
 			icon = 'icons/turf/floors/desert_water.dmi'
 		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_DISPERSING)
 			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
+			is_weedable = NOT_WEEDABLE
 
 /turf/open/desert/cave/cave_shore/east
 	dir = EAST
@@ -318,7 +324,6 @@
 	icon_overlay = "_shallow"
 	var/toxic = 0
 	default_name = "water"
-	is_weedable = NOT_WEEDABLE
 
 /turf/open/gm/river/desert/update_icon()
 	..()
@@ -326,12 +331,15 @@
 		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_YES)
 			set_light(2)
 			icon = 'icons/turf/floors/desert_water_toxic.dmi'
+			is_weedable = NOT_WEEDABLE
 		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_NO)
 			set_light(0)
 			icon = 'icons/turf/floors/desert_water.dmi'
+			is_weedable = HARDLY_WEEDABLE
 		if(/obj/effect/blocker/water/toxic::WATER_TOXIC_DISPERSING)
 			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
+			is_weedable = NOT_WEEDABLE
 	update_overlays()
 
 
@@ -421,6 +429,7 @@
 
 /turf/open/gm/river/desert/deep/covered
 	covered = TRUE
+	is_weedable = HARDLY_WEEDABLE
 	icon = 'icons/turf/floors/desert_water_covered.dmi'
 
 /turf/open/gm/river/desert/deep/toxic

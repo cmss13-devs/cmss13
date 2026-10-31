@@ -75,6 +75,14 @@
 	var/hug_successful = FALSE
 	var/last_roar_time = 0
 
+/mob/living/carbon/xenomorph/facehugger/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	GLOB.xeno_ghost_role_mobs += src
+	return ..()
+
+/mob/living/carbon/xenomorph/facehugger/Destroy()
+	GLOB.xeno_ghost_role_mobs -= src
+	return ..()
+
 /mob/living/carbon/xenomorph/facehugger/Login()
 	var/last_ckey_inhabited = persistent_ckey
 	. = ..()

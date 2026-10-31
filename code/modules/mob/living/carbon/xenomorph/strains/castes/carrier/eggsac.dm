@@ -3,6 +3,7 @@
 	description = "In exchange for your ability to store huggers and place traps, you gain larger plasma stores, strong pheromones, and the ability to lay eggs by using your plasma stores. In addition, you can now carry twelve eggs at once and can place eggs one pace further than normal. \n\nYou can also place a small number of fragile eggs on normal weeds. These eggs have a lifetime of five minutes while you remain within 14 tiles. Or one minute if you leave this range."
 	flavor_description = "An egg is always an adventure; the next one may be different."
 	icon_state_prefix = "Eggsac"
+	phero_mod = XENO_PHERO_MOD_LARGE // praetorian level pheremones
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/throw_hugger,
@@ -18,10 +19,8 @@
 	behavior_delegate_type = /datum/behavior_delegate/carrier_eggsac
 
 /datum/xeno_strain/eggsac/apply_strain(mob/living/carbon/xenomorph/carrier/carrier)
+	..() // stat modifiers
 	carrier.plasma_types = list(PLASMA_EGG)
-	carrier.phero_modifier += XENO_PHERO_MOD_LARGE // praetorian level pheremones
-	carrier.recalculate_plasma()
-	carrier.recalculate_pheromones()
 
 	if(carrier.huggers_cur)
 		playsound(carrier.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, TRUE)

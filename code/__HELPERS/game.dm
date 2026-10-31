@@ -330,14 +330,8 @@
 	if(candidate_new_player.larva_pool_message_stale_time <= world.time)
 		// No cached/current lobby message, determine the position
 		var/list/valid_candidates = get_alien_candidates()
-		var/candidate_time = candidate_new_player.client.player_details.larva_pool_time
-		var/position = 1
-		for(var/mob/dead/observer/current in valid_candidates)
-			if(current.client.player_details.larva_pool_time >= candidate_time)
-				break
-			position++
 		candidate_new_player.larva_pool_message_stale_time = world.time + 2.5 MINUTES // spam prevention
-		candidate_new_player.larva_pool_cached_message = "Your position would be [position]/[length(valid_candidates)+1] in the larva pool if you observed and were eligible to be a xeno. \
+		candidate_new_player.larva_pool_cached_message = "Your position would be [length(valid_candidates)+1]/[length(valid_candidates)+1] in the larva pool if you observed and were eligible to be a xeno. \
 			The ordering is based on your time of death or the time you observed. When you have been dead long enough and are not inactive, \
 			you will periodically receive updates where you are in the pool relative to other currently valid xeno candidates. \
 			Your current position will shift as others change their preferences or go inactive, but your relative position compared to all observers is the same. \

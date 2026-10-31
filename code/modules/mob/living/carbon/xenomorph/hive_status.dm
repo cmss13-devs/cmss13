@@ -380,6 +380,17 @@
 
 	recalculate_hive()
 
+/// SIGNAL_HANDLER for COMSIG_HIVE_NEW_QUEEN to handle a one-time refund of larva if there is no round start queen
+/datum/hive_status/proc/grant_extra_larva_on_queen(datum/hive_status/hive, mob/living/carbon/xenomorph/queen/new_queen)
+	SIGNAL_HANDLER
+
+	if(!new_queen)
+		return
+	UnregisterSignal(src, COMSIG_HIVE_NEW_QUEEN)
+	if(living_xeno_queen)
+		return // If somehow we're swapping queens and this is somehow registered
+	stored_larva++
+
 /datum/hive_status/proc/recalculate_hive()
 	//No leaders for a Hive without a Queen!
 	queen_leader_limit = living_xeno_queen ? initial(queen_leader_limit) : 0

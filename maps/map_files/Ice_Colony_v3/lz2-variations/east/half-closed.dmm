@@ -1,37 +1,37 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/open/auto_turf/snow/layer2,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "c" = (
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "d" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "q" = (
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
 /area/shiva/interior/oob)
 "t" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "O" = (
 /turf/closed/wall/shiva/prefabricated/pink,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "P" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassall_3"
 	},
 /turf/open/auto_turf/snow/layer2,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "Q" = (
 /turf/open/auto_turf/snow/layer4,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "U" = (
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 
 (1,1,1) = {"
 c

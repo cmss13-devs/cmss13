@@ -4,35 +4,35 @@
 /area/shiva/interior/oob)
 "f" = (
 /turf/open/floor/shiva/multi_tiles/east,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "i" = (
 /obj/structure/machinery/door_control{
 	id = "seelz_shutters";
 	pixel_y = -22
 	},
 /turf/open/floor/shiva/radiator_tile,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "j" = (
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "l" = (
 /obj/structure/machinery/door_control{
 	id = "selz_shutters";
 	pixel_y = -22
 	},
 /turf/open/floor/shiva/radiator_tile,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "m" = (
 /obj/structure/machinery/power/apc/power/west,
 /turf/open/floor/plating,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "o" = (
 /obj/structure/machinery/door_control{
 	id = "selz_shutters";
 	pixel_y = 22
 	},
 /turf/open/floor/shiva/radiator_tile,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "q" = (
 /obj/item/lightstick/red/spoke/planted{
 	layer = 2.99;
@@ -40,38 +40,38 @@
 	pixel_y = 28
 	},
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "r" = (
 /obj/structure/machinery/door_control{
 	id = "seelz_shutters";
 	pixel_y = -22
 	},
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "t" = (
 /turf/open/floor/shiva/floor3,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "v" = (
 /obj/structure/machinery/power/apc/power/east,
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "w" = (
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = 12;
 	pixel_y = 25
 	},
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "z" = (
 /obj/structure/machinery/door_control{
 	id = "selz_shutters";
 	pixel_y = 22
 	},
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "B" = (
 /turf/open/auto_turf/snow/layer0,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "F" = (
 /obj/item/lightstick/red/spoke/planted{
 	layer = 3.1;
@@ -79,14 +79,14 @@
 	pixel_y = 25
 	},
 /turf/open/auto_turf/snow/layer1,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "H" = (
 /obj/structure/machinery/door_control{
 	id = "selz_shutters";
 	pixel_y = -22
 	},
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "I" = (
 /obj/item/lightstick/red/spoke/planted{
 	layer = 2.99;
@@ -94,28 +94,28 @@
 	pixel_y = 28
 	},
 /turf/open/auto_turf/snow/layer0,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "J" = (
 /obj/structure/machinery/door_control{
 	id = "seelz_shutters";
 	pixel_y = 22
 	},
 /turf/open/floor/shiva/radiator_tile,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "K" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "L" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
 	icon_state = "gib6"
 	},
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "N" = (
 /turf/open/auto_turf/snow/layer1,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "Q" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
@@ -124,17 +124,17 @@
 	name = "\improper Landing Zone Shutters"
 	},
 /turf/open/floor/plating/plating_catwalk/shiva,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "T" = (
 /obj/structure/machinery/door_control{
 	id = "seelz_shutters";
 	pixel_y = 22
 	},
 /turf/open/floor/shiva/north,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 "V" = (
 /turf/open/auto_turf/snow/layer2,
-/area/shiva/exterior/cp_lz2)
+/area/shiva/exterior/cp_lz1)
 "Z" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;
@@ -143,7 +143,7 @@
 	name = "\improper Landing Zone Shutters"
 	},
 /turf/open/floor/plating/plating_catwalk/shiva,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/exterior/lz1_fortress)
 
 (1,1,1) = {"
 v

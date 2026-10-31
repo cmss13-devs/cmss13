@@ -8,7 +8,7 @@
 	action_icon_state = "grow_ovipositor"
 	plasma_cost = 500
 	xeno_cooldown = 5 MINUTES
-	cooldown_message = "You are ready to grow an ovipositor again."
+	cooldown_message = "We are ready to grow an ovipositor again."
 	no_cooldown_msg = FALSE // Needed for onclick actions
 
 /datum/action/xeno_action/onclick/set_xeno_lead
@@ -25,6 +25,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 8 SECONDS
+	cooldown_message = "If we have the stores, we can heal one of our children again."
 
 /datum/action/xeno_action/onclick/screech
 	name = "Screech (250)"
@@ -33,7 +34,7 @@
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 50 SECONDS
 	plasma_cost = 250
-	cooldown_message = "You feel your throat muscles vibrate. You are ready to screech again."
+	cooldown_message = "We feel our throat muscles vibrate. We are ready to screech again."
 	no_cooldown_msg = FALSE // Needed for onclick actions
 	ability_primacy = XENO_SCREECH
 
@@ -45,6 +46,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 12 SECONDS
+	cooldown_message = "If we have the stores, we can can heal one of our children again."
 
 /datum/action/xeno_action/onclick/queen_word
 	name = "Word of the Queen (50)"
@@ -60,7 +62,7 @@
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 15 MINUTES
 	plasma_cost = 200
-	cooldown_message = "You feel your anger return. You are ready to gut again."
+	cooldown_message = "We feel our anger return. We are ready to gut again."
 
 /datum/action/xeno_action/activable/expand_weeds
 	name = "Expand Weeds (50)"
@@ -140,7 +142,7 @@
 	UnregisterSignal(owner, COMSIG_XENO_THICK_RESIN_BYPASS)
 
 	if(owner)
-		to_chat(owner, SPAN_XENOHIGHDANGER("Your boosted building has been disabled!"))
+		to_chat(owner, SPAN_XENOHIGHDANGER("Our boosted building has been disabled!"))
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/override_secrete_thick_resin()
 	return COMPONENT_THICK_BYPASS

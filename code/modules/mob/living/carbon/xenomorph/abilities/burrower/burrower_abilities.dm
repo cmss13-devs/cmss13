@@ -28,6 +28,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	xeno_cooldown = 30 SECONDS
 	plasma_cost = 100
+	cooldown_message = "Our legs are no longer tired. We can shake the ground again."
 
 /datum/action/xeno_action/onclick/build_tunnel
 	name = "Dig Tunnel (200)"
@@ -36,4 +37,4 @@
 	macro_path = /datum/action/xeno_action/verb/verb_dig_tunnel
 	action_type = XENO_ACTION_ACTIVATE //doesn't really need a macro
 	xeno_cooldown =  4 MINUTES
-	cooldown_message = "We can dig a tunnel again."
+	cooldown_message = "We are no longer exhausted. We can dig a tunnel again."

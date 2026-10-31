@@ -38,11 +38,11 @@
 			return
 
 		if(node.hivenumber != xeno.hivenumber)
-			to_chat(xeno, SPAN_WARNING("The other hive's node resists your attempt to uproot it."))
+			to_chat(xeno, SPAN_WARNING("The other hive's node resists our attempt to uproot it."))
 			return
 
 		if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, node, INTERRUPT_ALL))
-			to_chat(xeno, SPAN_WARNING("There's a pod here already! You decide to not replace it."))
+			to_chat(xeno, SPAN_WARNING("There's a pod here already! We decide to not replace it."))
 			return
 
 	var/obj/effect/alien/resin/trap/resin_trap = locate() in turf
@@ -460,7 +460,7 @@
 		return FALSE
 
 	if(!acid_level)
-		to_chat(src, SPAN_XENONOTICE("You can't secrete any acid into [target]."))
+		to_chat(src, SPAN_XENONOTICE("We can't secrete any acid into [target]."))
 		return FALSE
 
 	var/trap_acid_level = 0
@@ -478,10 +478,10 @@
 		acid_cost = ACID_COST_LEVEL_3
 
 	if(!check_plasma(acid_cost))
-		to_chat(src, SPAN_XENOWARNING("You must produce more plasma before doing this."))
+		to_chat(src, SPAN_XENOWARNING("We must produce more plasma before doing this."))
 		return FALSE
 
-	to_chat(src, SPAN_XENONOTICE("You begin charging the resin trap with acid."))
+	to_chat(src, SPAN_XENONOTICE("We begin charging the resin trap with acid."))
 	xeno_attack_delay(src)
 	if(!do_after(src, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
 		return FALSE
@@ -503,7 +503,7 @@
 
 	playsound(target, 'sound/effects/refill.ogg', 25, 1)
 	visible_message(SPAN_XENOWARNING("[src] pressurises the resin trap with acid!"),
-	SPAN_XENOWARNING("You pressurise the resin trap with acid!"), null, 5)
+	SPAN_XENOWARNING("We pressurise the resin trap with acid!"), null, 5)
 	return TRUE
 
 #undef ACID_COST_LEVEL_1
@@ -614,12 +614,12 @@
 				turf_in_path = SSmapping.get_turf_below(turf_in_path)
 
 			if(turf_in_path.density && turf_in_path.turf_flags & TURF_HULL)
-				to_chat(xeno, SPAN_WARNING("You can't jump over an object in your path."))
+				to_chat(xeno, SPAN_WARNING("We can't jump over an object in our path."))
 				return
 
 			for(var/obj/structure/cur_obj in turf_in_path.contents)
 				if(cur_obj.density && cur_obj.unslashable && cur_obj.unacidable)
-					to_chat(xeno, SPAN_WARNING("You can't jump over an object in your path."))
+					to_chat(xeno, SPAN_WARNING("We can't jump over an object in our path."))
 					return
 
 		if (!do_after(xeno, 0.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
@@ -942,7 +942,7 @@
 		return FALSE
 
 	if(choice == XENO_STRUCTURE_CORE && target_area.unoviable_timer)
-		to_chat(xeno, SPAN_WARNING("This area does not feel right for you to build this in."))
+		to_chat(xeno, SPAN_WARNING("This area does not feel right for us to build this in."))
 		qdel(structure_template)
 		return FALSE
 

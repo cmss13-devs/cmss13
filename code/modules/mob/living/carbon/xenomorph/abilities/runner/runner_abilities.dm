@@ -28,6 +28,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 11 SECONDS
 	plasma_cost = 0
+	cooldown_message = "Our bone spurs grew back."
 
 	var/ammo_type = /datum/ammo/xeno/bone_chips/spread/runner_skillshot
 

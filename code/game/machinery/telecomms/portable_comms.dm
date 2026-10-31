@@ -114,7 +114,7 @@
 			to_chat(user, SPAN_WARNING("[src]'s cell panel needs to be screwed shut first!"))
 			return
 		if(get_total_charge() <= 0)
-			to_chat(user, SPAN_WARNING("[src] has no charge left. Replace its power cells"))
+			to_chat(user, SPAN_WARNING("[src] has no charge left. It needs new power cells to continue operating."))
 			return
 	return ..()
 
@@ -123,11 +123,11 @@
 	var/list/cells = get_cells()
 	var/maxcharge = get_total_maxcharge()
 	if(!length(cells) || !maxcharge)
-		. += SPAN_WARNING("It has no power cells")
+		. += SPAN_WARNING("There are no power cells slotted into [src].")
 	else
-		. += SPAN_NOTICE("It has [length(cells)] power cell\s installed at [floor(get_total_charge() / maxcharge * 100)]% charge")
+		. += SPAN_NOTICE("It has [length(cells)] power cell\s installed. They have a total of [floor(get_total_charge() / maxcharge * 100)]% charge.")
 	if(panel_open)
-		. += SPAN_WARNING("Its cell panel is unscrewed")
+		. += SPAN_WARNING("The cell panel is unscrewed.")
 
 /obj/structure/machinery/telecomms/relay/preset/tower/portable/attackby(obj/item/I, mob/user)
 	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
@@ -152,8 +152,8 @@
 /obj/structure/machinery/telecomms/relay/preset/tower/portable/proc/toggle_panel(obj/item/I, mob/user)
 	if(!can_service(user))
 		return
-	user.visible_message(SPAN_NOTICE("[user] strts [panel_open ? "screwing shut" : "unscrwing"] the cell panel on [src]."),
-	SPAN_NOTICE("You start [panel_open ? "screwing shut" : "unscrewing"] the cell panel on [src]."))
+	user.visible_message(SPAN_NOTICE("[user] strts [panel_open ? "screwing in" : "unscrwing"] the cell panel on [src]."),
+	SPAN_NOTICE("You start [panel_open ? "screwing in" : "unscrewing"] the cell panel on [src]."))
 	playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 	if(!do_after(user, 2 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 		return
@@ -183,7 +183,7 @@
 		LAZYREMOVE(component_parts, cell)
 		cell.forceMove(loc)
 	user.visible_message(SPAN_NOTICE("[user] pries the power cells out of [src]."),
-	SPAN_NOTICE("You pry the power cells out [src]."))
+	SPAN_NOTICE("You pry the power cells out of [src]."))
 
 /obj/structure/machinery/telecomms/relay/preset/tower/portable/proc/insert_cell(obj/item/cell/cell, mob/user)
 	if(!panel_open)

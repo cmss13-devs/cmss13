@@ -32,6 +32,7 @@
 	knockdown = FALSE
 	slash = FALSE
 	freeze_self = FALSE
+	windup_duration = 0.5 SECONDS
 
 	var/empowered_distance = 5
 	var/weaken_duration = 1

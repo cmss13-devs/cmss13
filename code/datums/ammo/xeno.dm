@@ -238,6 +238,15 @@
 	else
 		PAS.increment_stack_count()
 
+#define DESPOILER_BARRAGE_BARRICADE_DAMAGE_LIMIT 160
+
+/obj/projectile/despoiler
+	var/list/barricade_damage = list()
+
+/obj/projectile/despoiler/Destroy()
+	barricade_damage = null
+	return ..()
+
 /datum/ammo/xeno/acid/despoiler
 	name = "corrosive spit"
 	icon_state = "xeno_acid_lingering"
@@ -279,6 +288,12 @@
 	. = ..()
 	if(istype(target_object, /obj/structure/barricade))
 		var/obj/structure/barricade/barricade = target_object
+		if(istype(proj_hit, /obj/projectile/despoiler))
+			var/obj/projectile/despoiler/barrage_projectile = proj_hit
+			var/damage_remaining = max(0, DESPOILER_BARRAGE_BARRICADE_DAMAGE_LIMIT - barrage_projectile.barricade_damage[barricade])
+			proj_hit.damage = min(proj_hit.damage, damage_remaining)
+			barrage_projectile.barricade_damage[barricade] += proj_hit.damage
+
 		var/datum/effects/acid/acid_effect = locate() in barricade.effects_list
 		if(!acid_effect)
 			barricade.acid_spray_act()
@@ -290,6 +305,8 @@
 		var/datum/effects/acid/acid_effect = locate() in victim.effects_list
 		if(!acid_effect)
 			new /datum/effects/acid/(victim, projectile.firer)
+
+#undef DESPOILER_BARRAGE_BARRICADE_DAMAGE_LIMIT
 
 /datum/ammo/xeno/boiler_gas
 	name = "glob of neuro gas"

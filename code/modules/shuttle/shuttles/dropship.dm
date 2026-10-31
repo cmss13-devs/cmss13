@@ -18,6 +18,15 @@
 	// Is in gun-run mode
 	var/in_flyby = FALSE
 
+	/// firemission shadow appearance. set the icon to null to disable it
+	var/cas_shadow_icon = 'icons/effects/dropship_hover.dmi'
+	var/cas_shadow_icon_state = "dropship_shadow"
+	/// direction the nose points in the icon
+	var/cas_shadow_nose_direction = NORTH
+	var/cas_shadow_scale = 0.75
+	/// max opacity
+	var/cas_shadow_alpha = 70
+
 	// Is hijacked by opfor
 	var/is_hijacked = FALSE
 	var/datum/dropship_hijack/almayer/hijack
@@ -54,6 +63,49 @@
 	RegisterSignal(src, COMSIG_DROPSHIP_ADD_EQUIPMENT, PROC_REF(add_equipment))
 	RegisterSignal(src, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(remove_equipment))
 	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_dir_change))
+
+/// cache each asset/configuration/direction combination
+/obj/docking_port/mobile/marine_dropship/proc/get_cas_shadow_icon(direction)
+	if(!cas_shadow_icon || cas_shadow_scale <= 0 || !(direction in GLOB.cardinals) || !(cas_shadow_nose_direction in GLOB.cardinals))
+		return
+	var/static/list/shadow_icons = list()
+	var/cache_key = "[cas_shadow_icon]:[cas_shadow_icon_state]:[cas_shadow_nose_direction]:[cas_shadow_scale]:[direction]"
+	if(shadow_icons[cache_key])
+		return shadow_icons[cache_key]
+	if(!(cas_shadow_icon_state in icon_states(cas_shadow_icon)))
+		return
+	var/icon/silhouette = icon(cas_shadow_icon, cas_shadow_icon_state)
+	var/frame_width = max(1, round(silhouette.Width() * cas_shadow_scale))
+	var/frame_height = max(1, round(silhouette.Height() * cas_shadow_scale))
+	silhouette.Scale(frame_width, frame_height)
+
+	var/square_size = max(frame_width, frame_height)
+	var/pad_left = round((square_size - frame_width) / 2)
+	var/pad_bottom = round((square_size - frame_height) / 2)
+	silhouette.Crop(1 - pad_left, 1 - pad_bottom, square_size - pad_left, square_size - pad_bottom)
+	var/rotation = (dir2angle(direction) - dir2angle(cas_shadow_nose_direction) + 360) % 360
+	silhouette.Turn(rotation)
+	var/crop_left = pad_left
+	var/crop_bottom = pad_bottom
+	var/rotated_width = frame_width
+	var/rotated_height = frame_height
+	switch(rotation)
+		if(90)
+			crop_left = pad_bottom
+			crop_bottom = square_size - pad_left - frame_width
+			rotated_width = frame_height
+			rotated_height = frame_width
+		if(180)
+			crop_left = square_size - pad_left - frame_width
+			crop_bottom = square_size - pad_bottom - frame_height
+		if(270)
+			crop_left = square_size - pad_bottom - frame_height
+			crop_bottom = pad_left
+			rotated_width = frame_height
+			rotated_height = frame_width
+	silhouette.Crop(crop_left + 1, crop_bottom + 1, crop_left + rotated_width, crop_bottom + rotated_height)
+	shadow_icons[cache_key] = silhouette
+	return silhouette
 
 /obj/docking_port/mobile/marine_dropship/Destroy(force)
 	. = ..()

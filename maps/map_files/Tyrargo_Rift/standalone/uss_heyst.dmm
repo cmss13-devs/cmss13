@@ -5096,7 +5096,7 @@
 /turf/open/floor/almayer/uscm/south_face/northwest,
 /area/tyrargo/indoors/heyst)
 "Qf" = (
-/obj/item/reagent_container/hypospray/autoinjector/bicaridine/random_amount,
+/obj/item/reagent_container/hypospray/autoinjector/standard/bicaridine/random_amount,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "Qj" = (

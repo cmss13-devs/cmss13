@@ -114,7 +114,7 @@
 	langchat_image.appearance_flags |= RESET_ALPHA
 	langchat_scrambled_image.appearance_flags |= RESET_ALPHA
 
-/atom/proc/langchat_speech(message, list/listeners, datum/language/language, override_color, skip_language_check = FALSE, animation_style = LANGCHAT_DEFAULT_POP, list/additional_styles = list("langchat"), scramble_message = TRUE, split_long_messages = FALSE)
+/atom/proc/langchat_speech(message, list/listeners, datum/language/language, override_color, skip_language_check = FALSE, animation_style = LANGCHAT_DEFAULT_POP, list/additional_styles = list("langchat"), scramble_message = TRUE, split_long_messages = FALSE, unlock_length = FALSE)
 	langchat_drop_image()
 	langchat_make_image(override_color)
 	var/image/r_icon
@@ -123,12 +123,19 @@
 	var/text_to_display = message
 	var/is_emote = additional_styles && additional_styles.Find("emote")
 
+
 	if(split_long_messages)
 		if(length(message) > LANGCHAT_LONGEST_TEXT)
 			text_to_display = copytext_char(message, 1, LANGCHAT_LONGEST_TEXT - 5) + "..."
 			text_left = "..." + copytext_char(message, LANGCHAT_LONGEST_TEXT - 5)
-	else if(length(text_to_display) > LANGCHAT_LONGEST_TEXT)
-		text_to_display = copytext_char(text_to_display, 1, LANGCHAT_LONGEST_TEXT + 1) + "..."
+
+	if(!split_long_messages && !unlock_length)
+		if(length(text_to_display) > LANGCHAT_LONGEST_TEXT)
+			text_to_display = copytext_char(text_to_display, 1, LANGCHAT_LONGEST_TEXT + 1) + "..."
+
+	else if(unlock_length)
+		if(length(text_to_display) > (LANGCHAT_LONGEST_TEXT * 2))
+			text_to_display = copytext_char(text_to_display, 1, LANGCHAT_LONGEST_TEXT + 1) + "..."
 
 	var/timer
 	if(split_long_messages)

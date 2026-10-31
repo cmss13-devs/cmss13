@@ -1636,3 +1636,114 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	owner.drop_inv_item_on_ground(owner_helmet)
 	INVOKE_ASYNC(owner_helmet, TYPE_PROC_REF(/atom/movable, throw_atom), pick(RANGE_TURFS(1, get_turf(owner))), 1, SPEED_FAST)
 	playsound(owner, 'sound/effects/helmet_noise.ogg', 100)
+
+
+/obj/limb/mouth
+	name = "mouth"
+	layer = FLOAT_LAYER
+	vis_flags = VIS_INHERIT_PLANE|VIS_INHERIT_DIR|VIS_INHERIT_ID
+	var/style = "toothy"
+	var/image/hiding_image
+	var/icon_path = 'icons/mob/humans/mouth.dmi'
+	var/is_mouth_small
+	var/mandibles = list(
+		MANDIBLE_UPPER_RIGHT = null,
+		MANDIBLE_UPPER_LEFT = null,
+		MANDIBLE_LOWER_RIGHT = null,
+		MANDIBLE_LOWER_LEFT = null,
+	)
+	appearance_flags = KEEP_TOGETHER
+
+
+/obj/limb/mouth/Initialize(mapload, obj/limb/P, mob/living/carbon/human/human_owner)
+	. = ..()
+	if(isnull(human_owner) || !ishuman(human_owner))
+		qdel(src)
+		return
+	set_style(human_owner.m_style)
+	hiding_image = image(loc = src)
+	hiding_image.override = TRUE
+	hiding_image.alpha = 0
+	is_mouth_small = (copytext(style, 1, 7) == "small_")
+
+	if(isyautja(human_owner))
+		skin_color = human_owner.skin_color
+		icon_path = 'icons/mob/humans/yaut_mouth.dmi'
+		mandibles[MANDIBLE_UPPER_RIGHT] = TRUE
+		mandibles[MANDIBLE_UPPER_LEFT] = TRUE
+		mandibles[MANDIBLE_LOWER_RIGHT] = TRUE
+		mandibles[MANDIBLE_LOWER_LEFT] = TRUE
+	update_appearance(human_owner)
+
+	RegisterSignal(human_owner, COMSIG_HUMAN_EQUIPPED_ITEM, PROC_REF(handle_item_equip))
+
+
+/obj/limb/mouth/proc/handle_item_equip(mob/equipee, obj/item/equipped_thing, slot)
+	if(slot != WEAR_FACE)
+		return
+	update_appearance(equipee, equipping = TRUE)
+
+/obj/limb/mouth/proc/set_style(new_style)
+
+	//TODO: add teeth items to contents, number of them dependant on human_owner.m_style
+
+	if(GLOB.mouth_styles_list[new_style])
+		style = new_style
+		is_mouth_small = (copytext(style, 1, 7) == "small_")
+		return TRUE
+	else
+		return FALSE
+
+
+/obj/limb/mouth/proc/hide_for(client/prospective_hiddener)
+	if(prospective_hiddener == null)
+		return
+	prospective_hiddener.images += hiding_image
+
+
+/obj/limb/mouth/proc/show_to(client/prospective_seeinger)
+	if(prospective_seeinger == null)
+		return
+	prospective_seeinger.images -= hiding_image
+
+
+/obj/limb/mouth/take_damage_organ_damage(brute, sharp)
+	. = ..()
+	//ow my teeth, choose between the those you have and throw them in a rand direction opposite the human owner is facing (mouth in that dir) and then update_appearance
+
+
+/obj/limb/mouth/proc/update_appearance(mob/living/carbon/human/input_human, speaking = 0, equipping=null)
+
+	//TODO: update this proc to only change the m_style dependant on the number of teeth in contents instead of the input_human.m_style
+
+	if(!istype(input_human) || (equipping != FALSE  && input_human && input_human.wear_mask && input_human.wear_mask.flags_inv_hide & HIDEMOUTH) || input_human.m_style == "none")
+		icon_state = null
+		return
+	var/clenched = (input_human.wear_mask && input_human.wear_mask.flags_inv_hide & HIDEMOUTHCLENCHED)
+	var/state
+	if(isspeciesyautja(input_human))
+		overlays.Cut()
+		state = speaking == 0 ? "[input_human.skin_color]" : "[input_human.skin_color]_[(speaking == 1 ? "talk" : "scream")]"
+		for(var/key in mandibles)
+			if(mandibles[key])
+				var/mutable_appearance/mandible = mutable_appearance(icon, "[input_human.skin_color]_[key][(speaking == 0 ? "" : (speaking == 1 ? "_talk" : "_scream"))]", FLOAT_LAYER, FLOAT_PLANE)
+				message_admins("[key] >>> [mandible.icon_state]")
+				overlays += mandible
+
+	else
+		if(speaking == 0 || (clenched && is_mouth_small && speaking <= 1))	//not talking at all, no mouth
+			state = ""
+		else if(speaking == 1)								//we're talking, add mouth
+			state = clenched ? "small_[style]" : style
+		else												//we're being very loud, use a larger mouth
+			var/base = is_mouth_small ? copytext(style, 7) : style
+			state = is_mouth_small || clenched ? base : "large_[base]"
+			if(speaking >= 3)
+				state = "[state]_scream"
+				/*we could make cigarettes and bayonets fall out of mouth when screaming here
+				if(istype(wear_mask, /obj/item/attachable/bayonet) || istype(wear_mask, /obj/item/clothing/mask/cigarette))
+					to_chat(src, SPAN_NOTICE("You feel the [wear_mask] slip out of your mouth with the large expression!"))
+					unequip proc (wear_mask)
+				*/
+	icon = icon_path
+	icon_state = state

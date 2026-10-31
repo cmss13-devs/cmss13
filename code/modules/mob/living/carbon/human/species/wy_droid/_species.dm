@@ -2,7 +2,7 @@
 /datum/species/synthetic/gen_two/gen_one/wy_droid
 	name = SYNTH_COMBAT
 	name_plural = "WY Combat Androids"
-	flags = parent_type::flags & ~(HAS_SKIN_COLOR|HAS_UNDERWEAR)
+	flags = (parent_type::flags & ~(HAS_SKIN_COLOR | HAS_UNDERWEAR)) | HAS_MOUTH
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_EMOTE_CD_EXEMPT, TRAIT_UNSTRIPPABLE, TRAIT_POUNCE_RESISTANT) //No IRON_TEETH because they have no teeth (literally)
 
 	burn_mod = 0.6 //made for combat

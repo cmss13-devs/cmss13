@@ -73,7 +73,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR|HIDEMOUTH
 	flags_marine_helmet = ARMOR_LAMP_OVERLAY
 	light_color = LIGHT_COLOR_FLARE
 	light_power = 3
@@ -188,7 +188,7 @@
 	name = "\improper PMC riot guard helmet"
 	desc = "A modified enclosed helmet utilized by Weyland-Yutani PMC crowd control units."
 	icon_state = "guard_heavy_helmet"
-	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEALLHAIR|HIDEMOUTH
 	actions_types = null
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/guard

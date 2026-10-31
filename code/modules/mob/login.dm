@@ -49,6 +49,9 @@
 	//updating atom HUD
 	refresh_huds()
 
+	if(client?.prefs && !client.prefs.show_mouths)
+		client.execute_moving_mouth_setting(FALSE)
+
 	if(isnewplayer(src))
 		check_event_info()
 	else if(isxeno(src))

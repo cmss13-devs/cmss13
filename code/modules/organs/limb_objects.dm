@@ -43,30 +43,37 @@
 	name = "left arm"
 	icon_state = "l_arm"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/l_arm
+
 /obj/item/limb/foot/l_foot
 	name = "left foot"
 	icon_state = "l_foot"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/l_foot
+
 /obj/item/limb/hand/l_hand
 	name = "left hand"
 	icon_state = "l_hand"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/l_hand
+
 /obj/item/limb/leg/l_leg
 	name = "left leg"
 	icon_state = "l_leg"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/l_leg
+
 /obj/item/limb/arm/r_arm
 	name = "right arm"
 	icon_state = "r_arm"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/r_arm
+
 /obj/item/limb/foot/r_foot
 	name = "right foot"
 	icon_state = "r_foot"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/r_foot
+
 /obj/item/limb/hand/r_hand
 	name = "right hand"
 	icon_state = "r_hand"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/r_hand
+
 /obj/item/limb/leg/r_leg
 	name = "right leg"
 	icon_state = "r_leg"
@@ -131,6 +138,9 @@
 		brainmob.timeofdeath = world.time
 		brainmob.set_stat(DEAD)
 		brainmob.death(cause)
+
+	//if(H.species && H.species.flags & HAS_MOUTH)
+	//	my_mouth = new(src, H)
 
 	GLOB.head_limb_list += src
 

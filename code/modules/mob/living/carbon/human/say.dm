@@ -223,6 +223,8 @@
 
 					listener.show_message("<span class='game say'><span class='name'>[src]</span> <span class='message'>[far_verb], [far_message]</span></span>", SHOW_MESSAGE_AUDIBLE)
 
+		move_mouth_message(message)
+
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living/carbon/human, say_to_radios), used_radios, message, message_mode, verb, speaking)
 
 /mob/living/carbon/human/proc/say_to_radios(used_radios, message, message_mode, verb, speaking)

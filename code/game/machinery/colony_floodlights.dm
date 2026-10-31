@@ -177,7 +177,7 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 /obj/structure/machinery/colony_floodlight
 	name = "colony floodlight"
 	icon = 'icons/obj/structures/machinery/big_floodlight.dmi'
-	icon_state = "flood_s_off"
+	icon_state = "flood_s_mapping"
 	density = TRUE
 	anchored = TRUE
 	layer = ABOVE_XENO_LAYER
@@ -192,14 +192,24 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 	var/damaged = FALSE
 	var/lum_value = 7
 	var/repair_state = FLOODLIGHT_REPAIR_UNSCREW
+	/// streamlines update_icon, just the root of the iconstate naming scheme
+	var/icon_key = "flood_s"
+
+/obj/structure/machinery/colony_floodlight/Initialize(mapload, ...)
+	. = ..()
+	update_icon()
 
 /obj/structure/machinery/colony_floodlight/update_icon()
+	underlays.Cut()
 	if(damaged)
-		icon_state = "flood_s_dmg"
+		icon_state = "[icon_key]_dmg"
 	else if(is_on)
-		icon_state = "flood_s_on"
+		icon_state = "[icon_key]_on"
+		if(SSmapping.configs[GROUND_MAP].camouflage_type == "jungle")
+			icon_state = "[icon_state]_buggy"
 	else
-		icon_state = "flood_s_off"
+		icon_state = "[icon_key]_off"
+	underlays += mutable_appearance(icon, "[icon_state]_base", layer = WALL_OBJ_LAYER)
 
 /obj/structure/machinery/colony_floodlight/attackby(obj/item/I, mob/user)
 	if(damaged)

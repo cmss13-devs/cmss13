@@ -60,6 +60,8 @@
 	var/message_range = GLOB.world_view_size
 	var/italics = FALSE
 	var/langchat_override
+	var/sound/speech_sound
+	var/sound_vol = client?.prefs.volume_preferences[VOLUME_HUMAN_VOICES] * 100
 
 	if(!able_to_speak)
 		to_chat(src, SPAN_DANGER("You try to speak, but nothing comes out!"))
@@ -109,10 +111,16 @@
 		var/ending = copytext(message, length(message))
 		if(ending=="!")
 			verb = pick(speaking.exclaim_verb)
+			if(species?.speech_sounds && prob(species.speech_chance))
+				speech_sound = sound(get_sfx(pick(species.exclaim_sounds[gender])))
 		else if(ending=="?")
 			verb = pick(speaking.ask_verb)
+			if(species?.speech_sounds && prob(species.speech_chance))
+				speech_sound = sound(get_sfx(pick(species.ask_sounds[gender])))
 		else
 			verb = pick(speaking.speech_verb)
+			if(species?.speech_sounds && prob(species.speech_chance))
+				speech_sound = sound(get_sfx(pick(species.speech_sounds[gender])))
 		// This is broadcast to all mobs with the language,
 		// irrespective of distance or anything else.
 		if(speaking.flags & HIVEMIND)
@@ -175,12 +183,6 @@
 							verb = "broadcasts"
 							langchat_override = "langchat_announce"
 
-		var/sound/speech_sound
-		var/sound_vol
-		if(species?.speech_sounds && prob(species.speech_chance))
-			speech_sound = sound(pick(species.speech_sounds))
-			sound_vol = 70
-
 		//speaking into radios
 		if(length(used_radios))
 			GLOB.STUI.game.Add("\[[time_stamp()]]<font color='#FF0000'>RADIO: [key_name(src)] : [message]</font><br>")
@@ -224,6 +226,11 @@
 					listener.show_message("<span class='game say'><span class='name'>[src]</span> <span class='message'>[far_verb], [far_message]</span></span>", SHOW_MESSAGE_AUDIBLE)
 
 		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living/carbon/human, say_to_radios), used_radios, message, message_mode, verb, speaking)
+
+/mob/living/carbon/human/hear_say(message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null, sound/speech_sound, sound_vol, message_mode)
+	if(ishuman(speaker) && client?.prefs.toggles_sound & SOUND_HUMAN_SPEAKING)
+		speech_sound = null
+	..()
 
 /mob/living/carbon/human/proc/say_to_radios(used_radios, message, message_mode, verb, speaking)
 	for(var/obj/item/device/radio/R in used_radios)

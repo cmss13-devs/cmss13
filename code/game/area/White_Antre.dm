@@ -239,10 +239,12 @@
 /area/white_antre/indoors/underground_level/west_maint
 	name = "White Antre Research Facility - West Maintenance - Underground"
 	icon_state = "maints"
+	block_game_interaction = TRUE
 
 /area/white_antre/indoors/underground_level/east_maint
 	name = "White Antre Research Facility - East Maintenance - Underground"
 	icon_state = "maints"
+	block_game_interaction = TRUE
 
 /area/white_antre/indoors/underground_level/gonzo
 	name = "Gonzo's hide-out"
@@ -255,6 +257,7 @@
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
 	requires_power = FALSE
 	ceiling_muffle = FALSE
+	block_game_interaction = TRUE
 
 //White Antre Facility - Above Ground
 

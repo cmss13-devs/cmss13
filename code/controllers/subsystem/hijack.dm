@@ -729,6 +729,9 @@ SUBSYSTEM_DEF(hijack)
 	else //Just a safety, just in case a mode isn't running, somehow.
 		to_world(SPAN_ROUNDBODY("Resetting in 30 seconds!"))
 		sleep(30 SECONDS)
+		if(SSticker.delay_end)
+			to_chat(world, SPAN_BOLDNOTICE("Reboot was cancelled by an admin."))
+			return
 		log_game("Rebooting due to nuclear detonation.")
 		world.Reboot()
 

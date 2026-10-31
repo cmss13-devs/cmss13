@@ -1119,6 +1119,9 @@
 			return
 		if(alert("Are you sure you want to cancel this OB?",,"Yes","No") != "Yes")
 			return
+		// so the minimap warning disappears if ob is canceled
+		var/obj/structure/ob_ammo/warhead/cancelled_warhead = GLOB.orbital_cannon_cancellation["[cancel_token]"]
+		cancelled_warhead?.clear_tacmap_warning()
 		GLOB.orbital_cannon_cancellation["[cancel_token]"] = null
 		message_admins("[src.owner] has cancelled the orbital strike.")
 

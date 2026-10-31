@@ -1,7 +1,19 @@
 import { Component, createRef } from 'react';
 import { Box } from 'tgui/components';
 
+export type FireSupportWarning = {
+  id: string;
+  x: number;
+  y: number;
+  label: string;
+  color: string;
+} & (
+  | { shape: 'circle'; radius: number }
+  | { shape: 'rectangle'; width: number; height: number }
+);
+
 type DrawMapRrops = {
+  readonly fireSupportWarnings?: FireSupportWarning[];
   readonly svgData?: (
     string | number | CanvasGradient | CanvasPattern | null
   )[];
@@ -118,6 +130,61 @@ export class DrawnMap extends Component<DrawMapRrops> {
             ))}
           </svg>
         )}
+        {!!this.props.fireSupportWarnings?.length &&
+          !!this.props.flatImage &&
+          this.state.mapLoad && (
+            <svg
+              width={size.width}
+              height={size.height}
+              viewBox="0 0 512 512"
+              style={{ pointerEvents: 'none', zIndex: 2 }}
+            >
+              {this.props.fireSupportWarnings?.map((warning) => (
+                <g key={warning.id}>
+                  {warning.shape === 'rectangle' ? (
+                    <rect
+                      x={warning.x}
+                      y={warning.y}
+                      width={warning.width}
+                      height={warning.height}
+                      fill={warning.color}
+                      fillOpacity={0.18}
+                      stroke={warning.color}
+                      strokeWidth={1}
+                    />
+                  ) : (
+                    <circle
+                      cx={warning.x}
+                      cy={warning.y}
+                      r={warning.radius}
+                      fill={warning.color}
+                      fillOpacity={0.18}
+                      stroke={warning.color}
+                      strokeWidth={1}
+                    />
+                  )}
+                  <text
+                    x={
+                      warning.x +
+                      (warning.shape === 'rectangle' ? warning.width / 2 : 0)
+                    }
+                    y={
+                      warning.y -
+                      (warning.shape === 'circle' ? warning.radius : 0) -
+                      3
+                    }
+                    fill={warning.color}
+                    stroke="#000"
+                    strokeWidth={0.5}
+                    fontSize={7}
+                    textAnchor="middle"
+                  >
+                    {warning.label}
+                  </text>
+                </g>
+              ))}
+            </svg>
+          )}
       </div>
     );
   }

@@ -381,6 +381,7 @@
 #include "code\datums\disease.dm"
 #include "code\datums\emotes.dm"
 #include "code\datums\event_info_text.dm"
+#include "code\datums\fire_support_warning.dm"
 #include "code\datums\fluff_emails.dm"
 #include "code\datums\global_variables.dm"
 #include "code\datums\highlight_keywords_payload.dm"

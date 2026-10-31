@@ -14,14 +14,38 @@
 	ground_offset_y = 6
 	/// is it currently on fire and about to explode?
 	var/burning = FALSE
+	/// owned by the shell so its warning area is cleared on deletion
+	var/datum/fire_support_warning/tacmap_warning
+	var/tacmap_label = "MORTAR UNKNOWN"
+	var/tacmap_radius = 0
 
 
 /obj/item/mortar_shell/Destroy()
+	QDEL_NULL(tacmap_warning)
 	. = ..()
 	cause_data = null
 
 /obj/item/mortar_shell/proc/detonate(turf/T)
 	forceMove(T)
+
+/obj/item/mortar_shell/proc/get_tacmap_radius()
+	return tacmap_radius
+
+/obj/item/mortar_shell/he/get_tacmap_radius()
+	return light_impact_range + 2
+
+/obj/item/mortar_shell/frag/get_tacmap_radius()
+	var/datum/ammo/bullet/shrapnel/breaching/shrapnel = GLOB.ammo_list[/datum/ammo/bullet/shrapnel/breaching]
+	return shrapnel.max_range
+
+/obj/item/mortar_shell/incendiary/get_tacmap_radius()
+	return radius
+
+/obj/item/mortar_shell/proc/start_tacmap_warning(turf/target, scatter, lifetime)
+	QDEL_NULL(tacmap_warning)
+	var/effect_radius = get_tacmap_radius()
+	var/coverage = effect_radius ? effect_radius + scatter : 0
+	tacmap_warning = new(target, coverage, tacmap_label, lifetime)
 
 /obj/item/mortar_shell/proc/deploy_camera(turf/T)
 	var/obj/structure/machinery/camera/mortar/old_cam = locate() in T
@@ -30,15 +54,18 @@
 	new /obj/structure/machinery/camera/mortar(T)
 
 /obj/item/mortar_shell/he
+	tacmap_label = "MORTAR HE"
 	name = "\improper 80mm high explosive mortar shell"
 	desc = "An 80mm mortar shell, loaded with a high explosive charge."
 	icon_state = "mortar_ammo_he"
 	item_state = "mortar_ammo_he"
+	var/light_impact_range = 5
 
 /obj/item/mortar_shell/he/detonate(turf/T)
-	explosion(T, 0, 3, 5, 7, explosion_cause_data = cause_data)
+	explosion(T, 0, 3, light_impact_range, 7, explosion_cause_data = cause_data)
 
 /obj/item/mortar_shell/frag
+	tacmap_label = "MORTAR FRAG"
 	name = "\improper 80mm fragmentation mortar shell"
 	desc = "An 80mm mortar shell, loaded with a fragmentation charge."
 	icon_state = "mortar_ammo_frag"
@@ -50,6 +77,7 @@
 	cell_explosion(T, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 
 /obj/item/mortar_shell/incendiary
+	tacmap_label = "MORTAR INCEN"
 	name = "\improper 80mm incendiary mortar shell"
 	desc = "An 80mm mortar shell, loaded with a Type B napalm charge. Perfect for long-range area denial."
 	icon_state = "mortar_ammo_inc"
@@ -65,6 +93,7 @@
 	playsound(T, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
 
 /obj/item/mortar_shell/flare
+	tacmap_label = "MORTAR FLARE"
 	name = "\improper 80mm flare/camera mortar shell"
 	desc = "An 80mm mortar shell, loaded with an illumination flare / camera combo, attached to a parachute."
 	icon_state = "mortar_ammo_flr"

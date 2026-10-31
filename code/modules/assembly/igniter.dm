@@ -8,6 +8,10 @@
 	heat_source = 1000 //Can ignite Thermite.
 	flags_item = IGNITING_ITEM
 
+/obj/item/device/assembly/igniter/Initialize(mapload, ...)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_IGNITER, TRAIT_SOURCE_INHERENT)
+
 /obj/item/device/assembly/igniter/activate()
 	if(!..())
 		return FALSE//Cooldown check

@@ -47,6 +47,12 @@
 /obj/item/weapon/gun/flamer/Initialize(mapload, spawn_empty)
 	. = ..()
 	update_icon()
+	ADD_TRAIT(src, TRAIT_IGNITER, TRAIT_SOURCE_INHERENT)
+
+/obj/item/weapon/gun/flamer/check_can_ignite()
+	if(!(flags_gun_features & GUN_TRIGGER_SAFETY))
+		return TRUE
+	return ..()
 
 /obj/item/weapon/gun/flamer/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0, "rail_x" = 11, "rail_y" = 20, "under_x" = 21, "under_y" = 14, "stock_x" = 0, "stock_y" = 0)
@@ -683,7 +689,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 			scorch_turf_target.scorch(burnlevel)
 		var/obj/effect/decal/cleanable/liquid_fuel/liquid = LAZYACCESS(scorch_turf_target.cleanables, CLEANABLE_IGNITABLE)
 		if(liquid && istype(liquid))
-			INVOKE_NEXT_TICK(liquid, TYPE_PROC_REF(/obj/effect/decal/cleanable/liquid_fuel, ignite))
+			INVOKE_NEXT_TICK(liquid, TYPE_PROC_REF(/obj/effect/decal/cleanable/liquid_fuel, ignite_fuel))
 
 	if (istype(loc, /turf/open/auto_turf/snow))
 		var/turf/open/auto_turf/snow/S = loc

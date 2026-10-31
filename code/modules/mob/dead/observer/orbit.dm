@@ -187,7 +187,7 @@
 				if(issynth(human) && !isinfiltratorsynthetic(human))
 					synthetics += list(serialized)
 
-				if(issurvivorjob(human.job) || (FACTION_SURVIVOR in human.faction_group))
+				if(FACTION_SURVIVOR in human.faction_group)
 					survivors += list(serialized)
 					is_survivor = TRUE
 

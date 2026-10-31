@@ -57,7 +57,7 @@
 #define COMSIG_HUMAN_ATTEMPTING_EQUIP "human_attempting_equip"
 	#define COMPONENT_HUMAN_CANCEL_ATTEMPT_EQUIP (1<<0)
 
-//from /mob/living/carbon/human/Life()
+//from /mob/living/carbon/human/proc/set_undefibbable()
 #define COMSIG_HUMAN_SET_UNDEFIBBABLE "human_set_undefibbable"
 
 /// from /datum/surgery_step/proc/attempt_step()

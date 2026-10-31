@@ -260,9 +260,9 @@
 		return maxovertime
 	return randomtime
 
-///////////////////////////////
-//Checks if the round is over//
-///////////////////////////////
+/**
+ * Checks if the round is over
+ */
 /datum/game_mode/whiskey_outpost/check_finished()
 	if(finished != 0)
 		return TRUE

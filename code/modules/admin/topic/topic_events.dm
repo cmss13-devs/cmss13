@@ -5,8 +5,6 @@
 		if("distress")
 			admin_force_distress()
 		if("selfdestruct")
-			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
-				return
 			admin_force_selfdestruct()
 		if("evacuation_start")
 			if(alert(usr, "Are you sure you want to trigger an evacuation?", "Confirmation", "Yes", "No") != "Yes")

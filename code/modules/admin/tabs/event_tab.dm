@@ -62,10 +62,25 @@
 /client/proc/change_security_level()
 	if(!check_rights(R_ADMIN))
 		return
-	var sec_level = input(usr, "It's currently code [get_security_level()].", "Select Security Level")  as null|anything in (list("green","blue","red","delta")-get_security_level())
-	if(sec_level && alert("Switch from code [get_security_level()] to code [sec_level]?","Change security level?","Yes","No") == "Yes")
-		set_security_level(seclevel2num(sec_level))
-		log_admin("[key_name(usr)] changed the security level to code [sec_level].")
+
+	if(GLOB.security_level == SEC_LEVEL_DELTA)
+		to_chat(usr, "The security level is already delta. Its too late now.")
+		return
+
+	var/list/options = list(num2seclevel(SEC_LEVEL_GREEN), num2seclevel(SEC_LEVEL_BLUE), num2seclevel(SEC_LEVEL_RED), num2seclevel(SEC_LEVEL_DELTA)) - get_security_level()
+	var/new_level = tgui_input_list(usr, "It's currently code [get_security_level()].", "Select new security level", options)
+	if(!new_level)
+		return
+
+	var/will_self_destruct = new_level == num2seclevel(SEC_LEVEL_DELTA)
+	var/delta_note = will_self_destruct ? " This will initiate a 30s self-destruct detontation." : ""
+	if(tgui_alert(usr, "Switch from code [get_security_level()] to code [new_level]?[delta_note]","Change security level?", list("Yes","No")) != "Yes")
+		return
+
+	set_security_level(seclevel2num(new_level))
+	log_admin("[key_name(usr)] changed the security level to code [new_level].")
+	if(will_self_destruct)
+		message_admins("[key_name_admin(usr)] admin-started self-destruct system.")
 
 /client/proc/toggle_gun_restrictions()
 	if(!admin_holder || !config)
@@ -348,14 +363,13 @@
 	set desc = "Trigger self-destruct countdown. This should not be done if the self-destruct has already been called."
 	set category = "Admin.Events"
 
-	if(!SSticker.mode || !check_rights(R_ADMIN) || get_security_level() == "delta")
+	if(!SSticker.mode || !check_rights(R_ADMIN) || GLOB.security_level == SEC_LEVEL_DELTA)
 		return
 
-	if(alert(src, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
+	if(tgui_alert(usr, "Are you sure you want to do this?", "Self Destruct 30s", list("Yes", "No")) != "Yes")
 		return
 
 	set_security_level(SEC_LEVEL_DELTA)
-
 	message_admins("[key_name_admin(usr)] admin-started self-destruct system.")
 
 /client/proc/view_faxes()

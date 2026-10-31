@@ -36,6 +36,13 @@
 #define EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF_IN_PYLON  4
 #define EXPLOSION_MAX_POWER 5000
 
+// Additional explosion defines for smothering and other effects
+#define EXPLOSION_DANGEROUS_POWER 150 // Explosions trigger a shockwave and can not be smothered at and above this power.
+#define EXPLOSION_SMOTHER_FALLOFF_MULTIPLIER 3 // Multiplies the falloff of an explosion cell by this amount each time it propagates.
+#define EXPLOSION_SMOTHER_DAMAGE_MULTIPLIER 2 // Multiplies the power which added ontop again (remember; smothering mobs already take rest-damage).
+#define EXPLOSION_SMOTHER_SHRAPNEL_PERCENT 0.1 // How much shrapnel direct-hits the body-blocking hero? (shrapnel hurts way too much if everything were to hit)
+#define EXPLOSION_SMOTHER_MESSAGE_TRIGGER_RANGE 4 // Needs to have an ally in this range to trigger the message fluff.
+
 //area flags
 
 /// used to make mobs skip bioscans

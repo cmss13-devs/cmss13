@@ -73,6 +73,7 @@
 	var/next_push = 0
 	var/push_delay = 0.5 SECONDS
 
+
 /obj/vehicle/multitile/box_van/Initialize()
 	. = ..()
 	under_image = image(icon, src, icon_state, layer = BELOW_MOB_LAYER)
@@ -84,8 +85,11 @@
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_MOB_LOGGED_IN, PROC_REF(add_default_image))
 
+	update_movement_sound()
+
 	for(var/icon in GLOB.player_list)
 		add_default_image(SSdcs, icon)
+
 
 /obj/vehicle/multitile/box_van/crew_mousedown(datum/source, atom/object, turf/location, control, params)
 	var/list/modifiers = params2list(params)
@@ -96,6 +100,7 @@
 		if(VEHICLE_DRIVER)
 			if(modifiers[LEFT_CLICK] && modifiers[CTRL_CLICK])
 				activate_horn()
+
 
 /obj/vehicle/multitile/box_van/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(mover in mobs_under) //can't collide with the thing you're buckled to
@@ -111,6 +116,8 @@
 			return NO_BLOCKED_MOVEMENT
 
 		if(mob.mob_size >= MOB_SIZE_IMMOBILE && next_push < world.time)
+			update_movement_sound(is_side_collision(mover), TRUE)
+
 			if(try_move(target_dir, force=TRUE))
 				next_push = world.time + push_delay
 				return NO_BLOCKED_MOVEMENT
@@ -131,6 +138,7 @@
 		if(!(mob.loc in locs))
 			remove_under_van(mob)
 
+
 /obj/vehicle/multitile/box_van/proc/add_under_van(mob/living/living)
 	if(living in mobs_under)
 		return
@@ -142,6 +150,7 @@
 
 	if(living.client)
 		add_client(living)
+
 
 /obj/vehicle/multitile/box_van/proc/remove_under_van(mob/living/living)
 	SIGNAL_HANDLER
@@ -157,19 +166,23 @@
 		COMSIG_MOVABLE_MOVED,
 	))
 
+
 /obj/vehicle/multitile/box_van/proc/check_under_van(mob/mob, turf/oldloc, direction)
 	SIGNAL_HANDLER
 	if(!(mob.loc in locs))
 		remove_under_van(mob)
+
 
 /obj/vehicle/multitile/box_van/proc/add_client(mob/living/living)
 	SIGNAL_HANDLER
 	living.client.images += under_image
 	living.client.images -= normal_image
 
+
 /obj/vehicle/multitile/box_van/proc/add_default_image(subsystem, mob/mob)
 	SIGNAL_HANDLER
 	mob.client.images += normal_image
+
 
 /obj/vehicle/multitile/box_van/Destroy()
 	for(var/icon in mobs_under)
@@ -182,6 +195,7 @@
 	QDEL_NULL(lighting_holder)
 
 	return ..()
+
 
 /obj/vehicle/multitile/box_van/attackby(obj/item/O, mob/user)
 	if(user.z != z)
@@ -221,8 +235,10 @@
 
 	return ..()
 
+
 /obj/vehicle/multitile/box_van/proc/reset_overdrive()
 	misc_multipliers["move"] += overdrive_speed_mult
+
 
 /obj/vehicle/multitile/box_van/get_projectile_hit_boolean(obj/projectile/P)
 	if(src == P.original) //clicking on the van itself will hit it.
@@ -230,6 +246,7 @@
 		if(prob(hitchance))
 			return TRUE
 	return FALSE
+
 
 /obj/vehicle/multitile/box_van/Collide(atom/A)
 	if(!seats[VEHICLE_DRIVER])
@@ -247,6 +264,69 @@
 		return FALSE
 
 	return ..()
+
+
+/obj/vehicle/multitile/box_van/proc/is_side_collision(atom/collider)
+	var/turf/hit_turf = get_turf(collider)
+	if(!hit_turf || hit_turf.z != z)
+		return FALSE
+
+	var/width_tiles = bound_width / world.icon_size	//world.icon_size is 32, no magic numbers yada yada :0)
+	var/height_tiles = bound_height / world.icon_size
+	var/min_x = x + bound_x / world.icon_size
+	var/max_x = min_x + width_tiles - 1
+	var/min_y = y + bound_y / world.icon_size
+	var/max_y = min_y + height_tiles - 1
+
+	if(dir == NORTH || dir == SOUTH)
+		if(hit_turf.x >= min_x && hit_turf.x <= max_x)
+			return FALSE
+	else // EAST or WEST
+		if(hit_turf.y >= min_y && hit_turf.y <= max_y)
+			return FALSE
+
+	return TRUE
+
+
+/// after a tire screech, restore normal movement sound before next move.
+/obj/vehicle/multitile/box_van/proc/restore_movement_sound_after_screech(atom/movable/source, atom/new_loc)
+	SIGNAL_HANDLER
+	UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)
+	update_movement_sound(FALSE)
+
+
+/// Sets movement_sound based on whether functional & van wheels are installed.
+/obj/vehicle/multitile/box_van/proc/update_movement_sound(side_push=FALSE, pushed=FALSE)
+	if(health > 0)
+		var/has_wheels = FALSE
+		for(var/obj/item/hardpoint/locomotion/van_wheels/wheels in hardpoints)
+			if(wheels.health > 0)
+				has_wheels = TRUE
+			break //only one wheels hardpoint, no need to cycle through the rest
+
+		if(has_wheels)
+			if(pushed)
+				if(side_push)
+					movement_sound = "tire_screech"
+					RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(restore_movement_sound_after_screech))
+				else
+					movement_sound = null
+			else
+				movement_sound = initial(movement_sound)
+		else
+			movement_sound = "broken_vehicle"
+	else
+		movement_sound = "broken_vehicle"
+
+
+/obj/vehicle/multitile/box_van/add_hardpoint(obj/item/hardpoint/HP, mob/user)
+	. = ..()
+	update_movement_sound()
+
+
+/obj/vehicle/multitile/box_van/remove_hardpoint(obj/item/hardpoint/old, mob/user)
+	. = ..()
+	update_movement_sound()
 
 /*
 ** PRESETS SPAWNERS

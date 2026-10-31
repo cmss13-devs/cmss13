@@ -462,6 +462,10 @@
 				sound = pick('sound/voice/wy_droid/wy_stealth_droid_death1.ogg', 'sound/voice/wy_droid/wy_stealth_droid_death2.ogg')
 			if("clown_footstep")
 				sound = pick('sound/effects/clownstep1.ogg', 'sound/effects/clownstep2.ogg')
+			if("broken_vehicle")
+				sound = pick('sound/vehicles/broken_move1.ogg','sound/vehicles/broken_move2.ogg','sound/vehicles/broken_move3.ogg','sound/vehicles/broken_move4.ogg','sound/vehicles/broken_move5.ogg','sound/vehicles/broken_move6.ogg')
+			if("tire_screech")
+				sound = pick('sound/vehicles/tire_screech1.ogg', 'sound/vehicles/tire_screech2.ogg','sound/vehicles/tire_screech3.ogg','sound/vehicles/tire_screech4.ogg')
 	return sound
 
 /client/proc/generate_sound_queues()

@@ -5,6 +5,7 @@
 	supervisors = "CMSS13 Administration Staff"
 	total_positions = 1
 	spawn_positions = 1
+	role_weight = 0
 
 	late_joinable = FALSE
 

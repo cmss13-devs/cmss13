@@ -15,8 +15,6 @@ GLOBAL_DATUM(RoleAuthority, /datum/authority/branch/role)
 
 GLOBAL_VAR_INIT(players_preassigned, 0)
 
-#define SHIPSIDE_ROLE_WEIGHT 0.25
-
 /proc/guest_jobbans(job)
 	return (job in GLOB.ROLES_COMMAND)
 
@@ -328,14 +326,13 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			log_debug("Error setting up jobs, no job datum set for: [job].")
 			continue
 
-		var/role_weight = calculate_role_weight(J)
 		for(var/M in unassigned_players)
 			var/mob/new_player/NP = M
 			if(!(NP.client.prefs.get_job_priority(J.title) == priority))
 				continue //If they don't want the job. //TODO Change the name of the prefs proc?
 
 			if(assign_role(NP, J))
-				assigned += role_weight
+				assigned += J.role_weight
 				unassigned_players -= NP
 				// -1 check is not strictly needed here, since standard marines are
 				// supposed to have an actual spawn_positions number at this point
@@ -348,34 +345,6 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(count)
 		return assigned
 	return roles_to_iterate
-
-/**
-* Calculate role balance weight for one person joining as that role. This weight is used
-* when calculating the number of xenos both roundstart and burrowed larva they get for
-* people late joining. This weight also controls the size of local wildlife population,
-* survivors and the number of roundstart Squad Rifleman slots.
-*/
-/datum/authority/branch/role/proc/calculate_role_weight(datum/job/J)
-	if(!J)
-		return 0
-	if(J.title in GLOB.ROLES_MARINES)
-		return 1
-	if(J.title in GLOB.ROLES_XENO)
-		return 1
-	if(J.title in FAX_RESPONDER_JOB_LIST)
-		return 0
-	switch(J.title)
-		if(JOB_SURVIVOR)
-			return 1
-		if(JOB_SYNTH_SURVIVOR)
-			return 1
-		if(JOB_CO_SURVIVOR)
-			return 1
-		if(JOB_PRED_SURVIVOR)
-			return 1
-		if(JOB_PREDATOR)
-			return 0
-	return SHIPSIDE_ROLE_WEIGHT
 
 /datum/authority/branch/role/proc/assign_random_role(mob/new_player/M, list/roles_to_iterate) //In case we want to pass on a list.
 	. = roles_to_iterate
@@ -747,5 +716,3 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		if(new_squad.roles_in[transfer_marine.job] >= new_squad.roles_cap[transfer_marine.job])
 			return TRUE
 	return FALSE
-
-#undef SHIPSIDE_ROLE_WEIGHT

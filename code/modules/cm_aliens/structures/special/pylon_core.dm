@@ -197,7 +197,6 @@
 			xeno_announcement(SPAN_XENOANNOUNCE("Another hive has harnessed the tall's communication relay at [get_area_name(src)].[linked_hive.faction_is_ally(checked_hive.name) ? "" : " Stop them!"]"), hivenumber, XENO_GENERAL_ANNOUNCE)
 
 	activated = TRUE
-	linked_hive.check_if_hit_larva_from_pylon_limit()
 	addtimer(CALLBACK(src, PROC_REF(give_royal_resin)), XENO_PYLON_ACTIVATION_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_LOOP|TIMER_DELETE_ME)
 
 /// Looped proc via timer to give larva after time
@@ -210,8 +209,6 @@
 
 	if(linked_hive.buff_points < linked_hive.max_buff_points)
 		linked_hive.buff_points += 1
-
-	linked_hive.check_if_hit_larva_from_pylon_limit()
 
 //Hive Core - Generates strong weeds, supports other buildings
 /obj/effect/alien/resin/special/pylon/core

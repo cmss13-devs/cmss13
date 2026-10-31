@@ -10,6 +10,7 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_CUSTOM_SPAWN
 	late_joinable = FALSE
 	job_options = SURVIVOR_VARIANT_LIST
+	role_weight = 1
 	var/intro_text
 	var/story_text
 	/// Whether or not the survivor is an inherently hostile to marines.

@@ -72,8 +72,6 @@
 	var/hardcore = FALSE
 	/// Set to false if you want to prevent getting burrowed larva from latejoin marines
 	var/latejoin_burrowed = TRUE
-	/// If hit limit of larva from pylons
-	var/hit_larva_pylon_limit = FALSE
 
 	var/list/hive_inherited_traits
 
@@ -841,7 +839,7 @@
 			hive_structures[name_ref] -= S
 			qdel(S)
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
-		if(get_area(xeno) != hijacked_dropship && xeno.loc && is_ground_level(xeno.loc.z))
+		if(get_area(xeno) != hijacked_dropship && xeno.loc && is_ground_level(xeno.loc.z) && !should_block_game_interaction(xeno))
 			if(isfacehugger(xeno) || islesserdrone(xeno))
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
 				qdel(xeno)
@@ -872,14 +870,16 @@
 			embryo.hivenumber = XENO_HIVE_FORSAKEN
 		potential_host.update_med_icon()
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
-		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
+		if(!ishuman_strict(current_human))
+			continue
+		if(should_block_game_interaction(current_human))
 			continue
 		var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[current_human.job]
 		if(!job)
 			continue
 		var/turf/turf = get_turf(current_human)
 		if(is_mainship_level(turf?.z))
-			shipside_humans_weighted_count += GLOB.RoleAuthority.calculate_role_weight(job)
+			shipside_humans_weighted_count += job.role_weight
 	hijack_burrowed_surge = TRUE
 	hijack_burrowed_left = max(ceil(shipside_humans_weighted_count * 0.5) - xenos_count, 5)
 	hivecore_cooldown = FALSE
@@ -1166,22 +1166,6 @@
 		if(xeno.counts_for_slots)
 			count++
 	return count
-
-/// Checks if we hit larva limit
-/datum/hive_status/proc/check_if_hit_larva_from_pylon_limit()
-	var/groundside_humans_weighted_count = 0
-	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
-		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
-			continue
-		var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[current_human.job]
-		if(!job)
-			continue
-		var/turf/turf = get_turf(current_human)
-		if(is_ground_level(turf?.z))
-			groundside_humans_weighted_count += GLOB.RoleAuthority.calculate_role_weight(job)
-	hit_larva_pylon_limit = (get_real_total_xeno_count() + stored_larva) > (groundside_humans_weighted_count * ENDGAME_LARVA_CAP_MULTIPLIER)
-	hive_ui.update_pylon_status()
-	return hit_larva_pylon_limit
 
 ///Called by /obj/item/alien_embryo when a host is bursting to determine extra larva per burst
 /datum/hive_status/proc/increase_larva_after_burst(is_nested)

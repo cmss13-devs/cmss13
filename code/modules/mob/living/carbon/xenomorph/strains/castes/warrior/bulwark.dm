@@ -170,16 +170,20 @@
 /datum/action/xeno_action/activable/plate_bash/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno_player = owner
 
-	if(!iscarbon(target_atom))
-		return
-
 	if(!isxeno_human(target_atom) || xeno_player.can_not_harm(target_atom))
 		return
 
-	XENO_ACTION_CHECK_USE_PLASMA(xeno_player)
+	if(!xeno_player.check_state())
+		return
+
+	if(!action_cooldown_check())
+		return
 
 	var/mob/living/carbon/carbon_target = target_atom
 	if(carbon_target.stat == DEAD)
+		return
+
+	if(HAS_TRAIT(xeno_player, TRAIT_LAUNCHED))
 		return
 
 	var/distance = get_dist(xeno_player, carbon_target)
@@ -187,11 +191,13 @@
 	if(distance > max_distance)
 		return
 
-	if(!HAS_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES))
-		xeno_player.throw_atom(get_step_towards(carbon_target, xeno_player), 2, SPEED_SLOW, xeno_player, tracking=TRUE)
-	if(!xeno_player.Adjacent(carbon_target))
-		on_cooldown_end()
+	if(!check_and_use_plasma_owner())
 		return
+
+	if(!HAS_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES) && distance > 1)
+		xeno_player.throw_atom(get_step_towards(carbon_target, xeno_player), 2, SPEED_SLOW, xeno_player, tracking=TRUE)
+		if(!xeno_player.Adjacent(carbon_target))
+			return
 
 	carbon_target.last_damage_data = create_cause_data(xeno_player.caste_type, xeno_player)
 	var/facing = get_dir(xeno_player, carbon_target)

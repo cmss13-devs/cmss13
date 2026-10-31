@@ -3,6 +3,8 @@
  */
 
 #define TUNNEL_COLLAPSING_TIME (60 SECONDS)
+/// most characters of a tunnel's name that fit on one line above its blip on the xeno tacmap (the 160px text box); has "..." on it
+#define TUNNEL_MAP_LABEL_MAX 24
 
 /obj/structure/tunnel
 	name = "tunnel"
@@ -19,6 +21,10 @@
 	plane = FLOOR_PLANE
 
 	var/tunnel_desc = "" //description added by the hivelord.
+	/// only the name the xeno typed (no area or coordinates), shown above the tunnel's blip on the xeno tacmap. Empty for tunnels nobody named.
+	var/tunnel_label = ""
+	/// this tunnel's blip on the xeno tacmap, kept so the name above it can be refreshed when the tunnel is renamed
+	var/image/minimap_blip
 
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/datum/hive_status/hive
@@ -29,7 +35,12 @@
 /obj/structure/tunnel/Initialize(mapload, h_number)
 	. = ..()
 	var/turf/L = get_turf(src)
-	tunnel_desc = L.loc.name + " ([loc.x], [loc.y]) [pick(GLOB.greek_letters)]"//Default tunnel desc is the <area name> (x, y) <Greek letter>
+	var/greek_letter = pick(GLOB.greek_letters)
+	tunnel_desc = L.loc.name + " ([loc.x], [loc.y]) [greek_letter]"//Default tunnel desc is the <area name> (x, y) <Greek letter>
+	// tunnels nobody named (mapped ones, or never renamed) show <area name> <Greek letter>. It's the area that gets shortened, not the end, otherwise two tunnels in the same area would end up with identical labels
+	var/max_area_length = TUNNEL_MAP_LABEL_MAX - length(greek_letter) - 1
+	var/area_label = length(L.loc.name) > max_area_length ? "[copytext(L.loc.name, 1, max_area_length - 2)]..." : L.loc.name
+	tunnel_label = "[area_label] [greek_letter]"
 
 	if(h_number && GLOB.hive_datum[h_number])
 		hivenumber = h_number
@@ -51,7 +62,31 @@
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
-	SSminimaps.add_marker(src, get_minimap_flag_for_faction(hivenumber), image('icons/UI_icons/map_blips.dmi', null, "xenotunnel", VERY_HIGH_FLOAT_LAYER))
+	minimap_blip = image('icons/UI_icons/map_blips.dmi', null, "xenotunnel", VERY_HIGH_FLOAT_LAYER)
+	minimap_blip.appearance_flags |= KEEP_TOGETHER
+	// the blip icon is 7x7, so a 160px wide centered text box sits above it: x shifts left by (160 - 7) / 2. Wide enough for the 24 character cap on one line, and 12px tall so the glyphs aren't clipped (text is drawn from the top of the box down)
+	minimap_blip.maptext_x = -76
+	minimap_blip.maptext_y = 6
+	minimap_blip.maptext_width = 160
+	minimap_blip.maptext_height = 12
+	update_minimap_name()
+	SSminimaps.add_marker(src, get_minimap_flag_for_faction(hivenumber), minimap_blip)
+
+/// Sets the tunnel's description (shown in examine and the tunnel list) and the short name written above its blip on the xeno tacmap.
+/obj/structure/tunnel/proc/set_tunnel_desc(new_desc, new_label)
+	tunnel_desc = new_desc
+	tunnel_label = new_label
+	update_minimap_name()
+
+/obj/structure/tunnel/proc/update_minimap_name()
+	if(!minimap_blip)
+		return
+	if(!tunnel_label)
+		minimap_blip.maptext = null
+		return
+	// one line only: the text box is a single line tall, so a name that doesn't fit is shortened with "..." instead of wrapping
+	var/shown_label = length(tunnel_label) > TUNNEL_MAP_LABEL_MAX ? "[copytext(tunnel_label, 1, TUNNEL_MAP_LABEL_MAX - 2)]..." : tunnel_label
+	minimap_blip.maptext = "<span class='maptext' style='text-align: center'>[shown_label]</span>"
 
 /obj/structure/tunnel/proc/forsaken_handling()
 	SIGNAL_HANDLER
@@ -71,6 +106,7 @@
 	for(var/mob/living/carbon/xenomorph/X in contents)
 		X.forceMove(loc)
 		to_chat(X, SPAN_DANGER("[src] suddenly collapses, forcing you out!"))
+	minimap_blip = null
 	. = ..()
 
 /obj/structure/tunnel/proc/isfriendly(mob/target)

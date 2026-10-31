@@ -11,7 +11,7 @@
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/grenade_launchers.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/grenade_launchers.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/grenade_launchers_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/grenade_launchers_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/grenade_launchers_righthand.dmi',
 	)
 
 	fire_sound = 'sound/weapons/armbomb.ogg'
@@ -32,13 +32,15 @@
 	///Does it launch its grenades in a low arc or a high? Do they strike people in their path, or fly beyond?
 	var/is_lobbing = FALSE
 	///Verboten munitions. This is a blacklist. Anything in this list isn't loadable.
-	var/disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade,
-										/obj/item/explosive/grenade/alien,
-										/obj/item/explosive/grenade/nerve_gas,
-										/obj/item/explosive/grenade/incendiary/bursting_pipe,
-										/obj/item/explosive/grenade/xeno_acid_grenade,
-										/obj/item/explosive/grenade/incendiary/molotov,
-										/obj/item/explosive/grenade/flashbang)
+	var/disallowed_grenade_types = list(
+		/obj/item/explosive/grenade/spawnergrenade,
+		/obj/item/explosive/grenade/alien,
+		/obj/item/explosive/grenade/nerve_gas,
+		/obj/item/explosive/grenade/incendiary/bursting_pipe,
+		/obj/item/explosive/grenade/xeno_acid_grenade,
+		/obj/item/explosive/grenade/incendiary/molotov,
+		/obj/item/explosive/grenade/flashbang,
+	)
 	///What is this weapon permitted to fire? This is a whitelist. Anything in this list can be fired. Anything.
 	var/valid_munitions = list(/obj/item/explosive/grenade)
 

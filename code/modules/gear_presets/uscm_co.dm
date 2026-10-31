@@ -121,7 +121,7 @@
 		WEAR_R_STORAGE = /obj/item/storage/pouch/general/large,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/webbing,
 		WEAR_BODY = /obj/item/clothing/under/marine/officer/formal/gray,
-		WEAR_EYES = /obj/item/clothing/glasses/sunglasses
+		WEAR_EYES = /obj/item/clothing/glasses/sunglasses,
 	)
 
 /datum/equipment_preset/uscm_co/infantry/council

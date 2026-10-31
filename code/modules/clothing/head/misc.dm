@@ -95,7 +95,7 @@
 	item_state = "bowler"
 	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi',
 	)
 	flags_armor_protection = 0
 
@@ -112,7 +112,7 @@
 	icon = 'icons/obj/items/clothing/hats/hats.dmi'
 	icon_state = "cowboy_dark"
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi',
 	)
 	desc = "A finely made cowboy hat."
 
@@ -128,7 +128,7 @@
 	item_state = "bowler_hat"
 	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi',
 	)
 	flags_armor_protection = 0
 
@@ -139,7 +139,7 @@
 	item_state = "director_hat"
 	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi',
 	)
 	flags_armor_protection = BODY_FLAG_HEAD
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -158,7 +158,7 @@
 	item_state = "manager_hat"
 	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi',
 	)
 	flags_armor_protection = BODY_FLAG_HEAD
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
@@ -177,7 +177,7 @@
 	item_state = "beaver_hat"
 	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi',
 	)
 
 /obj/item/clothing/head/boaterhat
@@ -187,7 +187,7 @@
 	item_state = "boater_hat"
 	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi',
 	)
 
 /obj/item/clothing/head/feathertrilby
@@ -197,7 +197,7 @@
 	item_state = "feather_trilby"
 	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi',
 	)
 
 /obj/item/clothing/head/fez

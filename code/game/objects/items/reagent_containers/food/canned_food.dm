@@ -4,7 +4,7 @@
 	icon_state = ""
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/canned_food_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/canned_food_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/canned_food_righthand.dmi',
 	)
 	needs_can_opener = TRUE
 	crushable = FALSE

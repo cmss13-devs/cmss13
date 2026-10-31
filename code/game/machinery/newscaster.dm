@@ -15,7 +15,7 @@
 	item_icons = list(
 		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/tools.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi',
 	)
 	icon_state = "newspaper"
 	w_class = SIZE_TINY //Let's make it fit in trashbags!

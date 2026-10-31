@@ -8,7 +8,7 @@
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi',
 	)
 	icon_state = "disc"
 	item_state = "pred_disc"

@@ -507,14 +507,14 @@
 
 /datum/asset/simple/orbit
 	assets = list(
-		"ghost.png" = 'html/images/ghost.png'
+		"ghost.png" = 'html/images/ghost.png',
 	)
 
 /datum/asset/simple/radar_assets
 	assets = list(
 		"ntosradarbackground.png" = 'icons/images/ui_images/ntosradar_background.png',
 		"ntosradarpointer.png" = 'icons/images/ui_images/ntosradar_pointer.png',
-		"ntosradarpointerS.png" = 'icons/images/ui_images/ntosradar_pointer_S.png'
+		"ntosradarpointerS.png" = 'icons/images/ui_images/ntosradar_pointer_S.png',
 	)
 
 /datum/asset/simple/particle_editor
@@ -537,7 +537,7 @@
 
 /datum/asset/simple/vv
 	assets = list(
-		"view_variables.css" = 'html/admin/view_variables.css'
+		"view_variables.css" = 'html/admin/view_variables.css',
 	)
 
 /datum/asset/directory/book_assets

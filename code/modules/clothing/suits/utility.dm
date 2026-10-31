@@ -74,7 +74,7 @@
 	blood_overlay_type = "helmet"
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi',
 	)
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
@@ -152,7 +152,7 @@
 	blood_overlay_type = "helmet"
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi',
 	)
 	flags_inventory = COVEREYES|COVERMOUTH
 	flags_inv_hide = HIDEFACE|HIDEMASK|HIDEEARS|HIDEALLHAIR
@@ -177,7 +177,7 @@
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi',
 	)
 	w_class = SIZE_LARGE//bulky item
 	gas_transfer_coefficient = 0.90

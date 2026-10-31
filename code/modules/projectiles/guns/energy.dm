@@ -120,7 +120,7 @@
 	item_state = "eva"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/energy_weapons_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/energy_weapons_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/energy_weapons_righthand.dmi',
 	)
 	muzzle_flash = "muzzle_laser"
 	muzzle_flash_color = COLOR_LASER_RED
@@ -188,7 +188,7 @@
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/guns.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/energy_weapons.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/energy_weapons_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/energy_weapons_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/energy_weapons_righthand.dmi',
 	)
 	muzzle_flash = "muzzle_laser"
 	muzzle_flash_color = COLOR_LASER_RED

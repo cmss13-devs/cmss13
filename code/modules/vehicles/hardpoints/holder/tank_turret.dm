@@ -40,7 +40,7 @@
 		/obj/item/hardpoint/secondary/small_flamer,
 		/obj/item/hardpoint/secondary/towlauncher,
 		/obj/item/hardpoint/secondary/m56cupola,
-		/obj/item/hardpoint/secondary/grenade_launcher
+		/obj/item/hardpoint/secondary/grenade_launcher,
 	)
 
 	hdpt_layer = HDPT_LAYER_TURRET
@@ -48,7 +48,7 @@
 		"1" = list(0, -10),
 		"2" = list(0, 10),
 		"4" = list(-10, 0),
-		"8" = list(10, 0)
+		"8" = list(10, 0),
 	)
 
 	var/gyro = FALSE

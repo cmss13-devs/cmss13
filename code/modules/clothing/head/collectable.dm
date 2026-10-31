@@ -30,7 +30,7 @@
 	item_state = "super_top_hat"
 	item_state_slots = list(
 		WEAR_L_HAND = "that",
-		WEAR_R_HAND = "that"
+		WEAR_R_HAND = "that",
 	)
 	worn_x_dimension = 64
 	worn_y_dimension = 64

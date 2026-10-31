@@ -11,7 +11,6 @@
 	explo_proof = TRUE
 	var/shuttle_tag  // Used to know which shuttle we're linked to.
 	var/obj/structure/dropship_equipment/selected_equipment //the currently selected equipment installed on the shuttle this console controls.
-	var/cavebreaker = FALSE //ignore caves and other restrictions?
 	var/datum/cas_fire_envelope/firemission_envelope
 	var/datum/cas_fire_mission/selected_firemission
 	var/datum/cas_fire_mission/editing_firemission
@@ -39,6 +38,13 @@
 	var/datum/tacmap_holder/tacmap_holder
 	/// client ceiling layers used by the user viewing this console.
 	var/list/atom/movable/screen/minimap_ceiling_layer/ceiling_layers = list()
+
+	/// Last fire mission offsets received from the UI.
+	var/last_ui_offset_x = 0
+	var/last_ui_offset_y = 0
+	/// Direct-fire offsets received from the UI.
+	var/direct_x_offset_value = 0
+	var/direct_y_offset_value = 0
 	var/obj/effect/overlay/temp/dropship_reticle/direct_fire_reticle = null
 
 /obj/structure/machinery/computer/dropship_weapons/New()
@@ -131,7 +137,7 @@
 /obj/structure/machinery/computer/dropship_weapons/proc/equipment_update(obj/docking_port/mobile/marine_dropship/dropship)
 	SIGNAL_HANDLER
 	var/list/obj/structure/dropship_equipment/weapons = list()
-	for(var/obj/structure/dropship_equipment/weapon/weap as anything in dropship.equipments)
+	for(var/obj/structure/dropship_equipment/weapon/weap in dropship.equipments)
 		weapons.Add(weap)
 	firemission_envelope.update_weapons(weapons)
 
@@ -244,9 +250,17 @@
 	// dropship info
 	.["shuttle_state"] = dropship.mode
 	.["fire_mission_enabled"] = dropship.in_flyby
+	.["flight_time"] = dropship.timeLeft(10)
+	.["max_flight_duration"] = dropship.callTime * 0.1
+	.["max_refuel_duration"] = dropship.rechargeTime * 0.1
 
 	// equipment info
 	.["equipment_data"] = get_sanitised_equipment(user, dropship)
+
+	.["matrix_upgrade"] = upgraded
+	.["nvg_available"] = (upgraded == MATRIX_NVG)
+	var/datum/component/camera_manager/camera_component = GetComponent(/datum/component/camera_manager)
+	.["nvg_enabled"] = camera_component ? camera_component.nvg_enabled : FALSE
 
 	// medevac targets
 	.["medevac_targets"] = list()
@@ -264,6 +278,9 @@
 
 	.["targets_data"] = get_targets()
 	.["camera_target"] = camera_target_id
+	.["firemission_x_offset"] = last_ui_offset_x
+	.["firemission_y_offset"] = last_ui_offset_y
+	.["firemission_max_offset"] = firemission_envelope ? firemission_envelope.max_offset : 0
 
 	if(selected_equipment)
 		.["selected_eqp"] = selected_equipment.ship_base.attach_id
@@ -293,6 +310,9 @@
 		.["firemission_name"] = selected_firemission ? selected_firemission.name : ""
 		.["firemission_step"] = firemission_envelope.stat
 		.["firemission_selected_laser"] = firemission_envelope.recorded_loc ? firemission_envelope.recorded_loc.get_name() : "NOT SELECTED"
+		.["firemission_initiate_time"] = firemission_envelope.firemission_initiate_time
+		.["firemission_execution_start"] = firemission_envelope.execution_start
+		.["firemission_cooldown_period"] = firemission_envelope.cooldown_period
 
 	.["configuration"] = configuration
 	.["ceiling_overlay_enabled"] = ceiling_layers[user]?.enabled
@@ -300,6 +320,19 @@
 	.["worldtime"] = world.time
 	.["nextdetonationtime"] = simulation.detonation_cooldown
 	.["detonation_cooldown"] = simulation.detonation_cooldown_time
+	var/offset_ceiling = null
+	if(camera_target_id)
+		if(sig && sig.signal_loc)
+			var/turf/base_turf = get_turf(sig.signal_loc)
+			if(base_turf)
+				var/x_offset = last_ui_offset_x
+				var/y_offset = last_ui_offset_y
+				var/turf/offset_turf = locate(base_turf.x + x_offset, base_turf.y + y_offset, base_turf.z)
+				if(offset_turf)
+					var/area/offset_area = get_area(offset_turf)
+					if(offset_area)
+						offset_ceiling = offset_area.ceiling
+	.["offset_ceiling_protection_tier"] = offset_ceiling
 
 /obj/structure/machinery/computer/dropship_weapons/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -434,8 +467,7 @@
 			if(!sig)
 				return FALSE
 
-			selected_equipment = DEW
-			if(ui_open_fire(user, shuttle, camera_target_id))
+			if(ui_open_fire(user, shuttle, camera_target_id, DEW))
 				if(firemission_envelope)
 					firemission_envelope.untrack_object()
 			return TRUE
@@ -473,31 +505,19 @@
 
 		if("firemission-dual-offset-camera")
 			var/target_id = params["target_id"]
-
-			var/x_offset_value = params["x_offset_value"]
-			var/y_offset_value = params["y_offset_value"]
-
-			camera_target_id = target_id
-			var/datum/cas_signal/cas_sig = get_cas_signal(camera_target_id, valid_only = TRUE)
+			direct_x_offset_value = text2num(params["direct_x_offset_value"])
+			direct_y_offset_value = text2num(params["direct_y_offset_value"])
 			// we don't want rapid offset changes to trigger admin warnings
 			// and block the user from accessing TGUI
 			// we change the minute_count
 			user.client.reduce_minute_count()
-			if(!cas_sig)
-				return TRUE
+			set_firemission_camera_offset(
+				target_id = target_id,
+				horizontal_offset = text2num(params["x_offset_value"]),
+				vertical_offset = text2num(params["y_offset_value"]),
+				refresh_equipment = TRUE,
+			)
 
-			// find position of cas_sig with offset dir and value applied
-			var/dx = text2num(x_offset_value)
-			var/dy = text2num(y_offset_value)
-
-			var/obj/current = cas_sig.signal_loc
-			var/obj/new_target = locate(
-				current.x + dx,
-				current.y + dy,
-				current.z)
-
-			camera_area_equipment = null
-			firemission_envelope.change_current_loc(new_target, cas_sig)
 			return TRUE
 
 		if("nvg-enable")
@@ -558,12 +578,13 @@
 				to_chat(user, SPAN_WARNING("Target is obscured."))
 				return FALSE
 			var/equipment_tag = params["equipment_id"]
+			var/obj/structure/dropship_equipment/paradrop_system/paradrop_system = null
 			for(var/obj/structure/dropship_equipment/equipment as anything in shuttle.equipments)
 				var/mount_point = equipment.ship_base.attach_id
 				if(mount_point != equipment_tag)
 					continue
 				if(istype(equipment, /obj/structure/dropship_equipment/paradrop_system))
-					var/obj/structure/dropship_equipment/paradrop_system/paradrop_system = equipment
+					paradrop_system = equipment
 					if(paradrop_system.system_cooldown > world.time)
 						to_chat(user, SPAN_WARNING("You toggled the system too recently."))
 						return
@@ -571,6 +592,8 @@
 					paradrop_system.visible_message(SPAN_NOTICE("[equipment] hums as it locks to a signal."))
 					break
 			linked_shuttle.paradrop_signal = sig
+			if(paradrop_system)
+				paradrop_system.on_signal_lock()
 			addtimer(CALLBACK(src, PROC_REF(open_aft_for_paradrop)), 2 SECONDS)
 			RegisterSignal(linked_shuttle.paradrop_signal, COMSIG_PARENT_QDELETING, PROC_REF(clear_locked_turf_and_lock_aft))
 			RegisterSignal(linked_shuttle, COMSIG_SHUTTLE_SETMODE, PROC_REF(clear_locked_turf_and_lock_aft))
@@ -590,16 +613,16 @@
 	visible_message(SPAN_WARNING("[src] displays an alert as it loses the paradrop target."))
 	for(var/obj/structure/dropship_equipment/paradrop_system/parad in shuttle.equipments)
 		parad.visible_message(SPAN_WARNING("[parad] displays an alert as it loses the paradrop target."))
+		parad.on_signal_lost()
 	UnregisterSignal(shuttle.paradrop_signal, COMSIG_PARENT_QDELETING)
 	UnregisterSignal(shuttle, COMSIG_SHUTTLE_SETMODE)
 	shuttle.paradrop_signal = null
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_weapon(eqp_tag)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
-	var/obj/structure/dropship_equipment/equipment = dropship.equipments[eqp_tag]
-	if(istype(equipment, /obj/structure/dropship_equipment/weapon))
-		//is weapon
-		return equipment
+	for(var/obj/structure/dropship_equipment/weapon/dropship_weapon in dropship.equipments)
+		if(ref(dropship_weapon) == eqp_tag)
+			return dropship_weapon
 	return
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_cas_signal(target_ref, valid_only = FALSE)
@@ -699,27 +722,55 @@
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_sanitised_equipment(mob/user, obj/docking_port/mobile/marine_dropship/dropship)
 	. = list()
-	var/element_nbr = 1
-	for(var/obj/structure/dropship_equipment/equipment in dropship.equipments)
+	for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
 		var/list/data = list(
-			"name"= equipment.name,
+			"name" = equipment.name,
 			"shorthand" = equipment.shorthand,
-			"eqp_tag" = element_nbr,
+			"eqp_tag" = ref(equipment),
 			"is_weapon" = equipment.is_weapon,
 			"is_interactable" = equipment.is_interactable,
 			"mount_point" = equipment.ship_base.attach_id,
-			"is_missile" = istype(equipment,  /obj/structure/dropship_equipment/weapon/rocket_pod),
+			"is_missile" = equipment.is_missile,
 			"ammo_name" = equipment.ammo_equipped?.name,
 			"ammo" = equipment.ammo_equipped?.ammo_count,
 			"max_ammo" = equipment.ammo_equipped?.max_ammo_count,
 			"firemission_delay" = equipment.ammo_equipped?.fire_mission_delay,
 			"burst" = equipment.ammo_equipped?.ammo_used_per_firing,
+			"icon_state" = equipment.icon_state,
 			"data" = equipment.ui_data(user)
 		)
 
+		if(istype(equipment, /obj/structure/dropship_equipment/weapon))
+			var/obj/structure/dropship_equipment/weapon/weapon = equipment
+			data["last_fired"] = weapon.last_fired
+			data["firing_delay"] = weapon.firing_delay
+
+		if(istype(equipment, /obj/structure/dropship_equipment/medevac_system))
+			var/obj/structure/dropship_equipment/medevac_system/medevac = equipment
+			data["medevac_cooldown"] = medevac.medevac_cooldown
+
+		if(istype(equipment, /obj/structure/dropship_equipment/paradrop_system))
+			var/obj/structure/dropship_equipment/paradrop_system/paradrop = equipment
+			data["system_cooldown"] = paradrop.system_cooldown
+
+		if(istype(equipment, /obj/structure/dropship_equipment/sentry_holder))
+			var/obj/structure/dropship_equipment/sentry_holder/sentry = equipment
+			data["deployment_cooldown"] = sentry.deployment_cooldown
+
+		if(istype(equipment, /obj/structure/dropship_equipment/mg_holder))
+			var/obj/structure/dropship_equipment/mg_holder/mg = equipment
+			data["deployment_cooldown"] = mg.deployment_cooldown
+
+		if(istype(equipment, /obj/structure/dropship_equipment/electronics/spotlights))
+			var/obj/structure/dropship_equipment/electronics/spotlights/spotlight = equipment
+			data["spotlights_cooldown"] = spotlight.spotlights_cooldown
+
+		if(istype(equipment, /obj/structure/dropship_equipment/fulton_system))
+			var/obj/structure/dropship_equipment/fulton_system/fulton = equipment
+			data["fulton_cooldown"] = fulton.fulton_cooldown
+
 		. += list(data)
 
-		element_nbr++
 		equipment.linked_console = src
 
 
@@ -727,14 +778,17 @@
 	. = list()
 	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 	for(var/datum/cas_signal/LT as anything in cas_group.cas_signals)
-		var/obj/object = LT.signal_loc
-		if(!istype(LT) || !LT.valid_signal() || !is_ground_level(object.z))
+		if(!LT.valid_signal())
+			continue
+		var/turf/object = get_turf(LT.signal_loc)
+		if(!is_ground_level(object.z))
 			continue
 		var/area/laser_area = get_area(LT.signal_loc)
 		. += list(
 			list(
 				"target_name" = "[LT.name] ([laser_area.name])",
-				"target_tag" = LT.target_id
+				"target_tag" = LT.target_id,
+				"ceiling_protection_tier" = laser_area.ceiling
 			)
 		)
 
@@ -744,7 +798,11 @@
 	E.linked_console = src
 	E.equipment_interact(user)
 
-/obj/structure/machinery/computer/dropship_weapons/proc/ui_open_fire(mob/weapon_operator, obj/docking_port/mobile/marine_dropship/dropship, targ_id)
+/obj/structure/machinery/computer/dropship_weapons/proc/ui_open_fire(mob/weapon_operator, obj/docking_port/mobile/marine_dropship/dropship, targ_id, obj/structure/dropship_equipment/weapon/override_weapon = null)
+	var/obj/structure/dropship_equipment/weapon/DEW = override_weapon ? override_weapon : selected_equipment
+	if(!DEW || !DEW.is_weapon)
+		to_chat(weapon_operator, SPAN_WARNING("No weapon selected."))
+		return FALSE
 	if(ishuman(weapon_operator))
 		var/mob/living/carbon/human/human_operator = weapon_operator
 		if(!human_operator.allow_gun_usage)
@@ -753,10 +811,6 @@
 		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
 			to_chat(human_operator, SPAN_WARNING("You will not break the ceasefire by doing that!"))
 			return FALSE
-	var/obj/structure/dropship_equipment/weapon/DEW = selected_equipment
-	if(!selected_equipment || !selected_equipment.is_weapon)
-		to_chat(weapon_operator, SPAN_WARNING("No weapon selected."))
-		return FALSE
 	if(!skillcheck(weapon_operator, SKILL_PILOT, DEW.skill_required)) //only pilots can fire dropship weapons.
 		to_chat(weapon_operator, SPAN_WARNING("You don't have the training to fire this weapon!"))
 		return FALSE
@@ -765,13 +819,7 @@
 		return FALSE
 	if(!faction)
 		return FALSE//no faction, no weapons
-	if(!selected_equipment || !selected_equipment.is_weapon)
-		to_chat(weapon_operator, SPAN_WARNING("No weapon selected."))
-		return FALSE
 	if(dropship.door_override)
-		return FALSE
-	if(!skillcheck(weapon_operator, SKILL_PILOT, DEW.skill_required)) //only pilots can fire dropship weapons.
-		to_chat(weapon_operator, SPAN_WARNING("You don't have the training to fire this weapon!"))
 		return FALSE
 	if(!dropship.in_flyby && DEW.fire_mission_only)
 		to_chat(weapon_operator, SPAN_WARNING("[DEW] requires a Fire Mission flight type to be fired."))
@@ -806,13 +854,14 @@
 					is_outside = TRUE
 				if(CEILING_GLASS)
 					is_outside = TRUE
-		if(!is_outside && !cavebreaker) //cavebreaker doesn't care
+		var/obj/structure/ship_ammo/SA = DEW.ammo_equipped
+		if(!is_outside && !SA.cavebreaker && (!SA.metalbreaker || CEILING_IS_PROTECTED(targ_area.ceiling, CEILING_PROTECTION_TIER_2)))
 			to_chat(weapon_operator, SPAN_WARNING("INVALID TARGET: target must be visible from high altitude."))
 			return FALSE
-		if (protected_by_pylon(TURF_PROTECTION_CAS, TU))
+		if(protected_by_pylon(TURF_PROTECTION_CAS, TU))
 			to_chat(weapon_operator, SPAN_WARNING("INVALID TARGET: biological-pattern interference with signal."))
 			return FALSE
-		if(!DEW.ammo_equipped.can_fire_at(TU, weapon_operator))
+		if(!SA.can_fire_at(TU, weapon_operator))
 			return FALSE
 
 		DEW.open_fire(LT.signal_loc, weapon_operator)
@@ -832,7 +881,7 @@
 		to_chat(weapon_operator, SPAN_WARNING("Incorrect input format."))
 		return FALSE
 	if(firemission_length > firemission_envelope.fire_length)
-		to_chat(weapon_operator, SPAN_WARNING("Fire Mission is longer than allowed by this vehicle."))
+		to_chat(weapon_operator, SPAN_WARNING("Fire Mission is longer than allowed by this vehicle. Re-input name and length."))
 		return FALSE
 	if(firemission_envelope.stat != FIRE_MISSION_STATE_IDLE)
 		to_chat(weapon_operator, SPAN_WARNING("Vehicle has to be idle to allow Fire Mission editing and creation."))
@@ -924,8 +973,7 @@
 		return FALSE
 	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 	var/datum/cas_signal/cas_sig
-	for(var/X in cas_group.cas_signals)
-		var/datum/cas_signal/LT = X
+	for(var/datum/cas_signal/LT as anything in cas_group.cas_signals)
 		if(LT.target_id == laser  && LT.valid_signal())
 			cas_sig = LT
 	if(!cas_sig)
@@ -963,6 +1011,67 @@
 	if(!result)
 		to_chat(user, SPAN_WARNING("Screen beeps with an error: [firemission_envelope.mission_error]"))
 		return FALSE
+	return TRUE
+
+/// Moves the active CAS fire mission camera one tile in the given direction.
+/obj/structure/machinery/computer/dropship_weapons/proc/offset_firemission_camera(direction)
+	if(!camera_target_id || !firemission_envelope)
+		return FALSE
+
+	var/horizontal_offset_change = 0
+	var/vertical_offset_change = 0
+	switch(direction)
+		if(NORTH)
+			vertical_offset_change = 1
+		if(SOUTH)
+			vertical_offset_change = -1
+		if(EAST)
+			horizontal_offset_change = 1
+		if(WEST)
+			horizontal_offset_change = -1
+		else
+			return FALSE
+
+	var/new_horizontal_offset = clamp(last_ui_offset_x + horizontal_offset_change, -firemission_envelope.max_offset, firemission_envelope.max_offset)
+	var/new_vertical_offset = clamp(last_ui_offset_y + vertical_offset_change, -firemission_envelope.max_offset, firemission_envelope.max_offset)
+	if(new_horizontal_offset == last_ui_offset_x && new_vertical_offset == last_ui_offset_y)
+		return TRUE
+	return set_firemission_camera_offset(
+		target_id = camera_target_id,
+		horizontal_offset = new_horizontal_offset,
+		vertical_offset = new_vertical_offset,
+	)
+
+/// Sets the CAS fire mission camera offset after validating its target and range.
+/obj/structure/machinery/computer/dropship_weapons/proc/set_firemission_camera_offset(target_id, horizontal_offset, vertical_offset, refresh_equipment = FALSE)
+	if(!target_id || !firemission_envelope)
+		return FALSE
+
+	var/datum/cas_signal/cas_signal = get_cas_signal(target_id, valid_only = TRUE)
+	if(!cas_signal)
+		return FALSE
+
+	horizontal_offset = clamp(horizontal_offset, -firemission_envelope.max_offset, firemission_envelope.max_offset)
+	vertical_offset = clamp(vertical_offset, -firemission_envelope.max_offset, firemission_envelope.max_offset)
+	var/turf/signal_turf = get_turf(cas_signal.signal_loc)
+	if(!signal_turf)
+		return FALSE
+
+	var/turf/new_target = locate(signal_turf.x + horizontal_offset, signal_turf.y + vertical_offset, signal_turf.z)
+	if(!new_target)
+		return FALSE
+
+	last_ui_offset_x = horizontal_offset
+	last_ui_offset_y = vertical_offset
+	camera_target_id = target_id
+	camera_area_equipment = null
+	firemission_envelope.change_current_loc(location = new_target, object = cas_signal)
+
+	if(refresh_equipment)
+		var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
+		if(dropship)
+			for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
+				equipment.update_equipment()
 	return TRUE
 
 /obj/structure/machinery/computer/dropship_weapons/proc/update_direction(mob/user, new_direction)

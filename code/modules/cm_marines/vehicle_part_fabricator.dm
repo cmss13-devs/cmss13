@@ -255,54 +255,91 @@
 
 /obj/structure/machinery/part_fabricator/dropship/ui_static_data(mob/user)
 	var/list/static_data = list()
-	static_data["Equipment"] = list()
-	var/is_ammo = 0
+	var/static/list/equipment_categories = list(
+		list("flag" = DROPSHIP_CATEGORY_WEAPON, "name" = "Weapon"),
+		list("flag" = DROPSHIP_CATEGORY_CREW_WEAPON, "name" = "Crew Weapon"),
+		list("flag" = DROPSHIP_CATEGORY_ELECTRONICS, "name" = "Electronics"),
+		list("flag" = DROPSHIP_CATEGORY_FUEL, "name" = "Fuel Equipment"),
+		list("flag" = DROPSHIP_CATEGORY_COMPUTER, "name" = "Computer"),
+	)
+	var/list/equipment_by_category = list("Uncategorized" = list())
+	for(var/list/category_data as anything in equipment_categories)
+		equipment_by_category[category_data["name"]] = list()
+
+	var/is_ammo = FALSE
 	var/index = 1
 	for(var/build_type in typesof(/obj/structure/dropship_equipment))
 		var/obj/structure/dropship_equipment/dropship_equipment_data = build_type
-		if(dropship_equipment_data.faction_exclusive)
-			if(faction != dropship_equipment_data.faction_exclusive)
+		if(initial(dropship_equipment_data.faction_exclusive))
+			if(faction != initial(dropship_equipment_data.faction_exclusive))
 				continue
 
-		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_combat_cas) && dropship_equipment_data.combat_equipment)
-			index +=  1
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_combat_cas) && initial(dropship_equipment_data.combat_equipment))
+			index += 1
 			continue
 		var/build_name = initial(dropship_equipment_data.name)
 		var/build_description = initial(dropship_equipment_data.desc)
 		var/build_cost = initial(dropship_equipment_data.point_cost)
 		if(build_cost)
-			static_data["Equipment"] += list(list(
+			var/equipment_data = list(
 				"name" = capitalize_first_letters(build_name),
 				"desc" = build_description,
 				"cost" = build_cost,
 				"index" = index,
 				"is_ammo" = is_ammo
-			))
+			)
+
+			var/category_found = FALSE
+			var/equipment_category_flags = initial(dropship_equipment_data.compatible_category_flags)
+			for(var/list/category_data as anything in equipment_categories)
+				if(!(equipment_category_flags & category_data["flag"]))
+					continue
+				equipment_by_category[category_data["name"]] += list(equipment_data)
+				category_found = TRUE
+			if(!category_found)
+				equipment_by_category["Uncategorized"] += list(equipment_data)
 		index += 1
 
-	static_data["Ammo"] = list()
-	is_ammo = 1
+	static_data["Equipment"] = list()
+	for(var/equipment_category in equipment_by_category)
+		if(length(equipment_by_category[equipment_category]))
+			static_data["Equipment"][equipment_category] = equipment_by_category[equipment_category]
+
+	var/list/ammo_by_category = list("Uncategorized" = list())
+
+	is_ammo = TRUE
 	index = 1
 	for(var/build_type in typesof(/obj/structure/ship_ammo))
 		var/obj/structure/ship_ammo/ship_ammo_data = build_type
-		if(ship_ammo_data.faction_exclusive)
-			if(faction != ship_ammo_data.faction_exclusive)
+		if(initial(ship_ammo_data.faction_exclusive))
+			if(faction != initial(ship_ammo_data.faction_exclusive))
 				continue
-		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_combat_cas) && ship_ammo_data.combat_equipment)
-			index = index + 1
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_combat_cas) && initial(ship_ammo_data.combat_equipment))
+			index += 1
 			continue
 		var/build_name = initial(ship_ammo_data.name)
 		var/build_description = initial(ship_ammo_data.desc)
 		var/build_cost = initial(ship_ammo_data.point_cost)
 		if(build_cost)
-			static_data["Ammo"] += list(list(
+			var/ammo_data = list(
 				"name" = capitalize_first_letters(build_name),
 				"desc" = build_description,
 				"cost" = build_cost,
 				"index" = index,
 				"is_ammo" = is_ammo
-			))
+			)
+
+			var/category = initial(ship_ammo_data.fabricator_category)
+			if(!ammo_by_category[category])
+				ammo_by_category[category] = list()
+			ammo_by_category[category] += list(ammo_data)
+
 		index += 1
+
+	static_data["Ammo"] = list()
+	for(var/ammo_category in ammo_by_category)
+		if(length(ammo_by_category[ammo_category]))
+			static_data["Ammo"][ammo_category] = ammo_by_category[ammo_category]
 
 	return static_data
 

@@ -548,11 +548,28 @@
 	anchored = TRUE
 	name = "pilot's chair"
 	desc = "A specially designed chair for pilots to sit in."
+	/// Earliest time another movement input may offset the CAS camera.
+	var/next_camera_offset_time = 0
 
 /obj/structure/bed/chair/dropship/pilot/unbuckle()
 	if(buckled_mob && buckled_mob.buckled == src)
 		buckled_mob.reset_view()
 	return ..()
+
+/obj/structure/bed/chair/dropship/pilot/relaymove(mob/user, direction)
+	if(user != buckled_mob)
+		return
+	if(world.time < next_camera_offset_time)
+		return
+
+	var/obj/structure/machinery/computer/dropship_weapons/weapon_console = user.interactee
+	if(!istype(weapon_console))
+		return
+
+	if(!weapon_console.offset_firemission_camera(direction))
+		return
+	next_camera_offset_time = world.time + 0.1 SECONDS
+	return TRUE
 
 /obj/structure/bed/chair/dropship/passenger
 	name = "passenger seat"

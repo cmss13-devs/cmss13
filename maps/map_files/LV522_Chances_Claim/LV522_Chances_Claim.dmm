@@ -23322,21 +23322,8 @@
 /turf/open/floor/prison,
 /area/lv522/atmos/way_in_command_centre)
 "mlO" = (
-/obj/structure/bed/chair{
-	can_buckle = 0;
+/obj/structure/bed/chair/stack/three{
 	dir = 4
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 6
 	},
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
@@ -27095,23 +27082,10 @@
 /turf/open/floor/prison/blue_plate,
 /area/lv522/indoors/a_block/admin)
 "oeL" = (
-/obj/structure/bed/chair{
-	can_buckle = 0;
+/obj/effect/spawner/gibspawner/xeno,
+/obj/structure/bed/chair/stack/three{
 	dir = 4
 	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 6
-	},
-/obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
 "oeT" = (
@@ -28894,24 +28868,11 @@
 /turf/open/floor/prison/blue_plate,
 /area/lv522/indoors/a_block/admin)
 "pfe" = (
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 6
-	},
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/bed/chair/stack/three{
+	dir = 4
 	},
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
@@ -29008,24 +28969,11 @@
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/a_block/security)
 "pha" = (
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 6
-	},
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 20
+	},
+/obj/structure/bed/chair/stack/three{
+	dir = 4
 	},
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
@@ -31446,23 +31394,10 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/dorm_north)
 "qxZ" = (
-/obj/structure/bed/chair{
-	can_buckle = 0;
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/stack/three{
 	dir = 4
 	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 6
-	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
 "qyI" = (

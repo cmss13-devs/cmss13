@@ -1,7 +1,7 @@
 /datum/buildmode_mode/area_edit
 	key = "areaedit"
 	help = "Left Mouse Button on obj/turf/mob = Select corner\n\
-	Left Mouse Button + Alt on turf/obj/mob = Paint area>\n\
+	Left Mouse Button + Alt on turf/obj/mob = Paint area\n\
 	Right Mouse Button on obj/turf/mob = Select area to paint\n\
 	Right Mouse Button on buildmode button = Create new area"
 	use_corner_selection = TRUE

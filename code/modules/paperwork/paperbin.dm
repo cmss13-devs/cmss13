@@ -89,6 +89,9 @@
 	else
 		icon_state = "paper_bin1"
 
+/obj/item/paper_bin/item_action_slot_check(mob/user, slot)
+	return FALSE // Do not add our verbs to mobs
+
 /obj/item/paper_bin/verb/set_paper_type()
 	set name = "Switch Paper Type"
 	set category = "Object"

@@ -297,6 +297,9 @@
 /obj/item/device/flashlight/lamp/tripod/grey
 	icon_state = "tripod_lamp_grey"
 
+/obj/item/device/flashlight/lamp/item_action_slot_check(mob/user, slot)
+	return FALSE // Do not add our verbs to mobs
+
 /obj/item/device/flashlight/lamp/verb/toggle_light()
 	set name = "Toggle light"
 	set category = "Object"

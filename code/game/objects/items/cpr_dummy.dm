@@ -69,6 +69,9 @@
 		failed_cprs++
 	cpr_cooldown = world.time + 7 SECONDS
 
+/obj/item/cpr_dummy/item_action_slot_check(mob/user, slot)
+	return FALSE // Do not add our verbs to mobs
+
 /obj/item/cpr_dummy/verb/reset_counter()
 	set name = "Reset CPR Counter"
 	set category = "Object"

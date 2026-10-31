@@ -117,6 +117,8 @@
 	icon_state = "mousetraparmed"
 	armed = 1
 
+/obj/item/device/assembly/mousetrap/item_action_slot_check(mob/user, slot)
+	return FALSE // Do not add our verbs to mobs
 
 /obj/item/device/assembly/mousetrap/verb/hide_under()
 	set src in oview(1)

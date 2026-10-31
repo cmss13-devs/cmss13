@@ -92,6 +92,10 @@
 	fire_sprite_prefix = "Standing"
 	fire_sprite_sheet = 'icons/mob/humans/onmob/OnFire.dmi'
 
+	speech_sounds = list(MALE = "male_speak", FEMALE = "female_speak")
+	ask_sounds = list(MALE = "male_ask", FEMALE = "female_ask")
+	exclaim_sounds = list(MALE = "male_exclaim", FEMALE = "female_exclaim")
+	speech_chance = 100
 	burstscreams = list(MALE = "male_preburst", FEMALE = "female_preburst")
 
 /datum/species/human/handle_on_fire(humanoidmob)

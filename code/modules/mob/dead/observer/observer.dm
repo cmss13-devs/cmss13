@@ -34,6 +34,7 @@
 	stat = DEAD
 	mob_flags = KNOWS_TECHNOLOGY
 	flags_atom = FPRINT|NO_ZFALL
+	var/hears_voices = TRUE
 
 	/// If the observer is an admin, are they excluded from the xeno queue?
 	var/admin_larva_protection = TRUE // Enabled by default
@@ -90,6 +91,7 @@
 
 	// Ghosts don't move, they teleport via a special case in mob code
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_INHERENT)
+	give_action(src, /datum/action/human_action/toggle_voices)
 
 	var/turf/spawn_turf
 	if(ismob(body))

@@ -280,6 +280,10 @@
 
 
 // -- specific ability traits --
+/// Used by defender to engage crest stance.
+#define TRAIT_ABILITY_CREST "t_ability_crest"
+/// Used by defender and steel crest to engage fortify stance.
+#define TRAIT_ABILITY_FORTIFY "t_ability_fortify"
 /// Used by ravager pounce to charge at enemies.
 #define TRAIT_ABILITY_POUNCE_CHARGE "t_ability_pounce_charge"
 /// Used for empower windup before ravager get empowered.

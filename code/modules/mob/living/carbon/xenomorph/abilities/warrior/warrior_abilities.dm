@@ -85,8 +85,6 @@
 	var/duration = BULWARK_REFLECTIVE_TIME
 	/// reflective plates addtimer ID (for deletion)
 	var/reflective_shield_timer_id = TIMER_ID_NULL
-	/// Used to countdown BULWARK_REFLECTIVE_TIME.
-	var/reflective_start_time = -1
 	/// How much refund we want to get back? 1 is 1s used to 1s cooldown, 2 is 1s used 2s cooldown.
 	var/reflective_refund_multiplier = 2
 	/// Used in calculation, finalized number will be displayed as cooldown.

@@ -1,5 +1,5 @@
 /datum/unit_test/proc/check_fortify_reverted(mob/living/carbon/xenomorph/xeno_defender, base_deflection, base_explosive, base_size, base_stun, base_flags)
-	TEST_ASSERT(!xeno_defender.fortify, "fortify was not unset")
+	TEST_ASSERT(!HAS_TRAIT(xeno_defender, TRAIT_ABILITY_FORTIFY), "fortify was not unset")
 	TEST_ASSERT_EQUAL(xeno_defender.armor_deflection_buff, base_deflection, "armor deflection buff was not removed")
 	TEST_ASSERT_EQUAL(xeno_defender.armor_explosive_buff, base_explosive, "small explosive armor buff was not removed")
 	TEST_ASSERT_EQUAL(xeno_defender.mob_size, base_size, "mob size was not restored")
@@ -18,7 +18,7 @@
 
 	fortify_ability.use_ability()
 
-	TEST_ASSERT(xeno_defender.fortify, "fortify was not set when fortifying")
+	TEST_ASSERT(HAS_TRAIT(xeno_defender, TRAIT_ABILITY_FORTIFY), "fortify was not set when fortifying")
 	TEST_ASSERT_EQUAL(xeno_defender.armor_deflection_buff, base_deflection + 30, "armor deflection buff was not applied")
 	TEST_ASSERT_EQUAL(xeno_defender.armor_explosive_buff, base_explosive + 60, "explosive armor buff was not applied")
 	TEST_ASSERT_EQUAL(xeno_defender.mob_size, MOB_SIZE_IMMOBILE, "xeno did not become knockback immune")
@@ -50,10 +50,10 @@
 	var/datum/action/xeno_action/activable/fortify/fortify_ability = get_action(xeno_defender, /datum/action/xeno_action/activable/fortify)
 	TEST_ASSERT_NOTNULL(fortify_ability, "defender did not receive fortify action")
 
-	xeno_defender.crest_defense = TRUE
+	ADD_TRAIT(xeno_defender, TRAIT_ABILITY_CREST, TRAIT_SOURCE_ABILITY("crest"))
 	fortify_ability.use_ability()
 
-	TEST_ASSERT(!xeno_defender.fortify, "xeno fortified while its crest was lowered")
+	TEST_ASSERT(!HAS_TRAIT(xeno_defender, TRAIT_ABILITY_FORTIFY), "xeno fortified while its crest was lowered")
 
 /datum/unit_test/fortify_blocked_by_state/Run()
 	var/mob/living/carbon/xenomorph/defender/xeno_defender = allocate(/mob/living/carbon/xenomorph/defender)
@@ -63,7 +63,7 @@
 	xeno_defender.evolving = TRUE
 	fortify_ability.use_ability()
 
-	TEST_ASSERT(!xeno_defender.fortify, "performed fortify despite check_state()")
+	TEST_ASSERT(!HAS_TRAIT(xeno_defender, TRAIT_ABILITY_FORTIFY), "performed fortify despite check_state()")
 
 /datum/unit_test/fortify_cooldown/Run()
 	var/mob/living/carbon/xenomorph/defender/xeno_defender = allocate(/mob/living/carbon/xenomorph/defender)
@@ -73,7 +73,7 @@
 	fortify_ability.use_ability()
 	fortify_ability.use_ability()
 
-	TEST_ASSERT(xeno_defender.fortify, "xeno unfortified despite being on cooldown")
+	TEST_ASSERT(HAS_TRAIT(xeno_defender, TRAIT_ABILITY_FORTIFY), "xeno unfortified despite being on cooldown")
 
 /datum/unit_test/fortify_dropped_on_unconscious/Run()
 	var/mob/living/carbon/xenomorph/defender/xeno_defender = allocate(/mob/living/carbon/xenomorph/defender)
@@ -87,7 +87,7 @@
 	var/base_flags = xeno_defender.mob_flags
 
 	fortify_ability.use_ability()
-	TEST_ASSERT(xeno_defender.fortify, "defender did not fortify during setup")
+	TEST_ASSERT(HAS_TRAIT(xeno_defender, TRAIT_ABILITY_FORTIFY), "defender did not fortify during setup")
 
 	xeno_defender.set_stat(UNCONSCIOUS)
 

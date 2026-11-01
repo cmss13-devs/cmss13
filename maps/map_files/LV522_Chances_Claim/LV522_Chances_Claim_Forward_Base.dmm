@@ -1462,7 +1462,9 @@
 /turf/open/floor/almayer_hull,
 /area/forward_base/chances/engineering/lower)
 "aeI" = (
-/obj/structure/machinery/defenses/sentry/premade,
+/obj/structure/machinery/defenses/sentry/premade{
+	dir = 4
+	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/lv522/outdoors/forward_base_perimeter)
 "aeJ" = (
@@ -36043,7 +36045,9 @@
 /area/lv522/indoors/lone_buildings/engineering)
 "nJP" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/defenses/sentry/premade,
+/obj/structure/machinery/defenses/sentry/premade{
+	dir = 4
+	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/chances/engineering/lower/storage)
 "nJV" = (

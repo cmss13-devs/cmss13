@@ -53,7 +53,7 @@
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 
-	water_config = /datum/water_overlay_config/xeno/small
+	water_config = /datum/water_overlay_config/xeno/small/squatter
 	claw_type = CLAW_TYPE_SHARP
 
 	tackle_min = 2

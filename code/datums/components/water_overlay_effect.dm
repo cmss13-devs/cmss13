@@ -267,8 +267,11 @@
 			affected_living.appearance_flags |= KEEP_TOGETHER
 			affected_living.plane = FLOOR_PLANE
 
+			if(SSwater_overlays.is_coastline(effect_turf))
+				release_layer()
+
 			var/xeno_resting = (isxeno(affected_living) && (affected_living.resting || affected_living.body_position == LYING_DOWN))
-			if(SSwater_overlays.is_coastline(effect_turf) || xeno_resting)
+			if(xeno_resting && affected_living.water_config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_NONE && water_depth > affected_living.water_config.immerse_at_depth)
 				release_layer()
 
 			the_splash.update_wateroverlay(effect_turf, parent, water_depth, xeno_resting)

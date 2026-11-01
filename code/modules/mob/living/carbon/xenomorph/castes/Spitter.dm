@@ -56,7 +56,7 @@
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 
-	water_config = /datum/water_overlay_config/xeno/small
+	water_config = /datum/water_overlay_config/xeno/small/squatter
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_2/spitter.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_2/spitter.dmi'

@@ -228,7 +228,7 @@
 	user.affected_message(target,
 		SPAN_WARNING("Your [user.hand ? "left" : "right"] hand slips, bruising [target]'s [impacted_organ.name] and wounding the larva, who spills acid over your hand and into the surgical site!"),
 		SPAN_WARNING("[user]'s [user.hand ? "left" : "right"] hand slips, bruising your [impacted_organ.name] and wounding the larva, who spills acid over \his hand and into the surgical site!"),
-		SPAN_WARNING("[user]'s [user.hand ? "left" : "right"] hand slips and wounds the larva, who spills acid all over \his hand, [target]'s [impacted_organ.name] and into the surgical site!"))
+		SPAN_WARNING("[user]'s [user.hand ? "left" : "right"] hand slips, bruising [target]'s [impacted_organ.name] and wounding the larva, who spills acid over the doctor's hand and into the surgical site!"))
 
 	if(target.stat == CONSCIOUS)
 		to_chat(target, SPAN_HIGHDANGER("Your [impacted_organ.name] burns like hell in your [surgery.affected_limb.cavity]!"))

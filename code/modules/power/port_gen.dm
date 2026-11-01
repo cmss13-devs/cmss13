@@ -361,7 +361,6 @@ display floor(lastgen) and phorontank amount
 
 /obj/structure/machinery/power/power_generator/port_gen/proc/start_shake()
 	animate(src, pixel_x = 1, time = 1.5, loop = -1, easing = LINEAR_EASING)
-	animate(pixel_x = -1, time = 1.5)
 	animate(pixel_x = 0, time = 1.5)
 
 /obj/structure/machinery/power/power_generator/port_gen/proc/stop_shake()

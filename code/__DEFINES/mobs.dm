@@ -198,6 +198,7 @@
 #define MUTINY_LOYALIST (1<<8) // Allied with command.
 #define MUTINY_NONCOMBAT (1<<9) // NON COMBATANT.
 #define MOB_ABSTRACT (1<<10) //! This mob is a proxy for gameplay functions, it shouldn't be treated as a full-on mob for gameplay
+#define MOB_FLAYED (1<<11)	//set if the mob has been flayed
 
 //=================================================
 

@@ -100,7 +100,7 @@
 
 	return FIRE_MISSION_ALL_GOOD
 
-/datum/cas_fire_envelope/proc/execute_firemission(datum/cas_signal/signal, target_turf,dir, mission_id)
+/datum/cas_fire_envelope/proc/execute_firemission(datum/cas_signal/signal, target_turf,dir, mission_id, mob/user)
 	if(stat != FIRE_MISSION_STATE_IDLE)
 		mission_error = "Fire Mission is under way already."
 		return FIRE_MISSION_NOT_EXECUTABLE
@@ -118,7 +118,7 @@
 		return FIRE_MISSION_CODE_ERROR
 
 	//actual firemission code
-	execute_firemission_unsafe(signal, target_turf, dir, mission)
+	execute_firemission_unsafe(signal, target_turf, dir, mission, user)
 	return FIRE_MISSION_ALL_GOOD
 
 /datum/cas_fire_envelope/proc/firemission_status_message()
@@ -276,9 +276,9 @@
 				)
 
 /// Step 5: Actually executes the fire mission updating stat to FIRE_MISSION_STATE_FIRING and then FIRE_MISSION_STATE_OFF_TARGET
-/datum/cas_fire_envelope/proc/open_fire(atom/target_turf,datum/cas_fire_mission/mission,dir)
+/datum/cas_fire_envelope/proc/open_fire(atom/target_turf,datum/cas_fire_mission/mission,dir, mob/user)
 	stat = FIRE_MISSION_STATE_FIRING
-	mission.execute_firemission(linked_console, target_turf, dir, fire_length, step_delay, src)
+	mission.execute_firemission(linked_console, target_turf, dir, fire_length, step_delay, src, user)
 	stat = FIRE_MISSION_STATE_OFF_TARGET
 
 /// Step 6: Sets the fire mission stat to FIRE_MISSION_STATE_COOLDOWN
@@ -290,7 +290,7 @@
 	stat = FIRE_MISSION_STATE_IDLE
 
 
-/datum/cas_fire_envelope/proc/execute_firemission_unsafe(datum/cas_signal/signal, turf/target_turf, dir, datum/cas_fire_mission/mission)
+/datum/cas_fire_envelope/proc/execute_firemission_unsafe(datum/cas_signal/signal, turf/target_turf, dir, datum/cas_fire_mission/mission, mob/user)
 	stat = FIRE_MISSION_STATE_IN_TRANSIT
 	if(!target_turf)
 		stat = FIRE_MISSION_STATE_IDLE
@@ -300,7 +300,7 @@
 		stat = FIRE_MISSION_STATE_IDLE
 		mission_error = "Target is off bounds or obstructed."
 		return
-	to_chat(usr, SPAN_ALERT("Fire Mission underway!"))
+	to_chat(user, SPAN_ALERT("Fire Mission underway!"))
 
 	var/obj/effect/firemission_effect = new(target_turf)
 
@@ -311,8 +311,8 @@
 	QDEL_IN(firemission_effect, 12 SECONDS)
 
 
-	notify_ghosts(header = "CAS Fire Mission", message = "[usr ? usr : "Someone"] is launching Fire Mission '[mission.name]' at [get_area(target_turf)].", source = firemission_effect)
-	msg_admin_niche("[usr ? key_name(usr) : "Someone"] is launching Fire Mission '[mission.name]' at ([target_turf.x],[target_turf.y],[target_turf.z])", target_turf)
+	notify_ghosts(header = "CAS Fire Mission", message = "[user ? user : "Someone"] is launching Fire Mission '[mission.name]' at [get_area(target_turf)].", source = firemission_effect)
+	msg_admin_niche("[user ? key_name(user) : "Someone"] is launching Fire Mission '[mission.name]' at ([target_turf.x],[target_turf.y],[target_turf.z])", target_turf)
 
 	SScmtv.spectate_event("Firemission Inbound", target_turf, when_start = execution_start - 1 SECONDS)
 
@@ -320,7 +320,7 @@
 	addtimer(CALLBACK(src, PROC_REF(chat_warning), target_turf, 15, 1), first_warning)
 	addtimer(CALLBACK(src, PROC_REF(chat_warning), target_turf, 15, 2), second_warning)
 	addtimer(CALLBACK(src, PROC_REF(chat_warning), target_turf, 10, 3), third_warning)
-	addtimer(CALLBACK(src, PROC_REF(open_fire), target_turf, mission,dir), execution_start)
+	addtimer(CALLBACK(src, PROC_REF(open_fire), target_turf, mission,dir, user), execution_start)
 	addtimer(CALLBACK(src, PROC_REF(flyoff)), flyoff_period)
 	addtimer(CALLBACK(src, PROC_REF(end_cooldown)), cooldown_period)
 

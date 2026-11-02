@@ -31,7 +31,7 @@
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(register_turf_signals))
 	register_turf_signals()
 
-	if(icon == 'icons/obj/structures/tents_deployed_classic.dmi')
+	if(icon == /obj/structure/tent::icon)
 		switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 			if("jungle")
 				icon = 'icons/obj/structures/tents_deployed_jungle.dmi'

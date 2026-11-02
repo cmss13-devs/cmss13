@@ -1114,6 +1114,20 @@
 					name = "marine leader " + name
 					keys += new /obj/item/device/encryptionkey/squadlead(src)
 					volume = RADIO_VOLUME_CRITICAL
+					inbuilt_tracking_options = list(
+						"Squad Leader" = TRACKER_SL,
+						"Fireteam Leader" = TRACKER_FTL,
+						"Landing Zone" = TRACKER_LZ,
+						"Commanding Officer" = TRACKER_CO,
+						"Executive Officer" = TRACKER_XO,
+						"Alpha SL" = TRACKER_ASL,
+						"Bravo SL" = TRACKER_BSL,
+						"Charlie SL" = TRACKER_CSL,
+						"Delta SL" = TRACKER_DSL,
+						"Echo SL" = TRACKER_ESL,
+						"Foxtrot SL" = TRACKER_FSL,
+						"Intel SL" = TRACKER_ISL
+					)
 				if(JOB_SQUAD_MEDIC)
 					name = "marine hospital corpsman " + name
 					keys += new /obj/item/device/encryptionkey/med(src)

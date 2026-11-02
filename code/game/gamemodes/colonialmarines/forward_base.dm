@@ -13,6 +13,7 @@
 	max_players = 85
 	var/hive_pylon_timer
 	var/hive_pylons_charged = FALSE
+	var/base_empty_since
 
 /datum/game_mode/colonialmarines/forward_base/proc/update_hive_surge(datum/hive_status/hive)
 	if(hive.hivenumber != XENO_HIVE_NORMAL)
@@ -53,7 +54,7 @@
 
 /datum/game_mode/colonialmarines/forward_base/pre_setup()
 	. = ..()
-	SSradio.ground_to_reserved = TRUE
+	SSradio.include_reserved_in_available = TRUE
 	SSradio.update_cache()
 	for(var/obj/structure/machinery/computer/shuttle/dropship/flight/console in GLOB.machines)
 		if(console.linked_lz && istype(get_area(console), /area/forward_base))
@@ -100,12 +101,15 @@
 	new /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/forward_base(target)
 
 /datum/game_mode/colonialmarines/forward_base/check_win()
-	if(SSticker.current_state != GAME_STATE_PLAYING || round_started > 0 || round_finished)
+	if(SSticker.current_state != GAME_STATE_PLAYING || round_finished)
 		return
 	if(ROUND_TIME < 10 MINUTES)
 		return
 	if(!count_marines(SSmapping.levels_by_trait(ZTRAIT_GROUND)))
 		round_finished = MODE_INFESTATION_X_MAJOR
+		return
+	. = ..()
+	if(round_finished)
 		return
 	var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	if(!main_hive.see_humans_on_tacmap)
@@ -120,13 +124,14 @@
 			main_hive.tacmap_requires_queen_ovi = FALSE
 			SEND_SIGNAL(main_hive, COMSIG_XENO_REVEAL_TACMAP)
 			xeno_announcement("There is only a handful of tallhosts left, they are now visible on our hive mind map.", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
-	if(main_hive.see_humans_on_tacmap)
-		for(var/mob/living/carbon/human/human as anything in GLOB.alive_human_list)
-			if(isturf(human.loc) && !istype(human.buckled, /obj/structure/bed/nest) && istype(get_area(human), /area/forward_base))
-				return ..()
-		round_finished = MODE_INFESTATION_X_MAJOR
-		return
-	return ..()
+	for(var/mob/living/carbon/human/human as anything in GLOB.human_mob_list)
+		if(human.stat != DEAD && istype(get_area(human), /area/forward_base))
+			base_empty_since = null
+			return
+	if(isnull(base_empty_since))
+		base_empty_since = world.time
+	if(world.time >= base_empty_since + 5 MINUTES)
+		round_finished = MODE_INFESTATION_X_MINOR
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/forward_base
 	battery_duration = FORWARD_BASE_TURRET_BATTERY_DURATION

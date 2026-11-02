@@ -115,6 +115,15 @@
 	if(!client?.prefs.update_slot(player_rank.title))
 		return FALSE
 
+	if(istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base))
+		var/xenos_in_bunker = 0
+		for(var/mob/living/carbon/xenomorph/xeno as anything in GLOB.living_xeno_list)
+			if(xeno.stat == DEAD || (FACTION_MARINE in xeno.iff_tag?.faction_groups) || !istype(get_area(xeno), /area/forward_base))
+				continue
+			if(xeno.tier >= 3 || ++xenos_in_bunker > 2)
+				to_chat(usr, SPAN_WARNING("Latejoining is disabled while the bunker is under heavy attack."))
+				return FALSE
+
 	if(!GLOB.RoleAuthority.assign_role(src, player_rank, latejoin = TRUE))
 		to_chat(src, SPAN_WARNING("[rank] is not available. Please try another."))
 		return FALSE

@@ -301,7 +301,8 @@ SUBSYSTEM_DEF(radio)
 	//Keeping a list of tcomm machines to see which Z level has comms
 	var/list/tcomm_machines_ground = list()
 	var/list/tcomm_machines_almayer = list()
-	var/ground_to_reserved = FALSE
+	/// Whether groundside communications include reserved Zs in get_available_tcomm_zs.
+	var/include_reserved_in_available = FALSE
 
 	/// The last cached result for get_available_tcomm_zs(COMM_FREQ)
 	var/list/last_command_zs = list()
@@ -427,7 +428,7 @@ SUBSYSTEM_DEF(radio)
 	for(var/obj/structure/machinery/telecomms/T as anything in tcomm_machines_ground)
 		if((UNIVERSAL_FREQ in T.freq_listening) || (frequency in T.freq_listening))
 			target_zs += SSmapping.levels_by_trait(ZTRAIT_GROUND)
-			if(ground_to_reserved)
+			if(include_reserved_in_available)
 				target_zs += SSmapping.levels_by_trait(ZTRAIT_RESERVED)
 			break
 	for(var/obj/structure/machinery/telecomms/T as anything in tcomm_machines_almayer)

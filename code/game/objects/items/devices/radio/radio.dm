@@ -155,7 +155,7 @@
 			. = TRUE
 		if("channel")
 			var/channel = params["channel"]
-			if(channel == "Bunker" && istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base))
+			if(channel == RADIO_CHANNEL_BUNKER && istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base))
 				channel = RADIO_CHANNEL_ALMAYER
 			if(channel in channels)
 				if(channels[channel] & FREQ_LISTENING)

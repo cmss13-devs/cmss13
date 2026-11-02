@@ -2700,6 +2700,16 @@
 	},
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
+"aib" = (
+/obj/structure/machinery/door_control/cl/office/lobby_door{
+	pixel_x = 24
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/antre/plating/corner_dir/south_east,
+/area/forward_base/chances/hallways/lower_south)
 "aid" = (
 /obj/effect/landmark/late_join/delta,
 /obj/effect/landmark/start/marine/smartgunner/delta,
@@ -68661,7 +68671,7 @@ qsp
 gnc
 kvp
 axs
-veO
+aib
 afS
 rAu
 prY

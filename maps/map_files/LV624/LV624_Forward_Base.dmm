@@ -2077,13 +2077,10 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/containers)
 "ahP" = (
-/obj/structure/barricade/metal/plasteel{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/turf/closed/wall/almayer/outer/internal,
 /area/forward_base/lv624/hallways/pillbox/southeast)
 "ahQ" = (
 /obj/structure/surface/table/reinforced{
@@ -2407,10 +2404,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/antre/plating/direction_west/west_south,
 /area/forward_base/lv624/hallways/south)
-"aiY" = (
-/obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/colony/west_tcomms_road)
 "aiZ" = (
 /turf/open/floor/almayer,
 /area/forward_base/lv624/hallways/east)
@@ -2465,12 +2458,6 @@
 	},
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/ground/caves/sand_temple)
-"ajj" = (
-/obj/structure/barricade/metal/plasteel{
-	dir = 1
-	},
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/forward_base/lv624/hallways/pillbox/southeast)
 "ajk" = (
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass1,
@@ -2503,9 +2490,6 @@
 	},
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/forward_base/lv624/research)
-"ajo" = (
-/turf/open/gm/grass/grass2,
-/area/lv624/ground/colony/west_tcomms_road)
 "ajp" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirt,
@@ -2645,10 +2629,6 @@
 "ajO" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
-/area/lv624/ground/colony/west_tcomms_road)
-"ajP" = (
-/obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass/grass2,
 /area/lv624/ground/colony/west_tcomms_road)
 "ajQ" = (
 /obj/structure/platform{
@@ -24590,9 +24570,6 @@
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
-"efp" = (
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/colony/west_tcomms_road)
 "eft" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -43983,7 +43960,7 @@ buf
 buf
 buf
 buf
-bfN
+bcZ
 bgm
 aIX
 bfN
@@ -44207,7 +44184,7 @@ gDu
 gDu
 gDu
 gDu
-bfN
+bcZ
 aJx
 aJm
 bfN
@@ -44427,11 +44404,11 @@ rwK
 rwK
 gDu
 gDu
-ajO
-ajo
-ajo
-aiY
-ajj
+gDu
+gDu
+gDu
+gDu
+bcZ
 aiW
 aJm
 aIV
@@ -44650,12 +44627,12 @@ gDu
 gDu
 gDu
 gDu
-ajP
-ajP
-ajk
-efp
-aiY
-bfN
+gDu
+gDu
+gDu
+gDu
+gDu
+bcZ
 bbA
 bge
 ahU
@@ -44879,12 +44856,12 @@ ajk
 ajO
 gDu
 gDu
-bfN
-bfN
+bcZ
+bcZ
 ahP
-bfN
-bfN
-aIb
+bcZ
+bcZ
+aqg
 bfJ
 bfJ
 bcY

@@ -98,7 +98,8 @@
 	marine_announcement("WARNING. PERIMETER DECONTAMINATION ACTIVE. C10-W weedkiller is being dispersed around the base perimiter.", "BASE PERIMETER ALERT", 'sound/effects/rocketpod_fire.ogg')
 
 /datum/game_mode/colonialmarines/forward_base/spawn_lz_sentry(turf/target, list/structures_to_break)
-	new /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/forward_base(target)
+	var/obj/structure/machinery/sentry_holder/landing_zone/forward_base/holder = new(target)
+	holder.deploy_sentry()
 
 /datum/game_mode/colonialmarines/forward_base/check_win()
 	if(SSticker.current_state != GAME_STATE_PLAYING || round_finished)
@@ -135,6 +136,9 @@
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/forward_base
 	battery_duration = FORWARD_BASE_TURRET_BATTERY_DURATION
+
+/obj/structure/machinery/sentry_holder/landing_zone/forward_base
+	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/forward_base
 
 #undef FORWARD_BASE_FOG_DURATION
 #undef FORWARD_BASE_FOG_WARNING

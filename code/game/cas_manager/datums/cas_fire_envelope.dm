@@ -101,6 +101,9 @@
 	return FIRE_MISSION_ALL_GOOD
 
 /datum/cas_fire_envelope/proc/execute_firemission(datum/cas_signal/signal, target_turf,dir, mission_id, mob/user)
+	if(signal?.direct_fire_only)
+		mission_error = "Moving laser marks are only available for direct fire."
+		return FIRE_MISSION_NOT_EXECUTABLE
 	if(stat != FIRE_MISSION_STATE_IDLE)
 		mission_error = "Fire Mission is under way already."
 		return FIRE_MISSION_NOT_EXECUTABLE
@@ -139,6 +142,9 @@
 			return "Returning to Sub-Orbital"
 
 /datum/cas_fire_envelope/proc/change_target_loc(datum/cas_signal/marker)
+	if(marker?.direct_fire_only)
+		mission_error = "Laser acquired targets are only available for direct fire."
+		return FALSE
 	if(!marker)
 		recorded_loc = null
 		return TRUE

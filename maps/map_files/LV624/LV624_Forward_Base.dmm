@@ -3594,6 +3594,10 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/floor/plating/warnplate/northwest,
 /area/lv624/ground/river/west_river)
+"amY" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/plating/platebot,
+/area/lv624/lazarus/engineering)
 "amZ" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/effect/landmark/lv624/fog_blocker,
@@ -3605,6 +3609,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/forward_base/lv624/hallways/pillbox/northwest)
+"anb" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/wood,
+/area/lv624/lazarus/hop)
 "anc" = (
 /obj/structure/flora/jungle/vines/light_1,
 /obj/effect/landmark/lv624/fog_blocker,
@@ -4440,6 +4448,10 @@
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/whiteblue/north,
 /area/lv624/lazarus/medbay)
+"apB" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/barber/west,
+/area/lv624/lazarus/kitchen)
 "apC" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -4479,6 +4491,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer/cargo_arrow/west,
 /area/forward_base/lv624/reqs)
+"apG" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/white,
+/area/lv624/lazarus/research)
 "apH" = (
 /obj/item/tool/crowbar,
 /turf/open/floor/green/northwest,
@@ -7039,10 +7055,6 @@
 /obj/structure/closet/cabinet,
 /turf/open/floor/wood/wood_broken,
 /area/lv624/ground/caves/north_central_caves)
-"axp" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/wood,
-/area/lv624/ground/jungle/west_jungle/ceiling)
 "axq" = (
 /obj/structure/largecrate/black_market/confiscated_weaponry,
 /obj/structure/platform/metal/almayer_smooth/west,
@@ -11691,14 +11703,6 @@
 /obj/effect/landmark/xeno_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
-"aLs" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/plating/platebot,
-/area/lv624/lazarus/robotics)
-"aLt" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/vault2,
-/area/lv624/lazarus/robotics)
 "aLu" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clothing/suit/chef/classic{
@@ -21683,11 +21687,6 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/vault2/west,
 /area/lv624/lazarus/robotics)
-"boo" = (
-/obj/effect/landmark/survivor_spawner,
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/floor/plating/platebot,
-/area/lv624/lazarus/robotics)
 "bop" = (
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/gm/dirt,
@@ -23250,10 +23249,6 @@
 	},
 /turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
-"bup" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz2)
 "buq" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass/grass1,
@@ -39683,7 +39678,7 @@ boq
 bop
 aFm
 aZn
-axp
+auf
 auf
 aFm
 bop
@@ -44632,7 +44627,7 @@ bun
 aCi
 aCi
 aCi
-bup
+aCi
 aCi
 aCi
 buq
@@ -45068,12 +45063,12 @@ axf
 axA
 bof
 ayF
-aLt
+axj
 axi
 axj
 ayF
 axe
-aLs
+axe
 aCk
 bin
 aCi
@@ -46857,7 +46852,7 @@ bol
 boB
 ado
 bof
-boo
+bof
 bof
 boh
 boa
@@ -50889,7 +50884,7 @@ atp
 awn
 awH
 avr
-atp
+apG
 atp
 ayK
 atp
@@ -51149,7 +51144,7 @@ aSe
 aWE
 aXn
 aQn
-aQn
+aON
 oiR
 aZK
 qNz
@@ -53167,7 +53162,7 @@ aSi
 mkU
 lud
 aWD
-aUq
+amY
 aTN
 aTM
 fMa
@@ -58765,7 +58760,7 @@ aQJ
 aRD
 aSy
 aZB
-aSA
+anb
 aTY
 aUD
 aVo
@@ -62344,7 +62339,7 @@ aNl
 aNZ
 aNZ
 aNZ
-aNZ
+apB
 aQO
 aNk
 aNk

@@ -195,6 +195,11 @@
 	icon_state = "vulture_scope_overlay_spotter"
 	should_resize = FALSE
 
+/atom/movable/screen/fullscreen/tactical_designator
+	icon_state = "rangefinder_scope_overlay"
+	layer = FULLSCREEN_VULTURE_SCOPE_LAYER
+	should_resize = TRUE
+
 //Weather overlays//
 
 /atom/movable/screen/fullscreen/weather

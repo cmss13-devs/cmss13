@@ -184,6 +184,7 @@
 	var/flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 	///Only guns of the same category can be fired together while dualwielding.
 	var/gun_category
+	var/rail_light_stowed = FALSE // This is set to true when the weapon is in the suit storage slot or back slot to dim the attached rail flashlight
 
 	///the default gun icon_state. change to reskin the gun
 	var/base_gun_icon
@@ -546,6 +547,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
 
 	if(slot in list(WEAR_L_HAND, WEAR_R_HAND))
+		dim_rail_light(FALSE)
 		if(user.get_active_hand() == src)
 			set_gun_user(user)
 		if(HAS_TRAIT_FROM_ONLY(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user)))
@@ -553,6 +555,14 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			REMOVE_TRAIT(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user))
 	else
 		set_gun_user(null)
+
+		if(slot in list(WEAR_J_STORE, WEAR_BACK)) //When you stow your weapon on your back or in the suit storage slot, you're not shoving it up your ass. The light should stay on and keep illuminating (unless you're putting a shotgun in a scabbard)
+			dim_rail_light(TRUE)
+			if(HAS_TRAIT_FROM_ONLY(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user)))
+				REMOVE_TRAIT(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user))
+			return ..()
+
+		dim_rail_light(FALSE)
 		// we force the light off and turn it back on again when the gun is equipped. Otherwise bad things happen.
 		if(light_sources())
 			force_light(on = FALSE)
@@ -560,7 +570,30 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	return ..()
 
+/obj/item/weapon/gun/proc/dim_rail_light(weapon_stowed)
+	if(rail_light_stowed == weapon_stowed)
+		return
+
+	var/obj/item/attachable/flashlight/dimmed_flashlight
+	for(var/attachment_slot in attachments)
+		var/obj/item/attachable/flashlight/attached_flashlight = attachments[attachment_slot]
+		if(istype(attached_flashlight) && attached_flashlight.dim_light)
+			dimmed_flashlight = attached_flashlight
+			break
+
+	if(dimmed_flashlight?.light_on)
+		var/light_range_dim = dimmed_flashlight.light_mod * (1 - DIMMED_RAIL_LIGHT_MULT)
+		var/light_power_dim = light_range_dim * 0.5
+		if(weapon_stowed)
+			set_light_range(light_range - light_range_dim)
+			set_light_power(light_power - light_power_dim)
+		else
+			set_light_range(light_range + light_range_dim)
+			set_light_power(light_power + light_power_dim)
+	rail_light_stowed = weapon_stowed
+
 /obj/item/weapon/gun/dropped(mob/user)
+	dim_rail_light(FALSE)
 	. = ..()
 
 	if(gun_timer_id) // just in case too

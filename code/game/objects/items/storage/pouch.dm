@@ -60,7 +60,6 @@
 		/obj/item/storage/firstaid,
 		/obj/item/storage/toolkit,
 		/obj/item/storage/bible,
-		/obj/item/storage/box,
 	)
 	storage_slots = null
 	max_storage_space = 2

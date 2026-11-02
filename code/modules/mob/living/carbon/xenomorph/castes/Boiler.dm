@@ -182,7 +182,7 @@
 			if(!neuro_effect)
 				neuro_effect = new(carbon_target, owner)
 			neuro_effect.duration += 20
-			to_chat(carbon_target,SPAN_HIGHDANGER("You are injected with something from [stabbing_xeno]'s tailstab!"))
+			to_chat(carbon_target,SPAN_HIGHDANGER("You are injected with something from [stabbing_xeno]'s tail stab!"))
 		else
 			CRASH("Globber has unknown ammo [stabbing_xeno.ammo]! Oh no!")
 		return TRUE
@@ -194,7 +194,7 @@
 		return FALSE
 
 	if(!acid_level)
-		to_chat(src, SPAN_XENONOTICE("You can't secrete any acid into [target]."))
+		to_chat(src, SPAN_XENONOTICE("We can't secrete any acid into [target]."))
 		return FALSE
 
 	var/trap_acid_level = 0
@@ -206,10 +206,10 @@
 		return FALSE
 
 	if(!check_plasma(ACID_COST_BOILER))
-		to_chat(src, SPAN_XENOWARNING("You must produce more plasma before doing this."))
+		to_chat(src, SPAN_XENOWARNING("We must produce more plasma before doing this."))
 		return FALSE
 
-	to_chat(src, SPAN_XENONOTICE("You begin charging the resin trap with acid gas."))
+	to_chat(src, SPAN_XENONOTICE("We begin charging the resin trap with acid gas."))
 	xeno_attack_delay(src)
 	if(!do_after(src, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
 		return FALSE
@@ -235,7 +235,7 @@
 
 	playsound(target, 'sound/effects/refill.ogg', 25, 1)
 	visible_message(SPAN_XENOWARNING("[src] pressurises the resin trap with acid gas!"),
-	SPAN_XENOWARNING("You pressurise the resin trap with acid gas!"), null, 5)
+	SPAN_XENOWARNING("We pressurise the resin trap with acid gas!"), null, 5)
 	return TRUE
 
 #undef ACID_COST_BOILER

@@ -12,6 +12,8 @@
 	var/fire_mission_delay = 4
 	/// Time to impact in deciseconds
 	var/travelling_time = 100
+	/// Tracks an active tactical laser mark during direct fire transit.
+	var/laser_guided = FALSE
 	/// Type of dropship equipment that accepts this type of ammo.
 	var/obj/structure/dropship_equipment/equipment_type
 	/// Ammunition count remaining
@@ -103,6 +105,8 @@
 /obj/structure/ship_ammo/get_examine_text(mob/user)
 	. = ..()
 	. += "Moving this will require some sort of lifter."
+	if(laser_guided)
+		. += SPAN_NOTICE("IR Laser guided.")
 
 //what to show to the user that examines the weapon we're loaded on.
 /obj/structure/ship_ammo/proc/show_loaded_desc(mob/user)
@@ -289,6 +293,7 @@
 	max_inaccuracy = 5
 	point_cost = 0
 	fire_mission_delay = 4
+	laser_guided = TRUE
 
 /obj/structure/ship_ammo/rocket/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	qdel(src)

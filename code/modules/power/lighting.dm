@@ -168,7 +168,8 @@
 
 /obj/structure/machinery/light/almayer
 	name = "almayer light fixture"
-	light_power = 0.8
+	light_power = 0.9
+	light_range = 16
 
 /obj/structure/machinery/light/containment/attack_alien(mob/living/carbon/xenomorph/M)
 	return
@@ -184,7 +185,8 @@
 
 /obj/structure/machinery/light/blue/almayer
 	name = "almayer light fixture"
-	light_power = 0.8
+	light_power = 0.9
+	light_range = 16
 
 /obj/structure/machinery/light/red
 	icon_state = "rtube1"
@@ -195,6 +197,7 @@
 /obj/structure/machinery/light/red/almayer
 	name = "almayer light fixture"
 	light_power = 0.8
+	light_range = 16
 
 // the smaller bulb light fixture
 
@@ -209,6 +212,7 @@
 /obj/structure/machinery/light/small/almayer
 	name = "almayer light fixture"
 	light_power = 0.8
+	light_range = 8
 
 /obj/structure/machinery/light/small/blue
 	icon_state = "bbulb1"
@@ -222,6 +226,7 @@
 /obj/structure/machinery/light/small/blue/almayer
 	name = "almayer light fixture"
 	light_power = 0.8
+	light_range = 8
 
 /obj/structure/machinery/light/double
 	icon_state = "ptube1"

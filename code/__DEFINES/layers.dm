@@ -233,6 +233,7 @@
 
 #define OPEN_SPACE_PLANE_END -20
 
+#define OPEN_SPACE_PLANE_FIRST -10 // I am ignoring below for good reason
 // Do no put anything between these two, adjust more z level support as needed
 #define OPEN_SPACE_PLANE_START -9
 

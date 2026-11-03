@@ -61,3 +61,6 @@
 
 ///from /mob/living/proc/set_lying_angle
 #define COMSIG_LIVING_SET_LYING_ANGLE "living_set_lying_angle"
+
+//from /mob/living/proc/uncertain_danger_on_turf
+#define COMSIG_LIVING_IN_TURF_DANGER "living_in_turf_danger"

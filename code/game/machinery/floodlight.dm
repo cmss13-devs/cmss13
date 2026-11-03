@@ -87,7 +87,7 @@
 	density = FALSE
 
 /obj/structure/machinery/floodlight/landing/floor/almayer
-	light_power = 0.8
+	light_power = 0.9
 
 /obj/structure/machinery/floodlight/landing/dropship_airlock
 	light_power = 2

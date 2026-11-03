@@ -37,6 +37,7 @@
 #define DROPSHIP_AIRLOCK_BOUNDS locate(DROPSHIP_AIRLOCK_FROM_DOCKPORT_TO_EFFECTS_TILE, z), locate(DROPSHIP_AIRLOCK_FROM_DOCKPORT_TO_NE_BOUND, z) // for readability
 #define DROPSHIP_AIRLOCK_GO_DOWN "down" // automated process command
 #define DROPSHIP_AIRLOCK_GO_UP "up" // automated process command
+#define DROPSHIP_AIRLOCK_BTU 8 // base transition unit
 
 //Bitflags for checking which automated docks are airlocks
 #define DROPSHIP_HANGAR_DOCK_IS_AIRLOCK (1<<0)

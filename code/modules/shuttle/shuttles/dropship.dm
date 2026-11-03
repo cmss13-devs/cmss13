@@ -70,6 +70,15 @@
 	UnregisterSignal(src, COMSIG_DROPSHIP_REMOVE_EQUIPMENT)
 	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
 
+/obj/docking_port/mobile/marine_dropship/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
+	. = ..()
+	if(is_reserved_level(src.z))
+		for(var/area/our_areas in shuttle_areas)
+			our_areas.set_base_lighting(our_areas.base_lighting_color, 255)
+	else
+		for(var/area/our_areas in shuttle_areas)
+			our_areas.set_base_lighting(our_areas.base_lighting_color, 0)
+
 /obj/docking_port/mobile/marine_dropship/proc/send_for_flyby()
 	in_flyby = TRUE
 	var/obj/docking_port/stationary/docked_at = get_docked()

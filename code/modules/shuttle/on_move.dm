@@ -52,7 +52,7 @@ All ShuttleMove procs go here
 				return
 			if(istype(thing, /obj/docking_port))
 				return
-			if(istype(thing, /obj/effect/hangar_airlock))
+			if(istype(thing, /obj/effect/dropship_airlock))
 				return
 			if(istype(thing, /obj/structure/machinery/camera))
 				return

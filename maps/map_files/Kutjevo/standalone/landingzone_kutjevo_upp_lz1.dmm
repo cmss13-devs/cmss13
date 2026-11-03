@@ -207,9 +207,7 @@
 /area/event/deep_underground/dynamic)
 "fB" = (
 /obj/structure/surface/rack,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/item/ammo_magazine/m2c/t37,
 /obj/item/ammo_magazine/m2c/t37,
 /obj/item/ammo_magazine/m2c/t37,
@@ -313,9 +311,7 @@
 /area/event/deep_underground/dynamic)
 "iW" = (
 /obj/structure/surface/rack,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/item/ammo_magazine/m2c/t37,
 /obj/item/ammo_magazine/m2c/t37,
 /turf/open/floor/kutjevo/tan/grey_inner_edge,
@@ -324,9 +320,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/tan/grey_inner_edge,
 /area/event/deep_underground/dynamic)
 "je" = (
@@ -540,9 +534,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/kutjevo/tan/alt_edge/east,
 /area/event/deep_underground/dynamic)
 "rC" = (
@@ -673,16 +665,14 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_northeast)
 "wi" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/kutjevo/tan/alt_edge,
 /area/event/deep_underground/dynamic)
 "wE" = (
 /turf/open/floor/kutjevo/colors/orange/edge,
 /area/event/deep_underground/dynamic)
 "wY" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/kutjevo/tan/grey_inner_edge/east,
 /area/event/deep_underground/dynamic)
 "xm" = (
@@ -1006,9 +996,7 @@
 /turf/open/floor/plating,
 /area/event/deep_underground/dynamic)
 "Mv" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/kutjevo/colors/orange/inner_corner/east,
 /area/event/deep_underground/dynamic)
 "MF" = (
@@ -1080,9 +1068,7 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/event/deep_underground/dynamic)
 "Pr" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/tan/alt_edge/north,
 /area/event/deep_underground/dynamic)
 "Pv" = (
@@ -1138,7 +1124,7 @@
 	pixel_x = 4;
 	pixel_y = 8
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/kutjevo/tan/grey_inner_edge/east,
 /area/event/deep_underground/dynamic)
 "QI" = (
@@ -1353,9 +1339,7 @@
 	},
 /obj/structure/surface/table/almayer,
 /obj/item/device/flashlight/lamp,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/kutjevo/tan/grey_inner_edge/north,
 /area/event/deep_underground/dynamic)
 "Wy" = (

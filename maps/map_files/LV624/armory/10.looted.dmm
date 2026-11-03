@@ -53,7 +53,7 @@
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/security)
 "k" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/effect/landmark/crap_item,
 /turf/open/floor/platingdmg3,
 /area/lv624/lazarus/main_hall)
@@ -80,9 +80,7 @@
 /turf/open/floor/platingdmg3,
 /area/lv624/lazarus/armory)
 "r" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/red/northeast,
 /area/lv624/lazarus/security)
 "s" = (
@@ -115,9 +113,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/east_central_jungle)
 "A" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/item/stack/sheet/metal,
 /turf/open/floor/cult,
 /area/lv624/lazarus/armory)

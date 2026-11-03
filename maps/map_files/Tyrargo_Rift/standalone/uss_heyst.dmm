@@ -2105,9 +2105,7 @@
 /turf/open/floor/plating/platingdmg2,
 /area/tyrargo/indoors/bunker/central_south)
 "nj" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -3171,9 +3169,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/platform/metal/stair_cut/strata_left,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor/almayer_hull,
@@ -5135,7 +5131,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/structure/platform/metal/strata,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor/almayer_hull,

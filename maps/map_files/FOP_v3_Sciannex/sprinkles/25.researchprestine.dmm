@@ -236,8 +236,7 @@
 /turf/open/floor/prison/whitepurple/southeast,
 /area/template_noop)
 "we" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /turf/open/floor/prison/darkpurplefull2,
@@ -466,8 +465,7 @@
 /area/template_noop)
 "Ns" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /obj/item/restraint/handcuffs{

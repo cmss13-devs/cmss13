@@ -38,9 +38,7 @@
 /obj/item/bedsheet/brown{
 	pixel_y = 13
 	},
-/obj/structure/machinery/light/small/built{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/no_fixture/north,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/clf_station)
 "av" = (
@@ -87,9 +85,7 @@
 /obj/structure/toilet{
 	pixel_y = 16
 	},
-/obj/structure/machinery/light/small/built{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/no_fixture/west,
 /turf/open/floor/wood/wood_broken6,
 /area/adminlevel/ert_station/clf_station)
 "by" = (
@@ -112,9 +108,7 @@
 /area/adminlevel/ert_station/clf_station)
 "ce" = (
 /obj/item/trash/chips,
-/obj/structure/machinery/light/small/built{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/no_fixture/north,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "cx" = (
@@ -180,7 +174,7 @@
 /area/adminlevel/ert_station/clf_station)
 "fd" = (
 /obj/structure/closet/secure_closet/freezer/fridge/groceries,
-/obj/structure/machinery/light/small/built,
+/obj/structure/machinery/light/blub/no_fixture,
 /turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
 "fx" = (
@@ -230,9 +224,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "hr" = (
-/obj/structure/machinery/light/small/built{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/no_fixture/east,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "hE" = (
@@ -274,9 +266,7 @@
 	pixel_y = 13
 	},
 /obj/item/weapon/gun/pistol/clfpistol,
-/obj/structure/machinery/light/small/built{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/no_fixture/north,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/clf_station)
 "hO" = (
@@ -449,9 +439,7 @@
 /area/adminlevel/ert_station/clf_station)
 "ma" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/structure/machinery/light/small/built{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/no_fixture/north,
 /obj/structure/machinery/faxmachine/clf,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
@@ -526,9 +514,7 @@
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
-/obj/structure/machinery/light/small/built{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/no_fixture/north,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "oe" = (
@@ -569,7 +555,7 @@
 /area/adminlevel/ert_station/clf_station)
 "oy" = (
 /obj/item/trash/candy,
-/obj/structure/machinery/light/small/built,
+/obj/structure/machinery/light/blub/no_fixture,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "oI" = (
@@ -729,7 +715,7 @@
 /obj/item/storage/belt/medical/full/with_suture_and_graft{
 	pixel_y = 10
 	},
-/obj/structure/machinery/light/small/built,
+/obj/structure/machinery/light/blub/no_fixture,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "tG" = (
@@ -770,9 +756,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "up" = (
-/obj/structure/machinery/light/small/built{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/no_fixture/north,
 /turf/open/floor/wood/wood_broken3,
 /area/adminlevel/ert_station/clf_station)
 "uO" = (
@@ -966,9 +950,7 @@
 /turf/open/gm/grass,
 /area/adminlevel/ert_station/clf_station)
 "zy" = (
-/obj/structure/machinery/light/small/built{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/no_fixture/north,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "zH" = (
@@ -1007,9 +989,7 @@
 /obj/item/ammo_magazine/shotgun/flechette,
 /obj/item/ammo_magazine/shotgun/flechette,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717,
-/obj/structure/machinery/light/small/built{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/no_fixture/north,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "AP" = (
@@ -1022,7 +1002,7 @@
 /obj/item/ammo_magazine/smg/mac15/extended,
 /obj/item/ammo_magazine/smg/mac15/extended,
 /obj/item/weapon/gun/smg/mac15/extended,
-/obj/structure/machinery/light/small/built,
+/obj/structure/machinery/light/blub/no_fixture,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "Ba" = (
@@ -1116,9 +1096,7 @@
 /area/adminlevel/ert_station/clf_station)
 "DW" = (
 /obj/structure/closet/secure_closet/brig,
-/obj/structure/machinery/light/small/built{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/no_fixture/north,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "Ee" = (
@@ -1138,9 +1116,7 @@
 /obj/structure/toilet{
 	pixel_y = 16
 	},
-/obj/structure/machinery/light/small/built{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/no_fixture/east,
 /turf/open/floor/wood/wood_broken,
 /area/adminlevel/ert_station/clf_station)
 "EZ" = (
@@ -1295,9 +1271,7 @@
 /turf/closed/wall/mineral/sandstone/runed,
 /area/adminlevel/ert_station/clf_station)
 "LQ" = (
-/obj/structure/machinery/light/small/built{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/no_fixture/west,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "Md" = (
@@ -1361,9 +1335,7 @@
 /obj/item/tank/anesthetic,
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clothing/mask/breath/medical,
-/obj/structure/machinery/light/small/built{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/no_fixture/north,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "MU" = (
@@ -1413,9 +1385,7 @@
 	},
 /obj/item/tool/kitchen/rollingpin,
 /obj/item/book/manual/chef_recipes,
-/obj/structure/machinery/light/small/built{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/no_fixture/north,
 /turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
 "Oi" = (
@@ -1451,7 +1421,7 @@
 /obj/item/bedsheet/brown{
 	pixel_y = 13
 	},
-/obj/structure/machinery/light/small/built,
+/obj/structure/machinery/light/blub/no_fixture,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/clf_station)
 "Oy" = (
@@ -1538,7 +1508,7 @@
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/device/radio/headset/distress/CLF,
 /obj/item/device/radio/headset/distress/CLF/medic,
-/obj/structure/machinery/light/small/built,
+/obj/structure/machinery/light/blub/no_fixture,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "Qx" = (
@@ -1599,9 +1569,7 @@
 /area/adminlevel/ert_station/clf_station)
 "Sd" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/structure/machinery/light/small/built{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/no_fixture/west,
 /turf/open/floor/freezerfloor,
 /area/adminlevel/ert_station/clf_station)
 "Sj" = (
@@ -1712,9 +1680,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "Wq" = (
-/obj/structure/machinery/light/small/built{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/no_fixture/east,
 /turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/clf_station)
 "Wz" = (
@@ -1755,7 +1721,7 @@
 /area/adminlevel/ert_station/clf_station)
 "Xz" = (
 /obj/structure/machinery/iv_drip,
-/obj/structure/machinery/light/small/built,
+/obj/structure/machinery/light/blub/no_fixture,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "XE" = (
@@ -1778,7 +1744,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "YA" = (
-/obj/structure/machinery/light/small/built,
+/obj/structure/machinery/light/blub/no_fixture,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "YB" = (
@@ -1798,7 +1764,7 @@
 	dir = 4
 	},
 /obj/item/reagent_container/food/drinks/flask/barflask,
-/obj/structure/machinery/light/small/built,
+/obj/structure/machinery/light/blub/no_fixture,
 /turf/open/floor/wood/wood_broken6,
 /area/adminlevel/ert_station/clf_station)
 "Zj" = (

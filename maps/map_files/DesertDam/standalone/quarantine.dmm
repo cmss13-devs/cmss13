@@ -738,7 +738,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/desert_dam/exterior/valley/valley_medical)
 "AV" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/inflatable,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached17,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -810,9 +810,7 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/valley/valley_medical)
 "Dw" = (
@@ -1064,9 +1062,7 @@
 /turf/open/floor/plating,
 /area/template_noop)
 "LR" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/item/trash/cigbutt,
 /obj/structure/sign/nosmoking_1{
 	pixel_y = 30
@@ -1338,7 +1334,7 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "TR" = (
 /obj/structure/inflatable,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
 /area/desert_dam/exterior/valley/valley_medical)
 "TU" = (
@@ -1434,9 +1430,7 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "Wy" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_medical)
 "WD" = (
@@ -1480,9 +1474,7 @@
 /turf/open/floor/plating/warnplate/west,
 /area/template_noop)
 "Yh" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/white,
 /area/template_noop)

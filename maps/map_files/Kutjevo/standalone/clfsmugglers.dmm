@@ -48,9 +48,7 @@
 /obj/item/restraint/handcuffs,
 /obj/item/restraint/handcuffs,
 /obj/item/storage/belt/security/MP/CMB/full,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/colors/orange/inner_corner/north,
 /area/kutjevo/interior/colony/landing_zone_checkpoint)
 "aW" = (
@@ -111,9 +109,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/exterior/clf_lz)
 "cR" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/orange/southeast,
 /area/kutjevo/interior/colony/clf_shuttle)
 "dq" = (
@@ -137,9 +133,7 @@
 /turf/open/floor/plating/warnplate/northeast,
 /area/kutjevo/interior/colony/clf_shuttle)
 "dT" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)
 "fb" = (
@@ -356,9 +350,7 @@
 	},
 /area/kutjevo/interior/colony/clf_shuttle)
 "pA" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/orange/northeast,
 /area/kutjevo/interior/colony/clf_shuttle)
 "pE" = (
@@ -369,9 +361,7 @@
 /turf/open/floor/plating/warnplate/west,
 /area/kutjevo/interior/colony/clf_shuttle)
 "pX" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/asphalt/cement_sunbleached,
 /area/kutjevo/interior/colony/landing_zone_checkpoint)
 "qb" = (
@@ -561,18 +551,14 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/blue/northeast,
 /area/kutjevo/interior/colony/clf_shuttle)
 "Bi" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/blue/northwest,
 /area/kutjevo/interior/colony/clf_shuttle)
 "BE" = (
@@ -732,9 +718,7 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/exterior/clf_lz)
 "JM" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/orange/southwest,
 /area/kutjevo/interior/colony/clf_shuttle)
 "JX" = (
@@ -786,7 +770,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/exterior/clf_lz)
 "MK" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/kutjevo/colors/orange/edge,
 /area/kutjevo/interior/colony/landing_zone_checkpoint)
 "Ni" = (
@@ -982,9 +966,7 @@
 "Tl" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/colors/orange/inner_corner,
 /area/kutjevo/interior/colony/landing_zone_checkpoint)
 "Uv" = (
@@ -1080,9 +1062,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/clf_lz)
 "YJ" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)
 "YQ" = (
@@ -1111,9 +1091,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)
 "ZX" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
 	},

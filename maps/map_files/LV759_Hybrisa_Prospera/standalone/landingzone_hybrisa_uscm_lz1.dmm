@@ -1102,16 +1102,14 @@
 /obj/structure/bed/chair/comfy{
 	dir = 8
 	},
-/obj/structure/machinery/light{
-	dir = 4;
+/obj/structure/machinery/light/fixture/base/east{
 	pixel_y = -14
 	},
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
 "cZ" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
+/obj/structure/machinery/light/double/blue/west{
 	pixel_y = -16
 	},
 /turf/open/floor/prison/floor_plate/southwest,
@@ -1201,8 +1199,7 @@
 /turf/open/hybrisa/street/sidewalk/north,
 /area/lv759/outdoors/landing_zone_2)
 "do" = (
-/obj/structure/machinery/light{
-	dir = 8;
+/obj/structure/machinery/light/fixture/base/west{
 	pixel_y = 17
 	},
 /turf/open/floor/almayer/plate,
@@ -1242,8 +1239,7 @@
 /turf/open/floor/hybrisa/metal/grated/east,
 /area/lv759/outdoors/landing_zone_2)
 "du" = (
-/obj/structure/machinery/light{
-	dir = 4;
+/obj/structure/machinery/light/fixture/base/east{
 	pixel_y = -14
 	},
 /turf/open/floor/almayer/plate,
@@ -1293,8 +1289,7 @@
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "dA" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	layer = 4;
 	pixel_y = 12
 	},
@@ -1347,15 +1342,12 @@
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/landing_zone_2)
 "dI" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/sidewalk/northwest,
 /area/lv759/outdoors/landing_zone_2)
 "dJ" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	layer = 4;
 	pixel_y = 12
 	},
@@ -1391,8 +1383,7 @@
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
 "dN" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
+/obj/structure/machinery/light/double/blue/west{
 	pixel_y = -16
 	},
 /turf/open/floor/prison/floor_plate/southwest,
@@ -1718,8 +1709,7 @@
 	icon_state = "p_stair_full";
 	color = "#b8b8b0"
 	},
-/obj/structure/machinery/light{
-	dir = 8;
+/obj/structure/machinery/light/fixture/base/west{
 	pixel_y = 17
 	},
 /turf/open/floor/almayer/plate,
@@ -1761,8 +1751,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 8
 	},
-/obj/structure/machinery/light{
-	dir = 4;
+/obj/structure/machinery/light/fixture/base/east{
 	pixel_y = -14
 	},
 /turf/open/floor/almayer/plate,
@@ -1867,9 +1856,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /obj/structure/platform/metal/hybrisa/metalplatform1,
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/lv759/outdoors/landing_zone_2)
 "ji" = (
@@ -2027,9 +2014,7 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_security)
 "lo" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /turf/open/hybrisa/street/sidewalk/southwest,
 /area/lv759/outdoors/landing_zone_2)
 "lt" = (
@@ -2133,9 +2118,7 @@
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead,
 /obj/structure/window/reinforced,
 /obj/effect/landmark/objective_landmark/close,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/prison/red/east,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_security)
 "mm" = (
@@ -2171,9 +2154,7 @@
 	pixel_x = 11;
 	pixel_y = 8
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
@@ -2207,9 +2188,7 @@
 	pixel_x = -9;
 	pixel_y = 10
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
 	pixel_y = 1;
@@ -2265,9 +2244,7 @@
 	color = "#b7b8b2"
 	},
 /obj/item/prop/almayer/comp_open,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
@@ -2445,9 +2422,7 @@
 	pixel_y = -4;
 	layer = 2.5
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/lv759/outdoors/colony_streets/south_east_street)
@@ -2471,7 +2446,7 @@
 	pixel_y = 6
 	},
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/light/blue,
+/obj/structure/machinery/light/fixture/blue,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/lv759/outdoors/mining_outpost/south_entrance)
@@ -2479,9 +2454,7 @@
 /obj/structure/surface/rack,
 /obj/item/fuel_cell,
 /obj/item/fuel_cell,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 25
 	},
@@ -2673,9 +2646,7 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal4"
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/blue/north,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
 "tX" = (
@@ -2849,9 +2820,7 @@
 	pixel_y = -4;
 	layer = 2.5
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/lv759/outdoors/landing_zone_2)
@@ -3007,9 +2976,7 @@
 	pixel_x = 4;
 	pixel_y = 8
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/item/tool/pen{
 	pixel_x = 9;
 	pixel_y = 8
@@ -3047,9 +3014,7 @@
 	icon_state = "W";
 	layer = 2.5
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorsmall_off{
 	pixel_y = 32
 	},
@@ -3140,7 +3105,7 @@
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "zG" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6,
-/obj/structure/machinery/light/blue,
+/obj/structure/machinery/light/fixture/blue,
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "zI" = (
@@ -3248,9 +3213,7 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal4"
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/blue/north,
 /obj/structure/sign/safety/opens_up{
 	pixel_x = 3;
 	pixel_y = 32
@@ -3837,9 +3800,7 @@
 /turf/open/hybrisa/street/sidewalkcenter/south,
 /area/lv759/outdoors/landing_zone_2)
 "IG" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
 "IH" = (
@@ -3876,9 +3837,7 @@
 	pixel_x = -4
 	},
 /obj/structure/blocker/invisible_wall,
-/obj/structure/machinery/light/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/blue/east,
 /turf/open/shuttle/escapepod/floor1,
 /area/lv759/oob)
 "Ja" = (
@@ -3891,9 +3850,7 @@
 "Jm" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
-/obj/structure/machinery/light/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/blue/north,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "Ju" = (
@@ -4076,9 +4033,7 @@
 "Mt" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/obj/structure/machinery/light/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/blue/north,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "Mv" = (
@@ -4192,9 +4147,7 @@
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /obj/structure/platform/metal/hybrisa/metalplatform1,
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/lv759/outdoors/colony_streets/south_east_street)
@@ -4284,8 +4237,7 @@
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
 "Px" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
+/obj/structure/machinery/light/double/blue/west{
 	pixel_y = -16
 	},
 /turf/open/hybrisa/street/sidewalk/west,
@@ -4335,8 +4287,7 @@
 	icon_state = "p_stair_full";
 	color = "#b8b8b0"
 	},
-/obj/structure/machinery/light{
-	dir = 4;
+/obj/structure/machinery/light/fixture/base/east{
 	pixel_y = -14
 	},
 /turf/open/floor/almayer/plate,
@@ -4354,7 +4305,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
 "QS" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/machinery/big_computers/messaging_server/brown{
 	dir = 1
 	},
@@ -4374,9 +4325,7 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal4"
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/blue/north,
 /obj/structure/sign/safety/opens_up{
 	pixel_y = 32;
 	pixel_x = 12
@@ -4422,7 +4371,7 @@
 	pixel_y = 4;
 	pixel_x = 5
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
 "SB" = (
@@ -4431,9 +4380,7 @@
 	pixel_y = 11;
 	pixel_x = 3
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
 "SF" = (
@@ -4449,7 +4396,7 @@
 /area/lv759/outdoors/landing_zone_2)
 "SL" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
 	alpha = 155
@@ -4567,9 +4514,7 @@
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/landing_zone_2)
 "Ug" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "Uj" = (
@@ -4644,7 +4589,7 @@
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "VB" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6,
-/obj/structure/machinery/light/blue,
+/obj/structure/machinery/light/fixture/blue,
 /turf/open/auto_turf/hybrisa_auto_turf/layer3,
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "VF" = (
@@ -4658,9 +4603,7 @@
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = -17
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/lv759/outdoors/landing_zone_2)
 "VX" = (
@@ -4689,9 +4632,7 @@
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy4{
 	dir = 8
 	},
-/obj/structure/machinery/light/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/blue/north,
 /obj/structure/blocker/invisible_wall,
 /turf/open/shuttle/escapepod/floor1,
 /area/lv759/oob)
@@ -4724,7 +4665,7 @@
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "Xm" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/light/blue,
+/obj/structure/machinery/light/fixture/blue,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "Xn" = (
@@ -4857,9 +4798,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#b7b8b2"
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_x = 7;
 	pixel_y = 14
@@ -4928,7 +4867,7 @@
 	icon_state = "S";
 	layer = 3.3
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 5
 	},

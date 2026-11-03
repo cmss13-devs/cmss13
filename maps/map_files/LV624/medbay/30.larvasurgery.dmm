@@ -41,9 +41,7 @@
 	pixel_y = 3
 	},
 /obj/item/clothing/mask/surgical,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/item/storage/belt/medical/full,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/whiteblue/north,
@@ -65,9 +63,7 @@
 /turf/open/floor/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "as" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/decal/cleanable/blood,
 /obj/item/storage/surgical_tray,
 /turf/open/floor/whiteblue/northeast,
@@ -133,9 +129,7 @@
 /turf/open/floor/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "aU" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "aX" = (
@@ -173,7 +167,7 @@
 /area/lv624/lazarus/medbay)
 "bp" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/whiteblue,
 /area/lv624/lazarus/medbay)
 "bq" = (
@@ -236,9 +230,7 @@
 /area/lv624/lazarus/medbay)
 "io" = (
 /obj/item/stack/medical/ointment,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "mA" = (
@@ -276,7 +268,7 @@
 /area/lv624/lazarus/medbay)
 "us" = (
 /obj/structure/filingcabinet,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whiteblue,
 /area/lv624/lazarus/medbay)
@@ -348,9 +340,7 @@
 /area/lv624/ground/colony/south_medbay_road)
 "Gu" = (
 /obj/structure/closet/wardrobe,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/whiteblue/west,
 /area/lv624/lazarus/medbay)
 "JK" = (
@@ -379,9 +369,7 @@
 /area/lv624/ground/colony/south_medbay_road)
 "Pi" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/transmitter/colony_net/rotary{
 	phone_category = "Lazarus Landing";
 	phone_id = "Medbay"

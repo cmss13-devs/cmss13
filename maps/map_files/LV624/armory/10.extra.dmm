@@ -39,7 +39,7 @@
 /turf/open/floor/whiteyellow/north,
 /area/lv624/lazarus/main_hall)
 "h" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/effect/landmark/crap_item,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
@@ -84,9 +84,7 @@
 /turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "o" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/surface/rack{
 	layer = 2.5
 	},
@@ -113,9 +111,7 @@
 /turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "r" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/red/northeast,
 /area/lv624/lazarus/security)
 "s" = (

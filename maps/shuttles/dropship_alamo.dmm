@@ -116,9 +116,7 @@
 /area/shuttle/drop1/sulaco)
 "jz" = (
 /obj/structure/shuttle/part/dropship1/transparent/middle_right_wing,
-/obj/structure/machinery/light/dropship/green{
-	dir = 4
-	},
+/obj/structure/machinery/light/dropship/green/east,
 /turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "mb" = (
@@ -157,9 +155,7 @@
 /area/shuttle/drop1/sulaco)
 "oW" = (
 /obj/structure/shuttle/part/dropship1/transparent/middle_left_wing,
-/obj/structure/machinery/light/dropship/red{
-	dir = 8
-	},
+/obj/structure/machinery/light/dropship/red/west,
 /turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "po" = (
@@ -423,9 +419,7 @@
 /area/shuttle/drop1/sulaco)
 "Me" = (
 /obj/structure/shuttle/part/dropship1/left_inner_wing_connector,
-/obj/structure/machinery/light/dropship/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/dropship/blue/east,
 /turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "MP" = (
@@ -500,9 +494,7 @@
 /area/shuttle/drop1/sulaco)
 "Ta" = (
 /obj/structure/shuttle/part/dropship1/right_inner_wing_connector,
-/obj/structure/machinery/light/dropship/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/dropship/blue/west,
 /turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "Te" = (

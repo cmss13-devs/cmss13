@@ -28,9 +28,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/landmark/monkey_spawn,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/effect/decal/strata_decals/grime/grime3{
 	icon_state = "grime4"
 	},
@@ -106,7 +104,7 @@
 "dy" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/template_noop)
 "dF" = (
@@ -578,9 +576,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/landmark/monkey_spawn,
 /obj/effect/decal/strata_decals/grime/grime4,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/template_noop)
 "ys" = (
@@ -667,7 +663,7 @@
 /obj/effect/decal/strata_decals/grime/grime4{
 	dir = 8
 	},
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 9
 	},
@@ -681,9 +677,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/landmark/monkey_spawn,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/template_noop)
 "Et" = (
@@ -719,9 +713,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/landmark/monkey_spawn,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 8
 	},
@@ -795,9 +787,7 @@
 	pixel_x = 1;
 	pixel_y = -1
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/template_noop)
 "Jp" = (
@@ -933,7 +923,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/strata_decals/grime/grime4,
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 5
 	},
@@ -969,9 +959,7 @@
 	pixel_x = -4;
 	pixel_y = 23
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 5
 	},
@@ -1010,9 +998,7 @@
 	pixel_y = 4;
 	pixel_x = -5
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/template_noop)
 "Td" = (
@@ -1060,9 +1046,7 @@
 	name = "Storm Shutters";
 	pixel_x = 27
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/template_noop)
 "XV" = (

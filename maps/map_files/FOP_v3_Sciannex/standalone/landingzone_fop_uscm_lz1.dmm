@@ -57,8 +57,7 @@
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
 "dm" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	pixel_x = 10;
 	pixel_y = 13
 	},
@@ -320,8 +319,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/fiorina/station/security)
 "od" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
+/obj/structure/machinery/light/double/blue/west{
 	pixel_x = -10;
 	pixel_y = 13
 	},
@@ -363,15 +361,13 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzII)
 "qd" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "qt" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	pixel_x = 10;
 	pixel_y = 13
 	},
@@ -444,8 +440,7 @@
 /area/fiorina/lz/near_lzII)
 "ub" = (
 /obj/structure/bed/sofa/vert/grey/top,
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /turf/open/floor/prison,
@@ -481,8 +476,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security/wardens)
 "vf" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
+/obj/structure/machinery/light/double/blue/west{
 	pixel_x = 1
 	},
 /obj/structure/barricade/metal/wired{
@@ -698,8 +692,7 @@
 	pixel_x = -5;
 	pixel_y = 5
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /turf/open/floor/prison/floor_plate,
@@ -723,8 +716,7 @@
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
 "HH" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	pixel_x = 1
 	},
 /obj/structure/barricade/metal/wired{
@@ -804,8 +796,7 @@
 /turf/closed/wall/prison,
 /area/fiorina/station/lowsec/showers_laundry)
 "Ls" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /turf/open/floor/prison,
@@ -863,8 +854,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	pixel_x = 10;
 	pixel_y = 13
 	},
@@ -881,8 +871,7 @@
 /turf/open/floor/prison/red/west,
 /area/fiorina/lz/near_lzII)
 "Qd" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
+/obj/structure/machinery/light/double/blue/west{
 	pixel_x = -10;
 	pixel_y = 13
 	},
@@ -918,8 +907,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "SL" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
+/obj/structure/machinery/light/double/blue/west{
 	pixel_x = -10;
 	pixel_y = 13
 	},
@@ -939,8 +927,7 @@
 	icon_state = "pottedplant_29";
 	pixel_y = 10
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /turf/open/floor/prison,
@@ -992,8 +979,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/lowsec/showers_laundry)
 "Wn" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /obj/structure/barricade/metal/wired{

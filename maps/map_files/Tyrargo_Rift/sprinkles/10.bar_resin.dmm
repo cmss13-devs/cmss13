@@ -1,8 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 1;
+/obj/structure/machinery/light/fixture/base/north{
 	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/floor_plate,
@@ -66,7 +65,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/fixture/base{
 	light_color = "#A7DBB6"
 	},
 /turf/open/floor/wood,
@@ -694,7 +693,7 @@
 	icon_state = "siding8"
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/fixture/base{
 	light_color = "#A7DBB6"
 	},
 /turf/open/floor/wood,
@@ -866,8 +865,7 @@
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/outdoors/colony_exterior/north_west)
 "SX" = (
-/obj/structure/machinery/light{
-	dir = 1;
+/obj/structure/machinery/light/fixture/base/north{
 	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/floor_plate,

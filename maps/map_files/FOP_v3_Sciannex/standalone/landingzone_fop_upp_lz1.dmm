@@ -124,8 +124,7 @@
 	pixel_x = -16;
 	pixel_y = 12
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /turf/open/floor/prison,
@@ -286,8 +285,7 @@
 /turf/open/space/basic,
 /area/fiorina/oob)
 "hj" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /turf/open/floor/prison/darkpurple2/northeast,
@@ -338,8 +336,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/tumor/servers)
 "iT" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /turf/open/floor/prison/darkpurple2/north,
@@ -382,8 +379,7 @@
 /turf/open/floor/prison,
 /area/event/metal/dynamic)
 "kZ" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /turf/open/floor/prison/floor_plate,
@@ -426,8 +422,7 @@
 /turf/open/floor/prison/darkpurple2/west,
 /area/event/metal/dynamic)
 "no" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /turf/open/floor/plating/prison,
@@ -598,8 +593,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/fiorina/tumor/servers)
 "tt" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
+/obj/structure/machinery/light/double/blue/west{
 	pixel_x = -10;
 	pixel_y = 13
 	},
@@ -610,8 +604,7 @@
 /turf/open/floor/almayer_hull,
 /area/fiorina/oob)
 "up" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
+/obj/structure/machinery/light/double/blue/west{
 	pixel_x = -10;
 	pixel_y = 13
 	},
@@ -711,8 +704,7 @@
 /area/fiorina/oob)
 "yG" = (
 /obj/structure/xenoautopsy/tank/hugger,
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
+/obj/structure/machinery/light/double/blue/west{
 	pixel_x = -10;
 	pixel_y = 13
 	},
@@ -828,8 +820,7 @@
 /area/fiorina/oob)
 "CE" = (
 /obj/item/stack/cable_coil,
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /turf/open/floor/prison/darkpurple2/north,
@@ -1096,16 +1087,14 @@
 	name = "overhead pipe";
 	pixel_y = 20
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	pixel_x = 10;
 	pixel_y = 13
 	},
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "LQ" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	pixel_x = 10;
 	pixel_y = -3
 	},
@@ -1209,8 +1198,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/servers)
 "Pm" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	pixel_x = 10;
 	pixel_y = 13
 	},
@@ -1281,8 +1269,7 @@
 /area/fiorina/tumor/servers)
 "SK" = (
 /obj/structure/largecrate/random/barrel/yellow,
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	pixel_x = 10;
 	pixel_y = 13
 	},
@@ -1324,8 +1311,7 @@
 	name = "overhead pipe";
 	pixel_y = 20
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
+/obj/structure/machinery/light/double/blue/west{
 	pixel_x = -10;
 	pixel_y = 13
 	},
@@ -1437,8 +1423,7 @@
 /turf/open/floor/prison/darkpurple2/southwest,
 /area/event/metal/dynamic)
 "YL" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /turf/open/floor/prison,

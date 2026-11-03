@@ -45,8 +45,7 @@
 /area/shiva/interior/colony/research_hab)
 "af" = (
 /obj/structure/surface/rack,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = 9
 	},
 /obj/item/clothing/suit/storage/labcoat/researcher,
@@ -54,8 +53,7 @@
 /area/shiva/interior/colony/research_hab)
 "ag" = (
 /obj/structure/surface/rack,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = 9
 	},
 /obj/item/clothing/suit/storage/labcoat/researcher,
@@ -78,15 +76,13 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "ak" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_x = -6
 	},
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "al" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_x = 6
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -102,8 +98,7 @@
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "an" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = 9
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -111,8 +106,7 @@
 /area/shiva/interior/colony/research_hab)
 "ao" = (
 /obj/item/stack/snow,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = 9
 	},
 /obj/item/stack/snow,
@@ -129,8 +123,7 @@
 /area/shiva/interior/colony/research_hab)
 "ar" = (
 /obj/structure/closet/radiation,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/effect/landmark/objective_landmark/science,
@@ -244,8 +237,7 @@
 /turf/open/floor/shiva/purplefull,
 /area/shiva/interior/colony/research_hab)
 "lX" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/purplefull,
@@ -379,7 +371,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "JO" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
 "KS" = (

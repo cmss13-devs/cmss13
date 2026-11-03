@@ -108,8 +108,7 @@
 /turf/open/floor/prison,
 /area/template_noop)
 "hY" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
+/obj/structure/machinery/light/double/blue/west{
 	pixel_x = -10;
 	pixel_y = -3
 	},
@@ -235,8 +234,7 @@
 /turf/open/floor/prison/darkbrown2,
 /area/template_noop)
 "mk" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /obj/item/trash/crushed_cup{
@@ -484,8 +482,7 @@
 /area/template_noop)
 "vX" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	pixel_x = 10;
 	pixel_y = 13
 	},
@@ -506,8 +503,7 @@
 /area/template_noop)
 "wV" = (
 /obj/structure/platform/metal/almayer/north,
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /turf/open/floor/prison/floor_plate,
@@ -524,8 +520,7 @@
 /area/template_noop)
 "xS" = (
 /obj/structure/platform/metal/almayer/north,
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /turf/open/floor/wood,
@@ -563,8 +558,7 @@
 /area/template_noop)
 "Ao" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	pixel_x = 10;
 	pixel_y = -3
 	},
@@ -784,8 +778,7 @@
 /turf/open/floor/prison/darkbrowncorners2/east,
 /area/template_noop)
 "Jw" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /turf/open/floor/wood,
@@ -985,8 +978,7 @@
 /turf/open/floor/prison/darkbrown2/north,
 /area/template_noop)
 "SO" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
+/obj/structure/machinery/light/double/blue/west{
 	pixel_x = -10;
 	pixel_y = 13
 	},
@@ -1176,8 +1168,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 8
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	pixel_x = 10;
 	pixel_y = -3
 	},

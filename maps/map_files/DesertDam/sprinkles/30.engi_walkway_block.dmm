@@ -159,9 +159,7 @@
 /turf/open/floor/prison/darkyellow2,
 /area/desert_dam/interior/dam_interior/upper_walkway)
 "xG" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/barricade/wooden{
 	dir = 4
 	},
@@ -319,9 +317,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/upper_walkway)
 "VB" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/upper_walkway)
 "Wn" = (
@@ -331,7 +327,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/upper_walkway)
 "Wr" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/barricade/wooden{
 	dir = 4
 	},
@@ -356,7 +352,7 @@
 /turf/open/floor/prison/darkyellow2,
 /area/desert_dam/interior/dam_interior/upper_walkway)
 "Zs" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/prison/darkyellow2,
 /area/desert_dam/interior/dam_interior/upper_walkway)
 "ZQ" = (

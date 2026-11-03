@@ -41,7 +41,7 @@
 /turf/open/floor/kutjevo/tan/alt_edge,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "dn" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "eb" = (
@@ -117,9 +117,7 @@
 /turf/open/floor/kutjevo/tan/alt_edge/east,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "ig" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/kutjevo/tan/alt_edge/west,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "iS" = (
@@ -181,9 +179,7 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_2"
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/kutjevo/tan/alt_edge/east,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "nV" = (
@@ -218,9 +214,7 @@
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "pW" = (
 /obj/item/weapon/gun/revolver/cmb,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/kutjevo/tan/alt_edge/east,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "qy" = (
@@ -271,9 +265,7 @@
 /obj/structure/surface/rack,
 /obj/item/ammo_box/magazine/misc/flares,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/colors/orange/inner_corner/north,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "vX" = (
@@ -355,9 +347,7 @@
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "Dv" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "Dw" = (
@@ -397,7 +387,7 @@
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "GD" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/item/trash/cigbutt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/tan/alt_edge,
@@ -522,9 +512,7 @@
 	layer = 3;
 	pixel_x = 2
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_5";
 	pixel_y = 4;
@@ -573,9 +561,7 @@
 	pixel_y = 16;
 	pixel_x = -3
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
@@ -602,7 +588,7 @@
 	pixel_y = 2;
 	pixel_x = 5
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/item/reagent_container/food/drinks/sillycup{
 	pixel_x = -7;
 	pixel_y = 12

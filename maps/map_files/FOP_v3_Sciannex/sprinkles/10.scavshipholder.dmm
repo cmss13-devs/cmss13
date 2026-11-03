@@ -4,8 +4,7 @@
 /turf/open/space/basic,
 /area/template_noop)
 "aE" = (
-/obj/structure/machinery/light/small{
-	dir = 8;
+/obj/structure/machinery/light/blub/base/west{
 	pixel_x = -11;
 	pixel_y = 10
 	},
@@ -43,8 +42,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "fI" = (
-/obj/structure/machinery/light/small{
-	dir = 8;
+/obj/structure/machinery/light/blub/base/west{
 	pixel_x = -11;
 	pixel_y = 10
 	},
@@ -122,8 +120,7 @@
 /turf/open/floor/almayer/plate,
 /area/template_noop)
 "kO" = (
-/obj/structure/machinery/light/small{
-	dir = 8;
+/obj/structure/machinery/light/blub/base/west{
 	pixel_x = -11;
 	pixel_y = 10
 	},
@@ -131,8 +128,7 @@
 /turf/open/floor/almayer/plate,
 /area/template_noop)
 "kR" = (
-/obj/structure/machinery/light/small{
-	dir = 4;
+/obj/structure/machinery/light/blub/base/east{
 	pixel_x = 11;
 	pixel_y = 10
 	},
@@ -202,8 +198,7 @@
 /turf/open/floor/plating/prison,
 /area/template_noop)
 "om" = (
-/obj/structure/machinery/light/small{
-	dir = 8;
+/obj/structure/machinery/light/blub/base/west{
 	pixel_x = -11;
 	pixel_y = 10
 	},
@@ -221,8 +216,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/template_noop)
 "pV" = (
-/obj/structure/machinery/light/small{
-	dir = 4;
+/obj/structure/machinery/light/blub/base/east{
 	pixel_x = 11;
 	pixel_y = 10
 	},
@@ -241,8 +235,7 @@
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1
 	},
-/obj/structure/machinery/light/small{
-	dir = 8;
+/obj/structure/machinery/light/blub/base/west{
 	pixel_x = -11;
 	pixel_y = 10
 	},
@@ -377,8 +370,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "Hb" = (
-/obj/structure/machinery/light/small{
-	dir = 8;
+/obj/structure/machinery/light/blub/base/west{
 	pixel_x = -11;
 	pixel_y = 10
 	},
@@ -435,8 +427,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/template_noop)
 "Ks" = (
-/obj/structure/machinery/light/small{
-	dir = 8;
+/obj/structure/machinery/light/blub/base/west{
 	pixel_x = -11;
 	pixel_y = 10
 	},
@@ -493,8 +484,7 @@
 /area/fiorina/oob)
 "Ok" = (
 /obj/structure/surface/rack,
-/obj/structure/machinery/light/small{
-	dir = 8;
+/obj/structure/machinery/light/blub/base/west{
 	pixel_x = -11;
 	pixel_y = 10
 	},
@@ -528,8 +518,7 @@
 /turf/open/floor/almayer/plate,
 /area/template_noop)
 "Sh" = (
-/obj/structure/machinery/light/small{
-	dir = 4;
+/obj/structure/machinery/light/blub/base/east{
 	pixel_x = 11;
 	pixel_y = 10
 	},
@@ -573,7 +562,7 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/oob)
 "VB" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 4
 	},
@@ -595,8 +584,7 @@
 	name = "Shuttle control deck";
 	pixel_y = 6
 	},
-/obj/structure/machinery/light/small{
-	dir = 8;
+/obj/structure/machinery/light/blub/base/west{
 	pixel_x = -11;
 	pixel_y = 10
 	},

@@ -154,7 +154,7 @@
 /obj/item/tool/surgery/scalpel{
 	pixel_y = 12
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
@@ -175,7 +175,7 @@
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "aJ" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "aK" = (
@@ -191,31 +191,23 @@
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "aM" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/white,
 /area/lv624/lazarus/research)
 "aO" = (
 /obj/structure/machinery/shower{
 	pixel_y = 16
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "aP" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/xenoautopsy/jar_shelf,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "aQ" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/surface/table,
 /obj/item/storage/box/disks{
 	layer = 2.9;
@@ -234,9 +226,7 @@
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "aS" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/surface/table,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
@@ -285,9 +275,7 @@
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "bq" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "bx" = (
@@ -327,7 +315,7 @@
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "DC" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)

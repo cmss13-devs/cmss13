@@ -45,9 +45,7 @@
 /turf/open/floor/kutjevo/tan/multi_tiles/north,
 /area/kutjevo/exterior/lz_dunes)
 "ak" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
@@ -116,8 +114,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/lz_dunes)
 "bj" = (
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /turf/open/floor/kutjevo/tan/multi_tiles,
@@ -184,8 +181,7 @@
 /turf/open/floor/kutjevo/tan/alt_edge,
 /area/kutjevo/exterior/lz_dunes)
 "et" = (
-/obj/structure/machinery/light{
-	dir = 8;
+/obj/structure/machinery/light/fixture/base/west{
 	pixel_y = -16
 	},
 /obj/structure/bed/chair{
@@ -381,8 +377,7 @@
 /turf/open/floor/almayer/research/containment/floor1,
 /area/kutjevo/exterior/lz_dunes)
 "lT" = (
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /turf/open/auto_turf/sand/layer0,
@@ -580,9 +575,7 @@
 /area/kutjevo/exterior/lz_dunes)
 "tB" = (
 /obj/structure/machinery/vending/cola,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/tan/multi_tiles/north,
 /area/kutjevo/exterior/lz_dunes)
 "tK" = (
@@ -604,9 +597,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "uw" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/kutjevo/tan/alt_edge/west,
 /area/kutjevo/exterior/lz_dunes)
 "ux" = (
@@ -721,9 +712,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/lz_dunes)
 "wS" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "wV" = (
@@ -800,9 +789,7 @@
 /area/kutjevo/exterior/lz_dunes)
 "zf" = (
 /obj/structure/largecrate/random/barrel/brown,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/exterior/lz_dunes)
 "zJ" = (
@@ -834,7 +821,7 @@
 /turf/open/floor/kutjevo/tan/alt_edge/east,
 /area/kutjevo/exterior/lz_dunes)
 "AI" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/kutjevo/tan/multi_tiles/north,
 /area/kutjevo/exterior/lz_dunes)
@@ -857,9 +844,7 @@
 	dir = 4;
 	pixel_y = 13
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/exterior/lz_dunes)
 "BE" = (
@@ -938,9 +923,7 @@
 /turf/open/floor/kutjevo/tan/alt_edge/north,
 /area/kutjevo/exterior/lz_dunes)
 "DE" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "DK" = (
@@ -982,9 +965,7 @@
 /turf/closed/cordon,
 /area/space)
 "FJ" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/kutjevo/tan/alt_edge/west,
 /area/kutjevo/exterior/lz_dunes)
 "Ge" = (
@@ -1069,9 +1050,7 @@
 /turf/open/floor/kutjevo/tan/alt_edge/west,
 /area/kutjevo/exterior/lz_dunes)
 "HK" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/colors/red/edge/north,
 /area/kutjevo/exterior/lz_dunes)
 "HL" = (
@@ -1082,9 +1061,7 @@
 /obj/item/clothing/suit/armor/vest/security,
 /obj/item/clothing/suit/armor/vest/security,
 /obj/item/clothing/suit/armor/vest/security,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/kutjevo/colors/red/edge/east,
 /area/kutjevo/exterior/lz_dunes)
@@ -1326,9 +1303,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "Ot" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/item/tool/warning_cone{
 	pixel_y = 16
 	},
@@ -1520,7 +1495,7 @@
 /turf/open/floor/kutjevo/colors/red/edge/southeast,
 /area/kutjevo/exterior/lz_dunes)
 "Vg" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "Vo" = (
@@ -1541,8 +1516,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "Wc" = (
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /turf/open/auto_turf/sand/layer1,

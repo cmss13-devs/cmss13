@@ -33,8 +33,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_x = 6
 	},
 /turf/open/floor/shiva/purplefull/east,
@@ -95,8 +94,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_x = -6
 	},
 /turf/open/floor/shiva/purplefull/east,

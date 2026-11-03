@@ -745,18 +745,14 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/bunker01/caves/outpost)
 "cx" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/green/northwest,
 /area/adminlevel/bunker01/caves/outpost)
 "cy" = (
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/caves/outpost)
 "cz" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/green/northeast,
 /area/adminlevel/bunker01/caves/outpost)
 "cA" = (
@@ -779,9 +775,7 @@
 /turf/open/floor/almayer/green/northwest,
 /area/adminlevel/bunker01/caves/outpost)
 "cF" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/green/north,
 /area/adminlevel/bunker01/caves/outpost)
 "cG" = (

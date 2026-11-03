@@ -106,9 +106,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "hr" = (
@@ -120,9 +118,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/lower_stairwell)
 "id" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/interior/dam_interior/lower_stairwell)
 "iu" = (
@@ -210,9 +206,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "st" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/item/device/defibrillator,
 /turf/open/floor/prison/darkyellow2/southeast,
 /area/desert_dam/interior/dam_interior/smes_backup)

@@ -475,9 +475,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/bar/bar)
 "hF" = (
-/obj/structure/machinery/light/double{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/base/west,
 /obj/effect/landmark/survivor_spawner/upp_medic,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
@@ -733,9 +731,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "mT" = (
 /obj/item/ammo_casing/bullet,
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "mV" = (
@@ -855,7 +851,7 @@
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "pu" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "px" = (
@@ -967,9 +963,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "so" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/asphalt/cement/cement3,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "sp" = (
@@ -994,8 +988,7 @@
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "sE" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/shuttle/dropship/can_surgery/light_grey_top_right,
@@ -1170,9 +1163,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/bar/bar)
 "wI" = (
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /obj/structure/bed/bedroll,
 /obj/item/reagent_container/food/drinks/bottle/vodka,
 /turf/open/mars/mars_dirt_5,
@@ -1353,9 +1344,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
 "zC" = (
@@ -1399,15 +1388,11 @@
 /obj/structure/barricade/sandbags/wired{
 	dir = 8
 	},
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Ae" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "Ah" = (
@@ -1418,9 +1403,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/bar/backroom)
 "Al" = (
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/floor/plating,
 /area/desert_dam/building/bar/bar)
 "At" = (
@@ -1444,9 +1427,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
 "Bq" = (
-/obj/structure/machinery/light/double{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/base/west,
 /turf/open/shuttle/dropship/can_surgery/light_grey_top_left,
 /area/desert_dam/building/bar/bar)
 "Bu" = (
@@ -1623,7 +1604,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "DE" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
 "DO" = (
@@ -1981,8 +1962,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/bar/bar)
 "MM" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/effect/decal/cleanable/blood,
@@ -2028,8 +2008,7 @@
 /turf/open/desert/dirt/desert_transition_corner1/north,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "NH" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/effect/landmark/survivor_spawner/upp_sapper,
@@ -2305,9 +2284,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "SP" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/sandbags/wired{
 	dir = 1
@@ -2330,16 +2307,14 @@
 /obj/structure/bed/chair/wood/normal{
 	dir = 8
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
 "Td" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
@@ -2362,9 +2337,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
@@ -2526,9 +2499,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
 "WE" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "WG" = (
@@ -2670,7 +2641,7 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "YY" = (

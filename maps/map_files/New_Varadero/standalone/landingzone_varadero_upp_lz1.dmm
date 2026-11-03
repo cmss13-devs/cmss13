@@ -74,9 +74,7 @@
 /turf/open/asphalt/cement,
 /area/event/dynamic/lit)
 "aZ" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
 "bf" = (
@@ -245,9 +243,7 @@
 /obj/item/bedsheet/rainbow{
 	layer = 3.4
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/event/metal/dynamic/lit)
 "dS" = (
@@ -493,9 +489,7 @@
 /area/varadero/exterior/monsoon)
 "ir" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/event/metal/dynamic/lit)
 "it" = (
@@ -585,9 +579,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/event/dynamic/lit)
 "jW" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/silverfull,
 /area/event/metal/dynamic/lit)
 "kg" = (
@@ -758,9 +750,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/event/dynamic/lit)
 "mO" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/prop/server_equipment/laptop/on{
 	pixel_x = 15;
 	pixel_y = 6
@@ -803,9 +793,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/event/dynamic/lit)
 "ne" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/floor2,
 /area/event/metal/dynamic/lit)
 "ni" = (
@@ -850,9 +838,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/event/dynamic/lit)
 "nC" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
@@ -987,9 +973,7 @@
 /area/event/metal/dynamic/lit)
 "qd" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
 "qv" = (
@@ -997,9 +981,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
 "qw" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/silverfull,
 /area/event/metal/dynamic/lit)
 "qB" = (
@@ -1084,7 +1066,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/event/dynamic/lit)
 "sb" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata/floor2,
 /area/event/metal/dynamic/lit)
 "so" = (
@@ -1356,7 +1338,7 @@
 /turf/open/floor/plating,
 /area/event/dynamic/lit)
 "yn" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
@@ -1408,9 +1390,7 @@
 /obj/item/device/flashlight/lamp{
 	pixel_y = 4
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/event/metal/dynamic/lit)
 "zy" = (
@@ -1496,9 +1476,7 @@
 /turf/open/floor/strata/blue3/east,
 /area/event/metal/dynamic/lit)
 "BL" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/faxmachine{
 	target_department = "UPP High Command";
@@ -1703,9 +1681,7 @@
 /obj/item/bedsheet/rainbow{
 	layer = 3.4
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/event/metal/dynamic/lit)
 "GJ" = (
@@ -2271,9 +2247,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/monsoon)
 "QS" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/ammo_box/magazine/misc/flashlight,
 /turf/open/floor/strata/blue3/east,
@@ -2427,7 +2401,7 @@
 /turf/open/floor/interior/wood,
 /area/event/dynamic/lit)
 "Uj" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
@@ -2450,9 +2424,7 @@
 /turf/open/floor/interior/wood,
 /area/event/dynamic/lit)
 "Uz" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/auto_turf/sand_white/layer1,
 /area/event/dynamic/lit)
 "UL" = (

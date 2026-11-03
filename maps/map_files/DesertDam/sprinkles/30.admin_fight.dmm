@@ -342,7 +342,7 @@
 /turf/open/floor/darkred2/northeast,
 /area/desert_dam/building/administration/lobby)
 "Ka" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/surface/table/almayer,
 /obj/item/storage/donut_box{
 	pixel_y = 5
@@ -381,9 +381,7 @@
 /turf/open/floor/darkred2/northwest,
 /area/desert_dam/building/administration/lobby)
 "OJ" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/barricade/wooden,
 /turf/open/floor/prison/blue/east,
 /area/desert_dam/building/administration/hallway)

@@ -57,7 +57,7 @@
 /area/template_noop)
 "ds" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/kutjevo/colors/orange/edge,
 /area/kutjevo/interior/complex/North_Garage)
 "dv" = (
@@ -105,9 +105,7 @@
 	pixel_x = -3;
 	pixel_y = 10
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/kutjevo/colors/orange/tile,
 /area/kutjevo/interior/complex/North_Garage)
 "mK" = (
@@ -160,9 +158,7 @@
 	pixel_y = -4;
 	pixel_x = -2
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/kutjevo/colors/orange/edge/east,
 /area/kutjevo/interior/complex/North_Garage)
 "pp" = (
@@ -180,9 +176,7 @@
 	pixel_x = 4;
 	layer = 3.04
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/kutjevo/colors/orange/tile,
 /area/kutjevo/interior/complex/North_Garage)
 "pM" = (
@@ -440,9 +434,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/spawner/random/powercell,
 /turf/open/floor/kutjevo/colors/orange/edge/north,
 /area/kutjevo/interior/complex/North_Garage)

@@ -67,8 +67,7 @@
 /turf/open/floor/shiva/multi_tiles/west,
 /area/shiva/interior/colony/s_admin)
 "ao" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -439,7 +438,7 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "oH" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/green,
 /area/shiva/interior/colony/botany)
@@ -521,7 +520,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgibdown1"
 	},
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
@@ -553,8 +552,7 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "tu" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/structure/reagent_dispensers/water_cooler,
@@ -636,16 +634,14 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "uP" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "uR" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/north,
@@ -657,8 +653,7 @@
 "vq" = (
 /obj/structure/filingcabinet,
 /obj/item/paper/research_notes,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/effect/landmark/objective_landmark/science,
@@ -725,7 +720,7 @@
 	dir = 1
 	},
 /obj/item/paper_bin,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
@@ -802,7 +797,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "zu" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/green/southeast,
 /area/shiva/interior/colony/botany)
 "zw" = (
@@ -820,8 +815,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "Av" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/structure/closet/secure_closet/guncabinet/wy,
@@ -925,7 +919,7 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "Dx" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/item/shard{
 	icon_state = "medium"
 	},
@@ -952,8 +946,7 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "EX" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/item/shard{
@@ -1072,8 +1065,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "Jv" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/north,
@@ -1099,7 +1091,7 @@
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/s_admin)
 "Kb" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/multi_tiles/west,
 /area/shiva/interior/colony/botany)
 "Ko" = (
@@ -1222,8 +1214,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard/cp_bar)
 "OV" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/wood,
@@ -1381,8 +1372,7 @@
 /area/shiva/interior/colony/s_admin)
 "TL" = (
 /obj/item/weapon/gun/energy/taser,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/wood,
@@ -1406,7 +1396,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "UW" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/green/southwest,
 /area/shiva/interior/colony/botany)
 "Vb" = (
@@ -1428,8 +1418,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "VC" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/structure/surface/table/reinforced/prison,

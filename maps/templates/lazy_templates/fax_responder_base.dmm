@@ -236,8 +236,7 @@
 /obj/structure/sink{
 	pixel_y = 21
 	},
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 13;
 	pixel_x = 13
 	},
@@ -294,9 +293,7 @@
 /turf/open/asphalt,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "bJ" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "bT" = (
@@ -327,7 +324,7 @@
 /obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_y = 13
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "cc" = (
@@ -611,9 +608,7 @@
 /obj/item/reagent_container/food/drinks/coffeecup/wy{
 	pixel_x = -7
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/corsat/white/east,
 /area/adminlevel/ert_station/fax_response_station)
 "eS" = (
@@ -850,9 +845,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/shiva/blue/east,
 /area/adminlevel/ert_station/fax_response_station)
 "hy" = (
@@ -957,7 +950,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "iL" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/darkgreen2,
 /area/adminlevel/ert_station/fax_response_station)
 "iN" = (
@@ -1061,7 +1054,7 @@
 /obj/structure/machinery/faxmachine/upp/highcom{
 	pixel_y = 0
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/darkgreen2,
 /area/adminlevel/ert_station/fax_response_station)
 "jX" = (
@@ -1076,8 +1069,7 @@
 	id = "Faxes_PRO_Ladder";
 	height = 1
 	},
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 13
 	},
 /turf/open/floor/almayer/plate,
@@ -1096,8 +1088,7 @@
 	id = "Faxes_CLF";
 	name = "Door Controls"
 	},
-/obj/structure/machinery/light/small{
-	dir = 4;
+/obj/structure/machinery/light/blub/base/east{
 	pixel_y = -7
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -1180,9 +1171,7 @@
 /obj/item/reagent_container/food/snacks/cheesyfries{
 	pixel_x = 6
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/red/west,
 /area/adminlevel/ert_station/fax_response_station)
 "lZ" = (
@@ -1315,8 +1304,7 @@
 /obj/structure/sink{
 	pixel_y = 21
 	},
-/obj/structure/machinery/light/small{
-	dir = 4;
+/obj/structure/machinery/light/blub/base/east{
 	pixel_y = -10
 	},
 /turf/open/floor/almayer/dark_sterile,
@@ -1400,9 +1388,7 @@
 /turf/open/floor/whitered/southwest,
 /area/adminlevel/ert_station/fax_response_station)
 "nr" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
@@ -1481,9 +1467,7 @@
 	pixel_x = -12;
 	pixel_y = 2
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/blue/east,
 /area/adminlevel/ert_station/fax_response_station)
 "ow" = (
@@ -1491,7 +1475,7 @@
 /turf/open/floor/almayer/blue,
 /area/adminlevel/ert_station/fax_response_station)
 "oO" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station/fax_response_station)
 "oP" = (
@@ -1506,9 +1490,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "oU" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/darkgreen2/west,
 /area/adminlevel/ert_station/fax_response_station)
 "oY" = (
@@ -1672,7 +1654,7 @@
 	pixel_y = -8;
 	pixel_x = 6
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/shiva/blue,
 /area/adminlevel/ert_station/fax_response_station)
 "qx" = (
@@ -1692,9 +1674,7 @@
 /turf/open/floor/almayer/plating,
 /area/adminlevel/ert_station/fax_response_station)
 "qJ" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station/fax_response_station)
 "qS" = (
@@ -1737,9 +1717,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "rF" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkgreen2/east,
 /area/adminlevel/ert_station/fax_response_station)
@@ -1798,7 +1776,7 @@
 /obj/structure/machinery/faxmachine/corporate/highcom{
 	pixel_y = 0
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/corsat/white,
 /area/adminlevel/ert_station/fax_response_station)
 "sj" = (
@@ -1839,9 +1817,7 @@
 /turf/open/floor/shiva/blue/west,
 /area/adminlevel/ert_station/fax_response_station)
 "sv" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/effect/decal/siding,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
@@ -2095,9 +2071,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "vm" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_17";
 	pixel_x = -9;
@@ -2114,9 +2088,7 @@
 	prices = list();
 	wires = 12
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/blue/west,
 /area/adminlevel/ert_station/fax_response_station)
 "vA" = (
@@ -2171,8 +2143,7 @@
 	pixel_y = -1;
 	pixel_x = 25
 	},
-/obj/structure/machinery/light/small{
-	dir = 4;
+/obj/structure/machinery/light/blub/base/east{
 	pixel_y = 12
 	},
 /turf/open/floor/almayer/dark_sterile,
@@ -2199,9 +2170,7 @@
 /turf/closed/wall/r_wall/unmeltable,
 /area/adminlevel/ert_station/fax_response_station)
 "wp" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station/fax_response_station)
 "wu" = (
@@ -2232,7 +2201,7 @@
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/adminlevel/ert_station/fax_response_station)
 "wE" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/corsat/white/southwest,
 /area/adminlevel/ert_station/fax_response_station)
 "wG" = (
@@ -2272,7 +2241,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "xm" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/faxmachine/uscm/highcom,
 /turf/open/floor/almayer/blue,
@@ -2514,18 +2483,14 @@
 	layer = 3.33;
 	pixel_y = 1
 	},
-/obj/structure/machinery/light/spot{
-	dir = 1
-	},
+/obj/structure/machinery/light/wide/base/north,
 /turf/open/floor/almayer/plating,
 /area/adminlevel/ert_station/fax_response_station)
 "zT" = (
 /obj/structure/coatrack{
 	pixel_x = -6
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/corsat/white/west,
 /area/adminlevel/ert_station/fax_response_station)
 "zV" = (
@@ -2662,8 +2627,7 @@
 /turf/open/floor/corsat/white/north,
 /area/adminlevel/ert_station/fax_response_station)
 "AV" = (
-/obj/structure/machinery/light/small{
-	dir = 8;
+/obj/structure/machinery/light/blub/base/west{
 	pixel_y = 1
 	},
 /turf/open/floor/almayer/dark_sterile,
@@ -2711,7 +2675,7 @@
 	dir = 1;
 	pixel_x = 25
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/blue,
 /area/adminlevel/ert_station/fax_response_station)
 "Bi" = (
@@ -2739,9 +2703,7 @@
 /obj/structure/stairs{
 	dir = 8
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/item/device/flashlight/lamp/on{
 	anchored = 1;
 	light_power = 3;
@@ -2804,7 +2766,7 @@
 /turf/open/floor/almayer/red/east,
 /area/adminlevel/ert_station/fax_response_station)
 "Cx" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/whitered,
 /area/adminlevel/ert_station/fax_response_station)
 "CN" = (
@@ -2950,7 +2912,7 @@
 	dir = 1;
 	pixel_x = -25
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/red,
 /area/adminlevel/ert_station/fax_response_station)
 "DP" = (
@@ -3119,7 +3081,7 @@
 	pixel_y = -8;
 	pixel_x = -5
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "Fr" = (
@@ -3390,7 +3352,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/fax_response_station)
 "Il" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/structure/machinery/door_control/brbutton{
 	pixel_y = 19;
 	name = "Door Controls";
@@ -3416,9 +3378,7 @@
 	pixel_y = 15;
 	pixel_x = -5
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "Iu" = (
@@ -3451,7 +3411,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "IG" = (
@@ -3505,9 +3465,7 @@
 	pixel_x = 3;
 	layer = 2.97
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/red/east,
 /area/adminlevel/ert_station/fax_response_station)
 "Ju" = (
@@ -3556,9 +3514,7 @@
 	pixel_y = -8;
 	pixel_x = -5
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "JO" = (
@@ -3603,7 +3559,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "JX" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/faxmachine/uscm/provost,
 /turf/open/floor/almayer/red,
@@ -3686,8 +3642,7 @@
 	id = "Faxes_PRESS";
 	name = "Door Controls"
 	},
-/obj/structure/machinery/light/small{
-	dir = 4;
+/obj/structure/machinery/light/blub/base/east{
 	pixel_y = 9
 	},
 /turf/open/floor/almayer/cargo_arrow,
@@ -3704,8 +3659,7 @@
 	id = "Faxes_UPP";
 	name = "Door Controls"
 	},
-/obj/structure/machinery/light/small{
-	dir = 4;
+/obj/structure/machinery/light/blub/base/east{
 	pixel_y = 7
 	},
 /turf/open/floor/shiva/multi_tiles/southeast,
@@ -3811,8 +3765,7 @@
 	id = "Faxes_HC_Ladder";
 	height = 1
 	},
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 13
 	},
 /turf/open/floor/almayer/plate,
@@ -3855,9 +3808,7 @@
 /turf/open/floor/prison/kitchen,
 /area/adminlevel/ert_station/fax_response_station)
 "Nt" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/kutjevo/colony/reinforced/hull,
 /area/adminlevel/ert_station/fax_response_station)
@@ -3882,7 +3833,7 @@
 /turf/open/gm/river/no_overlay/sewage,
 /area/adminlevel/ert_station/fax_response_station)
 "NT" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/surface/table/woodentable/fancy,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/computer/spy_camera/twe{
@@ -3997,9 +3948,7 @@
 	pixel_y = 0
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/shiva/blue/west,
 /area/adminlevel/ert_station/fax_response_station)
 "PM" = (
@@ -4159,7 +4108,7 @@
 /turf/open/floor/almayer/plating,
 /area/adminlevel/ert_station/fax_response_station)
 "RA" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "RD" = (
@@ -4193,7 +4142,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/corsat/white,
 /area/adminlevel/ert_station/fax_response_station)
 "RT" = (
@@ -4223,7 +4172,7 @@
 	icon_state = "S";
 	layer = 3.3
 	},
-/obj/structure/machinery/light/spot,
+/obj/structure/machinery/light/wide/base,
 /turf/open/floor/almayer/plating,
 /area/adminlevel/ert_station/fax_response_station)
 "Sj" = (
@@ -4274,9 +4223,7 @@
 	prices = list();
 	wires = 12
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/red/east,
 /area/adminlevel/ert_station/fax_response_station)
 "SS" = (
@@ -4508,7 +4455,7 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "UL" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "UR" = (
@@ -4520,9 +4467,7 @@
 /turf/open/floor/almayer/red/east,
 /area/adminlevel/ert_station/fax_response_station)
 "Vn" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/blue/east,
 /area/adminlevel/ert_station/fax_response_station)
 "Vq" = (
@@ -4545,9 +4490,7 @@
 /turf/open/floor/shiva/blue/north,
 /area/adminlevel/ert_station/fax_response_station)
 "VE" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/darkgreen2/west,
 /area/adminlevel/ert_station/fax_response_station)
 "VK" = (
@@ -4656,7 +4599,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/fax_response_station)
 "Xo" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/machinery/vending/walkman{
 	wrenchable = 0;
 	prices = list();
@@ -4680,8 +4623,7 @@
 	pixel_y = -1;
 	pixel_x = 25
 	},
-/obj/structure/machinery/light/small{
-	dir = 4;
+/obj/structure/machinery/light/blub/base/east{
 	pixel_y = 12
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -4708,9 +4650,7 @@
 	pixel_x = 3;
 	layer = 2.97
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/blue/west,
 /area/adminlevel/ert_station/fax_response_station)
 "XN" = (
@@ -4726,8 +4666,7 @@
 /obj/structure/stairs{
 	dir = 1
 	},
-/obj/structure/machinery/light/small{
-	dir = 4;
+/obj/structure/machinery/light/blub/base/east{
 	pixel_y = 12
 	},
 /turf/open/floor/shiva/floor3,
@@ -4750,9 +4689,7 @@
 	pixel_y = -4;
 	pixel_x = -5
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/decal/siding,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
@@ -4839,9 +4776,7 @@
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/ert_station/fax_response_station)
 "Zg" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/red/west,
 /area/adminlevel/ert_station/fax_response_station)
 "Zm" = (
@@ -4872,9 +4807,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "ZL" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
@@ -4882,7 +4815,7 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "ZP" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)

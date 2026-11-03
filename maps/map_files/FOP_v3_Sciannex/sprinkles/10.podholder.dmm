@@ -46,8 +46,7 @@
 	name = "Shuttle control deck";
 	pixel_y = 6
 	},
-/obj/structure/machinery/light/small{
-	dir = 8;
+/obj/structure/machinery/light/blub/base/west{
 	pixel_x = -11;
 	pixel_y = 10
 	},
@@ -117,8 +116,7 @@
 /turf/open/floor/almayer_hull,
 /area/template_noop)
 "V" = (
-/obj/structure/machinery/light/small{
-	dir = 8;
+/obj/structure/machinery/light/blub/base/west{
 	pixel_x = -11;
 	pixel_y = 10
 	},

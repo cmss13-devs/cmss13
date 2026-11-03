@@ -61,9 +61,7 @@
 /area/shuttle/drop3/sulaco)
 "fb" = (
 /obj/structure/shuttle/part/dropship3/right_inner_wing_connector,
-/obj/structure/machinery/light/dropship/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/dropship/blue/west,
 /turf/template_noop,
 /area/shuttle/drop3/sulaco)
 "fh" = (
@@ -140,9 +138,7 @@
 /area/shuttle/drop3/sulaco)
 "jZ" = (
 /obj/structure/shuttle/part/dropship3/transparent/middle_left_wing,
-/obj/structure/machinery/light/dropship/red{
-	dir = 8
-	},
+/obj/structure/machinery/light/dropship/red/west,
 /turf/template_noop,
 /area/shuttle/drop3/sulaco)
 "kP" = (
@@ -290,9 +286,7 @@
 /area/shuttle/drop3/sulaco)
 "wY" = (
 /obj/structure/shuttle/part/dropship3/left_inner_wing_connector,
-/obj/structure/machinery/light/dropship/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/dropship/blue/east,
 /turf/template_noop,
 /area/shuttle/drop3/sulaco)
 "xi" = (
@@ -463,9 +457,7 @@
 /area/shuttle/drop3/sulaco)
 "Ns" = (
 /obj/structure/shuttle/part/dropship3/transparent/middle_right_wing,
-/obj/structure/machinery/light/dropship/green{
-	dir = 4
-	},
+/obj/structure/machinery/light/dropship/green/east,
 /turf/template_noop,
 /area/shuttle/drop3/sulaco)
 "Nt" = (

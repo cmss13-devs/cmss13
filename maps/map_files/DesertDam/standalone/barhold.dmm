@@ -10,9 +10,7 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
@@ -112,9 +110,7 @@
 /turf/open/floor/interior/tatami,
 /area/desert_dam/building/bar/bar)
 "gE" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/carpet6_2/west,
 /area/desert_dam/building/bar/bar)
 "gO" = (
@@ -191,7 +187,7 @@
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/bar/bar)
 "kr" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/bar/bar)
 "kz" = (
@@ -296,9 +292,7 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
 "oE" = (
@@ -480,9 +474,7 @@
 /turf/closed/wall/wood,
 /area/desert_dam/building/bar/backroom)
 "zw" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
@@ -536,9 +528,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
@@ -640,7 +630,7 @@
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
 "GY" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
 "Hm" = (
@@ -731,7 +721,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/bar/backroom)
 "LJ" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/device/broken_moog{
 	icon_state = "minimoog";
 	pixel_x = -5
@@ -766,9 +756,7 @@
 /turf/closed/wall/wood,
 /area/desert_dam/building/bar/bar_restroom)
 "ML" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "MP" = (
@@ -790,7 +778,7 @@
 /obj/structure/bed/chair/wood/normal{
 	dir = 8
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
 "NV" = (
@@ -877,9 +865,7 @@
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "SH" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/grimy,
@@ -986,9 +972,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/platingdmg1,
 /area/desert_dam/building/bar/bar)
 "XX" = (

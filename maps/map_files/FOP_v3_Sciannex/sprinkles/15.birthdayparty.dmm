@@ -36,8 +36,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "o" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /obj/structure/barricade/wooden{
@@ -65,8 +64,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "B" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /turf/open/floor/prison/floor_plate,

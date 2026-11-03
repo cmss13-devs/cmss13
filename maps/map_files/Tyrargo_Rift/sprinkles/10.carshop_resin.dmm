@@ -141,7 +141,7 @@
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 4
 	},
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/fixture/base{
 	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/tile/tilelightbeige,
@@ -352,8 +352,7 @@
 	icon_state = "trash_14";
 	pixel_y = 15
 	},
-/obj/structure/machinery/light{
-	dir = 4;
+/obj/structure/machinery/light/fixture/base/east{
 	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/floor_plate,
@@ -468,8 +467,7 @@
 /area/tyrargo/indoors/admin/ground)
 "rT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 1;
+/obj/structure/machinery/light/fixture/base/north{
 	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/tile/tilelightbeige,
@@ -514,7 +512,7 @@
 /area/tyrargo/outdoors/colony_streets/north)
 "tm" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/fixture/base{
 	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/floor_plate,
@@ -963,8 +961,7 @@
 /area/tyrargo/outdoors/colony_streets/north)
 "IY" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 4;
+/obj/structure/machinery/light/fixture/base/east{
 	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/floor_plate,
@@ -1076,8 +1073,7 @@
 /area/tyrargo/indoors/gararge/ground)
 "MP" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
-/obj/structure/machinery/light{
-	dir = 1;
+/obj/structure/machinery/light/fixture/base/north{
 	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/floor_plate,

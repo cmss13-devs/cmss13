@@ -428,8 +428,7 @@
 	dir = 1;
 	pixel_y = -11
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = 14
 	},
 /turf/open/floor/prison,
@@ -668,9 +667,7 @@
 /obj/structure/surface/rack,
 /obj/item/fuel_cell,
 /obj/item/fuel_cell,
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /turf/open/floor/prison/darkyellow2/east,
 /area/white_antre/indoors/main_level/east_containment)
 "abX" = (
@@ -955,7 +952,7 @@
 	pixel_y = 6
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
@@ -1150,7 +1147,7 @@
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/hybrisa/carpet/carpetgreendeco,
 /area/white_antre/indoors/upper_level/records)
 "ada" = (
@@ -1578,11 +1575,10 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/west{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 8;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -1660,9 +1656,7 @@
 /area/white_antre/indoors/upper_level/medical)
 "aeg" = (
 /obj/structure/machinery/bioprinter,
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /turf/open/floor/strata/cyan1,
 /area/white_antre/indoors/upper_level/medical)
 "aeh" = (
@@ -1919,9 +1913,7 @@
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
 	light_color = "#FF0000";
 	light_on = 1;
@@ -2089,7 +2081,7 @@
 /obj/item/spacecash/ewallet,
 /obj/item/spacecash/ewallet,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
@@ -2217,9 +2209,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/floor/prison/green/northwest,
 /area/white_antre/indoors/upper_level/payroll)
 "afx" = (
@@ -2530,9 +2520,7 @@
 /obj/structure/toilet{
 	pixel_y = 8
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered/biege,
 /area/white_antre/indoors/upper_level/director_office)
 "agi" = (
@@ -2757,9 +2745,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	climbable = 0
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/blue/north,
 /obj/item/reagent_container/dropper{
 	pixel_x = -6;
 	pixel_y = -5
@@ -3425,11 +3411,10 @@
 /obj/structure/machinery/meter{
 	pixel_y = 32
 	},
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/west{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 8;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours.";
 	pixel_y = 8
@@ -3520,7 +3505,7 @@
 /area/white_antre/indoors/upper_level/east_overwatch)
 "ait" = (
 /obj/structure/platform/metal/hybrisa/metalplatform3,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
@@ -3539,8 +3524,7 @@
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aiw" = (
 /obj/structure/machinery/disposal,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1/southwest,
@@ -3627,15 +3611,13 @@
 /obj/structure/bed/sofa/vert/grey{
 	pixel_x = 4
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = 14
 	},
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/west{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 8;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours.";
 	pixel_y = -8
@@ -3683,8 +3665,7 @@
 	pixel_x = 32;
 	pixel_y = 5
 	},
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/item/device/radio{
@@ -3731,8 +3712,7 @@
 	pixel_y = -10;
 	layer = 2.9
 	},
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/structure/prop/server_equipment/laptop/on{
@@ -3749,8 +3729,7 @@
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = 14
 	},
 /obj/item/storage/toolbox/emergency,
@@ -3792,8 +3771,7 @@
 /obj/item/stack/medical/ointment,
 /obj/item/stack/medical/splint,
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/item/storage/pouch/survival/full/black,
@@ -3822,11 +3800,10 @@
 /area/white_antre/indoors/upper_level/east_overwatch)
 "ajd" = (
 /obj/structure/machinery/big_computers/computerbrown/computer3,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/north{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 1;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -3840,8 +3817,7 @@
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	layer = 2.9;
 	pixel_y = 9
 	},
@@ -3866,8 +3842,7 @@
 	pixel_x = 1;
 	pixel_y = 7
 	},
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	layer = 2.9;
 	pixel_y = 15
 	},
@@ -3894,8 +3869,7 @@
 	dir = 4;
 	pixel_y = 32
 	},
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	layer = 2.9;
 	pixel_y = 9
 	},
@@ -4073,11 +4047,10 @@
 /turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/upper_level/central_corridor)
 "ajQ" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/east{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 4;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours.";
 	pixel_y = 16
@@ -4161,11 +4134,10 @@
 /turf/open/asphalt/cement/cement15,
 /area/white_antre/outdoors/facility_exterior)
 "ajY" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/east{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 4;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -4174,8 +4146,7 @@
 /turf/open/floor/prison/green/west,
 /area/white_antre/indoors/main_level/west_corridor)
 "ajZ" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/effect/antre/border{
@@ -4184,8 +4155,7 @@
 /turf/open/floor/prison/green/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "aka" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/effect/decal/cleanable/generic{
@@ -4371,8 +4341,7 @@
 /turf/open/floor/almayer/plate,
 /area/white_antre/indoors/main_level/dorms)
 "akv" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/effect/antre/border{
@@ -4407,11 +4376,10 @@
 /turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "akB" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/east{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 4;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -4454,8 +4422,7 @@
 /area/white_antre/indoors/main_level/west_corridor)
 "akF" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/structure/flora/pottedplant{
@@ -4522,7 +4489,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/main_level/west_corridor)
 "akM" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/item/trash/cigbutt{
 	pixel_x = 4
 	},
@@ -4582,7 +4549,7 @@
 /turf/open/floor/antre/metal/black/north,
 /area/white_antre/indoors/main_level/west_corridor)
 "akQ" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
@@ -4632,7 +4599,7 @@
 /turf/open/floor/antre/metal/black/north,
 /area/white_antre/indoors/main_level/west_corridor)
 "akV" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/antre/border{
 	dir = 1
 	},
@@ -4804,8 +4771,7 @@
 /turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/main_level/west_corridor)
 "all" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/structure/flora/pottedplant{
@@ -4848,11 +4814,10 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/west_corridor)
 "alq" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/west{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 8;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -4988,11 +4953,10 @@
 /turf/open/antre/plating/direction_north,
 /area/white_antre/indoors/main_level/west_corridor)
 "alD" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/west{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 8;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -5077,8 +5041,7 @@
 /turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/main_level/west_corridor)
 "alH" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	layer = 2.9;
 	pixel_y = 9
 	},
@@ -5180,15 +5143,13 @@
 /obj/structure/largecrate/random/mini/chest{
 	pixel_y = 10
 	},
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/darkyellow2/west,
 /area/white_antre/indoors/main_level/engineering)
 "alR" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/darkyellow2/east,
@@ -5223,11 +5184,10 @@
 /area/white_antre/indoors/main_level/engineering)
 "alW" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/west{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 8;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -5374,11 +5334,10 @@
 /turf/open/floor/prison/bright_clean,
 /area/white_antre/indoors/main_level/engineering)
 "amo" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/east{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 4;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -5409,8 +5368,7 @@
 	pixel_y = 3
 	},
 /obj/item/ammo_magazine/smg/nailgun,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/prison,
@@ -5664,8 +5622,7 @@
 /area/white_antre/indoors/main_level/engineering)
 "amQ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	layer = 2.9;
 	pixel_y = 9
 	},
@@ -5693,8 +5650,7 @@
 /area/white_antre/indoors/main_level/engineering)
 "amU" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	layer = 2.9;
 	pixel_y = 9
 	},
@@ -5748,7 +5704,7 @@
 	pixel_x = -3;
 	pixel_y = 6
 	},
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/security)
 "anc" = (
@@ -5771,7 +5727,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/strata,
 /area/white_antre/indoors/main_level/security)
 "ang" = (
@@ -5893,8 +5849,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/darkred2/northeast,
@@ -6067,11 +6022,10 @@
 /turf/open/floor/strata,
 /area/white_antre/indoors/main_level/security)
 "anK" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/east{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 4;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -6246,8 +6200,7 @@
 /turf/open/floor/strata,
 /area/white_antre/indoors/main_level/security)
 "aof" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/structure/closet/secure_closet/security,
@@ -6260,8 +6213,7 @@
 /area/white_antre/indoors/main_level/security)
 "aog" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/darkred2/east,
@@ -6585,7 +6537,7 @@
 /area/white_antre/indoors/main_level/engineering)
 "aoE" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/antre/plating/west_corner_dir,
 /area/white_antre/indoors/main_level/west_corridor)
 "aoF" = (
@@ -6711,8 +6663,7 @@
 	pixel_x = 6
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/floor_plate,
@@ -6735,7 +6686,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/west_corridor)
 "aoT" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21";
 	pixel_y = 4;
@@ -6815,8 +6766,7 @@
 /area/white_antre/indoors/main_level/west_corridor)
 "apc" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	layer = 2.9;
 	pixel_y = 9
 	},
@@ -6850,11 +6800,10 @@
 /area/white_antre/indoors/main_level/west_corridor)
 "apf" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/north{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 1;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -6882,8 +6831,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/floor_plate,
@@ -6947,8 +6895,7 @@
 /area/white_antre/indoors/main_level/west_corridor)
 "apq" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/strata,
@@ -7147,11 +7094,10 @@
 /turf/open/floor/prison/green/west,
 /area/white_antre/indoors/main_level/west_corridor)
 "apJ" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/west{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 8;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -7364,14 +7310,11 @@
 	color = "#5d524b";
 	alpha = 155
 	},
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/floor/prison/bluefull,
 /area/white_antre/indoors/main_level/dorms)
 "aqf" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -7664,8 +7607,7 @@
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
 /area/white_antre/indoors/main_level/dorms)
 "aqN" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/almayer/flooredge/west,
@@ -7684,8 +7626,7 @@
 /turf/open/floor/prison/blue,
 /area/white_antre/indoors/main_level/east_corridor)
 "aqP" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -7703,8 +7644,7 @@
 /turf/open/floor/prison/blue/northeast,
 /area/white_antre/indoors/main_level/dorms)
 "aqS" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/blue/north,
@@ -7758,7 +7698,7 @@
 /area/white_antre/indoors/main_level/dorms)
 "aqY" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 8;
 	pixel_x = 1
@@ -7802,11 +7742,10 @@
 /turf/open/floor/strata,
 /area/white_antre/indoors/main_level/dorms)
 "ard" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/north{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 1;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -7867,11 +7806,10 @@
 /turf/open/floor/antre/metal/black/west,
 /area/white_antre/indoors/main_level/west_corridor)
 "arj" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/west{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 8;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -7903,8 +7841,7 @@
 /turf/open/floor/prison/blue_plate/north,
 /area/white_antre/indoors/main_level/dorms)
 "arp" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/strata,
@@ -8278,8 +8215,7 @@
 /turf/open/floor/prison/green,
 /area/white_antre/indoors/main_level/west_corridor)
 "asd" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	layer = 2.9;
 	pixel_y = 9
 	},
@@ -8371,7 +8307,7 @@
 /turf/open/floor/prison/green/southeast,
 /area/white_antre/indoors/main_level/west_corridor)
 "asj" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/item/ammo_casing/bullet,
 /obj/structure/pipes/standard/manifold/hidden/cyan,
 /turf/open/antre/plating/direction_north,
@@ -8429,8 +8365,7 @@
 /obj/structure/prop/hybrisa/misc/redmeter{
 	pixel_y = 32
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/effect/antre/border/edge{
@@ -8506,8 +8441,7 @@
 /turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/main_level/west_corridor)
 "asy" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/effect/antre/border,
@@ -8527,8 +8461,7 @@
 	pixel_x = -7;
 	layer = 3.6
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/floor_plate,
@@ -8545,7 +8478,7 @@
 /turf/open/floor/prison/blue/east,
 /area/white_antre/indoors/main_level/east_corridor)
 "asB" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
@@ -8559,11 +8492,10 @@
 /turf/open/floor/prison/blue/north,
 /area/white_antre/indoors/main_level/east_corridor)
 "asC" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/north{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 1;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -8598,8 +8530,7 @@
 /turf/open/floor/antre/metal/black/west,
 /area/white_antre/indoors/main_level/west_corridor)
 "asG" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	layer = 2.9;
 	pixel_y = 9
 	},
@@ -8732,8 +8663,7 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/security)
 "atd" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/strata/red3/west,
@@ -8883,8 +8813,7 @@
 /turf/open/floor/prison/blue/north,
 /area/white_antre/indoors/main_level/dorms)
 "atK" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/effect/antre/border,
@@ -9411,8 +9340,7 @@
 /area/white_antre/indoors/main_level/east_corridor)
 "avc" = (
 /obj/structure/pipes/vents/pump_hybrisa,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/floor_plate,
@@ -9475,8 +9403,7 @@
 /turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/main_level/west_corridor)
 "avi" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/structure/surface/table/almayer,
@@ -10234,7 +10161,7 @@
 /area/white_antre/indoors/main_level/north_containment)
 "awH" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
@@ -10254,7 +10181,7 @@
 /area/white_antre/indoors/main_level/north_containment)
 "awJ" = (
 /obj/structure/reagent_dispensers/tank/fuel,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/north_containment)
 "awK" = (
@@ -10269,7 +10196,7 @@
 /turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/main_level/north_containment)
 "awM" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail{
 	dir = 4
 	},
@@ -10453,7 +10380,7 @@
 /turf/open/floor/prison/cell_stripe/north,
 /area/white_antre/indoors/main_level/north_containment)
 "axg" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/north_containment)
 "axh" = (
@@ -10556,7 +10483,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain,
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
@@ -10674,7 +10601,7 @@
 /obj/effect/decal/remains/robot{
 	pixel_x = -10
 	},
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
@@ -10995,8 +10922,7 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/north_containment)
 "ayo" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	layer = 2.9;
 	pixel_y = 9
 	},
@@ -11047,8 +10973,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/north_containment)
 "ayt" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	layer = 2.9;
 	pixel_y = 9
 	},
@@ -11543,11 +11468,11 @@
 /turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/main_level/north_containment)
 "aAg" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/main_level/north_containment)
 "aAh" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/antre/border,
 /turf/open/floor/prison/ramptop/east,
 /area/white_antre/indoors/main_level/north_containment)
@@ -11667,8 +11592,7 @@
 /turf/open/floor/prison/ramptop/north,
 /area/white_antre/indoors/main_level/north_containment)
 "aAx" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/structure/barricade/handrail,
@@ -11880,8 +11804,7 @@
 /turf/open/floor/prison/ramptop/east,
 /area/white_antre/indoors/main_level/north_containment)
 "aBe" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	layer = 2.9;
 	pixel_y = 9
 	},
@@ -11967,7 +11890,7 @@
 /turf/open/floor/plating,
 /area/white_antre/indoors/main_level/north_containment_hive)
 "aBo" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/almayer/floor,
 /area/white_antre/indoors/main_level/north_containment_hive)
 "aBp" = (
@@ -11993,39 +11916,34 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/north_containment_hive)
 "aBt" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/almayer/silver/east,
 /area/white_antre/indoors/main_level/north_containment_hive)
 "aBu" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	layer = 2.9;
 	pixel_y = 9
 	},
 /turf/open/floor/almayer/silver/north,
 /area/white_antre/indoors/main_level/north_containment_hive)
 "aBv" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/almayer/silverfull,
 /area/white_antre/indoors/main_level/north_containment_hive)
 "aBw" = (
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /turf/open/floor/almayer/silverfull,
 /area/white_antre/indoors/main_level/north_containment_hive)
 "aBx" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/almayer/silvercorner/south,
 /area/white_antre/indoors/main_level/north_containment_hive)
 "aBy" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/almayer/silvercorner/west,
 /area/white_antre/indoors/main_level/north_containment_hive)
 "aBz" = (
@@ -12036,8 +11954,7 @@
 	status = 1;
 	icon_state = "Egg Opened"
 	},
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	layer = 2.9;
 	pixel_y = 9
 	},
@@ -12101,7 +12018,7 @@
 /turf/open/floor/hybrisa/metal/bluemetalcorner,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aBK" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/hybrisa/metal,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aBL" = (
@@ -12250,8 +12167,7 @@
 	pixel_y = 12;
 	dir = 8
 	},
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1/northeast,
@@ -12260,7 +12176,7 @@
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aCg" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
@@ -12273,7 +12189,7 @@
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aCh" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/structure/closet/emcloset,
 /obj/item/storage/toolbox/emergency,
 /obj/item/storage/firstaid/regular,
@@ -12285,7 +12201,7 @@
 "aCj" = (
 /obj/structure/platform/metal/hybrisa/metalplatform3,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/prison/blue_plate/north,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aCk" = (
@@ -12551,11 +12467,10 @@
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/west{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 8;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours.";
 	pixel_y = 8
@@ -12673,8 +12588,7 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/northeast,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aDg" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/structure/largecrate/empty/case/double{
@@ -12693,8 +12607,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1/southeast,
@@ -12720,11 +12633,10 @@
 	pixel_y = 12
 	},
 /obj/structure/closet/emcloset,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/west{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 8;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -12803,11 +12715,10 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/west,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aDv" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/west{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 8;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -12839,9 +12750,7 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aDy" = (
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/floor/hybrisa/metal/bluemetal1/north,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aDz" = (
@@ -12924,7 +12833,7 @@
 	icon_state = "S"
 	},
 /obj/structure/largecrate/empty/case/double,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
@@ -12987,7 +12896,7 @@
 /area/white_antre/indoors/main_level/research)
 "aDP" = (
 /obj/structure/cargo_container/hybrisa/containersextended/lightgreywyleft,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
@@ -13071,9 +12980,7 @@
 /area/white_antre/indoors/main_level/research)
 "aDY" = (
 /obj/structure/largecrate/empty/case/double,
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /turf/open/floor/almayer/emeraldfull2,
 /area/white_antre/indoors/main_level/research)
 "aDZ" = (
@@ -13134,11 +13041,10 @@
 /area/white_antre/indoors/main_level/research)
 "aEg" = (
 /obj/structure/largecrate/empty/case/double,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/west{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 8;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -13178,9 +13084,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /turf/open/floor/almayer/emerald2smooth/west,
 /area/white_antre/indoors/main_level/research)
 "aEo" = (
@@ -13213,16 +13117,12 @@
 /turf/open/floor/almayer/emerald2smooth/west,
 /area/white_antre/indoors/main_level/research)
 "aEs" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/almayer/emerald2smooth/east,
 /area/white_antre/indoors/main_level/research)
 "aEv" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
@@ -13294,20 +13194,17 @@
 	pixel_x = -6;
 	pixel_y = -1
 	},
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/west{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 8;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
 /turf/open/floor/almayer/emeraldfull2,
 /area/white_antre/indoors/main_level/research)
 "aEK" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /obj/structure/largecrate/empty/case,
 /turf/open/floor/almayer/emerald2smooth/east,
 /area/white_antre/indoors/main_level/research)
@@ -13318,9 +13215,7 @@
 /obj/structure/machinery/computer/objective{
 	dir = 8
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /turf/open/floor/almayer/silver/west,
 /area/white_antre/indoors/main_level/research)
 "aEN" = (
@@ -13416,9 +13311,7 @@
 /turf/open/floor/almayer/emerald2smooth/southeast,
 /area/white_antre/indoors/main_level/research)
 "aFn" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /turf/open/floor/almayer/emeraldfull2,
 /area/white_antre/indoors/main_level/research)
 "aFo" = (
@@ -13426,9 +13319,7 @@
 /turf/open/floor/almayer/emerald2smooth/southwest,
 /area/white_antre/indoors/main_level/research)
 "aFp" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/blue/north,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 2
@@ -13453,9 +13344,7 @@
 /turf/open/floor/strata/gray_multi_tiles,
 /area/white_antre/indoors/main_level/research)
 "aFt" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/blue/north,
 /turf/open/floor/strata/gray_multi_tiles,
 /area/white_antre/indoors/main_level/research)
 "aFu" = (
@@ -13489,9 +13378,7 @@
 /turf/open/floor/almayer/emerald2smooth/north,
 /area/white_antre/indoors/main_level/research)
 "aFy" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/blue/north,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 2
@@ -13512,11 +13399,10 @@
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 20
 	},
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/east{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 4;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours.";
 	pixel_y = 8
@@ -13567,7 +13453,7 @@
 "aFF" = (
 /obj/item/ammo_casing/bullet,
 /obj/effect/alien/weeds/kseries,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/antre/border{
 	dir = 1
 	},
@@ -13595,7 +13481,7 @@
 /obj/structure/prop/hybrisa/misc/blood/blood3{
 	pixel_y = -29
 	},
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/antre/border{
 	dir = 1
 	},
@@ -13843,11 +13729,10 @@
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGi" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/east{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 4;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours.";
 	pixel_y = -8
@@ -13900,8 +13785,7 @@
 /obj/structure/bed/chair/comfy/orange{
 	dir = 8
 	},
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/floor_plate,
@@ -14176,11 +14060,10 @@
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGU" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/east{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 4;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours.";
 	pixel_y = 8
@@ -14436,8 +14319,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/reagent_dispensers/tank/fuel,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	layer = 2.9;
 	pixel_y = 9
 	},
@@ -14533,11 +14415,10 @@
 /turf/open/antre/plating/west_corner_dir/south_east,
 /area/white_antre/indoors/main_level/west_corridor)
 "aHA" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/east{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 4;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours.";
 	pixel_y = 16
@@ -14554,7 +14435,7 @@
 /turf/open/floor/prison/blue/north,
 /area/white_antre/indoors/main_level/east_corridor)
 "aHC" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
@@ -14593,7 +14474,7 @@
 /turf/open/floor/prison/blue/northeast,
 /area/white_antre/indoors/main_level/east_corridor)
 "aHF" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/antre/border{
 	dir = 1
 	},
@@ -14680,7 +14561,7 @@
 /turf/open/antre/plating/west_corner_dir/south_east,
 /area/white_antre/indoors/main_level/east_corridor)
 "aHQ" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
 	alpha = 155
@@ -14734,9 +14615,7 @@
 /turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/main_level/east_corridor)
 "aHW" = (
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/main_level/east_corridor)
 "aHX" = (
@@ -14838,9 +14717,7 @@
 	pixel_y = -5;
 	current_rounds = 24
 	},
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /obj/effect/antre/border{
 	dir = 8
 	},
@@ -14873,11 +14750,10 @@
 /area/white_antre/indoors/main_level/east_corridor)
 "aIj" = (
 /obj/structure/bed/chair/comfy/blue,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/north{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 1;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -15061,9 +14937,7 @@
 /obj/structure/machinery/big_computers/computerwhite/computer2{
 	pixel_x = 10
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /turf/open/floor/almayer/silver/east,
 /area/white_antre/indoors/main_level/research)
 "aIJ" = (
@@ -15255,9 +15129,7 @@
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/white_antre/indoors/main_level/research)
 "aJd" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
@@ -16055,8 +15927,7 @@
 /turf/closed/wall/r_wall/bunker,
 /area/white_antre/indoors/main_level/east_containment)
 "aLX" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/structure/surface/table/almayer{
@@ -16167,9 +16038,7 @@
 /turf/open/floor/prison/darkred2/north,
 /area/white_antre/indoors/exterior/checkpoint)
 "aMn" = (
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /turf/open/floor/prison/darkred2/northeast,
 /area/white_antre/indoors/exterior/checkpoint)
 "aMo" = (
@@ -16710,8 +16579,7 @@
 	start_charge = 20
 	},
 /obj/structure/machinery/vending/cola,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -17383,7 +17251,7 @@
 "aQJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/vents/pump_hybrisa,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/prison/darkbrown2/southwest,
 /area/white_antre/indoors/upper_level/ancillery_storage)
 "aQK" = (
@@ -17447,8 +17315,7 @@
 /turf/open/floor/almayer/silvercorner/west,
 /area/white_antre/indoors/upper_level/canteen)
 "aQW" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/item/clothing/head/helmet/marine/veteran/pmc/sniper,
@@ -17962,7 +17829,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/south_containment)
 "aSq" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/south_containment)
 "aSr" = (
@@ -18005,7 +17872,7 @@
 /area/white_antre/indoors/main_level/south_containment)
 "aSv" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/south_containment)
 "aSw" = (
@@ -18041,7 +17908,7 @@
 /area/white_antre/indoors/main_level/south_containment)
 "aSB" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/radiator_tile2,
 /area/white_antre/indoors/main_level/south_containment)
 "aSC" = (
@@ -18207,9 +18074,7 @@
 /turf/open/floor/prison/red/northeast,
 /area/white_antre/indoors/main_level/south_containment)
 "aTe" = (
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/south_containment)
 "aTf" = (
@@ -18226,9 +18091,7 @@
 /turf/open/floor/prison/darkbrown2,
 /area/white_antre/indoors/main_level/south_containment)
 "aTi" = (
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/floor/prison/ramptop/north,
 /area/white_antre/indoors/main_level/south_containment)
 "aTj" = (
@@ -18277,9 +18140,7 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "aTq" = (
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/main_level/south_containment)
 "aTr" = (
@@ -18288,15 +18149,11 @@
 /area/white_antre/indoors/main_level/south_containment)
 "aTs" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/main_level/south_containment)
 "aTt" = (
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /obj/effect/antre/border,
 /turf/open/floor/prison/ramptop/east,
 /area/white_antre/indoors/main_level/south_containment)
@@ -18311,8 +18168,7 @@
 /turf/open/floor/almayer_hull,
 /area/white_antre/indoors/main_level/south_containment)
 "aTv" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/strata/green3/north,
@@ -18327,11 +18183,10 @@
 /area/white_antre/indoors/main_level/weapons)
 "aTy" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/east{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 4;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -18384,11 +18239,11 @@
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/main_level/weapons)
 "aTG" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/strata/green4/north,
 /area/white_antre/indoors/main_level/weapons)
 "aTH" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/strata/green4,
 /area/white_antre/indoors/main_level/weapons)
 "aTI" = (
@@ -18410,9 +18265,7 @@
 /turf/open/floor/strata/green3/north,
 /area/white_antre/indoors/main_level/weapons)
 "aTL" = (
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /turf/open/floor/strata/green3/north,
 /area/white_antre/indoors/main_level/weapons)
 "aTM" = (
@@ -18486,8 +18339,7 @@
 /area/white_antre/indoors/main_level/weapons)
 "aTV" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/structure/machinery/meter{
@@ -18660,9 +18512,7 @@
 /turf/open/floor/strata/floor2,
 /area/white_antre/indoors/main_level/weapons)
 "aUo" = (
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /obj/structure/prop/hybrisa/misc/redmeter{
 	pixel_y = 32
 	},
@@ -18795,8 +18645,7 @@
 	layer = 5;
 	level = 2
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/strata/multi_tiles/west,
@@ -18895,12 +18744,12 @@
 /obj/structure/barricade/metal{
 	dir = 1
 	},
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/strata/floor2,
 /area/white_antre/indoors/main_level/weapons)
 "aUN" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
@@ -19001,9 +18850,7 @@
 /obj/structure/reagent_dispensers/tank/fuel{
 	anchored = 1
 	},
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /turf/open/floor/strata/floor2,
 /area/white_antre/indoors/main_level/weapons)
 "aUZ" = (
@@ -19016,8 +18863,7 @@
 /area/white_antre/indoors/main_level/weapons)
 "aVb" = (
 /obj/structure/barricade/metal,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	layer = 2.9;
 	pixel_y = 9
 	},
@@ -19078,8 +18924,7 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/weapons)
 "aVi" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/strata/green3/east,
@@ -19170,9 +19015,7 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "aVu" = (
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /turf/open/floor/strata/floor2,
 /area/white_antre/indoors/main_level/weapons)
 "aVv" = (
@@ -19188,11 +19031,10 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/weapons)
 "aVx" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/north{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 1;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -19219,8 +19061,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	layer = 2.9;
 	pixel_y = 9
 	},
@@ -19620,7 +19461,7 @@
 /area/white_antre/outdoors/south_field)
 "aWH" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/structure/largecrate/supply/floodlights,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/floor_plate/southwest,
@@ -19950,7 +19791,7 @@
 /turf/open/floor/prison,
 /area/white_antre/landing_zone/roof)
 "aXI" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/hybrisa/metal/bluemetalfull,
 /area/white_antre/landing_zone/roof)
 "aXJ" = (
@@ -20002,9 +19843,7 @@
 /area/white_antre/outdoors/south_field)
 "aXQ" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/hybrisa/metal/bluemetalfull,
 /area/white_antre/landing_zone/roof)
@@ -20065,8 +19904,7 @@
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/south_field)
 "aYa" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/effect/antre/border{
@@ -20106,9 +19944,7 @@
 /turf/open/floor/prison/red,
 /area/white_antre/indoors/main_level/east_containment)
 "aYg" = (
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /turf/open/floor/prison/bluefull,
 /area/white_antre/landing_zone/roof)
 "aYh" = (
@@ -20305,8 +20141,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/white_antre/indoors/exterior/ext_relay_north)
 "aYG" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/red/west,
@@ -20329,9 +20164,7 @@
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /turf/open/floor/prison/red/east,
 /area/white_antre/indoors/main_level/east_containment)
 "aYK" = (
@@ -20445,8 +20278,7 @@
 /area/white_antre/landing_zone)
 "aZb" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/bluefull,
@@ -20722,8 +20554,7 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "aZQ" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/darkyellow2/east,
@@ -21211,8 +21042,7 @@
 /area/white_antre/outdoors/road_east)
 "baT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/darkyellow2/east,
@@ -21616,9 +21446,7 @@
 /turf/open/floor/prison/darkred2,
 /area/white_antre/indoors/exterior/checkpoint)
 "bbH" = (
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /turf/open/floor/prison/darkred2/southeast,
 /area/white_antre/indoors/exterior/checkpoint)
 "bbI" = (
@@ -21644,8 +21472,7 @@
 	},
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = 14
 	},
 /turf/open/floor/prison,
@@ -21808,8 +21635,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/white_antre/outdoors/north_field)
 "bcf" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/structure/reagent_dispensers/water_cooler{
@@ -22143,8 +21969,7 @@
 /area/white_antre/outdoors/road_east)
 "bcW" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/darkbrown3/southwest,
@@ -22318,8 +22143,7 @@
 "bds" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /obj/structure/barricade/handrail,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/darkpurple2/east,
@@ -22410,9 +22234,7 @@
 /area/white_antre/indoors/exterior/ext_relay_north)
 "bdD" = (
 /obj/structure/machinery/telecomms/bus/preset_four,
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /turf/open/floor/prison/darkbrown3/northeast,
 /area/white_antre/indoors/exterior/ext_relay_north)
 "bdE" = (
@@ -22446,9 +22268,7 @@
 /area/white_antre/landing_zone/roof)
 "bdI" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /obj/item/device/flashlight/lamp{
 	pixel_x = -8;
 	pixel_y = 12
@@ -22488,8 +22308,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/white_antre/outdoors/north_field)
 "bdO" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/effect/decal/cleanable/generic{
@@ -22564,7 +22383,7 @@
 	dir = 4;
 	pixel_y = 4
 	},
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/prison/darkbrownfull2,
 /area/white_antre/landing_zone/roof)
 "bdZ" = (
@@ -22711,9 +22530,7 @@
 	pixel_x = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/floor/prison/darkbrownfull2,
 /area/white_antre/landing_zone/roof)
 "bex" = (
@@ -23944,7 +23761,7 @@
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail{
 	dir = 8
 	},
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/prison/green/southwest,
 /area/white_antre/indoors/upper_level/payroll)
 "bhZ" = (
@@ -24035,8 +23852,7 @@
 "biq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/vending/cigarette/wy,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/green/southwest,
@@ -24116,8 +23932,7 @@
 /area/white_antre/indoors/upper_level/west_corridor)
 "biF" = (
 /obj/structure/machinery/disposal,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/green/northwest,
@@ -24133,7 +23948,7 @@
 	name = "bunker hatch";
 	desc = "Some kind of emergency shelter, this one seems to be locked up tight."
 	},
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
@@ -24152,8 +23967,7 @@
 /area/white_antre/indoors/upper_level/central_command)
 "biK" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/blue/southwest,
@@ -24470,8 +24284,7 @@
 /area/white_antre/outdoors/facility_exterior)
 "bjZ" = (
 /obj/structure/largecrate/empty/case/double,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/structure/barricade/handrail{
@@ -24600,7 +24413,7 @@
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "bks" = (
-/obj/structure/machinery/light/red{
+/obj/structure/machinery/light/fixture/red{
 	light_color = "#BB3F3F"
 	},
 /turf/open/floor/prison,
@@ -24627,7 +24440,7 @@
 /area/white_antre/indoors/underground_level/west_maint)
 "bkw" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/red,
+/obj/structure/machinery/light/fixture/red,
 /turf/open/floor/prison,
 /area/white_antre/indoors/underground_level/west_maint)
 "bkx" = (
@@ -24651,7 +24464,7 @@
 /turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/underground_level/west_maint)
 "bkz" = (
-/obj/structure/machinery/light/red,
+/obj/structure/machinery/light/fixture/red,
 /turf/open/floor/prison,
 /area/white_antre/indoors/underground_level/west_maint)
 "bkA" = (
@@ -24765,17 +24578,15 @@
 /area/white_antre/indoors/underground_level/east_maint)
 "bkR" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 1
+/obj/structure/machinery/light/fixture/red/north{
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/prison,
 /area/white_antre/indoors/underground_level/east_maint)
 "bkS" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 4
+/obj/structure/machinery/light/fixture/red/east{
+	light_color = "#BB3F3F"
 	},
 /obj/effect/antre/border,
 /turf/open/floor/prison/darkpurple2/west,
@@ -24839,9 +24650,8 @@
 /turf/open/floor/prison/darkpurple2/east,
 /area/white_antre/indoors/underground_level/east_maint)
 "ble" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 8
+/obj/structure/machinery/light/fixture/red/west{
+	light_color = "#BB3F3F"
 	},
 /obj/effect/antre/border{
 	dir = 4
@@ -24878,7 +24688,7 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/underground_level/west_maint)
 "blk" = (
-/obj/structure/machinery/light/red{
+/obj/structure/machinery/light/fixture/red{
 	light_color = "#BB3F3F"
 	},
 /obj/effect/antre/border,
@@ -24893,9 +24703,8 @@
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/exterior/ext_relay_south)
 "bln" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 8
+/obj/structure/machinery/light/fixture/red/west{
+	light_color = "#BB3F3F"
 	},
 /obj/effect/antre/border{
 	dir = 4
@@ -24908,7 +24717,7 @@
 /turf/open/floor/prison/darkred2/northwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "blp" = (
-/obj/structure/machinery/light/red{
+/obj/structure/machinery/light/fixture/red{
 	light_color = "#BB3F3F"
 	},
 /obj/effect/antre/border{
@@ -25032,14 +24841,13 @@
 /turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/underground_level/west_maint)
 "blE" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 1
+/obj/structure/machinery/light/fixture/red/north{
+	light_color = "#BB3F3F"
 	},
 /turf/open/antre/plating/west_corner_dir/north_east,
 /area/white_antre/indoors/underground_level/west_maint)
 "blF" = (
-/obj/structure/machinery/light/red{
+/obj/structure/machinery/light/fixture/red{
 	light_color = "#BB3F3F"
 	},
 /turf/open/antre/plating/west_corner_dir,
@@ -25167,9 +24975,8 @@
 /turf/open/floor/prison/darkpurple2/southeast,
 /area/white_antre/indoors/underground_level/east_maint)
 "blS" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 8
+/obj/structure/machinery/light/fixture/red/west{
+	light_color = "#BB3F3F"
 	},
 /obj/effect/antre/border{
 	dir = 4
@@ -25241,7 +25048,7 @@
 /area/white_antre/indoors/underground_level/east_maint)
 "blZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/red{
+/obj/structure/machinery/light/fixture/red{
 	light_color = "#BB3F3F"
 	},
 /turf/open/floor/prison/floor_plate/southwest,
@@ -25253,7 +25060,7 @@
 "bmb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/red{
+/obj/structure/machinery/light/fixture/red{
 	light_color = "#BB3F3F"
 	},
 /turf/open/floor/prison/floor_plate/southwest,
@@ -25273,9 +25080,8 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/underground_level/east_maint)
 "bmf" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 4
+/obj/structure/machinery/light/fixture/red/east{
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/prison/yellow,
 /area/white_antre/indoors/underground_level/east_maint)
@@ -25317,7 +25123,7 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "bmm" = (
-/obj/structure/machinery/light/red{
+/obj/structure/machinery/light/fixture/red{
 	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -25427,7 +25233,7 @@
 /turf/solid_open_space,
 /area/white_antre/oob)
 "bmA" = (
-/obj/structure/machinery/light/red,
+/obj/structure/machinery/light/fixture/red,
 /obj/structure/largecrate/random/case,
 /obj/item/stack/sheet/metal/med_small_stack,
 /obj/item/stack/sheet/metal/med_small_stack,
@@ -25529,9 +25335,8 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "bmR" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 1
+/obj/structure/machinery/light/fixture/red/north{
+	light_color = "#BB3F3F"
 	},
 /turf/open/antre/plating/west_corner_dir/north_west,
 /area/white_antre/indoors/underground_level/east_maint)
@@ -25563,9 +25368,8 @@
 /area/white_antre/indoors/underground_level/west_maint)
 "bmW" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 1
+/obj/structure/machinery/light/fixture/red/north{
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/underground_level/west_maint)
@@ -25683,9 +25487,8 @@
 /area/white_antre/indoors/underground_level/east_maint)
 "bnk" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 1
+/obj/structure/machinery/light/fixture/red/north{
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/underground_level/west_maint)
@@ -25699,9 +25502,8 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnm" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 4
+/obj/structure/machinery/light/fixture/red/east{
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/prison/yellow/north,
 /area/white_antre/indoors/underground_level/east_maint)
@@ -25798,7 +25600,7 @@
 /turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnA" = (
-/obj/structure/machinery/light/red{
+/obj/structure/machinery/light/fixture/red{
 	light_color = "#BB3F3F"
 	},
 /turf/open/antre/plating/west_corner_dir/south_east,
@@ -25851,9 +25653,8 @@
 /turf/open/floor/prison/darkbrown2/southwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnJ" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 1
+/obj/structure/machinery/light/fixture/red/north{
+	light_color = "#BB3F3F"
 	},
 /obj/effect/antre/border{
 	dir = 8
@@ -26033,9 +25834,8 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "boe" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 1
+/obj/structure/machinery/light/fixture/red/north{
+	light_color = "#BB3F3F"
 	},
 /obj/effect/antre/border,
 /turf/open/floor/prison/green/west,
@@ -26046,9 +25846,8 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/underground_level/east_maint)
 "bog" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 8
+/obj/structure/machinery/light/fixture/red/west{
+	light_color = "#BB3F3F"
 	},
 /obj/effect/antre/border{
 	dir = 4
@@ -26086,9 +25885,8 @@
 	color = "#5d524b";
 	alpha = 155
 	},
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 8
+/obj/structure/machinery/light/fixture/red/west{
+	light_color = "#BB3F3F"
 	},
 /obj/effect/antre/border{
 	dir = 4
@@ -26112,16 +25910,15 @@
 /area/white_antre/indoors/underground_level/west_maint)
 "bop" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/red{
+/obj/structure/machinery/light/fixture/red{
 	light_color = "#BB3F3F"
 	},
 /turf/open/floor/prison,
 /area/white_antre/indoors/underground_level/east_maint)
 "boq" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 4
+/obj/structure/machinery/light/fixture/red/east{
+	light_color = "#BB3F3F"
 	},
 /obj/effect/antre/border,
 /turf/open/floor/prison/green/west,
@@ -26184,9 +25981,8 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/underground_level/west_maint)
 "boA" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 1
+/obj/structure/machinery/light/fixture/red/north{
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/prison,
 /area/white_antre/indoors/underground_level/west_maint)
@@ -26199,9 +25995,8 @@
 /area/white_antre/indoors/underground_level/west_maint)
 "boC" = (
 /obj/structure/prop/almayer/computers/sensor_computer3,
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 1
+/obj/structure/machinery/light/fixture/red/north{
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/prison,
 /area/white_antre/indoors/underground_level/west_maint)
@@ -26218,9 +26013,8 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/underground_level/east_maint)
 "boF" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 1
+/obj/structure/machinery/light/fixture/red/north{
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/prison,
 /area/white_antre/indoors/underground_level/east_maint)
@@ -26650,8 +26444,7 @@
 "bpR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/vending/snack,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -26962,7 +26755,7 @@
 /turf/open/floor/prison/green/west,
 /area/white_antre/indoors/main_level/west_corridor)
 "bqF" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/strata/white_cyan3/northwest,
 /area/white_antre/indoors/upper_level/medical)
 "bqG" = (
@@ -27075,8 +26868,7 @@
 /turf/open/floor/prison/green,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bqU" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/structure/bed/chair/comfy/lime{
@@ -27092,9 +26884,7 @@
 /area/white_antre/indoors/upper_level/east_corridor)
 "bqW" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_29"
 	},
@@ -27354,9 +27144,7 @@
 /area/white_antre/indoors/upper_level/east_corridor)
 "brF" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/east_corridor)
@@ -27369,8 +27157,7 @@
 /obj/structure/barricade/handrail{
 	dir = 1
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/green/north,
@@ -27443,11 +27230,10 @@
 /turf/closed/wall/hybrisa/research/reinforced,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brP" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/east{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 4;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -27503,11 +27289,10 @@
 /turf/open/antre/plating/direction_north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brW" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/east{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 4;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -27517,8 +27302,7 @@
 /turf/open/floor/prison/green/southwest,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brX" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/structure/barricade/handrail,
@@ -27532,9 +27316,7 @@
 /turf/open/floor/prison/green/southwest,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brZ" = (
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/antre/border/edge,
 /turf/open/floor/prison/greencorner/west,
@@ -27609,11 +27391,10 @@
 	pixel_x = -5;
 	pixel_y = 3
 	},
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/west{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 8;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours.";
 	pixel_y = 8
@@ -27673,11 +27454,10 @@
 /turf/open/floor/corsat,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "bsu" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/west{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 8;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours.";
 	pixel_y = 8
@@ -27686,9 +27466,8 @@
 /area/white_antre/indoors/upper_level/east_corridor)
 "bsv" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 8
+/obj/structure/machinery/light/fixture/red/west{
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/corsat,
 /area/white_antre/indoors/upper_level/east_overwatch)
@@ -27714,8 +27493,7 @@
 /turf/open/floor/corsat,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "bsz" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/prison,
@@ -27724,9 +27502,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_29"
 	},
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bsB" = (
@@ -27774,8 +27550,7 @@
 /turf/open/floor/prison/darkbrown2/northeast,
 /area/white_antre/indoors/main_level/east_containment)
 "bsI" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/almayer_hull/outerhull_dir/north,
@@ -27873,21 +27648,17 @@
 	dir = 1;
 	layer = 2.51
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/upper_level/central_corridor)
 "bta" = (
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/upper_level/central_corridor)
 "btb" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/almayer_hull/outerhull_dir,
@@ -27911,7 +27682,7 @@
 	pixel_x = -8;
 	pixel_y = 29
 	},
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/item/tool/weldingtool/screen{
 	pixel_x = 6;
 	pixel_y = 11
@@ -28015,7 +27786,7 @@
 /area/white_antre/indoors/upper_level/central_corridor)
 "btq" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
@@ -28152,8 +27923,7 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/southwest,
 /area/white_antre/indoors/upper_level/central_corridor)
 "btG" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/antre/metal/black/southeast,
@@ -28269,8 +28039,7 @@
 /obj/effect/spawner/gibspawner/xeno,
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/corsat/marked,
@@ -28285,8 +28054,7 @@
 /area/white_antre/indoors/main_level/east_containment)
 "btZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/darkbrown2/west,
@@ -28349,7 +28117,7 @@
 /turf/open/antre/plating/west_corner_dir,
 /area/white_antre/indoors/upper_level/central_corridor)
 "buf" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/antre/border{
 	dir = 1
 	},
@@ -28495,8 +28263,7 @@
 /turf/open/floor/prison/darkbrown2/southwest,
 /area/white_antre/indoors/main_level/east_containment)
 "buB" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/darkbrown2/west,
@@ -28516,7 +28283,7 @@
 /area/white_antre/indoors/upper_level/medical)
 "buE" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/strata/white_cyan2,
 /area/white_antre/indoors/upper_level/medical)
 "buF" = (
@@ -28553,7 +28320,7 @@
 /turf/open/floor/strata/white_cyan2,
 /area/white_antre/indoors/upper_level/medical)
 "buH" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/strata/white_cyan2,
 /area/white_antre/indoors/upper_level/medical)
 "buI" = (
@@ -28591,7 +28358,7 @@
 /turf/open/floor/prison/southwest,
 /area/white_antre/indoors/upper_level/xenobio)
 "buM" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
@@ -28611,7 +28378,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/white_antre/indoors/upper_level/xenobio)
 "buP" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
@@ -28932,11 +28699,10 @@
 /turf/open/floor/hybrisa/metal,
 /area/white_antre/indoors/upper_level/central_corridor)
 "bvI" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/north{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 1;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -29002,8 +28768,7 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/east_containment)
 "bvQ" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/corsat/marked,
@@ -29157,9 +28922,7 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/east_containment)
 "bwk" = (
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/floor/prison/darkbrown2/north,
 /area/white_antre/indoors/upper_level/ancillery_storage)
 "bwl" = (
@@ -29223,9 +28986,7 @@
 	layer = 5;
 	level = 2
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /turf/open/floor/almayer/silver/west,
 /area/white_antre/indoors/main_level/research)
 "bwt" = (
@@ -29289,7 +29050,7 @@
 	icon_state = "trash_7";
 	pixel_x = -13
 	},
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
@@ -29374,9 +29135,7 @@
 /turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/upper_level/central_corridor)
 "bwJ" = (
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /obj/effect/antre/border{
 	dir = 8
 	},
@@ -29574,11 +29333,10 @@
 /area/white_antre/indoors/upper_level/medical)
 "bxd" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/north{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 1;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -29715,9 +29473,7 @@
 /turf/open/floor/prison/ramptop/east,
 /area/white_antre/indoors/main_level/north_containment)
 "bxt" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /turf/open/floor/corsat/spiralplate,
 /area/white_antre/indoors/upper_level/xenobio)
 "bxu" = (
@@ -29772,7 +29528,7 @@
 /turf/open/floor/strata/white_cyan1/east,
 /area/white_antre/indoors/upper_level/medical)
 "bxA" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/strata/white_cyan1/east,
 /area/white_antre/indoors/upper_level/medical)
 "bxB" = (
@@ -30066,22 +29822,16 @@
 /turf/open/floor/prison/ramptop/north,
 /area/white_antre/indoors/main_level/north_containment)
 "bym" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/white_antre/indoors/upper_level/xenobio)
 "byn" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/white_antre/indoors/upper_level/xenobio)
 "byo" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /obj/effect/decal/cleanable/dirt{
 	icon_state = "thermite";
 	name = "impact"
@@ -30113,9 +29863,7 @@
 /obj/item/clothing/suit/bio_suit/wy_bio,
 /obj/item/clothing/head/bio_hood/wy_bio,
 /obj/item/clothing/head/bio_hood/wy_bio,
-/obj/structure/machinery/light/double/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/blue/north,
 /turf/open/floor/prison/southwest,
 /area/white_antre/indoors/upper_level/xenobio)
 "byt" = (
@@ -30212,11 +29960,10 @@
 	pixel_x = -12;
 	pixel_y = 1
 	},
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/north{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 1;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -30251,9 +29998,7 @@
 	icon_state = "triagedecalleft";
 	color = "#d3d3d3"
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/blue/north,
 /turf/open/floor/corsat/spiralplate,
 /area/white_antre/indoors/upper_level/xenobio)
 "byF" = (
@@ -30268,9 +30013,7 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/east_containment)
 "byG" = (
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/floor/prison/green/north,
 /area/white_antre/indoors/main_level/east_containment)
 "byH" = (
@@ -31696,7 +31439,7 @@
 /turf/open/floor/hybrisa/metal/bluemetal1,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bBZ" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/metal/bluemetal1,
 /area/white_antre/indoors/upper_level/south_overwatch)
@@ -31722,7 +31465,7 @@
 /turf/open/floor/plating,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bCd" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
@@ -31758,11 +31501,10 @@
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bCk" = (
 /obj/structure/platform/metal/hybrisa/metalplatform3/west,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/west{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 8;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -31785,11 +31527,10 @@
 "bCo" = (
 /obj/structure/platform/metal/hybrisa/metalplatform3/east,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/east{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 4;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -31842,7 +31583,7 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/north,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bCx" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/hybrisa/metal/bluemetal1/southeast,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bCy" = (
@@ -31852,7 +31593,7 @@
 /turf/open/floor/prison/bright_clean2,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bCz" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/hybrisa/metal/bluemetalfull,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bCA" = (
@@ -31862,7 +31603,7 @@
 /turf/open/floor/prison/bright_clean2,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bCB" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/metal/bluemetalfull,
 /area/white_antre/indoors/upper_level/south_overwatch)
@@ -31892,19 +31633,17 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bCG" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/west{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 8;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
 /turf/open/floor/corsat/brown,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bCH" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1/west,
@@ -31978,8 +31717,7 @@
 /obj/effect/spawner/random/toolbox{
 	layer = 4
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/corsat/squares,
@@ -32212,11 +31950,11 @@
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bDw" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/white_antre/indoors/exterior/prefab_3)
 "bDx" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
@@ -32441,8 +32179,7 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/north,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bEd" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	layer = 2.9;
 	pixel_y = 9
 	},
@@ -32554,8 +32291,7 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/north,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bEn" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	layer = 2.9;
 	pixel_y = 9
 	},
@@ -32588,8 +32324,7 @@
 /turf/open/floor/hybrisa/metal/bluemetalcorner/north,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bEr" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	layer = 2.9;
 	pixel_y = 9
 	},
@@ -32602,7 +32337,7 @@
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bEt" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/prison/darkyellow2/southeast,
 /area/white_antre/indoors/exterior/prefab_3)
 "bEu" = (
@@ -32612,8 +32347,7 @@
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bEv" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	layer = 2.9;
 	pixel_y = 9
 	},
@@ -32651,11 +32385,10 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#8B7B5B"
 	},
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/north{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 1;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -32672,11 +32405,10 @@
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bEC" = (
 /obj/structure/bed/sofa/south/grey,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/north{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 1;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -32715,11 +32447,10 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/northwest,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bEK" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/north{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 1;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -32785,11 +32516,10 @@
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bET" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/east{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 4;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -32830,7 +32560,7 @@
 /turf/open/floor/almayer/silver/north,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "bFa" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/white_cyan1/east,
 /area/white_antre/indoors/upper_level/medical)
@@ -32839,11 +32569,10 @@
 /turf/open/floor/strata/white_cyan4/west,
 /area/white_antre/indoors/upper_level/medical)
 "bFc" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/west{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 8;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -32877,7 +32606,7 @@
 /turf/open/floor/corsat,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "bFi" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellow2/east,
 /area/white_antre/indoors/main_level/east_containment)
@@ -32899,7 +32628,7 @@
 /turf/open/floor/almayer/silver/east,
 /area/white_antre/indoors/upper_level/canteen)
 "bFo" = (
-/obj/structure/machinery/light/double{
+/obj/structure/machinery/light/double/base{
 	pixel_x = -16
 	},
 /turf/open/floor/almayer/silver/east,
@@ -32931,8 +32660,7 @@
 /area/white_antre/indoors/upper_level/east_overwatch)
 "bFv" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/almayer/floor,
@@ -32970,15 +32698,11 @@
 	light_range = 5;
 	pixel_y = -28
 	},
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/white_antre/indoors/upper_level/canteen)
 "bFA" = (
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/white_antre/indoors/upper_level/canteen)
 "bFB" = (
@@ -33117,8 +32841,7 @@
 /area/white_antre/indoors/upper_level/west_corridor)
 "bFT" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
@@ -33131,9 +32854,7 @@
 /area/white_antre/indoors/upper_level/canteen)
 "bFV" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/white_antre/indoors/upper_level/canteen)
 "bFW" = (
@@ -33503,8 +33224,7 @@
 /area/white_antre/oob)
 "bHa" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_x = 16
 	},
 /turf/open/floor/almayer/silver/west,
@@ -33770,9 +33490,8 @@
 /area/white_antre/oob)
 "bHr" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 8
+/obj/structure/machinery/light/fixture/red/west{
+	light_color = "#BB3F3F"
 	},
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/corsat,
@@ -33942,9 +33661,7 @@
 /area/white_antre/indoors/upper_level/simian_storage)
 "bHJ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/white_antre/indoors/upper_level/simian_storage)
 "bHK" = (
@@ -34079,9 +33796,7 @@
 /turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bHW" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /turf/open/floor/almayer/research/containment/floor2/west,
 /area/white_antre/indoors/upper_level/simian_storage)
 "bHX" = (
@@ -34225,9 +33940,7 @@
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/white_antre/indoors/upper_level/simian_storage)
 "bIh" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /obj/structure/surface/table/reinforced/prison{
 	climbable = 0
 	},
@@ -34284,9 +33997,7 @@
 	icon_state = "N";
 	pixel_y = -11
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /turf/open/floor/almayer/sterile_green_side,
 /area/white_antre/indoors/upper_level/simian_storage)
 "bIn" = (
@@ -34307,9 +34018,7 @@
 	icon_state = "N";
 	pixel_y = -11
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /turf/open/floor/almayer/sterile_green_side,
 /area/white_antre/indoors/upper_level/simian_storage)
 "bIp" = (
@@ -34705,9 +34414,7 @@
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/white_antre/indoors/upper_level/simian_storage)
 "bIY" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/blue/north,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/white_antre/indoors/upper_level/simian_storage)
 "bIZ" = (
@@ -34726,9 +34433,7 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/white_antre/indoors/upper_level/simian_storage)
 "bJc" = (
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /obj/structure/pipes/vents/pump_hybrisa,
 /turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/upper_level/records)
@@ -34759,8 +34464,7 @@
 	pixel_y = 1;
 	color = "#AFE1AF"
 	},
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_x = 15
 	},
 /turf/open/floor/hybrisa/carpet/carpetgreen,
@@ -34785,11 +34489,10 @@
 	pixel_y = 6
 	},
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/north{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 1;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -34907,11 +34610,10 @@
 /area/white_antre/indoors/upper_level/west_corridor)
 "bJn" = (
 /obj/item/ammo_casing/bullet,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/north{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 1;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -34949,9 +34651,7 @@
 /turf/open/floor/almayer/sterile_green,
 /area/white_antre/indoors/upper_level/simian_storage)
 "bJq" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/blue/north,
 /obj/structure/pipes/vents/pump_hybrisa,
 /turf/open/floor/almayer/sterile_green,
 /area/white_antre/indoors/upper_level/simian_storage)
@@ -35020,7 +34720,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#8B7B5B"
 	},
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
@@ -35043,7 +34743,7 @@
 	pixel_x = -1;
 	pixel_y = 19
 	},
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
@@ -35142,7 +34842,7 @@
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bJN" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
@@ -35229,7 +34929,7 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/southwest,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bJY" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/hybrisa/metal/bluemetal1,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bJZ" = (
@@ -35268,7 +34968,7 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bKd" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/decal/cleanable/dirt{
 	icon_state = "thermite";
 	name = "impact"
@@ -35308,7 +35008,7 @@
 /turf/open/floor/hybrisa/metal/bluemetalcorner,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bKi" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/hybrisa/metal/bluemetal1,
 /area/white_antre/indoors/upper_level/north_overwatch)
@@ -35331,7 +35031,7 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/east,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bKm" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/metal/bluemetal1/southwest,
 /area/white_antre/indoors/upper_level/north_overwatch)
@@ -35511,7 +35211,7 @@
 /turf/open/floor/corsat/squares,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bKN" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bKO" = (
@@ -35616,8 +35316,7 @@
 /obj/effect/spawner/random/toolbox{
 	layer = 4
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/effect/spawner/random/toolbox{
@@ -35693,9 +35392,7 @@
 /turf/open/floor/prison/bright_clean2,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bLf" = (
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bLg" = (
@@ -35838,9 +35535,7 @@
 /turf/open/floor/hybrisa/metal,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bLC" = (
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/floor/hybrisa/metal/bluemetal1/northeast,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bLD" = (
@@ -35856,9 +35551,7 @@
 /turf/open/floor/prison/bright_clean2,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bLF" = (
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/floor/hybrisa/metal/bluemetalfull,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bLG" = (
@@ -35875,9 +35568,7 @@
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bLI" = (
 /obj/structure/machinery/big_computers/computerbrown/computer3,
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/floor/hybrisa/metal/bluemetalfull,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bLJ" = (
@@ -35924,9 +35615,7 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bLT" = (
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /obj/structure/largecrate/empty/secure,
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/north_overwatch)
@@ -35939,9 +35628,7 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/northwest,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bLW" = (
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/floor/hybrisa/metal/bluemetal1/north,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bLX" = (
@@ -36014,9 +35701,7 @@
 /turf/open/floor/prison/blue_plate/east,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bMj" = (
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/floor/hybrisa/metal/bluemetal1/northwest,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bMk" = (
@@ -38569,8 +38254,7 @@
 /obj/structure/bed/chair/comfy/orange{
 	dir = 4
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/antre/plating/direction_west,
@@ -39304,9 +38988,7 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/weapons)
 "bSA" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /turf/open/floor/almayer/silver/east,
 /area/white_antre/indoors/main_level/research)
 "bSB" = (
@@ -40440,7 +40122,7 @@
 /turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bVn" = (
-/obj/structure/machinery/light/red{
+/obj/structure/machinery/light/fixture/red{
 	light_color = "#BB3F3F"
 	},
 /obj/structure/pipes/standard/simple/hidden/purple{
@@ -40532,9 +40214,8 @@
 /turf/open/antre/plating/corner_dir,
 /area/white_antre/indoors/underground_level/east_maint)
 "bVD" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 1
+/obj/structure/machinery/light/fixture/red/north{
+	light_color = "#BB3F3F"
 	},
 /obj/structure/pipes/standard/simple/hidden/purple{
 	dir = 4
@@ -41812,8 +41493,7 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bZI" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/prison,
@@ -42302,9 +41982,7 @@
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "cba" = (
-/obj/structure/machinery/light/double{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/base/west,
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7";
 	pixel_y = -2
@@ -42339,9 +42017,7 @@
 /turf/open/floor/prison/blue/east,
 /area/white_antre/indoors/exterior/prefab_1)
 "cbg" = (
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7";
 	pixel_y = -2
@@ -42489,9 +42165,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/white_antre/outdoors/north_field)
 "cbA" = (
-/obj/structure/machinery/light/double{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/base/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrown3,
 /area/white_antre/indoors/exterior/prefab_2)
@@ -42602,9 +42276,7 @@
 /turf/open/floor/prison/darkbrown3/north,
 /area/white_antre/indoors/exterior/prefab_2)
 "cbR" = (
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /obj/structure/machinery/computer/telecomms/traffic{
 	pixel_y = 22
 	},
@@ -43165,8 +42837,7 @@
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "cdi" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/structure/largecrate/supply/supplies/sandbags,
@@ -44370,16 +44041,14 @@
 /turf/open/auto_turf/snow/layer1,
 /area/white_antre/oob)
 "cgw" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 8
+/obj/structure/machinery/light/fixture/red/west{
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/prison/darkbrown2/east,
 /area/white_antre/indoors/underground_level/gonzo)
 "cgx" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 4
+/obj/structure/machinery/light/fixture/red/east{
+	light_color = "#BB3F3F"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrown2/west,
@@ -44416,7 +44085,7 @@
 /turf/open/floor/prison/darkbrown2/north,
 /area/white_antre/indoors/underground_level/gonzo)
 "cgE" = (
-/obj/structure/machinery/light/red,
+/obj/structure/machinery/light/fixture/red,
 /turf/open/floor/prison/darkbrown2/north,
 /area/white_antre/indoors/underground_level/gonzo)
 "cgF" = (
@@ -44634,9 +44303,8 @@
 /turf/open/floor/prison/darkbrown2/west,
 /area/white_antre/indoors/underground_level/gonzo)
 "che" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 8
+/obj/structure/machinery/light/fixture/red/west{
+	light_color = "#BB3F3F"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/invuln/overhead_pipe{
@@ -44647,9 +44315,8 @@
 /turf/open/floor/prison/darkbrown2/east,
 /area/white_antre/indoors/underground_level/gonzo)
 "chf" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 4
+/obj/structure/machinery/light/fixture/red/east{
+	light_color = "#BB3F3F"
 	},
 /obj/structure/prop/invuln/overhead_pipe{
 	color = "#a6aeab";
@@ -44753,9 +44420,8 @@
 /turf/open/floor/prison/darkpurple2/east,
 /area/white_antre/indoors/underground_level/gonzo)
 "cho" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 8
+/obj/structure/machinery/light/fixture/red/west{
+	light_color = "#BB3F3F"
 	},
 /obj/structure/xenoautopsy/tank/larva,
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
@@ -44773,9 +44439,8 @@
 /turf/open/floor/prison/darkpurple2/east,
 /area/white_antre/indoors/underground_level/gonzo)
 "chs" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 4
+/obj/structure/machinery/light/fixture/red/east{
+	light_color = "#BB3F3F"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
@@ -45000,7 +44665,7 @@
 /obj/structure/barricade/handrail{
 	dir = 8
 	},
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/antre/border/corner,
 /turf/open/floor/antre/metal/black/north,
 /area/white_antre/indoors/main_level/west_corridor)
@@ -45035,8 +44700,7 @@
 /turf/open/floor/antre/metal/black/west,
 /area/white_antre/indoors/main_level/west_corridor)
 "chU" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/structure/barricade/handrail{
@@ -45205,9 +44869,7 @@
 	dir = 8;
 	flipped = 1
 	},
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/white_antre/indoors/upper_level/medical)
 "ciu" = (
@@ -45253,9 +44915,7 @@
 /obj/effect/spawner/gibspawner/human,
 /obj/item/shard/shrapnel,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/floor/strata/white_cyan1/east,
 /area/white_antre/indoors/upper_level/medical)
 "ciz" = (
@@ -45317,7 +44977,7 @@
 /turf/open/antre/plating/corner_dir/south_east,
 /area/white_antre/indoors/upper_level/xenobio)
 "ciH" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/upper_level/central_corridor)
 "ciI" = (
@@ -45396,8 +45056,7 @@
 "ciT" = (
 /obj/effect/alien/weeds/kseries,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/antre/plating/direction_west,
@@ -45536,8 +45195,7 @@
 /area/white_antre/indoors/upper_level/east_corridor)
 "cjx" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/antre/plating/direction_west,
@@ -45620,7 +45278,7 @@
 	pixel_y = 1;
 	color = "#AFE1AF"
 	},
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/hybrisa/carpet/carpetgreen,
 /area/white_antre/indoors/upper_level/records)
 "cjJ" = (
@@ -48539,8 +48197,7 @@
 /turf/open/floor/almayer/flooredge/southeast,
 /area/white_antre/indoors/main_level/dorms)
 "coZ" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/effect/antre/border{
@@ -48858,7 +48515,7 @@
 /turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/main_level/north_containment)
 "cqh" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/main_level/north_containment)
 "cqi" = (
@@ -49240,9 +48897,8 @@
 /turf/open/antre/plating/west_corner_dir/north_west,
 /area/white_antre/indoors/underground_level/west_maint)
 "crC" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 1
+/obj/structure/machinery/light/fixture/red/north{
+	light_color = "#BB3F3F"
 	},
 /turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/underground_level/east_maint)
@@ -50087,9 +49743,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/white_antre/outdoors/south_field)
 "cup" = (
-/obj/structure/machinery/light/double{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/base/west,
 /turf/open/floor/antre/metal/black/west,
 /area/white_antre/indoors/exterior/prefab_1)
 "cuq" = (
@@ -50288,7 +49942,7 @@
 	dir = 1
 	},
 /obj/structure/pipes/vents/pump,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/hybrisa/metal/bluemetal1/north,
 /area/white_antre/indoors/upper_level/central_corridor)
 "cuP" = (
@@ -50383,9 +50037,7 @@
 /obj/effect/antre/border{
 	dir = 8
 	},
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/floor/hybrisa/metal,
 /area/white_antre/indoors/upper_level/central_corridor)
 "cve" = (
@@ -50814,8 +50466,7 @@
 /turf/open/floor/prison/blue/north,
 /area/white_antre/indoors/main_level/east_corridor)
 "cSI" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/item/stack/sheet/metal/large_stack{
@@ -50853,16 +50504,13 @@
 /obj/structure/machinery/computer/telecomms/traffic{
 	pixel_y = 22
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/darkbrown3/northwest,
 /area/white_antre/indoors/exterior/ext_relay_south)
 "cXl" = (
-/obj/structure/machinery/light/dropship/red{
-	dir = 8
-	},
+/obj/structure/machinery/light/dropship/red/west,
 /turf/closed/shuttle/dropship_wy/StarGlider{
 	icon_state = "30"
 	},
@@ -51265,8 +50913,7 @@
 	pixel_x = -7;
 	pixel_y = -1
 	},
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
@@ -51499,11 +51146,10 @@
 /area/white_antre/indoors/pmc_dropship)
 "fiU" = (
 /obj/structure/machinery/autolathe,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/east{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 4;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -51648,9 +51294,7 @@
 /turf/closed/wall/strata_ice/dirty,
 /area/white_antre/outdoors/north_field)
 "fIR" = (
-/obj/structure/machinery/light/dropship/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/dropship/blue/west,
 /turf/closed/shuttle/dropship_wy/HorizonRunner{
 	icon_state = "92"
 	},
@@ -51955,8 +51599,7 @@
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/exterior/ext_relay_north)
 "hgH" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/darkyellow2/west,
@@ -52923,9 +52566,7 @@
 /turf/open/floor/prison/darkred2/northwest,
 /area/white_antre/indoors/main_level/security)
 "kXF" = (
-/obj/structure/machinery/light/dropship/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/dropship/blue/east,
 /turf/closed/shuttle/dropship_wy/HorizonRunner{
 	icon_state = "94"
 	},
@@ -53166,8 +52807,7 @@
 /area/white_antre/indoors/main_level/north_containment_hive)
 "lTs" = (
 /obj/structure/bed/chair/comfy/black,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/structure/machinery/power/apc/power/north{
@@ -53369,8 +53009,7 @@
 	pixel_x = 6;
 	pixel_y = 4
 	},
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -53489,9 +53128,7 @@
 /turf/open/floor/prison,
 /area/white_antre/outdoors/facility_exterior)
 "niu" = (
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7";
 	pixel_y = -2
@@ -53662,8 +53299,7 @@
 /turf/open/floor/strata/red4/east,
 /area/white_antre/indoors/main_level/security)
 "nRU" = (
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /obj/structure/toilet{
@@ -54086,8 +53722,7 @@
 /obj/effect/decal/strata_decals/grime/grime3{
 	icon_state = "grime1"
 	},
-/obj/structure/machinery/light/small{
-	dir = 4;
+/obj/structure/machinery/light/blub/base/east{
 	pixel_y = 6
 	},
 /obj/structure/bedsheetbin{
@@ -54582,8 +54217,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/almayer/silver2/southwest,
@@ -54838,8 +54472,7 @@
 /area/white_antre/indoors/main_level/north_containment_hive)
 "sDV" = (
 /obj/structure/closet/crate,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/blue,
@@ -55147,11 +54780,10 @@
 /area/white_antre/indoors/main_level/security)
 "urk" = (
 /obj/structure/machinery/vending/cola,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base/west{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
 	needs_power = 0;
-	dir = 8;
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
@@ -55201,7 +54833,7 @@
 /area/white_antre/indoors/main_level/north_containment_hive)
 "uFz" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_17";
 	pixel_y = 9;
@@ -55469,9 +55101,8 @@
 /area/white_antre/outdoors/path_north)
 "vFF" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 8
+/obj/structure/machinery/light/fixture/red/west{
+	light_color = "#BB3F3F"
 	},
 /obj/effect/antre/border{
 	dir = 4
@@ -55942,15 +55573,13 @@
 "xsP" = (
 /obj/effect/decal/hybrisa/tiretrack,
 /obj/effect/decal/hybrisa/tiretrack,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
 /area/white_antre/indoors/pmc_dropship)
 "xtM" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/hybrisa/metal/zbrownfloor_full,

@@ -15,36 +15,28 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "ac" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "ad" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "ae" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "af" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/interior/wood,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "ag" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "ah" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "ai" = (
@@ -165,9 +157,7 @@
 /turf/open/asphalt/cement/cement13,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "ij" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/asphalt/cement/cement9,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "iy" = (
@@ -196,9 +186,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "jw" = (
@@ -275,9 +263,7 @@
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "oC" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/item/weapon/gun/flamer/survivor,
 /turf/open/asphalt/cement/cement2,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
@@ -392,9 +378,7 @@
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "vt" = (
 /obj/structure/bed,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/item/bedsheet/brown,
 /turf/open/floor/interior/wood,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
@@ -477,7 +461,7 @@
 /turf/closed/wall/rock/orange,
 /area/desert_dam/exterior/rock)
 "BQ" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/decal/sand_overlay/sand2,
 /obj/item/tool/weldingtool,
 /turf/open/asphalt/cement/cement9,
@@ -488,9 +472,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "Ep" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/desert/rock/deep/transition/north,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "EA" = (
@@ -563,7 +545,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "Ik" = (
@@ -618,9 +600,7 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "KE" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/decal/sand_overlay/sand2/corner2,
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
@@ -712,9 +692,7 @@
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "NQ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 8
 	},
@@ -841,7 +819,7 @@
 /turf/open/asphalt/cement/cement4,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "Vz" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 8
 	},
@@ -849,7 +827,7 @@
 /turf/open/asphalt/cement/cement9,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "Wi" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/decal/sand_overlay/sand2,
 /turf/open/asphalt/cement/cement2,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)

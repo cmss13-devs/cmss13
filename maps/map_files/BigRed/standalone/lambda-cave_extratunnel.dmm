@@ -62,7 +62,7 @@
 "q" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/microwave,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/whitegreen/southwest,
 /area/bigredv2/caves/lambda/virology)
 "r" = (

@@ -56,9 +56,7 @@
 "dM" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/outdoors/colony_streets/east_central_street_left)
 "en" = (
@@ -234,7 +232,7 @@
 /obj/structure/barricade/handrail/hybrisa/handrail{
 	dir = 1
 	},
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	pixel_x = -16
 	},
 /obj/effect/decal/strata_decals/grime/grime3{
@@ -360,7 +358,7 @@
 /turf/open/hybrisa/street/sidewalkfull,
 /area/template_noop)
 "or" = (
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/fixture/base{
 	pixel_x = -16
 	},
 /turf/open/floor/prison/darkbrown2/northeast,

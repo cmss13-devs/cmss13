@@ -9,8 +9,7 @@
 /area/shiva/interior/colony/research_hab)
 "ac" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/multi_tiles/east,
@@ -93,8 +92,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/event/dynamic/lit)
 "dO" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -266,8 +264,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/event/dynamic/lit)
 "or" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/structure/sign/flag/upp{
@@ -331,8 +328,7 @@
 /turf/open/floor/plating,
 /area/event/underground/dynamic)
 "tS" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/redfull/west,
@@ -492,7 +488,7 @@
 /turf/open/floor/shiva/floor3,
 /area/event/underground/dynamic)
 "Jl" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/structure/surface/rack,
 /obj/item/clothing/mask/gas,
 /turf/open/floor/shiva/yellow,
@@ -534,8 +530,7 @@
 /turf/open/auto_turf/ice/layer2,
 /area/event/dynamic/lit)
 "QM" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/floor3,

@@ -80,9 +80,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "w" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/trijent/nspa_constable,
 /turf/open/floor/prison/darkyellow2/west,

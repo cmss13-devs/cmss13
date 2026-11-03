@@ -43,9 +43,7 @@
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/desert_dam/building/substation/southwest/solar/walkway)
 "n" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/building/substation/southwest/solar/walkway)
 "o" = (
@@ -107,9 +105,7 @@
 /turf/open/floor/prison/darkyellow2/east,
 /area/desert_dam/building/substation/southwest/solar/walkway)
 "A" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/darkyellow2/east,
 /area/desert_dam/building/substation/southwest/solar/walkway)
@@ -162,9 +158,7 @@
 /turf/open/floor/prison/darkyellow2/east,
 /area/desert_dam/building/substation/southwest/solar/walkway)
 "I" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/item/shard,
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/building/substation/southwest/solar/walkway)
@@ -210,9 +204,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/substation/southwest/solar/walkway)
 "Q" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/largecrate/random{
 	pixel_x = 4;
 	pixel_y = -3

@@ -13,8 +13,7 @@
 /turf/open/floor/prison/whitegreenfull,
 /area/misc/tutorial/no_baselight)
 "bC" = (
-/obj/structure/machinery/light{
-	dir = 8;
+/obj/structure/machinery/light/fixture/base/west{
 	needs_power = 0
 	},
 /turf/open/floor/prison/whitegreen/west,
@@ -27,7 +26,7 @@
 /turf/open/floor/prison/whitegreen,
 /area/misc/tutorial/no_baselight)
 "bY" = (
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/fixture/base{
 	needs_power = 0
 	},
 /obj/structure/bed/roller/hospital_empty/bigrollerempty2,
@@ -51,9 +50,8 @@
 /area/misc/tutorial/no_baselight)
 "eD" = (
 /obj/effect/landmark/tutorial_bottom_left,
-/obj/structure/machinery/light{
-	needs_power = 0;
-	dir = 8
+/obj/structure/machinery/light/fixture/base/west{
+	needs_power = 0
 	},
 /obj/structure/sign/safety/medical{
 	pixel_x = -17
@@ -108,15 +106,13 @@
 	needs_power = 0;
 	req_one_access = null
 	},
-/obj/structure/machinery/light{
-	needs_power = 0;
-	dir = 8
+/obj/structure/machinery/light/fixture/base/west{
+	needs_power = 0
 	},
 /turf/open/floor/prison/whitegreen/northwest,
 /area/misc/tutorial/no_baselight)
 "iT" = (
-/obj/structure/machinery/light{
-	dir = 1;
+/obj/structure/machinery/light/fixture/base/north{
 	on = 1;
 	needs_power = 0
 	},
@@ -130,8 +126,7 @@
 /turf/open/floor/prison/whitegreen/northwest,
 /area/misc/tutorial/no_baselight)
 "kf" = (
-/obj/structure/machinery/light{
-	dir = 4;
+/obj/structure/machinery/light/fixture/base/east{
 	on = 1;
 	needs_power = 0
 	},
@@ -211,8 +206,7 @@
 /turf/closed/wall/almayer/white/hull,
 /area/misc/tutorial/no_baselight)
 "sl" = (
-/obj/structure/machinery/light{
-	dir = 1;
+/obj/structure/machinery/light/fixture/base/north{
 	on = 1;
 	needs_power = 0
 	},
@@ -251,8 +245,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/misc/tutorial/no_baselight)
 "zs" = (
-/obj/structure/machinery/light{
-	dir = 4;
+/obj/structure/machinery/light/fixture/base/east{
 	on = 1;
 	needs_power = 0
 	},
@@ -390,7 +383,7 @@
 /turf/open/floor/prison/whitegreenfull,
 /area/misc/tutorial/no_baselight)
 "Kp" = (
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/fixture/base{
 	needs_power = 0
 	},
 /obj/structure/bed/roller/hospital_empty/bigrollerempty3,
@@ -457,8 +450,7 @@
 /turf/open/floor/prison/whitegreen/southwest,
 /area/misc/tutorial/no_baselight)
 "Um" = (
-/obj/structure/machinery/light{
-	dir = 1;
+/obj/structure/machinery/light/fixture/base/north{
 	on = 1;
 	needs_power = 0
 	},
@@ -490,8 +482,7 @@
 /turf/open/floor/prison/whitegreen/west,
 /area/misc/tutorial/no_baselight)
 "Zp" = (
-/obj/structure/machinery/light{
-	dir = 1;
+/obj/structure/machinery/light/fixture/base/north{
 	on = 1;
 	needs_power = 0
 	},

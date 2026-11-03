@@ -42,9 +42,7 @@
 /turf/closed/wall/r_wall/bunker,
 /area/tyrargo/underground/bunker/north)
 "k" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/corsat/box,
 /area/tyrargo/underground/bunker/north)
 "q" = (
@@ -97,9 +95,7 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/tyrargo/underground/bunker/north)
 "C" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/corsat/bluecorner/north,
 /area/tyrargo/underground/bunker/north)
 "E" = (
@@ -120,7 +116,7 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/tyrargo/underground/bunker/north)
 "H" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/corsat/box,
 /area/tyrargo/underground/bunker/north)
 "I" = (
@@ -166,9 +162,7 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/tyrargo/underground/bunker/north)
 "R" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder1,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/tyrargo/underground/bunker/north)

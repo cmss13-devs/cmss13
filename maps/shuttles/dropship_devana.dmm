@@ -178,9 +178,7 @@
 /obj/structure/shuttle/part/dropship_upp2/transparent/middle_left_wing{
 	icon_state = "upp_wing_left_red_logo"
 	},
-/obj/structure/machinery/light/dropship/red{
-	dir = 8
-	},
+/obj/structure/machinery/light/dropship/red/west,
 /turf/template_noop,
 /area/shuttle/drop_upp2/devana)
 "rV" = (
@@ -245,9 +243,7 @@
 /obj/structure/shuttle/part/dropship_upp2/transparent/middle_right_wing{
 	icon_state = "upp_wing_right_red_logo"
 	},
-/obj/structure/machinery/light/dropship/green{
-	dir = 4
-	},
+/obj/structure/machinery/light/dropship/green/east,
 /turf/template_noop,
 /area/shuttle/drop_upp2/devana)
 "vZ" = (

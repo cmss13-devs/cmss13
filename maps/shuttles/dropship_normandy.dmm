@@ -82,9 +82,7 @@
 /area/shuttle/drop2/sulaco)
 "fQ" = (
 /obj/structure/shuttle/part/dropship2/left_inner_wing_connector,
-/obj/structure/machinery/light/dropship/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/dropship/blue/east,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "gD" = (
@@ -136,9 +134,7 @@
 /area/shuttle/drop2/sulaco)
 "iI" = (
 /obj/structure/shuttle/part/dropship2/right_inner_wing_connector,
-/obj/structure/machinery/light/dropship/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/dropship/blue/west,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "jc" = (
@@ -161,9 +157,7 @@
 /area/shuttle/drop2/sulaco)
 "kP" = (
 /obj/structure/shuttle/part/dropship2/transparent/middle_right_wing,
-/obj/structure/machinery/light/dropship/green{
-	dir = 4
-	},
+/obj/structure/machinery/light/dropship/green/east,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "kT" = (
@@ -234,9 +228,7 @@
 /area/shuttle/drop2/sulaco)
 "os" = (
 /obj/structure/shuttle/part/dropship2/transparent/middle_left_wing,
-/obj/structure/machinery/light/dropship/red{
-	dir = 8
-	},
+/obj/structure/machinery/light/dropship/red/west,
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "oS" = (

@@ -22,9 +22,7 @@
 /area/bigredv2/caves/mining)
 "ad" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/item/shard,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
@@ -344,9 +342,7 @@
 /obj/structure/closet/crate,
 /obj/item/explosive/grenade/high_explosive/frag,
 /obj/item/explosive/grenade/high_explosive/frag,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "cJ" = (
@@ -522,9 +518,7 @@
 /turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/caves/mining)
 "hE" = (
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /obj/item/paper/bigred/final,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
@@ -566,14 +560,12 @@
 /area/bigredv2/caves/mining)
 "hY" = (
 /obj/effect/spawner/random/attachment,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "il" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "in" = (
@@ -642,9 +634,7 @@
 /area/bigredv2/caves/mining)
 "jU" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/closet/crate,
 /obj/item/weapon/gun/rifle/nsg23/no_lock,
 /obj/item/ammo_magazine/rifle/nsg23,
@@ -655,9 +645,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "kd" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/reagent_dispensers/tank/fuel/gas,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
@@ -869,9 +857,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
 "mF" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
 "mG" = (
@@ -961,9 +947,7 @@
 /area/bigredv2/caves/mining)
 "om" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
@@ -1146,7 +1130,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "rB" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/item/ammo_casing,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
@@ -1185,7 +1169,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "rS" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "rU" = (
@@ -1221,16 +1205,12 @@
 /obj/item/ammo_magazine/pistol/m1911,
 /obj/item/ammo_magazine/pistol/m1911,
 /obj/item/ammo_magazine/pistol/m1911,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/item/ammo_magazine/pistol/m1911,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "sx" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
@@ -1273,9 +1253,7 @@
 	pixel_y = -3
 	},
 /obj/item/ammo_magazine/smg/bizon,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "tJ" = (
@@ -1412,9 +1390,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "wH" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/cable,
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/general_air_control/large_tank_control,
@@ -1512,18 +1488,14 @@
 /area/bigredv2/caves/mining)
 "yt" = (
 /obj/item/paper/bigred/walls,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_2"
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "yB" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/item/stack/cable_coil/cut{
 	pixel_x = 6;
 	pixel_y = 4
@@ -1575,9 +1547,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
 "zd" = (
@@ -1675,7 +1645,7 @@
 "AW" = (
 /obj/structure/closet/boxinggloves,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "Be" = (
@@ -1693,7 +1663,7 @@
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/gun/pistol/holdout,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "Bq" = (
@@ -1812,9 +1782,7 @@
 /turf/open/mars_cave/mars_cave_16,
 /area/bigredv2/caves/mining)
 "CM" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/largecrate/supply/supplies/water,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
@@ -2110,9 +2078,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "GQ" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/prop/invuln/minecart_tracks{
 	desc = "A heavy duty power cable for high voltage applications";
 	dir = 1;
@@ -2239,13 +2205,11 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "IZ" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "Ja" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/mars_cave/mars_cave_20,
 /area/bigredv2/caves/mining)
 "Jb" = (
@@ -2288,9 +2252,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "JW" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/computer3frame/wallcomp,
 /obj/structure/cable{
 	icon_state = "11-2"
@@ -2313,7 +2275,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "Km" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/mars_cave/mars_cave_3,
 /area/bigredv2/caves/mining)
 "Ks" = (
@@ -2385,9 +2347,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "LF" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/machinery/firealarm{
 	dir = 1
 	},
@@ -2492,9 +2452,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "MT" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/surface/rack,
 /obj/item/hardpoint/locomotion/van_wheels,
 /turf/open/floor/plating/platingdmg3/west,
@@ -2714,9 +2672,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "PZ" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/mars_cave/mars_dirt_7,
 /area/bigredv2/caves/mining)
 "Qb" = (
@@ -2728,9 +2684,7 @@
 /area/bigredv2/caves/mining)
 "Qj" = (
 /obj/item/ore/gold,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "Qy" = (
@@ -2818,9 +2772,7 @@
 /turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/caves/mining)
 "RH" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/prop/invuln/minecart_tracks/bumper{
 	dir = 4
 	},
@@ -2828,9 +2780,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "RP" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
 "Sa" = (
@@ -3159,9 +3109,7 @@
 /turf/open/mars_cave/mars_cave_14,
 /area/bigredv2/caves/mining)
 "XO" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "XQ" = (
@@ -3241,9 +3189,7 @@
 /area/bigredv2/caves/mining)
 "Zb" = (
 /obj/item/tool/pickaxe/drill,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/snacks/cheeseburger{
 	pixel_y = 22

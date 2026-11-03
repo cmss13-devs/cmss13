@@ -178,9 +178,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 "oW" = (
@@ -240,8 +238,7 @@
 	pixel_y = 9;
 	pixel_x = -7
 	},
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_x = 5
 	},
 /turf/open/floor/wood,
@@ -268,7 +265,7 @@
 /obj/item/trash/candle{
 	pixel_y = 7
 	},
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
 "xI" = (
@@ -330,7 +327,7 @@
 	pixel_x = -2;
 	pixel_y = 4
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "BJ" = (
@@ -356,9 +353,7 @@
 	name = "oven"
 	},
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/cmo,
 /area/varadero/interior/library/restaraunt)
 "Dh" = (
@@ -367,9 +362,7 @@
 	pixel_y = 5;
 	pixel_x = 8
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/item/reagent_container/food/snacks/meatballsoup,
 /turf/open/floor/wood,
 /area/varadero/interior/library/restaraunt)
@@ -456,7 +449,7 @@
 	pixel_y = -24
 	},
 /obj/effect/decal/cleanable/blood/drip,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	pixel_x = 5
 	},
 /turf/open/floor/wood,

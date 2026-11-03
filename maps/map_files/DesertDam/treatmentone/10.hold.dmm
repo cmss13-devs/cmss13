@@ -18,9 +18,7 @@
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "ad" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/item/reagent_container/glass/bucket{
 	pixel_x = 7;
 	pixel_y = 12
@@ -73,9 +71,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/water_treatment_one/equipment)
 "al" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/decal/strata_decals/grime/grime3{
 	icon_state = "grime4"
 	},
@@ -219,9 +215,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/lobby)
 "aR" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/sign/nosmoking_1{
 	pixel_y = 30
 	},
@@ -288,7 +282,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/hallway)
 "cu" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/purification)
 "cz" = (
@@ -319,9 +313,7 @@
 	},
 /area/desert_dam/building/water_treatment_one/breakroom)
 "do" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/landmark/corpsespawner/engineer,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/hallway)
@@ -382,7 +374,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/garage)
 "hS" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/whiteyellowcorner,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "hW" = (
@@ -650,9 +642,7 @@
 /obj/item/paper_bin{
 	pixel_y = 6
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/item/tool/pen/clicky,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/hallway)
@@ -734,9 +724,7 @@
 /area/desert_dam/building/water_treatment_one/hallway)
 "us" = (
 /obj/structure/closet/l3closet/virology,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/water_treatment_one/equipment)
 "ut" = (
@@ -752,9 +740,7 @@
 /turf/open/floor/whiteyellowcorner/west,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "uz" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/whiteyellow/west,
 /area/desert_dam/building/water_treatment_one/breakroom)
@@ -838,7 +824,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/hallway)
 "yu" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/water_treatment_one/equipment)
 "yx" = (
@@ -862,9 +848,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/equipment)
 "Aj" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/hallway)
@@ -882,9 +866,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/hallway)
 "Bd" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "BG" = (
@@ -948,9 +930,7 @@
 /obj/structure/toilet{
 	dir = 8
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "EL" = (
@@ -978,9 +958,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/water_treatment_one/hallway)
 "Ft" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/closet,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/whiteyellow/north,
@@ -1081,13 +1059,11 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/hallway)
 "LW" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/wood,
 /area/desert_dam/building/water_treatment_one/hallway)
 "Mv" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
@@ -1132,9 +1108,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/hallway)
 "Nq" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/prison/red/east,
 /area/desert_dam/building/water_treatment_one/lobby)
 "NW" = (
@@ -1158,9 +1132,7 @@
 /area/desert_dam/building/water_treatment_one/hallway)
 "Os" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/desert_dam/building/water_treatment_one/hallway)
@@ -1219,9 +1191,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/water_treatment_one/hallway)
 "Ro" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/garage)
 "Rt" = (
@@ -1313,9 +1283,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/hallway)
 "TT" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/bed/chair,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/hallway)
@@ -1373,9 +1341,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/lobby)
 "Wq" = (
@@ -1434,11 +1400,11 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/water_treatment_one/hallway)
 "XT" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/garage)
 "XV" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/largecrate/empty{
 	pixel_x = 3;
 	pixel_y = 3
@@ -1455,9 +1421,7 @@
 /turf/closed/wall/r_wall/unmeltable,
 /area/desert_dam/building/water_treatment_one/hallway)
 "XZ" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "Ya" = (

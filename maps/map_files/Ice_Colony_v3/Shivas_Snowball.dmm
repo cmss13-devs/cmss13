@@ -75,8 +75,7 @@
 	icon_state = "stalkybush_2";
 	pixel_y = 13
 	},
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/auto_turf/snow/layer0,
@@ -747,8 +746,7 @@
 "acG" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/suit/storage/labcoat/researcher,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/multi_tiles,
@@ -778,8 +776,7 @@
 "acM" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/suit/storage/labcoat/researcher,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/multi_tiles,
@@ -800,9 +797,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/research_hab)
 "acQ" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
@@ -872,16 +867,12 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/shiva/interior/aerodrome)
 "add" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
@@ -901,9 +892,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/shiva/interior/aerodrome)
 "adh" = (
@@ -957,8 +946,7 @@
 /area/shiva/interior/bar)
 "ads" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_x = 6
 	},
 /turf/open/floor/shiva,
@@ -1032,7 +1020,7 @@
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/interior/bar)
 "adH" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "adI" = (
@@ -1188,15 +1176,13 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "aeh" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/yellow/north,
 /area/shiva/interior/colony/medseceng)
 "aei" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -1204,8 +1190,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/aerodrome)
 "aej" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -1262,8 +1247,7 @@
 /area/shiva/interior/colony/medseceng)
 "aet" = (
 /obj/structure/closet/secure_closet/medical2,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/effect/landmark/objective_landmark/science,
@@ -1291,8 +1275,7 @@
 /turf/open/floor/shiva/yellow/southeast,
 /area/shiva/interior/colony/research_hab)
 "aey" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -1325,8 +1308,7 @@
 	icon_state = "stalkybush_2";
 	pixel_y = 9
 	},
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/auto_turf/snow/layer0,
@@ -1352,7 +1334,7 @@
 /turf/open/floor/shiva/yellow,
 /area/shiva/interior/garage)
 "aeJ" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/yellow,
 /area/shiva/interior/garage)
@@ -1399,7 +1381,7 @@
 /turf/open/floor/shiva/yellow/southeast,
 /area/shiva/interior/colony/research_hab)
 "aeR" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/structure/surface/rack,
 /obj/item/clothing/mask/gas,
 /turf/open/floor/shiva/yellow,
@@ -1502,7 +1484,7 @@
 /turf/open/floor/shiva/yellow/north,
 /area/shiva/interior/garage)
 "afl" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/snow_mat/east,
 /area/shiva/interior/colony/botany)
 "afm" = (
@@ -1510,8 +1492,7 @@
 /turf/open/floor/shiva/wred/north,
 /area/shiva/interior/colony/medseceng)
 "afn" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/snow_mat/east,
@@ -1551,9 +1532,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
 "afu" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/effect/spawner/gibspawner/human,
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
@@ -1723,8 +1702,7 @@
 /area/shiva/interior/colony/medseceng)
 "agb" = (
 /obj/structure/bed/chair/wheelchair,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/wred/north,
@@ -1737,8 +1715,7 @@
 	icon_state = "stalkybush_3";
 	pixel_y = 11
 	},
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/auto_turf/snow/layer0,
@@ -1842,8 +1819,7 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -2025,7 +2001,7 @@
 /turf/open/floor/shiva/yellow/west,
 /area/shiva/interior/colony/research_hab)
 "ahb" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/yellowfull/west,
 /area/shiva/interior/aux_power)
@@ -2288,8 +2264,7 @@
 /turf/open/floor/shiva/wred/north,
 /area/shiva/interior/colony/medseceng)
 "ahL" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/structure/pipes/standard/manifold/visible{
@@ -2304,8 +2279,7 @@
 /turf/open/floor/shiva/redfull,
 /area/shiva/interior/colony/medseceng)
 "ahN" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -2327,8 +2301,7 @@
 	pixel_x = 6;
 	pixel_y = -4
 	},
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/redfull/west,
@@ -2362,12 +2335,11 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 8
 	},
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/red,
 /area/shiva/interior/colony/medseceng)
 "ahV" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -2376,8 +2348,7 @@
 "ahW" = (
 /obj/structure/surface/rack,
 /obj/item/cell/high/empty,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/yellow/west,
@@ -2524,8 +2495,7 @@
 /turf/open/floor/shiva/yellow/west,
 /area/shiva/interior/colony/medseceng)
 "aiO" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/structure/machinery/disposal,
@@ -2570,8 +2540,7 @@
 /turf/open/floor/shiva/wred/northeast,
 /area/shiva/interior/colony/medseceng)
 "aje" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/structure/machinery/chem_dispenser,
@@ -2589,8 +2558,7 @@
 /area/shiva/interior/colony/medseceng)
 "ajq" = (
 /obj/structure/reagent_dispensers/water_cooler,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/blue/east,
@@ -2771,8 +2739,7 @@
 /turf/open/floor/shiva/wredfull,
 /area/shiva/interior/colony/medseceng)
 "akL" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/wood,
@@ -2826,8 +2793,7 @@
 /area/shiva/interior/colony/medseceng)
 "ale" = (
 /obj/structure/surface/rack,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/item/ammo_magazine/revolver/cmb,
@@ -3020,8 +2986,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/n_admin)
 "amG" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/structure/machinery/alarm{
@@ -3286,8 +3251,7 @@
 /area/shiva/interior/colony/medseceng)
 "aot" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/redfull/west,
@@ -3523,8 +3487,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "aqz" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -3819,9 +3782,7 @@
 /area/shiva/interior/valley_huts/disposals)
 "asO" = (
 /obj/item/evidencebag,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/item/trash/popcorn,
 /obj/item/trash/candy,
 /turf/open/floor/plating,
@@ -3964,7 +3925,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/central)
 "aud" = (
@@ -4004,8 +3965,7 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/north,
@@ -4017,8 +3977,7 @@
 /area/shiva/interior/colony/botany)
 "auS" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/item/reagent_container/food/snacks/hotchili,
@@ -4221,8 +4180,7 @@
 /turf/open/floor/shiva/yellow/northwest,
 /area/shiva/interior/garage)
 "axI" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/yellow/north,
@@ -4248,8 +4206,7 @@
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/shiva/interior/garage)
 "axO" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/structure/surface/table,
@@ -4267,8 +4224,7 @@
 /turf/open/floor/shiva/yellow/northwest,
 /area/shiva/interior/garage)
 "axR" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/structure/surface/table,
@@ -4294,7 +4250,7 @@
 /turf/open/floor/darkbrown2,
 /area/shiva/interior/valley_huts/disposals)
 "axV" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkbrown2,
 /area/shiva/interior/valley_huts/disposals)
@@ -4448,8 +4404,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
 "azf" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/structure/surface/table,
@@ -4757,7 +4712,7 @@
 /turf/open/floor/shiva/yellowcorners,
 /area/shiva/interior/garage)
 "aCx" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
 	icon_state = "gib6"
@@ -4877,9 +4832,7 @@
 "aDF" = (
 /obj/structure/largecrate/random,
 /obj/effect/landmark/crap_item,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/valley_huts/no2)
 "aDG" = (
@@ -5092,8 +5045,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/caves/cp_camp)
 "aFZ" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/north,
@@ -5252,7 +5204,7 @@
 /turf/open/floor/shiva/snow_mat/west,
 /area/shiva/interior/colony/central)
 "aJE" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "aJF" = (
@@ -5299,8 +5251,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "aKq" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/plating,
@@ -5339,8 +5290,7 @@
 /turf/open/floor/interior/plastic,
 /area/shiva/interior/warehouse)
 "aKS" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -5767,8 +5717,7 @@
 	pixel_x = -4;
 	pixel_y = -3
 	},
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/interior/plastic/alt,
@@ -5806,8 +5755,7 @@
 /area/shiva/interior/bar)
 "aRs" = (
 /obj/structure/closet/radiation,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/effect/landmark/objective_landmark/science,
@@ -6077,8 +6025,7 @@
 /turf/open/floor/shiva/purplefull,
 /area/shiva/interior/colony/research_hab)
 "aUU" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/effect/decal/warning_stripes{
@@ -6093,8 +6040,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
 "aUY" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/effect/decal/warning_stripes{
@@ -6758,8 +6704,7 @@
 /area/shiva/interior/caves/cp_camp)
 "bnk" = (
 /obj/structure/largecrate/random/mini/chest/b,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/north,
@@ -6897,8 +6842,7 @@
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/north,
@@ -6938,8 +6882,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/aerodrome)
 "bxW" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/yellowfull,
@@ -7053,7 +6996,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "bHf" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/n_admin)
 "bHx" = (
@@ -7169,7 +7112,7 @@
 "bNN" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "bOh" = (
@@ -7195,7 +7138,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/purplefull/north,
 /area/shiva/interior/colony/research_hab)
 "bQR" = (
@@ -7320,8 +7263,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "bXp" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/wood,
@@ -7333,7 +7275,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/botany)
 "bYd" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/yellow,
 /area/shiva/interior/garage)
 "bYk" = (
@@ -7352,19 +7294,16 @@
 	icon_state = "equip_base";
 	name = "shuttle attachment point"
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "bYS" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/red,
 /area/shiva/interior/colony/central)
 "bYV" = (
 /obj/structure/machinery/disposal,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/floor3,
@@ -7380,9 +7319,7 @@
 	icon_state = "equip_base";
 	name = "shuttle attachment point"
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "cbt" = (
@@ -7393,8 +7330,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "cbC" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/structure/machinery/vending/coffee,
@@ -7544,8 +7480,7 @@
 	},
 /area/shiva/interior/aerodrome)
 "cpb" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/red/north,
@@ -7668,8 +7603,7 @@
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/cp_lz2)
 "cwx" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -7699,8 +7633,7 @@
 /turf/open/gm/river/no_overlay,
 /area/shiva/interior/caves/cp_camp)
 "cyd" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/structure/sink{
@@ -7757,8 +7690,7 @@
 /area/shiva/exterior/lz2_fortress)
 "cBG" = (
 /obj/structure/machinery/vending/coffee,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/floor3,
@@ -7793,8 +7725,7 @@
 /turf/open/floor/shiva/wred,
 /area/shiva/interior/colony/medseceng)
 "cFa" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -7892,7 +7823,7 @@
 /turf/open/floor/shiva/yellow/north,
 /area/shiva/interior/colony/medseceng)
 "cKB" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/yellowfull/west,
 /area/shiva/interior/colony/medseceng)
 "cKE" = (
@@ -7945,7 +7876,7 @@
 "cOX" = (
 /obj/structure/surface/table,
 /obj/item/key/cargo_train,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "cPK" = (
@@ -8168,8 +8099,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/interior/caves/cp_camp)
 "cZb" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/north,
@@ -8276,9 +8206,7 @@
 "dex" = (
 /obj/structure/machinery/photocopier,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/plating,
 /area/shiva/interior/bar)
 "deV" = (
@@ -8307,8 +8235,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard/cp_bar)
 "diL" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva,
@@ -8317,8 +8244,7 @@
 /turf/open/floor/carpet,
 /area/shiva/interior/colony/central)
 "djy" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/greenfull,
@@ -8333,8 +8259,7 @@
 	pixel_x = -6;
 	pixel_y = 12
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/bluefull,
@@ -8467,8 +8392,7 @@
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/shiva/interior/colony/botany)
 "dtr" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/floor3,
@@ -8483,8 +8407,7 @@
 /obj/structure/barricade/wooden{
 	dir = 4
 	},
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/bluefull/west,
@@ -8977,9 +8900,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/research_hab)
 "eiT" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/valley_huts)
 "ejt" = (
@@ -9098,8 +9019,7 @@
 /turf/open/floor/shiva/snow_mat/north,
 /area/shiva/exterior/cp_lz2)
 "eqD" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/green/west,
@@ -9245,7 +9165,7 @@
 /obj/effect/landmark/crap_item,
 /obj/item/paper/research_notes,
 /obj/item/paper_bin,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/n_admin)
 "eFG" = (
@@ -9319,8 +9239,7 @@
 /area/shiva/interior/colony/medseceng)
 "eIH" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/wred/north,
@@ -9367,8 +9286,7 @@
 /area/shiva/interior/colony/central)
 "eOG" = (
 /obj/structure/closet/secure_closet/guncabinet,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/item/weapon/gun/rifle/m41aMK1,
@@ -9589,8 +9507,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "fel" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/radiator_tile,
@@ -9603,7 +9520,7 @@
 /turf/open/floor/shiva/yellowfull,
 /area/shiva/interior/colony/research_hab)
 "feR" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/yellow,
 /area/shiva/interior/colony/medseceng)
 "ffg" = (
@@ -9840,9 +9757,7 @@
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/shiva/wred/west,
 /area/shiva/interior/colony/medseceng)
 "fuz" = (
@@ -10057,7 +9972,7 @@
 /obj/item/circuitboard/apc,
 /obj/item/circuitboard/apc,
 /obj/item/circuitboard/apc,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "fII" = (
@@ -10118,7 +10033,7 @@
 "fKT" = (
 /obj/structure/surface/table,
 /obj/item/storage/box/bodybags,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/central)
 "fLk" = (
@@ -10243,8 +10158,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/bar)
 "fUP" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/bluefull/west,
@@ -10297,9 +10211,7 @@
 	name = "shuttle attachment point"
 	},
 /obj/effect/landmark/objective_landmark/close,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "fXr" = (
@@ -10318,8 +10230,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/caves/research_caves)
 "fYm" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/item/shard{
@@ -10393,7 +10304,7 @@
 /area/shiva/interior/caves/cp_camp)
 "gcP" = (
 /obj/structure/bed/chair/wheelchair,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/wred,
 /area/shiva/interior/colony/medseceng)
 "gdk" = (
@@ -10458,8 +10369,7 @@
 /area/shiva/interior/colony/research_hab)
 "gha" = (
 /obj/effect/landmark/xeno_spawn,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva,
@@ -10565,8 +10475,7 @@
 /area/shiva/interior/caves/research_caves)
 "gpF" = (
 /obj/structure/largecrate/random/case/double,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -10611,8 +10520,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/caves/s_lz2)
 "gsK" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/structure/filingcabinet/filingcabinet{
@@ -10821,7 +10729,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgibdown1"
 	},
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "gGH" = (
@@ -10860,8 +10768,7 @@
 "gIq" = (
 /obj/structure/filingcabinet,
 /obj/item/paper/research_notes,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/effect/landmark/objective_landmark/science,
@@ -10904,9 +10811,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/southwest_valley)
 "gKQ" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
 "gLu" = (
@@ -11103,8 +11008,7 @@
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/shiva/exterior/southwest_valley)
 "gWF" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/wred/north,
@@ -11213,8 +11117,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
 "hfw" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/redfull/west,
@@ -11564,8 +11467,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "hBN" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/item/clothing/under/colonist,
@@ -11626,8 +11528,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_colony_grounds)
 "hDw" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/structure/filingcabinet/chestdrawer,
@@ -11715,8 +11616,7 @@
 "hHV" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/cell_charger,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/yellow/southeast,
@@ -11772,8 +11672,7 @@
 /area/shiva/interior/colony/n_admin)
 "hLB" = (
 /obj/structure/machinery/vending/coffee,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/multi_tiles,
@@ -11787,8 +11686,7 @@
 /turf/open/asphalt/cement,
 /area/shiva/interior/warehouse)
 "hMn" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/wred/east,
@@ -11828,8 +11726,7 @@
 /turf/open/floor/shiva/wredcorners/north,
 /area/shiva/interior/colony/medseceng)
 "hQW" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -11844,7 +11741,7 @@
 /obj/item/device/radio,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/asphalt/cement,
 /area/shiva/interior/warehouse)
 "hRK" = (
@@ -11912,8 +11809,7 @@
 /area/shiva/exterior/valley)
 "hTk" = (
 /obj/structure/bookcase/manuals/medical,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/north,
@@ -12008,7 +11904,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/lz1_valley)
 "hYb" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/central)
@@ -12055,13 +11951,12 @@
 /turf/open/gm/river,
 /area/shiva/interior/caves/cp_camp)
 "ibN" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/central)
 "ibP" = (
 /obj/structure/closet/toolcloset,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/floor3,
@@ -12108,8 +12003,7 @@
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/north,
@@ -12199,8 +12093,7 @@
 /turf/open/floor/shiva/wred/west,
 /area/shiva/interior/colony/medseceng)
 "ilo" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/bluefull,
@@ -12239,7 +12132,7 @@
 /area/shiva/exterior/cp_lz2)
 "ipY" = (
 /obj/structure/closet/secure_closet/engineering_personal,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/item/weapon/gun/smg/pps43,
 /obj/item/ammo_magazine/smg/pps43,
 /obj/item/ammo_magazine/smg/pps43,
@@ -12277,8 +12170,7 @@
 /obj/item/storage/toolbox/antag{
 	pixel_y = 7
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/multi_tiles/west,
@@ -12473,8 +12365,7 @@
 /area/shiva/interior/colony/s_admin)
 "izt" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/multi_tiles/southeast,
@@ -12486,8 +12377,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard/fortbiceps)
 "iAt" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/green/east,
@@ -12567,8 +12457,7 @@
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "iFr" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/multi_tiles/east,
@@ -12967,8 +12856,7 @@
 "jft" = (
 /obj/structure/surface/table,
 /obj/item/storage/box/emps,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/carpet,
@@ -12986,8 +12874,7 @@
 /turf/closed/wall/shiva/ice,
 /area/shiva/interior/oob)
 "jgz" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/multi_tiles/west,
@@ -13075,8 +12962,7 @@
 /turf/open/floor/shiva/yellow/west,
 /area/shiva/interior/colony/medseceng)
 "joh" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/green/northeast,
@@ -13154,8 +13040,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
 "jvT" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/structure/bed/chair/wood/normal{
@@ -13245,7 +13130,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "jCe" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/multi_tiles/west,
 /area/shiva/interior/colony/botany)
 "jCk" = (
@@ -13271,7 +13156,7 @@
 	pixel_x = -3;
 	pixel_y = 6
 	},
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/bar)
 "jDv" = (
@@ -13309,7 +13194,7 @@
 	pixel_x = 3;
 	pixel_y = -3
 	},
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/interior/plastic,
 /area/shiva/interior/warehouse)
 "jFy" = (
@@ -13333,7 +13218,7 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/central)
 "jIF" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/green/southwest,
 /area/shiva/interior/colony/botany)
 "jIK" = (
@@ -13458,9 +13343,7 @@
 	pixel_x = -8;
 	pixel_y = 4
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating,
 /area/shiva/interior/bar)
@@ -13569,8 +13452,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/colony/medseceng)
 "jWL" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/structure/machinery/power/smes/buildable,
@@ -13581,8 +13463,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
 "jXM" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/floor3,
@@ -13630,8 +13511,7 @@
 /area/shiva/interior/colony/medseceng)
 "kbl" = (
 /obj/structure/reagent_dispensers/tank/fuel,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -13646,8 +13526,7 @@
 /area/shiva/exterior/lz1_valley)
 "kbT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/auto_turf/snow/layer1,
@@ -13703,8 +13582,7 @@
 /obj/item/weapon/ice_axe/red{
 	pixel_y = -4
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/multi_tiles/west,
@@ -13851,8 +13729,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/colony/medseceng)
 "kmO" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva,
@@ -13927,7 +13804,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/aerodrome)
 "krM" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/green/southeast,
 /area/shiva/interior/colony/botany)
 "krU" = (
@@ -14035,8 +13912,7 @@
 /area/shiva/exterior/junkyard)
 "kwc" = (
 /obj/structure/bed/chair/comfy/blue,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/north,
@@ -14046,7 +13922,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "kxb" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/multi_tiles/west,
 /area/shiva/interior/colony/central)
 "kxk" = (
@@ -14229,8 +14105,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "kFJ" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/north,
@@ -14255,8 +14130,7 @@
 /area/shiva/exterior/lz1_valley)
 "kHB" = (
 /obj/structure/closet/secure_closet/security,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/redfull/west,
@@ -14411,8 +14285,7 @@
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/medseceng_caves)
 "kPS" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/auto_turf/snow/layer3,
@@ -14490,8 +14363,7 @@
 "kRV" = (
 /obj/structure/surface/table,
 /obj/item/device/flashlight/lamp/green,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/floor3,
@@ -14559,8 +14431,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_colony_grounds)
 "kWG" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/bluefull,
@@ -15154,8 +15025,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/garage)
 "lHA" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/structure/reagent_dispensers/water_cooler,
@@ -15376,8 +15246,7 @@
 /area/shiva/interior/caves/right_spiders)
 "lWR" = (
 /obj/structure/machinery/space_heater,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/prison/kitchen,
@@ -15597,8 +15466,7 @@
 /area/shiva/interior/lz2_habs)
 "mgL" = (
 /obj/item/weapon/gun/energy/taser,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/wood,
@@ -15623,7 +15491,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
 "mhx" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/wred,
 /area/shiva/interior/colony/medseceng)
 "mhP" = (
@@ -15704,7 +15572,7 @@
 /obj/structure/closet/crate/freezer/rations,
 /obj/item/reagent_container/food/snacks/bigbiteburger,
 /obj/item/reagent_container/food/snacks/bigbiteburger,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/prison/kitchen,
 /area/shiva/interior/bar)
 "mpt" = (
@@ -15776,8 +15644,7 @@
 /turf/open/floor/shiva/red/north,
 /area/shiva/interior/colony/medseceng)
 "mti" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/auto_turf/ice/layer1,
@@ -15842,7 +15709,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/caves/research_caves)
 "mxn" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/bar)
 "mxS" = (
@@ -15924,8 +15791,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
 "mCs" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/bluefull,
@@ -15939,8 +15805,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/cp_camp)
 "mCV" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/wood,
@@ -16002,8 +15867,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_s_research)
 "mGn" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/multi_tiles/southeast,
@@ -16044,8 +15908,7 @@
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "mIt" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/green/north,
@@ -16172,7 +16035,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "mOu" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/yellow,
 /area/shiva/interior/colony/research_hab)
 "mOY" = (
@@ -16190,8 +16053,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "mQs" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/floor3,
@@ -16268,7 +16130,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "mWw" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/medseceng)
 "mWA" = (
@@ -16279,8 +16141,7 @@
 "mWE" = (
 /obj/structure/surface/table,
 /obj/item/device/flashlight/lamp/green,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/floor3,
@@ -16315,8 +16176,7 @@
 /area/shiva/exterior/cp_colony_grounds)
 "mYm" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/floor3,
@@ -16349,8 +16209,7 @@
 /obj/item/ammo_magazine/flamer_tank/survivor{
 	pixel_x = 4
 	},
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/effect/decal/cleanable/blood,
@@ -16473,8 +16332,7 @@
 /obj/item/weapon/ice_axe/red{
 	pixel_y = -4
 	},
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/multi_tiles/west,
@@ -16833,8 +16691,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/n_admin)
 "nHt" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/yellow/northwest,
@@ -16881,7 +16738,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/valley)
 "nKO" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/radiator_tile,
 /area/shiva/interior/colony/botany)
 "nLn" = (
@@ -16962,8 +16819,7 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/n_admin)
 "nSI" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/bluefull,
@@ -17076,12 +16932,12 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "oag" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/yellowfull,
 /area/shiva/interior/colony/research_hab)
 "oah" = (
 /obj/structure/machinery/medical_pod/bodyscanner,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/wred,
 /area/shiva/interior/colony/medseceng)
 "oaH" = (
@@ -17126,16 +16982,14 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/aerodrome)
 "ocF" = (
 /obj/item/stack/sheet/mineral/plastic/small_stack,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva,
@@ -17151,8 +17005,7 @@
 /turf/open/floor/plating,
 /area/shiva/exterior/southwest_valley)
 "odb" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/red/west,
@@ -17257,8 +17110,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/valley)
 "okc" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/wood,
@@ -17370,8 +17222,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/cp_camp)
 "osV" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/multi_tiles/east,
@@ -17435,9 +17286,7 @@
 "owt" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/shiva/wred/southwest,
 /area/shiva/interior/colony/medseceng)
 "oww" = (
@@ -17525,8 +17374,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)
 "oEk" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/effect/decal/cleanable/vomit,
@@ -17607,8 +17455,7 @@
 "oJe" = (
 /obj/structure/surface/table,
 /obj/item/tool/hand_labeler,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/north,
@@ -17640,8 +17487,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_colony_grounds)
 "oNo" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/north,
@@ -17684,8 +17530,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/colony/research_hab)
 "oSj" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/effect/landmark/corpsespawner/engineer,
@@ -17853,8 +17698,7 @@
 "pef" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/barrel/yellow,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/asphalt/cement,
@@ -17904,8 +17748,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "pgh" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/floor3,
@@ -17941,7 +17784,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/medseceng)
 "pkK" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
 "plm" = (
@@ -18015,8 +17858,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/cp_camp)
 "prU" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/floor3,
@@ -18080,8 +17922,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/caves/s_lz2)
 "puN" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/structure/machinery/vending/coffee,
@@ -18150,9 +17991,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "pyI" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/medseceng)
 "pyK" = (
@@ -18187,8 +18026,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
 "pAE" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/wred/west,
@@ -18287,15 +18125,13 @@
 /area/shiva/exterior/junkyard)
 "pEe" = (
 /obj/structure/closet/bodybag,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/interior/bar)
 "pEh" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/structure/surface/table/reinforced/prison,
@@ -18321,7 +18157,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/s_lz2)
 "pFd" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
@@ -18332,7 +18168,7 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/botany)
 "pFJ" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/yellowfull/west,
 /area/shiva/interior/aux_power)
 "pGf" = (
@@ -18455,8 +18291,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/bar)
 "pLn" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/structure/reagent_dispensers/tank/fuel,
@@ -18515,8 +18350,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/north,
@@ -18580,7 +18414,7 @@
 /area/shiva/interior/garage)
 "pSM" = (
 /obj/structure/barricade/metal,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/botany)
 "pTp" = (
@@ -18608,8 +18442,7 @@
 /area/shiva/exterior/cp_lz2)
 "pUx" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/greenfull/west,
@@ -18631,8 +18464,7 @@
 /turf/open/floor/shiva/wredfull,
 /area/shiva/interior/colony/medseceng)
 "pVo" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/north,
@@ -18829,9 +18661,7 @@
 "qid" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/shiva/wred/west,
 /area/shiva/interior/colony/medseceng)
 "qiu" = (
@@ -18848,8 +18678,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "qkr" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/multi_tiles/east,
@@ -18899,8 +18728,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/colony/medseceng)
 "qlQ" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/north,
@@ -18916,8 +18744,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/central)
 "qng" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/structure/filingcabinet/filingcabinet{
@@ -18932,8 +18759,7 @@
 /turf/open/gm/river,
 /area/shiva/exterior/valley)
 "qnu" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/plating,
@@ -18954,8 +18780,7 @@
 /turf/open/floor/interior/plastic/alt,
 /area/shiva/interior/warehouse)
 "qnJ" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva,
@@ -18997,8 +18822,7 @@
 "qpv" = (
 /obj/structure/surface/table,
 /obj/item/stack/cable_coil,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/yellow/northeast,
@@ -19008,8 +18832,7 @@
 /turf/open/floor/shiva/wredfull,
 /area/shiva/interior/colony/medseceng)
 "qrq" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/bluefull,
@@ -19021,8 +18844,7 @@
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/shiva/exterior/junkyard)
 "qsN" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/interior/plastic,
@@ -19062,8 +18884,7 @@
 /area/shiva/exterior/cp_lz2)
 "qxv" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/item/clothing/head/fez{
@@ -19086,7 +18907,7 @@
 /obj/structure/barricade/handrail/wire{
 	dir = 8
 	},
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/wred,
 /area/shiva/interior/colony/medseceng)
 "qyC" = (
@@ -19167,8 +18988,7 @@
 /obj/structure/morgue{
 	dir = 8
 	},
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/floor3,
@@ -19336,8 +19156,7 @@
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/regular,
 /obj/item/storage/firstaid/regular,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/interior/plastic/alt,
@@ -19403,8 +19222,7 @@
 	pixel_x = -4;
 	pixel_y = -3
 	},
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/interior/plastic,
@@ -19431,7 +19249,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/valley_huts)
 "qWu" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/structure/bed/chair{
 	dir = 1
 	},
@@ -19593,8 +19411,7 @@
 /obj/item/storage/toolbox/emergency{
 	pixel_y = 4
 	},
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/yellow/north,
@@ -19732,8 +19549,7 @@
 "rpL" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/effect/landmark/objective_landmark/science,
@@ -19805,7 +19621,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/wred,
 /area/shiva/interior/colony/medseceng)
 "ryZ" = (
@@ -19987,9 +19803,7 @@
 /turf/open/floor/shiva/purplefull/west,
 /area/shiva/interior/colony/research_hab)
 "rNx" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
@@ -20023,9 +19837,7 @@
 /turf/open/floor/shiva/multi_tiles/north,
 /area/shiva/interior/colony/research_hab)
 "rPa" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
@@ -20038,8 +19850,7 @@
 /obj/item/weapon/ice_axe/red{
 	pixel_y = -4
 	},
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/multi_tiles/west,
@@ -20052,7 +19863,7 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/n_admin)
 "rRO" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/structure/closet/secure_closet/personal,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/shiva/red,
@@ -20078,8 +19889,7 @@
 /area/shiva/interior/colony/medseceng)
 "rTG" = (
 /obj/item/stack/sheet/wood,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -20104,8 +19914,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard)
 "rUN" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/structure/machinery/power/smes/buildable{
@@ -20222,8 +20031,7 @@
 /turf/open/floor/shiva/green/west,
 /area/shiva/interior/colony/botany)
 "rZH" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/multi_tiles/north,
@@ -20232,9 +20040,7 @@
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/shiva/wred/northwest,
 /area/shiva/interior/colony/medseceng)
 "san" = (
@@ -20559,7 +20365,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_colony_grounds)
 "sxb" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "sxm" = (
@@ -20628,8 +20434,7 @@
 /turf/open/gm/river,
 /area/shiva/interior/warehouse/caves)
 "sAe" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/bluefull,
@@ -20664,8 +20469,7 @@
 /turf/open/floor/shiva/purplefull,
 /area/shiva/interior/colony/research_hab)
 "sCc" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/redfull,
@@ -20763,7 +20567,7 @@
 /turf/open/floor/plating/icefloor/warnplate/southwest,
 /area/shiva/exterior/junkyard/fortbiceps)
 "sHc" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/wredfull,
 /area/shiva/interior/colony/medseceng)
 "sHf" = (
@@ -20771,7 +20575,7 @@
 /turf/open/floor/shiva/multi_tiles/north,
 /area/shiva/interior/colony/research_hab)
 "sHL" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
 "sII" = (
@@ -20805,7 +20609,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "sJP" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
@@ -20830,8 +20634,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/colony/botany)
 "sKi" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva,
@@ -21011,7 +20814,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/central)
 "sXt" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/asphalt/cement,
 /area/shiva/interior/warehouse)
 "sXF" = (
@@ -21367,7 +21170,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/bar)
 "tsU" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/shiva/interior/aerodrome)
@@ -21411,8 +21214,7 @@
 /area/shiva/interior/colony/research_hab)
 "twD" = (
 /obj/structure/machinery/iv_drip,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/wred/east,
@@ -21606,7 +21408,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/interior/colony/central)
 "tKk" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/green,
 /area/shiva/interior/colony/botany)
 "tKv" = (
@@ -21653,8 +21455,7 @@
 /turf/open/floor/shiva/red/north,
 /area/shiva/interior/colony/medseceng)
 "tMY" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/radiator_tile,
@@ -21686,8 +21487,7 @@
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/item/clothing/gloves/black,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/carpet,
@@ -21785,8 +21585,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/central)
 "tSI" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/purplefull,
@@ -22144,9 +21943,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_lz2)
 "ujm" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/shiva/red/west,
 /area/shiva/interior/colony/medseceng)
 "ujJ" = (
@@ -22175,8 +21972,7 @@
 "ukU" = (
 /obj/structure/surface/table,
 /obj/item/clipboard,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/floor3,
@@ -22209,8 +22005,7 @@
 /area/shiva/exterior/cp_colony_grounds)
 "uot" = (
 /obj/structure/largecrate/random/case,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -22348,7 +22143,7 @@
 /area/shiva/interior/aerodrome)
 "uyJ" = (
 /obj/structure/reagent_dispensers/tank/fuel,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/yellow,
 /area/shiva/interior/colony/medseceng)
 "uzf" = (
@@ -22406,9 +22201,7 @@
 /turf/open/slippery/hull/dir/southwest,
 /area/sky)
 "uCp" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
 "uCs" = (
@@ -22435,8 +22228,7 @@
 /turf/open/floor/shiva/purplefull/north,
 /area/shiva/interior/colony/research_hab)
 "uFi" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -22473,8 +22265,7 @@
 /area/shiva/interior/aux_power)
 "uHa" = (
 /obj/structure/morgue,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/floor3,
@@ -22484,8 +22275,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/aerodrome)
 "uHH" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/prison/kitchen,
@@ -22535,8 +22325,7 @@
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 8
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/multi_tiles/southeast,
@@ -22618,8 +22407,7 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/purple/east,
@@ -22654,8 +22442,7 @@
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/colony/research_hab)
 "uPo" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/wood,
@@ -22758,8 +22545,7 @@
 /obj/structure/terminal{
 	dir = 1
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/yellowfull/west,
@@ -22859,7 +22645,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "vcU" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/yellow/southwest,
 /area/shiva/interior/colony/medseceng)
 "vdb" = (
@@ -22890,8 +22676,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "vdS" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/floor3,
@@ -22914,7 +22699,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
 "ves" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/prison/kitchen,
 /area/shiva/interior/colony/central)
 "vey" = (
@@ -22955,8 +22740,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/botany)
 "viF" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -23165,7 +22949,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/central)
 "vzy" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/structure/noticeboard{
 	pixel_y = -32
 	},
@@ -23198,8 +22982,7 @@
 /area/shiva/interior/caves/cp_camp)
 "vAw" = (
 /obj/structure/bed/chair,
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/wredfull,
@@ -23433,8 +23216,7 @@
 /turf/open/floor/shiva/purplefull/west,
 /area/shiva/interior/colony/research_hab)
 "vTh" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/red/east,
@@ -23669,8 +23451,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/lz2_habs)
 "wiM" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/radiator_tile,
@@ -24100,7 +23881,7 @@
 /obj/structure/morgue{
 	dir = 8
 	},
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/central)
 "wRa" = (
@@ -24335,8 +24116,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/caves/cp_camp)
 "xkf" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/redfull/west,
@@ -24372,8 +24152,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/interior/caves/cp_camp)
 "xoi" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/wredfull,
@@ -24387,7 +24166,7 @@
 	dir = 1
 	},
 /obj/item/paper_bin,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "xqf" = (
@@ -24494,7 +24273,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_colony_grounds)
 "xyi" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /obj/effect/decal/cleanable/vomit,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/plating,
@@ -24563,8 +24342,7 @@
 /obj/structure/terminal{
 	dir = 8
 	},
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/shiva/north,
@@ -24899,8 +24677,7 @@
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/cp_camp)
 "yeu" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/redfull/west,
@@ -25039,7 +24816,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/interior/caves/cp_camp)
 "ylZ" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/shiva/red,
 /area/shiva/interior/colony/medseceng)
 

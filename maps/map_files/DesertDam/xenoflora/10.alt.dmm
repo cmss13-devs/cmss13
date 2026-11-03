@@ -62,13 +62,11 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_labs)
 "fv" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/whitegreen/north,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "fX" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/paper,
@@ -88,7 +86,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
 "jj" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/item/clothing/suit/storage/labcoat,
 /obj/structure/surface/rack,
 /turf/open/floor/whitegreen,
@@ -171,9 +169,7 @@
 /turf/open/floor/whitegreen/northeast,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "td" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/landmark/corpsespawner/scientist,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs,
@@ -216,9 +212,7 @@
 /turf/open/floor/whitegreen/west,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "xD" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/machinery/centrifuge{
 	pixel_y = 3
 	},
@@ -282,9 +276,7 @@
 /turf/open/floor/white,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "Eo" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/glass/beaker{
 	pixel_x = 8
@@ -303,17 +295,13 @@
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "Fq" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/pouch/vials,
 /turf/open/floor/whitegreen/west,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "Gg" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/whitegreen/east,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "GC" = (
@@ -337,9 +325,7 @@
 /turf/open/floor/whitegreenfull,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "Kb" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/glass/beaker/vial,
 /obj/item/reagent_container/glass/beaker/vial{
@@ -359,7 +345,7 @@
 /turf/open/floor/white,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "MQ" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/whitegreen,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "MT" = (
@@ -486,7 +472,7 @@
 /turf/open/floor/white,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "Zd" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bin{
 	pixel_x = -6;

@@ -86,7 +86,7 @@
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/building/administration/upper_hallway)
 "iY" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/prison/blue,
 /area/desert_dam/building/administration/upper_hallway)
 "jl" = (
@@ -134,9 +134,7 @@
 /turf/open/floor/prison/blue/east,
 /area/desert_dam/building/administration/upper_hallway)
 "pZ" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/building/administration/upper_hallway)
 "qe" = (
@@ -300,9 +298,7 @@
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/building/administration/upper_hallway)
 "EV" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/prison/blue/north,
 /area/desert_dam/building/administration/upper_hallway)
 "Fb" = (
@@ -361,7 +357,7 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/upper_hallway)
 "KQ" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/prison/bluecorner/west,
 /area/desert_dam/building/administration/stairwell/upper)
 "KV" = (

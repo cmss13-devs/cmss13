@@ -7,8 +7,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "c" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /turf/open/floor/plating,
@@ -37,8 +36,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "f" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = 9
 	},
 /obj/structure/closet/crate/construction,
@@ -71,8 +69,7 @@
 /area/shiva/interior/colony/research_hab)
 "k" = (
 /obj/structure/surface/rack,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = 9
 	},
 /obj/item/tool/pickaxe,
@@ -127,8 +124,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "t" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 9
 	},
 /obj/structure/closet/secure_closet/freezer/fridge,

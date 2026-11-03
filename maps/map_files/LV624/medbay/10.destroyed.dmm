@@ -95,9 +95,7 @@
 /area/lv624/lazarus/medbay)
 "lD" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/transmitter/colony_net/rotary{
 	phone_category = "Lazarus Landing";
 	phone_id = "Medbay"
@@ -105,7 +103,7 @@
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "mz" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "mS" = (
@@ -136,9 +134,7 @@
 /area/lv624/lazarus/medbay)
 "pp" = (
 /obj/structure/closet/wardrobe,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
@@ -166,9 +162,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "tK" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/whiteblue/northeast,
 /area/lv624/lazarus/medbay)
 "uV" = (
@@ -307,9 +301,7 @@
 /area/lv624/ground/jungle/north_west_jungle)
 "JK" = (
 /obj/item/stack/medical/ointment,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/medbay)
 "JO" = (
@@ -325,9 +317,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "Lk" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/medbay)
 "LX" = (
@@ -361,9 +351,7 @@
 	pixel_y = 3
 	},
 /obj/item/clothing/mask/surgical,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/item/storage/belt/medical/full,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/white,
@@ -397,7 +385,7 @@
 /area/lv624/lazarus/medbay)
 "PE" = (
 /obj/structure/filingcabinet,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/damaged5/west,
 /area/lv624/lazarus/medbay)

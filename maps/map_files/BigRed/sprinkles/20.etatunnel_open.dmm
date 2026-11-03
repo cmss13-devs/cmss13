@@ -35,9 +35,7 @@
 /turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/outside/lz2_south_cas)
 "fK" = (
-/obj/structure/machinery/light/double{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/base/north,
 /turf/open/mars_cave/mars_cave_7,
 /area/bigredv2/outside/lz2_south_cas)
 "fQ" = (
@@ -78,9 +76,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/lz2_south_cas)
 "ki" = (
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/base/east,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "kq" = (
@@ -135,7 +131,7 @@
 "sJ" = (
 /obj/item/clothing/suit/storage/CMB,
 /obj/structure/closet/secure_closet/marshal,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "sV" = (
@@ -278,7 +274,7 @@
 /turf/closed/wall/wood,
 /area/bigredv2/outside/lz2_south_cas)
 "JW" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/double/base,
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/outside/lz2_south_cas)
 "KI" = (

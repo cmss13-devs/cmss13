@@ -187,8 +187,7 @@
 "bf" = (
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/structure/platform/metal/hybrisa/metalplatform6,
-/obj/structure/machinery/light/red{
-	dir = 4;
+/obj/structure/machinery/light/fixture/red/east{
 	pixel_y = -16
 	},
 /obj/effect/decal/medical_decals{
@@ -348,8 +347,7 @@
 	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/obj/structure/machinery/light/blue{
-	dir = 4;
+/obj/structure/machinery/light/fixture/blue/east{
 	pixel_y = -16
 	},
 /obj/structure/disposalpipe/trunk{
@@ -364,8 +362,7 @@
 /obj/structure/sign/poster/pinup{
 	pixel_y = 32
 	},
-/obj/structure/machinery/light{
-	dir = 8;
+/obj/structure/machinery/light/fixture/base/west{
 	pixel_y = -16
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
@@ -435,9 +432,7 @@
 	dir = 4;
 	pixel_y = -6
 	},
-/obj/structure/machinery/light/small/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/blue/west,
 /obj/item/hybrisa/misc/trash_bag_full_prop{
 	pixel_x = -3;
 	pixel_y = 6
@@ -692,9 +687,7 @@
 /turf/open/hybrisa/street/sidewalk/west,
 /area/template_noop)
 "jd" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
 	pixel_y = 20
 	},
@@ -735,9 +728,7 @@
 	icon_state = "cargo"
 	},
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/fire_station)
 "jp" = (
@@ -969,9 +960,7 @@
 /area/template_noop)
 "nt" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "csplatter1"
 	},
@@ -1001,9 +990,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/fire_station)
@@ -1468,8 +1455,7 @@
 /turf/open/floor/prison/red/north,
 /area/lv759/indoors/fire_station)
 "yt" = (
-/obj/structure/machinery/light{
-	dir = 4;
+/obj/structure/machinery/light/fixture/base/east{
 	pixel_y = -16
 	},
 /obj/structure/pipes/standard/simple/hidden/dark{
@@ -1633,9 +1619,7 @@
 	id = "fire_station_3";
 	pixel_x = -24
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/prison/darkredfull2,
 /area/lv759/indoors/fire_station)
 "BA" = (
@@ -1653,8 +1637,7 @@
 /area/template_noop)
 "BC" = (
 /obj/effect/decal/hybrisa/road/lines2,
-/obj/structure/machinery/light/red{
-	dir = 4;
+/obj/structure/machinery/light/fixture/red/east{
 	pixel_y = -16
 	},
 /turf/open/hybrisa/street/asphalt,
@@ -1699,8 +1682,7 @@
 "CH" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/trash/cigbutt,
-/obj/structure/machinery/light/blue{
-	dir = 8;
+/obj/structure/machinery/light/fixture/blue/west{
 	pixel_y = -16
 	},
 /obj/effect/decal/warning_stripes{
@@ -2133,9 +2115,7 @@
 	icon_state = "cargo"
 	},
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/fire_station)
@@ -2505,7 +2485,7 @@
 /obj/effect/decal/strata_decals/grime/grime4{
 	dir = 4
 	},
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/lv759/indoors/fire_station)
 "Rj" = (
@@ -2645,7 +2625,7 @@
 /turf/open/hybrisa/street/sidewalk/north,
 /area/template_noop)
 "Tq" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/item/small_shards,
 /obj/item/shard/shrapnel,
 /obj/item/shard{
@@ -2671,9 +2651,7 @@
 	pixel_y = 1
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform6,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/prison/darkredfull2,
 /area/lv759/indoors/fire_station)
 "TY" = (
@@ -2718,8 +2696,7 @@
 	dir = 8;
 	pixel_x = 1
 	},
-/obj/structure/machinery/light{
-	dir = 4;
+/obj/structure/machinery/light/fixture/base/east{
 	pixel_y = -6
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
@@ -2799,8 +2776,7 @@
 	dir = 8;
 	pixel_x = 1
 	},
-/obj/structure/machinery/light{
-	dir = 4;
+/obj/structure/machinery/light/fixture/base/east{
 	pixel_y = 6
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,

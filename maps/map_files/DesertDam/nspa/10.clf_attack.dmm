@@ -274,9 +274,7 @@
 "wJ" = (
 /obj/structure/flora/pottedplant,
 /obj/structure/machinery/power/apc/no_power/north,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/prison/red/northeast,
 /area/desert_dam/building/security/lobby)
 "wZ" = (
@@ -455,9 +453,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/lobby)
 "LA" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/prison/red/west,
 /area/desert_dam/building/security/lobby)
 "LC" = (
@@ -567,7 +563,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/item/trash/kepler,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/building/security/lobby)
@@ -589,7 +585,7 @@
 	dir = 4;
 	health = 80
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/building/security/lobby)

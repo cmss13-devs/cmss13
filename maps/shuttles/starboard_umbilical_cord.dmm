@@ -4,16 +4,12 @@
 /area/template_noop)
 "b" = (
 /obj/effect/landmark/ert_spawns/umbilical,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/plate,
 /area/shuttle/ert/no_defenses/no_gas)
 "c" = (
 /obj/effect/landmark/ert_spawns/umbilical,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/plate,
 /area/shuttle/ert/no_defenses/no_gas)
 "d" = (
@@ -38,9 +34,7 @@
 /area/shuttle/ert/no_defenses/no_gas)
 "f" = (
 /obj/effect/landmark/ert_spawns/umbilical,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 5
 	},
@@ -58,9 +52,7 @@
 /area/shuttle/ert/no_defenses/no_gas)
 "h" = (
 /obj/effect/landmark/ert_spawns/umbilical,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/almayer/plate,
 /area/shuttle/ert/no_defenses/no_gas)

@@ -209,7 +209,7 @@
 /turf/open/floor/hybrisa/wood/whitewood,
 /area/lv759/indoors/admin_records)
 "dx" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/hybrisa/wood/whitewood,
 /area/lv759/indoors/admin_records)
 "dB" = (
@@ -282,7 +282,7 @@
 /obj/structure/machinery/faxmachine{
 	pixel_y = -3
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/lv759/indoors/admin_records)
 "eo" = (
@@ -460,8 +460,7 @@
 	dir = 8
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform3/east,
-/obj/structure/machinery/light/small/blue{
-	dir = 4;
+/obj/structure/machinery/light/blub/blue/east{
 	pixel_y = 16
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -481,9 +480,7 @@
 	pixel_x = 8;
 	pixel_y = 8
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/item/paper{
 	pixel_x = -6;
 	pixel_y = 5
@@ -592,8 +589,7 @@
 	pixel_x = 19;
 	pixel_y = 25
 	},
-/obj/structure/machinery/light/small/blue{
-	dir = 1;
+/obj/structure/machinery/light/blub/blue/north{
 	pixel_y = 20
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -643,7 +639,7 @@
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/hybrisa/tile/fancy_tile,
 /area/lv759/indoors/admin_records)
 "ig" = (
@@ -1065,7 +1061,7 @@
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/north_street)
 "lA" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/hybrisa/tile/fancy_tile,
 /area/lv759/indoors/admin_records)
 "lK" = (
@@ -1337,7 +1333,7 @@
 /obj/item/tool/mop{
 	pixel_x = 1
 	},
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/fixture/base{
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -1501,8 +1497,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "pl" = (
-/obj/structure/machinery/light{
-	dir = 8;
+/obj/structure/machinery/light/fixture/base/west{
 	pixel_y = 17
 	},
 /turf/open/floor/hybrisa/tile/fancy_tile,
@@ -1557,7 +1552,7 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/lv759/indoors/caves/north_caves)
 "pI" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	pixel_x = 16
 	},
 /obj/structure/largecrate/random/case/double,
@@ -1585,9 +1580,7 @@
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/landmark/objective_landmark/close,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/lv759/indoors/admin_records)
 "pS" = (
@@ -1850,7 +1843,7 @@
 /obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_x = -13
 	},
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/fixture/base{
 	pixel_x = 16
 	},
 /obj/item/reagent_container/food/drinks/sillycup{
@@ -1916,8 +1909,7 @@
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/north_street)
 "ue" = (
-/obj/structure/machinery/light/small{
-	dir = 4;
+/obj/structure/machinery/light/blub/base/east{
 	pixel_y = 6
 	},
 /obj/effect/decal/hybrisa/trash{
@@ -2079,8 +2071,7 @@
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
 	pixel_y = 3
 	},
-/obj/structure/machinery/light/blue{
-	dir = 1;
+/obj/structure/machinery/light/fixture/blue/north{
 	pixel_x = 16
 	},
 /turf/open/hybrisa/street/cement3,
@@ -2153,8 +2144,7 @@
 /turf/open/hybrisa/street/sidewalk/southeast,
 /area/lv759/outdoors/colony_streets/north_street)
 "wC" = (
-/obj/structure/machinery/light{
-	dir = 8;
+/obj/structure/machinery/light/fixture/base/west{
 	pixel_y = 17
 	},
 /turf/open/floor/hybrisa/wood/whitewood,
@@ -2285,9 +2275,7 @@
 	pixel_y = 23
 	},
 /obj/structure/pipes/vents/pump_hybrisa,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/lv759/indoors/admin_records)
 "ys" = (
@@ -2525,9 +2513,7 @@
 /turf/open/floor/hybrisa/carpet/carpetreddeco_faded,
 /area/lv759/indoors/admin_records)
 "AC" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/hybrisa/wood/whitewood,
 /area/lv759/indoors/admin_records)
 "AI" = (
@@ -2890,7 +2876,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/north_street)
 "EM" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/hybrisa/wood/whitewood,
 /area/lv759/indoors/admin_records)
 "ET" = (
@@ -3131,8 +3117,7 @@
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/admin_records)
 "GN" = (
-/obj/structure/machinery/light/small{
-	dir = 8;
+/obj/structure/machinery/light/blub/base/west{
 	pixel_y = -16
 	},
 /obj/effect/decal/hybrisa/dirt,
@@ -3278,9 +3263,7 @@
 	pixel_x = 14;
 	pixel_y = 6
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/hybrisa/tile/fancy_tile,
 /area/lv759/indoors/admin_records)
 "HI" = (
@@ -3912,7 +3895,7 @@
 	pixel_y = 6
 	},
 /obj/item/trash/buritto,
-/obj/structure/machinery/light/small/blue{
+/obj/structure/machinery/light/blub/blue{
 	pixel_x = -16
 	},
 /turf/open/floor/prison/floor_plate/southwest,
@@ -4085,8 +4068,7 @@
 	pixel_x = 2;
 	pixel_y = 9
 	},
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /turf/open/floor/hybrisa/wood/whitewood,
@@ -4261,9 +4243,7 @@
 /obj/effect/decal/hybrisa/deco_edging{
 	color = "#bbbaae"
 	},
-/obj/structure/machinery/light/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/blue/north,
 /turf/open/hybrisa/street/cement2,
 /area/lv759/outdoors/colony_streets/north_street)
 "RT" = (
@@ -4618,8 +4598,7 @@
 /turf/open/floor/hybrisa/carpet/carpetreddeco_faded,
 /area/lv759/indoors/admin_records)
 "Wc" = (
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /obj/item/stack/rods,
@@ -4659,7 +4638,7 @@
 /area/lv759/indoors/admin_records)
 "Wo" = (
 /obj/structure/pipes/vents/pump_hybrisa,
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/hybrisa/tile/fancy_tile,
 /area/lv759/indoors/admin_records)
 "Wq" = (
@@ -4853,9 +4832,7 @@
 	pixel_x = 14;
 	pixel_y = 12
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/hybrisa/tile/fancy_tile,
 /area/lv759/indoors/admin_records)
 "Zw" = (

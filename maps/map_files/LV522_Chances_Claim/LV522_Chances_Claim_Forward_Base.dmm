@@ -2710,6 +2710,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/antre/plating/corner_dir/south_east,
 /area/forward_base/chances/hallways/lower_south)
+"aic" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 1
+	},
+/obj/structure/machinery/computer/crew,
+/turf/open/floor/almayer/dark_sterile,
+/area/forward_base/chances/medical/lower_medical_lobby)
 "aid" = (
 /obj/effect/landmark/late_join/delta,
 /obj/effect/landmark/start/marine/smartgunner/delta,
@@ -3831,10 +3838,9 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
 	},
-/obj/structure/machinery/recharger{
-	pixel_y = 4
-	},
 /obj/structure/surface/table/almayer,
+/obj/item/device/defibrillator,
+/obj/item/device/defibrillator,
 /obj/item/device/defibrillator,
 /obj/item/device/defibrillator,
 /obj/item/device/defibrillator,
@@ -16820,6 +16826,10 @@
 	dir = 4;
 	pixel_x = 23
 	},
+/obj/item/tool/hand_labeler{
+	pixel_y = 6;
+	pixel_x = -6
+	},
 /turf/open/floor/almayer/plate,
 /area/forward_base/chances/squads/lower)
 "gek" = (
@@ -20345,10 +20355,6 @@
 	pixel_y = 4
 	},
 /obj/structure/surface/table/almayer,
-/obj/item/device/defibrillator,
-/obj/item/device/defibrillator,
-/obj/item/device/defibrillator,
-/obj/item/device/defibrillator,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/chances/medical/morgue_storage)
 "hBp" = (
@@ -20976,7 +20982,7 @@
 /turf/open/floor/strata/white_cyan1/east,
 /area/lv522/indoors/a_block/medical/glass)
 "hMS" = (
-/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/antag,
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/almayer/cargo,
 /area/forward_base/chances/engineering/lower)
 "hMT" = (
@@ -38538,7 +38544,12 @@
 /area/lv522/indoors/a_block/medical)
 "oLO" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/computer/crew,
+/obj/structure/machinery/recharger{
+	pixel_y = 4
+	},
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/device/defibrillator,
+/obj/item/device/defibrillator,
 /turf/open/floor/almayer/dark_sterile,
 /area/forward_base/chances/medical/lower_medical_lobby)
 "oLV" = (
@@ -70514,7 +70525,7 @@ lTt
 vPE
 vPE
 tli
-jYK
+aic
 tli
 jYK
 jYK

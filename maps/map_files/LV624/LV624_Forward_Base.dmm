@@ -3109,7 +3109,6 @@
 /turf/open/gm/river,
 /area/lv624/ground/river/east_river)
 "aly" = (
-/obj/structure/machinery/power/apc/almayer/north,
 /obj/structure/disposalpipe/junction{
 	dir = 4
 	},
@@ -7068,6 +7067,7 @@
 "axq" = (
 /obj/structure/largecrate/black_market/confiscated_weaponry,
 /obj/structure/platform/metal/almayer_smooth/west,
+/obj/structure/machinery/power/apc/almayer/west,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/lv624/hallways/south)
 "axr" = (

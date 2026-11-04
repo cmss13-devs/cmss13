@@ -86,11 +86,11 @@
 
 	var/action_icon_result
 	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_CLEAVE_FLING))
-		ADD_TRAIT(xeno, TRAIT_ABILITY_CLEAVE_FLING, TRAIT_SOURCE_ABILITY("cleave_root"))
+		ADD_TRAIT(xeno, TRAIT_ABILITY_CLEAVE_FLING, TRAIT_SOURCE_ABILITY("cleave_toggle"))
 		action_icon_result = "prae_cleave_fling" // TODO: update
 		to_chat(xeno, SPAN_WARNING("We will now throw marines with our cleave."))
 	else
-		REMOVE_TRAIT(xeno, TRAIT_ABILITY_CLEAVE_FLING, TRAIT_SOURCE_ABILITY("cleave_root"))
+		REMOVE_TRAIT(xeno, TRAIT_ABILITY_CLEAVE_FLING, TRAIT_SOURCE_ABILITY("cleave_toggle"))
 		action_icon_result = "prae_cleave_root"
 		to_chat(xeno, SPAN_WARNING("We will now root marines with our cleave."))
 

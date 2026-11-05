@@ -126,7 +126,7 @@
 			SEND_SIGNAL(main_hive, COMSIG_XENO_REVEAL_TACMAP)
 			xeno_announcement("There is only a handful of tallhosts left, they are now visible on our hive mind map.", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 	for(var/mob/living/carbon/human/human as anything in GLOB.human_mob_list)
-		if(human.stat != DEAD && istype(get_area(human), /area/forward_base))
+		if(human.stat != DEAD && !HAS_TRAIT(human, TRAIT_NESTED) && istype(get_area(human), /area/forward_base))
 			base_empty_since = null
 			return
 	if(isnull(base_empty_since))

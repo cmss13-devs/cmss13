@@ -144,7 +144,7 @@
 
 		// Add points depending on who controls it
 		var/area/target_area = get_area(target)
-		if(istype(target_area, /area/almayer/medical/morgue) || istype(target_area, /area/almayer/medical/containment/cell) || istype(target_area, /area/forward_base))
+		if(istype(target_area, /area/almayer/medical/morgue) || istype(target_area, /area/almayer/medical/containment/cell) || istype(target_area, /area/forward_base/medical/morgue) || istype(target_area, /area/forward_base/chances/medical/morgue_storage) || istype(target_area, /area/forward_base/lv624/research/containment))
 			SSobjectives.statistics["corpses_recovered"]++
 			SSobjectives.statistics["corpses_total_points_earned"] += corpse_val
 			award_points(corpse_val)

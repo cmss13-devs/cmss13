@@ -35,7 +35,12 @@
 	var/atom/movable/closest_target
 	var/smallest_distance = INFINITY
 
-	var/list/valid_targets = pick(SShuman.processable_human_list)
+	var/list/valid_targets
+
+	if(length(SShuman.processable_human_list))
+		valid_targets = pick(SShuman.processable_human_list)
+	else
+		return
 
 	for(var/atom/movable/potential_target as anything in valid_targets)
 		if(z != potential_target.z)
@@ -61,7 +66,8 @@
 		smallest_distance = distance
 
 	if(isnull(closest_target))
-		target_mob = pick(SShuman.processable_human_list)
+		if(length(SShuman.processable_human_list))
+			target_mob = pick(SShuman.processable_human_list)
 		target_mob_ref = WEAKREF(target_mob)
 		stance = HOSTILE_STANCE_ATTACK
 		return
@@ -164,13 +170,6 @@
 			INVOKE_ASYNC(src, PROC_REF(fourth_ability))
 
 	. = ..()
-
-	//Start following a random human player if there are no enemies to fight.
-	//We are picking a random player because checking for the closest mob via a for() loop is pretty resource intensive.
-	if(!target_mob && hivenumber == XENO_HIVE_CORRUPTED && body_position != LYING_DOWN && !following_mob)
-		stop_automated_movement = 1
-		following_mob = pick(SShuman.processable_human_list)
-		walk_to(src, following_mob, 4, move_to_delay)
 
 /mob/living/simple_animal/hostile/alien/horde_mode/boss/Initialize()
 	. = ..()

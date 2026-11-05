@@ -15,7 +15,7 @@
 /turf/open/floor/plating/icefloor/warnplate/west,
 /area/varadero/interior/cargo)
 "ad" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
@@ -144,9 +144,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/shiva/yellow/east,
 /area/varadero/interior/cargo)
 "aY" = (
@@ -269,9 +267,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
 "bS" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/shiva/yellow/east,
 /area/varadero/interior/cargo)
@@ -458,9 +454,7 @@
 /turf/open/floor/plating/icefloor,
 /area/varadero/exterior/lz1_near)
 "dz" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "dG" = (
@@ -638,7 +632,7 @@
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/farocean)
 "fp" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/wood,
 /area/varadero/interior/library)
 "fr" = (
@@ -648,9 +642,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "fx" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/shiva/yellow/west,
 /area/varadero/interior/cargo)
 "fB" = (
@@ -685,9 +677,7 @@
 /turf/open/floor/shiva/yellowfull/west,
 /area/varadero/interior/cargo)
 "fG" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
 	},
@@ -762,9 +752,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "gm" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/wood,
 /area/varadero/interior/library)
 "go" = (
@@ -847,9 +835,7 @@
 	pixel_x = 2;
 	pixel_y = 7
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/morgue)
 "gN" = (
@@ -1013,7 +999,7 @@
 /turf/open/floor/shiva/red/southeast,
 /area/varadero/interior/morgue)
 "iH" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/closet/toolcloset,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
@@ -1079,21 +1065,15 @@
 /turf/closed/wall/r_wall,
 /area/varadero/interior/hall_N)
 "jj" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/shiva/yellow/east,
 /area/varadero/interior/cargo)
 "jk" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/plating/icefloor/warnplate,
 /area/varadero/interior/maintenance/north)
 "ju" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "jv" = (
@@ -1142,9 +1122,7 @@
 /area/varadero/exterior/lz1_near)
 "jW" = (
 /obj/structure/filingcabinet,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/shiva/yellow/east,
 /area/varadero/interior/cargo)
 "jX" = (
@@ -1187,9 +1165,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/shiva/yellow/west,
 /area/varadero/interior/cargo)
 "kp" = (
@@ -1287,9 +1263,7 @@
 /turf/open/floor/shiva/yellow/west,
 /area/varadero/interior/cargo)
 "lv" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/structure/bookcase{
 	density = 0;
 	icon_state = "book-3"
@@ -1405,9 +1379,7 @@
 /obj/structure/largecrate/random/mini/ammo{
 	pixel_y = 4
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = -28
 	},
@@ -1445,7 +1417,7 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
 "mN" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/north)
 "mU" = (
@@ -1456,9 +1428,7 @@
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/cargo)
 "mZ" = (
@@ -1486,9 +1456,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "no" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/shiva/yellow/east,
 /area/varadero/interior/cargo)
 "nu" = (
@@ -1606,9 +1574,7 @@
 /obj/item/storage/wallet/random{
 	pixel_y = 3
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "oz" = (
@@ -1741,7 +1707,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "oX" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/asteroidwarning,
 /area/varadero/interior/cargo)
 "oY" = (
@@ -1880,9 +1846,7 @@
 /turf/open/floor/shiva/green/west,
 /area/varadero/interior/maintenance/north)
 "qh" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "qi" = (
@@ -1991,7 +1955,7 @@
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pontoon_beach/lz)
 "qZ" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/cargo)
 "ra" = (
@@ -2027,9 +1991,7 @@
 /obj/structure/machinery/firealarm{
 	pixel_y = 24
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/shiva/yellowfull/west,
 /area/varadero/interior/cargo)
 "rr" = (
@@ -2111,7 +2073,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/north)
 "rS" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/bcircuit,
 /area/varadero/interior/maintenance/north)
 "rU" = (
@@ -2370,9 +2332,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz1_near)
 "tT" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/bookcase{
 	density = 0;
 	icon_state = "book-3"
@@ -2420,9 +2380,7 @@
 /turf/open/floor/asteroidwarning/northwest,
 /area/varadero/exterior/lz1_near)
 "um" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/comms4)
 "ux" = (
@@ -2438,9 +2396,7 @@
 /turf/open/floor/shiva/red,
 /area/varadero/interior/morgue)
 "uy" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/structure/bookcase{
 	density = 0;
 	icon_state = "book-5"
@@ -2448,9 +2404,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/library)
 "uA" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "uF" = (
@@ -2685,9 +2639,7 @@
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "wt" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/gm/dirt,
 /area/varadero/interior/maintenance/north)
 "wv" = (
@@ -2801,9 +2753,7 @@
 /turf/open/floor/shiva/green/west,
 /area/varadero/interior/hall_N)
 "xx" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_N)
@@ -2829,9 +2779,7 @@
 /turf/closed/wall/r_wall,
 /area/varadero/interior/morgue)
 "xO" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "xQ" = (
@@ -2871,9 +2819,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "ym" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_N)
 "yo" = (
@@ -2914,7 +2860,7 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
 "yD" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "yE" = (
@@ -3227,14 +3173,12 @@
 	pixel_x = -14;
 	pixel_y = 14
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/wood,
 /area/varadero/interior/maintenance/north)
 "Bw" = (
 /obj/structure/machinery/constructable_frame,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/shiva/yellow/west,
 /area/varadero/interior/cargo)
 "Bx" = (
@@ -3375,9 +3319,7 @@
 /obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/surface/rack,
 /obj/item/tool/pickaxe/drill{
 	pixel_y = 4
@@ -3394,7 +3336,7 @@
 /turf/open/gm/dirt,
 /area/varadero/interior/maintenance/north)
 "CM" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/carpet,
 /area/varadero/interior/library)
 "CN" = (
@@ -3443,9 +3385,7 @@
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pontoon_beach/lz)
 "Dd" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/hall_N)
 "Di" = (
@@ -3508,15 +3448,11 @@
 /obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/cargo)
 "DE" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/closet/radiation,
 /obj/structure/barricade/handrail/wire,
 /turf/open/floor/shiva/yellow,
@@ -3660,9 +3596,7 @@
 /area/varadero/exterior/lz1_near)
 "Ey" = (
 /obj/structure/reagent_dispensers/beerkeg/alt,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/freezerfloor,
 /area/varadero/interior/cargo)
 "EA" = (
@@ -3673,9 +3607,7 @@
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/cargo)
 "EH" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/shiva/greenfull/west,
 /area/varadero/interior/hall_N)
 "EM" = (
@@ -3798,15 +3730,11 @@
 /area/varadero/interior/chapel)
 "FY" = (
 /obj/structure/platform_decoration/metal/kutjevo/north,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/comms4)
 "FZ" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/cargo)
 "Ga" = (
@@ -3904,9 +3832,7 @@
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/largecrate/random,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/cargo)
@@ -4174,9 +4100,7 @@
 "JX" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/machinery/storm_siren{
 	pixel_y = 5
 	},
@@ -4226,14 +4150,12 @@
 /turf/open/gm/coast/beachcorner/south_east,
 /area/varadero/exterior/pontoon_beach)
 "Kf" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/shiva/red/north,
 /area/varadero/interior/morgue)
 "Kg" = (
 /obj/structure/morgue,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/shiva/red/east,
 /area/varadero/interior/morgue)
 "Kh" = (
@@ -4439,7 +4361,7 @@
 /area/varadero/interior/cargo)
 "LM" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "LN" = (
@@ -4639,9 +4561,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "NQ" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
@@ -4694,9 +4614,7 @@
 "Ot" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
 "Ou" = (
@@ -4711,9 +4629,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
 "Oz" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/shiva/green/west,
 /area/varadero/interior/hall_N)
 "OC" = (
@@ -4727,7 +4643,7 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_N)
 "OJ" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
@@ -4858,9 +4774,7 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/cargo)
 "Qi" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/filingcabinet{
 	pixel_x = -8;
 	pixel_y = 4
@@ -4879,9 +4793,7 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
 "Qq" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "Qt" = (
@@ -5111,9 +5023,7 @@
 /area/varadero/interior/maintenance/north)
 "SG" = (
 /obj/structure/barricade/handrail/wire,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/shiva/yellow/west,
 /area/varadero/interior/cargo)
 "SH" = (
@@ -5263,9 +5173,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "TL" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/barricade/plasteel/wired{
 	dir = 4
 	},
@@ -5430,9 +5338,7 @@
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/hall_N)
 "Vf" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "Vi" = (
@@ -5639,9 +5545,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "WE" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "WF" = (
@@ -5802,9 +5706,7 @@
 	pixel_y = 4
 	},
 /obj/effect/landmark/objective_landmark/science,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/morgue)
 "XX" = (

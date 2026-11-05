@@ -61,7 +61,7 @@
 /turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
 "eD" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/surface/rack,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/whitepurplecorner/east,
@@ -144,14 +144,12 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "ok" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
 "pV" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
 "rw" = (
@@ -184,9 +182,7 @@
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor,
 /area/lv624/lazarus/fitness)
 "uV" = (
@@ -268,9 +264,7 @@
 /area/lv624/lazarus/fitness)
 "BW" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/landmark/corpsespawner/colonist/random/burst,
 /turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
@@ -376,7 +370,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
 "Mn" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/warnwhite,
 /area/lv624/lazarus/fitness)
 "Nt" = (

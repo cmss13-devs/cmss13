@@ -34,9 +34,7 @@
 /turf/open/floor/plating,
 /area/strata/interior/outpost/engi/drome)
 "cC" = (
-/obj/structure/machinery/light/dropship/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/dropship/blue/west,
 /turf/closed/shuttle/upp_sof/transparent{
 	icon_state = "3,14"
 	},
@@ -258,9 +256,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/outpost/engi/drome)
 "rM" = (
-/obj/structure/machinery/light/dropship/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/dropship/blue/east,
 /turf/closed/shuttle/upp_sof/transparent{
 	icon_state = "5,14"
 	},
@@ -549,12 +545,8 @@
 	},
 /area/strata/interior/shuttle_sof)
 "Jb" = (
-/obj/structure/machinery/light/dropship/blue{
-	dir = 8
-	},
-/obj/structure/machinery/light/dropship/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/dropship/blue/west,
+/obj/structure/machinery/light/dropship/blue/east,
 /turf/open/floor/plating,
 /area/strata/interior/shuttle_sof)
 "JF" = (
@@ -600,9 +592,7 @@
 /turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/strata/interior/shuttle_sof)
 "NJ" = (
-/obj/structure/machinery/light/dropship/green{
-	dir = 4
-	},
+/obj/structure/machinery/light/dropship/green/east,
 /turf/closed/shuttle/upp_sof{
 	icon_state = "8,7"
 	},
@@ -613,12 +603,8 @@
 	},
 /area/strata/interior/shuttle_sof)
 "Oo" = (
-/obj/structure/machinery/light/dropship/blue{
-	dir = 4
-	},
-/obj/structure/machinery/light/dropship/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/dropship/blue/east,
+/obj/structure/machinery/light/dropship/blue/west,
 /turf/closed/shuttle/upp_sof{
 	icon_state = "4,8"
 	},
@@ -641,9 +627,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/outpost/engi/drome)
 "Pg" = (
-/obj/structure/machinery/light/dropship/red{
-	dir = 8
-	},
+/obj/structure/machinery/light/dropship/red/west,
 /turf/closed/shuttle/upp_sof{
 	icon_state = "0,7"
 	},

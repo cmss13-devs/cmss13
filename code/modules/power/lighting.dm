@@ -110,9 +110,9 @@
 			switch(fixture_type)
 
 				if("tube")
-					newlight = new /obj/structure/machinery/light/built(loc)
-				if ("bulb")
-					newlight = new /obj/structure/machinery/light/small/built(loc)
+					newlight = new /obj/structure/machinery/light/fixture/no_fixture(loc)
+				if("bulb")
+					newlight = new /obj/structure/machinery/light/blub/no_fixture(loc)
 
 			newlight.setDir(dir)
 			src.transfer_fingerprints_to(newlight)
@@ -160,11 +160,52 @@
 
 	appearance_flags = TILE_BOUND
 
+/obj/structure/machinery/light/fixture/base/north
+	dir = NORTH
+/obj/structure/machinery/light/fixture/base/east
+	dir = EAST
+/obj/structure/machinery/light/fixture/base/west
+	dir = WEST
+
+/obj/structure/machinery/light/fixture/blue
+	icon_state = "btube1"
+	base_state = "btube"
+	desc = "A lighting fixture. Its glass covering is a bright, fluorescent blue."
+	light_color = LIGHT_COLOR_XENON
+
+/obj/structure/machinery/light/fixture/blue/north
+	dir = NORTH
+/obj/structure/machinery/light/fixture/blue/east
+	dir = EAST
+/obj/structure/machinery/light/fixture/blue/west
+	dir = WEST
+
+/obj/structure/machinery/light/fixture/red
+	icon_state = "rtube1"
+	base_state = "rtube"
+	desc = "A lighting fixture. Its glass covering is a bright, fluorescent red."
+	brightness = 4
+
+/obj/structure/machinery/light/fixture/red/north
+	dir = NORTH
+/obj/structure/machinery/light/fixture/red/east
+	dir = EAST
+/obj/structure/machinery/light/fixture/red/west
+	dir = WEST
+
+
 // containment lights
 /obj/structure/machinery/light/containment
 	name = "containment light fixture"
 	unslashable = TRUE
 	unacidable = TRUE
+
+/obj/structure/machinery/light/containment/north
+	dir = NORTH
+/obj/structure/machinery/light/containment/east
+	dir = EAST
+/obj/structure/machinery/light/containment/west
+	dir = WEST
 
 /obj/structure/machinery/light/containment/attack_alien(mob/living/carbon/xenomorph/M)
 	return
@@ -172,41 +213,18 @@
 /obj/structure/machinery/light/containment/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	return TAILSTAB_COOLDOWN_NONE
 
-/obj/structure/machinery/light/blue
-	icon_state = "btube1"
-	base_state = "btube"
-	desc = "A lighting fixture. Its glass covering is a bright, fluorescent blue."
-	light_color = LIGHT_COLOR_XENON
-
-/obj/structure/machinery/light/red
-	icon_state = "rtube1"
-	base_state = "rtube"
-	desc = "A lighting fixture. Its glass covering is a bright, fluorescent red."
-	brightness = 4
-
-// the smaller bulb light fixture
-
-/obj/structure/machinery/light/small
-	icon_state = "bulb1"
-	base_state = "bulb"
-	fitting = "bulb"
-	brightness = 4
-	desc = "A small lighting fixture. Good for illuminating dark areas."
-	light_type = /obj/item/light_bulb/bulb
-
-/obj/structure/machinery/light/small/blue
-	icon_state = "bbulb1"
-	base_state = "bbulb"
-	fitting = "bulb"
-	brightness = 4
-	desc = "A small lighting fixture. Its glass covering is a bright, fluorescent blue."
-	light_type = /obj/item/light_bulb/bulb
-	light_color = LIGHT_COLOR_XENON
 
 /obj/structure/machinery/light/double
 	icon_state = "ptube1"
 	base_state = "ptube"
 	desc = "A lighting fixture that can be fitted with two bright fluorescent light tubes for that extra eye-watering goodness."
+
+/obj/structure/machinery/light/double/base/north
+	dir = NORTH
+/obj/structure/machinery/light/double/base/east
+	dir = EAST
+/obj/structure/machinery/light/double/base/west
+	dir = WEST
 
 /obj/structure/machinery/light/double/blue
 	icon_state = "bptube1"
@@ -214,7 +232,15 @@
 	desc = "A lighting fixture that can be fitted with two bright blue fluorescent light tubes for that extra eye-watering goodness."
 	light_color = LIGHT_COLOR_XENON
 
-/obj/structure/machinery/light/spot
+/obj/structure/machinery/light/double/blue/north
+	dir = NORTH
+/obj/structure/machinery/light/double/blue/east
+	dir = EAST
+/obj/structure/machinery/light/double/blue/west
+	dir = WEST
+
+
+/obj/structure/machinery/light/wide
 	name = "spotlight"
 	icon_state = "slight1"
 	base_state = "slight"
@@ -223,7 +249,14 @@
 	light_type = /obj/item/light_bulb/tube/large
 	brightness = 12
 
-/obj/structure/machinery/light/spot/blue
+/obj/structure/machinery/light/wide/base/north
+	dir = NORTH
+/obj/structure/machinery/light/wide/base/east
+	dir = EAST
+/obj/structure/machinery/light/wide/base/west
+	dir = WEST
+
+/obj/structure/machinery/light/wide/blue
 	name = "spotlight"
 	icon_state = "bslight1"
 	base_state = "bslight"
@@ -232,6 +265,14 @@
 	light_type = /obj/item/light_bulb/tube/large/
 	brightness = 12
 	light_color = LIGHT_COLOR_XENON
+
+/obj/structure/machinery/light/wide/blue/north
+	dir = NORTH
+/obj/structure/machinery/light/wide/blue/east
+	dir = EAST
+/obj/structure/machinery/light/wide/blue/west
+	dir = WEST
+
 
 // Dropship lights that use no power
 /obj/structure/machinery/light/dropship
@@ -245,11 +286,25 @@
 /obj/structure/machinery/light/dropship/set_pixel_location()
 	pixel_x = pixel_y = 0
 
+/obj/structure/machinery/light/dropship/base/north
+	dir = NORTH
+/obj/structure/machinery/light/dropship/base/east
+	dir = EAST
+/obj/structure/machinery/light/dropship/base/west
+	dir = WEST
+
 /obj/structure/machinery/light/dropship/green
 	icon_state = "gtube1"
 	base_state = "gtube"
 	desc = "A lighting fixture used by aircraft vehicles. Its glass covering is a bright, fluorescent green."
 	light_color = LIGHT_COLOR_GREEN
+
+/obj/structure/machinery/light/dropship/green/north
+	dir = NORTH
+/obj/structure/machinery/light/dropship/green/east
+	dir = EAST
+/obj/structure/machinery/light/dropship/green/west
+	dir = WEST
 
 /obj/structure/machinery/light/dropship/red
 	icon_state = "rtube1"
@@ -257,18 +312,87 @@
 	desc = "A lighting fixture used by aircraft vehicles. Its glass covering is a bright, fluorescent red."
 	light_color = LIGHT_COLOR_RED
 
+/obj/structure/machinery/light/dropship/red/north
+	dir = NORTH
+/obj/structure/machinery/light/dropship/red/east
+	dir = EAST
+/obj/structure/machinery/light/dropship/red/west
+	dir = WEST
+
 /obj/structure/machinery/light/dropship/blue
 	icon_state = "btube1"
 	base_state = "btube"
 	desc = "A lighting fixture used by aircraft vehicles. Its glass covering is a bright, fluorescent blue."
 	light_color = LIGHT_COLOR_BLUE
 
-/obj/structure/machinery/light/built/Initialize()
+/obj/structure/machinery/light/dropship/blue/north
+	dir = NORTH
+/obj/structure/machinery/light/dropship/blue/east
+	dir = EAST
+/obj/structure/machinery/light/dropship/blue/west
+	dir = WEST
+
+
+/obj/structure/machinery/light/fixture/no_fixture
+	icon_state = "tube-empty"
+
+/obj/structure/machinery/light/fixture/no_fixture/north
+	dir = NORTH
+/obj/structure/machinery/light/fixture/no_fixture/east
+	dir = EAST
+/obj/structure/machinery/light/fixture/no_fixture/west
+	dir = WEST
+
+/obj/structure/machinery/light/fixture/no_fixture/Initialize()
 	. = ..()
 	status = LIGHT_EMPTY
 	update(0)
 
-/obj/structure/machinery/light/small/built/Initialize()
+
+// the smaller bulb light fixture
+
+/obj/structure/machinery/light/blub
+	icon_state = "bulb1"
+	base_state = "bulb"
+	fitting = "bulb"
+	brightness = 4
+	desc = "A small lighting fixture. Good for illuminating dark areas."
+	light_type = /obj/item/light_bulb/bulb
+
+/obj/structure/machinery/light/blub/base/north
+	dir = NORTH
+/obj/structure/machinery/light/blub/base/east
+	dir = EAST
+/obj/structure/machinery/light/blub/base/west
+	dir = WEST
+
+/obj/structure/machinery/light/blub/blue
+	icon_state = "bbulb1"
+	base_state = "bbulb"
+	fitting = "bulb"
+	brightness = 4
+	desc = "A small lighting fixture. Its glass covering is a bright, fluorescent blue."
+	light_type = /obj/item/light_bulb/bulb
+	light_color = LIGHT_COLOR_XENON
+
+/obj/structure/machinery/light/blub/blue/north
+	dir = NORTH
+/obj/structure/machinery/light/blub/blue/east
+	dir = EAST
+/obj/structure/machinery/light/blub/blue/west
+	dir = WEST
+
+/obj/structure/machinery/light/blub/no_fixture
+	icon_state = "bulb-empty"
+
+/obj/structure/machinery/light/blub/no_fixture/north
+	dir = NORTH
+/obj/structure/machinery/light/blub/no_fixture/east
+	dir = EAST
+/obj/structure/machinery/light/blub/no_fixture/west
+	dir = WEST
+
+/obj/structure/machinery/light/blub/no_fixture/Initialize()
 	. = ..()
 	status = LIGHT_EMPTY
 	update(0)

@@ -15,8 +15,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/template_noop)
 "bl" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	pixel_x = 10;
 	pixel_y = 13
 	},
@@ -175,8 +174,7 @@
 /area/template_noop)
 "of" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	pixel_x = 10;
 	pixel_y = -3
 	},
@@ -187,8 +185,7 @@
 /turf/open/floor/prison/whitegreen/southeast,
 /area/template_noop)
 "oy" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	pixel_x = 10;
 	pixel_y = -3
 	},
@@ -452,8 +449,7 @@
 /turf/open/floor/prison/whitegreencorner/east,
 /area/template_noop)
 "Mi" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
+/obj/structure/machinery/light/double/blue/west{
 	pixel_x = -10;
 	pixel_y = 13
 	},
@@ -461,8 +457,7 @@
 /turf/open/floor/prison/whitegreen/southwest,
 /area/template_noop)
 "NV" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	pixel_x = 10;
 	pixel_y = -3
 	},

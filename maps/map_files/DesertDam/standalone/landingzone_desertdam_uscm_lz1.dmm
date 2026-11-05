@@ -8,9 +8,7 @@
 /area/desert_dam/interior/dam_interior/hanger)
 "ac" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/spawner/random/powercell,
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/interior/dam_interior/tech_storage)
@@ -500,9 +498,7 @@
 /obj/structure/safe,
 /obj/item/weapon/sword/katana/replica,
 /obj/item/reagent_container/food/drinks/bottle/absinthe,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/prison/blue/north,
 /area/desert_dam/interior/dam_interior/tech_storage)
 "cr" = (
@@ -522,8 +518,7 @@
 /area/desert_dam/interior/dam_interior/hanger)
 "cG" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/light/small{
-	dir = 8;
+/obj/structure/machinery/light/blub/base/west{
 	pixel_x = -11;
 	pixel_y = 10
 	},
@@ -699,9 +694,7 @@
 /turf/open/gm/empty,
 /area/shuttle/trijent_shuttle/lz1)
 "fE" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
 "fM" = (
@@ -1088,9 +1081,7 @@
 /turf/closed/wall/rock/orange,
 /area/desert_dam/exterior/rock)
 "mP" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/bed/chair/comfy/hybrisa/brown{
 	dir = 8
 	},
@@ -1109,9 +1100,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
 "mV" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/blue/north,
 /area/desert_dam/building/administration/gate)
@@ -1333,9 +1322,7 @@
 /obj/item/circuitboard/airlock,
 /obj/item/circuitboard/airlock,
 /obj/item/circuitboard/airlock,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/prison/blue/east,
 /area/desert_dam/interior/dam_interior/tech_storage)
 "qU" = (
@@ -1377,7 +1364,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/northwest,
 /area/desert_dam/exterior/landing_pad_one)
 "rh" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
 "rk" = (
@@ -1484,9 +1471,7 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_northwest)
 "to" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/prison/darkbrown3/west,
 /area/desert_dam/interior/dam_interior/hanger)
 "tV" = (
@@ -1504,9 +1489,7 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "uj" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
 "up" = (
@@ -1681,9 +1664,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "yj" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/prison/blue/north,
 /area/desert_dam/building/administration/hallway)
 "yy" = (
@@ -1721,8 +1702,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
@@ -1740,8 +1720,7 @@
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1
 	},
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	layer = 2.9;
 	pixel_y = 9
 	},
@@ -1931,7 +1910,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/hanger)
 "CJ" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/surface/table/almayer,
 /obj/item/storage/donut_box{
 	pixel_y = 5
@@ -2135,9 +2114,7 @@
 /area/desert_dam/exterior/landing_pad_one)
 "FI" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/item/clipboard,
 /obj/item/folder/white,
 /obj/item/reagent_container/food/drinks/cans/waterbottle{
@@ -2168,8 +2145,7 @@
 /turf/open/floor/prison/bluefull,
 /area/desert_dam/building/administration/gate)
 "FX" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /obj/structure/bed/chair/dropship/passenger{
@@ -2328,8 +2304,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
@@ -2463,9 +2438,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/landing_pad_one)
 "Mh" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/prison/darkbrown2/east,
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
@@ -2691,8 +2664,7 @@
 /turf/open/floor/prison/darkyellowcorners2/east,
 /area/desert_dam/interior/dam_interior/hanger)
 "Qx" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/structure/bed/chair/dropship/passenger{
@@ -2736,7 +2708,7 @@
 	pixel_x = 6;
 	pixel_y = 1
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/prison/blue,
 /area/desert_dam/building/administration/gate)
 "Rh" = (
@@ -2957,9 +2929,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "Vd" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
@@ -3004,8 +2974,7 @@
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1
 	},
-/obj/structure/machinery/light/small{
-	dir = 8;
+/obj/structure/machinery/light/blub/base/west{
 	pixel_x = -11;
 	pixel_y = 10
 	},
@@ -3120,9 +3089,7 @@
 /turf/template_noop,
 /area/template_noop)
 "Yh" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/prison/darkbrown3/east,
 /area/desert_dam/interior/dam_interior/hanger)
 "Yo" = (
@@ -3197,9 +3164,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/landing_pad_one)
 "ZY" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/barricade/metal/wired,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/hanger)

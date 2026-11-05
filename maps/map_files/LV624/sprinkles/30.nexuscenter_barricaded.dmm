@@ -28,9 +28,7 @@
 /area/lv624/lazarus/main_hall)
 "ag" = (
 /obj/structure/flora/pottedplant,
-/obj/structure/machinery/light/spot{
-	dir = 1
-	},
+/obj/structure/machinery/light/wide/base/north,
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
@@ -746,9 +744,7 @@
 /area/lv624/lazarus/main_hall)
 "Hf" = (
 /obj/structure/flora/pottedplant,
-/obj/structure/machinery/light/spot{
-	dir = 1
-	},
+/obj/structure/machinery/light/wide/base/north,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "HH" = (
@@ -832,7 +828,7 @@
 /area/lv624/lazarus/main_hall)
 "Mf" = (
 /obj/structure/flora/pottedplant,
-/obj/structure/machinery/light/spot,
+/obj/structure/machinery/light/wide/base,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "Mi" = (

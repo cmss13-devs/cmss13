@@ -89,8 +89,7 @@
 /turf/open/floor/carpet,
 /area/template_noop)
 "S" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /obj/structure/machinery/power/apc/power/west,
@@ -106,8 +105,7 @@
 /turf/open/floor/plating,
 /area/template_noop)
 "U" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /obj/structure/surface/table/woodentable/fancy,

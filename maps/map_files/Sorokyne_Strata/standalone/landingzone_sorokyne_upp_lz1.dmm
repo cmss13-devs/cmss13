@@ -181,9 +181,7 @@
 	color = "#6e6e6e";
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/research)
 "aD" = (
@@ -394,7 +392,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
 "bi" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata/red1,
 /area/strata/interior/research)
 "bj" = (
@@ -445,9 +443,7 @@
 /turf/open/floor/strata/blue1,
 /area/strata/interior/research)
 "bq" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
@@ -457,9 +453,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/research)
 "br" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
@@ -561,9 +555,7 @@
 /obj/item/tool/stamp,
 /obj/item/paper_bin,
 /obj/item/device/megaphone,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/research)
 "bH" = (
@@ -749,9 +741,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/research)
 "dg" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/research)
@@ -834,9 +824,7 @@
 /obj/structure/toilet{
 	dir = 8
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/research)
 "fD" = (
@@ -852,9 +840,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/research)
 "fG" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/red1,
 /area/strata/interior/research)
 "fZ" = (
@@ -880,9 +866,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/research)
 "gd" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/old_tunnels)
 "ge" = (
@@ -923,9 +907,7 @@
 	color = "#98a3ab"
 	},
 /obj/item/ammo_magazine/rifle/type71,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/effect/landmark/objective_landmark/close,
 /obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71,
@@ -1038,7 +1020,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/interior/research)
 "kI" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/red1,
 /area/strata/interior/research)
 "li" = (
@@ -1049,15 +1031,11 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/interior/research)
 "ly" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/research)
 "lF" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/research)
 "lS" = (
@@ -1098,9 +1076,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/research)
 "mx" = (
@@ -1117,9 +1093,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/research)
 "nl" = (
@@ -1139,9 +1113,7 @@
 /turf/open/floor/strata/blue1,
 /area/strata/interior/research)
 "om" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/research)
 "oz" = (
@@ -1254,7 +1226,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/research)
 "tD" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
@@ -1311,9 +1283,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
 "wM" = (
@@ -1328,15 +1298,11 @@
 	color = "#6e6e6e";
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/research)
 "wY" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/north)
 "xo" = (
@@ -1400,9 +1366,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/research)
 "zl" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
 "zm" = (
@@ -1434,9 +1398,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/item/reagent_container/food/drinks/cans/food/upp/condensed_milk{
 	pixel_x = -8;
 	pixel_y = 15
@@ -1516,9 +1478,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/research)
 "Aw" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
@@ -1563,9 +1523,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/research)
 "Cm" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
 "Dc" = (
@@ -1575,9 +1533,7 @@
 /obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/red1,
 /area/strata/interior/research)
 "Dw" = (
@@ -1686,9 +1642,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/research)
 "IK" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
 "Jj" = (
@@ -1811,9 +1765,7 @@
 /turf/open/floor/strata/blue1,
 /area/strata/interior/research)
 "MI" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/machinery/vending/sovietsoda{
 	pixel_x = -8
 	},
@@ -1821,9 +1773,7 @@
 /area/strata/interior/research)
 "MY" = (
 /obj/structure/largecrate/random/barrel/blue,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/research)
 "No" = (
@@ -1838,7 +1788,7 @@
 /area/strata/interior/research)
 "Od" = (
 /obj/structure/machinery/space_heater,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/red1,
 /area/strata/interior/research)
 "Ol" = (
@@ -1983,7 +1933,7 @@
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/old_tunnels)
 "UJ" = (
@@ -2000,9 +1950,7 @@
 /turf/open/floor/strata/blue1,
 /area/strata/interior/research)
 "UX" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
 "Vi" = (
@@ -2013,9 +1961,7 @@
 	color = "#98a3ab"
 	},
 /obj/item/ammo_magazine/rifle/type71,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71,
@@ -2060,7 +2006,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/research)
 "YE" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/research)
 "YK" = (
@@ -2073,9 +2019,7 @@
 	},
 /obj/item/storage/pill_bottle/bicaridine,
 /obj/item/tool/crowbar,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/item/clothing/mask/gas/upp_pfb,
 /obj/item/clothing/mask/gas/upp_pfb,
 /turf/open/floor/strata/multi_tiles/southwest,

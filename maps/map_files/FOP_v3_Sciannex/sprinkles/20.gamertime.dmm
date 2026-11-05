@@ -190,8 +190,7 @@
 /turf/open/floor/prison/darkpurple2,
 /area/template_noop)
 "DV" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	pixel_x = 10;
 	pixel_y = -3
 	},
@@ -234,8 +233,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "Mn" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
+/obj/structure/machinery/light/double/blue/west{
 	pixel_x = -10;
 	pixel_y = 13
 	},
@@ -289,8 +287,7 @@
 /turf/open/floor/prison,
 /area/template_noop)
 "QB" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /obj/item/device/flashlight/lamp/tripod,
@@ -343,8 +340,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/template_noop)
 "Vc" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /turf/open/floor/prison/darkpurplefull2,
@@ -388,8 +384,7 @@
 /turf/open/floor/prison,
 /area/template_noop)
 "Zj" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	pixel_x = 10;
 	pixel_y = 13
 	},

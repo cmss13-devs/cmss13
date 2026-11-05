@@ -36,9 +36,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/interior/bball_cave)
 "aah" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/disposaloutlet,
 /turf/open/floor/interior/plastic,
 /area/strata/interior/wooden_hospital)
@@ -168,9 +166,7 @@
 /turf/open/floor/interior/plastic,
 /area/strata/interior/wooden_hospital)
 "aaB" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/bed/roller/hospital_empty/bigrollerempty{
 	icon_state = "bigrollerempty_up"
 	},
@@ -188,9 +184,7 @@
 /turf/open/floor/interior/plastic,
 /area/strata/interior/wooden_hospital)
 "aaD" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /obj/structure/bed/roller/hospital_empty/bigrollerempty2{
 	icon_state = "bigrollerempty2_up";
@@ -279,9 +273,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/far_north_outpost)
 "aaP" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 5
@@ -289,9 +281,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/interior/bball_cave)
 "aaQ" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/far_north_outpost)
 "aaR" = (
@@ -301,7 +291,7 @@
 /area/strata/interior/bball_cave)
 "aaS" = (
 /obj/structure/bedsheetbin,
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/interior/plastic,
 /area/strata/interior/wooden_hospital)
 "aaT" = (
@@ -320,9 +310,7 @@
 /turf/closed/wall/strata_ice/rock,
 /area/strata/interior/out_of_bounds)
 "aaW" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/flora/grass/tallgrass/jungle_alt,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
@@ -331,9 +319,7 @@
 	color = "#98a3ab"
 	},
 /obj/item/storage/surgical_tray,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/interior/plastic,
 /area/strata/interior/wooden_hospital)
 "aaY" = (
@@ -443,7 +429,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/interior/bball_cave)
 "abp" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/security)
 "abq" = (
@@ -508,9 +494,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/bball)
 "abz" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/item/trash/upp_mre,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
@@ -536,9 +520,7 @@
 	},
 /obj/item/storage/pill_bottle/bicaridine,
 /obj/item/tool/crowbar,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/item/clothing/mask/gas/upp_pfb,
 /obj/item/clothing/mask/gas/upp_pfb,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -548,9 +530,7 @@
 	color = "#98a3ab"
 	},
 /obj/item/ammo_magazine/rifle/type71,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71,
@@ -577,9 +557,7 @@
 	color = "#98a3ab"
 	},
 /obj/item/storage/box/cdeathalarm_kit,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
 "abJ" = (
@@ -696,9 +674,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/research)
 "abZ" = (
@@ -719,9 +695,7 @@
 /obj/structure/toilet{
 	dir = 8
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/research)
 "acc" = (
@@ -733,9 +707,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/bball)
 "ace" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/item/trash/cigbutt,
 /obj/item/trash/cigbutt,
 /turf/open/floor/strata/floor3/east,
@@ -789,9 +761,7 @@
 /turf/open/floor/wood/wood_broken6,
 /area/strata/interior/wooden_ruins)
 "acl" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
@@ -940,9 +910,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/bball)
 "acJ" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/bed/chair{
 	pixel_y = 4
 	},
@@ -1075,9 +1043,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/item/tool/kitchen/can_opener,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
@@ -1107,9 +1073,7 @@
 /area/strata/interior/research)
 "adh" = (
 /obj/structure/largecrate/random/case/double,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
@@ -1126,9 +1090,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/secure_checkpoint)
 "adj" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/bball)
 "adk" = (
@@ -1310,16 +1272,12 @@
 /turf/open/gm/dirt/brown/variant_1,
 /area/strata/exterior/marsh/water_marshes)
 "adO" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/wood/wood_broken6,
 /area/strata/interior/wooden_ruins)
 "adP" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/wood,
 /area/strata/interior/wooden_ruins)
 "adQ" = (
@@ -1388,9 +1346,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
 "adZ" = (
@@ -1399,9 +1355,7 @@
 /area/strata/interior/research)
 "aea" = (
 /obj/structure/machinery/vending/cigarette/koorlander,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/research)
 "aeb" = (
@@ -1409,9 +1363,7 @@
 /turf/open/floor/strata/blue1,
 /area/strata/interior/research)
 "aec" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "aed" = (
@@ -1429,9 +1381,7 @@
 /area/strata/interior/bball)
 "aee" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/bball)
 "aef" = (
@@ -1451,9 +1401,7 @@
 /obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/red1,
 /area/strata/interior/research)
 "aei" = (
@@ -1507,9 +1455,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/research)
 "aeq" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/outpost/admin)
 "aer" = (
@@ -1655,9 +1601,7 @@
 /obj/item/reagent_container/food/drinks/cans/waterbottle/upp,
 /obj/item/reagent_container/food/drinks/cans/waterbottle/upp,
 /obj/item/reagent_container/food/drinks/cans/waterbottle/upp,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/bball)
 "aeI" = (
@@ -1687,9 +1631,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/strata/interior/mining_outpost)
 "aeN" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/wood,
 /area/strata/interior/wooden_ruins)
 "aeO" = (
@@ -1902,9 +1844,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/research)
 "afv" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/parts_storage)
 "afw" = (
@@ -1945,9 +1885,7 @@
 	pixel_x = -2;
 	pixel_y = 8
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/research)
 "afB" = (
@@ -2050,9 +1988,7 @@
 	dir = 4;
 	icon_state = "gib6"
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/asphalt/cement,
 /area/strata/exterior/mining_outpost_exterior)
 "afQ" = (
@@ -2096,9 +2032,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/parts_storage_exterior)
 "afX" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/machinery/big_computers/computerblack/computer4{
 	icon_state = "blacksensor_comp2_off"
 	},
@@ -2155,9 +2089,7 @@
 /turf/open/floor/strata/blue1,
 /area/strata/interior/bball)
 "agh" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/mining_outpost/maintenance)
 "agi" = (
@@ -2207,9 +2139,7 @@
 /turf/open/floor/almayer/plate,
 /area/strata/interior/research)
 "agr" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/almayer/plate,
 /area/strata/interior/research)
 "ags" = (
@@ -2218,9 +2148,7 @@
 /area/strata/interior/research)
 "agt" = (
 /obj/effect/landmark/xeno_spawn,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/almayer/plate,
 /area/strata/interior/research)
 "agu" = (
@@ -2251,9 +2179,7 @@
 	color = "#6e6e6e";
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost/flight_control)
 "agA" = (
@@ -2356,9 +2282,7 @@
 /obj/structure/machinery/microwave{
 	pixel_y = 4
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/cyan1/east,
 /area/strata/interior/mining_outpost/canteen)
 "agM" = (
@@ -2488,9 +2412,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/research)
 "ahe" = (
@@ -2612,9 +2534,7 @@
 /area/strata/interior/mining_outpost/hive)
 "ahu" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/cyan2/east,
 /area/strata/interior/mining_outpost/canteen)
 "ahv" = (
@@ -2628,9 +2548,7 @@
 /area/strata/interior/mining_outpost/canteen)
 "ahw" = (
 /obj/structure/machinery/processor,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/cyan2/east,
 /area/strata/interior/mining_outpost/canteen)
 "ahx" = (
@@ -2644,9 +2562,7 @@
 /area/strata/interior/mining_outpost/canteen)
 "ahy" = (
 /obj/structure/kitchenspike,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/cyan2/east,
 /area/strata/interior/mining_outpost/canteen)
 "ahz" = (
@@ -2753,9 +2669,7 @@
 "ahO" = (
 /obj/structure/filingcabinet/filingcabinet,
 /obj/effect/landmark/objective_landmark/close,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/red1,
 /area/strata/interior/mining_outpost/flight_control)
 "ahP" = (
@@ -2830,9 +2744,7 @@
 /turf/open/gm/river/soro,
 /area/strata/exterior/landing_zones/near_lz2)
 "aic" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/strata/interior/wooden_ruins)
 "aid" = (
@@ -2976,7 +2888,7 @@
 /turf/open/floor/strata/blue1,
 /area/strata/interior/research)
 "aiv" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/research)
 "aiw" = (
@@ -3032,9 +2944,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/strata/interior/mining_outpost/hive)
 "aiD" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/interior/bball)
 "aiE" = (
@@ -3236,9 +3146,7 @@
 /turf/closed/wall/resin/strata/on_tiles,
 /area/strata/interior/mining_outpost/hive)
 "ajl" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
@@ -3416,9 +3324,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/research)
 "ajE" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/research)
 "ajF" = (
@@ -3518,9 +3424,7 @@
 /obj/structure/prop/cash_register/off/open{
 	pixel_y = 8
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/hybrisa/tile/cuppajoesfloor,
 /area/strata/interior/mining_outpost/canteen)
 "ajU" = (
@@ -3694,9 +3598,7 @@
 /area/strata/exterior/landing_zones/near_lz2)
 "akt" = (
 /obj/structure/reagent_dispensers/tank/fuel,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/interior/mining_outpost/hive)
 "aku" = (
@@ -3826,7 +3728,7 @@
 /turf/open/gm/river/soro,
 /area/strata/exterior/landing_zones/near_lz2)
 "akK" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata/red1,
 /area/strata/interior/research)
 "akL" = (
@@ -3850,9 +3752,7 @@
 /area/strata/interior/research)
 "akP" = (
 /obj/structure/reagent_dispensers/tank/fuel,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/plating,
 /area/strata/interior/research)
 "akQ" = (
@@ -3870,9 +3770,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/exterior/tcomms_engineering_parts_storage)
 "akS" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/plating,
 /area/strata/interior/research)
 "akT" = (
@@ -3888,7 +3786,7 @@
 	color = "#98a3ab"
 	},
 /obj/item/device/radio,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/orange_cover,
 /area/strata/exterior/tcomms_engineering_parts_storage)
 "akW" = (
@@ -4293,9 +4191,7 @@
 	icon_state = "pottedplant_22"
 	},
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/greengrid,
 /area/strata/interior/mining_outpost)
 "alW" = (
@@ -4490,9 +4386,7 @@
 /area/strata/exterior/deep_jungle/tearlake)
 "amz" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/exterior/outpost_decks)
 "amA" = (
@@ -4607,9 +4501,7 @@
 /area/strata/exterior/landing_zones/near_lz2)
 "amN" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/outpost/canteen)
 "amO" = (
@@ -4736,9 +4628,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/interior/research)
 "ang" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/landing_zones/near_lz1)
 "anh" = (
@@ -4790,9 +4680,7 @@
 /turf/open/gm/dirt/brown/variant_2,
 /area/strata/exterior/deep_jungle/tearlake)
 "anp" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/flight_control_exterior)
 "anq" = (
@@ -4816,9 +4704,7 @@
 /area/strata/interior/checkpoints/north_armor)
 "ans" = (
 /obj/structure/closet/secure_closet/security/soro,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/red1,
 /area/strata/interior/checkpoints/north_armor)
@@ -4841,9 +4727,7 @@
 	pixel_x = -7;
 	pixel_y = 11
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_x = -6;
 	pixel_y = -4
@@ -4894,9 +4778,7 @@
 "anB" = (
 /obj/effect/landmark/objective_landmark/close,
 /obj/structure/closet/secure_closet/security/soro,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/red1,
 /area/strata/interior/checkpoints/north_armor)
 "anC" = (
@@ -4907,9 +4789,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
 	pixel_x = 1;
 	pixel_y = 41
@@ -5369,9 +5249,7 @@
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/foyer)
 "aoQ" = (
@@ -5429,9 +5307,7 @@
 /area/strata/interior/research)
 "aoW" = (
 /obj/structure/reagent_dispensers/tank/water,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/research)
 "aoX" = (
@@ -5439,7 +5315,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
 "aoY" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
 "aoZ" = (
@@ -5854,15 +5730,11 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/tearlake)
 "aqe" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/mining_outpost)
 "aqf" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/mining_outpost)
 "aqg" = (
@@ -6016,9 +5888,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/outpost/security)
 "aqD" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/interior/mining_outpost/maintenance)
 "aqE" = (
@@ -6095,7 +5965,7 @@
 /turf/open/floor/strata/blue1,
 /area/strata/interior/outpost/admin)
 "aqM" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/floor3/east,
 /area/strata/exterior/outpost_decks)
 "aqN" = (
@@ -6325,9 +6195,7 @@
 /area/strata/interior/outpost/engi)
 "arv" = (
 /obj/structure/filingcabinet,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/red1,
 /area/strata/interior/outpost/security)
@@ -6345,9 +6213,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/outpost/security)
 "arz" = (
@@ -6358,9 +6224,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/outpost/security)
 "arB" = (
@@ -6373,9 +6237,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/item/stack/folding_barricade,
 /obj/item/weapon/gun/rifle/ak4047,
 /turf/open/floor/strata/red1,
@@ -6583,9 +6445,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/mining_outpost)
 "asd" = (
@@ -6623,9 +6483,7 @@
 	color = "#6e6e6e";
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/asphalt/cement,
 /area/strata/exterior/outpost_decks)
 "ask" = (
@@ -6694,7 +6552,7 @@
 /area/strata/interior/outpost/engi)
 "ast" = (
 /obj/item/storage/box/donkpockets,
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/interior/outpost/engi)
@@ -6706,7 +6564,7 @@
 /turf/open/floor/greengrid,
 /area/strata/interior/outpost/engi)
 "asv" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
@@ -6808,9 +6666,7 @@
 /turf/open/gm/river/soro,
 /area/strata/exterior/landing_zones/near_lz2)
 "asF" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/security)
 "asG" = (
@@ -6993,9 +6849,7 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/outpost/canteen)
 "atc" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/outpost/canteen)
 "atd" = (
@@ -7023,9 +6877,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/item/reagent_container/food/drinks/cans/food/upp/condensed_milk{
 	pixel_x = -8;
 	pixel_y = 15
@@ -7057,9 +6909,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/research)
 "ati" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
@@ -7076,9 +6926,7 @@
 /turf/open/asphalt/cement/cement9,
 /area/strata/interior/research)
 "atm" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/red1,
 /area/strata/interior/research)
 "atn" = (
@@ -7356,9 +7204,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/research)
 "aud" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/red1,
 /area/strata/interior/research)
 "aue" = (
@@ -7525,9 +7371,7 @@
 /turf/open/gm/dirt/brown/variant_2,
 /area/strata/exterior/landing_zones/near_lz2)
 "auD" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/engi)
 "auE" = (
@@ -7768,9 +7612,7 @@
 	color = "#6e6e6e";
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/research)
 "avl" = (
@@ -7889,9 +7731,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/mining_outpost/canteen)
 "avB" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata,
 /area/strata/interior/mining_outpost)
 "avC" = (
@@ -7917,9 +7757,7 @@
 /turf/open/asphalt/cement,
 /area/strata/exterior/mining_outpost_exterior)
 "avF" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -8007,7 +7845,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/interior/outpost/engi)
 "avQ" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
 	pixel_x = -6;
@@ -8069,9 +7907,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/engi)
 "avY" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/item/storage/box/explosive_mines,
 /obj/item/storage/box/explosive_mines,
 /turf/open/floor/strata/floor3,
@@ -8097,9 +7933,7 @@
 /obj/structure/bookcase{
 	icon_state = "book-5"
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/security)
 "awd" = (
@@ -8137,9 +7971,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/security)
 "awh" = (
@@ -8416,9 +8248,7 @@
 /area/strata/exterior/outpost_decks)
 "awU" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/bball)
 "awV" = (
@@ -8455,9 +8285,7 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/strata/interior/outpost/engi/drome)
 "awY" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/closet/secure_closet/personal,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/bball)
@@ -8542,9 +8370,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/outpost/foyer)
 "axn" = (
@@ -8733,9 +8559,7 @@
 /area/strata/interior/mining_outpost)
 "axL" = (
 /obj/structure/surface/table/woodentable,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/item/storage/beer_pack{
 	pixel_y = 6
 	},
@@ -8795,9 +8619,7 @@
 /obj/structure/bed{
 	icon_state = "abed"
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/floor3/east,
 /area/strata/exterior/deep_jungle/old_tunnels)
 "axU" = (
@@ -8955,8 +8777,7 @@
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 25
 	},
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_x = -16
 	},
 /turf/open/floor/plating,
@@ -8989,9 +8810,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/floor3/east,
 /area/strata/exterior/outpost_decks)
 "ayy" = (
@@ -9094,9 +8913,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/engi)
 "ayL" = (
@@ -9109,9 +8926,7 @@
 /turf/open/floor/strata,
 /area/strata/interior/parts_storage)
 "ayM" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/interior/research)
 "ayN" = (
@@ -9208,7 +9023,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/marsh/water_marshes)
 "azd" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/admin)
 "aze" = (
@@ -9259,7 +9074,7 @@
 /area/strata/exterior/deep_jungle/south)
 "azl" = (
 /obj/item/reagent_container/glass/bucket/janibucket,
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/canteen)
 "azm" = (
@@ -9326,9 +9141,7 @@
 /area/strata/interior/landing_zones/near_lz1)
 "azy" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/asphalt/cement/cement3,
 /area/strata/interior/landing_zones/lz1)
 "azz" = (
@@ -9389,9 +9202,7 @@
 	},
 /obj/item/clothing/mask/surgical,
 /obj/item/storage/surgical_tray,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/cyan1/east,
 /area/strata/interior/mining_outpost)
 "azH" = (
@@ -9405,9 +9216,7 @@
 /area/strata/interior/mining_outpost)
 "azI" = (
 /obj/structure/machinery/bioprinter,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/cyan1/east,
 /area/strata/interior/mining_outpost)
 "azJ" = (
@@ -9439,9 +9248,7 @@
 	dir = 8;
 	pixel_x = -11
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/orange_tile,
 /area/strata/interior/mining_outpost)
 "azM" = (
@@ -9469,9 +9276,7 @@
 "azP" = (
 /obj/structure/reagent_dispensers/tank/water,
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/greengrid,
 /area/strata/interior/mining_outpost)
 "azQ" = (
@@ -9497,9 +9302,7 @@
 /area/strata/exterior/north_outpost)
 "azT" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/north_outpost)
 "azU" = (
@@ -9694,9 +9497,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/deep_jungle/south)
 "aAz" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/red1,
 /area/strata/interior/outpost/security)
 "aAA" = (
@@ -9706,9 +9507,7 @@
 /turf/open/gm/dirt/brown/variant_2,
 /area/strata/exterior/deep_jungle/south)
 "aAB" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/security)
 "aAC" = (
@@ -9720,9 +9519,7 @@
 	pixel_y = 6
 	},
 /obj/item/device/flashlight/lamp,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
 	pixel_x = 1;
@@ -9888,9 +9685,7 @@
 	pixel_x = 6;
 	pixel_y = 5
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/item/reagent_container/food/drinks/bottle/vodka{
 	pixel_x = -10
 	},
@@ -10364,8 +10159,7 @@
 /turf/open/floor/strata,
 /area/strata/exterior/deep_jungle/ruin)
 "aCu" = (
-/obj/structure/machinery/light/small{
-	dir = 8;
+/obj/structure/machinery/light/blub/base/west{
 	pixel_y = 8
 	},
 /obj/effect/decal/cleanable/blood/oil,
@@ -10503,7 +10297,7 @@
 /turf/open/asphalt/cement/cement1,
 /area/strata/exterior/south_outpost)
 "aCR" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/north_outpost)
 "aCS" = (
@@ -10582,9 +10376,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/cyan1/east,
 /area/strata/interior/outpost/med)
 "aDf" = (
@@ -10605,7 +10397,7 @@
 /area/strata/exterior/tcomms_geosprings)
 "aDi" = (
 /obj/structure/largecrate/random,
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/item/clothing/head/hardhat{
 	pixel_x = -4;
 	pixel_y = 7
@@ -10666,9 +10458,7 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/outpost/canteen)
 "aDq" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/outpost/canteen)
 "aDr" = (
@@ -10708,9 +10498,7 @@
 /turf/open/gm/coast/dirt/beachcorner,
 /area/strata/exterior/deep_jungle/south)
 "aDw" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/structure/coatrack,
 /turf/open/floor/strata/floor3/east,
 /area/strata/exterior/deep_jungle/ruin)
@@ -10783,9 +10571,7 @@
 /area/strata/exterior/landing_zones/near_lz2)
 "aDI" = (
 /obj/structure/machinery/medical_pod/bodyscanner,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/cyan1/east,
 /area/strata/interior/mining_outpost)
 "aDJ" = (
@@ -10868,7 +10654,7 @@
 /area/strata/exterior/deep_jungle/south)
 "aDU" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/exterior/outpost_decks)
 "aDV" = (
@@ -10880,9 +10666,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/exterior/outpost_decks)
 "aDX" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/outpost/engi)
 "aDY" = (
@@ -10924,9 +10708,7 @@
 /area/strata/exterior/tcomms_geosprings)
 "aEf" = (
 /obj/structure/barricade/handrail/strata,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/security)
 "aEg" = (
@@ -11186,9 +10968,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/exterior/tcomms_engineering_parts_storage)
 "aET" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/north_outpost)
 "aEU" = (
@@ -11210,9 +10990,7 @@
 /area/strata/interior/outpost/engi)
 "aEX" = (
 /obj/structure/reagent_dispensers/tank/water,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "aEY" = (
@@ -11237,7 +11015,7 @@
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/strata/exterior/marsh/water_marshes)
 "aFb" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/engi)
 "aFc" = (
@@ -11381,7 +11159,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/parts_storage_cave)
 "aFv" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/north_outpost)
 "aFw" = (
@@ -11405,9 +11183,7 @@
 /turf/open/gm/dirt/brown/variant_5,
 /area/strata/exterior/marsh/water_marshes)
 "aFz" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/outpost/canteen)
 "aFA" = (
@@ -11422,7 +11198,7 @@
 /area/strata/interior/outpost/canteen)
 "aFC" = (
 /obj/structure/tunnel/maint_tunnel/hybrisa,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/engi/drome)
 "aFD" = (
@@ -11517,9 +11293,7 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/strata/interior/parts_storage)
 "aFN" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
 	},
@@ -11583,9 +11357,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/orange_edge/west,
 /area/strata/interior/mining_outpost)
 "aFU" = (
@@ -11795,9 +11567,7 @@
 /turf/open/gm/dirt/brown/variant_2,
 /area/strata/exterior/marsh/water_marshes)
 "aGA" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/exterior/outpost_decks)
 "aGB" = (
@@ -11845,9 +11615,7 @@
 /area/strata/exterior/deep_jungle/west)
 "aGG" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/exterior/deep_jungle/south)
 "aGH" = (
@@ -11906,9 +11674,7 @@
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/outpost/canteen)
 "aGO" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/canteen)
 "aGP" = (
@@ -11966,9 +11732,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/parts_storage_cave)
 "aGZ" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
@@ -12159,7 +11923,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/mining_outpost_exterior)
 "aHF" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/south)
 "aHG" = (
@@ -12317,9 +12081,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/landing_zones/near_lz1)
 "aIk" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/white_cyan1,
 /area/strata/interior/mining_outpost)
 "aIl" = (
@@ -12694,9 +12456,7 @@
 /area/strata/interior/bball_cave)
 "aJo" = (
 /obj/structure/machinery/blackbox_recorder,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/effect/landmark/objective_landmark/close,
 /obj/item/prop/almayer/flight_recorder/colony{
 	pixel_x = -6;
@@ -12762,9 +12522,7 @@
 	dir = 8;
 	pixel_x = -11
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/outpost/admin)
@@ -12974,7 +12732,7 @@
 /turf/open/asphalt/cement,
 /area/strata/exterior/mining_outpost_exterior)
 "aJZ" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/outpost/canteen)
 "aKa" = (
@@ -13156,9 +12914,7 @@
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/strata/exterior/parts_storage_cave)
 "aKA" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi)
 "aKB" = (
@@ -13205,9 +12961,7 @@
 /obj/structure/machinery/computer/communications{
 	dir = 4
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/purp1,
 /area/strata/interior/planet_core_research_station)
 "aKG" = (
@@ -13244,9 +12998,7 @@
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/strata/exterior/parts_storage_cave)
 "aKK" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -13357,18 +13109,14 @@
 /turf/open/floor/strata,
 /area/strata/interior/outpost/canteen)
 "aLa" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/canteen)
 "aLb" = (
 /obj/structure/disposalpipe/segment{
 	color = "#858680"
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/strata/interior/outpost/maint)
 "aLc" = (
@@ -13436,9 +13184,7 @@
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 8
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/item/clothing/mask/gas/upp_pfb,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/outpost/med)
@@ -13486,9 +13232,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/mining_outpost/south_dormitories)
 "aLt" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/red1,
 /area/strata/interior/mining_outpost/south_dormitories)
 "aLu" = (
@@ -13571,9 +13315,7 @@
 	pixel_x = -1;
 	pixel_y = 5
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/item/device/defibrillator/synthetic/hyperdyne,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi)
@@ -13791,7 +13533,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/outpost/canteen/bar)
 "aMn" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/canteen/bar)
 "aMo" = (
@@ -13860,9 +13602,7 @@
 /area/strata/exterior/deep_jungle/north)
 "aMA" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/landing_zones/near_lz1)
 "aMB" = (
@@ -13872,7 +13612,7 @@
 /turf/open/floor/strata/orange_tile,
 /area/strata/interior/landing_zones/near_lz1)
 "aMD" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/mining_outpost)
 "aME" = (
@@ -13951,9 +13691,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/mining_outpost/south_dormitories)
 "aMO" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/asphalt/cement,
 /area/strata/exterior/mining_outpost_exterior)
 "aMP" = (
@@ -14379,7 +14117,7 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/strata/interior/outpost/engi)
 "aOa" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi)
 "aOb" = (
@@ -14528,9 +14266,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/asphalt/cement,
 /area/strata/exterior/mining_outpost_exterior)
 "aOu" = (
@@ -14646,9 +14382,7 @@
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/outpost/canteen)
 "aOK" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/flora/grass/tallgrass/jungle_alt/corner{
 	dir = 9
 	},
@@ -14692,9 +14426,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/flight_control_exterior)
 "aOS" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/landing_zones/near_lz1)
 "aOT" = (
@@ -14779,9 +14511,7 @@
 /area/strata/interior/wooden_hospital)
 "aPe" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/greengrid,
 /area/strata/interior/mining_outpost/south_dormitories)
 "aPf" = (
@@ -14800,9 +14530,7 @@
 /area/strata/interior/mining_outpost/south_dormitories)
 "aPi" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/greengrid,
 /area/strata/interior/mining_outpost/south_dormitories)
 "aPj" = (
@@ -15260,9 +14988,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/center)
 "aQp" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/structure/barricade/wooden{
 	dir = 4
 	},
@@ -15302,9 +15028,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/interior/mining_outpost/south_dormitories)
 "aQy" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost/south_dormitories)
@@ -15342,9 +15066,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost/south_dormitories)
 "aQG" = (
@@ -15438,9 +15160,7 @@
 /turf/open/gm/dirt/brown/variant_1,
 /area/strata/exterior/outpost_platform)
 "aQV" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/engi)
 "aQW" = (
@@ -15461,7 +15181,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/engi)
 "aQZ" = (
@@ -15642,12 +15362,12 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/landing_zones/near_lz1)
 "aRD" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost/south_dormitories)
 "aRE" = (
@@ -15715,9 +15435,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/mining_outpost/south_dormitories)
 "aRM" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
 	},
@@ -15855,9 +15573,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/interior/outpost/engi)
 "aSf" = (
@@ -15965,9 +15681,7 @@
 /turf/open/asphalt/cement/cement3,
 /area/strata/exterior/parts_storage_cave)
 "aSs" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/mining_outpost/maintenance)
 "aSt" = (
@@ -15978,7 +15692,7 @@
 /area/strata/interior/outpost/canteen)
 "aSu" = (
 /obj/structure/machinery/vending/snack,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/outpost/canteen)
 "aSv" = (
@@ -16079,9 +15793,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/flight_control_exterior)
 "aSK" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/interior/planet_core_research_station)
@@ -16371,7 +16083,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
@@ -16521,9 +16233,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/outpost_platform)
 "aTU" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/outpost/admin)
 "aTV" = (
@@ -16810,7 +16520,7 @@
 /area/strata/exterior/marsh/crash)
 "aUK" = (
 /obj/structure/closet/firecloset/full,
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter,
 /obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp,
@@ -16856,9 +16566,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/marsh/center)
 "aUR" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/flora/grass/tallgrass/jungle_alt,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/north_outpost)
@@ -17609,9 +17317,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/interior/outpost/engi/drome)
 "aWW" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/outpost/admin)
 "aWX" = (
@@ -18228,9 +17934,7 @@
 	pixel_x = -8;
 	pixel_y = 8
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/cyan3/east,
 /area/strata/interior/outpost/med)
 "aYN" = (
@@ -18803,9 +18507,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/strata/interior/outpost/engi/drome)
 "bas" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/north_outpost)
 "bat" = (
@@ -19224,9 +18926,7 @@
 /area/strata/interior/vanyard)
 "bbI" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "bbJ" = (
@@ -19237,9 +18937,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/marsh/center)
 "bbK" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/platform_east)
 "bbL" = (
@@ -19248,9 +18946,7 @@
 "bbM" = (
 /obj/structure/closet/wardrobe/pjs,
 /obj/effect/landmark/objective_landmark/close,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata,
 /area/strata/interior/underground_dorms/admin4)
 "bbN" = (
@@ -19529,9 +19225,7 @@
 /turf/open/asphalt/cement,
 /area/strata/exterior/flight_control_exterior)
 "bcM" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/largecrate/random/barrel/yellow,
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /turf/open/asphalt/cement/cement12,
@@ -19561,9 +19255,7 @@
 /turf/open/floor/strata/blue1,
 /area/strata/interior/research)
 "bcS" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/research)
 "bcT" = (
@@ -19588,9 +19280,7 @@
 /turf/open/floor/strata/orange_edge/east,
 /area/strata/interior/outpost/med)
 "bcW" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/flight_control_exterior)
 "bcX" = (
@@ -19624,9 +19314,7 @@
 	dir = 8;
 	icon_state = "p_stair_ew_half_cap"
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/outpost/foyer)
 "bdc" = (
@@ -19735,7 +19423,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/outpost/admin)
 "bdu" = (
@@ -20046,9 +19734,7 @@
 /area/strata/exterior/flight_control_exterior)
 "bex" = (
 /obj/structure/barricade/handrail/strata,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/research)
 "bey" = (
@@ -20205,9 +19891,7 @@
 	pixel_x = -7;
 	pixel_y = 4
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
@@ -20222,9 +19906,7 @@
 /turf/open/floor/strata/blue1,
 /area/strata/interior/administration)
 "beW" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/marsh/spring_marshes)
 "beX" = (
@@ -20370,9 +20052,7 @@
 "bfw" = (
 /obj/structure/closet/emcloset,
 /obj/effect/spawner/random/toolbox,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/item/clothing/suit/armor/riot,
 /turf/open/asphalt/cement,
 /area/strata/interior/outpost/foyer)
@@ -20425,9 +20105,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/carplake_center)
 "bfF" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost)
 "bfG" = (
@@ -20494,9 +20172,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/parts_storage)
 "bfR" = (
@@ -20771,9 +20447,7 @@
 /turf/open/floor/interior/tatami,
 /area/strata/interior/bball_cave)
 "bgL" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/asphalt/cement/cement4,
 /area/strata/exterior/outpost_platform)
 "bgM" = (
@@ -20855,9 +20529,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/strata/interior/underground_dorms/admin4)
 "bgX" = (
@@ -21235,9 +20907,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/marsh/river)
 "bhZ" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/interior/outpost/engi)
 "bia" = (
@@ -21299,9 +20969,7 @@
 /turf/open/gm/dirt/brown/variant_5,
 /area/strata/exterior/shed_five_caves)
 "bij" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/bball)
 "bik" = (
@@ -21389,9 +21057,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/carplake_center)
 "bix" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/item/tool/warning_cone{
 	pixel_x = 4;
 	pixel_y = 2
@@ -21427,9 +21093,7 @@
 "biD" = (
 /obj/structure/coatrack,
 /obj/item/clothing/suit/armor/bulletproof,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/admin)
 "biE" = (
@@ -21540,9 +21204,7 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 1
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/admin)
 "biV" = (
@@ -21581,9 +21243,7 @@
 /area/strata/interior/outpost/admin)
 "bja" = (
 /obj/structure/machinery/vending/snack,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/outpost/admin)
 "bjb" = (
@@ -21941,9 +21601,7 @@
 /turf/open/floor/strata/cyan1/east,
 /area/strata/interior/outpost/med)
 "bke" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/bed/chair{
 	dir = 8
 	},
@@ -22052,9 +21710,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/item/device/flashlight/lamp,
 /obj/structure/window/reinforced/tinted{
 	color = "#969696"
@@ -22357,7 +22013,7 @@
 /turf/open/gm/coast/dirt/beachcorner,
 /area/strata/exterior/deep_jungle/platform_east)
 "bls" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 5
 	},
@@ -22433,9 +22089,7 @@
 /obj/structure/closet/secure_closet/medical3{
 	req_access = null
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/interior/plastic,
 /area/strata/interior/wooden_hospital)
@@ -22454,9 +22108,7 @@
 /area/strata/exterior/marsh/spring_marshes)
 "blG" = (
 /obj/structure/reagent_dispensers/water_cooler,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/interior/plastic,
 /area/strata/interior/wooden_hospital)
 "blH" = (
@@ -22464,9 +22116,7 @@
 /turf/open/floor/interior/plastic,
 /area/strata/interior/wooden_hospital)
 "blI" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/floor3,
 /area/strata/exterior/far_north_outpost)
 "blJ" = (
@@ -22576,7 +22226,7 @@
 /area/strata/exterior/marsh/spring_marshes)
 "bmc" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/asphalt/cement,
 /area/strata/interior/outpost/admin)
 "bmd" = (
@@ -22672,9 +22322,7 @@
 /turf/open/gm/coast/dirt/north,
 /area/strata/exterior/deep_jungle/platform_east)
 "bmt" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/bball)
 "bmu" = (
@@ -23140,9 +22788,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/flight_control_exterior)
 "bnM" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/floor3/east,
 /area/strata/exterior/outpost_decks)
 "bnN" = (
@@ -23163,9 +22809,7 @@
 	pixel_y = 2
 	},
 /obj/effect/landmark/objective_landmark/close,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/red1,
 /area/strata/interior/checkpoints/north)
 "bnP" = (
@@ -23237,9 +22881,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/south_outpost)
 "bnZ" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/administration)
 "boa" = (
@@ -23275,7 +22917,7 @@
 /turf/open/floor/interior/plastic,
 /area/strata/interior/wooden_hospital)
 "boe" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/interior/plastic,
 /area/strata/interior/wooden_hospital)
 "bof" = (
@@ -23286,7 +22928,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/interior/plastic,
 /area/strata/interior/wooden_hospital)
 "boh" = (
@@ -23342,9 +22984,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/lz_caves)
 "bop" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/interior/outpost/engi)
 "boq" = (
@@ -23385,7 +23025,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/administration)
 "bov" = (
@@ -23598,9 +23238,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/foyer)
 "boW" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/hybrisa/tile/cuppajoesfloor,
 /area/strata/interior/mining_outpost/canteen)
 "boX" = (
@@ -23819,9 +23457,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/admin)
 "bpH" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
@@ -23850,9 +23486,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/platform_east)
 "bpL" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/outpost/admin)
@@ -23962,9 +23596,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/lz_caves)
 "bqd" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/item/reagent_container/glass/bucket/mopbucket{
 	pixel_x = 5;
 	pixel_y = -3
@@ -24016,9 +23648,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/lz_caves)
 "bql" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/outpost_platform)
 "bqm" = (
@@ -24181,9 +23811,7 @@
 /obj/effect/decal/strata_decals/grime/grime2{
 	dir = 8
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/effect/decal/strata_decals/grime/grime3,
 /turf/open/asphalt/cement/cement1,
 /area/strata/exterior/tcomms_mining_caves)
@@ -24280,9 +23908,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/interior/outpost/med)
 "bqY" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/wood,
 /area/strata/interior/wooden_ruins)
 "bqZ" = (
@@ -24567,7 +24193,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/south_outpost)
 "brS" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/hybrisa/tile/cuppajoesfloor,
 /area/strata/interior/mining_outpost/canteen)
 "brT" = (
@@ -24881,9 +24507,7 @@
 /turf/open/floor/strata/yellow3/north,
 /area/strata/interior/outpost/engi/drome)
 "bsO" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
 	},
@@ -24912,9 +24536,7 @@
 	pixel_x = 11;
 	pixel_y = 8
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/machinery/power/apc/no_power/north,
 /obj/item/device/flashlight/lamp{
 	pixel_x = -6;
@@ -25182,9 +24804,7 @@
 /area/strata/exterior/outpost_decks)
 "btI" = (
 /obj/item/storage/secure/briefcase,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/sign/banners/upp_flag{
 	pixel_x = 14;
 	pixel_y = 31
@@ -25254,7 +24874,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/flight_control_exterior)
 "btT" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/landing_zones/near_lz1)
 "btU" = (
@@ -25685,7 +25305,7 @@
 /area/strata/interior/outpost/med)
 "bvk" = (
 /obj/structure/reagent_dispensers/water_cooler,
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/outpost/admin)
 "bvl" = (
@@ -25700,9 +25320,7 @@
 /area/strata/exterior/lz_caves)
 "bvn" = (
 /obj/structure/machinery/power/power_generator/port_gen/pacman/super,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/orange_cover,
 /area/strata/exterior/lz_caves)
 "bvp" = (
@@ -25856,9 +25474,7 @@
 	},
 /obj/item/storage/belt/utility/full,
 /obj/item/device/radio,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi/drome)
 "bvR" = (
@@ -25956,21 +25572,15 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/deep_jungle/hot_springs)
 "bwh" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
 "bwi" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/outpost/canteen)
 "bwj" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/asphalt/cement/cement4,
 /area/strata/exterior/mining_outpost_exterior)
 "bwk" = (
@@ -26365,9 +25975,7 @@
 /area/strata/exterior/flight_control_exterior)
 "bxu" = (
 /obj/structure/machinery/vending/cigarette/wy,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
@@ -26450,9 +26058,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/exterior/outpost_decks)
 "bxJ" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	color = "#858680"
@@ -26469,9 +26075,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/carplake_east)
 "bxL" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/flight_control_exterior)
@@ -26520,9 +26124,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/marsh/island_marshes)
 "bxT" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/bed/chair{
 	pixel_y = 7;
 	buckling_y = 7
@@ -26707,9 +26309,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/marsh/river)
 "byF" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/white_cyan2,
 /area/strata/interior/outpost/med)
 "byG" = (
@@ -26872,9 +26472,7 @@
 /turf/open/gm/coast/dirt/beachcorner/north_east,
 /area/strata/exterior/deep_jungle/hot_springs)
 "bzd" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/flora/grass/tallgrass/jungle_alt/corner{
 	dir = 8
 	},
@@ -27086,9 +26684,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/engi/drome)
 "bzH" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/bball)
 "bzI" = (
@@ -27367,9 +26963,7 @@
 /turf/open/gm/river/soro,
 /area/strata/exterior/marsh/river)
 "bAB" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/administration)
 "bAC" = (
@@ -27462,9 +27056,7 @@
 /area/strata/interior/administration)
 "bAN" = (
 /obj/structure/bed/chair,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/asphalt/cement,
 /area/strata/exterior/flight_control_exterior)
 "bAO" = (
@@ -27702,9 +27294,7 @@
 /area/strata/exterior/marsh/river)
 "bBv" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/item/bedsheet/colorable{
 	color = "#798675"
 	},
@@ -28028,9 +27618,7 @@
 /area/strata/exterior/deep_jungle/carplake_north)
 "bCm" = (
 /obj/structure/filingcabinet,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/outpost/med)
@@ -28051,9 +27639,7 @@
 /obj/structure/bookcase{
 	icon_state = "book-5"
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/outpost/med)
 "bCp" = (
@@ -28121,9 +27707,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/engi/drome)
 "bCx" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/outpost/admin)
 "bCy" = (
@@ -28143,9 +27727,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/asphalt/cement,
 /area/strata/exterior/flight_control_exterior)
 "bCB" = (
@@ -28462,7 +28044,7 @@
 /area/strata/interior/outpost/engi/drome)
 "bDt" = (
 /obj/structure/filingcabinet,
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/engi/drome)
@@ -28617,9 +28199,7 @@
 /area/strata/exterior/marsh/river)
 "bDU" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/strata/red1,
 /area/strata/interior/bball)
@@ -28743,9 +28323,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/north)
 "bEo" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost)
 "bEp" = (
@@ -29337,9 +28915,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/strata/exterior/deep_jungle/old_tunnels)
 "bFZ" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/administration)
 "bGa" = (
@@ -29728,7 +29304,7 @@
 /turf/open/floor/greengrid,
 /area/strata/interior/mining_outpost/maintenance)
 "bHl" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/interior/mining_outpost/maintenance)
@@ -29750,7 +29326,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/outpost/security)
 "bHp" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/interior/mining_outpost/maintenance)
 "bHq" = (
@@ -29802,9 +29378,7 @@
 "bHy" = (
 /obj/structure/machinery/optable,
 /obj/item/tank/anesthetic,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/cyan1/east,
 /area/strata/interior/outpost/med)
 "bHz" = (
@@ -29835,9 +29409,7 @@
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/interior/mining_outpost/hive)
 "bHE" = (
@@ -30666,7 +30238,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 8
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/outpost/med)
 "bJY" = (
@@ -30783,7 +30355,7 @@
 /turf/open/floor/hybrisa/tile/cuppajoesfloor,
 /area/strata/interior/mining_outpost/canteen)
 "bKp" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/bball)
 "bKq" = (
@@ -30910,9 +30482,7 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 1
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/red1,
 /area/strata/interior/outpost/security)
 "bKG" = (
@@ -31008,9 +30578,7 @@
 /area/strata/interior/outpost/med)
 "bKS" = (
 /obj/structure/filingcabinet,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/outpost/med)
@@ -31215,7 +30783,7 @@
 /area/strata/exterior/deep_jungle/old_tunnels)
 "bLA" = (
 /obj/structure/machinery/photocopier,
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/research)
 "bLB" = (
@@ -31268,9 +30836,7 @@
 /area/strata/interior/mining_outpost/maintenance)
 "bLH" = (
 /obj/structure/pipes/vents/pump/on,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/yellow3/north,
 /area/strata/interior/outpost/engi/drome)
 "bLI" = (
@@ -31410,7 +30976,7 @@
 /turf/open/floor/strata/yellow3/west,
 /area/strata/interior/secure_checkpoint)
 "bMb" = (
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/fixture/base{
 	pixel_x = 15
 	},
 /obj/structure/largecrate/random/barrel/yellow{
@@ -31496,9 +31062,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/mining_outpost/canteen)
 "bMp" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/road_edge,
 /turf/open/asphalt/brown,
@@ -31550,9 +31114,7 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/strata/interior/secure_checkpoint)
 "bMx" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/secure_checkpoint)
 "bMy" = (
@@ -32143,9 +31705,7 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/strata/interior/secure_checkpoint)
 "bOm" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/largecrate/random/case/double{
 	pixel_x = 1;
 	pixel_y = -8
@@ -32217,7 +31777,7 @@
 /area/strata/interior/outpost/med)
 "bOA" = (
 /obj/structure/machinery/photocopier,
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/outpost/med)
 "bOB" = (
@@ -32251,9 +31811,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/outpost/med)
 "bOG" = (
@@ -32411,9 +31969,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/deep_jungle/old_tunnels)
 "bPg" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/machinery/big_computers/computerblack/computer1{
 	icon_state = "blackmapping_comp_off"
 	},
@@ -32826,9 +32382,7 @@
 /turf/open/gm/dirt/brown/variant_1,
 /area/strata/exterior/far_north_outpost)
 "bQs" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/mining_outpost/canteen)
 "bQt" = (
@@ -32855,9 +32409,7 @@
 /turf/open/floor/hybrisa/tile/cuppajoesfloor,
 /area/strata/interior/mining_outpost/canteen)
 "bQv" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/item/stack/sandbags/small_stack,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/mining_outpost/canteen)
@@ -33017,8 +32569,7 @@
 /area/strata/interior/mining_outpost/maintenance)
 "bQQ" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/light/small{
-	dir = 8;
+/obj/structure/machinery/light/blub/base/west{
 	pixel_y = -15
 	},
 /turf/open/floor/strata/floor3/east,
@@ -33029,9 +32580,7 @@
 /area/strata/interior/secure_checkpoint)
 "bQS" = (
 /obj/structure/cargo_container/upp_small/container_10/right,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/secure_checkpoint)
 "bQT" = (
@@ -33256,9 +32805,7 @@
 /area/strata/interior/mining_outpost/maintenance)
 "bRu" = (
 /obj/structure/machinery/vending/coffee,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/administration)
 "bRv" = (
@@ -33478,9 +33025,7 @@
 /area/strata/exterior/far_north_outpost)
 "bRT" = (
 /obj/item/weapon/gun/rifle/type71/carbine,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
 "bRU" = (
@@ -33516,9 +33061,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/far_north_outpost)
 "bRZ" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/exterior/outpost_decks)
 "bSa" = (
@@ -33616,7 +33159,7 @@
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
 "bSm" = (
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/fixture/base{
 	pixel_x = 15
 	},
 /obj/effect/decal/hybrisa/road/lines3,
@@ -33666,9 +33209,7 @@
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
 "bSr" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/north)
 "bSs" = (
@@ -33978,7 +33519,7 @@
 /turf/open/gm/river/soro,
 /area/strata/exterior/far_north_outpost)
 "bTk" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/floor3,
 /area/strata/exterior/north_outpost)
 "bTl" = (
@@ -34141,9 +33682,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/interior/outpost/med)
 "bTG" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/bed/chair{
 	pixel_y = 7;
 	buckling_y = 7
@@ -34428,9 +33967,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/research)
 "bUn" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/research)
 "bUo" = (
@@ -34637,7 +34174,7 @@
 /obj/effect/landmark/wo_supplies/storage/mines,
 /obj/effect/landmark/wo_supplies/storage/mines,
 /obj/effect/landmark/objective_landmark/far,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/item/clothing/suit/storage/marine/faction/UPP/army,
 /obj/item/clothing/mask/gas/upp_pfb,
 /turf/open/floor/strata/red1,
@@ -34656,9 +34193,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_magazine/shotgun/slugs{
 	pixel_x = 6;
@@ -34693,9 +34228,7 @@
 /area/strata/interior/secure_checkpoint)
 "bUX" = (
 /obj/structure/barricade/handrail/strata,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/asphalt/cement/cement12,
 /area/strata/exterior/marsh/spring_marshes)
 "bUY" = (
@@ -34883,9 +34416,7 @@
 /turf/open/floor/wood,
 /area/strata/interior/wooden_ruins)
 "bVt" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/wood,
 /area/strata/interior/wooden_ruins)
@@ -34919,9 +34450,7 @@
 /turf/open/floor/strata/yellow3/north,
 /area/strata/interior/secure_checkpoint)
 "bVC" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/ammo_box/magazine/misc/mre/upp{
@@ -35072,9 +34601,7 @@
 	pixel_x = 7;
 	pixel_y = 7
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/item/weapon/gun/pistol/t73{
 	pixel_x = -15;
 	pixel_y = 3
@@ -35233,9 +34760,7 @@
 /turf/open/floor/wood/wood_broken,
 /area/strata/interior/wooden_ruins)
 "bWr" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/road_edge,
 /obj/effect/decal/cleanable/dirt/alt_dirt{
@@ -35244,9 +34769,7 @@
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
 "bWs" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2"
@@ -35294,9 +34817,7 @@
 /area/strata/interior/secure_checkpoint)
 "bWB" = (
 /obj/structure/machinery/vending/snack,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/engi/drome)
 "bWC" = (
@@ -35358,9 +34879,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/far_north_outpost)
 "bWK" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
 	},
@@ -35453,9 +34972,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/interior/bball_cave)
 "bWY" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/flora/grass/tallgrass/jungle_alt/corner{
 	dir = 9
 	},
@@ -35487,9 +35004,7 @@
 /area/strata/exterior/marsh/river)
 "bXd" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/greengrid,
 /area/strata/interior/mining_outpost/south_dormitories)
 "bXe" = (
@@ -35522,9 +35037,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/strata/exterior/outpost_decks)
 "bXj" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/secure_checkpoint)
@@ -35857,7 +35370,7 @@
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
 "bYh" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3"
@@ -35876,7 +35389,7 @@
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
 "bYj" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3"
@@ -35950,9 +35463,7 @@
 /area/strata/interior/bball_cave)
 "bYu" = (
 /obj/structure/largecrate/random/barrel/blue,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/research)
 "bYv" = (
@@ -36209,9 +35720,7 @@
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
 "bZe" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal4"
@@ -36222,7 +35731,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata/yellow3,
 /area/strata/interior/outpost/engi/drome)
 "bZg" = (
@@ -36258,9 +35767,7 @@
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
 "bZl" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal4"
@@ -36395,7 +35902,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/interior/secure_checkpoint)
 "bZC" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/strata/yellow3,
 /area/strata/interior/outpost/engi/drome)
@@ -36610,9 +36117,7 @@
 /turf/open/gm/dirt/brown/variant_5,
 /area/strata/exterior/far_north_outpost)
 "cak" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/red1,
 /area/strata/interior/outpost/security)
 "cal" = (
@@ -36765,9 +36270,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/mining_outpost)
 "caF" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/bed/roller/hospital_empty/bigrollerempty2{
 	icon_state = "bigrollerempty2_up";
 	dir = 4
@@ -36877,9 +36380,7 @@
 /turf/open/gm/dirt/brown/variant_2,
 /area/strata/interior/bball_cave)
 "caR" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
 "caS" = (
@@ -37177,9 +36678,7 @@
 /turf/open/gm/dirt/brown/variant_5,
 /area/strata/interior/bball_cave)
 "cbN" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/flight_control_exterior)
@@ -37328,9 +36827,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/bball)
 "cch" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/machinery/washing_machine,
 /turf/open/floor/strata/red1,
 /area/strata/interior/bball)
@@ -37338,9 +36835,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/bball)
 "cck" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/exterior/outpost_platform)
 "ccn" = (
@@ -37446,9 +36941,7 @@
 	},
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/storage/pill_bottle/alkysine,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/effect/landmark/objective_landmark/science,
 /obj/item/storage/box/gloves,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -37482,14 +36975,12 @@
 /area/strata/interior/mining_outpost)
 "cdR" = (
 /obj/structure/largecrate/random/barrel/brown,
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/exterior/outpost_decks)
 "cdT" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/greengrid,
 /area/strata/interior/outpost/med)
 "cdW" = (
@@ -37527,9 +37018,7 @@
 /area/strata/interior/outpost/security)
 "cee" = (
 /obj/structure/closet/crate/freezer/rations,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/outpost/maint)
 "ceg" = (
@@ -37595,9 +37084,7 @@
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/machinery/vending/cola,
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
@@ -37653,9 +37140,7 @@
 /area/strata/interior/outpost/security)
 "cfD" = (
 /obj/structure/machinery/vending/snack,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/outpost/canteen)
 "cfE" = (
@@ -37760,9 +37245,7 @@
 	dir = 8;
 	pixel_x = -11
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/effect/landmark/wo_supplies/storage/belts/medical,
 /obj/item/card/id/dogtag/upp,
 /obj/item/clothing/suit/armor/riot,
@@ -37924,7 +37407,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/outpost/canteen)
 "cio" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -37956,9 +37439,7 @@
 /area/strata/exterior/mining_outpost_exterior)
 "ciH" = (
 /obj/effect/decal/cleanable/cobweb2,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/checkpoints/north)
 "ciW" = (
@@ -37971,9 +37452,7 @@
 /turf/open/floor/strata,
 /area/strata/interior/mining_outpost/flight_control)
 "cji" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/item/stack/sandbags,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/outpost/canteen/bar)
@@ -38099,9 +37578,7 @@
 	},
 /obj/item/paper_bin,
 /obj/item/stack/sheet/glass,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/engi/drome)
 "ckB" = (
@@ -38234,9 +37711,7 @@
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner"
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	color = "#858680"
@@ -38419,9 +37894,7 @@
 	},
 /obj/item/tank/emergency_oxygen/engi,
 /obj/item/tank/emergency_oxygen/engi,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/engi/drome)
 "cnO" = (
@@ -38459,9 +37932,7 @@
 /turf/open/floor/almayer/plate,
 /area/strata/interior/outpost/engi/drome/shuttle)
 "coh" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
 	},
@@ -38497,9 +37968,7 @@
 /obj/structure/bed/chair/office/light,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/item/spacecash/c1000,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/greengrid,
 /area/strata/interior/mining_outpost/south_dormitories)
 "coA" = (
@@ -38587,9 +38056,7 @@
 "cpi" = (
 /obj/item/stack/medical/ointment,
 /obj/item/stack/medical/splint,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/red1,
 /area/strata/interior/outpost/engi/drome)
 "cpo" = (
@@ -38876,24 +38343,20 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata,
 /area/strata/interior/landing_zones/near_lz1)
 "ctl" = (
 /obj/structure/machinery/vending/snack,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/outpost/foyer)
 "ctn" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/landing_zones/near_lz1)
 "cto" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/mining_outpost)
 "ctx" = (
@@ -38912,9 +38375,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/administration)
 "ctA" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata,
 /area/strata/interior/administration)
@@ -38980,9 +38441,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/interior/outpost/engi)
 "cuH" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/closet/emcloset,
 /turf/open/floor/strata/yellow3/north,
 /area/strata/interior/outpost/engi/drome)
@@ -39023,9 +38482,7 @@
 /obj/item/explosive/grenade/custom/cleaner,
 /obj/item/explosive/grenade/custom/cleaner,
 /obj/item/storage/pill_bottle/bicaridine/skillless,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/med)
 "cvf" = (
@@ -39137,9 +38594,7 @@
 /turf/open/floor/strata/red3,
 /area/strata/interior/outpost/med)
 "cxn" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/asphalt/cement,
 /area/strata/exterior/marsh/spring_marshes)
 "cxr" = (
@@ -39267,7 +38722,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/exterior/outpost_platform)
 "cBI" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/outpost/canteen)
 "cCE" = (
@@ -39390,16 +38845,12 @@
 "cLE" = (
 /obj/item/fuel_cell,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/interior/mining_outpost/hive)
 "cMP" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/platform_decoration/metal/strata/east,
 /turf/open/floor/strata/floor3/east,
 /area/strata/exterior/deep_jungle/ruin)
@@ -39410,9 +38861,7 @@
 /area/strata/exterior/deep_jungle/tearlake)
 "cOe" = (
 /obj/structure/machinery/vending/cigarette/koorlander,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/outpost/canteen)
 "cOk" = (
@@ -39513,7 +38962,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/parts_storage)
 "cUu" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /obj/structure/bed/roller/hospital_empty/bigrollerempty3{
@@ -39633,9 +39082,7 @@
 /area/strata/exterior/deep_jungle/carplake_east)
 "dbd" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/canteen)
 "dbv" = (
@@ -39646,7 +39093,7 @@
 /obj/item/ammo_magazine/revolver/cmb,
 /obj/item/ammo_magazine/revolver/cmb,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/parts_storage)
 "dca" = (
@@ -39704,9 +39151,7 @@
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi)
 "dii" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/coatrack,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/underground_dorms/sec1)
@@ -39740,9 +39185,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/floor2,
 /area/strata/exterior/deep_jungle/planet_core_research_station_exterior)
 "dkp" = (
@@ -39783,15 +39226,11 @@
 	color = "#98a3ab"
 	},
 /obj/item/clothing/mask/cigarette/cigar/cohiba,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/outpost/med)
 "dnR" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/structure/barricade/deployable{
 	dir = 4
 	},
@@ -39936,9 +39375,7 @@
 /turf/open/floor/strata,
 /area/strata/interior/outpost/canteen)
 "dyk" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/outpost/canteen)
 "dyA" = (
@@ -40006,9 +39443,7 @@
 /obj/structure/closet/secure_closet/medical3{
 	req_access = null
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/engi/drome)
@@ -40030,9 +39465,7 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/engi/drome)
 "dFS" = (
@@ -40194,9 +39627,7 @@
 /obj/structure/bed{
 	icon_state = "abed"
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/window/reinforced/tinted{
 	color = "#969696";
 	dir = 1
@@ -40371,9 +39802,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/admin)
 "ecB" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/structure/platform/stone/soro/north,
 /obj/structure/platform/stone/soro,
 /obj/effect/blocker/sorokyne_hot_water,
@@ -40445,9 +39874,7 @@
 /area/strata/exterior/marsh/water_marshes)
 "eiV" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/item/storage/secure/briefcase,
 /turf/open/floor/strata/red1,
 /area/strata/interior/underground_dorms/sec2)
@@ -40487,9 +39914,7 @@
 /area/strata/exterior/marsh/relay_marshes)
 "elD" = (
 /obj/structure/platform_decoration/metal/strata/west,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/red1,
 /area/strata/interior/landing_zones/near_lz1)
 "emg" = (
@@ -40523,9 +39948,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib2"
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/interior/mining_outpost)
 "emX" = (
@@ -40542,9 +39965,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/canteen)
 "enU" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/floor2,
 /area/strata/exterior/deep_jungle/planet_core_research_station_exterior)
 "epm" = (
@@ -40594,9 +40015,7 @@
 "euD" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/canteen)
 "euN" = (
@@ -40640,9 +40059,7 @@
 /turf/open/floor/strata,
 /area/strata/interior/outpost/canteen)
 "eyA" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
@@ -40742,9 +40159,7 @@
 /area/strata/exterior/flight_control_exterior)
 "eBb" = (
 /obj/structure/surface/table/woodentable,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/item/clothing/accessory/patch/upp/alt,
 /turf/open/floor/interior/plastic,
 /area/strata/interior/outpost/canteen)
@@ -40773,9 +40188,7 @@
 	dir = 4;
 	color = "#858680"
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/strata/interior/outpost/maint)
 "eDc" = (
@@ -40796,13 +40209,11 @@
 /area/strata/interior/landing_zones/near_lz1)
 "eEc" = (
 /obj/item/stool,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/canteen)
 "eEr" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/cyan3/west,
 /area/strata/interior/outpost/med)
 "eEO" = (
@@ -40817,9 +40228,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/landing_zones/near_lz1)
 "eFF" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/outpost/admin)
 "eFO" = (
@@ -40979,7 +40388,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/exterior/marsh/crash)
 "eOc" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/structure/bed/roller/hospital_empty/bigrollerempty3{
 	dir = 4;
 	icon_state = "bigrollerempty3_up";
@@ -40994,9 +40403,7 @@
 /turf/open/gm/dirt/brown/variant_5/south,
 /area/strata/exterior/deep_jungle/north)
 "eOI" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/interior/mining_outpost)
 "eOK" = (
@@ -41104,9 +40511,7 @@
 	pixel_x = -5;
 	pixel_y = 8
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot{
 	pixel_x = 4;
 	pixel_y = 5
@@ -41143,9 +40548,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/platform)
 "eZc" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/white_cyan3/east,
 /area/strata/interior/outpost/med)
 "eZf" = (
@@ -41166,9 +40569,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/parts_storage)
 "fas" = (
@@ -41222,9 +40623,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/engi/drome)
 "fcB" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
 	pixel_x = -6;
@@ -41272,9 +40671,7 @@
 /area/strata/exterior/tcomms_engineering_parts_storage)
 "fhW" = (
 /obj/structure/fence/slim/upp,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/asphalt/cement/cement1,
 /area/strata/exterior/tcomms_engineering_parts_storage)
 "fiD" = (
@@ -41320,9 +40717,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/outpost/canteen)
 "fow" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/asphalt/cement,
 /area/strata/exterior/outpost_platform)
 "foN" = (
@@ -41404,9 +40799,7 @@
 "ftO" = (
 /obj/structure/filingcabinet/filingcabinet,
 /obj/effect/landmark/objective_landmark/far,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/red1,
 /area/strata/interior/mining_outpost/flight_control)
 "fug" = (
@@ -41547,9 +40940,7 @@
 /obj/structure/mirror{
 	pixel_x = -29
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/underground_dorms/admin2)
 "fBC" = (
@@ -41586,7 +40977,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost)
 "fCI" = (
@@ -41711,9 +41102,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/white_cyan3/north,
 /area/strata/interior/outpost/med)
 "fMk" = (
@@ -41731,9 +41120,7 @@
 /turf/open/floor/strata/cyan1/east,
 /area/strata/interior/outpost/canteen)
 "fMr" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/asphalt/cement,
 /area/strata/exterior/flight_control_exterior)
 "fMv" = (
@@ -41753,9 +41140,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/outpost/security)
 "fMS" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/exterior/outpost_decks)
 "fNi" = (
@@ -41823,9 +41208,7 @@
 /area/strata/exterior/marsh/crash)
 "fRX" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/cyan2/east,
 /area/strata/interior/outpost/canteen/bar)
 "fSr" = (
@@ -41898,9 +41281,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/cyan1/east,
 /area/strata/interior/outpost/med)
 "fYk" = (
@@ -41939,15 +41320,11 @@
 /area/strata/interior/outpost/engi/drome)
 "gbI" = (
 /obj/structure/platform_decoration/metal/strata/east,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/red1,
 /area/strata/interior/landing_zones/near_lz1)
 "gbS" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/outpost/med)
@@ -42021,9 +41398,7 @@
 /area/strata/interior/underground_dorms/sec1)
 "ggH" = (
 /obj/structure/reagent_dispensers/water_cooler,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/outpost/med)
 "ggJ" = (
@@ -42095,9 +41470,7 @@
 /turf/open/gm/river/soro,
 /area/strata/exterior/far_north_outpost)
 "gjC" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/inflatable/popped,
 /turf/open/floor/strata/cyan4/east,
 /area/strata/interior/outpost/med)
@@ -42564,9 +41937,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/red1,
 /area/strata/interior/outpost/security)
 "gQG" = (
@@ -42580,9 +41951,7 @@
 "gSz" = (
 /obj/item/weapon/twohanded/folded_metal_chair,
 /obj/effect/decal/cleanable/dirt/alt_dirt,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/plating/asteroidwarning/northeast,
 /area/strata/exterior/tcomms_geosprings)
 "gSA" = (
@@ -42642,7 +42011,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/outpost/engi/drome)
 "gUB" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost/south_dormitories)
 "gUM" = (
@@ -42669,9 +42038,7 @@
 /area/strata/exterior/deep_jungle/east)
 "gWE" = (
 /obj/structure/machinery/bioprinter,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/purp2,
 /area/strata/interior/planet_core_research_station)
 "gWG" = (
@@ -42698,9 +42065,7 @@
 	pixel_x = -2;
 	pixel_y = 2
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/engi/drome)
 "gZp" = (
@@ -42774,9 +42139,7 @@
 /area/strata/exterior/outpost_decks)
 "hcu" = (
 /obj/structure/platform/metal/strata/east,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
 	pixel_y = 11
@@ -42894,9 +42257,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost)
 "hkC" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/red3,
 /area/strata/interior/outpost/med)
@@ -42943,9 +42304,7 @@
 /area/strata/interior/outpost/engi/drome)
 "hnF" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/interior/outpost/canteen)
 "hnO" = (
@@ -42962,7 +42321,7 @@
 /turf/open/floor/strata/red3/north,
 /area/strata/interior/outpost/med)
 "hnX" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/white_cyan3,
 /area/strata/interior/outpost/med)
 "hof" = (
@@ -43154,9 +42513,7 @@
 /area/strata/interior/outpost/engi)
 "hHZ" = (
 /obj/structure/largecrate/random/case/double,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi/drome)
 "hIb" = (
@@ -43175,7 +42532,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/underground_dorms/med1)
 "hJC" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/asphalt/cement/cement14,
 /area/strata/exterior/outpost_platform)
 "hJE" = (
@@ -43270,9 +42627,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/parts_storage)
 "hOD" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi/drome)
 "hOX" = (
@@ -43408,9 +42763,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/hot_springs)
 "hZC" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/maint)
 "iaa" = (
@@ -43553,9 +42906,7 @@
 	pixel_y = 6
 	},
 /obj/item/device/flashlight/lamp,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/canteen)
 "idR" = (
@@ -43669,9 +43020,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/strata/exterior/outpost_platform)
 "iop" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/flora/grass/tallgrass/jungle_alt,
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/marsh/river)
@@ -43756,9 +43105,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/lz_caves)
 "isY" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata,
 /area/strata/interior/underground_dorms/med1)
 "itw" = (
@@ -43771,9 +43118,7 @@
 /area/strata/interior/outpost/med)
 "itG" = (
 /obj/structure/machinery/disposal,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/parts_storage)
 "itQ" = (
@@ -43802,9 +43147,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/underground_dorms/sec1)
 "iuB" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/pipes/vents/pump/on,
 /turf/open/floor/strata,
 /area/strata/interior/checkpoints/north)
@@ -43921,9 +43264,7 @@
 /area/strata/interior/outpost/engi/drome)
 "iCt" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/greengrid,
 /area/strata/interior/planet_core_research_station)
 "iDq" = (
@@ -43997,9 +43338,7 @@
 /turf/open/floor/plating,
 /area/strata/interior/outpost/canteen)
 "iKd" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost/south_dormitories)
 "iKI" = (
@@ -44011,7 +43350,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/outpost/med)
 "iLr" = (
@@ -44053,9 +43392,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/exterior/outpost_decks)
 "iNi" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/foyer)
 "iOi" = (
@@ -44417,7 +43754,7 @@
 	dir = 4;
 	color = "#858680"
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/strata/interior/outpost/engi)
 "jiQ" = (
@@ -44510,9 +43847,7 @@
 	color = "#98a3ab"
 	},
 /obj/item/book/manual/detective,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata,
 /area/strata/interior/mining_outpost)
 "jrs" = (
@@ -44611,7 +43946,7 @@
 /area/strata/interior/outpost/admin)
 "jyE" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/mining_outpost)
 "jyO" = (
@@ -44644,13 +43979,11 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/canteen)
 "jBN" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/canteen)
 "jBO" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/pipes/standard/manifold/hidden/cyan,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/engi/drome)
@@ -44660,13 +43993,11 @@
 /area/strata/exterior/outpost_platform)
 "jCU" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/underground_dorms/admin1)
 "jDr" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/exterior/deep_jungle/planet_core_research_station_exterior)
@@ -44689,9 +44020,7 @@
 /area/strata/exterior/marsh/center)
 "jEW" = (
 /obj/structure/filingcabinet,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/cyan1/east,
 /area/strata/interior/outpost/engi/drome)
 "jFO" = (
@@ -44740,9 +44069,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/landing_zones/near_lz2)
 "jLx" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/exterior/outpost_decks)
 "jLH" = (
@@ -44771,7 +44098,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/engi/drome)
 "jMV" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/parts_storage)
 "jNa" = (
@@ -44883,9 +44210,7 @@
 /turf/open/gm/coast/dirt/west,
 /area/strata/exterior/deep_jungle/south)
 "jUo" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
@@ -44991,9 +44316,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/interior/underground_dorms/med2)
 "kaP" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/interior/outpost/med)
@@ -45018,9 +44341,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/strata,
 /area/strata/interior/underground_dorms/med2)
@@ -45059,9 +44380,7 @@
 /area/strata/interior/planet_core_research_station)
 "kfN" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/bball)
 "kgC" = (
@@ -45324,9 +44643,7 @@
 /area/strata/interior/underground_dorms/sec1)
 "kEl" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib6"
 	},
@@ -45335,9 +44652,7 @@
 /area/strata/interior/underground_dorms/admin2)
 "kFZ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/canteen)
 "kGp" = (
@@ -45369,9 +44684,7 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/canteen)
 "kIs" = (
@@ -45381,9 +44694,7 @@
 /turf/open/floor/strata,
 /area/strata/interior/mining_outpost)
 "kIu" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
@@ -45440,9 +44751,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/parts_storage)
 "kOa" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/admin)
 "kOo" = (
@@ -45523,9 +44832,7 @@
 /area/strata/interior/planet_core_research_station)
 "kRY" = (
 /obj/structure/morgue,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/outpost/med)
 "kSs" = (
@@ -45543,9 +44850,7 @@
 /turf/open/floor/strata,
 /area/strata/interior/landing_zones/near_lz1)
 "kTu" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/strata/white_cyan3/west,
 /area/strata/interior/outpost/med)
@@ -45592,7 +44897,7 @@
 /area/strata/interior/underground_dorms/sec1)
 "kXj" = (
 /obj/structure/platform/metal/strata/east,
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
 	pixel_x = 2;
@@ -45636,9 +44941,7 @@
 /area/strata/exterior/landing_zones/lz2)
 "kYY" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/engi/drome)
 "kZU" = (
@@ -45687,7 +44990,7 @@
 /area/strata/interior/outpost/admin)
 "lck" = (
 /obj/structure/platform/metal/strata,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/mining_outpost_exterior)
 "lcq" = (
@@ -45781,9 +45084,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/carplake_east)
 "lgy" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/exterior/outpost_platform)
 "lhI" = (
@@ -45807,9 +45108,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/underground_dorms/sec1)
 "liv" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/closet,
 /turf/open/floor/strata,
 /area/strata/interior/landing_zones/near_lz1)
@@ -45888,9 +45187,7 @@
 /obj/structure/bed{
 	icon_state = "abed"
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/window/reinforced/tinted{
 	color = "#969696";
 	dir = 1
@@ -45926,9 +45223,7 @@
 /turf/open/gm/river/soro,
 /area/strata/exterior/landing_zones/near_lz2)
 "lqD" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "lqV" = (
@@ -46063,16 +45358,12 @@
 /obj/structure/bed{
 	icon_state = "abed"
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/item/stack/rods,
 /turf/open/floor/strata,
 /area/strata/interior/underground_dorms/admin2)
 "lzh" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/floor3/east,
 /area/strata/exterior/outpost_decks)
 "lzt" = (
@@ -46125,9 +45416,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/orange_cover,
 /area/strata/exterior/marsh/river)
 "lEo" = (
@@ -46136,9 +45425,7 @@
 /area/strata/exterior/landing_zones/lz2)
 "lEq" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/outpost/canteen)
 "lEJ" = (
@@ -46302,9 +45589,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/checkpoints/north)
 "lPn" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/canteen)
 "lPF" = (
@@ -46366,9 +45651,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/marsh/spring_marshes)
 "lUm" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/exterior/outpost_decks)
 "lUu" = (
@@ -46403,15 +45686,11 @@
 /turf/open/gm/river/soro,
 /area/strata/exterior/marsh/water)
 "lVJ" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/floor2,
 /area/strata/exterior/deep_jungle/planet_core_research_station_exterior)
 "lWc" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/outpost/engi/drome)
 "lWu" = (
@@ -46438,9 +45717,7 @@
 	layer = 2.41
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/engi/drome)
 "lYR" = (
@@ -46715,16 +45992,12 @@
 	dir = 8
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/item/clothing/mask/gas/upp_pfb,
 /turf/open/floor/strata/floor3/east,
 /area/strata/exterior/outpost_decks)
 "mrM" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/outpost_platform)
 "mrT" = (
@@ -46804,9 +46077,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/relay_marshes)
 "mxa" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/cyan1/east,
 /area/strata/interior/outpost/med)
 "mxu" = (
@@ -46878,9 +46149,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/flight_control_exterior)
 "mBC" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/item/stack/cable_coil/random,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost)
@@ -47004,9 +46273,7 @@
 	color = "#98a3ab"
 	},
 /obj/item/ammo_magazine/rifle/type71,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/effect/landmark/objective_landmark/close,
 /obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71,
@@ -47070,9 +46337,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/flight_control_exterior)
 "mRN" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/planet_core_research_station)
 "mRS" = (
@@ -47119,9 +46384,7 @@
 /area/strata/interior/outpost/engi/drome/shuttle)
 "mWF" = (
 /obj/structure/largecrate/random,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 25
 	},
@@ -47133,9 +46396,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/underground_dorms/admin2)
 "mWT" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/purp2,
 /area/strata/interior/planet_core_research_station)
 "mXs" = (
@@ -47284,9 +46545,7 @@
 	dir = 1;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/engi/drome)
 "njn" = (
@@ -47354,7 +46613,7 @@
 /obj/structure/flora/grass/tallgrass/jungle_alt/corner{
 	dir = 6
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/old_tunnels)
 "nnO" = (
@@ -47391,9 +46650,7 @@
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e"
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/red3,
 /area/strata/interior/outpost/med)
 "npX" = (
@@ -47605,9 +46862,7 @@
 /obj/structure/bookcase{
 	icon_state = "book-5"
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata,
 /area/strata/interior/underground_dorms/admin1)
 "nDt" = (
@@ -47627,9 +46882,7 @@
 /area/strata/interior/outpost/engi/drome)
 "nEU" = (
 /obj/structure/filingcabinet,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/outpost/med)
@@ -48098,9 +47351,7 @@
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi)
 "oiF" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/barricade/handrail/strata,
 /turf/open/asphalt/cement/cement12,
 /area/strata/interior/outpost/med)
@@ -48195,9 +47446,7 @@
 	color = "#98a3ab"
 	},
 /obj/structure/machinery/computer/communications,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/underground_dorms/med2)
 "opg" = (
@@ -48462,9 +47711,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/landing_zones/near_lz2)
 "oKV" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/asphalt/cement/cement1,
 /area/strata/exterior/outpost_decks)
 "oLv" = (
@@ -48512,9 +47759,7 @@
 "oOX" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /obj/effect/decal/strata_decals/grime/grime4,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost)
 "oPz" = (
@@ -48528,9 +47773,7 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/strata/interior/parts_storage)
 "oPA" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
 	icon_state = "bush3";
@@ -48568,9 +47811,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib6"
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/canteen)
 "oRm" = (
@@ -48650,13 +47891,11 @@
 /turf/open/floor/strata/floor2,
 /area/strata/interior/outpost/med)
 "oWD" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/parts_storage_exterior)
 "oWK" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata,
 /area/strata/interior/mining_outpost/south_dormitories)
 "oWO" = (
@@ -48718,9 +47957,7 @@
 	color = "#98a3ab"
 	},
 /obj/item/device/flashlight,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -48797,9 +48034,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/maint)
 "piA" = (
@@ -48909,9 +48144,7 @@
 /area/strata/exterior/deep_jungle/west)
 "pnD" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/white_cyan3/east,
 /area/strata/interior/outpost/med)
 "pnE" = (
@@ -48962,7 +48195,7 @@
 /turf/open/floor/plating/asteroidwarning/east,
 /area/strata/exterior/landing_zones/lz2)
 "ppA" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/engi/drome)
 "pqE" = (
@@ -49044,9 +48277,7 @@
 /turf/open/floor/strata/purp2,
 /area/strata/exterior/deep_jungle/carplake_east)
 "ptT" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/interior/mining_outpost/hive)
 "ptW" = (
@@ -49078,7 +48309,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost/south_dormitories)
 "pvz" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "pwn" = (
@@ -49128,16 +48359,14 @@
 /area/strata/exterior/marsh/center)
 "pAR" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/interior/mining_outpost)
 "pAS" = (
 /turf/open/floor/strata/blue1,
 /area/strata/interior/outpost/foyer)
 "pAY" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
 "pAZ" = (
@@ -49376,7 +48605,7 @@
 /area/strata/exterior/north_outpost)
 "pSc" = (
 /obj/structure/closet/coffin,
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/outpost/med)
 "pSw" = (
@@ -49404,9 +48633,7 @@
 /obj/structure/bed{
 	icon_state = "abed"
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/barricade/wooden{
 	dir = 4
 	},
@@ -49434,7 +48661,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost/south_dormitories)
 "pWP" = (
@@ -49465,9 +48692,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/checkpoints/south)
 "pYE" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/bed/roller/hospital_empty/bigrollerempty,
 /turf/open/floor/strata/cyan2/east,
 /area/strata/interior/outpost/med)
@@ -49628,11 +48853,11 @@
 /turf/open/floor/strata/cyan2/east,
 /area/strata/interior/mining_outpost/canteen)
 "qjS" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/red1,
 /area/strata/interior/research)
 "qks" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/asphalt/cement/cement12,
 /area/strata/exterior/outpost_platform)
 "qkS" = (
@@ -49665,9 +48890,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/admin)
 "qns" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/underground_dorms/med1)
 "qnH" = (
@@ -49774,7 +48997,7 @@
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi)
 "qve" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/canteen)
 "qvk" = (
@@ -49850,9 +49073,7 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 1
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/engi/drome)
 "qyq" = (
@@ -50112,9 +49333,7 @@
 /turf/open/floor/strata/purp2,
 /area/strata/interior/planet_core_research_station)
 "qPl" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/bball)
@@ -50140,7 +49359,7 @@
 /turf/open/floor/strata,
 /area/strata/interior/outpost/med)
 "qQu" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/asphalt/cement/cement15,
 /area/strata/exterior/outpost_platform)
 "qQx" = (
@@ -50296,9 +49515,7 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/strata/interior/outpost/engi/drome)
 "qWc" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/underground_dorms/med1)
 "qWw" = (
@@ -50325,9 +49542,7 @@
 /turf/open/floor/strata/cyan2/east,
 /area/strata/interior/outpost/med)
 "qWY" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/landing_zones/near_lz1)
 "qXa" = (
@@ -50501,9 +49716,7 @@
 /area/strata/exterior/marsh/spring_marshes)
 "rno" = (
 /obj/structure/largecrate/random,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/parts_storage)
 "rok" = (
@@ -50516,15 +49729,11 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/outpost/engi/drome)
 "roI" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi)
 "rpa" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/platform_decoration/metal/strata/east,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
@@ -50565,7 +49774,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/interior/outpost/foyer)
 "rrN" = (
@@ -50750,9 +49959,7 @@
 "rEx" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/platform/metal/strata/west,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/exterior/outpost_decks)
 "rEL" = (
@@ -50924,9 +50131,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost/flight_control)
 "rRl" = (
@@ -51070,7 +50275,7 @@
 /obj/structure/terminal{
 	dir = 8
 	},
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/generator_substation)
 "saY" = (
@@ -51103,9 +50308,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/purp2,
 /area/strata/interior/planet_core_research_station)
 "sch" = (
@@ -51344,9 +50547,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/security)
 "srk" = (
@@ -51356,7 +50557,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/outpost_platform)
 "srQ" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/parts_storage)
 "ssb" = (
@@ -51382,9 +50583,7 @@
 /obj/structure/bed{
 	icon_state = "abed"
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/window/reinforced/tinted{
 	color = "#969696"
 	},
@@ -51478,9 +50677,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/interior/outpost/engi)
 "szX" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/asphalt/cement/cement1,
 /area/strata/exterior/outpost_platform)
 "sAv" = (
@@ -51547,9 +50744,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/deep_jungle/west)
 "sFp" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/platform/stone/soro/north,
 /obj/structure/platform/stone/soro,
 /obj/effect/blocker/sorokyne_hot_water,
@@ -51579,9 +50774,7 @@
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/strata/exterior/marsh/spring_marshes)
 "sGJ" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/exterior/deep_jungle/planet_core_research_station_exterior)
@@ -51672,9 +50865,7 @@
 /obj/structure/bed{
 	icon_state = "abed"
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/item/storage/fancy/cigarettes/lady_finger,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/underground_dorms/sec1)
@@ -51773,7 +50964,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/mining_outpost/canteen)
 "sWt" = (
@@ -51893,9 +51084,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/parts_storage)
 "tdr" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/parts_storage)
 "tdy" = (
@@ -51942,9 +51131,7 @@
 	dir = 4;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/research)
 "tgC" = (
@@ -52033,7 +51220,7 @@
 /obj/structure/bed{
 	icon_state = "abed"
 	},
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/underground_dorms/sec1)
 "tmi" = (
@@ -52119,7 +51306,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/marsh/crash)
 "ttQ" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata,
 /area/strata/interior/underground_dorms/admin3)
 "tuj" = (
@@ -52238,9 +51425,7 @@
 /area/strata/exterior/marsh/center)
 "tBw" = (
 /obj/structure/closet/crate/radiation,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/parts_storage)
 "tCk" = (
@@ -52304,9 +51489,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/marsh/spring_marshes)
 "tGR" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "tGZ" = (
@@ -52366,9 +51549,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost/south_dormitories)
 "tJJ" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
@@ -52532,9 +51713,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/platform_east)
 "tTu" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata,
 /area/strata/interior/mining_outpost/south_dormitories)
 "tTP" = (
@@ -52570,7 +51749,7 @@
 /area/strata/exterior/far_north_outpost)
 "tVN" = (
 /obj/structure/largecrate/random/case/double,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
 	},
@@ -52578,9 +51757,7 @@
 /area/strata/interior/outpost/engi/drome)
 "tVP" = (
 /obj/structure/pipes/vents/pump/on,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/parts_storage)
 "tWf" = (
@@ -52606,9 +51783,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/interior/outpost/engi)
 "tWY" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
 	pixel_y = -7;
@@ -52633,9 +51808,7 @@
 /turf/open/floor/strata,
 /area/strata/interior/outpost/canteen)
 "tZF" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/underground_dorms/sec2)
 "tZV" = (
@@ -52789,18 +51962,14 @@
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "ugT" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/admin)
 "uhe" = (
 /obj/structure/toilet{
 	dir = 1
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/underground_dorms/admin3)
 "uhF" = (
@@ -53184,9 +52353,7 @@
 /turf/open/floor/greengrid,
 /area/strata/exterior/restricted)
 "uHa" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
@@ -53230,9 +52397,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/outpost/med)
 "uLe" = (
@@ -53515,7 +52680,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/underground_dorms/med2)
 "vgb" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/parts_storage)
 "vgn" = (
@@ -53649,9 +52814,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/parts_storage)
@@ -53718,9 +52881,7 @@
 /obj/structure/mirror{
 	pixel_x = -29
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/underground_dorms/med2)
 "vqA" = (
@@ -53749,9 +52910,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/item/storage/box/bodybags,
 /obj/item/storage/box/bodybags,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -53946,9 +53105,7 @@
 /turf/open/gm/river/soro,
 /area/strata/exterior/marsh/river)
 "vBV" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
@@ -54020,9 +53177,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/outpost/foyer)
 "vFV" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/purp2,
 /area/strata/interior/planet_core_research_station)
 "vGj" = (
@@ -54141,9 +53296,7 @@
 /area/strata/interior/mining_outpost/hive)
 "vNW" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/canteen)
 "vOf" = (
@@ -54167,9 +53320,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/canteen)
 "vPN" = (
@@ -54232,9 +53383,7 @@
 /turf/open/asphalt/cement/cement2,
 /area/strata/exterior/south_outpost)
 "vUy" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/med)
 "vUM" = (
@@ -54282,9 +53431,7 @@
 	pixel_x = -8;
 	pixel_y = 7
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/cyan3/east,
 /area/strata/interior/outpost/med)
 "vZT" = (
@@ -54327,9 +53474,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/outpost/canteen)
 "wdf" = (
@@ -54350,9 +53495,7 @@
 /area/strata/interior/outpost/med)
 "wez" = (
 /obj/structure/inflatable/popped,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/parts_storage)
 "wfm" = (
@@ -54418,9 +53561,7 @@
 "wkl" = (
 /obj/structure/platform_decoration/metal/strata/north,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/asphalt/cement/cement3,
 /area/strata/interior/landing_zones/lz1)
 "wkv" = (
@@ -54445,9 +53586,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/outpost/canteen)
 "wlH" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/canteen)
 "wmG" = (
@@ -54526,9 +53665,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/blue3/north,
 /area/strata/interior/outpost/admin)
 "wpW" = (
@@ -54552,9 +53689,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/interior/mining_outpost/flight_control)
 "wrv" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/parts_storage)
 "wrw" = (
@@ -54565,9 +53700,7 @@
 /obj/structure/morgue{
 	dir = 8
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/outpost/med)
 "wsj" = (
@@ -54623,7 +53756,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/strata/exterior/deep_jungle/platform_east)
 "wvB" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/flora/grass/tallgrass/jungle_alt/corner{
 	dir = 9
 	},
@@ -54640,7 +53773,7 @@
 /obj/structure/bed{
 	icon_state = "abed"
 	},
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/strata/floor3/east,
@@ -54656,9 +53789,7 @@
 /turf/open/floor/strata,
 /area/strata/interior/outpost/canteen)
 "wyx" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/bed/roller/hospital_empty/bigrollerempty2{
 	icon_state = "bigrollerempty2_up";
 	dir = 8
@@ -54682,7 +53813,7 @@
 /obj/item/clothing/suit/storage/hazardvest,
 /obj/item/clothing/head/hardhat/white,
 /obj/item/clothing/head/hardhat/white,
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/item/clothing/head/hardhat/white,
 /turf/open/floor/strata/red3/north,
 /area/strata/interior/outpost/med)
@@ -54691,9 +53822,7 @@
 	dir = 8;
 	pixel_x = -4
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/underground_dorms/admin1)
 "wAU" = (
@@ -54730,7 +53859,7 @@
 /turf/open/floor/strata,
 /area/strata/interior/landing_zones/near_lz1)
 "wDF" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata,
 /area/strata/interior/underground_dorms/admin1)
@@ -54897,9 +54026,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/lz_caves)
 "wQx" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/asphalt/cement,
 /area/strata/exterior/outpost_platform)
 "wQz" = (
@@ -54927,7 +54054,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/tearlake)
 "wTv" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/underground_dorms/med2)
 "wUa" = (
@@ -54938,7 +54065,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/research)
 "wUD" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/interior/mining_outpost/hive)
 "wUS" = (
@@ -55050,7 +54177,7 @@
 	icon_state = "pottedplant_21"
 	},
 /obj/structure/platform_decoration/metal/strata,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/engi)
 "xbT" = (
@@ -55126,15 +54253,11 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/exterior/deep_jungle/platform_east)
 "xjw" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/outpost/canteen)
 "xjH" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/outpost/med)
 "xjO" = (
@@ -55339,9 +54462,7 @@
 	pixel_x = 7;
 	pixel_y = -3
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/strata/purp1,
 /area/strata/interior/planet_core_research_station)
 "xwu" = (
@@ -55577,7 +54698,7 @@
 /turf/open/floor/strata,
 /area/strata/interior/outpost/med)
 "xJH" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/exterior/deep_jungle/planet_core_research_station_exterior)
@@ -55617,9 +54738,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/interior/outpost/engi)
 "xKC" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/bball)
 "xKD" = (
@@ -55649,9 +54768,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/exterior/deep_jungle/planet_core_research_station_exterior)
 "xLK" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/structure/platform/metal/strata,
 /turf/open/floor/strata/red3/north,
 /area/strata/interior/outpost/med)
@@ -55761,9 +54878,7 @@
 /turf/open/floor/almayer/test_floor5,
 /area/strata/interior/outpost/engi/drome/shuttle_MK3)
 "xRr" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/bed{
 	icon_state = "abed"
 	},
@@ -55777,9 +54892,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/outpost/security)
 "xRP" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/engi/drome)
 "xRR" = (
@@ -55926,9 +55039,7 @@
 /area/strata/interior/parts_storage)
 "xZC" = (
 /obj/structure/machinery/vending/dinnerware,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/canteen)
 "xZF" = (
@@ -55984,9 +55095,7 @@
 	dir = 8;
 	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/engi/drome)
 "ycZ" = (

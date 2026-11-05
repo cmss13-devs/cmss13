@@ -299,7 +299,7 @@
 /turf/open/floor/cult,
 /area/bigredv2/outside/chapel)
 "bl" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/darkish,
 /area/bigredv2/outside/chapel)
 "bm" = (

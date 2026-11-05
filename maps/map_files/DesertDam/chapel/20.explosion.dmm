@@ -4,9 +4,7 @@
 /turf/open/floor/cult,
 /area/desert_dam/building/church)
 "ab" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/dark,
 /area/desert_dam/building/church)
 "ac" = (
@@ -44,7 +42,7 @@
 /turf/open/floor/carpet13_5/west,
 /area/desert_dam/building/church)
 "gX" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/cult,
 /area/desert_dam/building/church)
 "he" = (
@@ -52,12 +50,12 @@
 /turf/open/floor/dark,
 /area/desert_dam/building/church)
 "hB" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/chapel/west,
 /area/desert_dam/building/church)
 "hF" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/dark,
 /area/desert_dam/building/church)
 "ii" = (
@@ -122,9 +120,7 @@
 /turf/open/floor/dark,
 /area/desert_dam/building/church)
 "ry" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/chapel/north,
 /area/desert_dam/building/church)
 "sa" = (
@@ -172,9 +168,7 @@
 /turf/open/floor/chapel/west,
 /area/desert_dam/building/church)
 "xb" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/bed/sofa/pews/flipped{
 	dir = 1
 	},
@@ -210,9 +204,7 @@
 /turf/open/floor/chapel,
 /area/desert_dam/building/church)
 "DN" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/surface/table/woodentable,
 /obj/item/storage/bible,
 /turf/open/floor/cult,
@@ -257,9 +249,7 @@
 /turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/church)
 "MU" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/cult,
 /area/desert_dam/building/church)
 "Ny" = (
@@ -299,7 +289,7 @@
 /turf/template_noop,
 /area/template_noop)
 "Tw" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/bed/sofa/pews/flipped,
 /turf/open/floor/chapel,
 /area/desert_dam/building/church)

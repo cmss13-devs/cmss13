@@ -142,9 +142,7 @@
 /turf/open/floor/darkpurplecorners2,
 /area/bigredv2/caves/lambda/breakroom)
 "ax" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/darkpurplecorners2,
 /area/bigredv2/caves/lambda/breakroom)
@@ -155,7 +153,7 @@
 /turf/open/floor/almayer/w_y1/north,
 /area/bigredv2/caves/lambda/breakroom)
 "aC" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/darkpurplecorners2/east,
 /area/bigredv2/caves/lambda/breakroom)
 "aD" = (
@@ -166,9 +164,7 @@
 /turf/open/floor/darkpurplecorners2/east,
 /area/bigredv2/caves/lambda/breakroom)
 "aF" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/window/reinforced{
 	dir = 8
@@ -205,7 +201,7 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/lambda/breakroom)
 "aJ" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/white_cyan1/east,
 /area/bigredv2/caves/lambda/breakroom)
 "aK" = (

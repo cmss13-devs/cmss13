@@ -117,9 +117,7 @@
 /turf/closed/wall/almayer/white/reinforced,
 /area/adminlevel/chinook/medical)
 "ax" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
@@ -154,29 +152,21 @@
 /turf/open/floor/almayer/red/east,
 /area/adminlevel/chinook/sec)
 "aD" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/displaycase,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
 "aE" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata/faux_wood,
 /area/adminlevel/chinook/offices)
 "aF" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/silver/southwest,
 /area/adminlevel/chinook)
 "aG" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/item/storage/fancy/cigarettes/kpack{
 	pixel_x = -4
 	},
@@ -198,9 +188,7 @@
 	pixel_y = 3
 	},
 /obj/item/clothing/glasses/hud/health,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/adminlevel/chinook/medical)
 "aJ" = (
@@ -226,7 +214,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/offices)
 "aQ" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/medical)
 "aR" = (
@@ -261,9 +249,7 @@
 /area/adminlevel/chinook/offices)
 "aV" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/item/reagent_container/food/drinks/coffeecup/uscm{
 	pixel_x = -7;
 	pixel_y = 6
@@ -326,9 +312,7 @@
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
 "bb" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/red/west,
 /area/adminlevel/chinook/sec)
 "bc" = (
@@ -337,9 +321,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/offices)
 "bd" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/corsat/squares,
 /area/adminlevel/chinook/cargo)
 "be" = (
@@ -367,16 +349,12 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/offices)
 "bh" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/bed/chair/comfy,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
 "bi" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/blue/east,
 /area/adminlevel/chinook)
 "bj" = (
@@ -385,7 +363,7 @@
 /obj/item/roller,
 /obj/item/roller,
 /obj/item/device/healthanalyzer,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/sterile_green_side,
 /area/adminlevel/chinook/medical)
 "bk" = (
@@ -456,7 +434,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
 "bp" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/closet,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cryo)
@@ -471,9 +449,7 @@
 /area/adminlevel/chinook/cargo)
 "bu" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/item/toy/beach_ball/holoball{
 	pixel_y = 4
 	},
@@ -584,9 +560,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/offices)
 "bJ" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/engineering)
 "bK" = (
@@ -619,9 +593,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/chinook)
 "bO" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/adminlevel/chinook/medical)
@@ -642,9 +614,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/sec)
 "bT" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/platform/metal/almayer/north,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
@@ -657,9 +627,7 @@
 /turf/open/floor/almayer/blue/north,
 /area/adminlevel/chinook)
 "bZ" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
 "ca" = (
@@ -743,15 +711,11 @@
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
 "cs" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
 "ct" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/offices)
 "cu" = (
@@ -865,9 +829,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
 "cR" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/blue/west,
 /area/adminlevel/chinook/offices)
 "cS" = (
@@ -891,9 +853,7 @@
 /area/adminlevel/chinook/medical)
 "cX" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/item/device/defibrillator,
 /obj/item/device/defibrillator,
 /turf/open/floor/almayer/sterile_green_side,
@@ -914,9 +874,7 @@
 /area/adminlevel/chinook/offices)
 "db" = (
 /obj/structure/machinery/photocopier,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
 "dc" = (
@@ -1019,7 +977,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/engineering)
 "ds" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/surface/table/reinforced/black,
 /obj/item/paper{
 	pixel_x = -5
@@ -1076,11 +1034,11 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/sec)
 "dD" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/strata/faux_wood,
 /area/adminlevel/chinook/offices)
 "dE" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/offices)
 "dF" = (
@@ -1094,9 +1052,7 @@
 /area/adminlevel/chinook/sec)
 "dJ" = (
 /obj/structure/bed/stool,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/almayer/blue/north,
 /area/adminlevel/chinook)
 "dK" = (
@@ -1114,9 +1070,7 @@
 /turf/open/floor/almayer/sterile_green_side,
 /area/adminlevel/chinook/offices)
 "dO" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/adminlevel/chinook/offices)
@@ -1170,9 +1124,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/chinook)
 "ea" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/sec)
 "eb" = (
@@ -1261,9 +1213,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/offices)
 "es" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
 /turf/open/floor/almayer/sterile_green_side/east,
@@ -1273,9 +1223,7 @@
 /turf/open/floor/almayer/test_floor5,
 /area/adminlevel/chinook/cryo)
 "eu" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/blue/north,
 /area/adminlevel/chinook/offices)
 "ev" = (
@@ -1296,9 +1244,7 @@
 /turf/open/floor/almayer/blue/north,
 /area/adminlevel/chinook/offices)
 "ey" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/bed/sofa/south/grey/left,
 /turf/open/floor/almayer/blue/north,
 /area/adminlevel/chinook/offices)
@@ -1343,18 +1289,14 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/medical)
 "eH" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
 /turf/open/floor/almayer/blue/north,
 /area/adminlevel/chinook/offices)
 "eJ" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/adminlevel/chinook/sec)
@@ -1376,7 +1318,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/event)
 "eN" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/blue,
 /area/adminlevel/chinook/offices)
 "eP" = (
@@ -1502,9 +1444,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
 "fs" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/adminlevel/chinook/medical)
@@ -1525,9 +1465,7 @@
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/adminlevel/chinook/medical)
 "fx" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
 "fy" = (
@@ -1538,9 +1476,7 @@
 /obj/structure/mirror{
 	pixel_x = 28
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
 "fz" = (
@@ -1579,9 +1515,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
 "fE" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
 "fF" = (
@@ -1619,7 +1553,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/offices)
 "fL" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/blue/north,
 /area/adminlevel/chinook)
 "fM" = (
@@ -1736,7 +1670,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook)
 "gm" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/engineering)
 "gn" = (
@@ -1772,9 +1706,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
 "gu" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/orange/north,
 /area/adminlevel/chinook/engineering)
 "gv" = (
@@ -1800,9 +1732,7 @@
 /obj/item/reagent_container/food/snacks/fishandchips,
 /obj/item/reagent_container/food/snacks/grilledcheese,
 /obj/item/reagent_container/food/snacks/grilledcheese,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/prison/kitchen,
 /area/adminlevel/chinook/event)
 "gA" = (
@@ -1820,9 +1750,7 @@
 /area/adminlevel/chinook)
 "gD" = (
 /obj/structure/machinery/disposal,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/medical)
 "gF" = (
@@ -1915,7 +1843,7 @@
 /obj/item/device/lightreplacer{
 	pixel_y = 8
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/item/stack/cable_coil{
 	pixel_x = 20;
 	pixel_y = 5
@@ -1954,9 +1882,7 @@
 	pixel_y = 9;
 	pixel_x = -3
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/item/prop/tableflag/uscm2{
 	pixel_y = 6;
 	pixel_x = 10
@@ -1987,9 +1913,7 @@
 /obj/structure/surface/rack,
 /obj/item/reagent_container/spray/cleaner,
 /obj/item/reagent_container/spray/cleaner,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook)
 "hl" = (
@@ -2013,9 +1937,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/offices)
 "hq" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/machinery/cm_vending/sorted/marine_food,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/offices)
@@ -2091,9 +2013,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
 "hG" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/machinery/chem_dispenser/soda{
 	pixel_y = 5
 	},
@@ -2170,9 +2090,7 @@
 /turf/open/floor/almayer/emerald/southeast,
 /area/adminlevel/chinook)
 "hX" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/shuttle)
 "hY" = (
@@ -2196,9 +2114,7 @@
 /area/adminlevel/chinook/event)
 "ia" = (
 /obj/structure/machinery/cm_vending/gear/commanding_officer,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/offices)
 "ib" = (
@@ -2232,9 +2148,7 @@
 /turf/open/floor/almayer/plating_striped/east,
 /area/adminlevel/chinook/cargo)
 "ih" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook)
 "ik" = (
@@ -2261,9 +2175,7 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook)
 "is" = (
@@ -2303,9 +2215,7 @@
 /area/adminlevel/chinook)
 "iC" = (
 /obj/structure/morgue,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/medical)
 "iF" = (
@@ -2319,9 +2229,7 @@
 /area/adminlevel/chinook/event)
 "iK" = (
 /obj/structure/largecrate/machine/autodoc,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/medical)
 "iM" = (
@@ -2442,9 +2350,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/engineering)
 "jl" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -2592,9 +2498,7 @@
 /area/adminlevel/chinook/offices)
 "jV" = (
 /obj/structure/closet/secure_closet/medical3,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/adminlevel/chinook/medical)
 "jW" = (
@@ -2662,21 +2566,17 @@
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/sec)
 "km" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer/green/north,
 /area/adminlevel/chinook/cargo)
 "kn" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/orange/east,
 /area/adminlevel/chinook/engineering)
 "ko" = (
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook)
 "kp" = (
@@ -2727,9 +2627,7 @@
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
 "kA" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
 "kB" = (
@@ -2771,9 +2669,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/event)
 "kI" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
 "kJ" = (
@@ -2814,15 +2710,11 @@
 "kQ" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/recharger,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/sterile_green_corner,
 /area/adminlevel/chinook/medical)
 "kR" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/machinery/juicer{
 	pixel_y = 3
 	},
@@ -2853,9 +2745,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/sec)
 "kX" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/silver/northeast,
 /area/adminlevel/chinook)
 "kY" = (
@@ -2886,7 +2776,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
 "lg" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
 "lh" = (
@@ -2907,9 +2797,7 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/chinook/medical)
 "ll" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/surface/table/almayer,
 /obj/item/roller{
 	pixel_y = 6
@@ -2941,13 +2829,11 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "lu" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/chinook/offices)
 "lv" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/largecrate/random/case,
 /turf/open/floor/almayer/orange,
 /area/adminlevel/chinook/engineering)
@@ -3018,16 +2904,12 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/engineering)
 "lK" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/machinery/processor,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/event)
 "lM" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/adminlevel/chinook/event)
 "lN" = (
@@ -3082,7 +2964,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/adminlevel/chinook/event)
 "lZ" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/medical)
 "ma" = (
@@ -3095,7 +2977,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
 "md" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook)
 "me" = (
@@ -3113,7 +2995,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/event)
 "mh" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/sec)
 "mi" = (
@@ -3140,9 +3022,7 @@
 /area/adminlevel/chinook)
 "mp" = (
 /obj/structure/machinery/portable_atmospherics/canister/air,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "mr" = (
@@ -3215,9 +3095,7 @@
 /obj/item/pizzabox/meat{
 	pixel_y = 8
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
 "mG" = (
@@ -3273,9 +3151,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
 "mP" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
 "mQ" = (
@@ -3306,9 +3182,7 @@
 	dir = 4;
 	pixel_x = 1
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
 "mZ" = (
@@ -3390,9 +3264,7 @@
 /turf/open/floor/almayer/plating_striped/west,
 /area/adminlevel/chinook/engineering)
 "np" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/red/east,
 /area/adminlevel/chinook/offices)
 "nr" = (
@@ -3459,15 +3331,11 @@
 /obj/item/weapon/gun/shotgun/combat,
 /obj/item/weapon/gun/shotgun/combat,
 /obj/item/weapon/gun/shotgun/combat,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/sec)
 "nC" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/offices)
@@ -3486,9 +3354,7 @@
 /obj/structure/bookcase{
 	icon_state = "book-5"
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
 "nF" = (
@@ -3523,9 +3389,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "nL" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/adminlevel/chinook/medical)
 "nN" = (
@@ -3600,15 +3464,11 @@
 /area/adminlevel/chinook/event)
 "nZ" = (
 /obj/structure/target,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/plating_striped/west,
 /area/adminlevel/chinook)
 "oa" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/plating_striped/east,
 /area/adminlevel/chinook)
 "od" = (
@@ -3707,7 +3567,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
 "ox" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/cargo)
@@ -3767,9 +3627,7 @@
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook)
 "oG" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/blue/west,
 /area/adminlevel/chinook)
 "oH" = (
@@ -3800,9 +3658,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook)
 "oN" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
 "oO" = (
@@ -3862,9 +3718,7 @@
 /area/adminlevel/chinook/event)
 "pb" = (
 /obj/structure/machinery/vending/dinnerware,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
 "pd" = (
@@ -3926,7 +3780,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
 "pt" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
 "pu" = (
@@ -3969,11 +3823,11 @@
 /obj/item/device/megaphone{
 	pixel_y = 4
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
 "pC" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/surface/table/almayer,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_29";
@@ -4034,9 +3888,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/offices)
 "pM" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/offices)
 "pN" = (
@@ -4066,18 +3918,14 @@
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
 "pV" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
 "pW" = (
 /obj/structure/barricade/handrail/kutjevo{
 	dir = 1
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
 "pX" = (
@@ -4113,9 +3961,7 @@
 /obj/structure/barricade/handrail/kutjevo{
 	dir = 1
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
 "qd" = (
@@ -4147,7 +3993,7 @@
 /area/adminlevel/chinook/offices)
 "ql" = (
 /obj/structure/machinery/vending/coffee,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/cargo)
 "qm" = (
@@ -4318,7 +4164,7 @@
 /area/adminlevel/chinook/event)
 "qU" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/engineering)
 "qV" = (
@@ -4329,9 +4175,7 @@
 /turf/open/floor/almayer/redcorner,
 /area/adminlevel/chinook/sec)
 "qY" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
 "qZ" = (
@@ -4423,9 +4267,7 @@
 	},
 /area/adminlevel/chinook/offices)
 "rq" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/tan/plate,
 /area/adminlevel/chinook/event)
 "rr" = (
@@ -4483,9 +4325,7 @@
 /obj/structure/machinery/chem_dispenser/soda{
 	pixel_y = 5
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/kutjevo/tan/plate,
 /area/adminlevel/chinook/event)
@@ -4519,9 +4359,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/engineering)
 "rT" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/kutjevo/tan/plate,
 /area/adminlevel/chinook/event)
 "rU" = (
@@ -4607,9 +4445,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/chinook/sec)
 "so" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/plating_striped/west,
 /area/adminlevel/chinook)
 "sp" = (
@@ -4649,9 +4485,7 @@
 /turf/open/floor/almayer/plating_striped/west,
 /area/adminlevel/chinook)
 "sA" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/shuttle)
 "sC" = (
@@ -4776,7 +4610,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
 "sR" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/surface/table/reinforced/black,
 /obj/item/paper_bin/uscm{
 	pixel_y = 6
@@ -4861,7 +4695,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/engineering)
 "tm" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/sec)
 "tn" = (
@@ -4873,9 +4707,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/adminlevel/chinook/event)
 "tp" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/green/north,
 /area/adminlevel/chinook)
 "tq" = (
@@ -4913,7 +4745,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook)
 "tx" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer/orange,
 /area/adminlevel/chinook/engineering)
@@ -5039,9 +4871,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
 "tZ" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/machinery/scoreboard_button{
 	pixel_y = 24;
 	id = "chinook";
@@ -5059,13 +4889,11 @@
 "ue" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/chem_dispenser/soda,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/event)
 "uf" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer/emerald/southwest,
 /area/adminlevel/chinook/shuttle)
@@ -5158,9 +4986,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/chinook)
 "uz" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/redfull,
 /area/adminlevel/chinook)
 "uB" = (
@@ -5213,9 +5039,7 @@
 /area/adminlevel/chinook/sec)
 "uK" = (
 /obj/structure/bed/chair/comfy,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/blue/northeast,
 /area/adminlevel/chinook/offices)
 "uM" = (
@@ -5345,7 +5169,7 @@
 /turf/open/floor/almayer/sterile_green_side/northwest,
 /area/adminlevel/chinook/medical)
 "vk" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
 "vl" = (
@@ -5409,9 +5233,7 @@
 /area/adminlevel/chinook/offices)
 "vz" = (
 /obj/structure/closet/secure_closet/military_police,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/red/west,
 /area/adminlevel/chinook/sec)
 "vA" = (
@@ -5441,7 +5263,7 @@
 /area/adminlevel/chinook/sec)
 "vG" = (
 /obj/structure/filingcabinet,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/sec)
 "vH" = (
@@ -5461,9 +5283,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/offices)
 "vJ" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
 	},
@@ -5489,9 +5309,7 @@
 /obj/item/device/binoculars,
 /obj/item/device/binoculars,
 /obj/item/device/binoculars,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
 "vP" = (
@@ -5522,9 +5340,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/engineering)
 "vU" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
@@ -5534,7 +5350,7 @@
 /area/adminlevel/chinook/engineering)
 "vX" = (
 /obj/structure/machinery/cm_vending/sorted/medical,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/sterile_green_side,
 /area/adminlevel/chinook/medical)
 "vY" = (
@@ -5554,7 +5370,7 @@
 "wc" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/device/taperecorder,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/red,
 /area/adminlevel/chinook/sec)
 "wd" = (
@@ -5579,9 +5395,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/adminlevel/chinook/event)
 "wk" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/kutjevo/tan/plate,
 /area/adminlevel/chinook/event)
@@ -5600,9 +5414,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/chinook)
 "wo" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/bed/sofa/south/grey/right,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/sec)
@@ -5618,15 +5430,11 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook)
 "wq" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/strata/faux_wood,
 /area/adminlevel/chinook/offices)
 "wr" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/silver/west,
 /area/adminlevel/chinook)
 "wt" = (
@@ -5641,9 +5449,7 @@
 /turf/open/floor/almayer/silver/east,
 /area/adminlevel/chinook)
 "wu" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/kutjevo/tan/alt_edge/west,
 /area/adminlevel/chinook/event)
 "wx" = (
@@ -5748,15 +5554,11 @@
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/adminlevel/chinook/medical)
 "wY" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook)
 "xa" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/blue/east,
 /area/adminlevel/chinook/offices)
 "xd" = (
@@ -5787,7 +5589,7 @@
 /turf/open/floor/almayer/redfull,
 /area/adminlevel/chinook/offices)
 "xh" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "xi" = (
@@ -5812,9 +5614,7 @@
 /area/adminlevel/chinook)
 "xm" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/event)
 "xn" = (
@@ -5844,9 +5644,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/offices)
 "xv" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/medical)
 "xw" = (
@@ -5994,9 +5792,7 @@
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
 "yk" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/prop/invuln/fusion_reactor,
 /turf/open/floor/almayer/plating/northeast,
@@ -6020,7 +5816,7 @@
 /turf/open/floor/kutjevo/tan/plate,
 /area/adminlevel/chinook/event)
 "yp" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/event)
 "yr" = (
@@ -6039,7 +5835,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/sec)
 "yv" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
 "yw" = (
@@ -6067,9 +5863,7 @@
 /turf/open/floor/almayer/orange,
 /area/adminlevel/chinook/engineering)
 "yA" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/event)
 "yC" = (
@@ -6106,9 +5900,7 @@
 /area/adminlevel/chinook/cargo)
 "yM" = (
 /obj/structure/machinery/cryopod/no_store,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/chinook/medical)
 "yN" = (
@@ -6116,9 +5908,7 @@
 /area/adminlevel/chinook)
 "yP" = (
 /obj/structure/machinery/photocopier,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/offices)
 "yQ" = (
@@ -6132,9 +5922,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/chinook)
 "yR" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
 "yS" = (
@@ -6166,9 +5954,7 @@
 /turf/open/floor/almayer/sterile_green_corner,
 /area/adminlevel/chinook/medical)
 "yY" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/machinery/telecomms/broadcaster,
 /turf/open/floor/almayer/tcomms,
 /area/adminlevel/chinook/engineering)
@@ -6354,9 +6140,7 @@
 /turf/open/floor/almayer/sterile_green_corner/east,
 /area/adminlevel/chinook/medical)
 "zS" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/red/east,
 /area/adminlevel/chinook/sec)
 "zT" = (
@@ -6368,7 +6152,7 @@
 /area/adminlevel/chinook/engineering)
 "zY" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/machinery/recharger,
 /turf/open/floor/almayer/red/southwest,
 /area/adminlevel/chinook/offices)
@@ -6386,9 +6170,7 @@
 /turf/open/floor/almayer/red,
 /area/adminlevel/chinook/offices)
 "Af" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/sign/nosmoking_1{
 	pixel_y = 30
 	},
@@ -6427,7 +6209,7 @@
 /area/adminlevel/chinook/offices)
 "Ao" = (
 /obj/structure/largecrate/random/barrel/green,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "Ap" = (
@@ -6458,7 +6240,7 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/almayer/blue,
 /area/adminlevel/chinook/offices)
@@ -6521,16 +6303,12 @@
 /area/adminlevel/chinook/sec)
 "AH" = (
 /obj/structure/machinery/vending/coffee,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
 "AI" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/item/reagent_container/food/snacks/sandwich{
 	pixel_y = 6
 	},
@@ -6545,9 +6323,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/adminlevel/chinook/event)
 "AL" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/sign/nosmoking_1{
 	pixel_y = 30
 	},
@@ -6584,9 +6360,7 @@
 /area/adminlevel/chinook/cargo)
 "AY" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook)
 "AZ" = (
@@ -6712,9 +6486,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/offices)
 "By" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/adminlevel/chinook/medical)
 "Bz" = (
@@ -6727,9 +6499,7 @@
 /turf/open/floor/almayer/orange/northeast,
 /area/adminlevel/chinook/engineering)
 "BA" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10"
 	},
@@ -6784,7 +6554,7 @@
 /turf/open/floor/almayer/green/northwest,
 /area/adminlevel/chinook/cargo)
 "BR" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/sterile_green_side,
 /area/adminlevel/chinook/medical)
 "BS" = (
@@ -6795,9 +6565,7 @@
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
 "BW" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer/red/southeast,
 /area/adminlevel/chinook/sec)
@@ -6876,13 +6644,11 @@
 /turf/open/floor/strata/faux_wood,
 /area/adminlevel/chinook/offices)
 "Cm" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/offices)
 "Cn" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "Co" = (
@@ -6939,9 +6705,7 @@
 /area/adminlevel/chinook/shuttle)
 "Cz" = (
 /obj/structure/bed/sofa/south/grey,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook)
 "CA" = (
@@ -6960,9 +6724,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 1
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/kutjevo/tan,
 /area/adminlevel/chinook/event)
 "CF" = (
@@ -6970,7 +6732,7 @@
 /turf/open/floor/almayer/blue,
 /area/adminlevel/chinook)
 "CH" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
 "CJ" = (
@@ -6983,7 +6745,7 @@
 /turf/open/floor/almayer/silver/north,
 /area/adminlevel/chinook/cryo)
 "CM" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/almayer/sterile_green_side,
 /area/adminlevel/chinook/medical)
@@ -7037,9 +6799,7 @@
 /turf/open/floor/almayer/red/east,
 /area/adminlevel/chinook/event)
 "Db" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
 	name = "\improper Engineering"
 	},
@@ -7076,7 +6836,7 @@
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
 "Dh" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/machinery/disposal,
 /turf/open/floor/kutjevo/tan/plate,
 /area/adminlevel/chinook/event)
@@ -7093,7 +6853,7 @@
 /area/adminlevel/chinook/event)
 "Dk" = (
 /obj/structure/machinery/vending/coffee,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/kutjevo/tan/plate,
 /area/adminlevel/chinook/event)
 "Dl" = (
@@ -7115,9 +6875,7 @@
 /area/adminlevel/chinook/sec)
 "Dp" = (
 /obj/structure/machinery/vending/cigarette/koorlander/free,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/kutjevo/tan/plate,
 /area/adminlevel/chinook/event)
 "Dq" = (
@@ -7133,9 +6891,7 @@
 	},
 /obj/item/reagent_container/ld50_syringe,
 /obj/item/reagent_container/ld50_syringe,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/sec)
 "Ds" = (
@@ -7157,7 +6913,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
 "Du" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/platform/metal/almayer,
 /obj/structure/prop/invuln/fusion_reactor,
 /turf/open/floor/almayer/plating/northeast,
@@ -7205,9 +6961,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/chinook)
 "DC" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/emerald/west,
 /area/adminlevel/chinook/shuttle)
 "DD" = (
@@ -7240,9 +6994,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 1
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/offices)
 "DI" = (
@@ -7256,9 +7008,7 @@
 "DL" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/orange/west,
 /area/adminlevel/chinook/engineering)
 "DN" = (
@@ -7286,16 +7036,12 @@
 /turf/open/floor/almayer/orange/east,
 /area/adminlevel/chinook/engineering)
 "DS" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/corsat/squares,
 /area/adminlevel/chinook/offices)
 "DT" = (
 /obj/structure/machinery/cryopod/no_store,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/cryo)
 "DU" = (
@@ -7338,9 +7084,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 8
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/red/northeast,
 /area/adminlevel/chinook/sec)
 "Ei" = (
@@ -7392,9 +7136,7 @@
 /area/adminlevel/chinook)
 "Eq" = (
 /obj/structure/machinery/vending/hydronutrients,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/event)
 "Es" = (
@@ -7529,7 +7271,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "EZ" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook)
 "Fa" = (
@@ -7563,7 +7305,7 @@
 /turf/open/floor/almayer/red,
 /area/adminlevel/chinook)
 "Fg" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/red,
 /area/adminlevel/chinook)
 "Fi" = (
@@ -7594,9 +7336,7 @@
 /turf/open/floor/almayer/red,
 /area/adminlevel/chinook)
 "Fn" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/corsat/squares,
 /area/adminlevel/chinook/offices)
 "Fq" = (
@@ -7608,15 +7348,11 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/offices)
 "Fr" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/sec)
 "Ft" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/silver/east,
 /area/adminlevel/chinook)
 "Fu" = (
@@ -7633,9 +7369,7 @@
 /turf/open/floor/almayer/orange/east,
 /area/adminlevel/chinook/engineering)
 "Fz" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/sec)
 "FD" = (
@@ -7694,7 +7428,7 @@
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/sec)
 "FP" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/machinery/disposal,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/sec)
@@ -7705,9 +7439,7 @@
 "FR" = (
 /obj/structure/surface/table/almayer,
 /obj/item/circuitboard/apc,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/spawner/random/toolbox,
 /obj/item/ashtray/glass{
 	pixel_y = 4
@@ -7772,9 +7504,7 @@
 /turf/open/floor/prison/kitchen,
 /area/adminlevel/chinook/event)
 "Gg" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/silver/north,
 /area/adminlevel/chinook)
 "Gk" = (
@@ -7834,15 +7564,11 @@
 /obj/item/device/binoculars,
 /obj/item/device/binoculars,
 /obj/item/device/binoculars,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
 "Gw" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/chinook)
 "Gx" = (
@@ -7896,9 +7622,7 @@
 /area/adminlevel/chinook)
 "GI" = (
 /obj/structure/machinery/vending/snack,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/offices)
 "GJ" = (
@@ -7924,9 +7648,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/engineering)
 "GN" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/sec)
 "GP" = (
@@ -7941,9 +7663,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/sec)
 "GS" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/orange/west,
 /area/adminlevel/chinook/engineering)
 "GT" = (
@@ -7995,9 +7715,7 @@
 /turf/open/floor/almayer/orange/southwest,
 /area/adminlevel/chinook/engineering)
 "Hd" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/flora/pottedplant/random,
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
@@ -8164,7 +7882,7 @@
 	pixel_y = -2
 	},
 /obj/item/tool/wirecutters/clippers,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/green/north,
 /area/adminlevel/chinook/event)
 "HL" = (
@@ -8230,9 +7948,7 @@
 /turf/open/floor/almayer/orange/west,
 /area/adminlevel/chinook/engineering)
 "HX" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
 "HY" = (
@@ -8288,9 +8004,7 @@
 /obj/structure/machinery/chem_dispenser/soda{
 	pixel_y = 5
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
 "Il" = (
@@ -8317,7 +8031,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/sec)
 "Iq" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/red,
 /area/adminlevel/chinook/sec)
 "Ir" = (
@@ -8355,9 +8069,7 @@
 /turf/closed/wall/almayer/white,
 /area/adminlevel/chinook/medical)
 "IA" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/bed/sofa/south/grey/right,
 /turf/open/floor/kutjevo/tan,
 /area/adminlevel/chinook/event)
@@ -8435,9 +8147,7 @@
 /turf/open/floor/plating/almayer,
 /area/adminlevel/chinook/shuttle)
 "IX" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/sec)
 "IY" = (
@@ -8461,13 +8171,13 @@
 /turf/open/floor/almayer_hull/outerhull_dir/northwest,
 /area/space)
 "Jd" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/item/trash/uscm_mre,
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook)
 "Je" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook)
@@ -8480,9 +8190,7 @@
 /area/adminlevel/chinook)
 "Jg" = (
 /obj/structure/bed/stool,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/sign/poster{
 	pixel_y = 32
 	},
@@ -8501,9 +8209,7 @@
 /area/adminlevel/chinook/event)
 "Jn" = (
 /obj/structure/bed/stool,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/chinook)
 "Jo" = (
@@ -8593,7 +8299,7 @@
 /area/adminlevel/chinook/sec)
 "JH" = (
 /obj/structure/machinery/cryopod/no_store,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/chinook/medical)
 "JJ" = (
@@ -8611,9 +8317,7 @@
 /obj/structure/mirror{
 	pixel_x = 28
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/offices)
 "JN" = (
@@ -8665,9 +8369,7 @@
 /turf/open/floor/kutjevo/tan/alt_inner_edge/west,
 /area/adminlevel/chinook/event)
 "JY" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "Kc" = (
@@ -8696,9 +8398,7 @@
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/adminlevel/chinook/sec)
 "Kn" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
@@ -8708,9 +8408,7 @@
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner"
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/adminlevel/chinook/medical)
 "Kq" = (
@@ -8809,21 +8507,15 @@
 /area/adminlevel/chinook/medical)
 "KJ" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook)
 "KM" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook)
 "KN" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/adminlevel/chinook/medical)
@@ -8831,13 +8523,11 @@
 /obj/structure/bed/chair/comfy{
 	dir = 8
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook)
 "KP" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/bed/sofa/south/grey/right,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
@@ -8881,7 +8571,7 @@
 /turf/open/floor/almayer/green/north,
 /area/adminlevel/chinook/event)
 "KY" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook)
 "KZ" = (
@@ -8918,9 +8608,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/engineering)
 "Le" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/sec)
 "Lf" = (
@@ -8945,15 +8633,11 @@
 /area/adminlevel/chinook/sec)
 "Lk" = (
 /obj/structure/machinery/vending/cola,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/sec)
 "Ll" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/machinery/door_control{
 	id = "chinookreq";
 	name = "Requisitions Lockdown";
@@ -8979,9 +8663,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/engineering)
 "Lp" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/drinks/golden_cup{
 	name = "No. 1 Baller Award";
@@ -9023,9 +8705,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/offices)
 "Ly" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/surface/table/reinforced/black,
 /obj/item/storage/fancy/cigar,
 /turf/open/floor/kutjevo/plate,
@@ -9100,9 +8780,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/engineering)
 "LI" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/machinery/cm_vending/sorted/marine_food,
 /turf/open/floor/almayer/orange/east,
 /area/adminlevel/chinook/engineering)
@@ -9123,9 +8801,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook)
 "LQ" = (
@@ -9189,32 +8865,24 @@
 /area/adminlevel/chinook/event)
 "Me" = (
 /obj/structure/machinery/computer/card,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/sec)
 "Mg" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/red/west,
 /area/adminlevel/chinook/sec)
 "Mh" = (
 /turf/open/floor/almayer/red/east,
 /area/adminlevel/chinook/sec)
 "Mi" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/adminlevel/chinook/medical)
 "Mj" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/bed/chair/comfy{
 	dir = 1
 	},
@@ -9295,7 +8963,7 @@
 /area/adminlevel/chinook)
 "Mz" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/item/tool/pen,
 /turf/open/floor/almayer/red/southwest,
 /area/adminlevel/chinook/sec)
@@ -9305,9 +8973,7 @@
 /area/adminlevel/chinook/offices)
 "MB" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
 "MC" = (
@@ -9340,9 +9006,7 @@
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/sec)
 "MI" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer/emerald/west,
 /area/adminlevel/chinook/shuttle)
@@ -9379,9 +9043,7 @@
 /turf/open/floor/almayer/sterile_green_side,
 /area/adminlevel/chinook/medical)
 "MR" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/engineering)
 "MS" = (
@@ -9403,7 +9065,7 @@
 /area/adminlevel/chinook/sec)
 "MX" = (
 /obj/structure/machinery/vending/cola,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/engineering)
 "MZ" = (
@@ -9437,7 +9099,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook)
 "Ng" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
 "Ni" = (
@@ -9447,7 +9109,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
 "Nk" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/machinery/cm_vending/clothing/dress,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/offices)
@@ -9478,9 +9140,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "Nq" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/orange/west,
 /area/adminlevel/chinook/engineering)
@@ -9553,7 +9213,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/event)
 "NF" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/electrical,
 /obj/item/storage/toolbox/mechanical{
@@ -9563,9 +9223,7 @@
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/chinook/medical)
 "NJ" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/bed/sofa/south/grey/left,
 /turf/open/floor/kutjevo/tan,
 /area/adminlevel/chinook/event)
@@ -9596,15 +9254,11 @@
 /area/adminlevel/chinook)
 "NT" = (
 /obj/structure/machinery/chem_storage/misc,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/chinook/medical)
 "NU" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
 "NV" = (
@@ -9616,9 +9270,7 @@
 /area/adminlevel/chinook/offices)
 "NW" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/item/tool/lighter/zippo/gold{
 	pixel_x = 10;
 	pixel_y = 11
@@ -9648,7 +9300,7 @@
 /area/adminlevel/chinook)
 "Oc" = (
 /obj/structure/closet/coffin,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/sec)
 "Od" = (
@@ -9759,9 +9411,7 @@
 /area/adminlevel/chinook/cargo)
 "OE" = (
 /obj/structure/machinery/vending/coffee,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook)
 "OF" = (
@@ -9774,9 +9424,7 @@
 /area/adminlevel/chinook)
 "OH" = (
 /obj/structure/largecrate/random/case/double,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "OK" = (
@@ -9788,9 +9436,7 @@
 "OL" = (
 /obj/structure/reagent_dispensers/tank/water,
 /obj/item/reagent_container/glass/bucket,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/green/north,
 /area/adminlevel/chinook)
 "OM" = (
@@ -9815,9 +9461,7 @@
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
 "OT" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook)
 "OU" = (
@@ -9827,9 +9471,7 @@
 /turf/open/floor/almayer/silver/east,
 /area/adminlevel/chinook)
 "OV" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/item/paper_bin/uscm{
 	pixel_y = 6
 	},
@@ -9894,7 +9536,7 @@
 /turf/open/floor/almayer/green/northeast,
 /area/adminlevel/chinook)
 "Pi" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/flora/pottedplant/random,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
@@ -9973,9 +9615,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
 "Pz" = (
@@ -9989,9 +9629,7 @@
 	name = "secure evidence locker";
 	req_access_txt = "3"
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/item/weapon/gun/rifle/mar40,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/sec)
@@ -10012,9 +9650,7 @@
 	name = "secure evidence locker";
 	req_access_txt = "3"
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/sec)
 "PD" = (
@@ -10022,9 +9658,7 @@
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
 "PE" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/largecrate/random/case/double,
 /obj/item/tool/wet_sign{
 	pixel_x = -3;
@@ -10037,9 +9671,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/sec)
 "PH" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/prop/invuln/fusion_reactor,
 /turf/open/floor/almayer/plating/northeast,
@@ -10100,9 +9732,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
 "PX" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
 "PY" = (
@@ -10130,7 +9760,7 @@
 	pixel_x = -7;
 	pixel_y = 5
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/item/reagent_container/glass/bucket/janibucket{
 	pixel_x = 3;
 	pixel_y = 6
@@ -10203,7 +9833,7 @@
 /area/adminlevel/chinook/sec)
 "Qq" = (
 /obj/structure/closet/toolcloset,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/test_floor5,
 /area/adminlevel/chinook/engineering)
 "Qr" = (
@@ -10251,7 +9881,7 @@
 /turf/closed/wall/almayer/outer,
 /area/adminlevel/chinook/event)
 "Qy" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/sec)
@@ -10260,16 +9890,12 @@
 /area/adminlevel/chinook/sec)
 "QA" = (
 /obj/structure/closet/secure_closet/freezer/fridge/full,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/prison/kitchen,
 /area/adminlevel/chinook/event)
 "QB" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/item/paper_bin/uscm{
 	pixel_y = 8;
 	pixel_x = 12
@@ -10319,7 +9945,7 @@
 /area/adminlevel/chinook/sec)
 "QI" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/item/paper_bin/uscm{
 	pixel_y = 6
 	},
@@ -10327,9 +9953,7 @@
 /turf/open/floor/almayer/sterile_green_side,
 /area/adminlevel/chinook/medical)
 "QJ" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/corsat/squares,
 /area/adminlevel/chinook/cargo)
 "QL" = (
@@ -10385,9 +10009,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook)
 "QU" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/green/east,
 /area/adminlevel/chinook)
 "QV" = (
@@ -10404,9 +10026,7 @@
 /area/adminlevel/chinook)
 "Rc" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/event)
 "Rd" = (
@@ -10460,9 +10080,7 @@
 /turf/open/floor/kutjevo/tan/alt_inner_edge/west,
 /area/adminlevel/chinook)
 "Ro" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/offices)
@@ -10533,9 +10151,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/storage/firstaid/regular,
 /obj/item/storage/firstaid/regular,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/red/west,
 /area/adminlevel/chinook/sec)
 "RL" = (
@@ -10610,9 +10226,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "Se" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/closet/secure_closet/guncabinet/red{
 	name = "provost armor rack"
 	},
@@ -10660,7 +10274,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
 "So" = (
@@ -10676,7 +10290,7 @@
 /area/adminlevel/chinook/engineering)
 "Ss" = (
 /obj/structure/machinery/floodlight,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/engineering)
 "Su" = (
@@ -10684,9 +10298,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook)
 "Sv" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/kutjevo/tan/plate,
 /area/adminlevel/chinook/event)
@@ -10710,16 +10322,12 @@
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook)
 "SA" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/sec)
 "SC" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook)
 "SD" = (
@@ -10879,15 +10487,11 @@
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/adminlevel/chinook/sec)
 "Tq" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/engineering)
 "Tr" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
 "Ts" = (
@@ -10920,9 +10524,7 @@
 /area/adminlevel/chinook/engineering)
 "TD" = (
 /obj/structure/machinery/cryopod/no_store/right,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/cryo)
 "TE" = (
@@ -10939,9 +10541,7 @@
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
 "TH" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/plating_striped,
 /area/adminlevel/chinook/sec)
 "TJ" = (
@@ -10958,9 +10558,7 @@
 /area/adminlevel/chinook/sec)
 "TL" = (
 /obj/structure/closet/crate,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/item/stack/sheet/mineral/uranium,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/engineering)
@@ -10971,7 +10569,7 @@
 /turf/open/floor/almayer/emerald/southeast,
 /area/adminlevel/chinook/shuttle)
 "TO" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/sink{
 	dir = 4;
 	pixel_x = 11
@@ -10982,9 +10580,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
 "TP" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/almayer/sterile_green_corner/east,
 /area/adminlevel/chinook/offices)
@@ -11054,9 +10650,7 @@
 "Ud" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/sentencing,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/chinook/sec)
 "Ue" = (
@@ -11077,7 +10671,7 @@
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/chinook/sec)
 "Uj" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/machinery/door_control{
 	id = "chinookcargo";
 	name = "Shuttlebay Cargo Access";
@@ -11087,7 +10681,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
 "Uk" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/surface/table/almayer,
 /obj/item/trash/USCMtray{
 	pixel_x = -4;
@@ -11111,9 +10705,7 @@
 /area/adminlevel/chinook/sec)
 "Up" = (
 /obj/structure/closet/secure_closet/brig,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/sec)
 "Ut" = (
@@ -11134,16 +10726,12 @@
 	pixel_y = -3
 	},
 /obj/item/reagent_container/glass/bucket,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook)
 "Uu" = (
 /obj/structure/machinery/suit_storage_unit/compression_suit/uscm,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/test_floor5,
 /area/adminlevel/chinook/engineering)
 "Uw" = (
@@ -11191,9 +10779,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "UF" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/surface/rack,
 /obj/item/device/flashlight,
 /obj/item/clothing/head/welding,
@@ -11219,7 +10805,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/engineering)
 "UN" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
 "UO" = (
@@ -11227,9 +10813,7 @@
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/sec)
 "UQ" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/adminlevel/chinook/offices)
@@ -11241,9 +10825,7 @@
 "US" = (
 /obj/structure/closet/crate,
 /obj/item/clothing/gloves/marine/insulated,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/cargo)
@@ -11290,9 +10872,7 @@
 /turf/open/floor/almayer/blue/west,
 /area/adminlevel/chinook)
 "Vc" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer/sterile_green_corner/east,
 /area/adminlevel/chinook/medical)
@@ -11375,9 +10955,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/sec)
 "Vw" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/chinook/sec)
 "Vx" = (
@@ -11413,9 +10991,7 @@
 /turf/open/gm/river/pool,
 /area/adminlevel/chinook)
 "VE" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook)
@@ -11427,15 +11003,11 @@
 /turf/open/floor/almayer/red/northwest,
 /area/adminlevel/chinook/sec)
 "VJ" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/red/northeast,
 /area/adminlevel/chinook/sec)
 "VK" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/machinery/telecomms/receiver,
 /turf/open/floor/almayer/tcomms,
 /area/adminlevel/chinook/engineering)
@@ -11475,7 +11047,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/medical)
 "VQ" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/emerald,
 /area/adminlevel/chinook/shuttle)
 "VR" = (
@@ -11546,9 +11118,7 @@
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/chinook/medical)
 "Wc" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/surface/table/reinforced/black,
 /obj/item/device/binoculars,
 /obj/item/device/binoculars,
@@ -11596,9 +11166,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/engineering)
 "Wn" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/machinery/power/smes,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
@@ -11618,9 +11186,7 @@
 "Wr" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/secure_data,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/chinook/sec)
 "Ws" = (
@@ -11664,7 +11230,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook)
 "Wy" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/green,
 /area/adminlevel/chinook)
 "Wz" = (
@@ -11705,9 +11271,7 @@
 /area/adminlevel/chinook)
 "WG" = (
 /obj/structure/machinery/suit_storage_unit/compression_suit/uscm,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/test_floor5,
 /area/adminlevel/chinook/engineering)
 "WI" = (
@@ -11754,7 +11318,7 @@
 /area/adminlevel/chinook/engineering)
 "WP" = (
 /obj/structure/machinery/floodlight,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/engineering)
 "WQ" = (
@@ -11853,14 +11417,12 @@
 /obj/structure/machinery/computer/card{
 	dir = 1
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/sec)
 "Xi" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/emerald/north,
 /area/adminlevel/chinook/shuttle)
 "Xj" = (
@@ -11909,7 +11471,7 @@
 /area/adminlevel/chinook/sec)
 "Xs" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/item/tool/pen,
 /turf/open/floor/almayer/red/southeast,
 /area/adminlevel/chinook/sec)
@@ -11917,13 +11479,11 @@
 /obj/structure/toilet{
 	dir = 8
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook)
 "Xv" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/silver,
 /area/adminlevel/chinook)
 "Xw" = (
@@ -12025,7 +11585,7 @@
 /turf/open/floor/almayer/red,
 /area/adminlevel/chinook/sec)
 "XW" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/red/east,
 /area/adminlevel/chinook)
 "XX" = (
@@ -12068,7 +11628,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/sec)
 "Yf" = (
@@ -12166,9 +11726,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/sec)
 "Yz" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/adminlevel/chinook/event)
 "YA" = (
@@ -12182,9 +11740,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/engineering)
 "YB" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/adminlevel/chinook/sec)
 "YC" = (
@@ -12192,9 +11748,7 @@
 /area/adminlevel/chinook/offices)
 "YD" = (
 /obj/structure/closet/radiation,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/test_floor5,
 /area/adminlevel/chinook/engineering)
 "YF" = (
@@ -12312,9 +11866,7 @@
 /area/adminlevel/chinook/sec)
 "Zb" = (
 /obj/structure/filingcabinet,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/offices)
 "Zc" = (
@@ -12374,7 +11926,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/offices)
 "Zj" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/card{
 	dir = 1
@@ -12385,14 +11937,12 @@
 /turf/open/floor/almayer/pod_landing_floor,
 /area/adminlevel/chinook)
 "Zl" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/closet/secure_closet/brig,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/sec)
 "Zm" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/kutjevo/tan/plate,
 /area/adminlevel/chinook/event)
 "Zn" = (
@@ -12418,9 +11968,7 @@
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/adminlevel/chinook/medical)
 "Zr" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "Zs" = (
@@ -12449,7 +11997,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/offices)
 "Zz" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/orange,
 /area/adminlevel/chinook/engineering)
 "ZA" = (
@@ -12498,9 +12046,7 @@
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/adminlevel/chinook/medical)
 "ZL" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/almayer/orange/north,
 /area/adminlevel/chinook/engineering)
@@ -12513,9 +12059,7 @@
 	icon_state = "W"
 	},
 /obj/structure/reagent_dispensers/tank/fuel/custom,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "ZO" = (

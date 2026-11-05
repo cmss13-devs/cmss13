@@ -239,7 +239,7 @@
 /area/desert_dam/building/medical/lobby)
 "aQ" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/lobby)
 "aR" = (
@@ -542,9 +542,7 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "bP" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/lobby)
 "bQ" = (
@@ -664,7 +662,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "dJ" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
 /area/desert_dam/exterior/valley/valley_medical)
 "dV" = (
@@ -838,9 +836,7 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "docstriping"
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/bed/roller,
 /obj/item/prop/colony/usedbandage{
 	dir = 10
@@ -939,7 +935,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "mq" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached17,
 /area/desert_dam/exterior/valley/valley_medical)
 "mt" = (
@@ -1152,9 +1148,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_medical)
 "tS" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/white,
 /area/desert_dam/building/medical/garage)
@@ -1637,9 +1631,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_medical)
 "Ga" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/item/storage/firstaid/regular,
 /obj/structure/closet/crate/medical,
 /turf/open/floor/white,
@@ -2253,9 +2245,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/desert_dam/exterior/valley/valley_medical)
 "ZR" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/item/trash/cigbutt,
 /turf/open/floor/white,
 /area/desert_dam/building/medical/garage)

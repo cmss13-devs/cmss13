@@ -205,7 +205,7 @@
 /turf/open/floor/almayer/green/north,
 /area/fiorina/station/clf_ship)
 "aG" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/item/defenses/handheld/planted_flag/clf,
 /obj/item/flag/plantable/clf,
 /turf/open/floor/plating/platingdmg3,
@@ -230,7 +230,7 @@
 /turf/open/floor/plating,
 /area/fiorina/station/clf_ship)
 "aM" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/emerald/southwest,
 /area/fiorina/station/clf_ship)
 "aO" = (
@@ -243,9 +243,7 @@
 /turf/open/organic/grass/astroturf,
 /area/fiorina/station/park)
 "ci" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/surface/rack,
 /obj/item/storage/backpack/general_belt{
 	pixel_y = 7
@@ -306,13 +304,11 @@
 /area/fiorina/station/clf_ship)
 "dJ" = (
 /obj/structure/machinery/floodlight,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/cargo,
 /area/fiorina/station/clf_ship)
 "dR" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/mre_food_packet/clf,
 /obj/item/mre_food_packet/clf,
@@ -408,9 +404,7 @@
 /turf/open/floor/almayer/emerald,
 /area/fiorina/station/clf_ship)
 "gn" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/machinery/vending/cigarette,
 /turf/open/floor/almayer,
 /area/fiorina/station/clf_ship)
@@ -557,7 +551,7 @@
 /area/fiorina/station/clf_ship)
 "jQ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/surgical_tray,
 /turf/open/floor/almayer/emerald,
@@ -575,9 +569,7 @@
 /turf/open/floor/plating,
 /area/fiorina/station/park)
 "kw" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 8
 	},
@@ -588,9 +580,7 @@
 /area/fiorina/station/park)
 "ls" = (
 /obj/structure/reagent_dispensers/tank/fuel,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/orange/east,
 /area/fiorina/station/clf_ship)
 "lv" = (
@@ -620,9 +610,7 @@
 /turf/open/floor/plating,
 /area/fiorina/station/clf_ship)
 "mw" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/green/east,
 /area/fiorina/station/clf_ship)
 "mG" = (
@@ -783,9 +771,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/park)
 "qZ" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/surface/table/woodentable,
 /obj/item/storage/firstaid/regular{
 	pixel_x = 3;
@@ -987,7 +973,7 @@
 /turf/open/floor/plating/warnplate/north,
 /area/fiorina/station/clf_ship)
 "yx" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/plating/platingdmg3,
 /area/fiorina/station/clf_ship)
 "yJ" = (
@@ -1077,9 +1063,7 @@
 /obj/structure/toilet{
 	dir = 8
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/landmark/survivor_spawner/clf/fiorina,
 /turf/open/floor/whitebluefull,
 /area/fiorina/station/clf_ship)
@@ -1115,9 +1099,7 @@
 /turf/open/floor/almayer,
 /area/fiorina/station/clf_ship)
 "CO" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/emerald/north,
 /area/fiorina/station/clf_ship)
 "Da" = (
@@ -1231,7 +1213,7 @@
 /turf/open/floor/plating/panelscorched,
 /area/fiorina/station/clf_ship)
 "Gv" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/plating,
 /area/fiorina/station/clf_ship)
 "Gy" = (
@@ -1244,9 +1226,7 @@
 /turf/open/floor/almayer/blue/east,
 /area/fiorina/station/clf_ship)
 "GH" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/surface/rack,
 /obj/item/storage/belt/medical/full,
 /obj/item/storage/belt/medical/full{
@@ -1364,9 +1344,7 @@
 	pixel_y = 4
 	},
 /obj/item/cell/high,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/orange/west,
 /area/fiorina/station/clf_ship)
 "JQ" = (
@@ -1383,9 +1361,7 @@
 /turf/open/floor/almayer/orange/east,
 /area/fiorina/station/clf_ship)
 "JX" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/green/northwest,
 /area/fiorina/station/clf_ship)
 "Ko" = (
@@ -1419,9 +1395,7 @@
 /area/fiorina/station/park)
 "KM" = (
 /obj/item/stack/rods,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/plating,
 /area/fiorina/station/clf_ship)
 "KN" = (
@@ -1473,9 +1447,7 @@
 /obj/item/weapon/gun/rifle/mar40{
 	pixel_y = 6
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/orange/west,
 /area/fiorina/station/clf_ship)
 "My" = (
@@ -1530,9 +1502,7 @@
 	pixel_x = 9;
 	pixel_y = 8
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/blue/northwest,
 /area/fiorina/station/clf_ship)
 "Pm" = (
@@ -1690,9 +1660,7 @@
 "Ss" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/paper/prison_station/pirate_note,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/machinery/faxmachine{
 	department = "CLF - Cell 42"
 	},
@@ -1730,7 +1698,7 @@
 	can_buckle = 0;
 	pixel_y = 6
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/green/southwest,
 /area/fiorina/station/clf_ship)
 "TN" = (
@@ -1750,9 +1718,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/fiorina/station/clf_ship)
 "Uh" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/plating/plating_catwalk,
 /area/fiorina/station/clf_ship)
 "Ul" = (
@@ -1765,9 +1731,7 @@
 /turf/open/floor/almayer,
 /area/fiorina/station/clf_ship)
 "Uy" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/item/stack/rods,
 /turf/open/floor/plating/platingdmg3,
 /area/fiorina/station/clf_ship)
@@ -1879,9 +1843,7 @@
 	},
 /area/fiorina/station/clf_ship)
 "WE" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/item/ammo_magazine/smg/fp9000,
 /obj/structure/barricade/metal/wired{
 	dir = 1;
@@ -1904,9 +1866,7 @@
 	dir = 4;
 	icon_state = "metal_1"
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/transmitter/clf_net{
 	phone_category = "CR-116";
 	phone_id = "Cargo Bay";
@@ -1935,7 +1895,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/park)
 "XT" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/plating/plating_catwalk,
 /area/fiorina/station/clf_ship)
 "Yh" = (

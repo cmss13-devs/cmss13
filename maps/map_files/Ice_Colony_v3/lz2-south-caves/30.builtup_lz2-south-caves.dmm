@@ -51,9 +51,7 @@
 /area/shiva/interior/caves/s_lz2)
 "s" = (
 /obj/structure/machinery/space_heater,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "t" = (
@@ -67,8 +65,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "w" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/radiator_tile,
@@ -88,9 +85,7 @@
 /obj/structure/largecrate/random/mini/small_case{
 	pixel_y = 8
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "z" = (
@@ -112,8 +107,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/lz2_habs)
 "C" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/radiator_tile,
@@ -129,16 +123,14 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/interior/caves/s_lz2)
 "I" = (
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -5
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "K" = (
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -5
 	},
 /turf/open/floor/shiva/floor3,
@@ -207,8 +199,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "Z" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
+/obj/structure/machinery/light/double/base/north{
 	pixel_y = 6
 	},
 /obj/effect/decal/cleanable/dirt,

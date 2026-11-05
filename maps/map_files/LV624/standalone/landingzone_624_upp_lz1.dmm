@@ -18,9 +18,7 @@
 /turf/open/floor/warning/west,
 /area/lv624/lazarus/landing_zones/lz1)
 "cD" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "cZ" = (
@@ -87,9 +85,7 @@
 /turf/open/floor/bot/north,
 /area/lv624/lazarus/quartstorage)
 "gU" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "hb" = (
@@ -103,9 +99,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "hs" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "iy" = (
@@ -210,9 +204,7 @@
 /area/lv624/lazarus/quartstorage)
 "ok" = (
 /obj/structure/machinery/vending/coffee,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "om" = (
@@ -577,7 +569,7 @@
 /turf/open/floor/warning/northeast,
 /area/lv624/lazarus/landing_zones/lz1)
 "Fn" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "Fw" = (
@@ -706,9 +698,7 @@
 /area/lv624/lazarus/quartstorage)
 "Pw" = (
 /obj/structure/largecrate/random,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/loadingarea/east,
 /area/lv624/lazarus/quartstorage)
 "Qt" = (

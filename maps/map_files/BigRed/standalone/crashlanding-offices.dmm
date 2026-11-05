@@ -333,9 +333,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "bs" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/surface/table,
 /obj/item/paper,
 /turf/open/floor,
@@ -579,9 +577,7 @@
 /turf/open/floor/redcorner,
 /area/bigredv2/outside/office_complex)
 "ip" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/office_complex)
 "jl" = (
@@ -1011,7 +1007,7 @@
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/c)
 "FZ" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/frame/table,
 /turf/open/floor/platingdmg1,
@@ -1112,9 +1108,7 @@
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "Lq" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/office_complex)
 "Lx" = (
@@ -1354,7 +1348,7 @@
 /turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "WU" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/white,
 /area/bigredv2/outside/office_complex)

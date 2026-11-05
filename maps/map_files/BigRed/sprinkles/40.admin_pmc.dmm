@@ -235,9 +235,7 @@
 /turf/open/floor/carpet,
 /area/bigredv2/outside/admin_building)
 "lv" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
@@ -458,9 +456,7 @@
 /turf/open/floor/carpet,
 /area/bigredv2/outside/admin_building)
 "Ux" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/item/storage/toolbox/syndicate,
 /turf/open/floor/darkred2/east,
 /area/bigredv2/outside/admin_building)
@@ -486,9 +482,7 @@
 /turf/open/floor/darkred2,
 /area/bigredv2/outside/admin_building)
 "ZN" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/item/ammo_magazine/rifle{
 	current_rounds = 0;
 	pixel_x = -2;
@@ -501,9 +495,7 @@
 /area/bigredv2/outside/admin_building)
 "ZO" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/darkred2/west,
 /area/bigredv2/outside/admin_building)
 

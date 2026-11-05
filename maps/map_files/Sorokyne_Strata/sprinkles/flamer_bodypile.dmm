@@ -333,7 +333,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/exterior/outpost_decks)
 "Mg" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
@@ -367,9 +367,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/item/clothing/mask/gas/upp_pfb,
 /turf/open/floor/strata/floor3/east,
 /area/strata/exterior/outpost_decks)
@@ -448,9 +446,7 @@
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "VW" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "Wp" = (

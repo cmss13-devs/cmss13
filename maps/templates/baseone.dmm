@@ -54,8 +54,7 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /turf/open/floor/prison/sterile_white/south,
@@ -95,8 +94,7 @@
 /area/adminlevel/bunker01/bathroom)
 "au" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/light{
-	dir = 8;
+/obj/structure/machinery/light/fixture/base/west{
 	icon_state = "tube1"
 	},
 /obj/structure/machinery/computer/communications{
@@ -179,9 +177,7 @@
 /turf/open/floor/carpet/edge/east,
 /area/adminlevel/bunker01/command)
 "aB" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/prison/sterile_white/south,
 /area/adminlevel/bunker01/bathroom)
 "aC" = (
@@ -213,8 +209,7 @@
 	dir = 8;
 	icon_state = "shower"
 	},
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /turf/open/floor/prison/sterile_white/south,
@@ -256,9 +251,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/bunker01/command)
 "aM" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/carpet/edge/east,
@@ -278,9 +271,7 @@
 /turf/open/floor/prison/sterile_white/south,
 /area/adminlevel/bunker01/bathroom)
 "aP" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/prison/sterile_white/south,
 /area/adminlevel/bunker01/bathroom)
 "aR" = (
@@ -334,8 +325,7 @@
 /area/adminlevel/bunker01/bathroom)
 "ba" = (
 /obj/structure/ladder,
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /turf/open/floor/almayer,
@@ -429,9 +419,7 @@
 /area/adminlevel/bunker01/bedroom)
 "bt" = (
 /obj/structure/machinery/vending/cigarette/koorlander/free,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/bedroom)
 "bu" = (
@@ -453,9 +441,7 @@
 /turf/open/floor/prison/sterile_white/south,
 /area/adminlevel/bunker01/kitchen)
 "by" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/closet/secure_closet/freezer/fridge/full,
 /turf/open/floor/prison/sterile_white/south,
 /area/adminlevel/bunker01/kitchen)
@@ -558,8 +544,7 @@
 /turf/open/floor/prison/sterile_white/south,
 /area/adminlevel/bunker01/kitchen)
 "bO" = (
-/obj/structure/machinery/light{
-	dir = 8;
+/obj/structure/machinery/light/fixture/base/west{
 	icon_state = "tube1"
 	},
 /turf/open/floor/almayer/blue/west,
@@ -741,7 +726,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/storage)
 "cn" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/bedroom)
 "co" = (
@@ -786,9 +771,7 @@
 /area/adminlevel/bunker01/kitchen)
 "cv" = (
 /obj/structure/machinery/processor,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/prison/sterile_white/south,
 /area/adminlevel/bunker01/kitchen)
 "cw" = (
@@ -804,9 +787,7 @@
 /area/adminlevel/bunker01/hydroponics)
 "cz" = (
 /obj/structure/machinery/vending/hydroseeds,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/blue/east,
 /area/adminlevel/bunker01/hydroponics)
 "cA" = (
@@ -825,7 +806,7 @@
 /area/adminlevel/bunker01/bedroom)
 "cE" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/bedroom)
 "cF" = (
@@ -922,9 +903,7 @@
 /area/adminlevel/bunker01/storage)
 "cQ" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage/antag,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/green/northeast,
 /area/adminlevel/bunker01/storage)
 "cR" = (
@@ -953,8 +932,7 @@
 	pixel_x = -24;
 	pixel_y = 0
 	},
-/obj/structure/machinery/light{
-	dir = 8;
+/obj/structure/machinery/light/fixture/base/west{
 	icon_state = "tube1"
 	},
 /turf/open/floor/almayer/green/southwest,
@@ -1076,9 +1054,7 @@
 	dir = 4;
 	icon_state = "intact-supply"
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
@@ -1242,14 +1218,13 @@
 	input_level = 50000;
 	inputting = 1
 	},
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /turf/open/floor/almayer/orangefull,
 /area/adminlevel/bunker01/engineering)
 "dM" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/green/southwest,
 /area/adminlevel/bunker01/storage)
 "dN" = (
@@ -1279,16 +1254,13 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 4;
+/obj/structure/machinery/light/fixture/base/east{
 	icon_state = "tube1"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
 "dS" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "dT" = (
@@ -1380,9 +1352,7 @@
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/bunker01/mainroom)
 "eg" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/structure/machinery/fuelcell_recycler/full,
 /turf/open/floor/almayer/orange/northwest,
 /area/adminlevel/bunker01/engineering)
@@ -1418,9 +1388,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/engineering)
 "en" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/pipes/vents/pump{
@@ -1535,8 +1503,7 @@
 "ey" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/light{
-	dir = 4;
+/obj/structure/machinery/light/fixture/base/east{
 	icon_state = "tube1"
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -1561,7 +1528,7 @@
 /turf/open/floor/almayer/orangefull,
 /area/adminlevel/bunker01/engineering)
 "eC" = (
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	pixel_y = 0
 	},
 /obj/structure/machinery/power/power_generator/reactor/colony,
@@ -1588,7 +1555,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/security)
 "eG" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "eH" = (
@@ -1596,9 +1563,7 @@
 /turf/closed/wall/r_wall,
 /area/adminlevel/bunker01/engineering)
 "eI" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer/red/northwest,
 /area/adminlevel/bunker01/security)
@@ -1640,8 +1605,7 @@
 /obj/structure/stairs{
 	dir = 8
 	},
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /turf/open/floor/almayer,
@@ -1655,8 +1619,7 @@
 /area/adminlevel/bunker01/engineering)
 "eR" = (
 /obj/structure/toilet,
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /turf/open/floor/almayer,
@@ -1749,7 +1712,7 @@
 /obj/structure/sign/safety/medical{
 	pixel_y = -32
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -1822,7 +1785,7 @@
 /obj/structure/stairs{
 	dir = 8
 	},
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	pixel_y = 0
 	},
 /obj/structure/pipes/standard/cap/hidden/supply{
@@ -1988,15 +1951,12 @@
 /area/adminlevel/bunker01/security)
 "fC" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/security)
 "fD" = (
 /obj/structure/machinery/chem_master,
-/obj/structure/machinery/light{
-	dir = 8;
+/obj/structure/machinery/light/fixture/base/west{
 	icon_state = "tube1"
 	},
 /turf/open/floor/almayer/sterile_green_corner/north,
@@ -2039,9 +1999,7 @@
 /area/adminlevel/bunker01/medbay)
 "fM" = (
 /obj/structure/machinery/medical_pod/autodoc,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/adminlevel/bunker01/medbay)
 "fN" = (
@@ -2177,7 +2135,7 @@
 	dir = 1;
 	icon_state = "toilet00"
 	},
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	pixel_y = 0
 	},
 /turf/open/floor/almayer,
@@ -2207,7 +2165,7 @@
 	dir = 1;
 	icon_state = "toilet00"
 	},
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light/blub/base{
 	pixel_y = 0
 	},
 /turf/open/floor/almayer/red,
@@ -2240,7 +2198,7 @@
 	name = "Medbay Lockdown";
 	pixel_y = -23
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/item/stack/sheet/mineral/phoron{
 	amount = 25
 	},
@@ -2319,8 +2277,7 @@
 /area/adminlevel/bunker01/medbay)
 "gx" = (
 /obj/structure/machinery/iv_drip,
-/obj/structure/machinery/light{
-	dir = 8;
+/obj/structure/machinery/light/fixture/base/west{
 	icon_state = "tube1"
 	},
 /turf/open/floor/almayer/sterile_green_corner/west,
@@ -2339,7 +2296,7 @@
 	name = "Medbay Lockdown";
 	pixel_y = -23
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/sterile_green_side,
 /area/adminlevel/bunker01/medbay)
 "gA" = (
@@ -2355,7 +2312,7 @@
 /obj/structure/sign/safety/autodoc{
 	pixel_y = -32
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/sterile_green_side,
 /area/adminlevel/bunker01/medbay)
 "gD" = (
@@ -2367,8 +2324,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/security)
 "gF" = (
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /turf/open/floor/almayer,
@@ -2496,9 +2452,7 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/bunker01/medbay)
 "gT" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/adminlevel/bunker01/medbay)
 "gU" = (
@@ -2576,8 +2530,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 8;
+/obj/structure/machinery/light/fixture/base/west{
 	icon_state = "tube1"
 	},
 /obj/item/storage/belt/medical/lifesaver/full,
@@ -2603,8 +2556,7 @@
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/adminlevel/bunker01/medbay)
 "hd" = (
-/obj/structure/machinery/light{
-	dir = 8;
+/obj/structure/machinery/light/fixture/base/west{
 	icon_state = "tube1"
 	},
 /obj/structure/pipes/vents/pump{
@@ -2627,9 +2579,7 @@
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/adminlevel/bunker01/medbay)
 "hg" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/medbay)
 "hh" = (

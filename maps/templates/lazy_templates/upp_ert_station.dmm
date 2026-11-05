@@ -123,9 +123,7 @@
 /obj/structure/bed/chair/comfy/lime{
 	dir = 8
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /turf/open/floor/strata/green3/west,
 /area/adminlevel/ert_station/upp_station)
 "bd" = (
@@ -150,9 +148,7 @@
 /area/adminlevel/ert_station/upp_station)
 "bi" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/upp_station)
 "bk" = (
@@ -162,9 +158,7 @@
 /obj/structure/machinery/shower{
 	pixel_y = 21
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /turf/open/floor/strata/white_cyan2/west,
 /area/adminlevel/ert_station/upp_station)
 "bM" = (
@@ -239,9 +233,7 @@
 	pixel_y = 9;
 	pixel_x = -7
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /turf/open/floor/strata/blue1,
 /area/adminlevel/ert_station/upp_station)
 "dz" = (
@@ -397,9 +389,7 @@
 /turf/open/asphalt/cement/cement4,
 /area/adminlevel/ert_station/upp_station)
 "fK" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/blue/north,
 /turf/open/floor/strata/green4/west,
 /area/adminlevel/ert_station/upp_station)
 "fM" = (
@@ -498,8 +488,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
 "ie" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
+/obj/structure/machinery/light/double/blue/west{
 	pixel_y = 13;
 	pixel_x = -10
 	},
@@ -564,9 +553,7 @@
 /turf/open/floor/strata/white_cyan3/northwest,
 /area/adminlevel/ert_station/upp_station)
 "ks" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /turf/open/floor/strata/green4/east,
 /area/adminlevel/ert_station/upp_station)
 "kF" = (
@@ -581,9 +568,7 @@
 "kN" = (
 /obj/item/tool/weldingtool,
 /obj/item/clothing/glasses/welding,
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
 "kS" = (
@@ -610,9 +595,7 @@
 	icon_state = "W"
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/upp_station)
 "le" = (
@@ -663,8 +646,7 @@
 /turf/open/floor/strata/blue1,
 /area/adminlevel/ert_station/upp_station)
 "mb" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	pixel_x = 10;
 	pixel_y = -1
 	},
@@ -705,9 +687,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/blue/north,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/upp_station)
 "mG" = (
@@ -822,9 +802,7 @@
 /obj/structure/bed/chair/comfy/lime{
 	dir = 4
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /turf/open/floor/strata/green3/east,
 /area/adminlevel/ert_station/upp_station)
 "pe" = (
@@ -884,9 +862,7 @@
 /turf/closed/shuttle/elevator,
 /area/adminlevel/ert_station/upp_station)
 "qY" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /turf/open/floor/strata/red3/north,
 /area/adminlevel/ert_station/upp_station)
 "rb" = (
@@ -897,9 +873,7 @@
 /obj/structure/bedsheetbin{
 	pixel_y = 6
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /turf/open/floor/strata/blue1,
 /area/adminlevel/ert_station/upp_station)
 "rr" = (
@@ -930,9 +904,7 @@
 /turf/open/floor/almayer_hull,
 /area/space)
 "rL" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /obj/structure/machinery/floodlight,
 /turf/open/floor/prison/floor_marked/west,
 /area/adminlevel/ert_station/upp_station)
@@ -966,9 +938,7 @@
 /turf/open/floor/strata/damaged3,
 /area/adminlevel/ert_station/upp_station)
 "sz" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /turf/open/floor/strata/floorscorched2,
 /area/adminlevel/ert_station/upp_station)
 "sA" = (
@@ -987,14 +957,11 @@
 	icon_state = "E"
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/upp_station)
 "sI" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
+/obj/structure/machinery/light/double/blue/west{
 	pixel_x = -10;
 	pixel_y = -1
 	},
@@ -1029,9 +996,7 @@
 	pixel_x = -8;
 	pixel_y = 18
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /turf/open/floor/strata/green4/north,
 /area/adminlevel/ert_station/upp_station)
 "tr" = (
@@ -1154,8 +1119,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/upp_station)
 "wA" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	pixel_x = 10;
 	pixel_y = 13
 	},
@@ -1191,9 +1155,7 @@
 /area/adminlevel/ert_station/upp_station)
 "xl" = (
 /obj/structure/surface/rack,
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /obj/item/storage/toolbox/electrical,
 /turf/open/floor/strata/multi_tiles/west,
 /area/adminlevel/ert_station/upp_station)
@@ -1324,9 +1286,7 @@
 /area/adminlevel/ert_station/upp_station)
 "AH" = (
 /obj/structure/machinery/cryopod/no_store/right,
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /turf/open/floor/prison/floor_marked/west,
 /area/adminlevel/ert_station/upp_station)
 "AI" = (
@@ -1479,9 +1439,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry/no_access{
 	req_access = null
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/blue/north,
 /turf/open/floor/strata/white_cyan3/north,
 /area/adminlevel/ert_station/upp_station)
 "Df" = (
@@ -1719,9 +1677,7 @@
 /area/adminlevel/ert_station/upp_station)
 "Jp" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/upp_station)
 "Js" = (
@@ -1750,9 +1706,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
 "Kb" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/blue/north,
 /turf/open/floor/strata/green3,
 /area/adminlevel/ert_station/upp_station)
 "Kn" = (
@@ -1821,15 +1775,11 @@
 /obj/item/clothing/under/shorts/green,
 /obj/item/clothing/under/shorts/grey,
 /obj/item/clothing/under/shorts/grey,
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /turf/open/asphalt/cement/cement1/north,
 /area/adminlevel/ert_station/upp_station)
 "LK" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /turf/open/floor/strata/multi_tiles/west,
 /area/adminlevel/ert_station/upp_station)
 "LN" = (
@@ -2007,9 +1957,7 @@
 	},
 /area/adminlevel/ert_station/upp_station)
 "QO" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/blue/north,
 /turf/open/floor/strata/floor2,
 /area/adminlevel/ert_station/upp_station)
 "QR" = (
@@ -2174,9 +2122,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/adminlevel/ert_station/upp_station)
 "SL" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/blue/north,
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
 "SR" = (
@@ -2195,9 +2141,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/blue/north,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/upp_station)
 "Tb" = (
@@ -2218,9 +2162,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/adminlevel/ert_station/upp_station)
 "Tm" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/adminlevel/ert_station/upp_station)
 "Tq" = (
@@ -2230,9 +2172,7 @@
 /area/space)
 "Tr" = (
 /obj/effect/landmark/wo_supplies/storage/m56d,
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /turf/open/floor/prison/floor_marked/west,
 /area/adminlevel/ert_station/upp_station)
 "Tu" = (
@@ -2287,9 +2227,7 @@
 	pixel_x = -12;
 	pixel_y = 13
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/blue/north,
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
 "TX" = (
@@ -2433,9 +2371,7 @@
 /area/adminlevel/ert_station/upp_station)
 "Vv" = (
 /obj/structure/largecrate/random/barrel/yellow,
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /turf/open/floor/strata/green4/north,
 /area/adminlevel/ert_station/upp_station)
 "Vx" = (
@@ -2550,9 +2486,7 @@
 /area/adminlevel/ert_station/upp_station)
 "XM" = (
 /obj/structure/largecrate/random/barrel/green,
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/double/blue/east,
 /turf/open/floor/strata/green3/east,
 /area/adminlevel/ert_station/upp_station)
 "Yf" = (
@@ -2584,9 +2518,7 @@
 /area/adminlevel/ert_station/upp_station)
 "YS" = (
 /obj/structure/bed/roller,
-/obj/structure/machinery/light/double/blue{
-	dir = 1
-	},
+/obj/structure/machinery/light/double/blue/north,
 /turf/open/floor/strata/white_cyan4/south,
 /area/adminlevel/ert_station/upp_station)
 "YW" = (
@@ -2614,9 +2546,7 @@
 /area/adminlevel/ert_station/upp_station)
 "ZM" = (
 /obj/structure/largecrate/random/case/small,
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/double/blue/west,
 /turf/open/floor/strata/orange_edge/east,
 /area/adminlevel/ert_station/upp_station)
 "ZR" = (

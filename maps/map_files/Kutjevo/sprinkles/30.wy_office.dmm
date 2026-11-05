@@ -82,9 +82,7 @@
 /area/kutjevo/interior/complex/Northwest_Corporate_Office)
 "hh" = (
 /obj/structure/closet/crate/secure/weyland,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/item/storage/firstaid/adv,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/slugs,
@@ -152,9 +150,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/Northwest_Corporate_Office)
 "lE" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/decal/hybrisa/trash{
 	pixel_y = 4;
 	pixel_x = -2
@@ -218,9 +214,7 @@
 	pixel_y = 4;
 	pixel_x = 3
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/kutjevo/tan/grey_inner_edge/west,
 /area/kutjevo/interior/complex/Northwest_Corporate_Office)
 "oh" = (
@@ -328,7 +322,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/kutjevo/tan/grey_edge,
 /area/kutjevo/interior/complex/Northwest_Corporate_Office)
 "vw" = (
@@ -373,9 +367,7 @@
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate,
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/Northwest_Corporate_Office)
@@ -386,7 +378,7 @@
 /turf/open/floor/kutjevo/tan/grey_inner_edge/west,
 /area/kutjevo/interior/complex/Northwest_Corporate_Office)
 "wq" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/kutjevo/interior/complex/Northwest_Corporate_Office)
 "xq" = (
@@ -436,9 +428,7 @@
 	pixel_x = 12
 	},
 /obj/structure/machinery/camera/autoname,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/kutjevo/tan/grey_edge/southwest,
 /area/kutjevo/interior/complex/Northwest_Corporate_Office)
 "zU" = (
@@ -453,7 +443,7 @@
 /turf/open/floor/kutjevo/tan/grey_inner_edge,
 /area/kutjevo/interior/complex/Northwest_Corporate_Office)
 "Aw" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/kutjevo/tan/grey_inner_edge/east,
 /area/kutjevo/interior/complex/Northwest_Corporate_Office)
 "Bz" = (
@@ -506,9 +496,7 @@
 	pixel_y = 30;
 	pixel_x = -3
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/kutjevo/tan/grey_inner_edge/north,
 /area/kutjevo/interior/complex/Northwest_Corporate_Office)
 "Ex" = (
@@ -566,9 +554,7 @@
 /obj/item/device/toner{
 	pixel_y = -6
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/kutjevo/tan/grey_edge/west,
 /area/kutjevo/interior/complex/Northwest_Corporate_Office)
 "GE" = (
@@ -576,7 +562,7 @@
 /turf/open/floor/kutjevo/tan/grey_edge/west,
 /area/kutjevo/interior/complex/Northwest_Corporate_Office)
 "Hv" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/kutjevo/tan/grey_edge,
 /area/kutjevo/interior/complex/Northwest_Corporate_Office)
@@ -609,7 +595,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/kutjevo/exterior/scrubland)
 "Ks" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/machinery/door_control{
 	id = "corporate_security_armory";
 	name = "Corporate Security Armory";
@@ -760,9 +746,7 @@
 	pixel_x = 1;
 	pixel_y = 4
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_2";
 	pixel_y = -16
@@ -794,9 +778,7 @@
 	pixel_y = 4;
 	pixel_x = 4
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/kutjevo/tan/grey_edge/east,
 /area/kutjevo/interior/complex/Northwest_Corporate_Office)
 "Uq" = (
@@ -837,9 +819,7 @@
 	pixel_y = 2;
 	pixel_x = 7
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/kutjevo/tan/grey_edge/northwest,
 /area/kutjevo/interior/complex/Northwest_Corporate_Office)
 "WF" = (
@@ -848,9 +828,7 @@
 	pixel_x = -2;
 	density = 0
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/item/trash/buritto{
 	pixel_y = -10;
 	pixel_x = 3
@@ -874,9 +852,7 @@
 	pixel_y = 4;
 	pixel_x = -2
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/kutjevo/interior/complex/Northwest_Corporate_Office)
 "Xm" = (

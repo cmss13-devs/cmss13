@@ -963,9 +963,7 @@
 	amount = 5
 	},
 /obj/item/stack/sheet/mineral/platinum,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "adO" = (
@@ -2834,9 +2832,7 @@
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/hydroponics)
 "anJ" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/whiteyellowcorner/west,
 /area/lv624/lazarus/corporate_dome)
 "anM" = (
@@ -2899,9 +2895,7 @@
 	pixel_y = 3
 	},
 /obj/item/clothing/mask/surgical,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/item/storage/belt/medical/full,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/whiteblue/north,
@@ -2913,9 +2907,7 @@
 /turf/open/floor/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "aow" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/whiteblue/northeast,
 /area/lv624/lazarus/medbay)
 "aox" = (
@@ -2938,9 +2930,7 @@
 "aoB" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/crap_item,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/item/reagent_container/glass/watertank,
 /turf/open/floor/green/northwest,
 /area/lv624/lazarus/hydroponics)
@@ -3047,9 +3037,7 @@
 /turf/open/floor/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "apC" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "apH" = (
@@ -3134,9 +3122,7 @@
 /area/lv624/ground/caves/north_central_caves)
 "aqA" = (
 /obj/structure/closet/wardrobe,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whiteblue/west,
 /area/lv624/lazarus/medbay)
@@ -3203,7 +3189,7 @@
 /area/lv624/ground/river/west_river)
 "arf" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/whiteblue,
 /area/lv624/lazarus/medbay)
 "arg" = (
@@ -3246,13 +3232,13 @@
 /obj/item/tool/minihoe{
 	pixel_y = -2
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/green/northwest,
 /area/lv624/lazarus/hydroponics)
 "art" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/item/reagent_container/glass/fertilizer,
 /turf/open/floor/green/northwest,
 /area/lv624/lazarus/hydroponics)
@@ -3573,9 +3559,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/quartstorage)
 "atG" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "atH" = (
@@ -3644,9 +3628,7 @@
 /turf/closed/wall,
 /area/lv624/lazarus/research)
 "atT" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/item/prop/alien/hugger,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
@@ -3800,9 +3782,7 @@
 /turf/open/floor/barber/west,
 /area/lv624/lazarus/fitness)
 "auG" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/barber/west,
 /area/lv624/lazarus/fitness)
 "auH" = (
@@ -3853,7 +3833,7 @@
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "auX" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "auY" = (
@@ -3973,9 +3953,7 @@
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "avE" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/surface/table,
 /turf/open/floor/white,
 /area/lv624/lazarus/research)
@@ -4229,9 +4207,7 @@
 /area/lv624/lazarus/research)
 "awI" = (
 /obj/effect/decal/remains/human,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/white,
 /area/lv624/lazarus/research)
 "awK" = (
@@ -4305,9 +4281,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle)
 "awW" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "awY" = (
@@ -4326,9 +4300,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/quartstorage)
 "axb" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/dark,
 /area/lv624/lazarus/quartstorage)
 "axe" = (
@@ -4389,9 +4361,7 @@
 /area/lv624/ground/jungle/west_jungle)
 "axz" = (
 /obj/structure/closet/athletic_mixed,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
@@ -4423,9 +4393,7 @@
 	pixel_y = 16
 	},
 /obj/effect/landmark/monkey_spawn,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "axH" = (
@@ -4433,15 +4401,11 @@
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "axI" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "axJ" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/transmitter/colony_net{
 	phone_category = "Lazarus Landing";
 	phone_id = "Research Dome";
@@ -4518,15 +4482,11 @@
 /obj/structure/machinery/bioprinter{
 	stored_metal = 1000
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/plating/platebot,
 /area/lv624/lazarus/robotics)
 "ayk" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "aym" = (
@@ -4535,9 +4495,7 @@
 /area/lv624/lazarus/robotics)
 "ayn" = (
 /obj/structure/dispenser/oxygen,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/plating/platebot,
 /area/lv624/lazarus/robotics)
 "ayp" = (
@@ -4603,7 +4561,7 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "ayE" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "ayF" = (
@@ -4727,9 +4685,7 @@
 /turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "azd" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
@@ -4768,7 +4724,7 @@
 /obj/structure/holohoop{
 	dir = 1
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/warnwhite,
 /area/lv624/lazarus/fitness)
 "azl" = (
@@ -4780,7 +4736,7 @@
 /area/lv624/lazarus/fitness)
 "azn" = (
 /obj/structure/surface/rack,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
@@ -4905,7 +4861,7 @@
 /obj/item/tool/surgery/scalpel{
 	pixel_y = 12
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
@@ -4951,7 +4907,7 @@
 /turf/open/floor/plating/warnplate/west,
 /area/lv624/lazarus/robotics)
 "aAi" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "aAj" = (
@@ -5000,9 +4956,7 @@
 /area/lv624/ground/jungle/west_jungle)
 "aAv" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/landmark/good_item,
 /turf/open/floor/bluecorner,
 /area/lv624/lazarus/sleep_male)
@@ -5022,30 +4976,22 @@
 /obj/item/weapon/baseballbat,
 /obj/item/clothing/head/beret/jan,
 /obj/item/stack/medical/splint,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/bluecorner,
 /area/lv624/lazarus/sleep_male)
 "aAy" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aAz" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aAA" = (
 /obj/structure/closet,
 /obj/item/clothing/shoes/laceup,
 /obj/item/stack/medical/advanced/ointment,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/purple/northwest,
 /area/lv624/lazarus/sleep_female)
 "aAB" = (
@@ -5058,9 +5004,7 @@
 	desc = "For prime comfort.";
 	name = "fancy bed"
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/purple/northwest,
 /area/lv624/lazarus/sleep_female)
 "aAD" = (
@@ -5087,9 +5031,7 @@
 /turf/open/floor/bluecorner,
 /area/lv624/lazarus/sleep_male)
 "aAR" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/structure/machinery/power/apc/no_power/north,
@@ -5231,9 +5173,7 @@
 	layer = 2;
 	pixel_y = -10
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/plating/platebot,
 /area/lv624/lazarus/robotics)
 "aBr" = (
@@ -5243,16 +5183,12 @@
 /turf/open/floor/vault2/west,
 /area/lv624/lazarus/robotics)
 "aBs" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "aBt" = (
 /obj/structure/computerframe,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/plating/platebot,
 /area/lv624/lazarus/robotics)
 "aBv" = (
@@ -5372,9 +5308,7 @@
 /area/lv624/lazarus/sleep_male)
 "aBU" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/bluecorner,
 /area/lv624/lazarus/sleep_male)
 "aBV" = (
@@ -5416,9 +5350,7 @@
 /turf/open/floor/purple/northwest,
 /area/lv624/lazarus/sleep_female)
 "aCd" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/purple/northwest,
 /area/lv624/lazarus/sleep_female)
 "aCh" = (
@@ -5685,7 +5617,7 @@
 "aDq" = (
 /obj/structure/bed,
 /obj/item/bedsheet/blue,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/bluecorner,
 /area/lv624/lazarus/sleep_male)
 "aDr" = (
@@ -5696,7 +5628,7 @@
 /area/lv624/lazarus/robotics)
 "aDs" = (
 /obj/structure/bed/roller,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/bluecorner,
 /area/lv624/lazarus/sleep_male)
 "aDt" = (
@@ -5727,7 +5659,7 @@
 /area/lv624/lazarus/toilet)
 "aDz" = (
 /obj/structure/bed,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/purple/northwest,
 /area/lv624/lazarus/sleep_female)
 "aDB" = (
@@ -5793,18 +5725,14 @@
 /turf/open/floor/plating/asteroidwarning/southwest,
 /area/lv624/lazarus/landing_zones/lz2)
 "aDW" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/surface/table,
 /obj/item/trash/cheesie,
 /obj/effect/landmark/crap_item,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aDX" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/cheeseburger,
 /obj/effect/landmark/crap_item,
@@ -5883,9 +5811,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "aEA" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
@@ -5910,9 +5836,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aEG" = (
@@ -5967,9 +5891,7 @@
 /area/lv624/lazarus/main_hall)
 "aEU" = (
 /obj/structure/largecrate/random,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
 	},
@@ -6018,16 +5940,12 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/quart)
 "aFb" = (
 /obj/structure/largecrate/random,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/loadingarea/east,
 /area/lv624/lazarus/quartstorage)
 "aFh" = (
@@ -6148,9 +6066,7 @@
 /area/lv624/lazarus/quart)
 "aFD" = (
 /obj/structure/surface/rack,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/whiteyellowfull/east,
@@ -6303,9 +6219,7 @@
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aGp" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/landmark/good_item,
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/quart)
@@ -6464,9 +6378,7 @@
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aHc" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/surface/table,
 /obj/structure/prop/mech/hydralic_clamp,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -6478,9 +6390,7 @@
 /area/lv624/lazarus/main_hall)
 "aHf" = (
 /obj/structure/flora/pottedplant,
-/obj/structure/machinery/light/spot{
-	dir = 1
-	},
+/obj/structure/machinery/light/wide/base/north,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aHg" = (
@@ -6518,9 +6428,7 @@
 /area/lv624/lazarus/quart)
 "aHo" = (
 /obj/structure/machinery/vending/coffee,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aHp" = (
@@ -6619,9 +6527,7 @@
 /turf/open/floor/warning/west,
 /area/lv624/lazarus/landing_zones/lz2)
 "aIc" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aId" = (
@@ -6633,9 +6539,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aIg" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	frequency = 1469;
@@ -7164,12 +7068,12 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/yggdrasil)
 "aKJ" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/effect/landmark/crap_item,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aKK" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/structure/bed/chair{
 	dir = 4
 	},
@@ -7373,9 +7277,7 @@
 	pixel_x = 7;
 	pixel_y = 2
 	},
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	frequency = 1469;
@@ -7414,7 +7316,7 @@
 /area/lv624/lazarus/main_hall)
 "aMf" = (
 /obj/structure/flora/pottedplant,
-/obj/structure/machinery/light/spot,
+/obj/structure/machinery/light/wide/base,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aMg" = (
@@ -7431,9 +7333,7 @@
 /area/lv624/lazarus/main_hall)
 "aMj" = (
 /obj/structure/device/broken_piano,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aMk" = (
@@ -7451,9 +7351,7 @@
 /area/lv624/lazarus/canteen)
 "aMn" = (
 /obj/structure/machinery/vending/cola,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aMo" = (
@@ -7543,9 +7441,7 @@
 /turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "aMY" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/pistol/highpower,
 /obj/item/ammo_magazine/pistol/highpower,
@@ -7557,9 +7453,7 @@
 /turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "aNb" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/red/northeast,
 /area/lv624/lazarus/security)
 "aNc" = (
@@ -7750,9 +7644,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/jungle/north_jungle)
 "aOc" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aOd" = (
@@ -7762,7 +7654,7 @@
 "aOo" = (
 /obj/structure/surface/table,
 /obj/item/clothing/glasses/sunglasses/big,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/purple/northwest,
 /area/lv624/lazarus/sleep_female)
@@ -7960,7 +7852,7 @@
 /turf/open/floor/redcorner/east,
 /area/lv624/lazarus/security)
 "aPr" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/red/north,
 /area/lv624/lazarus/security)
 "aPs" = (
@@ -8032,17 +7924,13 @@
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aPE" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aPH" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/storage/bible,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/effect/landmark/good_item,
 /turf/open/floor,
 /area/lv624/lazarus/chapel)
@@ -8112,9 +8000,7 @@
 /turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/jungle/east_central_jungle)
 "aPZ" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/structure/surface/table,
 /obj/item/trash/plate,
 /turf/open/floor/white,
@@ -8138,16 +8024,12 @@
 /turf/open/floor/barber/west,
 /area/lv624/lazarus/kitchen)
 "aQe" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/barber/west,
 /area/lv624/lazarus/kitchen)
 "aQf" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aQg" = (
@@ -8210,9 +8092,7 @@
 /turf/open/floor/grimy,
 /area/lv624/lazarus/captain)
 "aQE" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	frequency = 1469;
@@ -8260,9 +8140,7 @@
 /turf/open/floor/wood,
 /area/lv624/lazarus/hop)
 "aQK" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	frequency = 1469;
@@ -8333,16 +8211,14 @@
 /turf/open/floor/chapel/west,
 /area/lv624/lazarus/chapel)
 "aRi" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)
 "aRj" = (
 /obj/structure/surface/rack,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/lazarus/quart)
@@ -8452,25 +8328,19 @@
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/south_west_jungle)
 "aRP" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aRR" = (
 /obj/structure/surface/table,
 /obj/item/clothing/head/chefhat,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/item/tool/kitchen/rollingpin,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aRU" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aRV" = (
@@ -8478,9 +8348,7 @@
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_jungle)
 "aRX" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
@@ -8630,9 +8498,7 @@
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aSI" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)
@@ -8785,7 +8651,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
 "aTB" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/wood,
 /area/lv624/lazarus/hop)
 "aTC" = (
@@ -8804,9 +8670,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aTF" = (
@@ -8830,9 +8694,7 @@
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)
 "aTI" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)
 "aTJ" = (
@@ -8914,9 +8776,7 @@
 /area/lv624/lazarus/main_hall)
 "aUb" = (
 /obj/structure/kitchenspike,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aUc" = (
@@ -8983,7 +8843,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/yggdrasil)
 "aUu" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/bed/stool,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -9092,9 +8952,7 @@
 /area/lv624/lazarus/secure_storage)
 "aUS" = (
 /obj/structure/largecrate/random,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aVa" = (
@@ -9102,7 +8960,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "aVb" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)
@@ -9157,9 +9015,7 @@
 /turf/open/floor/grimy,
 /area/lv624/lazarus/hop)
 "aVq" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/grimy,
 /area/lv624/lazarus/hop)
 "aVr" = (
@@ -9222,9 +9078,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "aVH" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/foamed_metal,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
@@ -9452,7 +9306,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/radio,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "aWI" = (
@@ -9505,9 +9359,7 @@
 /obj/structure/safe{
 	spawnkey = 0
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/item/cell/high,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/greengrid,
@@ -9537,9 +9389,7 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods,
 /turf/open/floor/brown/northwest,
@@ -9638,9 +9488,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "aXu" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/dark,
@@ -9725,9 +9573,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "aXK" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
@@ -9804,7 +9650,7 @@
 /area/lv624/lazarus/engineering)
 "aYf" = (
 /obj/structure/largecrate/random,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aYh" = (
@@ -9924,9 +9770,7 @@
 "aYM" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/med_data/laptop,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/grimy,
 /area/lv624/lazarus/hop)
 "aYN" = (
@@ -10021,7 +9865,7 @@
 /area/lv624/lazarus/engineering)
 "aZg" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /obj/structure/machinery/computer/objective{
 	dir = 1
 	},
@@ -10090,9 +9934,7 @@
 /area/lv624/lazarus/security)
 "aZx" = (
 /obj/structure/closet/toolcloset,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
@@ -10103,18 +9945,14 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "aZz" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/redcorner/north,
 /area/lv624/lazarus/security)
 "aZA" = (
 /obj/structure/filingcabinet,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/wood/wood_broken4,
 /area/lv624/lazarus/hop)
 "aZB" = (
@@ -10787,9 +10625,7 @@
 /turf/open/floor/carpet/bcarpet07,
 /area/lv624/ground/caves/north_central_caves)
 "bUU" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/dark,
 /area/lv624/lazarus/corporate_dome)
 "bXd" = (
@@ -10889,9 +10725,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/whiteblue/northeast,
 /area/lv624/lazarus/corporate_dome)
 "cgC" = (
@@ -11196,9 +11030,7 @@
 /area/lv624/ground/caves/south_central_caves)
 "cJw" = (
 /obj/structure/closet/secure_closet/engineering_personal,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/lazarus/corporate_dome)
@@ -11228,9 +11060,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_west_caves)
 "cNE" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/shard,
 /turf/open/floor/brown/northwest,
@@ -11519,9 +11349,7 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "dvX" = (
 /obj/structure/bookcase/manuals/medical,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/whiteyellow/southeast,
 /area/lv624/lazarus/corporate_dome)
 "dwt" = (
@@ -11832,7 +11660,7 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "dZH" = (
 /obj/structure/filingcabinet,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/whiteblue,
 /area/lv624/lazarus/medbay)
 "dZY" = (
@@ -11969,9 +11797,7 @@
 /area/lv624/ground/caves/sand_temple)
 "elm" = (
 /obj/structure/machinery/vending/hydroseeds,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/green/northwest,
 /area/lv624/lazarus/hydroponics)
 "elp" = (
@@ -12015,9 +11841,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/corporate_dome)
 "eqs" = (
@@ -12058,9 +11882,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "euU" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)
@@ -12107,9 +11929,7 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "eBN" = (
 /obj/structure/closet/crate/hydroponics/prespawned,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/green/northwest,
 /area/lv624/lazarus/hydroponics)
 "eCx" = (
@@ -12334,9 +12154,7 @@
 /turf/open/floor/plating/warnplate/southeast,
 /area/lv624/lazarus/engineering)
 "fem" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/dark,
 /area/lv624/lazarus/quartstorage)
 "ffb" = (
@@ -12472,9 +12290,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_east_caves)
 "fsu" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/bed/chair{
 	dir = 1
 	},
@@ -13034,7 +12850,7 @@
 /turf/open/gm/dirt/desert3,
 /area/lv624/ground/barrens/east_barrens)
 "gzD" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/dark,
 /area/lv624/lazarus/quartstorage)
 "gzH" = (
@@ -14103,9 +13919,7 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "iPR" = (
 /obj/item/stack/medical/ointment,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "iRb" = (
@@ -14528,9 +14342,7 @@
 /obj/structure/lattice{
 	layer = 2.9
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/plating/warnplate/west,
 /area/lv624/lazarus/engineering)
@@ -14868,9 +14680,7 @@
 "kzd" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/crap_item,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/green/northwest,
 /area/lv624/lazarus/hydroponics)
@@ -14980,9 +14790,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_west_caves)
 "kKL" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
@@ -15371,7 +15179,7 @@
 /obj/structure/bed/chair/wheelchair{
 	dir = 4
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/corporate_dome)
 "lGo" = (
@@ -15512,9 +15320,7 @@
 /area/lv624/ground/jungle/north_east_jungle)
 "lSt" = (
 /obj/structure/surface/rack,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/item/clothing/shoes/dress,
 /turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/corporate_dome)
@@ -15660,7 +15466,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/east_caves)
 "mft" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/stairs/perspective{
 	dir = 9;
 	icon_state = "p_stair_full"
@@ -15890,9 +15696,7 @@
 	dir = 4
 	},
 /obj/structure/showcase,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/whiteblue/southwest,
 /area/lv624/lazarus/corporate_dome)
 "mEo" = (
@@ -16379,9 +16183,7 @@
 /area/lv624/lazarus/landing_zones/lz2)
 "nIs" = (
 /obj/structure/machinery/vending/snack,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/whiteblue/southwest,
 /area/lv624/lazarus/corporate_dome)
 "nIA" = (
@@ -16947,9 +16749,7 @@
 	},
 /obj/item/coin/diamond,
 /obj/item/m_gift,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/item/clothing/head/helmet/marine/veteran/pmc,
 /obj/item/clothing/under/marine/veteran/pmc,
 /obj/item/storage/fancy/cigar,
@@ -17325,9 +17125,7 @@
 /area/lv624/ground/jungle/west_central_jungle)
 "pzt" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/transmitter/colony_net/rotary{
 	phone_category = "Lazarus Landing";
 	phone_id = "Medbay"
@@ -18120,9 +17918,7 @@
 	pixel_y = 6
 	},
 /obj/item/storage/toolbox/electrical,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/whiteblue/east,
 /area/lv624/lazarus/corporate_dome)
 "rdZ" = (
@@ -18177,9 +17973,7 @@
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)
 "rmg" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/foamed_metal,
 /turf/open/floor/dark,
@@ -18455,9 +18249,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "rNq" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/dark,
 /area/lv624/lazarus/corporate_dome)
 "rON" = (
@@ -18810,9 +18602,7 @@
 /area/lv624/ground/caves/south_west_caves)
 "sBg" = (
 /obj/structure/machinery/vending/cigarette/wy,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/whiteblue/southeast,
 /area/lv624/lazarus/corporate_dome)
 "sBC" = (
@@ -19079,9 +18869,7 @@
 /obj/structure/lattice{
 	layer = 2.9
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/plating/warnplate/east,
 /area/lv624/lazarus/engineering)
@@ -19774,7 +19562,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/central_barrens)
 "uta" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/stairs/perspective{
 	dir = 8;
 	icon_state = "p_stair_full"
@@ -19875,9 +19663,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
 "uEL" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
 	pixel_y = 3
@@ -20248,9 +20034,7 @@
 /area/lv624/lazarus/crashed_ship_containers)
 "vvE" = (
 /obj/structure/machinery/vending/cola,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/corporate_dome)
 "vxa" = (
@@ -20477,7 +20261,7 @@
 /area/lv624/ground/caves/south_east_caves)
 "vRe" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/item/tool/wrench,
 /obj/item/tool/weldingtool,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -20899,9 +20683,7 @@
 	dir = 8
 	},
 /obj/structure/showcase,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/whiteblue,
 /area/lv624/lazarus/corporate_dome)
 "wPN" = (
@@ -21017,9 +20799,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/whiteblue/northeast,
 /area/lv624/lazarus/corporate_dome)
 "wWS" = (
@@ -21096,9 +20876,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "xeq" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/bed/chair{
 	dir = 1
 	},

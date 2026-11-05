@@ -88,9 +88,7 @@
 /turf/open/floor/prison/green/southeast,
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "G" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/surface/rack,
 /obj/item/storage/briefcase/inflatable,
 /turf/open/floor/prison/green/east,

@@ -31,9 +31,7 @@
 /area/template_noop)
 "dN" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/shiva/yellow/north,
 /area/template_noop)
 "ea" = (
@@ -276,9 +274,7 @@
 /area/template_noop)
 "tP" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/item/storage/firstaid,
 /turf/open/floor/shiva/yellow/north,
 /area/template_noop)
@@ -375,9 +371,7 @@
 /area/template_noop)
 "zQ" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/shiva/blue/north,
 /area/template_noop)
 "Ah" = (
@@ -460,12 +454,12 @@
 	pixel_x = -9;
 	pixel_y = 13
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/shiva/blue,
 /area/template_noop)
 "GU" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/item/circuitboard/computer/powermonitor,
 /obj/item/stack/cable_coil/cut{
 	pixel_y = 12
@@ -514,9 +508,7 @@
 	pixel_x = -3;
 	pixel_y = 7
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/shiva/blue/north,
 /area/template_noop)
 "KI" = (

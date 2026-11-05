@@ -135,9 +135,7 @@
 /area/shuttle/drop_upp/morana)
 "gQ" = (
 /obj/structure/shuttle/part/dropship_upp/left_inner_wing_connector,
-/obj/structure/machinery/light/dropship/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/dropship/blue/east,
 /turf/template_noop,
 /area/shuttle/drop_upp/morana)
 "hI" = (
@@ -216,9 +214,7 @@
 	},
 /area/shuttle/drop_upp/morana)
 "ow" = (
-/obj/structure/machinery/light/dropship/green{
-	dir = 4
-	},
+/obj/structure/machinery/light/dropship/green/east,
 /obj/structure/shuttle/part/dropship_upp/transparent/middle_right_wing{
 	icon_state = "wing_right_red"
 	},
@@ -441,9 +437,7 @@
 	},
 /area/shuttle/drop_upp/morana)
 "Iy" = (
-/obj/structure/machinery/light/dropship/red{
-	dir = 8
-	},
+/obj/structure/machinery/light/dropship/red/west,
 /obj/structure/shuttle/part/dropship_upp/transparent/middle_left_wing{
 	icon_state = "wing_left_red"
 	},
@@ -583,9 +577,7 @@
 /area/shuttle/drop_upp/morana)
 "XZ" = (
 /obj/structure/shuttle/part/dropship_upp/right_inner_wing_connector,
-/obj/structure/machinery/light/dropship/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/dropship/blue/west,
 /turf/template_noop,
 /area/shuttle/drop_upp/morana)
 "Yi" = (

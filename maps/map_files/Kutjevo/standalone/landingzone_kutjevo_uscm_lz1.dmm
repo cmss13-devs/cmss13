@@ -566,9 +566,7 @@
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/Northwest_Colony)
 "fN" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/kutjevo/tan/alt_edge/west,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "gp" = (
@@ -674,9 +672,7 @@
 /area/kutjevo/exterior/lz_pad)
 "kw" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/kutjevo/tan/alt_edge/north,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
@@ -915,9 +911,7 @@
 "rw" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/flash,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/colors/orange/edge/east,
 /area/kutjevo/interior/complex/Northwest_Security_Checkpoint)
 "rz" = (
@@ -1017,7 +1011,7 @@
 /turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "ud" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/closet/secure_closet/security,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/kutjevo/colors/orange/edge/east,
@@ -1044,7 +1038,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/Northwest_Security_Checkpoint)
 "vr" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/kutjevo/tan/grey_edge,
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "vs" = (
@@ -1056,7 +1050,7 @@
 /turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "vC" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "wA" = (
@@ -1091,9 +1085,7 @@
 /turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "xg" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/closet,
 /obj/item/clothing/under/kutjevo,
 /turf/open/floor/kutjevo/tan/grey_edge/north,
@@ -1139,9 +1131,7 @@
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "yD" = (
 /obj/structure/bed/sofa/south/grey/left,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "yE" = (
@@ -1355,7 +1345,7 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/exterior/lz_pad)
 "DY" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/kutjevo/tan/alt_inner_edge/west,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "Em" = (
@@ -1425,9 +1415,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/tan/alt_edge/north,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "FR" = (
@@ -1490,7 +1478,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_pad)
 "Hh" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/kutjevo/tan/alt_inner_edge/east,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "Hm" = (
@@ -1700,9 +1688,7 @@
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/Northwest_Colony)
 "Ob" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/kutjevo/tan/alt_edge/east,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "Of" = (
@@ -1753,9 +1739,7 @@
 	pixel_x = 13;
 	pixel_y = 8
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "PG" = (
@@ -1895,9 +1879,7 @@
 "Td" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/flashlight/lamp,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "Te" = (
@@ -1939,9 +1921,7 @@
 	pixel_y = 8
 	},
 /obj/item/newspaper,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/colors/orange/edge/west,
 /area/kutjevo/interior/complex/Northwest_Security_Checkpoint)
 "Ud" = (
@@ -1950,7 +1930,7 @@
 /area/kutjevo/exterior/lz_pad)
 "Uj" = (
 /obj/structure/surface/rack,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/item/stack/sheet/metal/small_stack,
 /turf/open/floor/kutjevo/colors/orange/edge/west,
 /area/kutjevo/interior/complex/Northwest_Security_Checkpoint)
@@ -2099,7 +2079,7 @@
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "ZL" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/complex/Northwest_Dorms)

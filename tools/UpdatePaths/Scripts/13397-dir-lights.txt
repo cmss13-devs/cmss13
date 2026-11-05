@@ -1,0 +1,103 @@
+/obj/structure/machinery/light/small/blue{dir=1} : /obj/structure/machinery/light/blub/blue/north{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/small/blue{dir=2} : /obj/structure/machinery/light/blub/blue{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/small/blue{dir=4} : /obj/structure/machinery/light/blub/blue/east{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/small/blue{dir=8} : /obj/structure/machinery/light/blub/blue/west{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/small/blue : /obj/structure/machinery/light/blub/blue{@OLD}
+
+/obj/structure/machinery/light/small/built{dir=1} : /obj/structure/machinery/light/blub/no_fixture/north{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/small/built{dir=2} : /obj/structure/machinery/light/blub/no_fixture{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/small/built{dir=4} : /obj/structure/machinery/light/blub/no_fixture/east{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/small/built{dir=8} : /obj/structure/machinery/light/blub/no_fixture/west{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/small/built : /obj/structure/machinery/light/blub/no_fixture{@OLD}
+
+/obj/structure/machinery/light/small{dir=1} : /obj/structure/machinery/light/blub/base/north{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/small{dir=2} : /obj/structure/machinery/light/blub/base{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/small{dir=4} : /obj/structure/machinery/light/blub/base/east{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/small{dir=8} : /obj/structure/machinery/light/blub/base/west{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/small : /obj/structure/machinery/light/blub/base{@OLD}
+
+
+/obj/structure/machinery/light/containment{dir=1} : /obj/structure/machinery/light/containment/north{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/containment{dir=2} : /obj/structure/machinery/light/containment{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/containment{dir=4} : /obj/structure/machinery/light/containment/east{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/containment{dir=8} : /obj/structure/machinery/light/containment/west{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/containment : /obj/structure/machinery/light/containment{@OLD}
+
+
+/obj/structure/machinery/light/double/blue{dir=1} : /obj/structure/machinery/light/double/blue/north{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/double/blue{dir=2} : /obj/structure/machinery/light/double/blue{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/double/blue{dir=4} : /obj/structure/machinery/light/double/blue/east{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/double/blue{dir=8} : /obj/structure/machinery/light/double/blue/west{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/double/blue : /obj/structure/machinery/light/double/blue{@OLD}
+
+/obj/structure/machinery/light/double{dir=1} : /obj/structure/machinery/light/double/base/north{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/double{dir=2} : /obj/structure/machinery/light/double/base{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/double{dir=4} : /obj/structure/machinery/light/double/base/east{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/double{dir=8} : /obj/structure/machinery/light/double/base/west{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/double : /obj/structure/machinery/light/double/base{@OLD}
+
+
+/obj/structure/machinery/light/spot/blue{dir=1} : /obj/structure/machinery/light/wide/blue/north{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/spot/blue{dir=2} : /obj/structure/machinery/light/wide/blue{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/spot/blue{dir=4} : /obj/structure/machinery/light/wide/blue/east{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/spot/blue{dir=8} : /obj/structure/machinery/light/wide/blue/west{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/spot/blue : /obj/structure/machinery/light/wide/blue{@OLD}
+
+/obj/structure/machinery/light/spot{dir=1} : /obj/structure/machinery/light/wide/base/north{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/spot{dir=2} : /obj/structure/machinery/light/wide/base{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/spot{dir=4} : /obj/structure/machinery/light/wide/base/east{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/spot{dir=8} : /obj/structure/machinery/light/wide/base/west{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/spot : /obj/structure/machinery/light/wide/base{@OLD}
+
+
+/obj/structure/machinery/light/dropship/blue{dir=1} : /obj/structure/machinery/light/dropship/blue/north{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/dropship/blue{dir=2} : /obj/structure/machinery/light/dropship/blue{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/dropship/blue{dir=4} : /obj/structure/machinery/light/dropship/blue/east{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/dropship/blue{dir=8} : /obj/structure/machinery/light/dropship/blue/west{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/dropship/blue : /obj/structure/machinery/light/dropship/blue{@OLD}
+
+/obj/structure/machinery/light/dropship/red{dir=1} : /obj/structure/machinery/light/dropship/red/north{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/dropship/red{dir=2} : /obj/structure/machinery/light/dropship/red{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/dropship/red{dir=4} : /obj/structure/machinery/light/dropship/red/east{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/dropship/red{dir=8} : /obj/structure/machinery/light/dropship/red/west{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/dropship/red : /obj/structure/machinery/light/dropship/red{@OLD}
+
+/obj/structure/machinery/light/dropship/green{dir=1} : /obj/structure/machinery/light/dropship/green/north{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/dropship/green{dir=2} : /obj/structure/machinery/light/dropship/green{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/dropship/green{dir=4} : /obj/structure/machinery/light/dropship/green/east{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/dropship/green{dir=8} : /obj/structure/machinery/light/dropship/green/west{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/dropship/green : /obj/structure/machinery/light/dropship/green{@OLD}
+
+/obj/structure/machinery/light/dropship{dir=1} : /obj/structure/machinery/light/dropship/base/north{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/dropship{dir=2} : /obj/structure/machinery/light/dropship/base{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/dropship{dir=4} : /obj/structure/machinery/light/dropship/base/east{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/dropship{dir=8} : /obj/structure/machinery/light/dropship/base/west{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/dropship : /obj/structure/machinery/light/dropship/base{@OLD}
+
+
+
+/obj/structure/machinery/light/blue{dir=1} : /obj/structure/machinery/light/fixture/blue/north{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/blue{dir=2} : /obj/structure/machinery/light/fixture/blue{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/blue{dir=4} : /obj/structure/machinery/light/fixture/blue/east{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/blue{dir=8} : /obj/structure/machinery/light/fixture/blue/west{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/blue : /obj/structure/machinery/light/fixture/blue{@OLD}
+
+/obj/structure/machinery/light/red{dir=1} : /obj/structure/machinery/light/fixture/red/north{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/red{dir=2} : /obj/structure/machinery/light/fixture/red{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/red{dir=4} : /obj/structure/machinery/light/fixture/red/east{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/red{dir=8} : /obj/structure/machinery/light/fixture/red/west{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/red : /obj/structure/machinery/light/fixture/red{@OLD}
+
+/obj/structure/machinery/light/built{dir=1} : /obj/structure/machinery/light/fixture/no_fixture/north{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/built{dir=2} : /obj/structure/machinery/light/fixture/no_fixture{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/built{dir=4} : /obj/structure/machinery/light/fixture/no_fixture/east{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/built{dir=8} : /obj/structure/machinery/light/fixture/no_fixture/west{@OLD;dir=@SKIP}
+/obj/structure/machinery/light/built : /obj/structure/machinery/light/fixture/no_fixture{@OLD}
+
+
+/obj/structure/machinery/light{dir=1} : /obj/structure/machinery/light/fixture/base/north{@OLD;dir=@SKIP}
+/obj/structure/machinery/light{dir=2} : /obj/structure/machinery/light/fixture/base{@OLD;dir=@SKIP}
+/obj/structure/machinery/light{dir=4} : /obj/structure/machinery/light/fixture/base/east{@OLD;dir=@SKIP}
+/obj/structure/machinery/light{dir=8} : /obj/structure/machinery/light/fixture/base/west{@OLD;dir=@SKIP}
+/obj/structure/machinery/light : /obj/structure/machinery/light/fixture/base{@OLD}
+

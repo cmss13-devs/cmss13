@@ -40,9 +40,7 @@
 /turf/closed/wall/almayer,
 /area/adminlevel/ert_station/royal_marines_station)
 "ae" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/reagent_dispensers/water_cooler/stacks,
 /turf/open/floor/almayer/orange/west,
 /area/adminlevel/ert_station/royal_marines_station)
@@ -62,9 +60,7 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "ai" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "aj" = (
@@ -122,9 +118,7 @@
 /obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "2,0"
 	},
-/obj/structure/machinery/light/dropship/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/dropship/blue/east,
 /turf/open/void,
 /area/adminlevel/ert_station/royal_marines_station)
 "bG" = (
@@ -134,9 +128,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "bL" = (
 /obj/structure/platform/metal/almayer,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/platform_decoration/metal/almayer/southwest,
 /obj/structure/blocker/invisible_wall,
@@ -194,17 +186,13 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "dj" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/red/southeast,
 /area/adminlevel/ert_station/royal_marines_station)
 "dm" = (
 /obj/structure/closet/coffin/woodencrate,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "ds" = (
@@ -236,9 +224,7 @@
 /turf/open/floor/almayer/red/southeast,
 /area/adminlevel/ert_station/royal_marines_station)
 "ei" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/ert_station/royal_marines_station)
 "er" = (
@@ -250,7 +236,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "eu" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	pixel_x = -1
@@ -333,9 +319,7 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "hm" = (
-/obj/structure/machinery/light/dropship/green{
-	dir = 4
-	},
+/obj/structure/machinery/light/dropship/green/east,
 /turf/closed/shuttle/dropship_twe{
 	icon_state = "8,7"
 	},
@@ -352,7 +336,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "hI" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "hL" = (
@@ -399,9 +383,7 @@
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/ert_station/royal_marines_station)
 "ja" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/red/east,
 /area/adminlevel/ert_station/royal_marines_station)
 "je" = (
@@ -438,9 +420,7 @@
 /obj/structure/shuttle/part/dropship_twe/transparent{
 	icon_state = "6,0"
 	},
-/obj/structure/machinery/light/dropship/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/dropship/blue/west,
 /turf/open/void,
 /area/adminlevel/ert_station/royal_marines_station)
 "jP" = (
@@ -495,7 +475,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/ert_station/royal_marines_station)
 "kx" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "kH" = (
@@ -530,9 +510,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "li" = (
 /obj/structure/platform/metal/almayer/north,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/platform_decoration/metal/almayer/northeast,
 /obj/structure/blocker/invisible_wall,
@@ -614,9 +592,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "mI" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/ert_station/royal_marines_station)
@@ -635,9 +611,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "na" = (
 /obj/structure/platform/metal/almayer,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/platform_decoration/metal/almayer/southeast,
 /obj/structure/blocker/invisible_wall,
@@ -662,9 +636,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "nw" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 2
@@ -692,9 +664,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "od" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/red/northeast,
 /area/adminlevel/ert_station/royal_marines_station)
 "ol" = (
@@ -743,9 +713,7 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "pL" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/red/northwest,
 /area/adminlevel/ert_station/royal_marines_station)
 "pO" = (
@@ -805,9 +773,7 @@
 	icon_state = "S"
 	},
 /obj/structure/prop/almayer/hangar_stencil,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "ro" = (
@@ -916,9 +882,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "uE" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "uG" = (
@@ -926,16 +890,12 @@
 /turf/open/floor/plating/kutjevo,
 /area/adminlevel/ert_station/royal_marines_station)
 "uK" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/ert_station/royal_marines_station)
 "uQ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/ert_station/royal_marines_station)
 "uU" = (
@@ -944,9 +904,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "vm" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -1011,9 +969,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "xm" = (
-/obj/structure/machinery/light/dropship/red{
-	dir = 8
-	},
+/obj/structure/machinery/light/dropship/red/west,
 /turf/closed/shuttle/dropship_twe{
 	icon_state = "0,7"
 	},
@@ -1029,9 +985,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "xy" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "xE" = (
@@ -1086,9 +1040,7 @@
 /turf/open/void,
 /area/adminlevel/ert_station/royal_marines_station)
 "zz" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/machinery/cryopod/no_store{
 	layer = 3.1;
 	pixel_y = 7
@@ -1160,9 +1112,7 @@
 /turf/open/void,
 /area/adminlevel/ert_station/royal_marines_station)
 "Aq" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -1249,9 +1199,7 @@
 /turf/open/void,
 /area/adminlevel/ert_station/royal_marines_station)
 "CQ" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/machinery/cryopod/no_store{
 	dir = 1;
 	pixel_y = 7
@@ -1391,9 +1339,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "FX" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/machinery/cm_vending/gear/antag_guns,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
@@ -1406,7 +1352,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "GZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/orange,
 /area/adminlevel/ert_station/royal_marines_station)
 "Hg" = (
@@ -1436,9 +1382,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "HD" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/machinery/cm_vending/gear/antag_guns,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
@@ -1452,9 +1396,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "Id" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "Ie" = (
@@ -1519,9 +1461,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/adminlevel/ert_station/royal_marines_station)
 "IQ" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/orange/west,
 /area/adminlevel/ert_station/royal_marines_station)
 "Jg" = (
@@ -1591,9 +1531,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "KJ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "KX" = (
@@ -1644,9 +1582,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "MH" = (
@@ -1693,18 +1629,16 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "MX" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/orange/southwest,
 /area/adminlevel/ert_station/royal_marines_station)
 "MY" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/red,
 /area/adminlevel/ert_station/royal_marines_station)
 "Nc" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/red,
 /area/adminlevel/ert_station/royal_marines_station)
 "Nl" = (
@@ -1716,7 +1650,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "Nv" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
@@ -1845,9 +1779,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/royal_marines_station)
 "PN" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/royal_marines_station)
 "PS" = (
@@ -1906,9 +1838,7 @@
 /turf/open/void,
 /area/adminlevel/ert_station/royal_marines_station)
 "Ri" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/royal_marines_station)
 "Rq" = (
@@ -1964,9 +1894,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "Sm" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "Sp" = (
@@ -2034,15 +1962,11 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "Ul" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "Up" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/almayer/orange/northwest,
 /area/adminlevel/ert_station/royal_marines_station)
 "Uq" = (
@@ -2106,9 +2030,7 @@
 	},
 /area/adminlevel/ert_station/royal_marines_station)
 "Vt" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/almayer/orange/northeast,
 /area/adminlevel/ert_station/royal_marines_station)
 "Vu" = (
@@ -2128,7 +2050,7 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station/royal_marines_station)
 "VH" = (
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/fixture/base{
 	unacidable = 1;
 	unslashable = 1
 	},
@@ -2225,9 +2147,7 @@
 /turf/open/void,
 /area/adminlevel/ert_station/royal_marines_station)
 "WM" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/almayer/orange/north,
 /area/adminlevel/ert_station/royal_marines_station)
 "WS" = (
@@ -2235,9 +2155,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "WW" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 2
@@ -2252,7 +2170,7 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station/royal_marines_station)
 "Xe" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/almayer/orange,
 /area/adminlevel/ert_station/royal_marines_station)
 "Xh" = (
@@ -2322,9 +2240,7 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "Yh" = (
 /obj/structure/platform/metal/almayer/north,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/platform_decoration/metal/almayer/northwest,
 /obj/structure/blocker/invisible_wall,

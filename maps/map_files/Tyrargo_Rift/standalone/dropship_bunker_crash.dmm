@@ -501,8 +501,7 @@
 	dir = 8;
 	name = "Tychon"
 	},
-/obj/structure/machinery/light/dropship/red{
-	dir = 1;
+/obj/structure/machinery/light/dropship/red/north{
 	needs_power = 0
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
@@ -624,8 +623,7 @@
 	color = "#140400";
 	name = "dirt"
 	},
-/obj/structure/machinery/light/dropship/blue{
-	dir = 1;
+/obj/structure/machinery/light/dropship/blue/north{
 	needs_power = 0
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,

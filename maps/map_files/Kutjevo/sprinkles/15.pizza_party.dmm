@@ -18,9 +18,7 @@
 	pixel_y = 31;
 	pixel_x = -3
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/kutjevo/colors/red/inner_corner,
 /area/template_noop)
 "bF" = (
@@ -112,9 +110,7 @@
 /area/template_noop)
 "kZ" = (
 /obj/item/shard,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/kutjevo/colors/red/inner_corner/west,
 /area/template_noop)
 "lj" = (
@@ -262,9 +258,7 @@
 /area/template_noop)
 "zf" = (
 /obj/structure/machinery/power/apc/no_power/north,
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/kutjevo/colors/red/inner_corner/north,
 /area/template_noop)
 "zZ" = (
@@ -307,9 +301,7 @@
 /area/template_noop)
 "El" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/colors/red/edge/north,
 /area/template_noop)
 "En" = (
@@ -388,9 +380,7 @@
 "Jx" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/effect/landmark/objective_landmark/close,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/hybrisa/tile/tilered,
 /area/template_noop)
 "JB" = (
@@ -434,7 +424,7 @@
 /turf/closed/wall/kutjevo/colony,
 /area/template_noop)
 "MI" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/kutjevo/colors/red/edge,
 /area/template_noop)
 "MS" = (
@@ -569,9 +559,7 @@
 	pixel_y = 9;
 	pixel_x = -4
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/kutjevo/colors/red/inner_corner/east,
 /area/template_noop)
 "Xg" = (
@@ -601,9 +589,7 @@
 /obj/item/clothing/head/hybrisa/pizza_galaxy,
 /obj/item/card/id/pizza,
 /obj/item/clothing/suit/armor/vest,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/kutjevo/colors/red,
 /area/template_noop)
 "Xq" = (

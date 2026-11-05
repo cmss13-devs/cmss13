@@ -50,8 +50,7 @@
 /area/template_noop)
 "z" = (
 /obj/structure/coatrack,
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	pixel_x = 10;
 	pixel_y = -3
 	},
@@ -64,8 +63,7 @@
 /area/template_noop)
 "D" = (
 /obj/structure/closet/secure_closet/freezer/fridge/groceries,
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	pixel_x = 10;
 	pixel_y = -3
 	},
@@ -73,8 +71,7 @@
 /area/template_noop)
 "E" = (
 /obj/structure/machinery/photocopier,
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	pixel_x = 10;
 	pixel_y = -3
 	},
@@ -143,8 +140,7 @@
 /area/template_noop)
 "X" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
+/obj/structure/machinery/light/double/blue/east{
 	pixel_x = 10;
 	pixel_y = -3
 	},

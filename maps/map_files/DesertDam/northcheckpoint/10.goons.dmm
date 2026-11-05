@@ -108,9 +108,7 @@
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "kh" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "kA" = (
@@ -129,9 +127,7 @@
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "kG" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/desert/rock/deep/transition/east,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "lq" = (
@@ -406,9 +402,7 @@
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "Mj" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 8
 	},
@@ -506,7 +500,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "RJ" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 8
 	},
@@ -561,9 +555,7 @@
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "VJ" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/asphalt/cement/cement4,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "VP" = (

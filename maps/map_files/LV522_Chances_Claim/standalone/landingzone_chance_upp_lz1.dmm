@@ -418,9 +418,7 @@
 	pixel_y = 2;
 	pixel_x = 1
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -670,9 +668,7 @@
 /turf/open/floor/prison/floor_marked,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "vN" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
 	pixel_y = 3
@@ -735,7 +731,7 @@
 /turf/open/floor/almayer/tcomms,
 /area/event/metal/dynamic/lit)
 "yD" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/faxmachine{
 	target_department = "UPP High Command";
@@ -891,9 +887,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/event/dynamic/lit)
 "CA" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
 	pixel_y = -1
@@ -1036,9 +1030,7 @@
 /turf/open/auto_turf/shale/layer2,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "HA" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/ammo_box/magazine/misc/flashlight,
 /turf/open/floor/prison/blue,
@@ -1380,9 +1372,7 @@
 	icon_state = "SW-out";
 	pixel_y = -1
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	layer = 3.33;

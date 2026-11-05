@@ -61,15 +61,11 @@
 /area/bigredv2/outside/marshal_office)
 "ax" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "ay" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/marshal_office)
 "az" = (
@@ -154,7 +150,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "bh" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/redcorner,
 /area/bigredv2/outside/marshal_office)
 "bi" = (
@@ -292,9 +288,7 @@
 /turf/open/floor/bcircuit,
 /area/bigredv2/outside/marshal_office)
 "bY" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
@@ -327,7 +321,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "ci" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "cj" = (
@@ -391,9 +385,7 @@
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
 "cy" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
 "cz" = (
@@ -546,9 +538,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "dg" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/redfull/northwest,
 /area/bigredv2/outside/marshal_office)
 "dh" = (
@@ -616,7 +606,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "gL" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/barricade/wooden{
 	dir = 4
 	},
@@ -687,9 +677,7 @@
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
 "jo" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/item/weapon/baton/cattleprod{
 	pixel_x = 11;
 	pixel_y = -7
@@ -712,9 +700,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "kG" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "lU" = (
@@ -928,7 +914,7 @@
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
 "wL" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/bcircuit,
 /area/bigredv2/outside/marshal_office)
 "xk" = (
@@ -1112,14 +1098,12 @@
 /area/bigredv2/outside/marshal_office)
 "Io" = (
 /obj/structure/closet/l3closet/security,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "IR" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/decal/cleanable/blood,
 /obj/item/shard,
@@ -1318,9 +1302,7 @@
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "VX" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/bed,
 /turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/marshal_office)
@@ -1338,9 +1320,7 @@
 /area/bigredv2/outside/marshal_office)
 "YT" = (
 /obj/structure/surface/rack,
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/item/ammo_magazine/revolver/cmb{
 	pixel_y = -7;
 	pixel_x = -7

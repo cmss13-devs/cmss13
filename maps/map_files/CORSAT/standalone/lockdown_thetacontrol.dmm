@@ -31,9 +31,7 @@
 /turf/open/floor/corsat/marked,
 /area/corsat/theta/airlock/control)
 "i" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/closet/firecloset,
 /turf/open/floor/corsat/red/north,
 /area/corsat/theta/airlock/control)
@@ -51,9 +49,7 @@
 /turf/open/floor/corsat/yellowcorner/east,
 /area/corsat/theta/airlock/control)
 "n" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/machinery/disposal,
 /turf/open/floor/corsat/yellow/north,
 /area/corsat/theta/airlock/control)

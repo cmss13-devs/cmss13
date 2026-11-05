@@ -46,9 +46,7 @@
 	pixel_x = -2;
 	pixel_y = 10
 	},
-/obj/structure/machinery/light/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/blue/west,
 /turf/open/floor/almayer/test_floor5,
 /area/lv759/indoors/spaceport/clf_dropship)
 "aI" = (
@@ -192,8 +190,7 @@
 	buckling_x = 9;
 	buckling_y = 15
 	},
-/obj/structure/machinery/light/blue{
-	dir = 1;
+/obj/structure/machinery/light/fixture/blue/north{
 	pixel_x = -15;
 	pixel_y = 20
 	},
@@ -269,9 +266,7 @@
 /turf/open/floor/prison/cell_stripe/north,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "dx" = (
-/obj/structure/machinery/light/small/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/blue/west,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/spaceport/cargo)
 "dz" = (
@@ -392,7 +387,7 @@
 /turf/open/floor/strata/floor3,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "eJ" = (
-/obj/structure/machinery/light/spot/blue,
+/obj/structure/machinery/light/wide/blue,
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/shuttle/part/dropship_clf/transparent/nose_center,
 /turf/open/floor/plating,
@@ -605,9 +600,7 @@
 	pixel_x = 5
 	},
 /obj/structure/largecrate/supply/ammo/m56d,
-/obj/structure/machinery/light/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/blue/east,
 /obj/item/reagent_container/blood/OMinus{
 	pixel_x = 5
 	},
@@ -637,9 +630,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/machinery/light/small/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/blue/east,
 /obj/structure/largecrate/random/case/double{
 	pixel_y = -9;
 	layer = 2.9
@@ -659,9 +650,7 @@
 /turf/open/floor/strata/blue3/east,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "hG" = (
-/obj/structure/machinery/light/dropship/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/dropship/blue/east,
 /obj/structure/shuttle/part/dropship_clf/left_inner_wing_connector,
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -810,9 +799,7 @@
 /area/lv759/indoors/spaceport/docking_bay_2)
 "jP" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
-/obj/structure/machinery/light/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/blue/east,
 /obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/strata/blue3/east,
 /area/lv759/indoors/spaceport/docking_bay_2)
@@ -866,9 +853,7 @@
 	pixel_y = 13
 	},
 /obj/structure/pipes/standard/simple/hidden/dark,
-/obj/structure/machinery/light/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/blue/west,
 /turf/open/floor/strata/blue3/west,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "lo" = (
@@ -886,7 +871,7 @@
 	pixel_x = 9;
 	buckling_x = 9
 	},
-/obj/structure/machinery/light/blue{
+/obj/structure/machinery/light/fixture/blue{
 	pixel_x = 15
 	},
 /obj/effect/decal/hybrisa/warning/redandwhite_S,
@@ -902,7 +887,7 @@
 /area/lv759/indoors/spaceport/docking_bay_2)
 "lN" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/light/small/blue,
+/obj/structure/machinery/light/blub/blue,
 /obj/item/device/binoculars{
 	pixel_y = 5;
 	pixel_x = 7
@@ -965,9 +950,7 @@
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "mD" = (
-/obj/structure/machinery/light/dropship/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/dropship/blue/west,
 /obj/structure/shuttle/part/dropship_clf/right_inner_wing_connector,
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -1018,8 +1001,7 @@
 	buckling_x = 9;
 	buckling_y = 15
 	},
-/obj/structure/machinery/light/blue{
-	dir = 1;
+/obj/structure/machinery/light/fixture/blue/north{
 	pixel_x = -15;
 	pixel_y = 20
 	},
@@ -1061,15 +1043,14 @@
 	pixel_y = 11
 	},
 /obj/structure/pipes/standard/simple/hidden/dark,
-/obj/structure/machinery/light/blue{
-	dir = 8;
+/obj/structure/machinery/light/fixture/blue/west{
 	pixel_x = 1;
 	pixel_y = 15
 	},
 /turf/open/floor/strata/blue3/west,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "nX" = (
-/obj/structure/machinery/light/blue,
+/obj/structure/machinery/light/fixture/blue,
 /obj/structure/barricade/handrail{
 	dir = 1;
 	layer = 2.7;
@@ -1078,7 +1059,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/spaceport/cargo)
 "nY" = (
-/obj/structure/machinery/light/spot/blue,
+/obj/structure/machinery/light/wide/blue,
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
 	},
@@ -1093,9 +1074,7 @@
 /turf/open/floor/strata/blue3/east,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "ox" = (
-/obj/structure/machinery/light/dropship/green{
-	dir = 4
-	},
+/obj/structure/machinery/light/dropship/green/east,
 /turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "33"
 	},
@@ -1256,9 +1235,7 @@
 /turf/closed/wall/hybrisa/spaceport/reinforced,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "qJ" = (
-/obj/structure/machinery/light/dropship/red{
-	dir = 8
-	},
+/obj/structure/machinery/light/dropship/red/west,
 /turf/closed/shuttle/dropship_clf/Fire{
 	icon_state = "75"
 	},
@@ -1320,7 +1297,7 @@
 	pixel_x = 9;
 	buckling_x = 9
 	},
-/obj/structure/machinery/light/blue{
+/obj/structure/machinery/light/fixture/blue{
 	pixel_x = -15
 	},
 /obj/effect/decal/hybrisa/warning/redandwhite_S,
@@ -1366,8 +1343,7 @@
 	pixel_y = 28;
 	layer = 2.9
 	},
-/obj/structure/machinery/light/blue{
-	dir = 8;
+/obj/structure/machinery/light/fixture/blue/west{
 	pixel_y = -8
 	},
 /obj/effect/decal/hybrisa/dirt_2,
@@ -1471,7 +1447,7 @@
 	layer = 2.7;
 	pixel_y = 2
 	},
-/obj/structure/machinery/light/blue,
+/obj/structure/machinery/light/fixture/blue,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/spaceport/cargo)
 "uP" = (
@@ -1534,7 +1510,7 @@
 /turf/closed/wall/hybrisa/spaceport/unmeltable,
 /area/lv759/oob)
 "vz" = (
-/obj/structure/machinery/light/spot/blue,
+/obj/structure/machinery/light/wide/blue,
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
 	},
@@ -1542,9 +1518,7 @@
 /turf/open/floor/strata/floor3,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "vN" = (
-/obj/structure/machinery/light/dropship/red{
-	dir = 8
-	},
+/obj/structure/machinery/light/dropship/red/west,
 /turf/closed/shuttle/dropship_clf/Fire/transparent{
 	icon_state = "28"
 	},
@@ -1713,8 +1687,7 @@
 /area/lv759/indoors/spaceport/docking_bay_2)
 "xG" = (
 /obj/structure/surface/rack,
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /obj/effect/spawner/random/attachment,
@@ -1729,9 +1702,7 @@
 /area/lv759/indoors/spaceport/cargo_maintenance)
 "xJ" = (
 /obj/structure/largecrate/supply/supplies/flares,
-/obj/structure/machinery/light/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/blue/west,
 /turf/open/floor/almayer/test_floor5,
 /area/lv759/indoors/spaceport/clf_dropship)
 "xL" = (
@@ -1758,9 +1729,7 @@
 	pixel_x = -4
 	},
 /obj/structure/closet/crate/ammo,
-/obj/structure/machinery/light/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/blue/east,
 /obj/structure/machinery/door_control{
 	id = "clf_cargo_2";
 	name = "Cargo Lockdown";
@@ -1822,9 +1791,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/indoors/spaceport/cargo)
 "yG" = (
-/obj/structure/machinery/light/dropship/green{
-	dir = 4
-	},
+/obj/structure/machinery/light/dropship/green/east,
 /turf/closed/shuttle/dropship_clf/Fire{
 	icon_state = "83"
 	},
@@ -1839,7 +1806,7 @@
 /area/lv759/indoors/spaceport/docking_bay_2)
 "yQ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/light/small/blue,
+/obj/structure/machinery/light/blub/blue,
 /obj/item/prop/almayer/comp_open{
 	pixel_y = 5
 	},
@@ -2032,7 +1999,7 @@
 /turf/closed/wall/hybrisa/spaceport/unmeltable,
 /area/lv759/oob)
 "CB" = (
-/obj/structure/machinery/light/spot/blue,
+/obj/structure/machinery/light/wide/blue,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 4
@@ -2202,9 +2169,7 @@
 /turf/open/floor/strata/yellow3/west,
 /area/lv759/indoors/spaceport/cargo)
 "FG" = (
-/obj/structure/machinery/light/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/blue/west,
 /obj/structure/stairs{
 	color = "#a6aeab";
 	dir = 1
@@ -2294,9 +2259,7 @@
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Hh" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
-/obj/structure/machinery/light/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/blue/west,
 /turf/open/floor/strata/blue3/west,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Ho" = (
@@ -2376,16 +2339,12 @@
 /obj/item/stack/sheet/metal/med_large_stack,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/objective_landmark/medium,
-/obj/structure/machinery/light/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/blue/east,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/indoors/spaceport/cargo)
 "Iz" = (
 /obj/structure/platform_decoration/metal/almayer/north,
-/obj/structure/machinery/light/small/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/blue/west,
 /obj/structure/barricade/sandbags{
 	pixel_y = 14
 	},
@@ -2540,9 +2499,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/machinery/light/small/blue{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/blue/west,
 /obj/structure/barricade/sandbags{
 	pixel_y = 14
 	},
@@ -2620,9 +2577,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "LC" = (
-/obj/structure/machinery/light/small/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/blue/east,
 /obj/structure/barricade/sandbags{
 	pixel_y = 14
 	},
@@ -2773,9 +2728,7 @@
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 9
 	},
-/obj/structure/machinery/light/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/blue/east,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/indoors/spaceport/cargo)
 "Ot" = (
@@ -2900,8 +2853,7 @@
 	pixel_y = 31;
 	layer = 2.9
 	},
-/obj/structure/machinery/light/blue{
-	dir = 4;
+/obj/structure/machinery/light/fixture/blue/east{
 	pixel_y = -8
 	},
 /obj/item/tool/extinguisher/mini,
@@ -3048,9 +3000,7 @@
 /area/lv759/indoors/spaceport/clf_dropship)
 "Sg" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
-/obj/structure/machinery/light/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/blue/east,
 /turf/open/floor/strata/blue3/east,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Sh" = (
@@ -3298,8 +3248,7 @@
 /turf/open/floor/prison/southwest,
 /area/lv759/indoors/spaceport/clf_dropship)
 "WW" = (
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /obj/item/stack/rods,
@@ -3311,9 +3260,7 @@
 /area/lv759/indoors/spaceport/cargo_maintenance)
 "Xh" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
-/obj/structure/machinery/light/blue{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/blue/east,
 /obj/structure/machinery/power/power_generator/port_gen,
 /turf/open/floor/strata/blue3/east,
 /area/lv759/indoors/spaceport/docking_bay_2)

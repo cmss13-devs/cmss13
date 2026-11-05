@@ -60,16 +60,14 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/church)
 "gK" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/dark,
 /area/desert_dam/building/church)
 "gT" = (
 /turf/template_noop,
 /area/template_noop)
 "hV" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/floor/cult,
 /area/desert_dam/building/church)
 "iq" = (
@@ -90,7 +88,7 @@
 /turf/open/floor/cult,
 /area/desert_dam/building/church)
 "ld" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/sofa/pews/flipped,
 /turf/open/floor/chapel/west,
@@ -107,9 +105,7 @@
 /turf/open/floor/chapel/east,
 /area/desert_dam/building/church)
 "si" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/bed/sofa/pews/flipped{
 	dir = 1
 	},
@@ -138,9 +134,7 @@
 /turf/open/floor/chapel/east,
 /area/desert_dam/building/church)
 "uh" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/item/prop/helmetgarb/spent_buckshot,
 /turf/open/floor/cult,
 /area/desert_dam/building/church)
@@ -157,7 +151,7 @@
 /turf/open/floor/cult,
 /area/desert_dam/building/church)
 "wB" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /obj/structure/bed/sofa/pews/flipped,
 /turf/open/floor/chapel,
 /area/desert_dam/building/church)
@@ -166,9 +160,7 @@
 /turf/open/floor/cult,
 /area/desert_dam/building/church)
 "yA" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/bed/sofa/pews/flipped{
 	dir = 1
 	},
@@ -185,9 +177,7 @@
 /turf/open/floor/carpet13_5/west,
 /area/desert_dam/building/church)
 "AM" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/dark,
 /area/desert_dam/building/church)
 "CY" = (
@@ -220,9 +210,7 @@
 /turf/open/floor/cult,
 /area/desert_dam/building/church)
 "Ij" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/structure/surface/table/woodentable,
 /turf/open/floor/cult,
 /area/desert_dam/building/church)
@@ -289,7 +277,7 @@
 /turf/open/floor/chapel/east,
 /area/desert_dam/building/church)
 "Xj" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/fixture/base,
 /turf/open/floor/cult,
 /area/desert_dam/building/church)
 "Xp" = (

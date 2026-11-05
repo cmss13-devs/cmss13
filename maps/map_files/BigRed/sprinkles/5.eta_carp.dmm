@@ -18,9 +18,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "f" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkredcorners2,
 /area/bigredv2/caves/eta/xenobiology)
@@ -64,9 +62,7 @@
 /turf/open/ice,
 /area/bigredv2/caves/eta/xenobiology)
 "p" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/auto_turf/sand/layer2,
 /area/bigredv2/caves/eta/xenobiology)
 "q" = (
@@ -90,15 +86,11 @@
 /turf/open/ice,
 /area/bigredv2/caves/eta/xenobiology)
 "u" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /turf/open/ice,
 /area/bigredv2/caves/eta/xenobiology)
 "v" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/darkredcorners2/west,
 /area/bigredv2/caves/eta/xenobiology)
@@ -107,9 +99,7 @@
 /turf/open/ice,
 /area/bigredv2/caves/eta/xenobiology)
 "y" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/darkredcorners2,
@@ -118,9 +108,7 @@
 /turf/open/floor/darkredcorners2,
 /area/bigredv2/caves/eta/xenobiology)
 "B" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /turf/open/auto_turf/sand,
 /area/bigredv2/caves/eta/xenobiology)
 "C" = (

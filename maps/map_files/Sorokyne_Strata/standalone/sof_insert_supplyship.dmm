@@ -871,8 +871,7 @@
 /area/strata/exterior/marsh/crash)
 "Jy" = (
 /obj/structure/closet/crate/ammo,
-/obj/structure/machinery/light/double{
-	dir = 8;
+/obj/structure/machinery/light/double/base/west{
 	pixel_y = -31
 	},
 /obj/item/storage/belt/gun/type47/SOF_belt,
@@ -1165,8 +1164,7 @@
 /area/strata/exterior/marsh/crash)
 "Wk" = (
 /obj/structure/closet/crate/ammo,
-/obj/structure/machinery/light/double{
-	dir = 4;
+/obj/structure/machinery/light/double/base/east{
 	pixel_y = -32
 	},
 /obj/item/ammo_magazine/rifle/ak4047,

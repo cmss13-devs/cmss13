@@ -218,7 +218,7 @@
 /area/bigredv2/outside/filtration_cave_cas)
 "hW" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/asteroidfloor/north,
 /area/event/metal/dynamic/lit)
 "ic" = (
@@ -272,9 +272,7 @@
 	pixel_y = 2;
 	pixel_x = 1
 	},
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -434,9 +432,7 @@
 /area/event/metal/dynamic/lit)
 "mC" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/asteroidfloor/north,
 /area/event/metal/dynamic/lit)
 "mI" = (
@@ -638,9 +634,7 @@
 /turf/open/floor/plating/asteroidwarning/north,
 /area/event/metal/dynamic/lit)
 "rH" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
 	pixel_y = 3
@@ -696,9 +690,7 @@
 /area/event/metal/dynamic/lit)
 "tb" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /turf/open/floor/whitegreen/northeast,
 /area/event/metal/dynamic/lit)
 "ti" = (
@@ -812,9 +804,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/s)
 "uS" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/machinery/light/fixture/base/east,
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/faxmachine{
 	target_department = "UPP High Command";
@@ -940,9 +930,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/event/metal/dynamic/lit)
 "zJ" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/machinery/light/fixture/base/west,
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/ammo_box/magazine/misc/flashlight,
 /turf/open/floor/darkblue2/east,
@@ -1017,9 +1005,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/event/metal/dynamic/lit)
 "CB" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /turf/open/floor/plating,
 /area/event/metal/dynamic/lit)
 "CQ" = (
@@ -1056,9 +1042,7 @@
 "Dq" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/surgical_tray,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/whitegreen/southwest,
 /area/event/metal/dynamic/lit)
 "DJ" = (
@@ -1069,9 +1053,7 @@
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/s)
 "Ec" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/structure/machinery/light/fixture/base/north,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	layer = 2.5;
@@ -1088,9 +1070,7 @@
 	icon_state = "SW-out";
 	pixel_y = -1
 	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
+/obj/structure/machinery/light/blub/base/east,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	layer = 3.33;
@@ -1205,13 +1185,11 @@
 /turf/open/floor/almayer/tcomms,
 /area/event/metal/dynamic/lit)
 "JV" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
+/obj/structure/machinery/light/blub/base/north,
 /turf/open/floor/asteroidfloor/north,
 /area/event/metal/dynamic/lit)
 "Kb" = (
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/light/blub/base,
 /turf/open/floor/asteroidfloor/north,
 /area/event/metal/dynamic/lit)
 "Kd" = (
@@ -1235,9 +1213,7 @@
 /turf/open/mars/mars_dirt_3,
 /area/bigredv2/outside/s)
 "KA" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /turf/open/floor/asteroidfloor/north,
 /area/event/metal/dynamic/lit)
 "KB" = (
@@ -1307,9 +1283,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/s)
 "MR" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/light/blub/base/west,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
 	pixel_y = -1

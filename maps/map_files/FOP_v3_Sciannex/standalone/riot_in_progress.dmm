@@ -32,8 +32,7 @@
 /obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /turf/open/floor/prison/redfull,
@@ -454,8 +453,7 @@
 /obj/structure/machinery/recharger{
 	pixel_y = 4
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /turf/open/floor/prison/redfull,
@@ -466,8 +464,7 @@
 	icon_state = "pottedplant_29";
 	pixel_y = 10
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /turf/open/floor/prison,
@@ -1139,8 +1136,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "Wc" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /turf/open/floor/prison,
@@ -1203,8 +1199,7 @@
 	pixel_x = -2;
 	pixel_y = 11
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
+/obj/structure/machinery/light/double/blue/north{
 	pixel_y = 21
 	},
 /turf/open/floor/prison/redfull,

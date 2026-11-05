@@ -655,8 +655,7 @@
 "kO" = (
 /obj/structure/bed,
 /obj/item/bedsheet/green,
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /obj/item/toy/plush/farwa,
@@ -760,8 +759,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
 "of" = (
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /turf/open/floor/almayer/greencorner/east,
@@ -1019,8 +1017,7 @@
 /turf/open/floor/almayer/green/northeast,
 /area/lv624/lazarus/crashed_ship)
 "xX" = (
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /turf/open/floor/wood,
@@ -1272,8 +1269,7 @@
 /turf/open/floor/almayer/bluecorner/west,
 /area/lv624/lazarus/crashed_ship)
 "EO" = (
-/obj/structure/machinery/light/small{
-	dir = 8;
+/obj/structure/machinery/light/blub/base/west{
 	pixel_x = -10
 	},
 /turf/open/floor/almayer/greencorner/west,
@@ -1287,8 +1283,7 @@
 /area/lv624/lazarus/crashed_ship)
 "Gm" = (
 /obj/structure/surface/rack,
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /obj/item/storage/belt/medical/full,
@@ -1360,15 +1355,13 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "JG" = (
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
 "JO" = (
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /obj/structure/machinery/medical_pod/bodyscanner,
@@ -1445,16 +1438,14 @@
 /turf/open/floor/almayer/emerald/northeast,
 /area/lv624/lazarus/crashed_ship)
 "Mz" = (
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /obj/effect/landmark/survivor_spawner/clf_coordinator,
 /turf/open/floor/almayer/bluecorner/east,
 /area/lv624/lazarus/crashed_ship)
 "MO" = (
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /turf/open/floor/almayer/blue/north,
@@ -1471,16 +1462,14 @@
 /obj/structure/toilet{
 	dir = 8
 	},
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /obj/effect/landmark/survivor_spawner/clf,
 /turf/open/floor/whitebluefull,
 /area/lv624/lazarus/crashed_ship)
 "NC" = (
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_x = 3;
 	pixel_y = 20
 	},
@@ -1701,8 +1690,7 @@
 /area/lv624/lazarus/crashed_ship)
 "TN" = (
 /obj/structure/surface/rack,
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /obj/item/ammo_magazine/rifle/mar40,
@@ -1801,8 +1789,7 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "VQ" = (
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_x = -3;
 	pixel_y = 20
 	},
@@ -1853,8 +1840,7 @@
 /turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "XG" = (
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /turf/open/floor/plating/warnplate/north,
@@ -1912,8 +1898,7 @@
 /obj/structure/surface/rack,
 /obj/item/clothing/accessory/storage/webbing,
 /obj/item/clothing/accessory/storage/webbing,
-/obj/structure/machinery/light/small{
-	dir = 1;
+/obj/structure/machinery/light/blub/base/north{
 	pixel_y = 20
 	},
 /turf/open/floor/almayer/bluecorner/east,

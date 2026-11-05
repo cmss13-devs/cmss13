@@ -43,6 +43,7 @@
 //Client
 #define COMSIG_KB_CLIENT_GETHELP_DOWN "keybinding_client_gethelp_down"
 #define COMSIG_KB_CLIENT_SCREENSHOT_DOWN "keybinding_client_screenshot_down"
+#define COMSIG_KB_CLIENT_SCREENSHOT_AS_DOWN "keybinding_client_screenshot_as_down"
 #define COMSIG_KB_CLIENT_TOGGLEFULLSCREEN_DOWN "keybinding_client_togglefullscreen_down"
 #define COMSIG_KB_CLIENT_MINIMALHUD_DOWN "keybinding_client_minimalhud_down"
 #define COMSIG_KB_CLIENT_SWITCHINPUT_DOWN "keybinding_client_switchinput_down"
@@ -68,6 +69,7 @@
 #define COMSIG_KB_HUMAN_SINGLE_NORMAL_PUSHUP "keybinding_human_single_normal_pushup"
 #define COMSIG_KB_HUMAN_SINGLE_WEAK_PUSHUP "keybinding_human_single_weak_pushup"
 #define COMSIG_KB_HUMAN_PUSHUP_ROUTINE "keybinding_human_pushup_routine"
+#define COMSIG_KB_HUMAN_BLOW_WHISTLE "keybinding_human_blow_whistle"
 
 // Human Inventory Navigation
 #define COMSIG_KB_HUMAN_INTERACT_OTHER_HAND "keybinding_human_interact_other_hand"

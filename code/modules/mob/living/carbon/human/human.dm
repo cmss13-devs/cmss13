@@ -62,7 +62,7 @@
 	stamina = new /datum/stamina(src)
 
 /mob/living/carbon/human/Destroy()
-	SSround_recording.recorder.stop_tracking(src)
+	SSround_recording?.recorder?.stop_tracking(src)
 	remove_from_all_mob_huds()
 	despawn_fax_responder()
 	assigned_equipment_preset = null
@@ -322,19 +322,6 @@
 		observer.client.add_to_screen(s_active.storage_start)
 		observer.client.add_to_screen(s_active.storage_continue)
 		observer.client.add_to_screen(s_active.storage_end)
-
-// called when something steps onto a human
-// this handles mulebots and vehicles
-/mob/living/carbon/human/Crossed(atom/movable/AM)
-	..()
-	if(istype(AM, /obj/structure/machinery/bot/mulebot))
-		var/obj/structure/machinery/bot/mulebot/MB = AM
-		MB.RunOver(src)
-
-	if(istype(AM, /obj/vehicle))
-		var/obj/vehicle/V = AM
-		V.RunOver(src)
-
 
 //gets assignment from ID or ID inside PDA or PDA itself
 //Useful when player do something with computers
@@ -1215,7 +1202,7 @@
 			if(target.check_tod() && target.is_revivable())
 				msg += "They're not breathing."
 			else
-				if(has_limb("head"))
+				if(target.has_limb("head"))
 					msg += "Their eyes have gone blank, there are no signs of life."
 				else
 					msg += "They are definitely dead."

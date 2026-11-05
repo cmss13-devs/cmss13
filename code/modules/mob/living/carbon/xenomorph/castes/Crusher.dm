@@ -29,13 +29,14 @@
 
 	minimap_icon = "crusher"
 
+	organ_type = /obj/item/organ/xeno/crusher
+
 /mob/living/carbon/xenomorph/crusher
 	caste_type = XENO_CASTE_CRUSHER
 	name = XENO_CASTE_CRUSHER
 	desc = "A huge alien with an enormous armored crest."
 	icon_size = 64
 	icon_state = "Crusher Walking"
-	plasma_types = list(PLASMA_CHITIN)
 	tier = 3
 	drag_delay = 6 //pulling a big dead xeno is hard
 
@@ -51,7 +52,6 @@
 	base_pixel_y = -16
 
 	rebounds = FALSE // no more fucking pinball crooshers
-	organ_value = 3000
 	base_actions = list(
 		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,
@@ -74,6 +74,14 @@
 
 	skull = /obj/item/skull/crusher
 	pelt = /obj/item/pelt/crusher
+
+/obj/item/organ/xeno/crusher
+	name = "crusher heart"
+	icon_state = "heart_t3"
+	item_state = "heart_t3"
+	research_value = 3000
+
+	xeno_organ_flags = XENO_ORGAN_STRONG|XENO_ORGAN_HARDENED|XENO_ORGAN_TACHYCARDIA
 
 // Refactored to handle all of crusher's interactions with object during charge.
 /mob/living/carbon/xenomorph/proc/handle_collision(atom/target)
@@ -290,7 +298,7 @@
 	. += "Shield: [shield_total]"
 
 /datum/behavior_delegate/crusher_base/on_update_icons()
-	if(bound_xeno.throwing || is_charging) //Let it build up a bit so we're not changing icons every single turf
+	if(HAS_TRAIT(bound_xeno, TRAIT_LAUNCHED) || is_charging) //Let it build up a bit so we're not changing icons every single turf
 		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Crusher Charging"
 		return TRUE
 

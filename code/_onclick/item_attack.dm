@@ -27,16 +27,6 @@
 			return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 /mob/living/attackby(obj/item/I, mob/user)
-	/* Commented surgery code, proof of concept. Would need to tweak human attackby to prevent duplication; mob/living don't have separate limb objects.
-	if((user.mob_flags & SURGERY_MODE_ON) && user.a_intent & (INTENT_HELP|INTENT_DISARM))
-		safety = TRUE
-		var/datum/surgery/current_surgery = active_surgeries[user.zone_selected]
-		if(current_surgery)
-			if(current_surgery.attempt_next_step(user, I))
-				return TRUE
-		else if(initiate_surgery_moment(I, src, null, user))
-			return TRUE
-	*/
 	if(HAS_TRAIT(user, TRAIT_HAULED))
 		return
 	if(istype(I) && ismob(user))

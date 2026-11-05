@@ -158,7 +158,7 @@
 			return
 		if(human_target.a_intent != INTENT_HELP)
 			user.visible_message(SPAN_WARNING("[human_target] stops [user] from showing them [src]"),
-			SPAN_WARNING("[human_target] stops you from showing them the [src]."))
+			SPAN_WARNING("[human_target] stops you from showing them [src]."))
 			COOLDOWN_START(src, show_paper_cooldown, 3 SECONDS)
 			return
 
@@ -799,6 +799,10 @@
 	switch(note_type)
 		if("synthesis")
 			var/datum/chemical_reaction/reaction_generated = GLOB.chemical_reactions_list[chemical_to_generate.id]
+			if(!reaction_generated && istype(chemical_to_generate, /datum/reagent/generated))
+				var/list/required_reagents = chemical_to_generate.reagent_recipe_hint ? list(chemical_to_generate.reagent_recipe_hint) : null
+				var/list/locked_reagents = chemical_to_generate.locked_reagent ? list(chemical_to_generate.locked_reagent) : null
+				reaction_generated = chemical_to_generate.generate_assoc_recipe(null, required_reagents, locked_reagents)
 			icon_state = "paper_wy_partial_report"
 			if(!contract)
 				name = "Synthesis of [chemical_to_generate.name]"
@@ -806,17 +810,24 @@
 				name = "Contract for [chemical_to_generate.name]"
 				icon_state = "paper_wy_contract"
 			txt += "[name] </H2></center>"
+			if(!reaction_generated || !length(reaction_generated.required_reagents))
+				txt += "«[chemical_to_generate.name]» reagent data has been corrupted. Request a contract reprint or contact Weyland-Yutani.<BR>\n"
+				txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
+				info = txt
+				return
 			txt += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [chemical_to_generate.name], was successfully synthesized using the following formula:<BR>\n<BR>\n"
 			for(var/I in reaction_generated.required_reagents)
 				var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
 				var/U = reaction_generated.required_reagents[I]
-				txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
+				var/reagent_name = R ? R.name : "Unknown reagent ([I])"
+				txt += "<font size = \"2\"><I> - [U] [reagent_name]</I></font><BR>\n"
 			if(LAZYLEN(reaction_generated.required_catalysts))
 				txt += "<BR>\nWhile using the following catalysts: <BR>\n<BR>\n"
 				for(var/I in reaction_generated.required_catalysts)
 					var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
 					var/U = reaction_generated.required_catalysts[I]
-					txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
+					var/reagent_name = R ? R.name : "Unknown reagent ([I])"
+					txt += "<font size = \"2\"><I> - [U] [reagent_name]</I></font><BR>\n"
 			if(full_report)
 				txt += "<BR>Chemical has following reaction indicators:"
 				if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_BUBBLING))
@@ -992,7 +1003,7 @@
 			info += "CLASSIFIED:<I> Clearance level [S.gen_tier] required to read the database entry.</I><BR>\n"
 			icon_state = "paper_wy_partial_report"
 			valid_report = FALSE
-	else if(S.chemclass == CHEM_CLASS_SPECIAL && !GLOB.chemical_data.clearance_x_access && !info_only)
+	else if(S.chemclass >= CHEM_CLASS_XENO_BASIC && S.chemclass <= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.clearance_x_access && !info_only)
 		info += "CLASSIFIED:<I> Clearance level <B>X</B> required to read the database entry.</I><BR>\n"
 		icon_state = "paper_wy_partial_report"
 		valid_report = FALSE
@@ -1020,14 +1031,14 @@
 		info += "<I>No details on this reagent could be found in the database.</I><BR>\n"
 		icon_state = "paper_wy_synthesis"
 		valid_report = FALSE
-	if(S.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[S.id] && !info_only)
+	if(S.chemclass >= CHEM_CLASS_XENO_BASIC && !GLOB.chemical_data.chemical_identified_list[S.id] && !info_only)
 		info += "<BR><I>Saved emission spectrum of [S.name] to the database.</I><BR>\n"
 	info += "<BR><B>Composition Details:</B><BR>\n"
 	if(GLOB.chemical_reactions_list[S.id])
 		var/datum/chemical_reaction/C = GLOB.chemical_reactions_list[S.id]
 		for(var/I in C.required_reagents)
 			var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
-			if(R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only && R.chemclass != CHEM_CLASS_HYDRO)
+			if(R.chemclass >= CHEM_CLASS_XENO_BASIC && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only)
 				info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 				completed = FALSE
 				valid_report = FALSE
@@ -1038,7 +1049,7 @@
 			info += "<BR>Reaction would require the following catalysts:<BR>\n"
 			for(var/I in C.required_catalysts)
 				var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
-				if(R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only)
+				if(R.chemclass >= CHEM_CLASS_XENO_BASIC && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only)
 					info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 					completed = FALSE
 				else
@@ -1057,7 +1068,7 @@
 		if(!S.properties) //Safety for empty reagents
 			completed = FALSE
 			valid_report = FALSE
-		if(S.chemclass == CHEM_CLASS_SPECIAL && GLOB.chemical_data.clearance_x_access)
+		if(S.chemclass >= CHEM_CLASS_XENO_BASIC && S.chemclass <= CHEM_CLASS_SPECIAL && GLOB.chemical_data.clearance_x_access)
 			completed = TRUE
 
 	data = S

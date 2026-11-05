@@ -161,6 +161,12 @@ SUBSYSTEM_DEF(hijack)
 	if(!SSticker?.mode?.is_in_endgame)
 		return
 
+	if(SSticker.current_state == GAME_STATE_FINISHED)
+		if(hijack_status == HIJACK_OBJECTIVES_DOCKED && SSticker.mode.round_finished == MODE_INFESTATION_X_MAJOR)
+			addtimer(CALLBACK(src, PROC_REF(announce_station_undocking)), 5 SECONDS)
+		can_fire = FALSE
+		return
+
 	if(hijack_status < HIJACK_OBJECTIVES_STARTED)
 		// First fire
 		hijack_status = HIJACK_OBJECTIVES_STARTED
@@ -502,7 +508,7 @@ SUBSYSTEM_DEF(hijack)
 		if(lifeboat && lifeboat.available)
 			lifeboat.status = LIFEBOAT_INACTIVE
 
-/// Unlocks all marine dropship and optionally ert dropship doors on the mainship
+/// Unlocks all marine dropship, escape pod, and optionally ert dropship doors on the mainship
 /datum/controller/subsystem/hijack/proc/unlock_all_dropship_doors(include_ert=TRUE)
 	for(var/obj/docking_port/mobile/shuttle as anything in SSshuttle.mobile)
 		var/turf/location = get_turf(shuttle)
@@ -517,6 +523,10 @@ SUBSYSTEM_DEF(hijack)
 			var/obj/docking_port/mobile/emergency_response/dropship = shuttle
 			dropship.control_doors("unlock")
 			continue
+		if(istype(shuttle, /obj/docking_port/mobile/crashable/escape_shuttle))
+			var/obj/docking_port/mobile/crashable/escape_shuttle/escape_shuttle = shuttle
+			if(escape_shuttle.door_handler.status == SHUTTLE_DOOR_LOCKED)
+				escape_shuttle.door_handler.control_doors("force-unlock")
 
 /// Changes whether the mobile docking_ports on the mainship are operating (launchable)
 /datum/controller/subsystem/hijack/proc/allow_dropship_launching(include_marine_dropship=FALSE)
@@ -1212,3 +1222,8 @@ SUBSYSTEM_DEF(hijack)
 	hijack_status = HIJACK_OBJECTIVES_DOCKED
 	shipwide_ai_announcement(spaceport.docking_message, spaceport.name, sound('sound/misc/notice2.ogg'))
 	SSshuttle.action_load(shuttle, stationary)
+
+/// Announces that the station is abandoning the ship after it has been overrun
+/datum/controller/subsystem/hijack/proc/announce_station_undocking()
+	shipwide_ai_announcement(spaceport.undocking_message, spaceport.name, sound('sound/misc/notice2.ogg'))
+	xeno_announcement(SPAN_XENOANNOUNCE("My children. The hosts beyond have severed their passage to this metal hive. No more will come to oppose you."), "everything", SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))

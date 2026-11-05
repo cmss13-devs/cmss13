@@ -311,7 +311,7 @@
 /datum/action/xeno_action/activable/valkyrie_rage
 	name = "Tantrum"
 	action_icon_state = "warden_heal"
-	action_type = XENO_ACTION_CLICK
+	action_type = XENO_ACTION_QUEUE
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	macro_path = /datum/action/xeno_action/verb/verb_prae_rage
 	plasma_cost = 100

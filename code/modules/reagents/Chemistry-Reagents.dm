@@ -298,8 +298,14 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 			if(CHEM_CLASS_ULTRA)
 				GLOB.chemical_gen_classes_list["C6"] += id
 				GLOB.chemical_data.add_chemical_objective(src)
-			if(CHEM_CLASS_HYDRO)
-				GLOB.chemical_gen_classes_list["H1"] += id
+			if(CHEM_CLASS_XENO_BASIC)
+				GLOB.chemical_gen_classes_list["X1"] += id
+				GLOB.chemical_data.add_chemical_objective(src)
+			if(CHEM_CLASS_XENO_SPECIALIZED)
+				GLOB.chemical_gen_classes_list["X2"] += id
+				GLOB.chemical_data.add_chemical_objective(src)
+			if(CHEM_CLASS_XENO_ROYAL)
+				GLOB.chemical_gen_classes_list["X3"] += id
 				GLOB.chemical_data.add_chemical_objective(src)
 		GLOB.chemical_gen_classes_list["C"] += id
 	if(gen_tier)

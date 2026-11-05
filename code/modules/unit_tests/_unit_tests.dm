@@ -79,12 +79,14 @@
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
 // Unit tests
+#include "abstract_xenomorph.dm"
 #include "areas_unpowered.dm"
 #include "autowiki.dm"
 #include "check_runtimes.dm"
 #include "create_and_destroy.dm"
 #include "duplicate_sprite_accessories.dm"
 #include "emote_panels.dm"
+#include "savefile_importing.dm"
 #include "map_sanity.dm"
 #include "missing_icons.dm"
 #include "resist.dm"
@@ -94,7 +96,9 @@
 #include "subsystem_init.dm"
 #include "tgui_create_message.dm"
 #include "timer_sanity.dm"
+#include "toggle_crest.dm"
 #include "tutorials.dm"
+#include "weed_tests.dm"
 #include "xeno_strains.dm"
 #include "movement\collisions_can_pass_flags.dm"
 #include "movement\collisions_cardinal.dm"
@@ -104,6 +108,11 @@
 #include "movement\link_blocked_cardinal.dm"
 #include "movement\link_blocked_diagonal.dm"
 #include "movement\movement_helpers.dm"
+#include "pheromones\transmit_castes.dm"
+#include "pheromones\transmit_hive.dm"
+#include "pheromones\transmit_permutation.dm"
+#include "pheromones\pheromone_helpers.dm"
+#include "helpers\unsorted.dm"
 
 // Unit tests backend
 #include "focus_only_tests.dm"

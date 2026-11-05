@@ -533,7 +533,7 @@
 		return ..()
 
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_WARNING("You do not know how to attach the [attacking_item] to the [src]."))
+		to_chat(user, SPAN_WARNING("You do not know how to attach the [attacking_item] to [src]."))
 		return
 
 	if(blades_enabled == FALSE)
@@ -541,7 +541,7 @@
 
 	var/obj/item/bracer_attachments/bracer_attachment = attacking_item
 	if(!bracer_attachment.attached_weapon_type)
-		CRASH("[key_name(user)] attempted to attach the [bracer_attachment] to the [src], with no valid attached_weapon.")
+		CRASH("[key_name(user)] attempted to attach the [bracer_attachment] to [src], with no valid attached_weapon.")
 
 	if(left_bracer_attachment && right_bracer_attachment)
 		to_chat(user, SPAN_WARNING("You already have the maximum amount of bracer attachments on [src]."))
@@ -878,6 +878,7 @@
 	var/decloak_timer = (DECLOAK_STANDARD * force_multiplier)
 	if(forced)
 		cloak_malfunction = world.time + decloak_timer
+		playsound(user.loc, get_sfx("pred_decloak"), 60, 1, 10, falloff = 3)
 
 	REMOVE_TRAIT(user, TRAIT_CLOAKED, TRAIT_SOURCE_EQUIPMENT(WEAR_HANDS))
 	log_game("[key_name_admin(user)] has disabled their cloaking device.")

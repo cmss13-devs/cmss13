@@ -4,13 +4,11 @@
 	var/anchored = FALSE
 	var/drag_delay = 3 //delay (in deciseconds) added to mob's move_delay when pulling it.
 	var/l_move_time = 1
-	var/throwing = 0
 	var/throw_speed = SPEED_FAST // Speed that an atom will go when thrown by a carbon mob
 	var/throw_range = 7
 	var/cur_speed = MIN_SPEED // Current speed of an atom (account for speed when launched/thrown as well)
 	var/mob/pulledby = null
 	var/rebounds = FALSE
-	var/rebounding = FALSE // whether an object that was launched was rebounded (to prevent infinite recursive loops from wall bouncing)
 	var/list/mob/living/buckled_mobs
 	var/mob/living/buckled_mob // mob buckled to this mob
 	/// Bed-like behaviour, forces mob.lying = buckle_lying if not set to [NO_BUCKLE_LYING].

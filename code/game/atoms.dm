@@ -370,7 +370,11 @@ directive is properly returned.
 /atom/proc/flamer_fire_act(dam = BURN_LEVEL_TIER_1, datum/cause_data/flame_cause_data)
 	return
 
+//Xeno Abilities Proc's.
 /atom/proc/acid_spray_act()
+	return
+
+/atom/proc/corrosive_acid_act()
 	return
 
 
@@ -815,5 +819,3 @@ Parameters are passed from New.
 	. += "[VV_HREF_TARGETREF(refid, VV_HK_AUTO_RENAME, "<b id='name'>[src]</b>")]"
 	. += "<br><font size='1'><a href='byond://?_src_=vars;[HrefToken()];rotatedatum=[refid];rotatedir=left'><<</a> <a href='byond://?_src_=vars;[HrefToken()];datumedit=[refid];varnameedit=dir' id='dir'>[dir2text(dir) || dir]</a> <a href='byond://?_src_=vars;[HrefToken()];rotatedatum=[refid];rotatedir=right'>>></a></font>"
 
-/atom/Exited(atom/movable/AM, direction)
-	SEND_SIGNAL(src, COMSIG_ATOM_EXITED, AM, direction)

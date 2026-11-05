@@ -1,0 +1,357 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/floor/kutjevo/tan/alt_edge/east,
+/area/template_noop)
+"b" = (
+/obj/structure/closet/crate,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/kutjevo/plate,
+/area/template_noop)
+"d" = (
+/turf/template_noop,
+/area/template_noop)
+"e" = (
+/obj/structure/cargo_container/watatsumi/left,
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"f" = (
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor/kutjevo/tan/alt_edge,
+/area/template_noop)
+"g" = (
+/obj/structure/cargo_container/hybrisa/containersextended/medicalleft,
+/turf/open/floor/almayer/research/containment/floor2,
+/area/template_noop)
+"h" = (
+/obj/structure/cargo_container/hybrisa/containersextended/medicalright,
+/turf/open/floor/almayer/research/containment/floor2,
+/area/template_noop)
+"i" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 12;
+	pixel_x = -4
+	},
+/turf/open/floor/kutjevo/colors/orange,
+/area/template_noop)
+"j" = (
+/turf/open/floor/almayer/research/containment/floor2/west,
+/area/template_noop)
+"k" = (
+/obj/structure/cargo_container/wy2/left,
+/turf/open/floor/kutjevo/colors/orange,
+/area/template_noop)
+"l" = (
+/obj/structure/cargo_container/hybrisa/containersextended/kelland_right,
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"m" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 2;
+	pixel_x = -10
+	},
+/turf/open/floor/kutjevo/plate,
+/area/template_noop)
+"o" = (
+/turf/open/floor/kutjevo/tan/alt_edge/north,
+/area/template_noop)
+"q" = (
+/turf/open/floor/kutjevo/colors/orange,
+/area/template_noop)
+"r" = (
+/obj/structure/cargo_container/hd/left,
+/turf/open/floor/almayer/research/containment/floor2/west,
+/area/template_noop)
+"s" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/walkman,
+/obj/item/device/cassette_tape/pop3,
+/turf/open/floor/kutjevo/tan/alt_edge/west,
+/area/template_noop)
+"t" = (
+/obj/structure/bed/chair{
+	pixel_y = 3;
+	pixel_x = 2
+	},
+/turf/open/floor/kutjevo/tan/alt_edge/west,
+/area/template_noop)
+"u" = (
+/turf/open/floor/kutjevo/tan/alt_edge/west,
+/area/template_noop)
+"v" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_y = 4;
+	pixel_x = 8
+	},
+/obj/structure/largecrate/random/mini/small_case/c{
+	pixel_y = -2;
+	pixel_x = -10
+	},
+/turf/open/floor/kutjevo/tan/alt_edge/west,
+/area/template_noop)
+"w" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 4;
+	pixel_x = -3
+	},
+/turf/open/floor/almayer/research/containment/floor2,
+/area/template_noop)
+"x" = (
+/obj/structure/cargo_container/hd/right{
+	layer = 3.02
+	},
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"z" = (
+/obj/structure/cargo_container/watatsumi/mid,
+/turf/open/floor/kutjevo/colors/orange,
+/area/template_noop)
+"B" = (
+/obj/structure/cargo_container/watatsumi/right,
+/turf/open/floor/kutjevo/colors/orange,
+/area/template_noop)
+"C" = (
+/obj/structure/largecrate/random/barrel/black,
+/turf/open/floor/almayer/research/containment/floor2,
+/area/template_noop)
+"D" = (
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"E" = (
+/turf/open/floor/kutjevo/tan/alt_edge,
+/area/template_noop)
+"F" = (
+/obj/structure/cargo_container/hybrisa/containersextended/kelland_left,
+/turf/open/floor/kutjevo/colors/orange,
+/area/template_noop)
+"G" = (
+/obj/structure/closet/crate,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"H" = (
+/obj/item/tool/warning_cone,
+/turf/open/floor/almayer/research/containment/floor2/west,
+/area/template_noop)
+"I" = (
+/obj/structure/largecrate/supply/supplies/flares{
+	pixel_y = 3;
+	pixel_x = 3
+	},
+/turf/open/floor/almayer/research/containment/floor2,
+/area/template_noop)
+"J" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/research/containment/floor2/west,
+/area/template_noop)
+"K" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"L" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 9;
+	pixel_x = -8
+	},
+/turf/open/floor/kutjevo/tan/alt_edge/east,
+/area/template_noop)
+"M" = (
+/turf/open/floor/almayer/research/containment/floor2,
+/area/template_noop)
+"O" = (
+/obj/structure/cargo_container/hd/mid{
+	layer = 3.02
+	},
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"P" = (
+/turf/open/floor/kutjevo/plate,
+/area/template_noop)
+"Q" = (
+/obj/structure/cargo_container/wy2/mid,
+/turf/open/floor/kutjevo/colors/orange,
+/area/template_noop)
+"R" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/kutjevo/colors/orange,
+/area/template_noop)
+"S" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 3;
+	pixel_x = -12
+	},
+/obj/item/tool/warning_cone{
+	pixel_y = 5;
+	pixel_x = 11
+	},
+/turf/open/floor/kutjevo/tan/alt_edge/north,
+/area/template_noop)
+"T" = (
+/obj/structure/largecrate/random/barrel/yellow{
+	pixel_y = 4;
+	pixel_x = -3
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+"U" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/kutjevo/colors/orange,
+/area/template_noop)
+"V" = (
+/obj/vehicle/powerloader{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/colors/orange,
+/area/template_noop)
+"W" = (
+/obj/structure/largecrate/random/case/small,
+/obj/structure/largecrate/random/mini/small_case/b{
+	pixel_y = 10;
+	pixel_x = -3;
+	layer = 3.02
+	},
+/turf/open/floor/almayer/research/containment/floor2/west,
+/area/template_noop)
+"X" = (
+/obj/structure/closet/crate/construction,
+/obj/item/storage/belt/gun/m4a3/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/turf/open/floor/almayer/research/containment/floor2,
+/area/template_noop)
+"Y" = (
+/obj/structure/largecrate/random/mini{
+	pixel_x = 5;
+	pixel_y = 2
+	},
+/turf/open/floor/kutjevo/colors/orange,
+/area/template_noop)
+"Z" = (
+/obj/structure/cargo_container/wy2/right,
+/turf/open/floor/kutjevo/tan,
+/area/template_noop)
+
+(1,1,1) = {"
+d
+a
+L
+a
+a
+a
+d
+"}
+(2,1,1) = {"
+d
+b
+j
+r
+W
+m
+o
+"}
+(3,1,1) = {"
+d
+M
+k
+O
+U
+w
+o
+"}
+(4,1,1) = {"
+E
+M
+Q
+x
+F
+C
+o
+"}
+(5,1,1) = {"
+E
+M
+Z
+T
+l
+X
+o
+"}
+(6,1,1) = {"
+E
+M
+q
+D
+q
+M
+o
+"}
+(7,1,1) = {"
+f
+M
+q
+D
+q
+M
+o
+"}
+(8,1,1) = {"
+d
+M
+i
+K
+Y
+M
+o
+"}
+(9,1,1) = {"
+d
+M
+G
+D
+e
+I
+d
+"}
+(10,1,1) = {"
+d
+M
+R
+D
+z
+g
+S
+"}
+(11,1,1) = {"
+E
+M
+V
+D
+B
+h
+o
+"}
+(12,1,1) = {"
+d
+P
+j
+H
+J
+P
+o
+"}
+(13,1,1) = {"
+d
+u
+u
+t
+s
+v
+d
+"}

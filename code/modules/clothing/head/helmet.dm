@@ -141,7 +141,7 @@
 
 /obj/item/clothing/head/helmet/roman
 	name = "\improper imperial galea helmet"
-	desc = "An extremely old helmet that was used by Roman heavy infantry units called the Legionares."
+	desc = "An extremely old helmet that was used by Roman heavy infantry units called the Legionary."
 	icon_state = "legionary_helm"
 	item_state = "legionary_helm"
 	icon = 'icons/obj/items/clothing/hats/misc_ert_colony.dmi'
@@ -161,7 +161,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 
 /obj/item/clothing/head/helmet/roman/centurion
-	desc = "An extremely old helmet that was used by Roman heavy infantry units called the Legionares. This one has a crest indicating it was used by Centurions."
+	desc = "An extremely old helmet that was used by Roman heavy infantry units called the Legionary. This one has a crest indicating it was used by Centurions."
 	icon_state = "centurion_helm"
 	item_state = "centurion_helm"
 	worn_x_dimension = 64
@@ -579,18 +579,18 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		return
 
 	if(istype(attacking_item, /obj/item/ammo_magazine) && world.time > helmet_bash_cooldown && user)
-		var/obj/item/ammo_magazine/M = attacking_item
+		var/obj/item/ammo_magazine/magazine = attacking_item
 		var/ammo_level = "more than half full."
 		playsound(user, 'sound/items/trayhit1.ogg', 15, FALSE)
-		if(M.current_rounds == (M.max_rounds/2))
+		if(magazine.current_rounds == (magazine.max_rounds/2))
 			ammo_level = "half full."
-		if(M.current_rounds < (M.max_rounds/2))
+		if(magazine.current_rounds < (magazine.max_rounds/2))
 			ammo_level = "less than half full."
-		if(M.current_rounds < (M.max_rounds/6))
+		if(magazine.current_rounds < (magazine.max_rounds/6))
 			ammo_level = "almost empty."
-		if(M.current_rounds == 0)
+		if(magazine.current_rounds == 0)
 			ammo_level = "empty. Uh oh."
-		user.visible_message("[user] bashes [M] against their helmet", "You bash [M] against your helmet. It is [ammo_level]")
+		user.visible_message("[user] bashes [magazine] against their helmet", "You bash [magazine] against your helmet. It is [ammo_level].")
 		helmet_bash_cooldown = world.time + 20 SECONDS
 		return
 
@@ -598,7 +598,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		var/obj/item/device/helmet_visor/new_visor = attacking_item
 
 		if(!new_visor.can_attach_to(src))
-			to_chat(user, SPAN_NOTICE("The [new_visor] does not fit on the [src]."))
+			to_chat(user, SPAN_NOTICE("[new_visor] does not fit on [src]."))
 			return
 
 		if(length(inserted_visors) >= max_inserted_visors)
@@ -613,7 +613,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			return
 
 		inserted_visors += new_visor
-		to_chat(user, SPAN_NOTICE("You connect [new_visor] to the [src]."))
+		to_chat(user, SPAN_NOTICE("You connect [new_visor] to [src]."))
 		new_visor.forceMove(src)
 		if(!(locate(/datum/action/item_action/cycle_helmet_huds) in actions))
 			var/datum/action/item_action/cycle_helmet_huds/new_action = new(src)
@@ -1062,6 +1062,15 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "M11 pattern marine"
 
+/obj/item/clothing/head/helmet/marine/leader/mod
+	name = "\improper M11-R pattern helmet"
+	desc = "An M11 helmet fitted with leather banding, a nonfunctional external comms module, and a second HUD optic mount. Its plating is slightly thinner to make room for the extra mount."
+	icon_state = "vsl_helmet"
+	specialty = "M11-R pattern marine"
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	max_inserted_visors = 2
+
 /obj/item/clothing/head/helmet/marine/rto
 	name = "\improper M12 pattern dust helmet"
 	desc = "An experimental brain-bucket. A dust ruffle hangs from back instead of the standard lobster shell design. Moderately better at deflecting blunt objects at the cost of humiliation, can also hold a second visor optic. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your fantastic leadership."
@@ -1355,7 +1364,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	specialty = "MK30 tactical"
-	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/pilot, new /obj/item/device/helmet_visor/medical/advanced)
 	inserted_visors = list(new /obj/item/device/helmet_visor/po_visor)
 	max_inserted_visors = 1
 
@@ -1372,6 +1381,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
 	)
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/pilot, new /obj/item/device/helmet_visor/medical/advanced)
 
 /obj/item/clothing/head/helmet/marine/ghillie
 	name = "\improper M45 ghillie helmet"
@@ -1873,7 +1883,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	flags_inventory = NO_FLAGS
-	flags_inv_hide = HIDEEARS|HIDETOPHAIR
+	flags_inv_hide = HIDEEARS
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'

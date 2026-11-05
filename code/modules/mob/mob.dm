@@ -487,10 +487,10 @@
 	if ( QDELETED(AM) || !usr || src==AM || !isturf(loc) || !isturf(AM.loc) ) //if there's no person pulling OR the person is pulling themself OR the object being pulled is inside something: abort!
 		return
 
-	if (AM.anchored || AM.throwing)
+	if (AM.anchored || HAS_TRAIT(AM, TRAIT_LAUNCHED))
 		return
 
-	if(throwing || is_mob_incapacitated())
+	if(HAS_TRAIT(src, TRAIT_LAUNCHED) || is_mob_incapacitated())
 		return
 
 	if(HAS_TRAIT(src, TRAIT_HAULED))
@@ -523,10 +523,6 @@
 		animation_attack_on(AM)
 		playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 		flick_attack_overlay(AM, "grab")
-
-	if(!QDELETED(AM.pulledby) && !QDELETED(M))
-		visible_message(SPAN_WARNING("[src] has broken [AM.pulledby]'s grip on [M]!"), null, null, 5)
-		AM.pulledby.stop_pulling()
 
 	var/pull_response = AM.pull_response(src)
 	if(!pull_response) // If I'm not allowed to pull you I won't. Stop here.
@@ -563,6 +559,11 @@
 			return
 	else if(istype(AM, /obj))
 		AM.add_fingerprint(src)
+
+	if(!QDELETED(AM.pulledby) && AM.pulledby != src)
+		var/mob/previous_puller = AM.pulledby
+		visible_message(SPAN_WARNING("[src] has broken [AM.pulledby]'s grip on [M]!"), null, null, 5)
+		previous_puller.stop_pulling()
 
 	pulling = AM
 	AM.pulledby = src

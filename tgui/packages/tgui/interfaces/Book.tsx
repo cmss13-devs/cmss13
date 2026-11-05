@@ -145,24 +145,35 @@ export const Book = () => {
                   left="8px"
                 />
               </Stack>
-              {pages.length && (
-                <>
-                  {page > 0 && (
-                    <Box
-                      className="PageTurn Backward"
+              {pages.length > 1 && (
+                <Stack
+                  className="PageNavigation"
+                  align="center"
+                  justify="space-between"
+                >
+                  <Stack.Item>
+                    <Button
+                      icon="chevron-left"
+                      disabled={page === 0}
                       onClick={() => setPage((page) => page - 1)}
-                    />
-                  )}
-                  {page + 1 < pages.length && (
-                    <Box
-                      className="PageTurn Forward"
-                      onClick={() => {
-                        setPage((page) => page + 1);
-                      }}
-                      style={{ right: previewing ? '455px' : '' }}
-                    />
-                  )}
-                </>
+                    >
+                      Previous page
+                    </Button>
+                  </Stack.Item>
+                  <Stack.Item>
+                    Page {page + 1} of {pages.length}
+                  </Stack.Item>
+                  <Stack.Item>
+                    <Button
+                      icon="chevron-right"
+                      iconPosition="right"
+                      disabled={page + 1 === pages.length}
+                      onClick={() => setPage((page) => page + 1)}
+                    >
+                      Next page
+                    </Button>
+                  </Stack.Item>
+                </Stack>
               )}
             </Stack>
           </Stack.Item>

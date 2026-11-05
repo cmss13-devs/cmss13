@@ -785,19 +785,44 @@
 			ammo_travelling_time = max(ammo_travelling_time - 20, 10)
 			break
 
+	var/list/possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
+	var/turf/impact = pick(possible_turfs)
+	var/obj/effect/overlay/temp/dropship_reticle/direct/impact_overlay
+	if(impact)
+		impact_overlay = new /obj/effect/overlay/temp/dropship_reticle/direct(impact)
+		if(GLOB.huds[MOB_HUD_DROPSHIP])
+			for(var/mob/pilot as anything in GLOB.huds[MOB_HUD_DROPSHIP].hudusers)
+				if(pilot)
+					impact_overlay.update_visibility_for_mob(pilot)
+
 	msg_admin_niche("[key_name(user)] is direct-firing [SA] onto [selected_target] at ([target_turf.x],[target_turf.y],[target_turf.z]) [ADMIN_JMP(target_turf)]")
+	if(SA.laser_guided && istype(selected_target, /obj/effect/overlay/temp/laser_target/tactical))
+		var/obj/effect/overlay/temp/laser_target/tactical/mark = selected_target
+		if(mark.marked_target)
+			guide_missile(mark, SA, user, ammo_travelling_time, ammo_max_inaccuracy, impact, impact_overlay)
+			return
 	if(ammo_travelling_time && !istype(SA, /obj/structure/ship_ammo/rocket/thermobaric))
 		var/total_seconds = max(floor(ammo_travelling_time/10),1)
 		for(var/i in 0 to total_seconds)
 			sleep(10)
 			if(!selected_target || !selected_target.loc)//if laser disappeared before we reached the target,
 				ammo_accuracy_range++ //accuracy decreases
+				ammo_accuracy_range = min(ammo_accuracy_range, ammo_max_inaccuracy)
+				QDEL_NULL(impact_overlay)
+				possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
+				impact = pick(possible_turfs)
+				if(impact)
+					impact_overlay = new /obj/effect/overlay/temp/dropship_reticle/direct(impact)
+					if(GLOB.huds[MOB_HUD_DROPSHIP])
+						for(var/mob/pilot as anything in GLOB.huds[MOB_HUD_DROPSHIP].hudusers)
+							if(pilot)
+								impact_overlay.update_visibility_for_mob(pilot)
 
 	// clamp back to maximum inaccuracy
 	ammo_accuracy_range = min(ammo_accuracy_range, ammo_max_inaccuracy)
-
-	var/list/possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
-	var/turf/impact = pick(possible_turfs)
+	if(!impact)
+		possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
+		impact = pick(possible_turfs)
 
 	if(ammo_travelling_time && istype(SA, /obj/structure/ship_ammo/rocket/thermobaric))
 		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1, 15)
@@ -811,7 +836,54 @@
 	new /obj/effect/overlay/temp/blinking_laser (impact)
 	sleep(10)
 	SA.source_mob = user
-	SA.detonate_on(impact, src)
+	SA.detonate_on(impact, src, user)
+	QDEL_NULL(impact_overlay)
+
+/// Reacquire only the original mark. Losing it sends the missile toward its last known position.
+/obj/structure/dropship_equipment/weapon/proc/guide_missile(obj/effect/overlay/temp/laser_target/tactical/mark, obj/structure/ship_ammo/ammo, mob/user, travel_time, lost_accuracy, turf/impact, obj/effect/overlay/temp/dropship_reticle/direct/impact_overlay)
+	var/mob/living/target = mark.marked_target
+	var/turf/last_target_turf = get_turf(mark)
+	// Preserve the initial scatter
+	var/offset_x = impact.x - last_target_turf.x
+	var/offset_y = impact.y - last_target_turf.y
+	mark.change_incoming_missiles(1)
+	to_chat(target, SPAN_HIGHDANGER("Something is incoming from above! Find cover quickly!"))
+	playsound(target, 'sound/effects/IncomingRocket.ogg', 70, TRUE)
+	var/lock_lost = FALSE
+	var/warning_time = world.time + travel_time
+	var/arrival_time = warning_time + 1 SECONDS
+	var/obj/effect/overlay/temp/blinking_laser/impact_warning
+	var/warning_started = FALSE
+	while(TRUE)
+		if(!lock_lost)
+			if(QDELETED(mark) || !mark.can_track_target() || !mark.signal?.valid_signal() || !cas_direct_fire_visible(target))
+				lock_lost = TRUE
+				impact = pick(RANGE_TURFS(lost_accuracy, last_target_turf))
+				if(!QDELETED(mark))
+					mark.change_incoming_missiles(-1)
+			else
+				last_target_turf = get_turf(target)
+				impact = locate(clamp(last_target_turf.x + offset_x, 1, world.maxx), clamp(last_target_turf.y + offset_y, 1, world.maxy), last_target_turf.z)
+		if(!QDELETED(impact_overlay))
+			impact_overlay.update_guidance(impact, !lock_lost)
+		if(!warning_started && world.time >= warning_time && !QDELETED(ammo))
+			warning_started = TRUE
+			if(ammo.warning_sound)
+				playsound(impact, ammo.warning_sound, ammo.warning_sound_volume, TRUE, 15)
+			impact_warning = new(impact)
+		if(!QDELETED(impact_warning))
+			impact_warning.forceMove(impact)
+		if(world.time >= arrival_time)
+			break
+		sleep(min(0.2 SECONDS, arrival_time - world.time))
+	QDEL_NULL(impact_warning)
+	QDEL_NULL(impact_overlay)
+	if(!lock_lost && !QDELETED(mark))
+		mark.change_incoming_missiles(-1)
+	if(QDELETED(ammo) || !impact || !cas_direct_fire_visible(impact) || protected_by_pylon(TURF_PROTECTION_CAS, impact))
+		return
+	ammo.source_mob = user
+	ammo.detonate_on(impact, src)
 
 /obj/structure/dropship_equipment/weapon/proc/open_fire_firemission(obj/selected_target, mob/user = usr)
 	set waitfor = 0
@@ -835,7 +907,7 @@
 	var/turf/impact = pick(possible_turfs)
 	sleep(3)
 	SA.source_mob = user
-	SA.detonate_on(impact, src)
+	SA.detonate_on(impact, src, user)
 
 /obj/structure/dropship_equipment/weapon/heavygun
 	name = "\improper GAU-21 30mm cannon"
@@ -1474,4 +1546,4 @@
 	var/turf/impact = pick(possible_turfs)
 	sleep(3)
 	SA.source_mob = user
-	SA.detonate_on(impact, src)
+	SA.detonate_on(impact, src, user)

@@ -5829,6 +5829,22 @@
 /obj/structure/platform_decoration/metal/almayer_smooth/north,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/port_fore)
+"aoA" = (
+/obj/structure/machinery/door/airlock/almayer/command/reinforced{
+	name = "\improper Combat Information Center"
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "CIC Lockdown";
+	name = "\improper Combat Information Center Blast Door"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "CIC_Conference";
+	name = "\improper CIC Conference Shutters";
+	dir = 4
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/command/cicconference)
 "aoB" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 8
@@ -39978,7 +39994,8 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/office/lobby_door,
 /obj/structure/machinery/door/airlock/almayer/glass{
 	name = "\improper Weyland-Yutani Office Reception";
-	dir = 2
+	dir = 2;
+	id_tag = "cl_office_door"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/corporateliaison)
@@ -67048,12 +67065,12 @@
 /area/almayer/underdeck/req)
 "jnX" = (
 /obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
 	id = "CIC Lockdown";
 	name = "\improper Combat Information Center Blast Door"
 	},
-/obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/plating,
 /area/almayer/command/cic)
 "jot" = (
@@ -71737,6 +71754,11 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
 	name = "\improper Combat Information Center"
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "CIC Lockdown";
+	name = "\improper Combat Information Center Blast Door"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "CIC_Conference";
@@ -84823,7 +84845,8 @@
 	},
 /obj/item/desk_bell{
 	pixel_y = 11;
-	pixel_x = -7
+	pixel_x = -7;
+	anchored = 1
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	id = "IO Lab Shutters";
@@ -203649,7 +203672,7 @@ atb
 aAs
 lso
 aAs
-yaX
+aoA
 aAs
 atb
 awz

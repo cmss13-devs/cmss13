@@ -482,9 +482,6 @@
 //ATTACK WITH BOTH HANDS COMBO
 
 /obj/structure/machinery/m56d_hmg/auto/attack_hand(mob/living/user)
-	if(..())
-		return TRUE
-
 	try_mount_gun(user)
 
 // DISASSEMBLY

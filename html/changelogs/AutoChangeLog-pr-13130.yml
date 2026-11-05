@@ -1,4 +1,0 @@
-author: "Antlers"
-delete-after: True
-changes:
-  - bugfix: "Xenos can no longer crawl through holes in walls while incapacitated or resting by click-dragging their sprite onto the hole"

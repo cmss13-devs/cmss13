@@ -27,6 +27,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 ))
 
 /datum/preferences
+	/// The json savefile for this datum
+	var/datum/json_savefile/savefile
+
 	var/client/owner
 	var/atom/movable/screen/preview/preview_front
 	var/mob/living/carbon/human/dummy/preview_dummy
@@ -81,6 +84,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/toggles_survivor = TOGGLES_SURVIVOR_DEFAULT
 	var/toggles_insert = TOGGLES_INSERT_DEFAULT
 	var/toggles_ert_pred = TOGGLES_ERT_GROUNDS
+	var/toggle_right_click_menu = TRUE
 	var/list/volume_preferences = list(1, 0.5, 1, 0.6) // Game, music, admin midis, lobby music (this is also set in sanitize_volume_preferences() call)
 	var/chat_display_preferences = CHAT_TYPE_ALL
 	var/item_animation_pref_level = SHOW_ITEM_ANIMATIONS_ALL
@@ -314,7 +318,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/CMTV_toggle_optout = FALSE
 
 	/// Fluff items that the user is equipped with on spawn.
-	var/list/gear
+	var/list/gear = list()
 
 	/// Loadout items that the user is equipped with on spawn.
 	VAR_PRIVATE/list/loadout = list()
@@ -340,33 +344,42 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	/// The same keybinds, but in an array of {"keybinding": /datum/keybinding/custom}
 	var/list/key_to_custom_keybind = list()
 
-/datum/preferences/New(client/C)
+/datum/preferences/New(client/owner)
 	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
-	macros = new(C, src)
-	if(istype(C))
-		owner = C
-		if(!IsGuestKey(C.key))
-			unlock_content = C.IsByondMember()
-			load_path(C.ckey)
+
+	src.owner = owner
+	macros = new(owner, src)
+
+	var/loaded = FALSE
+	if(istype(owner))
+		if(!IsGuestKey(owner.key))
+			unlock_content = owner.IsByondMember()
+			load_path(owner.ckey)
+			if(!fexists(path)) // No existing json, try to migrate and then load
+				try_savefile_tree_migration()
+				load_savefile()
+			else if(!load_savefile()) // Existing json, try loading it otherwise fallback to a migration
+				if(try_savefile_tree_migration())
+					load_savefile() // This only needs to occur after a successful migration here because the previous attempt already new'd a savefile
 			if(load_preferences())
 				if(load_character())
-					return
+					loaded = TRUE
 
-		C.tgui_say?.load()
+		owner.tgui_say?.load()
 
 	if(!ooccolor)
 		ooccolor = CONFIG_GET(string/ooc_color_default)
-	gender = pick(MALE, FEMALE)
-	real_name = random_name(gender)
-	gear = list()
+	if(!loaded)
+		gender = pick(MALE, FEMALE)
+		real_name = random_name(gender)
 
 	#ifdef QUICK_START
 	job_preference_list[JOB_CO] = HIGH_PRIORITY
 	#endif
 
-/datum/preferences/proc/client_reconnected(client/C)
-	owner = C
-	macros.owner = C
+/datum/preferences/proc/client_reconnected(client/owner)
+	src.owner = owner
+	macros.owner = owner
 
 /datum/preferences/Del()
 	. = ..()
@@ -495,9 +508,6 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Custom Loadout:</b> "
 			var/total_cost = 0
 
-			if(!islist(gear))
-				gear = list()
-
 			if(length(gear))
 				dat += "<br>"
 				for(var/i = 1; i <= length(gear); i++)
@@ -595,6 +605,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<h2><b><u>Input Settings:</u></b></h2>"
 			dat += "<b>Mode:</b> <a href='byond://?_src_=prefs;preference=hotkeys'><b>[(hotkeys) ? "Hotkeys Mode" : "Send to Chat"]</b></a><br>"
 			dat += "<b>Keybinds:</b> <a href='byond://?_src_=prefs;preference=viewmacros'><b>View Keybinds</b></a><br>"
+			dat += "<b>Right-click Contextual Menu:</b> <a href='byond://?_src_=prefs;preference=toggle_right_click_menu'><b>[(toggle_right_click_menu) ? "On" : "Off"]</b></a><br>"
 			dat += "<br><b>Say Input Style:</b> <a href='byond://?_src_=prefs;preference=inputstyle'><b>[tgui_say ? "Modern (default)" : "Legacy"]</b></a><br>"
 			dat += "<b>Say Input Color:</b> <a href='byond://?_src_=prefs;preference=inputcolor'><b>[tgui_say_light_mode ? "Lightmode" : "Darkmode (default)"]</b></a><br>"
 
@@ -1067,11 +1078,10 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 /datum/preferences/proc/assign_job_slot(mob/user, target_job)
 	var/list/slot_options = list(JOB_SLOT_RANDOMISED_TEXT = JOB_SLOT_RANDOMISED_SLOT, JOB_SLOT_CURRENT_TEXT = JOB_SLOT_CURRENT_SLOT)
-	var/savefile/S = new /savefile(path)
-	var/slot_name
 	for(var/slot in 1 to MAX_SAVE_SLOTS)
-		S.cd = "/character[slot]"
-		S["real_name"] >> slot_name
+		var/tree_key = "character[slot]"
+		var/list/save_data = savefile.tree[tree_key]
+		var/slot_name = save_data?["real_name"]
 		if(slot_name)
 			slot_options["[slot_name] (slot #[slot])"] = slot
 	var/chosen_slot = tgui_input_list(user, "Assign character for [target_job] job", "Slot assignment", slot_options)
@@ -1088,9 +1098,12 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 		if(JOB_SLOT_RANDOMISED_SLOT)
 			return JOB_SLOT_RANDOMISED_TEXT
 		if(1 to MAX_SAVE_SLOTS)
-			var/savefile/S = new /savefile(path)
-			S.cd = "/character[slot_number]"
-			return "[S["real_name"]] (slot #[slot_number])"
+			var/tree_key = "character[slot_number]"
+			var/list/save_data = savefile.tree[tree_key]
+			var/name = "EMPTY"
+			if(islist(save_data))
+				name = save_data["real_name"]
+			return "[name] (slot #[slot_number])"
 
 /datum/preferences/proc/reset_job_slots()
 	pref_job_slots = list()
@@ -1197,6 +1210,16 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 				winset(user, null, "input.focus=true")
 			else
 				winset(user, null, "input.focus=false")
+
+		if("toggle_right_click_menu")
+			if(user.client.prefs.toggle_right_click_menu)
+				user.client.prefs.toggle_right_click_menu = FALSE
+				user.client.set_right_click_menu_mode(shift_only = TRUE)
+				to_chat(user, SPAN_NOTICE("Right click no longer opens the contextual menu, it is now accessible only with [SPAN_ORANGE("SHIFT + Right Click")]."))
+			else
+				user.client.prefs.toggle_right_click_menu = TRUE
+				user.client.set_right_click_menu_mode(shift_only = FALSE)
+				to_chat(user, SPAN_NOTICE("Right click now opens the contextual menu."))
 
 		if("traits")
 			traits_picker.tgui_interact(user)
@@ -2083,8 +2106,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					if(name_error)
 						tgui_alert(user, name_error, "Invalid Name", list("OK"))
 						return
-					save_preferences()
 					save_character()
+					save_preferences() // This one writes to disk
 					save_cooldown = world.time + 50
 					to_chat(user, SPAN_WARNING(SPAN_BOLD("Successfully saved preferences.")))
 
@@ -2348,17 +2371,16 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/dat = "<body onselectstart='return false;'>"
 	dat += "<tt><center>"
 
-	var/savefile/S = new /savefile(path)
-	if(S)
+	if(savefile)
 		dat += "<b>Select a character slot to load</b><hr>"
-		var/name
 		for(var/i=1, i<=MAX_SAVE_SLOTS, i++)
-			S.cd = "/character[i]"
-			S["real_name"] >> name
+			var/tree_key = "character[i]"
+			var/list/save_data = savefile.tree[tree_key]
+			var/name = save_data?["real_name"]
 			if(!name)
 				name = "Character[i]"
-			if(i==default_slot)
-				name = "<b>[name]</b>"
+			if(i == default_slot)
+				name = "<b>> [name] <</b>"
 			dat += "<a href='byond://?_src_=prefs;preference=changeslot;num=[i];'>[name]</a><br>"
 
 	dat += "<hr>"

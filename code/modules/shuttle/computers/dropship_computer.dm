@@ -289,10 +289,9 @@
 		shuttleId = pick(alternatives)["id"]
 
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
-
-	// If the attacking xeno isn't the queen.
-	if(xeno.hive_pos != XENO_QUEEN)
-		// If the 'about to launch' alarm is playing, a xeno can whack the computer to stop it.
+	// If the attacking xeno isn't the queen, king or predalien.
+	if(!IS_XENO_DROPSHIP_CAPABLE(xeno))
+	// If the 'about to launch' alarm is playing, a xeno can whack the computer to stop it.
 		if(dropship.playing_launch_announcement_alarm)
 			stop_playing_launch_announcement_alarm()
 			xeno.animation_attack_on(src)
@@ -334,6 +333,11 @@
 		message_admins("[key_name(xeno)] has locked the dropship '[dropship]'", xeno.x, xeno.y, xeno.z)
 		notify_ghosts(header = "Dropship Locked", message = "[xeno] has locked [dropship]!", source = xeno, action = NOTIFY_ORBIT)
 		SScmtv.spectate_event("Dropship Locked", src)
+		return
+
+	// Only the queen should have the authority to start hijack.
+	if(xeno.caste_type != XENO_CASTE_QUEEN)
+		to_chat(xeno, SPAN_XENODANGER("We shouldn't be tampering with the controls any further."))
 		return
 
 	if(dropship_control_lost)

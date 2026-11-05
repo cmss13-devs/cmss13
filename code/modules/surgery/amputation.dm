@@ -10,7 +10,7 @@
 	possible_locs = EXTREMITY_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 	pain_reduction_required = PAIN_REDUCTION_FULL
-	required_surgery_skill = SKILL_SURGERY_TRAINED
+	required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	steps = list(
 		/datum/surgery_step/cut_muscle,
 		/datum/surgery_step/abort_amputation,
@@ -40,7 +40,7 @@
 //Mend the stump left by a traumatic amputation of a prosthetic. Needs a doctor, prosthetics are hard.
 /datum/surgery/amputate/repair/robot
 	name = "Remove Prosthetic Stump"
-	required_surgery_skill = SKILL_SURGERY_TRAINED
+	required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	steps = list(
 		/datum/surgery_step/sever_prosthetic_clamps,
 		/datum/surgery_step/remove_old_prosthetic,

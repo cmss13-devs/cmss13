@@ -1476,7 +1476,7 @@
 	scatter = SCATTER_AMOUNT_TIER_10
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_9
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
-	damage_mult = BASE_BULLET_DAMAGE_MULT
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 /obj/item/weapon/gun/rifle/m20a/unloaded

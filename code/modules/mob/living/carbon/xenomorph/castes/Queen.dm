@@ -686,7 +686,7 @@
 	return COMPONENT_SCREECH_ACT_CANCEL
 
 /mob/living/carbon/xenomorph/queen/proc/screech_ready()
-	to_chat(src, SPAN_WARNING("You feel your throat muscles vibrate. You are ready to screech again."))
+	to_chat(src, SPAN_WARNING("We feel our throat muscles vibrate. We are ready to screech again."))
 	for(var/Z in actions)
 		var/datum/action/A = Z
 		A.update_button_icon()
@@ -713,7 +713,7 @@
 	if(isxeno(victim))
 		var/mob/living/carbon/xenomorph/xeno = victim
 		if(hivenumber == xeno.hivenumber)
-			to_chat(src, SPAN_WARNING("You can't bring yourself to harm a fellow sister to this magnitude."))
+			to_chat(src, SPAN_WARNING("We can't bring ourselves to harm a fellow sister to this magnitude."))
 			return FALSE
 
 	var/turf/cur_loc = victim.loc
@@ -727,7 +727,7 @@
 		return FALSE
 
 	visible_message(SPAN_XENOWARNING("[src] begins slowly lifting [victim] into the air."),
-	SPAN_XENOWARNING("You begin focusing your anger as you slowly lift [victim] into the air."))
+	SPAN_XENOWARNING("We begin focusing our anger as we slowly lift [victim] into the air."))
 	if(do_after(src, 80, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
 		if(!victim)
 			return FALSE
@@ -739,7 +739,7 @@
 		use_plasma(200)
 
 		visible_message(SPAN_XENODANGER("[src] viciously smashes and wrenches [victim] apart!"),
-		SPAN_XENODANGER("You suddenly unleash pure anger on [victim], instantly wrenching \him apart!"))
+		SPAN_XENODANGER("We suddenly unleash pure anger on [victim], instantly wrenching \him apart!"))
 		emote("roar")
 
 		attack_log += text("\[[time_stamp()]\] <font color='red'>gibbed [key_name(victim)]</font>")

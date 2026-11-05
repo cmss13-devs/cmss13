@@ -1084,12 +1084,12 @@
  * Set the item up on a table.
  * @param target: table which is being used to host the item.
  */
-/obj/item/proc/set_to_table(obj/structure/surface/target)
-	if (do_after(usr, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+/obj/item/proc/set_to_table(obj/structure/surface/target, mob/user)
+	if (do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		table_setup = TRUE
-		usr.drop_inv_item_to_loc(src, target.loc)
+		user.drop_inv_item_to_loc(src, target.loc)
 	else
-		to_chat(usr, SPAN_WARNING("You fail to setup the [name]"))
+		to_chat(user, SPAN_WARNING("You fail to setup the [name]"))
 
 /**
  * Called to reset the state of the item to not be settled on the table.

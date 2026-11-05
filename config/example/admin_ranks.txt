@@ -26,6 +26,7 @@
 # +RIGHTS (or +PERMISSIONS) = allows you to promote and/or demote people.
 # +SOUND (or +SOUNDS) = allows you to upload and play sounds
 # +SPAWN (or +CREATE) = mob transformations, spawning of most atoms including mobs
+# +EVENT = the ability to use verbs in the Admin.Events category
 # +EVERYTHING = Simply gives you everything without having to type every flag (apart from the profiler)
 # +PROFILER = gives access to the BYOND profiler
 # +HOST = Actually gives everything, including the profiler
@@ -35,26 +36,13 @@ Donator 		+COLOR
 Mentor      	+MENTOR +COLOR
 
 
-Trial Moderator +MOD +SERVER +COLOR
-Moderator 		+MOD +SERVER +BAN +COLOR +NOLOCK
-Trial Admin 	+ADMIN +MOD +SERVER +BAN +SPAWN +STEALTH +VAREDIT +COLOR
-Admin 			+ADMIN +MOD +SERVER +BAN +SPAWN +STEALTH +VAREDIT +POSSESS +SOUND +COLOR +BUILDMODE
+Trial Admin 	+BAN +SERVER +MOD +MENTOR
+Admin 			+BUILDMODE +ADMIN +BAN +SERVER +DEBUG +POSSESS +VAREDIT +SOUND +SPAWN +MOD +MENTOR +BAN +NOLOCK +EVENT
 
-
-Coder			+MOD +SERVER +BAN +VAREDIT +SPAWN +DEBUG +COLOR +PROFILER
-Mapper 			+MOD +VAREDIT +COLOR +BUILDMODE +SPAWN
-Spriter			+MOD +VAREDIT +SPAWN +COLOR
-Developer		+ADMIN +MOD +SERVER +BAN +VAREDIT +SPAWN +DEBUG +POSSESS +BUILDMODE +SOUND +COLOR +PROFILER
-Lead Spriter    +ADMIN +MOD +SERVER +VAREDIT +BUILDMODE +SPAWN +DEBUG +COLOR
+Maintainer		+BUILDMODE +ADMIN +BAN +SERVER +DEBUG +POSSESS +VAREDIT +SOUND +SPAWN +MOD +MENTOR +PROFILER +BAN +NOLOCK +EVENT
+System Admin	+EVERYTHING +PROFILER
 
 
 Host 			+HOST
-Vice Host   	+HOST
 Manager			+EVERYTHING
-Head Dev		+EVERYTHING +PROFILER
-
-
-Legacy Mentor 	 +MENTOR +COLOR
-Senior Moderator +ADMIN +MOD +SERVER +BAN +SPAWN +STEALTH +VAREDIT +POSSESS +SOUND +COLOR +BUILDMODE
-Senior Admin  	 +ADMIN +MOD +SERVER +BAN +SPAWN +STEALTH +VAREDIT +POSSESS +SOUND +COLOR +BUILDMODE +DEBUG
-
+Maintainer Manager		+EVERYTHING +PROFILER

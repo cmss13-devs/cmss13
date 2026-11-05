@@ -1,4 +1,4 @@
-#define HM_FIRE_LAYER 1
+#define FIRE_LAYER 1
 
 #define HM_XENO_SPEED_VERY_SLOW 5
 #define HM_XENO_SPEED_SLOW 4.5
@@ -437,7 +437,7 @@
 	flick_attack_overlay(target, "disarm")
 	throw_mob(target, facing, fling_distance, SPEED_VERY_FAST, shake_camera = TRUE)
 
-#undef HM_FIRE_LAYER
+#undef FIRE_LAYER
 #undef HM_XENO_SPEED_VERY_SLOW
 #undef HM_XENO_SPEED_SLOW
 #undef HM_XENO_SPEED_AVERAGE

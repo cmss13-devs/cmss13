@@ -1,6 +1,0 @@
-author: "labeo0"
-delete-after: True
-changes:
-  - bugfix: "Cannot use laser designator/rangefinder through fog"
-  - bugfix: "Cannot laser through mortar camera beyond your vision"
-  - balance: "Opaque objects block lasing. Notably thick vines, metal foam, doors with no glass and so on"

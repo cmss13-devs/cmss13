@@ -243,3 +243,11 @@
   - rscadd: Adds Autoinjector Box
   - balance: Reduces plastic value of Vial Box print 2500 to 1250
   - balance: Reduces plastic value of Vial Box recycle 2000 to 1000
+2026-10-31:
+  Mary-Marilyn:
+  - rscadd: Added the modified armor variants and M11-R helmet as Squad Leader equipment.
+  labeo0:
+  - bugfix: Cannot use laser designator/rangefinder through fog
+  - bugfix: Cannot laser through mortar camera beyond your vision
+  - balance: Opaque objects block lasing. Notably thick vines, metal foam, doors with
+      no glass and so on

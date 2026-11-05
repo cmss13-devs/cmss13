@@ -179,6 +179,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_tl, list(
 //------------ESSENTIAL SETS---------------
 /obj/effect/essentials_set/tl
 	spawned_gear_list = list(
+		/obj/item/device/vulture_spotter_tripod,
+		/obj/item/device/vulture_spotter_scope/designator,
+		/obj/item/tool/screwdriver,
 		/obj/item/device/binoculars/range/designator,
 		/obj/item/storage/box/m94/signal,
 		/obj/item/storage/box/m94/signal,

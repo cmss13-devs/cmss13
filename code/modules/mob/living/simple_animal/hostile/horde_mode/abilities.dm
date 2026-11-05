@@ -28,7 +28,7 @@
 	///How far the mob has to be away from another (equal or weaker) resin node to plant another node.
 	var/range_limit = 3
 	var/weed_level = WEED_LEVEL_STANDARD
-	var/node_type = /obj/effect/alien/weeds/node/horde_mode
+	var/node_type = /obj/effect/alien/weeds/node
 
 /datum/action/horde_mode_action/plant_weeds/use_ability(mob/living/target)
 	if(!can_use_ability(target))
@@ -85,7 +85,7 @@
 
 /datum/action/horde_mode_action/plant_weeds/weak
 	weed_level = WEED_LEVEL_WEAK
-	node_type = /obj/effect/alien/weeds/node/weak/horde_mode
+	node_type = /obj/effect/alien/weeds/node/weak
 
 //--------------------------------
 // RESIN CONSTRUCTION -- HIVE CLUSTER
@@ -96,7 +96,7 @@
 	required_distance_to_target = 10
 	var/time_to_construct = 5 SECONDS
 	var/construction_effect = "xeno_telegraph_brown_anim"
-	var/constructed_object = /obj/structure/horde_mode_resin/hive_cluster
+	var/constructed_object = /obj/effect/alien/weeds/node/pylon/cluster
 	var/requires_weeds = FALSE
 	var/distance_from_other_buildings = 5
 
@@ -173,7 +173,7 @@
 				to_chat(friendly_human, SPAN_HELPFUL("[owner]'s pheromones appear to be closing your wounds!"))
 			else
 				surrounding_mob.health += surrounding_mob.maxHealth * heal_strength
-				if(isanimalhordemode(surrounding_mob))
+				if(ishordemodemob(surrounding_mob))
 					var/mob/living/simple_animal/hostile/alien/horde_mode/alien = surrounding_mob
 					alien.update_wounds()
 			surrounding_mob.flick_heal_overlay(3 SECONDS, "#D9F500")
@@ -514,7 +514,7 @@
 	var/mob/living/simple_animal/hostile/alien/horde_mode/xeno = owner
 	xeno.manual_emote("roars!")
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] lets out a massive roar as it starts eviscerating everything in its proximity!"))
-	playsound(xeno, 'sound/voice/alien_heavy_roar.ogg', 75, 1)
+	playsound(xeno, 'sound/voice/alien_death_unused.ogg', 75, 1)
 	ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 	xeno.anchored = TRUE
 

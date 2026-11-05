@@ -1,6 +1,4 @@
-
-#define FIRE_LAYER 1
-#define ishordemodemob(A) (istype(A, /mob/living/simple_animal/hostile/alien/horde_mode))
+#define HM_FIRE_LAYER 1
 
 #define HM_XENO_SPEED_VERY_SLOW 5
 #define HM_XENO_SPEED_SLOW 4.5
@@ -13,7 +11,6 @@
 	health = XENO_HEALTH_TIER_3
 	melee_damage_lower = XENO_DAMAGE_TIER_2
 	melee_damage_upper = XENO_DAMAGE_TIER_3
-	melee_damage_taken_multiplier = 3
 	move_to_delay = HM_XENO_SPEED_AVERAGE
 	icon_size = 48
 	destroy_surroundings = FALSE
@@ -23,10 +20,6 @@
 	var/fire_damage_multiplier = 1
 	///Used for tracking which mob hit this xeno last, so we can reward them points accordingly.
 	var/mob/living/last_hit_by
-	///Used for giving extra points on death, mainly for melee kills. Will be overridden to 0 if shot by a bullet.
-	var/death_bonus = 0
-	///How many points do you get for killing them?
-	var/kill_reward = 150
 	///How far can our current target get until we change targets?
 	var/ai_range = 16
 	/// The time interval before this xeno should forcefully get a new target
@@ -48,8 +41,9 @@
 		if(z != potential_target.z)
 			continue
 
-		if(potential_target.status_flags & XENO_HOST)
-			for(var/obj/item/alien_embryo/embryo in target_carbon)
+		var/mob/living/carbon/human/human_target = potential_target
+		if(human_target.status_flags & XENO_HOST)
+			for(var/obj/item/alien_embryo/embryo in human_target)
 				if(HIVE_ALLIED_TO_HIVE(hivenumber, embryo.hivenumber))
 					continue
 
@@ -67,7 +61,7 @@
 		smallest_distance = distance
 
 	if(isnull(closest_target))
-		target_mob = SShorde_mode.return_random_player()
+		target_mob = pick(SShuman.processable_human_list)
 		target_mob_ref = WEAKREF(target_mob)
 		stance = HOSTILE_STANCE_ATTACK
 		return
@@ -118,11 +112,8 @@
 		gib()
 		return
 
-	var/mob/explosion_source_mob = explosion_cause_data?.resolve_mob()
-
 	apply_damage(severity * explosive_damage_multiplier, BRUTE)
 	updatehealth()
-	death_bonus = 0
 
 	if(mob_size < MOB_SIZE_BIG)
 		var/knock_value = min(round( severity*0.1, 1), 5)
@@ -150,7 +141,6 @@
 	melee_damage_upper = XENO_DAMAGE_TIER_5
 	health = HORDE_MODE_HEALTH_BOSS
 	move_to_delay = 4.5
-	kill_reward = 3000
 	mob_size = MOB_SIZE_BIG
 	explosive_damage_multiplier = 0.25
 	var/following_mob
@@ -179,7 +169,7 @@
 	//We are picking a random player because checking for the closest mob via a for() loop is pretty resource intensive.
 	if(!target_mob && hivenumber == XENO_HIVE_CORRUPTED && body_position != LYING_DOWN && !following_mob)
 		stop_automated_movement = 1
-		following_mob = SShorde_mode.return_random_player()
+		following_mob = pick(SShuman.processable_human_list)
 		walk_to(src, following_mob, 4, move_to_delay)
 
 /mob/living/simple_animal/hostile/alien/horde_mode/boss/Initialize()
@@ -246,7 +236,7 @@
 	COOLDOWN_START(src, second_ability, 8 SECONDS)
 	playsound(loc, 'sound/effects/refill.ogg', 30, 1)
 	visible_message(SPAN_XENOWARNING("[src] vomits a flood of acid!"))
-	do_acid_spray_line(get_line(src, target_mob, include_start_atom = FALSE), /obj/effect/xenomorph/spray/strong/no_stun/short_duration, 7)
+	do_acid_spray_line(get_line(src, target_mob, include_start_atom = FALSE), /obj/effect/xenomorph/spray/strong, 7)
 
 /mob/living/simple_animal/hostile/alien/horde_mode/boss/proc/third_ability()
 	COOLDOWN_START(src, third_ability, 22 SECONDS)
@@ -447,7 +437,7 @@
 	flick_attack_overlay(target, "disarm")
 	throw_mob(target, facing, fling_distance, SPEED_VERY_FAST, shake_camera = TRUE)
 
-#undef FIRE_LAYER
+#undef HM_FIRE_LAYER
 #undef HM_XENO_SPEED_VERY_SLOW
 #undef HM_XENO_SPEED_SLOW
 #undef HM_XENO_SPEED_AVERAGE

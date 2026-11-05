@@ -32,7 +32,7 @@
 	icon = 'icons/mob/xenos/castes/tier_2/spitter.dmi'
 	move_to_delay = HORDE_MODE_SPEED_SLOW
 
-	projectile_to_fire = /datum/ammo/xeno/acid/glob
+	projectile_to_fire = /datum/ammo/xeno/toxin/medium
 	ranged_distance = 5
 	ranged_distance_min = 2
 	ranged_delay = HORDE_MODE_ATTACK_DELAY_SLUGGISH * 2
@@ -88,7 +88,6 @@
 	melee_damage_upper = XENO_DAMAGE_TIER_4
 	health = XENO_HEALTH_TIER_6
 	move_to_delay = HORDE_MODE_SPEED_SLOW
-	kill_reward = 250
 	COOLDOWN_DECLARE(fling_cooldown)
 	COOLDOWN_DECLARE(lunge_cooldown)
 

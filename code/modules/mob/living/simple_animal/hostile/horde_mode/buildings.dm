@@ -15,7 +15,7 @@
 	. = ..()
 	linked_hive = hive
 	if(!hive)
-		linked_hive = GLOB.hive_datum[XENO_HIVE_HORDEMODE]
+		linked_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	if(xeno)
 		owner = xeno
 
@@ -37,28 +37,6 @@
 /obj/structure/horde_mode_resin/update_health()
 	if(health < 0)
 		qdel(src)
-
-//--------------------------------
-// HIVE CLUSTER
-
-/obj/structure/horde_mode_resin/hive_cluster
-	name = "hive cluster"
-
-	///What type of weeds this cluster spreads.
-	var/node_type = /obj/effect/alien/weeds/node/horde_mode/cluster
-	///Reference to the main node that is spreading weeds.
-	var/obj/effect/alien/weeds/node/horde_mode/cluster/weed_node
-
-/obj/structure/horde_mode_resin/hive_cluster/Initialize(mapload, hive_owner)
-	. = ..()
-	var/obj/effect/alien/weeds/node/horde_mode/cluster/weed_node = new node_type(loc, null, null, hive_owner)
-	weed_node.resin_parent = src
-
-/obj/structure/horde_mode_resin/hive_cluster/Destroy()
-	. = ..()
-	if(weed_node)
-		weed_node.resin_parent = null
-	weed_node = null
 
 //--------------------------------
 // RECOVERY NODE

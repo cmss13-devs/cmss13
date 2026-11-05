@@ -20,7 +20,7 @@
 	langchat_color = "#b491c8"
 	bubble_icon = "alien"
 	mob_size = MOB_SIZE_XENO
-	hivenumber = XENO_HIVE_HORDEMODE
+	hivenumber = XENO_HIVE_NORMAL
 
 	///A list of all currently displayed mob effects.
 	var/list/effect_images = list()
@@ -73,13 +73,6 @@
 		strain_overlay.icon = strain_icon_path
 		strain_overlay.icon_state = "[strain_icon_state] Walking"
 		vis_contents += strain_overlay
-	//HORDE MODE MOBS ARE ADDED TO A DIFFERENT SUBSYSTEM IN horde_mode_mobs.dm, THEY DO NOT USE THE MISC MOBS SUBSYSTEM!!
-	SShorde_mode.current_xenos += src
-	//Boss enemies will always be a set strength.
-	if(!istype(src, /mob/living/simple_animal/hostile/alien/horde_mode/boss))
-		maxHealth *= SShorde_mode.xeno_health_mod
-		melee_damage_upper *= SShorde_mode.xeno_damage_mod
-		melee_damage_lower *= SShorde_mode.xeno_damage_mod
 	find_random_target()
 	ForceMoveToTarget()
 	return ..()
@@ -256,22 +249,13 @@
 		COOLDOWN_START(src, ranged_cooldown, ranged_delay)
 
 	if(!target_mob)
-		if(hivenumber == XENO_HIVE_CORRUPTED)
-			COOLDOWN_START(src, forced_retarget_cooldown, forced_retarget_time)
-			find_random_xeno_target()
-			ForceMoveToTarget()
-		else
-			COOLDOWN_START(src, forced_retarget_cooldown, forced_retarget_time)
-			find_random_target()
-			ForceMoveToTarget()
-
-	if(hivenumber != XENO_HIVE_CORRUPTED && (QDELETED(target_mob) || target_mob.stat == DEAD || get_dist(target_mob, src) > ai_range || COOLDOWN_FINISHED(src, forced_retarget_cooldown)))
 		COOLDOWN_START(src, forced_retarget_cooldown, forced_retarget_time)
 		find_random_target()
 		ForceMoveToTarget()
-	else if(hivenumber == XENO_HIVE_CORRUPTED && (QDELETED(target_mob) || target_mob.stat == DEAD || get_dist(target_mob, src) > ai_range || COOLDOWN_FINISHED(src, forced_retarget_cooldown)))
+
+	if((QDELETED(target_mob) || target_mob.stat == DEAD || get_dist(target_mob, src) > ai_range || COOLDOWN_FINISHED(src, forced_retarget_cooldown)))
 		COOLDOWN_START(src, forced_retarget_cooldown, forced_retarget_time)
-		find_random_xeno_target()
+		find_random_target()
 		ForceMoveToTarget()
 
 	return ..()
@@ -311,10 +295,7 @@
 /mob/living/simple_animal/hostile/alien/horde_mode/MoveToTarget()
 	if(!target_mob)
 		LoseTarget()
-		if(hivenumber != XENO_HIVE_CORRUPTED)
-			find_random_target()
-		else
-			find_random_xeno_target()
+		find_random_target()
 		ForceMoveToTarget()
 
 	if(stat == DEAD || HAS_TRAIT(src, TRAIT_INCAPACITATED) || HAS_TRAIT(src, TRAIT_FLOORED) || HAS_TRAIT(src, TRAIT_IMMOBILIZED))

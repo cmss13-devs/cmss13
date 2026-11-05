@@ -161,6 +161,6 @@
 
 	base_actions = list(/datum/action/horde_mode_action/neuro_slash)
 
-	projectile_to_fire = /datum/ammo/xeno/acid/neuro
+	projectile_to_fire = /datum/ammo/xeno/toxin
 	ranged_distance = 4
 	ranged_delay = HORDE_MODE_ATTACK_DELAY_SLUGGISH * 2

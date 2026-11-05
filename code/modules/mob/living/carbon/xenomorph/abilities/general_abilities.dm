@@ -12,7 +12,8 @@
 		selected_ability.on_deselect(src)
 	if(!ability)
 		selected_ability = null
-		client?.set_right_click_menu_mode(shift_only = FALSE)
+		if(client?.prefs.toggle_right_click_menu)
+			client.set_right_click_menu_mode(shift_only = FALSE)
 		return
 	selected_ability = ability
 	selected_ability.on_select(src)
@@ -30,6 +31,22 @@
 
 	var/plant_on_semiweedable = FALSE
 	var/node_type = /obj/effect/alien/weeds/node
+
+/datum/action/xeno_action/onclick/autoweeding_toggle
+	name = "Toggle Autoweeding"
+	action_icon_state = "autoweed_toggle"
+	plasma_cost = 0
+	macro_path = /datum/action/xeno_action/verb/verb_toggle_autoweed
+	action_type = XENO_ACTION_CLICK
+	xeno_cooldown = 2 SECONDS
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+
+	var/auto_weeding = FALSE
+	var/datum/action/xeno_action/onclick/plant_weeds/linked_planting
+
+	var/step_count = 0
+	var/step_delay = 3
+	var/node_search_range = 4
 
 // Resting
 /datum/action/xeno_action/onclick/xeno_resting
@@ -412,6 +429,8 @@
 		return FALSE
 	if(xeno.on_fire)
 		return FALSE
+	if(xeno.action_busy)
+		return FALSE
 	if(!xeno.buckled && !xeno.is_mob_incapacitated() && !LAZYLEN(xeno.buckled_mobs))
 		if(!(SEND_SIGNAL(xeno, COMSIG_LIVING_SHIMMY_LAYER) & COMSIG_LIVING_SHIMMY_LAYER_CANCEL))
 			return TRUE
@@ -419,7 +438,7 @@
 /// remove hide and apply modified attack cooldown
 /datum/action/xeno_action/onclick/xenohide/proc/post_attack()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	UnregisterSignal(xeno, COMSIG_MOB_STATCHANGE)
+	UnregisterSignal(xeno, list(COMSIG_MOB_STATCHANGE, COMSIG_LIVING_PRE_DOAFTER))
 	if(xeno.layer == XENO_HIDING_LAYER)
 		xeno.layer = initial(xeno.layer)
 		button.icon_state = "template_xeno"

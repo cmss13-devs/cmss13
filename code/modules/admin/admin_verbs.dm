@@ -386,6 +386,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 		GLOB.admin_verbs_hideable,
 		GLOB.debug_verbs,
 		GLOB.admin_verbs_stealth,
+		GLOB.admin_verbs_logs
 	))
 
 /client/proc/jobbans()

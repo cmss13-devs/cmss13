@@ -754,11 +754,13 @@ GLOBAL_DATUM(action_purple_power_up, /image)
  * numticks: If a value is given, denotes how often the timed action checks for interrupting actions. By default, there are 5 checks every delay/5 deciseconds.
  * Note: 'delay' should be divisible by numticks in order for the timing to work as intended. numticks should also be a whole number.
  */
-/proc/do_after(mob/user, delay, user_flags = INTERRUPT_ALL, show_busy_icon, atom/movable/target, target_flags = INTERRUPT_MOVED, show_target_icon, max_dist = 1, status_effect = null, \
+/proc/do_after(mob/living/busy_user, delay, user_flags = INTERRUPT_ALL, show_busy_icon, atom/movable/target, target_flags = INTERRUPT_MOVED, show_target_icon, max_dist = 1, status_effect = null, \
 		show_remaining_time = FALSE, numticks = DA_DEFAULT_NUM_TICKS) // These args should primarily be named args, since you only modify them in niche situations
-	if(!istype(user) || delay < 0)
+	// Only living mobs can perform timed actions.
+	if(!istype(busy_user) || delay < 0)
 		return FALSE
 
+	SEND_SIGNAL(busy_user, COMSIG_LIVING_PRE_DOAFTER, delay)
 	if(delay == 0) // Nothing to wait for, so action passes
 		return TRUE
 
@@ -766,11 +768,6 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	var/has_target = FALSE
 	if(istype(target))
 		has_target = TRUE
-
-	// Only living mobs can perform timed actions.
-	var/mob/living/busy_user = user
-	if(!istype(busy_user))
-		return FALSE
 
 	// This var will only be used for checks that require target to be living.
 	var/mob/living/T = target
@@ -1860,3 +1857,27 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 		return TRUE
 	else
 		return FALSE
+
+/datum/matching_paths
+	var/datum/highest_matching
+	var/list/datum/matching
+
+/datum/matching_paths/New()
+	. = ..()
+	highest_matching = null
+	matching = list()
+
+/proc/get_matching_paths(datum/to_check, list/typepaths)
+	RETURN_TYPE(/datum/matching_paths)
+	var/datum/matching_paths/matching_paths = new /datum/matching_paths
+	ASSERT(matching_paths.highest_matching == null, "matching_paths.highest_matching should be null on creation")
+	ASSERT(!isnull(matching_paths.matching), "matching_paths.matching should be a list on creation")
+	ASSERT(length(matching_paths.matching) == 0, "matching_paths.matching should be empty on creation")
+	for (var/path in typepaths)
+		if (ispath(path) && istype(to_check, path))
+			// to_check is going to be of type `path` and `highest_matching`, so check whether
+			// `highest_matching` is a parent of `path` (lower in the type tree)
+			if (isnull(matching_paths.highest_matching) || !ispath(matching_paths.highest_matching, path))
+				matching_paths.highest_matching = path
+			matching_paths.matching += path
+	return matching_paths

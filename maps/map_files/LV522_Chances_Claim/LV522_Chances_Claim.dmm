@@ -1380,6 +1380,16 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/corpo/glass)
+"aeO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/security)
+"aeP" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/turf/open/floor/corsat,
+/area/lv522/atmos/east_reactor/south)
 "aff" = (
 /obj/structure/platform_decoration/metal/almayer/west,
 /obj/effect/decal/warning_stripes{
@@ -4222,12 +4232,6 @@
 /area/lv522/indoors/c_block/garage)
 "bVF" = (
 /obj/item/tool/pen/red/clicky,
-/turf/open/floor/corsat,
-/area/lv522/atmos/east_reactor)
-"bVG" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
 "bVX" = (
@@ -8192,7 +8196,6 @@
 	pixel_y = 8
 	},
 /obj/item/clothing/head/fedora,
-/obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/security)
@@ -12875,6 +12878,7 @@
 "gHF" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor/south)
 "gHN" = (
@@ -20238,7 +20242,6 @@
 /turf/open/asphalt/cement/cement1,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "kCF" = (
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/prop/invuln/ice_prefab{
 	dir = 1;
 	icon_state = "fab_2"
@@ -46548,13 +46551,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/dorms)
-"xPx" = (
-/obj/structure/prop/invuln/ice_prefab{
-	dir = 9
-	},
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/outdoors/colony_streets/north_west_street)
 "xPA" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3";
@@ -52002,7 +51998,7 @@ clY
 clY
 adv
 slD
-xPx
+swt
 kCF
 rbV
 wRz
@@ -66795,7 +66791,7 @@ jDN
 qjG
 qjG
 oeU
-mkh
+wGq
 aeF
 tnN
 hNf
@@ -67001,7 +66997,7 @@ jDN
 iGl
 qjG
 qjG
-mkh
+aeP
 aeF
 oUq
 qpy
@@ -67206,7 +67202,7 @@ mkh
 jDN
 qjG
 qjG
-qjG
+aeP
 saC
 oUq
 saC
@@ -67412,7 +67408,7 @@ qjG
 jDN
 qjG
 qjG
-wGq
+yje
 saC
 saC
 saC
@@ -68487,7 +68483,7 @@ vbX
 sLk
 sLk
 sLk
-jQk
+aeO
 ndb
 pRR
 ueX
@@ -71495,7 +71491,7 @@ aWJ
 bhd
 mbq
 bRN
-bVG
+mbq
 yjL
 caN
 wvB

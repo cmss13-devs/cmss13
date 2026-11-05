@@ -10,7 +10,7 @@
 	possible_locs = list("chest")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
 	pain_reduction_required = PAIN_REDUCTION_FULL
-	required_surgery_skill = SKILL_SURGERY_TRAINED
+	required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	steps = list(
 		/datum/surgery_step/cut_larval_pseudoroots,
 		/datum/surgery_step/remove_larva,

@@ -542,11 +542,25 @@
 	new /obj/item/roller(src)
 
 
+/obj/item/storage/box/kit/tactical_designator
+	name = "tactical laser designator case"
+	desc = "An equipment case containing a tactical laser designator camera, a folding tripod, and a screwdriver. Requires some JTAC knowledge to use properly."
+	pro_case_overlay = "jtac"
+	storage_slots = 3
+
+/obj/item/storage/box/kit/tactical_designator/fill_preset_inventory()
+	new /obj/item/device/vulture_spotter_scope/designator(src)
+	new /obj/item/device/vulture_spotter_tripod(src)
+	new /obj/item/tool/screwdriver(src)
+
 /obj/item/storage/box/kit/mini_jtac
 	name = "\improper JTAC Radio Kit"
 	pro_case_overlay = "jtac"
 
 /obj/item/storage/box/kit/mini_jtac/fill_preset_inventory()
+	new /obj/item/device/vulture_spotter_tripod(src)
+	new /obj/item/device/vulture_spotter_scope/designator(src)
+	new /obj/item/tool/screwdriver(src)
 	new /obj/item/weapon/gun/flare(src)
 	new /obj/item/storage/belt/gun/flaregun/full_nogun(src)
 	new /obj/item/storage/box/m94/signal(src)
@@ -589,6 +603,13 @@
 	new /obj/item/attachable/reddot(src)
 	new /obj/item/attachable/lasersight(src)
 	new /obj/item/storage/belt/gun/m4a3(src)
+
+/obj/item/storage/box/kit/dual_vp78
+	name = "\improper Dual VP78M6 Pistol Kit"
+	pro_case_overlay = "defense"
+
+/obj/item/storage/box/kit/dual_vp78/fill_preset_inventory()
+	new /obj/item/storage/belt/gun/m4a3/vp78m6/dual_holster/full(src)
 
 /obj/item/storage/box/kit/cryo_self_defense
 	name = "\improper Cryo Self Defense Kit"

@@ -34,9 +34,11 @@
 /datum/action/xeno_action/activable/tail_stab/sentinel
 	name = "Catalytic Shock Tailstab"
 	damage_multiplier = 1
-	var/duration = 40
+	var/duration = 4 SECONDS
 	var/minimal_speed_buff_amount = 0.2 // Goes from despoiler and becomes faster than lurker / slower than acid runner
 	var/minimal_armor_buff_amount = 15 //spitter level
+	var/max_speed_buff_amount = 0.6
+	var/max_armor_buff_amount = 25
 	var/plasma_gain = 100
 
 /datum/action/xeno_action/activable/tail_stab/sentinel/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb)
@@ -51,8 +53,8 @@
 	if(!sns)
 		return
 	var/stacks = sns.stack_count
-	var/speed_buff_amount = max(minimal_speed_buff_amount, (stacks/5)/10) //[0.2; 0.6]
-	var/armor_buff_amount = max(minimal_armor_buff_amount, (stacks/6)*5) //[15; 25]
+	var/speed_buff_amount = max(minimal_speed_buff_amount, stacks/sns.max_stacks * max_speed_buff_amount) //[0.2; 0.6]
+	var/armor_buff_amount = max(minimal_armor_buff_amount, stacks/sns.max_stacks * max_armor_buff_amount) //[15; 25]
 	target.apply_armoured_damage(stacks, ARMOR_MELEE, BURN, limb ? limb.name : "chest") //not more than basic tail stab
 	stabbing_xeno.gain_plasma(stacks/sns.max_stacks * plasma_gain)
 	sns.increment_stack_count(-stacks/2)

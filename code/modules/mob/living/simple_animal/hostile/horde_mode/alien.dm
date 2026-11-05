@@ -28,6 +28,11 @@
 	var/mob/target_mob
 	affected_by_fire = TRUE
 
+/mob/living/simple_animal/hostile/alien/horde_mode/Destroy()
+	. = ..()
+	target_mob = null
+	last_hit_by = null
+
 ///Gives us a random target to hunt down.
 /mob/living/simple_animal/hostile/alien/horde_mode/proc/find_random_target()
 	// we stealing from pve

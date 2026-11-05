@@ -3,7 +3,7 @@
 /datum/surgery/xenomorph
 	name = "Experimental Harvesting Surgery"
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
-	required_surgery_skill = SKILL_SURGERY_TRAINED
+	required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	possible_locs = list("head")
 	target_mobtypes = list(/mob/living/carbon/xenomorph)
 	steps = list(
@@ -153,7 +153,7 @@
 			SPAN_NOTICE("You confidently start to sever the [target.caste_type]'s alien organ from its surrounding connective tissue using [tool]."))
 	else
 		user.visible_message(
-			SPAN_NOTICE("[user] confidently starts to rip the [target.caste_type]'s connective tissue apart using [tool]"),
+			SPAN_NOTICE("[user] confidently starts to rip the [target.caste_type]'s connective tissue apart using [tool]."),
 			SPAN_NOTICE("You confidently start to rip the [target.caste_type]'s connective tissue apart using [tool]."))
 
 /datum/surgery_step/xenomorph/severe_connections/success(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

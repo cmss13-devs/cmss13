@@ -3,7 +3,7 @@
 /datum/surgery/xenomorph
 	name = "Experimental Harvesting Surgery"
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
-	required_surgery_skill = SKILL_SURGERY_TRAINED
+	required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	possible_locs = list("head")
 	target_mobtypes = list(/mob/living/carbon/xenomorph)
 	steps = list(

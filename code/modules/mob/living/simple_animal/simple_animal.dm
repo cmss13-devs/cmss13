@@ -83,7 +83,7 @@
 	SSmob.living_misc_mobs += src
 
 /mob/living/simple_animal/Destroy()
-	if(isanimalhordemode(src))
+	if(ishordemodemob(src))
 		SShorde_mode_mobs.living_misc_mobs -= src
 	else
 		SSmob.living_misc_mobs -= src

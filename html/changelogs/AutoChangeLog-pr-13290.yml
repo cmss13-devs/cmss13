@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - rscadd: "Added logic for single use door buttons (and subtypes that toggle again once after a delay)"
+  - maptweak: "Some chances claim buttons are now single use and the easter egg only has a 2 minute lockdown"

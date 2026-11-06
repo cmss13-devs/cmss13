@@ -58,7 +58,15 @@
 	status_flags = CANPUSH
 	base_actions = list(/datum/action/horde_mode_action/plant_weeds, /datum/action/horde_mode_action/resin_construction, /datum/action/horde_mode_action/resin_construction/recovery)
 
+/mob/living/simple_animal/hostile/alien/horde_mode/hivelord/Life(delta_time)
+	if(prob(50))
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/datum/action/horde_mode_action/plant_weeds, use_ability), src)
 
+	if(prob(15))
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/datum/action/horde_mode_action/resin_construction, use_ability), src)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/datum/action/horde_mode_action/resin_construction/recovery, use_ability), src)
+
+	. = ..()
 //--------------------------------
 // BURROWER
 

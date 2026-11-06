@@ -48,6 +48,12 @@
 	. = ..()
 	strain_overlay.color = LIGHT_COLOR_GREEN
 
+/mob/living/simple_animal/hostile/alien/horde_mode/drone/gardener/Life()
+	if(prob(50))
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/datum/action/horde_mode_action/plant_weeds/weak, use_ability), src)
+
+	. = ..()
+
 //--------------------------------
 // RUNNER
 

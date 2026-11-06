@@ -25,11 +25,28 @@
 
 /obj/structure/platform/Initialize()
 	. = ..()
+	var/is_water = SSwater_overlays.is_water(get_turf(src))
 	switch(dir)
 		if(SOUTH)
 			layer = ABOVE_MOB_LAYER
-		if(EAST, WEST)
-			layer = MOB_LAYER
+		if(NORTH)
+			if(is_water)
+				layer = UNDER_WATER_PLATFORMS_LAYER
+				plane = FLOOR_PLANE
+			else
+				layer = TURF_LAYER
+		if(EAST)
+			if(is_water)
+				layer = UNDER_WATER_PLATFORMS_LAYER
+				plane = FLOOR_PLANE
+			else
+				layer = MOB_LAYER
+		if(WEST)
+			if(is_water)
+				layer = UNDER_WATER_PLATFORMS_LAYER
+				plane = FLOOR_PLANE
+			else
+				layer = MOB_LAYER
 
 /obj/structure/platform/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -205,18 +222,14 @@
 /obj/structure/platform_decoration/Initialize()
 	. = ..()
 	switch(dir)
-		if (NORTH)
-			layer = OBJ_LAYER+0.1
-		if (SOUTH)
-			layer = ABOVE_MOB_LAYER+0.1
-		if (SOUTHEAST)
-			layer = ABOVE_MOB_LAYER+0.1
-		if (SOUTHWEST)
-			layer = ABOVE_MOB_LAYER+0.1
-		if (EAST)
-			layer = MOB_LAYER+0.1
-		if (WEST)
-			layer = MOB_LAYER+0.1
+		if(SOUTH, NORTH , SOUTHWEST, SOUTHEAST)
+			layer = ABOVE_MOB_LAYER
+		else
+			if(SSwater_overlays.is_water(get_turf(src)))
+				layer = UNDER_WATER_PLATFORMS_LAYER
+				plane = FLOOR_PLANE
+			else
+				layer = MOB_LAYER
 
 /obj/structure/platform_decoration/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

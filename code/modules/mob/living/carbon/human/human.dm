@@ -1758,7 +1758,7 @@
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"),
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 
-	if(istype(get_turf(src), /turf/open/gm/river) || (/obj/effect/blocker/water in loc) || istype(get_turf(src), /turf/open/beach/coastline) || istype(get_turf(src), /turf/open/gm/coast))
+	if(SSwater_overlays.is_water(get_turf(src)))
 		ExtinguishMob()
 
 	if(fire_stacks > 0)
@@ -2030,3 +2030,10 @@
 		if(PULSE_THREADY)
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
 // output for machines^ ^^^^^^^output for people^^^^^^^^^
+
+/// If undefibbable is FALSE, this will set undefibbable TRUE and send the signal COMSIG_HUMAN_SET_UNDEFIBBABLE
+/mob/living/carbon/human/proc/set_undefibbable()
+	if(undefibbable)
+		return // Already set
+	undefibbable = TRUE
+	SEND_SIGNAL(src, COMSIG_HUMAN_SET_UNDEFIBBABLE)

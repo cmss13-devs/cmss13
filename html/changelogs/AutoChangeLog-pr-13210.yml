@@ -1,4 +1,0 @@
-author: "Mary-Marilyn"
-delete-after: True
-changes:
-  - bugfix: "The body type examine text is no longer broken"

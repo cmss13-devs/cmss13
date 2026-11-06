@@ -77,6 +77,7 @@
 	if(turf)
 		turf.weeds = src
 		weeded_turf = turf
+		layer = turf.layer == UNDER_WATER_TURF_LAYER ? UNDER_WATER_WEEDS_LAYER : initial(layer)
 		SEND_SIGNAL(turf, COMSIG_WEEDNODE_GROWTH) // Currently for weed_food wakeup
 
 	// COMSIG_MOVABLE_TURF_ENTERED to handle ChangeTurf
@@ -89,12 +90,14 @@
 	if(area && area.linked_lz)
 		AddComponent(/datum/component/resin_cleanup)
 
+
 /obj/effect/alien/weeds/proc/set_turf_weeded(datum/source, turf/T)
 	SIGNAL_HANDLER
 	if(weeded_turf)
 		weeded_turf.weeds = null
 
 	T.weeds = src
+
 
 /obj/effect/alien/weeds/proc/forsaken_handling()
 	SIGNAL_HANDLER
@@ -386,6 +389,10 @@
 
 /obj/effect/alien/weeds/attackby(obj/item/attacking_item, mob/living/user)
 	if(explo_proof)
+		return FALSE
+
+	// Allows mops and soap to clean the tile under the weeds
+	if(istype(attacking_item, /obj/item/tool/mop) || istype(attacking_item, /obj/item/tool/soap))
 		return FALSE
 
 	if(QDELETED(attacking_item) || QDELETED(user) || (attacking_item.flags_item & NOBLUDGEON))

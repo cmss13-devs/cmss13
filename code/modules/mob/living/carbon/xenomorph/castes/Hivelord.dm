@@ -15,7 +15,7 @@
 
 	available_strains = list(
 		/datum/xeno_strain/resin_whisperer,
-		/datum/xeno_strain/designer,
+		/datum/xeno_strain/architect,
 	)
 
 	evolution_allowed = FALSE

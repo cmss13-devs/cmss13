@@ -5,7 +5,7 @@
 /datum/unit_test/pheromones/transmit_castes/coverage/Run()
 	// Put any new castes/strains that can emit pheromones in here after creating a transmit_castes test for said variation
 	var/list/emitting_castes = list(XENO_CASTE_DRONE, XENO_CASTE_LESSER_DRONE, XENO_CASTE_HIVELORD, XENO_CASTE_CARRIER, XENO_CASTE_QUEEN, XENO_CASTE_KING) // Only count castes that can emit with their base strain
-	var/list/emitting_strains = list(DRONE_HEALER, DRONE_GARDENER, CARRIER_EGGSAC, HIVELORD_DESIGNER, HIVELORD_RESIN_WHISPERER, PRAETORIAN_VALKYRIE)
+	var/list/emitting_strains = list(DRONE_HEALER, DRONE_GARDENER, CARRIER_EGGSAC, HIVELORD_ARCHITECT, HIVELORD_RESIN_WHISPERER, PRAETORIAN_VALKYRIE)
 
 	for (var/caste_name in ALL_XENO_CASTES)
 		var/datum/abstract_xenomorph/dummy_xeno_abstract = new (caste = caste_name)
@@ -162,29 +162,29 @@
 /datum/unit_test/pheromones/transmit_castes/hivelord/resin_whisperer/warding/Run()
 	. = ..(pheromone_type = XENO_PHERO_WARDING)
 
-/// Spawns a single prime hive emitter hivelord of the designer strain, along with a prime hive receiver of every possible xenomorph cast, then forces the hivelord to emit recovery pheromones.
-/// Expected behavior is that every receiver properly receives the hivelord's recovery pheromones at the unique designer pheromone strength.
-/datum/unit_test/pheromones/transmit_castes/hivelord/designer/Run(pheromone_type = XENO_PHERO_RECOVERY)
+/// Spawns a single prime hive emitter hivelord of the architect strain, along with a prime hive receiver of every possible xenomorph cast, then forces the hivelord to emit recovery pheromones.
+/// Expected behavior is that every receiver properly receives the hivelord's recovery pheromones at the unique architect pheromone strength.
+/datum/unit_test/pheromones/transmit_castes/hivelord/architect/Run(pheromone_type = XENO_PHERO_RECOVERY)
 	var/list/expected_pheromones = list()
 	expected_pheromones[pheromone_type] = XENO_PHERO_STRENGTH_HIVELORD + XENO_PHERO_MOD_LARGE
 
 	all_caste_reception_test(
 		abstract_emitter = new /datum/abstract_xenomorph(
 			caste = XENO_CASTE_HIVELORD,
-			initialization_callback = CALLBACK(src, PROC_REF(set_strain_on_init), HIVELORD_DESIGNER)
+			initialization_callback = CALLBACK(src, PROC_REF(set_strain_on_init), HIVELORD_ARCHITECT)
 		),
 		pheromone_type = pheromone_type,
 		test_callback = CALLBACK(src, PROC_REF(pheromone_validation), expected_pheromones)
 	)
 
-/// Spawns a single prime hive emitter hivelord of the designer strain, along with a prime hive receiver of every possible xenomorph cast, then forces the hivelord to emit frenzy pheromones.
-/// Expected behavior is that every receiver properly receives the hivelord's frenzy pheromones at the unique designer pheromone strength.
-/datum/unit_test/pheromones/transmit_castes/hivelord/designer/frenzy/Run()
+/// Spawns a single prime hive emitter hivelord of the architect strain, along with a prime hive receiver of every possible xenomorph cast, then forces the hivelord to emit frenzy pheromones.
+/// Expected behavior is that every receiver properly receives the hivelord's frenzy pheromones at the unique architect pheromone strength.
+/datum/unit_test/pheromones/transmit_castes/hivelord/architect/frenzy/Run()
 	. = ..(pheromone_type = XENO_PHERO_FRENZY)
 
-/// Spawns a single prime hive emitter hivelord of the designer strain, along with a prime hive receiver of every possible xenomorph cast, then forces the hivelord to emit warding pheromones.
-/// Expected behavior is that every receiver properly receives the hivelord's warding pheromones at the unique designer pheromone strength.
-/datum/unit_test/pheromones/transmit_castes/hivelord/designer/warding/Run()
+/// Spawns a single prime hive emitter hivelord of the architect strain, along with a prime hive receiver of every possible xenomorph cast, then forces the hivelord to emit warding pheromones.
+/// Expected behavior is that every receiver properly receives the hivelord's warding pheromones at the unique architect pheromone strength.
+/datum/unit_test/pheromones/transmit_castes/hivelord/architect/warding/Run()
 	. = ..(pheromone_type = XENO_PHERO_WARDING)
 
 /// Spawns a single prime hive emitter carrier, along with a prime hive receiver of every possible xenomorph cast, then forces the carrier to emit recovery pheromones.

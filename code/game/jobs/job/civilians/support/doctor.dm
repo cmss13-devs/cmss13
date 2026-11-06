@@ -40,7 +40,7 @@
 		if(PHARMACIST_VARIANT)
 			. = {"You are a pharmacist, and your job is to <a href='[generate_wiki_link()]'>provide to medical personnel the drugs they need to do their work proper</a>. Coordinate with the research team and make sure their newly developed chemicals are not being wasted. You still, though, have the same skills as a doctor, and you should be using that to fill the gaps within your team where needed. If you need help regarding what you should be doing, be sure to ask the Chief Medical Officer."}
 		else
-			. = {"As a doctor, you should consider yourself a <a href='[generate_wiki_link()]'>jack of all trades within the medical department, with knowledge in medicine, triage, surgery and pharmacology</a>. Your responsabilities are vast and you should be making sure that you are coordinating well with your peers. If you need help regarding what you should be doing, be sure to ask the Chief Medical Officer."}
+			. = {"As a doctor, you should consider yourself a <a href='[generate_wiki_link()]'>jack of all trades within the medical department, with knowledge in medicine, triage, surgery and pharmacology</a>. Your responsibilities are vast and you should be making sure that you are coordinating well with your peers. If you need help regarding what you should be doing, be sure to ask the Chief Medical Officer."}
 
 /datum/job/civilian/doctor/set_spawn_positions(count)
 	spawn_positions = doc_slot_formula(count)

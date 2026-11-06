@@ -51,6 +51,9 @@
 		if(z != potential_target.z)
 			continue
 
+		if(!ishuman_strict(potential_target))
+			continue
+
 		var/mob/living/carbon/human/human_target = potential_target
 		if(human_target.status_flags & XENO_HOST)
 			for(var/obj/item/alien_embryo/embryo in human_target)

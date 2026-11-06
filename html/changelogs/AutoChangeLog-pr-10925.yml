@@ -1,0 +1,9 @@
+author: "Steelpoint, dimdimich1996, Zenith"
+delete-after: True
+changes:
+  - mapadd: "The Cape River Mining Colony has been added to the game. Set within a mining operation on a desert world operated by the Con-Amalagated corporation. It is a single-z map."
+  - imageadd: "New floor tile sprites with a space ship/station theme has been added to the game. (Thanks to dimdimich1996 and Zenith)"
+  - imageadd: "A new set of Con-Am themed props have been added, including floor sprites and faction flags."
+  - rscadd: "The AK4707 assault rifle has a chance to spawn as part of the random 'UPP' gun loot pool, usually seen on ground maps."
+  - rscadd: "The SADAR anti-tank rocket launcher has been removed from the random 'Special' loot pool."
+  - rscadd: "A new 'materials' random loot pool has been added, this will spawn one of several random different material spawns in a specific area, such as metal, plasteel, sandbags or generic items like wood or cardboard."

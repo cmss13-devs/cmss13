@@ -1,0 +1,14 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - maptweak: "The South-East city of Tyrargo, formerly the security building and south-east streets, are a new hive location. The area is more built up, pre-weeded, is given CAS protection and is generally now far harder to attack for Marines."
+  - maptweak: "The car park is now a single-z building, and offers more protection for the hive."
+  - maptweak: "The security building is now single-z."
+  - maptweak: "The city entrance gates are more built up for the hive and offer more cover, giving the Xenomorphs a opportunity to attempt to contest this area."
+  - maptweak: "The south city flank entrance via the river has been expanded to allow easier access."
+  - maptweak: "The landing zones on Tyrargo Rift have been resized and/or slightly altered to make them less overly large."
+  - maptweak: "The river running into the city can no longer have barricades built on it."
+  - maptweak: "Wooden boards will now be hidden by xenomorph resin."
+  - maptweak: "Fixed a few minor oversights allow resin structures to be built on tiles that will hide the structure from view."
+  - balance: "Slightly toned down weapon ammo availability to initial US Army survivor spawns."
+  - balance: "Survivor loot spawns slightly altered to encourage venturing into xeno territory for better gear. Less emphasis on having easier access to better loot."

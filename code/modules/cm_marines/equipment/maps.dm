@@ -155,6 +155,12 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 	html_link = "images/d/da/White_Antre_Research_Facility.png"
 	color = "cyan"
 
+/obj/item/map/cape_river
+	name = "\improper Cape River map"
+	desc = "A labeled blueprint of the Con-Am mining outpost Cape River"
+	html_link = "images/4/46/Cape_River.png"
+	color = "red"
+
 /obj/item/map/sekhmet_swamp_map
 	name = "\improper SI-391 Sekhmet Swamp map"
 	desc = "An overview of the Sekhmet Swamp medical research facility colony schematics."
@@ -187,6 +193,7 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_NEW_VARADERO = new /obj/item/map/new_varadero(),
 		MAP_TYRARGO_RIFT = new /obj/item/map/tyrargo_rift(),
 		MAP_WHITE_ANTRE_RESEARCH_FACILITY = new /obj/item/map/white_antre_map(),
+		MAP_CAPE_RIVER = new /obj/item/map/cape_river(),
 		MAP_SEKHMET_SWAMP = new /obj/item/map/sekhmet_swamp_map()
 	)
 

@@ -166,7 +166,6 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	storage_slots = 1
-	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP, /obj/item/clothing/under/marine/veteran/UPP/medic, /obj/item/clothing/under/marine/veteran/UPP/engi, /obj/item/clothing/under/marine/veteran/UPP/SOF_uniform)
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/Initialize()
 	. = ..()
@@ -247,7 +246,6 @@
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	storage_slots = 3
-	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP/officer)
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/officer/mss
 	name = "\improper UPP MSS field jacket"
@@ -286,7 +284,6 @@
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	storage_slots = 4
-	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP)
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/jacket/ivan
 	name = "\improper UH4 Camo Jacket"
@@ -439,7 +436,6 @@
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	storage_slots = 2
-	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/freelancer)
 
 //this one is for CLF
 /obj/item/clothing/suit/storage/militia
@@ -463,7 +459,7 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	storage_slots = 2
-	uniform_restricted = list(/obj/item/clothing/under/colonist)
+	uniform_restricted = list(/obj/item/clothing/under)
 	allowed = list(
 		/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
@@ -643,7 +639,6 @@
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
 	)
-	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/cmb, /obj/item/clothing/under/CM_uniform)
 	item_state_slots = list(WEAR_JACKET = "cmb_heavy_armor")
 
 /obj/item/clothing/suit/storage/marine/veteran/cmb/Initialize()
@@ -715,7 +710,6 @@
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
 	)
-	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/mercenary)
 	item_state_slots = list(WEAR_JACKET = "mercenary_heavy_armor")
 
 /obj/item/clothing/suit/storage/marine/veteran/mercenary/heavy
@@ -750,7 +744,6 @@
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
 	)
-	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/mercenary)
 	item_state_slots = list(WEAR_JACKET = "mercenary_miner_armor")
 
 /obj/item/clothing/suit/storage/marine/veteran/mercenary/support
@@ -846,7 +839,6 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT  // it's lighter
-	uniform_restricted = list(/obj/item/clothing/under/marine/ua_riot)
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/suit/storage/marine/veteran/ua_riot/Initialize()

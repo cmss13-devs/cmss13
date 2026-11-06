@@ -59,7 +59,7 @@
 	w_class = SIZE_SMALL
 	flags_armor_protection = 0
 	flags_inventory = COVERMOUTH|ALLOWREBREATH
-	flags_inv_hide = HIDELOWHAIR
+	flags_inv_hide = HIDELOWHAIR|HIDEMOUTH
 
 /obj/item/clothing/mask/rebreather/skull
 	name = "skull balaclava"
@@ -71,7 +71,7 @@
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi'
 	)
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
-	flags_inv_hide = HIDEALLHAIR|HIDEEARS|HIDEFACE
+	flags_inv_hide = HIDEALLHAIR|HIDEEARS|HIDEFACE|HIDEMOUTH
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
@@ -91,7 +91,7 @@
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi'
 	)
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
-	flags_inv_hide = HIDEALLHAIR|HIDEEARS|HIDEFACE
+	flags_inv_hide = HIDEALLHAIR|HIDEEARS|HIDEFACE|HIDEMOUTH
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	var/pulled = FALSE
@@ -107,7 +107,7 @@
 	set src in usr
 	if(usr.stat == DEAD)
 		return
-	flags_inv_hide ^= HIDEFACE
+	flags_inv_hide ^= (HIDEFACE|HIDEMOUTH)
 	pulled = !pulled
 	if(pulled)
 		to_chat(usr, SPAN_NOTICE("You pull \the [src] down."))
@@ -149,7 +149,7 @@
 	)
 	original_state = "scarf_gray"
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
-	flags_inv_hide = HIDEFACE
+	flags_inv_hide = HIDEFACE|HIDEMOUTH
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_obj = OBJ_CAN_ACCESSORIZE
@@ -262,7 +262,7 @@
 	item_state = "keffiyeh"
 	original_state = "keffiyeh"
 	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
-	flags_inv_hide = HIDEFACE|HIDEALLHAIR|HIDEEARS
+	flags_inv_hide = HIDEFACE|HIDEALLHAIR|HIDEEARS|HIDEMOUTH
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	pulled = FALSE
@@ -286,7 +286,7 @@
 	else
 		to_chat(usr, SPAN_NOTICE("You pull \the [src] up."))
 		icon_state = original_state
-		flags_inv_hide = HIDEFACE|HIDEALLHAIR|HIDEEARS
+		flags_inv_hide = HIDEFACE|HIDEALLHAIR|HIDEEARS|HIDEMOUTH
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		if(H.wear_mask == src)

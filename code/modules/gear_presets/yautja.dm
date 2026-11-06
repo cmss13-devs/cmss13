@@ -24,6 +24,24 @@
 		new_human.h_style = mob_client.prefs.predator_h_style
 		new_human.skin_color = mob_client.prefs.predator_skin_color
 
+		// Mouth / mandible prefs
+		new_human.m_style = mob_client.prefs.m_style   // "pred" or "none" from the checkbox
+
+		var/obj/limb/mouth/mouth_limb = new_human.get_mouth()  // or whatever the limb name is
+		if(mouth_limb)
+			// Only populate mandibles when the mouth is shown
+			if(new_human.m_style != "none")
+				mouth_limb.mandibles[MANDIBLE_UPPER_RIGHT] = mob_client.prefs.predator_mandible_ur ? TRUE : null
+				mouth_limb.mandibles[MANDIBLE_UPPER_LEFT]  = mob_client.prefs.predator_mandible_ul ? TRUE : null
+				mouth_limb.mandibles[MANDIBLE_LOWER_RIGHT] = mob_client.prefs.predator_mandible_lr ? TRUE : null
+				mouth_limb.mandibles[MANDIBLE_LOWER_LEFT]  = mob_client.prefs.predator_mandible_ll ? TRUE : null
+			else
+				// Mouth disabled → clear all four
+				mouth_limb.mandibles[MANDIBLE_UPPER_RIGHT] = null
+				mouth_limb.mandibles[MANDIBLE_UPPER_LEFT]  = null
+				mouth_limb.mandibles[MANDIBLE_LOWER_RIGHT] = null
+				mouth_limb.mandibles[MANDIBLE_LOWER_LEFT]  = null
+
 /datum/equipment_preset/yautja/load_id(mob/living/carbon/human/new_human)
 	new_human.job = job_title
 	new_human.faction = faction

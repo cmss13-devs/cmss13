@@ -746,7 +746,7 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi',
 	)
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEALLHAIR|HIDEMOUTH
 
 /obj/item/clothing/head/helmet/marine/fluff/penguin //CKEY=tophatpenguin
 	name = "Top Penguin Hat"
@@ -763,7 +763,7 @@
 	icon_state = "doom_helmet"
 	desc = "A Helmet, of a famous Earth warrior... Donor Item."
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR|HIDEMOUTH
 
 /obj/item/clothing/head/helmet/marine/fluff/sadokist //CKEY=sadokist
 	name = "Tanya's Beret"
@@ -870,7 +870,7 @@
 	desc = "COG helmet owned by Anthony Carmine."
 	icon_state = "anthonycarmine"
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR|HIDEMOUTH
 
 /obj/item/clothing/head/helmet/marine/fluff/goldshieldberet
 	name = "beret"
@@ -911,7 +911,7 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi',
 	)
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEALLHAIR|HIDEMOUTH
 
 /obj/item/clothing/head/helmet/marine/fluff/devilzhand
 	name = "MICH Helmet"
@@ -933,7 +933,7 @@
 	icon_state = "riothelm_u"
 	item_state = "riothelm_u"
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR|HIDEMOUTH
 
 /obj/item/clothing/head/helmet/marine/fluff/mitii
 	name = "Mya's Beret"
@@ -992,7 +992,7 @@
 	icon_state = "merc_helm"
 	item_state = "merc_helm"
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDELOWHAIR
+	flags_inv_hide = HIDELOWHAIR|HIDEMOUTH
 
 /obj/item/clothing/head/helmet/marine/fluff/oneonethreeeight //CKEY=oneonethreeeight
 	name = "Camouflage Helmet"
@@ -1013,7 +1013,7 @@
 	icon_state = "templar_helm"
 	item_state = "templar_helm"
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR|HIDEMOUTH
 
 /obj/item/clothing/head/helmet/marine/fluff/deejay
 	name = "Rooks's Beret"
@@ -1043,7 +1043,7 @@
 	icon_state = "boba_helmet"
 	item_state = "boba_helmet"
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR|HIDEMOUTH
 
 /obj/item/clothing/head/helmet/marine/fluff/whiteblood17 //CKEY=whiteblood17
 	name = "Black Ops Helmet"
@@ -1066,7 +1066,7 @@
 	icon_state = "asset_protect"
 	item_state = "asset_protect"
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR|HIDEMOUTH
 
 /obj/item/clothing/head/helmet/marine/fluff/trblackdragon //CKEY=trblackdragon
 	name = "Spartan Helmet"
@@ -1074,7 +1074,7 @@
 	icon_state = "blackdragon_helmet_u" //UNIQUE
 	item_state = "blackdragon_helmet_u"
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR|HIDEMOUTH
 
 /obj/item/clothing/head/helmet/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
 	name = "M4-X Helmet"
@@ -1083,7 +1083,7 @@
 	item_state = "steelpoint_helmet"
 	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR|HIDEMOUTH
 	item_state_slots = list(
 		WEAR_L_HAND = "helmet",
 		WEAR_R_HAND = "helmet"
@@ -1114,7 +1114,7 @@
 	icon_state = "syndicate-helm-black"
 	item_state = "syndicate-helm-black"
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEALLHAIR|HIDEMOUTH
 
 /obj/item/clothing/head/helmet/marine/fluff/jdobbin49 //CKEY=jdobbin49
 	name = "Phillip's Beret"
@@ -1129,7 +1129,7 @@
 	icon_state = "star_mask"
 	item_state = "star_mask"
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR|HIDEMOUTH
 
 /obj/item/clothing/head/helmet/marine/fluff/bibblesless
 	name = "Yellow ERT Helmet"
@@ -1137,7 +1137,7 @@
 	icon_state = "rig0-ert_engineer"
 	item_state = "rig0-ert_engineer"
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR|HIDEMOUTH
 
 /obj/item/clothing/head/helmet/marine/fluff/fernkiller
 	name = "White ERT Helmet"
@@ -1145,7 +1145,7 @@
 	icon_state = "rig0-ert_medical"
 	item_state = "rig0-ert_medical"
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR|HIDEMOUTH
 
 /obj/item/clothing/head/helmet/marine/fluff/jackmcintyre //CKEY=jackmcintyre (UNIQUE)
 	name = "USCM Ball Cap"
@@ -1160,7 +1160,7 @@
 	icon_state = "commissar_helmet_u"
 	item_state = "commissar_helmet_u"
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR|HIDEMOUTH
 
 /obj/item/clothing/head/helmet/marine/fluff/medicae_helmet //CKEY=graciegrace0 (UNIQUE)
 	name = "Omega Medicae Helmet"
@@ -1168,7 +1168,7 @@
 	icon_state = "medicae_helmet_u"
 	item_state = "medicae_helmett_u"
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR|HIDEMOUTH
 
 /obj/item/clothing/head/helmet/marine/fluff/dingledangle
 	name = "Rusty's Cap"
@@ -1187,7 +1187,7 @@
 	icon_state = "leviathan13_helm_u"
 	item_state = "leviathan13_helm_u"
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR|HIDEMOUTH
 
 /obj/item/clothing/head/helmet/marine/fluff/kaila
 	name = "Custom Engineering Snow Helmet"
@@ -1207,7 +1207,7 @@
 	icon_state = "laser243"
 	item_state = "laser243"
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR|HIDEMOUTH
 
 /obj/item/clothing/head/helmet/marine/fluff/killaninja12
 	name = "space cowboy hat"
@@ -1514,7 +1514,7 @@
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/WY.dmi'
 	)
 	flags_inventory = COVERMOUTH|ALLOWREBREATH
-	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR
+	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR|HIDEMOUTH
 
 /obj/item/clothing/mask/fluff/sas_elite //CKEY=sasoperative (UNIQUE)
 	name = "Compact Gas Mask"

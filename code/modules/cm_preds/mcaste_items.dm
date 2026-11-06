@@ -128,7 +128,7 @@
 	eye_protection = EYE_PROTECTION_WELDING
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ|BLOCKGASEFFECT|FULL_DECAP_PROTECTION
-	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR // actual helmet that hides yautja dreads
+	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR|HIDEMOUTH // actual helmet that hides yautja dreads
 	flags_item = ITEM_PREDATOR
 	clothing_traits = list(TRAIT_EAR_PROTECTION)
 	unacidable = TRUE

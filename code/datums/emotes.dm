@@ -57,6 +57,8 @@
 	var/keybind_category = CATEGORY_EMOTE
 	/// Should this emote replace pronouns?
 	var/replace_pronouns = TRUE
+	/// set positive for yelling for that many seconds (with a decimal for single mouth movement or none for repeated), or negative for small mouth moving that many times
+	var/move_mouth = FALSE
 
 /datum/emote/New()
 	switch(mob_type_allowed_typecache)
@@ -110,6 +112,11 @@
 		playsound(user, tmp_sound, volume, vary)
 
 	log_emote("[user.name]/[user.ckey] : [msg ? msg : key]")
+
+	if(ishuman(user))
+		var/mob/living/carbon/human/mouthy_human = user
+		if(mouthy_human.species.flags & HAS_MOUTH && move_mouth != FALSE)
+			mouthy_human.move_mouth(times = move_mouth < 0 ? abs(move_mouth) : 1, yelling = move_mouth > 0 ? (move_mouth != round(move_mouth) ? 3 : 2) : 1, timing_override = move_mouth > 0 ? move_mouth : null)
 
 	if(!msg)
 		return

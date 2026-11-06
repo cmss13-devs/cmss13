@@ -8,6 +8,25 @@
 	if(get_ability_mouse_key() == XENO_ABILITY_CLICK_RIGHT)
 		client?.set_right_click_menu_mode(shift_only = TRUE)
 
+/datum/action/human_action/toggle_voices //temp
+	name = "Toggle Voices"
+	icon_file = 'icons/poopy.dmi'
+	action_icon_state = "cat"
+
+/datum/action/human_action/toggle_voices/action_activate()
+	. = ..()
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/my_owner = owner
+	my_owner.hears_voices = !my_owner.hears_voices
+
+/datum/action/human_action/toggle_voices/ghost/action_activate()
+	. = ..()
+	if(!isobserver(owner))
+		return
+	var/mob/dead/observer/my_owner = owner
+	my_owner.hears_voices = !my_owner.hears_voices
+
 /datum/action/human_action/issue_order
 	name = "Issue Order"
 	action_icon_state = "order"

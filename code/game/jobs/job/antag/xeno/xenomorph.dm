@@ -12,6 +12,9 @@
 /datum/job/antag/xenos/proc/calculate_extra_spawn_positions(count)
 	return max((floor(count * INITIAL_XENO_TO_MARINE_RATIO)), 0)
 
+/datum/job/antag/xenos/proc/calculate_remainder_spawn_positions(count)
+	return count % (1 / INITIAL_XENO_TO_MARINE_RATIO)
+
 /datum/job/antag/xenos/set_spawn_positions(count)
 	spawn_positions = max((floor(count * INITIAL_XENO_TO_MARINE_RATIO)), 1)
 	total_positions = spawn_positions

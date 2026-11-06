@@ -96,7 +96,7 @@
 	required_distance_to_target = 10
 	var/time_to_construct = 5 SECONDS
 	var/construction_effect = "xeno_telegraph_brown_anim"
-	var/constructed_object = /obj/effect/alien/weeds/node/pylon/cluster
+	var/constructed_object = /obj/effect/alien/resin/special/cluster
 	var/requires_weeds = FALSE
 	var/distance_from_other_buildings = 5
 
@@ -146,7 +146,7 @@
 /datum/action/horde_mode_action/resin_construction/recovery
 	cooldown_length = 20 SECONDS
 	chance_to_activate = 75
-	constructed_object = /obj/structure/horde_mode_resin/recovery
+	constructed_object = /obj/effect/alien/resin/special/recovery
 	requires_weeds = TRUE
 
 

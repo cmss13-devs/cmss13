@@ -366,6 +366,10 @@
 	variant = "mud_alt"
 	variant_prefix_name = "muddy"
 
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt/unweedable
+	allow_construction = FALSE
+	is_weedable = NOT_WEEDABLE
+
 /turf/open/auto_turf/tyrargo_grass/layer1
 	icon_state = "grass_1"
 	bleed_layer = 1

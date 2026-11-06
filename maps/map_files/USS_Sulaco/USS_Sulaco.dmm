@@ -666,7 +666,7 @@
 /turf/open/floor/almayer,
 /area/ship/sulaco/cafeteria)
 "adg" = (
-/obj/structure/blocker/fuelpump,
+/obj/structure/machinery/fuelpump,
 /turf/open/floor/plating,
 /area/ship/sulaco/lifeboat_pumps/lower_north)
 "adz" = (
@@ -1092,11 +1092,6 @@
 /obj/item/clothing/glasses/meson,
 /turf/open/floor/plating,
 /area/ship/sulaco/engineering/engine)
-"aDs" = (
-/obj/structure/machinery/fuelpump,
-/obj/structure/blocker/fuelpump,
-/turf/open/floor/plating,
-/area/ship/sulaco/lifeboat_pumps/lower_north)
 "aDL" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -3053,7 +3048,6 @@
 	},
 /obj/structure/machinery/cm_vending/clothing/engi/bravo{
 	density = 0;
-	pixel_y = 0;
 	pixel_x = -32
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -3386,8 +3380,6 @@
 /turf/closed/wall/almayer/outer/internal,
 /area/ship/sulaco/hallway/central_hall3)
 "cOK" = (
-/obj/structure/machinery/fuelpump,
-/obj/structure/blocker/fuelpump,
 /obj/structure/sign/safety/rewire{
 	pixel_x = -17
 	},
@@ -7420,7 +7412,6 @@
 /area/ship/sulaco/maintenance/lower_maint)
 "hcb" = (
 /obj/structure/surface/table/almayer,
-/obj/item/tool/kitchen/utensil/pfork,
 /turf/open/floor/wood/ship,
 /area/ship/sulaco/brig)
 "hce" = (
@@ -7723,7 +7714,6 @@
 	},
 /obj/structure/machinery/cm_vending/clothing/engi/alpha{
 	density = 0;
-	pixel_y = 0;
 	pixel_x = -32
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -9167,11 +9157,6 @@
 /obj/structure/machinery/computer/almayer_encryption/decoder,
 /turf/open/floor/almayer/silver/north,
 /area/ship/sulaco/bridge)
-"iPN" = (
-/obj/structure/machinery/fuelpump,
-/obj/structure/blocker/fuelpump,
-/turf/open/floor/plating,
-/area/ship/sulaco/lifeboat_pumps/lower_south)
 "iPP" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/faxmachine/uscm/almayer{
@@ -9505,7 +9490,6 @@
 "jgR" = (
 /obj/structure/filingcabinet/documentation/uscm_mp{
 	pixel_x = -8;
-	icon_state = "chestdrawer";
 	pixel_y = 24
 	},
 /obj/structure/filingcabinet/security{
@@ -10355,7 +10339,7 @@
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
 	},
-/obj/structure/blocker/fuelpump,
+/obj/structure/machinery/fuelpump,
 /turf/open/floor/plating,
 /area/ship/sulaco/lifeboat_pumps/upper_north)
 "kcW" = (
@@ -11092,10 +11076,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/ship/sulaco/maintenance/lower_maint)
-"kUy" = (
-/obj/structure/blocker/fuelpump,
-/turf/open/floor/plating,
-/area/ship/sulaco/lifeboat_pumps/upper_north)
 "kVH" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/plate,
@@ -13247,12 +13227,6 @@
 	},
 /turf/open/floor/almayer/no_build,
 /area/ship/sulaco/underdeck/vehicle)
-"nln" = (
-/obj/structure/machinery/status_display/supply_display{
-	pixel_x = -30
-	},
-/turf/open/floor/almayer/plating,
-/area/ship/sulaco/cargo)
 "nlJ" = (
 /turf/open/floor/almayer/cargo_arrow/east,
 /area/ship/sulaco/hangar/range)
@@ -13794,7 +13768,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/ship/sulaco/marine/delta)
 "nRu" = (
-/obj/structure/blocker/fuelpump,
+/obj/structure/machinery/fuelpump,
 /turf/open/floor/plating,
 /area/ship/sulaco/lifeboat_pumps/lower_south)
 "nSo" = (
@@ -14232,14 +14206,6 @@
 	pixel_x = 7;
 	pixel_y = 7
 	},
-/obj/item/tool/kitchen/utensil/pfork{
-	pixel_x = -8;
-	pixel_y = 7
-	},
-/obj/item/tool/kitchen/utensil/pfork{
-	pixel_x = -7;
-	pixel_y = 8
-	},
 /turf/open/floor/almayer,
 /area/ship/sulaco/marine)
 "onX" = (
@@ -14281,7 +14247,6 @@
 	},
 /obj/structure/machinery/cm_vending/clothing/engi/charlie{
 	density = 0;
-	pixel_y = 0;
 	pixel_x = -32
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -15678,7 +15643,7 @@
 /turf/open/floor/almayer/mono,
 /area/ship/sulaco/engineering/atmos)
 "pMJ" = (
-/obj/structure/blocker/fuelpump,
+/obj/structure/machinery/fuelpump,
 /turf/open/floor/plating,
 /area/ship/sulaco/lifeboat_pumps/upper_south)
 "pMR" = (
@@ -18581,11 +18546,6 @@
 	},
 /turf/closed/wall/almayer,
 /area/ship/sulaco/command/combat_correspondent)
-"tiA" = (
-/obj/structure/blocker/fuelpump,
-/obj/structure/machinery/fuelpump,
-/turf/open/floor/plating,
-/area/ship/sulaco/lifeboat_pumps/upper_north)
 "tiF" = (
 /obj/structure/machinery/cm_vending/clothing/leader/delta{
 	density = 0;
@@ -19560,7 +19520,6 @@
 	},
 /obj/structure/filingcabinet/documentation/uscm_mp{
 	pixel_x = -8;
-	icon_state = "chestdrawer";
 	pixel_y = 24;
 	density = 0
 	},
@@ -22520,7 +22479,6 @@
 	},
 /obj/structure/machinery/cm_vending/clothing/engi/delta{
 	density = 0;
-	pixel_y = 0;
 	pixel_x = -32
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -39269,7 +39227,7 @@ jPf
 eNx
 qMF
 qMF
-aDs
+qMF
 qMF
 qMF
 rZl
@@ -39342,7 +39300,7 @@ jPf
 eNx
 qMF
 qMF
-adg
+qMF
 qMF
 vFl
 aIW
@@ -39488,7 +39446,7 @@ eNx
 eNx
 qMF
 qMF
-adg
+qMF
 qMF
 bRP
 hPS
@@ -40677,7 +40635,7 @@ aaz
 aav
 fDl
 ffn
-iPN
+jiq
 aaf
 eNx
 gYT
@@ -40750,7 +40708,7 @@ aaA
 aaw
 aap
 ffn
-nRu
+jiq
 jiq
 eNx
 mpD
@@ -40896,7 +40854,7 @@ rDF
 aax
 aaq
 ffn
-nRu
+jiq
 aag
 eNx
 gYT
@@ -53296,7 +53254,7 @@ nGo
 xwy
 aIc
 gfM
-tiA
+aIc
 dXv
 xkg
 iJS
@@ -53369,7 +53327,7 @@ nGo
 cJB
 aIc
 aIc
-kUy
+aIc
 dXv
 bRH
 qDs
@@ -53451,7 +53409,7 @@ ofw
 aig
 aby
 dXv
-pMJ
+tap
 tap
 nfS
 cwN
@@ -53515,7 +53473,7 @@ dfP
 emd
 aIc
 aIc
-kUy
+aIc
 dXv
 bxJ
 qDs
@@ -53597,7 +53555,7 @@ mSq
 gfb
 dXv
 dXv
-pMJ
+tap
 tap
 qPs
 cwN
@@ -56204,7 +56162,7 @@ nlN
 xID
 xID
 xID
-nln
+xID
 xID
 lep
 xrZ

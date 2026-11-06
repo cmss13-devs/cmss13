@@ -1,0 +1,6 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - code_imp: "Typed and autodoc'd some GLOB mob lists"
+  - bugfix: "Excluded facehuggers and lesser drones from influx player stats"
+  - bugfix: "Fixed the possibility of multiple mob markers being created for xenos if gib called multiple times"

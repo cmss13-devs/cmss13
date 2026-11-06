@@ -41,6 +41,14 @@
 	var/mob/source_mob
 	var/combat_equipment = TRUE
 	var/faction_exclusive //if this ammo is obtainable only by certain faction
+	/// Category shown by the dropship part fabricator.
+	var/fabricator_category = "Uncategorized"
+	/// Whether this ammo can break through cave roofs.
+	var/cavebreaker = FALSE
+	/// Whether this ammo can pierce metal roofs during direct fire.
+	var/metalbreaker = FALSE
+	/// Delay between simulated projectiles.
+	var/shot_delay = 1 DECISECONDS
 
 /obj/structure/ship_ammo/update_icon()
 	. = ..()
@@ -115,6 +123,16 @@
 /obj/structure/ship_ammo/proc/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from, mob/firing_mob)
 	return
 
+/obj/structure/ship_ammo/proc/get_impact_visual_type()
+	return null
+
+/obj/structure/ship_ammo/proc/create_impact_visual(turf/impact)
+	var/impact_visual_type = get_impact_visual_type()
+	if(!impact_visual_type)
+		return
+	var/obj/effect/overlay/temp/impact_visual = new impact_visual_type(impact, src)
+	return impact_visual
+
 /obj/structure/ship_ammo/proc/can_fire_at(turf/impact, mob/user)
 	return TRUE
 
@@ -164,6 +182,7 @@
 //30mm gun
 
 /obj/structure/ship_ammo/heavygun
+	fabricator_category = "GAU Cannon"
 	name = "\improper PGU-100 Multi-Purpose 30mm ammo crate"
 	icon_state = "30mm_crate"
 	desc = "A crate full of PGU-100 30mm Multi-Purpose ammo designed to penetrate light (non-reinforced) structures, as well as shred infantry, IAVs, LAVs, IMVs, and MRAPs. Works in large areas for use on Class 4 and superior alien insectoid infestations, as well as fitting within the armaments allowed for use against a tier 4 insurgency as well as higher tiers. However, it lacks armor penetrating capabilities, for which Anti-Tank 30mm ammo is needed. Can be loaded into the GAU-21 30mm cannon."
@@ -183,6 +202,9 @@
 	. = ..()
 	. += "It has [ammo_count] round\s."
 
+/obj/structure/ship_ammo/heavygun/get_impact_visual_type()
+	return /obj/effect/overlay/temp/cas_cannon_impact
+
 /obj/structure/ship_ammo/heavygun/show_loaded_desc(mob/user)
 	if(ammo_count)
 		return "It's loaded with \a [src] containing [ammo_count] round\s."
@@ -192,48 +214,57 @@
 /obj/structure/ship_ammo/heavygun/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from, mob/firing_mob)
 	set waitfor = 0
 	var/list/turf_list = RANGE_TURFS(bullet_spread_range, impact)
-	var/soundplaycooldown = 0
-	var/debriscooldown = 0
 
 	for(var/i = 1 to ammo_used_per_firing)
-		sleep(1)
-		var/turf/impact_tile = pick(turf_list)
-		var/datum/cause_data/cause_data = create_cause_data(fired_from.name, firing_mob)
-		impact_tile.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(GLOB.alldirs), cause_data)
-		create_shrapnel(impact_tile,1,0,0,shrapnel_type,cause_data,FALSE,100) //simulates a bullet
-		for(var/atom/movable/explosion_effect in impact_tile)
-			if(iscarbon(explosion_effect))
-				var/mob/living/carbon/bullet_effect = explosion_effect
-				explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
-				bullet_effect.apply_armoured_damage(directhit_damage,ARMOR_BULLET,BRUTE,null,penetration)
-			else
-				explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW)
-		new /obj/effect/particle_effect/expl_particles(impact_tile)
-		if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
-			playsound(impact_tile, 'sound/effects/gauimpact.ogg',40,1,20)
-			soundplaycooldown = 3
-		soundplaycooldown--
-		if(!debriscooldown)
-			impact_tile.ceiling_debris_check(1)
-			debriscooldown = 6
-		debriscooldown--
-	sleep(11) //speed of sound simulation
-	playsound(impact, 'sound/effects/gau.ogg',100,1,60)
+		addtimer(CALLBACK(src, PROC_REF(fire_heavygun_shot), turf_list, fired_from, i, firing_mob), shot_delay * (i - 1))
+	addtimer(CALLBACK(src, PROC_REF(play_heavygun_sound), impact), 1.1 SECONDS)
+
+/obj/structure/ship_ammo/heavygun/proc/fire_heavygun_shot(list/turf/turf_list, obj/structure/dropship_equipment/weapon/fired_from, i, mob/firing_mob)
+	var/turf/impact_tile = pick(turf_list)
+	var/datum/cause_data/cause_data = create_cause_data(fired_from.name, firing_mob)
+
+	new /obj/effect/overlay/temp/cas_cannon_impact(impact_tile, src)
+
+	impact_tile.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(GLOB.alldirs), cause_data)
+	create_shrapnel(impact_tile, 1, 0, 0, shrapnel_type, cause_data, FALSE, 100)
+	for(var/atom/movable/explosion_effect in impact_tile)
+		if(iscarbon(explosion_effect))
+			var/mob/living/carbon/bullet_effect = explosion_effect
+			explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
+			bullet_effect.apply_armoured_damage(directhit_damage, ARMOR_BULLET, BRUTE, null, penetration)
+		else
+			explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW)
+	new /obj/effect/particle_effect/expl_particles(impact_tile)
+	if((i - 1) % 3 == 0)
+		playsound(impact_tile, 'sound/effects/gauimpact.ogg', 40, TRUE, 20)
+	if((i - 1) % 6 == 0)
+		impact_tile.ceiling_debris_check(1)
+
+/obj/structure/ship_ammo/heavygun/proc/play_heavygun_sound(turf/impact)
+	playsound(impact, 'sound/effects/gau.ogg', 100, TRUE, 60)
 
 
 /obj/structure/ship_ammo/heavygun/antitank
 	name = "\improper PGU-105 30mm Anti-tank ammo crate"
 	icon_state = "30mm_crate_hv"
-	desc = "A crate full of PGU-105 Specialized 30mm APFSDS Titanium-Tungsten alloy penetrators, made for countering peer and near peer APCs, IFVs, and MBTs in CAS support. It is designed to penetrate up to the equivalent 1350mm of RHA when launched from a GAU-21. It is much less effective against soft targets however, in which case 30mm ball ammunition is recommended. WARNING: discarding petals from the ammunition can be harmful if the dropship does not pull out at the needed speeds. Please consult page 3574 of the manual, available for order at any Armat store. Can be loaded into the GAU-21 30mm cannon."
+	desc = "A crate full of PGU-105 Specialized 30mm APFSDS Titanium-Tungsten alloy penetrators, made for countering peer and near peer APCs, IFVs, and MBTs in CAS support. It is designed to penetrate up to the equivalent 1350mm of RHA when launched from a GAU-21. It is much less effective against soft targets however, in which case 30mm ball ammunition is recommended. WARNING: discarding petals from the ammunition can be harmful if the dropship does not pull out at the needed speeds. Please consult page 3574 of the manual, available for order at any Armat store. It can pierce through metal ceilings. Can be loaded into the GAU-21 30mm cannon."
 	travelling_time = 60
+	ammo_count = 500
+	max_ammo_count = 500
+	ammo_used_per_firing = 50
+	bullet_spread_range = 4
 	point_cost = 325
+	fire_mission_delay = 2
 	shrapnel_type = /datum/ammo/bullet/shrapnel/gau/at
 	directhit_damage = 80 //how much damage is to be inflicted to a mob, this is here so that we can hit resting mobs.
 	penetration = 40 //AP value pretty much
+	shot_delay = 0.75 DECISECONDS
+	metalbreaker = TRUE
 
 //laser battery
 
 /obj/structure/ship_ammo/laser_battery
+	fabricator_category = "Laser Cannon"
 	name = "\improper BTU-17/LW Hi-Cap Laser Battery"
 	icon_state = "laser_battery"
 	desc = "A high-capacity laser battery used to power laser beam weapons. Can be loaded into the LWU-6B Laser Cannon."
@@ -279,6 +310,7 @@
 //Rockets
 
 /obj/structure/ship_ammo/rocket
+	fabricator_category = "Rocket Pod"
 	name = "abstract rocket"
 	icon_state = "single"
 	icon = 'icons/obj/structures/props/dropship/dropship_ammo64.dmi'
@@ -297,6 +329,9 @@
 
 /obj/structure/ship_ammo/rocket/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	qdel(src)
+
+/obj/structure/ship_ammo/rocket/get_impact_visual_type()
+	return /obj/effect/overlay/temp/cas_rocket_impact
 
 //this one is air-to-air only
 /obj/structure/ship_ammo/rocket/widowmaker
@@ -327,11 +362,14 @@
 
 /obj/structure/ship_ammo/rocket/keeper
 	name = "\improper GBU-67 'Keeper II'"
-	desc = "The GBU-67 'Keeper II' is the latest in a generation of laser guided weaponry that spans all the way back to the 20th century. Earning its nickname from a shortening of 'Peacekeeper' which comes from the program that developed its guidance system and the various uses of it during peacekeeping conflicts. Its payload is designed to devastate armored targets. Can be loaded into the LAU-444 Guided Missile Launcher."
+	desc = "The GBU-67 'Keeper II' is the latest in a generation of laser guided weaponry that spans all the way back to the 20th century. Earning its nickname from a shortening of 'Peacekeeper' which comes from the program that developed its guidance system and the various uses of it during peacekeeping conflicts. Its payload is designed to devastate armored targets. It can pierce through metal ceilings. Can be loaded into the LAU-444 Guided Missile Launcher."
 	icon_state = "paveway"
 	travelling_time = 20 //A fast payload due to its very tight blast zone
 	ammo_id = "k"
 	point_cost = 300
+	accuracy_range = 2
+	max_inaccuracy = 3
+	metalbreaker = TRUE
 
 /obj/structure/ship_ammo/rocket/keeper/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(3)
@@ -369,22 +407,26 @@
 /obj/structure/ship_ammo/rocket/thermobaric
 	name = "\improper BLU-200 'Dragon's Breath'"
 	desc = "The BLU-200 'Dragon's Breath' is a thermobaric fuel-air bomb. The aerosolized fuel mixture creates a vacuum when ignited causing serious damage to those in its way. Can be loaded into the LAU-444 Guided Missile Launcher."
-	icon_state = "fatty"
-	ammo_id = "f"
+	icon_state = "dragon"
+	ammo_id = "d"
 	travelling_time = 50
 	point_cost = 300
 
 /obj/structure/ship_ammo/rocket/thermobaric/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(3)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 4, 25, 50, "#c96500"), 0.5 SECONDS) //Very intense but the fire doesn't last very long
+	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 50, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data), 0.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 75, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data), 0.9 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, cause_data, 4, 25, 50, "#c96500"), 0.9 SECONDS)
 	for(var/mob/living/carbon/victim in orange(5, impact))
-		victim.throw_atom(impact, 3, 15, src, TRUE) // Implosion throws affected towards center of vacuum
-	QDEL_IN(src, 0.5 SECONDS)
+		victim.throw_atom(impact, 2, 15, src, TRUE) // Implosion throws affected towards center of vacuum
+	QDEL_IN(src, 0.9 SECONDS)
 
 
 //minirockets
 
 /obj/structure/ship_ammo/minirocket
+	fabricator_category = "Minirocket Pod"
 	name = "\improper AGR-59 'Mini-Mike'"
 	desc = "The AGR-59 'Mini-Mike' minirocket is a cheap and efficient means of putting hate down range. Though rockets lack a guidance package, it makes up for it in ammunition count. Can be loaded into the LAU-229 Rocket Pod."
 	icon_state = "minirocket"
@@ -399,17 +441,14 @@
 
 /obj/structure/ship_ammo/minirocket/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(2)
-	spawn(5)
-		cell_explosion(impact, 200, 44, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob))
-		var/datum/effect_system/expl_particles/P = new/datum/effect_system/expl_particles()
-		P.set_up(4, 0, impact)
-		P.start()
-		spawn(5)
-			var/datum/effect_system/smoke_spread/S = new/datum/effect_system/smoke_spread()
-			S.set_up(1,0,impact,null)
-			S.start()
-		if(!ammo_count && loc)
-			qdel(src) //deleted after last minirocket is fired and impact the ground.
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 200, 44, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion_particles), impact, 4), 0.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(smoke_spread), impact, 1, /obj/effect/particle_effect/smoke, null, 1), 1 SECONDS)
+	if(!ammo_count && loc)
+		qdel(src) //deleted after last minirocket is fired and impact the ground.
+
+/obj/structure/ship_ammo/minirocket/get_impact_visual_type()
+	return /obj/effect/overlay/temp/cas_minirocket_impact
 
 /obj/structure/ship_ammo/minirocket/show_loaded_desc(mob/user)
 	if(ammo_count)
@@ -429,10 +468,10 @@
 
 /obj/structure/ship_ammo/minirocket/incendiary/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	..()
-	spawn(5)
-		fire_spread(impact, create_cause_data(initial(name), source_mob), 3, 25, 20, "#EE6515")
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 3, 25, 20, "#EE6515"), 0.5 SECONDS)
 
 /obj/structure/ship_ammo/sentry
+	fabricator_category = "Launch Bay"
 	name = "\improper A/C-49-P Air Deployable Sentry"
 	desc = "An omni-directional sentry, capable of defending an area from lightly armored hostile incursion. Can be loaded into the LAG-14 Internal Sentry Launcher."
 	icon_state = "launchable_sentry"
@@ -441,9 +480,10 @@
 	max_ammo_count = 1
 	ammo_name = "area denial sentry"
 	travelling_time = 0 // handled by droppod
-	point_cost = 800 //handled by printer
+	point_cost = 1 //handled in vehicle_part_fabricator.dm under omnisentry_price
 	accuracy_range = 0 // pinpoint
 	max_inaccuracy = 0
+	fire_mission_delay = 0 //0 means unusable
 	/// Special structures it needs to break with drop pod
 	var/list/breakable_structures = list(/obj/structure/barricade, /obj/structure/surface/table)
 

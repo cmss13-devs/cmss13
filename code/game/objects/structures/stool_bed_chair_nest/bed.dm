@@ -384,6 +384,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	stretcher_activated = TRUE
 
 /obj/structure/bed/medevac_stretcher/Destroy()
+	forget_from_medevac_systems()
 	if(stretcher_activated)
 		stretcher_activated = FALSE
 		GLOB.activated_medevac_stretchers -= src
@@ -418,6 +419,36 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 /obj/structure/bed/medevac_stretcher/proc/isXRay()
 	return FALSE
 
+/obj/structure/bed/medevac_stretcher/proc/notify_medevac_systems()
+	if(!stretcher_activated || (!buckled_mob && !buckled_bodybag))
+		return
+
+	for(var/obj/docking_port/mobile/marine_dropship/dropship in SSshuttle.mobile)
+		for(var/obj/structure/dropship_equipment/medevac_system/medevac_system in dropship.equipments)
+			if(medevac_system.ship_base && medevac_system.faction_exclusive == faction)
+				medevac_system.notify_new_stretcher(src)
+
+/obj/structure/bed/medevac_stretcher/proc/forget_from_medevac_systems()
+	for(var/obj/docking_port/mobile/marine_dropship/dropship in SSshuttle.mobile)
+		for(var/obj/structure/dropship_equipment/medevac_system/medevac_system in dropship.equipments)
+			medevac_system.forget_stretcher(src)
+
+/obj/structure/bed/medevac_stretcher/afterbuckle(mob/buckle_target)
+	. = ..()
+	if(buckled_mob)
+		notify_medevac_systems()
+	else
+		forget_from_medevac_systems()
+
+/obj/structure/bed/medevac_stretcher/do_buckle_bodybag(obj/structure/closet/bodybag/bodybag, mob/user)
+	. = ..()
+	notify_medevac_systems()
+
+/obj/structure/bed/medevac_stretcher/unbuckle()
+	. = ..()
+	if(!buckled_mob && !buckled_bodybag)
+		forget_from_medevac_systems()
+
 /obj/structure/bed/medevac_stretcher/proc/toggle_medevac_beacon(mob/user)
 	if(!ishuman(user))
 		return
@@ -437,6 +468,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	if(stretcher_activated)
 		stretcher_activated = FALSE
 		GLOB.activated_medevac_stretchers -= src
+		forget_from_medevac_systems()
 		if(linked_medevac)
 			linked_medevac.linked_stretcher = null
 			linked_medevac = null
@@ -457,6 +489,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 		GLOB.activated_medevac_stretchers += src
 		to_chat(user, SPAN_NOTICE("You activate [src]'s beacon."))
 		update_icon()
+		notify_medevac_systems()
 
 /obj/item/roller/medevac
 	name = "medevac stretcher"

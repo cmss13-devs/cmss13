@@ -1,6 +1,6 @@
 import type { BooleanLike } from 'common/react';
 import { useBackend } from 'tgui/backend';
-import { Button, Flex, LabeledList, Section } from 'tgui/components';
+import { Box, Button, Flex, LabeledList, Section } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
 type DataEntry = {
@@ -11,125 +11,136 @@ type DataEntry = {
   is_ammo: BooleanLike;
 };
 
+type EquipmentCategories = Record<string, DataEntry[]>;
+
 type Data = {
-  Equipment: DataEntry[];
-  Ammo: DataEntry[];
+  Equipment: EquipmentCategories;
+  Ammo: EquipmentCategories;
   points: number;
   omnisentrygun_price: number;
   BuildQueue: { name: string; cost: number; index: number }[];
 };
 
-export const PartFabricator = (props) => {
+export const PartFabricator = () => {
   return (
     <Window width={900} height={850}>
-      <Window.Content>
+      <Window.Content scrollable>
         <GeneralPanel />
       </Window.Content>
     </Window>
   );
 };
 
-const GeneralPanel = (props) => {
+const GeneralPanel = () => {
   const { act, data } = useBackend<Data>();
   const { points, omnisentrygun_price, Equipment, Ammo, BuildQueue } = data;
   return (
     <div>
-      <Section>
-        <Section>Points: {points}</Section>
+      <Section title={`Points: ${points}`}>
         <Flex height="100%" direction="row">
-          <Flex.Item>
+          <Flex.Item grow={1}>
             <Section title="Equipment">
-              <LabeledList>
-                {Equipment.map((Equipment) => (
-                  <LabeledList.Item
-                    key={Equipment.name}
-                    label={Equipment.name}
-                    className="underline"
-                    buttons={
-                      <Button
-                        icon="wrench"
-                        tooltip={Equipment.desc}
-                        tooltipPosition="left"
-                        onClick={() =>
-                          act('produce', {
-                            index: Equipment.index,
-                            is_ammo: Equipment.is_ammo,
-                          })
-                        }
-                      >
-                        {'Fabricate  (' + Equipment.cost + ')'}
-                      </Button>
-                    }
-                  />
-                ))}
-              </LabeledList>
+              {Object.entries(Equipment).map(
+                ([categoryName, equipmentList]) => (
+                  <Box key={categoryName} mb={2}>
+                    <Box bold mb={1}>
+                      {categoryName}
+                    </Box>
+                    <LabeledList>
+                      {[...equipmentList]
+                        .sort((a, b) => a.name.localeCompare(b.name))
+                        .map((equipment) => (
+                          <LabeledList.Item
+                            key={equipment.name}
+                            label={equipment.name}
+                            className="underline"
+                            buttons={
+                              <Button
+                                icon="wrench"
+                                tooltip={equipment.desc}
+                                tooltipPosition="left"
+                                onClick={() =>
+                                  act('produce', {
+                                    index: equipment.index,
+                                    is_ammo: equipment.is_ammo,
+                                  })
+                                }
+                              >
+                                {'Fabricate  (' + equipment.cost + ')'}
+                              </Button>
+                            }
+                          />
+                        ))}
+                    </LabeledList>
+                  </Box>
+                ),
+              )}
             </Section>
           </Flex.Item>
-          <Flex.Item>
+          <Flex.Item width="2rem" />
+          <Flex.Item grow={1}>
             <Section title="Ammo">
-              <LabeledList>
-                {Ammo.map((Ammo) => (
-                  <LabeledList.Item
-                    key={Ammo.name}
-                    label={Ammo.name}
-                    className="underline"
-                    buttons={
-                      Ammo.name === 'A/C-49-P Air Deployable Sentry' ? (
-                        <Button
-                          icon="wrench"
-                          tooltip={Ammo.desc}
-                          tooltipPosition="left"
-                          onClick={() =>
-                            act('produce', {
-                              index: Ammo.index,
-                              is_ammo: Ammo.is_ammo,
-                            })
-                          }
-                        >
-                          {'Fabricate  (' + omnisentrygun_price + ')'}
-                        </Button>
-                      ) : (
-                        <Button
-                          icon="wrench"
-                          tooltip={Ammo.desc}
-                          tooltipPosition="left"
-                          onClick={() =>
-                            act('produce', {
-                              index: Ammo.index,
-                              is_ammo: Ammo.is_ammo,
-                            })
-                          }
-                        >
-                          {'Fabricate  (' + Ammo.cost + ')'}
-                        </Button>
-                      )
-                    }
-                  />
-                ))}
-              </LabeledList>
+              {Object.entries(Ammo).map(([categoryName, ammoList]) => (
+                <Box key={categoryName} mb={2}>
+                  <Box bold mb={1}>
+                    {categoryName}
+                  </Box>
+                  <LabeledList>
+                    {[...ammoList]
+                      .sort((a, b) => a.name.localeCompare(b.name))
+                      .map((ammo) => {
+                        const fabricationCost =
+                          ammo.name === 'A/C-49-P Air Deployable Sentry'
+                            ? omnisentrygun_price
+                            : ammo.cost;
+                        return (
+                          <LabeledList.Item
+                            key={ammo.name}
+                            label={ammo.name}
+                            className="underline"
+                            buttons={
+                              <Button
+                                icon="wrench"
+                                tooltip={ammo.desc}
+                                tooltipPosition="left"
+                                onClick={() =>
+                                  act('produce', {
+                                    index: ammo.index,
+                                    is_ammo: ammo.is_ammo,
+                                  })
+                                }
+                              >
+                                Fabricate ({fabricationCost})
+                              </Button>
+                            }
+                          />
+                        );
+                      })}
+                  </LabeledList>
+                </Box>
+              ))}
             </Section>
           </Flex.Item>
         </Flex>
       </Section>
-      <Section>
-        <Section title="Build Queue:" />
+      <Section title="Build Queue">
         <Flex height="100%" direction="row">
           <Flex.Item>
             <LabeledList>
-              {BuildQueue.map((Entry) => (
+              {BuildQueue.map((entry) => (
                 <LabeledList.Item
-                  key={Entry.name}
-                  label={Entry.index + '. ' + Entry.name}
+                  key={entry.name}
+                  label={`${entry.index}. ${entry.name}`}
                   className="underline"
                 >
                   <Button
                     icon="xmark"
-                    tooltip={Entry.cost}
+                    tooltip={entry.cost}
                     tooltipPosition="left"
                     onClick={() =>
                       act('cancel', {
-                        index: Entry.index,
-                        name: Entry.name,
+                        index: entry.index,
+                        name: entry.name,
                       })
                     }
                   />

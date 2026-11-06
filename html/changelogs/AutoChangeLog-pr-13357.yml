@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed preferences getting partially wiped if they underwent an upgrade when converting to json. A one-time backup (that admins can retrigger) is offered if possibly applicable"
+  - bugfix: "Fixed synth loadouts unnecessarily saving per-character loadouts"

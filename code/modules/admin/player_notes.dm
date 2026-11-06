@@ -3,7 +3,7 @@
 		return
 
 	//Loading list of notes for this key
-	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
+	var/savefile/info = new("data/player_saves/[key[1]]/[key]/info.sav")
 	var/list/infos
 	info >> infos
 	if(!infos)
@@ -57,7 +57,7 @@
 
 
 /proc/notes_del(key, index)
-	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
+	var/savefile/info = new("data/player_saves/[key[1]]/[key]/info.sav")
 	var/list/infos
 	info >> infos
 	if(LAZYLEN(infos) < index)
@@ -73,7 +73,7 @@
 
 /proc/player_notes_show_irc(key as text)
 	var/dat = "   Info on [key]%0D%0A"
-	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
+	var/savefile/info = new("data/player_saves/[key[1]]/[key]/info.sav")
 	var/list/infos
 	info >> infos
 	if(!infos)

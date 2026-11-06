@@ -159,6 +159,12 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 	name = "\improper Fort McNeil map"
 	desc = "A labeled blueprint of Fort McNeil, a civilian colony."
 	html_link = "images/b/b5/Fort_McNeil.png"
+  
+/obj/item/map/cape_river
+	name = "\improper Cape River map"
+	desc = "A labeled blueprint of the Con-Am mining outpost Cape River"
+	html_link = "images/4/46/Cape_River.png"
+	color = "red"
 
 /obj/item/map/galaxy
 	name = "\improper Galaxy map"
@@ -187,6 +193,7 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_TYRARGO_RIFT = new /obj/item/map/tyrargo_rift(),
 		MAP_WHITE_ANTRE_RESEARCH_FACILITY = new /obj/item/map/white_antre_map(),
 		MAP_FORT_MCNEIL = new /obj/item/map/fort_mcneil()
+		MAP_CAPE_RIVER = new /obj/item/map/cape_river()
 	)
 
 //used by marine equipment machines to spawn the correct map.

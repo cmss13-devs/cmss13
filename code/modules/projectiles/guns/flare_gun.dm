@@ -131,6 +131,8 @@
 	fired_flare.visible_message(SPAN_WARNING("\A [fired_flare] bursts into brilliant light in the sky!"))
 	fired_flare.invisibility = INVISIBILITY_MAXIMUM
 	fired_flare.mouse_opacity = FALSE
+	fired_flare.explo_proof = TRUE
+	fired_flare.anchored = TRUE
 	fired_flare.fuel = 3 MINUTES
 	fired_flare.light_range = 6
 	fired_flare.light_power = 3
@@ -146,6 +148,7 @@
 
 /obj/item/weapon/gun/flare/get_examine_text(mob/user)
 	. = ..()
+	. += SPAN_NOTICE("You can fire a loaded flare into the sky with <b>Unique Action</b>.")
 	if(last_signal_flare_name)
 		. += SPAN_NOTICE("The last signal flare fired has the designation: [last_signal_flare_name]")
 

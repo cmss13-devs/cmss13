@@ -261,7 +261,7 @@
 
 /obj/structure/window_frame/wood/reinforced
 	icon_state = "wood_window0_frame"
-	basestate = "wood_rwindow"
+	basestate = "wood_window"
 	reinforced = TRUE
 	window_type = /obj/structure/window/framed/wood/reinforced
 
@@ -575,3 +575,24 @@
 	basestate = "prison_rwindow"
 	reinforced = TRUE
 	window_type = /obj/structure/window/framed/hybrisa/spaceport/reinforced
+
+// Abyssal Frames
+/obj/structure/window_frame/abyssal/standard
+	icon = 'icons/turf/walls/abyssal_window_frames_blank.dmi'
+	icon_state = "prison_rwindow0_frame"
+	basestate = "prison_rwindow"
+
+/obj/structure/window_frame/abyssal/standard/reinforced
+	icon_state = "prison_rwindow0_frame"
+	basestate = "prison_rwindow"
+	reinforced = TRUE
+
+/obj/structure/window_frame/abyssal/blue
+	icon = 'icons/turf/walls/abyssal_window_frame_blue.dmi'
+	icon_state = "prison_rwindow0_frame"
+	basestate = "prison_rwindow"
+
+/obj/structure/window_frame/abyssal/blue/reinforced
+	icon_state = "prison_rwindow0_frame"
+	basestate = "prison_rwindow"
+	reinforced = TRUE

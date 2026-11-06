@@ -107,6 +107,9 @@
 
 #define XENO_STARTING_CRYSTAL 100 //How much building resource the queen gets to start with
 
+/// Whether the xeno in question is capable of prying open dropships, starting hijack (queen) and disabling ERT shuttles
+#define IS_XENO_DROPSHIP_CAPABLE(X) (X.hive_pos == XENO_QUEEN || X.caste_type == XENO_CASTE_PREDALIEN || X.caste_type == XENO_CASTE_KING)
+
 // Queen permission toggles
 #define COOLDOWN_TOGGLE_SLASH "cooldown_toggle_slash"
 #define COOLDOWN_TOGGLE_CONSTRUCTION "cooldown_toggle_construction"
@@ -412,9 +415,6 @@
 // Carrier strain flags
 #define CARRIER_EGGSAC "Eggsac"
 
-// Boiler strain flags
-#define BOILER_TRAPPER "Trapper"
-
 // Runner strain flags
 #define RUNNER_ACIDER "Acider"
 
@@ -652,7 +652,6 @@
 #define XENO_STRUCTURE_EGGMORPH  "egg morpher"
 #define XENO_STRUCTURE_RECOVERY  "recovery node"
 #define XENO_STRUCTURE_PLASMA_TREE "plasma tree"
-#define XENO_STRUCTURE_NEST  "thick resin nest"
 
 #define RESIN_TRAP_EMPTY 0
 #define RESIN_TRAP_HUGGER 1
@@ -755,7 +754,6 @@
 #define FIRE_MULTIPLIER_DEADLY		3
 
 #define WHISPERER_VIEWRANGE 10
-#define TRAPPER_VIEWRANGE 13
 
 #define SECRETE_RESIN_INTERRUPT -1
 #define SECRETE_RESIN_FAIL 0

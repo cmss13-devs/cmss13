@@ -44,6 +44,7 @@ map ice_colony_v2
 endmap
 
 map shivas_snowball
+	minplayers 100
 endmap
 
 map kutjevo
@@ -72,6 +73,8 @@ endmap
 
 map fort_mcneil
 	maxplayers 100
+
+map cape_river
 endmap
 
 map whiskey_outpost_v2

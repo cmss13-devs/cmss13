@@ -155,6 +155,17 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 	html_link = "images/d/da/White_Antre_Research_Facility.png"
 	color = "cyan"
 
+/obj/item/map/cape_river
+	name = "\improper Cape River map"
+	desc = "A labeled blueprint of the Con-Am mining outpost Cape River"
+	html_link = "images/4/46/Cape_River.png"
+	color = "red"
+
+/obj/item/map/lv1021_map
+	name = "\improper LV-1021 map"
+	desc = "A general overview of the aproximate area of the CLF camp."
+	html_link = "images/1/1c/LV1021.png.png"
+
 /obj/item/map/galaxy
 	name = "\improper Galaxy map"
 	desc = "A diagrammatic map of the milky way, laid out by sector."
@@ -180,7 +191,9 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_LV759_HYBRISA_PROSPERA = new /obj/item/map/lv759_map(),
 		MAP_NEW_VARADERO = new /obj/item/map/new_varadero(),
 		MAP_TYRARGO_RIFT = new /obj/item/map/tyrargo_rift(),
-		MAP_WHITE_ANTRE_RESEARCH_FACILITY = new /obj/item/map/white_antre_map()
+		MAP_WHITE_ANTRE_RESEARCH_FACILITY = new /obj/item/map/white_antre_map(),
+		MAP_CAPE_RIVER = new /obj/item/map/cape_river(),
+		MAP_LV1021_FALCONS_FURY = new /obj/item/map/lv1021_map()
 	)
 
 //used by marine equipment machines to spawn the correct map.

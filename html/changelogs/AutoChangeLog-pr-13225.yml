@@ -1,0 +1,7 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - balance: "If xenos start with no roundstart queen, they get an extra larva once someone evolves into queen"
+  - balance: "Precount remainder that didn't manage to increase larva count is now added to latejoin tally"
+  - qol: "Evolve button is granted to drones when there is no queen"
+  - qol: "Queen location selection is just immediate if there is only one choice"

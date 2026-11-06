@@ -167,6 +167,8 @@
 	icon_state = "cat2"
 	icon_living = "cat2"
 	icon_dead = "cat2_dead"
+	faction = FACTION_MARINE
+	faction_group = FACTION_LIST_MARINE
 	health = 50
 	maxHealth = 50
 	holder_type = /obj/item/holder/cat/Jones

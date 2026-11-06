@@ -561,7 +561,7 @@
 				else
 					amount_per_pill = clamp((reagents.total_volume / to_create) / length(loaded_pill_bottles_to_fill), 0, 60)
 
-			msg_admin_niche("[key_name(user)] created one or more pills (total pills to synthesize: [to_create * clamp((length(loaded_pill_bottles_to_fill)), 1, max_bottles_count)] in [length(loaded_pill_bottles_to_fill)] pill bottles) (REAGENTS: [english_list(reagents_in_pill)] AMOUNT PER PILL: [amount_per_pill]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+			msg_admin_niche("[key_name(user)] created one or more pills (total pills to synthesize: [to_create * clamp((length(loaded_pill_bottles_to_fill)), 1, max_bottles_count)] in [length(loaded_pill_bottles_to_fill)] pill bottles) (REAGENTS: [english_list(reagents_in_pill)] AMOUNT PER PILL: [amount_per_pill]) in [ADMIN_VERBOSEJMP(src)]).")
 
 			if (length(loaded_pill_bottles_to_fill) > 0)
 				for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles_to_fill)

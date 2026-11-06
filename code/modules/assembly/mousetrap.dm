@@ -88,6 +88,7 @@
 
 
 /obj/item/device/assembly/mousetrap/Crossed(atom/movable/AM)
+	..()
 	if(armed)
 		if(ishuman(AM))
 			var/mob/living/carbon/H = AM
@@ -95,7 +96,6 @@
 			H.visible_message(SPAN_WARNING("[H] accidentally steps on [src]."),SPAN_WARNING("You accidentally step on [src]"))
 		if(ismouse(AM))
 			triggered(AM)
-	..()
 
 
 /obj/item/device/assembly/mousetrap/on_found(mob/finder as mob)

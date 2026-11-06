@@ -4845,7 +4845,7 @@
 	icon_state = "sandbag_0";
 	pixel_y = 4
 	},
-/obj/effect/landmark/survivor_spawner,
+/obj/effect/landmark/survivor_spawner/us_army_co,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "ans" = (
@@ -12311,7 +12311,7 @@
 /area/tyrargo/landing_zone_2/road)
 "aEZ" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/item/tool/kitchen/utensil/pfork,
+/obj/item/tool/kitchen/utensil/fork/plastic,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/almayer/blackfull/west,
 /area/tyrargo/indoors/security/ground)
@@ -17368,7 +17368,7 @@
 /obj/structure/prop/server_equipment/laptop/on{
 	pixel_x = -7
 	},
-/obj/effect/landmark/survivor_spawner,
+/obj/effect/landmark/survivor_spawner/us_army_synth,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPR" = (
@@ -104226,6 +104226,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
+/obj/item/device/binoculars/range/designator,
 /turf/open/floor/hybrisa/carpet/carpetpatternblue,
 /area/tyrargo/indoors/apartment/north_upper)
 "fsJ" = (

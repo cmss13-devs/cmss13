@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/landmark/survivor_spawner/SOF_survivor/synth,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
+/area/strata/interior/shuttle_sof)
 "an" = (
 /obj/structure/shuttle/part/upp_sof/transparent{
 	icon_state = "7,1"
@@ -907,7 +911,7 @@ IE
 Zp
 nb
 li
-MK
+aa
 pe
 Oo
 wZ

@@ -318,14 +318,6 @@
 					if(istype(current_item, /obj/item/explosive))
 						qdel(current_item)
 
-				for(var/obj/item/hand_item in spawned_human.hands)
-					if(istype(hand_item, /obj/item/weapon))
-						qdel(hand_item)
-						continue
-
-					if(istype(hand_item, /obj/item/explosive))
-						qdel(hand_item)
-
 		if(play_as)
 			spawned_human.ckey = owner.ckey
 

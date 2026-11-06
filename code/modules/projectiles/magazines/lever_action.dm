@@ -18,6 +18,12 @@ Similar to shotguns.dm but not exactly.
 	handful_state = "lever_action_bullet"
 	transfer_handful_amount = 9
 
+/obj/item/ammo_magazine/lever_action/attack_self(mob/user)
+	if(current_rounds == 0)
+		new /obj/item/stack/sheet/cardboard(user.loc)
+		qdel(src)
+	else
+		return ..()
 
 /obj/item/ammo_magazine/lever_action/training
 	name = "box of 45-70 blanks"

@@ -4,7 +4,7 @@
 	paygrades = list(PAY_SHORT_AE2 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "ARMY"
-	minimap_background = "background_ua"
+	minimap_background = "background_army"
 	job_title  = JOB_ARMY_TROOPER
 	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
@@ -201,7 +201,7 @@
 	assignment = JOB_ARMY_TROOPER
 	job_title  = JOB_ARMY_TROOPER
 	skills = /datum/skills/military/survivor/army_standard
-	minimap_icon = "hudsquad_trpr"
+	minimap_icon = "us_trooper"
 
 /datum/equipment_preset/survivor/army/standard/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -220,7 +220,7 @@
 	assignment = JOB_ARMY_ENGI
 	job_title  = JOB_ARMY_ENGI
 	skills = /datum/skills/military/survivor/army_engineer
-	minimap_icon = "hudsquad_cet"
+	minimap_icon = "us_engi_tech"
 
 /datum/equipment_preset/survivor/army/engineer/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -241,7 +241,7 @@
 	assignment = JOB_ARMY_MEDIC
 	job_title  = JOB_ARMY_MEDIC
 	skills = /datum/skills/military/survivor/army_medic
-	minimap_icon = "hudsquad_cet"
+	minimap_icon = "us_med_tech"
 
 /datum/equipment_preset/survivor/army/medic/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -265,7 +265,7 @@
 	assignment = JOB_ARMY_MARKSMAN
 	job_title  = JOB_ARMY_MARKSMAN
 	skills = /datum/skills/military/survivor/army_marksman
-	minimap_icon = "hudsquad_snpr"
+	minimap_icon = "us_marksman"
 
 /datum/equipment_preset/survivor/army/marksman/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -286,7 +286,7 @@
 	assignment = JOB_ARMY_SMARTGUNNER
 	job_title  = JOB_ARMY_SMARTGUNNER
 	skills = /datum/skills/military/survivor/army_gunner
-	minimap_icon = "hudsquad_mmg"
+	minimap_icon = "us_gunner"
 
 /datum/equipment_preset/survivor/army/gunner/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -308,11 +308,10 @@
 	assignment = JOB_ARMY_SNCO
 	job_title  = JOB_ARMY_SNCO
 	skills = /datum/skills/military/survivor/army_sl
-	minimap_icon = "hudsquad_sl_army"
+	minimap_icon = "us_leader"
 
 /datum/equipment_preset/survivor/army/sl/load_gear(mob/living/carbon/human/new_human)
 	..()
-	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/army/e7, WEAR_ACCESSORY)
 	spawn_random_headgear(new_human)
 	add_army_weapon_pistol(new_human)
@@ -332,7 +331,7 @@
 	skills = /datum/skills/commander
 	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
-	minimap_icon = "hudsquad_co_army"
+	minimap_icon = "co"
 
 /datum/equipment_preset/survivor/army/co/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/army/uniform = new()
@@ -363,7 +362,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba(new_human), WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/cigarette/cigar/classic(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo/gold(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/neckerchief/yellow(new_human), WEAR_FACE)
@@ -383,6 +381,7 @@
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	assignment = JOB_ARMY_SYN
 	idtype = /obj/item/card/id/gold
+	minimap_icon = "us_synth"
 
 /datum/equipment_preset/synth/survivor/army/load_gear(mob/living/carbon/human/preset_human)
 	var/obj/item/clothing/under/marine/army/uniform = new()

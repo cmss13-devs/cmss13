@@ -90,6 +90,9 @@
 	. = ..()
 
 /obj/effect/alien/resin/trap/HasProximity(atom/movable/victim)
+	if(HAS_TRAIT(victim, TRAIT_XENO_RECOGNIZED))
+		return
+
 	switch(trap_type)
 		if(RESIN_TRAP_HUGGER)
 			if(can_hug(victim, hivenumber) && !isyautja(victim) && !issynth(victim) && !isthrall(victim))
@@ -168,7 +171,7 @@
 			set_state()
 			visible_message(SPAN_WARNING("[FH] gets out of [src]!"))
 			sleep(15)
-			if(FH.stat == CONSCIOUS && FH.loc) //Make sure we're conscious and not idle or dead.
+			if(FH.stat == CONSCIOUS && FH.loc) //Make sure we're conscious and not idle or dead
 				FH.leap_at_nearest_target()
 		if(RESIN_TRAP_GAS)
 			trap_type_name = "gas"
@@ -271,6 +274,7 @@
 	..()
 
 /obj/effect/alien/resin/trap/Crossed(atom/A)
+	..()
 	if(ismob(A) || isVehicleMultitile(A))
 		HasProximity(A)
 
@@ -293,6 +297,7 @@
 	. = ..()
 
 /obj/effect/trap_tripwire/Crossed(atom/A)
+	..()
 	if(!linked_trap)
 		qdel(src)
 		return

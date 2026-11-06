@@ -35,3 +35,7 @@ libprof.so
 
 # OpenDream compatibility stuff
 colonialmarines.json
+
+# build module folders
+node_modules/
+package-lock.json

@@ -300,8 +300,10 @@
 		notify_ghosts(header = "Burst Imminent", message = "A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]</b>[area_text]!", source = affected_mob)
 
 	stage = 7 // Begin the autoburst countdown
+/mob/living/carbon/xenomorph/proc/cause_unbearable_pain(mob/living/carbon/victim)
+	return
 
-/mob/living/carbon/xenomorph/larva/proc/cause_unbearable_pain(mob/living/carbon/victim)
+/mob/living/carbon/xenomorph/larva/cause_unbearable_pain(mob/living/carbon/victim)
 	if(loc != victim)
 		return
 	victim.emote("scream")
@@ -311,7 +313,10 @@
 	to_chat(victim, message)
 	addtimer(CALLBACK(src, PROC_REF(cause_unbearable_pain), victim), rand(1, 3) SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
-/mob/living/carbon/xenomorph/larva/proc/chest_burst(mob/living/carbon/victim)
+/mob/living/carbon/xenomorph/proc/chest_burst(mob/living/carbon/victim)
+	return
+
+/mob/living/carbon/xenomorph/larva/chest_burst(mob/living/carbon/victim)
 	set waitfor = 0
 	if(victim.chestburst || loc != victim)
 		return

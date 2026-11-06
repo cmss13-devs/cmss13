@@ -33,6 +33,7 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/toggledebuglogs,
 	/client/proc/togglestatpanelsplit,
 	/client/proc/togglenichelogs,
+	/datum/admins/proc/ticket_panel,
 	/datum/admins/proc/display_tags,
 	/datum/admins/proc/player_notes_show,
 	/datum/admins/proc/check_ckey,
@@ -111,6 +112,8 @@ GLOBAL_LIST_INIT(admin_verbs_logs, list(
 	/datum/admins/proc/view_runtime_log, /*shows the server runtime log for this round*/
 	/datum/admins/proc/view_href_log, /*shows the server HREF log for this round*/
 	/datum/admins/proc/view_tgui_log, /*shows the server TGUI log for this round*/
+	/client/proc/opensearch_query_builder,
+	/client/proc/opensearch_quick_query,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_sounds, list(
@@ -129,6 +132,7 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/enable_event_mob_verbs,
 	/client/proc/force_hijack,
 	/datum/admins/proc/force_predator_round, //Force spawns a predator round.
+	/datum/admins/proc/force_colony_joe_round, //same as above but for colony working joes
 	/client/proc/adjust_predator_round,
 	/client/proc/cmd_admin_world_narrate, /*sends text to all players with no padding*/
 	/client/proc/cmd_admin_object_narrate,
@@ -220,6 +224,7 @@ GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	/client/proc/admin_blurb,
 	/datum/admins/proc/open_shuttlepanel,
 	/client/proc/allow_browser_inspect,
+	/client/proc/debug_mapgrids,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_debug_advanced, list(
@@ -316,7 +321,8 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	/client/proc/cmd_mentor_say,
 	/datum/admins/proc/imaginary_friend,
 	/client/proc/toggle_newplayer_ghost_hud,
-	/client/proc/toggle_newplayer_ic_hud
+	/client/proc/toggle_newplayer_ic_hud,
+	/datum/admins/proc/ticket_panel
 ))
 
 /client/proc/add_admin_verbs()
@@ -380,6 +386,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 		GLOB.admin_verbs_hideable,
 		GLOB.debug_verbs,
 		GLOB.admin_verbs_stealth,
+		GLOB.admin_verbs_logs
 	))
 
 /client/proc/jobbans()

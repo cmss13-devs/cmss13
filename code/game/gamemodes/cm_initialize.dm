@@ -47,14 +47,10 @@ Additional game mode variables.
 	var/datum/mind/hellhounds[] = list() //Hellhound spawning is not supported at round start.
 	var/list/dead_queens // A list of messages listing the dead queens
 	var/list/joes		= list()
+	var/list/colony_joes = list()
 	var/list/fax_responders = list()
 
-	var/xeno_required_num = 0 //We need at least one. You can turn this off in case we don't care if we spawn or don't spawn xenos.
-	var/xeno_starting_num = 0 //To clamp starting xenos.
 	var/xeno_bypass_timer = 0 //Bypass the five minute timer before respawning.
-	var/surv_starting_num = 0 //To clamp starting survivors.
-	var/merc_starting_num = 0 //PMC clamp.
-	var/marine_starting_num = 0 //number of players not in something special
 
 	var/list/yautja_hunters	= list()
 	var/list/yautja_youngbloods = list()
@@ -87,6 +83,8 @@ Additional game mode variables.
 	var/gear_scale = 1
 	/// Multiplier to the amount of marine gear, maximum reached value for
 	var/gear_scale_max = 1
+	/// Multiplier to the amount of chemical dispenser energy, based on number of medics
+	var/energy_scale = 1
 
 	//Role Authority set up.
 	/// List of role titles to override to different roles when starting game
@@ -119,26 +117,6 @@ Additional game mode variables.
 
 /datum/game_mode/proc/get_roles_list()
 	return GLOB.ROLES_USCM
-
-//===================================================\\
-
-				//GAME MODE INITIALIZE\\
-
-//===================================================\\
-
-/datum/game_mode/proc/initialize_special_clamps()
-	xeno_starting_num = clamp((GLOB.readied_players/CONFIG_GET(number/xeno_number_divider)), xeno_required_num, INFINITY) //(n, minimum, maximum)
-	surv_starting_num = clamp((GLOB.readied_players/CONFIG_GET(number/surv_number_divider)), 2, 8) //this doesn't run
-	marine_starting_num = length(GLOB.player_list) - xeno_starting_num - surv_starting_num
-	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-		if(target_squad)
-			target_squad.roles_cap[JOB_SQUAD_ENGI] = engi_slot_formula(marine_starting_num)
-			target_squad.roles_cap[JOB_SQUAD_MEDIC] = medic_slot_formula(marine_starting_num)
-
-	for(var/i in GLOB.RoleAuthority.roles_by_name)
-		var/datum/job/J = GLOB.RoleAuthority.roles_by_name[i]
-		if(J.scaled)
-			J.set_spawn_positions(marine_starting_num)
 
 
 //===================================================\\
@@ -394,6 +372,105 @@ Additional game mode variables.
 
 //===================================================\\
 
+			  //COLONY JOE INITIALIZE\\
+
+//===================================================\\
+
+/datum/game_mode/proc/initialize_colony_joe(mob/living/carbon/human/new_joe)
+	colony_joes[new_joe.persistent_username] = list("Name" = new_joe.real_name, "Status" = "Alive")
+
+/datum/game_mode/proc/attempt_to_join_as_colony_joe(mob/joe_candidate)
+	var/mob/living/carbon/human/new_joe = transform_colony_joe(joe_candidate) //Initialized and ready.
+	if(!new_joe)
+		return
+
+	msg_admin_niche("([new_joe.key]) joined as a Colony Working Joe, [new_joe.real_name].")
+
+	if(joe_candidate)
+		joe_candidate.moveToNullspace() //Nullspace it for garbage collection later.
+
+/datum/game_mode/proc/check_colony_joe_late_join(mob/joe_candidate, show_warning = TRUE)
+	if(!joe_candidate?.client)
+		return
+
+	var/datum/job/joe_job = GLOB.RoleAuthority.roles_by_name[JOB_COLONY_JOE]
+
+	if(!joe_job)
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("Something went wrong!"))
+		return FALSE
+
+	if(!joe_candidate.client.check_whitelist_status(WHITELIST_SYNTHETIC) && !joe_candidate.client.check_whitelist_status(WHITELIST_JOE))
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synthetic."))
+		return FALSE
+
+	if(!(flags_round_type & MODE_COLONY_JOE))
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("There are no Colony Working Joes this round! Maybe the next one."))
+		return FALSE
+
+	if(joe_candidate.key in colony_joes)
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("You already were a Colony Working Joe! Give someone else a chance."))
+		return FALSE
+
+	if(show_warning && tgui_alert(joe_candidate, "Confirm joining as a Colony Working Joe.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+		return FALSE
+
+	if(joe_job.current_positions >= joe_job.total_positions)
+		if(show_warning)
+			to_chat(joe_candidate, SPAN_WARNING("Only [joe_job.total_positions] Colony Working Joes may spawn this round."))
+		return FALSE
+
+	return TRUE
+
+/datum/game_mode/proc/transform_colony_joe(mob/joe_candidate)
+	if(!joe_candidate.client) // Legacy - probably due to spawn code sync sleeps
+		log_debug("Null client attempted to transform_colony_joe")
+		return
+
+	var/turf/spawn_point = null
+	var/list/joe_types = SSmapping.configs[GROUND_MAP].colony_joe_types
+
+	if(length(joe_types) == 0)
+		to_chat(joe_candidate, SPAN_WARNING("This map does not have colony joe spawns, and a colony joe round should not have started!"))
+		return
+
+	var/datum/job/joe_job = pick(joe_types)
+	if(!ispath(joe_job))
+		joe_job = text2path(joe_job)
+
+	if(get_turf(pick(GLOB.latejoin_by_job[JOB_COLONY_JOE])))
+		spawn_point = get_turf(pick(GLOB.latejoin_by_job[JOB_COLONY_JOE]))
+	else
+		log_debug("No valid colony joe spawn points!")
+		return
+
+	var/mob/living/carbon/human/synthetic/new_joe = new(spawn_point)
+	joe_candidate.mind.transfer_to(new_joe, TRUE)
+
+	// text2path wont text to path so you get this
+	switch(joe_job)
+		if(/datum/job/civilian/working_joe/colony)
+			joe_job = GLOB.RoleAuthority.roles_by_name[JOB_COLONY_JOE]
+			joe_job.handle_job_options(new_joe.client.prefs.pref_special_job_options[JOB_WORKING_JOE])
+		if(/datum/job/civilian/working_joe/daniel)
+			joe_job = GLOB.RoleAuthority.roles_by_name[JOB_DANIEL]
+		if(/datum/job/antag/upp/dzho_automaton/colony)
+			joe_job = GLOB.RoleAuthority.roles_by_name[JOB_UPP_COLONY_JOE]
+
+	if(!joe_job)
+		qdel(new_joe)
+		return
+	// This is usually done in assign_role, a proc which is not executed in this case, since check_joe_late_join is running its own checks.
+	joe_job.current_positions++
+	GLOB.RoleAuthority.equip_role(new_joe, joe_job, new_joe.loc)
+	SSticker.minds += new_joe.mind
+	return new_joe
+
+//===================================================\\
+
 			//FAX RESPONDER INITIALIZE\\
 
 //===================================================\\
@@ -504,86 +581,6 @@ Additional game mode variables.
 		return FALSE
 	return TRUE
 
-
-//===================================================\\
-
-			//XENOMORPH INITIALIZE\\
-
-//===================================================\\
-
-//If we are selecting xenomorphs, we NEED them to play the round. This is the expected behavior.
-//If this is an optional behavior, just override this proc or make an override here.
-/datum/game_mode/proc/initialize_starting_xenomorph_list(list/hives = list(XENO_HIVE_NORMAL), bypass_checks = FALSE)
-	var/list/datum/mind/possible_xenomorphs = get_players_for_role(JOB_XENOMORPH)
-	var/list/datum/mind/possible_queens = get_players_for_role(JOB_XENOMORPH_QUEEN)
-	if(length(possible_xenomorphs) < xeno_required_num && !bypass_checks) //We don't have enough aliens, we don't consider people rolling for only Queen.
-		to_world("<h2 style=\"color:red\">Not enough players have chosen to be a xenomorph in their character setup. <b>Aborting</b>.</h2>")
-		return
-
-	//Minds are not transferred at this point, so we have to clean out those who may be already picked to play.
-	for(var/datum/mind/A in possible_queens)
-		var/mob/living/original = A.current
-		var/client/client = GLOB.directory[A.ckey]
-		if(jobban_isbanned(original, XENO_CASTE_QUEEN) || !can_play_special_job(client, XENO_CASTE_QUEEN))
-			LAZYREMOVE(possible_queens, A)
-
-	if(LAZYLEN(possible_queens)) // Pink one of the people who want to be Queen and put them in
-		for(var/hive in hives)
-			var/new_queen = pick(possible_queens)
-			if(new_queen)
-				setup_new_xeno(new_queen)
-				picked_queens += list(GLOB.hive_datum[hive] = new_queen)
-				LAZYREMOVE(possible_xenomorphs, new_queen)
-
-	for(var/datum/mind/A in possible_xenomorphs)
-		if(A.roundstart_picked)
-			LAZYREMOVE(possible_xenomorphs, A)
-
-	for(var/hive in hives)
-		xenomorphs[GLOB.hive_datum[hive]] = list()
-
-	var/datum/mind/new_xeno
-	var/current_index = 1
-	var/remaining_slots = 0
-	for(var/i in 1 to xeno_starting_num) //While we can still pick someone for the role.
-		if(current_index > LAZYLEN(hives))
-			current_index = 1
-
-		var/datum/hive_status/hive = GLOB.hive_datum[hives[current_index]]
-		if(LAZYLEN(possible_xenomorphs)) //We still have candidates
-			new_xeno = pick(possible_xenomorphs)
-			LAZYREMOVE(possible_xenomorphs, new_xeno)
-
-			if(!new_xeno)
-				hive.stored_larva++
-				hive.hive_ui.update_burrowed_larva()
-				continue  //Looks like we didn't get anyone. Keep going.
-
-			setup_new_xeno(new_xeno)
-
-			xenomorphs[hive] += new_xeno
-		else //Out of candidates, fill the xeno hive with burrowed larva
-			remaining_slots = floor((xeno_starting_num - i))
-			break
-
-		current_index++
-
-
-	if(remaining_slots)
-		var/larva_per_hive = floor(remaining_slots / LAZYLEN(hives))
-		for(var/hivenumb in hives)
-			var/datum/hive_status/hive = GLOB.hive_datum[hivenumb]
-			hive.stored_larva = larva_per_hive
-
-	/*
-	Our list is empty. This can happen if we had someone ready as alien and predator, and predators are picked first.
-	So they may have been removed from the list, oh well.
-	*/
-	if(LAZYLEN(xenomorphs) < xeno_required_num && LAZYLEN(picked_queens) != LAZYLEN(hives) && !bypass_checks)
-		to_world("<h2 style=\"color:red\">Could not find any candidates after initial alien list pass. <b>Aborting</b>.</h2>")
-		return
-
-	return TRUE
 
 // Helper proc to set some constants
 /proc/setup_new_xeno(datum/mind/new_xeno)
@@ -1201,7 +1198,7 @@ Additional game mode variables.
 		var/obj/structure/machinery/chem_storage/chem_storage = GLOB.chemical_data.chemical_networks[chem_storage_network]
 		if(!chem_storage.dynamic_storage)
 			continue
-		chem_storage.calculate_dynamic_storage(gear_scale)
+		chem_storage.calculate_dynamic_storage(energy_scale, TRUE)
 
 	//Scale the amount of cargo points through a direct multiplier
 	GLOB.supply_controller.points += floor(GLOB.supply_controller.points_scale * gear_scale)
@@ -1232,12 +1229,15 @@ Additional game mode variables.
 		gear_scale_max = gear_scale
 		for(var/obj/structure/machinery/cm_vending/sorted/vendor as anything in GLOB.cm_vending_vendors)
 			vendor.update_dynamic_stock(gear_scale_max)
-		for(var/chem_storage_network in GLOB.chemical_data.chemical_networks)
-			var/obj/structure/machinery/chem_storage/chem_storage = GLOB.chemical_data.chemical_networks[chem_storage_network]
-			if(!chem_storage.dynamic_storage)
-				continue
-			chem_storage.calculate_dynamic_storage(gear_scale)
 		GLOB.supply_controller.points += floor(gear_delta * GLOB.supply_controller.points_scale)
+
+/datum/game_mode/proc/update_energy_scale()
+	energy_scale = length(GLOB.marine_medics)
+	for(var/chem_storage_network in GLOB.chemical_data.chemical_networks)
+		var/obj/structure/machinery/chem_storage/chem_storage = GLOB.chemical_data.chemical_networks[chem_storage_network]
+		if(!chem_storage.dynamic_storage)
+			continue
+		chem_storage.calculate_dynamic_storage(energy_scale)
 
 /// Updates [var/latejoin_tally] and [var/gear_scale] based on role weights of latejoiners/cryoers. Delta is the amount of role positions added/removed
 /datum/game_mode/proc/latejoin_update(role, delta = 1)

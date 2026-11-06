@@ -225,7 +225,8 @@
 	if(pulling)
 		REMOVE_TRAIT(pulling, TRAIT_FLOORED, CHOKEHOLD_TRAIT)
 		var/mob/M = pulling
-		pulling.pulledby = null
+		if(pulling.pulledby == src)
+			pulling.pulledby = null
 		pulling = null
 
 		grab_level = 0
@@ -256,6 +257,11 @@
 		return
 
 	if(!client)
+		return
+
+	if(istype(client.get_eye(), /mob/hologram))
+		var/mob/hologram/eye = client.get_eye()
+		eye.change_level()
 		return
 
 	if(client.view != world.view)

@@ -1,4 +1,0 @@
-author: "Bibby0110"
-delete-after: True
-changes:
-  - bugfix: "Fixes instances of the overwatch visual overlay persisting too long"

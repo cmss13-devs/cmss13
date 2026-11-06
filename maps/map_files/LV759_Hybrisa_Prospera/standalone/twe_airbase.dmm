@@ -2290,7 +2290,7 @@
 /area/lv759/outdoors/colony_streets/north_west_street)
 "ui" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/item/tool/kitchen/utensil/pfork,
+/obj/item/tool/kitchen/utensil/fork/plastic,
 /obj/item/reagent_container/food/drinks/coffeecup/uscm{
 	pixel_x = 9;
 	name = "TWE coffee mug";

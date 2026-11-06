@@ -53,7 +53,7 @@
 		return
 	switch(state)
 		if(CONSTRUCTION_STATE_BEGIN)
-			if(iscoil(P))
+			if(iswire(P))
 				if(!skillcheck(user, SKILL_CONSTRUCTION, required_skill))
 					to_chat(user, SPAN_WARNING("You are not trained to build machines..."))
 					return

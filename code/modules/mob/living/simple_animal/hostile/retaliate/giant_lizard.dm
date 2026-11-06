@@ -904,7 +904,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_mob(mob/living/pounced_mob)
 	if(stat == DEAD || pounced_mob.stat == DEAD || pounced_mob.mob_size >= MOB_SIZE_BIG || pounced_mob == src)
-		throwing = FALSE
+		REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
 		return
 
 	if(ishuman(pounced_mob) && (pounced_mob.dir in reverse_nearby_direction(dir)))
@@ -913,7 +913,8 @@
 			visible_message(SPAN_DANGER("[src] slams into [human_mob]!"))
 			KnockDown(1)
 			Stun(1)
-			throwing = FALSE //Reset throwing manually.
+
+			REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT) //Reset throwing manually.
 			playsound(human_mob, "bonk", 75, FALSE) //bonk
 			return
 
@@ -921,14 +922,14 @@
 			visible_message(SPAN_DANGER("[human_mob] body slams [src]!"))
 			KnockDown(3)
 			Stun(3)
-			throwing = FALSE
+			REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
 			playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 			return
 		if(HAS_TRAIT(human_mob, TRAIT_POUNCE_RESISTANT) && prob(60))
 			visible_message(SPAN_DANGER("[human_mob] withstands being pounced and slams down [src]!"))
 			KnockDown(1.5)
 			Stun(1.5)
-			throwing = FALSE
+			REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
 			playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 			return
 

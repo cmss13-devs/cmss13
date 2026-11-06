@@ -68,7 +68,7 @@
 /obj/vehicle/multitile/apc/command/load_role_reserved_slots()
 	var/datum/role_reserved_slots/RRS = new
 	RRS.category_name = "Crewmen"
-	RRS.roles = list(JOB_TANK_CREW, JOB_WO_CREWMAN, JOB_UPP_CREWMAN, JOB_PMC_CREWMAN)
+	RRS.roles = list(JOB_TANK_CREW, JOB_UPP_CREWMAN, JOB_PMC_CREWMAN, JOB_ARMY_TANK)
 	RRS.total = 2
 	role_reserved_slots += RRS
 
@@ -182,7 +182,7 @@
 /obj/vehicle/multitile/apc/command/proc/get_access_permission(mob/living/carbon/human/user)
 	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || GLOB.master_mode == GAMEMODE_WHISKEY_OUTPOST)
 		return TRUE
-	else if(SSticker.mode == "Distress Signal" || GLOB.master_mode == "Distress Signal")
+	else if(SSticker.mode == GAMEMODE_DISTRESS_SIGNAL || GLOB.master_mode == GAMEMODE_DISTRESS_SIGNAL)
 		if(techpod_access_settings_override)
 			return TRUE
 		else if(user.get_target_lock(techpod_faction_requirement))

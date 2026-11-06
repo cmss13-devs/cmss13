@@ -151,7 +151,6 @@
 		else
 			client?.tgui_panel?.stop_music()
 
-	log_admin("[key_name(src)] played admin sound: [web_sound_input] -[log_title ? " [title] -" : ""] [style]")
 	message_admins("[key_name_admin(src)] played admin sound: [web_sound_input] -[log_title ? " [title] -" : ""] [style]")
 
 /client/proc/stop_admin_sound()

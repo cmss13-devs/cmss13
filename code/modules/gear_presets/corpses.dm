@@ -270,7 +270,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/CMB(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/heavy(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/deagle(new_human), WEAR_WAIST)
 	if(new_human.disabilities & NEARSIGHTED)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(new_human), WEAR_EYES)
 	else
@@ -1443,6 +1443,38 @@
 
 /datum/equipment_preset/corpse/hybrisa/fire_fighter/burst
 	name = "Corpse - Burst - Civilian - Fire Protection Specialist"
+	assignment = "Civilian - Fire Protection Specialist"
+	xenovictim = TRUE
+
+/datum/equipment_preset/corpse/hybrisa/tova
+	name = "Corpse - Burst - Fire Protection Specialist - Unfortunate Firestation Civilian"
+	assignment = "Civilian - Fire Protection Specialist"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+/datum/equipment_preset/corpse/hybrisa/tova/load_gear(mob/living/carbon/human/new_human)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/hybrisa/firefighter(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest/fire_light(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/attachable/attached_gun/extinguisher(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flare(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/medical/advanced/ointment/upgraded(new_human.back), WEAR_IN_BACK)
+
+/datum/equipment_preset/corpse/hybrisa/tova/load_name(mob/living/carbon/human/new_human, randomise, client/mob_client)
+	. = ..()
+	new_human.gender = FEMALE
+	var/datum/preferences/A = new()
+	A.randomize_appearance(new_human)
+	new_human.change_real_name(new_human, "Tova Almgren")
+	new_human.age = 23
+
+/datum/equipment_preset/corpse/hybrisa/tova/burst
+	name = "Corpse - Civilian - Fire Protection Specialist - Unfortunate Firestation Civilian"
 	assignment = "Civilian - Fire Protection Specialist"
 	xenovictim = TRUE
 

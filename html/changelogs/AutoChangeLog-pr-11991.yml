@@ -1,4 +1,0 @@
-author: "MoondancerPony"
-delete-after: True
-changes:
-  - code_imp: "made color manipulation in lighting and elsewhere much faster"

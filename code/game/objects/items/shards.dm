@@ -7,7 +7,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_righthand.dmi',
 	)
-	icon_state = ""
+	icon_state = "medium"
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 1
 	desc = "A shard of broken glass. Could probably be used as ... a throwing weapon?"
@@ -38,15 +38,15 @@
 			if("small")
 				pixel_x = rand(-12, 12)
 				pixel_y = rand(-12, 12)
-				icon_state += shardsize
+				icon_state = shardsize
 			if("medium")
 				pixel_x = rand(-8, 8)
 				pixel_y = rand(-8, 8)
-				icon_state += shardsize
+				icon_state = shardsize
 			if("large")
 				pixel_x = rand(-5, 5)
 				pixel_y = rand(-5, 5)
-				icon_state += shardsize
+				icon_state = shardsize
 
 /obj/item/shard/attackby(obj/item/W, mob/user)
 	if ( iswelder(W))

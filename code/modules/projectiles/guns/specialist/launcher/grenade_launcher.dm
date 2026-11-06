@@ -200,7 +200,7 @@
 			if(ishuman(user))
 				var/mob/living/carbon/human/human_user = user
 				human_user.remember_dropped_object(fired)
-				fired.fingerprintslast = key_name(user)
+				fired.fingerprintslast = user.ckey
 			pass_flags |= PASS_MOB_THRU_HUMAN|PASS_MOB_IS_OTHER|PASS_OVER
 		else
 			pass_flags |= PASS_MOB_THRU|PASS_HIGH_OVER
@@ -214,9 +214,10 @@
 	fired.forceMove(get_turf(src))
 	fired.throw_atom(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
 
+/obj/item/weapon/gun/launcher/grenade/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
+	return FALSE
 
-
-//Doesn't use these. Listed for reference.
+//Doesn't use these. Listed for reference. - Really should just actually write these out so it can use Autofire
 /obj/item/weapon/gun/launcher/grenade/load_into_chamber()
 	return
 /obj/item/weapon/gun/launcher/grenade/reload_into_chamber()

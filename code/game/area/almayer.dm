@@ -31,7 +31,7 @@
 	. = ..()
 
 	if(hijack_evacuation_area)
-		SShijack.progress_areas[src] = power_equip
+		SShijack.progress_areas[src] = TRUE
 
 /area/almayer/command
 	minimap_color = MINIMAP_AREA_COMMAND
@@ -229,9 +229,6 @@
 /area/ship/almayer/shipboard/brig/armory
 	name = "\improper Brig Armory"
 
-/area/ship/almayer/shipboard/brig/mp_bunks
-	name = "\improper Brig MP Bunks"
-
 /area/ship/almayer/shipboard/brig/starboard_hallway
 	name = "\improper Brig Starboard Hallway"
 
@@ -246,6 +243,15 @@
 
 /area/ship/almayer/shipboard/brig/interrogation
 	name = "\improper Brig Interrogation Room"
+
+/area/ship/almayer/shipboard/brig/visitation
+	name = "\improper Brig Visitation"
+
+/area/ship/almayer/shipboard/brig/visitation_waiting
+	name = "\improper Brig Visitation Waiting Room"
+
+/area/ship/almayer/shipboard/brig/yard
+	name = "\improper Brig Yard"
 
 /area/ship/almayer/shipboard/brig/general_equipment
 	name = "\improper Brig General Equipment"

@@ -162,7 +162,7 @@
 			cur_x = min(cur_x, width_inside)
 		if(cur_y == height_inside)
 			break
-		cur_x = half_chunk_size
+		cur_x = half_chunk_size + offset_x
 		cur_y += chunk_size
 		cur_y = min(cur_y, height_inside)
 
@@ -183,7 +183,7 @@
 		mob.hud_used.show_hud(HUD_STYLE_STANDARD)
 	mob.animate_movement = SLIDE_STEPS // Initial is incorrect
 
-	to_chat(usr, "Provide these values when asked for the MapTileImageTool: [width] [height] [half_chunk_size] [world.icon_size]")
+	to_chat(mob, "Provide these values when asked for the MapTileImageTool: [width] [height] [half_chunk_size] [world.icon_size]")
 
 //TODO: merge the vievars version into this or something maybe mayhaps
 /client/proc/cmd_debug_del_all()

@@ -20,7 +20,7 @@
 
 	toggle_crest_ability.use_ability()
 
-	TEST_ASSERT(xeno_defender.crest_defense, "crest_defence was not set when lowering crest")
+	TEST_ASSERT(HAS_TRAIT(xeno_defender, TRAIT_ABILITY_CREST), "crest_defence was not set when lowering crest")
 	check_lower_crest_changes_applied(xeno_defender, toggle_crest_ability, base_ability_speed_modifier, base_armor_deflection_buff)
 
 /datum/unit_test/raise_crest/Run()
@@ -36,7 +36,7 @@
 	toggle_crest_ability.end_cooldown()
 	toggle_crest_ability.use_ability()
 
-	TEST_ASSERT(!xeno_defender.crest_defense, "crest_defence was not unset when raising crest")
+	TEST_ASSERT(!HAS_TRAIT(xeno_defender, TRAIT_ABILITY_CREST), "crest_defence was not unset when raising crest")
 	TEST_ASSERT_EQUAL(xeno_defender.ability_speed_modifier, base_ability_speed_modifier, "speed debuff was not removed")
 	TEST_ASSERT_EQUAL(xeno_defender.armor_deflection_buff, base_armor_deflection_buff, "armor buff was not removed")
 	TEST_ASSERT_EQUAL(xeno_defender.mob_size, base_mob_size, "mob size was not restored")
@@ -51,10 +51,10 @@
 	var/base_armor_deflection_buff = xeno_defender.armor_deflection_buff
 	var/base_mob_size = xeno_defender.mob_size
 
-	xeno_defender.fortify = TRUE
+	ADD_TRAIT(xeno_defender, TRAIT_ABILITY_FORTIFY, TRAIT_SOURCE_ABILITY("fortify"))
 	toggle_crest_ability.use_ability()
 
-	TEST_ASSERT(!xeno_defender.crest_defense, "crest was lowered while fortified")
+	TEST_ASSERT(!HAS_TRAIT(xeno_defender, TRAIT_ABILITY_CREST), "crest was lowered while fortified")
 	check_lower_crest_blocked(xeno_defender, toggle_crest_ability, base_ability_speed_modifier, base_armor_deflection_buff, base_mob_size)
 
 /datum/unit_test/crest_blocked_by_state/Run()
@@ -69,7 +69,7 @@
 	xeno_defender.evolving = TRUE
 	toggle_crest_ability.use_ability()
 
-	TEST_ASSERT(!xeno_defender.crest_defense, "crest was lowered despite check_state()")
+	TEST_ASSERT(!HAS_TRAIT(xeno_defender, TRAIT_ABILITY_CREST), "crest was lowered despite check_state()")
 	check_lower_crest_blocked(xeno_defender, toggle_crest_ability, base_ability_speed_modifier, base_armor_deflection_buff, base_mob_size)
 
 /datum/unit_test/crest_blocked_by_cooldown/Run()
@@ -83,7 +83,7 @@
 	toggle_crest_ability.use_ability()
 	toggle_crest_ability.use_ability()
 
-	TEST_ASSERT(xeno_defender.crest_defense, "crest was raised despite being on cooldown")
+	TEST_ASSERT(HAS_TRAIT(xeno_defender, TRAIT_ABILITY_CREST), "crest was raised despite being on cooldown")
 	check_lower_crest_changes_applied(xeno_defender, toggle_crest_ability, base_ability_speed_modifier, base_armor_deflection_buff)
 
 /datum/unit_test/crest_ended_by_unconcious/Run()
@@ -96,11 +96,11 @@
 	var/base_mob_size = xeno_defender.mob_size
 
 	toggle_crest_ability.use_ability()
-	TEST_ASSERT(xeno_defender.crest_defense, "crest was not lowered during setup")
+	TEST_ASSERT(HAS_TRAIT(xeno_defender, TRAIT_ABILITY_CREST), "crest was not lowered during setup")
 
 	xeno_defender.set_stat(UNCONSCIOUS)
 
-	TEST_ASSERT(!xeno_defender.crest_defense, "crest stayed lowered when unconscious")
+	TEST_ASSERT(!HAS_TRAIT(xeno_defender, TRAIT_ABILITY_CREST), "crest stayed lowered when unconscious")
 	check_lower_crest_blocked(xeno_defender, toggle_crest_ability, base_ability_speed_modifier, base_armor_deflection_buff, base_mob_size)
 
 /datum/unit_test/crest_not_raised_by_non_unconscious_state/Run()
@@ -114,7 +114,7 @@
 	toggle_crest_ability.use_ability()
 	xeno_defender.set_stat(CONSCIOUS)
 
-	TEST_ASSERT(xeno_defender.crest_defense, "crest raised when stat was changed to something that wasn't unconscious")
+	TEST_ASSERT(HAS_TRAIT(xeno_defender, TRAIT_ABILITY_CREST), "crest raised when stat was changed to something that wasn't unconscious")
 	check_lower_crest_changes_applied(xeno_defender, toggle_crest_ability, base_ability_speed_modifier, base_armor_deflection_buff)
 
 /datum/unit_test/crest_changes_not_applied_when_lowering_and_raising_crest_then_going_unconscious/Run() //maybe theres a shorter way to say this
@@ -127,11 +127,11 @@
 	var/base_mob_size = xeno_defender.mob_size
 
 	toggle_crest_ability.use_ability()
-	TEST_ASSERT(xeno_defender.crest_defense, "crest was not lowered during setup")
+	TEST_ASSERT(HAS_TRAIT(xeno_defender, TRAIT_ABILITY_CREST), "crest was not lowered during setup")
 	toggle_crest_ability.end_cooldown()
 	toggle_crest_ability.use_ability()
 
 	xeno_defender.set_stat(UNCONSCIOUS)
 
-	TEST_ASSERT(!xeno_defender.crest_defense, "crest stat changes were applied")
+	TEST_ASSERT(!HAS_TRAIT(xeno_defender, TRAIT_ABILITY_CREST), "crest stat changes were applied")
 	check_lower_crest_blocked(xeno_defender, toggle_crest_ability, base_ability_speed_modifier, base_armor_deflection_buff, base_mob_size)

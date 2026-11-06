@@ -298,8 +298,6 @@
 	var/tunnel = FALSE
 	/// for check on lurker invisibility
 	var/stealth = FALSE
-	var/fortify = FALSE
-	var/crest_defense = FALSE
 	/// For drones/hivelords. Extends the maximum build range they have
 	var/extra_build_dist = 0
 	/// tiles from self you can plant eggs.

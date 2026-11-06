@@ -1,0 +1,7 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - admin: "Event verb to change security level now has a note that delta will cause SD"
+  - admin: "Event verb to self destruct now does a 30s countdown and then detonates the ship"
+  - soundadd: "Added a crop of the SD countdown that is just the approximate last 30s"
+  - bugfix: "set_security_level no longer sends signals on potentially invalid levels and also disallows changing off of delta"

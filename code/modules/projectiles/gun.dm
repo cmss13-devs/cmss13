@@ -2051,7 +2051,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		gun_accuracy_mult = max(0.1, gun_accuracy_mult - max(0,movement_onehanded_acc_penalty_mult * HIT_ACCURACY_MULT_TIER_3))
 		gun_scatter += max(0, movement_onehanded_acc_penalty_mult * SCATTER_AMOUNT_TIER_10)
 
-	if(dual_wield) //akimbo firing gives terrible accuracy
+	if(dual_wield && !(flags_gun_features & GUN_AKIMBO_ALLOWED)) //akimbo firing gives terrible accuracy
 		gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(5,7))
 		gun_scatter += SCATTER_AMOUNT_TIER_3
 
@@ -2547,6 +2547,19 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
 
 	update_icon()
+
+	if(is_mainship_level(gun_turf.z) && gun_area.ceiling >= CEILING_METAL && prob(1))
+		for(var/turf/open/floor/landing_turf in shuffle(RANGE_TURFS(4, gun_turf)))
+			var/area/landing_area = get_area(landing_turf)
+			if(landing_area.ceiling >= CEILING_METAL)
+				new /obj/effect/falling_pipe(landing_turf, user)
+				break
+	else if(is_ground_level(gun_turf.z) && gun_area.ceiling == CEILING_NONE && prob(1))
+		for(var/turf/open/landing_turf in shuffle(RANGE_TURFS(4, gun_turf)))
+			var/area/landing_area = get_area(landing_turf)
+			if(landing_area.ceiling == CEILING_NONE && !istype(landing_turf, /turf/open/space))
+				new /obj/effect/falling_bird(landing_turf, user)
+				break
 
 /obj/item/weapon/gun/proc/handle_battlefield_execution(mob/living/user, mob/living/hit_mob)
 

@@ -297,6 +297,7 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_leadership_spoken_orders'>Toggle Leadership Spoken Orders</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_cocking_to_hand'>Toggle Bullet Cocking to hand</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_wield_assist'>Toggle Gun Wielding Assist</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_shouting_at_pointed_people'>Toggle Shouting the last name of people you point at on disarm or grab intent</a><br>",
 	)
 
 	var/dat = ""
@@ -418,6 +419,15 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		to_chat(src, SPAN_BOLDNOTICE("Attempting to wield a gun before it is ready will now queue the action."))
 	else
 		to_chat(src, SPAN_BOLDNOTICE("Attempting to wield a gun before it is ready will no longer queue the action."))
+	prefs.save_preferences()
+
+/// Toggles whether you shout the last name of people you point at
+/client/proc/toggle_shouting_at_pointed_people()
+	prefs.toggle_prefs ^= TOGGLE_SHOUTING_AT_POINTED_PEOPLE
+	if(prefs.toggle_prefs & TOGGLE_SHOUTING_AT_POINTED_PEOPLE)
+		to_chat(src, SPAN_BOLDNOTICE("You will now shout the last name of people you point at while on disarm or grab intent."))
+	else
+		to_chat(src, SPAN_BOLDNOTICE("You will no longer shout the last name of people you point at while on disarm or grab intent."))
 	prefs.save_preferences()
 
 ///Toggle whether dual-wielding fires both guns at once or swaps between them.

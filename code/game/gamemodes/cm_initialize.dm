@@ -954,13 +954,15 @@ Additional game mode variables.
 
 	original.sight = BLIND
 
-	var/selected_spawn = tgui_input_list(original, "Where do you want you and your hive to spawn?", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT, theme="hive_status")
-	if(hive.living_xeno_queen)
-		to_chat(original, SPAN_XENOANNOUNCE("You have taken too long to pick a spawn location, a queen has already evolved before you."))
-		player.send_to_lobby()
-	if(!selected_spawn)
-		selected_spawn = pick(spawn_list_map)
-		to_chat(original, SPAN_XENOANNOUNCE("You have taken too long to pick a spawn location, one has been chosen for you."))
+	var/selected_spawn = spawn_list_map[1]
+	if(length(spawn_list_map) > 1)
+		selected_spawn = tgui_input_list(original, "Where do you want you and your hive to spawn?", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT, theme="hive_status")
+		if(hive.living_xeno_queen)
+			to_chat(original, SPAN_XENOANNOUNCE("You have taken too long to pick a spawn location, a queen has already evolved before you."))
+			player.send_to_lobby()
+		if(!selected_spawn)
+			selected_spawn = pick(spawn_list_map)
+			to_chat(original, SPAN_XENOANNOUNCE("You have taken too long to pick a spawn location, one has been chosen for you."))
 
 	var/turf/QS
 	var/obj/effect/landmark/queen_spawn/QSI

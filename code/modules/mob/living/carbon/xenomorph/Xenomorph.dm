@@ -210,6 +210,9 @@
 	var/datum/action/minimap/minimap_type = /datum/action/minimap/xeno
 	var/datum/weakref/minimap_ref
 
+	//water overlay configuration the xeno uses
+	water_config = /datum/water_overlay_config/xeno/medium
+
 	//////////////////////////////////////////////////////////////////
 	//
 	// Modifiers

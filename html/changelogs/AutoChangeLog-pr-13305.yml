@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed an unreliable way for defender and bulwark headbutts to refund cooldown"
+  - balance: "Defender and bulwark headbutts no longer attempt to throw self when adjacent to their target so its more responsive"

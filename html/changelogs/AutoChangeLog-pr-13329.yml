@@ -1,0 +1,7 @@
+author: "Kugamo, chaos-creations"
+delete-after: True
+changes:
+  - imageadd: "New inhand sprites for the map item when looking at it."
+  - imagetweak: "Resprited map items, and their inhand sprites."
+  - rscadd: "map items now can be folded up into much smaller items. (and unfolded)."
+  - soundadd: "Adds sounds for folding/unfolding the map item."

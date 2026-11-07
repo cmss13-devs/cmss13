@@ -29,14 +29,15 @@
 	xeno_cooldown = 10 SECONDS
 	plasma_cost = 100
 
-	var/buff_duration = 50
+	var/buff_duration = 5 SECONDS
 
 /datum/action/xeno_action/activable/tail_stab/sentinel
 	name = "Catalytic Shock Tailstab"
 	damage_multiplier = 1
-	var/duration = 35
+	var/duration = 3.5 SECONDS
 	var/speed_buff_amount = 0.8 // Go from shit slow to kindafast
 	var/armor_buff_amount = 25 // hopefully-minor buff so they can close the distance
+	var/tail_buffed = FALSE
 
 /datum/action/xeno_action/activable/tail_stab/sentinel/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb)
 	. = ..()
@@ -54,6 +55,7 @@
 	target.apply_armoured_damage(stacks*1.2, ARMOR_MELEE, BURN, limb ? limb.name : "chest")
 	if(stacks < 10)
 		return
+	tail_buffed = TRUE
 	stabbing_xeno.speed_modifier -= speed_buff_amount
 	stabbing_xeno.armor_modifier += armor_buff_amount
 	stabbing_xeno.recalculate_speed()
@@ -66,6 +68,7 @@
 	if (!istype(xeno))
 		return
 
+	tail_buffed = FALSE
 	xeno.speed_modifier += speed_buff_amount
 	xeno.armor_modifier -= armor_buff_amount
 	xeno.recalculate_speed()

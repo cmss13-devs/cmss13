@@ -921,6 +921,13 @@
 			victim.name = "???"
 			victim.add_flay_overlay(stage = 3)
 
+			// Force eyelids permanently open — no skin left to close them
+			if(target.species.flags & HAS_EYELIDS)
+				if(target.eyelid_timer)
+					deltimer(target.eyelid_timer)
+					target.eyelid_timer = null
+				target.apply_eyelid_state(EYELID_FLAYED)
+
 			//End the loop and remove all references to the datum.
 			current_flayer = null
 			UnregisterSignal(victim, COMSIG_HUMAN_FLAY_ATTEMPT)

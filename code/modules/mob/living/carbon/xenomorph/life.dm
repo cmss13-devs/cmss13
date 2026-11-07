@@ -81,8 +81,9 @@
 	to_chat(src, SPAN_XENODANGER("Our carapace crackles and our tendons strengthen. We are ready to <a href='byond://?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
 	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
-	var/datum/action/xeno_action/onclick/evolve/evolve_action = new()
-	evolve_action.give_to(src)
+	if(!get_action(src, /datum/action/xeno_action/onclick/evolve))
+		var/datum/action/xeno_action/onclick/evolve/evolve_action = new()
+		evolve_action.give_to(src)
 
 // Always deal 80% of damage and deal the other 20% depending on how many fire stacks mob has
 #define PASSIVE_BURN_DAM_CALC(intensity, duration, fire_stacks) intensity*(fire_stacks/duration*0.2 + 0.8)
@@ -310,6 +311,9 @@
 	if(hud_used.alien_armor_display)
 		var/armor_stacks = min((get_armor_integrity_percentage() * 0.01) * HUD_ARMOR_STATES_XENO, HUD_ARMOR_STATES_XENO)
 		hud_used.alien_armor_display.icon_state = "armor_[floor(armor_stacks)]0"
+
+	// Update dropship HUD overlays
+	init_dropship_hud_overlays()
 
 	return TRUE
 

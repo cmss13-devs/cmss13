@@ -483,6 +483,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	view = GLOB.world_view_size
 
+/client
+	var/performed_post_login = FALSE
+
 /client/proc/PostLogin()
 	add_verb(src, collect_client_verbs())
 
@@ -553,6 +556,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	view = GLOB.world_view_size
 
+	performed_post_login = TRUE
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGGED_IN, src)
 	SEND_SIGNAL(src, COMSIG_CLIENT_LOGGED_IN)
 

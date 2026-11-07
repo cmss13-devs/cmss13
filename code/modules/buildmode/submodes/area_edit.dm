@@ -1,7 +1,7 @@
 /datum/buildmode_mode/area_edit
 	key = "areaedit"
 	help = "Left Mouse Button on obj/turf/mob = Select corner\n\
-	Left Mouse Button + Alt on turf/obj/mob = Paint area/span>\n\
+	Left Mouse Button + Alt on turf/obj/mob = Paint area\n\
 	Right Mouse Button on obj/turf/mob = Select area to paint\n\
 	Right Mouse Button on buildmode button = Create new area"
 	use_corner_selection = TRUE
@@ -26,10 +26,12 @@
 	return ..()
 
 /datum/buildmode_mode/area_edit/change_settings(client/c)
-	var/target_path = input(c, "Enter typepath:", "Typepath", "/area")
+	var/target_path = tgui_input_text(c, "Enter typepath:", "Typepath", "/area")
 	var/areatype = text2path(target_path)
-	if(ispath(areatype,/area))
-		var/areaname = input(c, "Enter area name:", "Area name", "Area")
+	if(!ispath(areatype, /area))
+		areatype = pick_closest_path(target_path, get_fancy_list_of_area_types())
+	if(ispath(areatype, /area))
+		var/areaname = tgui_input_text(c, "Enter area name:", "Area name", "Area")
 		if(!areaname || !length(areaname))
 			return
 		storedarea = new areatype
@@ -63,8 +65,7 @@
 	var/list/modifiers = params2list(params)
 
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
-		var/choice = alert("Are you sure you want to fill area?", "Area Fill Confirmation", "Yes", "No")
-		if(choice != "Yes")
+		if(tgui_alert(c, "Are you sure you want to fill area?", "Area Fill Confirmation", list("Yes", "No")) != "Yes")
 			return
 		for(var/turf/T as anything in block(get_turf(cornerA),get_turf(cornerB)))
 			storedarea.contents.Add(T)

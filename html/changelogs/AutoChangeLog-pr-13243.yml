@@ -1,4 +1,0 @@
-author: "Taushai"
-delete-after: True
-changes:
-  - bugfix: "fixed the preview dummy disappearing after reconnecting to the same round."

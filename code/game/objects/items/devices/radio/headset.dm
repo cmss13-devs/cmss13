@@ -241,7 +241,7 @@
 			else
 				channels += ch_name
 				channels[ch_name] = key.channels[ch_name]
-				
+
 		for(var/tracking_option in key.tracking_options)
 			tracking_options[tracking_option] = key.tracking_options[tracking_option]
 		if(key.translate_apollo)
@@ -1069,10 +1069,14 @@
 //*************************************
 //-----SELF SETTING MARINE HEADSET-----
 //*************************************/
-//For events. Currently used for WO only. After equipping it, self_set() will adapt headset to marine.
+// self_set() adapts the headset to the marines squad and role.
 
-/obj/item/device/radio/headset/almayer/marine/self_setting/proc/self_set()
-	var/mob/living/carbon/human/H = loc
+/obj/item/device/radio/headset/almayer/marine/self_setting/post_vendor_spawn_hook(mob/living/carbon/human/user)
+	..()
+	if(istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base))
+		self_set(user)
+
+/obj/item/device/radio/headset/almayer/marine/self_setting/proc/self_set(mob/living/carbon/human/H = loc)
 	if(istype(H, /mob/living/carbon/human))
 		if(H.assigned_squad)
 			switch(H.assigned_squad.name)
@@ -1110,6 +1114,20 @@
 					name = "marine leader " + name
 					keys += new /obj/item/device/encryptionkey/squadlead(src)
 					volume = RADIO_VOLUME_CRITICAL
+					inbuilt_tracking_options = list(
+						"Squad Leader" = TRACKER_SL,
+						"Fireteam Leader" = TRACKER_FTL,
+						"Landing Zone" = TRACKER_LZ,
+						"Commanding Officer" = TRACKER_CO,
+						"Executive Officer" = TRACKER_XO,
+						"Alpha SL" = TRACKER_ASL,
+						"Bravo SL" = TRACKER_BSL,
+						"Charlie SL" = TRACKER_CSL,
+						"Delta SL" = TRACKER_DSL,
+						"Echo SL" = TRACKER_ESL,
+						"Foxtrot SL" = TRACKER_FSL,
+						"Intel SL" = TRACKER_ISL
+					)
 				if(JOB_SQUAD_MEDIC)
 					name = "marine hospital corpsman " + name
 					keys += new /obj/item/device/encryptionkey/med(src)

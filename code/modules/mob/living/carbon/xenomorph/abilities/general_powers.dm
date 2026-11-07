@@ -412,6 +412,13 @@
 		to_chat(xeno, SPAN_XENOWARNING("Our psychic link is gone, the Queen is either dead or too far away!"))
 		return
 
+	var/turf/view_origin = get_turf(xeno.client ? xeno.client.get_eye() : xeno)
+	var/fog_z = min(view_origin.z, target_turf.z)
+	for(var/turf/path_turf as anything in get_line(view_origin, target_turf, include_start_atom = FALSE))
+		if(IS_OPAQUE_TURF(path_turf) || (locate(/obj/structure/blocker/fog) in locate(path_turf.x, path_turf.y, fog_z)))
+			to_chat(xeno, SPAN_XENOWARNING("We cannot see that location clearly enough to mark it."))
+			return FALSE
+
 	var/tally = 0
 
 	for(var/obj/effect/alien/resin/marker/MRK in xeno.hive.resin_marks)

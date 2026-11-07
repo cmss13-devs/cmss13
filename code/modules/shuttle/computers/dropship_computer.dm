@@ -18,6 +18,7 @@
 
 	// Allows admins to var edit the time lock away.
 	var/skip_time_lock = FALSE
+	var/time_lock = SHUTTLE_TIME_LOCK // Used for Forward Base
 
 	// Landing zones which can be used
 	var/compatible_landing_zones = list()
@@ -117,8 +118,8 @@
 		return UI_CLOSE
 	if(disabled)
 		return UI_UPDATE
-	if(!skip_time_lock && world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK)
-		to_chat(user, SPAN_WARNING("The shuttle is still undergoing pre-flight fueling and cannot depart yet. Please wait another [floor((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
+	if(!skip_time_lock && world.time < SSticker.mode.round_time_lobby + time_lock)
+		to_chat(user, SPAN_WARNING("The shuttle is still undergoing pre-flight fueling and cannot depart yet. Please wait another [floor((SSticker.mode.round_time_lobby + time_lock-world.time)/600)] minutes before trying again."))
 		return UI_CLOSE
 	if(dropship_control_lost)
 		var/remaining_time = timeleft(door_control_cooldown) / 10
@@ -283,6 +284,9 @@
 
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(disabled || istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base))
+		return XENO_NONCOMBAT_ACTION
+
 	// if the shuttleid is null or the shuttleid references a shuttle that has been removed from play, pick one
 	if(!shuttleId || !SSshuttle.getShuttle(shuttleId, FALSE))
 		var/list/alternatives = alternative_shuttles()

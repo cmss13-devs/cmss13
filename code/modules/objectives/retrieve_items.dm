@@ -12,6 +12,12 @@
 		/area/almayer/command/securestorage,
 		/area/almayer/command/computerlab,
 		/area/almayer/medical/medical_science,
+		/area/forward_base/command/securestorage,
+		/area/forward_base/medical/medical_science,
+		/area/forward_base/chances/command/securestorage,
+		/area/forward_base/chances/medical/medical_science,
+		/area/forward_base/lv624/intel,
+		/area/forward_base/lv624/research,
 	)
 
 /datum/cm_objective/retrieve_item/New(atom/target)

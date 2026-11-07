@@ -468,7 +468,7 @@ GLOBAL_LIST_INIT(fridge_wire_descriptions, flatten_numeric_alist(alist(
 	return 1
 
 /obj/structure/machinery/smartfridge/proc/is_in_network()
-	return networked && is_mainship_level(z)
+	return networked && (is_mainship_level(z) || istype(get_area(src), /area/forward_base))
 
 
 

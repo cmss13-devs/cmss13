@@ -478,9 +478,10 @@
 		log_world("map_config gamemodes is not a list!")
 		return
 	else
-		for(var/a in subtypesof(/datum/game_mode))
-			var/datum/game_mode/G = a
-			gamemodes += initial(G.config_tag)
+		for(var/datum/game_mode/mode as anything in subtypesof(/datum/game_mode))
+			if(mode::config_tag == GAMEMODE_FORWARD_BASE) // do NOT select a map not made for this mode
+				continue
+			gamemodes += mode::config_tag
 
 	defaulted = FALSE
 	return TRUE

@@ -83,6 +83,9 @@
 	if(mods[ALT_CLICK] && mods[LEFT_CLICK] && loc == user && !user.get_active_hand())
 		return FALSE
 
+	if(mods[CTRL_CLICK] && loc == user && (storage_flags & STORAGE_ALLOW_DRAWING_METHOD_TOGGLE))
+		storage_draw_logic(name)
+
 	return ..()
 
 /obj/item/storage/proc/handle_mmb_open(mob/user)
@@ -344,15 +347,16 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 					return TRUE
 	return FALSE
 
-/obj/item/storage/Entered(atom/movable/AM, oldloc)
+/obj/item/storage/Entered(atom/movable/entered_item, oldloc)
 	. = ..()
-	AM.layer = ABOVE_HUD_LAYER
-	AM.plane = ABOVE_HUD_PLANE
+	entered_item.layer = ABOVE_HUD_LAYER
+	entered_item.plane = ABOVE_HUD_PLANE
 
-/obj/item/storage/Exited(atom/movable/AM, newloc)
+/obj/item/storage/Exited(atom/movable/exited_item, newloc)
 	. = ..()
-	AM.layer = initial(AM.layer)
-	AM.plane = initial(AM.plane)
+	exited_item.layer = initial(exited_item.layer)
+	exited_item.plane = initial(exited_item.plane)
+	exited_item.screen_loc = null
 
 /datum/numbered_display
 	var/obj/item/sample_object
@@ -370,7 +374,6 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 
 //This proc determins the size of the inventory to be displayed. Please touch it only if you know what you're doing.
 /obj/item/storage/proc/orient2hud()
-
 	var/adjusted_contents = length(contents)
 
 	//Numbered contents display
@@ -378,24 +381,26 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 	if (storage_flags & STORAGE_CONTENT_NUM_DISPLAY)
 		numbered_contents = list()
 		adjusted_contents = 0
-		for (var/obj/item/I in contents)
-			var/found = 0
+		for (var/obj/item/item in contents)
+			var/found = FALSE
 			for (var/datum/numbered_display/ND in numbered_contents)
-				if (ND.sample_object.type == I.type)
+				if (ND.sample_object.type == item.type)
 					ND.number++
-					found = 1
+					item.screen_loc = null	// Hide non-sample items so they never appear as ghosts or stuck in the hand HUD
+					item.maptext = null
+					found = TRUE
 					break
 			if (!found)
 				adjusted_contents++
-				numbered_contents.Add( new/datum/numbered_display(I) )
+				numbered_contents.Add(new /datum/numbered_display(item))
 
 	if (storage_slots == null)
 		space_orient_objs(numbered_contents)
 	else
 		var/row_num = 0
-		var/col_count = min(7,storage_slots) -1
+		var/col_count = min(7, storage_slots) - 1
 		if (adjusted_contents > 7)
-			row_num = floor((adjusted_contents-1) / 7) // 7 is the maximum allowed width.
+			row_num = floor((adjusted_contents - 1) / 7) // 7 is the maximum allowed width.
 		slot_orient_objs(row_num, col_count, numbered_contents)
 	return
 
@@ -1029,3 +1034,8 @@ Returns FALSE if no top level turf (a loc was null somewhere, or a non-turf atom
 	if(src && ishuman(usr))
 		instant_pill_grab_mode = !instant_pill_grab_mode
 		to_chat(usr, SPAN_NOTICE("You will now [instant_pill_grab_mode ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))
+
+/obj/item/storage/get_examine_text(mob/user)
+	. = ..()
+	if(storage_flags & STORAGE_ALLOW_DRAWING_METHOD_TOGGLE)
+		. += "\nCtrl + Click to swap storage drawing method."

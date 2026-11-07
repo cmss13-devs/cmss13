@@ -380,6 +380,17 @@
 
 	recalculate_hive()
 
+/// SIGNAL_HANDLER for COMSIG_HIVE_NEW_QUEEN to handle a one-time refund of larva if there is no round start queen
+/datum/hive_status/proc/grant_extra_larva_on_queen(datum/hive_status/hive, mob/living/carbon/xenomorph/queen/new_queen)
+	SIGNAL_HANDLER
+
+	if(!new_queen)
+		return
+	UnregisterSignal(src, COMSIG_HIVE_NEW_QUEEN)
+	if(living_xeno_queen)
+		return // If somehow we're swapping queens and this is somehow registered
+	stored_larva++
+
 /datum/hive_status/proc/recalculate_hive()
 	//No leaders for a Hive without a Queen!
 	queen_leader_limit = living_xeno_queen ? initial(queen_leader_limit) : 0
@@ -949,10 +960,11 @@
 		spawning_area = living_xeno_queen
 	else
 		for(var/mob/living/carbon/xenomorpheus as anything in totalXenos)
+			spawning_area = xenomorpheus
 			if(islarva(xenomorpheus) || isxeno_builder(xenomorpheus)) //next to xenos that should be in a safe spot
-				spawning_area = xenomorpheus
+				break
 	if(!spawning_area)
-		spawning_area = pick(totalXenos) // FUCK IT JUST GO ANYWHERE
+		spawning_area = pick(GLOB.xeno_spawns) // ITS DEADPOP BOYS
 	var/list/turf_list
 	for(var/turf/open/open_turf in orange(3, spawning_area))
 		if(istype(open_turf, /turf/open/space))

@@ -121,6 +121,15 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			continue
 		roles_for_mode[role_name] = J
 
+	// Also shuffle survivors since some are tied together
+	var/list/snowflakes = GLOB.ROLES_WHITELISTED|GLOB.ROLES_SPECIAL
+	var/list/shuffled_snowflakes = shuffle(snowflakes)
+	for(var/i in 1 to length(snowflakes))
+		var/old_index = roles_for_mode.Find(snowflakes[i])
+		var/new_index = roles_for_mode.Find(shuffled_snowflakes[i])
+		if(old_index && new_index)
+			roles_for_mode.Swap(old_index, new_index)
+
 	// Also register game mode specific mappings to standard roles
 	role_mappings = list()
 	default_roles = list()
@@ -196,20 +205,11 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		medic_job.set_spawn_positions(GLOB.players_preassigned)
 
 	// Set survivor starting amount based on marines assigned
-	var/datum/job/SJ = temp_roles_for_mode[JOB_SURVIVOR]
-	if(istype(SJ))
-		SJ.set_spawn_positions(GLOB.players_preassigned)
-		SJ.create_landmark_lists()
-
-	var/datum/job/CO_surv_job = temp_roles_for_mode[JOB_CO_SURVIVOR]
-	if(istype(CO_surv_job))
-		CO_surv_job.set_spawn_positions(GLOB.players_preassigned)
-		CO_surv_job.create_landmark_lists()
-
-	var/datum/job/synth_surv_job = temp_roles_for_mode[JOB_SYNTH_SURVIVOR]
-	if(istype(synth_surv_job))
-		synth_surv_job.set_spawn_positions(GLOB.players_preassigned)
-		synth_surv_job.create_landmark_lists()
+	for(var/job_name, job_datum in temp_roles_for_mode)
+		if(istype(job_datum, /datum/job/civilian/survivor))
+			var/datum/job/civilian/survivor/surv_job_datum = job_datum
+			surv_job_datum.set_spawn_positions(GLOB.players_preassigned)
+			surv_job_datum.create_landmark_lists()
 
 	var/chance = trim(file2text("data/predchance.txt"))
 	if(chance)
@@ -275,11 +275,23 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	unassigned_players = null
 
-	// Now we take spare unfilled xeno slots and make them larva NEW
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
-	if(istype(hive) && istype(XJ))
-		hive.stored_larva += max(0, (XJ.total_positions - XJ.current_positions) \
-		+ (XJ.calculate_extra_spawn_positions(alternate_option_assigned)))
+	if(istype(hive))
+		// Now we take spare unfilled xeno slots and make them larva
+		if(istype(XJ))
+			hive.stored_larva += max(0, (XJ.total_positions - XJ.current_positions) + (XJ.calculate_extra_spawn_positions(alternate_option_assigned)))
+			SSticker.mode.latejoin_tally += XJ.calculate_remainder_spawn_positions(GLOB.players_preassigned + alternate_option_assigned)
+			if(SSticker.mode.latejoin_tally - SSticker.mode.latejoin_larva_used >= SSticker.mode.latejoin_larva_drop_early)
+				SSticker.mode.latejoin_larva_used += SSticker.mode.latejoin_larva_drop_early
+				hive.stored_larva++
+			hive.hive_ui.update_burrowed_larva()
+
+		// No roundstart queen? We need a drone to evolve (and will refund their larva)
+		var/datum/job/antag/xenos/queen/queen_job = temp_roles_for_mode[JOB_XENOMORPH_QUEEN]
+		if(queen_job && queen_job.current_positions == 0)
+			if(hive.allow_queen_evolve)
+				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "My children it is time. Evolve a queen and thrive.", hive.hivenumber, QUEEN_MOTHER_ANNOUNCE), (/datum/caste_datum/drone::minimum_evolve_time - 5 SECONDS))
+				hive.RegisterSignal(hive, COMSIG_HIVE_NEW_QUEEN, TYPE_PROC_REF(/datum/hive_status, grant_extra_larva_on_queen))
 
 	/*===============================================================*/
 
@@ -293,7 +305,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	for(var/priority in HIGH_PRIORITY to LOW_PRIORITY)
 		// Assigning xenos first.
 		assigned += assign_initial_roles(priority, roles_for_mode & GLOB.ROLES_XENO, unassigned_players)
-		// Assigning special roles second. (survivor, predator)
+		// Assigning special roles second. (survivor, predator) tho they are in random order from setup_candidates_and_roles
 		assigned += assign_initial_roles(priority, roles_for_mode & (GLOB.ROLES_WHITELISTED|GLOB.ROLES_SPECIAL), unassigned_players)
 		// Assigning command third.
 		assigned += assign_initial_roles(priority, roles_for_mode & GLOB.ROLES_COMMAND, unassigned_players)
@@ -349,12 +361,23 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 /datum/authority/branch/role/proc/calculate_role_weight(datum/job/J)
 	if(!J)
 		return 0
-	if(GLOB.ROLES_MARINES.Find(J.title))
+	if(J.title in GLOB.ROLES_MARINES)
 		return 1
-	if(GLOB.ROLES_XENO.Find(J.title))
+	if(J.title in GLOB.ROLES_XENO)
 		return 1
-	if(J.title == JOB_SURVIVOR)
-		return 1
+	if(J.title in FAX_RESPONDER_JOB_LIST)
+		return 0
+	switch(J.title)
+		if(JOB_SURVIVOR)
+			return 1
+		if(JOB_SYNTH_SURVIVOR)
+			return 1
+		if(JOB_CO_SURVIVOR)
+			return 1
+		if(JOB_PRED_SURVIVOR)
+			return 1
+		if(JOB_PREDATOR)
+			return 0
 	return SHIPSIDE_ROLE_WEIGHT
 
 /datum/authority/branch/role/proc/assign_random_role(mob/new_player/M, list/roles_to_iterate) //In case we want to pass on a list.
@@ -543,6 +566,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		if(pod)
 			pod.go_in_cryopod(new_human, silent = TRUE)
 			break
+
+	new_human.assigned_equipment_preset?.equip_spawn_lore(new_human)
 
 	new_human.sec_hud_set_ID()
 	new_human.hud_set_squad()

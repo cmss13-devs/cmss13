@@ -222,7 +222,7 @@
 	var/prefilled = /obj/item/paper/punch_card/prefilled
 	var/randomfilled = /obj/item/paper/punch_card/randomfilled
 	switch(SSmapping.configs[GROUND_MAP].map_name)
-		if(MAP_SOROKYNE_STRATA)
+		if(MAP_SOROKYNE_STRATA, MAP_LV1021_FALCONS_FURY)
 			blank = /obj/item/paper/punch_card/hyperdyne
 			prefilled = /obj/item/paper/punch_card/hyperdyne/prefilled
 			randomfilled = /obj/item/paper/punch_card/hyperdyne/randomfilled

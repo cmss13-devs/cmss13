@@ -20,23 +20,33 @@
 	var/creaking_sound
 	var/breaking_sound
 	var/shove_time
+	/// Tool used to dismantle this platform.
+	var/dismantle_tool = /obj/item/tool/weldingtool
 
 /obj/structure/platform/Initialize()
 	. = ..()
-	var/image/I = image(icon, src, "platform_overlay", LADDER_LAYER, dir)//ladder layer puts us just above weeds.
+	var/is_water = SSwater_overlays.is_water(get_turf(src))
 	switch(dir)
 		if(SOUTH)
 			layer = ABOVE_MOB_LAYER
-			I.pixel_y = -16
 		if(NORTH)
-			I.pixel_y = 16
+			if(is_water)
+				layer = UNDER_WATER_PLATFORMS_LAYER
+				plane = FLOOR_PLANE
+			else
+				layer = TURF_LAYER
 		if(EAST)
-			I.pixel_x = 16
-			layer = MOB_LAYER
+			if(is_water)
+				layer = UNDER_WATER_PLATFORMS_LAYER
+				plane = FLOOR_PLANE
+			else
+				layer = MOB_LAYER
 		if(WEST)
-			I.pixel_x = -16
-			layer = MOB_LAYER
-	overlays += I
+			if(is_water)
+				layer = UNDER_WATER_PLATFORMS_LAYER
+				plane = FLOOR_PLANE
+			else
+				layer = MOB_LAYER
 
 /obj/structure/platform/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -49,8 +59,8 @@
 	..()
 
 /obj/structure/platform/BlockedPassDirs(atom/movable/mover, target_dir)
-	var/obj/structure/S = locate(/obj/structure) in get_turf(mover)
-	if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable objects allow you to universally climb over others
+	var/obj/structure/structure = locate(/obj/structure) in get_turf(mover)
+	if(structure && structure.climbable && !(structure.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable objects allow you to universally climb over others
 		return NO_BLOCKED_MOVEMENT
 
 	return ..()
@@ -77,6 +87,11 @@
 
 	if(stat & BROKEN)
 		. += SPAN_WARNING("It looks destroyed.")
+	else if(!explo_proof)
+		if(dismantle_tool == /obj/item/tool/shovel)
+			. += SPAN_NOTICE("It can be dug away with a shovel or an entrenching tool.")
+		else
+			. += SPAN_NOTICE("It can be cut apart with a welding tool.")
 
 /obj/structure/platform/update_icon()
 	if(stat & BROKEN)
@@ -88,7 +103,51 @@
 	layer = ABOVE_BLOOD_LAYER //lets hope it will appear under everything except weeds and blood.
 	update_icon()
 
-/obj/structure/platform/attackby(obj/item/W, mob/user)
+/obj/structure/platform/attackby(obj/item/item, mob/user)
+	if(istype(item, dismantle_tool) && user.a_intent != INTENT_HARM)
+		if(user.action_busy)
+			return TRUE
+		if(stat & BROKEN)
+			to_chat(user, SPAN_WARNING("It's already destroyed!"))
+			return TRUE
+		if(explo_proof)
+			to_chat(user, SPAN_WARNING("[src] is too sturdy to dismantle!"))
+			return TRUE
+
+		var/dismantle_time = 7 SECONDS // Matches a normal sized xenom
+		var/obj/item/tool/weldingtool/welder
+		var/obj/item/tool/shovel/shovel
+		if(iswelder(item))
+			welder = item
+			if(!welder.isOn())
+				to_chat(user, SPAN_WARNING("You need to light [welder] first!"))
+				return TRUE
+			if(!welder.remove_fuel(1, user))
+				return TRUE
+			playsound(loc, 'sound/items/Welder.ogg', 25, TRUE)
+		else
+			shovel = item
+			if(shovel.folded)
+				to_chat(user, SPAN_WARNING("You need to unfold [shovel] first!"))
+				return TRUE
+			playsound(loc, creaking_sound, 30, TRUE)
+
+		if(shovel)
+			user.visible_message(SPAN_NOTICE("[user] starts digging away at the rock ledge."), SPAN_NOTICE("You start digging away at the rock ledge."))
+		else
+			user.visible_message(SPAN_NOTICE("[user] starts dismantling [src]."), SPAN_NOTICE("You start dismantling [src]."))
+		if(!do_after(user, dismantle_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+			return TRUE
+		if((stat & BROKEN) || explo_proof || (welder && !welder.isOn()) || (shovel && shovel.folded))
+			return TRUE
+		if(shovel)
+			user.visible_message(SPAN_NOTICE("[user] digs away the rock ledge."), SPAN_NOTICE("You dig away the rock ledge."))
+		else
+			user.visible_message(SPAN_NOTICE("[user] dismantles [src]."), SPAN_NOTICE("You dismantle [src]."))
+		playsound(loc, breaking_sound, 25, TRUE)
+		broken()
+		return TRUE
+
 	. = ..()
 	if(user.pulling)
 		if(!can_climb(user))
@@ -163,18 +222,14 @@
 /obj/structure/platform_decoration/Initialize()
 	. = ..()
 	switch(dir)
-		if (NORTH)
-			layer = OBJ_LAYER+0.1
-		if (SOUTH)
-			layer = ABOVE_MOB_LAYER+0.1
-		if (SOUTHEAST)
-			layer = ABOVE_MOB_LAYER+0.1
-		if (SOUTHWEST)
-			layer = ABOVE_MOB_LAYER+0.1
-		if (EAST)
-			layer = MOB_LAYER+0.1
-		if (WEST)
-			layer = MOB_LAYER+0.1
+		if(SOUTH, NORTH , SOUTHWEST, SOUTHEAST)
+			layer = ABOVE_MOB_LAYER
+		else
+			if(SSwater_overlays.is_water(get_turf(src)))
+				layer = UNDER_WATER_PLATFORMS_LAYER
+				plane = FLOOR_PLANE
+			else
+				layer = MOB_LAYER
 
 /obj/structure/platform_decoration/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -196,9 +251,17 @@
 	breaking_sound = 'sound/effects/metalhit.ogg'
 
 /obj/structure/platform/stone
+	name = "rock ledge"
+	desc = "A raised ledge of solid rock. You could probably climb it."
 	icon_state = "kutjevo_rock"
 	creaking_sound = 'sound/effects/rock_creaking.ogg'
 	breaking_sound = 'sound/effects/meteorimpact.ogg'
+	dismantle_tool = /obj/item/tool/shovel
+
+/obj/structure/platform/wood
+	icon_state = "wood_platform"
+	creaking_sound = 'sound/effects/wood_creaking.ogg'
+	breaking_sound = 'sound/effects/woodhit.ogg'
 
 //------------------------------//
 //    Metal Stairs Platforms    //
@@ -1032,6 +1095,56 @@
 	dir = EAST
 /obj/structure/platform_decoration/stone/runed_sandstone/west
 	dir = WEST
+
+//------------------------------//
+//    Wooden Stairs Platforms    //
+//------------------------------//
+
+/obj/structure/platform/wood
+	icon_state = "wood_platform"
+	name = "wooden platform"
+	desc = "A raised level of wood, often used to elevate areas above others. You could probably climb it."
+
+/obj/structure/platform/wood/north
+	dir = NORTH
+/obj/structure/platform/wood/east
+	dir = EAST
+/obj/structure/platform/wood/west
+	dir = WEST
+
+/obj/structure/platform/wood/stair_cut
+	icon_state = "wood_platform_stair"
+	dir = NORTH
+
+/obj/structure/platform/wood/stair_cut/platform_left
+	icon_state = "wood_platform_stair"
+
+/obj/structure/platform/wood/stair_cut/platform_right
+	icon_state = "wood_platform_stair_alt"
+
+//------------------------------------//
+// Wood based Platforms "decoration" //
+//------------------------------------//
+
+/obj/structure/platform_decoration/wood
+	icon_state = "wood_platform_deco"
+
+/obj/structure/platform_decoration/wood/north
+	icon_state = "wood_platform_deco"
+	dir = NORTH
+
+/obj/structure/platform_decoration/wood/east
+	dir = EAST
+/obj/structure/platform_decoration/wood/west
+	dir = WEST
+/obj/structure/platform_decoration/wood/northeast
+	dir = NORTHEAST
+/obj/structure/platform_decoration/wood/northwest
+	dir = NORTHWEST
+/obj/structure/platform_decoration/wood/southeast
+	dir = SOUTHEAST
+/obj/structure/platform_decoration/wood/southwest
+	dir = SOUTHWEST
 
 // Colorable variants
 // strata rocks

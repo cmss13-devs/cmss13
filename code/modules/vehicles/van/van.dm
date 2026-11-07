@@ -38,6 +38,7 @@
 		"cooldown" = 1
 	)
 
+	uses_rubber_tires = TRUE
 	movement_sound = 'sound/vehicles/tank_driving.ogg'
 	honk_sound = 'sound/vehicles/honk_2_truck.ogg'
 
@@ -85,8 +86,6 @@
 	icon_state = null
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_MOB_LOGGED_IN, PROC_REF(add_default_image))
-
-	update_movement_sound()
 
 	for(var/I in GLOB.player_list)
 		add_default_image(SSdcs, I)
@@ -277,46 +276,6 @@
 
 	return TRUE
 
-
-/// after a tire screech, restore normal movement sound before next move.
-/obj/vehicle/multitile/van/proc/restore_movement_sound_after_screech(atom/movable/source, atom/new_loc)
-	SIGNAL_HANDLER
-	UnregisterSignal(src, COMSIG_MOVABLE_PRE_MOVE)
-	update_movement_sound(FALSE)
-
-
-/// Sets movement_sound based on whether functional & van wheels are installed.
-/obj/vehicle/multitile/van/proc/update_movement_sound(side_push=FALSE, pushed=FALSE)
-	if(health > 0)
-		var/has_wheels = FALSE
-		for(var/obj/item/hardpoint/locomotion/van_wheels/wheels in hardpoints)
-			if(wheels.health > 0)
-				has_wheels = TRUE
-			break //only one wheels hardpoint, no need to cycle through the rest
-
-		if(has_wheels)
-			if(pushed)
-				if(side_push)
-					movement_sound = "tire_screech"
-					RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(restore_movement_sound_after_screech))
-				else
-					movement_sound = null
-			else
-				movement_sound = initial(movement_sound)
-		else
-			movement_sound = "broken_vehicle"
-	else
-		movement_sound = "broken_vehicle"
-
-
-/obj/vehicle/multitile/van/add_hardpoint(obj/item/hardpoint/HP, mob/user)
-	. = ..()
-	update_movement_sound()
-
-
-/obj/vehicle/multitile/van/remove_hardpoint(obj/item/hardpoint/old, mob/user)
-	. = ..()
-	update_movement_sound()
 
 /*
 ** PRESETS SPAWNERS

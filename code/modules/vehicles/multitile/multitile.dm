@@ -168,6 +168,9 @@
 	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "cargo_engine"
 
+	///for movement sounds (TRUE OR FALSE)
+	var/uses_rubber_tires = FALSE
+
 	var/move_on_turn = FALSE
 	///Minimap flags to use for this vehicle
 	var/minimap_flags = MINIMAP_FLAG_USCM
@@ -202,7 +205,7 @@
 
 /obj/vehicle/multitile/LateInitialize()
 	. = ..()
-
+	update_movement_sound()
 	if(interior_map)
 		interior = new(src)
 		INVOKE_ASYNC(src, PROC_REF(do_create_interior))
@@ -477,3 +480,38 @@
 	if(health <= 0 || modules_broken)
 		minimap_icon_state += "_wreck"
 	SSminimaps.add_marker(src, minimap_flags, image('icons/ui_icons/map_blips_large.dmi', null, minimap_icon_state, HIGH_FLOAT_LAYER))
+
+#define TIRES_JUST_SCREECHED 2
+
+/// Sets movement_sound based on whether functional & rubber wheels are installed(or has any).
+/obj/vehicle/multitile/proc/update_movement_sound(side_push = FALSE, pushed = FALSE)
+	if(uses_rubber_tires != FALSE && uses_rubber_tires != TRUE)
+		movement_sound = initial(movement_sound)
+		uses_rubber_tires = TRUE
+		return
+
+	if(health <= 0)
+		movement_sound = "broken_vehicle"
+		return
+
+	var/has_wheels = FALSE
+	for(var/obj/item/hardpoint/locomotion/wheels in hardpoints)
+		if(wheels.health > 0)
+			has_wheels = TRUE
+		break
+
+	if(!has_wheels)
+		movement_sound = "wheelless"
+		return
+
+	if(!uses_rubber_tires || !pushed)
+		movement_sound = initial(movement_sound)
+		return
+
+	if(side_push)
+		movement_sound = "tire_screech"
+		uses_rubber_tires = addtimer(CALLBACK(src, PROC_REF(update_movement_sound)), 1.2 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
+	else
+		movement_sound = null
+
+#undef TIRES_JUST_SCREECHED

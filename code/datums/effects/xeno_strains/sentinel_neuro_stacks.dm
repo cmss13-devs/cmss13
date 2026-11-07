@@ -19,6 +19,7 @@
 	var/max_oxyloss_lower_bound = 10
 	var/max_oxyloss_upper_bound = 40
 	var/max_oxyloss = 10
+	var/slowdown_per_stack // SUPERSLOW / max_stacks
 	///particles
 	var/obj/effect/abstract/particle_holder/particle_holder
 
@@ -30,6 +31,7 @@
 	particle_holder.pixel_y = 0
 	. = ..(human, from, last_dmg_source, zone)
 	human.update_xeno_hostile_hud()
+	slowdown_per_stack = HUMAN_SUPERSLOWED_AMOUNT / max_stacks
 
 /datum/effects/sentinel_neuro_stacks/validate_atom(mob/living/carbon/human/human)
 	if (human.stat == DEAD || !ishuman(human))
@@ -78,8 +80,9 @@
 		qdel(src)
 		return
 
-	if (!istype(affected_atom, /mob/living/carbon/human))
+	if (!ishuman(affected_atom))
 		return
+	affected_atom.visible_message(SPAN_DANGER("[affected_atom]'s movements are slowed."))
 	S_TIMER_COOLDOWN_RESET(src, COOLDOWN_START_DECREMENT)
 	S_TIMER_COOLDOWN_START(src, COOLDOWN_START_DECREMENT, increment_grace_time)
 

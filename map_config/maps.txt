@@ -77,5 +77,8 @@ endmap
 map lv1021_falcons_fury
 endmap
 
+map the_last_bunker
+endmap
+
 map whiskey_outpost_v2
 endmap

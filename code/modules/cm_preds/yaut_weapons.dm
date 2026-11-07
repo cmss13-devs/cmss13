@@ -236,7 +236,7 @@
 		if(!has_chain)
 			var/obj/item/yautja/chain/chain_to_wrap = chain_wrapper
 			has_chain = TRUE
-			to_chat(user, SPAN_NOTICE("You wrap the [chain_to_wrap] around [src]"))
+			to_chat(user, SPAN_NOTICE("You wrap [chain_to_wrap] around [src]"))
 			playsound(user, 'sound/weapons/chain_whip.ogg', 50, 1)
 			qdel(chain_to_wrap)
 		else
@@ -295,7 +295,7 @@
 		if(door.heavy)
 			to_chat(usr, SPAN_DANGER("[door] is too heavy to be forced open."))
 			return FALSE
-		user.visible_message(SPAN_DANGER("[user] grips [door] with their [name] and strains to smash it open..."), SPAN_DANGER("You grip the [door] by the gap and strain to force it open..."))
+		user.visible_message(SPAN_DANGER("[user] grips [door] with their [name] and strains to smash it open..."), SPAN_DANGER("You grip [door] by the gap and strain to force it open..."))
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && door.density)
 			user.visible_message(SPAN_DANGER("[user] forces [door] open with the [name]!"), SPAN_DANGER("You force [door] open with the [name]."))
 			door.open(TRUE)
@@ -307,7 +307,7 @@
 		if(door.isSwitchingStates || user.a_intent == INTENT_HARM)
 			return
 		if(door.density)
-			user.visible_message(SPAN_DANGER("[user] grips [door] with their [name] and strains to smash it open..."), SPAN_DANGER("You grip the [door] by the gap and strain to force it open..."))
+			user.visible_message(SPAN_DANGER("[user] grips [door] with their [name] and strains to smash it open..."), SPAN_DANGER("You grip [door] by the gap and strain to force it open..."))
 			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 			if(do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && door.density)
 				user.visible_message(SPAN_DANGER("[user] forces [door] open using the [name]!"), SPAN_DANGER("You force [door] open with your [name]."))

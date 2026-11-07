@@ -3839,7 +3839,6 @@
 /turf/open/floor/almayer/blue/west,
 /area/forward_base/lv624/preps/spec)
 "anP" = (
-/obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/paper/punch_card,
 /obj/item/paper/punch_card{
 	pixel_y = 4
@@ -3848,7 +3847,7 @@
 	pixel_x = -3;
 	pixel_y = 6
 	},
-/obj/item/paper/punch_card{
+/obj/item/paper/punch_card/instructional{
 	pixel_x = -8
 	},
 /obj/structure/machinery/faxmachine/uscm/almayer/command{
@@ -4894,7 +4893,6 @@
 /turf/open/floor/whiteblue/east,
 /area/lv624/lazarus/medbay)
 "aqR" = (
-/obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/prop/almayer/CICmap,
 /turf/open/floor/almayer,
@@ -7979,7 +7977,7 @@
 /obj/structure/surface/table,
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz2,
 /turf/open/gm/dirt,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aAd" = (
 /obj/structure/machinery/computer/almayer_encryption{
 	density = 0;
@@ -8077,7 +8075,7 @@
 /area/lv624/ground/colony/north_tcomms_road)
 "aAp" = (
 /turf/closed/wall/strata_ice/jungle,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aAq" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/gm/dirt,
@@ -8209,7 +8207,7 @@
 /area/forward_base/lv624/tent_camp)
 "aAJ" = (
 /turf/closed/wall/r_wall,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aAK" = (
 /obj/structure/platform_decoration/metal/strata,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -8412,7 +8410,7 @@
 "aBo" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aBp" = (
 /obj/structure/prop/mech/tesla_energy_relay{
 	layer = 2.5
@@ -8718,10 +8716,10 @@
 "aCh" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/closed/wall/r_wall,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aCi" = (
 /turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aCj" = (
 /obj/structure/blocker/tent{
 	dir = 1
@@ -8888,11 +8886,11 @@
 /area/forward_base/lv624/tent/jtac_tent)
 "aCI" = (
 /turf/open/gm/dirtgrassborder/south,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aCJ" = (
 /obj/structure/machinery/floodlight/landing,
 /turf/open/floor/mech_bay_recharge_floor/shuttle_landing_lights,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aCK" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/landmark/lv624/fog_blocker/short,
@@ -9078,7 +9076,7 @@
 /area/lv624/ground/jungle/central_jungle)
 "aDo" = (
 /turf/open/gm/dirtgrassborder/west,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aDp" = (
 /obj/structure/bed/chair/comfy/orange{
 	dir = 1
@@ -9118,7 +9116,7 @@
 /area/lv624/lazarus/main_hall)
 "aDv" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aDw" = (
 /obj/structure/flora/bush/ausbushes/ywflowers,
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -9213,7 +9211,7 @@
 /area/forward_base/lv624/preps/corpsman/cryo)
 "aDO" = (
 /turf/open/gm/dirt,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aDP" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/closed/wall/strata_ice/jungle,
@@ -9244,7 +9242,7 @@
 	dir = 5
 	},
 /turf/open/gm/dirt,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aDW" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -9360,7 +9358,7 @@
 /area/forward_base/lv624/preps/comtech/cryo)
 "aEs" = (
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aEt" = (
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
@@ -9374,7 +9372,7 @@
 	dir = 6
 	},
 /turf/open/gm/dirt,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aEv" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -9398,10 +9396,10 @@
 /obj/structure/dropship_equipment/fuel/fuel_enhancer,
 /obj/structure/surface/rack,
 /turf/open/floor/plating/asteroidwarning/northwest,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aEx" = (
 /turf/open/floor/plating/asteroidwarning/west,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aEy" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/crew/alt{
@@ -9963,7 +9961,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/asteroidwarning/west,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aGi" = (
 /obj/effect/landmark/start/marine/tl/bravo,
 /turf/open/floor/almayer/plate,
@@ -10220,7 +10218,7 @@
 "aGX" = (
 /obj/structure/machinery/power/apc/power/west,
 /turf/open/floor/plating/asteroidwarning/west,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aGY" = (
 /obj/structure/fence,
 /turf/open/gm/grass/grass1,
@@ -11198,7 +11196,7 @@
 /area/lv624/lazarus/main_hall)
 "aJO" = (
 /turf/open/floor/plating/asteroidwarning/southwest,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aJP" = (
 /obj/item/stock_parts/scanning_module/phasic,
 /obj/structure/surface/rack,
@@ -12822,7 +12820,7 @@
 	},
 /obj/structure/surface/rack,
 /turf/open/floor/plating/asteroidwarning/north,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aOC" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -13693,7 +13691,7 @@
 /area/lv624/ground/jungle/west_central_jungle)
 "aRg" = (
 /turf/open/floor/plating/asteroidfloor,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aRh" = (
 /obj/structure/closet/coffin,
 /turf/open/floor/chapel/west,
@@ -13740,7 +13738,7 @@
 /area/forward_base/lv624/living/cafeteria)
 "aRm" = (
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aRn" = (
 /turf/open/antre/plating/direction_west/west_south,
 /area/forward_base/lv624/hallways/west)
@@ -13769,7 +13767,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aRs" = (
 /turf/open/antre/plating/direction_west/east_north,
 /area/forward_base/lv624/hallways/west)
@@ -13782,7 +13780,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aRv" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
@@ -13797,7 +13795,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aRy" = (
 /turf/closed/wall/almayer,
 /area/forward_base/lv624/hallways/west)
@@ -13860,7 +13858,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aRH" = (
 /obj/structure/closet/firecloset,
 /obj/structure/machinery/light{
@@ -14343,7 +14341,7 @@
 /area/forward_base/lv624/preps/comtech/cryo)
 "aTp" = (
 /turf/open/floor/plating/asteroidwarning,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aTq" = (
 /obj/structure/foamed_metal,
 /turf/open/floor/dark,
@@ -14374,7 +14372,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/plating/asteroidwarning/north,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aTu" = (
 /obj/structure/machinery/colony_floodlight_switch{
 	pixel_y = 30
@@ -14389,7 +14387,7 @@
 "aTv" = (
 /obj/structure/machinery/landinglight/delayone,
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aTw" = (
 /obj/structure/window_frame/colony/reinforced,
 /obj/item/shard,
@@ -15964,7 +15962,7 @@
 "aXX" = (
 /obj/structure/machinery/camera/autoname/lz_camera,
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aXY" = (
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
@@ -16655,7 +16653,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aZQ" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -16674,7 +16672,7 @@
 "aZT" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/closed/wall/strata_ice/jungle,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "aZU" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -17380,15 +17378,9 @@
 "bbP" = (
 /turf/open/floor/almayer/green/east,
 /area/forward_base/lv624/preps)
-"bbQ" = (
-/obj/structure/window/framed/almayer/hull,
-/obj/structure/window/framed/almayer/hull,
-/turf/open/floor/plating,
-/area/forward_base/lv624/reqs)
 "bbR" = (
 /obj/structure/window/framed/almayer/hull,
-/obj/structure/window/framed/almayer/hull,
-/turf/closed/wall/almayer,
+/turf/open/space/basic,
 /area/forward_base/lv624/reqs)
 "bbS" = (
 /obj/structure/surface/table/almayer,
@@ -17503,10 +17495,6 @@
 "bch" = (
 /turf/open/floor/almayer/mono,
 /area/forward_base/lv624/research/fabrication)
-"bci" = (
-/obj/structure/window/framed/almayer/hull,
-/turf/closed/wall/almayer,
-/area/forward_base/lv624/reqs)
 "bcj" = (
 /obj/structure/bed/chair/comfy,
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -17767,11 +17755,11 @@
 "bcS" = (
 /obj/structure/dropship_equipment/paradrop_system,
 /turf/open/floor/plating/asteroidwarning/northeast,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bcT" = (
 /obj/structure/machinery/landinglight,
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bcU" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
 	light_on = 1;
@@ -17787,11 +17775,11 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bcW" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bcX" = (
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
@@ -18857,7 +18845,7 @@
 "bga" = (
 /obj/structure/fence/overgrown,
 /turf/open/gm/dirtgrassborder/south,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bgb" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -19358,11 +19346,11 @@
 /area/forward_base/lv624/intel)
 "bhp" = (
 /turf/open/floor/plating/asteroidwarning/north,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bhq" = (
 /obj/structure/machinery/landinglight/delaythree,
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bhr" = (
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/jungle/south_east_jungle)
@@ -19397,18 +19385,18 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bhw" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera";
 	dir = 1
 	},
 /turf/open/floor/plating/asteroidwarning,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bhx" = (
 /obj/structure/machinery/landinglight/delaytwo,
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bhy" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer{
 	name = "\improper Mess Hall"
@@ -19421,7 +19409,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bhA" = (
 /obj/effect/sentry_landmark/lz_1/top_left,
 /turf/open/antre/plating/direction_west/east_north,
@@ -19565,7 +19553,7 @@
 /area/forward_base/lv624/tent_camp)
 "bhY" = (
 /turf/open/floor/warning/northwest,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bhZ" = (
 /obj/structure/tent/big{
 	icon = 'icons/obj/structures/tents_deployed_jungle.dmi';
@@ -19598,14 +19586,14 @@
 	name = "LZ2: Forward Base Landing Pad"
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bid" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/forward_base/lv624/tent_camp)
 "bie" = (
 /turf/open/floor/warning/north,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bif" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/effect/decal/strata_decals/mud_corner{
@@ -19630,21 +19618,21 @@
 	name = "Tarmac Blast Doors"
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bij" = (
 /obj/structure/prop/tyrargo/watchtower,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/forward_base/lv624/tent_camp)
 "bik" = (
 /turf/open/floor/warning/northeast,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bil" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/dirt,
 /area/forward_base/lv624/tent_camp)
 "bim" = (
 /turf/closed/wall/almayer,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bin" = (
 /obj/structure/window/framed/colony,
 /obj/structure/machinery/door/poddoor/almayer/closed{
@@ -22785,7 +22773,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "btb" = (
 /obj/item/stack/sheet/wood{
 	amount = 2
@@ -22797,13 +22785,13 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "btd" = (
 /obj/structure/machinery/landinglight{
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bte" = (
 /obj/effect/landmark/hunter_primary,
 /obj/structure/flora/jungle/vines/light_3,
@@ -22814,7 +22802,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "btg" = (
 /obj/structure/machinery/photocopier/wyphotocopier,
 /obj/structure/sign/calendar/wy{
@@ -22854,22 +22842,22 @@
 /area/forward_base/lv624/liasion)
 "btk" = (
 /turf/open/floor/plating/asteroidwarning/northeast,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "btl" = (
 /turf/open/floor/plating/asteroidwarning/east,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "btm" = (
 /obj/effect/landmark/xeno_hive_spawn,
 /obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/plating/asteroidwarning/east,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "btn" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/plating/asteroidwarning/east,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bto" = (
 /turf/open/floor/plating/asteroidwarning/southeast,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "btp" = (
 /obj/structure/bed/chair/comfy/orange,
 /obj/structure/machinery/light{
@@ -22938,15 +22926,15 @@
 "btu" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "btv" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/east,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "btw" = (
 /obj/structure/fence/overgrown,
 /turf/open/gm/dirtgrassborder/east,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "btx" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/door_control{
@@ -22954,19 +22942,19 @@
 	id = "robo"
 	},
 /turf/open/gm/dirt,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bty" = (
 /turf/open/floor/plating/asteroidfloor/north,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "btz" = (
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/dirt,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "btA" = (
 /obj/structure/machinery/floodlight/landing,
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/floor/mech_bay_recharge_floor/shuttle_landing_lights,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "btB" = (
 /obj/structure/machinery/disposal{
 	pixel_x = -1;
@@ -22976,7 +22964,6 @@
 	layer = 2.52
 	},
 /obj/structure/disposalpipe/trunk,
-/turf/open/floor/plating/plating_catwalk,
 /turf/open/floor/almayer/cargo,
 /area/forward_base/lv624/intel)
 "btC" = (
@@ -23032,33 +23019,33 @@
 "btH" = (
 /obj/effect/sentry_landmark/lz_2/top_right,
 /turf/open/gm/dirt,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "btI" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/north,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "btJ" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/south,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "btK" = (
 /obj/structure/lz_sign/lazarus_sign{
 	layer = 4
 	},
 /turf/open/gm/dirt,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "btL" = (
 /obj/effect/sentry_landmark/lz_2/bottom_right,
 /turf/open/floor/plating/asteroidfloor/north,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "btM" = (
 /obj/structure/flora/jungle/vines/light_1,
 /turf/closed/wall/r_wall,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "btN" = (
 /obj/structure/flora/jungle/vines/light_2,
 /turf/closed/wall/r_wall,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "btO" = (
 /obj/structure/machinery/cm_vending/clothing/corporate_liaison{
 	pixel_y = 16;
@@ -23143,7 +23130,6 @@
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/office/lobby_door,
 /obj/structure/disposalpipe/segment,
-/obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 1
 	},
@@ -23155,24 +23141,24 @@
 "btY" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "btZ" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bua" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bub" = (
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/dark,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "buc" = (
 /turf/open/floor/dark,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bud" = (
 /obj/structure/safe/cl_office{
 	can_block_movement = 0
@@ -23202,15 +23188,15 @@
 "bug" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "buh" = (
 /obj/structure/fence,
 /turf/open/gm/dirt,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bui" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "buj" = (
 /obj/structure/machinery/door_control{
 	id = "garage_lv";
@@ -23218,28 +23204,28 @@
 	pixel_y = -28
 	},
 /turf/open/floor/plating/asteroidwarning,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "buk" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bul" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bum" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bun" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "buo" = (
 /obj/structure/machinery/atm{
 	name = "Weyland-Yutani Automatic Teller Machine";
@@ -23250,33 +23236,33 @@
 "buq" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bur" = (
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/gm/dirtgrassborder/west,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "bus" = (
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "but" = (
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/gm/dirt,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "buu" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/gm/dirt,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "buv" = (
 /obj/item/bananapeel,
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/gm/dirt,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "buw" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz2)
+/area/forward_base/lv624/landing_zones/lz2)
 "buB" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
 	name = "\improper Research Department"
@@ -23284,7 +23270,6 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/forward_base/lv624/research)
@@ -75994,11 +75979,11 @@ qht
 qht
 aRw
 aRw
-bci
-bci
+bbR
+bbR
 aRw
 bbR
-bbQ
+apJ
 aRw
 aRw
 aRw

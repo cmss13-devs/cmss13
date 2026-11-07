@@ -234,3 +234,11 @@
 
 /area/forward_base/lv624/tent/correspondent_tent
 	name = "Combat Correspondent's Tent"
+
+/area/forward_base/lv624/landing_zones/lz2
+	name = "\improper Normandy Landing Zone"
+	icon = 'icons/turf/areas.dmi'
+	icon_state = "green"
+	ceiling = CEILING_NONE
+	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ2

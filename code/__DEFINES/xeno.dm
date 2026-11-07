@@ -217,6 +217,9 @@
 /// For how long the buff lasts
 #define XENO_HIJACK_EVILUTION_TIME (3 MINUTES)
 
+/// For /datum/hivebuff requirement of weighted marines groundside using /proc/get_groundside_marine_weight_ratio()
+#define XENO_BOON_REQUIRED_DANGER 0.25
+
 /// If this is marine to xeno ratio during hijack, xenos see marines on tacmap
 #define HIJACK_RATIO_FOR_TACMAP 0.8
 

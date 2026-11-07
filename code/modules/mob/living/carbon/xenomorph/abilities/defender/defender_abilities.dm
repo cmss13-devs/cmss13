@@ -20,6 +20,7 @@
 
 	var/base_damage = 30
 	var/usable_while_fortified = FALSE
+	cooldown_message = "Our head and neck are primed for another headbutt."
 
 /datum/action/xeno_action/activable/headbutt/steel_crest
 	base_damage = 37.5
@@ -33,6 +34,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 10
 	xeno_cooldown = 11 SECONDS
+	cooldown_message = "Our tail is no longer tired. We can now sweep or slam it again."
 
 /datum/action/xeno_action/activable/fortify
 	name = "Fortify"
@@ -44,6 +46,7 @@
 
 	/// Extra armor when fortified and facing bullets.
 	var/frontal_armor = 5
+	cooldown_message = "We have regained enough stamina to curl up and take damage for our sisters."
 
 /datum/action/xeno_action/activable/fortify/steel_crest
 	frontal_armor = 15
@@ -66,3 +69,4 @@
 	var/damage_threshold = 140
 	/// Initially zero, gets damage added when the ability is activated
 	var/damage_accumulated = 0
+	cooldown_message = "Our armor is ready to soak up an extreme amount of damage."

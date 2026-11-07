@@ -1,0 +1,6 @@
+author: "Kugamo"
+delete-after: True
+changes:
+  - qol: "Added a subtype of chairs that turn into chair stacks, for mappers qol."
+  - bugfix: "Folding chairs will now detect duplicates of themselves in the same turf, and then turn into chair stacks if they've found any."
+  - maptweak: "Replaced false stacks of chairs (made from mapping) with actual stacks of chairs objs."

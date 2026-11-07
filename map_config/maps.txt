@@ -77,5 +77,15 @@ endmap
 map lv1021_falcons_fury
 endmap
 
+map cape_river
+endmap
+
+map lv1021_falcons_fury
+endmap
+
+map conam_81_abyssal
+	maxplayers 85
+endmap
+
 map whiskey_outpost_v2
 endmap

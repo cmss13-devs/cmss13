@@ -497,3 +497,20 @@
 		addtimer(CALLBACK(src, PROC_REF(handle_pod), TRUE), release_delay)
 		visible_message(SPAN_WARNING("<b>[src] beeps:</b> Automatic door lockdown [desiredstate == CONTROL_STATE_OPEN ? "begins" : "ends"] in [release_delay DECISECONDS_TO_MINUTES] minutes."))
 	return ..()
+
+/obj/structure/machinery/door_control/abyssal_lockdown
+	var/used = FALSE
+	var/colony_lockdown_time = 5 MINUTES
+
+/obj/structure/machinery/door_control/abyssal_lockdown/use_button(mob/living/user,force)
+	if(world.time < SSticker.mode.round_time_lobby + colony_lockdown_time)
+		to_chat(user, SPAN_WARNING("The station-wide emergency lockdown cannot be lifted yet. Please wait another [floor((SSticker.mode.round_time_lobby + colony_lockdown_time-world.time)/600)] minutes before trying again."))
+		return
+	if(used)
+		to_chat(user, SPAN_WARNING("The station-wide emergency lockdown has already been lifted."))
+		return
+	. = ..()
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_ABYSSAL_LOCKDOWN)
+	marine_announcement("The station-wide emergency lockdown has been lifted.")
+	xeno_announcement("We sense the encroachment of new hosts upon our metal hive.")
+	used = TRUE

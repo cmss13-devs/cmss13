@@ -4338,11 +4338,20 @@
 /turf/open/floor/green/east
 	dir = EAST
 
-/turf/open/floor/green/south
-	dir = SOUTH
-
 /turf/open/floor/green/west
 	dir = WEST
+
+/turf/open/floor/green/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/green/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/green/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/green/northeast
+	dir = NORTHEAST
 
 /turf/open/floor/greencorner
 	icon_state = "greencorner"
@@ -4355,6 +4364,9 @@
 
 /turf/open/floor/greencorner/west
 	dir = WEST
+
+/turf/open/floor/greenfull
+	icon_state = "greenfull"
 
 /turf/open/floor/loadingarea
 	icon_state = "loadingarea"
@@ -4460,6 +4472,9 @@
 
 /turf/open/floor/darkblue2/east
 	dir = EAST
+
+/turf/open/floor/darkblue2full
+	icon_state = "darkblue2full"
 
 /turf/open/floor/darkbrown2/east
 	dir = EAST
@@ -5081,6 +5096,9 @@
 
 /turf/open/floor/darkish
 	icon_state = "darkish"
+
+/turf/open/floor/darkish/unweedable
+	is_weedable = NOT_WEEDABLE
 
 /turf/open/floor/delivery
 	icon_state = "delivery"

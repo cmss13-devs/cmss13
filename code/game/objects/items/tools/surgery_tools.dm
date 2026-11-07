@@ -65,6 +65,10 @@
 	flags_item = ANIMATED_SURGICAL_TOOL
 	attack_verb = list("burned", "seared", "scorched", "singed")
 
+/obj/item/tool/surgery/cautery/Initialize(mapload, ...)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_IGNITER, TRAIT_SOURCE_INHERENT)
+
 /obj/item/tool/surgery/cautery/predatorcautery
 	name = "cauterizer"
 	icon_state = "predator_cautery"

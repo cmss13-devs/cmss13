@@ -1,0 +1,38 @@
+---LICENSE NOTICE---
+
+Unless otherwise noted, all assets in this folder are owned by Drulikar (Drathek) and
+were created by Mikoka Wei (Esselnek). They are licensed under the
+Creative Commons Attribution-NonCommercial-NoDerivatives 4.0
+International License (CC BY-NC-ND 4.0).
+https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+Under this license you may share (copy and redistribute) these sprites in any
+medium or format, provided that you:
+	- give appropriate credit to the author, provide a link to the license, and
+    indicate if any changes were made (BY)
+	- do not use them for commercial purposes (NC)
+	- do not distribute modified or derivative versions of them (ND)
+
+If new sprites are added to this folder (e.g. through other code repository),
+they must explicitly state their license if it differs from the one above.
+
+If a sprite is covered by a different license or requires specific
+attribution, this must be stated explicitly and takes precedence for that
+sprite only. The server operator(s) are responsible for keeping this
+information accurate and publicly available, either on a website associated
+with the server or on the server itself.
+
+Do not remove this notice.
+
+---END NOTICE---
+
+---EXAMPLES (NOT PART OF ANY LICENSE)---
+
+These are examples of properly attributed sprites. They are not part of any
+license under any circumstance.
+
+pred_hud.dmi was created by Strob on February 28, 2182. It is licensed
+under AGPLv3 (https://github.com/cmss13-devs/cmss13/blob/master/LICENSE-AGPLv3.txt).
+
+Unless otherwise noted, all sprites were created by Mikoka Wei (Esselnek) on August 6th 2025. They are licensed under CC BY-NC-ND 4.0
+(https://creativecommons.org/licenses/by-nc-nd/4.0/).

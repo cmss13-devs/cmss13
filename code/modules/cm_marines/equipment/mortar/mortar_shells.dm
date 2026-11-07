@@ -5,7 +5,7 @@
 	icon_state = "mortar_ammo_cas"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_righthand.dmi',
 		)
 	w_class = SIZE_HUGE
 	flags_atom = FPRINT|CONDUCT

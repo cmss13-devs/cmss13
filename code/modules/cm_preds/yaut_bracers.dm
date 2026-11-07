@@ -5,7 +5,7 @@
 	icon = 'icons/obj/items/hunter/pred_bracers.dmi'
 	icon_state = "bracer"
 	item_icons = list(
-		WEAR_HANDS = 'icons/mob/humans/onmob/hunter/pred_bracers.dmi'
+		WEAR_HANDS = 'icons/mob/humans/onmob/hunter/pred_bracers.dmi',
 	)
 
 	siemens_coefficient = 0
@@ -300,7 +300,16 @@
 	var/smartdisc_enabled = TRUE
 
 	///A list of all intrinsic bracer actions
-	var/list/bracer_actions = list(/datum/action/predator_action/bracer/wristblade, /datum/action/predator_action/bracer/caster, /datum/action/predator_action/bracer/cloak, /datum/action/predator_action/bracer/thwei, /datum/action/predator_action/bracer/capsule, /datum/action/predator_action/bracer/translator, /datum/action/predator_action/bracer/self_destruct, /datum/action/predator_action/bracer/smartdisc)
+	var/list/bracer_actions = list(
+		/datum/action/predator_action/bracer/wristblade,
+		/datum/action/predator_action/bracer/caster,
+		/datum/action/predator_action/bracer/cloak,
+		/datum/action/predator_action/bracer/thwei,
+		/datum/action/predator_action/bracer/capsule,
+		/datum/action/predator_action/bracer/translator,
+		/datum/action/predator_action/bracer/self_destruct,
+		/datum/action/predator_action/bracer/smartdisc,
+		)
 
 	/// A list of networks the bracer is listening to for messages.
 	var/list/received_networks = list(YAUTJA_NET_HUNTING)

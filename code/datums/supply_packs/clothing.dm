@@ -89,7 +89,7 @@
 	contains = list(
 		/obj/item/clothing/accessory/storage/knifeharness,//old unathi knife harness updated for our needs
 		/obj/item/clothing/accessory/storage/knifeharness,
-		/obj/item/clothing/accessory/storage/knifeharness
+		/obj/item/clothing/accessory/storage/knifeharness,
 	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/green

@@ -339,7 +339,7 @@
 				"bottle_color" = params["bottle_color"],
 				"bottle_label" = copytext(reject_bad_text(params["bottle_label"] || ""), 1, 4),
 				"pill_color" = params["pill_color"],
-				"use_preset_name_as_label" = params["use_preset_name_as_label"]
+				"use_preset_name_as_label" = params["use_preset_name_as_label"],
 			)
 
 			// Add quick access data if provided

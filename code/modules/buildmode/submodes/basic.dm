@@ -41,11 +41,11 @@
 			if(clicked_atom.unacidable || clicked_atom.explo_proof || CHECK_BITFIELD(clicked_turf.turf_flags, TURF_HULL))
 				destruction_switch = "Make Destructible"
 			radial_menu_options = list(
-					"Destroy" = image('icons/misc/buildmode.dmi', icon_state = "buildquit"),
-					"[destruction_switch]" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = NORTH),
-					"Downgrade" = image('icons/misc/buildmode.dmi', icon_state = "build"),
-					"Turn" = image('icons/misc/buildmode.dmi', icon_state = "buildmode_edit"),
-				)
+				"Destroy" = image('icons/misc/buildmode.dmi', icon_state = "buildquit"),
+				"[destruction_switch]" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = NORTH),
+				"Downgrade" = image('icons/misc/buildmode.dmi', icon_state = "build"),
+				"Turn" = image('icons/misc/buildmode.dmi', icon_state = "buildmode_edit"),
+			)
 			if(GLOB.radial_menus["buildmode_basic_turf_[key_name(admin_building)]"])
 				return
 			var/picked_option = show_radial_menu(admin_building.mob, clicked_atom, radial_menu_options, tooltips = TRUE, uniqueid = "buildmode_basic_turf_[key_name(admin_building)]")
@@ -126,10 +126,10 @@
 			if(GLOB.radial_menus["buildmode_basic_obj_[key_name(admin_building)]"])
 				return
 			radial_menu_options = list(
-					"Destroy" = image('icons/misc/buildmode.dmi', icon_state = "buildquit"),
-					"[destruction_switch]" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = NORTH),
-					"Turn" = image('icons/misc/buildmode.dmi', icon_state = "buildmode_edit"),
-				)
+				"Destroy" = image('icons/misc/buildmode.dmi', icon_state = "buildquit"),
+				"[destruction_switch]" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = NORTH),
+				"Turn" = image('icons/misc/buildmode.dmi', icon_state = "buildmode_edit"),
+			)
 			var/picked_option = show_radial_menu(admin_building.mob, clicked_atom, radial_menu_options, tooltips = TRUE, uniqueid = "buildmode_basic_obj_[key_name(admin_building)]")
 			switch(picked_option)
 				if("Destroy")

@@ -18,7 +18,7 @@
 		"[JOB_PREDATOR][CLAN_RANK_ELITE]" = /datum/equipment_preset/yautja/elite,
 		"[JOB_PREDATOR][CLAN_RANK_ELDER]" = /datum/equipment_preset/yautja/elder,
 		"[JOB_PREDATOR][CLAN_RANK_LEADER]" = /datum/equipment_preset/yautja/leader,
-		"[JOB_PREDATOR][CLAN_RANK_ADMIN]" = /datum/equipment_preset/yautja/ancient
+		"[JOB_PREDATOR][CLAN_RANK_ADMIN]" = /datum/equipment_preset/yautja/ancient,
 	)
 
 /datum/job/antag/predator/set_spawn_positions(count)

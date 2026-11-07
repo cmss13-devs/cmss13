@@ -24,7 +24,7 @@
 		blocker_parameters_entries = list(
 			list(
 				GLOB.collide_allows_movement_blocker_configuration,
-				GLOB.none_directional_blocker_configuration
+				GLOB.none_directional_blocker_configuration,
 			),
 		),
 		test_callback = CALLBACK(src, PROC_REF(collision_validation), TRUE),

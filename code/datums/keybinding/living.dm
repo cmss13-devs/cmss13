@@ -113,3 +113,83 @@
 	var/mob/living/user_mob = user.mob
 	user_mob.look_up()
 	return TRUE
+
+/datum/keybinding/living/draw_card
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "draw_card"
+	full_name = "Draw Card"
+	description = ""
+	keybind_signal = COMSIG_KB_LIVING_DRAW_CARD
+
+/datum/keybinding/living/draw_card/down(client/user)
+	. = ..()
+	if (.)
+		return
+
+	if(!isliving(user.mob))
+		return
+
+	var/mob/living/user_mob = user.mob
+	winset(user_mob, null, "command=draw")
+	return TRUE
+
+/datum/keybinding/living/draw_x_cards
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "draw_x_cards"
+	full_name = "Draw X Cards"
+	description = ""
+	keybind_signal = COMSIG_KB_LIVING_DRAW_X_CARDS
+
+/datum/keybinding/living/draw_x_cards/down(client/user)
+	. = ..()
+	if (.)
+		return
+
+	if(!isliving(user.mob))
+		return
+
+	var/mob/living/user_mob = user.mob
+	winset(user_mob, null, "command=draw-x-cards")
+	return TRUE
+
+/datum/keybinding/living/draw_pile_concealed
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "draw_pile_concealed"
+	full_name = "Draw Pile (Concealed)"
+	description = ""
+	keybind_signal = COMSIG_KB_LIVING_DRAW_PILE_CONCEALED
+
+/datum/keybinding/living/draw_pile_concealed/down(client/user)
+	. = ..()
+	if (.)
+		return
+
+	if(!isliving(user.mob))
+		return
+
+	var/mob/living/user_mob = user.mob
+	winset(user_mob, null, "command=draw-pile-(concealed)")
+	return TRUE
+
+/datum/keybinding/living/deal_card
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "deal_card"
+	full_name = "Deal Card"
+	description = ""
+	keybind_signal = COMSIG_KB_LIVING_DEAL_CARD
+
+/datum/keybinding/living/deal_card/down(client/user)
+	. = ..()
+	if (.)
+		return
+
+	if(!isliving(user.mob))
+		return
+
+	var/mob/living/user_mob = user.mob
+	winset(user_mob, null, "command=deal")
+	return TRUE

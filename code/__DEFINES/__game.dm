@@ -46,6 +46,8 @@
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
 #define MAP_TYRARGO_RIFT "Tyrargo Rift"
 #define MAP_WHITE_ANTRE_RESEARCH_FACILITY "White Antre Research Facility"
+#define MAP_CAPE_RIVER "Cape River Mining Colony"
+#define MAP_LV1021_FALCONS_FURY "LV-1021: Operation Falcon's Fury"
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
 #define MAP_ROSTOCK "SSV Rostock" //UPP Warship
 #define MAP_HUNTERSHIP "Hunter Ship"

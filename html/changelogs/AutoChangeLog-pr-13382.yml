@@ -1,0 +1,6 @@
+author: "Kugamo, Nemesis1337"
+delete-after: True
+changes:
+  - bugfix: "Fixed tables mapped to be flipped not acting like flipped tables."
+  - qol: "Added subtypes for all the flippable tables: table/flipped for mappers."
+  - imagetweak: "Resprited the single reinforced table to look like its multi-tile version"

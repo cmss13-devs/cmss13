@@ -470,6 +470,11 @@
 				sound = pick('sound/vehicles/tire_screech1.ogg', 'sound/vehicles/tire_screech2.ogg','sound/vehicles/tire_screech3.ogg','sound/vehicles/tire_screech4.ogg')
 			if("wheelless")
 				sound = pick('sound/vehicles/wheelless_move1.ogg', 'sound/vehicles/wheelless_move2.ogg','sound/vehicles/wheelless_move3.ogg')
+			//items
+			if("map_fold")
+				sound = pick('sound/items/map_fold1.ogg', 'sound/items/map_fold2.ogg', 'sound/items/map_fold3.ogg', 'sound/items/map_fold4.ogg')
+			if("map_unfold")
+				sound = pick('sound/items/map_unfold1.ogg', 'sound/items/map_unfold2.ogg', 'sound/items/map_unfold3.ogg')
 			//water sounds
 			if("shallowwading")
 				sound = pick('sound/effects/water/shallowwading1.ogg','sound/effects/water/shallowwading2.ogg','sound/effects/water/shallowwading3.ogg','sound/effects/water/shallowwading4.ogg','sound/effects/water/shallowwading5.ogg','sound/effects/water/shallowwading6.ogg')

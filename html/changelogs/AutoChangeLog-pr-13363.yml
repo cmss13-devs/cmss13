@@ -1,8 +1,0 @@
-author: "TrollerNoob"
-delete-after: True
-changes:
-  - rscadd: "The USCM's internal combat statistic database has been updated to include Air Support Ordinance. Pilots, examine your ship's munitions!"
-  - rscadd: "Added an information codex to Dropship Ammo on examine, similar to guns. Displays detailed ammo statistics and visually shows explosive area."
-  - qol: "Made Dropship Ammo description easier to read."
-  - imageadd: "Added codex lineart for every Dropship Ammo."
-  - refactor: "Refactored ammo vars in dropship_ammo.dm, making it easier to tweak numbers."

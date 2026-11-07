@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscadd: "Larva queue now shows total of currently eligible candidates as well as an absolute position and total (so the position that would include anyone currently ineligible)"
-  - balance: "Larva queue position time is now set on observe rather than connect"
-  - admin: "If there is somehow a way to use the topic to send players back to lobby, it now uses the same proc as the player panel one"

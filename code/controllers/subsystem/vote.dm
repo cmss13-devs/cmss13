@@ -309,6 +309,8 @@ SUBSYSTEM_DEF(vote)
 					maps += i
 
 				choices.Add(maps)
+				if(length(choices) < 1)
+					return FALSE
 				if(!length(choices))
 					return FALSE
 				SSentity_manager.filter_then(/datum/entity/map_vote, null, CALLBACK(src, PROC_REF(carry_over_callback)))
@@ -331,8 +333,6 @@ SUBSYSTEM_DEF(vote)
 							continue
 					maps += i
 				choices.Add(maps)
-				if(length(choices) < 2)
-					return FALSE
 			if("custom")
 				question = input(usr, "What is the vote for?")
 				if(!question)

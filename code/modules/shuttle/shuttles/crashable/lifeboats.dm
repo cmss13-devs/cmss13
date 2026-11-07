@@ -46,6 +46,24 @@
 	preferred_direction = EAST
 	port_direction = EAST
 
+/obj/docking_port/mobile/crashable/lifeboat/sulaco/west
+	name = "sulaco lifeboat"
+	id = MOBILE_SHUTTLE_LIFEBOAT_SULACO_WEST
+	preferred_direction = NORTH
+	port_direction = NORTH
+
+/obj/docking_port/mobile/crashable/lifeboat/sulaco/center
+	name = "sulaco lifeboat"
+	id = MOBILE_SHUTTLE_LIFEBOAT_SULACO_CENTER
+	preferred_direction = NORTH
+	port_direction = NORTH
+
+/obj/docking_port/mobile/crashable/lifeboat/sulaco/east
+	name = "sulaco lifeboat"
+	id = MOBILE_SHUTTLE_LIFEBOAT_SULACO_EAST
+	preferred_direction = NORTH
+	port_direction = NORTH
+
 /obj/docking_port/mobile/crashable/lifeboat/evac_launch()
 	if (status == LIFEBOAT_LOCKED)
 		return
@@ -146,6 +164,33 @@
 	id = "rostock-lifeboat1"
 	roundstart_template = /datum/map_template/shuttle/lifeboat_rostock
 
+/obj/docking_port/stationary/lifeboat_dock/sulaco
+	name = "Sulaco Lifeboat Docking Port"
+	id = "lifeboat-sulaco"
+	width  = 5
+	height = 12
+
+/// Sulaco Lifeboat dock 1
+/obj/docking_port/stationary/lifeboat_dock/sulaco/west
+	name = "Sulaco Lifeboat West Docking Port"
+	dir = NORTH
+	id = "lifeboat-sulaco1"
+	roundstart_template = /datum/map_template/shuttle/lifeboat_sulaco_west
+
+/// Sulaco Lifeboat dock 2
+/obj/docking_port/stationary/lifeboat_dock/sulaco/center
+	name = "Sulaco Lifeboat Center Docking Port"
+	dir = NORTH
+	id = "lifeboat-sulaco2"
+	roundstart_template = /datum/map_template/shuttle/lifeboat_sulaco_center
+
+/// Sulaco Lifeboat dock 3
+/obj/docking_port/stationary/lifeboat_dock/sulaco/east
+	name = "Sulaco Lifeboat East Docking Port"
+	dir = NORTH
+	id = "lifeboat-sulaco3"
+	roundstart_template = /datum/map_template/shuttle/lifeboat_sulaco_east
+
 /obj/docking_port/stationary/lifeboat_dock/Initialize(mapload)
 	. = ..()
 	GLOB.lifeboat_almayer_docks += src
@@ -170,3 +215,18 @@
 /datum/map_template/shuttle/lifeboat_rostock
 	name = "Starboard door lifeboat"
 	shuttle_id = MOBILE_SHUTTLE_LIFEBOAT_ROSTOCK
+
+/// Western Sulaco lifeboat
+/datum/map_template/shuttle/lifeboat_sulaco_west
+	name = "West door lifeboat"
+	shuttle_id = MOBILE_SHUTTLE_LIFEBOAT_SULACO_WEST
+
+/// Center Sulaco lifeboat
+/datum/map_template/shuttle/lifeboat_sulaco_center
+	name = "Center door lifeboat"
+	shuttle_id = MOBILE_SHUTTLE_LIFEBOAT_SULACO_CENTER
+
+/// Eastern Sulaco lifeboat
+/datum/map_template/shuttle/lifeboat_sulaco_east
+	name = "East door lifeboat"
+	shuttle_id = MOBILE_SHUTTLE_LIFEBOAT_SULACO_EAST

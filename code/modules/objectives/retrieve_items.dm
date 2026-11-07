@@ -9,9 +9,11 @@
 	controller = TREE_MARINE
 	objective_flags = OBJECTIVE_START_PROCESSING_ON_DISCOVERY
 	target_areas = list(
-		/area/almayer/command/securestorage,
-		/area/almayer/command/computerlab,
-		/area/almayer/medical/medical_science,
+		/area/ship/almayer/command/securestorage,
+		/area/ship/almayer/command/computerlab,
+		/area/ship/almayer/medical/medical_science,
+		/area/ship/sulaco/research,
+		/area/ship/sulaco/command/intelligence,
 	)
 
 /datum/cm_objective/retrieve_item/New(atom/target)
@@ -64,7 +66,8 @@
 	state = OBJECTIVE_ACTIVE
 	objective_flags = OBJECTIVE_DO_NOT_TREE
 	target_areas = list(
-		/area/almayer,
+		/area/ship/almayer,
+		/area/ship/sulaco,
 	)
 
 /datum/cm_objective/retrieve_item/fulton/proc/clean_up_fulton()

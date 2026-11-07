@@ -5,8 +5,9 @@ GLOBAL_LIST_INIT(exempted_cause_objects, typecacheof(list(
 )))
 
 GLOBAL_LIST_INIT(exempted_cause_areas, typecacheof(list(
-	/area/almayer/shipboard/firing_range_north,
-	/area/almayer/shipboard/firing_range_south
+	/area/ship/almayer/shipboard/firing_range_north,
+	/area/ship/almayer/shipboard/firing_range_south,
+	/area/ship/sulaco/hangar/range
 )))
 
 /datum/cause_data

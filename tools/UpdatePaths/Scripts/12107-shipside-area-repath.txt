@@ -1,0 +1,2 @@
+/area/almayer/@SUBTYPES : /area/ship/almayer/@SUBTYPES{@OLD}
+/area/sulaco/@SUBTYPES : /area/ship/sulaco/@SUBTYPES{@OLD}

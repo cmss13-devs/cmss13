@@ -43,6 +43,8 @@
 	attack_same = FALSE
 	langchat_color = LIGHT_COLOR_GREEN
 
+	water_config = /datum/water_overlay_config/large
+
 	///used for the other icons to be modular
 	var/base_state = "Giant Lizard"
 

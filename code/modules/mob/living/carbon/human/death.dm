@@ -11,8 +11,6 @@
 			// Override the current limb status
 			E.droplimb(0, 0, cause)
 
-
-
 	GLOB.data_core.manifest_modify(real_name, WEAKREF(src), null, null, "Deceased")
 
 	if(is_a_synth)
@@ -23,7 +21,7 @@
 	if(!should_block_game_interaction(src, TRUE) && (is_ground_level(death_turf.z) || is_mainship_level(death_turf.z) || is_reserved_level(death_turf.z)))
 		new /mob/dead/mob_marker(death_turf, src)
 
-	undefibbable = TRUE
+	set_undefibbable()
 
 	..()
 
@@ -64,6 +62,10 @@
 		disable_lights()
 		disable_special_items()
 		disable_headsets() //Disable radios for dead people to reduce load
+
+		if(eyelid_timer)	//whatever state their eyes were in when dying, it stays so
+			deltimer(eyelid_timer)
+			eyelid_timer = null
 
 	if(pulledby && isxeno(pulledby)) // Xenos lose grab on dead humans
 		pulledby.stop_pulling()

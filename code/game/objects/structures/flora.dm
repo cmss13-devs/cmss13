@@ -489,12 +489,16 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 /obj/structure/flora/grass/temperate
 	icon = 'icons/obj/structures/props/natural/vegetation/temperate_flora.dmi'
 	icon_state = "1"
+	plane = -7
+	layer = 2.4
 
 /obj/structure/flora/wood
 	name = "stick"
 	icon = 'icons/obj/structures/props/natural/vegetation/tyrargo_wood_flora.dmi'
 	icon_state = "stick1"
 	density = FALSE
+	plane = -7
+	layer = 2.4
 	fire_flag = FLORA_BURN_NO_SPREAD
 
 /obj/structure/flora/wood/stick1
@@ -548,6 +552,8 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon_state = "firstbush_1"
 	variations = 4
 	cut_level = PLANT_CUT_KNIFE
+	plane = -7
+	layer = 2.4
 	projectile_coverage = 0//CEASE EATING BULLETS, I BEG YOU
 
 /obj/structure/flora/bush/ausbushes/ausbush
@@ -557,8 +563,6 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 /obj/structure/flora/bush/ausbushes/reedbush
 	icon_state = "reedbush_1"
 	icon_tag = "reedbush"
-	plane = FLOOR_PLANE
-	layer = TURF_LAYER
 
 /obj/structure/flora/bush/ausbushes/palebush
 	icon_state = "palebush_1"
@@ -579,14 +583,10 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 /obj/structure/flora/bush/ausbushes/lavendergrass
 	icon_state = "lavendergrass_1"
 	icon_tag = "lavendergrass"
-	plane = FLOOR_PLANE
-	layer = TURF_LAYER
 
 /obj/structure/flora/bush/ausbushes/ywflowers
 	icon_state = "ywflowers_1"
 	icon_tag = "ywflowers"
-	plane = FLOOR_PLANE
-	layer = TURF_LAYER
 
 /*
 
@@ -603,8 +603,6 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 /obj/structure/flora/bush/ausbushes/var3/leafybush
 	icon_state = "leafybush_1"
 	icon_tag = "leafybush"
-	plane = FLOOR_PLANE
-	layer = TURF_LAYER
 
 /obj/structure/flora/bush/ausbushes/var3/stalkybush
 	icon_state = "stalkybush_1"
@@ -621,26 +619,18 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 /obj/structure/flora/bush/ausbushes/var3/brflowers
 	icon_state = "brflowers_1"
 	icon_tag = "brflowers"
-	plane = FLOOR_PLANE
-	layer = TURF_LAYER
 
 /obj/structure/flora/bush/ausbushes/var3/ppflowers
 	icon_state = "ppflowers_1"
 	icon_tag = "ppflowers"
-	plane = FLOOR_PLANE
-	layer = TURF_LAYER
 
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass
 	icon_state = "sparsegrass_1"
 	icon_tag = "sparsegrass"
-	plane = FLOOR_PLANE
-	layer = TURF_LAYER
 
 /obj/structure/flora/bush/ausbushes/var3/fullgrass
 	icon_state =  "fullgrass_1"
 	icon_tag = "fullgrass"
-	plane = FLOOR_PLANE
-	layer = TURF_LAYER
 
 /*
 
@@ -783,7 +773,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon_tag = "light"
 	variations = 3
 	cut_level = PLANT_CUT_MACHETE
-	fire_flag = FLORA_BURN_NO_SPREAD
+	fire_flag = FLORA_BURN_SPREAD_ONCE
 
 /obj/structure/flora/jungle/vines/light_1
 	icon_state = "light_1"

@@ -12,6 +12,12 @@
 	min_turns_per_move = 1
 	max_turns_per_move = 4
 
+
+/mob/living/simple_animal/small/bat/Initialize(mapload, ...)
+	. = ..()
+	mob_flags |= MOB_FLYING
+
+
 /mob/living/simple_animal/small/bat/Life(delta_time)
 	. = ..()
 	if(!ckey && stat == CONSCIOUS && prob(5))

@@ -113,3 +113,8 @@
 	name = "White Antre Research Facility"
 	desc = "A medium sized sign, designating this area as the White Antre Research Facility."
 	icon_state = "antre_sign_3"
+
+/obj/structure/lz_sign/mcneil
+	name = "Fort McNeil - Colony Sign"
+	desc = "A small sign denoting this as the colony of Fort McNeil. The sign proclaims a population of 536, but a more recent lather of red paint has partially removed the 5."
+	icon_state = "antre_sign_2"

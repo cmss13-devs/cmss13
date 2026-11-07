@@ -118,5 +118,5 @@
 /obj/item/desk_bell/corp_liaison/ring_bell(mob/living/user)
 	if(broken_ringer)
 		return FALSE
-	ai_silent_announcement("Attendance requested at Corporate Liaison office.", ":Y", TRUE)
+	ai_silent_announcement("Attendance requested at Corporate Liaison office.", ":Y")
 	return ..()

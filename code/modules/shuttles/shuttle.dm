@@ -7,7 +7,6 @@
 	var/name = "Shuttle" //Name of the shuttle, for messages
 	var/warmup_time = 0
 	var/moving_status = SHUTTLE_IDLE
-	var/move_scheduled = 0
 	var/turf/target_turf = null
 	var/target_rotation = 0
 	var/list/shuttle_turfs = null

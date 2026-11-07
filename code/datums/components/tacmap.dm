@@ -27,6 +27,8 @@
 	var/datum/tacmap_holder/map_holder
 	///Is drawing enabled
 	var/drawing
+	///Is this tacmap embedded in parent UI
+	var/is_embedded = FALSE
 
 
 /datum/component/tacmap/Initialize(has_drawing_tools, minimap_flag, has_update, drawing)
@@ -34,6 +36,7 @@
 		return COMPONENT_INCOMPATIBLE
 	src.minimap_flag = minimap_flag
 	src.drawing = drawing
+	drawing_tools += list(/atom/movable/screen/minimap_tool/up, /atom/movable/screen/minimap_tool/down)
 
 	if(has_drawing_tools)
 		drawing_tools += list(
@@ -46,8 +49,6 @@
 			/atom/movable/screen/minimap_tool/draw_tool/erase,
 			/atom/movable/screen/minimap_tool/label,
 			/atom/movable/screen/minimap_tool/clear,
-			/atom/movable/screen/minimap_tool/up,
-			/atom/movable/screen/minimap_tool/down,
 			/atom/movable/screen/minimap_tool/popout,
 		)
 
@@ -173,6 +174,10 @@
 	user.client.using_main_tacmap = TRUE
 
 /datum/component/tacmap/ui_status(mob/user, datum/ui_state/state)
+	// For embedded tacmap, delegate to parent's UI status
+	if(is_embedded)
+		return parent.ui_status(user, state)
+
 	if(get_dist(parent, user) > 1)
 		return UI_CLOSE
 
@@ -219,10 +224,15 @@ GLOBAL_LIST_INIT(tacmap_holders, list())
 /datum/tacmap_holder
 	var/map_ref
 	var/atom/movable/screen/minimap/map
+	var/owns_map = FALSE
 
-/datum/tacmap_holder/New(loc, zlevel, flags, drawing)
+/datum/tacmap_holder/New(loc, zlevel, flags, drawing, popup = TRUE, client/for_client, uncached = FALSE)
 	map_ref = "tacmap_[REF(src)]_map"
-	map = SSminimaps.fetch_minimap_object(zlevel, flags, live=TRUE, popup=TRUE, drawing=drawing)
+	map = SSminimaps.fetch_minimap_object(zlevel, flags, live=TRUE, popup=popup, drawing=drawing, for_client=for_client, uncached=uncached)
+	owns_map = !!for_client || uncached
+
+	if(!map)
+		return
 
 	map.screen_loc = "[map_ref]:1,1"
 	map.assigned_map = map_ref
@@ -232,5 +242,8 @@ GLOBAL_LIST_INIT(tacmap_holders, list())
 	map.transform = transform
 
 /datum/tacmap_holder/Destroy()
-	map = null
+	if(owns_map)
+		QDEL_NULL(map)
+	else
+		map = null
 	return ..()

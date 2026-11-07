@@ -62,7 +62,7 @@
 	set name = "Aghost"
 	set category = "Admin.Game"
 
-	if(!check_rights(R_MOD))
+	if(!check_client_rights(src, R_MOD))
 		return
 
 	var/new_STUI = 0
@@ -273,7 +273,7 @@ SET_PROTECTED_PROC(/client/proc/cmd_admin_say)
 
 	REDIS_PUBLISH("byond.asay", "author" = src.username(), "message" = strip_html(msg), "admin" = CLIENT_HAS_RIGHTS(src, R_ADMIN), "rank" = admin_holder.rank)
 
-	if(findtext(msg, "@") || findtext(msg, "#"))
+	if(findtext(msg, "@") || findtext(msg, "#") || findtext(msg, "~"))
 		var/list/link_results = check_asay_links(msg)
 		if(length(link_results))
 			msg = link_results[ASAY_LINK_NEW_MESSAGE_INDEX]

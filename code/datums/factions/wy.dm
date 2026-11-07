@@ -3,14 +3,9 @@
 	faction_tag = FACTION_WY
 	base_icon_file = 'icons/mob/hud/factions/wy.dmi'
 
-/datum/faction/wy/modify_hud_holder(image/holder, mob/living/carbon/human/human)
-	var/icon/override_icon_file
-	var/hud_icon_state
-	var/obj/item/card/id/id_card = human.get_idcard()
-	var/_role = human.job
-	if(!_role && id_card)
-		_role = id_card.rank
-	switch(_role)
+/datum/faction/wy/modify_hud_holder_from_data(image/holder, location, job_rank, paygrade, assignment, rank_fallback, rank_override, datum/squad/squad)
+	var/hud_icon_state = null
+	switch(job_rank)
 		if(JOB_WY_GOON)
 			hud_icon_state = "goon_normal"
 		if(JOB_WY_GOON_LEAD)
@@ -37,16 +32,15 @@
 			hud_icon_state = "junior_exec"
 		if(JOB_CORPORATE_LIAISON)
 			hud_icon_state = "exec"
-			if(id_card && id_card.paygrade)
-				switch(id_card.paygrade)
-					if(PAY_SHORT_WYC2)
-						hud_icon_state = "junior_exec"
-					if(PAY_SHORT_WYC3)
-						hud_icon_state = "exec"
-					if(PAY_SHORT_WYC4)
-						hud_icon_state = "senior_exec"
-					if(PAY_SHORT_WYC5)
-						hud_icon_state = "exec_spec"
+			switch(paygrade)
+				if(PAY_SHORT_WYC2)
+					hud_icon_state = "junior_exec"
+				if(PAY_SHORT_WYC3)
+					hud_icon_state = "exec"
+				if(PAY_SHORT_WYC4)
+					hud_icon_state = "senior_exec"
+				if(PAY_SHORT_WYC5)
+					hud_icon_state = "exec_spec"
 		if(JOB_EXECUTIVE)
 			hud_icon_state = "exec"
 		if(JOB_SENIOR_EXECUTIVE)
@@ -67,14 +61,13 @@
 			hud_icon_state = "director"
 		if(JOB_CORPORATE_BODYGUARD)
 			hud_icon_state = "bodyguard_ppo"
-			if(id_card && id_card.paygrade)
-				switch(id_card.paygrade)
-					if(PAY_SHORT_WY_SEC_TPPO)
-						hud_icon_state = "bodyguard_tppo"
-					if(PAY_SHORT_WY_SEC_PPS)
-						hud_icon_state = "bodyguard_pps"
-					if(PAY_SHORT_WY_SEC_PPC)
-						hud_icon_state = "bodyguard_ppc"
+			switch(paygrade)
+				if(PAY_SHORT_WY_SEC_TPPO)
+					hud_icon_state = "bodyguard_tppo"
+				if(PAY_SHORT_WY_SEC_PPS)
+					hud_icon_state = "bodyguard_pps"
+				if(PAY_SHORT_WY_SEC_PPC)
+					hud_icon_state = "bodyguard_ppc"
 		if(JOB_WY_PPO)
 			hud_icon_state = "bodyguard_ppo"
 		if(JOB_WY_PPS)
@@ -88,6 +81,5 @@
 		if(JOB_WY_DPC)
 			hud_icon_state = "bodyguard_dpc"
 
-
 	if(hud_icon_state)
-		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, human, "wy_[hud_icon_state]")
+		holder.overlays += image(base_icon_file, location, "wy_[hud_icon_state]")

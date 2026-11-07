@@ -1,18 +1,40 @@
-#define COMMAND_ANNOUNCE "Command Announcement"
-#define UPP_COMMAND_ANNOUNCE "UPP Command Announcement"
-#define CLF_COMMAND_ANNOUNCE "CLF Command Announcement"
-#define PMC_COMMAND_ANNOUNCE "PMC Command Announcement"
-#define VENIR_ANNOUNCE "White Antre Central Announcement"
-#define QUEEN_ANNOUNCE "The words of the Queen reverberate in your head..."
-#define QUEEN_LORE_ANNOUNCE "The words of the Queen reverberate in your head..."
-#define QUEEN_MOTHER_ANNOUNCE "Queen Mother Psychic Directive"
-#define XENO_GENERAL_ANNOUNCE "You sense something unusual..." //general xeno announcement that don't involve Queen, for nuke for example
-#define HIGHER_FORCE_ANNOUNCE SPAN_ANNOUNCEMENT_HEADER_BLUE("Unknown Higher Force")
-
 //civilian white antre announcement
 /proc/venir_announcement(message, title = VENIR_ANNOUNCE, sound_to_play = sound('sound/misc/notice2.ogg'), faction_to_display = FACTION_SURVIVOR)
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
 	if(faction_to_display == FACTION_SURVIVOR)
+		for(var/mob/M in targets)
+			if(isobserver(M)) //observers see everything
+				continue
+			var/mob/living/carbon/human/H = M
+			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H) || ismarinejob(H) || is_mainship_level(H.z)) //base human checks
+				targets.Remove(H)
+				continue
+
+	else if(faction_to_display == "Everyone (-Yautja)")
+		for(var/mob/M in targets)
+			if(isobserver(M)) //observers see everything
+				continue
+			var/mob/living/carbon/human/H = M
+			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H))
+				targets.Remove(H)
+
+	else
+		for(var/mob/M in targets)
+			if(isobserver(M)) //observers see everything
+				continue
+			var/mob/living/carbon/human/H = M
+			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H) || ismarinejob(H))
+				targets.Remove(H)
+				continue
+			if(H.faction != faction_to_display)
+				targets.Remove(H)
+
+	announcement_helper(message, title, targets, sound_to_play)
+
+//CLF announcement
+/proc/clf_announcement(message, title = CLF_ANNOUNCE, sound_to_play = sound('sound/misc/notice2.ogg'), faction_to_display = FACTION_CLF)
+	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
+	if(faction_to_display == FACTION_CLF)
 		for(var/mob/M in targets)
 			if(isobserver(M)) //observers see everything
 				continue
@@ -196,7 +218,7 @@
 		if(ARES_LOG_SECURITY)
 			log_ares_security("Security Update", message, MAIN_AI_SYSTEM)
 
-/proc/ai_silent_announcement(message, channel_prefix, bypass_cooldown = FALSE)
+/proc/ai_silent_announcement(message, channel_prefix)
 	if(!message)
 		return
 

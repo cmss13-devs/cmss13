@@ -452,7 +452,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	//Admin Authorisation
 	var/holder = GLOB.admin_datums[ckey]
 	if(holder)
-		INVOKE_ASYNC(holder, TYPE_PROC_REF(/datum/admins, associate), src)
+		INVOKE_ASYNC(holder, TYPE_PROC_REF(/datum/admins, associate_or_deadmin), src)
 
 	add_pref_verbs()
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
@@ -482,6 +482,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		GLOB.player_details[ckey] = player_details
 
 	view = GLOB.world_view_size
+
+/client
+	var/performed_post_login = FALSE
 
 /client/proc/PostLogin()
 	add_verb(src, collect_client_verbs())
@@ -553,6 +556,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	view = GLOB.world_view_size
 
+	performed_post_login = TRUE
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGGED_IN, src)
 	SEND_SIGNAL(src, COMSIG_CLIENT_LOGGED_IN)
 
@@ -588,6 +592,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(prefs)
 		prefs.owner = null
 		QDEL_NULL(prefs.preview_dummy)
+		QDEL_NULL(prefs.preview_front)
+		QDEL_NULL(prefs.rotate_left)
+		QDEL_NULL(prefs.rotate_right)
 
 	if(admin_holder)
 		admin_holder.owner = null

@@ -57,6 +57,8 @@
 	if(autoclose)
 		addtimer(CALLBACK(src, PROC_REF(autoclose)), 15 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
+	SEND_SIGNAL(src, COMSIG_DOOR_OPEN)
+
 /obj/structure/machinery/door/poddoor/shutters/close(forced = FALSE)
 	if(operating)
 		return FALSE
@@ -78,6 +80,7 @@
 		return
 
 	operating = DOOR_OPERATING_IDLE
+	SEND_SIGNAL(src, COMSIG_DOOR_CLOSE)
 
 /obj/structure/machinery/door/poddoor/shutters/almayer
 	icon = 'icons/obj/structures/doors/blastdoors_shutters.dmi'

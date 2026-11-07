@@ -269,3 +269,11 @@ UNITED PROGRESSIVE PEOPLES
 		SKILL_VEHICLE = SKILL_VEHICLE_LARGE,
 		SKILL_JTAC = SKILL_JTAC_EXPERT,
 	)
+
+/datum/skills/military/survivor/upp_sl/mss
+	name = "UPP Ministry of Space Security Officer"
+	additional_skills = list(
+		SKILL_LEADERSHIP = SKILL_LEAD_MASTER,
+		SKILL_POLICE = SKILL_POLICE_SKILLED,
+		SKILL_INTEL = SKILL_INTEL_EXPERT,
+	)

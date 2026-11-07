@@ -12,11 +12,11 @@
 	..()
 	toggle()
 
-/obj/structure/curtain/bullet_act(obj/projectile/P, def_zone)
-	if(P.damage)
-		visible_message(SPAN_WARNING("[P] tears [src] down!"))
+/obj/structure/curtain/bullet_act(obj/projectile/bullet)
+	if(bullet.damage)
+		visible_message(SPAN_WARNING("[bullet] tears [src] down!"))
 		qdel(src)
-	return 0
+	return FALSE
 
 /obj/structure/curtain/attack_hand(mob/user)
 	playsound(get_turf(loc), "rustle", 15, 1, 6)

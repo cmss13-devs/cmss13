@@ -18,3 +18,8 @@
 #else
 #define TEST_ONLY_ASSERT(test, explanation)
 #endif
+
+/// Global signal that only should be defined during unit testing
+#if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
+#define COSMIG_GLOB_XENO_LIFE_COMPLETE "!xeno_life_complete"
+#endif

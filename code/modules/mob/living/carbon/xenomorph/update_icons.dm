@@ -142,6 +142,21 @@
 	. = ..()
 	update_icons()
 
+/mob/living/carbon/xenomorph/update_effects()
+	remove_overlay(EFFECTS_LAYER)
+
+	var/image/constructed_image
+	for(var/datum/effects/effect in effects_list)
+		if(effect.icon_path && effect.mob_icon_state_path)
+			if(!constructed_image)
+				constructed_image = image("icon" = effect.icon_path, "icon_state" = effect.mob_icon_state_path, "layer"= -EFFECTS_LAYER)
+			else
+				constructed_image.overlays += image("icon" = effect.icon_path, "icon_state" = effect.mob_icon_state_path, "layer"= -EFFECTS_LAYER)
+	if(!constructed_image)
+		return
+	overlays_standing[EFFECTS_LAYER] = constructed_image
+	apply_overlay(EFFECTS_LAYER)
+
 /* ^^^^^^^^^^^^^^ End Icon updates */
 
 /mob/living/carbon/xenomorph/update_inv_pockets()
@@ -362,7 +377,7 @@
 			new_icon_state = "[caste.caste_type]_walk_[health_threshold]"
 		else
 			new_icon_state = handle_special_wound_states(health_threshold)
-	if(organ_removed)
+	if(isnull(organ) && !isnull(caste.organ_type))
 		new_icon_state = "[caste.caste_type]_dissection"
 
 	if(new_icon_state != wound_icon_holder.icon_state)

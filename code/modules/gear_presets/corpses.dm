@@ -19,9 +19,8 @@
 /datum/equipment_preset/corpse/load_status(mob/living/carbon/human/new_human)
 	. = ..(new_human)
 
-	// These two values matter because they are checked on death for weed_food
-	new_human.undefibbable = TRUE
-	SEND_SIGNAL(new_human, COMSIG_HUMAN_SET_UNDEFIBBABLE)
+	// undefibbable matters because it is checked on death for weed_food
+	new_human.set_undefibbable()
 	if(xenovictim)
 		new_human.chestburst = 2
 
@@ -270,7 +269,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/CMB(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/heavy(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/deagle(new_human), WEAR_WAIST)
 	if(new_human.disabilities & NEARSIGHTED)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(new_human), WEAR_EYES)
 	else
@@ -688,6 +687,70 @@
 /datum/equipment_preset/corpse/clf/burst
 	name = "Corpse - Burst Colonial Liberation Front Soldier"
 	xenovictim = TRUE
+
+/datum/equipment_preset/corpse/clf_lv1021
+	name = "Corpse - LV1021 - Colonial Liberation Front Soldier"
+	assignment = JOB_CLF
+	idtype = /obj/item/card/id/data
+	job_title = JOB_CLF
+	faction = FACTION_CLF
+	paygrades = list(PAY_SHORT_REB = JOB_PLAYTIME_TIER_0)
+
+/datum/equipment_preset/corpse/clf_lv1021/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE) + get_access(ACCESS_LIST_COLONIAL_ALL)
+
+/datum/equipment_preset/corpse/clf_lv1021/load_gear(mob/living/carbon/human/new_human)
+	spawn_rebel_gloves(new_human)
+	spawn_rebel_suit(new_human)
+	spawn_rebel_helmet(new_human)
+
+	var/obj/item/clothing/under/colonist/clf/operative/uniform = new()
+	var/obj/item/clothing/accessory/patch/clf_patch/patch_clf = new()
+	uniform.attach_accessory(new_human,patch_clf)
+	uniform.roll_suit_sleeves(new_human)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/mre_food_packet/clf, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/jungle/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
+	add_random_survivor_equipment(new_human)
+
+/datum/equipment_preset/corpse/clf_veteran
+	name = "Corpse - LV1021 - Colonial Liberation Front Veteran"
+	assignment = JOB_CLF
+	idtype = /obj/item/card/id/data
+	job_title = JOB_CLF
+	faction = FACTION_CLF
+	paygrades = list(PAY_SHORT_REB = JOB_PLAYTIME_TIER_0)
+
+/datum/equipment_preset/corpse/clf_veteran/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE) + get_access(ACCESS_LIST_COLONIAL_ALL)
+
+/datum/equipment_preset/corpse/clf_veteran/load_gear(mob/living/carbon/human/new_human)
+	spawn_rebel_gloves(new_human)
+
+	var/obj/item/clothing/under/colonist/clf/operative/uniform = new()
+	var/obj/item/clothing/accessory/patch/clf_patch/patch_clf = new()
+	uniform.attach_accessory(new_human,patch_clf)
+	uniform.roll_suit_sleeves(new_human)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/ua_riot/clf(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/clf(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/mre_food_packet/clf, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/jungle/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
+	add_random_survivor_equipment(new_human)
 
 //*****************************************************************************************************/
 

@@ -37,6 +37,7 @@
 	caliber = "7.62x54mmR"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/machineguns.dmi'
 	icon_state = "qjy72"
+	w_class = SIZE_MEDIUM
 
 	matter = list("metal" = 10000)
 	default_ammo = /datum/ammo/bullet/pkp

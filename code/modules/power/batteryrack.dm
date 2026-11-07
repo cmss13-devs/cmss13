@@ -98,35 +98,35 @@
 	return floor(4 * charge/(capacity ? capacity : 5e6))
 
 
-/obj/structure/machinery/power/smes/batteryrack/attackby(obj/item/W as obj, mob/user as mob) //these can only be moved by being reconstructed, solves having to remake the powernet.
+/obj/structure/machinery/power/smes/batteryrack/attackby(obj/item/tool as obj, mob/user as mob) //these can only be moved by being reconstructed, solves having to remake the powernet.
 	. = ..() //SMES attackby for now handles screwdriver, cable coils and wirecutters, no need to repeat that here
 	if(open_hatch)
-		if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+		if(HAS_TRAIT(tool, TRAIT_TOOL_CROWBAR))
 			if (charge < (capacity / 100))
 				if (!outputting && !input_attempt)
 					playsound(get_turf(src), 'sound/items/Crowbar.ogg', 25, 1)
-					var/obj/structure/machinery/constructable_frame/M = new /obj/structure/machinery/constructable_frame(src.loc)
-					M.state = CONSTRUCTION_STATE_PROGRESS
-					M.update_icon()
-					for(var/obj/I in component_parts)
-						if(I.reliability != 100 && crit_fail)
-							I.crit_fail = 1
-						I.forceMove(src.loc)
+					var/obj/structure/machinery/constructable_frame/frame = new /obj/structure/machinery/constructable_frame(src.loc)
+					frame.state = CONSTRUCTION_STATE_PROGRESS
+					frame.update_icon()
+					for(var/obj/part in component_parts)
+						if(part.reliability != 100 && crit_fail)
+							part.crit_fail = 1
+						part.forceMove(src.loc)
 					qdel(src)
 					return 1
 				else
-					to_chat(user, SPAN_WARNING("Turn off the [src] before dismantling it."))
+					to_chat(user, SPAN_WARNING("Turn off [src] before dismantling it."))
 			else
 				to_chat(user, SPAN_WARNING("Better let [src] discharge before dismantling it."))
-		else if ((istype(W, /obj/item/stock_parts/capacitor) && (capacitors_amount < 5)) || (istype(W, /obj/item/cell) && (cells_amount < 5)))
+		else if ((istype(tool, /obj/item/stock_parts/capacitor) && (capacitors_amount < 5)) || (istype(tool, /obj/item/cell) && (cells_amount < 5)))
 			if (charge < (capacity / 100))
 				if (!outputting && !input_attempt)
-					if(user.drop_inv_item_to_loc(W, src))
-						LAZYADD(component_parts, W)
+					if(user.drop_inv_item_to_loc(tool, src))
+						LAZYADD(component_parts, tool)
 						RefreshParts()
-						to_chat(user, SPAN_NOTICE("You upgrade the [src] with [W.name]."))
+						to_chat(user, SPAN_NOTICE("You upgrade [src] with [tool.name]."))
 				else
-					to_chat(user, SPAN_WARNING("Turn off the [src] before dismantling it."))
+					to_chat(user, SPAN_WARNING("Turn off [src] before dismantling it."))
 			else
 				to_chat(user, SPAN_WARNING("Better let [src] discharge before putting your hand inside it."))
 		else

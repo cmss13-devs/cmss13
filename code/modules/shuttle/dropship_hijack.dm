@@ -58,8 +58,8 @@
 	var/explosion_alive = TRUE
 	while(explosion_alive)
 		explosion_alive = FALSE
-		for(var/datum/automata_cell/explosion/E in GLOB.cellauto_cells)
-			if(E.explosion_cause_data && E.explosion_cause_data.cause_name == "dropship crash")
+		for(var/datum/automata_cell/explosion/existing_cell as anything in GLOB.cellauto_cells)
+			if(existing_cell.explosion_cause_data && existing_cell.explosion_cause_data.cause_name == "dropship crash")
 				explosion_alive = TRUE
 				break
 		sleep(10)
@@ -72,9 +72,8 @@
 	if(!shuttle || !crash_site)
 		return FALSE
 	shuttle.callTime = DROPSHIP_CRASH_TRANSIT_DURATION * GLOB.ship_alt
+	GLOB.alt_ctrl_disabled = TRUE
 	SSshuttle.moveShuttle(shuttle.id, crash_site.id, TRUE)
-	if(GLOB.round_statistics)
-		GLOB.round_statistics.track_hijack()
 	return TRUE
 
 /datum/dropship_hijack/almayer/proc/target_crash_site(ship_section)
@@ -135,7 +134,7 @@
 	if(shuttle.mode != SHUTTLE_CALL)
 		return
 
-	if(shuttle.timeLeft(1) > 10 SECONDS)
+	if(shuttle.timeLeft(1) > 10 SECONDS) // This time must be less than /obj/docking_port/mobile/marine_dropship/proc/stealth_hijack_check()
 		return
 
 	if(final_announcement)

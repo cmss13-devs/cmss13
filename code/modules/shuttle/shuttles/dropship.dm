@@ -21,6 +21,8 @@
 	// Is hijacked by opfor
 	var/is_hijacked = FALSE
 	var/datum/dropship_hijack/almayer/hijack
+	/// Any allied queen present on launch otherwise null
+	var/datum/weakref/boarded_allied_queen = null
 	// CAS gear
 	var/list/obj/structure/dropship_equipment/equipments = list()
 
@@ -89,6 +91,10 @@
 	. = ..()
 	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED) && !in_flyby && is_ground_level(destination?.z)) //Launching on first drop.
 		SSticker.mode.ds_first_drop(src)
+	boarded_allied_queen = null
+	var/mob/boarded_queen = find_allied_queen()
+	if(boarded_queen)
+		boarded_allied_queen = WEAKREF(boarded_queen)
 
 /obj/docking_port/mobile/marine_dropship/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()
@@ -158,7 +164,106 @@
 
 	automated_check()
 
-	hijack?.check()
+	if(hijack)
+		hijack.check()
+	else
+		sneak_hijack_check()
+
+/// Searches the shuttle_areas for a non-dead, non-USCM-allied, non-USCM-iff tagged queen and returns her (or null)
+/obj/docking_port/mobile/marine_dropship/proc/find_hijack_queen()
+	var/mob/existing_allied_queen = boarded_allied_queen?.resolve()
+	for(var/area/checked_area in shuttle_areas)
+		for(var/mob/living/carbon/xenomorph/queen/checked_queen in checked_area)
+			if(checked_queen.stat == DEAD)
+				continue
+			if(checked_queen.hive?.need_round_end_check && !checked_queen.hive.can_delay_round_end())
+				continue // Not a hive that can hijack
+			if(checked_queen.hive?.faction_is_ally(FACTION_MARINE, TRUE))
+				continue // Technically included in above for corrupted but really don't want an ally to hijack
+			if(FACTION_MARINE in checked_queen.iff_tag?.faction_groups)
+				continue
+			if(checked_queen == existing_allied_queen)
+				continue // She was allied when boarding
+			return checked_queen
+	return null
+
+/// Searches the shuttle_areas for a non-dead, USCM-allied or USCM-iff tagged queen and returns her (or null)
+/obj/docking_port/mobile/marine_dropship/proc/find_allied_queen()
+	for(var/area/checked_area in shuttle_areas)
+		for(var/mob/living/carbon/xenomorph/queen/checked_queen in checked_area)
+			if(checked_queen.stat == DEAD)
+				continue
+			if(checked_queen.hive?.faction_is_ally(FACTION_MARINE, TRUE))
+				return checked_queen
+			if(FACTION_MARINE in checked_queen.iff_tag?.faction_groups)
+				return checked_queen
+	return null
+
+/// Triggers a sneak hijack if not already hijacked, less than 20s left on call, and a hostile queen is aboard
+/obj/docking_port/mobile/marine_dropship/proc/sneak_hijack_check()
+	if(is_hijacked)
+		return FALSE
+
+	if(SSticker.mode?.is_in_endgame)
+		return FALSE
+
+	if(GLOB.master_mode != GAMEMODE_DISTRESS_SIGNAL)
+		return FALSE
+
+	if(mode != SHUTTLE_CALL)
+		return FALSE
+
+	if(timeLeft(1) > 20 SECONDS) // This time must be more than /datum/dropship_hijack/almayer/proc/check_final_approach() time
+		return FALSE
+
+	if(!is_mainship_level(destination?.z))
+		return FALSE
+
+	// Not already hijacked, look for a queen
+	var/mob/living/carbon/xenomorph/queen/queen = find_hijack_queen()
+	if(!queen)
+		return FALSE
+
+	// Theres a queen that snuck on!
+	// Replicate most of /obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack...
+	hijack = new()
+	hijack.shuttle = src
+	SShijack.on_call_shuttle()
+	hijack.target_crash_site(pick(GLOB.almayer_ship_sections - GLOB.almayer_aa_cannon?.protecting_section))
+
+	crashing = TRUE
+	is_hijacked = TRUE
+
+	// /datum/dropship_hijack/almayer/proc/fire() stuff
+	destination = hijack.crash_site
+	GLOB.alt_ctrl_disabled = TRUE
+
+	SShijack.hijack_general_quarters()
+	var/ares_message = "Unidentified lifesigns detected onboard. Hijack likely. Shutting down autopilot."
+	marine_announcement(ares_message, "Dropship Alert", logging=ARES_LOG_SECURITY)
+	log_ares_flight("Unknown", ares_message)
+	playsound(src, 'sound/misc/queen_alarm.ogg')
+
+	xeno_message(SPAN_XENOANNOUNCE("The metal bird is arriving at the metal hive in the sky!"), 3, queen.hivenumber)
+	xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain pooled larva over time."), 2, queen.hivenumber)
+	var/datum/hive_status/hive = queen.hive
+	hive.bless_on_hijack()
+	hive.abandon_on_hijack()
+
+	// Notify the yautja too so they stop the hunt
+	elder_overseer_message("The serpent Queen has snuck on a landing shuttle.")
+
+	// Also some /obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien() stuff
+	if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding))
+		MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
+
+	var/obj/structure/machinery/computer/shuttle/dropship/flight/console = getControlConsole()
+	if(console)
+		console.balloon_alert_to_viewers("autopilot disabled!")
+		console.dropship_control_lost = TRUE
+		console.update_icon()
+
+	return TRUE
 
 /obj/docking_port/mobile/marine_dropship/proc/automated_check()
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/root_console = getControlConsole()

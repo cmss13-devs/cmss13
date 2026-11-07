@@ -47,7 +47,7 @@ ANIMAL_DELAY 0
 
 
 ### Announcement Garbling ###
-## The rate of comms clarity percent decay per fire of SSradio (30 SECONDS)
+## The rate of comms clarity percent decay for challenges per fire of SSradio (30 SECONDS)
 ANNOUNCEMENT_CLARITY_DECAY 2.5
 
 ## The grace period in deciseconds given to solve encryption challenges (before they decay)

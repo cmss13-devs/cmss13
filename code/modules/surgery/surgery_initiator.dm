@@ -11,20 +11,16 @@
 	var/list/available_surgeries = list()
 	var/list/valid_steps = list() //Steps that could be performed, if we had the right tool.
 
-	var/turf/open/T = get_turf(target)
+	var/turf/open/turf_of_patient = get_turf(target)
 	if(!istype(user.loc, /turf/open))
 		if(is_surgery_init_tool(tool))
 			to_chat(user, SPAN_WARNING("You can't perform surgery here!"))
 		return FALSE
 	else
-		if(!istype(T) || !T.supports_surgery)
-			if(tool.flags_item & CAN_DIG_SHRAPNEL) //Both shrapnel removal and prosthetic repair shouldn't be affected by being on the dropship.
-				tool.dig_out_shrapnel_check(target, user)
-				return TRUE //Otherwise you get 'poked' by the knife.
-			if(HAS_TRAIT(tool, TRAIT_TOOL_BLOWTORCH) && affecting)
-				return FALSE
+		if(!istype(turf_of_patient) || !turf_of_patient.supports_surgery)
 			if(is_surgery_init_tool(tool))
 				to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
+				return TRUE
 			return FALSE
 
 	var/obj/limb/surgery_limb = target.get_limb(target_zone)
@@ -145,7 +141,7 @@
 		if(surgery_limb)
 			var/obj/item/blocker = target.get_sharp_obj_blocker(surgery_limb)
 			if(blocker)
-				to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site, take it off!"))
+				to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site! Take it off!"))
 				return
 
 		if(affecting)

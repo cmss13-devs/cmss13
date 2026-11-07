@@ -15,6 +15,14 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 
 	overlays -= acid_overlay
 
+	// Dead xenomorphs have reduced blood
+	// Acts a source of xeno chems, but temporary and limited.
+	blood_volume = BLOOD_VOLUME_DEAD_XENO
+
+	if(organ_regen_timer != TIMER_ID_NULL)
+		deltimer(organ_regen_timer)
+		organ_regen_timer = TIMER_ID_NULL
+
 	if(is_zoomed)
 		zoom_out()
 
@@ -35,6 +43,9 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 		if(hud_used && hud_used.alien_plasma_display)
 			hud_used.alien_plasma_display.icon_state = "power_display_empty"
 		update_icons()
+
+	// Update dropship HUD overlays to show dead state
+	init_dropship_hud_overlays()
 
 	if(!should_block_game_interaction(src)) //so xeno players don't get death messages from admin tests
 		if(!(datum_flags & DF_VAR_EDITED) && istype(SSticker.mode, /datum/game_mode/colonialmarines))
@@ -158,6 +169,8 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 	var/no_remains
 	if(!caste)
 		CRASH("CASTE ERROR: gib() was called without a caste. (name: [name], disposed: [QDELETED(src)], health: [health])")
+	if(gibbing)
+		CRASH("gib() was called multiple times. (name: [name], disposed: [QDELETED(src)], health: [health])")
 
 	switch(caste.caste_type)
 		if(XENO_CASTE_BOILER)
@@ -170,6 +183,10 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 
 	if(!no_remains)
 		new /obj/effect/decal/remains/xeno(get_turf(src), icon, "gibbed-a-corpse", pixel_x)
+
+	var/turf/death_turf = get_turf(src)
+	if(!should_block_game_interaction(src, TRUE) && (is_ground_level(death_turf.z) || is_mainship_level(death_turf.z) || is_reserved_level(death_turf.z)) && !(src in GLOB.xeno_ghost_role_mobs))
+		new /mob/dead/mob_marker(death_turf, src)
 
 	check_blood_splash(35, BURN, 65, 2) //Some testing numbers. 35 burn, 65 chance.
 

@@ -61,7 +61,8 @@
 	guns = list(
 		/obj/item/weapon/gun/smg/bizon/upp = /obj/item/ammo_magazine/smg/bizon,
 		/obj/item/weapon/gun/rifle/type71 = /obj/item/ammo_magazine/rifle/type71,
-		/obj/item/weapon/gun/rifle/type71/carbine = /obj/item/ammo_magazine/rifle/type71
+		/obj/item/weapon/gun/rifle/type71/carbine = /obj/item/ammo_magazine/rifle/type71,
+		/obj/item/weapon/gun/rifle/ak4047 = /obj/item/ammo_magazine/rifle/ak4047
 	)
 
 /obj/effect/spawner/random/gun/upp_primary/lowchance
@@ -73,7 +74,7 @@
 	icon_state = "loot_rifle_50"
 
 /obj/effect/spawner/random/gun/upp_primary/highchance
-	spawn_nothing_percentage = 80
+	spawn_nothing_percentage = 20
 	icon_state = "loot_rifle_80"
 
 /obj/effect/spawner/random/gun/upp_secondary
@@ -158,7 +159,7 @@
 	mags_max = 2
 	mags_min = 1
 	guns = list(
-		/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
+		/obj/item/weapon/gun/rifle/m20a = /obj/item/ammo_magazine/rifle/m20a,
 		/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40
 	)
 

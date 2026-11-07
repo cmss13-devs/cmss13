@@ -30,7 +30,7 @@
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST|AMMO_ALWAYS_FF //Not that ignoring will do much right now.
 	stamina_damage = 45
 	accuracy = HIT_ACCURACY_TIER_8
-	shell_speed = AMMO_SPEED_TIER_1 // Slightly faster
+	shell_speed = AMMO_SPEED_TIER_2 // Slightly faster
 	hit_effect_color = "#FFFF00"
 
 /datum/ammo/energy/taser/on_hit_mob(mob/mobs, obj/projectile/P)
@@ -187,7 +187,7 @@
 /datum/ammo/energy/yautja/caster/aoe_lethal
 	name = "plasma eradicator"
 	icon_state = "bluespace"
-	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_HITS_TARGET_TURF
+	flags_ammo_behavior = AMMO_HITS_TARGET_TURF
 	shell_speed = AMMO_SPEED_TIER_4
 	accuracy = HIT_ACCURACY_TIER_8
 
@@ -219,7 +219,7 @@
 
 /datum/ammo/energy/yautja/caster/lance
 	name = "plasma lance"
-	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_HITS_TARGET_TURF|AMMO_ANTISTRUCT
+	flags_ammo_behavior = AMMO_HITS_TARGET_TURF|AMMO_ANTISTRUCT
 	shell_speed = AMMO_SPEED_INSTANT // travels 300 tiles in one tick
 	scatter = SCATTER_AMOUNT_NONE
 	accuracy = HIT_ACCURACY_MULT_TIER_10

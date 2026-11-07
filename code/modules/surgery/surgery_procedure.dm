@@ -32,7 +32,7 @@
 	///How strong a level of anesthesia is needed to avoid risking pain causing a step to fail?
 	var/pain_reduction_required = PAIN_REDUCTION_FULL
 	///How much training is needed to do this surgery?
-	var/required_surgery_skill = SKILL_SURGERY_TRAINED
+	var/required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	var/step_in_progress = FALSE
 	///The step the surgery is currently on. When status > number of steps, the surgery ends.
 	var/status = 1
@@ -62,7 +62,7 @@
 	. = ..()
 
 ///Catch-all proc for additional preconditions for starting the surgery. Return FALSE if the surgery can't be done.
-/datum/surgery/proc/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
+/datum/surgery/proc/can_start(mob/user, mob/living/carbon/patient, obj/limb/patient_limb, obj/item/tool)
 	return TRUE
 	//Might add the surgery computer later
 
@@ -97,7 +97,7 @@
 	for(var/mob/living/potential_blocker in get_turf(target))
 		if(potential_blocker == user || potential_blocker == target)
 			continue
-		to_chat(user, SPAN_WARNING("You can't operate when you don't have enough space! Remove everybody else."))
+		to_chat(user, SPAN_WARNING("You can't operate when you don't have enough space! Remove everybody else from the area!"))
 		return FALSE
 
 	if(user == target)

@@ -127,6 +127,8 @@
 	minimap = new
 	minimap.give_to(src)
 
+	SSmapgrids.track_movable(src)
+
 	for(var/path in subtypesof(/datum/action/observer_action))
 		var/datum/action/observer_action/new_action = new path()
 		new_action.give_to(src)
@@ -191,7 +193,7 @@
 	observe_target_mob = null
 	observe_target_client = null
 
-	client.set_eye(src)
+	client?.set_eye(src)
 	hud_used.show_hud(hud_used.hud_version, src)
 	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 

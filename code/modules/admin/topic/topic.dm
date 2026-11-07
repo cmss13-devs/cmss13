@@ -729,7 +729,7 @@
 			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
-		var/speech = input("What will [key_name(M)] say?.", "Force speech", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
+		var/speech = input("What will [key_name(M)] say?", "Force speech", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
 		if(!speech)
 			return
 		M.say(speech)
@@ -846,7 +846,7 @@
 		if(!ismob(M))
 			to_chat(usr, "This can only be used on instances of type /mob.")
 
-		var/speech = input("What will [key_name(M)] emote?.", "Force emote", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
+		var/speech = input("What will [key_name(M)] emote?", "Force emote", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
 		if(!speech)
 			return
 		M.manual_emote(speech)
@@ -872,9 +872,7 @@
 
 		message_admins("[key_name(usr)] has sent [key_name(M)] back to the Lobby.")
 
-		var/mob/new_player/NP = new()
-		NP.ckey = M.ckey
-		qdel(M)
+		M.send_to_lobby()
 
 	else if(href_list["tdome1"])
 		if(!check_rights(R_ADMIN))
@@ -2077,6 +2075,10 @@
 		for(var/client/staff in GLOB.admins)
 			if((R_ADMIN|R_MOD) & staff.admin_holder.rights)
 				to_chat(staff, SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[src.owner] marked [key_name(speaker)]'s ARES message for response.")]</b>"))
+
+	if(href_list["osquery"])
+		var/datum/opensearch_query/query = SSopensearch.queries[text2num(href_list["osquery"])]
+		query?.tgui_interact(usr)
 
 	return
 

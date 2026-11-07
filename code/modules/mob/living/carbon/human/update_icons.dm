@@ -145,6 +145,8 @@ There are several things that need to be remembered:
 	apply_overlay(BODYPARTS_LAYER)
 
 	update_undergarments()
+	update_eyes()
+
 
 /// Recalculates and reapplies damage overlays to every limb
 /mob/living/carbon/human/proc/update_damage_overlays()
@@ -160,6 +162,27 @@ There are several things that need to be remembered:
 	overlays_standing[DAMAGE_LAYER] = damage_overlays
 
 	apply_overlay(DAMAGE_LAYER)
+
+
+/mob/living/carbon/human/proc/update_eyes()
+	remove_overlay(EYES_LAYER)
+
+	var/obj/limb/head/head = get_limb("head")
+
+	if(!head || (head.status & LIMB_DESTROYED))
+		return
+
+	if(!(species.flags & HAS_EYELIDS) || eyelids_status == EYELID_OPEN || eyelids_status == EYELID_FLAYED)
+		var/image/eyes = image('icons/mob/humans/onmob/human_face.dmi', species.eyes, layer = -EYES_LAYER)
+		eyes.color = list(null, null, null, null, rgb(r_eyes, g_eyes, b_eyes))
+		. += eyes
+
+		if(HAS_TRAIT(src, TRAIT_INTENT_EYES))
+			. += emissive_appearance(icon = 'icons/mob/humans/onmob/human_face.dmi', icon_state = species.eyes)
+
+		overlays_standing[EYES_LAYER] = eyes
+		apply_overlay(EYES_LAYER)
+
 
 /// If this human should have underwear, reapply the overlays
 /mob/living/carbon/human/proc/update_undergarments()
@@ -525,8 +548,9 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 
 		handle_helmet_overlays(marine_helmet)
 
-	else if(istype(head, /obj/item/clothing/head/cmcap))
+	else if(istype(head, /obj/item/clothing/head/cmcap) || istype(head, /obj/item/clothing/head/headset))
 		handle_helmet_overlays(head)
+
 
 /mob/living/carbon/human/proc/handle_helmet_overlays(obj/item/clothing/head/hat)
 	var/num_helmet_overlays = 0
@@ -785,19 +809,19 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	apply_overlay(FIRE_LAYER)
 
 
-/mob/living/carbon/human/proc/update_effects()
+/mob/living/carbon/human/update_effects()
 	remove_overlay(EFFECTS_LAYER)
 
-	var/image/I
-	for(var/datum/effects/E in effects_list)
-		if(E.icon_path && E.mob_icon_state_path)
-			if(!I)
-				I = image("icon" = E.icon_path, "icon_state" = E.mob_icon_state_path, "layer"= -EFFECTS_LAYER)
+	var/image/constructed_image
+	for(var/datum/effects/effect in effects_list)
+		if(effect.icon_path && effect.mob_icon_state_path)
+			if(!constructed_image)
+				constructed_image = image("icon" = effect.icon_path, "icon_state" = effect.mob_icon_state_path, "layer"= -EFFECTS_LAYER)
 			else
-				I.overlays += image("icon" = E.icon_path, "icon_state" = E.mob_icon_state_path, "layer"= -EFFECTS_LAYER)
-	if(!I)
+				constructed_image.overlays += image("icon" = effect.icon_path, "icon_state" = effect.mob_icon_state_path, "layer"= -EFFECTS_LAYER)
+	if(!constructed_image)
 		return
-	overlays_standing[EFFECTS_LAYER] = I
+	overlays_standing[EFFECTS_LAYER] = constructed_image
 	apply_overlay(EFFECTS_LAYER)
 
 

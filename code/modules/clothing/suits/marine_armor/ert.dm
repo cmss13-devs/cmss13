@@ -549,7 +549,7 @@
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CLF.dmi'
 	icon_state = "clf_ua"
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CLF.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CLF.dmi',
 	)
 	storage_slots = 3
 	flags_armor_protection = BODY_FLAG_ALL_BUT_HEAD
@@ -615,7 +615,7 @@
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CLF.dmi'
 	icon_state = "rebel_armor"
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CLF.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CLF.dmi',
 	)
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN

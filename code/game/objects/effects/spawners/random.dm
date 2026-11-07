@@ -718,7 +718,7 @@
 		/obj/item/stack/sheet/cardboard/full_stack,
 		/obj/item/stack/sandbags/small_stack,
 		/obj/item/stack/sandbags/large_stack,
-		/obj/item/stack/sandbags_empty/full
+		/obj/item/stack/sandbags_empty/full,
 		)
 	return pick(spawnables)
 

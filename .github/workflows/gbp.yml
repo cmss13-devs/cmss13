@@ -4,7 +4,7 @@ on:
     types: [closed, opened]
 jobs:
   gbp:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
     - name: "Check for ACTION_ENABLER secret and pass true to output if it exists to be checked by later steps"
       id: value_holder
@@ -13,10 +13,12 @@ jobs:
       run: |
         unset SECRET_EXISTS
         if [ -n "$ENABLER_SECRET" ]; then SECRET_EXISTS=true ; fi
-        echo "::set-output name=ACTIONS_ENABLED::$SECRET_EXISTS"
+        echo "ACTIONS_ENABLED=$SECRET_EXISTS" >> $GITHUB_OUTPUT
     - name: Checkout
       if: steps.value_holder.outputs.ACTIONS_ENABLED
-      uses: actions/checkout@v3
+      uses: actions/checkout@v7
+      with:
+        ref: ${{ github.event.repository.default_branch }}
     - name: Setup git
       if: steps.value_holder.outputs.ACTIONS_ENABLED
       run: |
@@ -24,7 +26,7 @@ jobs:
         git config --global user.email "<>"
     - name: Checkout alternate branch
       if: steps.value_holder.outputs.ACTIONS_ENABLED
-      uses: actions/checkout@v3
+      uses: actions/checkout@v7
       with:
         ref: "gbp-balances" # The branch name
         path: gbp-balances

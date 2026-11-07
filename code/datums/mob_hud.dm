@@ -302,7 +302,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 		if(!is_type_in_typecache(checked_area, dropship_area_typecache))
 			continue
 		registered_dropship_areas += checked_area
-		RegisterSignal(checked_area, list(COMSIG_AREA_MOB_ENTERED, COMSIG_AREA_MOB_EXITED), PROC_REF(on_dropship_area_changed))
+		RegisterSignal(checked_area, list(COMSIG_MOVABLE_ENTERED_AREA, COMSIG_AREA_MOB_EXITED), PROC_REF(on_dropship_area_changed))
 
 /datum/mob_hud/dropship/proc/on_dropship_area_changed(datum/source, mob/living/changed_mob)
 	SIGNAL_HANDLER

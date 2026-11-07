@@ -5248,10 +5248,9 @@
 /area/rostock/lower_deck/engineering_lower_access)
 "dvl" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/storage/fancy/cigar{
-	layer = 3.04;
+/obj/item/storage/fancy/cigar/spanish{
 	pixel_x = -2;
-	pixel_y = 2
+	pixel_y = 1
 	},
 /obj/item/storage/fancy/cigar{
 	layer = 3.04;
@@ -5764,10 +5763,6 @@
 "dOc" = (
 /turf/closed/wall/upp_ship/reinforced/outer,
 /area/rostock/lowerdeck_maint/p_f)
-"dOy" = (
-/obj/structure/machinery/vending/snack,
-/turf/open/floor/plating/plating_catwalk/strata,
-/area/rostock/lifeboat)
 "dOD" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "DeployUPPHanger";
@@ -6593,7 +6588,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/stair_clone)
 "ewT" = (
-/obj/structure/machinery/vending/cigarette/koorlander,
+/obj/structure/machinery/vending/cigarette/upp,
 /obj/structure/disposalpipe/junction{
 	dir = 4;
 	icon_state = "pipe-j2"
@@ -8250,9 +8245,8 @@
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/upper_deck/hallway)
 "fHC" = (
-/obj/structure/machinery/vending/coffee/simple{
-	density = 0;
-	pixel_x = -23
+/obj/structure/machinery/vending/uppsoda{
+	pixel_x = -21
 	},
 /turf/open/floor/corsat/retrosquares,
 /area/rostock/lower_deck/kitchen)
@@ -9317,7 +9311,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/s_a)
 "gIC" = (
-/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/vending/uppsnack,
 /turf/open/floor/strata/green4/west,
 /area/rostock/command/hallway)
 "gII" = (
@@ -9550,10 +9544,9 @@
 /area/rostock/security/brig_holding_area)
 "gQt" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/storage/fancy/cigar{
-	layer = 3.04;
+/obj/item/storage/fancy/cigar/spanish{
 	pixel_x = -2;
-	pixel_y = 2
+	pixel_y = 1
 	},
 /obj/item/clothing/mask/cigarette/pipe{
 	layer = 2.8;
@@ -10823,8 +10816,7 @@
 /turf/closed/wall/upp_ship,
 /area/rostock/medical/chemistry)
 "hOc" = (
-/obj/structure/machinery/vending/snack{
-	density = 0;
+/obj/structure/machinery/vending/uppsnack{
 	pixel_y = 16
 	},
 /turf/open/floor/plating/plating_catwalk/strata,
@@ -11089,7 +11081,7 @@
 /turf/open/floor/strata/floor3,
 /area/rostock/hangar/hangarbay)
 "hUG" = (
-/obj/structure/machinery/vending/cigarette/koorlander,
+/obj/structure/machinery/vending/cigarette/upp,
 /turf/open/floor/strata/green3/east,
 /area/rostock/command/hallway)
 "hUJ" = (
@@ -12868,7 +12860,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/rostock/req)
 "jli" = (
-/obj/structure/machinery/vending/snack/packaged,
+/obj/structure/machinery/vending/uppsnack,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/lifeboat)
 "jlx" = (
@@ -12962,7 +12954,7 @@
 	network = list("Rostock");
 	dir = 4
 	},
-/obj/structure/machinery/vending/cola,
+/obj/structure/machinery/vending/uppcola,
 /turf/open/floor/prison/darkyellow2/east,
 /area/rostock/engineering/main_area)
 "jqs" = (
@@ -13474,7 +13466,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/machinery/vending/coffee,
+/obj/structure/machinery/vending/uppcola,
 /obj/structure/sign/safety/coffee{
 	pixel_x = 8;
 	pixel_y = 32
@@ -20791,7 +20783,7 @@
 /turf/closed/wall/upp_ship/reinforced/outer,
 /area/rostock/command/armory)
 "pNp" = (
-/obj/structure/machinery/vending/cola,
+/obj/structure/machinery/vending/uppcola,
 /turf/open/floor/strata/green3/east,
 /area/rostock/command/hallway)
 "pNs" = (
@@ -22721,8 +22713,8 @@
 /area/rostock/command/polcom)
 "rnx" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
-/obj/structure/machinery/vending/cigarette/koorlander/free{
-	pixel_y = -16
+/obj/structure/machinery/vending/cigarette/upp{
+	pixel_y = -11
 	},
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/security/brig_holding_area)
@@ -24461,7 +24453,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/lower_deck/bunk)
 "sQD" = (
-/obj/structure/machinery/vending/coffee,
+/obj/structure/machinery/vending/uppsoda,
 /obj/structure/sign/safety/coffee{
 	pixel_x = 15;
 	pixel_y = -32
@@ -25057,7 +25049,10 @@
 /area/rostock/lower_deck/bathroom)
 "trf" = (
 /obj/structure/closet/cabinet,
-/obj/item/storage/fancy/cigar,
+/obj/item/storage/fancy/cigar/spanish{
+	pixel_x = -2;
+	pixel_y = 1
+	},
 /obj/item/tool/lighter/zippo/gold,
 /obj/item/reagent_container/food/drinks/bottle/whiskey,
 /obj/item/storage/fancy/cigarettes/blackpack,
@@ -26226,9 +26221,8 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/security/headquarters_armory)
 "unb" = (
-/obj/structure/machinery/vending/cola{
-	density = 0;
-	pixel_y = -16
+/obj/structure/machinery/vending/uppcola{
+	pixel_y = -11
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -27224,7 +27218,7 @@
 	icon_state = "NW-out";
 	pixel_y = 1
 	},
-/obj/structure/machinery/vending/coffee,
+/obj/structure/machinery/vending/uppsoda,
 /obj/structure/sign/safety/coffee{
 	pixel_x = -17;
 	pixel_y = -8
@@ -28265,7 +28259,7 @@
 /turf/closed/wall/upp_ship/reinforced/outer,
 /area/rostock/lifeboat)
 "vSh" = (
-/obj/structure/machinery/vending/coffee/simple,
+/obj/structure/machinery/vending/uppsoda,
 /obj/structure/sign/safety/coffee{
 	pixel_y = 32
 	},
@@ -28762,8 +28756,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/upper_deck/hallway)
 "wic" = (
-/obj/structure/machinery/vending/coffee{
-	density = 0;
+/obj/structure/machinery/vending/uppsoda{
 	pixel_y = 16
 	},
 /turf/open/floor/plating/plating_catwalk/strata,
@@ -62340,7 +62333,7 @@ ofW
 vTq
 iFa
 vRQ
-dOy
+jli
 nOW
 nOW
 nOW

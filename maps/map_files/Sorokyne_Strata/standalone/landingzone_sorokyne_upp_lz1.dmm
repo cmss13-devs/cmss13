@@ -707,7 +707,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/interior/research)
 "cc" = (
-/obj/structure/machinery/vending/coffee,
+/obj/structure/machinery/vending/uppcola,
 /obj/structure/sign/poster/upp{
 	pixel_y = 33
 	},
@@ -949,9 +949,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/research)
 "iq" = (
-/obj/structure/machinery/vending/snack{
-	pixel_x = 2
-	},
+/obj/structure/machinery/vending/uppsnack,
 /obj/structure/sign/poster/upp{
 	pixel_y = 33;
 	pixel_x = -6
@@ -1864,9 +1862,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/research)
 "Pw" = (
-/obj/structure/machinery/vending/coffee{
-	pixel_x = -4
-	},
+/obj/structure/machinery/vending/uppcoffee,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/research)
 "Qd" = (

@@ -12,6 +12,8 @@
 	var/can_explode = FALSE
 	var/burning = FALSE
 	var/limit_per_tile = 1 //how many you can deploy per tile
+	var/is_cigarettes = FALSE //slightly different visual logic for when ammo box is supposed to be a cigarette carton
+	var/contents_name = "magazine" //what object should description portray the contents of the box as
 	layer = LOWER_ITEM_LAYER //to not hide other items
 
 	var/text_markings_icon = 'icons/obj/items/weapons/guns/ammo_boxes/text.dmi'

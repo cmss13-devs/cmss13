@@ -190,6 +190,18 @@ Certain PRs, such as those which directly change number values (i.e. health, rec
 
 * We understand that having something you have worked on for quite some time being denied can be frustrating. Therefore, it is recommended that you check with a maintainer before beginning to code your PR if you have any doubts that it will be accepted. This will save everyone's time and energy.
 
+## Good Boy Points
+
+Each GitHub account has a score known as Good Boy Points, or GBP. This is an ancillary system.
+
+The GBP gain or loss for a PR depends on the type of changes the PR makes, represented by the tags assigned to the PR by the CM-SS13 github bot or maintainers. Generally speaking, fixing bugs, updating sprites, or improving maps increases your GBP score, while adding mechanics, or rebalancing things will cost you GBP.
+
+The GBP change of a PR is the sum of greatest positive and lowest negative values it has. For example, a PR that has tags worth +10, +4, -1, -7, will net 3 GBP (10 - 7).
+
+Having a positive or negative GBP has no bearing on whether maintainers merge your PR and is purely for bragging rights. However, do not mislabel your changelogs to try to manipulate this.
+
+You can see each tag and their GBP values [Here](https://github.com/cmss13-devs/cmss13/blob/master/.github/gbp.toml).
+
 ## Porting features/sprites/sounds/tools from other codebases
 
 If you are porting features/tools from other codebases, you must give them credit where it's due. Typically, crediting them in your pull request and the changelog is the recommended way of doing it. Take note of what license they use though, porting stuff from AGPLv3 and GPLv3 codebases are allowed.

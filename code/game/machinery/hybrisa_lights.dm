@@ -4,6 +4,7 @@
 	icon_state = "panelbnopower"
 	desc = "This switch controls the electrified fences. It only functions when there is power."
 	machinery_type_whitelist = list()
+	tacmap_icon = "electric_fence_switch"
 	/// The power each fence takes up per process
 	var/power_usage_per_fence = 5
 

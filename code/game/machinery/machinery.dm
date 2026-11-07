@@ -114,6 +114,7 @@ Class Procs:
 	var/is_on = TRUE
 	/// The last calculate_current_power_usage when update_use_power was called
 	var/last_power_usage = 0
+	var/tacmap_icon
 
 /obj/structure/machinery/vv_get_dropdown()
 	. = ..()
@@ -137,6 +138,8 @@ Class Procs:
 	var/area/A = get_area(src)
 	if(A)
 		A.add_machine(src) //takes care of adding machine's power usage
+	if(tacmap_icon)
+		SSminimaps.add_marker(src, MINIMAP_FLAG_ALL, image('icons/UI_icons/map_blips.dmi', null, tacmap_icon))
 
 /obj/structure/machinery/Destroy()
 	GLOB.machines -= src

@@ -16,6 +16,7 @@
 	unacidable = TRUE   //NOPE.jpg
 	needs_power = FALSE
 	idle_power_usage = 1000
+	tacmap_icon = "sensor_tower"
 	is_on = FALSE  //Is this damn thing on or what?
 	var/buildstate = SENSORTOWER_BUILDSTATE_BLOWTORCH //What state of building it are we on, 0-3, 1 is "broken", the default
 	var/fail_rate = 15 //% chance of failure each fail_tick check
@@ -26,11 +27,7 @@
 	/// weakrefs of xenos temporarily added to the marine minimap
 	var/list/minimap_added = list()
 	var/base_icon = "sensor_"
-	var/tacmap_icon = "sensor_tower"
 
-/obj/structure/machinery/sensortower/Initialize(mapload, ...)
-	. = ..()
-	SSminimaps.add_marker(src, MINIMAP_FLAG_ALL, image('icons/UI_icons/map_blips.dmi', null, tacmap_icon))
 
 /obj/structure/machinery/sensortower/update_icon()
 	..()

@@ -222,6 +222,12 @@
 /obj/structure/cargo_container/kelland/right
 	icon_state = "kelland_r"
 
+/obj/structure/cargo_container/kelland/alt/left
+	icon_state = "kelland_red_l"
+
+/obj/structure/cargo_container/kelland/alt/right
+	icon_state = "kelland_red_r"
+
 /obj/structure/cargo_container/ferret
 	name = "Ferret Heavy Industries Cargo Container"
 	desc = "A huge industrial shipping container.\nThis one is from Ferret Heavy Industries, a manufacturer of terrestrial crawlers and powerloaders.\nUnfortunately, the company went bankrupt. Fortunately, these containers are really cheap now."
@@ -309,6 +315,32 @@
 
 /obj/structure/cargo_container/horizontal/blue/bottom
 	icon_state = "blue_b"
+
+/obj/structure/cargo_container/horizontal/red
+	name = "Generic Cargo Container"
+	desc = "A huge industrial shipping container.\nDespite the logo clearly being on the side, you cannot see it, as the logo is not facing south."
+
+/obj/structure/cargo_container/horizontal/red/top
+	icon_state = "red_t"
+
+/obj/structure/cargo_container/horizontal/red/middle
+	icon_state = "red_m"
+
+/obj/structure/cargo_container/horizontal/red/bottom
+	icon_state = "red_b"
+
+/obj/structure/cargo_container/horizontal/green
+	name = "Generic Cargo Container"
+	desc = "A huge industrial shipping container.\nDespite the logo clearly being on the side, you cannot see it, as the logo is not facing south."
+
+/obj/structure/cargo_container/horizontal/green/top
+	icon_state = "green_t"
+
+/obj/structure/cargo_container/horizontal/green/middle
+	icon_state = "green_m"
+
+/obj/structure/cargo_container/horizontal/green/bottom
+	icon_state = "green_b"
 
 /obj/structure/cargo_container/canc
 	name = "CANC Cargo Container"

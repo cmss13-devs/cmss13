@@ -795,7 +795,7 @@
 	layer = 3
 	},
 /obj/structure/machinery/computer/arcade{
-	layer = 2.98\
+	layer = 2.98
 	},
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52

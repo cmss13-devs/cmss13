@@ -33,6 +33,18 @@
 /// shuttle mode change
 #define COMSIG_SHUTTLE_SETMODE "shuttle_setmode"
 
+/// from /obj/docking_port/stationary/proc/on_prearrival() : (landing shuttle)
+#define COMSIG_SHUTTLE_PREARRIVAL "shuttle_prearrival"
+
+/// from /obj/docking_port/stationary/proc/on_arrival() : (landing shuttle)
+#define COMSIG_SHUTTLE_ARRIVAL "shuttle_arrival"
+
+/// from /obj/docking_port/stationary/proc/on_dock_ignition() : (departing shuttle)
+#define COMSIG_SHUTTLE_IGNITION "shuttle_ignition"
+
+/// from /obj/docking_port/stationary/proc/on_departure() : (departing shuttle)
+#define COMSIG_SHUTTLE_DEPARTURE "shuttle_departure"
+
 #define COMSIG_GRENADE_PRE_PRIME "grenade_pre_prime"
 	#define COMPONENT_GRENADE_PRIME_CANCEL (1<<0)
 

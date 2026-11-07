@@ -170,7 +170,8 @@ GLOBAL_LIST_INIT(admin_verbs_major_event, list(
 	/client/proc/change_taskbar_icon,
 	/client/proc/change_weather,
 	/client/proc/admin_blurb,
-	/client/proc/change_observed_player
+	/client/proc/change_observed_player,
+	/client/proc/admin_attempt_apply_hivebuff,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_spawn, list(

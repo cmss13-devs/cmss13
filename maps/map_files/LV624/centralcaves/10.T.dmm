@@ -69,6 +69,14 @@
 /obj/structure/fence,
 /turf/open/floor/warning/north,
 /area/lv624/ground/barrens/containers)
+"q" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"r" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
 "s" = (
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 10
@@ -269,11 +277,11 @@ l
 l
 l
 l
+q
 V
 V
 V
-V
-V
+q
 l
 l
 l
@@ -292,11 +300,11 @@ l
 l
 l
 l
-V
-V
-V
-V
-V
+q
+r
+r
+r
+q
 l
 l
 V
@@ -586,7 +594,7 @@ l
 l
 l
 l
-V
+q
 l
 l
 l
@@ -608,9 +616,9 @@ d
 l
 l
 l
-V
-V
-V
+q
+q
+q
 l
 l
 n
@@ -630,9 +638,9 @@ l
 d
 l
 l
-V
-V
-V
+q
+q
+q
 V
 V
 V
@@ -655,7 +663,7 @@ l
 V
 V
 V
-V
+r
 V
 G
 V
@@ -678,7 +686,7 @@ V
 V
 V
 V
-V
+r
 V
 V
 V
@@ -701,7 +709,7 @@ V
 V
 V
 V
-V
+r
 V
 V
 V
@@ -724,7 +732,7 @@ V
 V
 V
 G
-V
+r
 V
 V
 l
@@ -747,8 +755,8 @@ V
 V
 V
 V
-V
-V
+q
+q
 l
 l
 l
@@ -770,7 +778,7 @@ V
 V
 V
 V
-V
+q
 l
 l
 l

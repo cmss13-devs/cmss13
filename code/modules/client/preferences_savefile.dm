@@ -251,6 +251,12 @@
 	if(savefile_version == 37) // Players currently on version 37 that previously converted to json on a version < 37 could have lost data
 		updated_from = savefile_version
 
+	if(savefile_version < 38) //new sound volume prefs
+		var/list/volume_preferences
+		S["volume_preferences"] >> volume_preferences
+		volume_preferences.Add(0.7, 0.25)
+		S["volume_preferences"] << volume_preferences
+
 	if(updated_from)
 		if(!owner.performed_post_login)
 			RegisterSignal(owner, COMSIG_CLIENT_LOGGED_IN, PROC_REF(handle_logged_in))
@@ -650,7 +656,7 @@
 	if(!observer_huds)
 		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE, "Hunter HUD"= FALSE, HUD_MENTOR_SIGHT = FALSE)
 
-	volume_preferences = sanitize_volume_preferences(volume_preferences, list(1, 0.5, 1, 0.6)) // Game, music, admin midis, lobby music
+	volume_preferences = sanitize_volume_preferences(volume_preferences, list(1, 0.5, 1, 0.6, 0.7, 0.25)) // Game, music, admin midis, lobby music, human voices, xeno voices
 
 	if(!islist(custom_keybinds))
 		custom_keybinds = new /list(KEYBIND_CUSTOM_MAX)

@@ -4,6 +4,7 @@
 #define PMC_COMMAND_ANNOUNCE "PMC Command Announcement"
 #define COLONY_ANNOUNCE "Colony Announcement"
 #define VENIR_ANNOUNCE "White Antre Central Announcement"
+#define CLF_ANNOUNCE "CLF Camp Coordinator Announcement"
 #define QUEEN_ANNOUNCE "The words of the Queen reverberate in your head..."
 #define QUEEN_LORE_ANNOUNCE "The words of the Queen reverberate in your head..."
 #define QUEEN_MOTHER_ANNOUNCE "Queen Mother Psychic Directive"

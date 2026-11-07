@@ -49,3 +49,6 @@
 
 /// Fired by the [/datum/mapcoords] component when its attached movable moved on the map irrespective of its exact location
 #define COMSIG_MOVABLE_MAPCOORDS_UPDATED "movable_mapcoords_updated"
+
+///from /turf/proc/launched_landing(atom/movable/launched)
+#define COMSIG_MOVABLE_LAUNCHED_LANDED "movable_launched_landed"

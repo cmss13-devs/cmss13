@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 37
+#define SAVEFILE_VERSION_MAX 38
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -248,11 +248,16 @@
 		toggles_insert |= (SOUND_ROUND_END)
 		savefile.tree["toggles_sound"] = toggles_insert
 
+	if(savefile_version == 37) // Players currently on version 37 that previously converted to json on a version < 37 could have lost data
+		updated_from = savefile_version
+
 	if(updated_from)
-		RegisterSignal(owner, COMSIG_CLIENT_LOGGED_IN, PROC_REF(handle_logged_in))
+		if(!owner.performed_post_login)
+			RegisterSignal(owner, COMSIG_CLIENT_LOGGED_IN, PROC_REF(handle_logged_in))
+		else
+			handle_logged_in()
 
 	savefile_version = SAVEFILE_VERSION_MAX
-	save_preferences()
 	return TRUE
 
 /// Attempts to load a preferences.sav for the owner and migrate it to a save tree
@@ -265,20 +270,43 @@
 	var/datum/json_savefile/json_savefile = new(path)
 	json_savefile.import_byond_savefile(new /savefile(old_path))
 	json_savefile.save()
+	performed_json_upgrade = TRUE
 	return TRUE
 
-/// SIGNAL_HANDLER for COMSIG_CLIENT_LOGGED_IN to perform handle_controlstyle_update
+/// SIGNAL_HANDLER for COMSIG_CLIENT_LOGGED_IN to perform handle_prompt_user_for_update
 /datum/preferences/proc/handle_logged_in()
 	SIGNAL_HANDLER
 
-	handle_controlstyle_update(updated_from)
+	handle_prompt_user_for_update(updated_from)
 
 /// Displays savefile updates that require user input
-/datum/preferences/proc/handle_controlstyle_update(updated_from)
+/datum/preferences/proc/handle_prompt_user_for_update(updated_from)
 	set waitfor = FALSE
 
-	if(updated_from == /datum/preferences::savefile_version)
+	if(updated_from == /datum/preferences::savefile_version || updated_from < SAVEFILE_VERSION_MIN)
 		return
+
+	if(!owner)
+		return
+
+	// Offer players who have previously converted to json a restore from backup (only applicable to version 37, version 38+ stops offering a restore)
+	if(updated_from == 37 && !performed_json_upgrade && fexists("data/player_saves/[owner.ckey[1]]/[owner.ckey]/preferences.sav"))
+		var/question = tgui_alert(owner, "If you lost data like keybindings after the update converting to JSON save files, you can choose to restore a backup now. WARNING: This will irreversibly discard any recent changes to your preferences and reimport from the old file.", "Restore preferences from backup?", list("No", "Yes"))
+		if(question == "Yes")
+			question = tgui_alert(owner, "Are really sure you wish to restore from backup? WARNING: This will irreversibly discard any recent changes to your preferences and reimport from the old file.", "Restore preferences from backup?", list("No", "Yes"))
+			if(question == "Yes")
+				to_chat(owner, SPAN_NOTICE("Restoring preferences from backup..."))
+				var/current_human_name_ban = savefile.tree["human_name_ban"] // Its dumb these are here
+				var/current_xeno_name_ban = savefile.tree["xeno_name_ban"]
+				try_savefile_tree_migration()
+				load_savefile()
+				savefile.tree["human_name_ban"] = current_human_name_ban
+				savefile.tree["xeno_name_ban"] = current_xeno_name_ban
+				load_preferences() // This will result in handle_prompt_user_for_update() as well as a save
+				load_character()
+				return
+		// To manually retrigger: Call this proc on their preferences with the argument 37
+		to_chat(owner, SPAN_NOTICE("Aborted preferences backup restore. If you change your mind, an admin will have to manually trigger this prompt again."))
 
 	if(updated_from < 34)
 		var/question = tgui_alert(owner, "Tab is no longer bound to switching between the map and the command bar. Restore this bind?", "Default Bind Changed", list("No", "Yes"))
@@ -313,8 +341,10 @@
 		return FALSE
 
 	//Conversion
+	var/dirty = FALSE
 	savefile_version = savefile.tree["version"]
 	if(!savefile_version || !isnum(savefile_version) || savefile_version != SAVEFILE_VERSION_MAX)
+		dirty = TRUE
 		if(!savefile_update())  //handles updates
 			savefile_version = SAVEFILE_VERSION_MAX
 			save_character()
@@ -483,6 +513,9 @@
 		owner.typing_indicators = FALSE
 	else
 		owner.typing_indicators = TRUE
+
+	if(dirty) // We don't currently have character upgrades to worry about
+		save_preferences()
 
 	return TRUE
 
@@ -748,9 +781,6 @@
 	savefile.tree["completed_tutorials"] = tutorial_list_to_savestring()
 
 	savefile.tree["lastchangelog"] = lastchangelog
-
-	savefile.tree["job_loadout"] = save_loadout(loadout)
-	savefile.tree["job_loadout_names"] = loadout_slot_names
 
 	savefile.tree["tgui_fancy"] = tgui_fancy
 	savefile.tree["tgui_lock"] = tgui_lock

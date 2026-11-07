@@ -9,38 +9,10 @@
 	icon = 'icons/obj/structures/machinery/defenses/sentry.dmi'
 	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 500-round drum magazine."
 	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_ENGPREP, ACCESS_MARINE_LEADER)
-	var/list/targets = list() // Lists of current potential targets
-	var/list/other_targets = list() //List of special target types to shoot at, if needed.
-	var/atom/movable/target = null
-	var/datum/shape/range_bounds
-	var/datum/effect_system/spark_spread/spark_system //The spark system, used for generating... sparks?
-	var/last_fired = 0
-	var/fire_delay = 4
-	var/immobile = FALSE //Used for prebuilt ones.
-	var/obj/item/ammo_magazine/ammo = new /obj/item/ammo_magazine/sentry
-	var/sentry_type = "uac_sentry" //Used for the icon
+
 	display_additional_stats = TRUE
-	/// Light strength when turned on
-	var/luminosity_strength = 5
-	/// Check if they have been upgraded or not, used for sentry post
-	var/upgraded = FALSE
-	var/omni_directional = FALSE
-	var/additional_rounds_stored = FALSE
-	var/sentry_range = SENTRY_RANGE
-
 	has_camera = TRUE
-
-	var/damage_mult = 1
-	var/accuracy_mult = 1
-	var/burst = 1
 	handheld_type = /obj/item/defenses/handheld/sentry
-
-	/// timer triggered when sentry gun shoots at a target to not spam the laptop
-	var/engaged_timer = null
-	/// timer triggered when sentry gun is low on ammo to not spam the laptop
-	var/low_ammo_timer = null
-	/// timer triggered when sentry gun is out of ammo to not spam the laptop
-	var/sent_empty_ammo = FALSE
 
 	/// action list is configurable for all subtypes, this is just an example
 	choice_categories = list(
@@ -52,6 +24,36 @@
 		// SENTRY_CATEGORY_ROF = ROF_SINGLE,
 		SENTRY_CATEGORY_IFF = FACTION_MARINE,
 	)
+
+	var/list/targets = list() // Lists of current potential targets
+	var/list/other_targets = list() //List of special target types to shoot at, if needed.
+	var/atom/movable/target = null
+	var/datum/shape/range_bounds
+	var/datum/effect_system/spark_spread/spark_system //The spark system, used for generating... sparks?
+	var/last_fired = 0
+	var/fire_delay = 4
+	var/immobile = FALSE //Used for prebuilt ones.
+	var/obj/item/ammo_magazine/ammo = new /obj/item/ammo_magazine/sentry
+	var/sentry_type = "uac_sentry" //Used for the icon
+
+	/// Light strength when turned on
+	var/luminosity_strength = 5
+	/// Check if they have been upgraded or not, used for sentry post
+	var/upgraded = FALSE
+	var/omni_directional = FALSE
+	var/additional_rounds_stored = FALSE
+	var/sentry_range = SENTRY_RANGE
+
+	var/damage_mult = 1
+	var/accuracy_mult = 1
+	var/burst = 1
+
+	/// timer triggered when sentry gun shoots at a target to not spam the laptop
+	var/engaged_timer = null
+	/// timer triggered when sentry gun is low on ammo to not spam the laptop
+	var/low_ammo_timer = null
+	/// timer triggered when sentry gun is out of ammo to not spam the laptop
+	var/sent_empty_ammo = FALSE
 
 	///Minimap iconstate to use for this sentry
 	var/minimap_icon_state = "sentry"
@@ -90,13 +92,17 @@
 
 	if(!range_bounds)
 		set_range()
-	targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
-	if(!targets)
-		return FALSE
+	var/list/atom/movable/all_targets = scan_targets()
+	targets = list()
+	for(var/mob/target in all_targets)
+		if(target.z != z)
+			continue
+		if(target.mob_flags & MOB_ABSTRACT)
+			continue
+		targets += target
 
-	if(!target && length(targets))
-		target = pick(targets)
-
+	if(!target)
+		target = SAFEPICK(targets)
 	get_target(target)
 	return TRUE
 
@@ -113,6 +119,12 @@
 			range_bounds = SQUARE(x, y + 4, 7)
 		if(SOUTH)
 			range_bounds = SQUARE(x, y - 4, 7)
+
+/obj/structure/machinery/defenses/sentry/proc/scan_targets()
+	RETURN_TYPE(/list/atom/movable)
+	if(!z)
+		return // Stop it. Get some help.
+	return SSmapgrids.get_movables_in_region(z, range_bounds.center_x - range_bounds.bounds_x / 2, range_bounds.center_x + range_bounds.bounds_x / 2, range_bounds.center_y - range_bounds.bounds_y / 2, range_bounds.center_y + range_bounds.bounds_y / 2  )
 
 /obj/structure/machinery/defenses/sentry/proc/unset_range()
 	SIGNAL_HANDLER
@@ -513,6 +525,14 @@
 	faction_group = FACTION_LIST_MARINE
 	static = TRUE
 
+/obj/structure/machinery/defenses/sentry/premade/clf
+	name = "\improper Hacked UA-577 Gauss Turret"
+	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a high-capacity drum magazine. This one's IFF system has been hacked and its color scheme is non-standard issue. Best to treat it as hostile."
+	icon = 'icons/obj/structures/machinery/defenses/clf_defenses.dmi'
+	icon_state = "premade" //for the map editor only
+	faction_group = FACTION_LIST_CLF
+	static = TRUE
+
 /obj/structure/machinery/defenses/sentry/premade/lowammo
 	name = "\improper UA-577 Gauss Turret"
 	immobile = TRUE
@@ -575,6 +595,23 @@
 	faction_group = FACTION_LIST_CLF
 	ammo = new /obj/item/ammo_magazine/sentry/premade/lowammo/dumb
 
+/obj/structure/machinery/defenses/sentry/premade/antre_wy
+	name = "\improper Static UA-577 Gauss Turret"
+	immobile = TRUE
+	turned_on = TRUE
+	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi'
+	icon_state = "premade"
+	sentry_type = "wy_sentry"
+	faction_group = list(FACTION_LIST_WY, FACTION_COLONIST, FACTION_SURVIVOR)
+	ammo = new /obj/item/ammo_magazine/sentry/premade/lowammo
+	static = TRUE
+
+/obj/structure/machinery/defenses/sentry/premade/antre_wy/random
+
+/obj/structure/machinery/defenses/sentry/premade/antre_wy/random/Initialize()
+	. = ..()
+	ammo.current_rounds = rand(40,60)
+
 //the turret inside a static sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/deployable
 	name = "\improper UA-633 Static Gauss Turret"
@@ -590,6 +627,13 @@
 		deployment_system.deployed_turret = null
 		deployment_system = null
 	. = ..()
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/update_health(damage, pass_forward = FALSE)
+	. = ..()
+	pass_forward = !pass_forward
+	if(pass_forward)
+		if(deployment_system)
+			deployment_system.update_health(damage, pass_forward)
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony
 	faction_group = list(FACTION_MARINE, FACTION_COLONIST, FACTION_SURVIVOR, FACTION_NSPA)
@@ -712,6 +756,13 @@
 	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
 	var/obj/structure/machinery/camera/cas/linked_cam
 
+/obj/structure/machinery/defenses/sentry/premade/dropship/update_health(damage, pass_forward = FALSE)
+	. = ..()
+	pass_forward = !pass_forward
+	if(pass_forward)
+		if(deployment_system)
+			deployment_system.update_health(damage, pass_forward)
+
 /obj/structure/machinery/defenses/sentry/premade/dropship/Destroy()
 	if(deployment_system)
 		deployment_system.deployed_turret = null
@@ -759,6 +810,7 @@
 #undef SENTRY_SNIPER_RANGE
 /obj/structure/machinery/defenses/sentry/shotgun
 	name = "\improper UA 12-G Shotgun Sentry"
+	desc = "A fully-automated defence turret with short-range targeting capabilities. Armed with a modified M12-G Autocannon and a 50-round drum magazine."
 	defense_type = "Shotgun"
 	health = 250
 	health_max = 250
@@ -778,7 +830,7 @@
 		M.apply_damage(20, enviro=TRUE)
 
 /obj/structure/machinery/defenses/sentry/shotgun/hitby(atom/movable/AM)
-	if(AM.throwing && turned_on)
+	if(HAS_TRAIT(AM, TRAIT_LAUNCHED) && turned_on)
 		if(ismob(AM))
 			var/mob/living/L = AM
 			L.apply_damage(20, enviro=TRUE)
@@ -811,8 +863,8 @@
 	static = TRUE
 	/// Cost to give sentry extra health
 	var/upgrade_cost = 5
-	/// Amount of bonus health they get from upgrade
-	var/health_upgrade = 50
+	/// Amount of health set after upgrade
+	var/health_upgrade = 250
 	var/obj/structure/machinery/camera/cas/linked_cam
 	var/static/sentry_count = 1
 	var/sentry_number
@@ -839,24 +891,32 @@
 /obj/structure/machinery/defenses/sentry/launchable/attackby(obj/item/stack/sheets, mob/user)
 	. = ..()
 
+	if(user.action_busy)
+		return
+
 	if(!istype(sheets, /obj/item/stack/sheet/metal))
 		to_chat(user, SPAN_WARNING("Use [upgrade_cost] metal sheets to give the sentry some plating."))
 		return
 
 	if(upgraded)
-		to_chat(user, SPAN_WARNING("\The [src] has already been upgraded."))
+		to_chat(user, SPAN_WARNING("\The [name] has already been upgraded."))
+		return
+
+	if(health != health_max)
+		to_chat(user, SPAN_WARNING("\The [name] must have no damage to be upgraded."))
 		return
 
 	if(sheets.amount >= upgrade_cost)
+		upgraded = TRUE
 		if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION) , INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			upgraded = FALSE
 			to_chat(user, SPAN_WARNING("You were interrupted! Try to stay still while you bolster the sentry with metal sheets..."))
 			return
 
 		if(sheets.use(upgrade_cost))
-			src.health_max += health_upgrade
-			src.update_health(-health_upgrade)
-			upgraded = TRUE
-			to_chat(user, SPAN_WARNING("You added some metal plating to the sentry, increasing its durability!"))
+			health_max = health_upgrade
+			health = health_max
+			to_chat(user, SPAN_WARNING("You added some metal plating to the [name], increasing its durability!"))
 		else
 			to_chat(user, SPAN_WARNING("You need at least [upgrade_cost] sheets of metal to upgrade this."))
 	else
@@ -870,7 +930,7 @@
 			return
 
 		var/rounds_used = ammo.inherent_reload(user)
-		to_chat(user, SPAN_WARNING("[src]'s internal magazine was reloaded with [rounds_used] rounds, [ammo.max_inherent_rounds] rounds left in storage."))
+		to_chat(user, SPAN_WARNING("[name]'s internal magazine was reloaded with [rounds_used] rounds, [ammo.max_inherent_rounds] rounds left in storage."))
 		playsound(loc, 'sound/weapons/handling/m40sd_reload.ogg', 25, 1)
 		update_icon()
 		return FALSE
@@ -977,6 +1037,21 @@
 	omni_directional = TRUE
 	minimap_icon_state = "sentry_omni"
 	handheld_type = /obj/item/defenses/handheld/sentry/upp/light
+
+/obj/structure/machinery/defenses/sentry/clf
+	name = "CLF Hacked UA-577 Gauss Turret"
+	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a high-capacity drum magazine. This one's IFF system has been hacked and its color scheme is non-standard issue. Best to treat it as hostile."
+	icon = 'icons/obj/structures/machinery/defenses/clf_defenses.dmi'
+	sentry_type = "uac_sentry"
+	health = 300
+	health_max = 300
+	damage_mult = 1.2
+	disassemble_time = 5 SECONDS
+	handheld_type = /obj/item/defenses/handheld/sentry/clf
+	ammo = new /obj/item/ammo_magazine/sentry
+	selected_categories = list(
+		SENTRY_CATEGORY_IFF = FACTION_CLF,
+	)
 
 /obj/structure/machinery/defenses/sentry/omni
 	name = "\improper UA 571-D omnidirectional sentry gun"

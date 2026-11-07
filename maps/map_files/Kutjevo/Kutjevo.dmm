@@ -769,7 +769,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/colony_south/power2/south)
 "add" = (
-/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/colony_south/power2/south)
 "ade" = (
@@ -783,7 +783,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/colony_south/power2/south)
 "adg" = (
-/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/floor/plating/plating_catwalk/aicore,
 /area/kutjevo/interior/colony_south/power2/south)
 "adh" = (
@@ -908,7 +908,7 @@
 /turf/open/floor/plating/plating_catwalk/aicore,
 /area/kutjevo/interior/colony_south/power2/south)
 "ady" = (
-/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/gm/river/desert/deep/covered,
 /area/kutjevo/interior/colony_south/power2/south)
 "adz" = (
@@ -929,7 +929,7 @@
 /turf/open/floor/kutjevo/multi_tiles/west,
 /area/kutjevo/interior/colony_south/power2/south)
 "adD" = (
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/lz_dunes)
 "adE" = (
 /obj/structure/stairs/perspective/kutjevo{
@@ -964,7 +964,7 @@
 /area/kutjevo/interior/colony_south/power2/south)
 "adK" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/weapon/gun/rifle/m16,
+/obj/item/weapon/gun/rifle/m20a,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/colony_south/power2/south)
 "adL" = (
@@ -1822,6 +1822,58 @@
 "agU" = (
 /turf/open_space,
 /area/sky/level4)
+"agV" = (
+/obj/structure/machinery/cryopod/joe/weyland,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/interior/power)
+"agW" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/interior/power)
+"agX" = (
+/obj/structure/machinery/cryopod/joe/weyland,
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/interior/power)
+"agY" = (
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/interior/power)
+"agZ" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "wy_office"
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/Northwest_Colony)
+"aha" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "flightcontrol_extension"
+	},
+/turf/closed/wall/kutjevo/rock,
+/area/kutjevo/interior/oob)
+"ahb" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/effect/landmark/nightmare{
+	insert_tag = "pizza_party"
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/complex_border/med_rec)
+"ahc" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "lz2_containers"
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_pad)
+"ahe" = (
+/turf/closed/wall/kutjevo/rock,
+/area/kutjevo/interior/colony_central)
+"ahf" = (
+/turf/closed/wall/kutjevo/rock,
+/area/kutjevo/interior/colony_northeast)
+"ahg" = (
+/turf/closed/wall/kutjevo/rock,
+/area/kutjevo/interior/colony_north)
 "ahp" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -1973,10 +2025,10 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/construction/east)
 "arU" = (
-/obj/item/ammo_magazine/rifle/m16,
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib3"
 	},
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/botany)
 "arW" = (
@@ -2743,7 +2795,7 @@
 	dir = 4;
 	pixel_y = 4
 	},
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/lz_pad)
 "bEp" = (
 /turf/closed/wall/kutjevo/rock,
@@ -3136,7 +3188,7 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power)
 "ciR" = (
-/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "cjA" = (
@@ -3206,17 +3258,17 @@
 /area/kutjevo/exterior/runoff_bridge)
 "cpe" = (
 /obj/structure/closet/secure_closet/security_empty,
-/obj/item/weapon/gun/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
 /obj/item/clothing/suit/armor/vest/security,
 /obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo,
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/holobadge,
 /obj/item/storage/belt/marine,
+/obj/item/weapon/gun/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/med)
 "cpg" = (
@@ -3859,7 +3911,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/runoff_bridge)
 "dht" = (
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/Northwest_Colony)
 "dhL" = (
 /obj/structure/machinery/landinglight{
@@ -4955,10 +5007,10 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_southeast)
 "eOD" = (
-/obj/item/weapon/gun/rifle/m16,
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/item/weapon/gun/rifle/m20a,
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
 "eOM" = (
@@ -5856,7 +5908,7 @@
 /turf/open/gm/river/desert/deep/covered,
 /area/kutjevo/interior/colony_south/power2)
 "gqQ" = (
-/obj/item/weapon/gun/rifle/m16,
+/obj/item/weapon/gun/rifle/m20a,
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
 "grx" = (
@@ -7067,7 +7119,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/complex_border/med_rec)
 "iub" = (
-/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany)
 "iuz" = (
@@ -7758,6 +7810,9 @@
 "jzQ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/objective_landmark/science,
+/obj/effect/landmark/nightmare{
+	insert_tag = "facehugger_examination"
+	},
 /turf/open/floor/kutjevo/colors/cyan/inner_corner/east,
 /area/kutjevo/interior/complex/med)
 "jAw" = (
@@ -7851,7 +7906,7 @@
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/runoff_dunes)
 "jJj" = (
-/obj/item/weapon/gun/rifle/m16,
+/obj/item/weapon/gun/rifle/m20a,
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/botany)
 "jJn" = (
@@ -8454,11 +8509,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/kutjevo/multi_tiles/southwest,
 /area/kutjevo/interior/oob)
-"kFx" = (
-/obj/structure/platform/stone/kutjevo,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/colony_north)
 "kFF" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
@@ -9012,7 +9062,7 @@
 /turf/open/floor/coagulation/icon0_5,
 /area/kutjevo/exterior/scrubland)
 "lzD" = (
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/lz_pad)
 "lAb" = (
 /obj/structure/platform/metal/kutjevo/west,
@@ -9208,7 +9258,7 @@
 /area/kutjevo/exterior/Northwest_Colony)
 "lRB" = (
 /obj/effect/sentry_landmark/lz_2/bottom_right,
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/Northwest_Colony)
 "lRV" = (
 /obj/structure/machinery/light,
@@ -11016,7 +11066,7 @@
 /turf/open/floor/kutjevo/multi_tiles/north,
 /area/kutjevo/interior/power/comms)
 "ozB" = (
-/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
 "oAj" = (
@@ -12066,7 +12116,7 @@
 /turf/open/gm/river/desert/deep/toxic,
 /area/kutjevo/interior/oob)
 "qgr" = (
-/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/floor/kutjevo/colors,
 /area/kutjevo/interior/complex/botany)
 "qgI" = (
@@ -12831,7 +12881,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power/comms)
 "rxb" = (
-/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany)
 "rxr" = (
@@ -12917,6 +12967,9 @@
 /area/kutjevo/interior/construction/north)
 "rHg" = (
 /obj/structure/prop/dam/truck/cargo,
+/obj/effect/landmark/nightmare{
+	insert_tag = "northroad_garage"
+	},
 /turf/open/asphalt/cement_sunbleached,
 /area/kutjevo/exterior/scrubland)
 "rHt" = (
@@ -13860,8 +13913,8 @@
 /turf/open/floor/kutjevo/colors/orange/edge,
 /area/kutjevo/interior/complex/Northwest_Security_Checkpoint)
 "tfx" = (
-/obj/item/ammo_magazine/rifle/m16/ap{
-	current_rounds = 1
+/obj/item/ammo_magazine/rifle/m20a{
+	current_rounds = 0
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/complex/botany/east_tech)
@@ -14251,18 +14304,18 @@
 /area/kutjevo/exterior/runoff_river)
 "tIy" = (
 /obj/structure/closet/secure_closet/security_empty,
-/obj/item/weapon/gun/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
 /obj/item/clothing/suit/armor/vest/security,
 /obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo,
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/holobadge,
 /obj/item/storage/belt/marine,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/weapon/gun/rifle/m20a,
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/botany)
 "tIz" = (
@@ -14673,7 +14726,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib2"
 	},
-/obj/item/weapon/gun/rifle/m16,
+/obj/item/weapon/gun/rifle/m20a,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany)
 "usd" = (
@@ -15926,7 +15979,7 @@
 /area/kutjevo/interior/construction/north)
 "wvg" = (
 /obj/item/stack/sheet/metal,
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/lz_pad)
 "wvr" = (
 /turf/open/floor/kutjevo/colors/orange,
@@ -16628,7 +16681,7 @@
 /obj/structure/barricade/metal{
 	dir = 4
 	},
-/turf/open/floor/almayer/research/containment/floor1,
+/turf/open/floor/almayer/research/containment/floor2/west,
 /area/kutjevo/exterior/lz_pad)
 "xBm" = (
 /turf/open/floor/almayer/research/containment/floor2,
@@ -16643,7 +16696,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_pad)
 "xDY" = (
-/obj/item/weapon/gun/rifle/m16,
+/obj/item/weapon/gun/rifle/m20a,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "xEp" = (
@@ -19448,7 +19501,7 @@ sWF
 sWF
 sWF
 dxF
-dxF
+aha
 dxF
 dxF
 dxF
@@ -22135,7 +22188,7 @@ hrz
 hrz
 sVF
 sVF
-sVF
+agZ
 sVF
 iin
 sVF
@@ -22606,7 +22659,7 @@ qDH
 qDH
 qDH
 qDH
-lKk
+ahc
 dmy
 dmy
 dmy
@@ -25551,7 +25604,7 @@ xzY
 xzY
 vMP
 xHm
-cvm
+agX
 jhS
 jhS
 kVJ
@@ -25718,9 +25771,9 @@ hQj
 psz
 vdC
 xHm
-cvm
-fRI
+agY
 hQj
+agV
 lAT
 xgV
 xHm
@@ -25887,7 +25940,7 @@ fCz
 nLJ
 dzD
 hQj
-hQj
+agW
 hQj
 xgV
 pnM
@@ -36979,7 +37032,7 @@ aap
 aCY
 aCY
 aCY
-inc
+ahb
 msK
 msK
 msK
@@ -45648,7 +45701,7 @@ dxF
 dxF
 dxF
 dxF
-wTt
+ahg
 dxF
 dxF
 dxF
@@ -45814,9 +45867,9 @@ dxF
 dxF
 dxF
 dxF
-wTt
-wTt
-bEH
+ahg
+ahg
+ahg
 dxF
 dxF
 dxF
@@ -45979,11 +46032,11 @@ dxF
 dxF
 dxF
 dxF
-bEH
-bEH
-wTt
-wTt
-bEH
+ahg
+ahg
+ahg
+ahg
+ahg
 dxF
 dxF
 dxF
@@ -46140,16 +46193,16 @@ bkR
 bkR
 wTt
 dxF
-wTt
-kFx
+ahg
+ahg
 dxF
-wTt
-wTt
-wTt
-wTt
-jBX
-wTt
-bEH
+ahg
+ahg
+ahg
+ahg
+ahg
+ahg
+ahg
 dxF
 dxF
 dxF
@@ -46305,18 +46358,18 @@ wQg
 bkR
 hSU
 bkR
-wTt
-wTt
-wTt
 gGz
 pxl
-wTt
-wTt
-wTt
-bEH
-wTt
-wTt
-bEH
+ahg
+ahg
+ahg
+ahg
+ahg
+ahg
+ahg
+ahg
+ahg
+ahg
 dxF
 dxF
 dxF
@@ -46480,10 +46533,10 @@ dxF
 dxF
 dxF
 dxF
-bEH
-wTt
-bEH
-bEH
+ahg
+ahg
+ahg
+ahg
 dxF
 dxF
 dxF
@@ -46650,7 +46703,7 @@ dxF
 dxF
 dxF
 dxF
-wTt
+ahg
 dxF
 dxF
 dxF
@@ -46817,7 +46870,7 @@ dxF
 dxF
 dxF
 dxF
-wTt
+ahg
 dxF
 dxF
 dxF
@@ -46842,8 +46895,8 @@ dxF
 dxF
 dxF
 dxF
-nlv
-uiK
+ahe
+ahe
 ipD
 ehq
 uwI
@@ -46858,7 +46911,7 @@ mnT
 uiK
 pLI
 xqQ
-uiK
+ahe
 dxF
 dxF
 dxF
@@ -46984,8 +47037,8 @@ dxF
 dxF
 dxF
 dxF
-wTt
-jBX
+ahg
+ahg
 dxF
 dxF
 dxF
@@ -47008,9 +47061,9 @@ dxF
 dxF
 dxF
 dxF
-nlv
-uiK
-uiK
+ahe
+ahe
+ahe
 dxF
 dxF
 dxF
@@ -47024,8 +47077,8 @@ uiK
 dxF
 dxF
 dxF
-uiK
-nlv
+ahe
+ahe
 dxF
 dxF
 dxF
@@ -47151,8 +47204,8 @@ dxF
 dxF
 dxF
 dxF
-wTt
-wTt
+ahg
+ahg
 dxF
 dxF
 dxF
@@ -47175,8 +47228,8 @@ dxF
 dxF
 dxF
 dxF
-nlv
-uiK
+ahe
+ahe
 dxF
 dxF
 dxF
@@ -47192,8 +47245,8 @@ dxF
 dxF
 dxF
 dxF
-uiK
-nlv
+ahe
+ahe
 dxF
 dxF
 dxF
@@ -47343,7 +47396,7 @@ dxF
 dxF
 dxF
 dxF
-uiK
+ahe
 dxF
 dxF
 dxF
@@ -47359,8 +47412,8 @@ dxF
 dxF
 dxF
 dxF
-nlv
-uiK
+ahe
+ahe
 dxF
 dxF
 dxF
@@ -47526,8 +47579,8 @@ dxF
 dxF
 dxF
 dxF
-uiK
-uiK
+ahe
+ahe
 dxF
 dxF
 uiK
@@ -50515,7 +50568,7 @@ dxF
 dxF
 dxF
 dxF
-kZz
+ahf
 aeE
 kZz
 nlv
@@ -50681,8 +50734,8 @@ dxF
 dxF
 dxF
 dxF
-kZz
-kZz
+ahf
+ahf
 dxF
 dxF
 nlv
@@ -50848,8 +50901,8 @@ dxF
 dxF
 dxF
 dxF
-kZz
-kZz
+ahf
+ahf
 dxF
 dxF
 dxF
@@ -51013,10 +51066,10 @@ kZz
 dxF
 dxF
 dxF
-kZz
-kZz
-kZz
-kZz
+ahf
+ahf
+ahf
+ahf
 dxF
 dxF
 dxF
@@ -51180,8 +51233,8 @@ kZz
 dxF
 dxF
 dxF
-kZz
-sNZ
+ahf
+ahf
 dxF
 dxF
 dxF
@@ -51347,7 +51400,7 @@ dxF
 dxF
 dxF
 dxF
-sNZ
+ahf
 dxF
 dxF
 dxF
@@ -51510,12 +51563,12 @@ bsl
 jQo
 bsl
 bsl
-kZz
-kZz
 oYz
-kZz
-kZz
-sNZ
+ahf
+ahf
+ahf
+ahf
+ahf
 dxF
 dxF
 dxF
@@ -51677,11 +51730,11 @@ bsl
 bsl
 bsl
 bsl
-kZz
-kZz
 oYs
 drg
-kZz
+ahf
+ahf
+ahf
 dxF
 dxF
 dxF
@@ -52352,8 +52405,8 @@ dxF
 dxF
 dxF
 dxF
-bsl
-sNZ
+ahf
+ahf
 dxF
 dxF
 dxF
@@ -52518,11 +52571,11 @@ dxF
 dxF
 dxF
 dxF
-bsl
-kZz
-kZz
-kZz
-kZz
+ahf
+ahf
+ahf
+ahf
+ahf
 dxF
 dxF
 dxF
@@ -52685,7 +52738,7 @@ dxF
 dxF
 dxF
 dxF
-kZz
+ahf
 dxF
 dxF
 dxF
@@ -52852,7 +52905,7 @@ dxF
 dxF
 dxF
 dxF
-kZz
+ahf
 dxF
 dxF
 dxF

@@ -134,14 +134,68 @@ GLOBAL_LIST_INIT(cm_vending_young_yautja, list(
 
 GLOBAL_LIST_INIT(cm_vending_thrall, list(
 		list("Essential Hunting Supplies", 0, null, null, null),
-		list("Hunting Equipment", 0, list(/obj/item/clothing/under/chainshirt/thrall, /obj/item/storage/backpack/yautja, /obj/item/device/flashlight/lantern/yautja, /obj/item/device/radio/headset/yautja), YAUTJA_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Hunting Equipment", 0, list(/obj/item/storage/backpack/yautja, /obj/item/device/flashlight/lantern/yautja, /obj/item/device/radio/headset/yautja), YAUTJA_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
-		list("Armor Material (CHOOSE 1)", 0, null, null, null),
-		list("Ebony", 0, list(/obj/item/clothing/suit/armor/yautja/thrall, /obj/item/clothing/shoes/yautja/thrall, /obj/item/clothing/mask/gas/yautja/thrall), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
-		list("Silver", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/silver, /obj/item/clothing/shoes/yautja/thrall/silver, /obj/item/clothing/mask/gas/yautja/thrall/silver), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
-		list("Gold", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/gold, /obj/item/clothing/shoes/yautja/thrall/gold, /obj/item/clothing/mask/gas/yautja/thrall/gold), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
-		list("Crimson", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/crimson, /obj/item/clothing/shoes/yautja/thrall/crimson, /obj/item/clothing/mask/gas/yautja/thrall/crimson), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
-		list("Bone", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/bone, /obj/item/clothing/shoes/yautja/thrall/bone, /obj/item/clothing/mask/gas/yautja/thrall/bone), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
+		list("Undersuit (CHOOSE 1)", 0, null, null, null),
+		list("Chain", 0, list(/obj/item/clothing/under/chainshirt/thrall), YAUTJA_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
+		list("Crimson Cloth", 0, list(/obj/item/clothing/under/chainshirt/thrall/cloth), YAUTJA_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
+		list("Tan Cloth", 0, list(/obj/item/clothing/under/chainshirt/thrall/cloth/alt), YAUTJA_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
+
+		list("Full-Mask (CHOOSE 1)", 0, null, null, null),
+		list("Ebony", 0, list(/obj/item/clothing/mask/gas/yautja/thrall), YAUTJA_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
+		list("Silver", 0, list(/obj/item/clothing/mask/gas/yautja/thrall/silver), YAUTJA_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
+		list("Gold", 0, list(/obj/item/clothing/mask/gas/yautja/thrall/gold), YAUTJA_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
+		list("Crimson", 0, list(/obj/item/clothing/mask/gas/yautja/thrall/crimson), YAUTJA_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
+		list("Bone", 0, list(/obj/item/clothing/mask/gas/yautja/thrall/bone), YAUTJA_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
+
+		list("Half-Mask (CHOOSE 1)", 0, null, null, null),
+		list("Ebony", 0, list(/obj/item/clothing/mask/gas/yautja/thrall/alt), YAUTJA_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
+		list("Silver", 0, list(/obj/item/clothing/mask/gas/yautja/thrall/alt/silver), YAUTJA_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
+		list("Gold", 0, list(/obj/item/clothing/mask/gas/yautja/thrall/alt/gold), YAUTJA_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
+		list("Crimson", 0, list(/obj/item/clothing/mask/gas/yautja/thrall/alt/crimson), YAUTJA_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
+		list("Bone", 0, list(/obj/item/clothing/mask/gas/yautja/thrall/alt/bone), YAUTJA_CAN_BUY_MASK, VENDOR_ITEM_RECOMMENDED),
+
+		list("Full-Armor Chest (CHOOSE 1)", 0, null, null, null),
+		list("Ebony", 0, list(/obj/item/clothing/suit/armor/yautja/thrall), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
+		list("Silver", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/silver), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
+		list("Gold", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/gold), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
+		list("Crimson", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/crimson), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
+		list("Bone", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/bone), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
+
+		list("Half-Armor Chest (CHOOSE 1)", 0, null, null, null),
+		list("Ebony", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/old), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
+		list("Silver", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/old/silver), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
+		list("Gold", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/old/gold), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
+		list("Crimson", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/old/crimson), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
+		list("Bone", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/old/bone), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
+
+		list("Light-Armor Chest (CHOOSE 1)", 0, null, null, null),
+		list("Ebony", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/light), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
+		list("Silver", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/light/silver), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
+		list("Gold", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/light/gold), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
+		list("Crimson", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/light/crimson), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
+		list("Bone", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/light/bone), YAUTJA_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
+
+		list("Full-Armor Greaves (CHOOSE 1)", 0, null, null, null),
+		list("Ebony", 0, list(/obj/item/clothing/shoes/yautja/thrall), YAUTJA_CAN_BUY_SHOES, VENDOR_ITEM_RECOMMENDED),
+		list("Silver", 0, list(/obj/item/clothing/shoes/yautja/thrall/silver), YAUTJA_CAN_BUY_SHOES, VENDOR_ITEM_RECOMMENDED),
+		list("Gold", 0, list(/obj/item/clothing/shoes/yautja/thrall/gold), YAUTJA_CAN_BUY_SHOES, VENDOR_ITEM_RECOMMENDED),
+		list("Crimson", 0, list(/obj/item/clothing/shoes/yautja/thrall/crimson), YAUTJA_CAN_BUY_SHOES, VENDOR_ITEM_RECOMMENDED),
+		list("Bone", 0, list(/obj/item/clothing/shoes/yautja/thrall/bone), YAUTJA_CAN_BUY_SHOES, VENDOR_ITEM_RECOMMENDED),
+
+		list("Half-Armor Greaves (CHOOSE 1)", 0, null, null, null),
+		list("Ebony", 0, list(/obj/item/clothing/shoes/yautja/thrall/old), YAUTJA_CAN_BUY_SHOES, VENDOR_ITEM_RECOMMENDED),
+		list("Silver", 0, list(/obj/item/clothing/shoes/yautja/thrall/old/silver), YAUTJA_CAN_BUY_SHOES, VENDOR_ITEM_RECOMMENDED),
+		list("Gold", 0, list(/obj/item/clothing/shoes/yautja/thrall/old/gold), YAUTJA_CAN_BUY_SHOES, VENDOR_ITEM_RECOMMENDED),
+		list("Crimson", 0, list(/obj/item/clothing/shoes/yautja/thrall/old/crimson), YAUTJA_CAN_BUY_SHOES, VENDOR_ITEM_RECOMMENDED),
+		list("Bone", 0, list(/obj/item/clothing/shoes/yautja/thrall/old/bone), YAUTJA_CAN_BUY_SHOES, VENDOR_ITEM_RECOMMENDED),
+
+		list("Light-Armor Greaves (CHOOSE 1)", 0, null, null, null),
+		list("Ebony", 0, list(/obj/item/clothing/shoes/yautja/thrall/light), YAUTJA_CAN_BUY_SHOES, VENDOR_ITEM_RECOMMENDED),
+		list("Silver", 0, list(/obj/item/clothing/shoes/yautja/thrall/light/silver), YAUTJA_CAN_BUY_SHOES, VENDOR_ITEM_RECOMMENDED),
+		list("Gold", 0, list(/obj/item/clothing/shoes/yautja/thrall/light/gold), YAUTJA_CAN_BUY_SHOES, VENDOR_ITEM_RECOMMENDED),
+		list("Crimson", 0, list(/obj/item/clothing/shoes/yautja/thrall/light/crimson), YAUTJA_CAN_BUY_SHOES, VENDOR_ITEM_RECOMMENDED),
+		list("Bone", 0, list(/obj/item/clothing/shoes/yautja/thrall/light/bone), YAUTJA_CAN_BUY_SHOES, VENDOR_ITEM_RECOMMENDED),
 
 		list("Main Weapons (CHOOSE 1)", 0, null, null, null),
 		list("The Primary Hunting Sword", 0, /obj/item/weapon/yautja/sword, YAUTJA_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
@@ -455,24 +509,24 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 		return
 	var/client/mob_client = user.client
 
-	if(mob_client.prefs.predator_use_legacy != "None")
+	if(mob_client.can_use_pred_legacies() && mob_client.prefs.predator_use_legacy != "None")
 		switch(mob_client.prefs.predator_use_legacy)
 			if("Dragon")
-				icon_state = "halfarmor_elder_tr"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_tr")
+				icon_state = "halfarmor_legacy_dragon"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_legacy_dragon")
 			if("Swamp")
-				icon_state = "halfarmor_elder_joshuu"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_joshuu")
+				icon_state = "halfarmor_legacy_swamp"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_legacy_swamp")
 			if("Enforcer")
-				icon_state = "halfarmor_elder_feweh"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_feweh")
+				icon_state = "halfarmor_legacy_enforcer"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_legacy_enforcer")
 			if("Collector")
-				icon_state = "halfarmor_elder_n"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_n")
+				icon_state = "halfarmor_legacy_collector"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_legacy_collector")
 		user.update_inv_wear_suit()
 		return
 
-	if(mob_client.prefs.predator_use_unique != "None")
+	if(mob_client.can_use_pred_specials() && mob_client.prefs.predator_use_unique != "None")
 		switch(mob_client.prefs.predator_use_unique)
 			if("Anubys")
 				icon_state = "halfarmor_elite_anubys"
@@ -511,24 +565,24 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 		return
 	var/client/mob_client = user.client
 
-	if(mob_client.prefs.predator_use_legacy != "None")
+	if(mob_client.can_use_pred_legacies() && mob_client.prefs.predator_use_legacy != "None")
 		switch(mob_client.prefs.predator_use_legacy)
 			if("Dragon")
-				icon_state = "pred_mask_elder_tr"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_tr")
+				icon_state = "halfarmor_legacy_dragon"
+				LAZYSET(item_state_slots, WEAR_FACE, "halfarmor_legacy_dragon")
 			if("Swamp")
-				icon_state = "pred_mask_elder_joshuu"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_joshuu")
+				icon_state = "halfarmor_legacy_swamp"
+				LAZYSET(item_state_slots, WEAR_FACE, "halfarmor_legacy_swamp")
 			if("Enforcer")
-				icon_state = "pred_mask_elder_feweh"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_feweh")
+				icon_state = "halfarmor_legacy_enforcer"
+				LAZYSET(item_state_slots, WEAR_FACE, "halfarmor_legacy_enforcer")
 			if("Collector")
-				icon_state = "pred_mask_elder_n"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_n")
+				icon_state = "halfarmor_legacy_collector"
+				LAZYSET(item_state_slots, WEAR_FACE, "halfarmor_legacy_collector")
 		user.update_inv_wear_mask()
 		return
 
-	if(mob_client.prefs.predator_use_unique != "None")
+	if(mob_client.can_use_pred_specials() && mob_client.prefs.predator_use_unique != "None")
 		switch(mob_client.prefs.predator_use_unique)
 			if("Anubys")
 				item_icons = list(
@@ -574,7 +628,24 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 		return
 	var/client/mob_client = user.client
 
-	if(mob_client.prefs.predator_use_unique != "None")
+	if(mob_client.can_use_pred_legacies() && mob_client.prefs.predator_use_legacy != "None")
+		switch(mob_client.prefs.predator_use_legacy)
+			if("Dragon")
+				icon_state = "legacy_y-boots_dragon"
+				LAZYSET(item_state_slots, WEAR_FEET, "legacy_y-boots_dragon")
+			if("Swamp")
+				icon_state = "legacy_y-boots_swamp"
+				LAZYSET(item_state_slots, WEAR_FEET, "legacy_y-boots_swamp")
+			if("Enforcer")
+				icon_state = "legacy_y-boots_enforcer"
+				LAZYSET(item_state_slots, WEAR_FEET, "legacy_y-boots_enforcer")
+			if("Collector")
+				icon_state = "legacy_y-boots_collector"
+				LAZYSET(item_state_slots, WEAR_FEET, "legacy_y-boots_collector")
+		user.update_inv_shoes()
+		return
+
+	if(mob_client.can_use_pred_specials() && mob_client.prefs.predator_use_unique != "None")
 		switch(mob_client.prefs.predator_use_unique)
 			if("Anubys")
 				icon_state = "elite_y-boots1_anubys"

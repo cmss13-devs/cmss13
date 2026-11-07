@@ -850,7 +850,7 @@ ServerTick,prof.c,2949,58074116775,97.508362,601,96629146,8346,4399023551,239342
 /datum/equipment_preset/fun/santa/New,code/modules/gear_presets/fun.dm,256,310691,0.000522,8,38836,36208,44063,2391.960374
 /datum/equipment_preset/pmc/pmc_med_investigator/get_antag_clothing_equipment,code/modules/gear_presets/pmc.dm,675,17232,0.000029,1,17232,17232,17232,0.000000
 /obj/structure/machinery/door/airlock/almayer/marine/bravo/proc/(init),<?.dm>,4294967295,4118,0.000007,1,4118,4118,4118,0.000000
-/obj/item/weapon/gun/pistol/heavy/co/set_gun_config_values,code/modules/projectiles/guns/pistols.dm,296,46487,0.000078,3,15495,13445,19056,3095.181901
+/obj/item/weapon/gun/pistol/deagle/co/set_gun_config_values,code/modules/projectiles/guns/pistols.dm,296,46487,0.000078,3,15495,13445,19056,3095.181901
 /obj/item/storage/box/m56d_hmg/proc/(init),<?.dm>,4294967295,30357,0.000051,6,5059,3396,7463,1782.380824
 /obj/item/clothing/under/marine/officer/pilot/dcc/proc/(init),<?.dm>,4294967295,4648,0.000008,1,4648,4648,4648,0.000000
 /obj/item/device/radio/headset/almayer/mt/proc/(init),<?.dm>,4294967295,33022,0.000055,5,6604,5720,7725,772.367464
@@ -1600,7 +1600,7 @@ ServerTick,prof.c,2949,58074116775,97.508362,601,96629146,8346,4399023551,239342
 /obj/structure/reagent_dispensers/tank/fuel/update_icon,code/game/objects/structures/reagent_dispensers.dm,366,2060091,0.003459,142,14507,6612,42640,5459.154675
 /obj/item/stack/cable_coil/random/Initialize,code/game/objects/items/stacks/cable_coil.dm,309,1860814,0.003124,17,109459,91651,134711,13665.503707
 /obj/item/reagent_container/food/condiment/on_reagent_change,code/game/objects/items/reagent_containers/food/condiment.dm,87,237665,0.000399,77,3086,511,9859,2600.600540
-/obj/item/weapon/gun/pistol/heavy/proc/(init),<?.dm>,4294967295,40748,0.000068,4,10187,6422,20689,7006.934042
+/obj/item/weapon/gun/pistol/deagle/proc/(init),<?.dm>,4294967295,40748,0.000068,4,10187,6422,20689,7006.934042
 /obj/item/clothing/suit/storage/marine/light/vest/dcc/proc/(init),<?.dm>,4294967295,6282,0.000011,1,6282,6282,6282,0.000000
 /obj/structure/machinery/line_nexter/Initialize,code/game/machinery/line_nexter.dm,19,202960,0.000341,6,33826,25207,40095,5919.351113
 /datum/reagent/medical/bicaridine/proc/(init),<?.dm>,4294967295,1417174,0.002379,565,2508,1853,15950,1105.816450
@@ -5620,7 +5620,7 @@ ServerTick,prof.c,2949,58074116775,97.508362,601,96629146,8346,4399023551,239342
 /obj/item/clothing/equipped,code/modules/clothing/clothing.dm,524,44483,0.000075,1,44483,44483,44483,0.000000
 /obj/item/clothing/accessory/mask/proc/(init),<?.dm>,4294967295,4268,0.000007,1,4268,4268,4268,0.000000
 /proc/cmp_text_asc,code/__HELPERS/cmp.dm,8,6622,0.000011,9,735,491,1592,367.848984
-/obj/item/weapon/gun/pistol/heavy/set_gun_attachment_offsets,code/modules/projectiles/guns/pistols.dm,269,10770,0.000018,4,2692,2274,3547,577.454760
+/obj/item/weapon/gun/pistol/deagle/set_gun_attachment_offsets,code/modules/projectiles/guns/pistols.dm,269,10770,0.000018,4,2692,2274,3547,577.454760
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series/set_gun_attachment_offsets,code/modules/projectiles/guns/revolvers.dm,488,5521,0.000009,2,2760,2345,3176,587.606161
 /datum/chemical_reaction/sacid/proc/(init),<?.dm>,4294967295,1483,0.000002,1,1483,1483,1483,0.000000
 /obj/item/storage/box/guncase/Initialize,code/modules/cm_marines/equipment/guncases.dm,23,61963902,0.104039,49,1264569,806595,2237415,257016.348464
@@ -6423,7 +6423,7 @@ SendMaps,prof.c,2971,34016906,0.057116,601,56600,451,6068594,265255.695509
 /datum/equipment_preset/wo/bc/proc/(init),<?.dm>,4294967295,19647,0.000033,8,2455,1954,4027,756.355075
 /proc/load_map_configs,code/datums/map_config.dm,139,141584,0.000238,1,141584,141584,141584,0.000000
 /obj/item/clothing/shoes/Initialize,code/modules/clothing/clothing.dm,446,20428650,0.034300,165,123810,80790,355704,41441.872192
-/obj/item/weapon/gun/pistol/heavy/set_gun_config_values,code/modules/projectiles/guns/pistols.dm,273,52117,0.000088,4,13029,11341,16661,2454.205438
+/obj/item/weapon/gun/pistol/deagle/set_gun_config_values,code/modules/projectiles/guns/pistols.dm,273,52117,0.000088,4,13029,11341,16661,2454.205438
 /datum/chemical_reaction/tequila_sunrise/proc/(init),<?.dm>,4294967295,1603,0.000003,1,1603,1603,1603,0.000000
 /datum/equipment_preset/corpse/pizza/New,code/modules/gear_presets/corpses.dm,1060,148828,0.000250,16,9301,8316,11421,1037.514530
 /obj/item/storage/belt/shotgun/full/fill_preset_inventory,code/game/objects/items/storage/belt.dm,1034,1299756,0.002182,1,1299756,1299756,1299756,0.000000

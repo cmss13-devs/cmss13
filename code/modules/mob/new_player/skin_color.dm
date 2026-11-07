@@ -19,7 +19,7 @@
 	icon_name = "pale1"
 
 /datum/skin_color/pale2
-	name = "Pale 2"
+	name = SKIN_COLOR_PALE2
 	icon_name = "pale2"
 
 /datum/skin_color/pale3

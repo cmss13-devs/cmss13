@@ -73,15 +73,18 @@
 			add_fingerprint(usr)
 
 /obj/item/storage/clicked(mob/user, list/mods)
-	if(!mods[SHIFT_CLICK] && mods[MIDDLE_CLICK] && CAN_PICKUP(user, src))
+	if(!mods[SHIFT_CLICK] && mods[MIDDLE_CLICK] && !mods[ALT_CLICK] && CAN_PICKUP(user, src))
 		handle_mmb_open(user)
 		return TRUE
 
 	//Allow alt-clicking to remove items directly from storage.
 	//Does so by passing the alt mod back to do_click(), which eventually delivers it to attack_hand().
 	//This ensures consistent click behaviour between alt-click and left-mouse drawing.
-	if(mods[ALT_CLICK]  && loc == user && !user.get_active_hand())
+	if(mods[ALT_CLICK] && mods[LEFT_CLICK] && loc == user && !user.get_active_hand())
 		return FALSE
+
+	if(mods[CTRL_CLICK] && loc == user && (storage_flags & STORAGE_ALLOW_DRAWING_METHOD_TOGGLE))
+		storage_draw_logic(name)
 
 	return ..()
 
@@ -344,15 +347,16 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 					return TRUE
 	return FALSE
 
-/obj/item/storage/Entered(atom/movable/AM, oldloc)
+/obj/item/storage/Entered(atom/movable/entered_item, oldloc)
 	. = ..()
-	AM.layer = ABOVE_HUD_LAYER
-	AM.plane = ABOVE_HUD_PLANE
+	entered_item.layer = ABOVE_HUD_LAYER
+	entered_item.plane = ABOVE_HUD_PLANE
 
-/obj/item/storage/Exited(atom/movable/AM, newloc)
+/obj/item/storage/Exited(atom/movable/exited_item, newloc)
 	. = ..()
-	AM.layer = initial(AM.layer)
-	AM.plane = initial(AM.plane)
+	exited_item.layer = initial(exited_item.layer)
+	exited_item.plane = initial(exited_item.plane)
+	exited_item.screen_loc = null
 
 /datum/numbered_display
 	var/obj/item/sample_object
@@ -370,7 +374,6 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 
 //This proc determins the size of the inventory to be displayed. Please touch it only if you know what you're doing.
 /obj/item/storage/proc/orient2hud()
-
 	var/adjusted_contents = length(contents)
 
 	//Numbered contents display
@@ -378,24 +381,26 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 	if (storage_flags & STORAGE_CONTENT_NUM_DISPLAY)
 		numbered_contents = list()
 		adjusted_contents = 0
-		for (var/obj/item/I in contents)
-			var/found = 0
+		for (var/obj/item/item in contents)
+			var/found = FALSE
 			for (var/datum/numbered_display/ND in numbered_contents)
-				if (ND.sample_object.type == I.type)
+				if (ND.sample_object.type == item.type)
 					ND.number++
-					found = 1
+					item.screen_loc = null	// Hide non-sample items so they never appear as ghosts or stuck in the hand HUD
+					item.maptext = null
+					found = TRUE
 					break
 			if (!found)
 				adjusted_contents++
-				numbered_contents.Add( new/datum/numbered_display(I) )
+				numbered_contents.Add(new /datum/numbered_display(item))
 
 	if (storage_slots == null)
 		space_orient_objs(numbered_contents)
 	else
 		var/row_num = 0
-		var/col_count = min(7,storage_slots) -1
+		var/col_count = min(7, storage_slots) - 1
 		if (adjusted_contents > 7)
-			row_num = floor((adjusted_contents-1) / 7) // 7 is the maximum allowed width.
+			row_num = floor((adjusted_contents - 1) / 7) // 7 is the maximum allowed width.
 		slot_orient_objs(row_num, col_count, numbered_contents)
 	return
 
@@ -459,53 +464,53 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 
 //This proc return 1 if the item can be picked up and 0 if it can't.
 //Set the stop_messages to stop it from printing messages
-/obj/item/storage/proc/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE)
-	if(!istype(W) || (W.flags_item & NODROP))
+/obj/item/storage/proc/can_be_inserted(obj/item/tool, mob/user, stop_messages = FALSE)
+	if(!istype(tool) || (tool.flags_item & NODROP))
 		return //Not an item
 
-	if(src.loc == W)
+	if(src.loc == tool)
 		return 0 //Means the item is already in the storage item
 
 	//specific labeler check
-	if(istype(W, /obj/item/tool/hand_labeler))
-		var/obj/item/tool/hand_labeler/L = W
+	if(istype(tool, /obj/item/tool/hand_labeler))
+		var/obj/item/tool/hand_labeler/L = tool
 		if(L.mode)
 			return 0
 
-	if(istype(W, /obj/item/tool/yautja_cleaner) && user.a_intent == INTENT_HARM) //Cleaner both needs to be able to melt containers and be stored within them.
+	if(istype(tool, /obj/item/tool/yautja_cleaner) && user.a_intent == INTENT_HARM) //Cleaner both needs to be able to melt containers and be stored within them.
 		return
 
-	if(W.heat_source && !(W.flags_item & IGNITING_ITEM))
-		to_chat(usr, SPAN_ALERT("[W] is ignited, you can't store it!"))
+	if(tool.heat_source && !(tool.flags_item & IGNITING_ITEM))
+		to_chat(usr, SPAN_ALERT("[tool] is ignited, you can't store it!"))
 		return
 
-	if(!can_hold_type(W.type, user))
+	if(!can_hold_type(tool.type, user))
 		if(!stop_messages)
-			to_chat(usr, SPAN_NOTICE("[src] cannot hold [W]."))
+			to_chat(usr, SPAN_NOTICE("[src] cannot hold [tool]."))
 		return
 
 	var/w_limit_bypassed = 0
 	if(length(bypass_w_limit))
 		for(var/A in bypass_w_limit)
-			if(istype(W, A))
+			if(istype(tool, A))
 				w_limit_bypassed = 1
 				break
 
-	if (!w_limit_bypassed && W.w_class > max_w_class)
+	if (!w_limit_bypassed && tool.w_class > max_w_class)
 		if(!stop_messages)
-			to_chat(usr, SPAN_NOTICE("[W] is too long for this [src]."))
+			to_chat(usr, SPAN_NOTICE("[tool] is too long for [src]."))
 		return 0
 
 	//Checks if there is room for the item.
-	if(!has_room(W))
+	if(!has_room(tool))
 		if(!stop_messages)
 			to_chat(usr, SPAN_NOTICE("[src] is full, make some space."))
 		return 0
 
-	if(W.w_class >= src.w_class && (isstorage(W)))
+	if(tool.w_class >= src.w_class && (isstorage(tool)))
 		if(!istype(src, /obj/item/storage/backpack/holding)) //bohs should be able to hold backpacks again. The override for putting a boh in a boh is in backpack.dm.
 			if(!stop_messages)
-				to_chat(usr, SPAN_NOTICE("[src] cannot hold [W] as it's a storage item of the same size."))
+				to_chat(usr, SPAN_NOTICE("[src] cannot hold [tool] as it's a storage item of the same size."))
 			return 0 //To prevent the stacking of same sized storage items.
 
 	return 1
@@ -819,9 +824,10 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 						//Hijacked from /obj/item/ammo_magazine/proc/create_handful because it had to be handled differently
 						//All this because shell types are instances and not their own objects :)
 
-						var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
+						var/datum/ammo/ammo_listing = GLOB.ammo_list[ammo_dumping.default_ammo]
+						var/obj/item/ammo_magazine/handful/new_handful = new ammo_listing.handful_type()
 						var/transferred_handfuls = min(ammo_dumping.current_rounds, amount_to_dump)
-						new_handful.generate_handful(ammo_dumping.default_ammo, ammo_dumping.caliber, amount_to_dump, transferred_handfuls, ammo_dumping.gun_type)
+						new_handful.generate_handful(ammo_dumping.default_ammo, ammo_dumping.caliber, transferred_handfuls, ammo_dumping.gun_type)
 						ammo_dumping.current_rounds -= transferred_handfuls
 						handle_item_insertion(new_handful, TRUE, user)
 						update_icon(-transferred_handfuls)
@@ -1028,3 +1034,8 @@ Returns FALSE if no top level turf (a loc was null somewhere, or a non-turf atom
 	if(src && ishuman(usr))
 		instant_pill_grab_mode = !instant_pill_grab_mode
 		to_chat(usr, SPAN_NOTICE("You will now [instant_pill_grab_mode ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))
+
+/obj/item/storage/get_examine_text(mob/user)
+	. = ..()
+	if(storage_flags & STORAGE_ALLOW_DRAWING_METHOD_TOGGLE)
+		. += "\nCtrl + Click to swap storage drawing method."

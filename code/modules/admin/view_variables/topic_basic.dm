@@ -41,7 +41,7 @@
 			log_admin("Admin [key_name(usr)] showed [key_name(C)] a VV window of a [target]")
 			to_chat(C, "[admin_holder.fakekey ? "an Administrator" : "[usr.client.key]"] has granted you access to view a View Variables window", confidential = TRUE)
 			C.debug_variables(target)
-	if(check_rights(R_DEBUG))
+	if(check_rights(R_DEBUG, FALSE))
 		if(href_list[VV_HK_DELETE])
 			usr.client.admin_delete(target)
 			if (isturf(target)) // show the turf that took its place

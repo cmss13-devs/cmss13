@@ -29,11 +29,11 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	name = "ancient alien armor"
 	desc = "Ancient armor made from a strange alloy. It feels cold with an alien weight."
 
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/hunter/pred_armor.dmi'
 	icon_state = "halfarmor1_ebony"
 	item_state = "armor"
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/pred_armor.dmi'
 	)
 
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
@@ -67,32 +67,13 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	fire_intensity_resistance = 10
 	black_market_value = 100
 
-/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,8), armor_material = "ebony", legacy = "None")
+/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,8), armor_material = "ebony")
 	. = ..()
 	if(!random_icon)
 		LAZYSET(item_state_slots, WEAR_JACKET, icon_state)
 		return
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
-
-	if(legacy != "None")
-		switch(legacy)
-			if("dragon")
-				icon_state = "halfarmor_elder_tr"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_tr")
-				return
-			if("swamp")
-				icon_state = "halfarmor_elder_joshuu"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_joshuu")
-				return
-			if("enforcer")
-				icon_state = "halfarmor_elder_feweh"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_feweh")
-				return
-			if("collector")
-				icon_state = "halfarmor_elder_n"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_n")
-				return
 
 	if(armor_number > 8)
 		armor_number = 1
@@ -296,9 +277,9 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	name = "ancient alien greaves"
 	desc = "Greaves made from scraps of cloth and a strange alloy. They feel cold with an alien weight."
 
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/hunter/pred_shoes.dmi'
 	item_icons = list(
-		WEAR_FEET = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_FEET = 'icons/mob/humans/onmob/hunter/pred_shoes.dmi'
 	)
 	icon_state = "y-boots1_ebony"
 
@@ -468,6 +449,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	siemens_coefficient = 0.9
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	valid_accessory_slots = list(ACCESSORY_SLOT_DEFAULT, ACCESSORY_SLOT_TIE, ACCESSORY_SLOT_PATCH, ACCESSORY_SLOT_STORAGE, ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_ARMOR_C, ACCESSORY_SLOT_WRIST_L, ACCESSORY_SLOT_WRIST_R, ACCESSORY_SLOT_MASK, ACCESSORY_SLOT_TROPHY)
+	is_seethrough = TRUE
 
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
@@ -1199,6 +1181,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	return COMPONENT_CANCEL_XENO_HEAL
 
 /obj/item/hunting_trap/Crossed(atom/movable/AM)
+	..()
 	if(armed && ismob(AM))
 		var/mob/trap_mob = AM
 		if(!trap_mob.buckled)
@@ -1219,7 +1202,6 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 				armed = FALSE
 				var/mob/living/simple_animal/simple_mob = trap_mob
 				simple_mob.health -= 20
-	..()
 
 /obj/item/hunting_trap/proc/cleanup_tether()
 	if (tether_effect)
@@ -1264,9 +1246,9 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	name = "alien stone armor"
 	desc = "A suit of armor made entirely out of stone. Looks incredibly heavy."
 
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/hunter/pred_armor.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/pred_armor.dmi'
 	)
 	item_state = "armor"
 	icon_state = "fullarmor_ebony"
@@ -1297,9 +1279,9 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	name = "alien stone greaves"
 	desc = "A pair of armored, perfectly balanced boots. Perfect for running through cement because they're incredibly heavy."
 
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/hunter/pred_shoes.dmi'
 	item_icons = list(
-		WEAR_FEET = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_FEET = 'icons/mob/humans/onmob/hunter/pred_shoes.dmi'
 	)
 	icon_state = "y-boots2_ebony"
 
@@ -1617,6 +1599,11 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	icon = 'icons/obj/items/hunter/prey_items.dmi'
 	unacidable = TRUE
 
+/obj/item/skull/Initialize(mapload, ...)
+	. = ..()
+	if(!icon_state)
+		return INITIALIZE_HINT_QDEL
+
 /obj/item/skull/queen
 	name = "Queen skull"
 	desc = "Skull of a prime hive ruler, mother to many."
@@ -1718,12 +1705,27 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	desc = "Skull of a highly acidic xenomorph, a venomous ranged attacker."
 	icon_state = "spitter_skull"
 
+/obj/item/skull/abomination
+	name = "Abomination skull"
+	desc = "Skull of a mysterious hybrid xenomorph, a horror on the field."
+	icon_state = "predalien_skull"
+
+/obj/item/skull/abomination/get_examine_text(mob/user)
+	. = ..()
+	if(isyautja(user))
+		. += SPAN_RED("Not even this relic can be tolerated. Destroy it.")
+
 // PELTS
 
 /obj/item/pelt
 	name = "pelt"
 	icon = 'icons/obj/items/hunter/prey_items.dmi'
 	unacidable = TRUE
+
+/obj/item/pelt/Initialize(mapload, ...)
+	. = ..()
+	if(!icon_state)
+		return INITIALIZE_HINT_QDEL
 
 /obj/item/pelt/queen
 	name = "Queen pelt"
@@ -1829,6 +1831,16 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	name = "Larva pelt"
 	desc = "The hide of a juvenile Xenomorph, a grim trophy from a fledgling that never reached its full potential."
 	icon_state = "larva_pelt"
+
+/obj/item/pelt/abomination
+	name = "Abomination pelt"
+	desc = "The pelt of a mysterious hybrid xenomorph, a horror on the field."
+	icon_state = "predalien_pelt"
+
+/obj/item/pelt/abomination/get_examine_text(mob/user)
+	. = ..()
+	if(isyautja(user))
+		. += SPAN_RED("Not even this relic can be tolerated. Destroy it.")
 
 /// TOOLS
 

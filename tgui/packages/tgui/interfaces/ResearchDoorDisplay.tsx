@@ -9,6 +9,7 @@ type Data = {
   has_flash: BooleanLike;
   open_door: BooleanLike;
   open_shutter: BooleanLike;
+  has_shutter: BooleanLike;
   flash_charging: BooleanLike;
 };
 
@@ -25,17 +26,19 @@ export const ResearchDoorDisplay = () => {
                 Linked door : {data.door_id}
               </NoticeBox>
             </Flex.Item>
-            <Flex.Item>
-              {(!data.open_shutter && (
-                <Button fluid icon="lock-open" onClick={() => act('shutter')}>
-                  Open shutter
-                </Button>
-              )) || (
-                <Button fluid icon="lock" onClick={() => act('shutter')}>
-                  Close shutter
-                </Button>
-              )}
-            </Flex.Item>
+            {!!data.has_shutter && (
+              <Flex.Item>
+                {(!data.open_shutter && (
+                  <Button fluid icon="lock-open" onClick={() => act('shutter')}>
+                    Open shutter
+                  </Button>
+                )) || (
+                  <Button fluid icon="lock" onClick={() => act('shutter')}>
+                    Close shutter
+                  </Button>
+                )}
+              </Flex.Item>
+            )}
             <Flex.Item>
               {(!data.open_door && (
                 <Button fluid icon="door-open" onClick={() => act('door')}>

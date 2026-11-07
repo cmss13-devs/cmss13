@@ -65,6 +65,14 @@ CLIENT_VERB(togglerebootsound)
 	prefs.save_preferences()
 	to_chat(src, "You will [(prefs.toggles_sound & SOUND_REBOOT) ? "now" : "no longer"] hear server reboot sounds.")
 
+CLIENT_VERB(toggleroundendmusic)
+	set name = "Hear/Silence Round End Music"
+	set category = "Preferences.Sound"
+	set desc = "Toggles hearing the round end music."
+	prefs.toggles_sound ^= SOUND_ROUND_END
+	prefs.save_preferences()
+	to_chat(src, "You will [(prefs.toggles_sound & SOUND_ROUND_END ) ? "now" : "no longer"] hear the round end music.")
+
 CLIENT_VERB(togglemidis)
 	set name = "Silence Current Admin Sound"
 	set category = "Preferences.Sound"
@@ -277,6 +285,7 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_shove'>Toggle Auto Shove</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_holotag'>Toggle Auto Holotags</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_swap_hands'>Toggle Middle Mouse Swapping Hands</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_vend_item_to_hand'>Toggle Vendors Vending to Hands</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>",
@@ -426,6 +435,25 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		if(DUAL_WIELD_NONE)
 			to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now has no effect on how you fire."))
 
+	prefs.save_preferences()
+
+// Toggles whether or not using a body scanner/handheld scanner applies a triage tag to patients automatically
+
+/client/proc/toggle_auto_holotag()
+	switch (prefs.auto_holotag) {
+		if (NEVER_TAG_PATIENTS)
+			prefs.auto_holotag = ALWAYS_TAG_PATIENTS
+			to_chat(src, SPAN_BOLDNOTICE("Body scanners and handheld scanners will now automatically apply holocards."))
+		if (ALWAYS_TAG_PATIENTS)
+			prefs.auto_holotag = BODYSCAN_TAG_PATIENTS
+			to_chat(src, SPAN_BOLDNOTICE("Only body scanners will automatically apply triage holocards."))
+		if (BODYSCAN_TAG_PATIENTS)
+			prefs.auto_holotag = NEVER_TAG_PATIENTS
+			to_chat(src, SPAN_BOLDNOTICE("Triage holocards will never be automatically applied by health scanning devices."))
+		else
+			// Redundancy case, if defines ever get changed
+			prefs.auto_holotag = ALWAYS_TAG_PATIENTS
+	}
 	prefs.save_preferences()
 
 /client/proc/toggle_middle_mouse_swap_hands() //Toggle whether middle click swaps your hands

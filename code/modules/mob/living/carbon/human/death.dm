@@ -11,15 +11,17 @@
 			// Override the current limb status
 			E.droplimb(0, 0, cause)
 
-
-
 	GLOB.data_core.manifest_modify(real_name, WEAKREF(src), null, null, "Deceased")
 
 	if(is_a_synth)
 		spawn_gibs()
 		return
 
-	undefibbable = TRUE
+	var/turf/death_turf = get_turf(src)
+	if(!should_block_game_interaction(src, TRUE) && (is_ground_level(death_turf.z) || is_mainship_level(death_turf.z) || is_reserved_level(death_turf.z)))
+		new /mob/dead/mob_marker(death_turf, src)
+
+	set_undefibbable()
 
 	..()
 
@@ -60,6 +62,10 @@
 		disable_lights()
 		disable_special_items()
 		disable_headsets() //Disable radios for dead people to reduce load
+
+		if(eyelid_timer)	//whatever state their eyes were in when dying, it stays so
+			deltimer(eyelid_timer)
+			eyelid_timer = null
 
 	if(pulledby && isxeno(pulledby)) // Xenos lose grab on dead humans
 		pulledby.stop_pulling()
@@ -133,6 +139,9 @@
 		death_message = "valiantly falls to the ground, dead, unable to continue."
 
 	. = ..(cause, gibbed, death_message)
+
+	// Update dropship HUD overlays to show dead state
+	init_dropship_hud_overlays()
 
 	// stat is now set
 	var/datum/cause_data/death_data = cause

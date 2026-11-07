@@ -171,6 +171,20 @@
 			chemicals.Add(list(list("title" = chemname, "id" = temp.id)))
 	.["chemicals"] = chemicals
 
+	var/list/additional_chemicals = list()
+	var/obj/structure/machinery/chem_storage/chem_network = GLOB.chemical_data.chemical_networks[network]
+	for(var/chem in chem_network.additional_chemicals)
+		var/amt = chem_network.additional_chemicals[chem]
+		var/datum/reagent/reagent = GLOB.chemical_reagents_list[chem]
+		if(reagent)
+			additional_chemicals += list(list(
+				"title" = reagent.name,
+				"amount" = amt,
+				"max_amount" = chem_network.additional_chemical_volume,
+				"id" = reagent.id
+			))
+	.["additional_chemicals"] = additional_chemicals
+
 /obj/structure/machinery/chem_dispenser/ui_act(action, list/params)
 	. = ..()
 	if(.)
@@ -195,6 +209,29 @@
 
 				current_reagent.add_reagent(reagent_name, min(amount, chem_storage.energy * 10, space))
 				chem_storage.energy = max(chem_storage.energy - min(amount, chem_storage.energy * 10, space) / 10, 0)
+
+			. = TRUE
+		if("dispense_additional")
+			if(inoperable() || QDELETED(beaker))
+				return
+			var/reagent_name = params["reagent"]
+
+			if(!beaker)
+				return TRUE
+			var/obj/structure/machinery/chem_storage/chem_network = GLOB.chemical_data.chemical_networks[network]
+			var/storage_amount = chem_network.additional_chemicals[reagent_name]
+			if(!storage_amount)
+				return TRUE
+
+			var/obj/item/reagent_container/current_beaker = beaker
+			var/datum/reagents/current_reagent = current_beaker.reagents
+			var/space = current_reagent.maximum_volume - current_reagent.total_volume
+
+			// Disallow fractional values from polluting the storage network
+			var/transferring = floor(min(amount, storage_amount, space))
+
+			current_reagent.add_reagent(reagent_name, transferring)
+			chem_network.additional_chemicals[reagent_name] -= transferring
 
 			. = TRUE
 

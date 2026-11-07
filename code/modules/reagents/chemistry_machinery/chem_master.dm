@@ -10,6 +10,7 @@
 	layer = BELOW_OBJ_LAYER //So bottles/pills reliably appear above it
 	var/req_skill = SKILL_MEDICAL
 	var/req_skill_level = SKILL_MEDICAL_DOCTOR
+	var/job_check = list()
 	var/pill_maker = TRUE
 	var/vial_maker = FALSE
 	var/obj/item/reagent_container/beaker = null
@@ -560,7 +561,7 @@
 				else
 					amount_per_pill = clamp((reagents.total_volume / to_create) / length(loaded_pill_bottles_to_fill), 0, 60)
 
-			msg_admin_niche("[key_name(user)] created one or more pills (total pills to synthesize: [to_create * clamp((length(loaded_pill_bottles_to_fill)), 1, max_bottles_count)] in [length(loaded_pill_bottles_to_fill)] pill bottles) (REAGENTS: [english_list(reagents_in_pill)] AMOUNT PER PILL: [amount_per_pill]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+			msg_admin_niche("[key_name(user)] created one or more pills (total pills to synthesize: [to_create * clamp((length(loaded_pill_bottles_to_fill)), 1, max_bottles_count)] in [length(loaded_pill_bottles_to_fill)] pill bottles) (REAGENTS: [english_list(reagents_in_pill)] AMOUNT PER PILL: [amount_per_pill]) in [ADMIN_VERBOSEJMP(src)]).")
 
 			if (length(loaded_pill_bottles_to_fill) > 0)
 				for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles_to_fill)
@@ -708,6 +709,9 @@
 /obj/structure/machinery/chem_master/attack_hand(mob/living/user)
 	if(stat & BROKEN)
 		return
+	if(length(job_check) && !(user.job in job_check))
+		to_chat(user, SPAN_WARNING("You have no idea how to operate the [name]."))
+		return FALSE
 	if(req_skill && !skillcheck(user, req_skill, req_skill_level))
 		to_chat(user, SPAN_WARNING("You don't have the training to use this."))
 		return
@@ -737,6 +741,7 @@
 	base_state = "industry_mixer"
 	req_skill = SKILL_ENGINEER
 	req_skill_level = SKILL_ENGINEER_TRAINED
+	job_check = list(JOB_ORDNANCE_TECH, JOB_WO_ORDNANCE_TECH)
 	pill_maker = FALSE
 	vial_maker = TRUE
 	max_pill_count = 0

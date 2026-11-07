@@ -53,7 +53,7 @@
 "aj" = (
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = 4;
@@ -1559,7 +1559,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_x = 4;
@@ -2156,8 +2156,7 @@
 	pixel_x = 32;
 	pixel_y = 6
 	},
-/obj/structure/stairs/multiz/up,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/almayer/plate,
 /area/tyrargo/indoors/heyst)
 "nt" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -2640,11 +2639,8 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/tyrargo/indoors/heyst)
 "sn" = (
-/obj/structure/ladder{
-	id = "bunker_lad";
-	height = 2
-	},
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/ladder/multiz,
 /turf/open/floor/almayer/blackfull2,
 /area/tyrargo/indoors/bunker/central_south)
 "so" = (
@@ -4277,12 +4273,6 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor/almayer/plating/northeast,
 /area/tyrargo/indoors/heyst)
-"Hg" = (
-/obj/structure/stairs/multiz/up{
-	dir = 1
-	},
-/turf/open/floor/almayer_hull,
-/area/tyrargo/indoors/heyst)
 "Hl" = (
 /obj/structure/surface/table/almayer,
 /obj/item/cell/crap,
@@ -4301,7 +4291,7 @@
 "Hy" = (
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_y = 20;
@@ -4476,7 +4466,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "Jl" = (
-/obj/structure/machinery/recharge_station,
+/obj/structure/machinery/recharge_station/alt,
 /turf/open/floor/almayer,
 /area/tyrargo/indoors/heyst)
 "Jo" = (
@@ -5655,6 +5645,10 @@
 	pixel_y = 22
 	},
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/prop/vehicles/tank/miltruck{
+	dir = 4;
+	pixel_y = -34
+	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "WR" = (
@@ -5839,7 +5833,7 @@
 "Yp" = (
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
 	pixel_y = 8;
@@ -6865,7 +6859,7 @@ aN
 aN
 aN
 aN
-Hg
+kU
 aN
 aN
 VZ
@@ -7953,7 +7947,7 @@ SK
 aN
 aN
 aN
-Hg
+kU
 aN
 aN
 VZ

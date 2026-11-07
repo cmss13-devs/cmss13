@@ -4,8 +4,9 @@
 	paygrades = list(PAY_SHORT_AE2 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "ARMY"
-	minimap_background = "background_ua"
+	minimap_background = "background_army"
 	job_title  = JOB_ARMY_TROOPER
+	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	flags = EQUIPMENT_PRESET_EXTRA
 	access = list(
@@ -98,37 +99,27 @@
 	return
 
 /datum/equipment_preset/survivor/army/proc/add_army_weapon(mob/living/carbon/human/new_human)
-	var/random_gun = rand(1,10)
+	var/random_gun = rand(1,9)
 	switch(random_gun)
-		if(1 , 2)
+		if(1 , 4)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/army(new_human), WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/heap/empty(new_human), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(new_human), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/heap/empty(new_human), WEAR_IN_JACKET)
-		if(3 , 4)
+		if(5)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/army(new_human), WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(new_human), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/heap/empty(new_human), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/heap/empty(new_human), WEAR_IN_JACKET)
-		if(5 , 6)
+		if(6)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/army(new_human), WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(new_human), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(new_human), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/heap/empty(new_human), WEAR_IN_JACKET)
-		if(7 , 8)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/army(new_human), WEAR_L_HAND)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/heap/empty(new_human), WEAR_IN_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/heap/empty(new_human), WEAR_IN_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(new_human), WEAR_IN_JACKET)
-		if(9)
+		if(7 , 9)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m4ra/army(new_human), WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra/heap/empty(new_human), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra(new_human), WEAR_IN_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra(new_human), WEAR_IN_JACKET)
-		if(10)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m4ra/army(new_human), WEAR_L_HAND)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra(new_human), WEAR_IN_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra/heap/empty(new_human), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra(new_human), WEAR_IN_JACKET)
 
 /datum/equipment_preset/survivor/army/add_survivor_weapon_pistol(mob/living/carbon/human/new_human)
@@ -137,28 +128,15 @@
 /datum/equipment_preset/survivor/army/proc/add_army_weapon_pistol(mob/living/carbon/human/new_human)
 	var/random_pistol = rand(1,6)
 	switch(random_pistol)
-		if(1 , 2)
+		if(1 , 3)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3(new_human), WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/vp78/army(new_human), WEAR_IN_BELT)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/vp78(new_human), WEAR_IN_BELT)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/vp78(new_human), WEAR_IN_BELT)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/vp78(new_human), WEAR_IN_BELT)
-		if(3)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3(new_human), WEAR_WAIST)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/vp78/army(new_human), WEAR_IN_BELT)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/vp78(new_human), WEAR_IN_BELT)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/vp78(new_human), WEAR_IN_BELT)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/vp78(new_human), WEAR_IN_BELT)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/vp78(new_human), WEAR_IN_BELT)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/vp78(new_human), WEAR_IN_BELT)
-		if(4)
+		if(4, 5)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m39, WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39/army(new_human), WEAR_IN_BELT)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(new_human), WEAR_IN_BELT)
-		if(5)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m39, WEAR_WAIST)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39/army(new_human), WEAR_IN_BELT)
-			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(new_human), WEAR_IN_BELT)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(new_human), WEAR_IN_BELT)
 		if(6)
 			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector(new_human),WEAR_WAIST)
@@ -200,7 +178,7 @@
 	assignment = JOB_ARMY_TROOPER
 	job_title  = JOB_ARMY_TROOPER
 	skills = /datum/skills/military/survivor/army_standard
-	minimap_icon = "hudsquad_trpr"
+	minimap_icon = "us_trooper"
 
 /datum/equipment_preset/survivor/army/standard/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -219,7 +197,7 @@
 	assignment = JOB_ARMY_ENGI
 	job_title  = JOB_ARMY_ENGI
 	skills = /datum/skills/military/survivor/army_engineer
-	minimap_icon = "hudsquad_cet"
+	minimap_icon = "us_engi_tech"
 
 /datum/equipment_preset/survivor/army/engineer/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -240,7 +218,7 @@
 	assignment = JOB_ARMY_MEDIC
 	job_title  = JOB_ARMY_MEDIC
 	skills = /datum/skills/military/survivor/army_medic
-	minimap_icon = "hudsquad_cet"
+	minimap_icon = "us_med_tech"
 
 /datum/equipment_preset/survivor/army/medic/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -264,7 +242,7 @@
 	assignment = JOB_ARMY_MARKSMAN
 	job_title  = JOB_ARMY_MARKSMAN
 	skills = /datum/skills/military/survivor/army_marksman
-	minimap_icon = "hudsquad_snpr"
+	minimap_icon = "us_marksman"
 
 /datum/equipment_preset/survivor/army/marksman/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -275,8 +253,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big/new_bimex/black(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m4ra_custom(new_human), WEAR_L_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra/extended(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/army/e4s, WEAR_ACCESSORY)
 
 /datum/equipment_preset/survivor/army/gunner
@@ -285,7 +261,7 @@
 	assignment = JOB_ARMY_SMARTGUNNER
 	job_title  = JOB_ARMY_SMARTGUNNER
 	skills = /datum/skills/military/survivor/army_gunner
-	minimap_icon = "hudsquad_mmg"
+	minimap_icon = "us_gunner"
 
 /datum/equipment_preset/survivor/army/gunner/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -307,11 +283,10 @@
 	assignment = JOB_ARMY_SNCO
 	job_title  = JOB_ARMY_SNCO
 	skills = /datum/skills/military/survivor/army_sl
-	minimap_icon = "hudsquad_sl_army"
+	minimap_icon = "us_leader"
 
 /datum/equipment_preset/survivor/army/sl/load_gear(mob/living/carbon/human/new_human)
 	..()
-	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/army/e7, WEAR_ACCESSORY)
 	spawn_random_headgear(new_human)
 	add_army_weapon_pistol(new_human)
@@ -329,7 +304,9 @@
 	job_title  = JOB_ARMY_CO
 	idtype = /obj/item/card/id/gold
 	skills = /datum/skills/commander
-	minimap_icon = "hudsquad_co_army"
+	faction = FACTION_MARINE
+	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
+	minimap_icon = "co"
 
 /datum/equipment_preset/survivor/army/co/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/army/uniform = new()
@@ -360,7 +337,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba(new_human), WEAR_IN_BELT)
-	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/cigarette/cigar/classic(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo/gold(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/neckerchief/yellow(new_human), WEAR_FACE)
@@ -376,10 +352,11 @@
 /datum/equipment_preset/synth/survivor/army
 	name = "Survivor - US Army Synthetic"
 	paygrades = list(PAY_SHORT_AE8E = JOB_PLAYTIME_TIER_0)
+	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	assignment = JOB_ARMY_SYN
-	job_title  = "Synthetic"
 	idtype = /obj/item/card/id/gold
+	minimap_icon = "us_synth"
 
 /datum/equipment_preset/synth/survivor/army/load_gear(mob/living/carbon/human/preset_human)
 	var/obj/item/clothing/under/marine/army/uniform = new()

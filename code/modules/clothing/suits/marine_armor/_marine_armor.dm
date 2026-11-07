@@ -84,7 +84,7 @@
 		/obj/item/storage/belt/gun/xm51,
 	)
 
-	light_power = 3
+	light_power = 4
 	light_range = 4
 	light_color = LIGHT_COLOR_TUNGSTEN
 	light_system = MOVABLE_LIGHT
@@ -92,6 +92,7 @@
 	var/flashlight_cooldown = 0 //Cooldown for toggling the light
 	var/locate_cooldown = 0 //Cooldown for SL locator
 	var/armor_overlays[]
+	var/storage_capacity = 8
 	actions_types = list(/datum/action/item_action/toggle/lamp)
 	var/flags_marine_armor = ARMOR_SQUAD_OVERLAY|ARMOR_LAMP_OVERLAY
 	var/specialty = "M3 pattern marine" //Same thing here. Give them a specialty so that they show up correctly in vendors. speciality does NOTHING if you have NO_NAME_OVERRIDE
@@ -134,7 +135,7 @@
 		/obj/item/ammo_magazine/smg,
 		/obj/item/ammo_magazine/sniper,
 	)
-	pockets.max_storage_space = 8
+	pockets.max_storage_space = storage_capacity
 
 	light_holder = new(src)
 	AddElement(/datum/element/corp_label/armat)
@@ -269,7 +270,7 @@
 		new_look = GLOB.armor_style_list[new_style]
 
 	// Replace the digits in the current icon state with `new_look`. (E.g. "L6" -> "L2")
-	icon_state = digits.Replace(icon_state, new_look)
+	icon_state = digits.Replace(icon_state, "[new_look]")
 
 /obj/item/clothing/suit/storage/marine/medium/rto
 	icon_state = "io"
@@ -280,8 +281,16 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	storage_slots = 4
-	light_range = 5 //slightly higher
 	specialty = "M4 pattern marine"
+
+/obj/item/clothing/suit/storage/marine/medium/rto/mod_b
+	name = "\improper modified M4 pattern marine armor 'B'"
+	desc = "A modified suit of M4 pattern marine armor with a shoulder pauldron and spall guard. Its flexible mesh backing leaves plenty of room for pouches and field equipment."
+	icon_state = "MB"
+	specialty = "M4 pattern mod-'B' marine"
+	lamp_icon = "lampr"
+	storage_slots = null
+	storage_capacity = 10 //equivalent to 3 large and 1 tiny slot
 
 /obj/item/clothing/suit/storage/marine/medium/rto/army
 	name = "\improper Personal Body Armor System"
@@ -423,6 +432,24 @@
 	specialty = "B12 pattern marine"
 	light_range = 5
 
+/obj/item/clothing/suit/storage/marine/medium/leader/mod_a
+	name = "\improper modified B12 pattern marine armor 'A'"
+	desc = "A modified suit of B12 pattern marine armor with reinforced shoulder plating and a plated sleeve. Some of the usual pouches have been removed to accommodate the extra armor."
+	icon_state = "MA"
+	armor_melee = CLOTHING_ARMOR_HIGH
+	storage_slots = 2
+	specialty = "B12 pattern mod-'A' marine"
+	lamp_icon = "lampr"
+
+/obj/item/clothing/suit/storage/marine/light/leader/mod_c
+	name = "\improper modified M3-L pattern marine armor"
+	desc = "A sleeveless suit of M3-L pattern light armor. Thin plates and compact pouches keep it light and easy to move in. Its shoulder-mounted flashlight is slightly more powerful compared to normal light armor."
+	icon_state = "MC"
+	armor_variation = 0
+	specialty = "M3-L pattern mod marine"
+	lamp_icon = "lampr"
+	light_range = 5
+
 /obj/item/clothing/suit/storage/marine/tanker
 	name = "\improper M3 pattern tanker armor"
 	desc = "A modified and refashioned suit of M3 Pattern armor designed to be worn by the loader of a USCM vehicle crew. While the suit is a bit more encumbering to wear with the crewman uniform, it offers the loader a degree of protection that would otherwise not be enjoyed."
@@ -437,7 +464,7 @@
 // M3 pattern marine armor
 /obj/item/clothing/suit/storage/marine/medium
 	armor_variation = 6
-	light_power = 4
+	light_range = 5
 
 /obj/item/clothing/suit/storage/marine/medium/padded
 	name = "M3 pattern padded marine armor"
@@ -666,7 +693,6 @@
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
 	movement_compensation = SLOWDOWN_ARMOR_MEDIUM
-	light_power = 4
 	light_range = 5
 
 /obj/item/clothing/suit/storage/marine/heavy/padded

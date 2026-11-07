@@ -44,6 +44,7 @@ map ice_colony_v2
 endmap
 
 map shivas_snowball
+	minplayers 100
 endmap
 
 map kutjevo
@@ -65,6 +66,15 @@ endmap
 
 map tyrargo_rift
 	minplayers 100
+endmap
+
+map white_antre_research_facility
+endmap
+
+map cape_river
+endmap
+
+map lv1021_falcons_fury
 endmap
 
 map whiskey_outpost_v2

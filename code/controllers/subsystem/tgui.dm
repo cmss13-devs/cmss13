@@ -42,6 +42,10 @@ SUBSYSTEM_DEF(tgui)
 	basehtml = replacetext(basehtml, "tgui:stylesheet", MAP_STYLESHEET)
 
 /datum/controller/subsystem/tgui/OnConfigLoad()
+	#ifdef OPENDREAM
+	basehtml = replacetext(basehtml, "tgui:opendream", "1")
+	#endif
+
 	var/storage_iframe = CONFIG_GET(string/storage_cdn_iframe)
 
 	if(storage_iframe && storage_iframe != /datum/config_entry/string/storage_cdn_iframe::config_entry_value)

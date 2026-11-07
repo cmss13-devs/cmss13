@@ -14,7 +14,7 @@
 	xeno_cooldown = 12 SECONDS
 
 	// Config
-	var/duration = 35
+	var/duration = 3.5 SECONDS
 	var/speed_buff_amount = 0.8 // Go from shit slow to kindafast
 	var/armor_buff_amount = 5 // hopefully-minor buff so they can close the distance
 

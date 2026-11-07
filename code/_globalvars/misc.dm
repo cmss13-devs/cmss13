@@ -56,7 +56,7 @@ GLOBAL_LIST_EMPTY(tagger_locations)
 GLOBAL_LIST_INIT(alphabet_uppercase, list("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"))
 GLOBAL_LIST_INIT(alphabet_lowercase, list("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"))
 
-GLOBAL_LIST_INIT(greek_letters, list("Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta", "Eta", "Theta", "Iota", "Kappa", "Lambda", "Mu", "Nu", "Xi", "Omnicron", "Pi", "Rho", "Sigma", "Tau", "Upsilon", "Phi", "Chi", "Psi", "Omega"))
+GLOBAL_LIST_INIT(greek_letters, list("Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta", "Eta", "Theta", "Iota", "Kappa", "Lambda", "Mu", "Nu", "Xi", "Omicron", "Pi", "Rho", "Sigma", "Tau", "Upsilon", "Phi", "Chi", "Psi", "Omega"))
 GLOBAL_LIST_INIT(nato_phonetic_alphabet, list("Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliett", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-Ray", "Yankee", "Zulu"))
 
 //Used for autocall procs on ERT
@@ -83,7 +83,7 @@ GLOBAL_VAR_INIT(perf_flags, NO_FLAGS)
 
 GLOBAL_LIST_INIT(bitflags, list((1<<0), (1<<1), (1<<2), (1<<3), (1<<4), (1<<5), (1<<6), (1<<7), (1<<8), (1<<9), (1<<10), (1<<11), (1<<12), (1<<13), (1<<14), (1<<15), (1<<16), (1<<17), (1<<18), (1<<19), (1<<20), (1<<21), (1<<22), (1<<23)))
 
-GLOBAL_VAR_INIT(master_mode, "Distress Signal")
+GLOBAL_VAR_INIT(master_mode, GAMEMODE_DISTRESS_SIGNAL)
 
 GLOBAL_VAR_INIT(timezoneOffset, 0)
 
@@ -132,3 +132,5 @@ GLOBAL_VAR(obfs_z)
 
 /// List of giant lizards that are alive.
 GLOBAL_LIST_EMPTY(giant_lizards_alive)
+/// List of FCT Field Camera Tripods
+GLOBAL_LIST_EMPTY_TYPED(deployed_tripod_cameras, /obj/structure/overwatch_camera_tripod)

@@ -135,6 +135,7 @@
 		user.glasses = null
 		user.update_inv_glasses()
 		user.update_glass_vision(src)
+		user.update_tint()
 	user.update_sight()
 	return ..()
 
@@ -171,6 +172,7 @@
 	actions_types = list(/datum/action/item_action/toggle/hudgoggles)
 	toggleable = TRUE
 	flags_inventory = COVEREYES
+	armor_bio = CLOTHING_ARMOR_MEDIUM
 	req_skill = SKILL_RESEARCH
 	req_skill_level = SKILL_RESEARCH_TRAINED
 	clothing_traits = list(TRAIT_REAGENT_SCANNER)
@@ -801,6 +803,21 @@
 	activated = TRUE
 	message_up = "You lift the visor up."
 	message_down = "You lower the visor down."
+	flags_equip_slot = null
+
+/obj/item/clothing/glasses/mgoggles/clf_riot_shield
+	name = "\improper custom made riot shield"
+	desc = "A RC6 riot shield that has been heavily modified, painted over over with a darker color scheme and reinforced with extra metal plates to protect the user."
+	icon_state = "riot_shield_clf"
+	icon = 'icons/obj/items/clothing/helmet_garb.dmi'
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/visors.dmi',
+	)
+	active_icon_state = "riot_shield_clf"
+	inactive_icon_state = "riot_shield_clf"
+	activated = TRUE
+	message_up = "You swipe the visor in a upwards manner."
+	message_down = "You swipe the visor in a downwards manner."
 	flags_equip_slot = null
 
 //welding goggles

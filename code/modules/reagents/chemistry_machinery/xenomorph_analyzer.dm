@@ -13,6 +13,8 @@
 	///assoc list containing the path to every upgrade followed by a number representing times this tech was bought. used by price inflation mechanic to increase/decrease price depending on the amount of times you bought it.
 	var/list/technology_purchased = list()
 	var/biomass_points = 1000 //most important thing in this --giving 1k as an experiment roundstart.
+	// Royal biomass points. Hidden when 0. Used to purchase lategame technologies.
+	var/royal_biomass_points = 0
 	var/obj/item/organ/xeno/organ = null
 	///normal list of typepaths containing a printing queue.
 	var/list/print_queue = list()
@@ -49,7 +51,7 @@
 		return
 	if(istype(attacked_item, /obj/item/organ/xeno))
 		if(busy)
-			to_chat(user, SPAN_WARNING("The [src] is currently busy!"))
+			to_chat(user, SPAN_WARNING("[src] is currently busy!"))
 		if(organ)
 			to_chat(user, SPAN_WARNING("Organ slot is already full!"))
 			return
@@ -78,6 +80,7 @@
 
 /obj/structure/machinery/xenoanalyzer/ui_data(mob/user)
 	var/list/data = list()
+	data["royal_points"] = royal_biomass_points
 	data["points"] = biomass_points
 	data["current_clearance"] = GLOB.chemical_data.clearance_level
 	data["is_x_level"] = GLOB.chemical_data.reached_x_access // why just why
@@ -103,6 +106,7 @@
 			"name" = capitalize_first_letters(upgrade.name),
 			"desc" = upgrade.desc,
 			"cost" = price_adjustment,
+			"royal_cost" = upgrade.royal_value_upgrade,
 			"ref" = upgrade_type,
 			"category" = upgrade.upgrade_type,
 			"clearance" = upgrade.clearance_req,
@@ -134,7 +138,7 @@
 		if("process_organ")
 			if(!busy)
 				busy = TRUE
-				addtimer(CALLBACK(src, PROC_REF(process_organ), organ.research_value), 2 SECONDS)
+				addtimer(CALLBACK(src, PROC_REF(process_organ), organ.research_value, organ.xeno_organ_flags & XENO_ORGAN_ROYAL), 2 SECONDS)
 				flick("xeno_analyzer_on_moving", src)
 				playsound(loc, 'sound/machines/blender.ogg', 25, TRUE)
 				QDEL_NULL(organ)
@@ -163,7 +167,9 @@
 	organ.forceMove(get_turf(src))
 	organ = null
 
-/obj/structure/machinery/xenoanalyzer/proc/process_organ(biomass_points_to_add)
+/obj/structure/machinery/xenoanalyzer/proc/process_organ(biomass_points_to_add, is_royal)
+	if(is_royal)
+		royal_biomass_points += 1
 	biomass_points += biomass_points_to_add
 	icon_state = "xeno_analyzer"
 	busy = FALSE
@@ -176,12 +182,14 @@
 		return
 	queue_proccessing = TRUE
 	var/datum/research_upgrades/upgrade = print_queue[length(print_queue)]
-	if(clamp(upgrade.value_upgrade + upgrade.change_purchase * technology_purchased[upgrade], upgrade.minimum_price, upgrade.maximum_price) > biomass_points)
+	if(clamp(upgrade.value_upgrade + upgrade.change_purchase * technology_purchased[upgrade], upgrade.minimum_price, upgrade.maximum_price) > biomass_points \
+		|| upgrade.royal_value_upgrade > royal_biomass_points)
 		to_chat(user, SPAN_WARNING("[src] makes a worrying beep and flashes red, theres not enough data processed to build the requested upgrade!"))
 		queue_proccessing = FALSE
 		return
 	flick("xeno_analyzer_printing", src)
 	biomass_points -= clamp(upgrade.value_upgrade + upgrade.change_purchase * technology_purchased[upgrade], upgrade.minimum_price, upgrade.maximum_price)
+	royal_biomass_points -= upgrade.royal_value_upgrade
 	technology_purchased[upgrade] += 1
 	playsound(loc, 'sound/machines/print.ogg', 25)
 	if(length(print_queue) >= 1)

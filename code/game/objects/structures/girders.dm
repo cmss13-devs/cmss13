@@ -12,6 +12,7 @@
 #define STATE_RODS 5
 
 #define GIRDER_UPGRADE_MATERIAL_COST 5
+#define GIRDER_PLASTEEL_UPGRADE_MATERIAL_COST 8
 
 /obj/structure/girder
 	icon_state = "girder"
@@ -74,8 +75,8 @@
 		icon_state = "girder"
 
 /obj/structure/girder/attackby(obj/item/W, mob/user)
-	for(var/obj/effect/xenomorph/acid/A in src.loc)
-		if(A.acid_t == src)
+	for(var/obj/effect/xenomorph/acid/acid in src.loc)
+		if(acid.acid_t == src)
 			to_chat(user, "You can't get near that, it's melting!")
 			return
 
@@ -141,11 +142,11 @@
 					to_chat(user, SPAN_WARNING("No. This area is needed for the dropships and personnel."))
 					return TRUE
 
-				var/obj/item/stack/sheet/metal/M = W
+				var/obj/item/stack/sheet/metal/metal = W
 				to_chat(user, SPAN_NOTICE("You start adding the metal to the internals."))
 				if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return TRUE
-				if(M.use(GIRDER_UPGRADE_MATERIAL_COST))
+				if(metal.use(GIRDER_UPGRADE_MATERIAL_COST))
 					state = STATE_WALL
 					step_state = STATE_METAL
 					to_chat(user, SPAN_NOTICE("You added the metal to the internals!"))
@@ -158,11 +159,11 @@
 					to_chat(user, SPAN_WARNING("No. This area is needed for the dropships and personnel."))
 					return TRUE
 
-				var/obj/item/stack/sheet/plasteel/P = W
+				var/obj/item/stack/sheet/plasteel/plasteel = W
 				to_chat(user, SPAN_NOTICE("You start adding the plates to the internals."))
 				if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return TRUE
-				if(P.use(GIRDER_UPGRADE_MATERIAL_COST))
+				if(plasteel.use(GIRDER_PLASTEEL_UPGRADE_MATERIAL_COST))
 					state = STATE_REINFORCED_WALL
 					step_state = STATE_PLASTEEL
 					to_chat(user, SPAN_NOTICE("You added the plates to the internals!"))
@@ -260,12 +261,12 @@
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
-		var/obj/item/tool/weldingtool/WT = W
-		if(WT.remove_fuel(5, user))
+		var/obj/item/tool/weldingtool/welder = W
+		if(welder.remove_fuel(5, user))
 			to_chat(user, SPAN_NOTICE("You start welding the new additions."))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 			if(!do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
-				WT.remove_fuel(-5)
+				welder.remove_fuel(-5)
 				return TRUE
 
 			if(QDELETED(src))
@@ -273,17 +274,17 @@
 
 			to_chat(user, SPAN_NOTICE("You have welded the new additions!"))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
-			var/turf/T = get_turf(src)
+			var/turf/turf = get_turf(src)
 			if(is_mainship_level(z))
-				T.place_on_top(/turf/closed/wall/almayer)
+				turf.place_on_top(/turf/closed/wall/almayer)
 				SEND_SIGNAL(user, COMSIG_MOB_CONSTRUCT_WALL, /turf/closed/wall/almayer)
 			else
-				T.place_on_top(/turf/closed/wall)
+				turf.place_on_top(/turf/closed/wall)
 				SEND_SIGNAL(user, COMSIG_MOB_CONSTRUCT_WALL, /turf/closed/wall)
-			var/obj/effect/alien/weeds/weeds_in_tile = locate(/obj/effect/alien/weeds) in T
+			var/obj/effect/alien/weeds/weeds_in_tile = locate(/obj/effect/alien/weeds) in turf
 			if(weeds_in_tile)
 				qdel(weeds_in_tile)
-			T.add_fingerprint(user)
+			turf.add_fingerprint(user)
 			qdel(src)
 		return TRUE
 	return FALSE
@@ -293,8 +294,8 @@
 		return FALSE
 
 	if(istype(W, /obj/item/stack/rods) && step_state == STATE_PLASTEEL)
-		var/obj/item/stack/rods/R = W
-		if(R.use(2))
+		var/obj/item/stack/rods/rods = W
+		if(rods.use(2))
 			to_chat(user, SPAN_NOTICE("You strengthened the connection rods."))
 			step_state = STATE_RODS
 		else
@@ -314,12 +315,12 @@
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
-		var/obj/item/tool/weldingtool/WT = W
-		if(WT.remove_fuel(5, user))
+		var/obj/item/tool/weldingtool/welder = W
+		if(welder.remove_fuel(5, user))
 			to_chat(user, SPAN_NOTICE("You start welding the new additions."))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 			if(!do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
-				WT.remove_fuel(-5)
+				welder.remove_fuel(-5)
 				return TRUE
 
 			if(QDELETED(src))
@@ -327,32 +328,32 @@
 
 			to_chat(user, SPAN_NOTICE("You have welded the new additions!"))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
-			var/turf/T = get_turf(src)
+			var/turf/turf = get_turf(src)
 			if(is_mainship_level(z))
-				T.place_on_top(/turf/closed/wall/almayer/reinforced)
+				turf.place_on_top(/turf/closed/wall/almayer/reinforced)
 			else
-				T.place_on_top(/turf/closed/wall/r_wall)
-			var/obj/effect/alien/weeds/weeds_in_tile = locate(/obj/effect/alien/weeds) in T
+				turf.place_on_top(/turf/closed/wall/r_wall)
+			var/obj/effect/alien/weeds/weeds_in_tile = locate(/obj/effect/alien/weeds) in turf
 			if(weeds_in_tile)
 				qdel(weeds_in_tile)
-			T.add_fingerprint(user)
+			turf.add_fingerprint(user)
 			qdel(src)
 		return TRUE
 
 	return FALSE
 
-/obj/structure/girder/bullet_act(obj/projectile/P)
+/obj/structure/girder/bullet_act(obj/projectile/projectile)
 	//Tasers and the like should not damage girders.
-	if(P.ammo.damage_type == HALLOSS || P.ammo.damage_type == TOX || P.ammo.damage_type == CLONE || P.damage == 0)
+	if(projectile.ammo.damage_type == HALLOSS || projectile.ammo.damage_type == TOX || projectile.ammo.damage_type == CLONE || projectile.damage == 0)
 		return FALSE
 	var/dmg = 0
-	if(P.ammo.damage_type == BURN)
-		dmg = P.damage
+	if(projectile.ammo.damage_type == BURN)
+		dmg = projectile.damage
 	else
-		dmg = floor(P.damage * 0.5)
+		dmg = floor(projectile.damage * 0.5)
 	if(dmg)
 		take_damage(dmg)
-		bullet_ping(P)
+		bullet_ping(projectile)
 	if(health <= 0)
 		update_state()
 	return TRUE
@@ -413,22 +414,22 @@
 	health = 500
 
 
-/obj/structure/girder/attack_alien(mob/living/carbon/xenomorph/M)
-	if((M.caste && M.caste.tier < 2 && M.claw_type < CLAW_TYPE_VERY_SHARP) || unacidable)
-		to_chat(M, SPAN_WARNING("Our claws aren't sharp enough to damage [src]."))
+/obj/structure/girder/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if((xeno.caste && xeno.caste.tier < 2 && xeno.claw_type < CLAW_TYPE_VERY_SHARP) || unacidable)
+		to_chat(xeno, SPAN_WARNING("Our claws aren't sharp enough to damage [src]."))
 		return XENO_NO_DELAY_ACTION
-	M.animation_attack_on(src)
-	health -= floor(rand(M.melee_damage_lower, M.melee_damage_upper) * 0.5)
+	xeno.animation_attack_on(src)
+	health -= floor(rand(xeno.melee_damage_lower, xeno.melee_damage_upper) * 0.5)
 	if(health <= 0)
-		M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] apart!"),
 		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, TRUE)
 		dismantle()
 	if(state == STATE_DESTROYED)
 		qdel(src)
 	else
-		M.visible_message(SPAN_DANGER("[M] smashes [src]!"),
-		SPAN_DANGER("We [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		xeno.visible_message(SPAN_DANGER("[xeno] smashes [src]!"),
+		SPAN_DANGER("We [xeno.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, TRUE)
 	return XENO_ATTACK_ACTION
 
@@ -465,3 +466,4 @@
 #undef STATE_RODS
 
 #undef GIRDER_UPGRADE_MATERIAL_COST
+#undef GIRDER_PLASTEEL_UPGRADE_MATERIAL_COST

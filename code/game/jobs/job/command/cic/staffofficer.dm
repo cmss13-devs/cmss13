@@ -24,16 +24,18 @@
 	return positions
 
 
-/datum/job/command/bridge/generate_entry_conditions(mob/living/M, whitelist_status)
+/datum/job/command/bridge/generate_entry_conditions(mob/living/candidate, whitelist_status)
 	. = ..()
 	if(!islist(GLOB.marine_leaders[JOB_SO]))
 		GLOB.marine_leaders[JOB_SO] = list()
-	GLOB.marine_leaders[JOB_SO] += M
-	RegisterSignal(M, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_leader_candidate))
+	GLOB.marine_leaders[JOB_SO] += candidate
+	RegisterSignal(candidate, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_leader_candidate))
 
-/datum/job/command/bridge/proc/cleanup_leader_candidate(mob/M)
+/datum/job/command/bridge/proc/cleanup_leader_candidate(mob/candidate)
 	SIGNAL_HANDLER
-	GLOB.marine_leaders[JOB_SO] -= M
+	GLOB.marine_leaders[JOB_SO] -= candidate
+	if(!length(GLOB.marine_leaders[JOB_SO]))
+		qdel(GLOB.marine_leaders[JOB_SO])
 
 AddTimelock(/datum/job/command/bridge, list(
 	JOB_SQUAD_LEADER = 1 HOURS,

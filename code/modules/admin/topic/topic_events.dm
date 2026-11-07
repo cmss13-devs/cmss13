@@ -5,8 +5,6 @@
 		if("distress")
 			admin_force_distress()
 		if("selfdestruct")
-			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
-				return
 			admin_force_selfdestruct()
 		if("evacuation_start")
 			if(alert(usr, "Are you sure you want to trigger an evacuation?", "Confirmation", "Yes", "No") != "Yes")
@@ -317,14 +315,6 @@
 
 					if(istype(current_item, /obj/item/explosive))
 						qdel(current_item)
-
-				for(var/obj/item/hand_item in spawned_human.hands)
-					if(istype(hand_item, /obj/item/weapon))
-						qdel(hand_item)
-						continue
-
-					if(istype(hand_item, /obj/item/explosive))
-						qdel(hand_item)
 
 		if(play_as)
 			spawned_human.ckey = owner.ckey

@@ -110,7 +110,7 @@
 		xeno.updatehealth()
 		playsound(xeno.loc, "alien_resin_build", 25)
 		xeno.current_fruits.Add(fruit)
-		xeno.update_icons()
+		xeno.behavior_delegate?.on_update_icons()
 
 	apply_cooldown()
 	return ..()
@@ -202,7 +202,7 @@
 			var/obj/effect/alien/resin/fruit/fruit = selected_type
 			to_chat(xeno, SPAN_NOTICE("We will now build <b>[initial(fruit.name)]\s</b> when secreting resin."))
 			//update the button's overlay with new choice
-			xeno.update_icons()
+			xeno.behavior_delegate?.on_update_icons()
 			button.overlays.Cut()
 			button.overlays += image(icon_file, button, action_icon_state)
 			button.overlays += image('icons/mob/xenos/fruits.dmi', button, initial(fruit.mature_icon_state))

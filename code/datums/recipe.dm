@@ -966,7 +966,7 @@
 
 /datum/recipe/poppypretzel
 	items = list(
-		/obj/item/seeds/poppyseed,
+		/obj/item/reagent_container/food/snacks/grown/poppy,
 		/obj/item/reagent_container/food/snacks/dough,
 	)
 	result = /obj/item/reagent_container/food/snacks/poppypretzel

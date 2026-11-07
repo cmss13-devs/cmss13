@@ -57,6 +57,8 @@
 	if(autoclose)
 		addtimer(CALLBACK(src, PROC_REF(autoclose)), 15 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
+	SEND_SIGNAL(src, COMSIG_DOOR_OPEN)
+
 /obj/structure/machinery/door/poddoor/shutters/close(forced = FALSE)
 	if(operating)
 		return FALSE
@@ -78,6 +80,7 @@
 		return
 
 	operating = DOOR_OPERATING_IDLE
+	SEND_SIGNAL(src, COMSIG_DOOR_CLOSE)
 
 /obj/structure/machinery/door/poddoor/shutters/almayer
 	icon = 'icons/obj/structures/doors/blastdoors_shutters.dmi'
@@ -93,6 +96,13 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/Initialize()
 	. = ..()
 	relativewall_neighbours()
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/red
+	icon_state = "shutterred1"
+	base_icon_state = "shutterred"
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/red/open
+	density = FALSE
 
 /obj/structure/machinery/door/poddoor/yautja
 	name = "Yautja Shutter"
@@ -115,13 +125,6 @@
 	unacidable = TRUE
 	breakable = FALSE
 	explo_proof = TRUE
-	plane = TURF_PLANE
-
-/obj/structure/machinery/door/poddoor/yautja/emp_act(power, severity)
-	if(emp_proof)
-		return FALSE
-	..()
-	return TRUE
 
 /obj/structure/machinery/door/poddoor/yautja/hunting_grounds
 	name = "Preserve Shutter"
@@ -193,13 +196,8 @@
 	id = "bot_uniforms"
 	unacidable = TRUE
 	unslashable = TRUE
-
-/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/ex_act(severity)
-	return
-
-/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/emp_act(severity)
-	. = ..()
-	return
+	emp_proof = TRUE
+	explo_proof = TRUE
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/attackby(obj/item/attacking_item, mob/user)
 	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR) || attacking_item.pry_capable)

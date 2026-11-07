@@ -25,10 +25,12 @@
 			return "[paygrade]"
 		return P.name
 
-/proc/get_paygrade_id_by_name(paygrade_name)
+/proc/get_paygrade_id_by_name(paygrade_name, paygrades_list_to_search = GLOB.paygrades)
 	var/datum/paygrade/paygrade
-	for(var/paygrade_id in GLOB.paygrades)
-		paygrade = GLOB.paygrades[paygrade_id]
+	if(!length(paygrades_list_to_search))
+		paygrades_list_to_search = GLOB.paygrades
+	for(var/paygrade_id in paygrades_list_to_search)
+		paygrade = paygrades_list_to_search[paygrade_id]
 		if(paygrade.name == paygrade_name)
 			return paygrade_id
 

@@ -36,14 +36,14 @@
 /datum/player_action/mob_sleep/act(client/user, mob/target, list/params)
 	if(!istype(target, /mob/living))
 		return TRUE
-	var/mob/living/living = target
+	var/mob/living/living_target = target
 
-	if (!params["sleep"]) //if they're already slept, set their sleep to zero and remove the icon
-		living.sleeping = 0
-		living.RemoveSleepingIcon()
+	if(living_target.is_admin_slept()) //if they're already slept, remove the aslept trait and remove the icon
+		living_target.set_admin_sleep(FALSE)
+		living_target.RemoveSleepingIcon()
 	else
-		living.sleeping = 9999999 //if they're not, sleep them and add the sleep icon, so other marines nearby know not to mess with them.
-		living.AddSleepingIcon()
+		living_target.set_admin_sleep(TRUE) //if they're not, add the aslept trait and add the sleep icon, so other marines nearby know not to mess with them.
+		living_target.AddSleepingIcon()
 
 	message_admins("[key_name_admin(user)] toggled sleep on [key_name_admin(target)].")
 
@@ -135,6 +135,27 @@
 		return
 
 	user.cmd_admin_pm(target.client)
+	return TRUE
+
+/datum/player_action/opensearch_query
+	action_tag = "opensearch_query"
+	name = "OpenSearch"
+
+/datum/player_action/opensearch_query/act(client/user, mob/target, list/params)
+	if(!target || !user.mob)
+		return
+
+	// We search ckey as a whole, but also boost it if it's present specifically in ckey field
+	var/list/list/query_terms = list()
+
+	if(target.persistent_ckey)
+		query_terms = list(
+			list(target.persistent_ckey, "ckey", 3),
+			list(target.persistent_ckey, null),
+		)
+
+	var/datum/opensearch_query/query = SSopensearch.new_query(query_terms)
+	query.tgui_interact(user.mob)
 	return TRUE
 
 /datum/player_action/alert_message

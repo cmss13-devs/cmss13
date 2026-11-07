@@ -22,7 +22,7 @@
 	// The cached datum for the permanent pass flags for any given atom
 	var/datum/pass_flags_container/pass_flags
 
-	// Temporary lags for what an atom can pass through
+	// Temporary flags for what an atom can pass through
 	var/list/flags_pass_temp
 	var/list/temp_flag_counter
 

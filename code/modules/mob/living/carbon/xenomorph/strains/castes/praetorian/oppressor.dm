@@ -88,56 +88,13 @@
 	var/facing = get_dir(abduct_user, target_atom)
 	var/turf/turf = abduct_user.loc
 	var/turf/temp = abduct_user.loc
+	var/hook_pass_flags = PASS_OVER_THROW_ITEM | PASS_MOB_THRU
 	for(var/distance in 0 to max_distance)
 		temp = get_step(turf, facing)
-		if(facing in GLOB.diagonals) // check if it goes through corners
-			var/reverse_face = GLOB.reverse_dir[facing]
-			var/turf/back_left = get_step(temp, turn(reverse_face, 45))
-			var/turf/back_right = get_step(temp, turn(reverse_face, -45))
-			if((!back_left || back_left.density) && (!back_right || back_right.density))
-				break
 		if(!temp || temp.density || temp.opacity)
 			break
 
-		var/blocked = FALSE
-		var/allow_one_more_step = FALSE
-		for(var/obj/structure in temp)
-			if(istype(structure, /obj/effect/particle_effect/smoke))
-				continue
-			if(!structure.density && !structure.opacity)
-				continue
-			if(istype(structure, /obj/structure/girder))
-				blocked = TRUE
-				continue
-			if(istype(structure, /obj/structure/window/reinforced))
-				var/obj/structure/window/reinforced/pane_glass = structure
-				var/pane_facing = pane_glass.dir
-				if(pane_facing == turn(facing, 180))
-					blocked = TRUE
-				else if(pane_facing == facing)
-					allow_one_more_step = TRUE
-				continue
-			if(istype(structure, /obj/structure/surface/table))
-				var/obj/structure/surface/table/flip_table = structure
-				var/table_facing = flip_table.dir
-				if(flip_table.flipped)
-					if(table_facing == turn(facing, 180))
-						blocked = TRUE
-					else if(table_facing == facing)
-						allow_one_more_step = TRUE
-				continue
-			if(istype(structure, /obj/structure/barricade))
-				var/obj/structure/barricade/cade = structure
-				var/cade_facing = cade.dir
-				if(cade_facing & turn(facing, 180))
-					blocked = TRUE
-				else if(cade_facing == facing)
-					allow_one_more_step = TRUE
-				continue
-			if(structure.pass_flags.flags_can_pass_all & PASS_HIGH_OVER)
-				continue
-			blocked = TRUE
-		if(blocked)
+		if(LinkBlocked(hook_pass_flags, turf, temp))
 			break
 
 		turf = temp
@@ -148,9 +105,6 @@
 		turflist += turf
 		facing = get_dir(turf, target_atom)
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/abduct_hook(turf, windup)
-
-		if(allow_one_more_step)
-			break
 
 	if(!length(turflist))
 		to_chat(abduct_user, SPAN_XENOWARNING("We don't have any room to do our abduction!"))

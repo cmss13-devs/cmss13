@@ -3,7 +3,7 @@ import { useBackend } from 'tgui/backend';
 import { Stack, Tabs } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
-import { DrawnMap } from './DrawnMap';
+import { DrawnMap, type FireSupportWarning } from './DrawnMap';
 
 const PAGES = [
   {
@@ -19,6 +19,7 @@ const PAGES = [
 ];
 
 type Data = {
+  fire_support_warnings: FireSupportWarning[];
   uscm_map: string | null;
   uscm_svg: string | null;
   xeno_map: string | null;
@@ -82,12 +83,15 @@ export const TacmapViewer = (props) => {
               }}
             >
               <DrawnMap
-                key={pageIndex}
+                key={`${pageIndex}-${uscm_map}-${xeno_map}`}
                 flatImage={(pageIndex === 0 ? uscm_map : xeno_map) || ''}
                 backupImage={map_fallback}
+                fireSupportWarnings={
+                  pageIndex === 0 ? data.fire_support_warnings : []
+                }
               />
               <DrawnMap
-                key={pageIndex + 2} // +2 because the other page is +1
+                key={`drawing-${pageIndex}-${uscm_svg}-${xeno_svg}`}
                 flatImage={(pageIndex === 0 ? uscm_svg : xeno_svg) || ''}
                 backupImage={map_fallback}
                 showLoading={false}

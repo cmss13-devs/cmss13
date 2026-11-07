@@ -25032,24 +25032,13 @@
 	icon_state = "SW-out";
 	layer = 2.5
 	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_y = 11
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_y = 15
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_y = 18
-	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_y = 16
+	},
+/obj/structure/bed/chair/stack/three{
+	dir = 4;
+	pixel_y = 9
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sp)
@@ -27321,19 +27310,14 @@
 	icon_state = "S";
 	layer = 3.3
 	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_y = 11
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_y = 15
-	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_y = 16
+	},
+/obj/structure/bed/chair/stack/three{
+	dir = 4;
+	pixel_y = 9;
+	stacked_size = 2
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sp)
@@ -43659,19 +43643,8 @@
 /turf/open/floor/almayer,
 /area/almayer/middeck/briefing)
 "cbs" = (
-/obj/structure/bed/chair{
-	can_buckle = 0;
+/obj/structure/bed/chair/stack/three{
 	dir = 4
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_y = 3
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_y = 6
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
@@ -52618,27 +52591,8 @@
 	pixel_x = -19;
 	pixel_y = 5
 	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
+/obj/structure/bed/chair/stack/four{
 	dir = 4
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 6
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 10
 	},
 /turf/open/floor/almayer/green/northwest,
 /area/almayer/living/offices)
@@ -68239,27 +68193,8 @@
 /turf/open/floor/almayer,
 /area/almayer/living/grunt_rnr)
 "jSU" = (
-/obj/structure/bed/chair{
-	can_buckle = 0;
+/obj/structure/bed/chair/stack/four{
 	dir = 4
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 6
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 10
 	},
 /turf/open/floor/almayer/green/west,
 /area/almayer/living/offices)
@@ -83190,24 +83125,11 @@
 /area/almayer/squads/delta)
 "qrp" = (
 /obj/structure/platform_decoration/metal/almayer,
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 6
-	},
 /obj/structure/machinery/landinglight/delaytwo{
 	dir = 8
+	},
+/obj/structure/bed/chair/stack/three{
+	dir = 4
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
@@ -88555,21 +88477,8 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_s)
 "sEi" = (
-/obj/structure/bed/chair{
-	can_buckle = 0;
+/obj/structure/bed/chair/stack/three{
 	dir = 4
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 6
 	},
 /turf/open/floor/almayer/green/northwest,
 /area/almayer/living/grunt_rnr)
@@ -101659,24 +101568,11 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south2)
 "yeN" = (
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/obj/structure/bed/chair{
-	can_buckle = 0;
-	dir = 4;
-	pixel_x = 2;
-	pixel_y = 6
-	},
 /obj/structure/machinery/landinglight/delaythree{
 	dir = 8
+	},
+/obj/structure/bed/chair/stack/three{
+	dir = 4
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)

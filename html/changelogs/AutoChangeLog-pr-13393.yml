@@ -1,7 +1,0 @@
-author: "Drathek The32bitguy"
-delete-after: True
-changes:
-  - admin: "Fixed various bugs with buildmode namely it double clicking any adv mode breaking if you click it again"
-  - admin: "Buildmode fill no longer deletes the region by default (but you still can with ctrl click)"
-  - admin: "Various buildmode qol like area edit suggesting typepaths of what you typed rather than being strict and more types in edit mode"
-  - admin: "Fixed can_vv_modify not being respected (namely this now prevents edits to clients, ammo datum, and caste datums)"

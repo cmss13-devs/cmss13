@@ -1,0 +1,158 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"c" = (
+/obj/structure/prop/vehicle/hovercraft{
+	pixel_x = -16;
+	pixel_y = -16
+	},
+/obj/structure/bed/chair/vehicle/comfy/alt_1{
+	dir = 1;
+	pixel_x = -6;
+	buckling_x = -6
+	},
+/obj/effect/landmark/interior/spawn/interior_viewport/simple{
+	icon_state = "viewport_simple_middle";
+	icon = 'icons/obj/vehicles/interiors/hovercraft.dmi';
+	pixel_y = 6;
+	alpha = 75
+	},
+/turf/open/shuttle/vehicle/floor_3_12,
+/area/interior/vehicle/hovercraft)
+"h" = (
+/obj/structure/bed/chair/vehicle/comfy/alt_1{
+	dir = 1;
+	pixel_x = -22;
+	buckling_x = -22
+	},
+/obj/effect/landmark/interior/spawn/entrance{
+	alpha = 50;
+	exit_type = /obj/structure/interior_exit/vehicle/hovercraft/exterior;
+	name = "right entrance marker";
+	tag = "right"
+	},
+/turf/open/shuttle/vehicle/floor_1_6,
+/area/interior/vehicle/hovercraft)
+"o" = (
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat{
+	dir = 4;
+	icon = 'icons/obj/vehicles/interiors/seats.dmi';
+	icon_state = "alt1_vehicle_seat";
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/obj/effect/landmark/interior/spawn/interior_viewport/simple{
+	pixel_y = 33;
+	icon_state = "viewport_simple_front";
+	icon = 'icons/obj/vehicles/interiors/hovercraft.dmi';
+	pixel_x = 2;
+	layer = 3
+	},
+/turf/open/shuttle/vehicle/floor_3_11,
+/area/interior/vehicle/hovercraft)
+"s" = (
+/obj/structure/bed/chair/vehicle/comfy/alt_1{
+	pixel_x = -6;
+	pixel_y = 18;
+	buckling_x = -6;
+	buckling_y = 18
+	},
+/obj/effect/landmark/interior/spawn/interior_viewport/simple{
+	pixel_y = 36;
+	icon_state = "viewport_simple_middle";
+	icon = 'icons/obj/vehicles/interiors/hovercraft.dmi';
+	layer = 3
+	},
+/turf/open/shuttle/vehicle/floor_3_11,
+/area/interior/vehicle/hovercraft)
+"t" = (
+/obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield{
+	icon = 'icons/obj/vehicles/interiors/hovercraft.dmi';
+	icon_state = "viewport_front2"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"v" = (
+/obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield{
+	icon = 'icons/obj/vehicles/interiors/hovercraft.dmi';
+	icon_state = "viewport_front1"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"y" = (
+/obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield{
+	icon = 'icons/obj/vehicles/interiors/hovercraft.dmi';
+	icon_state = "viewport_front3"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"G" = (
+/obj/structure/bed/chair/vehicle/comfy/alt_1{
+	dir = 4;
+	pixel_x = -3;
+	pixel_y = 11;
+	buckling_x = -3;
+	buckling_y = 11
+	},
+/obj/effect/landmark/interior/spawn/interior_viewport/simple{
+	icon_state = "viewport_simple_front";
+	icon = 'icons/obj/vehicles/interiors/hovercraft.dmi';
+	pixel_x = 2;
+	pixel_y = 3;
+	alpha = 75
+	},
+/turf/open/shuttle/vehicle/floor_3_12,
+/area/interior/vehicle/hovercraft)
+"M" = (
+/obj/structure/bed/chair/vehicle/comfy/alt_1{
+	pixel_x = -22;
+	pixel_y = 18;
+	buckling_x = -22;
+	buckling_y = 18
+	},
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 1;
+	exit_type = /obj/structure/interior_exit/vehicle/hovercraft;
+	name = "left entrance marker";
+	pixel_y = 32;
+	tag = "left"
+	},
+/turf/open/shuttle/vehicle/floor_1_6,
+/area/interior/vehicle/hovercraft)
+"O" = (
+/turf/open/void/vehicle,
+/area/space)
+
+(1,1,1) = {"
+O
+O
+O
+O
+O
+"}
+(2,1,1) = {"
+O
+O
+s
+c
+O
+"}
+(3,1,1) = {"
+O
+O
+M
+h
+O
+"}
+(4,1,1) = {"
+O
+O
+o
+G
+O
+"}
+(5,1,1) = {"
+O
+v
+t
+y
+O
+"}

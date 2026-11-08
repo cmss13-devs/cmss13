@@ -44,6 +44,7 @@
 #define MAP_WHITE_ANTRE_RESEARCH_FACILITY "White Antre Research Facility"
 #define MAP_CAPE_RIVER "Cape River Mining Colony"
 #define MAP_LV1021_FALCONS_FURY "LV-1021: Operation Falcon's Fury"
+#define MAP_SEKHMET_SWAMP "SI-391 Sekhmet Swamp"
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
 #define MAP_ROSTOCK "SSV Rostock" //UPP Warship
 #define MAP_HUNTERSHIP "Hunter Ship"
@@ -422,6 +423,7 @@
 #define WALL_FOREST "forest_veg"
 #define WALL_FOREST_ROCK "rock_forest"
 #define WALL_FOREST_ROCK_DIRTY "rock_forest_dirty"
+#define WALL_SWAMP "swamp_veg"
 #define WALL_STRATA_OUTPOST_RIBBED "strata_ribbed_outpost_"
 #define WALL_STRATA_OUTPOST_BARE "strata_bare_outpost_"
 #define WALL_SHIVA_ICE "shiva_ice"

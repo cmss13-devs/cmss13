@@ -55,10 +55,8 @@
 			continue
 
 		var/mob/living/carbon/human/human_target = potential_target
-		if(human_target.status_flags & XENO_HOST)
-			for(var/obj/item/alien_embryo/embryo in human_target)
-				if(HIVE_ALLIED_TO_HIVE(hivenumber, embryo.hivenumber))
-					continue
+		if(human_target.status_flags & XENO_HOST && HAS_TRAIT(human_target, TRAIT_NESTED) || human_target.stat == DEAD || HAS_TRAIT(human_target, TRAIT_HAULED))
+			continue
 
 		var/distance = get_dist(src, potential_target)
 

@@ -5,6 +5,7 @@ import {
   Button,
   Divider,
   DmIcon,
+  Flex,
   Input,
   Section,
   Stack,
@@ -71,10 +72,10 @@ export const LoadoutPicker = () => {
   }, [fluff_categories, menu]);
 
   return (
-    <Window height={600} width={950} theme="crtblue">
+    <Window height={600} width={960} theme="crtblue">
       <Window.Content className="LoadoutPicker">
         <Stack fill>
-          <Stack.Item>
+          <Stack.Item width="23%">
             <Sidebar
               setSelected={setSelected}
               selected={selected!}
@@ -82,16 +83,17 @@ export const LoadoutPicker = () => {
               menu={menu}
             />
           </Stack.Item>
-          <Stack.Item grow>
+          <Stack.Item grow width="23%">
             <Stack vertical fill>
               {menu === 'loadout' && (
                 <Stack.Item>
-                  <Stack fill justify="space-evenly">
+                  <Flex fill justify="space-evenly" wrap>
                     {Array.from({ length: max_save_slots }).map((_, val) => (
-                      <Stack.Item grow key={val}>
+                      <Flex.Item grow key={val} p="2px">
                         {renameSlot === val ? (
                           <Input
                             placeholder="Slot name..."
+                            height="22px"
                             onChange={(_, newName) => {
                               act('name_slot', {
                                 name: newName,
@@ -117,9 +119,9 @@ export const LoadoutPicker = () => {
                               : `Slot ${val + 1}`}
                           </Button>
                         )}
-                      </Stack.Item>
+                      </Flex.Item>
                     ))}
-                  </Stack>
+                  </Flex>
                 </Stack.Item>
               )}
               {selected && (
@@ -226,10 +228,9 @@ const Sidebar = (props: {
               ? `Gear (${fluff_points}/${max_fluff_points} points)`
               : `Loadout (${loadout_points}/${max_job_points} points)`
           }
-          height="100%"
           scrollable
         >
-          <Stack wrap width="180px" height="240px">
+          <Stack wrap width="180px" height="249px">
             {(menu === 'fluff' ? fluff_gear : loadout).map((item, index) => (
               <Stack.Item key={`${index}${item.type}`} className="ItemPicker">
                 <ItemRender item={item} loadout />

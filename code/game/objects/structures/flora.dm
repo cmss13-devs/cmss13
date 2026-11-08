@@ -474,12 +474,16 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 /obj/structure/flora/grass/temperate
 	icon = 'icons/obj/structures/props/natural/vegetation/temperate_flora.dmi'
 	icon_state = "1"
+	plane = -7
+	layer = 2.4
 
 /obj/structure/flora/wood
 	name = "stick"
 	icon = 'icons/obj/structures/props/natural/vegetation/tyrargo_wood_flora.dmi'
 	icon_state = "stick1"
 	density = FALSE
+	plane = -7
+	layer = 2.4
 	fire_flag = FLORA_BURN_NO_SPREAD
 
 /obj/structure/flora/wood/stick1
@@ -533,6 +537,8 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon_state = "firstbush_1"
 	variations = 4
 	cut_level = PLANT_CUT_KNIFE
+	plane = -7
+	layer = 2.4
 	projectile_coverage = 0//CEASE EATING BULLETS, I BEG YOU
 
 /obj/structure/flora/bush/ausbushes/ausbush
@@ -542,7 +548,6 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 /obj/structure/flora/bush/ausbushes/reedbush
 	icon_state = "reedbush_1"
 	icon_tag = "reedbush"
-	layer = BELOW_MOB_LAYER
 
 /obj/structure/flora/bush/ausbushes/palebush
 	icon_state = "palebush_1"
@@ -563,12 +568,10 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 /obj/structure/flora/bush/ausbushes/lavendergrass
 	icon_state = "lavendergrass_1"
 	icon_tag = "lavendergrass"
-	layer = BELOW_MOB_LAYER
 
 /obj/structure/flora/bush/ausbushes/ywflowers
 	icon_state = "ywflowers_1"
 	icon_tag = "ywflowers"
-	layer = BELOW_MOB_LAYER
 
 /*
 
@@ -585,7 +588,6 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 /obj/structure/flora/bush/ausbushes/var3/leafybush
 	icon_state = "leafybush_1"
 	icon_tag = "leafybush"
-	layer = BELOW_MOB_LAYER
 
 /obj/structure/flora/bush/ausbushes/var3/stalkybush
 	icon_state = "stalkybush_1"
@@ -602,22 +604,18 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 /obj/structure/flora/bush/ausbushes/var3/brflowers
 	icon_state = "brflowers_1"
 	icon_tag = "brflowers"
-	layer = BELOW_MOB_LAYER
 
 /obj/structure/flora/bush/ausbushes/var3/ppflowers
 	icon_state = "ppflowers_1"
 	icon_tag = "ppflowers"
-	layer = BELOW_MOB_LAYER
 
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass
 	icon_state = "sparsegrass_1"
 	icon_tag = "sparsegrass"
-	layer = BELOW_MOB_LAYER
 
 /obj/structure/flora/bush/ausbushes/var3/fullgrass
 	icon_state =  "fullgrass_1"
 	icon_tag = "fullgrass"
-	layer = BELOW_MOB_LAYER
 
 /*
 
@@ -757,7 +755,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon_tag = "light"
 	variations = 3
 	cut_level = PLANT_CUT_MACHETE
-	fire_flag = FLORA_BURN_NO_SPREAD
+	fire_flag = FLORA_BURN_SPREAD_ONCE
 
 /obj/structure/flora/jungle/vines/light_1
 	icon_state = "light_1"
@@ -814,39 +812,39 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	..()
 	if(!stump)
 		if(isliving(AM))
-			var/mob/living/L = AM
+			var/mob/living/living_thing = AM
 			var/bush_sound_prob = 60
-			if(istype(L, /mob/living/carbon/xenomorph))
-				var/mob/living/carbon/xenomorph/X = L
-				bush_sound_prob = X.tier * 20
+			if(istype(living_thing, /mob/living/carbon/xenomorph))
+				var/mob/living/carbon/xenomorph/xeno = living_thing
+				bush_sound_prob = xeno.tier * 20
 
 			if(prob(bush_sound_prob))
 				var/sound = pick('sound/effects/vegetation_walk_0.ogg','sound/effects/vegetation_walk_1.ogg','sound/effects/vegetation_walk_2.ogg')
 				playsound(src.loc, sound, 25, 1)
-			if(ishuman(L))
-				var/mob/living/carbon/human/H = L
+			if(ishuman(living_thing))
+				var/mob/living/carbon/human/human = living_thing
 				var/stuck = rand(0,10)
-				if(HAS_TRAIT(L, TRAIT_HAULED))
+				if(HAS_TRAIT(living_thing, TRAIT_HAULED))
 					return
 				switch(stuck)
 					if(0 to 4)
-						var/new_slowdown = H.next_move_slowdown + rand(2,3)
-						H.next_move_slowdown = new_slowdown
+						var/new_slowdown = human.next_move_slowdown + rand(2,3)
+						human.next_move_slowdown = new_slowdown
 						if(prob(2))
-							to_chat(H, SPAN_WARNING("Moving through [src] slows you down."))
+							to_chat(human, SPAN_WARNING("Moving through [src] slows you down."))
 					if(5 to 7)
-						var/new_slowdown = H.next_move_slowdown + rand(4,7)
-						H.next_move_slowdown = new_slowdown
+						var/new_slowdown = human.next_move_slowdown + rand(4,7)
+						human.next_move_slowdown = new_slowdown
 						if(prob(10))
-							to_chat(H, SPAN_WARNING("It is very hard to move trough this [src]..."))
+							to_chat(human, SPAN_WARNING("It is very hard to move through [src]..."))
 					if(8 to 9)
-						var/new_slowdown = H.next_move_slowdown + rand(8,11)
-						H.next_move_slowdown = new_slowdown
-						to_chat(H, SPAN_WARNING("You got tangeled in [src]!"))
+						var/new_slowdown = human.next_move_slowdown + rand(8,11)
+						human.next_move_slowdown = new_slowdown
+						to_chat(human, SPAN_WARNING("You got tangled in [src]!"))
 					if(10)
-						var/new_slowdown = H.next_move_slowdown + rand(12,20)
-						H.next_move_slowdown = new_slowdown
-						to_chat(H, SPAN_WARNING("You got completely tangeled in [src]! Oh boy..."))
+						var/new_slowdown = human.next_move_slowdown + rand(12,20)
+						human.next_move_slowdown = new_slowdown
+						to_chat(human, SPAN_WARNING("You got completely tangled in [src]! Oh boy..."))
 
 /obj/structure/flora/jungle/thickbush/attackby(obj/item/I as obj, mob/user as mob)
 	//hatchets and shiet can clear away undergrowth
@@ -923,3 +921,72 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	update_health(xeno.melee_damage_upper)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
+
+/*
+
+	Canyon Bushes
+
+*/
+
+/obj/structure/flora/bush/canyon
+	name = "bush"
+	icon = 'icons/obj/structures/props/natural/vegetation/canyon_flora.dmi'
+	desc = "A small, leafy bush."
+	icon_state = "green_small_bush"
+	cut_level = PLANT_CUT_KNIFE
+	layer = ABOVE_XENO_LAYER
+
+/obj/structure/flora/bush/canyon/bush
+	icon_state = "green_small_bush"
+
+/obj/structure/flora/bush/canyon/bush/alt1
+	icon_state = "orange_small_bush"
+
+/obj/structure/flora/bush/canyon/bush/alt2
+	icon_state = "yellow_small_bush"
+
+/obj/structure/flora/bush/canyon/tree
+	name = "small tree"
+	desc = "A small, leafy tree."
+	icon_state = "green_small_tree"
+
+/obj/structure/flora/bush/canyon/tree/alt1
+	icon_state = "orange_small_tree"
+
+/obj/structure/flora/bush/canyon/tree/alt2
+	icon_state = "yellow_small_tree"
+
+/obj/structure/flora/bush/canyon/grass_green
+	name = "grass"
+	desc = "A small patch of grass."
+	icon_state = "green_grass_1"
+
+/obj/structure/flora/bush/canyon/grass_green/alt1
+	icon_state = "green_grass_2"
+
+/obj/structure/flora/bush/canyon/grass_green/alt2
+	icon_state = "green_grass_3"
+
+/obj/structure/flora/bush/canyon/grass_orange
+	name = "grass"
+	desc = "A small patch of grass."
+	icon_state = "orange_grass_1"
+
+/obj/structure/flora/bush/canyon/grass_orange/alt1
+	icon_state = "orange_grass_2"
+
+/obj/structure/flora/bush/canyon/grass_orange/alt2
+	icon_state = "orange_grass_3"
+
+/obj/structure/flora/bush/canyon/grass_yellow
+	name = "grass"
+	desc = "A small patch of grass."
+	icon_state = "yellow_grass_1"
+
+/obj/structure/flora/bush/canyon/grass_yellow/alt1
+	icon_state = "yellow_grass_2"
+
+/obj/structure/flora/bush/canyon/grass_yellow/alt2
+	icon_state = "yellow_grass_3"
+
+

@@ -2,7 +2,7 @@
 
 ///Footstep component. Plays footsteps at parents location when it is appropriate.
 /datum/component/footstep
-	dupe_mode = COMPONENT_DUPE_HIGHLANDER
+	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
 	///how many steps before the footstep sound is played
 	var/steps = 0
 	///volume of soundfile see playsound()
@@ -29,13 +29,23 @@
 
 	RegisterSignal(parent, list(COMSIG_MOVABLE_MOVED), PROC_REF(play_simplestep))
 
+/datum/component/footstep/InheritComponent(datum/component/C, i_am_original, steps_ = 2, volume_ = 50, range_ = null, falloff_ = 1, footstep_sounds_ = "alien_footstep_large", drag_sounds_ = 'sound/effects/alien_dragsound_large.ogg', vary_ = rand(20000, 25000))
+	. = ..()
+	steps = steps_
+	volume = volume_
+	vary = vary_
+	range = range_
+	falloff = falloff_
+	footstep_sounds = footstep_sounds_
+	drag_sounds = drag_sounds_
+
 /datum/component/footstep/proc/prepare_step()
 	var/turf/open/T = get_turf(parent)
 	if(!istype(T))
 		return
 
 	var/mob/living/LM = parent
-	if(LM.buckled || LM.throwing || LM.is_ventcrawling || LM.stat == DEAD)
+	if(LM.buckled || HAS_TRAIT(LM, TRAIT_LAUNCHED) || LM.is_ventcrawling || LM.stat == DEAD)
 		return
 
 	if(LM.life_steps_total % steps)

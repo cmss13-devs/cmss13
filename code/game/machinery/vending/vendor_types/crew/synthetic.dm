@@ -454,6 +454,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/shoes/marine_jungle
 	path = /obj/item/clothing/shoes/marine/jungle
 
+/datum/gear/synthetic/shoes/marine_snow
+	path = /obj/item/clothing/shoes/marine/snow
+
 /datum/gear/synthetic/shoes/blue
 	path = /obj/item/clothing/shoes/black
 

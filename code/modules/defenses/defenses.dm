@@ -10,6 +10,8 @@
 	use_power = USE_POWER_NONE
 	stat = DEFENSE_FUNCTIONAL
 	health = 200
+	needs_power = FALSE // these have abstract internal batteries.
+
 	var/list/faction_group
 	var/health_max = 200
 	var/turned_on = FALSE
@@ -40,9 +42,7 @@
 	var/obj/item/device/sentry_computer/linked_laptop = null
 	var/has_camera = FALSE
 	var/list/choice_categories = list()
-
 	var/list/selected_categories = list()
-
 
 /obj/structure/machinery/defenses/Initialize()
 	. = ..()
@@ -319,7 +319,7 @@
 				to_chat(user, SPAN_WARNING("You cannot secure \the [src] here, find a more secure surface!"))
 				return
 			var/turf/open/floor = get_turf(src)
-			if(!floor.allow_construction)
+			if(!floor.allow_construction || !floor.validate_deployment(TURF_DEPLOYABLE_SENTRY))
 				to_chat(user, SPAN_WARNING("You cannot secure \the [src] here, find a more secure surface!"))
 				return FALSE
 			user.visible_message(SPAN_NOTICE("[user] begins securing [src] to the ground."),

@@ -260,6 +260,9 @@ SET_PROTECTED_DATUM(/datum/controller/configuration)
 /datum/controller/configuration/can_vv_get(var_name)
 	return (var_name != NAMEOF(src, entries_by_type) || !hiding_entries_by_type) && ..()
 
+/datum/controller/configuration/vv_edit_var(var_name, var_value)
+	var/list/banned_edits = list(NAMEOF(src, entries_by_type), NAMEOF(src, entries), NAMEOF(src, directory))
+	return !(var_name in banned_edits) && ..()
 
 /datum/controller/configuration/stat_entry(msg)
 	msg = "Edit"
@@ -307,6 +310,7 @@ SET_PROTECTED_DATUM(/datum/controller/configuration)
 				modes += M.config_tag
 				mode_names[M.config_tag] = M.name
 		GLOB.gamemode_roles[M.name] = M.get_roles_list()
+		GLOB.gamemode_role_mappings[M.name] = M.role_mappings
 		qdel(M)
 
 /datum/controller/configuration/proc/pick_mode(mode_name)

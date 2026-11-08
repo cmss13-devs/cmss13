@@ -99,8 +99,10 @@
 	//Life variables
 	var/oxygen_alert = 0
 	var/fire_alert = 0
-	var/revive_grace_period = 5 MINUTES //5 minutes
-	var/undefibbable = FALSE //whether the human is dead and past the defibbrillation period.
+	/// How much time while dead before we become undefibbable
+	var/revive_grace_period = 5 MINUTES
+	/// Whether the human is dead and past the defibrillation period. Do not set this TRUE directly, instead use set_undefibbable so the signal can be sent too.
+	var/undefibbable = FALSE
 
 	var/holo_card_color = "" //which color type of holocard is printed on us
 	var/holo_card_accuracy = HOLOCARD_ACCURACY_HANDHELD // What placed this holocard on the human
@@ -204,6 +206,23 @@
 
 	// Haul resist cooldown
 	var/next_haul_resist
+
+	// State of them beady little eyes
+	var/eyelids_status = EYELID_OPEN
+
+	/// Active emote/sequence timer only. Null = life owns blinking.
+	var/eyelid_timer
+
+	/// world.time when life is allowed to perform the next normal blink
+	var/next_blink_at = 0
+
+	/// for the sleeping emote
+	var/is_napping = FALSE
+
+	/// Timer for periodic snoring while napping
+	var/nap_snore_timer
+	// water overlays config
+	water_config = /datum/water_overlay_config/human
 
 /client/var/cached_human_playtime
 

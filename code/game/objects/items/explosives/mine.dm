@@ -90,7 +90,12 @@
 	if(active || user.action_busy)
 		return
 
-	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
+	var/turf/open/target_turf = user.loc
+	if(!istype(target_turf))
+		to_chat(user, SPAN_WARNING("You can't deploy that here!"))
+		return
+
+	if(antigrief_protection && user.faction == FACTION_MARINE && (explosive_antigrief_check(src, user) || !target_turf.allow_mines))
 		to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from planting!"))
 		msg_admin_niche("[key_name(user)] attempted to plant \a [name] in [ADMIN_VERBOSEJMP(src)]")
 		return
@@ -354,6 +359,10 @@
 /obj/item/explosive/mine/active/no_iff
 	iff_signal = null
 
+/obj/item/explosive/mine/active/clf
+	name = "\improper Hacked M20 Claymore anti-personnel mine"
+	desc = "Appears to be a standard M20 Claymore. On visual inspection, this one appears to have been tampered with."
+	iff_signal = FACTION_CLF
 
 /obj/item/explosive/mine/pmc
 	name = "\improper M20P Claymore anti-personnel mine"

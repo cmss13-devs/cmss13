@@ -813,6 +813,10 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/ap (src)
 
+/obj/item/storage/belt/marine/m20a/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m20a
+
 /obj/item/storage/belt/marine/mar40/fill_preset_inventory() // Mar40
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/mar40 (src)
@@ -1858,6 +1862,75 @@
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/smg/m39/ap(src)
 
+/obj/item/storage/belt/gun/combat_rig
+	name = "\improper M276 pattern combat sidearm rig"
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version has a holster assembly that allows one to carry the most common pistols. It also contains side pouches that can store most pistol and rifle magazines."
+	icon_state = "mag_holster"
+	storage_slots = 6 // 3 rifle mags + 2 pistol mags + 1 sidearm. Handfuls aren't counted towards limit but occupy slot.
+	holster_slots = list(
+		"1" = list(
+			"icon_x" = 5,
+			"icon_y" = -2))
+	can_hold = list(
+		//sidearms,
+		/obj/item/weapon/gun/flare,
+		/obj/item/weapon/gun/pistol,
+		/obj/item/weapon/gun/revolver,
+		//sidearm ammo,
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/revolver,
+		//longarm ammo,
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/smg,
+		/obj/item/ammo_magazine/sniper,
+		//Handfuls,
+		/obj/item/ammo_magazine/handful,
+	)
+	flags_atom = FPRINT // has gamemode skin
+
+	var/rifle_mags = 0
+	var/pistol_mags = 0
+
+/obj/item/storage/belt/gun/combat_rig/Destroy()
+	rifle_mags = 0
+	pistol_mags = 0
+	. = ..()
+
+/obj/item/storage/belt/gun/combat_rig/can_be_inserted(obj/item/inserted_item, mob/user, stop_messages = FALSE)
+	. = ..()
+	if(!.)
+		return
+
+	if(is_type_in_list(inserted_item, GLOB.sidearm_ammo))
+		if(pistol_mags >= 2)
+			if(!stop_messages)
+				to_chat(user, SPAN_WARNING("[src] can't hold more sidearm magazines."))
+			return FALSE
+		return TRUE
+
+	if(is_type_in_list(inserted_item, GLOB.longarm_ammo))
+		if(rifle_mags >= 3)
+			if(!stop_messages)
+				to_chat(user, SPAN_WARNING("[src] can't hold more longarm magazines."))
+			return FALSE
+		return TRUE
+
+/obj/item/storage/belt/gun/combat_rig/_item_insertion(obj/item/inserted_item, prevent_warning = 0, mob/user)
+	if(is_type_in_list(inserted_item, GLOB.sidearm_ammo))
+		pistol_mags++
+	else if(is_type_in_list(inserted_item, GLOB.longarm_ammo))
+		rifle_mags++
+
+	..()
+
+/obj/item/storage/belt/gun/combat_rig/_item_removal(obj/item/inserted_item, atom/new_location)
+	if(is_type_in_list(inserted_item, GLOB.sidearm_ammo))
+		pistol_mags = max(pistol_mags - 1, 0)
+	else if(is_type_in_list(inserted_item, GLOB.longarm_ammo))
+		rifle_mags = max(rifle_mags - 1, 0)
+
+	..()
+
 /obj/item/storage/belt/gun/m10
 	name = "\improper M276 pattern M10 holster rig"
 	desc = "Special issue variant of the M276 - designed exclusively to securely hold an M10 Auto Pistol and three spare magazines, allowing quick access in close-quarters situations. Ideal for defending against boarding threats, this belt supports rapid deployment of high-rate sidearms while maintaining stability in zero-G environments."
@@ -2032,6 +2105,39 @@
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44())
 	for(var/i = 1 to storage_slots - 2)
 		new /obj/item/ammo_magazine/revolver/marksman(src)
+
+/obj/item/storage/belt/gun/m4a3/vp78m6/dual_holster
+	name = "\improper M278 Pattern weapon harness"
+	desc = "A well-oiled leather harness with two hip-mounted holsters for large handguns. Has some extra pouches for mags right where you'd need 'em."
+	icon_state = "dual_holster"
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN
+	storage_slots = 8
+	can_hold = list(
+		/obj/item/weapon/gun/pistol/vp78/vp78m6,
+		/obj/item/ammo_magazine/pistol/vp78,
+	)
+	holster_slots = list(
+		"1" = list("icon_x" = 0, "icon_y" = 0),
+		"2" = list("icon_x" = 0, "icon_y" = 0),
+	)
+	skip_fullness_overlays = TRUE
+
+/obj/item/storage/belt/gun/m4a3/vp78m6/dual_holster/Initialize()
+	var/matrix/second_gun_transform = matrix()
+	second_gun_transform.Scale(-1, 1)
+	holster_slots["2"]["underlay_transform"] = second_gun_transform
+	. = ..()
+
+/obj/item/storage/belt/gun/m4a3/vp78m6/dual_holster/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78/vp78m6())
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78/vp78m6())
+	for(var/i = 1 to storage_slots - 2)
+		new /obj/item/ammo_magazine/pistol/vp78(src)
 
 /obj/item/storage/belt/gun/m44/lever_action
 	name = "\improper M276 pattern 45-70 revolver rig"

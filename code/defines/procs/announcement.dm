@@ -1,18 +1,20 @@
-#define COMMAND_ANNOUNCE "Command Announcement"
-#define UPP_COMMAND_ANNOUNCE "UPP Command Announcement"
-#define CLF_COMMAND_ANNOUNCE "CLF Command Announcement"
-#define PMC_COMMAND_ANNOUNCE "PMC Command Announcement"
-#define VENIR_ANNOUNCE "White Antre Central Announcement"
-#define QUEEN_ANNOUNCE "The words of the Queen reverberate in your head..."
-#define QUEEN_LORE_ANNOUNCE "The words of the Queen reverberate in your head..."
-#define QUEEN_MOTHER_ANNOUNCE "Queen Mother Psychic Directive"
-#define XENO_GENERAL_ANNOUNCE "You sense something unusual..." //general xeno announcement that don't involve Queen, for nuke for example
-#define HIGHER_FORCE_ANNOUNCE SPAN_ANNOUNCEMENT_HEADER_BLUE("Unknown Higher Force")
-
-//civilian white antre announcement
-/proc/venir_announcement(message, title = VENIR_ANNOUNCE, sound_to_play = sound('sound/misc/notice2.ogg'), faction_to_display = FACTION_SURVIVOR)
+///civilian announcement to all survivors
+/proc/survivor_announcement(message, title = COLONY_ANNOUNCE, sound_to_play = sound('sound/misc/notice2.ogg'))
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
-	if(faction_to_display == FACTION_SURVIVOR)
+	for(var/mob/current as anything in targets)
+		if(isobserver(current)) //observers see everything
+			continue
+		var/mob/living/carbon/human/human_mob = current
+		if(!istype(human_mob) || human_mob.stat != CONSCIOUS || isyautja(human_mob) || human_mob.faction == FACTION_MARINE || is_mainship_level(human_mob.z)) //base human checks
+			targets.Remove(human_mob)
+			continue
+
+	announcement_helper(message, title, targets, sound_to_play)
+
+//CLF announcement
+/proc/clf_announcement(message, title = CLF_ANNOUNCE, sound_to_play = sound('sound/misc/notice2.ogg'), faction_to_display = FACTION_CLF)
+	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
+	if(faction_to_display == FACTION_CLF)
 		for(var/mob/M in targets)
 			if(isobserver(M)) //observers see everything
 				continue

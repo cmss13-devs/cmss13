@@ -886,6 +886,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	var/helm_mounted_light_power = 3
 	var/helm_mounted_light_range = 4
+	var/dim_light = TRUE // As per maintainer request, rail flashlights will be dimmed when the weapon they're attached to is put away in the suit slot or back slot
 
 	var/datum/action/item_action/activation
 	var/obj/item/attached_item
@@ -971,9 +972,13 @@ Defined in conflicts.dm of the #defines folder.
 
 	var/obj/item/weapon/gun/attached_gun = loc
 
+	var/applied_light_mod = light_mod
+	if(dim_light && attached_gun.rail_light_stowed)
+		applied_light_mod *= DIMMED_RAIL_LIGHT_MULT
+
 	if(toggle_on && !light_on)
-		attached_gun.set_light_range(attached_gun.light_range + light_mod)
-		attached_gun.set_light_power(attached_gun.light_power + (light_mod * 0.5))
+		attached_gun.set_light_range(attached_gun.light_range + applied_light_mod)
+		attached_gun.set_light_power(attached_gun.light_power + (applied_light_mod * 0.5))
 		if(!(attached_gun.flags_gun_features & GUN_FLASHLIGHT_ON))
 			attached_gun.set_light_color(COLOR_WHITE)
 			attached_gun.set_light_on(TRUE)
@@ -981,8 +986,8 @@ Defined in conflicts.dm of the #defines folder.
 			attached_gun.flags_gun_features |= GUN_FLASHLIGHT_ON
 
 	if(!toggle_on && light_on)
-		attached_gun.set_light_range(attached_gun.light_range - light_mod)
-		attached_gun.set_light_power(attached_gun.light_power - (light_mod * 0.5))
+		attached_gun.set_light_range(attached_gun.light_range - applied_light_mod)
+		attached_gun.set_light_power(attached_gun.light_power - (applied_light_mod * 0.5))
 		if(attached_gun.flags_gun_features & GUN_FLASHLIGHT_ON)
 			attached_gun.set_light_on(FALSE)
 			light_on = FALSE
@@ -1038,6 +1043,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "flashgrip_a"
 	light_mod = 5
 	slot = "under"
+	dim_light = FALSE
 	attachment_action_type = /datum/action/item_action/toggle/flashlight_grip
 	original_state = "flashgrip"
 	original_attach = "flashgrip_a"
@@ -1061,6 +1067,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "vplaserlight_a"
 	light_mod = 5
 	slot = "under"
+	dim_light = FALSE
 	attachment_action_type = /datum/action/item_action/toggle/flashlight_grip
 	original_state = "vplaserlight"
 	original_attach = "vplaserlight_a"
@@ -1309,7 +1316,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/scope/variable_zoom/proc/toggle_zoom_level()
 	if(using_scope)
-		to_chat(usr, SPAN_WARNING("You can't change the zoom setting on the [src] while you're looking through it!"))
+		to_chat(usr, SPAN_WARNING("You can't change the zoom setting on [src] while you're looking through it!"))
 		return
 	if(zoom_level == ZOOM_LEVEL_2X)
 		zoom_level = ZOOM_LEVEL_4X
@@ -2918,6 +2925,7 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_x = 35
 	pixel_shift_y = 19
 	wield_delay_mod = WEAPON_DELAY_FAST
+	collapse_delay = 0.5 SECONDS
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle/stock
 	hud_offset_mod = 7 //Extremely long.
@@ -2934,79 +2942,105 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_mod = -RECOIL_AMOUNT_TIER_4
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
 	//it makes stuff much worse when one handed
-	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
-	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
-	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
-	//but at the same time you are slow when 2 handed
-	aim_speed_mod = CONFIG_GET(number/slowdown_med)
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_9
+	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_6
 
 
-/obj/item/attachable/stock/revolver/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
-	var/obj/item/weapon/gun/revolver/m44/R = G
-	if(!istype(R))
-		return 0
+/obj/item/attachable/stock/revolver/activate_attachment(obj/item/weapon/gun/gun, mob/living/carbon/user, turn_off)
+	var/obj/item/weapon/gun/revolver/m44/revolver = gun
+	if(!istype(revolver))
+		return FALSE
+
+	if(turn_off)
+		return TRUE
+
 
 	if(!user)
-		return 1
+		return TRUE
 
 	if(user.action_busy)
 		return
 
-	if(R.flags_item & WIELDED)
+	if(revolver.flags_item & WIELDED)
 		if(folded)
 			to_chat(user, SPAN_NOTICE("You need a free hand to unfold [src]."))
 		else
 			to_chat(user, SPAN_NOTICE("You need a free hand to fold [src]."))
-		return 0
+		return FALSE
 
-	if(!do_after(user, 15, INTERRUPT_INCAPACITATED|INTERRUPT_NEEDHAND, BUSY_ICON_GENERIC, G, INTERRUPT_DIFF_LOC))
+	if(!do_after(user, collapse_delay, INTERRUPT_INCAPACITATED|INTERRUPT_NEEDHAND, BUSY_ICON_GENERIC, gun, INTERRUPT_DIFF_LOC))
 		return
 
 	playsound(user, activation_sound, 15, 1)
 
 	if(folded)
 		to_chat(user, SPAN_NOTICE("You unfold [src]."))
-		R.flags_equip_slot &= ~SLOT_WAIST
-		R.folded = FALSE
+		revolver.flags_equip_slot &= ~SLOT_WAIST
+		accuracy_mod = HIT_ACCURACY_MULT_TIER_7
+		recoil_mod = -RECOIL_AMOUNT_TIER_4
+		scatter_mod = -SCATTER_AMOUNT_TIER_8
+		accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_9
+		recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
+		scatter_unwielded_mod = SCATTER_AMOUNT_TIER_6
+		melee_mod = -5
+		wield_delay_mod = WEAPON_DELAY_FAST
 		icon_state = "44stock"
 		size_mod = 1
 		hud_offset_mod = 7
-		G.recalculate_attachment_bonuses()
+		gun.recalculate_attachment_bonuses()
 	else
 		to_chat(user, SPAN_NOTICE("You fold [src]."))
-		R.flags_equip_slot |= SLOT_WAIST // Allow to be worn on the belt when folded
-		R.folded = TRUE // We can't shoot anymore, its folded
+		revolver.flags_equip_slot |= SLOT_WAIST // Allow to be worn on the belt when folded
+		accuracy_mod = 0
+		recoil_mod = 0
+		scatter_mod = 0
+		accuracy_unwielded_mod = 0
+		recoil_unwielded_mod = 0
+		scatter_unwielded_mod = 0
+		melee_mod = 0
+		wield_delay_mod = WEAPON_DELAY_NONE
 		icon_state = "44stock_folded"
 		size_mod = 0
 		hud_offset_mod = 4
-		G.recalculate_attachment_bonuses()
+		gun.recalculate_attachment_bonuses()
 	folded = !folded
-	G.update_overlays(src, "stock")
+	gun.update_overlays(src, "stock")
 
 // If it is activated/folded when we attach it, re-apply the things
-/obj/item/attachable/stock/revolver/Attach(obj/item/weapon/gun/G)
+/obj/item/attachable/stock/revolver/Attach(obj/item/weapon/gun/gun)
 	..()
-	var/obj/item/weapon/gun/revolver/m44/R = G
-	if(!istype(R))
-		return 0
+	var/obj/item/weapon/gun/revolver/m44/revolver = gun
+	if(!istype(revolver))
+		return FALSE
 
 	if(folded)
-		R.flags_equip_slot |= SLOT_WAIST
-		R.folded = TRUE
+		revolver.flags_equip_slot |= SLOT_WAIST
 	else
-		R.flags_equip_slot &= ~SLOT_WAIST //Can't wear it on the belt slot with stock on when we attach it first time.
+		revolver.flags_equip_slot &= ~SLOT_WAIST //Can't wear it on the belt slot with stock on when we attach it first time.
 
 // When taking it off we want to undo everything not statwise
 /obj/item/attachable/stock/revolver/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
 	..()
-	var/obj/item/weapon/gun/revolver/m44/R = detaching_gun
-	if(!istype(R))
-		return 0
+	var/obj/item/weapon/gun/revolver/m44/revolver = detaching_gun
+	if(!istype(revolver))
+		return FALSE
 
-	if(folded)
-		R.folded = FALSE
-	else
-		R.flags_equip_slot |= SLOT_WAIST
+	revolver.flags_equip_slot |= SLOT_WAIST
+
+
+/obj/item/attachable/stock/m20a
+	name = "\improper M20A stock"
+	desc = "The M20A's standard polymer stock."
+	slot = "stock"
+	melee_mod = 5
+	size_mod = 1
+	icon_state = "m20astock"
+	attach_icon = "m20astock_a"
+	pixel_shift_x = 40
+	pixel_shift_y = 14
+	hud_offset_mod = 3
+
 
 // ======== Underbarrel Attachments ======== //
 
@@ -3580,6 +3614,23 @@ Defined in conflicts.dm of the #defines folder.
 			return
 	to_chat(user, SPAN_WARNING("[src] only accepts shotgun buckshot."))
 
+
+/obj/item/attachable/attached_gun/shotgun/m20a/unloaded
+	current_rounds = 0
+
+/obj/item/attachable/attached_gun/shotgun/m20a
+	name = "\improper U3 underbarrel shotgun"
+	desc = "An ARMAT U3 tactical shotgun. Integrated into the M20A Harrington rifle. Only capable of loading up to five buckshot shells, this one seems less effective at smashing down doors."
+	icon_state = "masterkey"
+	attach_icon = "masterkey_a"
+	flags_attach_features = ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON
+	hidden = TRUE
+
+
+/obj/item/attachable/attached_gun/shotgun/m20a/set_bullet_traits()
+	return
+
+
 /obj/item/attachable/attached_gun/shotgun/af13 //NSG underslung shottie
 	name = "\improper AF13 underbarrel shotgun"
 	icon_state = "masterkey_af13"
@@ -3892,6 +3943,12 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = -SCATTER_AMOUNT_TIER_10
 	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_9
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
+
+/obj/item/attachable/lasersight/vp
+	name = "VP78M6 laser module"
+	desc = "A compact, high-precision laser sight engineered exclusively for the VP78M6. Offers exceptional accuracy gains by interfacing directly with the weapon's internal targeting systems."
+	icon_state = "laservp"
+	attach_icon = "laservp_a"
 
 /obj/item/attachable/lasersight/micro
 	name = "micro laser module"

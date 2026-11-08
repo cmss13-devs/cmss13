@@ -23,6 +23,7 @@
 		health_threshold_dead = -150
 		health_threshold_crit = -100
 
+
 /mob/living/carbon/human/clicked(mob/user, list/mods)
 	if(..())
 		return TRUE
@@ -62,7 +63,7 @@
 	stamina = new /datum/stamina(src)
 
 /mob/living/carbon/human/Destroy()
-	SSround_recording.recorder.stop_tracking(src)
+	SSround_recording?.recorder?.stop_tracking(src)
 	remove_from_all_mob_huds()
 	despawn_fax_responder()
 	assigned_equipment_preset = null
@@ -322,19 +323,6 @@
 		observer.client.add_to_screen(s_active.storage_start)
 		observer.client.add_to_screen(s_active.storage_continue)
 		observer.client.add_to_screen(s_active.storage_end)
-
-// called when something steps onto a human
-// this handles mulebots and vehicles
-/mob/living/carbon/human/Crossed(atom/movable/AM)
-	..()
-	if(istype(AM, /obj/structure/machinery/bot/mulebot))
-		var/obj/structure/machinery/bot/mulebot/MB = AM
-		MB.RunOver(src)
-
-	if(istype(AM, /obj/vehicle))
-		var/obj/vehicle/V = AM
-		V.RunOver(src)
-
 
 //gets assignment from ID or ID inside PDA or PDA itself
 //Useful when player do something with computers
@@ -1046,6 +1034,8 @@
 		number += cloth_item.eye_protection
 	if(glasses)
 		number += glasses.eye_protection
+	if(number == 0 && eyelids_status == EYELID_CLOSED_VOLUNTARILY)
+		return EYE_PROTECTION_FLAVOR
 
 	return clamp(number, EYE_PROTECTION_NEGATIVE, EYE_PROTECTION_WELDING)
 
@@ -1215,7 +1205,7 @@
 			if(target.check_tod() && target.is_revivable())
 				msg += "They're not breathing."
 			else
-				if(has_limb("head"))
+				if(target.has_limb("head"))
 					msg += "Their eyes have gone blank, there are no signs of life."
 				else
 					msg += "They are definitely dead."
@@ -1771,7 +1761,7 @@
 		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"),
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 
-	if(istype(get_turf(src), /turf/open/gm/river) || (/obj/effect/blocker/water in loc) || istype(get_turf(src), /turf/open/beach/coastline) || istype(get_turf(src), /turf/open/gm/coast))
+	if(SSwater_overlays.is_water(get_turf(src)))
 		ExtinguishMob()
 
 	if(fire_stacks > 0)
@@ -2043,3 +2033,10 @@
 		if(PULSE_THREADY)
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
 // output for machines^ ^^^^^^^output for people^^^^^^^^^
+
+/// If undefibbable is FALSE, this will set undefibbable TRUE and send the signal COMSIG_HUMAN_SET_UNDEFIBBABLE
+/mob/living/carbon/human/proc/set_undefibbable()
+	if(undefibbable)
+		return // Already set
+	undefibbable = TRUE
+	SEND_SIGNAL(src, COMSIG_HUMAN_SET_UNDEFIBBABLE)

@@ -127,6 +127,88 @@
 /turf/LateInitialize(mapload)
 	update_vis_contents()
 
+/**	near_water_layering_fix(list/already_altered)
+*		this is the first proc called in SSwater_overlays' update_turfs_layers_near_water()
+*
+*		update_turfs_layers_near_water() calls this proc on every turf near water.
+*		it checks which direction the water is, then if the water isnt NORTH sets itself and the two turfs to the right and left
+*		of that direction to UNDER_WATER_TURF_LAYER so that mobs in water dont have their sprite clip below these turfs
+*		visually. The list it recieves as an arg is used so as to not alter any turfs we already altered,
+*		and it returns any turfs we actually did alter during the course of this proc
+*/
+/turf/proc/near_water_layering_fix(list/already_altered)	//so big mobs dont clip into the ground when standing in water
+	var/list/return_list = list()							//and they can still look like they're below turfs south of them
+	if(SSwater_overlays.is_water(src) || layer == UNDER_WATER_TURF_LAYER)
+		return return_list
+	for(var/direction_check in (GLOB.cardinals - NORTH))
+		var/turf/neighbor = get_step(src, direction_check)
+		if(neighbor && SSwater_overlays.is_water(neighbor))
+			if(!(src in return_list))
+				set_below_watermobs_visually(TRUE)
+				return_list += src
+			var/turf/rightwards_turf = get_step(src, turn(direction_check, 90))
+			if(rightwards_turf && !SSwater_overlays.is_water(rightwards_turf) && !(rightwards_turf in return_list) && !(rightwards_turf in already_altered))
+				rightwards_turf.set_below_watermobs_visually(TRUE)
+				return_list += rightwards_turf
+			var/turf/leftwards_turf = get_step(src, turn(direction_check, -90))
+			if(leftwards_turf && !SSwater_overlays.is_water(leftwards_turf) && !(leftwards_turf in return_list) && !(leftwards_turf in already_altered))
+				leftwards_turf.set_below_watermobs_visually(TRUE)
+				return_list += leftwards_turf
+	return return_list
+
+/**	near_water_layering_cleanup()
+*	this proc is a final review of all the altered turfs created by near_water_layering_fix()
+*
+*	it is called for every altered turf by SSwater_overlays' update_turfs_layers_near_water(), checking to see if
+*	turfs with their layer set to UNDER_WATER_TURF_LAYER actually has water NORTH of it, and shouldnt
+* 	be visually below mobs in water and fixing it. As well as a second check to make sure turfs with water to their SOUTH
+*	have had their layer set to UNDER_WATER_TURF_LAYER.
+*/
+/turf/proc/near_water_layering_cleanup() // if any of the turfs we changed above have water above them, we reset them
+	var/list/return_list = list()
+	var/turf/checking_turf = get_step(src, SOUTH)	// this should be already handled, but was seeing some weird behaviour
+	if(!checking_turf)
+		return
+	if(SSwater_overlays.is_full_water(checking_turf) && layer != UNDER_WATER_TURF_LAYER)
+		set_below_watermobs_visually(TRUE)
+		return_list |= list(type, TRUE, x,y,z)
+
+	checking_turf = get_step(src, NORTH)
+	if(checking_turf == null)
+		return
+	if(SSwater_overlays.is_water(checking_turf) && layer != initial(layer))
+		set_below_watermobs_visually(FALSE)
+		return_list |= list(type, FALSE, "[x],[y],[z]")
+
+	if(istype(src, /turf/open/gm/river))	//we could have updated the layer/plane of a covered river, update its overlays so the grill doesnt clip over mobs either
+		var/turf/open/gm/river/checking_river = checking_turf
+		checking_river.update_overlays()
+	return return_list
+
+/**	set_below_watermobs_visually()
+*	this is the bread and butter of how SSwater_overlays' update_turfs_layers_near_water() works
+*	in this proc we actually set the layer/plane to be UNDER_WATER_TURF_LAYER or back to their
+*	initial layer/plane if we dont want them to be
+*/
+/turf/proc/set_below_watermobs_visually(setting)
+	if(setting)
+		layer = UNDER_WATER_TURF_LAYER
+		plane = FLOOR_PLANE
+		for(var/obj/structure/structure in contents)		//decals, railings, stairs etc
+			if(!structure.anchored || structure.wrenchable)	//we dont want crates etc dissappearing below the ground
+				continue
+			var/icon/icon_check = icon(structure.icon, structure.icon_state)
+			if(icon_check.Width() <= 32 && structure.layer < ABOVE_MOB_LAYER)
+				structure.layer = UNDER_WATER_STRUCTURE_LAYER
+				structure.plane = FLOOR_PLANE
+	else
+		layer = initial(layer)
+		plane = initial(plane)
+		for(var/obj/structure/structure in contents)
+			structure.layer = initial(structure.layer)
+			structure.plane = initial(structure.plane)
+	update_icon()	//rebakes the overlays to new layer >:()
+
 /obj/vis_contents_holder
 	plane = OPEN_SPACE_PLANE_START
 	vis_flags = VIS_HIDE
@@ -255,8 +337,10 @@
 	return
 
 // Handles whether an atom is able to enter the src turf
-/turf/Enter(atom/movable/mover, atom/old_loc)
-	if(QDELETED(mover) || !isturf(mover.loc))
+/turf/Enter(atom/movable/mover, atom/oldloc)
+	if(QDELETED(mover))
+		return FALSE // Prevent anything deleted from moving to limit side effects
+	if(!isturf(oldloc))
 		return FALSE
 
 	var/override = SEND_SIGNAL(mover, COMSIG_MOVABLE_TURF_ENTER, src)
@@ -276,66 +360,54 @@
 
 	var/blocking_dir = 0 // The directions that the mover's path is being blocked by
 
-	var/obstacle
-	var/turf/T
-	var/atom/A
-
-	T = mover.loc
-	blocking_dir |= T.BlockedExitDirs(mover, fdir)
+	blocking_dir |= oldloc.BlockedExitDirs(mover, fdir)
 	if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-		mover.Collide(T)
+		mover.Collide(oldloc)
 		return FALSE
-	for (obstacle in T) //First, check objects to block exit
-		if (mover == obstacle || old_loc == obstacle)
+	for (var/atom/movable/obstacle as anything in oldloc) //First, check objects to block exit
+		if (mover == obstacle)
 			continue
-		A = obstacle
-		if (!istype(A) || !A.can_block_movement)
+		if (!obstacle.can_block_movement)
 			continue
-		blocking_dir |= A.BlockedExitDirs(mover, fdir)
+		blocking_dir |= obstacle.BlockedExitDirs(mover, fdir)
 		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-			mover.Collide(A)
+			mover.Collide(obstacle)
 			return FALSE
 
 	// if we are thrown, moved, dragged, or in any other way abused by code - check our diagonals
 	if(!mover.move_intentionally)
 		// Check objects in adjacent turf EAST/WEST
 		if(fd1 && fd1 != fdir)
-			T = get_step(mover, fd1)
+			var/turf/T = get_step(mover, fd1)
 			if (T.BlockedExitDirs(mover, fd2) || T.BlockedPassDirs(mover, fd1))
 				blocking_dir |= fd1
 				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 					mover.Collide(T)
 					return FALSE
-			for(obstacle in T)
-				if(old_loc == obstacle)
+			for(var/atom/movable/obstacle as anything in T)
+				if (!obstacle.can_block_movement)
 					continue
-				A = obstacle
-				if (!istype(A) || !A.can_block_movement)
-					continue
-				if (A.BlockedExitDirs(mover, fd2) || A.BlockedPassDirs(mover, fd1))
+				if (obstacle.BlockedExitDirs(mover, fd2) || obstacle.BlockedPassDirs(mover, fd1))
 					blocking_dir |= fd1
 					if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-						mover.Collide(A)
+						mover.Collide(obstacle)
 						return FALSE
 
 		// Check for borders in adjacent turf NORTH/SOUTH
 		if(fd2 && fd2 != fdir)
-			T = get_step(mover, fd2)
+			var/turf/T = get_step(mover, fd2)
 			if (T.BlockedExitDirs(mover, fd1) || T.BlockedPassDirs(mover, fd2))
 				blocking_dir |= fd2
 				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 					mover.Collide(T)
 					return FALSE
-			for(obstacle in T)
-				if(old_loc == obstacle)
+			for(var/atom/movable/obstacle as anything in T)
+				if (!obstacle.can_block_movement)
 					continue
-				A = obstacle
-				if (!istype(A) || !A.can_block_movement)
-					continue
-				if (A.BlockedExitDirs(mover, fd1) || A.BlockedPassDirs(mover, fd2))
+				if (obstacle.BlockedExitDirs(mover, fd1) || obstacle.BlockedPassDirs(mover, fd2))
 					blocking_dir |= fd2
 					if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-						mover.Collide(A)
+						mover.Collide(obstacle)
 						return FALSE
 					break
 
@@ -344,41 +416,29 @@
 	if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 		mover.Collide(src)
 		return FALSE
-	for(obstacle in src) //Then, check atoms in the target turf
-		if(old_loc == obstacle)
+	for(var/atom/movable/obstacle as anything in src) //Then, check atoms in the target turf
+		if (!obstacle.can_block_movement)
 			continue
-		A = obstacle
-		if (!istype(A) || !A.can_block_movement)
-			continue
-		blocking_dir |= A.BlockedPassDirs(mover, fdir)
+		blocking_dir |= obstacle.BlockedPassDirs(mover, fdir)
 		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-			if(!mover.Collide(A))
+			if(!mover.Collide(obstacle))
 				return FALSE
-
-	if(mover.move_intentionally && istype(src, /turf/open_space) && istype(mover,/mob/living))
-		var/turf/open_space/space = src
-		var/mob/living/climber = mover
-		if(climber.a_intent == INTENT_HARM)
-			return TRUE
-		space.climb_down(climber)
-		return FALSE
-
 
 	return TRUE //Nothing found to block so return success!
 
-/turf/Entered(atom/movable/entered_movable, atom/old_loc)
+/turf/Entered(atom/movable/entered_movable, atom/OldLoc)
 	SHOULD_CALL_PARENT(TRUE)
 
 	..() // Shouldn't do anything but to satisfy lint
 
 	if(QDELETED(entered_movable))
-		return
+		return // Shouldn't be needed, we already fence it in Enter, but just in case
 
 	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, entered_movable)
 	SEND_SIGNAL(entered_movable, COMSIG_MOVABLE_TURF_ENTERED, src)
 
 	// Let explosions know that the atom entered
-	if(old_loc != src)
+	if(OldLoc != src)
 		for(var/datum/automata_cell/explosion/cell as anything in autocells)
 			cell.on_turf_entered(entered_movable)
 
@@ -941,6 +1001,11 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(damage_modifier > 0.5)
 		playsound(loc, "slam", 50, 1)
 
+/// Validate that a type of object can be deployed on this turf
+/turf/proc/validate_deployment(deployment_type)
+	var/ret = SEND_SIGNAL(src, COMSIG_TURF_PRE_DEPLOYMENT, deployment_type)
+	return !(ret & COMPONENT_TURF_PRE_DEPLOYMENT_BLOCKED)
+
 /turf/proc/on_climb_down(victim)
 	if(!isxeno(victim))
 		return
@@ -954,4 +1019,8 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	xeno_victim.Superslow(1)
 	xeno_victim.Slow(1.5)
 	xeno_victim.Daze(1)
+
+/turf/proc/is_signal_obstructed()
+	var/area/laser_area = get_area(src)
+	return !istype(laser_area) || CEILING_IS_PROTECTED(laser_area.ceiling, CEILING_PROTECTION_TIER_2)
 

@@ -37,7 +37,7 @@
 	tackle_max = 6
 	tackle_chance = 55
 
-	aura_strength = 4
+	aura_strength = XENO_PHERO_STRENGTH_VERY_STRONG
 	tacklestrength_min = 5
 	tacklestrength_max = 6
 
@@ -49,6 +49,8 @@
 
 	royal_caste = TRUE
 
+	organ_type = /obj/item/organ/xeno/queen
+	organ_regen_time = 10 MINUTES
 
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:
@@ -182,7 +184,7 @@
 
 	if(istype(crossing_turf, /turf/closed/wall))
 		var/turf/closed/wall/crossing_wall = crossing_turf
-		if(crossing_wall.turf_flags & TURF_HULL)
+		if(crossing_wall.turf_flags & TURF_HULL && !istype(crossing_wall, /turf/closed/wall/mineral/bone_resin/burrowable))
 			return COMPONENT_TURF_DENY_MOVEMENT
 
 	var/list/turf_area = range(3, crossing_turf)
@@ -272,7 +274,7 @@
 	desc = "A huge, looming alien creature. The biggest and the baddest."
 	icon_size = 64
 	icon_state = "Queen Walking"
-	plasma_types = list(PLASMA_ROYAL,PLASMA_CHITIN,PLASMA_PHEROMONE,PLASMA_NEUROTOXIN)
+	plasma_types = list(PLASMA_ROYAL)
 	attacktext = "bites"
 	attack_sound = null
 	friendly = "nuzzles"
@@ -286,9 +288,9 @@
 	hive_pos = XENO_QUEEN
 	small_explosives_stun = FALSE
 	pull_speed = 3 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
-	organ_value = 8000 // queen is expensive
 	claw_type = CLAW_TYPE_VERY_SHARP
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_NO_IGNITE
+	water_config = /datum/water_overlay_config/xeno/large
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_4/queen.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_4/queen.dmi'
@@ -299,16 +301,13 @@
 	weed_food_states = list("Queen_1","Queen_2","Queen_3")
 	weed_food_states_flipped = list("Queen_1","Queen_2","Queen_3")
 
-	var/breathing_counter = 0
-	var/ovipositor = FALSE //whether the Queen is attached to an ovipositor
-	var/queen_ability_cooldown = 0
-	var/egg_amount = 0 //amount of eggs inside the queen
-	var/screech_sound_effect_list = list('sound/voice/alien_queen_screech.ogg') //the noise the Queen makes when she screeches. Done this way for VV purposes.
-	var/queen_ovipositor_icon
-	var/queen_standing_icon
-
 	tileoffset = 0
 	viewsize = 12
+
+	bubble_icon = "alienroyal"
+
+	skull = /obj/item/skull/queen
+	pelt = /obj/item/pelt/queen
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
@@ -329,6 +328,7 @@
 		/datum/action/xeno_action/onclick/manage_hive,
 		/datum/action/xeno_action/onclick/send_thoughts,
 		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/autoweeding_toggle,
 	)
 
 	inherent_verbs = list(
@@ -361,11 +361,11 @@
 		/datum/action/xeno_action/activable/info_marker/queen,
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
-		/datum/action/xeno_action/onclick/shift_spits,
-		//second macro
+		/datum/action/xeno_action/onclick/shift_spits, //second macro
+		/datum/action/xeno_action/onclick/autoweeding_toggle,
 	)
 
-	// Abilities they get when they've successfully aged.
+	/// Abilities they get when they've successfully aged.
 	var/mobile_aged_abilities = list(
 		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
@@ -373,8 +373,13 @@
 		/datum/action/xeno_action/onclick/shift_spits, //second macro
 	)
 
-	skull = /obj/item/skull/queen
-	pelt = /obj/item/pelt/queen
+	var/breathing_counter = 0
+	var/ovipositor = FALSE //whether the Queen is attached to an ovipositor
+	var/queen_ability_cooldown = 0
+	var/egg_amount = 0 //amount of eggs inside the queen
+	var/screech_sound_effect_list = list('sound/voice/alien_queen_screech.ogg') //the noise the Queen makes when she screeches. Done this way for VV purposes.
+	var/queen_ovipositor_icon
+	var/queen_standing_icon
 
 	/// Whether queen has completed normal maturity
 	var/queen_aged = FALSE
@@ -383,15 +388,23 @@
 	/// Temporary maturity timer
 	var/queen_age_temp_timer_id = TIMER_ID_NULL
 
-	bubble_icon = "alienroyal"
+	/// Whether the queen does some basics in life because its a mindless roundstart queen
+	var/auto_queen = FALSE
+	COOLDOWN_DECLARE(auto_queen_action)
+
+/obj/item/organ/xeno/queen
+	name = "queen heart"
+	icon_state = "heart_t3"
+	item_state = "heart_t3"
+	research_value = 8000
+
+	xeno_organ_flags = XENO_ORGAN_ROYAL|XENO_ORGAN_HARDENED|XENO_ORGAN_TACHYCARDIA|XENO_ORGAN_ACID|XENO_ORGAN_SUPPORT
+
 
 /mob/living/carbon/xenomorph/queen/set_resting(new_resting, silent, instant)
 	if(ovipositor && new_resting)
 		return
 	return ..()
-
-/mob/living/carbon/xenomorph/queen/get_organ_icon()
-	return "heart_t3"
 
 /mob/living/carbon/xenomorph/queen/corrupted
 	AUTOWIKI_SKIP(TRUE)
@@ -660,6 +673,47 @@
 				if(alert_time >= 0 && alert_time < delta_time SECONDS) // Only display once at a threshold within delta_time
 					balloon_alert(src, "our maturity wanes soon!", text_color = "#7d32bb")
 
+		// Perform some basics if clientless
+		if(!client && auto_queen)
+			INVOKE_ASYNC(src, PROC_REF(auto_behavior))
+
+/// Perform some basics automatically: Pheros, local weeds, ovi, and leaders
+/mob/living/carbon/xenomorph/queen/proc/auto_behavior()
+	if(action_busy)
+		return
+
+	if(!current_aura)
+		// Not emitting pheros
+		emit_pheromones(XENO_PHERO_RECOVERY)
+		return
+
+	if(!ovipositor)
+		var/turf/current_position = get_turf(src)
+		if(current_position && !current_position.weeds && loc == current_position)
+			// Not on weeds
+			var/datum/action/xeno_action/onclick/plant_weeds/weed_action = get_action(src, /datum/action/xeno_action/onclick/plant_weeds)
+			if(weed_action)
+				weed_action.use_ability()
+			return
+
+		// Not on ovi
+		var/datum/action/xeno_action/onclick/grow_ovipositor/ovi_action = get_action(src, /datum/action/xeno_action/onclick/grow_ovipositor)
+		if(ovi_action)
+			ovi_action.use_ability()
+		return
+
+	if(hive)
+		if(length(hive.open_xeno_leader_positions))
+			// Open leader slots
+			var/mob/living/carbon/xenomorph/xeno = SAFEPICK(GLOB.living_xeno_list)
+			if(xeno && xeno.hive_pos == NORMAL_XENO && xeno.tier > 0)
+				hive.add_hive_leader(xeno)
+			return
+
+/mob/living/carbon/xenomorph/queen/Login()
+	. = ..()
+	auto_queen = FALSE
+
 /mob/living/carbon/xenomorph/queen/get_status_tab_items()
 	. = ..()
 	var/stored_larvae = GLOB.hive_datum[hivenumber].stored_larva
@@ -678,7 +732,7 @@
 	return COMPONENT_SCREECH_ACT_CANCEL
 
 /mob/living/carbon/xenomorph/queen/proc/screech_ready()
-	to_chat(src, SPAN_WARNING("You feel your throat muscles vibrate. You are ready to screech again."))
+	to_chat(src, SPAN_WARNING("We feel our throat muscles vibrate. We are ready to screech again."))
 	for(var/Z in actions)
 		var/datum/action/A = Z
 		A.update_button_icon()
@@ -705,7 +759,7 @@
 	if(isxeno(victim))
 		var/mob/living/carbon/xenomorph/xeno = victim
 		if(hivenumber == xeno.hivenumber)
-			to_chat(src, SPAN_WARNING("You can't bring yourself to harm a fellow sister to this magnitude."))
+			to_chat(src, SPAN_WARNING("We can't bring ourselves to harm a fellow sister to this magnitude."))
 			return FALSE
 
 	var/turf/cur_loc = victim.loc
@@ -719,7 +773,7 @@
 		return FALSE
 
 	visible_message(SPAN_XENOWARNING("[src] begins slowly lifting [victim] into the air."),
-	SPAN_XENOWARNING("You begin focusing your anger as you slowly lift [victim] into the air."))
+	SPAN_XENOWARNING("We begin focusing our anger as we slowly lift [victim] into the air."))
 	if(do_after(src, 80, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
 		if(!victim)
 			return FALSE
@@ -731,7 +785,7 @@
 		use_plasma(200)
 
 		visible_message(SPAN_XENODANGER("[src] viciously smashes and wrenches [victim] apart!"),
-		SPAN_XENODANGER("You suddenly unleash pure anger on [victim], instantly wrenching \him apart!"))
+		SPAN_XENODANGER("We suddenly unleash pure anger on [victim], instantly wrenching \him apart!"))
 		emote("roar")
 
 		attack_log += text("\[[time_stamp()]\] <font color='red'>gibbed [key_name(victim)]</font>")

@@ -3,7 +3,7 @@
 /datum/surgery/xenomorph
 	name = "Experimental Harvesting Surgery"
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
-	required_surgery_skill = SKILL_SURGERY_TRAINED
+	required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	possible_locs = list("head")
 	target_mobtypes = list(/mob/living/carbon/xenomorph)
 	steps = list(
@@ -23,7 +23,7 @@
 	if((patient.tier > 2 || isqueen(patient)) && !istype(tool, /obj/item/tool/surgery/scalpel/laser/advanced))
 		to_chat(user, SPAN_DANGER("Chitin of this kind is too thick for an ordinary tool, you would need something special."))
 		return FALSE
-	if(patient.stat == DEAD && !patient.organ_removed)
+	if((patient.stat == DEAD || patient.hive.is_ally(user)) && patient.organ)
 		return TRUE
 	return FALSE
 
@@ -153,7 +153,7 @@
 			SPAN_NOTICE("You confidently start to sever the [target.caste_type]'s alien organ from its surrounding connective tissue using [tool]."))
 	else
 		user.visible_message(
-			SPAN_NOTICE("[user] confidently starts to rip the [target.caste_type]'s connective tissue apart using [tool]"),
+			SPAN_NOTICE("[user] confidently starts to rip the [target.caste_type]'s connective tissue apart using [tool]."),
 			SPAN_NOTICE("You confidently start to rip the [target.caste_type]'s connective tissue apart using [tool]."))
 
 /datum/surgery_step/xenomorph/severe_connections/success(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -233,10 +233,13 @@
 			//no blood splatter here, we're just sticking our hands in, not cutting anything open
 			user.add_blood(BLOOD_COLOR_XENO, BLOOD_HANDS)
 
-	var/obj/item/organ/xeno/organ = locate() in target
+	var/obj/item/organ/xeno/organ = target.organ
 	if(!isnull(organ))
+		if(target.stat != DEAD)
+			organ.xeno_organ_flags |= XENO_ORGAN_FRESH
+			organ.name = "fresh [organ.name]"
+		SEND_SIGNAL(organ, COMSIG_XENO_ORGAN_REMOVED, user)
 		organ.forceMove(target.loc)
-		target.organ_removed = TRUE
 		target.update_wounds()
 
 /datum/surgery_step/xenomorph/remove_organ/failure(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

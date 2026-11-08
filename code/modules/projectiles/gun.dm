@@ -184,6 +184,7 @@
 	var/flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 	///Only guns of the same category can be fired together while dualwielding.
 	var/gun_category
+	var/rail_light_stowed = FALSE // This is set to true when the weapon is in the suit storage slot or back slot to dim the attached rail flashlight
 
 	///the default gun icon_state. change to reskin the gun
 	var/base_gun_icon
@@ -546,6 +547,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
 
 	if(slot in list(WEAR_L_HAND, WEAR_R_HAND))
+		dim_rail_light(FALSE)
 		if(user.get_active_hand() == src)
 			set_gun_user(user)
 		if(HAS_TRAIT_FROM_ONLY(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user)))
@@ -553,6 +555,14 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			REMOVE_TRAIT(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user))
 	else
 		set_gun_user(null)
+
+		if(slot in list(WEAR_J_STORE, WEAR_BACK)) //When you stow your weapon on your back or in the suit storage slot, you're not shoving it up your ass. The light should stay on and keep illuminating (unless you're putting a shotgun in a scabbard)
+			dim_rail_light(TRUE)
+			if(HAS_TRAIT_FROM_ONLY(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user)))
+				REMOVE_TRAIT(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user))
+			return ..()
+
+		dim_rail_light(FALSE)
 		// we force the light off and turn it back on again when the gun is equipped. Otherwise bad things happen.
 		if(light_sources())
 			force_light(on = FALSE)
@@ -560,7 +570,30 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	return ..()
 
+/obj/item/weapon/gun/proc/dim_rail_light(weapon_stowed)
+	if(rail_light_stowed == weapon_stowed)
+		return
+
+	var/obj/item/attachable/flashlight/dimmed_flashlight
+	for(var/attachment_slot in attachments)
+		var/obj/item/attachable/flashlight/attached_flashlight = attachments[attachment_slot]
+		if(istype(attached_flashlight) && attached_flashlight.dim_light)
+			dimmed_flashlight = attached_flashlight
+			break
+
+	if(dimmed_flashlight?.light_on)
+		var/light_range_dim = dimmed_flashlight.light_mod * (1 - DIMMED_RAIL_LIGHT_MULT)
+		var/light_power_dim = light_range_dim * 0.5
+		if(weapon_stowed)
+			set_light_range(light_range - light_range_dim)
+			set_light_power(light_power - light_power_dim)
+		else
+			set_light_range(light_range + light_range_dim)
+			set_light_power(light_power + light_power_dim)
+	rail_light_stowed = weapon_stowed
+
 /obj/item/weapon/gun/dropped(mob/user)
+	dim_rail_light(FALSE)
 	. = ..()
 
 	if(gun_timer_id) // just in case too
@@ -1801,7 +1834,7 @@ and you're good to go.
 				admin_msg = "[key_name(user)] lost at Russian Roulette with \a [name] in [get_area(user)] [ffl]"
 
 			var/obj/limb/head = user.get_limb("head") // carnage
-			if(projectile_to_fire.ammo.bonus_projectiles_type || projectile_to_fire.ammo.flags_ammo_behavior == AMMO_EXPLOSIVE || (projectile_to_fire.ammo.damage * damage_mult) >= 80)
+			if(projectile_to_fire.ammo.bonus_projectiles_type || (projectile_to_fire.ammo.damage * damage_mult) >= 80)
 				user.visible_message(SPAN_HIGHDANGER(uppertext("[user]'s head explodes into a cloud of blood and bone by their [name], oh God.")))
 				head.droplimb(FALSE, TRUE)
 				user.spawn_gibs()
@@ -1883,14 +1916,14 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 		if(flags_gun_features & GUN_TRIGGER_SAFETY)
 			to_chat(user, SPAN_WARNING("The safety is on!"))
-			gun_user.balloon_alert(gun_user, "safety on")
+			user.balloon_alert(user, "safety on")
 			return
 
-		if(gun_user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (gun_user.a_intent == INTENT_HELP))
+		if(user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (user.a_intent == INTENT_HELP))
 			if(world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
-				to_chat(gun_user, SPAN_DANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
-				gun_user.balloon_alert(gun_user, "help intent safety")
-				click_empty(gun_user)
+				to_chat(user, SPAN_DANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
+				user.balloon_alert(user, "help intent safety")
+				click_empty(user)
 			return FALSE
 
 		if(active_attachable)
@@ -2026,7 +2059,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		gun_accuracy_mult = max(0.1, gun_accuracy_mult - max(0,movement_onehanded_acc_penalty_mult * HIT_ACCURACY_MULT_TIER_3))
 		gun_scatter += max(0, movement_onehanded_acc_penalty_mult * SCATTER_AMOUNT_TIER_10)
 
-	if(dual_wield) //akimbo firing gives terrible accuracy
+	if(dual_wield && !(flags_gun_features & GUN_AKIMBO_ALLOWED)) //akimbo firing gives terrible accuracy
 		gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(5,7))
 		gun_scatter += SCATTER_AMOUNT_TIER_3
 
@@ -2325,8 +2358,12 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		set_gun_user(source)
 
 	var/list/modifiers = params2list(params)
-	if(modifiers[CTRL_CLICK] || modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5])
+	if(modifiers[CTRL_CLICK] || modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5]) // if we dont remove 'modifiers[RIGHT_CLICK]' here, we will get access to faultless PB with shotguns
 		return FALSE
+	if(ishuman(gun_user))
+		var/mob/living/carbon/human/H = gun_user // basically there so that we DON'T shoot while tryna use spec gun abilities via RMB !AND! so that we DO shoot if we use spec stuff via MMB/shift+LMB
+		if(H.selected_ability && modifiers[RIGHT_CLICK] && H.client.prefs.xeno_ability_click_mode == XENO_ABILITY_CLICK_RIGHT)
+			return FALSE
 
 	// Don't allow doing anything else if inside a container of some sort, like a locker.
 	if(!isturf(gun_user.loc))
@@ -2519,6 +2556,19 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	update_icon()
 
+	if(is_mainship_level(gun_turf.z) && gun_area.ceiling >= CEILING_METAL && prob(1))
+		for(var/turf/open/floor/landing_turf in shuffle(RANGE_TURFS(4, gun_turf)))
+			var/area/landing_area = get_area(landing_turf)
+			if(landing_area.ceiling >= CEILING_METAL)
+				new /obj/effect/falling_pipe(landing_turf, user)
+				break
+	else if(is_ground_level(gun_turf.z) && gun_area.ceiling == CEILING_NONE && prob(1))
+		for(var/turf/open/landing_turf in shuffle(RANGE_TURFS(4, gun_turf)))
+			var/area/landing_area = get_area(landing_turf)
+			if(landing_area.ceiling == CEILING_NONE && !istype(landing_turf, /turf/open/space))
+				new /obj/effect/falling_bird(landing_turf, user)
+				break
+
 /obj/item/weapon/gun/proc/handle_battlefield_execution(mob/living/user, mob/living/hit_mob)
 
 	if(!skillcheck(user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED)) // just in case
@@ -2571,7 +2621,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	simulate_recoil(2, user)
 
 	var/obj/limb/head = execution_target.get_limb("head")
-	if(projectile_to_fire.ammo.bonus_projectiles_type || projectile_to_fire.ammo.flags_ammo_behavior & AMMO_EXPLOSIVE || (projectile_to_fire.ammo.damage * damage_mult) >= 80)
+	if(projectile_to_fire.ammo.bonus_projectiles_type || (projectile_to_fire.ammo.damage * damage_mult) >= 80)
 		execution_target.visible_message(SPAN_HIGHDANGER(uppertext("[execution_target]'s head explodes into a cloud of blood and bone by [user]'s [name], oh God.")),
 			SPAN_HIGHDANGER("Your head explodes into a cloud of blood and bone, goddamn.")) // lol
 		head.droplimb(FALSE, TRUE)

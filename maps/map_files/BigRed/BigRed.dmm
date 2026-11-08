@@ -469,6 +469,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
 "abO" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/mars_cave,
 /area/bigredv2/caves_north)
 "abP" = (
@@ -1753,6 +1754,7 @@
 /area/bigredv2/outside/marshal_office)
 "agC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
 "agD" = (
@@ -1913,6 +1915,7 @@
 /area/bigredv2/outside/general_offices)
 "ahg" = (
 /obj/effect/decal/cleanable/blood/writing,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
 /turf/open/floor/darkyellowcorners2/north,
 /area/bigredv2/outside/filtration_plant)
 "ahh" = (
@@ -1973,6 +1976,7 @@
 /area/bigredv2/outside/filtration_plant)
 "ahr" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "ahs" = (
@@ -2129,6 +2133,10 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
+"ahZ" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_research)
 "aia" = (
 /obj/structure/machinery/door_control{
 	id = "Marshal Offices";
@@ -2195,6 +2203,10 @@
 /obj/structure/bed/roller,
 /turf/open/floor/freezerfloor,
 /area/bigredv2/caves/lambda/xenobiology)
+"aim" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_3,
+/area/bigredv2/caves/mining)
 "ain" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
@@ -2205,6 +2217,10 @@
 "aio" = (
 /turf/open/floor/darkpurplecorners2/west,
 /area/bigredv2/caves/lambda/xenobiology)
+"aip" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/mars_cave/mars_cave_3,
+/area/bigredv2/caves/mining)
 "aiq" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/dark,
@@ -2214,6 +2230,10 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/dark,
 /area/bigredv2/caves/lambda/xenobiology)
+"ais" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/mars_cave/mars_cave_16,
+/area/bigredv2/caves/mining)
 "ait" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/floor/white,
@@ -2236,6 +2256,15 @@
 "aiw" = (
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/nw)
+"aix" = (
+/obj/structure/machinery/light/small,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_3,
+/area/bigredv2/caves/mining)
+"aiy" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/caves/mining)
 "aiz" = (
 /turf/open/mars/mars_dirt_13,
 /area/bigredv2/outside/nw)
@@ -2261,6 +2290,22 @@
 /obj/item/clothing/under/marine/veteran/cmb,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
+"aiF" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_16,
+/area/bigredv2/caves/mining)
+"aiG" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/mars_cave/mars_cave_17,
+/area/bigredv2/caves/mining)
+"aiH" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"aiI" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
 "aiJ" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -2272,6 +2317,19 @@
 /obj/structure/surface/table,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
+"aiL" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"aiM" = (
+/obj/item/device/flashlight/lantern,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"aiN" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_17,
+/area/bigredv2/caves/mining)
 "aiO" = (
 /obj/structure/bed/chair,
 /turf/open/floor,
@@ -2321,6 +2379,10 @@
 "aiX" = (
 /turf/open/floor/bcircuit,
 /area/bigredv2/outside/marshal_office)
+"aiY" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_19,
+/area/bigredv2/caves/mining)
 "aiZ" = (
 /obj/structure/machinery/computer/cameras,
 /obj/structure/surface/table,
@@ -2356,6 +2418,22 @@
 /obj/structure/pipes/vents/pump/on,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
+"ajf" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/mars_cave/mars_cave_11,
+/area/bigredv2/caves_research)
+"ajg" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/mars_cave,
+/area/bigredv2/caves_research)
+"ajh" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_10,
+/area/bigredv2/caves_research)
+"aji" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_research)
 "ajj" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -2379,6 +2457,14 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/bigredv2/caves/lambda/breakroom)
+"ajn" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_6,
+/area/bigredv2/caves_research)
+"ajo" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/mars_cave/mars_cave_5,
+/area/bigredv2/caves_research)
 "ajp" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -2442,6 +2528,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/nw)
+"ajA" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_7,
+/area/bigredv2/caves_research)
 "ajB" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -2453,6 +2543,10 @@
 /obj/item/device/radio,
 /turf/open/floor/bcircuit,
 /area/bigredv2/outside/marshal_office)
+"ajD" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/mars_cave/mars_cave_23,
+/area/bigredv2/caves_research)
 "ajE" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/redcorner/west,
@@ -2467,12 +2561,27 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
+"ajH" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/darkyellow2/north,
+/area/bigredv2/outside/engineering/reactor)
+"ajI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W-corner"
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/outside/filtration_cave_cas)
 "ajJ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
+"ajK" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/outside/filtration_cave_cas)
 "ajL" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -2483,11 +2592,19 @@
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
+"ajN" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/outside/filtration_cave_cas)
 "ajO" = (
 /obj/structure/machinery/prop/almayer/computer/PC,
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet,
 /area/bigredv2/caves/lambda/breakroom)
+"ajP" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/darkyellow2/east,
+/area/bigredv2/outside/engineering/reactor)
 "ajQ" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/recharger,
@@ -2533,23 +2650,59 @@
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/caves/lambda/xenobiology)
+"ajX" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/darkyellow2/west,
+/area/bigredv2/outside/engineering/reactor)
+"ajY" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/mars_cave/mars_cave_7,
+/area/bigredv2/outside/filtration_cave_cas)
+"ajZ" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_7,
+/area/bigredv2/outside/filtration_cave_cas)
 "aka" = (
 /obj/structure/machinery/faxmachine,
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/wood,
 /area/bigredv2/caves/lambda/breakroom)
+"akb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/darkyellow2/east,
+/area/bigredv2/outside/engineering/reactor)
 "akc" = (
 /obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshal_office)
+"akd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/darkyellow2/west,
+/area/bigredv2/outside/engineering/reactor)
 "ake" = (
 /obj/structure/surface/table,
 /obj/item/ore/uranium,
 /turf/open/floor/bcircuit,
 /area/bigredv2/outside/marshal_office)
+"akf" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/darkyellow2/west,
+/area/bigredv2/outside/engineering)
+"akg" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/dark,
+/area/bigredv2/outside/engineering)
 "akh" = (
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/telecomm/n_cave)
+"aki" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/dark,
+/area/bigredv2/outside/engineering)
 "akj" = (
 /obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -2559,6 +2712,13 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshal_office)
+"akk" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/dark,
+/area/bigredv2/outside/filtration_plant)
 "akl" = (
 /obj/structure/sign/safety/hazard,
 /turf/closed/wall/solaris/reinforced,
@@ -2621,6 +2781,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/n)
+"akx" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_23,
+/area/bigredv2/outside/filtration_cave_cas)
 "aky" = (
 /obj/structure/bookcase/manuals/research_and_development,
 /obj/structure/machinery/light{
@@ -2643,6 +2807,10 @@
 /obj/structure/xenoautopsy,
 /turf/open/floor/whitepurple/north,
 /area/bigredv2/caves/lambda/xenobiology)
+"akC" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_east)
 "akD" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -2694,6 +2862,14 @@
 /obj/structure/machinery/light,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
+"akN" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/mars_cave/mars_cave_7,
+/area/bigredv2/caves_east)
+"akO" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/special_gear,
+/turf/open/floor/dark,
+/area/bigredv2/outside/engineering)
 "akP" = (
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/telecomm/n_cave)
@@ -2721,6 +2897,12 @@
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
+"akV" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/darkyellow2/west,
+/area/bigredv2/outside/engineering)
 "akW" = (
 /turf/open/mars/mars_dirt_13,
 /area/bigredv2/caves_north)
@@ -2778,6 +2960,13 @@
 "all" = (
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/telecomm)
+"alm" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/dark,
+/area/bigredv2/outside/filtration_plant)
 "aln" = (
 /turf/open/mars/mars_dirt_3,
 /area/bigredv2/outside/nw)
@@ -2792,6 +2981,10 @@
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/marshal_office)
+"alq" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/plating,
+/area/bigredv2/outside/filtration_plant)
 "alr" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
@@ -2830,6 +3023,10 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
+"aly" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_east)
 "alz" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -2856,6 +3053,12 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/medical)
+"alE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/dark,
+/area/bigredv2/outside/filtration_plant)
 "alF" = (
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/n)
@@ -2911,6 +3114,13 @@
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/whitepurplefull,
 /area/bigredv2/caves/lambda/xenobiology)
+"alT" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/redcorner/east,
+/area/bigredv2/outside/office_complex)
 "alU" = (
 /turf/open/floor/darkpurple2/west,
 /area/bigredv2/caves/lambda/xenobiology)
@@ -2952,6 +3162,10 @@
 /obj/structure/window_frame/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshal_office)
+"amc" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/mars_cave/mars_cave_6,
+/area/bigredv2/caves_east)
 "amd" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -2964,6 +3178,10 @@
 	},
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
+"amf" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave,
+/area/bigredv2/caves_east)
 "amg" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -2971,6 +3189,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
+"amh" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_10,
+/area/bigredv2/caves_east)
+"ami" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_18,
+/area/bigredv2/caves_east)
 "amj" = (
 /obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
@@ -2982,9 +3208,19 @@
 /obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
+"amm" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/static_comms/net_survivor,
+/turf/open/floor/white,
+/area/bigredv2/outside/office_complex)
 "amn" = (
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/dorms)
+"amo" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/mars_cave/mars_cave_5,
+/area/bigredv2/caves_lambda)
 "amp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -3015,6 +3251,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/red/east,
 /area/bigredv2/outside/marshal_office)
+"amt" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_lambda)
 "amu" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -3025,6 +3265,10 @@
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
+"amv" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_lambda)
 "amw" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -3076,6 +3320,10 @@
 "amE" = (
 /turf/open/floor/plating,
 /area/bigredv2/caves_north)
+"amF" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_23,
+/area/bigredv2/caves_lambda)
 "amG" = (
 /turf/open/mars_cave/mars_cave_8,
 /area/bigredv2/caves_lambda)
@@ -3121,6 +3369,10 @@
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/caves/lambda/xenobiology)
+"amQ" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_5,
+/area/bigredv2/caves_lambda)
 "amR" = (
 /obj/structure/machinery/door/airlock/almayer/research/glass/colony{
 	name = "\improper Lambda Lab Hydroponics"
@@ -3167,6 +3419,14 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/breakroom)
+"amZ" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_7,
+/area/bigredv2/caves_lambda)
+"ana" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/c)
 "anb" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -3244,6 +3504,10 @@
 /obj/effect/spawner/random/powercell,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
+"ann" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_6,
+/area/bigredv2/caves_lambda)
 "ano" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Lambda Lab Maintenance Storage"
@@ -3259,6 +3523,14 @@
 	},
 /turf/open/floor/whitepurple/west,
 /area/bigredv2/caves/lambda/xenobiology)
+"anr" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/mars_cave/mars_cave_7,
+/area/bigredv2/caves_lambda)
+"ans" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_18,
+/area/bigredv2/caves_lambda)
 "ant" = (
 /obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -3302,6 +3574,15 @@
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/marshal_office)
+"anz" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/white,
+/area/bigredv2/outside/admin_building)
+"anA" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves/lambda/research)
 "anB" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -3309,6 +3590,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
+"anC" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/floor/darkpurple2/west,
+/area/bigredv2/caves/lambda/research)
 "anD" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor,
@@ -3324,6 +3609,10 @@
 	},
 /turf/open/floor/cult,
 /area/bigredv2/outside/marshal_office)
+"anG" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/floor/darkpurple2/east,
+/area/bigredv2/caves/lambda/research)
 "anH" = (
 /obj/structure/bed/chair,
 /turf/open/floor/grimy,
@@ -3373,6 +3662,10 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating/warnplate/north,
 /area/bigredv2/caves/lambda/xenobiology)
+"anR" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/asteroidwarning,
+/area/bigredv2/outside/c)
 "anS" = (
 /obj/item/tool/warning_cone,
 /turf/open/floor/warnwhite/west,
@@ -3417,6 +3710,11 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/medical)
+"aoa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/static_comms/net_survivor,
+/turf/open/floor/carpet13_5/west,
+/area/bigredv2/outside/bar)
 "aob" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/lambda/virology)
@@ -3434,6 +3732,11 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/whitegreenfull,
 /area/bigredv2/caves/lambda/xenobiology)
+"aoe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/white,
+/area/bigredv2/outside/medical)
 "aof" = (
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/admin_building)
@@ -3497,6 +3800,19 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
+"aor" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw/ceiling)
+"aos" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw/ceiling)
+"aot" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/white,
+/area/bigredv2/outside/medical)
 "aou" = (
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
@@ -3504,6 +3820,10 @@
 /obj/structure/machinery/suit_storage_unit/carbon_unit,
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
+"aow" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves_lambda)
 "aox" = (
 /obj/structure/machinery/suit_storage_unit/carbon_unit,
 /obj/structure/machinery/camera/autoname,
@@ -3534,6 +3854,10 @@
 "aoB" = (
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
+"aoC" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_16,
+/area/bigredv2/caves_lambda)
 "aoD" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/virology)
@@ -3578,6 +3902,10 @@
 /obj/item/tool/weedkiller,
 /turf/open/floor/whitegreenfull,
 /area/bigredv2/caves/lambda/xenobiology)
+"aoN" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/whitegreencorner,
+/area/bigredv2/outside/medical)
 "aoO" = (
 /turf/open/floor/asteroidwarning/northwest,
 /area/bigredv2/outside/nw)
@@ -3598,6 +3926,10 @@
 	},
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/nw)
+"aoS" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_dirt_6,
+/area/bigredv2/caves_lambda)
 "aoT" = (
 /obj/structure/bed,
 /turf/open/floor/dark,
@@ -3614,6 +3946,10 @@
 	},
 /turf/open/floor/redfull/northwest,
 /area/bigredv2/outside/marshal_office)
+"aoW" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/asteroidwarning/north,
+/area/bigredv2/outside/nw)
 "aoX" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/camera,
@@ -3647,12 +3983,42 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
+"ape" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/medical{
+	dir = 1
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/floor/asteroidwarning/north,
+/area/bigredv2/outside/nw)
+"apf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
+"apg" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
 "aph" = (
 /obj/structure/machinery/light{
 	dir = 8
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
+"api" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
+"apj" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/grimy,
+/area/bigredv2/outside/marshal_office)
 "apk" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -3665,6 +4031,11 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
+"apm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
 "apn" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
@@ -3705,6 +4076,10 @@
 /obj/structure/window_frame/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_store)
+"apv" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
 "apw" = (
 /turf/open/floor/whitepurplecorner/west,
 /area/bigredv2/caves/lambda/xenobiology)
@@ -3766,6 +4141,14 @@
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/marshal_office)
+"apI" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/redcorner/east,
+/area/bigredv2/outside/marshal_office)
 "apJ" = (
 /obj/structure/window/framed/solaris/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -3779,6 +4162,14 @@
 /obj/structure/bed/chair,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
+"apL" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/grimy,
+/area/bigredv2/outside/marshal_office)
+"apM" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/dark,
+/area/bigredv2/outside/marshal_office)
 "apN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -3791,10 +4182,21 @@
 	},
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
+"apP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/redcorner/west,
+/area/bigredv2/outside/marshal_office)
 "apQ" = (
 /obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_store)
+"apR" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor/redcorner,
+/area/bigredv2/outside/marshal_office)
 "apS" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
@@ -3811,6 +4213,20 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
+"apV" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
+"apW" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
 "apX" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/phoron{
@@ -3818,6 +4234,10 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
+"apY" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves_north)
 "apZ" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/uranium{
@@ -3940,6 +4360,11 @@
 /obj/structure/machinery/chem_dispenser,
 /turf/open/floor/whitepurplecorner/east,
 /area/bigredv2/outside/medical)
+"aqv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
 "aqw" = (
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
@@ -3951,6 +4376,15 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/library)
+"aqy" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
+/turf/open/floor,
+/area/bigredv2/outside/marshal_office)
 "aqz" = (
 /obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -3959,16 +4393,44 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
+"aqA" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_15,
+/area/bigredv2/caves_north)
+"aqB" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_14,
+/area/bigredv2/caves_north)
 "aqC" = (
 /obj/structure/surface/table,
 /turf/open/floor/whitebluefull/northeast,
 /area/bigredv2/outside/medical)
+"aqD" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_north)
+"aqE" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/wood,
+/area/bigredv2/outside/marshal_office)
+"aqF" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_north)
+"aqG" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/special_gear,
+/turf/open/floor/wood,
+/area/bigredv2/outside/marshal_office)
 "aqH" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/n)
+"aqI" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/mars_cave/mars_cave_19,
+/area/bigredv2/caves_north)
 "aqJ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/mars_cave/mars_dirt_4,
@@ -4020,6 +4482,14 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
+"aqS" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves_north)
+"aqT" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/mars_cave/mars_dirt_6,
+/area/bigredv2/caves_north)
 "aqU" = (
 /obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -4028,6 +4498,10 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/hydroponics)
+"aqV" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/mars_cave/mars_cave_14,
+/area/bigredv2/caves_north)
 "aqW" = (
 /obj/structure/dispenser/oxygen,
 /turf/open/floor/dark,
@@ -4048,6 +4522,10 @@
 	},
 /turf/open/floor/elevatorshaft/north,
 /area/bigredv2/caves/lambda/breakroom)
+"aqZ" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/white,
+/area/bigredv2/outside/marshal_office)
 "ara" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp{
@@ -4075,6 +4553,10 @@
 /obj/effect/landmark/crap_item,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/nw)
+"are" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_7,
+/area/bigredv2/caves_north)
 "arf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/science,
@@ -4086,10 +4568,19 @@
 	},
 /turf/open/floor/whitepurplecorner/east,
 /area/bigredv2/outside/medical)
+"arh" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/mars_cave/mars_cave_18,
+/area/bigredv2/caves_north)
 "ari" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
+"arj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/white,
+/area/bigredv2/outside/marshal_office)
 "arl" = (
 /turf/open/floor/whitegreenfull,
 /area/bigredv2/outside/medical)
@@ -10085,12 +10576,12 @@
 "aSR" = (
 /obj/structure/pipes/vents/pump,
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/smg/mp27,
+/obj/item/weapon/gun/rifle/m20a,
 /turf/open/floor/redcorner/west,
 /area/bigredv2/outside/admin_building)
 "aSS" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/smg/mp27,
+/obj/item/weapon/gun/rifle/m20a,
 /turf/open/floor/redcorner/west,
 /area/bigredv2/outside/admin_building)
 "aST" = (
@@ -10463,6 +10954,8 @@
 /turf/open/floor/podhatchfloor,
 /area/bigredv2/outside/admin_building)
 "aVk" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/m20a,
 /turf/open/floor/redcorner/west,
 /area/bigredv2/outside/admin_building)
 "aVl" = (
@@ -14784,6 +15277,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 "bri" = (
@@ -18075,6 +18569,7 @@
 	pixel_y = 6;
 	pixel_x = 9
 	},
+/obj/effect/landmark/static_comms/net_survivor,
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "ckC" = (
@@ -19383,6 +19878,7 @@
 /obj/effect/landmark/corpsespawner/security,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "dGw" = (
@@ -20842,6 +21338,7 @@
 "fgE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/remains/human,
+/obj/effect/landmark/static_comms/net_survivor,
 /obj/effect/landmark/static_comms/net_two{
 	broken_on_spawn = 1
 	},
@@ -20967,6 +21464,7 @@
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
 "foB" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/mars_cave/mars_cave_22,
 /area/bigredv2/caves_east)
 "fpa" = (
@@ -21234,6 +21732,7 @@
 /area/bigredv2/outside/e)
 "fFG" = (
 /obj/structure/largecrate/random/barrel,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
 "fFO" = (
@@ -22238,6 +22737,7 @@
 /area/bigredv2/outside/filtration_cave_cas)
 "gHH" = (
 /obj/structure/largecrate/random/barrel/white,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "gHR" = (
@@ -23480,6 +23980,7 @@
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering)
 "idT" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/mars_cave/mars_cave_9,
 /area/bigredv2/caves_lambda)
 "iea" = (
@@ -24043,9 +24544,7 @@
 "iFT" = (
 /obj/structure/platform_decoration/metal/almayer/west,
 /obj/structure/platform_decoration/metal/almayer,
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/bluegrid/bcircuitoff,
 /area/bigredv2/caves/lambda/research)
 "iGp" = (
@@ -25532,9 +26031,7 @@
 "kkJ" = (
 /obj/structure/platform_decoration/metal/almayer/north,
 /obj/structure/platform_decoration/metal/almayer/east,
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /obj/item/stack/cable_coil/random,
 /turf/open/floor/bluegrid/bcircuitoff,
 /area/bigredv2/caves/lambda/research)
@@ -26337,6 +26834,7 @@
 /obj/item/trash/cigbutt{
 	pixel_x = 4
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/n)
 "lhh" = (
@@ -27765,6 +28263,7 @@
 /turf/open/asphalt/cement/cement15,
 /area/bigredv2/outside/lambda_cave_cas)
 "mIc" = (
+/obj/effect/landmark/static_comms/net_survivor,
 /obj/effect/landmark/static_comms/net_two,
 /turf/open/floor/podhatchfloor,
 /area/bigredv2/outside/admin_building)
@@ -27990,9 +28489,7 @@
 /area/bigredv2/outside/space_port)
 "mSC" = (
 /obj/structure/platform/metal/almayer/east,
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/item/shard,
 /turf/open/floor/bluegrid/bcircuitoff,
 /area/bigredv2/caves/lambda/research)
 "mSS" = (
@@ -28694,9 +29191,9 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "nFB" = (
-/obj/item/weapon/gun/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
+/obj/item/weapon/gun/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/mars_cave/mars_cave_3,
 /area/bigredv2/caves/mining)
 "nGl" = (
@@ -30707,6 +31204,7 @@
 /area/bigredv2/outside/space_port)
 "pLj" = (
 /obj/structure/largecrate/random/barrel/red,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/mars_cave/mars_cave_19,
 /area/bigredv2/caves/mining)
 "pLH" = (
@@ -31674,6 +32172,7 @@
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering)
 "qHc" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
 /turf/open/floor/darkyellowcorners2/north,
 /area/bigredv2/outside/filtration_plant)
 "qHy" = (
@@ -32387,12 +32886,10 @@
 "rtV" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/landmark/corpsespawner/miner,
-/obj/item/weapon/gun/rifle/m16{
-	pixel_x = 10
-	},
-/obj/item/ammo_magazine/rifle/m16,
-/obj/item/ammo_magazine/rifle/m16,
 /obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
+/obj/item/ammo_magazine/rifle/m20a,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
 "ruo" = (
@@ -36010,6 +36507,7 @@
 	pixel_x = -7;
 	pixel_y = 4
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/special_gear,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "uXW" = (
@@ -36023,6 +36521,7 @@
 /obj/item/alien_embryo{
 	pixel_x = 4
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "uZy" = (
@@ -37903,6 +38402,7 @@
 	pixel_x = 10;
 	pixel_y = -4
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "wRD" = (
@@ -37949,6 +38449,7 @@
 /area/bigredv2/caves_se)
 "wVd" = (
 /obj/structure/largecrate/random/barrel/red,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
 "wVw" = (
@@ -41164,7 +41665,7 @@ aao
 aao
 aao
 aao
-wCo
+aiL
 fLR
 wCo
 gyL
@@ -41377,8 +41878,8 @@ vHw
 aao
 aao
 aao
-wCo
-vmI
+aiL
+aiM
 nSP
 wCo
 wCo
@@ -41589,10 +42090,10 @@ nSP
 wVQ
 sZh
 jVN
-wCo
-tqi
-owR
-owR
+aiL
+aiY
+aiF
+aiF
 owR
 owR
 owR
@@ -41804,8 +42305,8 @@ sZh
 jVN
 wCo
 kli
-rxh
-rxh
+aiH
+aiH
 rxh
 rxh
 rsv
@@ -42017,8 +42518,8 @@ sZh
 jVN
 wCo
 wCo
-wVQ
-rxh
+aiN
+aiH
 rxh
 rxh
 rsv
@@ -42230,7 +42731,7 @@ sZh
 iLs
 wCo
 wCo
-wVQ
+aiG
 rxh
 rxh
 rxh
@@ -42443,7 +42944,7 @@ pJX
 iLs
 wCo
 wCo
-wVQ
+aiG
 rxh
 rxh
 rxh
@@ -42656,7 +43157,7 @@ mfw
 iLs
 wCo
 wCo
-wVQ
+aiG
 rxh
 rxh
 rxh
@@ -44573,8 +45074,8 @@ lSH
 yln
 uHQ
 aao
-rxh
-rxh
+aiH
+aiH
 rxh
 rxh
 rxh
@@ -44787,7 +45288,7 @@ uHQ
 uHQ
 tsc
 rxh
-rxh
+aiI
 rxh
 rxh
 rxh
@@ -45000,7 +45501,7 @@ pSa
 oKy
 wRH
 rxh
-rxh
+aiI
 rxh
 rxh
 rxh
@@ -45213,7 +45714,7 @@ sqQ
 oKy
 uJI
 rxh
-rxh
+aiI
 jtL
 uDZ
 rxh
@@ -45426,8 +45927,8 @@ pSa
 sOi
 tsc
 evX
-rxh
-rsv
+aiH
+aim
 vHw
 vHw
 vTh
@@ -45639,8 +46140,8 @@ pSa
 oKy
 tsc
 rxh
-rxh
-pMB
+aiH
+aix
 vHw
 vHw
 rxh
@@ -45852,7 +46353,7 @@ lKw
 oKy
 tsc
 rxh
-rxh
+aiI
 rxh
 sZh
 rUZ
@@ -46065,7 +46566,7 @@ uHQ
 uHQ
 wfd
 uHQ
-rxh
+aiH
 rxh
 sZh
 wCo
@@ -46278,7 +46779,7 @@ dIG
 ipf
 sdP
 uHQ
-rxh
+aiH
 hEz
 hEz
 owR
@@ -46491,8 +46992,8 @@ qYY
 dKo
 pSa
 uHQ
-fnO
-fnO
+aiy
+aiy
 fnO
 fnO
 sZh
@@ -46705,7 +47206,7 @@ kCe
 xWr
 uHQ
 vHw
-owR
+aiF
 owR
 owR
 sZh
@@ -46918,7 +47419,7 @@ qkw
 uHQ
 uHQ
 uHQ
-fnO
+aiy
 fnO
 fnO
 pJX
@@ -49123,7 +49624,7 @@ hpM
 avt
 avV
 avV
-avV
+aor
 ayb
 avT
 avT
@@ -49472,14 +49973,14 @@ aao
 aao
 aao
 aao
-wCo
-wCo
-wVQ
-rsv
-owR
-owR
-rsv
-rsv
+aiL
+aiL
+aiG
+aip
+ais
+ais
+aip
+aim
 aao
 aao
 aao
@@ -49684,15 +50185,15 @@ aao
 aao
 aao
 aao
-wCo
-tqi
-owR
+aiL
+aiY
+aiF
 rsv
 rsv
 rsv
 rsv
 rsv
-rsv
+aim
 aao
 aao
 aao
@@ -49826,13 +50327,13 @@ bme
 bme
 azb
 hhK
-nVq
+akg
 nVq
 sCt
 azb
 hhK
 nVq
-nVq
+akg
 nVq
 sCt
 azb
@@ -49975,7 +50476,7 @@ ajy
 anp
 qaR
 avT
-avT
+aos
 axZ
 avT
 azo
@@ -50827,7 +51328,7 @@ xIt
 gyv
 vsz
 ngo
-aqw
+aot
 aye
 alu
 tIe
@@ -51028,7 +51529,7 @@ qEz
 aeI
 aeI
 aeI
-ajy
+aoW
 alu
 alu
 alu
@@ -51535,7 +52036,7 @@ bpf
 bpz
 lck
 bqJ
-tTI
+aki
 brJ
 niQ
 bsN
@@ -52732,7 +53233,7 @@ siK
 hEr
 jwa
 wNe
-rcR
+ape
 alD
 ayR
 vrd
@@ -52926,13 +53427,13 @@ aqL
 asc
 acp
 adk
-adk
+apm
 adk
 ael
 aeJ
 afi
 afO
-adk
+aqv
 adS
 acp
 ahR
@@ -53140,12 +53641,12 @@ asc
 acp
 aaX
 adB
-adk
+aqv
 adk
 aeJ
 adS
 aeJ
-adS
+apg
 adk
 acp
 ajx
@@ -53246,15 +53747,15 @@ nIi
 bte
 nIi
 bLE
-vYf
-vYf
-vYf
-chw
-bLE
+akb
 vYf
 vYf
 chw
 bLE
+vYf
+vYf
+chw
+ajP
 bLE
 jFG
 fUp
@@ -53373,7 +53874,7 @@ mON
 orc
 rvp
 apE
-awN
+aoN
 avy
 kWE
 fPi
@@ -53446,7 +53947,7 @@ bmn
 bmV
 bns
 hhK
-tTI
+aki
 boN
 ayr
 bpE
@@ -53823,7 +54324,7 @@ aFE
 arR
 bEa
 alu
-aHD
+anR
 aBR
 aBR
 aMc
@@ -53878,7 +54379,7 @@ ayZ
 nPz
 tTI
 tTI
-tTI
+aki
 dsm
 mSS
 mij
@@ -53990,7 +54491,7 @@ acC
 acU
 acC
 acC
-acC
+aqZ
 acD
 acD
 acr
@@ -54211,12 +54712,12 @@ acr
 acr
 acp
 agB
-adk
+apm
 aic
 acp
 aiZ
 afS
-afS
+apM
 afS
 alp
 oOL
@@ -54295,7 +54796,7 @@ bjx
 bjw
 axX
 lmi
-nVq
+akg
 tTI
 tTI
 tTI
@@ -54626,7 +55127,7 @@ asc
 acs
 tGP
 acC
-acD
+arj
 acD
 acC
 acC
@@ -55103,7 +55604,7 @@ owc
 alu
 aHF
 aHF
-aHF
+ana
 aHF
 aHF
 apC
@@ -55175,7 +55676,7 @@ frs
 ykR
 beD
 hkR
-mge
+ajH
 dyA
 uZy
 rvS
@@ -55276,7 +55777,7 @@ aeK
 afj
 acp
 agz
-ahn
+aqy
 ahj
 acp
 eFr
@@ -55284,7 +55785,7 @@ aiX
 aiX
 iis
 afS
-amg
+apI
 aRv
 aer
 afS
@@ -55786,7 +56287,7 @@ bjH
 blq
 axX
 bmu
-nVq
+akO
 bnw
 bnZ
 boq
@@ -55920,7 +56421,7 @@ nMQ
 aiC
 ajb
 ajE
-ajE
+apP
 ajE
 ajb
 ahm
@@ -55938,7 +56439,7 @@ alD
 lqd
 dDx
 arR
-aqw
+aot
 axA
 hDe
 arR
@@ -55954,7 +56455,7 @@ awV
 awQ
 atr
 pGS
-aKo
+anz
 aKo
 aSX
 aMF
@@ -56132,7 +56633,7 @@ neD
 duw
 aiD
 ajc
-aif
+apR
 aif
 aif
 alr
@@ -56224,7 +56725,7 @@ lEi
 lEi
 tTI
 nVq
-tTI
+aki
 sCt
 dhN
 frs
@@ -56803,11 +57304,11 @@ bYx
 arU
 bgJ
 rgf
-arR
+aoe
 awO
 alu
 aHF
-aHF
+ana
 aHF
 apD
 aND
@@ -56851,7 +57352,7 @@ xsH
 pak
 bsX
 bmy
-bmZ
+akV
 bmZ
 mPK
 lck
@@ -57080,7 +57581,7 @@ nIi
 gZc
 nIi
 nxG
-eyR
+akd
 eyR
 eyR
 chw
@@ -57088,7 +57589,7 @@ eyR
 eyR
 ouh
 chw
-nxG
+ajX
 nxG
 pVi
 fUp
@@ -57233,7 +57734,7 @@ alu
 alu
 alu
 aHF
-aHF
+ana
 aHF
 apC
 aOM
@@ -57717,7 +58218,7 @@ bos
 szy
 vbp
 vbp
-vbp
+akf
 vbp
 tub
 axX
@@ -58056,7 +58557,7 @@ agz
 amp
 and
 lvu
-aoj
+apf
 aoj
 apH
 kVR
@@ -58269,7 +58770,7 @@ alv
 amq
 fSg
 aeJ
-adS
+apg
 adk
 aeJ
 aqH
@@ -58682,7 +59183,7 @@ adR
 aeq
 aeN
 aeq
-adk
+aqv
 adk
 adS
 aii
@@ -58892,7 +59393,7 @@ acP
 asc
 acp
 adS
-adS
+apg
 adS
 adk
 adk
@@ -58994,7 +59495,7 @@ uDM
 vKg
 fNT
 maD
-nVq
+akg
 nVq
 iQC
 cla
@@ -59114,7 +59615,7 @@ adT
 aer
 sbc
 adS
-ajL
+apV
 akp
 acr
 alw
@@ -59540,12 +60041,12 @@ ahs
 adS
 ahk
 adk
-ajL
+apW
 wBP
 acr
 adS
 ajL
-adk
+apm
 anB
 alx
 alx
@@ -59747,7 +60248,7 @@ acv
 pjD
 aeP
 afs
-adW
+aqE
 acp
 adS
 adS
@@ -59760,7 +60261,7 @@ alx
 amu
 anf
 adk
-alx
+api
 alx
 alZ
 aqH
@@ -59959,7 +60460,7 @@ adG
 adW
 tFH
 akA
-adW
+aqG
 adW
 agJ
 adS
@@ -60045,7 +60546,7 @@ awp
 bkE
 bly
 bly
-bly
+alE
 wvK
 fBo
 boe
@@ -60056,7 +60557,7 @@ bpR
 bnF
 bnF
 bry
-bnF
+akk
 bof
 dvC
 eSm
@@ -60176,7 +60677,7 @@ afs
 adW
 acp
 adS
-adk
+aqv
 aiO
 bPY
 fRF
@@ -60388,7 +60889,7 @@ adW
 adW
 adW
 aer
-adS
+apg
 adS
 aiO
 mwI
@@ -60610,7 +61111,7 @@ akt
 acr
 adS
 ahm
-adS
+apv
 adk
 adk
 adS
@@ -60821,7 +61322,7 @@ wnf
 ajQ
 akt
 acr
-adk
+apm
 amy
 ang
 anE
@@ -61195,9 +61696,9 @@ aao
 aao
 aao
 aao
-jrD
-jrD
-jrD
+ahZ
+ahZ
+ahZ
 aao
 aao
 aao
@@ -61669,7 +62170,7 @@ acP
 acP
 asc
 acr
-adS
+apv
 ajR
 acr
 akS
@@ -61889,7 +62390,7 @@ akT
 alC
 amB
 alC
-alC
+apj
 aon
 aoY
 acr
@@ -62096,11 +62597,11 @@ acP
 asc
 aiQ
 adS
-adk
+apm
 acr
 adW
 alB
-alB
+apL
 alB
 alB
 alB
@@ -62309,7 +62810,7 @@ acP
 asc
 aeJ
 adS
-adk
+apm
 akc
 akS
 agt
@@ -63241,7 +63742,7 @@ bkE
 blC
 awp
 bmG
-bpo
+alm
 boe
 awp
 bWk
@@ -63834,7 +64335,7 @@ aCa
 amn
 aHH
 dME
-jPJ
+aoa
 aEO
 aLs
 lvO
@@ -64070,7 +64571,7 @@ aZE
 bac
 baM
 bbu
-bcf
+amm
 asv
 aJI
 bac
@@ -64303,7 +64804,7 @@ bjL
 bkg
 awp
 bBg
-bly
+alE
 bma
 pPo
 pPo
@@ -64512,7 +65013,7 @@ avS
 asv
 asv
 asv
-bjL
+alT
 bgx
 awp
 bkS
@@ -65371,7 +65872,7 @@ ahW
 ahq
 bkU
 bkU
-bkU
+alq
 bkU
 awp
 bWk
@@ -66695,7 +67196,7 @@ aao
 aao
 aao
 aao
-phi
+ajn
 jrD
 jrD
 jrD
@@ -66908,10 +67409,10 @@ jrD
 aao
 aao
 aao
-tRI
-jrD
-jrD
-sus
+ajA
+ahZ
+ahZ
+ajD
 aao
 aao
 aao
@@ -66921,7 +67422,7 @@ aao
 aao
 aao
 aao
-sqj
+ajh
 jrD
 jrD
 oxp
@@ -67134,10 +67635,10 @@ aao
 aao
 aao
 aao
-tRI
-jrD
-jrD
-oxp
+ajA
+ahZ
+ahZ
+ajo
 aao
 aao
 aao
@@ -67347,7 +67848,7 @@ aao
 aao
 aao
 aao
-tRI
+ajA
 jrD
 jrD
 oxp
@@ -68380,7 +68881,7 @@ pgu
 pgu
 pgu
 pgu
-pgu
+ajI
 pgu
 aao
 aao
@@ -68427,7 +68928,7 @@ aao
 aao
 aao
 aao
-sqj
+ajh
 phi
 jrD
 oxp
@@ -68587,13 +69088,13 @@ vVZ
 aao
 aao
 aao
+ajZ
 kSL
-kSL
 fOx
 fOx
 fOx
 fOx
-fOx
+ajK
 fOx
 aao
 aao
@@ -68639,8 +69140,8 @@ phi
 phi
 phi
 phi
-phi
-jrD
+ajn
+aji
 jrD
 jrD
 vqY
@@ -68799,14 +69300,14 @@ fCb
 vVZ
 aao
 aao
-fOx
-fOx
-kSL
-fOx
-fOx
-fOx
-fOx
-fOx
+ajN
+ajN
+ajY
+ajK
+ajK
+ajN
+ajN
+ajN
 fOx
 fOx
 aao
@@ -68852,11 +69353,11 @@ jrD
 jrD
 jrD
 jcR
-jrD
-jrD
-rnc
-vqY
-jrD
+aji
+aji
+ajg
+ajf
+ahZ
 aao
 aao
 aao
@@ -69011,15 +69512,15 @@ fCb
 iZA
 vVZ
 aao
-fOx
-fOx
+ajN
+ajN
 fOx
 kVS
 fOx
 dov
 fOx
-fOx
-fOx
+ajN
+ajN
 fOx
 oye
 aao
@@ -69751,18 +70252,18 @@ aao
 aao
 aao
 aao
-abs
+arh
 abO
-aad
-tLt
-akY
-akX
-wpf
-aad
-aad
-alJ
-akX
-akX
+aqF
+aqV
+aqT
+aqS
+aqI
+aqF
+aqD
+aqA
+apY
+apY
 akX
 akX
 aao
@@ -69965,16 +70466,16 @@ aao
 aao
 aao
 aao
-abr
+are
 alJ
 akX
 buQ
 akX
 hKM
 aad
-aad
-tLt
-akX
+aqD
+aqB
+apY
 aao
 aao
 aao
@@ -71477,8 +71978,8 @@ tQw
 tQw
 tQw
 aao
-bQG
-vXJ
+aoS
+aow
 vXJ
 vXJ
 vXJ
@@ -71557,12 +72058,12 @@ aao
 aao
 aao
 aao
+ajN
 fOx
 fOx
 fOx
-fOx
-fOx
-fOx
+ajN
+ajN
 aao
 aao
 aao
@@ -71691,8 +72192,8 @@ ahw
 tQw
 tQw
 idT
-vXJ
-vXJ
+aow
+aow
 vXJ
 vXJ
 vXJ
@@ -71770,11 +72271,11 @@ aao
 aao
 aao
 aao
-qoj
-fOx
-fOx
-fOx
-fOx
+akx
+ajK
+ajK
+ajK
+ajN
 aao
 aao
 aao
@@ -71904,9 +72405,9 @@ ujC
 ujC
 tQw
 ukv
-bQG
-vXJ
-vXJ
+aoS
+aow
+aow
 aao
 aao
 aao
@@ -71973,10 +72474,10 @@ aao
 aao
 aao
 aao
-fOx
+ajN
 fOx
 kSL
-fOx
+ajN
 aao
 aao
 aao
@@ -72118,7 +72619,7 @@ ujC
 tQw
 tQw
 mda
-mda
+aoC
 aao
 aao
 aao
@@ -72186,10 +72687,10 @@ aao
 aao
 aao
 aao
-gCE
-gCE
-ecK
-gCE
+akC
+aly
+akN
+akC
 aao
 aao
 aao
@@ -74699,8 +75200,8 @@ gXp
 gXp
 gXp
 gXp
-gXp
-eMX
+ann
+amF
 aao
 aao
 aao
@@ -74912,8 +75413,8 @@ tQw
 xFZ
 tQw
 tQw
-tQw
-eFh
+amv
+amQ
 aao
 aao
 aao
@@ -75125,7 +75626,7 @@ tQw
 ahw
 wQC
 tQw
-tQw
+amt
 tQw
 eMX
 aao
@@ -75338,7 +75839,7 @@ tQw
 tQw
 tQw
 xFZ
-tQw
+amt
 tQw
 eFh
 aao
@@ -75551,7 +76052,7 @@ aao
 tQw
 tQw
 tQw
-wQC
+anr
 tQw
 tQw
 aao
@@ -75762,9 +76263,9 @@ aao
 aao
 aao
 tQw
-tQw
-tQw
-gmN
+amv
+amv
+ans
 ahw
 tQw
 tQw
@@ -75976,8 +76477,8 @@ aao
 aao
 aao
 aao
-tQw
-tQw
+amv
+amv
 tQw
 tQw
 tQw
@@ -76426,7 +76927,7 @@ gpg
 gpg
 gCE
 gCE
-rAs
+amc
 rAs
 sfI
 aao
@@ -76639,7 +77140,7 @@ gCE
 gCE
 gCE
 gpg
-gCE
+aly
 gCE
 gCE
 rAs
@@ -76828,7 +77329,7 @@ aao
 anI
 anI
 anI
-anI
+anA
 anI
 anI
 nEv
@@ -76852,7 +77353,7 @@ aao
 aao
 gCE
 gCE
-gCE
+aly
 gCE
 gCE
 gCE
@@ -77041,7 +77542,7 @@ aao
 anI
 aIJ
 uaB
-uaB
+anC
 uaB
 aMq
 bJb
@@ -77064,8 +77565,8 @@ aao
 aao
 aao
 aao
-sON
-gCE
+amh
+akC
 gCE
 gCE
 gCE
@@ -77254,7 +77755,7 @@ aao
 anI
 aIK
 aJE
-aKQ
+anG
 aKQ
 hmm
 lqC
@@ -77277,8 +77778,8 @@ aao
 aao
 aao
 foB
-gCE
-gCE
+akC
+akC
 gCE
 bet
 gCE
@@ -77467,7 +77968,7 @@ aao
 anI
 aIK
 aJF
-anI
+anA
 anI
 anI
 tMA
@@ -77490,8 +77991,8 @@ aao
 aao
 aao
 aao
-usG
-gpg
+ami
+amf
 gpg
 gpg
 gCE
@@ -77896,7 +78397,7 @@ aJG
 anI
 aao
 aao
-tQw
+amv
 tQw
 tQw
 xFZ
@@ -78108,10 +78609,10 @@ aIK
 aJG
 anI
 aao
-wQC
-tQw
-tQw
-eFh
+amZ
+amv
+amt
+amo
 aao
 aao
 aao
@@ -78321,7 +78822,7 @@ aIM
 aJH
 anI
 aao
-wQC
+amZ
 tQw
 tQw
 tQw

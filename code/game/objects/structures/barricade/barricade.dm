@@ -145,7 +145,7 @@
 	..()
 
 /obj/structure/barricade/hitby(atom/movable/atom_movable)
-	if(atom_movable.throwing && is_wired)
+	if(HAS_TRAIT(atom_movable, TRAIT_LAUNCHED) && is_wired)
 		if(iscarbon(atom_movable))
 			var/mob/living/carbon/living_carbon = atom_movable
 			if(living_carbon.mob_size <= MOB_SIZE_XENO)
@@ -176,7 +176,7 @@
 	if(istype(atom_movable, /mob/living/carbon/xenomorph/crusher))
 		var/mob/living/carbon/xenomorph/crusher/living_carbon = atom_movable
 
-		if(!living_carbon.throwing)
+		if(!HAS_TRAIT(living_carbon, TRAIT_LAUNCHED))
 			return
 
 		if(crusher_resistant)
@@ -321,7 +321,9 @@
 
 	return TRUE
 
-/obj/structure/barricade/deconstruct(disassembled = TRUE)
+/obj/structure/barricade/deconstruct(disassembled = TRUE, debris = TRUE)
+	if(!debris)
+		return ..()
 	if(disassembled)
 		if(is_wired)
 			new /obj/item/stack/barbed_wire(loc)
@@ -394,7 +396,7 @@
 
 	update_health(damage)
 
-/obj/structure/barricade/proc/take_acid_damage(damage)
+/obj/structure/barricade/corrosive_acid_act(damage)
 	take_damage(damage * burn_multiplier)
 
 /obj/structure/barricade/update_health(damage, nomessage)

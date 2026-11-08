@@ -255,8 +255,8 @@
 
 	return JOB_SQUAD_MARINE
 
-/datum/preferences/proc/job_pref_to_gear_preset()
-	var/high_priority = get_high_priority_job()
+/datum/preferences/proc/job_pref_to_gear_preset(override)
+	var/high_priority = override || get_high_priority_job()
 
 	switch(high_priority)
 		// USCM JOBS
@@ -369,12 +369,14 @@
 			return /datum/equipment_preset/upp/pilot
 		// MISC-JOBS
 		if(JOB_SURVIVOR)
-			var/list/survivor_types = pref_special_job_options[JOB_SURVIVOR] != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[pref_special_job_options[JOB_SURVIVOR]]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[pref_special_job_options[JOB_SURVIVOR]] : SSmapping.configs[GROUND_MAP].survivor_types
+			var/list/types_by_variant = SSmapping.configs[GROUND_MAP].get_relevant_survivor_types_by_variant()
+			var/list/survivor_types = pref_special_job_options[JOB_SURVIVOR] != ANY_SURVIVOR && length(types_by_variant[pref_special_job_options[JOB_SURVIVOR]]) ? types_by_variant[pref_special_job_options[JOB_SURVIVOR]] : SSmapping.configs[GROUND_MAP].get_relevant_survivor_types()
 			if(length(survivor_types))
 				return pick(survivor_types)
 			return /datum/equipment_preset/survivor
 		if(JOB_SYNTH_SURVIVOR)
-			var/list/survivor_types = pref_special_job_options[JOB_SURVIVOR] != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[pref_special_job_options[JOB_SURVIVOR]]) ? SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant[pref_special_job_options[JOB_SURVIVOR]] : SSmapping.configs[GROUND_MAP].synth_survivor_types
+			var/list/types_by_variant = SSmapping.configs[GROUND_MAP].synth_survivor_types_by_variant
+			var/list/survivor_types = pref_special_job_options[JOB_SURVIVOR] != ANY_SURVIVOR && length(types_by_variant[pref_special_job_options[JOB_SURVIVOR]]) ? types_by_variant[pref_special_job_options[JOB_SURVIVOR]] : SSmapping.configs[GROUND_MAP].synth_survivor_types
 			if(length(survivor_types))
 				return pick(survivor_types)
 			return /datum/equipment_preset/synth/survivor
@@ -389,6 +391,17 @@
 			return J.gear_preset_whitelist["[JOB_PREDATOR][J.get_whitelist_status(owner)]"]
 		if(JOB_PRED_SURVIVOR)
 			return /datum/equipment_preset/yautja/stranded
+		if(JOB_XENOMORPH_QUEEN)
+			return /datum/equipment_preset/xeno_suit/queen
+		if(JOB_XENOMORPH)
+			return /datum/equipment_preset/xeno_suit
+		else
+			if(!override)
+				var/mappings = GLOB.gamemode_role_mappings[GLOB.master_mode]
+				var/datum/job/original_job = GLOB.RoleAuthority.roles_by_name[high_priority]
+				var/datum/job/mapped_job = mappings?[original_job?.type]
+				if(mapped_job)
+					return job_pref_to_gear_preset(mapped_job)
 
 	return /datum/equipment_preset/uscm/private_equipped
 

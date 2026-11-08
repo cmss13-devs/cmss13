@@ -680,7 +680,6 @@
 		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * level, BRUTE)
 		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * level, BURN)
 		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * level, TOX)
-		M.updatehealth()
 
 /datum/chem_property/positive/defibrillating
 	name = PROPERTY_DEFIBRILLATING
@@ -966,7 +965,7 @@
 /datum/chem_property/positive/explosive/update_reagent()
 	holder.explosive = TRUE
 	holder.power += level
-	holder.falloff_modifier += -3 / level
+	holder.falloff_modifier += -3 / max(level, 1)
 	..()
 
 //properties for CAS matrixes

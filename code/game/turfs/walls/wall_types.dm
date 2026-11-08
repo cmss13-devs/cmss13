@@ -539,12 +539,40 @@
 	icon_state = "bone_resin"
 	walltype = WALL_BONE_RESIN
 	turf_flags = TURF_HULL
+	tiles_with = list(/turf/closed/wall/mineral/bone_resin)
+	blend_objects = list(/obj/structure/mineral_door/resin/bone_resin)
 
 /turf/closed/wall/mineral/bone_resin/k_series //mineral wall because, reasons bro.
 	desc = "A wall made of molted resin. Seems these yellow xenomorphs are fast builders."
 	color = "#ffff80"
 /turf/closed/wall/mineral/bone
 	is_weedable = NOT_WEEDABLE
+
+/// Variant of bone resin that larva can burrow through
+/turf/closed/wall/mineral/bone_resin/burrowable/attack_larva(mob/living/carbon/xenomorph/larva/user)
+	var/turf/destination = can_burrow_to(user)
+	if(destination)
+		to_chat(user, SPAN_NOTICE("We start to burrow through the other side."))
+		if(do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_CLIMBING))
+			user.forceMove(destination)
+		return
+	return ..()
+
+/turf/closed/wall/mineral/bone_resin/burrowable/proc/can_burrow_to(mob/living/carbon/xenomorph/larva/user)
+	var/direction = get_dir(user, src)
+	var/atom/current = user
+	for(var/i in 1 to 3)
+		current = get_step(current, direction)
+		if(istype(current, /turf/open))
+			return current
+		if(!istype(current, /turf/closed/wall/mineral/bone_resin/burrowable))
+			return null
+	return null
+
+/turf/closed/wall/mineral/bone_resin/burrowable/get_examine_text(mob/user)
+	. = ..()
+	if(isxeno(user))
+		. += SPAN_HELPFUL("We maybe could burrow through to the other side as a larva.")
 
 //Misc walls
 
@@ -625,6 +653,42 @@
 		var/r1 = rand(0,10) //Make a random chance for this to happen
 		if(r1 >= 9)
 			overlays += image(icon, icon_state = "wood_variant")
+
+/turf/closed/wall/wood/plain
+	name = "plain wood wall"
+	icon = 'icons/turf/walls/wood_plain.dmi'
+	icon_state = "wood"
+	walltype = WALL_WOOD
+	baseturfs = /turf/open/floor/wood
+
+/turf/closed/wall/wood/blue
+	name = "blue wood wall"
+	icon = 'icons/turf/walls/wood_blue.dmi'
+	icon_state = "wood"
+	walltype = WALL_WOOD
+	baseturfs = /turf/open/floor/wood
+
+/turf/closed/wall/wood/green
+	name = "green wood wall"
+	icon = 'icons/turf/walls/wood_green.dmi'
+	icon_state = "wood"
+	walltype = WALL_WOOD
+	baseturfs = /turf/open/floor/wood
+
+/turf/closed/wall/wood/purple
+	name = "purple wood wall"
+	icon = 'icons/turf/walls/wood_purple.dmi'
+	icon_state = "wood"
+	walltype = WALL_WOOD
+	baseturfs = /turf/open/floor/wood
+
+/turf/closed/wall/wood/teal
+	name = "teal wood wall"
+	icon = 'icons/turf/walls/wood_teal.dmi'
+	icon_state = "wood"
+	walltype = WALL_WOOD
+	baseturfs = /turf/open/floor/wood
+
 
 //Colorable rocks. Looks like moonsand.
 
@@ -1413,7 +1477,7 @@
 
 	if(isxeno(mover))
 		var/mob/living/carbon/xenomorph/X = mover
-		if(X.hivenumber != hivenumber || X.throwing)
+		if(X.hivenumber != hivenumber || HAS_TRAIT(X, TRAIT_LAUNCHED))
 			return
 
 		if(X.pulling == src)
@@ -1481,13 +1545,17 @@
 		return
 
 	//Ineffective if someone is sitting on the wall
-	if(locate(/mob) in contents)
+	if(locate(/mob/living/carbon) in contents)
 		return ..()
 
 	if(!prob(chance_to_reflect))
 		if(proj_bullet.ammo.damage_type == BRUTE)
 			proj_bullet.damage *= brute_multiplier
 		return ..()
+
+	if(proj_bullet.damage_boosted)
+		proj_bullet.damage = proj_bullet.ammo.damage
+		proj_bullet.damage_boosted = 0
 
 	var/atom/target = proj_bullet.firer
 	if(!target)

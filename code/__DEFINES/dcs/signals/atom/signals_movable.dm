@@ -39,9 +39,6 @@
 
 #define COMSIG_MOVABLE_TURF_ENTER "movable_turf_enter"
 
-/// Called when a movable atom enters an obj's contents (obj/entered, atom/old_loc)
-#define COMSIG_MOVABLE_ENTERED_OBJ "atom_entered"
-
 #define COMSIG_MOVABLE_PREBUCKLE "prebuckle" // this is the last chance to interrupt and block a buckle before it finishes
 	#define COMPONENT_BLOCK_BUCKLE	(1<<0)
 
@@ -52,3 +49,6 @@
 
 /// Fired by the [/datum/mapcoords] component when its attached movable moved on the map irrespective of its exact location
 #define COMSIG_MOVABLE_MAPCOORDS_UPDATED "movable_mapcoords_updated"
+
+///from /turf/proc/launched_landing(atom/movable/launched)
+#define COMSIG_MOVABLE_LAUNCHED_LANDED "movable_launched_landed"

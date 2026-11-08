@@ -37,7 +37,7 @@
 	crusher.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
 	crusher.armor_modifier -= XENO_ARMOR_MOD_SMALL
 	crusher.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-	crusher.ignore_aura = "frenzy" // no funny crushers going 7 morbillion kilometers per second
+	crusher.ignore_aura = XENO_PHERO_FRENZY // no funny crushers going 7 morbillion kilometers per second
 	crusher.phero_modifier = -crusher.caste.aura_strength
 	crusher.recalculate_everything()
 

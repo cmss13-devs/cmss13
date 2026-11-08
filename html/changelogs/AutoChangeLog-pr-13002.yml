@@ -1,0 +1,5 @@
+author: "kleinerstation13"
+delete-after: True
+changes:
+  - rscadd: "Added an USCM colony headset with marine HUD icons"
+  - balance: "The USCM recruiter survivor varaint is now part of the Marine faction and has extra fluff items in their loadout"

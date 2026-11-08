@@ -34,10 +34,12 @@ type LobbyData = {
 
   tutorials_ready: BooleanLike;
   round_start: BooleanLike;
+  round_starting: BooleanLike;
   readied: BooleanLike;
 
   confirmation_message?: string | string[];
 
+  survivor_replace_uscm: BooleanLike;
   upp_enabled: BooleanLike;
   xenomorph_enabled: BooleanLike;
   predator_enabled: BooleanLike;
@@ -298,10 +300,12 @@ const LobbyButtons = (props: {
     xeno_postfix,
     xeno_prefix,
     round_start,
+    round_starting,
     readied,
     predator_enabled,
     fax_responder_enabled,
     upp_enabled,
+    survivor_replace_uscm,
     tutorials_ready,
     xenomorph_enabled,
   } = data;
@@ -415,6 +419,7 @@ const LobbyButtons = (props: {
         <LobbyButton
           index={5}
           icon="eye"
+          disabled={!!round_starting}
           onClick={() => {
             setModal(
               <ModalConfirm>
@@ -447,6 +452,7 @@ const LobbyButtons = (props: {
             <LobbyButton
               index={6}
               selected={!!readied}
+              disabled={!!round_starting}
               onClick={() => act(readied ? 'unready' : 'ready')}
               icon={readied ? 'check' : 'xmark'}
               tooltip={
@@ -460,15 +466,29 @@ const LobbyButtons = (props: {
           <>
             <Stack.Item>
               <Stack>
-                <Stack.Item grow>
-                  <LobbyButton
-                    index={6}
-                    onClick={() => act('late_join')}
-                    icon="users"
-                  >
-                    Join the USCM
-                  </LobbyButton>
-                </Stack.Item>
+                {!survivor_replace_uscm ? (
+                  <Stack.Item grow>
+                    <LobbyButton
+                      index={6}
+                      disabled={!!round_starting}
+                      onClick={() => act('late_join')}
+                      icon="users"
+                    >
+                      Join the USCM
+                    </LobbyButton>
+                  </Stack.Item>
+                ) : (
+                  <Stack.Item grow>
+                    <LobbyButton
+                      index={6}
+                      disabled={!!round_starting}
+                      onClick={() => act('late_join_survivor')}
+                      icon="users"
+                    >
+                      Join the Survivors
+                    </LobbyButton>
+                  </Stack.Item>
+                )}
                 <Stack.Item>
                   <LobbyButton
                     icon="list"
@@ -485,6 +505,7 @@ const LobbyButtons = (props: {
                   <LobbyButton
                     index={7}
                     icon="viruses"
+                    disabled={!!round_starting}
                     onClick={() => act('late_join_xeno')}
                   >
                     Join the Hive
@@ -504,6 +525,7 @@ const LobbyButtons = (props: {
               <Stack.Item>
                 <LobbyButton
                   index={8}
+                  disabled={!!round_starting}
                   onClick={() => act('late_join_upp')}
                   icon="users-between-lines"
                 >
@@ -515,6 +537,7 @@ const LobbyButtons = (props: {
               <Stack.Item>
                 <LobbyButton
                   index={8 + (upp_enabled ? 1 : 0)}
+                  disabled={!!round_starting}
                   onClick={() => {
                     setModal(
                       <ModalConfirm>
@@ -551,6 +574,7 @@ const LobbyButtons = (props: {
                 <LobbyButton
                   index={9 + (upp_enabled ? 1 : 0) + (predator_enabled ? 1 : 0)}
                   icon="fax"
+                  disabled={!!round_starting}
                   onClick={() => {
                     setModal(
                       <ModalConfirm>

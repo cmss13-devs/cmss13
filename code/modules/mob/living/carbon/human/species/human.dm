@@ -86,7 +86,7 @@
 	name_plural = "Humans"
 	primitive = /mob/living/carbon/human/monkey
 	unarmed_type = /datum/unarmed_attack/punch
-	flags = HAS_SKIN_TONE|HAS_LIPS|HAS_UNDERWEAR|HAS_HARDCRIT|HAS_SKIN_COLOR
+	flags = HAS_SKIN_TONE|HAS_LIPS|HAS_UNDERWEAR|HAS_HARDCRIT|HAS_SKIN_COLOR|HAS_MOUTH|HAS_EYELIDS
 	mob_flags = KNOWS_TECHNOLOGY
 	special_body_types = TRUE
 	fire_sprite_prefix = "Standing"
@@ -152,7 +152,9 @@
 /datum/species/human/hero/thrall/handle_death(mob/living/carbon/human/thrall)
 	GLOB.yautja_mob_list -= thrall
 
-	message_all_yautja("[thrall.real_name] has died at \the [get_area_name(thrall)].")
+	var/obj/item/clothing/gloves/yautja/hunter/bracer = thrall.gloves
+	if(istype(bracer))
+		message_all_yautja("[thrall.real_name] has died at \the [get_area_name(thrall)].", bracer.received_networks)
 
 //Various horrors that spawn in and haunt the living.
 /datum/species/human/spook

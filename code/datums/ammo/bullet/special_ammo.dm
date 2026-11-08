@@ -151,7 +151,7 @@
 /datum/ammo/bullet/turret
 	name = "autocannon bullet"
 	icon_state = "redbullet" //Red bullets to indicate friendly fire restriction
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_COVER
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_COVER|AMMO_NO_DEFLECT
 
 	accurate_range = 22
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_8

@@ -79,12 +79,12 @@
 
 /obj/structure/barricade/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()
-	if (pass_flags)
+	if(pass_flags)
 		pass_flags.flags_can_pass_all = NONE
 		pass_flags.flags_can_pass_front = NONE
 		pass_flags.flags_can_pass_behind = PASS_OVER^(PASS_OVER_ACID_SPRAY|PASS_OVER_THROW_MOB)
-	flags_can_pass_front_temp = PASS_OVER_THROW_MOB
-	flags_can_pass_behind_temp = PASS_OVER_THROW_MOB
+	flags_can_pass_front_temp = PASS_FLAGS_UNWIRED
+	flags_can_pass_behind_temp = PASS_FLAGS_UNWIRED
 
 /obj/structure/barricade/get_examine_text(mob/user)
 	. = ..()
@@ -145,7 +145,7 @@
 	..()
 
 /obj/structure/barricade/hitby(atom/movable/atom_movable)
-	if(atom_movable.throwing && is_wired)
+	if(HAS_TRAIT(atom_movable, TRAIT_LAUNCHED) && is_wired)
 		if(iscarbon(atom_movable))
 			var/mob/living/carbon/living_carbon = atom_movable
 			if(living_carbon.mob_size <= MOB_SIZE_XENO)
@@ -176,7 +176,7 @@
 	if(istype(atom_movable, /mob/living/carbon/xenomorph/crusher))
 		var/mob/living/carbon/xenomorph/crusher/living_carbon = atom_movable
 
-		if (!living_carbon.throwing)
+		if(!HAS_TRAIT(living_carbon, TRAIT_LAUNCHED))
 			return
 
 		if(crusher_resistant)
@@ -221,9 +221,15 @@
 
 	return ..()
 
-/obj/structure/barricade/handle_barrier_chance()
+/obj/structure/barricade/handle_barrier_chance(mob/living/attacker)
 	if(!anchored)
 		return FALSE
+
+	if(isxeno(attacker))
+		var/mob/living/carbon/xenomorph/xeno = attacker
+		if(xeno.strain && istype(xeno.strain, /datum/xeno_strain/bulwark))
+			return prob(25) //Bulwark can attack through wired cade with 75% chance.
+
 	return prob(max(30,(100.0*health)/maxhealth))
 
 /obj/structure/barricade/attack_animal(mob/user as mob)
@@ -262,8 +268,8 @@
 				update_health(-50)
 				can_wire = FALSE
 				is_wired = TRUE
-				flags_can_pass_front_temp &= ~PASS_OVER_THROW_MOB
-				flags_can_pass_behind_temp &= ~PASS_OVER_THROW_MOB
+				flags_can_pass_front_temp &= ~PASS_FLAGS_UNWIRED
+				flags_can_pass_behind_temp &= ~PASS_FLAGS_UNWIRED
 				climbable = FALSE
 				update_icon()
 		return
@@ -283,14 +289,14 @@
 				update_health(50)
 				can_wire = TRUE
 				is_wired = FALSE
-				flags_can_pass_front_temp &= ~PASS_OVER_THROW_MOB
-				flags_can_pass_behind_temp &= ~PASS_OVER_THROW_MOB
+				flags_can_pass_front_temp |= PASS_FLAGS_UNWIRED
+				flags_can_pass_behind_temp |= PASS_FLAGS_UNWIRED
 				climbable = TRUE
 				update_icon()
 				new/obj/item/stack/barbed_wire( src.loc )
 		return
 
-	if(item.force > force_level_absorption)
+	if((item.force > force_level_absorption) && !HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
 		. = ..()
 		if(barricade_hitsound)
 			playsound(src, barricade_hitsound, 35, 1)
@@ -315,7 +321,9 @@
 
 	return TRUE
 
-/obj/structure/barricade/deconstruct(disassembled = TRUE)
+/obj/structure/barricade/deconstruct(disassembled = TRUE, debris = TRUE)
+	if(!debris)
+		return ..()
 	if(disassembled)
 		if(is_wired)
 			new /obj/item/stack/barbed_wire(loc)
@@ -388,7 +396,7 @@
 
 	update_health(damage)
 
-/obj/structure/barricade/proc/take_acid_damage(damage)
+/obj/structure/barricade/corrosive_acid_act(damage)
 	take_damage(damage * burn_multiplier)
 
 /obj/structure/barricade/update_health(damage, nomessage)

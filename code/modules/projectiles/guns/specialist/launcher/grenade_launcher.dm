@@ -25,7 +25,7 @@
 	internal_max_w_class = SIZE_MEDIUM //MEDIUM = M15.
 
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
-	wield_delay = WIELD_DELAY_SLOW
+	wield_delay = WEAPON_DELAY_SLOW
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	///Can you access the storage by clicking it, put things into it, or take things out? Meant for break-actions mostly but useful for any state where you want access to be toggleable. Make sure to call cylinder.close(user) so they don't still have the screen open!
 	var/open_chamber = TRUE
@@ -200,7 +200,7 @@
 			if(ishuman(user))
 				var/mob/living/carbon/human/human_user = user
 				human_user.remember_dropped_object(fired)
-				fired.fingerprintslast = key_name(user)
+				fired.fingerprintslast = user.ckey
 			pass_flags |= PASS_MOB_THRU_HUMAN|PASS_MOB_IS_OTHER|PASS_OVER
 		else
 			pass_flags |= PASS_MOB_THRU|PASS_HIGH_OVER
@@ -214,9 +214,10 @@
 	fired.forceMove(get_turf(src))
 	fired.throw_atom(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
 
+/obj/item/weapon/gun/launcher/grenade/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
+	return FALSE
 
-
-//Doesn't use these. Listed for reference.
+//Doesn't use these. Listed for reference. - Really should just actually write these out so it can use Autofire
 /obj/item/weapon/gun/launcher/grenade/load_into_chamber()
 	return
 /obj/item/weapon/gun/launcher/grenade/reload_into_chamber()

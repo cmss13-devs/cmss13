@@ -72,7 +72,7 @@
 
 	if(istype(M, /mob/living/carbon))
 		var/mob/living/carbon/C = M
-		var/fullness = M.nutrition + (M.reagents.get_reagent_amount("nutriment") * 25)
+		var/fullness = C.nutrition + (M.reagents.get_reagent_amount("nutriment") * 25)
 		if(fullness > NUTRITION_HIGH && world.time < C.overeat_cooldown)
 			to_chat(user, SPAN_WARNING("[user == M ? "You" : "They"] don't feel like eating more right now."))
 			return FALSE
@@ -163,7 +163,8 @@
 	if(istype(W,/obj/item/storage))
 		..() // -> item/attackby()
 
-	if(istype(W,/obj/item/tool/kitchen/utensil))
+	// No longer scoop up food with knife utensils, instead try to actually cut with them
+	if(istype(W,/obj/item/tool/kitchen/utensil) && !istype(W,/obj/item/tool/kitchen/utensil/knife))
 
 		var/obj/item/tool/kitchen/utensil/U = W
 
@@ -196,7 +197,7 @@
 		return 0
 
 	var/inaccurate = 0
-	if(W.sharp == IS_SHARP_ITEM_BIG)
+	if(W.sharp == IS_SHARP_ITEM_BIG || W.sharp == IS_SHARP_ITEM_SIMPLE)
 		inaccurate = 1
 	else if(W.sharp != IS_SHARP_ITEM_ACCURATE)
 		return 1
@@ -1850,7 +1851,7 @@
 
 /obj/item/reagent_container/food/snacks/jellyburger
 	name = "Jelly Burger"
-	desc = "Culinary delight..?"
+	desc = "Culinary delight...?"
 	icon_state = "jellyburger"
 	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#B572AB"
@@ -2140,7 +2141,7 @@
 
 /obj/item/reagent_container/food/snacks/beetsoup
 	name = "beet soup"
-	desc = "Wait, how do you spell it again..?"
+	desc = "Wait, how do you spell it again...?"
 	icon_state = "beetsoup"
 	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
@@ -3333,16 +3334,16 @@
 	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/snacks/packaged_burrito/attack_self(mob/user)
-	..()
-
 	if(package)
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy burrito!"))
 		RemoveElement(/datum/element/corp_label/wy)
 		package = 0
-		new /obj/item/trash/buritto (user.loc)
+		user.put_in_hands(new /obj/item/trash/buritto)
 		icon_state = "open-burrito"
 		item_state = "burrito"
+		return
+	..()
 
 /obj/item/reagent_container/food/snacks/packaged_burger
 	name = "Packaged Cheeseburger"
@@ -3361,16 +3362,16 @@
 	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/snacks/packaged_burger/attack_self(mob/user)
-	..()
-
 	if(package)
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hamburger!"))
 		RemoveElement(/datum/element/corp_label/wy)
 		package = 0
-		new /obj/item/trash/burger (user.loc)
+		user.put_in_hands(new /obj/item/trash/burger)
 		icon_state = "hburger"
 		item_state = "burger"
+		return
+	..()
 
 /obj/item/reagent_container/food/snacks/packaged_hdogs
 	name = "Packaged Hotdog"
@@ -3389,16 +3390,16 @@
 	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/snacks/packaged_hdogs/attack_self(mob/user)
-	..()
-
 	if(package)
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hotdog!"))
 		RemoveElement(/datum/element/corp_label/wy)
 		package = 0
-		new /obj/item/trash/hotdog (user.loc)
+		user.put_in_hands(new /obj/item/trash/hotdog)
 		icon_state = "open-hotdog"
 		item_state = "hotdog"
+		return
+	..()
 
 /obj/item/reagent_container/food/snacks/eat_bar
 	name = "MEAT Bar"
@@ -3452,17 +3453,17 @@
 	var/obj/item/trash/wrapper = null //Why this and not trash? Because it pulls the wrapper off when you unwrap it as a trash item.
 
 /obj/item/reagent_container/food/snacks/wrapped/attack_self(mob/user)
-	..()
-
 	if(package)
 		to_chat(user, SPAN_NOTICE("You pull open the package of [src]!"))
 		playsound(loc,'sound/effects/pageturn2.ogg', 15, 1)
 
 		if(wrapper)
-			new wrapper(user.loc)
+			user.put_in_hands(new wrapper)
 		icon_state = "[initial(icon_state)]-o"
 		item_state = "[initial(item_state)]-o"
 		package = 0
+		return
+	..()
 
 //CM SNACKS
 /obj/item/reagent_container/food/snacks/wrapped/booniebars

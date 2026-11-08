@@ -59,6 +59,8 @@
 	var/document_title
 	var/datum/prefab_document/doc_datum_type
 
+	COOLDOWN_DECLARE(show_paper_cooldown)
+
 //lipstick wiping is in code/game/obj/items/weapons/cosmetics.dm!
 
 /obj/item/paper/Initialize(mapload, photo_list)
@@ -146,19 +148,28 @@
 	else
 		read_paper(user, scramble=TRUE)
 
-/obj/item/paper/attack(mob/living/carbon/human/M, mob/living/carbon/user)
+/obj/item/paper/attack(mob/living/carbon/human/human_target, mob/living/carbon/user)
 
 	if(user.zone_selected == "eyes")
-		if(!ishumansynth_strict(M))
+		if(!ishumansynth_strict(human_target))
+			return
+		if(!COOLDOWN_FINISHED(src, show_paper_cooldown))
+			to_chat(user, SPAN_WARNING("You can not do that again for a while."))
+			return
+		if(human_target.a_intent != INTENT_HELP)
+			user.visible_message(SPAN_WARNING("[human_target] stops [user] from showing them [src]"),
+			SPAN_WARNING("[human_target] stops you from showing them [src]."))
+			COOLDOWN_START(src, show_paper_cooldown, 3 SECONDS)
 			return
 
-		user.visible_message(SPAN_NOTICE("You show the paper to [M]."),
-		SPAN_NOTICE("[user] holds up a paper and shows it to [M]."))
-		examine(M)
+		user.visible_message(SPAN_NOTICE("[user] holds up a paper and shows it to [human_target]."),
+		SPAN_NOTICE("You show the paper to [human_target]."))
+		COOLDOWN_START(src, show_paper_cooldown, 3 SECONDS)
+		examine(human_target)
 
 	else if(user.zone_selected == "mouth") // lipstick wiping
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
+		if(ishuman(human_target))
+			var/mob/living/carbon/human/H = human_target
 			if(H == user)
 				to_chat(user, SPAN_NOTICE("You wipe off the face paint with [src]."))
 				H.lip_style = null
@@ -554,6 +565,7 @@
 /obj/item/paper/almayer_storage
 	name = "Almayer Emergency Storage Note"
 	info = "<i>Hey Garry, I got the boys to move most of the emergency supplies down into the ASRS hold just like ya' asked. <BR>Next time you're around Chinook I'll buy you a beer ok?</i>"
+
 /obj/item/paper/Toxin
 	name = "Chemical Information"
 	info = "Known Onboard Toxins:<BR>\n\tGrade A Semi-Liquid Phoron:<BR>\n\t\tHighly poisonous. You cannot sustain concentrations above 15 units.<BR>\n\t\tA gas mask fails to filter phoron after 50 units.<BR>\n\t\tWill attempt to diffuse like a gas.<BR>\n\t\tFiltered by scrubbers.<BR>\n\t\tThere is a bottled version which is very different<BR>\n\t\t\tfrom the version found in canisters!<BR>\n<BR>\n\t\tWARNING: Highly Flammable. Keep away from heat sources<BR>\n\t\texcept in a enclosed fire area!<BR>\n\t\tWARNING: It is a crime to use this without authorization.<BR>\nKnown Onboard Anti-Toxin:<BR>\n\tAnti-Toxin Type 01P: Works against Grade A Phoron.<BR>\n\t\tBest if injected directly into bloodstream.<BR>\n\t\tA full injection is in every regular Med-Kit.<BR>\n\t\tSpecial toxin Kits hold around 7.<BR>\n<BR>\nKnown Onboard Chemicals (other):<BR>\n\tRejuvenation T#001:<BR>\n\t\tEven 1 unit injected directly into the bloodstream<BR>\n\t\t\twill cure paralysis and sleep phoron.<BR>\n\t\tIf administered to a dying patient it will prevent<BR>\n\t\t\tfurther damage for about units*3 seconds.<BR>\n\t\t\tit will not cure them or allow them to be cured.<BR>\n\t\tIt can be administered to a non-dying patient<BR>\n\t\t\tbut the chemicals disappear just as fast.<BR>\n\tSoporific T#054:<BR>\n\t\t5 units will induce precisely 1 minute of sleep.<BR>\n\t\t\tThe effect are cumulative.<BR>\n\t\tWARNING: It is a crime to use this without authorization!"
@@ -690,6 +702,10 @@
 	name = "TOP SECRET: FOR CELL LEAD ONLY"
 	info = "Your request for extraction has been received. We have no assets in the region available. Await further instruction."
 
+/obj/item/paper/hybrisa/firefighternote
+	name = "Fannin' Fuego: Choke Like A Pro!"
+	info = "<h2>Okay-</h2> Okay. I know I fucked up, Tova. I got the thing on sale- though! I swear! I fitted it with a case full of stabilized foam, the kind they use to plug atmospheric breaches- don't ask where I got it from- it's so much cheaper than water... We won't have to have that Company bastard help take our business apart! They <b>need</b> us in this city, you know? Another fucking fire we can't fix and it's wraps for this casino town. I swear to God I can hear Jones whining about the bullshit they get up to in the caves. Just a few more months, and we're out, okay? Out! \n\n I know I'm gone for the week, you guys can handle shop while I'm out. <h2>Instructions're easy.</h2>  You see a flame, in a window, room or whatever, you aim <i>far</i>, it'll seal the whole room in foam, hardens <b>real</b> fast. It'll choke any flame in any enclosed space near-instantly, and honestly? It keeps all the valuables safe, too. You remember how Maizer was heckling us about his dog? Guy was so damn angry about his oven shorting he forgot all about his mother's jewelry box, and shit- if I treated that fire with the regular stuff, and the 'water' they give us? We'd probably be homeless right now. \n\n I'm serious, girl. This shit works. You could seal a whale's asshole with this thing. \n Swear to god, that dumb fuck'll never find out. We'll be in Sol in no time. Just hang in there."
+
 /obj/item/paper/bigred/upp/Initialize(mapload, photo_list)
 	. = ..()
 
@@ -783,6 +799,10 @@
 	switch(note_type)
 		if("synthesis")
 			var/datum/chemical_reaction/reaction_generated = GLOB.chemical_reactions_list[chemical_to_generate.id]
+			if(!reaction_generated && istype(chemical_to_generate, /datum/reagent/generated))
+				var/list/required_reagents = chemical_to_generate.reagent_recipe_hint ? list(chemical_to_generate.reagent_recipe_hint) : null
+				var/list/locked_reagents = chemical_to_generate.locked_reagent ? list(chemical_to_generate.locked_reagent) : null
+				reaction_generated = chemical_to_generate.generate_assoc_recipe(null, required_reagents, locked_reagents)
 			icon_state = "paper_wy_partial_report"
 			if(!contract)
 				name = "Synthesis of [chemical_to_generate.name]"
@@ -790,17 +810,24 @@
 				name = "Contract for [chemical_to_generate.name]"
 				icon_state = "paper_wy_contract"
 			txt += "[name] </H2></center>"
+			if(!reaction_generated || !length(reaction_generated.required_reagents))
+				txt += "«[chemical_to_generate.name]» reagent data has been corrupted. Request a contract reprint or contact Weyland-Yutani.<BR>\n"
+				txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
+				info = txt
+				return
 			txt += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [chemical_to_generate.name], was successfully synthesized using the following formula:<BR>\n<BR>\n"
 			for(var/I in reaction_generated.required_reagents)
 				var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
 				var/U = reaction_generated.required_reagents[I]
-				txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
+				var/reagent_name = R ? R.name : "Unknown reagent ([I])"
+				txt += "<font size = \"2\"><I> - [U] [reagent_name]</I></font><BR>\n"
 			if(LAZYLEN(reaction_generated.required_catalysts))
 				txt += "<BR>\nWhile using the following catalysts: <BR>\n<BR>\n"
 				for(var/I in reaction_generated.required_catalysts)
 					var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
 					var/U = reaction_generated.required_catalysts[I]
-					txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
+					var/reagent_name = R ? R.name : "Unknown reagent ([I])"
+					txt += "<font size = \"2\"><I> - [U] [reagent_name]</I></font><BR>\n"
 			if(full_report)
 				txt += "<BR>Chemical has following reaction indicators:"
 				if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_BUBBLING))
@@ -976,7 +1003,7 @@
 			info += "CLASSIFIED:<I> Clearance level [S.gen_tier] required to read the database entry.</I><BR>\n"
 			icon_state = "paper_wy_partial_report"
 			valid_report = FALSE
-	else if(S.chemclass == CHEM_CLASS_SPECIAL && !GLOB.chemical_data.clearance_x_access && !info_only)
+	else if(S.chemclass >= CHEM_CLASS_XENO_BASIC && S.chemclass <= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.clearance_x_access && !info_only)
 		info += "CLASSIFIED:<I> Clearance level <B>X</B> required to read the database entry.</I><BR>\n"
 		icon_state = "paper_wy_partial_report"
 		valid_report = FALSE
@@ -1004,14 +1031,14 @@
 		info += "<I>No details on this reagent could be found in the database.</I><BR>\n"
 		icon_state = "paper_wy_synthesis"
 		valid_report = FALSE
-	if(S.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[S.id] && !info_only)
+	if(S.chemclass >= CHEM_CLASS_XENO_BASIC && !GLOB.chemical_data.chemical_identified_list[S.id] && !info_only)
 		info += "<BR><I>Saved emission spectrum of [S.name] to the database.</I><BR>\n"
 	info += "<BR><B>Composition Details:</B><BR>\n"
 	if(GLOB.chemical_reactions_list[S.id])
 		var/datum/chemical_reaction/C = GLOB.chemical_reactions_list[S.id]
 		for(var/I in C.required_reagents)
 			var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
-			if(R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only && R.chemclass != CHEM_CLASS_HYDRO)
+			if(R.chemclass >= CHEM_CLASS_XENO_BASIC && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only)
 				info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 				completed = FALSE
 				valid_report = FALSE
@@ -1022,7 +1049,7 @@
 			info += "<BR>Reaction would require the following catalysts:<BR>\n"
 			for(var/I in C.required_catalysts)
 				var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
-				if(R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only)
+				if(R.chemclass >= CHEM_CLASS_XENO_BASIC && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only)
 					info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 					completed = FALSE
 				else
@@ -1041,7 +1068,7 @@
 		if(!S.properties) //Safety for empty reagents
 			completed = FALSE
 			valid_report = FALSE
-		if(S.chemclass == CHEM_CLASS_SPECIAL && GLOB.chemical_data.clearance_x_access)
+		if(S.chemclass >= CHEM_CLASS_XENO_BASIC && S.chemclass <= CHEM_CLASS_SPECIAL && GLOB.chemical_data.clearance_x_access)
 			completed = TRUE
 
 	data = S

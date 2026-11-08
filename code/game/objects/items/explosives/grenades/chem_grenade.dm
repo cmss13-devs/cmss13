@@ -209,10 +209,11 @@
 	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_container/glass/beaker/B2 = new(src)
 
-	B1.reagents.add_reagent("potassium", 20)
-	B1.reagents.add_reagent("iron", 40)
-	B2.reagents.add_reagent("water", 20)
-	B2.reagents.add_reagent("iron", 40)
+	B1.reagents.add_reagent("cyclonite", 40)
+	B1.reagents.add_reagent("iron", 20)
+	B2.reagents.add_reagent("cyclonite", 20)
+	B2.reagents.add_reagent("anfo", 20)
+	B2.reagents.add_reagent("iron", 20)
 
 	detonator = new/obj/item/device/assembly_holder/timer_igniter(src, 2) //~4 second timer
 
@@ -233,10 +234,11 @@
 	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_container/glass/beaker/B2 = new(src)
 
-	B1.reagents.add_reagent("potassium", 20)
-	B1.reagents.add_reagent("iron", 40)
-	B2.reagents.add_reagent("water", 20)
-	B2.reagents.add_reagent("iron", 30)
+	B1.reagents.add_reagent("octogen", 10)
+	B1.reagents.add_reagent("iron", 50)
+	B2.reagents.add_reagent("octogen", 10)
+	B2.reagents.add_reagent("iron", 10)
+	B2.reagents.add_reagent("ethanol", 30)
 	B2.reagents.add_reagent("phoron", 10)
 
 	detonator = new/obj/item/device/assembly_holder/timer_igniter(src, 2) //~4 second timer

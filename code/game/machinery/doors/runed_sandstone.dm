@@ -125,6 +125,7 @@
 		change_filler_opacity(opacity)
 
 	operating = DOOR_OPERATING_IDLE
+	SEND_SIGNAL(src, COMSIG_DOOR_OPEN)
 
 /obj/structure/machinery/door/airlock/sandstone/runed/close(forced = TRUE)
 	if(operating && !forced)
@@ -175,6 +176,8 @@
 		var/obj/structure/window/killthis = (locate(/obj/structure/window) in turf)
 		if(killthis)
 			killthis.ex_act(EXPLOSION_THRESHOLD_LOW)
+
+	SEND_SIGNAL(src, COMSIG_DOOR_CLOSE)
 
 /obj/structure/machinery/door/airlock/sandstone/runed/lock(forced = FALSE)
 	if(operating && !forced)

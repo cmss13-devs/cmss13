@@ -10,7 +10,7 @@
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/night_vision.dmi',
 	)
-	deactive_state = "night_off"
+	deactivated_state = "night_off"
 	toggle_on_sound = 'sound/handling/toggle_nv1.ogg'
 	toggle_off_sound = 'sound/handling/toggle_nv2.ogg'
 	toggleable = TRUE
@@ -21,12 +21,19 @@
 	fullscreen_vision = null
 	eye_protection = EYE_PROTECTION_NEGATIVE
 
+/obj/item/clothing/glasses/night/toggle_glasses_effect()
+	..()
+	if(active) //Being turned on
+		eye_protection = initial(eye_protection)
+	else
+		eye_protection = EYE_PROTECTION_NONE
+
 /obj/item/clothing/glasses/night/M4RA
 	name = "\improper M4RA Battle sight"
 	gender = NEUTER
 	desc = "A headset and night vision goggles system for the M4RA Battle Rifle. Allows highlighted imaging of surroundings, as well as the ability to view the suit sensor health status readouts of other marines. Click it to toggle."
 	icon_state = "m4ra_goggles"
-	deactive_state = "m4ra_goggles_0"
+	deactivated_state = "m4ra_goggles_0"
 	vision_flags = SEE_TURFS
 	hud_type = MOB_HUD_MEDICAL_BASIC
 	toggleable = TRUE
@@ -39,7 +46,7 @@
 	gender = NEUTER
 	desc = "A headset and night vision goggles system for the M4RA Battle Rifle. Allows highlighted imaging of surroundings, as well as the ability to view the health statuses of others. Click it to toggle."
 	icon_state = "m4_goggles"
-	deactive_state = "m4_goggles_0"
+	deactivated_state = "m4_goggles_0"
 	vision_flags = SEE_TURFS
 	hud_type = MOB_HUD_MEDICAL_ADVANCED
 	toggleable = TRUE
@@ -51,7 +58,7 @@
 	gender = NEUTER
 	desc = "A headset and night vision goggles system for the M42 Scout Rifle. Allows highlighted imaging of surroundings. Click it to toggle."
 	icon_state = "m42_goggles"
-	deactive_state = "m42_goggles_0"
+	deactivated_state = "m42_goggles_0"
 	vision_flags = SEE_TURFS
 	toggleable = TRUE
 	fullscreen_vision = null
@@ -61,12 +68,33 @@
 /obj/item/clothing/glasses/night/m42_night_goggles/spotter
 	name = "\improper M42 spotter sight"
 	desc = "A companion headset and night vision goggles system for USCM spotters. Allows highlighted imaging of surroundings. Click it to toggle."
+	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
+	/// Only for first lock is trait required
+	var/require_training = TRUE
+
+/obj/item/clothing/glasses/night/m42_night_goggles/spotter/mob_can_equip(mob/equipping_mob, slot, disable_warning)
+	if(slot != WEAR_EYES)
+		return ..()
+	if(!require_training)
+		return ..()
+	if(!ishuman(equipping_mob))
+		return ..()
+	var/mob/living/carbon/human/equipping_human = equipping_mob
+	if(!(GLOB.character_traits[/datum/character_trait/skills/spotter] in equipping_human.traits))
+		to_chat(equipping_mob, SPAN_NOTICE("You don't know how to use [src]."))
+		return FALSE
+	return ..()
+
+/obj/item/clothing/glasses/night/m42_night_goggles/spotter/equipped(mob/user, slot)
+	if(slot == WEAR_EYES)
+		require_training = FALSE
+	..()
 
 /obj/item/clothing/glasses/night/m42_night_goggles/m42c
 	name = "\improper M42C special operations sight"
 	desc = "A specialized variation of the M42 scout sight system, intended for use with the high-power M42C anti-tank sniper rifle. Allows for highlighted imaging of surroundings, as well as detection of thermal signatures even from a great distance. Click it to toggle."
 	icon_state = "m56_goggles"
-	deactive_state = "m56_goggles_0"
+	deactivated_state = "m56_goggles_0"
 	vision_flags = SEE_TURFS|SEE_MOBS
 
 /obj/item/clothing/glasses/night/m42_night_goggles/upp
@@ -74,7 +102,7 @@
 	gender = PLURAL
 	desc = "A headset and night vision goggles system used by UPP forces. Allows highlighted imaging of surroundings. Click it to toggle."
 	icon_state = "upp_goggles"
-	deactive_state = "upp_goggles_0"
+	deactivated_state = "upp_goggles_0"
 	req_skill = null
 	req_skill_level = null
 
@@ -83,7 +111,7 @@
 	gender = PLURAL
 	desc = "A headset and night vision goggles system used by RMC marksmen. Allows highlighted imaging of surroundings. Click it to toggle."
 	icon_state = "m4ra_goggles"
-	deactive_state = "m4ra_goggles_0"
+	deactivated_state = "m4ra_goggles_0"
 	req_skill = null
 	req_skill_level = null
 
@@ -92,7 +120,7 @@
 	gender = NEUTER
 	desc = "A headset and goggles system for the M56 Smartgun. Has a low-res short-range imager, allowing for view of terrain."
 	icon_state = "m56_goggles"
-	deactive_state = "m56_goggles_0"
+	deactivated_state = "m56_goggles_0"
 	toggleable = TRUE
 	actions_types = list(/datum/action/item_action/toggle/m56goggles)
 	vision_flags = SEE_TURFS
@@ -227,7 +255,7 @@
 	name = "\improper RADIO head rig"
 	desc = "Developed for use with the RFVS-37, the Integrated Auto-Rifleman Optronic Device enables the riflemen of the UPP SOF to visually search for targets in low-visibility conditions, while also enabling safe use of the weapon itself."
 	icon_state = "radio_head_rig"
-	deactive_state = "radio_head_rig_0"
+	deactivated_state = "radio_head_rig_0"
 
 /obj/item/clothing/glasses/night/yautja
 	name = "bio-mask nightvision"
@@ -274,7 +302,7 @@
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/huds.dmi',
 	)
 	icon_state = "refurb_meson"
-	deactive_state = "degoggles"
+	deactivated_state = "degoggles"
 	vision_flags = SEE_TURFS
 	toggleable = TRUE
 	fullscreen_vision = null

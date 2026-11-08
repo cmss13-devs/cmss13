@@ -48,7 +48,7 @@
 	/// the nearest human before dying
 	var/jumps_left = 5
 
-	var/time_to_live = 30 SECONDS
+	var/time_to_live = HUGGER_TIME_TO_LIVE
 	var/death_timer
 
 	var/icon_xeno = 'icons/mob/xenos/effects.dmi'
@@ -212,6 +212,8 @@
 	go_idle()
 
 /obj/item/clothing/mask/facehugger/Crossed(atom/target)
+	..()
+
 	has_proximity(target)
 
 /obj/item/clothing/mask/facehugger/on_found(mob/finder)
@@ -245,8 +247,8 @@
 
 	// Force reset throw now because [/atom/movable/proc/launch_impact] only does that later on
 	// If we DON'T, step()'s move below can collide, rebound, trigger this proc again, into infinite recursion
-	throwing = FALSE
-	rebounding = FALSE
+	REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
+	REMOVE_TRAIT(src, TRAIT_REBOUNDING, REBOUNDING_TRAIT)
 
 	if(leaping && can_hug(L, hivenumber))
 		attach(L)
@@ -255,19 +257,18 @@
 		go_idle()
 
 
-
-/obj/item/clothing/mask/facehugger/proc/leap_at_nearest_target()
+/obj/item/clothing/mask/facehugger/proc/leap_at_nearest_target(range = FACEHUGGER_JUMP_RANGE)
 	if(!isturf(loc))
 		return FALSE
 
 	for(var/mob/living/human in loc)
-		if(can_hug(human, hivenumber))
+		if(can_hug(human, hivenumber) && !HAS_TRAIT(human, TRAIT_XENO_RECOGNIZED))
 			attach(human)
 			return TRUE
 
 	var/mob/living/target
-	for(var/mob/living/human in view(FACEHUGGER_JUMP_RANGE, src))
-		if(!can_hug(human, hivenumber))
+	for(var/mob/living/human in view(range, src))
+		if(!can_hug(human, hivenumber) || HAS_TRAIT(human, TRAIT_XENO_RECOGNIZED))
 			continue
 		target = human
 		break
@@ -277,7 +278,7 @@
 	target.visible_message(SPAN_WARNING("[src] leaps at [target]!"),
 	SPAN_WARNING("[src] leaps at [target]!"))
 	leaping = TRUE
-	throw_atom(target, FACEHUGGER_JUMP_RANGE, SPEED_FAST)
+	throw_atom(target, range, SPEED_FAST)
 	return TRUE
 
 /obj/item/clothing/mask/facehugger/proc/attach(mob/living/living_mob, silent = FALSE, knockout_mod = 1, mob/living/carbon/xenomorph/facehugger/hugger)
@@ -393,7 +394,7 @@
 	jump_timer = null
 	// Reset the jumps left to their original count
 	jumps_left = initial(jumps_left)
-	addtimer(CALLBACK(src, PROC_REF(go_active)), rand(HUGGER_MIN_ACTIVE_TIME, HUGGER_MAX_ACTIVE_TIME))
+	addtimer(CALLBACK(src, PROC_REF(go_active)), HUGGER_ACTIVE_TIME)
 
 /obj/item/clothing/mask/facehugger/proc/try_jump()
 	jump_timer = addtimer(CALLBACK(src, PROC_REF(try_jump)), time_between_jumps, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
@@ -503,11 +504,12 @@
 /obj/item/clothing/mask/facehugger/flamer_fire_act()
 	die()
 
-/obj/item/clothing/mask/facehugger/proc/return_to_egg(obj/effect/alien/egg/E)
-	visible_message(SPAN_XENOWARNING("[src] crawls back into [E]!"))
-	E.status = EGG_GROWN
-	E.icon_state = "Egg"
-	E.deploy_egg_triggers()
+/obj/item/clothing/mask/facehugger/proc/return_to_egg(obj/effect/alien/egg/egg)
+	visible_message(SPAN_XENOWARNING("[src] crawls back into [egg]!"))
+	egg.status = EGG_GROWN
+	egg.icon_state = "Egg"
+	deltimer(egg.empty_orphan_timer)
+	egg.deploy_egg_triggers()
 	qdel(src)
 
 /**

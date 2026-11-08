@@ -52,19 +52,19 @@
 			return gender
 	return default
 
-/proc/sanitize_skin_color(skin_color, default = "Pale 2")
+/proc/sanitize_skin_color(skin_color, default = SKIN_COLOR_PALE2)
 	if(skin_color in GLOB.skin_color_list)
 		return skin_color
 
 	return default
 
-/proc/sanitize_body_type(body_type, default = "Lean")
+/proc/sanitize_body_type(body_type, default = BODY_TYPE_LEAN)
 	if(body_type in GLOB.body_type_list)
 		return body_type
 
 	return default
 
-/proc/sanitize_body_size(body_size, default = "Average")
+/proc/sanitize_body_size(body_size, default = BODY_SIZE_AVERAGE)
 	if(body_size in GLOB.body_size_list)
 		return body_size
 
@@ -117,13 +117,29 @@
 
 	return sanitized_gear
 
-/proc/save_gear(gear)
+/// Returns a new list with each entry in passed data interpolated into a string (e.g. converting typepaths to strings)
+/proc/stringify_list(data)
 	var/string_list = list()
 
-	for(var/gear_type in gear)
-		string_list += "[gear_type]"
+	for(var/entry in data)
+		string_list += "[entry]"
 
 	return string_list
+
+/proc/sanitize_traits(list/traits, client/user)
+	var/list/sanitized_traits = list()
+
+	for(var/trait_option in traits)
+		var/trait_type = text2path(trait_option)
+		if(!trait_type)
+			to_chat(user, SPAN_WARNING("Your [trait_option] was removed from your traits as it is no longer a valid trait option."))
+			continue
+		if(!GLOB.character_traits[trait_type])
+			to_chat(user, SPAN_WARNING("Your [trait_option] was removed from your traits as it is no longer a valid trait option."))
+			continue
+		sanitized_traits += trait_type
+
+	return sanitized_traits
 
 /// Ensures that our job loadout is an associated list of role path -> list of slots -> list of gear
 /proc/sanitize_loadout(list/list/loadout, client/user)
@@ -182,6 +198,6 @@
 			if(!length(loadout[job][slot]))
 				continue
 
-			string_list[job][slot] = save_gear(loadout[job][slot])
+			string_list[job][slot] = stringify_list(loadout[job][slot])
 
 	return string_list

@@ -135,3 +135,76 @@
 	cycle_action?.set_action_overlay(cycled_hud)
 
 	return TRUE
+
+/datum/keybinding/human/pushup
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "pushup"
+	full_name = "Pushup"
+	description = "Perform a single pushup."
+	keybind_signal = COMSIG_KB_HUMAN_SINGLE_NORMAL_PUSHUP
+	var/on_knees = FALSE
+
+/datum/keybinding/human/pushup/weak
+	name = "weak_pushup"
+	full_name = "Weak Pushup"
+	description = "Perform a single weak pushup on your knees. Wimp."
+	keybind_signal = COMSIG_KB_HUMAN_SINGLE_WEAK_PUSHUP
+	on_knees = TRUE
+
+/datum/keybinding/human/pushup/down(client/user)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/human/human_user = user.mob
+	human_user.do_single_pushup(on_knees)
+
+	return TRUE
+
+/datum/keybinding/human/pushup_routine
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "pushup_routine"
+	full_name = "Pushup Routine"
+	description = "Select a pushup routine to perform until exhausted."
+	keybind_signal = COMSIG_KB_HUMAN_PUSHUP_ROUTINE
+
+/datum/keybinding/human/pushup_routine/down(client/user)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/human/human_user = user.mob
+	human_user.do_pushups()
+
+	return TRUE
+
+/datum/keybinding/human/blow_whistle
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "blow_whistle"
+	full_name = "Blow Whistle"
+	keybind_signal = COMSIG_KB_HUMAN_BLOW_WHISTLE
+
+/datum/keybinding/human/blow_whistle/down(client/user)
+	. = ..()
+	if(.)
+		return
+
+	//Checks for whistle!
+	var/mob/living/carbon/human/human_user = user.mob
+	var/obj/item/clothing/accessory/device/whistle/whistling = locate() in human_user.contents
+	var/list/leader_clothes = list(human_user.w_uniform, human_user.wear_suit)
+	for(var/obj/item/clothing/accessory in leader_clothes)
+		if(!whistling && accessory?.accessories)
+			whistling = locate() in accessory.accessories
+			if(whistling)
+				break
+
+	if(!whistling)
+		to_chat(human_user, SPAN_DANGER("You do not have a whistle in reach on your person!"))
+		return
+	whistling.attack_self(human_user)
+
+	return TRUE

@@ -60,6 +60,9 @@
 /// From /datum/admins/proc/force_predator_round()
 #define COMSIG_GLOB_PREDATOR_ROUND_TOGGLED "!predator_round_toggled"
 
+/// From /datum/admins/proc/force_colony_joe_round()
+#define COMSIG_GLOB_COLONY_JOE_ROUND_TOGGLED "!colony_joe_round_toggled"
+
 /// From /datum/game_mode/colonialmarines/proc/check_ground_humans()
 #define COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING "!groundside_forsaken_handling"
 
@@ -96,3 +99,8 @@
 /// From /datum/controller/subsystem/hijack/proc/call_shuttle()
 #define COMSIG_GLOB_HIJACK_INBOUND "!hijack_inbound"
 
+/// From /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/signal_cic()
+#define COMSIG_GLOB_DELAYED_COMMS_FAILURE "!comms_delayed_failure"
+
+/// From /datum/game_mode/survive/proc/initiate_evacuation()
+#define COMSIG_GLOB_SURVIVOR_EVAC "!survivor_evacuation_started"

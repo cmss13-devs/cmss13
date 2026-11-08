@@ -138,7 +138,7 @@
 	group = "Explosives"
 
 /datum/supply_packs/explosives_M40_CCDP_crate
-	name = "M40 WPDP chemical compund grenade box crate (x25)"
+	name = "M40 WPDP chemical compound grenade box crate (x25)"
 	contains = list(
 		/obj/item/storage/box/nade_box/phophorus,
 	)

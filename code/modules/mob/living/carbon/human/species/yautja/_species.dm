@@ -6,7 +6,7 @@
 	burn_mod = 0.65
 	reagent_tag = IS_YAUTJA
 	mob_flags = KNOWS_TECHNOLOGY
-	flags = IS_WHITELISTED|HAS_SKIN_COLOR|NO_CLONE_LOSS|NO_POISON|NO_NEURO|SPECIAL_BONEBREAK|NO_SHRAPNEL|HAS_HARDCRIT
+	flags = IS_WHITELISTED|HAS_SKIN_COLOR|NO_CLONE_LOSS|NO_POISON|NO_NEURO|SPECIAL_BONEBREAK|NO_SHRAPNEL|HAS_HARDCRIT|HAS_MOUTH|HAS_EYELIDS
 	mob_inherent_traits = list(
 		TRAIT_YAUTJA_TECH,
 		TRAIT_SUPER_STRONG,
@@ -14,6 +14,7 @@
 		TRAIT_DEXTROUS,
 		TRAIT_EMOTE_CD_EXEMPT,
 		TRAIT_IRON_TEETH,
+		TRAIT_UNSTRIPPABLE,
 	)
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong
@@ -31,6 +32,7 @@
 	slowdown = -0.5
 	total_health = 175 //more health than regular humans
 	timed_hug = FALSE
+	eyes = "eyes_yautja"
 
 	bloodsplatter_type = /obj/effect/bloodsplatter/yautjasplatter
 
@@ -101,51 +103,42 @@
 /datum/species/yautja/larva_impregnated(obj/item/alien_embryo/embryo)
 	var/datum/hive_status/hive = GLOB.hive_datum[embryo.hivenumber]
 
-	if(!istype(hive))
-		return
+	var/pred_round_warning = "and prepare to defend against its kin."
 
-	if(!(XENO_STRUCTURE_NEST in hive.hive_structure_types))
-		hive.hive_structure_types.Add(XENO_STRUCTURE_NEST)
+	var/non_pred_round_warning = "and await your glorious sister's burst."
 
-	if(!(XENO_STRUCTURE_NEST in hive.hive_structures_limit))
-		hive.hive_structures_limit.Add(XENO_STRUCTURE_NEST)
-		hive.hive_structures_limit[XENO_STRUCTURE_NEST] = 0
+	xeno_announcement("To my children and their Queen: You have done a truly excellent job capturing a headhunter. Secure the host to a wall [(SSticker.mode.flags_round_type & MODE_PREDATOR) ? pred_round_warning : non_pred_round_warning]", hive.hivenumber, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 
-	hive.hive_structure_types[XENO_STRUCTURE_NEST] = /datum/construction_template/xenomorph/nest
-	hive.hive_structures_limit[XENO_STRUCTURE_NEST]++
-
-	xeno_message(SPAN_XENOANNOUNCE("The hive senses that a headhunter has been infected! The thick resin nest is now available in the special structures list!"),hivenumber = hive.hivenumber)
-
-/datum/species/yautja/handle_death(mob/living/carbon/human/H, gibbed)
+/datum/species/yautja/handle_death(mob/living/carbon/human/dead_yautja, gibbed)
 	if(gibbed)
-		GLOB.yautja_mob_list -= H
+		GLOB.yautja_mob_list -= dead_yautja
 
-	for(var/mob/living/carbon/M in H.hunter_data.dishonored_targets)
+	for(var/mob/living/carbon/M in dead_yautja.hunter_data.dishonored_targets)
 		M.hunter_data.dishonored_set = null
-		H.hunter_data.dishonored_targets -= M
-	for(var/mob/living/carbon/M in H.hunter_data.honored_targets)
+		dead_yautja.hunter_data.dishonored_targets -= M
+	for(var/mob/living/carbon/M in dead_yautja.hunter_data.honored_targets)
 		M.hunter_data.honored_set = null
-		H.hunter_data.honored_targets -= M
-	for(var/mob/living/carbon/M in H.hunter_data.gear_targets)
+		dead_yautja.hunter_data.honored_targets -= M
+	for(var/mob/living/carbon/M in dead_yautja.hunter_data.gear_targets)
 		M.hunter_data.gear_set = null
-		H.hunter_data.gear_targets -= M
+		dead_yautja.hunter_data.gear_targets -= M
 
-	if(H.hunter_data.prey)
-		var/mob/living/carbon/M = H.hunter_data.prey
-		H.hunter_data.prey = null
+	if(dead_yautja.hunter_data.prey)
+		var/mob/living/carbon/M = dead_yautja.hunter_data.prey
+		dead_yautja.hunter_data.prey = null
 		M.hunter_data.hunter = null
 		M.hud_set_hunter()
 
-	set_predator_status(H, gibbed ? "Gibbed" : "Dead")
+	set_predator_status(dead_yautja, gibbed ? "Gibbed" : "Dead")
 
 	// Notify all yautja so they start the gear recovery
-	message_all_yautja("[H.real_name] has died at \the [get_area_name(H)].")
+	message_all_yautja("[dead_yautja.real_name] has died at \the [get_area_name(dead_yautja)].", list(dead_yautja.faction))
 
-	if(H.hunter_data.thrall)
-		var/mob/living/carbon/T = H.hunter_data.thrall
-		message_all_yautja("[H.real_name]'s Thrall, [T.real_name] is now masterless.")
-		H.message_thrall("Your master has fallen!")
-		H.hunter_data.thrall = null
+	if(dead_yautja.hunter_data.thrall)
+		var/mob/living/carbon/T = dead_yautja.hunter_data.thrall
+		message_all_yautja("[dead_yautja.real_name]'s Thrall, [T.real_name] is now masterless.", list(dead_yautja.faction))
+		dead_yautja.message_thrall("Your master has fallen!")
+		dead_yautja.hunter_data.thrall = null
 
 /datum/species/yautja/handle_dead_death(mob/living/carbon/human/predator, gibbed)
 	set_predator_status(predator, gibbed ? "Gibbed" : "Dead")
@@ -167,16 +160,28 @@
 			return FALSE
 	return TRUE
 
-/datum/species/yautja/proc/set_predator_status(mob/living/carbon/human/H, status = "Alive")
-	if(!H.persistent_username)
+/datum/species/yautja/proc/set_predator_status(mob/living/carbon/human/predator, status = "Alive")
+	if(!predator.persistent_username)
 		return
 	var/datum/game_mode/GM
 	if(SSticker?.mode)
 		GM = SSticker.mode
-		if(H.persistent_username in GM.predators)
-			GM.predators[H.persistent_username]["Status"] = status
+		if(predator.persistent_username in GM.yautja_hunters)
+			GM.yautja_hunters[predator.persistent_username]["Status"] = status
+		else if(predator.persistent_username in GM.yautja_youngbloods)
+			GM.yautja_youngbloods[predator.persistent_username]["Status"] = status
+		else if(predator.persistent_username in GM.yautja_stranded)
+			GM.yautja_stranded[predator.persistent_username]["Status"] = status
+		else if(predator.persistent_username in GM.yautja_badbloods)
+			GM.yautja_badbloods[predator.persistent_username]["Status"] = status
+		else if(predator.faction == FACTION_YAUTJA_YOUNG)
+			GM.yautja_youngbloods[predator.persistent_username] = list("Name" = predator.real_name, "Status" = status)
+		else if(predator.faction == FACTION_YAUTJA_STRANDED)
+			GM.yautja_stranded[predator.persistent_username] = list("Name" = predator.real_name, "Status" = status)
+		else if(predator.faction == FACTION_YAUTJA_BADBLOOD)
+			GM.yautja_badbloods[predator.persistent_username] = list("Name" = predator.real_name, "Status" = status)
 		else
-			GM.predators[H.persistent_username] = list("Name" = H.real_name, "Status" = status)
+			GM.yautja_hunters[predator.persistent_username] = list("Name" = predator.real_name, "Status" = status)
 
 /datum/species/yautja/post_species_loss(mob/living/carbon/human/H)
 	..()
@@ -232,6 +237,7 @@
 	hunter.set_languages(list(LANGUAGE_YAUTJA))
 	hunter.hud_used?.hide_actions_toggle.update_button_icon(hunter)
 	give_action(hunter, /datum/action/yautja_emote_panel)
+	give_action(hunter, /datum/action/predator_action/leap)
 	give_action(hunter, /datum/action/predator_action/mark_for_hunt)
 	give_action(hunter, /datum/action/predator_action/mark_panel)
 	return ..()

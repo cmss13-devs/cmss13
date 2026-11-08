@@ -157,29 +157,13 @@ DEFINES in setup.dm, referenced here.
 	if(CONFIG_GET(flag/remove_gun_restrictions))
 		return TRUE //Not if the config removed it.
 
-	if(user.mind)
-		switch(user.job)
-			if(
-				"PMC",
-				"WY Agent",
-				"Corporate Liaison",
-				"Event",
-				"UPP Armsmaster", //this rank is for the Fun - Ivan preset, it allows him to use the PMC guns randomly generated from his backpack
-			) return TRUE
-		switch(user.faction)
-			if(
-				FACTION_WY_DEATHSQUAD,
-				FACTION_PMC,
-				FACTION_MERCENARY,
-				FACTION_FREELANCER,
-			) return TRUE
-
-		for(var/faction in user.faction_group)
-			if(faction in FACTION_LIST_WY)
-				return TRUE
-
-		if(user.faction in FACTION_LIST_WY)
+	for(var/faction in user.faction_group)
+		if(faction in FACTION_LIST_WY)
 			return TRUE
+	if(user.faction in (FACTION_LIST_WY|FACTION_HUNTED_PMC))
+		return TRUE
+	if(user.job == "UPP Armsmaster") //this rank is for the Fun - Ivan preset, it allows him to use the PMC guns randomly generated from his backpack
+		return TRUE
 
 	to_chat(user, SPAN_WARNING("[src] flashes a warning sign indicating unauthorized use!"))
 
@@ -320,7 +304,7 @@ DEFINES in setup.dm, referenced here.
 		if(istype(src, magazine.gun_type) || (magazine.type in accepted_ammo))
 
 			if(istype(bullet, /obj/item/ammo_magazine/handful) && in_chamber)
-				to_chat(user, SPAN_WARNING("You can't tactically reload with [bullet] without clearing the [src]'s chamber!"))
+				to_chat(user, SPAN_WARNING("You can't tactically reload with [bullet] without clearing [src]'s chamber!"))
 				return
 
 			if(current_mag)
@@ -352,7 +336,7 @@ DEFINES in setup.dm, referenced here.
 				master_storage.remove_from_storage(magazine)
 			reload(user, magazine)
 		else
-			to_chat(user, SPAN_WARNING("The [magazine] doesn't fit in the [src]!"))
+			to_chat(user, SPAN_WARNING("[magazine] doesn't fit in [src]!"))
 			return
 	else
 		..()
@@ -360,7 +344,7 @@ DEFINES in setup.dm, referenced here.
 
 /obj/item/weapon/gun/proc/unconventional_reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(magazine.caliber != caliber)
-		to_chat(user, SPAN_WARNING("This doesn't match the [src]'s caliber!"))
+		to_chat(user, SPAN_WARNING("This doesn't match [src]'s caliber!"))
 		return
 	if(current_mag && current_mag.current_rounds >= current_mag.max_rounds)
 		to_chat(user, SPAN_WARNING("[src] is already at its maximum capacity!"))
@@ -779,7 +763,7 @@ DEFINES in setup.dm, referenced here.
 	playsound(source, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
 
 	if(ishuman(source))
-		to_chat(source, SPAN_NOTICE("[icon2html(src, source)] You switch to <b>[gun_firemode]</b>."))
+		to_chat(source, SPAN_NOTICE("[icon2html(src, source)] You switch to [SPAN_BOLD(gun_firemode)]."))
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE_MODE_TOGGLE, gun_firemode)
 
 /obj/item/weapon/gun/proc/add_firemode(added_firemode, mob/user)

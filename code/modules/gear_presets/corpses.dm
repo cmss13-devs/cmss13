@@ -19,9 +19,8 @@
 /datum/equipment_preset/corpse/load_status(mob/living/carbon/human/new_human)
 	. = ..(new_human)
 
-	// These two values matter because they are checked on death for weed_food
-	new_human.undefibbable = TRUE
-	SEND_SIGNAL(new_human, COMSIG_HUMAN_SET_UNDEFIBBABLE)
+	// undefibbable matters because it is checked on death for weed_food
+	new_human.set_undefibbable()
 	if(xenovictim)
 		new_human.chestburst = 2
 
@@ -270,7 +269,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/CMB(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/heavy(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/deagle(new_human), WEAR_WAIST)
 	if(new_human.disabilities & NEARSIGHTED)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(new_human), WEAR_EYES)
 	else
@@ -528,7 +527,7 @@
 	name = "Corpse - Colonist Random"
 
 /datum/equipment_preset/corpse/colonist/random/load_gear(mob/living/carbon/human/new_human)
-	var/random_surv_type = pick(SSmapping.configs[GROUND_MAP].survivor_types)
+	var/random_surv_type = pick(SSmapping.configs[GROUND_MAP].get_relevant_survivor_types())
 	var/datum/equipment_preset/survivor/surv_equipment = new random_surv_type
 	surv_equipment.load_gear(new_human)
 
@@ -688,6 +687,70 @@
 /datum/equipment_preset/corpse/clf/burst
 	name = "Corpse - Burst Colonial Liberation Front Soldier"
 	xenovictim = TRUE
+
+/datum/equipment_preset/corpse/clf_lv1021
+	name = "Corpse - LV1021 - Colonial Liberation Front Soldier"
+	assignment = JOB_CLF
+	idtype = /obj/item/card/id/data
+	job_title = JOB_CLF
+	faction = FACTION_CLF
+	paygrades = list(PAY_SHORT_REB = JOB_PLAYTIME_TIER_0)
+
+/datum/equipment_preset/corpse/clf_lv1021/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE) + get_access(ACCESS_LIST_COLONIAL_ALL)
+
+/datum/equipment_preset/corpse/clf_lv1021/load_gear(mob/living/carbon/human/new_human)
+	spawn_rebel_gloves(new_human)
+	spawn_rebel_suit(new_human)
+	spawn_rebel_helmet(new_human)
+
+	var/obj/item/clothing/under/colonist/clf/operative/uniform = new()
+	var/obj/item/clothing/accessory/patch/clf_patch/patch_clf = new()
+	uniform.attach_accessory(new_human,patch_clf)
+	uniform.roll_suit_sleeves(new_human)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/mre_food_packet/clf, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/jungle/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
+	add_random_survivor_equipment(new_human)
+
+/datum/equipment_preset/corpse/clf_veteran
+	name = "Corpse - LV1021 - Colonial Liberation Front Veteran"
+	assignment = JOB_CLF
+	idtype = /obj/item/card/id/data
+	job_title = JOB_CLF
+	faction = FACTION_CLF
+	paygrades = list(PAY_SHORT_REB = JOB_PLAYTIME_TIER_0)
+
+/datum/equipment_preset/corpse/clf_veteran/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE) + get_access(ACCESS_LIST_COLONIAL_ALL)
+
+/datum/equipment_preset/corpse/clf_veteran/load_gear(mob/living/carbon/human/new_human)
+	spawn_rebel_gloves(new_human)
+
+	var/obj/item/clothing/under/colonist/clf/operative/uniform = new()
+	var/obj/item/clothing/accessory/patch/clf_patch/patch_clf = new()
+	uniform.attach_accessory(new_human,patch_clf)
+	uniform.roll_suit_sleeves(new_human)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/ua_riot/clf(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/clf(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/mre_food_packet/clf, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/jungle/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
+	add_random_survivor_equipment(new_human)
 
 //*****************************************************************************************************/
 
@@ -1002,7 +1065,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/veteran/soviet_uniform_01(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/snow_suit/soviet(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/brown(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf(new_human), WEAR_FACE)
@@ -1145,7 +1208,7 @@
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
 	var/obj/item/clothing/accessory/ranks/marine/e5/pin = new()
-	var/obj/item/clothing/accessory/patch/patch_uscm = new()
+	var/obj/item/clothing/accessory/patch/uscmpatch/patch_uscm = new()
 	var/obj/item/clothing/accessory/patch/forecon/patch_forecon = new()
 	uniform.attach_accessory(new_human,pouch)
 	uniform.attach_accessory(new_human,patch_uscm)
@@ -1417,6 +1480,65 @@
 /datum/equipment_preset/corpse/hybrisa/sanitation/burst
 	name = "Corpse - Burst - Civilian - Material Reprocessing Technician"
 	assignment = "Civilian - Material Reprocessing Technician"
+	xenovictim = TRUE
+
+// Fire Station
+
+/datum/equipment_preset/corpse/hybrisa/fire_fighter
+	name = "Corpse - Civilian - Fire Protection Specialist"
+	assignment = "Civilian - Fire Protection Specialist"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+/datum/equipment_preset/corpse/hybrisa/fire_fighter/load_gear(mob/living/carbon/human/new_human)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/hybrisa/firefighter(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest/fire_light(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/attachable/attached_gun/extinguisher(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flare(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/medical/advanced/ointment/upgraded(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/fireaxe(new_human), WEAR_R_HAND)
+
+/datum/equipment_preset/corpse/hybrisa/fire_fighter/burst
+	name = "Corpse - Burst - Civilian - Fire Protection Specialist"
+	assignment = "Civilian - Fire Protection Specialist"
+	xenovictim = TRUE
+
+/datum/equipment_preset/corpse/hybrisa/tova
+	name = "Corpse - Burst - Fire Protection Specialist - Unfortunate Firestation Civilian"
+	assignment = "Civilian - Fire Protection Specialist"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+/datum/equipment_preset/corpse/hybrisa/tova/load_gear(mob/living/carbon/human/new_human)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/hybrisa/firefighter(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest/fire_light(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/attachable/attached_gun/extinguisher(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flare(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini(new_human.back), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/medical/advanced/ointment/upgraded(new_human.back), WEAR_IN_BACK)
+
+/datum/equipment_preset/corpse/hybrisa/tova/load_name(mob/living/carbon/human/new_human, randomise, client/mob_client)
+	. = ..()
+	new_human.gender = FEMALE
+	var/datum/preferences/A = new()
+	A.randomize_appearance(new_human)
+	new_human.change_real_name(new_human, "Tova Almgren")
+	new_human.age = 23
+
+/datum/equipment_preset/corpse/hybrisa/tova/burst
+	name = "Corpse - Civilian - Fire Protection Specialist - Unfortunate Firestation Civilian"
+	assignment = "Civilian - Fire Protection Specialist"
 	xenovictim = TRUE
 
 // Pizza Galaxy

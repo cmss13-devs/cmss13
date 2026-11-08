@@ -36,7 +36,8 @@
 	var/objective_info //For additional info in the objectives txt
 	var/probability = 0
 	var/hostility //For ERTs who are either hostile or friendly by random chance.
-	var/list/datum/mind/members = list() //Currently-joined members.
+	/// Weakrefs to all currently-joined minds
+	var/list/datum/weakref/members = list()
 	var/list/datum/mind/candidates = list() //Potential candidates for enlisting.
 	var/name_of_spawn = /obj/effect/landmark/ert_spawns/distress //If we want to set up different spawn locations
 	var/item_spawn = /obj/effect/landmark/ert_spawns/distress/item
@@ -70,6 +71,9 @@
 
 	/// the [/datum/lazy_template] we should attempt to spawn in for the return journey
 	var/home_base = /datum/lazy_template/ert/freelancer_station
+
+	/// What sound plays to ghosts when this rolls? Silent if null
+	var/alert_sound
 
 /datum/game_mode/proc/initialize_emergency_calls()
 	if(length(all_calls)) //It's already been set up.
@@ -112,21 +116,22 @@
 		return chosen_call
 
 /datum/game_mode/proc/get_specific_call(call_name, quiet_launch = FALSE, announce_incoming = TRUE, info = "")
+	var/datum/emergency_call/em_call
 	if(ispath(call_name, /datum/emergency_call))
-		var/datum/emergency_call/em_call = new call_name
+		em_call = new call_name
 		em_call.objective_info = info
 		em_call.activate(quiet_launch, announce_incoming)
-		return
+		return em_call
 
 	var/call_path = text2path(call_name)
 	if(ispath(call_path, /datum/emergency_call))
-		var/datum/emergency_call/em_call = new call_path
+		em_call = new call_path
 		em_call.objective_info = info
 		em_call.activate(quiet_launch, announce_incoming)
-		return
+		return em_call
 
 	error("get_specific_call could not find emergency call '[call_name]'")
-	return
+	return null
 
 /datum/emergency_call/proc/show_join_message()
 	if(!mob_max || !SSticker.mode) //Just a supply drop, don't bother.
@@ -138,6 +143,9 @@
 			to_chat(M, SPAN_WARNING(FONT_SIZE_LARGE("You cannot join if you have Ghosted recently. Click the link in chat, or use the verb in the ghost tab to join.</span>\n")))
 
 			give_action(M, /datum/action/join_ert, src)
+
+			if(!isnull(alert_sound))
+				playsound_client(M.client, alert_sound, vol = 50)
 
 /datum/game_mode/proc/activate_distress()
 	ert_dispatched = TRUE
@@ -330,7 +338,7 @@
 	var/i = 0
 	if(length(picked_candidates))
 		for(var/datum/mind/M in picked_candidates)
-			members += M
+			members += WEAKREF(M)
 			i++
 			if(i > mob_max)
 				break //Some logic. Hopefully this will never happen..
@@ -348,8 +356,9 @@
 		else
 			marine_announcement(arrival_message, "Intercepted Transmission:")
 
-	for(var/datum/mind/spawned as anything in members)
-		if(ishuman(spawned.current))
+	for(var/datum/weakref/spawned_ref as anything in members)
+		var/datum/mind/spawned = spawned_ref.resolve()
+		if(ishuman(spawned?.current))
 			var/mob/living/carbon/human/spawned_human = spawned.current
 			var/obj/item/card/id/id = spawned_human.get_idcard()
 			if(id)

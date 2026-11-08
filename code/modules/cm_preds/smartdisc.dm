@@ -106,7 +106,7 @@
 		var/mob/living/carbon/human/hooman = hit_atom
 		if(hooman.put_in_hands(src))
 			hit_atom.visible_message("[hit_atom] expertly catches [src] out of the air.","You catch [src] easily.")
-			throwing = FALSE
+			REMOVE_TRAIT(src, TRAIT_LAUNCHED, LAUNCHED_TRAIT)
 		return
 	..()
 

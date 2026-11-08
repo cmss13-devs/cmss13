@@ -134,19 +134,19 @@
 		RegisterSignal(src, COMSIG_CELL_TRY_RECHARGING, PROC_REF(cell_try_recharge))
 		RegisterSignal(src, COMSIG_CELL_OUT_OF_CHARGE, PROC_REF(on_power_out))
 
-/obj/item/prop/helmetgarb/helmet_nvg/on_enter_storage(obj/item/storage/internal/S)
+/obj/item/prop/helmetgarb/helmet_nvg/on_enter_storage(obj/item/storage/internal/inner_inv)
 	..()
 
-	if(!istype(S))
+	if(!istype(inner_inv))
 		return
 
 	remove_attached_item()
 
-	var/obj/item/MO = S.master_object
-	if(!istype(MO, /obj/item/clothing/head/helmet/marine) && !istype(MO, /obj/item/clothing/head/cmcap)) // Do not bother if it's not a helmet or at least a hat
+	var/obj/item/helm = inner_inv.master_object
+	if(!istype(helm, /obj/item/clothing/head/helmet/marine) && !istype(helm, /obj/item/clothing/head/cmcap) && !istype(helm, /obj/item/clothing/head/headset)) // Do not bother if it's not a helmet or at least a hat
 		return
 
-	attached_item = MO
+	attached_item = helm
 
 	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, PROC_REF(remove_attached_item))
 	RegisterSignal(attached_item, COMSIG_ITEM_EQUIPPED, PROC_REF(toggle_check))
@@ -535,7 +535,7 @@
 	..()
 	if(!istype(helmet_internal_inventory))
 		return
-	var/obj/item/clothing/head/helmet/helmet_item = helmet_internal_inventory.master_object
+	var/obj/item/clothing/head/helmet_item = helmet_internal_inventory.master_object
 
 	if(!istype(helmet_item))
 		return
@@ -547,7 +547,7 @@
 	..()
 	if(!istype(helmet_internal_inventory))
 		return
-	var/obj/item/clothing/head/helmet/helmet_item = helmet_internal_inventory.master_object
+	var/obj/item/clothing/head/helmet_item = helmet_internal_inventory.master_object
 
 	if(!istype(helmet_item))
 		return

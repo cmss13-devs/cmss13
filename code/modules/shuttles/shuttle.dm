@@ -7,7 +7,6 @@
 	var/name = "Shuttle" //Name of the shuttle, for messages
 	var/warmup_time = 0
 	var/moving_status = SHUTTLE_IDLE
-	var/move_scheduled = 0
 	var/turf/target_turf = null
 	var/target_rotation = 0
 	var/list/shuttle_turfs = null
@@ -114,21 +113,19 @@
 			INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 	if (iselevator) // Super snowflake code
-		for (var/obj/structure/machinery/computer/shuttle_control/ice_colony/C in area)
-			C.animate_on()
-
 		for (var/turf/closed/shuttle/elevator/gears/G in area)
 			G.start()
 
 		for (var/obj/structure/machinery/door/airlock/D in area)//For elevators
 			INVOKE_ASYNC(src, PROC_REF(force_close_launch), D)
 
-/datum/shuttle/proc/force_close_launch(obj/structure/machinery/door/airlock/AL) // whatever. SLEEPS
-	AL.safe = FALSE
-	AL.unlock()
-	AL.close()
-	AL.lock()
-	AL.safe = TRUE
+/datum/shuttle/proc/force_close_launch(obj/structure/machinery/door/airlock/air) // whatever. SLEEPS
+	var/old_safe = air.safe
+	air.safe = FALSE
+	air.unlock(TRUE)
+	air.close(TRUE)
+	air.lock(TRUE)
+	air.safe = old_safe
 
 /datum/shuttle/proc/open_doors(area/area)
 	if(!area || !istype(area)) //somehow
@@ -143,8 +140,6 @@
 			INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 	if (iselevator) // Super snowflake code
-		for (var/obj/structure/machinery/computer/shuttle_control/ice_colony/C in area)
-			C.animate_off()
 
 		for (var/turf/closed/shuttle/elevator/gears/G in area)
 			G.stop()

@@ -58,7 +58,7 @@
 
 		if(2)
 			// State 2
-			if(iscoil(W))
+			if(iswire(W))
 				var/obj/item/stack/cable_coil/C = W
 				if(C.use(2))
 					to_chat(user, SPAN_NOTICE("You add wires to the assembly."))

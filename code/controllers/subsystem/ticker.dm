@@ -41,8 +41,6 @@ SUBSYSTEM_DEF(ticker)
 	// TODO: move this into mapview ss
 	var/toweractive = FALSE
 
-	var/list/minds = list()
-
 	var/automatic_delay_end = FALSE
 
 	///If we have already done tip of the round.
@@ -362,7 +360,7 @@ SUBSYSTEM_DEF(ticker)
 	if(mode)
 		GLOB.master_mode = SSmapping.configs[GROUND_MAP].force_mode ? SSmapping.configs[GROUND_MAP].force_mode : mode
 	else
-		GLOB.master_mode = "Extended"
+		GLOB.master_mode = GAMEMODE_EXTENDED
 	log_game("Saved mode is '[GLOB.master_mode]'")
 
 
@@ -385,8 +383,7 @@ SUBSYSTEM_DEF(ticker)
 	if(!delay)
 		delay = CONFIG_GET(number/round_end_countdown) * 10
 
-	var/skip_delay = check_rights()
-	if(delay_end && !skip_delay)
+	if(delay_end)
 		to_chat(world, SPAN_BOLDNOTICE("An admin has delayed the round end."))
 		return
 
@@ -395,7 +392,7 @@ SUBSYSTEM_DEF(ticker)
 	var/start_wait = world.time
 	sleep(delay - (world.time - start_wait))
 
-	if(delay_end && !skip_delay)
+	if(delay_end)
 		to_chat(world, SPAN_BOLDNOTICE("Reboot was cancelled by an admin."))
 		return
 
@@ -435,7 +432,8 @@ SUBSYSTEM_DEF(ticker)
 				var/client/C = M.client
 				if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
 					msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)]</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
-	QDEL_IN(player, 5)
+	if(!QDELETED(player))
+		QDEL_IN(player, 5 SECONDS)
 
 /datum/controller/subsystem/ticker/proc/old_create_characters()
 	for(var/mob/new_player/player in GLOB.player_list)
@@ -498,7 +496,6 @@ SUBSYSTEM_DEF(ticker)
 	 * SScellauto: can't touch this because it would directly affect explosion spread speed
 	 */
 
-	SSquadtree?.wait    = 0.8 SECONDS // From 0.5, relevant based on player movement speed (higher = more error in sound location, motion detector pings, sentries target acquisition)
 	SSlighting?.wait    = 0.6 SECONDS // From 0.4, same but also heavily scales on player/scene density (higher = less frequent lighting updates which is very noticeable as you move)
 	SSstatpanels?.wait  = 1.5 SECONDS // From 0.6, refresh rate mainly matters for ALT+CLICK turf contents (which gens icons, intensive)
 	SSsoundscape?.wait  =   2 SECONDS // From 1, soudscape triggering checks, scales on player count

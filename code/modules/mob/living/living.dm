@@ -22,6 +22,9 @@
 	initialize_stamina()
 	GLOB.living_mob_list += src
 
+	if(!(mob_flags & MOB_ABSTRACT))
+		SSmapgrids.track_movable(src)
+
 /mob/living/Destroy()
 	GLOB.living_player_list -= src
 	GLOB.living_mob_list -= src
@@ -218,6 +221,8 @@
 	if(back && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
 		update_inv_back()
 
+	if(. && nutrition && stat != DEAD)
+		nutrition -= HUNGER_FACTOR/5
 
 
 /mob/proc/resist_grab(moving_resist)
@@ -330,7 +335,7 @@
 	if(buckled || now_pushing)
 		return
 
-	if(throwing)
+	if(HAS_TRAIT(src, TRAIT_LAUNCHED))
 		launch_impact(moving_atom)
 		return
 
@@ -562,6 +567,9 @@
 		update_transform(instant_update = on_movement) // Don't use transition for eg. crawling movement, because we already have the movement glide
 		lying_prev = lying_angle
 
+/mob/living/proc/get_lying_angle()
+	return lying_angle
+
 ///Called by mob Move() when the lying_angle is different than zero, to better visually simulate crawling.
 /mob/living/proc/lying_angle_on_movement(direct)
 	if(direct & EAST)
@@ -573,9 +581,9 @@
 /mob/living/proc/set_buckled(new_buckled)
 	if(new_buckled == buckled)
 		return
-	SEND_SIGNAL(src, COMSIG_LIVING_SET_BUCKLED, new_buckled)
 	. = buckled
 	buckled = new_buckled
+	SEND_SIGNAL(src, COMSIG_LIVING_SET_BUCKLED, new_buckled)
 	if(buckled)
 //		if(!HAS_TRAIT(buckled, TRAIT_NO_IMMOBILIZE))
 //			ADD_TRAIT(src, TRAIT_IMMOBILIZED, BUCKLED_TRAIT)
@@ -635,8 +643,9 @@
 		layer = ABOVE_MOB_LAYER
 	else if (body_position == LYING_DOWN && stat == DEAD)
 		layer = LYING_DEAD_MOB_LAYER // Dead mobs should layer under living ones
-	else if(body_position == LYING_DOWN && layer == initial(layer)) //to avoid things like hiding larvas. //i have no idea what this means
+	else if(body_position == LYING_DOWN && layer == initial(layer)) //to avoid things like hiding larvas.
 		layer = LYING_LIVING_MOB_LAYER
+	SEND_SIGNAL(src, COMSIG_LIVING_LAYER_UPDATED, layer)
 
 /// Called when mob changes from a standing position into a prone while lacking the ability to stand up at the moment.
 /mob/living/proc/on_fall()
@@ -720,3 +729,53 @@
 /mob/living/onZImpact(turf/impact_turf, height)
 	. = ..()
 	impact_turf.z_impact(src, height)
+
+/**
+ * Checks if user can mount src
+ *
+ * Arguments:
+ * * user - The mob trying to mount
+ * * target_mounting - Is the target initiating the mounting process?
+ */
+/mob/living/proc/can_mount(mob/living/user, target_mounting = FALSE)
+	if(!target_mounting)
+		user = pulling
+	if(!ishuman(user))
+		return FALSE
+	var/mob/living/carbon/human/human_pulled = user
+	if(human_pulled.stat == DEAD)
+		return FALSE
+	if(!CHECK_BITFIELD(buckle_flags, CAN_BUCKLE))
+		return FALSE
+	return TRUE
+
+/**
+ * Handles the target trying to ride src
+ *
+ * Arguments:
+ * * target - The mob being put on the back
+ * * target_mounting - Is the target initiating the mounting process?
+ */
+/mob/living/proc/carry_target(mob/living/carbon/target, target_mounting = FALSE)
+	if(!ismob(target))
+		return
+	if(target.is_mob_incapacitated())
+		if(target_mounting)
+			to_chat(target, SPAN_WARNING("You cannot mount [src]!"))
+			return
+		return
+	visible_message(SPAN_NOTICE("[target_mounting ? "[target] starts to mount [src]" : "[src] starts hoisting [target] onto [p_their()] back..."]"),
+	SPAN_NOTICE("[target_mounting ? "[target] starts to mount on your back" : "You start to lift [target] onto your back..."]"))
+	if(!do_after(target_mounting ? target : src, 5 SECONDS, NONE, BUSY_ICON_HOSTILE, target_mounting ? src : target))
+		visible_message(SPAN_WARNING("[target_mounting ? "[target] fails to mount on [src]" : "[src] fails to carry [target]!"]"))
+		return
+	//Second check to make sure they're still valid to be carried
+	if(target.is_mob_incapacitated())
+		return
+	buckle_mob(target, src, target_hands_needed = 1)
+
+/mob/living/MouseDrop_T(atom/dropping, mob/user)
+	. = ..()
+	if(!can_mount(user, TRUE))
+		return
+	INVOKE_ASYNC(src, PROC_REF(carry_target), dropping, TRUE)

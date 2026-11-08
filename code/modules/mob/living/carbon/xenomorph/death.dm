@@ -15,6 +15,14 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 
 	overlays -= acid_overlay
 
+	// Dead xenomorphs have reduced blood
+	// Acts a source of xeno chems, but temporary and limited.
+	blood_volume = BLOOD_VOLUME_DEAD_XENO
+
+	if(organ_regen_timer != TIMER_ID_NULL)
+		deltimer(organ_regen_timer)
+		organ_regen_timer = TIMER_ID_NULL
+
 	if(is_zoomed)
 		zoom_out()
 
@@ -35,6 +43,9 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 		if(hud_used && hud_used.alien_plasma_display)
 			hud_used.alien_plasma_display.icon_state = "power_display_empty"
 		update_icons()
+
+	// Update dropship HUD overlays to show dead state
+	init_dropship_hud_overlays()
 
 	if(!should_block_game_interaction(src)) //so xeno players don't get death messages from admin tests
 		if(!(datum_flags & DF_VAR_EDITED) && istype(SSticker.mode, /datum/game_mode/colonialmarines))
@@ -133,23 +144,31 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 		if(SSticker.mode && SSticker.current_state != GAME_STATE_FINISHED)
 			if((GLOB.last_ares_callout + 2 MINUTES) > world.time)
 				return
-			if(hive.hivenumber == XENO_HIVE_NORMAL && (LAZYLEN(hive.totalXenos) == 1))
-				var/mob/living/carbon/xenomorph/xeno = LAZYACCESS(hive.totalXenos, 1)
-				GLOB.last_ares_callout = world.time
-				// Tell the marines where the last one is.
-				var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
-				var/input = "Bioscan complete.\n\nSensors indicate one remaining unknown lifeform signature in [get_area(xeno)]."
-				log_ares_bioscan(name, input)
-				marine_announcement(input, name, 'sound/AI/bioscan.ogg', logging = ARES_LOG_NONE)
-				// Tell the xeno she is the last one, heal her and make her fight to the death
-				if(xeno.client)
-					to_chat(xeno, SPAN_XENOANNOUNCE("Your carapace rattles with RAGE. You are all that remains of the hive! Go out fighting, kill them all!"))
-					if(!TIMER_COOLDOWN_CHECK(xeno, LAST_XENO_HEAL_COOLDOWN))
-						xeno.rejuvenate()
-						TIMER_COOLDOWN_START(xeno, LAST_XENO_HEAL_COOLDOWN, 10 MINUTES)
-					if(!isqueen(xeno))
-						xeno.can_heal = FALSE
-				notify_ghosts(header = "Last Xenomorph", message = "There is only one Xenomorph left: [xeno.name].", source = xeno, action = NOTIFY_ORBIT)
+			if(hive.hivenumber == XENO_HIVE_NORMAL)
+				var/num_xenos = LAZYLEN(hive.totalXenos)
+				if(num_xenos == 1)
+					var/mob/living/carbon/xenomorph/xeno = LAZYACCESS(hive.totalXenos, 1)
+					GLOB.last_ares_callout = world.time
+					// Tell the marines where the last one is.
+					var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
+					var/input = "Bioscan complete.\n\nSensors indicate one remaining unknown lifeform signature in [get_area(xeno)]."
+					log_ares_bioscan(name, input)
+					marine_announcement(input, name, 'sound/AI/bioscan.ogg', logging = ARES_LOG_NONE)
+					// Tell the xeno she is the last one, heal her and make her fight to the death
+					if(xeno.client)
+						to_chat(xeno, SPAN_XENOANNOUNCE("Your carapace rattles with RAGE. You are all that remains of the hive! Go out fighting, kill them all!"))
+						if(!TIMER_COOLDOWN_CHECK(xeno, LAST_XENO_HEAL_COOLDOWN))
+							xeno.rejuvenate()
+							TIMER_COOLDOWN_START(xeno, LAST_XENO_HEAL_COOLDOWN, 10 MINUTES)
+						if(!isqueen(xeno))
+							xeno.can_heal = FALSE
+					notify_ghosts(header = "Last Xenomorph", message = "There is only one Xenomorph left: [xeno.name].", source = xeno, action = NOTIFY_ORBIT)
+					if(istype(SSticker.mode, /datum/game_mode/survive))
+						var/datum/game_mode/survive/game_mode = SSticker.mode
+						game_mode.release_the_queen()
+				else if(num_xenos <= 4 && istype(SSticker.mode, /datum/game_mode/survive))
+					var/datum/game_mode/survive/game_mode = SSticker.mode
+					game_mode.release_the_queen()
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, gibbed)
 	give_action(src, /datum/action/ghost/xeno)
@@ -158,6 +177,8 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 	var/no_remains
 	if(!caste)
 		CRASH("CASTE ERROR: gib() was called without a caste. (name: [name], disposed: [QDELETED(src)], health: [health])")
+	if(gibbing)
+		CRASH("gib() was called multiple times. (name: [name], disposed: [QDELETED(src)], health: [health])")
 
 	switch(caste.caste_type)
 		if(XENO_CASTE_BOILER)
@@ -170,6 +191,10 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 
 	if(!no_remains)
 		new /obj/effect/decal/remains/xeno(get_turf(src), icon, "gibbed-a-corpse", pixel_x)
+
+	var/turf/death_turf = get_turf(src)
+	if(!should_block_game_interaction(src, TRUE) && (is_ground_level(death_turf.z) || is_mainship_level(death_turf.z) || is_reserved_level(death_turf.z)) && !(src in GLOB.xeno_ghost_role_mobs))
+		new /mob/dead/mob_marker(death_turf, src)
 
 	check_blood_splash(35, BURN, 65, 2) //Some testing numbers. 35 burn, 65 chance.
 

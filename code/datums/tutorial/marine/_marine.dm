@@ -11,8 +11,8 @@
 
 	//SSround_recording.recorder.track_player(new_character) //zonenote: check if necessary
 
-	new_character.marine_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
-	new_character.marine_buyable_categories = MARINE_CAN_BUY_ALL
+	new_character.vendor_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
+	new_character.vendor_buyable_categories = MARINE_CAN_BUY_ALL
 
 	tutorial_mob = new_character
 	RegisterSignal(tutorial_mob, COMSIG_LIVING_GHOSTED, PROC_REF(on_ghost))

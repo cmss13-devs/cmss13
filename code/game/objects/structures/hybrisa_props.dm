@@ -139,6 +139,11 @@
 	icon = 'icons/obj/structures/props/vehicles/armored_truck_wy_white.dmi'
 	icon_state = "armored_truck_wy_white"
 
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck/fire_truck
+	name = "fire-truck"
+	icon = 'icons/obj/structures/props/vehicles/small_firetruck_red.dmi'
+	icon_state = "small_firetruck_red"
+
 // Ambulance - Damage States
 /obj/structure/prop/hybrisa/vehicles/Ambulance
 	name = "ambulance"
@@ -149,6 +154,10 @@
 	bound_width = 96
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
+
+/obj/structure/prop/hybrisa/vehicles/ambulance
+	icon = 'icons/obj/structures/props/vehicles/ambulance_fire.dmi'
+	icon_state = "ambulance"
 
 // Long Hauler Truck - Damage States
 /obj/structure/prop/hybrisa/vehicles/Long_Truck
@@ -1043,6 +1052,12 @@
 /obj/structure/bed/chair/comfy/hybrisa/brown
 	icon_state = "comfychair_hybrisabrown"
 
+/obj/structure/bed/chair/comfy/hybrisa/white
+	icon_state = "comfychair_hybrisawhite"
+
+/obj/structure/bed/chair/comfy/hybrisa/teal
+	icon_state = "comfychair_hybrisateal"
+
 // Beds
 
 /obj/structure/bed/hybrisa/dingy
@@ -1468,6 +1483,14 @@
 	icon = 'icons/obj/structures/props/hybrisa/grates.dmi'
 	icon_state = "solidgrate1"
 	layer = HATCH_LAYER
+
+/obj/structure/prop/hybrisa/misc/floorprops/Initialize(mapload, ...)
+	. = ..()
+	var/turf/turf = get_turf(src)
+	if(SSwater_overlays.is_water(turf))
+		var/turf/open/open_turf = turf
+		open_turf.stop_being_water()
+
 
 /obj/structure/prop/hybrisa/misc/floorprops/grate
 	name = "solid metal grate"
@@ -2665,8 +2688,9 @@
 	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
-	explo_proof = TRUE
+	explo_proof = FALSE
 	layer = ABOVE_MOB_LAYER
+	health = 3000
 
 /obj/structure/prop/hybrisa/misc/detonator
 	name = "detonator"
@@ -2795,6 +2819,15 @@
 	anchored = TRUE
 	can_buckle = FALSE
 
+// Sofa Teal
+
+/obj/structure/bed/sofa/hybrisa/sofa/teal
+	name = "Couch"
+	desc = "Just like Space Ikea would have wanted."
+	icon_state = "sofa_teal"
+	anchored = TRUE
+	can_buckle = FALSE
+
 /obj/structure/prop/hybrisa/misc/pole
 	name = "pole"
 	desc = "For all of your 'pole' related activities."
@@ -2845,6 +2878,11 @@
 	name = "wrecked phonebox"
 	desc = "It's a phonebox, outdated but reliable technology. These are used to communicate throughout the colony and connected colonies without interference. It seems it's completely wrecked, covered in blood and the glass is smashed. Hiding inside would be pointless."
 	icon_state = "phonebox_bloody_off_broken"
+
+/obj/structure/prop/hybrisa/misc/phonebox/broken
+	name = "wrecked phonebox"
+	desc = "It's a phonebox, outdated but reliable technology. These are used to communicate throughout the colony and connected colonies without interference. It seems it's completely wrecked, and the glass is smashed. Hiding inside would be pointless."
+	icon_state = "phonebox_off_broken"
 
 /obj/structure/prop/hybrisa/misc/phonebox/bullet_act(obj/projectile/P)
 	health -= P.damage

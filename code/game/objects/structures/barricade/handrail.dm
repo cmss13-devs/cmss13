@@ -225,6 +225,13 @@
 					return
 	. = ..()
 
+/obj/structure/barricade/handrail/corrosive_acid_act()
+	deconstruct(debris = FALSE)
+
+/obj/structure/barricade/handrail/acid_spray_act()
+	deconstruct(debris = FALSE)
+
+
 /obj/structure/barricade/handrail/no_vault
 	autoclimb = FALSE
 
@@ -246,20 +253,21 @@
 
 /obj/structure/barricade/handrail/sandstone
 	name = "sandstone handrail"
-	icon_state = "hr_sandstone"
+	icon_state = "hr_stone"
 	can_be_reinforced = FALSE
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	stack_type = /obj/item/stack/sheet/mineral/sandstone
 	debris = list(/obj/item/stack/sheet/mineral/sandstone)
+	color = "#b6a38f"
 
 /obj/structure/barricade/handrail/sandstone/b
-	icon_state = "hr_sandstone_b"
+	icon_state = "hr_stone_b"
 
 /obj/structure/barricade/handrail/sandstone/dark
-	color = "#2E1E21"
+	color = "#524e49"
 
 /obj/structure/barricade/handrail/sandstone/b/dark
-	color = "#2E1E21"
+	color = "#524e49"
 
 /obj/structure/barricade/handrail/pizza
 	name = "\improper diner half-wall"

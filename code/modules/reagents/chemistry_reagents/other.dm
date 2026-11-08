@@ -9,7 +9,7 @@
 	description = "Blood is classified as a connective tissue and consists of two main components: Plasma, which is a clear extracellular fluid. Formed elements, which are made up of the blood cells and platelets."
 	reagent_state = LIQUID
 	color = "#A10808"
-	data_properties = new/list("blood_type"=null,"blood_color"= "#A10808","viruses"=null,"resistances"=null)
+	data_properties = list("blood_type"=null,"blood_color"= "#A10808","viruses"=null,"resistances"=null)
 	chemclass = CHEM_CLASS_RARE
 
 
@@ -72,25 +72,6 @@
 	objective_value = OBJECTIVE_HIGH_VALUE
 	properties = list(PROPERTY_CORROSIVE = 3)
 
-/datum/reagent/blood/xeno_blood/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
-	. = ..()
-	if(!processing_tray.seed)
-		return
-	processing_tray.toxins += 3*volume
-	processing_tray.plant_health += -volume
-	if(prob(10))
-		var/turf/c_turf = get_turf(processing_tray)
-		var/removed_chem = pick(processing_tray.seed.chems)
-		processing_tray.seed = processing_tray.seed.diverge()
-		if(length(processing_tray.seed.chems) > 1)
-			c_turf.visible_message(SPAN_WARNING("[capitalize_first_letters(processing_tray.seed.display_name)] sizzles and pops!"))
-			processing_tray.seed.chems.Remove(removed_chem)
-		if(length(processing_tray.seed.chems) <= 1)
-			if (!isnull(processing_tray.seed.chems["xenoblood"]))
-				return
-			processing_tray.seed.chems += list("xenoblood" = list(1,2))
-			c_turf.visible_message(SPAN_NOTICE("[capitalize_first_letters(processing_tray.seed.display_name)]'s sizzling sputters out, you smell [lowertext(name)]!"))
-
 /datum/reagent/blood/xeno_blood/royal
 	name = "Dark Acidic Blood"
 	id = "xenobloodroyal"
@@ -98,24 +79,6 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
 	properties = list(PROPERTY_CORROSIVE = 6)
-
-/datum/reagent/blood/xeno_blood/royal/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
-	if(!processing_tray.seed)
-		return
-	processing_tray.toxins += 6*volume
-	processing_tray.plant_health += -4*volume
-	processing_tray.chem_add_counter += 1*volume
-	if(processing_tray.chem_add_counter >= 5 && prob(60))
-		var/turf/c_turf = get_turf(processing_tray)
-		processing_tray.chem_add_counter += -5
-		processing_tray.seed = processing_tray.seed.diverge()
-		if(length(processing_tray.seed.chems) > 10)
-			return
-		if(!isnull(processing_tray.seed.chems["xenoblood"]))
-			var/list/new_chem = list(pick( GLOB.chemical_gen_classes_list["H1"]) = list(1,rand(2,3)))
-			var/datum/reagent/new_chem_datum = GLOB.chemical_reagents_list[new_chem[1]]
-			processing_tray.seed.chems += new_chem
-			c_turf.visible_message(SPAN_NOTICE("[capitalize_first_letters(processing_tray.seed.display_name)] flashes an erie green, you smell [new_chem_datum.name]!"))
 
 /datum/reagent/vaccine
 	//data must contain virus type
@@ -196,18 +159,18 @@
 /datum/reagent/space_drugs
 	name = "Space drugs"
 	id = "space_drugs"
-	description = "An illegal compound that causes hallucinations, visual artefacts and loss of balance."
+	description = "An illegal, addictive compound that causes hallucinations, visual artefacts and loss of balance."
 	reagent_state = LIQUID
 	color = "#60A584" // rgb: 96, 165, 132
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_HALLUCINOGENIC = 2)
+	properties = list(PROPERTY_HALLUCINOGENIC = 2, PROPERTY_ADDICTIVE = 1)
 
 /datum/reagent/sleen
 	name = "Sleen"
 	id = "sleen"
-	description = " A favorite of marine medics, it is an illicit mixture of name brand lime soda and oxycodone, known for its distinct red hue. Overdosing can cause hallucinations, loss of coordination, seizures, brain damage, respiratory failure, and death."
+	description = " A favorite of marine medics, it is an illicit mixture of name brand lime soda and oxycodone, known for its distinct red hue and narcotic culture. Due to its addictive nature, production and use of the mixture is banned across 3052 jurisdictions. Overdosing can cause hallucinations, loss of coordination, seizures, brain damage, respiratory failure, and death."
 	reagent_state = LIQUID
 	color = "#C21D24" // rgb: 194, 29, 36
 	overdose = MED_REAGENTS_OVERDOSE
@@ -239,6 +202,7 @@
 	burncolormod = 2
 	chemclass = CHEM_CLASS_BASIC
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
+	properties = list(PROPERTY_HYPERTHERMIC = 1)
 
 /datum/reagent/copper
 	name = "Copper"
@@ -278,6 +242,7 @@
 	explosive = TRUE
 	power = 0.15
 	chemclass = CHEM_CLASS_BASIC
+	properties = list(PROPERTY_FUELING = 1)
 
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
@@ -344,7 +309,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_BIOCIDIC = 1)
+	properties = list(PROPERTY_BIOCIDIC = 1, PROPERTY_PNEUMOTOXIC = 3, PROPERTY_OCULOTOXIC = 1)
 
 /datum/reagent/fluorine
 	name = "Fluorine"
@@ -425,7 +390,7 @@
 	reagent_state = SOLID
 	color = "#C7C7C7" // rgb: 199,199,199
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_CARCINOGENIC = 2, PROPERTY_HEMORRAGING = 1)
+	properties = list(PROPERTY_CARCINOGENIC = 2, PROPERTY_HEMORRHAGING = 1)
 
 /datum/reagent/thermite
 	name = "Thermite"
@@ -531,13 +496,13 @@
 	//------------------//
 	intensityfire = BURN_LEVEL_TIER_1
 	durationfire = BURN_TIME_TIER_1
-	burn_sprite = "red"
+	burn_sprite = "dynamic"
 	rangefire = 4
 	//------------------//
 	explosive = TRUE
 	power = 0.12
 	falloff_modifier = -0.1
-	burncolor = "#ff9900"
+	burncolor = "#660000"
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_FUELING = 5, PROPERTY_OXIDIZING = 3, PROPERTY_VISCOUS = 4, PROPERTY_TOXIC = 1)
 
@@ -683,6 +648,7 @@
 	reagent_state = GAS
 	color = "#404030" // rgb: 64, 64, 48
 	chemclass = CHEM_CLASS_COMMON
+	properties = list(PROPERTY_TOXIC = 3, PROPERTY_NUTRITIOUS = 2)
 
 /datum/reagent/ammonia/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
 	. = ..()
@@ -1050,20 +1016,43 @@
 	color = "#6d7694"
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-	chemclass = CHEM_CLASS_SPECIAL
+	chemclass = CHEM_CLASS_XENO_BASIC
 	objective_value = OBJECTIVE_EXTREME_VALUE
-	properties = list(PROPERTY_HYPERDENSIFICATING = 1)
+	properties = list(PROPERTY_HYPERDENSIFICATING = 1, PROPERTY_HEPATOTOXIC = 2)
+
+/datum/reagent/plasma/reinforced_chitin
+	name = "Reinforced Chitin Plasma"
+	id = PLASMA_REINFORCED_CHITIN
+	description = "Similar to the chitin plasma counterpart, arranged in a complex, stable and reinforced configuration."
+	color = "#4c6cd6"
+	overdose = REAGENTS_OVERDOSE
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_XENO_SPECIALIZED
+	objective_value = OBJECTIVE_EXTREME_VALUE
+	properties = list(PROPERTY_HYPERDENSIFICATING = 1, PROPERTY_REPAIRING = 2, PROPERTY_HEPATOTOXIC = 2)
 
 /datum/reagent/plasma/catecholamine
 	name = "Catecholamine Plasma"
 	id = PLASMA_CATECHOLAMINE
 	description = "A reddish plasma..."
-	color = "#cf7551"
+	color = "#ad8373"
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-	chemclass = CHEM_CLASS_SPECIAL
+	chemclass = CHEM_CLASS_XENO_BASIC
 	objective_value = OBJECTIVE_EXTREME_VALUE
-	properties = list(PROPERTY_NEUROPATHIC = 2, PROPERTY_MUSCLESTIMULATING = 6)
+	properties = list(PROPERTY_NEUROPATHIC = 2, PROPERTY_MUSCLESTIMULATING = 3, PROPERTY_OCULOTOXIC = 2)
+
+/datum/reagent/plasma/adrenal
+	name = "Adrenal Plasma"
+	id = PLASMA_ADRENALINE
+	description = "A reddish plasma..."
+	color = "#e87044"
+	overdose = REAGENTS_OVERDOSE
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_XENO_SPECIALIZED
+	objective_value = OBJECTIVE_EXTREME_VALUE
+	properties = list(PROPERTY_NEUROPATHIC = 2, PROPERTY_MUSCLESTIMULATING = 6, PROPERTY_CARDIOTOXIC = 3)
+
 
 /datum/reagent/plasma/egg
 	name = "Egg Plasma"
@@ -1103,9 +1092,20 @@
 	color = "#ba8216"
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-	chemclass = CHEM_CLASS_SPECIAL
+	chemclass = CHEM_CLASS_XENO_BASIC
 	objective_value = OBJECTIVE_EXTREME_VALUE
 	properties = list(PROPERTY_NEUROTOXIC = 4, PROPERTY_EXCRETING = 2, PROPERTY_HALLUCINOGENIC = 6)
+
+/datum/reagent/plasma/acidic
+	name = "Acidic Plasma"
+	id = PLASMA_ACIDIC
+	description = "An extremely corrosive plasma."
+	color = "#3cc328"
+	overdose = REAGENTS_OVERDOSE
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_XENO_SPECIALIZED
+	objective_value = OBJECTIVE_EXTREME_VALUE
+	properties = list(PROPERTY_CORROSIVE = 6)
 
 /datum/reagent/plasma/antineurotoxin
 	name = "Anti-Neurotoxin"
@@ -1118,17 +1118,6 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	properties = list(PROPERTY_NEUROSHIELDING = 1)
 
-/datum/reagent/plasma/nutrient
-	name = "Nutrient Plasma"
-	id = PLASMA_NUTRIENT
-	description = "A turquoise plasma..."
-	color = "#2fbe88"
-	overdose = REAGENTS_OVERDOSE
-	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-	chemclass = CHEM_CLASS_SPECIAL
-	objective_value = OBJECTIVE_EXTREME_VALUE
-	properties = list(PROPERTY_FUELING = 1, PROPERTY_VISCOUS = 3, PROPERTY_ADDICTIVE = 4, PROPERTY_NUTRITIOUS = 3)
-
 /datum/reagent/plasma/purple
 	name = "Purple Plasma"
 	id = PLASMA_PURPLE
@@ -1136,26 +1125,20 @@
 	color = "#a65d7f"
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-	chemclass = CHEM_CLASS_SPECIAL
+	chemclass = CHEM_CLASS_XENO_BASIC
 	objective_value = OBJECTIVE_EXTREME_VALUE
 	properties = list(PROPERTY_BIOCIDIC = 2)
 
-/datum/reagent/plasma/purple/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
-	. = ..()
-	if(!processing_tray.seed)
-		return
-	processing_tray.pestlevel += 2*volume
-	processing_tray.nutrilevel += -2*volume
-	if(processing_tray.seed.production <= 1)
-		return
-	processing_tray.production_time_counter += volume
-	if (processing_tray.production_time_counter >= 30)
-		var/turf/c_turf = get_turf(processing_tray)
-		processing_tray.seed = processing_tray.seed.diverge()
-		processing_tray.seed.production += -1
-		if(prob(50))
-			c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name] bristles and sways towards you!"))
-		processing_tray.production_time_counter = 0
+/datum/reagent/plasma/nutrient
+	name = "Nutrient Plasma"
+	id = PLASMA_NUTRIENT
+	description = "A turquoise plasma..."
+	color = "#2fbe88"
+	overdose = REAGENTS_OVERDOSE
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_XENO_SPECIALIZED
+	objective_value = OBJECTIVE_EXTREME_VALUE
+	properties = list(PROPERTY_FUELING = 1, PROPERTY_VISCOUS = 3, PROPERTY_ADDICTIVE = 4, PROPERTY_NUTRITIOUS = 3)
 
 /datum/reagent/plasma/royal
 	name = "Royal Plasma"
@@ -1164,7 +1147,7 @@
 	color = "#ffeb9c"
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-	chemclass = CHEM_CLASS_SPECIAL
+	chemclass = CHEM_CLASS_XENO_ROYAL
 	objective_value = OBJECTIVE_ABSOLUTE_VALUE
 	properties = list(PROPERTY_BIOCIDIC = 4, PROPERTY_ADDICTIVE = 1, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_ENCRYPTED = 1)
 

@@ -135,6 +135,7 @@
 	explo_proof = TRUE
 	invisibility = 101
 	alpha = 0
+	flags_atom = NO_ZFALL
 	/// The atom we are blocking for
 	var/atom/linked_structure
 
@@ -167,15 +168,15 @@
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 /obj/effect/alien/resin/sticky/Crossed(atom/movable/AM)
-	. = ..()
+	..()
 	var/mob/living/carbon/human/H = AM
 	if(istype(H) && !H.ally_of_hivenumber(hivenumber))
 		H.next_move_slowdown = max(H.next_move_slowdown, slow_amt)
-		return .
+		return
 	var/mob/living/carbon/xenomorph/X = AM
 	if(istype(X) && !X.ally_of_hivenumber(hivenumber))
 		X.next_move_slowdown = max(X.next_move_slowdown, slow_amt)
-		return .
+		return
 
 /obj/effect/alien/resin/sticky/proc/forsaken_handling()
 	SIGNAL_HANDLER
@@ -216,7 +217,7 @@
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 /obj/effect/alien/resin/spike/Crossed(atom/movable/AM)
-	. = ..()
+	..()
 	var/mob/living/carbon/H = AM
 	if(!istype(H))
 		return
@@ -260,11 +261,8 @@
 	desc = "A layer of disgusting sleek slime."
 	icon_state = "fast"
 	health = HEALTH_RESIN_XENO_FAST
+	slow_amt = 0
 	var/speed_amt = 0.7
-
-/obj/effect/alien/resin/sticky/fast/Crossed(atom/movable/AM)
-	return
-
 
 //xeno marker :0)
 /obj/effect/alien/resin/marker
@@ -364,16 +362,17 @@
 	var/close_delay = 100
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/upgrading_now = FALSE //flag to track upgrading/thickening process
+	var/turf/closed/wall/resin/above/upper_wall
 
 	flags_obj = OBJ_ORGANIC
 	layer = DOOR_CLOSED_LAYER
-	tiles_with = list(/obj/structure/mineral_door/resin)
+	tiles_with = list(/turf/closed/wall/resin, /obj/structure/mineral_door/resin)
 
 /obj/structure/mineral_door/resin/Initialize(mapload, hive)
 	. = ..()
 	relativewall()
 	relativewall_neighbours()
-	for(var/turf/closed/wall/W in orange(1))
+	for(var/turf/closed/wall/W in orange(1, src))
 		W.update_connections()
 		W.update_icon()
 
@@ -391,6 +390,11 @@
 			AddComponent(/datum/component/resin_cleanup)
 		area.current_resin_count++
 
+	var/turf/above = SSmapping.get_turf_above(loc)
+	if(istype(above, /turf/open_space))
+		above.place_on_top(/turf/closed/wall/resin/above)
+		upper_wall = above
+
 /obj/structure/mineral_door/resin/flamer_fire_act(dam = BURN_LEVEL_TIER_1)
 	health -= dam
 	healthcheck()
@@ -400,6 +404,10 @@
 	..()
 	healthcheck()
 	return 1
+
+/obj/structure/mineral_door/resin/proc/take_damage(dam, mob/mob)
+	health -= dam
+	healthcheck()
 
 /obj/structure/mineral_door/resin/attackby(obj/item/W, mob/living/user)
 	if(W.pry_capable == IS_PRY_CAPABLE_FORCE && user.a_intent != INTENT_HARM)
@@ -424,7 +432,7 @@
 		return ..()
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
-		if (C.ally_of_hivenumber(hivenumber))
+		if (C.ally_of_hivenumber(hivenumber) || HAS_TRAIT(C, TRAIT_XENO_RECOGNIZED))
 			return ..()
 
 /obj/structure/mineral_door/resin/open()
@@ -446,7 +454,7 @@
 	layer = DOOR_OPEN_LAYER
 	addtimer(CALLBACK(src, PROC_REF(close)), close_delay, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
-/obj/structure/mineral_door/resin/proc/close_blocked()
+/obj/structure/mineral_door/resin/proc/close_blocked(already_closing)
 	for(var/turf/turf in locs)
 		for(var/mob/living/living_mob in turf)
 			if(living_mob.stat == DEAD)
@@ -459,7 +467,7 @@
 	if(!open || !loc || isSwitchingStates)
 		return //already closed or changing
 	//Can't close if someone is blocking it
-	if(close_blocked())
+	if(close_blocked(already_closing=FALSE))
 		addtimer(CALLBACK(src, PROC_REF(close)), close_delay, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 		return
 
@@ -478,7 +486,7 @@
 	isSwitchingStates = FALSE
 	layer = DOOR_CLOSED_LAYER
 
-	if(close_blocked())
+	if(close_blocked(already_closing=TRUE))
 		open()
 
 /obj/structure/mineral_door/resin/Dismantle(devastated = 0)
@@ -489,11 +497,21 @@
 	..()
 
 /obj/structure/mineral_door/resin/Destroy()
+	if(!QDESTROYING(upper_wall))
+		upper_wall.dismantle_wall()
+	var/turf/above = SSmapping.get_turf_above(src)
+	while(above && istransparentturf(above))
+		above.update_vis_contents()
+		above = SSmapping.get_turf_above(above)
 	relativewall_neighbours()
 	var/area/area = get_area(src)
 	area?.current_resin_count--
 	var/turf/base_turf = loc
-	spawn(0)
+
+	if(!QDESTROYING(upper_wall)) // Why is this done twice? Hell if i know.
+		upper_wall.dismantle_wall()
+
+	spawn(0) // <--- Don't do that, src probably won't even be valid anymore when it executes
 		var/turf/adjacent_turf
 		for(var/cardinal in GLOB.cardinals)
 			adjacent_turf = get_step(base_turf, cardinal)
@@ -550,12 +568,66 @@
 		set_hive_data(src, XENO_HIVE_FORSAKEN)
 
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
+
 /obj/structure/mineral_door/resin/thick
 	name = "thick resin door"
 	icon_state = "thick resin"
 	health = HEALTH_DOOR_XENO_THICK
 	hardness = 2
 	mineralType = "thick resin"
+
+/obj/structure/mineral_door/resin/bone_resin
+	name = "skeletal resin door"
+	icon_state = "bone resin"
+	health = INFINITY
+	hardness = INFINITY
+	mineralType = "bone resin"
+	tiles_with = list(/turf/closed/wall/mineral/bone_resin, /obj/structure/mineral_door/resin/bone_resin)
+
+/obj/structure/mineral_door/resin/bone_resin/attack_alien(mob/living/carbon/xenomorph/xeno)
+	var/turf/cur_loc = xeno.loc
+	if(!istype(cur_loc))
+		return XENO_NO_DELAY_ACTION
+
+	TryToSwitchState(xeno)
+	return XENO_NONCOMBAT_ACTION
+
+/obj/structure/mineral_door/resin/bone_resin/close_blocked(already_closing)
+	var/list/crushables = list()
+	for(var/turf/turf in locs)
+		for(var/mob/living/living_mob in turf)
+			if(living_mob.stat == DEAD)
+				continue
+			if(!HAS_TRAIT(living_mob, TRAIT_MERGED_WITH_WEEDS))
+				if(!already_closing && ishuman(living_mob))
+					if(!HAS_TRAIT(living_mob, TRAIT_HAULED))
+						crushables += living_mob
+					continue
+				return TRUE
+
+	for(var/mob/living/carbon/human/victim as anything in crushables)
+		victim.apply_damage(15, BRUTE)
+		victim.emote("pain")
+		victim.Stun(1)
+		victim.KnockDown(1)
+		visible_message(SPAN_DANGER("[src] crushes [victim]!"))
+	return FALSE
+
+/obj/structure/mineral_door/resin/bone_resin/attackby(obj/item/W, mob/living/user)
+	return attack_hand(user)
+
+/obj/structure/mineral_door/resin/bone_resin/ex_act(severity)
+	return
+
+/obj/structure/mineral_door/resin/bone_resin/healthcheck()
+	return
+
+/obj/structure/mineral_door/resin/bone_resin/Dismantle(devastated)
+	return
+
+/obj/structure/mineral_door/resin/bone_resin/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_WARNING("This cannot be damaged by anything available.")
 
 /obj/effect/alien/resin/acid_pillar
 	name = "acid pillar"
@@ -1141,7 +1213,7 @@
 
 	for(var/mob/living/carbon/xenomorph/candidate in hive.totalXenos)
 		if(is_candidate_valid(hive, candidate, playtime_restricted = FALSE, skip_playtime = FALSE))
-			INVOKE_ASYNC(src, PROC_REF(cast_vote), candidate, voting_candidates)
+			INVOKE_ASYNC(src, PROC_REF(cast_vote), candidate, shuffle(voting_candidates))
 
 	candidates = voting_candidates
 

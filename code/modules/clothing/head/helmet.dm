@@ -141,7 +141,7 @@
 
 /obj/item/clothing/head/helmet/roman
 	name = "\improper imperial galea helmet"
-	desc = "An extremely old helmet that was used by Roman heavy infantry units called the Legionares."
+	desc = "An extremely old helmet that was used by Roman heavy infantry units called the Legionary."
 	icon_state = "legionary_helm"
 	item_state = "legionary_helm"
 	icon = 'icons/obj/items/clothing/hats/misc_ert_colony.dmi'
@@ -161,7 +161,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 
 /obj/item/clothing/head/helmet/roman/centurion
-	desc = "An extremely old helmet that was used by Roman heavy infantry units called the Legionares. This one has a crest indicating it was used by Centurions."
+	desc = "An extremely old helmet that was used by Roman heavy infantry units called the Legionary. This one has a crest indicating it was used by Centurions."
 	icon_state = "centurion_helm"
 	item_state = "centurion_helm"
 	worn_x_dimension = 64
@@ -289,6 +289,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/glasses/mbcg = NO_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/mgoggles/cmb_riot_shield = NO_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/mgoggles/mp_riot_shield = NO_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/clf_riot_shield = NO_GARB_OVERRIDE,
 
 	// WALKMAN AND CASSETTES
 	/obj/item/device/walkman = NO_GARB_OVERRIDE,
@@ -310,6 +311,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/accessory/helmet/cover/netting/desert = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/helmet/cover/netting/jungle = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/helmet/cover/netting/urban = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/netting/snow = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/spent_buckshot = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/spent_slug = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/spent_flech = NO_GARB_OVERRIDE,
@@ -319,6 +321,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/accessory/helmet/cover/raincover/jungle = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/helmet/cover/raincover/desert = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/helmet/cover/raincover/urban = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/helmet/cover/raincover/snow = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/rabbitsfoot = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/rosary = NO_GARB_OVERRIDE, // This one was already in the game for some reason, but never had an object
 	/obj/item/clothing/accessory/rosary/gold = NO_GARB_OVERRIDE,
@@ -350,6 +353,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/head/headband = NO_GARB_OVERRIDE,
 	/obj/item/clothing/head/headband/tan = NO_GARB_OVERRIDE,
 	/obj/item/clothing/head/headband/red = NO_GARB_OVERRIDE,
+	/obj/item/clothing/head/headband/red/static = PREFIX_HELMET_GARB_OVERRIDE,
 	/obj/item/clothing/head/headband/brown = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/clothing/head/headband/gray = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/clothing/head/headband/intel = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
@@ -551,7 +555,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			var/obj/item/device/helmet_visor/temp_visor_holder = active_visor
 			active_visor = null
 			toggle_visor(potential_user, temp_visor_holder, TRUE)
+	active_visor = null // Incase above checks failed we still need to clear the ref
 	QDEL_NULL_LIST(built_in_visors)
+	QDEL_NULL_LIST(inserted_visors)
 	return ..()
 
 /obj/item/clothing/head/helmet/marine/attack_hand(mob/user)
@@ -574,18 +580,18 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		return
 
 	if(istype(attacking_item, /obj/item/ammo_magazine) && world.time > helmet_bash_cooldown && user)
-		var/obj/item/ammo_magazine/M = attacking_item
+		var/obj/item/ammo_magazine/magazine = attacking_item
 		var/ammo_level = "more than half full."
 		playsound(user, 'sound/items/trayhit1.ogg', 15, FALSE)
-		if(M.current_rounds == (M.max_rounds/2))
+		if(magazine.current_rounds == (magazine.max_rounds/2))
 			ammo_level = "half full."
-		if(M.current_rounds < (M.max_rounds/2))
+		if(magazine.current_rounds < (magazine.max_rounds/2))
 			ammo_level = "less than half full."
-		if(M.current_rounds < (M.max_rounds/6))
+		if(magazine.current_rounds < (magazine.max_rounds/6))
 			ammo_level = "almost empty."
-		if(M.current_rounds == 0)
+		if(magazine.current_rounds == 0)
 			ammo_level = "empty. Uh oh."
-		user.visible_message("[user] bashes [M] against their helmet", "You bash [M] against your helmet. It is [ammo_level]")
+		user.visible_message("[user] bashes [magazine] against their helmet", "You bash [magazine] against your helmet. It is [ammo_level].")
 		helmet_bash_cooldown = world.time + 20 SECONDS
 		return
 
@@ -593,7 +599,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		var/obj/item/device/helmet_visor/new_visor = attacking_item
 
 		if(!new_visor.can_attach_to(src))
-			to_chat(user, SPAN_NOTICE("The [new_visor] does not fit on the [src]."))
+			to_chat(user, SPAN_NOTICE("[new_visor] does not fit on [src]."))
 			return
 
 		if(length(inserted_visors) >= max_inserted_visors)
@@ -608,7 +614,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			return
 
 		inserted_visors += new_visor
-		to_chat(user, SPAN_NOTICE("You connect [new_visor] to the [src]."))
+		to_chat(user, SPAN_NOTICE("You connect [new_visor] to [src]."))
 		new_visor.forceMove(src)
 		if(!(locate(/datum/action/item_action/cycle_helmet_huds) in actions))
 			var/datum/action/item_action/cycle_helmet_huds/new_action = new(src)
@@ -647,6 +653,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	..()
 	return pockets.attackby(attacking_item, user)
 
+/obj/item/clothing/head/helmet/marine/proc/add_helmet_state_overlays()
+	return
+
 /obj/item/clothing/head/helmet/marine/on_pocket_insertion()
 	update_icon()
 
@@ -684,6 +693,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 	if(active_visor)
 		helmet_overlays += overlay_image(active_visor.helmet_overlay_icon, active_visor.helmet_overlay, color, RESET_COLOR)
+
+	add_helmet_state_overlays()
 
 	if(ismob(loc))
 		var/mob/moob = loc
@@ -837,6 +848,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		"nvg_sight_down",
 		"med_sight_down",
 		"sec_sight_down",
+		"sensor_sight_down",
 		"blank_hud_sight_down"
 	)
 
@@ -1050,6 +1062,15 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "sl_helmet"
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "M11 pattern marine"
+
+/obj/item/clothing/head/helmet/marine/leader/mod
+	name = "\improper M11-R pattern helmet"
+	desc = "An M11 helmet fitted with leather banding, a nonfunctional external comms module, and a second HUD optic mount. Its plating is slightly thinner to make room for the extra mount."
+	icon_state = "vsl_helmet"
+	specialty = "M11-R pattern marine"
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	max_inserted_visors = 2
 
 /obj/item/clothing/head/helmet/marine/rto
 	name = "\improper M12 pattern dust helmet"
@@ -1344,7 +1365,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	specialty = "MK30 tactical"
-	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/pilot, new /obj/item/device/helmet_visor/medical/advanced)
 	inserted_visors = list(new /obj/item/device/helmet_visor/po_visor)
 	max_inserted_visors = 1
 
@@ -1361,6 +1382,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
 	)
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/pilot, new /obj/item/device/helmet_visor/medical/advanced)
 
 /obj/item/clothing/head/helmet/marine/ghillie
 	name = "\improper M45 ghillie helmet"
@@ -1374,12 +1396,51 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_marine_helmet = HELMET_GARB_OVERLAY
 	flags_item = MOB_LOCK_ON_EQUIP
 	specialty = "M45 ghillie"
+	var/eye_glowing = FALSE
+	var/eye_glow_icon = 'icons/mob/humans/onmob/clothing/head/overlays.dmi'
+	var/eye_glow_state = "visor_glow"
+	// There's probably a better way to do this, but the repsrite only covers desert and jungle so it only needs to apply on those skin maps.
+	var/eye_glow_allowed = FALSE
+
+/obj/item/clothing/head/helmet/marine/ghillie/add_helmet_state_overlays()
+
+	if(!eye_glowing || !eye_glow_allowed)
+		return
+	var/image/glow = image(eye_glow_icon, icon_state = eye_glow_state)
+	glow.appearance_flags |= RESET_COLOR|RESET_ALPHA
+	helmet_overlays += glow
+	helmet_overlays += emissive_appearance(eye_glow_icon, eye_glow_state)
+
+/obj/item/clothing/head/helmet/marine/ghillie/proc/glowing_visor_activate(mob/user)
+	SIGNAL_HANDLER
+	eye_glowing = TRUE
+	update_icon()
+
+/obj/item/clothing/head/helmet/marine/ghillie/proc/glowing_visor_deactivate(mob/user)
+	SIGNAL_HANDLER
+	eye_glowing = FALSE
+	update_icon()
+
+/obj/item/clothing/head/helmet/marine/ghillie/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	if(slot != WEAR_HEAD)
+		return
+	RegisterSignal(user, COMSIG_HUMAN_AIMED_SHOT_START, PROC_REF(glowing_visor_activate))
+	RegisterSignal(user, COMSIG_HUMAN_AIMED_SHOT_END, PROC_REF(glowing_visor_deactivate))
+
+/obj/item/clothing/head/helmet/marine/ghillie/unequipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	UnregisterSignal(user, list(COMSIG_HUMAN_AIMED_SHOT_START, COMSIG_HUMAN_AIMED_SHOT_END))
+	eye_glowing = FALSE
 
 /obj/item/clothing/head/helmet/marine/ghillie/select_gamemode_skin()
 	. = ..()
 	if(SSmapping.configs[GROUND_MAP].camouflage_type == "urban"	|| "classic")
 		name = "\improper M10-LS pattern sniper helmet"
 		desc = "A lightweight version of M10 helmet with thermal signature dampering used by USCM snipers on urban recon missions."
+
+	if(SSmapping.configs[GROUND_MAP].camouflage_type == "jungle" || "desert")
+		eye_glow_allowed = TRUE
 
 /obj/item/clothing/head/helmet/marine/leader/CO
 	name = "\improper M11C pattern commanding officer helmet"
@@ -1755,6 +1816,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "UPP headgear issued to Kapitans and above. It is made of high-quality materials, and has the officers rank in gold placed upon the front of the cap."
 	icon_state = "upp_peaked"
 
+/obj/item/clothing/head/uppcap/peaked/mss
+	name = "\improper UPP MSS officer peaked cap"
+	desc = "A peaked cap bearing the insignia of the UPP's Ministry of Space Security. You can't shake the feeling that the person wearing it already knows everything about you."
+	icon_state = "upp_peaked_mss"
+
 /obj/item/clothing/head/uppcap/ushanka
 	name = "\improper UL8 UPP ushanka"
 	icon_state = "upp_ushanka"
@@ -1818,7 +1884,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	flags_inventory = NO_FLAGS
-	flags_inv_hide = HIDEEARS|HIDETOPHAIR
+	flags_inv_hide = HIDEEARS
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
@@ -1905,6 +1971,45 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		if("s_skullcapm")
 			desc = "A hood meant to protect the wearer from both the cold and the guise of the enemy in the tundra."
 			flags_inv_hide = HIDEEARS|HIDEALLHAIR
+
+//===========================//CLF - SPECIAL FORCES\\================================\\
+//=====================================================================\\
+
+/obj/item/clothing/head/helmet/marine/veteran/clf
+	name = "\improper repainted M10 pattern helmet"
+	desc = "A M10 helmet that has been repainted with a darker color scheme, and has been modified by its user. This custom model is used by the few professional members of the Colonial Liberation Front."
+	icon_state = "clf_m10"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CLF.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CLF.dmi'
+	)
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_HIGH
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	clothing_traits = list(TRAIT_EAR_PROTECTION)
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+
+/obj/item/clothing/head/helmet/marine/veteran/clf/heavy
+	name = "\improper repainted reinforced M10 pattern helmet"
+	desc = "A repainted M10 helmet that has been seen a complete overhaul of its exterior design to shove on as much protection as possible. This custom model is used by the few professional members of the Colonial Liberation Front."
+	icon_state = "clf_heavy_m10"
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_HIGH
+
+/obj/item/clothing/head/helmet/marine/veteran/clf/riot
+	name = "\improper repainted RC6 helmet"
+	desc = "A Riot Control 6 helmet that has been repainted with a darker color scheme, and has been modified by its user. This custom model is used by the few professional members of the Colonial Liberation Front."
+	icon_state = "clf_riot"
+
+/obj/item/clothing/head/helmet/marine/veteran/clf/canc
+	name = "\improper Type 93 helmet"
+	desc = "Outdated CANC-style helmet."
+	icon_state = "canc"
+	flags_inv_hide = HIDEEARS|HIDETOPHAIR
+
 
 //===========================//HELGHAST - MERCENARY\\================================\\
 //=====================================================================\\

@@ -20,6 +20,9 @@
 #define COMSIG_BLEEDING_PROCESS "bleeding_process"
 	#define COMPONENT_BLEEDING_CANCEL (1<<0)
 
+// From /obj/structure/machinery/computer/research/ui_act()
+#define COMSIG_CHEMICAL_ANNOUNCEMENT "chemical_announcement"
+
 /// From /obj/effect/alien/weeds/Initialize()
 #define COMSIG_WEEDNODE_GROWTH_COMPLETE "weednode_growth_complete"
 /// From /obj/effect/alien/weeds/Initialize()
@@ -29,6 +32,18 @@
 
 /// shuttle mode change
 #define COMSIG_SHUTTLE_SETMODE "shuttle_setmode"
+
+/// from /obj/docking_port/stationary/proc/on_prearrival() : (landing shuttle)
+#define COMSIG_SHUTTLE_PREARRIVAL "shuttle_prearrival"
+
+/// from /obj/docking_port/stationary/proc/on_arrival() : (landing shuttle)
+#define COMSIG_SHUTTLE_ARRIVAL "shuttle_arrival"
+
+/// from /obj/docking_port/stationary/proc/on_dock_ignition() : (departing shuttle)
+#define COMSIG_SHUTTLE_IGNITION "shuttle_ignition"
+
+/// from /obj/docking_port/stationary/proc/on_departure() : (departing shuttle)
+#define COMSIG_SHUTTLE_DEPARTURE "shuttle_departure"
 
 #define COMSIG_GRENADE_PRE_PRIME "grenade_pre_prime"
 	#define COMPONENT_GRENADE_PRIME_CANCEL (1<<0)
@@ -75,3 +90,6 @@
 // from /obj/item/device/binoculars/range/designator/acquire_target()
 #define COMSIG_DESIGNATOR_LASE "comsig_designator_lase"
 #define COMSIG_DESIGNATOR_LASE_OFF "comsig_designator_lase_off"
+
+#define COMSIG_DOOR_OPEN "comsig_door_open"
+#define COMSIG_DOOR_CLOSE "comsig_door_close"

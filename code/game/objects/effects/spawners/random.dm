@@ -3,8 +3,12 @@
 	desc = "This item type is used to spawn random objects at round-start."
 	icon = 'icons/landmarks.dmi'
 	icon_state = "x3"
-	var/spawn_nothing_percentage = 0 // this variable determines the likelyhood that this random object will not spawn anything
+	/// This variable determines the likelyhood that this random object will not spawn anything
+	var/spawn_nothing_percentage = 0
+	/// Whether to wait until roundstart to spawn_item
 	var/spawn_on_roundstart = FALSE
+	/// If non-null, only spawns on this game mode - should only generally be used in conjunction with spawn_on_roundstart
+	var/mode_flags
 
 // creates a new object and deletes itself
 /obj/effect/spawner/random/Initialize()
@@ -15,12 +19,15 @@
 			alpha = 0
 			return INITIALIZE_HINT_ROUNDSTART
 		else
+			if(mode_flags && !MODE_HAS_FLAG(mode_flags))
+				return INITIALIZE_HINT_QDEL
 			spawn_item()
 
 	return INITIALIZE_HINT_QDEL
 
 /obj/effect/spawner/random/LateInitialize()
-	spawn_item()
+	if(!mode_flags || MODE_HAS_FLAG(mode_flags))
+		spawn_item()
 	qdel(src)
 
 // this function should return a specific item to spawn
@@ -330,7 +337,7 @@
 		/obj/item/weapon/gun/pistol/highpower = /obj/item/ammo_magazine/pistol/highpower,
 		/obj/item/weapon/gun/pistol/m1911 = /obj/item/ammo_magazine/pistol/m1911,
 		/obj/item/weapon/gun/revolver/small = /obj/item/ammo_magazine/revolver/small,
-		/obj/item/weapon/gun/pistol/heavy = /obj/item/ammo_magazine/pistol/heavy
+		/obj/item/weapon/gun/pistol/deagle = /obj/item/ammo_magazine/pistol/deagle
 		)
 
 
@@ -397,7 +404,7 @@
 		/obj/item/weapon/gun/pistol/kt42 = /obj/item/ammo_magazine/pistol/kt42,
 		/obj/item/weapon/gun/pistol/m1911 = /obj/item/ammo_magazine/pistol/m1911,
 		/obj/item/weapon/gun/revolver/small = /obj/item/ammo_magazine/revolver/small,
-		/obj/item/weapon/gun/pistol/heavy = /obj/item/ammo_magazine/pistol/heavy,
+		/obj/item/weapon/gun/pistol/deagle = /obj/item/ammo_magazine/pistol/deagle,
 		/obj/item/weapon/gun/pistol/skorpion = /obj/item/ammo_magazine/pistol/skorpion,
 		)
 
@@ -421,11 +428,11 @@
 		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
 		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
 		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
-		/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
-		/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
-		/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
-		/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
-		/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
+		/obj/item/weapon/gun/rifle/m20a = /obj/item/ammo_magazine/rifle/m20a,
+		/obj/item/weapon/gun/rifle/m20a = /obj/item/ammo_magazine/rifle/m20a,
+		/obj/item/weapon/gun/rifle/m20a = /obj/item/ammo_magazine/rifle/m20a,
+		/obj/item/weapon/gun/rifle/m20a = /obj/item/ammo_magazine/rifle/m20a,
+		/obj/item/weapon/gun/rifle/m20a = /obj/item/ammo_magazine/rifle/m20a,
 		/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40,
 		/obj/item/weapon/gun/rifle/mar40 = /obj/item/ammo_magazine/rifle/mar40,
 		/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40,
@@ -519,7 +526,7 @@
 		/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
 		/obj/item/weapon/gun/shotgun/merc = null,
 		/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable = null,
-		/obj/item/weapon/gun/flamer = null,
+		/obj/item/weapon/gun/flamer/m240 = null,
 		/obj/item/weapon/gun/shotgun/combat = null,
 		/obj/item/weapon/gun/pistol/vp78 = /obj/item/ammo_magazine/pistol/vp78,
 		/obj/item/weapon/gun/launcher/grenade/m81/m85a1 = null
@@ -540,9 +547,7 @@
 /obj/effect/spawner/random/gun/cmb
 	name = "cmb gun loot spawner"
 	desc = "spawns a surv cmb gun and some ammo"
-	//icon_state = "loot_cmb"
-	icon_state = "loot_shotgun"
-	//TODO: re-add icons after removing for ASS test
+	icon_state = "loot_cmb"
 	guns = list(
 		/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb = null,
 		/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb = null,
@@ -562,24 +567,20 @@
 
 /obj/effect/spawner/random/gun/cmb/lowchance
 	spawn_nothing_percentage = 80
-	//icon_state = "loot_cmb_20"
-	icon_state = "loot_shotgun_20"
+	icon_state = "loot_cmb_20"
 
 /obj/effect/spawner/random/gun/cmb/midchance
 	spawn_nothing_percentage = 50
-	//icon_state = "loot_cmb_50"
-	icon_state = "loot_shotgun_50"
+	icon_state = "loot_cmb_50"
 
 /obj/effect/spawner/random/gun/cmb/highchance
 	spawn_nothing_percentage = 20
-	//icon_state = "loot_cmb_80"
-	icon_state = "loot_shotgun_80"
+	icon_state = "loot_cmb_80"
 
 /obj/effect/spawner/random/gun/corporate
 	name = "corporate gun loot spawner"
 	desc = "spawns a surv corporate gun and some ammo"
-	//icon_state = "loot_corporate"
-	icon_state = "loot_smg"
+	icon_state = "loot_corporate"
 	guns = list(
 		/obj/item/weapon/gun/rifle/m41a/corporate/no_lock = /obj/item/ammo_magazine/rifle,
 		/obj/item/weapon/gun/rifle/m41a/corporate/no_lock = /obj/item/ammo_magazine/rifle,
@@ -595,26 +596,22 @@
 
 /obj/effect/spawner/random/gun/corporate/lowchance
 	spawn_nothing_percentage = 80
-	//icon_state = "loot_corporate_20"
-	icon_state = "loot_smg_20"
+	icon_state = "loot_corporate_20"
 
 /obj/effect/spawner/random/gun/corporate/midchance
 	spawn_nothing_percentage = 50
-	//icon_state = "loot_corporate_50"
-	icon_state = "loot_smg_50"
+	icon_state = "loot_corporate_50"
 
 /obj/effect/spawner/random/gun/corporate/highchance
 	spawn_nothing_percentage = 20
-	//icon_state = "loot_corporate_80"
-	icon_state = "loot_smg_80"
+	icon_state = "loot_corporate_80"
 
 /obj/effect/spawner/random/gun/civ
 	name = "civilian gun loot spawner"
 	desc = "spawns a surv civ gun and some ammo"
 	mags_min = 1
 	mags_max = 3
-	//icon_state = "loot_civ"
-	icon_state = "loot_rifle"
+	icon_state = "loot_civ"
 	guns = list(
 		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
 		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
@@ -632,18 +629,15 @@
 
 /obj/effect/spawner/random/gun/civ/lowchance
 	spawn_nothing_percentage = 80
-	//icon_state = "loot_civ_20"
-	icon_state = "loot_rifle_20"
+	icon_state = "loot_civ_20"
 
 /obj/effect/spawner/random/gun/civ/midchance
 	spawn_nothing_percentage = 50
-	//icon_state = "loot_civ_50"
-	icon_state = "loot_rifle_50"
+	icon_state = "loot_civ_50"
 
 /obj/effect/spawner/random/gun/civ/highchance
 	spawn_nothing_percentage = 20
-	//icon_state = "loot_civ_80"
-	icon_state = "loot_rifle_80"
+	icon_state = "loot_civ_80"
 
 /*
 // claymore spawners
@@ -676,6 +670,23 @@
 	spawn_nothing_percentage = 20
 	icon_state = "claymore_80"
 
+/obj/effect/spawner/random/claymore/clf
+	name = "Random CLF Claymore"
+
+/obj/effect/spawner/random/claymore/clf/item_to_spawn()
+	return pick(/obj/item/explosive/mine/active/clf)
+
+/obj/effect/spawner/random/claymore/clf/lowchance
+	spawn_nothing_percentage = 80
+	icon_state = "claymore_20"
+
+/obj/effect/spawner/random/claymore/clf/midchance
+	spawn_nothing_percentage = 50
+	icon_state = "claymore_50"
+
+/obj/effect/spawner/random/claymore/clf/highchance
+	spawn_nothing_percentage = 20
+	icon_state = "claymore_80"
 
 /*
 // OB spawners
@@ -695,3 +706,36 @@
 		/obj/structure/ob_ammo/warhead/cluster
 	)
 	return pick(spawnables)
+
+// Materials
+
+/obj/effect/spawner/random/mats
+	name = "random mats"
+	desc = "This is a random material spawner."
+	icon_state = "supply"
+
+/obj/effect/spawner/random/mats/item_to_spawn()
+	var/list/spawnables = list(
+		/obj/item/stack/sheet/plasteel/med_small_stack,
+		/obj/item/stack/sheet/plasteel/medium_stack,
+		/obj/item/stack/sheet/metal/small_stack,
+		/obj/item/stack/sheet/metal/med_small_stack,
+		/obj/item/stack/sheet/metal/medium_stack,
+		/obj/item/stack/sheet/metal/large_stack,
+		/obj/item/stack/sheet/wood/large_stack,
+		/obj/item/stack/sheet/cardboard/small_stack,
+		/obj/item/stack/sheet/cardboard/full_stack,
+		/obj/item/stack/sandbags/small_stack,
+		/obj/item/stack/sandbags/large_stack,
+		/obj/item/stack/sandbags_empty/full
+		)
+	return pick(spawnables)
+
+/obj/effect/spawner/random/mats/lowchance
+	spawn_nothing_percentage = 80
+
+/obj/effect/spawner/random/mats/midchance
+	spawn_nothing_percentage = 50
+
+/obj/effect/spawner/random/mats/highchance
+	spawn_nothing_percentage = 20

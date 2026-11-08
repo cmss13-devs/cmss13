@@ -8,17 +8,31 @@
 	var/allow_construction = TRUE //whether you can build things like barricades on this turf.
 	var/wet = 0 //whether the turf is wet (only used by floors).
 	var/supports_surgery = TRUE
+	/// Whether the turf allows mines when doing antigrief_protection checks
+	var/allow_mines = TRUE
 	var/scorchable = FALSE //if TRUE set to be an icon_state which is the full sprite version of whatever gets scorched --> for border turfs like grass edges and shorelines
 	var/scorchedness = 0 //how scorched is this turf 0 to 3
 	var/icon_state_before_scorching //this is really dumb, blame the mappers...
+	var/depth = WATER_DEPTH_LAND // for water_overlay_effects
+	var/covered = 0	//if it has a catwalk like thing
+	var/water_type = null //for specifically partial water turfs: used in water overlays, as to not overlay sand/dirt/grass etc
 
 /turf/open/Initialize(mapload, ...)
 	. = ..()
-
+	update_water_element()
 	update_icon()
 
+	if(SSwater_overlays.is_water(src))
+		SSwater_overlays.generate_water_overlay(get_all_possible_icon_files(), water_type, depth)
+		return INITIALIZE_HINT_ROUNDSTART	// Defer the neighbor-layer fix until every turf exists
+
+/turf/open/LateInitialize(mapload)
+	. = ..()
+	if(SSwater_overlays.is_water(src))	//double checking here in case some subtype uses LateInitialize()
+		SSwater_overlays.update_turfs_layers_near_water(src)
+
 /turf/open/update_icon()
-	overlays.Cut()
+	update_overlays()
 
 	add_cleanable_overlays()
 
@@ -90,6 +104,9 @@
 				edge_overlay.SwapColor(rgb(255, 0, 255, 255), rgb(0, 0, 0, 0))
 				overlays += edge_overlay
 
+/turf/open/proc/update_overlays()
+	overlays.Cut()
+
 /turf/open/proc/scorch(heat_level)
 	// All scorched icons should be in the dmi that their unscorched bases are
 	// "name_scorched#" where # is the scorchedness level 0 - 1 - 2 - 3
@@ -140,6 +157,49 @@
 			if(3)
 				. += "Well Done."
 
+/turf/open/proc/update_water_element(force)
+	if(force || depth < WATER_DEPTH_LAND && !covered)
+		AddElement(/datum/element/water_turf)
+	else
+		RemoveElement(/datum/element/water_turf)
+
+/turf/open/proc/set_covered(setting)
+	if(!isnull(setting))
+		covered = setting
+	update_water_element()
+	update_overlays()
+
+/turf/open/proc/become_water(set_depth, set_type)
+	if(!covered && depth < WATER_DEPTH_LAND)	//already water
+		return
+	depth = set_depth
+	turf_flags |= TURF_WATERLIKE
+	water_type = set_type
+	layer = UNDER_WATER_TURF_LAYER
+	for(var/obj/structure/catwalk/catwalk in contents)
+		catwalk.layer = UNDER_WATER_CATWALK_LAYER
+		layer = UNDER_WATER_TURF_LAYER
+	for(var/obj/found_object in contents)
+		if(found_object.layer == UNDERFLOOR_OBJ_LAYER)
+			found_object.layer = UNDER_WATER_UNDERFLOOR_LAYER
+	update_icon()	//some turfs overlay themselves with a catwalk, we need to update the layer of that overlay
+	update_water_element(TRUE)
+
+/turf/open/proc/stop_being_water()
+	depth = WATER_DEPTH_LAND
+	turf_flags &= ~TURF_WATERLIKE
+	water_type = null
+	layer = initial(layer)
+	for(var/obj/found_object in contents)
+		if(found_object.layer < TURF_LAYER)	// e.i. UNDER_WATER_...
+			found_object.layer = initial(found_object.layer)
+	update_icon()
+	update_water_element(FALSE)
+
+/// Returns returns a list of all values var/icon is set to over the course of the lifetime of this turf. Mostly for water turfs that change their icon when purified (water overlays needs to know)
+/turf/open/proc/get_all_possible_icon_files()
+	return list(icon)
+
 // Black & invisible to the mouse. used by vehicle interiors
 /turf/open/void
 	name = "void"
@@ -165,12 +225,12 @@
 	icon_state = "grass1"
 	is_weedable = NOT_WEEDABLE
 
-/turf/open/slippery/Enter(atom/movable/mover, atom/forget)
+/turf/open/slippery/Enter(atom/movable/mover, atom/old_loc)
 	. = ..()
 	if(isliving(mover))
 		return FALSE
 
-/turf/open/slippery/Entered(atom/movable/crosser)
+/turf/open/slippery/Entered(atom/movable/crosser, atom/old_loc)
 	. = ..()
 	if(isobserver(crosser) || crosser.anchored)
 		return
@@ -209,6 +269,36 @@
 /turf/open/slippery/hull/dir/northwest
 	dir = NORTHWEST
 
+/turf/open/slippery/roof
+	icon = 'icons/turf/almayer.dmi'
+	icon_state = "outerhull"
+	name = "roof"
+	allow_construction = FALSE
+	is_weedable = NOT_WEEDABLE
+
+/turf/open/slippery/roof/dir
+	icon_state = "outerhull_dir"
+
+/turf/open/slippery/roof/dir/southwest
+	dir = SOUTHWEST
+
+/turf/open/slippery/roof/dir/north
+	dir = NORTH
+
+/turf/open/slippery/roof/dir/east
+	dir = EAST
+
+/turf/open/slippery/roof/dir/northeast
+	dir = NORTHEAST
+
+/turf/open/slippery/roof/dir/southeast
+	dir = SOUTHEAST
+
+/turf/open/slippery/roof/dir/west
+	dir = WEST
+
+/turf/open/slippery/roof/dir/northwest
+	dir = NORTHWEST
 
 // Prison grass
 /turf/open/organic/grass
@@ -406,7 +496,7 @@
 /turf/open/beach/Entered(atom/movable/AM)
 	..()
 
-	if(AM.throwing || !ishuman(AM))
+	if(HAS_TRAIT(AM, TRAIT_LAUNCHED) || !ishuman(AM))
 		return
 
 	var/mob/living/carbon/human/H = AM
@@ -429,25 +519,15 @@
 	icon_state = "water"
 	can_bloody = FALSE
 
-/turf/open/beach/water/Initialize(mapload, ...)
-	. = ..()
-	overlays += image("icon"='icons/turf/floors/beach.dmi',"icon_state"="water2","layer"=MOB_LAYER+0.1)
-
 /turf/open/beach/water2
 	name = "Water"
 	icon_state = "water"
 	can_bloody = FALSE
 
-/turf/open/beach/water2/Initialize(mapload, ...)
-	. = ..()
-	overlays += image("icon"='icons/turf/floors/beach.dmi',"icon_state"="water5","layer"=MOB_LAYER+0.1)
-
-
 
 
 
 //LV ground
-
 
 /turf/open/gm //Basic groundmap turf parent
 	name = "ground dirt"
@@ -538,22 +618,31 @@
 
 /turf/open/gm/grass/grassbeach
 	icon_state = "grassbeach"
+	turf_flags = TURF_WATER
+	water_type = /turf/open/gm/river
+	depth = WATER_DEPTH_COAST_INTERMEDIATE
+	layer = UNDER_WATER_TURF_LAYER
 
 /turf/open/gm/grass/grassbeach/north
+	depth = WATER_DEPTH_COAST_INTERMEDIATE
 
 /turf/open/gm/grass/grassbeach/south
 	dir = 1
+	depth = WATER_DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/grass/grassbeach/west
 	dir = 4
+	depth = WATER_DEPTH_COAST_SHALLOW
 
 /turf/open/gm/grass/grassbeach/east
 	dir = 8
+	depth = WATER_DEPTH_COAST_SHALLOW
 
 /turf/open/gm/grass/gbcorner
 	icon_state = "gbcorner"
 
 /turf/open/gm/grass/gbcorner/north_west
+	depth = WATER_DEPTH_COAST_SHALLOW
 
 /turf/open/gm/grass/gbcorner/south_east
 	dir = 1
@@ -563,6 +652,7 @@
 
 /turf/open/gm/grass/gbcorner/north_east
 	dir = 8
+	depth = WATER_DEPTH_COAST_SHALLOW
 
 /turf/open/gm/grass/Initialize(mapload, ...)
 	. = ..()
@@ -686,44 +776,47 @@
 	icon_state = "seashallow"
 	can_bloody = FALSE
 	fishing_allowed = TRUE
-	var/icon_overlay = "riverwater"
-	var/covered = 0
 	var/covered_name = "grate"
 	var/cover_icon = 'icons/turf/floors/filtration.dmi'
 	var/cover_icon_state = "grate"
 	var/default_name = "river"
-	var/no_overlay = FALSE
 	var/base_river_slowdown = 1.75
 	baseturfs = /turf/open/gm/river
 	supports_surgery = FALSE
 	minimap_color = MINIMAP_WATER
 	is_weedable = NOT_WEEDABLE
-
-/turf/open/gm/river/Initialize(mapload, ...)
-	. = ..()
-	update_icon()
+	depth = WATER_DEPTH_SHALLOW //used for the offset of mobs that enter it (see water_overlay_effect.dm)
+	layer = UNDER_WATER_TURF_LAYER
+	turf_flags = TURF_WATER
+	water_type = /turf/open/gm/river
 
 /turf/open/gm/river/update_icon()
 	..()
 	update_overlays()
 
-/turf/open/gm/river/proc/update_overlays()
-	overlays.Cut()
-	if(no_overlay)
-		return
+/turf/open/gm/river/update_overlays()
+	. = ..()
 	if(covered)
 		name = covered_name
-		overlays += image("icon"=src.cover_icon,"icon_state"=cover_icon_state,"layer"=CATWALK_LAYER,"dir" = dir)
-	else
-		name = default_name
-		overlays += image("icon"=src.icon,"icon_state"=icon_overlay,"layer"=ABOVE_MOB_LAYER,"dir" = dir)
+		var/turf/check_turf = get_step(src, NORTH)
+		var/obj/effect/blocker/water/water_blocker = locate(/obj/effect/blocker/water) in contents
+		var/layer_to_use = CATWALK_LAYER
+		if(layer == UNDER_WATER_TURF_LAYER)
+			if(SSwater_overlays.is_water(check_turf))
+				if(water_blocker && water_blocker.dispersing)
+					layer_to_use = UNDER_WATER_PLATFORMS_LAYER
+				else
+					layer_to_use = TURF_LAYER
+			else
+				layer_to_use = UNDER_WATER_PLATFORMS_LAYER
+		overlays += image("icon"=src.cover_icon,"icon_state"=cover_icon_state,"layer"= layer_to_use,"dir" = dir)
 
 /turf/open/gm/river/Entered(atom/movable/AM)
 	..()
 
 	SEND_SIGNAL(AM, COMSIG_MOVABLE_ENTERED_RIVER, src, covered)
 
-	if(!iscarbon(AM) || AM.throwing)
+	if(!iscarbon(AM) || HAS_TRAIT(AM, TRAIT_LAUNCHED))
 		return
 
 	if(!covered)
@@ -753,7 +846,6 @@
 		if(H.bloody_footsteps)
 			SEND_SIGNAL(H, COMSIG_HUMAN_CLEAR_BLOODY_FEET)
 
-
 /turf/open/gm/river/proc/cleanup(mob/living/carbon/human/M)
 	if(!M || !istype(M))
 		return
@@ -775,14 +867,8 @@
 			M.update_inv_shoes(0)
 	M.clean_blood()
 
-
 /turf/open/gm/river/stop_crusher_charge()
 	return !covered
-
-
-/turf/open/gm/river/poison/Initialize(mapload, ...)
-	. = ..()
-	overlays += image("icon"='icons/effects/effects.dmi',"icon_state"="greenglow","layer"=MOB_LAYER+0.1)
 
 /turf/open/gm/river/poison/Entered(mob/living/M)
 	..()
@@ -807,7 +893,14 @@
 	name = "pool"
 
 /turf/open/gm/river/pool/no_overlay
-	no_overlay = TRUE
+	depth = WATER_DEPTH_COAST_DEPTHLESS
+
+/turf/open/gm/river/no_overlay
+	depth = WATER_DEPTH_COAST_DEPTHLESS
+
+/turf/open/gm/river/no_overlay/sewage
+	name = "sewage"
+	depth = WATER_DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/river/shallow_ocean_shallow_ocean
 	name = "shallow ocean"
@@ -817,36 +910,59 @@
 /turf/open/gm/river/ocean
 	color = "#dae3e2"
 	base_river_slowdown = 4 // VERY. SLOW.
+	icon_state = "seaintermediate"
+	depth = WATER_DEPTH_INTERMEDIATE
+	water_type = /turf/open/gm/river/ocean
 
 /turf/open/gm/river/ocean/deep_ocean
 	name = "deep ocean"
 	default_name = "deep ocean"
 	allow_construction = FALSE
+	icon_state = "seadeep"
+	depth = WATER_DEPTH_DEEP
+	water_type = /turf/open/gm/river/ocean/deep_ocean
 
-/turf/open/gm/river/ocean/Entered(atom/movable/AM)
+/turf/open/gm/river/ocean/Entered(atom/movable/entered_movable, atom/old_loc)
 	. = ..()
-	if(prob(20)) // fuck you
-		if(!ismob(AM))
+	if(old_loc != src && prob(20)) // fuck you
+		if(!isliving(entered_movable))
 			return
-		var/mob/unlucky_mob = AM
-		var/turf/target_turf = get_random_turf_in_range(AM, 3, 0)
-		var/datum/launch_metadata/LM = new()
-		LM.target = target_turf
-		LM.range = get_dist(AM.loc, target_turf)
-		LM.speed = SPEED_FAST
-		LM.thrower = unlucky_mob
-		LM.spin = TRUE
-		LM.pass_flags = NO_FLAGS
-		to_chat(unlucky_mob, SPAN_WARNING("The ocean currents sweep you off your feet and throw you away!"))
+		var/mob/unlucky_mob = entered_movable
+		var/turf/target_turf = get_random_turf_in_range(entered_movable, 3, 0)
+
+		if(isliving(unlucky_mob))
+			var/mob/living/unlucky_living = entered_movable
+			unlucky_living.KnockDown(1.5) //swept off your feet!
+		if(!SSwater_overlays.is_full_water(target_turf))			//below we put the mob on the shore, if needed
+			for(var/i in 1 to 3)				//currents dont operate outside water
+				var/found_water = FALSE
+				var/list/check_dirs = list(get_dir(target_turf, src))
+				check_dirs += turn(check_dirs[1], 45)
+				check_dirs += turn(check_dirs[1], -45)
+				for(var/check_dir in check_dirs)
+					var/turf/check_T = get_step(target_turf, check_dir)
+					if(SSwater_overlays.is_full_water(check_T))
+						found_water = TRUE
+						break
+				if(found_water)
+					break
+				target_turf = get_step(target_turf, check_dirs[1])
+		var/datum/launch_metadata/launch = new()
+		launch.target = target_turf
+		launch.range = get_dist(entered_movable.loc, target_turf)
+		launch.speed = MIN_SPEED // its water, should look like being moved by a current
+		launch.thrower = unlucky_mob
+		launch.spin = TRUE
+		launch.pass_flags = NO_FLAGS
+		to_chat(unlucky_mob, SPAN_WARNING("The ocean currents sweep you off your feet and carry you away!"))
 		// Entered can occur during Initialize so we need to not sleep
-		INVOKE_ASYNC(unlucky_mob, TYPE_PROC_REF(/atom/movable, launch_towards), LM)
+		INVOKE_ASYNC(unlucky_mob, TYPE_PROC_REF(/atom/movable, launch_towards), launch)
 		return
 
-	if(world.time % 5)
-		if(ismob(AM))
-			var/mob/rivermob = AM
-			if(!HAS_TRAIT(rivermob, TRAIT_HAULED))
-				to_chat(rivermob, SPAN_WARNING("Moving through the incredibly deep ocean slows you down a lot!"))
+	if((world.time % 5) && isliving(entered_movable))
+		var/mob/living/rivermob = entered_movable
+		if(!HAS_TRAIT(rivermob, TRAIT_HAULED))
+			to_chat(rivermob, SPAN_WARNING("Moving through the incredibly deep ocean slows you down a lot!"))
 
 /turf/open/gm/coast
 	name = "coastline"
@@ -854,11 +970,17 @@
 	baseturfs = /turf/open/gm/coast
 	supports_surgery = FALSE
 	is_weedable = NOT_WEEDABLE
+	depth = WATER_DEPTH_COAST_SHALLOW //used for the offset of mobs that enter it (see water_overlay_effect.dm)
+	layer = UNDER_WATER_TURF_LAYER
+	turf_flags = TURF_WATER
+	water_type = /turf/open/gm/river
 
 /turf/open/gm/coast/north
+	depth = WATER_DEPTH_COAST_INTERMEDIATE
 
 /turf/open/gm/coast/south
 	dir = 1
+	depth = WATER_DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/coast/west
 	dir = 4
@@ -873,18 +995,23 @@
 	icon_state = "beachcorner"
 
 /turf/open/gm/coast/beachcorner/north_west
+	depth = WATER_DEPTH_COAST_SHALLOW
 
 /turf/open/gm/coast/beachcorner/north_east
 	dir = 1
+	depth = WATER_DEPTH_COAST_SHALLOW
 
 /turf/open/gm/coast/beachcorner/south_east
 	dir = 4
+	depth = WATER_DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/coast/beachcorner/south_west
 	dir = 8
+	depth = WATER_DEPTH_COAST_DEPTHLESS
 
 /turf/open/gm/coast/beachcorner2
 	icon_state = "beachcorner2"
+	depth = WATER_DEPTH_COAST_INTERMEDIATE
 
 /turf/open/gm/coast/beachcorner2/east
 	dir = EAST
@@ -893,6 +1020,7 @@
 
 /turf/open/gm/coast/beachcorner2/north_east
 	dir = 1
+	depth = WATER_DEPTH_COAST_INTERMEDIATE
 
 /turf/open/gm/coast/beachcorner2/south_west
 	dir = 4
@@ -902,26 +1030,14 @@
 
 /turf/open/gm/riverdeep
 	name = "river"
-	icon_state = "seadeep"
+	icon_state = "bluesea"
 	can_bloody = FALSE
 	baseturfs = /turf/open/gm/riverdeep
 	supports_surgery = FALSE
 	minimap_color = MINIMAP_WATER
 	is_groundmap_turf = FALSE // Not real ground
 	fishing_allowed = TRUE
-
-
-/turf/open/gm/riverdeep/Initialize(mapload, ...)
-	. = ..()
-	overlays += image("icon"='icons/turf/ground_map.dmi',"icon_state"="water","layer"=MOB_LAYER+0.1)
-
-/turf/open/gm/river/no_overlay
-	no_overlay = TRUE
-	supports_surgery = FALSE
-
-/turf/open/gm/river/no_overlay/sewage
-	name = "sewage"
-
+	depth = WATER_DEPTH_INTERMEDIATE //used for the offset of mobs that enter it (see water_overlay_effect.dm)
 
 //ELEVATOR SHAFT-----------------------------------//
 /turf/open/gm/empty
@@ -938,9 +1054,11 @@
 	name = "ocean"
 	desc = "It's a long way down to the ocean from here."
 	icon = 'icons/turf/ground_map.dmi'
-	icon_state = "seadeep"
+	icon_state = "bluesea"
 	can_bloody = FALSE
 	supports_surgery = FALSE
+	depth = WATER_DEPTH_INTERMEDIATE //used for water_overlay_effect
+	layer = UNDER_WATER_TURF_LAYER
 
 //Ice Colony grounds
 
@@ -1015,6 +1133,49 @@
 
 /turf/open/asphalt/cement/cement9
 	icon_state = "cement9"
+
+/turf/open/asphalt/cementalt
+	name = "concrete"
+	icon_state = "cementalt5"
+
+/turf/open/asphalt/cementalt/cementalt1
+	icon_state = "cementalt1"
+
+/turf/open/asphalt/cementalt/cementalt1/north
+	dir = NORTH
+
+/turf/open/asphalt/cementalt/cementalt12
+	icon_state = "cementalt12"
+
+/turf/open/asphalt/cementalt/cementalt13
+	icon_state = "cementalt13"
+
+/turf/open/asphalt/cementalt/cementalt14
+	icon_state = "cementalt14"
+
+/turf/open/asphalt/cementalt/cementalt15
+	icon_state = "cementalt15"
+
+/turf/open/asphalt/cementalt/cementalt18
+	icon_state = "cementalt18"
+
+/turf/open/asphalt/cementalt/cementalt16
+	icon_state = "cementalt16"
+
+/turf/open/asphalt/cementalt/cementalt2
+	icon_state = "cementalt2"
+
+/turf/open/asphalt/cementalt/cementalt3
+	icon_state = "cementalt3"
+
+/turf/open/asphalt/cementalt/cementalt4
+	icon_state = "cementalt4"
+
+/turf/open/asphalt/cementalt/cementalt7
+	icon_state = "cementalt7"
+
+/turf/open/asphalt/cementalt/cementalt9
+	icon_state = "cementalt9"
 
 /turf/open/asphalt/cement_sunbleached
 	name = "concrete"
@@ -1244,10 +1405,12 @@
 	icon = 'icons/turf/shuttle.dmi'
 	allow_construction = FALSE
 	supports_surgery = FALSE
+	allow_mines = FALSE
 
 /turf/open/shuttle/can_surgery
 	allow_construction = TRUE
 	supports_surgery = TRUE
+	allow_mines = TRUE
 
 /turf/open/shuttle/can_surgery/blue
 	name = "floor"
@@ -1279,6 +1442,7 @@
 /turf/open/shuttle/dropship
 	name = "floor"
 	icon_state = "rasputin1"
+	var/linked_door
 
 /turf/open/shuttle/dropship/light_grey_single_wide_left_to_right
 	icon_state = "floor8"

@@ -511,6 +511,8 @@
 	pixel_y = -7
 	next_haul_resist = 0
 
+	SEND_SIGNAL(src, COMSIG_HUMAN_HAULED, xeno)
+
 /mob/living/carbon/human/proc/release_haul_death()
 	SIGNAL_HANDLER
 	handle_unhaul()

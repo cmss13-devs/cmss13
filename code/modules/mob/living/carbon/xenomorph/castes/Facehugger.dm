@@ -60,6 +60,8 @@
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 
+	water_config = /datum/water_overlay_config/xeno/small/facehugger
+
 	icon_xeno = 'icons/mob/xenos/castes/tier_0/facehugger.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_0/xenonid_crab.dmi'
 
@@ -74,6 +76,14 @@
 	/// Whether a hug was performed successfully
 	var/hug_successful = FALSE
 	var/last_roar_time = 0
+
+/mob/living/carbon/xenomorph/facehugger/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	GLOB.xeno_ghost_role_mobs += src
+	return ..()
+
+/mob/living/carbon/xenomorph/facehugger/Destroy()
+	GLOB.xeno_ghost_role_mobs -= src
+	return ..()
 
 /mob/living/carbon/xenomorph/facehugger/Login()
 	var/last_ckey_inhabited = persistent_ckey
@@ -152,6 +162,9 @@
 		if(!can_hug(human, hivenumber))
 			to_chat(src, SPAN_WARNING("We can't infect \the [human]..."))
 			return
+		if(on_fire)
+			to_chat(src, SPAN_WARNING("You're on fire! Extinguish yourself before trying to infect \the [human]."))
+			return
 		var/hug_dir = get_dir(src, human)
 		for(var/atom/movable/atom in get_turf(src))
 			if(atom != src && atom.density && atom.BlockedExitDirs(src, hug_dir))
@@ -163,6 +176,8 @@
 				return
 		visible_message(SPAN_WARNING("\The [src] starts climbing onto \the [human]'s face..."), SPAN_XENONOTICE("We start climbing onto \the [human]'s face..."))
 		if(!do_after(src, FACEHUGGER_CLIMB_DURATION, INTERRUPT_ALL, BUSY_ICON_HOSTILE, human, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+			return
+		if(QDELETED(src) || stat != CONSCIOUS || on_fire)
 			return
 		if((human.body_position != LYING_DOWN) && (!HAS_TRAIT(human, TRAIT_NESTED)))
 			to_chat(src, SPAN_WARNING("We can't reach \the [human], they need to be lying down or nested."))

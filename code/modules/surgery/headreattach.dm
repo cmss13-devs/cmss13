@@ -9,7 +9,7 @@
 	possible_locs = list("head")
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
 	pain_reduction_required = NONE
-	required_surgery_skill = SKILL_SURGERY_TRAINED
+	required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	steps = list(
 		/datum/surgery_step/peel_skin,
 		/datum/surgery_step/reattach_head,

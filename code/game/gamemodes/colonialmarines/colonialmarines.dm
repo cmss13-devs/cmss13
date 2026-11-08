@@ -157,7 +157,7 @@
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), DISTRESS_LZ_HAZARD_START)
-	addtimer(CALLBACK(src, PROC_REF(ares_command_check)), 2 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(ares_command_check)), 5 MINUTES)
 	addtimer(CALLBACK(src, PROC_REF(ares_autodoc_check)), 15 MINUTES) // 5 MINUTE LOBBY + 15 MINUTE DROPSHIP REFUEL
 	addtimer(CALLBACK(SSentity_manager, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, select), /datum/entity/survivor_survival), 7 MINUTES)
 	GLOB.chemical_data.reroll_chemicals()
@@ -406,24 +406,30 @@
 	if(commander) // pre-provided commander overrides the automatic selection.
 		person_in_charge = commander
 	else
-		var/list/all_leaders = deep_copy_list(GLOB.marine_leaders + GLOB.marine_officers)
+		//Get all mobs, make it into a list of all active mobs by jobs. Filter by job order.
+		var/list/living_players = GLOB.living_player_list.Copy()
+		var/list/mobs_by_jobs = list()
+		for(var/mob/living/person as anything in living_players)
+			if(person.job)
+				if(!islist(mobs_by_jobs[person.job]))
+					mobs_by_jobs[person.job] = list()
+				mobs_by_jobs[person.job] += person
+
 		for(var/job_by_chain in CHAIN_OF_COMMAND_ROLES)
-			//Checks for non-unique roles
-			if(job_by_chain in list(JOB_SO, JOB_INTEL, JOB_DOCTOR))
+			if(mobs_by_jobs[job_by_chain])
 				var/list/mob/living/candidates = list()
-				for(var/mob/living/candidate as anything in all_leaders[job_by_chain])
-					if(!is_mob_cryoing(candidate))
+				for(var/mob/living/candidate as anything in mobs_by_jobs[job_by_chain])
+					//Check for command job bans
+					var/command_jobban = FALSE
+					for(var/job_ban_job as anything in JOB_COMMAND_ROLES_LIST)
+						if(jobban_isbanned(candidate, job_ban_job))
+							command_jobban = TRUE
+							break
+					if(!command_jobban && !is_mob_cryoing(candidate))
 						candidates += candidate
 				if(length(candidates))
 					person_in_charge = pick(candidates)
 					break
-			else
-				//Checks for unique roles
-				var/datum/job/job_datum = GLOB.RoleAuthority.roles_for_mode[job_by_chain]
-				person_in_charge = job_datum?.get_active_player_on_job()
-				if(person_in_charge)
-					if(!is_mob_cryoing(person_in_charge))
-						break
 
 	if(!person_in_charge)
 		return log_admin("No valid commander found for automatic promotion.")
@@ -438,6 +444,16 @@
 		if(card.access ~! new_access)
 			card.access = new_access
 			announce_addendum += "\nSenior Command access added to ID."
+
+	//Add Overwatch skill (needed for Overwatch Consoles)
+	if(person_in_charge.skills.get_skill_level(SKILL_OVERWATCH) < SKILL_OVERWATCH_TRAINED)
+		person_in_charge.skills.set_skill(SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED)
+		announce_addendum += "\nCryo-sleep overwatch training has been verified."	//maybe change it to just additional training has been certified?
+
+	//Add Intel skill (needed for decrypt comms garble)
+	if(person_in_charge.skills.get_skill_level(SKILL_INTEL) < SKILL_INTEL_TRAINED)
+		person_in_charge.skills.set_skill(SKILL_INTEL, SKILL_INTEL_TRAINED)
+		announce_addendum += "\nCryo-sleep intel training has been verified."
 
 	announce_addendum += "\nA Command headset is available in the Command Tablet cabinet."
 
@@ -504,6 +520,9 @@
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "My children. I sense the hostile, putrid, hive has fled this area, but some of the hosts that entrapped you remain alive within this metal complex, and I sense even more are on their way. Defeat these hosts to showcase your supremacy!", "everything", QUEEN_MOTHER_ANNOUNCE), 165 SECONDS)
 		if(MAP_LV_624)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Attention: Initial scan over the Area of Operations indicates a localized atmospheric anomaly: a dense fog forming over in and around the river bed.\nInitial assessment algorithm predicts dissipation in T-20 minutes.", "ARES V3.2", 'sound/AI/commandreport.ogg'), 5 MINUTES) // 5 minute lobby + 5 minutes into the game means the fog drops 20 minutes from now.
+		if(MAP_LV1021_FALCONS_FURY)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Falcons, this is Snake Eaters, FORECON, we have completed our recon of the site. We have identified two viable LZs.\n\nLZ1 is north-west of the camp. The LZ is fairly open with a river to the east which you'll have to cross. We've eliminated all CLF active near this LZ for you.\n\nLZ2 is located to the south. It is on the same side of the river as the camp and is better protected. However, it is exposed to infiltration from the west and east.\n\nCaution, we've also noticed traps in the undergrowth.\n\nGood luck Falling Falcons. Pay them back for Tychon.", "Snake Eaters Platoon Commander", 'sound/AI/commandreport.ogg'), 3 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(clf_announcement), "Fighters, this is the camp coordinator, arm up! Alien bugs are pouring out of the jungle and just killed the team I sent to the east and I’ve lost contact with our fighters west of the river. Drop whatever you are doing and secure whatever weapons and supplies you can find. We are under siege! Prepare to defend the camp at all costs!", "CLF Camp Coordinator", 'sound/AI/commandreport.ogg'), 5 SECONDS)
 
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
 /datum/game_mode/colonialmarines/process()

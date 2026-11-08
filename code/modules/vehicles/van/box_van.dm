@@ -265,29 +265,6 @@
 	return ..()
 
 
-/obj/vehicle/multitile/box_van/proc/is_side_collision(atom/collider)
-	var/turf/hit_turf = get_turf(collider)
-	if(!hit_turf || hit_turf.z != z)
-		return FALSE
-
-	var/width_tiles = bound_width / world.icon_size	//world.icon_size is 32, no magic numbers yada yada :0)
-	var/height_tiles = bound_height / world.icon_size
-	var/min_x = x + bound_x / world.icon_size
-	var/max_x = min_x + width_tiles - 1
-	var/min_y = y + bound_y / world.icon_size
-	var/max_y = min_y + height_tiles - 1
-
-	if(dir == NORTH || dir == SOUTH)
-		if(hit_turf.x >= min_x && hit_turf.x <= max_x)
-			return FALSE
-	else // EAST or WEST
-		if(hit_turf.y >= min_y && hit_turf.y <= max_y)
-			return FALSE
-
-	return TRUE
-
-
-
 /*
 ** PRESETS SPAWNERS
 */

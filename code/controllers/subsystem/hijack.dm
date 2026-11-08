@@ -75,7 +75,7 @@ SUBSYSTEM_DEF(hijack)
 	var/sd_max_time = 15 MINUTES
 
 	/// How long the manual self destruct will take on the low end
-	var/sd_min_time = 3 MINUTES
+	var/sd_min_time = 5 MINUTES
 
 	/// How much time left until SD detonates
 	var/sd_time_remaining = 0
@@ -306,14 +306,12 @@ SUBSYSTEM_DEF(hijack)
 			if(MC_TICK_CHECK)
 				return
 
-		var/base_progress_change = current_run_progress_additive * current_run_progress_multiplicative
-		last_run_progress_change = base_progress_change * (in_ftl ? 1 : 0.5)
+		last_run_progress_change = current_run_progress_additive * current_run_progress_multiplicative
 		current_progress += last_run_progress_change
 
 		if(last_run_progress_change)
 			// There was progress, update time left
-			var/fueling_remaining = in_ftl ? 0 : max(ftl_required_progress - current_progress, 0)
-			estimated_time_left = ((required_progress - current_progress + fueling_remaining) / base_progress_change) * wait
+			estimated_time_left = ((required_progress - current_progress) / last_run_progress_change) * wait
 		else
 			// Failure!
 			estimated_time_left = INFINITY

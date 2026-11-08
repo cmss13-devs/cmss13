@@ -35,7 +35,7 @@
 	attack_verb = list("stabbed", "slashed", "attacked")
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 0
-	var/icon/broken_outline = icon('icons/obj/items/food/drinks.dmi', "broken")
+	var/static/icon/broken_outline = icon('icons/obj/items/food/drinks.dmi', "broken")
 
 /obj/item/weapon/broken_bottle/bullet_act(obj/projectile/P)
 	. = ..()
@@ -62,7 +62,7 @@
 	attack_verb = list("stabbed", "slashed", "attacked")
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 0
-	var/icon/broken_outline = icon('icons/obj/items/food/drinks.dmi', "broken")
+	var/static/icon/broken_outline = icon('icons/obj/items/food/drinks.dmi', "broken")
 
 /obj/item/weapon/broken_glass/bullet_act(obj/projectile/P)
 	. = ..()

@@ -155,3 +155,12 @@
   - imageadd: Added codex lineart for every Dropship Ammo.
   - refactor: Refactored ammo vars in dropship_ammo.dm, making it easier to tweak
       numbers.
+2026-11-08:
+  Ghostsheet:
+  - rscadd: Flamers can now take under-barrel rail light.
+  Mary-Marilyn:
+  - balance: MK1 AP mags now have the same scaling as MK1 kits
+  kleinerstation13:
+  - rscadd: Added an USCM colony headset with marine HUD icons
+  - balance: The USCM recruiter survivor varaint is now part of the Marine faction
+      and has extra fluff items in their loadout

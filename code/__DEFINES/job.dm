@@ -170,6 +170,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_STOWAWAY "Stowaway"
 
 #define JOB_MARINE "USCM Marine" //generic marine
+#define JOB_RECRUITER "USCM Recruiter"
 #define JOB_COLONEL "USCM Colonel"
 #define JOB_USCM_OBSV "USCM Observer"
 #define JOB_GENERAL "USCM General"

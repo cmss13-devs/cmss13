@@ -95,6 +95,48 @@
 /obj/effect/landmark/lv624/door_blocker/xeno
 	time_to_dispel = 180 SECONDS
 
+/obj/effect/landmark/lv624/train_door
+	name = "train blocker"
+	icon_state = "o_red"
+
+	var/time_to_dispel = 30 SECONDS
+
+/obj/effect/landmark/lv624/train_door/Initialize(mapload, ...)
+	. = ..()
+
+	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/effect/landmark/lv624/train_door/LateInitialize()
+	if(!(SSticker.mode.flags_round_type & MODE_FOG_ACTIVATED) || !SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_FOG])
+		return
+
+	new /obj/structure/blocker/door/alt(loc, time_to_dispel)
+	qdel(src)
+
+/obj/effect/landmark/lv624/train_door/xeno
+	time_to_dispel = 2.5 MINUTES
+
+/obj/effect/landmark/lv624/train_door/entrance
+	time_to_dispel = 5 MINUTES
+
+/obj/effect/landmark/lv624/train_door_alt
+	name = "train blocker"
+	icon_state = "o_red"
+
+	var/time_to_dispel = 5 MINUTES
+
+/obj/effect/landmark/lv624/train_door_alt/Initialize(mapload, ...)
+	. = ..()
+
+	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/effect/landmark/lv624/train_door_alt/LateInitialize()
+	if(!(SSticker.mode.flags_round_type & MODE_FOG_ACTIVATED) || !SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_FOG])
+		return
+
+	new /obj/structure/blocker/door/alt/east(loc, time_to_dispel)
+	qdel(src)
+
 /obj/effect/landmark/lv624/xeno_tunnel
 	name = "xeno tunnel"
 	icon_state = "xeno_tunnel"
@@ -523,6 +565,15 @@
 		if(MAP_LV1021_FALCONS_FURY)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Falcons, this is Snake Eaters, FORECON, we have completed our recon of the site. We have identified two viable LZs.\n\nLZ1 is north-west of the camp. The LZ is fairly open with a river to the east which you'll have to cross. We've eliminated all CLF active near this LZ for you.\n\nLZ2 is located to the south. It is on the same side of the river as the camp and is better protected. However, it is exposed to infiltration from the west and east.\n\nCaution, we've also noticed traps in the undergrowth.\n\nGood luck Falling Falcons. Pay them back for Tychon.", "Snake Eaters Platoon Commander", 'sound/AI/commandreport.ogg'), 3 MINUTES)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(clf_announcement), "Fighters, this is the camp coordinator, arm up! Alien bugs are pouring out of the jungle and just killed the team I sent to the east and I’ve lost contact with our fighters west of the river. Drop whatever you are doing and secure whatever weapons and supplies you can find. We are under siege! Prepare to defend the camp at all costs!", "CLF Camp Coordinator", 'sound/AI/commandreport.ogg'), 5 SECONDS)
+		if(MAP_THE_LAST_BUNKER)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Attention: Incoming intelligence report:\n-This is Fourth Battalion, we've concluded our search and recovery of Bunker C01. All clear here. VIP's are clean. Will depart within the day. Out.\n-Seventh Battalion, 'Sweeping Seventh' here. Bunker D61 is empty, no one tried to come here. We're departing to the rendezvous point, ETA, 3 days. Out.\n-This is 'Lucky First', First Battalion, We're engaged in Riot Control, attempted mutiny within Bunker F12 due to food shortage. No casualties thus far, VIPs are safe. No artefacts on them. We'll be here for a few days. Out.", "ARES V3.2", 'sound/AI/commandreport.ogg'), 5 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "Attention: Arriving at Bunker K12. Please stand clear of the door.", "Train Automated Announcement", 'sound/AI/commandreport.ogg'), 1 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "Hey, HEY! You guys, on the train. You're in some serious shit, you gotta get outta here, now! That train's already locked down and you've only got two minutes till the xenomorphs breach the command bunker, you heard me, xenomorphs! Find supplies, pick a hole, and wait for rescue.\n\nThe armoury in the west bunker is untouched, and there's a lot of metal in the north hanger bunker.\n\nI'm working to override the exterior lockdown but that'll take me another ten minutes. I can't do anything else for you, good luck.", "Unknown Source", 'sound/AI/commandreport.ogg'), 10 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "Victory! The occupants of this metal bunker have been slain, however, we suffered greatly from the slaughter and must recover. I sense the arrival of a new group of hosts, they, will replenish our ranks.\n\nIt appears the bunker has entered a lockdown, no matter, I have dispatched a lesser drone to sacrifice itself to lift the lockdown, however, it will take two minutes for it to do so. Use this time to prepare.", "everything", QUEEN_MOTHER_ANNOUNCE), 20 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "The lockdown is lifted.", "everything", QUEEN_MOTHER_ANNOUNCE), 100 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "Alert: Command Lockdown Failure Detected", "Automated Facility Transmission", 'sound/AI/commandreport.ogg'), 100 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "If anyone is still alive, I'm lifting the exterior lockdown. I've setup a fortified position directly west of the main entrance, find me, I've setup sentry guns, make sure you are wearing IFF-ID tags....wait, where's mine, oh fu---", "Unknown Source", 'sound/AI/commandreport.ogg'), 4.5 MINUTES)
+
 
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
 /datum/game_mode/colonialmarines/process()

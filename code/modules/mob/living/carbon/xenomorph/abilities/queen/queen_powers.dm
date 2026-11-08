@@ -459,11 +459,96 @@
 			to_chat(xeno, "You must choose a pylon.")
 			return FALSE
 
-		xeno.hive.attempt_apply_hivebuff(buffs[selection], xeno, pylon_to_area_dictionary[choice])
-		return TRUE
+		return xeno.hive.attempt_apply_hivebuff(buffs[selection], xeno, pylon_to_area_dictionary[choice])
 
-	xeno.hive.attempt_apply_hivebuff(buffs[selection], xeno, pick(xeno.hive.active_endgame_pylons))
-	return TRUE
+	return xeno.hive.attempt_apply_hivebuff(buffs[selection], xeno, pick(xeno.hive.active_endgame_pylons))
+
+/// Admin version of /datum/action/xeno_action/onclick/manage_hive/proc/purchase_buffs
+/client/proc/admin_attempt_apply_hivebuff()
+	set name = "Grant Hive Buff"
+	set desc = "Hive buff application with less restrictions."
+	set category = "Admin.Events"
+
+	if(!admin_holder || !(admin_holder.rights & R_EVENT))
+		to_chat(src, "Only administrators may use this command.")
+		return
+
+	var/list/hives = list()
+	var/datum/hive_status/hive
+	for(var/hivenumber in GLOB.hive_datum)
+		var/datum/hive_status/current_hive = GLOB.hive_datum[hivenumber]
+		if(length(current_hive.totalXenos) > 0)
+			hives += list("[current_hive.name]" = current_hive)
+			hive = current_hive
+
+	if(!length(hives))
+		to_chat(src, SPAN_ALERT("There seem to be no living hives at the moment."))
+		return FALSE
+	else if(length(hives) > 1)
+		var/hive_choice = tgui_input_list(src, "Please choose the hive you want to buff.", "Grant Hive Buff", hives)
+		if(!hive_choice)
+			return FALSE
+		hive = hives[hive_choice]
+
+	var/list/datum/hivebuff/buffs = list()
+	var/list/names = list()
+	var/list/radial_images = list()
+	var/major_available = FALSE
+	for(var/datum/hivebuff/buff as anything in hive.get_available_hivebuffs(admin=TRUE))
+		var/buffname = initial(buff.name)
+		names += buffname
+		buffs[buffname] = buff
+		if(!major_available)
+			if(initial(buff.tier) == HIVEBUFF_TIER_MAJOR)
+				major_available = TRUE
+
+	if(!length(buffs))
+		to_chat(src, SPAN_XENONOTICE("No boons are available!"))
+		return
+
+	var/selection
+	var/list/radial_images_tiers = list(HIVEBUFF_TIER_MINOR = image('icons/ui_icons/hivebuff_radial.dmi', "minor"), HIVEBUFF_TIER_MAJOR = image('icons/ui_icons/hivebuff_radial.dmi', "major"))
+
+	if(prefs?.no_radials_preference)
+		selection = tgui_input_list(src, "Pick a buff.", "Select Buff", names)
+	else
+		var/tier = HIVEBUFF_TIER_MINOR
+		if(major_available)
+			tier = show_radial_menu(mob, get_eye(), radial_images_tiers)
+
+		if(tier == HIVEBUFF_TIER_MAJOR)
+			for(var/filtered_buffname as anything in buffs)
+				var/datum/hivebuff/filtered_buff = buffs[filtered_buffname]
+				if(initial(filtered_buff.tier) == HIVEBUFF_TIER_MAJOR)
+					radial_images[initial(filtered_buff.name)] += image(initial(filtered_buff.hivebuff_radial_dmi), initial(filtered_buff.radial_icon))
+		else
+			for(var/filtered_buffname as anything in buffs)
+				var/datum/hivebuff/filtered_buff = buffs[filtered_buffname]
+				if(initial(filtered_buff.tier) == HIVEBUFF_TIER_MINOR)
+					radial_images[initial(filtered_buff.name)] += image(initial(filtered_buff.hivebuff_radial_dmi), initial(filtered_buff.radial_icon))
+
+		selection = show_radial_menu(mob, get_eye(), radial_images, radius = 72, tooltips = TRUE)
+
+	if(!selection)
+		return FALSE
+
+	if(!buffs[selection])
+		to_chat(src, "This selection is impossible!")
+		return FALSE
+
+	if(buffs[selection].must_select_pylon)
+		var/list/pylon_to_area_dictionary = list()
+		for(var/obj/effect/alien/resin/special/pylon/endgame/pylon as anything in hive.active_endgame_pylons)
+			pylon_to_area_dictionary[get_area_name(pylon.loc)] = pylon
+
+		var/choice = tgui_input_list(src, "Select a pylon for the buff:", "Choice", pylon_to_area_dictionary, 1 MINUTES)
+		if(!choice)
+			to_chat(src, "You must choose a pylon.")
+			return FALSE
+
+		return hive.attempt_apply_hivebuff_admin(buffs[selection], mob, pylon_to_area_dictionary[choice])
+
+	return hive.attempt_apply_hivebuff_admin(buffs[selection], mob, SAFEPICK(hive.active_endgame_pylons))
 
 /datum/action/xeno_action/onclick/manage_hive/proc/add_personal_ally()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner

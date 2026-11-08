@@ -298,6 +298,10 @@
 			INVOKE_NEXT_TICK(src, PROC_REF(update_minimap_icon), wearer)
 			if(minimap_type)
 				add_minimap(user)
+		else if(FACTION_SURVIVOR in user.faction_group)
+			INVOKE_NEXT_TICK(src, PROC_REF(update_minimap_icon), wearer)
+			if(minimap_type)
+				add_minimap(user)
 
 /obj/item/device/radio/headset/dropped(mob/living/carbon/human/user)
 	UnregisterSignal(user, list(
@@ -1491,6 +1495,13 @@
 	frequency = SOF_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/soc/forecon)
 	volume = RADIO_VOLUME_QUIET
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_MARINE
+
+/obj/item/device/radio/headset/distress/uscm
+	name = "USCM colony headset"
+	desc = "A standard headset used by the USCM. This one seems badly beat up, whatever extra frequencies it once had have been lost."
+	frequency = COLONY_FREQ
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_MARINE
 

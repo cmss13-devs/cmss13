@@ -75,7 +75,7 @@ SUBSYSTEM_DEF(hijack)
 	var/sd_max_time = 15 MINUTES
 
 	/// How long the manual self destruct will take on the low end
-	var/sd_min_time = 7.5 MINUTES
+	var/sd_min_time = 5 MINUTES
 
 	/// How much time left until SD detonates
 	var/sd_time_remaining = 0

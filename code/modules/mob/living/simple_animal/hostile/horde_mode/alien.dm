@@ -71,6 +71,9 @@
 		closest_target = potential_target
 		smallest_distance = distance
 
+	if(isnull(target_mob))
+		return
+
 	target_mob = closest_target
 	target_mob_ref = WEAKREF(target_mob)
 	stance = HOSTILE_STANCE_ATTACK

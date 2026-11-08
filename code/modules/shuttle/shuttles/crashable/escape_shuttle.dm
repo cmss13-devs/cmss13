@@ -52,6 +52,10 @@
 		air.unacidable = FALSE
 
 /obj/docking_port/mobile/crashable/escape_shuttle/evac_launch()
+	var/obj/structure/machinery/computer/shuttle/escape_pod_panel/panel = getControlConsole()
+	if(!panel.ignore_ftl_or_crash && is_mainship_level(z) && SShijack.hijack_plan == HIJACK_ROUTE_SCUTTLE && !SShijack.sd_detonated)
+		return FALSE
+
 	. = ..()
 
 	if(mode == SHUTTLE_CRASHED)
@@ -60,7 +64,6 @@
 	if(launched)
 		return
 
-	var/obj/structure/machinery/computer/shuttle/escape_pod_panel/panel = getControlConsole()
 	if(panel.pod_state == STATE_DELAYED)
 		return
 
@@ -106,7 +109,10 @@
 	if(SShijack.crashed)
 		return TRUE
 
-	if(SShijack.hijack_status >= HIJACK_OBJECTIVES_FTL_CRASH)
+	if(SShijack.sd_detonated)
+		return FALSE
+
+	if(SShijack.hijack_plan != HIJACK_ROUTE_SCUTTLE && SShijack.hijack_status >= HIJACK_OBJECTIVES_FTL_CRASH)
 		return FALSE
 
 	if(prob(crash_land_chance))

@@ -87,6 +87,16 @@
 /obj/docking_port/mobile/marine_dropship/proc/is_door_locked(direction)
 	return door_control.is_door_locked(direction)
 
+/obj/docking_port/mobile/marine_dropship/canMove()
+	if(SShijack?.ground_claimed && !istype(get_docked(), /obj/docking_port/stationary/transit))
+		return FALSE
+	return ..()
+
+/obj/docking_port/mobile/marine_dropship/request(obj/docking_port/stationary/dock, force)
+	if(SShijack?.ground_claimed || !canMove())
+		return DOCKING_IMMOBILIZED
+	return ..()
+
 /obj/docking_port/mobile/marine_dropship/enterTransit()
 	. = ..()
 	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED) && !in_flyby && is_ground_level(destination?.z)) //Launching on first drop.
@@ -155,6 +165,11 @@
 	if(mode == SHUTTLE_CRASHED)
 		return
 
+	if(!SShijack.withdrawal_available && is_ground_level(z))
+		var/obj/structure/machinery/computer/shuttle/dropship/flight/console = getControlConsole()
+		if(console?.dropship_control_lost)
+			SShijack.allow_withdrawal(src)
+
 	var/obj/docking_port/stationary/marine_dropship/dropzone = destination
 	if(mode == SHUTTLE_PREARRIVAL && dropzone && !dropzone.landing_lights_on)
 		if(istype(destination, /obj/docking_port/stationary/marine_dropship))
@@ -201,7 +216,7 @@
 
 /// Triggers a sneak hijack if not already hijacked, less than 20s left on call, and a hostile queen is aboard
 /obj/docking_port/mobile/marine_dropship/proc/sneak_hijack_check()
-	if(is_hijacked)
+	if(is_hijacked || SShijack.ground_claimed)
 		return FALSE
 
 	if(SSticker.mode?.is_in_endgame)
@@ -267,7 +282,7 @@
 
 /obj/docking_port/mobile/marine_dropship/proc/automated_check()
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/root_console = getControlConsole()
-	if(!root_console || root_console.dropship_control_lost || SShijack.in_ftl || SShijack.hijack_status >= HIJACK_OBJECTIVES_GROUND_CRASH)
+	if(!root_console || root_console.dropship_control_lost || SShijack.in_ftl || SShijack.ground_claimed || SShijack.hijack_status >= HIJACK_OBJECTIVES_GROUND_CRASH)
 		automated_hangar_id = null
 		automated_lz_id = null
 		automated_delay = null

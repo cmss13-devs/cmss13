@@ -18,6 +18,7 @@
 	anchored = TRUE
 	density = TRUE
 	throwpass = FALSE
+	needs_power = FALSE
 	power_gen = 50000 //50,000W
 
 	///Whether the reactor is on the ship
@@ -141,12 +142,6 @@
 			return
 		if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			. += SPAN_INFO("You could overload its safeties with a multitool.")
-
-/obj/structure/machinery/power/power_generator/reactor/power_change()
-	. = ..()
-	if(overloaded)
-		set_overloading(FALSE)
-		visible_message(SPAN_NOTICE("[src]'s overload suddenly ceases as primary power is lost."))
 
 /obj/structure/machinery/power/power_generator/reactor/HasFuel()
 	return fusion_cell && fusion_cell.fuel_amount > 0

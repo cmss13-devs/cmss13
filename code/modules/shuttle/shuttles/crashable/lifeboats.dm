@@ -9,6 +9,7 @@
 	height = 7
 	var/available = TRUE // can be used for evac? false if queenlocked or if in transit already
 	var/status = LIFEBOAT_INACTIVE // -1 queen locked, 0 locked til evac, 1 working
+	var/forced_launch = FALSE //this is for lag protection, so the lifeboat launches BEFORE the SD timer runs out
 	var/list/doors = list()
 	var/survivors = 0
 
@@ -46,9 +47,18 @@
 	preferred_direction = EAST
 	port_direction = EAST
 
-/obj/docking_port/mobile/crashable/lifeboat/evac_launch()
-	if (status == LIFEBOAT_LOCKED)
+/obj/docking_port/mobile/crashable/lifeboat/evac_launch(force = FALSE)
+	if(force)
+		forced_launch = TRUE
+		addtimer(CALLBACK(src, PROC_REF(check)), max(0, SShijack.sd_detonation_time - 5 SECONDS - REALTIMEOFDAY), TIMER_CLIENT_TIME)
+	if(mode != SHUTTLE_IDLE)
 		return
+
+	if(status == LIFEBOAT_LOCKED && !force)
+		return
+	if(force)
+		status = LIFEBOAT_ACTIVE
+		available = TRUE
 
 	. = ..()
 
@@ -59,10 +69,22 @@
 	alarm_sound_loop.stop()
 	playing_launch_announcement_alarm = FALSE
 
+/obj/docking_port/mobile/crashable/lifeboat/timeLeft(divisor)
+	. = ..()
+	if(forced_launch && mode == SHUTTLE_IGNITING)
+		return min(., round(max(0, SShijack.sd_detonation_time - 5 SECONDS - REALTIMEOFDAY) / (divisor > 0 ? divisor : 10), 1))
+	return .
+
 /obj/docking_port/mobile/crashable/lifeboat/crash_check()
 	. = ..()
 
 	if(SShijack.crashed)
+		return TRUE
+
+	if(SShijack.sd_detonated)
+		return FALSE
+
+	if(SShijack.hijack_plan == HIJACK_ROUTE_SCUTTLE)
 		return TRUE
 
 	if(SShijack.hijack_status >= HIJACK_OBJECTIVES_FTL_CRASH)

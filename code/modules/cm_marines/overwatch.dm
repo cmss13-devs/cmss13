@@ -599,6 +599,13 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		data["primary_lz"] = SSticker.mode.active_lz
 	data["alert_level"] = GLOB.security_level
 	data["evac_status"] = SShijack.evac_status
+	data["hijack_plan"] = SShijack.hijack_plan
+	data["sd_unlocked"] = SShijack.sd_unlocked
+	data["hijack_started"] = SShijack.hijack_status >= HIJACK_OBJECTIVES_SHIP_INBOUND
+	data["can_select_hijack_plan"] = user == SSticker.mode.acting_commander && SShijack.can_select_hijack_plan()
+	data["withdrawal_available"] = SShijack.withdrawal_available
+	data["withdrawal_end_time"] = SShijack.withdrawal_end_time
+	data["can_start_withdrawal"] = user == SSticker.mode.acting_commander && SShijack.can_start_withdrawal()
 	data["world_time"] = world.time
 
 	data["time_request"] = cooldown_request
@@ -1108,6 +1115,27 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			message_admins("[key_name_admin(user)] has called for general quarters via the groundside operations console.")
 			log_ares_security("General Quarters", "Called for general quarters via the groundside operations console.", user)
 			. = TRUE
+
+/obj/structure/machinery/computer/overwatch/groundside_operations/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/user = ui.user
+	switch(action)
+		if("withdrawal_start")
+			if(user != SSticker.mode.acting_commander)
+				return FALSE
+			if(!SShijack.start_withdrawal())
+				return FALSE
+			return TRUE
+
+		if("hijack_plan")
+			if(user != SSticker.mode.acting_commander)
+				return FALSE
+			if(!SShijack.select_hijack_plan(params["plan"]))
+				return FALSE
+			return TRUE
 
 /obj/structure/machinery/computer/overwatch/proc/transfer_talk(obj/item/camera, mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE, show_message_above_tv = FALSE)
 	SIGNAL_HANDLER

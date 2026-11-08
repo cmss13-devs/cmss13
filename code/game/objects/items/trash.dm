@@ -30,6 +30,11 @@
 	. = ..()
 	AddElement(/datum/element/corp_label/wy)
 
+/obj/item/trash/spanish_cigar
+	name = "cigar wrapper"
+	icon_state = "spanish_cigar_trash"
+	desc = "A piece of aluminum foil that once wrapped a cigar, the smell is still there however."
+
 /obj/item/trash/buritto
 	name = "Burrito wrapper"
 	icon_state = "burrito"
@@ -168,12 +173,14 @@
 	icon_state = "cigbutt"
 	w_class = SIZE_TINY
 	throwforce = 1
+	var/should_rotate = TRUE
 
 /obj/item/trash/cigbutt/Initialize()
 	. = ..()
-	pixel_x = rand(-10,10)
-	pixel_y = rand(-10,10)
-	apply_transform(turn(transform,rand(0,360)))
+	if(should_rotate)
+		pixel_x = rand(-10,10)
+		pixel_y = rand(-10,10)
+		apply_transform(turn(transform,rand(0,360)))
 
 /obj/item/trash/cigbutt/ucigbutt
 	desc = "A manky old unfiltered cigarette butt."
@@ -187,8 +194,9 @@
 /obj/item/trash/cigbutt/cigarbutt
 	name = "cigar butt"
 	desc = "A manky old cigar butt."
-	icon_state = "cigarbutt"
 	icon = 'icons/obj/items/smoking/cigars.dmi'
+	icon_state = "cigarbutt"
+	should_rotate = FALSE
 
 ////////////
 ///Dishes///

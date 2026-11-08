@@ -321,6 +321,53 @@
 	item_state = "y_naspacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_spirityellow")
 
+/obj/item/storage/fancy/cigarettes/belomor
+	name = "\improper Belomorkanal packet"
+	desc = "A pack of Belomorkanal papirosa, a special kind of cigarettes."
+	desc_lore = "Originally named after the White Sea-Baltic Canal during the USSR era, Belomorkanal papirosas have survived every regime change and corporate takeover that history has thrown at them. Beloved by some, actively avoided by others, mostly on account of the smell. They are not going anywhere."
+	icon_state = "bcpacket"
+	icon = 'icons/obj/items/smoking/packets/belomor_packet.dmi'
+	item_state = "bcpacket"
+	item_state_slots = list(WEAR_AS_GARB = "cig_belomor")
+	default_cig_type = /obj/item/clothing/mask/cigarette/belomor
+
+/obj/item/storage/fancy/cigarettes/red_star
+	name = "\improper Red Star packet"
+	desc = "A pack of Red Star cigarettes."
+	desc_lore = "A state funded cigarette produced and distributed across every corner of UPP occupied space, Red Stars are not particularly good. The packaging claims otherwise, crediting the blend to the finest tobacco cooperatives of the People's Republic, a claim that has never been independently verified. What they lack in quality they more than make up for in sheer availability."
+	icon_state = "rspacket"
+	icon = 'icons/obj/items/smoking/packets/redstar_packet.dmi'
+	item_state = "rspacket"
+	item_state_slots = list(WEAR_AS_GARB = "cig_redstar")
+
+/obj/item/storage/fancy/cigarettes/air_force_one
+	name = "\improper Air Force One packet"
+	desc = "A pack of Air Force One cigarettes, a white pack with golden trim and a coat of arms of US president."
+	desc_lore = "Once distributed aboard Air Force One as a presidential courtesy, these cigarettes were quietly replaced by M&M's sometime in the 22nd century, leaving a modest but dedicated collector's market in their wake. The ICSC has been producing counterfeits since the 2150s, some fraudulent, some sold openly as reproductions. This one is probably genuine. The signature does seem a bit off, though"
+	icon_state = "elitepacket"
+	icon = 'icons/obj/items/smoking/packets/elite_packet.dmi'
+	item_state = "elitepacket"
+	item_state_slots = list(WEAR_AS_GARB = "cig_elite")
+
+/obj/item/storage/fancy/cigarettes/camel
+	name = "\improper Camel packet"
+	desc = "A small yellow paper carton of cigarettes with a camel stamped on the front. It's wrapped in a layer of thin polypropylene film."
+	desc_lore = "Originally made as an imitation of Egyptian cigarettes, which were popular during its inception way back in 1913; Camel cigarettes have outlasted the company that made them, the country that popularized them, and most of the competitors that tried to imitate them. The milder blend that made R.J. Reynolds a household name has proven surprisingly resilient across two and a half centuries. This pack is an original American pressing, which matters more than it used to, given how many counterfeits are currently in circulation.. Now, would you walk a mile for a Camel?."
+	icon_state = "camel_packet"
+	icon = 'icons/obj/items/smoking/packets/camel_packet.dmi'
+	item_state = "camelpacket"
+	item_state_slots = list(WEAR_AS_GARB = "cig_camel")
+
+/obj/item/storage/fancy/cigarettes/laika
+	name = "\improper Laika packet"
+	desc = "A pack of Laika cigarettes, has a dog portrait on the pack."
+	desc_lore = "The original Laika cigarettes were produced in 1957 to commemorate Laika, the first animal launched into orbit. Discontinued not long after, the brand sat in history for two centuries until the UPP revived it in 2157 for the anniversary of her flight. The reproduction proved popular enough that it never stopped being made. Some things are worth remembering."
+	icon_state = "laikapacket"
+	icon = 'icons/obj/items/smoking/packets/laika_packet.dmi'
+	item_state = "laikapacket"
+	item_state_slots = list(WEAR_AS_GARB = "cig_laikapacket")
+	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
+
 /obj/item/storage/fancy/cigarettes/trading_card
 	name = "\improper WeyYu Gold Military Trading Card packet"
 	desc = "Gotta collect 'em all, and smoke 'em all! This fancy military trading card version of Weyland Yutani Gold cigarette packs has one card that is apart of the 3 available 5-card sets."
@@ -382,7 +429,7 @@
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_WAIST
 	storage_slots = 7
-	can_hold = list(/obj/item/clothing/mask/cigarette/cigar)
+	can_hold = list(/obj/item/clothing/mask/cigarette/cigar, /obj/item/cigar_packet)
 	icon_type = "cigar"
 	black_market_value = 30
 	var/default_cigar_type = /obj/item/clothing/mask/cigarette/cigar
@@ -422,6 +469,13 @@
 	item_state = "tarbackbox"
 	storage_slots = 5
 	default_cigar_type = /obj/item/clothing/mask/cigarette/cigar/tarbacks
+
+/obj/item/storage/fancy/cigar/spanish
+	name = "\improper Don Julian cigar case"
+	desc = "A rather fancy looking birch box, rather because of the low price of it. Rolled on Canary Islands, supposedly."
+	icon_state = "cigarcase_spanish"
+	item_state = "cigarcase_spanish"
+	default_cigar_type = /obj/item/cigar_packet
 
 /obj/item/storage/fancy/cigar/tarbacktube
 	name = "\improper Tarback tube"

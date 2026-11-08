@@ -702,7 +702,7 @@
 /turf/open/floor/strata/blue1,
 /area/strata/interior/research)
 "abZ" = (
-/obj/structure/machinery/vending/coffee,
+/obj/structure/machinery/vending/uppsoda,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/research)
 "aca" = (
@@ -810,6 +810,10 @@
 	},
 /obj/item/reagent_container/spray/cleaner,
 /obj/item/paper_bin,
+/obj/item/storage/fancy/cigarettes/red_star{
+	pixel_y = 21;
+	pixel_x = 5
+	},
 /turf/open/floor/strata/blue1,
 /area/strata/interior/research)
 "acp" = (
@@ -1398,14 +1402,14 @@
 /turf/open/floor/strata/blue1,
 /area/strata/interior/research)
 "aea" = (
-/obj/structure/machinery/vending/cigarette/koorlander,
+/obj/structure/machinery/vending/cigarette/upp,
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/strata/blue1,
 /area/strata/interior/research)
 "aeb" = (
-/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/vending/uppsnack,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/research)
 "aec" = (
@@ -3253,7 +3257,7 @@
 /turf/open/floor/greengrid,
 /area/strata/interior/mining_outpost/hive)
 "ajn" = (
-/obj/structure/machinery/vending/cigarette/wy,
+/obj/structure/machinery/vending/cigarette/upp,
 /obj/item/clothing/head/soft/ferret{
 	pixel_y = 9
 	},
@@ -4168,9 +4172,9 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/landing_zones/near_lz1)
 "alG" = (
-/obj/structure/machinery/vending/cigarette{
-	pixel_y = 11;
-	pixel_x = -8
+/obj/structure/machinery/vending/cigarette/upp{
+	pixel_y = 10;
+	pixel_x = -7
 	},
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/mining_outpost)
@@ -4947,7 +4951,7 @@
 /turf/open/gm/dirt/brown/variant_3,
 /area/strata/exterior/deep_jungle/tearlake)
 "anI" = (
-/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/vending/uppsnack,
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/outpost/security)
 "anJ" = (
@@ -5160,7 +5164,7 @@
 /turf/open/gm/river/soro,
 /area/strata/exterior/marsh/relay_marshes)
 "aon" = (
-/obj/structure/machinery/vending/cigarette/koorlander,
+/obj/structure/machinery/vending/cigarette/upp,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/landing_zones/near_lz1)
 "aoo" = (
@@ -5301,7 +5305,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/deep_jungle/tearlake)
 "aoH" = (
-/obj/structure/machinery/vending/coffee,
+/obj/structure/machinery/vending/uppsoda,
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/outpost/security)
 "aoI" = (
@@ -5717,7 +5721,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/research)
 "apM" = (
-/obj/structure/machinery/vending/coffee,
+/obj/structure/machinery/vending/uppsoda,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
 "apN" = (
@@ -6157,7 +6161,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/research)
 "aqV" = (
-/obj/structure/machinery/vending/cigarette/wy,
+/obj/structure/machinery/vending/cigarette/upp,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/research)
 "aqW" = (
@@ -7710,7 +7714,7 @@
 /turf/open/floor/interior/plastic,
 /area/strata/interior/outpost/canteen)
 "avc" = (
-/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/vending/uppsnack,
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/outpost/canteen)
 "avd" = (
@@ -10684,6 +10688,9 @@
 /obj/item/explosive/plastic/breaching_charge{
 	pixel_y = 1
 	},
+/obj/item/ammo_box/magazine/misc/cigarettes/red_star_block{
+	pixel_y = 7
+	},
 /turf/open/floor/interior/plastic,
 /area/strata/interior/outpost/canteen)
 "aDt" = (
@@ -12360,6 +12367,22 @@
 	color = "#98a3ab"
 	},
 /obj/item/pizzabox/mushroom,
+/obj/item/tool/kitchen/utensil/pspoon{
+	pixel_x = -5;
+	pixel_y = -18
+	},
+/obj/item/storage/fancy/cigarettes/red_star{
+	pixel_y = 16
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/item/pizzabox/mushroom,
 /obj/item/tool/kitchen/utensil/spoon/plastic{
 	pixel_x = -5;
 	pixel_y = -18
@@ -13140,6 +13163,12 @@
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi)
 "aKy" = (
+/obj/structure/machinery/vending/uppsnack,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
 /obj/structure/machinery/cryopod/joe/seegson{
 	pixel_y = 25;
 	pixel_x = 1;
@@ -13497,9 +13526,9 @@
 /turf/open/gm/dirt/brown,
 /area/strata/interior/bball_cave)
 "aLv" = (
-/obj/item/reagent_container/food/drinks/bottle/sake{
-	pixel_x = 9;
-	pixel_y = 2
+/obj/item/reagent_container/food/drinks/bottle/whiskey{
+	pixel_x = 11;
+	pixel_y = 6
 	},
 /obj/structure/surface/table/almayer,
 /obj/effect/landmark/objective_landmark/close,
@@ -14853,7 +14882,7 @@
 /obj/item/explosive/grenade/phosphorus,
 /obj/item/explosive/grenade/phosphorus,
 /obj/item/folder/red,
-/obj/item/ammo_box/magazine/shotgun/buckshot,
+/obj/item/ammo_box/magazine/shotgun/upp/buckshot,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/red1,
 /area/strata/interior/mining_outpost/south_dormitories)
@@ -15305,11 +15334,11 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/vending/uppsnack,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost/south_dormitories)
 "aQz" = (
-/obj/structure/machinery/vending/coffee,
+/obj/structure/machinery/vending/uppsoda,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost/south_dormitories)
 "aQA" = (
@@ -15977,7 +16006,7 @@
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/outpost/canteen)
 "aSu" = (
-/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/vending/uppsnack,
 /obj/structure/machinery/light,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/outpost/canteen)
@@ -16410,7 +16439,10 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/item/storage/fancy/cigarettes/lady_finger,
+/obj/item/storage/fancy/cigarettes/laika{
+	pixel_y = 5;
+	pixel_x = 4
+	},
 /obj/structure/window/reinforced/tinted{
 	color = "#969696";
 	dir = 8
@@ -19147,6 +19179,17 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/spring_marshes)
+"bbu" = (
+/obj/structure/machinery/vending/uppsoda,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/effect/landmark/start/working_joe/colony,
+/obj/effect/landmark/late_join/working_joe/colony,
+/turf/open/floor/strata,
+/area/strata/interior/outpost/engi)
 "bbv" = (
 /obj/structure/machinery/gibber,
 /turf/open/floor/strata/cyan2/east,
@@ -19170,6 +19213,10 @@
 /obj/item/reagent_container/food/condiment/enzyme,
 /turf/open/floor/strata/cyan2/east,
 /area/strata/interior/outpost/canteen/bar)
+"bbA" = (
+/obj/structure/machinery/vending/uppcoffee,
+/turf/open/floor/strata/white_cyan1/east,
+/area/strata/interior/outpost/canteen)
 "bbB" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/stack/sheet/wood,
@@ -19556,8 +19603,13 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/item/reagent_container/food/drinks/bottle/vodka,
-/obj/item/device/radio,
+/obj/item/reagent_container/food/drinks/bottle/vodka{
+	pixel_x = -7
+	},
+/obj/item/device/radio{
+	pixel_y = 18;
+	pixel_x = 8
+	},
 /turf/open/floor/strata/blue1,
 /area/strata/interior/research)
 "bcS" = (
@@ -20451,7 +20503,7 @@
 /turf/open/floor/strata,
 /area/strata/interior/outpost/foyer)
 "bfJ" = (
-/obj/structure/machinery/vending/coffee,
+/obj/structure/machinery/vending/uppsoda,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/foyer)
 "bfK" = (
@@ -21580,14 +21632,14 @@
 /turf/open/floor/strata/blue1,
 /area/strata/interior/outpost/admin)
 "bja" = (
-/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/vending/uppsnack,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/strata/blue1,
 /area/strata/interior/outpost/admin)
 "bjb" = (
-/obj/structure/machinery/vending/coffee,
+/obj/structure/machinery/vending/uppcoffee,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/outpost/admin)
 "bjc" = (
@@ -22460,7 +22512,7 @@
 /turf/open/floor/interior/plastic,
 /area/strata/interior/wooden_hospital)
 "blH" = (
-/obj/structure/machinery/vending/coffee,
+/obj/structure/machinery/vending/uppsoda,
 /turf/open/floor/interior/plastic,
 /area/strata/interior/wooden_hospital)
 "blI" = (
@@ -23158,9 +23210,9 @@
 	pixel_x = -14;
 	pixel_y = 16
 	},
-/obj/item/storage/fancy/cigar{
-	pixel_x = 2;
-	pixel_y = 2
+/obj/item/storage/fancy/cigar/spanish{
+	pixel_y = 1;
+	pixel_x = 5
 	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/structure/machinery/light/small{
@@ -23416,9 +23468,9 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/administration)
 "boz" = (
-/obj/item/storage/fancy/cigarettes/lady_finger{
-	pixel_x = 4;
-	pixel_y = 4
+/obj/item/storage/fancy/cigarettes/laika{
+	pixel_y = 5;
+	pixel_x = 4
 	},
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -25189,9 +25241,9 @@
 	pixel_x = 14;
 	pixel_y = 31
 	},
-/obj/structure/sign/calendar{
-	pixel_x = -13;
-	pixel_y = 29
+/obj/structure/sign/calendar/upp{
+	pixel_y = 30;
+	pixel_x = -7
 	},
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/outpost/engi/drome)
@@ -25689,7 +25741,7 @@
 /turf/open/floor/strata/blue1,
 /area/strata/interior/outpost/admin)
 "bvl" = (
-/obj/structure/machinery/vending/cigarette/koorlander,
+/obj/structure/machinery/vending/cigarette/upp,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/outpost/admin)
 "bvm" = (
@@ -26364,7 +26416,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/flight_control_exterior)
 "bxu" = (
-/obj/structure/machinery/vending/cigarette/wy,
+/obj/structure/machinery/vending/cigarette/upp,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
@@ -30692,7 +30744,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/strata/interior/mining_outpost)
 "bKc" = (
-/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/vending/uppsnack,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/outpost/admin)
 "bKd" = (
@@ -30753,8 +30805,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/deep_jungle/old_tunnels)
 "bKl" = (
-/obj/structure/machinery/vending/coffee{
-	pixel_y = 10
+/obj/structure/machinery/vending/uppcoffee{
+	pixel_y = 10;
+	pixel_x = 1
 	},
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/mining_outpost)
@@ -31713,7 +31766,7 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/strata/interior/secure_checkpoint)
 "bMX" = (
-/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/vending/uppsnack,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/administration)
 "bMY" = (
@@ -32400,7 +32453,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/deep_jungle/old_tunnels)
 "bPe" = (
-/obj/structure/machinery/vending/coffee,
+/obj/structure/machinery/vending/uppsoda,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/engi/drome)
 "bPf" = (
@@ -32486,7 +32539,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/interior/outpost/engi/drome)
 "bPu" = (
-/obj/structure/machinery/vending/coffee,
+/obj/structure/machinery/vending/uppcoffee,
 /turf/open/floor/strata/cyan2/east,
 /area/strata/interior/mining_outpost/canteen)
 "bPv" = (
@@ -33255,7 +33308,7 @@
 /turf/open/gm/river/soro,
 /area/strata/interior/mining_outpost/maintenance)
 "bRu" = (
-/obj/structure/machinery/vending/coffee,
+/obj/structure/machinery/vending/uppcoffee,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
@@ -35293,7 +35346,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/secure_checkpoint)
 "bWB" = (
-/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/vending/uppsnack,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -37593,7 +37646,7 @@
 /area/strata/exterior/deep_jungle/north)
 "ceW" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/machinery/vending/cola,
+/obj/structure/machinery/vending/uppcola,
 /obj/effect/decal/cleanable/blood,
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -37652,14 +37705,14 @@
 /turf/open/floor/strata,
 /area/strata/interior/outpost/security)
 "cfD" = (
-/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/vending/uppsnack,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/outpost/canteen)
 "cfE" = (
-/obj/structure/machinery/vending/coffee,
+/obj/structure/machinery/vending/uppsoda,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/outpost/canteen)
 "cfH" = (
@@ -38882,7 +38935,7 @@
 /turf/open/floor/strata,
 /area/strata/interior/landing_zones/near_lz1)
 "ctl" = (
-/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/vending/uppsnack,
 /obj/structure/machinery/light,
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/outpost/foyer)
@@ -39125,7 +39178,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/interior/checkpoints/south)
 "cxf" = (
-/obj/structure/machinery/vending/cigarette/koorlander,
+/obj/structure/machinery/vending/cigarette/upp,
 /turf/open/floor/strata/red1,
 /area/strata/interior/checkpoints/north)
 "cxg" = (
@@ -39373,7 +39426,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/interior/outpost/med)
 "cKk" = (
-/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/vending/uppsnack,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/outpost/canteen)
 "cKS" = (
@@ -39409,7 +39462,7 @@
 /turf/open/gm/river/soro,
 /area/strata/exterior/deep_jungle/tearlake)
 "cOe" = (
-/obj/structure/machinery/vending/cigarette/koorlander,
+/obj/structure/machinery/vending/cigarette/upp,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -39465,7 +39518,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
-/obj/structure/machinery/vending/coffee,
+/obj/structure/machinery/vending/uppsoda,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/engi/drome)
 "cSP" = (
@@ -43777,7 +43830,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/parts_storage)
 "itQ" = (
-/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/vending/uppcola,
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
@@ -43841,7 +43894,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/interior/planet_core_research_station)
 "ixQ" = (
-/obj/structure/machinery/vending/cigarette/koorlander,
+/obj/structure/machinery/vending/cigarette/upp,
 /turf/open/floor/strata/cyan3/east,
 /area/strata/interior/outpost/med)
 "ixS" = (
@@ -44467,7 +44520,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/vanyard)
 "jmH" = (
-/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/vending/uppsnack,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/outpost/med)
 "jnt" = (
@@ -46169,7 +46222,7 @@
 /turf/open/gm/river/soro,
 /area/strata/exterior/marsh/water)
 "lGv" = (
-/obj/structure/machinery/vending/coffee,
+/obj/structure/machinery/vending/uppsoda,
 /turf/open/floor/strata/red1,
 /area/strata/interior/checkpoints/north)
 "lHk" = (
@@ -47374,7 +47427,7 @@
 /turf/open/gm/coast/dirt/beachcorner/south_east,
 /area/strata/exterior/deep_jungle/platform_east)
 "npf" = (
-/obj/structure/machinery/vending/coffee,
+/obj/structure/machinery/vending/uppsoda,
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/outpost/foyer)
 "npy" = (
@@ -47652,7 +47705,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/outpost/canteen)
 "nFN" = (
-/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/vending/uppsnack,
 /turf/open/floor/strata/cyan3/east,
 /area/strata/interior/outpost/med)
 "nGi" = (
@@ -48691,7 +48744,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/parts_storage)
 "oZt" = (
-/obj/structure/machinery/vending/cigarette/koorlander,
+/obj/structure/machinery/vending/cigarette/upp,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/planet_core_research_station)
 "oZy" = (
@@ -48759,7 +48812,7 @@
 /turf/open/floor/strata/blue3/west,
 /area/strata/interior/outpost/admin)
 "pfo" = (
-/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/vending/uppsnack,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/canteen)
 "pfu" = (
@@ -50941,7 +50994,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/strata/interior/mining_outpost/hive)
 "rRC" = (
-/obj/structure/machinery/vending/cigarette/wy,
+/obj/structure/machinery/vending/cigarette/upp,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/canteen)
 "rSl" = (
@@ -51675,7 +51728,9 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/item/storage/fancy/cigarettes/lady_finger,
+/obj/item/storage/fancy/cigarettes/belomor{
+	pixel_y = 4
+	},
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/underground_dorms/sec1)
 "sPF" = (
@@ -75106,7 +75161,7 @@ aGr
 dCb
 oKo
 aKy
-aLR
+bbu
 aMX
 ohY
 kUU
@@ -83841,7 +83896,7 @@ jsg
 bFQ
 cWv
 cjn
-cfE
+bbA
 cgY
 cgY
 xjw

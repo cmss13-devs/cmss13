@@ -296,8 +296,8 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/landing_zones/near_lz1)
 "aW" = (
-/obj/structure/machinery/vending/coffee{
-	pixel_y = 10
+/obj/structure/machinery/vending/uppcoffee{
+	pixel_y = 13
 	},
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/mining_outpost)
@@ -834,7 +834,7 @@
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/strata/interior/out_of_bounds)
 "gn" = (
-/obj/structure/machinery/vending/cigarette/koorlander,
+/obj/structure/machinery/vending/uppsoda,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/landing_zones/near_lz1)
 "gz" = (
@@ -1210,8 +1210,8 @@
 /turf/open/floor/strata/multi_tiles,
 /area/strata/interior/mining_outpost/hive)
 "pZ" = (
-/obj/structure/machinery/vending/cigarette{
-	pixel_y = 11;
+/obj/structure/machinery/vending/cigarette/upp{
+	pixel_y = 13;
 	pixel_x = -8
 	},
 /turf/open/floor/strata/white_cyan2/west,
@@ -1385,7 +1385,7 @@
 /area/strata/interior/landing_zones/near_lz1)
 "uh" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/machinery/vending/cola,
+/obj/structure/machinery/vending/uppcola,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},

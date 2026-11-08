@@ -656,6 +656,8 @@
 	var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/commstower = new (loc)
 	if(broken_on_spawn)
 		commstower.update_health(damage = health) //fuck it up
+	if(MODE_HAS_FLAG(MODE_SURVIVE))
+		new /obj/item/pamphlet/skill/comms_repair(loc) // To ensure theres atleast one that can work on it
 	qdel(src)
 
 /obj/effect/landmark/static_comms/net_one
@@ -679,6 +681,54 @@
 /obj/effect/landmark/static_comms/net_two/Destroy()
 	GLOB.comm_tower_landmarks_net_two -= src
 	return ..()
+
+/obj/effect/landmark/static_comms/net_survivor
+	icon_state = "comms_landmark"
+
+/obj/effect/landmark/static_comms/net_survivor/Initialize(mapload, ...)
+	. = ..()
+	GLOB.comm_tower_landmarks_survivor += src
+
+/obj/effect/landmark/static_comms/net_survivor/Destroy()
+	GLOB.comm_tower_landmarks_survivor -= src
+	return ..()
+
+//****************************************** SENSORS ************************************************//
+
+/obj/effect/landmark/sensors
+	name = "sensors spawn"
+	icon = 'icons/obj/structures/machinery/motion_sensor_v2.dmi'
+	icon_state = "sensor_sdmm"
+
+/obj/effect/landmark/sensors/Initialize(mapload, ...)
+	GLOB.sensor_tower_landmarks += src
+	. = ..()
+
+/obj/effect/landmark/sensors/Destroy()
+	GLOB.sensor_tower_landmarks -= src
+	return ..()
+
+/obj/effect/landmark/sensors/proc/spawn_tower()
+	new/obj/structure/machinery/sensortower(loc)
+
+
+/obj/effect/landmark/short_range_sensors
+	name = "short range sensors spawn"
+	icon = 'icons/obj/structures/machinery/motion_sensor_v2.dmi'
+	icon_state = "sensors_tower_small_sdmm"
+
+/obj/effect/landmark/short_range_sensors/Initialize(mapload, ...)
+	GLOB.small_sensor_tower_landmarks += src
+	. = ..()
+
+/obj/effect/landmark/short_range_sensors/Destroy()
+	GLOB.small_sensor_tower_landmarks -= src
+	return ..()
+
+/obj/effect/landmark/short_range_sensors/proc/spawn_tower()
+	new/obj/structure/machinery/sensortower/short_range(loc)
+	qdel(src)
+
 
 // AMMO SPAWN (tyrargo)
 

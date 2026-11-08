@@ -310,6 +310,7 @@ SET_PROTECTED_DATUM(/datum/controller/configuration)
 				modes += M.config_tag
 				mode_names[M.config_tag] = M.name
 		GLOB.gamemode_roles[M.name] = M.get_roles_list()
+		GLOB.gamemode_role_mappings[M.name] = M.role_mappings
 		qdel(M)
 
 /datum/controller/configuration/proc/pick_mode(mode_name)

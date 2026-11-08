@@ -55,6 +55,26 @@
 /obj/structure/platform_decoration/stone/runed_sandstone,
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"ak" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/gm/dirtgrassborder/west,
+/area/lv624/ground/caves/sand_temple)
+"al" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
+"am" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"an" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
+"ao" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
 "ap" = (
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -2141,7 +2161,7 @@ ZX
 ZX
 bZ
 dA
-Aw
+ak
 aU
 tU
 Tv
@@ -2183,7 +2203,7 @@ ZX
 ZX
 PO
 OC
-mv
+al
 Ai
 Ai
 mv
@@ -2225,7 +2245,7 @@ ZX
 ZX
 OR
 ad
-Ai
+am
 Ai
 mv
 mv
@@ -2267,7 +2287,7 @@ ZX
 ZX
 Je
 OC
-Ai
+am
 mv
 mv
 mv
@@ -2309,7 +2329,7 @@ ZX
 ZX
 bZ
 yA
-mv
+an
 tu
 nv
 zB
@@ -2894,7 +2914,7 @@ ZX
 ZX
 ZX
 ZX
-Ai
+ao
 bZ
 Eq
 vl
@@ -2936,7 +2956,7 @@ ZX
 ZX
 ZX
 ZX
-Ai
+am
 Wz
 Ai
 Ai
@@ -2978,7 +2998,7 @@ ZX
 ZX
 ZX
 ZX
-Ai
+am
 Wz
 mv
 Ai

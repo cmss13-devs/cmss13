@@ -147,15 +147,15 @@
 				body_type_description = "muscular"
 
 		if(!skipface && !skipjumpsuit && body_size_description && body_type_description && mob_flags & MOB_FLAYED)
-			msg += "[t_He] [t_has] a [SPAN_BOLD(body_size_description)] [SPAN_BOLD(body_type_description)] build.\n"
+			msg += "[t_He] [t_has] a [SPAN_BOLD(body_size_description)], [SPAN_BOLD(body_type_description)] build.\n"
 		else if(!skipface && !skipjumpsuit && body_size_description && body_type_description)
-			msg += "[t_He] [t_is] [SPAN_BOLD(age_description)], with a [SPAN_BOLD(body_size_description)] [SPAN_BOLD(body_type_description)] build.\n"
+			msg += "[t_He] [t_is] [SPAN_BOLD(age_description)], with a [SPAN_BOLD(body_size_description)], [SPAN_BOLD(body_type_description)] build.\n"
 		else if(!skipface)
 			msg += "[t_He] [t_is] [SPAN_BOLD(age_description)].\n"
 		else if(!skipjumpsuit && body_size_description && body_type_description)
-			msg += "[t_his] [t_is] face is hidden, but [t_has] a [SPAN_BOLD(body_size_description)] [SPAN_BOLD(body_type_description)].\n"
+			msg += "[capitalize(t_his)] face is hidden, but [t_his] build is [SPAN_BOLD(body_size_description)] and [SPAN_BOLD(body_type_description)].\n"
 		else
-			msg += "[t_his] [t_is] face is hidden.\n"
+			msg += "[capitalize(t_his)] face is hidden.\n"
 
 	//head
 	if(head)
@@ -318,6 +318,12 @@
 		msg += "[t_He] looks a little soaked.\n"
 	if(on_fire)
 		msg += SPAN_WARNING("[t_He] [t_is] on fire!\n")
+
+	if(eyelids_status == EYELID_CLOSED_VOLUNTARILY)
+		for(var/obj/item/thing in contents)
+			if(thing.flags_inv_hide & HIDEEYES)
+				break
+		msg += "[t_He] has closed [t_his] eyes.\n"
 
 	var/list/wound_flavor_text = list()
 	var/list/is_destroyed = list()

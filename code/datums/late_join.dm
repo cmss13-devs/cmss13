@@ -82,6 +82,8 @@ GLOBAL_DATUM_INIT(late_join_tgui, /datum/late_join, new)
 	. = ..()
 	if(.)
 		return
+	if(MODE_HAS_FLAG(MODE_SURVIVE))
+		return // No modifying your UI to get here isn't an option
 	var/mob/new_player/user = ui.user
 	if(action == "set_preferred_squad")
 		var/preferred_squad = params["squad"]

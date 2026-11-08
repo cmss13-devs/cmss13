@@ -11716,10 +11716,6 @@
 /obj/item/device/defibrillator/synthetic,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/forward_base/lv624/tent/jtac_tent)
-"aLt" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/plating/platebot,
-/area/lv624/lazarus/robotics)
 "aLu" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clothing/suit/chef/classic{
@@ -13969,10 +13965,6 @@
 	},
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
-"aRY" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/vault2,
-/area/lv624/lazarus/robotics)
 "aRZ" = (
 /obj/structure/machinery/landinglight/delaythree{
 	dir = 1
@@ -45044,12 +45036,12 @@ axf
 axA
 bof
 ayF
-aRY
+axj
 axi
 axj
 ayF
 axe
-aLt
+axe
 aCk
 bin
 aCi

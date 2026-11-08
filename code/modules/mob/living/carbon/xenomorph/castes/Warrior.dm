@@ -95,7 +95,7 @@
 		return FALSE
 
 	if(!isliving(movable_atom))
-		return FALSE
+		return ..(movable_atom, FALSE) //pass lunge as FALSE so the neck grab logic never sees an object
 	var/mob/living/living_mob = movable_atom
 	var/should_neckgrab = !(src.can_not_harm(living_mob)) && lunge
 

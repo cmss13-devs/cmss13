@@ -320,6 +320,21 @@ GLOBAL_LIST_INIT(color_vars, list("color"))
 #define cached_key_number_decode(key_number_data) cached_params_decode(key_number_data, GLOBAL_PROC_REF(key_number_decode))
 #define cached_number_list_decode(number_list_data) cached_params_decode(number_list_data, GLOBAL_PROC_REF(number_list_decode))
 
+GLOBAL_LIST_INIT(xeno_undraggable_objects, typecacheof(list(
+	/obj/structure/machinery/m56d_hmg,
+	/obj/structure/machinery/nuclearbomb,
+	/obj/structure/ship_ammo,
+	/obj/structure/closet,
+	/obj/item/ammo_magazine,
+	/obj/item/weapon,
+	/obj/item/storage,
+	/obj/item/defenses,
+	/obj/item/attachable,
+	/obj/item/stack/sheet/metal,
+	/obj/item/stack/sheet/plasteel,
+	/obj/item/ammo_box,
+)))
+
 GLOBAL_LIST_INIT(typecache_mob, typecacheof(/mob))
 
 GLOBAL_LIST_INIT(typecache_living, typecacheof(/mob/living))

@@ -71,13 +71,6 @@
 		closest_target = potential_target
 		smallest_distance = distance
 
-	if(isnull(closest_target))
-		if(length(SShuman.processable_human_list))
-			target_mob = pick(SShuman.processable_human_list)
-		target_mob_ref = WEAKREF(target_mob)
-		stance = HOSTILE_STANCE_ATTACK
-		return
-
 	target_mob = closest_target
 	target_mob_ref = WEAKREF(target_mob)
 	stance = HOSTILE_STANCE_ATTACK

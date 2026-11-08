@@ -1,0 +1,4 @@
+author: "Ghostsheet"
+delete-after: True
+changes:
+  - rscadd: "Flamers can now take under-barrel rail light."

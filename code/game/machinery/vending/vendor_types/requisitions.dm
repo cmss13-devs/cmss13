@@ -137,6 +137,7 @@
 		list("Binoculars", floor(scale * 2), /obj/item/device/binoculars, VENDOR_ITEM_REGULAR),
 		list("Rangefinder", floor(scale * 1), /obj/item/device/binoculars/range, VENDOR_ITEM_REGULAR),
 		list("Laser Designator", floor(scale * 1), /obj/item/device/binoculars/range/designator, VENDOR_ITEM_REGULAR),
+		list("Tactical Laser Designator Case", 0.75, /obj/item/storage/box/kit/tactical_designator, VENDOR_ITEM_REGULAR),
 		list("Fulton Device Stack", floor(scale * 1), /obj/item/stack/fulton, VENDOR_ITEM_REGULAR),
 		list("Sentry Gun Network Laptop", 4, /obj/item/device/sentry_computer, VENDOR_ITEM_REGULAR),
 		list("Spare PDT/L Battle Buddy Kit", floor(scale * 4), /obj/item/storage/box/pdt_kit, VENDOR_ITEM_REGULAR),

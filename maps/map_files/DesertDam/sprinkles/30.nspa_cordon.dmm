@@ -29,7 +29,6 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "eI" = (
-/obj/effect/blocker/water/toxic/Group_2,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
@@ -69,7 +68,6 @@
 /turf/template_noop,
 /area/template_noop)
 "jx" = (
-/obj/effect/blocker/water/toxic/Group_2,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,

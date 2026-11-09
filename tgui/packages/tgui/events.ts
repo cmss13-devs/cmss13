@@ -304,7 +304,7 @@ export class MouseButtonEvent {
     if (this.shift) {
       this._str += 'Shift+';
     }
-    this._str += '[xbutton' + (this.code - 2) + ']'; //button 3 is xbutton1 in byond
+    this._str += '[xbutton' + (this.code - 2) + ']'; // button 3 is xbutton1 in byond
     return this._str;
   }
 }

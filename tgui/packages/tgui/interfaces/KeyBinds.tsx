@@ -1,5 +1,5 @@
 import type { Placement } from '@popperjs/core';
-import { Component, KeyboardEvent, MouseEvent, useState } from 'react';
+import { Component, type KeyboardEvent, type MouseEvent, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
   Box,
@@ -10,7 +10,7 @@ import {
   Input,
   Section,
 } from 'tgui/components';
-import { globalEvents, KeyEvent, MouseButtonEvent } from 'tgui/events';
+import { globalEvents, type KeyEvent, type MouseButtonEvent } from 'tgui/events';
 import { Window } from 'tgui/layouts';
 
 import { replaceRegexChars } from './helpers';
@@ -856,7 +856,7 @@ export class ButtonKeybind extends Component<KeyBindButtonProps> {
 
     e.preventDefault();
 
-    let pressedButton = 'xbutton' + (e.button - 2); //button 3 is xbutton1 in byond
+    let pressedButton = 'xbutton' + (e.button - 2); // button 3 is xbutton1 in byond
 
     this.finishTimerStart(600);
 

@@ -19,7 +19,6 @@ that said, the icon_states in the dmi files aren't culled for use by mappers - n
 	name = "spent casing"
 	desc = "Empty and useless now."
 	icon = 'icons/obj/items/weapons/casings.dmi'
-	icon_state = "casing"
 	appearance_flags = PIXEL_SCALE
 	layer = ABOVE_WEED_LAYER
 	density = FALSE
@@ -85,7 +84,7 @@ that said, the icon_states in the dmi files aren't culled for use by mappers - n
 // ------------------------- //
 
 /obj/effect/decal/cleanable/ammo_casing/bullet
-	icon_state = "casing" // literally just the above
+	icon_state = "casing"
 
 /obj/effect/decal/cleanable/ammo_casing/shrapnel
 	icon_state = "shrapnel_casing"

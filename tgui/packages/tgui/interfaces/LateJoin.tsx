@@ -109,7 +109,7 @@ export const LateJoin = () => {
           )}
           <Box className="LateJoin__categories">
             {CategoryOrder.map(({ name, department }) =>
-              data.Categories[department]?.length ? (
+              data.Categories?.[department]?.length ? (
                 <RoleCategory
                   key={name}
                   category={name}

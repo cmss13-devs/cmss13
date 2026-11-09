@@ -1,5 +1,3 @@
-GLOBAL_DATUM_INIT(late_join_tgui, /datum/late_join, new)
-
 /datum/late_join
 	var/datum/tgui/ui = null
 	var/faction = FACTION_NEUTRAL //Opening the UPP menu changes it to FACTION_UPP

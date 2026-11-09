@@ -1,5 +1,10 @@
 import type { Placement } from '@popperjs/core';
-import { Component, type KeyboardEvent, type MouseEvent, useState } from 'react';
+import {
+  Component,
+  type KeyboardEvent,
+  type MouseEvent,
+  useState,
+} from 'react';
 import { useBackend } from 'tgui/backend';
 import {
   Box,
@@ -10,7 +15,11 @@ import {
   Input,
   Section,
 } from 'tgui/components';
-import { globalEvents, type KeyEvent, type MouseButtonEvent } from 'tgui/events';
+import {
+  globalEvents,
+  type KeyEvent,
+  type MouseButtonEvent,
+} from 'tgui/events';
 import { Window } from 'tgui/layouts';
 
 import { replaceRegexChars } from './helpers';

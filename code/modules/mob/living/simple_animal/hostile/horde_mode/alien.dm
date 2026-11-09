@@ -71,7 +71,7 @@
 		closest_target = potential_target
 		smallest_distance = distance
 
-	if(isnull(target_mob))
+	if(isnull(closest_target))
 		return
 
 	target_mob = closest_target

@@ -35271,7 +35271,7 @@
 "tFH" = (
 /obj/structure/bed/chair/comfy,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/cartridge{
 	icon_state = "cartridge_10_1"
 	},
 /turf/open/floor/wood,

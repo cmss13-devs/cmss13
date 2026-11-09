@@ -173,6 +173,7 @@ SUBSYSTEM_DEF(hijack)
 
 /datum/controller/subsystem/hijack/fire(resumed = FALSE)
 	if(!SSticker?.mode?.is_in_endgame)
+		allow_withdrawal()
 		return
 
 	if(SSticker.current_state == GAME_STATE_FINISHED)
@@ -354,15 +355,15 @@ SUBSYSTEM_DEF(hijack)
 			return FALSE
 	return TRUE
 
-/datum/controller/subsystem/hijack/proc/allow_withdrawal(obj/docking_port/mobile/marine_dropship/dropship)
+/datum/controller/subsystem/hijack/proc/allow_withdrawal()
 	if(ground_claimed || withdrawal_available || hijack_status != HIJACK_OBJECTIVES_NOT_STARTED)
 		return FALSE
 	if(!istype(SSticker.mode, /datum/game_mode/colonialmarines) || SSticker.current_state != GAME_STATE_PLAYING || SSticker.mode.round_finished)
 		return FALSE
-	if(!is_groundside_clear())
+	if(!SSobjectives.first_drop_complete || !is_groundside_clear())
 		return FALSE
 	withdrawal_available = TRUE
-	marine_announcement("ALERT: [dropship.name] reports an unauthorized local override. Remote flight commands are being rejected. Command may authorize an FTL withdrawal from the operational area.", HIJACK_ANNOUNCE, sound_to_play = null)
+	marine_announcement("Groundside forces have fallen below minimum operational strength. Command may authorize an FTL withdrawal from the operational area.", HIJACK_ANNOUNCE, sound_to_play = null)
 	return TRUE
 
 /datum/controller/subsystem/hijack/proc/can_start_withdrawal()
@@ -370,15 +371,7 @@ SUBSYSTEM_DEF(hijack)
 		return FALSE
 	if(!istype(SSticker.mode, /datum/game_mode/colonialmarines) || SSticker.current_state != GAME_STATE_PLAYING || SSticker.mode.round_finished)
 		return FALSE
-	if(!is_groundside_clear())
-		return FALSE
-	for(var/obj/docking_port/mobile/marine_dropship/dropship in SSshuttle.mobile)
-		if(!is_ground_level(dropship.z) || dropship.is_hijacked)
-			continue
-		var/obj/structure/machinery/computer/shuttle/dropship/flight/console = dropship.getControlConsole()
-		if(console?.dropship_control_lost)
-			return TRUE
-	return FALSE
+	return SSobjectives.first_drop_complete && is_groundside_clear()
 
 /datum/controller/subsystem/hijack/proc/start_withdrawal(automatic = FALSE)
 	if(!can_start_withdrawal())

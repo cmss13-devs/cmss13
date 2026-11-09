@@ -165,11 +165,6 @@
 	if(mode == SHUTTLE_CRASHED)
 		return
 
-	if(!SShijack.withdrawal_available && is_ground_level(z))
-		var/obj/structure/machinery/computer/shuttle/dropship/flight/console = getControlConsole()
-		if(console?.dropship_control_lost)
-			SShijack.allow_withdrawal(src)
-
 	var/obj/docking_port/stationary/marine_dropship/dropzone = destination
 	if(mode == SHUTTLE_PREARRIVAL && dropzone && !dropzone.landing_lights_on)
 		if(istype(destination, /obj/docking_port/stationary/marine_dropship))

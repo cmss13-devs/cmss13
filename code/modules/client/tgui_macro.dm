@@ -96,8 +96,8 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 				if(!length(kbinds[old_key]))
 					kbinds -= old_key
 
-			if(LAZYISIN(kbinds["Unbound"], old_key))
-				kbinds["Unbound"] -= old_key
+			if(LAZYISIN(kbinds["Unbound"], kb_name))
+				kbinds["Unbound"] -= kb_name
 
 			kbinds[full_key] += list(kb_name)
 			kbinds[full_key] = sortList(kbinds[full_key])

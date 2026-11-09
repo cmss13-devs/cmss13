@@ -37,7 +37,8 @@
 			)
 	)
 
-	late_join_ui = new()
+	if(!late_join_ui)
+		late_join_ui = new()
 
 	tgui_interact(src)
 

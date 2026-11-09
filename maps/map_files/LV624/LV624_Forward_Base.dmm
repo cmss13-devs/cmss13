@@ -2315,6 +2315,7 @@
 /area/lv624/ground/barrens/east_barrens/ceiling)
 "aiK" = (
 /obj/structure/machinery/chem_dispenser,
+/obj/item/reagent_container/glass/beaker/bluespace,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -11584,6 +11585,7 @@
 /area/forward_base/lv624/living/kitchen)
 "aKY" = (
 /obj/structure/machinery/chem_dispenser,
+/obj/item/reagent_container/glass/beaker/bluespace,
 /turf/open/floor/almayer/sterile_green,
 /area/forward_base/lv624/medical/pharmacy)
 "aKZ" = (

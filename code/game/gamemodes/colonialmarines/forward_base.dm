@@ -10,7 +10,7 @@
 	name = GAMEMODE_FORWARD_BASE
 	config_tag = GAMEMODE_FORWARD_BASE
 	votable = TRUE
-	max_players = 85
+	max_players = 70
 	var/hive_pylon_timer
 	var/hive_pylons_charged = FALSE
 	var/base_empty_since

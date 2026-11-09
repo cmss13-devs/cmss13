@@ -39,6 +39,7 @@
 /mob/new_player/Destroy()
 	if(ready)
 		GLOB.readied_players--
+	QDEL_NULL(late_join_ui)
 	return ..()
 
 /mob/new_player/var/datum/tutorial_menu/tutorial_menu

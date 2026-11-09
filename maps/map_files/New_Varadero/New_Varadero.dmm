@@ -8867,7 +8867,7 @@
 /turf/open/floor/shiva/blue,
 /area/varadero/interior/hall_SE)
 "gCH" = (
-/obj/effect/decal/cleanable/ammo_casing/casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	dir = 6;
 	icon_state = "casing_5"
 	},
@@ -15128,7 +15128,7 @@
 /turf/open/floor/shiva/north,
 /area/varadero/interior/morgue)
 "lRz" = (
-/obj/effect/decal/cleanable/ammo_casing/casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_7_1"
 	},
 /turf/open/floor/carpet,
@@ -16076,7 +16076,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/obj/effect/decal/cleanable/ammo_casing/casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_10_1"
 	},
 /turf/open/floor/carpet,
@@ -27617,7 +27617,7 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/mess)
 "vPK" = (
-/obj/effect/decal/cleanable/ammo_casing/casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_8"
 	},
 /turf/open/floor/wood,

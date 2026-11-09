@@ -2381,15 +2381,7 @@
 /area/tyrargo/outdoors/colony_streets/south_west)
 "agM" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_y = 1;
-	layer = 3.01
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "agN" = (
@@ -7082,15 +7074,7 @@
 	layer = 2.96;
 	pixel_y = -12
 	},
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_x = 5;
-	pixel_y = -24
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
 	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
@@ -7821,15 +7805,7 @@
 /turf/open/hybrisa/street/roadlines4,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "aut" = (
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_x = -14;
-	layer = 2.98
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/oob/outdoors)
@@ -12597,14 +12573,7 @@
 /turf/open/asphalt/cement/cement15,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "aHo" = (
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	pixel_x = 10;
-	dir = 6
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/west_trench)
 "aHp" = (
@@ -13157,15 +13126,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
 "aIN" = (
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_x = -14;
-	layer = 2.98
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
@@ -20800,13 +20761,7 @@
 	icon_state = "sandbag_0";
 	pixel_x = 4
 	},
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 1;
@@ -22819,14 +22774,7 @@
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	pixel_y = 12;
-	pixel_x = -15
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
 	},
@@ -50190,13 +50138,7 @@
 /turf/open/floor/prison/blue/west,
 /area/tyrargo/indoors/sewer_treatment/upper)
 "cAA" = (
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "shell_10_1";
-	name = "spent casings";
-	dir = 1
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /obj/item/weapon/gun/shotgun/pump/m37a,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
@@ -50233,14 +50175,7 @@
 	icon_state = "trash_4";
 	layer = 3.2
 	},
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_y = -13
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/apartment/south_ground)
 "cAH" = (
@@ -102236,15 +102171,7 @@
 /area/tyrargo/indoors/apartment/south_upper)
 "gGY" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_y = -14;
-	layer = 3.01
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "gHt" = (
@@ -103751,15 +103678,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "kvK" = (
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_y = -14;
-	layer = 3.01
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/apartment/south_upper)
 "kvX" = (
@@ -104313,14 +104232,7 @@
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/indoors/apartment/north_ground)
 "lNE" = (
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	pixel_x = 10;
-	dir = 6
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /turf/open/floor/hybrisa/metal/zbrownfloor_corner/west,
 /area/tyrargo/indoors/engineering/ground)
 "lNS" = (
@@ -104374,14 +104286,7 @@
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 4
 	},
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_x = 5
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
@@ -105929,15 +105834,7 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_upper)
 "oFM" = (
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_y = -14;
-	layer = 3.01
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /obj/effect/decal/hybrisa/road/lines2,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_west)
@@ -106085,15 +105982,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "oPc" = (
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_x = 5;
-	pixel_y = 6
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/metal/zbrownfloor1/east,
 /area/tyrargo/indoors/engineering/ground)
@@ -106438,15 +106327,7 @@
 	dir = 8;
 	icon_state = "sandbag_0"
 	},
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_x = 9;
-	pixel_y = -2
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /obj/structure/prop/tyrargo/boards{
 	dir = 1;
 	pixel_x = 1;
@@ -106773,13 +106654,7 @@
 /turf/open/floor/wood,
 /area/tyrargo/indoors/bar/ground)
 "qtr" = (
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/ammo_magazine/rifle/lmg,
@@ -108231,15 +108106,7 @@
 	dir = 8;
 	icon_state = "sandbag_0"
 	},
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	pixel_y = -10;
-	pixel_x = 8;
-	dir = 6
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
@@ -109435,13 +109302,7 @@
 "vAp" = (
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /obj/item/stack/medical/bruise_pack/random_amount,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
@@ -109873,15 +109734,7 @@
 /turf/open/asphalt/cement/cement9,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "wjb" = (
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_x = 5;
-	pixel_y = 6
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "wkt" = (

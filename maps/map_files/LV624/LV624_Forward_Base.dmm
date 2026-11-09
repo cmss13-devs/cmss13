@@ -2011,6 +2011,9 @@
 	},
 /turf/open/floor/plating,
 /area/forward_base/lv624/preps/leader/cryo)
+"ahD" = (
+/turf/closed/wall/almayer/outer/internal,
+/area/forward_base/lv624/hallways/disposals)
 "ahE" = (
 /obj/structure/closet/secure_closet/brig,
 /obj/effect/decal/cleanable/dirt{
@@ -2061,13 +2064,10 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/containers)
 "ahP" = (
-/obj/structure/barricade/metal/plasteel{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/turf/closed/wall/almayer/outer/internal,
 /area/forward_base/lv624/hallways/pillbox/southeast)
 "ahQ" = (
 /obj/structure/surface/table/reinforced{
@@ -2488,12 +2488,9 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/forward_base/lv624/living/briefing)
-"ajo" = (
-/obj/structure/barricade/metal/plasteel{
-	dir = 1
-	},
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/forward_base/lv624/hallways/pillbox/southeast)
+"ajn" = (
+/turf/closed/wall/almayer/reinforced,
+/area/forward_base/lv624/hallways/disposals)
 "ajp" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/dirt,
@@ -5912,16 +5909,6 @@
 /obj/item/ammo_magazine/shotgun/incendiary,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
-"atN" = (
-/obj/structure/machinery/door_control/brbutton{
-	pixel_y = 26;
-	name = "CIC Armory Doors";
-	id = "CIC Lockdown";
-	req_access = list(3);
-	pixel_x = -2
-	},
-/turf/closed/wall/almayer/outer/internal,
-/area/forward_base/lv624/command/cic)
 "atO" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/machinery/door/poddoor/almayer{
@@ -7966,6 +7953,7 @@
 /turf/open/floor/almayer/silver/southwest,
 /area/forward_base/lv624/command/cic)
 "aAb" = (
+/obj/structure/closet/secure_closet/securecom,
 /obj/structure/machinery/door_control{
 	pixel_x = 24;
 	pixel_y = -8;
@@ -8104,7 +8092,10 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle)
 "aAu" = (
-/obj/structure/closet/secure_closet/securecom,
+/obj/structure/machinery/cm_vending/gear/staff_officer_armory{
+	pixel_y = 32;
+	density = 0
+	},
 /turf/open/floor/almayer/cargo/no_build,
 /area/forward_base/lv624/command/cic)
 "aAv" = (
@@ -18705,7 +18696,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/forward_base/lv624/hallways/pillbox/southeast)
+/area/forward_base/lv624/hallways/disposals)
 "bfH" = (
 /obj/structure/machinery/conveyor{
 	id = "lower_garbage";
@@ -18715,11 +18706,11 @@
 	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/forward_base/lv624/hallways/pillbox/southeast)
+/area/forward_base/lv624/hallways/disposals)
 "bfI" = (
 /obj/structure/machinery/recycler,
 /turf/open/floor/plating/plating_catwalk,
-/area/forward_base/lv624/hallways/pillbox/southeast)
+/area/forward_base/lv624/hallways/disposals)
 "bfJ" = (
 /obj/structure/flora/jungle/vines/light_1,
 /turf/closed/wall/almayer/outer/internal,
@@ -18733,17 +18724,17 @@
 	icon_state = "pipe-c"
 	},
 /turf/open/floor/almayer/plate,
-/area/forward_base/lv624/hallways/pillbox/southeast)
+/area/forward_base/lv624/hallways/disposals)
 "bfL" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/forward_base/lv624/hallways/pillbox/southeast)
+/area/forward_base/lv624/hallways/disposals)
 "bfM" = (
 /turf/open/floor/almayer/plate,
-/area/forward_base/lv624/hallways/pillbox/southeast)
+/area/forward_base/lv624/hallways/disposals)
 "bfN" = (
 /turf/closed/wall/almayer/reinforced,
 /area/forward_base/lv624/hallways/pillbox/southeast)
@@ -18765,7 +18756,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/forward_base/lv624/hallways/pillbox/southeast)
+/area/forward_base/lv624/hallways/disposals)
 "bfQ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -35214,7 +35205,7 @@ aNf
 all
 alf
 akI
-atN
+aIQ
 aIQ
 aIQ
 aAf
@@ -43958,7 +43949,7 @@ buf
 buf
 buf
 buf
-bfN
+bcZ
 bgm
 aIX
 bfN
@@ -44182,7 +44173,7 @@ gDu
 gDu
 gDu
 gDu
-bfN
+bcZ
 aJx
 ajj
 bfN
@@ -44406,7 +44397,7 @@ ajO
 ary
 ary
 ajP
-ajo
+bcZ
 aiW
 aJm
 aIV
@@ -44630,7 +44621,7 @@ atf
 ajk
 ate
 ajP
-bfN
+bcZ
 bbA
 bge
 ahU
@@ -44854,12 +44845,12 @@ ajk
 ajO
 gDu
 gDu
-bfN
-bfN
+bcZ
+bcZ
 ahP
-bfN
-bfN
-aIb
+bcZ
+bcZ
+aqg
 bfJ
 bfJ
 bcY
@@ -45084,10 +45075,10 @@ bgf
 ahG
 kxI
 ahG
-bfN
+ajn
 bfK
 bfG
-bcZ
+ahD
 aac
 "}
 (52,1,1) = {"
@@ -45311,7 +45302,7 @@ bfS
 bfP
 bfL
 bfH
-bcZ
+ahD
 aac
 "}
 (53,1,1) = {"
@@ -45532,10 +45523,10 @@ ahG
 kxI
 tsa
 ahI
-bfN
+ajn
 bfM
 bfI
-bcZ
+ahD
 aac
 "}
 (54,1,1) = {"
@@ -45756,10 +45747,10 @@ bnk
 bno
 bnk
 bnk
-bfN
-bfN
-bcZ
-bcZ
+ajn
+ajn
+ahD
+ahD
 aac
 "}
 (55,1,1) = {"

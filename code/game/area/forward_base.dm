@@ -10,12 +10,18 @@
 	requires_power = FALSE //Temporary
 	unlimited_power = TRUE //Temporary
 
+	// Whether hostile xenos in this area towards the alarm
+	var/xeno_alert_enabled = TRUE
 	var/static/xeno_alert_cooldown = 0
 	var/static/list/xeno_alert_timers = list()
 
+/area/forward_base/proc/is_xeno_alert_area(atom/location)
+	var/area/forward_base/bunker_area = get_area(location)
+	return istype(bunker_area) && bunker_area.xeno_alert_enabled
+
 /area/forward_base/Entered(atom/movable/thing, atom/OldLoc)
 	. = ..()
-	if(!isxeno(thing) || !OldLoc || istype(get_area(OldLoc), /area/forward_base) || !COOLDOWN_FINISHED(src, xeno_alert_cooldown))
+	if(!xeno_alert_enabled || !isxeno(thing) || !OldLoc || is_xeno_alert_area(OldLoc) || !COOLDOWN_FINISHED(src, xeno_alert_cooldown))
 		return
 	var/mob/living/carbon/xenomorph/xeno = thing
 	if(xeno.stat == DEAD || (FACTION_MARINE in xeno.iff_tag?.faction_groups))
@@ -25,20 +31,20 @@
 			continue
 		if(other_xeno.stat == DEAD || (FACTION_MARINE in other_xeno.iff_tag?.faction_groups))
 			continue
-		if(istype(get_area(other_xeno), /area/forward_base))
+		if(is_xeno_alert_area(other_xeno))
 			return
 	xeno_alert_timers[xeno] = addtimer(CALLBACK(src, PROC_REF(alert_xeno_intrusion), xeno), 5 SECONDS, TIMER_STOPPABLE)
 
 /area/forward_base/Exited(atom/movable/thing, atom/new_loc)
 	. = ..()
-	if(istype(get_area(new_loc), /area/forward_base))
+	if(!xeno_alert_enabled || is_xeno_alert_area(new_loc))
 		return
 	deltimer(xeno_alert_timers[thing])
 	xeno_alert_timers -= thing
 
 /area/forward_base/proc/alert_xeno_intrusion(mob/living/carbon/xenomorph/xeno)
 	xeno_alert_timers -= xeno
-	if(xeno.stat == DEAD || (FACTION_MARINE in xeno.iff_tag?.faction_groups))
+	if(QDELETED(xeno) || !is_xeno_alert_area(xeno) || xeno.stat == DEAD || (FACTION_MARINE in xeno.iff_tag?.faction_groups))
 		return
 	if(!COOLDOWN_FINISHED(src, xeno_alert_cooldown))
 		return

@@ -97,7 +97,6 @@
 #define SPAN_DISARM(X) "<span class='disarm'>[X]</span>"
 #define SPAN_DL1(X) "<span class='dl1'>[X]</span>"
 #define SPAN_NEWSCASTER(X) "<span class='newscaster'>[X]</span>"
-#define SPAN_ROUND_HEADER(X) "<span class='round header'>[X]</span>"
 #define SPAN_EMOTE(X) "<span class='emote'>[X]</span>"
 #define SPAN_UNCONSCIOUS(X) "<span class='unconscious'>[X]</span>"
 #define SPAN_SUICIDE(X) "<span class='suicide'>[X]</span>"

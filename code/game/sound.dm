@@ -245,6 +245,8 @@
 				sound = pick('sound/weapons/clan_sword_hit_1.ogg', 'sound/weapons/clan_sword_hit_2.ogg')
 			if("slam")
 				sound = pick('sound/effects/slam1.ogg','sound/effects/slam2.ogg','sound/effects/slam3.ogg', 0.1;'sound/effects/slam_rare_1.ogg')
+			if("pipe_crash")
+				sound = 'sound/effects/slam_rare_1.ogg'
 			if("pageturn")
 				sound = pick('sound/effects/pageturn1.ogg', 'sound/effects/pageturn2.ogg','sound/effects/pageturn3.ogg')
 			if("terminal_button")
@@ -307,9 +309,13 @@
 			if("gun_pulse_classic")
 				sound = pick('sound/weapons/rifle_firing_sounds/gun_mk1_1.ogg','sound/weapons/rifle_firing_sounds/gun_mk1_2.ogg','sound/weapons/rifle_firing_sounds/gun_mk1_3.ogg','sound/weapons/rifle_firing_sounds/gun_mk1_4.ogg','sound/weapons/rifle_firing_sounds/gun_mk1_5.ogg','sound/weapons/rifle_firing_sounds/gun_mk1_6.ogg')
 			if("gun_smartgun")
-				sound = pick('sound/weapons/gun_smartgun1.ogg', 'sound/weapons/gun_smartgun2.ogg', 'sound/weapons/gun_smartgun3.ogg', 'sound/weapons/gun_smartgun4.ogg')
+				sound = pick('sound/weapons/heavy_weapon_firing_sounds/gun_smartgun1.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun2.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun3.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun4.ogg')
 			if("gun_smartgun_rattle")
-				sound = pick('sound/weapons/gun_smartgun1_rattle.ogg', 'sound/weapons/gun_smartgun2_rattle.ogg', 'sound/weapons/gun_smartgun3_rattle.ogg', 'sound/weapons/gun_smartgun4_rattle.ogg')
+				sound = pick('sound/weapons/heavy_weapon_firing_sounds/gun_smartgun1_rattle.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun2_rattle.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun3_rattle.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun4_rattle.ogg')
+			if("gun_smartgun_clf")
+				sound = pick('sound/weapons/heavy_weapon_firing_sounds/gun_smartgun_clf1.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun_clf2.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun_clf3.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun_clf4.ogg')
+			if("gun_smartgun_clf_rattle")
+				sound = pick('sound/weapons/heavy_weapon_firing_sounds/gun_smartgun_clf1_rattle.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun_clf2_rattle.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun_clf3_rattle.ogg', 'sound/weapons/heavy_weapon_firing_sounds/gun_smartgun_clf4_rattle.ogg')
 			if("gun_jam_rack")
 				sound = pick('sound/weapons/handling/gun_jam_rack_1.ogg', 'sound/weapons/handling/gun_jam_rack_2.ogg', 'sound/weapons/handling/gun_jam_rack_3.ogg')
 			//A:CM gun sounds
@@ -355,6 +361,8 @@
 				sound = pick('sound/weapons/alien_bite1.ogg','sound/weapons/alien_bite2.ogg')
 			if("alien_footstep_large")
 				sound = pick('sound/effects/alien_footstep_large1.ogg','sound/effects/alien_footstep_large2.ogg','sound/effects/alien_footstep_large3.ogg')
+			if("alien_footstep_large_water")
+				sound = pick('sound/effects/alien_footstep_large_water1.ogg','sound/effects/alien_footstep_large_water2.ogg','sound/effects/alien_footstep_large_water3.ogg')
 			if("alien_footstep_medium")
 				sound = pick('sound/effects/alien_footstep_medium1.ogg','sound/effects/alien_footstep_medium2.ogg','sound/effects/alien_footstep_medium3.ogg')
 			if("alien_charge")
@@ -389,6 +397,8 @@
 				sound = pick('sound/voice/alien_roar_larva1.ogg','sound/voice/alien_roar_larva2.ogg')
 			if("queen")
 				sound = pick('sound/voice/alien_queen_command.ogg','sound/voice/alien_queen_command2.ogg','sound/voice/alien_queen_command3.ogg')
+			if("pred_decloak")
+				sound = pick('sound/effects/pred_force_decloak.ogg')
 			// Human
 			if("male_scream")
 				sound = pick('sound/voice/human_male_scream_1.ogg','sound/voice/human_male_scream_2.ogg','sound/voice/human_male_scream_3.ogg','sound/voice/human_male_scream_4.ogg',5;'sound/voice/human_male_scream_5.ogg',5;'sound/voice/human_jackson_scream.ogg',5;'sound/voice/human_ack_scream.ogg','sound/voice/human_male_scream_6.ogg')
@@ -460,6 +470,18 @@
 				sound = pick('sound/voice/wy_droid/wy_stealth_droid_death1.ogg', 'sound/voice/wy_droid/wy_stealth_droid_death2.ogg')
 			if("clown_footstep")
 				sound = pick('sound/effects/clownstep1.ogg', 'sound/effects/clownstep2.ogg')
+			//items
+			if("map_fold")
+				sound = pick('sound/items/map_fold1.ogg', 'sound/items/map_fold2.ogg', 'sound/items/map_fold3.ogg', 'sound/items/map_fold4.ogg')
+			if("map_unfold")
+				sound = pick('sound/items/map_unfold1.ogg', 'sound/items/map_unfold2.ogg', 'sound/items/map_unfold3.ogg')
+			//water sounds
+			if("shallowwading")
+				sound = pick('sound/effects/water/shallowwading1.ogg','sound/effects/water/shallowwading2.ogg','sound/effects/water/shallowwading3.ogg','sound/effects/water/shallowwading4.ogg','sound/effects/water/shallowwading5.ogg','sound/effects/water/shallowwading6.ogg')
+			if("wading")
+				sound = pick('sound/effects/water/wading1.ogg','sound/effects/water/wading2.ogg','sound/effects/water/wading3.ogg')
+			if("deepwading")
+				sound = pick('sound/effects/water/deepwading1.ogg','sound/effects/water/deepwading2.ogg','sound/effects/water/deepwading3.ogg','sound/effects/water/deepwading4.ogg')
 	return sound
 
 /client/proc/generate_sound_queues()

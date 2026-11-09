@@ -25,20 +25,28 @@
 
 /obj/structure/platform/Initialize()
 	. = ..()
-	var/image/platform_overlay = image(icon, src, "platform_overlay", LADDER_LAYER, dir)//ladder layer puts us just above weeds.
+	var/is_water = SSwater_overlays.is_water(get_turf(src))
 	switch(dir)
 		if(SOUTH)
 			layer = ABOVE_MOB_LAYER
-			platform_overlay.pixel_y = -16
 		if(NORTH)
-			platform_overlay.pixel_y = 16
+			if(is_water)
+				layer = UNDER_WATER_PLATFORMS_LAYER
+				plane = FLOOR_PLANE
+			else
+				layer = TURF_LAYER
 		if(EAST)
-			platform_overlay.pixel_x = 16
-			layer = MOB_LAYER
+			if(is_water)
+				layer = UNDER_WATER_PLATFORMS_LAYER
+				plane = FLOOR_PLANE
+			else
+				layer = MOB_LAYER
 		if(WEST)
-			platform_overlay.pixel_x = -16
-			layer = MOB_LAYER
-	overlays += platform_overlay
+			if(is_water)
+				layer = UNDER_WATER_PLATFORMS_LAYER
+				plane = FLOOR_PLANE
+			else
+				layer = MOB_LAYER
 
 /obj/structure/platform/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -214,18 +222,14 @@
 /obj/structure/platform_decoration/Initialize()
 	. = ..()
 	switch(dir)
-		if (NORTH)
-			layer = OBJ_LAYER+0.1
-		if (SOUTH)
-			layer = ABOVE_MOB_LAYER+0.1
-		if (SOUTHEAST)
-			layer = ABOVE_MOB_LAYER+0.1
-		if (SOUTHWEST)
-			layer = ABOVE_MOB_LAYER+0.1
-		if (EAST)
-			layer = MOB_LAYER+0.1
-		if (WEST)
-			layer = MOB_LAYER+0.1
+		if(SOUTH, NORTH , SOUTHWEST, SOUTHEAST)
+			layer = ABOVE_MOB_LAYER
+		else
+			if(SSwater_overlays.is_water(get_turf(src)))
+				layer = UNDER_WATER_PLATFORMS_LAYER
+				plane = FLOOR_PLANE
+			else
+				layer = MOB_LAYER
 
 /obj/structure/platform_decoration/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -253,6 +257,11 @@
 	creaking_sound = 'sound/effects/rock_creaking.ogg'
 	breaking_sound = 'sound/effects/meteorimpact.ogg'
 	dismantle_tool = /obj/item/tool/shovel
+
+/obj/structure/platform/wood
+	icon_state = "wood_platform"
+	creaking_sound = 'sound/effects/wood_creaking.ogg'
+	breaking_sound = 'sound/effects/woodhit.ogg'
 
 //------------------------------//
 //    Metal Stairs Platforms    //
@@ -1086,6 +1095,56 @@
 	dir = EAST
 /obj/structure/platform_decoration/stone/runed_sandstone/west
 	dir = WEST
+
+//------------------------------//
+//    Wooden Stairs Platforms    //
+//------------------------------//
+
+/obj/structure/platform/wood
+	icon_state = "wood_platform"
+	name = "wooden platform"
+	desc = "A raised level of wood, often used to elevate areas above others. You could probably climb it."
+
+/obj/structure/platform/wood/north
+	dir = NORTH
+/obj/structure/platform/wood/east
+	dir = EAST
+/obj/structure/platform/wood/west
+	dir = WEST
+
+/obj/structure/platform/wood/stair_cut
+	icon_state = "wood_platform_stair"
+	dir = NORTH
+
+/obj/structure/platform/wood/stair_cut/platform_left
+	icon_state = "wood_platform_stair"
+
+/obj/structure/platform/wood/stair_cut/platform_right
+	icon_state = "wood_platform_stair_alt"
+
+//------------------------------------//
+// Wood based Platforms "decoration" //
+//------------------------------------//
+
+/obj/structure/platform_decoration/wood
+	icon_state = "wood_platform_deco"
+
+/obj/structure/platform_decoration/wood/north
+	icon_state = "wood_platform_deco"
+	dir = NORTH
+
+/obj/structure/platform_decoration/wood/east
+	dir = EAST
+/obj/structure/platform_decoration/wood/west
+	dir = WEST
+/obj/structure/platform_decoration/wood/northeast
+	dir = NORTHEAST
+/obj/structure/platform_decoration/wood/northwest
+	dir = NORTHWEST
+/obj/structure/platform_decoration/wood/southeast
+	dir = SOUTHEAST
+/obj/structure/platform_decoration/wood/southwest
+	dir = SOUTHWEST
 
 // Colorable variants
 // strata rocks

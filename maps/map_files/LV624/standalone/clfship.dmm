@@ -364,6 +364,31 @@
 /obj/effect/landmark/survivor_spawner/clf_synth,
 /turf/open/floor/almayer/bluecorner/north,
 /area/lv624/lazarus/crashed_ship)
+"bi" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/west_barrens)
+"bj" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
+"bk" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
+"bl" = (
+/obj/structure/closet,
+/turf/open/floor/platingdmg1,
+/area/lv624/lazarus/crashed_ship)
+"bm" = (
+/obj/structure/closet,
+/turf/open/floor/damaged3/west,
+/area/lv624/lazarus/crashed_ship)
+"bn" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/west_caves)
 "by" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/west_caves)
@@ -764,6 +789,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
+/obj/structure/closet,
 /turf/open/floor/almayer/greencorner/east,
 /area/lv624/lazarus/crashed_ship)
 "ok" = (
@@ -1417,6 +1443,7 @@
 /area/lv624/lazarus/crashed_ship)
 "LV" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "Mm" = (
@@ -2218,7 +2245,7 @@ Hj
 Hj
 "}
 (7,1,1) = {"
-LV
+bn
 aT
 Hj
 Hj
@@ -2265,7 +2292,7 @@ Hj
 Yj
 "}
 (8,1,1) = {"
-LV
+bn
 aT
 aT
 Hj
@@ -2312,7 +2339,7 @@ Hj
 Yj
 "}
 (9,1,1) = {"
-LV
+bn
 aT
 aT
 aT
@@ -2359,7 +2386,7 @@ Hj
 Yj
 "}
 (10,1,1) = {"
-LV
+bn
 aT
 aT
 aT
@@ -2406,7 +2433,7 @@ Hj
 Yj
 "}
 (11,1,1) = {"
-LV
+bn
 aT
 aT
 aT
@@ -2508,7 +2535,7 @@ Mv
 Tz
 ro
 kp
-Qf
+bl
 Xx
 ug
 dN
@@ -2555,7 +2582,7 @@ gn
 Bc
 Qf
 Xq
-Bc
+bm
 Qf
 mS
 wr
@@ -3784,7 +3811,7 @@ Hj
 Hj
 Hj
 Hj
-Ab
+bj
 Ab
 Ab
 Ab
@@ -3831,7 +3858,7 @@ Hj
 Hj
 Hj
 Hj
-Ab
+bj
 Ab
 Ab
 Ab
@@ -3877,13 +3904,13 @@ Hj
 Hj
 Hj
 Hj
-Ab
-Ab
-Ab
-Ab
-Ab
-Ab
-Ab
+bj
+bj
+bk
+bk
+bk
+bj
+bj
 Hj
 Hj
 Hj
@@ -3929,7 +3956,7 @@ Ab
 Ab
 Ab
 Ab
-Ab
+bj
 Hj
 Hj
 Hj
@@ -4025,9 +4052,9 @@ vw
 vw
 vw
 vw
-vw
-vw
-vw
+bi
+bi
+bi
 vw
 Yj
 Yj
@@ -4072,9 +4099,9 @@ vw
 vw
 vw
 vw
-vw
-vw
-vw
+bi
+bi
+bi
 vw
 Yj
 Yj

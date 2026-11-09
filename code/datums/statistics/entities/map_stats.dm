@@ -7,6 +7,11 @@
 	var/total_xeno_victories = 0
 	var/total_xeno_majors = 0
 	var/total_draws = 0
+	var/total_survivor_victories = 0
+	var/total_survivor_majors = 0
+	var/total_xeno_slaughters = 0
+	var/total_xeno_slaughter_majors = 0
+	var/total_survivor_draws = 0
 
 /datum/entity_meta/statistic_map
 	entity_type = /datum/entity/statistic/map
@@ -21,6 +26,11 @@
 		"total_marine_majors" = DB_FIELDTYPE_BIGINT,
 		"total_xeno_victories" = DB_FIELDTYPE_BIGINT,
 		"total_xeno_majors" = DB_FIELDTYPE_BIGINT,
-		"total_draws" = DB_FIELDTYPE_BIGINT
+		"total_draws" = DB_FIELDTYPE_BIGINT,
+		"total_survivor_victories" = DB_FIELDTYPE_BIGINT,
+		"total_survivor_majors" = DB_FIELDTYPE_BIGINT,
+		"total_xeno_slaughters" = DB_FIELDTYPE_BIGINT,
+		"total_xeno_slaughter_majors" = DB_FIELDTYPE_BIGINT,
+		"total_survivor_draws" = DB_FIELDTYPE_BIGINT,
 	)
 

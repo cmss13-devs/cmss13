@@ -41,8 +41,6 @@ SUBSYSTEM_DEF(ticker)
 	// TODO: move this into mapview ss
 	var/toweractive = FALSE
 
-	var/list/minds = list()
-
 	var/automatic_delay_end = FALSE
 
 	///If we have already done tip of the round.
@@ -385,8 +383,7 @@ SUBSYSTEM_DEF(ticker)
 	if(!delay)
 		delay = CONFIG_GET(number/round_end_countdown) * 10
 
-	var/skip_delay = check_rights()
-	if(delay_end && !skip_delay)
+	if(delay_end)
 		to_chat(world, SPAN_BOLDNOTICE("An admin has delayed the round end."))
 		return
 
@@ -395,7 +392,7 @@ SUBSYSTEM_DEF(ticker)
 	var/start_wait = world.time
 	sleep(delay - (world.time - start_wait))
 
-	if(delay_end && !skip_delay)
+	if(delay_end)
 		to_chat(world, SPAN_BOLDNOTICE("Reboot was cancelled by an admin."))
 		return
 

@@ -289,6 +289,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/glasses/mbcg = NO_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/mgoggles/cmb_riot_shield = NO_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/mgoggles/mp_riot_shield = NO_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/clf_riot_shield = NO_GARB_OVERRIDE,
 
 	// WALKMAN AND CASSETTES
 	/obj/item/device/walkman = NO_GARB_OVERRIDE,
@@ -1062,6 +1063,15 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "M11 pattern marine"
 
+/obj/item/clothing/head/helmet/marine/leader/mod
+	name = "\improper M11-R pattern helmet"
+	desc = "An M11 helmet fitted with leather banding, a nonfunctional external comms module, and a second HUD optic mount. Its plating is slightly thinner to make room for the extra mount."
+	icon_state = "vsl_helmet"
+	specialty = "M11-R pattern marine"
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	max_inserted_visors = 2
+
 /obj/item/clothing/head/helmet/marine/rto
 	name = "\improper M12 pattern dust helmet"
 	desc = "An experimental brain-bucket. A dust ruffle hangs from back instead of the standard lobster shell design. Moderately better at deflecting blunt objects at the cost of humiliation, can also hold a second visor optic. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your fantastic leadership."
@@ -1355,7 +1365,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	specialty = "MK30 tactical"
-	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/pilot, new /obj/item/device/helmet_visor/medical/advanced)
 	inserted_visors = list(new /obj/item/device/helmet_visor/po_visor)
 	max_inserted_visors = 1
 
@@ -1372,6 +1382,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
 	)
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/pilot, new /obj/item/device/helmet_visor/medical/advanced)
 
 /obj/item/clothing/head/helmet/marine/ghillie
 	name = "\improper M45 ghillie helmet"
@@ -1960,6 +1971,45 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		if("s_skullcapm")
 			desc = "A hood meant to protect the wearer from both the cold and the guise of the enemy in the tundra."
 			flags_inv_hide = HIDEEARS|HIDEALLHAIR
+
+//===========================//CLF - SPECIAL FORCES\\================================\\
+//=====================================================================\\
+
+/obj/item/clothing/head/helmet/marine/veteran/clf
+	name = "\improper repainted M10 pattern helmet"
+	desc = "A M10 helmet that has been repainted with a darker color scheme, and has been modified by its user. This custom model is used by the few professional members of the Colonial Liberation Front."
+	icon_state = "clf_m10"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CLF.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CLF.dmi'
+	)
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_HIGH
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	clothing_traits = list(TRAIT_EAR_PROTECTION)
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+
+/obj/item/clothing/head/helmet/marine/veteran/clf/heavy
+	name = "\improper repainted reinforced M10 pattern helmet"
+	desc = "A repainted M10 helmet that has been seen a complete overhaul of its exterior design to shove on as much protection as possible. This custom model is used by the few professional members of the Colonial Liberation Front."
+	icon_state = "clf_heavy_m10"
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_HIGH
+
+/obj/item/clothing/head/helmet/marine/veteran/clf/riot
+	name = "\improper repainted RC6 helmet"
+	desc = "A Riot Control 6 helmet that has been repainted with a darker color scheme, and has been modified by its user. This custom model is used by the few professional members of the Colonial Liberation Front."
+	icon_state = "clf_riot"
+
+/obj/item/clothing/head/helmet/marine/veteran/clf/canc
+	name = "\improper Type 93 helmet"
+	desc = "Outdated CANC-style helmet."
+	icon_state = "canc"
+	flags_inv_hide = HIDEEARS|HIDETOPHAIR
+
 
 //===========================//HELGHAST - MERCENARY\\================================\\
 //=====================================================================\\

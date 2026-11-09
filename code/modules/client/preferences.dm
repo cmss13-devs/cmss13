@@ -344,6 +344,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	/// The same keybinds, but in an array of {"keybinding": /datum/keybinding/custom}
 	var/list/key_to_custom_keybind = list()
 
+	/// Whether a savefile tree migration occured (not saved to disk)
+	var/performed_json_upgrade = FALSE
+
 /datum/preferences/New(client/owner)
 	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 
@@ -767,7 +770,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 
 			dat += "<div id='column2'>"
-			dat += "<h2><b><u>Survivor Settings:</u></b></h2>"
+			dat += "<h2><b><u>Survivor Settings<br>(Ignored on Survive Mode):</u></b></h2>"
 			dat += "<b>Spawn as Hostile:</b> <a href='byond://?_src_=prefs;preference=toggles_survivor;flag=[PLAY_SURVIVOR_HOSTILE]'><b>[toggles_survivor & PLAY_SURVIVOR_HOSTILE ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Non-Hostile:</b> <a href='byond://?_src_=prefs;preference=toggles_survivor;flag=[PLAY_SURVIVOR_NON_HOSTILE]'><b>[toggles_survivor & PLAY_SURVIVOR_NON_HOSTILE ? "Yes" : "No"]</b></a><br>"
 

@@ -44,6 +44,9 @@
 	icon_state = FILING_CABINET_CHEST
 	cabinet_type = FILING_CABINET_CHEST
 
+/obj/structure/filingcabinet/chestdrawer/wood
+	icon_state = "chestdrawerwood"
+
 /obj/structure/filingcabinet/chestdrawer/double
 	name = "chest drawers"
 	icon_state = FILING_CABINET_CHEST_DOUBLE
@@ -52,6 +55,9 @@
 /obj/structure/filingcabinet/filingcabinet //not changing the path to avoid unecessary map issues, but please don't name stuff like this in the future -Pete
 	icon_state = FILING_CABINET_TALL
 	cabinet_type = FILING_CABINET_TALL
+
+/obj/structure/filingcabinet/filingcabinet/wood
+	icon_state = "tallcabinetwood"
 
 /obj/structure/filingcabinet/filingcabinet/double
 	icon_state = FILING_CABINET_TALL_DOUBLE
@@ -315,3 +321,6 @@
 	name = "disk cabinet"
 	desc = "A large cabinet with drawers. This one is meant for storing floral data disks."
 	allowed_types = list(/obj/item/disk)
+
+/obj/structure/filingcabinet/wood
+	icon_state = "filingcabinetwood"

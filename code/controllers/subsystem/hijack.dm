@@ -138,6 +138,10 @@ SUBSYSTEM_DEF(hijack)
 	var/list/datum/powernet/powernets = list()
 
 /datum/controller/subsystem/hijack/Initialize(timeofday)
+	if(GLOB.master_mode == GAMEMODE_SURVIVE)
+		can_fire = FALSE
+		return SS_INIT_NO_NEED
+
 	RegisterSignal(SSdcs, COMSIG_GLOB_GENERATOR_SET_OVERLOADING, PROC_REF(on_generator_overload))
 
 	var/spaceport_to_use = pick(subtypesof(/datum/spaceport))
@@ -159,6 +163,10 @@ SUBSYSTEM_DEF(hijack)
 
 /datum/controller/subsystem/hijack/fire(resumed = FALSE)
 	if(!SSticker?.mode?.is_in_endgame)
+		return
+
+	if(GLOB.master_mode == GAMEMODE_SURVIVE)
+		can_fire = FALSE
 		return
 
 	if(SSticker.current_state == GAME_STATE_FINISHED)
@@ -649,6 +657,19 @@ SUBSYSTEM_DEF(hijack)
 	ares_sd_announced = TRUE
 	shipwide_ai_announcement("ALERT: Fusion reactor meltdown has reached fifty percent.", HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
 
+/// Performs detonate_sd with the 30s countdown sfx
+/datum/controller/subsystem/hijack/proc/detonate_sd_with_countdown()
+	sd_detonated = TRUE
+	SSticker?.roundend_check_paused = TRUE
+
+	for(var/mob/current_mob as anything in GLOB.mob_list)
+		var/turf/current_turf = get_turf(current_mob)
+		if(!current_turf || !current_mob.client || !is_mainship_level(current_turf.z))
+			continue
+		playsound_client(current_mob.client, 'sound/AI/selfdestruct_final_countdown.ogg', vol=45)
+
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/hijack, detonate_sd)), 32 SECONDS)
+
 /datum/controller/subsystem/hijack/proc/detonate_sd()
 	set waitfor = FALSE
 
@@ -729,6 +750,9 @@ SUBSYSTEM_DEF(hijack)
 	else //Just a safety, just in case a mode isn't running, somehow.
 		to_world(SPAN_ROUNDBODY("Resetting in 30 seconds!"))
 		sleep(30 SECONDS)
+		if(SSticker.delay_end)
+			to_chat(world, SPAN_BOLDNOTICE("Reboot was cancelled by an admin."))
+			return
 		log_game("Rebooting due to nuclear detonation.")
 		world.Reboot()
 

@@ -147,7 +147,7 @@
 	return ..()
 
 /// Restrict marks to the forward optic view and an unobstructed laser path.
-/obj/structure/vulture_spotter_tripod/tactical/proc/can_designate(atom/target)
+/obj/structure/vulture_spotter_tripod/tactical/proc/can_designate(atom/target, check_line_of_sight = TRUE)
 	var/mob/living/user = scope_user?.resolve()
 	if(!user || user.interactee != src || user.is_mob_incapacitated() || !user.client || get_turf(user) != loc)
 		return FALSE
@@ -166,6 +166,8 @@
 		var/mob/living/living_target = target
 		if(living_target == user || living_target.stat == DEAD || HAS_TRAIT(living_target, TRAIT_ABILITY_BURROWED) || living_target.is_ventcrawling)
 			return FALSE
+	if(!check_line_of_sight)
+		return TRUE
 	for(var/turf/path_turf in get_line(src, target, include_start_atom = FALSE))
 		if(path_turf.opacity)
 			return FALSE
@@ -273,7 +275,7 @@
 		update_mark_overlays()
 
 /obj/effect/overlay/temp/laser_target/tactical/proc/can_track_target()
-	return designator?.can_designate(marked_target ? marked_target : get_turf(src))
+	return designator?.can_designate(marked_target ? marked_target : get_turf(src), check_line_of_sight = !!marked_target)
 
 /// Switch between locked on and incoming missile target effects.
 /obj/effect/overlay/temp/laser_target/tactical/proc/change_incoming_missiles(amount)

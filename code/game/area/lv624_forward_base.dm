@@ -10,7 +10,6 @@
 /area/forward_base/lv624/command/cic
 	name = "Combat Information Center"
 	icon_state = "cic"
-	flags_area = AREA_NOBURROW
 
 /area/forward_base/lv624/command/sea_office
 	name = "Senior Enlisted Advisor's Office"

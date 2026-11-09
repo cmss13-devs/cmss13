@@ -36,6 +36,7 @@
 
 	attachable_allowed = list( //give it some flexibility.
 		/obj/item/attachable/flashlight,
+		/obj/item/attachable/flashlight/under_barrel,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/flamer_nozzle,

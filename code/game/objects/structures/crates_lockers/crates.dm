@@ -74,6 +74,7 @@
 	for(var/obj/thing in src)
 		thing.forceMove(get_turf(src))
 	opened = TRUE
+	ever_opened = TRUE
 	update_icon()
 	if(climbable)
 		structure_shaken()

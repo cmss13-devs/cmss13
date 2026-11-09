@@ -864,38 +864,6 @@
 	},
 /turf/open/floor/prison/ramptop/east,
 /area/white_antre/indoors/main_level/north_containment)
-"acx" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_x = -15;
-	pixel_y = 2
-	},
-/obj/item/shard/shrapnel/bone_chips/human{
-	pixel_x = -6;
-	pixel_y = -6
-	},
-/obj/effect/decal/cleanable/blood/gibs/core,
-/obj/structure/prop/hybrisa/misc/blood/blood3{
-	pixel_y = -29;
-	pixel_x = -8
-	},
-/obj/item/shard/shrapnel,
-/obj/effect/spawner/gibspawner/human,
-/obj/item/shard/shrapnel,
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/structure/prop/hybrisa/misc/blood/blood1{
-	layer = 3.1;
-	pixel_y = -5;
-	pixel_x = -19
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/closed/wall/hybrisa/research/reinforced/hull,
-/area/white_antre/indoors/upper_level/central_corridor)
 "acy" = (
 /obj/effect/antre/border{
 	dir = 1
@@ -967,61 +935,6 @@
 	},
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/white_antre/indoors/upper_level/east_corridor)
-"acC" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_x = -15;
-	pixel_y = 2
-	},
-/obj/item/shard/shrapnel/bone_chips/human{
-	pixel_x = -6;
-	pixel_y = -6
-	},
-/obj/effect/decal/cleanable/blood/gibs/core,
-/obj/structure/prop/hybrisa/misc/blood/blood3{
-	pixel_y = -29;
-	pixel_x = -8
-	},
-/obj/item/shard/shrapnel,
-/obj/effect/spawner/gibspawner/human,
-/obj/item/shard/shrapnel,
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/structure/prop/hybrisa/misc/blood/blood1{
-	pixel_x = -18;
-	pixel_y = -4;
-	layer = 3.1
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/closed/wall/hybrisa/research/reinforced/hull,
-/area/white_antre/indoors/upper_level/central_corridor)
-"acD" = (
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/item/shard{
-	icon_state = "medium";
-	pixel_x = 6;
-	pixel_y = 6
-	},
-/obj/effect/decal/cleanable/blood/xeno,
-/obj/structure/machinery/light/small{
-	light_color = "#ff3b3b";
-	color = "#ff3b3b";
-	needs_power = 0;
-	dir = 1;
-	name = "emergency lighting";
-	desc = "A small emergency light. Has an internal battery which should last for five hours."
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/closed/wall/hybrisa/research/reinforced/hull,
-/area/white_antre/indoors/upper_level/west_corridor)
 "acJ" = (
 /obj/structure/barricade/handrail{
 	dir = 8
@@ -25218,18 +25131,6 @@
 	icon_state = "door_warning2";
 	dir = 8
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2";
-	dir = 8
-	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/antre/plating/corner_dir/north_west,
 /area/white_antre/oob)
@@ -25650,12 +25551,6 @@
 /area/white_antre/indoors/upper_level/medical)
 "buZ" = (
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/ammo_casing/bullet,
 /obj/structure/blocker/invisible_wall,
 /turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/oob)
@@ -30206,30 +30101,6 @@
 /obj/effect/antre/border/corner{
 	dir = 4
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2_red";
-	pixel_y = 2;
-	dir = 1
-	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/effect/decal/cleanable/blood/xeno,
-/obj/effect/spawner/gibspawner/xeno,
-/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
-	dir = 1;
-	layer = 2.51
-	},
-/obj/effect/antre/border/corner{
-	dir = 4
-	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/antre/metal/black/southeast,
 /area/white_antre/oob)
@@ -30251,18 +30122,6 @@
 	pixel_x = 2;
 	pixel_y = -9
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/ammo_casing/bullet,
-/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
-	dir = 1;
-	layer = 2.51;
-	pixel_x = 2;
-	pixel_y = -9
-	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/antre/plating/direction_west/east_east,
 /area/white_antre/oob)
@@ -30276,24 +30135,6 @@
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/effect/decal/cleanable/blood/xeno,
-/obj/effect/antre/border/corner{
-	dir = 8
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2_red";
-	pixel_y = 2;
-	dir = 1
-	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/antre/border/corner{
 	dir = 8
@@ -30339,44 +30180,6 @@
 /obj/effect/antre/border{
 	dir = 4
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/prop{
-	desc = "Something tore this apart.";
-	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi';
-	icon_state = "defense_base_off";
-	name = "Destroyed WY 5-GSE3 Static Turret";
-	anchored = 1
-	},
-/obj/item/prop{
-	desc = "The turret is hanging on by a thread. Something tore this apart.";
-	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi';
-	icon_state = "Normal wy_sentry_destroyed";
-	name = "Destroyed WY 5-GSE3 Static Turret";
-	anchored = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "cargo_red"
-	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
-/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
-/obj/effect/decal/remains/robot{
-	pixel_x = 2
-	},
-/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
-	dir = 1;
-	layer = 2.51
-	},
-/obj/effect/antre/border{
-	dir = 4
-	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/antre/metal/black/east,
 /area/white_antre/oob)
@@ -30386,23 +30189,6 @@
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/item/shard{
-	icon_state = "medium"
-	},
-/obj/effect/decal/cleanable/dirt{
-	icon_state = "thermite";
-	name = "impact"
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
 /obj/item/shard{
 	icon_state = "medium"
 	},
@@ -30430,27 +30216,6 @@
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/effect/decal{
-	icon = 'icons/mob/xenos/effects.dmi';
-	icon_state = "acid_weak";
-	name = "weak acid"
-	},
-/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
-	dir = 1;
-	layer = 2.51;
-	pixel_x = 2;
-	pixel_y = -9
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
 /obj/effect/decal{
 	icon = 'icons/mob/xenos/effects.dmi';
 	icon_state = "acid_weak";
@@ -30493,57 +30258,11 @@
 	pixel_x = -10
 	},
 /obj/effect/antre/border,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/prop{
-	desc = "Something tore this apart.";
-	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi';
-	icon_state = "defense_base_off";
-	name = "Destroyed WY 5-GSE3 Static Turret";
-	anchored = 1
-	},
-/obj/item/prop{
-	desc = "The turret is hanging on by a thread. Something tore this apart.";
-	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi';
-	icon_state = "Normal wy_sentry_destroyed";
-	name = "Destroyed WY 5-GSE3 Static Turret";
-	anchored = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "cargo_red"
-	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
-/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
-/obj/effect/decal/remains/robot{
-	pixel_x = -10
-	},
-/obj/effect/antre/border,
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/antre/metal/black/west,
 /area/white_antre/oob)
 "bJn" = (
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/structure/machinery/light/small{
-	light_color = "#ff3b3b";
-	color = "#ff3b3b";
-	needs_power = 0;
-	dir = 1;
-	name = "emergency lighting";
-	desc = "A small emergency light. Has an internal battery which should last for five hours."
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/ammo_casing/bullet,
 /obj/structure/machinery/light/small{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
@@ -32736,15 +32455,6 @@
 /area/white_antre/indoors/upper_level/medical)
 "bOX" = (
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -152583,7 +152293,7 @@ bKz
 bVT
 bZO
 cwP
-acD
+cwP
 bIw
 bIw
 bIw
@@ -156790,7 +156500,7 @@ bhb
 bhb
 bhb
 bhb
-acC
+bhb
 bhb
 bhb
 aQk
@@ -156984,7 +156694,7 @@ bhb
 bhb
 bhb
 bhb
-acx
+bhb
 bhb
 bhb
 bvM

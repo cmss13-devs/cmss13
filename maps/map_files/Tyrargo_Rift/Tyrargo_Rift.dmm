@@ -78,22 +78,6 @@
 "aal" = (
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_west)
-"aam" = (
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/structure/prop/hybrisa/misc/fire/fire2{
-	color = "#FF7700";
-	icon = 'icons/effects/fire.dmi';
-	icon_state = "dynamic_2";
-	light_color = "#FF7700"
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/open/auto_turf/snow/brown_base/layer1,
-/area/tyrargo/oob)
 "aan" = (
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
@@ -348,29 +332,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/sewer_treatment/ground)
-"abf" = (
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/structure/prop/tyrargo/boards/boards_1{
-	pixel_x = 15;
-	pixel_y = 2;
-	dir = 8
-	},
-/obj/structure/prop/tyrargo/boards/boards_1{
-	pixel_x = 15;
-	pixel_y = -10;
-	dir = 4
-	},
-/obj/structure/barricade/hesco{
-	dir = 4
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/platform/metal/almayer,
-/turf/open_space,
-/area/tyrargo/landing_zone_2)
 "abg" = (
 /obj/structure/prop/vehicles/tank/longstreet/ballistic/destroyed{
 	pixel_y = -33;
@@ -582,37 +543,6 @@
 	},
 /turf/closed/wall/hybrisa/colony/engineering,
 /area/tyrargo/indoors/engineering/ground)
-"abH" = (
-/obj/item/prop{
-	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
-	icon_state = "M56D";
-	name = "M56D heavy machine gun nest";
-	pixel_x = 10;
-	pixel_y = 22;
-	dir = 4;
-	anchored = 1;
-	layer = 3.03
-	},
-/obj/effect/decal/cleanable/ammo_casing/cartridge{
-	icon_state = "cartridge_10_1";
-	randomized_mapload = 0;
-	dir = 6;
-	pixel_y = 14;
-	pixel_x = 8
-	},
-/obj/structure/blocker/invisible_wall,
-/obj/structure/blocker/forcefield/vehicles,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/closed/wall/r_wall/bunker/floodgate{
-	desc = "A huge chunk of reinforced metal used to separate rooms. This one appears to be specially reinforced.";
-	name = "bunker superdense wall"
-	},
-/area/tyrargo/oob)
 "abI" = (
 /obj/structure/machinery/computer/telecomms/server{
 	pixel_x = -3;
@@ -740,26 +670,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellow2/east,
 /area/tyrargo/indoors/engineering/ground)
-"acb" = (
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/structure/prop/hybrisa/misc/fire/fire2{
-	color = "#FF7700";
-	icon = 'icons/effects/fire.dmi';
-	icon_state = "dynamic_2";
-	pixel_y = 10;
-	layer = 5.3;
-	light_color = "#FF7700";
-	density = 1
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
-/area/tyrargo/oob)
 "acc" = (
 /obj/structure/largecrate/empty/case{
 	pixel_x = -2;
@@ -828,26 +738,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/green/west,
 /area/tyrargo/indoors/admin/ground)
-"acp" = (
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/structure/prop/hybrisa/misc/fire/fire2{
-	color = "#FF7700";
-	icon = 'icons/effects/fire.dmi';
-	icon_state = "dynamic_2";
-	pixel_y = -3;
-	layer = 5.3;
-	light_color = "#FF7700";
-	pixel_x = -10;
-	density = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0,
-/area/tyrargo/oob)
 "acq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
@@ -1025,41 +915,6 @@
 	},
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/indoors/engineering/ground)
-"acR" = (
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/structure/prop/tyrargo/boards/boards_1{
-	pixel_x = 11;
-	pixel_y = -1
-	},
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt"
-	},
-/obj/effect/decal/hybrisa/tiretrack{
-	dir = 4;
-	pixel_x = 12;
-	pixel_y = 8
-	},
-/obj/effect/decal/hybrisa/tiretrack{
-	dir = 4;
-	pixel_x = 12;
-	pixel_y = 8
-	},
-/obj/effect/decal/hybrisa/tiretrack{
-	dir = 4;
-	pixel_x = 12;
-	pixel_y = 8
-	},
-/obj/structure/barricade/hesco{
-	dir = 4
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/open_space,
-/area/tyrargo/landing_zone_2)
 "acS" = (
 /obj/structure/platform/stone/tyrargo/west,
 /obj/structure/platform/stone/tyrargo,
@@ -1082,33 +937,9 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/oob/outdoors)
-"acU" = (
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
-/area/tyrargo/oob)
 "acV" = (
 /turf/open/floor/almayer/tcomms,
 /area/tyrargo/indoors/engineering/ground)
-"acW" = (
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/flora/tree/tyrargo{
-	pixel_x = -6;
-	pixel_y = 6;
-	layer = 5.93
-	},
-/turf/closed/wall/strata_ice/forest,
-/area/tyrargo/oob)
 "acX" = (
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -1149,19 +980,6 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_east)
-"adb" = (
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/flora/tree/tyrargo/tree_2{
-	pixel_x = -24;
-	pixel_y = 2
-	},
-/turf/closed/wall/strata_ice/forest,
-/area/tyrargo/oob)
 "adc" = (
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -1200,17 +1018,6 @@
 	},
 /turf/open/floor/almayer/plating,
 /area/tyrargo/underground/museum_carpark)
-"adh" = (
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/turf/closed/wall/strata_ice/forest,
-/area/tyrargo/oob)
 "adi" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door_reinforced,
 /turf/open/floor/hybrisa/tile/tilegrey,
@@ -1241,20 +1048,6 @@
 "ado" = (
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/tyrargo/indoors/bar/ground)
-"adp" = (
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/flora/tree/tyrargo{
-	pixel_x = -6;
-	pixel_y = 6;
-	layer = 5.93
-	},
-/turf/closed/wall/strata_ice/forest/rock,
-/area/tyrargo/oob)
 "adq" = (
 /obj/structure/showcase{
 	desc = "The display model for a Weyland Yutani generation one synthetic. It almost feels like the eyes on this one follow you.";
@@ -1285,23 +1078,6 @@
 "adr" = (
 /turf/open/floor/plating/wood,
 /area/tyrargo/landing_zone_1/ceiling)
-"ads" = (
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = 16
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = 16
-	},
-/turf/open/asphalt,
-/area/tyrargo/outdoors/colony_streets/east)
 "adt" = (
 /obj/structure/platform/stone/tyrargo,
 /turf/open/auto_turf/sand_white/layer0,
@@ -1391,45 +1167,6 @@
 /obj/structure/platform/stone/tyrargo/west,
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/oob)
-"adE" = (
-/obj/structure/desertdam/decals/road_edge{
-	pixel_y = -3;
-	pixel_x = -12
-	},
-/obj/item/prop{
-	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
-	icon_state = "M56D";
-	name = "M56D heavy machine gun nest";
-	pixel_x = 6;
-	pixel_y = 17;
-	anchored = 1;
-	layer = 3.03
-	},
-/obj/effect/decal/cleanable/ammo_casing/cartridge{
-	icon_state = "cartridge_10_1";
-	randomized_mapload = 0;
-	dir = 6;
-	pixel_y = 7;
-	pixel_x = 8
-	},
-/obj/structure/blocker/invisible_wall,
-/obj/structure/blocker/forcefield/vehicles,
-/obj/structure/prop/vehicles/tank/miltruck{
-	dir = 4;
-	pixel_y = -30
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/desertdam/decals/road_edge{
-	pixel_y = -3;
-	pixel_x = -12
-	},
-/turf/open/asphalt,
-/area/tyrargo/outdoors/colony_streets/north_east)
 "adF" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 1
@@ -2644,9 +2381,11 @@
 /area/tyrargo/outdoors/colony_streets/south_west)
 "agM" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ammo_casing/cartridge{
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
 	icon_state = "cartridge_10_1";
-	randomized_mapload = 0;
+	name = "spent casings";
 	dir = 6;
 	pixel_y = 1;
 	layer = 3.01
@@ -5483,13 +5222,6 @@
 "aoA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
@@ -5936,13 +5668,6 @@
 /area/tyrargo/outdoors/colony_streets/north_west)
 "apw" = (
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/effect/decal/grass_overlay/grass1/dark,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/asphalt/cement/cement4,
@@ -7357,9 +7082,11 @@
 	layer = 2.96;
 	pixel_y = -12
 	},
-/obj/effect/decal/cleanable/ammo_casing/cartridge{
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
 	icon_state = "cartridge_10_1";
-	randomized_mapload = 0;
+	name = "spent casings";
 	dir = 6;
 	pixel_x = 5;
 	pixel_y = -24
@@ -8094,9 +7821,11 @@
 /turf/open/hybrisa/street/roadlines4,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "aut" = (
-/obj/effect/decal/cleanable/ammo_casing/cartridge{
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
 	icon_state = "cartridge_10_1";
-	randomized_mapload = 0;
+	name = "spent casings";
 	dir = 6;
 	pixel_x = -14;
 	layer = 2.98
@@ -12868,9 +12597,11 @@
 /turf/open/asphalt/cement/cement15,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "aHo" = (
-/obj/effect/decal/cleanable/ammo_casing/cartridge{
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
 	icon_state = "cartridge_10_1";
-	randomized_mapload = 0;
+	name = "spent casings";
 	pixel_x = 10;
 	dir = 6
 	},
@@ -13426,9 +13157,11 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
 "aIN" = (
-/obj/effect/decal/cleanable/ammo_casing/cartridge{
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
 	icon_state = "cartridge_10_1";
-	randomized_mapload = 0;
+	name = "spent casings";
 	dir = 6;
 	pixel_x = -14;
 	layer = 2.98
@@ -15174,18 +14907,7 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aNo" = (
-/obj/structure/barricade/sandbags/weak_wired{
-	dir = 4;
-	icon_state = "sandbag_0";
-	pixel_x = 4
-	},
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/ammo_casing/bullet,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aNp" = (
@@ -21078,9 +20800,11 @@
 	icon_state = "sandbag_0";
 	pixel_x = 4
 	},
-/obj/effect/decal/cleanable/ammo_casing/cartridge{
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
 	icon_state = "cartridge_10_1";
-	randomized_mapload = 0;
+	name = "spent casings";
 	dir = 6
 	},
 /obj/effect/decal/cleanable/ammo_casing/bullet,
@@ -23095,9 +22819,11 @@
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/effect/decal/cleanable/ammo_casing/cartridge{
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
 	icon_state = "cartridge_10_1";
-	randomized_mapload = 0;
+	name = "spent casings";
 	pixel_y = 12;
 	pixel_x = -15
 	},
@@ -24388,8 +24114,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/landing_zone_2/road)
 "bhw" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/hybrisa/misc/fire/fire2{
 	color = "#FF7700";
 	icon = 'icons/effects/fire.dmi';
@@ -24410,7 +24136,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob)
 "bhy" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = 15;
 	pixel_y = 2;
@@ -24427,9 +24153,9 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_2/road)
 "bhA" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/hybrisa/misc/fire/fire2{
 	color = "#FF7700";
 	icon = 'icons/effects/fire.dmi';
@@ -24442,7 +24168,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/oob)
 "bhB" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/hybrisa/misc/fire/fire2{
 	color = "#FF7700";
 	icon = 'icons/effects/fire.dmi';
@@ -24503,7 +24229,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/landing_zone_2/road)
 "bhE" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = 11;
 	pixel_y = -1
@@ -24543,8 +24269,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob)
 "bhG" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/oob)
 "bhH" = (
@@ -26108,19 +25834,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_2/east_trench)
 "bln" = (
-/obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1";
-	layer = 2.9
-	},
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
 /turf/closed/wall/strata_ice/forest,
 /area/tyrargo/oob)
 "blo" = (
@@ -41856,21 +41571,6 @@
 /obj/item/prop/colony/usedbandage{
 	dir = 5
 	},
-/obj/item/shard{
-	icon_state = "medium"
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/prop/colony/usedbandage{
-	dir = 5
-	},
 /obj/item/shard,
 /turf/open/floor/hybrisa/carpet/carpetpatternblue,
 /area/tyrargo/indoors/apartment/north_upper)
@@ -50490,9 +50190,11 @@
 /turf/open/floor/prison/blue/west,
 /area/tyrargo/indoors/sewer_treatment/upper)
 "cAA" = (
-/obj/effect/decal/cleanable/ammo_casing/shell{
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
 	icon_state = "shell_10_1";
-	randomized_mapload = 0;
+	name = "spent casings";
 	dir = 1
 	},
 /obj/item/weapon/gun/shotgun/pump/m37a,
@@ -50531,9 +50233,11 @@
 	icon_state = "trash_4";
 	layer = 3.2
 	},
-/obj/effect/decal/cleanable/ammo_casing/cartridge{
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
 	icon_state = "cartridge_10_1";
-	randomized_mapload = 0;
+	name = "spent casings";
 	dir = 6;
 	pixel_y = -13
 	},
@@ -55738,24 +55442,6 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
-/obj/item/weapon/gun/shotgun/pump/m37a{
-	pixel_x = -1;
-	pixel_y = -10
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt"
-	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/effect/decal/grass_overlay/grass1/dark{
-	dir = 1
-	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "cRL" = (
@@ -56498,14 +56184,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0"
@@ -57624,16 +57302,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/east)
 "cXf" = (
-/obj/item/weapon/gun/shotgun/pump/m37a,
 /obj/effect/decal/cleanable/ammo_casing/shell,
 /obj/effect/decal/cleanable/ammo_casing/shell,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/ammo_casing/shell,
-/obj/item/ammo_casing/shell,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "cXg" = (
@@ -61265,21 +60935,7 @@
 	pixel_x = 12;
 	pixel_y = 8
 	},
-/obj/structure/blocker/invisible_wall,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/structure/blocker/forcefield/vehicles,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/hybrisa/road/lines3,
-/obj/effect/decal/hybrisa/tiretrack{
-	dir = 4;
-	pixel_x = 12;
-	pixel_y = 8
-	},
-/obj/item/ammo_casing/bullet,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "dhr" = (
@@ -61288,16 +60944,6 @@
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/hybrisa/road/lines3,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
 /obj/structure/closet/crate/science,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/hybrisa/street/asphalt,
@@ -62068,12 +61714,6 @@
 /area/tyrargo/indoors/engineering/upper/external)
 "djw" = (
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/ammo_casing/bullet,
 /obj/effect/stairs/up,
 /turf/open/floor/corsat,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
@@ -63349,16 +62989,6 @@
 /area/tyrargo/outdoors/colony_streets/north_east)
 "dmG" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/sandbags/weak_wired{
-	dir = 1;
-	icon_state = "sandbag_0";
-	pixel_y = 4
-	},
-/obj/structure/barricade/sandbags/weak_wired{
-	dir = 4;
-	icon_state = "sandbag_0";
-	pixel_x = 4
-	},
 /obj/structure/prop/tyrargo/boards{
 	dir = 8;
 	pixel_x = 5;
@@ -63369,25 +62999,6 @@
 	},
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/structure/prop/tyrargo/military_alert_sign{
-	pixel_y = -32
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/tyrargo/boards{
-	dir = 8;
-	pixel_x = 5;
-	pixel_y = -2
-	},
-/obj/structure/prop/tyrargo/boards/boards_2{
-	layer = 2.1
-	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/military_alert_sign{
 	pixel_y = -32
 	},
@@ -77163,7 +76774,7 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/tyrargo/underground/sewer/north)
 "dVs" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/tyrargo/landing_zone_2)
 "dVt" = (
@@ -101995,22 +101606,6 @@
 "frV" = (
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
-/obj/item/shard{
-	icon_state = "medium"
-	},
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/effect/decal/cleanable/blood,
-/obj/item/shard{
-	icon_state = "medium"
-	},
-/obj/item/device/binoculars/range/designator,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/ammo_casing/bullet,
-/obj/effect/decal/cleanable/blood,
 /obj/item/shard,
 /obj/item/device/binoculars/range/designator,
 /turf/open/floor/hybrisa/carpet/carpetpatternblue,
@@ -102641,9 +102236,11 @@
 /area/tyrargo/indoors/apartment/south_upper)
 "gGY" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ammo_casing/cartridge{
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
 	icon_state = "cartridge_10_1";
-	randomized_mapload = 0;
+	name = "spent casings";
 	dir = 6;
 	pixel_y = -14;
 	layer = 3.01
@@ -104154,9 +103751,11 @@
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "kvK" = (
-/obj/effect/decal/cleanable/ammo_casing/cartridge{
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
 	icon_state = "cartridge_10_1";
-	randomized_mapload = 0;
+	name = "spent casings";
 	dir = 6;
 	pixel_y = -14;
 	layer = 3.01
@@ -104714,9 +104313,11 @@
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/indoors/apartment/north_ground)
 "lNE" = (
-/obj/effect/decal/cleanable/ammo_casing/cartridge{
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
 	icon_state = "cartridge_10_1";
-	randomized_mapload = 0;
+	name = "spent casings";
 	pixel_x = 10;
 	dir = 6
 	},
@@ -104773,9 +104374,11 @@
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/ammo_casing/cartridge{
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
 	icon_state = "cartridge_10_1";
-	randomized_mapload = 0;
+	name = "spent casings";
 	dir = 6;
 	pixel_x = 5
 	},
@@ -106326,9 +105929,11 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_upper)
 "oFM" = (
-/obj/effect/decal/cleanable/ammo_casing/cartridge{
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
 	icon_state = "cartridge_10_1";
-	randomized_mapload = 0;
+	name = "spent casings";
 	dir = 6;
 	pixel_y = -14;
 	layer = 3.01
@@ -106480,9 +106085,11 @@
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "oPc" = (
-/obj/effect/decal/cleanable/ammo_casing/cartridge{
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
 	icon_state = "cartridge_10_1";
-	randomized_mapload = 0;
+	name = "spent casings";
 	dir = 6;
 	pixel_x = 5;
 	pixel_y = 6
@@ -106831,9 +106438,11 @@
 	dir = 8;
 	icon_state = "sandbag_0"
 	},
-/obj/effect/decal/cleanable/ammo_casing/cartridge{
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
 	icon_state = "cartridge_10_1";
-	randomized_mapload = 0;
+	name = "spent casings";
 	dir = 6;
 	pixel_x = 9;
 	pixel_y = -2
@@ -106949,18 +106558,6 @@
 /area/tyrargo/indoors/apartment/south_ground)
 "pNW" = (
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/structure/prop/hybrisa/misc/fire/fire2{
-	pixel_x = -63;
-	pixel_y = 11;
-	explo_proof = 1;
-	unacidable = 1
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/ammo_casing/bullet,
 /turf/open/asphalt/cement/cement2,
 /area/tyrargo/outdoors/colony_streets/north)
 "pOc" = (
@@ -107176,9 +106773,11 @@
 /turf/open/floor/wood,
 /area/tyrargo/indoors/bar/ground)
 "qtr" = (
-/obj/effect/decal/cleanable/ammo_casing/cartridge{
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
 	icon_state = "cartridge_10_1";
-	randomized_mapload = 0;
+	name = "spent casings";
 	dir = 6
 	},
 /obj/effect/decal/cleanable/ammo_casing/bullet,
@@ -107500,30 +107099,12 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/west)
 "rhn" = (
-/obj/structure/barricade/sandbags/weak_wired{
-	dir = 8;
-	icon_state = "sandbag_0"
-	},
 /obj/structure/prop/tyrargo/boards{
 	dir = 4;
 	pixel_x = 5;
 	layer = 2.98
 	},
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/effect/decal/grass_overlay/grass1/dark{
-	dir = 1
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/prop/tyrargo/boards{
-	dir = 4;
-	pixel_x = 5;
-	layer = 2.98
-	},
-/obj/item/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
@@ -108650,9 +108231,11 @@
 	dir = 8;
 	icon_state = "sandbag_0"
 	},
-/obj/effect/decal/cleanable/ammo_casing/cartridge{
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
 	icon_state = "cartridge_10_1";
-	randomized_mapload = 0;
+	name = "spent casings";
 	pixel_y = -10;
 	pixel_x = 8;
 	dir = 6
@@ -109852,9 +109435,11 @@
 "vAp" = (
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/effect/decal/cleanable/ammo_casing/cartridge{
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
 	icon_state = "cartridge_10_1";
-	randomized_mapload = 0;
+	name = "spent casings";
 	dir = 6
 	},
 /obj/item/stack/medical/bruise_pack/random_amount,
@@ -110288,9 +109873,12 @@
 /turf/open/asphalt/cement/cement9,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "wjb" = (
-/obj/effect/decal/cleanable/ammo_casing/cartridge{
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
 	icon_state = "cartridge_10_1";
-	randomized_mapload = 0;
+	name = "spent casings";
+	dir = 6;
 	pixel_x = 5;
 	pixel_y = 6
 	},
@@ -158346,7 +157934,7 @@ bxC
 bsw
 era
 eqZ
-adp
+era
 eqZ
 era
 eqZ
@@ -158531,8 +158119,8 @@ era
 bsw
 bsw
 eqU
-adh
-acW
+eqU
+bxC
 eqU
 bta
 bte
@@ -158716,7 +158304,7 @@ eqZ
 bxC
 aUS
 bxC
-adb
+aUS
 bxC
 bta
 bte
@@ -167947,8 +167535,8 @@ cRY
 aRs
 bto
 bto
-acR
-abf
+bto
+aMD
 fey
 eqU
 eqU
@@ -168132,7 +167720,7 @@ bsO
 bsO
 bsO
 bsO
-abH
+bsO
 bsO
 eqU
 eqU
@@ -168315,9 +167903,9 @@ bsO
 aRI
 bsZ
 btW
-acU
-acb
-aam
+btW
+btW
+bsY
 bsY
 bsY
 bsY
@@ -168500,7 +168088,7 @@ bhs
 bsZ
 btW
 bsZ
-acp
+bsZ
 bsZ
 bsY
 bsY
@@ -189926,7 +189514,7 @@ azw
 csE
 cse
 hFN
-adE
+cro
 cro
 cqQ
 efV
@@ -194170,7 +193758,7 @@ fjJ
 yfj
 aJa
 aIV
-ads
+reM
 cmu
 cmu
 cmu

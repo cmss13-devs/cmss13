@@ -78,6 +78,7 @@ display floor(lastgen) and phorontank amount
 		stop_processing()
 		icon_state = initial(icon_state)
 		handleInactive()
+		stop_shake()
 
 /obj/structure/machinery/power/powered()
 	return 1 //doesn't require an external power source
@@ -94,10 +95,12 @@ display floor(lastgen) and phorontank amount
 		stop_processing()
 		icon_state = initial(icon_state)
 		soundloop.stop()
+		stop_shake()
 	else if(HasFuel())
 		is_on = TRUE
 		start_processing()
 		soundloop.start()
+		start_shake()
 
 /obj/structure/machinery/power/power_generator/port_gen/get_examine_text(mob/user)
 	. = ..()
@@ -123,6 +126,7 @@ display floor(lastgen) and phorontank amount
 		stop_processing()
 		icon_state = initial(icon_state)
 		visible_message(SPAN_NOTICE("[src] sputters to a stop!"))
+		stop_shake()
 		return XENO_NONCOMBAT_ACTION
 
 	if(anchored)
@@ -354,6 +358,15 @@ display floor(lastgen) and phorontank amount
 
 /obj/structure/machinery/power/power_generator/port_gen/pacman/inoperable(additional_flags)
 	return (stat & (BROKEN|additional_flags)) //Removes NOPOWER check since its a goddam generator and doesn't need power
+
+/obj/structure/machinery/power/power_generator/port_gen/proc/start_shake()
+	animate(src, pixel_x = 1, time = 1.5, loop = -1, easing = LINEAR_EASING)
+	animate(pixel_x = 0, time = 1.5)
+
+/obj/structure/machinery/power/power_generator/port_gen/proc/stop_shake()
+	animate(src) // kills the looping animation
+	pixel_x = initial(pixel_x)
+	pixel_y = initial(pixel_y)
 
 /obj/structure/machinery/power/power_generator/port_gen/pacman/super
 	name = "S.U.P.E.R.P.A.C.M.A.N.-type Portable Generator"

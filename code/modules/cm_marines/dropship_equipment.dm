@@ -799,6 +799,9 @@
 
 /obj/structure/dropship_equipment/weapon/get_examine_text(mob/user)
 	. = ..()
+	if(fire_mission_only && transport_fire_required_equipment)
+		var/obj/structure/dropship_equipment/required_equipment = transport_fire_required_equipment
+		. += SPAN_NOTICE("Can be direct fired during transport runs with an installed <b>[initial(required_equipment.name)]</b>.")
 	if(ammo_equipped)
 		var/ammo_info = ammo_equipped.show_loaded_desc(user)
 		if(ammo_info)

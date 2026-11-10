@@ -341,6 +341,12 @@ GLOBAL_LIST_INIT(xeno_undraggable_objects, typecacheof(list(
 	/obj/item/document_objective,
 	/obj/item/device/flashlight,
 	/obj/item/explosive/grenade,
+	/obj/item/stack/sandbags,
+	/obj/item/device/m56d_gun,
+	/obj/item/disk/objective,
+	/obj/item/clothing/suit,
+	/obj/item/clothing/head/helmet,
+	/obj/structure/reagent_dispensers/tank,
 )))
 
 GLOBAL_LIST_INIT(typecache_mob, typecacheof(/mob))

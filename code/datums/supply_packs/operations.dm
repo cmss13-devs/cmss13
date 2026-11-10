@@ -61,8 +61,8 @@
 		/obj/item/stock_parts/manipulator,
 		/obj/item/stock_parts/subspace/filter,
 		/obj/item/stock_parts/subspace/filter,
-		/obj/item/cell,
-		/obj/item/cell,
+		/obj/item/cell/high,
+		/obj/item/cell/high,
 		/obj/item/stack/cable_coil,
 		/obj/item/stack/cable_coil,
 	)

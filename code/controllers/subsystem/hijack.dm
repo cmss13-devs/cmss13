@@ -379,10 +379,10 @@ SUBSYSTEM_DEF(hijack)
 	withdrawal_end_time = world.time + 5 MINUTES
 	if(automatic)
 		ground_claimed = TRUE
-		marine_announcement("Groundside threat levels exceed operational capabilities. Emergency FTL withdrawal automatically initiated. All personnel have five minutes to report to their cryosleep chambers and prepare for departure.", HIJACK_ANNOUNCE)
+		marine_announcement("Groundside threat levels exceed operational capabilities. Emergency FTL withdrawal automatically initiated. All personnel have five minutes to report to their hypersleep chambers and prepare for departure.", HIJACK_ANNOUNCE)
 		xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts skyhive will flee in five minutes!"), "everything", XENO_GENERAL_ANNOUNCE)
 	else
-		marine_announcement("Command has ordered withdrawal from the operational area. All personnel have five minutes to report to their cryosleep chambers and prepare for departure.", HIJACK_ANNOUNCE)
+		marine_announcement("Command has ordered withdrawal from the operational area. All personnel have five minutes to report to their hypersleep chambers and prepare for departure.", HIJACK_ANNOUNCE)
 		xeno_announcement(SPAN_XENOANNOUNCE("The hosts are preparing to flee the skies. You have five minutes to launch the metal bird against their metal hive before they escape!"), "everything", XENO_GENERAL_ANNOUNCE)
 	addtimer(CALLBACK(src, PROC_REF(complete_withdrawal)), 5 MINUTES)
 	return TRUE
@@ -404,7 +404,7 @@ SUBSYSTEM_DEF(hijack)
 	var/roundend_was_paused = SSticker.roundend_check_paused
 	SSticker.roundend_check_paused = TRUE
 	mode.round_finished = MODE_INFESTATION_X_MINOR
-	marine_announcement("FTL drive charged. Course set for MSF-Herculis Headquarters, Chinook 91 GSO Station. All personnel are to enter cryosleep immediately.", HIJACK_ANNOUNCE)
+	marine_announcement("FTL drive charged. Course set for MSF-Herculis Headquarters, Chinook 91 GSO Station. All personnel are to enter hypersleep immediately.", HIJACK_ANNOUNCE)
 	sleep(10 SECONDS)
 	initiate_ftl_charge(wait_for_jump = TRUE)
 	xeno_announcement(SPAN_XENOANNOUNCE("The hosts have fled the skies. The ground belongs to the hive!"), "everything", XENO_GENERAL_ANNOUNCE)

@@ -235,3 +235,13 @@
   - qol: Late joining as a xeno as a new player can now prompt a tutorial suggestion
   - imageadd: Added various coderspites for new landmarks and skeletal resin doors
       by DimDim
+2026-11-10:
+  Kugamo:
+  - rscadd: Portable generators now vibrate while running (animating them back and
+      forth very slightly)
+  Mary-Marilyn:
+  - ui: Redesigned the TGUI latejoin menu to be more compact. All jobs now fit on
+      your screen without scrolling
+  - ui: Latejoin and job preferences now follow the crew manifest's department order
+      and colors.
+  - qol: Added squad badges to latejoin. Clicking a badge joins that squad.

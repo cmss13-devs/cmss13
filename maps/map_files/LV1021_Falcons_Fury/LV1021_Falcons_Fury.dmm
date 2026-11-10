@@ -26208,11 +26208,6 @@
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lv1021/indoors/caves/landing_zone)
 "bmB" = (
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
@@ -26316,17 +26311,6 @@
 /area/lv1021/indoors/caves/landing_zone)
 "bmQ" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
-/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
-/area/lv1021/indoors/caves/landing_zone)
-"bmR" = (
-/obj/item/ammo_magazine/rifle/m16/ext,
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/ammo_magazine/rifle/m16/ext,
-/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lv1021/indoors/caves/landing_zone)
 "bmS" = (
@@ -28031,15 +28015,6 @@
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lv1021/indoors/caves/landing_zone)
-"bro" = (
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
-/area/lv1021/indoors/caves/landing_zone)
 "brp" = (
 /obj/item/device/flashlight/flare/on,
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
@@ -28414,6 +28389,11 @@
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_north)
+"bsD" = (
+/obj/item/ammo_magazine/rifle/m16/ext,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
+/area/lv1021/indoors/caves/landing_zone)
 "bsO" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /obj/structure/flora/jungle/vines/light_1,
@@ -76730,8 +76710,8 @@ beK
 sDl
 avy
 sDl
-bro
-sDl
+bmu
+brk
 sDl
 beL
 wzQ
@@ -77230,7 +77210,7 @@ sDl
 bnk
 blw
 sDl
-sDl
+bnq
 bmo
 bmh
 wzQ
@@ -77397,8 +77377,8 @@ brs
 bnl
 brr
 brr
-bmR
-sDl
+brr
+bsD
 sDl
 wzQ
 aoy
@@ -78068,7 +78048,7 @@ avy
 awN
 sDl
 sDl
-sDl
+brk
 bmx
 sDl
 bmo

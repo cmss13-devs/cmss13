@@ -1003,15 +1003,6 @@
 /obj/effect/alien/weeds/node,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/east_containment_hive)
-"acP" = (
-/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/turf/open/floor/strata,
-/area/white_antre/indoors/main_level/security)
 "acQ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
@@ -34431,15 +34422,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /turf/open/floor/strata,
 /area/white_antre/indoors/main_level/security)
 "bSx" = (
@@ -110300,7 +110283,7 @@ bZj
 bZj
 fjW
 asS
-nwx
+acS
 bSw
 anx
 anm
@@ -111647,8 +111630,8 @@ uqO
 bZj
 ihH
 anA
-acP
-rHC
+ano
+acR
 anf
 asL
 awO

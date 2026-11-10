@@ -150,6 +150,11 @@
 
 	..()
 
+	//lets normal hive evo and use hivestatus without queen until one evolves
+	var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL] 
+	main_hive.allow_no_queen_actions = TRUE
+	main_hive.allow_no_queen_evo = TRUE
+
 	var/obj/structure/tunnel/T
 	var/i = 0
 	var/turf/t
@@ -604,8 +609,9 @@
 				hive.evolution_without_ovipositor = FALSE
 				if(hive.living_xeno_queen && !hive.living_xeno_queen.ovipositor)
 					to_chat(hive.living_xeno_queen, SPAN_XENODANGER("It is time to settle down and let your children grow."))
+				if(hivenumber == XENO_HIVE_NORMAL && !hive.living_xeno_queen) //let normal hive evo if still no queen. This will reset when queen evolves
+					hive.evolution_without_ovipositor = TRUE
 			evolution_ovipositor_threshold = TRUE
-			msg_admin_niche("Xenomorphs now require the queen's ovipositor for evolution progress.")
 
 		if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding) && world.time >= SSticker.round_start_time + round_time_resin)
 			MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)

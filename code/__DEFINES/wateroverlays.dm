@@ -6,9 +6,10 @@
 #define WATER_DEPTH_INTERMEDIATE -12
 #define WATER_DEPTH_DEEP -18
 
-#define WATER_TOXIC_NO 0
-#define WATER_TOXIC_YES 1
-#define WATER_TOXIC_DISPERSING -1
+// these are assigned to /turf/open.variant_key and thus are keys to water variants of some desert waters
+#define WATER_TOXIC_NO 1
+#define WATER_TOXIC_DISPERSING 2
+#define WATER_TOXIC_YES 3
 
 // START: defines for /datum/water_overlay_config
 // immerse behaviour is checked first, and will override resting behaviour if applicable

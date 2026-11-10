@@ -194,9 +194,7 @@
 	"chat.tools.global.autoApprove": false,
 	"mermaid-chat.enabled": false,
 	"githubPullRequests.experimental.useQuickChat": false,
-	"chat.useAgentSkills": false,
 	"workbench.browser.sendElementsToChat.attachImages": false,
-
 	"chat.agent.sandbox.retryWithAllowNetworkRequests": false,
 	"chat.tools.riskAssessment.enabled": false,
 	"git.addAICoAuthor": "all",

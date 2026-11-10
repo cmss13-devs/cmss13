@@ -1,0 +1,4 @@
+author: "Kugamo"
+delete-after: True
+changes:
+  - rscadd: "Portable generators now vibrate while running (animating them back and forth very slightly)"

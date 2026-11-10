@@ -56,3 +56,5 @@
 /// Called when an atom is crossed by a movable atom
 #define COMSIG_ATOM_CROSSED "atom_crossed"
 
+/// Called when an ignitable atom is ignited
+#define COMSIG_ATOM_IGNITE "atom_ignite"

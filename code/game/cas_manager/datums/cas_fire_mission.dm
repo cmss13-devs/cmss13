@@ -206,6 +206,16 @@
 				target_turfs += shootloc
 	return target_turfs
 
+/// Ignore mounted weapons with no scheduled shots
+/datum/cas_fire_mission/proc/can_fire_during_transport()
+	for(var/datum/cas_fire_mission_record/record as anything in records)
+		for(var/offset in record.offsets)
+			if(isnull(offset) || offset == "-")
+				continue
+			if(!record.weapon?.transport_firemission_allowed)
+				return FALSE
+	return TRUE
+
 /datum/cas_fire_mission/proc/execute_firemission(obj/structure/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, direction = NORTH, steps = 12, step_delay = 3, datum/cas_fire_envelope/envelope = null, mob/user)
 	if(initial_turf == null || check(linked_console) != FIRE_MISSION_ALL_GOOD)
 		return FIRE_MISSION_NOT_EXECUTABLE
@@ -242,6 +252,9 @@
 			sy = 1
 	var/step = 1
 	for(step = 1; step<=steps; step++)
+		if(envelope?.transport_deadline && !envelope.can_continue_transport_firemission(src))
+			clear_firemission_reticles(all_firemission_reticles)
+			return FIRE_MISSION_NOT_EXECUTABLE
 		if(step > next_step)
 			current_turf = get_step(current_turf, direction)
 			next_step += tally_step

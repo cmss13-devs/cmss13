@@ -77,11 +77,11 @@
 	if(mode != SHUTTLE_CALL)
 		return "Transport firemissions require the dropship to be in flight."
 	if(!has_transport_firemission_computer())
-		return "A transport firemission computer must be installed."
+		return "An Avionics computer must be installed."
 	if(!timer || timeLeft(1) <= required_time)
 		return "Not enough transport flight time remains to complete the Fire Mission."
 	if(!mission?.can_fire_during_transport())
-		return "Transport firemissions may only fire the GAU and laser cannon. Disable all other weapon shots."
+		return "Transport firemissions may only fire the GAU and Laser Cannon. Disable all other weapon shots."
 	return null
 
 /obj/docking_port/mobile/marine_dropship/proc/add_equipment(obj/docking_port/mobile/marine_dropship/dropship, obj/structure/dropship_equipment/equipment)

@@ -329,6 +329,7 @@ GLOBAL_LIST_INIT(xeno_undraggable_objects, typecacheof(list(
 	/obj/structure/machinery/nuclearbomb,
 	/obj/structure/ship_ammo,
 	/obj/structure/closet,
+	/obj/structure/reagent_dispensers/tank,
 	/obj/item/ammo_magazine,
 	/obj/item/weapon,
 	/obj/item/storage,
@@ -346,7 +347,9 @@ GLOBAL_LIST_INIT(xeno_undraggable_objects, typecacheof(list(
 	/obj/item/disk/objective,
 	/obj/item/clothing/suit,
 	/obj/item/clothing/head/helmet,
-	/obj/structure/reagent_dispensers/tank,
+	/obj/item/mortar_shell,
+	/obj/item/mortar_kit,
+	/obj/item/device/cotablet,
 )))
 
 GLOBAL_LIST_INIT(typecache_mob, typecacheof(/mob))

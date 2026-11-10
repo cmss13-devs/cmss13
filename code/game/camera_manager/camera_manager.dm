@@ -248,6 +248,7 @@
  * Set the displayed camera to the static not-connected.
  */
 /datum/component/camera_manager/proc/show_camera_static()
+	SIGNAL_HANDLER
 	clear_radar_contacts()
 	clear_meson_contacts()
 	cam_screen.vis_contents.Cut()

@@ -966,12 +966,9 @@
 /turf/open/floor/strata,
 /area/white_antre/indoors/main_level/security)
 "acI" = (
-/obj/effect/antre/border{
-	dir = 4
-	},
-/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
-/turf/open/antre/plating/direction_north/west_edge,
-/area/white_antre/indoors/main_level/west_corridor)
+/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
+/turf/open/floor/strata,
+/area/white_antre/indoors/main_level/security)
 "acJ" = (
 /obj/structure/barricade/handrail{
 	dir = 8
@@ -1003,22 +1000,33 @@
 /obj/effect/alien/weeds/node,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/east_containment_hive)
+"acP" = (
+/obj/effect/antre/border{
+	dir = 4
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/antre/plating/direction_north/west_edge,
+/area/white_antre/indoors/main_level/west_corridor)
 "acQ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/main_level/east_corridor)
 "acR" = (
-/obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
-/turf/open/floor/strata,
-/area/white_antre/indoors/main_level/security)
-"acS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2_red"
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_mode/ammo_supplies,
 /turf/open/floor/hybrisa/metal/stripe_red/north,
 /area/white_antre/indoors/main_level/security)
+"acS" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/antre/border{
+	dir = 4
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
+/turf/open/antre/plating/direction_north/west_edge,
+/area/white_antre/indoors/main_level/west_corridor)
 "acT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -1028,53 +1036,45 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "acU" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/antre/border{
-	dir = 4
-	},
-/obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
-/turf/open/antre/plating/direction_north/west_edge,
-/area/white_antre/indoors/main_level/west_corridor)
-"acV" = (
 /obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/security)
-"acW" = (
+"acV" = (
 /obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
 /turf/open/floor/strata/red3,
 /area/white_antre/indoors/main_level/security)
-"acX" = (
+"acW" = (
 /obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/antre/plating/west_corner_dir/north_west,
 /area/white_antre/indoors/main_level/west_corridor)
-"acY" = (
+"acX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/item_pool_spawner/survivor_mode/firearms,
 /turf/open/floor/prison/darkred2/east,
 /area/white_antre/indoors/main_level/security)
-"acZ" = (
+"acY" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/antre/plating/direction_north/east_edge,
 /area/white_antre/indoors/main_level/east_corridor)
-"ada" = (
+"acZ" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/east_containment_hive)
-"adb" = (
+"ada" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/east_containment)
-"adc" = (
+"adb" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/east_containment_hive)
-"add" = (
+"adc" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/main_level/east_corridor)
-"ade" = (
+"add" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2_red";
 	pixel_y = -2
@@ -1082,17 +1082,21 @@
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/floor/prison/darkred2,
 /area/white_antre/indoors/main_level/east_containment)
-"adf" = (
+"ade" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/main_level/east_containment)
-"adg" = (
+"adf" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/east_containment)
+"adg" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/special_gear,
+/turf/open/floor/strata,
+/area/white_antre/indoors/main_level/dorms)
 "adh" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "cargo_arrow3";
@@ -1101,22 +1105,22 @@
 /turf/closed/wall/mineral/bone_resin/k_series,
 /area/white_antre/oob)
 "adi" = (
-/obj/effect/landmark/item_pool_spawner/survivor_mode/special_gear,
-/turf/open/floor/strata,
-/area/white_antre/indoors/main_level/dorms)
-"adj" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/antre/plating/direction_west/east_east,
 /area/white_antre/indoors/main_level/east_containment)
-"adk" = (
+"adj" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/floor/platingdmg1,
 /area/white_antre/indoors/main_level/east_containment)
-"adl" = (
+"adk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_warning_smooth_red"
 	},
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/floor/corsat/marked,
+/area/white_antre/indoors/main_level/east_containment)
+"adl" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/main_level/east_containment)
 "adm" = (
@@ -1127,20 +1131,11 @@
 /turf/open/auto_turf/snow/layer4,
 /area/white_antre/oob)
 "ado" = (
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
-/turf/open/floor/corsat/marked,
-/area/white_antre/indoors/main_level/east_containment)
-"adp" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/main_level/east_containment)
-"adq" = (
-/obj/structure/platform_decoration/metal/almayer_smooth/east,
-/obj/structure/lz_sign/antre_sign,
-/turf/open/auto_turf/sand_white/layer0,
-/area/white_antre/landing_zone)
-"adr" = (
+"adp" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2_red";
 	dir = 8;
@@ -1149,17 +1144,26 @@
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/floor/prison/darkred2/west,
 /area/white_antre/indoors/main_level/east_containment)
-"ads" = (
+"adq" = (
+/obj/structure/platform_decoration/metal/almayer_smooth/east,
+/obj/structure/lz_sign/antre_sign,
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/landing_zone)
+"adr" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/main_level/east_containment)
-"adt" = (
+"ads" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/antre/plating/west_corner_dir/south_east,
 /area/white_antre/indoors/main_level/east_containment)
-"adu" = (
+"adt" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/antre/plating/direction_north/east_edge,
+/area/white_antre/indoors/main_level/east_corridor)
+"adu" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/main_level/east_corridor)
 "adv" = (
 /obj/structure/machinery/disposal,
@@ -1250,8 +1254,8 @@
 /area/white_antre/indoors/upper_level/medical)
 "adM" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
-/turf/open/antre/plating/direction_west/west_south,
-/area/white_antre/indoors/main_level/east_corridor)
+/turf/open/antre/plating/direction_west/east_north,
+/area/white_antre/indoors/main_level/east_containment)
 "adN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer{
@@ -1451,9 +1455,13 @@
 /turf/open/floor/almayer/silver/north,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "aer" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 1
+	},
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
-/turf/open/antre/plating/direction_west/east_north,
-/area/white_antre/indoors/main_level/east_containment)
+/turf/open/floor/prison/cell_stripe,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "aes" = (
 /obj/effect/decal/cleanable/dirt{
 	icon_state = "thermite";
@@ -1465,28 +1473,24 @@
 /turf/closed/wall/hybrisa/colony/reinforced,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aeu" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2";
-	dir = 1
-	},
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
-/turf/open/floor/prison/cell_stripe,
-/area/white_antre/indoors/main_level/east_containment_hive)
-"aev" = (
 /obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
 /turf/open/floor/prison/darkyellow2/north,
 /area/white_antre/indoors/main_level/engineering)
-"aew" = (
+"aev" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
 /turf/open/floor/prison/bright_clean,
 /area/white_antre/indoors/main_level/engineering)
-"aex" = (
+"aew" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/east_containment_hive)
+"aex" = (
+/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
+/turf/open/floor/prison/darkyellow2/east,
+/area/white_antre/indoors/main_level/engineering)
 "aey" = (
 /obj/effect/mist/steam{
 	pixel_x = -3;
@@ -1495,12 +1499,12 @@
 /turf/open/auto_turf/snow/layer2,
 /area/white_antre/oob)
 "aez" = (
-/obj/effect/landmark/item_pool_spawner/survivor_mode/construction_supplies,
-/turf/open/floor/prison/darkyellow2/east,
-/area/white_antre/indoors/main_level/engineering)
-"aeA" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/floor/prison/darkyellow2/north,
+/area/white_antre/indoors/main_level/east_containment)
+"aeA" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/floor/prison/darkbrown2/east,
 /area/white_antre/indoors/main_level/east_containment)
 "aeB" = (
 /obj/structure/window_frame/hybrisa/colony/engineering/reinforced,
@@ -1509,20 +1513,9 @@
 /area/white_antre/indoors/main_level/west_corridor)
 "aeC" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
-/turf/open/floor/prison/darkbrown2/east,
-/area/white_antre/indoors/main_level/east_containment)
-"aeD" = (
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/floor/prison/ramptop/north,
 /area/white_antre/indoors/main_level/north_containment)
-"aeE" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2_red";
-	pixel_y = -2
-	},
-/turf/closed/wall/mineral/bone_resin/k_series,
-/area/white_antre/oob)
-"aeF" = (
+"aeD" = (
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
 	alpha = 155
@@ -1531,7 +1524,14 @@
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/east_containment)
-"aeG" = (
+"aeE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	pixel_y = -2
+	},
+/turf/closed/wall/mineral/bone_resin/k_series,
+/area/white_antre/oob)
+"aeF" = (
 /obj/effect/hybrisa/misc/fake/wire/yellow{
 	dir = 4;
 	pixel_y = -4
@@ -1546,19 +1546,19 @@
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/east_containment)
-"aeH" = (
+"aeG" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/floor/almayer/silver,
 /area/white_antre/indoors/main_level/north_containment_hive)
-"aeI" = (
+"aeH" = (
 /obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/floor/strata/white_cyan3/northeast,
 /area/white_antre/indoors/upper_level/medical)
-"aeJ" = (
+"aeI" = (
 /obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/floor/strata/white_cyan3/west,
 /area/white_antre/indoors/upper_level/medical)
-"aeK" = (
+"aeJ" = (
 /obj/effect/landmark/item_pool_spawner/survivor_mode/medical_supplies,
 /turf/open/floor/strata/white_cyan1/east,
 /area/white_antre/indoors/upper_level/medical)
@@ -108597,16 +108597,16 @@ csd
 csd
 bSr
 csd
-acU
+acS
 csd
 csd
 chE
 csd
-acU
+acS
 csd
 bSr
 bSd
-acI
+acP
 csc
 asO
 asM
@@ -108769,7 +108769,7 @@ etk
 arD
 aoP
 atn
-acX
+acW
 coj
 asZ
 cno
@@ -109399,8 +109399,8 @@ awF
 aNV
 atT
 amP
-aez
-aez
+aex
+aex
 aud
 bUC
 vcS
@@ -109779,7 +109779,7 @@ uTV
 rHC
 aoa
 ano
-acR
+acI
 bSu
 rHC
 kXf
@@ -110242,7 +110242,7 @@ enE
 amI
 amy
 hjx
-aew
+aev
 dzD
 aun
 amI
@@ -110283,7 +110283,7 @@ bZj
 bZj
 fjW
 asS
-acS
+acR
 bSw
 anx
 anm
@@ -110579,7 +110579,7 @@ aun
 amA
 hjx
 bUD
-aev
+aeu
 aun
 bwp
 bsV
@@ -110606,7 +110606,7 @@ atz
 aqa
 att
 att
-adi
+adg
 att
 aWx
 atp
@@ -110618,8 +110618,8 @@ bZj
 bZj
 bZj
 atc
-acV
-acS
+acU
+acR
 anH
 rHC
 iAU
@@ -111121,7 +111121,7 @@ arL
 asL
 asU
 aog
-acY
+acX
 anW
 anR
 anI
@@ -111631,7 +111631,7 @@ bZj
 ihH
 anA
 ano
-acR
+acI
 anf
 asL
 awO
@@ -111794,7 +111794,7 @@ arK
 bZj
 gvZ
 uIZ
-acW
+acV
 qsG
 anK
 anB
@@ -115936,7 +115936,7 @@ aPb
 aPo
 aPo
 aPo
-aeH
+aeG
 aOT
 gye
 aOL
@@ -115945,7 +115945,7 @@ axZ
 byg
 bxD
 aOx
-aeD
+aeC
 aOE
 aOE
 aOE
@@ -117306,7 +117306,7 @@ bdE
 cov
 cov
 cov
-add
+adc
 cov
 cpJ
 cof
@@ -117320,7 +117320,7 @@ cov
 cov
 cov
 aHV
-add
+adc
 cov
 cov
 cov
@@ -117332,7 +117332,7 @@ ajW
 bSc
 coC
 cov
-add
+adc
 cov
 aYt
 aYA
@@ -117479,10 +117479,10 @@ bcS
 coi
 coM
 cpi
-adM
+adu
 cpA
 coq
-adu
+adt
 coq
 coq
 aIm
@@ -117505,7 +117505,7 @@ coq
 coq
 coq
 aYl
-acZ
+acY
 aYd
 coi
 cog
@@ -117792,7 +117792,7 @@ aLw
 bkc
 byB
 bxE
-aeF
+aeD
 buC
 bHo
 bHo
@@ -117823,7 +117823,7 @@ aTS
 aQi
 aZD
 ejX
-ads
+adr
 ejX
 baA
 aQi
@@ -118312,7 +118312,7 @@ acL
 kIo
 abZ
 aKV
-adg
+adf
 bdm
 bdd
 abM
@@ -118336,7 +118336,7 @@ aZX
 abq
 aZF
 coO
-adf
+ade
 coG
 aLw
 abi
@@ -118512,7 +118512,7 @@ abf
 abc
 abb
 aKI
-adb
+ada
 aKI
 aaL
 aPV
@@ -118629,7 +118629,7 @@ iKa
 iKa
 aPV
 byG
-aeG
+aeF
 bja
 aPV
 atY
@@ -118653,7 +118653,7 @@ bdo
 aNo
 mtx
 cpK
-aer
+adM
 bTi
 coT
 bHo
@@ -118802,7 +118802,7 @@ bja
 kje
 aLw
 bvD
-adb
+ada
 aKI
 bun
 aLB
@@ -118997,7 +118997,7 @@ brS
 abF
 coU
 coU
-adt
+ads
 cpm
 coI
 baK
@@ -119005,7 +119005,7 @@ cpd
 coU
 coU
 coU
-adj
+adi
 coH
 bTl
 aZv
@@ -119167,7 +119167,7 @@ aZv
 coI
 coI
 awV
-adb
+ada
 cph
 coI
 coI
@@ -119835,16 +119835,16 @@ bHo
 bHo
 bHo
 bHo
+adl
 ado
-adp
-ado
+adl
 aLW
 aLW
 aLW
+adl
 ado
-adp
-ado
-adk
+adl
+adj
 bHo
 bHo
 bHo
@@ -120008,7 +120008,7 @@ bat
 aLJ
 aLJ
 aLJ
-adr
+adp
 aLJ
 bat
 aLJ
@@ -120180,7 +120180,7 @@ rEa
 rEa
 rEa
 rEa
-adl
+adk
 rEa
 rEa
 aZA
@@ -120338,7 +120338,7 @@ rEa
 bak
 aKV
 bcn
-adg
+adf
 aKV
 sQd
 aKV
@@ -120353,7 +120353,7 @@ aKV
 aKV
 aZB
 rEa
-ade
+add
 lqX
 agk
 azu
@@ -120490,7 +120490,7 @@ aXj
 aQi
 euM
 aAa
-aex
+aew
 ayS
 ayS
 ayV
@@ -120498,7 +120498,7 @@ bpi
 ayV
 ayS
 aAb
-aeu
+aer
 agk
 oRZ
 xTl
@@ -120526,7 +120526,7 @@ lqX
 agk
 azu
 azk
-adc
+adb
 ayV
 bpi
 bHo
@@ -120652,7 +120652,7 @@ bHo
 aKK
 aKK
 aLT
-aeA
+aez
 aYH
 aXj
 aQi
@@ -120662,7 +120662,7 @@ ayU
 ayS
 ayV
 bpi
-ada
+acZ
 ayV
 ayS
 aAb
@@ -120996,7 +120996,7 @@ euM
 euM
 azk
 ayV
-ada
+acZ
 ayV
 ayV
 bHo
@@ -121023,7 +121023,7 @@ aKV
 aKV
 aKV
 aKV
-adg
+adf
 rEa
 aLD
 bHo
@@ -121182,13 +121182,13 @@ rEa
 rEa
 rEa
 rEa
-adl
+adk
 baX
 baP
 rEa
 rEa
 rEa
-adl
+adk
 rEa
 rEa
 rEa
@@ -121201,7 +121201,7 @@ euM
 euM
 azm
 azj
-ada
+acZ
 ayV
 ayV
 ayO
@@ -121322,7 +121322,7 @@ iKa
 aPV
 aMx
 aZH
-aeC
+aeA
 aLU
 aPV
 aPV
@@ -121333,7 +121333,7 @@ euM
 azk
 ayS
 ayS
-adc
+adb
 aAb
 euM
 euM
@@ -150436,7 +150436,7 @@ aQo
 byu
 bxV
 adG
-aeJ
+aeI
 bxq
 adG
 bBc
@@ -151443,7 +151443,7 @@ aQo
 aQo
 ciy
 bya
-aeK
+aeJ
 bxA
 aQo
 aQo
@@ -152121,7 +152121,7 @@ bPv
 bxd
 bwT
 adK
-aeI
+aeH
 bgZ
 bEE
 bCp

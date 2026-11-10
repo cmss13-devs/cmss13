@@ -64,13 +64,13 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 /obj/effect/decal/cleanable/proc/can_place_cleanable(obj/effect/decal/cleanable/old_cleanable)
 	return TRUE
 
-/obj/effect/decal/cleanable/proc/place_cleanable(turf/T, overlayed)
-	var/obj/effect/decal/cleanable/C = LAZYACCESS(T.cleanables, cleanable_type)
-	if(C && !allow_this_to_overlap)
-		C.cleanup_cleanable()
+/obj/effect/decal/cleanable/proc/place_cleanable(turf/placed_turf, overlayed)
+	var/obj/effect/decal/cleanable/old_cleanable = LAZYACCESS(placed_turf.cleanables, cleanable_type)
+	if(old_cleanable && !allow_this_to_overlap)
+		old_cleanable.cleanup_cleanable()
 	cleaned_up = FALSE
-	LAZYSET(T.cleanables, cleanable_type, src)
-	cleanable_turf = T
+	LAZYSET(placed_turf.cleanables, cleanable_type, src)
+	cleanable_turf = placed_turf
 	if(overlayed)
 		create_overlay()
 

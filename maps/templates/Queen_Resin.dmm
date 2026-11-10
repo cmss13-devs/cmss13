@@ -1,0 +1,136 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"f" = (
+/obj/effect/marked_atom/queen_bubble,
+/turf/closed/wall/mineral/bone_resin/burrowable,
+/area/template_noop)
+"F" = (
+/turf/closed/wall/mineral/bone_resin/burrowable,
+/area/template_noop)
+"L" = (
+/obj/effect/alien/weeds/node,
+/turf/template_noop,
+/area/template_noop)
+
+(1,1,1) = {"
+a
+a
+a
+a
+F
+a
+a
+f
+f
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+F
+F
+f
+f
+F
+F
+"}
+(3,1,1) = {"
+a
+a
+a
+f
+f
+f
+L
+a
+a
+f
+"}
+(4,1,1) = {"
+a
+a
+a
+f
+a
+a
+a
+a
+F
+f
+"}
+(5,1,1) = {"
+a
+a
+a
+F
+f
+a
+a
+a
+f
+a
+"}
+(6,1,1) = {"
+a
+a
+a
+a
+f
+a
+f
+L
+f
+F
+"}
+(7,1,1) = {"
+a
+a
+a
+a
+F
+f
+F
+f
+F
+f
+"}
+(8,1,1) = {"
+a
+a
+a
+a
+f
+f
+a
+a
+a
+f
+"}
+(9,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(10,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}

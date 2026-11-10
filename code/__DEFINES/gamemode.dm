@@ -6,6 +6,12 @@
 #define MODE_INFESTATION_M_MINOR "Marine Minor Victory"
 #define MODE_INFESTATION_DRAW_DEATH "DRAW: Mutual Annihilation"
 
+#define MODE_SURVIVE_X_MAJOR "Xenomorph Major Slaughter"
+#define MODE_SURVIVE_S_MAJOR "Survivor Major Victory"
+#define MODE_SURVIVE_X_MINOR "Xenomorph Minor Slaughter"
+#define MODE_SURVIVE_S_EXTRACT "Survivor Extraction Victory"
+#define MODE_SURVIVE_DRAW_DEATH "DRAW: Mutual Survival Annihilation"
+
 #define MODE_INFECTION_ZOMBIE_WIN "Major Zombie Victory"
 
 #define MODE_BATTLEFIELD_W_MAJOR "Wey-Yu PMC Major Success"

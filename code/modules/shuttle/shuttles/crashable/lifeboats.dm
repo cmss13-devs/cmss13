@@ -83,9 +83,6 @@
 	if(SShijack.sd_detonated)
 		return FALSE
 
-	if(SShijack.hijack_plan == HIJACK_ROUTE_SCUTTLE)
-		return TRUE
-
 	if(SShijack.hijack_status >= HIJACK_OBJECTIVES_FTL_CRASH)
 		return FALSE
 

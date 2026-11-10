@@ -207,7 +207,7 @@ SUBSYSTEM_DEF(hijack)
 		TIMER_COOLDOWN_START(src, COOLDOWN_POSTHIJACK_ERT, 5 MINUTES)
 		return
 
-	if(!resumed && sd_unlocked && !sd_detonated && overloaded_generators)
+	if(!resumed && !sd_detonated && overloaded_generators)
 		sd_time_remaining -= wait
 		if(!engine_room_heated && (sd_time_remaining <= (max((1 - round(overloaded_generators / maximum_overload_generators, 0.01)) * sd_max_time, sd_min_time) * 0.66)))
 			heat_engine_room()
@@ -892,9 +892,6 @@ SUBSYSTEM_DEF(hijack)
 
 /datum/controller/subsystem/hijack/proc/detonate_sd()
 	set waitfor = FALSE
-
-	if(sd_detonated)
-		return
 
 	SSticker?.roundend_check_paused = TRUE
 	sd_detonated = TRUE

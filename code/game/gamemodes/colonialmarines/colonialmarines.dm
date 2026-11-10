@@ -675,7 +675,7 @@
  * Checks to see who won
  */
 /datum/game_mode/colonialmarines/check_win()
-	if(round_finished || SSticker.current_state != GAME_STATE_PLAYING)
+	if(SSticker.current_state != GAME_STATE_PLAYING)
 		return
 	if(ROUND_TIME < 10 MINUTES)
 		return

@@ -92,7 +92,7 @@
 	if(target_area)
 		soundscape_playlist = target_area.soundscape_playlist
 
-	if(SShijack?.sd_unlocked && SShijack.overloaded_generators && !SShijack.sd_detonated)
+	if(SShijack.overloaded_generators && !SShijack.sd_detonated)
 		var/turf/owner_turf = get_turf(owner.mob)
 		if(owner_turf && is_mainship_level(owner_turf.z))
 			target_ambience = 'sound/AI/selfdestruct_alarm.ogg'

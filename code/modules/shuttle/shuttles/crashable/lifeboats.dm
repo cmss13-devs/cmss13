@@ -58,7 +58,6 @@
 		return
 	if(force)
 		status = LIFEBOAT_ACTIVE
-		available = TRUE
 
 	. = ..()
 

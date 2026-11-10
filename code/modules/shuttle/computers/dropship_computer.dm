@@ -308,14 +308,15 @@
 		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
 		return XENO_NONCOMBAT_ACTION
 
+	if(SShijack.ground_claimed)
+		to_chat(xeno, SPAN_XENONOTICE("The queen has chosen not to pursue the tallhosts to their skyhive."))
+		return
+
 	if(is_remote)
 		groundside_alien_action(xeno)
 		return
 
 	if(dropship.is_hijacked)
-		return
-	if(SShijack.ground_claimed)
-		to_chat(xeno, SPAN_XENONOTICE("The queen has chosen not to pursue the tallhosts to their skyhive."))
 		return
 
 	// door controls being overridden
@@ -358,19 +359,12 @@
 			to_chat(xeno, SPAN_XENODANGER("You can't mobilize the strength to hijack the shuttle yet. Please wait another [time_left_until(SHUTTLE_LOCK_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
 			return
 		if(istype(SSticker.mode, /datum/game_mode/colonialmarines) && SSticker.current_state == GAME_STATE_PLAYING)
-			var/datum/game_mode/colonialmarines/mode = SSticker.mode
 			var/choice = tgui_alert(xeno, "Pursue the tallhosts to their skyhive, or ground the dropship and claim a grounside victory?", "Hive Victory", list("Hijack", "Claim ground victory", "Cancel"))
 			if(choice != "Hijack" && choice != "Claim ground victory")
 				return
-			if(QDELETED(src) || QDELETED(xeno) || QDELETED(dropship))
-				return
-			if(!xeno.check_state() || !xeno.Adjacent(src) || xeno.caste_type != XENO_CASTE_QUEEN)
-				return
-			if(!dropship_control_lost || dropship.is_hijacked || !is_ground_level(z) || SSshuttle.getShuttle(shuttleId) != dropship)
-				return
-			if(SSticker.current_state != GAME_STATE_PLAYING || SSticker.mode != mode || mode.round_finished || mode.is_in_endgame || SShijack.ground_claimed || SShijack.hijack_status != HIJACK_OBJECTIVES_NOT_STARTED)
-				return
 			if(choice == "Claim ground victory")
+				if(!is_ground_level(z))
+					return
 				if(!SShijack.is_groundside_clear())
 					to_chat(xeno, SPAN_XENODANGER("Too many tallhosts still live upon these lands. Drive them OUT!"))
 					return
@@ -395,23 +389,18 @@
 			icon_state = initial(icon_state)
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack(mob/user, force = FALSE)
-	if(SShijack.ground_claimed)
-		to_chat(user, SPAN_XENODANGER("The metal bird refuses to fly."))
-		return
 	// select crash location
+	var/turf/source_turf = get_turf(src)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
-	var/mob/living/carbon/xenomorph/xeno = user
 	var/result = tgui_input_list(user, "Where to 'land'?", "Dropship Hijack", GLOB.almayer_ship_sections, timeout = 10 SECONDS)
 	if(!result)
 		return
-	if(QDELETED(src) || QDELETED(user) || QDELETED(dropship))
+	if(!user.Adjacent(source_turf) && !force)
 		return
 	if(dropship.is_hijacked || SShijack.ground_claimed)
 		return
 	if(!force)
-		if(!isqueen(xeno) || !xeno.check_state() || !xeno.Adjacent(src))
-			return
-		if(!dropship_control_lost || !is_ground_level(z) || SSshuttle.getShuttle(shuttleId) != dropship)
+		if(!is_ground_level(z))
 			return
 		if(SSticker.current_state != GAME_STATE_PLAYING || SSticker.mode.round_finished || SShijack.hijack_status != HIJACK_OBJECTIVES_NOT_STARTED)
 			return
@@ -433,6 +422,7 @@
 	playsound(src, 'sound/misc/queen_alarm.ogg')
 	addtimer(CALLBACK(SShijack, TYPE_PROC_REF(/datum/controller/subsystem/hijack, hijack_general_quarters)), 10 SECONDS)
 
+	var/mob/living/carbon/xenomorph/xeno = user
 	var/hivenumber = XENO_HIVE_NORMAL
 	if(istype(xeno))
 		hivenumber = xeno.hivenumber
@@ -535,9 +525,6 @@
 		if("move")
 			if(!shuttle)
 				return FALSE
-			if(SShijack.ground_claimed || !shuttle.canMove())
-				to_chat(user, SPAN_WARNING("Dropship launches have been suspended for emergency FTL withdrawal."))
-				return FALSE
 			if(shuttle.mode != SHUTTLE_IDLE && (shuttle.mode != SHUTTLE_CALL && !shuttle.destination))
 				to_chat(user, SPAN_WARNING("You can't move to a new destination right now."))
 				return TRUE
@@ -624,7 +611,7 @@
 				to_chat(user, SPAN_WARNING("The dropships main controls are not accepting the order."))
 				playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
 				return
-			if(SShijack.in_ftl || SShijack.ground_claimed || SShijack.hijack_status >= HIJACK_OBJECTIVES_GROUND_CRASH)
+			if(SShijack.in_ftl || SShijack.hijack_status >= HIJACK_OBJECTIVES_GROUND_CRASH)
 				to_chat(user, SPAN_WARNING("The dropships main controls are not accepting the order."))
 				playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
 				return

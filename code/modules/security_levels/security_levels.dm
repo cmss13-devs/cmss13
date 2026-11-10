@@ -44,7 +44,7 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 			if(!SShijack)
 				message_admins("Self destruct detonation is not possible!")
 				return
-			addtimer(CALLBACK(SShijack, TYPE_PROC_REF(/datum/controller/subsystem/hijack, detonate_sd_with_countdown)), 6 SECONDS)
+			addtimer(CALLBACK(SShijack, TYPE_PROC_REF(/datum/controller/subsystem/hijack, detonate_sd)), 6 SECONDS)
 
 /proc/get_security_level()
 	switch(GLOB.security_level)

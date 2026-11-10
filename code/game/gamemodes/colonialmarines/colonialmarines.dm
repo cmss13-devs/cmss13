@@ -683,7 +683,7 @@
 	if(SShijack?.sd_detonated)
 		round_finished = MODE_INFESTATION_DRAW_DEATH // Self destruction.
 		return
-	if(SShijack?.withdrawal_end_time)
+	if(SShijack.withdrawal_end_time)
 		return
 	if(SShijack?.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH && !MODE_HAS_MODIFIER(/datum/gamemode_modifier/continue_on_ground_crash))
 		if(SShijack.crashed)
@@ -733,7 +733,7 @@
 	if(!(flags_round_type & MODE_INFESTATION))
 		return
 
-	if(is_in_endgame || SShijack?.withdrawal_end_time)
+	if(is_in_endgame || SShijack.withdrawal_end_time)
 		return
 
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]

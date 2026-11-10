@@ -1121,21 +1121,16 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(.)
 		return
 
-	var/mob/user = ui.user
 	switch(action)
 		if("withdrawal_start")
-			if(user != SSticker.mode.acting_commander)
+			if(ui.user != SSticker.mode.acting_commander)
 				return FALSE
-			if(!SShijack.start_withdrawal())
-				return FALSE
-			return TRUE
+			return SShijack.start_withdrawal()
 
 		if("hijack_plan")
-			if(user != SSticker.mode.acting_commander)
+			if(ui.user != SSticker.mode.acting_commander)
 				return FALSE
-			if(!SShijack.select_hijack_plan(params["plan"]))
-				return FALSE
-			return TRUE
+			return SShijack.select_hijack_plan(params["plan"])
 
 /obj/structure/machinery/computer/overwatch/proc/transfer_talk(obj/item/camera, mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE, show_message_above_tv = FALSE)
 	SIGNAL_HANDLER

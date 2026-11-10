@@ -88,13 +88,8 @@
 	return door_control.is_door_locked(direction)
 
 /obj/docking_port/mobile/marine_dropship/canMove()
-	if(SShijack?.ground_claimed && !istype(get_docked(), /obj/docking_port/stationary/transit))
+	if(SShijack.withdrawal_end_time && is_mainship_level(z))
 		return FALSE
-	return ..()
-
-/obj/docking_port/mobile/marine_dropship/request(obj/docking_port/stationary/dock, force)
-	if(SShijack?.ground_claimed || !canMove())
-		return DOCKING_IMMOBILIZED
 	return ..()
 
 /obj/docking_port/mobile/marine_dropship/enterTransit()
@@ -277,7 +272,7 @@
 
 /obj/docking_port/mobile/marine_dropship/proc/automated_check()
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/root_console = getControlConsole()
-	if(!root_console || root_console.dropship_control_lost || SShijack.in_ftl || SShijack.ground_claimed || SShijack.hijack_status >= HIJACK_OBJECTIVES_GROUND_CRASH)
+	if(!root_console || root_console.dropship_control_lost || SShijack.in_ftl || SShijack.hijack_status >= HIJACK_OBJECTIVES_GROUND_CRASH)
 		automated_hangar_id = null
 		automated_lz_id = null
 		automated_delay = null

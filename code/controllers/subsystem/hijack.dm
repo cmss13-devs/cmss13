@@ -50,7 +50,7 @@ SUBSYSTEM_DEF(hijack)
 	/// Allows command to withdraw from the AO
 	var/withdrawal_available = FALSE
 
-	/// When the withdrawal countdown ends. Zero means no countdown is active.
+	/// When the withdrawal countdown ends, zero means no withdrawal
 	var/withdrawal_end_time = 0
 
 	/// Whether the queen chose to skip hijack
@@ -218,7 +218,7 @@ SUBSYSTEM_DEF(hijack)
 		if(!engine_room_superheated && (sd_time_remaining <= (max((1 - round(overloaded_generators / maximum_overload_generators, 0.01)) * sd_max_time, sd_min_time) * 0.33)))
 			superheat_engine_room()
 
-		if((sd_time_remaining <= 0) && !sd_detonated)
+		if(sd_time_remaining <= 0)
 			detonate_sd()
 
 	if(hijack_status == HIJACK_OBJECTIVES_FTL_CRASH || hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH)
@@ -336,7 +336,7 @@ SUBSYSTEM_DEF(hijack)
 		current_run_progress_additive = 0
 		current_run_progress_multiplicative = 1
 
-	if(hijack_plan == HIJACK_ROUTE_SCUTTLE && hijack_status == HIJACK_OBJECTIVES_COMPLETE && !sd_unlocked && !admin_sd_blocked)
+	if(hijack_plan == HIJACK_ROUTE_SCUTTLE && hijack_status == HIJACK_OBJECTIVES_COMPLETE && !admin_sd_blocked)
 		unlock_self_destruct()
 
 /// Stops lockerhiders from preventing hijack skip
@@ -349,14 +349,14 @@ SUBSYSTEM_DEF(hijack)
 		if(istype(container, /obj/structure/closet) || istype(container, /obj/vehicle))
 			continue
 		var/turf/human_turf = get_turf(human)
-		if(!human_turf || !is_ground_level(human_turf.z) || SSinterior.in_interior(human_turf))
+		if(!human_turf || !is_ground_level(human_turf.z))
 			continue
 		if(++groundside_humans > HIJACK_GROUND_CLAIM_HUMAN_TOLERANCE)
 			return FALSE
 	return TRUE
 
 /datum/controller/subsystem/hijack/proc/allow_withdrawal()
-	if(ground_claimed || withdrawal_available || hijack_status != HIJACK_OBJECTIVES_NOT_STARTED)
+	if(withdrawal_available || hijack_status != HIJACK_OBJECTIVES_NOT_STARTED)
 		return FALSE
 	if(!istype(SSticker.mode, /datum/game_mode/colonialmarines) || SSticker.current_state != GAME_STATE_PLAYING || SSticker.mode.round_finished)
 		return FALSE
@@ -367,9 +367,9 @@ SUBSYSTEM_DEF(hijack)
 	return TRUE
 
 /datum/controller/subsystem/hijack/proc/can_start_withdrawal()
-	if(!withdrawal_available || withdrawal_end_time || ground_claimed || hijack_status != HIJACK_OBJECTIVES_NOT_STARTED || sd_detonated || in_ftl)
+	if(!withdrawal_available || withdrawal_end_time || hijack_status != HIJACK_OBJECTIVES_NOT_STARTED)
 		return FALSE
-	if(!istype(SSticker.mode, /datum/game_mode/colonialmarines) || SSticker.current_state != GAME_STATE_PLAYING || SSticker.mode.round_finished)
+	if(SSticker.current_state != GAME_STATE_PLAYING || SSticker.mode.round_finished)
 		return FALSE
 	return SSobjectives.first_drop_complete && is_groundside_clear()
 
@@ -388,20 +388,17 @@ SUBSYSTEM_DEF(hijack)
 	return TRUE
 
 /datum/controller/subsystem/hijack/proc/cancel_withdrawal()
-	if(ground_claimed)
-		return
 	if(withdrawal_end_time)
 		marine_announcement("FTL withdrawal interrupted by hostile dropship departure.", HIJACK_ANNOUNCE)
 	withdrawal_available = FALSE
 	withdrawal_end_time = 0
 
 /datum/controller/subsystem/hijack/proc/complete_withdrawal()
-	if(!withdrawal_end_time || world.time < withdrawal_end_time || hijack_status != HIJACK_OBJECTIVES_NOT_STARTED || sd_detonated)
+	if(!withdrawal_end_time)
 		return FALSE
-	if(!istype(SSticker.mode, /datum/game_mode/colonialmarines) || SSticker.current_state != GAME_STATE_PLAYING || SSticker.mode.round_finished)
+	if(SSticker.current_state != GAME_STATE_PLAYING || SSticker.mode.round_finished)
 		return FALSE
 	withdrawal_available = FALSE
-	withdrawal_end_time = 0
 	var/datum/game_mode/colonialmarines/mode = SSticker.mode
 	mode.add_current_round_status_to_end_results("Withdrawal")
 	var/roundend_was_paused = SSticker.roundend_check_paused
@@ -412,6 +409,7 @@ SUBSYSTEM_DEF(hijack)
 	initiate_ftl_charge(wait_for_jump = TRUE)
 	xeno_announcement(SPAN_XENOANNOUNCE("The hosts have fled the skies. The ground belongs to the hive!"), "everything", XENO_GENERAL_ANNOUNCE)
 	dim_withdrawal_lighting()
+	withdrawal_end_time = 0
 	SSticker.roundend_check_paused = roundend_was_paused
 	return TRUE
 
@@ -430,12 +428,8 @@ SUBSYSTEM_DEF(hijack)
 	while(TRUE)
 		var/light_fraction = clamp((fade_end_time - world.time) / (30 SECONDS), 0, 1)
 		for(var/area/ship_area as anything in initial_ambient_lighting)
-			if(QDELETED(ship_area))
-				continue
 			ship_area.set_base_lighting(new_alpha = round(initial_ambient_lighting[ship_area] * light_fraction))
-		for(var/obj/structure/machinery/ship_machine as anything in initial_light_power)
-			if(QDELETED(ship_machine))
-				continue
+		for(var/obj/structure/machinery/ship_machine in initial_light_power)
 			ship_machine.set_light(l_power = initial_light_power[ship_machine] * light_fraction)
 			if(!light_fraction && istype(ship_machine, /obj/structure/machinery/light))
 				var/obj/structure/machinery/light/ship_light = ship_machine
@@ -529,8 +523,6 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/announce_progress()
 	var/announce = announce_checkpoint / initial(announce_checkpoint)
 	if(hijack_plan != HIJACK_ROUTE_FTL)
-		if(announce_checkpoint > ftl_required_progress)
-			return
 		announce = announce_checkpoint / ftl_required_progress * 4
 
 	var/marine_warning_areas = ""
@@ -826,6 +818,8 @@ SUBSYSTEM_DEF(hijack)
 	sd_time_remaining = percent_completion_remaining * new_required_time
 	for(var/mob/player as anything in GLOB.player_list)
 		player.client?.soundOutput?.update_ambience()
+	if(!overloaded_generators && !sd_detonated)
+		shipwide_ai_announcement("Self-destruct sequence cancelled.", HIJACK_ANNOUNCE, sound('sound/AI/selfdestruct_deactivated.ogg'))
 
 /datum/controller/subsystem/hijack/proc/heat_engine_room()
 	engine_room_heated = TRUE
@@ -860,7 +854,7 @@ SUBSYSTEM_DEF(hijack)
 	wait_until_sd_time(sd_detonation_time - 110 SECONDS)
 	xeno_announcement(SPAN_XENOANNOUNCE("You have failed me, and your failure condemns your sisters to burn with this metal hive. The tallhosts flee from their own hive killer. Hunt them. Tear them from their escape vessels. If the hive must die, let no tallhost escape it."), "everything", "Queen Mother Psychic Directive")
 	wait_until_sd_time(sd_detonation_time - 50 SECONDS)
-	if(evac_status == EVACUATION_STATUS_NOT_INITIATED && initiate_evacuation(force = TRUE))
+	if(initiate_evacuation(force = TRUE))
 		shipwide_ai_announcement("ALERT: Emergency evacuation procedures automatically initiated. Self-destruct detonation in fifty seconds.", HIJACK_ANNOUNCE, quiet = TRUE)
 	xeno_announcement(SPAN_XENOANNOUNCE("DO NOT LET THEM ESCAPE."), "everything", "Queen Mother Psychic Directive")
 	wait_until_sd_time(sd_detonation_time - 15 SECONDS)
@@ -886,18 +880,15 @@ SUBSYSTEM_DEF(hijack)
 			ship_light.update(trigger = FALSE)
 			ship_light.set_light(ship_light.on ? ship_light.brightness : 0, l_color = LIGHT_COLOR_RED)
 
-/datum/controller/subsystem/hijack/proc/shake_sd_grace_period(detonation_time)
-	while(REALTIMEOFDAY < detonation_time)
+/datum/controller/subsystem/hijack/proc/shake_sd_grace_period()
+	while(REALTIMEOFDAY < sd_detonation_time)
 		sleep(rand(15 SECONDS, 20 SECONDS))
-		if(REALTIMEOFDAY >= detonation_time)
+		if(REALTIMEOFDAY >= sd_detonation_time)
 			return
 
-		var/time_remaining = detonation_time - REALTIMEOFDAY
+		var/time_remaining = sd_detonation_time - REALTIMEOFDAY
 		var/shake_stage = round((2 MINUTES - time_remaining) / (30 SECONDS))
 		shakeship(sstrength = rand(3, 4) + shake_stage, stime = rand(5, 7) + shake_stage, drop = time_remaining <= 30 SECONDS)
-
-/datum/controller/subsystem/hijack/proc/detonate_sd_with_countdown()
-	detonate_sd()
 
 /datum/controller/subsystem/hijack/proc/detonate_sd()
 	set waitfor = FALSE
@@ -912,7 +903,7 @@ SUBSYSTEM_DEF(hijack)
 	start_sd_emergency_lighting()
 	sd_detonation_time = REALTIMEOFDAY + 2 MINUTES
 	shipwide_ai_announcement("ALERT: Fusion reactor core entering supercritical state. Catastrophic detonation in aproximately two minutes. Evacuation craft are fully fueled, evacuate immediately.", HIJACK_ANNOUNCE, sound('sound/AI/selfdestruct_2m.ogg'))
-	INVOKE_ASYNC(src, PROC_REF(shake_sd_grace_period), sd_detonation_time)
+	INVOKE_ASYNC(src, PROC_REF(shake_sd_grace_period))
 	INVOKE_ASYNC(src, PROC_REF(announce_sd_grace_period))
 	wait_until_sd_time(sd_detonation_time - 27 SECONDS) //That's how long the actual detonation sequence takes
 

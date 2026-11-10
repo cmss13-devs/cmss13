@@ -1997,9 +1997,9 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/caperiver/outdoors/landing_zone_1)
 "aga" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/flora/grass/tallgrass/desert/corner,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/bushlands)
@@ -2595,8 +2595,8 @@
 /turf/open/desert/dirt/desert_transition_corner1,
 /area/caperiver/outdoors/bushlands)
 "ahT" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/flora/grass/desert/lightgrass_8,
 /turf/open/desert/dirt,
 /area/caperiver/outdoors/road/south)
@@ -2643,11 +2643,11 @@
 /turf/open/floor/kutjevo/colors/cyan/edge/west,
 /area/caperiver/indoors/miningbase/medical)
 "aic" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/bushlands)
 "aid" = (
@@ -2719,9 +2719,9 @@
 /area/caperiver/outdoors/road/south)
 "aio" = (
 /obj/structure/flora/grass/desert/lightgrass_4,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/spawner/random/gun/clf_primary/midchance,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/bushlands)
@@ -3594,8 +3594,8 @@
 /turf/open/floor/dark,
 /area/caperiver/indoors/conambase/unknown)
 "ali" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/desert/dirt/desert_transition_edge1/north,
 /area/caperiver/outdoors/bushlands)
 "alj" = (
@@ -4582,7 +4582,7 @@
 /turf/open/desert/dirt/desert_transition_corner1/west,
 /area/caperiver/outdoors/mining_base_exterior/north)
 "aoi" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/flora/grass/desert/lightgrass_7,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/bushlands)
@@ -7364,7 +7364,7 @@
 /turf/open/auto_turf/sand/layer2,
 /area/caperiver/outdoors/landing_zone_1)
 "awU" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/kutjevo/multi_tiles/north,
 /area/caperiver/indoors/miningbase/admin)
 "awV" = (
@@ -8664,8 +8664,8 @@
 /area/caperiver/outdoors/scrublands/south_east)
 "aBa" = (
 /obj/structure/flora/grass/desert/heavygrass_6,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/bushlands)
 "aBb" = (
@@ -9957,7 +9957,7 @@
 /turf/open/floor/plating,
 /area/caperiver/outdoors/landing_zone_2)
 "aFf" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/flora/grass/desert/lightgrass_4,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/bushlands)
@@ -10086,7 +10086,7 @@
 /area/caperiver/indoors/caves/sw)
 "aFz" = (
 /obj/item/weapon/gun/pistol/highpower,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/ramptop/north,
@@ -10877,10 +10877,10 @@
 /area/caperiver/outdoors/scrublands/south)
 "aIg" = (
 /obj/structure/flora/grass/desert/lightgrass_2,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/caperiver/outdoors/bushlands)
 "aIh" = (
@@ -11374,8 +11374,8 @@
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/caperiver/outdoors/mining_base_exterior/south)
 "aJM" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/bushlands)
 "aJN" = (
@@ -12265,8 +12265,8 @@
 /turf/open/floor/hybrisa/metal/zbrownfloor2/east,
 /area/caperiver/outdoors/con_am_exterior/south)
 "aMx" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 10
 	},
@@ -13704,7 +13704,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/caperiver/outdoors/landing_zone_2)
 "aQW" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/bushlands)
 "aQX" = (
@@ -13980,8 +13980,8 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/kutjevo/grey/plate,
 /area/caperiver/indoors/miningbase/admin)
 "aRW" = (
@@ -16469,8 +16469,8 @@
 /area/caperiver/indoors/caves/central)
 "aZQ" = (
 /obj/structure/flora/grass/desert/lightgrass_12,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/bushlands)
 "aZR" = (
@@ -16714,7 +16714,7 @@
 /turf/open/floor/kutjevo/multi_tiles/north,
 /area/caperiver/outdoors/landing_zone_1/interior)
 "baB" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/kutjevo/tan/alt_inner_edge,
 /area/caperiver/outdoors/landing_zone_1/interior)
 "baC" = (
@@ -17267,7 +17267,7 @@
 	pixel_x = 9;
 	pixel_y = 11
 	},
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/wood/wood_broken5,
 /area/caperiver/outdoors/landing_zone_2/interior)
 "bch" = (
@@ -24346,7 +24346,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidfloor,
 /area/caperiver/outdoors/mining_base_exterior/south)
@@ -32918,7 +32918,7 @@
 /turf/open/floor/darkpurplecorners2,
 /area/caperiver/indoors/conambase/research_e)
 "dKU" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/kutjevo/grey/plate,
 /area/caperiver/indoors/miningbase/admin)
 "dLg" = (
@@ -34958,7 +34958,7 @@
 /turf/open/floor/dark,
 /area/caperiver/indoors/conambase/unknown)
 "fdH" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/spawner/random/gun/shotgun/lowchance,
 /turf/open/floor/kutjevo/tan/grey_edge/east,
 /area/caperiver/indoors/miningbase/admin)
@@ -38022,8 +38022,8 @@
 "htW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/kutjevo/multi_tiles/north,
 /area/caperiver/indoors/miningbase/admin)
 "hua" = (
@@ -39382,8 +39382,8 @@
 /area/caperiver/indoors/conambase/recreational)
 "ixI" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/kutjevo/tan/grey_edge/southeast,
 /area/caperiver/indoors/miningbase/admin)
 "ixZ" = (
@@ -47518,8 +47518,8 @@
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/outdoors/chasm)
 "ouq" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt/alt_dirt{
 	color = "#140400"
 	},
@@ -48939,8 +48939,8 @@
 "pAT" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/ramptop/north,
 /area/caperiver/outdoors/mining_base_exterior/south)
 "pAW" = (
@@ -51355,7 +51355,7 @@
 /obj/structure/bed/chair/office/light{
 	layer = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/kutjevo/tan,
 /area/caperiver/indoors/miningbase/admin)
 "rhC" = (
@@ -55731,7 +55731,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/kutjevo/tan/grey_inner_edge/north,
 /area/caperiver/indoors/miningbase/admin)
 "uAD" = (
@@ -56044,8 +56044,8 @@
 /turf/open/floor/plating/platingdmg3,
 /area/caperiver/indoors/caves/sw)
 "uPy" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -58256,8 +58256,8 @@
 /turf/open/desert/dirt/desert_transition_corner1/east,
 /area/caperiver/outdoors/bushlands)
 "wML" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/kutjevo/grey/plate,
 /area/caperiver/indoors/miningbase/admin)
 "wMW" = (

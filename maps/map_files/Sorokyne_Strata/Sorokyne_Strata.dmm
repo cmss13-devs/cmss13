@@ -5622,8 +5622,8 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/engi)
 "apz" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
 "apA" = (
@@ -11644,7 +11644,7 @@
 /turf/open/gm/dirt/brown/variant_1,
 /area/strata/exterior/marsh/center)
 "aGd" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/parts_storage_cave)
 "aGe" = (
@@ -11970,7 +11970,7 @@
 /turf/open/gm/dirt/brown/variant_1,
 /area/strata/exterior/parts_storage_cave)
 "aGY" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/parts_storage_cave)
 "aGZ" = (
@@ -12824,7 +12824,7 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 5
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/reagent_container/food/drinks/bottle/vodka{
 	pixel_x = 9
 	},
@@ -13121,7 +13121,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/exterior/tcomms_engineering_parts_storage)
 "aKv" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/gm/dirt/brown/variant_5/south,
 /area/strata/exterior/parts_storage_cave)
 "aKw" = (
@@ -13236,7 +13236,7 @@
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/lightstick/planted,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/parts_storage_cave)
@@ -13276,7 +13276,7 @@
 	pixel_x = -10;
 	pixel_y = 2
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/parts_storage_cave)
 "aKN" = (
@@ -13759,7 +13759,7 @@
 /area/strata/interior/outpost/admin)
 "aMg" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/clothing/suit/storage/marine/faction/UPP/army/alt,
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/parts_storage_cave)
@@ -13992,7 +13992,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/parts_storage_cave)
 "aMT" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/parts_storage_cave)
 "aMU" = (
@@ -14007,7 +14007,7 @@
 	pixel_x = 5;
 	pixel_y = 11
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/strata/exterior/parts_storage_cave)
 "aMW" = (
@@ -14410,7 +14410,7 @@
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_y = 12
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/strata/exterior/parts_storage_cave)
 "aOd" = (
@@ -14692,7 +14692,7 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 4
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/strata/exterior/parts_storage_cave)
 "aOR" = (
@@ -14978,7 +14978,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/parts_storage_cave)
 "aPF" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/strata/exterior/parts_storage_cave)
 "aPG" = (
@@ -15365,8 +15365,8 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/mining_outpost/south_dormitories)
 "aQH" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/gm/dirt/brown/variant_5/south,
 /area/strata/exterior/parts_storage_cave)
 "aQI" = (
@@ -19706,7 +19706,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/blood{
 	pixel_x = 5;
@@ -32526,7 +32526,7 @@
 	pixel_x = -11;
 	pixel_y = 21
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2"
@@ -32718,7 +32718,7 @@
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
 "bPx" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
 "bPy" = (
@@ -32922,7 +32922,7 @@
 /turf/open/floor/strata/yellow3,
 /area/strata/interior/secure_checkpoint)
 "bQe" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/road_edge,
 /obj/effect/decal/cleanable/blood{
@@ -33251,7 +33251,7 @@
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
 "bQU" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3"
@@ -33284,7 +33284,7 @@
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
 "bQX" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood{
 	pixel_x = 6;
 	pixel_y = 4
@@ -33608,7 +33608,7 @@
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
 "bRM" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
@@ -33869,7 +33869,7 @@
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
 "bSq" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/road_edge,
 /obj/effect/decal/hybrisa/dirt,
@@ -33886,7 +33886,7 @@
 	pixel_x = 1;
 	pixel_y = 13
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
@@ -33900,7 +33900,7 @@
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
 "bSu" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal4"
@@ -34457,7 +34457,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/secure_checkpoint)
@@ -34916,7 +34916,7 @@
 	pixel_y = 1
 	},
 /obj/effect/landmark/corpsespawner/upp,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -34952,7 +34952,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/secure_checkpoint)
 "bVc" = (
@@ -35180,7 +35180,7 @@
 /turf/open/floor/plating,
 /area/strata/interior/secure_checkpoint)
 "bVE" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/road_edge,
 /obj/effect/decal/cleanable/blood{
@@ -36686,11 +36686,11 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
 "bZL" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/gm/dirt/brown/variant_2,
 /area/strata/exterior/far_north_outpost)
 "bZM" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/trash/upp_mre,
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/far_north_outpost)
@@ -36699,7 +36699,7 @@
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "bZO" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
 "bZP" = (
@@ -36840,7 +36840,7 @@
 /area/strata/interior/outpost/security)
 "cag" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
 "cah" = (
@@ -36850,13 +36850,13 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/outpost/security)
 "cai" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/reagent_container/food/drinks/bottle/vodka,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
 "caj" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/gm/dirt/brown/variant_5,
 /area/strata/exterior/far_north_outpost)
@@ -36867,7 +36867,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/outpost/security)
 "cal" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/clothing/mask/gas/upp_pfb,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
@@ -36903,8 +36903,8 @@
 /turf/open/gm/dirt/brown/variant_2,
 /area/strata/interior/bball_cave)
 "caq" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/weapon/gun/pistol/t73,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
@@ -37034,7 +37034,7 @@
 /turf/open/floor/interior/plastic,
 /area/strata/interior/wooden_hospital)
 "caG" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
 	dir = 8;
@@ -37152,7 +37152,7 @@
 /turf/open/gm/dirt/brown/variant_5,
 /area/strata/exterior/far_north_outpost)
 "caT" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/barricade/sandbags{
 	dir = 1;
 	color = "#a98c7c";
@@ -41037,7 +41037,7 @@
 /turf/open/floor/plating,
 /area/strata/exterior/landing_zones/lz2)
 "exj" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/platform/stone/soro/east,
 /turf/open/gm/dirt/brown/variant_5,
 /area/strata/exterior/parts_storage_cave)
@@ -51612,7 +51612,7 @@
 /area/strata/exterior/south_outpost)
 "sha" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/parts_storage_cave)
 "shp" = (
@@ -52676,7 +52676,7 @@
 /area/strata/interior/outpost/canteen)
 "tCM" = (
 /obj/structure/bed/roller,
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/gm/dirt/brown/variant_5,
 /area/strata/exterior/parts_storage_cave)
 "tDw" = (

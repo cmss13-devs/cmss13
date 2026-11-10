@@ -13887,10 +13887,9 @@
 /turf/open/gm/river,
 /area/lv522/landing_zone_1/tunnel/far)
 "eSX" = (
-/obj/structure/closet/secure_closet/cmdcabinet{
-	pixel_y = 24
+/obj/structure/closet/secure_closet/cmdcabinet/marine{
+	pixel_y = 28
 	},
-/obj/item/device/cotablet,
 /turf/open/floor/almayer/silvercorner,
 /area/forward_base/chances/command/cic)
 "eSY" = (

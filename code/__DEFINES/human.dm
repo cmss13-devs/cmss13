@@ -220,7 +220,7 @@
 /// If you're hit by an acid DoT
 #define EFFECTS_LAYER 1
 
-#define TOTAL_LAYERS 44
+#define TOTAL_LAYERS 45
 #define MAX_HEAD_GARB_LAYERS 6
 //////////////////////////////////
 

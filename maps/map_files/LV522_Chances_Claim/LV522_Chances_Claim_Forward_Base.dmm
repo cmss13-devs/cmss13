@@ -2723,6 +2723,26 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer,
 /area/forward_base/chances/squads/upper)
+"aie" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/forward_base/chances/medical/morgue_storage)
+"aif" = (
+/obj/structure/morgue{
+	dir = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_square_smooth"
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/forward_base/chances/medical/morgue_storage)
+"aig" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/no_build/plating,
+/area/sky)
 "aij" = (
 /obj/structure/stairs/perspective{
 	dir = 10;
@@ -6687,13 +6707,6 @@
 /obj/structure/machinery/squeezer,
 /turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
-"cbv" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
-	},
-/turf/open/floor/almayer/no_build/plating,
-/area/forward_base/chances/medical/morgue_storage)
 "cbA" = (
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
@@ -10839,10 +10852,6 @@
 /turf/open/floor/plating/platebot,
 /area/lv522/indoors/c_block/cargo)
 "dGA" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
-	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build/plating,
 /area/forward_base/chances/medical/morgue_storage)
@@ -17931,6 +17940,9 @@
 "gAV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/forward_base/chances/medical/morgue_storage)
 "gBb" = (
@@ -19706,8 +19718,16 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/b_block/bar)
 "hod" = (
-/obj/structure/morgue/crematorium,
-/turf/open/floor/almayer/no_build/plate,
+/obj/structure/filingcabinet/medical{
+	pixel_x = -8;
+	layer = 2.96;
+	density = 0
+	},
+/obj/structure/filingcabinet/medical{
+	density = 0;
+	pixel_x = 7
+	},
+/turf/open/floor/almayer/no_build/plating,
 /area/forward_base/chances/medical/morgue_storage)
 "hoh" = (
 /obj/structure/platform/metal/almayer/west,
@@ -28671,14 +28691,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/floor_marked,
 /area/lv522/outdoors/colony_streets/north_west_street)
-"kPl" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	pixel_y = -2
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/no_build/plating,
-/area/forward_base/chances/medical/morgue_storage)
 "kPJ" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/plating/plating_catwalk,
@@ -34263,6 +34275,11 @@
 /area/lv522/indoors/c_block/garage)
 "mYN" = (
 /obj/structure/pipes/vents/pump/on,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 2
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/forward_base/chances/medical/morgue_storage)
 "mYQ" = (
@@ -38688,9 +38705,6 @@
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/lone_buildings/storage_blocks/north_west)
 "oOo" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/barrel/true_random,
 /obj/structure/machinery/light/red,
@@ -43198,18 +43212,12 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/admin)
 "qBX" = (
-/obj/structure/filingcabinet/medical{
-	pixel_x = -8;
-	layer = 2.96;
-	pixel_y = 16;
-	density = 0
+/obj/structure/morgue/crematorium,
+/obj/structure/machinery/crema_switch{
+	req_access_txt = "25";
+	pixel_y = 25
 	},
-/obj/structure/filingcabinet/medical{
-	density = 0;
-	pixel_x = 7;
-	pixel_y = 16
-	},
-/turf/open/floor/almayer/no_build/plating,
+/turf/open/floor/almayer/no_build/plate,
 /area/forward_base/chances/medical/morgue_storage)
 "qCd" = (
 /obj/structure/machinery/power/apc/power/north{
@@ -60793,20 +60801,6 @@
 	},
 /turf/open/floor/almayer/red/northwest,
 /area/forward_base/chances/squads/lower)
-"xiB" = (
-/obj/structure/morgue{
-	dir = 2
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "test_square_smooth"
-	},
-/obj/structure/machinery/crema_switch{
-	pixel_x = -23;
-	req_access_txt = "25";
-	pixel_y = 25
-	},
-/turf/open/floor/almayer/no_build/plate,
-/area/forward_base/chances/medical/morgue_storage)
 "xiG" = (
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/a_block/kitchen)
@@ -108862,10 +108856,10 @@ xGl
 aLk
 qTY
 heM
-dVc
+aif
+aie
 wsp
-cbv
-xiB
+dVc
 heM
 oRM
 bFy
@@ -109069,7 +109063,7 @@ aLk
 cpP
 heM
 qBX
-wsp
+aie
 dGA
 hod
 heM
@@ -109276,7 +109270,7 @@ sCu
 eWz
 gAV
 mYN
-kPl
+dGA
 oOo
 heM
 gMy
@@ -115437,7 +115431,7 @@ rzq
 rzq
 rzq
 rzq
-rzq
+aig
 rzq
 rzq
 rzq

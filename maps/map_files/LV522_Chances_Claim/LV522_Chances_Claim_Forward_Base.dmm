@@ -1472,7 +1472,7 @@
 	dir = 8
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/lv522/outdoors/forward_base_perimeter)
+/area/forward_base/chances/hallways/lower/north)
 "aeK" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,

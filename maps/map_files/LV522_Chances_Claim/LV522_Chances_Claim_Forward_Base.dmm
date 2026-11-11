@@ -20307,7 +20307,7 @@
 /area/forward_base/chances/squads/upper)
 "hAI" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
-	req_access = list(19,34)
+	req_access = null
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/forward_base/chances/hallways/lower/north)
@@ -20555,7 +20555,7 @@
 "hFr" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
 	dir = 2;
-	req_access = list(19,34)
+	req_access = null
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/forward_base/chances/hallways/lower/north)
@@ -24731,6 +24731,14 @@
 /obj/item/storage/firstaid/fire/empty,
 /obj/item/storage/firstaid/fire/empty,
 /obj/effect/decal/heavy_cable/cable_vertical,
+/obj/item/storage/firstaid/fire/empty,
+/obj/item/storage/firstaid/fire/empty,
+/obj/item/storage/firstaid/fire/empty,
+/obj/item/storage/firstaid/fire/empty,
+/obj/item/storage/firstaid/rad/empty,
+/obj/item/storage/firstaid/rad/empty,
+/obj/item/storage/firstaid/rad/empty,
+/obj/item/storage/firstaid/rad/empty,
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/chances/medical/morgue_storage)
 "jpM" = (
@@ -46287,7 +46295,7 @@
 /area/lv522/outdoors/colony_streets/north_street)
 "rCY" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
-	req_access = list(19,34)
+	req_access = null
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/forward_base/chances/hallways/lower/east)
@@ -56171,7 +56179,7 @@
 "vtL" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
 	dir = 2;
-	req_access = list(19,34)
+	req_access = null
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/forward_base/chances/hallways/lower/east)

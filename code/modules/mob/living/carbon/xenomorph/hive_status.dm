@@ -1146,7 +1146,7 @@
 		to_chat(user, SPAN_WARNING("The hive has fallen, you can't join it!"))
 		return FALSE
 
-	if(!living_xeno_queen)
+	if(!living_xeno_queen && !allow_no_queen_actions)
 		to_chat(user, SPAN_WARNING("The selected hive does not have a Queen!"))
 		return FALSE
 

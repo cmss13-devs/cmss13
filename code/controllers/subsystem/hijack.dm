@@ -358,7 +358,7 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/allow_withdrawal()
 	if(withdrawal_available || hijack_status != HIJACK_OBJECTIVES_NOT_STARTED)
 		return FALSE
-	if(!istype(SSticker.mode, /datum/game_mode/colonialmarines) || SSticker.current_state != GAME_STATE_PLAYING || SSticker.mode.round_finished)
+	if(SSticker.mode?.config_tag != GAMEMODE_DISTRESS_SIGNAL || SSticker.current_state != GAME_STATE_PLAYING || SSticker.mode.round_finished)
 		return FALSE
 	if(!SSobjectives.first_drop_complete || !is_groundside_clear())
 		return FALSE

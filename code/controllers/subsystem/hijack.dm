@@ -138,6 +138,10 @@ SUBSYSTEM_DEF(hijack)
 	var/list/datum/powernet/powernets = list()
 
 /datum/controller/subsystem/hijack/Initialize(timeofday)
+	if(GLOB.master_mode == GAMEMODE_SURVIVE)
+		can_fire = FALSE
+		return SS_INIT_NO_NEED
+
 	RegisterSignal(SSdcs, COMSIG_GLOB_GENERATOR_SET_OVERLOADING, PROC_REF(on_generator_overload))
 
 	var/spaceport_to_use = pick(subtypesof(/datum/spaceport))
@@ -161,9 +165,13 @@ SUBSYSTEM_DEF(hijack)
 	if(!SSticker?.mode?.is_in_endgame)
 		return
 
+	if(GLOB.master_mode == GAMEMODE_SURVIVE)
+		can_fire = FALSE
+		return
+
 	if(SSticker.current_state == GAME_STATE_FINISHED)
 		if(hijack_status == HIJACK_OBJECTIVES_DOCKED && SSticker.mode.round_finished == MODE_INFESTATION_X_MAJOR)
-			announce_station_undocking()
+			addtimer(CALLBACK(src, PROC_REF(announce_station_undocking)), 5 SECONDS)
 		can_fire = FALSE
 		return
 
@@ -508,7 +516,7 @@ SUBSYSTEM_DEF(hijack)
 		if(lifeboat && lifeboat.available)
 			lifeboat.status = LIFEBOAT_INACTIVE
 
-/// Unlocks all marine dropship and optionally ert dropship doors on the mainship
+/// Unlocks all marine dropship, escape pod, and optionally ert dropship doors on the mainship
 /datum/controller/subsystem/hijack/proc/unlock_all_dropship_doors(include_ert=TRUE)
 	for(var/obj/docking_port/mobile/shuttle as anything in SSshuttle.mobile)
 		var/turf/location = get_turf(shuttle)
@@ -523,6 +531,10 @@ SUBSYSTEM_DEF(hijack)
 			var/obj/docking_port/mobile/emergency_response/dropship = shuttle
 			dropship.control_doors("unlock")
 			continue
+		if(istype(shuttle, /obj/docking_port/mobile/crashable/escape_shuttle))
+			var/obj/docking_port/mobile/crashable/escape_shuttle/escape_shuttle = shuttle
+			if(escape_shuttle.door_handler.status == SHUTTLE_DOOR_LOCKED)
+				escape_shuttle.door_handler.control_doors("force-unlock")
 
 /// Changes whether the mobile docking_ports on the mainship are operating (launchable)
 /datum/controller/subsystem/hijack/proc/allow_dropship_launching(include_marine_dropship=FALSE)
@@ -645,6 +657,19 @@ SUBSYSTEM_DEF(hijack)
 	ares_sd_announced = TRUE
 	shipwide_ai_announcement("ALERT: Fusion reactor meltdown has reached fifty percent.", HIJACK_ANNOUNCE, sound('sound/misc/notice2.ogg'))
 
+/// Performs detonate_sd with the 30s countdown sfx
+/datum/controller/subsystem/hijack/proc/detonate_sd_with_countdown()
+	sd_detonated = TRUE
+	SSticker?.roundend_check_paused = TRUE
+
+	for(var/mob/current_mob as anything in GLOB.mob_list)
+		var/turf/current_turf = get_turf(current_mob)
+		if(!current_turf || !current_mob.client || !is_mainship_level(current_turf.z))
+			continue
+		playsound_client(current_mob.client, 'sound/AI/selfdestruct_final_countdown.ogg', vol=45)
+
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/hijack, detonate_sd)), 32 SECONDS)
+
 /datum/controller/subsystem/hijack/proc/detonate_sd()
 	set waitfor = FALSE
 
@@ -725,6 +750,9 @@ SUBSYSTEM_DEF(hijack)
 	else //Just a safety, just in case a mode isn't running, somehow.
 		to_world(SPAN_ROUNDBODY("Resetting in 30 seconds!"))
 		sleep(30 SECONDS)
+		if(SSticker.delay_end)
+			to_chat(world, SPAN_BOLDNOTICE("Reboot was cancelled by an admin."))
+			return
 		log_game("Rebooting due to nuclear detonation.")
 		world.Reboot()
 

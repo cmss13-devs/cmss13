@@ -101,3 +101,6 @@
 #define COMSIG_XENO_BURSTED "xeno_burst"
 
 #define COMSIG_XENO_ORGAN_REMOVED "xeno_organ_removed"
+
+///from /datum/action/xeno_action/activable/pounce/use_ability()
+#define COMSIG_XENO_POUNCE_STARTED "xeno_pounce_start"

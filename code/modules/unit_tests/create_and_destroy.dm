@@ -23,6 +23,7 @@ GLOBAL_VAR_INIT(create_and_destroy_ignore_paths, generate_ignore_paths())
 		/obj/merge_conflict_marker,
 		/obj/effect/projector_anchor, // Needs a link ID set to work as intended
 		/obj/effect/projector/linked, // Needs a link ID set to work as intended
+		/obj/effect/marked_atom, // Needs a ID set to work as intended
 	)
 	//This turf existing is an error in and of itself
 	. += typesof(/turf/baseturf_skipover)

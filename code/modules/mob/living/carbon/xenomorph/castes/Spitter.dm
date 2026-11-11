@@ -56,6 +56,8 @@
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 
+	water_config = /datum/water_overlay_config/xeno/small/squatter
+
 	icon_xeno = 'icons/mob/xenos/castes/tier_2/spitter.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_2/spitter.dmi'
 
@@ -89,7 +91,7 @@
 
 	XENO_ACTION_CHECK_USE_PLASMA(zenomorf)
 
-	to_chat(zenomorf, SPAN_XENOHIGHDANGER("We accumulate acid in your glands. Our next spit will be stronger but shorter-ranged."))
+	to_chat(zenomorf, SPAN_XENOHIGHDANGER("We accumulate acid in our glands. Our next spit will be stronger but shorter-ranged."))
 	to_chat(zenomorf, SPAN_XENOWARNING("Additionally, we are slightly faster and more armored for a small amount of time."))
 	zenomorf.create_custom_empower(icolor = "#93ec78", ialpha = 200, small_xeno = TRUE)
 	zenomorf.balloon_alert(zenomorf, "our next spit will be stronger", text_color = "#93ec78")

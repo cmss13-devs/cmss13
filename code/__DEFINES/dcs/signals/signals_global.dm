@@ -101,3 +101,6 @@
 
 /// From /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/signal_cic()
 #define COMSIG_GLOB_DELAYED_COMMS_FAILURE "!comms_delayed_failure"
+
+/// From /datum/game_mode/survive/proc/initiate_evacuation()
+#define COMSIG_GLOB_SURVIVOR_EVAC "!survivor_evacuation_started"

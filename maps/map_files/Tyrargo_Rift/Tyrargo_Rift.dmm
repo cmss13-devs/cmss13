@@ -47153,7 +47153,7 @@
 	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
 	},
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/obj/item/reagent_container/hypospray/autoinjector/tramadol/random_amount,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tramadol/random_amount,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "cqv" = (

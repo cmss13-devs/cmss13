@@ -151,7 +151,7 @@
 	..()
 
 	//lets normal hive evo and use hivestatus without queen until one evolves
-	var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL] 
+	var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	main_hive.allow_no_queen_actions = TRUE
 	main_hive.allow_no_queen_evo = TRUE
 
@@ -1075,6 +1075,15 @@
 	for(var/datum/http_request/request in requests)
 		addtimer(CALLBACK(request, TYPE_PROC_REF(/datum/http_request, begin_async)), (2 * incrementer) SECONDS)
 		incrementer++
+
+/datum/game_mode/colonialmarines/on_queen_spawn(hivenumber)
+	if(hivenumber != XENO_HIVE_NORMAL)
+		return
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+	hive.allow_no_queen_actions = FALSE
+	hive.allow_no_queen_evo = FALSE
+	if(ROUND_TIME >= round_time_evolution_ovipositor) //make sure you can still get evo without ovi roundstart
+		hive.evolution_without_ovipositor = FALSE
 
 #undef MONKEYS_TO_TOTAL_RATIO
 #undef PODLOCKS_OPEN_WAIT

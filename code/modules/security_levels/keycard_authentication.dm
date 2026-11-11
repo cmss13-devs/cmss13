@@ -275,11 +275,17 @@ GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
 		return
 
 	if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
-		var/datum/game_mode/colonialmarines/gCM = SSticker.mode
-		if(gCM.round_status_flags & ROUNDSTATUS_PODDOORS_OPEN)
+		var/datum/game_mode/colonialmarines/game_mode = SSticker.mode
+		if(game_mode.round_status_flags & ROUNDSTATUS_PODDOORS_OPEN)
 			visible_message(SPAN_NOTICE("[src] states: LOCKDOWN ALREADY LIFTED."))
 			return
-		gCM.round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN // So we don't spam the message twice
+		game_mode.round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN // So we don't spam the message twice
+	if(istype(SSticker.mode, /datum/game_mode/survive))
+		var/datum/game_mode/survive/game_mode = SSticker.mode
+		if(game_mode.round_status_flags & ROUNDSTATUS_PODDOORS_OPEN)
+			visible_message(SPAN_NOTICE("[src] states: LOCKDOWN ALREADY LIFTED."))
+			return
+		game_mode.round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN // So we don't spam the message twice
 
 	var/text_timeleft = "[timeleft * 0.01] minutes"
 	var/next_interval = 1 MINUTES

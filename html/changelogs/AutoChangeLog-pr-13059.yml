@@ -1,0 +1,6 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - qol: "Researchers are no longer stuck between choosing a tie or webbing accessory. They can have both if they wish."
+  - qol: "Researchers now spawn with brown laceup shoes and the classic blue R&D uniform on loading in."
+  - code_imp: "Reorganizes the Research ColMarTech loadout section."

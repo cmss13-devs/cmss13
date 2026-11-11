@@ -119,6 +119,7 @@
 	SE.invisibility = 0
 	NW.invisibility = 0
 	NE.invisibility = 0
+	..()
 
 // And make it invisible again when the elevator returns.
 /obj/docking_port/stationary/vehicle_elevator/almayer/on_arrival(obj/docking_port/mobile/arriving_shuttle)
@@ -126,6 +127,7 @@
 	SE.invisibility = INVISIBILITY_ABSTRACT
 	NW.invisibility = INVISIBILITY_ABSTRACT
 	NE.invisibility = INVISIBILITY_ABSTRACT
+	..()
 
 /obj/docking_port/stationary/vehicle_elevator/adminlevel
 	name = "Adminlevel Vehicle Elevator Dock"

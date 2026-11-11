@@ -63,16 +63,17 @@
 	time_to_dispel = 10 SECONDS
 
 /obj/effect/landmark/lv624/fog_blocker/Initialize(mapload, ...)
-	. = ..()
-
+	..()
 	return INITIALIZE_HINT_ROUNDSTART
 
 /obj/effect/landmark/lv624/fog_blocker/LateInitialize()
 	if(!(SSticker.mode.flags_round_type & MODE_FOG_ACTIVATED) || !SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_FOG])
+		qdel(src)
 		return
 
 	new /obj/structure/blocker/fog(loc, time_to_dispel)
 	qdel(src)
+
 
 /obj/effect/landmark/lv624/door_blocker
 	name = "door blocker"
@@ -81,12 +82,12 @@
 	var/time_to_dispel = 85 SECONDS
 
 /obj/effect/landmark/lv624/door_blocker/Initialize(mapload, ...)
-	. = ..()
-
+	..()
 	return INITIALIZE_HINT_ROUNDSTART
 
 /obj/effect/landmark/lv624/door_blocker/LateInitialize()
 	if(!(SSticker.mode.flags_round_type & MODE_FOG_ACTIVATED) || !SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_FOG])
+		qdel(src)
 		return
 
 	new /obj/structure/blocker/door(loc, time_to_dispel)
@@ -95,9 +96,26 @@
 /obj/effect/landmark/lv624/door_blocker/xeno
 	time_to_dispel = 180 SECONDS
 
+
 /obj/effect/landmark/lv624/xeno_tunnel
 	name = "xeno tunnel"
 	icon_state = "xeno_tunnel"
+
+/turf/closed/foggy_ocean_blocker
+	name = "ocean"
+	icon = 'icons/turf/floors/desert_water.dmi'
+	icon_state = "deep"
+	opacity = FALSE
+	plane = FLOOR_PLANE
+	var/obj/structure/blocker/fog/my_fog
+
+/turf/closed/foggy_ocean_blocker/Initialize(mapload)
+	. = ..()
+	my_fog = new(src, INFINITY)
+
+/turf/closed/foggy_ocean_blocker/Destroy(force)
+	. = ..()
+	QDEL_NULL(my_fog)
 
 /obj/effect/landmark/lv624/xeno_tunnel/Initialize(mapload, ...)
 	. = ..()
@@ -303,7 +321,7 @@
 	clear_proximity_resin()
 
 	var/list/announcement_mobs = list()
-	for(var/area/area in marine_dropship.shuttle_areas)
+	for(var/area/area as anything in marine_dropship.shuttle_areas)
 		for(var/mob/mob in area)
 			shake_camera(mob, steps = 3, strength = 1)
 			announcement_mobs += mob
@@ -328,7 +346,6 @@
 		if(islist(area_lz))
 			if(!(active_lz.linked_lz in area_lz))
 				continue
-
 		else if(area_lz != active_lz.linked_lz)
 			continue
 
@@ -383,7 +400,7 @@
 	if(SSmapping.configs[GROUND_MAP].announce_text)
 		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
 		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
-		lore_announcement()
+	lore_announcement()
 
 /datum/game_mode/proc/ares_command_check(mob/living/carbon/human/commander = null, force = FALSE)
 	/// Job of the person being auto-promoted.
@@ -510,16 +527,19 @@
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Almayer! Bugs are pouring into the inner perimeter! Civilians are taking up arms to defend the site, but they’re untrained.\n\nWe’re being overrun, we need fire support now! Now god dammit!", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 120 MINUTES)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "##&@* all dead! Tyrargo is overrun! T&^@%###--- the command post any second, %$#* we ne#@##s--------------------", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 140 MINUTES)
 		if(MAP_WHITE_ANTRE_RESEARCH_FACILITY)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "Attention all White Antre personnel. K-Series hive testing in the northern quadrant is in progress. We will be commencing the secondary trials with the Prime hive in the eastern sector at this time.\n\nEast Sector Overwatch be prepared to receive Prime hive larvae into your containment area.\n\nFurthermore, all personnel are reminded that elements of Azure-15 of the Whiteguard PMC and a detachment of the USCM are en-route to assist in testing and to take delivery of vital cargo. Over.", "White Antre Central Announcement", 'sound/AI/commandreport.ogg'), 5 SECONDS)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "Attention! The site is experiencing a massive containment breach! Full site lockdown initiated.", "White Antre Central Announcement", 'sound/ambience/containment_breach1.ogg'), 30 SECONDS)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "Attention! We think Azure-15 has lured the bulk of the K-Series off site, but we are experiencing massive power failures, the Prime hive containment zone is at risk. All surviving personnel prepa%^@!&*------", "White Antre Central Announcement", 'sound/AI/commandreport.ogg'), 65 SECONDS)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "Prime hive containment blastdoor failure imminent.", "Automated Facility Announcement", 'sound/AI/commandreport.ogg'), 165 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(survivor_announcement), "Attention all White Antre personnel. K-Series hive testing in the northern quadrant is in progress. We will be commencing the secondary trials with the Prime hive in the eastern sector at this time.\n\nEast Sector Overwatch be prepared to receive Prime hive larvae into your containment area.\n\nFurthermore, all personnel are reminded that elements of Azure-15 of the Whiteguard PMC and a detachment of the USCM are en-route to assist in testing and to take delivery of vital cargo. Over.", "White Antre Central Announcement", 'sound/AI/commandreport.ogg'), 5 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(survivor_announcement), "Attention! The site is experiencing a massive containment breach! Full site lockdown initiated.", "White Antre Central Announcement", 'sound/ambience/containment_breach1.ogg'), 30 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(survivor_announcement), "Attention! We think Azure-15 has lured the bulk of the K-Series off site, but we are experiencing massive power failures, the Prime hive containment zone is at risk. All surviving personnel prepa%^@!&*------", "White Antre Central Announcement", 'sound/AI/commandreport.ogg'), 65 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(survivor_announcement), "Prime hive containment blastdoor failure imminent.", "Automated Facility Announcement", 'sound/AI/commandreport.ogg'), 165 SECONDS)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Almayer, this is the Platoon Commander of Azure-15, we just received a distress signal from White Antre, there appears to be a massive containment breach in progress, some kinda yellow-ish looking xenomorphs are pouring out en-mass. The site staff are suffering massive casualties and we are in a poor defensive position, we are going to attempt to lure the tangos away from the site and into open ground to the north.\n\nOnce we move north of the site we’ll be out of radio contact. My recommendation is to deploy to White Antre and attempt to rescue any of the remaining scientists and secure whatever it is we were sent to retrieve. Maybe rescue Kadinsky while you’re at it assuming he hasn’t had his sorry arse nailed to the wall already.\n\nWe’ll hold our own. Azure-15 out.", "Azure-15 Platoon Commander", 'sound/AI/commandreport.ogg'), 4 MINUTES)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_lore_announcement), "Something is happening. Be on guard.", "everything", QUEEN_MOTHER_ANNOUNCE, 'sound/ambience/containment_breach1.ogg'), 30 SECONDS)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "Another, hostile, hive is making an escape from this metal cage, prepare yourselves as a chance to escape may occur soon.", "everything", QUEEN_MOTHER_ANNOUNCE), 1.5 MINUTES)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "My children. I sense the hostile, putrid, hive has fled this area, but some of the hosts that entrapped you remain alive within this metal complex, and I sense even more are on their way. Defeat these hosts to showcase your supremacy!", "everything", QUEEN_MOTHER_ANNOUNCE), 165 SECONDS)
 		if(MAP_LV_624)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Attention: Initial scan over the Area of Operations indicates a localized atmospheric anomaly: a dense fog forming over in and around the river bed.\nInitial assessment algorithm predicts dissipation in T-20 minutes.", "ARES V3.2", 'sound/AI/commandreport.ogg'), 5 MINUTES) // 5 minute lobby + 5 minutes into the game means the fog drops 20 minutes from now.
+		if(MAP_LV1021_FALCONS_FURY)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Falcons, this is Snake Eaters, FORECON, we have completed our recon of the site. We have identified two viable LZs.\n\nLZ1 is north-west of the camp. The LZ is fairly open with a river to the east which you'll have to cross. We've eliminated all CLF active near this LZ for you.\n\nLZ2 is located to the south. It is on the same side of the river as the camp and is better protected. However, it is exposed to infiltration from the west and east.\n\nCaution, we've also noticed traps in the undergrowth.\n\nGood luck Falling Falcons. Pay them back for Tychon.", "Snake Eaters Platoon Commander", 'sound/AI/commandreport.ogg'), 3 MINUTES)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(clf_announcement), "Fighters, this is the camp coordinator, arm up! Alien bugs are pouring out of the jungle and just killed the team I sent to the east and I’ve lost contact with our fighters west of the river. Drop whatever you are doing and secure whatever weapons and supplies you can find. We are under siege! Prepare to defend the camp at all costs!", "CLF Camp Coordinator", 'sound/AI/commandreport.ogg'), 5 SECONDS)
 
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
 /datum/game_mode/colonialmarines/process()
@@ -717,9 +737,15 @@
 		hive = GLOB.hive_datum[cur_number]
 		if(hive.need_round_end_check && !hive.can_delay_round_end())
 			continue
-		if(hive.living_xeno_queen && !should_block_game_interaction(hive.living_xeno_queen.loc))
+		if(hive.living_xeno_queen)
 			var/turf/queen_turf = get_turf(hive.living_xeno_queen)
-			if(queen_turf?.z in z_levels)
+			var/in_z_levels = (queen_turf?.z in z_levels) && !should_block_game_interaction(queen_turf)
+			if(!in_z_levels && queen_turf && SSinterior.in_interior(queen_turf))
+				var/datum/interior/current_interior = SSinterior.get_interior_by_coords(queen_turf.x, queen_turf.y, queen_turf.z)
+				if(current_interior?.exterior?.loc)
+					queen_turf = current_interior.exterior.loc
+					in_z_levels = (queen_turf.z in z_levels) && !should_block_game_interaction(queen_turf)
+			if(in_z_levels)
 				//Some Queen is alive, we shouldn't end the game yet
 				.[2]++
 	return .

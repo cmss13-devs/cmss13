@@ -1714,10 +1714,6 @@
 /obj/structure/fence/overgrown,
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/west_nexus_road)
-"agC" = (
-/obj/structure/machinery/power/apc/almayer/north,
-/turf/open/floor/plating,
-/area/forward_base/lv624/hallways/north_gate)
 "agD" = (
 /obj/structure/surface/table/reinforced{
 	dir = 8;
@@ -4000,8 +3996,7 @@
 "aoh" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	name = "\improper Senior Enlisted Advisor's Quarters";
-	req_access = null;
-	req_access_txt = list(19, 29);
+	req_access = list(19, 29);
 	dir = 2
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
@@ -4254,6 +4249,13 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/river/east_river)
+"aoY" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/obj/structure/machinery/power/apc/almayer/north,
+/turf/open/floor/plating/asteroidfloor/north,
+/area/forward_base/lv624/hallways/north_gate)
 "aoZ" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/river,
@@ -6282,7 +6284,7 @@
 "auQ" = (
 /obj/structure/platform/metal/almayer_smooth/east,
 /turf/open_space,
-/area/sky)
+/area/forward_base/lv624/hallways)
 "auR" = (
 /obj/structure/barricade/wooden{
 	dir = 4
@@ -6339,7 +6341,7 @@
 "avd" = (
 /obj/structure/platform/metal/almayer_smooth,
 /turf/open_space,
-/area/sky)
+/area/forward_base/lv624/hallways)
 "ave" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/rifle/mar40,
@@ -6368,7 +6370,7 @@
 /obj/structure/platform/metal/almayer_smooth,
 /obj/structure/platform_decoration/metal/almayer_smooth/southeast,
 /turf/open_space,
-/area/sky)
+/area/forward_base/lv624/hallways)
 "avj" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/vault,
@@ -16679,6 +16681,9 @@
 "aZS" = (
 /turf/open/floor/almayer/mono,
 /area/forward_base/lv624/preps/spec)
+"aZT" = (
+/turf/open_space,
+/area/forward_base/lv624/hallways)
 "aZU" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -17537,7 +17542,9 @@
 /turf/open/floor/almayer/mono,
 /area/forward_base/lv624/research/fabrication)
 "bci" = (
-/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/north{
+	layer = 3.2
+	},
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/lattice,
@@ -18468,12 +18475,16 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/lv624/engineering/orbital_cannon)
 "bew" = (
-/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/north{
+	layer = 3.2
+	},
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/lattice,
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform/metal/almayer/east{
+	layer = 3.3
+	},
 /turf/open/hybrisa/street/underground_unweedable,
 /area/sky)
 "bex" = (
@@ -18711,14 +18722,14 @@
 	pixel_x = -17
 	},
 /turf/open_space,
-/area/sky)
+/area/forward_base/lv624/hallways)
 "bfb" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_y = 5
 	},
 /turf/open_space,
-/area/sky)
+/area/forward_base/lv624/hallways)
 "bfc" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
@@ -18735,7 +18746,7 @@
 	pixel_y = 5
 	},
 /turf/open_space,
-/area/sky)
+/area/forward_base/lv624/hallways)
 "bfe" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/jungle/north_east_jungle)
@@ -18749,7 +18760,9 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/sky)
 "bfh" = (
-/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/north{
+	layer = 3.2
+	},
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/lattice,
@@ -18758,13 +18771,17 @@
 /turf/open/hybrisa/street/underground_unweedable,
 /area/sky)
 "bfi" = (
-/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/north{
+	layer = 3.2
+	},
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/lattice,
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/platform/metal/almayer,
-/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform/metal/almayer/east{
+	layer = 3.3
+	},
 /turf/open/hybrisa/street/underground_unweedable,
 /area/sky)
 "bfj" = (
@@ -20749,13 +20766,6 @@
 "bkS" = (
 /turf/closed/wall/almayer/outer/internal,
 /area/forward_base/lv624/living/synth_closet)
-"bkT" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	pixel_x = 1
-	},
-/turf/open_space,
-/area/sky)
 "bkU" = (
 /obj/structure/flora/pottedplant/random{
 	pixel_y = 0
@@ -21475,7 +21485,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/forward_base/lv624/living/cryogenics)
 "bne" = (
-/obj/structure/pipes/multiz/down,
+/obj/structure/pipes/multiz/down{
+	layer = 1.9
+	},
 /obj/effect/landmark/start/marine/alpha,
 /obj/effect/landmark/late_join/alpha,
 /turf/open/floor/almayer/plate,
@@ -37114,7 +37126,7 @@ aAl
 aAl
 aAG
 asa
-agC
+aBl
 aBl
 xKE
 xKE
@@ -37562,7 +37574,7 @@ aAl
 aAl
 aAl
 asa
-asY
+aoY
 biu
 xKE
 bpz
@@ -73649,13 +73661,13 @@ avY
 avY
 avY
 anh
-qht
-qht
-qht
+aZT
+aZT
+aZT
 bfa
-qht
-qht
-qht
+aZT
+aZT
+aZT
 aPK
 bck
 bck
@@ -73873,13 +73885,13 @@ avY
 avY
 avY
 anh
-qht
-qht
-qht
+aZT
+aZT
+aZT
 bfb
-qht
-qht
-qht
+aZT
+aZT
+aZT
 aPK
 bck
 bck
@@ -74097,13 +74109,13 @@ avY
 avY
 avY
 anh
-qht
-qht
-qht
+aZT
+aZT
+aZT
 bfb
-qht
-qht
-qht
+aZT
+aZT
+aZT
 aPK
 bck
 bck
@@ -74321,13 +74333,13 @@ avZ
 avZ
 avZ
 anh
-qht
-qht
-qht
+aZT
+aZT
+aZT
 bfb
-qht
-qht
-qht
+aZT
+aZT
+aZT
 aPK
 bck
 bck
@@ -74545,13 +74557,13 @@ qht
 qht
 qAb
 anh
-qht
-qht
-qht
+aZT
+aZT
+aZT
 bfb
-qht
-qht
-qht
+aZT
+aZT
+aZT
 aPK
 bck
 bck
@@ -74769,13 +74781,13 @@ qht
 qht
 qht
 anh
-qht
-qht
-qht
+aZT
+aZT
+aZT
 bfb
-qht
-qht
-qht
+aZT
+aZT
+aZT
 aPK
 bck
 bck
@@ -74993,13 +75005,13 @@ qht
 qht
 qht
 anh
-qht
-qht
-qht
+aZT
+aZT
+aZT
 bfb
-qht
-qht
-qht
+aZT
+aZT
+aZT
 aPK
 bck
 bck
@@ -75217,13 +75229,13 @@ qht
 qht
 qht
 anh
-qht
-qht
-qht
+aZT
+aZT
+aZT
 bfb
-qht
-qht
-qht
+aZT
+aZT
+aZT
 bck
 bck
 bck
@@ -75441,16 +75453,16 @@ qht
 qht
 qht
 anh
-qht
-qht
-qht
+aZT
+aZT
+aZT
 bfb
-qht
-qht
-qht
-qht
-qht
-qht
+aZT
+aZT
+aZT
+aZT
+aZT
+aZT
 avd
 bcE
 bcu
@@ -75665,16 +75677,16 @@ qht
 qht
 qht
 anh
-qht
-qht
-qht
+aZT
+aZT
+aZT
 bfb
-qht
-qht
-qht
-qht
-qht
-qht
+aZT
+aZT
+aZT
+aZT
+aZT
+aZT
 avd
 bcE
 bdg
@@ -79256,7 +79268,7 @@ beZ
 beZ
 bew
 bbQ
-blk
+bdZ
 bdZ
 bdN
 bdx
@@ -79704,7 +79716,7 @@ qht
 qht
 blt
 blt
-bdZ
+blk
 bdZ
 bdO
 bdz
@@ -85084,7 +85096,7 @@ nji
 nji
 nji
 xTn
-bkT
+qht
 qht
 qht
 qht

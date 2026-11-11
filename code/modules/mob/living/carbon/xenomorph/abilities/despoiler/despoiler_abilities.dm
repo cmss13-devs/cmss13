@@ -37,7 +37,7 @@
 	var/empowered_distance = 5
 	var/weaken_duration = 1
 	var/damage = 30
-	cooldown_message = "We have replenished our acid stores are ready to slash and leave puddles."
+	cooldown_message = "We have replenished our acid stores. We can now slash and leave puddles."
 
 /datum/action/xeno_action/onclick/oozing_wounds
 	name = "Oozing Wounds"
@@ -46,7 +46,7 @@
 	xeno_cooldown = 25 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 100
-	cooldown_message = "We have regained enough energy to to spill our blood for the hive."
+	cooldown_message = "We have regained enough energy to spill our blood for the Hive."
 
 /datum/action/xeno_action/onclick/catalyze
 	name = "Catalyze"

@@ -62,7 +62,7 @@
 	var/image/surgery_bone_overlay = null
 	var/image/surgery_ib_overlay = null
 	var/image/surgery_organ_overlay = null
-	var/image/innards_overlay = null
+	var/image/extra_organ_overlay = null
 
 	var/splint_icon_amount = 1
 	var/bandage_icon_amount = 1
@@ -111,7 +111,7 @@
 		surgery_bone_overlay = null
 		surgery_ib_overlay = null
 		surgery_organ_overlay = null
-		innards_overlay = null
+		extra_organ_overlay = null
 
 
 	wound_overlay = image('icons/mob/humans/dam_human.dmi', "grayscale_0", -DAMAGE_LAYER)
@@ -1448,10 +1448,12 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 ////////////////////
 
 //SET UP BONES
-		if(name == "head" || name == "chest" )
+		if(name == "head")
 			surgery_bone_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +2) // incision, then organs, then bones
+		if(name == "chest")
+			surgery_bone_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +3) //+3 because lungs will be overlayed first, then heart, then bones)
 		else
-			surgery_bone_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +1) //incision, then bones on top
+			surgery_bone_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +1) //incision, then bones on top for groin
 
 		surgery_bone_overlay.icon_state = "bone_[name]"
 
@@ -1467,32 +1469,40 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 ////////////////////
 
 ///SET UP ORGANS
-		//Add intestines overlay manually because they're not organs by default, yet
+		//Adds intestines and stomach overlay manually. They're fluff organs, but they
 		if(name == "groin" && !issynth(owner))
 			if(surgery_status & INCISION_PELVIS_HIDDEN)
-				innards_overlay = image('icons/mob/humans/dam_human.dmi', icon_state = "innards", layer = SURGERY_LAYER +1)
+				extra_organ_overlay = image('icons/mob/humans/dam_human.dmi', icon_state = "innards", layer = SURGERY_LAYER +1) //intestines.
 			else if(surgery_status & INCISION_PELVIS_EXPOSED) //organs were moved away
-				innards_overlay = null
-			. += innards_overlay
+				extra_organ_overlay = null
+			. += extra_organ_overlay
+
+		if(name == "chest" && !issynth(owner))
+			extra_organ_overlay = image('icons/mob/humans/dam_human.dmi', icon_state = "stomach", layer = SURGERY_LAYER +1) //stomach
+			. += extra_organ_overlay
 
 		//Add the rest of the organs.
 		if(name == "head" || name == "chest" || name == "groin")
 			for(var/datum/internal_organ/organ as anything in internal_organs)
-				if(name == "head" || name == "chest" )
-					surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +1) // incision, then organs, then bones
+				if(name == "head")
+					surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +1)
+				else if(name == "chest")
+					if(organ)
+						if(organ.name == "heart" || organ.name == "liver")
+							surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +2)
+						else
+							surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +1)
 				else if(name == "groin")
 					if(surgery_status & INCISION_PELVIS_HIDDEN)
 						surgery_organ_overlay = image('icons/mob/humans/dam_human.dmi', layer = SURGERY_LAYER +2)
-					if(surgery_status & INCISION_PELVIS_EXPOSED) //organs were moved away
+					else if(surgery_status & INCISION_PELVIS_EXPOSED)
 						surgery_organ_overlay = null
-				else
-					surgery_organ_overlay = null
 
-				surgery_organ_overlay.icon_state = "[organ.name]"
-
-				//Adds prosthetic organs, if any
-				if(organ.robotic == ORGAN_ROBOT)
-					surgery_organ_overlay.icon_state += "_r"
+				if(surgery_organ_overlay && organ)
+					surgery_organ_overlay.icon_state = "[organ.name]"
+					//Adds prosthetic organs, if any
+					if(organ.robotic == ORGAN_ROBOT)
+						surgery_organ_overlay.icon_state += "_r"
 
 				. += surgery_organ_overlay
 
@@ -1514,7 +1524,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		surgery_bone_overlay = null
 		surgery_ib_overlay = null
 		surgery_organ_overlay = null
-		innards_overlay = null
+		extra_organ_overlay = null
 ////////////////////
 
 ////////////////////

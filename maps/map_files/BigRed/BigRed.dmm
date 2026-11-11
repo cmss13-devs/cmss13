@@ -18569,10 +18569,6 @@
 	pixel_y = 6;
 	pixel_x = 9
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/item/device/defibrillator{
 	pixel_x = -9;
 	pixel_y = -9

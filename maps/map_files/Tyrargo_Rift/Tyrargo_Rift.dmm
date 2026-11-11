@@ -47146,7 +47146,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/tyrargo/oob/outdoors)
 "cqu" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet/bullet,
 /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol/random_amount,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/reagent_container/hypospray/autoinjector/standard/tramadol/random_amount,

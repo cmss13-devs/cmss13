@@ -482,7 +482,7 @@
 		if(SSticker.mode == GAMEMODE_DISTRESS_SIGNAL) //when queen evolves remove queenless actions and evo
 			hive.allow_no_queen_actions = FALSE
 			hive.allow_no_queen_evo = FALSE
-			if(!SSticker.mode.evolution_ovipositor_threshold && ROUND_TIME >= SSticker.mode.round_time_evolution_ovipositor) //make sure you can still get evo without ovi roundstart
+			if(ROUND_TIME >= SSticker.mode.round_time_evolution_ovipositor) //make sure you can still get evo without ovi roundstart
 				hive.evolution_without_ovipositor = FALSE
 	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_block))
 

@@ -587,9 +587,9 @@
 /obj/item/reagent_container/hypospray/autoinjector/emergency/get_autoinjector_examine_text(mob/user, max_uses)
 	. = ..()
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
-		. += SPAN_NOTICE("A warning label for those untrained in medicine says: '<b>OVERDOSE WARNING: Do not administer if the patient has the first three aforementioned chemicals in their bloodstream.</b>'")
+		. += SPAN_NOTICE("A warning label for those untrained in medicine says: '<b>OVERDOSE WARNING: To avoid overdose, do not administer if the patient has Bicaridine, Kelotane, or Oxycodone in their bloodstream.</b>'")
 	else
-		. += SPAN_WARNING("A warning label says: '<b>OVERDOSE WARNING: Do not administer if the patient has the first three aforementioned chemicals in their bloodstream.</b>'")
+		. += SPAN_WARNING("A warning label says: '<b>OVERDOSE WARNING: To avoid overdose, do not administer if the patient has Bicaridine, Kelotane, or Oxycodone in their bloodstream.</b>'")
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency/Initialize() //29u bicaridine, 29u kelotane, 19u oxycodone, 1u dexalin +.
 	. = ..()
@@ -601,7 +601,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/black_goo_cure
 	name = "\"Pathogen\" cure EZ autoinjector (SINGLE-USE)"
-	desc = "An EZ one-use autoinjector that injects a cure for Agent A0-3959X.91–15, also known as the 'black goo.'"
+	desc = "An EZ one-use autoinjector that injects a cure for Agent A0-3959X.91–15, also known as the 'black goo' virus."
 	icon_state = "empty_research_single"
 	chemname = "antiZed"
 	autoinjector_type = "autoinjector_single"

@@ -7,7 +7,7 @@
 
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/secondary/frontalcannon,
-		/obj/item/hardpoint/support/smoke_launcher,
+		/obj/item/hardpoint/support/flare_launcher, // replaced smoke launcher with the flare launcher, more useful
 		/obj/item/hardpoint/locomotion/apc_wheels,
 	)
 
@@ -65,11 +65,11 @@
 
 /obj/effect/vehicle_spawner/apc_moviemed/decrepit/load_hardpoints(obj/vehicle/multitile/apc/movie/med/V)
 	V.add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
-	V.add_hardpoint(new /obj/item/hardpoint/support/smoke_launcher)
+	V.add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 
 //PRESET: default hardpoints
 /obj/effect/vehicle_spawner/apc_moviemed/fixed/load_hardpoints(obj/vehicle/multitile/apc/movie/med/V)
 	V.add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
-	V.add_hardpoint(new /obj/item/hardpoint/support/smoke_launcher)
+	V.add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)

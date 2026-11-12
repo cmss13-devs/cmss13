@@ -132,7 +132,11 @@
 	if(isnull(base_empty_since))
 		base_empty_since = world.time
 	if(world.time >= base_empty_since + 5 MINUTES)
-		round_finished = MODE_INFESTATION_X_MINOR
+		for(var/mob/living/carbon/xenomorph/xeno as anything in GLOB.living_xeno_list)
+			if(xeno.stat == DEAD || (FACTION_MARINE in xeno.iff_tag?.faction_groups) || !istype(get_area(xeno), /area/forward_base))
+				continue
+			round_finished = MODE_INFESTATION_X_MINOR
+			return
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/forward_base
 	battery_duration = FORWARD_BASE_TURRET_BATTERY_DURATION

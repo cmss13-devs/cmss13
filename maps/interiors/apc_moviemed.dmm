@@ -1,0 +1,586 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_6"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"b" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "wall";
+	pixel_y = -12;
+	opacity = 0
+	},
+/obj/structure/interior_wall/apc{
+	icon_state = "wheel_front_top_2";
+	pixel_x = -4;
+	pixel_y = -5;
+	layer = 2.01
+	},
+/turf/open/void/vehicle,
+/area/space)
+"c" = (
+/obj/structure/machinery/iv_drip{
+	anchored = 1;
+	pixel_y = 11;
+	pixel_x = 15;
+	layer = 2.7
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/vehicle{
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/turf/open/shuttle/vehicle/dark_sterile_green_6,
+/area/interior/vehicle/apc/movie/med)
+"d" = (
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	dir = 1;
+	pixel_x = 2;
+	pixel_y = -13
+	},
+/obj/effect/decal/medical_decals/permanent{
+	icon_state = "triagedecalrightup";
+	pixel_y = 9;
+	pixel_x = 22
+	},
+/obj/effect/decal/medical_decals/permanent{
+	icon_state = "triagedecaldir";
+	pixel_y = 19;
+	pixel_x = -10
+	},
+/turf/open/shuttle/vehicle/floor_2,
+/area/interior/vehicle/apc/movie/med)
+"e" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "wheel_front_top_2";
+	pixel_x = 4;
+	pixel_y = -5;
+	layer = 2.01
+	},
+/turf/open/void/vehicle,
+/area/space)
+"f" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "wheel_front_top_1";
+	pixel_x = 1;
+	pixel_y = -5;
+	layer = 2.01
+	},
+/turf/open/void/vehicle,
+/area/space)
+"g" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "front_1"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"h" = (
+/obj/effect/landmark/interior/spawn/weapons_loader{
+	pixel_y = -11;
+	layer = 4
+	},
+/turf/open/shuttle/vehicle/floor_2,
+/area/interior/vehicle/apc/movie/med)
+"i" = (
+/obj/effect/decal/medical_decals/permanent{
+	icon_state = "triagedecalbottom"
+	},
+/obj/structure/bed/chair/vehicle/toc{
+	dir = 1;
+	pixel_y = 11;
+	pixel_x = -1;
+	name = "surgical chair";
+	buckle_offset_x = -1;
+	buckle_offset_y = 11
+	},
+/turf/open/shuttle/vehicle/dark_sterile_green_5,
+/area/interior/vehicle/apc/movie/med)
+"j" = (
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	dir = 1;
+	pixel_x = -7;
+	pixel_y = -11
+	},
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3{
+	pixel_x = -2;
+	pixel_y = -5;
+	buckling_x = -2;
+	buckling_y = -3;
+	anchored = 1
+	},
+/turf/open/shuttle/vehicle/floor_2,
+/area/interior/vehicle/apc/movie/med)
+"l" = (
+/obj/structure/bed/portable_surgery{
+	name = "vehicle surgical bed";
+	foldabletype = null
+	},
+/obj/structure/vehicle_locker/med{
+	pixel_y = 16;
+	pixel_x = 3
+	},
+/turf/open/shuttle/vehicle/dark_sterile,
+/area/interior/vehicle/apc/movie/med)
+"m" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "wall_3";
+	opacity = 0
+	},
+/obj/structure/barricade/handrail{
+	dir = 4;
+	pixel_y = -19;
+	pixel_x = 1;
+	layer = 3.01
+	},
+/turf/open/space/basic,
+/area/space)
+"n" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "corner_inverse_L";
+	opacity = 0
+	},
+/obj/structure/barricade/handrail{
+	dir = 4;
+	pixel_y = -19;
+	pixel_x = 2;
+	layer = 3.01
+	},
+/turf/open/space/basic,
+/area/space)
+"o" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_1"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"p" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "wall_2";
+	opacity = 0
+	},
+/turf/open/space/basic,
+/area/space)
+"q" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "front_wheel_L_1"
+	},
+/turf/open/space/basic,
+/area/space)
+"r" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_wheel_R";
+	layer = 5.2
+	},
+/obj/structure/barricade/handrail{
+	dir = 4;
+	pixel_y = 18;
+	pixel_x = 2
+	},
+/turf/open/space/basic,
+/area/space)
+"t" = (
+/turf/open/shuttle/vehicle/dark_sterile_green_11,
+/area/interior/vehicle/apc/movie/med)
+"v" = (
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3{
+	pixel_y = 12;
+	pixel_x = -2;
+	buckling_y = 14;
+	buckling_x = -2;
+	anchored = 1
+	},
+/turf/open/shuttle/vehicle/floor_2,
+/area/interior/vehicle/apc/movie/med)
+"w" = (
+/obj/effect/landmark/interior/spawn/interior_camera{
+	dir = 5;
+	pixel_x = -18;
+	pixel_y = 38
+	},
+/obj/structure/vehicle_locker/movie{
+	pixel_y = 11;
+	layer = 2.9
+	},
+/obj/structure/gun_rack/apc/frontal{
+	pixel_y = 1;
+	pixel_x = 8;
+	density = 0
+	},
+/obj/effect/decal/medical_decals/permanent{
+	icon_state = "triagedecalbottomleft";
+	pixel_y = 9
+	},
+/turf/open/shuttle/vehicle/floor_2,
+/area/interior/vehicle/apc/movie/med)
+"x" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "wall";
+	opacity = 0;
+	pixel_y = -12
+	},
+/obj/structure/interior_wall/apc{
+	icon_state = "wheel_front_top_2";
+	pixel_x = 10;
+	pixel_y = -5;
+	layer = 2.01
+	},
+/obj/structure/interior_wall/apc{
+	icon_state = "wheel_front_top_2";
+	pixel_x = -18;
+	pixel_y = -5;
+	layer = 2.01
+	},
+/turf/open/void/vehicle,
+/area/space)
+"y" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "front_5"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"z" = (
+/obj/effect/landmark/interior/spawn/entrance{
+	alpha = 50;
+	exit_type = /obj/structure/interior_exit/vehicle/apc;
+	name = "Right APC door";
+	tag = "right rear"
+	},
+/turf/open/shuttle/vehicle/floor_1_7,
+/area/interior/vehicle/apc/movie/med)
+"A" = (
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3{
+	pixel_x = -2;
+	pixel_y = -5;
+	buckling_x = -2;
+	buckling_y = -3;
+	anchored = 1
+	},
+/turf/open/shuttle/vehicle/floor_2,
+/area/interior/vehicle/apc/movie/med)
+"B" = (
+/obj/effect/decal/medical_decals/permanent{
+	icon_state = "triagedecalleftup";
+	pixel_y = 9;
+	pixel_x = -23
+	},
+/obj/effect/decal/medical_decals/permanent{
+	icon_state = "triagedecaldir";
+	pixel_y = 19;
+	pixel_x = 9
+	},
+/turf/open/shuttle/vehicle/floor_2,
+/area/interior/vehicle/apc/movie/med)
+"C" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "door_big_right";
+	layer = 5.2;
+	pixel_y = 32;
+	alpha = 100
+	},
+/turf/open/void/vehicle,
+/area/space)
+"D" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_5"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"E" = (
+/turf/open/void/vehicle,
+/area/space)
+"F" = (
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	pixel_x = 8;
+	pixel_y = 26;
+	layer = 3
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/vehicle{
+	pixel_y = 30;
+	pixel_x = -8
+	},
+/obj/effect/decal/medical_decals/permanent{
+	icon_state = "triagedecalleft";
+	pixel_y = 9;
+	pixel_x = 19
+	},
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3{
+	pixel_y = 12;
+	pixel_x = -2;
+	buckling_y = 14;
+	buckling_x = -2;
+	anchored = 1
+	},
+/turf/open/shuttle/vehicle/floor_2,
+/area/interior/vehicle/apc/movie/med)
+"G" = (
+/obj/structure/extinguisher_cabinet/lifeboat{
+	icon = 'icons/obj/vehicles/interiors/general.dmi';
+	pixel_x = -11;
+	pixel_y = 28
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/blood/vehicle{
+	pixel_y = 22;
+	pixel_x = 4
+	},
+/turf/open/shuttle/vehicle/dark_sterile_green_14,
+/area/interior/vehicle/apc/movie/med)
+"H" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "corner_inverse_R";
+	opacity = 0
+	},
+/turf/open/space/basic,
+/area/space)
+"I" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "front_3"
+	},
+/obj/structure/interior_wall/apc{
+	icon_state = "front_4";
+	pixel_y = 12
+	},
+/turf/open/void/vehicle,
+/area/space)
+"J" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "wheel_front_top_2";
+	pixel_x = 4;
+	pixel_y = 1;
+	layer = 2.01;
+	opacity = 0
+	},
+/obj/structure/interior_wall/apc{
+	icon_state = "corner_smaller_R";
+	opacity = 0;
+	pixel_y = 12
+	},
+/obj/structure/interior_wall/apc{
+	icon_state = "corner_smaller_L";
+	opacity = 0;
+	pixel_y = 12
+	},
+/obj/structure/interior_wall/apc{
+	icon_state = "intersection_2";
+	opacity = 0;
+	pixel_y = -20
+	},
+/turf/open/shuttle/vehicle,
+/area/space)
+"K" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "corner_smaller_L";
+	opacity = 0
+	},
+/obj/structure/interior_wall/apc{
+	icon_state = "wheel_back_top_2";
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/turf/open/void/vehicle,
+/area/space)
+"L" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_wheel_L";
+	layer = 5.2
+	},
+/obj/structure/barricade/handrail{
+	dir = 4;
+	pixel_y = 18;
+	pixel_x = 1
+	},
+/turf/open/space/basic,
+/area/space)
+"M" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_3"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"N" = (
+/obj/effect/decal/medical_decals/permanent{
+	icon_state = "triagedecalbottomleft";
+	pixel_y = 19;
+	pixel_x = 9
+	},
+/turf/open/shuttle/vehicle/floor_2,
+/area/interior/vehicle/apc/movie/med)
+"O" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "front_2";
+	pixel_y = 7
+	},
+/obj/structure/interior_wall/apc{
+	icon_state = "front_2";
+	pixel_y = -2;
+	layer = 2.01
+	},
+/turf/open/void/vehicle,
+/area/space)
+"P" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/turf/open/shuttle/vehicle/floor_2,
+/area/interior/vehicle/apc/movie/med)
+"Q" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "door_big_left";
+	pixel_y = 32;
+	layer = 5.2;
+	alpha = 100
+	},
+/turf/open/void/vehicle,
+/area/space)
+"R" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "wall_wheelside"
+	},
+/turf/open/space/basic,
+/area/space)
+"S" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "front_6";
+	pixel_y = -1
+	},
+/turf/open/void/vehicle,
+/area/space)
+"T" = (
+/obj/effect/landmark/interior/spawn/entrance{
+	alpha = 50;
+	exit_type = /obj/structure/interior_exit/vehicle/apc;
+	name = "Right APC door";
+	tag = "right front"
+	},
+/turf/open/shuttle/vehicle/floor_1_8,
+/area/interior/vehicle/apc/movie/med)
+"U" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "front_wheel_R";
+	layer = 4.1
+	},
+/turf/open/space/basic,
+/area/space)
+"V" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "wheel_back_top_1";
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/turf/open/void/vehicle,
+/area/space)
+"W" = (
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	dir = 8;
+	pixel_x = 5;
+	pixel_y = 18
+	},
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor/movie{
+	dir = 4;
+	buckling_y = 16;
+	pixel_y = 16
+	},
+/turf/open/shuttle/vehicle/floor_2,
+/area/interior/vehicle/apc/movie/med)
+"Y" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_2"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"Z" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "corner_smaller_R";
+	opacity = 0
+	},
+/obj/structure/interior_wall/apc{
+	icon_state = "wheel_front_top_2";
+	pixel_x = 4;
+	pixel_y = -5;
+	layer = 2.01
+	},
+/obj/structure/interior_wall/apc{
+	icon_state = "wheel_front_top_2";
+	pixel_x = 8;
+	pixel_y = -5;
+	layer = 2.01
+	},
+/turf/open/void/vehicle,
+/area/space)
+
+(1,1,1) = {"
+a
+D
+M
+Y
+o
+E
+"}
+(2,1,1) = {"
+V
+m
+v
+j
+L
+E
+"}
+(3,1,1) = {"
+K
+n
+F
+A
+r
+E
+"}
+(4,1,1) = {"
+b
+c
+t
+B
+z
+Q
+"}
+(5,1,1) = {"
+x
+l
+i
+N
+T
+C
+"}
+(6,1,1) = {"
+Z
+H
+G
+d
+R
+E
+"}
+(7,1,1) = {"
+e
+J
+w
+P
+q
+E
+"}
+(8,1,1) = {"
+f
+p
+W
+h
+U
+E
+"}
+(9,1,1) = {"
+S
+I
+O
+y
+g
+E
+"}

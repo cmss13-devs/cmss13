@@ -1766,6 +1766,16 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		data["clarity_color"] = "bad"
 		data["clarity_status"] = "CRITICAL BLACKOUT"
 
+/obj/structure/machinery/computer/overwatch/groundside_operations/apc
+	name = "TOC Overwatch Console"
+	desc = "The Tactical Operations Center overwatch console. Many different screens make up the display. A large scribbled text is next to one of the monitors.. WARNING: THE SHIPS GROUNDSIDE OPERATIONS CONSOLE MUST NOT BE LOGGED IN AT THE SAME TIME!"
+	icon = 'icons/obj/structures/machinery/toc.dmi'
+	icon_state = "toc"
+	bound_width = 64
+	bound_height = 32
+	layer = ABOVE_TABLE_LAYER
+	density = TRUE
+
 #undef HIDE_ALMAYER
 #undef HIDE_GROUND
 #undef HIDE_NONE

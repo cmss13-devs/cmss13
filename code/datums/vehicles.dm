@@ -30,6 +30,14 @@
 	name = "APC - No FPW"
 	interior_id = "apc_no_fpw"
 
+/datum/map_template/interior/apc_movie
+	name = "Movie APC"
+	interior_id = "apc_movie"
+
+/datum/map_template/interior/apc_moviemed
+	name = "Medical Treatment APC"
+	interior_id = "apc_moviemed"
+
 /datum/map_template/interior/tank
 	name = "Tank"
 	interior_id = "tank"

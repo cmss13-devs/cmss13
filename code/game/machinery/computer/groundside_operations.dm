@@ -446,4 +446,14 @@
 	icon = 'icons/obj/vehicles/interiors/arc.dmi'
 	icon_state = "groundsideop_computer"
 
+/obj/structure/machinery/computer/groundside_operations/toc
+	name = "TOC Overwatch Console"
+	desc = "The Tactical Operations Center overwatch console. Many different screens make up the display. A large scribbled text is next to one of the monitors.. WARNING: THE SHIPS GROUNDSIDE OPERATIONS CONSOLE MUST NOT BE LOGGED IN AT THE SAME TIME!"
+	icon = 'icons/obj/structures/machinery/toc.dmi'
+	icon_state = "toc"
+	bound_width = 64
+	bound_height = 32
+	layer = ABOVE_TABLE_LAYER
+	density = TRUE
+
 #undef COMMAND_SQUAD

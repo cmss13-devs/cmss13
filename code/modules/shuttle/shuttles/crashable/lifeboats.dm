@@ -86,6 +86,7 @@
 	height = 7
 
 /obj/docking_port/stationary/lifeboat_dock/on_dock_ignition(departing_shuttle)
+	. = ..()
 	var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = departing_shuttle
 	if(istype(lifeboat))
 		for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/door in lifeboat.doors)

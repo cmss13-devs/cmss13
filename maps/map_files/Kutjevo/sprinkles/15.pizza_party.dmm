@@ -234,10 +234,10 @@
 /obj/item/ammo_magazine/pistol/highpower{
 	current_rounds = 0
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilered,
 /area/template_noop)
 "ym" = (
@@ -482,11 +482,11 @@
 /obj/item/ammo_magazine/pistol/highpower{
 	current_rounds = 0
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilered,
 /area/template_noop)
 "RV" = (
@@ -522,9 +522,9 @@
 /area/template_noop)
 "TN" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/stool{
 	pixel_y = 8
 	},
@@ -535,7 +535,7 @@
 /area/template_noop)
 "TS" = (
 /obj/effect/landmark/corpsespawner/hybrisa/pizza_galaxy,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilered,
 /area/template_noop)
 "TW" = (
@@ -577,8 +577,8 @@
 "Xg" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/pistol/highpower,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilered,
 /area/template_noop)
 "Xh" = (

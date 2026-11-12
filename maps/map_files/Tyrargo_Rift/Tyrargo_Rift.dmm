@@ -350,8 +350,8 @@
 /turf/closed/wall/strata_ice/forest/rock,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "abh" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/vehicles/tank/longstreet/primary/ltb/destroyed{
 	pixel_y = -68;
 	dir = 8;
@@ -422,10 +422,10 @@
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/tyrargo/indoors/engineering/ground)
 "abr" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/engineering/ground)
 "abs" = (
@@ -447,7 +447,7 @@
 /area/tyrargo/outdoors/colony_streets/west)
 "abu" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "abv" = (
@@ -482,7 +482,7 @@
 /turf/open/floor/corsat/marked,
 /area/tyrargo/indoors/engineering/ground)
 "abA" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 1;
 	pixel_x = 6;
@@ -981,7 +981,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "adc" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/hybrisa/metal/zbrownfloor1/north,
 /area/tyrargo/indoors/sewer_treatment/ground)
@@ -1245,7 +1245,7 @@
 /area/tyrargo/underground/bunker/north)
 "adV" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
 /turf/open/floor/interior/wood,
@@ -2381,15 +2381,7 @@
 /area/tyrargo/outdoors/colony_streets/south_west)
 "agM" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_y = 1;
-	layer = 3.01
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "agN" = (
@@ -2420,8 +2412,8 @@
 	dir = 8;
 	anchored = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
 	icon_state = "sandbag_0"
@@ -4166,12 +4158,12 @@
 	color = "#140400";
 	name = "dirt"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/yellowcorner/east,
 /area/tyrargo/indoors/engineering/upper)
 "alT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/engineering/upper)
 "alU" = (
@@ -4239,7 +4231,7 @@
 /area/tyrargo/indoors/engineering/upper)
 "amg" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/stack/sheet/metal,
 /turf/open/floor/prison/yellow/west,
 /area/tyrargo/indoors/engineering/upper)
@@ -4409,12 +4401,12 @@
 /turf/open/floor/prison/yellowcorner/east,
 /area/tyrargo/indoors/engineering/upper)
 "amJ" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/engineering/upper)
 "amK" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/engineering/upper)
 "amL" = (
@@ -5212,7 +5204,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "aoz" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0"
@@ -5221,7 +5213,7 @@
 /area/tyrargo/outdoors/colony_streets/south_east)
 "aoA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
@@ -5320,10 +5312,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "aoL" = (
@@ -5667,7 +5659,7 @@
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "apw" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/asphalt/cement/cement4,
@@ -5680,7 +5672,7 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/landing_zone_1/no_tunnel)
 "apy" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/bed/roller,
 /obj/effect/decal/cleanable/blood,
 /obj/item/prop/colony/usedbandage{
@@ -5944,7 +5936,7 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/outdoors/colony_exterior/north_west)
 "apX" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
 	},
@@ -6019,7 +6011,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_exterior/north_west)
 "aqh" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /obj/item/weapon/gun/shotgun/pump{
 	pixel_y = 5
 	},
@@ -6639,7 +6631,7 @@
 	pixel_y = -7
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
@@ -6651,7 +6643,7 @@
 	pixel_x = -2;
 	pixel_y = -7
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/tyrargo/oob)
 "arH" = (
@@ -6673,8 +6665,8 @@
 	layer = 2.7;
 	pixel_x = 11
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
 	},
@@ -6682,7 +6674,7 @@
 /area/tyrargo/oob)
 "arI" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/turret{
 	dir = 1
 	},
@@ -6704,7 +6696,7 @@
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "arK" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/tyrargo/oob)
 "arL" = (
@@ -6759,13 +6751,13 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/oob)
 "arR" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "arS" = (
 /obj/effect/spawner/gibspawner/xeno,
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/oob)
 "arT" = (
@@ -7082,15 +7074,7 @@
 	layer = 2.96;
 	pixel_y = -12
 	},
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_x = 5;
-	pixel_y = -24
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
 	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
@@ -7423,7 +7407,7 @@
 	pixel_y = 5;
 	pixel_x = 16
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
 "atI" = (
@@ -7821,15 +7805,7 @@
 /turf/open/hybrisa/street/roadlines4,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "aut" = (
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_x = -14;
-	layer = 2.98
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/oob/outdoors)
@@ -7854,9 +7830,9 @@
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/oob/outdoors)
@@ -8137,7 +8113,7 @@
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/outdoors/colony_streets/north)
 "avc" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/marked,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "avd" = (
@@ -8154,7 +8130,7 @@
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/ammo_magazine/rifle/ar10,
 /turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/tyrargo/indoors/admin/ground)
@@ -8252,16 +8228,16 @@
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/tyrargo/indoors/admin/ground)
 "avq" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/tyrargo/indoors/admin/ground)
 "avr" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/weapon/gun/rifle/ar10{
 	pixel_y = -3;
 	pixel_x = -1
@@ -8359,7 +8335,7 @@
 /area/tyrargo/indoors/admin/ground)
 "avD" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/tyrargo/indoors/admin/ground)
 "avE" = (
@@ -8696,7 +8672,7 @@
 /area/tyrargo/indoors/gararge/upper/external)
 "awy" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/admin/upper)
 "awz" = (
@@ -8778,7 +8754,7 @@
 "awJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/admin/upper)
 "awK" = (
@@ -8788,7 +8764,7 @@
 	pixel_y = -3;
 	pixel_x = -1
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/admin/upper)
@@ -8796,7 +8772,7 @@
 /obj/structure/barricade/handrail/wire{
 	dir = 8
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/admin/upper)
 "awM" = (
@@ -8849,12 +8825,12 @@
 	icon_state = "trash_9";
 	pixel_y = 12
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/admin/upper)
 "awT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/cell_stripe/east,
 /area/tyrargo/indoors/admin/upper)
 "awU" = (
@@ -8931,12 +8907,12 @@
 /area/tyrargo/indoors/admin/upper)
 "axg" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/metal/zbrownfloor1/north,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "axh" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/machinery/colony_floodlight/traffic/alt{
 	pixel_x = 4;
 	pixel_y = 12;
@@ -8945,45 +8921,45 @@
 /turf/open/asphalt/cement/cement9,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "axi" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/ramptop/east,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "axj" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/prison/ramptop/east,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "axk" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/ramptop/east,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "axl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/ramptop/east,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "axm" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement/cement15,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "axn" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/metal/zbrownfloor1,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "axo" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/doubleroad/lines1{
 	pixel_x = 14
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "axp" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "axq" = (
@@ -8996,7 +8972,7 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/west)
 "axs" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/doubleroad/lines3{
 	pixel_y = 13
 	},
@@ -9022,7 +8998,7 @@
 	color = "#140400";
 	name = "dirt"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/traffic_signal/traffic_signal_4,
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_streets/south_east)
@@ -9150,7 +9126,7 @@
 "axN" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -8
 	},
@@ -9235,12 +9211,12 @@
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/indoors/museum_storage/ground)
 "aya" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/almayer/tcomms,
 /area/tyrargo/indoors/engineering/ground)
 "ayb" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/engineering/ground)
 "ayc" = (
@@ -9371,7 +9347,7 @@
 /area/tyrargo/indoors/admin/ground)
 "ays" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement/cement1,
 /area/tyrargo/outdoors/colony_streets/east)
 "ayu" = (
@@ -9623,7 +9599,7 @@
 /area/tyrargo/outdoors/colony_streets/north_east)
 "ayZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "aza" = (
@@ -9636,7 +9612,7 @@
 "azb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/kutjevo/tan/alt_edge,
 /area/tyrargo/outdoors/colony_streets/north_east)
@@ -9648,13 +9624,13 @@
 "aze" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "azf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/prop/colony/used_flare,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "azg" = (
@@ -10289,7 +10265,7 @@
 /area/tyrargo/outdoors/colony_streets/north)
 "aAN" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/outdoors/colony_streets/north)
 "aAO" = (
@@ -10320,14 +10296,14 @@
 "aAR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north)
 "aAS" = (
 /obj/effect/decal/hybrisa/road/roadmiddle{
 	dir = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north)
 "aAT" = (
@@ -10656,7 +10632,7 @@
 /area/tyrargo/indoors/admin/ground)
 "aBL" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards/boards_2{
 	dir = 4;
 	layer = 2.1;
@@ -10706,7 +10682,7 @@
 /area/tyrargo/indoors/admin/ground)
 "aBS" = (
 /obj/item/stack/sheet/metal,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/green/north,
 /area/tyrargo/indoors/admin/ground)
 "aBT" = (
@@ -10724,8 +10700,8 @@
 /area/tyrargo/indoors/admin/ground)
 "aBV" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north)
 "aBW" = (
@@ -10790,7 +10766,7 @@
 	pixel_y = -3;
 	pixel_x = -1
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/trash/cigbutt{
 	pixel_x = -10;
 	pixel_y = 14
@@ -10808,7 +10784,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/indoors/museum_storage/ground)
 "aCh" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "aCi" = (
@@ -10869,14 +10845,14 @@
 "aCq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_magazine/rifle/ar10,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "aCr" = (
 /obj/item/prop/colony/used_flare,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "aCs" = (
@@ -10957,7 +10933,7 @@
 /turf/open/floor/prison/green,
 /area/tyrargo/indoors/admin/ground)
 "aCE" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/trash/uscm_mre{
 	pixel_y = 14;
 	pixel_x = 9
@@ -11060,8 +11036,8 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north)
 "aCT" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/north)
 "aCU" = (
@@ -11369,7 +11345,7 @@
 /turf/open/floor/strata/floor2,
 /area/tyrargo/indoors/admin/upper)
 "aDN" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/ramptop,
 /area/tyrargo/indoors/admin/upper)
 "aDO" = (
@@ -11560,7 +11536,7 @@
 	pixel_y = -3;
 	pixel_x = -1
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/ramptop,
 /area/tyrargo/indoors/admin/upper)
 "aEg" = (
@@ -12597,14 +12573,7 @@
 /turf/open/asphalt/cement/cement15,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "aHo" = (
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	pixel_x = 10;
-	dir = 6
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/west_trench)
 "aHp" = (
@@ -12692,8 +12661,8 @@
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "aHz" = (
@@ -12886,7 +12855,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "aHY" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
@@ -13153,21 +13122,13 @@
 /area/tyrargo/indoors/museum_storage/ground)
 "aIL" = (
 /obj/effect/decal/cleanable/generic,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
 "aIN" = (
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_x = -14;
-	layer = 2.98
-	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/oob/outdoors)
 "aIO" = (
@@ -13210,7 +13171,7 @@
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aIT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/kutjevo/tan/alt_edge/east,
 /area/tyrargo/outdoors/colony_streets/east)
 "aIU" = (
@@ -13226,7 +13187,7 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aIV" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/cement3,
 /area/tyrargo/outdoors/colony_streets/east)
 "aIW" = (
@@ -13282,7 +13243,7 @@
 /obj/structure/prop/rock/black_ground{
 	icon_state = "black_ground_alt"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
 "aJe" = (
@@ -14238,7 +14199,7 @@
 /area/tyrargo/underground/bunker/south)
 "aLu" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/redcorner,
 /area/tyrargo/underground/bunker/south)
 "aLv" = (
@@ -14246,9 +14207,9 @@
 /area/tyrargo/underground/bunker/south)
 "aLw" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/redcorner/east,
 /area/tyrargo/underground/bunker/south)
 "aLx" = (
@@ -14895,7 +14856,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "aNn" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
@@ -14907,7 +14868,7 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aNo" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aNp" = (
@@ -14923,8 +14884,8 @@
 /area/tyrargo/underground/bunker/south)
 "aNq" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
 	pixel_y = 1;
@@ -14990,16 +14951,16 @@
 	dir = 8;
 	pixel_x = 7
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aNw" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
@@ -15026,12 +14987,12 @@
 	dir = 8;
 	icon_state = "sandbag_0"
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aNB" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/cigbutt{
 	pixel_x = -3;
@@ -15202,17 +15163,17 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/tyrargo/outdoors/outskirts/central)
 "aNR" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aNS" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
 	icon_state = "sandbag_0"
@@ -15251,7 +15212,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "aNX" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 4
 	},
@@ -15392,7 +15353,7 @@
 	icon_state = "sandbag_0";
 	pixel_x = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
@@ -15451,7 +15412,7 @@
 	dir = 8;
 	icon_state = "sandbag_0"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
@@ -15646,7 +15607,7 @@
 	dir = 8;
 	icon_state = "sandbag_0"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
@@ -15682,7 +15643,7 @@
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOQ" = (
@@ -15723,12 +15684,12 @@
 /area/tyrargo/indoors/mall)
 "aOU" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOV" = (
@@ -15779,7 +15740,7 @@
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/apartment/south_ground)
 "aPa" = (
@@ -15801,12 +15762,12 @@
 	icon_state = "sandbag_0";
 	pixel_y = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPc" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2/east_trench)
 "aPd" = (
@@ -15948,7 +15909,7 @@
 /obj/structure/prop/rock/black_ground{
 	dir = 6
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/weapon/gun/rifle/m4ra{
 	current_mag = null
 	},
@@ -16030,7 +15991,7 @@
 	pixel_x = 5;
 	layer = 2.97
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/stairs/perspective{
 	dir = 10;
 	icon_state = "p_stair_full"
@@ -16318,7 +16279,7 @@
 /obj/structure/prop/rock/black_ground{
 	dir = 10
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 6
@@ -16364,8 +16325,8 @@
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/indoors/mall)
 "aQa" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1)
 "aQb" = (
@@ -16376,8 +16337,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/landing_zone_2)
 "aQc" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/cigbutt{
 	pixel_x = -9;
@@ -16412,7 +16373,7 @@
 /obj/structure/prop/rock/black_ground{
 	dir = 6
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aQh" = (
@@ -16461,7 +16422,7 @@
 	dir = 8;
 	pixel_x = 7
 	},
-/obj/item/ammo_casing/bullet{
+/obj/effect/decal/cleanable/ammo_casing/cartridge{
 	icon_state = "cartridge_1_1";
 	pixel_y = -3;
 	dir = 10;
@@ -16475,8 +16436,8 @@
 	icon_state = "sandbag_0";
 	pixel_y = 4
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/trash/cigbutt{
 	pixel_x = -9;
 	pixel_y = -6
@@ -16490,7 +16451,7 @@
 /turf/open/floor/almayer/blackfull2,
 /area/tyrargo/indoors/bunker/central_south)
 "aQn" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
@@ -16723,11 +16684,11 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aQM" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/ammo_magazine/m56d{
 	pixel_x = 3;
 	pixel_y = 10;
@@ -17749,7 +17710,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/west)
 "aTC" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/trash/cigbutt{
 	pixel_y = 8
 	},
@@ -17847,10 +17808,10 @@
 	dir = 8;
 	anchored = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards{
 	dir = 8;
 	pixel_y = -5;
@@ -17874,11 +17835,11 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/west)
 "aTI" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 4;
 	pixel_x = 12;
@@ -17962,7 +17923,7 @@
 /area/tyrargo/outdoors/outskirts_road/west)
 "aTP" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/grass_overlay/grass1/dark,
 /obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
@@ -17970,7 +17931,7 @@
 /area/tyrargo/outdoors/outskirts_road/west)
 "aTQ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/west)
@@ -18128,7 +18089,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/landing_zone_1/no_tunnel)
 "aUb" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
@@ -18249,11 +18210,11 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_1)
 "aUm" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/barricade/sandbags/wired{
 	dir = 4;
 	icon_state = "sandbag_0";
@@ -18280,7 +18241,7 @@
 	pixel_x = 7
 	},
 /obj/effect/decal/cleanable/generic,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/landing_zone_1)
 "aUp" = (
@@ -18291,8 +18252,8 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_9"
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/landing_zone_1)
 "aUq" = (
@@ -18326,7 +18287,7 @@
 /area/tyrargo/landing_zone_1)
 "aUu" = (
 /obj/effect/decal/cleanable/generic,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/barricade/sandbags/wired{
 	dir = 4;
 	icon_state = "sandbag_0";
@@ -18352,17 +18313,17 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/west)
 "aUw" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/west)
 "aUx" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/device/flashlight/flare/on{
 	fuel_rate = 5
 	},
@@ -18495,8 +18456,8 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/outdoors/outskirts_road/west)
 "aUM" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/tyrargo/landing_zone_1)
 "aUO" = (
@@ -18737,9 +18698,9 @@
 /obj/item/trash/cigbutt{
 	pixel_x = 7
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/sentry_landmark/lz_1/top_left,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/landing_zone_1)
@@ -18868,8 +18829,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/landing_zone_1)
 "aVu" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
@@ -18908,10 +18869,10 @@
 	icon_state = "sandbag_0";
 	pixel_x = 4
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/apartment/south_ground)
 "aVA" = (
@@ -19360,7 +19321,7 @@
 	icon_state = "sandbag_0";
 	pixel_y = -6
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
@@ -19511,7 +19472,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/tyrargo/landing_zone_1)
 "aWH" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/tyrargo/landing_zone_1)
 "aWJ" = (
@@ -19692,7 +19653,7 @@
 /area/tyrargo/landing_zone_1/ceiling)
 "aXa" = (
 /obj/effect/decal/cleanable/generic,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
@@ -19749,7 +19710,7 @@
 /obj/item/device/flashlight/flare/on{
 	fuel_rate = 5
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/trash/cigbutt{
 	pixel_x = -2;
 	pixel_y = 3
@@ -19761,7 +19722,7 @@
 	pixel_x = 3;
 	pixel_y = 7
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
@@ -20215,7 +20176,7 @@
 	pixel_x = -4;
 	pixel_y = -12
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
@@ -20779,13 +20740,13 @@
 "aZb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = 3;
 	pixel_y = -9;
@@ -20800,14 +20761,8 @@
 	icon_state = "sandbag_0";
 	pixel_x = 4
 	},
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6
-	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 1;
 	pixel_x = 6;
@@ -21094,12 +21049,12 @@
 	pixel_y = 4;
 	layer = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "aZG" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2)
@@ -21123,7 +21078,7 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_1/north_trench)
 "aZJ" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/tyrargo/boards/boards_2{
 	dir = 4;
@@ -21763,7 +21718,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/west)
 "baT" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
@@ -21824,14 +21779,14 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/west)
 "bbe" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/landing_zone_1)
 "bbf" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_1)
 "bbg" = (
@@ -21907,8 +21862,8 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/oob)
 "bbn" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
@@ -21917,7 +21872,7 @@
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/almayer/black2/west,
 /area/tyrargo/indoors/bunker/north_south)
 "bbo" = (
@@ -22253,15 +22208,15 @@
 "bbY" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/gibspawner/human,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "bbZ" = (
 /obj/item/weapon/gun/pistol/m1911{
 	current_mag = null
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "bca" = (
@@ -22343,7 +22298,7 @@
 /turf/open/gm/dirt/dark_brown,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "bcm" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "bcn" = (
@@ -22363,8 +22318,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "bcq" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/almayer/black2/west,
@@ -22378,9 +22333,9 @@
 "bcs" = (
 /obj/item/weapon/gun/shotgun/pump/m37a,
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/shell,
-/obj/item/ammo_casing/shell,
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "bct" = (
@@ -22630,7 +22585,7 @@
 /area/tyrargo/oob)
 "bcY" = (
 /obj/item/prop/colony/used_flare,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "bcZ" = (
@@ -22643,7 +22598,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob)
 "bda" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
@@ -22816,17 +22771,10 @@
 	pixel_x = 11;
 	pixel_y = -4
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	pixel_y = 12;
-	pixel_x = -15
-	},
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
 	},
@@ -22846,9 +22794,9 @@
 /turf/closed/wall/strata_ice/forest,
 /area/tyrargo/oob)
 "bdO" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
 	},
@@ -23086,7 +23034,7 @@
 /turf/open/asphalt/cement/cement9,
 /area/tyrargo/oob)
 "bek" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
@@ -23673,14 +23621,14 @@
 /turf/open/floor/almayer/black2/north,
 /area/tyrargo/landing_zone_2/ceiling)
 "bgo" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/almayer/black2/north,
 /area/tyrargo/landing_zone_2/ceiling)
 "bgp" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/black2/north,
 /area/tyrargo/landing_zone_2/ceiling)
@@ -23690,7 +23638,7 @@
 	pixel_x = -8;
 	pixel_y = -5
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/black2/north,
 /area/tyrargo/landing_zone_2/ceiling)
@@ -23723,7 +23671,7 @@
 	icon_state = "sandbag_0";
 	pixel_y = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/cell_stripe,
 /area/tyrargo/landing_zone_2/ceiling)
 "bgv" = (
@@ -23732,13 +23680,13 @@
 	icon_state = "sandbag_0";
 	pixel_y = 4
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/cell_stripe,
 /area/tyrargo/landing_zone_2/ceiling)
@@ -24114,8 +24062,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/landing_zone_2/road)
 "bhw" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/hybrisa/misc/fire/fire2{
 	color = "#FF7700";
 	icon = 'icons/effects/fire.dmi';
@@ -24136,7 +24084,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob)
 "bhy" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = 15;
 	pixel_y = 2;
@@ -24153,9 +24101,9 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_2/road)
 "bhA" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/hybrisa/misc/fire/fire2{
 	color = "#FF7700";
 	icon = 'icons/effects/fire.dmi';
@@ -24168,7 +24116,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/oob)
 "bhB" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/hybrisa/misc/fire/fire2{
 	color = "#FF7700";
 	icon = 'icons/effects/fire.dmi';
@@ -24229,7 +24177,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/landing_zone_2/road)
 "bhE" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = 11;
 	pixel_y = -1
@@ -24269,8 +24217,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob)
 "bhG" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/oob)
 "bhH" = (
@@ -24779,7 +24727,7 @@
 	icon_state = "sandbag_0";
 	pixel_y = -6
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
 	name = "dirt"
@@ -24943,13 +24891,13 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_2)
 "bjq" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_2)
 "bjr" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/generic,
 /obj/item/stack/medical/splint/random_amount{
 	pixel_y = -2
@@ -24962,7 +24910,7 @@
 	icon_state = "sandbag_0";
 	pixel_x = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/sentry_landmark/lz_2/bottom_left,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_2)
@@ -25103,7 +25051,7 @@
 	dir = 8;
 	icon_state = "sandbag_0"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2/east_trench)
@@ -25188,9 +25136,9 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/landing_zone_2/road)
 "bjU" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_2)
 "bjV" = (
@@ -25251,7 +25199,7 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_2/east_trench)
 "bka" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
@@ -25343,13 +25291,13 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2)
 "bkm" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_2)
 "bkn" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_15";
@@ -25358,9 +25306,9 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2)
 "bko" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 1;
 	pixel_x = 9;
@@ -25470,8 +25418,8 @@
 /area/tyrargo/landing_zone_2)
 "bkz" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2/east_trench)
@@ -25649,7 +25597,7 @@
 /area/tyrargo/outdoors/outskirts_road/west)
 "bkU" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2/east_trench)
@@ -25783,7 +25731,7 @@
 /area/tyrargo/landing_zone_2/east_trench)
 "blh" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_2/east_trench)
 "bli" = (
@@ -25834,8 +25782,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_2/east_trench)
 "bln" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/closed/wall/strata_ice/forest,
 /area/tyrargo/oob)
 "blo" = (
@@ -25844,9 +25792,9 @@
 	icon_state = "sandbag_0";
 	pixel_y = 4
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2/east_trench)
 "blp" = (
@@ -25868,7 +25816,7 @@
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_2/east_trench)
 "blr" = (
@@ -25892,14 +25840,14 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "blt" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 10
 	},
 /turf/open/gm/dirt/dark_brown/variant_5,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "blu" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/west)
@@ -26028,7 +25976,7 @@
 /area/tyrargo/outdoors/outskirts_road/west)
 "blJ" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/almayer/black2/southwest,
 /area/tyrargo/indoors/bunker/central_south)
 "blK" = (
@@ -26361,7 +26309,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/landing_zone_1)
 "bmo" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/sentry_landmark/lz_1/bottom_right,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/tyrargo/landing_zone_1)
@@ -26665,7 +26613,7 @@
 /obj/structure/barricade/deployable{
 	dir = 8
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
@@ -26806,7 +26754,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bnf" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/weapon/gun/rifle/m41a{
 	current_mag = null
 	},
@@ -27278,8 +27226,8 @@
 	pixel_x = -1;
 	pixel_y = 14
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/west)
 "bog" = (
@@ -27305,7 +27253,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/power_substation_outskirt)
 "boj" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/west)
 "bok" = (
@@ -27325,7 +27273,7 @@
 	pixel_x = -5;
 	pixel_y = -4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/west)
 "bom" = (
@@ -27496,7 +27444,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts_road/east)
 "boF" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
@@ -27649,8 +27597,8 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "boT" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 6
 	},
@@ -27804,7 +27752,7 @@
 	pixel_x = -7;
 	pixel_y = -1
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/central)
 "bpp" = (
@@ -27848,7 +27796,7 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/central)
 "bpv" = (
@@ -27864,7 +27812,7 @@
 	pixel_x = -7;
 	pixel_y = -1
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
 	},
@@ -27959,8 +27907,8 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -8
 	},
@@ -28161,8 +28109,8 @@
 	name = "dirt"
 	},
 /obj/effect/decal/grass_overlay/grass1/dark,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/central)
 "bpU" = (
@@ -28653,7 +28601,7 @@
 	dir = 4;
 	pixel_x = -5
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 10
@@ -28837,7 +28785,7 @@
 	icon_state = "sandbag_0";
 	pixel_y = -6
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/prop/colony/usedbandage{
 	dir = 5;
 	pixel_y = 8
@@ -28896,7 +28844,7 @@
 /area/tyrargo/landing_zone_1/north_trench)
 "brw" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
 	name = "dirt"
@@ -28905,7 +28853,7 @@
 /area/tyrargo/outdoors/outskirts/east_trench)
 "brx" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/trash/cigbutt{
 	pixel_y = 8
 	},
@@ -28934,7 +28882,7 @@
 /area/tyrargo/outdoors/outskirts/east_trench)
 "brA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
@@ -28968,12 +28916,12 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "brE" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "brF" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/largecrate/random/mini/ammo{
 	pixel_y = 5;
 	pixel_x = 5
@@ -29082,21 +29030,21 @@
 	dir = 1;
 	anchored = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/prop/colony/usedbandage{
 	dir = 9
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "brT" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards/boards_2{
 	dir = 4;
 	layer = 2.1;
@@ -29125,18 +29073,18 @@
 	dir = 1;
 	anchored = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "brW" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/trash/cigbutt{
 	pixel_x = -10;
 	pixel_y = 7
@@ -29171,11 +29119,11 @@
 	dir = 1;
 	anchored = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "bsa" = (
@@ -29186,7 +29134,7 @@
 	layer = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "bsb" = (
@@ -29251,13 +29199,13 @@
 	dir = 1;
 	anchored = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "bsg" = (
@@ -29267,7 +29215,7 @@
 	pixel_y = 4;
 	layer = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "bsh" = (
@@ -31282,7 +31230,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "bxS" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
 	},
@@ -31799,7 +31747,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bze" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2/east_trench)
 "bzf" = (
@@ -31846,12 +31794,12 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "bzm" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "bzn" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "bzo" = (
@@ -31864,8 +31812,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "bzp" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/platform/stone/tyrargo/north,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
@@ -31873,7 +31821,7 @@
 /turf/open/gm/dirt/dark_brown/variant_1,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bzq" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bzr" = (
@@ -31965,9 +31913,9 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/west)
 "bzB" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "bzC" = (
@@ -34156,8 +34104,8 @@
 /turf/closed/wall/strata_ice/forest/rock,
 /area/tyrargo/outdoors/outskirts_road/east)
 "bEr" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "bEs" = (
@@ -34954,7 +34902,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/east)
 "bGb" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
@@ -35734,7 +35682,7 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/west)
 "bHK" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/central)
 "bHL" = (
@@ -35838,9 +35786,9 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/west)
 "bIa" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
 	},
@@ -36051,7 +35999,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/tyrargo/landing_zone_1)
 "bII" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/landing_zone_1)
 "bIJ" = (
@@ -36103,7 +36051,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/central)
 "bIR" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "bIS" = (
@@ -36209,7 +36157,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/landing_zone_1)
 "bJd" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/map_item,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1)
@@ -36250,7 +36198,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/west)
 "bJf" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/west)
 "bJg" = (
@@ -36278,7 +36226,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "bJj" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 4
 	},
@@ -36335,7 +36283,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/tyrargo/outdoors/outskirts/central)
 "bJr" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/east)
 "bJs" = (
@@ -36445,7 +36393,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/colony_exterior/north_east)
 "bJC" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "bJD" = (
@@ -36855,7 +36803,7 @@
 	},
 /area/tyrargo/outdoors/outskirts/central)
 "bKJ" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/landing_zone_1)
 "bKK" = (
@@ -36881,10 +36829,10 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/tyrargo/outdoors/outskirts/central)
 "bKP" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/almayer/black2/west,
 /area/tyrargo/indoors/bunker/north_south)
 "bKQ" = (
@@ -36958,8 +36906,8 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/landing_zone_1)
 "bKZ" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -5;
 	pixel_y = 16
@@ -36992,11 +36940,11 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "bLe" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/stack/medical/ointment/random_amount{
 	pixel_x = 6;
 	pixel_y = 7
@@ -37060,8 +37008,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "bLo" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -37310,9 +37258,9 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/east)
 "bMf" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "bMg" = (
@@ -37530,7 +37478,7 @@
 	dir = 8;
 	icon_state = "sandbag_0"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bMO" = (
@@ -37599,7 +37547,7 @@
 	dir = 8;
 	pixel_x = 7
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bMY" = (
@@ -37609,7 +37557,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "bMZ" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bNa" = (
@@ -37656,7 +37604,7 @@
 /area/tyrargo/outdoors/outskirts/central)
 "bNj" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bNk" = (
@@ -38161,8 +38109,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "bOI" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/machinery/light/small{
 	dir = 8;
 	pixel_y = -15
@@ -38473,8 +38421,8 @@
 /turf/open/floor/prison/cell_stripe/east,
 /area/tyrargo/indoors/bunker/north)
 "bPu" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
@@ -38551,14 +38499,14 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "bPE" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/ammo_spawn/vp78_ammo{
 	spawn_chance = 80
 	},
@@ -38602,8 +38550,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/landing_zone_1)
 "bPM" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/landing_zone_1)
 "bPN" = (
@@ -39442,7 +39390,7 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "bRT" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "bRU" = (
@@ -39463,16 +39411,16 @@
 /area/tyrargo/landing_zone_1/north_trench)
 "bRW" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_1/north_trench)
 "bRX" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "bRY" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "bRZ" = (
@@ -39519,7 +39467,7 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "bSe" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "bSf" = (
@@ -40409,9 +40357,9 @@
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bUJ" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bUK" = (
@@ -40424,7 +40372,7 @@
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bUM" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/prop/colony/used_flare,
 /obj/effect/decal/warning_stripes{
 	icon_state = "cargo"
@@ -40450,8 +40398,8 @@
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bUS" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bUT" = (
@@ -40486,7 +40434,7 @@
 /turf/open/floor/corsat/blue/east,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bVa" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bVb" = (
@@ -40731,7 +40679,7 @@
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bVY" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bVZ" = (
@@ -40777,8 +40725,8 @@
 /area/tyrargo/indoors/bar/upper)
 "bWg" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bWh" = (
@@ -40843,8 +40791,8 @@
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bWp" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/red/north,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bWq" = (
@@ -41305,12 +41253,12 @@
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXD" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXE" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXF" = (
@@ -41335,12 +41283,12 @@
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXI" = (
 /obj/effect/decal/cleanable/generic,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXJ" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXK" = (
@@ -41357,9 +41305,9 @@
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXL" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXM" = (
@@ -41367,14 +41315,14 @@
 	color = "#140400";
 	name = "dirt"
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXN" = (
 /obj/effect/decal/cleanable/generic,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXO" = (
@@ -41499,7 +41447,7 @@
 /turf/open/floor/corsat/purplecorner/north,
 /area/tyrargo/underground/bunker/south)
 "bYf" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/corpsespawner/tyrargo/us_army_medic,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
@@ -41531,7 +41479,7 @@
 "bYi" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
 	pixel_x = 1;
@@ -41559,15 +41507,15 @@
 /area/tyrargo/underground/bunker/south)
 "bYm" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/south)
 "bYn" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/prop/colony/usedbandage{
 	dir = 5
 	},
@@ -41576,10 +41524,10 @@
 /area/tyrargo/indoors/apartment/north_upper)
 "bYo" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
 	pixel_y = 2
@@ -41851,12 +41799,12 @@
 /area/tyrargo/underground/bunker/south)
 "bYZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/south)
 "bZa" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/red,
 /area/tyrargo/underground/bunker/south)
 "bZb" = (
@@ -41869,16 +41817,16 @@
 /area/tyrargo/underground/bunker/south)
 "bZd" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/south)
 "bZe" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/bunker/south)
 "bZf" = (
@@ -42077,7 +42025,7 @@
 /area/tyrargo/underground/bunker/south)
 "bZK" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/bunker/south)
 "bZL" = (
@@ -42661,13 +42609,13 @@
 /area/tyrargo/underground/bunker/north)
 "cbx" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/redcorner,
 /area/tyrargo/underground/bunker/north)
 "cby" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/red,
 /area/tyrargo/underground/bunker/north)
 "cbz" = (
@@ -42720,14 +42668,14 @@
 /area/tyrargo/underground/bunker/north)
 "cbI" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/north)
 "cbJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/bunker/north)
 "cbK" = (
@@ -42787,13 +42735,13 @@
 "cbP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/north)
 "cbQ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/redcorner/east,
 /area/tyrargo/underground/bunker/north)
 "cbR" = (
@@ -43441,8 +43389,8 @@
 /turf/open/floor/corsat/box,
 /area/tyrargo/underground/bunker/north)
 "cdA" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/north)
 "cdB" = (
@@ -43513,7 +43461,7 @@
 /turf/open/floor/corsat/redcorner,
 /area/tyrargo/underground/bunker/north)
 "cdK" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/red,
 /area/tyrargo/underground/bunker/north)
 "cdL" = (
@@ -43561,13 +43509,13 @@
 /turf/open/floor/hybrisa/carpet/carpetfadedred,
 /area/tyrargo/indoors/apartment/south_ground)
 "cdS" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/red/west,
 /area/tyrargo/underground/bunker/north)
 "cdT" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/north)
 "cdU" = (
@@ -43617,7 +43565,7 @@
 /area/tyrargo/underground/bunker/north)
 "ceb" = (
 /obj/effect/decal/cleanable/generic,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/redcorner/east,
 /area/tyrargo/underground/bunker/north)
@@ -43661,7 +43609,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/underground/bunker/north)
 "cej" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/red/northwest,
 /area/tyrargo/underground/bunker/north)
 "cek" = (
@@ -46007,7 +45955,7 @@
 /turf/open/floor/hybrisa/tile/supermartfloor2,
 /area/tyrargo/oob)
 "cmd" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison,
 /area/tyrargo/indoors/engineering/ground)
 "cme" = (
@@ -46271,7 +46219,7 @@
 	},
 /area/tyrargo/indoors/bunker/central)
 "cnn" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/stairs/perspective{
 	dir = 9;
 	icon_state = "p_stair_full"
@@ -47094,7 +47042,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "cqe" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "cqf" = (
@@ -47198,7 +47146,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/tyrargo/oob/outdoors)
 "cqu" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/reagent_container/hypospray/autoinjector/tramadol/random_amount,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
@@ -47700,7 +47648,7 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north)
 "csb" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_streets/north)
@@ -47880,7 +47828,7 @@
 /area/tyrargo/outdoors/colony_streets/north_east)
 "csG" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "csH" = (
@@ -48348,7 +48296,7 @@
 /area/tyrargo/outdoors/colony_streets/north)
 "cum" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north)
 "cun" = (
@@ -48423,7 +48371,7 @@
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/outdoors/colony_exterior/north_west)
 "cuz" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "cuA" = (
@@ -48556,7 +48504,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob)
 "cuW" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/survivor_spawner,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/fsb_north)
@@ -48802,7 +48750,7 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north)
 "cvP" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat/marked,
 /area/tyrargo/indoors/admin/ground)
 "cvQ" = (
@@ -48881,7 +48829,7 @@
 /turf/open/floor/corsat/marked,
 /area/tyrargo/indoors/gararge/ground)
 "cwc" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_exterior/north)
 "cwd" = (
@@ -48904,7 +48852,7 @@
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "cwg" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "cwh" = (
@@ -50190,13 +50138,7 @@
 /turf/open/floor/prison/blue/west,
 /area/tyrargo/indoors/sewer_treatment/upper)
 "cAA" = (
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "shell_10_1";
-	name = "spent casings";
-	dir = 1
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /obj/item/weapon/gun/shotgun/pump/m37a,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
@@ -50233,14 +50175,7 @@
 	icon_state = "trash_4";
 	layer = 3.2
 	},
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_y = -13
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/apartment/south_ground)
 "cAH" = (
@@ -50562,7 +50497,7 @@
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "cCk" = (
-/obj/item/ammo_casing/bullet{
+/obj/effect/decal/cleanable/ammo_casing/cartridge{
 	icon_state = "cartridge_1_1";
 	pixel_y = -3;
 	dir = 10
@@ -51702,11 +51637,11 @@
 /area/tyrargo/indoors/admin/upper)
 "cHi" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/upper)
 "cHj" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/upper)
 "cHk" = (
@@ -53408,7 +53343,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/landing_zone_2/road)
 "cLt" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 1
 	},
@@ -55437,8 +55372,8 @@
 	color = "#140400";
 	name = "dirt"
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
@@ -55478,7 +55413,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/generic,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
@@ -56152,7 +56087,7 @@
 "cTF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison,
 /area/tyrargo/indoors/mall/upper)
 "cTG" = (
@@ -56182,8 +56117,8 @@
 /area/tyrargo/indoors/mall/upper)
 "cTL" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0"
@@ -56206,7 +56141,7 @@
 /area/tyrargo/indoors/mall/upper)
 "cTQ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison,
 /area/tyrargo/indoors/mall/upper)
 "cTR" = (
@@ -56601,12 +56536,12 @@
 /turf/open/floor/plating,
 /area/tyrargo/indoors/mall/upper)
 "cUZ" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/mall/upper)
 "cVa" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/prop/colony/usedbandage{
 	dir = 5
 	},
@@ -56675,7 +56610,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/mall/upper)
 "cVk" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_17";
 	pixel_y = 12
@@ -56683,23 +56618,23 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/mall/upper)
 "cVl" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/mall/upper)
 "cVm" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/mall/upper)
 "cVn" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/mall/upper)
 "cVo" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/mall/upper)
 "cVp" = (
@@ -56768,9 +56703,9 @@
 	anchored = 1;
 	layer = 4.1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg2,
 /area/tyrargo/indoors/mall/upper)
 "cVv" = (
@@ -56895,10 +56830,10 @@
 	pixel_x = -13;
 	pixel_y = 9
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "cVU" = (
@@ -57302,8 +57237,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/east)
 "cXf" = (
-/obj/item/ammo_casing/shell,
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "cXg" = (
@@ -57418,26 +57353,26 @@
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/tyrargo/outdoors/outskirts/river)
 "cXq" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/east)
 "cXr" = (
 /obj/item/weapon/gun/rifle/lmg{
 	current_mag = null
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 10
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/east)
 "cXs" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts_road/east)
 "cXt" = (
@@ -57471,7 +57406,7 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts_road/east)
 "cXx" = (
@@ -57507,7 +57442,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "cXB" = (
-/obj/item/ammo_casing/bullet{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	layer = 3.1
 	},
 /obj/structure/blocker/invisible_wall,
@@ -57519,16 +57454,16 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "cXC" = (
-/obj/item/ammo_casing/bullet{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	layer = 3.1
 	},
-/obj/item/ammo_casing/bullet{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	layer = 3.1
 	},
-/obj/item/ammo_casing/bullet{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	layer = 3.1
 	},
-/obj/item/ammo_casing/bullet{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	layer = 3.1
 	},
 /obj/structure/blocker/invisible_wall,
@@ -57545,10 +57480,10 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/east)
 "cXF" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -59469,7 +59404,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/army_staging)
 "dcF" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /obj/item/prop/colony/used_flare,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/tyrargo/outdoors/outskirts/central)
@@ -59801,7 +59736,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/landing_zone_1)
 "ddy" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
@@ -60231,7 +60166,7 @@
 /turf/open/hybrisa/street/sidewalk,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "deG" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalk,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "deH" = (
@@ -60263,7 +60198,7 @@
 /area/tyrargo/outdoors/colony_streets/south_west)
 "deL" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "deM" = (
@@ -60285,7 +60220,7 @@
 	pixel_y = -8;
 	pixel_x = -6
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "deS" = (
@@ -60529,9 +60464,9 @@
 	pixel_x = -13;
 	pixel_y = 9
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/tyrargo/outdoors/colony_streets/south_west)
@@ -60588,10 +60523,10 @@
 /turf/open/hybrisa/street/sidewalk/west,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "dgf" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "dgg" = (
@@ -60641,7 +60576,7 @@
 /turf/open/hybrisa/street/sidewalk/northwest,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "dgp" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "dgq" = (
@@ -60857,7 +60792,7 @@
 /area/tyrargo/outdoors/colony_streets/south_east)
 "dhi" = (
 /obj/item/prop/colony/used_flare,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "dhj" = (
@@ -60935,15 +60870,15 @@
 	pixel_x = 12;
 	pixel_y = 8
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "dhr" = (
 /obj/effect/decal/hybrisa/road/lines3,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/closet/crate/science,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/hybrisa/street/asphalt,
@@ -61022,7 +60957,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "dhD" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/doubleroad/lines3{
 	pixel_y = 13
 	},
@@ -61604,7 +61539,7 @@
 /area/tyrargo/outdoors/colony_streets/east)
 "djg" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
@@ -61713,7 +61648,7 @@
 /turf/open/floor/almayer_hull,
 /area/tyrargo/indoors/engineering/upper/external)
 "djw" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/stairs/up,
 /turf/open/floor/corsat,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
@@ -62525,14 +62460,14 @@
 /area/tyrargo/outdoors/colony_streets/south_east)
 "dlF" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/traffic_signal/traffic_signal_1,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/east)
 "dlG" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/east)
 "dlH" = (
@@ -62936,7 +62871,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/landing_zone_1)
 "dmB" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "dmC" = (
@@ -62997,8 +62932,8 @@
 /obj/structure/prop/tyrargo/boards/boards_2{
 	layer = 2.1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/military_alert_sign{
 	pixel_y = -32
 	},
@@ -63009,7 +62944,7 @@
 /turf/open/hybrisa/street/sidewalk/north,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "dmI" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "dmK" = (
@@ -63182,12 +63117,12 @@
 	icon_state = "fullgrass_1";
 	layer = 2.9
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "dnm" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
 	name = "dirt"
@@ -63869,7 +63804,7 @@
 /area/tyrargo/outdoors/colony_streets/north_east)
 "dpl" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/tool/warning_cone{
 	pixel_y = 12;
 	pixel_x = -2
@@ -63894,7 +63829,7 @@
 /area/tyrargo/outdoors/colony_streets/north_west)
 "dpo" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/military_alert_sign/alt{
 	pixel_y = 31
 	},
@@ -70720,13 +70655,13 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/underground/apartment)
 "dGu" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/almayer/black2/west,
 /area/tyrargo/indoors/bunker/central)
@@ -76774,7 +76709,7 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/tyrargo/underground/sewer/north)
 "dVs" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/tyrargo/landing_zone_2)
 "dVt" = (
@@ -77461,7 +77396,7 @@
 	pixel_x = -3
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
@@ -77937,13 +77872,13 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/outskirts_road/central)
 "dYs" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/central)
 "dYt" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/trash/cigbutt{
 	pixel_x = -6;
 	pixel_y = 7
@@ -78256,7 +78191,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "dZc" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
@@ -78401,8 +78336,8 @@
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/tyrargo/outdoors/outskirts/central)
 "dZt" = (
@@ -78678,8 +78613,8 @@
 /area/tyrargo/indoors/power_substation_outskirt)
 "dZT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/outskirts_road/central)
 "dZU" = (
@@ -78688,7 +78623,7 @@
 	icon_state = "stop_decal5";
 	pixel_x = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/outskirts_road/central)
 "dZV" = (
@@ -78876,7 +78811,7 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "ean" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 4;
 	pixel_x = -2;
@@ -78903,7 +78838,7 @@
 	icon_state = "stop_decal5";
 	pixel_x = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 4;
 	pixel_x = -2;
@@ -79194,8 +79129,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
 "eaZ" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/generic,
 /obj/item/trash/cigbutt{
 	pixel_x = -1;
@@ -79204,7 +79139,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
 "eba" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/trash/cigbutt{
 	pixel_x = -13;
 	pixel_y = 9
@@ -79274,7 +79209,7 @@
 	icon_state = "sandbag_0";
 	pixel_y = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards/boards_2{
 	layer = 2.1;
 	pixel_x = 2;
@@ -79438,7 +79373,7 @@
 	pixel_y = 5;
 	pixel_x = 6
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/central)
 "eby" = (
@@ -81977,8 +81912,8 @@
 	icon_state = "trash_12";
 	pixel_y = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/traffic_signal/traffic_signal_1{
 	pixel_y = 4
 	},
@@ -81992,7 +81927,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/indoors/museum_storage/ground)
 "eii" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/closet/crate/ammo{
 	name = "soft-point munitions crate";
 	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
@@ -82486,12 +82421,12 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "ejN" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "ejO" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "ejP" = (
@@ -83450,8 +83385,8 @@
 /area/tyrargo/underground/oob_area)
 "emM" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat,
 /area/tyrargo/underground/oob_area)
 "emN" = (
@@ -83470,14 +83405,14 @@
 /area/tyrargo/underground/oob_area)
 "emQ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat,
 /area/tyrargo/underground/oob_area)
 "emR" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/corsat,
 /area/tyrargo/underground/oob_area)
 "emS" = (
@@ -84234,7 +84169,7 @@
 /turf/open/floor/corsat/blue,
 /area/tyrargo/underground/oob_area)
 "epi" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards{
 	dir = 1;
 	pixel_x = 10;
@@ -87495,8 +87430,8 @@
 /turf/open/gm/dirt/dark_brown/variant_3,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "exe" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
 	},
@@ -87745,11 +87680,11 @@
 /turf/open/gm/dirt/dark_brown/variant_5,
 /area/tyrargo/landing_zone_2)
 "eyx" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/gm/dirt/dark_brown/variant_1,
 /area/tyrargo/landing_zone_2)
 "eyy" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
 	pixel_x = -3;
@@ -88585,7 +88520,7 @@
 /turf/open/gm/dirt/dark_brown,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "eAD" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/platform_decoration/stone/tyrargo/east,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
@@ -90288,7 +90223,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "eFb" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/platform/stone/tyrargo/west,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 10
@@ -90296,15 +90231,15 @@
 /turf/open/gm/dirt/dark_brown/variant_2,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "eFc" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 4
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "eFd" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/platform/stone/tyrargo/west,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
@@ -90907,10 +90842,10 @@
 "eGH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/grass_overlay/grass1/dark,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/tyrargo/oob/outdoors)
 "eGI" = (
@@ -91574,7 +91509,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/west)
 "eIv" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "eIw" = (
@@ -91663,8 +91598,8 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/outdoors/outskirts/east)
 "eII" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/flora/bush/ausbushes/grassybush{
 	icon_state = "fullgrass_1";
 	layer = 2.9
@@ -92291,7 +92226,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/central)
 "eKA" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 6
 	},
@@ -92746,7 +92681,7 @@
 /area/tyrargo/indoors/admin/upper/external)
 "eLO" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/ammo_spawn/m41a_random_spawn{
 	spawn_chance = 20
 	},
@@ -93055,7 +92990,7 @@
 /turf/open/floor/almayer_hull,
 /area/tyrargo/indoors/gararge/upper/external)
 "eMK" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/cigbutt{
 	pixel_x = -3;
@@ -93076,7 +93011,7 @@
 /turf/open/gm/dirt/dark_brown,
 /area/tyrargo/outdoors/outskirts/central)
 "eMM" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/ammo_spawn/m41a_random_spawn{
 	spawn_chance = 60
 	},
@@ -93685,7 +93620,7 @@
 /turf/closed/wall/strata_ice/forest/rock,
 /area/tyrargo/oob)
 "eOq" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/flora/tree/tyrargo/tree_2{
 	pixel_x = -14;
 	pixel_y = 3;
@@ -93726,7 +93661,7 @@
 /turf/closed/wall/strata_ice/forest,
 /area/tyrargo/oob)
 "eOu" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/flora/tree/tyrargo/tree_2{
 	pixel_x = -14;
 	pixel_y = 3;
@@ -94220,7 +94155,7 @@
 /turf/closed/wall/strata_ice/forest/rock,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "ePM" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
@@ -95087,7 +95022,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/mall/upper)
 "eSY" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison,
 /area/tyrargo/indoors/mall/upper)
 "eSZ" = (
@@ -95429,7 +95364,7 @@
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_exterior/north_east)
 "eUl" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
@@ -95644,7 +95579,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "eUQ" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/tyrargo/outdoors/outskirts/central)
 "eUR" = (
@@ -95778,7 +95713,7 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalk,
 /area/tyrargo/oob/outdoors)
 "eVq" = (
@@ -96424,12 +96359,12 @@
 /turf/open/hybrisa/street/sidewalk/northwest,
 /area/tyrargo/oob/outdoors)
 "eXh" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/cement2,
 /area/tyrargo/oob/outdoors)
 "eXi" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/cement1,
 /area/tyrargo/oob/outdoors)
 "eXj" = (
@@ -96463,9 +96398,9 @@
 /turf/open/hybrisa/street/sidewalk,
 /area/tyrargo/oob/outdoors)
 "eXm" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalk,
 /area/tyrargo/oob/outdoors)
 "eXn" = (
@@ -96492,7 +96427,7 @@
 /turf/open/hybrisa/street/sidewalk/north,
 /area/tyrargo/oob/outdoors)
 "eXp" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/tyrargo/oob/outdoors)
 "eXq" = (
@@ -96538,7 +96473,7 @@
 	icon_state = "sandbag_0";
 	pixel_y = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/oob/outdoors)
 "eXw" = (
@@ -96895,8 +96830,8 @@
 /obj/item/trash/cigbutt{
 	pixel_y = 8
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/tyrargo/oob/outdoors)
 "eYp" = (
@@ -96938,8 +96873,8 @@
 "eYt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalk,
 /area/tyrargo/oob/outdoors)
 "eYu" = (
@@ -96996,9 +96931,9 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/tyrargo/oob/outdoors)
 "eYC" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/tyrargo/oob/outdoors)
 "eYD" = (
@@ -97006,7 +96941,7 @@
 /obj/item/trash/cigbutt{
 	pixel_y = 8
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalk,
 /area/tyrargo/oob/outdoors)
 "eYE" = (
@@ -97629,7 +97564,7 @@
 /turf/open/floor/almayer_hull/outerhull_dir_alt/northeast,
 /area/tyrargo/oob/outdoors)
 "faO" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer_hull,
 /area/tyrargo/oob/outdoors)
@@ -97663,17 +97598,17 @@
 	dir = 8;
 	pixel_x = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/almayer_hull/outerhull_dir/west,
 /area/tyrargo/oob/outdoors)
 "faR" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
@@ -97733,12 +97668,12 @@
 /turf/open/floor/almayer_hull/outerhull_dir_alt/southeast,
 /area/tyrargo/oob/outdoors)
 "faX" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer_hull,
 /area/tyrargo/oob/outdoors)
@@ -97781,9 +97716,9 @@
 	anchored = 1;
 	dir = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/barricade/metal/plasteel{
 	dir = 1;
 	health = 50000;
@@ -98016,13 +97951,13 @@
 /turf/open/floor/prison/darkpurple2,
 /area/tyrargo/indoors/mall/upper)
 "fcd" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/almayer/black2/west,
 /area/tyrargo/indoors/bunker/central_south)
 "fce" = (
@@ -98417,7 +98352,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
 "fdA" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/ammo_magazine/m56d{
 	pixel_x = -9;
 	pixel_y = -3;
@@ -101604,7 +101539,7 @@
 /turf/open/floor/plating/wood_broken6,
 /area/tyrargo/landing_zone_1/ceiling)
 "frV" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /obj/item/shard,
 /obj/item/device/binoculars/range/designator,
@@ -101837,7 +101772,7 @@
 	dir = 8;
 	icon_state = "sandbag_0"
 	},
-/obj/item/ammo_casing/bullet{
+/obj/effect/decal/cleanable/ammo_casing/cartridge{
 	icon_state = "cartridge_1_1";
 	pixel_y = -3;
 	dir = 10;
@@ -101902,8 +101837,8 @@
 /turf/open/floor/hybrisa/wood/redwood,
 /area/tyrargo/indoors/apartment/south_ground)
 "fZz" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -8
 	},
@@ -101926,7 +101861,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/underground/sewer/south)
 "gaY" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/engineering/ground)
@@ -102179,7 +102114,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/gibspawner/xeno,
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement_sunbleached,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "gEt" = (
@@ -102236,15 +102171,7 @@
 /area/tyrargo/indoors/apartment/south_upper)
 "gGY" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_y = -14;
-	layer = 3.01
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "gHt" = (
@@ -102562,7 +102489,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/tyrargo/outdoors/walkway_access/apart_gararge)
 "hte" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/oob)
 "htI" = (
@@ -102706,12 +102633,12 @@
 	icon_state = "sandbag_0";
 	pixel_y = -6
 	},
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_upper)
 "hLy" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/prop/colony/usedbandage{
 	dir = 4;
 	pixel_y = -5;
@@ -102926,7 +102853,7 @@
 /turf/open/floor/almayer/plating_striped/west,
 /area/tyrargo/indoors/comms/ground)
 "iqA" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
@@ -103121,7 +103048,7 @@
 /turf/open/floor/hybrisa/wood/greywood,
 /area/tyrargo/indoors/apartment/north_ground)
 "iOu" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/stack/medical/splint/random_amount{
 	pixel_y = -2
 	},
@@ -103286,7 +103213,7 @@
 /area/tyrargo/indoors/apartment/south_upper)
 "jiw" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/tyrargo/indoors/apartment/south_ground)
 "jjm" = (
@@ -103688,9 +103615,9 @@
 	pixel_y = 20;
 	anchored = 1
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
 	pixel_y = -6
@@ -103751,15 +103678,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "kvK" = (
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_y = -14;
-	layer = 3.01
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/apartment/south_upper)
 "kvX" = (
@@ -104084,8 +104003,8 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/tyrargo/indoors/admin/ground)
 "lcu" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
 	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
@@ -104112,9 +104031,9 @@
 /area/tyrargo/outdoors/colony_streets/north_west)
 "leh" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/shell,
-/obj/item/ammo_casing/shell,
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/hybrisa/street/cement3,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "lgd" = (
@@ -104164,8 +104083,8 @@
 /turf/open/floor/prison/yellow/west,
 /area/tyrargo/indoors/engineering/upper)
 "lnt" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
@@ -104313,14 +104232,7 @@
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/indoors/apartment/north_ground)
 "lNE" = (
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	pixel_x = 10;
-	dir = 6
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /turf/open/floor/hybrisa/metal/zbrownfloor_corner/west,
 /area/tyrargo/indoors/engineering/ground)
 "lNS" = (
@@ -104374,14 +104286,7 @@
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 4
 	},
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_x = 5
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
@@ -104616,7 +104521,7 @@
 	layer = 2.99;
 	pixel_x = 7
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
@@ -104869,7 +104774,7 @@
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/tyrargo/indoors/bar/ground)
 "mKL" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards{
 	dir = 8;
 	pixel_x = 12;
@@ -104893,7 +104798,7 @@
 /obj/item/weapon/gun/pistol/m1911{
 	current_mag = null
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement/cement1,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "mOU" = (
@@ -104990,7 +104895,7 @@
 /turf/open/floor/almayer_hull,
 /area/tyrargo/indoors/sewer_treatment/upper)
 "ncl" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = 7
 	},
@@ -105035,7 +104940,7 @@
 	dir = 8;
 	anchored = 1
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/west_trench)
 "new" = (
@@ -105085,7 +104990,7 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_ground)
 "njq" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
@@ -105344,8 +105249,8 @@
 /turf/open/floor/hybrisa/tile/tilewhitecheckered/biege,
 /area/tyrargo/indoors/apartment/south_ground)
 "nIP" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
@@ -105388,7 +105293,7 @@
 /turf/open/floor/plating/platingdmg3,
 /area/tyrargo/indoors/apartment/north_ground)
 "nKS" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/metal/zbrownfloor1/east,
 /area/tyrargo/indoors/engineering/ground)
 "nLj" = (
@@ -105446,7 +105351,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_1)
 "nTh" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/rock/black_ground{
 	dir = 5;
 	pixel_y = -11;
@@ -105545,7 +105450,7 @@
 	pixel_x = 5;
 	pixel_y = -3
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/west)
@@ -105590,11 +105495,11 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/tyrargo/outdoors/walkway_access/sewer_apart)
 "obm" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/black2,
 /area/tyrargo/indoors/bunker/central_south)
@@ -105747,7 +105652,7 @@
 /turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/tyrargo/indoors/apartment/south_upper)
 "omA" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
@@ -105929,15 +105834,7 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_upper)
 "oFM" = (
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_y = -14;
-	layer = 3.01
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /obj/effect/decal/hybrisa/road/lines2,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_west)
@@ -106085,16 +105982,8 @@
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "oPc" = (
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_x = 5;
-	pixel_y = 6
-	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/metal/zbrownfloor1/east,
 /area/tyrargo/indoors/engineering/ground)
 "oPK" = (
@@ -106214,7 +106103,7 @@
 	pixel_x = -2;
 	pixel_y = -7
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/closet/crate/ammo{
 	name = "heap munitions crate";
 	desc = "Crate filled with heap ammo. You know what to do with it.";
@@ -106438,15 +106327,7 @@
 	dir = 8;
 	icon_state = "sandbag_0"
 	},
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_x = 9;
-	pixel_y = -2
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /obj/structure/prop/tyrargo/boards{
 	dir = 1;
 	pixel_x = 1;
@@ -106491,7 +106372,7 @@
 /turf/open/floor/hybrisa/wood,
 /area/tyrargo/indoors/apartment/north_upper)
 "pET" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north)
@@ -106557,7 +106438,7 @@
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/apartment/south_ground)
 "pNW" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement/cement2,
 /area/tyrargo/outdoors/colony_streets/north)
 "pOc" = (
@@ -106623,8 +106504,8 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/south_ground)
 "qbN" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
 	name = "dirt"
@@ -106635,7 +106516,7 @@
 /turf/open/gm/dirt/dark_brown/variant_5/east,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "qcb" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_streets/north_west)
@@ -106656,7 +106537,7 @@
 /turf/open/shuttle/dropship/light_grey_bottom_left,
 /area/tyrargo/indoors/saipan)
 "qek" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_upper)
@@ -106716,7 +106597,7 @@
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/west)
 "qlM" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/east)
 "qng" = (
@@ -106773,15 +106654,9 @@
 /turf/open/floor/wood,
 /area/tyrargo/indoors/bar/ground)
 "qtr" = (
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6
-	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/ammo_magazine/rifle/lmg,
 /turf/open/floor/hybrisa/carpet/carpetpatternblue,
 /area/tyrargo/indoors/apartment/north_upper)
@@ -106988,7 +106863,7 @@
 	dir = 8;
 	icon_state = "sandbag_0"
 	},
-/obj/item/ammo_casing/bullet{
+/obj/effect/decal/cleanable/ammo_casing/cartridge{
 	icon_state = "cartridge_1_1";
 	pixel_y = -2;
 	dir = 10;
@@ -107104,7 +106979,7 @@
 	pixel_x = 5;
 	layer = 2.98
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
@@ -107122,7 +106997,7 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "rjp" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0;
 	pixel_x = 11;
@@ -107295,7 +107170,7 @@
 	layer = 2.1;
 	pixel_y = -9
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/cigbutt{
 	pixel_x = -3;
@@ -107318,7 +107193,7 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_upper)
 "rAQ" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
@@ -107346,7 +107221,7 @@
 	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "rCw" = (
@@ -107444,7 +107319,7 @@
 /turf/open/floor/prison/darkyellowcorners2,
 /area/tyrargo/indoors/engineering/ground)
 "rKe" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/sentry_landmark/lz_1/bottom_right,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/landing_zone_1)
@@ -107627,7 +107502,7 @@
 	pixel_y = -11
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/tyrargo/indoors/apartment/south_ground)
 "saN" = (
@@ -107686,10 +107561,10 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_ground)
 "sfx" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
 	icon_state = "sandbag_0"
@@ -107752,8 +107627,8 @@
 /turf/open/asphalt/cement/cement13,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "spk" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/gm/dirt/dark_brown/variant_5/south,
 /area/tyrargo/landing_zone_2)
 "spq" = (
@@ -107798,8 +107673,8 @@
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "swb" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/storage/box/mre,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
@@ -108010,7 +107885,7 @@
 	},
 /area/tyrargo/indoors/saipan)
 "sVu" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/closed/wall/r_wall/bunker,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
@@ -108041,7 +107916,7 @@
 /turf/open/floor/prison/darkbrown2/southeast,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "sYN" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards{
 	dir = 4;
 	pixel_y = 8;
@@ -108148,7 +108023,7 @@
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/apartment/south_upper)
 "tkl" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg3,
 /area/tyrargo/indoors/apartment/south_ground)
 "tkG" = (
@@ -108160,7 +108035,7 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/west_trench)
 "tkU" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "tlx" = (
@@ -108206,7 +108081,7 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "tnr" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
@@ -108215,7 +108090,7 @@
 /turf/open/floor/almayer/black2,
 /area/tyrargo/indoors/bunker/central_south)
 "tnG" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
@@ -108231,16 +108106,8 @@
 	dir = 8;
 	icon_state = "sandbag_0"
 	},
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	pixel_y = -10;
-	pixel_x = 8;
-	dir = 6
-	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
 	icon = 'icons/obj/items/weapons/guns/guns_by_map/jungle/hmg.dmi';
@@ -108514,7 +108381,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/tyrargo/outdoors/walkway_access/power_apart)
 "tMb" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
 	name = "dirt"
@@ -108548,8 +108415,8 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "tRc" = (
-/obj/item/ammo_casing/shell,
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /obj/item/weapon/gun/shotgun/pump/m37a,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/hybrisa/dirt,
@@ -108837,7 +108704,7 @@
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/indoors/engineering/ground)
 "uBU" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2)
 "uCB" = (
@@ -108881,7 +108748,7 @@
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
@@ -108925,7 +108792,7 @@
 	pixel_y = 4;
 	layer = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "uIv" = (
@@ -109191,9 +109058,9 @@
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/tyrargo/indoors/apartment/south_ground)
 "vhI" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards/boards_2{
 	dir = 4;
 	layer = 2.1;
@@ -109306,7 +109173,7 @@
 /turf/open/floor/hybrisa/carpet/rug_colorable/pink/west,
 /area/tyrargo/indoors/apartment/north_upper)
 "vrH" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
 	name = "dirt"
@@ -109433,15 +109300,9 @@
 /turf/open/asphalt/cement/cement9,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "vAp" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6
-	},
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /obj/item/stack/medical/bruise_pack/random_amount,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
@@ -109612,7 +109473,7 @@
 	icon_state = "trash_12";
 	pixel_y = 12
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/tyrargo/indoors/apartment/south_ground)
 "vLw" = (
@@ -109795,7 +109656,7 @@
 	dir = 4;
 	layer = 2.1
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
@@ -109873,15 +109734,7 @@
 /turf/open/asphalt/cement/cement9,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "wjb" = (
-/obj/item/prop{
-	desc = "Empty and useless now.";
-	icon = 'icons/obj/items/casings.dmi';
-	icon_state = "cartridge_10_1";
-	name = "spent casings";
-	dir = 6;
-	pixel_x = 5;
-	pixel_y = 6
-	},
+/obj/effect/decal/cleanable/ammo_casing/cartridge,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "wkt" = (
@@ -110035,9 +109888,9 @@
 	icon_state = "sandbag_0";
 	pixel_y = 4
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = -1;
 	pixel_y = -7
@@ -110065,7 +109918,7 @@
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "wEx" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
 	icon_state = "sandbag_0"
@@ -110140,7 +109993,7 @@
 /turf/open/floor/prison/ramptop,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "wKT" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards{
 	dir = 1;
 	pixel_x = 10;
@@ -110382,7 +110235,7 @@
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_y = -6
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/clothing/mask/gas/swat,
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/north_east)
@@ -110413,7 +110266,7 @@
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
@@ -110550,8 +110403,8 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/tyrargo/indoors/security/ground)
 "xBa" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/item/prop/colony/usedbandage{
 	dir = 5;
 	pixel_y = 13
@@ -110728,7 +110581,7 @@
 /area/tyrargo/indoors/apartment/north_ground)
 "xXy" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_12";
 	pixel_y = 12
@@ -110754,7 +110607,7 @@
 	dir = 8;
 	icon_state = "sandbag_0"
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards{
 	dir = 4;
 	pixel_x = 5;

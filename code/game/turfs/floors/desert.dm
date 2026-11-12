@@ -678,6 +678,7 @@
 /turf/open/gm/river/desert/tyrargo
 	icon_state = "seashallow"
 	water_type = /turf/open/gm/river/desert/tyrargo
+	icon_variants = list()
 
 /turf/open/gm/river/desert/tyrargo/no_slowdown
 	base_river_slowdown = 1

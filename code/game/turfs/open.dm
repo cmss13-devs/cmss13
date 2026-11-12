@@ -42,7 +42,8 @@
 
 	add_cleanable_overlays()
 
-	icon = icon_variants[variant_key]
+	if(length(icon_variants))
+		icon = icon_variants[variant_key]
 
 	var/alist/auto_turf_dirs = alist()
 	for(var/turf/open/auto_turf/auto_neighbor in orange(1, src))

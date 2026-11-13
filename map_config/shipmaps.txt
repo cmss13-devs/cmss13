@@ -17,5 +17,5 @@ map almayer
 endmap
 
 map golden_arrow
-	disabled
+	voteweight 0
 endmap

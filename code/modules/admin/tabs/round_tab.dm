@@ -144,6 +144,17 @@
 
 	selected_job = GLOB.RoleAuthority.roles_by_name[role]
 
+	if(isnull(selected_job.scaled) && SSticker.current_state == GAME_STATE_PREGAME)
+		if(tgui_alert(src, "[selected_job.title] is overriden.\nAmount of roundstart slots available: [selected_job.spawn_positions]\nDo you want to reset the override?", "Reset job slot override?", list("Yes", "No"), 30 SECONDS) == "Yes")
+			if(SSticker.current_state != GAME_STATE_PREGAME)
+				to_chat(usr, SPAN_BOLDNOTICE("Resetting the job's slots is no longer available because the game has started."))
+				return
+			selected_job.spawn_positions = initial(selected_job.spawn_positions)
+			selected_job.total_positions = initial(selected_job.total_positions)
+			selected_job.scaled = initial(selected_job.scaled)
+			message_admins("[key_name(usr)] reset the override of job slots for [selected_job.title].")
+			return
+
 	var/existing_positions = selected_job.total_positions
 	var/scaled_state = selected_job.scaled ? "Yes" : isnull(selected_job.scaled) ? "Forced False" : "No"
 	var/slot_number = tgui_input_number(src, "How many slots should [selected_job.title] have?\nCurrently taken slots: [selected_job.current_positions]\nTotal amount of slots opened this round: [selected_job.total_positions_so_far]\nAmount of roundstart slots available: [selected_job.spawn_positions]\nCurrently scaled? [scaled_state]", "Number of slots", existing_positions, min_value=-1)

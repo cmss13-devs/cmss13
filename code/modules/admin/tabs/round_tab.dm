@@ -144,8 +144,9 @@
 
 	selected_job = GLOB.RoleAuthority.roles_by_name[role]
 
-	var/existing_positions = selected_job.spawn_positions
-	var/slot_number = tgui_input_number(src, "How many slots should [selected_job.title] have?\nCurrently taken slots: [selected_job.current_positions]\nTotal amount of slots opened this round: [selected_job.total_positions_so_far]\nAmount of roundstart slots available: [selected_job.spawn_positions]", "Number", existing_positions, min_value=-1)
+	var/existing_positions = selected_job.total_positions
+	var/scaled_state = selected_job.scaled ? "Yes" : isnull(selected_job.scaled) ? "Forced False" : "No"
+	var/slot_number = tgui_input_number(src, "How many slots should [selected_job.title] have?\nCurrently taken slots: [selected_job.current_positions]\nTotal amount of slots opened this round: [selected_job.total_positions_so_far]\nAmount of roundstart slots available: [selected_job.spawn_positions]\nCurrently scaled? [scaled_state]", "Number of slots", existing_positions, min_value=-1)
 	if(isnull(slot_number))
 		return
 

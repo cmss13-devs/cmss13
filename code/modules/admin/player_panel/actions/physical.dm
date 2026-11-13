@@ -83,7 +83,7 @@
 	SSticker.mode.latejoin_update(job, -1)
 
 	//Handle job slot/tater cleanup.
-	GLOB.RoleAuthority.free_role(GLOB.RoleAuthority.roles_for_mode[target.job], TRUE)
+	GLOB.RoleAuthority.free_role(job, TRUE)
 
 	//Delete them from datacore.
 	var/target_ref = WEAKREF(target)

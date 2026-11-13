@@ -259,6 +259,24 @@
 	var/high_priority = override || get_high_priority_job()
 
 	switch(high_priority)
+		if(JOB_PLATOON_COMMANDER)
+			return /datum/equipment_preset/uscm_co/bug_hunt/equipped
+		if(JOB_OPERATIONS_OFFICER)
+			return /datum/equipment_preset/uscm_ship/xo/bug_hunt/equipped
+		if(JOB_PLATOON_SERGEANT)
+			return /datum/equipment_preset/uscm/leader/bug_hunt/equipped
+		if(JOB_RECON_SECTION_LEADER)
+			return /datum/equipment_preset/uscm/tl/bug_hunt/equipped
+		if(JOB_RECON_CORPSMAN)
+			return /datum/equipment_preset/uscm/medic/bug_hunt/equipped
+		if(JOB_RECON_ENGINEER)
+			return /datum/equipment_preset/uscm/engineer/bug_hunt/equipped
+		if(JOB_RECON_SMARTGUNNER)
+			return /datum/equipment_preset/uscm/sg/bug_hunt/equipped
+		if(JOB_RECON_RIFLEMAN)
+			return /datum/equipment_preset/uscm/pfc/bug_hunt/equipped
+		if(JOB_RECON_SYNTHETIC)
+			return /datum/equipment_preset/synth/uscm/bug_hunt/equipped
 		// USCM JOBS
 		if(JOB_SQUAD_MARINE)
 			return /datum/equipment_preset/uscm/private_equipped

@@ -22,6 +22,10 @@
 	name = "Command APC"
 	interior_id = "apc_command"
 
+/datum/map_template/interior/apc_bughunt
+	name = "Recon APC"
+	interior_id = "apc_bughunt"
+
 /datum/map_template/interior/apc_med
 	name = "Med APC"
 	interior_id = "apc_med"

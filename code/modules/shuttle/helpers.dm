@@ -153,6 +153,8 @@
 	for(var/obj/blocking_obj in door_turf)
 		if(blocking_obj == door)
 			continue
+		if(blocking_obj.anchored && !blocking_obj.density)
+			continue
 		if(istype(blocking_obj, /obj/effect/alien/weeds))
 			continue // No need to push
 

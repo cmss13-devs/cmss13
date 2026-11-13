@@ -1025,6 +1025,11 @@
 	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
 	shuttle_tag = DROPSHIP_ALAMO
 
+/obj/structure/machinery/computer/dropship_weapons/dropship1/small
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "cameras"
+	density = FALSE
+
 /obj/structure/machinery/computer/dropship_weapons/dropship2
 	name = "\improper 'Normandy' weapons controls"
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)

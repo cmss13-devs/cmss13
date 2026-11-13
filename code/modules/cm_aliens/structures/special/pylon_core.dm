@@ -255,7 +255,10 @@
 
 /obj/effect/alien/resin/special/pylon/core/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)
-	SSminimaps.add_marker(src, get_minimap_flag_for_faction(linked_hive?.hivenumber), image('icons/ui_icons/map_blips.dmi', null, "core"))
+	var/hud_flags = get_minimap_flag_for_faction(linked_hive?.hivenumber)
+	if(istype(SSticker.mode, /datum/game_mode/bug_hunt))
+		hud_flags |= MINIMAP_FLAG_USCM
+	SSminimaps.add_marker(src, hud_flags, image('icons/ui_icons/map_blips.dmi', null, "core"))
 
 /obj/effect/alien/resin/special/pylon/core/process()
 	. = ..()
@@ -306,7 +309,7 @@
 		last_healed = world.time + heal_interval
 
 /obj/effect/alien/resin/special/pylon/core/proc/can_spawn_larva()
-	if(linked_hive.hardcore)
+	if(!linked_hive.allow_core_larva_spawning || linked_hive.hardcore)
 		return FALSE
 
 	return linked_hive.stored_larva
@@ -414,7 +417,12 @@
 /obj/effect/alien/resin/special/pylon/core/Destroy()
 	if(linked_hive)
 		visible_message(SPAN_XENOHIGHDANGER("The resin roof withers away as \the [src] dies!"), max_distance = WEED_RANGE_CORE)
-		linked_hive.hive_location = null
+		if(linked_hive.hive_location == src)
+			linked_hive.hive_location = null
+			for(var/obj/effect/alien/resin/special/pylon/core/core in linked_hive.hive_structures[XENO_STRUCTURE_CORE])
+				if(core != src && !QDELETED(core))
+					linked_hive.set_hive_location(core)
+					break
 		if(world.time < XENOMORPH_PRE_SETUP_CUTOFF && !hardcore)
 			. = ..()
 			return

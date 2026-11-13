@@ -1,0 +1,554 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/open/void/vehicle,
+/area/space)
+"ab" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_1"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"ac" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_2"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"ad" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_3"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"ae" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_4"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"af" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "corner_small_L"
+	},
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_5"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"ag" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_6"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"ah" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_wheel_L"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"ai" = (
+/obj/structure/machinery/medical_pod/autodoc{
+	dir = 4
+	},
+/turf/open/shuttle/vehicle/dark_sterile_green_6,
+/area/interior/vehicle/apc/command)
+"aj" = (
+/obj/structure/machinery/autodoc_console/upgraded{
+	dir = 4
+	},
+/turf/open/shuttle/vehicle/med,
+/area/interior/vehicle/apc/command)
+"al" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "wall_6";
+	opacity = 0
+	},
+/turf/open/void/vehicle,
+/area/space)
+"am" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "wheel_back_top_1";
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/turf/open/void/vehicle,
+/area/space)
+"an" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_wheel_R";
+	opacity = 0
+	},
+/turf/open/void/vehicle,
+/area/space)
+"ap" = (
+/obj/structure/surface/table/reinforced/prison{
+	pixel_y = -3
+	},
+/obj/structure/machinery/computer/overwatch/groundside_operations{
+	dir = 4;
+	explo_proof = 1;
+	layer = 2.82;
+	pixel_y = -10
+	},
+/obj/structure/machinery/computer/overwatch/almayer{
+	dir = 8;
+	explo_proof = 1;
+	layer = 2.81;
+	pixel_y = 4
+	},
+/turf/open/shuttle/vehicle/floor_3_7,
+/area/interior/vehicle/apc/command)
+"aq" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/turf/open/shuttle/vehicle/floor_3_4,
+/area/interior/vehicle/apc/command)
+"ar" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "corner_inverse_L";
+	opacity = 0
+	},
+/turf/open/void/vehicle,
+/area/space)
+"as" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "corner_small_L";
+	opacity = 0
+	},
+/obj/structure/interior_wall/apc{
+	icon_state = "wheel_back_top_2";
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/turf/open/void/vehicle,
+/area/space)
+"at" = (
+/obj/structure/interior_wall/apc{
+	alpha = 100;
+	icon_state = "wall_door_front";
+	layer = 5.2;
+	pixel_y = 32
+	},
+/turf/open/void/vehicle,
+/area/space)
+"au" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	name = "Typhoon autopilot console";
+	shuttleId = "dropship_alamo";
+	can_change_shuttle = 0;
+	dir = 4;
+	pixel_y = 4
+	},
+/turf/open/shuttle/vehicle/floor_3_3,
+/area/interior/vehicle/apc/command)
+"av" = (
+/obj/structure/machinery/iv_drip{
+	anchored = 1;
+	pixel_x = -10;
+	pixel_y = 8
+	},
+/obj/structure/bed/roller,
+/turf/open/shuttle/vehicle/dark_sterile_green_6,
+/area/interior/vehicle/apc/command)
+"aw" = (
+/obj/structure/machinery/iv_drip{
+	anchored = 1;
+	pixel_x = 10;
+	pixel_y = 8
+	},
+/obj/structure/bed/roller,
+/turf/open/shuttle/vehicle/dark_sterile_green_8,
+/area/interior/vehicle/apc/command)
+"ax" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/turf/open/shuttle/vehicle/floor_3_10,
+/area/interior/vehicle/apc/command)
+"ay" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/surgical_tray,
+/obj/item/tank/anesthetic{
+	pixel_x = -7
+	},
+/turf/open/shuttle/vehicle/dark_sterile_green_11,
+/area/interior/vehicle/apc/command)
+"az" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "wall"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"aA" = (
+/obj/structure/interior_wall/apc{
+	alpha = 100;
+	icon_state = "door_front";
+	layer = 5.2;
+	pixel_y = 32
+	},
+/turf/open/void/vehicle,
+/area/space)
+"aB" = (
+/turf/open/shuttle/vehicle/floor_3_4,
+/area/interior/vehicle/apc/command)
+"aC" = (
+/turf/open/shuttle/vehicle/floor_3_9,
+/area/interior/vehicle/apc/command)
+"aF" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "door_back"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"aG" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "front_wheel_L";
+	opacity = 0
+	},
+/turf/open/void/vehicle,
+/area/space)
+"aH" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/operating,
+/turf/open/shuttle/vehicle/dark_sterile_green_5,
+/area/interior/vehicle/apc/command)
+"aI" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/obj/effect/landmark/interior/spawn/telephone{
+	pixel_x = -9;
+	pixel_y = 30
+	},
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	pixel_x = -21;
+	pixel_y = 24
+	},
+/turf/open/shuttle/vehicle/floor_3_8,
+/area/interior/vehicle/apc/command)
+"aJ" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/recharger{
+	pixel_x = -5
+	},
+/obj/item/device/defibrillator,
+/turf/open/shuttle/vehicle/dark_sterile_green_14,
+/area/interior/vehicle/apc/command)
+"aK" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "corner_inverse_R";
+	opacity = 0
+	},
+/turf/open/void/vehicle,
+/area/space)
+"aL" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "corner_small_R";
+	opacity = 0
+	},
+/obj/structure/interior_wall/apc{
+	icon_state = "wheel_front_top_2";
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/turf/open/void/vehicle,
+/area/space)
+"aM" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "front_wheel_R"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"aN" = (
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor{
+	dir = 4
+	},
+/turf/open/shuttle/vehicle/floor_3_9_1,
+/area/interior/vehicle/apc/command)
+"aO" = (
+/obj/effect/landmark/interior/spawn/weapons_loader,
+/turf/open/shuttle/vehicle/floor_3_6,
+/area/interior/vehicle/apc/command)
+"aQ" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "wall";
+	opacity = 0
+	},
+/turf/open/void/vehicle,
+/area/space)
+"aR" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "wheel_front_top_1";
+	pixel_x = 1;
+	pixel_y = -4
+	},
+/turf/open/void/vehicle,
+/area/space)
+"aS" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "front_1"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"aT" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "front_2"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"aU" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "front_3"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"aV" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "front_4"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"aW" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "corner_small_R"
+	},
+/obj/structure/interior_wall/apc{
+	icon_state = "front_5"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"aX" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "front_6"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"ba" = (
+/obj/structure/extinguisher_cabinet/lifeboat{
+	icon = 'icons/obj/vehicles/interiors/general.dmi';
+	pixel_y = 28
+	},
+/obj/effect/landmark/interior/spawn/interior_camera{
+	dir = 10;
+	pixel_x = -14;
+	pixel_y = 38
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 2;
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 2;
+	pixel_x = 8
+	},
+/turf/open/shuttle/vehicle/floor_3_13,
+/area/interior/vehicle/apc/command)
+"bb" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/turf/open/shuttle/vehicle/floor_3_13,
+/area/interior/vehicle/apc/command)
+"bd" = (
+/obj/effect/landmark/interior/spawn/entrance{
+	alpha = 50;
+	exit_type = /obj/structure/interior_exit/vehicle/apc;
+	name = "Right APC door";
+	tag = "right"
+	},
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	dir = 8;
+	pixel_x = 5;
+	pixel_y = 1
+	},
+/turf/open/shuttle/vehicle,
+/area/interior/vehicle/apc/command)
+"be" = (
+/obj/structure/machinery/prop/almayer/CICmap{
+	explo_proof = 1;
+	unslashable = 1
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/shuttle/vehicle/floor_3_3,
+/area/interior/vehicle/apc/command)
+"bg" = (
+/turf/open/shuttle/vehicle,
+/area/interior/vehicle/apc/command)
+"bh" = (
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	dir = 8;
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/effect/landmark/interior/spawn/entrance{
+	alpha = 50;
+	dir = 1;
+	exit_type = /obj/structure/interior_exit/vehicle/apc;
+	name = "Left APC door";
+	pixel_y = 32;
+	tag = "left"
+	},
+/turf/open/shuttle/vehicle,
+/area/interior/vehicle/apc/command)
+"bi" = (
+/turf/open/shuttle/vehicle/dark_sterile_green_6,
+/area/interior/vehicle/apc/command)
+"bl" = (
+/turf/open/shuttle/vehicle/med,
+/area/interior/vehicle/apc/command)
+"bo" = (
+/turf/open/shuttle/vehicle/dark_sterile_green_8,
+/area/interior/vehicle/apc/command)
+"bq" = (
+/obj/structure/machinery/cm_vending/sorted/medical/blood/vehicle{
+	pixel_y = 23
+	},
+/turf/open/shuttle/vehicle/dark_sterile_green_12,
+/area/interior/vehicle/apc/command)
+"br" = (
+/obj/structure/machinery/cm_vending/sorted/medical/vehicle{
+	pixel_y = 23
+	},
+/turf/open/shuttle/vehicle/dark_sterile_green_7,
+/area/interior/vehicle/apc/command)
+"bs" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/vehicle{
+	pixel_y = 28
+	},
+/turf/open/shuttle/vehicle/dark_sterile_green_13,
+/area/interior/vehicle/apc/command)
+"bv" = (
+/obj/effect/decal/medical_decals/permanent{
+	icon_state = "triagedecaltop";
+	pixel_y = 12
+	},
+/turf/open/shuttle/vehicle/med,
+/area/interior/vehicle/apc/command)
+"bw" = (
+/obj/structure/machinery/optable,
+/turf/open/shuttle/vehicle/med,
+/area/interior/vehicle/apc/command)
+"bA" = (
+/obj/item/storage/toolbox/mechanical,
+/turf/open/shuttle/vehicle/floor_3_6,
+/area/interior/vehicle/apc/command)
+"bB" = (
+/obj/effect/landmark/interior/spawn/vehicle_gunner_seat/armor{
+	dir = 4
+	},
+/turf/open/shuttle/vehicle/floor_3_8_1,
+/area/interior/vehicle/apc/command)
+
+(1,1,1) = {"
+ag
+af
+ae
+ad
+ad
+ac
+ab
+aa
+"}
+(2,1,1) = {"
+am
+al
+ap
+be
+au
+ax
+ah
+aa
+"}
+(3,1,1) = {"
+as
+ar
+aI
+aq
+aB
+aC
+an
+aa
+"}
+(4,1,1) = {"
+az
+bq
+av
+ai
+bi
+bi
+ay
+at
+"}
+(5,1,1) = {"
+az
+br
+bv
+aj
+bl
+bw
+aH
+at
+"}
+(6,1,1) = {"
+az
+bs
+aw
+bo
+bo
+bo
+aJ
+at
+"}
+(7,1,1) = {"
+aF
+bh
+bg
+bg
+bg
+bg
+bd
+aA
+"}
+(8,1,1) = {"
+aL
+aK
+ba
+bg
+bg
+bb
+aG
+aa
+"}
+(9,1,1) = {"
+aR
+aQ
+bB
+aO
+bA
+aN
+aM
+aa
+"}
+(10,1,1) = {"
+aX
+aW
+aV
+aU
+aU
+aT
+aS
+aa
+"}

@@ -1203,6 +1203,19 @@
 	ignore_z = TRUE
 	has_hud = TRUE
 
+/obj/item/device/radio/headset/distress/forecon/bug_hunt
+	desc = "A headset tuned to the SOF channel. Use ; to transmit."
+	frequency = SOF_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/soc/bug_hunt)
+	ignore_z = FALSE
+	minimap_type = /datum/action/minimap/marine/live
+	inbuilt_tracking_options = list(
+		"Section Leader" = TRACKER_FTL,
+		"PSG" = TRACKER_SL,
+		"Ops Officer" = TRACKER_XO,
+		"PlatCo" = TRACKER_CO,
+	)
+
 //WY Headsets
 
 /obj/item/device/radio/headset/distress/wy_android

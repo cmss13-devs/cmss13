@@ -576,7 +576,13 @@
 				var/rank = job_preset.job_title
 				var/paygrade = length(job_preset.paygrades) ? job_preset.paygrades[1] : null
 				var/assignment = job_preset.assignment
-				faction.modify_hud_holder_from_data(holder, null, rank, paygrade, assignment)
+				faction.modify_hud_holder_from_data(holder, null, rank, paygrade, assignment, rank_override = job_preset.hud_icon)
+				if(job_preset.hud_color && length(holder.overlays))
+					var/list/overlays = holder.overlays.Copy()
+					var/mutable_appearance/background = new(overlays[1])
+					background.color = job_preset.hud_color
+					overlays[1] = background
+					holder.overlays = overlays
 				// Finally, flatten the role overlays into a single icon
 				role_icon = getFlatIcon(holder)
 				// Use only the upper right 8x8, the rest should be empty or uninteresting

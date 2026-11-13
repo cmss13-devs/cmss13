@@ -99,6 +99,9 @@
 /datum/action/xeno_action/onclick/choose_resin/queen_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_4 //it's important that hivelord and drone have the same macros because their playstyle is similar, but it's not as important for queen since her playstyle is very different
 
+/datum/action/xeno_action/onclick/choose_resin/predrop
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+
 // Secrete Resin
 /datum/action/xeno_action/activable/secrete_resin
 	name = "Secrete Resin"
@@ -135,6 +138,9 @@
 /datum/action/xeno_action/activable/secrete_resin/hivelord
 	name = "Secrete Thick Resin"
 	thick = TRUE
+
+/datum/action/xeno_action/activable/secrete_resin/predrop
+	ability_primacy = XENO_TECH_SECRETE_RESIN
 
 //resin marker
 /datum/action/xeno_action/activable/info_marker
@@ -558,6 +564,19 @@
 		return
 	for(var/action_path in base_actions)
 		give_action(src, action_path)
+	add_predrop_building()
+	if(istype(SSticker.mode, /datum/game_mode/bug_hunt) && tier >= 1 && tier <= 3 && !get_action(src, /datum/action/xeno_action/onclick/plant_weeds))
+		var/datum/action/xeno_action/onclick/plant_weeds/planting = give_action(src, /datum/action/xeno_action/onclick/plant_weeds)
+		planting.node_type = /obj/effect/alien/weeds/node/weak
+		planting.ability_primacy = XENO_NOT_PRIMARY_ACTION
+
+/mob/living/carbon/xenomorph/proc/add_predrop_building()
+	if(!istype(SSticker.mode, /datum/game_mode/bug_hunt) || tier < 1 || tier > 3 || SSobjectives.first_drop_complete)
+		return
+	if(get_action(src, /datum/action/xeno_action/activable/secrete_resin))
+		return
+	give_action(src, /datum/action/xeno_action/onclick/choose_resin/predrop)
+	give_action(src, /datum/action/xeno_action/activable/secrete_resin/predrop)
 
 
 /datum/action/xeno_action/onclick/toggle_seethrough

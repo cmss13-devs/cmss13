@@ -167,6 +167,9 @@
 	name = "\improper Saipan Landing Zone"
 	icon_state = "away2"
 
+/area/shuttle/drop1/sulaco/typhoon
+	name = "\improper Dropship Typhoon"
+
 //UPP DROPSHIP
 
 /area/shuttle/drop_upp/Enter(atom/movable/O, atom/oldloc)

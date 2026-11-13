@@ -236,6 +236,9 @@
 	icon_state = "binary_key"
 	channels = list(SQUAD_SOF = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_INTEL = TRUE, RADIO_CHANNEL_JTAC = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE)
 
+/obj/item/device/encryptionkey/soc/bug_hunt
+	channels = list(SQUAD_SOF = TRUE)
+
 /obj/item/device/encryptionkey/soc/forecon
 	channels = list(SQUAD_SOF = TRUE, RADIO_CHANNEL_COLONY = TRUE)
 

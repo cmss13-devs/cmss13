@@ -1820,16 +1820,16 @@
 /turf/open/floor/almayer/flooredgesmooth/west
 	dir = WEST
 
-/turf/open/floor/almayer/flooredgesmooth/west
+/turf/open/floor/almayer/flooredgesmooth/northeast
 	dir = NORTHEAST
 
-/turf/open/floor/almayer/flooredgesmooth/west
+/turf/open/floor/almayer/flooredgesmooth/northwest
 	dir = NORTHWEST
 
-/turf/open/floor/almayer/flooredgesmooth/west
+/turf/open/floor/almayer/flooredgesmooth/southeast
 	dir = SOUTHEAST
 
-/turf/open/floor/almayer/flooredgesmooth/west
+/turf/open/floor/almayer/flooredgesmooth/southwest
 	dir = SOUTHWEST
 
 /turf/open/floor/almayer/flooredgesmooth2

@@ -206,7 +206,7 @@
 /// Use this to set limits on positions.
 /// Normally only called if scaled is TRUE with an unassigned count but there are exceptions e.g. survivors, xenos, and preds with the preassigned count.
 /datum/job/proc/set_spawn_positions(count)
-	return
+	spawn_positions = initial(spawn_positions)
 
 /datum/job/proc/create_landmark_lists(force)
 	return

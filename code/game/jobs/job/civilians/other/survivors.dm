@@ -339,7 +339,7 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	return ..()
 
 /datum/job/civilian/survivor/synth/set_spawn_positions(count)
-	return
+	spawn_positions = initial(spawn_positions)
 
 /datum/job/civilian/survivor/synth/create_landmark_lists(force)
 	if(!isnull(available_landmarks) && !force)
@@ -428,6 +428,7 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	return ..()
 
 /datum/job/civilian/survivor/commanding_officer/set_spawn_positions()
+	spawn_positions = initial(spawn_positions)
 	var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
 	var/list/CO_insert_survivor_types = SSmapping.configs[GROUND_MAP].CO_insert_survivor_types
 	if(!length(CO_survivor_types) && !length(CO_insert_survivor_types))

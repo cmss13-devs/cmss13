@@ -13,7 +13,7 @@
 /datum/job/logistics/otech/set_spawn_positions(count)
 	spawn_positions = ot_slot_formula(count)
 
-/datum/job/logistics/otech/get_total_positions(latejoin = 0)
+/datum/job/logistics/otech/get_total_positions(latejoin)
 	var/positions = spawn_positions
 	if(latejoin && !isnull(scaled))
 		positions = ot_slot_formula(get_total_marines())

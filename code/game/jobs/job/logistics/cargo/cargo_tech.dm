@@ -16,7 +16,7 @@ AddTimelock(/datum/job/logistics/cargo, list(
 /datum/job/logistics/cargo/set_spawn_positions(count)
 	spawn_positions = ct_slot_formula(count)
 
-/datum/job/logistics/cargo/get_total_positions(latejoin = 0)
+/datum/job/logistics/cargo/get_total_positions(latejoin)
 	var/positions = spawn_positions
 	if(latejoin && !isnull(scaled))
 		positions = ct_slot_formula(get_total_marines())

@@ -10,7 +10,7 @@
 /datum/job/command/bridge/set_spawn_positions(count)
 	spawn_positions = so_slot_formula(count)
 
-/datum/job/command/bridge/get_total_positions(latejoin = 0)
+/datum/job/command/bridge/get_total_positions(latejoin)
 	var/positions = spawn_positions
 	if(latejoin && !isnull(scaled))
 		positions = so_slot_formula(get_total_marines())

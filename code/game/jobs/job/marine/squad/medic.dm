@@ -13,7 +13,7 @@
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
 		target_squad.roles_cap[title] = slots
 
-/datum/job/marine/medic/get_total_positions(latejoin=0)
+/datum/job/marine/medic/get_total_positions(latejoin)
 	var/slots = isnull(scaled) ? spawn_positions : medic_slot_formula(get_total_marines())
 
 	if(slots <= total_positions_so_far)

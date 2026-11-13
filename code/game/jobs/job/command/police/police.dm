@@ -12,7 +12,7 @@
 /datum/job/command/police/set_spawn_positions(count)
 	spawn_positions = mp_slot_formula(count)
 
-/datum/job/command/police/get_total_positions(latejoin = 0)
+/datum/job/command/police/get_total_positions(latejoin)
 	var/positions = spawn_positions
 	if(latejoin && !isnull(scaled))
 		positions = mp_slot_formula(get_total_marines())

@@ -14,7 +14,7 @@
 	else
 		spawn_positions = 0
 
-/datum/job/command/tank_crew/get_total_positions(latejoin = FALSE)
+/datum/job/command/tank_crew/get_total_positions(latejoin)
 	if(isnull(scaled))
 		return spawn_positions
 	if(SStechtree.trees[TREE_MARINE].get_node(/datum/tech/arc).unlocked)

@@ -10,7 +10,7 @@
 /datum/job/marine/smartgunner/set_spawn_positions(count)
 	spawn_positions = sg_slot_formula(count)
 
-/datum/job/marine/smartgunner/get_total_positions(latejoin = 0)
+/datum/job/marine/smartgunner/get_total_positions(latejoin)
 	var/positions = spawn_positions
 	if(latejoin && !isnull(scaled))
 		positions = sg_slot_formula(get_total_marines())

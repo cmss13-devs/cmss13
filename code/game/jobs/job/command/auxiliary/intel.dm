@@ -12,7 +12,7 @@
 /datum/job/command/intel/set_spawn_positions(count)
 	spawn_positions = int_slot_formula(count)
 
-/datum/job/command/intel/get_total_positions(latejoin = 0)
+/datum/job/command/intel/get_total_positions(latejoin)
 	var/positions = spawn_positions
 	if(latejoin && !isnull(scaled))
 		positions = int_slot_formula(get_total_marines())

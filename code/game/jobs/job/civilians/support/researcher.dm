@@ -14,7 +14,7 @@
 /datum/job/civilian/researcher/set_spawn_positions(count)
 	spawn_positions = rsc_slot_formula(count)
 
-/datum/job/civilian/researcher/get_total_positions(latejoin = 0)
+/datum/job/civilian/researcher/get_total_positions(latejoin)
 	var/positions = spawn_positions
 	if(latejoin && !isnull(scaled))
 		positions = rsc_slot_formula(get_total_marines())

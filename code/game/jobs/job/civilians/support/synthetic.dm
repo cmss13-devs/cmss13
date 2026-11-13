@@ -79,7 +79,7 @@
 /datum/job/civilian/synthetic/set_spawn_positions(count)
 	spawn_positions = synth_slot_formula(count)
 
-/datum/job/civilian/synthetic/get_total_positions(latejoin = 0)
+/datum/job/civilian/synthetic/get_total_positions(latejoin)
 	var/positions = spawn_positions
 	if(latejoin && !isnull(scaled))
 		positions = synth_slot_formula(get_total_marines())

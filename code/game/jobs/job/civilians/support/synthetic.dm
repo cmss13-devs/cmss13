@@ -80,15 +80,14 @@
 	spawn_positions = synth_slot_formula(count)
 
 /datum/job/civilian/synthetic/get_total_positions(latejoin)
-	var/positions = spawn_positions
-	if(latejoin && !isnull(scaled))
-		positions = synth_slot_formula(get_total_marines())
-		if(positions <= total_positions_so_far)
-			positions = total_positions_so_far
-		else
-			total_positions_so_far = positions
+	var/normal_positions = ..()
+	var/positions = isnull(scaled) ? normal_positions : synth_slot_formula(get_total_marines())
+
+	if(positions <= total_positions_so_far)
+		positions = total_positions_so_far
 	else
 		total_positions_so_far = positions
+
 	return positions
 
 /obj/effect/landmark/start/synthetic

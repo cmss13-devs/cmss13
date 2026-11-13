@@ -13,15 +13,14 @@
 	spawn_positions = mp_slot_formula(count)
 
 /datum/job/command/police/get_total_positions(latejoin)
-	var/positions = spawn_positions
-	if(latejoin && !isnull(scaled))
-		positions = mp_slot_formula(get_total_marines())
-		if(positions <= total_positions_so_far)
-			positions = total_positions_so_far
-		else
-			total_positions_so_far = positions
+	var/normal_positions = ..()
+	var/positions = isnull(scaled) ? normal_positions : mp_slot_formula(get_total_marines())
+
+	if(positions <= total_positions_so_far)
+		positions = total_positions_so_far
 	else
 		total_positions_so_far = positions
+
 	return positions
 
 AddTimelock(/datum/job/command/police, list(

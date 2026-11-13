@@ -14,7 +14,8 @@
 		target_squad.roles_cap[title] = slots
 
 /datum/job/marine/medic/get_total_positions(latejoin)
-	var/slots = isnull(scaled) ? spawn_positions : medic_slot_formula(get_total_marines())
+	var/normal_positions = ..()
+	var/slots = isnull(scaled) ? normal_positions : medic_slot_formula(get_total_marines())
 
 	if(slots <= total_positions_so_far)
 		slots = total_positions_so_far

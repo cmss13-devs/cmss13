@@ -11,15 +11,14 @@
 	spawn_positions = spec_slot_formula(count)
 
 /datum/job/marine/specialist/get_total_positions(latejoin)
-	var/positions = spawn_positions
-	if(latejoin && !isnull(scaled))
-		positions = spec_slot_formula(get_total_marines())
-		if(positions <= total_positions_so_far)
-			positions = total_positions_so_far
-		else
-			total_positions_so_far = positions
+	var/normal_positions = ..()
+	var/positions = isnull(scaled) ? normal_positions : spec_slot_formula(get_total_marines())
+
+	if(positions <= total_positions_so_far)
+		positions = total_positions_so_far
 	else
 		total_positions_so_far = positions
+
 	return positions
 
 /datum/job/marine/specialist/on_cryo(mob/living/carbon/human/cryoing)

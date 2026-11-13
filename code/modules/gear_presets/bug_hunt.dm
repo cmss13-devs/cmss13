@@ -3,7 +3,7 @@
 	assignment = JOB_PLATOON_COMMANDER
 	job_title = JOB_CO
 	manifest_title = JOB_PLATOON_COMMANDER
-	paygrades = list(PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/sl_pve/bug_hunt
 	role_comm_title = "PlatCo"
 	hud_icon = "wo_co"
@@ -11,6 +11,11 @@
 	minimap_icon = "co_wo"
 	dress_extra = null
 	utility_under = list(/obj/item/clothing/under/marine)
+
+/datum/equipment_preset/uscm_co/bug_hunt/load_rank(mob/living/carbon/human/new_human, client/mob_client)
+	if(mob_client?.check_whitelist_status(WHITELIST_COMMANDER_COUNCIL|WHITELIST_COMMANDER_COUNCIL_LEGACY|WHITELIST_COMMANDER_LEADER) && get_desired_status(mob_client.prefs.commander_status, WHITELIST_COUNCIL) == WHITELIST_COUNCIL)
+		return PAY_SHORT_MO3
+	return ..()
 
 /datum/equipment_preset/uscm_co/bug_hunt/load_vanity(mob/living/carbon/human/new_human, client/mob_client)
 	return
@@ -27,7 +32,7 @@
 	assignment = JOB_OPERATIONS_OFFICER
 	job_title = JOB_XO
 	manifest_title = JOB_OPERATIONS_OFFICER
-	paygrades = list(PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/sl_pve/bug_hunt
 	role_comm_title = "Ops"
 	hud_icon = "wo_xo"
@@ -153,6 +158,11 @@
 	paygrades = list(PAY_SHORT_MWO = JOB_PLAYTIME_TIER_0)
 	hud_icon = "syn"
 	hud_color = "#32CD32"
+
+/datum/equipment_preset/synth/uscm/bug_hunt/load_rank(mob/living/carbon/human/new_human, client/mob_client)
+	if(mob_client?.check_whitelist_status(WHITELIST_SYNTHETIC_COUNCIL|WHITELIST_SYNTHETIC_COUNCIL_LEGACY|WHITELIST_SYNTHETIC_LEADER) && get_desired_status(mob_client.prefs.synth_status, WHITELIST_COUNCIL) == WHITELIST_COUNCIL)
+		return PAY_SHORT_MCWO
+	return ..()
 
 /datum/equipment_preset/synth/uscm/bug_hunt/load_vanity(mob/living/carbon/human/new_human, client/mob_client)
 	return

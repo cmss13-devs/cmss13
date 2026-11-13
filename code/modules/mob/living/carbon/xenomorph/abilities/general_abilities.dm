@@ -565,14 +565,13 @@
 	for(var/action_path in base_actions)
 		give_action(src, action_path)
 	add_predrop_building()
-	if(istype(SSticker.mode, /datum/game_mode/bug_hunt) && tier >= 1 && tier <= 3 && !get_action(src, /datum/action/xeno_action/onclick/plant_weeds))
-		var/datum/action/xeno_action/onclick/plant_weeds/planting = give_action(src, /datum/action/xeno_action/onclick/plant_weeds)
-		planting.node_type = /obj/effect/alien/weeds/node/weak
-		planting.ability_primacy = XENO_NOT_PRIMARY_ACTION
 
 /mob/living/carbon/xenomorph/proc/add_predrop_building()
-	if(!istype(SSticker.mode, /datum/game_mode/bug_hunt) || tier < 1 || tier > 3 || SSobjectives.first_drop_complete)
+	if(!istype(SSticker.mode, /datum/game_mode/bug_hunt) || tier < 1 || tier > 3)
 		return
+	if(!get_action(src, /datum/action/xeno_action/onclick/plant_weeds))
+		var/datum/action/xeno_action/onclick/plant_weeds/planting = give_action(src, /datum/action/xeno_action/onclick/plant_weeds)
+		planting.ability_primacy = XENO_NOT_PRIMARY_ACTION
 	if(get_action(src, /datum/action/xeno_action/activable/secrete_resin))
 		return
 	give_action(src, /datum/action/xeno_action/onclick/choose_resin/predrop)

@@ -46,6 +46,7 @@
 	hive.tacmap_requires_queen_ovi = FALSE
 	hive.tier_limits = list(TIER_2 = -1, TIER_3 = 3)
 	hive.allow_core_larva_spawning = FALSE
+	hive.hive_structure_types -= XENO_STRUCTURE_CORE
 	LAZYADD(hive.blacklisted_castes, XENO_CASTE_QUEEN)
 	hive.hive_stat_modifier_multiplier["health"] = XENO_HIVE_STATMOD_MULT_MED
 	hive.hive_stat_modifier_multiplier["plasmagain"] = XENO_HIVE_STATMOD_MULT_MED
@@ -56,29 +57,38 @@
 /datum/game_mode/bug_hunt/proc/setup_hive_cores()
 	var/list/core_turfs = list()
 	for(var/obj/effect/landmark/queen_spawn/queen_spawn in GLOB.queen_spawns)
-		core_turfs |= get_turf(queen_spawn)
-
-	if(length(core_turfs) < hive_core_count)
-		var/list/fallback_turfs = list()
-		for(var/ground_z in SSmapping.levels_by_trait(ZTRAIT_GROUND))
-			for(var/area/area as anything in SSmapping.areas_in_z["[ground_z]"])
-				if(!CEILING_IS_PROTECTED(area.ceiling, CEILING_PROTECTION_TIER_4))
-					continue
-				for(var/turf/open/spawn_turf in area)
-					CHECK_TICK
-					if(spawn_turf.z != ground_z || istype(spawn_turf, /turf/open/space) || is_blocked_turf(spawn_turf) || (spawn_turf in core_turfs))
-						continue
-					fallback_turfs += spawn_turf
-		while(length(fallback_turfs) && length(core_turfs) < hive_core_count)
-			core_turfs += pick_n_take(fallback_turfs)
-
-	if(length(core_turfs) < hive_core_count)
-		return FALSE
+		var/turf/open/spawn_turf = get_turf(queen_spawn)
+		var/area/spawn_area = get_area(spawn_turf)
+		if(!istype(spawn_turf) || !is_ground_level(spawn_turf.z) || !spawn_area.is_resin_allowed || istype(spawn_turf, /turf/open/space) || is_blocked_turf(spawn_turf))
+			continue
+		core_turfs |= spawn_turf
 
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	hive.hive_structures_limit[XENO_STRUCTURE_CORE] = hive_core_count
-	for(var/i in 1 to hive_core_count)
-		new /obj/effect/alien/resin/special/pylon/core(pick_n_take(core_turfs), hive)
+	while(length(core_turfs) && length(hive.hive_structures[XENO_STRUCTURE_CORE]) < hive_core_count)
+		var/turf/core_turf = pick_n_take(core_turfs)
+		var/list/pillar_turfs = list()
+		for(var/turf/open/pillar_turf in oview(2, core_turf))
+			var/area/pillar_area = get_area(pillar_turf)
+			if(!pillar_area.is_resin_allowed || istype(pillar_turf, /turf/open/space) || is_blocked_turf(pillar_turf) || (pillar_turf in core_turfs) || (locate(/obj/structure/machinery/door) in pillar_turf) || (locate(/obj/effect/alien/resin) in pillar_turf))
+				continue
+			pillar_turfs += pillar_turf
+		if(length(pillar_turfs) < 2)
+			continue
+		new /obj/effect/alien/resin/special/pylon/core/bug_hunt(core_turf, hive)
+		for(var/pillar_index in 1 to 2)
+			new /obj/effect/alien/resin/acid_pillar/strong/bug_hunt(pick_n_take(pillar_turfs), hive.hivenumber)
+
+	hive.hive_structures_limit[XENO_STRUCTURE_CORE] = 0
+	var/spawn_count = length(hive.hive_structures[XENO_STRUCTURE_CORE])
+	if(!spawn_count)
+		return FALSE
+	var/health_multiplier = hive_core_count / spawn_count
+	hive_core_count = spawn_count
+
+	for(var/obj/effect/alien/resin/special/pylon/core/bug_hunt/core in hive.hive_structures[XENO_STRUCTURE_CORE])
+		core.health *= health_multiplier
+		core.maxhealth = core.health
 	return TRUE
 
 /datum/game_mode/bug_hunt/check_xeno_late_join(mob/xeno_candidate)
@@ -141,19 +151,28 @@
 /datum/game_mode/bug_hunt/check_fax_responder_late_join(mob/responder, show_warning = TRUE)
 	return FALSE
 
-/datum/game_mode/bug_hunt/ds_first_landed(obj/docking_port/stationary/marine_dropship)
-	. = ..()
-	for(var/mob/living/carbon/xenomorph/xeno in GLOB.xeno_mob_list)
-		qdel(get_action(xeno, /datum/action/xeno_action/onclick/choose_resin/predrop))
-		qdel(get_action(xeno, /datum/action/xeno_action/activable/secrete_resin/predrop))
+/datum/game_mode/bug_hunt/proc/setup_auto_queen()
+	var/turf/queen_turf = locate(1, 1, SSmapping.levels_by_trait(ZTRAIT_GROUND)[1])
+	for(var/turf/wall_turf as anything in RANGE_TURFS(1, queen_turf))
+		if(wall_turf != queen_turf)
+			wall_turf.ChangeTurf(/turf/closed/wall/indestructible)
+	queen_turf = queen_turf.ChangeTurf(/turf/open/floor/plating)
+
+	var/mob/living/carbon/xenomorph/queen/queen = new(queen_turf, null, XENO_HIVE_NORMAL)
+	queen.status_flags |= GODMODE
+	var/obj/effect/alien/weeds/node/queen_weeds = new(queen_turf, null, queen)
+	queen_weeds.explo_proof = TRUE
+	queen.mount_ovipositor()
+	queen.auto_queen = TRUE
 
 /datum/game_mode/bug_hunt/post_setup()
 	initialize_post_marine_gear_list()
+	setup_auto_queen()
 	round_time_lobby = world.time
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(mission_briefing)), 2 MINUTES)
 	var/xeno_briefing = "The tallhosts will soon descending upon this world to destroy our hive. Our [hive_core_count] hive cores must be defended, if every core is destroyed, the hive is lost."
-	xeno_briefing += "\n\nBuild now and prepare your killing grounds. Even those unable to spread strong weeds may plant frail weeds to sustain the brood."
+	xeno_briefing += "\n\nYou can build resin and spread weeds throughout the battle. Prepare your killing grounds."
 	xeno_announcement(xeno_briefing, XENO_HIVE_NORMAL, QUEEN_MOTHER_ANNOUNCE)
 	return ..()
 

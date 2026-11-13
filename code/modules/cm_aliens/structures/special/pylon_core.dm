@@ -110,7 +110,7 @@
 
 	damaged = FALSE
 	plasma_stored = 0
-	health = initial(health)
+	health = maxhealth
 
 	var/obj/effect/alien/weeds/node/pylon/N = locate() in loc
 	if(!N)
@@ -242,6 +242,19 @@
 	protection_level = TURF_PROTECTION_OB
 
 	lesser_drone_spawn_limit = 10
+
+/obj/effect/alien/resin/special/pylon/core/bug_hunt
+	health = 6000
+	var/attack_announced = FALSE
+
+/obj/effect/alien/resin/special/pylon/core/bug_hunt/healthcheck()
+	if(!attack_announced && health < maxhealth)
+		attack_announced = TRUE
+		xeno_announcement("Our hive core at [get_area_name(src)] is under attack!", linked_hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+	return ..()
+
+/obj/effect/alien/resin/special/pylon/core/bug_hunt/announce_destruction()
+	xeno_announcement("Our hive core at [get_area_name(src)] has been destroyed! Vengeance!", linked_hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 
 /obj/effect/alien/resin/special/pylon/core/Initialize(mapload, datum/hive_status/hive_ref)
 	. = ..()
@@ -426,8 +439,9 @@
 		if(world.time < XENOMORPH_PRE_SETUP_CUTOFF && !hardcore)
 			. = ..()
 			return
-		linked_hive.hivecore_cooldown = TRUE
-		INVOKE_ASYNC(src, PROC_REF(cooldownFinish),linked_hive) // start cooldown
+		if(linked_hive.hive_structures_limit[XENO_STRUCTURE_CORE])
+			linked_hive.hivecore_cooldown = TRUE
+			INVOKE_ASYNC(src, PROC_REF(cooldownFinish),linked_hive) // start cooldown
 		if(hardcore)
 			xeno_message(SPAN_XENOANNOUNCE("We can no longer gain new sisters or another Queen. Additionally, we are unable to heal if our Queen is dead."), 2, linked_hive.hivenumber)
 			linked_hive.hardcore = TRUE

@@ -15,6 +15,7 @@
 	///How many slots were open in this round. Used to prevent slots locking with decreasing amount of alive players
 	var/total_positions_so_far = 0
 	///If it can be scaled with playercount (Will control whether set_spawn_positions is normally called with a count of unassigned players)
+	///Null indicates admins have overrided it with modify_job_slot verb during roundstart
 	var/scaled = FALSE
 	///How many players have this job
 	var/current_positions = 0

@@ -154,7 +154,7 @@
 		if(!confirmation || (confirmation == "No"))
 			return
 		selected_job.spawn_positions = slot_number
-		selected_job.scaled = FALSE
+		selected_job.scaled = null
 	else if(slot_type == "Latejoin")
 		if(!GLOB.RoleAuthority.modify_role(selected_job, slot_number))
 			to_chat(usr, SPAN_BOLDNOTICE("Can't set job slots to be less than amount of log-ins or you are setting amount of slots less than minimal. Free slots first."))

@@ -9,11 +9,12 @@
 	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>You tend the wounds of your squad mates</a> and make sure they are healthy and active. You may not be a fully-fledged doctor, but you stand between life and death when it matters."
 
 /datum/job/marine/medic/set_spawn_positions(count)
+	var/slots = isnull(scaled) ? spawn_positions : medic_slot_formula(count * MARINE_TO_TOTAL_SPAWN_RATIO)
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-		target_squad.roles_cap[title] = medic_slot_formula(count * MARINE_TO_TOTAL_SPAWN_RATIO)
+		target_squad.roles_cap[title] = slots
 
 /datum/job/marine/medic/get_total_positions(latejoin=0)
-	var/slots = medic_slot_formula(get_total_marines())
+	var/slots = isnull(scaled) ? spawn_positions : medic_slot_formula(get_total_marines())
 
 	if(slots <= total_positions_so_far)
 		slots = total_positions_so_far

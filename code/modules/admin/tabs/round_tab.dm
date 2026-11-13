@@ -149,15 +149,17 @@
 	if(isnull(slot_number))
 		return
 
+	if(tgui_alert(src, "Altering slots will disable automatic slot scaling, are you sure?", "Confirm?", list("Yes", "No"), 30 SECONDS) != "Yes")
+		return
+
 	if(slot_type == "Roundstart")
-		var/confirmation = tgui_alert(src, "Altering roundstart slots will disable automatic slot scaling, are you sure?", "Confirm?", list("Yes", "No"), 30 SECONDS)
-		if(!confirmation || (confirmation == "No"))
-			return
 		selected_job.spawn_positions = slot_number
 		selected_job.scaled = null
 	else if(slot_type == "Latejoin")
 		if(!GLOB.RoleAuthority.modify_role(selected_job, slot_number))
 			to_chat(usr, SPAN_BOLDNOTICE("Can't set job slots to be less than amount of log-ins or you are setting amount of slots less than minimal. Free slots first."))
+			return
+		selected_job.scaled = null
 	message_admins("[key_name(usr)] adjusted [slot_type] job slots of [selected_job.title] to be [slot_number].")
 
 

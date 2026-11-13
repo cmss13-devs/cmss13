@@ -198,10 +198,10 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	// Set initial squad caps
 	var/datum/job/engi_job = GET_MAPPED_ROLE(JOB_SQUAD_ENGI)
-	if(istype(engi_job) && !isnull(engi_job.scaled))
+	if(istype(engi_job)) // This job will handle a null scaled
 		engi_job.set_spawn_positions(GLOB.players_preassigned)
 	var/datum/job/medic_job = GET_MAPPED_ROLE(JOB_SQUAD_MEDIC)
-	if(istype(medic_job) && !isnull(medic_job.scaled))
+	if(istype(medic_job)) // This job will handle a null scaled
 		medic_job.set_spawn_positions(GLOB.players_preassigned)
 
 	// Set survivor starting amount based on marines assigned

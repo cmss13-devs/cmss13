@@ -14131,9 +14131,8 @@
 /turf/open_space,
 /area/almayer/middeck/maintenance/bow)
 "aML" = (
-/obj/structure/reagent_dispensers/tank/water,
 /obj/effect/decal/cleanable/ammo_casing/bullet,
-/turf/open/floor/almayer/cargo,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_f_p)
 "aMN" = (
 /obj/structure/window/framed/almayer,
@@ -50275,10 +50274,6 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/port_umbilical)
 "cuW" = (
-/obj/effect/decal/cleanable/ammo_casing/bullet,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/maint/hull/lower/l_f_p)
-"cuX" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
@@ -50289,6 +50284,10 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_p)
+"cuX" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/almayer/plate,
+/area/almayer/maint/hull/lower/p_bow)
 "cuY" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -50296,10 +50295,6 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/alpha)
 "cuZ" = (
-/obj/structure/largecrate/random/secure,
-/turf/open/floor/almayer/plate,
-/area/almayer/maint/hull/lower/p_bow)
-"cva" = (
 /obj/structure/machinery/light/red/almayer{
 	light_color = "#BB3F3F"
 	},
@@ -50311,6 +50306,12 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/p_bow)
+"cva" = (
+/obj/structure/machinery/light/red/almayer{
+	light_color = "#BB3F3F"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/maint/hull/lower/p_bow)
 "cvb" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -50319,20 +50320,20 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
 "cvc" = (
-/obj/structure/machinery/light/red/almayer{
-	light_color = "#BB3F3F"
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/maint/hull/lower/p_bow)
-"cvd" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
 	pixel_x = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/p_bow)
-"cve" = (
+"cvd" = (
 /obj/effect/landmark/yautja_teleport,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/maint/hull/lower/p_bow)
+"cve" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -50340,7 +50341,7 @@
 /area/almayer/maint/hull/lower/p_bow)
 "cvf" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S"
+	icon_state = "SW-out"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/p_bow)
@@ -50351,12 +50352,6 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/starboard_fore_hallway)
 "cvh" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out"
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/maint/hull/lower/p_bow)
-"cvi" = (
 /obj/structure/sign/safety/water{
 	pixel_x = 8;
 	pixel_y = 25
@@ -50366,14 +50361,14 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/p_bow)
-"cvj" = (
+"cvi" = (
 /obj/structure/machinery/light/red/almayer{
 	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/almayer/maint/lower/constr)
-"cvk" = (
+"cvj" = (
 /obj/structure/largecrate/random/secure,
 /obj/structure/machinery/light/red/almayer{
 	light_color = "#BB3F3F";
@@ -50381,7 +50376,7 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/maint/lower/constr)
-"cvl" = (
+"cvk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/wet_sign,
 /obj/item/tool/wet_sign{
@@ -50398,7 +50393,7 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/maint/lower/constr)
-"cvm" = (
+"cvl" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/cell_charger,
 /obj/structure/machinery/light/almayer{
@@ -50406,8 +50401,13 @@
 	},
 /turf/open/floor/almayer/orange/north,
 /area/almayer/hallways/hangar)
-"cvn" = (
+"cvm" = (
 /obj/structure/closet/firecloset,
+/turf/open/floor/almayer/cargo,
+/area/almayer/maint/hull/lower/l_f_p)
+"cvn" = (
+/obj/structure/reagent_dispensers/tank/water,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/almayer/cargo,
 /area/almayer/maint/hull/lower/l_f_p)
 "cvo" = (
@@ -139178,7 +139178,7 @@ mVh
 sGK
 sGK
 sGK
-cuZ
+cuX
 wid
 aaa
 aaa
@@ -139280,8 +139280,8 @@ bSv
 bSv
 bSv
 bSv
-cvd
-cva
+cvc
+cuZ
 wid
 bdH
 aaa
@@ -139383,7 +139383,7 @@ alV
 cvu
 alH
 bSv
-cve
+cvd
 aDD
 wid
 aaa
@@ -139486,7 +139486,7 @@ alY
 foN
 cDZ
 bSv
-cvf
+cve
 aDD
 wid
 aaa
@@ -139589,7 +139589,7 @@ tjw
 bTH
 bTV
 bSv
-cvh
+cvf
 auS
 wid
 aaa
@@ -139692,7 +139692,7 @@ ifb
 cvv
 alI
 bSv
-cvi
+cvh
 flr
 wid
 aaa
@@ -139796,7 +139796,7 @@ bSv
 bSv
 bSv
 sGK
-cvc
+cva
 wid
 aaa
 aaa
@@ -141443,7 +141443,7 @@ cvG
 bHB
 btO
 hOV
-cvj
+cvi
 tTC
 hhd
 ybm
@@ -142061,7 +142061,7 @@ cvG
 bHB
 aYt
 hOV
-cvk
+cvj
 tTC
 rSx
 dCz
@@ -143091,7 +143091,7 @@ cvG
 bHB
 btO
 hOV
-cvl
+cvk
 tTC
 tTC
 ove
@@ -145666,7 +145666,7 @@ cvN
 bHB
 cvs
 bcm
-cvm
+cvl
 aYt
 iKb
 emC
@@ -146077,7 +146077,7 @@ cwa
 aYz
 bHB
 xAY
-cvn
+cvm
 emC
 bUQ
 wDP
@@ -146180,7 +146180,7 @@ cwb
 cvQ
 hBF
 xAY
-cvn
+cvm
 emC
 vFI
 xFt
@@ -146283,10 +146283,10 @@ xyw
 bcc
 bHB
 uII
-aML
+cvn
 emC
 jev
-cuW
+aML
 xFt
 oFn
 emC
@@ -146389,7 +146389,7 @@ uII
 ury
 emC
 fqb
-cuX
+cuW
 dFW
 mvi
 emC

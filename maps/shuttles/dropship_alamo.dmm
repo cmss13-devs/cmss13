@@ -4,6 +4,70 @@
 	icon_state = "82"
 	},
 /area/shuttle/drop1/sulaco)
+"ab" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/machinery/light/almayer{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco)
+"ac" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/machinery/light/almayer{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco)
+"ad" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/machinery/light/almayer{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco)
+"ae" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/machinery/light/almayer{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco)
+"af" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/item/device/radio/intercom/alamo{
+	pixel_y = 24
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco)
 "aj" = (
 /obj/structure/machinery/camera/autoname/almayer/dropship_one{
 	dir = 4;
@@ -28,18 +92,6 @@
 "bj" = (
 /obj/structure/shuttle/part/dropship1/transparent/nose_top_right,
 /turf/template_noop,
-/area/shuttle/drop1/sulaco)
-"cc" = (
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -8
-	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = 8
-	},
-/obj/item/device/radio/intercom/alamo{
-	pixel_y = 24
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/drop1/sulaco)
 "cr" = (
 /obj/structure/machinery/camera/autoname/almayer/dropship_one{
@@ -179,18 +231,6 @@
 	icon_state = "25"
 	},
 /area/shuttle/drop1/sulaco)
-"qc" = (
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -8
-	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = 8
-	},
-/obj/structure/machinery/light/almayer{
-	dir = 8
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/shuttle/drop1/sulaco)
 "qn" = (
 /turf/closed/shuttle/dropship1{
 	icon_state = "50"
@@ -232,20 +272,6 @@
 "rV" = (
 /obj/structure/shuttle/part/dropship1/transparent/left_outer_bottom_wing,
 /turf/template_noop,
-/area/shuttle/drop1/sulaco)
-"si" = (
-/obj/structure/bed/chair/vehicle{
-	dir = 1;
-	pixel_x = 8
-	},
-/obj/structure/bed/chair/vehicle{
-	dir = 1;
-	pixel_x = -8
-	},
-/obj/structure/machinery/light/almayer{
-	dir = 8
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/drop1/sulaco)
 "sA" = (
 /obj/structure/shuttle/part/dropship1/lower_left_wall,
@@ -312,18 +338,6 @@
 /turf/closed/shuttle/dropship1{
 	icon_state = "69"
 	},
-/area/shuttle/drop1/sulaco)
-"Az" = (
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -8
-	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = 8
-	},
-/obj/structure/machinery/light/almayer{
-	dir = 4
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/drop1/sulaco)
 "Bn" = (
 /turf/closed/shuttle/dropship1/transparent{
@@ -625,20 +639,6 @@
 /obj/structure/shuttle/part/dropship1/right_outer_wing_connector,
 /turf/template_noop,
 /area/shuttle/drop1/sulaco)
-"Ww" = (
-/obj/structure/bed/chair/vehicle{
-	dir = 1;
-	pixel_x = 8
-	},
-/obj/structure/bed/chair/vehicle{
-	dir = 1;
-	pixel_x = -8
-	},
-/obj/structure/machinery/light/almayer{
-	dir = 4
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/shuttle/drop1/sulaco)
 "WQ" = (
 /turf/closed/shuttle/dropship1{
 	icon_state = "10"
@@ -747,12 +747,12 @@ mb
 mb
 UN
 oo
-cc
+af
 ws
 TK
 il
 il
-qc
+ad
 ws
 SM
 de
@@ -780,7 +780,7 @@ Ce
 TK
 qF
 aj
-si
+ab
 TK
 ws
 WQ
@@ -872,7 +872,7 @@ Tt
 TK
 Tu
 TK
-Ww
+ac
 TK
 ws
 LP
@@ -885,12 +885,12 @@ mb
 mb
 IP
 aa
-cc
+af
 cr
 TK
 il
 il
-Az
+ae
 ws
 BS
 Zv

@@ -9,6 +9,46 @@
 	icon_state = "82"
 	},
 /area/shuttle/drop_upp/morana)
+"ac" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/machinery/light/almayer{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/morana)
+"ad" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/machinery/light/almayer{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/morana)
+"ae" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/sign/flag/upp{
+	dir = 8;
+	pixel_y = 28
+	},
+/obj/item/device/radio/intercom/morana{
+	pixel_x = 24
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp/morana)
 "ah" = (
 /obj/structure/shuttle/part/dropship_upp/transparent/nose_center,
 /turf/template_noop,
@@ -70,7 +110,7 @@
 	pixel_y = 28
 	},
 /obj/item/device/radio/intercom/morana{
-	pixel_x = 24
+	pixel_x = -24
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/drop_upp/morana)
@@ -131,18 +171,6 @@
 "fO" = (
 /obj/structure/shuttle/part/dropship_upp/transparent/nose_top_left,
 /turf/template_noop,
-/area/shuttle/drop_upp/morana)
-"go" = (
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -8
-	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = 8
-	},
-/obj/structure/machinery/light/almayer{
-	dir = 4
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/drop_upp/morana)
 "gH" = (
 /obj/structure/shuttle/part/dropship_upp/nose_front_right,
@@ -280,18 +308,6 @@
 /turf/closed/shuttle/dropship_upp{
 	icon_state = "31"
 	},
-/area/shuttle/drop_upp/morana)
-"rB" = (
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -8
-	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = 8
-	},
-/obj/structure/machinery/light/almayer{
-	dir = 8
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/drop_upp/morana)
 "sf" = (
 /turf/closed/shuttle/dropship_upp/transparent{
@@ -584,22 +600,6 @@
 	},
 /turf/template_noop,
 /area/shuttle/drop_upp/morana)
-"Uz" = (
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -8
-	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = 8
-	},
-/obj/structure/sign/flag/upp{
-	dir = 8;
-	pixel_y = 28
-	},
-/obj/item/device/radio/intercom/morana{
-	pixel_x = -24
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/shuttle/drop_upp/morana)
 "Vk" = (
 /turf/closed/shuttle/dropship_upp/transparent{
 	icon_state = "20"
@@ -701,12 +701,12 @@ VN
 VN
 hN
 Ky
-Uz
+bR
 po
 po
 qj
 qj
-rB
+ac
 po
 yU
 Lb
@@ -734,7 +734,7 @@ DW
 Hp
 FI
 tD
-rB
+ac
 po
 po
 zk
@@ -826,7 +826,7 @@ ax
 Hp
 FI
 is
-go
+ad
 po
 po
 zk
@@ -839,12 +839,12 @@ VN
 VN
 oJ
 ab
-bR
+ae
 po
 po
 qj
 qj
-go
+ad
 po
 kV
 tK

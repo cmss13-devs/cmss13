@@ -1,4 +1,68 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/machinery/light/almayer{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"ab" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/machinery/light/almayer{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"ac" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/machinery/light/almayer{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"ad" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/machinery/light/almayer{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"ae" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/item/device/radio/intercom/saipan{
+	pixel_y = 24
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
 "ai" = (
 /turf/open/shuttle/dropship/light_grey_bottom_right,
 /area/shuttle/drop3/sulaco)
@@ -159,18 +223,6 @@
 /turf/closed/shuttle/dropship3/transparent{
 	icon_state = "32"
 	},
-/area/shuttle/drop3/sulaco)
-"lD" = (
-/obj/structure/bed/chair/vehicle{
-	pixel_x = 8
-	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -8
-	},
-/obj/structure/machinery/light/almayer{
-	dir = 8
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/drop3/sulaco)
 "lH" = (
 /obj/effect/attach_point/weapon/dropship3/right_fore,
@@ -355,18 +407,6 @@
 /obj/structure/shuttle/part/dropship3/transparent/nose_top_left,
 /turf/template_noop,
 /area/shuttle/drop3/sulaco)
-"DC" = (
-/obj/structure/bed/chair/vehicle{
-	pixel_x = 8
-	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -8
-	},
-/obj/structure/machinery/light/almayer{
-	dir = 4
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/shuttle/drop3/sulaco)
 "El" = (
 /turf/closed/shuttle/dropship3{
 	icon_state = "59"
@@ -393,20 +433,6 @@
 /obj/structure/bed/chair/vehicle{
 	dir = 1;
 	pixel_x = -8
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/shuttle/drop3/sulaco)
-"Gi" = (
-/obj/structure/bed/chair/vehicle{
-	dir = 1;
-	pixel_x = 8
-	},
-/obj/structure/bed/chair/vehicle{
-	dir = 1;
-	pixel_x = -8
-	},
-/obj/structure/machinery/light/almayer{
-	dir = 4
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/drop3/sulaco)
@@ -470,20 +496,6 @@
 /area/shuttle/drop3/sulaco)
 "KR" = (
 /turf/open/shuttle/dropship/light_grey_left_to_right,
-/area/shuttle/drop3/sulaco)
-"LL" = (
-/obj/structure/bed/chair/vehicle{
-	dir = 1;
-	pixel_x = 8
-	},
-/obj/structure/bed/chair/vehicle{
-	dir = 1;
-	pixel_x = -8
-	},
-/obj/structure/machinery/light/almayer{
-	dir = 8
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/drop3/sulaco)
 "Mj" = (
 /turf/closed/shuttle/dropship3{
@@ -575,18 +587,6 @@
 /turf/closed/shuttle/dropship3{
 	icon_state = "30"
 	},
-/area/shuttle/drop3/sulaco)
-"PR" = (
-/obj/structure/bed/chair/vehicle{
-	pixel_x = 8
-	},
-/obj/structure/bed/chair/vehicle{
-	pixel_x = -8
-	},
-/obj/item/device/radio/intercom/saipan{
-	pixel_y = 24
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/drop3/sulaco)
 "PS" = (
 /turf/closed/shuttle/dropship3/transparent{
@@ -775,12 +775,12 @@ SD
 SD
 SP
 tJ
-PR
+ae
 og
 Pc
 Cz
 Cz
-lD
+ac
 cB
 lr
 TZ
@@ -808,7 +808,7 @@ fh
 Pc
 Qy
 Pc
-LL
+aa
 Pc
 cB
 SM
@@ -900,7 +900,7 @@ ai
 Pc
 FV
 SH
-Gi
+ab
 Pc
 cB
 Nt
@@ -913,12 +913,12 @@ SD
 SD
 NV
 Rn
-PR
+ae
 cB
 Pc
 Cz
 Cz
-DC
+ad
 cB
 wt
 kP

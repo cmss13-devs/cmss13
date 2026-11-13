@@ -229,14 +229,12 @@ Stage Procs (ordered on things called to exit, see New Backend Procs for excepti
 						airlock_turf.Entered(contents_atom)
 					airlock_turf.clean_cleanables()
 					airlock_turf.can_bloody = FALSE
-					ADD_TRAIT(airlock_turf, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
 					airlock_turf.update_vis_contents()
 
 			else
 				for(airlock_turf in airlock_turf_lists[door_type]["[max_pixel_threshold - increment_pixel_threshold]"])
 					airlock_turf.open = FALSE
 					airlock_turf.can_bloody = TRUE
-					REMOVE_TRAIT(airlock_turf, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
 					airlock_turf.update_vis_contents()
 
 	INVOKE_NEXT_TICK(src, PROC_REF(delayed_airlock_transition), airlock_type, open, airlock_turf_lists, airlock_effects, end_decisecond, door_types)
@@ -611,12 +609,12 @@ New Backend Procs
 	processing = FALSE
 
 /obj/docking_port/stationary/marine_dropship/airlock/outer/proc/handle_obscuring_shuttle_turfs()
-	for(var/turf/open/open_turf in block(DROPSHIP_AIRLOCK_BOUNDS))
-		if(istype(open_turf, /turf/open/floor/dropship_airlock/outer))
-			continue
-		if(open_turf.clone)
-			open_turf.clone.layer = 1.93
-			open_turf.clone.color = "#000000"
+	for(var/turf/open/shuttle/shuttle_turf in block(DROPSHIP_AIRLOCK_BOUNDS))
+		var/turf/open/above_turf = locate(shuttle_turf.x, shuttle_turf.y, shuttle_turf.z + 1)
+		if(linked_inner.lowered_dropship)
+			above_turf?.icon_state = "full_black"
+		if(!linked_inner.lowered_dropship)
+			above_turf?.icon_state = "transparent"
 
 /obj/docking_port/stationary/marine_dropship/airlock/outer/proc/get_outer_airlock_turf_lists()
 	outer_airlock_turf_lists = list()
@@ -708,7 +706,6 @@ New Backend Procs
 	. = ..()
 	if(registered)
 		unregister()
-	handle_obscuring_shuttle_turfs()
 	if(!istype(arriving_shuttle, /obj/docking_port/mobile/marine_dropship))
 		return
 	var/obj/docking_port/mobile/marine_dropship/arriving_dropship = arriving_shuttle
@@ -722,6 +719,7 @@ New Backend Procs
 			addtimer(CALLBACK(linked_inner, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, end_outer_airlock_access), FALSE), DROPSHIP_AIRLOCK_OUTER_AIRLOCK_ACCESS_GRACE_PERIOD)
 	linked_inner.disengaged_clamps = FALSE
 	linked_inner.lowered_dropship = TRUE
+	handle_obscuring_shuttle_turfs()
 
 /obj/docking_port/stationary/marine_dropship/airlock/outer/on_departure(obj/docking_port/mobile/departing_shuttle)
 	. = ..()
@@ -729,6 +727,9 @@ New Backend Procs
 		for(var/list/airlock_turfs as anything in airlock_turf_types)
 			for(var/turf/open/floor/dropship_airlock/airlock_turf in airlock_turfs)
 				airlock_turf.open = linked_inner.open_outer_airlock
+	linked_inner.disengaged_clamps = TRUE
+	linked_inner.lowered_dropship = FALSE
+	handle_obscuring_shuttle_turfs()
 
 /*#############################################################################
 Airlock Appearance Effects
@@ -816,6 +817,10 @@ Airlock Appearance Effects
 	icon = 'icons/effects/airlock_outline.dmi'
 	icon_state = "outline"
 	layer = 2.05
+
+/obj/effect/dropship_airlock/outline/Initialize(mapload, depth_plane, ...)
+	. = ..()
+	set_light(1, 0.7, LIGHT_COLOR_BLUE,/atom/movable/lighting_mask/dropship_airlock)
 
 /obj/effect/dropship_airlock/half_tile
 	icon = 'icons/effects/airlock_32x32.dmi'
@@ -949,6 +954,7 @@ Airlock Turf Procs
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "minimal_alpha"
 	vis_contents += GLOB.openspace_backdrop_one_for_all
+	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
 
 	pass_flags = GLOB.pass_flags_cache[type]
 

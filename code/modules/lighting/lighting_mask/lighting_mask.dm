@@ -180,6 +180,10 @@
 /atom/movable/lighting_mask/rotating_conical
 	icon_state = "light_conical_rotating"
 
+/atom/movable/lighting_mask/dropship_airlock
+	icon = 'icons/effects/airlock_outline.dmi'
+	icon_state = "outline"
+
 /atom/movable/lighting_mask/ex_act(severity)
 	return
 

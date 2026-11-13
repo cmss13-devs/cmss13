@@ -8454,7 +8454,7 @@
 /area/almayer/maint/upper/mess)
 "awT" = (
 /obj/structure/machinery/vending/cigarette/koorlander{
-	active_power_usage = d
+	active_power_usage = 0
 	},
 /turf/open/floor/almayer/blue/west,
 /area/almayer/living/bridgebunks)
@@ -14687,7 +14687,7 @@
 /area/almayer/engineering/upper_engineering)
 "aOG" = (
 /obj/structure/machinery/vending/cigarette/koorlander{
-	active_power_usage = d
+	active_power_usage = 0
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
@@ -17468,7 +17468,7 @@
 /area/almayer/middeck/maintenance/pb)
 "aVC" = (
 /obj/structure/machinery/vending/cigarette/koorlander{
-	active_power_usage = d
+	active_power_usage = 0
 	},
 /turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/upper_engineering/starboard)
@@ -45843,7 +45843,7 @@
 /obj/item/book/manual/rank,
 /obj/item/book/manual/engineering_hacking,
 /obj/structure/machinery/vending/cigarette/koorlander{
-	active_power_usage = d
+	active_power_usage = 0
 	},
 /turf/open/floor/almayer/silver/east,
 /area/almayer/shipboard/brig/visitation_waiting)
@@ -47431,7 +47431,7 @@
 /area/almayer/shipboard/brig/processing)
 "cor" = (
 /obj/structure/machinery/vending/cigarette/koorlander{
-	active_power_usage = d
+	active_power_usage = 0
 	},
 /turf/open/floor/almayer/red/east,
 /area/almayer/shipboard/brig/processing)
@@ -51155,7 +51155,7 @@
 	pixel_y = 2
 	},
 /obj/structure/machinery/vending/cigarette/koorlander{
-	active_power_usage = d
+	active_power_usage = 0
 	},
 /obj/item/ashtray/plastic{
 	layer = 3.4;
@@ -51459,7 +51459,7 @@
 /area/almayer/hallways/hangar)
 "cyo" = (
 /obj/structure/machinery/vending/cigarette/koorlander{
-	active_power_usage = d
+	active_power_usage = 0
 	},
 /turf/open/floor/almayer/green/southwest,
 /area/almayer/squads/req)
@@ -53959,7 +53959,7 @@
 	pixel_x = 32
 	},
 /obj/structure/machinery/vending/cigarette/koorlander{
-	active_power_usage = d
+	active_power_usage = 0
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/execution_storage)
@@ -60875,7 +60875,7 @@
 /area/almayer/maint/hull/lower/l_f_p)
 "fqc" = (
 /obj/structure/machinery/vending/cigarette/koorlander{
-	active_power_usage = d
+	active_power_usage = 0
 	},
 /obj/structure/machinery/light/almayer,
 /turf/open/floor/almayer/bluefull,
@@ -60893,7 +60893,7 @@
 /area/almayer/hallways/lower/port_midship_hallway)
 "fqC" = (
 /obj/structure/machinery/vending/cigarette/koorlander{
-	active_power_usage = d
+	active_power_usage = 0
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/lower/workshop)
@@ -63508,7 +63508,7 @@
 /area/almayer/underdeck/hangar)
 "gGr" = (
 /obj/structure/machinery/vending/cigarette/koorlander{
-	active_power_usage = d
+	active_power_usage = 0
 	},
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera"
@@ -67538,7 +67538,7 @@
 	name = "ship-grade camera"
 	},
 /obj/structure/machinery/vending/cigarette/koorlander{
-	active_power_usage = d
+	active_power_usage = 0
 	},
 /turf/open/floor/almayer/red/southeast,
 /area/almayer/shipboard/brig/interrogation)
@@ -74123,7 +74123,7 @@
 /area/almayer/squads/req)
 "lym" = (
 /obj/structure/machinery/vending/cigarette/koorlander{
-	active_power_usage = d
+	active_power_usage = 0
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_f_p)
@@ -74349,7 +74349,7 @@
 /obj/item/book/manual/rank,
 /obj/item/book/manual/engineering_hacking,
 /obj/structure/machinery/vending/cigarette/koorlander{
-	active_power_usage = d
+	active_power_usage = 0
 	},
 /turf/open/floor/almayer/silver/west,
 /area/almayer/shipboard/brig/lobby)

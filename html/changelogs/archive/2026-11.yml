@@ -1,0 +1,263 @@
+2026-11-07:
+  Drathek:
+  - bugfix: Fixed preferences getting partially wiped if they underwent an upgrade
+      when converting to json. A one-time backup (that admins can retrigger) is offered
+      if possibly applicable
+  - bugfix: Fixed synth loadouts unnecessarily saving per-character loadouts
+  - bugfix: Possibly fixed a list out of bounds error for sentry
+  - admin: Event verb to change security level now has a note that delta will cause
+      SD
+  - admin: Event verb to self destruct now does a 30s countdown and then detonates
+      the ship
+  - soundadd: Added a crop of the SD countdown that is just the approximate last 30s
+  - bugfix: set_security_level no longer sends signals on potentially invalid levels
+      and also disallows changing off of delta
+  - rscadd: Larva queue now shows total of currently eligible candidates as well as
+      an absolute position and total (so the position that would include anyone currently
+      ineligible)
+  - balance: Larva queue position time is now set on observe rather than connect
+  - admin: If there is somehow a way to use the topic to send players back to lobby,
+      it now uses the same proc as the player panel one
+  - balance: Survivors no longer grant extra bursts on nested capture but grant 0.5
+      larva on permadeath (if they didn't chestburst and its within the first hour
+      of the round)
+  - code_imp: Role authority now sets up survivors in a loop based on type rather
+      than hardcoded for each kind of survivor job
+  - code_imp: All previous calls to send COMSIG_HUMAN_SET_UNDEFIBBABLE now utilize
+      a helper proc set_undefibbable instead
+  - config: Default config for nested extra bursts set to the value live has it at
+  - bugfix: Fixed chestbursting and gibbing not triggering the undefib signal
+  - bugfix: Fixed a double qdel in the event a survivor tries to spawn without a landmark
+  - rscdel: Removed the issurvivorjob since it was not considering a CO survivor job
+      anyways (shouldn't change any behavior since orbit menu would fallback to faction_group)
+  - maptweak: Added a survivor spawner to USS runtime so its possible to spawn as
+      a normal survivor there
+  - bugfix: Fixed an unreliable way for defender and bulwark headbutts to refund cooldown
+  - balance: Defender and bulwark headbutts no longer attempt to throw self when adjacent
+      to their target so its more responsive
+  - rscadd: Added logic for single use door buttons (and subtypes that toggle again
+      once after a delay)
+  - maptweak: Some chances claim buttons are now single use and the easter egg only
+      has a 2 minute lockdown
+  - code_imp: Typed and autodoc'd some GLOB mob lists
+  - bugfix: Excluded facehuggers and lesser drones from influx player stats
+  - bugfix: Fixed the possibility of multiple mob markers being created for xenos
+      if gib called multiple times
+  - balance: If xenos start with no roundstart queen, they get an extra larva once
+      someone evolves into queen
+  - balance: Precount remainder that didn't manage to increase larva count is now
+      added to latejoin tally
+  - qol: Evolve button is granted to drones when there is no queen
+  - qol: Queen location selection is just immediate if there is only one choice
+  - bugfix: Null checked prefs in mob login
+  Drathek The32bitguy:
+  - admin: Fixed various bugs with buildmode namely it double clicking any adv mode
+      breaking if you click it again
+  - admin: Buildmode fill no longer deletes the region by default (but you still can
+      with ctrl click)
+  - admin: Various buildmode qol like area edit suggesting typepaths of what you typed
+      rather than being strict and more types in edit mode
+  - admin: Fixed can_vv_modify not being respected (namely this now prevents edits
+      to clients, ammo datum, and caste datums)
+  Kugamo:
+  - rscadd: Eyelids of humans now blink periodically while living, and eye-related
+      emotes now are visually expressed through them.
+  - rscadd: Added the ability for marines to close the eyes of their dead by help-intent-eye-zone-clicking
+      on them.
+  - rscadd: Added emotes "closeeyes", "openeyes", "sleep"/"nap", and "wake" for humans
+  - qol: Added a subtype of chairs that turn into chair stacks, for mappers qol.
+  - bugfix: Folding chairs will now detect duplicates of themselves in the same turf,
+      and then turn into chair stacks if they've found any.
+  - maptweak: Replaced false stacks of chairs (made from mapping) with actual stacks
+      of chairs objs.
+  Kugamo, Nemesis1337:
+  - bugfix: Fixed tables mapped to be flipped not acting like flipped tables.
+  - qol: 'Added subtypes for all the flippable tables: table/flipped for mappers.'
+  - imagetweak: Resprited the single reinforced table to look like its multi-tile
+      version
+  Kugamo, chaos-creations:
+  - imageadd: New inhand sprites for the map item when looking at it.
+  - imagetweak: Resprited map items, and their inhand sprites.
+  - rscadd: map items now can be folded up into much smaller items. (and unfolded).
+  - soundadd: Adds sounds for folding/unfolding the map item.
+  Steelpoint:
+  - mapadd: The White Antre landing zone has been redesigned. It features a more constrained
+      north and southern entrance, an expanded internal layout, and the outer walls
+      are now better covered and are shut off with blast doors. These blast doors
+      can be bypassed via the internal lockdown override, acid or explosives.
+  - maptweak: A pass of resin/hull walls within the eastern areas of White Antre has
+      been made with the goal to tone down the excessive amount of harsh choke points
+      and overly zealous use of hull walls.
+  - maptweak: The South-East city of Tyrargo, formerly the security building and south-east
+      streets, are a new hive location. The area is more built up, pre-weeded, is
+      given CAS protection and is generally now far harder to attack for Marines.
+  - maptweak: The car park is now a single-z building, and offers more protection
+      for the hive.
+  - maptweak: The security building is now single-z.
+  - maptweak: The city entrance gates are more built up for the hive and offer more
+      cover, giving the Xenomorphs a opportunity to attempt to contest this area.
+  - maptweak: The south city flank entrance via the river has been expanded to allow
+      easier access.
+  - maptweak: The landing zones on Tyrargo Rift have been resized and/or slightly
+      altered to make them less overly large.
+  - maptweak: The river running into the city can no longer have barricades built
+      on it.
+  - maptweak: Wooden boards will now be hidden by xenomorph resin.
+  - maptweak: Fixed a few minor oversights allow resin structures to be built on tiles
+      that will hide the structure from view.
+  - balance: Slightly toned down weapon ammo availability to initial US Army survivor
+      spawns.
+  - balance: Survivor loot spawns slightly altered to encourage venturing into xeno
+      territory for better gear. Less emphasis on having easier access to better loot.
+  Steelpoint, Dorodomki, Zenith:
+  - mapadd: 'LV-1021: Operation Falcon''s Fury has been added to the game. A regular
+      ground map set on an uncharted Jungle world. The Marines of the USS Almayer
+      have been dispatched to conduct a search and destroy operation against a known
+      CLF training and logistics camp, however the Xenomorph threat unexpectedly reveals
+      itself on this world.'
+  - rscadd: CLF special forces uniforms and armour have been added to the game (Credit
+      to Dorodomki)
+  - rscadd: CANC military uniforms and armour have been added to the game as rare
+      standard CLF gear and survivor loot (Credit to AmoryBlaine). (The CANC, known
+      as the Chinese/Asian-Nation Cooperate, was a supranational entity that was absorbed
+      into the UPP, their old gear may end up in the hands of desperate fighters).
+  - rscadd: New wooden chest drawers have been added.
+  - rscadd: The CLF synthetic is now issued with a set of Synthetic compliant armor.
+  - rscadd: A new set of wooden walls, windows and dirt/grass floor sprites have been
+      added, these are alternative color schemes of the current wooden walls (Credit
+      to Zenith).
+  - rscadd: A unmoveable, hacked CLF sentry gun and CLF M20 anti-personnel mines have
+      been added to the game. The CLF mines have a new RNG spawner that can set a
+      armed mine on the map.
+  - imageadd: New armour sprites for the CLF and CANC. New wooden wall, floor and
+      window sprites. New red CLF beret.
+  Steelpoint, dimdimich1996, Zenith:
+  - mapadd: The Cape River Mining Colony has been added to the game. Set within a
+      mining operation on a desert world operated by the Con-Amalagated corporation.
+      It is a single-z map.
+  - imageadd: New floor tile sprites with a space ship/station theme has been added
+      to the game. (Thanks to dimdimich1996 and Zenith)
+  - imageadd: A new set of Con-Am themed props have been added, including floor sprites
+      and faction flags.
+  - rscadd: The AK4707 assault rifle has a chance to spawn as part of the random 'UPP'
+      gun loot pool, usually seen on ground maps.
+  - rscadd: The SADAR anti-tank rocket launcher has been removed from the random 'Special'
+      loot pool.
+  - rscadd: A new 'materials' random loot pool has been added, this will spawn one
+      of several random different material spawns in a specific area, such as metal,
+      plasteel, sandbags or generic items like wood or cardboard.
+  TrollerNoob:
+  - rscadd: The USCM's internal combat statistic database has been updated to include
+      Air Support Ordinance. Pilots, examine your ship's munitions!
+  - rscadd: Added an information codex to Dropship Ammo on examine, similar to guns.
+      Displays detailed ammo statistics and visually shows explosive area.
+  - qol: Made Dropship Ammo description easier to read.
+  - imageadd: Added codex lineart for every Dropship Ammo.
+  - refactor: Refactored ammo vars in dropship_ammo.dm, making it easier to tweak
+      numbers.
+2026-11-08:
+  Ghostsheet:
+  - rscadd: Flamers can now take under-barrel rail light.
+  Mary-Marilyn:
+  - balance: MK1 AP mags now have the same scaling as MK1 kits
+  kleinerstation13:
+  - rscadd: Added an USCM colony headset with marine HUD icons
+  - balance: The USCM recruiter survivor varaint is now part of the Marine faction
+      and has extra fluff items in their loadout
+2026-11-09:
+  Drathek, Steelpoint, DimDim:
+  - rscadd: Added a lowpop survival mode which has an uncapped round start survivor
+      amount of survivors vs xenos. Late joining as survivor is somewhat limited.
+      Survivors can attempt to hold static comms ~15 minutes (with alert at half way)
+      to get an escape shuttle, but its otherwise a deathmatch. Queen will be enclosed
+      in skeletal resin until 30 minutes have elapsed, they're escaping, or there's
+      only a few xenos left.
+  - rscadd: Added skeletal resin subtype that larva can burrow through if there's
+      an open turf up to a couple tiles away on the other side
+  - rscadd: Added basic logic for a clientless queen to ovi, set pheros and leaders
+  - rscadd: Added Skeletal resin doors that are indestructible (but only mapped in)
+      and added structure_spawners to spawn them; they chomp on humans if they are
+      standing in their way.
+  - rscadd: Added item_pool_spawner, static_comms, fog_blocker, and door_blocker for
+      item spawning, unique comms locations for this mode, and blockers that lift
+      when the shuttle is called for this mode. /obj/effect/spawner/random also supports
+      a gamemode flag too tho it probably should only be used in conjunction with
+      spawn_on_roundstart.
+  - rscadd: Map configs can now override survivor types by mode
+  - rscadd: Added a skill pamphlet that can set your skill level to trained and is
+      the same layer as comms tower (it is spawned on the tower in this mode, and
+      if its out of reach try shooting it)
+  - bugfix: Mapped high priority roles (namely for WO) now update the preview doll
+  - bugfix: ERT shuttles now unlock doors upon arrival
+  - bugfix: Fixed incorrect SPAN header usage for WO announcements
+  - bugfix: Fixed mapping subsystem trying to preload non-dmm files
+  - bugfix: Evo buff now restores the previous allow_no_queen_evo rather than forcing
+      it false
+  - bugfix: Fixed CMTV appearing at world origin (atleast for this mode) at round
+      start
+  - bugfix: Fixed xeno resin doors not blending with walls correctly on spawn
+  - bugfix: Fixed ERT shuttle doors not force closing doors on launch
+  - bugfix: Antidelay for xeno tacmap and cloak fizzle now only checks humans (no
+      synths, preds, or monkeys) and skips nested
+  - bugfix: count_humans_and_xenos for round end checks now checks should_block_game_interaction
+      too and has other misc changes
+  - bugfix: Last human anti-delay checks now are also performed on nest (not just
+      death) as well as survivor evac shuttle departure
+  - bugfix: Check win and anti-delay checks on humans now handle if mobs are in vehicles
+  - bugfix: Survivors now always register a minimap marker even if their headset has
+      no hud
+  - code_imp: ERTs now weakref members
+  - code_imp: Shuttle arrival and prearrival now have a signal
+  - code_imp: Survivor announcement helper is simplified
+  - code_imp: Gamemodes can now specify a maximum number of players before its no
+      longer voteable
+  - code_imp: MODE_HAS_FLAG now has a null check for the mode
+  - code_imp: Cleaned up survivor handle_equip_gear code namely to handle mapped roles
+      like Survivor Unlimited
+  - code_imp: Fog blockers now support infinite delay without making unnecessary timers
+  - code_imp: item_pool_spawner have been cleaned up and now support providing it
+      a list of type paths to pick from as well as a multiplier
+  - code_imp: Moved update_energy_scale into latejoin_update and removed unnecessary
+      update_gear_scale calls for 0 weight
+  - spellcheck: Tweaked hive buff messages to be grant/bless instead of purchase and
+      turned some late join prompts into questions rather than statements
+  - rscdel: Removed unnecessary mind list in ticker
+  - server: Adds more statistics to round results db for new round result types
+  - admin: Added a verb to manually grant a hive buffs (has reduced restrictions to
+      grant it)
+  - mapadd: Added a version of the alamo that is an ERT shuttle and a version of the
+      uscm station that can accommodate it
+  - maptweak: Updated a bunch of maps to accommodate survivor mode changes
+  - qol: Added xeno and queen character previews to better indicate if they're high
+      priority job
+  - qol: Game mode is no longer displayed in new player stats panel until the mode
+      is loaded (instead of blindly saying Distress Signal)
+  - qol: Late joining as a xeno as a new player can now prompt a tutorial suggestion
+  - imageadd: Added various coderspites for new landmarks and skeletal resin doors
+      by DimDim
+2026-11-10:
+  Kugamo:
+  - rscadd: Portable generators now vibrate while running (animating them back and
+      forth very slightly)
+  Mary-Marilyn:
+  - ui: Redesigned the TGUI latejoin menu to be more compact. All jobs now fit on
+      your screen without scrolling
+  - ui: Latejoin and job preferences now follow the crew manifest's department order
+      and colors.
+  - qol: Added squad badges to latejoin. Clicking a badge joins that squad.
+2026-11-11:
+  Nihisohel, LCMS1 for sprites:
+  - rscadd: Guns with the appropriate ammunition type and presentation now litter
+      the ground with their spent cases and cartridges.
+  - spellcheck: Tweaks some misrepresented lore about XM43E1 casings.
+  - mapadd: Adds backend for making randomized casings on mapload, and the ability
+      to disable such for mappers
+  - maptweak: Changes every instance of Tyrargo's prop parent varedited into faux
+      casings into the actual casing parent (Please stop doing this)
+  - config: Adds a round modifier allowing an almost total disabling of gun casings
+  Puckaboo2:
+  - qol: Researchers are no longer stuck between choosing a tie or webbing accessory.
+      They can have both if they wish.
+  - qol: Researchers now spawn with brown laceup shoes and the classic blue R&D uniform
+      on loading in.
+  - code_imp: Reorganizes the Research ColMarTech loadout section.

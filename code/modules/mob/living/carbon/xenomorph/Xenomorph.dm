@@ -194,6 +194,9 @@
 	var/datum/action/minimap/minimap_type = /datum/action/minimap/xeno
 	var/datum/weakref/minimap_ref
 
+	//water overlay configuration the xeno uses
+	water_config = /datum/water_overlay_config/xeno/medium
+
 	//////////////////////////////////////////////////////////////////
 	//
 	// Modifiers
@@ -914,6 +917,7 @@
 	recalculate_stats()
 	var/amt_to_death = health - health_threshold_dead
 	adjustBruteLoss(amt_to_death - 5)
+	updatehealth()
 
 /mob/living/carbon/xenomorph/prepare_huds()
 	..()
@@ -1281,7 +1285,11 @@
 	if (mob_size != MOB_SIZE_SMALL)
 		return FALSE
 
-	var/move_dir = get_dir(src, loc)
+	var/move_dir = get_dir(src, current_structure)
+	for(var/atom/movable/atom in get_turf(src))
+		if(atom != current_structure && atom.density && atom.BlockedExitDirs(src, move_dir))
+			to_chat(src, SPAN_WARNING("[atom] prevents us from squeezing under [current_structure]!"))
+			return FALSE
 	for(var/atom/movable/atom in get_turf(current_structure))
 		if(atom != current_structure && atom.density && atom.BlockedPassDirs(src, move_dir))
 			to_chat(src, SPAN_WARNING("[atom] prevents us from squeezing under [current_structure]!"))

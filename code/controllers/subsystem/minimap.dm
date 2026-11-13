@@ -303,7 +303,11 @@ SUBSYSTEM_DEF(minimaps)
 	for(var/cic_hash in cic_drawings)
 		var/image/cic_drawing = cic_drawings[cic_hash]
 		if(cic_drawing)
-			var/image/transmitted_copy = new(cic_drawing.icon, cic_drawing.icon_state, cic_drawing.layer, cic_drawing.dir)
+			var/icon/transmitted_icon = cic_drawing.icon
+			if(!cic_drawing.maptext)
+				transmitted_icon = icon(cic_drawing.icon)
+				transmitted_icon.Crop(1, 1, MINIMAP_PIXEL_SIZE, MINIMAP_PIXEL_SIZE)
+			var/image/transmitted_copy = new(transmitted_icon, cic_drawing.icon_state, cic_drawing.layer, cic_drawing.dir)
 			transmitted_copy.pixel_x = cic_drawing.pixel_x
 			transmitted_copy.pixel_y = cic_drawing.pixel_y
 			transmitted_copy.plane = TACMAP_PLANE
@@ -524,35 +528,37 @@ SUBSYSTEM_DEF(minimaps)
  * * marker: image or mutable_appearance we want to be using on the map
  */
 /datum/controller/subsystem/minimaps/proc/add_marker(atom/target, hud_flags = NONE, image/blip, image_x, image_y, is_label=FALSE)
-	if(!isatom(target) || !hud_flags || !blip)
+	if(!hud_flags || !blip)
 		CRASH("Invalid marker added to subsystem")
 
-	var/actual_z = target.z
-	if(ismob(target) && target.loc && !isturf(target.loc))
-		actual_z = target.loc.z
+	// Legacy behavior: track mobs one level in
+	var/turf/target_turf = get_turf(target)
+	var/z = target.z
+	if(ismob(target) && !z && target.loc)
+		z = target.loc.z
+	if(!z)
+		return
+	z = "[z]"
 
-	if(!initialized || !(minimaps_by_z["[actual_z]"])) //the minimap doesn't exist yet, z level was probably loaded after init
-		for(var/datum/callback/callback as anything in LAZYACCESS(earlyadds, "[actual_z]"))
+	var/datum/hud_displays/minimap = minimaps_by_z[z]
+
+	if(!initialized || !minimap) //the minimap doesn't exist yet, z level was probably loaded after init
+		for(var/datum/callback/callback as anything in LAZYACCESS(earlyadds, z))
 			if(callback.arguments[1] == target)
 				return
-		LAZYADDASSOCLIST(earlyadds, "[actual_z]", CALLBACK(src, PROC_REF(add_marker), target, hud_flags, blip))
+		LAZYADDASSOCLIST(earlyadds, z, CALLBACK(src, PROC_REF(add_marker), target, hud_flags, blip))
 		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(remove_earlyadd), override = TRUE) //Override required for late z-level loading to prevent hard dels where an atom is initiated during z load, but is qdel'd before it finishes
 		return
 
-
-	var/turf/target_turf = get_turf(target)
-	if(ismob(target) && target.loc && !isturf(target.loc))
-		target_turf = get_turf(target.loc)
-
-	blip.pixel_x = MINIMAP_PIXEL_FROM_WORLD(target_turf.x) + minimaps_by_z["[target_turf.z]"].x_offset + image_x
-	blip.pixel_y = MINIMAP_PIXEL_FROM_WORLD(target_turf.y) + minimaps_by_z["[target_turf.z]"].y_offset + image_y
+	blip.pixel_x = MINIMAP_PIXEL_FROM_WORLD(target_turf.x) + minimap.x_offset + image_x
+	blip.pixel_y = MINIMAP_PIXEL_FROM_WORLD(target_turf.y) + minimap.y_offset + image_y
 
 	images_by_source[target] = blip
 	for(var/flag in bitfield2list(hud_flags))
 		if(is_label)
 			flag = "[flag]label"
-		minimaps_by_z["[target_turf.z]"].images_assoc["[flag]"][target] = blip
-		minimaps_by_z["[target_turf.z]"].images_raw["[flag]"] += blip
+		minimap.images_assoc["[flag]"][target] = blip
+		minimap.images_raw["[flag]"] += blip
 		for(var/datum/minimap_updater/updater as anything in update_targets["[flag]"])
 			if(target_turf.z == updater.ztarget)
 				updater.raw_blips += blip
@@ -686,7 +692,7 @@ SUBSYSTEM_DEF(minimaps)
  * * zlevel: zlevel to fetch map for
  * * flags: map flags to fetch from
  */
-/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, live, popup, drawing, client/for_client)
+/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, live, popup, drawing, client/for_client, uncached = FALSE)
 	if(!zlevel || zlevel <= 0 || !SSminimaps.initialized)
 		return null
 	if(!SSminimaps.minimaps_by_z["[zlevel]"])
@@ -697,10 +703,10 @@ SUBSYSTEM_DEF(minimaps)
 
 	var/hash = "[zlevel]-[flags]-[live]-[popup]-[drawing]"
 
-	if(for_client || (!popup && !live))
+	if(for_client || uncached || (!popup && !live))
 		var/client_hash = "[hash][for_client ? "-[REF(for_client)]" : ""]"
 
-		if(hashed_minimaps[client_hash])
+		if(!uncached && hashed_minimaps[client_hash])
 			return hashed_minimaps[client_hash]
 
 		if(!hashed_minimaps[hash])
@@ -758,7 +764,8 @@ SUBSYSTEM_DEF(minimaps)
 					// No frozen state available, apply current transmitted drawings only
 					map.update_drawing_overlay(show_cic_drawings = FALSE)
 
-		hashed_minimaps[client_hash] = map
+		if(!uncached)
+			hashed_minimaps[client_hash] = map
 		return map
 
 	var/atom/movable/screen/minimap/map = hashed_minimaps[hash]
@@ -927,6 +934,33 @@ SUBSYSTEM_DEF(minimaps)
 	var/icon/ceiling_overlay = SSminimaps.create_ceiling_overlay(owner_client, target)
 	if(ceiling_overlay)
 		add_filter("ceiling_protection", 9, layering_filter(icon = ceiling_overlay, blend_mode = BLEND_OVERLAY))
+
+/// client ceiling layer for minimaps embedded in a console
+/atom/movable/screen/minimap_ceiling_layer
+	name = ""
+	plane = TACMAP_PLANE
+	layer = TACMAP_LAYER + 0.1
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	blend_mode = BLEND_OVERLAY
+	appearance_flags = NONE
+	var/target_zlevel
+	var/enabled = FALSE
+
+/atom/movable/screen/minimap_ceiling_layer/Initialize(mapload, map_ref, target_zlevel, matrix/map_transform)
+	. = ..()
+	src.target_zlevel = target_zlevel
+	assigned_map = map_ref
+	screen_loc = "[map_ref]:1,1"
+	transform = map_transform
+
+/atom/movable/screen/minimap_ceiling_layer/proc/set_enabled(new_enabled)
+	enabled = new_enabled
+	if(!enabled)
+		icon = null
+		return
+
+	var/datum/hud_displays/hud_data = SSminimaps.minimaps_by_z["[target_zlevel]"]
+	icon = hud_data?.cached_ceiling_overlay
 
 /// Updates drawing overlay for this minimap based on what drawings should be visible
 /atom/movable/screen/minimap/proc/update_drawing_overlay(show_cic_drawings = FALSE)

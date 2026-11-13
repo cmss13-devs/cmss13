@@ -37,6 +37,9 @@
 			)
 	)
 
+	if(!late_join_ui)
+		late_join_ui = new()
+
 	tgui_interact(src)
 
 /mob/new_player/tgui_interact(mob/user, datum/tgui/ui)
@@ -64,14 +67,16 @@
 
 	.["tutorials_ready"] = SSticker?.current_state == GAME_STATE_PLAYING
 	.["round_start"] = !SSticker || !SSticker.mode || SSticker.current_state <= GAME_STATE_PREGAME
+	.["round_starting"] = SSticker && (SSticker.current_state == GAME_STATE_SETTING_UP || SSticker.current_state == GAME_STATE_PREGAME && SSticker.time_left <= 0)
 	.["readied"] = ready
 
 	.["confirmation_message"] = lobby_confirmation_message
 
 	.["upp_enabled"] = GLOB.master_mode == /datum/game_mode/extended/faction_clash/cm_vs_upp::name
 	.["xenomorph_enabled"] = GLOB.master_mode == /datum/game_mode/colonialmarines::name && client.prefs && (client.prefs.get_job_priority(JOB_XENOMORPH) || client.prefs.get_job_priority(JOB_XENOMORPH_QUEEN))
-	.["predator_enabled"] = SSticker.mode?.flags_round_type & MODE_PREDATOR && SSticker.mode.check_predator_late_join(src, FALSE)
+	.["predator_enabled"] = MODE_HAS_FLAG(MODE_PREDATOR) && SSticker.mode.check_predator_late_join(src, FALSE)
 	.["fax_responder_enabled"] = SSticker.mode?.check_fax_responder_late_join(src, FALSE)
+	.["survivor_replace_uscm"] = MODE_HAS_FLAG(MODE_SURVIVE)
 
 	.["preference_issues"] = client.prefs.errors
 
@@ -128,7 +133,9 @@
 			ViewHiveLeaders()
 			return TRUE
 
-		if("late_join")
+		if("late_join", "late_join_upp")
+			if(action == "late_join_upp" && GLOB.master_mode != /datum/game_mode/extended/faction_clash/cm_vs_upp::name)
+				return FALSE
 			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
 				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
 				return FALSE
@@ -142,10 +149,11 @@
 					tutorial_menu()
 					return FALSE
 
-			late_choices()
+			late_join_ui.faction = action == "late_join_upp" ? FACTION_UPP : FACTION_NEUTRAL
+			late_join_ui.tgui_interact(src)
 			return TRUE
 
-		if("late_join_upp")
+		if("late_join_survivor")
 			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
 				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
 				return FALSE
@@ -159,16 +167,26 @@
 					tutorial_menu()
 					return FALSE
 
-			late_choices_upp()
-			return TRUE
+			if(!istype(SSticker.mode, /datum/game_mode/survive))
+				to_chat(src, SPAN_WARNING("The game mode is not currently Survive."))
+				return FALSE
+
+			if(tgui_alert(src, "Confirm joining as a Survivor?", "Confirmation", list("Yes", "No"), 10 SECONDS) == "Yes")
+				var/datum/game_mode/survive/survive_mode = SSticker.mode
+				survive_mode.attempt_to_join_as_locker_survivor(src)
+				return TRUE
+
+			return FALSE
 
 		if("late_join_xeno")
 			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
 				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
 				return FALSE
 
-			if(!client)
-				return FALSE
+			if(client.player_data?.playtime_loaded && (client.get_total_xeno_playtime() < CONFIG_GET(number/notify_new_player_age)) && !length(client.prefs.completed_tutorials))
+				if(tgui_alert(src, "You have little playtime and haven't completed any tutorials. Would you like to go to the tutorial menu?", "Tutorial", list("Yes", "No")) == "Yes")
+					tutorial_menu()
+					return FALSE
 
 			if(SSticker.mode.check_xeno_late_join(src))
 				var/new_xeno = SSticker.mode.attempt_to_join_as_xeno(src, FALSE)

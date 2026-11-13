@@ -24,9 +24,3 @@
 
 /datum/config_entry/number/animal_delay
 	config_entry_value = 0
-
-/datum/config_entry/number/xeno_number_divider
-	config_entry_value = 4
-
-/datum/config_entry/number/surv_number_divider
-	config_entry_value = 10

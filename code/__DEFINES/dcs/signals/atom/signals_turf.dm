@@ -21,6 +21,10 @@
  */
 #define COMSIG_TURF_ENTERED "turf_entered"
 
+/// Called when something attempts to deploy on the turf
+#define COMSIG_TURF_PRE_DEPLOYMENT "turf_pre_deployment"
+	#define COMPONENT_TURF_PRE_DEPLOYMENT_BLOCKED (1<<0)
+
 /// Called when a bullet hits a turf
 #define COMSIG_TURF_BULLET_ACT "turf_bullet_act"
 	#define COMPONENT_BULLET_ACT_OVERRIDE (1<<0)
@@ -40,3 +44,6 @@
 
 ///from /turf/proc/afterShuttleMove() : (/turf/old_turf)
 #define COMSIG_TURF_AFTER_SHUTTLE_MOVE "turf_after_shuttle_move"
+
+///from /turf/proc/launched_landing(atom/movable/launched)
+#define COMSIG_TURF_LAUNCHED_LANDING "turf_launched_landing"

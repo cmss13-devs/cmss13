@@ -77,12 +77,22 @@
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 
+	water_config = /datum/water_overlay_config/xeno/squatter
+
 	icon_xeno = 'icons/mob/xenos/castes/tier_0/lesser_drone.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_0/lesser_drone.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds.dmi'
 	weed_food_states = list("Lesser_Drone_1","Lesser_Drone_2","Lesser_Drone_3")
 	weed_food_states_flipped = list("Lesser_Drone_1","Lesser_Drone_2","Lesser_Drone_3")
+
+/mob/living/carbon/xenomorph/lesser_drone/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	GLOB.xeno_ghost_role_mobs += src
+	return ..()
+
+/mob/living/carbon/xenomorph/lesser_drone/Destroy()
+	GLOB.xeno_ghost_role_mobs -= src
+	return ..()
 
 /mob/living/carbon/xenomorph/lesser_drone/Login()
 	var/last_ckey_inhabited = persistent_ckey
@@ -127,11 +137,14 @@
 	name = "Base Lesser Drone Behavior Delegate"
 
 /datum/behavior_delegate/lesser_drone_base/on_life()
-	if(bound_xeno.body_position == STANDING_UP && !(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno)))
+	if(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno))
+		return
+	if(bound_xeno.body_position == STANDING_UP)
 		bound_xeno.adjustBruteLoss(5)
+		bound_xeno.updatehealth()
 
 
-/datum/action/xeno_action/onclick/plant_weeds/lesser/use_ability(atom/target_atom)
+/datum/action/xeno_action/onclick/plant_weeds/lesser/use_ability(atom/target_atom, autoplanted)
 	var/mob/living/carbon/xenomorph/lesser_drone/xeno = owner
 	var/obj/effect/alien/weeds/node/mother_node
 

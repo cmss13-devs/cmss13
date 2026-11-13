@@ -158,7 +158,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 				if(new_handful)
 					user.put_in_hands(new_handful)
 				playsound(user, reload_sound, 25, TRUE)
-				to_chat(user, SPAN_WARNING("You eject a round from the [src]'s chamber."))
+				to_chat(user, SPAN_WARNING("You eject a round from [src]'s chamber."))
 		else
 			if(user)
 				to_chat(user, SPAN_WARNING("\The [src] is already empty."))
@@ -230,6 +230,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	current_mag.chamber_position++
 	current_mag.chamber_contents[current_mag.chamber_position] = selection
 	playsound(user, reload_sound, 25, TRUE)
+	eject_casing()
 	return TRUE
 
 /obj/item/weapon/gun/lever_action/proc/work_lever(mob/living/carbon/human/user)
@@ -257,6 +258,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 			twohand_lever(user)
 
 		playsound(user, lever_sound, 25, TRUE)
+		eject_casing()
 		levered = TRUE
 
 /obj/item/weapon/gun/lever_action/proc/twohand_lever(mob/living/carbon/human/user)
@@ -392,8 +394,6 @@ their unique feature is that a direct hit will buff your damage and firerate
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet/upp, // Barrel
 		/obj/item/attachable/bayonet,
-		/obj/item/attachable/extended_barrel,
-		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/reddot, // Rail

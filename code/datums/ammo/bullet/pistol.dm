@@ -13,6 +13,7 @@
 	damage = 40
 	penetration= ARMOR_PENETRATION_TIER_2
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
+	shell_casing = /obj/effect/decal/cleanable/ammo_casing/bullet
 
 /datum/ammo/bullet/pistol/setup_faction_clash_values()
 	. = ..()
@@ -107,6 +108,7 @@
 	hit_effect_color = "#00aeff"
 	stamina_damage = 30
 	accuracy = HIT_ACCURACY_TIER_4
+	shell_casing = null
 
 // Used by M1911 and KT-42
 /datum/ammo/bullet/pistol/heavy
@@ -290,10 +292,10 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
-/datum/ammo/bullet/pistol/mankey/on_hit_mob(mob/M,obj/projectile/P)
-	if(P && P.loc && !M.stat && !istype(M,/mob/living/carbon/human/monkey))
-		P.visible_message(SPAN_DANGER("The [src] chimpers furiously!"))
-		new /mob/living/carbon/human/monkey(P.loc)
+/datum/ammo/bullet/pistol/mankey/on_hit_mob(mob/monke, obj/projectile/boolet)
+	if(boolet && boolet.loc && !monke.stat && !istype(monke, /mob/living/carbon/human/monkey))
+		boolet.visible_message(SPAN_DANGER("[src] chimpers furiously!"))
+		new /mob/living/carbon/human/monkey(boolet.loc)
 
 /datum/ammo/bullet/pistol/smart
 	name = "smartpistol bullet"

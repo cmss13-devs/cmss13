@@ -296,7 +296,7 @@
 	icon_state = "neuro_glob"
 	ping = "ping_x"
 	debilitate = list(2,2,0,1,11,12,1,10) // Stun,knockdown,knockout,irradiate,stutter,eyeblur,drowsy,agony
-	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST|AMMO_HITS_TARGET_TURF|AMMO_ACIDIC
+	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_IGNORE_RESIST|AMMO_HITS_TARGET_TURF|AMMO_ACIDIC
 	spit_cost = 200
 	pre_spit_warn = TRUE
 	spit_windup = 5 SECONDS

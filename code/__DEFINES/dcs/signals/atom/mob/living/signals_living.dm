@@ -44,6 +44,9 @@
 #define COMSIG_LIVING_BED_BUCKLED "living_bed_buckled"
 ///from base of mob/living/set_body_position()
 #define COMSIG_LIVING_SET_BODY_POSITION  "living_set_body_position"
+///from /mob/living/proc/update_layer()
+#define COMSIG_LIVING_LAYER_UPDATED  "living_later_updated"
+
 
 /// from base of /mob/living/apply_status_effect(): (datum/status_effect/new_effect)
 #define COMSIG_LIVING_APPLY_EFFECT "living_apply_effect"
@@ -62,5 +65,5 @@
 ///from /mob/living/proc/set_lying_angle
 #define COMSIG_LIVING_SET_LYING_ANGLE "living_set_lying_angle"
 
-//from /mob/living/proc/uncertain_danger_on_turf
-#define COMSIG_LIVING_IN_TURF_DANGER "living_in_turf_danger"
+///from do_after
+#define COMSIG_LIVING_PRE_DOAFTER "living_pre_doafter"

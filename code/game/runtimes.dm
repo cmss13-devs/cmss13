@@ -90,7 +90,7 @@ GLOBAL_REAL_VAR(total_runtimes)
 /datum/static_callee/New(list/_args, file, line, proc, _src, _usr, name)
 	src._args = _args.Copy()
 	src.file = file
-	src.line = line
+	src.line = max(line, 0)
 	src.proc = proc
 	src._src = _src // sigh
 	src._usr = _usr

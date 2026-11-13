@@ -61,7 +61,6 @@
 		return
 
 	apply_damage(severity, BRUTE, enviro=enviro)
-	updatehealth()
 
 	var/knock_value = min(round(severity*0.1, 1), 10)
 	if(knock_value > 0)
@@ -511,6 +510,8 @@
 	add_filter("hauled_shadow", 1, color_matrix_filter(rgb(95, 95, 95)))
 	pixel_y = -7
 	next_haul_resist = 0
+
+	SEND_SIGNAL(src, COMSIG_HUMAN_HAULED, xeno)
 
 /mob/living/carbon/human/proc/release_haul_death()
 	SIGNAL_HANDLER

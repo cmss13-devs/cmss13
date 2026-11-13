@@ -121,6 +121,10 @@
 	if(!admin_holder)
 		return
 
+	if(!SSticker || SSticker.current_state == GAME_STATE_STARTUP)
+		to_chat(src, SPAN_WARNING("The game is still setting up, please try again later."))
+		return
+
 	var/roles[] = new
 	var/datum/job/selected_job
 
@@ -140,27 +144,25 @@
 
 	selected_job = GLOB.RoleAuthority.roles_by_name[role]
 
-	var/slot_type = tgui_input_list(src, "Modify roundstart or latejoin slots?", "Modify which slots?", list("Roundstart", "Latejoin"), 30 SECONDS)
-	if(!slot_type)
-		return
-
-	var/tpos  = selected_job.spawn_positions
-	var/slot_number = tgui_input_number(src, "How many slots should [selected_job.title] have?\nCurrently taken slots: [selected_job.current_positions]\nTotal amount of slots opened this round: [selected_job.total_positions_so_far]\nAmount of roundstart slots available: [selected_job.spawn_positions]", "Number", tpos, min_value=-1)
+	var/existing_positions = selected_job.spawn_positions
+	var/slot_number = tgui_input_number(src, "How many slots should [selected_job.title] have?\nCurrently taken slots: [selected_job.current_positions]\nTotal amount of slots opened this round: [selected_job.total_positions_so_far]\nAmount of roundstart slots available: [selected_job.spawn_positions]", "Number", existing_positions, min_value=-1)
 	if(isnull(slot_number))
 		return
 
 	if(tgui_alert(src, "Altering slots will disable automatic slot scaling, are you sure?", "Confirm?", list("Yes", "No"), 30 SECONDS) != "Yes")
 		return
 
-	if(slot_type == "Roundstart")
+	UNTIL(SSticker.current_state != GAME_STATE_SETTING_UP)
+
+	if(SSticker.current_state == GAME_STATE_PREGAME)
 		selected_job.spawn_positions = slot_number
 		selected_job.scaled = null
-	else if(slot_type == "Latejoin")
+	else
 		if(!GLOB.RoleAuthority.modify_role(selected_job, slot_number))
 			to_chat(usr, SPAN_BOLDNOTICE("Can't set job slots to be less than amount of log-ins or you are setting amount of slots less than minimal. Free slots first."))
 			return
 		selected_job.scaled = null
-	message_admins("[key_name(usr)] adjusted [slot_type] job slots of [selected_job.title] to be [slot_number].")
+	message_admins("[key_name(usr)] adjusted job slots of [selected_job.title] to be [slot_number] [SSticker.current_state == GAME_STATE_PREGAME ? "during pregame" : "after roundstart"].")
 
 
 /client/proc/check_antagonists()

@@ -22,7 +22,7 @@
 
 /datum/equipment_preset/uscm_co/bug_hunt/load_gear(mob/living/carbon/human/new_human)
 	new_human.rank_override = "wo_co"
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt/command(new_human), WEAR_L_EAR)
 
 /datum/equipment_preset/uscm_co/bug_hunt/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = rand(NUTRITION_VERYLOW, NUTRITION_LOW)
@@ -46,7 +46,7 @@
 
 /datum/equipment_preset/uscm_ship/xo/bug_hunt/load_gear(mob/living/carbon/human/new_human)
 	new_human.rank_override = "wo_xo"
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt/command(new_human), WEAR_L_EAR)
 
 /datum/equipment_preset/uscm_ship/xo/bug_hunt/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = rand(NUTRITION_VERYLOW, NUTRITION_LOW)

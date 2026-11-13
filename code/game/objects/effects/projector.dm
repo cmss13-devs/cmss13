@@ -22,7 +22,7 @@
 
 /obj/effect/projector/LateInitialize()
 	. = ..()
-	if(SSfz_transitions.selective_update[firing_id])
+	if(locate(firing_id) in SSfz_transitions.selective_update)
 		GLOB.projectors.Add(src)
 	else
 		GLOB.deselected_projectors.Add(src)

@@ -3,7 +3,7 @@
 	title = JOB_INTEL
 	total_positions = 3
 	spawn_positions = 3
-	scaled = 1
+	scaled = TRUE
 	supervisors = "the auxiliary support officer"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/intel

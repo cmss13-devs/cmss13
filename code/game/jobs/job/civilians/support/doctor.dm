@@ -9,7 +9,7 @@
 	title = JOB_DOCTOR
 	total_positions = 5
 	spawn_positions = 5
-	scaled = 1
+	scaled = TRUE
 	supervisors = "the chief medical officer"
 	selection_class = "job_doctor"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT

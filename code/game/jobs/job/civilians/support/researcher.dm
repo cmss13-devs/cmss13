@@ -4,7 +4,7 @@
 	title = JOB_RESEARCHER
 	total_positions = 2
 	spawn_positions = 2
-	scaled = 1
+	scaled = TRUE
 	supervisors = "the Chief Medical Officer and the Weyland-Yutani Corporation"
 	selection_class = "job_researcher"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT

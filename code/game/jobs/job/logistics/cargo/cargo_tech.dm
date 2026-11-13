@@ -2,7 +2,7 @@
 	title = JOB_CARGO_TECH
 	total_positions = 2
 	spawn_positions = 2
-	scaled = 1
+	scaled = TRUE
 	supervisors = "the requisitions officer"
 	selection_class = "job_ct"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT

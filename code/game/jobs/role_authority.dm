@@ -475,7 +475,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 /datum/authority/branch/role/proc/modify_role(datum/job/job, amount)
 	if(!istype(job))
 		return FALSE
-	if(amount < job.current_positions) //we should be able to slot everyone
+	if(amount < job.current_positions && amount != -1) //we should be able to slot everyone
 		return FALSE
 	job.total_positions = amount
 	job.total_positions_so_far = amount

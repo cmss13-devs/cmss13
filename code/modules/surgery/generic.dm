@@ -355,6 +355,7 @@
 
 	surgery.affected_limb.surgery_status |= INCISION_WIDENED
 	surgery.affected_limb.surgery_status &= ~INCISION_MADE
+	surgery.affected_limb.incision_int_bleeding_flag_check()
 	target.update_surgery_overlays()
 	target.apply_damage(15, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] violently retracted skin in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")

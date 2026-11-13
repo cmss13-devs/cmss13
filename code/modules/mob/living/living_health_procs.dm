@@ -610,7 +610,10 @@
 	//Reset any surgeries.
 	active_surgeries = DEFENSE_ZONES_LIVING
 	initialize_incision_depths()
-	remove_surgery_overlays()
+	remove_all_limb_surgery_flags()
+	if(ishuman(src))
+		var/mob/living/carbon/human/person = src
+		person.remove_overlay(SURGERY_LAYER)
 
 	// remove the character from the list of the dead
 	if(stat == DEAD)
@@ -670,14 +673,6 @@
 		var/mob/living/carbon/human/H = src
 		H.update_body()
 
-/mob/living/proc/remove_surgery_overlays() // Mainly for ahealing
-	if(overlays)
-		overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
-		overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
-		overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
-		overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
-
-
 /mob/living/keybind_face_direction(direction)
 	if(!canface())
 		return
@@ -685,3 +680,9 @@
 		return
 	face_dir(direction)
 	return ..()
+
+/mob/living/proc/remove_all_limb_surgery_flags()
+	if(ishuman(src))
+		var/mob/living/carbon/human/person = src
+		for(var/obj/limb/part as anything in person.limbs)
+			part.surgery_status = NO_FLAGS

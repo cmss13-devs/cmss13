@@ -163,6 +163,19 @@ There are several things that need to be remembered:
 
 	apply_overlay(DAMAGE_LAYER)
 
+/mob/living/carbon/human/proc/update_surgery_overlays()
+	remove_overlay(SURGERY_LAYER)
+
+	var/list/surgery_overlays = list()
+	for(var/obj/limb/part as anything in limbs)
+		if(part.status & LIMB_DESTROYED)
+			continue
+
+		surgery_overlays += part.get_surgery_overlays()
+
+	overlays_standing[SURGERY_LAYER] = surgery_overlays
+
+	apply_overlay(SURGERY_LAYER)
 
 /mob/living/carbon/human/proc/update_eyes()
 	remove_overlay(EYES_LAYER)
@@ -363,6 +376,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	update_targeted()
 	update_med_icon()
 	UpdateDamageIcon()
+	update_surgery_overlays()
 
 
 

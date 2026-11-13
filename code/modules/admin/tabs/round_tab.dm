@@ -156,6 +156,7 @@
 
 	if(SSticker.current_state == GAME_STATE_PREGAME)
 		selected_job.spawn_positions = slot_number
+		selected_job.total_positions = slot_number
 		selected_job.scaled = null
 	else
 		if(!GLOB.RoleAuthority.modify_role(selected_job, slot_number))

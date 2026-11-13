@@ -1,4 +1,68 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/machinery/light/almayer{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"ab" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/machinery/light/almayer{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"ac" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/machinery/light/almayer{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"ad" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/machinery/light/almayer{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
+"ae" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/item/device/radio/intercom/saipan{
+	pixel_y = 24
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop3/sulaco)
 "ai" = (
 /turf/open/shuttle/dropship/light_grey_bottom_right,
 /area/shuttle/drop3/sulaco)
@@ -49,8 +113,8 @@
 /turf/template_noop,
 /area/shuttle/drop3/sulaco)
 "eh" = (
-/obj/item/device/radio/intercom/saipan{
-	pixel_y = 24
+/obj/structure/machinery/light/almayer{
+	dir = 1
 	},
 /turf/open/shuttle/dropship/light_grey_top_left,
 /area/shuttle/drop3/sulaco)
@@ -176,8 +240,8 @@
 	},
 /area/shuttle/drop3/sulaco)
 "nB" = (
-/obj/item/device/radio/intercom/saipan{
-	pixel_y = 24
+/obj/structure/machinery/light/almayer{
+	dir = 1
 	},
 /turf/open/shuttle/dropship/light_grey_top_right,
 /area/shuttle/drop3/sulaco)
@@ -711,12 +775,12 @@ SD
 SD
 SP
 tJ
-Pc
+ae
 og
 Pc
 Cz
 Cz
-Pc
+ac
 cB
 lr
 TZ
@@ -744,7 +808,7 @@ fh
 Pc
 Qy
 Pc
-cB
+aa
 Pc
 cB
 SM
@@ -836,7 +900,7 @@ ai
 Pc
 FV
 SH
-cB
+ab
 Pc
 cB
 Nt
@@ -849,12 +913,12 @@ SD
 SD
 NV
 Rn
-Pc
+ae
 cB
 Pc
 Cz
 Cz
-Pc
+ad
 cB
 wt
 kP

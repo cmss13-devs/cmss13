@@ -9,6 +9,46 @@
 	icon_state = "82"
 	},
 /area/shuttle/drop_upp2/devana)
+"ac" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/machinery/light/almayer{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp2/devana)
+"ad" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/machinery/light/almayer{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp2/devana)
+"ae" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 30
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/item/device/radio/intercom/devana{
+	pixel_y = 0;
+	pixel_x = 24
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop_upp2/devana)
 "aq" = (
 /turf/closed/shuttle/dropship_upp2{
 	icon_state = "32"
@@ -59,8 +99,8 @@
 	},
 /area/shuttle/drop_upp2/devana)
 "dl" = (
-/obj/item/device/radio/intercom/devana{
-	pixel_y = 26
+/obj/structure/machinery/light/almayer{
+	dir = 1
 	},
 /turf/open/shuttle/dropship/light_grey_top_right,
 /area/shuttle/drop_upp2/devana)
@@ -282,8 +322,8 @@
 	},
 /area/shuttle/drop_upp2/devana)
 "xm" = (
-/obj/item/device/radio/intercom/devana{
-	pixel_y = 26
+/obj/structure/machinery/light/almayer{
+	dir = 1
 	},
 /turf/open/shuttle/dropship/light_grey_top_left,
 /area/shuttle/drop_upp2/devana)
@@ -597,6 +637,10 @@
 /obj/structure/bed/chair/vehicle{
 	pixel_x = 8
 	},
+/obj/item/device/radio/intercom/devana{
+	pixel_y = 0;
+	pixel_x = -22
+	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/drop_upp2/devana)
 "Zb" = (
@@ -667,7 +711,7 @@ Ph
 Ph
 qc
 qc
-Ph
+ac
 Ph
 qB
 Wf
@@ -694,8 +738,8 @@ Ux
 Bv
 NP
 bM
-Ph
 WJ
+ac
 Ph
 Ph
 wa
@@ -786,8 +830,8 @@ Ux
 CR
 NP
 bM
-Ph
 Id
+ad
 Ph
 Ph
 wa
@@ -800,12 +844,12 @@ Hi
 Hi
 ZO
 ab
-Yw
+ae
 Ph
 Ph
 qc
 qc
-Ph
+ad
 Ph
 SR
 AB

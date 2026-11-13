@@ -41,9 +41,18 @@ All ShuttleMove procs go here
 	else //non-living mobs shouldn't be affected by shuttles, which is why this is an else
 		if(thing.anchored)
 			// Ordered by most likely:
+			if(istype(thing, /obj/effect/projector))
+				// delete the clone not the projector
+				if(clone)
+					GLOB.clones.Remove(clone)
+					qdel(clone, TRUE)
+					clone = null
+				return
 			if(istype(thing, /obj/structure/machinery/landinglight))
 				return
 			if(istype(thing, /obj/docking_port))
+				return
+			if(istype(thing, /obj/effect/dropship_airlock))
 				return
 			if(istype(thing, /obj/structure/machinery/camera))
 				return
@@ -61,6 +70,10 @@ All ShuttleMove procs go here
 /turf/proc/onShuttleMove(turf/newT, list/movement_force, move_dir)
 	if(newT == src) // In case of in place shuttle rotation shenanigans.
 		return
+	if(src.clone)
+		GLOB.clones.Remove(src.clone)
+		qdel(src.clone, TRUE)
+		src.clone = null
 	//Destination turf changes
 	//Baseturfs is definitely a list or this proc wouldn't be called
 	var/shuttle_boundary = baseturfs.Find(/turf/baseturf_skipover/shuttle)
@@ -105,6 +118,9 @@ All ShuttleMove procs go here
 
 	if(loc != oldT) // This is for multi tile objects
 		return
+
+	if(clone)
+		destroy_clone()
 
 	loc = newT
 
@@ -212,6 +228,7 @@ All ShuttleMove procs go here
 	if(!move_on_shuttle)
 		return
 	. = ..()
+	client?.soundOutput?.update_ambience(null, null, TRUE)
 	if(client && movement_force)
 		var/shake_force = max(movement_force["THROW"], movement_force["KNOCKDOWN"])
 		if(buckled)

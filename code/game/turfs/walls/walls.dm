@@ -50,7 +50,7 @@
 	/// Kinds of /obj that can be blended with
 	var/list/blend_objects = list(/obj/structure/machinery/door, /obj/structure/window_frame, /obj/structure/window/framed) // Objects which to blend with
 	/// Kinds of /obj  that cannot be blended with
-	var/list/noblend_objects = list(/obj/structure/machinery/door/window) //Objects to avoid blending with (such as children of listed blend objects.
+	var/list/noblend_objects = list(/obj/structure/machinery/door/window, /obj/structure/machinery/door/poddoor/railing/no_blend) //Objects to avoid blending with (such as children of listed blend objects.
 
 	var/list/hiding_humans = list()
 

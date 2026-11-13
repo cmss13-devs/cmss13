@@ -3,7 +3,6 @@
 	title = JOB_FIELD_DOCTOR
 	total_positions = 1
 	spawn_positions = 1
-	allow_additional = TRUE
 	scaled = TRUE
 	supervisors = "the chief medical officer"
 	selection_class = "job_doctor"

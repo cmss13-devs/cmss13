@@ -3,7 +3,6 @@
 	title = JOB_ORDNANCE_TECH
 	total_positions = 0
 	spawn_positions = 0
-	allow_additional = 0
 	scaled = 0
 	supervisors = "the chief engineer"
 	selection_class = "job_ot"

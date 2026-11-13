@@ -2,7 +2,6 @@
 	title = JOB_SYNTH
 	total_positions = 2
 	spawn_positions = 1
-	allow_additional = 1
 	scaled = 1
 	supervisors = "the acting commanding officer"
 	selection_class = "job_synth"

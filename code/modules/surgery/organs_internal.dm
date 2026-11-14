@@ -82,7 +82,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 			SPAN_NOTICE("[user] begins to treat [target]'s damaged [damaged_organs[1]] with [toolname]."))
 
 	target.custom_pain("You feel [toolname] moving the organs around in your [surgery.affected_limb.display_name]! The pressure is maddening!", 1)
-	playsound(target.loc, 'sound/handling/bandage.ogg', 25, TRUE)
+	playsound(get_turf(target), 'sound/handling/bandage.ogg', 25, TRUE)
 	log_interact(user, target, "[key_name(user)] began mending organs in [key_name(target)]'s [surgery.affected_limb.display_name], beginning [surgery].")
 
 /datum/surgery_step/repair_organs/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -97,7 +97,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 				SPAN_NOTICE("[user] finishes treating your damaged [int_organ.name]."),
 				SPAN_NOTICE("[user] finishes treating [target]'s damaged [int_organ.name]."))
 
-			playsound(target.loc, 'sound/handling/bandage.ogg', 25, TRUE)
+			playsound(get_turf(target), 'sound/handling/bandage.ogg', 25, TRUE)
 			log_interact(user, target, "[key_name(user)] mended an organ in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
 			user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
 			int_organ.rejuvenate()

@@ -144,7 +144,7 @@
 	if(!length(castes))
 		to_chat(xeno_candidate, SPAN_WARNING("The hive cannot support any available castes yet."))
 		return FALSE
-	var/caste_choice = tgui_input_list(xeno_candidate, "Choose a caste. Respawn waits after death: T1 30 seconds, T2 60 seconds, T3 120 seconds.", "Join as Xeno", castes, theme = "hive_status")
+	var/caste_choice = tgui_input_list(xeno_candidate, "Choose a caste.", "Join as Xeno", castes, theme = "hive_status")
 	if(!caste_choice)
 		return FALSE
 	var/datum/caste_datum/selected_caste = GLOB.xeno_datum_list[caste_choice]

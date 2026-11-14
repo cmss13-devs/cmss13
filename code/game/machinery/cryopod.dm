@@ -62,7 +62,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	if(inoperable())
 		return
 
-	if(z_restricted && !is_mainship_level(z))
+	if(z_restricted && !is_mainship_level(z) && !(istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base) && istype(get_area(src), /area/forward_base)))
 		to_chat(user, SPAN_WARNING("\The [src] cannot connect to the cryo bay system off the [MAIN_SHIP_NAME]!"))
 		return
 

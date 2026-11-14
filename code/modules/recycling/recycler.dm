@@ -22,6 +22,11 @@
 	. = ..()
 	update_icon()
 
+/obj/structure/machinery/recycler/initialize_pass_flags(datum/pass_flags_container/PF)
+	..()
+	if(PF)
+		PF.flags_can_pass_all &= ~PASS_OVER_THROW_ITEM
+
 /obj/structure/machinery/recycler/update_icon()
 	. = ..()
 	icon_state = "separator-AO[(inoperable()) ? "0":"1"]"

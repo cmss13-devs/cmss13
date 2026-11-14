@@ -15,3 +15,7 @@ endmap
 map almayer
 	default
 endmap
+
+map sulaco
+	disabled
+endmap

@@ -17,6 +17,8 @@
 	var/immerse_at_depth = WATER_DEPTH_DEEP
 	/// How the mob behaves while resting in water
 	var/resting_behavior = WATER_OVERLAY_CONFIG_RESTING_NONE
+	/// If the mob uses footsteps component, new sound for in water
+	var/footstep_sound = null
 
 /datum/water_overlay_config/human
 	icon_state_key = "human"
@@ -55,5 +57,9 @@
 /datum/water_overlay_config/xeno/medium/squatter
 	resting_behavior = WATER_OVERLAY_CONFIG_RESTING_USE_DEFAULT
 
+/datum/water_overlay_config/xeno/medium/loud_stomps
+	footstep_sound = "alien_footstep_large_water"
+
 /datum/water_overlay_config/xeno/large
 	icon_size = 88
+	footstep_sound = "alien_footstep_large_water"

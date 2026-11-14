@@ -59,6 +59,8 @@
 		/datum/action/xeno_action/onclick/emit_pheromones,
 	)
 
+	water_config = /datum/water_overlay_config/xeno/medium/loud_stomps
+
 	icon_xeno = 'icons/mob/xenos/castes/tier_4/king.dmi'
 	weed_food_states = list()
 	weed_food_states_flipped = list()

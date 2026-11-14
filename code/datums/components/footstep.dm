@@ -55,11 +55,14 @@
 
 /datum/component/footstep/proc/play_simplestep()
 	SIGNAL_HANDLER
-	var/turf/open/T = prepare_step()
-	if(!T)
+	var/turf/open/open_turf = prepare_step()
+	if(!open_turf)
 		return
 	var/mob/living/parent_mob = parent
 	if(parent_mob.body_position == LYING_DOWN && (isfile(drag_sounds) || istext(drag_sounds)))
-		playsound(T, drag_sounds, volume, vary, range, falloff = falloff)
+		playsound(open_turf, drag_sounds, volume, vary, range, falloff = falloff)
 	else if(isfile(footstep_sounds) || istext(footstep_sounds))
-		playsound(T, footstep_sounds, volume, vary, range, falloff = falloff)
+		if(SSwater_overlays.is_water(open_turf) && (isfile(parent_mob.water_config.footstep_sound) || istext(parent_mob.water_config.footstep_sound)))
+			playsound(open_turf, parent_mob.water_config.footstep_sound, volume, vary, range, falloff = falloff)
+			return
+		playsound(open_turf, footstep_sounds, volume, vary, range, falloff = falloff)

@@ -61,6 +61,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_leadership_spoken_orders,
 	/client/proc/toggle_cocking_to_hand,
 	/client/proc/toggle_wield_assist,
+	/client/proc/toggle_shouting_at_pointed_people,
 ))
 
 /client/proc/reduce_minute_count()

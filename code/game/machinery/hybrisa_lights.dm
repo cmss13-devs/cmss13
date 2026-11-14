@@ -82,11 +82,12 @@
 /obj/structure/machinery/colony_floodlight/street
 	name = "colony streetlight"
 	icon = 'icons/obj/structures/props/streetlights.dmi'
-	icon_state = "street_off"
+	icon_state = "street_mapping"
 	layer = BILLBOARD_LAYER
 	light_color = LIGHT_COLOR_XENON
 	explo_proof = FALSE
 	lum_value = 12
+	icon_key = "street"
 
 /obj/structure/machinery/colony_floodlight/street/Initialize(mapload, ...)
 	. = ..()
@@ -95,14 +96,6 @@
 /obj/structure/machinery/colony_floodlight/street/initialize_pass_flags(datum/pass_flags_container/PF)
 	if(PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM|PASS_OVER_ACID_SPRAY
-
-/obj/structure/machinery/colony_floodlight/street/update_icon()
-	if(damaged)
-		icon_state = "street_dmg"
-	else if(is_on)
-		icon_state = "street_on"
-	else
-		icon_state = "street_off"
 
 /obj/structure/machinery/colony_floodlight/street/ex_act(severity)
 	switch(severity)
@@ -123,34 +116,16 @@
 	name = "traffic light"
 	desc = "A traffic light."
 	icon = 'icons/obj/structures/props/streetlights.dmi'
-	icon_state = "trafficlight"
+	icon_state = "trafficlight_mapping"
 	health = 200
 	layer = BILLBOARD_LAYER
 	lum_value = 0
 	explo_proof = FALSE
+	icon_key = "trafficlight"
 
 /obj/structure/machinery/colony_floodlight/traffic/Initialize(mapload, ...)
 	. = ..()
 	AddComponent(/datum/component/shimmy_around, east_offset = -15, west_offset = -15)
-
-/obj/structure/machinery/colony_floodlight/traffic/update_icon()
-	if(damaged)
-		icon_state = "trafficlight_damaged"
-	else if(is_on)
-		icon_state = "trafficlight_on"
-	else
-		icon_state = "trafficlight"
-
-/obj/structure/machinery/colony_floodlight/traffic/alt
-	icon_state = "trafficlight_alt"
-
-/obj/structure/machinery/colony_floodlight/traffic/alt/update_icon()
-	if(damaged)
-		icon_state = "trafficlight_alt_damaged"
-	else if(is_on)
-		icon_state = "trafficlight_alt_on"
-	else
-		icon_state = "trafficlight_alt"
 
 /obj/structure/machinery/colony_floodlight/traffic/ex_act(severity)
 	switch(severity)
@@ -165,6 +140,10 @@
 	stump.pixel_x = pixel_x
 	stump.pixel_y = pixel_y
 	return ..()
+
+/obj/structure/machinery/colony_floodlight/traffic/alt
+	icon_state = "trafficlight_alt_mapping"
+	icon_key = "trafficlight_alt"
 
 // Engineer Floor lights
 /obj/structure/machinery/colony_floodlight_switch/engineerconsole_switch

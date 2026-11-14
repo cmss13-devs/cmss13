@@ -422,7 +422,7 @@ You must still listen to the queen.
 		return FALSE
 
 	if(!isliving(movable_atom))
-		return FALSE
+		return ..(movable_atom, FALSE)
 	var/mob/living/living_mob = movable_atom
 	var/should_neckgrab = !(src.can_not_harm(living_mob)) && feral_smash
 

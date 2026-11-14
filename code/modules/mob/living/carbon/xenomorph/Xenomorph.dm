@@ -135,6 +135,7 @@
 	var/armor_integrity_last_damage_time = 0
 	var/armor_integrity_immunity_time = 0
 
+	var/can_drag_objects = TRUE
 	var/melee_vulnerability_mult = 0
 
 	var/pull_multiplier = 1
@@ -810,6 +811,26 @@
 
 	if(HAS_TRAIT(src,TRAIT_ABILITY_BURROWED))
 		return
+
+	if(isobj(AM))
+		if(!can_drag_objects)
+			return FALSE
+		if(is_type_in_typecache(AM, GLOB.xeno_undraggable_objects))
+			to_chat(src, SPAN_WARNING("We can't get a grip on \the [AM]."))
+			return FALSE
+		if(AM.buckled_mob)
+			to_chat(src, SPAN_WARNING("\The [AM] has something buckled to it."))
+			return FALSE
+		if(locate(/mob/living) in AM)
+			to_chat(src, SPAN_WARNING("Something inside \the [AM] makes it too awkward to drag."))
+			return FALSE // for bodybags, stasis bags with a marine inside
+		var/atom/blocker = AM.handle_barriers(src)
+		if(blocker != AM)
+			blocker.attack_alien(src)
+			xeno_attack_delay(src)
+			return FALSE
+		return ..()
+
 	if(!isliving(AM))
 		return FALSE
 	var/mob/living/L = AM

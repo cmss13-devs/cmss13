@@ -31,6 +31,7 @@ export const CrewManifest = (props, context) => {
   const departmentOrder = [
     'Command',
     'Auxiliary',
+    'Recon',
     'Alpha',
     'Bravo',
     'Charlie',
@@ -91,7 +92,8 @@ export const CrewManifest = (props, context) => {
               const rankB = roleOrder.indexOf(b.rank);
               return (
                 (rankA === -1 ? Infinity : rankA) -
-                (rankB === -1 ? Infinity : rankB)
+                  (rankB === -1 ? Infinity : rankB) ||
+                a.name.localeCompare(b.name)
               );
             });
 

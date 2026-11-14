@@ -32,6 +32,9 @@
 	var/plant_on_semiweedable = FALSE
 	var/node_type = /obj/effect/alien/weeds/node
 
+/datum/action/xeno_action/onclick/plant_weeds/predrop
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+
 /datum/action/xeno_action/onclick/autoweeding_toggle
 	name = "Toggle Autoweeding"
 	action_icon_state = "autoweed_toggle"
@@ -567,11 +570,10 @@
 	add_predrop_building()
 
 /mob/living/carbon/xenomorph/proc/add_predrop_building()
-	if(!istype(SSticker.mode, /datum/game_mode/bug_hunt) || tier < 1 || tier > 3)
+	if(!istype(SSticker.mode, /datum/game_mode/bug_hunt) || SSobjectives.first_drop_complete || tier < 1 || tier > 3)
 		return
 	if(!get_action(src, /datum/action/xeno_action/onclick/plant_weeds))
-		var/datum/action/xeno_action/onclick/plant_weeds/planting = give_action(src, /datum/action/xeno_action/onclick/plant_weeds)
-		planting.ability_primacy = XENO_NOT_PRIMARY_ACTION
+		give_action(src, /datum/action/xeno_action/onclick/plant_weeds/predrop)
 	if(get_action(src, /datum/action/xeno_action/activable/secrete_resin))
 		return
 	give_action(src, /datum/action/xeno_action/onclick/choose_resin/predrop)

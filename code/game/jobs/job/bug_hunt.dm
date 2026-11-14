@@ -70,6 +70,18 @@
 /datum/job/marine/engineer/bug_hunt/get_total_positions(latejoin)
 	return latejoin ? total_positions : spawn_positions
 
+/datum/job/command/tank_crew/bug_hunt
+	title = JOB_RECON_CREWMAN
+	role_ban_alternative = JOB_TANK_CREW
+	allow_additional = FALSE
+	scaled = FALSE
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
+	gear_preset = /datum/equipment_preset/uscm/tank/bug_hunt/equipped
+	supervisors = "the platoon commander and operations officer"
+
+/datum/job/command/tank_crew/bug_hunt/get_total_positions(latejoin)
+	return latejoin ? total_positions : spawn_positions
+
 /datum/job/marine/smartgunner/bug_hunt
 	title = JOB_RECON_SMARTGUNNER
 	role_ban_alternative = JOB_SQUAD_SMARTGUN

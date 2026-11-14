@@ -150,6 +150,20 @@
 /datum/equipment_preset/uscm/sg/bug_hunt/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt(new_human), WEAR_L_EAR)
 
+/datum/equipment_preset/uscm/tank/bug_hunt
+	name = "Bug Hunt Vehicle Crewman"
+	assignment = JOB_RECON_CREWMAN
+	manifest_title = JOB_RECON_CREWMAN
+	hud_icon = "tc"
+	hud_color = "#32CD32"
+	utility_under = list(/obj/item/clothing/under/marine)
+
+/datum/equipment_preset/uscm/tank/bug_hunt/load_vanity(mob/living/carbon/human/new_human, client/mob_client)
+	return
+
+/datum/equipment_preset/uscm/tank/bug_hunt/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt(new_human), WEAR_L_EAR)
+
 /datum/equipment_preset/synth/uscm/bug_hunt
 	name = "Bug Hunt Reconnaissance Synthetic"
 	assignment = JOB_RECON_SYNTHETIC
@@ -286,6 +300,18 @@
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1/forecon(new_human), WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1(new_human), WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_L_STORE)
+
+/datum/equipment_preset/uscm/tank/bug_hunt/equipped
+	name = "Bug Hunt Vehicle Crewman (Equipped)"
+
+/datum/equipment_preset/uscm/tank/bug_hunt/equipped/load_gear(mob/living/carbon/human/new_human)
+	..()
+	load_bug_hunt_equipment(new_human, head_type = /obj/item/clothing/head/helmet/marine/tech/tanker)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/extended(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/extended(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_L_STORE)
 
 /datum/equipment_preset/synth/uscm/bug_hunt/equipped

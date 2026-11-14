@@ -23,6 +23,7 @@
 #define JOB_RECON_SECTION_LEADER "Reconnaissance Section Leader"
 #define JOB_RECON_CORPSMAN "Reconnaissance Corpsman"
 #define JOB_RECON_ENGINEER "Reconnaissance Engineer"
+#define JOB_RECON_CREWMAN "Vehicle Crewman"
 #define JOB_RECON_SMARTGUNNER "Reconnaissance Smartgunner"
 #define JOB_RECON_RIFLEMAN "Reconnaissance Rifleman"
 #define JOB_RECON_SYNTHETIC "Reconnaissance Synthetic"

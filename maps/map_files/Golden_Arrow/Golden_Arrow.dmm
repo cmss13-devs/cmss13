@@ -561,6 +561,7 @@
 "aX" = (
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	name = "Typhoon autopilot console";
+	req_one_access = list(1,9,12,22);
 	shuttleId = "dropship_alamo";
 	can_change_shuttle = 0;
 	dir = 4
@@ -1174,6 +1175,18 @@
 	pixel_x = 6
 	},
 /turf/open/floor/almayer/flooredgesmooth/north,
+/area/golden_arrow)
+"ch" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/machinery/cm_vending/clothing/vehicle_crew/bug_hunt{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
 /area/golden_arrow)
 "ci" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -9089,15 +9102,6 @@
 	layer = 2.52
 	},
 /turf/open/floor/almayer,
-/area/golden_arrow)
-"CV" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/turf/open/floor/almayer/plate,
 /area/golden_arrow)
 "CW" = (
 /obj/structure/roof/cargocrane_tracks/vertical{
@@ -23565,7 +23569,7 @@ kB
 Ou
 kB
 kB
-CV
+ch
 Af
 cF
 ro

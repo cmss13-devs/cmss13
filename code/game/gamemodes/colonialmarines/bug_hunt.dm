@@ -14,6 +14,7 @@
 		/datum/job/marine/tl/bug_hunt = JOB_SQUAD_TEAM_LEADER,
 		/datum/job/marine/medic/bug_hunt = JOB_SQUAD_MEDIC,
 		/datum/job/marine/engineer/bug_hunt = JOB_SQUAD_ENGI,
+		/datum/job/command/tank_crew/bug_hunt = JOB_TANK_CREW,
 		/datum/job/marine/smartgunner/bug_hunt = JOB_SQUAD_SMARTGUN,
 		/datum/job/marine/standard/bug_hunt = JOB_SQUAD_MARINE,
 		/datum/job/civilian/synthetic/bug_hunt = JOB_SYNTH,
@@ -29,6 +30,7 @@
 	var/datum/squad/recon = GLOB.RoleAuthority.squads_by_type[/datum/squad/marine/alpha]
 	var/datum/squad/forecon = GLOB.RoleAuthority.squads_by_type[/datum/squad/marine/forecon]
 	recon.name = "Recon"
+	recon.prepend_squad_name_to_assignment = FALSE
 	recon.radio_freq = SOF_FREQ
 	recon.equipment_color = initial(forecon.equipment_color)
 	recon.chat_color = initial(forecon.chat_color)
@@ -44,12 +46,10 @@
 	hive.allow_no_queen_evo = TRUE
 	hive.allow_queen_evolve = FALSE
 	hive.tacmap_requires_queen_ovi = FALSE
-	hive.tier_limits = list(TIER_2 = -1, TIER_3 = 3)
+	hive.tier_limits = list(TIER_2 = -1, TIER_3 = 1)
 	hive.allow_core_larva_spawning = FALSE
 	hive.hive_structure_types -= XENO_STRUCTURE_CORE
 	LAZYADD(hive.blacklisted_castes, XENO_CASTE_QUEEN)
-	hive.hive_stat_modifier_multiplier["health"] = XENO_HIVE_STATMOD_MULT_MED
-	hive.hive_stat_modifier_multiplier["plasmagain"] = XENO_HIVE_STATMOD_MULT_MED
 	if(!setup_hive_cores())
 		return FALSE
 	SSradio.update_cache()
@@ -91,7 +91,14 @@
 		core.maxhealth = core.health
 	return TRUE
 
-/datum/game_mode/bug_hunt/check_xeno_late_join(mob/xeno_candidate)
+/datum/game_mode/bug_hunt/ds_first_landed(obj/docking_port/stationary/marine_dropship/dropship)
+	. = ..()
+	for(var/mob/living/carbon/xenomorph/xeno as anything in GLOB.xeno_mob_list)
+		qdel(get_action(xeno, /datum/action/xeno_action/onclick/plant_weeds/predrop))
+		qdel(get_action(xeno, /datum/action/xeno_action/onclick/choose_resin/predrop))
+		qdel(get_action(xeno, /datum/action/xeno_action/activable/secrete_resin/predrop))
+
+/datum/game_mode/bug_hunt/check_xeno_late_join(mob/xeno_candidate, datum/caste_datum/caste)
 	if(!..() || round_finished)
 		return FALSE
 	var/mob/living/original_body = xeno_candidate.mind?.original
@@ -103,26 +110,45 @@
 		to_chat(xeno_candidate, SPAN_WARNING("You cannot join while your human body can still be revived."))
 		return FALSE
 	var/last_activity = max(xeno_candidate.timeofdeath, xeno_candidate.client.player_details.larva_pool_time)
-	var/time_left = last_activity + 30 SECONDS - world.time
+	var/respawn_delay = 30 SECONDS
+	switch(caste?.tier)
+		if(2)
+			respawn_delay = 60 SECONDS
+		if(3)
+			respawn_delay = 120 SECONDS
+	var/time_left = last_activity + respawn_delay - world.time
 	if(last_activity && time_left > 0)
-		to_chat(xeno_candidate, SPAN_WARNING("You must wait [DisplayTimeText(time_left)] before joining as a xenomorph."))
+		to_chat(xeno_candidate, SPAN_WARNING("You must wait [DisplayTimeText(time_left)] before joining as [caste ? caste.caste_type : "a xenomorph"]."))
 		return FALSE
+	if(caste?.tier == 3)
+		var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+		var/list/slots = hive.get_tier_slots()
+		if(!slots[TIER_3][OPEN_SLOTS])
+			to_chat(xeno_candidate, SPAN_WARNING("The hive cannot support another Tier 3."))
+			return FALSE
 	return TRUE
 
 /datum/game_mode/bug_hunt/attempt_to_join_as_xeno(mob/xeno_candidate, instant_join = FALSE)
 	if(!check_xeno_late_join(xeno_candidate))
 		return FALSE
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
-	var/list/castes = XENO_T1_CASTES + XENO_T2_CASTES
+	var/list/slots = hive.get_tier_slots()
+	var/list/castes = XENO_T1_CASTES + XENO_T2_CASTES + XENO_T3_CASTES
+	castes -= hive.blacklisted_castes
 	for(var/caste_name in castes)
 		var/datum/caste_datum/caste = GLOB.xeno_datum_list[caste_name]
 		if(caste.minimum_evolve_time > ROUND_TIME || !caste.can_play_caste(xeno_candidate.client))
 			castes -= caste_name
+		else if(caste.tier == 3 && !slots[TIER_3][OPEN_SLOTS])
+			castes -= caste_name
 	if(!length(castes))
 		to_chat(xeno_candidate, SPAN_WARNING("The hive cannot support any available castes yet."))
 		return FALSE
-	var/caste_choice = tgui_input_list(xeno_candidate, "Choose a caste.", "Join as Xeno", castes, theme = "hive_status")
-	if(!caste_choice || !check_xeno_late_join(xeno_candidate))
+	var/caste_choice = tgui_input_list(xeno_candidate, "Choose a caste. Respawn waits after death: T1 30 seconds, T2 60 seconds, T3 120 seconds.", "Join as Xeno", castes, theme = "hive_status")
+	if(!caste_choice)
+		return FALSE
+	var/datum/caste_datum/selected_caste = GLOB.xeno_datum_list[caste_choice]
+	if(!check_xeno_late_join(xeno_candidate, selected_caste))
 		return FALSE
 
 	var/list/cores = hive.hive_structures[XENO_STRUCTURE_CORE]
@@ -166,6 +192,8 @@
 	queen.auto_queen = TRUE
 
 /datum/game_mode/bug_hunt/post_setup()
+	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	hive.tier_limits[TIER_3] = clamp(floor(count_marines() / 10), 1, 3)
 	initialize_post_marine_gear_list()
 	setup_auto_queen()
 	round_time_lobby = world.time

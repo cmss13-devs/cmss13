@@ -2,7 +2,7 @@
 	name = "\improper ColMarTech FORECON Equipment Rack"
 	desc = "An equipment rack supplying the Snake Eaters Force Reconnaissance platoon."
 	req_one_access = list(ACCESS_MARINE_GENERAL, ACCESS_MARINE_PREP)
-	vendor_role = list(JOB_CO, JOB_XO, JOB_SQUAD_LEADER, JOB_SQUAD_TEAM_LEADER, JOB_SQUAD_MEDIC, JOB_SQUAD_ENGI, JOB_SQUAD_SMARTGUN, JOB_SQUAD_MARINE, JOB_SYNTH)
+	vendor_role = list(JOB_CO, JOB_XO, JOB_SQUAD_LEADER, JOB_SQUAD_TEAM_LEADER, JOB_SQUAD_MEDIC, JOB_SQUAD_ENGI, JOB_SQUAD_SMARTGUN, JOB_SQUAD_MARINE, JOB_TANK_CREW, JOB_SYNTH)
 	vend_flags = VEND_CLUTTER_PROTECTION|VEND_CATEGORY_CHECK|VEND_UNIFORM_RANKS|VEND_TO_HAND|VEND_UNIFORM_AUTOEQUIP
 
 GLOBAL_LIST_INIT(cm_vending_clothing_marine_bug_hunt, list(
@@ -213,6 +213,18 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine_bug_hunt, list(
 			break
 	return products
 
+/obj/structure/machinery/cm_vending/clothing/vehicle_crew/bug_hunt
+	name = "\improper ColMarTech FORECON Vehicle Crewman Equipment Rack"
+
+/obj/structure/machinery/cm_vending/clothing/vehicle_crew/bug_hunt/get_listed_products(mob/user)
+	var/list/products = ..(user)
+	products = products.Copy()
+	for(var/list/product as anything in products)
+		if(product[4] == MARINE_CAN_BUY_ARMOR)
+			products[products.Find(product)] = list("M3-R Recon Armor", 0, /obj/item/clothing/suit/storage/marine/light/recon/bug_hunt, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY)
+			break
+	return products
+
 /obj/structure/machinery/cm_vending/clothing/medic/bug_hunt
 	name = "\improper ColMarTech FORECON Corpsman Equipment Rack"
 	desc = "An automated rack of standard equipment for FORECON corpsmen."
@@ -369,7 +381,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_tl_bug_hunt, list(
 /obj/structure/machinery/cm_vending/gear/bug_hunt/clothing
 	name = "\improper ColMarTech FORECON Clothing Rack"
 	icon_state = "clothing"
-	vendor_role = list(JOB_CO, JOB_XO, JOB_SQUAD_LEADER, JOB_SQUAD_TEAM_LEADER, JOB_SQUAD_MEDIC, JOB_SQUAD_ENGI, JOB_SQUAD_MARINE, JOB_SYNTH)
+	vendor_role = list(JOB_CO, JOB_XO, JOB_SQUAD_LEADER, JOB_SQUAD_TEAM_LEADER, JOB_SQUAD_MEDIC, JOB_SQUAD_ENGI, JOB_SQUAD_MARINE, JOB_TANK_CREW, JOB_SYNTH)
 	listed_products = list(
 		list("FIELD UNIFORM", 0, null, null, null),
 		list("Marine Fatigues", 0, /obj/item/clothing/under/marine, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),

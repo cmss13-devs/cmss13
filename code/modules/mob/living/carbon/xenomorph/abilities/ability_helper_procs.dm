@@ -94,7 +94,7 @@
 		else
 			to_chat(src, SPAN_XENOWARNING("We begin generating enough acid to melt through [turf]."))
 	else
-		to_chat(src, SPAN_WARNING("You cannot dissolve [acided_thing]."))
+		to_chat(src, SPAN_WARNING("We cannot dissolve [acided_thing]."))
 		return
 
 	if(!do_after(src, wait_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))

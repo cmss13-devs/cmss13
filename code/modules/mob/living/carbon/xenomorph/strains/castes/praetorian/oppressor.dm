@@ -162,7 +162,9 @@
 	var/throw_target_turf = get_step(abduct_user, facing)
 
 	ADD_TRAIT(abduct_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
+	start_duration_display(windup)
 	if(!do_after(abduct_user, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
+		end_duration_display(windup)
 		to_chat(abduct_user, SPAN_XENOWARNING("You relax your tail."))
 		apply_cooldown()
 

@@ -46,7 +46,6 @@
 	hive.allow_no_queen_evo = TRUE
 	hive.allow_queen_evolve = FALSE
 	hive.tacmap_requires_queen_ovi = FALSE
-	hive.tier_limits = list(TIER_2 = -1, TIER_3 = 1)
 	hive.allow_core_larva_spawning = FALSE
 	hive.hive_structure_types -= XENO_STRUCTURE_CORE
 	LAZYADD(hive.blacklisted_castes, XENO_CASTE_QUEEN)
@@ -120,11 +119,12 @@
 	if(last_activity && time_left > 0)
 		to_chat(xeno_candidate, SPAN_WARNING("You must wait [DisplayTimeText(time_left)] before joining as [caste ? caste.caste_type : "a xenomorph"]."))
 		return FALSE
-	if(caste?.tier == 3)
+	if(caste?.tier == 2 || caste?.tier == 3)
 		var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 		var/list/slots = hive.get_tier_slots()
-		if(!slots[TIER_3][OPEN_SLOTS])
-			to_chat(xeno_candidate, SPAN_WARNING("The hive cannot support another Tier 3."))
+		var/list/tier_slots = slots["[caste.tier]"]
+		if(!tier_slots[GUARANTEED_SLOTS][caste.caste_type] && (!tier_slots[OPEN_SLOTS] || !slots[TIER_2][OPEN_SLOTS]))
+			to_chat(xeno_candidate, SPAN_WARNING("The hive cannot support another [caste.caste_type]."))
 			return FALSE
 	return TRUE
 
@@ -139,8 +139,10 @@
 		var/datum/caste_datum/caste = GLOB.xeno_datum_list[caste_name]
 		if(caste.minimum_evolve_time > ROUND_TIME || !caste.can_play_caste(xeno_candidate.client))
 			castes -= caste_name
-		else if(caste.tier == 3 && !slots[TIER_3][OPEN_SLOTS])
-			castes -= caste_name
+		else if(caste.tier == 2 || caste.tier == 3)
+			var/list/tier_slots = slots["[caste.tier]"]
+			if(!tier_slots[GUARANTEED_SLOTS][caste.caste_type] && (!tier_slots[OPEN_SLOTS] || !slots[TIER_2][OPEN_SLOTS]))
+				castes -= caste_name
 	if(!length(castes))
 		to_chat(xeno_candidate, SPAN_WARNING("The hive cannot support any available castes yet."))
 		return FALSE
@@ -192,8 +194,6 @@
 	queen.auto_queen = TRUE
 
 /datum/game_mode/bug_hunt/post_setup()
-	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
-	hive.tier_limits[TIER_3] = clamp(floor(count_marines() / 10), 1, 3)
 	initialize_post_marine_gear_list()
 	setup_auto_queen()
 	round_time_lobby = world.time

@@ -52,7 +52,6 @@
 
 	/// Slots are divided by this value to reach final value.
 	var/tier_slot_divisor = 1
-	var/list/tier_limits
 	var/larva_gestation_multiplier = 1
 	var/bonus_larva_spawn_chance = 1
 	var/hijack_burrowed_surge = FALSE //at hijack, start spawning lots of burrowed
@@ -778,12 +777,6 @@
 	// Tier 2 slots are between 30% and 50% of the hive, depending
 	// on how many T3s there are.
 	slots[TIER_2][OPEN_SLOTS] = max(0, ceil(0.5*effective_total/tier_slot_divisor) - used_tier_2_slots - used_tier_3_slots)
-
-	for(var/tier in tier_limits)
-		var/limit = tier_limits[tier]
-		var/used_tier_slots = tier == TIER_3 ? length(tier_3_xenos) : length(tier_2_xenos)
-		slots[tier][OPEN_SLOTS] = limit < 0 ? 1 : max(0, limit - used_tier_slots)
-		slots[tier][GUARANTEED_SLOTS] = list()
 
 	return slots
 

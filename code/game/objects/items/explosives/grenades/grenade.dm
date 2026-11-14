@@ -83,7 +83,7 @@
 
 	activate(user)
 
-	cause_data = create_cause_data(initial(name), user)
+	cause_data = create_cause_data(initial(name), user, src)
 
 	user.visible_message(SPAN_WARNING("[user] primes \a [name]!"),
 	SPAN_WARNING("You prime \a [name]!"))

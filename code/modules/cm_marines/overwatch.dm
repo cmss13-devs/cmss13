@@ -602,10 +602,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	data["hijack_plan"] = SShijack.hijack_plan
 	data["sd_unlocked"] = SShijack.sd_unlocked
 	data["hijack_started"] = SShijack.hijack_status >= HIJACK_OBJECTIVES_SHIP_INBOUND
-	data["can_select_hijack_plan"] = user == SSticker.mode.acting_commander && SShijack.can_select_hijack_plan()
+	data["can_select_hijack_plan"] = allowed(user) && SShijack.can_select_hijack_plan()
 	data["withdrawal_available"] = SShijack.withdrawal_available
 	data["withdrawal_end_time"] = SShijack.withdrawal_end_time
-	data["can_start_withdrawal"] = user == SSticker.mode.acting_commander && SShijack.can_start_withdrawal()
+	data["can_start_withdrawal"] = allowed(user) && SShijack.can_start_withdrawal()
 	data["world_time"] = world.time
 
 	data["time_request"] = cooldown_request
@@ -1123,12 +1123,12 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	switch(action)
 		if("withdrawal_start")
-			if(ui.user != SSticker.mode.acting_commander)
+			if(!allowed(ui.user))
 				return FALSE
 			return SShijack.start_withdrawal()
 
 		if("hijack_plan")
-			if(ui.user != SSticker.mode.acting_commander)
+			if(!allowed(ui.user))
 				return FALSE
 			return SShijack.select_hijack_plan(params["plan"])
 

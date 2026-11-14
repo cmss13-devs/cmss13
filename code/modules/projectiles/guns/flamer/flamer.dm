@@ -14,7 +14,7 @@
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/guns.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/flamers.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_righthand.dmi',
 	)
 	mouse_pointer = 'icons/effects/mouse_pointer/flamer_mouse.dmi'
 
@@ -110,7 +110,8 @@
 	var/list/fire_sounds = list(
 		'sound/weapons/gun_flamethrower1.ogg',
 		'sound/weapons/gun_flamethrower2.ogg',
-		'sound/weapons/gun_flamethrower3.ogg')
+		'sound/weapons/gun_flamethrower3.ogg',
+	)
 	return pick(fire_sounds)
 
 /obj/item/weapon/gun/flamer/Fire(atom/target, mob/living/user, params, reflex)
@@ -1002,7 +1003,8 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		'sound/weapons/surv_flamer_fire1.ogg',
 		'sound/weapons/surv_flamer_fire2.ogg',
 		'sound/weapons/surv_flamer_fire3.ogg',
-		'sound/weapons/surv_flamer_fire4.ogg')
+		'sound/weapons/surv_flamer_fire4.ogg',
+		)
 	return pick(fire_sounds)
 
 /obj/item/weapon/gun/flamer/flammenwerfer3
@@ -1036,7 +1038,8 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	var/list/fire_sounds = list(
 		'sound/weapons/wy_flamethrower1.ogg',
 		'sound/weapons/wy_flamethrower2.ogg',
-		'sound/weapons/wy_flamethrower3.ogg')
+		'sound/weapons/wy_flamethrower3.ogg',
+		)
 	return pick(fire_sounds)
 
 /obj/item/weapon/gun/flamer/flammenwerfer3/deathsquad

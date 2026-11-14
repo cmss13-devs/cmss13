@@ -6,7 +6,7 @@
 	icon = 'icons/obj/items/weapons/melee/misc.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/misc_weapons_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/misc_weapons_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/misc_weapons_righthand.dmi',
 	)
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_equip_slot = SLOT_WAIST
@@ -29,7 +29,7 @@
 	item_state = "broken_beer"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/food_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/food_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/food_righthand.dmi',
 	)
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("stabbed", "slashed", "attacked")
@@ -98,7 +98,7 @@
 	inhand_y_dimension = 64
 	item_icons = list(
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/64_weapons_righthand.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/64_weapons_lefthand.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/64_weapons_lefthand.dmi',
 	)
 	flags_equip_slot = NO_FLAGS
 	force = MELEE_FORCE_TIER_8
@@ -123,7 +123,7 @@
 	inhand_y_dimension = 64
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/64_weapons_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/64_weapons_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/64_weapons_righthand.dmi',
 	)
 	flags_equip_slot = NO_FLAGS
 	force = MELEE_FORCE_TIER_4

@@ -41,7 +41,7 @@
 		list("Screwdriver", floor(scale * 4), /obj/item/tool/screwdriver, VENDOR_ITEM_REGULAR),
 		list("Wirecutters", floor(scale * 4), /obj/item/tool/wirecutters, VENDOR_ITEM_REGULAR),
 		list("Wrench", floor(scale * 4), /obj/item/tool/wrench, VENDOR_ITEM_REGULAR),
-		list("Light Replacer", floor(scale * 4), /obj/item/device/lightreplacer, VENDOR_ITEM_REGULAR)
+		list("Light Replacer", floor(scale * 4), /obj/item/device/lightreplacer, VENDOR_ITEM_REGULAR),
 	)
 
 /obj/structure/machinery/cm_vending/sorted/tech/comtech_tools
@@ -152,7 +152,7 @@
 		list("Micro Laser", floor(scale * 4), /obj/item/stock_parts/micro_laser , VENDOR_ITEM_REGULAR),
 		list("Micro Manipulator", floor(scale * 4), /obj/item/stock_parts/manipulator, VENDOR_ITEM_REGULAR),
 		list("Scanning Module", floor(scale * 4), /obj/item/stock_parts/scanning_module, VENDOR_ITEM_REGULAR),
-		list("Capacitor", floor(scale * 3), /obj/item/stock_parts/capacitor, VENDOR_ITEM_REGULAR)
+		list("Capacitor", floor(scale * 3), /obj/item/stock_parts/capacitor, VENDOR_ITEM_REGULAR),
 	)
 
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage/antag
@@ -210,6 +210,6 @@
 
 		list("MISCELLANEOUS", -1, null, null),
 		list("Anesthetic Tank", 2, /obj/item/tank/anesthetic, VENDOR_ITEM_REGULAR),
-		list("Health Analyzer", 2, /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR)
+		list("Health Analyzer", 2, /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR),
 	)
 

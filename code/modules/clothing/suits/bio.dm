@@ -7,7 +7,7 @@
 	icon_state = "bio_general"
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi',
 	)
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
@@ -52,7 +52,7 @@
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi',
 	)
 
 /obj/item/clothing/suit/storage/synthbio

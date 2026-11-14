@@ -7,7 +7,7 @@
 	desc = "A basic skull-helm worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/WY.dmi'
 	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/WY.dmi'
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/WY.dmi',
 	)
 	icon_state = "sec_helmet"
 	item_state = "sec_helmet"

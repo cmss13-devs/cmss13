@@ -8,13 +8,13 @@
 	flags_equip_slot = SLOT_FACE | SLOT_ACCESSORY
 	actions_types = list(/datum/action/item_action/toggle/use/whistle)
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi',
 	)
 	worn_accessory_slot = ACCESSORY_SLOT_UTILITY
 	high_visibility = TRUE
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
 	)
 	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/misc.dmi'
 	var/whistle_sound = 'sound/items/whistles/whistle.ogg'

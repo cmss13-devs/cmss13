@@ -147,7 +147,7 @@
 
 		turflist += turf
 		facing = get_dir(turf, target_atom)
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/abduct_hook(turf, windup)
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/attack/brown/abduct_hook(turf, windup)
 
 		if(allow_one_more_step)
 			break
@@ -336,14 +336,14 @@
 			continue
 
 		target_turfs += turfs_to_check
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/lash(turfs_to_check, windup)
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/attack/brown/lash(turfs_to_check, windup)
 
 		var/turf/next_turf = get_step(turfs_to_check, facing)
 		if(!istype(next_turf) || next_turf.density)
 			continue
 
 		target_turfs += next_turf
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/lash(next_turf, windup)
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/attack/brown/lash(next_turf, windup)
 
 	if(!length(target_turfs))
 		to_chat(lash_user, SPAN_XENOWARNING("We don't have any room to do our tail lash!"))

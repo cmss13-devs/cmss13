@@ -101,10 +101,9 @@
 	// Get list of target mobs
 	var/list/target_mobs = list()
 	var/blocked = FALSE
+	var/reached_tiles = 0
 
 	for(var/turf/path_turf as anything in target_turfs)
-		if(blocked)
-			break
 		//Check for walls etc and stop if we encounter one
 		if(path_turf.density)
 			break
@@ -131,6 +130,12 @@
 
 				if(!(mob_to_act in target_mobs))
 					target_mobs += mob_to_act
+
+		if(blocked)
+			break
+		reached_tiles++
+
+	show_pierce_telegraph(get_turf(pierce_user), target_turfs, reached_tiles)
 
 	pierce_user.visible_message(SPAN_XENODANGER("[pierce_user] slashes its claws through the area in front of it!"), SPAN_XENODANGER("We slash our claws through the area in front of us!"))
 	pierce_user.animation_attack_on(targetted_atom, 15)
@@ -194,6 +199,9 @@
 
 	var/list/target_mobs = list()
 	var/list/list_of_targets = orange(1, dash_user)
+	for(var/turf/target_turf in list_of_targets)
+		new /obj/effect/xenomorph/xeno_telegraph/attack/prae_dash(target_turf, 0.6 SECONDS)
+
 	for (var/mob/living/carbon/targets_in_range in list_of_targets)
 		if (!isxeno_human(targets_in_range) || dash_user.can_not_harm(targets_in_range))
 			continue

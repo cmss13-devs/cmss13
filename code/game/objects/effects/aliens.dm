@@ -642,13 +642,80 @@
 /obj/effect/xenomorph/xeno_telegraph/green
 	color = COLOR_LIGHT_GREEN
 
-/// This has a brown icon state and does not have a color overlay by default.
-/obj/effect/xenomorph/xeno_telegraph/abduct_hook
+/obj/effect/xenomorph/xeno_telegraph/retrieve_hook
+	icon_state = "xeno_telegraph_retrieve_hook_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/Initialize()
+	. = ..()
+	underlays += get_border()
+
+/obj/effect/xenomorph/xeno_telegraph/attack/proc/get_border()
+	var/static/mutable_appearance/red_border
+	if(isnull(red_border))
+		red_border = create_border(list("#373737" = "#6D0002", "#434343" = "#850001", "#565656" = "#AC0000", "#7E7E7E" = "#EB4210"))
+	return red_border
+
+/obj/effect/xenomorph/xeno_telegraph/attack/proc/create_border(list/palette)
+	var/icon/border = icon(icon, "xeno_telegraph_attack_base")
+	for(var/shade in palette)
+		border.SwapColor(shade, palette[shade])
+	return mutable_appearance(border)
+
+/obj/effect/xenomorph/xeno_telegraph/attack/brown/get_border()
+	var/static/mutable_appearance/brown_border
+	if(isnull(brown_border))
+		brown_border = create_border(list("#373737" = "#6D3300", "#434343" = "#853E00", "#565656" = "#AC4F00", "#7E7E7E" = "#D79600"))
+	return brown_border
+
+/obj/effect/xenomorph/xeno_telegraph/attack/brown/abduct_hook
 	icon_state = "xeno_telegraph_abduct_hook_anim"
 
-/// This has a brown icon state and does not have a color overlay by default.
-/obj/effect/xenomorph/xeno_telegraph/lash
+/obj/effect/xenomorph/xeno_telegraph/attack/brown/high_gallop
+	icon_state = "xeno_telegraph_high_gallop_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/brown/lash
 	icon_state = "xeno_telegraph_lash"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/caustic_embrace
+	icon_state = "xeno_telegraph_caustic_embrace_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/caustic_embrace/get_border()
+	var/static/mutable_appearance/olive_border
+	if(isnull(olive_border))
+		olive_border = create_border(list("#373737" = "#334025", "#434343" = "#5A6F40", "#565656" = "#68814B", "#7E7E7E" = "#769255"))
+	return olive_border
+
+/obj/effect/xenomorph/xeno_telegraph/attack/eviscerate
+	icon_state = "xeno_telegraph_eviscerate_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/pierce
+	icon_state = "xeno_telegraph_pierce_tail"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/pierce/tip
+	icon_state = "xeno_telegraph_pierce_anim"
+
+/proc/show_pierce_telegraph(turf/previous_turf, list/turf/path, reached_tiles)
+	for(var/index in 1 to reached_tiles)
+		var/turf/path_turf = path[index]
+		var/telegraph_type = index == reached_tiles ? /obj/effect/xenomorph/xeno_telegraph/attack/pierce/tip : /obj/effect/xenomorph/xeno_telegraph/attack/pierce
+		var/obj/effect/xenomorph/xeno_telegraph/attack/pierce/segment = new telegraph_type(path_turf, 0.6 SECONDS)
+		segment.setDir(get_dir(previous_turf, path_turf))
+		previous_turf = path_turf
+
+/obj/effect/xenomorph/xeno_telegraph/attack/prae_dash
+	icon_state = "xeno_telegraph_prae_dash_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/flurry
+	icon_state = "xeno_telegraph_flurry_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/scissor_cut
+	icon_state = "xeno_telegraph_scissor_cut_anim"
+
+/obj/effect/xenomorph/xeno_telegraph/attack/scissor_cut/empowered/get_border()
+	var/static/mutable_appearance/amber_border
+	if(isnull(amber_border))
+		amber_border = create_border(list("#373737" = "#D79600", "#434343" = "#E4A615", "#565656" = "#F5BA31", "#7E7E7E" = "#F7CF5F"))
+	return amber_border
 
 /obj/effect/xenomorph/acid_damage_delay
 	name = "???"

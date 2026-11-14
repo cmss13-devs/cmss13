@@ -409,10 +409,11 @@
 
 	playsound(xeno, 'sound/effects/bang.ogg', 25)
 	xeno.visible_message(SPAN_XENODANGER("[xeno] smashes into the ground!"), SPAN_XENODANGER("We smash into the ground!"))
-	xeno.create_stomp()
+	var/list/stomp_area = orange(distance, xeno)
+	for(var/turf/target_turf in stomp_area)
+		new /obj/effect/xenomorph/xeno_telegraph/attack/brown/high_gallop(target_turf, 0.35 SECONDS)
 
-
-	for (var/mob/living/carbon/targets in orange(distance, xeno))
+	for (var/mob/living/carbon/targets in stomp_area)
 
 		if (targets.stat == DEAD || xeno.can_not_harm(targets))
 			continue

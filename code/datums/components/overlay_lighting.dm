@@ -336,7 +336,7 @@
 	SIGNAL_HANDLER
 	if(range == new_range)
 		return
-	if(range == 0)
+	if(new_range == 0)
 		turn_off()
 	range = clamp(CEILING(new_range, 0.5), 1, 7)
 	var/pixel_bounds = ((range - 1) * 64) + 32
@@ -499,11 +499,11 @@
 	SIGNAL_HANDLER
 	set_direction(newdir)
 
-///Called when parent changes loc.
+///Called when parent changes dir.
 /datum/component/overlay_lighting/proc/on_parent_dir_change(atom/movable/source, olddir, newdir)
 	SIGNAL_HANDLER
 
-	if(current_holder?.dir != newdir)
+	if(current_holder?.dir == newdir)
 		return
 
 	set_direction(newdir)

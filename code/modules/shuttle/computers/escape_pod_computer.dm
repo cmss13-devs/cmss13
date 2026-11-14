@@ -82,6 +82,9 @@
 				return
 
 			shuttle.evac_launch()
+			if(!shuttle.launched)
+				to_chat(ui.user, SPAN_WARNING("The escape pod is not ready to launch."))
+				return
 			pod_state = STATE_LAUNCHING
 			. = TRUE
 		if("delay_launch")

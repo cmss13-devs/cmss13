@@ -92,6 +92,11 @@
 	if(target_area)
 		soundscape_playlist = target_area.soundscape_playlist
 
+	if(SShijack.overloaded_generators && !SShijack.sd_detonated)
+		var/turf/owner_turf = get_turf(owner.mob)
+		if(owner_turf && is_mainship_level(owner_turf.z))
+			target_ambience = 'sound/AI/selfdestruct_alarm.ogg'
+
 	var/sound/S = sound(null,1,0,SOUND_CHANNEL_AMBIENCE)
 
 	if(ambience == target_ambience)
@@ -196,6 +201,7 @@
 	RegisterSignal(owner.mob, COMSIG_MOVABLE_MOVED, PROC_REF(on_mob_moved))
 	RegisterSignal(owner.mob, COMSIG_MOB_LOGOUT, PROC_REF(on_mob_logout))
 	update_mob_environment_override()
+	update_ambience()
 
 /client/proc/adjust_volume_prefs(volume_key, prompt = "", channel_update = 0)
 	prefs.volume_preferences[volume_key] = (tgui_input_number(src, prompt, "Volume", prefs.volume_preferences[volume_key]*100)) / 100

@@ -313,6 +313,10 @@
 		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
 		return XENO_NONCOMBAT_ACTION
 
+	if(SShijack.ground_claimed)
+		to_chat(xeno, SPAN_XENONOTICE("The queen has chosen not to pursue the tallhosts to their skyhive."))
+		return
+
 	if(is_remote)
 		groundside_alien_action(xeno)
 		return
@@ -359,6 +363,22 @@
 		if(world.time < SHUTTLE_LOCK_TIME_LOCK)
 			to_chat(xeno, SPAN_XENODANGER("You can't mobilize the strength to hijack the shuttle yet. Please wait another [time_left_until(SHUTTLE_LOCK_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
 			return
+		if(istype(SSticker.mode, /datum/game_mode/colonialmarines) && SSticker.current_state == GAME_STATE_PLAYING)
+			var/choice = tgui_alert(xeno, "Pursue the tallhosts to their skyhive, or ground the dropship and claim a grounside victory?", "Hive Victory", list("Hijack", "Claim ground victory", "Cancel"))
+			if(choice != "Hijack" && choice != "Claim ground victory")
+				return
+			if(choice == "Claim ground victory")
+				if(!is_ground_level(z))
+					return
+				if(!SShijack.is_groundside_clear())
+					to_chat(xeno, SPAN_XENODANGER("Too many tallhosts still live upon these lands. Drive them OUT!"))
+					return
+				if(SShijack.withdrawal_end_time)
+					to_chat(xeno, SPAN_XENONOTICE("The tallhosts are already fleeing with their skyhive."))
+					return
+				SShijack.withdrawal_available = TRUE
+				SShijack.start_withdrawal(automatic = TRUE)
+				return
 		hijack(xeno)
 		return
 
@@ -382,8 +402,13 @@
 		return
 	if(!user.Adjacent(source_turf) && !force)
 		return
-	if(dropship.is_hijacked)
+	if(dropship.is_hijacked || SShijack.ground_claimed)
 		return
+	if(!force)
+		if(!is_ground_level(z))
+			return
+		if(SSticker.current_state != GAME_STATE_PLAYING || SSticker.mode.round_finished || SShijack.hijack_status != HIJACK_OBJECTIVES_NOT_STARTED)
+			return
 
 	var/datum/dropship_hijack/almayer/hijack = new()
 	dropship.hijack = hijack

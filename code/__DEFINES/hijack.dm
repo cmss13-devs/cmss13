@@ -8,6 +8,12 @@
 #define EVACUATION_STATUS_NOT_INITIATED 0
 #define EVACUATION_STATUS_INITIATED 1
 
+#define HIJACK_ROUTE_FTL "ftl"
+#define HIJACK_ROUTE_SCUTTLE "scuttle"
+#define HIJACK_ROUTE_EVACUATE "evacuate"
+
+#define HIJACK_GROUND_CLAIM_HUMAN_TOLERANCE 2 // Max humans allowed groundside for withdrawal or the queen to skip hijack.
+
 #define HIJACK_OBJECTIVES_NOT_STARTED 0
 #define HIJACK_OBJECTIVES_SHIP_INBOUND 1
 #define HIJACK_OBJECTIVES_STARTED 2

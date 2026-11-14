@@ -46,9 +46,11 @@
 #define MAP_LV1021_FALCONS_FURY "LV-1021: Operation Falcon's Fury"
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
 #define MAP_ROSTOCK "SSV Rostock" //UPP Warship
+#define MAP_GOLDEN_ARROW "USS Golden Arrow"
 #define MAP_HUNTERSHIP "Hunter Ship"
 
 #define GAMEMODE_DISTRESS_SIGNAL "Distress Signal"
+#define GAMEMODE_BUG_HUNT "Bug Hunt"
 #define GAMEMODE_WHISKEY_OUTPOST "Whiskey Outpost"
 #define GAMEMODE_HIVE_WARS "Hive Wars"
 #define GAMEMODE_FACTION_CLASH "Faction Clash"

@@ -1,0 +1,980 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/template_noop,
+/area/space)
+"ab" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "40";
+	density = 0;
+	layer = 4.2;
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"ac" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "38";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"ad" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "28";
+	name = "Typhoon"
+	},
+/obj/effect/attach_point/fuel/dropship1{
+	layer = 3.1;
+	dir = 1
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"ae" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "22";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"af" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "16";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"ag" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "71";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"ah" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "66";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"ai" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "41";
+	density = 0;
+	layer = 4.2;
+	name = "Typhoon"
+	},
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "61";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"aj" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "39";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"ak" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "29";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"al" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "23";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"am" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "17";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"an" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "28";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"ao" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	name = "Typhoon";
+	icon_state = "1"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"ap" = (
+/turf/closed/shuttle/dropship3/typhoon{
+	icon_state = "75"
+	},
+/area/shuttle/drop1/sulaco/typhoon)
+"aq" = (
+/turf/closed/shuttle/dropship3/typhoon{
+	icon_state = "72"
+	},
+/area/shuttle/drop1/sulaco/typhoon)
+"ar" = (
+/turf/closed/shuttle/dropship3/typhoon{
+	icon_state = "67"
+	},
+/area/shuttle/drop1/sulaco/typhoon)
+"as" = (
+/turf/closed/shuttle/dropship3/typhoon{
+	icon_state = "62"
+	},
+/area/shuttle/drop1/sulaco/typhoon)
+"at" = (
+/turf/closed/shuttle/dropship3/typhoon{
+	icon_state = "36"
+	},
+/area/shuttle/drop1/sulaco/typhoon)
+"au" = (
+/turf/closed/shuttle/dropship3/typhoon{
+	icon_state = "30"
+	},
+/area/shuttle/drop1/sulaco/typhoon)
+"av" = (
+/turf/closed/shuttle/dropship3/typhoon{
+	icon_state = "24"
+	},
+/area/shuttle/drop1/sulaco/typhoon)
+"aw" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "9";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"ax" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "41";
+	density = 0;
+	layer = 4.2;
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"ay" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "29";
+	name = "Typhoon"
+	},
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "29";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"az" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "23";
+	name = "Typhoon"
+	},
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "23";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"aA" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "2";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"aB" = (
+/turf/closed/shuttle/dropship3/typhoon{
+	icon_state = "77"
+	},
+/area/shuttle/drop1/sulaco/typhoon)
+"aC" = (
+/obj/structure/machinery/camera/autoname/almayer/dropship_one{
+	dir = 4;
+	pixel_x = -24
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 2;
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 2;
+	pixel_x = 8
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"aD" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"aE" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 2;
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 2;
+	pixel_x = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"aF" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 2;
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 2;
+	pixel_x = 8
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"aG" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 2;
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 2;
+	pixel_x = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"aH" = (
+/obj/effect/attach_point/crew_weapon/dropship1,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"aI" = (
+/turf/closed/shuttle/dropship3/typhoon{
+	icon_state = "47"
+	},
+/area/shuttle/drop1/sulaco/typhoon)
+"aJ" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "3";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"aK" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "100";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"aL" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "95";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"aM" = (
+/turf/closed/shuttle/dropship3/typhoon/transparent{
+	icon_state = "86"
+	},
+/area/shuttle/drop1/sulaco/typhoon)
+"aN" = (
+/turf/closed/shuttle/dropship3/typhoon{
+	icon_state = "82"
+	},
+/area/shuttle/drop1/sulaco/typhoon)
+"aO" = (
+/obj/docking_port/mobile/marine_dropship/alamo/typhoon,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/bug_hunt{
+	dir = 4;
+	vend_x_offset = 1;
+	vend_y_offset = 0
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"aP" = (
+/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"aQ" = (
+/turf/open/shuttle/dropship/light_grey_bottom_left,
+/area/shuttle/drop1/sulaco/typhoon)
+"aR" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full";
+	can_block_movement = 0
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"aS" = (
+/obj/structure/platform_decoration{
+	dir = 4
+	},
+/obj/structure/platform_decoration{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"aT" = (
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"aU" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"aV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 2
+	},
+/obj/structure/machinery/door_control{
+	name = "rear ramp lock";
+	normaldoorcontrol = 1;
+	specialfunctions = 4;
+	desiredstate = 1;
+	id = "typhoon_rear_ramp";
+	dir = 4;
+	pixel_x = -32;
+	layer = 3.5
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds3{
+	name = "\improper Typhoon cargo door";
+	id = "aft_door";
+	id_tag = "typhoon_rear_ramp"
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
+/area/shuttle/drop1/sulaco/typhoon)
+"aW" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	name = "Typhoon";
+	icon_state = "101"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"aX" = (
+/turf/closed/shuttle/dropship3/typhoon/transparent{
+	icon_state = "97"
+	},
+/area/shuttle/drop1/sulaco/typhoon)
+"aY" = (
+/obj/structure/machinery/computer/overwatch/almayer/small{
+	pixel_y = 17;
+	pixel_x = -3
+	},
+/obj/structure/surface/table/reinforced/almayer_B{
+	pixel_y = 0
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"aZ" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_y = 26;
+	pixel_x = 16;
+	name = "operations chair";
+	icon_state = "armor_chair"
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"ba" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/machinery/door/airlock/hatch/cockpit/three{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"bb" = (
+/turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
+/area/shuttle/drop1/sulaco/typhoon)
+"be" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"bf" = (
+/obj/effect/attach_point/crew_weapon/dropship1,
+/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"bg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = -1
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
+/area/shuttle/drop1/sulaco/typhoon)
+"bh" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "102";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"bi" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "99";
+	layer = 2.97;
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"bj" = (
+/turf/closed/shuttle/dropship3/typhoon/transparent{
+	icon_state = "89"
+	},
+/area/shuttle/drop1/sulaco/typhoon)
+"bk" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
+	pixel_y = 25
+	},
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4;
+	buckling_y = 3;
+	pixel_y = 3;
+	chair_state = 2;
+	icon_state = "hotseat_new_folded"
+	},
+/turf/open/shuttle/dropship/light_grey_top_right,
+/area/shuttle/drop1/sulaco/typhoon)
+"bl" = (
+/turf/open/shuttle/dropship/light_grey_bottom_right,
+/area/shuttle/drop1/sulaco/typhoon)
+"bm" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full";
+	can_block_movement = 0
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"bn" = (
+/obj/structure/platform_decoration{
+	dir = 8
+	},
+/obj/structure/platform_decoration{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"bo" = (
+/obj/structure/machinery/camera/autoname/almayer/dropship_one{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"bp" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"bq" = (
+/obj/structure/bed/portable_surgery{
+	pixel_y = 5
+	},
+/obj/structure/machinery/iv_drip{
+	pixel_y = 26;
+	layer = 2.9
+	},
+/obj/structure/curtain/medical,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"br" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/storage/surgical_case,
+/obj/item/reagent_container/hypospray/autoinjector/oxycodone{
+	pixel_y = 9;
+	pixel_x = -3
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"bs" = (
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/bug_hunt{
+	dir = 8;
+	vend_x_offset = -1;
+	vend_y_offset = 0
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"bv" = (
+/turf/closed/shuttle/dropship3/typhoon{
+	icon_state = "48"
+	},
+/area/shuttle/drop1/sulaco/typhoon)
+"bw" = (
+/turf/closed/shuttle/dropship3/typhoon{
+	icon_state = "37"
+	},
+/area/shuttle/drop1/sulaco/typhoon)
+"bx" = (
+/turf/closed/shuttle/dropship3/typhoon{
+	icon_state = "31"
+	},
+/area/shuttle/drop1/sulaco/typhoon)
+"by" = (
+/turf/closed/shuttle/dropship3/typhoon{
+	icon_state = "25"
+	},
+/area/shuttle/drop1/sulaco/typhoon)
+"bz" = (
+/turf/closed/shuttle/dropship3/typhoon{
+	icon_state = "51"
+	},
+/area/shuttle/drop1/sulaco/typhoon)
+"bA" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "4";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"bB" = (
+/turf/closed/shuttle/dropship3/typhoon{
+	icon_state = "83"
+	},
+/area/shuttle/drop1/sulaco/typhoon)
+"bC" = (
+/turf/closed/shuttle/dropship3/typhoon{
+	icon_state = "73"
+	},
+/area/shuttle/drop1/sulaco/typhoon)
+"bD" = (
+/turf/closed/shuttle/dropship3/typhoon{
+	icon_state = "69"
+	},
+/area/shuttle/drop1/sulaco/typhoon)
+"bE" = (
+/turf/closed/shuttle/dropship3/typhoon{
+	icon_state = "64"
+	},
+/area/shuttle/drop1/sulaco/typhoon)
+"bF" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "15";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"bG" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "32";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"bH" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "26";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"bI" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "5";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"bJ" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "74";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"bK" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "70";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"bL" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "40";
+	density = 0;
+	layer = 4.2;
+	name = "Typhoon"
+	},
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "65";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"bM" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "32";
+	name = "Typhoon"
+	},
+/obj/effect/attach_point/fuel/dropship1{
+	layer = 3.1;
+	dir = 1
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"bN" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "33";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"bO" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "27";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"bP" = (
+/obj/structure/shuttle/part/dropship3/transparent{
+	icon_state = "6";
+	name = "Typhoon"
+	},
+/turf/template_noop,
+/area/shuttle/drop1/sulaco/typhoon)
+"bQ" = (
+/obj/structure/transmitter{
+	dir = 4;
+	pixel_x = -19;
+	pixel_y = 12;
+	layer = 3.1;
+	phone_category = "Dropship";
+	name = "Typhoon telephone receiver";
+	phone_id = "Typhoon"
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 6;
+	pixel_y = 8;
+	name = "pilot seat"
+	},
+/obj/structure/machinery/computer/shuttle/dropship/flight/small{
+	pixel_y = 16;
+	pixel_x = 6;
+	req_one_access = list(1,9,12,22);
+	name = "Typhoon flight controls"
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"bR" = (
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full";
+	pixel_y = 22
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8;
+	layer = 5;
+	name = "co-pilot seat"
+	},
+/obj/structure/machinery/computer/dropship_weapons/dropship1/small{
+	pixel_x = 8;
+	pixel_y = 8;
+	name = "Typhoon equipment controls"
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop1/sulaco/typhoon)
+"bV" = (
+/obj/structure/machinery/prop/almayer/CICmap/computer{
+	pixel_y = 17;
+	pixel_x = -14
+	},
+/obj/structure/machinery/camera/autoname/almayer/dropship_one{
+	pixel_y = 32
+	},
+/obj/structure/surface/table/reinforced/almayer_B{
+	pixel_y = 0
+	},
+/obj/structure/transmitter/rotary{
+	pixel_y = 4;
+	pixel_x = 11;
+	phone_id = "Typhoon Overwatch";
+	phone_category = "Overwatch";
+	name = "Typhoon overwatch telephone receiver"
+	},
+/turf/open/shuttle/dropship/light_grey_top_left,
+/area/shuttle/drop1/sulaco/typhoon)
+
+(1,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ac
+ad
+ae
+af
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+ag
+ah
+ah
+ai
+aj
+ak
+al
+am
+ab
+an
+ae
+af
+ao
+"}
+(3,1,1) = {"
+aa
+aa
+aa
+ab
+ap
+aq
+ar
+ar
+as
+at
+au
+av
+aw
+ax
+ay
+az
+am
+aA
+"}
+(4,1,1) = {"
+aa
+aa
+aa
+ax
+aB
+aY
+aZ
+aC
+aD
+aE
+aD
+aH
+aI
+at
+au
+av
+at
+aJ
+"}
+(5,1,1) = {"
+aK
+aL
+aM
+aM
+aN
+bV
+aP
+aP
+aP
+aP
+aQ
+aR
+aS
+aT
+aU
+aT
+aV
+aa
+"}
+(6,1,1) = {"
+aW
+aX
+bQ
+bR
+ba
+bb
+aT
+aT
+aO
+bs
+bb
+aT
+be
+aP
+bf
+aP
+bg
+aa
+"}
+(7,1,1) = {"
+bh
+bi
+bj
+bj
+aB
+bk
+aP
+aP
+aP
+aP
+bl
+bm
+bn
+bo
+bp
+aT
+bg
+aa
+"}
+(8,1,1) = {"
+aa
+aa
+aa
+ab
+aB
+bq
+br
+aF
+aD
+aG
+aD
+aH
+bv
+bw
+bx
+by
+bz
+bA
+"}
+(9,1,1) = {"
+aa
+aa
+aa
+ax
+bB
+bC
+bD
+bD
+bE
+bw
+bx
+by
+bF
+ab
+bG
+bH
+af
+bI
+"}
+(10,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+bJ
+bK
+bK
+bL
+ac
+bM
+bH
+af
+ax
+bN
+bO
+am
+bP
+"}
+(11,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ax
+aj
+bN
+bO
+am
+aa
+aa
+aa
+aa
+aa
+"}

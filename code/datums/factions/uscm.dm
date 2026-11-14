@@ -79,7 +79,7 @@
 			human = location
 			human.langchat_color = squad.chat_color // This really ought to be done elsewhere
 
-		if(rank_override && squad.squad_leader != location)
+		if(rank_override && (squad.squad_leader != location || rank_override == "wo_co" || rank_override == "wo_xo"))
 			marine_rk = rank_override
 
 		if(marine_rk)

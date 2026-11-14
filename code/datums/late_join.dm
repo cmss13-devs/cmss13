@@ -31,7 +31,7 @@
 		var/active = 0
 		// player_list holds all cliented mobs, AKA "active" players
 		for(var/mob/player in GLOB.player_list)
-			if(player.job == job_title)
+			if(GET_DEFAULT_ROLE(player.job) == GET_DEFAULT_ROLE(job_title))
 				active++
 
 		var/role_category = get_job_department(job_title) || "other"
@@ -57,7 +57,7 @@
 		APPEND_RAW(categorized_roles[role_category], list(
 			"Title" = job_title,
 			"DisplayTitle" = mode_job.disp_title,
-			"IsLeader" = is_job_leader(job_title),
+			"IsLeader" = is_job_leader(default_role),
 			"Available" = GLOB.RoleAuthority.check_role_entry(user, mode_job, latejoin = TRUE, faction = faction),
 			"WhitelistLocked" = !mode_job.check_whitelist_status(user),
 			"JobBanned" = !!(jobban_isbanned(user, job_title) || (mode_job.role_ban_alternative && jobban_isbanned(user, mode_job.role_ban_alternative))),

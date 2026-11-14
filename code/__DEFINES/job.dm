@@ -17,6 +17,16 @@
 #define SQUAD_ARMY "US Army"
 
 // Job name defines
+#define JOB_PLATOON_COMMANDER "Platoon Commander"
+#define JOB_OPERATIONS_OFFICER "Operations Officer"
+#define JOB_PLATOON_SERGEANT "Platoon Sergeant"
+#define JOB_RECON_SECTION_LEADER "Reconnaissance Section Leader"
+#define JOB_RECON_CORPSMAN "Reconnaissance Corpsman"
+#define JOB_RECON_ENGINEER "Reconnaissance Engineer"
+#define JOB_RECON_CREWMAN "Vehicle Crewman"
+#define JOB_RECON_SMARTGUNNER "Reconnaissance Smartgunner"
+#define JOB_RECON_RIFLEMAN "Reconnaissance Rifleman"
+#define JOB_RECON_SYNTHETIC "Reconnaissance Synthetic"
 #define JOB_SQUAD_MARINE "Rifleman"
 #define JOB_SQUAD_LEADER "Squad Leader"
 #define JOB_SQUAD_ENGI "Combat Technician"

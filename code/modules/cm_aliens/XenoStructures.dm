@@ -765,6 +765,9 @@
 
 	acid_type = /obj/effect/xenomorph/spray/strong
 
+/obj/effect/alien/resin/acid_pillar/strong/bug_hunt
+	health = HEALTH_RESIN_XENO_ACID_PILLAR * 3
+
 /obj/effect/alien/resin/shield_pillar
 	name = "shield pillar"
 	desc = "A resin pillar that is oozing with acid."

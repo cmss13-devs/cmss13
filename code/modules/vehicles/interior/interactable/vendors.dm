@@ -89,6 +89,10 @@
 		list("Syringe", floor(scale * 3), /obj/item/reagent_container/syringe, VENDOR_ITEM_REGULAR)
 	)
 
+/obj/structure/machinery/cm_vending/sorted/medical/vehicle/bug_hunt/populate_product_list(scale)
+	..()
+	listed_products += list(list("Emergency Defibrillator", 2, /obj/item/device/defibrillator, VENDOR_ITEM_REGULAR))
+
 //MED APC version of Blood Dispenser
 /obj/structure/machinery/cm_vending/sorted/medical/blood/vehicle
 	name = "\improper MM Blood Dispenser"

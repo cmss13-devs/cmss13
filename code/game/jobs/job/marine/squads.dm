@@ -705,6 +705,8 @@
 	marines_list += target_mob
 	target_mob.assigned_squad = src //Add them to the squad
 	id_card.access += (src.access + extra_access) //Add their squad access to their ID
+	if(istype(SSticker.mode, /datum/game_mode/bug_hunt))
+		assignment = target_mob.assigned_equipment_preset?.assignment || assignment
 	if(prepend_squad_name_to_assignment)
 		id_card.assignment = "[name] [assignment]"
 	else
@@ -817,8 +819,8 @@
 				if(JOB_MARINE_RAIDER_CMD)
 					old_lead.comm_title = "CMD."
 				else
-					var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[GET_DEFAULT_ROLE(old_lead.job)]
-					old_lead.comm_title = job.gear_preset.role_comm_title
+					var/datum/job/job = GET_MAPPED_ROLE(old_lead.job)
+					old_lead.comm_title = job.get_comm_title()
 			if(GET_DEFAULT_ROLE(old_lead.job) != JOB_SQUAD_LEADER || !leader_killed)
 				var/obj/item/device/radio/headset/almayer/marine/headset = old_lead.get_type_in_ears(/obj/item/device/radio/headset/almayer)
 				if(headset)

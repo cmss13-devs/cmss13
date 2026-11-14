@@ -110,7 +110,7 @@
 
 	damaged = FALSE
 	plasma_stored = 0
-	health = initial(health)
+	health = maxhealth
 
 	var/obj/effect/alien/weeds/node/pylon/N = locate() in loc
 	if(!N)
@@ -243,6 +243,19 @@
 
 	lesser_drone_spawn_limit = 10
 
+/obj/effect/alien/resin/special/pylon/core/bug_hunt
+	health = 6000
+	var/attack_announced = FALSE
+
+/obj/effect/alien/resin/special/pylon/core/bug_hunt/healthcheck()
+	if(!attack_announced && health < maxhealth)
+		attack_announced = TRUE
+		xeno_announcement("Our hive core at [get_area_name(src)] is under attack!", linked_hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+	return ..()
+
+/obj/effect/alien/resin/special/pylon/core/bug_hunt/announce_destruction()
+	xeno_announcement("Our hive core at [get_area_name(src)] has been destroyed! Vengeance!", linked_hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+
 /obj/effect/alien/resin/special/pylon/core/Initialize(mapload, datum/hive_status/hive_ref)
 	. = ..()
 
@@ -255,7 +268,10 @@
 
 /obj/effect/alien/resin/special/pylon/core/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)
-	SSminimaps.add_marker(src, get_minimap_flag_for_faction(linked_hive?.hivenumber), image('icons/ui_icons/map_blips.dmi', null, "core"))
+	var/hud_flags = get_minimap_flag_for_faction(linked_hive?.hivenumber)
+	if(istype(SSticker.mode, /datum/game_mode/bug_hunt))
+		hud_flags |= MINIMAP_FLAG_USCM
+	SSminimaps.add_marker(src, hud_flags, image('icons/ui_icons/map_blips.dmi', null, "core"))
 
 /obj/effect/alien/resin/special/pylon/core/process()
 	. = ..()
@@ -306,7 +322,7 @@
 		last_healed = world.time + heal_interval
 
 /obj/effect/alien/resin/special/pylon/core/proc/can_spawn_larva()
-	if(linked_hive.hardcore)
+	if(!linked_hive.allow_core_larva_spawning || linked_hive.hardcore)
 		return FALSE
 
 	return linked_hive.stored_larva
@@ -414,12 +430,18 @@
 /obj/effect/alien/resin/special/pylon/core/Destroy()
 	if(linked_hive)
 		visible_message(SPAN_XENOHIGHDANGER("The resin roof withers away as \the [src] dies!"), max_distance = WEED_RANGE_CORE)
-		linked_hive.hive_location = null
+		if(linked_hive.hive_location == src)
+			linked_hive.hive_location = null
+			for(var/obj/effect/alien/resin/special/pylon/core/core in linked_hive.hive_structures[XENO_STRUCTURE_CORE])
+				if(core != src && !QDELETED(core))
+					linked_hive.set_hive_location(core)
+					break
 		if(world.time < XENOMORPH_PRE_SETUP_CUTOFF && !hardcore)
 			. = ..()
 			return
-		linked_hive.hivecore_cooldown = TRUE
-		INVOKE_ASYNC(src, PROC_REF(cooldownFinish),linked_hive) // start cooldown
+		if(linked_hive.hive_structures_limit[XENO_STRUCTURE_CORE])
+			linked_hive.hivecore_cooldown = TRUE
+			INVOKE_ASYNC(src, PROC_REF(cooldownFinish),linked_hive) // start cooldown
 		if(hardcore)
 			xeno_message(SPAN_XENOANNOUNCE("We can no longer gain new sisters or another Queen. Additionally, we are unable to heal if our Queen is dead."), 2, linked_hive.hivenumber)
 			linked_hive.hardcore = TRUE

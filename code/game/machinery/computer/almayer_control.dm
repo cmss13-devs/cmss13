@@ -31,7 +31,8 @@
 		to_chat(usr, SPAN_WARNING("Access denied."))
 		return FALSE
 
-	if(!istype(loc.loc, /area/almayer/command/cic)) //Has to be in the CIC. Can also be a generic CIC area to communicate, if wanted.
+	var/area/console_area = get_area(src)
+	if(!istype(console_area, /area/almayer/command/cic) && !istype(console_area, /area/golden_arrow))
 		to_chat(usr, SPAN_WARNING("Unable to establish a connection."))
 		return FALSE
 

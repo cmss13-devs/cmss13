@@ -1,0 +1,10 @@
+{
+    "map_name": "USS Golden Arrow",
+    "map_path": "map_files/Golden_Arrow",
+    "map_file": "Golden_Arrow.dmm",
+    "traits": [
+        {
+            "Marine Main Ship": true
+        }
+    ]
+}

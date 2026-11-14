@@ -32,6 +32,9 @@
 	var/plant_on_semiweedable = FALSE
 	var/node_type = /obj/effect/alien/weeds/node
 
+/datum/action/xeno_action/onclick/plant_weeds/predrop
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+
 /datum/action/xeno_action/onclick/autoweeding_toggle
 	name = "Toggle Autoweeding"
 	action_icon_state = "autoweed_toggle"
@@ -99,6 +102,9 @@
 /datum/action/xeno_action/onclick/choose_resin/queen_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_4 //it's important that hivelord and drone have the same macros because their playstyle is similar, but it's not as important for queen since her playstyle is very different
 
+/datum/action/xeno_action/onclick/choose_resin/predrop
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+
 // Secrete Resin
 /datum/action/xeno_action/activable/secrete_resin
 	name = "Secrete Resin"
@@ -135,6 +141,9 @@
 /datum/action/xeno_action/activable/secrete_resin/hivelord
 	name = "Secrete Thick Resin"
 	thick = TRUE
+
+/datum/action/xeno_action/activable/secrete_resin/predrop
+	ability_primacy = XENO_TECH_SECRETE_RESIN
 
 //resin marker
 /datum/action/xeno_action/activable/info_marker
@@ -558,6 +567,17 @@
 		return
 	for(var/action_path in base_actions)
 		give_action(src, action_path)
+	add_predrop_building()
+
+/mob/living/carbon/xenomorph/proc/add_predrop_building()
+	if(!istype(SSticker.mode, /datum/game_mode/bug_hunt) || SSobjectives.first_drop_complete || tier < 1 || tier > 3)
+		return
+	if(!get_action(src, /datum/action/xeno_action/onclick/plant_weeds))
+		give_action(src, /datum/action/xeno_action/onclick/plant_weeds/predrop)
+	if(get_action(src, /datum/action/xeno_action/activable/secrete_resin))
+		return
+	give_action(src, /datum/action/xeno_action/onclick/choose_resin/predrop)
+	give_action(src, /datum/action/xeno_action/activable/secrete_resin/predrop)
 
 
 /datum/action/xeno_action/onclick/toggle_seethrough

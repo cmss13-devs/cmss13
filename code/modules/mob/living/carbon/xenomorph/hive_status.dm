@@ -52,6 +52,7 @@
 
 	/// Slots are divided by this value to reach final value.
 	var/tier_slot_divisor = 1
+	var/list/tier_limits
 	var/larva_gestation_multiplier = 1
 	var/bonus_larva_spawn_chance = 1
 	var/hijack_burrowed_surge = FALSE //at hijack, start spawning lots of burrowed
@@ -70,6 +71,7 @@
 	var/allow_queen_evolve = TRUE
 	/// Set to true if you want to prevent bursts and spawns of new xenos. Will also prevent healing if the queen no longer exists
 	var/hardcore = FALSE
+	var/allow_core_larva_spawning = TRUE //blocked on bug hunt
 	/// Set to false if you want to prevent getting burrowed larva from latejoin marines
 	var/latejoin_burrowed = TRUE
 	/// If hit limit of larva from pylons
@@ -777,6 +779,12 @@
 	// on how many T3s there are.
 	slots[TIER_2][OPEN_SLOTS] = max(0, ceil(0.5*effective_total/tier_slot_divisor) - used_tier_2_slots - used_tier_3_slots)
 
+	for(var/tier in tier_limits)
+		var/limit = tier_limits[tier]
+		var/used_tier_slots = tier == TIER_3 ? length(tier_3_xenos) : length(tier_2_xenos)
+		slots[tier][OPEN_SLOTS] = limit < 0 ? 1 : max(0, limit - used_tier_slots)
+		slots[tier][GUARANTEED_SLOTS] = list()
+
 	return slots
 
 
@@ -885,8 +893,8 @@
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
 		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
 			continue
-		var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[current_human.job]
-		if(!job)
+		var/datum/job/job = GET_MAPPED_ROLE(current_human.job)
+		if(!(job?.title in GLOB.RoleAuthority.roles_for_mode))
 			continue
 		var/turf/turf = get_turf(current_human)
 		if(is_mainship_level(turf?.z))
@@ -1146,7 +1154,7 @@
 		to_chat(user, SPAN_WARNING("The hive has fallen, you can't join it!"))
 		return FALSE
 
-	if(!living_xeno_queen)
+	if(!living_xeno_queen && !allow_no_queen_actions)
 		to_chat(user, SPAN_WARNING("The selected hive does not have a Queen!"))
 		return FALSE
 
@@ -1184,8 +1192,8 @@
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
 		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
 			continue
-		var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[current_human.job]
-		if(!job)
+		var/datum/job/job = GET_MAPPED_ROLE(current_human.job)
+		if(!(job?.title in GLOB.RoleAuthority.roles_for_mode))
 			continue
 		var/turf/turf = get_turf(current_human)
 		if(is_ground_level(turf?.z))

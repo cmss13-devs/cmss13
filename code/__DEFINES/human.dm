@@ -251,11 +251,14 @@
 #define EYELID_CLOSED_VOLUNTARILY "closed_voluntarily"
 #define EYELID_SWITCH "switch"
 #define EYELID_FLAYED "flayed"
-
 /// How long the lids stay closed during a normal life blink
 #define EYELID_BLINK_CLOSED_TIME (0.15 SECONDS)
-
 /// Base open interval between normal blinks (seconds, before status modifiers)
 #define EYELID_BLINK_OPEN_BASE 3
+/// Sleep levels, lower means closer to waking, progressive actions while sleeping will force waking
+#define NAPPING_LEVEL_AWAKE 0
+#define NAPPING_LEVEL_SHALLOW 1
+#define NAPPING_LEVEL_TRANSITIONAL 2
+#define NAPPING_LEVEL_DEEP 3
 
 //--- end ---//

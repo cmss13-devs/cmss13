@@ -199,8 +199,8 @@
 	/// world.time when life is allowed to perform the next normal blink
 	var/next_blink_at = 0
 
-	/// for the sleeping emote
-	var/is_napping = FALSE
+	/// for the sleeping emote, 0 = awake, higher numbers = deeper sleep
+	var/napping_level = 0
 
 	/// Timer for periodic snoring while napping
 	var/nap_snore_timer

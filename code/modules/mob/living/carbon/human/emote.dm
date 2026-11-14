@@ -328,7 +328,7 @@
 /datum/emote/living/carbon/human/snore/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	var/mob/living/carbon/human/H = user
-	if(H.is_napping || H.eyelids_status == EYELID_CLOSED_VOLUNTARILY)
+	if(H.napping_level || H.eyelids_status == EYELID_CLOSED_VOLUNTARILY)
 		return
 	H.move_eyelids(EYELID_CLOSED, 5)
 
@@ -477,7 +477,7 @@
 /datum/emote/living/carbon/human/openeyes/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	var/mob/living/carbon/human/H = user
-	if(H.is_napping)
+	if(H.napping_level)
 		H.wake_from_nap(rapid_blink = FALSE)
 		return
 	// existing openeyes logic...
@@ -520,6 +520,6 @@
 /datum/emote/living/carbon/human/wake/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	var/mob/living/carbon/human/H = user
-	if(H.is_napping)
+	if(H.napping_level)
 		H.wake_from_nap(rapid_blink = FALSE)
 

@@ -214,7 +214,7 @@
 	if(w_uniform)
 		w_uniform.add_fingerprint(mob)
 
-	if(is_napping)
+	if(napping_level)
 		mob.visible_message(SPAN_NOTICE("[mob] shakes [src] awake!"), SPAN_NOTICE("You shake [src] awake!"), null, 4)
 		to_chat(src, SPAN_NOTICE("[mob] shakes you awake!"))
 		wake_from_nap(rapid_blink = TRUE)

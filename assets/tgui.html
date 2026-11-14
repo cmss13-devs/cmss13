@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <!-- Inlined metadata -->
+    <meta id="tgui:windowId" content="[tgui:windowId]" />
+    <meta id="tgui:strictMode" content="[tgui:strictMode]" />
+
+    <!-- Early setup -->
+    <!-- tgui:helpers -->
+    <!-- tgui:ntos-error -->
+    <!-- tgui:inline-css -->
+  </head>
+  <body>
+    <!-- tgui:assets -->
+    <!-- tgui:inline-html-start -->
+    <!-- tgui:inline-html -->
+    <!-- tgui:inline-html-end -->
+    <!-- tgui:inline-js -->
+
+    <!-- Root element for tgui interfaces -->
+    <div id="react-root"></div>
+
+    <!-- Fatal error container -->
+    <div id="FatalError" class="FatalError">
+      <!-- prettier-ignore -->
+      <div class="FatalError__logo">
+        \+++++\@@@@@@@@@@/++++\@@@@@@@@@@/+++++/
+         \+++++\@``````@/++*+*+\@``````@/+++++/
+          \+++++\@````@/++++++++\@````@/+++++/
+           \+++++\@``@/++++++++++\@``@/+++++/
+            \+++++\@@/+++++/\+++++\@@/+++++/
+             \+++*+\/+*+++/@@\+++++\/+++++/
+              \++++++++++/@``@\++++++++++/
+               \++++++*+/@````@\++++++++/
+                \++++++/@@@@@@@@\++++++/
+      </div>
+      <p class="FatalError__header">
+        A fatal exception has occurred at 002B:C562F1B7 in TGUI. The current
+        application will be terminated. Send the copy of the following stack
+        trace to an authorized Weyland-Yutani incident handler at
+        https://github.com/cmss13-devs/cmss13/issues. Thank you for your
+        cooperation.
+      </p>
+      <div id="FatalError__stack" class="FatalError__stack"></div>
+      <div class="FatalError__footer">
+        Weyland-Yutani (c) 2100-2182 Building better user interfaces.
+      </div>
+    </div>
+
+    <noscript>
+      <div class="NoticeBox">
+        <div>Javascript is required in order to use this interface.</div>
+        <div>Please enable Javascript and restart the game.</div>
+      </div>
+    </noscript>
+
+    <script>
+      // Signal tgui that we're ready to receive updates
+      Byond.sendMessage('ready');
+    </script>
+  </body>
+</html>

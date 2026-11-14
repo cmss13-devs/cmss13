@@ -288,6 +288,9 @@ Buildable meters
 	..()
 	setDir(old_dir) // Retain old dir since these rotate in hand
 
+/obj/item/pipe/item_action_slot_check(mob/user, slot)
+	return FALSE // Do not add our verbs to mobs
+
 // rotate the pipe item clockwise
 /obj/item/pipe/verb/rotate()
 	set category = "Object"

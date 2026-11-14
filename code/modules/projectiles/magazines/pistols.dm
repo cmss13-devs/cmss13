@@ -236,29 +236,29 @@
 //Type 31 pistol. //A makarov
 
 /obj/item/ammo_magazine/pistol/np92
-	name = "\improper NP92 magazine (9x18mm Makarov)"
-	desc = "A 9x18mm Makarov pistol magazine, for use in the NP92."
+	name = "\improper NP92 magazine (8.6x20mm)"
+	desc = "A 8.6x20mm caseless pistol magazine, for use in the NP92."
 	default_ammo = /datum/ammo/bullet/pistol
-	caliber = "9x18mm Makarov"
+	caliber = "8.6x20mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
 	icon_state = "np92mag"
-	max_rounds = 12
+	max_rounds = 19
 	gun_type = /obj/item/weapon/gun/pistol/np92
 
 /obj/item/ammo_magazine/pistol/np92/suppressed
-	name = "\improper NPZ92 magazine (9x18mm Makarov)"
-	desc = "A 9x18mm Makarov pistol magazine, for use in the NPZ92."
+	name = "\improper NP92 magazine (8.6x20mm)"
+	desc = "A 8.6x20mm caseless pistol magazine, for use in the NP92. This is a recent production magazine, with better reliability than the older ones."
 	default_ammo = /datum/ammo/bullet/pistol
-	caliber = "9x18mm Makarov"
+	caliber = "8.6x20mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
 	icon_state = "npz92mag"
-	max_rounds = 12
+	max_rounds = 19
 
 /obj/item/ammo_magazine/pistol/np92/tranq
-	name = "\improper NPZ92 tranq magazine (9x18mm Makarov)"
-	desc = "A tranquilizer 9x18mm Makaraov pistol magazine."
+	name = "\improper NP92 tranq magazine (8.6x20mm)"
+	desc = "A 8.6x20mm tranquilizer pistol magazine, for use in the NP92. This is a recent production magazine, with better reliability than the older ones."
 	default_ammo = /datum/ammo/bullet/pistol/tranq
-	caliber = "9x18mm Makarov"
+	caliber = "8.6x20mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
 	icon_state = "npz92tranqmag"
 	max_rounds = 12
@@ -267,20 +267,20 @@
 //Type 73 pistol. //A TT
 
 /obj/item/ammo_magazine/pistol/t73
-	name = "\improper Type 73 magazine (7.62x25mm Tokarev)"
-	desc = "A 7.62x25mm pistol magazine."
+	name = "\improper Type 73 magazine (10mm)"
+	desc = "A 10mm cased pistol magazine."
 	default_ammo = /datum/ammo/bullet/pistol/heavy
-	caliber = "7.62x25mm Tokarev"
+	caliber = "10mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
 	icon_state = "ttmag"
 	max_rounds = 9
 	gun_type = /obj/item/weapon/gun/pistol/t73
 
 /obj/item/ammo_magazine/pistol/t73_impact
-	name = "\improper High Impact Type 74 magazine (7.62x25mm Tokarev)"
-	desc = "A high-impact 7.62x25mm Tokarev pistol magazine. The bullets are tipped with a tungsten-lead alloy to stagger absolutely anything they hit. Point towards dissidents."
+	name = "\improper High Impact Type 74 magazine (10mm)"
+	desc = "A high-impact 10mm cased pistol magazine. The bullets are tipped with a tungsten-lead alloy to stagger absolutely anything they hit, and the extra powder load is enough to blow apart a normal Type 73 if used. Point towards dissidents."
 	default_ammo = /datum/ammo/bullet/pistol/deagle/super/highimpact/upp
-	caliber = "7.62x25mm Tokarev"
+	caliber = "10mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
 	icon_state = "ttmag_impact"
 	max_rounds = 9

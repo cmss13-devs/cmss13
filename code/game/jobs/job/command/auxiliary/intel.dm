@@ -3,8 +3,7 @@
 	title = JOB_INTEL
 	total_positions = 3
 	spawn_positions = 3
-	allow_additional = 1
-	scaled = 1
+	scaled = TRUE
 	supervisors = "the auxiliary support officer"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/intel
@@ -13,14 +12,15 @@
 /datum/job/command/intel/set_spawn_positions(count)
 	spawn_positions = int_slot_formula(count)
 
-/datum/job/command/intel/get_total_positions(latejoin = 0)
-	var/positions = spawn_positions
-	if(latejoin)
-		positions = int_slot_formula(get_total_marines())
-		if(positions <= total_positions_so_far)
-			positions = total_positions_so_far
-		else
-			total_positions_so_far = positions
+/datum/job/command/intel/get_total_positions(latejoin)
+	var/normal_positions = ..()
+	var/positions = isnull(scaled) ? normal_positions : int_slot_formula(get_total_marines())
+
+	if(positions <= total_positions_so_far)
+		positions = total_positions_so_far
+	else
+		total_positions_so_far = positions
+
 	return positions
 
 /datum/job/command/intel/generate_entry_conditions(mob/living/candidate, whitelist_status)

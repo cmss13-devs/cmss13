@@ -3,8 +3,7 @@
 	title = JOB_POLICE
 	total_positions = 5
 	spawn_positions = 5
-	allow_additional = 1
-	scaled = 1
+	scaled = TRUE
 	selection_class = "job_mp"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/uscm_police/mp
@@ -13,16 +12,15 @@
 /datum/job/command/police/set_spawn_positions(count)
 	spawn_positions = mp_slot_formula(count)
 
-/datum/job/command/police/get_total_positions(latejoin = 0)
-	var/positions = spawn_positions
-	if(latejoin)
-		positions = mp_slot_formula(get_total_marines())
-		if(positions <= total_positions_so_far)
-			positions = total_positions_so_far
-		else
-			total_positions_so_far = positions
+/datum/job/command/police/get_total_positions(latejoin)
+	var/normal_positions = ..()
+	var/positions = isnull(scaled) ? normal_positions : mp_slot_formula(get_total_marines())
+
+	if(positions <= total_positions_so_far)
+		positions = total_positions_so_far
 	else
 		total_positions_so_far = positions
+
 	return positions
 
 AddTimelock(/datum/job/command/police, list(

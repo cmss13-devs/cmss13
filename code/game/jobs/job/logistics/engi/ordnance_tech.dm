@@ -3,8 +3,7 @@
 	title = JOB_ORDNANCE_TECH
 	total_positions = 0
 	spawn_positions = 0
-	allow_additional = 0
-	scaled = 0
+	scaled = FALSE
 	supervisors = "the chief engineer"
 	selection_class = "job_ot"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
@@ -14,16 +13,15 @@
 /datum/job/logistics/otech/set_spawn_positions(count)
 	spawn_positions = ot_slot_formula(count)
 
-/datum/job/logistics/otech/get_total_positions(latejoin = 0)
-	var/positions = spawn_positions
-	if(latejoin)
-		positions = ot_slot_formula(get_total_marines())
-		if(positions <= total_positions_so_far)
-			positions = total_positions_so_far
-		else
-			total_positions_so_far = positions
+/datum/job/logistics/otech/get_total_positions(latejoin)
+	var/normal_positions = ..()
+	var/positions = isnull(scaled) ? normal_positions : ot_slot_formula(get_total_marines())
+
+	if(positions <= total_positions_so_far)
+		positions = total_positions_so_far
 	else
 		total_positions_so_far = positions
+
 	return positions
 
 AddTimelock(/datum/job/logistics/otech, list(

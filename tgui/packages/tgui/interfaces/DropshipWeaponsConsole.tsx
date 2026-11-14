@@ -311,7 +311,7 @@ const BaseMfdPanel = (props: MfdProps) => {
           <h1>U.S.C.M.</h1>
           <h1>Dropship Weapons Control System</h1>
           <h3>UA Northbridge</h3>
-          <h3>V 0.5</h3>
+          <h3>V 0.9</h3>
         </div>
       </Box>
     </MfdPanel>
@@ -360,7 +360,7 @@ export const DropshipWeaponsConsole = () => {
               <Stack vertical>
                 <Stack.Item height="20px" />
                 <Stack.Item>
-                  <Dpad panelStateId="left-screen" />
+                  <Dpad />
                 </Stack.Item>
                 <Stack.Item height="10px" />
                 <Stack.Item className="DLabel">

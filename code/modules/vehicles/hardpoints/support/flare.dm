@@ -11,6 +11,7 @@
 	damage_multiplier = 0.1
 
 	activatable = TRUE
+	allowed_seat = VEHICLE_DRIVER
 
 	health = 500
 	firing_arc = 120
@@ -23,10 +24,10 @@
 	muzzleflash_icon_state = "muzzle_laser"
 
 	muzzle_flash_pos = list(
-		"1" = list(-4, -28),
-		"2" = list(5, 8),
-		"4" = list(-14, -6),
-		"8" = list(14, -6)
+		"1" = list(22, -13),
+		"2" = list(11, 22),
+		"4" = list(2, 10),
+		"8" = list(30, 24)
 	)
 
 	scatter = 6

@@ -694,3 +694,10 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control/upp
 	req_one_access = list(ACCESS_UPP_FLIGHT)
 	faction = FACTION_UPP
+
+/obj/structure/machinery/computer/shuttle/dropship/flight/toc
+	name = "dropship control screen"
+	desc = "A screen on the TOC computer for controlling the dropship linked to it. Has an abbreviated version of the flight controls and data."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "toc_shuttle"
+	is_remote = TRUE

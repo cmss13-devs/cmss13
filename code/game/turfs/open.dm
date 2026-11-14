@@ -1705,8 +1705,14 @@
 /turf/open/shuttle/vehicle/floor_1_2
 	icon_state = "floor_1_2"
 
+/turf/open/shuttle/vehicle/floor_1_3
+	icon_state = "floor_1_3"
+
 /turf/open/shuttle/vehicle/floor_1_3_3
 	icon_state = "floor_1_3_3"
+
+/turf/open/shuttle/vehicle/floor_1_4
+	icon_state = "floor_1_4"
 
 /turf/open/shuttle/vehicle/floor_1_5
 	icon_state = "floor_1_5"
@@ -1722,6 +1728,9 @@
 
 /turf/open/shuttle/vehicle/floor_1_9
 	icon_state = "floor_1_9"
+
+/turf/open/shuttle/vehicle/floor_2
+	icon_state = "floor_2"
 
 /turf/open/shuttle/vehicle/floor_3
 	icon_state = "floor_3"

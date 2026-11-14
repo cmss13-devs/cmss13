@@ -60,19 +60,8 @@
 		if(config.special_culling_mask && config.icon_state_key)
 			key = "_[config.icon_state_key]"
 
-	var/toxic_key = 0
-	if(istype(water_turf, /turf/open/gm/river/desert))
-		var/turf/open/gm/river/desert/toxic_turf = water_turf
-		toxic_key = toxic_turf.toxic
-	else if(istype(water_turf, /turf/open/desert/desert_shore))
-		var/turf/open/desert/desert_shore/toxic_turf = water_turf
-		toxic_key = toxic_turf.toxic
-	else if(istype(water_turf, /turf/open/desert/cave/cave_shore))
-		var/turf/open/desert/cave/cave_shore/toxic_turf = water_turf
-		toxic_key = toxic_turf.toxic
-
 	var/icon_size = config.icon_size
-	var/icon_key = "[icon_size]_[water_turf.water_type]_[toxic_key]_[pixel_y_offset][key]"
+	var/icon_key = "[icon_size]_[water_turf.water_type]_[water_turf.variant_key]_[pixel_y_offset][key]"
 	var/mutable_appearance/final_texture = mutable_appearance(SSwater_overlays.water_overlay_icons[icon_key])
 	final_texture.color = water_turf.color
 	overlays += final_texture

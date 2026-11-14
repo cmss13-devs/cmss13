@@ -114,8 +114,8 @@ SUBSYSTEM_DEF(water_overlays)
 	generated_water_overlays["[water_type]_[input_depth]"] = TRUE
 	var/turf/open/water_turf = water_type
 	var/found_icon_state = water_turf.icon_state
-	var/toxic = WATER_TOXIC_NO	//this works as a iterator... used exclusively for water turfs that use 'icons/turf/floors/desert_water.dmi' which have 2 addtional varients
-	for(var/working_icon in input_icons)	//if the water turf can be toxic, we need to run a loop for each possiblity, thus this is a list
+	var/variants_key = 1	//this works as a iterator for water turfs that use additional variants for their icon var
+	for(var/working_icon in input_icons)	//if the water turf has variants we need to run a loop for each one, so if the turf changes to use those it will still have overlays
 		for(var/texture_size in configs_by_size)
 			var/list/configs_of_this_size = configs_by_size[texture_size]
 			if(!length(configs_of_this_size))
@@ -132,37 +132,37 @@ SUBSYSTEM_DEF(water_overlays)
 					for(var/j=0, j<pieces, j++)
 						sized_water_texture.Blend(turf_texture, ICON_OVERLAY, (i*32)+1, (j*32)+1)     //place our 32x32 textures on our water texture every 32 pixels
 				if((config.immerse_behavior != WATER_OVERLAY_CONFIG_IMMERSE_NONE || config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_IMMERSE) && input_depth <= config.immerse_at_depth)
-					SSwater_overlays.water_overlay_icons["[texture_size]_[water_type]_[toxic]_[input_depth]_immersed"] = icon(sized_water_texture)	// for the full water overlay
+					SSwater_overlays.water_overlay_icons["[texture_size]_[water_type]_[variants_key]_[input_depth]_immersed"] = icon(sized_water_texture)	// for the full water overlay
 
 				//	V V V V	construct depthed overlay for mob texture size	V V V V
 				var/icon/culled_water = icon(sized_water_texture)
 				var/texture_height = sized_water_texture.Height()
 				subtraction_texture.Shift(SOUTH, (texture_height + input_depth - ADDITIONAL_DEPTH_OFFSET), FALSE)         //we move it down to "water level" if we're not using a custom mob culling mask
 				culled_water.AddAlphaMask(subtraction_texture)
-				SSwater_overlays.water_overlay_icons["[texture_size]_[water_type]_[toxic]_[input_depth]"] = culled_water	//this is the default overlays, made according to depth
+				SSwater_overlays.water_overlay_icons["[texture_size]_[water_type]_[variants_key]_[input_depth]"] = culled_water	//this is the default overlays, made according to depth
 
 				//	V V V V	resting overlays	V V V V
 				var/resting_key = input_depth >= WATER_DEPTH_COAST_INTERMEDIATE ? "coast" : "deep"
 				if(config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_SOME)
 					var/icon/resting_overlay = icon(sized_water_texture)
 					resting_overlay.AddAlphaMask(icon(icon_paths["[config.icon_size]"], "culling_[config.icon_state_key]_resting_[resting_key]"))
-					SSwater_overlays.water_overlay_icons["32_[water_type]_[toxic]_[input_depth]_[config.icon_state_key]_resting"] = resting_overlay
+					SSwater_overlays.water_overlay_icons["32_[water_type]_[variants_key]_[input_depth]_[config.icon_state_key]_resting"] = resting_overlay
 				else if(config.resting_behavior == WATER_OVERLAY_CONFIG_RESTING_ANGLED)
 					var/icon/resting_east = icon(sized_water_texture)
 					var/icon/resting_west = icon(sized_water_texture)
 					resting_east.AddAlphaMask(icon(icon_paths["[config.icon_size]"], "culling_[config.icon_state_key]_resting_[resting_key]_e"))
 					resting_west.AddAlphaMask(icon(icon_paths["[config.icon_size]"], "culling_[config.icon_state_key]_resting_[resting_key]_w"))
-					SSwater_overlays.water_overlay_icons["32_[water_type]_[toxic]_[input_depth]_[config.icon_state_key]_resting_e"] = resting_east
-					SSwater_overlays.water_overlay_icons["32_[water_type]_[toxic]_[input_depth]_[config.icon_state_key]_resting_w"] = resting_west
+					SSwater_overlays.water_overlay_icons["32_[water_type]_[variants_key]_[input_depth]_[config.icon_state_key]_resting_e"] = resting_east
+					SSwater_overlays.water_overlay_icons["32_[water_type]_[variants_key]_[input_depth]_[config.icon_state_key]_resting_w"] = resting_west
 
 				//	V V V V	specialized water overlays	V V V V
 				if(config.special_culling_mask)	// * water_overlay_special * these mobs look weird with the default overlays, we use special culling masks for them
 					var/icon/special_icon = icon(sized_water_texture)
 					var/icon/special_mask = icon(icon_paths["[config.icon_size]"], "culling_[config.icon_state_key]")
 					special_icon.AddAlphaMask(special_mask)
-					SSwater_overlays.water_overlay_icons["[texture_size]_[water_type]_[toxic]_[input_depth]_[config.icon_state_key]"] = special_icon
+					SSwater_overlays.water_overlay_icons["[texture_size]_[water_type]_[variants_key]_[input_depth]_[config.icon_state_key]"] = special_icon
 
-		toxic = toxic == WATER_TOXIC_NO ? WATER_TOXIC_DISPERSING : WATER_TOXIC_YES
+		variants_key++
 
 
 #undef ADDITIONAL_DEPTH_OFFSET

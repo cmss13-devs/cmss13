@@ -35,17 +35,17 @@
 /obj/effect/blocker/water/toxic/proc/update_turf()
 	if(istype(src.loc, /turf/open/gm/river/desert))
 		var/turf/open/gm/river/desert/R = src.loc
-		R.toxic = src.toxic
+		R.variant_key = src.toxic
 		R.update_icon()
 
 	else if(istype(src.loc, /turf/open/desert/desert_shore))
 		var/turf/open/desert/desert_shore/S = src.loc
-		S.toxic = src.toxic
+		S.variant_key = src.toxic
 		S.update_icon()
 
 	else if(istype(src.loc, /turf/open/desert/cave/cave_shore))
 		var/turf/open/desert/cave/cave_shore/C = src.loc
-		C.toxic = src.toxic
+		C.variant_key = src.toxic
 		C.update_icon()
 
 /obj/effect/blocker/water/toxic/Crossed(atom/A)
@@ -149,7 +149,7 @@
 	. = ..()
 	toxic = WATER_TOXIC_DISPERSING
 	update_turf()
-	addtimer(CALLBACK(src, PROC_REF(do_disperse)), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(do_disperse)), 5 SECONDS)
 
 /obj/effect/blocker/water/toxic/proc/do_disperse()
 	toxic = WATER_TOXIC_NO

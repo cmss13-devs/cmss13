@@ -104,6 +104,11 @@
 		var/perc_charge = (charge / charge_max * 100)
 		human_holder.update_power_display(perc_charge, material)
 
+	var/obj/item/clothing/suit/armor/yautja/hunter/full/locked_armor = human_holder.wear_suit
+	if(istype(locked_armor) && locked_armor.ap_ward_on)
+		if(!drain_power(human_holder, locked_armor.ap_ward_drain))
+			locked_armor.disable_ap_ward(human_holder)
+
 	//Non-Yautja have a chance to get stunned with each power drain
 	if(!HAS_TRAIT(human_holder, TRAIT_CLOAKED))
 		return

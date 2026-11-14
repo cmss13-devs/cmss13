@@ -278,6 +278,7 @@
 /area/caperiver/telecomms/telecomm_2)
 "xI" = (
 /obj/effect/landmark/static_comms/net_two,
+/obj/effect/landmark/static_comms/net_survivor,
 /turf/open/floor/kutjevo/plate,
 /area/caperiver/telecomms/telecomm_2)
 "yq" = (

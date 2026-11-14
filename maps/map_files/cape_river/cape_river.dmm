@@ -319,6 +319,7 @@
 /area/caperiver/outdoors/mining_base_exterior/north)
 "abc" = (
 /obj/effect/landmark/static_comms/net_two,
+/obj/effect/landmark/static_comms/net_survivor,
 /turf/open/floor/plating/kutjevo,
 /area/caperiver/telecomms/telecomm_1)
 "abd" = (
@@ -1068,6 +1069,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/floor/asteroidwarning/west,
 /area/caperiver/outdoors/scrublands/north_west)
 "adl" = (
@@ -1202,6 +1204,11 @@
 /obj/structure/fence/slim/dark,
 /turf/open/desert/dirt/desert_transition_corner1/north,
 /area/caperiver/outdoors/landing_zone_2)
+"adH" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/static_comms/net_survivor,
+/turf/open/floor/dark,
+/area/caperiver/indoors/conambase/recreational)
 "adI" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/mars_cave/mars_dirt_4,
@@ -2043,6 +2050,7 @@
 /area/caperiver/indoors/caves/nw)
 "agf" = (
 /obj/structure/flora/grass/desert/lightgrass_7,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/caperiver/outdoors/scrublands/north_west)
 "agg" = (
@@ -3068,6 +3076,7 @@
 /area/caperiver/outdoors/bushlands)
 "ajr" = (
 /obj/structure/flora/grass/tallgrass/desert/corner,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/desert/dirt,
 /area/caperiver/outdoors/scrublands/north_west)
 "ajs" = (
@@ -3496,6 +3505,10 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/south)
+"akP" = (
+/obj/effect/landmark/static_comms/net_survivor,
+/turf/open/floor/kutjevo/colors/purple/edge/west,
+/area/caperiver/indoors/miningbase/dorm)
 "akQ" = (
 /turf/open/mars_cave/mars_cave_3,
 /area/caperiver/indoors/caves/s)
@@ -4414,6 +4427,10 @@
 /obj/structure/largecrate/random/barrel/brown,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/landing_zone_2)
+"anH" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/caperiver/outdoors/scrublands/north)
 "anI" = (
 /obj/structure/flora/grass/desert/lightgrass_8,
 /turf/open/desert/rock,
@@ -4935,6 +4952,19 @@
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/caperiver/indoors/caves/n)
+"apq" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/obj/effect/decal/sand_overlay/sand2,
+/obj/structure/prop/fake/railing/strata{
+	pixel_x = 1;
+	pixel_y = -2;
+	layer = 4.12
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/asphalt/cement_sunbleached,
+/area/caperiver/outdoors/mining_base_exterior/north)
 "apr" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 6
@@ -5469,6 +5499,7 @@
 /obj/structure/flora/bush/desert/cactus/multiple{
 	icon_state = "cacti_8"
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/desert/dirt,
 /area/caperiver/outdoors/scrublands/north_west)
 "ard" = (
@@ -6212,6 +6243,24 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/caperiver/outdoors/road/west)
+"att" = (
+/obj/effect/decal/sand_overlay/sand2,
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 1
+	},
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -17;
+	pixel_y = 9;
+	layer = 4.121
+	},
+/obj/structure/prop/fake/railing/strata{
+	pixel_x = 1;
+	pixel_y = -2;
+	layer = 4.12
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/asphalt/cement_sunbleached,
+/area/caperiver/outdoors/mining_base_exterior/north)
 "atu" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/desert/rock,
@@ -6410,6 +6459,11 @@
 	},
 /turf/open/desert/rock,
 /area/caperiver/outdoors/landing_zone_2/cave)
+"aue" = (
+/obj/structure/flora/grass/desert/lightgrass_3,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/mining_base_exterior/north)
 "auf" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -6623,6 +6677,11 @@
 "auK" = (
 /turf/open/desert/dirt/desert_transition_corner1/east,
 /area/caperiver/outdoors/scrublands/south)
+"auL" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/caperiver/outdoors/con_am_exterior/north)
 "auM" = (
 /obj/structure/flora/grass/desert/heavygrass_9,
 /turf/open/desert/rock,
@@ -6654,6 +6713,10 @@
 	},
 /turf/open/floor/asteroidwarning/north,
 /area/caperiver/outdoors/mining_base_exterior/south)
+"auR" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/caperiver/outdoors/mining_base_exterior/north)
 "auS" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -7445,6 +7508,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 10
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/floor/asteroidwarning/west,
 /area/caperiver/outdoors/scrublands/north_west)
 "axk" = (
@@ -7537,6 +7601,11 @@
 	},
 /turf/open/floor/station/metal/floor/alt3,
 /area/caperiver/telecomms/telecomm_3)
+"axw" = (
+/obj/structure/flora/grass/desert/lightgrass_2,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/caperiver/outdoors/scrublands/north)
 "axx" = (
 /obj/structure/sign/safety/galley{
 	pixel_y = 33;
@@ -7588,6 +7657,10 @@
 	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/blue/northwest,
 /area/caperiver/indoors/conambase/support)
+"axG" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/north)
 "axH" = (
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/caperiver/indoors/conambase/support)
@@ -8083,6 +8156,10 @@
 	},
 /turf/open/floor/engine,
 /area/caperiver/indoors/conambase/delivery)
+"aze" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
+/area/caperiver/outdoors/scrublands/north)
 "azf" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
@@ -8112,6 +8189,10 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/mars_cave/mars_cave_3,
 /area/caperiver/oob)
+"azk" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/sand/layer2,
+/area/caperiver/outdoors/scrublands/north)
 "azl" = (
 /turf/open/floor/asteroidwarning/southeast,
 /area/caperiver/outdoors/mining_base_exterior/south)
@@ -8366,6 +8447,10 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door_reinforced,
 /turf/open/mars_cave/mars_cave_3,
 /area/caperiver/indoors/caves/central)
+"azX" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/area/caperiver/outdoors/mining_base_exterior/north)
 "azY" = (
 /obj/item/stack/rods,
 /turf/open/mars_cave/mars_dirt_4,
@@ -8441,6 +8526,10 @@
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/prison/ramptop/east,
 /area/caperiver/outdoors/landing_zone_2/interior)
+"aAn" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/mining_base_exterior/north)
 "aAo" = (
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
@@ -8451,6 +8540,10 @@
 /obj/item/storage/backpack/marine/engineerpack,
 /turf/open/floor/dark,
 /area/caperiver/indoors/conambase/engi)
+"aAp" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/sand/layer2,
+/area/caperiver/outdoors/scrublands/north_west)
 "aAq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
@@ -8721,6 +8814,10 @@
 	},
 /turf/open/desert/rock/deep/rock3,
 /area/caperiver/outdoors/scrublands/north_west)
+"aBl" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/sand/layer2,
+/area/caperiver/outdoors/scrublands/north_east)
 "aBm" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 4
@@ -8758,6 +8855,11 @@
 	},
 /turf/open/floor/dark,
 /area/caperiver/indoors/conambase/recreational)
+"aBr" = (
+/obj/effect/decal/sand_overlay/sand2,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/asphalt/cement_sunbleached,
+/area/caperiver/outdoors/mining_base_exterior/north)
 "aBs" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 1
@@ -9173,6 +9275,10 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/caperiver/outdoors/road/west)
+"aCH" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/north)
 "aCI" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -9472,6 +9578,10 @@
 	},
 /turf/open/floor/darkpurplecorners2/east,
 /area/caperiver/indoors/conambase/research_e)
+"aDz" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
+/area/caperiver/outdoors/scrublands/north_east)
 "aDA" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/iv_drip,
@@ -9590,6 +9700,10 @@
 /obj/structure/largecrate/random/case/small,
 /turf/open/asphalt/cement_sunbleached,
 /area/caperiver/outdoors/mining_base_exterior/north)
+"aDU" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
+/area/caperiver/outdoors/con_am_exterior/north)
 "aDV" = (
 /turf/open/floor/darkpurple2/west,
 /area/caperiver/indoors/conambase/research_w)
@@ -9636,6 +9750,10 @@
 "aEa" = (
 /turf/open/floor/kutjevo/multi_tiles,
 /area/caperiver/indoors/miningbase/engi)
+"aEb" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/caperiver/outdoors/scrublands/north_east)
 "aEc" = (
 /obj/structure/window_frame/abyssal/blue,
 /turf/open/floor/engine,
@@ -9658,6 +9776,10 @@
 	},
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/caperiver/outdoors/landing_zone_2)
+"aEf" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/north_west)
 "aEg" = (
 /obj/effect/decal/sand_overlay/sand2/corner2,
 /obj/effect/decal/hybrisa/dirt,
@@ -10279,6 +10401,10 @@
 	},
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/west)
+"aGe" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/dirt/desert_transition_edge1/west,
+/area/caperiver/outdoors/mining_base_exterior/north)
 "aGf" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -10847,6 +10973,11 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/asphalt/cement/cement12,
 /area/caperiver/outdoors/scrublands/south_east)
+"aHZ" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/north)
 "aIa" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -10969,6 +11100,10 @@
 	},
 /turf/open/floor/engine,
 /area/caperiver/indoors/conambase/delivery)
+"aIv" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/caperiver/outdoors/scrublands/north)
 "aIw" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 9
@@ -11413,6 +11548,11 @@
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/desert/rock/deep/rock3,
 /area/caperiver/outdoors/scrublands/north_west)
+"aJT" = (
+/obj/structure/flora/grass/desert/lightgrass_10,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/north_east)
 "aJU" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -12256,6 +12396,7 @@
 /area/caperiver/indoors/conambase/unknown)
 "aMv" = (
 /obj/structure/flora/grass/desert/lightgrass_7,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/caperiver/outdoors/scrublands/north_east)
 "aMw" = (
@@ -12388,6 +12529,10 @@
 /obj/structure/flora/grass/desert/heavygrass_10,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/central)
+"aMP" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/dirt/desert_transition_corner1/north,
+/area/caperiver/outdoors/scrublands/north_east)
 "aMQ" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/desert/rock,
@@ -12454,6 +12599,10 @@
 /obj/item/trash/wy_mre,
 /turf/open/floor/engine,
 /area/caperiver/indoors/conambase/delivery)
+"aMZ" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/dirt/desert_transition_edge1/north,
+/area/caperiver/outdoors/mining_base_exterior/north)
 "aNa" = (
 /obj/structure/machinery/light/blue,
 /obj/effect/decal/hybrisa/dirt_2,
@@ -13004,6 +13153,10 @@
 "aOB" = (
 /turf/open/floor/darkblue2/southeast,
 /area/caperiver/indoors/conambase/unknown)
+"aOC" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/sand/layer2,
+/area/caperiver/outdoors/mining_base_exterior/north)
 "aOD" = (
 /turf/open/floor/darkpurplecorners2/west,
 /area/caperiver/indoors/conambase/research_e)
@@ -13212,6 +13365,13 @@
 "aPl" = (
 /turf/open/auto_turf/sand/layer2,
 /area/caperiver/outdoors/scrublands/central)
+"aPm" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/floor/asteroidwarning/east,
+/area/caperiver/outdoors/mining_base_exterior/north)
 "aPn" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ccad8f";
@@ -13363,6 +13523,10 @@
 	},
 /turf/open/floor/kutjevo/multi_tiles,
 /area/caperiver/telecomms/telecomm_1)
+"aPM" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/north_east)
 "aPN" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/mars_cave/mars_cave_20,
@@ -13409,6 +13573,7 @@
 /area/caperiver/outdoors/scrublands/north_west)
 "aPT" = (
 /obj/structure/flora/grass/desert/heavygrass_3,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north)
 "aPU" = (
@@ -13716,6 +13881,10 @@
 "aQY" = (
 /turf/open/mars_cave/mars_cave_3,
 /area/caperiver/indoors/caves/n)
+"aQZ" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/dirt/desert_transition_edge1/west,
+/area/caperiver/outdoors/scrublands/north_east)
 "aRa" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/surface/table/woodentable/poor,
@@ -13728,6 +13897,10 @@
 	},
 /turf/open/floor/wood/wood_broken4,
 /area/caperiver/outdoors/landing_zone_2/interior)
+"aRb" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/con_am_exterior/north)
 "aRc" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -13820,6 +13993,13 @@
 	},
 /turf/open/desert/rock,
 /area/caperiver/outdoors/mining_base_exterior/south)
+"aRs" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 6
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/floor/prison/blue_plate/north,
+/area/caperiver/outdoors/scrublands/north)
 "aRt" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -14036,6 +14216,11 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave/mars_dirt_4,
 /area/caperiver/indoors/caves/nw)
+"aSe" = (
+/obj/structure/flora/bush/canyon/tree/alt1,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/north)
 "aSf" = (
 /obj/structure/mineral_door/wood,
 /obj/effect/decal/hybrisa/dirt,
@@ -14151,6 +14336,11 @@
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/caperiver/indoors/caves/central)
+"aSv" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/north_east)
 "aSw" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 6
@@ -15538,6 +15728,11 @@
 /obj/structure/fence/slim,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/caperiver/outdoors/scrublands/south/antiweed)
+"aWO" = (
+/obj/effect/decal/sand_overlay/sand2,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/floor/asteroidwarning,
+/area/caperiver/outdoors/mining_base_exterior/north)
 "aWP" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/mars_cave/mars_cave_2,
@@ -15704,6 +15899,7 @@
 /area/caperiver/outdoors/landing_zone_2/cave)
 "aXr" = (
 /obj/effect/decal/hybrisa/lattice/full,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/mars_cave/mars_cave_3,
 /area/caperiver/indoors/caves/se)
 "aXs" = (
@@ -15728,6 +15924,7 @@
 /area/caperiver/outdoors/mining_base_exterior/south)
 "aXv" = (
 /obj/structure/flora/grass/desert/lightgrass_2,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/auto_turf/sand/layer2,
 /area/caperiver/outdoors/scrublands/north_west)
 "aXw" = (
@@ -15967,6 +16164,7 @@
 	dir = 10
 	},
 /obj/effect/landmark/static_comms/net_two,
+/obj/effect/landmark/static_comms/net_survivor,
 /turf/open/floor/kutjevo/multi_tiles/southwest,
 /area/caperiver/telecomms/telecomm_2)
 "aYn" = (
@@ -16146,6 +16344,13 @@
 	},
 /turf/open/desert/dirt/desert_transition_edge1/north,
 /area/caperiver/outdoors/mining_base_exterior/south)
+"aYR" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/floor/asteroidwarning/west,
+/area/caperiver/outdoors/mining_base_exterior/north)
 "aYS" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ccad8f";
@@ -16181,6 +16386,10 @@
 /obj/structure/flora/bush/canyon/tree/alt1,
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/caperiver/outdoors/scrublands/central)
+"aYY" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/north_east)
 "aYZ" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/largecrate/supply/floodlights,
@@ -16421,6 +16630,10 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo,
 /turf/open/floor/prison,
 /area/caperiver/indoors/processing)
+"aZH" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/desert/dirt/desert_transition_corner1,
+/area/caperiver/outdoors/scrublands/north_east)
 "aZI" = (
 /turf/open/floor/kutjevo/tan/grey_inner_edge/east,
 /area/caperiver/indoors/miningbase/admin)
@@ -16621,6 +16834,10 @@
 	},
 /turf/open/floor/kutjevo/tan/grey_edge,
 /area/caperiver/indoors/miningbase/admin)
+"ban" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/desert/dirt/desert_transition_edge1/north,
+/area/caperiver/outdoors/scrublands/north_east)
 "bao" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/escapepod/north,
@@ -18935,6 +19152,14 @@
 	},
 /turf/open/floor/asteroidwarning/east,
 /area/caperiver/outdoors/con_am_exterior/south)
+"bgW" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/caperiver/outdoors/scrublands/north_east)
+"bgX" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/north_east)
 "bgY" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
@@ -19482,6 +19707,18 @@
 /obj/structure/flora/grass/desert/lightgrass_10,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/mining_base_exterior/south)
+"biK" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/asphalt/cement/cement4,
+/area/caperiver/outdoors/con_am_exterior/north)
+"biL" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/north_west)
+"biM" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/north)
 "biN" = (
 /obj/structure/bed/hybrisa/hospital/hospitaldivider{
 	pixel_y = -8;
@@ -19824,6 +20061,10 @@
 	},
 /turf/open/floor/darkish,
 /area/caperiver/indoors/conambase/medical)
+"bjG" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/sand/layer2,
+/area/caperiver/outdoors/scrublands/north_east)
 "bjH" = (
 /obj/structure/machinery/door/airlock/prison_hatch/brown/alt/autoname{
 	dir = 1
@@ -19949,6 +20190,14 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/greencorner/east,
 /area/caperiver/indoors/conambase/medical)
+"bjY" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/rock/deep/transition,
+/area/caperiver/outdoors/scrublands/north_west)
+"bjZ" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/north)
 "bka" = (
 /obj/structure/machinery/bioprinter{
 	stored_metal = 1000
@@ -19961,12 +20210,23 @@
 	},
 /turf/open/floor/asteroidwarning/west,
 /area/caperiver/outdoors/con_am_exterior/south)
+"bkc" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/con_am_exterior/north)
 "bkd" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 1
 	},
 /turf/closed/wall/abyssal/standard,
 /area/caperiver/indoors/conambase/medical)
+"bke" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/floor/asteroidwarning/north,
+/area/caperiver/outdoors/mining_base_exterior/north)
 "bkf" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/sand/layer2,
@@ -20131,6 +20391,10 @@
 	},
 /turf/open/floor/kutjevo/colors/purple/edge/north,
 /area/caperiver/indoors/miningbase/dorm)
+"bkz" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/floor/plating/plating_catwalk/shiva,
+/area/caperiver/outdoors/scrublands/north)
 "bkA" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -20219,6 +20483,10 @@
 /obj/structure/closet/secure_closet/freezer/fridge/full,
 /turf/open/floor/kutjevo/colors/purple,
 /area/caperiver/indoors/miningbase/dorm)
+"bkO" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/sand/layer2,
+/area/caperiver/outdoors/scrublands/north)
 "bkP" = (
 /obj/structure/platform_decoration/stone/soro/north,
 /obj/structure/blocker/invisible_wall,
@@ -20756,6 +21024,15 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door_reinforced,
 /turf/open/desert/dirt,
 /area/caperiver/outdoors/con_am_exterior/north)
+"bmf" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/north_east)
+"bmg" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/north)
 "bmh" = (
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
@@ -21428,6 +21705,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/floor/prison,
 /area/caperiver/indoors/processing)
 "boo" = (
@@ -22113,6 +22391,10 @@
 /obj/structure/flora/grass/desert/heavygrass_6,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/con_am_exterior/south)
+"bqp" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/desert/dirt/desert_transition_edge1/east,
+/area/caperiver/outdoors/scrublands/north)
 "bqq" = (
 /obj/structure/flora/grass/desert/heavygrass_6,
 /turf/open/desert/rock,
@@ -22295,6 +22577,13 @@
 /obj/effect/spawner/random/mats/midchance,
 /turf/open/desert/dirt,
 /area/caperiver/telecomms/telecomm_2)
+"brb" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 9
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/floor/prison/blue_plate/north,
+/area/caperiver/outdoors/scrublands/north)
 "brc" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /obj/structure/machinery/colony_floodlight,
@@ -22530,6 +22819,14 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/caperiver/telecomms/telecomm_4)
+"brV" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#ccad8f";
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/desert/rock/deep/rock3,
+/area/caperiver/outdoors/scrublands/north_west)
 "brW" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/platform/stone/mineral/north{
@@ -22810,6 +23107,13 @@
 /obj/structure/flora/grass/desert/heavygrass_4,
 /turf/open/auto_turf/sand/layer1,
 /area/caperiver/outdoors/con_am_exterior/south)
+"bsP" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/floor/prison/blue_plate/north,
+/area/caperiver/outdoors/scrublands/north)
 "bsQ" = (
 /obj/structure/flora/grass/desert/lightgrass_8{
 	pixel_x = -7;
@@ -22893,6 +23197,13 @@
 	},
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/caperiver/outdoors/con_am_exterior/south)
+"bte" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/floor/prison/blue_plate/north,
+/area/caperiver/outdoors/scrublands/north)
 "btf" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/desert/dirt/desert_transition_corner1/west,
@@ -23343,6 +23654,10 @@
 	},
 /turf/open/mars_cave/mars_dirt_6,
 /area/caperiver/indoors/caves/se)
+"buD" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/area/caperiver/outdoors/scrublands/north)
 "buE" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ccad8f";
@@ -23392,6 +23707,10 @@
 /obj/structure/flora/grass/desert/lightgrass_8,
 /turf/open/desert/dirt/desert_transition_corner1/north,
 /area/caperiver/outdoors/con_am_exterior/north)
+"buM" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/dirt/desert_transition_corner1/west,
+/area/caperiver/outdoors/scrublands/north)
 "buN" = (
 /obj/structure/flora/grass/desert/lightgrass_5,
 /turf/open/desert/dirt/desert_transition_corner1/east,
@@ -23455,6 +23774,7 @@
 	dir = 8
 	},
 /obj/structure/flora/grass/desert/lightgrass_2,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/asphalt/cement,
 /area/caperiver/outdoors/con_am_exterior/north)
 "buX" = (
@@ -23601,6 +23921,7 @@
 /area/caperiver/outdoors/con_am_exterior/north)
 "bvu" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/desert/dirt/desert_transition_edge1/north,
 /area/caperiver/outdoors/con_am_exterior/north)
 "bvv" = (
@@ -23745,6 +24066,10 @@
 "bvQ" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/desert/dirt/desert_transition_edge1/west,
+/area/caperiver/outdoors/con_am_exterior/north)
+"bvR" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/dirt/desert_transition_edge1,
 /area/caperiver/outdoors/con_am_exterior/north)
 "bvS" = (
 /obj/structure/flora/grass/desert/lightgrass_10,
@@ -24113,6 +24438,17 @@
 /obj/item/storage/pouch/machete/full,
 /turf/open/floor/prison,
 /area/caperiver/indoors/processing)
+"bxa" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/dirt/desert_transition_edge1/east,
+/area/caperiver/outdoors/scrublands/north_west)
+"bxb" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 10
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/caperiver/outdoors/scrublands/north_west)
 "bxc" = (
 /obj/structure/flora/grass/tallgrass/desert,
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
@@ -24197,6 +24533,15 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/caperiver/indoors/caves/ne)
+"bxn" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/desert/dirt/desert_transition_corner1/east,
+/area/caperiver/outdoors/scrublands/north_west)
+"bxo" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/north_west)
 "bxp" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached,
@@ -24416,6 +24761,16 @@
 /obj/item/stack/sheet/metal,
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/caperiver/oob)
+"bya" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/north)
+"byb" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/north)
 "byc" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 1
@@ -25100,6 +25455,13 @@
 	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
+"bAa" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 5
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/north_west)
 "bAb" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/mars_cave/mars_cave_2,
@@ -25198,6 +25560,11 @@
 	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/oob)
+"bAr" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/north_west)
 "bAs" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush{
 	pixel_x = -8;
@@ -25235,6 +25602,7 @@
 /area/caperiver/oob)
 "bAw" = (
 /obj/effect/decal/hybrisa/lattice/full,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/mars_cave/mars_cave_9,
 /area/caperiver/indoors/caves/se)
 "bAx" = (
@@ -25276,6 +25644,7 @@
 /area/caperiver/indoors/caves/se)
 "bAD" = (
 /obj/effect/decal/hybrisa/lattice/full,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/mars_cave/mars_cave_2,
 /area/caperiver/indoors/caves/se)
 "bAE" = (
@@ -25604,6 +25973,10 @@
 "bBF" = (
 /turf/open/mars_cave/mars_cave_13,
 /area/caperiver/indoors/caves/nw)
+"bBG" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/north_west)
 "bBH" = (
 /obj/structure/flora/grass/desert/heavygrass_4,
 /turf/open/desert/dirt/desert_transition_edge1/east,
@@ -25768,6 +26141,17 @@
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/mars_cave/mars_cave_2,
 /area/caperiver/indoors/caves/w)
+"bCh" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/floor/asteroidwarning/east,
+/area/caperiver/outdoors/scrublands/north_west)
 "bCi" = (
 /turf/open/mars_cave/mars_cave_13,
 /area/caperiver/indoors/caves/w)
@@ -25883,6 +26267,11 @@
 	},
 /turf/open/desert/rock,
 /area/caperiver/outdoors/con_am_exterior/south)
+"bCy" = (
+/obj/structure/flora/grass/desert/lightgrass_2,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/north_west)
 "bCz" = (
 /obj/structure/platform/metal/kutjevo/west,
 /obj/structure/platform/metal/kutjevo,
@@ -26387,6 +26776,18 @@
 	},
 /turf/open/floor/kutjevo/tan/grey_edge/west,
 /area/caperiver/indoors/miningbase/admin)
+"bDF" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/north)
+"bDG" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/dirt/desert_transition_corner1/east,
+/area/caperiver/outdoors/scrublands/north)
+"bDH" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/dirt/desert_transition_edge1/east,
+/area/caperiver/outdoors/scrublands/north)
 "bDI" = (
 /obj/structure/flora/bush/canyon/tree/alt1{
 	pixel_x = 3;
@@ -26805,6 +27206,15 @@
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
+"bEB" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8;
+	layer = 2;
+	explo_proof = 0
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/caperiver/outdoors/scrublands/north)
 "bEC" = (
 /obj/structure/flora/bush/canyon/grass_green/alt2{
 	pixel_x = 1;
@@ -27330,6 +27740,15 @@
 	},
 /turf/open/floor/engine,
 /area/caperiver/telecomms/telecomm_3)
+"bFN" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8;
+	layer = 2;
+	explo_proof = 0
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/north)
 "bFO" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 1
@@ -28119,6 +28538,11 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/caperiver/outdoors/mining_base_exterior/north)
+"bHl" = (
+/obj/structure/flora/grass/desert/lightgrass_4,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/con_am_exterior/north)
 "bHm" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 1
@@ -28134,6 +28558,10 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/caperiver/outdoors/mining_base_exterior/north)
+"bHn" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/rock/deep/rock4,
+/area/caperiver/outdoors/scrublands/nw_cave)
 "bHo" = (
 /obj/structure/surface/rack,
 /obj/effect/decal/cleanable/dirt,
@@ -28428,6 +28856,11 @@
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/caperiver/indoors/conambase/support)
+"bHR" = (
+/obj/structure/flora/bush/canyon/tree/alt1,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/north_west)
 "bHS" = (
 /obj/structure/flora/bush/canyon/tree/alt2{
 	pixel_x = 5;
@@ -28614,6 +29047,15 @@
 	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/outdoors/chasm)
+"bIl" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/floor/prison/ramptop/north,
+/area/caperiver/indoors/caves/s)
+"bIm" = (
+/obj/structure/flora/grass/desert,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/north)
 "bIn" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush{
 	pixel_y = 15;
@@ -28899,6 +29341,10 @@
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
+"bIR" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/dirt/desert_transition_edge1/north,
+/area/caperiver/outdoors/scrublands/north_west)
 "bIS" = (
 /obj/structure/flora/bush/canyon/grass_orange/alt1{
 	dir = 1;
@@ -28915,6 +29361,10 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/caperiver/oob)
+"bIT" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/rock/deep/transition/north,
+/area/caperiver/outdoors/scrublands/north_west)
 "bIU" = (
 /obj/structure/flora/bush/canyon/bush/alt1{
 	pixel_x = -10;
@@ -29089,6 +29539,10 @@
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
+"bJn" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/north_west)
 "bJo" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ccad8f";
@@ -29376,6 +29830,7 @@
 	pixel_y = -11;
 	layer = 4.12
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/caperiver/outdoors/mining_base_exterior/north)
 "bJV" = (
@@ -29572,6 +30027,14 @@
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
+"bKn" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/desert/rock/deep/rock3,
+/area/caperiver/outdoors/con_am_exterior/north)
+"bKo" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/north_west)
 "bKp" = (
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
@@ -30160,6 +30623,11 @@
 /obj/structure/flora/grass/desert/lightgrass_4,
 /turf/open/desert/rock/deep/transition/west,
 /area/caperiver/outdoors/mining_base_exterior/north)
+"bLK" = (
+/obj/effect/decal/hybrisa/lattice/full,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/desert/rock/deep/rock3,
+/area/caperiver/outdoors/scrublands/north_west)
 "bLL" = (
 /obj/structure/flora/grass/desert/heavygrass_7,
 /turf/open/desert/rock,
@@ -30460,12 +30928,91 @@
 	},
 /turf/open/floor/asteroidwarning/west,
 /area/caperiver/outdoors/con_am_exterior/south)
+"bMR" = (
+/obj/effect/decal/hybrisa/lattice/full,
+/obj/item/stack/rods,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/desert/rock/deep/rock3,
+/area/caperiver/outdoors/scrublands/north_west)
 "bMS" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
 /turf/open/floor/prison/cell_stripe/west,
 /area/caperiver/outdoors/scrublands/north)
+"bMT" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/caperiver/indoors/caves/se)
+"bMU" = (
+/obj/effect/decal/hybrisa/grate{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/warningstripes_angled{
+	dir = 1;
+	pixel_y = -4
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/floor/prison/ramptop/north,
+/area/caperiver/indoors/caves/se)
+"bMV" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/caperiver/indoors/caves/se)
+"bMW" = (
+/obj/effect/decal/hybrisa/warningstripes_angled_corner{
+	dir = 4;
+	pixel_y = -4
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/floor/prison/ramptop/north,
+/area/caperiver/indoors/caves/se)
+"bMX" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/caperiver/indoors/caves/se)
+"bMY" = (
+/obj/effect/decal/hybrisa/warningstripes_angled_corner{
+	dir = 4;
+	pixel_y = -4
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/caperiver/indoors/caves/se)
+"bMZ" = (
+/obj/effect/decal/hybrisa/grate{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/warningstripes_angled{
+	dir = 1;
+	pixel_y = -4
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/floor/prison/ramptop/north,
+/area/caperiver/indoors/caves/se)
+"bNa" = (
+/obj/effect/decal/hybrisa/warningstripes_angled_corner{
+	dir = 4;
+	pixel_y = -4
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/caperiver/indoors/caves/se)
+"bNb" = (
+/obj/effect/decal/hybrisa/grate{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/warningstripes_angled{
+	dir = 1;
+	pixel_y = -4
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/floor/prison/ramptop/north,
+/area/caperiver/indoors/caves/se)
+"bNc" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/floor/prison/ramptop/north,
+/area/caperiver/indoors/caves/se)
 "bNj" = (
 /obj/structure/flora/grass/desert/heavygrass_3,
 /turf/open/desert/dirt/desert_transition_edge1,
@@ -30848,6 +31395,7 @@
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#ccad8f"
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/desert/dirt/desert_transition_edge1/north,
 /area/caperiver/outdoors/scrublands/north_east)
 "cbr" = (
@@ -31438,6 +31986,7 @@
 /area/caperiver/outdoors/scrublands/west/antiweed)
 "cwH" = (
 /obj/effect/decal/sand_overlay/sand2,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/floor/asteroidwarning/southeast,
 /area/caperiver/outdoors/mining_base_exterior/north)
 "cwL" = (
@@ -31504,6 +32053,7 @@
 	pixel_x = 3;
 	pixel_y = 28
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north_west)
 "czX" = (
@@ -32196,6 +32746,7 @@
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/floor/prison/blue_plate/north,
 /area/caperiver/outdoors/scrublands/north)
 "dhG" = (
@@ -32206,6 +32757,7 @@
 /area/caperiver/outdoors/landing_zone_1)
 "dhI" = (
 /obj/structure/flora/grass/desert/heavygrass_4,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north)
 "diC" = (
@@ -32223,6 +32775,7 @@
 /area/caperiver/outdoors/scrublands/south)
 "djo" = (
 /obj/structure/flora/grass/desert/lightgrass_2,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/caperiver/outdoors/scrublands/north_west)
 "djp" = (
@@ -32656,6 +33209,7 @@
 	dir = 4
 	},
 /obj/effect/decal/sand_overlay/sand1,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/floor/asteroidwarning,
 /area/caperiver/outdoors/scrublands/north_west)
 "dBl" = (
@@ -33823,6 +34377,7 @@
 	pixel_x = 4;
 	pixel_y = -10
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north)
 "eoh" = (
@@ -34907,6 +35462,7 @@
 	pixel_x = -21;
 	pixel_y = -3
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north_west)
 "fcw" = (
@@ -35317,6 +35873,7 @@
 	pixel_x = -7;
 	pixel_y = 11
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/desert/rock/deep/transition/northwest,
 /area/caperiver/outdoors/scrublands/north)
 "ftz" = (
@@ -35412,6 +35969,7 @@
 	pixel_y = 1
 	},
 /obj/effect/landmark/static_comms/net_one,
+/obj/effect/landmark/static_comms/net_survivor,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/caperiver/telecomms/telecomm_3)
 "fwT" = (
@@ -35650,6 +36208,7 @@
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 10
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/desert/dirt/desert_transition_edge1/north,
 /area/caperiver/outdoors/scrublands/north)
 "fIj" = (
@@ -36084,6 +36643,7 @@
 	color = "#ccad8f";
 	dir = 1
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north)
 "fXV" = (
@@ -37586,6 +38146,7 @@
 /area/caperiver/outdoors/mining_base_exterior/north)
 "hcT" = (
 /obj/structure/flora/tree/joshua,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/caperiver/outdoors/scrublands/north)
 "hcW" = (
@@ -37847,6 +38408,7 @@
 	pixel_x = 5;
 	pixel_y = 12
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north_west)
 "hnj" = (
@@ -38157,6 +38719,7 @@
 	pixel_x = -5;
 	pixel_y = 10
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/desert/rock/deep/transition/northwest,
 /area/caperiver/outdoors/scrublands/north_west)
 "hyo" = (
@@ -39085,6 +39648,7 @@
 	pixel_x = 5;
 	pixel_y = 9
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north)
 "imU" = (
@@ -39425,6 +39989,7 @@
 /area/caperiver/indoors/conambase/research_w)
 "iyV" = (
 /obj/effect/decal/hybrisa/lattice/full,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north_west)
 "izd" = (
@@ -43652,6 +44217,7 @@
 "lzE" = (
 /obj/structure/flora/tree/joshua,
 /obj/item/device/flashlight/lamp/tripod,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/caperiver/outdoors/scrublands/north)
 "lzO" = (
@@ -43998,6 +44564,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 5
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/floor/asteroidwarning/north,
 /area/caperiver/outdoors/scrublands/north_west)
 "lKH" = (
@@ -46057,6 +46624,7 @@
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 9
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/caperiver/outdoors/scrublands/north)
 "nsm" = (
@@ -46476,6 +47044,7 @@
 /area/caperiver/outdoors/mining_base_exterior/south)
 "nEJ" = (
 /obj/structure/flora/grass/desert/lightgrass_10,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/desert/dirt/desert_transition_corner1/west,
 /area/caperiver/outdoors/scrublands/north)
 "nET" = (
@@ -48003,6 +48572,7 @@
 	color = "#ccad8f";
 	dir = 8
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north)
 "oPd" = (
@@ -51506,6 +52076,7 @@
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 8
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/floor/asteroidwarning/east,
 /area/caperiver/outdoors/scrublands/north_west)
 "rog" = (
@@ -52430,6 +53001,7 @@
 /area/caperiver/outdoors/mining_base_exterior/south)
 "sar" = (
 /obj/structure/flora/bush/canyon/tree/alt1,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/desert/dirt/desert_transition_corner1/north,
 /area/caperiver/outdoors/scrublands/north)
 "saz" = (
@@ -54493,6 +55065,7 @@
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 5
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/desert/dirt/desert_transition_corner1/east,
 /area/caperiver/outdoors/scrublands/north_east)
 "tAK" = (
@@ -54791,6 +55364,7 @@
 	color = "#ccad8f";
 	dir = 10
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/caperiver/outdoors/scrublands/north_east)
 "tPs" = (
@@ -54847,6 +55421,7 @@
 "tQv" = (
 /obj/structure/flora/tree/joshua,
 /obj/structure/flora/grass/desert/lightgrass_8,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north_west)
 "tQB" = (
@@ -55066,6 +55641,7 @@
 	pixel_y = -3
 	},
 /obj/structure/platform_decoration/stone/soro/north,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north_west)
 "tZJ" = (
@@ -55528,6 +56104,7 @@
 /turf/open/floor/kutjevo/colors/orange/edge,
 /area/caperiver/telecomms/telecomm_1)
 "upY" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/desert/rock/deep/transition/northwest,
 /area/caperiver/outdoors/con_am_exterior/north)
 "uqg" = (
@@ -56937,6 +57514,7 @@
 /area/caperiver/outdoors/landing_zone_2)
 "vEJ" = (
 /obj/structure/flora/grass/desert/lightgrass_9,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/desert/dirt,
 /area/caperiver/outdoors/scrublands/north_west)
 "vEO" = (
@@ -57763,6 +58341,7 @@
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 4
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/desert/dirt,
 /area/caperiver/outdoors/scrublands/north_west)
 "wpz" = (
@@ -58267,6 +58846,7 @@
 	pixel_x = 10;
 	pixel_y = 27
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/desert/rock/deep/transition/northeast,
 /area/caperiver/outdoors/scrublands/north_west)
 "wNd" = (
@@ -58298,6 +58878,7 @@
 	dir = 8;
 	pixel_x = 8
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north_east)
 "wPm" = (
@@ -58837,6 +59418,7 @@
 	pixel_x = 4;
 	pixel_y = -1
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north_west)
 "xjc" = (
@@ -58960,6 +59542,7 @@
 "xoR" = (
 /obj/structure/flora/grass/desert/lightgrass_12,
 /obj/structure/flora/bush/ausbushes/ausbush,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/con_am_exterior/north)
 "xpf" = (
@@ -59877,6 +60460,7 @@
 "xZj" = (
 /obj/structure/flora/tree/joshua,
 /obj/structure/flora/grass/desert/lightgrass_7,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/mining_base_exterior/north)
 "xZE" = (
@@ -65175,7 +65759,7 @@ gyx
 awH
 awH
 awH
-awH
+bHn
 aBo
 wic
 baq
@@ -65804,7 +66388,7 @@ agi
 iIh
 abs
 jeI
-aLr
+aOC
 atS
 bMa
 bMa
@@ -65988,7 +66572,7 @@ aWQ
 aWQ
 oxA
 awH
-awH
+bHn
 pMb
 biF
 aWQ
@@ -66622,7 +67206,7 @@ fUE
 ail
 atS
 atS
-atS
+aAn
 atS
 oes
 oes
@@ -66822,7 +67406,7 @@ aRB
 bCt
 vFP
 aRB
-aRB
+aGe
 aRB
 seS
 tkZ
@@ -67006,7 +67590,7 @@ aUe
 aUe
 aUe
 aUe
-aLl
+bIT
 abq
 wzj
 xxP
@@ -67226,13 +67810,13 @@ ahn
 aJl
 anP
 wRH
-wRH
+aPm
 wRH
 wRH
 wRH
 wRH
 ahF
-wRH
+aPm
 wRH
 ahf
 agL
@@ -67426,7 +68010,7 @@ atI
 azO
 aRB
 qvm
-ahn
+bke
 aJl
 aXy
 txW
@@ -67831,7 +68415,7 @@ akc
 sXM
 aDm
 anP
-wRH
+aPm
 wRH
 wRH
 ahf
@@ -67845,7 +68429,7 @@ aWQ
 aWQ
 aLr
 aLr
-aTx
+aMZ
 ahn
 cqT
 adm
@@ -68245,7 +68829,7 @@ apd
 idF
 wRH
 wRH
-wRH
+aPm
 ahf
 aXy
 gkk
@@ -69049,7 +69633,7 @@ aLo
 pNU
 pjg
 axY
-aaH
+bIR
 aCh
 aDr
 aMd
@@ -69080,7 +69664,7 @@ pnH
 aTc
 crR
 lfA
-uxp
+aue
 lAD
 aiI
 bzz
@@ -69267,7 +69851,7 @@ aWQ
 vJO
 aTx
 ahn
-aXy
+aWO
 arS
 aTc
 aEQ
@@ -69451,9 +70035,9 @@ ntp
 aWQ
 aWQ
 aWQ
-alx
-aLo
-aLo
+bLK
+bKo
+bJn
 lKv
 dBf
 aWQ
@@ -69655,7 +70239,7 @@ aJd
 aWQ
 wtz
 wtz
-aQw
+bMR
 iyV
 aLo
 aLo
@@ -69693,7 +70277,7 @@ awa
 lkG
 aTc
 xXO
-bHp
+apq
 yar
 bED
 bDJ
@@ -69871,7 +70455,7 @@ aSP
 anV
 nFR
 aKJ
-aKJ
+bxa
 agW
 aLo
 bCv
@@ -70072,8 +70656,8 @@ ybz
 ahR
 aWQ
 aWQ
-aSP
-aSP
+bBG
+bBG
 aSP
 ahR
 aaH
@@ -70285,7 +70869,7 @@ tuM
 bis
 aDm
 amg
-akv
+aYR
 aqV
 eHL
 aWQ
@@ -70481,7 +71065,7 @@ akE
 akE
 xjz
 mjl
-mjl
+bCh
 ave
 akE
 akE
@@ -70509,7 +71093,7 @@ xNJ
 crR
 crR
 apd
-bHh
+att
 aqQ
 bEF
 bxu
@@ -70890,10 +71474,10 @@ aLo
 agV
 vMg
 wpo
-aqi
+bAa
 nCw
 ssh
-aLo
+biL
 aLo
 kDT
 hzZ
@@ -71093,8 +71677,8 @@ abq
 aLo
 pXd
 amo
-aDP
-aDP
+bAr
+bAr
 aqi
 ahm
 aLo
@@ -71294,8 +71878,8 @@ aWQ
 aWQ
 fmu
 aLl
-aLo
-ajj
+biL
+bHR
 aYF
 arc
 aWQ
@@ -71726,7 +72310,7 @@ awk
 kCK
 efF
 eoJ
-kUd
+aBr
 aHK
 dfW
 xDL
@@ -71915,7 +72499,7 @@ aWQ
 aDP
 pKE
 ami
-sPW
+bjY
 qWS
 aWQ
 aWQ
@@ -72317,9 +72901,9 @@ aWQ
 aWQ
 aLo
 aLo
-aBg
+bCy
 aAl
-amo
+bxb
 lhN
 xXq
 ahy
@@ -72727,7 +73311,7 @@ aWQ
 aWQ
 fci
 hmN
-aPS
+bxn
 aDE
 ahR
 aSP
@@ -72931,9 +73515,9 @@ aWQ
 aWQ
 aWQ
 xiW
-aiX
+bxo
 aQd
-aSP
+aEf
 aSP
 aaH
 aLo
@@ -72953,7 +73537,7 @@ kCK
 kHn
 aTc
 apd
-aHK
+auR
 bxS
 nqF
 bIL
@@ -73547,7 +74131,7 @@ aWQ
 aWQ
 aQd
 aSP
-aSP
+aEf
 anV
 whB
 aKa
@@ -73767,7 +74351,7 @@ crR
 nsr
 kCd
 apl
-amX
+azX
 atS
 atS
 aBv
@@ -74366,7 +74950,7 @@ iWX
 aLo
 aPS
 mEJ
-aSP
+aEf
 ahR
 aSP
 aSP
@@ -74579,7 +75163,7 @@ atJ
 ajF
 aRB
 bLG
-aRB
+aGe
 atc
 atS
 atS
@@ -74991,7 +75575,7 @@ atE
 uqJ
 azO
 atc
-atS
+aAn
 atS
 aTx
 dEo
@@ -76208,7 +76792,7 @@ aWQ
 aLo
 tzc
 aSP
-aSP
+aEf
 aSP
 cYs
 iqQ
@@ -76433,7 +77017,7 @@ aJC
 amv
 sLg
 ebb
-axb
+akP
 axb
 axb
 axb
@@ -76820,11 +77404,11 @@ wKz
 aZM
 fRj
 aSP
-aSP
+aEf
 aQb
 aDE
 aSP
-aSP
+aEf
 aSP
 anV
 wiq
@@ -77220,7 +77804,7 @@ aWQ
 vJf
 ccR
 tiO
-aLo
+biL
 ajo
 aLo
 aBg
@@ -77235,7 +77819,7 @@ aPS
 qxB
 aDE
 aSP
-ahR
+aAp
 eqx
 asH
 ajy
@@ -77430,7 +78014,7 @@ ajj
 adY
 aji
 aSP
-aSP
+aEf
 aQb
 aBS
 aLo
@@ -77628,7 +78212,7 @@ aWQ
 aWQ
 aLo
 aLo
-aLo
+biL
 aLo
 ajo
 aQd
@@ -77828,7 +78412,7 @@ aWQ
 aWQ
 aWQ
 aWQ
-xRj
+brV
 hxV
 aLo
 aLo
@@ -78033,7 +78617,7 @@ gvg
 wrQ
 anp
 fty
-aCk
+bmg
 aHT
 ahi
 aKu
@@ -78237,10 +78821,10 @@ aEm
 aEm
 aEm
 hir
-aKu
+bqp
 aKu
 aAi
-aNw
+axG
 aNw
 aNw
 afC
@@ -78256,7 +78840,7 @@ cMs
 aQi
 aCm
 aNw
-afC
+azk
 kkY
 aCk
 bJZ
@@ -78441,7 +79025,7 @@ nXq
 aCk
 sar
 aAi
-mqc
+brb
 iZa
 iZa
 iZa
@@ -78456,7 +79040,7 @@ aWQ
 aWQ
 anp
 ewW
-aCk
+aCH
 wte
 doV
 aNw
@@ -78639,7 +79223,7 @@ bwq
 aOE
 bwh
 ajp
-atm
+bIl
 oKj
 aAa
 avF
@@ -78849,8 +79433,8 @@ aNw
 aAa
 otQ
 xdm
-aDk
-aDk
+bkz
+bkz
 aYe
 aNE
 aNE
@@ -79052,8 +79636,8 @@ aLy
 aNw
 aNw
 aNw
-xdm
-aDk
+bsP
+bkz
 aYe
 aYe
 yfn
@@ -79256,8 +79840,8 @@ aLy
 aNw
 aNw
 aNw
-xdm
-aDk
+bsP
+bkz
 aNE
 nAC
 mrQ
@@ -79271,11 +79855,11 @@ aNw
 aNw
 aNw
 afC
+axG
 aNw
 aNw
 aNw
-aNw
-afC
+azk
 aNw
 aAa
 axP
@@ -79454,14 +80038,14 @@ ale
 ale
 eIg
 aCk
-aCk
+aCH
 axf
 dRt
 afC
-aNw
-boC
-xdm
-aDk
+axG
+bya
+bsP
+bkz
 aNE
 bon
 bob
@@ -79657,14 +80241,14 @@ aQQ
 aWQ
 aWQ
 oOD
-aCk
+bmg
 aPy
 edS
 aPj
 aNw
 boG
-aNw
-xdm
+bjZ
+bsP
 wUV
 aYe
 boo
@@ -79862,12 +80446,12 @@ aWQ
 aWQ
 fXB
 imP
-aCk
-cMs
-aPj
-aNw
-aNw
-aNw
+bmg
+bIm
+bEB
+bDF
+bjZ
+bjZ
 xdm
 aDk
 aNE
@@ -80072,7 +80656,7 @@ aPj
 aNw
 afC
 aNw
-xdm
+bte
 aDk
 hsA
 bnF
@@ -80093,7 +80677,7 @@ akB
 arI
 aqD
 ceX
-ago
+axw
 aNw
 bKc
 xfs
@@ -80475,7 +81059,7 @@ aWQ
 aWQ
 aWQ
 aCk
-aCk
+aCH
 loP
 abJ
 aNw
@@ -80699,7 +81283,7 @@ bmZ
 aDk
 avm
 aKM
-afI
+aHZ
 akB
 aXJ
 aqD
@@ -80887,7 +81471,7 @@ aCk
 ayQ
 aCm
 aNw
-aNw
+axG
 xdm
 aDk
 abh
@@ -80914,7 +81498,7 @@ aNw
 aQG
 aGA
 bBw
-bBw
+anH
 bBw
 bBw
 bBw
@@ -81317,7 +81901,7 @@ aCk
 aCk
 aCk
 aCm
-aNw
+axG
 aNw
 aQG
 aGA
@@ -81497,7 +82081,7 @@ aWQ
 aWQ
 qJa
 ayQ
-axf
+bDG
 abJ
 boC
 xdm
@@ -81518,7 +82102,7 @@ afM
 awI
 aCk
 aCk
-aCk
+aCH
 ahi
 wjn
 aNw
@@ -81701,7 +82285,7 @@ aWQ
 aWQ
 kvd
 ayQ
-aCk
+aCH
 hZx
 boD
 xdm
@@ -81926,7 +82510,7 @@ acW
 aCk
 agt
 aCk
-aCk
+aCH
 aCm
 aNw
 afC
@@ -82535,13 +83119,13 @@ asu
 asu
 asu
 asu
-abJ
+aIv
 aNw
 aNw
 mvl
 aNw
 aNw
-aQc
+aze
 aIe
 vFu
 avc
@@ -82733,7 +83317,7 @@ aDk
 aDk
 aDk
 utx
-hLf
+aRs
 acW
 hVM
 bvr
@@ -83128,14 +83712,14 @@ aWQ
 aWQ
 aWQ
 aWQ
-ayQ
-aCk
-aCk
-afI
+bFN
+bmg
+biM
+byb
 lzE
+bjZ
 aNw
-aNw
-aNw
+axG
 aQc
 xFr
 bhk
@@ -83152,7 +83736,7 @@ aCk
 yjn
 mzk
 afC
-aNw
+axG
 fhL
 hWr
 egx
@@ -83336,10 +83920,10 @@ ayQ
 aQS
 ahi
 aKu
-aAi
-aNw
-afC
-aNw
+buD
+bjZ
+bkO
+bjZ
 jHw
 qNx
 xJc
@@ -83537,19 +84121,19 @@ ale
 ale
 aCk
 auD
-aKu
+bDH
 otQ
 aNw
 aNw
-aNw
-afC
-aNw
+bjZ
+bkO
+bjZ
 fIc
 aXJ
 aXJ
 xJc
 iyA
-agt
+aSe
 aCk
 akB
 aXJ
@@ -83948,11 +84532,11 @@ urK
 aNw
 afC
 aQc
-aIe
+buM
 aCm
 aNw
 cMn
-aCk
+biM
 iia
 fca
 aCk
@@ -84353,7 +84937,7 @@ xTv
 dIB
 ajp
 aLm
-aKX
+aPM
 aKX
 aKX
 aKX
@@ -84572,7 +85156,7 @@ aKX
 eAd
 bpj
 aKX
-aKX
+aPM
 aKX
 xVz
 nEz
@@ -84779,11 +85363,11 @@ tzw
 nEz
 aKX
 aKX
-kGV
+aJT
 rFD
 tzw
 aXS
-aZJ
+aBl
 aYo
 kYL
 aWQ
@@ -84970,10 +85554,10 @@ kVJ
 dux
 dTf
 dMQ
-aXS
+aEb
 aZJ
 ahw
-aKX
+aYY
 aWQ
 aKX
 aKX
@@ -85177,7 +85761,7 @@ nRs
 aXS
 aYo
 aUt
-vbp
+aZH
 aKX
 dux
 rFD
@@ -85381,10 +85965,10 @@ tzw
 bNj
 aYo
 aYo
-ahw
+ban
 fZh
 rFD
-fuY
+aSv
 bie
 aKX
 aKX
@@ -85580,12 +86164,12 @@ aPN
 aWQ
 aWQ
 aWQ
-fuY
-fuY
+bmf
+bmf
 tzT
 aMv
-aZJ
-aUt
+bjG
+bgW
 vbp
 avd
 bie
@@ -85597,7 +86181,7 @@ aKX
 aKX
 auM
 aKX
-aXS
+aEb
 aYo
 eJq
 rUW
@@ -85785,8 +86369,8 @@ aql
 aWQ
 aWQ
 aWQ
-fuY
-fuY
+bmf
+bmf
 lFD
 aYo
 aYo
@@ -86206,11 +86790,11 @@ agC
 aWQ
 aWQ
 bvi
-auu
+aMP
 abd
 aYo
 aYo
-ajS
+aDz
 aiM
 dux
 rFD
@@ -86605,7 +87189,7 @@ aWQ
 aWQ
 tzw
 pDo
-aYo
+bgX
 aYo
 aYo
 aYo
@@ -86820,7 +87404,7 @@ aYo
 aYo
 aez
 aYo
-ajS
+aDz
 aiM
 dux
 rFD
@@ -87012,14 +87596,14 @@ aWQ
 nWR
 tRE
 abd
-aZJ
+aBl
 aYo
 aYo
 aYo
 ajS
 aXZ
 aXZ
-aXZ
+aQZ
 aXZ
 aXZ
 xWS
@@ -88432,7 +89016,7 @@ aWQ
 aWQ
 bvM
 gKw
-buQ
+bHl
 tPz
 tPz
 buQ
@@ -88642,7 +89226,7 @@ tPz
 tPz
 bvG
 gog
-gog
+bkc
 gog
 tEY
 nyk
@@ -89053,7 +89637,7 @@ dus
 gog
 ghT
 tEY
-nyk
+biK
 mJN
 ajT
 aTu
@@ -89867,7 +90451,7 @@ aWQ
 iua
 nnU
 gog
-gog
+bkc
 tEY
 mJN
 mJN
@@ -90062,7 +90646,7 @@ aWQ
 aWQ
 tPz
 bvP
-tPz
+aRb
 rFF
 adS
 aWQ
@@ -90272,7 +90856,7 @@ buJ
 bvP
 ahN
 tPz
-dus
+bvR
 gog
 ghT
 gog
@@ -90473,7 +91057,7 @@ lEh
 dps
 tPz
 tPz
-tPz
+aRb
 tPz
 tPz
 dus
@@ -91098,7 +91682,7 @@ xpf
 vXr
 tPz
 akD
-tPz
+aRb
 tPz
 seM
 xoR
@@ -91724,7 +92308,7 @@ bmt
 pJb
 wCa
 bah
-bah
+auL
 bah
 bah
 bah
@@ -92126,7 +92710,7 @@ gog
 bvd
 qgJ
 gog
-irC
+aDU
 evQ
 teK
 iOB
@@ -92151,7 +92735,7 @@ cNl
 uwo
 ivX
 gVA
-aHR
+adH
 tQD
 afG
 gVA
@@ -94540,8 +95124,8 @@ bza
 buI
 aTH
 buC
-aVc
-aVc
+bMT
+bMT
 aWQ
 aWQ
 aWQ
@@ -94743,9 +95327,9 @@ aWQ
 aWQ
 bAc
 bxd
-afU
-aFv
-aVc
+bMW
+bMU
+bMT
 aWQ
 aWQ
 aWQ
@@ -94947,8 +95531,8 @@ aWQ
 bAc
 bxh
 afU
-aFv
-ajL
+bMU
+bMV
 aVc
 aVc
 akH
@@ -95151,7 +95735,7 @@ bAc
 bxd
 afU
 aFv
-ajL
+bMX
 awc
 aGr
 biP
@@ -95355,7 +95939,7 @@ bxd
 afU
 aFv
 ajL
-awc
+bMY
 aGr
 aMm
 bmd
@@ -95557,9 +96141,9 @@ amV
 aTH
 ahE
 aqU
-ajL
-awc
-aGr
+bMV
+bNa
+bMZ
 aMm
 qSh
 bme
@@ -95761,7 +96345,7 @@ buI
 aTH
 ahE
 aFv
-awc
+bMY
 aGr
 aMm
 qSh
@@ -95965,10 +96549,10 @@ atA
 amV
 afd
 awc
-aGr
+bNb
 aMm
 qSh
-gog
+bkc
 irC
 aWQ
 aWQ
@@ -96168,8 +96752,8 @@ aXx
 atA
 bAC
 bAw
-aVc
-ahE
+bMT
+bNc
 qSh
 ghT
 irC
@@ -96372,8 +96956,8 @@ bai
 bza
 aXr
 aXr
-aVc
-aVc
+bMT
+bMT
 bwe
 nmB
 tEY
@@ -96585,7 +97169,7 @@ noo
 aIF
 aIF
 aIF
-aIF
+bKn
 qbr
 prs
 ppt

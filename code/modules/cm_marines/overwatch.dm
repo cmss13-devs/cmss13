@@ -816,68 +816,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			return TRUE
 
 		if("watch_camera")
-			if(isRemoteControlling(user))
-				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Unable to override console camera viewer. Track with camera instead.")]")
-				return
 			if(!params["target_ref"])
 				return
-			if(!current_squad)
-				return
-
-			var/atom/target_ref = locate(params["target_ref"])
-			var/obj/structure/machinery/camera/new_cam = null
-			var/obj/item/new_holder = null
-			var/atom/cam_target = null
-
-			if(ishuman(target_ref)) // not strict since synths can be placed in OW squads
-				var/mob/living/carbon/human/Human = target_ref
-				cam_target = Human
-				new_holder = Human.get_camera_holder()
-				if(new_holder)
-					new_cam = new_holder.get_camera()
-			else if(istype(target_ref, /obj/structure/overwatch_camera_tripod))
-				var/obj/structure/overwatch_camera_tripod/tripod_camera = target_ref
-				if(tripod_camera.camera)
-					new_cam = tripod_camera.camera
-					cam_target = tripod_camera
-			else
-				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Invalid target.")]")
-				return
-
-			if(user.interactee != src) //if we multitasking
-				user.set_interaction(src)
-				if(cam == new_cam) //if we switch to a console that is already watching this cam
-					return
-			if(!new_cam || !new_cam.can_use())
-				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Searching for camera. No camera found for this target!")]")
-			else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
-				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping camera view.")]")
-				for(var/datum/weakref/user_ref in concurrent_users)
-					var/mob/concurrent = user_ref.resolve()
-					if(!concurrent)
-						continue
-					stop_watching_camera(concurrent)
-					concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-				disconnect_holder()
-				cam = null
-			else if(user.client.view != GLOB.world_view_size)
-				to_chat(user, SPAN_WARNING("You're too busy peering through binoculars."))
-			else
-				for(var/datum/weakref/user_ref in concurrent_users)
-					var/mob/concurrent = user_ref.resolve()
-					if(!concurrent)
-						continue
-					if(cam)
-						concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-					start_watching_camera(concurrent, new_cam)
-					if(cam_target)
-						set_onscreen_text(concurrent, cam_target)
-					concurrent.RegisterSignal(new_cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
-				if(camera_holder)
-					disconnect_holder()
-				cam = new_cam
-				if(new_holder)
-					connect_holder(new_holder)
+			try_watch_camera(user, locate(params["target_ref"]))
 
 		if("change_operator")
 			if(operator != user)
@@ -1108,6 +1049,70 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			message_admins("[key_name_admin(user)] has called for general quarters via the groundside operations console.")
 			log_ares_security("General Quarters", "Called for general quarters via the groundside operations console.", user)
 			. = TRUE
+
+/// Switches (or stops) the console's camera feed to target_ref, a marine mob or an overwatch camera tripod. Shared by the marine-list "watch_camera" ui_act and the tacmap blip click handler.
+/obj/structure/machinery/computer/overwatch/proc/try_watch_camera(mob/user, atom/target_ref)
+	if(isRemoteControlling(user))
+		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Unable to override console camera viewer. Track with camera instead.")]")
+		return
+	if(!target_ref)
+		return
+	if(!current_squad)
+		return
+
+	var/obj/structure/machinery/camera/new_cam = null
+	var/obj/item/new_holder = null
+	var/atom/cam_target = null
+
+	if(ishuman(target_ref)) // not strict since synths can be placed in OW squads
+		var/mob/living/carbon/human/Human = target_ref
+		cam_target = Human
+		new_holder = Human.get_camera_holder()
+		if(new_holder)
+			new_cam = new_holder.get_camera()
+	else if(istype(target_ref, /obj/structure/overwatch_camera_tripod))
+		var/obj/structure/overwatch_camera_tripod/tripod_camera = target_ref
+		if(tripod_camera.camera)
+			new_cam = tripod_camera.camera
+			cam_target = tripod_camera
+	else
+		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Invalid target.")]")
+		return
+
+	if(user.interactee != src) //if we multitasking
+		user.set_interaction(src)
+		if(cam == new_cam) //if we switch to a console that is already watching this cam
+			return
+	if(!new_cam || !new_cam.can_use())
+		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Searching for camera. No camera found for this target!")]")
+	else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
+		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping camera view.")]")
+		for(var/datum/weakref/user_ref in concurrent_users)
+			var/mob/concurrent = user_ref.resolve()
+			if(!concurrent)
+				continue
+			stop_watching_camera(concurrent)
+			concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
+		disconnect_holder()
+		cam = null
+	else if(user.client.view != GLOB.world_view_size)
+		to_chat(user, SPAN_WARNING("You're too busy peering through binoculars."))
+	else
+		for(var/datum/weakref/user_ref in concurrent_users)
+			var/mob/concurrent = user_ref.resolve()
+			if(!concurrent)
+				continue
+			if(cam)
+				concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
+			start_watching_camera(concurrent, new_cam)
+			if(cam_target)
+				set_onscreen_text(concurrent, cam_target)
+			concurrent.RegisterSignal(new_cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
+		if(camera_holder)
+			disconnect_holder()
+		cam = new_cam
+		if(new_holder)
+			connect_holder(new_holder)
 
 /obj/structure/machinery/computer/overwatch/proc/transfer_talk(obj/item/camera, mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE, show_message_above_tv = FALSE)
 	SIGNAL_HANDLER

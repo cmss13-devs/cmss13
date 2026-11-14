@@ -77,8 +77,5 @@
 	operating = DOOR_OPERATING_IDLE
 	SEND_SIGNAL(src, COMSIG_DOOR_CLOSE)
 
-/obj/structure/machinery/door/poddoor/railing/open
-	density = FALSE
-
 /obj/structure/machinery/door/poddoor/railing/upp
 	id = "supply_elevator_railing_upp"

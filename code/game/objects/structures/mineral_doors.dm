@@ -263,10 +263,3 @@
 		for(var/i = 1, i <= oreAmount, i++)
 			new/obj/item/stack/sheet/wood(get_turf(src))
 	qdel(src)
-
-//Mapping instance
-/obj/structure/mineral_door/wood/open
-	density = FALSE
-	opacity = FALSE
-	open = TRUE
-	icon_state = "woodopen"

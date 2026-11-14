@@ -419,7 +419,7 @@
 /turf/open/shuttle/vehicle/dark_sterile_green_12,
 /area/interior/vehicle/apc/command)
 "br" = (
-/obj/structure/machinery/cm_vending/sorted/medical/vehicle{
+/obj/structure/machinery/cm_vending/sorted/medical/vehicle/bug_hunt{
 	pixel_y = 23
 	},
 /turf/open/shuttle/vehicle/dark_sterile_green_7,

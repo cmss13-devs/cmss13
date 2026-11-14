@@ -30,6 +30,8 @@
 	var/timed_hug = TRUE
 
 	var/list/speech_sounds // A list of sounds to potentially play when speaking.
+	var/list/ask_sounds
+	var/list/exclaim_sounds
 	var/list/speech_chance
 	var/has_fine_manipulation = 1 // Can use small items.
 	var/can_emote = TRUE

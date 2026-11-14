@@ -32,7 +32,7 @@ export const Mortar = (props) => {
       <Window.Content>
         <Section>
           <LabeledList>
-            <LabeledList.Item label="Target X">
+            <LabeledList.Item label="Longitude">
               <NumberInput
                 width="4em"
                 step={1}
@@ -42,7 +42,7 @@ export const Mortar = (props) => {
                 onChange={(value) => setTargetX(value)}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Target Y">
+            <LabeledList.Item label="Latitude">
               <NumberInput
                 width="4em"
                 step={1}
@@ -52,7 +52,7 @@ export const Mortar = (props) => {
                 onChange={(value) => setTargetY(value)}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Target Z">
+            <LabeledList.Item label="Height">
               <NumberInput
                 width="4em"
                 step={1}
@@ -102,7 +102,7 @@ export const Mortar = (props) => {
         </Section>
         <Section>
           <LabeledList>
-            <LabeledList.Item label="X Offset">
+            <LabeledList.Item label="Longitude Offset">
               <NumberInput
                 width="4em"
                 step={1}
@@ -113,7 +113,7 @@ export const Mortar = (props) => {
                 onChange={(value) => setDialX(value)}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Y Offset">
+            <LabeledList.Item label="Latitude Offset">
               <NumberInput
                 width="4em"
                 step={1}

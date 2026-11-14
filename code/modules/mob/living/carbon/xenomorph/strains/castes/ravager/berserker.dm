@@ -3,6 +3,10 @@
 	description = "You lose your empower, charge, and scissor cut, decrease your health, and sacrifice a bit of your influence under frenzy pheromones to increase your movement speed, slightly increase your armor, and gain a new set of abilities that make you a terrifying melee monster. By slashing, you heal yourself and gain a stack of rage that increases your armor, movement speed, attack speed, and your heals per slash, to a maximum of five rage. Use your new Appehend ability to increase your movement speed and apply a slow on the next target you slash and use your Clothesline ability to fling your target to heal yourself, even more-so if you have a rage stack that will be used up. Finally, use your Eviscerate to unleash a devastating windmill attack that heals you for every enemy you hit after an immobilizing wind-up."
 	flavor_description = "Unbridled fury fills this one. You will become an extension of my rage."
 	icon_state_prefix = "Berserker"
+	plasma_mod = -(/datum/caste_datum/ravager::plasma_max) // no plasma
+	health_mod = -XENO_HEALTH_MOD_MED
+	armor_mod = XENO_ARMOR_MOD_VERY_SMALL
+	speed_mod = XENO_SPEED_FASTMOD_TIER_3
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/onclick/empower,
@@ -18,13 +22,8 @@
 	behavior_delegate_type = /datum/behavior_delegate/ravager_berserker
 
 /datum/xeno_strain/berserker/apply_strain(mob/living/carbon/xenomorph/ravager/ravager)
-	ravager.plasmapool_modifier = XENO_NO_PLASMA
-	ravager.health_modifier -= XENO_HEALTH_MOD_MED
-	ravager.armor_modifier += XENO_ARMOR_MOD_VERY_SMALL
-	ravager.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
-	ravager.received_phero_caps[XENO_PHERO_FRENZY] = 2.9 // Moderate
-
-	ravager.recalculate_everything()
+	..() // stat modifiers
+	ravager.received_phero_caps[XENO_PHERO_FRENZY] = XENO_PHERO_STRENGTH_STRONG - 0.1 // Moderate
 
 // Mutator delegate for Berserker ravager
 /datum/behavior_delegate/ravager_berserker

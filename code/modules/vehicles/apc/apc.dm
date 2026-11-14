@@ -32,6 +32,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 
 	required_skill = SKILL_VEHICLE_LARGE
 
+	uses_rubber_tires = TRUE
 	movement_sound = 'sound/vehicles/tank_driving.ogg'
 
 	var/gunner_view_buff = 10

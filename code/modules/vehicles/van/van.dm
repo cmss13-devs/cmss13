@@ -38,6 +38,7 @@
 		"cooldown" = 1
 	)
 
+	uses_rubber_tires = TRUE
 	movement_sound = 'sound/vehicles/tank_driving.ogg'
 	honk_sound = 'sound/vehicles/honk_2_truck.ogg'
 
@@ -74,6 +75,7 @@
 	var/next_push = 0
 	var/push_delay = 0.5 SECONDS
 
+
 /obj/vehicle/multitile/van/Initialize()
 	. = ..()
 	under_image = image(icon, src, icon_state, layer = BELOW_MOB_LAYER)
@@ -87,6 +89,7 @@
 
 	for(var/I in GLOB.player_list)
 		add_default_image(SSdcs, I)
+
 
 /obj/vehicle/multitile/van/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(mover in mobs_under) //can't collide with the thing you're buckled to
@@ -102,6 +105,8 @@
 			return NO_BLOCKED_MOVEMENT
 
 		if(M.mob_size >= MOB_SIZE_IMMOBILE && next_push < world.time)
+			update_movement_sound(is_side_collision(mover), TRUE)
+
 			if(try_move(target_dir, force=TRUE))
 				next_push = world.time + push_delay
 				return NO_BLOCKED_MOVEMENT
@@ -122,6 +127,7 @@
 		if(!(M.loc in locs))
 			remove_under_van(M)
 
+
 /obj/vehicle/multitile/van/proc/add_under_van(mob/living/L)
 	if(L in mobs_under)
 		return
@@ -133,6 +139,7 @@
 
 	if(L.client)
 		add_client(L)
+
 
 /obj/vehicle/multitile/van/proc/remove_under_van(mob/living/L)
 	SIGNAL_HANDLER
@@ -148,19 +155,23 @@
 		COMSIG_MOVABLE_MOVED,
 	))
 
+
 /obj/vehicle/multitile/van/proc/check_under_van(mob/M, turf/oldloc, direction)
 	SIGNAL_HANDLER
 	if(!(M.loc in locs))
 		remove_under_van(M)
+
 
 /obj/vehicle/multitile/van/proc/add_client(mob/living/L)
 	SIGNAL_HANDLER
 	L.client.images += under_image
 	L.client.images -= normal_image
 
+
 /obj/vehicle/multitile/van/proc/add_default_image(subsystem, mob/M)
 	SIGNAL_HANDLER
 	M.client.images += normal_image
+
 
 /obj/vehicle/multitile/van/Destroy()
 	for(var/I in mobs_under)
@@ -173,6 +184,7 @@
 	QDEL_NULL(lighting_holder)
 
 	return ..()
+
 
 /obj/vehicle/multitile/van/attackby(obj/item/O, mob/user)
 	if(user.z != z)
@@ -212,8 +224,10 @@
 
 	return ..()
 
+
 /obj/vehicle/multitile/van/proc/reset_overdrive()
 	misc_multipliers["move"] += overdrive_speed_mult
+
 
 /obj/vehicle/multitile/van/get_projectile_hit_boolean(obj/projectile/P)
 	if(src == P.original) //clicking on the van itself will hit it.
@@ -221,6 +235,7 @@
 		if(prob(hitchance))
 			return TRUE
 	return FALSE
+
 
 /obj/vehicle/multitile/van/Collide(atom/A)
 	if(!seats[VEHICLE_DRIVER])
@@ -238,6 +253,7 @@
 		return FALSE
 
 	return ..()
+
 
 /*
 ** PRESETS SPAWNERS

@@ -8,6 +8,7 @@
 		)
 	default_ammo = /datum/ammo/bullet/smg
 	max_rounds = 30
+	flags_magazine = AMMUNITION_REFILLABLE | JUNGLE_STYLE_ABLE
 
 //-------------------------------------------------------
 //M39 SMG ammo
@@ -192,6 +193,7 @@
 	icon_state = "type64mag"
 	max_rounds = 64
 	gun_type = /obj/item/weapon/gun/smg/bizon
+	flags_magazine = AMMUNITION_REFILLABLE
 
 //-------------------------------------------------------
 //GENERIC UZI //Based on the uzi submachinegun, of course.
@@ -282,6 +284,7 @@
 	w_class = SIZE_MEDIUM
 	gun_type = /obj/item/weapon/gun/smg/p90
 	max_rounds = 50
+	flags_magazine = AMMUNITION_REFILLABLE
 
 /obj/item/ammo_magazine/smg/p90/ap
 	name = "\improper FN P90 AP magazine (5.7x28mm)"

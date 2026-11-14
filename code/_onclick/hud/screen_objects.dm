@@ -549,6 +549,17 @@
 
 		if(user.hive.hive_location)
 			options["Hive Core"] = list(null, TRACKER_HIVE)
+		var/obj/structure/machinery/computer/shuttle/dropship/flight/primary_lz_console = SSticker.mode.active_lz
+		var/groundside_humans = 0
+		for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
+			if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
+				continue
+
+			var/turf/turf = get_turf(current_human)
+			if(is_ground_level(turf?.z))
+				groundside_humans++
+		if(primary_lz_console && groundside_humans < 12)
+			options["Primazy LZ"] = list(primary_lz_console, TRACKER_LZ)
 
 		for(var/mob/living/carbon/xenomorph/leader in user.hive.xeno_leader_list)
 			options["Xeno Leader [leader]"] = list(leader, TRACKER_LEADER)

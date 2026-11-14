@@ -258,6 +258,7 @@
 /turf/open/shuttle/dropship/light_grey_bottom_right,
 /area/shuttle/drop2/sulaco)
 "rc" = (
+/obj/effect/attach_point/computer/dropship2,
 /obj/item/device/radio/intercom/normandy{
 	pixel_y = 24
 	},

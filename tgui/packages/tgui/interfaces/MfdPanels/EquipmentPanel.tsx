@@ -6,8 +6,12 @@ import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import { mfdState, useEquipmentState, useWeaponState } from './stateManagers';
 import type { EquipmentContext } from './types';
 
-const equipment_xs = [140, 160, 320, 340, 180, 300, 240, 240, 240, 140, 340];
-const equipment_ys = [120, 100, 100, 120, 100, 100, 260, 300, 340, 320, 320];
+const equipment_xs = [
+  140, 160, 320, 340, 180, 300, 240, 240, 240, 140, 340, 240,
+];
+const equipment_ys = [
+  120, 100, 100, 120, 100, 100, 260, 300, 340, 320, 320, 220,
+];
 
 const DrawWeapon = (props: { readonly x: number; readonly y: number }) => {
   return (
@@ -35,9 +39,11 @@ const DrawEquipmentBox = (props: {
 };
 
 const equipment_text_xs = [
-  100, 120, 360, 380, 180, 320, 250, 250, 250, 100, 400,
+  100, 120, 360, 380, 180, 320, 250, 250, 250, 100, 400, 250,
 ];
-const equipment_text_ys = [120, 60, 60, 120, 20, 20, 240, 280, 320, 320, 320];
+const equipment_text_ys = [
+  120, 60, 60, 120, 20, 20, 240, 280, 320, 320, 320, 190,
+];
 
 const DrawWeaponText = (props: {
   readonly x: number;

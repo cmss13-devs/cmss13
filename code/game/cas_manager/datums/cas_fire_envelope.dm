@@ -14,6 +14,8 @@
 	var/max_offset
 
 	var/mission_error
+	/// Required completion time for a transport firemission, or zero for an ordinary flyby.
+	var/transport_deadline = 0
 
 	var/stat = FIRE_MISSION_STATE_IDLE
 
@@ -119,6 +121,14 @@
 	if(check_result != FIRE_MISSION_ALL_GOOD)
 		mission_error = mission.error_message(check_result)
 		return FIRE_MISSION_CODE_ERROR
+
+	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(linked_console.shuttle_tag)
+	transport_deadline = 0
+	if(dropship && !dropship.in_flyby)
+		mission_error = dropship.get_transport_firemission_error(mission, get_required_flight_time())
+		if(mission_error)
+			return FIRE_MISSION_NOT_EXECUTABLE
+		transport_deadline = world.time + get_required_flight_time()
 
 	//actual firemission code
 	execute_firemission_unsafe(signal, target_turf, dir, mission, user)
@@ -283,6 +293,10 @@
 
 /// Step 5: Actually executes the fire mission updating stat to FIRE_MISSION_STATE_FIRING and then FIRE_MISSION_STATE_OFF_TARGET
 /datum/cas_fire_envelope/proc/open_fire(atom/target_turf,datum/cas_fire_mission/mission,dir, mob/user)
+	if(transport_deadline && !can_continue_transport_firemission(mission))
+		to_chat(user, SPAN_WARNING("Transport Fire Mission aborted: [mission_error]"))
+		stat = FIRE_MISSION_STATE_OFF_TARGET
+		return
 	stat = FIRE_MISSION_STATE_FIRING
 	mission.execute_firemission(linked_console, target_turf, dir, fire_length, step_delay, src, user)
 	stat = FIRE_MISSION_STATE_OFF_TARGET
@@ -294,6 +308,20 @@
 /// Step 7: Sets the fire mission stat to FIRE_MISSION_STATE_IDLE
 /datum/cas_fire_envelope/proc/end_cooldown()
 	stat = FIRE_MISSION_STATE_IDLE
+	transport_deadline = 0
+
+/// Flyoff is scheduled from launch
+/datum/cas_fire_envelope/proc/get_required_flight_time()
+	return max(flyoff_period, execution_start + fire_length * step_delay)
+
+/// Revalidate after the approach and between volleys, in case the timer or mission was changed
+/datum/cas_fire_envelope/proc/can_continue_transport_firemission(datum/cas_fire_mission/mission)
+	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(linked_console?.shuttle_tag)
+	if(!dropship)
+		mission_error = "Dropship unavailable."
+		return FALSE
+	mission_error = dropship.get_transport_firemission_error(mission, max(0, transport_deadline - world.time))
+	return !mission_error
 
 
 /datum/cas_fire_envelope/proc/execute_firemission_unsafe(datum/cas_signal/signal, turf/target_turf, dir, datum/cas_fire_mission/mission, mob/user)

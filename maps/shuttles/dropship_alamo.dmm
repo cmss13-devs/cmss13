@@ -454,6 +454,7 @@
 	},
 /area/shuttle/drop1/sulaco)
 "OU" = (
+/obj/effect/attach_point/computer/dropship1,
 /obj/item/device/radio/intercom/alamo{
 	pixel_y = 24
 	},

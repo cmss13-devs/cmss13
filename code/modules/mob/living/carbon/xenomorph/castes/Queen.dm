@@ -387,6 +387,7 @@
 	var/queen_age_timer_id = TIMER_ID_NULL
 	/// Temporary maturity timer
 	var/queen_age_temp_timer_id = TIMER_ID_NULL
+	var/list/obj/effect/alien/resin/building_node/nodes_in_queue
 
 	/// Whether the queen does some basics in life because its a mindless roundstart queen
 	var/auto_queen = FALSE
@@ -627,6 +628,7 @@
 		health = maxHealth
 
 /mob/living/carbon/xenomorph/queen/Destroy()
+	QDEL_NULL_LIST(nodes_in_queue)
 	if(observed_xeno)
 		overwatch(observed_xeno, TRUE)
 

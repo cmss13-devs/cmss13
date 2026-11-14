@@ -758,6 +758,13 @@
 #define SECRETE_RESIN_INTERRUPT -1
 #define SECRETE_RESIN_FAIL 0
 #define SECRETE_RESIN_SUCCESS 1
+#define SECRETE_RESIN_NODE 2
+
+// Return values for datum/resin_construction/proc/can_build_here
+// Used to allow marking of doors on unsupported floor.
+#define UNSUPPORTED_TURF -1
+#define UNBUILDABLE_TURF 0
+#define ALLOWED_TURF 1
 
 #define XENO_CHARGE_TRY_MOVE 0
 

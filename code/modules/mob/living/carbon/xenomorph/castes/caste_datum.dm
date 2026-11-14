@@ -74,7 +74,7 @@
 	// Resin building-related vars
 	/// Default build time and build distance
 	var/build_time_mult = BUILD_TIME_MULT_XENO
-	var/max_build_dist = 0
+	var/max_build_dist = 1
 
 	// Carrier vars //
 

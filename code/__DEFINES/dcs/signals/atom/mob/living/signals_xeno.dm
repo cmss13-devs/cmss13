@@ -104,3 +104,5 @@
 
 ///from /datum/action/xeno_action/activable/pounce/use_ability()
 #define COMSIG_XENO_POUNCE_STARTED "xeno_pounce_start"
+
+#define COMSIG_XENO_FINISH_BUILDING "xeno_finish_building"

@@ -96,8 +96,8 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 				if(!length(kbinds[old_key]))
 					kbinds -= old_key
 
-			if(LAZYISIN(kbinds["Unbound"], old_key))
-				kbinds["Unbound"] -= old_key
+			if(LAZYISIN(kbinds["Unbound"], kb_name))
+				kbinds["Unbound"] -= kb_name
 
 			kbinds[full_key] += list(kb_name)
 			kbinds[full_key] = sortList(kbinds[full_key])
@@ -174,7 +174,7 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 
 		if("clear_all_keybinds")
 			var/choice = tgui_alert(owner, "Would you prefer 'hotkey' or 'classic' defaults?", "Setup keybindings", list("Hotkey", "Classic", "Cancel"))
-			if(choice == "Cancel")
+			if(!choice || choice == "Cancel")
 				return TRUE
 			prefs.hotkeys = (choice == "Hotkey")
 			prefs.key_bindings = (prefs.hotkeys) ? deep_copy_list(GLOB.hotkey_keybinding_list_by_key) : deep_copy_list(GLOB.classic_keybinding_list_by_key)

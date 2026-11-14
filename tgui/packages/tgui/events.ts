@@ -252,3 +252,81 @@ document.addEventListener('keyup', (e) => {
   globalEvents.emit('key', key);
   keyHeldByCode[code] = false;
 });
+
+// Mouse events
+// --------------------------------------------------------
+
+const buttonHeldByCode: Record<number, boolean> = {};
+
+export class MouseButtonEvent {
+  event: MouseEvent;
+  type: 'mousedown' | 'mouseup';
+  code: number;
+  ctrl: boolean;
+  shift: boolean;
+  alt: boolean;
+  repeat: boolean;
+  _str?: string;
+
+  constructor(e: MouseEvent, type: 'mousedown' | 'mouseup', repeat?: boolean) {
+    this.event = e;
+    this.type = type;
+    this.code = e.button;
+    this.ctrl = e.ctrlKey;
+    this.shift = e.shiftKey;
+    this.alt = e.altKey;
+    this.repeat = !!repeat;
+  }
+
+  hasModifierKeys() {
+    return this.ctrl || this.alt || this.shift;
+  }
+
+  isDown() {
+    return this.type === 'mousedown';
+  }
+
+  isUp() {
+    return this.type === 'mouseup';
+  }
+
+  toString() {
+    if (this._str) {
+      return this._str;
+    }
+    this._str = '';
+    if (this.ctrl) {
+      this._str += 'Ctrl+';
+    }
+    if (this.alt) {
+      this._str += 'Alt+';
+    }
+    if (this.shift) {
+      this._str += 'Shift+';
+    }
+    this._str += '[xbutton' + (this.code - 2) + ']'; // button 3 is xbutton1 in byond
+    return this._str;
+  }
+}
+
+document.addEventListener('mousedown', (e) => {
+  if (canStealFocus(e.target as HTMLElement)) {
+    return;
+  }
+  const code = e.button;
+  const key = new MouseButtonEvent(e, 'mousedown', buttonHeldByCode[code]);
+  globalEvents.emit('mousedown', key);
+  globalEvents.emit('mousebutton', key);
+  buttonHeldByCode[code] = true;
+});
+
+document.addEventListener('mouseup', (e) => {
+  if (canStealFocus(e.target as HTMLElement)) {
+    return;
+  }
+  const code = e.button;
+  const key = new MouseButtonEvent(e, 'mouseup');
+  globalEvents.emit('mouseup', key);
+  globalEvents.emit('mousebutton', key);
+  buttonHeldByCode[code] = false;
+});

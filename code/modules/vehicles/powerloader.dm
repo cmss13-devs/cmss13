@@ -158,12 +158,16 @@
 			return
 			//can't use the powerloader without both clamps equipped
 		set_light_on(TRUE)
-		handle_rotation()
 	else
 		move_delay = initial(move_delay)
 		icon_state = open_state
 		M.drop_held_items() //drop the clamp when unbuckling
 		set_light_on(FALSE)
+
+/obj/vehicle/powerloader/set_light_on(new_value)
+	. = ..()
+	if(.)
+		handle_rotation()
 
 //verb
 /obj/vehicle/powerloader/verb/enter_powerloader(mob/M)

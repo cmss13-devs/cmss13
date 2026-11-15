@@ -29410,13 +29410,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/interior/wood,
 /area/lv1021/indoors/clf_camp/education)
-"cKk" = (
-/obj/item/ammo_magazine/pistol/m1911/highimpact{
-	current_rounds = 0
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/auto_turf/tyrargo_grass/layer0,
-/area/lv1021/oob)
 "cKK" = (
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = 7;
@@ -40492,12 +40485,6 @@
 /obj/structure/platform/wood/west,
 /turf/open/gm/coast/dirt/beachcorner2/north_west,
 /area/lv1021/outdoors/river/east_river)
-"mUk" = (
-/obj/item/ammo_magazine/pistol/m1911/highimpact{
-	current_rounds = 0
-	},
-/turf/open/auto_turf/tyrargo_grass/layer1,
-/area/lv1021/outdoors/jungle/jungleW_north)
 "mVA" = (
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
@@ -41771,9 +41758,6 @@
 	},
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/obj/item/ammo_magazine/pistol/m1911/highimpact{
-	current_rounds = 0
-	},
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 6
 	},
@@ -49442,15 +49426,6 @@
 	dir = 8
 	},
 /obj/structure/largecrate/random/case/double,
-/turf/open/asphalt/brown,
-/area/lv1021/outdoors/comms/west_2)
-"vgW" = (
-/obj/item/ammo_magazine/pistol/m1911/highimpact{
-	current_rounds = 0
-	},
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 1
-	},
 /turf/open/asphalt/brown,
 /area/lv1021/outdoors/comms/west_2)
 "vgZ" = (
@@ -62258,7 +62233,7 @@ hfc
 hfc
 ulh
 qBg
-mUk
+qBg
 ycZ
 oNb
 lwY
@@ -62622,7 +62597,7 @@ lbt
 ilu
 vHX
 ape
-vgW
+apa
 bgp
 wcf
 tpX
@@ -64062,7 +64037,7 @@ bex
 kFf
 fTl
 cTe
-mUk
+qBg
 opF
 izy
 hMW
@@ -94875,7 +94850,7 @@ hXu
 hXu
 hXu
 hXu
-cKk
+vSS
 lkd
 fej
 vSS

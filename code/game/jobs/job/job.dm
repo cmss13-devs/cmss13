@@ -358,6 +358,9 @@
 	if(!new_human.client || !new_human.client.prefs)
 		return
 
+	var/datum/gear/very_important_ticket = /datum/gear/helmet_garb/spacejam_tickets
+	very_important_ticket.equip_to_user(new_human)
+
 	var/equipment_slot = new_human.client.prefs.get_active_loadout(title)
 	if(!length(equipment_slot))
 		return
@@ -368,8 +371,6 @@
 			continue
 
 		current_gear.equip_to_user(new_human)
-	var/datum/gear/very_important_ticket = /datum/gear/helmet_garb/spacejam_tickets
-	very_important_ticket.equip_to_user(new_human)
 
 /// Intended to be overwritten to handle when a job has variants that can be selected.
 /datum/job/proc/handle_job_options(option)

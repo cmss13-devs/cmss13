@@ -72,7 +72,10 @@
 		smallest_distance = distance
 
 	if(isnull(closest_target))
-		return
+		if(length(SShuman.processable_human_list))
+			closest_target = pick(SShuman.processable_human_list)
+		else
+			return
 
 	target_mob = closest_target
 	target_mob_ref = WEAKREF(target_mob)

@@ -298,7 +298,8 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_TYRARGO_RIFT = new /obj/item/map/tyrargo_rift(),
 		MAP_WHITE_ANTRE_RESEARCH_FACILITY = new /obj/item/map/white_antre_map(),
 		MAP_CAPE_RIVER = new /obj/item/map/cape_river(),
-		MAP_LV1021_FALCONS_FURY = new /obj/item/map/lv1021_map()
+		MAP_LV1021_FALCONS_FURY = new /obj/item/map/lv1021_map(),
+		MAP_LV1021_FALCONS_FURY_FORWARD_BASE = new /obj/item/map/lv1021_map()
 	)
 
 //used by marine equipment machines to spawn the correct map.

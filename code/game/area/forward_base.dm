@@ -158,3 +158,6 @@
 /area/forward_base/underdeck/hangar
 	name = "\improper Forward Base Hangar"
 	icon_state = "hangar"
+
+/area/forward_base/underdeck/hangar/lv1021
+	ambience_exterior = AMBIENCE_JUNGLE_ALT

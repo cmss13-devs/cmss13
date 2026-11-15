@@ -198,6 +198,9 @@
 	weather_enabled = TRUE
 	xeno_alert_enabled = FALSE
 
+/area/forward_base/lv624/tent_camp/lv1021
+	ambience_exterior = AMBIENCE_JUNGLE_ALT
+
 /area/forward_base/lv624/tent
 	name = "Tent"
 	icon_state = "livingspace"

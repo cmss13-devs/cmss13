@@ -225,6 +225,7 @@
 	hive.stored_larva = 0
 	hive.hive_ui.update_all_data()
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(ares_command_check)), 5 MINUTES)
 	addtimer(CALLBACK(src, PROC_REF(mission_briefing)), 2 MINUTES)
 	return ..()
 

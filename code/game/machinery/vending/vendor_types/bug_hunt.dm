@@ -38,8 +38,15 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine_bug_hunt, list(
 		list("Pistol Pouch", 0, /obj/item/storage/pouch/pistol, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 
 		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
+		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Leg Pouch", 0, /obj/item/clothing/accessory/storage/black_vest/leg_pouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Leg Pouch (Black)", 0, /obj/item/clothing/accessory/storage/black_vest/black_leg_pouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Black Webbing", 0, /obj/item/clothing/accessory/storage/webbing/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Black Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("MASK (CHOOSE 1)", 0, null, null, null),
 		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
@@ -191,7 +198,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine_bug_hunt, list(
 	for(var/sidearm as anything in sidearms)
 		products += list(list("Preferred CO Sidearm", 0, preset.get_sidearm_gear(sidearm), MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY))
 	products += list(list("COMMAND EQUIPMENT", 0, null, null, null))
-	products += list(list("Command Pouch", 0, /obj/item/storage/pouch/pistol/command, null, VENDOR_ITEM_REGULAR))
+	products += list(list("Command Pouch", 0, /obj/item/storage/pouch/pistol/command, MARINE_CAN_BUY_SPECIALIZATION, VENDOR_ITEM_REGULAR))
 	return products + ..(user)
 
 /obj/structure/machinery/cm_vending/clothing/engi/bug_hunt
@@ -214,10 +221,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine_bug_hunt, list(
 /obj/structure/machinery/cm_vending/clothing/vehicle_crew/bug_hunt/get_listed_products(mob/user)
 	var/list/products = ..(user)
 	products = products.Copy()
-	for(var/list/product as anything in products)
-		if(product[4] == MARINE_CAN_BUY_ARMOR)
-			products[products.Find(product)] = list("M3-R Recon Armor", 0, /obj/item/clothing/suit/storage/marine/light/recon/bug_hunt, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY)
-			break
+	products.Insert(2, list(list("Crewman Uniform and Boots", 0, list(/obj/item/clothing/under/marine/officer/tanker, /obj/item/clothing/shoes/marine/knife), MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY)))
 	return products
 
 /obj/structure/machinery/cm_vending/clothing/medic/bug_hunt
@@ -274,8 +278,15 @@ GLOBAL_LIST_INIT(cm_vending_clothing_tl_bug_hunt, list(
 		list("Tools Pouch (Full)", 0, /obj/item/storage/pouch/tools/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 
 		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
+		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Leg Pouch", 0, /obj/item/clothing/accessory/storage/black_vest/leg_pouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Leg Pouch (Black)", 0, /obj/item/clothing/accessory/storage/black_vest/black_leg_pouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
+		list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Black Webbing", 0, /obj/item/clothing/accessory/storage/webbing/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Black Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("MASK (CHOOSE 1)", 0, null, null, null),
 		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
@@ -368,10 +379,30 @@ GLOBAL_LIST_INIT(cm_vending_gear_tl_bug_hunt, list(
 /obj/structure/machinery/cm_vending/gear/tl/bug_hunt/get_listed_products(mob/user)
 	return GLOB.cm_vending_gear_tl_bug_hunt
 
-/obj/structure/machinery/cm_vending/clothing/commanding_officer/bug_hunt
+/obj/structure/machinery/cm_vending/clothing/commanding_officer/bug_hunt/get_listed_products(mob/user)
+	var/list/products = ..(user)
+	var/list/forecon_products = products.Copy()
+	for(var/list/product as anything in products)
+		switch(product[3])
+			if(/obj/item/clothing/accessory/patch/falcon)
+				forecon_products[forecon_products.Find(product)] = list("FORECON Shoulder Patch", product[2], /obj/item/clothing/accessory/patch/forecon, product[4], product[5])
+			if(/obj/item/clothing/accessory/patch/falconalt)
+				forecon_products -= list(product)
+	return forecon_products
 
 /obj/structure/machinery/cm_vending/clothing/senior_officer/bug_hunt
 	gloves_type = /obj/item/clothing/gloves/marine/insulated/black
+
+/obj/structure/machinery/cm_vending/clothing/senior_officer/bug_hunt/get_listed_products(mob/user)
+	var/list/products = ..(user)
+	var/list/forecon_products = products.Copy()
+	for(var/list/product as anything in products)
+		switch(product[3])
+			if(/obj/item/clothing/accessory/patch/falcon)
+				forecon_products[forecon_products.Find(product)] = list("FORECON Shoulder Patch", product[2], /obj/item/clothing/accessory/patch/forecon, product[4], product[5])
+			if(/obj/item/clothing/accessory/patch/falconalt)
+				forecon_products -= list(product)
+	return forecon_products
 
 /obj/structure/machinery/cm_vending/clothing/smartgun/bug_hunt
 	name = "\improper ColMarTech FORECON Smartgunner Equipment Rack"

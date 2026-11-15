@@ -143,9 +143,11 @@
 	paygrades = list(PAY_SHORT_MWO = JOB_PLAYTIME_TIER_0, PAY_SHORT_MCWO = 75 HOURS)
 	hud_icon = "tc"
 	hud_color = "#32CD32"
-	utility_under = list(/obj/item/clothing/under/marine)
+	utility_under = list(/obj/item/clothing/under/marine/officer/tanker)
 
 /datum/equipment_preset/uscm/tank/bug_hunt/load_gear(mob/living/carbon/human/new_human)
+	var/back_item = get_backpack_item(new_human)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt/command(new_human), WEAR_L_EAR)
 
 /datum/equipment_preset/synth/uscm/bug_hunt
@@ -289,7 +291,7 @@
 
 /datum/equipment_preset/uscm/tank/bug_hunt/equipped/load_gear(mob/living/carbon/human/new_human)
 	..()
-	load_bug_hunt_equipment(new_human, head_type = /obj/item/clothing/head/helmet/marine/tech/tanker)
+	load_bug_hunt_equipment(new_human, head_type = /obj/item/clothing/head/helmet/marine/tech/tanker, armor_type = /obj/item/clothing/suit/storage/marine/tanker, uniform_type = /obj/item/clothing/under/marine/officer/tanker)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39(new_human), WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/extended(new_human), WEAR_IN_BACK)

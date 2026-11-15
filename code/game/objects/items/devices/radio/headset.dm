@@ -1206,6 +1206,7 @@
 
 /obj/item/device/radio/headset/distress/forecon/bug_hunt
 	desc = "A headset tuned to the SOF channel. Use ; to transmit."
+	icon_state = "soc_headset"
 	frequency = SOF_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/soc/bug_hunt)
 	ignore_z = FALSE

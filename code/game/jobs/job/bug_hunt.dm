@@ -76,7 +76,7 @@
 	allow_additional = FALSE
 	scaled = FALSE
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
-	gear_preset = /datum/equipment_preset/uscm/tank/bug_hunt/equipped
+	gear_preset = /datum/equipment_preset/uscm/tank/bug_hunt
 	supervisors = "the platoon commander and operations officer"
 
 /datum/job/command/tank_crew/bug_hunt/get_total_positions(latejoin)

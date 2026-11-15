@@ -364,7 +364,7 @@
 	pixel_y = 5;
 	pixel_x = 7
 	},
-/obj/structure/machinery/computer/almayer_control{
+/obj/structure/machinery/computer/overwatch/groundside_operations{
 	dir = 8;
 	pixel_x = 17;
 	pixel_y = -14
@@ -478,6 +478,14 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/golden_arrow)
 "aR" = (
+/obj/item/storage/syringe_case{
+	pixel_x = -8;
+	pixel_y = -8
+	},
+/obj/item/storage/syringe_case{
+	pixel_x = 8;
+	pixel_y = -8
+	},
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/glass/beaker/bluespace{
 	pixel_x = -7;
@@ -559,12 +567,14 @@
 /turf/open/floor/almayer/cargo/southwest,
 /area/golden_arrow)
 "aX" = (
+/obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	name = "Typhoon autopilot console";
 	req_one_access = list(1,9,12,22);
 	shuttleId = "dropship_alamo";
 	can_change_shuttle = 0;
-	dir = 4
+	dir = 4;
+	pixel_y = 4
 	},
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
@@ -1730,6 +1740,10 @@
 	},
 /turf/open/floor/almayer,
 /area/golden_arrow)
+"dc" = (
+/obj/item/stack/sheet/cardboard/full_stack,
+/turf/open/floor/almayer,
+/area/golden_arrow)
 "de" = (
 /obj/structure/terminal{
 	dir = 4
@@ -2876,8 +2890,7 @@
 /obj/structure/machinery/door_control/brbutton{
 	pixel_y = 28;
 	id = "squadblastdoor";
-	name = "hangar blast door control";
-	req_one_access_txt = "19;12"
+	name = "hangar blast door control"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "cargo_arrow";
@@ -20497,7 +20510,7 @@ sf
 bX
 Gd
 cK
-DI
+dc
 aS
 Pq
 cO

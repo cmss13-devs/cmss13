@@ -245,3 +245,19 @@
   - ui: Latejoin and job preferences now follow the crew manifest's department order
       and colors.
   - qol: Added squad badges to latejoin. Clicking a badge joins that squad.
+2026-11-11:
+  Nihisohel, LCMS1 for sprites:
+  - rscadd: Guns with the appropriate ammunition type and presentation now litter
+      the ground with their spent cases and cartridges.
+  - spellcheck: Tweaks some misrepresented lore about XM43E1 casings.
+  - mapadd: Adds backend for making randomized casings on mapload, and the ability
+      to disable such for mappers
+  - maptweak: Changes every instance of Tyrargo's prop parent varedited into faux
+      casings into the actual casing parent (Please stop doing this)
+  - config: Adds a round modifier allowing an almost total disabling of gun casings
+  Puckaboo2:
+  - qol: Researchers are no longer stuck between choosing a tie or webbing accessory.
+      They can have both if they wish.
+  - qol: Researchers now spawn with brown laceup shoes and the classic blue R&D uniform
+      on loading in.
+  - code_imp: Reorganizes the Research ColMarTech loadout section.

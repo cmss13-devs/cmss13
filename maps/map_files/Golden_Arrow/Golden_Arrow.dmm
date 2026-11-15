@@ -677,6 +677,10 @@
 "bi" = (
 /turf/open/floor/almayer/uscm/south_face/southwest,
 /area/golden_arrow)
+"bj" = (
+/mob/living/simple_animal/small/cat/Jones,
+/turf/open/floor/almayer,
+/area/golden_arrow)
 "bk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -20187,7 +20191,7 @@ Tl
 VM
 qv
 aC
-DI
+bj
 VI
 uQ
 ry

@@ -1217,6 +1217,10 @@
 	)
 
 /obj/item/device/radio/headset/distress/forecon/bug_hunt/command
+	desc = "A headset tuned to the SOF and marine command channels. Use ; for SOF and :v for command."
+	initial_keys = list(/obj/item/device/encryptionkey/soc/bug_hunt, /obj/item/device/encryptionkey/command)
+
+/obj/item/device/radio/headset/distress/forecon/bug_hunt/command/live
 	minimap_type = /datum/action/minimap/marine/live
 
 //WY Headsets

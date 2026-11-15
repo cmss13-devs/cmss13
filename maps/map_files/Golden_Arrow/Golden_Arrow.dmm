@@ -3199,6 +3199,7 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/door_control{
 	req_access = list();
+	req_one_access = list(1,12,36);
 	pixel_y = 10;
 	pixel_x = 6;
 	id = "squadarmory";

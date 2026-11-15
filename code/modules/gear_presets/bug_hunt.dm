@@ -21,7 +21,7 @@
 	new_human.rank_override = "wo_co"
 	var/back_item = get_backpack_item(new_human)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt/command(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt/command/live(new_human), WEAR_L_EAR)
 
 /datum/equipment_preset/uscm_co/bug_hunt/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = rand(NUTRITION_VERYLOW, NUTRITION_LOW)
@@ -44,7 +44,7 @@
 	new_human.rank_override = "wo_xo"
 	var/back_item = get_backpack_item(new_human)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt/command(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt/command/live(new_human), WEAR_L_EAR)
 
 /datum/equipment_preset/uscm_ship/xo/bug_hunt/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = rand(NUTRITION_VERYLOW, NUTRITION_LOW)
@@ -77,7 +77,7 @@
 
 /datum/equipment_preset/uscm/leader/bug_hunt/load_gear(mob/living/carbon/human/new_human)
 	..()
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt/command(new_human), WEAR_L_EAR)
 
 /datum/equipment_preset/uscm/tl/bug_hunt
 	name = "Bug Hunt Reconnaissance Section Leader"
@@ -92,7 +92,7 @@
 
 /datum/equipment_preset/uscm/tl/bug_hunt/load_gear(mob/living/carbon/human/new_human)
 	..()
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt/command(new_human), WEAR_L_EAR)
 
 /datum/equipment_preset/uscm/medic/bug_hunt
 	name = "Bug Hunt Reconnaissance Corpsman"
@@ -140,12 +140,13 @@
 	name = "Bug Hunt Vehicle Crewman"
 	assignment = JOB_RECON_CREWMAN
 	manifest_title = JOB_RECON_CREWMAN
+	paygrades = list(PAY_SHORT_MWO = JOB_PLAYTIME_TIER_0, PAY_SHORT_MCWO = 75 HOURS)
 	hud_icon = "tc"
 	hud_color = "#32CD32"
 	utility_under = list(/obj/item/clothing/under/marine)
 
 /datum/equipment_preset/uscm/tank/bug_hunt/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt/command(new_human), WEAR_L_EAR)
 
 /datum/equipment_preset/synth/uscm/bug_hunt
 	name = "Bug Hunt Reconnaissance Synthetic"
@@ -163,7 +164,7 @@
 
 /datum/equipment_preset/synth/uscm/bug_hunt/load_gear(mob/living/carbon/human/new_human)
 	new_human.rank_override = "syn"
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt/command(new_human), WEAR_L_EAR)
 
 /datum/equipment_preset/proc/load_bug_hunt_equipment(mob/living/carbon/human/new_human, head_type = /obj/item/clothing/head/helmet/marine, armor_type = /obj/item/clothing/suit/storage/marine/light/recon/bug_hunt, back_type = /obj/item/storage/backpack/marine/satchel, uniform_type = /obj/item/clothing/under/marine)
 	var/obj/item/clothing/under/marine/uniform = new uniform_type(new_human)

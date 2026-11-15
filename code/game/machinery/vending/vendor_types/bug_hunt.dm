@@ -165,7 +165,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine_bug_hunt, list(
 	name = "\improper ColMarTech FORECON Platoon Sergeant Equipment Rack"
 	desc = "An automated rack of field apparel and equipment for the FORECON platoon sergeant."
 	gloves_type = /obj/item/clothing/gloves/marine/insulated/black
-	headset_type = /obj/item/device/radio/headset/distress/forecon/bug_hunt
+	headset_type = /obj/item/device/radio/headset/distress/forecon/bug_hunt/command
 
 /obj/structure/machinery/cm_vending/gear/leader/bug_hunt
 	name = "\improper ColMarTech FORECON Platoon Sergeant Gear Rack"
@@ -197,6 +197,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine_bug_hunt, list(
 	var/list/products = list(list("COMMANDER'S SIDEARM", 0, null, null, null))
 	for(var/sidearm as anything in sidearms)
 		products += list(list("Preferred CO Sidearm", 0, preset.get_sidearm_gear(sidearm), MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY))
+	products += list(list("COMMAND EQUIPMENT", 0, null, null, null))
+	products += list(list("Command Pouch", 0, /obj/item/storage/pouch/pistol/command, null, VENDOR_ITEM_REGULAR))
 	return products + ..(user)
 
 /obj/structure/machinery/cm_vending/clothing/engi/bug_hunt

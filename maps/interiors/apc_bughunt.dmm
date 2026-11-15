@@ -59,6 +59,27 @@
 	},
 /turf/open/shuttle/vehicle/med,
 /area/interior/vehicle/apc/command)
+"ak" = (
+/obj/structure/closet/crate/explosives,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic,
+/obj/item/explosive/plastic/breaching_charge,
+/obj/item/explosive/plastic/breaching_charge,
+/obj/item/explosive/plastic/breaching_charge,
+/obj/item/explosive/plastic/breaching_charge,
+/obj/item/explosive/plastic/breaching_charge,
+/obj/item/explosive/plastic/breaching_charge,
+/obj/item/explosive/plastic/breaching_charge,
+/obj/item/explosive/plastic/breaching_charge,
+/obj/item/storage/toolbox/mechanical,
+/turf/open/shuttle/vehicle/floor_3_6,
+/area/interior/vehicle/apc/command)
 "al" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "wall_6";
@@ -441,10 +462,6 @@
 /obj/structure/machinery/optable,
 /turf/open/shuttle/vehicle/med,
 /area/interior/vehicle/apc/command)
-"bA" = (
-/obj/item/storage/toolbox/mechanical,
-/turf/open/shuttle/vehicle/floor_3_6,
-/area/interior/vehicle/apc/command)
 "bB" = (
 /obj/effect/landmark/interior/spawn/vehicle_gunner_seat/armor{
 	dir = 4
@@ -537,7 +554,7 @@ aR
 aQ
 bB
 aO
-bA
+ak
 aN
 aM
 aa

@@ -574,10 +574,12 @@
 		return
 	if(!get_action(src, /datum/action/xeno_action/onclick/plant_weeds))
 		give_action(src, /datum/action/xeno_action/onclick/plant_weeds/predrop)
-	if(get_action(src, /datum/action/xeno_action/activable/secrete_resin))
-		return
-	give_action(src, /datum/action/xeno_action/onclick/choose_resin/predrop)
-	give_action(src, /datum/action/xeno_action/activable/secrete_resin/predrop)
+	if(!get_action(src, /datum/action/xeno_action/activable/secrete_resin))
+		give_action(src, /datum/action/xeno_action/onclick/choose_resin/predrop)
+		give_action(src, /datum/action/xeno_action/activable/secrete_resin/predrop)
+	for(var/datum/action/xeno_action/action in actions)
+		if(istype(action, /datum/action/xeno_action/onclick/plant_weeds) || istype(action, /datum/action/xeno_action/activable/secrete_resin))
+			action.plasma_cost = 0
 
 
 /datum/action/xeno_action/onclick/toggle_seethrough

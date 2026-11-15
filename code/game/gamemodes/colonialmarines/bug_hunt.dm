@@ -78,6 +78,9 @@
 		qdel(get_action(xeno, /datum/action/xeno_action/onclick/plant_weeds/predrop))
 		qdel(get_action(xeno, /datum/action/xeno_action/onclick/choose_resin/predrop))
 		qdel(get_action(xeno, /datum/action/xeno_action/activable/secrete_resin/predrop))
+		for(var/datum/action/xeno_action/action in xeno.actions)
+			if(istype(action, /datum/action/xeno_action/onclick/plant_weeds) || istype(action, /datum/action/xeno_action/activable/secrete_resin))
+				action.plasma_cost = initial(action.plasma_cost)
 
 /datum/game_mode/bug_hunt/check_xeno_late_join(mob/xeno_candidate)
 	if(!..() || round_finished)

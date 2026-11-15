@@ -1,10 +1,3 @@
-/obj/structure/machinery/cm_vending/gear/bug_hunt
-	name = "\improper ColMarTech FORECON Equipment Rack"
-	desc = "An equipment rack supplying the Snake Eaters Force Reconnaissance platoon."
-	req_one_access = list(ACCESS_MARINE_GENERAL, ACCESS_MARINE_PREP)
-	vendor_role = list(JOB_CO, JOB_XO, JOB_SQUAD_LEADER, JOB_SQUAD_TEAM_LEADER, JOB_SQUAD_MEDIC, JOB_SQUAD_ENGI, JOB_SQUAD_SMARTGUN, JOB_SQUAD_MARINE, JOB_TANK_CREW, JOB_SYNTH)
-	vend_flags = VEND_CLUTTER_PROTECTION|VEND_CATEGORY_CHECK|VEND_UNIFORM_RANKS|VEND_TO_HAND|VEND_UNIFORM_AUTOEQUIP
-
 GLOBAL_LIST_INIT(cm_vending_clothing_marine_bug_hunt, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Standard FORECON Apparel", 0, list(/obj/item/clothing/under/marine, /obj/item/clothing/shoes/marine/knife, /obj/item/clothing/gloves/marine/insulated/black, /obj/item/clothing/head/helmet/marine), MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
@@ -380,73 +373,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_tl_bug_hunt, list(
 /obj/structure/machinery/cm_vending/clothing/senior_officer/bug_hunt
 	gloves_type = /obj/item/clothing/gloves/marine/insulated/black
 
-/obj/structure/machinery/cm_vending/gear/bug_hunt/clothing
-	name = "\improper ColMarTech FORECON Clothing Rack"
-	icon_state = "clothing"
-	vendor_role = list(JOB_CO, JOB_XO, JOB_SQUAD_LEADER, JOB_SQUAD_TEAM_LEADER, JOB_SQUAD_MEDIC, JOB_SQUAD_ENGI, JOB_SQUAD_MARINE, JOB_TANK_CREW, JOB_SYNTH)
-	listed_products = list(
-		list("FIELD UNIFORM", 0, null, null, null),
-		list("Marine Fatigues", 0, /obj/item/clothing/under/marine, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
-		list("Combat Boots (Knife)", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
-		list("Insulated Combat Gloves", 0, /obj/item/clothing/gloves/marine/insulated/black, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_REGULAR),
-		list("HEADWEAR", 0, null, null, null),
-		list("Patrol Cap", 0, /obj/item/clothing/head/cmcap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-		list("M10 Marine Helmet", 0, /obj/item/clothing/head/helmet/marine, MARINE_CAN_BUY_COMBAT_HELMET, VENDOR_ITEM_REGULAR),
-		list("M10 Corpsman Helmet", 0, /obj/item/clothing/head/helmet/marine/medic, MARINE_CAN_BUY_COMBAT_HELMET, VENDOR_ITEM_REGULAR),
-		list("M10 Technician Helmet", 0, /obj/item/clothing/head/helmet/marine/tech, MARINE_CAN_BUY_COMBAT_HELMET, VENDOR_ITEM_REGULAR),
-		list("ARMOR AND WEBBING", 0, null, null, null),
-		list("M3-R Recon Armor", 0, /obj/item/clothing/suit/storage/marine/light/recon/bug_hunt, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
-		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("Black Webbing", 0, /obj/item/clothing/accessory/storage/webbing/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("BACKPACKS", 0, null, null, null),
-		list("USCM Satchel", 0, /obj/item/storage/backpack/marine/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
-		list("Marine Backpack", 0, /obj/item/storage/backpack/marine, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
-		list("Shotgun Scabbard", 0, /obj/item/storage/large_holster/m37, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
-		list("BELTS", 0, null, null, null),
-		list("Ammo Load Rig", 0, /obj/item/storage/belt/marine, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
-		list("Grenade Rig", 0, /obj/item/storage/belt/grenade, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
-		list("Shotgun Shell Rig", 0, /obj/item/storage/belt/shotgun, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
-		list("Pistol Holster Rig", 0, /obj/item/storage/belt/gun/m4a3, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
-		list("M39 Holster Rig", 0, /obj/item/storage/belt/gun/m39, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
-		list("POUCHES", 0, null, null, null),
-		list("First-Aid Pouch", 0, /obj/item/storage/pouch/firstaid/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Large General Pouch", 0, /obj/item/storage/pouch/general/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Large Magazine Pouch", 0, /obj/item/storage/pouch/magazine/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Shotgun Shell Pouch", 0, /obj/item/storage/pouch/shotgun, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Flare Pouch (Full)", 0, /obj/item/storage/pouch/flare/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("PROTECTIVE EQUIPMENT", 0, null, null, null),
-		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
-		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
-		list("Ballistic Goggles", 0, /obj/item/clothing/glasses/mgoggles, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
-	)
-
-/obj/structure/machinery/cm_vending/gear/bug_hunt/medic
-	name = "\improper ColMarTech FORECON Corpsman Equipment Rack"
-	icon_state = "med_gear"
-	req_access = list(ACCESS_MARINE_MEDPREP)
-	vendor_role = list(JOB_SQUAD_MEDIC)
-	listed_products = list(
-		list("MEDICAL SET (TAKE ONE)", 0, null, null, null),
-		list("Essential Medical Set", 0, /obj/effect/essentials_set/medic, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
-		list("CORPSMAN EQUIPMENT", 0, null, null, null),
-		list("FORECON Medical Belt (Full)", 0, /obj/item/storage/belt/medical/lifesaver/full/forecon, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
-		list("Medical Satchel", 0, /obj/item/storage/backpack/marine/satchel/medic, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
-		list("Medical Backpack", 0, /obj/item/storage/backpack/marine/medic, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
-		list("Combat Sterile Gloves", 0, /obj/item/clothing/gloves/marine/medical, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_REGULAR),
-		list("HealthMate HUD", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_RECOMMENDED),
-		list("Health Analyzer", 4, /obj/item/device/healthanalyzer, null, VENDOR_ITEM_REGULAR),
-		list("Emergency Defibrillator", 4, /obj/item/device/defibrillator, null, VENDOR_ITEM_RECOMMENDED),
-		list("Compact Surgical Case", 15, /obj/item/storage/surgical_case/regular, null, VENDOR_ITEM_RECOMMENDED),
-		list("Surgical Bed", 10, /obj/item/roller/surgical, null, VENDOR_ITEM_REGULAR),
-		list("Roller Bed", 4, /obj/item/roller, null, VENDOR_ITEM_REGULAR),
-		list("Stasis Bag", 6, /obj/item/bodybag/cryobag, null, VENDOR_ITEM_REGULAR),
-		list("Blood Pack (O-)", 4, /obj/item/reagent_container/blood/OMinus, null, VENDOR_ITEM_REGULAR),
-		list("Smart Refill Tank", 6, /obj/item/reagent_container/glass/minitank, null, VENDOR_ITEM_REGULAR),
-		list("Medkit Pouch (Full)", 0, /obj/item/storage/pouch/medkit/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("Black Webbing", 0, /obj/item/clothing/accessory/storage/webbing/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-	)
-
 /obj/structure/machinery/cm_vending/clothing/smartgun/bug_hunt
 	name = "\improper ColMarTech FORECON Smartgunner Equipment Rack"
 	desc = "An automated rack of standard equipment for FORECON smartgunners."
@@ -473,7 +399,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_tl_bug_hunt, list(
 /obj/structure/machinery/cm_vending/clothing/synth/bug_hunt/get_listed_products(mob/user)
 	var/list/products = ..(user)
 	products = products.Copy()
-	for(var/list/product as anything in products.Copy())
+	for(var/list/product as anything in products)
 		if(product[3] == /obj/item/device/radio/headset/almayer/mcom/synth)
 			products -= list(product)
 			break

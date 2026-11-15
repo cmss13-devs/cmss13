@@ -766,7 +766,7 @@
 			if(3)
 				slots[TIER_3][GUARANTEED_SLOTS][initial(current_caste.caste_type)] = slots_free - slots_used
 
-	var/burrowed_factor = min(stored_larva, sqrt(4*stored_larva))
+	var/burrowed_factor = allow_core_larva_spawning ? min(stored_larva, sqrt(4*stored_larva)) : 0
 	var/effective_total = floor(burrowed_factor)
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
 		if(xeno.counts_for_slots)

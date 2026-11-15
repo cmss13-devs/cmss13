@@ -110,7 +110,7 @@
 
 	damaged = FALSE
 	plasma_stored = 0
-	health = maxhealth
+	health = initial(health)
 
 	var/obj/effect/alien/weeds/node/pylon/N = locate() in loc
 	if(!N)

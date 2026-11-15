@@ -49,46 +49,28 @@
 	hive.allow_core_larva_spawning = FALSE
 	hive.hive_structure_types -= XENO_STRUCTURE_CORE
 	LAZYADD(hive.blacklisted_castes, XENO_CASTE_QUEEN)
-	if(!setup_hive_cores())
-		return FALSE
+	setup_hive_cores()
 	SSradio.update_cache()
 
 /datum/game_mode/bug_hunt/proc/setup_hive_cores()
-	var/list/core_turfs = list()
-	for(var/obj/effect/landmark/queen_spawn/queen_spawn in GLOB.queen_spawns)
-		var/turf/open/spawn_turf = get_turf(queen_spawn)
-		var/area/spawn_area = get_area(spawn_turf)
-		if(!istype(spawn_turf) || !is_ground_level(spawn_turf.z) || !spawn_area.is_resin_allowed || istype(spawn_turf, /turf/open/space) || is_blocked_turf(spawn_turf))
-			continue
-		core_turfs |= spawn_turf
-
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	hive.hive_structures_limit[XENO_STRUCTURE_CORE] = hive_core_count
-	while(length(core_turfs) && length(hive.hive_structures[XENO_STRUCTURE_CORE]) < hive_core_count)
-		var/turf/core_turf = pick_n_take(core_turfs)
+	for(var/list/spawn_pool as anything in list(GLOB.objective_landmarks_medium, GLOB.objective_landmarks_far, GLOB.queen_spawns))
+		var/turf/core_turf = get_turf(pick(spawn_pool))
+		for(var/obj/obstacle in core_turf)
+			if(obstacle.density)
+				qdel(obstacle)
+		new /obj/effect/alien/resin/special/pylon/core/bug_hunt(core_turf, hive)
 		var/list/pillar_turfs = list()
 		for(var/turf/open/pillar_turf in oview(2, core_turf))
 			var/area/pillar_area = get_area(pillar_turf)
-			if(!pillar_area.is_resin_allowed || istype(pillar_turf, /turf/open/space) || is_blocked_turf(pillar_turf) || (pillar_turf in core_turfs) || (locate(/obj/structure/machinery/door) in pillar_turf) || (locate(/obj/effect/alien/resin) in pillar_turf))
+			if(!pillar_area.is_resin_allowed || istype(pillar_turf, /turf/open/space) || is_blocked_turf(pillar_turf) || (locate(/obj/effect/landmark/queen_spawn) in pillar_turf) || (locate(/obj/structure/machinery/door) in pillar_turf) || (locate(/obj/effect/alien/resin) in pillar_turf))
 				continue
 			pillar_turfs += pillar_turf
-		if(length(pillar_turfs) < 2)
-			continue
-		new /obj/effect/alien/resin/special/pylon/core/bug_hunt(core_turf, hive)
-		for(var/pillar_index in 1 to 2)
+		for(var/pillar_index in 1 to min(2, length(pillar_turfs)))
 			new /obj/effect/alien/resin/acid_pillar/strong/bug_hunt(pick_n_take(pillar_turfs), hive.hivenumber)
 
 	hive.hive_structures_limit[XENO_STRUCTURE_CORE] = 0
-	var/spawn_count = length(hive.hive_structures[XENO_STRUCTURE_CORE])
-	if(!spawn_count)
-		return FALSE
-	var/health_multiplier = hive_core_count / spawn_count
-	hive_core_count = spawn_count
-
-	for(var/obj/effect/alien/resin/special/pylon/core/bug_hunt/core in hive.hive_structures[XENO_STRUCTURE_CORE])
-		core.health *= health_multiplier
-		core.maxhealth = core.health
-	return TRUE
 
 /datum/game_mode/bug_hunt/ds_first_landed(obj/docking_port/stationary/marine_dropship/dropship)
 	. = ..()
@@ -97,12 +79,12 @@
 		qdel(get_action(xeno, /datum/action/xeno_action/onclick/choose_resin/predrop))
 		qdel(get_action(xeno, /datum/action/xeno_action/activable/secrete_resin/predrop))
 
-/datum/game_mode/bug_hunt/check_xeno_late_join(mob/xeno_candidate, datum/caste_datum/caste)
+/datum/game_mode/bug_hunt/check_xeno_late_join(mob/xeno_candidate)
 	if(!..() || round_finished)
 		return FALSE
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	var/marine_count = count_marines()
-	var/xeno_count = hive.get_real_total_xeno_count() - !!hive.living_xeno_queen?.auto_queen
+	var/xeno_count = hive.get_real_total_xeno_count()
 	var/xeno_limit = max(2, floor(marine_count / 3))
 	if(xeno_count >= xeno_limit)
 		to_chat(xeno_candidate, SPAN_WARNING("The hive has reached its population limit of ([xeno_limit] xenomorphs for [marine_count] living marines)."))
@@ -116,47 +98,29 @@
 		to_chat(xeno_candidate, SPAN_WARNING("You cannot join while your human body can still be revived."))
 		return FALSE
 	var/last_activity = max(xeno_candidate.timeofdeath, xeno_candidate.client.player_details.larva_pool_time)
-	var/respawn_delay = 30 SECONDS
-	switch(caste?.tier)
-		if(2)
-			respawn_delay = 60 SECONDS
-		if(3)
-			respawn_delay = 120 SECONDS
-	var/time_left = last_activity + respawn_delay - world.time
+	var/time_left = last_activity + 60 SECONDS - world.time
 	if(last_activity && time_left > 0)
-		to_chat(xeno_candidate, SPAN_WARNING("You must wait [DisplayTimeText(time_left)] before joining as [caste ? caste.caste_type : "a xenomorph"]."))
+		to_chat(xeno_candidate, SPAN_WARNING("You must wait [DisplayTimeText(time_left)] before joining as a xenomorph."))
 		return FALSE
-	if(caste?.tier == 2 || caste?.tier == 3)
-		var/list/slots = hive.get_tier_slots()
-		var/list/tier_slots = slots["[caste.tier]"]
-		if(!tier_slots[GUARANTEED_SLOTS][caste.caste_type] && (!tier_slots[OPEN_SLOTS] || !slots[TIER_2][OPEN_SLOTS]))
-			to_chat(xeno_candidate, SPAN_WARNING("The hive cannot support another [caste.caste_type]."))
-			return FALSE
 	return TRUE
 
 /datum/game_mode/bug_hunt/attempt_to_join_as_xeno(mob/xeno_candidate, instant_join = FALSE)
 	if(!check_xeno_late_join(xeno_candidate))
 		return FALSE
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
-	var/list/slots = hive.get_tier_slots()
-	var/list/castes = XENO_T1_CASTES + XENO_T2_CASTES + XENO_T3_CASTES
+	var/list/castes = XENO_T1_CASTES
 	castes -= hive.blacklisted_castes
 	for(var/caste_name in castes)
 		var/datum/caste_datum/caste = GLOB.xeno_datum_list[caste_name]
 		if(caste.minimum_evolve_time > ROUND_TIME || !caste.can_play_caste(xeno_candidate.client))
 			castes -= caste_name
-		else if(caste.tier == 2 || caste.tier == 3)
-			var/list/tier_slots = slots["[caste.tier]"]
-			if(!tier_slots[GUARANTEED_SLOTS][caste.caste_type] && (!tier_slots[OPEN_SLOTS] || !slots[TIER_2][OPEN_SLOTS]))
-				castes -= caste_name
 	if(!length(castes))
 		to_chat(xeno_candidate, SPAN_WARNING("The hive cannot support any available castes yet."))
 		return FALSE
 	var/caste_choice = tgui_input_list(xeno_candidate, "Choose a caste.", "Join as Xeno", castes, theme = "hive_status")
 	if(!caste_choice)
 		return FALSE
-	var/datum/caste_datum/selected_caste = GLOB.xeno_datum_list[caste_choice]
-	if(!check_xeno_late_join(xeno_candidate, selected_caste))
+	if(!check_xeno_late_join(xeno_candidate))
 		return FALSE
 
 	var/list/cores = hive.hive_structures[XENO_STRUCTURE_CORE]
@@ -193,6 +157,7 @@
 	queen_turf = queen_turf.ChangeTurf(/turf/open/floor/plating)
 
 	var/mob/living/carbon/xenomorph/queen/queen = new(queen_turf, null, XENO_HIVE_NORMAL)
+	queen.counts_for_slots = FALSE
 	queen.status_flags |= GODMODE
 	var/obj/effect/alien/weeds/node/queen_weeds = new(queen_turf, null, queen)
 	queen_weeds.explo_proof = TRUE
@@ -202,7 +167,9 @@
 /datum/game_mode/bug_hunt/post_setup()
 	initialize_post_marine_gear_list()
 	setup_auto_queen()
-	round_time_lobby = world.time
+	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	hive.stored_larva = 0
+	hive.hive_ui.update_all_data()
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(mission_briefing)), 2 MINUTES)
 	var/xeno_briefing = "The tallhosts will soon descending upon this world to destroy our hive. Our [hive_core_count] hive cores must be defended, if every core is destroyed, the hive is lost."
@@ -233,7 +200,7 @@
 		return
 	if(!SSobjectives.first_drop_complete)
 		return
-	for(var/mob/living/carbon/human/marine in GLOB.alive_mob_list)
+	for(var/mob/living/carbon/human/marine as anything in GLOB.alive_human_list)
 		if(marine.faction != FACTION_MARINE || iszombie(marine) || marine.hivenumber)
 			continue
 		var/turf/location = get_turf(marine)

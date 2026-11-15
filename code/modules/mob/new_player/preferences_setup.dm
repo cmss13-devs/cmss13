@@ -271,6 +271,8 @@
 			return /datum/equipment_preset/uscm/medic/bug_hunt/equipped
 		if(JOB_RECON_ENGINEER)
 			return /datum/equipment_preset/uscm/engineer/bug_hunt/equipped
+		if(JOB_RECON_CREWMAN)
+			return /datum/equipment_preset/uscm/tank/bug_hunt/equipped
 		if(JOB_RECON_SMARTGUNNER)
 			return /datum/equipment_preset/uscm/sg/bug_hunt/equipped
 		if(JOB_RECON_RIFLEMAN)

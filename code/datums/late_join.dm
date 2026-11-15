@@ -34,10 +34,10 @@
 			if(GET_DEFAULT_ROLE(player.job) == GET_DEFAULT_ROLE(job_title))
 				active++
 
-		var/role_category = get_job_department(job_title) || "other"
+		var/default_role = GET_DEFAULT_ROLE(job_title)
+		var/role_category = get_job_department(default_role) || "other"
 		//prevents the badges from showing outdated slot counts when you hover over them
 		var/total_positions = mode_job.get_total_positions(TRUE)
-		var/default_role = GET_DEFAULT_ROLE(job_title)
 		var/list/squad_data
 		var/list/available_squads = GLOB.RoleAuthority.get_latejoin_squads(mode_job)
 		if(available_squads)

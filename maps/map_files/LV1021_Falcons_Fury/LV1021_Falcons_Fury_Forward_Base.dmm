@@ -20998,6 +20998,9 @@
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_north)
+"baQ" = (
+/turf/closed/wall/almayer/outer/internal,
+/area/lv1021/oob)
 "baR" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 10
@@ -27920,6 +27923,10 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/indoors/caves/landing_zone)
+"brk" = (
+/obj/structure/machinery/telecomms/relay/preset/tower/all,
+/turf/open/floor/almayer/mono,
+/area/forward_base)
 "bsf" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -4;
@@ -96941,9 +96948,9 @@ emy
 emy
 emy
 hXu
-hXu
-hXu
-hXu
+baQ
+baQ
+baQ
 hXu
 hXu
 hXu
@@ -97108,9 +97115,9 @@ vtl
 oUf
 emy
 hXu
-hXu
-hXu
-hXu
+baQ
+brk
+baQ
 hXu
 hXu
 hXu
@@ -97275,9 +97282,9 @@ pqg
 uda
 emy
 hXu
-hXu
-hXu
-hXu
+baQ
+baQ
+baQ
 hXu
 hXu
 hXu

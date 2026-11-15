@@ -66,7 +66,7 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 
 /// Attempt to wear this equipment, in the given slot if possible. If not, any slot is used.
 /datum/gear/proc/equip_to_user(mob/living/carbon/human/user, override_checks = FALSE, drop_instead_of_del = TRUE)
-	if(!override_checks && allowed_roles && !(user.job in allowed_roles))
+	if(!override_checks && allowed_roles && !(GET_DEFAULT_ROLE(user.job) in allowed_roles))
 		to_chat(user, SPAN_WARNING("Gear [display_name] cannot be equipped: Invalid Role."))
 		return
 

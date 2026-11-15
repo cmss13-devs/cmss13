@@ -17,11 +17,10 @@
 		return PAY_SHORT_MO3
 	return ..()
 
-/datum/equipment_preset/uscm_co/bug_hunt/load_vanity(mob/living/carbon/human/new_human, client/mob_client)
-	return
-
 /datum/equipment_preset/uscm_co/bug_hunt/load_gear(mob/living/carbon/human/new_human)
 	new_human.rank_override = "wo_co"
+	var/back_item = get_backpack_item(new_human)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt/command(new_human), WEAR_L_EAR)
 
 /datum/equipment_preset/uscm_co/bug_hunt/load_status(mob/living/carbon/human/new_human)
@@ -41,11 +40,10 @@
 	dress_extra = null
 	utility_under = list(/obj/item/clothing/under/marine)
 
-/datum/equipment_preset/uscm_ship/xo/bug_hunt/load_vanity(mob/living/carbon/human/new_human, client/mob_client)
-	return
-
 /datum/equipment_preset/uscm_ship/xo/bug_hunt/load_gear(mob/living/carbon/human/new_human)
 	new_human.rank_override = "wo_xo"
+	var/back_item = get_backpack_item(new_human)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt/command(new_human), WEAR_L_EAR)
 
 /datum/equipment_preset/uscm_ship/xo/bug_hunt/load_status(mob/living/carbon/human/new_human)
@@ -62,10 +60,8 @@
 	hud_color = "#32CD32"
 	utility_under = list(/obj/item/clothing/under/marine)
 
-/datum/equipment_preset/uscm/pfc/bug_hunt/load_vanity(mob/living/carbon/human/new_human, client/mob_client)
-	return
-
 /datum/equipment_preset/uscm/pfc/bug_hunt/load_gear(mob/living/carbon/human/new_human)
+	..()
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt(new_human), WEAR_L_EAR)
 
 /datum/equipment_preset/uscm/leader/bug_hunt
@@ -79,10 +75,8 @@
 	hud_color = "#32CD32"
 	utility_under = list(/obj/item/clothing/under/marine)
 
-/datum/equipment_preset/uscm/leader/bug_hunt/load_vanity(mob/living/carbon/human/new_human, client/mob_client)
-	return
-
 /datum/equipment_preset/uscm/leader/bug_hunt/load_gear(mob/living/carbon/human/new_human)
+	..()
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt(new_human), WEAR_L_EAR)
 
 /datum/equipment_preset/uscm/tl/bug_hunt
@@ -96,10 +90,8 @@
 	hud_color = "#32CD32"
 	utility_under = list(/obj/item/clothing/under/marine)
 
-/datum/equipment_preset/uscm/tl/bug_hunt/load_vanity(mob/living/carbon/human/new_human, client/mob_client)
-	return
-
 /datum/equipment_preset/uscm/tl/bug_hunt/load_gear(mob/living/carbon/human/new_human)
+	..()
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt(new_human), WEAR_L_EAR)
 
 /datum/equipment_preset/uscm/medic/bug_hunt
@@ -112,10 +104,8 @@
 	hud_color = "#32CD32"
 	utility_under = list(/obj/item/clothing/under/marine)
 
-/datum/equipment_preset/uscm/medic/bug_hunt/load_vanity(mob/living/carbon/human/new_human, client/mob_client)
-	return
-
 /datum/equipment_preset/uscm/medic/bug_hunt/load_gear(mob/living/carbon/human/new_human)
+	..()
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt(new_human), WEAR_L_EAR)
 
 /datum/equipment_preset/uscm/engineer/bug_hunt
@@ -128,10 +118,8 @@
 	hud_color = "#32CD32"
 	utility_under = list(/obj/item/clothing/under/marine)
 
-/datum/equipment_preset/uscm/engineer/bug_hunt/load_vanity(mob/living/carbon/human/new_human, client/mob_client)
-	return
-
 /datum/equipment_preset/uscm/engineer/bug_hunt/load_gear(mob/living/carbon/human/new_human)
+	..()
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt(new_human), WEAR_L_EAR)
 
 /datum/equipment_preset/uscm/sg/bug_hunt
@@ -144,10 +132,8 @@
 	hud_color = "#32CD32"
 	utility_under = list(/obj/item/clothing/under/marine)
 
-/datum/equipment_preset/uscm/sg/bug_hunt/load_vanity(mob/living/carbon/human/new_human, client/mob_client)
-	return
-
 /datum/equipment_preset/uscm/sg/bug_hunt/load_gear(mob/living/carbon/human/new_human)
+	..()
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt(new_human), WEAR_L_EAR)
 
 /datum/equipment_preset/uscm/tank/bug_hunt
@@ -157,9 +143,6 @@
 	hud_icon = "tc"
 	hud_color = "#32CD32"
 	utility_under = list(/obj/item/clothing/under/marine)
-
-/datum/equipment_preset/uscm/tank/bug_hunt/load_vanity(mob/living/carbon/human/new_human, client/mob_client)
-	return
 
 /datum/equipment_preset/uscm/tank/bug_hunt/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt(new_human), WEAR_L_EAR)
@@ -178,9 +161,6 @@
 		return PAY_SHORT_MCWO
 	return ..()
 
-/datum/equipment_preset/synth/uscm/bug_hunt/load_vanity(mob/living/carbon/human/new_human, client/mob_client)
-	return
-
 /datum/equipment_preset/synth/uscm/bug_hunt/load_gear(mob/living/carbon/human/new_human)
 	new_human.rank_override = "syn"
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt(new_human), WEAR_L_EAR)
@@ -193,7 +173,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated/black(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new head_type(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new armor_type(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new back_type(new_human), WEAR_BACK)
+	if(!new_human.back)
+		new_human.equip_to_slot_or_del(new back_type(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_R_STORE)
 	var/obj/item/card/id/id = new_human.get_idcard()
 	var/rank_type = get_rank_pins(id.paygrade)
@@ -282,7 +263,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 /datum/equipment_preset/uscm/sg/bug_hunt/equipped/load_gear(mob/living/carbon/human/new_human)
-	..()
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt(new_human), WEAR_L_EAR)
 	load_bug_hunt_equipment(new_human, head_type = /obj/item/clothing/head/helmet/marine, armor_type = /obj/item/clothing/suit/storage/marine/smartgunner, back_type = /obj/item/storage/large_holster/machete/smartgunner/full)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(new_human), WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/full(new_human), WEAR_WAIST)

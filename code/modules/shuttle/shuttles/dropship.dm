@@ -20,7 +20,7 @@
 
 	// Is hijacked by opfor
 	var/is_hijacked = FALSE
-	/// Allows a xeno's remote call to launch during AO withdrawal.
+	/// Allows xenos to hijack during AO withdrawal
 	var/withdrawal_launch_override = FALSE
 	var/datum/dropship_hijack/almayer/hijack
 	/// Any allied queen present on launch otherwise null

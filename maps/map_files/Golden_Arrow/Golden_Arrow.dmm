@@ -544,7 +544,7 @@
 /obj/structure/barricade/handrail{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/forecon_equipment,
+/obj/structure/closet/secure_closet/forecon_uniform,
 /turf/open/floor/almayer/flooredge/north,
 /area/golden_arrow)
 "aW" = (
@@ -676,14 +676,6 @@
 /area/golden_arrow)
 "bi" = (
 /turf/open/floor/almayer/uscm/south_face/southwest,
-/area/golden_arrow)
-"bj" = (
-/obj/item/clothing/under/marine/officer/boiler,
-/obj/item/clothing/suit/storage/jacket/marine/service,
-/obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber,
-/obj/item/clothing/under/marine/officer/bridge,
-/obj/structure/closet/secure_closet/forecon_uniform,
-/turf/open/floor/almayer/plate,
 /area/golden_arrow)
 "bk" = (
 /obj/effect/decal/warning_stripes{
@@ -975,7 +967,7 @@
 /obj/structure/barricade/handrail{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/forecon_ammunition,
+/obj/structure/closet/secure_closet/forecon_uniform,
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
@@ -6467,7 +6459,7 @@
 /obj/structure/barricade/handrail{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/forecon_weapons,
+/obj/structure/closet/secure_closet/forecon_uniform,
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
@@ -16918,7 +16910,7 @@ uF
 uF
 uF
 ZR
-bj
+bg
 OY
 zZ
 yb
@@ -16928,7 +16920,7 @@ bg
 OY
 aQ
 OG
-bj
+bg
 qv
 tU
 rC

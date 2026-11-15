@@ -153,57 +153,6 @@
 		uniform.add_forecon_patches()
 		new /obj/item/clothing/shoes/marine(src)
 
-/obj/structure/closet/secure_closet/forecon_equipment
-	name = "FORECON field equipment locker"
-	desc = "A locker containing M3-R armor and specialist clothing."
-	icon_state = "secure"
-	locked = FALSE
-	storage_capacity = 100
-
-/obj/structure/closet/secure_closet/forecon_equipment/Initialize()
-	. = ..()
-	for(var/i in 1 to 12)
-		new /obj/item/clothing/suit/storage/marine/light/recon/bug_hunt(src)
-	for(var/i in 1 to 2)
-		new /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber(src)
-		new /obj/item/clothing/head/beret/cm/tan(src)
-	new /obj/item/clothing/under/marine/officer/engi(src)
-	new /obj/item/clothing/shoes/red(src)
-	new /obj/item/clothing/gloves/marine/insulated/black(src)
-	new /obj/item/clothing/accessory/patch/uscmpatch(src)
-	new /obj/item/clothing/accessory/patch/forecon(src)
-
-/obj/structure/closet/secure_closet/forecon_weapons
-	name = "FORECON weapons locker"
-	desc = "A locker containing camouflage M41A rifles, M39 submachineguns, and M4RA battle rifles."
-	icon_state = "secure"
-	locked = FALSE
-	storage_capacity = 50
-
-/obj/structure/closet/secure_closet/forecon_weapons/Initialize()
-	. = ..()
-	for(var/i in 1 to 8)
-		new /obj/item/weapon/gun/rifle/m41aMK1/forecon(src)
-	for(var/i in 1 to 4)
-		new /obj/item/weapon/gun/smg/m39(src)
-	for(var/i in 1 to 2)
-		new /obj/item/weapon/gun/rifle/m4ra(src)
-
-/obj/structure/closet/secure_closet/forecon_ammunition
-	name = "FORECON ammunition locker"
-	desc = "A locker containing spare magazines for FORECON firearms."
-	icon_state = "secure"
-	locked = FALSE
-	storage_capacity = 100
-
-/obj/structure/closet/secure_closet/forecon_ammunition/Initialize()
-	. = ..()
-	for(var/i in 1 to 24)
-		new /obj/item/ammo_magazine/rifle/m41aMK1(src)
-	for(var/i in 1 to 12)
-		new /obj/item/ammo_magazine/smg/m39/extended(src)
-		new /obj/item/ammo_magazine/rifle/m4ra/extended(src)
-
 /obj/item/ammo_box/rounds/smartgun
 	name = "\improper smartgun ammunition box (10x28mm)"
 	desc = "A 10x28mm ammunition box. Used to refill smartgun drum magazines. It comes with a leather strap that allows you to wear it on your back."

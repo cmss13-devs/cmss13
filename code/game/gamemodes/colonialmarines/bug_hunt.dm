@@ -100,6 +100,13 @@
 /datum/game_mode/bug_hunt/check_xeno_late_join(mob/xeno_candidate, datum/caste_datum/caste)
 	if(!..() || round_finished)
 		return FALSE
+	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	var/marine_count = count_marines()
+	var/xeno_count = hive.get_real_total_xeno_count() - !!hive.living_xeno_queen?.auto_queen
+	var/xeno_limit = max(2, floor(marine_count / 3))
+	if(xeno_count >= xeno_limit)
+		to_chat(xeno_candidate, SPAN_WARNING("The hive has reached its population limit of ([xeno_limit] xenomorphs for [marine_count] living marines)."))
+		return FALSE
 	var/mob/living/original_body = xeno_candidate.mind?.original
 	if(istype(original_body) && original_body.stat != DEAD)
 		to_chat(xeno_candidate, SPAN_WARNING("You cannot join while your original body is alive."))
@@ -120,7 +127,6 @@
 		to_chat(xeno_candidate, SPAN_WARNING("You must wait [DisplayTimeText(time_left)] before joining as [caste ? caste.caste_type : "a xenomorph"]."))
 		return FALSE
 	if(caste?.tier == 2 || caste?.tier == 3)
-		var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 		var/list/slots = hive.get_tier_slots()
 		var/list/tier_slots = slots["[caste.tier]"]
 		if(!tier_slots[GUARANTEED_SLOTS][caste.caste_type] && (!tier_slots[OPEN_SLOTS] || !slots[TIER_2][OPEN_SLOTS]))

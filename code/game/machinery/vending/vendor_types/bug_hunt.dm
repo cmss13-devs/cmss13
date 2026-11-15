@@ -74,6 +74,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine_bug_hunt, list(
 		list("M20 Mine Box (x5 mines)", 20, /obj/item/storage/box/explosive_mines, null, VENDOR_ITEM_REGULAR),
 
 		list("PRIMARY AMMUNITION", 0, null, null, null),
+		list("M41A MK1 AP Magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/m41aMK1/ap, null, VENDOR_ITEM_REGULAR),
 		list("M4RA AP Magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/m4ra/ap, null, VENDOR_ITEM_REGULAR),
 		list("M4RA Extended Magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/m4ra/extended, null, VENDOR_ITEM_REGULAR),
 		list("M39 AP Magazine (10x20mm)", 10, /obj/item/ammo_magazine/smg/m39/ap, null, VENDOR_ITEM_REGULAR),
@@ -313,6 +314,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_tl_bug_hunt, list(
 		list("G2 Electroshock Grenade Packet (x3 grenades)", 16, /obj/item/storage/box/packet/sebb, null, VENDOR_ITEM_REGULAR),
 
 		list("PRIMARY AMMUNITION", 0, null, null, null),
+		list("M41A MK1 AP Magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/m41aMK1/ap, null, VENDOR_ITEM_REGULAR),
 		list("M4RA AP Magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/m4ra/ap, null, VENDOR_ITEM_REGULAR),
 		list("M4RA Extended Magazine (10x24mm)", 10, /obj/item/ammo_magazine/rifle/m4ra/extended, null, VENDOR_ITEM_REGULAR),
 		list("M39 AP Magazine (10x20mm)", 10, /obj/item/ammo_magazine/smg/m39/ap, null, VENDOR_ITEM_REGULAR),

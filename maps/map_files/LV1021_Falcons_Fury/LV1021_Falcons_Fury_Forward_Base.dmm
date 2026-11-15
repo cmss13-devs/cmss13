@@ -27953,6 +27953,230 @@
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/forward_base/lv624/tent_camp/lv1021)
+"bro" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/interior/wood,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/auto_turf/lv_sand,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brq" = (
+/obj/item/trash/cigbutt,
+/turf/open/auto_turf/lv_sand,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brr" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 5
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 9
+	},
+/turf/open/floor/interior/wood,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/auto_turf/lv_sand,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 4
+	},
+/turf/open/floor/interior/wood,
+/area/forward_base/lv624/tent_camp/lv1021)
+"bru" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 4
+	},
+/turf/open/floor/interior/wood/damage_4,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 6
+	},
+/turf/open/floor/interior/wood,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brw" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 9
+	},
+/turf/open/floor/interior/wood,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brx" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
+/turf/open/floor/interior/wood,
+/area/forward_base/lv624/tent_camp/lv1021)
+"bry" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 5
+	},
+/turf/open/floor/interior/wood/damage_1,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brz" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 10
+	},
+/turf/open/floor/interior/wood/damage_5,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brA" = (
+/turf/open/floor/interior/wood/damage_1,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brB" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 6
+	},
+/turf/open/floor/interior/wood,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 6
+	},
+/turf/open/floor/interior/wood,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brD" = (
+/turf/open/floor/interior/wood/damage,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brE" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 10
+	},
+/turf/open/floor/interior/wood,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brF" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 6
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 10
+	},
+/turf/open/floor/interior/wood,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brG" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 5
+	},
+/turf/open/floor/interior/wood,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brH" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 4
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
+/turf/open/floor/interior/wood/damage_6,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brJ" = (
+/obj/effect/decal/lv_decals/red_mud_corner,
+/obj/item/trash/cigbutt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 4
+	},
+/obj/effect/decal/lv_decals/red_mud_corner,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/turf/open/floor/interior/wood,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brL" = (
+/obj/item/trash/cigbutt,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
+/turf/open/floor/interior/wood,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood/damage_4,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 10
+	},
+/turf/open/floor/interior/wood,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brO" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 10
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 4
+	},
+/turf/open/floor/interior/wood,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brP" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 5
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
+/turf/open/floor/interior/wood,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/turf/open/floor/interior/wood,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/turf/open/floor/interior/wood,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brS" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/obj/item/trash/cigbutt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brT" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 9
+	},
+/turf/open/floor/interior/wood/damage_2,
+/area/forward_base/lv624/tent_camp/lv1021)
+"brU" = (
+/obj/item/trash/cigbutt,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud,
+/area/forward_base/lv624/tent_camp/lv1021)
 "bsf" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -4;
@@ -29242,6 +29466,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt,
 /turf/open/auto_turf/lv_sand,
 /area/forward_base/lv624/tent_camp/lv1021)
 "czQ" = (
@@ -30353,7 +30578,10 @@
 	pixel_y = -15;
 	pixel_x = 3
 	},
-/turf/open/auto_turf/lv_sand,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 6
+	},
+/turf/open/floor/interior/wood,
 /area/forward_base/squads/req)
 "dMe" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -35136,12 +35364,11 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/forward_base/command/combat_correspondent)
 "hWw" = (
-/obj/effect/decal/strata_decals/mud_corner,
-/obj/effect/decal/cleanable/dirt,
 /obj/structure/lz_sign/forward_base/solaris_base_sign{
 	density = 0;
 	pixel_y = 24
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/auto_turf/lv_sand,
 /area/forward_base/lv624/tent_camp/lv1021)
 "hXq" = (
@@ -37108,9 +37335,6 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/forward_base/lv624/tent_camp/lv1021)
 "jLq" = (
-/obj/effect/decal/lv_decals/red_mud_corner{
-	dir = 1
-	},
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -8;
 	pixel_y = 4
@@ -37119,7 +37343,7 @@
 	pixel_x = 6;
 	pixel_y = -4
 	},
-/turf/open/auto_turf/tyrargo_grass/layer0,
+/turf/open/auto_turf/tyrargo_grass/layer1,
 /area/forward_base/lv624/tent_camp/lv1021)
 "jMa" = (
 /obj/structure/flora/jungle/alienplant1,
@@ -40899,7 +41123,10 @@
 	layer = 2.1;
 	pixel_x = -1
 	},
-/turf/open/auto_turf/lv_sand,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 10
+	},
+/turf/open/floor/interior/wood,
 /area/forward_base/squads/req)
 "nml" = (
 /turf/open/floor/kutjevo/multi_tiles/southwest,
@@ -41178,6 +41405,7 @@
 	dir = 1
 	},
 /obj/structure/flag/plantable/ua,
+/obj/item/trash/cigbutt,
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/forward_base/lv624/tent_camp/lv1021)
 "nAr" = (
@@ -41593,7 +41821,10 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/turf/open/auto_turf/lv_sand,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 9
+	},
+/turf/open/floor/interior/wood,
 /area/forward_base/lv624/tent_camp/lv1021)
 "nVI" = (
 /obj/structure/closet/firecloset,
@@ -47230,12 +47461,6 @@
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
-"tfB" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/strata_decals/mud_corner,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/auto_turf/lv_sand,
-/area/forward_base/lv624/tent_camp/lv1021)
 "tgJ" = (
 /obj/structure/machinery/cm_vending/gear/leader{
 	density = 0;
@@ -52430,6 +52655,7 @@
 	pixel_x = -8;
 	pixel_y = -5
 	},
+/obj/item/trash/cigbutt,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/forward_base/lv624/tent_camp/lv1021)
 "xSb" = (
@@ -56874,7 +57100,7 @@ uZH
 vlA
 wMz
 aKg
-wHH
+brJ
 tIC
 pyM
 xrs
@@ -57039,13 +57265,13 @@ dhb
 ocr
 nGJ
 uZH
-wMz
+brG
 pHs
 lWk
 ngX
 pXA
-wMz
-aKg
+brE
+brM
 oZx
 qDy
 nmO
@@ -57206,13 +57432,13 @@ giR
 vGH
 ugS
 uZH
-wMz
+brT
 aKg
 aKg
 wMz
 wMz
 wMz
-aKg
+brN
 oZx
 gEg
 gEg
@@ -57380,15 +57606,15 @@ pHs
 aKg
 aKg
 aKg
-wHH
+brJ
 aTB
 aTB
 aTB
 kUW
 jfO
 sNX
-wMz
-wMz
+brA
+brx
 bFg
 kfK
 fvM
@@ -57554,7 +57780,7 @@ pOD
 kfK
 dyN
 sNX
-wMz
+brw
 aKg
 bFg
 kfK
@@ -58055,7 +58281,7 @@ aIg
 lrS
 wMz
 wMz
-wMz
+brq
 wMz
 pHs
 pHs
@@ -58209,7 +58435,7 @@ mAm
 iSK
 tEZ
 tDw
-pHs
+brQ
 wMz
 wMz
 jpa
@@ -58222,16 +58448,16 @@ ivD
 bNe
 wMz
 aKg
-wMz
-wMz
+brB
+bry
 wMz
 aKg
 pHs
 tLi
-pHs
-pHs
-aKg
-wMz
+brv
+bru
+brt
+brr
 tMZ
 sOL
 sOL
@@ -58376,7 +58602,7 @@ eWP
 tEZ
 tEZ
 tEZ
-aKg
+brR
 pHs
 iMl
 wId
@@ -58543,7 +58769,7 @@ iSK
 tEZ
 uZH
 oxU
-sTg
+ibH
 aKg
 wMz
 jpa
@@ -58735,7 +58961,7 @@ tPu
 pHs
 hSr
 wMz
-wMz
+brq
 wMz
 hSr
 oUZ
@@ -58877,19 +59103,19 @@ euA
 xKd
 tey
 iVq
-bNe
+brS
 wMz
 wMz
 aKg
 aKg
 aKg
-pHs
+brK
 aKg
 wMz
 iMl
 wMz
 wMz
-aKg
+brC
 wHI
 tjV
 vAR
@@ -58899,7 +59125,7 @@ dWR
 vnS
 wHI
 bNe
-gEj
+brs
 rAD
 aKg
 aKg
@@ -59049,14 +59275,14 @@ jMr
 wMz
 wMz
 wMz
-wMz
-wMz
+brO
+brL
+brI
 aKg
 aKg
-aKg
 wMz
-wMz
-wMz
+brF
+brD
 tON
 tjV
 tjV
@@ -59070,7 +59296,7 @@ aKg
 rAD
 aKg
 pHs
-aKg
+brp
 rAD
 dKC
 uNW
@@ -59208,7 +59434,7 @@ edx
 xPm
 xRH
 ivD
-ivD
+brU
 ivD
 ivD
 ibH
@@ -59223,7 +59449,7 @@ wMz
 url
 sTg
 wMz
-wMz
+brE
 tjV
 tjV
 tjV
@@ -59379,7 +59605,7 @@ dhk
 dhk
 dhk
 dhk
-xws
+aKg
 wMz
 vAx
 ivD
@@ -59546,7 +59772,7 @@ fMS
 chf
 chf
 nPe
-xws
+aKg
 wMz
 vAx
 iOP
@@ -59713,7 +59939,7 @@ jqQ
 jqQ
 jqQ
 nPe
-tfB
+pHs
 wMz
 nUd
 aIg
@@ -59726,8 +59952,8 @@ olx
 wMz
 wMz
 aKg
-wMz
-wMz
+brz
+brw
 wMz
 lWk
 ngX
@@ -59880,7 +60106,7 @@ lGZ
 fGF
 mgl
 dhk
-eww
+wMz
 aKg
 hiS
 ivD
@@ -59893,7 +60119,7 @@ bNe
 wMz
 wMz
 aKg
-wMz
+brq
 wMz
 wMz
 wMz
@@ -60047,7 +60273,7 @@ yaB
 yaB
 qNU
 nPe
-eww
+wMz
 wMz
 wHH
 ivD
@@ -60214,7 +60440,7 @@ wrN
 pKN
 sHs
 nPe
-eww
+aKg
 wMz
 whH
 sJG
@@ -60407,7 +60633,7 @@ ivD
 ivD
 uLO
 kfK
-tMZ
+bro
 koH
 kfK
 aSZ
@@ -60548,7 +60774,7 @@ qPZ
 qPZ
 uqR
 dhk
-xws
+aKg
 aKg
 gyU
 lWk
@@ -60574,7 +60800,7 @@ ivD
 kfK
 pOD
 jLq
-tMZ
+bro
 koH
 kfK
 aTa
@@ -60715,7 +60941,7 @@ dzO
 dzO
 gjD
 jMC
-wMz
+brG
 aKg
 aKg
 wMz
@@ -60882,8 +61108,8 @@ krA
 krA
 nml
 jMC
-wMz
-wMz
+brL
+brP
 wMz
 wMz
 aKg
@@ -61725,7 +61951,7 @@ qGB
 kfK
 kfK
 hzu
-jgb
+brH
 jgb
 biG
 jcw
@@ -62727,8 +62953,8 @@ aKg
 nuN
 aTx
 aTx
-wMz
-wMz
+brB
+brG
 aKg
 frX
 sYo

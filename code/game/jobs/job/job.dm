@@ -368,6 +368,8 @@
 			continue
 
 		current_gear.equip_to_user(new_human)
+	var/datum/gear/very_important_ticket = /datum/gear/helmet_garb/spacejam_tickets
+	very_important_ticket.equip_to_user(new_human)
 
 /// Intended to be overwritten to handle when a job has variants that can be selected.
 /datum/job/proc/handle_job_options(option)

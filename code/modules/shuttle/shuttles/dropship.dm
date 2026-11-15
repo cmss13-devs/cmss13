@@ -20,6 +20,8 @@
 
 	// Is hijacked by opfor
 	var/is_hijacked = FALSE
+	/// Allows a xeno's remote call to launch during AO withdrawal.
+	var/withdrawal_launch_override = FALSE
 	var/datum/dropship_hijack/almayer/hijack
 	/// Any allied queen present on launch otherwise null
 	var/datum/weakref/boarded_allied_queen = null
@@ -88,12 +90,13 @@
 	return door_control.is_door_locked(direction)
 
 /obj/docking_port/mobile/marine_dropship/canMove()
-	if(SShijack.withdrawal_end_time && is_mainship_level(z))
+	if(SShijack.withdrawal_end_time && is_mainship_level(z) && !withdrawal_launch_override)
 		return FALSE
 	return ..()
 
 /obj/docking_port/mobile/marine_dropship/enterTransit()
 	. = ..()
+	withdrawal_launch_override = FALSE
 	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED) && !in_flyby && is_ground_level(destination?.z)) //Launching on first drop.
 		SSticker.mode.ds_first_drop(src)
 	boarded_allied_queen = null

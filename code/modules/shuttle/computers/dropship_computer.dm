@@ -238,7 +238,7 @@
 		to_chat(xeno, SPAN_NOTICE("This terminal is inactive."))
 		return
 
-	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
+	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
 	if(linked_lz)
 		var/obj/docking_port/stationary/landing_zone = SSshuttle.getDock(linked_lz)
 		var/obj/docking_port/mobile/maybe_dropship = landing_zone.get_docked()
@@ -259,8 +259,10 @@
 
 		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 		if(shuttle.mode == SHUTTLE_IDLE && !is_ground_level(shuttle.z))
+			shuttle.withdrawal_launch_override = SShijack.withdrawal_end_time && !SShijack.ground_claimed
 			var/result = SSshuttle.moveShuttle(shuttleId, linked_lz, TRUE)
 			if(result != DOCKING_SUCCESS)
+				shuttle.withdrawal_launch_override = FALSE
 				to_chat(xeno, SPAN_WARNING("The metal bird can not land here. It might be currently occupied!"))
 				return
 			to_chat(xeno, SPAN_NOTICE("You command the metal bird to come down. Clever girl."))

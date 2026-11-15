@@ -478,9 +478,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4;
 	buckling_y = 3;
-	pixel_y = 3;
-	chair_state = 2;
-	icon_state = "hotseat_new_folded"
+	pixel_y = 3
 	},
 /turf/open/shuttle/dropship/light_grey_top_right,
 /area/shuttle/drop1/sulaco/typhoon)

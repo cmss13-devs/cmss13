@@ -27927,6 +27927,32 @@
 /obj/structure/machinery/telecomms/relay/preset/tower/all,
 /turf/open/floor/almayer/mono,
 /area/forward_base)
+"brl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/computer/cryopod{
+	dir = 8
+	},
+/turf/open/floor/wood/wood_broken4,
+/area/forward_base/squads/req)
+"brm" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 8
+	},
+/obj/structure/machinery/personal_gear_vendor{
+	dir = 4;
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/turf/open/auto_turf/lv_sand,
+/area/forward_base/squads/req)
+"brn" = (
+/obj/structure/bed/chair,
+/obj/effect/decal/lv_decals/red_mud_corner,
+/obj/structure/machinery/computer/cryopod{
+	dir = 8
+	},
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud,
+/area/forward_base/lv624/tent_camp/lv1021)
 "bsf" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -4;
@@ -29305,7 +29331,7 @@
 "cEV" = (
 /obj/effect/landmark/supply_elevator,
 /turf/open/floor/almayer/empty/requisitions,
-/area/forward_base/squads/req)
+/area/supply/station/uscm)
 "cFI" = (
 /obj/structure/machinery/brig_cell/cell_2{
 	pixel_x = -30
@@ -46108,7 +46134,7 @@
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
 "siz" = (
 /turf/open/floor/almayer/empty/requisitions,
-/area/forward_base/squads/req)
+/area/supply/station/uscm)
 "siE" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -58523,7 +58549,7 @@ wMz
 jpa
 wMz
 aKg
-whH
+brn
 mgv
 ngX
 aIg
@@ -60200,7 +60226,7 @@ iqF
 fxr
 wMz
 aKg
-lxZ
+brm
 xLS
 gag
 lxZ
@@ -60708,7 +60734,7 @@ ckx
 vUP
 adp
 cfV
-qpg
+brl
 qjK
 ivD
 kfK

@@ -7,6 +7,8 @@
 	latejoin_larva_drop = 0
 	latejoin_larva_drop_early = 0
 	var/hive_core_count = 3
+	xeno_respawn_delay = 60 SECONDS
+	var/xeno_join_pending = FALSE
 	role_mappings = list(
 		/datum/job/command/commander/bug_hunt = JOB_CO,
 		/datum/job/command/executive/bug_hunt = JOB_XO,
@@ -78,6 +80,7 @@
 
 /datum/game_mode/bug_hunt/ds_first_landed(obj/docking_port/stationary/marine_dropship/dropship)
 	. = ..()
+	xeno_announcement("The tallhosts have landed. Defend the hive and drive them from this world!", XENO_HIVE_NORMAL, QUEEN_MOTHER_ANNOUNCE)
 	for(var/mob/living/carbon/xenomorph/xeno as anything in GLOB.xeno_mob_list)
 		qdel(get_action(xeno, /datum/action/xeno_action/onclick/plant_weeds/predrop))
 		qdel(get_action(xeno, /datum/action/xeno_action/onclick/choose_resin/predrop))
@@ -87,7 +90,7 @@
 				action.plasma_cost = initial(action.plasma_cost)
 
 /datum/game_mode/bug_hunt/check_xeno_late_join(mob/xeno_candidate, check_population = FALSE)
-	if(!..() || round_finished)
+	if(SSticker.current_state != GAME_STATE_PLAYING || !xeno_candidate?.client || !..() || round_finished)
 		return FALSE
 	if(check_population)
 		var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
@@ -106,13 +109,45 @@
 		to_chat(xeno_candidate, SPAN_WARNING("You cannot join while your human body can still be revived."))
 		return FALSE
 	var/last_activity = max(xeno_candidate.timeofdeath, xeno_candidate.client.player_details.larva_pool_time)
-	var/time_left = last_activity + 60 SECONDS - world.time
+	var/time_left = last_activity + xeno_respawn_delay - world.time
 	if(last_activity && time_left > 0)
 		to_chat(xeno_candidate, SPAN_WARNING("You must wait [DisplayTimeText(time_left)] before joining as a xenomorph."))
 		return FALSE
 	return TRUE
 
 /datum/game_mode/bug_hunt/attempt_to_join_as_xeno(mob/xeno_candidate, instant_join = FALSE)
+	if(!isobserver(xeno_candidate))
+		return FALSE
+	var/mob/dead/observer/observer = xeno_candidate
+	observer.client.prefs.be_special |= BE_ALIEN
+	observer.admin_larva_protection = FALSE
+	message_alien_candidate_observer(observer)
+	return TRUE
+
+/datum/game_mode/bug_hunt/process()
+	set waitfor = FALSE
+	. = ..()
+	if(round_finished || xeno_join_pending)
+		return
+	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	if(!hive.has_structure(XENO_STRUCTURE_CORE) || hive.get_real_total_xeno_count() >= max(2, floor(count_marines() / 3)))
+		return
+	var/list/candidates = get_alien_candidates(hive)
+	if(!length(candidates))
+		return
+	message_alien_candidates(candidates, dequeued = 0, cache_only = TRUE)
+	for(var/mob/dead/observer/xeno_candidate as anything in candidates)
+		var/last_activity = max(xeno_candidate.timeofdeath, xeno_candidate.client.player_details.larva_pool_time)
+		if(last_activity && last_activity + xeno_respawn_delay > world.time)
+			continue
+		if(!check_xeno_late_join(xeno_candidate))
+			continue
+		xeno_join_pending = TRUE
+		spawn_xeno_from_pool(xeno_candidate)
+		xeno_join_pending = FALSE
+		return
+
+/datum/game_mode/bug_hunt/proc/spawn_xeno_from_pool(mob/dead/observer/xeno_candidate)
 	if(!check_xeno_late_join(xeno_candidate, check_population = TRUE))
 		return FALSE
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
@@ -123,10 +158,11 @@
 		if(caste.minimum_evolve_time > ROUND_TIME || !caste.can_play_caste(xeno_candidate.client))
 			castes -= caste_name
 	if(!length(castes))
-		to_chat(xeno_candidate, SPAN_WARNING("The hive cannot support any available castes yet."))
 		return FALSE
-	var/caste_choice = tgui_input_list(xeno_candidate, "Choose a caste.", "Join as Xeno", castes, theme = "hive_status")
+	var/caste_choice = tgui_input_list(xeno_candidate, "Choose a caste.", "Join as Xeno", castes, timeout = 30 SECONDS, theme = "hive_status")
 	if(!caste_choice)
+		if(xeno_candidate.client)
+			xeno_candidate.client.prefs.be_special &= ~BE_ALIEN
 		return FALSE
 
 	var/list/cores = hive.hive_structures[XENO_STRUCTURE_CORE]
@@ -136,18 +172,16 @@
 	var/list/area_name_counts = list()
 	for(var/obj/effect/alien/resin/special/pylon/core/spawn_core as anything in cores)
 		core_choices[avoid_assoc_duplicate_keys(get_area_name(spawn_core), area_name_counts)] = spawn_core
-	var/core_choice = tgui_input_list(xeno_candidate, "Choose a hive core to spawn at.", "Join as Xeno", core_choices, theme = "hive_status")
+	var/core_choice = tgui_input_list(xeno_candidate, "Choose a hive core to spawn at.", "Join as Xeno", core_choices, timeout = 30 SECONDS, theme = "hive_status")
 	if(!core_choice)
+		if(xeno_candidate.client)
+			xeno_candidate.client.prefs.be_special &= ~BE_ALIEN
 		return FALSE
 	var/obj/effect/alien/resin/special/pylon/core/core = core_choices[core_choice]
 	if(QDELETED(core) || !check_xeno_late_join(xeno_candidate, check_population = TRUE))
 		return FALSE
 	var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(caste_choice)
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(core), null, hive.hivenumber)
-	if(isnewplayer(xeno_candidate))
-		var/mob/new_player/lobby_player = xeno_candidate
-		lobby_player.close_spawn_windows()
-		lobby_player.spawning = TRUE
 	if(!transfer_xeno(xeno_candidate, new_xeno))
 		qdel(new_xeno)
 		return FALSE
@@ -181,15 +215,17 @@
 
 /datum/game_mode/bug_hunt/post_setup()
 	initialize_post_marine_gear_list()
+	for(var/obj/structure/machinery/cm_vending/sorted/cargo_guns/vendor in GLOB.cm_vending_vendors)
+		for(var/list/product as anything in vendor.listed_products)
+			if(product[3] == /obj/item/storage/box/nade_box)
+				vendor.listed_products -= list(product)
+				break
 	setup_auto_queen()
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	hive.stored_larva = 0
 	hive.hive_ui.update_all_data()
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(mission_briefing)), 2 MINUTES)
-	var/xeno_briefing = "The tallhosts will soon descending upon this world to destroy our hive. Our [hive_core_count] hive cores must be defended, if every core is destroyed, the hive is lost."
-	xeno_briefing += "\n\nYou can build resin and spread weeds throughout the battle. Prepare your killing grounds."
-	xeno_announcement(xeno_briefing, XENO_HIVE_NORMAL, QUEEN_MOTHER_ANNOUNCE)
 	return ..()
 
 /datum/game_mode/bug_hunt/ares_online()
@@ -205,6 +241,9 @@
 	briefing += "\n\nThe infestation has grown too extensive to eradicate through direct combat alone. As long as the hive cores remain intact, the enemy will continue to replenish its numbers. Locate and destroy all hive cores and return to the USS Golden Arrow."
 	briefing += "\n\nGood hunting, Snake Eaters. SOCOM Actual out."
 	marine_announcement(briefing, "USCM Special Operations Command", 'sound/AI/commandreport.ogg')
+	var/xeno_briefing = "The tallhosts will soon descend upon this world to destroy our hive. Our [hive_core_count] hive cores must be defended, if every core is destroyed, the hive is lost."
+	xeno_briefing += "\n\nEvery sister can summon weeds and walls prior to the talls arrival for free. Prepare your killing grounds."
+	xeno_announcement(xeno_briefing, XENO_HIVE_NORMAL, QUEEN_MOTHER_ANNOUNCE)
 
 /datum/game_mode/bug_hunt/check_win()
 	if(SSticker.current_state != GAME_STATE_PLAYING || round_finished)

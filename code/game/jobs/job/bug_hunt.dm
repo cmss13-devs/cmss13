@@ -45,8 +45,8 @@
 /datum/job/marine/medic/bug_hunt
 	title = JOB_RECON_CORPSMAN
 	role_ban_alternative = JOB_SQUAD_MEDIC
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 4
+	spawn_positions = 4
 	gear_preset = /datum/equipment_preset/uscm/medic/bug_hunt
 	supervisors = "the platoon sergeant and your section leader"
 

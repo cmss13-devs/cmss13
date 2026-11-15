@@ -193,6 +193,7 @@
 	RETURN_TYPE(/list/mob/dead/observer)
 
 	var/list/mob/dead/observer/candidates = list()
+	var/respawn_delay = SSticker.mode?.xeno_respawn_delay || XENO_JOIN_DEAD_TIME
 
 	for(var/mob/dead/observer/cur_obs as anything in GLOB.observer_list)
 		// Preference check
@@ -211,7 +212,7 @@
 
 		// copied from join as xeno
 		var/deathtime = world.time - cur_obs.timeofdeath
-		if(deathtime < XENO_JOIN_DEAD_TIME && !cur_obs.bypass_time_of_death_checks && !check_client_rights(cur_obs.client, R_ADMIN, FALSE))
+		if(deathtime < respawn_delay && !cur_obs.bypass_time_of_death_checks && !check_client_rights(cur_obs.client, R_ADMIN, FALSE))
 			continue
 
 		// AFK players cannot be drafted

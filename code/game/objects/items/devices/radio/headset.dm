@@ -280,7 +280,7 @@
 		), PROC_REF(turn_on))
 		wearer = user
 		RegisterSignal(user, COMSIG_MOB_STAT_SET_ALIVE, PROC_REF(update_minimap_icon))
-		RegisterSignal(user, COMSIG_MOB_LOGGED_IN, PROC_REF(add_hud_tracker))
+		RegisterSignal(user, list(COMSIG_MOB_LOGGED_IN, COMSIG_SET_SQUAD), PROC_REF(add_hud_tracker))
 		RegisterSignal(user, COMSIG_MOB_DEATH, PROC_REF(update_minimap_icon))
 		RegisterSignal(user, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(update_minimap_icon))
 		RegisterSignal(user, COMSIG_HUMAN_SQUAD_CHANGED, PROC_REF(update_minimap_icon))
@@ -308,6 +308,7 @@
 		COMSIG_LIVING_REJUVENATED,
 		COMSIG_HUMAN_REVIVED,
 		COMSIG_MOB_LOGGED_IN,
+		COMSIG_SET_SQUAD,
 		COMSIG_MOB_DEATH,
 		COMSIG_HUMAN_SET_UNDEFIBBABLE,
 		COMSIG_MOB_STAT_SET_ALIVE,

@@ -645,6 +645,36 @@
 /obj/effect/xenomorph/xeno_telegraph/retrieve_hook
 	icon_state = "xeno_telegraph_retrieve_hook_anim"
 
+/obj/effect/xenomorph/xeno_telegraph/perimeter
+	icon = 'icons/mob/xenos/telegraph_perimeter.dmi'
+	icon_state = "0"
+
+/// AoE telegraph for moves bigger than 3x3
+/proc/show_radial_telegraph(turf/center, list/affected_tiles, radius, telegraph_type, duration, outline_color)
+	if(!center)
+		return
+	if(radius <= 1)
+		for(var/turf/tile in affected_tiles)
+			new telegraph_type(tile, duration)
+		return
+
+	var/obj/effect/xenomorph/xeno_telegraph/attack/emblem = new telegraph_type(center, duration)
+	emblem.underlays.Cut()
+	emblem.transform = matrix().Scale(2)
+	emblem.appearance_flags |= PIXEL_SCALE
+
+	var/list/footprint = list(center)
+	for(var/turf/tile in affected_tiles)
+		footprint |= tile
+	for(var/turf/tile as anything in footprint)
+		var/exposed_edges = NONE
+		for(var/direction in GLOB.cardinals)
+			if(!(get_step(tile, direction) in footprint))
+				exposed_edges |= direction
+		if(exposed_edges)
+			var/obj/effect/xenomorph/xeno_telegraph/perimeter/edge = new(tile, duration, outline_color)
+			edge.icon_state = "[exposed_edges]"
+
 /obj/effect/xenomorph/xeno_telegraph/attack/Initialize()
 	. = ..()
 	underlays += get_border()

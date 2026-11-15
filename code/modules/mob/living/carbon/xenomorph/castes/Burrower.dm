@@ -315,8 +315,7 @@
 	playsound(burrower_tremor, 'sound/effects/alien_footstep_charge3.ogg', 75, 0)
 	to_chat(burrower_tremor, SPAN_XENOWARNING("We dig ourselves into the ground and cause tremors."))
 	var/impact_radius = 3
-	for(var/turf/target_turf in range(impact_radius, burrower_tremor))
-		new /obj/effect/xenomorph/xeno_telegraph/attack/brown/high_gallop(target_turf, 0.35 SECONDS)
+	show_radial_telegraph(get_turf(burrower_tremor), range(impact_radius, burrower_tremor), impact_radius, /obj/effect/xenomorph/xeno_telegraph/attack/brown/high_gallop, 0.35 SECONDS, "#D79600")
 
 	for(var/mob/living/carbon/carbon_target in range(7, burrower_tremor))
 		to_chat(carbon_target, SPAN_WARNING("You struggle to remain on your feet as the ground shakes beneath you!"))

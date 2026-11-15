@@ -410,8 +410,7 @@
 	playsound(xeno, 'sound/effects/bang.ogg', 25)
 	xeno.visible_message(SPAN_XENODANGER("[xeno] smashes into the ground!"), SPAN_XENODANGER("We smash into the ground!"))
 	var/list/stomp_area = orange(distance, xeno)
-	for(var/turf/target_turf in stomp_area)
-		new /obj/effect/xenomorph/xeno_telegraph/attack/brown/high_gallop(target_turf, 0.35 SECONDS)
+	show_radial_telegraph(get_turf(xeno), stomp_area, distance, /obj/effect/xenomorph/xeno_telegraph/attack/brown/high_gallop, 0.35 SECONDS, "#D79600")
 
 	for (var/mob/living/carbon/targets in stomp_area)
 

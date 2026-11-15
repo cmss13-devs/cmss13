@@ -325,9 +325,11 @@
 
 			targets_to_hit.apply_armoured_damage(get_xeno_damage_slash(targets_to_hit, damage), ARMOR_MELEE, BRUTE, "chest", 20)
 
+		var/list/affected_tiles = list()
 		for(var/turf/target_turf in orange(xeno, range))
 			if(check_clear_path_to_target(xeno, target_turf, smash_windows = FALSE))
-				new /obj/effect/xenomorph/xeno_telegraph/attack/eviscerate(target_turf, 0.5 SECONDS)
+				affected_tiles += target_turf
+		show_radial_telegraph(get_turf(xeno), affected_tiles, range, /obj/effect/xenomorph/xeno_telegraph/attack/eviscerate, 0.5 SECONDS, "#EB4210")
 
 	var/valid_count = 0
 	var/list/mobs_in_range = oviewers(lifesteal_range, xeno)

@@ -1191,6 +1191,15 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/golden_arrow)
+"cj" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns{
+	dir = 2;
+	req_access = list();
+	vend_x_offset = 0;
+	vend_y_offset = -1
+	},
+/turf/open/floor/almayer,
+/area/golden_arrow)
 "ck" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
@@ -1711,6 +1720,15 @@
 	vend_y_offset = 1
 	},
 /turf/open/floor/almayer/mono,
+/area/golden_arrow)
+"db" = (
+/obj/structure/machinery/cm_vending/sorted/attachments{
+	dir = 2;
+	req_access = list();
+	vend_x_offset = 0;
+	vend_y_offset = -1
+	},
+/turf/open/floor/almayer,
 /area/golden_arrow)
 "de" = (
 /obj/structure/terminal{
@@ -20377,7 +20395,7 @@ mC
 rd
 Gd
 cK
-DI
+cj
 aS
 Vk
 cO
@@ -20581,7 +20599,7 @@ js
 be
 SI
 cK
-DI
+db
 pi
 TT
 cQ

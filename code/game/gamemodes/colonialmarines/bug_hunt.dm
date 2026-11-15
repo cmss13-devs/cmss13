@@ -82,16 +82,17 @@
 			if(istype(action, /datum/action/xeno_action/onclick/plant_weeds) || istype(action, /datum/action/xeno_action/activable/secrete_resin))
 				action.plasma_cost = initial(action.plasma_cost)
 
-/datum/game_mode/bug_hunt/check_xeno_late_join(mob/xeno_candidate)
+/datum/game_mode/bug_hunt/check_xeno_late_join(mob/xeno_candidate, check_population = FALSE)
 	if(!..() || round_finished)
 		return FALSE
-	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
-	var/marine_count = count_marines()
-	var/xeno_count = hive.get_real_total_xeno_count()
-	var/xeno_limit = max(2, floor(marine_count / 3))
-	if(xeno_count >= xeno_limit)
-		to_chat(xeno_candidate, SPAN_WARNING("The hive has reached its population limit of ([xeno_limit] xenomorphs for [marine_count] living marines)."))
-		return FALSE
+	if(check_population)
+		var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+		var/marine_count = count_marines()
+		var/xeno_count = hive.get_real_total_xeno_count()
+		var/xeno_limit = max(2, floor(marine_count / 3))
+		if(xeno_count >= xeno_limit)
+			to_chat(xeno_candidate, SPAN_WARNING("The hive has reached its population limit of ([xeno_limit] xenomorphs for [marine_count] living marines)."))
+			return FALSE
 	var/mob/living/original_body = xeno_candidate.mind?.original
 	if(istype(original_body) && original_body.stat != DEAD)
 		to_chat(xeno_candidate, SPAN_WARNING("You cannot join while your original body is alive."))
@@ -108,7 +109,7 @@
 	return TRUE
 
 /datum/game_mode/bug_hunt/attempt_to_join_as_xeno(mob/xeno_candidate, instant_join = FALSE)
-	if(!check_xeno_late_join(xeno_candidate))
+	if(!check_xeno_late_join(xeno_candidate, check_population = TRUE))
 		return FALSE
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	var/list/castes = XENO_T1_CASTES
@@ -123,13 +124,20 @@
 	var/caste_choice = tgui_input_list(xeno_candidate, "Choose a caste.", "Join as Xeno", castes, theme = "hive_status")
 	if(!caste_choice)
 		return FALSE
-	if(!check_xeno_late_join(xeno_candidate))
-		return FALSE
 
 	var/list/cores = hive.hive_structures[XENO_STRUCTURE_CORE]
 	if(!length(cores))
 		return FALSE
-	var/obj/effect/alien/resin/special/pylon/core/core = pick(cores)
+	var/list/core_choices = list()
+	var/list/area_name_counts = list()
+	for(var/obj/effect/alien/resin/special/pylon/core/spawn_core as anything in cores)
+		core_choices[avoid_assoc_duplicate_keys(get_area_name(spawn_core), area_name_counts)] = spawn_core
+	var/core_choice = tgui_input_list(xeno_candidate, "Choose a hive core to spawn at.", "Join as Xeno", core_choices, theme = "hive_status")
+	if(!core_choice)
+		return FALSE
+	var/obj/effect/alien/resin/special/pylon/core/core = core_choices[core_choice]
+	if(QDELETED(core) || !check_xeno_late_join(xeno_candidate, check_population = TRUE))
+		return FALSE
 	var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(caste_choice)
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(core), null, hive.hivenumber)
 	if(isnewplayer(xeno_candidate))

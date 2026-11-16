@@ -102,6 +102,10 @@
 	},
 /turf/open/void/vehicle,
 /area/space)
+"ao" = (
+/obj/item/hardpoint/locomotion/apc_wheels,
+/turf/open/shuttle/vehicle,
+/area/interior/vehicle/apc/command)
 "ap" = (
 /obj/structure/surface/table/reinforced/prison{
 	pixel_y = -3
@@ -544,7 +548,7 @@ aL
 aK
 ba
 bg
-bg
+ao
 bb
 aG
 aa

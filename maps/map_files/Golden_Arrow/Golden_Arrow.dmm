@@ -1321,9 +1321,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/golden_arrow)
 "cv" = (
-/obj/structure/machinery/cm_vending/gear/engi{
-	name = "\improper ColMarTech FORECON Engineer Gear Rack"
-	},
+/obj/structure/machinery/cm_vending/gear/engi/bug_hunt,
 /turf/open/floor/almayer/test_floor4,
 /area/golden_arrow)
 "cw" = (

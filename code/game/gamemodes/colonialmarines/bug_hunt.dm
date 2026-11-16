@@ -43,10 +43,6 @@
 	recon.roundstart = TRUE
 	recon.engage_squad(TRUE)
 	. = ..()
-	for(var/list/product as anything in GLOB.cm_vending_gear_engi)
-		if(product[3] == /obj/item/storage/belt/gun/brutepack/full)
-			GLOB.cm_vending_gear_engi -= list(product)
-			break
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	hive.allow_no_queen_actions = TRUE
 	hive.allow_no_queen_evo = TRUE

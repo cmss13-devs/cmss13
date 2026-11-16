@@ -202,6 +202,18 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine_bug_hunt, list(
 	products += list(list("Command Pouch", 0, /obj/item/storage/pouch/pistol/command, MARINE_CAN_BUY_SPECIALIZATION, VENDOR_ITEM_REGULAR))
 	return products + ..(user)
 
+/obj/structure/machinery/cm_vending/gear/engi/bug_hunt
+	name = "\improper ColMarTech FORECON Engineer Gear Rack"
+
+/obj/structure/machinery/cm_vending/gear/engi/bug_hunt/get_listed_products(mob/user)
+	var/list/products = ..(user)
+	products = products.Copy()
+	for(var/list/product as anything in products)
+		if(product[3] == /obj/item/storage/belt/gun/brutepack/full)
+			products -= list(product)
+			break
+	return products
+
 /obj/structure/machinery/cm_vending/clothing/engi/bug_hunt
 	name = "\improper ColMarTech FORECON Engineer Equipment Rack"
 	desc = "An automated rack of standard equipment for FORECON engineers."

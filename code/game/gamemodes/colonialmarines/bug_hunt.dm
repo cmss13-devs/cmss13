@@ -139,7 +139,7 @@
 			castes -= caste_name
 	if(!length(castes))
 		return FALSE
-	var/caste_choice = tgui_input_list(xeno_candidate, "Choose a caste.", "Join as Xeno", castes, timeout = 30 SECONDS, theme = "hive_status")
+	var/caste_choice = tgui_input_list(xeno_candidate, "Choose a caste.", "Join as Xeno", castes, timeout = 10 SECONDS, theme = "hive_status")
 	if(!caste_choice)
 		if(xeno_candidate.client)
 			xeno_candidate.client.prefs.be_special &= ~BE_ALIEN
@@ -152,7 +152,7 @@
 	var/list/area_name_counts = list()
 	for(var/obj/effect/alien/resin/special/pylon/core/spawn_core as anything in cores)
 		core_choices[avoid_assoc_duplicate_keys(get_area_name(spawn_core), area_name_counts)] = spawn_core
-	var/core_choice = tgui_input_list(xeno_candidate, "Choose a hive core to spawn at.", "Join as Xeno", core_choices, timeout = 30 SECONDS, theme = "hive_status")
+	var/core_choice = tgui_input_list(xeno_candidate, "Choose a hive core to spawn at.", "Join as Xeno", core_choices, timeout = 10 SECONDS, theme = "hive_status")
 	if(!core_choice)
 		if(xeno_candidate.client)
 			xeno_candidate.client.prefs.be_special &= ~BE_ALIEN

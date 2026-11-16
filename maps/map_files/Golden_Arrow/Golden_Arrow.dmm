@@ -660,6 +660,25 @@
 	},
 /turf/open/floor/almayer,
 /area/golden_arrow)
+"bf" = (
+/obj/structure/blocker/forcefield/vehicles{
+	layer = 5
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	name = "\improper Armory Access";
+	id = "largebay"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo{
+	dir = 2;
+	req_access = list();
+	vend_x_offset = 0;
+	vend_y_offset = -1
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/golden_arrow)
 "bg" = (
 /obj/structure/closet/secure_closet/forecon_uniform,
 /turf/open/floor/almayer/plate,
@@ -20486,7 +20505,7 @@ zc
 sf
 bX
 Gd
-cK
+bf
 dc
 aS
 Pq

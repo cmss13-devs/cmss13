@@ -200,6 +200,9 @@
 		if(!cur_obs.client || !cur_obs.client.prefs || !(cur_obs.client.prefs.be_special & BE_ALIEN))
 			continue
 
+		if(istype(SSticker.mode, /datum/game_mode/bug_hunt) && !cur_obs.bug_hunt_xeno_queue)
+			continue
+
 		// Jobban check
 		if(jobban_isbanned(cur_obs, JOB_XENOMORPH))
 			continue
@@ -353,6 +356,9 @@
 /proc/message_alien_candidate_observer(mob/dead/observer/candidate_observer, cache_only=FALSE)
 	if(!candidate_observer?.client)
 		return
+
+	if(istype(SSticker.mode, /datum/game_mode/bug_hunt) && !candidate_observer.bug_hunt_xeno_queue)
+		candidate_observer.larva_pool_cached_message = "You are not in the xenomorph queue. Use Join as Xeno to join."
 
 	if(candidate_observer.larva_pool_cached_message)
 		// They have a cached message

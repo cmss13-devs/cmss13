@@ -104,6 +104,9 @@
 	var/mob/dead/observer/observer = xeno_candidate
 	observer.client.prefs.be_special |= BE_ALIEN
 	observer.admin_larva_protection = FALSE
+	observer.bug_hunt_xeno_queue = TRUE
+	observer.larva_pool_cached_message = null
+	to_chat(observer, SPAN_XENONOTICE("You have joined the xenomorph queue. You will be prompted when you are eligible and a slot is available."))
 	message_alien_candidate_observer(observer)
 	return TRUE
 
@@ -141,8 +144,9 @@
 		return FALSE
 	var/caste_choice = tgui_input_list(xeno_candidate, "Choose a caste.", "Join as Xeno", castes, timeout = 10 SECONDS, theme = "hive_status")
 	if(!caste_choice)
-		if(xeno_candidate.client)
-			xeno_candidate.client.prefs.be_special &= ~BE_ALIEN
+		if(xeno_candidate)
+			xeno_candidate.bug_hunt_xeno_queue = FALSE
+			xeno_candidate.larva_pool_cached_message = null
 		return FALSE
 
 	var/list/cores = hive.hive_structures[XENO_STRUCTURE_CORE]
@@ -154,11 +158,12 @@
 		core_choices[avoid_assoc_duplicate_keys(get_area_name(spawn_core), area_name_counts)] = spawn_core
 	var/core_choice = tgui_input_list(xeno_candidate, "Choose a hive core to spawn at.", "Join as Xeno", core_choices, timeout = 10 SECONDS, theme = "hive_status")
 	if(!core_choice)
-		if(xeno_candidate.client)
-			xeno_candidate.client.prefs.be_special &= ~BE_ALIEN
+		if(xeno_candidate)
+			xeno_candidate.bug_hunt_xeno_queue = FALSE
+			xeno_candidate.larva_pool_cached_message = null
 		return FALSE
 	var/obj/effect/alien/resin/special/pylon/core/core = core_choices[core_choice]
-	if(QDELETED(core) || !check_xeno_late_join(xeno_candidate, check_population = TRUE) || !(xeno_candidate in get_alien_candidates(hive)))
+	if(QDELETED(core) || !check_xeno_late_join(xeno_candidate) || !(xeno_candidate in get_alien_candidates(hive)))
 		return FALSE
 	var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(caste_choice)
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(core), null, hive.hivenumber)
@@ -196,11 +201,6 @@
 
 /datum/game_mode/bug_hunt/post_setup()
 	initialize_post_marine_gear_list()
-	for(var/obj/structure/machinery/cm_vending/sorted/cargo_guns/vendor in GLOB.cm_vending_vendors)
-		for(var/list/product as anything in vendor.listed_products)
-			if(product[3] == /obj/item/storage/box/nade_box)
-				vendor.listed_products -= list(product)
-				break
 	setup_auto_queen()
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	hive.stored_larva = 0

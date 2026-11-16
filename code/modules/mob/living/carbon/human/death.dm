@@ -49,8 +49,6 @@
 		return
 
 	GLOB.alive_human_list -= src
-	if(faction == FACTION_MARINE && istype(SSticker.mode, /datum/game_mode/bug_hunt))
-		revive_grace_period = 2.5 MINUTES
 
 	if(!gibbed)
 		if(HAS_TRAIT(src, TRAIT_HARDCORE) || MODE_HAS_MODIFIER(/datum/gamemode_modifier/permadeath))

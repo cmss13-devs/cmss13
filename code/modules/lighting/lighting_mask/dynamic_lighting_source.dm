@@ -174,7 +174,7 @@
 	light_color = new_color
 	our_mask.set_color(new_color)
 
-///Toggles the light on and off (only alters opacity).
+///Toggles the light on and off (via set_range).
 /datum/dynamic_light_source/proc/on_toggle(atom/source, new_value)
 	SIGNAL_HANDLER
 	if(new_value) //Truthy value input, turn on.
@@ -182,13 +182,13 @@
 		return
 	turn_off() //Falsey value, turn off.
 
-///Toggles the light on (only alters range).
+///Toggles the light on (via set_range).
 /datum/dynamic_light_source/proc/turn_on()
 	if(!isnull(enabled_light_range))
 		set_range(new_range=enabled_light_range)
 		enabled_light_range = null
 
-///Toggles the light off (only alters opacity).
+///Toggles the light off (via set_range).
 /datum/dynamic_light_source/proc/turn_off()
 	if(isnull(enabled_light_range))
 		enabled_light_range = light_range

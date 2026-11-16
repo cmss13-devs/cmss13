@@ -247,6 +247,14 @@
 	health = 6000
 	var/attack_announced = FALSE
 
+/obj/effect/alien/resin/special/pylon/core/bug_hunt/Initialize(mapload, datum/hive_status/hive_ref)
+	. = ..()
+	addtimer(CALLBACK(src, PROC_REF(lay_egg)), 30 SECONDS, TIMER_LOOP|TIMER_DELETE_ME)
+
+/obj/effect/alien/resin/special/pylon/core/bug_hunt/proc/lay_egg()
+	if(length(loc.contents) <= 25)
+		new /obj/item/xeno_egg(loc, linked_hive.hivenumber)
+
 /obj/effect/alien/resin/special/pylon/core/bug_hunt/healthcheck()
 	if(!attack_announced && health < maxhealth)
 		attack_announced = TRUE

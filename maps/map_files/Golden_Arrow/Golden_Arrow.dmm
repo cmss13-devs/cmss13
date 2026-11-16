@@ -660,17 +660,6 @@
 	},
 /turf/open/floor/almayer,
 /area/golden_arrow)
-"bf" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
-	light_color = "#dae2ff";
-	light_power = 0.7
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/turf/open/floor/almayer/sterile_green_side,
-/area/golden_arrow)
 "bg" = (
 /obj/structure/closet/secure_closet/forecon_uniform,
 /turf/open/floor/almayer/plate,
@@ -1742,6 +1731,13 @@
 /obj/item/stack/sheet/cardboard/full_stack,
 /turf/open/floor/almayer,
 /area/golden_arrow)
+"dd" = (
+/obj/structure/machinery/chem_dispenser/medbay{
+	req_skill_level = 2;
+	pixel_x = -1
+	},
+/turf/open/floor/almayer/plate,
+/area/golden_arrow)
 "de" = (
 /obj/structure/terminal{
 	dir = 4
@@ -1760,6 +1756,34 @@
 	dir = 9
 	},
 /turf/open/floor/plating/plating_catwalk,
+/area/golden_arrow)
+"df" = (
+/obj/structure/machinery/chem_master{
+	req_skill_level = 2;
+	pixel_x = -1
+	},
+/turf/open/floor/almayer/plate,
+/area/golden_arrow)
+"dg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer/sterile_green_side,
+/area/golden_arrow)
+"dh" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 4;
+	light_color = "#dae2ff";
+	light_power = 0.7
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/machinery/chem_dispenser/medbay{
+	req_skill_level = 2;
+	pixel_x = -1
+	},
+/turf/open/floor/almayer/sterile_green_side,
 /area/golden_arrow)
 "di" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -3134,11 +3158,6 @@
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer,
-/area/golden_arrow)
-"iX" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/pouch/medkit/full_advanced,
-/turf/open/floor/almayer/plate,
 /area/golden_arrow)
 "ja" = (
 /turf/open/floor/almayer/uscm/south_face,
@@ -4994,16 +5013,6 @@
 	pixel_x = 5
 	},
 /turf/open/floor/almayer,
-/area/golden_arrow)
-"pw" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/surgical_case/regular{
-	pixel_y = 13
-	},
-/obj/item/roller{
-	pixel_y = 6
-	},
-/turf/open/floor/almayer/plate,
 /area/golden_arrow)
 "py" = (
 /obj/structure/sign/safety/bulkhead_door{
@@ -10905,7 +10914,6 @@
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
-/obj/item/device/defibrillator/upgraded,
 /turf/open/floor/almayer/dark_sterile,
 /area/golden_arrow)
 "Jb" = (
@@ -11546,17 +11554,6 @@
 	layer = 3.2
 	},
 /turf/open/floor/almayer/mono,
-/area/golden_arrow)
-"Lm" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/structure/bed/chair/office/light{
-	dir = 2;
-	pixel_y = 5;
-	buckling_y = 5
-	},
-/turf/open/floor/almayer/sterile_green_side,
 /area/golden_arrow)
 "Lo" = (
 /obj/effect/decal/warning_stripes{
@@ -13238,24 +13235,6 @@
 	opacity = 0
 	},
 /turf/open/floor/almayer/flooredgesmooth,
-/area/golden_arrow)
-"QL" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/clothing/accessory/stethoscope,
-/obj/item/device/flashlight/pen{
-	pixel_y = 6;
-	pixel_x = -5
-	},
-/obj/structure/machinery/computer/med_data/laptop{
-	dir = 4;
-	pixel_x = 1;
-	pixel_y = 3
-	},
-/obj/item/reagent_container/food/drinks/coffee/marine{
-	pixel_y = 14;
-	pixel_x = -4
-	},
-/turf/open/floor/almayer/plate,
 /area/golden_arrow)
 "QN" = (
 /obj/effect/decal/warning_stripes{
@@ -17783,7 +17762,7 @@ fk
 BM
 Bp
 XQ
-Zr
+dd
 ZR
 uF
 uF
@@ -17884,8 +17863,8 @@ zT
 aR
 qv
 ek
-Lm
-QL
+dg
+df
 ZR
 uF
 uF
@@ -17987,7 +17966,7 @@ qv
 qv
 RP
 XE
-pw
+aP
 ZR
 uF
 uF
@@ -18087,9 +18066,9 @@ td
 aq
 wV
 qv
-bf
-iX
-aP
+dh
+df
+Zr
 ZR
 uF
 uF

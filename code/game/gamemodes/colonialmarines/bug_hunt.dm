@@ -96,19 +96,6 @@
 		if(xeno_count >= xeno_limit)
 			to_chat(xeno_candidate, SPAN_WARNING("The hive has reached its population limit of ([xeno_limit] xenomorphs for [marine_count] living marines)."))
 			return FALSE
-	var/mob/living/original_body = xeno_candidate.mind?.original
-	if(istype(original_body) && original_body.stat != DEAD)
-		to_chat(xeno_candidate, SPAN_WARNING("You cannot join while your original body is alive."))
-		return FALSE
-	var/mob/living/carbon/human/original_human = original_body
-	if(istype(original_human) && original_human.check_tod() && original_human.is_revivable())
-		to_chat(xeno_candidate, SPAN_WARNING("You cannot join while your human body can still be revived."))
-		return FALSE
-	var/last_activity = max(xeno_candidate.timeofdeath, xeno_candidate.client.player_details.larva_pool_time)
-	var/time_left = last_activity + xeno_respawn_delay - world.time
-	if(last_activity && time_left > 0)
-		to_chat(xeno_candidate, SPAN_WARNING("You must wait [DisplayTimeText(time_left)] before joining as a xenomorph."))
-		return FALSE
 	return TRUE
 
 /datum/game_mode/bug_hunt/attempt_to_join_as_xeno(mob/xeno_candidate, instant_join = FALSE)
@@ -133,9 +120,6 @@
 		return
 	message_alien_candidates(candidates, dequeued = 0, cache_only = TRUE)
 	for(var/mob/dead/observer/xeno_candidate as anything in candidates)
-		var/last_activity = max(xeno_candidate.timeofdeath, xeno_candidate.client.player_details.larva_pool_time)
-		if(last_activity && last_activity + xeno_respawn_delay > world.time)
-			continue
 		if(!check_xeno_late_join(xeno_candidate))
 			continue
 		xeno_join_pending = TRUE
@@ -174,7 +158,7 @@
 			xeno_candidate.client.prefs.be_special &= ~BE_ALIEN
 		return FALSE
 	var/obj/effect/alien/resin/special/pylon/core/core = core_choices[core_choice]
-	if(QDELETED(core) || !check_xeno_late_join(xeno_candidate, check_population = TRUE))
+	if(QDELETED(core) || !check_xeno_late_join(xeno_candidate, check_population = TRUE) || !(xeno_candidate in get_alien_candidates(hive)))
 		return FALSE
 	var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(caste_choice)
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(core), null, hive.hivenumber)
@@ -198,13 +182,14 @@
 	var/turf/queen_turf = locate(1, 1, SSmapping.levels_by_trait(ZTRAIT_GROUND)[1])
 	for(var/turf/wall_turf as anything in RANGE_TURFS(1, queen_turf))
 		if(wall_turf != queen_turf)
-			wall_turf.ChangeTurf(/turf/closed/wall/indestructible)
+			wall_turf.ChangeTurf(/turf/closed/wall/mineral/bone_resin)
 	queen_turf = queen_turf.ChangeTurf(/turf/open/floor/plating)
 
 	var/mob/living/carbon/xenomorph/queen/queen = new(queen_turf, null, XENO_HIVE_NORMAL)
 	queen.counts_for_slots = FALSE
+	queen.aghosted = TRUE //so people can't take over her by ctrl-clicking
 	queen.status_flags |= GODMODE
-	var/obj/effect/alien/weeds/node/queen_weeds = new(queen_turf, null, queen)
+	var/obj/effect/alien/weeds/node/pylon/queen_weeds = new(queen_turf, null, queen)
 	queen_weeds.explo_proof = TRUE
 	queen.mount_ovipositor()
 	queen.auto_queen = TRUE

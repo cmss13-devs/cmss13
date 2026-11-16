@@ -94,8 +94,7 @@ map lv1021_falcons_fury
 endmap
 
 map lv1021_falcons_fury_forward_base
-	voteweight 0
-	disabled
+	voteweight 1
 endmap
 
 map whiskey_outpost_v2

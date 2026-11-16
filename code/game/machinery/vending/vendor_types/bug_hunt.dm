@@ -177,6 +177,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine_bug_hunt, list(
 	for(var/list/product as anything in products)
 		if(product[3] == /obj/item/storage/box/kit/m41aMK1_kit)
 			product[3] = /obj/item/storage/box/kit/m41aMK1_kit/forecon
+			products.Insert(products.Find(product) + 1, list(list("Dual VP78M6 Pistol Kit", 0, /obj/item/storage/box/kit/dual_vp78, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR)))
 		else if(product[3] == /obj/item/clothing/gloves/marine/insulated/black)
 			product[2] = 0
 			product[4] = MARINE_CAN_BUY_GLOVES
@@ -437,6 +438,14 @@ GLOBAL_LIST_INIT(cm_vending_gear_tl_bug_hunt, list(
 /obj/structure/machinery/cm_vending/gear/smartgun/bug_hunt
 	name = "\improper ColMarTech FORECON Smartgunner Gear Rack"
 	desc = "An automated gear rack for FORECON smartgunners."
+
+/obj/structure/machinery/cm_vending/gear/smartgun/bug_hunt/get_listed_products(mob/user)
+	var/list/products = deep_copy_list(..(user))
+	for(var/list/product as anything in products)
+		if(product[3] == /obj/item/storage/box/m56a2_system/armorless)
+			product[3] = /obj/item/storage/box/m56a2_system/bug_hunt
+			break
+	return products
 
 /obj/structure/machinery/cm_vending/clothing/synth/bug_hunt
 	name = "\improper ColMarTech FORECON Synthetic Equipment Rack"

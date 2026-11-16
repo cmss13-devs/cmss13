@@ -38,6 +38,16 @@
 		new /obj/item/ammo_magazine/smartgun(src)
 	update_icon()
 
+/obj/item/storage/box/m56a2_system/bug_hunt/Initialize()
+	. = ..()
+	new /obj/item/weapon/gun/smartgun/pve(src)
+	new /obj/item/clothing/glasses/night/m56_goggles(src)
+	new /obj/item/smartgun_battery(src)
+	new /obj/item/tool/screwdriver(src)
+	for(var/i in 1 to 3)
+		new /obj/item/ammo_magazine/smartgun(src)
+	update_icon()
+
 
 /obj/item/storage/box/m56a2c_system
 	name = "\improper M56A2C smartgun system case"

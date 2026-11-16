@@ -38,17 +38,6 @@
 		new /obj/item/ammo_magazine/smartgun(src)
 	update_icon()
 
-/obj/item/storage/box/m56a2_system/bug_hunt/Initialize()
-	. = ..()
-	new /obj/item/weapon/gun/smartgun/pve(src)
-	new /obj/item/clothing/glasses/night/m56_goggles(src)
-	new /obj/item/smartgun_battery(src)
-	new /obj/item/tool/screwdriver(src)
-	for(var/i in 1 to 3)
-		new /obj/item/ammo_magazine/smartgun(src)
-	update_icon()
-
-
 /obj/item/storage/box/m56a2c_system
 	name = "\improper M56A2C smartgun system case"
 	desc = "A large case containing an M56A2C Smartgun, M56 combat harness, head mounted sight, M280 Smartgunner Drum Belt and powerpack.\nDrag this sprite into you to open it up! NOTE: You cannot put items back inside this case."

@@ -268,7 +268,7 @@
 /datum/equipment_preset/uscm/sg/bug_hunt/equipped/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/forecon/bug_hunt(new_human), WEAR_L_EAR)
 	load_bug_hunt_equipment(new_human, head_type = /obj/item/clothing/head/helmet/marine, armor_type = /obj/item/clothing/suit/storage/marine/smartgunner, back_type = /obj/item/storage/large_holster/machete/smartgunner/full)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/pve(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(new_human), WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large(new_human), WEAR_L_STORE)

@@ -439,14 +439,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_tl_bug_hunt, list(
 	name = "\improper ColMarTech FORECON Smartgunner Gear Rack"
 	desc = "An automated gear rack for FORECON smartgunners."
 
-/obj/structure/machinery/cm_vending/gear/smartgun/bug_hunt/get_listed_products(mob/user)
-	var/list/products = deep_copy_list(..(user))
-	for(var/list/product as anything in products)
-		if(product[3] == /obj/item/storage/box/m56a2_system/armorless)
-			product[3] = /obj/item/storage/box/m56a2_system/bug_hunt
-			break
-	return products
-
 /obj/structure/machinery/cm_vending/clothing/synth/bug_hunt
 	name = "\improper ColMarTech FORECON Synthetic Equipment Rack"
 

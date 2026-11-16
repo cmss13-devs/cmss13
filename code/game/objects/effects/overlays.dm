@@ -46,6 +46,20 @@
 	if(start_on_spawn)
 		QDEL_IN(src, effect_duration)
 
+/obj/effect/overlay/temp/smoke_plume
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "smoke_plume"
+	layer = BELOW_MOB_LAYER
+	effect_duration = 0.7 SECONDS
+
+/proc/scatter_smoke_plumes(list/affected_area)
+	var/list/candidate_tiles = list()
+	for(var/turf/tile in affected_area)
+		candidate_tiles += tile
+	var/plume_count = min(rand(5, 8), length(candidate_tiles))
+	for(var/index in 1 to plume_count)
+		new /obj/effect/overlay/temp/smoke_plume(pick_n_take(candidate_tiles))
+
 /obj/effect/overlay/temp/xeno_dash_smoke
 	icon = 'icons/mob/xenos/overlay_effects48x48.dmi'
 	icon_state = "smoke_dash"

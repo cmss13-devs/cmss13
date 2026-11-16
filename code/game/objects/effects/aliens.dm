@@ -679,6 +679,12 @@
 	. = ..()
 	underlays += get_border()
 
+/obj/effect/xenomorph/xeno_telegraph/attack/proc/show_on_target(mob/living/target)
+	pixel_x = -target.pixel_x
+	pixel_y = -target.pixel_y
+	appearance_flags |= RESET_COLOR
+	target.vis_contents += src
+
 /obj/effect/xenomorph/xeno_telegraph/attack/proc/get_border()
 	var/static/mutable_appearance/red_border
 	if(isnull(red_border))
@@ -703,6 +709,9 @@
 /obj/effect/xenomorph/xeno_telegraph/attack/brown/high_gallop
 	icon_state = "xeno_telegraph_high_gallop_anim"
 
+/obj/effect/xenomorph/xeno_telegraph/attack/brown/stomp
+	icon_state = "xeno_telegraph_stomp_anim"
+
 /obj/effect/xenomorph/xeno_telegraph/attack/brown/lash
 	icon_state = "xeno_telegraph_lash"
 
@@ -714,6 +723,9 @@
 	if(isnull(olive_border))
 		olive_border = create_border(list("#373737" = "#334025", "#434343" = "#5A6F40", "#565656" = "#68814B", "#7E7E7E" = "#769255"))
 	return olive_border
+
+/obj/effect/xenomorph/xeno_telegraph/attack/empower
+	icon_state = "xeno_telegraph_empower_anim"
 
 /obj/effect/xenomorph/xeno_telegraph/attack/eviscerate
 	icon_state = "xeno_telegraph_eviscerate_anim"

@@ -324,10 +324,7 @@
 				playsound(get_turf(targets_to_hit), "alien_claw_flesh", 30, 1)
 
 			var/obj/effect/xenomorph/xeno_telegraph/attack/eviscerate/slash = new(targets_to_hit, 0.5 SECONDS)
-			slash.pixel_x = -targets_to_hit.pixel_x
-			slash.pixel_y = -targets_to_hit.pixel_y
-			slash.appearance_flags |= RESET_COLOR
-			targets_to_hit.vis_contents += slash
+			slash.show_on_target(targets_to_hit)
 			targets_to_hit.apply_armoured_damage(get_xeno_damage_slash(targets_to_hit, damage), ARMOR_MELEE, BRUTE, "chest", 20)
 
 		var/list/affected_tiles = list()

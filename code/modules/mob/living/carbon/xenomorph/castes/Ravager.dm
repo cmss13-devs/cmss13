@@ -226,7 +226,6 @@
 	xeno.emote("tail")
 
 	var/accumulative_health = 0
-	var/list/telegraph_atom_list = list()
 
 	for(var/mob/living/mob in mobs_in_range)
 		if(behavior.empower_targets >= max_targets)
@@ -238,7 +237,8 @@
 
 		behavior.empower_targets++
 		accumulative_health += shield_per_human
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(mob.loc, 1 SECONDS)
+		var/obj/effect/xenomorph/xeno_telegraph/attack/empower/mark = new(mob, 1 SECONDS)
+		mark.show_on_target(mob)
 		shake_camera(mob, 2, 1)
 
 	accumulative_health += main_empower_base_shield

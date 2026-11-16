@@ -30,8 +30,6 @@
 
 /datum/emote/living/carbon/human/blink/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(!ishuman(user))
-		return
 	var/mob/living/carbon/human/human_starer = user
 	human_starer.move_eyelids(EYELID_CLOSED, 0.2)
 
@@ -41,8 +39,7 @@
 
 /datum/emote/living/carbon/human/blink_rapid/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(!ishuman(user))
-		return
+
 	var/mob/living/carbon/human/human_starer = user
 	human_starer.move_eyelids(EYELID_SWITCH, 0.1, 8)
 
@@ -128,8 +125,7 @@
 
 /datum/emote/living/carbon/human/glare/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(!ishuman(user))
-		return
+
 	var/mob/living/carbon/human/human_starer = user
 	human_starer.move_eyelids(EYELID_OPEN, 5)
 
@@ -238,8 +234,7 @@
 	. = ..()
 	if(!.)
 		return FALSE
-	if(!ishuman(user))
-		return
+
 	var/mob/living/carbon/human/painful_human = user
 	painful_human.move_eyelids(EYELID_CLOSED, 0.1, 4)
 
@@ -323,8 +318,7 @@
 
 /datum/emote/living/carbon/human/sneeze/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(!ishuman(user))
-		return
+
 	var/mob/living/carbon/human/human_sneezer = user
 	human_sneezer.move_eyelids(EYELID_CLOSED, 0.5)
 
@@ -337,8 +331,7 @@
 
 /datum/emote/living/carbon/human/snore/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(!ishuman(user))
-		return
+
 	var/mob/living/carbon/human/H = user
 	if(H.is_napping || H.eyelids_status == EYELID_CLOSED_VOLUNTARILY)
 		return
@@ -352,8 +345,7 @@
 
 /datum/emote/living/carbon/human/stare/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(!ishuman(user))
-		return
+
 	var/mob/living/carbon/human/human_starer = user
 	human_starer.move_eyelids(EYELID_OPEN, 5)
 
@@ -467,8 +459,7 @@
 
 /datum/emote/living/carbon/human/closeeyes/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(!ishuman(user))
-		return
+
 	var/mob/living/carbon/human/H = user
 	if(H.eyelid_timer)
 		deltimer(H.eyelid_timer)
@@ -492,8 +483,7 @@
 
 /datum/emote/living/carbon/human/openeyes/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(!ishuman(user))
-		return
+
 	var/mob/living/carbon/human/H = user
 	if(H.is_napping)
 		H.wake_from_nap(rapid_blink = FALSE)
@@ -513,8 +503,7 @@
 
 /datum/emote/living/carbon/human/nap/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(!ishuman(user))
-		return
+
 	var/mob/living/carbon/human/H = user
 	if(H.stat != CONSCIOUS)
 		return
@@ -527,8 +516,7 @@
 
 /datum/emote/living/carbon/human/sleep_emote/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(!ishuman(user))
-		return
+
 	var/mob/living/carbon/human/H = user
 	if(H.stat != CONSCIOUS)
 		return
@@ -541,8 +529,7 @@
 
 /datum/emote/living/carbon/human/wake/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(!ishuman(user))
-		return
+
 	var/mob/living/carbon/human/H = user
 	if(H.is_napping)
 		H.wake_from_nap(rapid_blink = FALSE)

@@ -1,5 +1,0 @@
-author: "Kugamo"
-delete-after: True
-changes:
-  - bugfix: "Fixed layering issues with colony and antre floodlights and hybrisa streetlights/trafficlights."
-  - imageadd: "Added buggy variants of colony and antre floodlights for jungle maps."

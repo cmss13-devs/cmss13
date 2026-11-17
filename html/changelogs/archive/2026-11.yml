@@ -261,3 +261,7 @@
   - qol: Researchers now spawn with brown laceup shoes and the classic blue R&D uniform
       on loading in.
   - code_imp: Reorganizes the Research ColMarTech loadout section.
+2026-11-17:
+  Kugamo:
+  - bugfix: Fixed layering issues with colony and antre floodlights and hybrisa streetlights/trafficlights.
+  - imageadd: Added buggy variants of colony and antre floodlights for jungle maps.

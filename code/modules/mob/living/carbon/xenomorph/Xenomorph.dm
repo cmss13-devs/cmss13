@@ -493,7 +493,6 @@
 
 	toggle_xeno_hostilehud()
 	recalculate_everything()
-	add_predrop_building()
 	toggle_xeno_mobhud() //This is a verb, but fuck it, it just werks
 
 	. = ..()

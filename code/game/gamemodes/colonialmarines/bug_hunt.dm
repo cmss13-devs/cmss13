@@ -3,7 +3,7 @@
 	config_tag = GAMEMODE_BUG_HUNT
 	required_players = 1
 	votable = FALSE
-	flags_round_type = MODE_INFESTATION|MODE_NEW_SPAWN
+	flags_round_type = MODE_INFESTATION|MODE_PREDATOR|MODE_NEW_SPAWN
 	latejoin_larva_drop = 0
 	latejoin_larva_drop_early = 0
 	var/hive_core_count = 3
@@ -43,6 +43,9 @@
 	recon.roundstart = TRUE
 	recon.engage_squad(TRUE)
 	. = ..()
+	for(var/obj/structure/blocker/forcefield/blocker in world)
+		if(istype(blocker, /obj/structure/blocker/forcefield/vehicles) || istype(blocker, /obj/structure/blocker/forcefield/multitile_vehicles))
+			qdel(blocker)
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	hive.allow_no_queen_actions = TRUE
 	hive.allow_no_queen_evo = TRUE
@@ -78,8 +81,9 @@
 	. = ..()
 	xeno_announcement("The tallhosts have landed. Defend the hive and drive them from this world!", XENO_HIVE_NORMAL, QUEEN_MOTHER_ANNOUNCE)
 	for(var/mob/living/carbon/xenomorph/xeno as anything in GLOB.xeno_mob_list)
-		if(!xeno.plasma_max)
-			continue
+		qdel(get_action(xeno, /datum/action/xeno_action/onclick/plant_weeds/predrop))
+		qdel(get_action(xeno, /datum/action/xeno_action/onclick/choose_resin/predrop))
+		qdel(get_action(xeno, /datum/action/xeno_action/activable/secrete_resin/predrop))
 		for(var/datum/action/xeno_action/action in xeno.actions)
 			if(istype(action, /datum/action/xeno_action/onclick/plant_weeds) || istype(action, /datum/action/xeno_action/activable/secrete_resin))
 				action.plasma_cost = initial(action.plasma_cost)
@@ -175,9 +179,6 @@
 /datum/game_mode/bug_hunt/announce()
 	to_world(SPAN_ROUNDHEADER("The current game mode is - BUG HUNT!"))
 	to_world(SPAN_ROUNDBODY("A USCM Force Reconnaissance platoon has been deployed to [SSmapping.configs[GROUND_MAP].map_name] to eradicate a confirmed Xenomorph infestation."))
-
-/datum/game_mode/bug_hunt/check_predator_late_join(mob/pred_candidate, show_warning = TRUE)
-	return FALSE
 
 /datum/game_mode/bug_hunt/check_fax_responder_late_join(mob/responder, show_warning = TRUE)
 	return FALSE

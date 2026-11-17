@@ -772,8 +772,9 @@
 		if(xeno.counts_for_slots)
 			effective_total++
 
-	// Tier 3 slots are always 20% of the total xenos in the hive
-	slots[TIER_3][OPEN_SLOTS] = max(0, ceil(0.20*effective_total/tier_slot_divisor) - used_tier_3_slots)
+	// Tier 3 slots scale with 20% of the hive, with one extra slot in Bug Hunt
+	var/tier_3_bonus = hivenumber == XENO_HIVE_NORMAL && istype(SSticker.mode, /datum/game_mode/bug_hunt)
+	slots[TIER_3][OPEN_SLOTS] = max(0, ceil(0.20*effective_total/tier_slot_divisor) + tier_3_bonus - used_tier_3_slots)
 	// Tier 2 slots are between 30% and 50% of the hive, depending
 	// on how many T3s there are.
 	slots[TIER_2][OPEN_SLOTS] = max(0, ceil(0.5*effective_total/tier_slot_divisor) - used_tier_2_slots - used_tier_3_slots)

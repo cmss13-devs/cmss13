@@ -660,25 +660,6 @@
 	},
 /turf/open/floor/almayer,
 /area/golden_arrow)
-"bf" = (
-/obj/structure/blocker/forcefield/vehicles{
-	layer = 5
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	name = "\improper Armory Access";
-	id = "largebay"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo{
-	dir = 2;
-	req_access = list();
-	vend_x_offset = 0;
-	vend_y_offset = -1
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/golden_arrow)
 "bg" = (
 /obj/structure/closet/secure_closet/forecon_uniform,
 /turf/open/floor/almayer/plate,
@@ -1748,6 +1729,12 @@
 /area/golden_arrow)
 "dc" = (
 /obj/item/stack/sheet/cardboard/full_stack,
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo{
+	dir = 2;
+	req_access = list();
+	vend_x_offset = 0;
+	vend_y_offset = -1
+	},
 /turf/open/floor/almayer,
 /area/golden_arrow)
 "dd" = (
@@ -6872,6 +6859,12 @@
 "vk" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/storage/box/nade_box{
+	name = "plastic explosives box";
+	desc = "A secure box holding 25 plastic explosives.";
+	grenade_type = /obj/item/explosive/plastic;
+	can_hold = list(/obj/item/explosive/plastic);
+	type_icon = null;
+	model_icon = null;
 	pixel_y = 13;
 	layer = 3.2
 	},
@@ -9743,6 +9736,12 @@
 	pixel_y = -1
 	},
 /obj/item/storage/box/nade_box{
+	name = "breaching charge box";
+	desc = "A secure box holding 25 breaching charges.";
+	grenade_type = /obj/item/explosive/plastic/breaching_charge;
+	can_hold = list(/obj/item/explosive/plastic/breaching_charge);
+	type_icon = null;
+	model_icon = null;
 	pixel_y = 15;
 	layer = 3.2;
 	pixel_x = -4
@@ -20505,7 +20504,7 @@ zc
 sf
 bX
 Gd
-bf
+cK
 dc
 aS
 Pq

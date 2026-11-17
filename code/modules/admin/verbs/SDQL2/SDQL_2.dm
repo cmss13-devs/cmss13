@@ -61,7 +61,7 @@
 
 	You can also generate a new list on the fly using a selector array. @[] will generate a list of objects based off the selector provided.
 
-	"SELECT /mob/living IN (@[/area/almayer/command MAP contents])[1]"
+	"SELECT /mob/living IN (@[/area/ship/almayer/command MAP contents])[1]"
 
 	What if some dumbass admin spawned a bajillion xenoes shipside and you need to kill them all?
 	Oh yeah you'd rather not delete all the xenoes on the ground. Only that one room the xenoes were

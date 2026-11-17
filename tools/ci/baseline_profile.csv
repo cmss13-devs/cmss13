@@ -24,7 +24,7 @@ name,src_file,src_line,total_ns,total_perc,counts,mean_ns,min_ns,max_ns,std_ns
 /obj/item/clothing/head/hardhat/update_icon,code/modules/clothing/head/hardhat.dm,37,309103,0.000519,107,2888,1893,16181,1510.905829
 /datum/radio_frequency/proc/remove_listener,code/controllers/subsystem/communications.dm,514,2004263,0.003365,706,2838,1242,16100,982.300820
 /obj/item/attachable/stock/mou53/New,code/modules/projectiles/gun_attachables.dm,2159,106198,0.000178,1,106198,106198,106198,0.000000
-/area/almayer/engineering/lower/engine_core/proc/(init),<?.dm>,4294967295,3566,0.000006,1,3566,3566,3566,0.000000
+/area/ship/almayer/engineering/lower/engine_core/proc/(init),<?.dm>,4294967295,3566,0.000006,1,3566,3566,3566,0.000000
 /datum/equipment_preset/dust_raider/specialist/proc/(init),<?.dm>,4294967295,15619,0.000026,8,1952,1653,3697,706.364434
 /datum/chemical_reaction/machosauce/grape/proc/(init),<?.dm>,4294967295,1462,0.000002,1,1462,1462,1462,0.000000
 /obj/item/storage/belt/gun/on_stored_atom_del,code/game/objects/items/storage/belt.dm,1437,499333,0.000838,122,4092,451,38191,8548.746767
@@ -904,7 +904,7 @@ ServerTick,prof.c,2949,58074116775,97.508362,601,96629146,8346,4399023551,239342
 /icon/proc/RscFile,<?.dm>,4294967295,267606154,0.449320,114,2347422,681,112882271,13859541.944604
 /datum/action/item_action/toggle/stock/New,code/datums/action.dm,250,9269393,0.015564,192,48278,39293,90008,7741.987308
 /obj/item/weapon/gun/rifle/m46c/proc/(init),<?.dm>,4294967295,34404,0.000058,4,8601,7674,10540,1348.174568
-/area/almayer/medical/operating_room_two/proc/(init),<?.dm>,4294967295,3015,0.000005,1,3015,3015,3015,0.000000
+/area/ship/almayer/medical/operating_room_two/proc/(init),<?.dm>,4294967295,3015,0.000005,1,3015,3015,3015,0.000000
 /atom/proc/setDir,code/game/atoms.dm,537,8504553,0.014279,5161,1647,541,428359,8513.284193
 /obj/structure/machinery/computer/overwatch/proc/(init),<?.dm>,4294967295,23614,0.000040,5,4722,3437,6211,1288.433933
 /datum/recipe/cake/carrotcake/proc/(init),<?.dm>,4294967295,1192,0.000002,1,1192,1192,1192,0.000000
@@ -1447,7 +1447,7 @@ ServerTick,prof.c,2949,58074116775,97.508362,601,96629146,8346,4399023551,239342
 /obj/item/storage/box/sugar/fill_preset_inventory,code/game/objects/items/storage/boxes.dm,989,1901608,0.003193,1,1901608,1901608,1901608,0.000000
 /obj/item/reagent_container/food/condiment/chocolate_syrup/Initialize,code/game/objects/items/reagent_containers/food/condiment.dm,170,2283864,0.003835,11,207624,192479,236060,14134.179403
 /datum/chemical_reaction/paroxetine/proc/(init),<?.dm>,4294967295,1673,0.000003,1,1673,1673,1673,0.000000
-/area/almayer/medical/operating_room_three/proc/(init),<?.dm>,4294967295,3055,0.000005,1,3055,3055,3055,0.000000
+/area/ship/almayer/medical/operating_room_three/proc/(init),<?.dm>,4294967295,3055,0.000005,1,3055,3055,3055,0.000000
 /datum/equipment_preset/survivor/hybrisa/wey_po/proc/(init),<?.dm>,4294967295,19625,0.000033,8,2453,2304,2635,107.886845
 /datum/equipment_preset/synth/survivor/sorokyne/security/proc/(init),<?.dm>,4294967295,30619,0.000051,8,3827,3697,3978,119.165551
 /obj/item/reagent_container/food/drinks/cans/souto/vanilla/Initialize,code/game/objects/items/reagent_containers/food/cans.dm,681,232394,0.000390,1,232394,232394,232394,0.000000
@@ -1475,7 +1475,7 @@ ServerTick,prof.c,2949,58074116775,97.508362,601,96629146,8346,4399023551,239342
 /mob/living/proc/initialize_pain,code/modules/mob/living/living.dm,52,80451,0.000135,20,4022,1943,16741,3364.350403
 /datum/asset/simple/namespaced/sevastopol/proc/(init),<?.dm>,4294967295,2595,0.000004,1,2595,2595,2595,0.000000
 /proc/pick_weight,code/__HELPERS/_lists.dm,131,571494,0.000960,76,7519,5109,21821,1981.838554
-/area/almayer/medical/upper_medical/proc/(init),<?.dm>,4294967295,3336,0.000006,1,3336,3336,3336,0.000000
+/area/ship/almayer/medical/upper_medical/proc/(init),<?.dm>,4294967295,3336,0.000006,1,3336,3336,3336,0.000000
 /obj/item/weapon/gun/energy/rxfm5_eva/set_gun_config_values,code/modules/projectiles/guns/energy.dm,146,26049,0.000044,3,8683,7404,11141,2129.277577
 /obj/item/weapon/gun/rifle/lmg/army/proc/(init),<?.dm>,4294967295,7735,0.000013,1,7735,7735,7735,0.000000
 /obj/structure/machinery/computer/cameras/wooden_tv/ot/proc/(init),<?.dm>,4294967295,2414,0.000004,1,2414,2414,2414,0.000000
@@ -1721,7 +1721,7 @@ ServerTick,prof.c,2949,58074116775,97.508362,601,96629146,8346,4399023551,239342
 /datum/chemical_reaction/mead/proc/(init),<?.dm>,4294967295,1533,0.000003,1,1533,1533,1533,0.000000
 /datum/controller/subsystem/tracking/proc/initialize_trackers,code/controllers/subsystem/tracking.dm,109,72225,0.000121,1,72225,72225,72225,0.000000
 /datum/recipe/plumphelmetbiscuit/proc/(init),<?.dm>,4294967295,792,0.000001,1,792,792,792,0.000000
-/area/almayer/command/airoom/proc/(init),<?.dm>,4294967295,3246,0.000005,1,3246,3246,3246,0.000000
+/area/ship/almayer/command/airoom/proc/(init),<?.dm>,4294967295,3246,0.000005,1,3246,3246,3246,0.000000
 /obj/structure/closet/secure_closet/brig/Initialize,code/game/objects/structures/crates_lockers/closets/secure/security.dm,250,8907462,0.014956,11,809769,413031,4004563,1060211.577553
 /turf/closed/wall/almayer/research/containment/wall/proc/(init),<?.dm>,4294967295,341949,0.000574,88,3885,3066,17723,1725.499025
 /obj/structure/dropship_equipment/fuel/proc/(init),<?.dm>,4294967295,1874,0.000003,2,937,601,1273,475.175757
@@ -2267,7 +2267,7 @@ ServerTick,prof.c,2949,58074116775,97.508362,601,96629146,8346,4399023551,239342
 /obj/structure/machinery/door/airlock/almayer/engineering/proc/(init),<?.dm>,4294967295,93269,0.000157,35,2664,1964,4549,526.372855
 /datum/chemical_reaction/lexorin/proc/(init),<?.dm>,4294967295,1373,0.000002,1,1373,1373,1373,0.000000
 /obj/item/storage/box/kit/loader/fill_preset_inventory,code/modules/cm_marines/equipment/kit_boxes.dm,66,2682325,0.004504,1,2682325,2682325,2682325,0.000000
-/area/almayer/medical/lower_medical_lobby/proc/(init),<?.dm>,4294967295,3257,0.000005,1,3257,3257,3257,0.000000
+/area/ship/almayer/medical/lower_medical_lobby/proc/(init),<?.dm>,4294967295,3257,0.000005,1,3257,3257,3257,0.000000
 /obj/structure/holohoop/Initialize,code/game/machinery/computer/HolodeckControl.dm,179,218598,0.000367,5,43719,33774,49282,5872.811018
 /datum/proc/clear_signal_refs,code/datums/datum.dm,141,86630043,0.145455,41122,2106,792,45555,2732.452491
 /mob/living/proc/initialize_stamina,code/modules/mob/living/living.dm,55,730687,0.001227,23,31769,22092,51637,8521.317584

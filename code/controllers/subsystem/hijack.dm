@@ -276,7 +276,7 @@ SUBSYSTEM_DEF(hijack)
 			initiate_ftl_charge()
 
 		// Calculate new progression
-		for(var/area/almayer/cycled_area as anything in current_run)
+		for(var/area/ship/cycled_area as anything in current_run)
 			current_run -= cycled_area
 
 			var/new_area_state = cycled_area.power_equip
@@ -595,7 +595,6 @@ SUBSYSTEM_DEF(hijack)
 			continue
 		pad.disabled = TRUE
 
-
 //~~~~~~~~~~~~~~~~~~~~~~~~ SD STUFF ~~~~~~~~~~~~~~~~~~~~~~~~//
 
 /// After a crash, marines can optionally hold SD for a time for a stalemate instead of a xeno minor
@@ -631,26 +630,26 @@ SUBSYSTEM_DEF(hijack)
 
 /datum/controller/subsystem/hijack/proc/heat_engine_room()
 	engine_room_heated = TRUE
-	var/area/engine_room = GLOB.areas_by_type[/area/almayer/engineering/lower/engine_core]
+	var/area/engine_room = GLOB.areas_by_type[/area/ship/almayer/engineering/lower/engine_core]
 	engine_room.firealert()
 	engine_room.temperature = T90C
 	for(var/mob/current_mob as anything in GLOB.living_player_list)
 		if(current_mob?.stat != CONSCIOUS)
 			continue
 		var/area/mob_area = get_area(current_mob)
-		if(istype(mob_area, /area/almayer/engineering/lower/engine_core))
+		if(istype(mob_area, /area/ship/almayer/engineering/lower/engine_core))
 			to_chat(current_mob, SPAN_BOLDWARNING("You feel the heat of the room increase as the fusion engines whirr louder."))
 
 /datum/controller/subsystem/hijack/proc/superheat_engine_room()
 	engine_room_superheated = TRUE
-	var/area/engine_room = GLOB.areas_by_type[/area/almayer/engineering/lower/engine_core]
+	var/area/engine_room = GLOB.areas_by_type[/area/ship/almayer/engineering/lower/engine_core]
 	engine_room.firealert()
 	engine_room.temperature = T120C //slowly deals burn at this temp
 	for(var/mob/current_mob as anything in GLOB.living_player_list)
 		if(current_mob?.stat != CONSCIOUS)
 			continue
 		var/area/mob_area = get_area(current_mob)
-		if(istype(mob_area, /area/almayer/engineering/lower/engine_core))
+		if(istype(mob_area, /area/ship/almayer/engineering/lower/engine_core))
 			to_chat(current_mob, SPAN_BOLDWARNING("The room feels incredibly hot, you can't take much more of this!"))
 
 /datum/controller/subsystem/hijack/proc/announce_sd_halfway()

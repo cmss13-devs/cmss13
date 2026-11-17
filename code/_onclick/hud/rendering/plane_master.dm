@@ -266,3 +266,55 @@
 	render_relay_plane = null
 	var/cur_x_shift = 0
 	var/cur_y_shift = 0
+	/// current zoom level
+	var/zoom_scale = 1
+	/// backup perspective
+	var/saved_zoom_scale
+	var/saved_cur_x_shift
+	var/saved_cur_y_shift
+	/// when TRUE, mouse drag and scroll no longer pan/zoom the map (tool actions can still reset/restore perspective though)
+	var/locked = FALSE
+	/// last raw mouse position (SCREEN_PIXEL_SIZE space) seen during an in-progress drag, used by /client/proc/handle_pan
+	var/list/last_mouse
+	/// world.time of the last handle_pan call, used to detect a gap between drags so a fresh drag doesn't jump from the old position
+	var/last_pan_time
+
+/// Applies the player's minimap opacity preference to the whole tacmap plane (map, blips, drawings). Per-client, so it never touches a shared minimap object.
+/atom/movable/screen/plane_master/minimap/proc/apply_opacity_pref(client/user_client)
+	var/percent = user_client?.prefs?.minimap_opacity
+	alpha = isnull(percent) ? 255 : round(255 * percent / 100)
+
+/// Rebuilds transform from scratch each time so scale and pan never compound incorrectly across repeated calls
+/atom/movable/screen/plane_master/minimap/proc/rebuild_transform()
+	var/matrix/new_transform = matrix()
+	new_transform.Scale(zoom_scale, zoom_scale)
+	new_transform.Translate(-cur_x_shift, -cur_y_shift)
+	transform = new_transform
+
+/**
+ * Saves the current zoom/pan and snaps to zoom=1x/no-pan, so click-based tools (drawing, camera select) get reliable
+ * coordinates while armed instead of hitting the zoom math bug. No-ops if already reset (e.g. a second tool armed
+ * while the first is still active) so it doesn't clobber the originally-saved perspective.
+ */
+/atom/movable/screen/plane_master/minimap/proc/reset_perspective_for_tool()
+	if(!isnull(saved_zoom_scale))
+		return
+	saved_zoom_scale = zoom_scale
+	saved_cur_x_shift = cur_x_shift
+	saved_cur_y_shift = cur_y_shift
+	zoom_scale = 1
+	cur_x_shift = 0
+	cur_y_shift = 0
+	rebuild_transform()
+
+///Restores the zoom/pan saved by reset_perspective_for_tool(), if any. No-ops if nothing is saved.
+/atom/movable/screen/plane_master/minimap/proc/restore_perspective()
+	if(isnull(saved_zoom_scale))
+		return
+	zoom_scale = saved_zoom_scale
+	cur_x_shift = saved_cur_x_shift
+	cur_y_shift = saved_cur_y_shift
+	saved_zoom_scale = null
+	saved_cur_x_shift = null
+	saved_cur_y_shift = null
+	rebuild_transform()

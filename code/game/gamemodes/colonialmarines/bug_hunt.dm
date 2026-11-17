@@ -3,7 +3,7 @@
 	config_tag = GAMEMODE_BUG_HUNT
 	required_players = 1
 	votable = FALSE
-	flags_round_type = MODE_NEW_SPAWN
+	flags_round_type = MODE_INFESTATION|MODE_NEW_SPAWN
 	latejoin_larva_drop = 0
 	latejoin_larva_drop_early = 0
 	var/hive_core_count = 3
@@ -78,9 +78,8 @@
 	. = ..()
 	xeno_announcement("The tallhosts have landed. Defend the hive and drive them from this world!", XENO_HIVE_NORMAL, QUEEN_MOTHER_ANNOUNCE)
 	for(var/mob/living/carbon/xenomorph/xeno as anything in GLOB.xeno_mob_list)
-		qdel(get_action(xeno, /datum/action/xeno_action/onclick/plant_weeds/predrop))
-		qdel(get_action(xeno, /datum/action/xeno_action/onclick/choose_resin/predrop))
-		qdel(get_action(xeno, /datum/action/xeno_action/activable/secrete_resin/predrop))
+		if(!xeno.plasma_max)
+			continue
 		for(var/datum/action/xeno_action/action in xeno.actions)
 			if(istype(action, /datum/action/xeno_action/onclick/plant_weeds) || istype(action, /datum/action/xeno_action/activable/secrete_resin))
 				action.plasma_cost = initial(action.plasma_cost)

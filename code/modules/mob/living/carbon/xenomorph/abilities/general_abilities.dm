@@ -567,16 +567,17 @@
 		return
 	for(var/action_path in base_actions)
 		give_action(src, action_path)
-	add_predrop_building()
 
 /mob/living/carbon/xenomorph/proc/add_predrop_building()
-	if(!istype(SSticker.mode, /datum/game_mode/bug_hunt) || SSobjectives.first_drop_complete || tier < 1 || tier > 3)
+	if(!istype(SSticker.mode, /datum/game_mode/bug_hunt) || tier < 1)
 		return
 	if(!get_action(src, /datum/action/xeno_action/onclick/plant_weeds))
 		give_action(src, /datum/action/xeno_action/onclick/plant_weeds/predrop)
 	if(!get_action(src, /datum/action/xeno_action/activable/secrete_resin))
 		give_action(src, /datum/action/xeno_action/onclick/choose_resin/predrop)
 		give_action(src, /datum/action/xeno_action/activable/secrete_resin/predrop)
+	if(SSobjectives.first_drop_complete && plasma_max)
+		return
 	for(var/datum/action/xeno_action/action in actions)
 		if(istype(action, /datum/action/xeno_action/onclick/plant_weeds) || istype(action, /datum/action/xeno_action/activable/secrete_resin))
 			action.plasma_cost = 0

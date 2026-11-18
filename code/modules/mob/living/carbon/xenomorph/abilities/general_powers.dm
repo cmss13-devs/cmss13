@@ -935,8 +935,7 @@
 		qdel(structure_template)
 		return FALSE
 
-	var/build_time = xeno.can_build_instantly(target_turf) ? 0 : XENO_STRUCTURE_BUILD_TIME
-	if(!do_after(xeno, build_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	if(!do_after(xeno, xeno.can_build_instantly(target_turf) ? 0 : XENO_STRUCTURE_BUILD_TIME, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return FALSE
 
 	if(!spacecheck(xeno, target_turf, structure_template)) //doublechecking

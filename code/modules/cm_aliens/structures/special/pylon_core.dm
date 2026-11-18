@@ -245,6 +245,8 @@
 
 /obj/effect/alien/resin/special/pylon/core/bug_hunt
 	health = 6000
+	cover_range = WEED_RANGE_CORE * 2
+	node_type = /obj/effect/alien/weeds/node/pylon/core/bug_hunt
 	var/attack_announced = FALSE
 
 /obj/effect/alien/resin/special/pylon/core/bug_hunt/Initialize(mapload, datum/hive_status/hive_ref)

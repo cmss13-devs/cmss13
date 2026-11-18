@@ -1054,14 +1054,16 @@
 			to_chat(user, SPAN_WARNING("You cannot become a facehugger until you are no longer alive in a nest."))
 			return FALSE
 
-		if(world.time - user.client?.player_details.larva_pool_time < XENO_JOIN_DEAD_TIME)
-			var/time_left = floor((user.client.player_details.larva_pool_time + XENO_JOIN_DEAD_TIME - world.time) / 10)
-			to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until [XENO_JOIN_DEAD_TIME / 600] minutes have passed ([time_left] seconds remaining)."))
+		var/pool_delay = istype(SSticker.mode, /datum/game_mode/bug_hunt) ? 30 SECONDS : XENO_JOIN_DEAD_TIME
+		if(world.time - user.client?.player_details.larva_pool_time < pool_delay)
+			var/time_left = floor((user.client.player_details.larva_pool_time + pool_delay - world.time) / 10)
+			to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until [DisplayTimeText(pool_delay)] have passed ([time_left] seconds remaining)."))
 			return FALSE
 
-		if(world.time - user.timeofdeath < JOIN_AS_FACEHUGGER_DELAY)
-			var/time_left = floor((user.timeofdeath + JOIN_AS_FACEHUGGER_DELAY - world.time) / 10)
-			to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until [JOIN_AS_FACEHUGGER_DELAY / 600] minutes have passed ([time_left] seconds remaining)."))
+		var/join_delay = istype(SSticker.mode, /datum/game_mode/bug_hunt) ? 30 SECONDS : JOIN_AS_FACEHUGGER_DELAY
+		if(world.time - user.timeofdeath < join_delay)
+			var/time_left = floor((user.timeofdeath + join_delay - world.time) / 10)
+			to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until [DisplayTimeText(join_delay)] have passed ([time_left] seconds remaining)."))
 			return FALSE
 
 	if(length(totalXenos) <= 0)
@@ -1134,14 +1136,16 @@
 		to_chat(user, SPAN_WARNING("You cannot become a lesser drone until you are no longer alive in a nest."))
 		return FALSE
 
-	if(world.time - user.client?.player_details.larva_pool_time < XENO_JOIN_DEAD_TIME)
-		var/time_left = floor((user.client.player_details.larva_pool_time + XENO_JOIN_DEAD_TIME - world.time) / 10)
-		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [XENO_JOIN_DEAD_TIME / 600] minutes have passed ([time_left] seconds remaining)."))
+	var/pool_delay = istype(SSticker.mode, /datum/game_mode/bug_hunt) ? 30 SECONDS : XENO_JOIN_DEAD_TIME
+	if(world.time - user.client?.player_details.larva_pool_time < pool_delay)
+		var/time_left = floor((user.client.player_details.larva_pool_time + pool_delay - world.time) / 10)
+		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [DisplayTimeText(pool_delay)] have passed ([time_left] seconds remaining)."))
 		return FALSE
 
-	if(world.time - user.timeofdeath < JOIN_AS_LESSER_DRONE_DELAY)
-		var/time_left = floor((user.timeofdeath + JOIN_AS_LESSER_DRONE_DELAY - world.time) / 10)
-		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [JOIN_AS_LESSER_DRONE_DELAY / 10] seconds have passed ([time_left] seconds remaining)."))
+	var/join_delay = istype(SSticker.mode, /datum/game_mode/bug_hunt) ? 30 SECONDS : JOIN_AS_LESSER_DRONE_DELAY
+	if(world.time - user.timeofdeath < join_delay)
+		var/time_left = floor((user.timeofdeath + join_delay - world.time) / 10)
+		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [join_delay / 10] seconds have passed ([time_left] seconds remaining)."))
 		return FALSE
 
 	if(length(totalXenos) <= 0)

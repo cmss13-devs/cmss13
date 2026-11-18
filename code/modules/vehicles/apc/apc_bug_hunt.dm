@@ -5,6 +5,16 @@
 	passengers_slots = 20
 	revivable_dead_slots = 6
 
+/obj/vehicle/multitile/apc/command/bug_hunt/Initialize()
+	. = ..()
+	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, PROC_REF(block_core_roof))
+
+/obj/vehicle/multitile/apc/command/bug_hunt/proc/block_core_roof(atom/movable/source, turf/target_turf)
+	SIGNAL_HANDLER
+	for(var/obj/effect/alien/resin/special/pylon/core/core in target_turf.linked_pylons)
+		if(!QDELETED(core))
+			return COMPONENT_TURF_DENY_MOVEMENT
+
 /obj/vehicle/multitile/apc/command/bug_hunt/load_role_reserved_slots()
 	return
 

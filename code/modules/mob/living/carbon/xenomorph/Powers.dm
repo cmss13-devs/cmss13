@@ -106,6 +106,9 @@
 	for(var/obj/effect/alien/resin/design/cost_node/cn in current_turf.contents)
 		total_resin_cost -= (total_resin_cost / 2)
 
+	if(can_build_instantly(current_turf))
+		wait_time = 0
+
 	if(!resin_construct.can_build_here(current_turf, src))
 		return SECRETE_RESIN_FAIL
 
@@ -184,6 +187,15 @@
 
 
 	return SECRETE_RESIN_SUCCESS
+
+/mob/living/carbon/xenomorph/proc/can_build_instantly(turf/build_turf)
+	if(!istype(SSticker.mode, /datum/game_mode/bug_hunt))
+		return FALSE
+	for(var/obj/effect/alien/resin/special/pylon/core/bug_hunt/core in hive.hive_structures[XENO_STRUCTURE_CORE])
+		var/roof_range = floor(core.cover_range * PYLON_COVERAGE_MULT)
+		if(build_turf.z == core.z && get_dist(core, build_turf) <= roof_range * 1.5)
+			return TRUE
+	return FALSE
 
 /mob/living/carbon/xenomorph/proc/maybe_convert_to_weedbound(turf/current_turf, datum/resin_construction/resin_construct, thick = FALSE)
 	if(current_turf.is_weedable != SEMI_WEEDABLE)

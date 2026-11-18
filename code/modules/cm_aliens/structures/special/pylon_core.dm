@@ -263,7 +263,7 @@
 
 /obj/effect/alien/resin/special/pylon/core/bug_hunt/announce_destruction()
 	linked_hive.evolution_bonus++
-	xeno_announcement("Our hive core at [get_area_name(src)] has been destroyed! Vengeance!", linked_hive.hivenumber, XENO_GENERAL_ANNOUNCE)
+	xeno_announcement("Our hive core at [get_area_name(src)] has been destroyed! Our remaining sisters will evolve faster. Vengeance!", linked_hive.hivenumber, XENO_GENERAL_ANNOUNCE)
 
 /obj/effect/alien/resin/special/pylon/core/Initialize(mapload, datum/hive_status/hive_ref)
 	. = ..()

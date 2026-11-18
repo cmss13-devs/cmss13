@@ -1483,38 +1483,6 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/almayer,
 /area/golden_arrow)
-"cJ" = (
-/obj/item/weapon/gun/rifle/m41a{
-	pixel_y = -8
-	},
-/obj/item/weapon/gun/rifle/m41a{
-	pixel_y = 0
-	},
-/obj/item/weapon/gun/rifle/m41a{
-	pixel_y = 8
-	},
-/obj/structure/machinery/door_control{
-	pixel_y = 28;
-	pixel_x = -2;
-	id = "largebay";
-	name = "Armory Access Shutter Control"
-	},
-/obj/structure/surface/rack,
-/turf/open/floor/almayer,
-/area/golden_arrow)
-"cK" = (
-/obj/structure/blocker/forcefield/vehicles{
-	layer = 5
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	name = "\improper Armory Access";
-	id = "largebay"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/golden_arrow)
 "cL" = (
 /obj/structure/machinery/door/poddoor/railing{
 	id = "garrow_vehicle_elevator_two";
@@ -1536,24 +1504,6 @@
 	layer = 3.1
 	},
 /turf/open/floor/almayer/flooredgesmooth/corner/east,
-/area/golden_arrow)
-"cN" = (
-/obj/structure/machinery/door_control{
-	pixel_y = -21;
-	pixel_x = -2;
-	id = "largebay";
-	name = "Armory Access Shutter Control"
-	},
-/obj/effect/decal/cleanable/dirt{
-	layer = 2.52
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/almayer,
 /area/golden_arrow)
 "cO" = (
 /turf/open/floor/almayer/test_floor4,
@@ -20299,7 +20249,7 @@ Ka
 qp
 RG
 DI
-cN
+SI
 ZR
 cI
 aS
@@ -20402,7 +20352,7 @@ Cb
 mC
 rd
 Gd
-cK
+ZR
 cj
 aS
 Vk
@@ -20504,7 +20454,7 @@ zc
 sf
 bX
 Gd
-cK
+ZR
 dc
 aS
 Pq
@@ -20606,7 +20556,7 @@ yA
 js
 be
 SI
-cK
+ZR
 db
 pi
 TT
@@ -20709,7 +20659,7 @@ MV
 DI
 Gd
 ZR
-cJ
+IK
 fX
 yp
 cO

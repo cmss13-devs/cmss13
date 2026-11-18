@@ -189,7 +189,7 @@
 	return SECRETE_RESIN_SUCCESS
 
 /mob/living/carbon/xenomorph/proc/can_build_instantly(turf/build_turf)
-	if(!istype(SSticker.mode, /datum/game_mode/bug_hunt))
+	if(!istype(SSticker.mode, /datum/game_mode/bug_hunt) || SSobjectives.first_drop_complete)
 		return FALSE
 	for(var/obj/effect/alien/resin/special/pylon/core/bug_hunt/core in hive.hive_structures[XENO_STRUCTURE_CORE])
 		var/roof_range = floor(core.cover_range * PYLON_COVERAGE_MULT)

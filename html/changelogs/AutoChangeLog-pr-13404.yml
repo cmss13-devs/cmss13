@@ -1,0 +1,6 @@
+author: "Mary-Marilyn"
+delete-after: True
+changes:
+  - rscadd: "The acting commander can order an FTL AO withdrawal when a dropship is locked and no more than two humans remain groundside."
+  - rscadd: "The Queen can claim a ground victory instead of hijacking, which automatically triggers a marine withdrawal."
+  - rscadd: "The acting commander can choose to fuel evacuation craft or prepare reactor scuttling instead of entering FTL while the hijacked dropship is inbound."

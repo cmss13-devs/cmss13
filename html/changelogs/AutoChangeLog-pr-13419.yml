@@ -1,0 +1,5 @@
+author: "Kugamo"
+delete-after: True
+changes:
+  - bugfix: "Fixed Working Joes/Gen 1 synth eyes not glowing in the dark."
+  - bugfix: "Fixed species using emotes that didnt belong to their species runtiming."

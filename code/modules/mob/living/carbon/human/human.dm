@@ -23,6 +23,7 @@
 		health_threshold_dead = -150
 		health_threshold_crit = -100
 
+
 /mob/living/carbon/human/clicked(mob/user, list/mods)
 	if(..())
 		return TRUE
@@ -147,7 +148,7 @@
 		var/eta_status = SShijack.get_evac_eta()
 		if(eta_status)
 			. += "Evacuation Goals: [eta_status]"
-		if(SShijack.sd_unlocked)
+		if(SShijack.sd_unlocked || SShijack.hijack_plan == HIJACK_ROUTE_SCUTTLE)
 			. += "Self Destruct Status: [SShijack.get_sd_eta()]"
 
 /mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
@@ -1033,6 +1034,8 @@
 		number += cloth_item.eye_protection
 	if(glasses)
 		number += glasses.eye_protection
+	if(number == 0 && eyelids_status == EYELID_CLOSED_VOLUNTARILY)
+		return EYE_PROTECTION_FLAVOR
 
 	return clamp(number, EYE_PROTECTION_NEGATIVE, EYE_PROTECTION_WELDING)
 

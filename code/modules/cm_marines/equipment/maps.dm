@@ -11,55 +11,156 @@ GLOBAL_LIST_INIT(mapless_maps, list(MAP_RUNTIME, MAP_CHINOOK, MAIN_SHIP_DEFAULT_
 	item_state = "map"
 	throw_speed = SPEED_FAST
 	throw_range = 5
-	w_class = SIZE_TINY
+	/// Default size when unfolded / readable.
+	w_class = SIZE_MEDIUM
 	// color = ... (Colors can be names - "red, green, grey, cyan" or a HEX color code "#FF0000")
 	var/dat // Page content
 	var/html_link = ""
+	/// TRUE = folded (tiny, unreadable), FALSE = unfolded (medium, readable).
+	var/folded = FALSE
+	/// TRUE while the browser window is open so we can restore the correct item_state on close/drop.
+	var/being_studied = FALSE
 
-/obj/item/map/attack_self(mob/user) //Open the map
-	..()
-	user.visible_message(SPAN_NOTICE("[user] opens the [src.name]."))
-	initialize_map()
+
+/obj/item/map/attack_self(mob/user)
+	. = ..()
+	if(folded)
+		toggle_fold(user)
+		return
+
+	user.visible_message(SPAN_NOTICE("[user] opens [src]."))
+	set_studied(TRUE, user)
+	initialize_map(user)
+
+
+/obj/item/map/clicked(mob/user, list/mods)
+	if(mods["alt"])
+		toggle_fold(user)
+		return TRUE
+	return ..()
+
+
+/// Shared toggle used by the verb and by alt-click.
+/obj/item/map/proc/toggle_fold(mob/user)
+	if(!user || user.stat == DEAD)
+		return
+	if(user.get_active_hand() != src && user.get_inactive_hand() != src)
+		to_chat(user, SPAN_WARNING("You need to be holding the map."))
+		return
+
+	if(folded)
+		to_chat(user, SPAN_INFO("You unfold the map; it takes up much more space now."))
+		w_class = SIZE_MEDIUM
+		folded = FALSE
+		icon_state = "map"
+		item_state = being_studied ? "[icon_state]_studied" : "map"	// If we were studying it, keep the studied in-hand; otherwise normal map state.
+		playsound(user.loc, "map_unfold", 25, 1, 3)
+	else
+		to_chat(user, SPAN_INFO("You fold up the map; it's now much smaller."))
+		w_class = SIZE_TINY
+		folded = TRUE
+		icon_state = "map_folded"
+		item_state = "" // no distinct folded in-hand
+		being_studied = FALSE
+		playsound(user.loc, "map_fold", 25, 1, 3)
+
+	update_held_sprites(user)
+
+
+/obj/item/map/verb/fold_unfold()
+	set name = "Fold/Unfold"
+	set category = null
+	set src in usr
+	toggle_fold(usr)
+
 
 /obj/item/map/attack()
 	return
 
-/obj/item/map/proc/initialize_map()
+
+/obj/item/map/proc/initialize_map(mob/user)
 	var/wikiurl = CONFIG_GET(string/wikiurl)
 	if(wikiurl)
 		dat = {"
-				<!DOCTYPE html>
-				<html>
-				<head>
-					<meta http-equiv="X-UA-Compatible" content="IE=edge">
-					<meta charset="utf-8">
-					<style>
-						img {
-							display: none;
-							position: absolute;
-							top: 30;
-							left: 0;
-							max-width: 100%;
-							height: auto;
-							overflow: hidden;
-							border: 0;
-						}
-					</style>
-				</head>
-				<body>
-				<script type="text/javascript">
-					function pageloaded(obj) {
-						document.getElementById("loading").style.display = "none";
-						obj.style.display = "inline";
+			<!DOCTYPE html>
+			<html>
+			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge">
+				<meta charset="utf-8">
+				<style>
+					img {
+						display: none;
+						position: absolute;
+						top: 30;
+						left: 0;
+						max-width: 100%;
+						height: auto;
+						overflow: hidden;
+						border: 0;
 					}
-				</script>
-				<p id='loading'>You start unfolding the map...</p>
-					<img onload="pageloaded(this)" src="[wikiurl]/[html_link]?printable=yes&remove_links=1" id="main_frame" alt=""></img>
-				</body>
+				</style>
+			</head>
+			<body>
+			<script type="text/javascript">
+				function pageloaded(obj) {
+					document.getElementById("loading").style.display = "none";
+					obj.style.display = "inline";
+				}
+			</script>
+			<p id='loading'>You start unfolding the map...</p>
+				<img onload="pageloaded(this)" src="[wikiurl]/[html_link]?printable=yes&remove_links=1" id="main_frame" alt=""></img>
+			</body>
+			</html>
+		"}
 
-				</html>
-			"}
-	show_browser(usr, dat, name, "papermap", width = 1280, height = 720)
+	// use_onclose = FALSE so our subsequent onclose() call is not overwritten by the
+	// async setup_onclose() that show_browser normally schedules (see #13245).
+	show_browser(user, dat, name, "papermap", width = 1280, height = 720, use_onclose = FALSE)
+	onclose(user, "papermap", src)
+
+
+/obj/item/map/Topic(href, href_list)
+	. = ..()
+	if(href_list["close"])
+		set_studied(FALSE, usr)
+
+
+/// Sets or clears the "being studied" visual state and refreshes in-hands.
+/obj/item/map/proc/set_studied(new_state, mob/user)
+	if(being_studied == new_state)
+		return
+	being_studied = new_state
+	if(being_studied && !folded)
+		item_state = "[icon_state]_studied"
+	else if(folded)
+		item_state = ""
+	else
+		item_state = initial(item_state)
+	update_held_sprites(user)
+
+
+/// Updates the holder's left/right hand overlays if they are actually holding us.
+/obj/item/map/proc/update_held_sprites(mob/user)
+	if(!user)
+		return
+	if(user.get_active_hand() == src || user.get_inactive_hand() == src)
+		user.update_inv_l_hand()
+		user.update_inv_r_hand()
+
+
+/obj/item/map/dropped(mob/user)
+	. = ..()
+	set_studied(FALSE, user)	// Always restore a clean state when the item leaves the hands.
+	if(folded)
+		item_state = ""	// keep folded appearance
+	else
+		item_state = initial(item_state)
+
+
+/obj/item/map/Destroy()
+	being_studied = FALSE
+	return ..()
+
 
 /obj/item/map/lazarus_landing_map
 	name = "\improper Lazarus Landing Map"

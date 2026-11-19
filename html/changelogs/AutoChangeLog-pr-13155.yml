@@ -1,5 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - mapadd: "The White Antre landing zone has been redesigned. It features a more constrained north and southern entrance, an expanded internal layout, and the outer walls are now better covered and are shut off with blast doors. These blast doors can be bypassed via the internal lockdown override, acid or explosives."
-  - maptweak: "A pass of resin/hull walls within the eastern areas of White Antre has been made with the goal to tone down the excessive amount of harsh choke points and overly zealous use of hull walls."

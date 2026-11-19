@@ -31,6 +31,12 @@
 				help_shake_act(attacking_mob)
 				return 1
 
+			if(ishuman(attacking_mob) && stat == DEAD && attacking_mob.zone_selected == "eyes")
+				if(eyelids_status == EYELID_OPEN)
+					apply_eyelid_state(EYELID_CLOSED)
+					attacking_mob.visible_message(SPAN_NOTICE("[attacking_mob] respectfully closes the lifeless eyes of [src]."), SPAN_NOTICE("You respectfully close the lifeless eyes of [src]."), null, 7)
+					return 1
+
 			if(species.flags & IS_SYNTHETIC)
 				to_chat(attacking_mob, SPAN_DANGER("Your hands compress the metal chest uselessly..."))
 				return 0
@@ -207,6 +213,13 @@
 
 	if(w_uniform)
 		w_uniform.add_fingerprint(mob)
+
+	if(is_napping)
+		mob.visible_message(SPAN_NOTICE("[mob] shakes [src] awake!"), SPAN_NOTICE("You shake [src] awake!"), null, 4)
+		to_chat(src, SPAN_NOTICE("[mob] shakes you awake!"))
+		wake_from_nap(rapid_blink = TRUE)
+		playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+		return
 
 	var/shaken_friend = FALSE
 

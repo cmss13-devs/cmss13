@@ -700,6 +700,8 @@
 	if(SShijack?.sd_detonated)
 		round_finished = MODE_INFESTATION_DRAW_DEATH // Self destruction.
 		return
+	if(SShijack.withdrawal_end_time)
+		return
 	if(SShijack?.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH && !MODE_HAS_MODIFIER(/datum/gamemode_modifier/continue_on_ground_crash))
 		if(SShijack.crashed)
 			round_finished = MODE_INFESTATION_X_MAJOR // Ship crashed into ground and modifier doesn't disable this
@@ -754,8 +756,8 @@
 	if(!(flags_round_type & MODE_INFESTATION))
 		return
 
-	if(is_in_endgame)
-		return // Don't handle hive collapse for hijack
+	if(is_in_endgame || SShijack.withdrawal_end_time)
+		return
 
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(hive.need_round_end_check && !hive.can_delay_round_end())
@@ -857,6 +859,8 @@
 					break
 			else
 				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
+			if(!is_in_endgame)
+				musical_track = 'sound/theme/neutral_hopeful2.ogg'
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_xeno_victories++
 		if(MODE_INFESTATION_M_MINOR)

@@ -94,6 +94,21 @@
 	icon_state = "jackboots"
 	item_state = "jackboots"
 	siemens_coefficient = 0.7
+	allowed_items_typecache = list(
+		/obj/item/attachable/bayonet,
+		/obj/item/weapon/throwing_knife,
+		/obj/item/weapon/gun/pistol/action,
+		/obj/item/weapon/gun/pistol/clfpistol,
+		/obj/item/tool/screwdriver,
+		/obj/item/tool/surgery/scalpel,
+		/obj/item/weapon/straight_razor,
+	)
+
+/obj/item/clothing/shoes/jackboots/update_icon()
+	if(stored_item)
+		icon_state = "[initial(icon_state)]-1"
+	else
+		icon_state = initial(icon_state)
 
 /obj/item/clothing/shoes/cult
 	name = "boots"

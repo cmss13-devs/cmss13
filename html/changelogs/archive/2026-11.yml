@@ -261,3 +261,17 @@
   - qol: Researchers now spawn with brown laceup shoes and the classic blue R&D uniform
       on loading in.
   - code_imp: Reorganizes the Research ColMarTech loadout section.
+2026-11-17:
+  Kugamo:
+  - bugfix: Fixed layering issues with colony and antre floodlights and hybrisa streetlights/trafficlights.
+  - imageadd: Added buggy variants of colony and antre floodlights for jungle maps.
+2026-11-19:
+  Mary-Marilyn:
+  - rscadd: The acting commander can order an FTL AO withdrawal when a dropship is
+      locked and no more than two humans remain groundside.
+  - rscadd: The Queen can claim a ground victory instead of hijacking, which automatically
+      triggers a marine withdrawal.
+  - rscadd: The acting commander can choose to fuel evacuation craft or prepare reactor
+      scuttling instead of entering FTL while the hijacked dropship is inbound.
+  Sulaboy:
+  - balance: Jackboots have same storage as marine boots.

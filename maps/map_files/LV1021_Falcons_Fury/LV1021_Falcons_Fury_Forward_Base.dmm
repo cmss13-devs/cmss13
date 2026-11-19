@@ -28230,6 +28230,12 @@
 	},
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/forward_base/medical/medical_science)
+"brZ" = (
+/turf/open/floor/plating/bare_catwalk,
+/area/supply/dock/uscm)
+"bsa" = (
+/turf/open/floor/almayer/test_floor5,
+/area/supply/dock/uscm)
 "bsf" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -4;
@@ -172523,12 +172529,12 @@ wzQ
 wzQ
 wzQ
 wzQ
-wzQ
-wzQ
-wzQ
-wzQ
-wzQ
-wzQ
+jfQ
+jfQ
+jfQ
+jfQ
+jfQ
+jfQ
 jfQ
 "}
 (235,1,3) = {"
@@ -172690,12 +172696,12 @@ wzQ
 wzQ
 wzQ
 wzQ
-wzQ
-wzQ
-wzQ
-wzQ
-wzQ
-wzQ
+jfQ
+brZ
+brZ
+brZ
+brZ
+brZ
 jfQ
 "}
 (236,1,3) = {"
@@ -172857,12 +172863,12 @@ wzQ
 wzQ
 wzQ
 wzQ
-wzQ
-wzQ
-wzQ
-wzQ
-wzQ
-wzQ
+jfQ
+brZ
+bsa
+brZ
+bsa
+brZ
 jfQ
 "}
 (237,1,3) = {"
@@ -173024,12 +173030,12 @@ wzQ
 wzQ
 wzQ
 wzQ
-wzQ
-wzQ
-wzQ
-wzQ
-wzQ
-wzQ
+jfQ
+brZ
+brZ
+brZ
+brZ
+brZ
 jfQ
 "}
 (238,1,3) = {"
@@ -173191,12 +173197,12 @@ wzQ
 wzQ
 wzQ
 wzQ
-wzQ
-wzQ
-wzQ
-wzQ
-wzQ
-wzQ
+jfQ
+brZ
+bsa
+brZ
+bsa
+brZ
 jfQ
 "}
 (239,1,3) = {"
@@ -173358,12 +173364,12 @@ wzQ
 wzQ
 wzQ
 wzQ
-wzQ
-wzQ
-wzQ
-wzQ
-wzQ
-wzQ
+jfQ
+brZ
+brZ
+brZ
+brZ
+brZ
 jfQ
 "}
 (240,1,3) = {"

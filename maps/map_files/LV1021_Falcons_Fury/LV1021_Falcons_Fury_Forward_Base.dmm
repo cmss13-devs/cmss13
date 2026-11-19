@@ -28194,6 +28194,42 @@
 	},
 /turf/open/floor/interior/wood_sat/damage_6,
 /area/forward_base/shipboard/brig/processing)
+"brX" = (
+/obj/structure/machinery/status_display{
+	pixel_y = 32
+	},
+/obj/structure/machinery/smartfridge/chemistry{
+	pixel_y = 2;
+	pixel_x = -1;
+	explo_proof = 1
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/forward_base/medical/medical_science)
+"brY" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/reagentgrinder{
+	pixel_y = 12
+	},
+/obj/item/stack/sheet/mineral/phoron{
+	amount = 25;
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/dropper{
+	pixel_y = -4
+	},
+/obj/item/stack/sheet/mineral/silver/small_stack{
+	amount = 5
+	},
+/obj/item/reagent_container/glass/beaker/catalyst/silver{
+	pixel_x = -5;
+	pixel_y = 11
+	},
+/obj/structure/sign/calendar/wy{
+	pixel_y = 29
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/forward_base/medical/medical_science)
 "bsf" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -4;
@@ -28783,9 +28819,10 @@
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_north)
 "bSw" = (
-/obj/structure/machinery/autodispenser{
+/obj/structure/filingcabinet/research{
+	density = 0;
+	pixel_y = 20;
 	pixel_x = -1;
-	pixel_y = 2;
 	explo_proof = 1
 	},
 /turf/open/floor/hybrisa/wood/whitewood,
@@ -29523,16 +29560,19 @@
 	pixel_y = 2;
 	explo_proof = 1
 	},
-/obj/item/reagent_container/glass/beaker{
-	pixel_x = 5;
-	pixel_y = 13
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
 	},
-/obj/item/reagent_container/glass/beaker/bluespace{
-	pixel_y = 14;
-	pixel_x = -3
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/hybrisa/wood/whitewood,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
 /area/forward_base/medical/medical_science)
 "cBI" = (
 /obj/structure/machinery/chem_dispenser/soda,
@@ -30076,16 +30116,15 @@
 /turf/open/floor/hybrisa/wood/whitewood,
 /area/forward_base/command/corporateliaison)
 "dii" = (
-/obj/structure/medical_supply_link,
-/obj/structure/machinery/cm_vending/sorted/medical/chemistry{
-	pixel_x = -1;
+/obj/structure/machinery/chem_dispenser/research{
 	pixel_y = 2;
 	explo_proof = 1
 	},
-/obj/structure/machinery/status_display{
-	pixel_y = 32
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
 	},
-/turf/open/floor/hybrisa/wood/whitewood,
+/turf/open/floor/hybrisa/wood/blackwood,
 /area/forward_base/medical/medical_science)
 "djz" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -30722,11 +30761,6 @@
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "dRZ" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/centrifuge{
-	pixel_y = 8;
-	pixel_x = -1;
-	layer = 3.1
-	},
 /obj/item/reagent_container/glass/beaker/cryoxadone{
 	pixel_x = -3;
 	pixel_y = -5;
@@ -30736,6 +30770,11 @@
 	pixel_x = 6;
 	pixel_y = -10;
 	layer = 3.01
+	},
+/obj/structure/machinery/reagent_analyzer{
+	pixel_y = 5;
+	pixel_x = -1;
+	explo_proof = 1
 	},
 /turf/open/floor/hybrisa/wood/whitewood,
 /area/forward_base/medical/medical_science)
@@ -40278,13 +40317,12 @@
 /area/lv1021/outdoors/jungle/jungleW_south)
 "mrD" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/reagent_analyzer{
-	pixel_y = 5;
-	pixel_x = -1;
-	explo_proof = 1
-	},
 /obj/structure/sign/safety/ref_chem_storage{
 	pixel_x = 32
+	},
+/obj/structure/machinery/centrifuge{
+	pixel_y = 8;
+	pixel_x = -1
 	},
 /obj/item/storage/box/monkeycubes,
 /turf/open/floor/hybrisa/wood/whitewood,
@@ -40706,14 +40744,6 @@
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_lagoon)
-"mQS" = (
-/obj/structure/bed/chair/comfy{
-	buckling_y = 2;
-	pixel_y = 2;
-	dir = 4
-	},
-/turf/open/floor/hybrisa/wood/whitewood,
-/area/forward_base/medical/medical_science)
 "mRe" = (
 /obj/structure/terminal{
 	dir = 1
@@ -49544,29 +49574,16 @@
 /turf/open/floor/hybrisa/wood/redwood,
 /area/forward_base/engineering)
 "vax" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/reagentgrinder{
-	pixel_y = 12
+/obj/structure/bed/chair/comfy{
+	buckling_y = 2;
+	pixel_y = 2;
+	dir = 4
 	},
-/obj/item/stack/sheet/mineral/phoron{
-	amount = 25;
-	pixel_x = 2;
-	pixel_y = 8
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
 	},
-/obj/item/reagent_container/dropper{
-	pixel_y = -4
-	},
-/obj/item/stack/sheet/mineral/silver/small_stack{
-	amount = 5
-	},
-/obj/item/reagent_container/glass/beaker/catalyst/silver{
-	pixel_x = -5;
-	pixel_y = 11
-	},
-/obj/structure/sign/calendar/wy{
-	pixel_y = 29
-	},
-/turf/open/floor/hybrisa/wood/whitewood,
+/turf/open/floor/hybrisa/wood/blackwood,
 /area/forward_base/medical/medical_science)
 "vaA" = (
 /obj/structure/barricade/plasteel/wired{
@@ -50279,11 +50296,20 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "vJs" = (
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry{
+	pixel_x = -1;
+	pixel_y = 2;
+	explo_proof = 1
 	},
-/obj/structure/machinery/disposal,
-/turf/open/floor/hybrisa/wood/whitewood,
+/obj/structure/medical_supply_link,
+/obj/structure/sign/safety/ref_chem_storage{
+	pixel_y = 32
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
 /area/forward_base/medical/medical_science)
 "vJw" = (
 /obj/structure/machinery/iv_drip,
@@ -51297,12 +51323,21 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_north)
 "wGD" = (
-/obj/structure/machinery/chem_dispenser/research{
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/autodispenser{
+	pixel_x = -1;
 	pixel_y = 2;
 	explo_proof = 1
 	},
-/obj/item/reagent_container/glass/beaker/bluespace,
-/turf/open/floor/hybrisa/wood/whitewood,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
 /area/forward_base/medical/medical_science)
 "wGS" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -52309,8 +52344,18 @@
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/east_river)
 "xEX" = (
-/obj/structure/machinery/cm_vending/clothing/medical_crew/researcher,
-/turf/open/floor/hybrisa/wood/whitewood,
+/obj/structure/machinery/cm_vending/clothing/medical_crew/researcher{
+	pixel_x = -4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
 /area/forward_base/medical/medical_science)
 "xFf" = (
 /obj/structure/window/framed/wood/reinforced/plain,
@@ -54432,7 +54477,7 @@ sHd
 qqO
 qQN
 eUa
-bct
+brX
 dii
 bSw
 fgU
@@ -54599,13 +54644,13 @@ uDP
 rCj
 oSI
 eUa
-bct
+brY
 vax
-mQS
+fgU
+fgU
 fgU
 fgU
 bLS
-fgU
 olC
 fgU
 kEE

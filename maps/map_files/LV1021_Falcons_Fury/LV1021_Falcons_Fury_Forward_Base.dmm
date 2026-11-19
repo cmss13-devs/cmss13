@@ -28177,6 +28177,23 @@
 /obj/item/trash/cigbutt,
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/forward_base/lv624/tent_camp/lv1021)
+"brV" = (
+/obj/structure/window/framed/kutjevo/reinforced/hull,
+/turf/open/floor/interior/wood_sat,
+/area/forward_base/shipboard/brig/processing)
+"brW" = (
+/obj/structure/bed/hybrisa/prisonbed,
+/obj/item/bedsheet/brown{
+	pixel_y = 10
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 2.52
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/interior/wood_sat/damage_6,
+/area/forward_base/shipboard/brig/processing)
 "bsf" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -4;
@@ -29652,7 +29669,7 @@
 	pixel_x = -15
 	},
 /obj/effect/decal/large_stain,
-/turf/open/floor/interior/wood,
+/turf/open/floor/interior/wood_sat/damage,
 /area/forward_base/shipboard/brig/processing)
 "cJJ" = (
 /obj/structure/machinery/colony_floodlight{
@@ -36310,7 +36327,7 @@
 	id = "Cell 2";
 	name = "Cell 2"
 	},
-/turf/open/floor/interior/wood,
+/turf/open/floor/interior/wood_sat/damage_2,
 /area/forward_base/shipboard/brig/processing)
 "iOI" = (
 /obj/structure/barricade/plasteel/wired{
@@ -39237,11 +39254,6 @@
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_south)
-"ltE" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/ladder/multiz,
-/turf/open/floor/hybrisa/wood/blackwood,
-/area/forward_base/command/cic)
 "ltO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -46011,11 +46023,6 @@
 /obj/structure/shuttle/part/dropship_clf/transparent/left_engine,
 /turf/open/floor/plating,
 /area/lv1021/outdoors/jungle/jungleC_clf_e)
-"rRx" = (
-/obj/structure/ladder/multiz,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/interior/wood,
-/area/forward_base/engineering)
 "rRF" = (
 /obj/structure/machinery/power/smes/buildable,
 /obj/effect/decal/warning_stripes{
@@ -47320,7 +47327,7 @@
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
-/turf/open/floor/almayer/red/east,
+/turf/open/floor/interior/wood_sat,
 /area/forward_base/shipboard/brig/processing)
 "sXY" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -47762,7 +47769,7 @@
 	pixel_y = 10;
 	pixel_x = 9
 	},
-/turf/open/floor/interior/wood,
+/turf/open/floor/interior/wood_sat/damage_3,
 /area/forward_base/shipboard/brig/processing)
 "ttp" = (
 /obj/effect/decal/strata_decals/mud_corner{
@@ -49828,13 +49835,6 @@
 	},
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud,
 /area/forward_base/underdeck/hangar/lv1021)
-"vlA" = (
-/obj/effect/decal/lv_decals/red_mud_corner{
-	dir = 1
-	},
-/obj/vehicle/powerloader/jd,
-/turf/open/auto_turf/lv_grass_weedable/layer0_mud,
-/area/forward_base/lv624/tent_camp/lv1021)
 "vlM" = (
 /obj/structure/closet/crate/ammo/alt,
 /obj/item/mortar_shell/flare,
@@ -50112,7 +50112,7 @@
 /area/forward_base/squads/alpha_bravo_shared)
 "vxH" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain,
-/turf/open/floor/interior/wood,
+/turf/open/floor/interior/wood_sat,
 /area/forward_base/shipboard/brig/processing)
 "vxJ" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -50670,7 +50670,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/turf/open/floor/almayer/red/east,
+/turf/open/floor/interior/wood_sat,
 /area/forward_base/shipboard/brig/processing)
 "wbS" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -51134,7 +51134,7 @@
 	name = "Cell 1"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/interior/wood,
+/turf/open/floor/interior/wood_sat/damage_6,
 /area/forward_base/shipboard/brig/processing)
 "wvW" = (
 /obj/structure/sign/banners/colonial_marines_flag{
@@ -57097,7 +57097,7 @@ uZH
 uZH
 uZH
 uZH
-vlA
+uZH
 wMz
 aKg
 brJ
@@ -59098,7 +59098,7 @@ uZH
 yle
 jOH
 kEB
-ltE
+iSK
 euA
 xKd
 tey
@@ -98698,7 +98698,7 @@ kKj
 wWy
 wHI
 wHI
-wHI
+brV
 wHI
 wHI
 pvv
@@ -98866,7 +98866,7 @@ juR
 wHI
 sXH
 cJG
-vkH
+brV
 cFI
 fro
 ufb
@@ -99030,9 +99030,9 @@ nJk
 glF
 kKj
 juR
-wHI
+brV
 wbs
-tjV
+gyl
 iOD
 fro
 khO
@@ -99179,7 +99179,7 @@ hXu
 uhP
 uhP
 uhP
-rRx
+uZn
 gxW
 doS
 xFf
@@ -99199,7 +99199,7 @@ kKj
 juR
 wHI
 wHI
-vkH
+brV
 wHI
 qGn
 fro
@@ -99366,7 +99366,7 @@ kKj
 nwE
 wHI
 wHI
-vkH
+brV
 wHI
 fEK
 khO
@@ -99531,8 +99531,8 @@ nJk
 glF
 kKj
 juR
-wHI
-wbs
+brV
+brW
 vxH
 wvg
 fro
@@ -99701,7 +99701,7 @@ juR
 wHI
 sXH
 tsy
-vkH
+brV
 jaS
 fro
 fro
@@ -99867,7 +99867,7 @@ iCa
 wWy
 wHI
 wHI
-wHI
+brV
 wHI
 wHI
 pvv

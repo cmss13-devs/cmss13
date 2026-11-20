@@ -275,3 +275,7 @@
       scuttling instead of entering FTL while the hijacked dropship is inbound.
   Sulaboy:
   - balance: Jackboots have same storage as marine boots.
+2026-11-20:
+  Kugamo:
+  - bugfix: Fixed Working Joes/Gen 1 synth eyes not glowing in the dark.
+  - bugfix: Fixed species using emotes that didnt belong to their species runtiming.

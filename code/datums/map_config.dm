@@ -40,6 +40,7 @@
 
 	var/announce_text = ""
 	var/infection_announce_text = ""
+	var/survive_announce_text = ""
 	var/liaison_briefing = ""
 	var/list/co_briefing_files = list()
 
@@ -50,14 +51,14 @@
 	var/list/survivor_types
 	var/list/survivor_types_by_variant
 
+	var/list/survivor_types_mode_override
+	var/list/survivor_types_by_variant_mode_override
+
 	var/list/synth_survivor_types
 	var/list/synth_survivor_types_by_variant
 
 	var/list/CO_survivor_types
-	var/list/CO_survivor_types_by_variant
-
 	var/list/CO_insert_survivor_types
-	var/list/CO_insert_survivor_types_by_variant
 
 	var/list/colony_joe_types
 
@@ -261,7 +262,7 @@
 				log_world("[surv_type] isn't a proper typepath, removing from survivor_types list")
 				continue
 		pathed_survivor_types += survivor_typepath
-	survivor_types = pathed_survivor_types.Copy()
+	survivor_types = pathed_survivor_types
 
 	survivor_types_by_variant = list()
 	for(var/surv_type in survivor_types)
@@ -286,7 +287,7 @@
 				log_world("[synth_surv_type] isn't a proper typepath, removing from synth_survivor_types list")
 				continue
 		pathed_synth_survivor_types += synth_survivor_typepath
-	synth_survivor_types = pathed_synth_survivor_types.Copy()
+	synth_survivor_types = pathed_synth_survivor_types
 
 	synth_survivor_types_by_variant = list()
 	for(var/surv_type in synth_survivor_types)
@@ -311,7 +312,7 @@
 				log_world("[CO_surv_type] isn't a proper typepath, removing from CO_survivor_types list")
 				continue
 		pathed_CO_survivor_types += CO_survivor_typepath
-	CO_survivor_types = pathed_CO_survivor_types.Copy()
+	CO_survivor_types = pathed_CO_survivor_types
 
 	if(islist(json["CO_insert_survivor_types"]))
 		CO_insert_survivor_types = json["CO_insert_survivor_types"]
@@ -328,7 +329,7 @@
 				log_world("[CO_insert_surv_type] isn't a proper typepath, removing from CO_insert_survivor_types list")
 				continue
 		pathed_CO_insert_survivor_types += CO_insert_survivor_typepath
-	CO_insert_survivor_types = pathed_CO_insert_survivor_types.Copy()
+	CO_insert_survivor_types = pathed_CO_insert_survivor_types
 
 	if(islist(json["colony_joe_types"]))
 		colony_joe_types = json["colony_joe_types"]
@@ -345,7 +346,7 @@
 				log_world("[joe_type] isn't a proper typepath, removing from colony_joe_typepath list")
 				continue
 		pathed_colony_joe_types += colony_joe_typepath
-	colony_joe_types = pathed_colony_joe_types.Copy()
+	colony_joe_types = pathed_colony_joe_types
 
 	if (islist(json["monkey_types"]))
 		monkey_types = list()
@@ -429,6 +430,9 @@
 	if(json["infection_announce_text"])
 		infection_announce_text = json["infection_announce_text"]
 
+	if(json["survive_announce_text"])
+		survive_announce_text = json["survive_announce_text"]
+
 	if(json["liaison_briefing"])
 		liaison_briefing = json["liaison_briefing"]
 
@@ -482,9 +486,53 @@
 			var/datum/game_mode/G = a
 			gamemodes += initial(G.config_tag)
 
+	if (islist(json["survivor_types_mode_override"]))
+		survivor_types_mode_override = json["survivor_types_mode_override"]
+	else if ("survivor_types_mode_override" in json)
+		log_world("map_config survivor_types_mode_override is not a list!")
+		return
+
+	var/list/pathed_survivor_types_mode_override = list()
+	for(var/mode,options in survivor_types_mode_override)
+		if(!(mode in gamemode_names))
+			log_world("map_config has an invalid survivor_types_mode_override gamemode key!")
+			continue
+		if(mode == GAMEMODE_DISTRESS_SIGNAL)
+			log_world("survivor_types_mode_override should not override [GAMEMODE_DISTRESS_SIGNAL]! Use survivor_types instead.")
+		pathed_survivor_types_mode_override[mode] = list()
+		for(var/surv_type in options)
+			var/survivor_typepath = surv_type
+			if(!ispath(survivor_typepath))
+				survivor_typepath = text2path(surv_type)
+				if(!ispath(survivor_typepath))
+					log_world("[surv_type] isn't a proper typepath, removing from survivor_types_mode_override list")
+					continue
+			pathed_survivor_types_mode_override[mode] += survivor_typepath
+	survivor_types_mode_override = pathed_survivor_types_mode_override
+
+	survivor_types_by_variant_mode_override = list()
+	for(var/mode,options in survivor_types_mode_override)
+		survivor_types_by_variant_mode_override[mode] = list()
+		for(var/surv_type in options)
+			var/datum/equipment_preset/survivor/surv_equipment = surv_type
+			var/survivor_variant = initial(surv_equipment.survivor_variant)
+			if(!survivor_types_by_variant_mode_override[mode][survivor_variant])
+				survivor_types_by_variant_mode_override[mode][survivor_variant] = list()
+			survivor_types_by_variant_mode_override[mode][survivor_variant] += surv_type
+
 	defaulted = FALSE
 	return TRUE
 #undef CHECK_EXISTS
+
+/// Returns survivor_types respecting any survivor_types_mode_override for the current mode
+/datum/map_config/proc/get_relevant_survivor_types()
+	var/list/data = survivor_types_mode_override[GLOB.master_mode]
+	return data || survivor_types
+
+/// Returns survivor_types respecting any survivor_types_mode_override for the current mode
+/datum/map_config/proc/get_relevant_survivor_types_by_variant()
+	var/list/data = survivor_types_by_variant_mode_override[GLOB.master_mode]
+	return data || survivor_types_by_variant
 
 /datum/map_config/proc/GetFullMapPaths()
 	var/dirpath = "maps/[map_path]"

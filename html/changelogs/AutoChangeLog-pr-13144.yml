@@ -1,0 +1,5 @@
+author: "MarpleJones"
+delete-after: True
+changes:
+  - rscadd: "resting atop of a grenade as a living thing whilst conscious assumes you're doing it deliberately and for the greater good - you can now block grenades with your body"
+  - code_imp: "contain logic for smothering explosions, currently reserved for yeeting yourself at grenades"

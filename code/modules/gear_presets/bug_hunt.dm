@@ -141,6 +141,7 @@
 	assignment = JOB_RECON_CREWMAN
 	manifest_title = JOB_RECON_CREWMAN
 	paygrades = list(PAY_SHORT_MWO = JOB_PLAYTIME_TIER_0, PAY_SHORT_MCWO = 75 HOURS)
+	skills = /datum/skills/tank_crew/bug_hunt
 	hud_icon = "tc"
 	hud_color = "#32CD32"
 	utility_under = list(/obj/item/clothing/under/marine/officer/tanker)

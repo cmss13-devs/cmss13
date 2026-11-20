@@ -12,3 +12,6 @@
 
 /datum/skills/sl_pve/bug_hunt
 	additional_skills = list(SKILL_VEHICLE = SKILL_VEHICLE_CREWMAN, SKILL_OVERWATCH = SKILL_OVERWATCH_TRAINED)
+
+/datum/skills/tank_crew/bug_hunt
+	additional_skills = list(SKILL_MEDICAL = SKILL_MEDICAL_MEDIC)

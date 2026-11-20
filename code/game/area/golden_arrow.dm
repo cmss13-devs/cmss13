@@ -1,6 +1,6 @@
 /area/golden_arrow
 	parent_type = /area/almayer
-	name = "\improper USS Golden Arrow"
+	name = "\improper USS Halcyon"
 	powernet_name = "golden_arrow"
 	ambience_exterior = AMBIENCE_SHIP
 	requires_power = FALSE

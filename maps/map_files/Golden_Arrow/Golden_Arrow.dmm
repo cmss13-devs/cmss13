@@ -338,7 +338,7 @@
 	layer = 2.52
 	},
 /obj/structure/machinery/computer/cameras/almayer/vehicle{
-	network = list("Golden Arrow","Vehicle","Midway", "Tripoli");
+	network = list("Halcyon","Vehicle","Midway", "Tripoli");
 	pixel_x = 17;
 	dir = 8
 	},
@@ -1166,7 +1166,7 @@
 "cg" = (
 /obj/structure/sign/banners/colonial_marines_flag_worn{
 	pixel_y = 28;
-	desc = "A well worn flag of the USCM recovered from the original USS Golden Arrow. Nobody knows who recovered it, and whoever did has yet to step forth.";
+	desc = "A well worn flag of the USCM recovered from the original USS Halcyon. Nobody knows who recovered it, and whoever did has yet to step forth.";
 	pixel_x = 6
 	},
 /turf/open/floor/almayer/flooredgesmooth/north,
@@ -3081,6 +3081,7 @@
 	req_one_access_txt = "19;12"
 	},
 /obj/structure/closet/secure_closet/cmdcabinet/marine{
+	headset_type = /obj/item/device/radio/headset/almayer/mcom/spare/bug_hunt;
 	pixel_x = 6;
 	pixel_y = 28
 	},

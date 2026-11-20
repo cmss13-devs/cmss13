@@ -432,7 +432,11 @@
 					mobs_by_jobs[person.job] = list()
 				mobs_by_jobs[person.job] += person
 
-		for(var/job_by_chain in CHAIN_OF_COMMAND_ROLES)
+		var/list/command_roles = CHAIN_OF_COMMAND_ROLES
+		if(istype(src, /datum/game_mode/bug_hunt))
+			command_roles = list(JOB_CO, JOB_XO, JOB_SQUAD_LEADER, JOB_SQUAD_TEAM_LEADER, JOB_TANK_CREW, JOB_SQUAD_ENGI, JOB_SQUAD_MEDIC, JOB_SQUAD_MARINE)
+
+		for(var/job_by_chain in command_roles)
 			if(mobs_by_jobs[job_by_chain])
 				var/list/mob/living/candidates = list()
 				for(var/mob/living/candidate as anything in mobs_by_jobs[job_by_chain])

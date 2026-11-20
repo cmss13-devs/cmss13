@@ -220,7 +220,7 @@
 /datum/game_mode/bug_hunt/proc/mission_briefing()
 	var/briefing = "Snake Eaters, this is SOCOM Actual. Intelligence confirms a Class IV xenomorph infestation on [SSmapping.configs[GROUND_MAP].map_name], due to that, Special Operations Command has authorized a full extermination operation."
 	briefing += "\n\nYour platoon will conduct an insertion deep into infested territory. There is no civilian presence in the AO, as such, all surface movement is to be considered hostile. Expect contact from the moment you touch down."
-	briefing += "\n\nThe infestation has grown too extensive to eradicate through direct combat alone. As long as the hive cores remain intact, the enemy will continue to replenish its numbers. Locate and destroy all hive cores and return to the USS Golden Arrow."
+	briefing += "\n\nThe infestation has grown too extensive to eradicate through direct combat alone. As long as the hive cores remain intact, the enemy will continue to replenish its numbers. Locate and destroy all hive cores and return to the [MAIN_SHIP_NAME]."
 	briefing += "\n\nGood hunting, Snake Eaters. SOCOM Actual out."
 	marine_announcement(briefing, "USCM Special Operations Command", 'sound/AI/commandreport.ogg')
 	var/xeno_briefing = "The tallhosts will soon descend upon this world to destroy our hive. Our [hive_core_count] hive cores must be defended, if every core is destroyed, the hive is lost."

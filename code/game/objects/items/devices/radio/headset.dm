@@ -736,6 +736,10 @@
 	initial_keys = list(/obj/item/device/encryptionkey/mcom, /obj/item/device/encryptionkey/mmpo)
 	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB)
 
+/obj/item/device/radio/headset/almayer/mcom/spare/bug_hunt
+	frequency = SOF_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/mcom, /obj/item/device/encryptionkey/mmpo, /obj/item/device/encryptionkey/soc/bug_hunt)
+
 /obj/item/device/radio/headset/almayer/mcom/cdrcom/xo
 	locate_setting = TRACKER_CO
 

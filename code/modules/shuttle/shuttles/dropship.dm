@@ -397,7 +397,7 @@
 	roundstart_template = /datum/map_template/shuttle/normandy
 
 /obj/docking_port/stationary/marine_dropship/golden_arrow
-	name = "Golden Arrow Hangar"
+	name = "Halcyon Hangar"
 	id = ALMAYER_DROPSHIP_LZ1
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/alamo/typhoon

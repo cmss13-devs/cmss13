@@ -280,6 +280,8 @@
 
 
 // -- specific ability traits --
+/// Used by xenos with spit_windup: TRUE, currently used only by boiler.
+#define TRAIT_ABILITY_BOMBARD "t_ability_bombard"
 /// Used by ravager pounce to charge at enemies.
 #define TRAIT_ABILITY_POUNCE_CHARGE "t_ability_pounce_charge"
 /// Used for empower windup before ravager get empowered.

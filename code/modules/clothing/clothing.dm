@@ -58,6 +58,10 @@
 	if(flags_obj & OBJ_CAN_ACCESSORIZE)
 		.+= SPAN_ORANGE("This object can be converted into an accessory. Use it in-hand to convert it!")
 
+	var/obj/item/storage/internal/pockets = get_pockets()
+	if(pockets && (pockets.storage_flags & STORAGE_ALLOW_DRAWING_METHOD_TOGGLE))
+		. += "\nCtrl + Click to swap storage drawing method."
+
 /obj/item/clothing/unique_action(mob/user)
 	if(flags_obj & OBJ_IS_STYLISH)
 		change_style(user)
@@ -189,12 +193,12 @@
 			to_chat(usr, "Attached to \the [src] are [english_list(ties)].")
 		return
 
-/obj/item/clothing/attack_hand(mob/user as mob)
+/obj/item/clothing/attack_hand(mob/user as mob, mods)
 	//only forward to the attached accessory if the clothing is equipped (not in a storage)
 	if(LAZYLEN(accessories) && loc == user)
 		var/delegated //So that accessories don't block attack_hands unless they actually did something. Specifically meant for armor vests with medals, but can't hurt in general.
 		for(var/obj/item/clothing/accessory/A in accessories)
-			if(A.attack_hand(user))
+			if(A.attack_hand(user, mods))
 				delegated = TRUE
 		if(delegated)
 			return
@@ -623,12 +627,16 @@
 	return null
 
 /obj/item/clothing/clicked(mob/user, list/mods)
-	if(mods[ALT_CLICK] && mods[LEFT_CLICK] && loc == user && !user.get_active_hand()) //To pass quick-draw attempts to storage. See storage.dm for explanation.
-		for(var/V in verbs)
-			if(V == /obj/item/clothing/suit/storage/verb/toggle_draw_mode) //So that alt-clicks are only intercepted for clothing items with internal storage and toggleable draw modes.
-				return
 
 	var/obj/item/storage/internal/pockets = get_pockets()
+
+	if(mods[ALT_CLICK] && mods[LEFT_CLICK] && loc == user && !user.get_active_hand() && (pockets.storage_flags & STORAGE_ALLOW_DRAWING_METHOD_TOGGLE)) //To pass quick-draw attempts to storage. See storage.dm for explanation.
+		//So that alt-clicks are only intercepted for clothing items with internal storage and toggleable draw modes.
+		return
+
+	if(pockets && loc == user && mods[CTRL_CLICK] && (pockets.storage_flags & STORAGE_ALLOW_DRAWING_METHOD_TOGGLE))
+		return
+
 	if(pockets && CAN_PICKUP(user, src) && ((mods[RIGHT_CLICK] && !mods[ALT_CLICK]) || (mods[MIDDLE_CLICK] && !mods[SHIFT_CLICK])))
 		pockets.open(user)
 		return TRUE

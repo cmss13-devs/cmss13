@@ -164,7 +164,7 @@
 	return TRUE
 
 /// Returns whether the new_player was able to be assigned a landmark
-/datum/job/proc/assign_landmark(mob/new_player)
+/datum/job/proc/assign_landmark(mob/new_player, latejoin)
 	return TRUE
 
 /datum/job/proc/get_role_requirements(client/C)
@@ -210,14 +210,13 @@
 /datum/job/proc/set_spawn_positions(count)
 	return
 
-/datum/job/proc/create_landmark_lists()
+/datum/job/proc/create_landmark_lists(force)
 	return
 
 /datum/job/proc/spawn_and_equip(mob/new_player/player)
 	CRASH("A job without a set spawn_and_equip proc has handle_spawn_and_equip set to TRUE!")
 
 /datum/job/proc/generate_money_account(mob/living/carbon/human/account_user)
-
 	var/datum/money_account/generated_account
 	//Give them an account in the database.
 	if(!(flags_startup_parameters & ROLE_NO_ACCOUNT))
@@ -275,14 +274,14 @@
 /datum/job/proc/get_total_positions(latejoin)
 	return latejoin ? total_positions : spawn_positions
 
-/datum/job/proc/spawn_in_player(mob/new_player/NP)
-	if(!istype(NP))
+/datum/job/proc/spawn_in_player(mob/new_player/new_player)
+	if(!istype(new_player))
 		return
 
-	var/mob/living/carbon/human/new_character = new(NP.loc)
-	new_character.lastarea = get_area(NP.loc)
+	var/mob/living/carbon/human/new_character = new(new_player.loc)
+	new_character.lastarea = get_area(new_player.loc)
 
-	setup_human(new_character, NP)
+	setup_human(new_character, new_player)
 
 	return new_character
 
@@ -372,6 +371,7 @@
 
 /// Intended to be overwritten to handle when a job has variants that can be selected.
 /datum/job/proc/handle_job_options(option)
+	SHOULD_NOT_SLEEP(TRUE)
 	return
 
 /// Intended to be overwritten to handle any requirements for specific job variations that can be selected

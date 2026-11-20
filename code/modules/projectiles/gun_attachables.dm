@@ -885,6 +885,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	var/helm_mounted_light_power = 2
 	var/helm_mounted_light_range = 3
+	var/dim_light = TRUE // As per maintainer request, rail flashlights will be dimmed when the weapon they're attached to is put away in the suit slot or back slot
 
 	var/datum/action/item_action/activation
 	var/obj/item/attached_item
@@ -970,9 +971,13 @@ Defined in conflicts.dm of the #defines folder.
 
 	var/obj/item/weapon/gun/attached_gun = loc
 
+	var/applied_light_mod = light_mod
+	if(dim_light && attached_gun.rail_light_stowed)
+		applied_light_mod *= DIMMED_RAIL_LIGHT_MULT
+
 	if(toggle_on && !light_on)
-		attached_gun.set_light_range(attached_gun.light_range + light_mod)
-		attached_gun.set_light_power(attached_gun.light_power + (light_mod * 0.5))
+		attached_gun.set_light_range(attached_gun.light_range + applied_light_mod)
+		attached_gun.set_light_power(attached_gun.light_power + (applied_light_mod * 0.5))
 		if(!(attached_gun.flags_gun_features & GUN_FLASHLIGHT_ON))
 			attached_gun.set_light_color(COLOR_WHITE)
 			attached_gun.set_light_on(TRUE)
@@ -980,8 +985,8 @@ Defined in conflicts.dm of the #defines folder.
 			attached_gun.flags_gun_features |= GUN_FLASHLIGHT_ON
 
 	if(!toggle_on && light_on)
-		attached_gun.set_light_range(attached_gun.light_range - light_mod)
-		attached_gun.set_light_power(attached_gun.light_power - (light_mod * 0.5))
+		attached_gun.set_light_range(attached_gun.light_range - applied_light_mod)
+		attached_gun.set_light_power(attached_gun.light_power - (applied_light_mod * 0.5))
 		if(attached_gun.flags_gun_features & GUN_FLASHLIGHT_ON)
 			attached_gun.set_light_on(FALSE)
 			light_on = FALSE
@@ -1037,6 +1042,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "flashgrip_a"
 	light_mod = 5
 	slot = "under"
+	dim_light = FALSE
 	attachment_action_type = /datum/action/item_action/toggle/flashlight_grip
 	original_state = "flashgrip"
 	original_attach = "flashgrip_a"
@@ -1060,6 +1066,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "vplaserlight_a"
 	light_mod = 5
 	slot = "under"
+	dim_light = FALSE
 	attachment_action_type = /datum/action/item_action/toggle/flashlight_grip
 	original_state = "vplaserlight"
 	original_attach = "vplaserlight_a"
@@ -3935,6 +3942,12 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = -SCATTER_AMOUNT_TIER_10
 	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_9
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
+
+/obj/item/attachable/lasersight/vp
+	name = "VP78M6 laser module"
+	desc = "A compact, high-precision laser sight engineered exclusively for the VP78M6. Offers exceptional accuracy gains by interfacing directly with the weapon's internal targeting systems."
+	icon_state = "laservp"
+	attach_icon = "laservp_a"
 
 /obj/item/attachable/lasersight/micro
 	name = "micro laser module"

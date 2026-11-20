@@ -268,7 +268,7 @@
 /// Mob can open xeno doors and hugger/traps ignore them
 #define TRAIT_XENO_RECOGNIZED "xeno_recognized"
 
-// -- ability traits --
+// -- general ability traits --
 /// Xenos with this trait cannot have plasma transferred to them
 #define TRAIT_ABILITY_NO_PLASMA_TRANSFER "t_ability_no_plasma_transfer"
 /// Shows that the xeno queen is on ovi
@@ -277,6 +277,15 @@
 #define TRAIT_ABILITY_BURROWED "t_ability_burrowed"
 /// Xenos with this trait can toggle long sight while resting.
 #define TRAIT_ABILITY_SIGHT_IGNORE_REST "t_ability_sight_ignore_rest"
+
+
+// -- specific ability traits --
+/// Used by ravager pounce to charge at enemies.
+#define TRAIT_ABILITY_POUNCE_CHARGE "t_ability_pounce_charge"
+/// Used for empower windup before ravager get empowered.
+#define TRAIT_ABILITY_PRE_EMPOWER "t_ability_pre_empower"
+/// Used by empower to give ravager boost to abilities after meeting target threshold.
+#define TRAIT_ABILITY_SUPER_EMPOWER "t_ability_super_empower"
 /// Used by shielder to check stance.
 #define TRAIT_ABILITY_ENCLOSED_PLATES "t_ability_enclosed_plates"
 /// Used by shielder for reflective plates.

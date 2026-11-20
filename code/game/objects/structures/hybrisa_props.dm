@@ -1484,6 +1484,14 @@
 	icon_state = "solidgrate1"
 	layer = HATCH_LAYER
 
+/obj/structure/prop/hybrisa/misc/floorprops/Initialize(mapload, ...)
+	. = ..()
+	var/turf/turf = get_turf(src)
+	if(SSwater_overlays.is_water(turf))
+		var/turf/open/open_turf = turf
+		open_turf.stop_being_water()
+
+
 /obj/structure/prop/hybrisa/misc/floorprops/grate
 	name = "solid metal grate"
 	desc = "A metal grate."

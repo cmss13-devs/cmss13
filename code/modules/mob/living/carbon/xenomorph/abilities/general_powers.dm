@@ -654,6 +654,7 @@
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] [action_text][findtext(action_text, "e", -1) || findtext(action_text, "p", -1) ? "s" : "es"] at [target]!"), SPAN_XENOWARNING("We [action_text] at [target]!"))
 
 	pre_pounce_effects()
+	SEND_SIGNAL(owner, COMSIG_XENO_POUNCE_STARTED, target)
 
 	xeno.pounce_distance = get_dist(xeno, target)
 	if(xeno.z != target.z)
@@ -727,14 +728,21 @@
 		to_chat(xeno, SPAN_NOTICE("We are now hiding."))
 		button.icon_state = "template_active"
 		RegisterSignal(xeno, COMSIG_MOB_STATCHANGE, PROC_REF(unhide_on_stat))
+		RegisterSignal(xeno, COMSIG_LIVING_PRE_DOAFTER, PROC_REF(unhide_on_action))
 	else
 		xeno.layer = initial(xeno.layer)
 		to_chat(xeno, SPAN_NOTICE("We have stopped hiding."))
 		button.icon_state = "template_xeno"
-		UnregisterSignal(xeno, COMSIG_MOB_STATCHANGE)
+		UnregisterSignal(xeno, list(COMSIG_MOB_STATCHANGE, COMSIG_LIVING_PRE_DOAFTER))
 	xeno.update_wounds()
 	apply_cooldown()
 	return ..()
+
+/// SIGNAL_HANDLER for COMSIG_LIVING_PRE_DOAFTER
+/datum/action/xeno_action/onclick/xenohide/proc/unhide_on_action(source, delay)
+	SIGNAL_HANDLER
+	if(delay > 0)
+		post_attack()
 
 /datum/action/xeno_action/onclick/xenohide/proc/unhide_on_stat(mob/living/carbon/xenomorph/source, new_stat, old_stat)
 	SIGNAL_HANDLER
@@ -785,7 +793,7 @@
 	xeno.use_plasma(plasma_cost)
 	playsound(xeno.loc, "alien_resin_build", 25)
 	new /obj/effect/alien/resin/trap(turf, xeno)
-	to_chat(xeno, SPAN_XENONOTICE("We place a resin hole on the weeds, it still needs a sister to fill it with acid."))
+	to_chat(xeno, SPAN_XENONOTICE("We place a resin hole on the weeds, it still needs a sister to fill it with acid or a facehugger."))
 	return ..()
 
 /turf/proc/check_xeno_trap_placement(mob/living/carbon/xenomorph/xeno)
@@ -1009,6 +1017,35 @@
 			return FALSE
 	return TRUE
 
+/datum/action/xeno_action/activable/xeno_spit/on_select(mob/user)
+	. = ..()
+	if(retarget_after_windup)
+		RegisterSignal(owner, COMSIG_MOB_MOUSEDRAG, PROC_REF(change_target))
+		RegisterSignal(owner, COMSIG_MOB_MOUSEDOWN, PROC_REF(on_mouse_down))
+
+/datum/action/xeno_action/activable/xeno_spit/proc/on_mouse_down(mob/source, atom/target, turf, skin_ctl, params)
+	SIGNAL_HANDLER
+
+	var/list/mods = params2list(params)
+	if(target) //in case we reclick to reaim before the mouse drag gets to registered
+		new_target = target
+		owner?.face_atom(new_target)
+	source.click(target, mods)
+
+/datum/action/xeno_action/activable/xeno_spit/on_deselect()
+	if(retarget_after_windup)
+
+		UnregisterSignal(owner, COMSIG_MOB_MOUSEDRAG)
+		UnregisterSignal(owner, COMSIG_MOB_MOUSEDOWN)
+
+
+/datum/action/xeno_action/activable/xeno_spit/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
+	SIGNAL_HANDLER
+	var/possible_new_target = get_turf_on_clickcatcher(over_object, owner, params)
+	if(possible_new_target)
+		new_target = possible_new_target
+		owner?.face_atom(new_target)
+
 /datum/action/xeno_action/activable/xeno_spit/use_ability(atom/atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	var/spit_target = aim_turf ? get_turf(atom) : atom
@@ -1045,7 +1082,11 @@
 		if (!do_after(xeno, xeno.ammo.spit_windup, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			to_chat(xeno, SPAN_XENODANGER("We decide to cancel our spit."))
 			spitting = FALSE
+			new_target = null
 			return
+		if(retarget_after_windup && new_target)
+			spit_target = new_target
+			new_target = null
 	plasma_cost = xeno.ammo.spit_cost
 
 	if(!check_and_use_plasma_owner())

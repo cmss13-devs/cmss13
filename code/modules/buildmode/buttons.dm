@@ -18,11 +18,11 @@
 	icon_state = "buildmode_basic"
 	screen_loc = "NORTH,WEST"
 
-/atom/movable/screen/buildmode/mode/clicked(location, list/modifiers)
+/atom/movable/screen/buildmode/mode/clicked(mob/user, list/modifiers)
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
 		bd.toggle_modeswitch()
 	else if(LAZYACCESS(modifiers, RIGHT_CLICK))
-		bd.mode.change_settings(usr.client)
+		bd.mode.change_settings(user.client)
 
 	update_icon()
 	return TRUE

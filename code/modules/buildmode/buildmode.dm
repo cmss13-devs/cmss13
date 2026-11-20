@@ -140,6 +140,8 @@
 	return TRUE
 
 /datum/buildmode/proc/InterceptClickOn(mob/user, params, atom/object)
+	if(istype(object, /atom/movable/screen))
+		return FALSE
 	if(mode.when_clicked(user.client, params, object))
 		return FALSE //cancel the intercept
 	return TRUE // no doing underlying actions

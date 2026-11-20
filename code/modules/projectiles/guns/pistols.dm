@@ -36,7 +36,7 @@
 		/obj/item/attachable/burstfire_assembly,
 	)
 
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED //For easy reference.
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AUTO_EJECT_CASINGS //For easy reference.
 	gun_category = GUN_CATEGORY_HANDGUN
 
 /obj/item/weapon/gun/pistol/Initialize(mapload, spawn_empty)
@@ -61,7 +61,7 @@
 	icon_state = "m4a3"
 	item_state = "m4a3"
 	current_mag = /obj/item/ammo_magazine/pistol
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/suppressor/sleek,
@@ -162,7 +162,7 @@
 	desc = "A timeless classic since the first World War, the M1911A1 has limited use with the USCM, and is often used as a sidearm by non-governmental bodies due to its reliability. This is a modernized version with an ammo counter and a polymer grip, designated M48A4. Chambered in .45 ACP."
 	icon_state = "m4a345_s"
 	item_state = "m4a3"
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS
 
 /obj/item/weapon/gun/pistol/m1911/socom/set_gun_config_values()
 	..()
@@ -199,7 +199,7 @@
 	desc = "A variant of the legendary M1911 pistol in use by USCM command elements. Based off the modernized M48A4, it has been modified to more closely resemble a classic M1911 in shape, while retaining modern technology features like a discreet ammo counter. Chambered in .45 ACP."
 	icon_state = "m1911c"
 	item_state = "m4a3"
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_BATTLEFIELD_EXECUTION|GUN_CAN_WARNING_SHOT
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_BATTLEFIELD_EXECUTION|GUN_CAN_WARNING_SHOT|GUN_AUTO_EJECT_CASINGS
 	current_mag = /obj/item/ammo_magazine/pistol/m1911/highimpact
 	unacidable = TRUE
 	explo_proof = TRUE
@@ -345,7 +345,7 @@
 	item_state = "np92"
 	fire_sound = "88m4"
 	current_mag = /obj/item/ammo_magazine/pistol/np92
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/suppressor/sleek,
@@ -380,7 +380,7 @@
 	inherent_traits = list(TRAIT_GUN_SILENCED)
 	fire_sound = "gun_silenced"
 	current_mag = /obj/item/ammo_magazine/pistol/np92/suppressed
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small,
@@ -403,7 +403,7 @@
 	item_state = "tt"
 	fire_sound = 'sound/weapons/gun_tt.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/t73
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot/small,
@@ -439,7 +439,7 @@
 	icon_state = "ttb"
 	item_state = "ttb"
 	current_mag = /obj/item/ammo_magazine/pistol/t73_impact
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/pistol/t73,
 		/obj/item/ammo_magazine/pistol/t73_impact,
@@ -604,7 +604,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/pistols.dmi'
 	icon_state = "m43"
 	item_state = "m43"
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AUTO_EJECT_CASINGS
 	fire_sound = 'sound/weapons/gun_m43.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/clfpistol
 	w_class = SIZE_TINY
@@ -739,7 +739,7 @@
 	icon_state = "highpower_tac"
 	item_state = "highpower_tac"
 	starting_attachment_types = list(/obj/item/attachable/suppressor, /obj/item/attachable/lasersight, /obj/item/attachable/reflex)
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS
 
 
 
@@ -758,7 +758,7 @@
 	unload_sound = 'sound/weapons/gun_88m4_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/mod88
 	force = 8
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/suppressor/sleek,
@@ -865,7 +865,7 @@
 	unload_sound = 'sound/weapons/gun_vp78_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/vp78
 	force = 8
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/suppressor/sleek,
@@ -917,6 +917,55 @@
 
 /obj/item/weapon/gun/pistol/vp78/army/heap
 	current_mag = /obj/item/ammo_magazine/pistol/vp78/heap
+
+/obj/item/weapon/gun/pistol/vp78/vp78m6
+	name = "\improper VP78M6 pistol"
+	desc = "The VP78M6, often called the 'Mod Six', or just 'Sixes', are enhanced variants of the VP78 combat pistol. Smoother trigger assemblies, formed grips, longer shrouded barrels. These M6's have been modified to have special counterweights in the receivers and under the barrels to resist muzzle climb, allowing for much better handling, so much better, in fact, that holding just one doesn't feel right."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
+	icon_state = "vp78m6"
+	item_state = "vp78m6"
+	fire_sound = 'sound/weapons/gun_vp78m6_fire.ogg'
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AKIMBO_ALLOWED
+	var/last_firing_sound_time = -1 //makes it not rupture your eardrums when dual wield firing
+
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor/sleek,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/lasersight/vp,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/extended_barrel,
+	)
+
+/obj/item/weapon/gun/pistol/vp78/vp78m6/handle_starting_attachment()
+	if(LAZYLEN(starting_attachment_types))
+		for(var/path in starting_attachment_types)
+			var/obj/item/attachable/starting_attachment = new path(src)
+			starting_attachment.Attach(src)
+			update_attachable(starting_attachment.slot)
+
+	var/obj/item/attachable/lasersight/vp/attachment = new(src)
+	attachment.flags_attach_features &= ~ATTACH_REMOVABLE
+	attachment.hidden = FALSE
+	attachment.Attach(src)
+	update_attachable(attachment.slot)
+
+/obj/item/weapon/gun/pistol/vp78/vp78m6/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 20, "rail_x" = 10, "rail_y" = 23, "under_x" = 21, "under_y" = 13, "stock_x" = 18, "stock_y" = 14)
+
+/obj/item/weapon/gun/pistol/vp78/vp78m6/play_firing_sounds(obj/projectile/projectile_to_fire, mob/user)
+	if(!user || flags_gun_features & GUN_SILENCED || active_attachable?.flags_attach_features & ATTACH_PROJECTILE || projectile_to_fire.ammo?.sound_override)
+		return ..()
+
+	var/obj/item/weapon/gun/pistol/vp78/vp78m6/other_pistol = user.get_active_hand() == src ? user.get_inactive_hand() : user.get_active_hand()
+	if(istype(other_pistol) && other_pistol != src && other_pistol.fire_sound == fire_sound && other_pistol.last_firing_sound_time == world.time)
+		return
+
+	last_firing_sound_time = world.time
+	return ..()
 
 
 //-------------------------------------------------------
@@ -998,7 +1047,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	fire_sound = 'sound/weapons/gun_su6.ogg'
 	reload_sound = 'sound/weapons/handling/gun_su6_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_su6_unload.ogg'
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS // strange lore suggests refraining on using normal smartgun rounds for modified .45 ACP for this pistol but lets let it leave casings for now
 
 /obj/item/weapon/gun/pistol/smart/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 13, "rail_y" = 22, "under_x" = 24, "under_y" = 17, "stock_x" = 24, "stock_y" = 17)
@@ -1038,7 +1087,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	)
 	fire_sound = 'sound/weapons/gun_skorpion.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/skorpion
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AUTO_EJECT_CASINGS
 	attachable_allowed = list(
 		/obj/item/attachable/reddot, //Rail
 		/obj/item/attachable/reddot/small,

@@ -127,8 +127,9 @@
 #define ORDER_FOCUS_MAX_LEVEL   50
 
 //Human Overlays Indexes used in update_icons/////////
-#define BODYPARTS_LAYER 43
-#define DAMAGE_LAYER 42
+#define BODYPARTS_LAYER 44
+#define DAMAGE_LAYER 43
+#define EYES_LAYER 42	//eyes above damage
 
 #define UNDERWEAR_LAYER 41
 #define UNDERSHIRT_LAYER 40
@@ -189,7 +190,7 @@
 /// If you're hit by an acid DoT
 #define EFFECTS_LAYER 1
 
-#define TOTAL_LAYERS 43
+#define TOTAL_LAYERS 44
 #define MAX_HEAD_GARB_LAYERS 6
 //////////////////////////////////
 
@@ -243,5 +244,18 @@
 
 /// default skin color
 #define SKIN_COLOR_PALE2 "Pale 2"
+
+/// eyelid states
+#define EYELID_OPEN "open"
+#define EYELID_CLOSED "closed"
+#define EYELID_CLOSED_VOLUNTARILY "closed_voluntarily"
+#define EYELID_SWITCH "switch"
+#define EYELID_FLAYED "flayed"
+
+/// How long the lids stay closed during a normal life blink
+#define EYELID_BLINK_CLOSED_TIME (0.15 SECONDS)
+
+/// Base open interval between normal blinks (seconds, before status modifiers)
+#define EYELID_BLINK_OPEN_BASE 3
 
 //--- end ---//

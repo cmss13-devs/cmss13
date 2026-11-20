@@ -49,7 +49,7 @@
 	if(!COOLDOWN_FINISHED(src, xeno_alert_cooldown))
 		return
 	COOLDOWN_START(src, xeno_alert_cooldown, 5 MINUTES)
-	shipwide_ai_announcement("Unidentified lifesigns detected inside the base. Recommendation: lockdown of exterior access ports, including ducting and ventilation.", "Unidentified Lifesigns", 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
+	shipwide_ai_announcement("Unidentified lifesigns detected in [get_area(xeno)]. Recommendation: lockdown of exterior access ports, including ducting and ventilation.", "Unidentified Lifesigns", 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
 
 /area/forward_base/command
 	minimap_color = MINIMAP_AREA_COMMAND

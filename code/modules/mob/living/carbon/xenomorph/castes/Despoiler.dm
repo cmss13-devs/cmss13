@@ -11,7 +11,7 @@
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
 	armor_deflection = XENO_ARMOR_TIER_2
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_TIER_6 + XENO_SPEED_FASTMOD_TIER_3
+	speed = XENO_SPEED_TIER_6 + XENO_SPEED_FASTMOD_TIER_5
 
 	deevolves_to = list(XENO_CASTE_SPITTER)
 	acid_level = 3
@@ -54,7 +54,6 @@
 		/datum/action/xeno_action/activable/acid_barrage,
 		/datum/action/xeno_action/activable/pounce/caustic_embrace,
 		/datum/action/xeno_action/onclick/oozing_wounds,
-		/datum/action/xeno_action/onclick/catalyze,
 	)
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_3/despoiler.dmi'
@@ -106,7 +105,6 @@
 /datum/behavior_delegate/despoiler_base
 	name = "Base Despoiler Behavior Delegate"
 
-	var/next_ability_empowered = FALSE
 	var/image/empowered_overlay
 
 	// State
@@ -116,6 +114,19 @@
 	var/last_combat_time = 0
 	var/last_hypertension_loss_time = 0
 	var/hypertension_loss_time = 10 SECONDS
+	var/cooldown_reduction_per_stack = 0.5 SECONDS
+	var/max_cooldown_reduction = 1.5 SECONDS
+
+/datum/behavior_delegate/despoiler_base/proc/add_overlay()
+	empowered_overlay = image('icons/mob/xenos/castes/tier_3/despoiler.dmi', "hypertension")
+	empowered_overlay.layer = FLY_LAYER
+	empowered_overlay.plane = ABOVE_GAME_PLANE
+	bound_xeno.overlays |= empowered_overlay
+
+/datum/behavior_delegate/despoiler_base/proc/remove_overlay()
+	bound_xeno.overlays -= empowered_overlay
+
+
 
 /datum/behavior_delegate/despoiler_base/proc/increase_hypertension(amount)
 	var/mob/living/carbon/xenomorph/despoiler/xeno = bound_xeno
@@ -135,6 +146,9 @@
 /datum/behavior_delegate/despoiler_base/melee_attack_additional_effects_self()
 	..()
 	last_combat_time = world.time
+	var/datum/action/xeno_action/activable/pounce/caustic_embrace/cAction = get_action(bound_xeno, /datum/action/xeno_action/activable/pounce/caustic_embrace)
+	if(!cAction.action_cooldown_check())
+		cAction.reduce_cooldown(min(hypertension_stacks * cooldown_reduction_per_stack, max_cooldown_reduction))
 
 /datum/behavior_delegate/despoiler_base/melee_attack_modify_burn_damage(original_damage, mob/living/carbon/target_carbon)
 	if (!isxeno_human(target_carbon))
@@ -143,17 +157,19 @@
 	increase_hypertension(100)
 	var/burn_damage = hypertension_stacks * 5
 
-	if(hypertension_stacks < 3)
-		return original_damage + burn_damage
-
 	var/datum/effects/acid/acid_effect = locate() in target_carbon.effects_list
 	var/speed_up_progress = (hypertension_stacks - 2) * 5
 
-	if(!acid_effect)
-		acid_effect = new /datum/effects/acid/(target_carbon)
-
-	acid_effect.increment_duration(speed_up_progress)
-	to_chat(target_carbon, SPAN_XENOHIGHDANGER("You feel a burning pain as [bound_xeno] slashes you, covering you in acid!"))
+	//fallowing are not exclusive and do add up
+	if(hypertension_stacks >= 2 && !acid_effect)
+		acid_effect = new /datum/effects/acid/(target_carbon, bound_xeno)
+	if(hypertension_stacks >= 3)
+		acid_effect.enhance_acid()
+	if(hypertension_stacks >= 4)
+		acid_effect.enhance_acid(TRUE)
+	if(acid_effect)
+		acid_effect.increment_duration(speed_up_progress)
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You feel a burning pain as [bound_xeno] slashes you, covering you in acid!"))
 
 	return original_damage + burn_damage
 
@@ -206,6 +222,10 @@
 	charge_overlay.layer = FLY_LAYER
 	charge_overlay.plane = ABOVE_GAME_PLANE
 	owner.overlays |= charge_overlay
+	if(stage == 1)
+		var/mob/living/carbon/xenomorph/despoiler/xeno = owner
+		var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
+		delegate.add_overlay()
 
 /datum/action/xeno_action/activable/acid_barrage/proc/notify_max_charge()
 	to_chat(owner, SPAN_XENOHIGHDANGER("Our acid barrage is full!"))
@@ -226,23 +246,29 @@
 	xeno.recalculate_speed()
 
 	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
+	delegate.remove_overlay()
 	var/time_charged = min(world.time - start_time, max_charge_time)
 	var/modifier = 0
-	if(delegate.next_ability_empowered)
-		delegate.next_ability_empowered = FALSE
-		modifier = round((time_charged / max_charge_time) * empower_modifier)
-		xeno.overlays -= delegate.empowered_overlay
+	if(delegate.hypertension_stacks)
+		modifier = round(min(delegate.hypertension_stacks, 3 * (time_charged / max_charge_time))) //how many stacks did we consume
+		delegate.hypertension_stacks -= modifier
+		xeno.update_hypertension()
+		modifier *= 4 //4 more spits per consumed stack
 
 	var/barrage_size = max(round((time_charged / max_charge_time) * max_volley), min_volley) + modifier
 	playsound(xeno, "alien_roarhiss", 30, 0, status = 0)
 	playsound(xeno.loc, "acid_spit", 25, 1)
 	var/list/barricade_damage = list()
+	var/list/mob_hits_remaining = list()
 	for(var/index in 1 to barrage_size)
 		var/initial_angle = Get_Angle(xeno, target)
 		var/rand_angle = rand(-scatter, scatter)
-		var/turf/new_target = get_angle_target_turf(xeno, initial_angle + rand_angle, rand(1, 6))
+		var/turf/new_target = get_turf(target)
+		if(barrage_size > 1)
+			new_target = get_angle_target_turf(xeno, initial_angle + rand_angle, rand(1, 6))
 		var/obj/projectile/despoiler/proj = new (get_turf(xeno), create_cause_data(xeno.ammo.name, xeno))
 		proj.barricade_damage = barricade_damage
+		proj.mob_hits_remaining = mob_hits_remaining
 		var/matrix/scale_matrix = matrix()
 		var/factor = rand(0.9, 1.33)
 		scale_matrix.Scale(factor, factor)
@@ -252,31 +278,115 @@
 		proj.def_zone = xeno.get_limbzone_target()
 		proj.fire_at(new_target, xeno, xeno, xeno.ammo.max_range, xeno.ammo.shell_speed)
 
-/datum/action/xeno_action/activable/pounce/caustic_embrace/use_ability(atom/target)
+/datum/action/xeno_action/activable/pounce/caustic_embrace/on_select(mob/user)
+	RegisterSignal(user, COMSIG_MOB_MOUSEDOWN, PROC_REF(on_mouse_down))
+
+/datum/action/xeno_action/activable/pounce/caustic_embrace/proc/on_mouse_down(mob/source, atom/target, turf, skin_ctl, params)
+	SIGNAL_HANDLER
+	var/list/mods = params2list(params)
+	source.click(target, mods)
+
+/datum/action/xeno_action/activable/pounce/caustic_embrace/on_deselect(mob/user)
+	UnregisterSignal(user, COMSIG_MOB_MOUSEDOWN)
+	UnregisterSignal(user, COMSIG_MOB_MOUSEUP)
+	if(timer)
+		deltimer(timer)
+		timer = null
+	if(charge_overlay)
+		owner.overlays -= charge_overlay
+		charge_overlay = null
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
-	if(!action_cooldown_check() || xeno.action_busy)
+	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
+	delegate.remove_overlay()
+	if(action_cooldown_check())
+		stage = 0
+
+
+/datum/action/xeno_action/activable/pounce/caustic_embrace/use_ability(atom/target, list/unused_arguments, released = FALSE)
+	if(!action_cooldown_check())
 		return
 
+	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
 	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
-	windup = delegate.next_ability_empowered
-	tracks_target = !windup
-	if(windup)
-		distance = empowered_distance
-	else
-		distance = initial(distance)
+	delegate.remove_overlay()
+	UnregisterSignal(owner, COMSIG_MOB_MOUSEUP)
+	if(timer)
+		deltimer(timer)
+		timer = null
+	if(charge_overlay)
+		owner.overlays -= charge_overlay
+		charge_overlay = null
+	if(xeno.action_busy || !check_plasma_owner())
+		stage = 0
+		return
+
+	if(!released && owner.client?.holding_click)
+		RegisterSignal(owner, COMSIG_MOB_MOUSEUP, PROC_REF(release_charge))
+		stage = 0
+		update_charge_overlay()
+		timer = addtimer(CALLBACK(src, PROC_REF(update_charge)), (max_charge_time / 2), TIMER_STOPPABLE)
+		return
+	stage = min(stage, delegate.hypertension_stacks)
+	distance = initial(distance) + stage * 2
+	windup = !!stage
 
 	. = ..()
+	if(.)
+		delegate.hypertension_stacks -= stage
+		xeno.update_hypertension()
+		if(!speed_buff_active)
+			speed_buff_active = TRUE
+			xeno.speed_modifier -= speed_buff_amount
+			xeno.recalculate_speed()
+			addtimer(CALLBACK(src, PROC_REF(remove_speed_buff)), speed_buff_duration)
+	distance = initial(distance)
+	stage = 0
+
+
+/datum/action/xeno_action/activable/pounce/caustic_embrace/proc/remove_speed_buff()
+	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
+	if(!istype(xeno))
+		return
+
+	xeno.speed_modifier += speed_buff_amount
+	xeno.recalculate_speed()
+	speed_buff_active = FALSE
+
+
+/datum/action/xeno_action/activable/pounce/caustic_embrace/proc/release_charge(atom/source, atom/target)
+	SIGNAL_HANDLER
+	UnregisterSignal(owner, COMSIG_MOB_MOUSEUP)
+	INVOKE_ASYNC(src, PROC_REF(use_ability), target, null, TRUE)
+
+/datum/action/xeno_action/activable/pounce/caustic_embrace/proc/update_charge()
+	if(!action_cooldown_check())//we have released the ability
+		return
+	stage ++
+
+	update_charge_overlay()
+	if(stage == 2)
+		return
+	else
+		var/mob/living/carbon/xenomorph/despoiler/xeno = owner
+		var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
+		delegate.add_overlay()
+	timer = addtimer(CALLBACK(src, PROC_REF(update_charge)), (max_charge_time / 2), TIMER_STOPPABLE)
+
+/datum/action/xeno_action/activable/pounce/caustic_embrace/proc/update_charge_overlay()
+	if(charge_overlay)
+		owner.overlays -= charge_overlay
+	var/icon = min(stage*2, 3)
+	charge_overlay = image('icons/mob/do_afters.dmi', "charge_[icon]", pixel_x = 10, pixel_y = 54)
+	charge_overlay.layer = FLY_LAYER
+	charge_overlay.plane = ABOVE_GAME_PLANE
+	owner.overlays |= charge_overlay
+
 
 /datum/action/xeno_action/activable/pounce/caustic_embrace/pre_windup_effects()
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
-	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
-	windup = delegate.next_ability_empowered
-	if(!windup)
-		distance = initial(distance)
+	if(!stage)
 		return
 
-	delegate.next_ability_empowered = FALSE
-	xeno.overlays -= delegate.empowered_overlay
 	xeno.visible_message(SPAN_XENODANGER("[xeno] rears back, acid dripping from its jaws!"), SPAN_XENONOTICE("We prepare to charge!"))
 	playsound(xeno, "acid_spit", 40, TRUE)
 	new /obj/effect/xenomorph/xeno_telegraph/yellow(get_turf(xeno), windup_duration)
@@ -285,7 +395,7 @@
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
 	xeno.emote("roar")
 
-	if(windup)
+	if(stage)
 		return // Handled in additional_effects()
 
 	var/list/turfs = orange(1, get_turf(xeno)) - get_step(xeno.loc, REVERSE_DIR(xeno.dir))
@@ -299,6 +409,7 @@
 			else if(n_acid_damage <= 0.67*damage)
 				to_chat(target, SPAN_WARNING("Your armor softens the acid!"))
 			target.apply_damage(n_acid_damage, BURN, "chest")
+			xeno.flick_attack_overlay(target, "slash")
 		if(prob(30))
 			new /obj/effect/lingering_acid(turf, xeno.hivenumber)
 		new /obj/effect/xenomorph/xeno_telegraph/yellow(turf, 2)
@@ -306,11 +417,11 @@
 /datum/action/xeno_action/activable/pounce/caustic_embrace/additional_effects(mob/living/carbon/target)
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
 
-	if(!windup)
+	if(!stage)
 		return
 
 	xeno.visible_message(SPAN_XENODANGER("[xeno] ravages [target] as it charges at them!"), SPAN_XENODANGER("We ruthlessly ravage [target] as we charge at them!"))
-	target.apply_effect(weaken_duration, WEAKEN)
+	target.apply_effect(stage * weaken_duration / 2, WEAKEN)
 	target.attack_alien(xeno)
 	xeno.flick_attack_overlay(target, "embrace_slash")
 
@@ -326,7 +437,6 @@
 	. = ..()
 
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
-	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
 
 	if(!action_cooldown_check())
 		to_chat(xeno, SPAN_WARNING("We must wait for our acid glands to refill."))
@@ -338,63 +448,41 @@
 	apply_cooldown()
 
 	playsound(xeno, "alien_roarhiss", 30, 0, status = 0)
-	var/severity = (xeno.health <= (0.7 * xeno.maxHealth)) + (xeno.health <= (0.3 * xeno.maxHealth))
-	var/acid_range = severity + 1
-	var/empowered = delegate.next_ability_empowered
-
-	if(empowered)
-		delegate.next_ability_empowered = FALSE
-		xeno.overlays -= delegate.empowered_overlay
+	var/severity = (xeno.health <= (0.7 * xeno.maxHealth)) + (xeno.health <= 0.5 * xeno.maxHealth)
+	var/acid_range = severity + 2
+	var/blocked = FALSE
+	var/loose_per_distance = (60 / (acid_range - 1)) //80 on adjacent tile degrades to 20 on last tile
 
 	for(var/turf/turf in orange(acid_range, get_turf(xeno)))
+		blocked = FALSE
 		if(get_dist_sqrd(turf, xeno) > acid_range ** 2)
 			continue
-		addtimer(CALLBACK(src, PROC_REF(spawn_acid), xeno, turf, empowered), 0.2 SECONDS * get_dist(turf, xeno))
+		var/list/turf/path = get_line(owner, turf)
+		var/turf/prev_turf = get_turf(owner)
+		for(var/turf/path_turf in path)
+			if(path_turf.density)
+				blocked = TRUE
+				break
+			var/obj/effect/xenomorph/spray/temp = new()
+			var/atom/blocker = LinkBlocked(temp, prev_turf, path_turf)
+			qdel(temp)
+			if(blocker)
+				blocked = TRUE
+				break
+			prev_turf = path_turf
 
-/datum/action/xeno_action/onclick/oozing_wounds/proc/spawn_acid(mob/living/carbon/xenomorph/xeno, turf/turf, empowered)
-	if(empowered)
-		new /obj/effect/xenomorph/spray/despoiler/empowered(turf, create_cause_data(initial(xeno.caste_type), xeno), xeno.hivenumber)
-	else
-		new /obj/effect/xenomorph/spray/despoiler(turf, create_cause_data(initial(xeno.caste_type), xeno), xeno.hivenumber)
+		if(blocked)
+			continue
+		var/chance = 80 - (get_dist(turf, owner) - 1) * loose_per_distance
 
-	if(prob(20))
+		addtimer(CALLBACK(src, PROC_REF(spawn_acid), xeno, turf, chance), 0.2 SECONDS * get_dist(turf, xeno))
+
+/datum/action/xeno_action/onclick/oozing_wounds/proc/spawn_acid(mob/living/carbon/xenomorph/xeno, turf/turf, chance)
+
+	new /obj/effect/xenomorph/spray/despoiler(turf, create_cause_data(initial(xeno.caste_type), xeno), xeno.hivenumber)
+
+	if(prob(chance))
 		new /obj/effect/lingering_acid(turf, xeno.hivenumber)
-
-/datum/action/xeno_action/onclick/catalyze/use_ability(atom/target)
-	. = ..()
-	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
-	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
-
-	if(!action_cooldown_check())
-		to_chat(xeno, SPAN_WARNING("We must wait before empowering an ability again."))
-		return
-
-	if(!check_and_use_plasma_owner())
-		return
-
-	if(delegate.hypertension_stacks < 1)
-		to_chat(xeno, SPAN_WARNING("We don't enough acid to do that."))
-		return
-
-	apply_cooldown()
-
-	delegate.hypertension_stacks--
-	delegate.next_ability_empowered = TRUE
-	delegate.empowered_overlay = image('icons/mob/xenos/castes/tier_3/despoiler.dmi', "hypertension")
-	delegate.empowered_overlay.layer = FLY_LAYER
-	delegate.empowered_overlay.plane = ABOVE_GAME_PLANE
-	xeno.overlays |= delegate.empowered_overlay
-	to_chat(owner, SPAN_XENOHIGHDANGER("We catalyze our acid and empowerd our next ability!"))
-	addtimer(CALLBACK(src, PROC_REF(debuff_next_ability)), duration)
-
-// Waited too long
-/datum/action/xeno_action/onclick/catalyze/proc/debuff_next_ability()
-	var/mob/living/carbon/xenomorph/despoiler/xeno = owner
-	var/datum/behavior_delegate/despoiler_base/delegate = xeno.behavior_delegate
-	if(delegate.next_ability_empowered)
-		to_chat(owner, SPAN_XENOHIGHDANGER("We waited too long, our next ability is no longer empowered!"))
-		xeno.overlays -= delegate.empowered_overlay
-		delegate.next_ability_empowered = FALSE
 
 /obj/effect/lingering_acid
 	name = "acid"

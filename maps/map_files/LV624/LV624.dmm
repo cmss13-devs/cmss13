@@ -2875,6 +2875,12 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/lv624/ground/river/central_river)
+"alp" = (
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "LZ1: Nexus Landing Zone"
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
 "als" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/west,
@@ -7632,12 +7638,6 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_west_jungle)
-"aLz" = (
-/obj/docking_port/stationary/marine_dropship/lz1{
-	name = "LZ1: Nexus Landing Zone"
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/landing_zones/lz1)
 "aLF" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/grass/grass1,
@@ -56173,7 +56173,7 @@ ank
 ank
 ank
 ank
-aLz
+alp
 ank
 ank
 ank

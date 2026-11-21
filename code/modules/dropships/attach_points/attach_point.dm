@@ -20,8 +20,11 @@
 	var/transverse = NONE
 	/// Relative position alongside longitudinal axis
 	var/long = NONE
+	var/round_slot = FALSE
+	var/obj/effect/attach_point_dummy/linked_bottom_point
 
 /obj/effect/attach_point/Destroy()
+	linked_bottom_point = null
 	QDEL_NULL(installed_equipment)
 	return ..()
 
@@ -51,6 +54,7 @@
 	if(installed_equipment || clamp.loaded != ds_equipment)
 		return
 	to_chat(user, SPAN_NOTICE("You install [ds_equipment] on [src]."))
+	ds_equipment.flags_atom |= NO_ZFALL //naturally have to make it not fall thru zlevel before its moved onto openspace turf
 	ds_equipment.forceMove(loc)
 	clamp.loaded = null
 	playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, TRUE)
@@ -59,6 +63,33 @@
 	ds_equipment.ship_base = src
 	ds_equipment.plane = plane
 	ds_equipment.setDir(src.dir)
+	ds_equipment.layer = src.layer + 0.01
+	if(round_slot)
+		ds_equipment.pixel_x = src.pixel_x
+		ds_equipment.pixel_y = src.pixel_y
+	if(linked_bottom_point)
+		linked_bottom_point.update_icon()
+
+	for(var/obj/docking_port/mobile/marine_dropship/shuttle in SSshuttle.mobile)
+		if(shuttle.id == ship_tag)
+			ds_equipment.linked_shuttle = shuttle
+			SEND_SIGNAL(shuttle, COMSIG_DROPSHIP_ADD_EQUIPMENT, ds_equipment)
+			break
+
+	ds_equipment.update_equipment()
+
+/obj/effect/attach_point/weapon/dropship_midway/nose/install_equipment(obj/structure/dropship_equipment/our_equipment)
+	var/obj/structure/dropship_equipment/ds_equipment = our_equipment
+	if(!(base_category in ds_equipment.equip_categories))
+		CRASH("Tried installing [our_equipment.name] on [src.name] -- wrong catergory")
+
+	ds_equipment.flags_atom |= NO_ZFALL
+	ds_equipment.forceMove(loc)
+	installed_equipment = ds_equipment
+	ds_equipment.ship_base = src
+	ds_equipment.plane = plane
+	ds_equipment.setDir(src.dir)
+	ds_equipment.layer = src.layer + 0.01
 
 	for(var/obj/docking_port/mobile/marine_dropship/shuttle in SSshuttle.mobile)
 		if(shuttle.id == ship_tag)
@@ -83,3 +114,54 @@
 		"min" = transverse + firing_arc_min,
 		"max" = transverse + firing_arc_max
 	)
+
+// used to pass mob interactions to the linked_attach_point, aka our xeno clicks on this dummy item
+// and then that click interaction gets passed directly to the linked_attach_point
+// for example, our normal attach point is on z-level 4, whereas our dummy attach point is on z-level 3
+// if we click the dummy item on level 3, we basically have clicked the item on z-level 4, front-end wise
+/obj/effect/attach_point_dummy
+	name = "equipment attach point"
+	desc = "A place where heavy equipment can be installed with a powerloader."
+	icon = 'icons/obj/structures/machinery/omaha/misc.dmi'
+	icon_state = "hardpoint_empty"
+	unacidable = TRUE
+	anchored = TRUE
+	layer = ABOVE_TURF_LAYER
+	var/obj/effect/attach_point/linked_attach_point
+
+/obj/effect/attach_point_dummy/omaha
+	icon = 'icons/obj/structures/machinery/omaha/misc.dmi'
+
+/obj/effect/attach_point_dummy/midway
+	icon = 'icons/obj/structures/machinery/midway/misc.dmi'
+
+/obj/effect/attach_point_dummy/Destroy()
+	QDEL_NULL(linked_attach_point)
+	return ..()
+
+/obj/effect/attach_point_dummy/update_icon()
+	if(linked_attach_point)
+		if(linked_attach_point.installed_equipment)
+			icon_state = "hardpoint_closed"
+		else
+			icon_state = "[initial(icon_state)]"
+
+/obj/effect/attach_point_dummy/attackby(obj/item/I, mob/user)
+	if(linked_attach_point.installed_equipment)
+		if(isxeno(user))
+			return linked_attach_point.installed_equipment.attack_alien(user)
+		linked_attach_point.installed_equipment.attackby(I, user)
+	else
+		return linked_attach_point.attackby(I, user)
+
+/obj/effect/attach_point_dummy/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(linked_attach_point.installed_equipment)
+		return linked_attach_point.installed_equipment.attack_alien(current_xenomorph)
+	else
+		return ..()
+
+/obj/effect/attach_point_dummy/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
+	if(linked_attach_point.installed_equipment)
+		linked_attach_point.installed_equipment.handle_tail_stab(xeno, blunt_stab)
+	else
+		return ..()

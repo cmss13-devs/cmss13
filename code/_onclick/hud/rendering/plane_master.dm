@@ -91,6 +91,12 @@
 	appearance_flags = PLANE_MASTER
 	blend_mode = BLEND_OVERLAY
 
+/atom/movable/screen/plane_master/roof_dropship
+	name = "dropship roof plane master"
+	plane = DROPSHIP_ROOF_PLANE
+	appearance_flags = PLANE_MASTER
+	blend_mode = BLEND_OVERLAY
+
 /**
  * Plane master handling byond internal blackness
  * vars are set as to replicate behavior when rendering to other planes

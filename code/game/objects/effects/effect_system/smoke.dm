@@ -916,3 +916,9 @@
 		smoke.spread_smoke(direction)
 	if(!do_NOT_delete)
 		qdel(src)
+
+/proc/smoke_spread(turf/location, radius = 2, smoke_type = /obj/effect/particle_effect/smoke, direction = null, lifetime = null, cause_data = null)
+	var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread()
+	smoke.smoke_type = smoke_type
+	smoke.set_up(radius, 0, location, direction, lifetime, cause_data)
+	smoke.start()

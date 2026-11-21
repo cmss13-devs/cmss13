@@ -5,6 +5,13 @@
 #define DROPSHIP_FUEL_EQP "dropship_fuel_equipment"
 #define DROPSHIP_COMPUTER "dropship_computer"
 
+// Dropship equipment mount compatibility flags
+#define DROPSHIP_CATEGORY_WEAPON (1<<0)
+#define DROPSHIP_CATEGORY_CREW_WEAPON (1<<1)
+#define DROPSHIP_CATEGORY_ELECTRONICS (1<<2)
+#define DROPSHIP_CATEGORY_FUEL (1<<3)
+#define DROPSHIP_CATEGORY_COMPUTER (1<<4)
+
 //Automated transport
 #define DROPSHIP_MAX_AUTO_DELAY 60 SECONDS
 #define DROPSHIP_MIN_AUTO_DELAY 10 SECONDS

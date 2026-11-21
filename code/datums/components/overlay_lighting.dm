@@ -401,6 +401,19 @@
 		current_holder.underlays += cone
 
 
+///Offsets the visible light mask from the center of its source.
+/datum/component/overlay_lighting/proc/set_pixel_offset(offset_x, offset_y)
+	if(current_holder && overlay_lighting_flags & LIGHTING_ON)
+		current_holder.underlays -= visible_mask
+	var/pixel_bounds = ((range - 1) * 64) + 32
+	var/icon_offset = (pixel_bounds - 32) * 0.5
+	var/matrix/light_transform = matrix()
+	light_transform.Translate(offset_x - icon_offset, offset_y - icon_offset)
+	visible_mask.transform = light_transform
+	if(current_holder && overlay_lighting_flags & LIGHTING_ON)
+		current_holder.underlays += visible_mask
+
+
 ///Toggles the light on and off.
 /datum/component/overlay_lighting/proc/on_toggle(atom/source, new_value)
 	SIGNAL_HANDLER

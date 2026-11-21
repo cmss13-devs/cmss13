@@ -15,25 +15,64 @@
 		/datum/action/xeno_action/activable/fortify/steel_crest,
 	)
 
+	behavior_delegate_type = /datum/behavior_delegate/defender_steelcrest
+
 /datum/xeno_strain/steel_crest/apply_strain(mob/living/carbon/xenomorph/defender/defender)
 	defender.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
-	if(defender.fortify)
-		defender.ability_speed_modifier += 2.5
 	defender.recalculate_stats()
 
+/datum/behavior_delegate/defender_steelcrest
+	name = "Defender Steelcrest Behavior Delegate"
 
+	// Used by append_to_start()
+	var/front_armor = 0
+	var/armor_buff = 0
+	var/speed_debuff = 0
+	var/fortify_armor = 0
+	var/fortify_speed = 0
+
+/datum/behavior_delegate/defender_steelcrest/append_to_stat()
+	ats_steelcrest()
+	. = list()
+	. += "Walking Speed: -[(bound_xeno.crest_defense ? (speed_debuff * 100) : 0) + (bound_xeno.fortify ? (fortify_speed * 100) : 0)]%"
+	. += "Armor Increase: +[(bound_xeno.crest_defense ? armor_buff : 0) + (bound_xeno.fortify ? fortify_armor : 0)]"
+	. += "Front Armor: +[bound_xeno.fortify ? front_armor : 0]"
+	. += "Explosion Stun: [bound_xeno.small_explosives_stun ? "Yes" : "No"]"
+
+/datum/behavior_delegate/defender_steelcrest/proc/ats_steelcrest()
+	var/datum/action/xeno_action/activable/fortify/steel_crest/ability_action = get_action(bound_xeno, /datum/action/xeno_action/activable/fortify/steel_crest)
+	front_armor = ability_action.frontal_armor
+	fortify_armor = ability_action.armor_buff
+	fortify_speed = ability_action.walk_speed
+
+	var/datum/action/xeno_action/onclick/toggle_crest/crest_action = get_action(bound_xeno, /datum/action/xeno_action/onclick/toggle_crest)
+	armor_buff = crest_action.armor_buff
+	speed_debuff = crest_action.speed_debuff
+
+/datum/behavior_delegate/defender_steelcrest/on_update_icons()
+	if(bound_xeno.stat == DEAD)
+		return
+
+	if(bound_xeno.fortify && bound_xeno.health > 0)
+		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Defender Fortify"
+		return TRUE
+	if(bound_xeno.crest_defense && bound_xeno.health > 0)
+		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Defender Crest"
+		return TRUE
+	if(HAS_TRAIT(bound_xeno, TRAIT_INCAPACITATED) && HAS_TRAIT(bound_xeno, TRAIT_FLOORED))
+		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Defender Knocked Down"
 
 // Steel crest override
 /datum/action/xeno_action/activable/fortify/steel_crest/apply_modifiers(mob/living/carbon/xenomorph/xeno, fortify_state)
 	if(fortify_state)
-		xeno.armor_deflection_buff += 10
-		xeno.armor_explosive_buff += 60
-		xeno.ability_speed_modifier += 3
+		xeno.armor_deflection_buff += armor_buff
+		xeno.armor_explosive_buff += explosion_res
+		xeno.ability_speed_modifier += walk_speed
 		xeno.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 	else
-		xeno.armor_deflection_buff -= 10
-		xeno.armor_explosive_buff -= 60
-		xeno.ability_speed_modifier -= 3
+		xeno.armor_deflection_buff -= armor_buff
+		xeno.armor_explosive_buff -= explosion_res
+		xeno.ability_speed_modifier -= walk_speed
 		xeno.damage_modifier += XENO_DAMAGE_MOD_SMALL
 
 

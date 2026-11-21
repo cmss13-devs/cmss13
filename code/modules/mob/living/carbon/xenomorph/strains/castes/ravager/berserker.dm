@@ -34,7 +34,7 @@
 
 	// Rage config
 	var/max_rage = 5
-	var/rage_decay_time = 30 // How many deciseconds between slashes until we start to decay rage
+	var/rage_decay_time = 3 SECONDS // How many seconds between slashes until we start to decay rage
 	var/attack_delay_buff_per_rage = 0.6
 	var/armor_buff_per_rage = 3
 	var/movement_speed_buff_per_rage = 0.1
@@ -79,6 +79,15 @@
 /datum/behavior_delegate/ravager_berserker/append_to_stat()
 	. = list()
 	. += "Rage: [rage]/[max_rage]"
+	. += "Rage Armor: +[(rage != 0) ? (rage * armor_buff_per_rage) : 0]"
+	. += "Walking Speed: +[(rage != 0) ? (rage * (movement_speed_buff_per_rage * 100)) : 0]%"
+	. += "Slashing Speed: +[(rage != 0) ? (rage * (attack_delay_buff_per_rage * 100)) : 0]%"
+	. += ""
+	if(rage_lock_start_time != 0)
+		. += "Max Rage Duration: [(rage_lock_duration - (world.time - rage_lock_start_time)) / 10] Seconds"
+	if(rage_cooldown_start_time != 0)
+		. += "Rage Cooldown: [(rage_cooldown_duration - (world.time - rage_cooldown_start_time)) / 10] Seconds"
+
 
 /datum/behavior_delegate/ravager_berserker/on_life()
 	// Compute our current rage (demerit if necessary)

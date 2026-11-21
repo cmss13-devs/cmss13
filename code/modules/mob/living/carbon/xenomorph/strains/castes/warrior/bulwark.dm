@@ -49,18 +49,23 @@
 	var/frontal_armor = BULWARK_DIR_ARMOR
 	var/sided_armor = BULWARK_DIR_ARMOR
 
+	// Used by append_to_start()
+	var/reflective_timer = -1
+
 /datum/behavior_delegate/warrior_bulwark/append_to_stat()
+	ats_bulwark()
 	. = list()
 	. += "Front Armor: +[frontal_armor]"
 	. += "Side Armor: +[sided_armor]"
 	if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_ENCLOSED_PLATES))
 		. += "Encased Plates: -[XENO_DAMAGE_MOD_BULWARK] Claws Damage."
-	var/datum/action/xeno_action/onclick/reflective_shield/ability_used = get_action(bound_xeno, /datum/action/xeno_action/onclick/reflective_shield)
-	if(ability_used.reflective_start_time != -1)
-		var/time_left = null
-		time_left = (BULWARK_REFLECTIVE_TIME - (world.time - ability_used.reflective_start_time)) / 10
-		. += "Reflective Plates Remaining Time: [time_left] second\s."
+	if(reflective_timer != -1)
+		. += "Reflective Plates Duration: [(BULWARK_REFLECTIVE_TIME - (world.time - reflective_timer)) / 10] seconds."
 		return
+
+/datum/behavior_delegate/warrior_bulwark/proc/ats_bulwark()
+	var/datum/action/xeno_action/onclick/reflective_shield/ability_used = get_action(bound_xeno, /datum/action/xeno_action/onclick/reflective_shield)
+	reflective_timer = ability_used.reflective_start_time
 
 /datum/behavior_delegate/warrior_bulwark/add_to_xeno()
 	RegisterSignal(bound_xeno, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(apply_directional_armor))

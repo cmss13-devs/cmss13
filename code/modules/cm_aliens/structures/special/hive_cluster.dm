@@ -25,6 +25,7 @@
 
 	protection_level = TURF_PROTECTION_NONE
 	var/list/weakrefs_of_bursted = list()
+	var/nearby_hosts = 0
 
 /obj/effect/alien/resin/special/cluster/Initialize(mapload, hive_ref)
 	. = ..()
@@ -37,6 +38,13 @@
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_BOOST_XENOMORPH_WALLS, PROC_REF(start_boost))
 	RegisterSignal(SSdcs, COMSIG_GLOB_STOP_BOOST_XENOMORPH_WALLS, PROC_REF(stop_boost))
+
+/obj/effect/alien/resin/special/cluster/get_examine_text(mob/user)
+	. = ..()
+	if(isxeno(user) || isobserver(user))
+		. += "[SPAN_NOTICE("Cluster require at least [SPAN_BOLDNOTICE("2 nested")] hosts nearby or [SPAN_BOLDNOTICE("2 bursted")] hosts for CAS protection.")]"
+		. += "[SPAN_NOTICE("How many required hosts has bursted: [SPAN_BOLDNOTICE("[weakrefs_of_bursted.len]/2")].")]"
+		. += "[SPAN_NOTICE("Cluster Anti-CAS protection? [SPAN_BOLDNOTICE("[(protection_level == TURF_PROTECTION_CAS) ? "YES" : "NO"]")].")]"
 
 /obj/effect/alien/resin/special/cluster/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)

@@ -41,9 +41,6 @@
 /datum/behavior_delegate/praetorian_dancer
 	name = "Praetorian Dancer Behavior Delegate"
 
-	/// How much time is left on timer. (used for status)
-	var/time_left = null
-
 	/// Check for slashed target that had yellow tag
 	var/spread_slash_triggered = FALSE
 
@@ -52,8 +49,6 @@
 
 	/// How much damage Harpoon Tail on DISARM mode do. (pierces armor)
 	var/blunt_damage = 8
-	/// Harpoon Tail mode, used only to display in status.
-	var/tail_mode = null
 
 	/// Is Dodge ability active?
 	var/dodge_activated = FALSE
@@ -71,16 +66,14 @@
 
 /datum/behavior_delegate/praetorian_dancer/append_to_stat()
 	. = list()
-	. += "Guaranteed Dodge every [bound_xeno.dodge_threshold] bullet\s."
+	. += "Guaranteed Dodge every [bound_xeno.dodge_threshold] bullets."
 	. += "Yellow Tag Spread Delay: 5 seconds."
-	intent_detection()
-	. += "Tail Lance Intent: [tail_mode]"
-	if(tail_mode == "Blunt")
+	. += "Tail Lance Intent: [(bound_xeno.a_intent == INTENT_DISARM) ? "Blunt" : "Normal"]"
+	if(bound_xeno.a_intent == INTENT_DISARM)
 		. += "Damage: [blunt_damage] AP"
 		. += "Cooldown: 3 seconds."
 	if(dodge_start_time != -1)
-		time_left = (DANCER_DODGE_TIME - (world.time - dodge_start_time)) / 10
-		. += "Dodge Remaining: [time_left] second\s."
+		. += "Dodge Remaining: [(DANCER_DODGE_TIME - (world.time - dodge_start_time)) / 10] seconds."
 		return
 
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_self()
@@ -162,12 +155,6 @@
 
 	if(spread_count >= 0)
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("Fear spreads among the prey, their weakness fuels your instincts to strike them down!"))
-
-/datum/behavior_delegate/praetorian_dancer/proc/intent_detection()
-	if(bound_xeno && bound_xeno.a_intent == INTENT_DISARM)
-		tail_mode = "Blunt"
-	else
-		tail_mode = "Normal"
 
 /datum/action/xeno_action/activable/tail_stab/harpoon_tail/ability_act(mob/living/carbon/xenomorph/xeno, mob/living/carbon/target, obj/limb/limb)
 	if(!istype(xeno) || !istype(target))

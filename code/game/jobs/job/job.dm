@@ -60,6 +60,15 @@
 	/// How many points people with this role selected get to pick from
 	var/loadout_points = 0
 
+	/**
+	* Role balance weight for a person in this role. This weight is used when calculating
+	* the number of xenos for both roundstart and burrowed larva from people late joining.
+	* This weight also controls the size of local wildlife population, survivors,
+	* roundstart Squad Rifleman slots, and various xenomorph checks like endgame buffs and
+	* hijack surge.
+	*/
+	var/role_weight = SHIPSIDE_ROLE_WEIGHT
+
 /datum/job/New()
 	. = ..()
 

@@ -10,6 +10,7 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_CUSTOM_SPAWN
 	late_joinable = FALSE
 	job_options = SURVIVOR_VARIANT_LIST
+	role_weight = 1
 	var/intro_text
 	var/story_text
 	/// Whether or not the survivor is an inherently hostile to marines.
@@ -496,7 +497,7 @@ AddTimelock(/datum/job/civilian/survivor, list(
 /datum/job/civilian/survivor/commanding_officer/spawn_in_player(mob/new_player/new_player)
 	. = ..()
 	if(MODE_HAS_FLAG(MODE_SURVIVE)) // Also treat them as a late join for survive mode since its too awkward to precount them due to set_spawn_positions implementation
-		SSticker.mode.latejoin_tally += GLOB.RoleAuthority.calculate_role_weight(src)
+		SSticker.mode.latejoin_tally += role_weight
 
 /datum/job/civilian/survivor/unlimited
 	title = JOB_SURVIVOR_UNLIMITED

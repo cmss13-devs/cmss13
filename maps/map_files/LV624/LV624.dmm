@@ -1,9 +1,14 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aaa" = (
+/obj/item/clothing/head/welding,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/gm/dirt,
 /area/lv624/lazarus/secure_storage)
 "aab" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-)
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/north_east_caves)
 "aac" = (
 /turf/closed/cordon,
 /area/space)

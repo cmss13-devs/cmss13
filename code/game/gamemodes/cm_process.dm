@@ -241,7 +241,7 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 /datum/game_mode/proc/count_humans_and_xenos_debug() // TODO: Remove this
 	return count_humans_and_xenos(SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND)))
 
-/// Counts living mobs in the form of list(humans,xenos) that aren't hosts or in an area that avoids bioscan (if non-human) and can delay the round
+/// Counts living mobs in the form of list(humans,xenos) that aren't hosts, nested, or in an area that avoids bioscan (if non-human) and can delay the round
 /datum/game_mode/proc/count_humans_and_xenos(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED, ZTRAIT_MARINE_MAIN_SHIP)))
 	var/num_humans = 0
 	var/num_xenos = 0
@@ -264,6 +264,8 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 
 			if(ishuman(current) && !isyautja(current) && !(current.status_flags & XENO_HOST) && !iszombie(current))
 				var/mob/living/carbon/human/current_human = current
+				if(HAS_TRAIT(current_human, TRAIT_NESTED))
+					continue
 				if((current_human.species?.name == "Human" || current_human.is_important) && !current_human.hivenumber) //only real humans count, or those we have set to also be included
 					num_humans++
 			else
@@ -304,6 +306,8 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 
 	for(var/i in GLOB.alive_human_list)
 		var/mob/M = i
+		if(HAS_TRAIT(M, TRAIT_NESTED))
+			continue
 		if(M.z && (M.z in z_levels) && !istype(M.loc, /turf/open/space) && !istype(M.loc, /area/adminlevel/ert_station/fax_response_station))
 			if(M.faction == FACTION_MARINE)
 				num_marines++

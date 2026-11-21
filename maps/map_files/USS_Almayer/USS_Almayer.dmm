@@ -7,9 +7,9 @@
 	affect_ghosts = 1;
 	name = "tele_ground1";
 	teleport_x = 180;
-	teleport_x_offset = 200;
+	teleport_x_offset = 6969;
 	teleport_y = 50;
-	teleport_y_offset = 80;
+	teleport_y_offset = 69;
 	teleport_z = 1;
 	teleport_z_offset = 1
 	},

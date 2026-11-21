@@ -2871,20 +2871,16 @@
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
-"aln" = (
-/obj/docking_port/stationary/marine_dropship/lz1{
-	name = "LZ1: Nexus Landing Zone";
-	dwidth = 8;
-	width = 17;
-	dheight = 12;
-	height = 24
-	},
-/turf/open_space,
-/area/sky)
 "alo" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/lv624/ground/river/central_river)
+"alp" = (
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "LZ1: Nexus Landing Zone"
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz1)
 "als" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/west,
@@ -56177,7 +56173,7 @@ ank
 ank
 ank
 ank
-ank
+alp
 ank
 ank
 ank
@@ -95378,7 +95374,7 @@ qht
 qht
 qht
 qht
-aln
+qht
 qht
 qht
 qht

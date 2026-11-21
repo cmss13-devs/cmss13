@@ -916,8 +916,17 @@
 				victim.apply_damage(22, BRUTE, limb, sharp = TRUE)
 			for(var/obj/item/item in victim)
 				victim.drop_inv_item_to_loc(item, victim.loc, FALSE, TRUE)
-				victim.status_flags |= PERMANENTLY_DEAD
+			victim.status_flags |= PERMANENTLY_DEAD
+			victim.mob_flags |= MOB_FLAYED
+			victim.name = "???"
 			victim.add_flay_overlay(stage = 3)
+
+			// Force eyelids permanently open — no skin left to close them
+			if(target.species.flags & HAS_EYELIDS)
+				if(target.eyelid_timer)
+					deltimer(target.eyelid_timer)
+					target.eyelid_timer = null
+				target.apply_eyelid_state(EYELID_FLAYED)
 
 			//End the loop and remove all references to the datum.
 			current_flayer = null

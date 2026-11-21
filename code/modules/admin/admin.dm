@@ -77,7 +77,7 @@
 
 
 /datum/admins/proc/player_has_info(key as text)
-	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
+	var/savefile/info = new("data/player_saves/[key[1]]/[key]/info.sav")
 	var/list/infos
 	info >> infos
 	if(!LAZYLEN(infos))
@@ -258,6 +258,8 @@
 /// Allow admin to add or remove traits of datum
 /datum/admins/proc/modify_traits(datum/D)
 	if(!D)
+		return
+	if(!check_rights(R_VAREDIT))
 		return
 
 	var/add_or_remove = input("Remove/Add?", "Trait Remove/Add") as null|anything in list("Add","Remove")

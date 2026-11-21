@@ -194,6 +194,9 @@
 	var/datum/action/minimap/minimap_type = /datum/action/minimap/xeno
 	var/datum/weakref/minimap_ref
 
+	//water overlay configuration the xeno uses
+	water_config = /datum/water_overlay_config/xeno/medium
+
 	//////////////////////////////////////////////////////////////////
 	//
 	// Modifiers
@@ -279,6 +282,9 @@
 
 	var/obj/item/skull/skull = /obj/item/skull
 	var/obj/item/pelt/pelt = /obj/item/pelt
+
+	///Prefix for damage states caste.caste_type by default
+	var/damage_state_prefix
 
 
 	//////////////////////////////////////////////////////////////////
@@ -389,11 +395,14 @@
 	/// cooldown between throwing facehuggers
 	var/hugger_throw_cooldown = 0
 
+
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	if(old_xeno && old_xeno.hivenumber)
 		src.hivenumber = old_xeno.hivenumber
 	else if(hivenumber)
 		src.hivenumber = hivenumber
+
+	damage_state_prefix = caste_type
 
 	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_HIVEMIND)) // The hive may alter this list
 
@@ -1282,7 +1291,11 @@
 	if (mob_size != MOB_SIZE_SMALL)
 		return FALSE
 
-	var/move_dir = get_dir(src, loc)
+	var/move_dir = get_dir(src, current_structure)
+	for(var/atom/movable/atom in get_turf(src))
+		if(atom != current_structure && atom.density && atom.BlockedExitDirs(src, move_dir))
+			to_chat(src, SPAN_WARNING("[atom] prevents us from squeezing under [current_structure]!"))
+			return FALSE
 	for(var/atom/movable/atom in get_turf(current_structure))
 		if(atom != current_structure && atom.density && atom.BlockedPassDirs(src, move_dir))
 			to_chat(src, SPAN_WARNING("[atom] prevents us from squeezing under [current_structure]!"))

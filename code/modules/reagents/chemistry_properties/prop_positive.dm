@@ -965,7 +965,7 @@
 /datum/chem_property/positive/explosive/update_reagent()
 	holder.explosive = TRUE
 	holder.power += level
-	holder.falloff_modifier += -3 / level
+	holder.falloff_modifier += -3 / max(level, 1)
 	..()
 
 //properties for CAS matrixes

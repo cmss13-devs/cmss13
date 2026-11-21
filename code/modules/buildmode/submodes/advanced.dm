@@ -14,7 +14,7 @@
 
 	var/list/ignore_vars = list("old_turf", "loc", "ckey", "key", "vars", "verbs", \
 		"locs", "contents", "vis_locs", "vis_contents", "client", "linked_pylons", \
-		"x", "y", "z", "disposed")
+		"x", "y", "z", "disposed", "wall_connections", "neighbors_bitfield", "pixloc")
 	// Might be better to move to a whitelist system instead. If there are too many runtimes/issues,
 	// turn this into a whitelist system and whitelist vars like icon_state, overlays and ids
 
@@ -23,16 +23,16 @@
 	var/list/must_include = list("icon_state", "dir")
 
 /datum/buildmode_mode/advanced/change_settings(client/c)
-	var/target_path = input(c, "Enter typepath:", "Typepath", "/obj/structure/closet")
+	var/target_path = tgui_input_text(c, "Enter typepath:", "Typepath", "/obj/structure/closet")
 	objholder = text2path(target_path)
 	if(!ispath(objholder))
 		objholder = pick_closest_path(target_path)
 		if(!objholder)
-			alert("No path was selected")
+			tgui_alert(c, "No path was selected")
 			return
 		else if(ispath(objholder, /area))
 			objholder = null
-			alert("That path is not allowed.")
+			tgui_alert(c, "That path is not allowed.")
 			return
 
 /datum/buildmode_mode/advanced/when_clicked(client/c, params, obj/object)
@@ -47,7 +47,7 @@
 			objholder = object.type
 			if(shift_click)
 				copied_vars = filter_vars(object)
-			to_chat(c, SPAN_NOTICE("[initial(object.name)] ([object.type]) selected."))
+			to_chat(c, SPAN_NOTICE("[initial(object.name)] ([object.type]) selected[shift_click ? " with variables." : "."]"))
 		else
 			to_chat(c, SPAN_NOTICE("[initial(object.name)] is not a turf, object, or mob! Please select again."))
 	else if(left_click)
@@ -61,7 +61,7 @@
 			var/obj/A = new objholder (get_turf(object))
 			A.setDir(BM.build_dir)
 			if(shift_click)
-				addtimer(CALLBACK(src, PROC_REF(apply_copied_vars_shallow), A), 1)
+				addtimer(CALLBACK(src, PROC_REF(apply_copied_vars_shallow), A, object), 1)
 			log_admin("Build Mode: [key_name(c)] modified [A]'s [COORD(A)] dir to [BM.build_dir]")
 		else
 			to_chat(c, SPAN_WARNING("Select object type first."))
@@ -70,7 +70,7 @@
 			log_admin("Build Mode: [key_name(c)] deleted [object] at [AREACOORD(object)]")
 			qdel(object)
 
-/datum/buildmode_mode/advanced/proc/apply_copied_vars_shallow(atom/A)
+/datum/buildmode_mode/advanced/proc/apply_copied_vars_shallow(atom/A, atom/new_location)
 	if(ismob(A))
 		return
 
@@ -81,9 +81,15 @@
 			continue
 
 		if(islist(temp_value))
-			temp_value = copyListList(temp_value)
+			if(variable != "overlays" && variable != "underlays")
+				temp_value = copyListList(temp_value) // This will just badindex on overlays because its special
+			else
+				temp_value = temp_value:Copy()
 
 		A.vars[variable] = temp_value
+		if(istype(A, /atom/movable))
+			var/atom/movable/A_movable = A
+			A_movable.loc = get_turf(new_location)
 
 /datum/buildmode_mode/advanced/proc/filter_vars(atom/A)
 	var/list/filtered_vars = list()

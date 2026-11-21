@@ -35,9 +35,6 @@
 	var/shield_per_human = 50
 	var/time_until_timeout = 6 SECONDS
 
-	// State
-	var/activated_once = FALSE
-
 // Rav "Scissor Cut"
 /datum/action/xeno_action/activable/scissor_cut
 	name = "Scissor Cut"
@@ -148,5 +145,4 @@
 	var/shard_cost = 50
 	var/ammo_type = /datum/ammo/xeno/bone_chips/spread
 	var/shrapnel_amount = 40
-
 

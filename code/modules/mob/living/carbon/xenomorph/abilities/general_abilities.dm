@@ -12,7 +12,8 @@
 		selected_ability.on_deselect(src)
 	if(!ability)
 		selected_ability = null
-		client?.set_right_click_menu_mode(shift_only = FALSE)
+		if(client?.prefs.toggle_right_click_menu)
+			client.set_right_click_menu_mode(shift_only = FALSE)
 		return
 	selected_ability = ability
 	selected_ability.on_select(src)
@@ -428,6 +429,8 @@
 		return FALSE
 	if(xeno.on_fire)
 		return FALSE
+	if(xeno.action_busy)
+		return FALSE
 	if(!xeno.buckled && !xeno.is_mob_incapacitated() && !LAZYLEN(xeno.buckled_mobs))
 		if(!(SEND_SIGNAL(xeno, COMSIG_LIVING_SHIMMY_LAYER) & COMSIG_LIVING_SHIMMY_LAYER_CANCEL))
 			return TRUE
@@ -435,7 +438,7 @@
 /// remove hide and apply modified attack cooldown
 /datum/action/xeno_action/onclick/xenohide/proc/post_attack()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	UnregisterSignal(xeno, COMSIG_MOB_STATCHANGE)
+	UnregisterSignal(xeno, list(COMSIG_MOB_STATCHANGE, COMSIG_LIVING_PRE_DOAFTER))
 	if(xeno.layer == XENO_HIDING_LAYER)
 		xeno.layer = initial(xeno.layer)
 		button.icon_state = "template_xeno"
@@ -481,6 +484,10 @@
 	var/spitting = FALSE
 	var/sound_to_play = "acid_spit"
 	var/aim_turf = FALSE
+	///should we pick where the mouse is aiming when windup ends
+	var/retarget_after_windup = FALSE
+	///target obtained from click drag
+	var/new_target
 
 /datum/action/xeno_action/activable/xeno_spit/queen_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_3

@@ -37,6 +37,9 @@ SUBSYSTEM_DEF(weather)
 	/// List of all cleanables that are outside that will be cleaned up by active weather
 	var/list/obj/effect/decal/cleanable/cleanable_list = list()
 
+	/// To prevent overlap between lightning changing the lighting of weather areas
+	var/lightninging = FALSE
+
 /datum/controller/subsystem/weather/Initialize(start_timeofday)
 	// Set up our map delegate datum for supported maps
 	// The ONLY place where things should depend on map_tag
@@ -225,6 +228,52 @@ SUBSYSTEM_DEF(weather)
 		if(!is_weather_event)
 			mob.clear_fullscreen("weather")
 
+
+/// LIGHTNING FLASH: Fullbright all rainy areas for [flash_duration], then fade back over [fade_duration].
+/datum/controller/subsystem/weather/proc/lightning_flash_weather_areas(flash_duration = 0.5 SECONDS, fade_duration = 2 SECONDS, fade_steps = 12)
+	if(!length(weather_areas) || lightninging)
+		return
+
+	lightninging = TRUE
+	var/list/starting_values = list()
+
+	for(var/area/weather_area as anything in weather_areas)
+		starting_values["[weather_area]"] = list(weather_area.base_lighting_alpha, weather_area.base_lighting_color)
+		if(QDELETED(weather_area))
+			continue
+		weather_area.set_base_lighting(new_base_lighting_color = "#e5fcff", new_alpha = 255)
+
+	addtimer(CALLBACK(src, PROC_REF(lightning_fade_step), 1, fade_duration, fade_steps, starting_values), flash_duration)
+
+
+/// fades the base lighting of an area back to 0 (from fullbright after lightning). Recurses until done
+/datum/controller/subsystem/weather/proc/lightning_fade_step(current_step, fade_duration, fade_steps, list/starting_values)
+	if(current_step > fade_steps)
+		lightninging = FALSE
+		return
+
+	var/t = current_step / fade_steps
+	var/eased = 1 - (1 - t) ** 3.5
+
+	for(var/area/weather_area as anything in weather_areas)
+		if(QDELETED(weather_area))
+			continue
+
+		var/original_alpha = starting_values["[weather_area]"][1]
+		var/original_color = starting_values["[weather_area]"][2]
+		var/target_alpha = round(LERP(255, original_alpha, eased))
+		var/target_color = BlendRGB("#e5fcff", original_color, eased)
+
+		if(current_step == fade_steps)
+			target_alpha = original_alpha
+			target_color = original_color
+
+		weather_area.set_base_lighting(target_color, target_alpha)
+
+	var/step_time = fade_duration / fade_steps
+	addtimer(CALLBACK(src, PROC_REF(lightning_fade_step), current_step + 1, fade_duration, fade_steps, starting_values), step_time)
+
+
 /obj/effect/weather_vfx_holder
 	name = "weather vfx holder"
 	icon = 'icons/effects/weather.dmi'
@@ -238,3 +287,4 @@ SUBSYSTEM_DEF(weather)
 /obj/effect/weather_vfx_holder/hybrisa_rain
 	icon_state = "hybrisa_rain"
 	alpha = 50
+

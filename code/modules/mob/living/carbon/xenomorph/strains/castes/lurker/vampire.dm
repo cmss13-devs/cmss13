@@ -82,7 +82,7 @@
 			continue
 
 		target_turfs += current_turfs
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(current_turfs, 2)
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/attack/flurry(current_turfs, 0.4 SECONDS)
 
 	for(var/turf/current_turfs in target_turfs)
 		for(var/mob/living/carbon/target in current_turfs)
@@ -134,6 +134,7 @@
 				var/obj/structure/window/framed/target_window = current_structure
 				if(target_window.unslashable)
 					return
+				show_pierce_telegraph(get_turf(xeno), path, path.Find(path_turf))
 				playsound(get_turf(target_window),'sound/effects/glassbreak3.ogg', 30, TRUE)
 				target_window.shatter_window(TRUE)
 				xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes the window with their tail!"), SPAN_XENOWARNING("We strike the window with our tail!"))
@@ -142,6 +143,7 @@
 			if(current_structure.density && !current_structure.throwpass)
 				to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
 				return
+	show_pierce_telegraph(get_turf(xeno), path, length(path))
 	// find a target in the target turf
 	if(!iscarbon(targeted_atom) || hit_target.stat == DEAD)
 		for(var/mob/living/carbon/carbonara in get_turf(targeted_atom))

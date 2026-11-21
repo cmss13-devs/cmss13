@@ -565,6 +565,27 @@
 		for(var/mob/living/carbon/xenomorph/L in hive.xeno_leader_list)
 			L.handle_xeno_leader_pheromones()
 
+/// Show takeoff smoke on the first tile left during this ability's launch.
+/datum/action/xeno_action/proc/launch_with_dash_smoke(atom/target, range, speed, atom/thrower, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, list/end_throw_callbacks, list/collision_callbacks, tracking = FALSE)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	register_launch_effects(xeno)
+	xeno.throw_atom(target, range, speed, thrower, launch_type = launch_type, pass_flags = pass_flags, end_throw_callbacks = end_throw_callbacks, collision_callbacks = collision_callbacks, tracking = tracking)
+	UnregisterSignal(xeno, COMSIG_MOVABLE_MOVED)
+
+/datum/action/xeno_action/proc/register_launch_effects(mob/living/carbon/xenomorph/xeno)
+	RegisterSignal(xeno, COMSIG_MOVABLE_MOVED, PROC_REF(show_dash_smoke))
+
+/datum/action/xeno_action/proc/show_dash_smoke(mob/living/carbon/xenomorph/xeno, atom/old_loc)
+	SIGNAL_HANDLER
+	if(!isturf(old_loc) || old_loc == xeno.loc)
+		return
+	UnregisterSignal(xeno, COMSIG_MOVABLE_MOVED)
+	switch(xeno.tier)
+		if(1, 2)
+			new /obj/effect/overlay/temp/xeno_dash_smoke(old_loc)
+		if(3)
+			new /obj/effect/overlay/temp/xeno_dash_smoke/large(old_loc)
+
 /datum/action/xeno_action/activable/pounce/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
@@ -659,7 +680,7 @@
 	xeno.pounce_distance = get_dist(xeno, target)
 	if(xeno.z != target.z)
 		xeno.pounce_distance += 2
-	xeno.throw_atom(target, distance, throw_speed, xeno, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks, tracking=TRUE)
+	launch_with_dash_smoke(target, distance, throw_speed, xeno, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks, tracking = TRUE)
 	xeno.update_icons()
 
 	additional_effects_always()
@@ -1253,6 +1274,8 @@
 
 	stabbing_xeno.tail_stab_animation(target, blunt_stab)
 	stabbing_xeno.animation_attack_on(target)
+	if(stabbing_xeno.behavior_delegate && apply_behavior_delagate)
+		stab_overlay = stabbing_xeno.behavior_delegate.get_tail_strike_icon_state(stab_overlay)
 	stabbing_xeno.flick_attack_overlay(target, stab_overlay)
 
 	var/damage = (stabbing_xeno.melee_damage_upper + stabbing_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * damage_multiplier

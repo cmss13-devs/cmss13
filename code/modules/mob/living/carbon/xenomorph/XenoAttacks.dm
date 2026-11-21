@@ -166,8 +166,10 @@
 			//From this point, we are certain a full attack will go out. Calculate damage and modifiers
 			xeno.track_slashes(xeno.caste_type) //Adds to slash stat.
 			var/damage = get_xeno_damage_slash(src, rand(xeno.melee_damage_lower, xeno.melee_damage_upper))
+			var/slash_icon_state = "slash"
 
 			if(xeno.behavior_delegate)
+				slash_icon_state = xeno.behavior_delegate.get_slash_icon_state()
 				damage = xeno.behavior_delegate.melee_attack_modify_damage(damage, src)
 
 			//Frenzy auras stack in a way, then the raw value is multiplied by two to get the additive modifier
@@ -188,7 +190,7 @@
 			xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>[slash_verb]ed [key_name(src)]</font>")
 			log_attack("[key_name(xeno)] [slash_verb]ed [key_name(src)]")
 
-			xeno.flick_attack_overlay(src, "slash")
+			xeno.flick_attack_overlay(src, slash_icon_state)
 			if(custom_slashed_sound)
 				playsound(loc, custom_slashed_sound, 25, 1)
 			else

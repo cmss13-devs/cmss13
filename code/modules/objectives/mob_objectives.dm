@@ -143,9 +143,8 @@
 		var/corpse_val = score_corpse(target)
 
 		// Add points depending on who controls it
-		var/turf/T = get_turf(target)
-		var/area/A = get_area(T)
-		if(istype(A, /area/almayer/medical/morgue) || istype(A, /area/almayer/medical/containment/cell))
+		var/area/target_area = get_area(target)
+		if(istype(target_area, /area/almayer/medical/morgue) || istype(target_area, /area/almayer/medical/containment/cell) || istype(target_area, /area/forward_base/medical/morgue) || istype(target_area, /area/forward_base/chances/medical/morgue_storage) || istype(target_area, /area/forward_base/lv624/research/containment))
 			SSobjectives.statistics["corpses_recovered"]++
 			SSobjectives.statistics["corpses_total_points_earned"] += corpse_val
 			award_points(corpse_val)

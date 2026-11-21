@@ -121,6 +121,8 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 
 /// The announcement to all Humans. Slightly off for the planet and elsewhere, accurate for the ship.
 /datum/bioscan_data/proc/ares_bioscan(forced = FALSE, variance = 2)
+	if(istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base))
+		forced = TRUE
 	if(!forced && !ares_can_bioscan())
 		message_admins("An ARES Bioscan has failed.")
 		var/name = "[MAIN_AI_SYSTEM] Bioscan Status"

@@ -7,7 +7,9 @@
 	. = ..()
 	// COMSIG_MOVABLE_TURF_ENTERED to handle ChangeTurf
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTERED, PROC_REF(register_with_turf))
-	if(!mapload)
+	var/turf/stair_turf = get_turf(src)
+	// Fixes NM insert stairs as they may be loaded after their turf has initialized
+	if(!mapload || (stair_turf?.flags_atom & INITIALIZED))
 		register_with_turf()
 	for(var/turf/blocked_turf in range(1, src))
 		blockers += WEAKREF(new /obj/effect/build_blocker(blocked_turf, src))

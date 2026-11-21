@@ -388,6 +388,14 @@
 	up = locate(/obj/structure/ladder) in SSmapping.get_turf_above(get_turf(src))
 	down = locate(/obj/structure/ladder) in SSmapping.get_turf_below(get_turf(src))
 
+	// Reconnects existing ladders
+	if(up)
+		up.down = src
+		up.update_icon()
+	if(down)
+		down.up = src
+		down.update_icon()
+
 	update_icon()
 
 /obj/structure/ladder/multiz/yautja

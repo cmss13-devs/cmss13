@@ -132,7 +132,7 @@
 		return
 
 	var/area/current_area = get_area(current_turf)
-	if(current_area.flags_area & AREA_NOBURROW)
+	if(current_area.flags_area & AREA_NOBURROW || (istype(current_area, /area/forward_base) && SSmapping.level_trait(current_turf.z, ZTRAIT_DOWN)))
 		to_chat(src, SPAN_XENOWARNING("There's no way to burrow here."))
 		return
 
@@ -248,7 +248,7 @@
 		return
 
 	var/area/area_to_get = get_area(target)
-	if(area_to_get.flags_area & AREA_NOBURROW || get_dist(src, target) > 15)
+	if(area_to_get.flags_area & AREA_NOBURROW || (istype(area_to_get, /area/forward_base) && SSmapping.level_trait(target.z, ZTRAIT_DOWN)) || get_dist(src, target) > 15)
 		to_chat(src, SPAN_XENOWARNING("There's no way to tunnel over there."))
 		return
 

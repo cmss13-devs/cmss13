@@ -303,7 +303,11 @@ SUBSYSTEM_DEF(minimaps)
 	for(var/cic_hash in cic_drawings)
 		var/image/cic_drawing = cic_drawings[cic_hash]
 		if(cic_drawing)
-			var/image/transmitted_copy = new(cic_drawing.icon, cic_drawing.icon_state, cic_drawing.layer, cic_drawing.dir)
+			var/icon/transmitted_icon = cic_drawing.icon
+			if(!cic_drawing.maptext)
+				transmitted_icon = icon(cic_drawing.icon)
+				transmitted_icon.Crop(1, 1, MINIMAP_PIXEL_SIZE, MINIMAP_PIXEL_SIZE)
+			var/image/transmitted_copy = new(transmitted_icon, cic_drawing.icon_state, cic_drawing.layer, cic_drawing.dir)
 			transmitted_copy.pixel_x = cic_drawing.pixel_x
 			transmitted_copy.pixel_y = cic_drawing.pixel_y
 			transmitted_copy.plane = TACMAP_PLANE
@@ -688,7 +692,7 @@ SUBSYSTEM_DEF(minimaps)
  * * zlevel: zlevel to fetch map for
  * * flags: map flags to fetch from
  */
-/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, live, popup, drawing, client/for_client)
+/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, live, popup, drawing, client/for_client, uncached = FALSE)
 	if(!zlevel || zlevel <= 0 || !SSminimaps.initialized)
 		return null
 	if(!SSminimaps.minimaps_by_z["[zlevel]"])
@@ -699,10 +703,10 @@ SUBSYSTEM_DEF(minimaps)
 
 	var/hash = "[zlevel]-[flags]-[live]-[popup]-[drawing]"
 
-	if(for_client || (!popup && !live))
+	if(for_client || uncached || (!popup && !live))
 		var/client_hash = "[hash][for_client ? "-[REF(for_client)]" : ""]"
 
-		if(hashed_minimaps[client_hash])
+		if(!uncached && hashed_minimaps[client_hash])
 			return hashed_minimaps[client_hash]
 
 		if(!hashed_minimaps[hash])
@@ -760,7 +764,8 @@ SUBSYSTEM_DEF(minimaps)
 					// No frozen state available, apply current transmitted drawings only
 					map.update_drawing_overlay(show_cic_drawings = FALSE)
 
-		hashed_minimaps[client_hash] = map
+		if(!uncached)
+			hashed_minimaps[client_hash] = map
 		return map
 
 	var/atom/movable/screen/minimap/map = hashed_minimaps[hash]
@@ -930,6 +935,33 @@ SUBSYSTEM_DEF(minimaps)
 	if(ceiling_overlay)
 		add_filter("ceiling_protection", 9, layering_filter(icon = ceiling_overlay, blend_mode = BLEND_OVERLAY))
 
+/// client ceiling layer for minimaps embedded in a console
+/atom/movable/screen/minimap_ceiling_layer
+	name = ""
+	plane = TACMAP_PLANE
+	layer = TACMAP_LAYER + 0.1
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	blend_mode = BLEND_OVERLAY
+	appearance_flags = NONE
+	var/target_zlevel
+	var/enabled = FALSE
+
+/atom/movable/screen/minimap_ceiling_layer/Initialize(mapload, map_ref, target_zlevel, matrix/map_transform)
+	. = ..()
+	src.target_zlevel = target_zlevel
+	assigned_map = map_ref
+	screen_loc = "[map_ref]:1,1"
+	transform = map_transform
+
+/atom/movable/screen/minimap_ceiling_layer/proc/set_enabled(new_enabled)
+	enabled = new_enabled
+	if(!enabled)
+		icon = null
+		return
+
+	var/datum/hud_displays/hud_data = SSminimaps.minimaps_by_z["[target_zlevel]"]
+	icon = hud_data?.cached_ceiling_overlay
+
 /// Updates drawing overlay for this minimap based on what drawings should be visible
 /atom/movable/screen/minimap/proc/update_drawing_overlay(show_cic_drawings = FALSE)
 	// Clean up existing drawing overlays
@@ -1088,10 +1120,6 @@ SUBSYSTEM_DEF(minimaps)
 	/// Is this a CIC map
 	var/is_cic_minimap = FALSE
 
-	var/list/atom/movable/screen/drawing_tools = list()
-
-	var/list/atom/movable/screen/minimap_tool/drawing_actions = list()
-
 /datum/action/minimap/New(Target, new_minimap_flags, new_marker_flags)
 	. = ..()
 	locator = new
@@ -1099,7 +1127,6 @@ SUBSYSTEM_DEF(minimaps)
 		minimap_flags = new_minimap_flags
 	if(new_marker_flags)
 		marker_flags = new_marker_flags
-	drawing_tools += list(/atom/movable/screen/minimap_tool/up/simple, /atom/movable/screen/minimap_tool/down/simple, /atom/movable/screen/minimap_tool/change_map)
 
 /datum/action/minimap/Destroy()
 	map = null
@@ -1135,12 +1162,6 @@ SUBSYSTEM_DEF(minimaps)
 		if(map in owner.client.screen)
 			to_chat(owner, SPAN_WARNING("You already have a minimap open!"))
 			return FALSE
-		var/list/atom/movable/screen/actions = list()
-		map = SSminimaps.fetch_minimap_object(owner.z, map.minimap_flags, map.live, FALSE, map.drawing)
-		for(var/path in drawing_tools)
-			actions += new path(null, owner.z, minimap_flags, map, null)
-		drawing_actions = actions
-		owner.client.add_to_screen(drawing_actions)
 		owner.client.add_to_screen(map)
 		owner.client.add_to_screen(locator)
 		// Apply ceiling protection overlay if client has preference enabled
@@ -1165,7 +1186,6 @@ SUBSYSTEM_DEF(minimaps)
 	else
 		owner.client.remove_from_screen(map)
 		owner.client.remove_from_screen(locator)
-		owner.client.remove_from_screen(drawing_actions)
 		map.stop_polling -= owner
 		// Hide ceiling protection toggle action when minimap closes
 		for(var/datum/action/minimap_ceiling/ceiling_action in owner.actions)
@@ -1175,8 +1195,6 @@ SUBSYSTEM_DEF(minimaps)
 		locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
 	minimap_displayed = force_state
 	return TRUE
-
-
 
 ///Overrides the minimap locator to a given atom
 /datum/action/minimap/proc/override_locator(atom/movable/to_track)
@@ -2133,57 +2151,6 @@ SUBSYSTEM_DEF(minimaps)
 
 	owner.move_tacmap_up()
 	return TRUE
-
-/atom/movable/screen/minimap_tool/up/simple
-
-/atom/movable/screen/minimap_tool/up/simple/clicked(mob/user, list/modifiers)
-	if(!SSmapping.same_z_map(linked_map.target, linked_map.target+1))
-		return
-	var/atom/movable/screen/minimap/new_linked_map = SSminimaps.fetch_minimap_object(linked_map.target+1, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
-	update_shown_map(user, new_linked_map)
-
-
-/atom/movable/screen/minimap_tool/proc/update_shown_map(mob/user, atom/movable/screen/minimap/new_linked_map)
-	user.client.remove_from_screen(linked_map)
-	user.client.add_to_screen(new_linked_map)
-	for(var/datum/action/minimap/user_map in user.actions)
-		user_map.map = new_linked_map
-	for(var/atom/movable/screen/minimap_tool/tool in user.client.screen)
-		tool.linked_map = new_linked_map
-
-/atom/movable/screen/minimap_tool/down/simple/clicked(mob/user, list/modifiers)
-	if(!SSmapping.same_z_map(linked_map.target, linked_map.target-1))
-		return
-	var/atom/movable/screen/minimap/new_linked_map = SSminimaps.fetch_minimap_object(linked_map.target-1, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
-	update_shown_map(user, new_linked_map)
-
-/atom/movable/screen/minimap_tool/change_map
-	desc = "Switch ground / ship map."
-	screen_loc = "15,7"
-	icon_state = "update"
-
-/atom/movable/screen/minimap_tool/change_map/clicked(mob/user, list/mods)
-	var/atom/movable/screen/minimap/new_linked_map
-	if(SSmapping.level_has_any_trait(linked_map.target, list(ZTRAIT_GROUND)))
-		if(SSmapping.level_has_any_trait(user.z, list(ZTRAIT_MARINE_MAIN_SHIP)))
-			new_linked_map = SSminimaps.fetch_minimap_object(user.z, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
-			for(var/datum/action/minimap/map in user.actions)
-				user.client.add_to_screen(map.locator)
-		else
-			new_linked_map = SSminimaps.fetch_minimap_object(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)[1], linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
-			for(var/datum/action/minimap/map in user.actions)
-				user.client.remove_from_screen(map.locator)
-	else
-		if(SSmapping.level_has_any_trait(user.z, list(ZTRAIT_GROUND)))
-			new_linked_map = SSminimaps.fetch_minimap_object(user.z, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
-			for(var/datum/action/minimap/map in user.actions)
-				user.client.add_to_screen(map.locator)
-		else
-			new_linked_map = SSminimaps.fetch_minimap_object(SSmapping.levels_by_trait(ZTRAIT_GROUND)[1] , linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
-			for(var/datum/action/minimap/map in user.actions)
-				user.client.remove_from_screen(map.locator)
-
-	update_shown_map(user, new_linked_map)
 
 /atom/movable/screen/minimap_tool/down
 	icon_state = "down"

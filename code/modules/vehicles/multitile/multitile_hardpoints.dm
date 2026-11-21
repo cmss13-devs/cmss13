@@ -222,6 +222,7 @@
 
 	update_minimap_icon()
 	update_icon()
+	update_movement_sound()
 
 //General proc for taking off hardpoints
 //ALWAYS CALL THIS WHEN REMOVING HARDPOINTS
@@ -244,3 +245,4 @@
 		qdel(old)
 
 	update_icon()
+	update_movement_sound()

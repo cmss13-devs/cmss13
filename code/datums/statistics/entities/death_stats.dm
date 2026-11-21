@@ -34,6 +34,7 @@
 /datum/entity_meta/statistic_death
 	entity_type = /datum/entity/statistic/death
 	table_name = "log_player_statistic_death"
+	key_field = "round_id"
 	field_types = list(
 		"player_id" = DB_FIELDTYPE_BIGINT,
 		"round_id" = DB_FIELDTYPE_BIGINT,

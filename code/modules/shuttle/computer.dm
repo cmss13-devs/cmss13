@@ -176,7 +176,7 @@
 /obj/structure/machinery/computer/shuttle/ert/tgui_interact(mob/user, datum/tgui/ui)
 	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
 
-	if(ert.distress_beacon && ishuman(user))
+	if(ert.distress_beacon && length(ert.distress_beacon.members) && ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		var/obj/item/card/id/id = human_user.get_active_hand()
 		if(!istype(id))
@@ -385,6 +385,21 @@
 			continue
 		. += list(dock)
 
+/obj/structure/machinery/computer/shuttle/ert/alamo
+	name = "transport shuttle"
+	desc = "A transport shuttle flight computer."
+	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
+	icon_state = "console"
+	req_access = list()
+	breakable = FALSE
+
+/obj/structure/machinery/computer/shuttle/ert/alamo/get_landing_zones()
+	. = list()
+	for(var/obj/docking_port/stationary/emergency_response/dock in SSshuttle.stationary)
+		if(!is_mainship_level(dock.z))
+			continue
+		. += list(dock)
+
 /obj/structure/machinery/computer/shuttle/ert/hunter
 	name = "flight console"
 	desc = "An advanced alien flight console."
@@ -520,7 +535,7 @@
 						to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, systems damaged\"."))
 						return
 
-				if(SShijack.current_progress < SShijack.early_launch_required_progress)
+				if(!SShijack.sd_detonated && (SShijack.hijack_plan == HIJACK_ROUTE_SCUTTLE || SShijack.current_progress < SShijack.early_launch_required_progress))
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, fuel insufficient\"."))
 					return
 
@@ -560,7 +575,7 @@
 		if(lifeboat.status == LIFEBOAT_LOCKED)
 			to_chat(xeno, SPAN_WARNING("We already wrested away control of this metal bird."))
 			return XENO_NO_DELAY_ACTION
-		if(lifeboat.mode == SHUTTLE_CALL)
+		if(lifeboat.forced_launch || lifeboat.mode == SHUTTLE_CALL)
 			to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the metal bird mid-flight."))
 			return XENO_NO_DELAY_ACTION
 
@@ -568,7 +583,7 @@
 		if(do_after(usr, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(lifeboat.status == LIFEBOAT_LOCKED)
 				return XENO_NO_DELAY_ACTION
-			if(lifeboat.mode == SHUTTLE_CALL)
+			if(lifeboat.forced_launch || lifeboat.mode == SHUTTLE_CALL)
 				to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the metal bird mid-flight."))
 				return XENO_NO_DELAY_ACTION
 			lifeboat.status = LIFEBOAT_LOCKED

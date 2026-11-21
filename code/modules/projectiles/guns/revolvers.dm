@@ -201,6 +201,8 @@
 			current_mag.chamber_contents[i] = "empty"
 		current_mag.current_rounds = 0
 
+	eject_casing()
+
 //The cylinder is always emptied out before a reload takes place.
 /obj/item/weapon/gun/revolver/proc/add_to_cylinder(mob/user, ammo_type, specific_chamber) //Bullets are added forward.
 	if(!current_mag)
@@ -340,6 +342,7 @@
 		playsound(user, unload_sound, 25, 1)
 		russian_roulette = FALSE
 		update_icon()
+		eject_casing()
 
 /obj/item/weapon/gun/revolver/proc/toggle_cylinder(mob/user)
 	if(!current_mag)

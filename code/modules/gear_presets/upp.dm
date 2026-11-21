@@ -9,11 +9,9 @@
 	job_list = UPP_JOB_LIST
 
 /datum/job/antag/upp // Abstract type (null title)
-	allow_additional = TRUE
 	selection_class = "job_synth" //setup colour
 	total_positions = 1
 	spawn_positions = 1
-	allow_additional = TRUE
 	late_joinable = TRUE
 	scaled = FALSE
 	faction_menu = FACTION_UPP

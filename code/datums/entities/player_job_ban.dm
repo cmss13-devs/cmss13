@@ -15,6 +15,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_job_ban)
 /datum/entity_meta/player_job_ban
 	entity_type = /datum/entity/player_job_ban
 	table_name = "player_job_bans"
+	key_field = "player_id"
 	field_types = list(
 		"player_id"=DB_FIELDTYPE_BIGINT,
 		"admin_id"=DB_FIELDTYPE_BIGINT,

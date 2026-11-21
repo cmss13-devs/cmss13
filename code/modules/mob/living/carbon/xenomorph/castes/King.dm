@@ -164,7 +164,7 @@
 		log_attack("[key_name(xeno)] hit [key_name(carbon)] with [name]")
 		playsound(carbon, pick(slash_sounds), 30, TRUE)
 
-	xeno.visible_message(SPAN_DANGER("[xeno] slices around itself!"), SPAN_NOTICE("We slice around ourself!"))
+	xeno.visible_message(SPAN_DANGER("[xeno] slices around itself!"), SPAN_NOTICE("We slice around ourselves!"))
 	apply_cooldown()
 	..()
 
@@ -333,7 +333,7 @@
 
 	var/turf/template_turf = get_step(target_turf, SOUTHWEST)
 
-	to_chat(xeno, SPAN_XENONOTICE("Our muscles tense as we prepare ourself for a giant leap."))
+	to_chat(xeno, SPAN_XENONOTICE("Our muscles tense as we prepare ourselves for a giant leap."))
 	xeno.make_jittery(2 SECONDS)
 	if(!do_after(xeno, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		to_chat(xeno, SPAN_XENONOTICE("We relax our muslces and end our leap."))

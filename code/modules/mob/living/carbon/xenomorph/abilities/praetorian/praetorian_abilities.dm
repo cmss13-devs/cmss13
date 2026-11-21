@@ -197,6 +197,13 @@
 	var/speed_buff_amount = 0.5
 	var/afterimage_interval = 1 DECISECONDS
 
+	/// How much refund we want to get back? 1.0 is 1s used to 1s cooldown, 2.0 is 1s used 2s cooldown.
+	var/refund_multiplier = 2.0
+	/// Used in calculation, finalized number will be displayed as cooldown.
+	var/recharge_time = null
+	/// Cooldown after activation to prevent accidental double click.
+	var/safe_click_cooldown = 0
+
 /datum/action/xeno_action/activable/prae_tail_trip
 	name = "Tail Trip"
 	action_icon_state = "prae_tail_trip"

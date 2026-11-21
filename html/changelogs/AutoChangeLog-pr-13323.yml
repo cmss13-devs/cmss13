@@ -1,0 +1,6 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - qol: "Abilities with significant cooldowns now have a cooldown text upon the cooldown expiring."
+  - spellcheck: "Corrects grammar, misspells, and missing punctuation in xeno ability files."
+  - spellcheck: "Any use of first or second person in regard to xeno abilities has been changed to third person."

@@ -27,6 +27,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 ))
 
 /datum/preferences
+	/// The json savefile for this datum
+	var/datum/json_savefile/savefile
+
 	var/client/owner
 	var/atom/movable/screen/preview/preview_front
 	var/mob/living/carbon/human/dummy/preview_dummy
@@ -315,7 +318,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/CMTV_toggle_optout = FALSE
 
 	/// Fluff items that the user is equipped with on spawn.
-	var/list/gear
+	var/list/gear = list()
 
 	/// Loadout items that the user is equipped with on spawn.
 	VAR_PRIVATE/list/loadout = list()
@@ -341,33 +344,45 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	/// The same keybinds, but in an array of {"keybinding": /datum/keybinding/custom}
 	var/list/key_to_custom_keybind = list()
 
-/datum/preferences/New(client/C)
+	/// Whether a savefile tree migration occured (not saved to disk)
+	var/performed_json_upgrade = FALSE
+
+/datum/preferences/New(client/owner)
 	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
-	macros = new(C, src)
-	if(istype(C))
-		owner = C
-		if(!IsGuestKey(C.key))
-			unlock_content = C.IsByondMember()
-			load_path(C.ckey)
+
+	src.owner = owner
+	macros = new(owner, src)
+
+	var/loaded = FALSE
+	if(istype(owner))
+		if(!IsGuestKey(owner.key))
+			unlock_content = owner.IsByondMember()
+			load_path(owner.ckey)
+			if(!fexists(path)) // No existing json, try to migrate and then load
+				try_savefile_tree_migration()
+				load_savefile()
+			else if(!load_savefile()) // Existing json, try loading it otherwise fallback to a migration
+				if(try_savefile_tree_migration())
+					load_savefile() // This only needs to occur after a successful migration here because the previous attempt already new'd a savefile
 			if(load_preferences())
 				if(load_character())
-					return
+					loaded = TRUE
 
-		C.tgui_say?.load()
+		owner.tgui_say?.load()
 
 	if(!ooccolor)
 		ooccolor = CONFIG_GET(string/ooc_color_default)
-	gender = pick(MALE, FEMALE)
-	real_name = random_name(gender)
-	gear = list()
+	if(!loaded)
+		gender = pick(MALE, FEMALE)
+		real_name = random_name(gender)
 
 	#ifdef QUICK_START
 	job_preference_list[JOB_CO] = HIGH_PRIORITY
 	#endif
 
-/datum/preferences/proc/client_reconnected(client/C)
-	owner = C
-	macros.owner = C
+/datum/preferences/proc/client_reconnected(client/owner)
+	src.owner = owner
+	macros.owner = owner
 
 /datum/preferences/Del()
 	. = ..()
@@ -495,9 +510,6 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 			dat += "<b>Custom Loadout:</b> "
 			var/total_cost = 0
-
-			if(!islist(gear))
-				gear = list()
 
 			if(length(gear))
 				dat += "<br>"
@@ -758,7 +770,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 
 			dat += "<div id='column2'>"
-			dat += "<h2><b><u>Survivor Settings:</u></b></h2>"
+			dat += "<h2><b><u>Survivor Settings<br>(Ignored on Survive Mode):</u></b></h2>"
 			dat += "<b>Spawn as Hostile:</b> <a href='byond://?_src_=prefs;preference=toggles_survivor;flag=[PLAY_SURVIVOR_HOSTILE]'><b>[toggles_survivor & PLAY_SURVIVOR_HOSTILE ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Non-Hostile:</b> <a href='byond://?_src_=prefs;preference=toggles_survivor;flag=[PLAY_SURVIVOR_NON_HOSTILE]'><b>[toggles_survivor & PLAY_SURVIVOR_NON_HOSTILE ? "Yes" : "No"]</b></a><br>"
 
@@ -805,13 +817,11 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	HTML += "<table width='100%' cellpadding='1' cellspacing='0'>"
 	var/index = -1
 
-	//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
-
 	var/list/active_role_names = GLOB.gamemode_roles[GLOB.master_mode]
 	if(!active_role_names)
 		active_role_names = GLOB.ROLES_DISTRESS_SIGNAL
 
-	for(var/role_name as anything in active_role_names)
+	for(var/role_name as anything in get_manifest_ordered_jobs(active_role_names))
 		var/datum/job/job = GLOB.RoleAuthority.roles_by_name[role_name]
 		if(!job)
 			debug_log("Missing job for prefs: [role_name]")
@@ -823,23 +833,25 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			HTML += "</table></td><td valign='top' width='20%'><table width='100%' cellpadding='1' cellspacing='0'>"
 			index = 0
 
-		HTML += "<tr class='[job.selection_class]'><td width='40%' align='right'>"
+		var/department = get_job_department(job.title)
+		var/job_classes = "[job.selection_class][department ? " job_department_[department]" : ""]"
+		HTML += "<tr class='[job_classes][is_job_leader(job.title) ? " job_leader" : ""]'><td width='40%' align='right'>"
 
 		if(jobban_isbanned(user, job.title))
-			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='center'></td><td><b>BANNED</b></td></tr>"
+			HTML += "<del>[job.disp_title]</del></td><td width='10%' align='center'></td><td><b>BANNED</b></td></tr>"
 			continue
 		else if(!job.check_whitelist_status(user))
-			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='center'></td><td>WHITELISTED</td></tr>"
+			HTML += "<del>[job.disp_title]</del></td><td width='10%' align='center'></td><td>WHITELISTED</td></tr>"
 			continue
 		else if(!job.can_play_role(user.client))
 			var/list/missing_requirements = job.get_role_requirements(user.client)
-			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='center'></td><td>TIMELOCKED</td></tr>"
+			HTML += "<del>[job.disp_title]</del></td><td width='10%' align='center'></td><td>TIMELOCKED</td></tr>"
 			for(var/r in missing_requirements)
 				var/datum/timelock/T = r
-				HTML += "<tr class='[job.selection_class]'><td width='40%' align='middle'>[T.name]</td><td width='10%' align='center'></td><td>[duration2text(missing_requirements[r])] Hours</td></tr>"
+				HTML += "<tr class='[job_classes]'><td width='40%' align='middle'>[T.name]</td><td width='10%' align='center'></td><td>[duration2text(missing_requirements[r])] Hours</td></tr>"
 			continue
 
-		HTML += "<b>[job.disp_title]</b></td><td width='10%' align='center'>"
+		HTML += "[job.disp_title]</td><td width='10%' align='center'>"
 
 		if(job.job_options)
 			if(pref_special_job_options)
@@ -925,13 +937,11 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	HTML += "<table width='100%' cellpadding='1' cellspacing='0'>"
 	var/index = -1
 
-	//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
-
 	var/list/active_role_names = GLOB.gamemode_roles[GLOB.master_mode]
 	if(!active_role_names)
 		active_role_names = GLOB.ROLES_DISTRESS_SIGNAL
 
-	for(var/role_name as anything in active_role_names)
+	for(var/role_name as anything in get_manifest_ordered_jobs(active_role_names))
 		var/datum/job/job = GLOB.RoleAuthority.roles_by_name[role_name]
 		if(!job)
 			debug_log("Missing job for prefs: [role_name]")
@@ -941,18 +951,20 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			HTML += "</table></td><td valign='top' width='20%'><table width='100%' cellpadding='1' cellspacing='0'>"
 			index = 0
 
-		HTML += "<tr class='[job.selection_class]'><td width='40%' align='right'>"
+		var/department = get_job_department(job.title)
+		var/job_classes = "[job.selection_class][department ? " job_department_[department]" : ""]"
+		HTML += "<tr class='[job_classes][is_job_leader(job.title) ? " job_leader" : ""]'><td width='40%' align='right'>"
 		if(jobban_isbanned(user, job.title))
-			HTML += "<b><del>[job.disp_title]</del></b></td><td width='60%'><b>BANNED</b></td></tr>"
+			HTML += "<del>[job.disp_title]</del></td><td width='60%'><b>BANNED</b></td></tr>"
 			continue
 		else if(!job.check_whitelist_status(user))
-			HTML += "<b><del>[job.disp_title]</del></b></td><td width='60%'>WHITELISTED</td></tr>"
+			HTML += "<del>[job.disp_title]</del></td><td width='60%'>WHITELISTED</td></tr>"
 			continue
 		else if(!job.can_play_role(user.client))
-			HTML += "<b><del>[job.disp_title]</del></b></td><td width='60%'>TIMELOCKED</td></tr>"
+			HTML += "<del>[job.disp_title]</del></td><td width='60%'>TIMELOCKED</td></tr>"
 			continue
 
-		HTML += "<b>[job.disp_title]</b></td>"
+		HTML += "[job.disp_title]</td>"
 
 		var/slot_name = get_job_slot_name(job.title)
 		HTML += "<td width='60%'><a href='byond://?_src_=prefs;preference=job_slot;task=assign;target_job=[job.title];'>[slot_name]</a>"
@@ -1069,11 +1081,10 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 /datum/preferences/proc/assign_job_slot(mob/user, target_job)
 	var/list/slot_options = list(JOB_SLOT_RANDOMISED_TEXT = JOB_SLOT_RANDOMISED_SLOT, JOB_SLOT_CURRENT_TEXT = JOB_SLOT_CURRENT_SLOT)
-	var/savefile/S = new /savefile(path)
-	var/slot_name
 	for(var/slot in 1 to MAX_SAVE_SLOTS)
-		S.cd = "/character[slot]"
-		S["real_name"] >> slot_name
+		var/tree_key = "character[slot]"
+		var/list/save_data = savefile.tree[tree_key]
+		var/slot_name = save_data?["real_name"]
 		if(slot_name)
 			slot_options["[slot_name] (slot #[slot])"] = slot
 	var/chosen_slot = tgui_input_list(user, "Assign character for [target_job] job", "Slot assignment", slot_options)
@@ -1090,9 +1101,12 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 		if(JOB_SLOT_RANDOMISED_SLOT)
 			return JOB_SLOT_RANDOMISED_TEXT
 		if(1 to MAX_SAVE_SLOTS)
-			var/savefile/S = new /savefile(path)
-			S.cd = "/character[slot_number]"
-			return "[S["real_name"]] (slot #[slot_number])"
+			var/tree_key = "character[slot_number]"
+			var/list/save_data = savefile.tree[tree_key]
+			var/name = "EMPTY"
+			if(islist(save_data))
+				name = save_data["real_name"]
+			return "[name] (slot #[slot_number])"
 
 /datum/preferences/proc/reset_job_slots()
 	pref_job_slots = list()
@@ -2095,8 +2109,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					if(name_error)
 						tgui_alert(user, name_error, "Invalid Name", list("OK"))
 						return
-					save_preferences()
 					save_character()
+					save_preferences() // This one writes to disk
 					save_cooldown = world.time + 50
 					to_chat(user, SPAN_WARNING(SPAN_BOLD("Successfully saved preferences.")))
 
@@ -2360,17 +2374,16 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/dat = "<body onselectstart='return false;'>"
 	dat += "<tt><center>"
 
-	var/savefile/S = new /savefile(path)
-	if(S)
+	if(savefile)
 		dat += "<b>Select a character slot to load</b><hr>"
-		var/name
 		for(var/i=1, i<=MAX_SAVE_SLOTS, i++)
-			S.cd = "/character[i]"
-			S["real_name"] >> name
+			var/tree_key = "character[i]"
+			var/list/save_data = savefile.tree[tree_key]
+			var/name = save_data?["real_name"]
 			if(!name)
 				name = "Character[i]"
-			if(i==default_slot)
-				name = "<b>[name]</b>"
+			if(i == default_slot)
+				name = "<b>> [name] <</b>"
 			dat += "<a href='byond://?_src_=prefs;preference=changeslot;num=[i];'>[name]</a><br>"
 
 	dat += "<hr>"

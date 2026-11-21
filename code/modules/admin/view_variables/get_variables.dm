@@ -364,6 +364,12 @@
 		pre_generated_list = make_types_fancy(sortList(typesof(/datum) - typesof(/atom)))
 	return pre_generated_list
 
+/proc/get_fancy_list_of_area_types()
+	var/static/list/pre_generated_list
+	if (!pre_generated_list) //init
+		pre_generated_list = make_types_fancy(typesof(/area))
+	return pre_generated_list
+
 /proc/pick_closest_path(value, list/matches = get_fancy_list_of_atom_types())
 	if(value == FALSE) //nothing should be calling us with a number, so this is safe
 		value = tgui_input_text(usr, "Enter type to find (blank for all, cancel to cancel)", "Search for type")

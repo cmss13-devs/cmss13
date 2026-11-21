@@ -224,4 +224,10 @@
 	med_hud_set_health()
 	med_hud_set_armor()
 	med_hud_set_status()
+	if(eyelid_timer)
+		deltimer(eyelid_timer)
+		eyelid_timer = null
+	next_blink_at = 0
+	if(eyelids_status != EYELID_CLOSED_VOLUNTARILY)
+		apply_eyelid_state(EYELID_OPEN)
 

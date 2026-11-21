@@ -2,7 +2,7 @@
 
 ///Footstep component. Plays footsteps at parents location when it is appropriate.
 /datum/component/footstep
-	dupe_mode = COMPONENT_DUPE_HIGHLANDER
+	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
 	///how many steps before the footstep sound is played
 	var/steps = 0
 	///volume of soundfile see playsound()
@@ -29,6 +29,16 @@
 
 	RegisterSignal(parent, list(COMSIG_MOVABLE_MOVED), PROC_REF(play_simplestep))
 
+/datum/component/footstep/InheritComponent(datum/component/C, i_am_original, steps_ = 2, volume_ = 50, range_ = null, falloff_ = 1, footstep_sounds_ = "alien_footstep_large", drag_sounds_ = 'sound/effects/alien_dragsound_large.ogg', vary_ = rand(20000, 25000))
+	. = ..()
+	steps = steps_
+	volume = volume_
+	vary = vary_
+	range = range_
+	falloff = falloff_
+	footstep_sounds = footstep_sounds_
+	drag_sounds = drag_sounds_
+
 /datum/component/footstep/proc/prepare_step()
 	var/turf/open/T = get_turf(parent)
 	if(!istype(T))
@@ -45,11 +55,14 @@
 
 /datum/component/footstep/proc/play_simplestep()
 	SIGNAL_HANDLER
-	var/turf/open/T = prepare_step()
-	if(!T)
+	var/turf/open/open_turf = prepare_step()
+	if(!open_turf)
 		return
 	var/mob/living/parent_mob = parent
 	if(parent_mob.body_position == LYING_DOWN && (isfile(drag_sounds) || istext(drag_sounds)))
-		playsound(T, drag_sounds, volume, vary, range, falloff = falloff)
+		playsound(open_turf, drag_sounds, volume, vary, range, falloff = falloff)
 	else if(isfile(footstep_sounds) || istext(footstep_sounds))
-		playsound(T, footstep_sounds, volume, vary, range, falloff = falloff)
+		if(SSwater_overlays.is_water(open_turf) && (isfile(parent_mob.water_config.footstep_sound) || istext(parent_mob.water_config.footstep_sound)))
+			playsound(open_turf, parent_mob.water_config.footstep_sound, volume, vary, range, falloff = falloff)
+			return
+		playsound(open_turf, footstep_sounds, volume, vary, range, falloff = falloff)

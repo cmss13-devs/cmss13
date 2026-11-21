@@ -9,7 +9,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 	priority = SURGERY_PRIORITY_HIGH
 	possible_locs = list("chest")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
-	required_surgery_skill = SKILL_SURGERY_TRAINED
+	required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	steps = list(/datum/surgery_step/repair_robotic_organs)
 
 /datum/surgery/robotic_organ_repair/can_start(mob/user, mob/living/carbon/patient, obj/limb/patient_limb, obj/item/tool)

@@ -50,6 +50,7 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 
 	var/stun_duration = 1
+	var/initial_hit_damage = 20
 	var/damage_amount = 20
 	var/fire_level_to_extinguish = 13
 
@@ -122,7 +123,7 @@
 				if (C.ally_of_hivenumber(hivenumber))
 					continue
 				apply_spray(M)
-				M.apply_armoured_damage(get_xeno_damage_acid(M, damage_amount), ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
+				M.apply_armoured_damage(get_xeno_damage_acid(M, initial_hit_damage), ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
 
 			continue
 
@@ -133,7 +134,7 @@
 		if (istype(loc, /turf/open))
 			var/turf/open/scorch_turf_target = loc
 			if(scorch_turf_target.scorchable)
-				scorch_turf_target.scorch(damage_amount)
+				scorch_turf_target.scorch(initial_hit_damage)
 
 	START_PROCESSING(SSobj, src)
 	addtimer(CALLBACK(src, PROC_REF(die)), time_to_live)
@@ -699,10 +700,6 @@
 				else
 					new /datum/effects/acid(H, linked_xeno, initial(linked_xeno.caste_type))
 			var/found = null
-			for (var/datum/effects/boiler_trap/trap in H.effects_list)
-				if (trap.cause_data && trap.cause_data.resolve_mob() == linked_xeno)
-					found = trap
-					break
 			if(found)
 				H.apply_armoured_damage(damage*immobilized_multiplier, ARMOR_BIO, BURN)
 			else
@@ -716,25 +713,3 @@
 /obj/effect/xenomorph/acid_damage_delay/proc/die()
 	deal_damage()
 	qdel(src)
-
-/obj/effect/xenomorph/acid_damage_delay/boiler_landmine
-
-/obj/effect/xenomorph/acid_damage_delay/boiler_landmine/deal_damage()
-	var/total_hits = 0
-	for(var/obj/structure/barricade/cade in loc)
-		cade.corrosive_acid_act(damage*(1.15 + 0.55 * empowered))
-
-	for(var/mob/living/carbon/human in loc)
-		if(human.stat == DEAD)
-			continue
-
-		if(human.ally_of_hivenumber(hivenumber))
-			continue
-
-		total_hits++
-
-	var/datum/action/xeno_action/activable/boiler_trap/trap = get_action(linked_xeno, /datum/action/xeno_action/activable/boiler_trap)
-
-	trap.reduce_cooldown(total_hits*4 SECONDS)
-
-	return ..()

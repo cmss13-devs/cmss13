@@ -278,7 +278,6 @@ const WeaponsMfdPanel = (props) => {
 const BaseMfdPanel = (props: MfdProps) => {
   const { setPanelState } = mfdState(props.panelStateId);
   const { otherPanelState } = otherMfdState(props.otherPanelStateId);
-  const { act } = useBackend<DropshipProps>();
 
   return (
     <MfdPanel
@@ -299,7 +298,7 @@ const BaseMfdPanel = (props: MfdProps) => {
         {},
         {
           children: otherPanelState !== 'map' ? 'MAPS' : undefined,
-          onClick: () => act('mapview'),
+          onClick: () => setPanelState('map'),
         },
         {
           children: otherPanelState !== 'camera' ? 'CAMS' : undefined,
@@ -312,7 +311,7 @@ const BaseMfdPanel = (props: MfdProps) => {
           <h1>U.S.C.M.</h1>
           <h1>Dropship Weapons Control System</h1>
           <h3>UA Northbridge</h3>
-          <h3>V 0.1</h3>
+          <h3>V 0.5</h3>
         </div>
       </Box>
     </MfdPanel>

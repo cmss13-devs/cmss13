@@ -8,8 +8,8 @@
 	var/power = 400
 
 /datum/buildmode_mode/boom/change_settings(client/c)
-	power = tgui_input_number(c?.mob, "How much explosive power should the blast have?", "Set power", 1200)
-	falloff = tgui_input_number(c?.mob, "How much falloff should the blast have?", "Set falloff", 400)
+	power = tgui_input_number(c, "How much explosive power should the blast have?", "Set power", 1200)
+	falloff = tgui_input_number(c, "How much falloff should the blast have?", "Set falloff", 400)
 
 /datum/buildmode_mode/boom/when_clicked(client/c, params, object)
 	var/list/modifiers = params2list(params)

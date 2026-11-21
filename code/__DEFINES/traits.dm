@@ -280,6 +280,12 @@
 
 
 // -- specific ability traits --
+#define TRAIT_ABILITY_ASSASINATE "t_ability_assasinate"
+#define TRAIT_ABILITY_INVIS "t_ability_invis"
+#define TRAIT_ABILITY_DODGE "t_ability_dodge"
+#define TRAIT_ABILITY_RED_TAG "t_ability_red_tag"
+#define TRAIT_ABILITY_YELLOW_TAG "t_ability_yellow_tag"
+#define TRAIT_ABILITY_SHED_SPIKES "t_ability_shed_spikes"
 /// Used by ravager pounce to charge at enemies.
 #define TRAIT_ABILITY_POUNCE_CHARGE "t_ability_pounce_charge"
 /// Used for empower windup before ravager get empowered.

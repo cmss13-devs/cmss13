@@ -371,7 +371,7 @@
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
 		/datum/action/xeno_action/onclick/shift_spits, //second macro
-	)
+		)
 
 	var/breathing_counter = 0
 	var/ovipositor = FALSE //whether the Queen is attached to an ovipositor

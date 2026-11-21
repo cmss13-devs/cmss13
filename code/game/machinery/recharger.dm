@@ -11,7 +11,16 @@
 	black_market_value = 35
 	var/obj/item/charging = null
 	var/percent_charge_complete = 0
-	var/list/allowed_devices = list(/obj/item/weapon/baton, /obj/item/cell, /obj/item/weapon/gun/energy, /obj/item/device/defibrillator, /obj/item/tool/portadialysis, /obj/item/clothing/suit/auto_cpr, /obj/item/smartgun_battery, /obj/item/device/helmet_visor/night_vision)
+	var/list/allowed_devices = list(
+		/obj/item/weapon/baton,
+		/obj/item/cell,
+		/obj/item/weapon/gun/energy,
+		/obj/item/device/defibrillator,
+		/obj/item/tool/portadialysis,
+		/obj/item/clothing/suit/auto_cpr,
+		/obj/item/smartgun_battery,
+		/obj/item/device/helmet_visor/night_vision,
+		)
 
 	var/charge_amount = 1000
 

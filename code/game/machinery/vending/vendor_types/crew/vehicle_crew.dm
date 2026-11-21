@@ -256,7 +256,7 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_arc, list(
 		list("M5 Bayonet", 2, /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),
 		list("M89-S Signal Flare Pack", 1, /obj/item/storage/box/m94/signal, VENDOR_ITEM_REGULAR),
 		list("M94 Marking Flare pack", 10, /obj/item/storage/box/m94, VENDOR_ITEM_REGULAR),
-		list("Machete Scabbard (Full)", 2, /obj/item/storage/large_holster/machete/full, VENDOR_ITEM_REGULAR)
+		list("Machete Scabbard (Full)", 2, /obj/item/storage/large_holster/machete/full, VENDOR_ITEM_REGULAR),
 	)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/vehicle_crew/populate_product_list(scale)

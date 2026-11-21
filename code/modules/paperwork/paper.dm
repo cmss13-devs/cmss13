@@ -13,7 +13,7 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi',
 	)
 	item_state_slots = list(WEAR_HEAD = "paper")
 	pickup_sound = 'sound/handling/paper_pickup.ogg'

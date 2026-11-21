@@ -174,7 +174,7 @@
 	item_state = "lipstick"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paint_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paint_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paint_righthand.dmi',
 	)
 	var/icon_state_open = "lipstick_red"
 	var/icon_state_closed = "lipstick"

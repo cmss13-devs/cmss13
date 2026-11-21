@@ -8,7 +8,7 @@
 		blocker_positions = list(movement_helper_constants::TARGET_TURF),
 		blocker_parameters_entries = list(
 			list(
-				GLOB.directional_can_pass_all_blocker_configuration
+				GLOB.directional_can_pass_all_blocker_configuration,
 			),
 		),
 		test_callback = CALLBACK(src, PROC_REF(collision_validation), FALSE),
@@ -24,7 +24,7 @@
 		blocker_positions = list(movement_helper_constants::TARGET_TURF),
 		blocker_parameters_entries = list(
 			list(
-				GLOB.directional_can_pass_front_blocker_configuration
+				GLOB.directional_can_pass_front_blocker_configuration,
 			),
 		),
 		test_callback = CALLBACK(src, PROC_REF(collision_validation), FALSE),
@@ -40,7 +40,7 @@
 		blocker_positions = list(movement_helper_constants::MOVER_TURF),
 		blocker_parameters_entries = list(
 			list(
-				GLOB.directional_can_pass_behind_blocker_configuration
+				GLOB.directional_can_pass_behind_blocker_configuration,
 			),
 		),
 		test_callback = CALLBACK(src, PROC_REF(collision_validation), FALSE),

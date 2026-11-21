@@ -114,7 +114,16 @@
 	name = "\improper R4T lever action rifle case"
 	desc = "A gun case containing the R4T lever action rifle, intended for scouting. Comes with an ammunition belt, the optional revolver attachment for it, two boxes of ammunition, a sling, and a stock for the rifle."
 	storage_slots = 7
-	can_hold = list(/obj/item/weapon/gun/lever_action/r4t, /obj/item/attachable/stock/r4t, /obj/item/attachable/magnetic_harness/lever_sling, /obj/item/ammo_magazine/lever_action, /obj/item/ammo_magazine/lever_action/training, /obj/item/storage/belt/shotgun/lever_action, /obj/item/storage/belt/gun/m44/lever_action/attach_holster, /obj/item/device/motiondetector/m717)
+	can_hold = list(
+		/obj/item/weapon/gun/lever_action/r4t,
+		/obj/item/attachable/stock/r4t,
+		/obj/item/attachable/magnetic_harness/lever_sling,
+		/obj/item/ammo_magazine/lever_action,
+		/obj/item/ammo_magazine/lever_action/training,
+		/obj/item/storage/belt/shotgun/lever_action,
+		/obj/item/storage/belt/gun/m44/lever_action/attach_holster,
+		/obj/item/device/motiondetector/m717,
+		)
 
 /obj/item/storage/box/guncase/r4t_scout/fill_preset_inventory()
 	new /obj/item/weapon/gun/lever_action/r4t(src)
@@ -129,7 +138,12 @@
 	name = "\improper XM88 heavy rifle case"
 	desc = "A gun case containing the XM88 Heavy Rifle, a prototype weapon designed for use against heavily armored infantry targets and light vehicles. Contains an ammunition belt, two boxes of ammunition, the XS-9 Targeting Relay attachment, and the stock for the rifle."
 	storage_slots = 6
-	can_hold = list(/obj/item/weapon/gun/lever_action/xm88, /obj/item/attachable/stock/xm88, /obj/item/attachable/scope/mini/xm88, /obj/item/ammo_magazine/lever_action/xm88, /obj/item/storage/belt/shotgun/xm88)
+	can_hold = list(
+		/obj/item/weapon/gun/lever_action/xm88,
+		/obj/item/attachable/stock/xm88,
+		/obj/item/attachable/scope/mini/xm88,
+		/obj/item/ammo_magazine/lever_action/xm88,/obj/item/storage/belt/shotgun/xm88,
+		)
 
 /obj/item/storage/box/guncase/xm88/fill_preset_inventory()
 	new /obj/item/weapon/gun/lever_action/xm88(src)
@@ -144,7 +158,11 @@
 	name = "\improper M240 incinerator case"
 	desc = "A gun case containing the M240A1 incinerator unit. It does come loaded, but you'll still have to find extra tanks as you go."
 	storage_slots = 4
-	can_hold = list(/obj/item/weapon/gun/flamer/m240, /obj/item/ammo_magazine/flamer_tank, /obj/item/attachable/attached_gun/extinguisher)
+	can_hold = list(
+		/obj/item/weapon/gun/flamer/m240,
+		/obj/item/ammo_magazine/flamer_tank,
+		/obj/item/attachable/attached_gun/extinguisher,
+		)
 
 /obj/item/storage/box/guncase/flamer/fill_preset_inventory()
 	new /obj/item/weapon/gun/flamer/m240(src)
@@ -157,7 +175,16 @@
 	name = "\improper M56D heavy machine gun case"
 	desc = "A gun case containing the M56D heavy machine gun. You'll need to order resupplies from requisitions or scavenge them on the field. How do they fit all this into a case? Wouldn't you need a crate."
 	storage_slots = 8
-	can_hold = list(/obj/item/device/m56d_gun, /obj/item/ammo_magazine/m56d, /obj/item/device/m56d_post, /obj/item/tool/wrench, /obj/item/tool/screwdriver, /obj/item/ammo_magazine/m56d, /obj/item/pamphlet/upgradeable/machinegunner, /obj/item/storage/belt/marine/m2c)
+	can_hold = list(
+		/obj/item/device/m56d_gun,
+		/obj/item/ammo_magazine/m56d,
+		/obj/item/device/m56d_post,
+		/obj/item/tool/wrench,
+		/obj/item/tool/screwdriver,
+		/obj/item/ammo_magazine/m56d,
+		/obj/item/pamphlet/upgradeable/machinegunner,
+		/obj/item/storage/belt/marine/m2c,
+		)
 
 /obj/item/storage/box/guncase/m56d/fill_preset_inventory()
 	new /obj/item/device/m56d_gun(src)
@@ -174,7 +201,13 @@
 	name = "\improper M2C heavy machine gun case"
 	desc = "A gun case containing the M2C heavy machine gun. It doesn't come loaded, but it does have spare ammunition. You'll have to order extras from requisitions."
 	storage_slots = 7
-	can_hold = list(/obj/item/pamphlet/upgradeable/machinegunner, /obj/item/device/m2c_gun, /obj/item/ammo_magazine/m2c, /obj/item/storage/belt/marine/m2c, /obj/item/pamphlet/upgradeable/machinegunner)
+	can_hold = list(
+		/obj/item/pamphlet/upgradeable/machinegunner,
+		/obj/item/device/m2c_gun,
+		/obj/item/ammo_magazine/m2c,
+		/obj/item/storage/belt/marine/m2c,
+		/obj/item/pamphlet/upgradeable/machinegunner,
+		)
 
 /obj/item/storage/box/guncase/m2c/fill_preset_inventory()
 	new /obj/item/pamphlet/upgradeable/machinegunner(src)
@@ -203,7 +236,12 @@
 	name = "\improper M37A2 Pump Shotgun case"
 	desc = "A gun case containing the M37A2 Pump Shotgun."
 	storage_slots = 4
-	can_hold = list(/obj/item/weapon/gun/shotgun/pump/m37a, /obj/item/ammo_magazine/shotgun/buckshot, /obj/item/ammo_magazine/shotgun/flechette, /obj/item/ammo_magazine/shotgun/slugs)
+	can_hold = list(
+		/obj/item/weapon/gun/shotgun/pump/m37a,
+		/obj/item/ammo_magazine/shotgun/buckshot,
+		/obj/item/ammo_magazine/shotgun/flechette,
+		/obj/item/ammo_magazine/shotgun/slugs,
+		)
 
 /obj/item/storage/box/guncase/pumpshotgun/fill_preset_inventory()
 	new /obj/item/weapon/gun/shotgun/pump(src)
@@ -378,7 +416,12 @@
 	name = "\improper XM51 breaching scattergun case"
 	desc = "A gun case containing the XM51 Breaching Scattergun. Comes with two spare magazines, two spare shell boxes, an optional stock and a belt to holster the weapon."
 	storage_slots = 7
-	can_hold = list(/obj/item/weapon/gun/rifle/xm51, /obj/item/ammo_magazine/rifle/xm51, /obj/item/storage/belt/gun/xm51, /obj/item/attachable/stock/xm51)
+	can_hold = list(
+		/obj/item/weapon/gun/rifle/xm51,
+		/obj/item/ammo_magazine/rifle/xm51,
+		/obj/item/storage/belt/gun/xm51,
+		/obj/item/attachable/stock/xm51,
+		)
 
 /obj/item/storage/box/guncase/xm51/fill_preset_inventory()
 	new /obj/item/attachable/stock/xm51(src)
@@ -489,7 +532,16 @@
 	desc = "A gun case containing the necessary attachments to assemble a custom M10 auto-pistol. Comes with two extended & two extended (AP) magazines."
 	storage_slots = 11
 
-	can_hold = list(/obj/item/weapon/gun/pistol/m10, /obj/item/ammo_magazine/pistol/m10/extended, /obj/item/attachable/reddot/small, /obj/item/attachable/suppressor/sleek, /obj/item/attachable/compensator/m10/spiked, /obj/item/attachable/lasersight/micro, /obj/item/attachable/stock/m10_solid, /obj/item/storage/belt/gun/m10)
+	can_hold = list(
+		/obj/item/weapon/gun/pistol/m10,
+		/obj/item/ammo_magazine/pistol/m10/extended,
+		/obj/item/attachable/reddot/small,
+		/obj/item/attachable/suppressor/sleek,
+		/obj/item/attachable/compensator/m10/spiked,
+		/obj/item/attachable/lasersight/micro,
+		/obj/item/attachable/stock/m10_solid,
+		/obj/item/storage/belt/gun/m10,
+		)
 
 /obj/item/storage/box/guncase/m10_custom_kit/fill_preset_inventory()
 	new /obj/item/weapon/gun/pistol/m10/extended(src)

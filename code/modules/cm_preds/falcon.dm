@@ -7,7 +7,7 @@
 		WEAR_L_EAR = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 		WEAR_R_EAR = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi',
 	)
 	flags_equip_slot = SLOT_EAR
 	flags_item = ITEM_PREDATOR

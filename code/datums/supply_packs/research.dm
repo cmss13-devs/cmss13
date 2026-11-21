@@ -127,13 +127,13 @@
 	name = "ARES Emergency Autodoc Supplies"
 	contains = list(
 		/obj/item/research_upgrades/autodoc, // IB
-		/obj/item/research_upgrades/autodoc, // IB
+		/obj/item/research_upgrades/autodoc,
 		/obj/item/research_upgrades/autodoc/tier2, // Bone Frac
-		/obj/item/research_upgrades/autodoc/tier2, // Bone Frac
+		/obj/item/research_upgrades/autodoc/tier2,
 		/obj/item/research_upgrades/autodoc/tier3, // Organ
-		/obj/item/research_upgrades/autodoc/tier3, // Organ
+		/obj/item/research_upgrades/autodoc/tier3,
 		/obj/item/research_upgrades/autodoc/tier4, // Larva
-		/obj/item/research_upgrades/autodoc/tier4, // Larva
+		/obj/item/research_upgrades/autodoc/tier4,
 	)
 	buyable = 0
 	containertype = /obj/structure/closet/crate/secure/phoron

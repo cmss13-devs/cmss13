@@ -307,3 +307,9 @@
 /obj/structure/vehicle_locker/pmc
 	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
 	role_restriction = list(JOB_PMC_LEAD_INVEST, JOB_PMC_LEADER, JOB_PMC_SYNTH, JOB_WY_COMMANDO_LEADER, JOB_PMC_CREWMAN)
+
+/obj/structure/vehicle_locker/movie
+	name = "storage compartment"
+	desc = "A wide storage unit to allow it's users to store a wide variety of objects, from equipment to weapons and their ammo. Very versatile."
+	icon = 'icons/obj/vehicles/interiors/movie.dmi'
+	icon_state = "locker"

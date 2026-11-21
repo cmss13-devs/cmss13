@@ -251,6 +251,12 @@
 	if(savefile_version == 37) // Players currently on version 37 that previously converted to json on a version < 37 could have lost data
 		updated_from = savefile_version
 
+	if(savefile_version < 38)
+		var/pref_toggles
+		S["toggle_prefs"] >> pref_toggles
+		pref_toggles |= TOGGLE_SHOUTING_AT_POINTED_PEOPLE // enabled by default for new saves
+		S["toggle_prefs"] << pref_toggles
+
 	if(updated_from)
 		if(!owner.performed_post_login)
 			RegisterSignal(owner, COMSIG_CLIENT_LOGGED_IN, PROC_REF(handle_logged_in))

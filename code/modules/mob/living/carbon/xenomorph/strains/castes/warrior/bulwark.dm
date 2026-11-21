@@ -23,7 +23,7 @@
 	warrior.health_modifier += XENO_HEALTH_MOD_VERY_LARGE
 	warrior.armor_modifier += XENO_ARMOR_MOD_SMALL
 	warrior.add_plasma += XENO_PLASMA_TIER_2
-	warrior.speed_modifier += XENO_SPEED_TIER_1
+	warrior.speed_modifier += ‎XENO_SPEED_SLOWMOD_TIER_8‎
 	warrior.tackle_max_modifier += 1
 	warrior.melee_vulnerability_mult += 1.5
 

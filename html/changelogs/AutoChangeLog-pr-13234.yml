@@ -1,6 +1,0 @@
-author: "Mary-Marilyn"
-delete-after: True
-changes:
-  - ui: "Redesigned the TGUI latejoin menu to be more compact. All jobs now fit on your screen without scrolling"
-  - ui: "Latejoin and job preferences now follow the crew manifest's department order and colors."
-  - qol: "Added squad badges to latejoin. Clicking a badge joins that squad."

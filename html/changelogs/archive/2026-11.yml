@@ -235,3 +235,56 @@
   - qol: Late joining as a xeno as a new player can now prompt a tutorial suggestion
   - imageadd: Added various coderspites for new landmarks and skeletal resin doors
       by DimDim
+2026-11-10:
+  Kugamo:
+  - rscadd: Portable generators now vibrate while running (animating them back and
+      forth very slightly)
+  Mary-Marilyn:
+  - ui: Redesigned the TGUI latejoin menu to be more compact. All jobs now fit on
+      your screen without scrolling
+  - ui: Latejoin and job preferences now follow the crew manifest's department order
+      and colors.
+  - qol: Added squad badges to latejoin. Clicking a badge joins that squad.
+2026-11-11:
+  Nihisohel, LCMS1 for sprites:
+  - rscadd: Guns with the appropriate ammunition type and presentation now litter
+      the ground with their spent cases and cartridges.
+  - spellcheck: Tweaks some misrepresented lore about XM43E1 casings.
+  - mapadd: Adds backend for making randomized casings on mapload, and the ability
+      to disable such for mappers
+  - maptweak: Changes every instance of Tyrargo's prop parent varedited into faux
+      casings into the actual casing parent (Please stop doing this)
+  - config: Adds a round modifier allowing an almost total disabling of gun casings
+  Puckaboo2:
+  - qol: Researchers are no longer stuck between choosing a tie or webbing accessory.
+      They can have both if they wish.
+  - qol: Researchers now spawn with brown laceup shoes and the classic blue R&D uniform
+      on loading in.
+  - code_imp: Reorganizes the Research ColMarTech loadout section.
+2026-11-17:
+  Kugamo:
+  - bugfix: Fixed layering issues with colony and antre floodlights and hybrisa streetlights/trafficlights.
+  - imageadd: Added buggy variants of colony and antre floodlights for jungle maps.
+2026-11-19:
+  Mary-Marilyn:
+  - rscadd: The acting commander can order an FTL AO withdrawal when a dropship is
+      locked and no more than two humans remain groundside.
+  - rscadd: The Queen can claim a ground victory instead of hijacking, which automatically
+      triggers a marine withdrawal.
+  - rscadd: The acting commander can choose to fuel evacuation craft or prepare reactor
+      scuttling instead of entering FTL while the hijacked dropship is inbound.
+  Sulaboy:
+  - balance: Jackboots have same storage as marine boots.
+2026-11-20:
+  Kugamo:
+  - bugfix: Fixed Working Joes/Gen 1 synth eyes not glowing in the dark.
+  - bugfix: Fixed species using emotes that didnt belong to their species runtiming.
+2026-11-21:
+  MarpleJones:
+  - rscadd: resting atop of a grenade as a living thing whilst conscious assumes you're
+      doing it deliberately and for the greater good - you can now block grenades
+      with your body
+  - code_imp: contain logic for smothering explosions, currently reserved for yeeting
+      yourself at grenades
+  cuberound, datimesmog, esselnek:
+  - rscadd: dissolver spitter strain

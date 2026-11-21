@@ -2016,7 +2016,7 @@
 /turf/open/gm/river,
 /area/forward_base/chances/command/corporateliaison)
 "ags" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel/far)
 "agt" = (
@@ -2085,7 +2085,7 @@
 /turf/open/gm/river,
 /area/forward_base/chances/command/corporateliaison)
 "agD" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_5"
 	},
 /turf/open/floor/plating,
@@ -2279,13 +2279,13 @@
 /obj/structure/barricade/metal/plasteel{
 	dir = 1
 	},
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_5"
 	},
-/obj/item/ammo_casing{
+/obj/effect/decal/cleanable/ammo_casing/bullet{
 	icon_state = "casing_5"
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/forward_base/chances/hallways/lower/north)
 "ahi" = (

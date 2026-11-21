@@ -150,6 +150,11 @@
 
 	..()
 
+	//lets normal hive evo and use hivestatus without queen until one evolves
+	var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	main_hive.allow_no_queen_actions = TRUE
+	main_hive.allow_no_queen_evo = TRUE
+
 	var/obj/structure/tunnel/T
 	var/i = 0
 	var/turf/t
@@ -604,6 +609,8 @@
 				hive.evolution_without_ovipositor = FALSE
 				if(hive.living_xeno_queen && !hive.living_xeno_queen.ovipositor)
 					to_chat(hive.living_xeno_queen, SPAN_XENODANGER("It is time to settle down and let your children grow."))
+				if(hivenumber == XENO_HIVE_NORMAL && !hive.living_xeno_queen) //let normal hive gain evo if still no queen. This will reset when queen evolves
+					hive.evolution_without_ovipositor = TRUE
 			evolution_ovipositor_threshold = TRUE
 			msg_admin_niche("Xenomorphs now require the queen's ovipositor for evolution progress.")
 
@@ -700,6 +707,8 @@
 	if(SShijack?.sd_detonated)
 		round_finished = MODE_INFESTATION_DRAW_DEATH // Self destruction.
 		return
+	if(SShijack.withdrawal_end_time)
+		return
 	if(SShijack?.hijack_status == HIJACK_OBJECTIVES_GROUND_CRASH && !MODE_HAS_MODIFIER(/datum/gamemode_modifier/continue_on_ground_crash))
 		if(SShijack.crashed)
 			round_finished = MODE_INFESTATION_X_MAJOR // Ship crashed into ground and modifier doesn't disable this
@@ -754,8 +763,8 @@
 	if(!(flags_round_type & MODE_INFESTATION))
 		return
 
-	if(is_in_endgame)
-		return // Don't handle hive collapse for hijack
+	if(is_in_endgame || SShijack.withdrawal_end_time)
+		return
 
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(hive.need_round_end_check && !hive.can_delay_round_end())
@@ -857,6 +866,8 @@
 					break
 			else
 				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
+			if(!is_in_endgame)
+				musical_track = 'sound/theme/neutral_hopeful2.ogg'
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_xeno_victories++
 		if(MODE_INFESTATION_M_MINOR)
@@ -1068,6 +1079,15 @@
 	for(var/datum/http_request/request in requests)
 		addtimer(CALLBACK(request, TYPE_PROC_REF(/datum/http_request, begin_async)), (2 * incrementer) SECONDS)
 		incrementer++
+
+/datum/game_mode/colonialmarines/on_queen_spawn(hivenumber)
+	if(hivenumber != XENO_HIVE_NORMAL)
+		return
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+	hive.allow_no_queen_actions = FALSE
+	hive.allow_no_queen_evo = FALSE
+	if(ROUND_TIME >= round_time_evolution_ovipositor) //make sure you can still get evo without ovi roundstart
+		hive.evolution_without_ovipositor = FALSE
 
 #undef MONKEYS_TO_TOTAL_RATIO
 #undef PODLOCKS_OPEN_WAIT

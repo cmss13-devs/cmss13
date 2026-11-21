@@ -20,6 +20,8 @@
 
 	// Is hijacked by opfor
 	var/is_hijacked = FALSE
+	/// Allows xenos to hijack during AO withdrawal
+	var/withdrawal_launch_override = FALSE
 	var/datum/dropship_hijack/almayer/hijack
 	/// Any allied queen present on launch otherwise null
 	var/datum/weakref/boarded_allied_queen = null
@@ -87,8 +89,14 @@
 /obj/docking_port/mobile/marine_dropship/proc/is_door_locked(direction)
 	return door_control.is_door_locked(direction)
 
+/obj/docking_port/mobile/marine_dropship/canMove()
+	if(SShijack.withdrawal_end_time && is_mainship_level(z) && !withdrawal_launch_override)
+		return FALSE
+	return ..()
+
 /obj/docking_port/mobile/marine_dropship/enterTransit()
 	. = ..()
+	withdrawal_launch_override = FALSE
 	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED) && !in_flyby && is_ground_level(destination?.z)) //Launching on first drop.
 		SSticker.mode.ds_first_drop(src)
 	boarded_allied_queen = null
@@ -201,7 +209,7 @@
 
 /// Triggers a sneak hijack if not already hijacked, less than 20s left on call, and a hostile queen is aboard
 /obj/docking_port/mobile/marine_dropship/proc/sneak_hijack_check()
-	if(is_hijacked)
+	if(is_hijacked || SShijack.ground_claimed)
 		return FALSE
 
 	if(SSticker.mode?.is_in_endgame)

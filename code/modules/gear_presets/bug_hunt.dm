@@ -4,7 +4,7 @@
 	job_title = JOB_CO
 	manifest_title = JOB_PLATOON_COMMANDER
 	paygrades = list(PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_0)
-	skills = /datum/skills/sl_pve/bug_hunt
+	skills = /datum/skills/commander/bug_hunt
 	role_comm_title = "PlatCo"
 	hud_icon = "wo_co"
 	hud_color = "#32CD32"
@@ -32,7 +32,7 @@
 	job_title = JOB_XO
 	manifest_title = JOB_OPERATIONS_OFFICER
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
-	skills = /datum/skills/sl_pve/bug_hunt
+	skills = /datum/skills/XO/bug_hunt
 	role_comm_title = "Ops"
 	hud_icon = "wo_xo"
 	hud_color = "#32CD32"

@@ -53,7 +53,7 @@
 	RegisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED, PROC_REF(camera_mapname_update))
 
 	// camera setup
-	AddComponent(/datum/component/camera_manager)
+	AddComponent(/datum/component/camera_manager/dropship)
 	AddComponent(/datum/component/tacmap, has_drawing_tools = FALSE, minimap_flag = minimap_flag, has_update = TRUE)
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
@@ -243,7 +243,7 @@
 
 	// dropship info
 	.["shuttle_state"] = dropship.mode
-	.["fire_mission_enabled"] = dropship.in_flyby
+	.["fire_mission_enabled"] = dropship.in_flyby || dropship.has_transport_firemission_computer()
 
 	// equipment info
 	.["equipment_data"] = get_sanitised_equipment(user, dropship)
@@ -773,7 +773,7 @@
 	if(!skillcheck(weapon_operator, SKILL_PILOT, DEW.skill_required)) //only pilots can fire dropship weapons.
 		to_chat(weapon_operator, SPAN_WARNING("You don't have the training to fire this weapon!"))
 		return FALSE
-	if(!dropship.in_flyby && DEW.fire_mission_only)
+	if(!dropship.in_flyby && !DEW.can_fire_during_transport())
 		to_chat(weapon_operator, SPAN_WARNING("[DEW] requires a Fire Mission flight type to be fired."))
 		return FALSE
 
@@ -939,8 +939,11 @@
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
 	if (!istype(dropship))
 		return FALSE
-	if (!dropship.in_flyby || dropship.mode != SHUTTLE_CALL)
-		to_chat(user, SPAN_WARNING("Has to be in Fly By mode."))
+	if(dropship.mode != SHUTTLE_CALL)
+		to_chat(user, SPAN_WARNING("Dropship must be in flight."))
+		return FALSE
+	if(!dropship.in_flyby && !dropship.has_transport_firemission_computer())
+		to_chat(user, SPAN_WARNING("Has to be in Fly By mode or have an installed avionics computer."))
 		return FALSE
 	if (dropship.timer && dropship.timeLeft(1) < firemission_envelope.flyoff_period)
 		to_chat(user, SPAN_WARNING("Not enough time to complete the Fire Mission."))

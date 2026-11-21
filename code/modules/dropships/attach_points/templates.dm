@@ -282,7 +282,11 @@
 
 
 /obj/effect/attach_point/computer
+	name = "advanced computer attach point"
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
+	icon_state = "equip_base"
 	base_category = DROPSHIP_COMPUTER
+	attach_id = 12
 
 /obj/effect/attach_point/computer/dropship1
 	ship_tag = DROPSHIP_ALAMO
@@ -295,3 +299,6 @@
 
 /obj/effect/attach_point/computer/dropship_upp
 	ship_tag = DROPSHIP_MORANA
+
+/obj/effect/attach_point/computer/dropship_upp2
+	ship_tag = DROPSHIP_DEVANA

@@ -93,6 +93,7 @@
 	var/last_x = "UNKNOWN"
 	var/last_y = "UNKNOWN"
 	var/last_z = "UNKNOWN"
+	var/max_distance = 23
 
 	/// Normally used for the small green dot signifying coordinations-obtaining mode.
 	var/range_laser_overlay = "laser_range"
@@ -152,14 +153,20 @@
 			return FALSE
 		if(user.sight & SEE_TURFS)
 			var/list/turf/path = get_line(user, targeted_atom, include_start_atom = FALSE)
-			for(var/turf/T in path)
-				if(T.opacity)
-					to_chat(user, SPAN_WARNING("There is something in the way of the laser!"))
+			if(path.len > max_distance)
+				to_chat(user, SPAN_WARNING("Target is too far!"))
+				return FALSE
+			for(var/turf/turf in path)
+				if(turf.opacity)
+					to_chat(user, SPAN_WARNING("[turf] is in the way of the laser!"))
 					return FALSE
+				for(var/obj/blocker in turf.contents)
+					if(blocker.opacity)
+						to_chat(user, SPAN_WARNING("[blocker] is in the way of the laser!"))
+						return FALSE
 		acquire_target(targeted_atom, user)
 		return TRUE
 	return FALSE
-
 /obj/item/device/binoculars/range/proc/stop_targeting(mob/living/carbon/human/user)
 	if(coord)
 		QDEL_NULL(coord)
@@ -391,6 +398,79 @@
 	explo_proof = TRUE
 	cooldown_duration = 80
 	target_acquisition_delay = 30
+	/// Prevents two people targeting the same target, and invalidate cancelled attempts.
+	var/acquiring_mark = FALSE
+	var/mark_acquisition_serial = 0
+
+/obj/item/device/binoculars/range/designator/scout/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("In CAS mode, Ctrl + Click a living target to acquire a lock for laser guided munitions. Keep still and maintain sight of the target. Ctrl + Click again to stop tracking.")
+
+/obj/item/device/binoculars/range/designator/scout/stop_targeting(mob/living/carbon/human/user)
+	mark_acquisition_serial++
+	return ..()
+
+/obj/item/device/binoculars/range/designator/scout/on_unset_interaction(mob/user)
+	mark_acquisition_serial++
+	if(istype(laser, /obj/effect/overlay/temp/laser_target/tactical/scout))
+		QDEL_NULL(laser)
+	return ..()
+
+/obj/item/device/binoculars/range/designator/scout/acquire_target(atom/targeted_atom, mob/living/carbon/human/user)
+	set waitfor = FALSE
+	if(acquiring_mark || istype(laser, /obj/effect/overlay/temp/laser_target/tactical/scout))
+		stop_targeting(user)
+		return
+	if(range_mode || !isliving(targeted_atom))
+		return ..()
+	if(laser || coord || user.action_busy)
+		return
+	if(world.time < laser_cooldown)
+		to_chat(user, SPAN_WARNING("[src]'s laser battery is recharging."))
+		return
+	if(!can_designate_target(targeted_atom, user))
+		to_chat(user, SPAN_WARNING("INVALID TARGET: keep the target in sight and visible from high altitude."))
+		return
+	acquiring_mark = TRUE
+	var/current_acquisition = ++mark_acquisition_serial
+	var/acquisition_time = target_acquisition_delay
+	if(user.skills)
+		acquisition_time = max(1.5 SECONDS, acquisition_time - (2.5 SECONDS) * user.skills.get_skill_level(SKILL_JTAC))
+	playsound(src, 'sound/effects/nightvision.ogg', 35)
+	to_chat(user, SPAN_NOTICE("Acquiring target. Stand still."))
+	var/acquired = do_after(user, acquisition_time, INTERRUPT_ALL, BUSY_ICON_GENERIC)
+	acquiring_mark = FALSE
+	if(!acquired || current_acquisition != mark_acquisition_serial || laser || coord || range_mode || world.time < laser_cooldown || !can_designate_target(targeted_atom, user))
+		return
+	var/laser_name = "[user.assigned_squad ? user.assigned_squad.name : "X"]-[tracking_id]"
+	laser = new /obj/effect/overlay/temp/laser_target/tactical/scout(get_turf(targeted_atom), laser_name, user, tracking_id, src, targeted_atom)
+	SEND_SIGNAL(src, COMSIG_DESIGNATOR_LASE)
+	playsound(src, 'sound/effects/binoctarget.ogg', 35)
+	log_game("Scout laser [laser_name] designated by [key_name(user)] at ([targeted_atom.x], [targeted_atom.y], [targeted_atom.z]).")
+	to_chat(user, SPAN_NOTICE("Target acquired for direct CAS fire. Keep still and maintain sight of the target. Ctrl + Click again to stop tracking."))
+
+/obj/item/device/binoculars/range/designator/scout/proc/can_designate_target(mob/living/target, mob/living/carbon/human/user)
+	if(QDELETED(user) || !user.client || user.interactee != src || !zoom || range_mode || user.is_mob_incapacitated())
+		return FALSE
+	if(user.get_active_hand() != src || QDELETED(target) || !isturf(target.loc) || target.z != user.z || target == user)
+		return FALSE
+	if(target.stat == DEAD || HAS_TRAIT(target, TRAIT_ABILITY_BURROWED) || target.is_ventcrawling || target.invisibility > user.see_invisible)
+		return FALSE
+	var/turf/target_turf = get_turf(target)
+	if(!cas_direct_fire_visible(target) || protected_by_pylon(TURF_PROTECTION_CAS, target_turf))
+		return FALSE
+	var/list/view_dimensions = getviewsize(user.client.view)
+	var/center_x = user.x + user.client.get_pixel_x() / world.icon_size
+	var/center_y = user.y + user.client.get_pixel_y() / world.icon_size
+	if(abs(target.x - center_x) > (view_dimensions[1] - 1) / 2 || abs(target.y - center_y) > (view_dimensions[2] - 1) / 2)
+		return FALSE
+	for(var/turf/path_turf in get_line(user, target, include_start_atom = FALSE))
+		if(path_turf.opacity)
+			return FALSE
+		for(var/atom/blocker in path_turf)
+			if(blocker.opacity)
+				return FALSE
+	return TRUE
 
 /obj/item/device/binoculars/range/designator/spotter
 	name = "spotter's laser designator"

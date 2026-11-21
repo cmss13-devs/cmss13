@@ -87,7 +87,7 @@
 			DB_COMP("ip1", DB_EQUALS, split_ip[1]),
 			DB_COMP("ip2", DB_EQUALS, split_ip[2]),
 			DB_COMP("ip3", DB_EQUALS, split_ip[3]),
-			DB_COMP("ip4"), DB_EQUALS, split_ip[4]
+			DB_COMP("ip4", DB_EQUALS, split_ip[4])
 		))
 
 /proc/search_login_triplet_by_cid(cid)

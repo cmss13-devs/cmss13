@@ -349,14 +349,14 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/corpsespawner/prison_security,
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/redcorner/west,
 /area/bigredv2/outside/marshal_office)
 "cm" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/redcorner,
 /area/bigredv2/outside/marshal_office)
 "cn" = (
@@ -373,7 +373,7 @@
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/n)
 "cr" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/redcorner/west,
 /area/bigredv2/outside/marshal_office)
 "cs" = (
@@ -682,8 +682,8 @@
 /turf/open/floor/delivery,
 /area/bigredv2/outside/marshal_office)
 "jn" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
 "jo" = (
@@ -839,7 +839,7 @@
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
 "sy" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "sR" = (
@@ -955,7 +955,7 @@
 /turf/open/floor/delivery,
 /area/bigredv2/outside/marshal_office)
 "yY" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /obj/item/storage/box/mre/wy{
 	pixel_y = 10
 	},
@@ -963,7 +963,7 @@
 /area/bigredv2/outside/marshal_office)
 "za" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip,
@@ -1154,7 +1154,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "Ml" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/dark,
@@ -1216,7 +1216,7 @@
 /area/bigredv2/outside/marshal_office)
 "NQ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/redcorner,
 /area/bigredv2/outside/marshal_office)
 "Ow" = (
@@ -1251,7 +1251,7 @@
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
 "Ro" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /obj/effect/landmark/corpsespawner/prisoner,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
 	pixel_x = -8
@@ -1303,7 +1303,7 @@
 /turf/open/floor/delivery,
 /area/bigredv2/outside/marshal_office)
 "UU" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /obj/item/storage/box/mre/wy{
 	pixel_x = 10
 	},
@@ -1331,7 +1331,7 @@
 /area/bigredv2/outside/marshal_office)
 "Ww" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/shard,
 /turf/open/floor/dark,

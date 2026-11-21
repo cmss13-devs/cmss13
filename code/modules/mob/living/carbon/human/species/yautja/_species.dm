@@ -6,7 +6,7 @@
 	burn_mod = 0.65
 	reagent_tag = IS_YAUTJA
 	mob_flags = KNOWS_TECHNOLOGY
-	flags = IS_WHITELISTED|HAS_SKIN_COLOR|NO_CLONE_LOSS|NO_POISON|NO_NEURO|SPECIAL_BONEBREAK|NO_SHRAPNEL|HAS_HARDCRIT
+	flags = IS_WHITELISTED|HAS_SKIN_COLOR|NO_CLONE_LOSS|NO_POISON|NO_NEURO|SPECIAL_BONEBREAK|NO_SHRAPNEL|HAS_HARDCRIT|HAS_MOUTH|HAS_EYELIDS
 	mob_inherent_traits = list(
 		TRAIT_YAUTJA_TECH,
 		TRAIT_SUPER_STRONG,
@@ -32,6 +32,7 @@
 	slowdown = -0.5
 	total_health = 175 //more health than regular humans
 	timed_hug = FALSE
+	eyes = "eyes_yautja"
 
 	bloodsplatter_type = /obj/effect/bloodsplatter/yautjasplatter
 
@@ -102,20 +103,11 @@
 /datum/species/yautja/larva_impregnated(obj/item/alien_embryo/embryo)
 	var/datum/hive_status/hive = GLOB.hive_datum[embryo.hivenumber]
 
-	if(!istype(hive))
-		return
+	var/pred_round_warning = "and prepare to defend against its kin."
 
-	if(!(XENO_STRUCTURE_NEST in hive.hive_structure_types))
-		hive.hive_structure_types.Add(XENO_STRUCTURE_NEST)
+	var/non_pred_round_warning = "and await your glorious sister's burst."
 
-	if(!(XENO_STRUCTURE_NEST in hive.hive_structures_limit))
-		hive.hive_structures_limit.Add(XENO_STRUCTURE_NEST)
-		hive.hive_structures_limit[XENO_STRUCTURE_NEST] = 0
-
-	hive.hive_structure_types[XENO_STRUCTURE_NEST] = /datum/construction_template/xenomorph/nest
-	hive.hive_structures_limit[XENO_STRUCTURE_NEST]++
-
-	xeno_message(SPAN_XENOANNOUNCE("The hive senses that a headhunter has been infected! The thick resin nest is now available in the special structures list!"),hivenumber = hive.hivenumber)
+	xeno_announcement("To my children and their Queen: You have done a truly excellent job capturing a headhunter. Secure the host to a wall [(SSticker.mode.flags_round_type & MODE_PREDATOR) ? pred_round_warning : non_pred_round_warning]", hive.hivenumber, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 
 /datum/species/yautja/handle_death(mob/living/carbon/human/dead_yautja, gibbed)
 	if(gibbed)

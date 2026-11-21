@@ -16,6 +16,7 @@
 	slash = FALSE // Do we slash upon reception?
 	freeze_self = FALSE // Should we freeze ourselves after the lunge?
 	should_destroy_objects = TRUE   // Only used for ravager charge
+	cooldown_message = "Our legs are ready for another charge!"
 
 // Base ravager shield ability
 /datum/action/xeno_action/onclick/empower
@@ -34,6 +35,10 @@
 	var/initial_activation_shield = 50
 	var/shield_per_human = 50
 	var/time_until_timeout = 6 SECONDS
+
+	// State
+	var/activated_once = FALSE
+	cooldown_message = "We have enough energy to shield ourselves again!"
 
 // Rav "Scissor Cut"
 /datum/action/xeno_action/activable/scissor_cut
@@ -64,6 +69,7 @@
 	// Config values
 	var/speed_buff = 0.75
 	var/buff_duration = 5 SECONDS
+	cooldown_message = "Our muscles and tendons feel limber!"
 
 
 /datum/action/xeno_action/activable/clothesline
@@ -81,6 +87,7 @@
 	var/damage = 20
 	var/fling_dist_base = 4
 	var/daze_amount = 2
+	cooldown_message = "We crave blood! REND AND TEAR!"
 
 /datum/action/xeno_action/activable/eviscerate
 	name = "Eviscerate"
@@ -90,6 +97,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 0
 	xeno_cooldown = 23 SECONDS
+	cooldown_message = "WE FEEL SO INCREDIBLY INFURIATED! KILL EVERYTHING!"
 
 	// Config values
 	var/activation_delay = 20
@@ -140,6 +148,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 0
 	xeno_cooldown = 30 SECONDS
+	cooldown_message = "If we feel threatened, we can shed our shards again."
 
 	// Config values
 	var/shard_cost = 50

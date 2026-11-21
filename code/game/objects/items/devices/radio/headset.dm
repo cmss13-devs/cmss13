@@ -280,7 +280,7 @@
 		), PROC_REF(turn_on))
 		wearer = user
 		RegisterSignal(user, COMSIG_MOB_STAT_SET_ALIVE, PROC_REF(update_minimap_icon))
-		RegisterSignal(user, COMSIG_MOB_LOGGED_IN, PROC_REF(add_hud_tracker))
+		RegisterSignal(user, list(COMSIG_MOB_LOGGED_IN, COMSIG_SET_SQUAD), PROC_REF(add_hud_tracker))
 		RegisterSignal(user, COMSIG_MOB_DEATH, PROC_REF(update_minimap_icon))
 		RegisterSignal(user, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(update_minimap_icon))
 		RegisterSignal(user, COMSIG_HUMAN_SQUAD_CHANGED, PROC_REF(update_minimap_icon))
@@ -308,6 +308,7 @@
 		COMSIG_LIVING_REJUVENATED,
 		COMSIG_HUMAN_REVIVED,
 		COMSIG_MOB_LOGGED_IN,
+		COMSIG_SET_SQUAD,
 		COMSIG_MOB_DEATH,
 		COMSIG_HUMAN_SET_UNDEFIBBABLE,
 		COMSIG_MOB_STAT_SET_ALIVE,
@@ -734,6 +735,10 @@
 	icon_state = "mco_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/mcom, /obj/item/device/encryptionkey/mmpo)
 	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB)
+
+/obj/item/device/radio/headset/almayer/mcom/spare/bug_hunt
+	frequency = SOF_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/mcom, /obj/item/device/encryptionkey/mmpo, /obj/item/device/encryptionkey/soc/bug_hunt)
 
 /obj/item/device/radio/headset/almayer/mcom/cdrcom/xo
 	locate_setting = TRACKER_CO
@@ -1202,6 +1207,27 @@
 	initial_keys = list(/obj/item/device/encryptionkey/almayer, /obj/item/device/encryptionkey/mcom)
 	ignore_z = TRUE
 	has_hud = TRUE
+
+/obj/item/device/radio/headset/distress/forecon/bug_hunt
+	desc = "A headset tuned to the SOF channel. Use ; to transmit."
+	icon_state = "soc_headset"
+	frequency = SOF_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/soc/bug_hunt)
+	ignore_z = FALSE
+	minimap_type = /datum/action/minimap/marine
+	inbuilt_tracking_options = list(
+		"Section Leader" = TRACKER_FTL,
+		"PSG" = TRACKER_SL,
+		"Ops Officer" = TRACKER_XO,
+		"PlatCo" = TRACKER_CO,
+	)
+
+/obj/item/device/radio/headset/distress/forecon/bug_hunt/command
+	desc = "A headset tuned to the SOF and marine command channels. Use ; for SOF and :v for command."
+	initial_keys = list(/obj/item/device/encryptionkey/soc/bug_hunt, /obj/item/device/encryptionkey/command)
+
+/obj/item/device/radio/headset/distress/forecon/bug_hunt/command/live
+	minimap_type = /datum/action/minimap/marine/live
 
 //WY Headsets
 

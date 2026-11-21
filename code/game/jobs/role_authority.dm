@@ -181,15 +181,22 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	GLOB.players_preassigned = assign_roles(temp_roles_for_mode.Copy(), unassigned_players.Copy(), TRUE)
 
 	// Even though we pass a copy of temp_roles_for_mode, job counters still change, so we reset them here.
+	var/marine_count = 0
 	for(var/title in temp_roles_for_mode)
 		var/datum/job/J = temp_roles_for_mode[title]
+		if(istype(G, /datum/game_mode/bug_hunt) && title != JOB_XENOMORPH)
+			marine_count += J.current_positions
 		J.current_positions = 0
 
 	// Set up limits for other roles based on our balancing weight number.
 	// Set the xeno starting amount based on marines assigned
 	var/datum/job/antag/xenos/XJ = temp_roles_for_mode[JOB_XENOMORPH]
 	if(istype(XJ))
-		XJ.set_spawn_positions(GLOB.players_preassigned)
+		if(istype(G, /datum/game_mode/bug_hunt))
+			XJ.spawn_positions = job_slot_formula(marine_count, 3, 0, 2, max(2, XJ.spawn_positions))
+			XJ.total_positions = XJ.spawn_positions
+		else
+			XJ.set_spawn_positions(GLOB.players_preassigned)
 
 	// Limit the number of SQUAD MARINE roles players can roll initially (somereason)
 	var/datum/job/SMJ = GET_MAPPED_ROLE(JOB_SQUAD_MARINE)
@@ -251,6 +258,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		SSticker.mode.flags_round_type |= MODE_COLONY_JOE
 
 	// Assign the roles, this time for real, respecting limits we have established.
+	if(istype(G, /datum/game_mode/bug_hunt))
+		for(var/mob/new_player/player as anything in unassigned_players)
+			player.job = null
 	var/list/roles_left = assign_roles(temp_roles_for_mode, unassigned_players)
 
 	var/alternate_option_assigned = 0;

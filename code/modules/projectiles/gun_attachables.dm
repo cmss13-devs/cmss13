@@ -3341,6 +3341,11 @@ Defined in conflicts.dm of the #defines folder.
 	max_range = 10
 	attachment_firing_delay = 30
 
+/obj/item/attachable/attached_gun/grenade/mk1/recon
+	icon = 'icons/obj/items/weapons/guns/attachments/forecon.dmi'
+	icon_state = "green_grenade-mk1"
+	attach_icon = "green_grenade-mk1_a"
+
 /obj/item/attachable/attached_gun/grenade/m203 //M16 GL, only DD have it.
 	name = "\improper M203 Grenade Launcher"
 	desc = "An antique underbarrel grenade launcher. Adopted in 1969 for the M16, it was made obsolete centuries ago; how its ended up here is a mystery to you. Holds only one propriatary 40mm grenade, does not have modern IFF systems, it won't pass through your friends."

@@ -23,6 +23,9 @@
 	var/list/faction_group
 	var/origin_override
 
+	var/hud_icon
+	var/hud_color
+
 	var/minimap_icon = "private"
 	var/minimap_background = "background"
 	var/always_minimap_visible = TRUE

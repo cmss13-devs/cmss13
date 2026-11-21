@@ -1258,6 +1258,9 @@
 
 /mob/living/carbon/xenomorph/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE, transfer = FALSE)
 	. = ..()
+	if(. && istype(SSticker.mode, /datum/game_mode/bug_hunt) && !aghosted && !transfer && !QDELETED(src))
+		gib()
+		return .
 	if(. && !can_reenter_corpse && !transfer && stat != DEAD && !QDELETED(src) && !should_block_game_interaction(src))
 		handle_ghost_message()
 	if(selected_ability)

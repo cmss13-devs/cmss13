@@ -214,7 +214,7 @@
 	return did_hug
 
 /mob/living/carbon/xenomorph/facehugger/ghostize(can_reenter_corpse = FALSE, aghosted = FALSE, transfer = FALSE)
-	if(!aghosted && !can_reenter_corpse && !QDELETED(src) && stat != DEAD)
+	if(!aghosted && !can_reenter_corpse && !QDELETED(src) && stat != DEAD && !istype(SSticker.mode, /datum/game_mode/bug_hunt))
 		// Become a npc once again
 		new /obj/item/clothing/mask/facehugger(loc, hivenumber)
 		qdel(src)

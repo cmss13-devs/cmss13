@@ -1726,6 +1726,9 @@
 /turf/open/shuttle/vehicle/floor_3
 	icon_state = "floor_3"
 
+/turf/open/shuttle/vehicle/floor_3_10
+	icon_state = "floor_3_10"
+
 /turf/open/shuttle/vehicle/floor_3_10_1
 	icon_state = "floor_3_10_1"
 

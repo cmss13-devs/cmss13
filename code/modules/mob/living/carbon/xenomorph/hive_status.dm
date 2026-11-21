@@ -70,6 +70,7 @@
 	var/allow_queen_evolve = TRUE
 	/// Set to true if you want to prevent bursts and spawns of new xenos. Will also prevent healing if the queen no longer exists
 	var/hardcore = FALSE
+	var/allow_core_larva_spawning = TRUE //blocked on bug hunt
 	/// Set to false if you want to prevent getting burrowed larva from latejoin marines
 	var/latejoin_burrowed = TRUE
 	/// If hit limit of larva from pylons
@@ -765,14 +766,15 @@
 			if(3)
 				slots[TIER_3][GUARANTEED_SLOTS][initial(current_caste.caste_type)] = slots_free - slots_used
 
-	var/burrowed_factor = min(stored_larva, sqrt(4*stored_larva))
+	var/burrowed_factor = allow_core_larva_spawning ? min(stored_larva, sqrt(4*stored_larva)) : 0
 	var/effective_total = floor(burrowed_factor)
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
 		if(xeno.counts_for_slots)
 			effective_total++
 
-	// Tier 3 slots are always 20% of the total xenos in the hive
-	slots[TIER_3][OPEN_SLOTS] = max(0, ceil(0.20*effective_total/tier_slot_divisor) - used_tier_3_slots)
+	// Tier 3 slots scale with 20% of the hive, with one extra slot in Bug Hunt
+	var/tier_3_bonus = hivenumber == XENO_HIVE_NORMAL && istype(SSticker.mode, /datum/game_mode/bug_hunt)
+	slots[TIER_3][OPEN_SLOTS] = max(0, ceil(0.20*effective_total/tier_slot_divisor) + tier_3_bonus - used_tier_3_slots)
 	// Tier 2 slots are between 30% and 50% of the hive, depending
 	// on how many T3s there are.
 	slots[TIER_2][OPEN_SLOTS] = max(0, ceil(0.5*effective_total/tier_slot_divisor) - used_tier_2_slots - used_tier_3_slots)
@@ -885,8 +887,8 @@
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
 		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
 			continue
-		var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[current_human.job]
-		if(!job)
+		var/datum/job/job = GET_MAPPED_ROLE(current_human.job)
+		if(!(job?.title in GLOB.RoleAuthority.roles_for_mode))
 			continue
 		var/turf/turf = get_turf(current_human)
 		if(is_mainship_level(turf?.z))
@@ -1052,14 +1054,16 @@
 			to_chat(user, SPAN_WARNING("You cannot become a facehugger until you are no longer alive in a nest."))
 			return FALSE
 
-		if(world.time - user.client?.player_details.larva_pool_time < XENO_JOIN_DEAD_TIME)
-			var/time_left = floor((user.client.player_details.larva_pool_time + XENO_JOIN_DEAD_TIME - world.time) / 10)
-			to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until [XENO_JOIN_DEAD_TIME / 600] minutes have passed ([time_left] seconds remaining)."))
+		var/pool_delay = istype(SSticker.mode, /datum/game_mode/bug_hunt) ? 30 SECONDS : XENO_JOIN_DEAD_TIME
+		if(world.time - user.client?.player_details.larva_pool_time < pool_delay)
+			var/time_left = floor((user.client.player_details.larva_pool_time + pool_delay - world.time) / 10)
+			to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until [DisplayTimeText(pool_delay)] have passed ([time_left] seconds remaining)."))
 			return FALSE
 
-		if(world.time - user.timeofdeath < JOIN_AS_FACEHUGGER_DELAY)
-			var/time_left = floor((user.timeofdeath + JOIN_AS_FACEHUGGER_DELAY - world.time) / 10)
-			to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until [JOIN_AS_FACEHUGGER_DELAY / 600] minutes have passed ([time_left] seconds remaining)."))
+		var/join_delay = istype(SSticker.mode, /datum/game_mode/bug_hunt) ? 30 SECONDS : JOIN_AS_FACEHUGGER_DELAY
+		if(world.time - user.timeofdeath < join_delay)
+			var/time_left = floor((user.timeofdeath + join_delay - world.time) / 10)
+			to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until [DisplayTimeText(join_delay)] have passed ([time_left] seconds remaining)."))
 			return FALSE
 
 	if(length(totalXenos) <= 0)
@@ -1132,14 +1136,16 @@
 		to_chat(user, SPAN_WARNING("You cannot become a lesser drone until you are no longer alive in a nest."))
 		return FALSE
 
-	if(world.time - user.client?.player_details.larva_pool_time < XENO_JOIN_DEAD_TIME)
-		var/time_left = floor((user.client.player_details.larva_pool_time + XENO_JOIN_DEAD_TIME - world.time) / 10)
-		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [XENO_JOIN_DEAD_TIME / 600] minutes have passed ([time_left] seconds remaining)."))
+	var/pool_delay = istype(SSticker.mode, /datum/game_mode/bug_hunt) ? 30 SECONDS : XENO_JOIN_DEAD_TIME
+	if(world.time - user.client?.player_details.larva_pool_time < pool_delay)
+		var/time_left = floor((user.client.player_details.larva_pool_time + pool_delay - world.time) / 10)
+		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [DisplayTimeText(pool_delay)] have passed ([time_left] seconds remaining)."))
 		return FALSE
 
-	if(world.time - user.timeofdeath < JOIN_AS_LESSER_DRONE_DELAY)
-		var/time_left = floor((user.timeofdeath + JOIN_AS_LESSER_DRONE_DELAY - world.time) / 10)
-		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [JOIN_AS_LESSER_DRONE_DELAY / 10] seconds have passed ([time_left] seconds remaining)."))
+	var/join_delay = istype(SSticker.mode, /datum/game_mode/bug_hunt) ? 30 SECONDS : JOIN_AS_LESSER_DRONE_DELAY
+	if(world.time - user.timeofdeath < join_delay)
+		var/time_left = floor((user.timeofdeath + join_delay - world.time) / 10)
+		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [join_delay / 10] seconds have passed ([time_left] seconds remaining)."))
 		return FALSE
 
 	if(length(totalXenos) <= 0)
@@ -1184,8 +1190,8 @@
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
 		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
 			continue
-		var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[current_human.job]
-		if(!job)
+		var/datum/job/job = GET_MAPPED_ROLE(current_human.job)
+		if(!(job?.title in GLOB.RoleAuthority.roles_for_mode))
 			continue
 		var/turf/turf = get_turf(current_human)
 		if(is_ground_level(turf?.z))

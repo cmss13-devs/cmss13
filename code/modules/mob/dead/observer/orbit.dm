@@ -174,7 +174,7 @@
 						break
 				if(id_card?.minimap_icon_override)
 					icon = id_card.minimap_icon_override
-				if(human.rank_override)
+				if(human.rank_override in GLOB.minimap_icons)
 					icon = human.rank_override
 				serialized["icon"] = icon ? icon : "private"
 

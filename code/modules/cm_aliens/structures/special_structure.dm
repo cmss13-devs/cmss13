@@ -60,12 +60,15 @@
 /obj/effect/alien/resin/special/Destroy()
 	if(linked_hive)
 		linked_hive.remove_special_structure(src)
-		if(linked_hive.living_xeno_queen)
-			xeno_message("Hive: \A [name] has been destroyed at [sanitize_area(get_area_name(src))]!", 3, linked_hive.hivenumber)
+		announce_destruction()
 	linked_hive = null
 	STOP_PROCESSING(SSfastobj, src)
 
 	. = ..()
+
+/obj/effect/alien/resin/special/proc/announce_destruction()
+	if(linked_hive.living_xeno_queen)
+		xeno_message("Hive: \A [name] has been destroyed at [sanitize_area(get_area_name(src))]!", 3, linked_hive.hivenumber)
 
 /obj/effect/alien/resin/special/attack_alien(mob/living/carbon/xenomorph/M)
 	if(M.can_destroy_special() || M.hivenumber != linked_hive.hivenumber)

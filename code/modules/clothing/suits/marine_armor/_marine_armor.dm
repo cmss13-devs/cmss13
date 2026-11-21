@@ -674,6 +674,17 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	movement_compensation = SLOWDOWN_ARMOR_LIGHT
 
+/obj/item/clothing/suit/storage/marine/light/recon/bug_hunt
+	name = "\improper M3-R pattern recon armor"
+	icon = 'icons/obj/items/clothing/suits/forecon.dmi'
+	icon_state = "4"
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/forecon.dmi',
+	)
+	flags_atom = parent_type::flags_atom|NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	armor_variation = 0
+	storage_slots = 3
+
 // M3-EOD pattern heavy armor
 /obj/item/clothing/suit/storage/marine/heavy
 	name = "\improper M3-EOD pattern heavy armor"

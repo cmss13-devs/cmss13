@@ -864,6 +864,21 @@
 	},
 /turf/open/floor/prison/ramptop/east,
 /area/white_antre/indoors/main_level/north_containment)
+"acx" = (
+/obj/structure/closet/medical_wall{
+	pixel_y = 32
+	},
+/obj/item/stack/medical/bruise_pack,
+/obj/item/stack/medical/bruise_pack,
+/obj/item/stack/medical/ointment,
+/obj/item/stack/medical/splint,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine,
+/obj/effect/antre/border{
+	dir = 8
+	},
+/obj/item/storage/pouch/survival/full/black,
+/turf/closed/wall/hybrisa/research/reinforced/hull,
+/area/white_antre/indoors/upper_level/central_corridor)
 "acy" = (
 /obj/effect/antre/border{
 	dir = 1
@@ -1723,7 +1738,7 @@
 /obj/item/stack/medical/bruise_pack,
 /obj/item/stack/medical/ointment,
 /obj/item/stack/medical/splint,
-/obj/item/reagent_container/hypospray/autoinjector/tricord,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine,
 /obj/structure/machinery/light/double{
 	dir = 8;
 	pixel_y = -5
@@ -5923,7 +5938,7 @@
 /obj/item/stack/medical/bruise_pack,
 /obj/item/stack/medical/ointment,
 /obj/item/stack/medical/splint,
-/obj/item/reagent_container/hypospray/autoinjector/tricord,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine,
 /obj/effect/antre/border{
 	dir = 8
 	},
@@ -12393,7 +12408,7 @@
 /obj/item/stack/medical/bruise_pack,
 /obj/item/stack/medical/ointment,
 /obj/item/stack/medical/splint,
-/obj/item/reagent_container/hypospray/autoinjector/tricord,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine,
 /obj/effect/antre/border{
 	dir = 8
 	},
@@ -12876,7 +12891,7 @@
 /obj/item/stack/medical/bruise_pack,
 /obj/item/stack/medical/ointment,
 /obj/item/stack/medical/splint,
-/obj/item/reagent_container/hypospray/autoinjector/tricord,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine,
 /obj/effect/antre/border{
 	dir = 8
 	},
@@ -42832,12 +42847,12 @@
 /obj/item/stack/medical/bruise_pack,
 /obj/item/stack/medical/ointment,
 /obj/item/stack/medical/splint,
-/obj/item/reagent_container/hypospray/autoinjector/tricord,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine,
 /obj/item/storage/pouch/survival/full/black,
 /turf/open/floor/prison/green/north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "cod" = (
-/obj/item/reagent_container/hypospray/autoinjector/tricord,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine,
 /turf/open_space,
 /area/white_antre/indoors/upper_level/central_corridor)
 "coe" = (
@@ -43413,7 +43428,7 @@
 /obj/item/stack/medical/bruise_pack,
 /obj/item/stack/medical/ointment,
 /obj/item/stack/medical/splint,
-/obj/item/reagent_container/hypospray/autoinjector/tricord,
+/obj/item/reagent_container/hypospray/autoinjector/standard/tricordrazine,
 /obj/effect/antre/border{
 	dir = 8
 	},
@@ -154842,7 +154857,7 @@ ciB
 ciB
 ciB
 bhb
-bhb
+acx
 bhb
 bhb
 bhb

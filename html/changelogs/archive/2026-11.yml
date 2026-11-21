@@ -279,3 +279,12 @@
   Kugamo:
   - bugfix: Fixed Working Joes/Gen 1 synth eyes not glowing in the dark.
   - bugfix: Fixed species using emotes that didnt belong to their species runtiming.
+2026-11-21:
+  MarpleJones:
+  - rscadd: resting atop of a grenade as a living thing whilst conscious assumes you're
+      doing it deliberately and for the greater good - you can now block grenades
+      with your body
+  - code_imp: contain logic for smothering explosions, currently reserved for yeeting
+      yourself at grenades
+  cuberound, datimesmog, esselnek:
+  - rscadd: dissolver spitter strain

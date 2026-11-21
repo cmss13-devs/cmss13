@@ -1,8 +1,23 @@
-/mob/living/carbon/xenomorph/proc/build_resin(atom/target, thick = FALSE, message = TRUE, use_plasma = TRUE, add_build_mod = 1)
-	if(!selected_resin)
+
+/mob/living/carbon/xenomorph/proc/build_resin(atom/target, node_fill_override, thick = FALSE, message = TRUE, use_plasma = TRUE, add_build_mod = 1)
+	if(!selected_resin && !node_fill_override)
 		return SECRETE_RESIN_FAIL
 
-	var/datum/resin_construction/resin_construct = GLOB.resin_constructions_list[selected_resin]
+	var/obj/effect/alien/resin/building_node/node_in_turf = locate() in get_turf(target)
+	var/mob/living/carbon/xenomorph/queen/queen_source = src
+	// Ovi queens need special handling for this, as their remote build would mean they have no way of dispeling marks, and their node queue handles building on marks anyways
+	if(node_in_turf && isqueen(src) && queen_source.ovipositor && isnull(node_fill_override))
+		return handle_building_node(target, selected_resin)
+
+	// Set the override resin to the node's type
+	if(node_in_turf && node_in_turf.planter == src)
+		node_fill_override = node_in_turf.resin_type
+
+	var/datum/resin_construction/resin_construct
+	if(node_fill_override)
+		resin_construct = node_fill_override
+	else
+		resin_construct = GLOB.resin_constructions_list[selected_resin]
 
 	var/total_resin_cost = XENO_RESIN_BASE_COST + resin_construct.cost // Live, diet, shit code, repeat
 
@@ -15,8 +30,6 @@
 				if(total_resin_cost > plasma_max && (XENO_RESIN_BASE_COST + resin_construct.cost) < plasma_max)
 					total_resin_cost = plasma_max
 
-	if(action_busy && !can_stack_builds)
-		return SECRETE_RESIN_FAIL
 	if(!check_state())
 		return SECRETE_RESIN_FAIL
 	if(use_plasma && !check_plasma(total_resin_cost))
@@ -32,10 +45,36 @@
 			return SECRETE_RESIN_FAIL
 
 	var/turf/current_turf = get_turf(target)
-
-	if(extra_build_dist != IGNORE_BUILD_DISTANCE && get_dist(src, target) > src.caste.max_build_dist + extra_build_dist) // Hivelords and eggsac carriers have max_build_dist of 1, drones and queens 0
-		to_chat(src, SPAN_XENOWARNING("We can't build from that far!"))
+	var/obj/effect/alien/weeds/alien_weeds = current_turf.weeds
+	if(!alien_weeds || alien_weeds.secreting)
 		return SECRETE_RESIN_FAIL
+
+	if(alien_weeds.hivenumber != hivenumber)
+		to_chat(src, SPAN_DANGER("These aren't our weeds!"))
+		return
+
+	if(extra_build_dist != IGNORE_BUILD_DISTANCE && get_dist(src, target) > src.caste.max_build_dist + extra_build_dist)
+		return handle_building_node(target, resin_construct)
+
+	// Designate a mark if the door can't be built there right now.
+	switch(resin_construct.can_build_here(current_turf, src))
+		if(UNBUILDABLE_TURF)
+			return SECRETE_RESIN_FAIL
+		if(UNSUPPORTED_TURF)
+			// Only clear the mark if this is not node autobuild.
+			if(node_fill_override)
+				return SECRETE_RESIN_FAIL
+			else
+				return handle_building_node(target, resin_construct)
+
+
+	// Queue it up!
+	if(action_busy && !can_stack_builds)
+		if(node_fill_override) // We know that it came from node filling, so we don't use the proc as it'd just remove the mark.
+			return SECRETE_RESIN_FAIL
+		else
+			return handle_building_node(target, resin_construct)
+
 	else if(thick) //hivelords can thicken existing resin structures.
 		var/thickened = FALSE
 		if(istype(target, /turf/closed/wall/resin))
@@ -96,9 +135,6 @@
 
 	var/wait_time = resin_construct.build_time * caste.build_time_mult * add_build_mod
 
-	var/obj/effect/alien/weeds/alien_weeds = current_turf.weeds
-	if(!alien_weeds || alien_weeds.secreting)
-		return SECRETE_RESIN_FAIL
 
 	for(var/obj/effect/alien/resin/design/speed_node/sn in current_turf.contents)
 		wait_time -= ((resin_construct.build_time * caste.build_time_mult) / 2)
@@ -106,8 +142,6 @@
 	for(var/obj/effect/alien/resin/design/cost_node/cn in current_turf.contents)
 		total_resin_cost -= (total_resin_cost / 2)
 
-	if(!resin_construct.can_build_here(current_turf, src))
-		return SECRETE_RESIN_FAIL
 
 	var/obj/warning
 	var/succeeded = TRUE
@@ -161,6 +195,8 @@
 	if(succeeded)
 		for(var/obj/effect/alien/resin/design/node in current_turf)
 			qdel(node)
+		for(var/obj/effect/alien/resin/building_node/node2 in current_turf)
+			qdel(node2)
 	if(resin_construct.max_per_xeno != RESIN_CONSTRUCTION_NO_MAX)
 		LAZYADD(built_structures[resin_construct.build_path], new_resin)
 		RegisterSignal(new_resin, COMSIG_PARENT_QDELETING, PROC_REF(remove_built_structure))
@@ -183,7 +219,150 @@
 					msg_admin_niche("[key_name_admin(src)] has built a closed resin structure, [new_resin.name], enclosing a revivable human, [key_name_admin(enclosed_human)], at [ADMIN_VERBOSEJMP(new_resin)]")
 
 
+	SEND_SIGNAL(src, COMSIG_XENO_FINISH_BUILDING)
+
 	return SECRETE_RESIN_SUCCESS
+
+/mob/living/carbon/xenomorph/proc/handle_building_node(atom/target, datum/resin_construction/resin_construct)
+
+	var/obj/effect/alien/resin/building_node/found_node = locate() in get_turf(target)
+	if(found_node)
+		to_chat(src, SPAN_WARNING("We clear the psychic mark from that location."))
+		qdel(found_node)
+		return SECRETE_RESIN_FAIL
+
+	new /obj/effect/alien/resin/building_node(get_turf(target), src, resin_construct)
+	return SECRETE_RESIN_NODE
+
+/obj/effect/alien/resin/building_node
+	name = "building node"
+	icon_state = "nest"
+	/// Xeno that planted the node.
+	var/mob/living/carbon/xenomorph/planter
+	/// Type of resin to build.
+	var/datum/resin_construction/resin_type
+	/// List of invisible effects that will cause the planter to start filling it up when standing on.
+	var/list/obj/effect/fill_spot/fill_spots
+	/// We use a special effect to only show the mark to the xeno that made it.
+	var/obj/effect/client_image_holder/resin_building_node/node_image
+
+/obj/effect/alien/resin/building_node/Initialize(mapload, planter, datum/resin_construction/resin_type)
+	. = ..()
+	var/area/area = get_area(src)
+	if(area)
+		if(area.linked_lz)
+			AddComponent(/datum/component/resin_cleanup)
+		setup_fill_spots()
+	src.planter = planter
+	src.resin_type = resin_type
+
+
+	var/ovi_node = FALSE
+	if(isqueen(planter))
+		var/mob/living/carbon/xenomorph/queen/queen_planter = planter
+		if(queen_planter.ovipositor)
+			ovi_node = TRUE
+			LAZYADD(queen_planter.nodes_in_queue, src)
+
+	// Create the client mark image
+	node_image = new /obj/effect/client_image_holder/resin_building_node(get_turf(src), list(planter), resin_type, src, ovi_node)
+
+
+/obj/effect/alien/resin/building_node/Destroy()
+	// Make sure it's out of the queue list!
+	if(isqueen(planter))
+		var/mob/living/carbon/xenomorph/queen/planter_queen = planter
+		LAZYREMOVE(planter_queen.nodes_in_queue, src)
+	QDEL_NULL_LIST(fill_spots)
+	QDEL_NULL(node_image)
+	planter = null
+	return ..()
+
+/obj/effect/alien/resin/building_node/proc/clear_fill_spots()
+	QDEL_NULL_LIST(fill_spots)
+	fill_spots = list()
+
+/obj/effect/alien/resin/building_node/proc/setup_fill_spots()
+	clear_fill_spots()
+	for(var/turf/T in range(1,loc))
+		var/obj/effect/fill_spot/new_fill_spot = new(T)
+		new_fill_spot.linked_node = src
+		LAZYADD(fill_spots, new_fill_spot)
+
+/obj/effect/fill_spot
+	name = "plasma fill spot"
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	invisibility = 101
+	unacidable = TRUE //You never know
+	var/obj/effect/alien/resin/building_node/linked_node
+
+/obj/effect/fill_spot/Destroy()
+	if(linked_node)
+		linked_node.fill_spots -= src
+		linked_node = null
+	. = ..()
+
+/obj/effect/fill_spot/Crossed(atom/A)
+	..()
+	if(!linked_node)
+		qdel(src)
+		return
+
+	try_fill_node(A)
+
+/obj/effect/fill_spot/proc/try_fill_node(atom/movable/A)
+	var/mob/living/carbon/xenomorph/wanderer = A
+	if(!istype(wanderer))
+		return
+	if(wanderer != linked_node.planter)
+		return
+	var/datum/caste_datum/wanderer_caste = wanderer.caste
+	var/datum/resin_construction/type_to_build = null
+	// We look for a type of the intended build, allowing hivelords to build on nodes designated by drones,
+	// and also queen whose resin is different for some reason.
+	for(var/i in wanderer_caste.resin_build_order)
+		if(i == linked_node.resin_type)
+			type_to_build = i
+		// We prefer an exact match if possible, otherwise any type will do
+		if(ispath(i, linked_node.resin_type) && (type_to_build == null))
+			type_to_build = i
+	// Doesn't have an appropiate type
+	if(!type_to_build)
+		return
+	if(wanderer.build_resin(linked_node, type_to_build, message = TRUE, use_plasma = TRUE) == SECRETE_RESIN_SUCCESS)
+		var/obj/effect/fill_spot/extra_node = locate() in get_turf(wanderer)
+		if(extra_node)
+			INVOKE_ASYNC(extra_node, PROC_REF(try_fill_node), wanderer) // async so the spent node gets deleted now
+		QDEL_NULL(linked_node)
+
+/obj/effect/client_image_holder/resin_building_node
+	desc = "A psychic node to mark future building spots."
+	/// Resin construction type, used to source the icon and state.
+	var/datum/resin_construction/resin_icon_source
+	/// If this node was made by a queen on ovipositor. Colors it yellow and indicates it was placed in a queue earlier.
+	var/ovi_node = FALSE
+	/// The node this effect is displaying.
+	var/obj/effect/alien/resin/building_node/parent_node
+
+/obj/effect/client_image_holder/resin_building_node/Initialize(mapload, list/mobs_which_see_us, datum/resin_construction/resin_type, obj/effect/alien/resin/building_node/parent_node, ovi_node = FALSE)
+	resin_icon_source = resin_type
+	if(!resin_icon_source)
+		return INITIALIZE_HINT_QDEL
+	src.ovi_node = ovi_node
+	src.parent_node = parent_node
+	return ..()
+
+/obj/effect/client_image_holder/resin_building_node/Destroy(force)
+	resin_icon_source = null
+	parent_node = null
+	return ..()
+
+/obj/effect/client_image_holder/resin_building_node/generate_image()
+	var/image/created = image(parent_node.icon, src, resin_icon_source.buildnode_icon, image_layer, src.dir, image_pixel_x, image_pixel_y)
+	if(ovi_node)
+		created.color = COLOR_YELLOW
+	return created
 
 /mob/living/carbon/xenomorph/proc/maybe_convert_to_weedbound(turf/current_turf, datum/resin_construction/resin_construct, thick = FALSE)
 	if(current_turf.is_weedable != SEMI_WEEDABLE)

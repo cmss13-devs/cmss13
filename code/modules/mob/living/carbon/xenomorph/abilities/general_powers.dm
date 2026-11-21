@@ -369,7 +369,7 @@
 		to_chat(owner, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return
 	apply_cooldown()
-	switch(xeno_owner.build_resin(target, thick, make_message, plasma_cost != 0, build_speed_mod))
+	switch(xeno_owner.build_resin(target, null, thick, make_message, plasma_cost != 0, build_speed_mod))
 		if(SECRETE_RESIN_INTERRUPT)
 			if(xeno_cooldown || xeno_cooldown_interrupt_penalty)
 				apply_cooldown_override(xeno_cooldown + xeno_cooldown_interrupt_penalty)
@@ -378,6 +378,10 @@
 			if(xeno_cooldown)
 				apply_cooldown_override(xeno_cooldown_fail)
 			return FALSE
+		if(SECRETE_RESIN_SUCCESS) // Try to fill nearby nodes after building.
+			var/obj/effect/fill_spot/spot_nearby = locate() in get_turf(owner)
+			if(spot_nearby)
+				spot_nearby.try_fill_node(xeno_owner)
 	return TRUE
 
 // leader Marker

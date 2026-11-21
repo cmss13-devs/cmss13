@@ -27,7 +27,6 @@
 	weed_level = WEED_LEVEL_STANDARD
 	build_time_mult = BUILD_TIME_MULT_HIVELORD
 	behavior_delegate_type = /datum/behavior_delegate/hivelord_base
-	max_build_dist = 1
 
 	tackle_min = 2
 	tackle_max = 4

@@ -111,6 +111,22 @@
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/give_to(mob/L)
 	. = ..()
 	SSticker.OnRoundstart(CALLBACK(src, PROC_REF(apply_queen_build_boost)))
+	RegisterSignal(L, COMSIG_XENO_FINISH_BUILDING, PROC_REF(build_from_queue))
+
+/datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/build_from_queue(mob/living/carbon/xenomorph/queen/queen_owner)
+
+	if(!length(queen_owner.nodes_in_queue))
+		return
+
+	var/obj/effect/alien/resin/building_node/queued_node = queen_owner.nodes_in_queue[1]
+	if(!queued_node)
+		return
+
+	queen_owner.build_resin(queued_node, queued_node.resin_type)
+
+/datum/action/xeno_action/activable/secrete_resin/remote/queen/remove_from(mob/living/carbon/xenomorph/xeno)
+	..()
+	UnregisterSignal(xeno, COMSIG_XENO_FINISH_BUILDING)
 
 // queenos don't need weeds under them to build on ovi
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/can_remote_build()

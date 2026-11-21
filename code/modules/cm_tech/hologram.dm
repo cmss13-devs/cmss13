@@ -201,6 +201,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 		UnregisterSignal(linked_mob, COMSIG_MOB_RESET_VIEW)
 		view_registered = FALSE
 		linked_mob.reset_view()
+		Destroy(src)
 	else if (!view_registered)
 		RegisterSignal(linked_mob, COMSIG_MOB_RESET_VIEW, PROC_REF(end_lookup))
 		view_registered = TRUE

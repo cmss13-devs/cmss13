@@ -14,9 +14,8 @@
 	var/spawn_positions = 0
 	///How many slots were open in this round. Used to prevent slots locking with decreasing amount of alive players
 	var/total_positions_so_far = 0
-	/// Can admins modify positions to it
-	var/allow_additional = 0
 	///If it can be scaled with playercount (Will control whether set_spawn_positions is normally called with a count of unassigned players)
+	///Null indicates admins have overrided it with modify_job_slot verb
 	var/scaled = FALSE
 	///How many players have this job
 	var/current_positions = 0
@@ -208,7 +207,7 @@
 /// Use this to set limits on positions.
 /// Normally only called if scaled is TRUE with an unassigned count but there are exceptions e.g. survivors, xenos, and preds with the preassigned count.
 /datum/job/proc/set_spawn_positions(count)
-	return
+	spawn_positions = initial(spawn_positions)
 
 /datum/job/proc/create_landmark_lists(force)
 	return

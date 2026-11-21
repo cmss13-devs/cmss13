@@ -73,7 +73,6 @@
 /datum/job/command/tank_crew/bug_hunt
 	title = JOB_RECON_CREWMAN
 	role_ban_alternative = JOB_TANK_CREW
-	allow_additional = FALSE
 	scaled = FALSE
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/tank/bug_hunt

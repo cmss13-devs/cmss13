@@ -677,7 +677,10 @@
 	remove_temp_pass_flags(PASS_MOB_THRU)
 	if(layer == LYING_DEAD_MOB_LAYER || layer == LYING_LIVING_MOB_LAYER)
 		layer = initial(layer)
-
+	if(ishuman(src))
+		var/mob/living/carbon/human/standing_human = src
+		if(standing_human.napping_level)
+			standing_human.wake_from_nap()
 
 /// Uses presence of [TRAIT_UNDENSE] to figure out what is the correct density state for the mob. Triggered by trait signal.
 /mob/living/proc/update_density()

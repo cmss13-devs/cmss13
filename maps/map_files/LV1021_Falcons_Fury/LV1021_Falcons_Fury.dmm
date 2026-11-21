@@ -5670,6 +5670,7 @@
 	dir = 4;
 	pixel_y = -1
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_north)
 "aog" = (
@@ -8357,6 +8358,7 @@
 	color = "#9d7766";
 	pixel_x = 7
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_north)
 "auO" = (
@@ -8368,6 +8370,7 @@
 	dir = 8;
 	pixel_y = -4
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_north)
 "auP" = (
@@ -8387,6 +8390,7 @@
 	color = "#9d7766";
 	dir = 1
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_north)
 "auR" = (
@@ -8934,6 +8938,7 @@
 	pixel_y = 6;
 	pixel_x = -17
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lv1021/indoors/caves/landing_zone)
 "avX" = (
@@ -10273,6 +10278,7 @@
 "ayO" = (
 /obj/structure/flora/jungle/alienplant1,
 /obj/structure/flora/jungle/vines/light_1,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
 "ayP" = (
@@ -10378,6 +10384,7 @@
 	pixel_x = -8;
 	pixel_y = 2
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
 "azc" = (
@@ -11516,6 +11523,7 @@
 	dir = 8;
 	pixel_y = 3
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/lv_sand,
 /area/lv1021/outdoors/jungle/jungleC_e)
 "aBW" = (
@@ -11778,6 +11786,7 @@
 	dir = 6
 	},
 /obj/structure/flora/jungle/vines/heavy,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_e)
 "aCO" = (
@@ -11785,6 +11794,7 @@
 	dir = 10
 	},
 /obj/structure/flora/jungle/vines/light_1,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_e)
 "aCP" = (
@@ -12084,6 +12094,7 @@
 /area/lv1021/outdoors/jungle/jungleC_e)
 "aDF" = (
 /obj/structure/flora/jungle/vines/light_1,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/outdoors/jungle/jungleC_e)
 "aDG" = (
@@ -12241,6 +12252,7 @@
 /obj/structure/flora/grass/temperate{
 	icon_state = "26"
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_e)
 "aEc" = (
@@ -12312,6 +12324,7 @@
 	icon_state = "30"
 	},
 /obj/structure/flora/jungle/vines/heavy,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_e)
 "aEm" = (
@@ -12397,6 +12410,7 @@
 /obj/structure/flora/grass/temperate{
 	icon_state = "25"
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_e)
 "aEy" = (
@@ -12432,6 +12446,7 @@
 	pixel_x = 7;
 	pixel_y = 9
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_e)
 "aED" = (
@@ -12581,6 +12596,7 @@
 	color = "#4F7942";
 	pixel_x = -15
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_e)
 "aEX" = (
@@ -13080,6 +13096,7 @@
 	pixel_x = 5;
 	pixel_y = -8
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_n_e)
 "aGs" = (
@@ -13231,6 +13248,7 @@
 	pixel_x = -13;
 	pixel_y = -9
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_n_e)
 "aGO" = (
@@ -13262,6 +13280,7 @@
 /area/lv1021/outdoors/jungle/jungleC_n_e)
 "aGS" = (
 /obj/structure/flora/wood/stick3,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_n_e)
 "aGT" = (
@@ -13320,6 +13339,7 @@
 	pixel_x = 5;
 	pixel_y = -8
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_n_e)
 "aHc" = (
@@ -16860,6 +16880,7 @@
 	dir = 4
 	},
 /obj/item/device/flashlight/flare/on,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_n_e)
 "aPU" = (
@@ -16929,6 +16950,7 @@
 	pixel_x = -7
 	},
 /obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_n_e)
 "aQf" = (
@@ -18008,6 +18030,7 @@
 "aTc" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /obj/effect/decal/cleanable/blood/drip,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleC_n_e)
 "aTd" = (
@@ -18114,6 +18137,7 @@
 	pixel_y = 9
 	},
 /obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_n_e)
 "aTt" = (
@@ -18267,6 +18291,7 @@
 	pixel_y = -2
 	},
 /obj/structure/flora/jungle/vines/heavy,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/lv_sand,
 /area/lv1021/outdoors/jungle/jungleC_e)
 "aTS" = (
@@ -18689,6 +18714,7 @@
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766"
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_south)
 "aVf" = (
@@ -18700,6 +18726,7 @@
 	pixel_x = -13;
 	pixel_y = 15
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_south)
 "aVg" = (
@@ -20997,6 +21024,13 @@
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_north)
+"baQ" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
+/area/lv1021/indoors/caves/landing_zone)
 "baR" = (
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 10
@@ -24064,6 +24098,7 @@
 	pixel_y = 3;
 	dir = 8
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/cave_north)
 "bgW" = (
@@ -26160,6 +26195,7 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/floor/kutjevo/fake_wood,
 /area/lv1021/indoors/caves/landing_zone)
 "bmz" = (
@@ -26255,6 +26291,7 @@
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 4
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv1021/indoors/caves/landing_zone)
 "bmO" = (
@@ -26329,6 +26366,7 @@
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 8
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/floor/kutjevo/fake_wood,
 /area/lv1021/indoors/caves/landing_zone)
 "bmX" = (
@@ -26440,6 +26478,7 @@
 /obj/effect/decal/lv_decals/cave_mud_corner{
 	dir = 1
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/floor/kutjevo/fake_wood,
 /area/lv1021/indoors/caves/landing_zone)
 "bnm" = (
@@ -26613,6 +26652,7 @@
 	dir = 10
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lv1021/indoors/caves/landing_zone)
 "bnP" = (
@@ -26805,6 +26845,7 @@
 /area/lv1021/outdoors/river/east_river)
 "boo" = (
 /obj/structure/platform_decoration/wood,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/lv_sand,
 /area/lv1021/outdoors/river/east_river)
 "bop" = (
@@ -26887,6 +26928,7 @@
 /area/lv1021/outdoors/river/east_river)
 "boy" = (
 /obj/structure/platform_decoration/wood/east,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/lv_sand,
 /area/lv1021/outdoors/river/east_river)
 "boz" = (
@@ -27426,6 +27468,7 @@
 	pixel_x = 15;
 	pixel_y = -10
 	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
 /area/lv1021/indoors/caves/landing_zone)
 "bpU" = (
@@ -27958,6 +28001,251 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/indoors/caves/landing_zone)
+"brk" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
+/area/lv1021/indoors/caves/landing_zone)
+"brl" = (
+/obj/effect/decal/hybrisa/lattice,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
+/area/lv1021/indoors/caves/landing_zone)
+"brm" = (
+/obj/item/trash/cigbutt,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
+/area/lv1021/indoors/caves/landing_zone)
+"brn" = (
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
+/area/lv1021/indoors/caves/landing_zone)
+"bro" = (
+/obj/item/device/flashlight/flare/on,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
+/area/lv1021/indoors/caves/landing_zone)
+"brp" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno/core,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
+/area/lv1021/indoors/caves/landing_zone)
+"brq" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
+/area/lv1021/indoors/caves/landing_zone)
+"brr" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
+/area/lv1021/indoors/caves/landing_zone)
+"brs" = (
+/obj/effect/decal/lv_decals/cave_mud_corner{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv1021/indoors/caves/landing_zone)
+"brt" = (
+/obj/item/prop/alien/hugger,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
+/area/lv1021/indoors/caves/landing_zone)
+"bru" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
+/area/lv1021/indoors/caves/landing_zone)
+"brv" = (
+/obj/effect/decal/lv_decals/cave_mud_corner{
+	dir = 1
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv1021/indoors/caves/landing_zone)
+"brw" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv1021/indoors/caves/landing_zone)
+"brx" = (
+/obj/structure/flora/jungle/vines/light_1,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/indoors/caves/landing_zone)
+"bry" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv1021/indoors/caves/landing_zone)
+"brz" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv1021/indoors/caves/landing_zone)
+"brA" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_s_e)
+"brB" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/lv_sand,
+/area/lv1021/outdoors/jungle/jungleC_s_e)
+"brC" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud,
+/area/lv1021/outdoors/jungle/jungleC_s_e)
+"brD" = (
+/obj/structure/flora/wood/stick1,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/lv_sand,
+/area/lv1021/outdoors/jungle/jungleC_s_e)
+"brE" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/floor/interior/wood/alt,
+/area/lv1021/outdoors/river/east_river)
+"brF" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 1;
+	icon_state = "p_stair_full";
+	pixel_y = 21
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/floor/interior/wood/alt,
+/area/lv1021/indoors/caves/cave_south)
+"brG" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/lv_sand,
+/area/lv1021/outdoors/river/east_river)
+"brH" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/lv_sand,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"brI" = (
+/obj/structure/flora/jungle/vines/light_1,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/lv_sand_alt/layer0,
+/area/lv1021/indoors/caves/cave_south)
+"brJ" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"brK" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"brL" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
+/area/lv1021/indoors/caves/cave_south)
+"brM" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
+/area/lv1021/indoors/caves/cave_south)
+"brN" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"brO" = (
+/obj/structure/flora/jungle/vines/light_1,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"brP" = (
+/obj/structure/flora/jungle/vines/light_1,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"brQ" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"brR" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"brS" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"brT" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"brU" = (
+/obj/structure/flora/wood/stick3,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"brV" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"brW" = (
+/obj/structure/flora/jungle/vines/light_1,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"brX" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"brY" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"brZ" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"bsa" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 4
+	},
+/obj/structure/flora/jungle/vines/heavy,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"bsb" = (
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"bsc" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"bsd" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleC_e)
+"bse" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -1;
+	pixel_y = -12
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_n_e)
 "bsf" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -4;
@@ -27966,6 +28254,146 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/lv1021/outdoors/jungle/jungleW_south)
+"bsg" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_n_e)
+"bsh" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleC_n_e)
+"bsi" = (
+/obj/structure/flora/jungle/vines/light_1,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_n_e)
+"bsj" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_n_e)
+"bsk" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_n_e)
+"bsl" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_n_e)
+"bsm" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleC_n_e)
+"bsn" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "2"
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleC_n_e)
+"bso" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/jungle/vines/light_1,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleC_n_e)
+"bsp" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_n_e)
+"bsq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/static_comms/net_survivor,
+/turf/open/asphalt/brown,
+/area/lv1021/indoors/clf_camp/education)
+"bsr" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_n_e)
+"bss" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/lv1021/outdoors/jungle/jungleC_n_e)
+"bst" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 5;
+	pixel_y = -8
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/lv1021/outdoors/jungle/jungleC_n_e)
+"bsu" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/lv_sand_alt/layer0,
+/area/lv1021/indoors/caves/cave_north)
+"bsv" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 4;
+	pixel_y = 1
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/lv_sand_alt/layer0,
+/area/lv1021/indoors/caves/cave_north)
+"bsw" = (
+/obj/effect/decal/lv_decals/cave_mud_corner{
+	dir = 10
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/lv_sand_alt/layer0,
+/area/lv1021/indoors/caves/cave_north)
+"bsx" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
+/area/lv1021/indoors/caves/cave_north)
+"bsy" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
+/turf/open/auto_turf/lv_grass_weedable/layer0_mud_alt,
+/area/lv1021/indoors/caves/cave_north)
+"bsz" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/closed/wall/wood,
+/area/lv1021/indoors/caves/cave_north)
+"bsA" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/lv_sand_alt/layer0,
+/area/lv1021/indoors/caves/cave_north)
+"bsB" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = 3
+	},
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
+/turf/open/auto_turf/lv_sand_alt/layer0,
+/area/lv1021/indoors/caves/cave_north)
 "bsO" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /obj/structure/flora/jungle/vines/light_1,
@@ -28622,6 +29050,7 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
+/obj/effect/landmark/static_comms/net_survivor,
 /turf/open/floor/kutjevo/fake_wood,
 /area/lv1021/outdoors/comms/north_1)
 "cmV" = (
@@ -32946,6 +33375,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/lv1021/outdoors/jungle/jungleC_clf_n)
 "iCv" = (
+/obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/floor/interior/wood/alt,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
 "iCN" = (
@@ -34253,6 +34683,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
+/obj/effect/landmark/static_comms/net_survivor,
 /turf/open/floor/kutjevo/tan/plate,
 /area/lv1021/outdoors/comms/north_west_1)
 "kDi" = (
@@ -65995,7 +66426,7 @@ aun
 uBE
 aty
 uBE
-uBE
+bsq
 atR
 uBE
 atw
@@ -71444,7 +71875,7 @@ awx
 sDl
 bpA
 biV
-bpp
+brm
 sDl
 bqe
 avZ
@@ -71960,7 +72391,7 @@ sDl
 sDl
 bpp
 aUD
-aUD
+baQ
 avn
 wzQ
 wzQ
@@ -72273,7 +72704,7 @@ wzQ
 beL
 sDl
 beK
-sDl
+brk
 sDl
 aUN
 aUI
@@ -72292,7 +72723,7 @@ sDl
 sDl
 sDl
 sDl
-sDl
+brk
 sDl
 avr
 avp
@@ -72442,7 +72873,7 @@ bmK
 sDl
 sDl
 sDl
-sDl
+brk
 aUD
 aUD
 aUN
@@ -72455,7 +72886,7 @@ wzQ
 sDl
 sDl
 sDl
-sDl
+brk
 sDl
 sDl
 sDl
@@ -72605,7 +73036,7 @@ wzQ
 wzQ
 beL
 bqS
-sDl
+brk
 sDl
 sDl
 sDl
@@ -72615,7 +73046,7 @@ sDl
 sDl
 aUD
 aUD
-aUD
+baQ
 sDl
 sDl
 wzQ
@@ -72858,7 +73289,7 @@ aGn
 aFh
 aFg
 bgI
-gMo
+bsg
 aFf
 gMo
 hXu
@@ -73011,7 +73442,7 @@ wzQ
 acE
 acE
 aFp
-aFp
+bsh
 gMo
 aFI
 gMo
@@ -73021,7 +73452,7 @@ aGH
 aGv
 aGv
 aGn
-gMo
+bsg
 aGh
 aFN
 bgP
@@ -73183,7 +73614,7 @@ aFp
 aFp
 aFp
 aFp
-gMo
+bsg
 gMo
 gMo
 gMo
@@ -73195,7 +73626,7 @@ aFp
 aFp
 bgM
 bgJ
-bgI
+bse
 wOK
 wOK
 wOK
@@ -73357,12 +73788,12 @@ aFp
 aFq
 aFp
 aGi
-aFW
+bsj
 aFO
 aFp
 aFp
 bgK
-bgI
+bse
 aFd
 yhv
 yhv
@@ -73391,7 +73822,7 @@ aCh
 aCJ
 aDq
 aDe
-aDf
+brT
 aCH
 gCD
 gCD
@@ -73443,7 +73874,7 @@ sDl
 sDl
 sDl
 sDl
-sDl
+brk
 bmr
 bml
 wzQ
@@ -73458,7 +73889,7 @@ aap
 beD
 beB
 sDl
-sDl
+brk
 sDl
 sDl
 wzQ
@@ -73507,14 +73938,14 @@ hXu
 hXu
 aFX
 aGv
-aGn
+bsr
 aGs
 aHz
 aHr
 aFq
 aFi
 aFi
-beu
+bsp
 aFf
 aFS
 beu
@@ -73551,7 +73982,7 @@ rGT
 aCu
 aDW
 aCy
-aCh
+brV
 aDJ
 aCh
 aCh
@@ -73679,7 +74110,7 @@ aFf
 gMo
 aFg
 aFh
-gMo
+bsg
 aFf
 aFS
 aFi
@@ -73699,7 +74130,7 @@ aFr
 gMo
 aDf
 aEY
-aCG
+brN
 aCG
 aEQ
 yhv
@@ -73861,7 +74292,7 @@ aGj
 rGT
 mqH
 aFf
-gMo
+bsg
 aFs
 gMo
 yhv
@@ -73869,11 +74300,11 @@ yhv
 gCD
 yhv
 aCt
-aCG
+brN
 aCD
 aDD
 aEF
-aCh
+brV
 aCh
 aCh
 yhv
@@ -73889,7 +74320,7 @@ aCt
 aDL
 aDB
 aCG
-aCG
+brN
 aCG
 yhv
 aCb
@@ -73941,7 +74372,7 @@ bnj
 bnb
 bmq
 sDl
-sDl
+brk
 sDl
 aUL
 aUL
@@ -74044,7 +74475,7 @@ aCD
 aCD
 aEx
 yhv
-yhv
+brJ
 aCJ
 aCB
 aDe
@@ -74062,7 +74493,7 @@ yhv
 yhv
 gCD
 aCR
-aCG
+brN
 yhv
 hXu
 hXu
@@ -74191,14 +74622,14 @@ aFq
 aFA
 aFp
 gMo
-aFx
+bsk
 aFX
 hXu
 hXu
 hXu
 gMo
 gMo
-yhv
+brJ
 aCT
 aEV
 aCB
@@ -74216,11 +74647,11 @@ aCb
 gCD
 aEj
 gCD
-yhv
+brJ
 aCG
 aDS
 yhv
-yhv
+brJ
 aDC
 aCt
 yhv
@@ -74340,7 +74771,7 @@ hXu
 gMo
 aHB
 gMo
-aGp
+bst
 gMo
 gMo
 aFH
@@ -74349,13 +74780,13 @@ aHs
 aHn
 aGn
 aFB
-gMo
+bsg
 aFW
 gMo
 hXu
 hXu
 aFq
-aFQ
+bsn
 aSS
 gMo
 gMo
@@ -74372,7 +74803,7 @@ aDe
 aDf
 aEO
 aCr
-yhv
+brJ
 yhv
 yhv
 aDf
@@ -74392,7 +74823,7 @@ yhv
 yhv
 aDv
 yhv
-aCc
+brU
 yhv
 gCD
 yhv
@@ -74615,7 +75046,7 @@ blO
 blD
 bly
 sDl
-sDl
+brk
 sDl
 sDl
 awh
@@ -74681,11 +75112,11 @@ aFp
 aGh
 aHu
 aGe
-gMo
+bsg
 aFi
 aTo
 aFq
-gMo
+bsg
 aFQ
 aTh
 aTe
@@ -74701,7 +75132,7 @@ aFt
 aFg
 yhv
 aCh
-aCh
+brV
 aES
 aRS
 aRQ
@@ -74842,7 +75273,7 @@ acE
 aGW
 gMo
 aFp
-aHA
+bss
 aHE
 aFq
 aGO
@@ -74859,10 +75290,10 @@ aGD
 aTb
 aSU
 aFH
-gMo
+bsg
 gMo
 aFh
-aFg
+bsi
 aFt
 aFu
 aFh
@@ -74897,7 +75328,7 @@ hXu
 yhv
 yhv
 gCD
-aCW
+brO
 aCX
 aCu
 aCu
@@ -75102,7 +75533,7 @@ ayj
 axY
 sDl
 bnw
-sDl
+brk
 sDl
 sDl
 sDl
@@ -75114,7 +75545,7 @@ aUD
 aUD
 aUD
 sDl
-sDl
+brk
 sDl
 awr
 bml
@@ -75125,7 +75556,7 @@ wzQ
 avE
 sDl
 sDl
-sDl
+brk
 sDl
 avG
 wzQ
@@ -75167,7 +75598,7 @@ spz
 spz
 aob
 baE
-aob
+bsu
 aob
 bgV
 bgU
@@ -75206,13 +75637,13 @@ aRT
 aCW
 aER
 aEM
-aEM
+bsa
 aEK
 aDz
 aCh
 aCh
 aEy
-yhv
+brJ
 yhv
 yhv
 aEq
@@ -75334,7 +75765,7 @@ spz
 spz
 auP
 aob
-baZ
+bsv
 baZ
 aob
 aob
@@ -75364,7 +75795,7 @@ aGk
 aGc
 aFP
 aSq
-gMo
+bsg
 aPU
 aPT
 aCr
@@ -75434,7 +75865,7 @@ ayl
 sdt
 acE
 wzQ
-avE
+brv
 sDl
 bnA
 bnx
@@ -75446,7 +75877,7 @@ sDl
 sDl
 bpp
 bpA
-sDl
+brk
 sDl
 sDl
 sDl
@@ -75520,7 +75951,7 @@ aFp
 aFp
 aGH
 aGX
-aGc
+bso
 aFh
 aFg
 aFg
@@ -75555,7 +75986,7 @@ aCr
 aDs
 aCh
 yhv
-yhv
+brJ
 aCJ
 aDq
 aDq
@@ -75566,7 +75997,7 @@ aCW
 aCZ
 yhv
 gCD
-yhv
+brJ
 aCt
 aCo
 aCi
@@ -75693,7 +76124,7 @@ aFh
 hXu
 hXu
 rGT
-aFh
+bsl
 aFN
 aGe
 aFp
@@ -75715,7 +76146,7 @@ yhv
 aCt
 aEu
 aCt
-aCr
+brZ
 aCt
 aCt
 aEh
@@ -75731,9 +76162,9 @@ yhv
 aCW
 aCZ
 aCW
-yhv
+brJ
 aCM
-gCD
+brK
 yhv
 aCp
 aCh
@@ -75771,7 +76202,7 @@ wzQ
 axN
 aot
 anh
-sDl
+brk
 bnr
 sDl
 axa
@@ -75835,7 +76266,7 @@ spz
 spz
 spz
 spz
-aro
+bsw
 aod
 aod
 vvz
@@ -75927,7 +76358,7 @@ wzQ
 aaL
 aaJ
 aaR
-aLn
+brB
 aLn
 sdt
 ayI
@@ -76002,7 +76433,7 @@ spz
 spz
 spz
 spz
-qaj
+bsx
 spz
 aro
 asG
@@ -76024,7 +76455,7 @@ aGQ
 aGU
 aPU
 gMo
-aFx
+bsk
 aFX
 hXu
 hXu
@@ -76052,7 +76483,7 @@ yhv
 aCT
 yhv
 yhv
-yhv
+brJ
 aCZ
 aCW
 aDu
@@ -76062,7 +76493,7 @@ aCy
 aCh
 aCh
 aCh
-aCh
+brV
 aDh
 aTp
 aCm
@@ -76126,7 +76557,7 @@ wzQ
 avE
 sDl
 sDl
-bpA
+brl
 sDl
 sDl
 wzQ
@@ -76169,7 +76600,7 @@ spz
 spz
 spz
 spz
-spz
+bsy
 spz
 spz
 spz
@@ -76207,11 +76638,11 @@ aPw
 aEU
 aCh
 aCt
-aCt
+bsb
 aCW
 aCZ
 aCW
-aCr
+brZ
 aDI
 aEz
 aCh
@@ -76236,7 +76667,7 @@ rGT
 aCh
 yhv
 yhv
-gCD
+brK
 yhv
 rGT
 aTT
@@ -76274,13 +76705,13 @@ wzQ
 aUM
 aUM
 blx
-sDl
+brk
 beK
 sDl
 avy
 sDl
 bmu
-sDl
+brk
 sDl
 beL
 wzQ
@@ -76403,7 +76834,7 @@ aCU
 aCD
 aCD
 aCt
-yhv
+brJ
 gCD
 aTV
 hXu
@@ -76536,12 +76967,12 @@ aFJ
 aSm
 aPX
 aFn
-aDX
+bsd
 aCh
 aEX
 aXS
 aPw
-aCr
+brZ
 aPo
 aED
 yhv
@@ -76627,7 +77058,7 @@ wzQ
 blC
 aUM
 biD
-sDl
+brk
 sDl
 avL
 wzQ
@@ -76670,7 +77101,7 @@ spz
 spz
 spz
 spz
-spz
+bsy
 spz
 spz
 spz
@@ -76779,7 +77210,7 @@ sDl
 bnk
 blw
 sDl
-sDl
+bnq
 bmo
 bmh
 wzQ
@@ -76837,7 +77268,7 @@ spz
 spz
 qaj
 spz
-spz
+bsy
 spz
 spz
 spz
@@ -76893,14 +77324,14 @@ wzQ
 wzQ
 wzQ
 acE
-aCZ
-aCW
-yhv
-aCZ
-aCW
-yhv
-aCZ
-aCW
+brR
+brP
+brY
+brX
+brW
+brS
+brR
+brP
 aCN
 wzQ
 aCu
@@ -76917,7 +77348,7 @@ nXR
 aNy
 aaX
 aaX
-aaX
+brG
 abD
 nXR
 abl
@@ -76939,15 +77370,15 @@ wzQ
 wzQ
 wzQ
 wzQ
-aUD
-aUD
-bnh
-sDl
+bru
+bru
+brt
+brr
 bnl
-sDl
-sDl
+brq
+brq
+brq
 bmR
-sDl
 sDl
 wzQ
 aoy
@@ -77004,7 +77435,7 @@ wzQ
 asI
 spz
 spz
-spz
+bsy
 spz
 spz
 spz
@@ -77040,7 +77471,7 @@ aYi
 aYh
 yhv
 yhv
-aXJ
+bsc
 yhv
 yhv
 yhv
@@ -77061,33 +77492,33 @@ wzQ
 wzQ
 acE
 aDF
-yhv
+brS
 aCK
 yhv
 aCa
 yhv
-yhv
-aCT
+brS
+brQ
 aCO
 acE
 wzQ
 aCi
 aCl
-yhv
+brJ
 aCt
 gCD
 nII
 wKw
 sXy
 nXR
-nXR
+brE
 nXR
 asy
 qkW
 wBa
 aaX
 abs
-nXR
+brE
 nXR
 nXR
 hzA
@@ -77097,7 +77528,7 @@ eJn
 bOp
 azE
 azt
-ayd
+brA
 axi
 wzQ
 wzQ
@@ -77110,11 +77541,11 @@ axm
 sDl
 bmM
 sDl
-sDl
+brk
 awX
-sDl
-sDl
-bmp
+brq
+brq
+bro
 sDl
 avy
 awF
@@ -77168,10 +77599,10 @@ bce
 wzQ
 wzQ
 wzQ
-auR
+bsB
 auQ
 spz
-spz
+bsy
 qaj
 spz
 spz
@@ -77195,13 +77626,13 @@ aFg
 aFh
 aFg
 aFq
-aSK
+bsm
 aSO
 aFq
 aSE
 aFU
 aFp
-aFp
+bsh
 aFq
 aFq
 yhv
@@ -77280,7 +77711,7 @@ sDl
 avr
 awY
 awS
-sDl
+brr
 sDl
 bmC
 sDl
@@ -77336,9 +77767,9 @@ wzQ
 wzQ
 wzQ
 wzQ
-aob
+bsA
 auN
-aYo
+bsz
 aYo
 spz
 spz
@@ -77410,7 +77841,7 @@ acE
 aCg
 aCr
 aZd
-nII
+brH
 aTL
 quY
 iGo
@@ -77447,7 +77878,7 @@ aUB
 sDl
 bng
 bqW
-aou
+brs
 awL
 sDl
 bmB
@@ -77596,7 +78027,7 @@ aLn
 aLn
 sdt
 axy
-nWS
+brC
 ajL
 ayN
 brj
@@ -77612,17 +78043,17 @@ sDl
 aUB
 aUB
 sDl
-sDl
+brk
 avy
 awN
 sDl
 sDl
-sDl
+brk
 bmx
 sDl
 bmo
 sDl
-sDl
+brk
 bmb
 bqn
 sDl
@@ -77760,14 +78191,14 @@ nfR
 quY
 aaR
 axo
-azP
+brD
 jDQ
 axk
 azG
 azu
 azz
 bnE
-bnE
+brx
 wzQ
 wzQ
 wzQ
@@ -77909,8 +78340,8 @@ wzQ
 wzQ
 wzQ
 acE
-aOx
-aOx
+brI
+brI
 acE
 aTN
 djB
@@ -77934,8 +78365,8 @@ ayn
 azz
 bnE
 bnE
-aoy
-aoy
+brw
+brw
 wzQ
 aoy
 wzQ
@@ -77951,7 +78382,7 @@ sDl
 wzQ
 bpp
 sDl
-bmC
+brn
 bmy
 blv
 bmp
@@ -78101,7 +78532,7 @@ ayn
 bnE
 bnE
 aoy
-aoy
+bry
 aoy
 aoy
 aoy
@@ -78115,7 +78546,7 @@ blZ
 sDl
 sDl
 sDl
-sDl
+brr
 sDl
 bmh
 sDl
@@ -78268,21 +78699,21 @@ acE
 bnE
 aoy
 aoy
-bmZ
+brz
 aoy
 aoy
 bml
 aoy
 aww
 aot
-sDl
+brk
 sDl
 aUB
 aUB
 sDl
 sDl
 aap
-sDl
+brr
 sDl
 sDl
 wzQ
@@ -78433,9 +78864,9 @@ wzQ
 wzQ
 acE
 acE
-aoy
-aoy
-aoy
+bry
+bry
+bry
 aoy
 aoy
 aoy
@@ -78449,8 +78880,8 @@ wzQ
 aot
 bnh
 awU
-sDl
-bmM
+brq
+brp
 wzQ
 wzQ
 wzQ
@@ -78740,7 +79171,7 @@ pPm
 pPm
 pPm
 pPm
-pPm
+brL
 aVc
 wzQ
 wzQ
@@ -78907,7 +79338,7 @@ pPm
 pPm
 pPm
 pPm
-pPm
+brM
 wzQ
 wzQ
 wzQ
@@ -79103,7 +79534,7 @@ wzQ
 wzQ
 sDl
 sDl
-sDl
+brk
 sDl
 sDl
 wzQ
@@ -79111,7 +79542,7 @@ wzQ
 wzQ
 wzQ
 sDl
-sDl
+brk
 sDl
 sDl
 bnm
@@ -80759,7 +81190,7 @@ jIA
 mTF
 jIA
 pPm
-boW
+brF
 boU
 aNy
 aaX
@@ -80928,7 +81359,7 @@ pPm
 pPm
 boW
 boU
-nXR
+brE
 boI
 abf
 qkW

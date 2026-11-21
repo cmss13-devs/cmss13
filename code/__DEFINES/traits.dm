@@ -280,6 +280,7 @@
 
 
 // -- specific ability traits --
+#define TRAIT_ABILITY_POUNCE "t_ability_pounce"
 /// Used by ravager pounce to charge at enemies.
 #define TRAIT_ABILITY_POUNCE_CHARGE "t_ability_pounce_charge"
 /// Used for empower windup before ravager get empowered.

@@ -112,16 +112,6 @@
 	visible_message(SPAN_BOLDWARNING("[src] gets torn to shreds!"))
 	qdel(src)
 
-/// Microwave
-/obj/structure/machinery/microwave/tent
-	unacidable = FALSE
-	density = TRUE
-	layer = ABOVE_TABLE_LAYER
-	needs_power = FALSE
-/obj/structure/machinery/microwave/tent/Initialize()
-	AddComponent(/datum/component/tent_supported_object)
-	return ..()
-
 /// Hotdrinks vendor
 /obj/structure/machinery/vending/coffee/tent
 	unacidable = FALSE

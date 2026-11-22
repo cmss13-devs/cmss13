@@ -5,7 +5,7 @@
 
 //NORTH default dir
 /obj/docking_port
-	invisibility = 0
+	invisibility = 101
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "pinonfar"
 

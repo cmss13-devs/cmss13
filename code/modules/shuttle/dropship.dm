@@ -218,9 +218,6 @@
 /obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_30
 	icon_state = "0,3"
 
-/obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_30
-	icon_state = "0,3"
-
 /obj/structure/shuttle/part/decal/dropship_omaha/ramp_decals/border_31
 	icon_state = "1,3"
 

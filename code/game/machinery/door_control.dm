@@ -709,9 +709,9 @@
 		raise_ramp(second_ramps)
 		raise_ramp(first_ramps, TRUE)
 	else
-		addtimer(CALLBACK(src, PROC_REF(raise_ramp), third_ramps), 25) // TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT
-		addtimer(CALLBACK(src, PROC_REF(raise_ramp), second_ramps), 50)
-		addtimer(CALLBACK(src, PROC_REF(raise_ramp), first_ramps, TRUE), 50)
+		addtimer(CALLBACK(src, PROC_REF(raise_ramp), third_ramps), 2.5 SECONDS) // TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT
+		addtimer(CALLBACK(src, PROC_REF(raise_ramp), second_ramps), 5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(raise_ramp), first_ramps, TRUE), 5 SECONDS)
 
 /obj/structure/machinery/door_control/shuttle_ramp/proc/raise_forced()
 	raise(forced = TRUE)

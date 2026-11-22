@@ -136,6 +136,7 @@
 		if(istype(src, /obj/structure/pipes/vents/dropship/entrance))
 			var/obj/structure/pipes/vents/dropship/entrance/our_entrance = src
 			our_entrance.leave_landing_gear(user, direction)
+			return
 		else
 			var/turf/alert_turf = get_turf(src) //Pipe segments aren't guaranteed to be visible
 			alert_turf.visible_message(SPAN_HIGHDANGER("You hear something squeezing through the ducts."))

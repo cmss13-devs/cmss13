@@ -757,9 +757,9 @@
 		railme.close()
 	lower_ramp(first_ramps)
 	lower_ramp(second_ramps)
-	addtimer(CALLBACK(src, PROC_REF(lower_ramp), third_ramps), 25) // TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT
-	addtimer(CALLBACK(src, PROC_REF(lower_ramp), fourth_ramps), 50)
-	addtimer(CALLBACK(src, PROC_REF(lower_ramp), fifth_ramps, TRUE), 50)
+	addtimer(CALLBACK(src, PROC_REF(lower_ramp), third_ramps), 2.5 SECONDS) // TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT
+	addtimer(CALLBACK(src, PROC_REF(lower_ramp), fourth_ramps), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(lower_ramp), fifth_ramps, TRUE), 5 SECONDS)
 
 /obj/structure/machinery/door_control/shuttle_ramp/proc/lower_ramp(list/ramp_group, finality = FALSE)
 	var/turf/open/our_turf

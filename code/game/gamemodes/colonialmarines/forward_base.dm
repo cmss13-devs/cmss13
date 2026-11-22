@@ -143,6 +143,13 @@
 	if(world.time >= base_empty_since + 5 MINUTES)
 		round_finished = MODE_INFESTATION_X_MINOR
 
+/datum/game_mode/colonialmarines/forward_base/check_finished()
+	if(round_finished == MODE_INFESTATION_M_MAJOR)
+		var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+		if(main_hive.see_humans_on_tacmap)
+			round_finished = MODE_INFESTATION_M_MINOR
+	return ..()
+
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/forward_base
 	battery_duration = FORWARD_BASE_TURRET_BATTERY_DURATION
 

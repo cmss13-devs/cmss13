@@ -93,6 +93,7 @@
 	var/last_x = "UNKNOWN"
 	var/last_y = "UNKNOWN"
 	var/last_z = "UNKNOWN"
+	var/max_distance = 23
 
 	/// Normally used for the small green dot signifying coordinations-obtaining mode.
 	var/range_laser_overlay = "laser_range"
@@ -106,6 +107,7 @@
 	. = ..()
 
 /obj/item/device/binoculars/range/update_icon()
+	overlays.Cut()
 	overlays += range_laser_overlay
 
 /obj/item/device/binoculars/range/get_examine_text(mob/user)
@@ -152,14 +154,20 @@
 			return FALSE
 		if(user.sight & SEE_TURFS)
 			var/list/turf/path = get_line(user, targeted_atom, include_start_atom = FALSE)
-			for(var/turf/T in path)
-				if(T.opacity)
-					to_chat(user, SPAN_WARNING("There is something in the way of the laser!"))
+			if(path.len > max_distance)
+				to_chat(user, SPAN_WARNING("Target is too far!"))
+				return FALSE
+			for(var/turf/turf in path)
+				if(turf.opacity)
+					to_chat(user, SPAN_WARNING("[turf] is in the way of the laser!"))
 					return FALSE
+				for(var/obj/blocker in turf.contents)
+					if(blocker.opacity)
+						to_chat(user, SPAN_WARNING("[blocker] is in the way of the laser!"))
+						return FALSE
 		acquire_target(targeted_atom, user)
 		return TRUE
 	return FALSE
-
 /obj/item/device/binoculars/range/proc/stop_targeting(mob/living/carbon/human/user)
 	if(coord)
 		QDEL_NULL(coord)
@@ -239,6 +247,7 @@
 	var/obj/effect/overlay/temp/laser_target/laser
 	var/range_mode = 0 //Able to be switched between modes, 0 for cas laser, 1 for finding coordinates.
 	var/tracking_id //a set tracking id used for CAS
+	COOLDOWN_DECLARE(cas_acknowledgment_cooldown) // c/d between feedback ping for the binos when the PO selects their lase
 
 	/// Normally used for the red CAS dot overlay.
 	var/cas_laser_overlay = "laser_cas"
@@ -253,6 +262,7 @@
 	. = ..()
 
 /obj/item/device/binoculars/range/designator/update_icon()
+	overlays.Cut()
 	if(range_mode)
 		overlays += range_laser_overlay
 	else
@@ -371,6 +381,8 @@
 		to_chat(user, SPAN_NOTICE("TARGET ACQUIRED. LASER TARGETING IS ONLINE. DON'T MOVE."))
 		var/obj/effect/overlay/temp/laser_target/LT = new (TU, las_name, user, tracking_id)
 		laser = LT
+		if(LT.signal)
+			LT.signal.designator_ref = WEAKREF(src)
 		SEND_SIGNAL(src, COMSIG_DESIGNATOR_LASE)
 
 		msg_admin_niche("Laser target [las_name] has been designated by [key_name(user, 1)] at ([TU.x], [TU.y], [TU.z]). From:", user)
@@ -383,6 +395,12 @@
 				SEND_SIGNAL(src, COMSIG_DESIGNATOR_LASE_OFF)
 				break
 
+/obj/item/device/binoculars/range/designator/proc/acknowledge_cas_target(obj/structure/machinery/computer/dropship_weapons/console)
+	if(!COOLDOWN_FINISHED(src, cas_acknowledgment_cooldown) || !send_cas_target_feedback(src, laser, console))
+		return FALSE
+	COOLDOWN_START(src, cas_acknowledgment_cooldown, 1 SECONDS)
+	return TRUE
+
 //IMPROVED LASER DESIGNATER, faster cooldown, faster target acquisition, can be found only in scout spec kit
 /obj/item/device/binoculars/range/designator/scout
 	name = "scout laser designator"
@@ -391,9 +409,14 @@
 	explo_proof = TRUE
 	cooldown_duration = 80
 	target_acquisition_delay = 30
+	var/scout_band = "scout_overlay"
 	/// Prevents two people targeting the same target, and invalidate cancelled attempts.
 	var/acquiring_mark = FALSE
 	var/mark_acquisition_serial = 0
+
+/obj/item/device/binoculars/range/designator/scout/update_icon()
+	. = ..()
+	overlays += scout_band
 
 /obj/item/device/binoculars/range/designator/scout/get_examine_text(mob/user)
 	. = ..()
@@ -437,6 +460,8 @@
 		return
 	var/laser_name = "[user.assigned_squad ? user.assigned_squad.name : "X"]-[tracking_id]"
 	laser = new /obj/effect/overlay/temp/laser_target/tactical/scout(get_turf(targeted_atom), laser_name, user, tracking_id, src, targeted_atom)
+	if(laser.signal)
+		laser.signal.designator_ref = WEAKREF(src)
 	SEND_SIGNAL(src, COMSIG_DESIGNATOR_LASE)
 	playsound(src, 'sound/effects/binoctarget.ogg', 35)
 	log_game("Scout laser [laser_name] designated by [key_name(user)] at ([targeted_atom.x], [targeted_atom.y], [targeted_atom.z]).")
@@ -486,6 +511,7 @@
 	return ..()
 
 /obj/item/device/binoculars/range/designator/spotter/update_icon()
+	overlays.Cut()
 	overlays += spotter_band
 	if(is_spotting)
 		overlays += spot_laser_overlay

@@ -1,0 +1,14 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - code_imp: "Adds some defines for groups of surgery tools used for steps."
+  - bugfix: "Most tools making inappropriate sounds during surgery steps, like a knife using saw drilling noises when cutting bone, should not happen anymore."
+  - bugfix: "Tools that utilize toolhit sounds during failed steps have been restored."
+  - bugfix: "Using the IMS no longer tells you it made a bloody incision."
+  - soundadd: "The IMS, laser scalpel, bone gel, and ointment have their own sets of preop and success sounds. Some are splices of old sound files, while some are brand new."
+  - soundadd: "The Fix-O-Vein has a unique sound while using it to initiate flesh-and-vein-mending-type surgeries, while all weapons that chop instead of saw receive the same sound set of repetitive chopping when initiating a surgery step that cuts through bone."
+  - soundadd: "Cigarettes/lighters and welding tools have sounds for initiating cauterizations."
+  - soundadd: "The screwdriver uses its sound sets properly when initiating and successfully drilling rods through or applying plates on bones."
+  - soundadd: "Synthgrafts and ointment have sounds for initiating and successfully applying grafts during eschar surgeries."
+  - soundadd: "Surgery Line, cloth, and cable coils, whenever used as surgical tools, always use sewing noises to mend flesh and blood vessels."
+  - soundtweak: "Increased the volume of ointment spreading on skin a little bit so it is clearly audible."

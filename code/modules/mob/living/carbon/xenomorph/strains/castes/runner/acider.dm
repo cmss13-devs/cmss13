@@ -121,10 +121,10 @@
 	if(bound_xeno.stat == DEAD)
 		return
 	if(caboom_trigger)
-		var/wt = world.time
+		var/world_time = world.time
 		if(caboom_last_proc)
-			caboom_left -= (wt - caboom_last_proc)/10
-		caboom_last_proc = wt
+			caboom_left -= (world_time - caboom_last_proc)/10
+		caboom_last_proc = world_time
 		var/amplitude = 50 + 50 * (caboom_timer - caboom_left) / caboom_timer
 		playsound(bound_xeno, caboom_sound[caboom_loop], amplitude, FALSE, 10)
 		caboom_loop++
@@ -144,7 +144,7 @@
 	if(acid_amount >= acid_gen_cap)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "cap[percentage_acid_cap]")
 
-/datum/behavior_delegate/runner_acider/handle_death(mob/M)
+/datum/behavior_delegate/runner_acider/handle_death(mob/target_mob)
 	var/image/holder = bound_xeno.hud_list[SPECIAL_HUD]
 	holder.overlays.Cut()
 	STOP_PROCESSING(SSfasteffects, src)
@@ -252,9 +252,9 @@
 	var/perc_index = 0
 	if(acid_amount > max_acid * 0.8)
 		perc_index = 3
-	else if (acid_amount > max_acid * 0.5)
+	else if(acid_amount > max_acid * 0.5)
 		perc_index = 2
-	else if (acid_amount > max_acid * 0.2)
+	else if(acid_amount > max_acid * 0.2)
 		perc_index = 1
 
 	if(perc_index && bound_runner.stat != DEAD)
@@ -276,7 +276,7 @@
 		to_chat(xeno, SPAN_XENOHIGHDANGER("Can only melt barricades and items!"))
 		return
 	var/datum/behavior_delegate/runner_acider/behavior_delegate = xeno.behavior_delegate
-	if (!istype(behavior_delegate))
+	if(!istype(behavior_delegate))
 		return
 	if(behavior_delegate.acid_amount < acid_cost)
 		to_chat(xeno, SPAN_XENOHIGHDANGER("Not enough acid stored!"))
@@ -303,11 +303,7 @@
 		to_chat(xeno, SPAN_XENOWARNING("We can't activate this here!"))
 		return
 
-	if(!xeno.check_state())
-		return
-
-	if(!action_cooldown_check())
-		return
+	XENO_ACTION_CHECK(xeno)
 
 	var/datum/behavior_delegate/runner_acider/behavior_delegate = xeno.behavior_delegate
 	if(!istype(behavior_delegate))

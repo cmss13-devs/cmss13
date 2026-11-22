@@ -56,7 +56,6 @@
 	mobility_flags &= ~MOBILITY_STAND
 	on_floored_start()
 
-
 /// Called when [TRAIT_FLOORED] is removed from the mob.
 /mob/living/proc/on_floored_trait_loss(datum/source)
 	SIGNAL_HANDLER

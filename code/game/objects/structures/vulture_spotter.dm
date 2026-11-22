@@ -69,12 +69,15 @@
 		return
 	var/mob/living/carbon/human/user = usr //this is us
 
-	if(!HAS_TRAIT(user, TRAIT_VULTURE_USER) && !skillless)
-		to_chat(user, SPAN_WARNING("You don't know how to use this!"))
+	if(over_object != user || !Adjacent(user) || user.is_mob_incapacitated())
 		return
 
 	if(!scope_attached)
 		fold_up(user)
+		return
+
+	if(!HAS_TRAIT(user, TRAIT_VULTURE_USER) && !skillless)
+		to_chat(user, SPAN_WARNING("You don't know how to use this!"))
 		return
 
 	try_scope(user)
@@ -161,6 +164,15 @@
 /// Handler for when the scope is being attached to the tripod
 /obj/structure/vulture_spotter_tripod/proc/on_scope_attach(mob/user, obj/item/device/vulture_spotter_scope/scope)
 	if(scope_attached)
+		return
+
+	if(istype(scope, /obj/item/device/vulture_spotter_scope/designator))
+		playsound(src, 'sound/effects/bladeinsert.ogg', 25, FALSE)
+		user.visible_message(SPAN_NOTICE("[user] attaches [scope] to [src]."), SPAN_NOTICE("You attach [scope] to [src]."))
+		var/obj/structure/vulture_spotter_tripod/tactical/designator = new(get_turf(src))
+		designator.setDir(user.dir)
+		qdel(scope)
+		qdel(src)
 		return
 
 	if(istype(scope, /obj/item/device/vulture_spotter_scope/skillless))

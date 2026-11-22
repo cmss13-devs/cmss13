@@ -8,6 +8,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	plasma_cost = 100
 	ability_uses_acid_overlay = TRUE
+	cooldown_message = "We have replenished our acid stores and are ready to Barrage."
 
 	var/start_time
 	var/min_volley = 1
@@ -25,6 +26,7 @@
 	xeno_cooldown = 12 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	plasma_cost = 100
+	cooldown_message = "We have replenished our acid stores. We can now slash and leave puddles."
 
 	// Pounce config
 	distance = 1
@@ -44,12 +46,13 @@
 	var/speed_buff_active = FALSE
 
 /datum/action/xeno_action/onclick/oozing_wounds
-	name = "Oozing wounds"
+	name = "Oozing Wounds"
 	action_icon_state = "oozing_wounds"
 	macro_path = /datum/action/xeno_action/verb/oozing_wounds
 	xeno_cooldown = 25 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 100
+	cooldown_message = "We have regained enough energy to spill our blood for the Hive."
 
 /datum/action/xeno_action/activable/tail_stab/despoiler
 	name = "Finishing Acid Stab"

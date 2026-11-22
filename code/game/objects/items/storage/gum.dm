@@ -12,7 +12,7 @@
 	foldable = FALSE
 	can_hold = list(
 		/obj/item/reagent_container/food/gum,
-		/obj/item/paper/wrapper
+		/obj/item/paper/wrapper,
 	)
 	var/list/reagents_per_stick = list(
 		"sugar" = 4
@@ -118,7 +118,7 @@
 	gum_color = "#73d188"
 	reagents_per_stick = list(
 		"sugar" = 4,
-		"spearmint" = 4
+		"spearmint" = 4,
 	)
 
 /obj/item/storage/gum/wridleys/peppermint
@@ -128,7 +128,7 @@
 	gum_color = "#ff9898"
 	reagents_per_stick = list(
 		"sugar" = 4,
-		"peppermint" = 4
+		"peppermint" = 4,
 	)
 
 /obj/item/storage/gum/wridleys/jucyfruit
@@ -138,7 +138,7 @@
 	gum_color = "#f8f536"
 	reagents_per_stick = list(
 		"sugar" = 4,
-		"jucyfruit" = 4
+		"jucyfruit" = 4,
 	)
 
 /obj/item/storage/gum/wridleys/bigred
@@ -148,7 +148,8 @@
 	gum_color = "#ff4f38"
 	reagents_per_stick = list(
 		"sugar" = 4,
-		"cinnamon" = 4
+		"cinnamon" = 4,
+		"capsaicin" = 4,
 	)
 
 /obj/item/storage/gum/wridleys/usa
@@ -158,7 +159,7 @@
 	gum_color = "#eed4ae"
 	reagents_per_stick = list(
 		"sugar" = 4,
-		"freedom" = 4
+		"freedom" = 4,
 	)
 
 
@@ -169,7 +170,7 @@
 	gum_color = "#ff75ba"
 	reagents_per_stick = list(
 		"saccharin" = 4,
-		"strawberry" = 4
+		"strawberry" = 4,
 	)
 
 /obj/item/storage/gum/obannons/frost
@@ -199,7 +200,7 @@
 	gum_color = "#a03875"
 	reagents_per_stick = list(
 		"saccharin" = 4,
-		"berryjuice" = 4
+		"berryjuice" = 4,
 	)
 
 /obj/item/storage/gum/obannons/citrus
@@ -209,7 +210,7 @@
 	gum_color = "#ffca69"
 	reagents_per_stick = list(
 		"saccharin" = 4,
-		"citrus" = 4
+		"citrus" = 4,
 	)
 
 
@@ -221,7 +222,7 @@
 	reagents_per_stick = list(
 		"sugar" = 2,
 		"coffee" = 10,
-		"toothpaste" = 2
+		"toothpaste" = 2,
 	)
 
 /obj/item/storage/gum/medichew/nicotine
@@ -232,7 +233,7 @@
 	reagents_per_stick = list(
 		"sugar" = 2,
 		"nicotine" = 10,
-		"toothpaste" = 2
+		"toothpaste" = 2,
 	)
 
 /obj/item/storage/gum/medichew/marijuana
@@ -248,8 +249,6 @@
 	)
 
 
-
-
 /obj/item/storage/gum/bigbubba/chew
 	name = "Big Bubba Chew!"
 	desc = "Specialty gum strips packed with flavor, for the big league players!"
@@ -259,7 +258,7 @@
 	uses_unique_exmaine = TRUE
 	reagents_per_stick = list(
 		"sugar" = 6,
-		"gum" = 6
+		"gum" = 6,
 	)
 
 /obj/item/storage/gum/bigbubba/chew/get_examine_text(mob/user)
@@ -278,7 +277,7 @@
 	uses_unique_exmaine = TRUE
 	reagents_per_stick = list(
 		"sugar" = 6,
-		"gum" = 6
+		"gum" = 6,
 	)
 
 /obj/item/storage/gum/bigbubba/hubba/get_examine_text(mob/user)
@@ -295,7 +294,7 @@
 	gum_color = "#d64112"
 	reagents_per_stick = list(
 		"sugar" = 2,
-		"souto_classic" = 6
+		"souto_classic" = 6,
 	)
 
 /obj/item/storage/gum/souto/cherry
@@ -305,7 +304,7 @@
 	gum_color = "#9b1010"
 	reagents_per_stick = list(
 		"sugar" = 2,
-		"souto_cherry" = 6
+		"souto_cherry" = 6,
 	)
 
 /obj/item/storage/gum/souto/lime
@@ -315,7 +314,7 @@
 	gum_color = "#5a9c1b"
 	reagents_per_stick = list(
 		"sugar" = 2,
-		"souto_lime" = 6
+		"souto_lime" = 6,
 	)
 
 /obj/item/storage/gum/souto/grape
@@ -325,7 +324,7 @@
 	gum_color = "#7a2e8a"
 	reagents_per_stick = list(
 		"sugar" = 2,
-		"souto_grape" = 6
+		"souto_grape" = 6,
 	)
 
 /obj/item/storage/gum/souto/blueraspberry
@@ -335,7 +334,7 @@
 	gum_color = "#4c8cd1"
 	reagents_per_stick = list(
 		"sugar" = 2,
-		"souto_blueraspberry" = 6
+		"souto_blueraspberry" = 6,
 	)
 
 /obj/item/storage/gum/souto/peach
@@ -345,7 +344,7 @@
 	gum_color = "#ef9984"
 	reagents_per_stick = list(
 		"sugar" = 2,
-		"souto_peach" = 6
+		"souto_peach" = 6,
 	)
 
 /obj/item/storage/gum/souto/cranberry
@@ -355,7 +354,7 @@
 	gum_color = "#c73333"
 	reagents_per_stick = list(
 		"sugar" = 2,
-		"souto_cranberry" = 6
+		"souto_cranberry" = 6,
 	)
 
 /obj/item/storage/gum/souto/vanilla
@@ -365,7 +364,7 @@
 	gum_color = "#ccb996"
 	reagents_per_stick = list(
 		"sugar" = 2,
-		"souto_vanilla" = 6
+		"souto_vanilla" = 6,
 	)
 
 /obj/item/storage/gum/souto/pineapple
@@ -375,7 +374,7 @@
 	gum_color = "#c7bb2a"
 	reagents_per_stick = list(
 		"sugar" = 2,
-		"souto_pineapple" = 6
+		"souto_pineapple" = 6,
 	)
 
 /obj/item/storage/gum/souto/special
@@ -393,6 +392,6 @@
 		"souto_peach" = 1,
 		"souto_cranberry" = 1,
 		"souto_vanilla" = 1,
-		"souto_pineapple" = 1
+		"souto_pineapple" = 1,
 	)
 

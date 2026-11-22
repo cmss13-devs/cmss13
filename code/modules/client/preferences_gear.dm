@@ -1512,101 +1512,101 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	path = /obj/item/toy/plush/therapy/yellow
 
 /datum/gear/gum
-    category = "Gum"
-    fluff_cost = 1
+	category = "Gum"
+	fluff_cost = 1
 
 /datum/gear/gum/bigbubba_chew
-    display_name = "Big Bubba Chew"
-    path = /obj/item/storage/gum/bigbubba/chew
+	display_name = "Big Bubba Chew"
+	path = /obj/item/storage/gum/bigbubba/chew
 
 /datum/gear/gum/bigbubba_hubba
-    display_name = "Big Bubba Hubba"
-    path = /obj/item/storage/gum/bigbubba/hubba
+	display_name = "Big Bubba Hubba"
+	path = /obj/item/storage/gum/bigbubba/hubba
 
 /datum/gear/gum/wridleys/spearmint
-    display_name = "Wridley's Spearmint"
-    path = /obj/item/storage/gum/wridleys/spearmint
+	display_name = "Wridley's Spearmint"
+	path = /obj/item/storage/gum/wridleys/spearmint
 
 /datum/gear/gum/wridleys/peppermint
-    display_name = "Wridley's Peppermint"
-    path = /obj/item/storage/gum/wridleys/peppermint
+	display_name = "Wridley's Peppermint"
+	path = /obj/item/storage/gum/wridleys/peppermint
 
 /datum/gear/gum/wridleys/jucyfruit
-    display_name = "Wridley's Jucy Fruit"
-    path = /obj/item/storage/gum/wridleys/jucyfruit
+	display_name = "Wridley's Jucy Fruit"
+	path = /obj/item/storage/gum/wridleys/jucyfruit
 
 /datum/gear/gum/wridleys/bigred
-    display_name = "Wridley's Big Red"
-    path = /obj/item/storage/gum/wridleys/bigred
+	display_name = "Wridley's Big Red"
+	path = /obj/item/storage/gum/wridleys/bigred
 
 /datum/gear/gum/wridleys/usa
-    display_name = "Wridley's USA"
-    path = /obj/item/storage/gum/wridleys/usa
+	display_name = "Wridley's USA"
+	path = /obj/item/storage/gum/wridleys/usa
 
 /datum/gear/gum/obannons/classic
-    display_name = "O'Bannon's Classic"
-    path = /obj/item/storage/gum/obannons/classic
+	display_name = "O'Bannon's Classic"
+	path = /obj/item/storage/gum/obannons/classic
 
 /datum/gear/gum/obannons/frost
-    display_name = "O'Bannon's Frost"
-    path = /obj/item/storage/gum/obannons/frost
+	display_name = "O'Bannon's Frost"
+	path = /obj/item/storage/gum/obannons/frost
 
 /datum/gear/gum/obannons/apple
-    display_name = "O'Bannon's Apple"
-    path = /obj/item/storage/gum/obannons/apple
+	display_name = "O'Bannon's Apple"
+	path = /obj/item/storage/gum/obannons/apple
 
 /datum/gear/gum/obannons/berry
-    display_name = "O'Bannon's Berry"
-    path = /obj/item/storage/gum/obannons/berry
+	display_name = "O'Bannon's Berry"
+	path = /obj/item/storage/gum/obannons/berry
 
 /datum/gear/gum/obannons/citrus
-    display_name = "O'Bannon's Citrus"
-    path = /obj/item/storage/gum/obannons/citrus
+	display_name = "O'Bannon's Citrus"
+	path = /obj/item/storage/gum/obannons/citrus
 
 /datum/gear/gum/souto/classic
-    display_name = "Souto Classic"
-    path = /obj/item/storage/gum/souto/classic
+	display_name = "Souto Classic"
+	path = /obj/item/storage/gum/souto/classic
 
 /datum/gear/gum/souto/cherry
-    display_name = "Souto Cherry"
-    path = /obj/item/storage/gum/souto/cherry
+	display_name = "Souto Cherry"
+	path = /obj/item/storage/gum/souto/cherry
 
 /datum/gear/gum/souto/lime
-    display_name = "Souto Lime"
-    path = /obj/item/storage/gum/souto/lime
+	display_name = "Souto Lime"
+	path = /obj/item/storage/gum/souto/lime
 
 /datum/gear/gum/souto/grape
-    display_name = "Souto Grape"
-    path = /obj/item/storage/gum/souto/grape
+	display_name = "Souto Grape"
+	path = /obj/item/storage/gum/souto/grape
 
 /datum/gear/gum/souto/blueraspberry
-    display_name = "Souto Blue Raspberry"
-    path = /obj/item/storage/gum/souto/blueraspberry
+	display_name = "Souto Blue Raspberry"
+	path = /obj/item/storage/gum/souto/blueraspberry
 
 /datum/gear/gum/souto/peach
-    display_name = "Souto Peach"
-    path = /obj/item/storage/gum/souto/peach
+	display_name = "Souto Peach"
+	path = /obj/item/storage/gum/souto/peach
 
 /datum/gear/gum/souto/cranberry
-    display_name = "Souto Cranberry"
-    path = /obj/item/storage/gum/souto/cranberry
+	display_name = "Souto Cranberry"
+	path = /obj/item/storage/gum/souto/cranberry
 
 /datum/gear/gum/souto/vanilla
-    display_name = "Souto Vanilla"
-    path = /obj/item/storage/gum/souto/vanilla
+	display_name = "Souto Vanilla"
+	path = /obj/item/storage/gum/souto/vanilla
 
 /datum/gear/gum/souto/pineapple
-    display_name = "Souto Pineapple"
-    path = /obj/item/storage/gum/souto/pineapple
+	display_name = "Souto Pineapple"
+	path = /obj/item/storage/gum/souto/pineapple
 
 /datum/gear/gum/souto/special
-    display_name = "Souto Special"
-    path = /obj/item/storage/gum/souto/special
+	display_name = "Souto Special"
+	path = /obj/item/storage/gum/souto/special
 
 /datum/gear/gum/medichew/caffeine
-    display_name = "MediChew Caffeine"
-    path = /obj/item/storage/gum/medichew/caffeine
+	display_name = "MediChew Caffeine"
+	path = /obj/item/storage/gum/medichew/caffeine
 
 /datum/gear/gum/medichew/nicotine
-    display_name = "MediChew Nicotine"
-    path = /obj/item/storage/gum/medichew/nicotine
+	display_name = "MediChew Nicotine"
+	path = /obj/item/storage/gum/medichew/nicotine

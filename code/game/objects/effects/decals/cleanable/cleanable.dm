@@ -75,21 +75,24 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 	if(overlayed)
 		create_overlay()
 
-/obj/effect/decal/cleanable/proc/cleanup_cleanable(cleaning_reagent, override=FALSE)
-	if((cleaning_reagent=="water" && cleaning_reagents_needed & CLEANABLE_BY_WATER) || \
-	(cleaning_reagent=="cleaner" && cleaning_reagents_needed & CLEANABLE_BY_CLEANER) ||\
-	(cleaning_reagent=="soap" && cleaning_reagents_needed & CLEANABLE_BY_SOAP))
-		cleaned_up = TRUE
+/obj/effect/decal/cleanable/proc/cleanup_cleanable(cleaning_reagent, override = FALSE)
+	if(override || \
+	(cleaning_reagent == "water"   && cleaning_reagents_needed & CLEANABLE_BY_WATER) || \
+	(cleaning_reagent == "cleaner" && cleaning_reagents_needed & CLEANABLE_BY_CLEANER) || \
+	(cleaning_reagent == "soap"    && cleaning_reagents_needed & CLEANABLE_BY_SOAP))
 
+		cleaned_up = TRUE
 		SSweather.cleanable_list -= src
 
 		if(!cleanable_turf?.cleanables || !cleanable_turf?.cleanables[cleanable_type])
-			return
+			return TRUE   // or just return, depending on style
+
 		clear_overlay()
 		if(!QDELING(cleanable_turf.cleanables[cleanable_type]))
 			qdel(cleanable_turf.cleanables[cleanable_type])
 		LAZYREMOVE(cleanable_turf.cleanables, cleanable_type)
 		return TRUE
+
 	return FALSE
 
 /obj/effect/decal/cleanable/proc/create_overlay(overlay_icon = icon, overlay_icon_state = icon_state)

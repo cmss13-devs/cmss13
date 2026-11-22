@@ -9,7 +9,6 @@
 #define SS13LIB_SERVER_LINKS list(list("type" = "discord", "link" = CONFIG_GET(string/discordurl)), list("type" = "wiki", "link" = CONFIG_GET(string/wikiurl)), list("type" = "forum", "link" = CONFIG_GET(string/forumurl)), list("type" = "github", "link" = CONFIG_GET(string/githuburl)))
 #define SS13LIB_SERVER_TAGS list("total conversion", "teams", "combat")
 #define SS13LIB_SERVER_LANGUAGE "en"
-#define SS13LIB_PLAYER_LIMIT CONFIG_GET(number/hard_popcap)
 #define SS13LIB_REGION CONFIG_GET(string/ss13lib_region)
 #define SS13LIB_CONNECTION_ADDRESS CONFIG_GET(string/ss13lib_connection_address)
 #define SS13LIB_ENGINE_MIN_VERSION CONFIG_GET(string/ss13lib_engine_min_version)

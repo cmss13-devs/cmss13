@@ -1,0 +1,4 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - spellcheck: "Kills some more 'this the' and 'the the' cases."

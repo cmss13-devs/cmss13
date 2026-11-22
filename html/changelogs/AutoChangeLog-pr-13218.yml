@@ -1,0 +1,7 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - code_imp: "Tweaked some text to sound more fluid and less informal."
+  - qol: "Each Xeno strain's description describes all abilities and unique traits, if possible."
+  - spellcheck: "Corrects grammar, misspells, and missing punctuation in xeno strain files."
+  - spellcheck: "Any use of first or second person in regards to xeno strains have been changed to third person."

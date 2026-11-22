@@ -754,7 +754,7 @@
 		list("Splints", floor(scale * 8), /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR),
 
 		list("MEDICHEW GUM", -1, null, null),
-		list("Caffiene Medichew", 6,/obj/item/storage/gum/medichew/caffeine, VENDOR_ITEM_REGULAR),
+		list("Caffeine Medichew", 6,/obj/item/storage/gum/medichew/caffeine, VENDOR_ITEM_REGULAR),
 		list("Nicotine Medichew", 6, /obj/item/storage/gum/medichew/nicotine, VENDOR_ITEM_REGULAR),
 	)
 

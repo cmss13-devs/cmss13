@@ -187,7 +187,7 @@
 		/obj/item/storage/gum/medichew/nicotine = 6,
 	)
 	contraband = list(
-		/obj/item/storage/gum/medichew/marijuana = 3
+		/obj/item/storage/gum/medichew/marijuana = 3,
 	)
 	product_type = VENDOR_PRODUCT_TYPE_FOOD
 

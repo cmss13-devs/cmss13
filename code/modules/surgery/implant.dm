@@ -258,6 +258,7 @@
 		SPAN_NOTICE("[user] mends your [surgery.affected_limb.cavity] wall."),
 		SPAN_NOTICE("[user] mends [target]'s [surgery.affected_limb.cavity] wall."))
 
+	target.pain.recalculate_pain()
 	log_interact(user, target, "[key_name(user)] mended [key_name(target)]'s [surgery.affected_limb.cavity] wall with [tool], ending [surgery].")
 
 /datum/surgery_step/cauterize/close_cavity/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -357,7 +358,8 @@
 			SPAN_NOTICE("You could not find anything inside [target]'s [surgery.affected_limb.display_name]."),
 			SPAN_NOTICE("[user] could not find anything inside your [surgery.affected_limb.display_name]."),
 			SPAN_NOTICE("[user] could not find anything inside [target]'s [surgery.affected_limb.display_name]."))
-
+			
+		target.pain.recalculate_pain()
 		log_interact(user, target, "[key_name(user)] found nothing inside [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 
 /datum/surgery_step/remove_embedded/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

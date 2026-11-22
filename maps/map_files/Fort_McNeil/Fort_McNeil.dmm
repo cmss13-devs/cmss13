@@ -1863,6 +1863,10 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/hybrisa/metal/zbrownfloor1,
 /area/fort_mcneil/landing_zone_1/ceiling)
+"aff" = (
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fort_mcneil/indoors/mining)
 "afg" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 1
@@ -2882,6 +2886,9 @@
 	icon_state = "thermite";
 	name = "impact"
 	},
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/mining)
 "aiG" = (
@@ -3820,13 +3827,7 @@
 /area/fort_mcneil/outdoors/road/central)
 "alx" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/effect/decal/cleanable/ammo_casing/bullet/bullet,
-/obj/effect/decal/cleanable/ammo_casing/bullet/bullet,
-/obj/effect/decal/cleanable/ammo_casing/bullet/bullet,
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/fort_mcneil/outdoors/road/central)
-"aly" = (
-/obj/effect/decal/cleanable/ammo_casing/bullet/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/fort_mcneil/outdoors/road/central)
 "alz" = (
@@ -3849,16 +3850,16 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/fort_mcneil/outdoors/road/central)
 "alB" = (
-/obj/effect/decal/cleanable/ammo_casing/bullet/bullet,
-/obj/effect/decal/cleanable/ammo_casing/bullet/bullet,
-/obj/effect/decal/cleanable/ammo_casing/bullet/bullet,
 /obj/item/ammo_magazine/pistol/vp78/heap{
 	current_rounds = 0
 	},
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/fort_mcneil/outdoors/scrublands/central)
 "alC" = (
 /obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/fort_mcneil/outdoors/scrublands/central)
 "alD" = (
@@ -3911,6 +3912,7 @@
 	pixel_y = 8;
 	pixel_x = 10
 	},
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/fort_mcneil/outdoors/scrublands/central)
 "alG" = (
@@ -6263,6 +6265,7 @@
 	pixel_x = 1;
 	pixel_y = 6
 	},
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fort_mcneil/indoors/comms_inside)
 "fmz" = (
@@ -7958,6 +7961,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fort_mcneil/indoors/command)
 "jdu" = (
@@ -8231,6 +8235,7 @@
 /area/fort_mcneil/outdoors/colony_exterior/south)
 "jRy" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison/blue/north,
 /area/fort_mcneil/indoors/command)
 "jRC" = (
@@ -8435,6 +8440,7 @@
 "kqL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/gun/rifle/ak4047,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/mining)
 "ksL" = (
@@ -9062,6 +9068,8 @@
 /area/fort_mcneil/indoors/pod_1)
 "lJp" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/ammo_casing/shell,
+/obj/effect/decal/cleanable/ammo_casing/shell,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fort_mcneil/indoors/comms_inside)
 "lKb" = (
@@ -9278,7 +9286,6 @@
 	pixel_x = 9;
 	pixel_y = 9
 	},
-/obj/effect/decal/cleanable/ammo_casing/bullet/bullet,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/fort_mcneil/outdoors/road/central)
 "mkI" = (
@@ -12402,6 +12409,8 @@
 	dir = 4
 	},
 /obj/item/weapon/gun/pistol/highpower,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/prison,
 /area/fort_mcneil/indoors/command)
 "tyP" = (
@@ -14337,6 +14346,7 @@
 	icon_state = "pipe-c";
 	level = 2
 	},
+/obj/effect/decal/cleanable/ammo_casing/bullet,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fort_mcneil/indoors/command)
 "xSp" = (
@@ -22087,7 +22097,7 @@ aep
 oYi
 ajb
 aaT
-acR
+aff
 adt
 aiC
 aiw
@@ -25304,7 +25314,7 @@ xVN
 xVN
 vaS
 vaS
-aly
+jet
 mkB
 jet
 alu
@@ -25508,7 +25518,7 @@ ofL
 vaS
 alG
 alC
-aly
+jet
 xVN
 xVN
 fjZ

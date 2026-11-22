@@ -1,0 +1,4 @@
+author: "ComboTombo"
+delete-after: True
+changes:
+  - rscadd: "You can now craft another type of wooden chair, four wooden table parts, and two metal table parts in the crafting menu of wood planks and metal sheets"

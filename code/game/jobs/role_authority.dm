@@ -188,27 +188,28 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	// Set up limits for other roles based on our balancing weight number.
 	// Set the xeno starting amount based on marines assigned
 	var/datum/job/antag/xenos/XJ = temp_roles_for_mode[JOB_XENOMORPH]
-	if(istype(XJ))
+	if(istype(XJ) && !isnull(XJ.scaled))
 		XJ.set_spawn_positions(GLOB.players_preassigned)
 
 	// Limit the number of SQUAD MARINE roles players can roll initially (somereason)
 	var/datum/job/SMJ = GET_MAPPED_ROLE(JOB_SQUAD_MARINE)
-	if(istype(SMJ))
+	if(istype(SMJ) && !isnull(SMJ.scaled))
 		SMJ.set_spawn_positions(GLOB.players_preassigned)
 
 	// Set initial squad caps
 	var/datum/job/engi_job = GET_MAPPED_ROLE(JOB_SQUAD_ENGI)
-	if(istype(engi_job))
+	if(istype(engi_job)) // This job will handle a null scaled
 		engi_job.set_spawn_positions(GLOB.players_preassigned)
 	var/datum/job/medic_job = GET_MAPPED_ROLE(JOB_SQUAD_MEDIC)
-	if(istype(medic_job))
+	if(istype(medic_job)) // This job will handle a null scaled
 		medic_job.set_spawn_positions(GLOB.players_preassigned)
 
 	// Set survivor starting amount based on marines assigned
 	for(var/job_name, job_datum in temp_roles_for_mode)
 		if(istype(job_datum, /datum/job/civilian/survivor))
 			var/datum/job/civilian/survivor/surv_job_datum = job_datum
-			surv_job_datum.set_spawn_positions(GLOB.players_preassigned)
+			if(!isnull(surv_job_datum.scaled))
+				surv_job_datum.set_spawn_positions(GLOB.players_preassigned)
 			surv_job_datum.create_landmark_lists()
 
 	var/chance = trim(file2text("data/predchance.txt"))
@@ -221,10 +222,10 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
-		if(istype(PJ))
+		if(istype(PJ) && !isnull(PJ.scaled))
 			PJ.set_spawn_positions(GLOB.players_preassigned)
 		var/datum/job/pred_surv = temp_roles_for_mode[JOB_PRED_SURVIVOR]
-		if(istype(pred_surv))
+		if(istype(pred_surv) && !isnull(pred_surv.scaled))
 			pred_surv.set_spawn_positions(YAUTJA_SURV_HUNT)
 		REDIS_PUBLISH("byond.round", "type" = "predator-round", "map" = SSmapping.configs[GROUND_MAP].map_name)
 		chance = 0
@@ -232,7 +233,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	var/huntless_chance = CONFIG_GET(number/pred_survivor_huntless_chance)
 	if(!(SSticker.mode.flags_round_type & MODE_PREDATOR) && prob(huntless_chance))//Very rare but it could happen on a non-pred round.
 		var/datum/job/pred_surv = temp_roles_for_mode[JOB_PRED_SURVIVOR]
-		if(istype(pred_surv))
+		if(istype(pred_surv) && !isnull(pred_surv.scaled))
 			pred_surv.set_spawn_positions(YAUTJA_SURV_NO_HUNT)
 			log_debug("YAUTJA SURV: Triggered with no Hunt Round at [huntless_chance]%.")
 
@@ -471,14 +472,14 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	message_admins("[key_name(user)] freed the [job.title] job slot[squad ? " in [squad.name] Squad" : ""].")
 	return TRUE
 
-/datum/authority/branch/role/proc/modify_role(datum/job/J, amount)
-	if(!istype(J))
-		return 0
-	if(amount < J.current_positions) //we should be able to slot everyone
-		return 0
-	J.total_positions = amount
-	J.total_positions_so_far = amount
-	return 1
+/datum/authority/branch/role/proc/modify_role(datum/job/job, amount)
+	if(!istype(job))
+		return FALSE
+	if(amount < job.current_positions && amount != -1) //we should be able to slot everyone
+		return FALSE
+	job.total_positions = amount
+	job.total_positions_so_far = amount
+	return TRUE
 
 //I'm not entirely sure why this proc exists. //TODO Figure this out.
 /datum/authority/branch/role/proc/reset_roles()

@@ -149,8 +149,11 @@
 
 	/// Can this hive see humans on the tacmap
 	var/see_humans_on_tacmap = FALSE
-	/// Does the queen need to be on ovi for xenos to see
-	var/tacmap_requires_queen_ovi = TRUE
+
+	/// Does the queen need to exist for xenos to see
+	var/tacmap_requires_queen = TRUE
+	/// Does the queen need to be on ovi for tacmap to be constantly updated
+	var/tacmap_live_requires_queen_ovi = TRUE
 
 	var/list/available_nicknumbers = list()
 
@@ -1310,7 +1313,8 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
-	tacmap_requires_queen_ovi = FALSE
+	tacmap_requires_queen = FALSE
+	tacmap_live_requires_queen_ovi = FALSE
 
 /datum/hive_status/forsaken
 	name = FACTION_XENOMORPH_FORSAKEN
@@ -1326,7 +1330,8 @@
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
 	see_humans_on_tacmap = TRUE
-	tacmap_requires_queen_ovi = FALSE
+	tacmap_requires_queen = FALSE
+	tacmap_live_requires_queen_ovi = FALSE
 	evolution_locked = TRUE
 
 	need_round_end_check = TRUE
@@ -1393,7 +1398,8 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
-	tacmap_requires_queen_ovi = FALSE
+	tacmap_requires_queen = FALSE
+	tacmap_live_requires_queen_ovi = FALSE
 
 	need_round_end_check = TRUE
 
@@ -1471,7 +1477,8 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
-	tacmap_requires_queen_ovi = TRUE // No tacmap
+	tacmap_requires_queen = TRUE // No tacmap
+	tacmap_live_requires_queen_ovi = TRUE // No tacmap!
 
 	need_round_end_check = TRUE
 
@@ -1509,7 +1516,7 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
-	tacmap_requires_queen_ovi = FALSE
+	tacmap_live_requires_queen_ovi = FALSE
 
 	var/mob/living/carbon/human/leader
 	var/list/allied_factions
@@ -1864,7 +1871,8 @@
 		if(!see_humans_on_tacmap && human_count < (get_real_total_xeno_count() * HIJACK_RATIO_FOR_TACMAP))
 			xeno_announcement("There is only a handful of tallhosts left, they are now visible on our hive mind map.", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 			see_humans_on_tacmap = TRUE
-			tacmap_requires_queen_ovi = FALSE
+			tacmap_requires_queen = FALSE
+			tacmap_live_requires_queen_ovi = FALSE
 			SEND_SIGNAL(src, COMSIG_XENO_REVEAL_TACMAP)
 
 		if(last_living_human && human_count == 1)

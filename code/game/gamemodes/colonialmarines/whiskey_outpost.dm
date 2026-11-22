@@ -208,7 +208,8 @@
 		xeno_announcement("We sense that they are sending signals for help, we have little time left. We have granted you vision of all humans in the area, slaughter them all!", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 		var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 		main_hive.see_humans_on_tacmap = TRUE
-		main_hive.tacmap_requires_queen_ovi = FALSE
+		main_hive.tacmap_requires_queen = FALSE
+		main_hive.tacmap_live_requires_queen_ovi = FALSE
 		SEND_SIGNAL(main_hive, COMSIG_XENO_REVEAL_TACMAP)
 	xeno_wave = min(xeno_wave + 1, WO_MAX_WAVE)
 

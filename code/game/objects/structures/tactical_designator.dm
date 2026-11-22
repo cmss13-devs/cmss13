@@ -17,6 +17,7 @@
 	/// Invalidates pending lase when it's canceled
 	var/acquisition_serial = 0
 	var/obj/effect/overlay/temp/laser_target/tactical/laser
+	COOLDOWN_DECLARE(cas_acknowledgment_cooldown)
 
 /obj/structure/vulture_spotter_tripod/tactical/Initialize(mapload)
 	. = ..()
@@ -204,9 +205,17 @@
 		return
 	var/laser_name = "[user.assigned_squad ? user.assigned_squad.name : "X"]-[tracking_id]"
 	laser = new(get_turf(target), laser_name, user, tracking_id, src, isliving(target) ? target : null)
+	if(laser.signal)
+		laser.signal.designator_ref = WEAKREF(src)
 	playsound(src, 'sound/effects/binoctarget.ogg', 35)
 	log_game("Tactical laser [laser_name] designated by [key_name(user)] at ([target.x], [target.y], [target.z]).")
 	to_chat(user, SPAN_NOTICE("Target acquired. Keep the target in sight to maintain designation. Ctrl + Click anywhere to stop lasing."))
+
+/obj/structure/vulture_spotter_tripod/tactical/proc/acknowledge_cas_target(obj/structure/machinery/computer/dropship_weapons/console)
+	if(!COOLDOWN_FINISHED(src, cas_acknowledgment_cooldown) || !send_cas_target_feedback(src, laser, console))
+		return FALSE
+	COOLDOWN_START(src, cas_acknowledgment_cooldown, 1 SECONDS)
+	return TRUE
 
 /// The marker stays on turf so the CAS camera can view it
 /obj/effect/overlay/temp/laser_target/tactical

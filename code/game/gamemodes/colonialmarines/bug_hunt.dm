@@ -50,7 +50,8 @@
 	hive.allow_no_queen_actions = TRUE
 	hive.allow_no_queen_evo = TRUE
 	hive.allow_queen_evolve = FALSE
-	hive.tacmap_requires_queen_ovi = FALSE
+	hive.tacmap_requires_queen = FALSE
+	hive.tacmap_live_requires_queen_ovi = FALSE
 	hive.allow_core_larva_spawning = FALSE
 	hive.hive_structure_types -= XENO_STRUCTURE_CORE
 	LAZYADD(hive.blacklisted_castes, XENO_CASTE_QUEEN)

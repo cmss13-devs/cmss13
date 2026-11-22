@@ -344,7 +344,6 @@
 	item_state_slots = list(
 		WEAR_AS_GARB = "headbandrebel", // will be prefixed with either hat_ or helmet_
 	)
-	item_state_slots = null
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/headband/squad
@@ -1163,6 +1162,11 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = NO_FLAGS
+
+/obj/item/clothing/head/beret/clf/guerilla
+	name = "\improper red beret"
+	desc = "A red beret popular with revolutionaries."
+	icon_state = "beret_revolution"
 
 /obj/item/clothing/head/general
 	name = "\improper USCM officer peaked service cap"

@@ -601,7 +601,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 
 /datum/entity/player/proc/migrate_notes()
-	var/savefile/info = new("data/player_saves/[copytext(ckey, 1, 2)]/[ckey]/info.sav")
+	var/savefile/info = new("data/player_saves/[ckey[1]]/[ckey]/info.sav")
 	var/list/infos
 	info >> infos
 	if(!infos)

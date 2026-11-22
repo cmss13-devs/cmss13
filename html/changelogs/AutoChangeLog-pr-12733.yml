@@ -1,0 +1,4 @@
+author: "Venuska1117"
+delete-after: True
+changes:
+  - refactor: "Updates Acid Runner code with new define, removes tiny vars and spaces."

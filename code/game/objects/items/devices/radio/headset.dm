@@ -241,7 +241,7 @@
 			else
 				channels += ch_name
 				channels[ch_name] = key.channels[ch_name]
-				
+
 		for(var/tracking_option in key.tracking_options)
 			tracking_options[tracking_option] = key.tracking_options[tracking_option]
 		if(key.translate_apollo)
@@ -295,6 +295,10 @@
 				user.show_hud_tracker()
 			if(misc_tracking)
 				SStracking.start_misc_tracking(user)
+			INVOKE_NEXT_TICK(src, PROC_REF(update_minimap_icon), wearer)
+			if(minimap_type)
+				add_minimap(user)
+		else if(FACTION_SURVIVOR in user.faction_group)
 			INVOKE_NEXT_TICK(src, PROC_REF(update_minimap_icon), wearer)
 			if(minimap_type)
 				add_minimap(user)
@@ -1473,6 +1477,13 @@
 	frequency = SOF_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/soc/forecon)
 	volume = RADIO_VOLUME_QUIET
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_MARINE
+
+/obj/item/device/radio/headset/distress/uscm
+	name = "USCM colony headset"
+	desc = "A standard headset used by the USCM. This one seems badly beat up, whatever extra frequencies it once had have been lost."
+	frequency = COLONY_FREQ
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_MARINE
 

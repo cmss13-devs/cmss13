@@ -39,7 +39,7 @@
 	/// Flavour message to announce to the hive on buff expiry. Narrated to all players in the hive.
 	var/cease_flavourmessage
 
-	/// Minor or Major buff. Governs announcements made and importance.
+	/// Minor or Major buff. Governs importance.
 	var/tier = HIVEBUFF_TIER_MINOR
 	/// Number of pylons required to buy the buff
 	var/number_of_required_pylons = 1
@@ -47,6 +47,8 @@
 	var/is_combineable = TRUE
 	///If this buff can be used more than once a round.
 	var/is_reusable = TRUE
+	///If this buff is admin only.
+	var/is_admin_exclusive = FALSE
 	/// Time that the buff is active for if it is a timed buff.
 	var/duration
 	/// Time that the buff is on cooldown after ending
@@ -80,7 +82,7 @@
 	hive = xenohive
 
 	if(!engage_flavourmessage)
-		engage_flavourmessage = "The Queen has purchased [name]."
+		engage_flavourmessage = "The Queen has granted us [name]."
 	if(!cease_flavourmessage)
 		cease_flavourmessage = "The [name] has expired."
 
@@ -117,6 +119,9 @@
 
 	if(!_check_pass_reusable())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive has already used [name] and cannot use it again!"))
+		return FALSE
+
+	if(is_admin_exclusive)
 		return FALSE
 
 	var/datum/hivebuff/cooldown_buff = locate(type) in hive.cooldown_hivebuffs
@@ -169,6 +174,58 @@
 
 	var/involved = purchasing_mob == hive.living_xeno_queen ? "[key_name_admin(purchasing_mob)]" : "[key_name_admin(purchasing_mob)] and [key_name_admin(hive.living_xeno_queen)]"
 	message_admins("[involved] of [hive.hivenumber] has purchased a hive buff: [name].")
+
+	// Add to the relevant hive lists.
+	LAZYADD(hive.used_hivebuffs, src)
+	LAZYADD(hive.active_hivebuffs, src)
+
+	// Announce to our hive that we've completed.
+	_announce_buff_engage()
+
+	// If we need a timer to call _on_cease() we add it here and store the id, used for deleting the timer if we Destroy().
+	// If we have no duration to the buff then we call _on_cease() immediately.
+	if(duration)
+		cease_timer_id = addtimer(CALLBACK(src, PROC_REF(_on_cease)), duration, TIMER_STOPPABLE|TIMER_DELETE_ME)
+	else
+		_on_cease()
+	return TRUE
+
+///Wrapper for on_engage() as admin to do minimal checks to be actually purchased as well as adding buff to the active_hivebuffs and used_hivebuffs for the hive.
+/datum/hivebuff/proc/_on_engage_admin(mob/purchasing_admin, obj/effect/alien/resin/special/pylon/purchased_pylon)
+	if(!_check_pass_active())
+		to_chat(purchasing_admin, SPAN_XENONOTICE("The hive still has [name] active!"))
+		return FALSE
+
+	if(!_check_pass_combineable())
+		var/active_buffs = ""
+		for(var/buff in hive.active_hivebuffs)
+			active_buffs += buff + " "
+		active_buffs = trim_right(active_buffs)
+		to_chat(purchasing_admin, SPAN_XENONOTICE("[name] cannot be used with other active buffs! Wait for those to end first. Active buffs: [active_buffs]"))
+		return FALSE
+
+	if(!handle_special_checks())
+		to_chat(purchasing_admin, SPAN_XENONOTICE(special_fail_message))
+		return FALSE
+
+	// Actually process the buff and apply effects - If the buff succeeds engage_message will return TRUE, if it fails there should be an engage_failure_message set.
+	if(!on_engage(purchased_pylon))
+		if(engage_failure_message && istext(engage_failure_message))
+			to_chat(purchasing_admin, SPAN_XENONOTICE(engage_failure_message))
+			return
+		else
+			stack_trace("[purchasing_admin || "System"] attempted to purchase a hive buff: [name] and failed to engage and returned an invalid failure message or no failure message.")
+			return
+
+	// All checks have passed.
+
+	for(var/mob/living/carbon/xenomorph/xeno in hive.totalXenos)
+		apply_buff_effects(xeno)
+
+	if(apply_on_new_xeno)
+		RegisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN, PROC_REF(_handle_xenomorph_new))
+
+	message_admins("[purchasing_admin || "System"] has purchased a hive buff: [name] for [hive.hivenumber].")
 
 	// Add to the relevant hive lists.
 	LAZYADD(hive.used_hivebuffs, src)
@@ -345,7 +402,7 @@
 	desc = "Provides 5 larva instantly to the hive."
 	radial_icon = "larba"
 
-	engage_flavourmessage = "The Queen has purchased 5 extra larva to join the hive!"
+	engage_flavourmessage = "The Queen has blessed us with 5 extra larva to join the hive!"
 	cost = 5
 	number_of_required_pylons = 1
 	is_reusable = FALSE
@@ -366,7 +423,6 @@
 /datum/hivebuff/evo_buff/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)
 	value_before_buff = SSxevolution.get_evolution_boost_power(hive.hivenumber)
 	hive.override_evilution(value_before_buff * 2, TRUE)
-
 	return TRUE
 
 /datum/hivebuff/evo_buff/on_cease()
@@ -377,20 +433,45 @@
 	desc = "Doubles evolution speed for 10 minutes and allows evolution progress without an ovipositor."
 	tier = HIVEBUFF_TIER_MAJOR
 
-	engage_flavourmessage = "The Queen has blessed us with faster evolution."
+	engage_flavourmessage = "The Queen has blessed us with faster evolution even without an ovipositor."
 	duration = 10 MINUTES
 	cost = 2
 	number_of_required_pylons = 2
 	radial_icon = "health_m"
+	var/original_no_evo_setting
 
 /datum/hivebuff/evo_buff/major/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)
+	original_no_evo_setting = hive.allow_no_queen_evo
 	hive.allow_no_queen_evo = TRUE
-
 	return ..()
 
 /datum/hivebuff/evo_buff/major/on_cease()
 	. = ..()
-	hive.allow_no_queen_evo = FALSE
+	hive.allow_no_queen_evo = original_no_evo_setting
+
+/datum/hivebuff/survival_evac_surge
+	name = "Boon of Horde"
+	desc = "Grants many larva, and doubles evolution speed for 5 minutes without an ovipositor."
+	tier = HIVEBUFF_TIER_MAJOR
+	engage_flavourmessage = "The hive swells with power!"
+	duration = 15 MINUTES
+	number_of_required_pylons = 0
+	is_admin_exclusive = TRUE
+	is_combineable = FALSE
+	var/value_before_buff
+	var/original_no_evo_setting
+
+/datum/hivebuff/survival_evac_surge/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)
+	hive.stored_larva += max(GLOB.players_preassigned, 10)
+	value_before_buff = SSxevolution.get_evolution_boost_power(hive.hivenumber)
+	hive.override_evilution(value_before_buff * 2, TRUE)
+	original_no_evo_setting = hive.allow_no_queen_evo
+	hive.allow_no_queen_evo = TRUE
+	return TRUE
+
+/datum/hivebuff/survival_evac_surge/on_cease()
+	hive.override_evilution(value_before_buff, FALSE)
+	hive.allow_no_queen_evo = original_no_evo_setting
 
 /datum/hivebuff/game_ender_caste
 	name = "His Grace"

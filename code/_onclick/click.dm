@@ -18,8 +18,12 @@
 */
 
 /client/Click(atom/A, location, control, params)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	if (control && !ignore_next_click) // No .click macros allowed, and only one click per mousedown.
 		ignore_next_click = TRUE
+		var/list/mods = params2list(params)
+		if (string_starts_with(mods["button"], "xbutton"))
+			keyDown(mods["button"])
 		return usr.do_click(A, location, params)
 
 /mob/proc/do_click(atom/atom_clicked, location, params)
@@ -83,7 +87,7 @@
 
 	face_atom(atom_clicked)
 
-	if(mods[MIDDLE_CLICK] || mods[BUTTON4] || mods[BUTTON5])
+	if(mods[MIDDLE_CLICK] || string_starts_with(mods["button"], "xbutton"))
 		return
 
 	// Special type of click.

@@ -90,7 +90,11 @@
 	plasma_cost = 45
 	ammo = /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	var/list/options_ammo_list = list(/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/one_penetrations, /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/two_penetrations, /datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/three_penetrations)
+	var/list/options_ammo_list = list(
+		/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/one_penetrations,
+		/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/two_penetrations,
+		/datum/ammo/xeno/acid/spatter/dissolver_corrosive_spit/three_penetrations,
+		)
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/dissolver/corosive_spit/use_ability()
 	var/mob/living/carbon/xenomorph/spitter/xeno = owner

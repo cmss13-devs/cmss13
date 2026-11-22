@@ -325,14 +325,20 @@
 				sound = pick('sound/weapons/gun_m4a3_1.ogg','sound/weapons/gun_m4a3_2.ogg','sound/weapons/gun_m4a3_3.ogg','sound/weapons/gun_m4a3_4.ogg','sound/weapons/gun_m4a3_5.ogg')
 			if("88m4")
 				sound = pick('sound/weapons/gun_88m4_v7.ogg')
-			if("gun_casing_shotgun")
-				sound = pick ('sound/bullets/bulletcasing_shotgun_fall1.ogg')
 			if("gun_nsg23")
 				sound = pick('sound/weapons/gun_nsg23_1.ogg','sound/weapons/gun_nsg23_2.ogg')
 			if("gun_pkd")
 				sound = pick('sound/weapons/gun_pkd_fire01.ogg','sound/weapons/gun_pkd_fire02.ogg','sound/weapons/gun_pkd_fire03.ogg')
 			if("gun_l64")
 				sound = pick('sound/weapons/gun_l64_1.ogg','sound/weapons/gun_l64_2.ogg','sound/weapons/gun_l64_3.ogg')
+
+			// casings
+			if("gun_casing_generic") // the default
+				sound = pick('sound/bullets/bullet_casings/bullet_casing_generic_fall1.ogg')
+			if("gun_casing_rifle")
+				sound = pick('sound/bullets/bullet_casings/bullet_casing_rifle_fall1.ogg', 'sound/bullets/bullet_casings/bullet_casing_rifle_fall2.ogg')
+			if("gun_casing_shotgun")
+				sound = pick('sound/bullets/bullet_casings/bullet_casing_shotgun_fall1.ogg')
 
 			// Xeno
 			if("acid_hit")
@@ -464,6 +470,12 @@
 				sound = pick('sound/voice/wy_droid/wy_stealth_droid_death1.ogg', 'sound/voice/wy_droid/wy_stealth_droid_death2.ogg')
 			if("clown_footstep")
 				sound = pick('sound/effects/clownstep1.ogg', 'sound/effects/clownstep2.ogg')
+			if("broken_vehicle")
+				sound = pick('sound/vehicles/broken_move1.ogg','sound/vehicles/broken_move2.ogg','sound/vehicles/broken_move3.ogg','sound/vehicles/broken_move4.ogg','sound/vehicles/broken_move5.ogg','sound/vehicles/broken_move6.ogg')
+			if("tire_screech")
+				sound = pick('sound/vehicles/tire_screech1.ogg', 'sound/vehicles/tire_screech2.ogg','sound/vehicles/tire_screech3.ogg','sound/vehicles/tire_screech4.ogg')
+			if("wheelless")
+				sound = pick('sound/vehicles/wheelless_move1.ogg', 'sound/vehicles/wheelless_move2.ogg','sound/vehicles/wheelless_move3.ogg')
 			//items
 			if("map_fold")
 				sound = pick('sound/items/map_fold1.ogg', 'sound/items/map_fold2.ogg', 'sound/items/map_fold3.ogg', 'sound/items/map_fold4.ogg')

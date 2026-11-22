@@ -41,8 +41,6 @@ SUBSYSTEM_DEF(ticker)
 	// TODO: move this into mapview ss
 	var/toweractive = FALSE
 
-	var/list/minds = list()
-
 	var/automatic_delay_end = FALSE
 
 	///If we have already done tip of the round.

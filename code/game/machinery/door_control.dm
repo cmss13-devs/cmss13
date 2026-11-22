@@ -57,16 +57,20 @@
 	..()
 
 /obj/structure/machinery/door_control/proc/handle_dropship(ship_id)
-	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(ship_id)
-	if (!istype(shuttle))
-		return
-	var/obj/structure/machinery/computer/shuttle/dropship/flight/comp = shuttle.getControlConsole()
-	if(comp?.dropship_control_lost)
-		return
-	if(is_mainship_level(z)) // on the almayer
-		return
+	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(ship_id)
 
-	shuttle.control_doors("force-lock", "all", force=FALSE)
+	if(istype(shuttle, /obj/docking_port/mobile/marine_dropship))
+		var/obj/docking_port/mobile/marine_dropship/marine_shuttle = shuttle
+		var/obj/structure/machinery/computer/shuttle/dropship/flight/comp = marine_shuttle.getControlConsole()
+		if(comp?.dropship_control_lost)
+			return
+		if(is_mainship_level(z)) // on the almayer
+			return
+		marine_shuttle.control_doors("force-lock", "all", force=FALSE)
+
+	if(istype(shuttle, /obj/docking_port/mobile/emergency_response))
+		var/obj/docking_port/mobile/emergency_response/ert_shuttle = shuttle
+		ert_shuttle.control_doors("force-lock", force=FALSE, external_only=TRUE)
 
 /obj/structure/machinery/door_control/proc/handle_door()
 	for(var/obj/structure/machinery/door/airlock/target_door in range(range))

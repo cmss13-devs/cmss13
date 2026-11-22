@@ -403,6 +403,7 @@
 
 ////////////////////// SUB TYPES ///////////////////////.
 /obj/item/reagent_container/food/gum/chew
+	name = "\improper bunch of gum strips"
 	base_icon_state = "chew"
 	gum_size = GUM_SIZE_SMALL
 	wrapped = FALSE
@@ -414,6 +415,7 @@
 
 
 /obj/item/reagent_container/food/gum/cube
+	name = "\improper gum cube"
 	base_icon_state = "cube"
 	wrapped = FALSE
 	gum_size = GUM_SIZE_MINI

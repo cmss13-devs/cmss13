@@ -75,6 +75,7 @@
 /obj/item/storage/gum/open(mob/user)
 	if(packaging_opened)
 		return ..()
+	to_chat(user, SPAN_INFO("The pack is still sealed, pull the tab to open it first!"))
 
 /obj/item/storage/gum/attack(mob/living/carbon/target as mob, mob/living/carbon/user as mob)
 	if(!istype(target, /mob))
@@ -215,7 +216,7 @@
 
 
 /obj/item/storage/gum/medichew/caffeine
-	name = "MediChew Caffiene Gum"
+	name = "MediChew Caffeine Gum"
 	desc = "A sweet pickme up, for the sleep deprived service member. Mint flavor!"
 	icon_state = "medichew_caff"
 	gum_color = "#ffffff"

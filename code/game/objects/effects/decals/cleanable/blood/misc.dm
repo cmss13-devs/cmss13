@@ -6,6 +6,7 @@
 	layer = CATWALK_LAYER
 	icon = 'icons/obj/items/food/gum.dmi'
 	icon_state = "walked_on_s"
+	mouse_opacity = TRUE
 	cleaning_reagents_needed = CLEANABLE_BY_CLEANER|CLEANABLE_BY_SOAP
 	drying_time = 2 MINUTES
 	random_icon_states = list()

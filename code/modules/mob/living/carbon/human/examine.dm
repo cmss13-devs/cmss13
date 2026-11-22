@@ -540,6 +540,13 @@
 	for(var/implant in get_visible_implants())
 		msg += SPAN_WARNING(SPAN_BOLD("[t_He] [t_has] \a [implant] sticking out of [t_his] flesh!\n"))
 
+	for(var/obj/bubblegum_bubble/gum_bubble in vis_contents)
+		if(gum_bubble.popped)
+			msg += SPAN_WARNING("[t_He] has a burst gum bubble covering [t_his] face!")
+		else
+			msg += "[t_He] is working [t_his] jaw, chewing gum!"
+		break
+
 	if(hasHUD(user,"security") || (observer && observer.HUD_toggled["Security HUD"]))
 		var/perpref
 
@@ -598,6 +605,7 @@
 		if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC) && locate(/obj/item/clothing/accessory/stethoscope) in human_user.w_uniform)
 			temp_msg += " <a href='byond://?src=\ref[src];use_stethoscope=1'>\[Use Stethoscope\]</a>"
 		msg += "\n<span class = 'deptradio'>Medical actions: [temp_msg]\n"
+
 
 	var/flavor = print_flavor_text()
 	if(flavor)

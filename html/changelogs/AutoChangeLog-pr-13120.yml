@@ -1,0 +1,6 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - rscadd: "Pressurized reagent canisters are now flushable inside and outside reagent pouches."
+  - rscadd: "Pressurized reagent canisters can fit on the back slot."
+  - imageadd: "Adds inhand and back sprites for pressurized reagent canisters."

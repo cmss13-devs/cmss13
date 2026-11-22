@@ -1185,10 +1185,6 @@ SUBSYSTEM_DEF(minimaps)
 	/// Is this a CIC map
 	var/is_cic_minimap = FALSE
 
-	var/list/atom/movable/screen/drawing_tools = list()
-
-	var/list/atom/movable/screen/minimap_tool/drawing_actions = list()
-
 /datum/action/minimap/New(Target, new_minimap_flags, new_marker_flags)
 	. = ..()
 	locator = new
@@ -1196,7 +1192,6 @@ SUBSYSTEM_DEF(minimaps)
 		minimap_flags = new_minimap_flags
 	if(new_marker_flags)
 		marker_flags = new_marker_flags
-	drawing_tools += list(/atom/movable/screen/minimap_tool/up/simple, /atom/movable/screen/minimap_tool/down/simple, /atom/movable/screen/minimap_tool/change_map)
 
 /datum/action/minimap/Destroy()
 	map = null
@@ -1262,7 +1257,6 @@ SUBSYSTEM_DEF(minimaps)
 	else
 		owner.client.remove_from_screen(map)
 		owner.client.remove_from_screen(locator)
-		owner.client.remove_from_screen(drawing_actions)
 		map.stop_polling -= owner
 		// Hide ceiling protection toggle action when minimap closes
 		for(var/datum/action/minimap_ceiling/ceiling_action in owner.actions)
@@ -1272,8 +1266,6 @@ SUBSYSTEM_DEF(minimaps)
 		locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
 	minimap_displayed = force_state
 	return TRUE
-
-
 
 ///Overrides the minimap locator to a given atom
 /datum/action/minimap/proc/override_locator(atom/movable/to_track)
@@ -1471,19 +1463,26 @@ SUBSYSTEM_DEF(minimaps)
 				else
 					tacmap_component.show_tacmap(queen)
 				return
-	// Hunted still get no tacmap
-	if(xeno.hive?.tacmap_requires_queen_ovi && !xeno?.hive?.living_xeno_queen && xeno != xeno?.hive?.living_xeno_queen)
-		to_chat(xeno, SPAN_WARNING("You cannot access that right now."))
+	// Is a queen required for tacmap?
+	if(xeno.hive?.tacmap_requires_queen && !xeno?.hive?.living_xeno_queen && xeno != xeno?.hive?.living_xeno_queen)
+		to_chat(xeno, SPAN_WARNING("Without a Queen, your connection to the hivemind is unable to focus like this!"))
 		return
 
-	// Determine if map should be live based on queen's ovipositor status
+	// Is a queen on ovi required for live tacmap?
 	var/should_be_live = FALSE
-	if(xeno == xeno.hive?.living_xeno_queen)
-		should_be_live = TRUE // Queens always get live
-	else if(xeno.hive?.living_xeno_queen?.ovipositor)
-		should_be_live = TRUE // Queen is on ovipositor, all xenos get live
-	else if(!xeno.hive?.tacmap_requires_queen_ovi)
-		should_be_live = TRUE // This Hive doesn't require queen ovi (forsaken for example)
+	if((xeno.hive.tacmap_live_requires_queen_ovi == TRUE))
+		// On ovi
+		if(xeno.hive?.living_xeno_queen?.ovipositor)
+			should_be_live = TRUE // Queen is on ovipositor, all xenos get live
+
+		// Not on ovi
+		else if(isqueen(xeno))
+			should_be_live = TRUE // Queens always get live
+		else
+			should_be_live = FALSE
+
+	// A queen on ovi is not required for live tacmap.
+	else should_be_live = TRUE
 
 	// If live status changed, reset the map so it gets recreated with correct mode
 	if(live != should_be_live)

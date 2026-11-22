@@ -73,6 +73,8 @@
 	skull = /obj/item/skull/ravager
 	pelt = /obj/item/pelt/ravager
 
+	water_config = /datum/water_overlay_config/xeno/medium/squatter
+
 /obj/item/organ/xeno/ravager
 	name = "ravager heart"
 	icon_state = "heart_t3"

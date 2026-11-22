@@ -68,6 +68,8 @@
 	skull = /obj/item/skull/despoiler
 	pelt = /obj/item/pelt/despoiler
 
+	water_config = /datum/water_overlay_config/xeno/medium/squatter
+
 /obj/item/organ/xeno/despoiler
 	name = "despoiler heart"
 	icon_state = "heart_t3"

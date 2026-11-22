@@ -11,7 +11,7 @@
 	possible_locs = list("chest", "head")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
-	required_surgery_skill = SKILL_SURGERY_TRAINED
+	required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	steps = list(
 		/datum/surgery_step/create_cavity,
 		/datum/surgery_step/place_item,
@@ -318,7 +318,7 @@
 				SPAN_NOTICE("[user] extracts the shrapnel from your [surgery.affected_limb.display_name]."),
 				SPAN_NOTICE("[user] extracts the shrapnel from [target]'s [surgery.affected_limb.display_name]."))
 			for(var/obj/item/shard/S as anything in shrapnel)
-				S.forceMove(target.loc)
+				S.forceMove(get_turf(target))
 				surgery.affected_limb.implants -= S
 				target.embedded_items -= S
 				for(var/i in 1 to S.count-1)

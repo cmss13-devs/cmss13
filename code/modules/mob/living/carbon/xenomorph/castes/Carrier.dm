@@ -91,6 +91,8 @@
 	skull = /obj/item/skull/carrier
 	pelt = /obj/item/pelt/carrier
 
+	water_config = /datum/water_overlay_config/xeno/medium/squatter
+
 	var/list/hugger_image_index = list()
 	var/mutable_appearance/hugger_overlays_icon
 	var/mutable_appearance/eggsac_overlays_icon

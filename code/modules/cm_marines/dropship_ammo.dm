@@ -563,9 +563,9 @@
 /// M90 minigun twin linked ////
 
 /obj/structure/ship_ammo/m90_minigun
-	name = "\improper PGU-420 Multi-Purpose 90mm ammo crate"
+	name = "\improper PGU-27A1 Multi-Purpose 90mm 400 round ammo crate"
 	icon_state = "30mm_crate"
-	desc = "A crate full of PGU-420 90mm Multi-Purpose ammo designed to penetrate light (non-reinforced) structures, as well as shred infantry, IAVs, LAVs, IMVs, and MRAPs. Works in large areas for use on Class 4 and superior alien insectoid infestations, as well as fitting within the armaments allowed for use against a tier 4 insurgency as well as higher tiers. However, it lacks armor penetrating capabilities, for which Anti-Tank 30mm ammo is needed. Can be loaded into the GAU-21 30mm cannon."
+	desc = "A crate full of 400 rounds of PGU-27A1 90mm Multi-Purpose ammo designed to penetrate light (non-reinforced) structures, as well as shred infantry, IAVs, LAVs, IMVs, and MRAPs. Works in large areas for use on Class 4 and superior alien insectoid infestations, as well as fitting within the armaments allowed for use against a tier 4 insurgency as well as higher tiers."
 	equipment_type = /obj/structure/dropship_equipment/weapon/m90_minigun
 	ammo_count = 400
 	max_ammo_count = 400

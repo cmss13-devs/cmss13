@@ -55047,11 +55047,6 @@
 /obj/item/weapon/gun/revolver/cmb/custom,
 /turf/open/gm/dirt/brown/variant_5/south,
 /area/strata/exterior/parts_storage_cave)
-"wgB" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/interior/bball_cave)
 "wgI" = (
 /obj/item/tank/anesthetic,
 /turf/open/floor/strata,
@@ -78347,7 +78342,7 @@ aar
 aam
 bgn
 bYx
-aam
+aas
 bXv
 aag
 aac
@@ -78522,7 +78517,7 @@ aam
 aam
 bYa
 nUM
-wgB
+seb
 bXx
 aam
 aar
@@ -79051,7 +79046,7 @@ bXP
 bWH
 aHz
 seb
-wgB
+seb
 csG
 abM
 bwR

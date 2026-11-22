@@ -120,12 +120,6 @@
 "aaC" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/caves/north_central_caves)
-"aaD" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_east_caves)
 "aaE" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass/grass1,
@@ -346,12 +340,6 @@
 /obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
-"abF" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "abG" = (
 /obj/item/clothing/head/helmet/augment{
 	desc = "Part of a strange alien mask. It loosely fits on a human, but just barely.";
@@ -1057,12 +1045,6 @@
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
-"aed" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
 "aee" = (
 /obj/structure/showcase/yautja/alt{
 	dir = 1
@@ -2577,11 +2559,6 @@
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"akf" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "akg" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_door_hull,
 /turf/open/gm/dirt,
@@ -2836,11 +2813,6 @@
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/jungle/south_west_jungle)
-"alf" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/central_barrens)
 "alg" = (
 /obj/structure/ore_box,
 /turf/open/gm/dirt,
@@ -2854,11 +2826,6 @@
 /obj/structure/grille,
 /turf/open/floor/plating/warnplate/east,
 /area/lv624/ground/river/central_river)
-"alj" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/survive/xeno_wall_hull,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/west_barrens)
 "alk" = (
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/floor/bot/north,
@@ -3061,6 +3028,10 @@
 /obj/effect/landmark/structure_spawner/setup/survive/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"amd" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/caves/east_caves)
 "amf" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/floor/plating/warnplate/southeast,
@@ -10763,12 +10734,6 @@
 "bfe" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/jungle/north_east_jungle)
-"bfY" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "bgL" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/west,
@@ -11077,11 +11042,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_west_caves)
-"bLs" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
 "bLD" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/sky)
@@ -12699,13 +12659,6 @@
 /obj/item/reagent_container/food/snacks/grown/mushroom/amanita,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_west_caves)
-"eZC" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/obj/effect/landmark/corpsespawner/colonist/random/burst,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "eZD" = (
 /obj/structure/barricade/metal{
 	health = 250
@@ -13180,11 +13133,6 @@
 /obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/coast/east,
 /area/lv624/ground/river/east_river)
-"fYl" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
 "fYG" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -14661,7 +14609,6 @@
 /area/lv624/ground/colony/south_nexus_road)
 "jhj" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /obj/effect/decal/grass_overlay/grass1/inner,
 /turf/open/gm/dirt,
@@ -16773,7 +16720,6 @@
 /area/lv624/lazarus/hydroponics)
 "nHq" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /obj/effect/landmark/corpsespawner/miner,
 /turf/open/gm/dirt,
@@ -18884,12 +18830,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
-"rPK" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "rQf" = (
 /obj/structure/closet/crate,
 /obj/item/stack/sheet/metal{
@@ -20346,12 +20286,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
-"uMz" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/lv624/ground/caves/central_caves)
 "uMD" = (
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -21092,12 +21026,6 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
-"wlh" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "wlo" = (
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/flora/bush/ausbushes/genericbush,
@@ -25201,7 +25129,7 @@ mdQ
 mdQ
 mdQ
 xZE
-wlh
+oAV
 oAV
 sMx
 tOS
@@ -25209,7 +25137,7 @@ gwP
 gwP
 sMx
 oAV
-wlh
+oAV
 xZE
 mdQ
 mdQ
@@ -25426,13 +25354,13 @@ mdQ
 mdQ
 xZE
 oAV
-gwP
+tOS
 aca
 gwP
 gwP
 gwP
 aca
-gwP
+tOS
 oAV
 xZE
 mdQ
@@ -25874,13 +25802,13 @@ mdQ
 mdQ
 xZE
 oAV
-gwP
+tOS
 aca
 gwP
 gwP
 gwP
 aca
-gwP
+tOS
 oAV
 xZE
 mdQ
@@ -26097,7 +26025,7 @@ mdQ
 mdQ
 mdQ
 xZE
-wlh
+oAV
 oAV
 sMx
 tOS
@@ -26105,7 +26033,7 @@ gwP
 gwP
 sMx
 oAV
-wlh
+oAV
 xZE
 mdQ
 mdQ
@@ -35546,7 +35474,7 @@ eGD
 eGD
 eGD
 eGD
-eGD
+acq
 eGD
 eGD
 eGD
@@ -35770,7 +35698,7 @@ eGD
 eGD
 eGD
 hzR
-fYl
+hzR
 eGD
 eGD
 eGD
@@ -36896,7 +36824,7 @@ abS
 abS
 abS
 ajN
-alj
+ajN
 ajN
 xwr
 xwr
@@ -38186,7 +38114,7 @@ acf
 acf
 acf
 izh
-abF
+abc
 abc
 izh
 abl
@@ -38411,7 +38339,7 @@ acf
 acf
 izh
 abc
-abl
+abv
 abw
 abl
 abl
@@ -38859,7 +38787,7 @@ acf
 acf
 izh
 abc
-abl
+abv
 dGQ
 abl
 abl
@@ -39082,7 +39010,7 @@ acf
 acf
 acf
 izh
-abF
+abc
 abc
 izh
 abl
@@ -39531,7 +39459,7 @@ acf
 acf
 izh
 abc
-abl
+abv
 dGQ
 abv
 abl
@@ -39754,7 +39682,7 @@ acf
 acf
 acf
 izh
-abF
+abc
 abc
 izh
 abl
@@ -43794,7 +43722,7 @@ acf
 acf
 uxU
 ryp
-uMz
+ryp
 ryp
 acf
 acf
@@ -44065,7 +43993,7 @@ wVk
 wVk
 wVk
 wVk
-alf
+akG
 akH
 wVk
 afk
@@ -52141,7 +52069,7 @@ xch
 xch
 xch
 ake
-akf
+ake
 xch
 amc
 xch
@@ -52363,7 +52291,7 @@ agX
 xch
 xch
 xch
-xch
+rGZ
 xch
 akg
 xch
@@ -53417,7 +53345,7 @@ acg
 acg
 acg
 nzw
-bfY
+nzw
 acg
 acg
 aaN
@@ -53826,8 +53754,8 @@ pZb
 pZb
 pZb
 pZb
-aaD
-aag
+aab
+aai
 aag
 aag
 aag
@@ -58152,7 +58080,7 @@ whU
 whU
 whU
 whU
-aed
+fIt
 fIt
 wEO
 akL
@@ -58377,7 +58305,7 @@ whU
 whU
 jMS
 fIt
-fTM
+akL
 jMS
 fTM
 fTM
@@ -59021,7 +58949,7 @@ mHk
 egU
 acg
 nzw
-bfY
+nzw
 nzw
 nzw
 xSA
@@ -59051,13 +58979,13 @@ jMS
 fIt
 fTM
 wEO
-fTM
+akL
 fTM
 fTM
 wEO
 fTM
 agm
-bLs
+agm
 ahv
 rac
 cAZ
@@ -59251,7 +59179,7 @@ umb
 acg
 umb
 iyr
-eZC
+upQ
 uBR
 pUm
 vVC
@@ -59470,11 +59398,11 @@ bvj
 mHk
 bEj
 jAo
-acg
+aaN
 gkC
 acg
 gkC
-acg
+aaN
 jAo
 uBR
 vVC
@@ -59499,7 +59427,7 @@ whU
 whU
 jMS
 jMS
-aed
+fIt
 fIt
 jMS
 diW
@@ -59918,11 +59846,11 @@ bvj
 bvj
 qPY
 rwx
-acg
+aaN
 gkC
 acg
 gkC
-acg
+aaN
 dfJ
 uBR
 pUm
@@ -60147,7 +60075,7 @@ umb
 acg
 umb
 fAD
-rPK
+jAo
 uBR
 pUm
 pUm
@@ -60582,7 +60510,7 @@ pZb
 pZb
 pUm
 pUm
-pUm
+amd
 pUm
 pUm
 pUm

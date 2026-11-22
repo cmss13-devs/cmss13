@@ -46,6 +46,34 @@
 	if(start_on_spawn)
 		QDEL_IN(src, effect_duration)
 
+/obj/effect/overlay/temp/smoke_plume
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "smoke_plume"
+	layer = BELOW_MOB_LAYER
+	effect_duration = 0.7 SECONDS
+
+/proc/scatter_smoke_plumes(list/affected_area)
+	var/list/candidate_tiles = list()
+	for(var/turf/tile in affected_area)
+		candidate_tiles += tile
+	var/plume_count = min(rand(5, 8), length(candidate_tiles))
+	for(var/index in 1 to plume_count)
+		new /obj/effect/overlay/temp/smoke_plume(pick_n_take(candidate_tiles))
+
+/obj/effect/overlay/temp/xeno_dash_smoke
+	icon = 'icons/mob/xenos/overlay_effects48x48.dmi'
+	icon_state = "smoke_dash"
+	layer = BELOW_MOB_LAYER
+	pixel_x = -8
+	pixel_y = -8
+	effect_duration = 0.6 SECONDS
+
+/obj/effect/overlay/temp/xeno_dash_smoke/large
+	icon = 'icons/mob/xenos/overlay_effects64x64.dmi'
+	pixel_x = -16
+	pixel_y = -16
+	effect_duration = 0.8 SECONDS
+
 /obj/effect/overlay/temp/point
 	name = "arrow"
 	desc = "It's an arrow hanging in mid-air. There may be a wizard about."

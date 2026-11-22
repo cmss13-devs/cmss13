@@ -279,7 +279,6 @@
 	// Transient turf list
 	var/list/target_turfs = list()
 	var/list/temp_turfs = list()
-	var/list/telegraph_atom_list = list()
 
 	// Code to get a 2x3 area of turfs
 	var/turf/root = get_turf(valkyrie)
@@ -303,14 +302,12 @@
 			continue
 
 		target_turfs += range_turf
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(range_turf, 0.25 SECONDS)
 
 		var/turf/next_turf = get_step(range_turf, facing)
 		if (!istype(next_turf) || next_turf.density)
 			continue
 
 		target_turfs += next_turf
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(next_turf, 0.25 SECONDS)
 
 	if(!length(target_turfs))
 		to_chat(valkyrie, SPAN_XENOWARNING("We don't have enough room!"))
@@ -326,6 +323,7 @@
 	playsound(valkyrie, 'sound/effects/alien_footstep_charge3.ogg', 35, 0)
 
 	for (var/turf/range in target_turfs)
+		new /obj/effect/xenomorph/xeno_telegraph/attack/brown/high_gallop(range, 0.35 SECONDS)
 		for (var/mob/living/carbon/target in range)
 			if (target.stat == DEAD)
 				continue
@@ -499,7 +497,7 @@
 
 		turflist += T
 		facing = get_dir(T, A)
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/green(T, windup)
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/retrieve_hook(T, windup)
 
 	if(!length(turflist))
 		to_chat(valkyrie, SPAN_XENOWARNING("We don't have any room to do our retrieve!"))

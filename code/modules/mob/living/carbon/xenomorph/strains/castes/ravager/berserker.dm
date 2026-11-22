@@ -130,6 +130,9 @@
 	rage_cooldown_start_time = 0
 	return
 
+/datum/behavior_delegate/ravager_berserker/get_slash_icon_state()
+	return next_slash_buffed ? "apprehend" : ..()
+
 /datum/behavior_delegate/ravager_berserker/melee_attack_modify_damage(original_damage, mob/living/carbon/target_carbon)
 	if(!isxeno_human(target_carbon))
 		return original_damage
@@ -227,6 +230,8 @@
 		fling_distance--
 
 	// Damage
+	xeno.flick_attack_overlay(carbon, "clothesline", 0.4 SECONDS)
+	playsound(carbon, 'sound/weapons/alien_claw_block.ogg', 50, TRUE)
 	var/obj/limb/head/head = carbon.get_limb("head")
 	if(ishuman(carbon) && head)
 		carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "head")
@@ -291,7 +296,8 @@
 	ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 	xeno.anchored = TRUE
 
-	if(do_after(xeno, (activation_delay - windup_reduction), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+	var/windup = activation_delay - windup_reduction
+	if(do_after(xeno, windup, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 		xeno.emote("roar")
 		xeno.spin_circle()
 
@@ -317,7 +323,15 @@
 				xeno.visible_message(SPAN_XENODANGER("[xeno] claws [targets_to_hit]!"), SPAN_XENODANGER("We claw [targets_to_hit]!"))
 				playsound(get_turf(targets_to_hit), "alien_claw_flesh", 30, 1)
 
+			var/obj/effect/xenomorph/xeno_telegraph/attack/eviscerate/slash = new(targets_to_hit, 0.5 SECONDS)
+			slash.show_on_target(targets_to_hit)
 			targets_to_hit.apply_armoured_damage(get_xeno_damage_slash(targets_to_hit, damage), ARMOR_MELEE, BRUTE, "chest", 20)
+
+		var/list/affected_tiles = list()
+		for(var/turf/target_turf in orange(xeno, range))
+			if(check_clear_path_to_target(xeno, target_turf, smash_windows = FALSE))
+				affected_tiles += target_turf
+		show_radial_telegraph(get_turf(xeno), affected_tiles, range, /obj/effect/xenomorph/xeno_telegraph/attack/eviscerate, 0.5 SECONDS, "#EB4210")
 
 	var/valid_count = 0
 	var/list/mobs_in_range = oviewers(lifesteal_range, xeno)

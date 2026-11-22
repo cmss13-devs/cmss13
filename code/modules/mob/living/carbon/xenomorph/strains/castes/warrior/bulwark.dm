@@ -195,7 +195,7 @@
 		return
 
 	if(!HAS_TRAIT(xeno_player, TRAIT_ABILITY_ENCLOSED_PLATES) && distance > 1)
-		xeno_player.throw_atom(get_step_towards(carbon_target, xeno_player), 2, SPEED_SLOW, xeno_player, tracking=TRUE)
+		launch_with_dash_smoke(get_step_towards(carbon_target, xeno_player), 2, SPEED_SLOW, xeno_player, tracking = TRUE)
 		if(!xeno_player.Adjacent(carbon_target))
 			return
 

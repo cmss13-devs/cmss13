@@ -399,18 +399,20 @@
 		if(WEST)
 			directional_offset_x = 16
 
-	var/obj/effect/overlay/afterimage = new /obj/effect/overlay/afterimage(afterimage_location)
-	afterimage.icon = dodge_user.icon
-	afterimage.icon_state = dodge_user.icon_state
-	afterimage.color = dodge_user.color
-	afterimage.layer = dodge_user.layer
-	afterimage.dir = dodge_user.dir
-	afterimage.alpha = 200
-	afterimage.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	afterimage.pixel_x = dodge_user.pixel_x + directional_offset_x
-	afterimage.pixel_y = dodge_user.pixel_y + directional_offset_y
+	new /obj/effect/overlay/afterimage(afterimage_location, dodge_user, directional_offset_x, directional_offset_y)
 
-	addtimer(CALLBACK(afterimage, TYPE_PROC_REF(/obj/effect/overlay/afterimage, fade_out_afterimage)))
+/obj/effect/overlay/afterimage/Initialize(mapload, mob/living/carbon/xenomorph/source_xeno, offset_x = 0, offset_y = 0)
+	. = ..()
+	if(!source_xeno)
+		return INITIALIZE_HINT_QDEL
+	icon = source_xeno.icon
+	icon_state = source_xeno.icon_state
+	color = source_xeno.color
+	layer = source_xeno.layer
+	setDir(source_xeno.dir)
+	pixel_x = source_xeno.pixel_x + offset_x
+	pixel_y = source_xeno.pixel_y + offset_y
+	addtimer(CALLBACK(src, PROC_REF(fade_out_afterimage)))
 
 
 
@@ -447,7 +449,9 @@
 	var/turf/last_turf
 
 /obj/effect/overlay/afterimage
-	name = "Dancer Afterimage"
+	name = "afterimage"
+	alpha = 200
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/mob/xenos/castes/tier_3/praetorian.dmi'
 	layer = MOB_LAYER
 	var/fade_step = 0

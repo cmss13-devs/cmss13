@@ -22,6 +22,10 @@
 
 	var/buildnode_icon = "buildnode_wall"
 
+	/// This list contains the 'variants' of resin construction datums.
+	/// Thick resin doors contain drone and queen resin doors here, for example.
+	var/list/types_of_variants
+
 /datum/resin_construction/proc/can_build_here(turf/T, mob/living/carbon/xenomorph/X)
 	var/mob/living/carbon/xenomorph/blocker = locate() in T
 	if(blocker && blocker != X && blocker.stat != DEAD)
@@ -76,7 +80,7 @@
 		return UNBUILDABLE_TURF
 
 	if(istype(T, /turf/closed/wall)) // Can't build in walls with no density
-		to_chat(X, SPAN_WARNING("This area is too unstable to support a construction."))
+		to_chat(X, SPAN_WARNING("There's a wall here already!"))
 		return UNBUILDABLE_TURF
 
 	if(!X.check_alien_construction(T, check_doors = !can_build_on_doors))
@@ -146,6 +150,11 @@
 
 	build_path = /turf/closed/wall/resin
 	build_animation_effect = /obj/effect/resin_construct/weak
+	types_of_variants = list(
+		/datum/resin_construction/resin_turf/wall/thick,
+		/datum/resin_construction/resin_turf/wall/queen,
+		/datum/resin_construction/resin_turf/wall/reflective
+		)
 
 /datum/resin_construction/resin_turf/wall/check_for_wall_or_door()
 	return TRUE
@@ -165,7 +174,10 @@
 
 	build_path = /turf/closed/wall/resin/thick
 	build_animation_effect = /obj/effect/resin_construct/thick
-
+	types_of_variants = list(
+		/datum/resin_construction/resin_turf/wall,
+		/datum/resin_construction/resin_turf/wall/queen,
+		)
 /datum/resin_construction/resin_turf/wall/queen
 	name = "Queen Resin Wall"
 	desc = "A resin wall, able to block passage. Constructed type depends on weeds."
@@ -177,6 +189,10 @@
 	build_path_thick = /turf/closed/wall/resin/thick
 	thick_hiveweed = TRUE
 	build_animation_effect = /obj/effect/resin_construct/weak
+	types_of_variants = list(
+		/datum/resin_construction/resin_turf/wall/thick,
+		/datum/resin_construction/resin_turf/wall,
+		)
 
 /datum/resin_construction/resin_turf/wall/reflective
 	name = "Reflective Resin Wall"
@@ -197,6 +213,10 @@
 
 	build_path = /turf/closed/wall/resin/membrane
 	build_animation_effect = /obj/effect/resin_construct/transparent/weak
+	types_of_variants = list(
+		/datum/resin_construction/resin_turf/membrane/thick,
+		/datum/resin_construction/resin_turf/membrane/queen,
+		)
 
 /datum/resin_construction/resin_turf/membrane/queen
 	name = "Queen Resin Membrane"
@@ -209,6 +229,10 @@
 	build_path_thick = /turf/closed/wall/resin/membrane/thick
 	thick_hiveweed = TRUE
 	build_animation_effect = /obj/effect/resin_construct/transparent/weak
+	types_of_variants = list(
+		/datum/resin_construction/resin_turf/membrane/thick,
+		/datum/resin_construction/resin_turf/membrane,
+		)
 
 /datum/resin_construction/resin_turf/membrane/thick
 	name = "Thick Resin Membrane"
@@ -219,6 +243,10 @@
 
 	build_path = /turf/closed/wall/resin/membrane/thick
 	build_animation_effect = /obj/effect/resin_construct/transparent/thick
+	types_of_variants = list(
+		/datum/resin_construction/resin_turf/membrane,
+		/datum/resin_construction/resin_turf/membrane/queen,
+		)
 
 // Resin Doors
 /datum/resin_construction/resin_obj/door
@@ -231,6 +259,11 @@
 	build_path = /obj/structure/mineral_door/resin
 	build_animation_effect = /obj/effect/resin_construct/door
 	buildnode_icon = "buildnode_door"
+
+	types_of_variants = list(
+		/datum/resin_construction/resin_obj/door/thick,
+		/datum/resin_construction/resin_obj/door/queen,
+		)
 
 /datum/resin_construction/resin_obj/door/can_build_here(turf/T, mob/living/carbon/xenomorph/X)
 	if (!..())
@@ -267,6 +300,10 @@
 	build_path_thick = /obj/structure/mineral_door/resin/thick
 	thick_hiveweed = TRUE
 	build_animation_effect = /obj/effect/resin_construct/door
+	types_of_variants = list(
+		/datum/resin_construction/resin_obj/door/thick,
+		/datum/resin_construction/resin_obj/door,
+		)
 
 /datum/resin_construction/resin_obj/door/thick
 	name = "Thick Resin Door"
@@ -277,6 +314,10 @@
 
 	build_path = /obj/structure/mineral_door/resin/thick
 	build_animation_effect = /obj/effect/resin_construct/thickdoor
+	types_of_variants = list(
+		/datum/resin_construction/resin_obj/door,
+		/datum/resin_construction/resin_obj/door/queen,
+		)
 
 // Sticky Resin
 /datum/resin_construction/resin_obj/sticky_resin

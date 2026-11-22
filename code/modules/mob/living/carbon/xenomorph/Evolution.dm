@@ -211,6 +211,9 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	transfer_observers_to(new_xeno)
 	new_xeno._status_traits = _status_traits
 
+	// Transfer building nodes to new creature if possible
+	transfer_build_nodes(new_xeno)
+
 	// Freshly evolved xenos emerge standing.
 	// This resets density and resting status traits.
 	set_body_position(STANDING_UP)
@@ -479,6 +482,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."),
 	SPAN_XENODANGER(message))
 
+	transfer_build_nodes(new_xeno)
 	transfer_observers_to(new_xeno)
 	new_xeno._status_traits = src._status_traits
 
@@ -490,6 +494,24 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	qdel(src)
 
 	return new_xeno
+
+// Transfer building nodes to the new xenomorph. Used in transmute() and Evolve() (why are they different..?)
+// If the new xenomorph can't build (drone -> burrower) they're just deleted.
+/mob/living/carbon/xenomorph/proc/transfer_build_nodes(mob/living/carbon/xenomorph/new_xeno)
+	// Do we have the ability to build?
+	if(locate(/datum/action/xeno_action/activable/secrete_resin) in actions)
+		new_xeno.current_building_nodes = current_building_nodes
+		// Were there any nodes to begin with?
+		if(new_xeno.current_building_nodes)
+			// Transfer each node's 'planter' to the new xenomorph, and recreate the client holder image for the new mob.
+			for(var/obj/effect/alien/resin/building_node/node in new_xeno.current_building_nodes)
+				node.planter = new_xeno
+				node.create_node_image(get_turf(node), list(new_xeno), node.resin_type, node, node.ovi_node)
+		// Wipe away the old list completely.
+		current_building_nodes = null
+	// We don't, delete everything in the list.
+	else
+		QDEL_LIST(current_building_nodes)
 
 /mob/living/carbon/xenomorph/proc/can_evolve(castepick, potential_queens)
 	var/slots = hive.get_tier_slots()

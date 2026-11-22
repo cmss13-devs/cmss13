@@ -387,7 +387,6 @@
 	var/queen_age_timer_id = TIMER_ID_NULL
 	/// Temporary maturity timer
 	var/queen_age_temp_timer_id = TIMER_ID_NULL
-	var/list/obj/effect/alien/resin/building_node/nodes_in_queue
 
 	/// Whether the queen does some basics in life because its a mindless roundstart queen
 	var/auto_queen = FALSE
@@ -628,7 +627,6 @@
 		health = maxHealth
 
 /mob/living/carbon/xenomorph/queen/Destroy()
-	QDEL_NULL_LIST(nodes_in_queue)
 	if(observed_xeno)
 		overwatch(observed_xeno, TRUE)
 
@@ -825,6 +823,11 @@
 	set_resting(FALSE)
 	ovipositor = TRUE
 
+	// Change the existing nodes to be YELLOW.
+	for(var/obj/effect/alien/resin/building_node/build_node in current_building_nodes)
+		build_node.ovi_node = TRUE
+		build_node.create_node_image(get_turf(build_node), list(src), build_node.resin_type, build_node, build_node.ovi_node)
+
 	set_resin_build_order(GLOB.resin_build_order_ovipositor) // This needs to occur before we update the abilities so we can update the choose resin icon
 	for(var/datum/action/xeno_action/action in actions)
 		action.hide_from(src)
@@ -947,6 +950,11 @@
 		var/datum/action/minimap/minimap_action = locate() in actions
 		if(minimap_action && !minimap_action.minimap_displayed)
 			minimap_action.action_activate()
+
+	// Adapt the nodes to be normal building nodes.
+	for(var/obj/effect/alien/resin/building_node/build_node in current_building_nodes)
+		build_node.ovi_node = FALSE
+		build_node.create_node_image(get_turf(build_node), list(src), build_node.resin_type, build_node, build_node.ovi_node)
 
 	SEND_SIGNAL(src, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, instant_dismount)
 

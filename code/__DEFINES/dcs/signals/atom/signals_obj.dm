@@ -30,6 +30,10 @@
 /// From /obj/effect/alien/weeds/proc/on_weed_expand()
 #define COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER "weednode_cannot_expand_further"
 
+/// From /obj/effect/alien/weeds/Destroy()
+#define COMSIG_TURF_WEED_DESTROYED "turf_weed_destroyed"
+// Sent to all contents in a turf when it's destroyed
+
 /// shuttle mode change
 #define COMSIG_SHUTTLE_SETMODE "shuttle_setmode"
 

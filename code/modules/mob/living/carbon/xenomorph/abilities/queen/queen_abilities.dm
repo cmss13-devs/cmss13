@@ -115,10 +115,10 @@
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/build_from_queue(mob/living/carbon/xenomorph/queen/queen_owner)
 
-	if(!length(queen_owner.nodes_in_queue))
+	if(!length(queen_owner.current_building_nodes))
 		return
 
-	var/obj/effect/alien/resin/building_node/queued_node = queen_owner.nodes_in_queue[1]
+	var/obj/effect/alien/resin/building_node/queued_node = queen_owner.current_building_nodes[1]
 	if(!queued_node)
 		return
 

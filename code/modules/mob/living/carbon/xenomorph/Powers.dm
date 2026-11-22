@@ -10,12 +10,13 @@
 		return handle_building_node(target, selected_resin)
 
 	// Set the override resin to the node's type
-	if(node_in_turf && node_in_turf.planter == src)
+	// But only if the xeno actually has that type of resin!
+	if(node_in_turf && node_in_turf.planter == src && (node_in_turf.resin_type in caste.resin_build_order))
 		node_fill_override = node_in_turf.resin_type
 
 	var/datum/resin_construction/resin_construct
 	if(node_fill_override)
-		resin_construct = node_fill_override
+		resin_construct = GLOB.resin_constructions_list[node_fill_override]
 	else
 		resin_construct = GLOB.resin_constructions_list[selected_resin]
 
@@ -44,38 +45,10 @@
 			to_chat(src, SPAN_XENOWARNING("We've already built the maximum possible structures we can!"))
 			return SECRETE_RESIN_FAIL
 
-	var/turf/current_turf = get_turf(target)
-	var/obj/effect/alien/weeds/alien_weeds = current_turf.weeds
-	if(!alien_weeds || alien_weeds.secreting)
-		return SECRETE_RESIN_FAIL
-
-	if(alien_weeds.hivenumber != hivenumber)
-		to_chat(src, SPAN_DANGER("These aren't our weeds!"))
-		return
-
 	if(extra_build_dist != IGNORE_BUILD_DISTANCE && get_dist(src, target) > src.caste.max_build_dist + extra_build_dist)
 		return handle_building_node(target, resin_construct)
 
-	// Designate a mark if the door can't be built there right now.
-	switch(resin_construct.can_build_here(current_turf, src))
-		if(UNBUILDABLE_TURF)
-			return SECRETE_RESIN_FAIL
-		if(UNSUPPORTED_TURF)
-			// Only clear the mark if this is not node autobuild.
-			if(node_fill_override)
-				return SECRETE_RESIN_FAIL
-			else
-				return handle_building_node(target, resin_construct)
-
-
-	// Queue it up!
-	if(action_busy && !can_stack_builds)
-		if(node_fill_override) // We know that it came from node filling, so we don't use the proc as it'd just remove the mark.
-			return SECRETE_RESIN_FAIL
-		else
-			return handle_building_node(target, resin_construct)
-
-	else if(thick) //hivelords can thicken existing resin structures.
+	if(thick) //hivelords can thicken existing resin structures.
 		var/thickened = FALSE
 		if(istype(target, /turf/closed/wall/resin))
 			var/turf/closed/wall/resin/wall = target
@@ -133,8 +106,36 @@
 			target.add_hiddenprint(src) //so admins know who thickened the walls
 			return TRUE
 
-	var/wait_time = resin_construct.build_time * caste.build_time_mult * add_build_mod
+	// Weed check after thickening check for thickening walls and doors without weeds underneath.
 
+	var/turf/current_turf = get_turf(target)
+	var/obj/effect/alien/weeds/alien_weeds = current_turf.weeds
+	if(!alien_weeds || alien_weeds.secreting)
+		return SECRETE_RESIN_FAIL
+
+	if(alien_weeds.hivenumber != hivenumber)
+		to_chat(src, SPAN_DANGER("These aren't our weeds!"))
+		return
+
+	// Designate a mark if the door can't be built there right now.
+	switch(resin_construct.can_build_here(current_turf, src))
+		if(UNBUILDABLE_TURF)
+			return SECRETE_RESIN_FAIL
+		if(UNSUPPORTED_TURF)
+			// Only clear the mark if this is not node autobuild.
+			if(node_fill_override)
+				return SECRETE_RESIN_FAIL
+			else
+				return handle_building_node(target, resin_construct)
+
+	// Queue it up!
+	if(action_busy && !can_stack_builds)
+		if(node_fill_override) // We know that it came from node filling, so we don't use the proc as it'd just remove the mark.
+			return SECRETE_RESIN_FAIL
+		else
+			return handle_building_node(target, resin_construct)
+
+	var/wait_time = resin_construct.build_time * caste.build_time_mult * add_build_mod
 
 	for(var/obj/effect/alien/resin/design/speed_node/sn in current_turf.contents)
 		wait_time -= ((resin_construct.build_time * caste.build_time_mult) / 2)
@@ -225,18 +226,32 @@
 
 /mob/living/carbon/xenomorph/proc/handle_building_node(atom/target, datum/resin_construction/resin_construct)
 
-	var/obj/effect/alien/resin/building_node/found_node = locate() in get_turf(target)
-	if(found_node)
-		to_chat(src, SPAN_WARNING("We clear the psychic mark from that location."))
-		qdel(found_node)
+	// Multiple xenos can place marks down in one location
+	for(var/obj/effect/alien/resin/building_node/found_node in get_turf(target))
+		if(found_node && found_node.planter == src)
+			to_chat(src, SPAN_WARNING("We clear the psychic mark from that location."))
+			qdel(found_node)
+			return SECRETE_RESIN_FAIL
+
+	// Weed check! Only place marks on weeds.
+	var/turf/current_turf = get_turf(target)
+	var/obj/effect/alien/weeds/alien_weeds = current_turf.weeds
+	if(!alien_weeds || alien_weeds.secreting)
 		return SECRETE_RESIN_FAIL
 
-	new /obj/effect/alien/resin/building_node(get_turf(target), src, resin_construct)
+	if(alien_weeds.hivenumber != hivenumber)
+		to_chat(src, SPAN_DANGER("These aren't our weeds!"))
+		return
+
+	new /obj/effect/alien/resin/building_node(get_turf(target), src, resin_construct.type)
 	return SECRETE_RESIN_NODE
 
 /obj/effect/alien/resin/building_node
 	name = "building node"
 	icon_state = "nest"
+	// The player sees the client image holder, not the 'real' node.
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	invisibility = 101
 	/// Xeno that planted the node.
 	var/mob/living/carbon/xenomorph/planter
 	/// Type of resin to build.
@@ -245,6 +260,8 @@
 	var/list/obj/effect/fill_spot/fill_spots
 	/// We use a special effect to only show the mark to the xeno that made it.
 	var/obj/effect/client_image_holder/resin_building_node/node_image
+	/// If the node is an ovipositor node that queues up the next one.
+	var/ovi_node = FALSE
 
 /obj/effect/alien/resin/building_node/Initialize(mapload, planter, datum/resin_construction/resin_type)
 	. = ..()
@@ -256,27 +273,36 @@
 	src.planter = planter
 	src.resin_type = resin_type
 
+	var/mob/living/carbon/xenomorph/planter_xeno = planter
+	LAZYADD(planter_xeno.current_building_nodes, src)
 
-	var/ovi_node = FALSE
-	if(isqueen(planter))
-		var/mob/living/carbon/xenomorph/queen/queen_planter = planter
-		if(queen_planter.ovipositor)
-			ovi_node = TRUE
-			LAZYADD(queen_planter.nodes_in_queue, src)
-
-	// Create the client mark image
-	node_image = new /obj/effect/client_image_holder/resin_building_node(get_turf(src), list(planter), resin_type, src, ovi_node)
-
-
-/obj/effect/alien/resin/building_node/Destroy()
-	// Make sure it's out of the queue list!
 	if(isqueen(planter))
 		var/mob/living/carbon/xenomorph/queen/planter_queen = planter
-		LAZYREMOVE(planter_queen.nodes_in_queue, src)
+		if(planter_queen.ovipositor)
+			ovi_node = TRUE
+
+	create_node_image(get_turf(src), list(planter), resin_type, src, ovi_node)
+	// Create the client mark image
+	RegisterSignal(src, COMSIG_TURF_WEED_DESTROYED, PROC_REF(on_weed_removal))
+
+// Delete and create a new node image.
+/obj/effect/alien/resin/building_node/proc/create_node_image(node_turf, list/mobs_which_see_us, datum/resin_construction/resin_type, obj/effect/alien/resin/building_node/parent_node, ovi_node = FALSE)
+	if(node_image)
+		qdel(node_image)
+	node_image = new /obj/effect/client_image_holder/resin_building_node(node_turf, mobs_which_see_us, resin_type, parent_node, ovi_node)
+
+/obj/effect/alien/resin/building_node/Destroy()
+	UnregisterSignal(src, COMSIG_TURF_WEED_DESTROYED)
+	// Make sure it's out of the node list!
+	var/mob/living/carbon/xenomorph/planter_xeno = planter
+	LAZYREMOVE(planter_xeno.current_building_nodes, src)
 	QDEL_NULL_LIST(fill_spots)
 	QDEL_NULL(node_image)
 	planter = null
 	return ..()
+
+/obj/effect/alien/resin/building_node/proc/on_weed_removal()
+	qdel(src)
 
 /obj/effect/alien/resin/building_node/proc/clear_fill_spots()
 	QDEL_NULL_LIST(fill_spots)
@@ -296,6 +322,7 @@
 	invisibility = 101
 	unacidable = TRUE //You never know
 	var/obj/effect/alien/resin/building_node/linked_node
+
 
 /obj/effect/fill_spot/Destroy()
 	if(linked_node)
@@ -321,12 +348,15 @@
 	var/datum/resin_construction/type_to_build = null
 	// We look for a type of the intended build, allowing hivelords to build on nodes designated by drones,
 	// and also queen whose resin is different for some reason.
-	for(var/i in wanderer_caste.resin_build_order)
-		if(i == linked_node.resin_type)
-			type_to_build = i
-		// We prefer an exact match if possible, otherwise any type will do
-		if(ispath(i, linked_node.resin_type) && (type_to_build == null))
-			type_to_build = i
+	for(var/xeno_build_type in wanderer_caste.resin_build_order)
+		// We prefer an exact match if possible.
+		if(xeno_build_type == linked_node.resin_type.type)
+			type_to_build = xeno_build_type
+		//otherwise a variant of the resin type will do.
+		if(type_to_build == null)
+			for(var/possible_build_variant in GLOB.resin_constructions_list[linked_node.resin_type].types_of_variants)
+				if(xeno_build_type == possible_build_variant)
+					type_to_build = possible_build_variant
 	// Doesn't have an appropiate type
 	if(!type_to_build)
 		return

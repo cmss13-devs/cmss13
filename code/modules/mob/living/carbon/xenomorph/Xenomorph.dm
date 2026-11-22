@@ -332,6 +332,10 @@
 	var/obj/effect/alien/resin/design/selected_design = null
 	var/list/available_design = list()
 	var/list/current_design = list()
+
+	/// All building nodes this creature holds, for deletion on death or transfer on d/evolution.
+	var/list/obj/effect/alien/resin/building_node/current_building_nodes
+
 	var/max_design_nodes = 0
 	var/selected_design_mark
 
@@ -795,6 +799,7 @@
 		QDEL_NULL(backpack_icon_holder)
 
 	QDEL_NULL(iff_tag)
+	QDEL_NULL_LIST(current_building_nodes)
 
 	if(hardcore)
 		attack_log?.Cut() // Completely clear out attack_log to limit mem usage if we fail to delete

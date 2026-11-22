@@ -1,9 +1,12 @@
 /datum/xeno_strain/oppressor
 	// Dread it, run from it, destiny still arrives... or should I say, I do
 	name = PRAETORIAN_OPPRESSOR
-	description = "You abandon all of your acid-based abilities, your dash, some speed, and a bit of your slash damage for some resistance against small explosives, slashes that deal extra damage to prone targets, and a powerful hook ability that pulls up to three enemies towards you, slows them, and has varying effects depending on how many enemies you pull. You also gain a powerful punch that reduces your other abilities' cooldowns, pierces through armor, and does double damage in addition to rooting slowed targets. You can also knock enemies back and slow them with your new Tail Lash and quickly grab a tall, slow it, and pull it towards you with your unique Tail Stab."
+	description = "We abandon all of our acid-based abilities, our dash, some speed, and a bit of our slash damage for some resistance against small explosives, slashes that deal extra damage to prone targets, and several powerful abilities. Our Abduct ability pulls up to three non-prone enemies towards us, slows them, and has varying effects depending on how many victims we pull. Our Dislocate ability deals armor-piercing damage, extra damage to slowed enemies, and reduces all ability cooldowns by 5 seconds if it lands. We exchange our tail stab for Tail Seize, which has a shorter windup, extra range, and grabs and slows enemies. Finally, Tail Lash, after a windup, knocks back and slows anything in a 2x3 cone in front of us."
 	flavor_description = "My reach is endless, this one will pull down the heavens."
 	icon_state_prefix = "Oppressor"
+	damage_mod = -XENO_DAMAGE_MOD_SMALL
+	explosive_armor_mod = XENO_EXPOSIVEARMOR_MOD_SMALL
+	speed_mod = XENO_SPEED_SLOWMOD_TIER_5
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/tail_stab,
@@ -24,13 +27,9 @@
 	behavior_delegate_type = /datum/behavior_delegate/oppressor_praetorian
 
 /datum/xeno_strain/oppressor/apply_strain(mob/living/carbon/xenomorph/praetorian/prae)
-	prae.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-	prae.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL
+	..() // stat modifiers
 	prae.small_explosives_stun = FALSE
-	prae.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
 	prae.claw_type = CLAW_TYPE_SHARP
-
-	prae.recalculate_everything()
 
 /datum/behavior_delegate/oppressor_praetorian
 	name = "Oppressor Praetorian Behavior Delegate"
@@ -147,7 +146,7 @@
 
 		turflist += turf
 		facing = get_dir(turf, target_atom)
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/abduct_hook(turf, windup)
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/attack/brown/abduct_hook(turf, windup)
 
 		if(allow_one_more_step)
 			break
@@ -159,11 +158,9 @@
 	abduct_user.visible_message(SPAN_XENODANGER("\The [abduct_user]'s segmented tail starts coiling..."), SPAN_XENODANGER("We begin coiling our tail, aiming towards \the [target_atom]..."))
 	abduct_user.emote("roar")
 
-	var/throw_target_turf = get_step(abduct_user, facing)
-
 	ADD_TRAIT(abduct_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
 	if(!do_after(abduct_user, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
-		to_chat(abduct_user, SPAN_XENOWARNING("You relax your tail."))
+		to_chat(abduct_user, SPAN_XENOWARNING("We relax our tail."))
 		apply_cooldown()
 
 		for(var/obj/effect/xenomorph/xeno_telegraph/xenotelegraph in telegraph_atom_list)
@@ -188,41 +185,43 @@
 				continue
 			targets += target
 
-	var/target_count = length(targets)
+	var/num_of_targets = LAZYLEN(targets)
 	var/captured_message = null
-	switch(target_count)
+	switch(num_of_targets)
 		if(1)
 			captured_message = "slowed one target"
 		if(2)
 			captured_message = "rooted two targets"
 		if(3 to INFINITY)
-			captured_message = "stunned [target_count] targets"
+			captured_message = "stunned [num_of_targets] targets"
 
 	if(captured_message)
 		abduct_user.balloon_alert(abduct_user, captured_message, text_color = "#51a16c")
 
 	apply_cooldown()
 
+	var/turf/throw_target_turf = turflist[1]
 	for(var/mob/living/carbon/target in targets)
 		abduct_user.visible_message(SPAN_XENODANGER("\The [abduct_user]'s hooked tail coils itself around [target]!"), SPAN_XENODANGER("Our hooked tail coils itself around [target]!"))
 
 		target.apply_effect(0.2, WEAKEN)
 
-		if(LAZYLEN(targets) == 1)
-			new /datum/effects/xeno_slow(target, abduct_user, null, null, 2.5 SECONDS)
-			target.apply_effect(1, SLOW)
-		else if(LAZYLEN(targets) == 2)
-			ADD_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
-			if(ishuman(target))
-				var/mob/living/carbon/human/target_human = target
-				target_human.update_xeno_hostile_hud()
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target, TRAIT_SOURCE_ABILITY("Abduct")), get_xeno_stun_duration(target, 2.5 SECONDS))
-			to_chat(target, SPAN_XENOHIGHDANGER("[abduct_user] has pinned you to the ground! You cannot move!"))
+		switch(num_of_targets)
+			if(1)
+				new /datum/effects/xeno_slow(target, abduct_user, null, null, 2.5 SECONDS)
+				target.apply_effect(1, SLOW)
+			if(2)
+				ADD_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
+				if(ishuman(target))
+					var/mob/living/carbon/human/target_human = target
+					target_human.update_xeno_hostile_hud()
+				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target, TRAIT_SOURCE_ABILITY("Abduct")), get_xeno_stun_duration(target, 2.5 SECONDS))
+				to_chat(target, SPAN_XENOHIGHDANGER("[abduct_user] has pinned you to the ground! You cannot move!"))
 
-			target.set_effect(2, DAZE)
-		else if(LAZYLEN(targets) >= 3)
-			target.apply_effect(get_xeno_stun_duration(target, 1.3), WEAKEN)
-			to_chat(target, SPAN_XENOHIGHDANGER("You are slammed into the other victims of [abduct_user]!"))
+				target.set_effect(2, DAZE)
+			else
+				target.apply_effect(get_xeno_stun_duration(target, 1.3), WEAKEN)
+				to_chat(target, SPAN_XENOHIGHDANGER("You are slammed into the other victims of [abduct_user]!"))
 
 		shake_camera(target, 10, 1)
 
@@ -230,8 +229,14 @@
 		var/image/tail_image = image('icons/effects/status_effects.dmi', "hooked")
 		target.overlays += tail_image
 
-		target.throw_atom(throw_target_turf, get_dist(throw_target_turf, target)-1, SPEED_VERY_FAST)
+		var/target_dist = turflist.Find(target.loc)
+		var/list/turf/target_route = list()
 
+		if(target_dist)
+			target_route = turflist.Copy(1, target_dist+1)
+			target_route = reverselist(target_route)
+
+		target.throw_atom(throw_target_turf, target_dist, SPEED_VERY_FAST, route = target_route)
 		qdel(tail_beam) // hook beam catches target, throws them back, is deleted (throw_atom has sleeps), then hook beam catches another target, repeat
 		addtimer(CALLBACK(src, /datum/action/xeno_action/activable/prae_abduct/proc/remove_tail_overlay, target, tail_image), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.
 
@@ -336,14 +341,14 @@
 			continue
 
 		target_turfs += turfs_to_check
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/lash(turfs_to_check, windup)
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/attack/brown/lash(turfs_to_check, windup)
 
 		var/turf/next_turf = get_step(turfs_to_check, facing)
 		if(!istype(next_turf) || next_turf.density)
 			continue
 
 		target_turfs += next_turf
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/lash(next_turf, windup)
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/attack/brown/lash(next_turf, windup)
 
 	if(!length(target_turfs))
 		to_chat(lash_user, SPAN_XENOWARNING("We don't have any room to do our tail lash!"))

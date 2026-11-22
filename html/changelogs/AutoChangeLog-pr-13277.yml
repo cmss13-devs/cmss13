@@ -1,0 +1,10 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - code_imp: "Replaced plasma_add and plasmapool_multiplier with plasmapool_modifier so a single variable can handle even xenos with no base plasma"
+  - code_imp: "Strain application now always performs recalculate_everything"
+  - code_imp: "Simplified LAZYIN macro"
+  - bugfix: "Xenos now destroy any shields on Destroy"
+  - bugfix: "Fixed phero unit testing for gardener, and just refactored them to be automated"
+  - bugfix: "Fixes phero unit testing not accounting for received_phero_caps or ignore_aura and not testing strains as receivers"
+  - refactor: "Refactored xeno strain application so that now common stat modifications are defined rather than just hardcoded in a proc"

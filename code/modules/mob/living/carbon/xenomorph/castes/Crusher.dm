@@ -409,10 +409,11 @@
 
 	playsound(xeno, 'sound/effects/bang.ogg', 25)
 	xeno.visible_message(SPAN_XENODANGER("[xeno] smashes into the ground!"), SPAN_XENODANGER("We smash into the ground!"))
-	xeno.create_stomp()
+	var/list/stomp_area = orange(distance, xeno)
+	show_radial_telegraph(get_turf(xeno), stomp_area, distance, /obj/effect/xenomorph/xeno_telegraph/attack/brown/stomp, 0.35 SECONDS, "#D79600")
+	scatter_smoke_plumes(stomp_area)
 
-
-	for (var/mob/living/carbon/targets in orange(distance, xeno))
+	for (var/mob/living/carbon/targets in stomp_area)
 
 		if (targets.stat == DEAD || xeno.can_not_harm(targets))
 			continue

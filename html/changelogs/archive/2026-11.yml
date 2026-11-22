@@ -155,3 +155,282 @@
   - imageadd: Added codex lineart for every Dropship Ammo.
   - refactor: Refactored ammo vars in dropship_ammo.dm, making it easier to tweak
       numbers.
+2026-11-08:
+  Ghostsheet:
+  - rscadd: Flamers can now take under-barrel rail light.
+  Mary-Marilyn:
+  - balance: MK1 AP mags now have the same scaling as MK1 kits
+  kleinerstation13:
+  - rscadd: Added an USCM colony headset with marine HUD icons
+  - balance: The USCM recruiter survivor varaint is now part of the Marine faction
+      and has extra fluff items in their loadout
+2026-11-09:
+  Drathek, Steelpoint, DimDim:
+  - rscadd: Added a lowpop survival mode which has an uncapped round start survivor
+      amount of survivors vs xenos. Late joining as survivor is somewhat limited.
+      Survivors can attempt to hold static comms ~15 minutes (with alert at half way)
+      to get an escape shuttle, but its otherwise a deathmatch. Queen will be enclosed
+      in skeletal resin until 30 minutes have elapsed, they're escaping, or there's
+      only a few xenos left.
+  - rscadd: Added skeletal resin subtype that larva can burrow through if there's
+      an open turf up to a couple tiles away on the other side
+  - rscadd: Added basic logic for a clientless queen to ovi, set pheros and leaders
+  - rscadd: Added Skeletal resin doors that are indestructible (but only mapped in)
+      and added structure_spawners to spawn them; they chomp on humans if they are
+      standing in their way.
+  - rscadd: Added item_pool_spawner, static_comms, fog_blocker, and door_blocker for
+      item spawning, unique comms locations for this mode, and blockers that lift
+      when the shuttle is called for this mode. /obj/effect/spawner/random also supports
+      a gamemode flag too tho it probably should only be used in conjunction with
+      spawn_on_roundstart.
+  - rscadd: Map configs can now override survivor types by mode
+  - rscadd: Added a skill pamphlet that can set your skill level to trained and is
+      the same layer as comms tower (it is spawned on the tower in this mode, and
+      if its out of reach try shooting it)
+  - bugfix: Mapped high priority roles (namely for WO) now update the preview doll
+  - bugfix: ERT shuttles now unlock doors upon arrival
+  - bugfix: Fixed incorrect SPAN header usage for WO announcements
+  - bugfix: Fixed mapping subsystem trying to preload non-dmm files
+  - bugfix: Evo buff now restores the previous allow_no_queen_evo rather than forcing
+      it false
+  - bugfix: Fixed CMTV appearing at world origin (atleast for this mode) at round
+      start
+  - bugfix: Fixed xeno resin doors not blending with walls correctly on spawn
+  - bugfix: Fixed ERT shuttle doors not force closing doors on launch
+  - bugfix: Antidelay for xeno tacmap and cloak fizzle now only checks humans (no
+      synths, preds, or monkeys) and skips nested
+  - bugfix: count_humans_and_xenos for round end checks now checks should_block_game_interaction
+      too and has other misc changes
+  - bugfix: Last human anti-delay checks now are also performed on nest (not just
+      death) as well as survivor evac shuttle departure
+  - bugfix: Check win and anti-delay checks on humans now handle if mobs are in vehicles
+  - bugfix: Survivors now always register a minimap marker even if their headset has
+      no hud
+  - code_imp: ERTs now weakref members
+  - code_imp: Shuttle arrival and prearrival now have a signal
+  - code_imp: Survivor announcement helper is simplified
+  - code_imp: Gamemodes can now specify a maximum number of players before its no
+      longer voteable
+  - code_imp: MODE_HAS_FLAG now has a null check for the mode
+  - code_imp: Cleaned up survivor handle_equip_gear code namely to handle mapped roles
+      like Survivor Unlimited
+  - code_imp: Fog blockers now support infinite delay without making unnecessary timers
+  - code_imp: item_pool_spawner have been cleaned up and now support providing it
+      a list of type paths to pick from as well as a multiplier
+  - code_imp: Moved update_energy_scale into latejoin_update and removed unnecessary
+      update_gear_scale calls for 0 weight
+  - spellcheck: Tweaked hive buff messages to be grant/bless instead of purchase and
+      turned some late join prompts into questions rather than statements
+  - rscdel: Removed unnecessary mind list in ticker
+  - server: Adds more statistics to round results db for new round result types
+  - admin: Added a verb to manually grant a hive buffs (has reduced restrictions to
+      grant it)
+  - mapadd: Added a version of the alamo that is an ERT shuttle and a version of the
+      uscm station that can accommodate it
+  - maptweak: Updated a bunch of maps to accommodate survivor mode changes
+  - qol: Added xeno and queen character previews to better indicate if they're high
+      priority job
+  - qol: Game mode is no longer displayed in new player stats panel until the mode
+      is loaded (instead of blindly saying Distress Signal)
+  - qol: Late joining as a xeno as a new player can now prompt a tutorial suggestion
+  - imageadd: Added various coderspites for new landmarks and skeletal resin doors
+      by DimDim
+2026-11-10:
+  Kugamo:
+  - rscadd: Portable generators now vibrate while running (animating them back and
+      forth very slightly)
+  Mary-Marilyn:
+  - ui: Redesigned the TGUI latejoin menu to be more compact. All jobs now fit on
+      your screen without scrolling
+  - ui: Latejoin and job preferences now follow the crew manifest's department order
+      and colors.
+  - qol: Added squad badges to latejoin. Clicking a badge joins that squad.
+2026-11-11:
+  Nihisohel, LCMS1 for sprites:
+  - rscadd: Guns with the appropriate ammunition type and presentation now litter
+      the ground with their spent cases and cartridges.
+  - spellcheck: Tweaks some misrepresented lore about XM43E1 casings.
+  - mapadd: Adds backend for making randomized casings on mapload, and the ability
+      to disable such for mappers
+  - maptweak: Changes every instance of Tyrargo's prop parent varedited into faux
+      casings into the actual casing parent (Please stop doing this)
+  - config: Adds a round modifier allowing an almost total disabling of gun casings
+  Puckaboo2:
+  - qol: Researchers are no longer stuck between choosing a tie or webbing accessory.
+      They can have both if they wish.
+  - qol: Researchers now spawn with brown laceup shoes and the classic blue R&D uniform
+      on loading in.
+  - code_imp: Reorganizes the Research ColMarTech loadout section.
+2026-11-17:
+  Kugamo:
+  - bugfix: Fixed layering issues with colony and antre floodlights and hybrisa streetlights/trafficlights.
+  - imageadd: Added buggy variants of colony and antre floodlights for jungle maps.
+2026-11-19:
+  Mary-Marilyn:
+  - rscadd: The acting commander can order an FTL AO withdrawal when a dropship is
+      locked and no more than two humans remain groundside.
+  - rscadd: The Queen can claim a ground victory instead of hijacking, which automatically
+      triggers a marine withdrawal.
+  - rscadd: The acting commander can choose to fuel evacuation craft or prepare reactor
+      scuttling instead of entering FTL while the hijacked dropship is inbound.
+  Sulaboy:
+  - balance: Jackboots have same storage as marine boots.
+2026-11-20:
+  Kugamo:
+  - bugfix: Fixed Working Joes/Gen 1 synth eyes not glowing in the dark.
+  - bugfix: Fixed species using emotes that didnt belong to their species runtiming.
+2026-11-21:
+  MarpleJones:
+  - rscadd: resting atop of a grenade as a living thing whilst conscious assumes you're
+      doing it deliberately and for the greater good - you can now block grenades
+      with your body
+  - code_imp: contain logic for smothering explosions, currently reserved for yeeting
+      yourself at grenades
+  cuberound, datimesmog, esselnek:
+  - rscadd: dissolver spitter strain
+2026-11-22:
+  Ammoniacres:
+  - rscadd: look-up holograms are now visible to non-observer mobs!
+  ComboTombo:
+  - rscadd: You can now craft another type of wooden chair, four wooden table parts,
+      and two metal table parts in the crafting menu of wood planks and metal sheets
+  Drathek:
+  - config: Fixed alien movement delay config not being referenced (still will be
+      left at default)
+  - rscdel: Removed unused configs
+  - rscadd: Added powerloader rotating light when manned
+  - bugfix: Fixed some oversights in overlay_lighting code (not turning off the first
+      time on 0 range and ignoring dir changes)
+  - bugfix: Fixed dynamic_light_source listening to its own mask for dir changes rather
+      than holder
+  - code_imp: Broken bottles now reuse their outline icon rather than recreating every
+      time
+  - bugfix: Fixed a double definition for item_state_slots for rebel headband
+  - rscdel: Removed unused allow_additional variable for job datums
+  - admin: Fixed Adjust Job Slots verb to actually assign latejoin values and job
+      datum code to respect this change
+  - admin: Added a way for Adjust Job Slots verb during lobby to reset modifications
+      to a job's slots
+  - code_imp: set_spawn_positions should now always reset the spawn count to initial
+  - code_imp: Cleaned up some 0/1 usage to TRUE/FALSE
+  - rscadd: Mouse buttons 4+ can now be bound using the hotkey ui
+  - bugfix: Fixed Unbound sticking in hotkey ui
+  - bugfix: Fixed X button not canceling a hotkey reset when prompted
+  - rscdel: Removed unused mouse hook macros in tgui
+  - bugfix: Fixed some item verbs being able to use a mob as source (this removes
+      them from the object verbs in stat panel tho)
+  - qol: Added 4 deck verb keybinds (draw card, draw x cards, draw pile, deal)
+  JHINgle4ce:
+  - bugfix: Resin whisperer builds slower than drone - as was stated in the original
+      PR. Now it needs 2.2 seconds to build a wall for example.
+  - rscadd: Resin whisperers building speed scales with distance. From 1 second if
+      it builds in adjacent tile to 2.2 seconds on 6+ tile range.
+  - balance: Removed toggleable acceleration on weeds for both Resin whisperer and
+      Designer
+  - code_imp: added a new arg in throw_atom proc; it allows you to do a custom throw
+      trajectory
+  - refactor: little optimization in Oppressor and Valkyrie hook code. A little less
+      calculations and checks
+  Kugamo:
+  - soundadd: Added splashy footstep sounds for when queen/king stomp in water.
+  - soundadd: Vans wont make engine noises when moved not under engine power anymore.
+      Instead making metal scraping sounds without wheels, or tire screeches with,
+      or (with wheels) none if moved in the direction they're facing.
+  Mary-Marilyn:
+  - balance: Synth survivors have their own slot at 50 players and above
+  - balance: CO survivors have their own slot at 70 players and above
+  Puckaboo2:
+  - qol: Abilities with significant cooldowns now have a cooldown text upon the cooldown
+      expiring.
+  - spellcheck: Corrects grammar, misspells, and missing punctuation in xeno ability
+      files.
+  - spellcheck: Any use of first or second person in regard to xeno abilities has
+      been changed to third person.
+  - rscadd: Pressurized reagent canisters are now flushable inside and outside reagent
+      pouches.
+  - rscadd: Pressurized reagent canisters can fit on the back slot.
+  - imageadd: Adds inhand and back sprites for pressurized reagent canisters.
+  - code_imp: Adds some defines for groups of surgery tools used for steps.
+  - bugfix: Most tools making inappropriate sounds during surgery steps, like a knife
+      using saw drilling noises when cutting bone, should not happen anymore.
+  - bugfix: Tools that utilize toolhit sounds during failed steps have been restored.
+  - bugfix: Using the IMS no longer tells you it made a bloody incision.
+  - soundadd: The IMS, laser scalpel, bone gel, and ointment have their own sets of
+      preop and success sounds. Some are splices of old sound files, while some are
+      brand new.
+  - soundadd: The Fix-O-Vein has a unique sound while using it to initiate flesh-and-vein-mending-type
+      surgeries, while all weapons that chop instead of saw receive the same sound
+      set of repetitive chopping when initiating a surgery step that cuts through
+      bone.
+  - soundadd: Cigarettes/lighters and welding tools have sounds for initiating cauterizations.
+  - soundadd: The screwdriver uses its sound sets properly when initiating and successfully
+      drilling rods through or applying plates on bones.
+  - soundadd: Synthgrafts and ointment have sounds for initiating and successfully
+      applying grafts during eschar surgeries.
+  - soundadd: Surgery Line, cloth, and cable coils, whenever used as surgical tools,
+      always use sewing noises to mend flesh and blood vessels.
+  - soundtweak: Increased the volume of ointment spreading on skin a little bit so
+      it is clearly audible.
+  - code_imp: Tweaked some text to sound more fluid and less informal.
+  - qol: Each Xeno strain's description describes all abilities and unique traits,
+      if possible.
+  - spellcheck: Corrects grammar, misspells, and missing punctuation in xeno strain
+      files.
+  - spellcheck: Any use of first or second person in regards to xeno strains have
+      been changed to third person.
+  - spellcheck: Kills some more 'this the' and 'the the' cases.
+  Riot:
+  - qol: UPP Commando medics now have an inbuilt medical visor in their NVGs
+  - bugfix: UPP Commando(Non Deathsquad) now spawns with a rifle, instead of nothing.
+  - balance: NP92 has 19 rounds per mag but does less damage, to fit the new description
+      for it
+  - balance: The QYJ-72(UPP Machinegun) now has full fire-rate regardless of whether
+      it's bipodded or not, but has worse scatter and accuracy when not bipodded,
+      it also has slightly more fire-rate in general.
+  - balance: The loadout Type 73 now has no damage buff, rendering it about in line
+      with the other pistol choices stat-wise
+  - balance: The UPP RPG isn't skill-locked again
+  - balance: The UPP RPG's incendiary round has a very small explosion around the
+      impact point
+  - balance: Swaps the armor-penetration values of the normal and shrapnelshot ZHNK
+      rounds, so it makes more sense
+  - spellcheck: Redoes the description for and adds lore descriptions for most UPP
+      weapons, all done by me
+  - spellcheck: Renames the Type 88 DMR to FPA-299 so it's not 1-1 an IRL weapon,
+      renames the Type 64 SMG to the PPZ-49/64 to cut down on the number of UPP weapons
+      named 'Type-XYZ'
+  - spellcheck: Re-chambers all UPP weapons so they use rounds more fitting to the
+      setting
+  - spellcheck: Loadout pistols that have stat-changes compared to normal versions
+      now have a specially colored description part to signify that.
+  Steelpoint:
+  - maptweak: LV1021, Cape River Mining Colony and White Antre Research Facility are
+      now offically supported in the Survival gamemode.
+  - maptweak: Expands colony weeding that occurs in the Survival game mode. This means
+      more areas of the map and colony will be pre-weeded at round start.
+  Sulaboy:
+  - balance: Removed almost all uniform restrictions from armors.
+  TrollerNoob:
+  - rscadd: The shadow of the dropship can now be seen as it pulls away from a firemission!
+  - rscadd: Laser designators now provide an audible feedback ping whenever a pilot
+      selects or engages its lase as a target. Planetside communication relay or a
+      deployed ARC must be working to facilitate this.
+  - rscadd: RTO Backpack and Scout's helmet are able to receive designator feedback
+      cues even with communication relays down.
+  - imageadd: New look for the Scout's Laser designator.
+  - imageadd: Dropship shadow sprites added.
+  Venuska1117:
+  - refactor: Updates Acid Runner code with new define, removes tiny vars and spaces.
+  - balance: Warrior Lunge can now be used more consistently during movement, when
+      walking towards target lunge will mostly hit, but when going away from target,
+      it have higher chance to fail.
+  - balance: Pounce ability and its subtypes used by Runners, Lurkers, Ravagers, Praetorians,
+      Vanguards, Despoiler and Vampires can be used more consistently during movement.
+  - refactor: Changed most of Dancer Praetorian ability vars to use traits, for easier
+      reference in future, behaviour vars that are used by specific ability are moved
+      to ability file.
+  axiomata7:
+  - balance: Improved Predator Heavy Armor, adding Sozo Injectors, Armor Lock, and
+      slightly improving slowdown.
+  carlarcCM:
+  - rscadd: Xenos can hear deaths and use live tacmap until a Queen evolves.

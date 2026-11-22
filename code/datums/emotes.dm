@@ -80,16 +80,16 @@
  * * intentional - Bool that says whether the emote was forced (FALSE) or not (TRUE).
  *
  * Returns TRUE if it was able to run the emote, FALSE otherwise.
+ *
+ * Checks for if mobs can use the emote done in /mob/proc/emote()
  */
 /datum/emote/proc/run_emote(mob/user, params, type_override, intentional = FALSE)
 	. = TRUE
-	if(!can_run_emote(user, TRUE, intentional))
-		return FALSE
+
 	var/msg = select_message_type(user, message, intentional)
+
 	if(params && message_param)
 		msg = select_param(user, params)
-
-
 
 	if(replace_pronouns)
 		msg = replace_pronoun(user, msg)

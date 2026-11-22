@@ -28,6 +28,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 10 SECONDS
 	plasma_cost = 100
+	cooldown_message = "Our claws feel soaked with acid again!"
 
 	var/buff_duration = 50
 
@@ -81,4 +82,6 @@
 	xeno_cooldown = 12 SECONDS
 	plasma_cost = 0
 	var/minimal_stun = 0.1
+	cooldown_message = "Both of our mouths crave blood!"
+
 

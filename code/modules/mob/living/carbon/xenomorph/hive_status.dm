@@ -1854,7 +1854,7 @@
 	var/survive_mode = MODE_HAS_FLAG(MODE_SURVIVE)
 	var/relevant_z = force || is_mainship_level(person_loc.z) || (survive_mode && is_ground_level(person_loc.z))
 	if(is_forward_base)
-		relevant_z = force || is_ground_level(person_loc.z)
+		relevant_z = force || is_ground_level(person_loc.z) || is_reserved_level(person_loc.z)
 	if((SSticker.mode?.is_in_endgame || survive_mode || is_forward_base) && SSticker.current_state != GAME_STATE_FINISHED && relevant_z)
 		var/mob/last_living_human
 		var/human_count = 0
@@ -1862,7 +1862,7 @@
 		for(var/mob/living/carbon/human/cur_human as anything in GLOB.alive_human_list)
 			if(is_forward_base)
 				var/turf/human_turf = get_turf(cur_human)
-				if(!is_ground_level(human_turf?.z))
+				if(!is_ground_level(human_turf?.z) && !is_reserved_level(human_turf?.z))
 					continue
 			else if(!survive_mode)
 				if(!is_mainship_level(cur_human.z)) // This doesn't detect lockers or vans

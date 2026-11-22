@@ -106,7 +106,7 @@
 		return
 	if(ROUND_TIME < 10 MINUTES)
 		return
-	if(!count_marines(SSmapping.levels_by_trait(ZTRAIT_GROUND)))
+	if(!count_marines(SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED))))
 		round_finished = MODE_INFESTATION_X_MAJOR
 		return
 	. = ..()
@@ -114,12 +114,12 @@
 		return
 	var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	if(!main_hive.see_humans_on_tacmap)
-		var/groundside_humans = 0
+		var/living_humans = 0
 		for(var/mob/living/carbon/human/human as anything in GLOB.alive_human_list)
 			var/turf/human_turf = get_turf(human)
-			if(is_ground_level(human_turf?.z))
-				groundside_humans++
-		if(groundside_humans < main_hive.get_real_total_xeno_count() * HIJACK_RATIO_FOR_TACMAP)
+			if(is_ground_level(human_turf?.z) || is_reserved_level(human_turf?.z))
+				living_humans++
+		if(living_humans < main_hive.get_real_total_xeno_count() * HIJACK_RATIO_FOR_TACMAP)
 			main_hive.see_humans_on_tacmap = TRUE
 			main_hive.tacmap_requires_queen = FALSE
 			main_hive.tacmap_live_requires_queen_ovi = FALSE

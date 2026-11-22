@@ -38,6 +38,10 @@
 	name = "Medical Treatment APC"
 	interior_id = "apc_moviemed"
 
+/datum/map_template/interior/apc_movierecon
+	name = "RECON Movie APC"
+	interior_id = "apc_movierecon"
+
 /datum/map_template/interior/tank
 	name = "Tank"
 	interior_id = "tank"

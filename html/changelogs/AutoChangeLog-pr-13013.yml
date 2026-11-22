@@ -1,0 +1,5 @@
+author: "Venuska1117"
+delete-after: True
+changes:
+  - balance: "Warrior Lunge can now be used more consistently during movement, when walking towards target lunge will mostly hit, but when going away from target, it have higher chance to fail."
+  - balance: "Pounce ability and its subtypes used by Runners, Lurkers, Ravagers, Praetorians, Vanguards, Despoiler and Vampires can be used more consistently during movement."

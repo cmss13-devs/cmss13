@@ -104,6 +104,11 @@
 		var/perc_charge = (charge / charge_max * 100)
 		human_holder.update_power_display(perc_charge, material)
 
+	var/obj/item/clothing/suit/armor/yautja/hunter/full/locked_armor = human_holder.wear_suit
+	if(istype(locked_armor) && locked_armor.ap_ward_on)
+		if(!drain_power(human_holder, locked_armor.ap_ward_drain))
+			locked_armor.disable_ap_ward(human_holder)
+
 	//Non-Yautja have a chance to get stunned with each power drain
 	if(!HAS_TRAIT(human_holder, TRAIT_CLOAKED))
 		return
@@ -533,7 +538,7 @@
 		return ..()
 
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_WARNING("You do not know how to attach the [attacking_item] to [src]."))
+		to_chat(user, SPAN_WARNING("You do not know how to attach [attacking_item] to [src]."))
 		return
 
 	if(blades_enabled == FALSE)
@@ -541,7 +546,7 @@
 
 	var/obj/item/bracer_attachments/bracer_attachment = attacking_item
 	if(!bracer_attachment.attached_weapon_type)
-		CRASH("[key_name(user)] attempted to attach the [bracer_attachment] to [src], with no valid attached_weapon.")
+		CRASH("[key_name(user)] attempted to attach [bracer_attachment] to [src], with no valid attached_weapon.")
 
 	if(left_bracer_attachment && right_bracer_attachment)
 		to_chat(user, SPAN_WARNING("You already have the maximum amount of bracer attachments on [src]."))

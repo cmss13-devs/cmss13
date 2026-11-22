@@ -1,0 +1,5 @@
+author: "Mary-Marilyn"
+delete-after: True
+changes:
+  - balance: "Synth survivors have their own slot at 50 players and above"
+  - balance: "CO survivors have their own slot at 70 players and above"

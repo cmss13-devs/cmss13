@@ -344,7 +344,6 @@
 	item_state_slots = list(
 		WEAR_AS_GARB = "headbandrebel", // will be prefixed with either hat_ or helmet_
 	)
-	item_state_slots = null
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/headband/squad

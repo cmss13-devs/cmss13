@@ -268,7 +268,7 @@
 	if(show_current || armor_change)
 		stats += list(preview_stat(user, "Armor", "phero_warding", armor_change, XENO_ARMOR_MOD_VERY_SMALL, user.armor_deflection))
 	if(show_current || damage_change)
-		var/damage = user.melee_damage_lower == user.melee_damage_upper ? user.melee_damage_lower : "[user.melee_damage_lower]â€“[user.melee_damage_upper]"
+		var/damage = user.melee_damage_lower == user.melee_damage_upper ? user.melee_damage_lower : "[user.melee_damage_lower]-[user.melee_damage_upper]"
 		stats += list(preview_stat(user, "Slash Damage", "phero_frenzy", damage_change, XENO_DAMAGE_MOD_VERY_SMALL, damage))
 	if(show_current || health_change)
 		stats += list(preview_stat(user, show_current ? "Max Health" : "Health", "phero_recov", health_change, XENO_HEALTH_MOD_VERY_SMALL, user.maxHealth))

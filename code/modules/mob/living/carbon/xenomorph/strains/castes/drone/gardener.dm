@@ -1,7 +1,8 @@
 /datum/xeno_strain/gardener
 	name = DRONE_GARDENER
-	description = "You trade your choice of resin secretions, your corrosive acid, and your ability to transfer plasma for a tiny bit of extra health regeneration on weeds and several new abilities, including the ability to plant hardier weeds, temporarily reinforce structures with your plasma, and to plant up to six potent resin fruits for your sisters by secreting your vital fluids at the cost of a bit of your health for each fruit you shape. Resin Surge can force your fruits to mature rapidly. As shaper of fruits, you can harvest and feed any fruit 50% faster."
+	description = "We trade our choice of resin secretions, our corrosive acid, and our ability to transfer plasma for a tiny bit of extra health regeneration on weeds and several new abilities, including the ability to plant hardier weeds, temporarily reinforce structures with our plasma, and to plant up to six potent resin fruits for our sisters by secreting our vital fluids at the cost of a bit of our health for each fruit we shape. Resin Surge can force our fruits to mature rapidly. As shapers of fruits, we can harvest and feed any fruit 50% faster."
 	flavor_description = "The glory of gardening: hands in the weeds, head in the dark, heart with resin."
+	regen_mult = XENO_REGEN_MULTIPLIER_TIER_1
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/secrete_resin,
@@ -20,6 +21,7 @@
 	behavior_delegate_type = /datum/behavior_delegate/drone_gardener
 
 /datum/xeno_strain/gardener/apply_strain(mob/living/carbon/xenomorph/drone/drone)
+	..() // stat modifiers
 	drone.available_fruits = list(
 		/obj/effect/alien/resin/fruit/greater,
 		/obj/effect/alien/resin/fruit/unstable,
@@ -29,7 +31,6 @@
 	)
 	drone.selected_fruit = /obj/effect/alien/resin/fruit/greater
 	drone.max_placeable = 6
-	drone.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_1
 
 	// Also change the primacy value for our place construction ability (because we want it in the same place but have another primacy ability)
 	for(var/datum/action/xeno_action/action in drone.actions)
@@ -81,7 +82,7 @@
 		return
 
 	if(target_weeds.hivenumber != xeno.hivenumber)
-		to_chat(xeno, SPAN_WARNING("These weeds do not belong to our hive; they reject our fruit."))
+		to_chat(xeno, SPAN_WARNING("These weeds do not belong to our hive. They will reject our fruit."))
 		return
 
 	if(locate(/obj/effect/alien/resin/trap) in range(0, target_turf))
@@ -94,7 +95,7 @@
 
 	if(check_and_use_plasma_owner())
 		if(length(xeno.current_fruits) >= xeno.max_placeable)
-			to_chat(xeno, SPAN_XENOWARNING("We cannot sustain another fruit, one will wither away to allow this one to live!"))
+			to_chat(xeno, SPAN_XENOWARNING("We cannot sustain another fruit! One must wither away to allow this one to live!"))
 			var/obj/effect/alien/resin/fruit/old_fruit = xeno.current_fruits[1]
 			xeno.current_fruits.Remove(old_fruit)
 			qdel(old_fruit)

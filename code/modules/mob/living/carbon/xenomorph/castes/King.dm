@@ -13,6 +13,7 @@
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_7
 	armor_deflection = XENO_ARMOR_FACTOR_TIER_5
 	speed = XENO_SPEED_TIER_1
+	aura_strength = XENO_PHERO_STRENGTH_OVERWHELMING
 
 	evolves_to = null
 	deevolves_to = null
@@ -43,7 +44,6 @@
 
 	claw_type = CLAW_TYPE_VERY_SHARP
 	age = -1
-	aura_strength = XENO_PHERO_STRENGTH_OVERWHELMING
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE
 
 	base_actions = list(
@@ -58,6 +58,8 @@
 		/datum/action/xeno_action/onclick/king_shield,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 	)
+
+	water_config = /datum/water_overlay_config/xeno/medium/loud_stomps
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_4/king.dmi'
 	weed_food_states = list()

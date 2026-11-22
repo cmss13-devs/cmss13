@@ -1,0 +1,4 @@
+author: "Kugamo"
+delete-after: True
+changes:
+  - soundadd: "Added splashy footstep sounds for when queen/king stomp in water."

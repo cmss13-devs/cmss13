@@ -4,8 +4,7 @@
 	title = JOB_RESEARCHER
 	total_positions = 2
 	spawn_positions = 2
-	allow_additional = 1
-	scaled = 1
+	scaled = TRUE
 	supervisors = "the Chief Medical Officer and the Weyland-Yutani Corporation"
 	selection_class = "job_researcher"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
@@ -15,16 +14,15 @@
 /datum/job/civilian/researcher/set_spawn_positions(count)
 	spawn_positions = rsc_slot_formula(count)
 
-/datum/job/civilian/researcher/get_total_positions(latejoin = 0)
-	var/positions = spawn_positions
-	if(latejoin)
-		positions = rsc_slot_formula(get_total_marines())
-		if(positions <= total_positions_so_far)
-			positions = total_positions_so_far
-		else
-			total_positions_so_far = positions
+/datum/job/civilian/researcher/get_total_positions(latejoin)
+	var/normal_positions = ..()
+	var/positions = isnull(scaled) ? normal_positions : rsc_slot_formula(get_total_marines())
+
+	if(positions <= total_positions_so_far)
+		positions = total_positions_so_far
 	else
 		total_positions_so_far = positions
+
 	return positions
 
 AddTimelock(/datum/job/civilian/researcher, list(

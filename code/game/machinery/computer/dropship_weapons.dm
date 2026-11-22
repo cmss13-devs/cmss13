@@ -26,6 +26,10 @@
 
 	// Cameras
 	var/camera_target_id
+	/// shared between camera/firemission targeting
+	var/datum/weakref/acknowledged_target_ref
+	/// current target
+	var/datum/weakref/feedback_target_ref
 	var/camera_width = 11
 	var/camera_height = 11
 	var/camera_map_name
@@ -51,6 +55,7 @@
 	simulation = new()
 
 	RegisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED, PROC_REF(camera_mapname_update))
+	RegisterSignal(src, COMSIG_ATOM_AFTER_SHUTTLE_MOVE, PROC_REF(on_feedback_shuttle_move))
 
 	// camera setup
 	AddComponent(/datum/component/camera_manager)
@@ -67,6 +72,7 @@
 	clear_direct_fire_reticle()
 	QDEL_NULL(firemission_envelope)
 	UnregisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED)
+	UnregisterSignal(src, COMSIG_ATOM_AFTER_SHUTTLE_MOVE)
 	. = ..()
 
 /obj/structure/machinery/computer/dropship_weapons/proc/clear_direct_fire_reticle(atom/movable/screen/plane_master/above_lighting = null)
@@ -485,6 +491,7 @@
 			user.client.reduce_minute_count()
 			if(!cas_sig)
 				return TRUE
+			acknowledge_laser_target(cas_sig)
 
 			// find position of cas_sig with offset dir and value applied
 			var/dx = text2num(x_offset_value)
@@ -623,6 +630,7 @@
 
 	var/datum/cas_signal/target = get_cas_signal(target_ref)
 	camera_target_id = target_ref
+	acknowledge_laser_target(target)
 	clear_direct_fire_reticle()
 
 	if(target && target.signal_loc)
@@ -816,6 +824,7 @@
 			return FALSE
 
 		DEW.open_fire(LT.signal_loc, weapon_operator)
+		LT.notify_cas_fire(src)
 		return TRUE
 	return FALSE
 
@@ -958,11 +967,44 @@
 		return FALSE
 	return TRUE
 
+/obj/structure/machinery/computer/dropship_weapons/proc/acknowledge_laser_target(datum/cas_signal/target)
+	// switching to a non-lase target (like a flare or flag) clears acknowledgement
+	if(feedback_target_ref?.resolve() != target)
+		acknowledged_target_ref = null
+	feedback_target_ref = target ? WEAKREF(target) : null
+	if(!target)
+		acknowledged_target_ref = null
+		return
+	if(acknowledged_target_ref?.resolve() == target)
+		return
+	if(!target.valid_signal())
+		return
+	var/obj/designator = target.designator_ref?.resolve()
+	var/acknowledged = FALSE
+	if(istype(designator, /obj/item/device/binoculars/range/designator))
+		var/obj/item/device/binoculars/range/designator/binoculars = designator
+		acknowledged = binoculars.acknowledge_cas_target(src)
+	else if(istype(designator, /obj/structure/vulture_spotter_tripod/tactical))
+		var/obj/structure/vulture_spotter_tripod/tactical/tripod = designator
+		acknowledged = tripod.acknowledge_cas_target(src)
+	// Only remember successful feedback, so a target selected before takeoff can retry.
+	if(acknowledged)
+		acknowledged_target_ref = WEAKREF(target)
+
+/obj/structure/machinery/computer/dropship_weapons/proc/on_feedback_shuttle_move()
+	SIGNAL_HANDLER
+	acknowledged_target_ref = null
+	addtimer(CALLBACK(src, PROC_REF(acknowledge_selected_laser)), 0)
+
+/obj/structure/machinery/computer/dropship_weapons/proc/acknowledge_selected_laser()
+	acknowledge_laser_target(feedback_target_ref?.resolve())
+
 /obj/structure/machinery/computer/dropship_weapons/proc/update_location(mob/user, new_location)
 	var/result = firemission_envelope.change_target_loc(new_location)
 	if(!result)
 		to_chat(user, SPAN_WARNING("Screen beeps with an error: [firemission_envelope.mission_error]"))
 		return FALSE
+	acknowledge_laser_target(new_location)
 	return TRUE
 
 /obj/structure/machinery/computer/dropship_weapons/proc/update_direction(mob/user, new_direction)

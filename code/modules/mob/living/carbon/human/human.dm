@@ -148,7 +148,7 @@
 		var/eta_status = SShijack.get_evac_eta()
 		if(eta_status)
 			. += "Evacuation Goals: [eta_status]"
-		if(SShijack.sd_unlocked)
+		if(SShijack.sd_unlocked || SShijack.hijack_plan == HIJACK_ROUTE_SCUTTLE)
 			. += "Self Destruct Status: [SShijack.get_sd_eta()]"
 
 /mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
@@ -1929,7 +1929,7 @@
 			return
 	. = ..()
 
-/mob/living/carbon/human/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, list/end_throw_callbacks, list/collision_callbacks, tracking = FALSE)
+/mob/living/carbon/human/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, list/end_throw_callbacks, list/collision_callbacks, tracking = FALSE, list/turf/route)
 	var/turf/above = SSmapping.get_turf_above(thrower)
 	if(above && above.z == target.z)
 		to_chat(thrower, SPAN_WARNING("You can't throw someone that high!"))

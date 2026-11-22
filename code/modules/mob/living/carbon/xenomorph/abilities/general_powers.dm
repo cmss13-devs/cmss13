@@ -38,11 +38,11 @@
 			return
 
 		if(node.hivenumber != xeno.hivenumber)
-			to_chat(xeno, SPAN_WARNING("The other hive's node resists your attempt to uproot it."))
+			to_chat(xeno, SPAN_WARNING("The other hive's node resists our attempt to uproot it."))
 			return
 
 		if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, node, INTERRUPT_ALL))
-			to_chat(xeno, SPAN_WARNING("There's a pod here already! You decide to not replace it."))
+			to_chat(xeno, SPAN_WARNING("There's a pod here already! We decide to not replace it."))
 			return
 
 	var/obj/effect/alien/resin/trap/resin_trap = locate() in turf
@@ -460,7 +460,7 @@
 		return FALSE
 
 	if(!acid_level)
-		to_chat(src, SPAN_XENONOTICE("You can't secrete any acid into [target]."))
+		to_chat(src, SPAN_XENONOTICE("We can't secrete any acid into [target]."))
 		return FALSE
 
 	var/trap_acid_level = 0
@@ -478,10 +478,10 @@
 		acid_cost = ACID_COST_LEVEL_3
 
 	if(!check_plasma(acid_cost))
-		to_chat(src, SPAN_XENOWARNING("You must produce more plasma before doing this."))
+		to_chat(src, SPAN_XENOWARNING("We must produce more plasma before doing this."))
 		return FALSE
 
-	to_chat(src, SPAN_XENONOTICE("You begin charging the resin trap with acid."))
+	to_chat(src, SPAN_XENONOTICE("We begin charging the resin trap with acid."))
 	xeno_attack_delay(src)
 	if(!do_after(src, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
 		return FALSE
@@ -503,7 +503,7 @@
 
 	playsound(target, 'sound/effects/refill.ogg', 25, 1)
 	visible_message(SPAN_XENOWARNING("[src] pressurises the resin trap with acid!"),
-	SPAN_XENOWARNING("You pressurise the resin trap with acid!"), null, 5)
+	SPAN_XENOWARNING("We pressurise the resin trap with acid!"), null, 5)
 	return TRUE
 
 #undef ACID_COST_LEVEL_1
@@ -619,12 +619,12 @@
 				turf_in_path = SSmapping.get_turf_below(turf_in_path)
 
 			if(turf_in_path.density && turf_in_path.turf_flags & TURF_HULL)
-				to_chat(xeno, SPAN_WARNING("You can't jump over an object in your path."))
+				to_chat(xeno, SPAN_WARNING("We can't jump over an object in our path."))
 				return
 
 			for(var/obj/structure/cur_obj in turf_in_path.contents)
 				if(cur_obj.density && cur_obj.unslashable && cur_obj.unacidable)
-					to_chat(xeno, SPAN_WARNING("You can't jump over an object in your path."))
+					to_chat(xeno, SPAN_WARNING("We can't jump over an object in our path."))
 					return
 
 		if (!do_after(xeno, 0.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
@@ -948,7 +948,7 @@
 		return FALSE
 
 	if(choice == XENO_STRUCTURE_CORE && target_area.unoviable_timer)
-		to_chat(xeno, SPAN_WARNING("This area does not feel right for you to build this in."))
+		to_chat(xeno, SPAN_WARNING("This area does not feel right for us to build this in."))
 		qdel(structure_template)
 		return FALSE
 
@@ -1022,6 +1022,35 @@
 			return FALSE
 	return TRUE
 
+/datum/action/xeno_action/activable/xeno_spit/on_select(mob/user)
+	. = ..()
+	if(retarget_after_windup)
+		RegisterSignal(owner, COMSIG_MOB_MOUSEDRAG, PROC_REF(change_target))
+		RegisterSignal(owner, COMSIG_MOB_MOUSEDOWN, PROC_REF(on_mouse_down))
+
+/datum/action/xeno_action/activable/xeno_spit/proc/on_mouse_down(mob/source, atom/target, turf, skin_ctl, params)
+	SIGNAL_HANDLER
+
+	var/list/mods = params2list(params)
+	if(target) //in case we reclick to reaim before the mouse drag gets to registered
+		new_target = target
+		owner?.face_atom(new_target)
+	source.click(target, mods)
+
+/datum/action/xeno_action/activable/xeno_spit/on_deselect()
+	if(retarget_after_windup)
+
+		UnregisterSignal(owner, COMSIG_MOB_MOUSEDRAG)
+		UnregisterSignal(owner, COMSIG_MOB_MOUSEDOWN)
+
+
+/datum/action/xeno_action/activable/xeno_spit/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
+	SIGNAL_HANDLER
+	var/possible_new_target = get_turf_on_clickcatcher(over_object, owner, params)
+	if(possible_new_target)
+		new_target = possible_new_target
+		owner?.face_atom(new_target)
+
 /datum/action/xeno_action/activable/xeno_spit/use_ability(atom/atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	var/spit_target = aim_turf ? get_turf(atom) : atom
@@ -1058,7 +1087,11 @@
 		if (!do_after(xeno, xeno.ammo.spit_windup, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			to_chat(xeno, SPAN_XENODANGER("We decide to cancel our spit."))
 			spitting = FALSE
+			new_target = null
 			return
+		if(retarget_after_windup && new_target)
+			spit_target = new_target
+			new_target = null
 	plasma_cost = xeno.ammo.spit_cost
 
 	if(!check_and_use_plasma_owner())

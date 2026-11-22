@@ -1,6 +1,0 @@
-author: "Kugamo"
-delete-after: True
-changes:
-  - rscadd: "Eyelids of humans now blink periodically while living, and eye-related emotes now are visually expressed through them."
-  - rscadd: "Added the ability for marines to close the eyes of their dead by help-intent-eye-zone-clicking on them."
-  - rscadd: "Added emotes \"closeeyes\", \"openeyes\", \"sleep\"/\"nap\", and \"wake\" for humans"

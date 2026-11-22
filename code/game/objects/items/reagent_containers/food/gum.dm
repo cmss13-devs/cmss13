@@ -212,6 +212,7 @@
 		return
 
 	if(slot != WEAR_FACE)
+		anchored = FALSE
 		if(!isnull(bubble))
 			qdel(bubble)
 		if(bubble_blower)
@@ -278,7 +279,7 @@
 
 /obj/item/reagent_container/food/gum/proc/is_stuck()
 	// Stuck only when chewed, unwrapped, and not currently held/worn by a mob
-	return chewed && !wrapped && !ismob(loc)
+	return chewed && !wrapped && !ismob(loc) && !(bubble_blower && bubble_blower.wear_mask == src)
 
 
 /obj/item/reagent_container/food/gum/proc/make_stuck()

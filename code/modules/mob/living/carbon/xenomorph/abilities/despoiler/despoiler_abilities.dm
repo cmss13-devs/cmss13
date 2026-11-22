@@ -42,8 +42,9 @@
 	var/stage = 0
 	var/timer
 	var/speed_buff_amount = 0.15
-	var/speed_buff_duration = 2 SECONDS
-	var/speed_buff_active = FALSE
+	var/speed_buff_per_stack = 0.1
+	var/speed_buff_duration = 3 SECONDS
+	var/active_speed_buff = 0
 
 /datum/action/xeno_action/onclick/oozing_wounds
 	name = "Oozing Wounds"

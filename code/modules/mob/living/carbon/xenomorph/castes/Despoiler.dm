@@ -336,9 +336,9 @@
 	if(.)
 		delegate.hypertension_stacks -= stage
 		xeno.update_hypertension()
-		if(!speed_buff_active)
-			speed_buff_active = TRUE
-			xeno.speed_modifier -= speed_buff_amount
+		if(!active_speed_buff)
+			active_speed_buff = speed_buff_amount + stage * speed_buff_per_stack
+			xeno.speed_modifier -= active_speed_buff
 			xeno.recalculate_speed()
 			addtimer(CALLBACK(src, PROC_REF(remove_speed_buff)), speed_buff_duration)
 	distance = initial(distance)
@@ -350,9 +350,9 @@
 	if(!istype(xeno))
 		return
 
-	xeno.speed_modifier += speed_buff_amount
+	xeno.speed_modifier += active_speed_buff
 	xeno.recalculate_speed()
-	speed_buff_active = FALSE
+	active_speed_buff = 0
 
 
 /datum/action/xeno_action/activable/pounce/caustic_embrace/proc/release_charge(atom/source, atom/target)

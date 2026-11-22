@@ -190,7 +190,7 @@
 		return FALSE
 
 	if(!strain && reset)
-		to_chat(src, SPAN_WARNING("You must first pick a strain before resetting it."))
+		to_chat(src, SPAN_WARNING("We must first pick a strain before resetting it."))
 		return FALSE
 
 	if(is_zoomed)

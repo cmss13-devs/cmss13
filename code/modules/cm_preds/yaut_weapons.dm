@@ -236,7 +236,7 @@
 		if(!has_chain)
 			var/obj/item/yautja/chain/chain_to_wrap = chain_wrapper
 			has_chain = TRUE
-			to_chat(user, SPAN_NOTICE("You wrap the [chain_to_wrap] around [src]"))
+			to_chat(user, SPAN_NOTICE("You wrap [chain_to_wrap] around [src]"))
 			playsound(user, 'sound/weapons/chain_whip.ogg', 50, 1)
 			qdel(chain_to_wrap)
 		else
@@ -295,7 +295,7 @@
 		if(door.heavy)
 			to_chat(usr, SPAN_DANGER("[door] is too heavy to be forced open."))
 			return FALSE
-		user.visible_message(SPAN_DANGER("[user] grips [door] with their [name] and strains to smash it open..."), SPAN_DANGER("You grip the [door] by the gap and strain to force it open..."))
+		user.visible_message(SPAN_DANGER("[user] grips [door] with their [name] and strains to smash it open..."), SPAN_DANGER("You grip [door] by the gap and strain to force it open..."))
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && door.density)
 			user.visible_message(SPAN_DANGER("[user] forces [door] open with the [name]!"), SPAN_DANGER("You force [door] open with the [name]."))
 			door.open(TRUE)
@@ -307,7 +307,7 @@
 		if(door.isSwitchingStates || user.a_intent == INTENT_HARM)
 			return
 		if(door.density)
-			user.visible_message(SPAN_DANGER("[user] grips [door] with their [name] and strains to smash it open..."), SPAN_DANGER("You grip the [door] by the gap and strain to force it open..."))
+			user.visible_message(SPAN_DANGER("[user] grips [door] with their [name] and strains to smash it open..."), SPAN_DANGER("You grip [door] by the gap and strain to force it open..."))
 			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 			if(do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && door.density)
 				user.visible_message(SPAN_DANGER("[user] forces [door] open using the [name]!"), SPAN_DANGER("You force [door] open with your [name]."))
@@ -920,6 +920,13 @@
 			victim.mob_flags |= MOB_FLAYED
 			victim.name = "???"
 			victim.add_flay_overlay(stage = 3)
+
+			// Force eyelids permanently open — no skin left to close them
+			if(target.species.flags & HAS_EYELIDS)
+				if(target.eyelid_timer)
+					deltimer(target.eyelid_timer)
+					target.eyelid_timer = null
+				target.apply_eyelid_state(EYELID_FLAYED)
 
 			//End the loop and remove all references to the datum.
 			current_flayer = null

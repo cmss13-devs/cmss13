@@ -116,8 +116,8 @@
 	var/last_combat_time = 0
 	var/last_hypertension_loss_time = 0
 	var/hypertension_loss_time = 10 SECONDS
-	var/cooldown_reduction_per_stack = 0.5 SECONDS
-	var/max_cooldown_reduction = 1.5 SECONDS
+	var/cooldown_reduction_per_stack = 1.25 SECONDS
+	var/max_cooldown_reduction = 5 SECONDS
 
 /datum/behavior_delegate/despoiler_base/proc/add_overlay()
 	empowered_overlay = image('icons/mob/xenos/castes/tier_3/despoiler.dmi', "hypertension")

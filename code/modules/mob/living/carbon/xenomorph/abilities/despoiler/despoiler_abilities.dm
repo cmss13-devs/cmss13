@@ -23,9 +23,9 @@
 	action_icon_state = "embrace"
 	macro_path = /datum/action/xeno_action/verb/caustic_embrace
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 12 SECONDS
+	xeno_cooldown = 15 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	plasma_cost = 100
+	plasma_cost = 50
 	cooldown_message = "We have replenished our acid stores. We can now slash and leave puddles."
 
 	// Pounce config

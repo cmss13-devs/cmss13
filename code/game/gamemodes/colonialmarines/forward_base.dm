@@ -122,7 +122,8 @@
 		if(groundside_humans < main_hive.get_real_total_xeno_count() * HIJACK_RATIO_FOR_TACMAP)
 			GLOB.enter_allowed = FALSE
 			main_hive.see_humans_on_tacmap = TRUE
-			main_hive.tacmap_requires_queen_ovi = FALSE
+			main_hive.tacmap_requires_queen = FALSE
+			main_hive.tacmap_live_requires_queen_ovi = FALSE
 			SEND_SIGNAL(main_hive, COMSIG_XENO_REVEAL_TACMAP)
 			xeno_announcement("There is only a handful of tallhosts left, they are now visible on our hive mind map.", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 	for(var/mob/living/carbon/human/human as anything in GLOB.human_mob_list)

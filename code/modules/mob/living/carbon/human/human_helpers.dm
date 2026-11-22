@@ -467,3 +467,211 @@
 		headset = wear_r_ear
 	if(headset)
 		headset.update_minimap_icon()
+
+
+/mob/living/carbon/human/proc/resolve_eyelid_state(state)
+	if(state == EYELID_SWITCH)
+		return eyelids_status == EYELID_OPEN ? EYELID_CLOSED : EYELID_OPEN
+	return state
+
+
+/mob/living/carbon/human/proc/apply_eyelid_state(state)
+	if(eyelids_status == EYELID_FLAYED && state != EYELID_FLAYED)
+		return
+
+	eyelids_status = state
+	update_eyes()
+
+
+/// Finite eyelid sequence for emotes / forced animations.
+/// period = seconds each step is held. times = number of state flips (1 = single change + optional reopen).
+/mob/living/carbon/human/proc/move_eyelids(state, period = 0.15, times = 1)
+	if(!(species?.flags & HAS_EYELIDS))
+		return
+
+	if(eyelids_status == EYELID_FLAYED)	//flayed means no eyelids, stays open D:
+		return
+
+	if(eyelid_timer)
+		deltimer(eyelid_timer)
+		eyelid_timer = null
+
+	apply_eyelid_state(resolve_eyelid_state(state))
+
+	if(times <= 1)
+		// Single forced state. If we closed, schedule reopen so life can resume afterwards.
+		if(eyelids_status == EYELID_CLOSED)
+			eyelid_timer = addtimer(CALLBACK(src, PROC_REF(end_eyelid_sequence)), period SECONDS, TIMER_STOPPABLE)
+		return
+
+	// Multi-step sequence (rapidblink, pain, etc.)
+	eyelid_timer = addtimer(CALLBACK(src, PROC_REF(move_eyelids), EYELID_SWITCH, period, times - 1), period SECONDS, TIMER_STOPPABLE)
+
+
+/mob/living/carbon/human/proc/end_eyelid_sequence()
+	eyelid_timer = null
+	if(stat == DEAD || stat == UNCONSCIOUS || eyelids_status == EYELID_CLOSED_VOLUNTARILY)
+		return
+	apply_eyelid_state(EYELID_OPEN)
+	// small gap before life takes over again
+	next_blink_at = world.time + 1 SECONDS
+
+
+/// Life-driven normal blinking. Called from Life().
+/mob/living/carbon/human/proc/handle_eyelid_blinking()
+	if(!(species?.flags & HAS_EYELIDS))
+		return
+
+	if(stat == DEAD || eyelids_status == EYELID_CLOSED_VOLUNTARILY)
+		return
+
+	if(stat == UNCONSCIOUS)	// Unconscious but alive: keep eyes closed (damage KO, etc.)
+		if(eyelids_status != EYELID_CLOSED)
+			if(eyelid_timer)
+				deltimer(eyelid_timer)
+				eyelid_timer = null
+			apply_eyelid_state(EYELID_CLOSED)
+		return
+
+	if(eyelid_timer) // emote/sequence owns the lids right now
+		return
+
+	if(!next_blink_at)	// First-time offset so a crowd doesn't all blink together
+		next_blink_at = world.time + rand(0, 30) // 0–3s spread
+
+	if(world.time < next_blink_at)
+		return
+
+	var/open_hold	// Interval until the *next* blink after this one finishes
+	if(eye_blind)
+		open_hold = 0.2 SECONDS
+	else if(eye_blurry)
+		open_hold = 1 SECONDS
+	else
+		open_hold = (EYELID_BLINK_OPEN_BASE + rand(-0.5, 0.5)) SECONDS
+
+	apply_eyelid_state(EYELID_CLOSED)	// Close now, timer will reopen
+	eyelid_timer = addtimer(CALLBACK(src, PROC_REF(finish_normal_blink), open_hold), EYELID_BLINK_CLOSED_TIME, TIMER_STOPPABLE)
+
+
+/mob/living/carbon/human/proc/finish_normal_blink(open_hold)
+	eyelid_timer = null
+	if(stat == DEAD || stat == UNCONSCIOUS || eyelids_status == EYELID_CLOSED_VOLUNTARILY)
+		return
+	apply_eyelid_state(EYELID_OPEN)
+	next_blink_at = world.time + open_hold
+
+
+/// Enter nap: close eyes, rest, blinded, periodic snoring.
+/mob/living/carbon/human/proc/start_napping()
+	if(!(species?.flags & HAS_EYELIDS))
+		return
+	if(stat == DEAD || napping_level)
+		return
+
+	deltimer(eyelid_timer)
+	deltimer(nap_snore_timer)
+	eyelid_timer = null
+	nap_snore_timer = null
+	eyelid_timer = addtimer(CALLBACK(src, PROC_REF(sleep_more_soundly)), 30 SECONDS, TIMER_STOPPABLE|TIMER_UNIQUE)
+	nap_snore_timer = addtimer(CALLBACK(src, PROC_REF(nap_snore)), rand(8, 15) SECONDS, TIMER_STOPPABLE|TIMER_UNIQUE)
+
+	napping_level = NAPPING_LEVEL_SHALLOW
+
+	if(!buckled)
+		set_resting(TRUE, TRUE)
+
+	apply_eyelid_state(EYELID_CLOSED_VOLUNTARILY)
+	overlay_fullscreen("blind", /atom/movable/screen/fullscreen/blind)
+	to_chat(src, SPAN_INFO("You feel yourself doze off, entering a shallow sleep. Use *wake to wake up"))
+	RegisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(naping_move_or_look))	//these actions will move you closer to waking if preformed
+	RegisterSignal(src, COMSIG_LIVING_SPEAK, PROC_REF(napping_speech))
+
+
+/// Wake up form a nap
+/mob/living/carbon/human/proc/wake_from_nap(rapid_blink = FALSE)
+	if(!napping_level)
+		return
+
+	napping_level = FALSE
+	UnregisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK)
+	UnregisterSignal(src, COMSIG_LIVING_SPEAK)
+	deltimer(nap_snore_timer)
+	deltimer(eyelid_timer)
+	clear_fullscreen("blind")
+
+	if(stat == DEAD)
+		apply_eyelid_state(EYELID_CLOSED) // stay closed if they died mid-nap
+		return
+
+	if(rapid_blink)
+		// flutter then resume normal life blinking
+		move_eyelids(EYELID_SWITCH, 0.1, 6)
+		set_resting(FALSE, TRUE)
+	else
+		apply_eyelid_state(EYELID_OPEN)
+		next_blink_at = world.time + 1 SECONDS
+
+
+/// this handles speaking while asleep, which if progressively done within 10 seconds will wake you up
+/mob/living/carbon/human/proc/napping_speech(...)
+	SIGNAL_HANDLER
+	if(napping_level == NAPPING_LEVEL_SHALLOW)
+		wake_from_nap(TRUE)
+		visible_message(SPAN_NOTICE("[src] stirs awake talking in their sleep!"), SPAN_NOTICE("You jolt awake, realizing you were talking in your sleep!"))
+	else
+		visible_message(SPAN_NOTICE("[src] mutters in their sleep!"), SPAN_NOTICE("You feel yourself move closer to waking, talking in your sleep."))
+		napping_level--
+
+
+/// this handles movement and or direction changes, which if progressively done within 10 seconds will wake you up
+/mob/living/carbon/human/proc/naping_move_or_look(datum/source, moving, dir, specific_dir)
+	SIGNAL_HANDLER
+
+	if(moving)
+		if(napping_level == NAPPING_LEVEL_SHALLOW)
+			wake_from_nap(TRUE)
+			visible_message(SPAN_NOTICE("[src] stirs awake with a jolt, like they got somewhere to be!"), SPAN_NOTICE("You jolt awake as you start moving!"))
+		else
+			to_chat(src, SPAN_INFO("You feel yourself move closer to waking as sleep resists your attempt to move."))
+			napping_level--
+	else
+		if(napping_level == NAPPING_LEVEL_SHALLOW)
+			wake_from_nap(TRUE)
+			visible_message(SPAN_NOTICE("[src] stirs awake, tossing and turning!"), SPAN_NOTICE("You wake up with all your tossing and turning!"))
+		else
+			to_chat(src, SPAN_INFO("You feel yourself move closer to waking as you toss and turn in your sleep."))
+			napping_level--
+
+	var/sleep_timing = napping_level == NAPPING_LEVEL_SHALLOW ? 30 SECONDS : 15 SECONDS
+
+	deltimer(eyelid_timer)
+	eyelid_timer = null
+	eyelid_timer = addtimer(CALLBACK(src, PROC_REF(sleep_more_soundly)), sleep_timing, TIMER_STOPPABLE|TIMER_UNIQUE)
+
+
+/// used in eyelid_timer, progressively increases sleep level to NAPPING_LEVEL_DEEP
+/mob/living/carbon/human/proc/sleep_more_soundly()
+	if(!napping_level)
+		return
+
+	var/sleep_descriptor = napping_level == NAPPING_LEVEL_SHALLOW ? "disturbed sleep" : "deep sleep"
+
+	if(napping_level != NAPPING_LEVEL_DEEP)
+		napping_level++
+		to_chat(src, SPAN_INFO("You feel yourself doze further off, entering a [sleep_descriptor]."))
+		deltimer(eyelid_timer)
+		eyelid_timer = null
+		eyelid_timer = addtimer(CALLBACK(src, PROC_REF(sleep_more_soundly)), 15 SECONDS, TIMER_STOPPABLE|TIMER_UNIQUE)
+
+
+/// Periodic snore while still napping.
+/mob/living/carbon/human/proc/nap_snore()
+	if(!napping_level || stat == DEAD)
+		return
+	emote("snore")
+	var/snore_timing = napping_level == NAPPING_LEVEL_DEEP ? rand(10, 15) : (napping_level == NAPPING_LEVEL_TRANSITIONAL ? rand(15, 30) : rand(20, 50))
+	deltimer(nap_snore_timer)
+	nap_snore_timer = null
+	nap_snore_timer = addtimer(CALLBACK(src, PROC_REF(nap_snore)), snore_timing SECONDS, TIMER_STOPPABLE|TIMER_UNIQUE)
+

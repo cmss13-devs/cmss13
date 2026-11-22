@@ -7,7 +7,7 @@
 	name = "Brain Repair Surgery"
 	possible_locs = list("head")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
-	required_surgery_skill = SKILL_SURGERY_TRAINED
+	required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	pain_reduction_required = PAIN_REDUCTION_MEDIUM //Brain doesn't actually have much in the way of nerve endings.
 	steps = list(/datum/surgery_step/remove_bone_chips)
 	var/dmg_min = 0
@@ -123,8 +123,7 @@
 	desc = "mend the hematoma"
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 5 SECONDS
-
-	preop_sound = 'sound/handling/clothingrustle1.ogg'
+	//preop_sound is handled in surgery_step/proc/use_custom_preop_sound in surgery_steps.dm
 	success_sound = 'sound/surgery/hemostat2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 

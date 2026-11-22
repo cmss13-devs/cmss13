@@ -57,6 +57,72 @@
 
 	start_on_spawn = FALSE
 
+// firemission shadow overlay appears over open/glass roofs only
+/proc/show_cas_exit_shadow(turf/start, direction, mission_length, duration, obj/docking_port/mobile/marine_dropship/dropship)
+	if(!start || !is_ground_level(start.z) || !(direction in GLOB.cardinals) || !dropship || dropship.cas_shadow_alpha <= 0)
+		return
+	var/icon/silhouette = dropship.get_cas_shadow_icon(direction)
+	if(!silhouette)
+		return
+
+	var/dx = (direction == EAST) - (direction == WEST)
+	var/dy = (direction == NORTH) - (direction == SOUTH)
+	// clear the entire silhouette before entering/leaving the strike corridor.
+	var/flight_length = dx ? silhouette.Width() : silhouette.Height()
+	var/flight_margin = CEILING(flight_length / world.icon_size / 2, 1) + 1
+	var/start_x = start.x - dx * flight_margin
+	var/start_y = start.y - dy * flight_margin
+	var/end_x = start.x + dx * (mission_length + flight_margin)
+	var/end_y = start.y + dy * (mission_length + flight_margin)
+	var/radius_x = CEILING(silhouette.Width() / world.icon_size / 2, 1)
+	var/radius_y = CEILING(silhouette.Height() / world.icon_size / 2, 1)
+	var/turf/lower = locate(clamp(min(start_x, end_x) - radius_x, 1, world.maxx), clamp(min(start_y, end_y) - radius_y, 1, world.maxy), start.z)
+	var/turf/upper = locate(clamp(max(start_x, end_x) + radius_x, 1, world.maxx), clamp(max(start_y, end_y) + radius_y, 1, world.maxy), start.z)
+	var/canvas_width = (upper.x - lower.x + 1) * world.icon_size
+	var/canvas_height = (upper.y - lower.y + 1) * world.icon_size
+	var/icon/canvas = icon(silhouette)
+	canvas.Crop(1, 1, canvas_width, canvas_height)
+	canvas.DrawBox("#00000000", 1, 1, canvas_width, canvas_height)
+	var/icon/roof_mask = icon(canvas)
+	var/has_exposed_ground = FALSE
+	for(var/turf/ground as anything in block(lower, upper))
+		var/area/ground_area = get_area(ground)
+		if(ground_area.ceiling != CEILING_NONE && ground_area.ceiling != CEILING_GLASS)
+			continue
+		var/mask_x = (ground.x - lower.x) * world.icon_size + 1
+		var/mask_y = (ground.y - lower.y) * world.icon_size + 1
+		roof_mask.DrawBox(COLOR_WHITE, mask_x, mask_y, mask_x + world.icon_size - 1, mask_y + world.icon_size - 1)
+		has_exposed_ground = TRUE
+	if(!has_exposed_ground)
+		return
+
+	// layer filters use offsets from the canvas center
+	var/center_x = lower.x + (upper.x - lower.x) / 2
+	var/center_y = lower.y + (upper.y - lower.y) / 2
+	return new /obj/effect/overlay/temp/cas_exit_shadow(lower, canvas, silhouette, roof_mask, (start_x - center_x) * world.icon_size, (start_y - center_y) * world.icon_size, (end_x - center_x) * world.icon_size, (end_y - center_y) * world.icon_size, duration, dropship.cas_shadow_alpha)
+
+/obj/effect/overlay/temp/cas_exit_shadow
+	name = "dropship shadow"
+	layer = ABOVE_BLOOD_LAYER
+	start_on_spawn = FALSE
+
+/obj/effect/overlay/temp/cas_exit_shadow/Initialize(mapload, icon/canvas, icon/silhouette, icon/roof_mask, start_x, start_y, end_x, end_y, duration, peak_alpha)
+	. = ..()
+	if(!canvas || !silhouette || !roof_mask || duration <= 0)
+		return INITIALIZE_HINT_QDEL
+	effect_duration = duration
+	alpha = clamp(peak_alpha, 0, 255)
+	icon = canvas
+	bound_width = canvas.Width()
+	bound_height = canvas.Height()
+	add_filter("aircraft", 1, layering_filter(icon = silhouette, x = start_x, y = start_y, color = "#00000000", transform = matrix()))
+	add_filter("roof", 2, alpha_mask_filter(icon = roof_mask))
+	var/aircraft = get_filter("aircraft")
+	animate(aircraft, x = start_x + (end_x - start_x) * CAS_SHADOW_FADE_IN, y = start_y + (end_y - start_y) * CAS_SHADOW_FADE_IN, color = COLOR_BLACK, time = duration * CAS_SHADOW_FADE_IN, easing = LINEAR_EASING)
+	animate(x = start_x + (end_x - start_x) * CAS_SHADOW_CLIMB_START, y = start_y + (end_y - start_y) * CAS_SHADOW_CLIMB_START, time = duration * (CAS_SHADOW_CLIMB_START - CAS_SHADOW_FADE_IN), easing = LINEAR_EASING)
+	animate(x = end_x, y = end_y, transform = matrix().Scale(CAS_SHADOW_FINAL_SCALE), color = "#00000000", time = duration * (1 - CAS_SHADOW_CLIMB_START), easing = LINEAR_EASING)
+	QDEL_IN(src, effect_duration)
+
 /obj/effect/overlay/temp/point/Initialize(mapload, mob/M, atom/actual_pointed_atom)
 	. = ..()
 
@@ -352,3 +418,90 @@
 	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "pool_splash"
 	effect_duration = 10 SECONDS
+
+/obj/effect/overlay/temp/dropship_reticle
+	name = "Targeting Reticle"
+	desc = "A targeting reticle for a dropship's HUD."
+	icon = 'icons/mob/hud/dropship_hud.dmi'
+	icon_state = "direct_fire_reticle"
+	anchored = TRUE
+	layer = ABOVE_LIGHTING_LAYER
+	plane = ABOVE_LIGHTING_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	alpha = 0
+	effect_duration = 1 MINUTES
+
+	var/image/reticle_image = null
+	var/shuttle_tag = null
+
+/obj/effect/overlay/temp/dropship_reticle/Initialize(mapload, ...)
+	. = ..()
+	if(!isturf(loc))
+		return INITIALIZE_HINT_QDEL
+	GLOB.dropship_reticles += src
+
+/obj/effect/overlay/temp/dropship_reticle/Destroy()
+	remove_from_all_clients()
+	GLOB.dropship_reticles -= src
+	return ..()
+
+/obj/effect/overlay/temp/dropship_reticle/proc/update_visibility_for_mob(mob/mob_user)
+	var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
+	if(dropship_hud?.can_see_reticles(mob_user))
+		if(mob_user.client)
+			mob_user.client.images += src.get_reticle_image()
+	else
+		if(mob_user.client)
+			mob_user.client.images -= src.get_reticle_image()
+
+/obj/effect/overlay/temp/dropship_reticle/proc/get_reticle_image()
+	if(!reticle_image)
+		reticle_image = image(icon, loc, icon_state, layer)
+		reticle_image.plane = ABOVE_LIGHTING_PLANE
+		reticle_image.alpha = 255
+	return reticle_image
+
+/obj/effect/overlay/temp/dropship_reticle/proc/update_target(x, y, z)
+	var/turf/new_loc = locate(x, y, z)
+	if(!new_loc)
+		return
+	forceMove(new_loc)
+	reticle_image = null
+
+/obj/effect/overlay/temp/dropship_reticle/proc/remove_from_all_clients()
+	var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
+	if(dropship_hud)
+		for(var/mob/mob_user as anything in dropship_hud.hudusers)
+			if(mob_user.client)
+				if(reticle_image)
+					mob_user.client.images -= reticle_image
+	for(var/mob/living/carbon/human/mob_user as anything in GLOB.alive_human_list)
+		if(mob_user.client && reticle_image)
+			mob_user.client.images -= reticle_image
+
+/obj/effect/overlay/temp/dropship_reticle/direct
+	name = "Impact Reticle"
+	desc = "The projected suborbital impact zone for a dropship's HUD."
+	icon = 'icons/mob/hud/dropship_hud.dmi'
+	icon_state = "impact_reticle"
+
+/// Keep the shared HUD image in sync as a guided missile tracks or loses its target.
+/obj/effect/overlay/temp/dropship_reticle/direct/proc/update_guidance(turf/impact, locked_on)
+	if(loc != impact)
+		forceMove(impact)
+	icon_state = locked_on ? "lock_on_reticle" : "impact_reticle"
+	if(reticle_image)
+		reticle_image.loc = impact
+		reticle_image.icon_state = icon_state
+
+/obj/effect/overlay/temp/dropship_reticle/direct/proc/spawn_reticle(x, y, z)
+	return new /obj/effect/overlay/temp/dropship_reticle/direct(locate(x, y, z))
+
+/obj/effect/overlay/temp/dropship_reticle/firemission
+	name = "Firemission Reticle"
+	desc = "The projected firemission target zone for a dropship's HUD."
+	icon = 'icons/mob/hud/dropship_hud.dmi'
+	icon_state = "firemission_reticle"
+
+/obj/effect/overlay/temp/dropship_reticle/firemission/proc/spawn_reticle(x, y, z)
+	return new /obj/effect/overlay/temp/dropship_reticle/firemission(locate(x, y, z))

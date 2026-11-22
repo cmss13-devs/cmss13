@@ -114,5 +114,5 @@
 	if(!ismob(target_atom))
 		return
 	bound_xeno.add_xeno_shield(reward_shield, XENO_SHIELD_SOURCE_BASE_PRAE, add_shield_on = TRUE, max_shield = 45)
-	to_chat(bound_xeno, SPAN_NOTICE("Your exoskeleton shimmers for a fraction of a second as the acid coats your target."))
+	to_chat(bound_xeno, SPAN_NOTICE("Our exoskeleton shimmers for a fraction of a second as the acid coats our target."))
 	return

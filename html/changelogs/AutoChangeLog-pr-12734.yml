@@ -1,0 +1,4 @@
+author: "Venuska1117"
+delete-after: True
+changes:
+  - refactor: "Changed most of Dancer Praetorian ability vars to use traits, for easier reference in future, behaviour vars that are used by specific ability are moved to ability file."

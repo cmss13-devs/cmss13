@@ -250,6 +250,7 @@
 	health = initial(health)
 	lighting_holder.set_light_range(vehicle_light_range)
 	toggle_cameras_status(TRUE)
+	update_movement_sound()
 	update_icon()
 	user.visible_message(SPAN_NOTICE("[user] finishes [repair_message] on \the [src]."), SPAN_NOTICE("You finish [repair_message] on \the [src]. Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%."))
 	return

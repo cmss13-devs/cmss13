@@ -8,7 +8,7 @@
 	name = "Eye Repair Surgery"
 	possible_locs = list("eyes")
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
-	required_surgery_skill = SKILL_SURGERY_TRAINED
+	required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	pain_reduction_required = PAIN_REDUCTION_FULL //Eyes DO have pain receptors... Almost more than any other organ. Ever been poked in the eye? Shit hurts.
 	steps = list(
 		/datum/surgery_step/separate_corneas,
@@ -164,8 +164,7 @@
 	desc = "mend the damage inside the eyeballs"
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 5 SECONDS
-
-	preop_sound = 'sound/handling/clothingrustle1.ogg'
+	//preop_sound is handled in surgery_step/proc/use_custom_preop_sound in surgery_steps.dm
 	success_sound = 'sound/surgery/organ2.ogg'
 	failure_sound = 'sound/surgery/organ1.ogg'
 

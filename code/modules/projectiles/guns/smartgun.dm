@@ -898,6 +898,8 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/machineguns.dmi'
 	icon_state = "m56f"
 	item_state = "m56f"
+	fire_sound = "gun_smartgun_clf"
+	fire_rattle = "gun_smartgun_clf_rattle"
 	random_spawn_chance = 100
 	random_cosmetic_chance = 100
 	current_mag = /obj/item/ammo_magazine/smartgun/rusty

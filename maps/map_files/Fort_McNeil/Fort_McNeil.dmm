@@ -3820,13 +3820,13 @@
 /area/fort_mcneil/outdoors/road/central)
 "alx" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet/bullet,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/fort_mcneil/outdoors/road/central)
 "aly" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet/bullet,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/fort_mcneil/outdoors/road/central)
 "alz" = (
@@ -3849,9 +3849,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/fort_mcneil/outdoors/road/central)
 "alB" = (
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet/bullet,
 /obj/item/ammo_magazine/pistol/vp78/heap{
 	current_rounds = 0
 	},
@@ -9278,7 +9278,7 @@
 	pixel_x = 9;
 	pixel_y = 9
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/ammo_casing/bullet/bullet,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/fort_mcneil/outdoors/road/central)
 "mkI" = (

@@ -1874,8 +1874,6 @@
 			last_living_human = cur_human
 
 		if(!see_humans_on_tacmap && human_count < (get_real_total_xeno_count() * HIJACK_RATIO_FOR_TACMAP))
-			if(is_forward_base)
-				GLOB.enter_allowed = FALSE
 			xeno_announcement("There is only a handful of tallhosts left, they are now visible on our hive mind map.", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 			see_humans_on_tacmap = TRUE
 			tacmap_requires_queen_ovi = FALSE

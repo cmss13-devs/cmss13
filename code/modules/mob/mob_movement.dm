@@ -101,9 +101,6 @@ CLIENT_VERB(drop_item)
 		if(HAS_TRAIT(human, TRAIT_HAULED))
 			human.handle_haul_resist()
 			return
-		if(human.is_napping)
-			human.wake_from_nap(rapid_blink = FALSE)
-			human.visible_message(SPAN_NOTICE("[src] stirs and opens their eyes."), SPAN_NOTICE("You jolt awake as you start moving."))
 
 	if(world.time < next_movement)
 		return
@@ -175,6 +172,11 @@ CLIENT_VERB(drop_item)
 	if(SEND_SIGNAL(mob, COMSIG_MOB_MOVE_OR_LOOK, TRUE, direct, direct) & COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK)
 		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
 		return
+
+	if(ishuman(living_mob))
+		var/mob/living/carbon/human/living_human = living_mob
+		if(living_human.napping_level != NAPPING_LEVEL_AWAKE)
+			return
 
 	if(!mob.z)//Inside an object, tell it we moved
 		var/atom/O = mob.loc

@@ -15,6 +15,8 @@
 		return FALSE
 	var/silenced = FALSE
 	for(var/datum/emote/current_emote in key_emotes)
+		if(!current_emote.can_run_emote(src, status_check = TRUE, intentional = intentional))
+			continue
 		if(!current_emote.check_cooldown(src, intentional))
 			silenced = TRUE
 			continue

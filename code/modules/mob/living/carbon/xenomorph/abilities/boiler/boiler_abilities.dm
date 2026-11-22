@@ -47,6 +47,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_acid_shroud
 	/// Allows the sound to play. Flipped to false when sound is triggered and true after a timer. This prevents soundspam
 	var/sound_play = TRUE
+	cooldown_message = "Our stomach has sufficiently filled with gas and our pores are opened again. We can now shroud ourselves with acid."
 
 	/// These are actions that will be placed on cooldown for the cooldown_duration when activates
 	var/action_types_to_cd = list(
@@ -62,3 +63,4 @@
 
 /datum/action/xeno_action/activable/tail_stab/boiler
 	name = "Toxic Tail Stab"
+	cooldown_message = "Our tail's acid stores have filled up enough to stab with it."

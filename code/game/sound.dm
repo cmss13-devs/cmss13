@@ -470,6 +470,12 @@
 				sound = pick('sound/voice/wy_droid/wy_stealth_droid_death1.ogg', 'sound/voice/wy_droid/wy_stealth_droid_death2.ogg')
 			if("clown_footstep")
 				sound = pick('sound/effects/clownstep1.ogg', 'sound/effects/clownstep2.ogg')
+			if("broken_vehicle")
+				sound = pick('sound/vehicles/broken_move1.ogg','sound/vehicles/broken_move2.ogg','sound/vehicles/broken_move3.ogg','sound/vehicles/broken_move4.ogg','sound/vehicles/broken_move5.ogg','sound/vehicles/broken_move6.ogg')
+			if("tire_screech")
+				sound = pick('sound/vehicles/tire_screech1.ogg', 'sound/vehicles/tire_screech2.ogg','sound/vehicles/tire_screech3.ogg','sound/vehicles/tire_screech4.ogg')
+			if("wheelless")
+				sound = pick('sound/vehicles/wheelless_move1.ogg', 'sound/vehicles/wheelless_move2.ogg','sound/vehicles/wheelless_move3.ogg')
 			//items
 			if("map_fold")
 				sound = pick('sound/items/map_fold1.ogg', 'sound/items/map_fold2.ogg', 'sound/items/map_fold3.ogg', 'sound/items/map_fold4.ogg')

@@ -1227,12 +1227,7 @@ SUBSYSTEM_DEF(minimaps)
 		if(map in owner.client.screen)
 			to_chat(owner, SPAN_WARNING("You already have a minimap open!"))
 			return FALSE
-		var/list/atom/movable/screen/actions = list()
 		map = SSminimaps.fetch_minimap_object(owner.z, map.minimap_flags, map.live, FALSE, map.drawing, for_client=owner.client)
-		for(var/path in drawing_tools)
-			actions += new path(null, owner.z, minimap_flags, map, null)
-		drawing_actions = actions
-		owner.client.add_to_screen(drawing_actions)
 		owner.client.add_to_screen(map)
 		owner.client.add_to_screen(locator)
 		// Apply ceiling protection overlay if client has preference enabled
@@ -2237,57 +2232,6 @@ SUBSYSTEM_DEF(minimaps)
 
 	owner.move_tacmap_up()
 	return TRUE
-
-/atom/movable/screen/minimap_tool/up/simple
-
-/atom/movable/screen/minimap_tool/up/simple/clicked(mob/user, list/modifiers)
-	if(!SSmapping.same_z_map(linked_map.target, linked_map.target+1))
-		return
-	var/atom/movable/screen/minimap/new_linked_map = SSminimaps.fetch_minimap_object(linked_map.target+1, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, for_client=user.client)
-	update_shown_map(user, new_linked_map)
-
-
-/atom/movable/screen/minimap_tool/proc/update_shown_map(mob/user, atom/movable/screen/minimap/new_linked_map)
-	user.client.remove_from_screen(linked_map)
-	user.client.add_to_screen(new_linked_map)
-	for(var/datum/action/minimap/user_map in user.actions)
-		user_map.map = new_linked_map
-	for(var/atom/movable/screen/minimap_tool/tool in user.client.screen)
-		tool.linked_map = new_linked_map
-
-/atom/movable/screen/minimap_tool/down/simple/clicked(mob/user, list/modifiers)
-	if(!SSmapping.same_z_map(linked_map.target, linked_map.target-1))
-		return
-	var/atom/movable/screen/minimap/new_linked_map = SSminimaps.fetch_minimap_object(linked_map.target-1, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, for_client=user.client)
-	update_shown_map(user, new_linked_map)
-
-/atom/movable/screen/minimap_tool/change_map
-	desc = "Switch ground / ship map."
-	screen_loc = "15,7"
-	icon_state = "update"
-
-/atom/movable/screen/minimap_tool/change_map/clicked(mob/user, list/mods)
-	var/atom/movable/screen/minimap/new_linked_map
-	if(SSmapping.level_has_any_trait(linked_map.target, list(ZTRAIT_GROUND)))
-		if(SSmapping.level_has_any_trait(user.z, list(ZTRAIT_MARINE_MAIN_SHIP)))
-			new_linked_map = SSminimaps.fetch_minimap_object(user.z, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, for_client=user.client)
-			for(var/datum/action/minimap/map in user.actions)
-				user.client.add_to_screen(map.locator)
-		else
-			new_linked_map = SSminimaps.fetch_minimap_object(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)[1], linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, for_client=user.client)
-			for(var/datum/action/minimap/map in user.actions)
-				user.client.remove_from_screen(map.locator)
-	else
-		if(SSmapping.level_has_any_trait(user.z, list(ZTRAIT_GROUND)))
-			new_linked_map = SSminimaps.fetch_minimap_object(user.z, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, for_client=user.client)
-			for(var/datum/action/minimap/map in user.actions)
-				user.client.add_to_screen(map.locator)
-		else
-			new_linked_map = SSminimaps.fetch_minimap_object(SSmapping.levels_by_trait(ZTRAIT_GROUND)[1] , linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing, for_client=user.client)
-			for(var/datum/action/minimap/map in user.actions)
-				user.client.remove_from_screen(map.locator)
-
-	update_shown_map(user, new_linked_map)
 
 /atom/movable/screen/minimap_tool/down
 	icon_state = "down"

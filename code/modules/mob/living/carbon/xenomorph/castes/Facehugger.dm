@@ -1,12 +1,21 @@
 /datum/caste_datum/facehugger
 	caste_type = XENO_CASTE_FACEHUGGER
+	playstyle = "Infect hosts to grow the hive. Leap from close range to latch on, or climb onto a host who is lying down or nested. A successful attachment ends your time in this body. You lose health off weeds, so use cover and keep trips short."
+	can_tackle = FALSE
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/onclick/xenohide,
+		/datum/action/xeno_action/activable/pounce/facehugger,
+	)
 	tier = 0
 	plasma_gain = XENO_PLASMA_GAIN_TIER_1
 	plasma_max = XENO_NO_PLASMA
 	melee_damage_lower = 5
 	melee_damage_upper = 5
 	max_health = XENO_HEALTH_LARVA
-	caste_desc = "Ewwww, that's disgusting!"
+	caste_desc = "A small parasite that implants hosts with the hive's young."
 	speed = XENO_SPEED_TIER_8
 
 	available_strains = list(/datum/xeno_strain/watcher)
@@ -21,6 +30,7 @@
 	AUTOWIKI_SKIP(TRUE)
 
 	name = XENO_CASTE_FACEHUGGER
+	desc = "A small, many legged parasite that scuttles about. Disgusting!"
 	caste_type = XENO_CASTE_FACEHUGGER
 	speak_emote = list("hisses")
 	icon_state = "Facehugger"
@@ -49,13 +59,6 @@
 	refunds_larva_if_banished = FALSE
 	can_hivemind_speak = FALSE
 
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/onclick/xenohide,
-		/datum/action/xeno_action/activable/pounce/facehugger,
-	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)

@@ -1,5 +1,16 @@
 /datum/caste_datum/crusher
 	caste_type = XENO_CASTE_CRUSHER
+	playstyle = "Charge through obstacles to break into a group. Your slashes slow the main target, hit nearby enemies and shorten the cooldowns of Charge and Defensive Shield."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/activable/pounce/crusher_charge,
+		/datum/action/xeno_action/onclick/crusher_stomp,
+		/datum/action/xeno_action/onclick/crusher_shield,
+	)
 	tier = 3
 
 	melee_damage_lower = XENO_DAMAGE_TIER_5
@@ -52,16 +63,6 @@
 	base_pixel_y = -16
 
 	rebounds = FALSE // no more fucking pinball crooshers
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/activable/pounce/crusher_charge,
-		/datum/action/xeno_action/onclick/crusher_stomp,
-		/datum/action/xeno_action/onclick/crusher_shield,
-	)
 
 	claw_type = CLAW_TYPE_VERY_SHARP
 

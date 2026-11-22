@@ -1,5 +1,6 @@
 /datum/xeno_strain/hedgehog
 	name = RAVAGER_HEDGEHOG
+	summary = "Grow shards over time and when hit. Stored shards improve explosive resistance and fuel your attacks, at the cost of some slash damage."
 	description = "We lose our existing abilities and some slash damage in exchange for more explosive resistance and the ability to gain shards. Our resistance scales with our shard count and at 50% grants us immunity to some explosive stuns. We accumulate shards over time and when taking damage and use these shards to power three new abilities: Spike Shield which gives us a temporary shield that spits bone shards around us when damaged; Fire Spikes, which launches spikes at our target to slow them and deal damage when they move; and Spike Shed, which launches all our spikes, grants a temporary speed boost, and disables shard generation for thirty seconds."
 	flavor_description = "It will pierce them a million times, show them what it feels like. This one will become my shield."
 	icon_state_prefix = "Hedgehog"
@@ -28,7 +29,10 @@
 	name = "Hedgehog Ravager Behavior Delegate"
 
 	// Shard config
-	var/max_shards = 300
+	resource_name = "Bone shards"
+	resource_capacity = 300
+	resource_icon_state = "rav_spike"
+	resource_description = "Grow shards over time, when hit by projectiles and when slashing. Spend them on spikes or shielding."
 	var/shard_gain_onlife = 5
 	var/shards_per_projectile = 10
 	var/shards_per_slash = 15
@@ -45,7 +49,7 @@
 
 /datum/behavior_delegate/ravager_hedgehog/append_to_stat()
 	. = list()
-	. += "Bone Shards: [shards]/[max_shards]"
+	. += "Bone Shards: [shards]/[resource_capacity]"
 	. += "Shards Armor Bonus: [times_armor_buffed*armor_buff_per_fifty_shards]"
 
 /datum/behavior_delegate/ravager_hedgehog/proc/lock_shards()
@@ -88,7 +92,7 @@
 /datum/behavior_delegate/ravager_hedgehog/on_life()
 
 	if (!shards_locked)
-		shards = min(max_shards, shards + shard_gain_onlife)
+		shards = min(resource_capacity, shards + shard_gain_onlife)
 
 	var/armor_buff_count = shards/50 //0-6
 	bound_xeno.armor_modifier -= times_armor_buffed * armor_buff_per_fifty_shards
@@ -98,7 +102,7 @@
 
 	var/image/holder = bound_xeno.hud_list[SPECIAL_HUD]
 	holder.overlays.Cut()
-	var/percentage_shards = round((shards / max_shards) * 100, 10)
+	var/percentage_shards = round((shards / resource_capacity) * 100, 10)
 	if(percentage_shards)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_shards]")
 
@@ -119,12 +123,12 @@
 
 /datum/behavior_delegate/ravager_hedgehog/on_hitby_projectile()
 	if (!shards_locked)
-		shards = min(max_shards, shards + shards_per_projectile)
+		shards = min(resource_capacity, shards + shards_per_projectile)
 	return
 
 /datum/behavior_delegate/ravager_hedgehog/melee_attack_additional_effects_self()
 	if (!shards_locked)
-		shards = min(max_shards, shards + shards_per_slash)
+		shards = min(resource_capacity, shards + shards_per_slash)
 	return
 
 

@@ -1,4 +1,11 @@
 /datum/action/xeno_action
+	/// Player-facing explanation shown when comparing strain abilities.
+	var/ability_description
+	/// Representative sprite.
+	var/preview_icon_file
+	var/preview_icon_state
+	/// Equivalent ability when a subtype only changes the macro slot.
+	var/preview_as
 	icon_file = 'icons/mob/hud/actions_xeno.dmi'
 	button_icon_state = "template_xeno"
 	var/plasma_cost = 0

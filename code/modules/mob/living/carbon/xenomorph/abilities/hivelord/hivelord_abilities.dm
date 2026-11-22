@@ -5,6 +5,7 @@
 	max_range = 7
 
 /datum/action/xeno_action/active_toggle/toggle_speed
+	ability_description = "Spend plasma to move faster on weeds."
 	name = "Resin Walker (50)"
 	action_icon_state = "toggle_speed"
 	plasma_cost = 50

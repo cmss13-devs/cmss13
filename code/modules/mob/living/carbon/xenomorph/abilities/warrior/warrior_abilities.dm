@@ -1,5 +1,6 @@
 // Warrior Fling
 /datum/action/xeno_action/activable/fling
+	ability_description = "Throw an adjacent enemy away and slow them."
 	name = "Fling"
 	action_icon_state = "fling"
 	macro_path = /datum/action/xeno_action/verb/verb_fling
@@ -15,6 +16,7 @@
 
 // Warrior Lunge
 /datum/action/xeno_action/activable/lunge
+	ability_description = "Leap toward an enemy and grab them."
 	name = "Lunge"
 	action_icon_state = "lunge"
 	macro_path = /datum/action/xeno_action/verb/verb_lunge
@@ -28,6 +30,7 @@
 	var/twitch_message_cooldown = 0 //apparently this is necessary for a tiny code that makes the lunge message on cooldown not be spammable, doesn't need to be big so 5 will do.
 
 /datum/action/xeno_action/activable/warrior_punch
+	ability_description = "Deliver a heavy punch to a target at close range."
 	name = "Punch"
 	action_icon_state = "punch"
 	macro_path = /datum/action/xeno_action/verb/verb_punch
@@ -44,6 +47,7 @@
 ///Bulwark Strain
 
 /datum/action/xeno_action/onclick/toggle_plates
+	ability_description = "Encase your plates to resist knockback, strengthen directional armor and tear openings in walls. Movement slows."
 	name = "Toggle Encasing Plates"
 	action_icon_state = "encased_plates"
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_plates
@@ -54,6 +58,7 @@
 	var/speed_debuff = 1.35
 
 /datum/action/xeno_action/activable/plate_bash
+	ability_description = "Dash into a target and strike it. With plates encased, launch the target away and knock it down."
 	name = "Plate Bash"
 	action_icon_state = "plate_bash"
 	macro_path = /datum/action/xeno_action/verb/verb_plate_bash
@@ -64,6 +69,7 @@
 	var/base_damage = 20
 
 /datum/action/xeno_action/onclick/tail_swing
+	ability_description = "Trip nearby enemies or bat a grenade away with your tail."
 	name = "Tail Swing"
 	action_icon_state = "tail_swing"
 	macro_path = /datum/action/xeno_action/verb/verb_tail_swing
@@ -75,6 +81,7 @@
 	var/swing_range = 1
 
 /datum/action/xeno_action/onclick/reflective_shield
+	ability_description = "Lock your facing and reflect incoming fire from the front. Longer use extends the cooldown."
 	name = "Reflective Shield"
 	action_icon_state = "reflective_shield"
 	macro_path = /datum/action/xeno_action/verb/verb_reflective_shield

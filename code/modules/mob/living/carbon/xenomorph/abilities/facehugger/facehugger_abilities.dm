@@ -1,4 +1,5 @@
 /datum/action/xeno_action/activable/pounce/facehugger
+	ability_description = "Leap at a host to latch onto its face."
 	name = "Leap"
 	action_icon_state = "pounce"
 	action_text = "leap"

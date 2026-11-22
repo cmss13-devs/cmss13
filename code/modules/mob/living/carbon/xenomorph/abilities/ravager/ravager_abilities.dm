@@ -1,6 +1,7 @@
 
 // Rav charge
 /datum/action/xeno_action/activable/pounce/charge
+	ability_description = "Charge up to 5 tiles through obstacles. Super empowered hits add an unblockable slash, knockdown and 3 tile fling."
 	name = "Charge"
 	action_icon_state = "charge"
 	action_text = "charge"
@@ -20,6 +21,7 @@
 
 // Base ravager shield ability
 /datum/action/xeno_action/onclick/empower
+	ability_description = "Gain 50 shield. Trigger again (automatic after 6 seconds) for extra shield and slash damage per nearby enemy. With 3 or more, become super empowered for 6.5 seconds."
 	name = "Empower"
 	action_icon_state = "empower"
 	macro_path = /datum/action/xeno_action/verb/verb_empower
@@ -42,6 +44,7 @@
 
 // Rav "Scissor Cut"
 /datum/action/xeno_action/activable/scissor_cut
+	ability_description = "Deal 40 damage in a 4 tile line. Super empowered hits also inflict a 3 second heavy slow."
 	name = "Scissor Cut"
 	action_icon_state = "rav_scissor_cut"
 	macro_path = /datum/action/xeno_action/verb/verb_scissorcut
@@ -58,6 +61,7 @@
 //// BERSERKER ACTIONS
 
 /datum/action/xeno_action/onclick/apprehend
+	ability_description = "Gain a burst of speed and slow the next target you slash."
 	name = "Apprehend"
 	action_icon_state = "rav_enrage"
 	macro_path = /datum/action/xeno_action/verb/verb_apprehend
@@ -73,6 +77,7 @@
 
 
 /datum/action/xeno_action/activable/clothesline
+	ability_description = "Fling a target and heal yourself. Spending rage increases the healing."
 	name = "Clothesline"
 	action_icon_state = "rav_clothesline"
 	macro_path = /datum/action/xeno_action/verb/verb_clothesline
@@ -90,6 +95,7 @@
 	cooldown_message = "We crave blood! REND AND TEAR!"
 
 /datum/action/xeno_action/activable/eviscerate
+	ability_description = "Wind up in place, then slash nearby enemies and heal for each one hit. Spending rage increases the area of effect and damage."
 	name = "Eviscerate"
 	action_icon_state = "rav_eviscerate"
 	macro_path = /datum/action/xeno_action/verb/verb_eviscerate
@@ -111,6 +117,7 @@
 ////// HEDGEHOG ABILITIES
 
 /datum/action/xeno_action/onclick/spike_shield
+	ability_description = "Spend shards on a temporary shield that sprays bone shards when hit."
 	name = "Spike Shield (150 shards)"
 	action_icon_state = "rav_shard_shield"
 	macro_path = /datum/action/xeno_action/verb/verb_spike_shield
@@ -128,6 +135,7 @@
 	var/real_hp_per_shield_hp = 0.5 // How many real HP we get for each shield HP
 
 /datum/action/xeno_action/activable/rav_spikes
+	ability_description = "Spend shards to fire spikes that slow prey and hurt them when they move."
 	name = "Fire Spikes (75 shards)"
 	action_icon_state = "rav_spike"
 	macro_path = /datum/action/xeno_action/verb/verb_fire_spikes
@@ -141,6 +149,7 @@
 	var/ammo_type = /datum/ammo/xeno/bone_chips
 
 /datum/action/xeno_action/onclick/spike_shed
+	ability_description = "Burst shards in all directions and gain speed. Shard generation pauses afterward."
 	name = "Spike Shed (50 shards)"
 	action_icon_state = "rav_shard_shed"
 	macro_path = /datum/action/xeno_action/verb/verb_shed_spikes

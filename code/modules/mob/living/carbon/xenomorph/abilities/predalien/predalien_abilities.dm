@@ -1,5 +1,6 @@
 
 /datum/action/xeno_action/onclick/feralrush
+	ability_description = "Briefly increase your movement speed and armor."
 	name = "Feral Rush"
 	action_icon_state = "rage"
 	macro_path = /datum/action/xeno_action/verb/verb_feralrush
@@ -18,6 +19,7 @@
 
 
 /datum/action/xeno_action/onclick/predalien_roar
+	ability_description = "Roar to disrupt nearby equipment, break hunter cloaks and empowers allied xenomorphs."
 	name = "Roar"
 	action_icon_state = "rage_screech"
 	action_type = XENO_ACTION_CLICK
@@ -29,6 +31,7 @@
 	var/bonus_speed_scale = 0.05
 
 /datum/action/xeno_action/activable/feral_smash
+	ability_description = "Leap toward your target and smash down on impact."
 	name = "Feral Smash"
 	action_icon_state = "powerful_pounce"
 	action_type = XENO_ACTION_CLICK
@@ -44,6 +47,7 @@
 	var/stun_duration = 3 SECONDS
 
 /datum/action/xeno_action/activable/feralfrenzy
+	ability_description = "Rip into one enemy or slash everyone nearby, depending on your targeting mode."
 	name = "Feral Frenzy"
 	action_icon_state = "butchering"
 	action_type = XENO_ACTION_CLICK
@@ -64,6 +68,7 @@
 	var/range = 2
 
 /datum/action/xeno_action/onclick/toggle_gut_targeting
+	ability_description = "Switch Feral Frenzy between a single target and everyone around you."
 	name = "Toggle Gutting Type"
 	action_icon_state = "rav_shard_shed" // starting targetting is SINGLETARGETGUT
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_gut_targeting

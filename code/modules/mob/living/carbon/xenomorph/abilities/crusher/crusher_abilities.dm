@@ -1,4 +1,5 @@
 /datum/action/xeno_action/activable/pounce/crusher_charge
+	ability_description = "Launch yourself forward to smash through obstacles and enemies."
 	name = "Charge"
 	action_icon_state = "ready_charge"
 	action_text = "charge"
@@ -34,6 +35,7 @@
 	pounce_pass_flags = PASS_CRUSHER_CHARGE
 
 /datum/action/xeno_action/onclick/crusher_stomp
+	ability_description = "Stomp the ground to damage anyone underneath you, and knock down nearby enemies."
 	name = "Stomp"
 	action_icon_state = "stomp"
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_stomp
@@ -50,6 +52,7 @@
 	var/effect_duration = 1 SECONDS
 
 /datum/action/xeno_action/onclick/crusher_stomp/charger
+	ability_description = "Stomp nearby enemies, dealing extra damage to those already on the ground."
 	name = "Crush"
 	action_icon_state = "stomp"
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_charger_stomp
@@ -62,6 +65,7 @@
 	cooldown_message = "We have recovered our stamina. We are ready to crush tallhost chests again."
 
 /datum/action/xeno_action/onclick/crusher_shield
+	ability_description = "Gain a temporary shield and brief immunity to explosion damage. Slashing an enemy helps bring the shield off cooldown."
 	name = "Defensive Shield"
 	action_icon_state = "empower"
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_charge
@@ -75,6 +79,7 @@
 	cooldown_message = "We are ready to shield ourselves."
 
 /datum/action/xeno_action/activable/fling/charger
+	ability_description = "Ram a target with your head to knock it away."
 	name = "Headbutt"
 	action_icon_state = "ram"
 	macro_path = /datum/action/xeno_action/verb/verb_fling
@@ -91,6 +96,7 @@
 
 
 /datum/action/xeno_action/onclick/charger_charge
+	ability_description = "Toggle a momentum based charge. Keep moving forward to build speed and impact damage."
 	name = "Toggle Charging"
 	action_icon_state = "ready_charge"
 	plasma_cost = 0 // manually applied in the proc
@@ -255,6 +261,7 @@
 
 
 /datum/action/xeno_action/activable/tumble
+	ability_description = "Roll through enemies to dodge incoming fire."
 	name = "Tumble"
 	action_icon_state = "tumble"
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_tumble

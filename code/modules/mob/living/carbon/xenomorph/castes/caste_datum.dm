@@ -1,6 +1,8 @@
 // Actual caste datum basedef
 /datum/caste_datum
 	var/caste_type = ""
+	/// Action typepaths granted to a newly spawned member of this caste.
+	var/list/base_actions
 	var/display_name = ""
 	var/tier = 0
 	var/dead_icon = "Drone Dead"
@@ -32,8 +34,12 @@
 	///If they can use consoles, etc. Set on Queen
 	var/is_intelligent = 0
 	var/caste_desc = null
+	/// Combat or support mechanics to explain before a player evolves.
+	var/playstyle
 
 	// Tackles
+	/// Whether this caste has a tackle attack to describe in its preview.
+	var/can_tackle = TRUE
 	var/tackle_min = 2
 	var/tackle_max = 6
 	var/tackle_chance = 35
@@ -141,6 +147,52 @@
 
 /datum/caste_datum/can_vv_modify()
 	return FALSE
+
+/datum/caste_datum/proc/base_plasma_capacity(datum/xeno_strain/strain)
+	return max(plasma_max + (strain?.plasma_mod || 0), 0)
+
+/// Preview the destination's base form against the abilities and permanent stats of the current caste and strain.
+/datum/caste_datum/proc/show_preview(mob/living/carbon/xenomorph/xeno, mob/living/carbon/xenomorph/destination_type, confirm_action, notice)
+	if(!destination_type || !xeno.client)
+		return FALSE
+	var/list/buttons = confirm_action ? list(confirm_action, "Cancel") : list("Close")
+	var/datum/tgui_modal/xeno_preview/preview = new(xeno, null, caste_type, buttons, 0, TRUE, GLOB.always_state)
+	var/datum/xeno_strain/strain = xeno.strain
+	var/list/current_actions = xeno.caste.base_actions
+	if(strain)
+		current_actions = (current_actions - strain.actions_to_remove) | strain.actions_to_add
+	current_actions = preview.action_types(current_actions)
+	var/list/destination_actions = preview.action_types(base_actions)
+
+	var/armor_change = armor_deflection - xeno.caste.armor_deflection - (strain?.armor_mod || 0)
+	var/health_change = max_health - xeno.caste.max_health - (strain?.health_mod || 0)
+	var/damage_change = (melee_damage_lower + melee_damage_upper - xeno.caste.melee_damage_lower - xeno.caste.melee_damage_upper) * 0.5 - (strain?.damage_mod || 0)
+	var/portrait_state = "Normal [caste_type] Running"
+	var/portrait_file = initial(destination_type.icon_xeno)
+	if(HAS_TRAIT(xeno, TRAIT_XENONID) && initial(destination_type.icon_xenonid) && (portrait_state in icon_states(initial(destination_type.icon_xenonid))))
+		portrait_file = initial(destination_type.icon_xenonid)
+	if(!(portrait_state in icon_states(portrait_file)))
+		portrait_state = initial(destination_type.icon_state)
+	preview.details = list(
+		"windowTitle" = confirm_action || "Strain Information",
+		"currentCaste" = !confirm_action,
+		"notice" = notice,
+		"caste" = confirm_action ? "[strain?.name || xeno.caste_type] to [caste_type]" : "Base caste",
+		"summary" = playstyle || caste_desc,
+		"tackleMin" = tackle_min,
+		"canTackle" = can_tackle,
+		"tackleMax" = tackle_max,
+		"flavor" = initial(destination_type.desc),
+		"portrait" = icon2html(portrait_file, xeno, portrait_state, dir = SOUTH, sourceonly = TRUE, non_standard_size = TRUE),
+		"resources" = preview.resource_changes(xeno, xeno.caste, strain, src, null),
+		"stats" = preview.stat_changes(xeno, armor_change, damage_change, health_change, show_current = !confirm_action),
+		"showCurrentStats" = !confirm_action,
+		"gained" = preview.abilities(xeno, confirm_action ? destination_actions - current_actions : destination_actions),
+		"lost" = preview.abilities(xeno, current_actions - destination_actions),
+	)
+	var/choice = preview.prompt(xeno)
+	qdel(preview)
+	return confirm_action && choice == confirm_action
 
 /datum/caste_datum/New()
 	. = ..()

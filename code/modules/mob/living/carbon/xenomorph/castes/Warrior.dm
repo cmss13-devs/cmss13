@@ -1,5 +1,16 @@
 /datum/caste_datum/warrior
 	caste_type = XENO_CASTE_WARRIOR
+	playstyle = "Lunge to grab and disarm prey, then Punch or Fling to separate it from support. Slashes heal a portion of your missing health, with stronger healing when more enemies are nearby."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/activable/warrior_punch,
+		/datum/action/xeno_action/activable/lunge,
+		/datum/action/xeno_action/activable/fling,
+	)
 	tier = 2
 
 	melee_damage_lower = XENO_DAMAGE_TIER_3
@@ -46,16 +57,6 @@
 	old_x = -16
 	tier = 2
 	pull_speed = 2 // about what it was before, slightly faster
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/activable/warrior_punch,
-		/datum/action/xeno_action/activable/lunge,
-		/datum/action/xeno_action/activable/fling,
-	)
 
 	claw_type = CLAW_TYPE_SHARP
 

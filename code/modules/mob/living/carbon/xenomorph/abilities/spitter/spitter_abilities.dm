@@ -2,9 +2,11 @@
 
 
 /datum/action/xeno_action/activable/xeno_spit/spitter
+	ability_description = "Fire a glob of acid at a distant enemy."
 	name = "Spit Acid"
 
 /datum/action/xeno_action/onclick/charge_spit
+	ability_description = "Empower your next spit at the cost of range and briefly gain speed and armor."
 	name = "Charge Spit"
 	action_icon_state = "charge_spit"
 	macro_path = /datum/action/xeno_action/verb/verb_charge_spit
@@ -35,4 +37,5 @@
 	activation_delay = FALSE // Is there an activation delay?
 
 /datum/action/xeno_action/activable/tail_stab/spitter
+	ability_description = "Stab a nearby target and inject molecular acid."
 	name = "Corrosive Tail Stab"

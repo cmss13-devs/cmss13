@@ -2,6 +2,7 @@
 
 // Burrow
 /datum/action/xeno_action/activable/burrow
+	ability_description = "Burrow underground to move unseen, or resurface to attack."
 	name = "Burrow"
 	action_icon_state = "agility_on"
 	macro_path = /datum/action/xeno_action/verb/verb_burrow
@@ -21,6 +22,7 @@
 	return ..()
 
 /datum/action/xeno_action/onclick/tremor
+	ability_description = "Shake the ground to disrupt the footing of nearby enemies."
 	name = "Tremor (100)"
 	action_icon_state = "stomp"
 	macro_path = /datum/action/xeno_action/verb/verb_tremor
@@ -31,6 +33,7 @@
 	cooldown_message = "Our legs are no longer tired. We can shake the ground again."
 
 /datum/action/xeno_action/onclick/build_tunnel
+	ability_description = "Dig a tunnel entrance that sisters can travel through."
 	name = "Dig Tunnel (200)"
 	action_icon_state = "build_tunnel"
 	plasma_cost = 200

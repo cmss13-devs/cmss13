@@ -1,5 +1,6 @@
 //Slowing spit
 /datum/action/xeno_action/activable/slowing_spit
+	ability_description = "Spit neurotoxin at prey to slow it down."
 	name = "Slowing Spit"
 	action_icon_state = "neurotoxin_spit"
 	macro_path = /datum/action/xeno_action/verb/verb_slowing_spit
@@ -21,6 +22,7 @@
 	ability_uses_acid_overlay = TRUE
 // Toxic slash
 /datum/action/xeno_action/onclick/paralyzing_slash
+	ability_description = "Coat your claws in neurotoxin for 5 seconds. Each of your next 3 slashes adds 10 stacks to susceptible prey."
 	name = "Toxic Slash"
 	action_icon_state = "para_slash"
 	macro_path = /datum/action/xeno_action/verb/verb_paralyzing_slash
@@ -33,6 +35,7 @@
 	var/buff_duration = 50
 
 /datum/action/xeno_action/activable/tail_stab/sentinel
+	ability_description = "Consume neurotoxin stacks to burn your target. Enough stacks also grant you speed and armor."
 	name = "Catalytic Shock Tailstab"
 	damage_multiplier = 1
 	var/duration = 35
@@ -74,6 +77,7 @@
 	to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our movement speed slow down!"))
 
 /datum/action/xeno_action/activable/draining_bite
+	ability_description = "Bite adjacent prey to stun it. Built up neurotoxin strengthens the stun."
 	name = "Draining bite"
 	action_icon_state = "draining_bite"
 	macro_path = /datum/action/xeno_action/verb/verb_headbite

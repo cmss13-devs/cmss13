@@ -4,6 +4,7 @@
 ////////// VANGUARD ABILITIES
 
 /datum/action/xeno_action/activable/pierce
+	ability_description = "Stab through enemies in a line. Hitting at least 2 restores your shield."
 	name = "Pierce"
 	action_icon_state = "prae_pierce"
 	macro_path = /datum/action/xeno_action/verb/verb_pierce
@@ -18,6 +19,7 @@
 	cooldown_message = "Our tail is no longer exhausted. We can Pierce with it again!"
 
 /datum/action/xeno_action/activable/pounce/prae_dash
+	ability_description = "Dash forward, then activate again to slash the area ahead."
 	name = "Dash"
 	action_icon_state = "prae_dash"
 	action_text = "dash"
@@ -45,6 +47,7 @@
 	pounce_pass_flags = PASS_MOB_THRU|PASS_OVER_THROW_MOB
 
 /datum/action/xeno_action/activable/cleave
+	ability_description = "Strike a target to root it or fling it away. Your shield strengthens the effect."
 	name = "Cleave"
 	action_icon_state = "prae_cleave_action"
 	macro_path = /datum/action/xeno_action/verb/verb_cleave
@@ -66,6 +69,7 @@
 	var/buffed = FALSE // Are we buffed
 
 /datum/action/xeno_action/onclick/toggle_cleave
+	ability_description = "Switch Cleave between rooting a target and flinging it away."
 	name = "Toggle Cleave Type"
 	action_icon_state = "prae_cleave_root"
 	plasma_cost = 0
@@ -109,6 +113,7 @@
 ////////// Oppressor powers
 
 /datum/action/xeno_action/activable/tail_stab/tail_seize //no verbmacrohotkey, its just tail stab.
+	ability_description = "Snare a target with your tail, slowing it and pulling it closer."
 	name = "Tail Seize"
 	action_icon_state = "tail_seize"
 	action_type = XENO_ACTION_CLICK
@@ -118,6 +123,7 @@
 	cooldown_message = "Our tail is no longer tired! We can seize control of our enemies again!"
 
 /datum/action/xeno_action/activable/prae_abduct
+	ability_description = "Hook up to 3 enemies and pull them toward you, slowing them."
 	name = "Abduct"
 	action_icon_state = "abduct"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_abduct
@@ -132,6 +138,7 @@
 	cooldown_message = "Our tail twitches eagerly with energy. We are ready to snatch tallhosts again."
 
 /datum/action/xeno_action/activable/oppressor_punch
+	ability_description = "Punch through armor and shorten your other cooldowns. Slowed targets take extra damage and are rooted."
 	name = "Dislocate"
 	action_icon_state = "punch"
 	macro_path = /datum/action/xeno_action/verb/verb_oppressor_punch
@@ -158,6 +165,7 @@
 
 // Tail lash
 /datum/action/xeno_action/activable/tail_lash
+	ability_description = "Knock enemies back with your tail and slow them."
 	name = "Tail Lash"
 	action_icon_state = "prae_tail_lash"
 	macro_path = /datum/action/xeno_action/verb/verb_crush
@@ -174,12 +182,14 @@
 ////////// Dancer Abilities
 
 /datum/action/xeno_action/activable/tail_stab/harpoon_tail
+	ability_description = "Lance a target with your tail. Disarm intent delivers an armor piercing blunt strike."
 	name = "Tail Lance"
 	action_icon_state = "tail_harpoon"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_TAIL_STAB
 
 /datum/action/xeno_action/activable/prae_impale
+	ability_description = "Stab a nearby enemy. Consume a red or golden tag to strike twice. A golden tag also resets this ability's cooldown."
 	name = "Impale"
 	action_icon_state = "prae_impale"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_impale
@@ -193,6 +203,7 @@
 	cooldown_message = "We are ready to impale another foe!"
 
 /datum/action/xeno_action/onclick/prae_dodge
+	ability_description = "Briefly gain speed and slip through enemies and allies to evade fire."
 	name = "Dodge"
 	action_icon_state = "prae_dodge"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_dodge
@@ -214,6 +225,7 @@
 	var/safe_click_cooldown = 0
 
 /datum/action/xeno_action/activable/prae_tail_trip
+	ability_description = "Trip prey with your tail. Consume a red or golden tag for a stronger knockdown and daze. A golden tag also resets this ability's cooldown."
 	name = "Tail Trip"
 	action_icon_state = "prae_tail_trip"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_tail_trip
@@ -235,11 +247,13 @@
 ////////// BASE PRAE
 
 /datum/action/xeno_action/activable/xeno_spit/praetorian
+	ability_description = "Spit acid to build stacks on a human target. 5 stacks trigger a burn. Hitting a target with spit also builds a shield, up to 45."
 	name = "Spit Acid"
 	xeno_cooldown = 2 SECONDS
 
 
 /datum/action/xeno_action/activable/pounce/base_prae_dash
+	ability_description = "Dash toward the selected tile to close a gap or escape."
 	name = "Dash"
 	action_icon_state = "prae_dash"
 	action_text = "dash"
@@ -257,6 +271,7 @@
 	cooldown_message = "Our legs are ready to take us at unparalleled speeds."
 
 /datum/action/xeno_action/activable/prae_acid_ball
+	ability_description = "Launch a ball of acid that bursts and scatters acid around it."
 	name = "Acid Ball"
 	action_icon_state = "prae_acid_ball"
 	macro_path = /datum/action/xeno_action/verb/verb_acid_ball
@@ -302,6 +317,7 @@
 
 
 /datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid
+	ability_description = "Spray acid across the ground to burn enemies in its path."
 	name = "Spray Acid"
 	action_icon_state = "spray_acid"
 	macro_path = /datum/action/xeno_action/verb/verb_spray_acid
@@ -319,6 +335,7 @@
 ///////////////////////// VALKYRIE PRAE
 
 /datum/action/xeno_action/activable/tail_stab/tail_fountain //no verbmacrohotkey, its just tail stab.
+	ability_description = "Extinguish a nearby ally or enemy with fluid from your tail."
 	name = "Tail Fountain"
 	action_icon_state = "tail_seize"
 	action_type = XENO_ACTION_CLICK
@@ -329,6 +346,7 @@
 	cooldown_message = "Our tail is filled with harmless acid again."
 
 /datum/action/xeno_action/activable/valkyrie_rage
+	ability_description = "Spend fury to bolster your armor and empower a nearby sister."
 	name = "Tantrum"
 	action_icon_state = "warden_heal"
 	action_type = XENO_ACTION_QUEUE
@@ -355,6 +373,7 @@
 
 
 /datum/action/xeno_action/activable/high_gallop
+	ability_description = "Strike an area in front of you to knock enemies down and throw grenades back."
 	name = "High Gallop"
 	action_icon_state = "prae_tail_trip"
 	action_type = XENO_ACTION_CLICK
@@ -367,6 +386,7 @@
 	cooldown_message = "Our tail feels sturdy as a metal pillar! We can toss anything with it!"
 
 /datum/action/xeno_action/onclick/fight_or_flight
+	ability_description = "Spend fury to clear debuffs from nearby sisters. Higher fury increases the range."
 	name = "Fight or Flight"
 	action_icon_state = "screech"
 	action_type = XENO_ACTION_ACTIVATE
@@ -382,6 +402,7 @@
 	cooldown_message = "We feel an overwhelming urge to keep our sisters alive!"
 
 /datum/action/xeno_action/activable/prae_retrieve
+	ability_description = "Pull an allied xenomorph toward you."
 
 	name = "Retrieve"
 	action_icon_state = "retrieve"

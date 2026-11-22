@@ -1,4 +1,5 @@
 /datum/action/xeno_action/activable/acid_barrage
+	ability_description = "Hold to charge up to 8 acid shots, then release to fire. Catalyze adds 6 shots to the volley."
 	name = "Acid Barrage"
 	action_icon_state = "volley"
 	macro_path = /datum/action/xeno_action/verb/acid_barrage
@@ -20,6 +21,7 @@
 	var/list/timers = list()
 
 /datum/action/xeno_action/activable/pounce/caustic_embrace
+	ability_description = "Lunge 1 tile and splash acid around your landing. With Catalyze, leap up to 5 tiles and knock down and slash the target, intensifying its acid."
 	name = "Caustic Embrace"
 	action_icon_state = "embrace"
 	macro_path = /datum/action/xeno_action/verb/caustic_embrace
@@ -40,6 +42,7 @@
 	cooldown_message = "We have replenished our acid stores. We can now slash and leave puddles."
 
 /datum/action/xeno_action/onclick/oozing_wounds
+	ability_description = "Spread acid around yourself. The more wounded you are, the farther it reaches. With Catalyze, the puddles also stun and intensify acid on targets."
 	name = "Oozing Wounds"
 	action_icon_state = "oozing_wounds"
 	macro_path = /datum/action/xeno_action/verb/oozing_wounds
@@ -49,6 +52,7 @@
 	cooldown_message = "We have regained enough energy to spill our blood for the Hive."
 
 /datum/action/xeno_action/onclick/catalyze
+	ability_description = "Spend 1 Hypertension stack to enhance Acid Barrage, Caustic Embrace or Oozing Wounds. Use the enhanced ability within 10 seconds."
 	name = "Catalyze"
 	action_icon_state = "catalyze"
 	macro_path = /datum/action/xeno_action/verb/catalyze
@@ -60,6 +64,7 @@
 	var/duration = 10 SECONDS
 
 /datum/action/xeno_action/activable/tail_stab/despoiler
+	ability_description = "Strike an acid coated target to deal extra burn damage based on its acid level."
 	name = "Finishing Acid Stab"
 	charge_time = 2 SECONDS
 

@@ -1,5 +1,18 @@
 /datum/caste_datum/despoiler
 	caste_type = XENO_CASTE_DESPOILER
+	playstyle = "Build Hypertension by taking damage and slashing prey. Stacks increase slash burn damage. Spend a stack on Catalyze to enhance Acid Barrage, Caustic Embrace or Oozing Wounds."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab/despoiler,
+		/datum/action/xeno_action/activable/corrosive_acid/strong,
+		/datum/action/xeno_action/activable/acid_barrage,
+		/datum/action/xeno_action/activable/pounce/caustic_embrace,
+		/datum/action/xeno_action/onclick/oozing_wounds,
+		/datum/action/xeno_action/onclick/catalyze,
+	)
 	tier = 3
 
 	melee_damage_lower = XENO_DAMAGE_TIER_1
@@ -44,18 +57,6 @@
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3
 
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab/despoiler,
-		/datum/action/xeno_action/activable/corrosive_acid/strong,
-		/datum/action/xeno_action/activable/acid_barrage,
-		/datum/action/xeno_action/activable/pounce/caustic_embrace,
-		/datum/action/xeno_action/onclick/oozing_wounds,
-		/datum/action/xeno_action/onclick/catalyze,
-	)
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_3/despoiler.dmi'
 	icon_xenonid = null // if someone makes xenoid sprites in future feel free to
@@ -107,6 +108,10 @@
 
 /datum/behavior_delegate/despoiler_base
 	name = "Base Despoiler Behavior Delegate"
+	resource_name = "Hypertension"
+	resource_capacity = 4
+	resource_icon_state = "catalyze"
+	resource_description = "Taking damage and slashing prey build stacks. Spend one stack with Catalyze to enhance your next ability."
 
 	var/next_ability_empowered = FALSE
 	var/image/empowered_overlay
@@ -125,7 +130,7 @@
 
 	if(hypertension >= hypertension_to_stacks_ratio)
 		hypertension -= hypertension_to_stacks_ratio
-		hypertension_stacks = min(4, hypertension_stacks+1)
+		hypertension_stacks = min(resource_capacity, hypertension_stacks+1)
 		xeno.update_hypertension()
 
 /datum/behavior_delegate/despoiler_base/on_life()

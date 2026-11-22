@@ -1,5 +1,16 @@
 /datum/caste_datum/ravager
 	caste_type = XENO_CASTE_RAVAGER
+	playstyle = "Each slash cuts 3 seconds from Charge's cooldown. Use Empower in a crowd to enhance Charge and Scissor Cut."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/activable/pounce/charge,
+		/datum/action/xeno_action/onclick/empower,
+		/datum/action/xeno_action/activable/scissor_cut,
+	)
 	tier = 3
 
 	melee_damage_lower = XENO_DAMAGE_TIER_6
@@ -52,16 +63,6 @@
 	claw_type = CLAW_TYPE_VERY_SHARP
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_XENO_FRENZY
 
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/activable/pounce/charge,
-		/datum/action/xeno_action/onclick/empower,
-		/datum/action/xeno_action/activable/scissor_cut,
-	)
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_3/ravager.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_3/ravager.dmi'

@@ -4,6 +4,7 @@
 	plasma_cost = 0
 
 /datum/action/xeno_action/onclick/grow_ovipositor
+	ability_description = "Anchor yourself to grow an ovipositor and lay eggs for the hive."
 	name = "Grow Ovipositor (500)"
 	action_icon_state = "grow_ovipositor"
 	plasma_cost = 500
@@ -49,6 +50,7 @@
 	cooldown_message = "If we have the stores, we can can heal one of our children again."
 
 /datum/action/xeno_action/onclick/queen_word
+	ability_description = "Broadcast a message to your hive."
 	name = "Word of the Queen (50)"
 	action_icon_state = "queen_word"
 	plasma_cost = 50
@@ -56,6 +58,7 @@
 	macro_path = /mob/living/carbon/xenomorph/proc/hive_message
 
 /datum/action/xeno_action/activable/gut
+	ability_description = "Rip open an adjacent victim with your claws."
 	name = "Gut (200)"
 	action_icon_state = "gut"
 	macro_path = /datum/action/xeno_action/verb/verb_gut
@@ -77,11 +80,13 @@
 	var/turf_build_cooldown = 10 SECONDS
 
 /datum/action/xeno_action/onclick/manage_hive
+	ability_description = "Manage membership and permissions within your hive."
 	name = "Manage The Hive"
 	action_icon_state = "xeno_readmit"
 	plasma_cost = 0
 
 /datum/action/xeno_action/onclick/send_thoughts // and prayers
+	ability_description = "Send a psychic whisper, issue an order or project psychic radiance."
 	name = "Psychic Communication"
 	action_icon_state = "psychic_whisper"
 	plasma_cost = 0

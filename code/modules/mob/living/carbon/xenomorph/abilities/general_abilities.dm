@@ -21,6 +21,7 @@
 		client?.set_right_click_menu_mode(shift_only = TRUE)
 
 /datum/action/xeno_action/onclick/plant_weeds
+	ability_description = "Plant a node that spreads weeds across nearby ground."
 	name = "Plant Weeds (75)"
 	action_icon_state = "plant_weeds"
 	plasma_cost = 75
@@ -33,6 +34,7 @@
 	var/node_type = /obj/effect/alien/weeds/node
 
 /datum/action/xeno_action/onclick/autoweeding_toggle
+	ability_description = "Toggle automatic weed planting as you move."
 	name = "Toggle Autoweeding"
 	action_icon_state = "autoweed_toggle"
 	plasma_cost = 0
@@ -50,6 +52,7 @@
 
 // Resting
 /datum/action/xeno_action/onclick/xeno_resting
+	ability_description = "Lie down to rest or stand back up."
 	name = "Rest"
 	action_icon_state = "resting"
 	action_type = XENO_ACTION_CLICK
@@ -81,6 +84,7 @@
 
 // release_haul
 /datum/action/xeno_action/onclick/release_haul
+	ability_description = "Release the creature you are hauling."
 	name = "Release"
 	action_icon_state = "release_haul"
 	plasma_cost = 0
@@ -89,6 +93,9 @@
 
 // Choose Resin
 /datum/action/xeno_action/onclick/choose_resin
+	preview_icon_file = 'icons/mob/hud/xeno_building.dmi'
+	preview_icon_state = /datum/resin_construction/resin_turf/wall::construction_name
+	ability_description = "Select the structure you will build when secreting resin."
 	name = "Choose Resin Structure"
 	action_icon_state = "retrieve_egg"
 	plasma_cost = 0
@@ -101,6 +108,7 @@
 
 // Secrete Resin
 /datum/action/xeno_action/activable/secrete_resin
+	ability_description = "Shape your selected resin structure on weeds."
 	name = "Secrete Resin"
 	action_icon_state = "secrete_resin"
 	var/thick = FALSE
@@ -133,6 +141,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_5
 
 /datum/action/xeno_action/activable/secrete_resin/hivelord
+	ability_description = "Build a thick resin structure or reinforce existing resin."
 	name = "Secrete Thick Resin"
 	thick = TRUE
 
@@ -154,10 +163,12 @@
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', "mark_[x.icon_state]")
 
 /datum/action/xeno_action/activable/info_marker/queen
+	ability_description = "Leave a resin marker to direct the hive to a location."
 	max_markers = 5
 
 // Corrosive Acid
 /datum/action/xeno_action/activable/corrosive_acid
+	ability_description = "Coat an object or wall in acid to dissolve it over time."
 	name = "Corrosive Acid (100)"
 	action_icon_state = "corrosive_acid"
 	var/acid_plasma_cost = 100
@@ -200,6 +211,7 @@
 	acid_type = /obj/effect/xenomorph/acid/strong
 
 /datum/action/xeno_action/onclick/emit_pheromones
+	ability_description = "Choose a pheromone aura to support nearby sisters."
 	name = "Emit Pheromones (30)"
 	action_icon_state = "emit_pheromones"
 	plasma_cost = 30
@@ -299,6 +311,7 @@
 	owner.flags_atom &= ~DIRLOCK
 
 /datum/action/xeno_action/onclick/toggle_long_range
+	ability_description = "Extend your vision to scout distant terrain and targets."
 	name = "Toggle Long-Range Sight"
 	action_icon_state = "toggle_long_range"
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_long_range
@@ -378,6 +391,7 @@
 // ... or mutated at runtime by another action that retrieves and edits these values
 // ... as they are all safely mutable. (Except possibly xeno_cooldown)
 /datum/action/xeno_action/activable/spray_acid
+	ability_description = "Spray acid across the ground to burn enemies in its path."
 	name = "Spray Acid"
 	action_icon_state = "spray_acid"
 	var/action_text = "spray acid"
@@ -401,6 +415,7 @@
 
 
 /datum/action/xeno_action/activable/transfer_plasma
+	ability_description = "Give some of your plasma to another xenomorph."
 	name = "Transfer Plasma"
 	action_icon_state = "transfer_plasma"
 	var/plasma_transfer_amount = 50
@@ -416,6 +431,7 @@
 	return ..()
 
 /datum/action/xeno_action/onclick/xenohide
+	ability_description = "Flatten yourself to hide beneath objects."
 	name = "Hide"
 	action_icon_state = "xenohide"
 	plasma_cost = 0
@@ -454,6 +470,7 @@
 		button.icon_state = "template_active"
 
 /datum/action/xeno_action/onclick/place_trap
+	ability_description = "Shape a resin hole that can conceal a facehugger or store acid."
 	name = "Place resin hole (200)"
 	action_icon_state = "place_trap"
 	plasma_cost = 200
@@ -462,6 +479,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 
 /datum/action/xeno_action/activable/place_construction
+	ability_description = "Mark a site for a hive structure that sisters can build by donating plasma."
 	name = "Order Construction (400)"
 	action_icon_state = "morph_resin"
 	macro_path = /datum/action/xeno_action/verb/place_construction
@@ -469,9 +487,11 @@
 	ability_primacy = XENO_PRIMARY_ACTION_5
 
 /datum/action/xeno_action/activable/place_construction/not_primary //so it doesn't screw other macros up
+	preview_as = /datum/action/xeno_action/activable/place_construction
 	ability_primacy = XENO_NOT_PRIMARY_ACTION
 
 /datum/action/xeno_action/activable/xeno_spit
+	ability_description = "Spit a projectile at a distant target."
 	name = "Xeno Spit"
 	action_icon_state = "xeno_spit"
 	macro_path = /datum/action/xeno_action/verb/verb_xeno_spit
@@ -494,6 +514,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/activable/tail_stab
+	ability_description = "Thrust your tail at a nearby enemy for a melee strike."
 	name = "Tail Stab"
 	action_icon_state = "tail_attack"
 	action_type = XENO_ACTION_CLICK
@@ -545,6 +566,7 @@
 		return TRUE
 
 /datum/action/xeno_action/active_toggle/toggle_meson_vision
+	ability_description = "Toggle vision that reveals terrain through obstructions."
 	name = "Toggle Meson Vision"
 	action_icon_state = "project_xeno"
 	plasma_cost = 0
@@ -560,13 +582,14 @@
 	owner.sight &= ~SEE_TURFS
 
 /mob/living/carbon/xenomorph/proc/add_abilities()
-	if(!base_actions)
+	if(!caste.base_actions)
 		return
-	for(var/action_path in base_actions)
+	for(var/action_path in caste.base_actions)
 		give_action(src, action_path)
 
 
 /datum/action/xeno_action/onclick/toggle_seethrough
+	ability_description = "Toggle transparency so you can see what is beneath you."
 	name = "Toggle Seethrough"
 	action_icon_state = "xenohide"
 	xeno_cooldown = 5 SECONDS

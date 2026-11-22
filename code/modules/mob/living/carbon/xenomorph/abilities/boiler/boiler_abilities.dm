@@ -6,6 +6,7 @@
 	movement_slowdown = XENO_SPEED_SLOWMOD_ZOOM
 
 /datum/action/xeno_action/onclick/shift_spits/boiler
+	ability_description = "Switch between acid or neuorotoxic gas carried by your bombardment glob."
 	name = "Toggle Gas Type"
 	action_icon_state = "shift_spit_acid_glob"
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_spit_type
@@ -23,6 +24,7 @@
 
 
 /datum/action/xeno_action/activable/xeno_spit/bombard
+	ability_description = "Lob a gas glob at distant terrain to cover the impact area in your selected gas."
 	name = "Bombard"
 	action_icon_state = "bombard"
 	cooldown_message = "Our stomach fills with another gas glob. We are ready to bombard again."
@@ -39,6 +41,7 @@
 	var/cooldown_duration = 20 SECONDS
 
 /datum/action/xeno_action/onclick/acid_shroud  // acid dump alternative
+	ability_description = "Release a cloud of your selected gas around yourself."
 	name = "Acid Shroud"
 	action_icon_state = "acid_shroud"
 	action_type = XENO_ACTION_ACTIVATE
@@ -62,5 +65,6 @@
 	var/cooldown_duration = 30 SECONDS
 
 /datum/action/xeno_action/activable/tail_stab/boiler
+	ability_description = "Stab a target to inject acid or neurotoxin, depending on your selected gas."
 	name = "Toxic Tail Stab"
 	cooldown_message = "Our tail's acid stores have filled up enough to stab with it."

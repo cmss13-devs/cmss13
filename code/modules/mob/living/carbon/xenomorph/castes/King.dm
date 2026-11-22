@@ -1,5 +1,17 @@
 /datum/caste_datum/king
 	caste_type = XENO_CASTE_KING
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/onclick/rend,
+		/datum/action/xeno_action/activable/doom,
+		/datum/action/xeno_action/activable/destroy,
+		/datum/action/xeno_action/onclick/king_shield,
+		/datum/action/xeno_action/onclick/emit_pheromones,
+	)
 	caste_desc = "The end of the line."
 	tier = 4
 	is_intelligent = TRUE
@@ -46,18 +58,6 @@
 	age = -1
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE
 
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/onclick/rend,
-		/datum/action/xeno_action/activable/doom,
-		/datum/action/xeno_action/activable/destroy,
-		/datum/action/xeno_action/onclick/king_shield,
-		/datum/action/xeno_action/onclick/emit_pheromones,
-	)
 
 	water_config = /datum/water_overlay_config/xeno/medium/loud_stomps
 

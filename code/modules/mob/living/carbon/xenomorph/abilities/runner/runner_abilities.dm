@@ -1,4 +1,5 @@
 /datum/action/xeno_action/activable/pounce/runner
+	ability_description = "Leap toward a target to knock them down, briefly rooting you in place."
 	name = "Pounce"
 	action_icon_state = "pounce"
 	macro_path = /datum/action/xeno_action/verb/verb_pounce
@@ -21,6 +22,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/activable/runner_skillshot
+	ability_description = "Fire a burst of bone chips at a distant target."
 	name = "Bone Spur"
 	action_icon_state = "runner_bonespur"
 	macro_path = /datum/action/xeno_action/verb/verb_runner_bonespurs
@@ -33,6 +35,7 @@
 	var/ammo_type = /datum/ammo/xeno/bone_chips/spread/runner_skillshot
 
 /datum/action/xeno_action/activable/acider_acid
+	ability_description = "Spend stored acid to dissolve an obstacle with a fast, powerful secretion."
 	name = "Corrosive Acid"
 	action_icon_state = "corrosive_acid"
 	var/acid_type = /obj/effect/xenomorph/acid/strong
@@ -42,6 +45,7 @@
 	var/acid_cost = 100
 
 /datum/action/xeno_action/activable/acider_for_the_hive
+	ability_description = "Start a delayed acid explosion. More stored acid increases its reach and power."
 	name = "For the Hive!"
 	action_icon_state = "screech"
 	macro_path = /datum/action/xeno_action/verb/verb_acider_sacrifice

@@ -1,5 +1,17 @@
 /datum/caste_datum/defender
 	caste_type = XENO_CASTE_DEFENDER
+	playstyle = "Lower your crest to gain armor and resist knockback while moving slowly. Fortify to hold ground, then leave the stance to headbutt targets away or sweep enemies off your flanks."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab/slam,
+		/datum/action/xeno_action/onclick/toggle_crest,
+		/datum/action/xeno_action/activable/headbutt,
+		/datum/action/xeno_action/onclick/tail_sweep,
+		/datum/action/xeno_action/activable/fortify,
+	)
 	caste_desc = "A sturdy front line combatant."
 	tier = 1
 
@@ -40,17 +52,6 @@
 	old_x = -16
 	tier = 1
 
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab/slam,
-		/datum/action/xeno_action/onclick/toggle_crest,
-		/datum/action/xeno_action/activable/headbutt,
-		/datum/action/xeno_action/onclick/tail_sweep,
-		/datum/action/xeno_action/activable/fortify,
-	)
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_1/defender.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_1/defender.dmi'

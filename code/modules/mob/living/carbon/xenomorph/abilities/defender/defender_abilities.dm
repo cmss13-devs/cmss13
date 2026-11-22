@@ -1,4 +1,5 @@
 /datum/action/xeno_action/onclick/toggle_crest
+	ability_description = "Raise or lower your crest to trade mobility for protection."
 	name = "Toggle Crest Defense"
 	action_icon_state = "crest_defense"
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_crest
@@ -11,6 +12,7 @@
 	var/speed_debuff = 1
 
 /datum/action/xeno_action/activable/headbutt
+	ability_description = "With your crest raised, lunge into range and knock the target back 1 tile. Lowering your crest trades the lunge and 10 damage for 3 tiles of knockback."
 	name = "Headbutt"
 	action_icon_state = "headbutt"
 	macro_path = /datum/action/xeno_action/verb/verb_headbutt
@@ -23,10 +25,12 @@
 	cooldown_message = "Our head and neck are primed for another headbutt."
 
 /datum/action/xeno_action/activable/headbutt/steel_crest
+	ability_description = "Deliver a stronger headbutt with extra knockback, even while fortified."
 	base_damage = 37.5
 	usable_while_fortified = TRUE
 
 /datum/action/xeno_action/onclick/tail_sweep
+	ability_description = "Sweep your tail to knock down nearby enemies. Raise your crest and leave Fortify before sweeping."
 	name = "Tail Sweep"
 	action_icon_state = "tail_sweep"
 	macro_path = /datum/action/xeno_action/verb/verb_tail_sweep
@@ -37,6 +41,7 @@
 	cooldown_message = "Our tail is no longer tired. We can now sweep or slam it again."
 
 /datum/action/xeno_action/activable/fortify
+	ability_description = "Brace in place to resist incoming damage."
 	name = "Fortify"
 	action_icon_state = "fortify"
 	macro_path = /datum/action/xeno_action/verb/verb_fortify
@@ -49,14 +54,17 @@
 	cooldown_message = "We have regained enough stamina to curl up and take damage for our sisters."
 
 /datum/action/xeno_action/activable/fortify/steel_crest
+	ability_description = "Brace for increased protection while retaining the ability to move slowly and headbutt."
 	frontal_armor = 15
 
 /datum/action/xeno_action/activable/tail_stab/slam
+	ability_description = "Smash a nearby target with a blunt tail strike."
 	name = "Tail Slam"
 	action_icon_state = "tail_slam"
 	blunt_stab = TRUE
 
 /datum/action/xeno_action/onclick/soak
+	ability_description = "Absorb incoming damage to recover health and refresh Tail Slam."
 	name = "Soak"
 	action_icon_state = "soak"
 	macro_path = /datum/action/xeno_action/verb/verb_soak

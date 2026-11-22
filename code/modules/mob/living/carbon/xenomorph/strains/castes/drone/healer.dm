@@ -1,5 +1,6 @@
 /datum/xeno_strain/healer
 	name = DRONE_HEALER
+	summary = "Spend your own health to heal sisters and grow up to 3 lesser fruits. You gain stronger pheromones but deal less slash damage and tackle less reliably."
 	description = "We lose our choice of resin secretions, a chunk of our slash damage, and we're slightly less capable of tackling hosts in exchange for strong pheromones, increased plasma transfer, the ability to use a bit of our health to plant a maximum of three lesser resin fruits, and, most importantly, we can produce a regenerative resin salve with Apply Salve by using our vital fluids and a fifth of our plasma to heal our sisters. Be wary, this is a dangerous process; we can overexert ourselves to unconsciousness, or even die..."
 	flavor_description = "United we stand, divided we fall. We live for the hive, we die for the hive."
 	icon_state_prefix = "Healer"
@@ -36,6 +37,7 @@
 */
 
 /datum/action/xeno_action/activable/transfer_plasma/healer //Improved plasma transfer, but not as much as Hivey.
+	ability_description = "Transfer a larger dose of plasma to an adjacent sister."
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	plasma_transfer_amount = 100
 	transfer_delay = 15
@@ -46,6 +48,7 @@
 */
 
 /datum/action/xeno_action/activable/apply_salve
+	ability_description = "Spend health and plasma to coat a sister in resin that heals her over time."
 	name = "Apply Resin Salve"
 	action_icon_state = "apply_salve"
 	var/health_transfer_amount = 100
@@ -204,6 +207,7 @@
 	holder.overlays.Cut()
 
 /datum/action/xeno_action/activable/healer_sacrifice
+	ability_description = "Give your life to transfer health to a wounded sister."
 	name = "Sacrifice"
 	action_icon_state = "screech"
 	var/max_range = 1

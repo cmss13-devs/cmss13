@@ -1,5 +1,6 @@
 /datum/action/xeno_action/activable/pounce/gorge // charge them with your spikes
 	name = "Gorge"
+	ability_description = "Pounce past shields and gore your target with your spikes."
 	action_icon_state = "headbite"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy =  XENO_PRIMARY_ACTION_1
@@ -12,6 +13,7 @@
 
 /datum/action/xeno_action/onclick/sense_owner // tells them where the pred is
 	name = "Find Owner"
+	ability_description = "Sniff the ground to sense your owner's distance and direction on this level."
 	action_icon_state = "mark_hosts"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2

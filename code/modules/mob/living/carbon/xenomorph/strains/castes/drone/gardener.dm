@@ -1,5 +1,6 @@
 /datum/xeno_strain/gardener
 	name = DRONE_GARDENER
+	summary = "Cultivate up to 6 potent fruits, reinforce resin and spread hardy weeds. You regenerate slightly faster on weeds."
 	description = "We trade our choice of resin secretions, our corrosive acid, and our ability to transfer plasma for a tiny bit of extra health regeneration on weeds and several new abilities, including the ability to plant hardier weeds, temporarily reinforce structures with our plasma, and to plant up to six potent resin fruits for our sisters by secreting our vital fluids at the cost of a bit of our health for each fruit we shape. Resin Surge can force our fruits to mature rapidly. As shapers of fruits, we can harvest and feed any fruit 50% faster."
 	flavor_description = "The glory of gardening: hands in the weeds, head in the dark, heart with resin."
 	regen_mult = XENO_REGEN_MULTIPLIER_TIER_1
@@ -20,6 +21,13 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/drone_gardener
 
+/datum/xeno_strain/gardener/get_preview_portrait(mob/living/carbon/xenomorph/xeno)
+	var/icon/portrait = ..()
+	var/icon/fruit_sac = icon('icons/mob/xenos/castes/tier_1/drone_strain_overlays.dmi', "Gardener Drone Walking", SOUTH, 1)
+	fruit_sac.Blend(/obj/effect/alien/resin/fruit/greater::gardener_sac_color, ICON_MULTIPLY)
+	portrait.Blend(fruit_sac, ICON_OVERLAY)
+	return portrait
+
 /datum/xeno_strain/gardener/apply_strain(mob/living/carbon/xenomorph/drone/drone)
 	..() // stat modifiers
 	drone.available_fruits = list(
@@ -39,6 +47,7 @@
 			break // Don't need to keep looking
 
 /datum/action/xeno_action/onclick/plant_resin_fruit
+	ability_description = "Spend health and plasma to grow a lesser resin fruit for the hive."
 	name = "Plant Resin Fruit (50)"
 	action_icon_state = "gardener_plant"
 	plasma_cost = 50
@@ -49,6 +58,7 @@
 	var/health_cost = 50
 
 /datum/action/xeno_action/onclick/plant_resin_fruit/greater
+	ability_description = "Spend health and plasma to grow your selected variety of potent resin fruit."
 	name = "Plant Resin Fruit (100)"
 	plasma_cost = 100
 	ability_primacy = XENO_PRIMARY_ACTION_4
@@ -117,6 +127,9 @@
 	return ..()
 
 /datum/action/xeno_action/onclick/change_fruit
+	preview_icon_file = 'icons/mob/xenos/fruits.dmi'
+	preview_icon_state = /obj/effect/alien/resin/fruit/greater::mature_icon_state
+	ability_description = "Choose which variety of resin fruit to grow next."
 	name = "Change Fruit"
 	action_icon_state = "blank"
 	plasma_cost = 0
@@ -217,6 +230,7 @@
 */
 
 /datum/action/xeno_action/activable/resin_surge
+	ability_description = "Reinforce resin structures or rapidly ripen a resin fruit."
 	name = "Resin Surge (75)"
 	action_icon_state = "gardener_resin_surge"
 	plasma_cost = 75
@@ -342,6 +356,7 @@
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/onclick/plant_weeds/gardener
+	ability_description = "Plant a hardy node that spreads tougher weeds."
 	name = "Plant Hardy Weeds (125)"
 	action_icon_state = "plant_gardener_weeds"
 	plasma_cost = 125

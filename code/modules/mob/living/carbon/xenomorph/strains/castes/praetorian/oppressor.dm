@@ -1,6 +1,7 @@
 /datum/xeno_strain/oppressor
 	// Dread it, run from it, destiny still arrives... or should I say, I do
 	name = PRAETORIAN_OPPRESSOR
+	summary = "Trade movement speed and slash damage for explosive resistance. Stay back and pull enemies into reach with Abduct to punish out of position targets. Punch abducted targets to root them, and separate them further with Tail Lash."
 	description = "We abandon all of our acid-based abilities, our dash, some speed, and a bit of our slash damage for some resistance against small explosives, slashes that deal extra damage to prone targets, and several powerful abilities. Our Abduct ability pulls up to three non-prone enemies towards us, slows them, and has varying effects depending on how many victims we pull. Our Dislocate ability deals armor-piercing damage, extra damage to slowed enemies, and reduces all ability cooldowns by 5 seconds if it lands. We exchange our tail stab for Tail Seize, which has a shorter windup, extra range, and grabs and slows enemies. Finally, Tail Lash, after a windup, knocks back and slows anything in a 2x3 cone in front of us."
 	flavor_description = "My reach is endless, this one will pull down the heavens."
 	icon_state_prefix = "Oppressor"

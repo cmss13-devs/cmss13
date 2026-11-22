@@ -1,6 +1,23 @@
 //burrower is COMBAT support
 /datum/caste_datum/burrower
 	caste_type = XENO_CASTE_BURROWER
+	playstyle = "Dig linked tunnel entrances for the hive and hide facehuggers in resin traps. Burrow to approach underground, then surface and use Tremor to disrupt enemies around you."
+	base_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/activable/corrosive_acid,
+		/datum/action/xeno_action/activable/place_construction,
+		/datum/action/xeno_action/onclick/build_tunnel,
+		/datum/action/xeno_action/onclick/plant_weeds, //first macro
+		/datum/action/xeno_action/onclick/place_trap, //second macro
+		/datum/action/xeno_action/activable/burrow, //third macro
+		/datum/action/xeno_action/onclick/tremor, //fourth macro
+		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
+		/datum/action/xeno_action/onclick/autoweeding_toggle,
+		)
 	tier = 2
 
 	melee_damage_lower = XENO_DAMAGE_TIER_2
@@ -54,22 +71,6 @@
 	base_pixel_y = -20
 	tier = 2
 
-	base_actions = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/release_haul,
-		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/activable/corrosive_acid,
-		/datum/action/xeno_action/activable/place_construction,
-		/datum/action/xeno_action/onclick/build_tunnel,
-		/datum/action/xeno_action/onclick/plant_weeds, //first macro
-		/datum/action/xeno_action/onclick/place_trap, //second macro
-		/datum/action/xeno_action/activable/burrow, //third macro
-		/datum/action/xeno_action/onclick/tremor, //fourth macro
-		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
-		/datum/action/xeno_action/onclick/autoweeding_toggle,
-		)
 
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,

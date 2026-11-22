@@ -1,4 +1,5 @@
 /datum/action/xeno_action/activable/pounce/lurker
+	ability_description = "Leap at prey. Pouncing from stealth can knock the target down, but momentarily roots you in place. Slash the target to move immediately."
 	macro_path = /datum/action/xeno_action/verb/verb_pounce
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
@@ -12,6 +13,7 @@
 	can_be_shield_blocked = TRUE
 
 /datum/action/xeno_action/onclick/lurker_invisibility
+	ability_description = "Enter stealth to approach prey unseen and set up an ambush. Slashing ends it early."
 	name = "Turn Invisible"
 	action_icon_state = "lurker_invisibility"
 	macro_path = /datum/action/xeno_action/verb/verb_lurker_invisibility
@@ -26,6 +28,7 @@
 
 // tightly coupled 'buff next slash' action
 /datum/action/xeno_action/onclick/lurker_assassinate
+	ability_description = "Prime your next slash to deal increased damage and heavily slow the target for 3 seconds."
 	name = "Crippling Strike"
 	action_icon_state = "lurker_inject_neuro"
 	macro_path = /datum/action/xeno_action/verb/verb_crippling_strike
@@ -40,6 +43,7 @@
 // VAMP LURKER ABILITIES
 
 /datum/action/xeno_action/activable/pounce/rush
+	ability_description = "Rush into an opponent to disorient them."
 	name = "Rush"
 	action_icon_state = "pounce"
 	action_text = "rush"
@@ -55,6 +59,7 @@
 	freeze_self = FALSE
 
 /datum/action/xeno_action/activable/flurry
+	ability_description = "Sweep the area in front of you, slowing enemies and healing for each one hit."
 	name = "Flurry"
 	action_icon_state = "rav_spike"
 	macro_path = /datum/action/xeno_action/verb/verb_flurry
@@ -63,6 +68,7 @@
 	xeno_cooldown = 3 SECONDS
 
 /datum/action/xeno_action/activable/tail_jab
+	ability_description = "Sweep enemies back with your tail. Direct hits deal more damage, and wall impacts can stun."
 	name = "Tail Jab"
 	action_icon_state = "prae_pierce"
 	macro_path = /datum/action/xeno_action/verb/verb_tail_jab
@@ -71,6 +77,7 @@
 	xeno_cooldown = 7 SECONDS
 
 /datum/action/xeno_action/activable/headbite
+	ability_description = "Execute an unconscious enemy with a bite to recover health."
 	name = "Headbite"
 	action_icon_state = "headbite"
 	macro_path = /datum/action/xeno_action/verb/verb_headbite

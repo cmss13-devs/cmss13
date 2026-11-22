@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed some item verbs being able to use a mob as source (this removes them from the object verbs in stat panel tho)"
-  - qol: "Added 4 deck verb keybinds (draw card, draw x cards, draw pile, deal)"

@@ -1,7 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscadd: "Mouse buttons 4+ can now be bound using the hotkey ui"
-  - bugfix: "Fixed Unbound sticking in hotkey ui"
-  - bugfix: "Fixed X button not canceling a hotkey reset when prompted"
-  - rscdel: "Removed unused mouse hook macros in tgui"

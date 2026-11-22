@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscadd: "Added powerloader rotating light when manned"
-  - bugfix: "Fixed some oversights in overlay_lighting code (not turning off the first time on 0 range and ignoring dir changes)"
-  - bugfix: "Fixed dynamic_light_source listening to its own mask for dir changes rather than holder"

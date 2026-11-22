@@ -16,6 +16,7 @@
 	var/adj_dizzy = 0
 	var/adj_drowsy = 0
 	var/adj_sleepy = 0
+	flavor = "refreshing drink, with an aftertaste of fluid"
 
 /datum/reagent/drink/on_mob_life(mob/living/M, alien, delta_time)
 	. = ..()
@@ -33,6 +34,7 @@
 /datum/reagent/drink/cold
 	name = "Cold drink"
 	adj_temp = 0
+	flavor = "refreshing cool drink, makes you feel cold"
 
 
 //FRUIT JUICE//
@@ -42,6 +44,7 @@
 	id = "orangejuice"
 	description = "Both delicious AND rich in Vitamin C, what more do you need?"
 	color = "#E78108" // rgb: 231, 129, 8
+	flavor = "warm sweet tangyness, with a biting aftertaste that wakes you up! "
 
 /datum/reagent/drink/orangejuice/on_mob_life(mob/living/M)
 	. = ..()
@@ -55,6 +58,7 @@
 	id = "tomatojuice"
 	description = "Tomatoes made into juice. What a waste of big, juicy tomatoes, huh?"
 	color = "#731008" // rgb: 115, 16, 8
+	flavor = "sweet vegetalness, surrouneded by a rich tangyness"
 
 /datum/reagent/drink/tomatojuice/on_mob_life(mob/living/M)
 	. = ..()
@@ -69,6 +73,7 @@
 	id = "limejuice"
 	description = "The sweet-sour juice of limes."
 	color = "#365E30" // rgb: 54, 94, 48
+	flavor = "sharp tangy lime juice"
 
 /datum/reagent/drink/limejuice/on_mob_life(mob/living/M)
 	. = ..()
@@ -82,6 +87,7 @@
 	id = "carrotjuice"
 	description = "It is just like a carrot but without crunching."
 	color = "#973800" // rgb: 151, 56, 0
+	flavor = "vegital sweetness, with a bitter aftertaste"
 
 /datum/reagent/drink/carrotjuice/on_mob_life(mob/living/M)
 	. = ..()
@@ -102,18 +108,21 @@
 	id = "berryjuice"
 	description = "A delicious blend of several different kinds of berries."
 	color = "#990066" // rgb: 153, 0, 102
+	flavor = "a sweet ripe rich mixed berry"
 
 /datum/reagent/drink/grapejuice
 	name = "Grape Juice"
 	id = "grapejuice"
 	description = "It's grrrrrape!"
 	color = "#863333" // rgb: 134, 51, 51
+	flavor = "sweet ripe grapes"
 
 /datum/reagent/drink/poisonberryjuice
 	name = "Poison Berry Juice"
 	id = "poisonberryjuice"
 	description = "A tasty juice blended from various kinds of very deadly and toxic berries."
 	color = "#863353" // rgb: 134, 51, 83
+	flavor = "terrible tart astringency, this cannot be good for you"
 
 /datum/reagent/drink/poisonberryjuice/on_mob_life(mob/living/M)
 	. = ..()
@@ -126,18 +135,21 @@
 	id = "watermelonjuice"
 	description = "Delicious juice made from watermelon."
 	color = "#a71d1d" // rgb: 167, 29, 29
+	flavor = "refreshing sweet delicate crip rich melon"
 
 /datum/reagent/drink/lemonjuice
 	name = "Lemon Juice"
 	id = "lemonjuice"
 	description = "This juice is VERY sour."
 	color = "#d1db42" // rgb: 209, 219, 66
+	flavor = "sharp sourness, destinctly lemon"
 
 /datum/reagent/drink/banana
 	name = "Banana Juice"
 	id = "banana"
 	description = "The raw essence of a banana."
 	color = "#e4c439" // rgb: 228, 196, 57
+	flavor = "creamy ripe bananas, the flavor lingering on your breath"
 
 /datum/reagent/drink/potato_juice
 	name = "Potato Juice"
@@ -145,12 +157,14 @@
 	description = "Juice of the potato. Bleh."
 	nutriment_factor = 2 * FOOD_METABOLISM
 	color = "#302000" // rgb: 48, 32, 0
+	flavor = "starchy earthiness, with a mild sweetness"
 
 /datum/reagent/drink/grenadine
 	name = "Grenadine Syrup"
 	id = "grenadine"
 	description = "Made in the modern day with proper pomegranate substitute. Who uses real fruit, anyways?"
 	color = "#FF004F" // rgb: 255, 0, 79
+	flavor = "intense sweetness, with a bright candy-like pomegranate"
 
 
 
@@ -161,6 +175,7 @@
 	id = "milk"
 	description = "An opaque white liquid produced by the mammary glands of mammals."
 	color = "#DFDFDF" // rgb: 223, 223, 223
+	flavor = "refreshingly creamy with a mild sweetness"
 
 /datum/reagent/drink/milk/on_mob_life(mob/living/M)
 	. = ..()
@@ -176,6 +191,7 @@
 	id = "soymilk"
 	description = "An opaque white liquid made from soybeans."
 	color = "#DFDFC7" // rgb: 223, 223, 199
+	flavor = "watery beans, almost creamy but not quite"
 
 /datum/reagent/drink/milk/coconut
 	name = "Coconut Milk"
@@ -184,24 +200,28 @@
 	color = "#DFDFC7" // rgb: 223, 223, 199
 	chemclass = CHEM_CLASS_NONE
 	flags = REAGENT_NO_GENERATION
+	flavor = "tropical creamy refreshing mild sweetness"
 
 /datum/reagent/drink/milk/cream
 	name = "Cream"
 	id = "cream"
 	description = "The fatty, still liquid part of milk. Why don't you mix this with sum scotch, eh?"
 	color = "#DFD7AF" // rgb: 223, 215, 175
+	flavor = "richly creamy with a mild sweetness, coating everything"
 
 /datum/reagent/drink/milk/eggnog
 	name = "Eggnog"
 	id = "eggnog"
 	description = "A rich, sweet, non-alcoholic beverage traditionally consumed around Christmastime."
 	color = "#DFD7AF" // rgb: 223, 215, 175
+	flavor = "rich creamy sweet custard, with subtle vanilla and spice"
 
 /datum/reagent/drink/milk/chocolate
 	name = "Chocolate Milk"
 	id = "chocolate_milk"
 	description = "Nectar of the gods and nectar of the cow. Fucking delicious."
 	color = "#AD8F70" // rgb: 123, 63, 0
+	flavor = "refreshingly rich choco cream with a mild sweetness"
 
 /datum/reagent/drink/cold/milkshake
 	name = "Milkshake"
@@ -210,6 +230,7 @@
 	color = "#AEE5E4" // rgb: 174, 229, 228
 	adj_temp = -2
 	target_temp = T0C
+	flavor = "sweet cold creamy liquid vanilla icecream"
 
 /datum/reagent/drink/cold/milkshake/chocolate
 	name = "Chocolate Milkshake"
@@ -218,6 +239,7 @@
 	color = "#AF9B86" // rgb: 175, 155, 134
 	adj_temp = -2
 	target_temp = T0C
+	flavor = "sweet cold creamy liquid rich choco icecream"
 
 /datum/reagent/drink/cold/milkshake/on_mob_life(mob/living/M)
 	. = ..()
@@ -241,54 +263,63 @@
 	color = "#802b00"
 	adj_drowsy = -10
 	chemclass = CHEM_CLASS_RARE
+	flavor = "classic sweet sunriped tangerines"
 
 /datum/reagent/drink/souto/cherry
 	name = "Cherry Souto"
 	id = "souto_cherry"
 	description = "A cherry flavored soda that's canned in Havana."
 	color = COLOR_MAROON
+	flavor = "tart cherry"
 
 /datum/reagent/drink/souto/lime
 	name = "Lime Souto"
 	id = "souto_lime"
 	description = "A lime flavored soda that's canned in Havana."
 	color = "#878F00"
+	flavor = "fresh tart limes"
 
 /datum/reagent/drink/souto/grape
 	name = "Grape Souto"
 	id = "souto_grape"
 	description = "A grape flavored soda that's canned in Havana."
 	color = "#421C52"
+	flavor = "ripe concord grapes"
 
 /datum/reagent/drink/souto/blueraspberry
 	name = "Blue Raspberry Souto"
 	id = "souto_blueraspberry"
 	description = "A blue fruit flavored soda that's canned in Havana."
 	color = "#005B96"
+	flavor = "sweet tangy artificial blue raspberry"
 
 /datum/reagent/drink/souto/peach
 	name = "Peach Souto"
 	id = "souto_peach"
 	description = "A peach flavored soda with flecks of peach pit floating inside that's canned in Havana."
 	color = "#FFE5B4"
+	flavor = "sweet juicy tropical floral peach"
 
 /datum/reagent/drink/souto/cranberry
 	name = "Cranberry Souto"
 	id = "souto_cranberry"
 	description = "A cranberry flavored soda that's canned in Havana."
 	color = "#950714"
+	flavor = "sharp biting berry tartness"
 
 /datum/reagent/drink/souto/vanilla
 	name = "Vanilla Souto"
 	id = "souto_vanilla"
 	description = "A vanilla flavored soda that's canned in Havana."
 	color = "#F9E5BC"
+	flavor = "a warm fragrant aroma, destinctly vanilla"
 
 /datum/reagent/drink/souto/pineapple
 	name = "Pineapple Souto"
 	id = "souto_pineapple"
 	description = "A pineapple flavored soda that's canned in Havana."
 	color = "#FEEB75"
+	flavor = "ripe juicy slightly acidic tropical pineapple"
 
 //OTHER SODA//
 
@@ -299,6 +330,7 @@
 	color = "#619494" // rgb: 97, 148, 148
 	adj_dizzy = -5
 	adj_drowsy = -3
+	flavor = "clean hydrating fizzy bubbles"
 
 /datum/reagent/drink/cold/grapesoda
 	name = "Grape Soda"
@@ -306,6 +338,7 @@
 	description = "Grapes made into a fine drank."
 	color = "#421C52" // rgb: 98, 57, 53
 	adj_drowsy = -3
+	flavor = "fizzy sweet artificial grape"
 
 /datum/reagent/drink/cold/space_cola
 	name = "Space Cola"
@@ -314,6 +347,7 @@
 	reagent_state = LIQUID
 	color = "#100800" // rgb: 16, 8, 0
 	adj_drowsy = -3
+	flavor = "a complex refreshing sweet classic cola"
 
 /datum/reagent/drink/cold/wy_cola
 	name = "Fruit Beer"
@@ -321,6 +355,7 @@
 	description = "An insulting Mango flavored beverage. Tastes like rotten fruit."
 	color = "#100800" // rgb: 16, 8, 0
 	adj_drowsy = -3
+	flavor = "a pungent mango, thats clearly gone awry"
 
 /datum/reagent/drink/cold/nuka_cola
 	name = "Nuka Cola"
@@ -328,6 +363,7 @@
 	description = "Cola, cola never changes."
 	color = "#100800" // rgb: 16, 8, 0
 	adj_sleepy = -2
+	flavor = "a powerfully complex sweet slightly acidic classic cola"
 
 /datum/reagent/drink/cold/nuka_cola/on_mob_life(mob/living/M)
 	. = ..()
@@ -345,6 +381,7 @@
 	color = "#102000" // rgb: 16, 32, 0
 	adj_drowsy = -7
 	adj_sleepy = -1
+	flavor = "refreshing sharp clean sweet artificial citrus"
 
 /datum/reagent/drink/cold/dr_gibb
 	name = "Dr. Gibb"
@@ -352,6 +389,7 @@
 	description = "A delicious blend of 42 different flavours!"
 	color = "#102000" // rgb: 16, 32, 0
 	adj_drowsy = -6
+	flavor = "spicy sweet dark complex taste"
 
 /datum/reagent/drink/cold/space_up
 	name = "Space-Up"
@@ -369,6 +407,7 @@
 	id = "aspen"
 	description = "Pretty good when you get past the fact that it tastes like piss. Canned by the Weyland-Yutani Corporation."
 	color = "#ffcc66"
+	flavor = "very light beer, with an astringent metalic aftertaste"
 
 
 
@@ -387,6 +426,7 @@
 	adj_temp = 1
 	target_temp = T90C
 	chemclass = CHEM_CLASS_UNCOMMON
+	flavor = "strong roasted aromatic earthy bitterness"
 
 /datum/reagent/drink/coffee/on_mob_life(mob/living/M)
 	. = ..()
@@ -418,6 +458,7 @@
 	color = "#102838" // rgb: 16, 40, 56
 	adj_temp = 0
 	chemclass = CHEM_CLASS_NONE
+	flavor = "strong cool refreshing roasted aromatic earthy bitterness"
 
 /datum/reagent/drink/coffee/soy_latte
 	name = "Soy Latte"
@@ -428,6 +469,7 @@
 	adj_temp = 1
 	target_temp = T90C
 	chemclass = CHEM_CLASS_NONE
+	flavor = "mild roasted aromatic earthy bitterness, with a dissapointing beany aftertaste"
 
 /datum/reagent/drink/coffee/soy_latte/on_mob_life(mob/living/M)
 	. = ..()
@@ -445,6 +487,7 @@
 	adj_sleepy = 0
 	adj_temp = 1
 	target_temp = T90C
+	flavor = "mild roasted aromatic earthy bitterness with rich warm cream"
 
 /datum/reagent/drink/coffee/cafe_latte/on_mob_life(mob/living/M)
 	. = ..()
@@ -465,6 +508,7 @@
 	adj_temp = 1
 	target_temp = T90C
 	chemclass = CHEM_CLASS_UNCOMMON
+	flavor = "bold astringency with a dark aromatic spicy taste"
 
 /datum/reagent/drink/tea/on_mob_life(mob/living/M)
 	. = ..()
@@ -479,6 +523,7 @@
 	description = "No relation to a certain rap artist/ actor."
 	color = "#104038" // rgb: 16, 64, 56
 	adj_temp = 0
+	flavor = "cool refreshing bold astringent dark aromatic taste"
 
 /datum/reagent/drink/tea_leaves
 	name = "Tea leaves"
@@ -490,6 +535,7 @@
 	adj_sleepy = -3
 	chemclass = CHEM_CLASS_NONE
 	flags = REAGENT_NO_GENERATION
+	flavor = "bold astringency with a natural dark aromatic spicy taste"
 
 //OTHER//
 
@@ -497,6 +543,7 @@
 	name = "Nothing"
 	id = "nothing"
 	description = "Absolutely nothing."
+	flavor = "something hmm maybe nothing, cant quite get a grasp on it"
 
 /datum/reagent/machosauce
 	name = "Macho Sauce"
@@ -510,6 +557,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	properties = list(PROPERTY_HYPERTHERMIC = 8)
+	flavor = "unbearable spicy heat, giving way to acrid metallic fruity"
 
 /datum/reagent/drink/cold/tonic
 	name = "Tonic Water"
@@ -519,6 +567,7 @@
 	adj_dizzy = -5
 	adj_drowsy = -3
 	adj_sleepy = -2
+	flavor = "cold healthy, bitter, lightly sweet, hydrating crispness"
 
 /datum/reagent/drink/cold/ice
 	name = "Ice"
@@ -526,6 +575,7 @@
 	description = "Frozen water, your dentist wouldn't like you chewing this."
 	reagent_state = SOLID
 	color = "#619494" // rgb: 97, 148, 148
+	flavor = "refreshingly crisp cold"
 
 /datum/reagent/drink/cold/lemon_lime
 	name = "Lemon Lime"
@@ -533,21 +583,24 @@
 	id = "lemon_lime"
 	color = "#878F00" // rgb: 135, 40, 0
 	adj_temp = 0
+	flavor = "cool refreshing tangy lemon-lime citrus"
 
 /datum/reagent/drink/cold/lemonade
 	name = "Lemonade"
 	description = "Oh the nostalgia..."
 	id = "lemonade"
 	color = COLOR_YELLOW
+	flavor = "classic sweet-tart citrus destinctly lemon"
 
 /datum/reagent/drink/chocolate
 	name = "Chocolate Syrup"
 	description = "Nectar of the gods."
 	id = "chocolatesyrup"
 	color = "#7B3F00" // rgb: 123, 163, 0
+	flavor = "sweet and dark, rich embodied choco"
 
 //*****************************************************************************************************/
-//***************************************Remove When Safe**********************************************/
+//***************************************Remove When Safe**********************************************/ adding more code to these :tf:
 //*****************************************************************************************************/
 
 /datum/reagent/atomicbomb
@@ -556,6 +609,7 @@
 	description = "Nuclear proliferation never tasted so good."
 	reagent_state = LIQUID
 	color = "#666300" // rgb: 102, 99, 0
+	flavor = "astringent unavoidably chemical sour sweetness"
 
 /datum/reagent/atomicbomb/on_mob_life(mob/living/M)
 	. = ..()
@@ -583,6 +637,7 @@
 	description = "Whoah, this stuff looks volatile!"
 	reagent_state = LIQUID
 	color = "#664300" // rgb: 102, 67, 0
+	flavor = "many fruity sweet flavors exhancing places, baffling description"
 
 /datum/reagent/gargle_blaster/on_mob_life(mob/living/M)
 	. = ..()
@@ -609,6 +664,7 @@
 	description = "A strong neurotoxin that puts the subject into a death-like state."
 	reagent_state = LIQUID
 	color = "#2E2E61" // rgb: 46, 46, 97
+	flavor = "a strong chemical taste, pressing up against your consciousness"
 
 /datum/reagent/neurotoxin/on_mob_life(mob/living/carbon/M)
 	. = ..()
@@ -636,6 +692,7 @@
 	description = "You just don't get it maaaan."
 	reagent_state = LIQUID
 	color = "#664300" // rgb: 102, 67, 0
+	flavor = "herbal grassy taste, that has a warm hazy impression thats hard to pin down"
 
 /datum/reagent/hippies_delight/on_mob_life(mob/living/M)
 	. = ..()
@@ -685,6 +742,7 @@
 	description = "The secret of the sanctuary of the Librarian..."
 	id = "rewriter"
 	color = "#485000" // rgb:72, 080, 0
+	flavor = "calming warm taste, reminds you of old books in a sunbeam"
 
 /datum/reagent/drink/cold/rewriter/on_mob_life(mob/living/M)
 	. = ..()
@@ -702,12 +760,14 @@
 	properties = list(PROPERTY_NEOGENETIC = 0.5, PROPERTY_ANTICORROSIVE = 0.5, PROPERTY_ANTITOXIC = 0.5, PROPERTY_OXYGENATING = 0.5, PROPERTY_ANTISPASMODIC = 1)
 	adj_dizzy = -3
 	chemclass = CHEM_CLASS_RARE
+	flavor = "healthy refreshing slighly sweet warmness, that leaves your sinuses ringing"
 
 /datum/reagent/drink/cold/kiraspecial
 	name = "Kira Special"
 	description = "Long live the guy who everyone had mistaken for a girl. Baka!"
 	id = "kiraspecial"
 	color = "#CCCC99" // rgb: 204, 204, 153
+	flavor = "like you are surely a super genious tasked with cleaning up society"
 
 /datum/reagent/drink/cold/brownstar
 	name = "Brown Star"
@@ -715,6 +775,7 @@
 	id = "brownstar"
 	color = "#9F3400" // rgb: 159, 052, 000
 	adj_temp = 0
+	flavor = "rich warmnesss, with an almost odorous earthy sweetness that reminds you of something"
 
 
 /datum/reagent/drink/hot_coco
@@ -727,6 +788,7 @@
 	chemclass = CHEM_CLASS_RARE
 	adj_temp = 1
 	target_temp = T90C
+	flavor = "warm rich creamy choco, that makes you wish for a cozy fire and a snowstorm outside"
 
 /datum/reagent/drink/bugjuice
 	name = "Bug Juice"
@@ -736,3 +798,4 @@
 	color = "#2ca314" // rgb: 48, 32, 0
 	chemclass = CHEM_CLASS_RARE
 	flags = REAGENT_NO_GENERATION
+	flavor = "horrible unavoidable metalic astringent taste, crawling all over your tongue and throat"

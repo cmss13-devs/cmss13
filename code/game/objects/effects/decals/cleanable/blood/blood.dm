@@ -43,6 +43,11 @@
 		dry_start_time = world.time
 		addtimer(CALLBACK(src, PROC_REF(dry)), drying_time * (amount+1))
 
+/obj/effect/decal/cleanable/blood/cleanup_cleanable(cleaning_reagent, override)
+	. = ..()
+	if(!. && !QDELING(src))
+		qdel(src)
+
 /obj/effect/decal/cleanable/blood/Crossed(atom/movable/crossed_by)
 	..()
 
@@ -83,7 +88,7 @@
 	if(cleanable_turf)
 		create_overlay()
 	else
-		cleanup_cleanable()
+		cleanup_cleanable(override=TRUE)
 
 /obj/effect/decal/cleanable/blood/can_place_cleanable(obj/effect/decal/cleanable/old_cleanable)
 	. = ..()

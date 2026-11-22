@@ -183,9 +183,6 @@
 		if(!H.shoes && prob(50))
 			H.contract_disease(new /datum/disease/black_goo)
 
-
-
-
 /obj/effect/decal/cleanable/mucus
 	name = "mucus"
 	desc = "Disgusting mucus."

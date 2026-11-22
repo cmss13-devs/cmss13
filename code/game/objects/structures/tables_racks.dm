@@ -33,6 +33,8 @@
 	var/flipped_projectile_coverage = PROJECTILE_COVERAGE_HIGH
 	var/upright_projectile_coverage = PROJECTILE_COVERAGE_LOW
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_UNSUITED
+	/// Holds a list of gum objects that have been stuck under it, revealed/hidden upon flipping
+	var/list/stuck_gums = list()
 
 
 /obj/structure/surface/table/Initialize()
@@ -595,6 +597,16 @@
 			// Can skip straight check because we already iterated through all the tables that are connected to this table
 			adjacent_table.flip(direction, TRUE)
 
+	for(var/obj/item/reagent_container/food/gum/wad in stuck_gums)
+		wad.forceMove(get_turf(src))
+		wad.layer = layer + 0.01
+		if(direction == SOUTH)
+			wad.alpha = 150
+		if(direction == EAST)
+			wad.pixel_x = 12
+		if(direction == WEST)
+			wad.pixel_x = -12
+
 	update_icon()
 	update_adjacent()
 
@@ -618,12 +630,20 @@
 		var/obj/structure/surface/table/T = locate() in get_step(src.loc,D)
 		if(T && T.flipped && T.dir == src.dir)
 			T.unflip()
+	for(var/obj/item/reagent_container/food/gum/wad in stuck_gums)
+		wad.forceMove(src)
+
 	update_icon()
 	update_adjacent()
 
 	REMOVE_TRAIT(src, TRAIT_TABLE_FLIPPING, TRAIT_SOURCE_FLIP_TABLE)
 
 	return TRUE
+
+/obj/structure/surface/table/get_examine_text(mob/user)
+	. = ..()
+	if(flipped == TRUE && length(stuck_gums))
+		. += SPAN_WARNING("Looks like someones stuck some gum under it! Gross!")
 
 /obj/structure/surface/table/flipped
 	icon_state = "flip0"

@@ -271,6 +271,8 @@
 				sound = pick('sound/effects/thud1.ogg','sound/effects/thud2.ogg','sound/effects/thud3.ogg')
 			if("paper_writing")
 				sound = pick('sound/items/writing_noises/paper_writing_1.wav', 'sound/items/writing_noises/paper_writing_2.wav', 'sound/items/writing_noises/paper_writing_3.wav', 'sound/items/writing_noises/paper_writing_4.ogg')
+			if("gumpop")
+				sound = pick('sound/effects/gumpop1.ogg','sound/effects/gumpop2.ogg','sound/effects/gumpop3.ogg','sound/effects/gumpop4.ogg','sound/effects/gumpop5.ogg')
 			// Weapons/bullets
 			if("shell_load")
 				sound = pick('sound/weapons/shell_load1.ogg','sound/weapons/shell_load2.ogg','sound/weapons/shell_load3.ogg','sound/weapons/shell_load4.ogg')

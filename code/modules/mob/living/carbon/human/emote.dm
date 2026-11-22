@@ -23,6 +23,7 @@
 	if(is_type_in_typecache(user.species, species_type_blacklist_typecache) && !is_type_in_typecache(user.species, species_type_allowed_typecache))
 		. = FALSE
 
+
 /datum/emote/living/carbon/human/blink
 	key = "blink"
 	key_third_person = "blinks"
@@ -42,17 +43,20 @@
 	var/mob/living/carbon/human/human_starer = user
 	human_starer.move_eyelids(EYELID_SWITCH, 0.1, 8)
 
+
 /datum/emote/living/carbon/human/bow
 	key = "bow"
 	key_third_person = "bows"
 	message = "bows."
 	message_param = "bows to %t."
 
+
 /datum/emote/living/carbon/human/chuckle
 	key = "chuckle"
 	key_third_person = "chuckles"
 	message = "chuckles."
 	emote_type = EMOTE_AUDIBLE
+
 
 /datum/emote/living/carbon/human/clap
 	key = "clap"
@@ -63,6 +67,7 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	sound = 'sound/misc/clap.ogg'
 
+
 /datum/emote/living/carbon/human/collapse
 	key = "collapse"
 	key_third_person = "collapses"
@@ -72,24 +77,29 @@
 	. = ..()
 	user.apply_effect(2, PARALYZE)
 
+
 /datum/emote/living/carbon/human/cough
 	key = "cough"
 	key_third_person = "coughs"
 	message = "coughs!"
+
 
 /datum/emote/living/carbon/human/cry
 	key = "cry"
 	key_third_person = "cries"
 	message = "cries."
 
+
 /datum/emote/living/carbon/human/eyebrow
 	key = "eyebrow"
 	message = "raises an eyebrow."
+
 
 /datum/emote/living/carbon/human/facepalm
 	key = "facepalm"
 	key_third_person = "facepalms"
 	message = "facepalms."
+
 
 /datum/emote/living/carbon/human/faint
 	key = "faint"
@@ -100,21 +110,25 @@
 	. = ..()
 	user.sleeping += 10
 
+
 /datum/emote/living/carbon/human/frown
 	key = "frown"
 	key_third_person = "frowns"
 	message = "frowns."
+
 
 /datum/emote/living/carbon/human/gasp
 	key = "gasp"
 	key_third_person = "gasps"
 	message = "gasps!"
 
+
 /datum/emote/living/carbon/human/giggle
 	key = "giggle"
 	key_third_person = "giggles"
 	message = "giggles."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 
 /datum/emote/living/carbon/human/glare
 	key = "glare"
@@ -127,6 +141,7 @@
 	var/mob/living/carbon/human/human_starer = user
 	human_starer.move_eyelids(EYELID_OPEN, 5)
 
+
 /datum/emote/living/carbon/human/golfclap
 	key = "golfclap"
 	key_third_person = "golfclaps"
@@ -136,19 +151,23 @@
 	cooldown = 5 SECONDS
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+
 /datum/emote/living/carbon/human/grin
 	key = "grin"
 	key_third_person = "grins"
 	message = "grins."
+
 
 /datum/emote/living/carbon/human/grumble
 	key = "grumble"
 	key_third_person = "grumbles"
 	message = "grumbles."
 
+
 /datum/emote/living/carbon/human/handshake
 	key = "handshake"
 	message_param = "shakes hands with %t."
+
 
 /datum/emote/living/carbon/human/laugh
 	key = "laugh"
@@ -160,11 +179,13 @@
 	if(isyautja(user))
 		return pick('sound/voice/pred_laugh1.ogg', 'sound/voice/pred_laugh2.ogg', 'sound/voice/pred_laugh3.ogg', 'sound/voice/pred_laugh4.ogg', 'sound/voice/pred_laugh5.ogg', 'sound/voice/pred_laugh6.ogg')
 
+
 /datum/emote/living/carbon/human/look
 	key = "look"
 	key_third_person = "looks"
 	message = "looks."
 	message_param = "looks at %t."
+
 
 /datum/emote/living/carbon/human/medic
 	key = "medic"
@@ -192,20 +213,24 @@
 	user.langchat_speech(medic_message, group, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_bolded"))
 	user.show_speech_bubble(group, "medic")
 
+
 /datum/emote/living/carbon/human/moan
 	key = "moan"
 	key_third_person = "moans"
 	message = "moans."
+
 
 /datum/emote/living/carbon/human/mumble
 	key = "mumble"
 	key_third_person = "mumbles"
 	message = "mumbles."
 
+
 /datum/emote/living/carbon/human/nod
 	key = "nod"
 	key_third_person = "nods"
 	message = "nods."
+
 
 /datum/emote/living/carbon/human/pain
 	key = "pain"
@@ -243,6 +268,7 @@
 	user.langchat_speech(pain_message, group, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_yell"))
 	user.show_speech_bubble(group, "pain")
 
+
 /datum/emote/living/carbon/human/salute
 	key = "salute"
 	key_third_person = "salutes"
@@ -251,6 +277,7 @@
 	sound = 'sound/misc/salute.ogg'
 	audio_cooldown = 10 SECONDS
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 
 /datum/emote/living/carbon/human/scream
 	key = "scream"
@@ -282,19 +309,23 @@
 	user.langchat_speech(scream_message, group, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_PANIC_POP, additional_styles = list("langchat_yell"))
 	user.show_speech_bubble(group, "scream")
 
+
 /datum/emote/living/carbon/human/shakehead
 	key = "shakehead"
 	message = "shakes their head."
+
 
 /datum/emote/living/carbon/human/shiver
 	key = "shiver"
 	key_third_person = "shivers"
 	message = "shivers."
 
+
 /datum/emote/living/carbon/human/shrug
 	key = "shrug"
 	key_third_person = "shrugs"
 	message = "shrugs."
+
 
 /datum/emote/living/carbon/human/sigh
 	key = "sigh"
@@ -302,10 +333,12 @@
 	message = "sighs."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+
 /datum/emote/living/carbon/human/smile
 	key = "smile"
 	key_third_person = "smiles"
 	message = "smiles."
+
 
 /datum/emote/living/carbon/human/sneeze
 	key = "sneeze"
@@ -332,6 +365,7 @@
 		return
 	H.move_eyelids(EYELID_CLOSED, 5)
 
+
 /datum/emote/living/carbon/human/stare
 	key = "stare"
 	key_third_person = "stares"
@@ -342,6 +376,7 @@
 	. = ..()
 	var/mob/living/carbon/human/human_starer = user
 	human_starer.move_eyelids(EYELID_OPEN, 5)
+
 
 /datum/emote/living/carbon/human/signal
 	key = "signal"
@@ -356,35 +391,42 @@
 	params = num2text(clamp(params, 2, 10))
 	return ..()
 
+
 /datum/emote/living/carbon/human/stop
 	key = "stop"
 	message = "holds out an open palm, gesturing to stop."
 	hands_use_check = TRUE
+
 
 /datum/emote/living/carbon/human/thumbsup
 	key = "thumbsup"
 	message = "gives a thumbs up."
 	hands_use_check = TRUE
 
+
 /datum/emote/living/carbon/human/thumbsdown
 	key = "thumbsdown"
 	message = "gives a thumbs down."
 	hands_use_check = TRUE
+
 
 /datum/emote/living/carbon/human/twitch
 	key = "twitch"
 	key_third_person = "twitches"
 	message = "twitches."
 
+
 /datum/emote/living/carbon/human/wave
 	key = "wave"
 	key_third_person = "waves"
 	message = "waves."
 
+
 /datum/emote/living/carbon/human/yawn
 	key = "yawn"
 	key_third_person = "yawns"
 	message = "yawns."
+
 
 /datum/emote/living/carbon/human/warcry
 	key = "warcry"
@@ -409,6 +451,7 @@
 			else
 				return get_sfx("[user.gender]_warcry")
 
+
 /datum/emote/living/carbon/human/whimper
 	key = "whimper"
 	key_third_person = "whimpers"
@@ -422,6 +465,7 @@
 /datum/emote/living/carbon/human/whimper/run_langchat(mob/living/user, list/group)
 	. = ..()
 	user.show_speech_bubble(group, "scream")
+
 
 /datum/emote/living/carbon/human/burstscream
 	key = "burstscream"
@@ -446,6 +490,7 @@
 	. = ..()
 	user.show_speech_bubble(group, "pain")
 
+
 /datum/emote/living/carbon/human/closeeyes
 	key = "closeeyes"
 	key_third_person = "closeseyes"
@@ -469,6 +514,7 @@
 		to_chat(human_user, SPAN_INFO("You voluntarily closed your eyes [elapsed_time < 600 ? "[elapsed_time/10] seconds" : "[elapsed_time/600] minutes" ] ago, use *openeyes to see again."))
 		human_user.eyelid_timer = addtimer(CALLBACK(src, PROC_REF(closed_eyes_reminder), human_user, start_time), (elapsed_time < 600 ? 30 : (elapsed_time < 3000 ? 60 : 120)) SECONDS, TIMER_STOPPABLE)
 
+
 /datum/emote/living/carbon/human/openeyes
 	key = "openeyes"
 	key_third_person = "openseyes"
@@ -488,6 +534,7 @@
 	H.clear_fullscreen("blind")
 	H.next_blink_at = world.time + 1 SECONDS
 
+
 /datum/emote/living/carbon/human/nap	//like closeeyes but with more flavour
 	key = "nap"
 	key_third_person = "naps"
@@ -499,6 +546,7 @@
 	if(H.stat != CONSCIOUS)
 		return
 	H.start_napping()
+
 
 /datum/emote/living/carbon/human/sleep_emote	//same as nap
 	key = "sleep"
@@ -512,6 +560,7 @@
 		return
 	H.start_napping()
 
+
 /datum/emote/living/carbon/human/wake	//openeyes does this too, but intuitively this should exist
 	key = "wake"
 	key_third_person = "wakes"
@@ -523,3 +572,70 @@
 	if(H.is_napping)
 		H.wake_from_nap(rapid_blink = FALSE)
 
+////////////////////// Bubblegum emotes //////////////////////
+
+/datum/emote/living/carbon/human/blow_bubble
+	key = "blowbubble"
+	emote_type = EMOTE_VISIBLE
+	cooldown = 5 SECONDS
+
+/datum/emote/living/carbon/human/blow_bubble/can_run_emote(mob/user, status_check = TRUE, intentional = FALSE)
+	. = ..()
+	if(!.)
+		return FALSE
+	if(!istype(user.wear_mask, /obj/item/reagent_container/food/gum))
+		if(intentional)
+			to_chat(user, SPAN_WARNING("You need to be chewing gum to blow a bubble!"))
+		return FALSE
+	return TRUE
+
+/datum/emote/living/carbon/human/blow_bubble/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/mob/living/carbon/human/human_user = user
+	var/obj/item/reagent_container/food/gum/gum = human_user.wear_mask
+	gum.update_icon()
+	gum.blow_bubble(human_user)
+
+
+/datum/emote/living/carbon/human/blow_bubbles
+	key = "blowbubbles"
+	emote_type = EMOTE_VISIBLE
+	cooldown = 1 MINUTES
+
+/datum/emote/living/carbon/human/blow_bubbles/can_run_emote(mob/user, status_check = TRUE, intentional = FALSE)
+	. = ..()
+	if(!.)
+		return FALSE
+	if(!istype(user.wear_mask, /obj/item/reagent_container/food/gum))
+		if(intentional)
+			to_chat(user, SPAN_WARNING("You need to be chewing gum to blow bubbles!"))
+		return FALSE
+	return TRUE
+
+/datum/emote/living/carbon/human/blow_bubbles/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+
+	var/mob/living/carbon/human/human_user = user
+	var/obj/item/reagent_container/food/gum/gum = human_user.wear_mask
+	gum.blow_bubbles(human_user)
+
+
+/datum/emote/living/carbon/human/stop_blowing
+	key = "stopblowing"
+	emote_type = EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/stop_blowing/can_run_emote(mob/user, status_check = TRUE, intentional = FALSE)
+	. = ..()
+	if(!.)
+		return FALSE
+	if(!istype(user.wear_mask, /obj/item/reagent_container/food/gum))
+		if(intentional)
+			to_chat(user, SPAN_WARNING("You need to be chewing gum to blow bubbles!"))
+		return FALSE
+	return TRUE
+
+/datum/emote/living/carbon/human/stop_blowing/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/mob/living/carbon/human/human_user = user
+	var/obj/item/reagent_container/food/gum/gum = human_user.wear_mask
+	gum.stop_blowsing()

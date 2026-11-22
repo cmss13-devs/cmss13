@@ -267,7 +267,7 @@
 	changing_turf = FALSE
 	for(var/cleanable_type in cleanables)
 		var/obj/effect/decal/cleanable/C = cleanables[cleanable_type]
-		C.cleanup_cleanable()
+		C.cleanup_cleanable(override=TRUE)
 
 	var/turf/above = SSmapping.get_turf_above(src)
 	var/turf/below = SSmapping.get_turf_below(src)

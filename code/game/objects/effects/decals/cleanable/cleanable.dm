@@ -20,6 +20,7 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 	 * refs on turfs cleaned up
 	 */
 	var/cleaned_up = FALSE
+	var/cleaning_reagents_needed = CLEANABLE_BY_WATER|CLEANABLE_BY_CLEANER|CLEANABLE_BY_SOAP
 
 	keep_as_object = TRUE
 	garbage = TRUE
@@ -43,7 +44,7 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 
 /obj/effect/decal/cleanable/Destroy()
 	if(!cleaned_up)
-		cleanup_cleanable()
+		cleanup_cleanable(override=TRUE)
 
 	random_icon_states = null
 	if(targeted_by)
@@ -67,24 +68,29 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 /obj/effect/decal/cleanable/proc/place_cleanable(turf/placed_turf, overlayed)
 	var/obj/effect/decal/cleanable/old_cleanable = LAZYACCESS(placed_turf.cleanables, cleanable_type)
 	if(old_cleanable && !allow_this_to_overlap)
-		old_cleanable.cleanup_cleanable()
+		old_cleanable.cleanup_cleanable(override=TRUE)
 	cleaned_up = FALSE
 	LAZYSET(placed_turf.cleanables, cleanable_type, src)
 	cleanable_turf = placed_turf
 	if(overlayed)
 		create_overlay()
 
-/obj/effect/decal/cleanable/proc/cleanup_cleanable()
-	cleaned_up = TRUE
+/obj/effect/decal/cleanable/proc/cleanup_cleanable(cleaning_reagent, override=FALSE)
+	if((cleaning_reagent=="water" && cleaning_reagents_needed & CLEANABLE_BY_WATER) || \
+	(cleaning_reagent=="cleaner" && cleaning_reagents_needed & CLEANABLE_BY_CLEANER) ||\
+	(cleaning_reagent=="soap" && cleaning_reagents_needed & CLEANABLE_BY_SOAP))
+		cleaned_up = TRUE
 
-	SSweather.cleanable_list -= src
+		SSweather.cleanable_list -= src
 
-	if(!cleanable_turf?.cleanables || !cleanable_turf?.cleanables[cleanable_type])
-		return
-	clear_overlay()
-	if(!QDELING(cleanable_turf.cleanables[cleanable_type]))
-		qdel(cleanable_turf.cleanables[cleanable_type])
-	LAZYREMOVE(cleanable_turf.cleanables, cleanable_type)
+		if(!cleanable_turf?.cleanables || !cleanable_turf?.cleanables[cleanable_type])
+			return
+		clear_overlay()
+		if(!QDELING(cleanable_turf.cleanables[cleanable_type]))
+			qdel(cleanable_turf.cleanables[cleanable_type])
+		LAZYREMOVE(cleanable_turf.cleanables, cleanable_type)
+		return TRUE
+	return FALSE
 
 /obj/effect/decal/cleanable/proc/create_overlay(overlay_icon = icon, overlay_icon_state = icon_state)
 	overlayed_image = image(overlay_icon, icon_state = overlay_icon_state)

@@ -372,6 +372,18 @@
 	chemclass = CHEM_CLASS_BASIC
 	properties = list(PROPERTY_NUTRITIOUS = 1)
 	flags = REAGENT_TYPE_MEDICAL
+	flavor = "sugary sweetness"
+
+/datum/reagent/saccharin
+	name = "Saccharin"
+	id = "saccharin"
+	description = "Discovered by accident in 1879 its one of the oldest artifical sweeteners ever made. Its role as such is dampered by a rather bitter slightly chemical aftertaste, yet still beloved by health nuts everywhere."
+	reagent_state = SOLID
+	color = COLOR_WHITE
+	chemclass = CHEM_CLASS_BASIC
+	properties = list(PROPERTY_NUTRITIOUS = 0)
+	flags = REAGENT_TYPE_MEDICAL
+	flavor = "sweetness, with a noticably bad slightly bitter chemical aftertaste"
 
 /datum/reagent/glycerol
 	name = "Glycerol"
@@ -519,42 +531,45 @@
 /datum/reagent/space_cleaner/reaction_obj(obj/O, volume)
 	if(istype(O, /obj/effect/decal/cleanable))
 		var/obj/effect/decal/cleanable/C = O
-		C.cleanup_cleanable()
+		C.cleanup_cleanable(id)
 	else if(O)
-		O.clean_blood()
+		O.clean_blood(id)
 
 /datum/reagent/space_cleaner/reaction_turf(turf/T, volume)
 	if(volume >= 1 && istype(T))
 		T.clean_cleanables()
 
-/datum/reagent/space_cleaner/reaction_mob(mob/M, method=TOUCH, volume, permeable)
-	if(iscarbon(M))
-		var/mob/living/carbon/C = M
-		if(C.r_hand)
-			C.r_hand.clean_blood()
-		if(C.l_hand)
-			C.l_hand.clean_blood()
-		if(C.wear_mask)
-			if(C.wear_mask.clean_blood())
-				C.update_inv_wear_mask(0)
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = C
-			if(H.head)
-				if(H.head.clean_blood())
-					H.update_inv_head(0)
-			if(H.wear_suit)
-				if(H.wear_suit.clean_blood())
-					H.update_inv_wear_suit(0)
-			else if(H.w_uniform)
-				if(H.w_uniform.clean_blood())
-					H.update_inv_w_uniform(0)
-			if(H.shoes)
-				if(H.shoes.clean_blood())
-					H.update_inv_shoes(0)
+/datum/reagent/space_cleaner/reaction_mob(mob/reacted_mob, method=TOUCH, volume, permeable)
+	if(iscarbon(reacted_mob))
+		var/mob/living/carbon/reacted_carbon = reacted_mob
+		if(reacted_carbon.r_hand)
+			reacted_carbon.r_hand.clean_blood()
+		if(reacted_carbon.l_hand)
+			reacted_carbon.l_hand.clean_blood()
+		if(reacted_carbon.wear_mask)
+			if(reacted_carbon.wear_mask.clean_blood())
+				reacted_carbon.update_inv_wear_mask(0)
+		if(ishuman(reacted_mob))
+			var/mob/living/carbon/human/reacted_human = reacted_carbon
+			if(reacted_human.head)
+				if(reacted_human.head.clean_blood())
+					reacted_human.update_inv_head(0)
+			if(reacted_human.wear_suit)
+				if(reacted_human.wear_suit.clean_blood())
+					reacted_human.update_inv_wear_suit(0)
+			else if(reacted_human.w_uniform)
+				if(reacted_human.w_uniform.clean_blood())
+					reacted_human.update_inv_w_uniform(0)
+			if(reacted_human.shoes)
+				if(reacted_human.shoes.clean_blood())
+					reacted_human.update_inv_shoes(0)
 			else
-				H.clean_blood(1)
+				reacted_human.clean_blood(1)
 				return
-		M.clean_blood()
+			for(var/obj/bubblegum_bubble/gummy_mess in reacted_human.vis_contents)
+				if(gummy_mess.popped)
+					qdel(gummy_mess)
+		reacted_mob.clean_blood()
 
 /datum/reagent/cryptobiolin
 	name = "Cryptobiolin"

@@ -178,7 +178,7 @@
 	else
 		icon_state = icon_tray
 
-/obj/structure/morgue_tray/clean_blood()
+/obj/structure/morgue_tray/clean_blood(cleaning_reagent)
 	bloody = FALSE
 	update_icon()
 	. = ..()

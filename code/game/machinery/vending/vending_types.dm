@@ -128,6 +128,69 @@
 	)
 	product_type = VENDOR_PRODUCT_TYPE_FOOD
 
+/obj/structure/machinery/vending/gum
+	name = "\improper Chewing Gum Machine"
+	desc = "A vending machine full of chewing gum."
+	product_slogans = "Big Bubba Gum!;Wridley's Gum!;O'bannon's Sugar Free Gum!;Souto Gum! Taste the flavor!"
+	product_ads = "Big Bubba Chew! For big league sluggers!;Wridley's Spearmint, refresh your tongue!;O'bannon's Frost! Cooler than Cool!; Big Bubba Hubba! Blow bigger bubbles!; Souto Gum! All your favorite flavors, now chewable!; Try Wridley's Big Red! Spicy Cinnamon!; Try O'bannon's Citrus, tangy and sour!"
+	icon_state = "gum"
+	products = list(
+		/obj/item/storage/gum/bigbubba/chew = 3,
+		/obj/item/storage/gum/bigbubba/hubba = 3,
+		/obj/item/storage/gum/wridleys/spearmint = 3,
+		/obj/item/storage/gum/wridleys/peppermint = 3,
+		/obj/item/storage/gum/wridleys/jucyfruit = 3,
+		/obj/item/storage/gum/wridleys/bigred = 3,
+		/obj/item/storage/gum/wridleys/usa = 3,
+		/obj/item/storage/gum/obannons/classic = 3,
+		/obj/item/storage/gum/obannons/frost = 3,
+		/obj/item/storage/gum/obannons/apple = 3,
+		/obj/item/storage/gum/obannons/berry = 3,
+		/obj/item/storage/gum/obannons/citrus = 3,
+		/obj/item/storage/gum/souto/classic = 3,
+		/obj/item/storage/gum/souto/cherry = 3,
+		/obj/item/storage/gum/souto/lime = 3,
+		/obj/item/storage/gum/souto/grape = 3,
+		/obj/item/storage/gum/souto/blueraspberry = 3,
+		/obj/item/storage/gum/souto/peach = 3,
+		/obj/item/storage/gum/souto/cranberry = 3,
+		/obj/item/storage/gum/souto/vanilla = 3,
+		/obj/item/storage/gum/souto/pineapple = 3,
+		/obj/item/storage/gum/souto/special = 3,
+		/obj/item/storage/gum/medichew/caffeine = 3,
+		/obj/item/storage/gum/medichew/nicotine = 3,
+	)
+	prices = list(
+		/obj/item/storage/gum/bigbubba/chew = 8,
+		/obj/item/storage/gum/bigbubba/hubba = 5,
+		/obj/item/storage/gum/wridleys/spearmint = 4,
+		/obj/item/storage/gum/wridleys/peppermint = 4,
+		/obj/item/storage/gum/wridleys/jucyfruit = 4,
+		/obj/item/storage/gum/wridleys/bigred = 4,
+		/obj/item/storage/gum/wridleys/usa = 4,
+		/obj/item/storage/gum/obannons/classic = 3,
+		/obj/item/storage/gum/obannons/frost = 3,
+		/obj/item/storage/gum/obannons/apple = 3,
+		/obj/item/storage/gum/obannons/berry = 3,
+		/obj/item/storage/gum/obannons/citrus = 3,
+		/obj/item/storage/gum/souto/classic = 6,
+		/obj/item/storage/gum/souto/cherry = 6,
+		/obj/item/storage/gum/souto/lime = 6,
+		/obj/item/storage/gum/souto/grape = 6,
+		/obj/item/storage/gum/souto/blueraspberry = 6,
+		/obj/item/storage/gum/souto/peach = 6,
+		/obj/item/storage/gum/souto/cranberry = 6,
+		/obj/item/storage/gum/souto/vanilla = 6,
+		/obj/item/storage/gum/souto/pineapple = 6,
+		/obj/item/storage/gum/souto/special = 9,
+		/obj/item/storage/gum/medichew/caffeine = 6,
+		/obj/item/storage/gum/medichew/nicotine = 6,
+	)
+	contraband = list(
+		/obj/item/storage/gum/medichew/marijuana = 3
+	)
+	product_type = VENDOR_PRODUCT_TYPE_FOOD
+
 /obj/structure/machinery/vending/cola
 	name = "\improper Souto Softdrinks"
 	desc = "A softdrink vendor provided by Souto Soda Company, Havana."

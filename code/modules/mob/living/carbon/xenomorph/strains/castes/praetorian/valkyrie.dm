@@ -3,6 +3,8 @@
 	description = "We trade our ranged abilities and acid to gain the ability to emit strong pheromones and a plethora of new abilities. Our slashes heal us and our allies and generate Fury, which fuels some of our abilities. We can Retrieve the wounded from a distance, our High Gallop knocks down enemies throws back boom rocks in a 2 by 3 arc, Fight or Flight rejuvenates and removes debuffs around allies, its range depending on our rage, and Tantrum provides armor to allies and speed to Crushers and Ravagers both's range depending on our rage. We also trade our tailstab Tail Fountain; it doesn't do damage, but it extinguishes allies, or it can extinguish talls to facilitate capture."
 	flavor_description = "This one will deny her sisters' deaths until they earn it. Fight or be forgotten."
 	icon_state_prefix = "Warden"
+	speed_mod = XENO_SPEED_SLOWMOD_TIER_5
+	armor_mod = XENO_ARMOR_MOD_SMALL
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/tail_stab,
@@ -20,14 +22,11 @@
 		/datum/action/xeno_action/activable/prae_retrieve,
 	)
 
-
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_valkyrie
 
 /datum/xeno_strain/valkyrie/apply_strain(mob/living/carbon/xenomorph/praetorian/prae)
-	prae.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
-	prae.armor_modifier += XENO_ARMOR_MOD_SMALL
+	..() // stat modifiers
 	prae.claw_type = CLAW_TYPE_VERY_SHARP
-	prae.recalculate_everything()
 
 /datum/behavior_delegate/praetorian_valkyrie
 	name = "Praetorian Valkyrie Behavior Delegate"

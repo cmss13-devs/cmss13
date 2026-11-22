@@ -3,6 +3,12 @@
 	description = "We lose all of our abilities and we forfeit a chunk of our health and damage in exchange for a large amount of armor, slightly increased movement speed, increased attack speed, and brand new abilities that turn us into a lethal assassin. Our Rush ability disorients enemies and our Flurry ability unleashes a forward cleave that can hit and slow three talls and heal us for every tall we hit. Our special AoE Tail Jab knocks talls away, doing more damage with direct hits and scoring stuns and extra damage if they smack into walls. Finally, after we subdue our enemies, we can execute them with a headbite to heal our wounds."
 	flavor_description = "Blood for the queen! Show no mercy! Slaughter them all!"
 	icon_state_prefix = "Vampire"
+	plasma_mod = -(/datum/caste_datum/lurker::plasma_max) // no plasma
+	health_mod = -XENO_HEALTH_MOD_MED
+	speed_mod = XENO_SPEED_FASTMOD_TIER_1
+	armor_mod = XENO_ARMOR_MOD_LARGE
+	damage_mod = -XENO_DAMAGE_MOD_VERY_SMALL
+	attack_speed_mod = -2
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/onclick/lurker_invisibility,
@@ -18,18 +24,10 @@
 	)
 
 /datum/xeno_strain/vampire/apply_strain(mob/living/carbon/xenomorph/lurker/lurker)
-	lurker.plasmapool_modifier = 0
-	lurker.health_modifier -= XENO_HEALTH_MOD_MED
-	lurker.speed_modifier += XENO_SPEED_FASTMOD_TIER_1
-	lurker.armor_modifier += XENO_ARMOR_MOD_LARGE
-	lurker.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
-	lurker.attack_speed_modifier -= 2
-
+	..() // stat modifiers
 	var/datum/mob_hud/execute_hud = GLOB.huds[MOB_HUD_EXECUTE]
 	execute_hud.add_hud_to(lurker, lurker)
 	lurker.execute_hud = TRUE
-
-	lurker.recalculate_everything()
 
 /datum/action/xeno_action/activable/pounce/rush/additional_effects(mob/living/living_target) //pounce effects
 	var/mob/living/carbon/target = living_target

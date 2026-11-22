@@ -3,6 +3,10 @@
 	description = "We lose our Empower, Charge, and Scissor Cut, decrease our health, and sacrifice a bit of our influence under frenzy pheromones to increase our movement speed, slightly increase our armor, and gain a new set of abilities that make us a terrifying melee monster. By slashing, we heal ourselves and gain a stack of rage that increases our armor, movement speed, attack speed, and our heals per slash, to a maximum of five rage. Our new Apprehend ability increases our movement speed and applies a slow on the next target we slash. Our Clothesline ability flings our target to heal ourselves, even more so if we have a rage stack that will be used up. Finally, Eviscerate unleashes a devastating windmill attack that heals us for every enemy we hit after an immobilizing wind-up."
 	flavor_description = "Unbridled fury fills this one. It will become an extension of my rage."
 	icon_state_prefix = "Berserker"
+	plasma_mod = -(/datum/caste_datum/ravager::plasma_max) // no plasma
+	health_mod = -XENO_HEALTH_MOD_MED
+	armor_mod = XENO_ARMOR_MOD_VERY_SMALL
+	speed_mod = XENO_SPEED_FASTMOD_TIER_3
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/onclick/empower,
@@ -18,13 +22,8 @@
 	behavior_delegate_type = /datum/behavior_delegate/ravager_berserker
 
 /datum/xeno_strain/berserker/apply_strain(mob/living/carbon/xenomorph/ravager/ravager)
-	ravager.plasmapool_modifier = XENO_NO_PLASMA
-	ravager.health_modifier -= XENO_HEALTH_MOD_MED
-	ravager.armor_modifier += XENO_ARMOR_MOD_VERY_SMALL
-	ravager.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
-	ravager.received_phero_caps[XENO_PHERO_FRENZY] = 2.9 // Moderate
-
-	ravager.recalculate_everything()
+	..() // stat modifiers
+	ravager.received_phero_caps[XENO_PHERO_FRENZY] = XENO_PHERO_STRENGTH_STRONG - 0.1 // Moderate
 
 // Mutator delegate for Berserker ravager
 /datum/behavior_delegate/ravager_berserker

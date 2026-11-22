@@ -3,6 +3,8 @@
 	description = "We forfeit all of our acid-based abilities and some health for some extra speed and a rechargeable shield that can block one attack. Use our Pierce from up to three paces away to stab through talls, while stabbing through two or more will completely recharge our shield. Use our charge to plow through enemies and use it again to unleash a powerful AoE slash that reaches up to three paces. We also have a Cleave ability, amplified by our shield, which we can toggle to either immobilize or fling a target away."
 	flavor_description = "Fearless it was born, fearless it now serves, and fearless it will die. This one will become my Vanguard."
 	icon_state_prefix = "Vanguard"
+	speed_mod = XENO_SPEED_FASTMOD_TIER_3
+	health_mod = -XENO_HEALTH_MOD_MED
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/xeno_spit,
@@ -22,10 +24,8 @@
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_vanguard
 
 /datum/xeno_strain/vanguard/apply_strain(mob/living/carbon/xenomorph/praetorian/prae)
-	prae.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
-	prae.health_modifier -= XENO_HEALTH_MOD_MED
+	..() // stat modifiers
 	prae.claw_type = CLAW_TYPE_SHARP
-	prae.recalculate_everything()
 
 /datum/behavior_delegate/praetorian_vanguard
 	name = "Praetorian Vanguard Behavior Delegate"

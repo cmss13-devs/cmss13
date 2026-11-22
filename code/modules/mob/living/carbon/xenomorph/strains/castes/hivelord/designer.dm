@@ -3,6 +3,10 @@
 	description = "We give up direct resin building and lose some plasma and health to gain stronger pheromones and longer vision. We can place up to 36 design nodes: optimized nodes boost building by 50%, flexible nodes reduce plasma cost by 50%, and construct nodes allow anyone to donate plasma to build weedbound resin walls or doors, even on surfaces where we can't normally build. Some castes, like hivelord, carrier, burrower, and queen, can stimulate construct nodes to make thick weedbound variants, including plasma fruits. We can mark nodes as walls or doors and remotely thicken structures, control doors, and remove nodes. Using Greater Resin Surge turns all design nodes into weaker reflective walls for temporary hive defense. Our tackle is slightly stronger, causing longer knockdowns."
 	flavor_description = "You are the hive's designer. While you no longer build with your own claws, your influence shapes the very foundation of the swarm, allowing it to expand and adapt beyond limits."
 	icon_state_prefix = "Designer"
+	health_mod = -XENO_HEALTH_MOD_LARGE
+	phero_mod = XENO_PHERO_MOD_LARGE
+	speed_mod = XENO_SPEED_TIER_3 //Lost 30% plasma in sac, you lost some weight
+	plasma_mod = -(/datum/caste_datum/hivelord::plasma_max * 0.3) //-30% plasma pool
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/secrete_resin/hivelord,
@@ -23,6 +27,7 @@
 	behavior_delegate_type = /datum/behavior_delegate/hivelord_designer
 
 /datum/xeno_strain/designer/apply_strain(mob/living/carbon/xenomorph/hivelord/hivelord)
+	..() // stat modifiers
 	hivelord.available_design = list(
 		/obj/effect/alien/resin/design/speed_node,
 		/obj/effect/alien/resin/design/cost_node,
@@ -34,13 +39,8 @@
 	hivelord.selected_design_mark = /datum/design_mark/resin_wall
 	hivelord.max_design_nodes = 36
 	hivelord.viewsize = WHISPERER_VIEWRANGE
-	hivelord.health_modifier -= XENO_HEALTH_MOD_LARGE
-	hivelord.phero_modifier += XENO_PHERO_MOD_LARGE
-	hivelord.speed_modifier += XENO_SPEED_TIER_3 //Lost 30% plasma in sac, you lost some weight
-	hivelord.plasmapool_modifier = 0.7 //-30% plasma pool
 	hivelord.tacklestrength_min = 5
 	hivelord.tacklestrength_max = 6
-	hivelord.recalculate_everything()
 
 	// Also change the primacy value for our abilities (because we want the same place but have another primacy ability)
 	for(var/datum/action/xeno_action/action in hivelord.actions)

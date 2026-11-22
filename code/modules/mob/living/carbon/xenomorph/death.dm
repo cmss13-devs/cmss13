@@ -112,7 +112,7 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 		else
 			playsound(loc, prob(50) == 1 ? 'sound/voice/alien_death.ogg' : 'sound/voice/alien_death2.ogg', 25, 1)
 		var/area/A = get_area(src)
-		if(hive && hive.living_xeno_queen)
+		if(hive && (hive.living_xeno_queen || hive.allow_no_queen_actions))
 			if(!HAS_TRAIT(src, TRAIT_TEMPORARILY_MUTED) && !hardcore)
 				xeno_message("Hive: [src] has <b>died</b>[A? " at [sanitize_area(A.name)]":""]! [banished ? "They were banished from the hive." : ""]", death_fontsize, hivenumber)
 

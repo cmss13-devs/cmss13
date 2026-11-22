@@ -155,6 +155,10 @@
 	main_hive.allow_no_queen_actions = TRUE
 	main_hive.allow_no_queen_evo = TRUE
 
+	// Always allow live tacmap use while queen has not yet spawned
+	main_hive.tacmap_requires_queen = FALSE
+	main_hive.tacmap_live_requires_queen_ovi = FALSE
+
 	var/obj/structure/tunnel/T
 	var/i = 0
 	var/turf/t
@@ -1088,6 +1092,10 @@
 	hive.allow_no_queen_evo = FALSE
 	if(ROUND_TIME >= round_time_evolution_ovipositor) //make sure you can still get evo without ovi roundstart
 		hive.evolution_without_ovipositor = FALSE
+
+	// Set tacmap use to normal now
+	hive.tacmap_requires_queen = initial(hive.tacmap_requires_queen)
+	hive.tacmap_live_requires_queen_ovi = initial(hive.tacmap_live_requires_queen_ovi)
 
 #undef MONKEYS_TO_TOTAL_RATIO
 #undef PODLOCKS_OPEN_WAIT

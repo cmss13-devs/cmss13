@@ -87,6 +87,12 @@
 	var/buffed_slashes = 0
 	var/increment_amount = 10
 
+/datum/behavior_delegate/sentinel_base/get_slash_icon_state()
+	return buffed_slashes ? "toxic_slash" : ..()
+
+/datum/behavior_delegate/sentinel_base/get_tail_strike_icon_state(default_state)
+	return buffed_slashes ? "toxic_slash_tail" : ..()
+
 /datum/behavior_delegate/sentinel_base/melee_attack_modify_damage(original_damage, mob/living/carbon/carbon_target)
 	if (!buffed_slashes)
 		return original_damage

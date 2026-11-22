@@ -28,6 +28,7 @@
 
 	required_skill = SKILL_VEHICLE_LARGE
 
+	uses_rubber_tires = TRUE
 	movement_sound = 'sound/vehicles/tank_driving.ogg'
 
 	luminosity = 7

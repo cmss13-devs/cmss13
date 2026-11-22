@@ -3,6 +3,10 @@
 	description = "At the cost of a little bit of your health and your spray and enhanced spit, you gain some armor, and further enhance your acid glands. You can store acid in these glands to increase the rate in which you can fire off your projectiles, yet considerably weaken your armor plating by doing so, up to a maximum of 5 times. Your spit now does considerably more damage as well as apply a lingering acid effect, while you now gain the ability to launch a blob of acid at a medium distance, which leaves behind a small area of acid, amplified if it hits a target directly by stunning the target. Additionally you can also now spit your acid in a wide arc, shooting multiple smaller pellets that inflict a small amount of damage but also coat the target in a layer of burning acid."
 	flavor_description = "Your acid burns as much as my fury, let your acid blot out the sun, let them choke on their own misery."
 	icon_state_prefix = "Dissolver"
+	armor_mod = XENO_ARMOR_MOD_SMALL // 25 armor
+	health_mod = -XENO_HEALTH_MOD_SMALL_MED // 500 hp
+	speed_mod = XENO_SPEED_TIER_2
+
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/tail_stab/spitter,
 		/datum/action/xeno_action/activable/xeno_spit/spitter,
@@ -16,20 +20,13 @@
 		/datum/action/xeno_action/activable/xeno_spit/bombard/dissolver/enzymatic_breath,
 		/datum/action/xeno_action/onclick/store_acid,
 	)
+
 	behavior_delegate_type = /datum/behavior_delegate/spitter_dissolver
 
 /datum/xeno_strain/dissolver/apply_strain(mob/living/carbon/xenomorph/spitter/spitter)
-	if(!istype(spitter))
-		return FALSE
-
-	spitter.tileoffset = 0
-	spitter.armor_modifier += XENO_ARMOR_MOD_SMALL // 25 armor
-	spitter.health_modifier -= XENO_HEALTH_MOD_SMALL_MED // 500 hp
-
-	spitter.speed_modifier += XENO_SPEED_TIER_2
+	..()
 	spitter.melee_damage_upper = XENO_DAMAGE_TIER_2
 	spitter.plasma_gain = XENO_PLASMA_GAIN_TIER_8
-	spitter.recalculate_everything()
 	spitter.damage_state_prefix = icon_state_prefix
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/dissolver

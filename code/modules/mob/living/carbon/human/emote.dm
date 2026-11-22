@@ -333,7 +333,7 @@
 	. = ..()
 
 	var/mob/living/carbon/human/H = user
-	if(H.is_napping || H.eyelids_status == EYELID_CLOSED_VOLUNTARILY)
+	if(H.napping_level || H.eyelids_status == EYELID_CLOSED_VOLUNTARILY)
 		return
 	H.move_eyelids(EYELID_CLOSED, 5)
 
@@ -485,7 +485,7 @@
 	. = ..()
 
 	var/mob/living/carbon/human/H = user
-	if(H.is_napping)
+	if(H.napping_level)
 		H.wake_from_nap(rapid_blink = FALSE)
 		return
 	// existing openeyes logic...
@@ -531,6 +531,6 @@
 	. = ..()
 
 	var/mob/living/carbon/human/H = user
-	if(H.is_napping)
+	if(H.napping_level)
 		H.wake_from_nap(rapid_blink = FALSE)
 

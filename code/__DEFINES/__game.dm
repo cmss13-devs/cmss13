@@ -46,6 +46,7 @@
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
 #define MAP_TYRARGO_RIFT "Tyrargo Rift"
 #define MAP_WHITE_ANTRE_RESEARCH_FACILITY "White Antre Research Facility"
+#define MAP_FORT_MCNEIL "Fort McNeil"
 #define MAP_CAPE_RIVER "Cape River Mining Colony"
 #define MAP_LV1021_FALCONS_FURY "LV-1021: Operation Falcon's Fury"
 #define MAP_LV1021_FALCONS_FURY_FORWARD_BASE "LV-1021: Operation Falcon's Fury - Forward Base"

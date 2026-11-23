@@ -276,10 +276,11 @@
 	src.planter = planter
 	src.resin_type = resin_type
 
-	if(!planter)
-		qdel(src)
-
 	var/mob/living/carbon/xenomorph/planter_xeno = planter
+	if(!planter_xeno)
+		qdel(src)
+		return
+
 	LAZYADD(planter_xeno.current_building_nodes, src)
 
 	if(isqueen(planter))

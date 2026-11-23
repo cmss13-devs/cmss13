@@ -153,7 +153,7 @@
 	types_of_variants = list(
 		/datum/resin_construction/resin_turf/wall/thick,
 		/datum/resin_construction/resin_turf/wall/queen,
-		/datum/resin_construction/resin_turf/wall/reflective
+		/datum/resin_construction/resin_turf/wall/reflective,
 		)
 
 /datum/resin_construction/resin_turf/wall/check_for_wall_or_door()
@@ -178,6 +178,7 @@
 		/datum/resin_construction/resin_turf/wall,
 		/datum/resin_construction/resin_turf/wall/queen,
 		)
+
 /datum/resin_construction/resin_turf/wall/queen
 	name = "Queen Resin Wall"
 	desc = "A resin wall, able to block passage. Constructed type depends on weeds."

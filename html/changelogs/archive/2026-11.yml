@@ -434,3 +434,37 @@
       slightly improving slowdown.
   carlarcCM:
   - rscadd: Xenos can hear deaths and use live tacmap until a Queen evolves.
+2026-11-23:
+  Drathek:
+  - code_imp: Replaced plasma_add and plasmapool_multiplier with plasmapool_modifier
+      so a single variable can handle even xenos with no base plasma
+  - code_imp: Strain application now always performs recalculate_everything
+  - code_imp: Simplified LAZYIN macro
+  - bugfix: Xenos now destroy any shields on Destroy
+  - bugfix: Fixed phero unit testing for gardener, and just refactored them to be
+      automated
+  - bugfix: Fixes phero unit testing not accounting for received_phero_caps or ignore_aura
+      and not testing strains as receivers
+  - refactor: Refactored xeno strain application so that now common stat modifications
+      are defined rather than just hardcoded in a proc
+  Steelpoint:
+  - mapadd: Fort McNeil has been added to the game. A lowpop map set on the planet
+      White Antre, hosted within a flyover civilian colony, duel dedicated as a way-station
+      and small time mining operation. This map will be votable when the server population
+      is 100 players or less.
+  TrollerNoob:
+  - rscadd: Added a variety of telegraph VFX to Xenomorph Abilities across the board.
+  - rscadd: Xenomorph movement abilities now kick up a dust cloud on the tile they
+      moved from, unless they are cloaked.
+  - rscadd: Xenomorph slash enhancing abilities now have a custom slash animation.
+  - rscadd: Base Ravager's abilities now visually change when being enhanced with
+      enough shield gained from Empower.
+  - imageadd: Added a greyscale xeno telegraph border to be used and recolored for
+      telegraph effects.
+  - imageadd: Added telegraph states for the Flurry, Tail Jab/Pierce, Vanguard Dash
+      Slash, Tremor/Stomp/High Gallop, Scissor Cut, Eviscerate and Caustic Embrace
+      Xenomorph abilities.
+  - imageadd: Added attack states for the Clothesline, Apprehend, Crippling Strike,
+      Crippling Strike Tail Strike, Toxic Slash and Toxic Slash Tail Strike Xenomorph
+      abilities.
+  - imageadd: Added a big and small dust cloud effect for Xenomorph movement abilities.

@@ -203,7 +203,6 @@
 	if(istype(SSticker.mode, /datum/game_mode/colonialmarines/forward_base))
 		var/datum/game_mode/colonialmarines/forward_base/mode = SSticker.mode
 		mode.update_hive_surge(linked_hive)
-	linked_hive.check_if_hit_larva_from_pylon_limit()
 	addtimer(CALLBACK(src, PROC_REF(give_royal_resin)), XENO_PYLON_ACTIVATION_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_LOOP|TIMER_DELETE_ME)
 
 /// Looped proc via timer to give larva after time
@@ -216,8 +215,6 @@
 
 	if(linked_hive.buff_points < linked_hive.max_buff_points)
 		linked_hive.buff_points += 1
-
-	linked_hive.check_if_hit_larva_from_pylon_limit()
 
 //Hive Core - Generates strong weeds, supports other buildings
 /obj/effect/alien/resin/special/pylon/core

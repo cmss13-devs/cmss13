@@ -730,54 +730,7 @@
 /obj/structure/machinery/computer/dropship_weapons/proc/get_sanitised_equipment(mob/user, obj/docking_port/mobile/marine_dropship/dropship)
 	. = list()
 	for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
-		var/list/data = list(
-			"name" = equipment.name,
-			"shorthand" = equipment.shorthand,
-			"eqp_tag" = ref(equipment),
-			"is_weapon" = equipment.is_weapon,
-			"is_interactable" = equipment.is_interactable,
-			"mount_point" = equipment.ship_base.attach_id,
-			"is_missile" = equipment.is_missile,
-			"ammo_name" = equipment.ammo_equipped?.name,
-			"ammo" = equipment.ammo_equipped?.ammo_count,
-			"max_ammo" = equipment.ammo_equipped?.max_ammo_count,
-			"firemission_delay" = equipment.ammo_equipped?.fire_mission_delay,
-			"burst" = equipment.ammo_equipped?.ammo_used_per_firing,
-			"icon_state" = equipment.icon_state,
-			"data" = equipment.ui_data(user)
-		)
-
-		if(istype(equipment, /obj/structure/dropship_equipment/weapon))
-			var/obj/structure/dropship_equipment/weapon/weapon = equipment
-			data["last_fired"] = weapon.last_fired
-			data["firing_delay"] = weapon.firing_delay
-
-		if(istype(equipment, /obj/structure/dropship_equipment/medevac_system))
-			var/obj/structure/dropship_equipment/medevac_system/medevac = equipment
-			data["medevac_cooldown"] = medevac.medevac_cooldown
-
-		if(istype(equipment, /obj/structure/dropship_equipment/paradrop_system))
-			var/obj/structure/dropship_equipment/paradrop_system/paradrop = equipment
-			data["system_cooldown"] = paradrop.system_cooldown
-
-		if(istype(equipment, /obj/structure/dropship_equipment/sentry_holder))
-			var/obj/structure/dropship_equipment/sentry_holder/sentry = equipment
-			data["deployment_cooldown"] = sentry.deployment_cooldown
-
-		if(istype(equipment, /obj/structure/dropship_equipment/mg_holder))
-			var/obj/structure/dropship_equipment/mg_holder/mg = equipment
-			data["deployment_cooldown"] = mg.deployment_cooldown
-
-		if(istype(equipment, /obj/structure/dropship_equipment/electronics/spotlights))
-			var/obj/structure/dropship_equipment/electronics/spotlights/spotlight = equipment
-			data["spotlights_cooldown"] = spotlight.spotlights_cooldown
-
-		if(istype(equipment, /obj/structure/dropship_equipment/fulton_system))
-			var/obj/structure/dropship_equipment/fulton_system/fulton = equipment
-			data["fulton_cooldown"] = fulton.fulton_cooldown
-
-		. += list(data)
-
+		. += list(equipment.get_console_data(user))
 		equipment.linked_console = src
 
 

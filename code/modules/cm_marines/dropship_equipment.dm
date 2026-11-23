@@ -41,6 +41,55 @@
 		linked_console = null
 	. = ..()
 
+/// Returns the equipment data shared by dropship console interfaces.
+/obj/structure/dropship_equipment/proc/get_console_data(mob/user)
+	var/list/data = list(
+		"name" = name,
+		"shorthand" = shorthand,
+		"eqp_tag" = ref(src),
+		"is_weapon" = is_weapon,
+		"is_interactable" = is_interactable,
+		"mount_point" = ship_base.attach_id,
+		"is_missile" = is_missile,
+		"ammo_name" = ammo_equipped?.name,
+		"ammo" = ammo_equipped?.ammo_count,
+		"max_ammo" = ammo_equipped?.max_ammo_count,
+		"firemission_delay" = ammo_equipped?.fire_mission_delay,
+		"burst" = ammo_equipped?.ammo_used_per_firing,
+		"icon_state" = icon_state,
+		"data" = ui_data(user),
+	)
+	return data
+
+/obj/structure/dropship_equipment/weapon/get_console_data(mob/user)
+	. = ..()
+	.["last_fired"] = last_fired
+	.["firing_delay"] = firing_delay
+
+/obj/structure/dropship_equipment/medevac_system/get_console_data(mob/user)
+	. = ..()
+	.["medevac_cooldown"] = medevac_cooldown
+
+/obj/structure/dropship_equipment/paradrop_system/get_console_data(mob/user)
+	. = ..()
+	.["system_cooldown"] = system_cooldown
+
+/obj/structure/dropship_equipment/sentry_holder/get_console_data(mob/user)
+	. = ..()
+	.["deployment_cooldown"] = deployment_cooldown
+
+/obj/structure/dropship_equipment/mg_holder/get_console_data(mob/user)
+	. = ..()
+	.["deployment_cooldown"] = deployment_cooldown
+
+/obj/structure/dropship_equipment/electronics/spotlights/get_console_data(mob/user)
+	. = ..()
+	.["spotlights_cooldown"] = spotlights_cooldown
+
+/obj/structure/dropship_equipment/fulton_system/get_console_data(mob/user)
+	. = ..()
+	.["fulton_cooldown"] = fulton_cooldown
+
 /obj/structure/dropship_equipment/update_health(damage)
 	health = min(initial(health), health-damage)
 	if(health <= 0)

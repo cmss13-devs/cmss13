@@ -7,6 +7,7 @@ import { Dpad } from './common/Dpad';
 import { CameraMfdPanel } from './MfdPanels/CameraPanel';
 import { EquipmentMfdPanel } from './MfdPanels/EquipmentPanel';
 import { FiremissionMfdPanel } from './MfdPanels/FiremissionPanel';
+import { FlightTimeBar } from './MfdPanels/FlightTimeBar';
 import { MapMfdPanel } from './MfdPanels/MapPanel';
 import { MfdPanel, type MfdProps } from './MfdPanels/MultifunctionDisplay';
 import { mfdState } from './MfdPanels/stateManagers';
@@ -24,6 +25,10 @@ export interface DropshipProps {
   camera_map_ref?: string;
   camera_target_id?: string;
   targets_data: Array<LazeTarget>;
+  shuttle_state?: string;
+  flight_time?: number;
+  max_flight_duration?: number;
+  max_refuel_duration?: number;
 }
 
 type MedevacTargets = {
@@ -59,7 +64,24 @@ export type DropshipEquipment = {
   burst?: number;
   max_ammo?: number;
   firemission_delay?: number;
+  last_fired?: number;
+  firing_delay?: number;
+  medevac_cooldown?: number;
+  system_cooldown?: number;
+  deployment_cooldown?: number;
+  spotlights_cooldown?: number;
+  fulton_cooldown?: number;
+  reload_cooldown?: number;
   data?: any;
+  stored_ammo?: Array<{
+    name: string;
+    ammo_count: number;
+    max_ammo_count: number;
+    ammo_name: string;
+    ref: string;
+  }>;
+  icon_state?: string;
+  damaged?: boolean;
 };
 
 const xOffset = 40;
@@ -367,6 +389,10 @@ export const DropshipWeaponsConsole = () => {
                   Offset
                   <br />
                   Calibration
+                </Stack.Item>
+                <Stack.Item height="5px" />
+                <Stack.Item>
+                  <FlightTimeBar />
                 </Stack.Item>
                 <Stack.Item height="280px" />
               </Stack>

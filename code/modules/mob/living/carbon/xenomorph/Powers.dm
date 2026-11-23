@@ -302,7 +302,8 @@
 	UnregisterSignal(src, COMSIG_TURF_WEED_DESTROYED)
 	// Make sure it's out of the node list!
 	var/mob/living/carbon/xenomorph/planter_xeno = planter
-	LAZYREMOVE(planter_xeno.current_building_nodes, src)
+	if(planter_xeno)
+		LAZYREMOVE(planter_xeno.current_building_nodes, src)
 	QDEL_NULL_LIST(fill_spots)
 	QDEL_NULL(node_image)
 	planter = null

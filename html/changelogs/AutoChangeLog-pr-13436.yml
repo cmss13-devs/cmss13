@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed more ways for machinery component_parts to keep lingering hardrefs"

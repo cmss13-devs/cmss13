@@ -529,7 +529,7 @@
 	// If a xeno is "defensively" grabbing a target, redirect the attack to them if they have atleast 25% health
 	var/mob/living/original_intended_target = null
 	var/is_target_xeno = isxeno(target_living)
-	if(!is_target_xeno && isxeno(target_living.pulledby) && target_living.pulledby.grab_level >= GRAB_AGGRESSIVE && !(ammo.flags_ammo_behavior & AMMO_XENO))
+	if(!is_target_xeno && isxeno(target_living?.pulledby) && target_living?.pulledby.grab_level >= GRAB_AGGRESSIVE && !(ammo.flags_ammo_behavior & AMMO_XENO))
 		var/mob/living/carbon/xenomorph/puller = target_living.pulledby
 		var/threshold = puller.client?.prefs?.xeno_defensive_grab_pref[puller.caste_type]
 		threshold = clamp(threshold, 0.25, 1)
@@ -1092,6 +1092,9 @@
 				armor = getarmor_organ(organ, ARMOR_ENERGY) //Won't be used, but just in case.
 
 		damage_result = armor_damage_reduction(GLOB.marine_ranged, damage, armor, bullet.ammo.penetration)
+
+		if(wear_suit)
+			damage_result = wear_suit.modify_bullet_damage(damage_result, bullet, ammo_flags)
 
 		if(damage_result <= 5)
 			to_chat(src,SPAN_XENONOTICE("Our armor absorbs the force of [bullet]!"))

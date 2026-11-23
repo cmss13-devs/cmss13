@@ -27,10 +27,16 @@
 	var/mob/living/mob_standing_on_turf
 	var/mob/living/mob_lying_on_turf
 
+	var/cause_was_grenade = istype(cause_data?.resolve_cause(), /obj/item/explosive/grenade)
+	var/cause_was_airburst = istype(cause_data?.resolve_cause(), /obj/item/explosive/grenade/high_explosive/airburst)
+
 	for(var/mob/living/target_mob in epicenter) //find a mob at the epicenter. Non-prone mobs take priority
+		if(cause_was_grenade && !cause_was_airburst)
+			if(target_mob.resting && target_mob.stat == CONSCIOUS && target_mob.a_intent == INTENT_DISARM) //we got a body-blocking hero in here, explosion() smothering handles shrapnel
+				return
 		if(target_mob.density && !mob_standing_on_turf)
 			mob_standing_on_turf = target_mob
-		if(!mob_lying_on_turf)
+		else if(!mob_lying_on_turf)
 			mob_lying_on_turf = target_mob
 
 	var/mob/source_mob = cause_data?.resolve_mob()

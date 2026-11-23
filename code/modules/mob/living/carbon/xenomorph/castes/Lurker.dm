@@ -52,6 +52,8 @@
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
+
+	water_config = /datum/water_overlay_config/xeno/small/squatter
 	claw_type = CLAW_TYPE_SHARP
 
 	tackle_min = 2
@@ -92,6 +94,12 @@
 	// Used by append_to_start()
 	var/cd_timer_id = TIMER_ID_NULL
 	var/speed_buff = 0
+
+/datum/behavior_delegate/lurker_base/get_slash_icon_state()
+	return next_slash_buffed ? "crippling_strike" : ..()
+
+/datum/behavior_delegate/lurker_base/get_tail_strike_icon_state(default_state)
+	return next_slash_buffed ? "crippling_strike_tail" : ..()
 
 /datum/behavior_delegate/lurker_base/melee_attack_modify_damage(original_damage, mob/living/carbon/target_carbon)
 	if (!isxeno_human(target_carbon))
@@ -201,6 +209,10 @@
 	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We bumped into someone and lost our invisibility!"))
 	lurker_invisibility_action.invisibility_off(0.5) // partial refund of remaining time
 
+
+/datum/action/xeno_action/activable/pounce/lurker/register_launch_effects(mob/living/carbon/xenomorph/xeno)
+	if(!HAS_TRAIT(xeno, TRAIT_CLOAKED))
+		return ..()
 
 /datum/action/xeno_action/activable/pounce/lurker/additional_effects(mob/living/living_mob)
 	var/mob/living/carbon/xenomorph/xeno = owner

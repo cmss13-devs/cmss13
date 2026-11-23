@@ -106,6 +106,7 @@ GLOBAL_VAR(xeno_unannounced_map)
 
 /// List of roles that can be setup for each gamemode
 GLOBAL_LIST_EMPTY(gamemode_roles)
+GLOBAL_LIST_EMPTY(gamemode_role_mappings)
 
 GLOBAL_VAR_INIT(minimum_exterior_lighting_alpha, 255)
 

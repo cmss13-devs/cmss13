@@ -73,6 +73,8 @@
 	skull = /obj/item/skull/ravager
 	pelt = /obj/item/pelt/ravager
 
+	water_config = /datum/water_overlay_config/xeno/medium/squatter
+
 /obj/item/organ/xeno/ravager
 	name = "ravager heart"
 	icon_state = "heart_t3"
@@ -241,7 +243,6 @@
 	xeno.emote("tail")
 
 	var/accumulative_health = 0
-	var/list/telegraph_atom_list = list()
 
 	for(var/mob/living/mob in mobs_in_range)
 		if(behavior.empower_targets >= max_targets)
@@ -253,7 +254,8 @@
 
 		behavior.empower_targets++
 		accumulative_health += shield_per_human
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(mob.loc, 1 SECONDS)
+		var/obj/effect/xenomorph/xeno_telegraph/attack/empower/mark = new(mob, 1 SECONDS)
+		mark.show_on_target(mob)
 		shake_camera(mob, 2, 1)
 
 	accumulative_health += main_empower_base_shield
@@ -338,6 +340,19 @@
 		return FALSE
 
 // Supplemental behavior for our charge
+/datum/action/xeno_action/activable/pounce/charge/register_launch_effects(mob/living/carbon/xenomorph/xeno)
+	if(!HAS_TRAIT(xeno, TRAIT_ABILITY_SUPER_EMPOWER))
+		return ..()
+	RegisterSignal(xeno, COMSIG_MOVABLE_MOVED, PROC_REF(show_charge_trail))
+
+/datum/action/xeno_action/activable/pounce/charge/proc/show_charge_trail(mob/living/carbon/xenomorph/xeno, atom/old_loc)
+	SIGNAL_HANDLER
+	if(!isturf(old_loc) || old_loc == xeno.loc || !xeno.launch_metadata)
+		return
+	if(!xeno.launch_metadata.dist)
+		new /obj/effect/overlay/temp/xeno_dash_smoke/large(old_loc)
+	new /obj/effect/overlay/afterimage(old_loc, xeno)
+
 /datum/action/xeno_action/activable/pounce/charge/additional_effects(mob/living/living)
 	var/mob/living/carbon/human/human = living
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -370,7 +385,8 @@
 	var/facing = Get_Compass_Dir(ravager_user, target_atom)
 	var/turf/turf = ravager_user.loc
 	var/turf/temp = ravager_user.loc
-	var/list/telegraph_atom_list = list()
+	var/is_empowered = HAS_TRAIT(ravager_user, TRAIT_ABILITY_SUPER_EMPOWER)
+	var/telegraph_type = is_empowered ? /obj/effect/xenomorph/xeno_telegraph/attack/scissor_cut/empowered : /obj/effect/xenomorph/xeno_telegraph/attack/scissor_cut
 
 	for(var/step in 0 to 3)
 		temp = get_step(turf, facing)
@@ -404,7 +420,7 @@
 
 		turf = temp
 		target_turfs += turf
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(turf, 0.25 SECONDS)
+		new telegraph_type(turf, 0.45 SECONDS)
 
 	// Extract our 'optimal' turf, if it exists
 	if(length(target_turfs) >= 2)
@@ -430,7 +446,7 @@
 			carbon_target.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
 			playsound(get_turf(carbon_target), "alien_claw_flesh", 30, TRUE)
 
-			if(HAS_TRAIT(ravager_user, TRAIT_ABILITY_SUPER_EMPOWER))
+			if(is_empowered)
 				new /datum/effects/xeno_slow/superslow(carbon_target, ravager_user, ttl = superslow_duration)
 				display_buffed = FALSE
 

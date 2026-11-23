@@ -134,7 +134,7 @@
 
 	// If it fails to be built it goes to the back of the list.
 	// This prevents a chain of doors from being stuck on the door that can't be built.
-	if(!queen_owner.build_resin(queued_node, queued_node.resin_type, message = message))
+	if(!queen_owner.build_resin(queued_node, queued_node.resin_type, message = message, use_plasma = (plasma_cost != 0)))
 		LAZYREMOVE(queen_owner.current_building_nodes, queued_node)
 		LAZYADD(queen_owner.current_building_nodes, queued_node)
 

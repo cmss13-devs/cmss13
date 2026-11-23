@@ -542,3 +542,10 @@
 	result = "eggplasma"
 	required_reagents = list("blood" = 10, "eggplasma" = 1)
 	result_amount = 2
+
+/datum/chemical_reaction/saccharin
+	name = "Saccharin"
+	id = "saccharin"
+	result = "saccharin"
+	required_reagents = list("sulphuric acid" = 1, "ammonia" = 1, "chlorine" = 1, "oxygen" = 1)
+	result_amount = 2

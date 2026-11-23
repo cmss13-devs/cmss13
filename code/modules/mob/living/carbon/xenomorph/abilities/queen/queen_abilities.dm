@@ -115,7 +115,7 @@
 	SSticker.OnRoundstart(CALLBACK(src, PROC_REF(apply_queen_build_boost)))
 	RegisterSignal(L, COMSIG_XENO_FINISH_BUILDING, PROC_REF(build_from_queue))
 
-/datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/build_from_queue(mob/living/carbon/xenomorph/queen/queen_owner)
+/datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/build_from_queue(mob/living/carbon/xenomorph/queen/queen_owner, message = TRUE)
 
 	if(!length(queen_owner.current_building_nodes))
 		return
@@ -124,7 +124,26 @@
 	if(!queued_node)
 		return
 
-	queen_owner.build_resin(queued_node, queued_node.resin_type)
+	// Build turfs before objects always.
+	// Doors need walls, and walls are more important in general than any object.
+	if((queued_node.resin_type in typesof(/datum/resin_construction/resin_obj)))
+		for(var/obj/effect/alien/resin/building_node/turf_node in queen_owner.current_building_nodes)
+			if(turf_node.resin_type in typesof(/datum/resin_construction/resin_turf))
+				queued_node = turf_node
+				break
+
+	// If it fails to be built it goes to the back of the list.
+	// This prevents a chain of doors from being stuck on the door that can't be built.
+	if(!queen_owner.build_resin(queued_node, queued_node.resin_type, message = message))
+		LAZYREMOVE(queen_owner.current_building_nodes, queued_node)
+		LAZYADD(queen_owner.current_building_nodes, queued_node)
+
+/datum/action/xeno_action/activable/secrete_resin/remote/queen/life_tick()
+	. = ..()
+	var/mob/living/carbon/xenomorph/queen/queen_owner = owner
+	if(!queen_owner.ovipositor || queen_owner.action_busy)
+		return
+	build_from_queue(queen_owner, message = FALSE)
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/remove_from(mob/living/carbon/xenomorph/xeno)
 	..()

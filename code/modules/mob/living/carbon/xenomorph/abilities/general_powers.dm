@@ -384,6 +384,15 @@
 				spot_nearby.try_fill_node(xeno_owner)
 	return TRUE
 
+/datum/action/xeno_action/activable/secrete_resin/life_tick()
+	. = ..()
+	if(owner.action_busy)
+		return
+	var/obj/effect/fill_spot/fill_spot = locate() in get_turf(owner)
+	if(!fill_spot)
+		return
+	fill_spot.try_fill_node(owner)
+
 // leader Marker
 
 /datum/action/xeno_action/activable/info_marker/use_ability(atom/atom, mods)

@@ -33,11 +33,6 @@
 
 	if(!check_state())
 		return SECRETE_RESIN_FAIL
-	if(use_plasma && !check_plasma(total_resin_cost))
-		return SECRETE_RESIN_FAIL
-	if(SSinterior.in_interior(src))
-		to_chat(src, SPAN_XENOWARNING("It's too tight in here to build."))
-		return SECRETE_RESIN_FAIL
 
 	if(resin_construct.max_per_xeno != RESIN_CONSTRUCTION_NO_MAX)
 		var/current_amount = length(built_structures[resin_construct.build_path])
@@ -45,8 +40,16 @@
 			to_chat(src, SPAN_XENOWARNING("We've already built the maximum possible structures we can!"))
 			return SECRETE_RESIN_FAIL
 
+	if(SSinterior.in_interior(src))
+		to_chat(src, SPAN_XENOWARNING("It's too tight in here to build."))
+		return SECRETE_RESIN_FAIL
+
 	if(extra_build_dist != IGNORE_BUILD_DISTANCE && get_dist(src, target) > src.caste.max_build_dist + extra_build_dist)
 		return handle_building_node(target, resin_construct)
+
+	// Use plasma AFTER trying to make a building node, which is free.
+	if(use_plasma && !check_plasma(total_resin_cost, message))
+		return SECRETE_RESIN_FAIL
 
 	if(thick) //hivelords can thicken existing resin structures.
 		var/thickened = FALSE
@@ -344,6 +347,13 @@
 		return
 	if(wanderer != linked_node.planter)
 		return
+	// Build turfs (walls) before objects (doors, and others)
+	// This is because 1. Walls are the most important resin construction, 2. Walls are necessary for doors
+	if((linked_node.resin_type in typesof(/datum/resin_construction/resin_obj)))
+		for(var/obj/effect/fill_spot/additional_spot in get_turf(src))
+			if(additional_spot.linked_node.resin_type in typesof(/datum/resin_construction/resin_turf))
+				additional_spot.try_fill_node(A)
+				return
 	var/datum/caste_datum/wanderer_caste = wanderer.caste
 	var/datum/resin_construction/type_to_build = null
 	// We look for a type of the intended build, allowing hivelords to build on nodes designated by drones,
@@ -365,6 +375,11 @@
 		if(extra_node)
 			INVOKE_ASYNC(extra_node, PROC_REF(try_fill_node), wanderer) // async so the spent node gets deleted now
 		QDEL_NULL(linked_node)
+	else
+	// If it fails to be built it goes to the back of the list.
+	// This prevents a chain of doors from being stuck on the door that can't be built.
+		LAZYREMOVE(wanderer.current_building_nodes, linked_node)
+		LAZYADD(wanderer.current_building_nodes, linked_node)
 
 /obj/effect/client_image_holder/resin_building_node
 	desc = "A psychic node to mark future building spots."

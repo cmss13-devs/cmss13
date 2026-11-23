@@ -226,6 +226,8 @@
 					if(I.reliability != 100 && crit_fail)
 						I.crit_fail = 1
 					I.forceMove(src.loc)
+				component_parts.Cut()
+				component_parts = null
 				qdel(src)
 				return
 

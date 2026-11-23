@@ -173,6 +173,11 @@ CLIENT_VERB(drop_item)
 		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
 		return
 
+	if(ishuman(living_mob))
+		var/mob/living/carbon/human/living_human = living_mob
+		if(living_human.napping_level != NAPPING_LEVEL_AWAKE)
+			return
+
 	if(!mob.z)//Inside an object, tell it we moved
 		var/atom/O = mob.loc
 		if(!O)

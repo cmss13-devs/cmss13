@@ -50,6 +50,8 @@
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 
+	water_config = /datum/water_overlay_config/xeno/larva
+
 	var/burrowable = TRUE //Can it be safely burrowed if it has no player?
 	var/state_override
 	/// Whether we're bloody, normal, or mature
@@ -146,8 +148,9 @@
 	to_chat(src, SPAN_XENODANGER("Strength ripples through our small form. We are ready to be shaped to the Queen's will. <a href='byond://?src=\ref[src];evolve=1;'>Evolve</a>"))
 	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
-	var/datum/action/xeno_action/onclick/evolve/evolve_action = new()
-	evolve_action.give_to(src)
+	if(!get_action(src, /datum/action/xeno_action/onclick/evolve))
+		var/datum/action/xeno_action/onclick/evolve/evolve_action = new()
+		evolve_action.give_to(src)
 
 //Larva code is just a mess, so let's get it over with
 /mob/living/carbon/xenomorph/larva/update_icons()

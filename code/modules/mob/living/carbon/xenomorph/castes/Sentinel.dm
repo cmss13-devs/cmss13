@@ -56,6 +56,8 @@
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 
+	water_config = /datum/water_overlay_config/xeno/small/squatter
+
 	icon_xeno = 'icons/mob/xenos/castes/tier_1/sentinel.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_1/sentinel.dmi'
 
@@ -84,6 +86,12 @@
 	var/max_buffed_slashes = 3
 	var/buffed_slashes = 0
 	var/increment_amount = 10
+
+/datum/behavior_delegate/sentinel_base/get_slash_icon_state()
+	return buffed_slashes ? "toxic_slash" : ..()
+
+/datum/behavior_delegate/sentinel_base/get_tail_strike_icon_state(default_state)
+	return buffed_slashes ? "toxic_slash_tail" : ..()
 
 /datum/behavior_delegate/sentinel_base/melee_attack_modify_damage(original_damage, mob/living/carbon/carbon_target)
 	if (!buffed_slashes)

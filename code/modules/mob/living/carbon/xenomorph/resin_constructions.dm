@@ -154,7 +154,7 @@
 		/datum/resin_construction/resin_turf/wall/thick,
 		/datum/resin_construction/resin_turf/wall/queen,
 		/datum/resin_construction/resin_turf/wall/reflective,
-		)
+	)
 
 /datum/resin_construction/resin_turf/wall/check_for_wall_or_door()
 	return TRUE
@@ -177,7 +177,7 @@
 	types_of_variants = list(
 		/datum/resin_construction/resin_turf/wall,
 		/datum/resin_construction/resin_turf/wall/queen,
-		)
+	)
 
 /datum/resin_construction/resin_turf/wall/queen
 	name = "Queen Resin Wall"
@@ -193,7 +193,7 @@
 	types_of_variants = list(
 		/datum/resin_construction/resin_turf/wall/thick,
 		/datum/resin_construction/resin_turf/wall,
-		)
+	)
 
 /datum/resin_construction/resin_turf/wall/reflective
 	name = "Reflective Resin Wall"
@@ -217,7 +217,7 @@
 	types_of_variants = list(
 		/datum/resin_construction/resin_turf/membrane/thick,
 		/datum/resin_construction/resin_turf/membrane/queen,
-		)
+	)
 
 /datum/resin_construction/resin_turf/membrane/queen
 	name = "Queen Resin Membrane"
@@ -233,7 +233,7 @@
 	types_of_variants = list(
 		/datum/resin_construction/resin_turf/membrane/thick,
 		/datum/resin_construction/resin_turf/membrane,
-		)
+	)
 
 /datum/resin_construction/resin_turf/membrane/thick
 	name = "Thick Resin Membrane"
@@ -247,7 +247,7 @@
 	types_of_variants = list(
 		/datum/resin_construction/resin_turf/membrane,
 		/datum/resin_construction/resin_turf/membrane/queen,
-		)
+	)
 
 // Resin Doors
 /datum/resin_construction/resin_obj/door
@@ -264,7 +264,7 @@
 	types_of_variants = list(
 		/datum/resin_construction/resin_obj/door/thick,
 		/datum/resin_construction/resin_obj/door/queen,
-		)
+	)
 
 /datum/resin_construction/resin_obj/door/can_build_here(turf/T, mob/living/carbon/xenomorph/X)
 	if (!..())
@@ -304,7 +304,7 @@
 	types_of_variants = list(
 		/datum/resin_construction/resin_obj/door/thick,
 		/datum/resin_construction/resin_obj/door,
-		)
+	)
 
 /datum/resin_construction/resin_obj/door/thick
 	name = "Thick Resin Door"
@@ -318,7 +318,7 @@
 	types_of_variants = list(
 		/datum/resin_construction/resin_obj/door,
 		/datum/resin_construction/resin_obj/door/queen,
-		)
+	)
 
 // Sticky Resin
 /datum/resin_construction/resin_obj/sticky_resin

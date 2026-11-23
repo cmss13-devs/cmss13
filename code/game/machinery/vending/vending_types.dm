@@ -134,6 +134,7 @@
 	product_slogans = "Big Bubba Gum!;Wridley's Gum!;O'bannon's Sugar Free Gum!;Souto Gum! Taste the flavor!"
 	product_ads = "Big Bubba Chew! For big league sluggers!;Wridley's Spearmint, refresh your tongue!;O'bannon's Frost! Cooler than Cool!; Big Bubba Hubba! Blow bigger bubbles!; Souto Gum! All your favorite flavors, now chewable!; Try Wridley's Big Red! Spicy Cinnamon!; Try O'bannon's Citrus, tangy and sour!"
 	icon_state = "gum"
+	icon_vend = "gum-vend"
 	products = list(
 		/obj/item/storage/gum/bigbubba/chew = 3,
 		/obj/item/storage/gum/bigbubba/hubba = 3,
@@ -190,6 +191,7 @@
 		/obj/item/storage/gum/medichew/marijuana = 3,
 	)
 	product_type = VENDOR_PRODUCT_TYPE_FOOD
+
 
 /obj/structure/machinery/vending/cola
 	name = "\improper Souto Softdrinks"

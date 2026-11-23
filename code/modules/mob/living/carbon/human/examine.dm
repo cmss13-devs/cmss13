@@ -542,7 +542,7 @@
 
 	for(var/obj/bubblegum_bubble/gum_bubble in vis_contents)
 		if(gum_bubble.popped)
-			msg += SPAN_WARNING("[t_He] has a burst gum bubble covering [t_his] face!")
+			msg += SPAN_WARNING("[t_He] has a burst gum bubble covering [t_his] face!\n")
 		else
 			msg += "[t_He] is working [t_his] jaw, chewing gum!"
 		break

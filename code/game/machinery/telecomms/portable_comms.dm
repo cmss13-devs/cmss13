@@ -55,10 +55,6 @@
 	LAZYADD(component_parts, new /obj/item/cell(src))
 	return ..()
 
-/obj/structure/machinery/telecomms/relay/preset/tower/portable/Destroy()
-	QDEL_NULL_LIST(component_parts)
-	return ..()
-
 /obj/structure/machinery/telecomms/relay/preset/tower/portable/proc/get_cells()
 	var/list/cells = list()
 	for(var/obj/item/cell/cell in component_parts)

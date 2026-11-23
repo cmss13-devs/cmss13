@@ -479,6 +479,8 @@
 		if(I.reliability != 100 && crit_fail)
 			I.crit_fail = 1
 		I.forceMove(loc)
+	component_parts.Cut()
+	component_parts = null
 
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))

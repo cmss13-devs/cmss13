@@ -613,8 +613,6 @@
 		/datum/surgery_step/clamp_bleeders_step, //so you can clamp after important gut surgery or larba removal
 		/datum/surgery_step/close_encased_step,
 		/datum/surgery_step/clamp_bleeders_step, //eh, why not
-		/datum/surgery_step/cauterize/abort, //not enough bone gel or an emergency? Close 'em up.
-		/datum/surgery_step/suture_incision/abort,
 		/datum/surgery_step/open_encased_step,
 		/datum/surgery_step/mend_encased,
 	)

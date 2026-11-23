@@ -14,7 +14,9 @@
 	required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	steps = list(
 		/datum/surgery_step/create_cavity,
+		/datum/surgery_step/clamp_bleeders_step,
 		/datum/surgery_step/place_item,
+		/datum/surgery_step/clamp_bleeders_step,
 		/datum/surgery_step/cauterize/close_cavity,
 	)
 
@@ -31,7 +33,9 @@
 	name = "Implant Removal Surgery"
 	steps = list(
 		/datum/surgery_step/create_cavity,
+		/datum/surgery_step/clamp_bleeders_step,
 		/datum/surgery_step/remove_implant,
+		/datum/surgery_step/clamp_bleeders_step,
 		/datum/surgery_step/cauterize/close_cavity,
 	)
 

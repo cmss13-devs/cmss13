@@ -276,6 +276,9 @@
 	src.planter = planter
 	src.resin_type = resin_type
 
+	if(!planter)
+		qdel(src)
+
 	var/mob/living/carbon/xenomorph/planter_xeno = planter
 	LAZYADD(planter_xeno.current_building_nodes, src)
 

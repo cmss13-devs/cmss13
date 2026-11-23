@@ -69,6 +69,8 @@
 	var/spread_range = 0
 	/// How many tiles in the spread_range gets picked and fired on
 	var/spread_count = 0
+	/// Visual projectile effect created when this ammo impacts
+	var/impact_visual_type
 
 /obj/structure/ship_ammo/update_icon()
 	. = ..()
@@ -201,11 +203,7 @@
 /obj/structure/ship_ammo/proc/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from, mob/firing_mob)
 	return
 
-/obj/structure/ship_ammo/proc/get_impact_visual_type()
-	return null
-
 /obj/structure/ship_ammo/proc/create_impact_visual(turf/impact)
-	var/impact_visual_type = get_impact_visual_type()
 	if(!impact_visual_type)
 		return
 	var/obj/effect/overlay/temp/impact_visual = new impact_visual_type(impact, src)
@@ -263,6 +261,7 @@
 	fabricator_category = "GAU Cannon"
 	name = "\improper PGU-100 Multi-Purpose 30mm ammo crate"
 	icon_state = "30mm_crate"
+	impact_visual_type = /obj/effect/overlay/temp/cas_cannon_impact
 	desc = "A crate full of PGU-100 30mm Multi-Purpose ammo designed to penetrate light (non-reinforced) structures, as well as shred infantry, IAVs, LAVs, IMVs, and MRAPs. Works in large areas for use on Class 4 and superior alien insectoid infestations, as well as fitting within the armaments allowed for use against a tier 4 insurgency as well as higher tiers. However, it lacks armor penetrating capabilities, for which Anti-Tank 30mm ammo is needed."
 	equipment_type = /obj/structure/dropship_equipment/weapon/heavygun
 	ammo_count = 400
@@ -289,9 +288,6 @@
 /obj/structure/ship_ammo/heavygun/get_examine_text(mob/user)
 	. = ..()
 	. += "It has [ammo_count] round\s."
-
-/obj/structure/ship_ammo/heavygun/get_impact_visual_type()
-	return /obj/effect/overlay/temp/cas_cannon_impact
 
 /obj/structure/ship_ammo/heavygun/show_loaded_desc(mob/user)
 	if(ammo_count)
@@ -408,6 +404,7 @@
 	name = "abstract rocket"
 	icon_state = "single"
 	icon = 'icons/obj/structures/props/dropship/dropship_ammo64.dmi'
+	impact_visual_type = /obj/effect/overlay/temp/cas_rocket_impact
 	equipment_type = /obj/structure/dropship_equipment/weapon/rocket_pod
 	ammo_count = 1
 	max_ammo_count = 1
@@ -423,9 +420,6 @@
 
 /obj/structure/ship_ammo/rocket/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	qdel(src)
-
-/obj/structure/ship_ammo/rocket/get_impact_visual_type()
-	return /obj/effect/overlay/temp/cas_rocket_impact
 
 //this one is air-to-air only
 /obj/structure/ship_ammo/rocket/widowmaker
@@ -551,6 +545,7 @@
 	explosion_damage = 200
 	explosion_falloff = 44
 	explosion_falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR
+	impact_visual_type = /obj/effect/overlay/temp/cas_minirocket_impact
 	name = "\improper AGR-59 'Mini-Mike'"
 	desc = "The AGR-59 'Mini-Mike' minirocket is a cheap and efficient means of putting hate down range. Though rockets lack a guidance package, it makes up for it in ammunition count."
 	icon_state = "minirocket"
@@ -570,9 +565,6 @@
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(smoke_spread), impact, 1, /obj/effect/particle_effect/smoke, null, 1), 1 SECONDS)
 	if(!ammo_count && loc)
 		qdel(src) //deleted after last minirocket is fired and impact the ground.
-
-/obj/structure/ship_ammo/minirocket/get_impact_visual_type()
-	return /obj/effect/overlay/temp/cas_minirocket_impact
 
 /obj/structure/ship_ammo/minirocket/show_loaded_desc(mob/user)
 	if(ammo_count)

@@ -312,8 +312,8 @@
 	layer = initial(layer)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	pixel_y = 6000
-	animate(src, pixel_y = -100, time= 1 SECONDS)
-	animate(icon_state=null, icon=null, time= 0.2 SECONDS) // to vanish it immediately
+	animate(src, pixel_y = -100, time = 1 SECONDS)
+	animate(icon_state = null, icon = null, time = 0.2 SECONDS) // to vanish it immediately
 
 //same as above but for mortar shells
 /obj/effect/overlay/temp/mortar_impact

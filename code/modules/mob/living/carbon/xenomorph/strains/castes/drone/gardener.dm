@@ -356,7 +356,7 @@
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/onclick/plant_weeds/gardener
-	ability_description = "Plant a hardy node that spreads tougher weeds."
+	ability_description = "Plant a hardy node that spreads tougher weeds over more kinds of surfaces."
 	name = "Plant Hardy Weeds (125)"
 	action_icon_state = "plant_gardener_weeds"
 	plasma_cost = 125

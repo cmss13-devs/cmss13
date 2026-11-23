@@ -1,6 +1,6 @@
 /datum/caste_datum/facehugger
 	caste_type = XENO_CASTE_FACEHUGGER
-	playstyle = "Infect hosts to grow the hive. Leap from close range to latch on, or climb onto a host who is lying down or nested. A successful attachment ends your time in this body. You lose health off weeds, so use cover and keep trips short."
+	playstyle = "Infect hosts to grow the hive. Leap from close range to latch on, or climb onto a host who is lying down or nested. If the host bursts, you may be offered the larva if the host's player chooses not to take control of it. You lose health off weeds, so use cover and keep trips short."
 	can_tackle = FALSE
 	base_actions = list(
 		/datum/action/xeno_action/onclick/toggle_seethrough,

@@ -189,11 +189,9 @@
 		to_chat(xeno, SPAN_XENOWARNING("You do not sense your owner in this place."))
 		return
 
-	for(var/mob/living/carbon/viewer in orange(xeno, 5))
-		to_chat(viewer, SPAN_WARNING("[xeno] sniffs the ground in a hurry."))
+	xeno.visible_message(SPAN_WARNING("[xeno] sniffs the ground in a hurry."), SPAN_XENOWARNING("You sniff the ground in a hurry to find where your master is."), max_distance = 5)
 	var/dist = get_dist(xeno, hound_owner.pred_owner)
 	var/direction = Get_Compass_Dir(xeno, hound_owner.pred_owner)
-	to_chat(xeno, SPAN_XENOWARNING("You sniff the ground in a hurry to find where your master is."))
 	to_chat(xeno, SPAN_XENOWARNING("Your owner is [dist] meters to the [dir2text(direction)]"))
 
 	apply_cooldown()

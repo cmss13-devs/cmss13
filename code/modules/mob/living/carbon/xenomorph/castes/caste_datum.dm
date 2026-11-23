@@ -169,9 +169,9 @@
 	var/damage_change = (melee_damage_lower + melee_damage_upper - xeno.caste.melee_damage_lower - xeno.caste.melee_damage_upper) * 0.5 - (strain?.damage_mod || 0)
 	var/portrait_state = "Normal [caste_type] Running"
 	var/portrait_file = initial(destination_type.icon_xeno)
-	if(HAS_TRAIT(xeno, TRAIT_XENONID) && initial(destination_type.icon_xenonid) && (portrait_state in icon_states(initial(destination_type.icon_xenonid))))
+	if(HAS_TRAIT(xeno, TRAIT_XENONID) && initial(destination_type.icon_xenonid) && icon_exists(initial(destination_type.icon_xenonid), portrait_state))
 		portrait_file = initial(destination_type.icon_xenonid)
-	if(!(portrait_state in icon_states(portrait_file)))
+	if(!icon_exists(portrait_file, portrait_state))
 		portrait_state = initial(destination_type.icon_state)
 	preview.details = list(
 		"windowTitle" = confirm_action || "Strain Information",

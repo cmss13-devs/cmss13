@@ -1,5 +1,6 @@
 /datum/caste_datum/king
 	caste_type = XENO_CASTE_KING
+	playstyle = "Crush enemies beneath with Destroy, plunge them into darkness with Doom, and decimate nearby enemies with Rend. Protect your sisters with Bulwark of the Hive as you break through the enemy's futile last stand."
 	base_actions = list(
 		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,

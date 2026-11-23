@@ -98,9 +98,9 @@
 	xeno.speed_modifier += speed_mod
 	xeno.attack_speed_modifier += attack_speed_mod
 	xeno.plasmapool_modifier += plasma_mod
+	xeno.tackle_max_modifier += tackle_max_change
 
 	xeno.regeneration_multiplier = regen_mult
-	xeno.tackle_max_modifier += tackle_max_change
 
 /mob/living/carbon/xenomorph/verb/purchase_strain()
 	set name = "Purchase Strain"
@@ -117,7 +117,9 @@
 		strain_list[initial(strain_type.name)] = strain_type
 
 	// Ask the user which strain they want.
-	var/strain_choice = tgui_input_list(usr, "Which strain would you like to take?", "Choose Strain", strain_list, theme = "hive_status")
+	var/strain_choice = strain_list[1]
+	if(length(strain_list) > 1)
+		strain_choice = tgui_input_list(src, "Which strain would you like to take?", "Choose Strain", strain_list, theme = "hive_status")
 	if(!strain_choice)
 		return
 	var/datum/xeno_strain/chosen_strain = strain_list[strain_choice]
@@ -222,7 +224,7 @@
 /datum/xeno_strain/proc/get_preview_portrait(mob/living/carbon/xenomorph/xeno)
 	var/portrait_state = "[icon_state_prefix || "Normal"] [xeno.caste_type] Running"
 	var/portrait_file = xeno.icon
-	if(!(portrait_state in icon_states(portrait_file)))
+	if(!icon_exists(portrait_file, portrait_state))
 		portrait_file = xeno.icon_xeno
 	return icon(portrait_file, portrait_state, SOUTH, 1)
 

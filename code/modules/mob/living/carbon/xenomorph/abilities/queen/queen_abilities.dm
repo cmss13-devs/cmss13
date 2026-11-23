@@ -86,7 +86,7 @@
 	plasma_cost = 0
 
 /datum/action/xeno_action/onclick/send_thoughts // and prayers
-	ability_description = "Send a psychic whisper, issue an order or project psychic radiance."
+	ability_description = "Send a psychic whisper to issue an order or project psychic radiance."
 	name = "Psychic Communication"
 	action_icon_state = "psychic_whisper"
 	plasma_cost = 0

@@ -1,6 +1,6 @@
 /datum/caste_datum/runner
 	caste_type = XENO_CASTE_RUNNER
-	playstyle = "Scout ahead with long range sight and hide beneath cover. Fire Bone Spur on the approach, then pounce to close the gap or escape before a sustained fight."
+	playstyle = "Scout ahead with long range sight and hide beneath cover. Fire Bone Spur on the approach to slow them, then pounce to close the gap or escape before a sustained fight."
 	base_actions = list(
 		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,

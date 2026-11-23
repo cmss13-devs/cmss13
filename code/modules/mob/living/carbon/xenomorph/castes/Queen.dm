@@ -6,7 +6,7 @@
 
 /datum/caste_datum/queen
 	caste_type = XENO_CASTE_QUEEN
-	playstyle = "Direct the hive with orders and pheromones. Stay mobile to fight or grow an ovipositor to lay eggs and support your brood through overwatch."
+	playstyle = "Direct the hive with orders and pheromones. Grow an ovipositor to lay eggs and use overwatch to heal sisters and build resin around them. Weak while immature, gain more health and unlock the powerful Screech ability once mature."
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,

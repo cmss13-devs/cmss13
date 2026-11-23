@@ -19,7 +19,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return
 	var/mob/living/carbon/human/user = hauled_mob?.resolve()
 	if(user)
-		to_chat(src, "Release [user] before evolving!")
+		to_chat(src, "Release what you are hauling before evolving!")
 		return
 
 	var/list/castes_available = evolution_choices()
@@ -34,7 +34,9 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return
 
 	var/castepick
-	if((client.prefs && client.prefs.no_radials_preference) || !hive.evolution_menu_images)
+	if(length(castes_available) == 1)
+		castepick = castes_available[1]
+	else if((client.prefs && client.prefs.no_radials_preference) || !hive.evolution_menu_images)
 		castepick = tgui_input_list(src, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", castes_available, 1 MINUTES, theme="hive_status")
 	else
 		var/list/fancy_caste_list = list()
@@ -48,8 +50,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	var/datum/caste_datum/caste_datum = GLOB.xeno_datum_list[castepick]
 	var/mob/living/carbon/xenomorph/xeno_type = GLOB.RoleAuthority.get_caste_by_text(castepick)
 	if(!caste_datum || !xeno_type)
-		to_chat(src, SPAN_WARNING("[castepick] is not a valid caste! If you're seeing this message, tell a coder!"))
-		return
+		CRASH("[castepick] is not a valid caste!")
 	if(!caste_datum.show_preview(src, xeno_type, "Evolve"))
 		return
 	if(QDELETED(src) || !client || !hive || evolving)

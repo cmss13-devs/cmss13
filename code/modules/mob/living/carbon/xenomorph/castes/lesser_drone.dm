@@ -1,6 +1,6 @@
 /datum/caste_datum/lesser_drone
 	caste_type = XENO_CASTE_LESSER_DRONE
-	playstyle = "Support the hive by building resin, moving eggs and spreading weeds near existing hive nodes. Stay on weeds: standing off them damages you. Rest to stop that damage while stranded. This fragile builder cannot evolve."
+	playstyle = "Support the hive by building resin, moving eggs and spreading weeds near existing hive nodes. Straying away from weeds will damage you over time, but resting will stop that damage. This fragile builder cannot evolve."
 	base_actions = list(
 		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/xeno_resting,

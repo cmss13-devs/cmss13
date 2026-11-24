@@ -12,7 +12,7 @@
 	foldable = FALSE
 	can_hold = list(
 		/obj/item/reagent_container/food/gum,
-		/obj/item/paper/wrapper,
+		/obj/item/gum_wrapper,
 	)
 	var/list/reagents_per_stick = list(
 		"sugar" = 4

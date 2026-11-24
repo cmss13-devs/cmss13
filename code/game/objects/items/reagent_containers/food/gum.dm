@@ -6,18 +6,26 @@
 #define GUM_SIZE_HUGE 8
 
 
-/obj/item/paper/wrapper
+/obj/item/gum_wrapper
 	name = "gum wrapper"
-	desc = "Clear evidence someones enjoyed a chewy treat!"
+	desc = "Clear evidence someone has enjoyed a chewy treat!"
 	icon = 'icons/obj/items/food/gum.dmi'
 	icon_state = "gum_wrapper"
 	item_state = "gum_wrapper"
+	w_class = SIZE_TINY
+	throwforce = 0
+	throw_speed = SPEED_FAST
+	flags_equip_slot = SLOT_HEAD
+	flags_armor_protection = BODY_FLAG_HEAD
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
+	)
 	item_state_slots = list(WEAR_HEAD = "gum_wrapper")
 	pickup_sound = 'sound/handling/gum_wrapper.ogg'
 	drop_sound = 'sound/handling/gum_wrapper.ogg'
-
-/obj/item/paper/wrapper/update_icon()
-	return
 
 
 /obj/bubblegum_bubble
@@ -46,7 +54,7 @@
 	var/gum_color = "#e58a9a"
 	var/wrapped = TRUE
 	var/chewed = FALSE
-	var/obj/item/paper/wrapper/wrapper = /obj/item/paper/wrapper
+	var/obj/item/gum_wrapper/wrapper = /obj/item/gum_wrapper
 	var/gum_size = GUM_SIZE_TINY
 	var/mob/living/carbon/human/bubble_blower
 	var/action_timer
@@ -155,7 +163,7 @@
 		update_icon()
 		qdel(gum_attacker)
 		update_icon()
-	else if(istype(item_attacker, /obj/item/paper))
+	else if(istype(item_attacker, /obj/item/gum_wrapper))
 		if(bubble_blower && bubble_blower.wear_mask == src)
 			to_chat(user, SPAN_NOTICE("You spit out the gum into the [item_attacker] and wrap it around it."))
 		else

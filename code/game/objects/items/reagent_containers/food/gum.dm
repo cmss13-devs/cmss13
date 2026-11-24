@@ -10,7 +10,14 @@
 	name = "gum wrapper"
 	desc = "Clear evidence someones enjoyed a chewy treat!"
 	icon = 'icons/obj/items/food/gum.dmi'
-	icon_state = "paper"
+	icon_state = "gum_wrapper"
+	item_state = "gum_wrapper"
+	item_state_slots = list(WEAR_HEAD = "gum_wrapper")
+	pickup_sound = 'sound/handling/gum_wrapper.ogg'
+	drop_sound = 'sound/handling/gum_wrapper.ogg'
+
+/obj/item/paper/wrapper/update_icon()
+	return
 
 
 /obj/bubblegum_bubble

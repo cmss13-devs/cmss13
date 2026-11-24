@@ -183,6 +183,7 @@
 	color = "#B31008" // rgb: 179, 16, 8
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_HYPERTHERMIC = 1)
+	flavor = "burning heat across your tongue"
 
 /datum/reagent/condensedcapsaicin
 	name = "Condensed Capsaicin"

@@ -1,8 +1,14 @@
 /datum/xeno_strain/vampire
 	name = LURKER_VAMPIRE
-	description = "You lose all of your abilities and you forfeit a chunk of your health and damage in exchange for a large amount of armor, a little bit of movement speed, increased attack speed, and brand new abilities that make you an assassin. Rush on your opponent to disorient them and Flurry to unleash a forward cleave that can hit and slow three talls and heal you for every tall you hit. Use your special AoE Tail Jab to knock talls away, doing more damage with direct hits and even more damage and a stun if they smack into walls. Finally, execute unconscious talls with a headbite to heal your wounds."
-	flavor_description = "Show no mercy! Slaughter them all!"
+	description = "We lose all of our abilities and we forfeit a chunk of our health and damage in exchange for a large amount of armor, slightly increased movement speed, increased attack speed, and brand new abilities that turn us into a lethal assassin. Our Rush ability disorients enemies and our Flurry ability unleashes a forward cleave that can hit and slow three talls and heal us for every tall we hit. Our special AoE Tail Jab knocks talls away, doing more damage with direct hits and scoring stuns and extra damage if they smack into walls. Finally, after we subdue our enemies, we can execute them with a headbite to heal our wounds."
+	flavor_description = "Blood for the queen! Show no mercy! Slaughter them all!"
 	icon_state_prefix = "Vampire"
+	plasma_mod = -(/datum/caste_datum/lurker::plasma_max) // no plasma
+	health_mod = -XENO_HEALTH_MOD_MED
+	speed_mod = XENO_SPEED_FASTMOD_TIER_1
+	armor_mod = XENO_ARMOR_MOD_LARGE
+	damage_mod = -XENO_DAMAGE_MOD_VERY_SMALL
+	attack_speed_mod = -2
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/onclick/lurker_invisibility,
@@ -18,18 +24,10 @@
 	)
 
 /datum/xeno_strain/vampire/apply_strain(mob/living/carbon/xenomorph/lurker/lurker)
-	lurker.plasmapool_modifier = 0
-	lurker.health_modifier -= XENO_HEALTH_MOD_MED
-	lurker.speed_modifier += XENO_SPEED_FASTMOD_TIER_1
-	lurker.armor_modifier += XENO_ARMOR_MOD_LARGE
-	lurker.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
-	lurker.attack_speed_modifier -= 2
-
+	..() // stat modifiers
 	var/datum/mob_hud/execute_hud = GLOB.huds[MOB_HUD_EXECUTE]
 	execute_hud.add_hud_to(lurker, lurker)
 	lurker.execute_hud = TRUE
-
-	lurker.recalculate_everything()
 
 /datum/action/xeno_action/activable/pounce/rush/additional_effects(mob/living/living_target) //pounce effects
 	var/mob/living/carbon/target = living_target
@@ -82,7 +80,7 @@
 			continue
 
 		target_turfs += current_turfs
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(current_turfs, 2)
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/attack/flurry(current_turfs, 0.4 SECONDS)
 
 	for(var/turf/current_turfs in target_turfs)
 		for(var/mob/living/carbon/target in current_turfs)
@@ -134,6 +132,7 @@
 				var/obj/structure/window/framed/target_window = current_structure
 				if(target_window.unslashable)
 					return
+				show_pierce_telegraph(get_turf(xeno), path, path.Find(path_turf))
 				playsound(get_turf(target_window),'sound/effects/glassbreak3.ogg', 30, TRUE)
 				target_window.shatter_window(TRUE)
 				xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes the window with their tail!"), SPAN_XENOWARNING("We strike the window with our tail!"))
@@ -142,6 +141,7 @@
 			if(current_structure.density && !current_structure.throwpass)
 				to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
 				return
+	show_pierce_telegraph(get_turf(xeno), path, length(path))
 	// find a target in the target turf
 	if(!iscarbon(targeted_atom) || hit_target.stat == DEAD)
 		for(var/mob/living/carbon/carbonara in get_turf(targeted_atom))
@@ -236,19 +236,19 @@
 				to_chat(xeno, SPAN_WARNING("We should not harm this host! It has a sister inside."))
 				return
 
-	xeno.visible_message(SPAN_DANGER("[xeno] grabs [target_carbon]’s head aggressively."),
-	SPAN_XENOWARNING("We grab [target_carbon]’s head aggressively."))
+	xeno.visible_message(SPAN_DANGER("[xeno] grabs [target_carbon]’s head aggressively and opens their mouth..."),
+	SPAN_XENOWARNING("We grab [target_carbon]’s head aggressively and open our mouth..."))
 
 	if(!do_after(xeno, 0.8 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 2)) // would be 0.75 but that doesn't really work with numticks
 		return
 
 	// To make sure that the headbite does nothing if the target is moved away.
 	if(!xeno.Adjacent(target_carbon))
-		to_chat(xeno, SPAN_XENOHIGHDANGER("We missed! Our target was moved away before we could finish headbiting them!"))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("We missed! Our target moved before we could finish headbiting them!"))
 		return
 
 	if(target_carbon.stat == DEAD)
-		to_chat(xeno, SPAN_XENODANGER("They died before you could finish headbiting them! Be more careful next time!"))
+		to_chat(xeno, SPAN_XENODANGER("They died before we could finish headbiting them! Be more careful next time!"))
 		return
 
 	to_chat(xeno, SPAN_XENOHIGHDANGER("We pierce [target_carbon]’s head with our inner jaw!"))

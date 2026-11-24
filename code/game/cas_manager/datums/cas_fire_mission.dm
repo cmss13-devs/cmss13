@@ -45,39 +45,90 @@
 			qdel(reticle)
 	firemission_reticles.Cut()
 
-/datum/cas_fire_mission/proc/build_new_record(obj/structure/dropship_equipment/weapon/weapon, fire_length)
+/datum/cas_fire_mission/proc/build_new_record(obj/structure/dropship_equipment/weapon/weapon, fire_length, list/saved_equipment_configs = null)
 	var/datum/cas_fire_mission_record/record = new()
 	record.weapon = weapon
 	record.offsets = new /list(fire_length)
-	for(var/idx = 1; idx<=fire_length; idx++)
-		record.offsets[idx] = "-"
+
+	var/list/mission_configs = saved_equipment_configs?[src]
+	var/list/saved_offsets = mission_configs?[get_equipment_config_key(weapon)]
+	if(!saved_offsets)
+		saved_offsets = mission_configs?[get_equipment_config_key(weapon, fallback = TRUE)]
+
+	for(var/idx = 1; idx <= fire_length; idx++)
+		if(saved_offsets && idx <= length(saved_offsets))
+			record.offsets[idx] = saved_offsets[idx]
+		else
+			record.offsets[idx] = "-"
 	records += record
 
-/datum/cas_fire_mission/proc/update_weapons(list/obj/structure/dropship_equipment/weapon/weapons, fire_length)
+/datum/cas_fire_mission/proc/update_weapons(list/obj/structure/dropship_equipment/weapon/weapons, fire_length, list/saved_equipment_configs = null)
 	var/list/datum/cas_fire_mission_record/bad_records = list()
 	var/list/obj/structure/dropship_equipment/weapon/missing_weapons = list()
-	for(var/datum/cas_fire_mission_record/record in records)
-		// if weapon appears in weapons list but not in record
-		// > add empty record for new weapon
+
+	var/list/mission_configs = saved_equipment_configs?[src]
+	if(saved_equipment_configs)
+		for(var/datum/cas_fire_mission_record/record as anything in records)
+			if(record.weapon?.ship_base?.attach_id)
+				var/record_attach_id = record.weapon.ship_base.attach_id
+				for(var/obj/structure/dropship_equipment/weapon/weapon as anything in weapons)
+					if(weapon?.ship_base?.attach_id == record_attach_id)
+						var/old_ammo = record.weapon?.ammo_equipped?.name || "No Ammo"
+						var/new_ammo = weapon?.ammo_equipped?.name || "No Ammo"
+						if(old_ammo != new_ammo)
+							if(!mission_configs)
+								mission_configs = list()
+								saved_equipment_configs[src] = mission_configs
+							mission_configs[get_equipment_config_key(record.weapon, old_ammo)] = record.offsets.Copy()
+						break
+
+	for(var/datum/cas_fire_mission_record/record as anything in records)
 		var/found = FALSE
-		for(var/obj/structure/dropship_equipment/weapon/weapon in weapons)
-			if(record.weapon == weapon)
-				found=TRUE
-				break
+		if(record.weapon?.ship_base?.attach_id)
+			var/record_attach_id = record.weapon.ship_base.attach_id
+			for(var/obj/structure/dropship_equipment/weapon/weapon as anything in weapons)
+				if(weapon?.ship_base?.attach_id == record_attach_id)
+					var/old_ammo = record.weapon?.ammo_equipped?.name || "No Ammo"
+					var/new_ammo = weapon?.ammo_equipped?.name || "No Ammo"
+					record.weapon = weapon
+					if(old_ammo != new_ammo && saved_equipment_configs)
+						var/list/saved_offsets = mission_configs?[get_equipment_config_key(weapon, new_ammo)]
+						if(!saved_offsets)
+							saved_offsets = mission_configs?[get_equipment_config_key(weapon, fallback = TRUE)]
+
+						if(saved_offsets)
+							for(var/idx = 1; idx <= length(record.offsets); idx++)
+								if(idx <= length(saved_offsets))
+									record.offsets[idx] = saved_offsets[idx]
+								else
+									record.offsets[idx] = "-"
+						else
+							for(var/idx = 1; idx <= length(record.offsets); idx++)
+								record.offsets[idx] = "-"
+
+					found = TRUE
+					break
 		if(!found)
 			bad_records.Add(record)
-	for(var/obj/structure/dropship_equipment/weapon/weapon in weapons)
+	for(var/obj/structure/dropship_equipment/weapon/weapon as anything in weapons)
 		var/found = FALSE
-		for(var/datum/cas_fire_mission_record/record in records)
-			if(record.weapon == weapon)
-				found=TRUE
-				break
+		if(weapon?.ship_base?.attach_id)
+			var/weapon_attach_id = weapon.ship_base.attach_id
+			for(var/datum/cas_fire_mission_record/record as anything in records)
+				if(record.weapon?.ship_base?.attach_id == weapon_attach_id)
+					found = TRUE
+					break
 		if(!found)
 			missing_weapons.Add(weapon)
-	for(var/datum/cas_fire_mission_record/record in bad_records)
+	for(var/datum/cas_fire_mission_record/record as anything in bad_records)
 		records -= record
-	for(var/obj/structure/dropship_equipment/weapon/weapon in missing_weapons)
-		build_new_record(weapon, fire_length)
+	for(var/obj/structure/dropship_equipment/weapon/weapon as anything in missing_weapons)
+		build_new_record(weapon, fire_length, saved_equipment_configs)
+
+/datum/cas_fire_mission/proc/get_equipment_config_key(obj/structure/dropship_equipment/weapon/weapon, ammo_name, fallback = FALSE)
+	if(fallback)
+		return "[weapon.type]_[weapon.ship_base.attach_id]_fallback"
+	return "[weapon.type]_[weapon.ship_base.attach_id]_[ammo_name || weapon.ammo_equipped?.name || "No Ammo"]"
 
 /datum/cas_fire_mission/proc/record_for_weapon(weapon_id)
 	for(var/datum/cas_fire_mission_record/record as anything in records)

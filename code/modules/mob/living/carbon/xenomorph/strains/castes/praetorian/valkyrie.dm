@@ -1,8 +1,10 @@
 /datum/xeno_strain/valkyrie
 	name = PRAETORIAN_VALKYRIE
-	description = "You trade your ranged abilities and acid to gain the ability to emit strong pheromones and buff other Xenomorphs, giving them extra armor. An ability that knocks down people in a 2 by 3 in front of you while also throwing back grenades. You get an ability that rejuvenates everyone in a certain range depending on your rage. You also trade your tailstab for an extinguisher, while it doesn't do damage it can put out both enemies and allies. This can be used to extinguish people on fire to help capture them."
+	description = "We trade our ranged abilities and acid to gain the ability to emit strong pheromones and a plethora of new abilities. Our slashes heal us and our allies and generate Fury, which fuels some of our abilities. We can Retrieve the wounded from a distance, our High Gallop knocks down enemies throws back boom rocks in a 2 by 3 arc, Fight or Flight rejuvenates and removes debuffs around allies, its range depending on our rage, and Tantrum provides armor to allies and speed to Crushers and Ravagers both's range depending on our rage. We also trade our tailstab Tail Fountain; it doesn't do damage, but it extinguishes allies, or it can extinguish talls to facilitate capture."
 	flavor_description = "This one will deny her sisters' deaths until they earn it. Fight or be forgotten."
 	icon_state_prefix = "Warden"
+	speed_mod = XENO_SPEED_SLOWMOD_TIER_5
+	armor_mod = XENO_ARMOR_MOD_SMALL
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/tail_stab,
@@ -20,14 +22,11 @@
 		/datum/action/xeno_action/activable/prae_retrieve,
 	)
 
-
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_valkyrie
 
 /datum/xeno_strain/valkyrie/apply_strain(mob/living/carbon/xenomorph/praetorian/prae)
-	prae.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
-	prae.armor_modifier += XENO_ARMOR_MOD_SMALL
+	..() // stat modifiers
 	prae.claw_type = CLAW_TYPE_VERY_SHARP
-	prae.recalculate_everything()
 
 /datum/behavior_delegate/praetorian_valkyrie
 	name = "Praetorian Valkyrie Behavior Delegate"
@@ -96,7 +95,7 @@
 	if (amount > 0)
 		if (base_fury >= fury_max)
 			return
-		to_chat(bound_xeno, SPAN_XENODANGER("We are overcome with rage."))
+		to_chat(bound_xeno, SPAN_XENODANGER("We are overcome with rage!"))
 	base_fury = clamp(base_fury + amount, 0, fury_max)
 
 /datum/behavior_delegate/praetorian_valkyrie/proc/use_internal_fury_ability(cost)
@@ -155,7 +154,7 @@
 	behavior.raging = TRUE
 
 	playsound(get_turf(raging_valkyrie), "alien_roar", 40)
-	to_chat(raging_valkyrie, SPAN_XENODANGER("Our rage drives us forward, our healing and armor is increased."))
+	to_chat(raging_valkyrie, SPAN_XENODANGER("Our rage drives us forward and our healing and armor is increased."))
 	raging_valkyrie.create_custom_empower(icolor = "#a31010", ialpha = 200, small_xeno = TRUE)
 	raging_valkyrie.add_filter("raging", 1, list("type" = "outline", "color" = "#a31010", "size" = 1))
 	raging_valkyrie.balloon_alert(raging_valkyrie, "we feel an overwhelming rage", text_color = "#93ec78")
@@ -164,7 +163,7 @@
 	raging_valkyrie.recalculate_armor()
 	RegisterSignal(raging_valkyrie, list(COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE), PROC_REF(calculate_damage_mitigation_self))
 
-	if(istype(buffing_target.caste, /datum/caste_datum/crusher) || istype(buffing_target.caste, /datum/caste_datum/ravager)) // i wouldve made this a list() but for some reason it didnt work.
+	if(istype(buffing_target.caste, /datum/caste_datum/crusher) || istype(buffing_target.caste, /datum/caste_datum/ravager)) // i wouldve made this a list() but for some reason it didn't work.
 		playsound(get_turf(buffing_target), "alien_roar", 40)
 		buffing_target.create_custom_empower(icolor = "#a31010", ialpha = 200, small_xeno = TRUE)
 		buffing_target.add_filter("raging", 1, list("type" = "outline", "color" = "#a31010", "size" = 1))
@@ -279,7 +278,6 @@
 	// Transient turf list
 	var/list/target_turfs = list()
 	var/list/temp_turfs = list()
-	var/list/telegraph_atom_list = list()
 
 	// Code to get a 2x3 area of turfs
 	var/turf/root = get_turf(valkyrie)
@@ -303,14 +301,12 @@
 			continue
 
 		target_turfs += range_turf
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(range_turf, 0.25 SECONDS)
 
 		var/turf/next_turf = get_step(range_turf, facing)
 		if (!istype(next_turf) || next_turf.density)
 			continue
 
 		target_turfs += next_turf
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(next_turf, 0.25 SECONDS)
 
 	if(!length(target_turfs))
 		to_chat(valkyrie, SPAN_XENOWARNING("We don't have enough room!"))
@@ -326,6 +322,7 @@
 	playsound(valkyrie, 'sound/effects/alien_footstep_charge3.ogg', 35, 0)
 
 	for (var/turf/range in target_turfs)
+		new /obj/effect/xenomorph/xeno_telegraph/attack/brown/high_gallop(range, 0.35 SECONDS)
 		for (var/mob/living/carbon/target in range)
 			if (target.stat == DEAD)
 				continue
@@ -409,9 +406,9 @@
 		return FALSE
 
 	playsound(extinguisher_tail, 'sound/effects/splat.ogg', 40, FALSE)
-	target.ExtinguishMob() // This can both help your allies, or help caps that are on fire.
+	target.ExtinguishMob() // This can both help our allies, or help caps that are on fire.
 	apply_cooldown()
-	extinguisher_tail.visible_message(SPAN_XENODANGER("[extinguisher_tail] pours acid all over [target] using its tail."), SPAN_XENOHIGHDANGER("We use our tail to pour acid over [target]"))
+	extinguisher_tail.visible_message(SPAN_XENODANGER("[extinguisher_tail] pours acid all over [target] using its tail."), SPAN_XENOHIGHDANGER("We use our tail to pour acid over [target]."))
 	xeno_attack_delay(extinguisher_tail)
 	return ..()
 
@@ -434,7 +431,7 @@
 		return
 
 	if(A == valkyrie)
-		to_chat(valkyrie, SPAN_XENODANGER("We cannot retrieve ourself!"))
+		to_chat(valkyrie, SPAN_XENODANGER("We cannot retrieve ourselves!"))
 		return
 
 	if(!(A in view(7, valkyrie)))
@@ -499,7 +496,7 @@
 
 		turflist += T
 		facing = get_dir(T, A)
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/green(T, windup)
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/retrieve_hook(T, windup)
 
 	if(!length(turflist))
 		to_chat(valkyrie, SPAN_XENOWARNING("We don't have any room to do our retrieve!"))

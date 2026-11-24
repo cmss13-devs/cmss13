@@ -1,5 +1,0 @@
-author: "JHINgle4ce"
-delete-after: True
-changes:
-  - code_imp: "added a new arg in throw_atom proc; it allows you to do a custom throw trajectory"
-  - refactor: "little optimization in Oppressor and Valkyrie hook code. A little less calculations and checks"

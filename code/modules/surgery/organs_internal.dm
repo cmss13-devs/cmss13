@@ -103,7 +103,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 			int_organ.rejuvenate()
 			target.pain.recalculate_pain()
 			break
-
+		
 /datum/surgery_step/repair_organs/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_WARNING("Your hand slips, bruising [target]'s organs and contaminating \his [surgery.affected_limb.cavity]!"),

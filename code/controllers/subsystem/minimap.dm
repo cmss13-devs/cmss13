@@ -110,7 +110,7 @@ SUBSYSTEM_DEF(minimaps)
 					combined_overlays += blip
 		else
 			// For non-observer maps, use all raw_blips
-			combined_overlays = updater.raw_blips.Copy()
+			combined_overlays += updater.raw_blips
 
 		if(length(target.current_drawing_overlays))
 			combined_overlays += target.current_drawing_overlays
@@ -686,7 +686,7 @@ SUBSYSTEM_DEF(minimaps)
 	return FALSE
 
 /**
- * Fetches a /atom/movable/screen/minimap instance or creates on if none exists
+ * Fetches a /atom/movable/screen/minimap instance or creates one if none exists
  * Note this does not destroy them when the map is unused, might be a potential thing to do?
  * Arguments:
  * * zlevel: zlevel to fetch map for
@@ -796,6 +796,7 @@ SUBSYSTEM_DEF(minimaps)
 	screen_loc = "1,1"
 	appearance_flags = TILE_BOUND|PIXEL_SCALE
 	mouse_opacity = MOUSE_OPACITY_OPAQUE
+	del_on_map_removal = FALSE
 	///assoc list of mob choices by clicking on coords. only exists fleetingly for the wait loop in [/proc/get_coords_from_click]
 	var/list/mob/choices_by_mob
 	///assoc list to determine if get_coords_from_click should stop waiting for an input for that specific mob
@@ -922,12 +923,12 @@ SUBSYSTEM_DEF(minimaps)
 	// Remove any existing ceiling filter
 	remove_filter("ceiling_protection")
 
-	// Check if this specific client wants ceiling protection overlay
-	if(!owner_client?.prefs?.show_minimap_ceiling_protection)
-		return
-
 	// For individual client copies only
 	if(!owner_client)
+		return
+
+	// Check if this specific client wants ceiling protection overlay
+	if(!owner_client.prefs?.show_minimap_ceiling_protection)
 		return
 
 	// Create ceiling overlay for this client
@@ -964,10 +965,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /// Updates drawing overlay for this minimap based on what drawings should be visible
 /atom/movable/screen/minimap/proc/update_drawing_overlay(show_cic_drawings = FALSE)
-	// Clean up existing drawing overlays
-	if(length(current_drawing_overlays))
-		overlays -= current_drawing_overlays
-		current_drawing_overlays = list()
+	clear_drawing_overlays()
 
 	if(!drawing)
 		return
@@ -996,12 +994,13 @@ SUBSYSTEM_DEF(minimaps)
 	if(length(drawing_images))
 		// Apply drawing images as overlays directly
 		overlays += drawing_images
-		current_drawing_overlays = drawing_images.Copy()
-	else
-		// If no drawing images, make sure we clear any existing overlays
-		if(length(current_drawing_overlays))
-			overlays -= current_drawing_overlays
-			current_drawing_overlays = list()
+		current_drawing_overlays = drawing_images
+
+/// Clears all overlays from current_drawing_overlays from this minimap and resets current_drawing_overlays
+/atom/movable/screen/minimap/proc/clear_drawing_overlays()
+	if(length(current_drawing_overlays))
+		overlays -= current_drawing_overlays
+		current_drawing_overlays = list()
 
 /atom/movable/screen/minimap/Destroy()
 	SSminimaps.hashed_minimaps -= src
@@ -1119,10 +1118,14 @@ SUBSYSTEM_DEF(minimaps)
 	var/drawing = TRUE
 	/// Is this a CIC map
 	var/is_cic_minimap = FALSE
-
-	var/list/atom/movable/screen/drawing_tools = list()
-
-	var/list/atom/movable/screen/minimap_tool/drawing_actions = list()
+	/// List of paths to the kinds tools we will be using (static because nothing changes it ATM)
+	var/static/list/atom/movable/screen/tool_paths = list(
+		/atom/movable/screen/minimap_tool/up/simple,
+		/atom/movable/screen/minimap_tool/down/simple,
+		/atom/movable/screen/minimap_tool/change_map,
+		)
+	/// LAZYLIST of references to the tools we will be using
+	var/list/atom/movable/screen/minimap_tool/tool_references = null
 
 /datum/action/minimap/New(Target, new_minimap_flags, new_marker_flags)
 	. = ..()
@@ -1131,12 +1134,12 @@ SUBSYSTEM_DEF(minimaps)
 		minimap_flags = new_minimap_flags
 	if(new_marker_flags)
 		marker_flags = new_marker_flags
-	drawing_tools += list(/atom/movable/screen/minimap_tool/up/simple, /atom/movable/screen/minimap_tool/down/simple, /atom/movable/screen/minimap_tool/change_map)
 
 /datum/action/minimap/Destroy()
 	map = null
 	locator_override = null
 	QDEL_NULL(locator)
+	QDEL_NULL_LIST(tool_references)
 	return ..()
 
 /datum/action/minimap/action_activate()
@@ -1164,26 +1167,27 @@ SUBSYSTEM_DEF(minimaps)
 		override_locator(owner.loc)
 	var/atom/movable/tracking = locator_override ? locator_override : owner
 	if(force_state)
-		if(map in owner.client.screen)
+		if(owner.client?.using_main_tacmap || (map in owner.client?.screen))
 			to_chat(owner, SPAN_WARNING("You already have a minimap open!"))
 			return FALSE
-		var/list/atom/movable/screen/actions = list()
 		map = SSminimaps.fetch_minimap_object(owner.z, map.minimap_flags, map.live, FALSE, map.drawing)
-		for(var/path in drawing_tools)
-			actions += new path(null, owner.z, minimap_flags, map, null)
-		drawing_actions = actions
-		owner.client.add_to_screen(drawing_actions)
-		owner.client.add_to_screen(map)
-		owner.client.add_to_screen(locator)
+		if(owner.client)
+			if(tool_references)
+				owner.client.remove_from_screen(tool_references)
+				QDEL_NULL_LIST(tool_references)
+			for(var/path in tool_paths)
+				LAZYADD(tool_references, new path(null, owner.z, minimap_flags, map, null))
+			owner.client.add_to_screen(tool_references)
+			owner.client.add_to_screen(map)
+			owner.client.add_to_screen(locator)
 		// Apply ceiling protection overlay if client has preference enabled
-		if(owner.client.prefs?.show_minimap_ceiling_protection)
-			map.update_ceiling_overlay(owner.client)
+		map.update_ceiling_overlay(owner.client)
 		locator.link_locator(map, owner)
 		locator.update(tracking, null, null)
 		// Show ceiling protection toggle action when minimap opens
-		for(var/datum/action/minimap_ceiling/ceiling_action in owner.actions)
-			ceiling_action.hidden = FALSE
-			ceiling_action.update_button_icon()
+		var/datum/action/minimap_ceiling/ceiling_action = locate() in owner.actions
+		if(ceiling_action)
+			ceiling_action.unhide_from(owner)
 			// Position the ceiling action right after the minimap action button incase buttons are moved due to a strain or something
 			owner.actions.Remove(ceiling_action)
 			var/minimap_index = owner.actions.Find(src)
@@ -1192,18 +1196,17 @@ SUBSYSTEM_DEF(minimaps)
 			else
 				owner.actions.Add(ceiling_action)
 			owner.update_action_buttons()
-			break
 		locator.RegisterSignal(tracking, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/atom/movable/screen/minimap_locator, update))
 	else
-		owner.client.remove_from_screen(map)
-		owner.client.remove_from_screen(locator)
-		owner.client.remove_from_screen(drawing_actions)
+		if(owner.client)
+			owner.client.remove_from_screen(locator)
+			owner.client.remove_from_screen(map)
+			owner.client.remove_from_screen(tool_references)
+			QDEL_NULL_LIST(tool_references)
 		map.stop_polling -= owner
 		// Hide ceiling protection toggle action when minimap closes
-		for(var/datum/action/minimap_ceiling/ceiling_action in owner.actions)
-			ceiling_action.hidden = TRUE
-			owner.update_action_buttons()
-			break
+		var/datum/action/minimap_ceiling/ceiling_action = locate() in owner.actions
+		ceiling_action?.hide_from(owner)
 		locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
 	minimap_displayed = force_state
 	return TRUE
@@ -1596,6 +1599,8 @@ SUBSYSTEM_DEF(minimaps)
 	LAZYADDASSOCLIST(SSminimaps.earlyadds, "[zlevel]", CALLBACK(src, PROC_REF(set_zlevel), zlevel, minimap_flag))
 
 /atom/movable/screen/minimap_tool/Destroy()
+	drawn_image = null
+	linked_map = null
 	owner = null
 	. = ..()
 
@@ -1890,7 +1895,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/label
 	icon_state = "label"
-	desc = "Click to place a label. Middle click a label to remove it. Middle click this button to remove all labels."
+	desc = "Click to place a label. Middle click a label to remove it. Middle click this button to remove all labels on this view."
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/label.dmi'
 	screen_loc = "15,9"
 
@@ -1899,7 +1904,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(LAZYACCESS(mods, MIDDLE_CLICK))
 		clear_labels(user)
 
-///Clears all labels and logs who did it
+///Clears all labels
 /atom/movable/screen/minimap_tool/label/proc/clear_labels(mob/user)
 	// Clear all labels from the linked map's list
 	linked_map.labelled_turfs.Cut()
@@ -1997,7 +2002,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/clear
 	icon_state = "clear"
-	desc = "Remove all current labels and drawings."
+	desc = "Remove all current labels and drawings on this view."
 	screen_loc = "15,8"
 
 /atom/movable/screen/minimap_tool/clear/clicked(mob/user, list/mods)
@@ -2011,12 +2016,18 @@ SUBSYSTEM_DEF(minimaps)
 	desc = "Send a tacmap update."
 	screen_loc = "15,7"
 
+/atom/movable/screen/minimap_tool/update/Initialize(mapload, zlevel, minimap_flag, linked_map, owner)
+	. = ..()
+	var/time_left = get_cooldown_for_minimap_flag(minimap_flag) - world.time
+	if(time_left > 0 && icon_state != "update_cooldown")
+		icon_state = "update_cooldown"
+		addtimer(CALLBACK(src, PROC_REF(cooldown_finished)), time_left, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+
 /atom/movable/screen/minimap_tool/update/proc/cooldown_finished()
 	icon_state = initial(icon_state)
 
 /atom/movable/screen/minimap_tool/update/clicked(mob/user, list/mods)
 	var/time_left = get_cooldown_for_minimap_flag(minimap_flag) - world.time
-
 	if(time_left > 0)
 		to_chat(user, SPAN_WARNING("Wait another [DisplayTimeText(time_left)] before sending another update."))
 		if(icon_state != "update_cooldown")
@@ -2028,30 +2039,16 @@ SUBSYSTEM_DEF(minimaps)
 	addtimer(CALLBACK(src, PROC_REF(cooldown_finished)), CANVAS_COOLDOWN_TIME, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	icon_state = "update_cooldown"
 
-	if(linked_map.minimap_flags & MINIMAP_FLAG_ALL_XENOS)
-		announce_xeno(user)
-	else
-		announce_human(user)
+	announce(user)
 
-	message_admins("[key_name(user)] has updated the <a href='byond://?tacmaps_panel=1'>tactical map</a>.")
-
-/atom/movable/screen/minimap_tool/update/proc/announce_xeno(mob/user)
-	playsound_client(user.client, get_sfx("queen"))
-
-	// Trigger a refresh of all non-live xeno minimaps with new drawings
+/atom/movable/screen/minimap_tool/update/proc/announce(mob/user)
+	// Trigger a refresh of all non-live minimaps with new drawings
 	SSminimaps.refresh_static_minimaps(minimap_flag)
 
-	// Apply drawings to all live xeno minimaps now that update has been sent
+	// Apply drawings to all live minimaps now that update has been sent
 	SSminimaps.apply_drawings_to_live_minimaps(minimap_flag)
 
-	user.client.images += drawn_image
-	var/icon/flat_drawing = icon(user.client.RenderIcon(drawn_image))
-	user.client.images -= drawn_image
-	var/icon/flat_map = icon(user.client.RenderIcon(linked_map))
-	if(!flat_map || !flat_drawing)
-		to_chat(user, SPAN_WARNING("A critical error has occurred!! Contact a coder."))
-		return FALSE
-
+	// Figure out the recipients
 	var/list/faction_clients = list()
 	for(var/client/client as anything in GLOB.clients)
 		if(!client || !client.mob)
@@ -2066,75 +2063,66 @@ SUBSYSTEM_DEF(minimaps)
 			if(linked_map.minimap_flags & get_minimap_flag_for_faction(xeno.hivenumber))
 				faction_clients += client
 
-	var/flat_tacmap_key = icon2html(flat_map, faction_clients, keyonly = TRUE)
-	var/flat_drawing_key = icon2html(flat_drawing, faction_clients, keyonly = TRUE)
-	if(!flat_tacmap_key || !flat_drawing_key)
-		to_chat(user, SPAN_WARNING("A critical error has occurred! Contact a coder."))
-		return FALSE
-	var/flat_tacmap_png = SSassets.transport.get_asset_url(flat_tacmap_key)
-	var/flat_drawing_png = SSassets.transport.get_asset_url(flat_drawing_key)
-	var/datum/flattened_tacmap/new_flat = new(flat_tacmap_png, flat_tacmap_key)
-	var/datum/drawing_data/draw_data = new(flat_drawing_png, user, flat_drawing_key)
+	// Figure out the lowest Z
+	ASSERT(is_ground_level(zlevel), "Submitting a tacmap on a non-ground z is not currently implemented!") // Mostly just Z selectors in interfaces need to know what are relevant Zs
+	var/current_z = zlevel
+	while(SSmapping.same_z_map(current_z, current_z - 1))
+		current_z--
 
-	GLOB.xeno_flat_tacmap_data += new_flat
-	GLOB.xeno_drawing_tacmap_data += draw_data
+	// Draw all Zs
+	var/alist/flat_maps = alist()
+	var/alist/flat_drawings = alist()
+	do
+		var/atom/movable/screen/minimap/current_map = SSminimaps.fetch_minimap_object(current_z, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+		var/icon/flat_map = icon(user.client.RenderIcon(current_map))
 
-	xeno_maptext("The Queen has updated our hive mind map", "We sense something unusual...", XENO_HIVE_NORMAL)
-	var/mutable_appearance/appearance = mutable_appearance(icon('icons/mob/hud/actions_xeno.dmi'), "toggle_queen_zoom")
-	notify_ghosts(header = "Tactical Map", message = "The Xenomorph tactical map has been updated.", ghost_sound = "sound/voice/alien_distantroar_3.ogg", notify_volume = 50, action = NOTIFY_USCM_TACMAP, enter_link = "uscm_tacmap=1", enter_text = "View", source = user, alert_overlay = appearance)
-	return TRUE
+		var/image/current_image = SSminimaps.get_drawing_image(current_z, minimap_flag)
+		user.client.images += current_image
+		var/icon/flat_drawing = icon(user.client.RenderIcon(current_image))
+		user.client.images -= current_image
 
-/atom/movable/screen/minimap_tool/update/proc/announce_human(mob/user)
-	playsound_client(user.client, "sound/effects/data-transmission.ogg")
+		if(!flat_map || !flat_drawing)
+			to_chat(user, SPAN_WARNING("A critical error has occurred!! Contact a coder."))
+			return FALSE
 
-	// Trigger a refresh of all non-live minimaps with new drawings
-	SSminimaps.refresh_static_minimaps(MINIMAP_FLAG_USCM)
+		var/flat_tacmap_key = icon2html(flat_map, faction_clients, keyonly = TRUE)
+		var/flat_drawing_key = icon2html(flat_drawing, faction_clients, keyonly = TRUE)
+		if(!flat_tacmap_key || !flat_drawing_key)
+			to_chat(user, SPAN_WARNING("A critical error has occurred! Contact a coder."))
+			return FALSE
 
-	// Apply drawings to all live minimaps now that update has been sent
-	SSminimaps.apply_drawings_to_live_minimaps(MINIMAP_FLAG_USCM)
+		var/flat_tacmap_png = SSassets.transport.get_asset_url(flat_tacmap_key)
+		var/flat_drawing_png = SSassets.transport.get_asset_url(flat_drawing_key)
+		var/datum/flattened_tacmap/new_flat = new(flat_tacmap_png, flat_tacmap_key)
+		var/datum/drawing_data/new_drawing = new(flat_drawing_png, user, flat_drawing_key)
 
-	user.client.images += drawn_image
-	var/icon/flat_drawing = icon(user.client.RenderIcon(drawn_image))
-	user.client.images -= drawn_image
-	var/icon/flat_map = icon(user.client.RenderIcon(linked_map))
-	if(!flat_map || !flat_drawing)
-		to_chat(user, SPAN_WARNING("A critical error has occurred!! Contact a coder."))
-		return FALSE
+		flat_maps[current_z] = new_flat
+		flat_drawings[current_z] = new_drawing
+	while(SSmapping.same_z_map(current_z, ++current_z))
 
-	var/list/faction_clients = list()
-	for(var/client/client as anything in GLOB.clients)
-		if(!client || !client.mob)
-			continue
-		var/mob/client_mob = client.mob
-		if(linked_map.minimap_flags & get_minimap_flag_for_faction(client_mob.faction))
-			faction_clients += client
-		else if(client_mob.faction == FACTION_NEUTRAL && isobserver(client_mob))
-			faction_clients += client
-		else if(isxeno(client_mob))
-			var/mob/living/carbon/xenomorph/xeno = client_mob
-			if(linked_map.minimap_flags & get_minimap_flag_for_faction(xeno.hivenumber))
-				faction_clients += client
+	if(linked_map.minimap_flags & MINIMAP_FLAG_ALL_XENOS)
+		// Store the data
+		GLOB.xeno_flat_tacmap_data += list(flat_maps)
+		GLOB.xeno_drawing_tacmap_data += list(flat_drawings)
 
-	var/flat_tacmap_key = icon2html(flat_map, faction_clients, keyonly = TRUE)
-	var/flat_drawing_key = icon2html(flat_drawing, faction_clients, keyonly = TRUE)
-	if(!flat_tacmap_key || !flat_drawing_key)
-		to_chat(user, SPAN_WARNING("A critical error has occurred! Contact a coder."))
-		return FALSE
-	var/flat_tacmap_png = SSassets.transport.get_asset_url(flat_tacmap_key)
-	var/flat_drawing_png = SSassets.transport.get_asset_url(flat_drawing_key)
-	var/datum/flattened_tacmap/new_flat = new(flat_tacmap_png, flat_tacmap_key)
-	var/datum/drawing_data/draw_data = new(flat_drawing_png, user, flat_drawing_key)
+		// Announce it
+		playsound_client(user.client, get_sfx("queen"))
+		xeno_maptext("The Queen has updated our hive mind map", "We sense something unusual...", XENO_HIVE_NORMAL)
+		var/mutable_appearance/appearance = mutable_appearance(icon('icons/mob/hud/actions_xeno.dmi'), "toggle_queen_zoom")
+		notify_ghosts(header = "Tactical Map", message = "The Xenomorph tactical map has been updated.", ghost_sound = "sound/voice/alien_distantroar_3.ogg", notify_volume = 50, action = NOTIFY_USCM_TACMAP, enter_link = "uscm_tacmap=1", enter_text = "View", source = user, alert_overlay = appearance)
+	else
+		// Store the data
+		GLOB.uscm_flat_tacmap_data += list(flat_maps)
+		GLOB.uscm_drawing_tacmap_data += list(flat_drawings)
 
-	GLOB.uscm_flat_tacmap_data += new_flat
-	GLOB.uscm_drawing_tacmap_data += draw_data
+		// Announce it
+		playsound_client(user.client, "sound/effects/data-transmission.ogg")
+		for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
+			current_squad.send_maptext("Tactical map update in progress...", "Tactical Map:")
+		var/atom/source = owner?.parent || user
+		notify_ghosts(header = "Tactical Map", message = "The USCM tactical map has been updated.", ghost_sound = "sound/effects/data-transmission.ogg", notify_volume = 80, action = NOTIFY_USCM_TACMAP, enter_link = "uscm_tacmap=1", enter_text = "View", source = source)
 
-	for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
-		current_squad.send_maptext("Tactical map update in progress...", "Tactical Map:")
-
-	var/atom/source = owner?.parent
-	if(!source)
-		source = user
-	notify_ghosts(header = "Tactical Map", message = "The USCM tactical map has been updated.", ghost_sound = "sound/effects/data-transmission.ogg", notify_volume = 80, action = NOTIFY_USCM_TACMAP, enter_link = "uscm_tacmap=1", enter_text = "View", source = source)
+	message_admins("[key_name(user)] has updated the <a href='byond://?tacmaps_panel=1'>tactical map</a>.")
 	return TRUE
 
 /datum/flattened_tacmap
@@ -2168,21 +2156,45 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/up/clicked(mob/user, list/modifiers)
 	if(!SSmapping.same_z_map(zlevel, zlevel+1))
-		return TRUE
+		to_chat(user, SPAN_WARNING("This is already the highest Z-level."))
+		return
 
-	owner.move_tacmap_up()
+	owner?.move_tacmap_up()
 	return TRUE
-
-/atom/movable/screen/minimap_tool/up/simple
 
 /atom/movable/screen/minimap_tool/up/simple/clicked(mob/user, list/modifiers)
 	if(!SSmapping.same_z_map(linked_map.target, linked_map.target+1))
+		to_chat(user, SPAN_WARNING("This is already the highest Z-level."))
 		return
+
 	var/atom/movable/screen/minimap/new_linked_map = SSminimaps.fetch_minimap_object(linked_map.target+1, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
 	update_shown_map(user, new_linked_map)
 
+/atom/movable/screen/minimap_tool/down
+	icon_state = "down"
+	desc = "Move down a level."
+	screen_loc = "15,5"
+
+/atom/movable/screen/minimap_tool/down/clicked(mob/user, list/modifiers)
+	if(!SSmapping.same_z_map(zlevel, zlevel-1))
+		to_chat(user, SPAN_WARNING("This is already the lowest Z-level."))
+		return
+
+	owner?.move_tacmap_down()
+	return TRUE
+
+/atom/movable/screen/minimap_tool/down/simple/clicked(mob/user, list/modifiers)
+	if(!SSmapping.same_z_map(linked_map.target, linked_map.target-1))
+		to_chat(user, SPAN_WARNING("This is already the lowest Z-level."))
+		return
+
+	var/atom/movable/screen/minimap/new_linked_map = SSminimaps.fetch_minimap_object(linked_map.target-1, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
+	update_shown_map(user, new_linked_map)
 
 /atom/movable/screen/minimap_tool/proc/update_shown_map(mob/user, atom/movable/screen/minimap/new_linked_map)
+	if(!user.client)
+		return // Is this even possible?
+
 	user.client.remove_from_screen(linked_map)
 	user.client.add_to_screen(new_linked_map)
 	for(var/datum/action/minimap/user_map in user.actions)
@@ -2190,11 +2202,8 @@ SUBSYSTEM_DEF(minimaps)
 	for(var/atom/movable/screen/minimap_tool/tool in user.client.screen)
 		tool.linked_map = new_linked_map
 
-/atom/movable/screen/minimap_tool/down/simple/clicked(mob/user, list/modifiers)
-	if(!SSmapping.same_z_map(linked_map.target, linked_map.target-1))
-		return
-	var/atom/movable/screen/minimap/new_linked_map = SSminimaps.fetch_minimap_object(linked_map.target-1, linked_map.minimap_flags, linked_map.live, FALSE, linked_map.drawing)
-	update_shown_map(user, new_linked_map)
+	// Apply ceiling protection overlay if client has preference enabled
+	new_linked_map.update_ceiling_overlay(user.client)
 
 /atom/movable/screen/minimap_tool/change_map
 	desc = "Switch ground / ship map."
@@ -2224,19 +2233,6 @@ SUBSYSTEM_DEF(minimaps)
 
 	update_shown_map(user, new_linked_map)
 
-/atom/movable/screen/minimap_tool/down
-	icon_state = "down"
-	desc = "Move down a level."
-	screen_loc = "15,5"
-
-/atom/movable/screen/minimap_tool/down/clicked(mob/user, list/modifiers)
-	if(!SSmapping.same_z_map(zlevel, zlevel-1))
-		return
-
-	owner.move_tacmap_down()
-
-	return TRUE
-
 /atom/movable/screen/minimap_tool/popout
 	icon_state = "popout"
 	desc = "Pop the minimap to a window."
@@ -2257,22 +2253,22 @@ SUBSYSTEM_DEF(minimaps)
 	var/is_observer = user.faction == FACTION_NEUTRAL && isobserver(user)
 	if((is_observer || user.faction == FACTION_MARINE) && length(GLOB.uscm_flat_tacmap_data))
 		// Send marine maps
-		var/datum/flattened_tacmap/latest = GLOB.uscm_flat_tacmap_data[length(GLOB.uscm_flat_tacmap_data)]
-		if(latest)
-			SSassets.transport.send_assets(user.client, latest.asset_key)
-		var/datum/drawing_data/latest_draw_data = GLOB.uscm_drawing_tacmap_data[length(GLOB.uscm_drawing_tacmap_data)]
-		if(latest_draw_data)
-			SSassets.transport.send_assets(user.client, latest_draw_data.asset_key)
+		var/list/datum/flattened_tacmap/latest_flat_data = GLOB.uscm_flat_tacmap_data[length(GLOB.uscm_flat_tacmap_data)]
+		for(var/current_z in latest_flat_data)
+			SSassets.transport.send_assets(user.client, latest_flat_data[current_z].asset_key)
+		var/list/datum/drawing_data/latest_draw_data = GLOB.uscm_drawing_tacmap_data[length(GLOB.uscm_drawing_tacmap_data)]
+		for(var/current_z in latest_draw_data)
+			SSassets.transport.send_assets(user.client, latest_draw_data[current_z].asset_key)
 
 	var/mob/living/carbon/xenomorph/xeno = user
 	if((is_observer || istype(xeno) && xeno.hivenumber == XENO_HIVE_NORMAL) && length(GLOB.xeno_flat_tacmap_data))
 		// Send xeno maps
-		var/datum/flattened_tacmap/latest = GLOB.xeno_flat_tacmap_data[length(GLOB.xeno_flat_tacmap_data)]
-		if(latest)
-			SSassets.transport.send_assets(user.client, latest.asset_key)
-		var/datum/drawing_data/latest_draw_data = GLOB.xeno_drawing_tacmap_data[length(GLOB.xeno_drawing_tacmap_data)]
-		if(latest_draw_data)
-			SSassets.transport.send_assets(user.client, latest_draw_data.asset_key)
+		var/list/datum/flattened_tacmap/latest_flat_data = GLOB.xeno_flat_tacmap_data[length(GLOB.xeno_flat_tacmap_data)]
+		for(var/current_z in latest_flat_data)
+			SSassets.transport.send_assets(user.client, latest_flat_data[current_z].asset_key)
+		var/list/datum/drawing_data/latest_draw_data = GLOB.xeno_drawing_tacmap_data[length(GLOB.xeno_drawing_tacmap_data)]
+		for(var/current_z in latest_draw_data)
+			SSassets.transport.send_assets(user.client, latest_draw_data[current_z].asset_key)
 
 /// Gets the MINIMAP_FLAG for the provided faction or hivenumber if one exists
 /proc/get_minimap_flag_for_faction(faction)

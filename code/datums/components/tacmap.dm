@@ -11,9 +11,7 @@
 	Adds a tacmap with defined z level and flags to an object and allows it to open and close it
  */
 /datum/component/tacmap
-	/// List of references to the tools we will be using to shape what the map looks like
-	var/list/atom/movable/screen/drawing_tools = list()
-	var/list/atom/movable/screen/minimap_tool/drawing_actions = list()
+	/// What faction flag this tacmap is for
 	var/minimap_flag = MINIMAP_FLAG_USCM
 	///by default Zlevel 2, groundside is targetted
 	var/targetted_zlevel = 2
@@ -29,14 +27,17 @@
 	var/drawing
 	///Is this tacmap embedded in parent UI
 	var/is_embedded = FALSE
-
+	/// List of paths to the kinds tools we will be using (stored in interactees[user]["drawing_tools"])
+	var/list/atom/movable/screen/minimap_tool/drawing_tools = list(
+		/atom/movable/screen/minimap_tool/up,
+		/atom/movable/screen/minimap_tool/down,
+		)
 
 /datum/component/tacmap/Initialize(has_drawing_tools, minimap_flag, has_update, drawing)
 	if(!isatom(parent))
 		return COMPONENT_INCOMPATIBLE
 	src.minimap_flag = minimap_flag
 	src.drawing = drawing
-	drawing_tools += list(/atom/movable/screen/minimap_tool/up, /atom/movable/screen/minimap_tool/down)
 
 	if(has_drawing_tools)
 		drawing_tools += list(
@@ -58,36 +59,26 @@
 /datum/component/tacmap/proc/move_tacmap_up()
 	targetted_zlevel++
 	var/list/_interactees = interactees.Copy()
-	var/list/had_popout = list()
 	for(var/mob/interactee in _interactees)
-		if(SStgui.get_open_ui(interactee, src))
-			had_popout += interactee
 		on_unset_interaction(interactee)
 		close_popout_tacmaps(interactee)
 	map = null
 	for(var/mob/interactee in _interactees)
 		show_tacmap(interactee)
-		if(interactee in had_popout)
-			tgui_interact(interactee)
 
 /datum/component/tacmap/proc/move_tacmap_down()
 	targetted_zlevel--
 	var/list/_interactees = interactees.Copy()
-	var/list/had_popout = list()
 	for(var/mob/interactee in _interactees)
-		if(SStgui.get_open_ui(interactee, src))
-			had_popout += interactee
 		on_unset_interaction(interactee)
 		close_popout_tacmaps(interactee)
 	map = null
 	for(var/mob/interactee in _interactees)
 		show_tacmap(interactee)
-		if(interactee in had_popout)
-			tgui_interact(interactee)
 
 /datum/component/tacmap/proc/popout(mob/user)
 	var/datum/tgui/maybe_ui = SStgui.get_open_ui(user, src)
-	if (maybe_ui == null)
+	if(maybe_ui == null)
 		tgui_interact(user)
 	else
 		close_popout_tacmaps(user)
@@ -100,14 +91,16 @@
 	var/list/user_objects = interactees[user]
 	if(user_objects)
 		user.client.remove_from_screen(user_objects["map"])
-		user.client.remove_from_screen(user_objects["drawing_actions"])
+		user.client.remove_from_screen(user_objects["drawing_tools"])
 		user.client.remove_from_screen(user_objects["close_button"])
+		for(var/atom/movable/screen/tool as anything in user_objects["drawing_tools"])
+			qdel(tool)
+		for(var/atom/movable/screen/button as anything in user_objects["close_button"])
+			qdel(button)
 
 		// Remove ceiling protection toggle action when CIC tactical map closes
 		var/datum/action/minimap_ceiling/ceiling_action = user_objects["ceiling_action"]
-		if(ceiling_action)
-			ceiling_action.hidden = TRUE
-			user.update_action_buttons()
+		ceiling_action?.hide_from(user)
 
 		// Clean up drawing tool references and mark CIC minimap inactive
 		var/atom/movable/screen/minimap/user_map = user_objects["map"]
@@ -137,39 +130,38 @@
 		user_map.is_cic_minimap = TRUE
 		user_map.update_drawing_overlay(show_cic_drawings = TRUE)
 
-	var/list/atom/movable/screen/user_drawing_actions = list()
+	var/list/atom/movable/screen/user_drawing_tools = list()
 	for(var/path in drawing_tools)
-		user_drawing_actions += new path(null, targetted_zlevel, minimap_flag, user_map, src)
+		user_drawing_tools += new path(null, targetted_zlevel, minimap_flag, user_map, src)
 
-	user.client.add_to_screen(user_drawing_actions)
+	user.client.add_to_screen(user_drawing_tools)
 	user.client.add_to_screen(user_close_button)
 	user.client.add_to_screen(user_map)
 
 	// Apply ceiling protection overlay if client has preference enabled
-	if(user.client.prefs?.show_minimap_ceiling_protection)
-		user_map.update_ceiling_overlay(user.client)
+	user_map.update_ceiling_overlay(user.client)
 
 	// Give ceiling protection toggle action when CIC tactical map opens
-	var/datum/action/minimap_ceiling/ceiling_action
-	for(var/datum/action/minimap_ceiling/existing_action in user.actions)
-		ceiling_action = existing_action
-		ceiling_action.hidden = FALSE
-		ceiling_action.update_button_icon()
-		// Position the ceiling action right after the minimap action button
+	var/datum/action/minimap_ceiling/ceiling_action = locate() in user.actions
+	if(ceiling_action)
+		ceiling_action.unhide_from(user)
+		// Position the ceiling action right after the minimap action button incase buttons are moved due to a strain or something
 		user.actions.Remove(ceiling_action)
-		for(var/datum/action/minimap/minimap_action in user.actions)
-			var/minimap_index = user.actions.Find(minimap_action)
-			if(minimap_index)
-				user.actions.Insert(minimap_index + 1, ceiling_action)
-			else
-				user.actions.Add(ceiling_action)
-			break
+		var/datum/action/minimap/minimap_action = locate() in user.actions
+		var/minimap_index = user.actions.Find(minimap_action)
+		if(minimap_index)
+			user.actions.Insert(minimap_index + 1, ceiling_action)
+		else
+			user.actions.Add(ceiling_action)
 		user.update_action_buttons()
-		break
 
 	// Store references for cleanup
-	if(!interactees[user])
-		interactees[user] = list("map" = user_map, "close_button" = user_close_button, "drawing_actions" = user_drawing_actions, "ceiling_action" = ceiling_action)
+	interactees[user] = list(
+		"map" = user_map,
+		"close_button" = user_close_button,
+		"drawing_tools" = user_drawing_tools,
+		"ceiling_action" = ceiling_action,
+		)
 
 	user.client.using_main_tacmap = TRUE
 
@@ -188,26 +180,34 @@
 
 	// try_update_ui returns NULL as the UI even if the UI is trying to close from ui_status.
 	// Double check that we aren't attempting to close so that we don't make a UI when we don't need to.
-	if(ui || get_dist(parent, user) > 1)
+	if(get_dist(parent, user) > 1)
 		return
 
+	if(!user.client)
+		return
+
+	user.client.clear_map(map_holder?.map?.assigned_map)
+	map_holder = new(null, targetted_zlevel, minimap_flag, drawing=drawing)
 	user.client.register_map_obj(map_holder.map)
-	ui = new(user, src, "TacticalMap")
-	ui.open()
-	user.client.using_popout_tacmap = TRUE
 
-/datum/component/tacmap/ui_data(mob/user)
-	. = ..()
+	if(!ui)
+		ui = new(user, src, "TacticalMap")
+		ui.open()
+		ui.set_autoupdate(FALSE)
 
-	if (map_holder != null)
-		.["mapRef"] = map_holder.map_ref
-
+/datum/component/tacmap/ui_static_data(mob/user)
+	. = list()
 	.["isXeno"] = isxeno(user)
 	.["canChangeZ"] = FALSE
 
+/datum/component/tacmap/ui_data(mob/user)
+	. = list()
+	if(map_holder != null)
+		.["mapRef"] = map_holder.map_ref
+
 /datum/component/tacmap/proc/close_popout_tacmaps(mob/user)
 	var/datum/tgui/maybe_ui = SStgui.get_open_ui(user, src)
-	if (maybe_ui != null)
+	if(maybe_ui != null)
 		maybe_ui.close()
 
 /datum/component/tacmap/ui_close(mob/user)

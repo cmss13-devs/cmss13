@@ -1,0 +1,14 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - code_imp: "Checking whether the patient had enough brain damage to initiate bone chip removal surgery is now second instead of last in the priority checklist."
+  - code_imp: "More surgical steps will alleviate a patient's pain after they're completed."
+  - qol: "You can apply bleeders after opening a patient's incision, after opening and closing ribs, during implant/removal surgery, and during bone repair surgery."
+  - qol: "You can close a patient after widening a patient's incision, after closing ribs, and after applying bone gel to fractured or sawed bones."
+  - qol: "An awake patient can tell if their brain damage is significant enough during surgery after their hematoma has been mended; they will receive text that says they feel something rattling in their skull. If a doctor tries to skip bone chip removal, the patient can advocate for themselves."
+  - bugfix: "You no longer need to use surgical line twice to close a patient up while they have existing injuries."
+  - bugfix: "Using surgical lines to abort a surgery or complete a surgery will ACTUALLY close the patient up."
+  - bugfix: "Removes duplicate surgical steps that caused strings of text like \"suture the incision, close the incision early, suture the incision early, or cauterize the incision\" when using an incorrect tool."
+  - bugfix: "During surgery, you can brute force open a broken ribcage without needing the saw again."
+  - bugfix: "Suturing an incision stops any existing external bleeding."
+  - soundtweak: "Tweaks the duration of the bone gel application sound effect so it is not overlapping when a synth operates."

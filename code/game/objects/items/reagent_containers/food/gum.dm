@@ -362,7 +362,7 @@
 	if(continuously_blowing_bubbles)
 		if(text2num(action_timer) > 0)
 			deltimer(action_timer)
-		if(bubble_blower.stat != CONSCIOUS || bubble_blower.is_napping)
+		if(bubble_blower && (bubble_blower.stat != CONSCIOUS || bubble_blower.napping_level))
 			return
 		action_timer = addtimer(CALLBACK(src, PROC_REF(blow_bubble)), (continuously_blowing_bubbles + rand(-3,3)) SECONDS, TIMER_STOPPABLE|TIMER_UNIQUE)
 

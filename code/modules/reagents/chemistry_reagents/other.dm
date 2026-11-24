@@ -566,10 +566,6 @@
 			else
 				reacted_human.clean_blood(1)
 				return
-			for(var/obj/bubblegum_bubble/gummy_mess in reacted_human.vis_contents)
-				if(gummy_mess.popped)
-					reacted_human.vis_contents -= gummy_mess
-					qdel(gummy_mess)
 		reacted_mob.clean_blood()
 
 /datum/reagent/cryptobiolin

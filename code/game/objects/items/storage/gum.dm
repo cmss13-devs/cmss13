@@ -382,7 +382,7 @@
 	name = "Souto Special"
 	desc = "A special mix of all your favorite Souto flavors, just like the drinks!"
 	icon_state = "souto_special"
-	gum_color = "#5f442d"
+	gum_color = "#774a54"
 	reagents_per_stick = list(
 		"sugar" = 1,
 		"souto_classic" = 1,

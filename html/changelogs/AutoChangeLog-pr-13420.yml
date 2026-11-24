@@ -1,7 +1,0 @@
-author: "Doc12693420, Verbs, BonniePandora"
-delete-after: True
-changes:
-  - rscadd: "Adds a new \"movielike\" APC, ported from PVE. Complete with a smaller interior, and removes the need for a gunner, leaving the driving and shooting to one person."
-  - rscadd: "Along with the above is a redone medical APC to match it."
-  - rscadd: "a new RECON variant of the APC, complete with a surgical/medical theatre and a TOC"
-  - rscadd: "on request of maintainers, replaces the HTML groundside operations console in the ARC with a TGUI version (like the one in the CIC)"

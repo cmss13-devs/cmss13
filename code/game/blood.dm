@@ -86,26 +86,27 @@
 	. = ..()
 	shoes_blood_amt = 0
 
-/mob/living/carbon/human/clean_blood(cleaning_reagent, clean_feet)
+/mob/living/carbon/human/clean_blood(clean_feet, cleaning_reagent)
 	if(gloves)
 		if(gloves.clean_blood())
 			update_inv_gloves()
-			. = 1
+			. = TRUE
 
 	else if(hands_blood_color)
 		hands_blood_color = null
 		hands_blood_amt = 0
 		update_inv_gloves()
-		. = 1
+		. = TRUE
 
 	if(clean_feet && !shoes && feet_blood_color)
 		feet_blood_color = null
 		update_inv_shoes()
-		return 1
+		. = TRUE
 
 	if(cleaning_reagent == "soap" || cleaning_reagent == "cleaner")
 		for(var/obj/bubblegum_bubble/gummy_mess in vis_contents)
 			if(gummy_mess.popped)
 				vis_contents -= gummy_mess
 				qdel(gummy_mess)
+				. = TRUE
 

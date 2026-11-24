@@ -243,4 +243,6 @@ XENO_ABILITY_STATS(onclick_spike_shed, datum/action/xeno_action/onclick/spike_sh
 	return list(
 		XENO_STAT_NUMBER(shard_cost, "Shard cost"),
 		XENO_STAT_NUMBER(shrapnel_amount, "Fragments"),
-	) + projectile_stats(ammo) #undef EVISCERATE_DAMAGE_LEVELS
+	) + projectile_stats(ammo)
+
+#undef EVISCERATE_DAMAGE_LEVELS

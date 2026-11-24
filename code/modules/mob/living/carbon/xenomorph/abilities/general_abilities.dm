@@ -572,19 +572,18 @@
 	xeno_cooldown = 5 SECONDS
 	ability_primacy = XENO_BECOME_SEETHROUGH
 
-
 /datum/action/xeno_action/onclick/toggle_seethrough/use_ability(atom/target)
-
 	var/datum/component/seethrough_mob/seethroughComp = owner.GetComponent(/datum/component/seethrough_mob)
 	. = ..()
+
+	if(!.)
+		return
 
 	if(!action_cooldown_check())
 		return
 
-
 	seethroughComp.toggle_active()
 	apply_cooldown()
-
 
 
 /mob/living/carbon/xenomorph/proc/set_orders()

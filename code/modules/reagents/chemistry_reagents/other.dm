@@ -566,7 +566,7 @@
 			else
 				reacted_human.clean_blood(1)
 				return
-		reacted_mob.clean_blood()
+		reacted_mob.clean_blood(id)
 
 /datum/reagent/cryptobiolin
 	name = "Cryptobiolin"

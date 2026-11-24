@@ -1,4 +1,0 @@
-author: "Kugamo"
-delete-after: True
-changes:
-  - soundadd: "Vans wont make engine noises when moved not under engine power anymore. Instead making metal scraping sounds without wheels, or tire screeches with, or (with wheels) none if moved in the direction they're facing."

@@ -288,3 +288,183 @@
       yourself at grenades
   cuberound, datimesmog, esselnek:
   - rscadd: dissolver spitter strain
+2026-11-22:
+  Ammoniacres:
+  - rscadd: look-up holograms are now visible to non-observer mobs!
+  ComboTombo:
+  - rscadd: You can now craft another type of wooden chair, four wooden table parts,
+      and two metal table parts in the crafting menu of wood planks and metal sheets
+  Drathek:
+  - config: Fixed alien movement delay config not being referenced (still will be
+      left at default)
+  - rscdel: Removed unused configs
+  - rscadd: Added powerloader rotating light when manned
+  - bugfix: Fixed some oversights in overlay_lighting code (not turning off the first
+      time on 0 range and ignoring dir changes)
+  - bugfix: Fixed dynamic_light_source listening to its own mask for dir changes rather
+      than holder
+  - code_imp: Broken bottles now reuse their outline icon rather than recreating every
+      time
+  - bugfix: Fixed a double definition for item_state_slots for rebel headband
+  - rscdel: Removed unused allow_additional variable for job datums
+  - admin: Fixed Adjust Job Slots verb to actually assign latejoin values and job
+      datum code to respect this change
+  - admin: Added a way for Adjust Job Slots verb during lobby to reset modifications
+      to a job's slots
+  - code_imp: set_spawn_positions should now always reset the spawn count to initial
+  - code_imp: Cleaned up some 0/1 usage to TRUE/FALSE
+  - rscadd: Mouse buttons 4+ can now be bound using the hotkey ui
+  - bugfix: Fixed Unbound sticking in hotkey ui
+  - bugfix: Fixed X button not canceling a hotkey reset when prompted
+  - rscdel: Removed unused mouse hook macros in tgui
+  - bugfix: Fixed some item verbs being able to use a mob as source (this removes
+      them from the object verbs in stat panel tho)
+  - qol: Added 4 deck verb keybinds (draw card, draw x cards, draw pile, deal)
+  JHINgle4ce:
+  - bugfix: Resin whisperer builds slower than drone - as was stated in the original
+      PR. Now it needs 2.2 seconds to build a wall for example.
+  - rscadd: Resin whisperers building speed scales with distance. From 1 second if
+      it builds in adjacent tile to 2.2 seconds on 6+ tile range.
+  - balance: Removed toggleable acceleration on weeds for both Resin whisperer and
+      Designer
+  - code_imp: added a new arg in throw_atom proc; it allows you to do a custom throw
+      trajectory
+  - refactor: little optimization in Oppressor and Valkyrie hook code. A little less
+      calculations and checks
+  Kugamo:
+  - soundadd: Added splashy footstep sounds for when queen/king stomp in water.
+  - soundadd: Vans wont make engine noises when moved not under engine power anymore.
+      Instead making metal scraping sounds without wheels, or tire screeches with,
+      or (with wheels) none if moved in the direction they're facing.
+  Mary-Marilyn:
+  - balance: Synth survivors have their own slot at 50 players and above
+  - balance: CO survivors have their own slot at 70 players and above
+  Puckaboo2:
+  - qol: Abilities with significant cooldowns now have a cooldown text upon the cooldown
+      expiring.
+  - spellcheck: Corrects grammar, misspells, and missing punctuation in xeno ability
+      files.
+  - spellcheck: Any use of first or second person in regard to xeno abilities has
+      been changed to third person.
+  - rscadd: Pressurized reagent canisters are now flushable inside and outside reagent
+      pouches.
+  - rscadd: Pressurized reagent canisters can fit on the back slot.
+  - imageadd: Adds inhand and back sprites for pressurized reagent canisters.
+  - code_imp: Adds some defines for groups of surgery tools used for steps.
+  - bugfix: Most tools making inappropriate sounds during surgery steps, like a knife
+      using saw drilling noises when cutting bone, should not happen anymore.
+  - bugfix: Tools that utilize toolhit sounds during failed steps have been restored.
+  - bugfix: Using the IMS no longer tells you it made a bloody incision.
+  - soundadd: The IMS, laser scalpel, bone gel, and ointment have their own sets of
+      preop and success sounds. Some are splices of old sound files, while some are
+      brand new.
+  - soundadd: The Fix-O-Vein has a unique sound while using it to initiate flesh-and-vein-mending-type
+      surgeries, while all weapons that chop instead of saw receive the same sound
+      set of repetitive chopping when initiating a surgery step that cuts through
+      bone.
+  - soundadd: Cigarettes/lighters and welding tools have sounds for initiating cauterizations.
+  - soundadd: The screwdriver uses its sound sets properly when initiating and successfully
+      drilling rods through or applying plates on bones.
+  - soundadd: Synthgrafts and ointment have sounds for initiating and successfully
+      applying grafts during eschar surgeries.
+  - soundadd: Surgery Line, cloth, and cable coils, whenever used as surgical tools,
+      always use sewing noises to mend flesh and blood vessels.
+  - soundtweak: Increased the volume of ointment spreading on skin a little bit so
+      it is clearly audible.
+  - code_imp: Tweaked some text to sound more fluid and less informal.
+  - qol: Each Xeno strain's description describes all abilities and unique traits,
+      if possible.
+  - spellcheck: Corrects grammar, misspells, and missing punctuation in xeno strain
+      files.
+  - spellcheck: Any use of first or second person in regards to xeno strains have
+      been changed to third person.
+  - spellcheck: Kills some more 'this the' and 'the the' cases.
+  Riot:
+  - qol: UPP Commando medics now have an inbuilt medical visor in their NVGs
+  - bugfix: UPP Commando(Non Deathsquad) now spawns with a rifle, instead of nothing.
+  - balance: NP92 has 19 rounds per mag but does less damage, to fit the new description
+      for it
+  - balance: The QYJ-72(UPP Machinegun) now has full fire-rate regardless of whether
+      it's bipodded or not, but has worse scatter and accuracy when not bipodded,
+      it also has slightly more fire-rate in general.
+  - balance: The loadout Type 73 now has no damage buff, rendering it about in line
+      with the other pistol choices stat-wise
+  - balance: The UPP RPG isn't skill-locked again
+  - balance: The UPP RPG's incendiary round has a very small explosion around the
+      impact point
+  - balance: Swaps the armor-penetration values of the normal and shrapnelshot ZHNK
+      rounds, so it makes more sense
+  - spellcheck: Redoes the description for and adds lore descriptions for most UPP
+      weapons, all done by me
+  - spellcheck: Renames the Type 88 DMR to FPA-299 so it's not 1-1 an IRL weapon,
+      renames the Type 64 SMG to the PPZ-49/64 to cut down on the number of UPP weapons
+      named 'Type-XYZ'
+  - spellcheck: Re-chambers all UPP weapons so they use rounds more fitting to the
+      setting
+  - spellcheck: Loadout pistols that have stat-changes compared to normal versions
+      now have a specially colored description part to signify that.
+  Steelpoint:
+  - maptweak: LV1021, Cape River Mining Colony and White Antre Research Facility are
+      now offically supported in the Survival gamemode.
+  - maptweak: Expands colony weeding that occurs in the Survival game mode. This means
+      more areas of the map and colony will be pre-weeded at round start.
+  Sulaboy:
+  - balance: Removed almost all uniform restrictions from armors.
+  TrollerNoob:
+  - rscadd: The shadow of the dropship can now be seen as it pulls away from a firemission!
+  - rscadd: Laser designators now provide an audible feedback ping whenever a pilot
+      selects or engages its lase as a target. Planetside communication relay or a
+      deployed ARC must be working to facilitate this.
+  - rscadd: RTO Backpack and Scout's helmet are able to receive designator feedback
+      cues even with communication relays down.
+  - imageadd: New look for the Scout's Laser designator.
+  - imageadd: Dropship shadow sprites added.
+  Venuska1117:
+  - refactor: Updates Acid Runner code with new define, removes tiny vars and spaces.
+  - balance: Warrior Lunge can now be used more consistently during movement, when
+      walking towards target lunge will mostly hit, but when going away from target,
+      it have higher chance to fail.
+  - balance: Pounce ability and its subtypes used by Runners, Lurkers, Ravagers, Praetorians,
+      Vanguards, Despoiler and Vampires can be used more consistently during movement.
+  - refactor: Changed most of Dancer Praetorian ability vars to use traits, for easier
+      reference in future, behaviour vars that are used by specific ability are moved
+      to ability file.
+  axiomata7:
+  - balance: Improved Predator Heavy Armor, adding Sozo Injectors, Armor Lock, and
+      slightly improving slowdown.
+  carlarcCM:
+  - rscadd: Xenos can hear deaths and use live tacmap until a Queen evolves.
+2026-11-23:
+  Drathek:
+  - code_imp: Replaced plasma_add and plasmapool_multiplier with plasmapool_modifier
+      so a single variable can handle even xenos with no base plasma
+  - code_imp: Strain application now always performs recalculate_everything
+  - code_imp: Simplified LAZYIN macro
+  - bugfix: Xenos now destroy any shields on Destroy
+  - bugfix: Fixed phero unit testing for gardener, and just refactored them to be
+      automated
+  - bugfix: Fixes phero unit testing not accounting for received_phero_caps or ignore_aura
+      and not testing strains as receivers
+  - refactor: Refactored xeno strain application so that now common stat modifications
+      are defined rather than just hardcoded in a proc
+  Steelpoint:
+  - mapadd: Fort McNeil has been added to the game. A lowpop map set on the planet
+      White Antre, hosted within a flyover civilian colony, duel dedicated as a way-station
+      and small time mining operation. This map will be votable when the server population
+      is 100 players or less.
+  TrollerNoob:
+  - rscadd: Added a variety of telegraph VFX to Xenomorph Abilities across the board.
+  - rscadd: Xenomorph movement abilities now kick up a dust cloud on the tile they
+      moved from, unless they are cloaked.
+  - rscadd: Xenomorph slash enhancing abilities now have a custom slash animation.
+  - rscadd: Base Ravager's abilities now visually change when being enhanced with
+      enough shield gained from Empower.
+  - imageadd: Added a greyscale xeno telegraph border to be used and recolored for
+      telegraph effects.
+  - imageadd: Added telegraph states for the Flurry, Tail Jab/Pierce, Vanguard Dash
+      Slash, Tremor/Stomp/High Gallop, Scissor Cut, Eviscerate and Caustic Embrace
+      Xenomorph abilities.
+  - imageadd: Added attack states for the Clothesline, Apprehend, Crippling Strike,
+      Crippling Strike Tail Strike, Toxic Slash and Toxic Slash Tail Strike Xenomorph
+      abilities.
+  - imageadd: Added a big and small dust cloud effect for Xenomorph movement abilities.

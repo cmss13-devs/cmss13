@@ -285,7 +285,7 @@
 			target.apply_damage(n_acid_damage, BURN, "chest")
 		if(prob(30))
 			new /obj/effect/lingering_acid(turf, xeno.hivenumber)
-		new /obj/effect/xenomorph/xeno_telegraph/yellow(turf, 2)
+		new /obj/effect/xenomorph/xeno_telegraph/attack/caustic_embrace(turf, 0.6 SECONDS)
 
 /datum/action/xeno_action/activable/pounce/caustic_embrace/additional_effects(mob/living/carbon/target)
 	var/mob/living/carbon/xenomorph/despoiler/xeno = owner

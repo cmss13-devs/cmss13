@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - config: "Fixed alien movement delay config not being referenced (still will be left at default)"
-  - rscdel: "Removed unused configs"

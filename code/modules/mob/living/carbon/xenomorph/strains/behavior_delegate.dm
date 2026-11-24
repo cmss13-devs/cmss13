@@ -52,6 +52,12 @@
 /datum/behavior_delegate/proc/remove_from_xeno()
 	return
 
+/datum/behavior_delegate/proc/get_slash_icon_state()
+	return "slash"
+
+/datum/behavior_delegate/proc/get_tail_strike_icon_state(default_state)
+	return default_state
+
 /**
  * Modifies the damage of a slash based on the current mutator state.
  * Do not override this proc unless you need to affect the rolled damage

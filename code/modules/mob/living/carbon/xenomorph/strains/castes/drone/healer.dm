@@ -3,6 +3,8 @@
 	description = "We lose our choice of resin secretions, a chunk of our slash damage, and we're slightly less capable of tackling hosts in exchange for strong pheromones, increased plasma transfer, the ability to use a bit of our health to plant a maximum of three lesser resin fruits, and, most importantly, we can produce a regenerative resin salve with Apply Salve by using our vital fluids and a fifth of our plasma to heal our sisters. Be wary, this is a dangerous process; we can overexert ourselves to unconsciousness, or even die..."
 	flavor_description = "United we stand, divided we fall. We live for the hive, we die for the hive."
 	icon_state_prefix = "Healer"
+	phero_mod = XENO_PHERO_MOD_LARGE
+	damage_mod = -XENO_DAMAGE_MOD_VERY_SMALL
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/secrete_resin,
@@ -23,15 +25,11 @@
 	behavior_delegate_type = /datum/behavior_delegate/drone_healer
 
 /datum/xeno_strain/healer/apply_strain(mob/living/carbon/xenomorph/drone/drone)
-	drone.phero_modifier += XENO_PHERO_MOD_LARGE
-	drone.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
+	..() // stat modifiers
 	drone.tackle_chance_modifier -= 5
-
 	drone.max_placeable = 3
 	drone.available_fruits = list(/obj/effect/alien/resin/fruit/lesser)
 	drone.selected_fruit = /obj/effect/alien/resin/fruit/lesser
-
-	drone.recalculate_everything()
 
 /*
 	Improved Plasma Transfer

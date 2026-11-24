@@ -3,6 +3,10 @@
 	description = "We lose our Empower, Charge, and Scissor Cut, decrease our health, and sacrifice a bit of our influence under frenzy pheromones to increase our movement speed, slightly increase our armor, and gain a new set of abilities that make us a terrifying melee monster. By slashing, we heal ourselves and gain a stack of rage that increases our armor, movement speed, attack speed, and our heals per slash, to a maximum of five rage. Our new Apprehend ability increases our movement speed and applies a slow on the next target we slash. Our Clothesline ability flings our target to heal ourselves, even more so if we have a rage stack that will be used up. Finally, Eviscerate unleashes a devastating windmill attack that heals us for every enemy we hit after an immobilizing wind-up."
 	flavor_description = "Unbridled fury fills this one. It will become an extension of my rage."
 	icon_state_prefix = "Berserker"
+	plasma_mod = -(/datum/caste_datum/ravager::plasma_max) // no plasma
+	health_mod = -XENO_HEALTH_MOD_MED
+	armor_mod = XENO_ARMOR_MOD_VERY_SMALL
+	speed_mod = XENO_SPEED_FASTMOD_TIER_3
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/onclick/empower,
@@ -18,13 +22,8 @@
 	behavior_delegate_type = /datum/behavior_delegate/ravager_berserker
 
 /datum/xeno_strain/berserker/apply_strain(mob/living/carbon/xenomorph/ravager/ravager)
-	ravager.plasmapool_modifier = XENO_NO_PLASMA
-	ravager.health_modifier -= XENO_HEALTH_MOD_MED
-	ravager.armor_modifier += XENO_ARMOR_MOD_VERY_SMALL
-	ravager.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
-	ravager.received_phero_caps[XENO_PHERO_FRENZY] = 2.9 // Moderate
-
-	ravager.recalculate_everything()
+	..() // stat modifiers
+	ravager.received_phero_caps[XENO_PHERO_FRENZY] = XENO_PHERO_STRENGTH_STRONG - 0.1 // Moderate
 
 // Mutator delegate for Berserker ravager
 /datum/behavior_delegate/ravager_berserker
@@ -130,6 +129,9 @@
 	rage_cooldown_start_time = 0
 	return
 
+/datum/behavior_delegate/ravager_berserker/get_slash_icon_state()
+	return next_slash_buffed ? "apprehend" : ..()
+
 /datum/behavior_delegate/ravager_berserker/melee_attack_modify_damage(original_damage, mob/living/carbon/target_carbon)
 	if(!isxeno_human(target_carbon))
 		return original_damage
@@ -227,6 +229,8 @@
 		fling_distance--
 
 	// Damage
+	xeno.flick_attack_overlay(carbon, "clothesline", 0.4 SECONDS)
+	playsound(carbon, 'sound/weapons/alien_claw_block.ogg', 50, TRUE)
 	var/obj/limb/head/head = carbon.get_limb("head")
 	if(ishuman(carbon) && head)
 		carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "head")
@@ -291,7 +295,8 @@
 	ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 	xeno.anchored = TRUE
 
-	if(do_after(xeno, (activation_delay - windup_reduction), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+	var/windup = activation_delay - windup_reduction
+	if(do_after(xeno, windup, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 		xeno.emote("roar")
 		xeno.spin_circle()
 
@@ -317,7 +322,15 @@
 				xeno.visible_message(SPAN_XENODANGER("[xeno] claws [targets_to_hit]!"), SPAN_XENODANGER("We claw [targets_to_hit]!"))
 				playsound(get_turf(targets_to_hit), "alien_claw_flesh", 30, 1)
 
+			var/obj/effect/xenomorph/xeno_telegraph/attack/eviscerate/slash = new(targets_to_hit, 0.5 SECONDS)
+			slash.show_on_target(targets_to_hit)
 			targets_to_hit.apply_armoured_damage(get_xeno_damage_slash(targets_to_hit, damage), ARMOR_MELEE, BRUTE, "chest", 20)
+
+		var/list/affected_tiles = list()
+		for(var/turf/target_turf in orange(xeno, range))
+			if(check_clear_path_to_target(xeno, target_turf, smash_windows = FALSE))
+				affected_tiles += target_turf
+		show_radial_telegraph(get_turf(xeno), affected_tiles, range, /obj/effect/xenomorph/xeno_telegraph/attack/eviscerate, 0.5 SECONDS, "#EB4210")
 
 	var/valid_count = 0
 	var/list/mobs_in_range = oviewers(lifesteal_range, xeno)

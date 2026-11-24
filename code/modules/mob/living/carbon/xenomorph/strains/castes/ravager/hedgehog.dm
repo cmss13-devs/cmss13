@@ -3,6 +3,9 @@
 	description = "We lose our existing abilities and some slash damage in exchange for more explosive resistance and the ability to gain shards. Our resistance scales with our shard count and at 50% grants us immunity to some explosive stuns. We accumulate shards over time and when taking damage and use these shards to power three new abilities: Spike Shield which gives us a temporary shield that spits bone shards around us when damaged; Fire Spikes, which launches spikes at our target to slow them and deal damage when they move; and Spike Shed, which launches all our spikes, grants a temporary speed boost, and disables shard generation for thirty seconds."
 	flavor_description = "It will pierce them a million times, show them what it feels like. This one will become my shield."
 	icon_state_prefix = "Hedgehog"
+	plasma_mod = -(/datum/caste_datum/ravager::plasma_max) // no plasma
+	explosive_armor_mod = XENO_EXPOSIVEARMOR_MOD_SMALL
+	damage_mod = -XENO_DAMAGE_MOD_SMALL
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/onclick/empower,
@@ -18,12 +21,8 @@
 	behavior_delegate_type = /datum/behavior_delegate/ravager_hedgehog
 
 /datum/xeno_strain/hedgehog/apply_strain(mob/living/carbon/xenomorph/ravager/ravager)
-	ravager.plasmapool_modifier = XENO_NO_PLASMA
+	..() // stat modifiers
 	ravager.small_explosives_stun = TRUE
-	ravager.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL
-	ravager.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-
-	ravager.recalculate_everything()
 
 /datum/behavior_delegate/ravager_hedgehog
 	name = "Hedgehog Ravager Behavior Delegate"

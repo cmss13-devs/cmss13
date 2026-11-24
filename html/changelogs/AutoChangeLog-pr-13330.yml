@@ -1,6 +1,0 @@
-author: "JHINgle4ce"
-delete-after: True
-changes:
-  - bugfix: "Resin whisperer builds slower than drone - as was stated in the original PR. Now it needs 2.2 seconds to build a wall for example."
-  - rscadd: "Resin whisperers building speed scales with distance. From 1 second if it builds in adjacent tile to 2.2 seconds on 6+ tile range."
-  - balance: "Removed toggleable acceleration on weeds for both Resin whisperer and Designer"

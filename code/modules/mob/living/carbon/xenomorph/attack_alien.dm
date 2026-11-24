@@ -114,7 +114,7 @@
 				SPAN_DANGER("We lunge at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				return XENO_ATTACK_ACTION
 
-			attacking_xeno.flick_attack_overlay(src, "slash")
+			attacking_xeno.flick_attack_overlay(src, attacking_xeno.behavior_delegate.get_slash_icon_state())
 			var/obj/limb/affecting
 			affecting = get_limb(rand_zone(attacking_xeno.zone_selected, 70))
 			if(!affecting) //No organ, just get a random one

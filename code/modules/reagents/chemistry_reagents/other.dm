@@ -533,7 +533,7 @@
 		var/obj/effect/decal/cleanable/C = O
 		C.cleanup_cleanable(id)
 	else if(O)
-		O.clean_blood(id)
+		O.clean_blood(cleaning_reagent = id)
 
 /datum/reagent/space_cleaner/reaction_turf(turf/T, volume)
 	if(volume >= 1 && istype(T))
@@ -564,9 +564,9 @@
 				if(reacted_human.shoes.clean_blood())
 					reacted_human.update_inv_shoes(0)
 			else
-				reacted_human.clean_blood(1)
+				reacted_human.clean_blood(1, cleaning_reagent=id)
 				return
-		reacted_mob.clean_blood(id)
+		reacted_mob.clean_blood(cleaning_reagent = id)
 
 /datum/reagent/cryptobiolin
 	name = "Cryptobiolin"

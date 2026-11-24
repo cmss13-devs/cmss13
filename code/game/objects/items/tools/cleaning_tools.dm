@@ -50,9 +50,9 @@
 	if(source.reagents.has_reagent("water", 1))
 		clean_cleanables("water")
 	if(source.reagents.has_reagent("cleaner", 1))
-		clean_cleanables("cleaner")
+		clean_cleanables(cleaning_reagent = "cleaner")
 	if(source.name == "soap")
-		clean_cleanables("soap")
+		clean_cleanables(cleaning_reagent = "soap")
 	source.reagents.reaction(src, TOUCH, 10) //10 is the multiplier for the reaction effect. probably needed to wet the floor properly.
 	source.reagents.remove_any(1) //reaction() doesn't use up the reagents
 
@@ -160,11 +160,11 @@
 		qdel(target)
 	else if(isturf(target))
 		var/turf/T = target
-		T.clean_cleanables("soap")
+		T.clean_cleanables(cleaning_reagent = "soap")
 		to_chat(user, SPAN_NOTICE("You scrub all dirt out of \the [target.name]."))
 	else
 		to_chat(user, SPAN_NOTICE("You clean \the [target.name]."))
-		target.clean_blood("soap")
+		target.clean_blood(cleaning_reagent = "soap")
 
 
 /obj/item/tool/soap/attack(mob/target, mob/user)

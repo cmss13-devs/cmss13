@@ -28236,6 +28236,21 @@
 "bsa" = (
 /turf/open/floor/almayer/test_floor5,
 /area/supply/dock/uscm)
+"bsb" = (
+/obj/structure/machinery/door/poddoor/railing{
+	dir = 4;
+	id = "supply_elevator_railing"
+	},
+/obj/item/storage/box/spec/mortar,
+/turf/open/floor/interior/wood/alt,
+/area/forward_base/squads/req)
+"bsc" = (
+/obj/vehicle/powerloader,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/interior/wood_sat/alt,
+/area/forward_base/underdeck/hangar/lv1021)
 "bsf" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -4;
@@ -28888,11 +28903,12 @@
 /turf/open/floor/kutjevo/tan/alt_edge/north,
 /area/forward_base/squads/alpha_bravo_shared)
 "bWP" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/small{
-	dir = 4
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
 	},
-/turf/open/floor/interior/wood_sat/damage_4,
+/obj/structure/machinery/cm_vending/clothing/pilot_officer,
+/turf/open/floor/interior/wood_sat/alt,
 /area/forward_base/underdeck/hangar/lv1021)
 "bYi" = (
 /obj/structure/barricade/sandbags{
@@ -34886,12 +34902,8 @@
 /turf/open/floor/interior/wood/damage_6,
 /area/lv1021/outdoors/comms/west_2)
 "hDK" = (
-/obj/effect/decal/cleanable/generic{
-	color = "#5d524b";
-	alpha = 155
-	},
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/pilot_officer,
-/turf/open/floor/interior/wood_sat/alt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood_sat/damage_4,
 /area/forward_base/underdeck/hangar/lv1021)
 "hEh" = (
 /turf/open/auto_turf/tyrargo_grass/layer1,
@@ -35045,6 +35057,13 @@
 	},
 /obj/structure/surface/table/woodentable/poor,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/transmitter/rotary/no_dnd{
+	name = "Combat Information Center Telephone";
+	phone_category = "Command";
+	phone_id = "Combat Information Center";
+	pixel_x = -10;
+	pixel_y = 17
+	},
 /turf/open/floor/almayer/silver/southeast,
 /area/forward_base/command/cic)
 "hJB" = (
@@ -40412,13 +40431,6 @@
 /area/lv1021/outdoors/comms/north_west_1)
 "mvD" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/structure/transmitter/rotary/no_dnd{
-	name = "Combat Information Center Telephone";
-	phone_category = "Command";
-	phone_id = "Combat Information Center";
-	pixel_x = -10;
-	pixel_y = 7
-	},
 /obj/structure/machinery/computer/cameras/almayer_network/vehicle{
 	pixel_x = 5
 	},
@@ -40426,6 +40438,11 @@
 	pixel_y = 30
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	name = "Dropship Remote Control Console";
+	pixel_y = 0;
+	pixel_x = -12
+	},
 /turf/open/floor/almayer/silver/west,
 /area/forward_base/command/cic)
 "mvR" = (
@@ -42856,7 +42873,9 @@
 /turf/open/floor/wood/ship,
 /area/forward_base/living/grunt_rnr)
 "oUf" = (
-/obj/vehicle/powerloader,
+/obj/structure/machinery/recharge_station/alt{
+	dir = 4
+	},
 /turf/open/floor/interior/wood_sat/alt,
 /area/forward_base/underdeck/hangar/lv1021)
 "oUo" = (
@@ -43987,6 +44006,7 @@
 	pixel_y = -30
 	},
 /obj/structure/surface/table/woodentable/poor,
+/obj/structure/machinery/recharger,
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/forward_base/medical/operating_room_one)
 "pSB" = (
@@ -44768,6 +44788,10 @@
 	name = "Brig Cells Telephone";
 	phone_id = "Brig Cells";
 	phone_category = "MP Dept."
+	},
+/obj/structure/machinery/recharger{
+	pixel_x = -4;
+	pixel_y = -2
 	},
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/forward_base/shipboard/brig/processing)
@@ -45687,6 +45711,7 @@
 	pixel_y = 13;
 	layer = 5
 	},
+/obj/structure/machinery/recharger,
 /turf/open/floor/interior/wood_sat,
 /area/forward_base/shipboard/brig/processing)
 "rxs" = (
@@ -47937,10 +47962,7 @@
 /turf/open/auto_turf/lv_sand,
 /area/lv1021/outdoors/jungle/jungleC_s_e)
 "tyc" = (
-/obj/structure/machinery/recharge_station/alt{
-	layer = 2.9;
-	dir = 4
-	},
+/obj/structure/machinery/part_fabricator/dropship,
 /turf/open/floor/interior/wood_sat/alt,
 /area/forward_base/underdeck/hangar/lv1021)
 "tyB" = (
@@ -48042,6 +48064,8 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/machinery/recharger,
+/obj/structure/surface/table/woodentable/poor,
 /turf/open/floor/plating/wood,
 /area/forward_base/medical/lower_medical_lobby)
 "tBR" = (
@@ -48560,11 +48584,6 @@
 	},
 /turf/open/gm/river/soro,
 /area/lv1021/outdoors/river/central_south)
-"uda" = (
-/obj/structure/machinery/part_fabricator/dropship,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/interior/wood_sat/alt,
-/area/forward_base/underdeck/hangar/lv1021)
 "ude" = (
 /obj/structure/blocker/tent,
 /obj/structure/machinery/medical_pod/autodoc{
@@ -61508,7 +61527,7 @@ qjK
 biG
 uVR
 kdx
-jVX
+bsb
 jVX
 jVX
 gzR
@@ -97410,11 +97429,11 @@ iXB
 duD
 iTR
 tyc
-rrP
+vtl
 gpK
 uoc
 fDp
-vtl
+rrP
 oUf
 emy
 hXu
@@ -97576,13 +97595,13 @@ vZp
 fxj
 iQx
 iTR
-vAk
-uHW
+vtl
+pqg
 fjw
 eub
 vtl
-pqg
-uda
+uHW
+vAk
 emy
 hXu
 baQ
@@ -97743,13 +97762,13 @@ gEQ
 ppL
 sKX
 iTR
-xOI
+bsc
 hDK
 uCf
 xLx
 xYy
 bWP
-uHW
+xOI
 emy
 hXu
 hXu
@@ -97911,7 +97930,7 @@ emy
 emy
 emy
 emy
-emy
+iTR
 iTR
 iTR
 iTR

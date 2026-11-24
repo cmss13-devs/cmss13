@@ -298,6 +298,7 @@
 /obj/effect/attach_point/crew_weapon
 	name = "crew compartment attach point"
 	base_category = DROPSHIP_CREW_WEAPON
+	category_flag = DROPSHIP_CATEGORY_CREW_WEAPON
 
 /obj/effect/attach_point/crew_weapon/dropship1
 	ship_tag = DROPSHIP_ALAMO
@@ -344,6 +345,7 @@
 /obj/effect/attach_point/electronics
 	name = "electronic system attach point"
 	base_category = DROPSHIP_ELECTRONICS
+	category_flag = DROPSHIP_CATEGORY_ELECTRONICS
 	icon_state = "equip_base_front"
 	layer = ABOVE_OBJ_LAYER
 
@@ -373,6 +375,7 @@
 	icon = 'icons/obj/structures/props/dropship/dropship_equipment64.dmi'
 	icon_state = "fuel_base"
 	base_category = DROPSHIP_FUEL_EQP
+	category_flag = DROPSHIP_CATEGORY_FUEL
 	var/adjusted_pixel
 
 /obj/effect/attach_point/fuel/dropship1
@@ -404,6 +407,7 @@
 
 /obj/effect/attach_point/computer
 	base_category = DROPSHIP_COMPUTER
+	category_flag = DROPSHIP_CATEGORY_COMPUTER
 
 /obj/effect/attach_point/computer/dropship1
 	ship_tag = DROPSHIP_ALAMO

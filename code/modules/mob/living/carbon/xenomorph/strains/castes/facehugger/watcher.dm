@@ -13,6 +13,7 @@
 	behavior_delegate_type = /datum/behavior_delegate/facehugger_watcher
 
 /datum/xeno_strain/watcher/apply_strain(mob/living/carbon/xenomorph/facehugger/huggy)
+	..() // stat modifiers
 	huggy.viewsize = 10
 	huggy.layer = initial(huggy.layer)
 

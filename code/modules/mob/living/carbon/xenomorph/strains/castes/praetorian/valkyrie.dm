@@ -3,6 +3,8 @@
 	description = "We trade our ranged abilities and acid to gain the ability to emit strong pheromones and a plethora of new abilities. Our slashes heal us and our allies and generate Fury, which fuels some of our abilities. We can Retrieve the wounded from a distance, our High Gallop knocks down enemies throws back boom rocks in a 2 by 3 arc, Fight or Flight rejuvenates and removes debuffs around allies, its range depending on our rage, and Tantrum provides armor to allies and speed to Crushers and Ravagers both's range depending on our rage. We also trade our tailstab Tail Fountain; it doesn't do damage, but it extinguishes allies, or it can extinguish talls to facilitate capture."
 	flavor_description = "This one will deny her sisters' deaths until they earn it. Fight or be forgotten."
 	icon_state_prefix = "Warden"
+	speed_mod = XENO_SPEED_SLOWMOD_TIER_5
+	armor_mod = XENO_ARMOR_MOD_SMALL
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/tail_stab,
@@ -20,14 +22,11 @@
 		/datum/action/xeno_action/activable/prae_retrieve,
 	)
 
-
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_valkyrie
 
 /datum/xeno_strain/valkyrie/apply_strain(mob/living/carbon/xenomorph/praetorian/prae)
-	prae.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
-	prae.armor_modifier += XENO_ARMOR_MOD_SMALL
+	..() // stat modifiers
 	prae.claw_type = CLAW_TYPE_VERY_SHARP
-	prae.recalculate_everything()
 
 /datum/behavior_delegate/praetorian_valkyrie
 	name = "Praetorian Valkyrie Behavior Delegate"
@@ -279,7 +278,6 @@
 	// Transient turf list
 	var/list/target_turfs = list()
 	var/list/temp_turfs = list()
-	var/list/telegraph_atom_list = list()
 
 	// Code to get a 2x3 area of turfs
 	var/turf/root = get_turf(valkyrie)
@@ -303,14 +301,12 @@
 			continue
 
 		target_turfs += range_turf
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(range_turf, 0.25 SECONDS)
 
 		var/turf/next_turf = get_step(range_turf, facing)
 		if (!istype(next_turf) || next_turf.density)
 			continue
 
 		target_turfs += next_turf
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(next_turf, 0.25 SECONDS)
 
 	if(!length(target_turfs))
 		to_chat(valkyrie, SPAN_XENOWARNING("We don't have enough room!"))
@@ -326,6 +322,7 @@
 	playsound(valkyrie, 'sound/effects/alien_footstep_charge3.ogg', 35, 0)
 
 	for (var/turf/range in target_turfs)
+		new /obj/effect/xenomorph/xeno_telegraph/attack/brown/high_gallop(range, 0.35 SECONDS)
 		for (var/mob/living/carbon/target in range)
 			if (target.stat == DEAD)
 				continue
@@ -499,7 +496,7 @@
 
 		turflist += T
 		facing = get_dir(T, A)
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/green(T, windup)
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/retrieve_hook(T, windup)
 
 	if(!length(turflist))
 		to_chat(valkyrie, SPAN_XENOWARNING("We don't have any room to do our retrieve!"))

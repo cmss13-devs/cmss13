@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - code_imp: "Broken bottles now reuse their outline icon rather than recreating every time"

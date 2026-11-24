@@ -1,8 +1,0 @@
-author: "TrollerNoob"
-delete-after: True
-changes:
-  - rscadd: "The shadow of the dropship can now be seen as it pulls away from a firemission!"
-  - rscadd: "Laser designators now provide an audible feedback ping whenever a pilot selects or engages its lase as a target. Planetside communication relay or a deployed ARC must be working to facilitate this."
-  - rscadd: "RTO Backpack and Scout's helmet are able to receive designator feedback cues even with communication relays down."
-  - imageadd: "New look for the Scout's Laser designator."
-  - imageadd: "Dropship shadow sprites added."

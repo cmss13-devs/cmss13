@@ -11,8 +11,10 @@
 	required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
 	steps = list(
-		/datum/surgery_step/clamp_bleeders_step, //oop i forgor, also cuz you can't clamp bleeders here, normally, for some reason
 		/datum/surgery_step/mend_bones,
+		/datum/surgery_step/clamp_bleeders_step, //why not
+		/datum/surgery_step/cauterize/abort, //bones can wait, someone has a larba about to burst
+		/datum/surgery_step/suture_incision/abort,
 		/datum/surgery_step/set_bones,
 	)
 	var/affected_bone //Used for messaging.

@@ -12,8 +12,6 @@
 	required_surgery_skill = SKILL_SURGERY_NOVICE
 	steps = list(
 		/datum/surgery_step/incision,
-		/datum/surgery_step/cauterize/abort,
-		/datum/surgery_step/suture_incision/abort,
 		/datum/surgery_step/clamp_bleeders_step,
 		/datum/surgery_step/cauterize/abort,
 		/datum/surgery_step/suture_incision/abort,
@@ -447,10 +445,7 @@
 	required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	steps = list(
 		/datum/surgery_step/saw_encased,
-		/datum/surgery_step/cauterize/abort, //fuck, forgot I don't have enough bone gel/rods
-		/datum/surgery_step/suture_incision/abort, //ditto
 		/datum/surgery_step/open_encased_step,
-		/datum/surgery_step/clamp_bleeders_step,
 		/datum/surgery_step/mend_encased,
 	)
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
@@ -480,6 +475,7 @@
 	var/obj/limb/affecting = target.get_limb(check_zone(user.zone_selected))
 	if(affecting.status & LIMB_BROKEN)
 		return TRUE //Don't need the saw if it's already fractured.
+
 
 /datum/surgery_step/saw_encased/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(surgery.affected_limb.name == "head")
@@ -708,11 +704,10 @@
 	invasiveness = list(SURGERY_DEPTH_DEEP)
 	required_surgery_skill = SKILL_SURGERY_ASSISTANT
 	steps = list(
+		/datum/surgery_step/clamp_bleeders_step, //so you can clamp after important gut surgery or larba removal
 		/datum/surgery_step/close_encased_step,
-		/datum/surgery_step/cauterize/abort, //fuck, forgot I don't have enough bone gel/rods
-		/datum/surgery_step/suture_incision/abort, //ditto
+		/datum/surgery_step/clamp_bleeders_step, //eh, why not
 		/datum/surgery_step/open_encased_step,
-		/datum/surgery_step/clamp_bleeders_step, //oop i forgor, also cuz you can't clamp bleeders here, normally, for some reason
 		/datum/surgery_step/mend_encased,
 	)
 	pain_reduction_required = PAIN_REDUCTION_HEAVY

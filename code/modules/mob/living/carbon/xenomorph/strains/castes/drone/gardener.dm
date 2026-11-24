@@ -47,6 +47,7 @@
 			break // Don't need to keep looking
 
 /datum/action/xeno_action/onclick/plant_resin_fruit
+	ability_stats_type = /datum/xeno_ability_stats/onclick_plant_resin_fruit
 	ability_description = "Spend health and plasma to grow a lesser resin fruit for the hive."
 	name = "Plant Resin Fruit (50)"
 	action_icon_state = "gardener_plant"
@@ -56,6 +57,11 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 5 SECONDS
 	var/health_cost = 50
+
+XENO_ABILITY_STATS(onclick_plant_resin_fruit, datum/action/xeno_action/onclick/plant_resin_fruit)
+	return list(
+		XENO_STAT_HEALTH(health_cost, "Health cost"),
+	)
 
 /datum/action/xeno_action/onclick/plant_resin_fruit/greater
 	ability_description = "Spend health and plasma to grow your selected variety of potent resin fruit."
@@ -230,6 +236,7 @@
 */
 
 /datum/action/xeno_action/activable/resin_surge
+	ability_stats_type = /datum/xeno_ability_stats/activable_resin_surge
 	ability_description = "Reinforce resin structures or rapidly ripen a resin fruit."
 	name = "Resin Surge (75)"
 	action_icon_state = "gardener_resin_surge"
@@ -240,6 +247,11 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	var/channel_in_progress = FALSE
 	var/max_range = 7
+
+XENO_ABILITY_STATS(activable_resin_surge, datum/action/xeno_action/activable/resin_surge)
+	return list(
+		XENO_STAT_TILES(max_range, "Range"),
+	)
 
 /datum/action/xeno_action/activable/resin_surge/use_ability(atom/target_atom, mods)
 	var/mob/living/carbon/xenomorph/xeno = owner

@@ -1,10 +1,11 @@
 /datum/action/xeno_action/activable/transfer_plasma/hivelord
 	ability_primacy = XENO_NOT_PRIMARY_ACTION //fourth macro for drone, its place taken by resin walker for hivelord.
 	plasma_transfer_amount = 200
-	transfer_delay = 5
+	transfer_delay = 0.5 SECONDS
 	max_range = 7
 
 /datum/action/xeno_action/active_toggle/toggle_speed
+	ability_stats_type = /datum/xeno_ability_stats/toggle_speed
 	ability_description = "Spend plasma to move faster on weeds."
 	name = "Resin Walker (50)"
 	action_icon_state = "toggle_speed"
@@ -19,6 +20,11 @@
 
 	var/active = FALSE
 	var/weed_speed_increase = XENO_SPEED_FASTMOD_TIER_10 * 3
+
+XENO_ABILITY_STATS(toggle_speed, datum/action/xeno_action/active_toggle/toggle_speed)
+	return list(
+		XENO_STAT_VALUE("Upkeep", XENO_ABILITY_VALUE(ability, plasma_use_per_tick), "plasma", " plasma per life tick."),
+	)
 
 /datum/action/xeno_action/active_toggle/toggle_speed/can_use_action()
 	var/mob/living/carbon/xenomorph/xeno = owner

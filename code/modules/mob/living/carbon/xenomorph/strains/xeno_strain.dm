@@ -190,7 +190,7 @@
 /datum/xeno_strain/proc/show_preview(mob/living/carbon/xenomorph/xeno, purchasing = FALSE)
 	if(!xeno.client)
 		return FALSE
-	var/list/original_actions = xeno.caste.base_actions
+	var/list/original_actions = xeno.caste.get_preview_actions()
 	if(purchasing)
 		original_actions = list()
 		for(var/datum/action/action as anything in xeno.actions)
@@ -302,6 +302,8 @@
 		result += list(list(
 			"name" = initial(ability.name),
 			"description" = initial(ability.ability_description),
+			"stats" = get_xeno_ability_stats(ability),
+			"costs" = get_xeno_ability_costs(ability),
 			"icon" = icon2html(icon_file, user, icon_state, sourceonly = TRUE),
 		))
 	return result

@@ -89,6 +89,7 @@
 	return ..()
 
 /datum/action/xeno_action/active_toggle/generate_egg
+	ability_stats_type = /datum/xeno_ability_stats/generate_egg
 	ability_description = "Use plasma to produce eggs for the hive."
 	name = "Generate Eggs (50)"
 	action_icon_state = "lay_egg"
@@ -101,6 +102,11 @@
 	var/egg_generation_progress = 0
 
 	ability_primacy = XENO_PRIMARY_ACTION_3
+
+XENO_ABILITY_STATS(generate_egg, datum/action/xeno_action/active_toggle/generate_egg)
+	return list(
+		XENO_STAT_VALUE("Upkeep while producing", XENO_ABILITY_VALUE(ability, plasma_use_per_tick), "plasma", " plasma per life tick."),
+	)
 
 /datum/action/xeno_action/active_toggle/generate_egg/should_use_plasma()
 	. = FALSE

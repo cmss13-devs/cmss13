@@ -84,7 +84,7 @@
 	var/lifesteal_percent = 7
 	var/max_lifesteal = 9
 	var/lifesteal_range =  3 // Marines within 3 tiles of range will give the warrior extra health
-	var/lifesteal_lock_duration = 20 // This will remove the glow effect on warrior after 2 seconds
+	var/lifesteal_lock_duration = 2 SECONDS // This will remove the glow effect on warrior after 2 seconds
 	var/color = "#6c6f24"
 	var/emote_cooldown = 0
 	var/lunging = FALSE // whether or not the warrior is currently lunging (holding) a target
@@ -280,13 +280,13 @@
 
 	fling_user.visible_message(SPAN_XENOWARNING("[fling_user] effortlessly flings [carbon] to the side!"), SPAN_XENOWARNING("We effortlessly fling [carbon] to the side!"))
 	playsound(carbon,'sound/weapons/alien_claw_block.ogg', 75, 1)
-	if(stun_power)
-		carbon.Stun(get_xeno_stun_duration(carbon, stun_power))
-	if(weaken_power)
-		carbon.KnockDown(get_xeno_stun_duration(carbon, weaken_power))
-	if(slowdown)
-		if(carbon.slowed < slowdown)
-			carbon.apply_effect(slowdown, SLOW)
+	if(stun_duration)
+		carbon.Stun(get_xeno_stun_duration(carbon, stun_duration))
+	if(knockdown_duration)
+		carbon.KnockDown(get_xeno_stun_duration(carbon, knockdown_duration))
+	if(slow_duration)
+		if(carbon.slowed < slow_duration)
+			carbon.apply_effect(slow_duration, SLOW)
 	carbon.last_damage_data = create_cause_data(initial(fling_user.caste_type), fling_user)
 
 	var/facing = get_dir(fling_user, carbon)
@@ -360,9 +360,9 @@
 			carbon.apply_effect(3, SLOW)
 
 		if(isyautja(carbon))
-			damage = rand(base_punch_damage_pred, base_punch_damage_pred + damage_variance)
+			damage = rand(base_damage_pred, base_damage_pred + damage_variance)
 		else if(target_limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
-			damage = rand(base_punch_damage_synth, base_punch_damage_synth + damage_variance)
+			damage = rand(base_damage_synth, base_damage_synth + damage_variance)
 
 
 	carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, damage), ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")

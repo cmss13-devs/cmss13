@@ -859,3 +859,39 @@
 
 /// Determines how fast xeno botany chems produce.
 #define XENO_BOTANY_RATE 10 SECONDS
+
+// Ability information helpers
+// FIELD is an unquoted action variable (base_damage)
+// LABEL is player facing text ("Impact damage")
+// NAME is its subtype name, e.g. tumble.
+// TYPE is the action's full type, e.g. datum/action/xeno_action/activable/tumble.
+// VALUE is a number
+// KIND selects text color, "brute", "burn", "toxin", "oxygen", "health", "shield", "plasma", or "crowd_control"
+// ABILITY is a typed action reference or type path
+
+/// Declares a stat provider's get_stats proc
+#define XENO_ABILITY_STATS(NAME, TYPE) /datum/xeno_ability_stats/NAME/get_stats(TYPE/ability)
+/// Reads FIELD from ABILITY
+#define XENO_ABILITY_VALUE(ABILITY, FIELD) (ispath(ABILITY) ? initial(ABILITY.FIELD) : ABILITY.FIELD)
+/// Builds one row for a calculated value
+#define XENO_STAT_VALUE(LABEL, VALUE, KIND, SUFFIX) xeno_stat_row(LABEL, list(xeno_description_value(VALUE, KIND), SUFFIX))
+/// Displays FIELD as brute damage in red
+#define XENO_STAT_BRUTE(FIELD, LABEL) XENO_STAT_VALUE(LABEL, XENO_ABILITY_VALUE(ability, FIELD), "brute", ".")
+/// Displays FIELD as burn damage in yellow
+#define XENO_STAT_BURN(FIELD, LABEL) XENO_STAT_VALUE(LABEL, XENO_ABILITY_VALUE(ability, FIELD), "burn", ".")
+/// Displays FIELD as health or healing in teal
+#define XENO_STAT_HEALTH(FIELD, LABEL) XENO_STAT_VALUE(LABEL, XENO_ABILITY_VALUE(ability, FIELD), "health", ".")
+/// Displays FIELD as shield points in purple
+#define XENO_STAT_SHIELD(FIELD, LABEL) XENO_STAT_VALUE(LABEL, XENO_ABILITY_VALUE(ability, FIELD), "shield", ".")
+/// Displays FIELD as plasma cost, transfer, or gain in teal, matching health
+#define XENO_STAT_PLASMA(FIELD, LABEL) XENO_STAT_VALUE(LABEL, XENO_ABILITY_VALUE(ability, FIELD), "plasma", ".")
+/// Displays FIELD as a neutral number, such as armor points or a target count
+#define XENO_STAT_NUMBER(FIELD, LABEL) XENO_STAT_VALUE(LABEL, XENO_ABILITY_VALUE(ability, FIELD), null, ".")
+/// Displays FIELD as a neutral distance with the " tiles." suffix
+#define XENO_STAT_TILES(FIELD, LABEL) XENO_STAT_VALUE(LABEL, XENO_ABILITY_VALUE(ability, FIELD), null, " tiles.")
+/// Displays a duration FIELD assigned with SECONDS or MINUTES as seconds. For example, 2 SECONDS displays as 2s.
+#define XENO_STAT_DURATION(FIELD, LABEL) XENO_STAT_VALUE(LABEL, XENO_ABILITY_VALUE(ability, FIELD) * 0.1, null, "s.")
+/// Displays a duration FIELD assigned with SECONDS in orange for stuns, roots, slows, and other control effects.
+#define XENO_STAT_CONTROL_DURATION(FIELD, LABEL) XENO_STAT_VALUE(LABEL, XENO_ABILITY_VALUE(ability, FIELD) * 0.1, "crowd_control", "s.")
+/// Displays legacy Stun, KnockDown, or Daze units as seconds in orange. FIELD is a raw count, not a SECONDS value.
+#define XENO_STAT_CONTROL_LEGACY(FIELD, LABEL) XENO_STAT_VALUE(LABEL, XENO_ABILITY_VALUE(ability, FIELD) * GLOBAL_STATUS_MULTIPLIER * 0.1, "crowd_control", "s.")

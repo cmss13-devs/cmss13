@@ -174,7 +174,7 @@
 	var/mob/living/carbon/xenomorph/hellhound/hellhound_gorger = owner
 
 	hellhound_gorger.visible_message(SPAN_XENODANGER("[hellhound_gorger] gorges at [carbon] with it's spikes."))
-	carbon.apply_armoured_damage(gorge_damage, BRUTE)
+	carbon.apply_armoured_damage(base_damage, BRUTE)
 	playsound(hellhound_gorger, "giant_lizard_growl", 30)
 	playsound(carbon, "alien_bite", 30)
 

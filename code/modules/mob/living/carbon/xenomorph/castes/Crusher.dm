@@ -328,7 +328,7 @@
 	target.apply_effect(2, WEAKEN)
 	xeno.visible_message(SPAN_XENODANGER("[xeno] overruns [target_to_check], brutally trampling them underfoot!"), SPAN_XENODANGER("We brutalize [target_to_check] as we crush them underfoot!"))
 
-	target_to_check.apply_armoured_damage(get_xeno_damage_slash(target_to_check, direct_hit_damage), ARMOR_MELEE, BRUTE)
+	target_to_check.apply_armoured_damage(get_xeno_damage_slash(target_to_check, base_damage), ARMOR_MELEE, BRUTE)
 	xeno.throw_carbon(target_to_check, xeno.dir, 3)
 
 	target_to_check.last_damage_data = create_cause_data(xeno.caste_type, xeno)
@@ -420,7 +420,7 @@
 			continue
 
 		if(targets in get_turf(xeno))
-			targets.apply_armoured_damage(get_xeno_damage_slash(targets, damage), ARMOR_MELEE, BRUTE)
+			targets.apply_armoured_damage(get_xeno_damage_slash(targets, base_damage), ARMOR_MELEE, BRUTE)
 
 		if(targets.mob_size < MOB_SIZE_BIG)
 			targets.apply_effect(get_xeno_stun_duration(targets, 0.2), WEAKEN)
@@ -462,7 +462,7 @@
 		if(target_to_stomp.mob_size < MOB_SIZE_BIG)
 			target_to_stomp.apply_effect(get_xeno_stun_duration(target_to_stomp, 0.2), WEAKEN)
 
-		target_to_stomp.apply_armoured_damage(get_xeno_damage_slash(target_to_stomp, damage), ARMOR_MELEE, BRUTE,"chest", 3)
+		target_to_stomp.apply_armoured_damage(get_xeno_damage_slash(target_to_stomp, base_damage), ARMOR_MELEE, BRUTE,"chest", 3)
 		target_to_stomp.apply_armoured_damage(15, BRUTE) // random
 		target_to_stomp.last_damage_data = create_cause_data(xeno.caste_type, xeno)
 		target_to_stomp.emote("pain")

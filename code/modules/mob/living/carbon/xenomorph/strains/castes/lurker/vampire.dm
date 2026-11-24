@@ -103,7 +103,7 @@
 			playsound(get_turf(target), 'sound/weapons/alien_claw_flesh4.ogg', 30, TRUE)
 			if(!xeno.on_fire)
 				xeno.flick_heal_overlay(1 SECONDS, "#00B800")
-				xeno.gain_health(30)
+				xeno.gain_health(healing_per_target)
 			xeno.animation_attack_on(target)
 
 	xeno.emote("roar")
@@ -153,7 +153,7 @@
 	if(iscarbon(hit_target) && !xeno.can_not_harm(hit_target) && hit_target.stat != DEAD)
 		if(targeted_atom == hit_target) //reward for a direct hit
 			to_chat(xeno, SPAN_XENOHIGHDANGER("We attack [hit_target], with our tail, piercing their body!"))
-			hit_target.apply_armoured_damage(15, ARMOR_MELEE, BRUTE, "chest")
+			hit_target.apply_armoured_damage(direct_hit_bonus, ARMOR_MELEE, BRUTE, "chest")
 		else
 			to_chat(xeno, SPAN_XENODANGER("We attack [hit_target], slashing them with our tail!"))
 	else
@@ -257,10 +257,10 @@
 	xeno.visible_message(SPAN_DANGER("[xeno] pierces [target_carbon]’s head with its inner jaw!"))
 	xeno.flick_attack_overlay(target_carbon, "headbite")
 	xeno.animation_attack_on(target_carbon, pixel_offset = 16)
-	target_carbon.apply_armoured_damage(60, ARMOR_MELEE, BRUTE, "head", 5) //DIE
+	target_carbon.apply_armoured_damage(base_damage, ARMOR_MELEE, BRUTE, "head", 5) //DIE
 	target_carbon.death(create_cause_data("headbite execution", xeno), FALSE)
 	if(!xeno.on_fire)
-		xeno.gain_health(150)
+		xeno.gain_health(kill_healing)
 		xeno.xeno_jitter(1 SECONDS)
 		xeno.flick_heal_overlay(3 SECONDS, "#00B800")
 	xeno.emote("roar")

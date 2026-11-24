@@ -4,19 +4,86 @@ import {
   Box,
   Button,
   Collapsible,
+  Divider,
   Icon,
   Image,
   Section,
   Stack,
   Tooltip,
 } from 'tgui/components';
+import { DAMAGE_COLORS } from 'tgui/constants';
 import { Window } from 'tgui/layouts';
+
+const valueColors = {
+  ...DAMAGE_COLORS,
+  shield: 'purple',
+  health: 'teal',
+  plasma: 'teal',
+  crowd_control: '#ff8c42',
+} as const;
+
+type DescriptionPart =
+  | string
+  | {
+      text: string;
+      kind: keyof typeof valueColors | null;
+    };
+
+function AbilityDescription(props: {
+  readonly description: string | DescriptionPart[] | null;
+}) {
+  const { description } = props;
+  if (!Array.isArray(description)) {
+    return description;
+  }
+  return (
+    <Box inline>
+      {description.map((part, index) =>
+        typeof part === 'string' ? (
+          part
+        ) : (
+          <Box
+            key={index}
+            inline
+            bold
+            color={part.kind ? valueColors[part.kind] : undefined}
+          >
+            {part.text}
+          </Box>
+        ),
+      )}
+    </Box>
+  );
+}
+
+type AbilityStat = {
+  label: string;
+  parts: DescriptionPart[];
+};
 
 type Ability = {
   name: string;
-  description: string;
+  description: string | null;
+  stats: AbilityStat[];
+  costs: AbilityStat[];
   icon: string;
 };
+
+function AbilityTooltip(props: { readonly ability: Ability }) {
+  const { description, stats = [], costs = [] } = props.ability;
+  const rows = [...stats, ...costs];
+  return (
+    <>
+      {description && <Box>{description}</Box>}
+      {description && rows.length > 0 && <Divider />}
+      {rows.map((row, index) => (
+        <Box key={index}>
+          {row.label}: <AbilityDescription description={row.parts} />
+        </Box>
+      ))}
+    </>
+  );
+}
 
 type Data = {
   currentCaste?: BooleanLike;
@@ -149,7 +216,10 @@ function AbilityGroup(props: {
       {abilities.length === 0 && <Box color="label">None</Box>}
       <div className="StrainPreview__abilities">
         {abilities.map((ability) => (
-          <Tooltip key={ability.name} content={ability.description}>
+          <Tooltip
+            key={ability.name}
+            content={<AbilityTooltip ability={ability} />}
+          >
             <div className="StrainPreview__ability">
               <Box mb={0.5}>{ability.name}</Box>
               <Image

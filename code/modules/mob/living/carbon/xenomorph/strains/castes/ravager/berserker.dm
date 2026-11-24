@@ -37,7 +37,7 @@
 	resource_capacity = 5
 	resource_icon_state = "rav_enrage"
 	resource_description = "Slashes build rage and heal you. Each stack improves armor, speed, attack speed and healing. Clothesline can spend a stack for extra healing."
-	var/rage_decay_time = 30 // How many deciseconds between slashes until we start to decay rage
+	var/rage_decay_time = 3 SECONDS // How many seconds between slashes until we start to decay rage
 	var/attack_delay_buff_per_rage = 0.6
 	var/armor_buff_per_rage = 3
 	var/movement_speed_buff_per_rage = 0.1
@@ -237,9 +237,9 @@
 	playsound(carbon, 'sound/weapons/alien_claw_block.ogg', 50, TRUE)
 	var/obj/limb/head/head = carbon.get_limb("head")
 	if(ishuman(carbon) && head)
-		carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "head")
+		carbon.apply_armoured_damage(base_damage, ARMOR_MELEE, BRUTE, "head")
 	else
-		carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, damage), ARMOR_MELEE, BRUTE) // just for consistency
+		carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, base_damage), ARMOR_MELEE, BRUTE) // just for consistency
 
 	// Heal
 	if(!xeno.on_fire)
@@ -276,8 +276,6 @@
 	var/damage = base_damage
 	var/range = 1
 	var/windup_reduction = 0
-	var/lifesteal_per_marine = 50
-	var/max_lifesteal = 250
 	var/lifesteal_range =  1
 
 	var/datum/behavior_delegate/ravager_berserker/behavior = xeno.behavior_delegate

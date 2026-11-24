@@ -169,7 +169,7 @@
 	var/datum/effects/acid/acid_effect = locate() in target.effects_list
 	if(!acid_effect)
 		return
-	target.apply_armoured_damage(acid_effect.acid_level * 15, ARMOR_BIO, BURN, limb ? limb.name : "chest", acid_effect.acid_level * 10)
+	target.apply_armoured_damage(acid_effect.acid_level * burn_damage_per_acid_level, ARMOR_BIO, BURN, limb ? limb.name : "chest", acid_effect.acid_level * 10)
 
 /datum/action/xeno_action/activable/acid_barrage/on_select(mob/user)
 	RegisterSignal(user, COMSIG_MOB_MOUSEDOWN, PROC_REF(on_mouse_down))
@@ -282,10 +282,10 @@
 		for(var/mob/living/carbon/human/target in turf)
 			playsound(target.loc, "acid_strike", 25, 1)
 			var/armor_block_acid = target.getarmor("chest", ARMOR_BIO)
-			var/n_acid_damage = armor_damage_reduction(GLOB.marine_melee, damage, armor_block_acid)
-			if(n_acid_damage <= 0.34*damage)
+			var/n_acid_damage = armor_damage_reduction(GLOB.marine_melee, base_damage, armor_block_acid)
+			if(n_acid_damage <= 0.34*base_damage)
 				to_chat(target, SPAN_WARNING("Your armor absorbs the acid!"))
-			else if(n_acid_damage <= 0.67*damage)
+			else if(n_acid_damage <= 0.67*base_damage)
 				to_chat(target, SPAN_WARNING("Your armor softens the acid!"))
 			target.apply_damage(n_acid_damage, BURN, "chest")
 		if(prob(30))
@@ -362,13 +362,13 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	if(delegate.hypertension_stacks < 1)
+	if(delegate.hypertension_stacks < hypertension_cost)
 		to_chat(xeno, SPAN_WARNING("We don't enough acid to do that."))
 		return
 
 	apply_cooldown()
 
-	delegate.hypertension_stacks--
+	delegate.hypertension_stacks -= hypertension_cost
 	delegate.next_ability_empowered = TRUE
 	delegate.empowered_overlay = image('icons/mob/xenos/castes/tier_3/despoiler.dmi', "hypertension")
 	delegate.empowered_overlay.layer = FLY_LAYER

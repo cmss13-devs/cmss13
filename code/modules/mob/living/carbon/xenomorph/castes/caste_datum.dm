@@ -91,7 +91,7 @@
 	/// delay time modifier it takes between hugger throws, only exclusively used by the carrier currently
 	var/hugger_throw_delay = 0
 	var/eggs_max = 0
-	var/egg_cooldown = 30
+	var/egg_cooldown = 3 SECONDS
 	///Armor but for explosions
 	var/xeno_explosion_resistance = 0
 
@@ -110,6 +110,7 @@
 	var/fire_vulnerability_mult = 0
 
 	var/burrow_cooldown = 5 SECONDS
+	var/burrow_duration = 9 SECONDS
 	var/tunnel_cooldown = 10 SECONDS
 	///whether the xeno heals even outside weeds.
 	var/innate_healing = FALSE
@@ -151,6 +152,10 @@
 /datum/caste_datum/proc/base_plasma_capacity(datum/xeno_strain/strain)
 	return max(plasma_max + (strain?.plasma_mod || 0), 0)
 
+/// Abilities documented by this caste, including any later unlocks
+/datum/caste_datum/proc/get_preview_actions()
+	return base_actions.Copy()
+
 /// Preview the destination's base form against the abilities and permanent stats of the current caste and strain.
 /datum/caste_datum/proc/show_preview(mob/living/carbon/xenomorph/xeno, mob/living/carbon/xenomorph/destination_type, confirm_action, notice)
 	if(!destination_type || !xeno.client)
@@ -158,11 +163,11 @@
 	var/list/buttons = confirm_action ? list(confirm_action, "Cancel") : list("Close")
 	var/datum/tgui_modal/xeno_preview/preview = new(xeno, null, caste_type, buttons, 0, TRUE, GLOB.always_state)
 	var/datum/xeno_strain/strain = xeno.strain
-	var/list/current_actions = xeno.caste.base_actions
+	var/list/current_actions = xeno.caste.get_preview_actions()
 	if(strain)
 		current_actions = (current_actions - strain.actions_to_remove) | strain.actions_to_add
 	current_actions = preview.action_types(current_actions)
-	var/list/destination_actions = preview.action_types(base_actions)
+	var/list/destination_actions = preview.action_types(get_preview_actions())
 
 	var/armor_change = armor_deflection - xeno.caste.armor_deflection - (strain?.armor_mod || 0)
 	var/health_change = max_health - xeno.caste.max_health - (strain?.health_mod || 0)

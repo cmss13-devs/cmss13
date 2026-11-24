@@ -40,7 +40,7 @@
 	ability_description = "Transfer a larger dose of plasma to an adjacent sister."
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	plasma_transfer_amount = 100
-	transfer_delay = 15
+	transfer_delay = 1.5 SECONDS
 	max_range = 1
 
 /*
@@ -48,6 +48,7 @@
 */
 
 /datum/action/xeno_action/activable/apply_salve
+	ability_stats_type = /datum/xeno_ability_stats/activable_apply_salve
 	ability_description = "Spend health and plasma to coat a sister in resin that heals her over time."
 	name = "Apply Resin Salve"
 	action_icon_state = "apply_salve"
@@ -58,6 +59,12 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	xeno_cooldown = 0.5 SECONDS
+
+XENO_ABILITY_STATS(activable_apply_salve, datum/action/xeno_action/activable/apply_salve)
+	return list(
+		XENO_STAT_HEALTH(health_transfer_amount, "Base healing"),
+		XENO_STAT_TILES(max_range, "Range"),
+	)
 
 /datum/action/xeno_action/activable/apply_salve/use_ability(atom/target_atom)
 	no_cooldown_msg = TRUE
@@ -207,6 +214,7 @@
 	holder.overlays.Cut()
 
 /datum/action/xeno_action/activable/healer_sacrifice
+	ability_stats_type = /datum/xeno_ability_stats/activable_healer_sacrifice
 	ability_description = "Give your life to transfer health to a wounded sister."
 	name = "Sacrifice"
 	action_icon_state = "screech"
@@ -215,6 +223,11 @@
 	macro_path = /datum/action/xeno_action/verb/verb_healer_sacrifice
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_5
+
+XENO_ABILITY_STATS(activable_healer_sacrifice, datum/action/xeno_action/activable/healer_sacrifice)
+	return list(
+		XENO_STAT_VALUE("Current health transferred", XENO_ABILITY_VALUE(ability, transfer_mod) * 100, "health", "%."),
+	)
 
 /datum/action/xeno_action/verb/verb_healer_sacrifice()
 	set category = "Alien"

@@ -390,7 +390,7 @@
 
 	face_atom(affected_atom)
 
-	var/wait_time = 10
+	var/wait_time = 1 SECONDS
 
 	var/turf/turf = get_turf(affected_atom)
 

@@ -5,8 +5,19 @@
 #define YOUNG_QUEEN_HEALTH_MULTIPLIER 0.5
 
 /datum/caste_datum/queen
+	var/screech_close_range = 4
+	var/screech_range = 7
+	var/screech_close_stun = 4
+	var/screech_far_stun = 3
+	/// Abilities gained after maturing
+	var/list/mature_actions = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
+		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
+		/datum/action/xeno_action/onclick/shift_spits, //second macro
+	)
 	caste_type = XENO_CASTE_QUEEN
-	playstyle = "Direct the hive with orders and pheromones. Grow an ovipositor to lay eggs and use overwatch to heal sisters and build resin around them. Weak while immature, gain more health and unlock the powerful Screech ability once mature."
+	playstyle = "Direct the hive with orders and pheromones. Grow an ovipositor to lay eggs and use overwatch to heal sisters and build resin around them. Weak while immature, gain more health and unlock the powerful Screech and Spit abilities once mature."
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
@@ -366,13 +377,6 @@
 		/datum/action/xeno_action/onclick/autoweeding_toggle,
 	)
 
-	/// Abilities they get when they've successfully aged.
-	var/mobile_aged_abilities = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
-		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
-		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
-		/datum/action/xeno_action/onclick/shift_spits, //second macro
-	)
 
 	var/breathing_counter = 0
 	var/ovipositor = FALSE //whether the Queen is attached to an ovipositor
@@ -614,7 +618,8 @@
 	var/list/abilities_to_give = mobile_abilities.Copy()
 
 	if(!queen_aged && queen_age_temp_timer_id == TIMER_ID_NULL)
-		abilities_to_give -= mobile_aged_abilities
+		var/datum/caste_datum/queen/queen_caste = caste
+		abilities_to_give -= queen_caste.mature_actions
 
 	for(var/path in abilities_to_give)
 		give_action(src, path)
@@ -996,3 +1001,6 @@
 #undef XENO_QUEEN_TEMP_AGE_EXTENSION
 #undef XENO_QUEEN_DEATH_DELAY
 #undef YOUNG_QUEEN_HEALTH_MULTIPLIER
+
+/datum/caste_datum/queen/get_preview_actions()
+	return ..() | mature_actions

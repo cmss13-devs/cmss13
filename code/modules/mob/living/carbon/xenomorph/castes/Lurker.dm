@@ -87,7 +87,7 @@
 	var/invis_start_time = -1 // Special value for when we're not invisible
 	var/invis_duration = 30 SECONDS // so we can display how long the lurker is invisible to it
 	var/buffed_slash_damage_ratio = 1.2
-	var/slash_slow_duration = 35
+	var/slash_slow_duration = 3.5 SECONDS
 
 	// State
 	var/next_slash_buffed = FALSE

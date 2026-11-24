@@ -767,6 +767,7 @@
 /////////////////////////////
 
 /datum/action/xeno_action/activable/place_design
+	ability_stats_type = /datum/xeno_ability_stats/activable_place_design
 	ability_description = "Apply the selected design action to a node or structure from a distance."
 	name = "Influence"
 	action_icon_state = "secrete_resin"
@@ -777,6 +778,11 @@
 	xeno_cooldown = 0
 	var/max_reach = 10
 	var/design_toggle = TRUE
+
+XENO_ABILITY_STATS(activable_place_design, datum/action/xeno_action/activable/place_design)
+	return list(
+		XENO_STAT_TILES(max_reach, "Range"),
+	)
 
 /datum/action/xeno_action/verb/place_design()
 	set category = "Alien"

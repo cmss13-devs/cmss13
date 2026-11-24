@@ -1,4 +1,5 @@
 /datum/action/xeno_action/activable/pounce/crusher_charge
+	ability_stats_type = /datum/xeno_ability_stats/activable_pounce_crusher_charge
 	ability_description = "Launch yourself forward to smash through obstacles and enemies."
 	name = "Charge"
 	action_icon_state = "ready_charge"
@@ -20,12 +21,17 @@
 	should_destroy_objects = TRUE
 	throw_speed = SPEED_FAST
 	tracks_target = FALSE
-	var/direct_hit_damage = 60
+	var/base_damage = 60
 	var/frontal_armor = 15
 	// Object types that don't reduce cooldown when hit
 	var/list/not_reducing_objects = list()
 	cooldown_message = "We are flooded with the spirit of a raging bull!"
 
+XENO_ABILITY_STATS(activable_pounce_crusher_charge, datum/action/xeno_action/activable/pounce/crusher_charge)
+	return list(
+		XENO_STAT_BRUTE(base_damage, "Direct hit brute damage"),
+		XENO_STAT_TILES(distance, "Range"),
+	)
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/New()
 	. = ..()
@@ -35,6 +41,7 @@
 	pounce_pass_flags = PASS_CRUSHER_CHARGE
 
 /datum/action/xeno_action/onclick/crusher_stomp
+	ability_stats_type = /datum/xeno_ability_stats/onclick_crusher_stomp
 	ability_description = "Stomp the ground to damage anyone underneath you, and knock down nearby enemies."
 	name = "Stomp"
 	action_icon_state = "stomp"
@@ -45,11 +52,18 @@
 	plasma_cost = 30
 	cooldown_message = "We have recovered enough of our stamina to quake the earth again."
 
-	var/damage = 65
+	var/base_damage = 65
 
 	var/distance = 2
 	var/effect_type_base = /datum/effects/xeno_slow/superslow
 	var/effect_duration = 1 SECONDS
+
+XENO_ABILITY_STATS(onclick_crusher_stomp, datum/action/xeno_action/onclick/crusher_stomp)
+	return list(
+		XENO_STAT_BRUTE(base_damage, "Underfoot base brute damage"),
+		XENO_STAT_TILES(distance, "Radius"),
+		XENO_STAT_CONTROL_DURATION(effect_duration, "Slow"),
+	)
 
 /datum/action/xeno_action/onclick/crusher_stomp/charger
 	ability_description = "Stomp nearby enemies, dealing extra damage to those already on the ground."
@@ -59,12 +73,13 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 25
-	damage = 75
+	base_damage = 75
 	distance = 3
 	xeno_cooldown = 12 SECONDS
 	cooldown_message = "We have recovered our stamina. We are ready to crush tallhost chests again."
 
 /datum/action/xeno_action/onclick/crusher_shield
+	ability_stats_type = /datum/xeno_ability_stats/onclick_crusher_shield
 	ability_description = "Gain a temporary shield and brief immunity to explosion damage. Slashing an enemy helps bring the shield off cooldown."
 	name = "Defensive Shield"
 	action_icon_state = "empower"
@@ -78,6 +93,13 @@
 	var/shield_dur = 7 SECONDS
 	cooldown_message = "We are ready to shield ourselves."
 
+XENO_ABILITY_STATS(onclick_crusher_shield, datum/action/xeno_action/onclick/crusher_shield)
+	return list(
+		XENO_STAT_SHIELD(shield_amount, "Shield"),
+		XENO_STAT_VALUE("Shield duration", XENO_ABILITY_VALUE(ability, shield_dur) * 0.1, "shield", "s."),
+		XENO_STAT_DURATION(explosion_immunity_dur, "Explosion immunity"),
+	)
+
 /datum/action/xeno_action/activable/fling/charger
 	ability_description = "Ram a target with your head to knock it away."
 	name = "Headbutt"
@@ -89,13 +111,14 @@
 	plasma_cost = 10
 	// Configurables
 	fling_distance = 3
-	stun_power = 0
-	weaken_power = 0
-	slowdown = 8
+	stun_duration = 0
+	knockdown_duration = 0
+	slow_duration = 8
 	cooldown_message = "Our head and neck are primed for another headbutt."
 
 
 /datum/action/xeno_action/onclick/charger_charge
+	ability_stats_type = /datum/xeno_ability_stats/onclick_charger_charge
 	ability_description = "Toggle a momentum based charge. Keep moving forward to build speed and impact damage."
 	name = "Toggle Charging"
 	action_icon_state = "ready_charge"
@@ -119,7 +142,7 @@
 	//How much shield you gain on max momentum
 	var/shield_amount = 100
 	// How long the max momentum shield lasts
-	var/shield_timeout = 4
+	var/shield_timeout = 0.4 SECONDS
 	// If the shield is active or not
 	var/shield_active = FALSE
 
@@ -128,6 +151,13 @@
 	/// Dictates speed and damage dealt via collision, increased with movement
 	var/momentum = 0
 
+
+XENO_ABILITY_STATS(onclick_charger_charge, datum/action/xeno_action/onclick/charger_charge)
+	return list(
+		XENO_STAT_NUMBER(max_momentum, "Maximum momentum"),
+		XENO_STAT_PLASMA(plasma_per_step, "Plasma per step"),
+		XENO_STAT_SHIELD(shield_amount, "Shield"),
+	)
 
 /datum/action/xeno_action/onclick/charger_charge/proc/handle_position_change(mob/living/carbon/xenomorph/xeno, body_position)
 	SIGNAL_HANDLER
@@ -261,6 +291,7 @@
 
 
 /datum/action/xeno_action/activable/tumble
+	ability_stats_type = /datum/xeno_ability_stats/tumble
 	ability_description = "Roll through enemies to dodge incoming fire."
 	name = "Tumble"
 	action_icon_state = "tumble"
@@ -271,6 +302,14 @@
 	plasma_cost = 25
 	xeno_cooldown = 10 SECONDS
 	cooldown_message = "We have recovered enough of our stamina to tumble about again."
+	var/base_damage = 15
+	var/knockdown_duration = 1
+
+XENO_ABILITY_STATS(tumble, datum/action/xeno_action/activable/tumble)
+	return list(
+		XENO_STAT_BRUTE(base_damage, "Impact brute damage"),
+		XENO_STAT_CONTROL_LEGACY(knockdown_duration, "Knockdown"),
+	)
 
 /datum/action/xeno_action/activable/tumble/proc/on_end_throw(start_charging)
 	var/mob/living/carbon/xenomorph/Xeno = owner
@@ -284,13 +323,13 @@
 	Xeno.visible_message(SPAN_XENODANGER("[Xeno] Sweeps to the side, knocking down [Mob]!"), SPAN_XENODANGER("We knock over [Mob] as we sweep to the side!"))
 	var/turf/target_turf = get_turf(Mob)
 	playsound(Mob,'sound/weapons/alien_claw_block.ogg', 50, 1)
-	Mob.apply_damage(15,BRUTE)
+	Mob.apply_damage(base_damage, BRUTE)
 	if(ishuman(Mob))
 		var/mob/living/carbon/human/Human = Mob
 		Xeno.throw_carbon(Human, distance = 1)
-		Human.apply_effect(1, WEAKEN)
+		Human.apply_effect(knockdown_duration, WEAKEN)
 	else
-		Mob.apply_effect(1, WEAKEN)
+		Mob.apply_effect(knockdown_duration, WEAKEN)
 	if(!LinkBlocked(Xeno, get_turf(Xeno), target_turf))
 		Xeno.forceMove(target_turf)
 

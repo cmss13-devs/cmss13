@@ -160,7 +160,7 @@
 			continue
 		if(xeno.can_not_harm(carbon))
 			continue
-		carbon.apply_armoured_damage(damage)
+		carbon.apply_armoured_damage(base_damage)
 		carbon.last_damage_data = create_cause_data(initial(xeno.name), xeno)
 		xeno.flick_attack_overlay(carbon, "slash")
 		to_chat(carbon, SPAN_DANGER("[xeno] slices into you with its razor sharp talons."))
@@ -213,9 +213,9 @@
 			if(xeno.can_not_harm(carbon))
 				continue
 
-			carbon.EyeBlur(daze_length_seconds)
-			carbon.Daze(daze_length_seconds)
-			carbon.Superslow(slow_length_seconds)
+			carbon.EyeBlur(blur_ticks)
+			carbon.Daze(daze_duration)
+			carbon.Superslow(slow_duration)
 			carbon.add_client_color_matrix("doom", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string("#eeeeee")))
 			carbon.overlay_fullscreen("doom", /atom/movable/screen/fullscreen/flash/noise/nvg)
 			addtimer(CALLBACK(carbon, TYPE_PROC_REF(/mob, remove_client_color_matrix), "doom", 1 SECONDS), 5 SECONDS)

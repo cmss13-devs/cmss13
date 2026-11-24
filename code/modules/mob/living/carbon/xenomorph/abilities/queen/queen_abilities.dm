@@ -29,6 +29,8 @@
 	cooldown_message = "If we have the stores, we can heal one of our children again."
 
 /datum/action/xeno_action/onclick/screech
+	ability_stats_type = /datum/xeno_ability_stats/screech
+	ability_description = "Unleash a roar that stuns nearby enemies in sight, knocking down those closest to you and temporarily deafening them. Nearby facehuggers are also affected. Available once mature."
 	name = "Screech (250)"
 	action_icon_state = "screech"
 	macro_path = /datum/action/xeno_action/verb/verb_screech
@@ -38,6 +40,16 @@
 	cooldown_message = "We feel our throat muscles vibrate. We are ready to screech again."
 	no_cooldown_msg = FALSE // Needed for onclick actions
 	ability_primacy = XENO_SCREECH
+
+XENO_ABILITY_STATS(screech, datum/action/xeno_action/onclick/screech)
+	var/close_range = /datum/caste_datum/queen::screech_close_range
+	var/far_range = /datum/caste_datum/queen::screech_range - 1
+	var/close_stun = /datum/caste_datum/queen::screech_close_stun * GLOBAL_STATUS_MULTIPLIER * 0.1
+	var/far_stun = /datum/caste_datum/queen::screech_far_stun * GLOBAL_STATUS_MULTIPLIER * 0.1
+	return list(
+		xeno_stat_row("Close stun and knockdown", list(xeno_description_value(close_stun, "crowd_control"), "s within ", xeno_description_value(close_range), " tiles.")),
+		xeno_stat_row("Distant stun", list(xeno_description_value(far_stun, "crowd_control"), "s, up to ", xeno_description_value(far_range), " tiles.")),
+	)
 
 /datum/action/xeno_action/activable/queen_give_plasma
 	name = "Give Plasma (400)"

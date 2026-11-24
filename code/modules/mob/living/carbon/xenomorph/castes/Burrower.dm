@@ -170,7 +170,7 @@
 	playsound(src.loc, 'sound/effects/burrowing_b.ogg', 25)
 	update_icons()
 	addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
-	burrow_timer = world.time + 90 // How long we can be burrowed
+	burrow_timer = world.time + (caste ? caste.burrow_duration : /datum/caste_datum::burrow_duration) // How long we can be burrowed
 	process_burrow()
 
 /mob/living/carbon/xenomorph/proc/process_burrow()
@@ -315,7 +315,6 @@
 
 	playsound(burrower_tremor, 'sound/effects/alien_footstep_charge3.ogg', 75, 0)
 	to_chat(burrower_tremor, SPAN_XENOWARNING("We dig ourselves into the ground and cause tremors."))
-	var/impact_radius = 3
 	var/list/impact_area = range(impact_radius, burrower_tremor)
 	show_radial_telegraph(get_turf(burrower_tremor), impact_area, impact_radius, /obj/effect/xenomorph/xeno_telegraph/attack/brown/high_gallop, 0.35 SECONDS, "#D79600")
 	scatter_smoke_plumes(impact_area)
@@ -325,9 +324,9 @@
 		shake_camera(carbon_target, 2, 3)
 		if(get_dist(burrower_tremor, carbon_target) <= impact_radius && !burrower_tremor.can_not_harm(carbon_target))
 			if(carbon_target.mob_size >= MOB_SIZE_BIG)
-				carbon_target.apply_effect(1, SLOW)
+				carbon_target.apply_effect(slow_duration, SLOW)
 			else
-				carbon_target.apply_effect(1, WEAKEN)
+				carbon_target.apply_effect(knockdown_duration, WEAKEN)
 			to_chat(carbon_target, SPAN_WARNING("The violent tremors make you lose your footing!"))
 
 	apply_cooldown()

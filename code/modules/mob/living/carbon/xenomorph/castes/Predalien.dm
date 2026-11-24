@@ -414,7 +414,7 @@ You must still listen to the queen.
 	playsound(target_carbon, 'sound/effects/bang.ogg', 25, 0)
 	playsound(target_carbon,"slam", 50, 1)
 	animate(target_carbon, pixel_y = 0, time = 4, easing = BOUNCE_EASING) //animates the smash
-	target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, smash_damage + smash_scale * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
+	target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, base_damage + damage_scale * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 
 /mob/living/carbon/xenomorph/predalien/stop_pulling()
 	if(isliving(pulling) && smashing)

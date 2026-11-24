@@ -263,7 +263,7 @@
 	xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 3))
 	ADD_TRAIT(xeno, TRAIT_ABILITY_SUPER_EMPOWER, TRAIT_SOURCE_ABILITY("super_empower"))
 
-	addtimer(CALLBACK(src, PROC_REF(weaken_superbuff), xeno), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(weaken_superbuff), xeno), super_empower_duration)
 
 /datum/action/xeno_action/onclick/empower/proc/weaken_superbuff(mob/living/carbon/xenomorph/xeno)
 
@@ -273,7 +273,7 @@
 	color += num2text(alpha, 2, 16)
 	xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 3))
 
-	addtimer(CALLBACK(src, PROC_REF(remove_superbuff), xeno), 1.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(remove_superbuff), xeno), super_empower_fade_duration)
 
 /datum/action/xeno_action/onclick/empower/proc/remove_superbuff(mob/living/carbon/xenomorph/xeno)
 	var/datum/behavior_delegate/ravager_base/behavior = xeno.behavior_delegate
@@ -359,7 +359,7 @@
 	var/is_empowered = HAS_TRAIT(ravager_user, TRAIT_ABILITY_SUPER_EMPOWER)
 	var/telegraph_type = is_empowered ? /obj/effect/xenomorph/xeno_telegraph/attack/scissor_cut/empowered : /obj/effect/xenomorph/xeno_telegraph/attack/scissor_cut
 
-	for(var/step in 0 to 3)
+	for(var/step in 1 to cut_range)
 		temp = get_step(turf, facing)
 		if(facing in GLOB.diagonals) // check if it goes through corners
 			var/reverse_face = GLOB.reverse_dir[facing]
@@ -414,7 +414,7 @@
 			if(ravager_user.can_not_harm(carbon_target))
 				continue
 			ravager_user.flick_attack_overlay(carbon_target, "slash")
-			carbon_target.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
+			carbon_target.apply_armoured_damage(base_damage, ARMOR_MELEE, BRUTE)
 			playsound(get_turf(carbon_target), "alien_claw_flesh", 30, TRUE)
 
 			if(is_empowered)

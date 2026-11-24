@@ -47,7 +47,7 @@
 	var/datum/action/xeno_action/onclick/plant_weeds/linked_planting
 
 	var/step_count = 0
-	var/step_delay = 3
+	var/step_delay = 0.3 SECONDS
 	var/node_search_range = 4
 
 // Resting
@@ -70,6 +70,7 @@
 
 // Shift Spits
 /datum/action/xeno_action/onclick/shift_spits
+	ability_description = "Switch between available spit types. Acid burns targets, while neurotoxin stuns."
 	name = "Toggle Spit Type"
 	action_icon_state = "shift_spit_neurotoxin"
 	plasma_cost = 0
@@ -120,7 +121,7 @@
 	/// In addition to the cooldown on building, you also get an increased cooldown after canceling that building or when interrupted.
 	var/xeno_cooldown_interrupt_penalty = 1 SECONDS
 	/// Something went wrong, for example, you can't build here
-	var/xeno_cooldown_fail = 1
+	var/xeno_cooldown_fail = 0.1 SECONDS
 	/// Placement time increase modifier
 	var/build_speed_mod = 1
 
@@ -168,6 +169,7 @@
 
 // Corrosive Acid
 /datum/action/xeno_action/activable/corrosive_acid
+	ability_stats_type = /datum/xeno_ability_stats/activable_corrosive_acid
 	ability_description = "Coat an object or wall in acid to dissolve it over time."
 	name = "Corrosive Acid (100)"
 	action_icon_state = "corrosive_acid"
@@ -178,6 +180,11 @@
 	ability_primacy = XENO_CORROSIVE_ACID
 	action_type = XENO_ACTION_CLICK
 	ability_uses_acid_overlay = TRUE
+
+XENO_ABILITY_STATS(activable_corrosive_acid, datum/action/xeno_action/activable/corrosive_acid)
+	return list(
+		XENO_STAT_PLASMA(acid_plasma_cost, "Base plasma cost"),
+	)
 
 /datum/action/xeno_action/activable/corrosive_acid/New()
 	update_level()
@@ -245,12 +252,12 @@
 	var/slash_bonus_damage = 0 // Any bonus damage to apply on the tackle slash, if applicable
 
 	var/freeze_self = TRUE // Should we freeze ourselves after the lunge?
-	var/freeze_time = 5 // 5 for runners, 15 for lurkers
+	var/freeze_time = 0.5 SECONDS // 5 for runners, 15 for lurkers
 	var/freeze_timer_id = TIMER_ID_NULL // Timer to cancel the end freeze if it can be cancelled earlier
 	var/freeze_play_sound = TRUE
 
 	var/windup = FALSE // Is there a do_after before we pounce?
-	var/windup_duration = 20 // How long to wind up, if applicable
+	var/windup_duration = 2 SECONDS // How long to wind up, if applicable
 	var/windup_interruptable = TRUE // Can the windup be interrupted?
 
 	var/can_be_shield_blocked = FALSE // Some legacy stuff, self explanatory
@@ -317,7 +324,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_long_range
 	action_type = XENO_ACTION_ACTIVATE
 	var/should_delay = FALSE
-	var/delay = 20
+	var/delay = 2 SECONDS
 	var/handles_movement = TRUE
 
 	/// how much you can move before zoom breaks
@@ -391,6 +398,7 @@
 // ... or mutated at runtime by another action that retrieves and edits these values
 // ... as they are all safely mutable. (Except possibly xeno_cooldown)
 /datum/action/xeno_action/activable/spray_acid
+	ability_stats_type = /datum/xeno_ability_stats/activable_spray_acid
 	ability_description = "Spray acid across the ground to burn enemies in its path."
 	name = "Spray Acid"
 	action_icon_state = "spray_acid"
@@ -413,17 +421,30 @@
 	var/activation_delay = FALSE // Is there an activation delay?
 	var/activation_delay_length = 0 // Only used if activation_delay is TRUE.
 
+XENO_ABILITY_STATS(activable_spray_acid, datum/action/xeno_action/activable/spray_acid)
+	var/obj/effect/xenomorph/spray/spray = XENO_ABILITY_VALUE(ability, spray_effect_type)
+	return list(
+		XENO_STAT_TILES(spray_distance, "Range"),
+	) + spray_stats(spray)
 
 /datum/action/xeno_action/activable/transfer_plasma
+	ability_stats_type = /datum/xeno_ability_stats/activable_transfer_plasma
 	ability_description = "Give some of your plasma to another xenomorph."
 	name = "Transfer Plasma"
 	action_icon_state = "transfer_plasma"
 	var/plasma_transfer_amount = 50
-	var/transfer_delay = 20
+	var/transfer_delay = 2 SECONDS
 	var/max_range = 2
 	macro_path = /datum/action/xeno_action/verb/verb_transfer_plasma
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
+
+XENO_ABILITY_STATS(activable_transfer_plasma, datum/action/xeno_action/activable/transfer_plasma)
+	return list(
+		XENO_STAT_PLASMA(plasma_transfer_amount, "Plasma transferred"),
+		XENO_STAT_TILES(max_range, "Range"),
+		XENO_STAT_DURATION(transfer_delay, "Channel time"),
+	)
 
 /datum/action/xeno_action/activable/transfer_plasma/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -511,9 +532,18 @@
 	var/new_target
 
 /datum/action/xeno_action/activable/xeno_spit/queen_macro //so it doesn't screw other macros up
+	ability_stats_type = /datum/xeno_ability_stats/queen_spit
 	ability_primacy = XENO_PRIMARY_ACTION_3
+	ability_description = "Spit a projectile at a distant target. Available once mature."
+
+XENO_ABILITY_STATS(queen_spit, datum/action/xeno_action/activable/xeno_spit/queen_macro)
+	var/damage = /datum/ammo/xeno/acid/spatter::damage
+	return list(
+		XENO_STAT_VALUE("Acid base burn damage", damage, "burn", "."),
+	)
 
 /datum/action/xeno_action/activable/tail_stab
+	ability_stats_type = /datum/xeno_ability_stats/activable_tail_stab
 	ability_description = "Thrust your tail at a nearby enemy for a melee strike."
 	name = "Tail Stab"
 	action_icon_state = "tail_attack"
@@ -526,6 +556,12 @@
 	var/blunt_stab = FALSE
 	var/damage_multiplier = TAILSTAB_MOB_DAMAGE_MULTIPLIER
 	cooldown_message = "Our tail is no longer tired. We can stab with it again."
+
+XENO_ABILITY_STATS(activable_tail_stab, datum/action/xeno_action/activable/tail_stab)
+	return list(
+		XENO_STAT_TILES(stab_range, "Range"),
+		XENO_STAT_VALUE("Melee damage multiplier", XENO_ABILITY_VALUE(ability, damage_multiplier), "brute", "x."),
+	)
 
 /datum/action/xeno_action/onclick/evolve
 	name = "Evolve"

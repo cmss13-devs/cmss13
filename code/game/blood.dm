@@ -102,3 +102,9 @@
 		feet_blood_color = null
 		update_inv_shoes()
 		return 1
+
+	for(var/obj/bubblegum_bubble/gummy_mess in vis_contents)
+		if(gummy_mess.popped)
+			vis_contents -= gummy_mess
+			qdel(gummy_mess)
+

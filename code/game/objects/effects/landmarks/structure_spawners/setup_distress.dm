@@ -19,6 +19,7 @@
 	name = "Distress Xeno door spawner"
 	icon_state = "door"
 	path_to_spawn = /obj/structure/mineral_door/resin
+	delay_apply = TRUE
 
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest
 	name = "Distress Xeno nest spawner"
@@ -48,6 +49,20 @@
 	name = "Distress Xeno reinforced door spawner"
 	icon_state = "door_r"
 	path_to_spawn = /obj/structure/mineral_door/resin/thick
+	delay_apply = TRUE
+
+
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall_hull
+	name = "Distress Xeno hull wall spawner"
+	icon_state = "wall_h"
+	path_to_spawn = /turf/closed/wall/mineral/bone_resin
+	is_turf = TRUE
+
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door_hull
+	name = "Distress Xeno hull door spawner"
+	icon_state = "door_h"
+	path_to_spawn = /obj/structure/mineral_door/resin/bone_resin
+	delay_apply = TRUE
 
 // K-Series
 

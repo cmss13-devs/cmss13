@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/almayer/plating,
+/area/event)
 "bk" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/closet/secure_closet/surgical{
@@ -564,7 +568,7 @@ br
 ev
 Lc
 ju
-AN
+aa
 AN
 AN
 AN

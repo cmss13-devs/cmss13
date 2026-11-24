@@ -283,6 +283,8 @@
 #define TRAIT_ABILITY_CLEAVE_FLING "t_ability_cleave_fling"
 #define TRAIT_ABILITY_CLEAVE_BUFFED "t_ability_cleave_buffed"
 #define TRAIT_ABILITY_PRE_DASH "t_ability_pre_dash"
+/// Used by dancer dodge ability.
+#define TRAIT_ABILITY_DODGE "t_ability_dodge"
 /// Used by ravager pounce to charge at enemies.
 #define TRAIT_ABILITY_POUNCE_CHARGE "t_ability_pounce_charge"
 /// Used for empower windup before ravager get empowered.

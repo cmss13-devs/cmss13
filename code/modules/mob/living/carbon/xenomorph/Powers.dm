@@ -112,6 +112,8 @@
 	// Weed check after thickening check for thickening walls and doors without weeds underneath.
 
 	var/turf/current_turf = get_turf(target)
+	if(!current_turf)
+		return
 	var/obj/effect/alien/weeds/alien_weeds = current_turf.weeds
 	if(!alien_weeds || alien_weeds.secreting)
 		return SECRETE_RESIN_FAIL
@@ -238,12 +240,18 @@
 
 	// Weed check! Only place marks on weeds.
 	var/turf/current_turf = get_turf(target)
+	if(!current_turf)
+		return
 	var/obj/effect/alien/weeds/alien_weeds = current_turf.weeds
 	if(!alien_weeds || alien_weeds.secreting)
 		return SECRETE_RESIN_FAIL
 
 	if(alien_weeds.hivenumber != hivenumber)
 		to_chat(src, SPAN_DANGER("These aren't our weeds!"))
+		return
+
+	// No message to prevent spam from trying to thicken.
+	if(!check_alien_construction(get_turf(target), check_doors = TRUE))
 		return
 
 	new /obj/effect/alien/resin/building_node(get_turf(target), src, resin_construct.type)
@@ -288,15 +296,18 @@
 		if(planter_queen.ovipositor)
 			ovi_node = TRUE
 
-	create_node_image(get_turf(src), list(planter), resin_type, src, ovi_node)
+	create_node_image(planter)
 	// Create the client mark image
 	RegisterSignal(src, COMSIG_TURF_WEED_DESTROYED, PROC_REF(on_weed_removal))
 
+	// Recreate client images when client comes back
+	RegisterSignal(planter_xeno, COMSIG_MOB_LOGGED_IN, PROC_REF(create_node_image))
+
 // Delete and create a new node image.
-/obj/effect/alien/resin/building_node/proc/create_node_image(node_turf, list/mobs_which_see_us, datum/resin_construction/resin_type, obj/effect/alien/resin/building_node/parent_node, ovi_node = FALSE)
+/obj/effect/alien/resin/building_node/proc/create_node_image(mob/planter_xeno)
 	if(node_image)
 		qdel(node_image)
-	node_image = new /obj/effect/client_image_holder/resin_building_node(node_turf, mobs_which_see_us, resin_type, parent_node, ovi_node)
+	node_image = new /obj/effect/client_image_holder/resin_building_node(get_turf(src), list(planter_xeno), resin_type, src, ovi_node)
 
 /obj/effect/alien/resin/building_node/Destroy()
 	UnregisterSignal(src, COMSIG_TURF_WEED_DESTROYED)

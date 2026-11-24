@@ -506,7 +506,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 			// Transfer each node's 'planter' to the new xenomorph, and recreate the client holder image for the new mob.
 			for(var/obj/effect/alien/resin/building_node/node in new_xeno.current_building_nodes)
 				node.planter = new_xeno
-				node.create_node_image(get_turf(node), list(new_xeno), node.resin_type, node, node.ovi_node)
+				node.create_node_image(new_xeno)
 		// Wipe away the old list completely.
 		current_building_nodes = null
 	// We don't, delete everything in the list.
